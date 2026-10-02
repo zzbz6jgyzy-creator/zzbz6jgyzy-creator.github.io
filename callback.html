@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<meta name="referrer" content="no-referrer"><title>OAuth callback</title></head>
+<body style="font-family:sans-serif;max-width:40em;margin:2em auto">
+<h3>Tesla authorization callback</h3>
+<p>Copy this code back to your assistant (it expires in minutes and is useless without the client secret):</p>
+<pre id="c" style="background:#eee;padding:1em;word-break:break-all"></pre>
+<p>state: <code id="s"></code></p>
+<script>
+var p=new URLSearchParams(location.search);
+document.getElementById('c').textContent=p.get('code')||('No code. error='+(p.get('error')||'none')+' '+(p.get('error_description')||''));
+document.getElementById('s').textContent=p.get('state')||'';
+</script></body></html>
