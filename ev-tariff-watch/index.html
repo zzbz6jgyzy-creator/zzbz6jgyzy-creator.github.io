@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Irish EV Tariff Watch: cheapest EV night rates in Ireland</title>
+  <meta name="description" content="Free tracker of Irish home EV and night-boost electricity tariffs, price-hike alerts and a charging cost calculator. Prototype.">
+  <meta name="theme-color" content="#0e7a4a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23169b62'/%3E%3Cpath d='M18 4 8 18h7l-2 10 11-15h-7z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="#top" aria-label="Irish EV Tariff Watch home">
+      <span class="brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M18 4 8 18h7l-2 10 11-15h-7z" fill="#fff"/></svg>
+      </span>
+      <span class="brand__name">Irish EV <b>Tariff Watch</b></span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#rates">Rates</a>
+      <a href="#alerts">Alerts</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#dynamic">Dynamic</a>
+      <a href="#newsletter" class="nav__cta">Newsletter</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark / light">
+      <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow"><span class="pill pill--proto">Prototype</span> Free · independent · Ireland</p>
+        <h1>Charge your EV for less. <span class="accent">Know first when rates rise.</span></h1>
+        <p class="lede">We rank Irish home EV and night-boost electricity plans by what you actually pay for the cheap charging window, track every announced price hike, and compare them against the new dynamic tariffs.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#rates">See cheapest EV rates</a>
+          <a class="btn btn--ghost" href="#calculator">Work out my cost</a>
+        </div>
+        <ul class="hero__stats" id="heroStats" aria-label="Key figures"></ul>
+      </div>
+
+      <aside class="alert-banner" id="latestAlert" aria-live="polite">
+        <!-- filled by app.js from TARIFF_DATA.alerts -->
+      </aside>
+    </div>
+  </section>
+
+  <!-- RANKING -->
+  <section class="section" id="rates">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <h2>Cheapest EV night rates right now</h2>
+          <p class="muted">Cheap-window unit rate, c/kWh including 9% VAT, headline new-customer price. Urban standing charges. Tap a column to sort.</p>
+        </div>
+        <div class="controls">
+          <div class="seg" role="radiogroup" aria-label="Price date">
+            <button type="button" role="radio" aria-checked="true" data-basis="now" class="seg__btn is-on">Today <small>4 Oct</small></button>
+            <button type="button" role="radio" aria-checked="false" data-basis="next" class="seg__btn">After announced rises <small>12 Oct</small></button>
+          </div>
+          <label class="check"><input type="checkbox" id="showClosed"> Show plans closed to new customers</label>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="rank" id="rankTable">
+          <thead>
+            <tr>
+              <th scope="col" data-sort="rank" class="num">#</th>
+              <th scope="col" data-sort="supplier">Supplier &amp; plan</th>
+              <th scope="col" data-sort="ev" class="num" aria-sort="ascending">EV rate</th>
+              <th scope="col" data-sort="hours">Cheap window</th>
+              <th scope="col" data-sort="day" class="num">Day rate</th>
+              <th scope="col" data-sort="standing" class="num">Standing charge</th>
+              <th scope="col" data-sort="per100" class="num">€ / 100 km</th>
+              <th scope="col">Source &amp; as-of</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="legend">
+        <span><i class="tag tag--up">▲ rising</i> announced increase (see Alerts)</span>
+        <span><i class="tag tag--derived">derived</i> calculated by us from a supplier figure (e.g. ex-VAT × 1.09)</span>
+        <span><i class="tag tag--warn">unverified</i> could not confirm on a supplier page</span>
+        <span>€/100 km assumes 16 kWh/100 km, all charged in the cheap window.</span>
+      </div>
+      <p class="fineprint">Not every supplier is covered. Community Power (no dedicated EV plan found) is not listed. We couldn't read Flogas's discounted EV plans or PrePay Power's prices. Compare everything on <a href="https://www.bonkers.ie/compare-gas-electricity-prices/" rel="noopener" target="_blank">bonkers.ie</a> (CRU-accredited) or <a href="https://switcher.ie/" rel="noopener" target="_blank">switcher.ie</a> before you switch.</p>
+    </div>
+  </section>
+
+  <!-- ALERTS -->
+  <section class="section section--alt" id="alerts">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <h2>Rate hike alerts</h2>
+          <p class="muted">Real announced changes from suppliers and the regulator, newest first. Each links to its source.</p>
+        </div>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section" id="calculator">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <h2>What will home charging cost you?</h2>
+          <p class="muted">Yearly charging cost on each plan, and how much you'd save against a dynamic tariff or a normal 24-hour rate.</p>
+        </div>
+      </div>
+
+      <div class="calc">
+        <form class="calc__inputs card" id="calcForm" autocomplete="off" onsubmit="return false">
+          <div class="field">
+            <label for="km">Distance per year <output id="kmOut"></output></label>
+            <div class="field__row">
+              <input type="range" id="kmRange" min="2000" max="60000" step="500" value="25000" aria-label="Distance per year slider">
+              <input type="number" id="km" min="0" max="200000" step="500" value="25000" inputmode="numeric"><span class="unit">km</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="eff">Efficiency</label>
+            <div class="field__row">
+              <input type="range" id="effRange" min="10" max="30" step="0.5" value="16" aria-label="Efficiency slider">
+              <input type="number" id="eff" min="5" max="50" step="0.1" value="16" inputmode="decimal"><span class="unit">kWh/100 km</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="home">Share charged at home</label>
+            <div class="field__row">
+              <input type="range" id="homeRange" min="0" max="100" step="5" value="100" aria-label="Home share slider">
+              <input type="number" id="home" min="0" max="100" step="1" value="100" inputmode="numeric"><span class="unit">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="mine">My current EV rate <span class="muted">(optional)</span></label>
+            <div class="field__row">
+              <input type="number" id="mine" min="0" max="100" step="0.01" value="9.6" inputmode="decimal"><span class="unit">c/kWh</span>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label">Prices</span>
+            <div class="seg seg--sm" role="radiogroup" aria-label="Calculator price date">
+              <button type="button" role="radio" aria-checked="true" data-cbasis="now" class="seg__btn is-on">Today</button>
+              <button type="button" role="radio" aria-checked="false" data-cbasis="next" class="seg__btn">After 12 Oct</button>
+            </div>
+          </div>
+          <details class="adv">
+            <summary>Advanced assumptions</summary>
+            <div class="field">
+              <label for="kw">Home charger power</label>
+              <div class="field__row"><input type="number" id="kw" min="1" max="22" step="0.1" value="7.4"><span class="unit">kW</span></div>
+            </div>
+            <div class="field">
+              <label for="loss">Charging losses</label>
+              <div class="field__row"><input type="number" id="loss" min="0" max="25" step="1" value="0"><span class="unit">%</span></div>
+              <small class="muted">Use if your efficiency figure comes from the car (wall-to-battery losses are often 5–10%).</small>
+            </div>
+            <div class="field">
+              <label for="whs">Overnight wholesale price (2–5am)</label>
+              <div class="field__row"><input type="number" id="whs" min="-20" max="60" step="0.01" value="16.38"><span class="unit">c/kWh ex VAT</span></div>
+              <small class="muted">Default: real SEMOpx day-ahead average for 2–5am, 4 Sep – 3 Oct 2026.</small>
+            </div>
+          </details>
+        </form>
+
+        <div class="calc__results">
+          <div class="kpis" id="kpis"></div>
+          <div class="card">
+            <h3 class="card__title">Yearly charging cost by plan</h3>
+            <div class="bars" id="bars" role="list"></div>
+            <p class="fineprint" id="fitNote"></p>
+          </div>
+        </div>
+      </div>
+
+      <details class="assumptions card">
+        <summary><b>How we calculate this</b> (assumptions)</summary>
+        <ul>
+          <li><b>Energy:</b> kWh per year = km × efficiency ÷ 100 × (1 + charging losses). Home kWh = that × share charged at home. Public charging isn't costed.</li>
+          <li><b>EV plans:</b> all home charging is assumed to fit in the plan's cheap window at its headline rate (incl. VAT and the advertised new-customer discount). If your nightly need is more than the window can deliver at your charger power, we flag it. The extra kWh would cost the plan's night/day rate, which we don't add.</li>
+          <li><b>Not included:</b> standing charges and the rest of your household's electricity. EV plans often have <em>higher</em> standing charges and day rates, so a low EV rate can be cancelled out for low-mileage drivers. Check the full plan.</li>
+          <li><b>Dynamic estimate:</b> base night rate (incl VAT) + wholesale price × 1.09 VAT. Bord Gáis's Smart Dynamic T&amp;Cs confirm the dynamic part is the Day-Ahead Market price for each half hour (capped at 50c/kWh). We use the cheapest night base we found (Electric Ireland, 8.52c). Real costs vary night to night.</li>
+          <li><b>24-hour rate:</b> Electric Ireland Home Electric+ Saver 16% at 31.30c, an example of a normal flat rate.</li>
+          <li>"After 12 Oct" uses all announced rises (SSE 5 Oct, Bord Gáis 9 Oct, Energia 12 Oct), including figures we derived (marked).</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- DYNAMIC -->
+  <section class="section section--alt" id="dynamic">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <h2>Dynamic vs night rate: which wins for EV charging?</h2>
+          <p class="muted">Since 1 June 2026 the five biggest suppliers must offer a <b>dynamic tariff</b>, where the price changes every half hour with the wholesale market. Here's how that stacks up against a fixed EV night rate.</p>
+        </div>
+      </div>
+
+      <div class="dyn">
+        <figure class="card chart-card">
+          <figcaption>
+            <b>Estimated all-in price by hour</b>
+            <span class="muted">Dynamic tariff estimates (supplier base rate + real wholesale hourly average, 4 Sep – 3 Oct 2026, incl VAT) vs the cheapest fixed EV rate</span>
+          </figcaption>
+          <div id="chart" class="chart" role="img" aria-label="Line chart comparing estimated dynamic tariff price by hour with fixed EV night rates"></div>
+          <div class="chart-legend" id="chartLegend"></div>
+        </figure>
+
+        <div class="dyn__side">
+          <div class="card">
+            <h3 class="card__title">At 2–5am, a typical EV charging time</h3>
+            <div class="dyn-table" id="dynTable"></div>
+            <p class="fineprint">Estimate = supplier's night base rate + 16.38c average wholesale (4 Sep – 3 Oct 2026) + 9% VAT. On a windy night wholesale can drop to near zero (avg 2–5am on 19 Sep 2026: 0.79c). On a calm night it can top 20c.</p>
+          </div>
+          <div class="card explain">
+            <h3 class="card__title">In plain English</h3>
+            <ul class="ticks">
+              <li><b>Night rate (EV plan):</b> one known low price in a fixed window, e.g. 2–5am. Simple. Set your car or charger and forget it.</li>
+              <li><b>Dynamic:</b> a fixed base rate <em>plus</em> the wholesale price for each half hour, published the day before. Cheaper on windy nights, dearer when gas sets the price.</li>
+              <li><b>Right now</b> Irish wholesale prices are high (Sept 2026 average about 18c/kWh before VAT), so a good EV night rate beats our dynamic estimate on most nights.</li>
+              <li>Dynamic needs a smart meter with a strong signal (CTF 4) and suits people who'll watch prices or use a charger that follows them.</li>
+            </ul>
+            <p class="fineprint"><b>The trend:</b> over the past 12 months, perfectly timed charging in the cheapest 3 hours each night averaged about 20c/kWh on a dynamic tariff (our backtest). But overnight wholesale prices have roughly doubled since then, with the 2–5am average rising from about 7c last October to about 16c in September 2026 before VAT. That puts today's figure at 26c or more. Either way, it's more than double a good EV night rate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER + X -->
+  <section class="section" id="newsletter">
+    <div class="wrap">
+      <div class="cta card">
+        <div class="cta__copy">
+          <h2>Get the Friday EV tariff email</h2>
+          <p>One short email a week: the cheapest EV rate, any hikes announced, and whether dynamic beat night rates last week. Free. No spam.</p>
+          <p class="demo-note" role="note"><b>Demo only:</b> this form doesn't work yet. Nothing you type is stored or sent anywhere.</p>
+        </div>
+        <form class="cta__form" id="newsForm" novalidate>
+          <label class="sr" for="email">Email address</label>
+          <input id="email" type="email" placeholder="you@example.ie" autocomplete="off">
+          <button class="btn btn--primary" type="submit">Subscribe</button>
+          <p class="form-msg" id="newsMsg" aria-live="polite"></p>
+        </form>
+        <div class="cta__x">
+          <button class="btn btn--x" type="button" id="xBtn" aria-describedby="xMsg">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.3L6.4 22H3.3l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg>
+            Follow us on X
+          </button>
+          <p class="form-msg" id="xMsg" aria-live="polite">Demo only: the X account doesn't exist yet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <p class="brand brand--footer"><span class="brand__name">Irish EV <b>Tariff Watch</b></span></p>
+      <p><b>Prototype, built 4 Oct 2026. Prices from the linked sources, check with the supplier before switching.</b></p>
+      <p class="muted">Referral disclaimer: Irish EV Tariff Watch is free and independent. In future we may earn a fee if you switch supplier through some links, or show clearly labelled sponsor messages. That will never change the order of the rankings, which are sorted only by price. Right now there are no referral or sponsor arrangements.</p>
+      <p class="muted">Not financial advice. Rates are variable and change often. Figures marked "derived" are our calculations; "unverified" ones couldn't be confirmed.</p>
+    </div>
+    <div class="footer__meta">
+      <p class="muted">Data last checked: <span id="asOf"></span><br>Tariff data lives in <code>data.js</code>.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
