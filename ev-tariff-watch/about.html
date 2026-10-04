@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Irish EV Tariff Watch: cheapest EV night rates in Ireland</title>
-  <meta name="description" content="Free tracker of Irish home EV and night-boost electricity tariffs, price-rise alerts, switching links and a charging cost calculator.">
+  <title>About & sources | Irish EV Tariff Watch</title>
+  <meta name="description" content="How Irish EV Tariff Watch gathers its prices, when they were last checked, the disclaimer, and every source link.">
   <meta name="theme-color" content="#0e7a4a">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="styles.css?v=20261005">
   <script>try{var t=localStorage.getItem("evtw-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
-<body data-page="home">
+<body data-page="about">
 <a class="skip" href="#main">Skip to content</a>
 <header class="topbar">
   <div class="wrap topbar__inner">
@@ -26,12 +26,12 @@
     </a>
     <nav class="nav" id="siteNav" aria-label="Main">
       <ul class="nav__list">
-        <li><a href="./" aria-current="page">Home</a></li>
+        <li><a href="./">Home</a></li>
         <li><a href="compare.html">Compare plans</a></li>
         <li><a href="calculator.html">Calculator</a></li>
         <li><a href="dynamic.html">Dynamic tariffs</a></li>
         <li><a href="price-changes.html">Price changes</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
         <li><a href="how-to-switch.html" class="nav__cta">How to switch</a></li>
       </ul>
     </nav>
@@ -47,60 +47,38 @@
   </div>
 </header>
 
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">About & sources</p>
+      <h1>About Irish EV Tariff Watch</h1>
+      <p class="lede">How the prices are gathered, when they were last checked, and every source we use.</p>
+    </div>
+  </section>
 <main id="main">
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div class="hero__copy">
-        <p class="eyebrow"><span>Free · independent · Ireland</span> <span class="pill pill--date" data-fill="asOfLong"></span></p>
-        <h1>Charge your EV for less. <span class="accent">Know first when rates rise.</span></h1>
-        <p class="lede">We rank Irish home EV and night-boost electricity plans by the price of the cheap charging window, track every announced price rise, and compare them with the new dynamic tariffs.</p>
-        <div class="hero__ctas">
-          <a class="btn btn--primary" href="compare.html">Compare all plans</a>
-          <a class="btn btn--ghost" href="calculator.html">Work out my cost</a>
-        </div>
-        <ul class="hero__stats" id="heroStats" aria-label="Key figures"></ul>
-      </div>
-      <aside class="best-card card" id="bestCard" aria-label="Cheapest EV rate today"></aside>
-    </div>
-  </section>
+  <section class="section section--tight">
+    <div class="wrap narrow prose">
+      <div class="facts" id="facts"></div>
 
-  <section class="section section--alt">
-    <div class="wrap">
-      <div class="section__head">
-        <div>
-          <h2>Price changes coming up</h2>
-          <p class="muted">Announced changes taking effect today or later. Each links to its source.</p>
-        </div>
-        <a class="link-more" href="price-changes.html">Full timeline →</a>
-      </div>
-      <div class="upcoming" id="upcoming"></div>
-    </div>
-  </section>
+      <h2>How the data is gathered</h2>
+      <p>Every price is entered by hand from the supplier's own tariff page or price PDF, and re-checked weekly. All unit rates are in cent per kWh <b>including 9% VAT</b>, and standing charges are euro per year including VAT for <b>urban</b> customers, unless a note says otherwise. Headline rates are each supplier's advertised new-customer price, including any standard sign-up discount noted on the plan.</p>
+      <p>Each figure is labelled by how sure we are of it:</p>
+      <ul>
+        <li><b>Supplier:</b> read directly from the supplier's own page or PDF.</li>
+        <li><i class="tag tag--derived">derived</i> calculated by us from a supplier figure, for example an ex-VAT price × 1.09, or a published discount applied.</li>
+        <li><i class="tag tag--warn">unverified</i> we couldn't confirm it, so it's shown with a warning.</li>
+      </ul>
+      <p>We never type in a number we haven't seen on a source. When a supplier announces a change, we add the new price with its start date, and the site switches over to it automatically on that day. Wholesale figures for the dynamic-tariff estimates are real SEMOpx day-ahead results (ROI zone) from the SEMO reports service.</p>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="section__head">
-        <div>
-          <h2>Cheapest EV rates today</h2>
-          <p class="muted">Cheap-window unit rate incl. 9% VAT, plans open to new customers.</p>
-        </div>
-        <a class="link-more" href="compare.html">All plans →</a>
-      </div>
-      <ol class="mini-rank" id="miniRank"></ol>
-    </div>
-  </section>
+      <h2>What isn't covered</h2>
+      <p>Not every supplier or plan is listed. Community Power (no dedicated EV plan found) isn't included. We couldn't read Flogas's discounted EV plans or PrePay Power's prices. Rural standing charges are higher than the urban figures shown. Always compare on <a href="https://www.bonkers.ie/compare-gas-electricity-prices/" target="_blank" rel="noopener">bonkers.ie</a> (CRU-accredited) or <a href="https://switcher.ie/" target="_blank" rel="noopener">switcher.ie</a> too.</p>
 
-  <section class="section section--alt">
-    <div class="wrap">
-      <h2>Explore the site</h2>
-      <div class="quick">
-        <a class="quick__card" href="compare.html"><span class="quick__ico"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></span><b>Compare plans</b><span>All EV plans side by side, with switch links and sources.</span></a>
-        <a class="quick__card" href="calculator.html"><span class="quick__ico"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 7.5h7M8.5 12h1M12 12h1M15 12h.5M8.5 16h1M12 16h1M15 16h.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><b>Calculator</b><span>What you'd pay a year at your mileage.</span></a>
-        <a class="quick__card" href="dynamic.html"><span class="quick__ico"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 17l5-6 4 3 4-7 5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Dynamic tariffs</b><span>Half-hourly pricing vs a fixed night rate.</span></a>
-        <a class="quick__card" href="price-changes.html"><span class="quick__ico"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></span><b>Price changes</b><span>Every announced rise, newest first.</span></a>
-        <a class="quick__card" href="how-to-switch.html"><span class="quick__ico"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>How to switch</b><span>Plain steps for Ireland: MPRN, cooling-off, timing.</span></a>
-        <a class="quick__card" href="about.html"><span class="quick__ico"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v5.5M12 7.6v.1" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><b>About &amp; sources</b><span>How we gather prices, and every source link.</span></a>
-      </div>
+      <h2 id="disclaimer">Disclaimer</h2>
+      <p>Irish EV Tariff Watch is free and independent. It isn't financial advice. Electricity prices are variable and change often, so always confirm the price, contract length and exit fees with the supplier before you switch. Figures marked "derived" are our calculations and "unverified" ones couldn't be confirmed.</p>
+      <p><b>Referral disclaimer:</b> right now there are no referral or sponsor arrangements. The "Switch to" buttons go straight to suppliers' own websites and we earn nothing from them. In future we may earn a fee if you switch through some links, or show clearly labelled sponsor messages. That will never change the order of the rankings, which are sorted only by price.</p>
+      <p class="demo-note" role="note"><b>Coming soon:</b> a short Friday email with the cheapest EV rate, any rises announced, and whether dynamic beat night rates that week. It isn't live yet.</p>
+
+      <h2>All sources</h2>
+      <div id="sourceList" class="source-list"></div>
     </div>
   </section>
 </main>
