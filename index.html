@@ -1,2 +1,160 @@
-<!doctype html><meta charset="utf-8"><title>Personal vehicle assistant</title>
-<p>Personal, non-commercial integration used by its owner only.</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkipThisTech — Hot takes. Better buys.</title>
+    <meta
+      name="description"
+      content="SkipThisTech ranks overhyped gadgets, underrated fixes, and the one thing worth buying instead. Funny tech opinions. Zero fluff."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-current="page">
+          <span class="brand-mark" aria-hidden="true">ST</span>
+          SkipThisTech
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="rankings.html">Rankings</a>
+          <a href="about.html">About</a>
+          <a class="nav-cta" href="#newsletter">Get the weekly skip</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="hero" aria-labelledby="hero-brand">
+          <div class="hero-backdrop" aria-hidden="true"></div>
+          <p class="hero-kicker reveal"><span></span> Tech without the sales pitch</p>
+          <h1 class="hero-brand reveal delay-1" id="hero-brand">
+            Skip<br />This<br /><em>Tech</em>
+          </h1>
+          <p class="hero-lead reveal delay-2">
+            Overhyped gadgets get roasted. Underrated fixes get a spotlight. You leave with one clear
+            buy — or the confidence to buy nothing.
+          </p>
+          <div class="hero-actions reveal delay-3">
+            <a class="button button-primary" href="rankings.html">Browse rankings</a>
+            <a class="button button-ghost" href="posts/overrated-gadgets.html">Read this week’s skip list</a>
+          </div>
+        </section>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>Skip the hype</span><span>•</span><span>Buy the fix</span><span>•</span>
+            <span>Roast the AI pin</span><span>•</span><span>Keep the GaN charger</span><span>•</span>
+            <span>Skip the hype</span><span>•</span><span>Buy the fix</span><span>•</span>
+            <span>Roast the AI pin</span><span>•</span><span>Keep the GaN charger</span><span>•</span>
+          </div>
+        </div>
+
+        <section class="section" aria-labelledby="latest-heading">
+          <div class="section-head">
+            <h2 id="latest-heading" class="reveal">Latest rankings</h2>
+            <p class="reveal delay-1">Opinionated lists for people who are tired of “revolutionary” packaging.</p>
+          </div>
+          <div class="rank-list">
+            <a class="rank-item reveal" href="posts/overrated-gadgets.html">
+              <span class="rank-num">01</span>
+              <div class="rank-copy">
+                <h3>Overrated gadgets right now</h3>
+                <p>The shiny stuff marketing wants you to want — and the boring upgrades that actually help.</p>
+              </div>
+              <span class="tag tag-skip">Skip list</span>
+            </a>
+            <a class="rank-item reveal delay-1" href="posts/underrated-desk.html">
+              <span class="rank-num">02</span>
+              <div class="rank-copy">
+                <h3>Underrated desk gear under $30</h3>
+                <p>Small buys that make your setup feel intentional without a standing-desk sponsorship.</p>
+              </div>
+              <span class="tag tag-buy">Buy list</span>
+            </a>
+            <a class="rank-item reveal delay-2" href="posts/chargers.html">
+              <span class="rank-num">03</span>
+              <div class="rank-copy">
+                <h3>Chargers that aren’t a scam</h3>
+                <p>GaN, ports that matter, and how to stop carrying five bricks like it’s 2014.</p>
+              </div>
+              <span class="tag tag-buy">Buy list</span>
+            </a>
+            <a class="rank-item reveal delay-3" href="posts/desk-quiz.html">
+              <span class="rank-num">04</span>
+              <div class="rank-copy">
+                <h3>Which desk person are you?</h3>
+                <p>A quick personality ranking that ends in a kit you might actually use.</p>
+              </div>
+              <span class="tag tag-quiz">Quiz</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="split">
+            <div class="panel reveal">
+              <h2>House rules</h2>
+              <ul class="rules">
+                <li>
+                  <span class="rule-badge">1</span>
+                  <div>
+                    <strong>Hot take first.</strong>
+                    <div>If a product is theater, we say so before we bury you in specs.</div>
+                  </div>
+                </li>
+                <li>
+                  <span class="rule-badge">2</span>
+                  <div>
+                    <strong>One clear recommendation.</strong>
+                    <div>Not twelve “top picks.” One winner. Maybe a runner-up.</div>
+                  </div>
+                </li>
+                <li>
+                  <span class="rule-badge">3</span>
+                  <div>
+                    <strong>Buying nothing is allowed.</strong>
+                    <div>Sometimes the smartest upgrade is skipping the launch cycle.</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="panel newsletter reveal delay-1" id="newsletter">
+              <h2>The weekly skip</h2>
+              <p>
+                One overrated gadget. One underrated fix. No product dumps, no “as an AI language model”
+                energy.
+              </p>
+              <form data-newsletter-form>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                <button class="button button-primary" type="submit">Subscribe for free</button>
+                <p class="form-note">Local demo signup for now — wire this to beehiiv/MailerLite when you’re ready.</p>
+                <p class="form-success" role="status">You’re on the list. Welcome to the skip club.</p>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span data-year></span> SkipThisTech. Hot takes. Better buys.</p>
+        <p>
+          <a href="about.html">About & disclosures</a>
+          ·
+          <a href="rankings.html">All rankings</a>
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
