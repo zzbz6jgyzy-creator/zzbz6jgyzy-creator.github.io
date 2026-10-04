@@ -18,7 +18,35 @@ window.TARIFF_DATA = {
     asOf: "2026-10-04",
     vatRate: 0.09,
     region: "Republic of Ireland, urban standing charges",
-    notes: "Headline rates are the supplier's advertised new-customer rate (including any standard sign-up discount noted per plan)."
+    notes: "Headline rates are the supplier's advertised new-customer rate (including any standard sign-up discount noted per plan).",
+    siteUpdated: "2026-10-05",     // last time the website itself (not prices) was changed
+    linksChecked: "2026-10-05"     // switch links below last opened and returned HTTP 200
+  },
+
+  /* ---------------- Suppliers: switching / sign-up links ----------------
+     One entry per supplier name used in `plans`. Re-check every link when you
+     update prices (curl with a browser User-Agent should return 200).
+     `current: true` marks the supplier you are with now (shows a label instead
+     of a "Switch to" call to action). */
+  suppliers: {
+    "Yuno Energy": {
+      switchUrl: "https://yunoenergy.ie/pricing-page",
+      note: "Yuno has no direct EV sign-up page; this is its pricing page, where sign-up starts." },
+    "SSE Airtricity": {
+      switchUrl: "https://www.sseairtricity.com/ie/home/products/switch-to-sse-airtricity?jump=true&filter=elec&meter=smart" },
+    "Bord Gáis Energy": {
+      switchUrl: "https://www.bordgaisenergy.ie/home/ev-plan-comparison", current: true,
+      note: "Your current supplier. Link goes to Bord Gáis's EV plan comparison page." },
+    "Energia": {
+      switchUrl: "https://switchto.energia.ie/ChooseMyPlan?Type=Smart&Fuel=E&apptype=cos",
+      guideUrl: "https://www.energia.ie/energy-plans/switching-guide" },
+    "Electric Ireland": {
+      switchUrl: "https://www.electricireland.ie/switch/new-customer/price-plans?priceType=E" },
+    "Pinergy": {
+      switchUrl: "https://pinergy.ie/home-electricity/switch-supplier/",
+      note: "Pinergy's EV Night Time plan is closed to new customers; this is Pinergy's general switching page." },
+    "Flogas": {
+      switchUrl: "https://www.flogas.ie/sign-up/" }
   },
 
   /* ---------------- EV / night-boost plans ---------------- */
