@@ -1,0 +1,153 @@
+.instead-page .instead-hero {
+  width: min(100% - 2rem, var(--max));
+  margin: 1rem auto 0;
+  padding: 2.5rem 0 1rem;
+}
+
+.instead-page .instead-hero h1 {
+  margin: 0.35rem 0 0.9rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.instead-lead {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+}
+
+.instead-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+}
+
+.tag-pill {
+  display: inline-flex;
+  margin-top: 1rem;
+  padding: 0.45rem 0.8rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.tag-pill.is-missing {
+  background: rgba(255, 75, 43, 0.12);
+  border-color: rgba(255, 75, 43, 0.55);
+}
+
+.tag-pill.is-live {
+  background: rgba(184, 240, 0, 0.45);
+}
+
+.money-meters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1.75rem;
+}
+
+.money-meter {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  background: rgba(244, 247, 250, 0.85);
+}
+
+.money-meter span {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 0.3rem;
+}
+
+.money-meter strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+}
+
+.decide-shell {
+  width: min(100% - 2rem, 760px);
+  margin: 0 auto 3rem;
+}
+
+.decide-card {
+  border: 2px solid var(--ink);
+  border-radius: calc(var(--radius) + 6px);
+  background: rgba(244, 247, 250, 0.9);
+  padding: 1.4rem;
+  margin-top: 1rem;
+}
+
+.decide-card h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.decide-options {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.decide-options button {
+  appearance: none;
+  text-align: left;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: white;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.95rem 1.15rem;
+  cursor: pointer;
+}
+
+.decide-options button:hover,
+.decide-options button.is-on {
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+.decide-result {
+  display: none;
+  margin-top: 1rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
+  background: linear-gradient(135deg, rgba(184, 240, 0, 0.35), rgba(122, 215, 255, 0.25));
+}
+
+.decide-result.is-visible {
+  display: block;
+}
+
+.decide-result.is-skip {
+  background: rgba(255, 75, 43, 0.12);
+}
+
+.decide-result h3 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.decide-result p {
+  margin: 0 0 0.9rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 700px) {
+  .money-meters {
+    grid-template-columns: 1fr;
+  }
+}

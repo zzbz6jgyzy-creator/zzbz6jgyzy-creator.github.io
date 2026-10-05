@@ -18,11 +18,12 @@ Open `http://localhost:4173`.
 - `rankings.html` — all rankings
 - `about.html` — project + affiliate disclosure
 - `posts/` — sample articles + quiz
-- `newsletter/` — The Weekly Skip archive + Beehiiv-style sample Issue #01
+- `instead/` — money machine hub + Upgrade-or-Skip converter
+- `affiliates.js` — paste your Amazon Associates tag once; all buy links pick it up
 - `pulse/` — live GitHub-powered “organism” of this repo (commits, ghosts, issues)
 
-## Next steps for you
+## Make money (actual steps)
 
-1. Replace affiliate placeholders (`#` buy links) with your Amazon/Newegg/etc. tracked URLs.
-2. Open `/pulse/` and shock the organism. Feed it chaos via a GitHub issue.
-3. Publish new rankings weekly and share on Reddit / short-form video.
+1. Join Amazon Associates and paste your tag into `affiliates.js` → `AMAZON_TAG`.
+2. Share `/posts/ai-junk.html` and `/instead/decide.html` hard on X/Reddit.
+3. Publish a new skip→buy page weekly. Traffic is the business; the HTML is the cash register.

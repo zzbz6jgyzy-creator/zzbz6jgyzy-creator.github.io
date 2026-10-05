@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upgrade or Skip — SkipThisTech</title>
+    <meta
+      name="description"
+      content="Answer 3 questions. Get one clear buy — or permission to buy nothing. Affiliate-powered decision tool."
+    />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="instead.css" />
+  </head>
+  <body class="instead-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">ST</span>
+          SkipThisTech
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Instead</a>
+          <a href="../rankings.html">Rankings</a>
+          <a class="nav-cta" href="../index.html#newsletter">Get the weekly skip</a>
+        </nav>
+      </header>
+
+      <main id="main" class="decide-shell">
+        <section class="page-hero" style="width: 100%; margin: 0; padding-left: 0; padding-right: 0">
+          <p class="hero-kicker reveal"><span></span> Money tool</p>
+          <h1 class="reveal delay-1">Upgrade or skip?</h1>
+          <p class="reveal delay-2">
+            Three questions. One recommendation. If the answer is “buy nothing,” we say that — and you still leave
+            with clarity.
+          </p>
+          <p class="tag-pill reveal delay-3" data-aff-tag-status></p>
+        </section>
+
+        <div class="decide-card reveal" id="q1">
+          <h2>1. What’s tempting you?</h2>
+          <div class="decide-options" data-step="temptation">
+            <button type="button" data-value="ai-gadget">A new AI gadget / pin / wearable</button>
+            <button type="button" data-value="earbuds">“Pro” earbuds / headphones upgrade</button>
+            <button type="button" data-value="charger-mess">Another charger / cable / brick</button>
+            <button type="button" data-value="desk-flex">Standing desk / RGB desk flex</button>
+          </div>
+        </div>
+
+        <div class="decide-card reveal" id="q2" hidden>
+          <h2>2. What’s actually broken?</h2>
+          <div class="decide-options" data-step="pain">
+            <button type="button" data-value="boredom">I’m bored / FOMO</button>
+            <button type="button" data-value="friction">Daily friction (cables, neck, battery)</button>
+            <button type="button" data-value="broken">Something I own is dying</button>
+          </div>
+        </div>
+
+        <div class="decide-card reveal" id="q3" hidden>
+          <h2>3. Budget vibe?</h2>
+          <div class="decide-options" data-step="budget">
+            <button type="button" data-value="low">Under $40 — fix it cheap</button>
+            <button type="button" data-value="mid">$40–$120 — one solid upgrade</button>
+            <button type="button" data-value="high">I’ll spend if it’s clearly better</button>
+          </div>
+        </div>
+
+        <div class="decide-result" id="result" aria-live="polite">
+          <h3 id="result-title"></h3>
+          <p id="result-copy"></p>
+          <a class="button button-primary" id="result-link" href="#" data-aff-query="USB-C GaN charger 65W"
+            >Buy the instead →</a
+          >
+          <p class="form-note" style="margin-top: 0.85rem">
+            Affiliate disclosure: we may earn from qualifying buys. Rankings aren’t for sale.
+          </p>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span data-year></span> SkipThisTech</p>
+        <p><a href="index.html">Instead hub</a> · <a href="../about.html">Disclosures</a></p>
+      </footer>
+    </div>
+    <script src="../script.js"></script>
+    <script src="../affiliates.js"></script>
+    <script src="decide.js"></script>
+  </body>
+</html>
