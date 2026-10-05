@@ -18,9 +18,10 @@ Open `http://localhost:4173`.
 - `rankings.html` — all rankings
 - `about.html` — project + affiliate disclosure
 - `posts/` — sample articles + quiz
+- `newsletter/` — The Weekly Skip archive + Beehiiv-style sample Issue #01
 
 ## Next steps for you
 
 1. Replace affiliate placeholders (`#` buy links) with your Amazon/Newegg/etc. tracked URLs.
-2. Wire the newsletter form to beehiiv or MailerLite.
+2. Create a Beehiiv publication named **The Weekly Skip**, paste `newsletter/issue-01.html` content, and swap the homepage form for Beehiiv’s embed.
 3. Publish new rankings weekly and share on Reddit / short-form video.
