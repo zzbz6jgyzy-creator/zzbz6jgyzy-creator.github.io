@@ -19,9 +19,10 @@ Open `http://localhost:4173`.
 - `about.html` — project + affiliate disclosure
 - `posts/` — sample articles + quiz
 - `newsletter/` — The Weekly Skip archive + Beehiiv-style sample Issue #01
+- `pulse/` — live GitHub-powered “organism” of this repo (commits, ghosts, issues)
 
 ## Next steps for you
 
 1. Replace affiliate placeholders (`#` buy links) with your Amazon/Newegg/etc. tracked URLs.
-2. Create a Beehiiv publication named **The Weekly Skip**, paste `newsletter/issue-01.html` content, and swap the homepage form for Beehiiv’s embed.
+2. Open `/pulse/` and shock the organism. Feed it chaos via a GitHub issue.
 3. Publish new rankings weekly and share on Reddit / short-form video.

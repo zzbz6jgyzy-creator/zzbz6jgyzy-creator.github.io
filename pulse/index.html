@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PULSE — this GitHub repo is alive</title>
+    <meta
+      name="description"
+      content="A living visualization of zzbz6jgyzy-creator.github.io — commits as cells, deleted experiments as ghosts, issues as nerves."
+    />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="pulse.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <canvas id="field" aria-hidden="true"></canvas>
+
+    <header class="top">
+      <a class="back" href="../index.html">← SkipThisTech</a>
+      <p class="live"><span class="dot"></span> LIVE FROM GITHUB API</p>
+    </header>
+
+    <main class="stage">
+      <p class="kicker">zzbz6jgyzy-creator.github.io</p>
+      <h1>PULSE</h1>
+      <p class="lead">
+        This repo keeps mutating. Commits become cells. Deleted apps haunt the edge.
+        You’re looking at the organism GitHub Pages accidentally grew.
+      </p>
+
+      <div class="meters" aria-live="polite">
+        <div class="meter">
+          <span class="meter-label">Commits read</span>
+          <strong id="commit-count">—</strong>
+        </div>
+        <div class="meter">
+          <span class="meter-label">Open issues</span>
+          <strong id="issue-count">—</strong>
+        </div>
+        <div class="meter">
+          <span class="meter-label">BPM</span>
+          <strong id="bpm">—</strong>
+        </div>
+        <div class="meter">
+          <span class="meter-label">Last mutation</span>
+          <strong id="last-mut" class="mono">—</strong>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn primary" id="shock">Shock the organism</button>
+        <a
+          class="btn ghost"
+          href="https://github.com/zzbz6jgyzy-creator/zzbz6jgyzy-creator.github.io/issues/new?title=Chaos%20request%3A%20&body=Tell%20the%20agent%20what%20crazy%20thing%20to%20grow%20next."
+          target="_blank"
+          rel="noopener"
+          >Feed it an issue →</a
+        >
+      </div>
+    </main>
+
+    <section class="panel commits-panel" aria-labelledby="commits-h">
+      <div class="panel-head">
+        <h2 id="commits-h">Nerve log</h2>
+        <p>Latest commits, streamed from the public GitHub API.</p>
+      </div>
+      <ol class="commit-list" id="commit-list"></ol>
+    </section>
+
+    <section class="panel ghosts-panel" aria-labelledby="ghosts-h">
+      <div class="panel-head">
+        <h2 id="ghosts-h">Ghosts of deleted experiments</h2>
+        <p>Things this repo grew, then ate. Still in the git fossil record.</p>
+      </div>
+      <div class="ghosts" id="ghosts"></div>
+    </section>
+
+    <section class="panel issues-panel" aria-labelledby="issues-h">
+      <div class="panel-head">
+        <h2 id="issues-h">Nerves (issues)</h2>
+        <p id="issues-empty">No open issues — the organism is restless and quiet.</p>
+      </div>
+      <ul class="issue-list" id="issue-list"></ul>
+    </section>
+
+    <footer class="foot">
+      <p>No backend. No MailerLite. Just GitHub Pages + public API + whatever you merge next.</p>
+      <p>
+        <a href="https://github.com/zzbz6jgyzy-creator/zzbz6jgyzy-creator.github.io" target="_blank" rel="noopener"
+          >View source on GitHub</a
+        >
+        ·
+        <a href="../index.html">Back to SkipThisTech</a>
+      </p>
+    </footer>
+
+    <script src="pulse.js"></script>
+  </body>
+</html>
