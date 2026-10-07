@@ -89,20 +89,21 @@ body[data-desk="grok"] .pointer-glow {
   position: fixed;
   top: 0;
   left: 0;
-  height: 2px;
+  height: 3px;
   width: 100%;
   z-index: 40;
   transform-origin: left center;
   transform: scaleX(0);
   background: linear-gradient(90deg, var(--tesla), var(--amber), var(--plasma));
+  box-shadow: 0 0 12px rgba(209, 38, 46, 0.55);
 }
 
 .launch-streak {
   position: fixed;
   top: -10vh;
   width: 2px;
-  height: 18vh;
-  z-index: 1;
+  height: 22vh;
+  z-index: 5;
   pointer-events: none;
   background: linear-gradient(180deg, transparent, #fff, var(--amber));
   filter: blur(0.4px);

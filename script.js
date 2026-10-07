@@ -261,6 +261,6 @@
       setTimeout(() => streak.remove(), 2800);
     };
     fire();
-    setInterval(fire, 9000);
+    setInterval(fire, 4200);
   }
 })();
