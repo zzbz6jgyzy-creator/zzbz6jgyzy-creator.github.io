@@ -35,6 +35,85 @@ body {
   line-height: 1.65;
   background: var(--void);
   overflow-x: hidden;
+  opacity: 0;
+  animation: boot-fade 0.8s ease forwards;
+}
+
+body.is-booted {
+  opacity: 1;
+}
+
+@keyframes boot-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.pointer-glow {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  margin: -140px 0 0 -140px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(209, 38, 46, 0.16), transparent 68%);
+  transition: opacity 0.4s ease;
+}
+
+.pointer-glow.is-on {
+  opacity: 1;
+}
+
+body[data-desk="spacex"] .pointer-glow {
+  background: radial-gradient(circle, rgba(110, 182, 255, 0.16), transparent 68%);
+}
+
+body[data-desk="grok"] .pointer-glow {
+  background: radial-gradient(circle, rgba(227, 139, 58, 0.16), transparent 68%);
+}
+
+.scroll-beam {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  z-index: 40;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--tesla), var(--amber), var(--plasma));
+}
+
+.launch-streak {
+  position: fixed;
+  top: -10vh;
+  width: 2px;
+  height: 18vh;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, #fff, var(--amber));
+  filter: blur(0.4px);
+  animation: streak-fall 2s linear forwards;
+}
+
+@keyframes streak-fall {
+  to {
+    transform: translate3d(-40px, 120vh, 0) rotate(18deg);
+    opacity: 0;
+  }
 }
 
 img {
@@ -81,7 +160,7 @@ a:hover {
 
 .site-shell {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .topbar {
@@ -215,11 +294,107 @@ a:hover {
 
 .hero-plate {
   position: absolute;
-  inset: 0;
+  inset: -6%;
   background:
     linear-gradient(180deg, rgba(7, 8, 12, 0.18) 0%, rgba(7, 8, 12, 0.28) 42%, rgba(7, 8, 12, 0.92) 100%),
     linear-gradient(90deg, rgba(7, 8, 12, 0.55) 0%, rgba(7, 8, 12, 0.1) 48%, rgba(7, 8, 12, 0.45) 100%),
     url("assets/banner.jpg") center / cover no-repeat;
+  transform: scale(1.08);
+  will-change: transform;
+}
+
+.orbit {
+  position: absolute;
+  right: 8%;
+  top: 18%;
+  width: min(38vw, 340px);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(110, 182, 255, 0.28);
+  border-radius: 50%;
+  animation: orbit-spin 22s linear infinite;
+}
+
+.orbit-ring.alt {
+  inset: 12%;
+  border-color: rgba(227, 139, 58, 0.35);
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+
+.orbit-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px;
+  border-radius: 50%;
+  background: var(--tesla);
+  box-shadow: 0 0 16px var(--tesla);
+  animation: orbit-travel 8s linear infinite;
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-travel {
+  from {
+    transform: rotate(0deg) translateX(min(19vw, 170px)) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(min(19vw, 170px)) rotate(-360deg);
+  }
+}
+
+.word-tesla,
+.word-spacex,
+.word-grok {
+  font-style: normal;
+}
+
+.word-tesla {
+  color: #ff6b70;
+  text-shadow: 0 0 24px rgba(209, 38, 46, 0.35);
+  animation: glow-tesla 3.4s ease-in-out infinite;
+}
+
+.word-spacex {
+  color: #d7e7ff;
+  text-shadow: 0 0 24px rgba(110, 182, 255, 0.3);
+  animation: glow-spacex 3.8s ease-in-out infinite 0.4s;
+}
+
+.word-grok {
+  color: #f3c48a;
+  text-shadow: 0 0 24px rgba(227, 139, 58, 0.3);
+  animation: glow-grok 4.2s ease-in-out infinite 0.8s;
+}
+
+@keyframes glow-tesla {
+  50% {
+    text-shadow: 0 0 36px rgba(209, 38, 46, 0.7);
+  }
+}
+
+@keyframes glow-spacex {
+  50% {
+    text-shadow: 0 0 36px rgba(110, 182, 255, 0.65);
+  }
+}
+
+@keyframes glow-grok {
+  50% {
+    text-shadow: 0 0 36px rgba(227, 139, 58, 0.65);
+  }
 }
 
 .hero-plate::after {
@@ -273,9 +448,8 @@ a:hover {
   letter-spacing: -0.05em;
 }
 
-.hero h1 em {
-  font-style: normal;
-  color: var(--steel);
+.hero h1 span {
+  display: block;
 }
 
 .hero-lead {
@@ -314,6 +488,23 @@ a:hover {
 .button-primary {
   background: var(--tesla);
   color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -40%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  animation: button-sheen 2.8s ease-in-out infinite;
+}
+
+@keyframes button-sheen {
+  to {
+    left: 140%;
+  }
 }
 
 .button-primary:hover {
@@ -430,6 +621,14 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  perspective: 900px;
+}
+
+.desk,
+.story-card,
+.lead-card {
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .desk {
@@ -446,6 +645,25 @@ a:hover {
     var(--desk-image) center / cover no-repeat;
   overflow: hidden;
   transition: transform 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+
+.desk::after,
+.story-card::after,
+.lead-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 20%), rgba(255, 255, 255, 0.14), transparent 42%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.desk:hover::after,
+.story-card:hover::after,
+.lead-card:hover::after {
+  opacity: 1;
 }
 
 .desk:hover {
@@ -529,6 +747,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  perspective: 900px;
 }
 
 .story-card {
@@ -723,13 +942,15 @@ a:hover {
 
 .reveal {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(22px) scale(0.98);
+  filter: blur(8px);
+  transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+  filter: none;
 }
 
 .delay-1 {
@@ -796,11 +1017,26 @@ a:hover {
     scroll-behavior: auto;
   }
 
+  body,
   .marquee-track,
-  .reveal {
-    animation: none;
+  .reveal,
+  .word-tesla,
+  .word-spacex,
+  .word-grok,
+  .orbit-ring,
+  .orbit-dot,
+  .launch-streak,
+  .hero-kicker span {
+    animation: none !important;
     opacity: 1;
     transform: none;
     transition: none;
+    filter: none;
+  }
+
+  #sky,
+  .pointer-glow,
+  .launch-streak {
+    display: none;
   }
 }

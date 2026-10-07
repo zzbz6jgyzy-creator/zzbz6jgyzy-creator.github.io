@@ -1,6 +1,6 @@
 # ALJR — Alex · Tesla, SpaceX & Grok
 
-The longer desk for [@AlJR86](https://x.com/AlJR86). Tesla owner and shareholder. News, numbers and launch footage. Not affiliated with Tesla, SpaceX or xAI.
+Tesla, SpaceX and Grok desk for [@AlJR86](https://x.com/AlJR86). News, numbers and launch footage. Not affiliated.
 
 Static site for GitHub Pages.
 
