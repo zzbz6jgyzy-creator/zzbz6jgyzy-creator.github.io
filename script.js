@@ -10,25 +10,22 @@
           }
         });
       },
-      { threshold: 0.16 }
+      { threshold: 0.14 }
     );
     reveals.forEach((el) => observer.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add("is-visible"));
   }
 
-  const form = document.querySelector("[data-newsletter-form]");
-  if (form) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const success = form.querySelector(".form-success");
-      const email = form.querySelector('input[type="email"]');
-      if (!email || !email.value.trim()) return;
-      form.reset();
-      if (success) success.classList.add("is-visible");
-    });
-  }
-
   const year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
+
+  const toggle = document.querySelector("[data-nav-toggle]");
+  const nav = document.querySelector("[data-nav]");
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+  }
 })();
