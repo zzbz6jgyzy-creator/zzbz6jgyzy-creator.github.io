@@ -89,13 +89,13 @@ body[data-desk="grok"] .pointer-glow {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
+  height: 5px;
   width: 100%;
   z-index: 40;
   transform-origin: left center;
   transform: scaleX(0);
   background: linear-gradient(90deg, var(--tesla), var(--amber), var(--plasma));
-  box-shadow: 0 0 12px rgba(209, 38, 46, 0.55);
+  box-shadow: 0 0 18px 2px rgba(209, 38, 46, 0.75);
 }
 
 .launch-streak {
