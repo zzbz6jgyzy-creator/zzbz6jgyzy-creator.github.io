@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TCMV Meetings — FSD Supervised</title>
+    <meta
+      name="description"
+      content="What the EU Technical Committee on Motor Vehicles discussed about Tesla FSD Supervised, by meeting number and date."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">AL</span>
+          <span class="brand-text">ALJR<span class="brand-dot">86</span></span>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="tesla.html">Tesla</a>
+          <a href="fsd-europe.html">FSD Europe</a>
+          <a href="tcmv.html" aria-current="page">TCMV</a>
+          <a href="spacex.html">SpaceX</a>
+          <a href="grok.html">Grok</a>
+          <a class="nav-cta" href="https://x.com/AlJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="page-hero">
+          <p class="eyebrow reveal">Tesla · EU committee</p>
+          <h1 class="reveal delay-1">TCMV meetings</h1>
+          <p class="reveal delay-2">
+            What the Technical Committee on Motor Vehicles put on the agenda for the
+            Dutch Art. 39 request — by meeting number and date. No EU-wide vote yet.
+          </p>
+          <p class="meta reveal delay-3" id="tcmv-updated">Updated</p>
+        </section>
+
+        <section class="section" style="padding-top: 1.4rem">
+          <div class="section-head">
+            <h2 class="reveal">Snapshot</h2>
+            <p class="reveal delay-1">How the file has moved through Brussels.</p>
+          </div>
+          <div class="stats">
+            <div class="stat reveal">
+              <b id="tcmv-held-count">0</b>
+              <span>Meetings with FSD on the agenda</span>
+            </div>
+            <div class="stat reveal delay-1">
+              <b id="tcmv-vote-count">0</b>
+              <span>Votes taken</span>
+            </div>
+            <div class="stat reveal delay-2">
+              <b id="tcmv-upcoming-count">0</b>
+              <span>Upcoming windows</span>
+            </div>
+            <div class="stat reveal delay-3">
+              <b>15 / 65%</b>
+              <span>States / population needed to pass</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2 class="reveal">By meeting</h2>
+            <p class="reveal delay-1" id="tcmv-showing">Meetings</p>
+          </div>
+          <div class="fsd-filters reveal" role="group" aria-label="Filter meetings">
+            <button type="button" class="fsd-filter" data-tcmv-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="fsd-filter" data-tcmv-filter="briefing" aria-pressed="false">Briefing</button>
+            <button type="button" class="fsd-filter" data-tcmv-filter="discussion" aria-pressed="false">Discussion</button>
+            <button type="button" class="fsd-filter" data-tcmv-filter="upcoming" aria-pressed="false">Upcoming</button>
+          </div>
+          <div class="tcmv-list" id="tcmv-list"></div>
+        </section>
+
+        <section class="section">
+          <div class="panel reveal">
+            <p class="eyebrow">How to read this</p>
+            <p style="margin: 0 0 0.75rem; color: var(--ink-soft)">
+              TCMV is the EU comitology committee that would need a qualified majority
+              before the Commission can issue an implementing act recognising the Dutch
+              Art. 39 approval EU-wide. National recognition by individual countries
+              (see the <a href="fsd-europe.html">FSD Europe tracker</a>) can proceed
+              without that vote.
+            </p>
+            <p id="tcmv-note" style="margin: 0; color: var(--mute); font-size: 0.9rem"></p>
+            <p style="margin: 1rem 0 0">
+              <a class="button button-ghost" href="fsd-europe.html">Country tracker</a>
+              <a class="button button-ghost" href="tesla.html">Tesla desk</a>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span data-year></span> @AlJR86. Independent TCMV log. Not affiliated with Tesla or the European Commission.</p>
+        <p>
+          <a href="fsd-europe.html">FSD Europe</a>
+          ·
+          <a href="tcmv.html">TCMV</a>
+          ·
+          <a href="https://x.com/AlJR86">X</a>
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+    <script src="tcmv-data.js"></script>
+    <script src="tcmv.js"></script>
+  </body>
+</html>
