@@ -523,6 +523,7 @@ a.stat:hover {
   object-fit: cover;
   display: block;
   background: #000;
+  pointer-events: none;
 }
 
 .lead-card video,
