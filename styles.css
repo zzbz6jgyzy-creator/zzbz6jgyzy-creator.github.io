@@ -513,8 +513,141 @@ a.stat:hover {
   color: inherit;
 }
 
-.story-card img {
+.story-card img,
+.story-card video,
+.story-media video,
+.lead-card video,
+.lead-media video {
   height: 160px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.lead-card video,
+.lead-media video {
+  height: 100%;
+  min-height: 220px;
+}
+
+.story-card-video,
+.lead-card-video {
+  position: relative;
+}
+
+.story-card .media-play,
+.lead-card .media-play {
+  position: absolute;
+  left: 0.7rem;
+  top: 0.7rem;
+  z-index: 1;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(12, 13, 16, 0.72);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.story-media {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  background: #000;
+}
+
+.lead-media {
+  position: relative;
+  min-height: 220px;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.story-card:hover .story-media video,
+.lead-card:hover .lead-media video {
+  filter: brightness(1.05);
+}
+
+.video-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.video-card {
+  scroll-margin-top: 5.5rem;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+}
+
+.video-card-media {
+  background: #000;
+  min-height: 220px;
+}
+
+.video-card-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  background: #000;
+}
+
+.video-card-copy {
+  padding: 1.2rem 1.25rem;
+  display: grid;
+  align-content: center;
+  gap: 0.45rem;
+}
+
+.video-card-copy h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.video-card-copy p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+}
+
+.video-card-links {
+  margin-top: 0.35rem !important;
+  font-size: 0.88rem !important;
+}
+
+.video-card-links a {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.video-card-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+  .video-card {
+    grid-template-columns: 1fr;
+  }
+
+  .video-card-media video,
+  .video-card-media {
+    min-height: 200px;
+  }
 }
 
 .tag {
@@ -732,8 +865,11 @@ a.stat:hover {
     border-bottom: none;
   }
 
-  .lead-card img {
+  .lead-card img,
+  .lead-media,
+  .lead-media video {
     height: 200px;
+    min-height: 200px;
   }
 }
 
