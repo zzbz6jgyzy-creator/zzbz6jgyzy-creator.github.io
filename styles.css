@@ -961,6 +961,157 @@ a.stat:hover {
   }
 }
 
+.tcmv-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.tcmv-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: 1.25rem 1.2rem 1.15rem;
+}
+
+.tcmv-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 0.85rem;
+}
+
+.tcmv-card-head h2 {
+  margin: 0.15rem 0 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.tcmv-meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  color: var(--mute);
+  font-size: 0.86rem;
+}
+
+.tcmv-meta time {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.tcmv-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.tcmv-status-briefing {
+  color: #9db7e8;
+  border-color: rgba(157, 183, 232, 0.35);
+  background: rgba(157, 183, 232, 0.08);
+}
+
+.tcmv-status-discussion {
+  color: #e2c48a;
+  border-color: rgba(226, 196, 138, 0.35);
+  background: rgba(226, 196, 138, 0.08);
+}
+
+.tcmv-status-upcoming {
+  color: #c9c9c4;
+  border-color: rgba(201, 201, 196, 0.3);
+}
+
+.tcmv-status-vote {
+  color: #9fd4b0;
+  border-color: rgba(159, 212, 176, 0.35);
+  background: rgba(159, 212, 176, 0.08);
+}
+
+.tcmv-summary {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+}
+
+.tcmv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.tcmv-grid h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.tcmv-grid p,
+.tcmv-grid li {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.tcmv-grid ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.tcmv-slot {
+  margin-top: 0.55rem !important;
+  font-family: var(--font-mono);
+  font-size: 0.78rem !important;
+  color: var(--mute) !important;
+}
+
+.tcmv-details {
+  border-top: 1px solid var(--line);
+  padding-top: 0.7rem;
+  margin-top: 0.55rem;
+}
+
+.tcmv-details summary {
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.tcmv-details ul {
+  margin: 0.55rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.3rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 760px) {
+  .tcmv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tcmv-card-head {
+    flex-direction: column;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
