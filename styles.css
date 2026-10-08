@@ -591,6 +591,7 @@ a.stat:hover {
 }
 
 .video-card-media {
+  position: relative;
   background: #000;
   min-height: 220px;
 }
@@ -602,6 +603,41 @@ a.stat:hover {
   min-height: 220px;
   object-fit: cover;
   background: #000;
+}
+
+.video-play-hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  translate: -50% -50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem 0.45rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(12, 13, 16, 0.78);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.video-play-hint::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 10px;
+  border-color: transparent transparent transparent currentColor;
+}
+
+.video-card-media.is-playing .video-play-hint {
+  opacity: 0;
 }
 
 .video-card-copy {
