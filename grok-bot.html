@@ -42,359 +42,452 @@
       </header>
 
       <main id="main">
-        <article class="article">
-          <p class="eyebrow">Grok · Tutorial</p>
-          <h1>Grok Bot, from first hire to a working crew</h1>
-          <p class="meta">
-            <span>Independent how-to</span>
-            <span>Not affiliated with xAI, SpaceXAI, Cursor or Tesla</span>
+        <section class="page-hero guide-hero">
+          <p class="crumb reveal">
+            <a href="/grok.html">Grok</a>
+            <span aria-hidden="true">/</span>
+            Tutorial
           </p>
+          <h1 class="reveal delay-1">From first hire to a working crew</h1>
+          <p class="reveal delay-2">
+            Named teammates on a cloud computer — not the chat window.
+            One job each. Approval before anything that sends, spends, or moves.
+          </p>
+          <p class="guide-actions reveal delay-3">
+            <a class="button button-primary" href="https://x.ai/bot" target="_blank" rel="noopener noreferrer">Download Grok Bot</a>
+            <a class="button button-ghost" href="https://docs.x.ai/grok-bot/get-started" target="_blank" rel="noopener noreferrer">Official docs</a>
+            <a class="button button-ghost" href="/grok.html">Grok desk</a>
+          </p>
+          <ul class="guide-facts reveal delay-3">
+            <li>
+              <b>Desktop + phone</b>
+              <span>Same roster. One sign-in.</span>
+            </li>
+            <li>
+              <b>Shared computer</b>
+              <span>Not a security boundary.</span>
+            </li>
+            <li>
+              <b>One job each</b>
+              <span>Catch-alls forget the brief.</span>
+            </li>
+            <li>
+              <b>Ask first</b>
+              <span>Send, spend, or move.</span>
+            </li>
+          </ul>
+        </section>
 
-          <p>
-            Grok in the chat window answers a question. Grok Bot is the other
-            product: named teammates that keep a job, a memory, and a cloud
-            computer, and that can keep working after you close the laptop.
-            Elon called hiring the first one “like hiring an amazing helper that
-            learns your needs.” That only lands if the bot has
-            <em>one job</em>, not a vague “be useful.”
-          </p>
-          <p>
-            This is the all-round setup. Official steps come from
-            <a href="https://docs.x.ai/grok-bot/get-started" target="_blank" rel="noopener noreferrer">SpaceXAI’s Grok Bot docs</a>.
-            The judgement — what to hire first, what to keep behind approval —
-            is the part people skip.
-          </p>
+        <article class="article guide">
+          <figure class="guide-lead">
+            <img src="/assets/grok-bots.jpg" alt="A Grok Bot roster with named jobs" />
+            <figcaption>Named jobs. That is the whole trick.</figcaption>
+          </figure>
 
           <nav class="toc" aria-label="On this page">
             <p>On this page</p>
             <ol>
-              <li><a href="#what">What it is</a></li>
-              <li><a href="#need">What you need</a></li>
-              <li><a href="#install">Install</a></li>
-              <li><a href="#signin">Sign in</a></li>
-              <li><a href="#create">Create a Bot</a></li>
-              <li><a href="#task">A first task that actually finishes</a></li>
-              <li><a href="#tools">Tools, takeovers, plugins</a></li>
-              <li><a href="#skills">Skills vs routines</a></li>
-              <li><a href="#crew">More than one Bot</a></li>
-              <li><a href="#x">Work from X</a></li>
-              <li><a href="#safety">Approvals and the shared computer</a></li>
-              <li><a href="#tesla">If you want it on a Tesla</a></li>
+              <li><a href="#what"><span>01</span>What it is</a></li>
+              <li><a href="#need"><span>02</span>What you need</a></li>
+              <li><a href="#install"><span>03</span>Install and sign in</a></li>
+              <li><a href="#create"><span>04</span>Create a Bot</a></li>
+              <li><a href="#task"><span>05</span>A first task</a></li>
+              <li><a href="#tools"><span>06</span>Tools and takeovers</a></li>
+              <li><a href="#skills"><span>07</span>Skills vs routines</a></li>
+              <li><a href="#crew"><span>08</span>More than one Bot</a></li>
+              <li><a href="#x"><span>09</span>Work from X</a></li>
+              <li><a href="#safety"><span>10</span>Approvals</a></li>
+              <li><a href="#tesla"><span>11</span>Tesla</a></li>
+              <li><a href="#worth"><span>12</span>When it is worth it</a></li>
             </ol>
           </nav>
 
-          <h2 id="what">What it is</h2>
-          <p>
-            Each Bot has a name, a job description, its own conversation, and
-            context that compounds. All of your Bots share one persistent cloud
-            computer: browser, filesystem, terminal. They can use connectors
-            where those exist, and they can drive a website like a person when
-            they do not. Several Bots can run in parallel. One Bot runs one
-            computer-use task on its screen at a time.
-          </p>
-          <p>
-            That is the difference people miss. Chat Grok resets the useful
-            part of the relationship every session. A Bot is supposed to still
-            know the job on Thursday.
-          </p>
-          <p>
-            It is also not Muse, and it is not a flowchart builder. Setup is a
-            message: create the Bot, describe the job, grant access when it
-            asks. The same Bots sync on desktop and on the phone.
-          </p>
-          <div class="callout">
+          <section class="guide-block" id="what">
+            <p class="guide-kicker">01 — Product</p>
+            <h2>What it is</h2>
+            <div class="pair-grid">
+              <article class="pair-card">
+                <p class="guide-kicker">Chat Grok</p>
+                <h3>Answers a question</h3>
+                <p>Useful for a single turn. The relationship resets every session.</p>
+              </article>
+              <article class="pair-card pair-card-on">
+                <p class="guide-kicker">Grok Bot</p>
+                <h3>Keeps the job</h3>
+                <p>A named teammate with memory and a cloud computer. Still working after you close the laptop.</p>
+              </article>
+            </div>
+            <div class="os-grid">
+              <article class="os-card">
+                <h3>Own conversation</h3>
+                <p>Name, description, avatar, and context that compounds.</p>
+              </article>
+              <article class="os-card">
+                <h3>Shared computer</h3>
+                <p>Browser, files, terminal — one machine for every Bot on the account.</p>
+              </article>
+              <article class="os-card">
+                <h3>Parallel work</h3>
+                <p>Several Bots can run at once. One computer-use task per Bot at a time.</p>
+              </article>
+              <article class="os-card">
+                <h3>Same roster</h3>
+                <p>Desktop and phone stay in sync. It is not a flowchart builder, and it is not Muse.</p>
+              </article>
+            </div>
+            <div class="callout">
+              <p>
+                <strong>The computer is per account, not per Bot.</strong>
+                Files, logins and browser sessions are shared. A second Bot is not a security boundary.
+              </p>
+            </div>
+          </section>
+
+          <section class="guide-block" id="need">
+            <p class="guide-kicker">02 — Access</p>
+            <h2>What you need</h2>
+            <p>There is usually no separate Grok Bot subscription. Access rides on a plan you already have.</p>
+            <div class="os-grid">
+              <article class="os-card">
+                <h3>Cursor</h3>
+                <p>Every paid individual Cursor plan, or Cursor Teams.</p>
+              </article>
+              <article class="os-card">
+                <h3>SuperGrok</h3>
+                <p>Plus / Heavy / SuperGrok linked to Cursor also counts.</p>
+              </article>
+              <article class="os-card">
+                <h3>Weekly usage</h3>
+                <p>Resets each week. If you have both, it uses whichever has more left.</p>
+              </article>
+              <article class="os-card">
+                <h3>Cloud storage</h3>
+                <p>Legacy Privacy Mode has to be off before the app will start.</p>
+              </article>
+            </div>
             <p>
-              <strong>The computer is per account, not per Bot.</strong>
-              Files, logins and browser sessions are shared across every Bot
-              you run. Do not treat a second Bot as a security boundary.
+              Eligible accounts can add on-demand usage. The
+              <a href="https://docs.x.ai/grok-bot/faq" target="_blank" rel="noopener noreferrer">FAQ billing matrix</a>
+              is the live source — it moves.
+            </p>
+          </section>
+
+          <section class="guide-block" id="install">
+            <p class="guide-kicker">03 — Setup</p>
+            <h2>Install and sign in</h2>
+            <p>
+              Download from
+              <a href="https://x.ai/bot" target="_blank" rel="noopener noreferrer">x.ai/bot</a>.
+              Desktop is the full product. Mobile is the same Bots, not a second roster.
+              The app updates itself — Settings → Updates if you want to force it.
+            </p>
+            <div class="os-grid">
+              <article class="os-card">
+                <h3>macOS</h3>
+                <p>Apple silicon or Intel. Drag to Applications. Chip in About This Mac means silicon; Processor means Intel.</p>
+              </article>
+              <article class="os-card">
+                <h3>Windows</h3>
+                <p>x64 or Arm64 installer, then Start menu. Check Settings → System → About → System type.</p>
+              </article>
+              <article class="os-card">
+                <h3>Linux</h3>
+                <p><code>.deb</code>, <code>.rpm</code> or AppImage. <code>uname -m</code>: x86_64 is x64, aarch64 is Arm64.</p>
+              </article>
+              <article class="os-card">
+                <h3>Phone</h3>
+                <p>iPhone / iPad on iOS 18+. Android 9+. Same signed-in Bots as the desktop app.</p>
+              </article>
+            </div>
+            <ol class="step-list">
+              <li><span class="step-n">01</span><span>Sign in on the welcome screen. Later: Settings → Sign In with Cursor.</span></li>
+              <li><span class="step-n">02</span><span>Finish in the browser window, then return to the app.</span></li>
+              <li><span class="step-n">03</span><span>If access is SuperGrok, link it. Desktop: Settings → Usage &amp; Billing. Phone: Link Grok Account, then refresh status.</span></li>
+              <li><span class="step-n">04</span><span>First launch asks which tools you use. That only shapes teammate suggestions — it does not connect Gmail or Slack.</span></li>
+            </ol>
+            <p>Grok Bot uses your Cursor account. Work SSO is the normal organisation sign-in.</p>
+          </section>
+
+          <section class="guide-block" id="create">
+            <p class="guide-kicker">04 — Hire</p>
+            <h2>Create a Bot</h2>
+            <p>
+              Focused Bots beat one catch-all. Split when the work has a distinct goal,
+              toolset, working style, approval line, or schedule.
+            </p>
+            <ol class="step-list">
+              <li><span class="step-n">01</span><span>New in the sidebar, or <code>Cmd/Ctrl+N</code>.</span></li>
+              <li><span class="step-n">02</span><span>Create new Bot — or type a name and choose Create “name” Bot.</span></li>
+              <li><span class="step-n">03</span><span>Bot menu → Edit Profile: name, label, description, avatar.</span></li>
+              <li><span class="step-n">04</span><span>Give it a concrete first task. Do not start with “what can you do?”</span></li>
+            </ol>
+            <div class="pair-grid">
+              <article class="pair-card">
+                <h3>Description</h3>
+                <p>Standing rules. “Never send external messages without approval.”</p>
+              </article>
+              <article class="pair-card">
+                <h3>Message</h3>
+                <p>Today’s work. “Draft follow-ups for these twelve accounts.”</p>
+              </article>
+            </div>
+            <div class="prompt">
+              <p class="prompt-label">A description that works</p>
+              <pre>Own the weekly account-health review. Pull product usage and support signals, flag evidence of churn or expansion, and produce a linked watch list. Never contact a customer or change an account without approval.</pre>
+            </div>
+            <p>
+              Pin what you use. Hide what you do not — hiding does not pause routines.
+              Duplicate a role for a new region. Delete only if you are done: conversation
+              and routines go; shared-computer files and logins can remain.
+            </p>
+          </section>
+
+          <section class="guide-block" id="task">
+            <p class="guide-kicker">05 — Brief</p>
+            <h2>A first task that actually finishes</h2>
+            <p>A strong request has five parts. Skip any one and you get a chat, not a handoff.</p>
+            <div class="part-grid">
+              <article class="part-card">
+                <h3>01 Outcome</h3>
+                <p>What is finished?</p>
+              </article>
+              <article class="part-card">
+                <h3>02 Sources</h3>
+                <p>Apps, files, threads.</p>
+              </article>
+              <article class="part-card">
+                <h3>03 Constraints</h3>
+                <p>What it must not do.</p>
+              </article>
+              <article class="part-card">
+                <h3>04 Deliverable</h3>
+                <p>What it returns.</p>
+              </article>
+              <article class="part-card">
+                <h3>05 Review</h3>
+                <p>When it stops.</p>
+              </article>
+            </div>
+            <div class="prompt">
+              <p class="prompt-label">Five minutes, no login</p>
+              <pre>Summarize this document in five bullets. List every date, decision, and open question in a separate section. Cite the page or section for each item. Do not change the source file.</pre>
+            </div>
+            <div class="prompt">
+              <p class="prompt-label">Then a real tool, still read-only</p>
+              <pre>Open our analytics dashboard and compare new-user activation for this week with the previous four weeks. Identify the largest step-level change and draft a short investigation plan with links to the relevant charts. Do not change any dashboards. Ask me to sign in if needed.</pre>
+            </div>
+            <p>
+              Dictate with <code>Cmd/Ctrl+D</code>, or Start dictation on the phone.
+              After the first result, name the preference: “Five bullets, source links
+              inline, final section called Decisions needed.” That is how it gets smarter.
+            </p>
+            <p>
+              Official use-cases are the same shape: research, draft, stop for review.
+              Add send / change / publish later, behind approval.
+            </p>
+          </section>
+
+          <section class="guide-block" id="tools">
+            <p class="guide-kicker">06 — Computer</p>
+            <h2>Tools and takeovers</h2>
+            <p>
+              A login, CAPTCHA, passkey or two-factor prompt should hand the computer
+              to you. The Bot does not invent a bypass.
+            </p>
+            <ol class="step-list">
+              <li><span class="step-n">01</span><span>Open Agent Computer from the conversation.</span></li>
+              <li><span class="step-n">02</span><span>Take over. Enter the password, passkey, 2FA or CAPTCHA yourself.</span></li>
+              <li><span class="step-n">03</span><span>Give control back. That session lives on the shared computer.</span></li>
+            </ol>
+            <div class="callout">
+              <p>
+                Marketplace plugins are more reliable than driving a site by hand —
+                use a connector when one exists. If a site blocks automation or expires
+                the session, that is normal. You finish the human step.
+              </p>
+            </div>
+          </section>
+
+          <section class="guide-block" id="skills">
+            <p class="guide-kicker">07 — Repeat</p>
+            <h2>Skills vs routines</h2>
+            <div class="pair-grid">
+              <article class="pair-card">
+                <h3>Skill</h3>
+                <p>How to do the task. Walk it through once, or record Teach a task (up to ten minutes) and review the draft.</p>
+              </article>
+              <article class="pair-card">
+                <h3>Routine</h3>
+                <p>When to run it — on a schedule, or after an event. Only after the skill works on a second input.</p>
+              </article>
+            </div>
+            <ol class="step-list">
+              <li><span class="step-n">01</span><span>Job, sources, format and boundaries in the description.</span></li>
+              <li><span class="step-n">02</span><span>One real task with a safe scope. Correct until it is reviewable.</span></li>
+              <li><span class="step-n">03</span><span>Save as a skill. Test on a second input.</span></li>
+              <li><span class="step-n">04</span><span>Create a routine only when retries and failures are defined. Keep send/change behind approval.</span></li>
+            </ol>
+          </section>
+
+          <section class="guide-block" id="crew">
+            <p class="guide-kicker">08 — Roster</p>
+            <h2>More than one Bot</h2>
+            <div class="os-grid">
+              <article class="os-card">
+                <h3>One outcome</h3>
+                <p>Each Bot owns an end-to-end job. Do not make yourself the router.</p>
+              </article>
+              <article class="os-card">
+                <h3>Add specialists</h3>
+                <p>Only when the role is stable — a distinct goal, toolset, or schedule.</p>
+              </article>
+              <article class="os-card">
+                <h3>Group chat</h3>
+                <p>Use it when the handoff itself needs to be visible.</p>
+              </article>
+              <article class="os-card">
+                <h3>Ask before spawning</h3>
+                <p>Conversations stay per Bot. The computer does not.</p>
+              </article>
+            </div>
+            <div class="callout">
+              <p>
+                Marketplace and share links create a <strong>copy</strong> on your account —
+                not their computer, logins or history. A public link shows the config.
+                Strip keys, internal URLs, anything you would not paste in a public doc.
+                Adding a shared Bot accepts the third-party bot terms.
+              </p>
+            </div>
+          </section>
+
+          <section class="guide-block" id="x">
+            <p class="guide-kicker">09 — X</p>
+            <h2>Work from X</h2>
+            <div class="pair-grid">
+              <article class="pair-card">
+                <h3>Tag @bot</h3>
+                <p>
+                  In a post or a reply.
+                  <a href="https://x.com/bot" target="_blank" rel="noopener noreferrer">@bot</a>
+                  confirms with a short public reply. Needs X connected to Grok, and it is not in every region yet.
+                </p>
+              </article>
+              <article class="pair-card">
+                <h3>Search and monitor</h3>
+                <p>No connector. Product feedback, a breaking story, a weekly beat — the part that keeps running.</p>
+              </article>
+            </div>
+            <figure class="figure-video">
+              <video controls playsinline preload="metadata" poster="/assets/dispatch/grok-bot-x-monitor-poster.jpg">
+                <source src="/assets/dispatch/grok-bot-x-monitor.mp4" type="video/mp4" />
+              </video>
+              <figcaption>
+                X search and monitor.
+                <a class="x-link" href="https://x.com/AlJR86/status/2108184873139581232">Original post on X →</a>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section class="guide-block" id="safety">
+            <p class="guide-kicker">10 — Guardrails</p>
+            <h2>Approvals and the shared computer</h2>
+            <div class="os-grid">
+              <article class="os-card">
+                <h3>Always stop</h3>
+                <p>Passwords, 2FA and CAPTCHAs hand the computer to you.</p>
+              </article>
+              <article class="os-card">
+                <h3>Ask first</h3>
+                <p>Sending, publishing, deleting, purchasing, or changing production.</p>
+              </article>
+              <article class="os-card">
+                <h3>Description first</h3>
+                <p>Standing boundaries live there. Auto-review can enforce some of them.</p>
+              </article>
+              <article class="os-card">
+                <h3>Trust live systems</h3>
+                <p>Memory is a summary, not an authority. Reopen the source for a decision that matters.</p>
+              </article>
+            </div>
+            <p>
+              Training opt-out follows your Cursor privacy settings. Between users,
+              isolation is strict. On your own account, assume every Bot can see the computer.
+            </p>
+            <figure class="figure-video">
+              <video controls playsinline preload="metadata" poster="/assets/dispatch/grok-bot-claude-poster.jpg">
+                <source src="/assets/dispatch/grok-bot-claude.mp4" type="video/mp4" />
+              </video>
+              <figcaption>
+                Claude Opus 5.5, and cloud agents on the Cursor models they have.
+                <a class="x-link" href="https://x.com/AlJR86/status/2107795221790499085">Original post on X →</a>
+              </figcaption>
+            </figure>
+            <p>
+              Lauren Tan at SpaceXAI said the bots run on Claude Opus 5.5 and can spawn
+              cloud agents on whatever Cursor models they have. Repeat the names if a Bot
+              will sit near money, mail, or a car.
+            </p>
+          </section>
+
+          <section class="guide-block" id="tesla">
+            <p class="guide-kicker">11 — Car</p>
+            <h2>If you want it on a Tesla</h2>
+            <p>
+              Vehicle access is a plugin problem, not a prompt trick. Ask the Bot to walk
+              the current Tesla developer flow — that path changes; a frozen screenshot goes stale.
+            </p>
+            <div class="pair-grid">
+              <article class="pair-card">
+                <h3>Grant</h3>
+                <p>State and commands you actually want: climate, battery, lock status. First job is a commute schedule, not a party trick.</p>
+              </article>
+              <article class="pair-card">
+                <h3>Keep behind ask</h3>
+                <p>Unlock, remote start, and anything that moves the car. Sunday check: battery, and whether it needs a plug.</p>
+              </article>
+            </div>
+            <p class="pull">
+              If a bot is allowed near a Tesla, the approval line belongs in the
+              description before the first command, not after the first mistake.
+            </p>
+          </section>
+
+          <section class="guide-block" id="worth">
+            <p class="guide-kicker">12 — Spend</p>
+            <h2>When it is worth it</h2>
+            <div class="pair-grid">
+              <article class="pair-card pair-card-on">
+                <h3>Hire when</h3>
+                <p>A weekly digest, a watchlist, a car that is actually warm, or a research beat that still exists next Tuesday.</p>
+              </article>
+              <article class="pair-card">
+                <h3>Skip when</h3>
+                <p>You open it when you are bored. A Bot with no standing job will not earn the weekly usage.</p>
+              </article>
+            </div>
+          </section>
+
+          <div class="guide-cta">
+            <p class="guide-kicker">Next</p>
+            <h2>Get the app, then hire one job</h2>
+            <p>Start read-only. Name the preference. Add send and change only after the draft is reliable.</p>
+            <p class="guide-actions">
+              <a class="button button-primary" href="https://x.ai/bot" target="_blank" rel="noopener noreferrer">Download Grok Bot</a>
+              <a class="button button-ghost" href="https://docs.x.ai/grok-bot/get-started" target="_blank" rel="noopener noreferrer">Official get-started</a>
+              <a class="button button-ghost" href="/grok.html">Grok desk</a>
+            </p>
+            <p class="guide-links">
+              Docs:
+              <a href="https://docs.x.ai/grok-bot/overview" target="_blank" rel="noopener noreferrer">overview</a>,
+              <a href="https://docs.x.ai/grok-bot/bots" target="_blank" rel="noopener noreferrer">manage Bots</a>,
+              <a href="https://docs.x.ai/grok-bot/use-cases" target="_blank" rel="noopener noreferrer">use cases</a>,
+              <a href="https://docs.x.ai/grok-bot/faq" target="_blank" rel="noopener noreferrer">FAQ</a>.
+              Here:
+              <a href="/dispatch/grok-crew.html">crew note</a>,
+              <a href="/videos/index.html#grok-bot-x-monitor">X monitor clip</a>,
+              <a href="/videos/index.html#grok-bot-claude">Opus 5.5 clip</a>.
             </p>
           </div>
-
-          <h2 id="need">What you need</h2>
-          <p>Access is not a separate Grok Bot subscription for most people. Officially it is included with:</p>
-          <ul>
-            <li>Every paid individual Cursor plan, and Cursor Teams</li>
-            <li>Or an individual SuperGrok, SuperGrok Plus, or SuperGrok Heavy subscription linked to your Cursor account</li>
-          </ul>
-          <p>
-            Usage resets weekly. If you have both Cursor and SuperGrok, Grok Bot
-            uses whichever has more remaining usage. Eligible accounts can add
-            on-demand usage. Check
-            <a href="https://docs.x.ai/grok-bot/faq" target="_blank" rel="noopener noreferrer">plans and billing in the FAQ</a>
-            for the current matrix — it moves.
-          </p>
-          <p>
-            Grok Bot needs cloud data storage. Cursor accounts still on Legacy
-            Privacy Mode have to switch to a supported data setting before the
-            app will start.
-          </p>
-
-          <h2 id="install">Install</h2>
-          <p>
-            Download from
-            <a href="https://x.ai/bot" target="_blank" rel="noopener noreferrer">x.ai/bot</a>.
-            Desktop is the full product. Mobile is the same Bots, not a second roster.
-          </p>
-          <h3>Desktop</h3>
-          <ul>
-            <li><strong>macOS</strong> — Apple silicon or Intel. Open the disk image, drag Grok Bot to Applications, then Open if macOS asks. Apple menu → About This Mac: a Chip field means Apple silicon; Processor means Intel.</li>
-            <li><strong>Windows</strong> — x64 or Arm64 installer, then Start menu. Settings → System → About → System type if you are unsure.</li>
-            <li><strong>Linux</strong> — x64 or Arm64 as <code>.deb</code> (Debian/Ubuntu), <code>.rpm</code> (Fedora/RHEL), or AppImage. <code>uname -m</code>: <code>x86_64</code> is x64, <code>aarch64</code> is Arm64.</li>
-          </ul>
-          <p>The app checks for updates itself. Settings → Updates if you want to force it.</p>
-          <h3>Phone</h3>
-          <ul>
-            <li>iPhone / iPad: iOS or iPadOS 18 or later</li>
-            <li>Android 9 or later</li>
-          </ul>
-
-          <h2 id="signin">Sign in</h2>
-          <ol>
-            <li>Choose Sign in on the welcome screen. Later: Settings → Sign In with Cursor.</li>
-            <li>Finish in the browser window that opens.</li>
-            <li>Come back to the app when the browser confirms it.</li>
-            <li>If access comes from SuperGrok, link it when asked. Desktop: Settings → Usage &amp; Billing. iPhone/Android: Link Grok Account, then Finished Linking? Refresh My Status.</li>
-          </ol>
-          <p>
-            Grok Bot uses your Cursor account. If work uses SSO, complete the
-            normal organisation sign-in. On first launch it introduces Bots,
-            the shared computer and routines, then asks which tools you use.
-            Those answers only shape teammate suggestions. They do not connect
-            Gmail or Slack by themselves.
-          </p>
-
-          <h2 id="create">Create a Bot</h2>
-          <p>
-            Official rule, and it is the right one: <strong>focused Bots beat
-            one catch-all.</strong> “General Helper” gives it nothing to
-            remember against. Create a separate Bot when the work has a
-            distinct goal, a distinct set of tools, a distinct working style,
-            a distinct approval line, or a recurring schedule.
-          </p>
-          <ol>
-            <li>New in the sidebar, or <code>Cmd/Ctrl+N</code>.</li>
-            <li>In New chat, choose Create new Bot — or type a name and choose Create “name” Bot.</li>
-            <li>It opens as New Bot. Bot menu → Edit Profile: name, label, description, avatar.</li>
-            <li>Give it a concrete first task. Do not start with “what can you do?”</li>
-          </ol>
-          <p>Put standing rules in the <em>description</em>. Put today’s work in the <em>message</em>.</p>
-          <ul>
-            <li>Description: “Never send external messages without approval.”</li>
-            <li>Message: “Draft follow-ups for these twelve accounts.”</li>
-          </ul>
-          <p>A description that actually works sounds like operations, not branding:</p>
-          <pre class="prompt">Own the weekly account-health review. Pull product usage and support signals, flag evidence of churn or expansion, and produce a linked watch list. Never contact a customer or change an account without approval.</pre>
-          <p>
-            You can pin active Bots, hide ones you are not using (hiding does
-            not pause routines), duplicate a role for a new region or car,
-            or delete. Deleting removes that Bot’s conversation and routines.
-            Shared-computer files and logins can remain. Hide it if you might
-            need the work later.
-          </p>
-
-          <h2 id="task">A first task that actually finishes</h2>
-          <p>A strong request has five parts:</p>
-          <ol>
-            <li><strong>Outcome</strong> — what should be finished?</li>
-            <li><strong>Sources</strong> — which apps, sites, files or threads?</li>
-            <li><strong>Constraints</strong> — what must it avoid or ask first?</li>
-            <li><strong>Deliverable</strong> — what should it return?</li>
-            <li><strong>Review point</strong> — when does it stop for you?</li>
-          </ol>
-          <p>Five minutes, no login required — attach a document:</p>
-          <pre class="prompt">Summarize this document in five bullets. List every date, decision, and open question in a separate section. Cite the page or section for each item. Do not change the source file.</pre>
-          <p>Then give it a real tool, still read-only:</p>
-          <pre class="prompt">Open our analytics dashboard and compare new-user activation for this week with the previous four weeks. Identify the largest step-level change and draft a short investigation plan with links to the relevant charts. Do not change any dashboards. Ask me to sign in if needed.</pre>
-          <p>
-            Dictate with <code>Cmd/Ctrl+D</code> on desktop, or Start dictation
-            on the phone. Start voice chat is a live conversation. Correct the
-            first result out loud: “Use this format for future weekly reports:
-            five bullets, source links inline, and a final section called
-            Decisions needed.” That sentence is how the Bot gets smarter. Not
-            by magic. By you naming the preference.
-          </p>
-          <p>Roles that work well in the official use-cases are all the same shape: research, draft, stop for review. Sales outbound. Talent scout. Paid media. Expenses. Product performance. Bug reproduction. Account health. Chief of staff. Start with read-and-prepare. Add send/change/publish later, behind approval.</p>
-
-          <h2 id="tools">Tools, takeovers, plugins</h2>
-          <p>
-            When the Bot hits a login, CAPTCHA, passkey or two-factor prompt,
-            it should hand the computer to you rather than invent a bypass.
-          </p>
-          <ol>
-            <li>Open Agent Computer from the conversation.</li>
-            <li>Take over.</li>
-            <li>Enter the password, passkey, 2FA or CAPTCHA yourself.</li>
-            <li>Give control back.</li>
-          </ol>
-          <p>
-            That browser session lives on the shared computer, so your other
-            Bots can reuse it when that is appropriate. For supported services,
-            Marketplace in the sidebar also has plugins you authenticate in
-            the browser — use a connector when one exists; it is more reliable
-            than driving the site.
-          </p>
-          <p>
-            A site can still block automation, expire a session, or demand a
-            human. That is normal. The Bot stops. You finish the human step.
-          </p>
-
-          <h2 id="skills">Skills vs routines</h2>
-          <p>
-            A <strong>skill</strong> is how to do a task. A
-            <strong>routine</strong> assigns that workflow to one Bot and
-            says when to run it — on a schedule, or after an event where that
-            is supported.
-          </p>
-          <p>
-            Walk it through once. When Teach a task is available, you can
-            record a browser workflow from the computer view (up to ten
-            minutes). It drafts a skill. You review and test. Then, and only
-            then, turn it into a routine. Official order:
-          </p>
-          <ol>
-            <li>Job, sources, output format and boundaries in the description.</li>
-            <li>One real task with a safe scope.</li>
-            <li>Correct until the result is reviewable.</li>
-            <li>Save the process as a skill.</li>
-            <li>Test on a second input.</li>
-            <li>Create a routine only when retries and failure cases are defined.</li>
-            <li>Keep consequential external actions behind approval.</li>
-          </ol>
-
-          <h2 id="crew">More than one Bot</h2>
-          <figure class="figure">
-            <img src="/assets/grok-bots.jpg" alt="A Grok Bot roster with named jobs" />
-            <figcaption>Named jobs. That is the whole trick.</figcaption>
-          </figure>
-          <p>
-            Start with the smallest useful roster. One Bot owns an end-to-end
-            outcome. Add another only when there is a stable specialist role.
-            Put them in a group chat when the handoff itself needs to be
-            visible — a launch coordinator, an editor and a reviewer in one
-            thread, instead of you being the router.
-          </p>
-          <p>
-            Bots can message each other, share files, and pass ownership of a
-            task. Conversations and learned memory stay per Bot. The computer
-            does not.
-          </p>
-          <p>
-            Existing Bots can also suggest a new specialist when a job needs
-            a long-lived owner. Ask before you let it spawn a crowd.
-          </p>
-          <p>
-            Marketplace Bots and shared templates create a <em>copy</em> on
-            your account. The other person does not get your computer, logins
-            or history. A public share link shows the Bot’s configuration —
-            strip API keys, internal URLs and anything you would not paste in
-            a public doc. Shared Bots are other people’s configs; adding one
-            accepts the third-party bot terms.
-          </p>
-
-          <h2 id="x">Work from X</h2>
-          <p>
-            Tag <a href="https://x.com/bot" target="_blank" rel="noopener noreferrer">@bot</a>
-            in a post or a reply. Your main Bot picks the post up as a task;
-            @bot confirms with a short public reply. That needs an X account
-            connected to your Grok account, and it is not in every region yet.
-            If it stays silent, check the regional notes in the
-            <a href="https://docs.x.ai/grok-bot/overview" target="_blank" rel="noopener noreferrer">overview</a>.
-          </p>
-          <p>
-            Separately, Grok Bot can search, read and monitor X on its own —
-            live for every user, with no X connector to set up. The official
-            demo asked it what people were saying about a mobile app; it came
-            back having read hundreds of posts and sorted the themes. Monitoring
-            is the part that keeps running: product feedback, a breaking story,
-            a weekly roundup of a beat.
-          </p>
-          <figure class="figure-video">
-            <video controls playsinline preload="metadata" poster="/assets/dispatch/grok-bot-x-monitor-poster.jpg">
-              <source src="/assets/dispatch/grok-bot-x-monitor.mp4" type="video/mp4" />
-            </video>
-            <figcaption>X search and monitor, from the original post.</figcaption>
-          </figure>
-          <p>
-            <a class="x-link" href="https://x.com/AlJR86/status/2108184873139581232">The X-monitor note on X →</a>
-          </p>
-
-          <h2 id="safety">Approvals and the shared computer</h2>
-          <p>
-            Sensitive actions can stop for you. Passwords, 2FA and CAPTCHAs
-            always should. Put standing boundaries in the Bot description, then
-            add narrow Ask first rules for sending, publishing, deleting,
-            purchasing, or changing production systems. Auto-review can enforce
-            some of that when you turn it on.
-          </p>
-          <p>
-            Memory is preferences, role context and summaries — not an
-            authoritative source. For a decision that matters, tell it to
-            reopen the live system instead of trusting last week’s summary.
-            Correct stale assumptions in the conversation, and promote anything
-            that should stay true into the description.
-          </p>
-          <p>
-            Training opt-out follows your Cursor account privacy settings.
-            Between users, isolation is strict. On your own account, assume
-            every Bot can see the computer.
-          </p>
-          <figure class="figure-video">
-            <video controls playsinline preload="metadata" poster="/assets/dispatch/grok-bot-claude-poster.jpg">
-              <source src="/assets/dispatch/grok-bot-claude.mp4" type="video/mp4" />
-            </video>
-            <figcaption>The stack: Claude Opus 5.5, and cloud agents on the Cursor models they have.</figcaption>
-          </figure>
-          <p>
-            Lauren Tan, who builds Grok Bot at SpaceXAI, said the bots run on
-            Claude Opus 5.5 and can spawn cloud agents on whatever Cursor
-            models they have. Repeat the names if a Bot is going to sit near
-            money, mail, or a car.
-          </p>
-
-          <h2 id="tesla">If you want it on a Tesla</h2>
-          <p>
-            Vehicle access is a plugin problem, not a prompt trick. In the
-            Tesla developer options you can grant Grok Bot enough to read
-            state and run the commands you actually want — climate, battery,
-            lock status — and nothing extra. Ask the Bot to walk you through
-            the current Tesla developer flow; that path changes, and a frozen
-            screenshot in a blog post goes stale.
-          </p>
-          <p>
-            The useful first job is still a schedule, not a party trick.
-            Ten minutes before a regular commute: check outside temperature,
-            then precondition, wheel heat, defrost or cabin cool. Sunday: look
-            at the battery and say whether it needs a plug. Keep unlock, remote
-            start and anything that moves the car behind an explicit ask.
-          </p>
-          <p class="pull">
-            If a bot is allowed near a Tesla, the approval line belongs in the
-            description before the first command, not after the first mistake.
-          </p>
-
-          <h2>When it is worth it</h2>
-          <p>
-            You need a reason. A Bot that owns a weekly digest, a watchlist, a
-            car that is actually warm, or a research beat will earn the weekly
-            usage. A Bot you open when you are bored will not. Usage resets.
-            Spend it on jobs that still exist next Tuesday.
-          </p>
-          <p>
-            <a class="button button-primary" href="https://x.ai/bot" target="_blank" rel="noopener noreferrer">Download Grok Bot</a>
-            <a class="button button-ghost" href="https://docs.x.ai/grok-bot/get-started" target="_blank" rel="noopener noreferrer">Official get-started</a>
-            <a class="button button-ghost" href="/grok.html">Grok desk</a>
-          </p>
-          <p>
-            Further reading from SpaceXAI:
-            <a href="https://docs.x.ai/grok-bot/overview" target="_blank" rel="noopener noreferrer">overview</a>,
-            <a href="https://docs.x.ai/grok-bot/bots" target="_blank" rel="noopener noreferrer">create and manage Bots</a>,
-            <a href="https://docs.x.ai/grok-bot/use-cases" target="_blank" rel="noopener noreferrer">use cases</a>,
-            <a href="https://docs.x.ai/grok-bot/faq" target="_blank" rel="noopener noreferrer">FAQ</a>.
-            Related on this site:
-            <a href="/dispatch/grok-crew.html">the crew note</a>,
-            <a href="/videos/index.html#grok-bot-x-monitor">X monitor clip</a>,
-            <a href="/videos/index.html#grok-bot-claude">Opus 5.5 clip</a>.
-          </p>
         </article>
       </main>
 
