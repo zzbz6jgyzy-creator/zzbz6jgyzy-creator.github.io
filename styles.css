@@ -634,6 +634,29 @@ a.stat:hover {
   font-size: 0.84rem;
 }
 
+.figure-video {
+  margin: 1.3rem 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+.figure-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(70vh, 720px);
+  background: #000;
+}
+
+.figure-video figcaption {
+  padding: 0.65rem 0.85rem 0.8rem;
+  color: var(--mute);
+  font-size: 0.84rem;
+  background: var(--card);
+}
+
 .pull {
   margin: 1.4rem 0;
   padding: 0.2rem 0 0.2rem 1rem;
