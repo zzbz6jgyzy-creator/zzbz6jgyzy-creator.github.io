@@ -30,7 +30,10 @@
     { name: "Flight 4", wind: 0.018, fuel: 70, gap: 30, catchVy: 1.6, night: 0.8 },
   ];
 
-  const input = { left: false, right: false, thrust: false };
+  const held = { left: false, right: false, thrust: false };
+  const hold = { left: 0, right: 0, thrust: 0 };
+  const padPointers = new Map();
+  const padButtons = {};
   const cam = { x: 120, y: 40 };
   const stars = [];
   const clouds = [];
@@ -113,9 +116,41 @@
     };
   }
 
+  function setHeld(key, on) {
+    held[key] = on;
+    const el = padButtons[key];
+    if (el) el.classList.toggle("is-held", on);
+  }
+
+  function releasePointer(id) {
+    const key = padPointers.get(id);
+    if (!key) return;
+    padPointers.delete(id);
+    const still = [...padPointers.values()].some((k) => k === key);
+    if (!still) setHeld(key, false);
+  }
+
+  function clearAllHolds() {
+    padPointers.forEach((key, id) => {
+      try {
+        padButtons[key]?.releasePointerCapture(id);
+      } catch {
+        /* already released */
+      }
+    });
+    padPointers.clear();
+    setHeld("left", false);
+    setHeld("right", false);
+    setHeld("thrust", false);
+    hold.left = 0;
+    hold.right = 0;
+    hold.thrust = 0;
+  }
+
   function showOverlay(kicker, title, copy, action) {
     if (!overlay) return;
     overlay.hidden = false;
+    clearAllHolds();
     if (overlayKicker) overlayKicker.textContent = kicker;
     if (overlayTitle) overlayTitle.textContent = title;
     if (overlayCopy) overlayCopy.textContent = copy;
@@ -222,7 +257,7 @@
     showOverlay(
       "Starbase",
       "Catch the Ship",
-      "Tilt left and right. Hold throttle to kill speed. Get the pins onto the arms — not the ocean, not the tower.",
+      "Tap to nudge, hold to bank. Hold throttle to kill speed. Get the pins onto the arms — not the ocean, not the tower.",
       "Play"
     );
   }
@@ -278,16 +313,23 @@
     );
   }
 
+  function tiltCurve(t) {
+    const x = clamp(t, 0, 1);
+    return x * x;
+  }
+
   function steerAuto() {
     const errX = ship.x - CATCH_X;
     const pinY = ship.y - 4;
     const alt = ARM_Y - pinY;
     const wantAngle = clamp(-errX * 0.0022 - ship.vx * 0.1, -0.16, 0.16);
-    input.left = ship.angle > wantAngle + 0.025;
-    input.right = ship.angle < wantAngle - 0.025;
+    const errA = ship.angle - wantAngle;
+    hold.left = errA > 0.012 ? clamp((errA - 0.01) / 0.1, 0, 1) : 0;
+    hold.right = errA < -0.012 ? clamp((-errA - 0.01) / 0.1, 0, 1) : 0;
     const upright = Math.abs(ship.angle) < 0.2;
     const wantVy = alt > 280 ? 1.15 : alt > 120 ? 0.68 : alt > 22 ? 0.34 : 0.08;
-    input.thrust = ship.fuel > 1 && upright && (ship.vy > wantVy || (alt < 50 && Math.abs(errX) > 8 && ship.vy > 0.08));
+    const wantThrust = ship.fuel > 1 && upright && (ship.vy > wantVy || (alt < 50 && Math.abs(errX) > 8 && ship.vy > 0.08));
+    hold.thrust = wantThrust ? 1 : 0;
   }
 
   function emitExhaust() {
@@ -332,12 +374,21 @@
     windGust = lerp(windGust, rand(-s.wind, s.wind) * 28, 0.02);
     const wind = s.wind * 0.55 + windGust * 0.012;
 
-    if (input.left) ship.av -= 0.00016 * dt;
-    if (input.right) ship.av += 0.00016 * dt;
-    ship.av *= Math.pow(0.9, dt * 0.08);
+    if (!(auto && (state === "attract" || state === "fly"))) {
+      const rise = 0.0026;
+      const fall = 0.0075;
+      ["left", "right", "thrust"].forEach((k) => {
+        hold[k] = held[k] ? Math.min(1, hold[k] + rise * dt) : Math.max(0, hold[k] - fall * dt);
+      });
+    }
+
+    const steer = tiltCurve(hold.right) - tiltCurve(hold.left);
+    ship.av += steer * 0.00022 * dt;
+    if (Math.abs(steer) < 0.05) ship.av -= ship.angle * 0.000032 * dt;
+    ship.av *= Math.pow(0.88, dt * 0.08);
     ship.angle = clamp(ship.angle + ship.av * dt, -0.52, 0.52);
 
-    const burning = input.thrust && ship.fuel > 0;
+    const burning = (held.thrust || hold.thrust > 0.08) && ship.fuel > 0;
     ship.thrusting = burning;
     if (burning) {
       ship.fuel = Math.max(0, ship.fuel - 0.0075 * dt);
@@ -949,27 +1000,52 @@
   }
 
   function bindHold(el, key) {
+    padButtons[key] = el;
     const down = (e) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
       e.preventDefault();
-      input[key] = true;
-      el.classList.add("is-held");
+      padPointers.set(e.pointerId, key);
+      try {
+        el.setPointerCapture(e.pointerId);
+      } catch {
+        /* capture is best-effort on older WebViews */
+      }
+      setHeld(key, true);
       if (state === "attract" || state === "attract-hold" || state === "fail" || state === "caught") {
         if (key === "thrust") startPlay();
       }
     };
-    const up = () => {
-      input[key] = false;
-      el.classList.remove("is-held");
+    const up = (e) => {
+      releasePointer(e.pointerId);
     };
     el.addEventListener("pointerdown", down);
     el.addEventListener("pointerup", up);
-    el.addEventListener("pointerleave", up);
     el.addEventListener("pointercancel", up);
+    el.addEventListener("lostpointercapture", up);
   }
 
   document.querySelectorAll("[data-hold]").forEach((el) => {
     bindHold(el, el.getAttribute("data-hold"));
   });
+
+  const pad = document.querySelector("[data-catch-pad]");
+  pad?.addEventListener("contextmenu", (e) => e.preventDefault());
+
+  window.addEventListener("pointerup", (e) => releasePointer(e.pointerId));
+  window.addEventListener("pointercancel", (e) => releasePointer(e.pointerId));
+  window.addEventListener("blur", clearAllHolds);
+  window.addEventListener(
+    "touchend",
+    (e) => {
+      if (e.touches.length === 0) {
+        padPointers.clear();
+        setHeld("left", false);
+        setHeld("right", false);
+        setHeld("thrust", false);
+      }
+    },
+    { passive: true }
+  );
 
   const keyMap = {
     ArrowLeft: "left",
@@ -1011,13 +1087,13 @@
     const mapped = keyMap[e.key];
     if (!mapped) return;
     e.preventDefault();
-    input[mapped] = true;
+    setHeld(mapped, true);
     if ((state === "attract" || state === "attract-hold" || state === "ready") && mapped === "thrust") startPlay();
   });
 
   window.addEventListener("keyup", (e) => {
     const mapped = keyMap[e.key];
-    if (mapped) input[mapped] = false;
+    if (mapped) setHeld(mapped, false);
   });
 
   playBtn?.addEventListener("click", () => {
@@ -1031,10 +1107,13 @@
   });
 
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden && state === "fly") {
-      state = "pause";
-      setRumble(false);
-      showOverlay("Paused", "Hold", "Ship is waiting on the chopsticks.", "Resume");
+    if (document.hidden) {
+      clearAllHolds();
+      if (state === "fly") {
+        state = "pause";
+        setRumble(false);
+        showOverlay("Paused", "Hold", "Ship is waiting on the chopsticks.", "Resume");
+      }
     }
   });
 
@@ -1048,6 +1127,9 @@
     state: () => state,
     ship: () => ship,
     score: () => score,
+    hold: () => ({ ...hold }),
+    held: () => ({ ...held }),
+    clearHolds: clearAllHolds,
     autopilot(on) {
       auto = Boolean(on);
     },
