@@ -17,10 +17,10 @@
 
   const STORE = "aljr.catch.best";
   const WORLD_W = 1000;
-  const GROUND = 980;
+  const GROUND = 860;
   const SHORE = 340;
   const TOWER_X = 720;
-  const ARM_Y = 740;
+  const ARM_Y = 640;
   const CATCH_X = TOWER_X - 96;
 
   const FLIGHTS = [
@@ -70,13 +70,13 @@
     });
   }
 
-  for (let i = 0; i < 7; i += 1) {
+  for (let i = 0; i < 4; i += 1) {
     clouds.push({
-      x: rand(-40, WORLD_W + 40),
-      y: rand(80, 420),
-      w: rand(90, 220),
-      h: rand(10, 22),
-      a: rand(0.08, 0.2),
+      x: rand(40, WORLD_W - 40),
+      y: rand(260, 520),
+      w: rand(140, 260),
+      h: rand(6, 11),
+      a: rand(0.04, 0.09),
     });
   }
 
@@ -100,7 +100,7 @@
     windGust = 0;
     ship = {
       x: 390 + rand(-28, 36),
-      y: 148 + rand(-10, 14),
+      y: 210 + rand(-10, 14),
       vx: rand(-0.18, 0.24),
       vy: 0.2,
       angle: rand(-0.08, 0.08),
@@ -424,8 +424,8 @@
     const alt = Math.max(0, ARM_Y - (ship.y - 4));
     const t = clamp(1 - (alt - 18) / 480, 0, 1);
     const e = t * t;
-    viewW = lerp(660, 360, e);
-    viewH = lerp(520, 250, e);
+    viewW = lerp(560, 340, e);
+    viewH = lerp(480, 240, e);
   }
 
   function mix(a, b, t) {
@@ -525,29 +525,29 @@
     if (ship.thrusting) drawPlume(ctx, h, flicker);
 
     const flapSteel = ctx.createLinearGradient(0, 0, 0, 10);
-    flapSteel.addColorStop(0, "#b8b2a8");
-    flapSteel.addColorStop(1, "#5a564e");
+    flapSteel.addColorStop(0, "#6a6458");
+    flapSteel.addColorStop(1, "#2e2a24");
     ctx.fillStyle = flapSteel;
-    drawFlap(ctx, -w * 0.46, h * 0.04, -30, 11, 5);
-    drawFlap(ctx, w * 0.46, h * 0.04, 30, 11, 5);
-    ctx.fillStyle = "#3a3630";
-    drawFlap(ctx, -w * 0.46, h * 0.06, -26, 4, 4);
-    drawFlap(ctx, w * 0.46, h * 0.06, 26, 4, 4);
+    drawFlap(ctx, -w * 0.46, h * 0.05, -18, 10, 3);
+    drawFlap(ctx, w * 0.46, h * 0.05, 18, 10, 3);
+    ctx.fillStyle = "#2a2620";
+    drawFlap(ctx, -w * 0.46, h * 0.07, -15, 4, 2);
+    drawFlap(ctx, w * 0.46, h * 0.07, 15, 4, 2);
 
-    ctx.fillStyle = "#c8c2b6";
-    drawFlap(ctx, -w * 0.4, -h * 0.28, -20, 7, -3);
-    drawFlap(ctx, w * 0.4, -h * 0.28, 20, 7, -3);
-    ctx.fillStyle = "#4a4640";
-    drawFlap(ctx, -w * 0.4, -h * 0.26, -16, 3, -2);
-    drawFlap(ctx, w * 0.4, -h * 0.26, 16, 3, -2);
+    ctx.fillStyle = "#6a6458";
+    drawFlap(ctx, -w * 0.4, -h * 0.27, -13, 6, -2);
+    drawFlap(ctx, w * 0.4, -h * 0.27, 13, 6, -2);
+    ctx.fillStyle = "#2a2620";
+    drawFlap(ctx, -w * 0.4, -h * 0.255, -11, 2.4, -1);
+    drawFlap(ctx, w * 0.4, -h * 0.255, 11, 2.4, -1);
 
-    const specShift = clamp(0.42 + ship.angle * 0.35, 0.22, 0.68);
+    const specShift = clamp(0.4 + ship.angle * 0.28, 0.24, 0.62);
     const steel = ctx.createLinearGradient(-w * 0.55, 0, w * 0.55, 0);
-    steel.addColorStop(0, night > 0.6 ? "#2a2824" : "#4a4640");
-    steel.addColorStop(specShift - 0.16, night > 0.6 ? "#6a6860" : "#9a948a");
-    steel.addColorStop(specShift, night > 0.6 ? "#c8c2b4" : "#efe6d6");
-    steel.addColorStop(specShift + 0.1, night > 0.6 ? "#8a8680" : "#c8c0b4");
-    steel.addColorStop(1, night > 0.6 ? "#2e2c28" : "#5a564e");
+    steel.addColorStop(0, "#1c1a16");
+    steel.addColorStop(specShift - 0.14, "#4a463c");
+    steel.addColorStop(specShift, night > 0.55 ? "#7a7468" : "#9a9284");
+    steel.addColorStop(specShift + 0.08, "#5a564c");
+    steel.addColorStop(1, "#24221c");
     ctx.fillStyle = steel;
     ctx.beginPath();
     ctx.moveTo(0, -h * 0.5);
@@ -625,9 +625,9 @@
     ctx.fillRect(-w * 0.78, -3.5, 13, 1.3);
     ctx.fillRect(w * 0.24, -3.5, 13, 1.3);
 
-    drawRaptor(ctx, -7.1, h * 0.455, 0.96, ship.thrusting);
-    drawRaptor(ctx, 0, h * 0.485, 1.05, ship.thrusting);
-    drawRaptor(ctx, 7.1, h * 0.455, 0.96, ship.thrusting);
+    drawRaptor(ctx, -7.6, h * 0.45, 1.18, ship.thrusting);
+    drawRaptor(ctx, 0, h * 0.48, 1.28, ship.thrusting);
+    drawRaptor(ctx, 7.6, h * 0.45, 1.18, ship.thrusting);
 
     ctx.restore();
   }
@@ -658,7 +658,7 @@
 
   function drawLattice(ctx, x, top, bot, w, night) {
     const h = bot - top;
-    const chord = 5.5;
+    const chord = 7.5;
     const steel = night > 0.5 ? "#1a1c20" : "#2c3036";
     const brace = night > 0.5 ? "rgba(18,20,24,0.9)" : "rgba(32,36,42,0.8)";
     ctx.fillStyle = steel;
@@ -702,20 +702,20 @@
   }
 
   function drawMechazilla(ctx, night, gap) {
-    const towerLeft = TOWER_X - 20;
-    const top = ARM_Y - 300;
-    drawLattice(ctx, towerLeft, top, GROUND - 8, 42, night);
+    const towerLeft = TOWER_X - 26;
+    const top = ARM_Y - 310;
+    drawLattice(ctx, towerLeft, top, GROUND - 8, 54, night);
 
     ctx.fillStyle = "#c8102e";
-    ctx.fillRect(towerLeft + 13, top - 14, 16, 10);
+    ctx.fillRect(towerLeft + 19, top - 16, 16, 11);
     ctx.fillStyle = night > 0.4 ? "#ff3a3a" : "#a01020";
     ctx.beginPath();
-    ctx.arc(towerLeft + 21, top - 18, 2.2, 0, Math.PI * 2);
+    ctx.arc(towerLeft + 27, top - 20, 2.4, 0, Math.PI * 2);
     ctx.fill();
 
     ctx.fillStyle = night > 0.5 ? "#2a2c30" : "#3a3e44";
-    ctx.fillRect(towerLeft - 18, ARM_Y - 70, 22, 7);
-    ctx.fillRect(towerLeft - 4, ARM_Y - 70, 5, 52);
+    ctx.fillRect(towerLeft - 22, ARM_Y - 74, 26, 8);
+    ctx.fillRect(towerLeft - 6, ARM_Y - 74, 6, 56);
 
     const half = gap * 0.5;
     ctx.strokeStyle = night > 0.5 ? "#3a3c40" : "#5a5c60";
@@ -727,8 +727,8 @@
     ctx.lineTo(TOWER_X - 108, ARM_Y + half + 2);
     ctx.stroke();
 
-    drawChopstick(ctx, TOWER_X - 186, ARM_Y - half - 9, 174, 11);
-    drawChopstick(ctx, TOWER_X - 186, ARM_Y + half - 2, 174, 11);
+    drawChopstick(ctx, TOWER_X - 190, ARM_Y - half - 11, 178, 14);
+    drawChopstick(ctx, TOWER_X - 190, ARM_Y + half - 3, 178, 14);
 
     if (night > 0.25) {
       const glow = 0.5 + Math.sin(clock * 0.01) * 0.14;
@@ -879,7 +879,7 @@
     });
     ctx.globalAlpha = 1;
 
-    if (ship) drawShip(ctx, clamp((660 - viewW) / 300, 0, 1));
+    if (ship) drawShip(ctx, clamp((560 - viewW) / 220, 0, 1));
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const haze = ctx.createLinearGradient(0, cssH * 0.58, 0, cssH);
@@ -913,11 +913,18 @@
   function followCam() {
     if (!ship) return;
     updateView();
-    const near = clamp(1 - Math.abs(ARM_Y - ship.y) / 420, 0, 1);
-    const lookX = lerp(ship.x, CATCH_X + 20, 0.18 + near * 0.22);
-    const lookY = lerp(ship.y, ARM_Y + 8, 0.4);
-    const targetX = clamp(lookX - viewW * 0.46, 0, WORLD_W - viewW);
-    const targetY = clamp(lookY - viewH * 0.48, 0, GROUND + 50 - viewH);
+    const near = clamp(1 - Math.abs(ARM_Y - ship.y) / 360, 0, 1);
+    const lookX = lerp(ship.x, CATCH_X + 24, 0.2 + near * 0.22);
+    const lookY = lerp(ship.y, ARM_Y, 0.26);
+    let targetX = lookX - viewW * 0.44;
+    let targetY = lookY - viewH * 0.38;
+    const pad = 18;
+    const shipTop = ship.y - ship.h * 0.55;
+    const shipBot = ship.y + ship.h * 0.62;
+    if (targetY > shipTop - pad) targetY = shipTop - pad;
+    if (targetY + viewH < shipBot + pad) targetY = shipBot + pad - viewH;
+    targetX = clamp(targetX, 0, WORLD_W - viewW);
+    targetY = clamp(targetY, 0, GROUND + 50 - viewH);
     const k = state === "fly" || state === "attract" ? 0.075 : 0.05;
     cam.x = lerp(cam.x, targetX, k);
     cam.y = lerp(cam.y, targetY, k);
