@@ -8,20 +8,20 @@
       name="description"
       content="Owner notes from a Tesla driver and shareholder in Ireland: FSD in the snow, European approvals, Beast, and Grok in the car."
     />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <header class="topbar">
-        <a class="brand" href="index.html">
+        <a class="brand" href="/index.html">
           <span class="brand-mark" aria-hidden="true">AL</span>
           <span class="brand-text">ALJR<span class="brand-dot">86</span></span>
         </a>
@@ -29,12 +29,13 @@
           <span></span>
         </button>
         <nav class="nav" id="site-nav" data-nav aria-label="Primary">
-          <a href="tesla.html" aria-current="page">Tesla</a>
-          <a href="reviews/index.html">Reviews</a>
-          <a href="fsd-europe.html">FSD Europe</a>
-          <a href="tcmv.html">TCMV</a>
-          <a href="spacex.html">SpaceX</a>
-          <a href="grok.html">Grok</a>
+          <a href="/tesla.html" aria-current="page">Tesla</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/tcmv.html">TCMV</a>
+          <a href="/videos/index.html">Videos</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
           <a class="nav-cta" href="https://x.com/AlJR86">Follow on X</a>
         </nav>
       </header>
@@ -49,8 +50,13 @@
         </section>
 
         <section class="section" style="padding-top: 1.5rem">
-          <a class="lead-card reveal" href="fsd-europe.html">
-            <img src="assets/fsd-snow.jpg" alt="Tesla FSD Supervised on a snowy European road" />
+          <a class="lead-card reveal" href="/fsd-europe.html">
+            <div class="lead-media">
+              <span class="media-play">Video</span>
+              <video muted playsinline preload="metadata" poster="/assets/dispatch/fsd-snow-poster.jpg" aria-label="FSD Supervised on a snowy European road">
+                <source src="/assets/dispatch/fsd-snow.mp4" type="video/mp4" />
+              </video>
+            </div>
             <div class="lead-copy">
               <span class="tag">Tracker</span>
               <h3>FSD Supervised Europe</h3>
@@ -63,8 +69,8 @@
         </section>
 
         <section class="section" style="padding-top: 0.5rem">
-          <a class="lead-card reveal" href="reviews/index.html">
-            <img src="assets/reviews/model-3.jpg" alt="Highland Model 3 in Quicksilver" />
+          <a class="lead-card reveal" href="/reviews/index.html">
+            <img src="/assets/reviews/model-3.jpg" alt="Highland Model 3 in Quicksilver" />
             <div class="lead-copy">
               <span class="tag">Reviews</span>
               <h3>Tesla car reviews</h3>
@@ -78,8 +84,13 @@
 
         <section class="section">
           <div class="story-grid">
-            <a class="story-card reveal" href="dispatch/fsd-snow.html">
-              <img src="assets/fsd-snow.jpg" alt="FSD on a snowy Swiss road" />
+            <a class="story-card reveal" href="/dispatch/fsd-snow.html">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video muted playsinline preload="metadata" poster="/assets/dispatch/fsd-snow-poster.jpg" aria-label="FSD on a snowy Swiss road">
+                  <source src="/assets/dispatch/fsd-snow.mp4" type="video/mp4" />
+                </video>
+              </div>
               <div class="story-copy">
                 <span class="tag tag-tesla">FSD</span>
                 <h3>Four minutes in the Alps</h3>
@@ -87,7 +98,7 @@
               </div>
             </a>
             <article class="story-card reveal delay-1">
-              <img src="assets/halloween.jpg" alt="Tesla Halloween Mode concept art" />
+              <img src="/assets/halloween.jpg" alt="Tesla Halloween Mode concept art" />
               <div class="story-copy">
                 <span class="tag tag-tesla">Software</span>
                 <h3>Halloween Mode, Optimus hand</h3>
@@ -98,7 +109,7 @@
               </div>
             </article>
             <article class="story-card reveal delay-2">
-              <img src="assets/climate.jpg" alt="Tesla climate controls" />
+              <img src="/assets/climate.jpg" alt="Tesla climate controls" />
               <div class="story-copy">
                 <span class="tag tag-tesla">Owner ask</span>
                 <h3>Climate that reads the weather</h3>
@@ -108,6 +119,54 @@
                 </p>
               </div>
             </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="tesla-videos-heading">
+          <div class="section-head">
+            <h2 id="tesla-videos-heading" class="reveal">Videos</h2>
+            <p class="reveal delay-1"><a href="/videos/index.html">All clips →</a></p>
+          </div>
+          <div class="story-grid">
+            <a class="story-card reveal" href="/videos/index.html#germany-fsd-math">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video muted playsinline preload="metadata" poster="/assets/dispatch/germany-fsd-math-poster.jpg" aria-label="Germany FSD approval math clip">
+                  <source src="/assets/dispatch/germany-fsd-math.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="story-copy">
+                <span class="tag tag-tesla">FSD</span>
+                <h3>Germany is 19% of the EU</h3>
+                <p>More people than all eight approved countries combined.</p>
+              </div>
+            </a>
+            <a class="story-card reveal delay-1" href="/videos/index.html#semi-megacharger">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video muted playsinline preload="metadata" poster="/assets/dispatch/semi-megacharger-poster.jpg" aria-label="Semi Megacharger clip">
+                  <source src="/assets/dispatch/semi-megacharger.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="story-copy">
+                <span class="tag tag-tesla">Semi</span>
+                <h3>Megacharger in Georgia</h3>
+                <p>First site outside California — up to 1.2 MW per stall.</p>
+              </div>
+            </a>
+            <a class="story-card reveal delay-2" href="/videos/index.html#terafab">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video muted playsinline preload="metadata" poster="/assets/dispatch/terafab-poster.jpg" aria-label="Terafab clip">
+                  <source src="/assets/dispatch/terafab.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="story-copy">
+                <span class="tag tag-tesla">Chips</span>
+                <h3>Terafab, a million wafers</h3>
+                <p>Austin plan at roughly 70% of everything TSMC makes today.</p>
+              </div>
+            </a>
           </div>
         </section>
 
@@ -122,9 +181,9 @@
                 the EU-wide vote math moves with it.
               </p>
               <p>
-                <a href="fsd-europe.html">Open the FSD Europe tracker →</a>
+                <a href="/fsd-europe.html">Open the FSD Europe tracker →</a>
                 ·
-                <a href="tcmv.html">TCMV meeting log →</a>
+                <a href="/tcmv.html">TCMV meeting log →</a>
               </p>
             </div>
             <div class="panel reveal delay-1">
@@ -167,7 +226,7 @@
               </p>
               <p>
                 That is not a concept video. That is one of the bots I actually run.
-                The longer version lives on the <a href="grok.html">Grok desk</a>.
+                The longer version lives on the <a href="/grok.html">Grok desk</a>.
               </p>
             </div>
           </div>
@@ -192,9 +251,11 @@
       <footer class="site-footer">
         <p>© <span data-year></span> Alex · @AlJR86. Fan account. Not affiliated with Tesla, SpaceX or xAI.</p>
         <p>
-          <a href="index.html">Home</a>
+          <a href="/index.html">Home</a>
           ·
-          <a href="reviews/index.html">Reviews</a>
+          <a href="/reviews/index.html">Reviews</a>
+          ·
+          <a href="/videos/index.html">Videos</a>
           ·
           <a href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">Tesla referral</a>
           ·
@@ -202,6 +263,6 @@
         </p>
       </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>

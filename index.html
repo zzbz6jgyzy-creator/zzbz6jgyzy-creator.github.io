@@ -8,20 +8,20 @@
       name="description"
       content="Tesla, SpaceX and Grok — news, numbers and launch footage from @AlJR86. Not affiliated with Tesla, SpaceX or xAI."
     />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <header class="topbar">
-        <a class="brand" href="index.html" aria-current="page">
+        <a class="brand" href="/index.html" aria-current="page">
           <span class="brand-mark" aria-hidden="true">AL</span>
           <span class="brand-text">ALJR<span class="brand-dot">86</span></span>
         </a>
@@ -30,12 +30,13 @@
           <span class="visually-hidden">Menu</span>
         </button>
         <nav class="nav" id="site-nav" data-nav aria-label="Primary">
-          <a href="tesla.html">Tesla</a>
-          <a href="reviews/index.html">Reviews</a>
-          <a href="fsd-europe.html">FSD Europe</a>
-          <a href="tcmv.html">TCMV</a>
-          <a href="spacex.html">SpaceX</a>
-          <a href="grok.html">Grok</a>
+          <a href="/tesla.html">Tesla</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/tcmv.html">TCMV</a>
+          <a href="/videos/index.html">Videos</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
           <a class="nav-cta" href="https://x.com/AlJR86">Follow on X</a>
         </nav>
       </header>
@@ -45,7 +46,7 @@
           <div class="hero-plate" role="img" aria-label="White Tesla, a Starship on the pad at sunset, and an X constellation"></div>
           <div class="hero-inner">
             <div class="hero-identity reveal">
-              <img class="avatar" src="assets/avatar.jpg" width="64" height="64" alt="Alex standing beside a red Tesla" />
+              <img class="avatar" src="/assets/avatar.jpg" width="64" height="64" alt="Alex standing beside a red Tesla" />
               <div>
                 <p class="hero-kicker">@AlJR86 · Independent coverage</p>
                 <h1 id="hero-name">Tesla, SpaceX &amp; Grok</h1>
@@ -56,9 +57,9 @@
               fit in one caption.
             </p>
             <div class="hero-actions reveal delay-2">
-              <a class="button button-primary" href="tesla.html">Tesla</a>
-              <a class="button button-ghost" href="spacex.html">SpaceX</a>
-              <a class="button button-ghost" href="grok.html">Grok</a>
+              <a class="button button-primary" href="/tesla.html">Tesla</a>
+              <a class="button button-ghost" href="/spacex.html">SpaceX</a>
+              <a class="button button-ghost" href="/grok.html">Grok</a>
               <a class="button button-ghost" href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">Order a Tesla</a>
             </div>
           </div>
@@ -70,7 +71,7 @@
             <p class="reveal delay-1">From recent Tesla, SpaceX and Grok coverage.</p>
           </div>
           <div class="stats">
-            <a class="stat reveal" href="fsd-europe.html" style="text-decoration:none;color:inherit">
+            <a class="stat reveal" href="/fsd-europe.html" style="text-decoration:none;color:inherit">
               <b data-count="8">0</b>
               <span>Countries on FSD Supervised</span>
             </a>
@@ -95,17 +96,17 @@
             <p class="reveal delay-1">Tesla. SpaceX. Grok.</p>
           </div>
           <div class="desks">
-            <a class="desk desk-tesla reveal" href="tesla.html">
+            <a class="desk desk-tesla reveal" href="/tesla.html">
               <p class="eyebrow">Tesla</p>
               <h3>FSD, Europe, the car</h3>
               <p>Swiss snow tape, German approval math, Terafab, and Grok Bot in the cabin.</p>
             </a>
-            <a class="desk desk-spacex reveal delay-1" href="spacex.html">
+            <a class="desk desk-spacex reveal delay-1" href="/spacex.html">
               <p class="eyebrow">SpaceX</p>
               <h3>Starship, Starlink, Dragon</h3>
               <p>Ship 40 home, a 60-meter miss, 15,000 phone sats, Starmind at a million.</p>
             </a>
-            <a class="desk desk-grok reveal delay-2" href="grok.html">
+            <a class="desk desk-grok reveal delay-2" href="/grok.html">
               <p class="eyebrow">Grok</p>
               <h3>Bots that do jobs</h3>
               <p>Tesla Bot, news watch, Grok Bot on the stack — not a single chat window.</p>
@@ -118,8 +119,19 @@
             <h2 id="lead-heading" class="reveal">Featured</h2>
             <p class="reveal delay-1">SpaceX</p>
           </div>
-          <a class="lead-card reveal" href="dispatch/stargaze.html">
-            <img src="assets/starlink-stargaze.jpg" alt="Interior of a Starlink satellite" />
+          <a class="lead-card reveal" href="/dispatch/stargaze.html">
+            <div class="lead-media">
+              <span class="media-play">Video</span>
+              <video
+                muted
+                playsinline
+                preload="metadata"
+                poster="/assets/dispatch/stargaze-poster.jpg"
+                aria-label="Stargaze Starlink proximity clip from X"
+              >
+                <source src="/assets/dispatch/stargaze.mp4" type="video/mp4" />
+              </video>
+            </div>
             <div class="lead-copy">
               <span class="tag">SpaceX</span>
               <h3>9,000 meters became 60. Stargaze saw it.</h3>
@@ -137,28 +149,116 @@
             <p class="reveal delay-1">One from each desk.</p>
           </div>
           <div class="story-grid">
-            <a class="story-card reveal" href="dispatch/fsd-snow.html">
-              <img src="assets/fsd-snow.jpg" alt="Tesla FSD driving a snowy Swiss mountain road" />
+            <a class="story-card reveal" href="/dispatch/fsd-snow.html">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video
+                  muted
+                  playsinline
+                  preload="metadata"
+                  poster="/assets/dispatch/fsd-snow-poster.jpg"
+                  aria-label="FSD Supervised through Swiss snow"
+                >
+                  <source src="/assets/dispatch/fsd-snow.mp4" type="video/mp4" />
+                </video>
+              </div>
               <div class="story-copy">
                 <span class="tag">Tesla</span>
                 <h3>FSD through Swiss snow</h3>
                 <p>Four minutes of mountain passes. The clip Europe’s regulators keep asking for.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-1" href="dispatch/ship-40.html">
-              <img src="assets/ship40.jpg" alt="Starship hardware" />
+            <a class="story-card reveal delay-1" href="/dispatch/ship-40.html">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video
+                  muted
+                  playsinline
+                  preload="metadata"
+                  poster="/assets/dispatch/ship-40-poster.jpg"
+                  aria-label="Ship 40 return footage"
+                >
+                  <source src="/assets/dispatch/ship-40.mp4" type="video/mp4" />
+                </video>
+              </div>
               <div class="story-copy">
                 <span class="tag">SpaceX</span>
                 <h3>Ship 40 is back in Texas</h3>
                 <p>First upper stage to fly and come back in one piece. 75 days after the Indian Ocean.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-2" href="dispatch/grok-crew.html">
-              <img src="assets/grok-bots.jpg" alt="List of Grok bots" />
+            <a class="story-card reveal delay-2" href="/dispatch/grok-crew.html">
+              <img src="/assets/grok-bots.jpg" alt="List of Grok bots" />
               <div class="story-copy">
                 <span class="tag">Grok</span>
                 <h3>Grok in the car</h3>
                 <p>Tesla Bot warms the cabin. A news bot watches the stack. Grok Bot ties it.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="videos-heading">
+          <div class="section-head">
+            <h2 id="videos-heading" class="reveal">Videos</h2>
+            <p class="reveal delay-1"><a href="/videos/index.html">All clips from X →</a></p>
+          </div>
+          <div class="story-grid">
+            <a class="story-card reveal" href="/videos/index.html#musk-national-medal">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video
+                  muted
+                  playsinline
+                  preload="metadata"
+                  poster="/assets/dispatch/musk-national-medal-poster.jpg"
+                  aria-label="National Medal of Science clip"
+                >
+                  <source src="/assets/dispatch/musk-national-medal.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="story-copy">
+                <span class="tag">News</span>
+                <h3>National Medal of Science</h3>
+                <p>Elon Musk at the White House — the ceremony clip from the original post.</p>
+              </div>
+            </a>
+            <a class="story-card reveal delay-1" href="/videos/index.html#klm-starlink">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video
+                  muted
+                  playsinline
+                  preload="metadata"
+                  poster="/assets/dispatch/klm-starlink-poster.jpg"
+                  aria-label="KLM Starlink fleet announcement"
+                >
+                  <source src="/assets/dispatch/klm-starlink.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="story-copy">
+                <span class="tag">SpaceX</span>
+                <h3>KLM puts Starlink on long-haul</h3>
+                <p>Free Wi-Fi for Flying Blue members from mid-2027.</p>
+              </div>
+            </a>
+            <a class="story-card reveal delay-2" href="/videos/index.html#semi-megacharger">
+              <div class="story-media">
+                <span class="media-play">Video</span>
+                <video
+                  muted
+                  playsinline
+                  preload="metadata"
+                  poster="/assets/dispatch/semi-megacharger-poster.jpg"
+                  aria-label="Semi Megacharger in Georgia"
+                >
+                  <source src="/assets/dispatch/semi-megacharger.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="story-copy">
+                <span class="tag">Tesla</span>
+                <h3>Semi Megacharger, Georgia</h3>
+                <p>First site outside California — 1.2 MW stalls south of Atlanta.</p>
               </div>
             </a>
           </div>
@@ -168,15 +268,17 @@
       <footer class="site-footer">
         <p>© <span data-year></span> @AlJR86. Independent coverage of Tesla, SpaceX and Grok. Not affiliated.</p>
         <p>
-          <a href="tesla.html">Tesla</a>
+          <a href="/tesla.html">Tesla</a>
           ·
-          <a href="reviews/index.html">Reviews</a>
+          <a href="/reviews/index.html">Reviews</a>
           ·
-          <a href="fsd-europe.html">FSD Europe</a>
+          <a href="/fsd-europe.html">FSD Europe</a>
           ·
-          <a href="spacex.html">SpaceX</a>
+          <a href="/videos/index.html">Videos</a>
           ·
-          <a href="grok.html">Grok</a>
+          <a href="/spacex.html">SpaceX</a>
+          ·
+          <a href="/grok.html">Grok</a>
           ·
           <a href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">Tesla referral</a>
           ·
@@ -184,6 +286,6 @@
         </p>
       </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>
