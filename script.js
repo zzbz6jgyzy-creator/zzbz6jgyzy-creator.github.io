@@ -51,31 +51,58 @@
   const writeCount = (el) => {
     el.textContent = Number(el.dataset.count).toLocaleString() + (el.dataset.suffix || "");
   };
-  if (!counts.length) return;
-
-  if (reduce || !("IntersectionObserver" in window)) {
-    counts.forEach(writeCount);
-    return;
+  if (counts.length) {
+    if (reduce || !("IntersectionObserver" in window)) {
+      counts.forEach(writeCount);
+    } else {
+      const countIo = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const end = Number(el.dataset.count);
+            const suffix = el.dataset.suffix || "";
+            const start = performance.now();
+            const tick = (now) => {
+              const t = Math.min(1, (now - start) / 900);
+              el.textContent = Math.round(end * (1 - (1 - t) ** 3)).toLocaleString() + suffix;
+              if (t < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+            countIo.unobserve(el);
+          });
+        },
+        { threshold: 0.4 }
+      );
+      counts.forEach((el) => countIo.observe(el));
+    }
   }
 
-  const countIo = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const end = Number(el.dataset.count);
-        const suffix = el.dataset.suffix || "";
-        const start = performance.now();
-        const tick = (now) => {
-          const t = Math.min(1, (now - start) / 900);
-          el.textContent = Math.round(end * (1 - (1 - t) ** 3)).toLocaleString() + suffix;
-          if (t < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-        countIo.unobserve(el);
-      });
-    },
-    { threshold: 0.4 }
-  );
-  counts.forEach((el) => countIo.observe(el));
+  // Click-to-load YouTube embeds (avoids loading iframes until the user plays)
+  document.querySelectorAll("[data-youtube-embed]").forEach((frame) => {
+    const trigger = frame.querySelector(".review-video-card");
+    if (!trigger) return;
+    const activate = () => {
+      if (frame.classList.contains("is-playing")) return;
+      const id = frame.getAttribute("data-youtube-embed");
+      const title = frame.getAttribute("data-youtube-title") || "YouTube video";
+      if (!id) return;
+      const iframe = document.createElement("iframe");
+      iframe.src =
+        "https://www.youtube.com/embed/" +
+        encodeURIComponent(id) +
+        "?autoplay=1&rel=0&modestbranding=1&playsinline=1";
+      iframe.title = title;
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      frame.replaceChildren(iframe);
+      frame.classList.add("is-playing");
+    };
+    trigger.addEventListener("click", activate);
+    if (trigger.tagName === "A") {
+      trigger.addEventListener("click", (event) => event.preventDefault());
+    }
+  });
 })();

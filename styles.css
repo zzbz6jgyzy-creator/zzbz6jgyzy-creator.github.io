@@ -1185,16 +1185,37 @@ a.stat:hover {
   margin-bottom: 0.55rem;
 }
 
-.review-video-card {
+.review-video-frame {
   position: relative;
-  display: block;
   aspect-ratio: 16 / 9;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
   background: #000;
+}
+
+.review-video-frame.is-playing iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.review-video-card {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: #000;
+  cursor: pointer;
   text-decoration: none;
   color: inherit;
+  font: inherit;
 }
 
 .review-video-card img {
