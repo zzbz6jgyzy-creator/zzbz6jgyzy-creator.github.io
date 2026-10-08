@@ -1194,7 +1194,7 @@ a.stat:hover {
   background: #000;
 }
 
-.review-video-frame.is-playing iframe {
+.review-video-frame iframe {
   position: absolute;
   inset: 0;
   width: 100%;
