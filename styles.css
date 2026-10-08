@@ -913,6 +913,7 @@ a.stat:hover {
   overflow: hidden;
   border: 1px solid var(--line);
   background: #000;
+  min-height: 200px;
 }
 
 .figure-video video {
