@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FSD Supervised Europe Tracker</title>
+    <meta
+      name="description"
+      content="Country-by-country tracker for Tesla FSD Supervised approval in the EU. Which states have recognised the Dutch RDW type approval, and what is left for an EU-wide vote."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">AL</span>
+          <span class="brand-text">ALJR<span class="brand-dot">86</span></span>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="tesla.html">Tesla</a>
+          <a href="fsd-europe.html" aria-current="page">FSD Europe</a>
+          <a href="spacex.html">SpaceX</a>
+          <a href="grok.html">Grok</a>
+          <a class="nav-cta" href="https://x.com/AlJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="page-hero">
+          <p class="eyebrow reveal">Tesla · Tracker</p>
+          <h1 class="reveal delay-1">FSD Supervised in Europe</h1>
+          <p class="reveal delay-2">
+            Which EU countries have recognised the Dutch RDW approval — and how far the
+            bloc still is from a qualified-majority vote.
+          </p>
+          <p class="meta reveal delay-3" id="fsd-updated">Updated</p>
+        </section>
+
+        <section class="section" style="padding-top: 1.4rem" aria-labelledby="fsd-summary-heading">
+          <div class="section-head">
+            <h2 id="fsd-summary-heading" class="reveal">Snapshot</h2>
+            <p class="reveal delay-1">National recognition first. EU-wide later.</p>
+          </div>
+          <div class="stats">
+            <div class="stat reveal">
+              <b id="fsd-approved-count">0</b>
+              <span>Countries approved</span>
+            </div>
+            <div class="stat reveal delay-1">
+              <b id="fsd-review-count">0</b>
+              <span>In review</span>
+            </div>
+            <div class="stat reveal delay-2">
+              <b id="fsd-states-needed">0</b>
+              <span>States still needed for 15</span>
+            </div>
+            <div class="stat reveal delay-3">
+              <b id="fsd-pop-pct">0%</b>
+              <span>EU population covered</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="fsd-path-heading">
+          <div class="section-head">
+            <h2 id="fsd-path-heading" class="reveal">Path to EU-wide approval</h2>
+            <p class="reveal delay-1">Needs 15 of 27 states and 65% of EU population.</p>
+          </div>
+          <div class="fsd-meters reveal">
+            <div class="fsd-meter">
+              <div class="fsd-meter-head">
+                <span>Approving states</span>
+                <span><strong id="fsd-approved-count-copy"></strong> / 27 · needs 15</span>
+              </div>
+              <div class="fsd-track">
+                <div class="fsd-track-potential" id="fsd-states-potential"></div>
+                <div class="fsd-track-fill" id="fsd-states-bar"></div>
+                <div class="fsd-track-mark" style="left: 55.56%" title="15 of 27"></div>
+              </div>
+              <p class="fsd-meter-foot">Solid = approved. Faint = if every “in review” country also says yes.</p>
+            </div>
+            <div class="fsd-meter">
+              <div class="fsd-meter-head">
+                <span>Population share</span>
+                <span><strong id="fsd-pop-needed">0%</strong> still needed for 65%</span>
+              </div>
+              <div class="fsd-track">
+                <div class="fsd-track-potential" id="fsd-pop-potential"></div>
+                <div class="fsd-track-fill" id="fsd-pop-bar"></div>
+                <div class="fsd-track-mark" style="left: 65%" title="65%"></div>
+              </div>
+              <p class="fsd-meter-foot">Germany alone is about 18.6% of the EU. That is why Berlin matters more than another small yes.</p>
+            </div>
+          </div>
+          <div class="panel reveal" style="margin-top: 0.85rem">
+            <p class="eyebrow">Vote watch</p>
+            <h2 style="font-size: 1.05rem; margin-bottom: 0.4rem">TCMV</h2>
+            <p id="fsd-vote-detail" style="margin: 0; color: var(--ink-soft)"></p>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="fsd-table-heading">
+          <div class="section-head">
+            <h2 id="fsd-table-heading" class="reveal">Country status</h2>
+            <p class="reveal delay-1" id="fsd-showing">27 of 27 countries</p>
+          </div>
+          <div class="fsd-filters reveal" role="group" aria-label="Filter countries">
+            <button type="button" class="fsd-filter" data-fsd-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="fsd-filter" data-fsd-filter="approved" aria-pressed="false">Approved</button>
+            <button type="button" class="fsd-filter" data-fsd-filter="review" aria-pressed="false">In review</button>
+            <button type="button" class="fsd-filter" data-fsd-filter="none" aria-pressed="false">No approval</button>
+          </div>
+          <div class="fsd-table-wrap reveal">
+            <table class="fsd-table">
+              <thead>
+                <tr>
+                  <th scope="col">Country</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Approved</th>
+                  <th scope="col">Pop.</th>
+                  <th scope="col">Notes</th>
+                </tr>
+              </thead>
+              <tbody id="fsd-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="fsd-timeline-heading">
+          <div class="section-head">
+            <h2 id="fsd-timeline-heading" class="reveal">Approval timeline</h2>
+            <p class="reveal delay-1">How the map filled in since April 2026.</p>
+          </div>
+          <ol class="fsd-timeline reveal" id="fsd-timeline"></ol>
+        </section>
+
+        <section class="section" aria-labelledby="fsd-disclaimer-heading">
+          <div class="panel reveal">
+            <p class="eyebrow" id="fsd-disclaimer-heading">Sources &amp; disclaimer</p>
+            <p id="fsd-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
+            <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
+              FSD Supervised is SAE Level 2. The driver must supervise at all times.
+              Status can change when a national authority recognises — or withdraws —
+              the RDW approval. Cross-check against Tesla Europe and the local regulator
+              before you drive.
+            </p>
+            <p style="margin: 1rem 0 0">
+              <a class="button button-ghost" href="tesla.html">Back to Tesla</a>
+              <a class="button button-ghost" href="dispatch/fsd-snow.html">Swiss snow clip</a>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span data-year></span> @AlJR86. Independent FSD Europe tracker. Not affiliated with Tesla.</p>
+        <p>
+          <a href="tesla.html">Tesla</a>
+          ·
+          <a href="fsd-europe.html">FSD Europe</a>
+          ·
+          <a href="https://x.com/AlJR86">X</a>
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+    <script src="fsd-europe-data.js"></script>
+    <script src="fsd-europe.js"></script>
+  </body>
+</html>
