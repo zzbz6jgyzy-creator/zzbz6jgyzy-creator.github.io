@@ -19,6 +19,7 @@ Open `http://localhost:4173`.
 - `fsd-europe.html` — FSD Supervised Europe approval tracker
 - `tcmv.html` — TCMV meeting log (what was discussed, by date)
 - `reviews/` — Tesla car reviews (index + Model 3 / Y / S / X / Cybertruck)
+- Referral: [ts.la/alex474841](https://ts.la/alex474841)
 - `dispatch/` — longer versions of posts, each linked back to X
 - `about.html` — who is behind the account
 - `callback.html` — Tesla OAuth callback (unchanged)
