@@ -1112,6 +1112,81 @@ a.stat:hover {
   }
 }
 
+/* Tesla car reviews */
+.review-verdict {
+  margin: 1.4rem 0 1.1rem;
+  padding: 1rem 1.1rem;
+  border-left: 2px solid var(--tesla);
+  background: rgba(200, 16, 46, 0.06);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.review-verdict p:last-child {
+  margin: 0.35rem 0 0;
+  color: var(--ink);
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.review-scores {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.55rem;
+  margin: 1.2rem 0 1.4rem;
+}
+
+.review-score {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.review-score b {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.review-score span {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.review-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1.2rem 0 0.4rem;
+}
+
+.review-split .panel p:last-child {
+  margin: 0.35rem 0 0;
+}
+
+.review .button {
+  margin-right: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .review-scores {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .review-split {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
