@@ -776,11 +776,114 @@ a.stat:hover {
   margin: 2rem 0 0.6rem;
   font-size: 1.2rem;
   font-weight: 600;
+  scroll-margin-top: 5.5rem;
+}
+
+.article h3 {
+  margin: 1.35rem 0 0.45rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .article p,
 .article li {
   color: var(--ink-soft);
+}
+
+.article ol,
+.article ul {
+  margin: 0.4rem 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.article ol {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.article ol > li::marker {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--mute);
+}
+
+.toc {
+  margin: 1.4rem 0 1.8rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.toc p {
+  margin: 0 0 0.55rem;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.toc ol {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.28rem;
+}
+
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+.prompt {
+  margin: 0.9rem 0 1.2rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0a0b0e;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.callout {
+  margin: 1.2rem 0;
+  padding: 0.95rem 1.05rem;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--tesla);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.callout p {
+  margin: 0;
+}
+
+.callout p + p {
+  margin-top: 0.55rem;
+}
+
+.article code {
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  color: var(--ink);
+}
+
+.article .button {
+  margin: 0.35rem 0.45rem 0.15rem 0;
+}
+
+.panel .button {
+  margin-right: 0.45rem;
+  margin-top: 0.35rem;
 }
 
 .meta {
