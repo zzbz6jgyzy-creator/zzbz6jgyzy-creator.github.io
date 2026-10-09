@@ -63,73 +63,73 @@
       </header>
 
       <main id="main">
-        <section class="page-hero">
-          <p class="eyebrow reveal">SpaceX · Tracker</p>
-          <h1 class="reveal delay-1">Starship flight tracker</h1>
-          <p class="reveal delay-2">
+        <section class="page-hero" id="next">
+          <p class="eyebrow">SpaceX · Tracker</p>
+          <h1>Starship flight tracker</h1>
+          <p>
             Every flight so far — the date, what it tested, and whether it worked.
             Flight 15 is the first serious attempt to catch a Ship.
           </p>
-          <p class="meta reveal delay-3" id="starship-updated">Updated</p>
-          <nav class="fsd-jump reveal delay-3" aria-label="On this page">
-            <a href="#next">Flight 15</a>
+          <p class="meta" id="starship-updated">Updated</p>
+          <p class="starship-hero-kicker" id="starship-next-date">NET</p>
+          <div class="starship-count" aria-hidden="true">
+            <div class="starship-count-cell">
+              <b id="starship-cd-days">00</b>
+              <span>Days</span>
+            </div>
+            <div class="starship-count-cell">
+              <b id="starship-cd-hours">00</b>
+              <span>Hours</span>
+            </div>
+            <div class="starship-count-cell">
+              <b id="starship-cd-mins">00</b>
+              <span>Minutes</span>
+            </div>
+            <div class="starship-count-cell">
+              <b id="starship-cd-secs">00</b>
+              <span>Seconds</span>
+            </div>
+          </div>
+          <p class="starship-cd-status" id="starship-cd-status"></p>
+          <nav class="fsd-jump" aria-label="On this page">
             <a href="#log">Flight log</a>
+            <a href="/calendar.html">Calendar</a>
           </nav>
         </section>
 
         <section class="section" style="padding-top: 1.4rem" aria-labelledby="starship-summary-heading">
           <div class="section-head">
-            <h2 id="starship-summary-heading" class="reveal">Snapshot</h2>
-            <p class="reveal delay-1">Fourteen flown. The next one is the catch.</p>
+            <h2 id="starship-summary-heading">Snapshot</h2>
+            <p>Fourteen flown. The next one is the catch.</p>
           </div>
           <div class="stats">
-            <a class="stat reveal" href="#log">
+            <a class="stat" href="#log">
               <b id="starship-flown-count">0</b>
               <span>Flights flown</span>
             </a>
-            <a class="stat reveal delay-1" href="#log">
+            <a class="stat" href="#log">
               <b id="starship-worked-count">0</b>
               <span>Worked</span>
             </a>
-            <a class="stat reveal delay-2" href="#log">
+            <a class="stat" href="#log">
               <b id="starship-partial-count">0</b>
               <span>Partial</span>
             </a>
-            <a class="stat reveal delay-3" href="#log">
+            <a class="stat" href="#log">
               <b id="starship-failed-count">0</b>
               <span>Failed</span>
             </a>
           </div>
         </section>
 
-        <section class="section" id="next" aria-labelledby="starship-next-heading">
+        <section class="section" aria-labelledby="starship-next-heading">
           <div class="section-head">
-            <h2 id="starship-next-heading" class="reveal">Countdown to Flight 15</h2>
-            <p class="reveal delay-1" id="starship-next-date">NET</p>
+            <h2 id="starship-next-heading">Flight 15</h2>
+            <p id="starship-next-flight">Flight 15</p>
           </div>
-          <article class="panel starship-next reveal">
-            <p class="eyebrow" id="starship-next-flight">Flight 15</p>
+          <article class="panel starship-next">
             <h3 id="starship-next-headline">First serious Ship catch</h3>
             <p class="starship-hw" id="starship-next-hw"></p>
-            <div class="starship-count" aria-hidden="true">
-              <div class="starship-count-cell">
-                <b id="starship-cd-days">00</b>
-                <span>Days</span>
-              </div>
-              <div class="starship-count-cell">
-                <b id="starship-cd-hours">00</b>
-                <span>Hours</span>
-              </div>
-              <div class="starship-count-cell">
-                <b id="starship-cd-mins">00</b>
-                <span>Minutes</span>
-              </div>
-              <div class="starship-count-cell">
-                <b id="starship-cd-secs">00</b>
-                <span>Seconds</span>
-              </div>
-            </div>
-            <p class="starship-cd-status" id="starship-cd-status"></p>
             <p id="starship-next-tested"></p>
             <p class="fsd-track-link"><a href="/calendar.html">Same date on the calendar →</a></p>
           </article>
