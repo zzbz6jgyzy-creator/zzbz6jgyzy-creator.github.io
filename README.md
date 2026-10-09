@@ -18,8 +18,9 @@ Open `http://localhost:4173`.
 - `news.html` — today’s Tesla, SpaceX and Grok headlines (live Google News in the browser, plus `news-data.json`)
 - `.github/workflows/news-snapshot.yml` — refreshes `news-data.json` on main about twice an hour
 - `tsla.html` / `calendar.html` — Markets and the Musk-world calendar
-- `games.html` — Games hub (Gold Cab, Robotaxi Boss, Catch)
-- `goldcab.html` — Gold Cab (drive a Cybercab, dodge Waymos)
+- `games.html` — Games hub (Cybercab Rush, Robotaxi Boss, Catch)
+- `cybercab.html` — Cybercab Rush (drive, pick up, charge, dodge Waymos)
+- `goldcab.html` — redirects to Cybercab Rush
 - `robotaxi.html` — Robotaxi Boss (Tesla fleet, one week)
 - `catch.html` — Catch (Starship chopsticks)
 - `tesla.html` / `spacex.html` / `grok.html` — the three desks
