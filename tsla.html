@@ -64,16 +64,22 @@
       <main id="main">
         <section class="page-hero" data-markets-hero data-markets-active="tsla">
           <p class="eyebrow reveal">Markets</p>
-          <h1 class="markets-h1 reveal delay-1" aria-live="polite">
-            <span class="markets-brand" data-markets-brand="tsla">
-              <img class="markets-logo" src="/assets/tesla-mark.svg" width="48" height="48" alt="" />
-              <span class="markets-ticker">TSLA</span>
-            </span>
-            <span class="markets-brand" data-markets-brand="spcx" hidden>
-              <img class="markets-logo" src="/assets/spacex-mark.png" width="48" height="48" alt="" />
-              <span class="markets-ticker">SPCX</span>
-            </span>
-          </h1>
+          <div class="markets-heading reveal delay-1">
+            <h1 class="markets-h1" aria-live="polite">
+              <span class="markets-brand" data-markets-brand="tsla">
+                <img class="markets-logo" src="/assets/tesla-mark.svg" width="48" height="48" alt="" />
+                <span class="markets-ticker">TSLA</span>
+              </span>
+              <span class="markets-brand" data-markets-brand="spcx" hidden>
+                <img class="markets-logo" src="/assets/spacex-mark.png" width="48" height="48" alt="" />
+                <span class="markets-ticker">SPCX</span>
+              </span>
+            </h1>
+            <div class="markets-quotes" role="group" aria-label="Live price and day's change">
+              <div class="markets-quote is-on" data-markets-quote="tsla"></div>
+              <div class="markets-quote" data-markets-quote="spcx" aria-hidden="true"></div>
+            </div>
+          </div>
           <p class="reveal delay-2" data-markets-lede>
             Live Tesla share price, the next print, and last deliveries. SPCX is the other tab.
           </p>

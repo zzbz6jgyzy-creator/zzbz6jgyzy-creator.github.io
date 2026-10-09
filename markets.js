@@ -58,6 +58,7 @@
   const chartLink = document.querySelector("[data-markets-chart-link]");
   const tabs = document.querySelectorAll("[data-markets-tab]");
   const panes = document.querySelectorAll("[data-markets-chart]");
+  const quotes = document.querySelectorAll("[data-markets-quote]");
   let active = "tsla";
 
   const mountWidget = (pane, symbol) => {
@@ -83,6 +84,28 @@
     pane.dataset.mounted = "true";
   };
 
+  const mountQuote = (pane, symbol) => {
+    if (!pane || pane.dataset.mounted === "true") return;
+    pane.replaceChildren();
+    const wrap = document.createElement("div");
+    wrap.className = "tradingview-widget-container";
+    const inner = document.createElement("div");
+    inner.className = "tradingview-widget-container__widget";
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js";
+    script.async = true;
+    script.textContent = JSON.stringify({
+      symbol,
+      width: "100%",
+      colorTheme: "dark",
+      isTransparent: true,
+      locale: "en",
+    });
+    wrap.append(inner, script);
+    pane.append(wrap);
+    pane.dataset.mounted = "true";
+  };
+
   const setSymbol = (id, { persistHash = true } = {}) => {
     if (!brands[id]) id = "tsla";
     active = id;
@@ -96,6 +119,12 @@
     document.querySelectorAll("[data-markets-brand]").forEach((el) => {
       const on = el.dataset.marketsBrand === id;
       el.hidden = !on;
+    });
+
+    quotes.forEach((pane) => {
+      const on = pane.dataset.marketsQuote === id;
+      pane.classList.toggle("is-on", on);
+      pane.setAttribute("aria-hidden", String(!on));
     });
 
     tabs.forEach((tab) => {
@@ -124,6 +153,9 @@
   window.addEventListener("hashchange", () => setSymbol(fromHash(), { persistHash: false }));
 
   setSymbol(fromHash(), { persistHash: false });
+  Object.keys(brands).forEach((id) => {
+    mountQuote(document.querySelector(`[data-markets-quote="${id}"]`), brands[id].widget);
+  });
   const other = active === "tsla" ? "spcx" : "tsla";
   const otherPane = document.querySelector(`[data-markets-chart="${other}"]`);
   if (otherPane && "requestIdleCallback" in window) {
