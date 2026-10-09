@@ -42,7 +42,7 @@
       body: JSON.stringify({
         email,
         source,
-        _subject: "Newsletter signup — @AlJR86",
+        _subject: "Newsletter signup — @ALJR86",
         _template: "box",
         _captcha: "false",
       }),

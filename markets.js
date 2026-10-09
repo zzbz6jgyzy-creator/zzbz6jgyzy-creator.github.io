@@ -4,13 +4,13 @@
 
   const brands = {
     tsla: {
-      title: "TSLA — @AlJR86",
+      title: "TSLA — @ALJR86",
       href: "https://www.tradingview.com/symbols/NASDAQ-TSLA/",
       lede: "Live Tesla share price, the next print, and last deliveries. SPCX is the other tab.",
       widget: "NASDAQ:TSLA",
     },
     spcx: {
-      title: "SPCX — @AlJR86",
+      title: "SPCX — @ALJR86",
       href: "https://www.tradingview.com/symbols/NASDAQ-SPCX/",
       lede: "SPCX is the SpaceX vehicle on Nasdaq. Switch back to TSLA for Tesla.",
       widget: "NASDAQ:SPCX",
