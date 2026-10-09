@@ -34,6 +34,13 @@
   flex-wrap: wrap;
 }
 
+.taxi-intro-side {
+  display: grid;
+  justify-items: end;
+  align-content: end;
+  gap: 0.55rem;
+}
+
 .taxi-best {
   margin: 0;
   color: var(--mute);
@@ -41,6 +48,10 @@
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.taxi-intro-side .button[hidden] {
+  display: none !important;
 }
 
 .taxi-play {
@@ -58,6 +69,7 @@
   background: var(--card);
   padding: 1rem 1rem 1.1rem;
   overflow: hidden;
+  min-height: 34rem;
 }
 
 .taxi-hud {
@@ -330,14 +342,32 @@
 }
 
 .taxi-overlay {
-  margin: 1rem -1rem -1.1rem;
-  padding: 1.1rem 1.2rem 1.2rem;
-  background: linear-gradient(180deg, transparent, rgba(12, 13, 16, 0.55) 18%, rgba(12, 13, 16, 0.94));
-  border-top: 1px solid var(--line);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  margin: 0;
+  padding: 1.2rem 1.2rem 1.35rem;
+  height: min(28rem, 70vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 13, 16, 0.28) 0%,
+    rgba(12, 13, 16, 0.82) 32%,
+    rgba(12, 13, 16, 0.96) 100%
+  );
 }
 
 .taxi-overlay[hidden] {
   display: none;
+}
+
+.taxi-overlay .button[hidden],
+.taxi-overlay a[hidden] {
+  display: none !important;
 }
 
 .taxi-kicker {

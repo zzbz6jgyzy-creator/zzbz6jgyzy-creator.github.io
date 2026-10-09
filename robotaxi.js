@@ -40,6 +40,7 @@
   const overlayTitle = root.querySelector("[data-overlay-title]");
   const overlayCopy = root.querySelector("[data-overlay-copy]");
   const playBtn = root.querySelector("[data-taxi-play]");
+  const heroPlay = root.querySelector("[data-taxi-hero-play]");
   const shareBtn = root.querySelector("[data-taxi-share]");
   const bestEl = root.querySelector("[data-taxi-best]");
   const boardList = root.querySelector("[data-board-list]");
@@ -247,6 +248,10 @@
     if (overlayTitle) overlayTitle.textContent = title;
     if (overlayCopy) overlayCopy.textContent = copy;
     if (playBtn) playBtn.textContent = playLabel || "Play";
+    if (heroPlay) {
+      heroPlay.hidden = false;
+      heroPlay.textContent = playLabel || "Play";
+    }
     if (shareBtn) {
       if (shareHref) {
         shareBtn.hidden = false;
@@ -261,6 +266,7 @@
   function hideOverlay() {
     overlay.hidden = true;
     if (shareBtn) shareBtn.hidden = true;
+    if (heroPlay) heroPlay.hidden = true;
   }
 
   function el(tag, className, text) {
@@ -750,6 +756,9 @@
   });
 
   playBtn?.addEventListener("click", () => {
+    startWeek();
+  });
+  heroPlay?.addEventListener("click", () => {
     startWeek();
   });
 
