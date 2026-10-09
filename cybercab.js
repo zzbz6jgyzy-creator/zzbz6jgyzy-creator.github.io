@@ -31,10 +31,10 @@
   const NAME_STORE = "aljr.cybercab.name";
   const SHARE_URL = "https://zzbz6jgyzy-creator.github.io/cybercab.html";
   const BOARD_MAX = 8;
-  const LANE_X = [-0.86, 0, 0.86];
+  const LANE_X = [-0.7, 0, 0.7];
   const PLAYER_Z = 0.56;
   const HIT_Z = 0.36;
-  const HIT_X = 0.24;
+  const HIT_X = 0.26;
   const CITY_WRAP = 14;
   const DROPS = ["Airport", "Hotel", "Downtown", "The Hills", "Station", "Harbor"];
   const SIGNS = ["BAY ST", "35", "AIRPT", "VALET", "NO PARK", "A1", "RUSH", "MAIN", "HOTEL"];
@@ -112,8 +112,8 @@
           seed: i * 19 + si * 7,
         });
       }
-      if (i % 2 === si) city.push({ kind: "light", side, z: z + 0.22 });
-      if (i % 3 === si) city.push({ kind: "palm", side, z: z + 0.38 });
+      city.push({ kind: "light", side, z: z + 0.16 + si * 0.08 });
+      if (i % 2 === si) city.push({ kind: "palm", side, z: z + 0.38 });
       if (i % 5 === si) {
         city.push({
           kind: "sign",
@@ -481,8 +481,8 @@
     const scale = lerp(1.22, 0.12, ease);
     const y = lerp(cssH * 0.96, cssH * 0.5, ease);
     const curveOff = (game?.curve || 0) * ease * ease;
-    const roadW = cssW * lerp(2.18, 0.36, ease);
-    const x = cssW * 0.5 + curveOff * cssW * 0.34 + (worldX - (game?.x || 0)) * roadW * 0.36;
+    const roadW = cssW * lerp(2.02, 0.3, ease);
+    const x = cssW * 0.5 + curveOff * cssW * 0.34 + (worldX - (game?.x || 0)) * roadW * 0.22;
     return { x, y, scale, roadW, ease };
   }
 
@@ -750,10 +750,10 @@
   function drawSky(ctx) {
     const g = ctx.createLinearGradient(0, 0, 0, cssH);
     g.addColorStop(0, "#050814");
-    g.addColorStop(0.28, "#10172c");
-    g.addColorStop(0.48, "#2a2436");
-    g.addColorStop(0.58, "#3a2a32");
-    g.addColorStop(1, "#0b0c10");
+    g.addColorStop(0.3, "#10182c");
+    g.addColorStop(0.48, "#161e30");
+    g.addColorStop(0.52, "#12161e");
+    g.addColorStop(1, "#0c0e14");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, cssW, cssH);
     stars.forEach((s) => {
@@ -775,11 +775,11 @@
   }
 
   function drawSkyline(ctx) {
-    const hy = cssH * 0.498;
+    const hy = cssH * 0.5;
     const fog = ctx.createLinearGradient(0, hy - cssH * 0.3, 0, hy);
     fog.addColorStop(0, "rgba(8,12,24,0)");
-    fog.addColorStop(0.5, "rgba(12,16,30,0.4)");
-    fog.addColorStop(1, "rgba(14,18,32,0.94)");
+    fog.addColorStop(0.55, "rgba(10,14,26,0.35)");
+    fog.addColorStop(1, "rgba(12,16,28,0.88)");
     ctx.fillStyle = fog;
     ctx.fillRect(0, hy - cssH * 0.32, cssW, cssH * 0.32);
     for (let i = 0; i < 38; i += 1) {
@@ -808,8 +808,8 @@
       }
     }
     const glow = ctx.createRadialGradient(cssW * 0.5, hy, 4, cssW * 0.5, hy, cssW * 0.58);
-    glow.addColorStop(0, "rgba(255,168,88,0.14)");
-    glow.addColorStop(1, "rgba(255,140,60,0)");
+    glow.addColorStop(0, "rgba(120,170,255,0.08)");
+    glow.addColorStop(1, "rgba(80,120,200,0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, hy - 48, cssW, 56);
   }
@@ -882,13 +882,13 @@
         ctx.fill();
       });
       if (stripe) {
-        ctx.fillStyle = "rgba(236,236,220,0.62)";
+        ctx.fillStyle = "rgba(236,236,220,0.82)";
         [-0.175, 0.175].forEach((off) => {
           ctx.beginPath();
-          ctx.moveTo(a.x + a.roadW * off - 1.1 * a.scale, a.y);
-          ctx.lineTo(a.x + a.roadW * off + 1.1 * a.scale, a.y);
-          ctx.lineTo(b.x + b.roadW * off + 1.1 * b.scale, b.y);
-          ctx.lineTo(b.x + b.roadW * off - 1.1 * b.scale, b.y);
+          ctx.moveTo(a.x + a.roadW * off - 1.6 * a.scale, a.y);
+          ctx.lineTo(a.x + a.roadW * off + 1.6 * a.scale, a.y);
+          ctx.lineTo(b.x + b.roadW * off + 1.6 * b.scale, b.y);
+          ctx.lineTo(b.x + b.roadW * off - 1.6 * b.scale, b.y);
           ctx.closePath();
           ctx.fill();
         });
@@ -904,10 +904,10 @@
 
   function drawBuilding(ctx, item) {
     const p = project(0, item.z);
-    if (p.scale < 0.05 || item.z < 3.4) return;
-    const w = item.w * p.roadW * 0.4;
-    const h = item.h * cssH * 0.2 * p.scale * 2.05;
-    const x = p.x + item.side * p.roadW * 1.42;
+    if (p.scale < 0.05 || item.z < 2.6) return;
+    const w = item.w * p.roadW * 0.38;
+    const h = item.h * cssH * 0.22 * p.scale * 2.05;
+    const x = p.x + item.side * p.roadW * 1.22;
     const y = p.y;
     const style = item.seed % 3;
     const glass = style === 0;
@@ -1101,10 +1101,10 @@
         drawBuilding(ctx, it.item);
       } else if (it.kind === "palm") {
         const p = project(0, it.item.z);
-        drawBillboard(ctx, sprites.palm, p.x + it.item.side * p.roadW * 1.08, p.y, 210 * p.scale);
+        drawBillboard(ctx, sprites.palm, p.x + it.item.side * p.roadW * 0.92, p.y, 220 * p.scale);
       } else if (it.kind === "light") {
         const p = project(0, it.item.z);
-        const x = p.x + it.item.side * p.roadW * 0.7;
+        const x = p.x + it.item.side * p.roadW * 0.64;
         ctx.save();
         ctx.globalCompositeOperation = "screen";
         ctx.fillStyle = "rgba(255,210,120,0.2)";
