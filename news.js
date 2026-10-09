@@ -1,13 +1,13 @@
 (() => {
-  const CACHE_KEY = "aljr-news-v1";
+  const CACHE_KEY = "aljr-news-v2";
   const CACHE_MS = 10 * 60 * 1000;
   const MAX_AGE_MS = 36 * 60 * 60 * 1000;
   const PER_TOPIC = 12;
   const SNAPSHOT = "/news-data.json";
   const TOPICS = [
-    { id: "tesla", label: "Tesla", query: "Tesla when:1d" },
-    { id: "spacex", label: "SpaceX", query: "SpaceX when:1d" },
-    { id: "grok", label: "Grok", query: "Grok xAI when:1d" },
+    { id: "tesla", label: "Tesla", query: "Tesla when:1d", bing: "Tesla" },
+    { id: "spacex", label: "SpaceX", query: "SpaceX when:1d", bing: "SpaceX" },
+    { id: "grok", label: "Grok", query: "Grok xAI when:1d", bing: "Grok xAI" },
   ];
   const LABELS = Object.fromEntries(TOPICS.map((t) => [t.id, t.label]));
 
@@ -88,6 +88,54 @@
     return Math.abs(h).toString(16).padStart(8, "0");
   };
 
+  const titleKey = (title) => String(title || "").toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 80);
+
+  const cleanImage = (raw) => {
+    let url = String(raw || "").trim();
+    if (!url) return "";
+    if (url.startsWith("//")) url = `https:${url}`;
+    if (url.startsWith("/th?")) url = `https://www.bing.com${url}`;
+    url = url.replace(/^http:\/\//, "https://");
+    if (url.includes("bing.com/th") && !url.includes("w=")) url += (url.includes("?") ? "&" : "?") + "w=640";
+    if (/gstatic\.com\/gnews\/logo/.test(url)) return "";
+    return url;
+  };
+
+  const unwrapBingLink = (link) => {
+    try {
+      const parsed = new URL(link);
+      if (parsed.pathname.includes("apiclick.aspx")) {
+        const real = parsed.searchParams.get("url");
+        if (real) return real;
+      }
+    } catch {
+      /* keep */
+    }
+    return link;
+  };
+
+  const xmlChildText = (item, name) => {
+    const nodes = [...item.getElementsByTagName("*")];
+    const hit = nodes.find((node) => node.localName === name || node.tagName === name);
+    return hit ? (hit.textContent || "").trim() : "";
+  };
+
+  const imageFromHtml = (raw) => {
+    const match = String(raw || "").match(/<img[^>]+src=["']([^"']+)["']/i);
+    return match ? cleanImage(match[1]) : "";
+  };
+
+  const imageFromRssItem = (item) => {
+    const tagged = xmlChildText(item, "Image") || item.querySelector("thumbnail, enclosure")?.getAttribute("url") || "";
+    if (tagged) return cleanImage(tagged);
+    const media = item.getElementsByTagName("media:content")[0] || item.getElementsByTagName("content")[0];
+    if (media?.getAttribute("url")) return cleanImage(media.getAttribute("url"));
+    return imageFromHtml((item.querySelector("description") || {}).textContent || "");
+  };
+
+  const bingRssUrl = (query) =>
+    "https://www.bing.com/news/search?" + new URLSearchParams({ q: query, format: "rss" }).toString();
+
   const normalizeItems = (rows, topic, now) => {
     const cutoff = now - MAX_AGE_MS;
     const seen = new Set();
@@ -101,6 +149,7 @@
       const key = title.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 80);
       if (!key || seen.has(key)) continue;
       seen.add(key);
+      const image = cleanImage(row.image || row.thumbnail || "");
       out.push({
         id: row.id || hashId(topic, url),
         topic,
@@ -109,6 +158,7 @@
         url,
         published,
         snippet: row.snippet || snippetFrom(title, row.description || ""),
+        ...(image ? { image } : {}),
       });
       if (out.length >= PER_TOPIC) break;
     }
@@ -120,10 +170,14 @@
     if (doc.querySelector("parsererror")) throw new Error("xml");
     const rows = [...doc.querySelectorAll("item")].map((item) => ({
       title: (item.querySelector("title") || {}).textContent || "",
-      url: (item.querySelector("link") || {}).textContent || "",
+      url: unwrapBingLink((item.querySelector("link") || {}).textContent || ""),
       published: (item.querySelector("pubDate") || {}).textContent || "",
-      source: (item.querySelector("source") || {}).textContent || "",
+      source:
+        (item.querySelector("source") || {}).textContent ||
+        xmlChildText(item, "Source") ||
+        "",
       description: (item.querySelector("description") || {}).textContent || "",
+      image: imageFromRssItem(item),
     }));
     return normalizeItems(rows, topic, now);
   };
@@ -132,31 +186,62 @@
     if (!data || data.status !== "ok" || !Array.isArray(data.items)) throw new Error("rss2json");
     const rows = data.items.map((item) => ({
       title: item.title || "",
-      url: item.link || "",
+      url: unwrapBingLink(item.link || ""),
       published: item.pubDate || "",
       source: item.author || "",
       description: item.description || item.content || "",
+      image: item.thumbnail || item.enclosure?.link || imageFromHtml(item.description || item.content || ""),
     }));
     return normalizeItems(rows, topic, now);
   };
 
-  const fetchTopicLive = async (topic, now) => {
-    const rss = rssUrl(topic.query);
+  const fetchRssThroughProxies = async (rss, topicId, now) => {
     const encoded = encodeURIComponent(rss);
     try {
       const wrapped = await fetchJson(`https://api.allorigins.win/get?url=${encoded}`, 12000);
-      if (wrapped && wrapped.contents) return parseRssXml(wrapped.contents, topic.id, now);
+      if (wrapped && wrapped.contents) return parseRssXml(wrapped.contents, topicId, now);
     } catch {
       /* next proxy */
     }
     try {
       const xml = await fetchText(`https://api.allorigins.win/raw?url=${encoded}`, 10000);
-      return parseRssXml(xml, topic.id, now);
+      return parseRssXml(xml, topicId, now);
     } catch {
       /* next proxy */
     }
     const data = await fetchJson(`https://api.rss2json.com/v1/api.json?rss_url=${encoded}`, 10000);
-    return parseRss2Json(data, topic.id, now);
+    return parseRss2Json(data, topicId, now);
+  };
+
+  const fetchTopicLive = async (topic, now) => fetchRssThroughProxies(rssUrl(topic.query), topic.id, now);
+
+  const fetchTopicPhotos = async (topic, now) => {
+    if (!topic.bing) return [];
+    try {
+      return await fetchRssThroughProxies(bingRssUrl(topic.bing), topic.id, now);
+    } catch {
+      return [];
+    }
+  };
+
+  const attachImages = (items, photos) => {
+    const byKey = new Map();
+    photos.forEach((row) => {
+      if (row.image) byKey.set(titleKey(row.title), row.image);
+    });
+    return items.map((item) => {
+      if (item.image) return item;
+      const key = titleKey(item.title);
+      if (byKey.has(key)) return { ...item, image: byKey.get(key) };
+      const prefix = key.slice(0, 42);
+      if (!prefix) return item;
+      for (const [other, image] of byKey) {
+        if (other.includes(prefix) || prefix.includes(other.slice(0, 42))) {
+          return { ...item, image };
+        }
+      }
+      return item;
+    });
   };
 
   const readCache = () => {
@@ -231,18 +316,33 @@
       return;
     }
     slice.forEach((item) => {
-      const card = el("a", `news-card news-${item.topic}`);
+      const card = el("a", `news-card news-${item.topic}${item.image ? " has-image" : ""}`);
       card.href = item.url;
       card.target = "_blank";
       card.rel = "noopener noreferrer";
+      if (item.image) {
+        const img = document.createElement("img");
+        img.className = "news-thumb";
+        img.src = item.image;
+        img.alt = "";
+        img.loading = "lazy";
+        img.referrerPolicy = "no-referrer";
+        img.addEventListener("error", () => {
+          img.remove();
+          card.classList.remove("has-image");
+        });
+        card.append(img);
+      }
+      const body = el("div", "news-body");
       const meta = el("div", "news-meta");
       meta.append(el("span", "tag", LABELS[item.topic] || item.topic));
       const when = relTime(item.published, now);
       if (when) meta.append(el("span", "", when));
       if (item.source) meta.append(el("span", "", item.source));
-      card.append(meta);
-      card.append(el("h3", "", item.title));
-      if (item.snippet) card.append(el("p", "", item.snippet));
+      body.append(meta);
+      body.append(el("h3", "", item.title));
+      if (item.snippet) body.append(el("p", "", item.snippet));
+      card.append(body);
       list.append(card);
     });
   };
@@ -306,12 +406,28 @@
 
     const loadLive = async (base) => {
       const results = await Promise.allSettled(TOPICS.map((topic) => fetchTopicLive(topic, now)));
+      const photoResults = await Promise.allSettled(TOPICS.map((topic) => fetchTopicPhotos(topic, now)));
       const live = [];
+      const photos = [];
       results.forEach((result) => {
         if (result.status === "fulfilled" && result.value.length) live.push(...result.value);
       });
-      if (!live.length) throw new Error("live-empty");
-      return mergeByTopic(base, live);
+      photoResults.forEach((result) => {
+        if (result.status === "fulfilled" && result.value.length) photos.push(...result.value);
+      });
+      if (!live.length && !photos.length) throw new Error("live-empty");
+      const merged = mergeByTopic(base, live.length ? live : photos);
+      const pictured = attachImages(merged, [...base, ...photos]);
+      const seen = new Set(pictured.map((item) => titleKey(item.title)));
+      photos.forEach((row) => {
+        const key = titleKey(row.title);
+        if (row.image && key && !seen.has(key)) {
+          seen.add(key);
+          pictured.push(row);
+        }
+      });
+      pictured.sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
+      return pictured;
     };
 
     const run = async (force) => {
