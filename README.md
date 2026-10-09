@@ -1,6 +1,6 @@
-# ALJR — Alex · Tesla, SpaceX & Grok
+# ALJR — Alex R · Tesla, SpaceX & Grok
 
-Tesla, SpaceX and Grok desk for [@AlJR86](https://x.com/AlJR86). News, numbers and launch footage. Not affiliated.
+Tesla, SpaceX and Grok desk for [@ALJR86](https://x.com/ALJR86). News, numbers and launch footage. Not affiliated.
 
 Static site for GitHub Pages.
 
