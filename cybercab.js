@@ -840,11 +840,11 @@
   }
 
   function drawBuilding(ctx, item) {
-    const p = project(item.side * 1.38, item.z);
+    const p = project(item.side * 1.62, item.z);
     if (p.scale < 0.05) return;
-    const w = item.w * p.roadW * 0.92;
-    const h = item.h * cssH * 0.38 * p.scale * 2.55;
-    const x = p.x + item.side * p.roadW * 0.98;
+    const w = item.w * p.roadW * 0.72;
+    const h = item.h * cssH * 0.4 * p.scale * 2.55;
+    const x = p.x + item.side * p.roadW * 1.08;
     const y = p.y;
     const style = item.seed % 3;
     const glass = style === 0;
@@ -887,8 +887,8 @@
         }
       }
     }
-    if (p.scale > 0.16) {
-      ctx.fillStyle = "rgba(255, 206, 130, 0.28)";
+    if (p.scale > 0.1) {
+      ctx.fillStyle = "rgba(255, 206, 130, 0.3)";
       ctx.fillRect(x - w * 0.42, y - h * 0.15, w * 0.84, h * 0.13);
       ctx.fillStyle = hotel ? "#8a2030" : glass ? "#1a3c72" : "#2a3038";
       ctx.fillRect(x - w * 0.46, y - h * 0.175, w * 0.92, 5 * p.scale);
@@ -898,7 +898,7 @@
   function drawSign(ctx, item) {
     const p = project(item.side * 0.86, item.z);
     if (p.scale < 0.06) return;
-    const h = 52 * p.scale * 1.85;
+    const h = 38 * p.scale * 1.7;
     const x = p.x + item.side * p.roadW * 0.62;
     const y = p.y;
     ctx.fillStyle = "#3a4048";
@@ -941,7 +941,7 @@
     ctx.globalAlpha = 0.88;
     ctx.fillStyle = color;
     ctx.beginPath();
-    ctx.ellipse(x, y - 4, 30 * scale, 11 * scale, 0, 0, Math.PI * 2);
+    ctx.ellipse(x, y - 4, 36 * scale, 13 * scale, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.strokeStyle = "rgba(255,255,255,0.45)";
     ctx.lineWidth = Math.max(1, 1.4 * scale);
@@ -1011,6 +1011,18 @@
     drawSkyline(ctx);
     drawRoad(ctx);
 
+    const layer = {
+      build: 0,
+      palm: 1,
+      light: 1,
+      sign: 1,
+      traffic: 1,
+      pax: 2,
+      charge: 2,
+      drop: 2,
+      car: 3,
+      player: 3,
+    };
     const items = city.map((item) => ({ z: item.z, kind: item.kind, item }));
     if (game) {
       game.charges.forEach((ch) => items.push({ z: ch.z, kind: "charge", ch }));
@@ -1019,7 +1031,7 @@
       game.cars.forEach((c) => items.push({ z: c.z, kind: "car", c }));
       items.push({ z: PLAYER_Z, kind: "player" });
     }
-    items.sort((a, b) => b.z - a.z);
+    items.sort((a, b) => b.z - a.z || (layer[a.kind] || 0) - (layer[b.kind] || 0));
 
     items.forEach((it) => {
       if (it.kind === "build") {
@@ -1056,14 +1068,14 @@
         );
         drawPool(ctx, p.x, p.y, p.scale, "rgba(125,255,176,0.28)");
         const side = it.ch.lane === 2 ? 1 : -1;
-        const curb = project(side * 0.9, it.ch.z);
-        drawBillboard(ctx, sprites.charger, curb.x + side * curb.roadW * 0.55, curb.y, 78 * p.scale);
+        const curb = project(LANE_X[it.ch.lane] + side * 0.42, it.ch.z);
+        drawBillboard(ctx, sprites.charger, curb.x, curb.y, Math.max(32, 96 * p.scale));
       } else if (it.kind === "pax") {
         const p = project(LANE_X[game.pax.lane], game.pax.z);
         drawPad(ctx, p.x, p.y, p.scale, "rgba(122,215,255,0.82)", "PICK", game.pax.dest);
         const side = game.pax.lane === 0 ? -1 : 1;
-        const curb = project(side * 0.82, game.pax.z);
-        drawBillboard(ctx, sprites.pax, curb.x + side * curb.roadW * 0.5, curb.y, 84 * p.scale);
+        const curb = project(LANE_X[game.pax.lane] + side * 0.4, game.pax.z);
+        drawBillboard(ctx, sprites.pax, curb.x, curb.y, Math.max(40, 132 * p.scale));
       } else if (it.kind === "drop") {
         const p = project(LANE_X[game.drop.lane], game.drop.z);
         drawPad(ctx, p.x, p.y, p.scale, "rgba(230,195,106,0.88)", "DROP", game.drop.dest);
