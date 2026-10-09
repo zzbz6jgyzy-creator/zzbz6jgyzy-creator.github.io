@@ -15,6 +15,10 @@ Open `http://localhost:4173`.
 ## Pages
 
 - `index.html` — profile expansion
+- `news.html` — today’s Tesla, SpaceX and Grok headlines (live Google News in the browser, plus `news-data.json`)
+- `.github/workflows/news-snapshot.yml` — refreshes `news-data.json` on main about twice an hour
+- `tsla.html` / `calendar.html` — Markets and the Musk-world calendar
+- `games.html` — Catch
 - `tesla.html` / `spacex.html` / `grok.html` — the three desks
 - `fsd-europe.html` — FSD Supervised Europe tracker (national approvals + TCMV meetings)
 - `tcmv.html` — redirects to `fsd-europe.html#tcmv`
