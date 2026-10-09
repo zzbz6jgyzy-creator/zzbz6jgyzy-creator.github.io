@@ -1923,13 +1923,48 @@ a.referral-banner:hover {
 
 .page-hero h1.markets-h1 {
   font-size: inherit;
+  margin: 0;
+}
+
+.markets-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 1rem;
+  margin: 0.25rem 0 0.7rem;
 }
 
 .markets-h1 {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin: 0.25rem 0 0.7rem;
+  margin: 0;
+}
+
+.markets-quotes {
+  position: relative;
+  flex: 1 1 16rem;
+  min-width: min(100%, 16rem);
+  max-width: 22rem;
+  height: 101px;
+}
+
+.markets-quote {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.markets-quote:not(.is-on) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.markets-quote .tradingview-widget-container,
+.markets-quote iframe {
+  display: block;
+  width: 100%;
+  height: 101px;
 }
 
 .markets-brand {
