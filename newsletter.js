@@ -1,6 +1,6 @@
 (() => {
   // Signups go to Beehiiv (Supercharged Daily). No API key or email address in public code.
-  const SUBSCRIBE_URL = "https://alexs-newsletter-84b17e.beehiiv.com/subscribe";
+  const SUBSCRIBE_URL = "https://alexs-newsletter-84b17e.beehiiv.com/";
   const bind = (root) => {
     const form = root.querySelector("[data-newsletter-form]");
     if (!form || form.dataset.bound) return;
@@ -17,8 +17,8 @@
       }
       const url = SUBSCRIBE_URL + "?email=" + encodeURIComponent(email) +
         "&utm_source=website&utm_medium=" + encodeURIComponent(location.pathname);
-      if (status) { status.textContent = "Opening Supercharged Daily to confirm…"; status.classList.add("is-ok"); }
-      window.open(url, "_blank", "noopener") || (location.href = url);
+      if (status) { status.textContent = "Taking you to Supercharged Daily…"; status.classList.add("is-ok"); }
+      location.href = url;
     });
   };
   document.querySelectorAll("[data-newsletter]").forEach(bind);
