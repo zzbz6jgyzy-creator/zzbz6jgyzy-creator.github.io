@@ -1470,6 +1470,142 @@ article.story-card {
   }
 }
 
+.starship-next h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+}
+
+.starship-hw {
+  margin: 0 0 0.85rem;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.starship-count {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(4.4rem, 1fr));
+  gap: 0.55rem;
+  max-width: 28rem;
+  margin: 0 0 0.9rem;
+}
+
+.starship-count-cell {
+  text-align: center;
+  padding: 0.75rem 0.4rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(236, 236, 232, 0.03);
+}
+
+.starship-count-cell b {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.starship-count-cell span {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--mute);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.starship-cd-status {
+  margin: 0 0 0.85rem;
+  color: var(--mute);
+  font-size: 0.88rem;
+}
+
+.starship-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.starship-flight {
+  padding: 1.05rem 1.15rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.starship-flight.is-next {
+  border-color: rgba(157, 183, 232, 0.35);
+  background:
+    linear-gradient(135deg, rgba(157, 183, 232, 0.08), transparent 55%),
+    var(--card);
+}
+
+.starship-flight-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.starship-flight-num {
+  font-weight: 600;
+}
+
+.starship-flight time {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--mute);
+}
+
+.starship-flight h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.08rem;
+}
+
+.starship-flight p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.starship-status-worked {
+  color: #9fd4b0;
+  border-color: rgba(159, 212, 176, 0.35);
+  background: rgba(159, 212, 176, 0.08);
+}
+
+.starship-status-partial {
+  color: #e2c48a;
+  border-color: rgba(226, 196, 138, 0.35);
+  background: rgba(226, 196, 138, 0.08);
+}
+
+.starship-status-failed {
+  color: #e29a9a;
+  border-color: rgba(226, 154, 154, 0.35);
+  background: rgba(226, 154, 154, 0.08);
+}
+
+.starship-status-next {
+  color: #9db7e8;
+  border-color: rgba(157, 183, 232, 0.35);
+  background: rgba(157, 183, 232, 0.08);
+}
+
+.referral-banner-spacex {
+  background:
+    linear-gradient(135deg, rgba(157, 183, 232, 0.14), transparent 55%),
+    var(--card);
+}
+
+@media (max-width: 520px) {
+  .starship-count {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .tcmv-list {
   display: grid;
   gap: 0.85rem;
