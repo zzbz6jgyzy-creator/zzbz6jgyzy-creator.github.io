@@ -254,7 +254,6 @@ a:hover {
 
 .hero-kicker {
   margin: 0 0 0.2rem;
-  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -322,6 +321,10 @@ a:hover {
   padding: 3.6rem 0 0.2rem;
 }
 
+.hero + .latest-strip {
+  padding-top: 1.8rem;
+}
+
 .section-head {
   display: flex;
   justify-content: space-between;
@@ -384,6 +387,7 @@ a.stat:hover {
 
 .stat b {
   display: block;
+  font-family: var(--font-mono);
   font-size: 1.55rem;
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -458,7 +462,6 @@ a.stat:hover {
 
 .eyebrow {
   margin: 0 0 0.45rem;
-  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -578,7 +581,6 @@ article.story-card {
   background: rgba(12, 13, 16, 0.72);
   border: 1px solid var(--line);
   color: var(--ink);
-  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -650,7 +652,6 @@ article.story-card {
   background: rgba(12, 13, 16, 0.78);
   border: 1px solid var(--line-strong);
   color: var(--ink);
-  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -722,7 +723,6 @@ article.story-card {
   width: fit-content;
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
-  font-family: var(--font-mono);
   font-size: 0.64rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -925,7 +925,6 @@ article.story-card {
 }
 
 .article ol > li::marker {
-  font-family: var(--font-mono);
   font-size: 0.82rem;
   color: var(--mute);
 }
@@ -941,7 +940,6 @@ article.story-card {
 .toc p {
   margin: 0 0 0.55rem;
   color: var(--mute);
-  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1315,7 +1313,6 @@ article.story-card {
   align-items: center;
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
-  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1432,7 +1429,6 @@ article.story-card {
   align-items: center;
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
-  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1889,7 +1885,6 @@ a.referral-banner:hover {
   background: rgba(12, 13, 16, 0.78);
   border: 1px solid var(--line);
   color: var(--ink);
-  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2129,7 +2124,6 @@ a.cal-title:hover {
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
   border: 1px solid var(--line);
-  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
