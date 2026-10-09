@@ -2,29 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Catch — @AlJR86</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Games — @AlJR86</title>
     <meta
       name="description"
-      content="Catch: fly Starship into the chopsticks. A fan-made SpaceX game from @AlJR86."
+      content="Fan-made games from @AlJR86: Robotaxi Boss and Catch. Not affiliated with Tesla or SpaceX."
     />
     <link rel="canonical" href="https://zzbz6jgyzy-creator.github.io/games.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="@AlJR86" />
-    <meta property="og:title" content="Catch — @AlJR86" />
-    <meta property="og:description" content="Catch: fly Starship into the chopsticks. A fan-made SpaceX game from @AlJR86." />
+    <meta property="og:title" content="Games — @AlJR86" />
+    <meta property="og:description" content="Fan-made games from @AlJR86: Robotaxi Boss and Catch. Not affiliated with Tesla or SpaceX." />
     <meta property="og:url" content="https://zzbz6jgyzy-creator.github.io/games.html" />
-    <meta property="og:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/starship-catch-poster.jpg" />
-    <meta property="og:image:alt" content="Starship approaching the chopsticks" />
+    <meta property="og:image" content="https://zzbz6jgyzy-creator.github.io/assets/og.jpg" />
+    <meta property="og:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="675" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@AlJR86" />
     <meta name="twitter:creator" content="@AlJR86" />
-    <meta name="twitter:title" content="Catch — @AlJR86" />
-    <meta name="twitter:description" content="Catch: fly Starship into the chopsticks. A fan-made SpaceX game from @AlJR86." />
-    <meta name="twitter:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/starship-catch-poster.jpg" />
-    <meta name="twitter:image:alt" content="Starship approaching the chopsticks" />
+    <meta name="twitter:title" content="Games — @AlJR86" />
+    <meta name="twitter:description" content="Fan-made games from @AlJR86: Robotaxi Boss and Catch. Not affiliated with Tesla or SpaceX." />
+    <meta name="twitter:image" content="https://zzbz6jgyzy-creator.github.io/assets/og.jpg" />
+    <meta name="twitter:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +34,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/catch.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -61,99 +60,50 @@
         </nav>
       </header>
 
-      <main id="main" class="catch-page">
-        <section class="catch-intro">
-          <p class="eyebrow">Games · Catch</p>
-          <div class="catch-intro-row">
-            <div>
-              <h1>Catch</h1>
-              <p>
-                Fly Starship into the chopsticks. Upright, slow, pins on the arms —
-                not the ocean, not the tower.
-              </p>
-            </div>
-            <p class="catch-best" data-catch-best>Best 0</p>
-          </div>
+      <main id="main">
+        <section class="page-hero">
+          <p class="eyebrow reveal">Games</p>
+          <h1 class="reveal delay-1">Play the desk</h1>
+          <p class="reveal delay-2">
+            Two fan-made games. Run a robotaxi fleet for a week, or catch Starship
+            on the chopsticks. Neither is a simulator.
+          </p>
         </section>
 
-        <div class="catch-play">
-          <div class="catch-stage-wrap">
-            <div class="catch-stage" data-catch-stage>
-              <canvas data-catch-canvas aria-label="Starship chopsticks catch game"></canvas>
-              <div class="catch-hud" data-catch-hud hidden>
-                <span data-hud-flight>Flight 1</span>
-                <span data-hud-fuel>Fuel 100</span>
-                <span data-hud-speed>0.0 m/s</span>
-                <span data-hud-score>0</span>
-              </div>
-              <div class="catch-overlay" data-catch-overlay>
-                <p class="catch-kicker" data-overlay-kicker>Starbase</p>
-                <h2 data-overlay-title>Catch the Ship</h2>
-                <p data-overlay-copy>
-                  Tap to nudge, hold to bank. Hold throttle to kill speed. Get the
-                  pins onto the arms.
-                </p>
-                <p class="catch-overlay-actions">
-                  <button type="button" class="button button-primary" data-catch-play>Play</button>
-                </p>
-              </div>
-            </div>
-
-            <div class="catch-pad" data-catch-pad>
-              <button type="button" data-hold="left" aria-label="Tilt left">◀</button>
-              <button type="button" class="catch-throttle" data-hold="thrust" aria-label="Throttle">Throttle</button>
-              <button type="button" data-hold="right" aria-label="Tilt right">▶</button>
-            </div>
-
-            <p class="catch-keys">
-              <kbd>A</kbd><kbd>D</kbd> tap to nudge, hold to bank
-              ·
-              <kbd>W</kbd> / <kbd>Space</kbd> throttle
-              ·
-              <kbd>P</kbd> pause
-              ·
-              <kbd>M</kbd> mute
-            </p>
+        <section class="section" aria-labelledby="titles-heading">
+          <div class="section-head">
+            <h2 id="titles-heading" class="reveal">Titles</h2>
+            <p class="reveal delay-1">Tesla on the left. SpaceX on the right.</p>
           </div>
-
-          <aside class="catch-board" aria-label="Catch leaderboard">
-            <div class="catch-board-head">
-              <p class="eyebrow">Board</p>
-              <button type="button" class="catch-mute" data-catch-mute>Sound on</button>
-            </div>
-            <label class="catch-callsign">
-              <span>Callsign</span>
-              <input
-                id="catch-callsign"
-                name="callsign"
-                type="text"
-                inputmode="text"
-                enterkeyhint="done"
-                autocapitalize="characters"
-                autocorrect="off"
-                data-catch-name
-                maxlength="12"
-                spellcheck="false"
-                autocomplete="off"
-                value="Pilot"
-              />
-            </label>
-            <p class="catch-board-now" data-board-now>This run · on the pad</p>
-            <ol class="catch-board-list" data-board-list></ol>
-            <p class="catch-board-note">
-              Top runs on this browser. The board updates when you catch, and
-              locks a run when it ends.
-            </p>
-          </aside>
-        </div>
-        <p class="catch-fineprint">
-          Fan-made. Not affiliated with SpaceX. Nothing here is a simulator.
-        </p>
+          <div class="desks desks-two">
+            <a class="desk desk-robotaxi reveal" href="/robotaxi.html">
+              <p class="eyebrow">Tesla · 5–10 min</p>
+              <h3>Robotaxi Boss</h3>
+              <p>
+                Five cabs, one city, seven days. Deploy, charge overnight or
+                fast-charge, buy more when you can.
+              </p>
+            </a>
+            <a class="desk desk-catch reveal delay-1" href="/catch.html">
+              <p class="eyebrow">SpaceX · Catch</p>
+              <h3>Catch</h3>
+              <p>
+                Fly Starship into the chopsticks. Upright, slow, pins on the arms.
+              </p>
+            </a>
+          </div>
+        </section>
       </main>
 
       <footer class="site-footer">
         <p>© <span data-year></span> Alex · @AlJR86. Fan account. Not affiliated with Tesla, SpaceX or xAI.</p>
         <p>
+          <a href="/robotaxi.html">Robotaxi Boss</a>
+          ·
+          <a href="/catch.html">Catch</a>
+          ·
+          <a href="/tesla.html">Tesla</a>
+          ·
           <a href="/spacex.html">SpaceX</a>
           ·
           <a href="https://x.com/AlJR86">X profile</a>
@@ -161,6 +111,5 @@
       </footer>
     </div>
     <script src="/script.js"></script>
-    <script src="/catch.js"></script>
   </body>
 </html>

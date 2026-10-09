@@ -18,7 +18,9 @@ Open `http://localhost:4173`.
 - `news.html` — today’s Tesla, SpaceX and Grok headlines (live Google News in the browser, plus `news-data.json`)
 - `.github/workflows/news-snapshot.yml` — refreshes `news-data.json` on main about twice an hour
 - `tsla.html` / `calendar.html` — Markets and the Musk-world calendar
-- `games.html` — Catch
+- `games.html` — Games hub (Robotaxi Boss + Catch)
+- `robotaxi.html` — Robotaxi Boss (Tesla fleet, one week)
+- `catch.html` — Catch (Starship chopsticks)
 - `tesla.html` / `spacex.html` / `grok.html` — the three desks
 - `fsd-europe.html` — FSD Supervised Europe tracker (national approvals + TCMV meetings)
 - `tcmv.html` — redirects to `fsd-europe.html#tcmv`

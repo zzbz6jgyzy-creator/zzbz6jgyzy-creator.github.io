@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Robotaxi Boss — @AlJR86</title>
+    <meta
+      name="description"
+      content="Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from @AlJR86."
+    />
+    <link rel="canonical" href="https://zzbz6jgyzy-creator.github.io/robotaxi.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="@AlJR86" />
+    <meta property="og:title" content="Robotaxi Boss — @AlJR86" />
+    <meta property="og:description" content="Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from @AlJR86." />
+    <meta property="og:url" content="https://zzbz6jgyzy-creator.github.io/robotaxi.html" />
+    <meta property="og:image" content="https://zzbz6jgyzy-creator.github.io/assets/og.jpg" />
+    <meta property="og:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AlJR86" />
+    <meta name="twitter:creator" content="@AlJR86" />
+    <meta name="twitter:title" content="Robotaxi Boss — @AlJR86" />
+    <meta name="twitter:description" content="Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from @AlJR86." />
+    <meta name="twitter:image" content="https://zzbz6jgyzy-creator.github.io/assets/og.jpg" />
+    <meta name="twitter:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/robotaxi.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/index.html">
+          <span class="brand-mark" aria-hidden="true">AL</span>
+          <span class="brand-text">ALJR<span class="brand-dot">86</span></span>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="/tesla.html">Tesla</a>
+          <a href="/tsla.html">Markets</a>
+          <a href="/news.html">News</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/games.html" aria-current="page">Games</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
+          <a class="nav-cta" href="https://x.com/AlJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main" class="taxi-page" data-taxi>
+        <section class="taxi-intro">
+          <p class="eyebrow"><a href="/games.html">Games</a> · Robotaxi Boss</p>
+          <div class="taxi-intro-row">
+            <div>
+              <h1>Robotaxi Boss</h1>
+              <p>
+                Five cabs. One city. Seven days. Send them, charge them, buy more
+                when the cash is real. Rain, rush hour, a concert, and the odd
+                breakdown do the rest.
+              </p>
+            </div>
+            <p class="taxi-best" data-taxi-best>Best 0</p>
+          </div>
+        </section>
+
+        <div class="taxi-play">
+          <div class="taxi-stage-wrap">
+            <div class="taxi-stage">
+              <div class="taxi-hud" data-taxi-hud>
+                <span data-hud-day>Day 1 · Mon</span>
+                <span data-hud-cash>$4,800</span>
+                <span data-hud-fleet>5 cabs</span>
+                <span data-hud-rep>Rep 72</span>
+              </div>
+              <ol class="taxi-week" data-taxi-week aria-label="Week"></ol>
+              <p class="taxi-forecast" data-taxi-forecast>Open the garage to start the week.</p>
+
+              <div class="taxi-map" data-taxi-map role="list"></div>
+
+              <div class="taxi-fleet-head">
+                <p class="eyebrow">Fleet</p>
+                <p data-taxi-idle>5 idle</p>
+              </div>
+              <div class="taxi-fleet" data-taxi-fleet></div>
+
+              <div class="taxi-actions" data-taxi-actions></div>
+              <ol class="taxi-log" data-taxi-log aria-live="polite"></ol>
+
+              <div class="taxi-overlay" data-taxi-overlay>
+                <p class="taxi-kicker" data-overlay-kicker>Bay View</p>
+                <h2 data-overlay-title>Open the garage</h2>
+                <p data-overlay-copy>
+                  Assign cabs on the map. Overnight charging is cheap. Fast-charging
+                  fills a cab now, at a price. A week is 5–10 minutes. Put the score on X.
+                </p>
+                <p class="taxi-overlay-actions">
+                  <button type="button" class="button button-primary" data-taxi-play>Play</button>
+                  <a class="button button-ghost" data-taxi-share hidden href="#" target="_blank" rel="noopener noreferrer">Share on X</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="taxi-board" aria-label="Robotaxi leaderboard">
+            <div class="taxi-board-head">
+              <p class="eyebrow">Board</p>
+              <button type="button" class="taxi-mute" data-taxi-mute>Sound on</button>
+            </div>
+            <label class="taxi-callsign">
+              <span>Callsign</span>
+              <input
+                id="taxi-callsign"
+                name="callsign"
+                type="text"
+                inputmode="text"
+                enterkeyhint="done"
+                autocapitalize="characters"
+                autocorrect="off"
+                data-taxi-name
+                maxlength="12"
+                spellcheck="false"
+                autocomplete="off"
+                value="Boss"
+              />
+            </label>
+            <p class="taxi-board-now" data-board-now>This week · on the pad</p>
+            <ol class="taxi-board-list" data-board-list></ol>
+            <p class="taxi-board-note">
+              Top weeks on this browser. Score is cash, fleet, rides and reputation.
+              Share the number on X.
+            </p>
+          </aside>
+        </div>
+        <p class="taxi-fineprint">
+          Fan-made. Not affiliated with Tesla. Not a simulator, not a market, not advice.
+        </p>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span data-year></span> Alex · @AlJR86. Fan account. Not affiliated with Tesla, SpaceX or xAI.</p>
+        <p>
+          <a href="/games.html">Games</a>
+          ·
+          <a href="/catch.html">Catch</a>
+          ·
+          <a href="/tesla.html">Tesla</a>
+          ·
+          <a href="https://x.com/AlJR86">X profile</a>
+        </p>
+      </footer>
+    </div>
+    <script src="/script.js"></script>
+    <script src="/robotaxi.js"></script>
+  </body>
+</html>

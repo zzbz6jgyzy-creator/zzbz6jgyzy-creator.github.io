@@ -403,6 +403,10 @@ a.stat:hover {
   gap: 0.85rem;
 }
 
+.desks-two {
+  grid-template-columns: 1fr 1fr;
+}
+
 .desk {
   display: grid;
   align-content: end;
@@ -434,6 +438,14 @@ a.stat:hover {
 
 .desk-grok {
   --desk-image: url("assets/banner.jpg");
+}
+
+.desk-robotaxi {
+  --desk-image: url("assets/fsd-snow.jpg");
+}
+
+.desk-catch {
+  --desk-image: url("assets/dispatch/starship-catch-poster.jpg");
 }
 
 .eyebrow {
