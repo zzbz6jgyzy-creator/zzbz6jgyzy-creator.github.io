@@ -505,12 +505,17 @@ a.stat:hover {
   text-decoration: none;
   background: var(--card);
   transition: border-color 0.2s ease, transform 0.2s ease;
+  scroll-margin-top: 5.5rem;
 }
 
 .story-card:hover {
   border-color: var(--line-strong);
   transform: translateY(-2px);
   color: inherit;
+}
+
+article.story-card {
+  cursor: default;
 }
 
 .story-card img,
@@ -914,6 +919,7 @@ a.stat:hover {
   border: 1px solid var(--line);
   background: #000;
   min-height: 200px;
+  scroll-margin-top: 5.5rem;
 }
 
 .figure-video video {
