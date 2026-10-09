@@ -1446,6 +1446,16 @@ a.stat:hover {
   font-weight: 500;
 }
 
+a.referral-banner {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.referral-banner:hover {
+  color: inherit;
+  border-color: var(--line-strong);
+}
+
 .review-referral {
   margin-top: 2.2rem;
   padding-top: 1.4rem;

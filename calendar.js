@@ -227,18 +227,29 @@
     const statusName = row.status?.name || "";
     const placeholder = d.getMonth() === 11 && d.getDate() === 31 && /to be determined|tbd/i.test(statusName);
     if (placeholder) return null;
-    const padName = row.pad?.name || "";
-    const loc = row.pad?.location?.name || "";
-    const where = [loc.replace(/, United States$/, ""), padName].filter(Boolean).join(" · ");
+    const rawLoc = row.pad?.location?.name || "";
+    const loc = /vandenberg/i.test(rawLoc)
+      ? "Vandenberg"
+      : /cape canaveral/i.test(rawLoc)
+        ? "Cape Canaveral"
+        : /kennedy/i.test(rawLoc)
+          ? "KSC"
+          : /starbase/i.test(rawLoc)
+            ? "Starbase"
+            : rawLoc.replace(/, United States$/, "").replace(/, USA$/, "");
+    const padName = (row.pad?.name || "")
+      .replace("Space Launch Complex ", "SLC-")
+      .replace("Launch Complex ", "LC-");
+    const where = [loc, padName].filter(Boolean).join(" · ");
     const go = /go for launch|in flight|hold/i.test(statusName);
     const statusAbbrev = row.status?.abbrev || "";
     return {
       id: `ll-${row.id}`,
-      title: row.name,
+      title: row.name.replace(/^Falcon 9 Block 5 \| /, "Falcon 9 · ").replace(/^Falcon Heavy \| /, "Falcon Heavy · "),
       start: net,
       group: "spacex",
       where,
-      note: row.mission?.description ? String(row.mission.description).slice(0, 180) : "",
+      note: "",
       href: row.url || "https://ll.thespacedevs.com",
       status: go ? "go" : statusAbbrev.toLowerCase() === "tbd" ? "tbd" : "net",
       precision: /go|hold|in flight/i.test(statusName) ? "datetime" : "day",
