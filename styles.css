@@ -806,6 +806,8 @@ article.story-card {
 .fsd-track-card {
   position: relative;
   padding-left: 1.35rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .fsd-track-card::before {
@@ -842,6 +844,8 @@ article.story-card {
 
 .fsd-track-link {
   font-weight: 500;
+  margin-top: auto;
+  padding-top: 0.35rem;
 }
 
 .fsd-tcmv-lead {
