@@ -1782,6 +1782,111 @@ a.referral-banner:hover {
   }
 }
 
+.page-hero h1.markets-h1 {
+  font-size: inherit;
+}
+
+.markets-h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.25rem 0 0.7rem;
+}
+
+.markets-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.markets-brand[hidden] {
+  display: none;
+}
+
+.markets-logo {
+  width: 2.7rem;
+  height: 2.7rem;
+  flex-shrink: 0;
+  border-radius: 12px;
+  display: block;
+  border: 1px solid var(--line);
+}
+
+.markets-h1 .markets-ticker {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.markets-chart {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+}
+
+.markets-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.55rem 0.65rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(12, 13, 16, 0.35);
+}
+
+.markets-tabs button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-soft);
+  border-radius: 8px;
+  padding: 0.35rem 0.65rem 0.35rem 0.35rem;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.markets-tabs button:hover {
+  color: var(--ink);
+}
+
+.markets-tabs button.is-on {
+  color: var(--ink);
+  background: rgba(236, 236, 232, 0.06);
+  border-color: var(--line);
+}
+
+.markets-tabs .markets-logo {
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 5px;
+}
+
+.tv-stack {
+  position: relative;
+  height: min(480px, 62vh);
+  min-height: 340px;
+}
+
+.tv-stack .tv-frame {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.tv-stack .tv-frame:not(.is-on) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .tv-frame {
   height: min(520px, 70vh);
   min-height: 380px;
@@ -1943,6 +2048,17 @@ a.cal-title:hover {
   .tv-frame {
     min-height: 320px;
     height: 70vw;
+  }
+
+  .tv-stack {
+    min-height: 280px;
+    height: 62vw;
+  }
+
+  .markets-logo {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 10px;
   }
 }
 
