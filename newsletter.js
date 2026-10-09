@@ -1,34 +1,6 @@
 (() => {
   const ENDPOINT = "https://formsubmit.co/ajax/alexrickard86@gmail.com";
   const STORAGE_KEY = "aljr-newsletter";
-  const BANNER_HTML = `
-    <div>
-      <p class="eyebrow">Newsletter</p>
-      <h2 id="newsletter-heading">Tesla, SpaceX and Grok in the inbox</h2>
-      <p>Headlines and notes from the desk. Independent, not affiliated. No spam.</p>
-    </div>
-    <form class="newsletter-form" data-newsletter-form>
-      <label class="visually-hidden" for="newsletter-email">Email</label>
-      <input id="newsletter-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" />
-      <input class="newsletter-honey" type="text" name="website" tabindex="-1" autocomplete="off" />
-      <button class="button button-primary" type="submit">Subscribe</button>
-    </form>
-    <p class="newsletter-status" data-newsletter-status role="status"></p>
-  `;
-  const FOOTER_HTML = `
-    <div>
-      <p class="eyebrow">Newsletter</p>
-      <h2>Get the desk by email</h2>
-      <p>Tesla, SpaceX and Grok from @AlJR86.</p>
-    </div>
-    <form class="newsletter-form" data-newsletter-form>
-      <label class="visually-hidden" for="newsletter-email-footer">Email</label>
-      <input id="newsletter-email-footer" name="email" type="email" required autocomplete="email" placeholder="you@email.com" />
-      <input class="newsletter-honey" type="text" name="website" tabindex="-1" autocomplete="off" />
-      <button class="button button-primary" type="submit">Subscribe</button>
-    </form>
-    <p class="newsletter-status" data-newsletter-status role="status"></p>
-  `;
 
   const already = () => {
     try {
@@ -53,7 +25,7 @@
   };
 
   const lock = (form, done) => {
-    form.querySelectorAll("input, button").forEach((el) => {
+    form.querySelectorAll("input[type='email'], button").forEach((el) => {
       el.disabled = done;
     });
     const button = form.querySelector("button[type='submit']");
@@ -92,7 +64,7 @@
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const honey = form.querySelector(".newsletter-honey");
+      const honey = form.querySelector("input[name='website']");
       if (honey && honey.value) {
         remember();
         lock(form, true);
@@ -128,21 +100,5 @@
     });
   };
 
-  document.querySelectorAll("[data-newsletter]").forEach((root) => {
-    if (!root.querySelector("[data-newsletter-form]")) {
-      root.innerHTML = BANNER_HTML;
-    }
-    const email = root.querySelector("input[type='email']");
-    if (email && !email.id) email.id = "newsletter-email";
-    bind(root);
-  });
-
-  if (!document.querySelector("[data-newsletter]") && document.querySelector(".site-footer")) {
-    const wrap = document.createElement("section");
-    wrap.className = "section newsletter-strip";
-    wrap.setAttribute("aria-label", "Newsletter");
-    wrap.innerHTML = `<div class="newsletter newsletter-compact reveal is-visible">${FOOTER_HTML}</div>`;
-    document.querySelector(".site-footer").before(wrap);
-    bind(wrap);
-  }
+  document.querySelectorAll("[data-newsletter]").forEach(bind);
 })();
