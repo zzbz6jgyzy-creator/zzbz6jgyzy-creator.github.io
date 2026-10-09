@@ -116,6 +116,12 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 0.45rem 0.55rem;
+  touch-action: manipulation;
+}
+
+.catch-callsign input:focus {
+  outline: 1px solid var(--ink-soft);
+  border-color: var(--ink-soft);
 }
 
 .catch-board-now {

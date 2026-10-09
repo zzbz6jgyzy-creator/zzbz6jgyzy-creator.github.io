@@ -269,12 +269,35 @@
     renderBoard();
   }
 
+  let keysLocked = false;
+
+  function lockGameKeys() {
+    keysLocked = true;
+    clearAllHolds();
+  }
+
+  function unlockGameKeys() {
+    keysLocked = false;
+  }
+
   if (nameInput) {
     const savedName = localStorage.getItem(NAME_STORE);
     if (savedName) nameInput.value = savedName.slice(0, 12);
     nameInput.addEventListener("input", () => {
       localStorage.setItem(NAME_STORE, callsign());
       renderBoard();
+    });
+    nameInput.addEventListener("focus", lockGameKeys);
+    nameInput.addEventListener("focusin", lockGameKeys);
+    nameInput.addEventListener("blur", unlockGameKeys);
+    ["keydown", "keyup", "keypress", "beforeinput"].forEach((type) => {
+      nameInput.addEventListener(
+        type,
+        (e) => {
+          e.stopPropagation();
+        },
+        true
+      );
     });
   }
 
@@ -1334,15 +1357,23 @@
   }
 
   function typingInField(el) {
-    if (!el || el === document.body) return false;
+    if (!el || el === document.body || el === document.documentElement) return false;
     const tag = el.tagName;
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true;
     if (el.isContentEditable) return true;
-    return Boolean(el.closest?.("input, textarea, select, [contenteditable='true']"));
+    return Boolean(el.closest?.("input, textarea, select, [contenteditable='true'], [data-catch-name]"));
+  }
+
+  function typingNow(e) {
+    if (keysLocked) return true;
+    if (e?.isComposing || e?.keyCode === 229) return true;
+    if (nameInput && document.activeElement === nameInput) return true;
+    if (typingInField(e?.target) || typingInField(document.activeElement)) return true;
+    return false;
   }
 
   window.addEventListener("keydown", (e) => {
-    if (typingInField(e.target)) return;
+    if (typingNow(e)) return;
     if (e.key === "p" || e.key === "P") {
       if (state === "fly") {
         state = "pause";
@@ -1364,6 +1395,7 @@
   });
 
   window.addEventListener("keyup", (e) => {
+    if (typingNow(e)) return;
     const mapped = keyMap[e.key];
     if (mapped) setHeld(mapped, false);
   });
@@ -1414,6 +1446,8 @@
     submitRun,
     renderBoard,
     muted: () => muted,
+    keysLocked: () => keysLocked,
+    typing: () => typingNow({}),
     audio: () =>
       audio
         ? { state: audio.state, muted, engine: Boolean(engine), voices: engine ? 5 : 0 }

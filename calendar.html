@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Musk-world calendar — Alex · @AlJR86</title>
+    <meta
+      name="description"
+      content="Tesla earnings, SpaceX launches, xAI and Grok releases, plus Fed and CPI dates that move the tape — one calendar from @AlJR86."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/index.html">
+          <span class="brand-mark" aria-hidden="true">AL</span>
+          <span class="brand-text">ALJR<span class="brand-dot">86</span></span>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="/tesla.html">Tesla</a>
+          <a href="/tsla.html" aria-current="page">Markets</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/tcmv.html">TCMV</a>
+          <a href="/videos/index.html">Videos</a>
+          <a href="/games.html">Games</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
+          <a class="nav-cta" href="https://x.com/AlJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="page-hero">
+          <p class="eyebrow reveal">Markets · Calendar</p>
+          <h1 class="reveal delay-1">Musk-world calendar</h1>
+          <p class="reveal delay-2">
+            Tesla earnings, SpaceX launches, Grok ships, and the Fed and CPI mornings
+            that shove the tape. One list. Times on dated rows are local to your browser.
+          </p>
+        </section>
+
+        <section class="section" style="padding-top: 1.5rem">
+          <a class="referral-banner reveal" href="/tsla.html">
+            <div>
+              <p class="eyebrow">Live TSLA</p>
+              <h2>Price, earnings, deliveries</h2>
+              <p>
+                The share, the 21 October Q&amp;A, last quarter’s 486,532 deliveries,
+                and a chart that keeps moving.
+              </p>
+            </div>
+            <span class="button button-primary">Open TSLA</span>
+          </a>
+        </section>
+
+        <section class="section" aria-labelledby="cal-heading">
+          <div class="section-head">
+            <h2 id="cal-heading" class="reveal">Upcoming</h2>
+            <p class="reveal delay-1" data-calendar-status>Falcon dates refresh from Launch Library 2.</p>
+          </div>
+          <div class="cal-filters" data-calendar-filters>
+            <button type="button" class="is-on" data-cal-filter="all">All</button>
+            <button type="button" data-cal-filter="tesla">Tesla</button>
+            <button type="button" data-cal-filter="spacex">SpaceX</button>
+            <button type="button" data-cal-filter="xai">xAI</button>
+            <button type="button" data-cal-filter="macro">Fed / CPI</button>
+          </div>
+          <div class="cal-list" data-calendar-list></div>
+        </section>
+
+        <section class="section" aria-labelledby="watch-heading">
+          <div class="section-head">
+            <h2 id="watch-heading" class="reveal">No date yet</h2>
+            <p class="reveal delay-1">On the stack, not on a clock.</p>
+          </div>
+          <div class="cal-list" data-calendar-watch></div>
+        </section>
+
+        <section class="section">
+          <div class="panel reveal">
+            <p class="eyebrow">How this is built</p>
+            <h2>Public dates, no personal book</h2>
+            <p>
+              Tesla IR for earnings and deliveries. The Fed and BLS for FOMC and CPI.
+              Launch Library 2 for Falcon, with a fallback slate if that feed is quiet.
+              Starship and Grok rows stay marked as planning or TBA until the company
+              puts a clock on them. My own trading results stay off this site.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span data-year></span> Alex · @AlJR86. Fan account. Not affiliated with Tesla, SpaceX or xAI.</p>
+        <p>
+          <a href="/tsla.html">Live TSLA</a>
+          ·
+          <a href="/tesla.html">Tesla</a>
+          ·
+          <a href="/spacex.html">SpaceX</a>
+          ·
+          <a href="https://x.com/AlJR86">X profile</a>
+        </p>
+      </footer>
+    </div>
+    <script src="/script.js"></script>
+    <script src="/calendar.js"></script>
+  </body>
+</html>
