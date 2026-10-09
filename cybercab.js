@@ -18,6 +18,7 @@
   const hudBattFill = root.querySelector("[data-hud-batt-fill]");
   const hudBattWrap = root.querySelector("[data-hud-batt-wrap]");
   const hudPax = root.querySelector("[data-hud-pax]");
+  const hudStreak = root.querySelector("[data-hud-streak]");
   const hudScore = root.querySelector("[data-hud-score]");
   const boardList = root.querySelector("[data-board-list]");
   const boardNow = root.querySelector("[data-board-now]");
@@ -30,10 +31,11 @@
   const NAME_STORE = "aljr.cybercab.name";
   const SHARE_URL = "https://zzbz6jgyzy-creator.github.io/cybercab.html";
   const BOARD_MAX = 8;
-  const LANE_X = [-0.66, 0, 0.66];
-  const PLAYER_Z = 0.7;
+  const LANE_X = [-0.7, 0, 0.7];
+  const PLAYER_Z = 0.56;
   const HIT_Z = 0.36;
-  const HIT_X = 0.3;
+  const HIT_X = 0.26;
+  const CITY_WRAP = 14;
   const DROPS = ["Airport", "Hotel", "Downtown", "The Hills", "Station", "Harbor"];
   const SIGNS = ["BAY ST", "35", "AIRPT", "VALET", "NO PARK", "A1", "RUSH", "MAIN", "HOTEL"];
 
@@ -41,6 +43,7 @@
   const padPointers = new Map();
   const padButtons = {};
   const particles = [];
+  const popups = [];
   const stars = [];
   const city = [];
 
@@ -65,7 +68,7 @@
   let game = null;
 
   const sprites = {
-    cab: loadImg("/assets/cybercab/cybercab-rear.png"),
+    cab: loadImg("/assets/cybercab/cybercab-drive.png"),
     waymo: loadImg("/assets/cybercab/waymo.png"),
     palm: loadImg("/assets/cybercab/palm.png"),
     light: loadImg("/assets/cybercab/streetlight.png"),
@@ -91,33 +94,35 @@
     return Boolean(img && img.complete && img.naturalWidth > 0);
   }
 
-  for (let i = 0; i < 80; i += 1) {
-    stars.push({ x: Math.random(), y: Math.random() * 0.4, r: Math.random() * 1.2 + 0.2, a: Math.random() * 0.5 + 0.12 });
+  for (let i = 0; i < 110; i += 1) {
+    stars.push({ x: Math.random(), y: Math.random() * 0.48, r: Math.random() * 1.2 + 0.2, a: Math.random() * 0.5 + 0.12 });
   }
 
-  for (let i = 0; i < 36; i += 1) {
-    const z = i * 0.34;
+  for (let i = 0; i < 20; i += 1) {
+    const z = i * 0.7;
     [-1, 1].forEach((side, si) => {
-      city.push({
-        kind: "build",
-        side,
-        z: z + si * 0.05,
-        w: rand(0.34, 0.64),
-        h: rand(0.68, 1.78),
-        tone: Math.random(),
-        seed: i * 19 + si * 7,
-      });
-      city.push({ kind: "light", side, z: z + 0.1 + si * 0.03 });
-      if (i % 2 === si) city.push({ kind: "palm", side, z: z + 0.18 });
-      if (i % 4 === si) {
+      if (i % 2 === si) {
+        city.push({
+          kind: "build",
+          side,
+          z: z + si * 0.18,
+          w: rand(0.16, 0.3),
+          h: rand(0.28, 0.82),
+          tone: Math.random(),
+          seed: i * 19 + si * 7,
+        });
+      }
+      city.push({ kind: "light", side, z: z + 0.16 + si * 0.08 });
+      if (i % 2 === si) city.push({ kind: "palm", side, z: z + 0.38 });
+      if (i % 5 === si) {
         city.push({
           kind: "sign",
           side,
-          z: z + 0.22,
+          z: z + 0.44,
           label: SIGNS[(i + si) % SIGNS.length],
         });
       }
-      if (i % 6 === 2 && si === 0) city.push({ kind: "traffic", side, z: z + 0.27 });
+      if (i % 7 === 3) city.push({ kind: "traffic", side, z: z + 0.5 });
     });
   }
 
@@ -260,14 +265,17 @@
       dodged: 0,
       near: 0,
       batt: 100,
-      spawnIn: 1.7,
-      paxIn: 2.4,
-      chargeIn: 4.5,
+      spawnIn: 1.9,
+      paxIn: 2.2,
+      chargeIn: 4.2,
       grace: 0.85,
+      streak: 0,
+      boost: 0,
       dead: false,
     };
     score = 0;
     particles.length = 0;
+    popups.length = 0;
     shake = 0;
     flash = 0;
   }
@@ -275,12 +283,12 @@
   function difficulty() {
     const t = game.time;
     return {
-      speed: 4.6 + t * 0.058,
-      oncoming: 1.5 + t * 0.034,
-      spawn: Math.max(0.46, 1.5 - t * 0.012),
-      double: t > 20,
-      pack: t > 44,
-      weaver: t > 26,
+      speed: 5.1 + t * 0.064,
+      oncoming: 1.45 + t * 0.03,
+      spawn: Math.max(0.55, 1.72 - t * 0.01),
+      double: t > 24,
+      pack: t > 50,
+      weaver: t > 30,
     };
   }
 
@@ -300,7 +308,7 @@
   function spawnWave() {
     const d = difficulty();
     let pool = openLanes(7.4, 12);
-    if (game.time < 8) pool = pool.filter((l) => l !== game.lane);
+    if (game.time < 14) pool = pool.filter((l) => l !== game.lane);
     if (pool.length <= 1) return;
     let count = 1;
     if (game.time >= 8 && d.double && Math.random() < 0.48) count = 2;
@@ -467,14 +475,14 @@
   }
 
   function project(worldX, z) {
-    const zFar = 11;
+    const zFar = 13.5;
     const t = clamp(z / zFar, 0, 1);
-    const ease = t ** 0.8;
-    const scale = lerp(1.12, 0.075, ease);
-    const y = lerp(cssH * 0.9, cssH * 0.36, ease);
+    const ease = t ** 0.82;
+    const scale = lerp(1.22, 0.12, ease);
+    const y = lerp(cssH * 0.96, cssH * 0.5, ease);
     const curveOff = (game?.curve || 0) * ease * ease;
-    const roadW = cssW * lerp(1.1, 0.075, ease);
-    const x = cssW * 0.5 + curveOff * cssW * 0.52 + (worldX - (game?.x || 0)) * roadW * 0.48;
+    const roadW = cssW * lerp(2.02, 0.3, ease);
+    const x = cssW * 0.5 + curveOff * cssW * 0.34 + (worldX - (game?.x || 0)) * roadW * 0.22;
     return { x, y, scale, roadW, ease };
   }
 
@@ -483,7 +491,7 @@
     const next = clamp(game.lane + dir, 0, 2);
     if (next === game.lane) return;
     game.lane = next;
-    laneCool = 0.14;
+    laneCool = 0.11;
     tone(220, 140, 0.045, 0.07, "triangle");
   }
 
@@ -530,8 +538,14 @@
     const lanePool = [0, 1, 2].filter((l) => l !== game.lane);
     const lane = pick(lanePool.length ? lanePool : [0, 1, 2]);
     game.drop = { lane, x: LANE_X[lane], z: rand(7.2, 9.2), dest: p.dest };
+    const s = project(game.x, PLAYER_Z);
+    popup("RIDER ON", s.x, s.y - 64, "#7ad7ff");
     tone(520, 880, 0.07, 0.16, "sine");
     flash = 0.22;
+  }
+
+  function popup(text, x, y, color) {
+    popups.push({ text, x, y, vy: -38, life: 0.95, color: color || "#f4f6fa" });
   }
 
   function dropOff() {
@@ -539,18 +553,25 @@
     game.drop = null;
     game.onboard = null;
     game.rides += 1;
-    score += 260;
-    game.paxIn = rand(1.6, 2.6);
+    game.streak += 1;
+    const bonus = 240 + game.streak * 90;
+    score += bonus;
+    game.boost = Math.max(game.boost, 1.7);
+    game.paxIn = rand(1.2, 2.1);
+    const s = project(game.x, PLAYER_Z);
+    popup(game.streak > 1 ? `${game.streak}× ${dest}` : dest, s.x, s.y - 78, "#3dcea0");
+    if (game.streak >= 2) popup(`+${bonus}`, s.x, s.y - 108, "#e6c36a");
     tone(660, 990, 0.06, 0.18, "triangle");
     tone(440, 220, 0.04, 0.12, "sine");
-    flash = 0.28;
-    void dest;
+    flash = 0.34;
   }
 
   function takeCharge(ch) {
     const add = ch.super ? 58 : 32;
     game.batt = clamp(game.batt + add, 0, 100);
     score += ch.super ? 40 : 18;
+    const s = project(game.x, PLAYER_Z);
+    popup(ch.super ? "SUPER +58" : "CHARGE", s.x, s.y - 58, "#7dffb0");
     tone(ch.super ? 280 : 360, 720, 0.07, 0.16, "sine");
   }
 
@@ -563,13 +584,14 @@
     if (held.right) steer(1);
 
     const d = difficulty();
-    const speed = d.speed;
+    game.boost = Math.max(0, game.boost - t);
+    const speed = d.speed * (game.boost > 0 ? 1.38 : 1);
     game.dist += speed * t * 18;
     game.time += t;
     game.grace = Math.max(0, game.grace - t);
-    game.curveTo = Math.sin(game.dist * 0.002) * Math.min(1, game.time / 32) * 0.82;
+    game.curveTo = Math.sin(game.dist * 0.0016) * Math.min(0.72, game.time / 36) * 0.7;
     game.curve = lerp(game.curve, game.curveTo, 0.04);
-    game.x = lerp(game.x, LANE_X[game.lane], 0.16);
+    game.x = lerp(game.x, LANE_X[game.lane], 0.2);
 
     const drain = (2.2 + speed * 0.16) * t * (game.onboard ? 1.06 : 1);
     game.batt = Math.max(0, game.batt - drain);
@@ -578,7 +600,20 @@
       return;
     }
 
-    score += speed * t * 8;
+    score += speed * t * (8 + game.streak * 1.6);
+    if (game.boost > 0 && Math.random() < 0.55) {
+      const s = project(game.x, PLAYER_Z);
+      particles.push({
+        x: s.x + rand(-36, 36),
+        y: s.y - rand(8, 46),
+        vx: rand(-0.4, 0.4),
+        vy: rand(1.2, 3.4),
+        life: rand(0.18, 0.4),
+        max: 0.4,
+        color: Math.random() > 0.5 ? "#e6c36a" : "#f4f6fa",
+        size: rand(1.2, 2.6),
+      });
+    }
     const zSpeed = (speed + d.oncoming) * t * 0.5;
     const scenerySpeed = speed * t * 0.5;
 
@@ -611,9 +646,10 @@
         else if (dx < 0.78 && dx >= HIT_X) {
           c.passed = true;
           game.near += 1;
-          score += 36;
+          score += 40 + game.streak * 8;
           const s = project(c.x, c.z);
-          burst(s.x, s.y, "#fff6d8", 7, 2);
+          burst(s.x, s.y, "#fff6d8", 9, 2);
+          popup("CLOSE", s.x, s.y - 40, "#fff6d8");
           tone(740, 220, 0.035, 0.08, "square");
         }
       }
@@ -634,6 +670,9 @@
         pickUp();
       } else if (game.pax.z < 0.35) {
         game.missed += 1;
+        game.streak = 0;
+        const s = project(game.x, PLAYER_Z);
+        popup("MISSED", s.x, s.y - 56, "#e23a3a");
         game.pax = null;
         game.paxIn = rand(1.4, 2.4);
       }
@@ -647,6 +686,9 @@
         dropOff();
       } else if (game.drop.z < 0.35) {
         game.missed += 1;
+        game.streak = 0;
+        const s = project(game.x, PLAYER_Z);
+        popup("MISSED DROP", s.x, s.y - 56, "#e23a3a");
         game.drop = null;
         game.onboard = null;
         game.paxIn = rand(1.2, 2.2);
@@ -665,7 +707,7 @@
 
     city.forEach((item) => {
       item.z -= scenerySpeed;
-      if (item.z < 0.28) item.z += 12.2;
+      if (item.z < 0.4) item.z += CITY_WRAP;
     });
 
     setEngine(clamp(speed / 13, 0.28, 1));
@@ -679,6 +721,12 @@
       p.x += p.vx * 60 * t;
       p.y += p.vy * 60 * t;
       if (p.life <= 0) particles.splice(i, 1);
+    }
+    for (let i = popups.length - 1; i >= 0; i -= 1) {
+      const p = popups[i];
+      p.life -= t;
+      p.y += p.vy * t;
+      if (p.life <= 0) popups.splice(i, 1);
     }
   }
 
@@ -702,10 +750,10 @@
   function drawSky(ctx) {
     const g = ctx.createLinearGradient(0, 0, 0, cssH);
     g.addColorStop(0, "#050814");
-    g.addColorStop(0.28, "#10172c");
-    g.addColorStop(0.48, "#2a2436");
-    g.addColorStop(0.58, "#3a2a32");
-    g.addColorStop(1, "#0b0c10");
+    g.addColorStop(0.3, "#10182c");
+    g.addColorStop(0.48, "#161e30");
+    g.addColorStop(0.52, "#12161e");
+    g.addColorStop(1, "#0c0e14");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, cssW, cssH);
     stars.forEach((s) => {
@@ -727,11 +775,11 @@
   }
 
   function drawSkyline(ctx) {
-    const hy = cssH * 0.358;
+    const hy = cssH * 0.5;
     const fog = ctx.createLinearGradient(0, hy - cssH * 0.3, 0, hy);
     fog.addColorStop(0, "rgba(8,12,24,0)");
-    fog.addColorStop(0.5, "rgba(12,16,30,0.4)");
-    fog.addColorStop(1, "rgba(14,18,32,0.94)");
+    fog.addColorStop(0.55, "rgba(10,14,26,0.35)");
+    fog.addColorStop(1, "rgba(12,16,28,0.88)");
     ctx.fillStyle = fog;
     ctx.fillRect(0, hy - cssH * 0.32, cssW, cssH * 0.32);
     for (let i = 0; i < 38; i += 1) {
@@ -760,8 +808,8 @@
       }
     }
     const glow = ctx.createRadialGradient(cssW * 0.5, hy, 4, cssW * 0.5, hy, cssW * 0.58);
-    glow.addColorStop(0, "rgba(255,168,88,0.14)");
-    glow.addColorStop(1, "rgba(255,140,60,0)");
+    glow.addColorStop(0, "rgba(120,170,255,0.08)");
+    glow.addColorStop(1, "rgba(80,120,200,0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, hy - 48, cssW, 56);
   }
@@ -774,42 +822,57 @@
       const a = project(0, zA);
       const b = project(0, zB);
       const stripe = Math.floor((zA + (game?.dist || 0) * 0.04) / 0.42) % 2;
-      ctx.fillStyle = stripe ? "#151820" : "#10141c";
+      const walk = Math.floor((zA + (game?.dist || 0) * 0.04) / 3.4) % 9 === 0;
+      ctx.fillStyle = stripe ? "#161a22" : "#12161e";
       ctx.beginPath();
-      ctx.moveTo(a.x - a.roadW * 1.55, a.y);
-      ctx.lineTo(a.x + a.roadW * 1.55, a.y);
-      ctx.lineTo(b.x + b.roadW * 1.55, b.y);
-      ctx.lineTo(b.x - b.roadW * 1.55, b.y);
+      ctx.moveTo(a.x - a.roadW * 1.02, a.y);
+      ctx.lineTo(a.x + a.roadW * 1.02, a.y);
+      ctx.lineTo(b.x + b.roadW * 1.02, b.y);
+      ctx.lineTo(b.x - b.roadW * 1.02, b.y);
       ctx.closePath();
       ctx.fill();
 
-      ctx.fillStyle = stripe ? "#2a3038" : "#242A32";
+      ctx.fillStyle = stripe ? "#2c323c" : "#262c34";
       ctx.beginPath();
-      ctx.moveTo(a.x - a.roadW * 0.72, a.y);
+      ctx.moveTo(a.x - a.roadW * 0.66, a.y);
       ctx.lineTo(a.x - a.roadW * 0.52, a.y);
       ctx.lineTo(b.x - b.roadW * 0.52, b.y);
-      ctx.lineTo(b.x - b.roadW * 0.72, b.y);
+      ctx.lineTo(b.x - b.roadW * 0.66, b.y);
       ctx.closePath();
       ctx.fill();
       ctx.beginPath();
       ctx.moveTo(a.x + a.roadW * 0.52, a.y);
-      ctx.lineTo(a.x + a.roadW * 0.72, a.y);
-      ctx.lineTo(b.x + b.roadW * 0.72, b.y);
+      ctx.lineTo(a.x + a.roadW * 0.66, a.y);
+      ctx.lineTo(b.x + b.roadW * 0.66, b.y);
       ctx.lineTo(b.x + b.roadW * 0.52, b.y);
       ctx.closePath();
       ctx.fill();
 
-      ctx.fillStyle = "#1c212c";
+      ctx.fillStyle = "#1a1f28";
       ctx.beginPath();
-      ctx.moveTo(a.x - a.roadW * 0.5, a.y);
-      ctx.lineTo(a.x + a.roadW * 0.5, a.y);
-      ctx.lineTo(b.x + b.roadW * 0.5, b.y);
-      ctx.lineTo(b.x - b.roadW * 0.5, b.y);
+      ctx.moveTo(a.x - a.roadW * 0.52, a.y);
+      ctx.lineTo(a.x + a.roadW * 0.52, a.y);
+      ctx.lineTo(b.x + b.roadW * 0.52, b.y);
+      ctx.lineTo(b.x - b.roadW * 0.52, b.y);
       ctx.closePath();
       ctx.fill();
 
+      if (walk) {
+        ctx.fillStyle = "rgba(236,236,220,0.28)";
+        for (let k = -4; k <= 4; k += 1) {
+          const off = k * 0.1;
+          ctx.beginPath();
+          ctx.moveTo(a.x + a.roadW * off - 4 * a.scale, a.y);
+          ctx.lineTo(a.x + a.roadW * off + 4 * a.scale, a.y);
+          ctx.lineTo(b.x + b.roadW * off + 4 * b.scale, b.y);
+          ctx.lineTo(b.x + b.roadW * off - 4 * b.scale, b.y);
+          ctx.closePath();
+          ctx.fill();
+        }
+      }
+
       ctx.fillStyle = stripe ? "#c81a2e" : "#f2efe6";
-      [-0.5, 0.5].forEach((edge) => {
+      [-0.52, 0.52].forEach((edge) => {
         ctx.beginPath();
         ctx.moveTo(a.x + a.roadW * edge - 1.4 * a.scale, a.y);
         ctx.lineTo(a.x + a.roadW * edge + 1.4 * a.scale, a.y);
@@ -819,32 +882,32 @@
         ctx.fill();
       });
       if (stripe) {
-        ctx.fillStyle = "rgba(236,236,220,0.62)";
-        [-0.165, 0.165].forEach((off) => {
+        ctx.fillStyle = "rgba(236,236,220,0.82)";
+        [-0.175, 0.175].forEach((off) => {
           ctx.beginPath();
-          ctx.moveTo(a.x + a.roadW * off - 1.1 * a.scale, a.y);
-          ctx.lineTo(a.x + a.roadW * off + 1.1 * a.scale, a.y);
-          ctx.lineTo(b.x + b.roadW * off + 1.1 * b.scale, b.y);
-          ctx.lineTo(b.x + b.roadW * off - 1.1 * b.scale, b.y);
+          ctx.moveTo(a.x + a.roadW * off - 1.6 * a.scale, a.y);
+          ctx.lineTo(a.x + a.roadW * off + 1.6 * a.scale, a.y);
+          ctx.lineTo(b.x + b.roadW * off + 1.6 * b.scale, b.y);
+          ctx.lineTo(b.x + b.roadW * off - 1.6 * b.scale, b.y);
           ctx.closePath();
           ctx.fill();
         });
       }
     }
-    const shine = ctx.createLinearGradient(0, cssH * 0.36, 0, cssH);
+    const shine = ctx.createLinearGradient(0, cssH * 0.5, 0, cssH);
     shine.addColorStop(0, "rgba(190,210,240,0.05)");
-    shine.addColorStop(0.42, "rgba(120,140,170,0.06)");
-    shine.addColorStop(1, "rgba(0,0,0,0.16)");
+    shine.addColorStop(0.42, "rgba(120,140,170,0.05)");
+    shine.addColorStop(1, "rgba(0,0,0,0.12)");
     ctx.fillStyle = shine;
-    ctx.fillRect(0, cssH * 0.36, cssW, cssH * 0.64);
+    ctx.fillRect(0, cssH * 0.5, cssW, cssH * 0.5);
   }
 
   function drawBuilding(ctx, item) {
-    const p = project(item.side * 1.62, item.z);
-    if (p.scale < 0.05) return;
-    const w = item.w * p.roadW * 0.72;
-    const h = item.h * cssH * 0.4 * p.scale * 2.55;
-    const x = p.x + item.side * p.roadW * 1.08;
+    const p = project(0, item.z);
+    if (p.scale < 0.05 || item.z < 2.6) return;
+    const w = item.w * p.roadW * 0.38;
+    const h = item.h * cssH * 0.22 * p.scale * 2.05;
+    const x = p.x + item.side * p.roadW * 1.22;
     const y = p.y;
     const style = item.seed % 3;
     const glass = style === 0;
@@ -896,10 +959,10 @@
   }
 
   function drawSign(ctx, item) {
-    const p = project(item.side * 0.86, item.z);
+    const p = project(0, item.z);
     if (p.scale < 0.06) return;
     const h = 38 * p.scale * 1.7;
-    const x = p.x + item.side * p.roadW * 0.62;
+    const x = p.x + item.side * p.roadW * 0.88;
     const y = p.y;
     ctx.fillStyle = "#3a4048";
     ctx.fillRect(x - 1.5 * p.scale, y - h, 3 * p.scale, h);
@@ -917,9 +980,9 @@
   }
 
   function drawTraffic(ctx, item) {
-    const p = project(item.side * 0.72, item.z);
+    const p = project(0, item.z);
     if (p.scale < 0.08) return;
-    const x = p.x + item.side * p.roadW * 0.48;
+    const x = p.x + item.side * p.roadW * 0.72;
     const y = p.y;
     const h = 70 * p.scale * 1.7;
     ctx.fillStyle = "#2a3038";
@@ -1037,11 +1100,11 @@
       if (it.kind === "build") {
         drawBuilding(ctx, it.item);
       } else if (it.kind === "palm") {
-        const p = project(it.item.side * 1.08, it.item.z);
-        drawBillboard(ctx, sprites.palm, p.x + it.item.side * p.roadW * 0.78, p.y, 250 * p.scale);
+        const p = project(0, it.item.z);
+        drawBillboard(ctx, sprites.palm, p.x + it.item.side * p.roadW * 0.92, p.y, 220 * p.scale);
       } else if (it.kind === "light") {
-        const p = project(it.item.side * 0.78, it.item.z);
-        const x = p.x + it.item.side * p.roadW * 0.58;
+        const p = project(0, it.item.z);
+        const x = p.x + it.item.side * p.roadW * 0.64;
         ctx.save();
         ctx.globalCompositeOperation = "screen";
         ctx.fillStyle = "rgba(255,210,120,0.2)";
@@ -1068,13 +1131,13 @@
         );
         drawPool(ctx, p.x, p.y, p.scale, "rgba(125,255,176,0.28)");
         const side = it.ch.lane === 2 ? 1 : -1;
-        const curb = project(LANE_X[it.ch.lane] + side * 0.42, it.ch.z);
+        const curb = project(LANE_X[it.ch.lane] + side * 0.55, it.ch.z);
         drawBillboard(ctx, sprites.charger, curb.x, curb.y, Math.max(32, 96 * p.scale));
       } else if (it.kind === "pax") {
         const p = project(LANE_X[game.pax.lane], game.pax.z);
         drawPad(ctx, p.x, p.y, p.scale, "rgba(122,215,255,0.82)", "PICK", game.pax.dest);
         const side = game.pax.lane === 0 ? -1 : 1;
-        const curb = project(LANE_X[game.pax.lane] + side * 0.4, game.pax.z);
+        const curb = project(LANE_X[game.pax.lane] + side * 0.52, game.pax.z);
         drawBillboard(ctx, sprites.pax, curb.x, curb.y, Math.max(40, 132 * p.scale));
       } else if (it.kind === "drop") {
         const p = project(LANE_X[game.drop.lane], game.drop.z);
@@ -1083,19 +1146,32 @@
         const p = project(it.c.x, it.c.z);
         drawBeams(ctx, p.x, p.y, p.scale, true);
         drawPool(ctx, p.x, p.y, p.scale, "rgba(255,236,190,0.18)");
-        drawBillboard(ctx, sprites.waymo, p.x, p.y, 96 * p.scale);
+        drawBillboard(ctx, sprites.waymo, p.x, p.y, 88 * p.scale);
       } else if (it.kind === "player" && game) {
         const p = project(game.x, PLAYER_Z);
-        const lean = (LANE_X[game.lane] - game.x) * 0.18 + game.curve * 0.03;
-        drawBeams(ctx, p.x, p.y, p.scale, false);
+        const s = p.scale;
+        const bounce = Math.sin(clock * 0.018) * 1.6 * s;
+        const lean = (LANE_X[game.lane] - game.x) * 0.14 + game.curve * 0.025;
+        drawBeams(ctx, p.x, p.y, s * (game.boost > 0 ? 1.25 : 1), false);
         ctx.save();
-        ctx.translate(p.x, p.y);
+        ctx.translate(p.x, p.y + bounce);
         ctx.rotate(lean);
-        ctx.fillStyle = "rgba(0,0,0,0.38)";
+        ctx.fillStyle = "rgba(0,0,0,0.42)";
         ctx.beginPath();
-        ctx.ellipse(0, 6, 50 * p.scale, 11 * p.scale, 0, 0, Math.PI * 2);
+        ctx.ellipse(0, 10, 92 * s, 14 * s, 0, 0, Math.PI * 2);
         ctx.fill();
-        drawBillboard(ctx, sprites.cab, 0, 0, 112 * p.scale);
+        ctx.save();
+        ctx.globalCompositeOperation = "screen";
+        const glow = ctx.createRadialGradient(26 * s, -58 * s, 4 * s, 18 * s, -52 * s, 78 * s);
+        glow.addColorStop(0, "rgba(255,52,48,0.7)");
+        glow.addColorStop(0.45, "rgba(255,40,40,0.22)");
+        glow.addColorStop(1, "rgba(255,20,20,0)");
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.ellipse(22 * s, -54 * s, 78 * s, 20 * s, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+        drawBillboard(ctx, sprites.cab, 0, 0, 152 * s);
         ctx.restore();
       }
     });
@@ -1108,10 +1184,23 @@
       ctx.fill();
     });
     ctx.globalAlpha = 1;
+    popups.forEach((p) => {
+      const a = clamp(p.life / 0.95, 0, 1);
+      ctx.globalAlpha = a;
+      ctx.fillStyle = p.color;
+      ctx.font = `800 ${Math.max(15, 22 * (0.85 + a * 0.2))}px Inter, sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.strokeStyle = "rgba(8,10,16,0.55)";
+      ctx.lineWidth = 4;
+      ctx.strokeText(p.text, p.x, p.y);
+      ctx.fillText(p.text, p.x, p.y);
+    });
+    ctx.globalAlpha = 1;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const vig = ctx.createRadialGradient(cssW * 0.5, cssH * 0.55, cssW * 0.18, cssW * 0.5, cssH * 0.5, cssW * 0.8);
+    const vig = ctx.createRadialGradient(cssW * 0.5, cssH * 0.58, cssW * 0.42, cssW * 0.5, cssH * 0.52, cssW * 0.92);
     vig.addColorStop(0, "rgba(0,0,0,0)");
-    vig.addColorStop(1, "rgba(0,0,0,0.38)");
+    vig.addColorStop(1, "rgba(0,0,0,0.14)");
     ctx.fillStyle = vig;
     ctx.fillRect(0, 0, cssW, cssH);
     if (flash > 0) {
@@ -1135,6 +1224,12 @@
     if (game.onboard && game.drop) pax = `Drop · ${game.drop.dest}`;
     else if (game.pax) pax = `Pick · ${game.pax.dest}`;
     if (hudPax) hudPax.textContent = pax;
+    if (hudStreak) {
+      if (game.streak > 0) {
+        hudStreak.hidden = false;
+        hudStreak.textContent = `${game.streak}× streak`;
+      } else hudStreak.hidden = true;
+    }
     if (statusBtn) statusBtn.textContent = game.onboard ? "Drop" : game.pax ? "Pick up" : "Empty";
     if (!game._boardAt || game.time - game._boardAt > 0.28) {
       game._boardAt = game.time;
