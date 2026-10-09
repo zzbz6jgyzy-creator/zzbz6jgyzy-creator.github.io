@@ -2315,7 +2315,6 @@ a.referral-banner:hover {
 .markets-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
 }
 
 .markets-brand[hidden] {
