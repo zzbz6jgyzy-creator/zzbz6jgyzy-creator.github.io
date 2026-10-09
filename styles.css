@@ -440,6 +440,10 @@ a.stat:hover {
   --desk-image: url("assets/banner.jpg");
 }
 
+.desk-goldcab {
+  --desk-image: url("assets/goldcab/hero.jpg");
+}
+
 .desk-robotaxi {
   --desk-image: url("assets/robotaxi/cybercab-gold.jpg");
 }
