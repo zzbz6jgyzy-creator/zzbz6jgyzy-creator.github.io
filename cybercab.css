@@ -91,7 +91,7 @@
   top: 0.65rem;
   z-index: 2;
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto auto;
   gap: 0.55rem;
   align-items: center;
   color: rgba(236, 236, 232, 0.9);
@@ -105,6 +105,15 @@
 
 .cab-hud [data-hud-score] {
   color: #d7e4f2;
+}
+
+.cab-hud [data-hud-streak] {
+  color: #3dcea0;
+  justify-self: end;
+}
+
+.cab-hud [data-hud-streak][hidden] {
+  display: none;
 }
 
 .cab-batt {
