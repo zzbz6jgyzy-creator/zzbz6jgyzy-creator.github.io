@@ -1610,6 +1610,119 @@ a.referral-banner:hover {
   }
 }
 
+.newsletter {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.9fr);
+  gap: 0.35rem 1.75rem;
+  align-items: end;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(200, 16, 46, 0.12), transparent 55%),
+    var(--card);
+}
+
+.newsletter > div {
+  grid-column: 1;
+}
+
+.newsletter h2 {
+  margin: 0.25rem 0 0.45rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.newsletter > div p:last-child {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.newsletter-form {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-self: end;
+  width: min(100%, 22rem);
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1 1 12rem;
+  min-width: 0;
+  border: 1px solid var(--line-strong);
+  background: rgba(12, 13, 16, 0.65);
+  color: var(--ink);
+  border-radius: 7px;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  font-size: 0.92rem;
+}
+
+.newsletter-form input[type="email"]:focus {
+  outline: 2px solid rgba(236, 236, 232, 0.35);
+  outline-offset: 1px;
+}
+
+.newsletter-form input:disabled,
+.newsletter-form button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.newsletter-form .button {
+  flex: 0 0 auto;
+}
+
+.newsletter-honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.newsletter-status {
+  grid-column: 1 / -1;
+  margin: 0.35rem 0 0;
+  min-height: 1.2em;
+  font-size: 0.88rem;
+  color: var(--mute);
+}
+
+.newsletter-status.is-ok {
+  color: #9ad7a8;
+}
+
+.newsletter-status.is-err {
+  color: #f0a0a8;
+}
+
+.newsletter-compact {
+  margin: 0;
+}
+
+.newsletter-strip {
+  padding-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .newsletter {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-form {
+    grid-column: 1;
+    justify-self: stretch;
+    width: 100%;
+    margin-top: 0.35rem;
+  }
+}
+
 /* Tesla car reviews */
 .review-verdict {
   margin: 1.4rem 0 1.1rem;

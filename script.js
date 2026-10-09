@@ -146,4 +146,8 @@
       trigger.addEventListener("click", (event) => event.preventDefault());
     }
   });
+
+  const newsletter = document.createElement("script");
+  newsletter.src = "/newsletter.js";
+  document.body.append(newsletter);
 })();

@@ -91,6 +91,23 @@
           <div class="news-list" data-news-list aria-live="polite"></div>
         </section>
 
+        <section class="section" aria-labelledby="newsletter-heading" id="newsletter">
+          <div class="newsletter reveal" data-newsletter="banner">
+            <div>
+              <p class="eyebrow">Newsletter</p>
+              <h2 id="newsletter-heading">Get these headlines by email</h2>
+              <p>Tesla, SpaceX and Grok from the desk. Independent, not affiliated. No spam.</p>
+            </div>
+            <form class="newsletter-form" data-newsletter-form>
+              <label class="visually-hidden" for="newsletter-email-news">Email</label>
+              <input id="newsletter-email-news" name="email" type="email" required autocomplete="email" placeholder="you@email.com" />
+              <input class="newsletter-honey" type="text" name="website" tabindex="-1" autocomplete="off" />
+              <button class="button button-primary" type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-status" data-newsletter-status role="status"></p>
+          </div>
+        </section>
+
         <section class="section">
           <div class="panel reveal">
             <p class="eyebrow">How this is built</p>
