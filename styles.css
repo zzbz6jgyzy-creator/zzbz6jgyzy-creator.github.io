@@ -1715,11 +1715,20 @@ a.referral-banner:hover {
     grid-template-columns: 1fr;
   }
 
+  .newsletter > div {
+    grid-row: 1;
+  }
+
   .newsletter-form {
     grid-column: 1;
+    grid-row: 2;
     justify-self: stretch;
     width: 100%;
     margin-top: 0.35rem;
+  }
+
+  .newsletter-status {
+    grid-row: 3;
   }
 }
 
