@@ -306,24 +306,46 @@
     mapEl.replaceChildren();
     ZONES.forEach((zone) => {
       const demand = demandFor(zone, day);
-      const assigned = zoneCars(zone.id).length;
-      const card = el("div", `taxi-zone${day.rain ? " is-rain" : ""}${day.concert && zone.id === "stadium" ? " is-hot" : ""}`);
+      const assigned = zoneCars(zone.id);
+      const card = el("div", `taxi-zone taxi-zone-${zone.id}`);
+      if (day.rain) card.classList.add("is-rain");
+      if (day.concert && zone.id === "stadium") card.classList.add("is-hot");
+      if (state === "resolve" && assigned.length) card.classList.add("is-live");
       card.setAttribute("role", "listitem");
-      const art = el("div", "taxi-zone-art");
-      zone.art.forEach((h) => {
-        const bar = el("span");
-        bar.style.height = `${h}px`;
-        art.append(bar);
+
+      const media = el("div", "taxi-zone-media");
+      const bg = document.createElement("img");
+      bg.src = `/assets/robotaxi/zone-${zone.id}.jpg`;
+      bg.alt = "";
+      bg.width = 1100;
+      bg.height = 619;
+      media.append(bg);
+      if (day.rain) media.append(el("div", "taxi-rain"));
+      if (day.concert && zone.id === "stadium") media.append(el("div", "taxi-concert"));
+      const lot = el("div", "taxi-lot");
+      assigned.slice(0, 6).forEach((car) => {
+        const pip = document.createElement("img");
+        pip.className = car.broken ? "taxi-pip is-broke" : "taxi-pip";
+        pip.src = "/assets/robotaxi/cybercab-gold-side.jpg";
+        pip.alt = "";
+        pip.width = 120;
+        pip.height = 68;
+        lot.append(pip);
       });
-      card.append(art);
-      card.append(el("h3", "", zone.name));
-      card.append(el("p", "", `${heatLabel(demand)} · ${demand} rides · ${money(fareFor(zone, day, game.reputation))}`));
+      media.append(lot);
+      card.append(media);
+
+      const body = el("div", "taxi-zone-body");
+      body.append(el("h3", "", zone.name));
+      body.append(
+        el("p", "", `${heatLabel(demand)} · ${demand} rides · ${money(fareFor(zone, day, game.reputation))}`)
+      );
       const meta = el("div", "taxi-zone-meta");
-      meta.append(el("span", "", `${assigned} cab${assigned === 1 ? "" : "s"}`));
+      meta.append(el("span", "", `${assigned.length} cab${assigned.length === 1 ? "" : "s"}`));
       const stepper = el("div", "taxi-stepper");
       const minus = el("button", "", "−");
       minus.type = "button";
-      minus.disabled = !canAssign || assigned === 0;
+      minus.disabled = !canAssign || assigned.length === 0;
       minus.addEventListener("click", (e) => {
         e.stopPropagation();
         pullFromZone(zone.id);
@@ -337,7 +359,8 @@
       });
       stepper.append(minus, plus);
       meta.append(stepper);
-      card.append(meta);
+      body.append(meta);
+      card.append(body);
       if (canAssign) {
         card.style.cursor = "pointer";
         card.addEventListener("click", () => sendSelected(zone.id));
@@ -371,6 +394,16 @@
       btn.type = "button";
       if (selected.has(car.id)) btn.classList.add("is-on");
       if (car.broken || (state === "deploy" && car.charge < 18)) btn.classList.add("is-out");
+      if (car.broken) btn.classList.add("is-broke");
+      const shot = el("span", "taxi-cab-shot");
+      if (state === "night" && car.night) shot.classList.add("is-charging");
+      const img = document.createElement("img");
+      img.src = "/assets/robotaxi/cybercab-gold-pod.jpg";
+      img.alt = "";
+      img.width = 320;
+      img.height = 180;
+      shot.append(img);
+      btn.append(shot);
       btn.append(el("strong", "", `Cab ${car.id + 1}`));
       const batt = el("span", `taxi-batt ${battClass(car.charge)}`);
       const fill = el("i");
