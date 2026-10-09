@@ -1946,7 +1946,7 @@ a.referral-banner:hover {
   flex: 1 1 16rem;
   min-width: min(100%, 16rem);
   max-width: 22rem;
-  height: 101px;
+  height: 70px;
 }
 
 .markets-quote {
@@ -1964,7 +1964,7 @@ a.referral-banner:hover {
 .markets-quote iframe {
   display: block;
   width: 100%;
-  height: 101px;
+  height: 70px;
 }
 
 .markets-brand {

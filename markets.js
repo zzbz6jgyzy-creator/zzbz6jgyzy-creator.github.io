@@ -122,7 +122,9 @@
     });
 
     quotes.forEach((pane) => {
-      pane.classList.toggle("is-on", pane.dataset.marketsQuote === id);
+      const on = pane.dataset.marketsQuote === id;
+      pane.classList.toggle("is-on", on);
+      pane.setAttribute("aria-hidden", String(!on));
     });
 
     tabs.forEach((tab) => {
