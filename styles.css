@@ -1810,6 +1810,8 @@ a.referral-banner:hover {
   border-radius: 12px;
   display: block;
   border: 1px solid var(--line);
+  object-fit: cover;
+  background: #000;
 }
 
 .markets-h1 .markets-ticker {
