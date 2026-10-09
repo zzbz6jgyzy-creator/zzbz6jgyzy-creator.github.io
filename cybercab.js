@@ -1155,7 +1155,7 @@
         ctx.translate(p.x, p.y);
         ctx.fillStyle = "rgba(0,0,0,0.4)";
         ctx.beginPath();
-        ctx.ellipse(0, 5, 32 * s, 7 * s, 0, 0, Math.PI * 2);
+        ctx.ellipse(0, 5, 36 * s, 8 * s, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.save();
         ctx.globalCompositeOperation = "screen";
@@ -1167,7 +1167,7 @@
         ctx.ellipse(0, -32 * s, 34 * s, 10 * s, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
-        drawBillboard(ctx, sprites.cab, 0, 0, 72 * s);
+        drawBillboard(ctx, sprites.cab, 0, 0, 84 * s);
         ctx.restore();
       }
     });
