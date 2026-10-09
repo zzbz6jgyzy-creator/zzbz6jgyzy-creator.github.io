@@ -14,8 +14,15 @@
   const hudFuel = document.querySelector("[data-hud-fuel]");
   const hudSpeed = document.querySelector("[data-hud-speed]");
   const hudScore = document.querySelector("[data-hud-score]");
+  const boardList = document.querySelector("[data-board-list]");
+  const boardNow = document.querySelector("[data-board-now]");
+  const nameInput = document.querySelector("[data-catch-name]");
+  const muteBtn = document.querySelector("[data-catch-mute]");
 
   const STORE = "aljr.catch.best";
+  const BOARD_STORE = "aljr.catch.board";
+  const NAME_STORE = "aljr.catch.name";
+  const BOARD_MAX = 8;
   const WORLD_W = 1000;
   const GROUND = 860;
   const SHORE = 340;
@@ -50,7 +57,9 @@
   let best = Number(localStorage.getItem(STORE) || 0);
   let muted = false;
   let audio;
-  let rumble;
+  let engine = null;
+  let wasBurning = false;
+  let freshId = "";
   let last = 0;
   let shake = 0;
   let flash = 0;
@@ -169,53 +178,300 @@
 
   if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
 
+  function callsign() {
+    const raw = (nameInput?.value || localStorage.getItem(NAME_STORE) || "Pilot").trim();
+    return (raw || "Pilot").slice(0, 12);
+  }
+
+  function loadBoard() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(BOARD_STORE) || "[]");
+      return Array.isArray(raw) ? raw.filter((row) => row && typeof row.score === "number") : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveBoard(rows) {
+    localStorage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
+  }
+
+  function visibleBoard() {
+    const stored = loadBoard();
+    const live =
+      score > 0 && (state === "fly" || state === "caught" || state === "pause")
+        ? [
+            {
+              id: "live",
+              name: callsign(),
+              score,
+              flights: flight + 1,
+              live: true,
+            },
+          ]
+        : [];
+    return [...stored, ...live].sort((a, b) => b.score - a.score || (a.live ? -1 : 1)).slice(0, BOARD_MAX);
+  }
+
+  function renderBoard() {
+    if (boardNow) {
+      boardNow.textContent =
+        state === "fly" || state === "caught" || state === "pause"
+          ? `This run  ·  ${score.toLocaleString()}  ·  ${spec().name}`
+          : "This run  ·  on the pad";
+    }
+    if (!boardList) return;
+    boardList.replaceChildren();
+    const rows = visibleBoard();
+    if (!rows.length) {
+      const empty = document.createElement("li");
+      empty.className = "is-empty";
+      empty.textContent = "No catches on this pad yet.";
+      boardList.append(empty);
+      return;
+    }
+    rows.forEach((row, i) => {
+      const li = document.createElement("li");
+      if (row.live) li.classList.add("is-live");
+      if (row.id && row.id === freshId) li.classList.add("is-fresh");
+      const rank = document.createElement("span");
+      rank.className = "catch-board-rank";
+      rank.textContent = String(i + 1);
+      const who = document.createElement("span");
+      who.className = "catch-board-who";
+      who.textContent = row.live ? `${row.name} · live` : row.name;
+      const pts = document.createElement("span");
+      pts.className = "catch-board-pts";
+      pts.textContent = row.score.toLocaleString();
+      li.append(rank, who, pts);
+      boardList.append(li);
+    });
+  }
+
+  function submitRun() {
+    if (score <= 0) {
+      renderBoard();
+      return;
+    }
+    const rows = loadBoard();
+    const entry = {
+      id: `${Date.now()}-${score}`,
+      name: callsign(),
+      score,
+      flights: flight + 1,
+      at: Date.now(),
+    };
+    rows.push(entry);
+    rows.sort((a, b) => b.score - a.score || a.at - b.at);
+    saveBoard(rows);
+    freshId = entry.id;
+    if (score > best) setBest(score);
+    renderBoard();
+  }
+
+  if (nameInput) {
+    const savedName = localStorage.getItem(NAME_STORE);
+    if (savedName) nameInput.value = savedName.slice(0, 12);
+    nameInput.addEventListener("input", () => {
+      localStorage.setItem(NAME_STORE, callsign());
+      renderBoard();
+    });
+  }
+
+  if (!loadBoard().length && best > 0) {
+    saveBoard([{ id: "best", name: callsign(), score: best, flights: 1, at: Date.now() }]);
+  }
+
+  function makeNoise(ctx, seconds, color) {
+    const length = Math.max(1, Math.floor(ctx.sampleRate * seconds));
+    const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    let last = 0;
+    for (let i = 0; i < length; i += 1) {
+      const white = Math.random() * 2 - 1;
+      if (color === "brown") {
+        last = (last + 0.02 * white) / 1.02;
+        data[i] = last * 3.2;
+      } else {
+        data[i] = white;
+      }
+    }
+    return buffer;
+  }
+
+  function applyMute() {
+    if (!audio?.master) return;
+    audio.master.gain.setTargetAtTime(muted ? 0 : 0.82, audio.currentTime, 0.04);
+    if (muteBtn) {
+      muteBtn.textContent = muted ? "Sound off" : "Sound on";
+      muteBtn.classList.toggle("is-off", muted);
+    }
+  }
+
   function ensureAudio() {
-    if (audio || muted) return;
+    if (audio) {
+      if (audio.state === "suspended") audio.resume();
+      return;
+    }
     const Ctx = window.AudioContext || window.webkitAudioContext;
     if (!Ctx) return;
     audio = new Ctx();
-    rumble = audio.createOscillator();
-    const gain = audio.createGain();
-    const filter = audio.createBiquadFilter();
-    rumble.type = "sawtooth";
-    rumble.frequency.value = 46;
-    filter.type = "lowpass";
-    filter.frequency.value = 140;
-    gain.gain.value = 0;
-    rumble.connect(filter);
-    filter.connect(gain);
-    gain.connect(audio.destination);
-    rumble.start();
-    rumble.gainNode = gain;
+    const master = audio.createGain();
+    master.gain.value = muted ? 0 : 0.82;
+    master.connect(audio.destination);
+    audio.master = master;
+
+    const brown = audio.createBufferSource();
+    brown.buffer = makeNoise(audio, 2.4, "brown");
+    brown.loop = true;
+    const noiseFilter = audio.createBiquadFilter();
+    noiseFilter.type = "lowpass";
+    noiseFilter.frequency.value = 160;
+    noiseFilter.Q.value = 0.65;
+    const noiseGain = audio.createGain();
+    noiseGain.gain.value = 0;
+    brown.connect(noiseFilter);
+    noiseFilter.connect(noiseGain);
+    noiseGain.connect(master);
+
+    const hissSrc = audio.createBufferSource();
+    hissSrc.buffer = makeNoise(audio, 1.6, "white");
+    hissSrc.loop = true;
+    const hissFilter = audio.createBiquadFilter();
+    hissFilter.type = "bandpass";
+    hissFilter.frequency.value = 1800;
+    hissFilter.Q.value = 0.7;
+    const hissGain = audio.createGain();
+    hissGain.gain.value = 0;
+    hissSrc.connect(hissFilter);
+    hissFilter.connect(hissGain);
+    hissGain.connect(master);
+
+    const oscA = audio.createOscillator();
+    oscA.type = "sawtooth";
+    oscA.frequency.value = 36;
+    const oscB = audio.createOscillator();
+    oscB.type = "triangle";
+    oscB.frequency.value = 49.5;
+    const oscFilter = audio.createBiquadFilter();
+    oscFilter.type = "lowpass";
+    oscFilter.frequency.value = 88;
+    const oscGain = audio.createGain();
+    oscGain.gain.value = 0;
+    oscA.connect(oscFilter);
+    oscB.connect(oscFilter);
+    oscFilter.connect(oscGain);
+    oscGain.connect(master);
+
+    const windSrc = audio.createBufferSource();
+    windSrc.buffer = makeNoise(audio, 2, "white");
+    windSrc.loop = true;
+    const windFilter = audio.createBiquadFilter();
+    windFilter.type = "highpass";
+    windFilter.frequency.value = 700;
+    const windGain = audio.createGain();
+    windGain.gain.value = 0.012;
+    windSrc.connect(windFilter);
+    windFilter.connect(windGain);
+    windGain.connect(master);
+
+    brown.start();
+    hissSrc.start();
+    oscA.start();
+    oscB.start();
+    windSrc.start();
+
+    engine = { noiseGain, noiseFilter, hissGain, oscGain, oscFilter, oscA, oscB, windGain, master };
+    applyMute();
+  }
+
+  function setEngine(amount) {
+    if (!engine) return;
+    const t = audio.currentTime;
+    const a = muted ? 0 : clamp(amount, 0, 1);
+    engine.noiseGain.gain.setTargetAtTime(a * 0.14, t, 0.045);
+    engine.hissGain.gain.setTargetAtTime(a * 0.04, t, 0.03);
+    engine.oscGain.gain.setTargetAtTime(a * 0.05, t, 0.05);
+    engine.noiseFilter.frequency.setTargetAtTime(150 + a * 520, t, 0.08);
+    engine.oscFilter.frequency.setTargetAtTime(80 + a * 70, t, 0.08);
+    engine.oscA.frequency.setTargetAtTime(34 + a * 10, t, 0.1);
+    engine.oscB.frequency.setTargetAtTime(47 + a * 8, t, 0.1);
   }
 
   function setRumble(on) {
-    if (!audio || !rumble || muted) return;
-    const g = rumble.gainNode.gain;
-    g.cancelScheduledValues(audio.currentTime);
-    g.linearRampToValueAtTime(on ? 0.045 : 0, audio.currentTime + 0.05);
+    const amt = on ? clamp(Math.max(hold.thrust, held.thrust ? 0.42 : 0.2), 0, 1) : 0;
+    setEngine(amt);
   }
 
-  function blip(kind) {
+  function tone(freq, end, gain, dur, type) {
     if (!audio || muted) return;
     const o = audio.createOscillator();
     const g = audio.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(freq, audio.currentTime);
+    o.frequency.exponentialRampToValueAtTime(Math.max(20, end), audio.currentTime + dur);
+    g.gain.setValueAtTime(gain, audio.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + dur);
     o.connect(g);
-    g.connect(audio.destination);
-    if (kind === "catch") {
-      o.type = "triangle";
-      o.frequency.value = 220;
-      o.frequency.exponentialRampToValueAtTime(880, audio.currentTime + 0.18);
-      g.gain.value = 0.08;
-    } else {
-      o.type = "sawtooth";
-      o.frequency.value = 90;
-      o.frequency.exponentialRampToValueAtTime(30, audio.currentTime + 0.35);
-      g.gain.value = 0.1;
-    }
-    g.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + 0.4);
+    g.connect(audio.master);
     o.start();
-    o.stop(audio.currentTime + 0.42);
+    o.stop(audio.currentTime + dur + 0.02);
+  }
+
+  function noiseBurst(dur, freq, gain, q) {
+    if (!audio || muted) return;
+    const src = audio.createBufferSource();
+    src.buffer = makeNoise(audio, Math.max(0.08, dur), "white");
+    const filter = audio.createBiquadFilter();
+    filter.type = "lowpass";
+    filter.frequency.setValueAtTime(freq, audio.currentTime);
+    filter.frequency.exponentialRampToValueAtTime(Math.max(60, freq * 0.25), audio.currentTime + dur);
+    filter.Q.value = q || 0.6;
+    const g = audio.createGain();
+    g.gain.setValueAtTime(gain, audio.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + dur);
+    src.connect(filter);
+    filter.connect(g);
+    g.connect(audio.master);
+    src.start();
+    src.stop(audio.currentTime + dur + 0.02);
+  }
+
+  function sfxIgnite() {
+    if (!audio || muted) return;
+    noiseBurst(0.12, 1400, 0.07, 0.8);
+    tone(90, 48, 0.05, 0.16, "sine");
+  }
+
+  function sfxCatch() {
+    if (!audio || muted) return;
+    tone(62, 34, 0.16, 0.32, "sine");
+    tone(190, 70, 0.06, 0.22, "triangle");
+    tone(620, 210, 0.035, 0.18, "square");
+    noiseBurst(0.28, 2400, 0.045, 0.9);
+  }
+
+  function sfxFail(kind) {
+    if (!audio || muted) return;
+    if (kind === "splash") {
+      noiseBurst(0.5, 900, 0.12, 0.5);
+      tone(110, 36, 0.07, 0.38, "triangle");
+      return;
+    }
+    if (kind === "tower") {
+      tone(150, 48, 0.12, 0.28, "sawtooth");
+      tone(420, 90, 0.05, 0.2, "square");
+      noiseBurst(0.22, 700, 0.09, 0.7);
+      return;
+    }
+    noiseBurst(0.55, 380, 0.2, 0.45);
+    tone(78, 22, 0.16, 0.42, "sine");
+    tone(210, 40, 0.05, 0.24, "sawtooth");
+  }
+
+  function blip(kind) {
+    if (kind === "catch") sfxCatch();
+    else sfxFail(result || kind);
   }
 
   function burst(x, y, n, color, speed) {
@@ -247,6 +503,8 @@
     result = "";
     hideOverlay();
     if (hud) hud.hidden = false;
+    wasBurning = false;
+    renderBoard();
   }
 
   function beginAttract() {
@@ -260,6 +518,7 @@
       "Tap to nudge, hold to bank. Hold throttle to kill speed. Get the pins onto the arms — not the ocean, not the tower.",
       "Play"
     );
+    renderBoard();
   }
 
   function fail(kind) {
@@ -275,9 +534,10 @@
       state = "attract-hold";
       return;
     }
-    blip("fail");
     result = kind;
     state = "fail";
+    submitRun();
+    blip(kind);
     const lines = {
       splash: "The ocean again. The holy grail is still a catch.",
       rud: "Too fast, too tilted, or the pad. Rapid unscheduled disassembly.",
@@ -303,8 +563,9 @@
     }
     score += gained;
     if (score > best) setBest(score);
-    blip("catch");
     state = "caught";
+    renderBoard();
+    blip("catch");
     showOverlay(
       s.name,
       "Caught",
@@ -397,6 +658,8 @@
       ship.vy -= Math.cos(ship.angle) * thrust;
       emitExhaust();
     }
+    if (burning && !wasBurning && state === "fly") sfxIgnite();
+    wasBurning = Boolean(burning && state === "fly");
     setRumble(burning && state === "fly");
 
     ship.vy += 0.00185 * dt;
@@ -1081,7 +1344,7 @@
     }
     if (e.key === "m" || e.key === "M") {
       muted = !muted;
-      setRumble(false);
+      applyMute();
       return;
     }
     const mapped = keyMap[e.key];
@@ -1094,6 +1357,12 @@
   window.addEventListener("keyup", (e) => {
     const mapped = keyMap[e.key];
     if (mapped) setHeld(mapped, false);
+  });
+
+  muteBtn?.addEventListener("click", () => {
+    ensureAudio();
+    muted = !muted;
+    applyMute();
   });
 
   playBtn?.addEventListener("click", () => {
@@ -1120,6 +1389,7 @@
   window.addEventListener("resize", resize);
   resize();
   beginAttract();
+  renderBoard();
   requestAnimationFrame(frame);
 
   window.CatchGame = {
@@ -1130,6 +1400,15 @@
     hold: () => ({ ...hold }),
     held: () => ({ ...held }),
     clearHolds: clearAllHolds,
+    board: () => visibleBoard(),
+    storedBoard: () => loadBoard(),
+    submitRun,
+    renderBoard,
+    muted: () => muted,
+    audio: () =>
+      audio
+        ? { state: audio.state, muted, engine: Boolean(engine), voices: engine ? 5 : 0 }
+        : null,
     autopilot(on) {
       auto = Boolean(on);
     },
