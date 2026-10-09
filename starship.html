@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Starship flight tracker — @AlJR86</title>
+    <meta
+      name="description"
+      content="Every Starship flight so far: date, what it tested, and whether it worked. Plus a countdown to Flight 15."
+    />
+    <link rel="canonical" href="https://zzbz6jgyzy-creator.github.io/starship.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="@AlJR86" />
+    <meta property="og:title" content="Starship flight tracker — @AlJR86" />
+    <meta property="og:description" content="Every Starship flight so far: date, what it tested, and whether it worked. Plus a countdown to Flight 15." />
+    <meta property="og:url" content="https://zzbz6jgyzy-creator.github.io/starship.html" />
+    <meta property="og:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/starship-catch-poster.jpg" />
+    <meta property="og:image:alt" content="Starship catch clip" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AlJR86" />
+    <meta name="twitter:creator" content="@AlJR86" />
+    <meta name="twitter:title" content="Starship flight tracker — @AlJR86" />
+    <meta name="twitter:description" content="Every Starship flight so far: date, what it tested, and whether it worked. Plus a countdown to Flight 15." />
+    <meta name="twitter:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/starship-catch-poster.jpg" />
+    <meta name="twitter:image:alt" content="Starship catch clip" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/index.html">
+          <span class="brand-mark" aria-hidden="true">AL</span>
+          <span class="brand-text">ALJR<span class="brand-dot">86</span></span>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="/news.html">News</a>
+          <a href="/tesla.html">Tesla</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
+          <a href="/tsla.html">Markets</a>
+          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/starship.html" aria-current="page">Starship</a>
+          <a href="/updates.html">Updates</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/games.html">Games</a>
+          <a class="nav-cta" href="https://x.com/AlJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="page-hero" id="next">
+          <p class="eyebrow">SpaceX · Tracker</p>
+          <h1>Starship flight tracker</h1>
+          <p>
+            Every flight so far — the date, what it tested, and whether it worked.
+            Flight 15 is the first serious attempt to catch a Ship.
+          </p>
+          <p class="meta" id="starship-updated">Updated</p>
+          <p class="starship-hero-kicker" id="starship-next-date">NET</p>
+          <div class="starship-count" aria-hidden="true">
+            <div class="starship-count-cell">
+              <b id="starship-cd-days">00</b>
+              <span>Days</span>
+            </div>
+            <div class="starship-count-cell">
+              <b id="starship-cd-hours">00</b>
+              <span>Hours</span>
+            </div>
+            <div class="starship-count-cell">
+              <b id="starship-cd-mins">00</b>
+              <span>Minutes</span>
+            </div>
+            <div class="starship-count-cell">
+              <b id="starship-cd-secs">00</b>
+              <span>Seconds</span>
+            </div>
+          </div>
+          <p class="starship-cd-status" id="starship-cd-status"></p>
+          <nav class="fsd-jump" aria-label="On this page">
+            <a href="#log">Flight log</a>
+            <a href="/calendar.html">Calendar</a>
+          </nav>
+        </section>
+
+        <section class="section" style="padding-top: 1.4rem" aria-labelledby="starship-summary-heading">
+          <div class="section-head">
+            <h2 id="starship-summary-heading">Snapshot</h2>
+            <p>Fourteen flown. The next one is the catch.</p>
+          </div>
+          <div class="stats">
+            <a class="stat" href="#log">
+              <b id="starship-flown-count">0</b>
+              <span>Flights flown</span>
+            </a>
+            <a class="stat" href="#log">
+              <b id="starship-worked-count">0</b>
+              <span>Worked</span>
+            </a>
+            <a class="stat" href="#log">
+              <b id="starship-partial-count">0</b>
+              <span>Partial</span>
+            </a>
+            <a class="stat" href="#log">
+              <b id="starship-failed-count">0</b>
+              <span>Failed</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="starship-next-heading">
+          <div class="section-head">
+            <h2 id="starship-next-heading">Flight 15</h2>
+            <p id="starship-next-flight">Flight 15</p>
+          </div>
+          <article class="panel starship-next">
+            <h3 id="starship-next-headline">First serious Ship catch</h3>
+            <p class="starship-hw" id="starship-next-hw"></p>
+            <p id="starship-next-tested"></p>
+            <p class="fsd-track-link"><a href="/calendar.html">Same date on the calendar →</a></p>
+          </article>
+        </section>
+
+        <section class="section" id="log" aria-labelledby="starship-log-heading">
+          <div class="section-head">
+            <h2 id="starship-log-heading" class="reveal">Flight log</h2>
+            <p class="reveal delay-1" id="starship-showing">Flights</p>
+          </div>
+          <div class="fsd-filters reveal" role="group" aria-label="Filter flights">
+            <button type="button" class="fsd-filter" data-starship-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="fsd-filter" data-starship-filter="worked" aria-pressed="false">Worked</button>
+            <button type="button" class="fsd-filter" data-starship-filter="partial" aria-pressed="false">Partial</button>
+            <button type="button" class="fsd-filter" data-starship-filter="failed" aria-pressed="false">Failed</button>
+            <button type="button" class="fsd-filter" data-starship-filter="next" aria-pressed="false">Next</button>
+          </div>
+          <div class="starship-list" id="starship-list"></div>
+        </section>
+
+        <section class="section" aria-labelledby="starship-disclaimer-heading">
+          <div class="panel reveal">
+            <p class="eyebrow" id="starship-disclaimer-heading">Sources &amp; disclaimer</p>
+            <p id="starship-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
+            <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
+              Worked means the stack did the job that flight was built for. Partial means
+              a real first — space, a catch, a new block — with a stage still lost.
+              Failed means both stages were lost before the test paid off. Cross-check
+              SpaceX and the FAA before you treat a NET date as a T-0.
+            </p>
+            <p style="margin: 1rem 0 0">
+              <a class="button button-ghost" href="/spacex.html">Back to SpaceX</a>
+              <a class="button button-ghost" href="/calendar.html">Calendar</a>
+              <a class="button button-ghost" href="/catch.html">Catch the game</a>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span data-year></span> @AlJR86. Independent Starship tracker. Not affiliated with SpaceX.</p>
+        <p>
+          <a href="/spacex.html">SpaceX</a>
+          ·
+          <a href="/calendar.html">Calendar</a>
+          ·
+          <a href="/fsd-europe.html">FSD Europe</a>
+          ·
+          <a href="/starship.html">Starship</a>
+          ·
+          <a href="https://x.com/AlJR86">X</a>
+        </p>
+      </footer>
+    </div>
+    <script src="/script.js"></script>
+    <script src="/starship-data.js"></script>
+    <script src="/starship.js"></script>
+  </body>
+</html>

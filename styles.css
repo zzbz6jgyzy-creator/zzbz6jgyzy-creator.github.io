@@ -1470,6 +1470,268 @@ article.story-card {
   }
 }
 
+.starship-hero-kicker {
+  margin: 1.15rem 0 0.65rem;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.page-hero .starship-count {
+  margin-top: 0.15rem;
+}
+
+.starship-next h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+}
+
+.starship-hw {
+  margin: 0 0 0.85rem;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.starship-count {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(4.4rem, 1fr));
+  gap: 0.55rem;
+  max-width: 28rem;
+  margin: 0 0 0.9rem;
+}
+
+.starship-count-cell {
+  text-align: center;
+  padding: 0.75rem 0.4rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(236, 236, 232, 0.03);
+}
+
+.starship-count-cell b {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.starship-count-cell span {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--mute);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.starship-cd-status {
+  margin: 0 0 0.85rem;
+  color: var(--mute);
+  font-size: 0.88rem;
+}
+
+.starship-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.starship-flight {
+  padding: 1.05rem 1.15rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.starship-flight.is-next {
+  border-color: rgba(157, 183, 232, 0.35);
+  background:
+    linear-gradient(135deg, rgba(157, 183, 232, 0.08), transparent 55%),
+    var(--card);
+}
+
+.starship-flight-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.starship-flight-num {
+  font-weight: 600;
+}
+
+.starship-flight time {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--mute);
+}
+
+.starship-flight h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.08rem;
+}
+
+.starship-flight p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.starship-status-worked {
+  color: #9fd4b0;
+  border-color: rgba(159, 212, 176, 0.35);
+  background: rgba(159, 212, 176, 0.08);
+}
+
+.starship-status-partial {
+  color: #e2c48a;
+  border-color: rgba(226, 196, 138, 0.35);
+  background: rgba(226, 196, 138, 0.08);
+}
+
+.starship-status-failed {
+  color: #e29a9a;
+  border-color: rgba(226, 154, 154, 0.35);
+  background: rgba(226, 154, 154, 0.08);
+}
+
+.starship-status-next {
+  color: #9db7e8;
+  border-color: rgba(157, 183, 232, 0.35);
+  background: rgba(157, 183, 232, 0.08);
+}
+
+.referral-banner-spacex {
+  background:
+    linear-gradient(135deg, rgba(157, 183, 232, 0.14), transparent 55%),
+    var(--card);
+}
+
+@media (max-width: 520px) {
+  .starship-count {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.updates-fsd-lines p {
+  margin: 0 0 0.75rem;
+  color: var(--ink-soft);
+}
+
+.updates-fsd-lines p:last-child {
+  margin-bottom: 0;
+}
+
+.updates-lookup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin: 1.2rem 0 0.85rem;
+  max-width: 40rem;
+}
+
+.updates-toolbar {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 0.2rem;
+}
+
+.updates-search-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.updates-search {
+  width: 100%;
+  max-width: 28rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+}
+
+.updates-search:focus {
+  outline: 2px solid rgba(157, 183, 232, 0.55);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .updates-lookup {
+    grid-template-columns: 1fr;
+  }
+}
+
+.updates-features {
+  margin: 0.7rem 0 0;
+  padding: 0 0 0 1.1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.updates-features li + li {
+  margin-top: 0.35rem;
+}
+
+.updates-reached {
+  margin: 0.75rem 0 0;
+  color: var(--mute);
+  font-size: 0.9rem;
+}
+
+.updates-avail {
+  margin: 0.45rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.updates-avail-here {
+  color: #9fd4b0;
+}
+
+.updates-avail-away {
+  color: #e2c48a;
+}
+
+.updates-card.is-away {
+  opacity: 0.82;
+}
+
+.updates-status-early,
+.updates-kind-cabin {
+  color: #9db7e8;
+  border-color: rgba(157, 183, 232, 0.35);
+  background: rgba(157, 183, 232, 0.08);
+}
+
+.updates-status-rolling {
+  color: #e2c48a;
+  border-color: rgba(226, 196, 138, 0.35);
+  background: rgba(226, 196, 138, 0.08);
+}
+
+.updates-status-wide,
+.updates-kind-fsd {
+  color: #9fd4b0;
+  border-color: rgba(159, 212, 176, 0.35);
+  background: rgba(159, 212, 176, 0.08);
+}
+
+.updates-status-limited {
+  color: var(--mute);
+}
+
+.updates-empty {
+  color: var(--mute);
+}
+
 .tcmv-list {
   display: grid;
   gap: 0.85rem;

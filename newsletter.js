@@ -1,5 +1,5 @@
 (() => {
-  const ENDPOINT = "https://formsubmit.co/ajax/alexrickard86@gmail.com";
+  const ENDPOINT = "https://formsubmit.co/ajax/alexrickard@mail.grokbot.com";
   const STORAGE_KEY = "aljr-newsletter";
 
   const already = () => {
