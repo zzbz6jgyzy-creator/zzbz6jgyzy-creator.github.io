@@ -233,7 +233,7 @@ a:hover {
   position: relative;
   width: min(100% - 2.5rem, var(--max));
   margin: 0 auto;
-  padding: 6.5rem 0 2.8rem;
+  padding: 6.5rem 0 2.2rem;
   display: grid;
   gap: 1.1rem;
 }
@@ -1612,60 +1612,80 @@ a.referral-banner:hover {
 
 .newsletter {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.9fr);
-  gap: 0.35rem 1.75rem;
-  align-items: end;
-  padding: 1.25rem 1.35rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  gap: 0.85rem;
+  padding: 1.2rem 1.3rem 1.15rem;
+  border: 1px solid rgba(200, 16, 46, 0.55);
+  border-radius: 12px;
   background:
-    linear-gradient(135deg, rgba(200, 16, 46, 0.12), transparent 55%),
-    var(--card);
+    linear-gradient(135deg, rgba(200, 16, 46, 0.32), rgba(12, 13, 16, 0.55) 48%),
+    rgba(12, 13, 16, 0.72);
+  box-shadow:
+    0 0 0 1px rgba(200, 16, 46, 0.18),
+    0 18px 48px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(14px);
 }
 
-.newsletter > div {
-  grid-column: 1;
+.newsletter-hero {
+  margin-top: 0.45rem;
+  width: min(100%, 38rem);
+}
+
+.page-hero .newsletter-hero {
+  margin-top: 1.35rem;
+}
+
+.page-hero .newsletter p {
+  max-width: none;
 }
 
 .newsletter h2 {
-  margin: 0.25rem 0 0.45rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  margin: 0.15rem 0 0.35rem;
+  font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
-.newsletter > div p:last-child {
+.newsletter > div p:last-of-type {
   margin: 0;
-  color: var(--ink-soft);
-  font-size: 0.95rem;
+  color: var(--ink);
+  font-size: 0.98rem;
 }
 
 .newsletter-form {
-  grid-column: 2;
-  grid-row: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: center;
-  justify-self: end;
-  width: min(100%, 22rem);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "label label"
+    "email button";
+  gap: 0.4rem 0.55rem;
+  align-items: stretch;
+}
+
+.newsletter-label {
+  grid-area: label;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(236, 236, 232, 0.72);
 }
 
 .newsletter-form input[type="email"] {
-  flex: 1 1 12rem;
+  grid-area: email;
   min-width: 0;
-  border: 1px solid var(--line-strong);
-  background: rgba(12, 13, 16, 0.65);
+  border: 1px solid rgba(236, 236, 232, 0.28);
+  background: #0c0d10;
   color: var(--ink);
-  border-radius: 7px;
-  padding: 0.7rem 0.85rem;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
   font: inherit;
-  font-size: 0.92rem;
+  font-size: 1rem;
 }
 
 .newsletter-form input[type="email"]:focus {
-  outline: 2px solid rgba(236, 236, 232, 0.35);
+  outline: 2px solid rgba(236, 236, 232, 0.45);
   outline-offset: 1px;
+  border-color: #fff;
 }
 
 .newsletter-form input:disabled,
@@ -1675,20 +1695,13 @@ a.referral-banner:hover {
 }
 
 .newsletter-form .button {
-  flex: 0 0 auto;
-}
-
-.newsletter-honey {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  grid-area: button;
+  padding: 0.85rem 1.2rem;
+  font-size: 1rem;
 }
 
 .newsletter-status {
-  grid-column: 1 / -1;
-  margin: 0.35rem 0 0;
+  margin: 0;
   min-height: 1.2em;
   font-size: 0.88rem;
   color: var(--mute);
@@ -1702,33 +1715,17 @@ a.referral-banner:hover {
   color: #f0a0a8;
 }
 
-.newsletter-compact {
-  margin: 0;
-}
-
-.newsletter-strip {
-  padding-bottom: 0;
-}
-
-@media (max-width: 800px) {
-  .newsletter {
-    grid-template-columns: 1fr;
-  }
-
-  .newsletter > div {
-    grid-row: 1;
-  }
-
+@media (max-width: 560px) {
   .newsletter-form {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: stretch;
-    width: 100%;
-    margin-top: 0.35rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "label"
+      "email"
+      "button";
   }
 
-  .newsletter-status {
-    grid-row: 3;
+  .newsletter-form .button {
+    width: 100%;
   }
 }
 

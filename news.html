@@ -69,6 +69,20 @@
             Headlines and photos from the wire, with a snapshot on this site if
             live fetch is quiet.
           </p>
+          <div class="newsletter newsletter-hero reveal is-visible" data-newsletter="banner" id="newsletter">
+            <div>
+              <p class="eyebrow">Newsletter</p>
+              <h2 id="newsletter-heading">Get these headlines by email</h2>
+              <p>Tesla, SpaceX and Grok from the desk. Independent. No spam.</p>
+            </div>
+            <form class="newsletter-form" data-newsletter-form>
+              <label class="newsletter-label" for="newsletter-email-news">Email</label>
+              <input id="newsletter-email-news" name="email" type="email" required autocomplete="email" placeholder="you@email.com" />
+              <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
+              <button class="button button-primary" type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-status" data-newsletter-status role="status"></p>
+          </div>
         </section>
 
         <section class="section" style="padding-top: 1.5rem" aria-labelledby="news-heading">
@@ -89,23 +103,6 @@
             <button type="button" class="news-refresh" data-news-refresh>Refresh</button>
           </div>
           <div class="news-list" data-news-list aria-live="polite"></div>
-        </section>
-
-        <section class="section" aria-labelledby="newsletter-heading" id="newsletter">
-          <div class="newsletter reveal" data-newsletter="banner">
-            <div>
-              <p class="eyebrow">Newsletter</p>
-              <h2 id="newsletter-heading">Get these headlines by email</h2>
-              <p>Tesla, SpaceX and Grok from the desk. Independent, not affiliated. No spam.</p>
-            </div>
-            <form class="newsletter-form" data-newsletter-form>
-              <label class="visually-hidden" for="newsletter-email-news">Email</label>
-              <input id="newsletter-email-news" name="email" type="email" required autocomplete="email" placeholder="you@email.com" />
-              <input class="newsletter-honey" type="text" name="website" tabindex="-1" autocomplete="off" />
-              <button class="button button-primary" type="submit">Subscribe</button>
-            </form>
-            <p class="newsletter-status" data-newsletter-status role="status"></p>
-          </div>
         </section>
 
         <section class="section">
