@@ -1093,9 +1093,16 @@
         ctx.rotate(lean);
         ctx.fillStyle = "rgba(0,0,0,0.38)";
         ctx.beginPath();
-        ctx.ellipse(0, 6, 50 * p.scale, 11 * p.scale, 0, 0, Math.PI * 2);
+        ctx.ellipse(0, 6, 58 * p.scale, 10 * p.scale, 0, 0, Math.PI * 2);
         ctx.fill();
-        drawBillboard(ctx, sprites.cab, 0, 0, 112 * p.scale);
+        ctx.save();
+        ctx.globalCompositeOperation = "screen";
+        ctx.fillStyle = "rgba(255, 48, 24, 0.28)";
+        ctx.beginPath();
+        ctx.ellipse(0, -30 * p.scale, 44 * p.scale, 9 * p.scale, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+        drawBillboard(ctx, sprites.cab, 0, 0, 100 * p.scale);
         ctx.restore();
       }
     });
