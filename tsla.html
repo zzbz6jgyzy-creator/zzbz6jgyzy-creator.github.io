@@ -61,12 +61,20 @@
       </header>
 
       <main id="main">
-        <section class="page-hero">
-          <p class="eyebrow reveal">Markets · TSLA · SPCX</p>
-          <h1 class="reveal delay-1">Tesla and SpaceX</h1>
-          <p class="reveal delay-2">
-            Live TSLA and SPCX on one chart. Tesla’s next print and last deliveries sit
-            below. Personal trades and balances stay off the page.
+        <section class="page-hero" data-markets-hero data-markets-active="tsla">
+          <p class="eyebrow reveal">Markets</p>
+          <h1 class="markets-h1 reveal delay-1" aria-live="polite">
+            <span class="markets-brand" data-markets-brand="tsla">
+              <img class="markets-logo" src="/assets/tesla-mark.svg" width="48" height="48" alt="" />
+              <span class="markets-ticker">TSLA</span>
+            </span>
+            <span class="markets-brand" data-markets-brand="spcx" hidden>
+              <img class="markets-logo" src="/assets/spacex-mark.svg" width="48" height="48" alt="" />
+              <span class="markets-ticker">SPCX</span>
+            </span>
+          </h1>
+          <p class="reveal delay-2" data-markets-lede>
+            Live Tesla share price, the next print, and last deliveries. SPCX is the other tab.
           </p>
         </section>
 
@@ -93,54 +101,26 @@
 
         <section class="section" aria-labelledby="tsla-chart-heading">
           <div class="section-head">
-            <h2 id="tsla-chart-heading" class="reveal">TSLA and SPCX</h2>
+            <h2 id="tsla-chart-heading" class="reveal">Price</h2>
             <p class="reveal delay-1">
-              TradingView · Tesla and SpaceX ·
-              <a href="https://www.tradingview.com/symbols/NASDAQ-TSLA/" target="_blank" rel="noopener noreferrer">open the full chart</a>
+              TradingView ·
+              <a data-markets-chart-link href="https://www.tradingview.com/symbols/NASDAQ-TSLA/" target="_blank" rel="noopener noreferrer">open the full chart</a>
             </p>
           </div>
-          <div class="tv-frame reveal is-visible">
-            <div class="tradingview-widget-container" style="height:100%;width:100%">
-              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-              {
-                "lineWidth": 2,
-                "lineType": 0,
-                "chartType": "area",
-                "fontColor": "rgb(167, 169, 174)",
-                "gridLineColor": "rgba(236, 236, 232, 0.08)",
-                "volumeUpColor": "rgba(34, 171, 148, 0.5)",
-                "volumeDownColor": "rgba(200, 16, 46, 0.5)",
-                "backgroundColor": "#14151a",
-                "widgetFontColor": "#ecece8",
-                "upColor": "#22ab94",
-                "downColor": "#c8102e",
-                "borderUpColor": "#22ab94",
-                "borderDownColor": "#c8102e",
-                "wickUpColor": "#22ab94",
-                "wickDownColor": "#c8102e",
-                "colorTheme": "dark",
-                "isTransparent": false,
-                "locale": "en",
-                "chartOnly": false,
-                "scalePosition": "right",
-                "scaleMode": "Normal",
-                "fontFamily": "Inter, sans-serif",
-                "valuesTracking": "1",
-                "changeMode": "price-and-percent",
-                "symbols": [["NASDAQ:TSLA|1D"], ["NASDAQ:SPCX|1D"]],
-                "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"],
-                "fontSize": "10",
-                "headerFontSize": "medium",
-                "autosize": true,
-                "width": "100%",
-                "height": "100%",
-                "noTimeScale": false,
-                "hideDateRanges": false,
-                "hideMarketStatus": false,
-                "hideSymbolLogo": false
-              }
-              </script>
+          <div class="markets-chart reveal is-visible">
+            <div class="markets-tabs" role="tablist" aria-label="Chart symbol">
+              <button type="button" role="tab" aria-selected="true" class="is-on" data-markets-tab="tsla">
+                <img class="markets-logo" src="/assets/tesla-mark.svg" width="24" height="24" alt="" />
+                TSLA
+              </button>
+              <button type="button" role="tab" aria-selected="false" data-markets-tab="spcx">
+                <img class="markets-logo" src="/assets/spacex-mark.svg" width="24" height="24" alt="" />
+                SPCX
+              </button>
+            </div>
+            <div class="tv-stack">
+              <div class="tv-frame is-on" data-markets-chart="tsla"></div>
+              <div class="tv-frame" data-markets-chart="spcx"></div>
             </div>
           </div>
         </section>
@@ -208,5 +188,6 @@
     </div>
     <script src="/script.js"></script>
     <script src="/calendar.js"></script>
+    <script src="/markets.js"></script>
   </body>
 </html>
