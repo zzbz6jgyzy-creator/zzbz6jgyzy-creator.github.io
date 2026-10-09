@@ -21,15 +21,25 @@
   const upcoming = data.meetings.filter((m) => m.outcome === "upcoming");
   const votes = held.filter((m) => m.outcome === "vote").length;
 
+  const next = upcoming[0];
+  const nextLabel = next
+    ? new Date(`${next.date}T12:00:00Z`).toLocaleDateString("en-GB", {
+        month: "short",
+        year: "numeric",
+      })
+    : "—";
+
   setText("tcmv-updated", `Updated ${formatDate(data.updated)}`);
   setText("tcmv-held-count", String(held.length));
   setText("tcmv-vote-count", String(votes));
   setText("tcmv-upcoming-count", String(upcoming.length));
+  setText("tcmv-next-label", nextLabel);
   setText("tcmv-note", data.note);
 
   const list = document.getElementById("tcmv-list");
   const filters = document.querySelectorAll("[data-tcmv-filter]");
   let active = "all";
+  let didHashScroll = false;
 
   const render = () => {
     if (!list) return;
@@ -62,7 +72,7 @@
         <header class="tcmv-card-head">
           <div>
             <p class="eyebrow">${numberLabel} · ${meeting.place}</p>
-            <h2>${meeting.title}</h2>
+            <h3>${meeting.title}</h3>
             <p class="tcmv-meta">
               <time datetime="${meeting.date}">${dateLabel}</time>
               <span>${meeting.time}</span>
@@ -94,7 +104,20 @@
       list.append(article);
     });
 
-    setText("tcmv-showing", `${rows.length} meeting${rows.length === 1 ? "" : "s"}`);
+    setText(
+      "tcmv-showing",
+      active === "all"
+        ? `${held.length} sessions · ${votes} vote${votes === 1 ? "" : "s"} taken`
+        : `${rows.length} meeting${rows.length === 1 ? "" : "s"}`
+    );
+
+    if (!didHashScroll && location.hash.startsWith("#meeting-")) {
+      didHashScroll = true;
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) {
+        requestAnimationFrame(() => target.scrollIntoView());
+      }
+    }
   };
 
   filters.forEach((button) => {

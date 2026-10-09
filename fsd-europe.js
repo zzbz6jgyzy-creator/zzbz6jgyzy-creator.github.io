@@ -29,6 +29,7 @@
   setText("fsd-updated", `Updated ${formatDate(data.updated)}`);
   setText("fsd-approved-count", String(approved.length));
   setText("fsd-approved-count-copy", String(approved.length));
+  setText("fsd-states-bar-label", String(approved.length));
   setText("fsd-review-count", String(review.length));
   setText("fsd-states-needed", String(Math.max(0, data.thresholds.statesNeeded - approved.length)));
   setText("fsd-pop-pct", `${popPct.toFixed(1)}%`);
