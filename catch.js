@@ -1333,7 +1333,16 @@
     startPlay();
   }
 
+  function typingInField(el) {
+    if (!el || el === document.body) return false;
+    const tag = el.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true;
+    if (el.isContentEditable) return true;
+    return Boolean(el.closest?.("input, textarea, select, [contenteditable='true']"));
+  }
+
   window.addEventListener("keydown", (e) => {
+    if (typingInField(e.target)) return;
     if (e.key === "p" || e.key === "P") {
       if (state === "fly") {
         state = "pause";
