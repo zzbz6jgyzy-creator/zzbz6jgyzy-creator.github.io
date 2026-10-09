@@ -39,6 +39,19 @@
     );
   };
 
+  const matchVersion = (version, query) => {
+    const q = norm(query).replace(/^v/, "");
+    if (!q) return true;
+    const id = norm(version.id);
+    const family = norm(version.family);
+    const fsd = norm(version.fsd || "").replace(/^v/, "");
+    if (id === q || family === q) return true;
+    if (id.startsWith(q) || family.startsWith(q)) return true;
+    if (q.length >= 4 && (id.includes(q) || family.includes(q))) return true;
+    if (q.length >= 4 && fsd.includes(q)) return true;
+    return false;
+  };
+
   setText("updates-updated", `Updated ${formatDate(data.updated)}`);
   setText("updates-note", data.note);
 
@@ -53,17 +66,20 @@
 
   const list = document.getElementById("updates-list");
   const search = document.getElementById("updates-search");
+  const versionInput = document.getElementById("updates-version");
+  const lookup = document.getElementById("updates-lookup");
   const chips = document.querySelectorAll("[data-updates-country]");
   const kindButtons = document.querySelectorAll("[data-updates-kind]");
   const empty = document.getElementById("updates-empty");
 
-  let countryCode = "";
+  let countryCode = "IE";
   let kind = "all";
+  let versionQuery = "";
 
   const setCountry = (code, fillQuery) => {
     countryCode = code || "";
     chips.forEach((chip) => {
-      const on = chip.dataset.updatesCountry === countryCode;
+      const on = Boolean(countryCode) && chip.dataset.updatesCountry === countryCode;
       chip.setAttribute("aria-pressed", String(on));
     });
     if (fillQuery && search) {
@@ -90,19 +106,24 @@
 
     const rows = data.versions
       .filter((v) => kind === "all" || v.kind === kind)
+      .filter((v) => matchVersion(v, versionQuery))
       .map((v) => ({ version: v, avail: availability(v, country) }))
       .sort((a, b) => {
+        if (versionQuery) {
+          const aExact = norm(a.version.id) === norm(versionQuery);
+          const bExact = norm(b.version.id) === norm(versionQuery);
+          if (aExact !== bExact) return aExact ? -1 : 1;
+        }
         if (country && a.avail.key !== b.avail.key) return a.avail.key === "here" ? -1 : 1;
         return b.version.date.localeCompare(a.version.date);
       });
 
-    rows.forEach(({ version, avail }, index) => {
+    rows.forEach(({ version, avail }) => {
       const article = document.createElement("article");
       article.className = `starship-flight updates-card${avail.key === "away" ? " is-away" : ""}`;
+      article.id = `build-${version.id.replace(/\./g, "-")}`;
       article.dataset.kind = version.kind;
-      const features = version.features
-        .map((item) => `<li>${item}</li>`)
-        .join("");
+      const features = version.features.map((item) => `<li>${item}</li>`).join("");
       article.innerHTML = `
         <div class="starship-flight-head">
           <span class="starship-flight-num">${version.id}</span>
@@ -117,16 +138,23 @@
         <p class="updates-reached">${version.reached}</p>
         ${avail.label ? `<p class="updates-avail updates-avail-${avail.key}">${avail.label}</p>` : ""}
       `;
-      if (index === 0) article.classList.add("reveal");
       list.append(article);
     });
 
     const hereCount = country ? rows.filter((r) => r.avail.key === "here").length : rows.length;
-    if (country) {
+    if (versionQuery && rows.length === 1) {
+      const only = rows[0];
+      const where = only.avail.label || only.version.reached;
+      setText("updates-showing", `${only.version.id} — ${where}`);
+    } else if (country && versionQuery) {
+      setText("updates-showing", `${rows.length} builds matching ${versionQuery} · ${country.name}`);
+    } else if (country) {
       setText(
         "updates-showing",
         `${hereCount} of ${rows.length} listed builds seen in ${country.name}`
       );
+    } else if (versionQuery) {
+      setText("updates-showing", `${rows.length} builds matching ${versionQuery}`);
     } else {
       setText("updates-showing", `${rows.length} current builds`);
     }
@@ -138,7 +166,6 @@
       const next = chip.dataset.updatesCountry;
       if (countryCode === next) {
         setCountry("", true);
-        if (search) search.value = "";
       } else {
         setCountry(next, true);
       }
@@ -162,5 +189,26 @@
     });
   }
 
+  if (versionInput) {
+    versionInput.addEventListener("input", () => {
+      versionQuery = versionInput.value.trim();
+      render();
+    });
+  }
+
+  if (lookup) {
+    lookup.addEventListener("submit", (event) => {
+      event.preventDefault();
+      document.getElementById("builds")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  const hash = decodeURIComponent((location.hash || "").replace(/^#/, ""));
+  if (hash && /^\d{4}\.\d+/.test(hash)) {
+    versionQuery = hash;
+    if (versionInput) versionInput.value = hash;
+  }
+
+  setCountry(countryCode, true);
   render();
 })();

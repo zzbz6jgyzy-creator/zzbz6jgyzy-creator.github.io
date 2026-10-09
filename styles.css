@@ -1626,10 +1626,18 @@ article.story-card {
   margin-bottom: 0;
 }
 
+.updates-lookup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin: 1.2rem 0 0.85rem;
+  max-width: 40rem;
+}
+
 .updates-toolbar {
   display: grid;
   gap: 0.75rem;
-  margin-bottom: 1.1rem;
+  margin: 0 0 0.2rem;
 }
 
 .updates-search-label {
@@ -1653,6 +1661,12 @@ article.story-card {
 .updates-search:focus {
   outline: 2px solid rgba(157, 183, 232, 0.55);
   outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .updates-lookup {
+    grid-template-columns: 1fr;
+  }
 }
 
 .updates-features {
