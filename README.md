@@ -25,6 +25,7 @@ Open `http://localhost:4173`.
 - `tesla.html` / `spacex.html` / `grok.html` — the three desks
 - `fsd-europe.html` — FSD Supervised Europe tracker (national approvals + TCMV meetings)
 - `starship.html` — Starship flight tracker (every flight so far + Flight 15 countdown)
+- `updates.html` — Tesla software update tracker (plain-English notes + country search)
 - Contact / newsletter: `alexrickard@mail.grokbot.com`
 - `tcmv.html` — TCMV meeting log (same data as the FSD Europe tracker)
 - `reviews/` — Tesla car reviews (index + Model 3 / Y / S / X / Cybertruck)

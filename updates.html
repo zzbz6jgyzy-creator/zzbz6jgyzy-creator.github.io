@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tesla software updates — @AlJR86</title>
+    <meta
+      name="description"
+      content="Tesla firmware in plain English: what each new version actually adds, what has reached cars, and which bits are still US-only."
+    />
+    <link rel="canonical" href="https://zzbz6jgyzy-creator.github.io/updates.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="@AlJR86" />
+    <meta property="og:title" content="Tesla software updates — @AlJR86" />
+    <meta property="og:description" content="Tesla firmware in plain English: what each new version actually adds, what has reached cars, and which bits are still US-only." />
+    <meta property="og:url" content="https://zzbz6jgyzy-creator.github.io/updates.html" />
+    <meta property="og:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/fsd-snow-poster.jpg" />
+    <meta property="og:image:alt" content="FSD Supervised on a snowy European road" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AlJR86" />
+    <meta name="twitter:creator" content="@AlJR86" />
+    <meta name="twitter:title" content="Tesla software updates — @AlJR86" />
+    <meta name="twitter:description" content="Tesla firmware in plain English: what each new version actually adds, what has reached cars, and which bits are still US-only." />
+    <meta name="twitter:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/fsd-snow-poster.jpg" />
+    <meta name="twitter:image:alt" content="FSD Supervised on a snowy European road" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/index.html">
+          <span class="brand-mark" aria-hidden="true">AL</span>
+          <span class="brand-text">ALJR<span class="brand-dot">86</span></span>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="/news.html">News</a>
+          <a href="/tesla.html">Tesla</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
+          <a href="/tsla.html">Markets</a>
+          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/starship.html">Starship</a>
+          <a href="/updates.html" aria-current="page">Updates</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/games.html">Games</a>
+          <a class="nav-cta" href="https://x.com/AlJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="page-hero">
+          <p class="eyebrow reveal">Tesla · Tracker</p>
+          <h1 class="reveal delay-1">Software update tracker</h1>
+          <p class="reveal delay-2">
+            The car says an update is ready. This is what that number actually means —
+            in plain English — and whether it has reached cars in your country.
+            US FSD builds show up late here, or not at all.
+          </p>
+          <p class="meta reveal delay-3" id="updates-updated">Updated</p>
+          <nav class="fsd-jump reveal delay-3" aria-label="On this page">
+            <a href="#fsd">FSD right now</a>
+            <a href="#builds">Builds</a>
+          </nav>
+        </section>
+
+        <section class="section" style="padding-top: 1.4rem" aria-labelledby="updates-fsd-heading">
+          <div class="section-head">
+            <h2 id="updates-fsd-heading" class="reveal">FSD right now</h2>
+            <p class="reveal delay-1">Two continents, two version numbers.</p>
+          </div>
+          <article class="panel fsd-track-card fsd-track-brussels reveal" id="fsd">
+            <p class="eyebrow">Supervised · Public notes only</p>
+            <h3>v14.3 in North America. v14.2 in Europe.</h3>
+            <div id="updates-fsd-lines" class="updates-fsd-lines"></div>
+            <p class="fsd-track-link"><a href="/fsd-europe.html">FSD Europe country map →</a></p>
+          </article>
+        </section>
+
+        <section class="section" id="builds" aria-labelledby="updates-log-heading">
+          <div class="section-head">
+            <h2 id="updates-log-heading" class="reveal">Current builds</h2>
+            <p class="reveal delay-1" id="updates-showing">Builds</p>
+          </div>
+          <div class="updates-toolbar reveal">
+            <label class="updates-search-label" for="updates-search">Search by country</label>
+            <input
+              id="updates-search"
+              class="updates-search"
+              type="search"
+              placeholder="Ireland, United States, Germany…"
+              autocomplete="off"
+            />
+            <div class="fsd-filters" role="group" aria-label="Quick countries">
+              <button type="button" class="fsd-filter" data-updates-country="IE" aria-pressed="false">Ireland</button>
+              <button type="button" class="fsd-filter" data-updates-country="GB" aria-pressed="false">UK</button>
+              <button type="button" class="fsd-filter" data-updates-country="US" aria-pressed="false">United States</button>
+              <button type="button" class="fsd-filter" data-updates-country="DE" aria-pressed="false">Germany</button>
+              <button type="button" class="fsd-filter" data-updates-country="NL" aria-pressed="false">Netherlands</button>
+              <button type="button" class="fsd-filter" data-updates-country="AU" aria-pressed="false">Australia</button>
+            </div>
+            <div class="fsd-filters" role="group" aria-label="Filter by type">
+              <button type="button" class="fsd-filter" data-updates-kind="all" aria-pressed="true">All</button>
+              <button type="button" class="fsd-filter" data-updates-kind="fsd" aria-pressed="false">FSD</button>
+              <button type="button" class="fsd-filter" data-updates-kind="cabin" aria-pressed="false">Cabin</button>
+            </div>
+          </div>
+          <p class="updates-empty" id="updates-empty" hidden>No builds match that filter.</p>
+          <div class="starship-list" id="updates-list"></div>
+        </section>
+
+        <section class="section" aria-labelledby="updates-disclaimer-heading">
+          <div class="panel reveal">
+            <p class="eyebrow" id="updates-disclaimer-heading">Sources &amp; disclaimer</p>
+            <p id="updates-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
+            <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
+              Drawn from Tesla’s in-car release notes as republished by public trackers
+              (Not a Tesla App, TeslaFi, Teslascope) on 9 October 2026. “Seen in” means
+              a connected car in that country reported the build — not that Tesla has
+              finished the rollout. FSD Supervised is SAE Level 2. The driver supervises.
+              Nothing here is about one privately owned car.
+            </p>
+            <p style="margin: 1rem 0 0">
+              <a class="button button-ghost" href="/tesla.html">Back to Tesla</a>
+              <a class="button button-ghost" href="/fsd-europe.html">FSD Europe</a>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span data-year></span> @AlJR86. Independent Tesla software tracker. Not affiliated with Tesla.</p>
+        <p>
+          <a href="/tesla.html">Tesla</a>
+          ·
+          <a href="/fsd-europe.html">FSD Europe</a>
+          ·
+          <a href="/updates.html">Updates</a>
+          ·
+          <a href="/starship.html">Starship</a>
+          ·
+          <a href="https://x.com/AlJR86">X</a>
+        </p>
+      </footer>
+    </div>
+    <script src="/script.js"></script>
+    <script src="/updates-data.js"></script>
+    <script src="/updates.js"></script>
+  </body>
+</html>
