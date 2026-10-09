@@ -32,7 +32,7 @@
   const SHARE_URL = "https://zzbz6jgyzy-creator.github.io/cybercab.html";
   const BOARD_MAX = 8;
   const LANE_X = [-0.7, 0, 0.7];
-  const PLAYER_Z = 0.56;
+  const PLAYER_Z = 0.72;
   const HIT_Z = 0.36;
   const HIT_X = 0.26;
   const CITY_WRAP = 14;
@@ -68,7 +68,7 @@
   let game = null;
 
   const sprites = {
-    cab: loadImg("/assets/cybercab/cybercab-drive.png"),
+    cab: loadImg("/assets/cybercab/cybercab-player.png"),
     waymo: loadImg("/assets/cybercab/waymo.png"),
     palm: loadImg("/assets/cybercab/palm.png"),
     light: loadImg("/assets/cybercab/streetlight.png"),
@@ -1150,28 +1150,24 @@
       } else if (it.kind === "player" && game) {
         const p = project(game.x, PLAYER_Z);
         const s = p.scale;
-        const bounce = Math.sin(clock * 0.018) * 1.6 * s;
-        const lean = (LANE_X[game.lane] - game.x) * 0.14 + game.curve * 0.025;
-        drawBeams(ctx, p.x, p.y, s * (game.boost > 0 ? 1.25 : 1), false);
+        drawBeams(ctx, p.x, p.y, s * (game.boost > 0 ? 1.18 : 1), false);
         ctx.save();
-        ctx.translate(p.x, p.y + bounce);
-        ctx.rotate(lean);
-        ctx.fillStyle = "rgba(0,0,0,0.42)";
+        ctx.translate(p.x, p.y);
+        ctx.fillStyle = "rgba(0,0,0,0.4)";
         ctx.beginPath();
-        ctx.ellipse(0, 10, 92 * s, 14 * s, 0, 0, Math.PI * 2);
+        ctx.ellipse(0, 5, 32 * s, 7 * s, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.save();
         ctx.globalCompositeOperation = "screen";
-        const glow = ctx.createRadialGradient(26 * s, -58 * s, 4 * s, 18 * s, -52 * s, 78 * s);
-        glow.addColorStop(0, "rgba(255,52,48,0.7)");
-        glow.addColorStop(0.45, "rgba(255,40,40,0.22)");
+        const glow = ctx.createRadialGradient(0, -34 * s, 3 * s, 0, -30 * s, 36 * s);
+        glow.addColorStop(0, "rgba(255,52,48,0.5)");
         glow.addColorStop(1, "rgba(255,20,20,0)");
         ctx.fillStyle = glow;
         ctx.beginPath();
-        ctx.ellipse(22 * s, -54 * s, 78 * s, 20 * s, 0, 0, Math.PI * 2);
+        ctx.ellipse(0, -32 * s, 34 * s, 10 * s, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
-        drawBillboard(ctx, sprites.cab, 0, 0, 152 * s);
+        drawBillboard(ctx, sprites.cab, 0, 0, 72 * s);
         ctx.restore();
       }
     });
