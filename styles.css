@@ -2038,6 +2038,132 @@ a.cal-title:hover {
   border-left-color: #c4a574;
 }
 
+.news-status-line {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.news-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--mute);
+  flex: 0 0 auto;
+}
+
+.news-dot.is-live {
+  background: #8ee0c4;
+}
+
+.news-dot.is-stale {
+  background: #e0c48e;
+}
+
+.news-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 1rem;
+  margin: 0 0 1rem;
+}
+
+.news-refresh {
+  appearance: none;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--ink-soft);
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.news-refresh:hover {
+  background: #fff;
+  color: var(--bg);
+  border-color: #fff;
+}
+
+.news-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.news-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 1.05rem 1.05rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  text-decoration: none;
+  color: inherit;
+  border-left: 2px solid var(--line-strong);
+}
+
+a.news-card:hover {
+  background: rgba(236, 236, 232, 0.03);
+  color: inherit;
+}
+
+a.news-card:hover h3 {
+  color: #fff;
+}
+
+.news-tesla {
+  border-left-color: var(--tesla);
+}
+
+.news-spacex {
+  border-left-color: #6ea8ff;
+}
+
+.news-grok {
+  border-left-color: #d6d6d0;
+}
+
+.news-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.news-card h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.news-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.news-card.is-skeleton {
+  min-height: 6.2rem;
+  pointer-events: none;
+  opacity: 0.45;
+  background: linear-gradient(90deg, var(--card) 25%, rgba(236, 236, 232, 0.04) 50%, var(--card) 75%);
+  background-size: 200% 100%;
+}
+
+.news-empty {
+  margin: 0;
+  color: var(--mute);
+}
+
 @media (max-width: 700px) {
   .cal-row {
     grid-template-columns: 1fr auto;
