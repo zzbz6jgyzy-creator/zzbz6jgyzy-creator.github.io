@@ -30,9 +30,9 @@
   const BOARD_MAX = 8;
   const LANES = 3;
   const LANE_X = [-0.66, 0, 0.66];
-  const PLAYER_Z = 1.12;
-  const HIT_Z = 0.42;
-  const HIT_X = 0.34;
+  const PLAYER_Z = 0.62;
+  const HIT_Z = 0.38;
+  const HIT_X = 0.3;
   const POWERS = [
     { id: "shield", label: "Shield", color: "#7ad7ff" },
     { id: "slow", label: "Slow", color: "#c9a6ff" },
@@ -103,13 +103,19 @@
     c.height = sh;
     const x = c.getContext("2d");
     x.drawImage(img, sx, sy, sw, sh, 0, 0, sw, sh);
-    const g = x.createRadialGradient(sw * 0.5, sh * 0.48, sw * 0.16, sw * 0.5, sh * 0.5, sw * 0.52);
-    g.addColorStop(0, "rgba(0,0,0,1)");
-    g.addColorStop(0.62, "rgba(0,0,0,0.92)");
-    g.addColorStop(1, "rgba(0,0,0,0)");
-    x.globalCompositeOperation = "destination-in";
-    x.fillStyle = g;
-    x.fillRect(0, 0, sw, sh);
+    const pix = x.getImageData(0, 0, sw, sh);
+    const d = pix.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const lum = d[i] * 0.22 + d[i + 1] * 0.7 + d[i + 2] * 0.08;
+      const px = (i / 4) % sw;
+      const py = Math.floor(i / 4 / sw);
+      const nx = (px / sw) * 2 - 1;
+      const ny = (py / sh) * 2 - 1;
+      const edge = Math.hypot(nx * 1.05, ny * 1.15);
+      if (lum < 22 || edge > 1) d[i + 3] = 0;
+      else if (edge > 0.78) d[i + 3] = Math.round(d[i + 3] * ((1 - edge) / 0.22));
+    }
+    x.putImageData(pix, 0, 0);
     return c;
   }
 
@@ -126,8 +132,8 @@
     loadImg("/assets/goldcab/cybercab-rear.jpg"),
     loadImg("/assets/goldcab/waymo.jpg"),
   ]).then(([cab, waymo]) => {
-    sprites.cab = punch(cab, { x: 0.28, y: 0.1, w: 0.66, h: 0.82 });
-    sprites.waymo = punch(waymo, { x: 0.2, y: 0.04, w: 0.6, h: 0.86 });
+    sprites.cab = punch(cab, { x: 0.4, y: 0.2, w: 0.52, h: 0.66 });
+    sprites.waymo = punch(waymo, { x: 0.24, y: 0.08, w: 0.52, h: 0.78 });
   });
 
   function callsign() {
@@ -267,8 +273,8 @@
       curveTo: 0,
       cars: [],
       loot: [],
-      spawnIn: 1.15,
-      lootIn: 6.5,
+      spawnIn: 1.8,
+      lootIn: 5.2,
       dodged: 0,
       near: 0,
       shield: false,
@@ -288,13 +294,13 @@
   function difficulty() {
     const t = game.time;
     return {
-      speed: 5.4 + t * 0.072,
-      oncoming: 2.4 + t * 0.04,
-      spawn: Math.max(0.4, 1.45 - t * 0.016),
-      double: t > 16,
-      pack: t > 38,
-      weaver: t > 20,
-      rain: t > 28,
+      speed: 4.8 + t * 0.065,
+      oncoming: 1.6 + t * 0.038,
+      spawn: Math.max(0.42, 1.55 - t * 0.014),
+      double: t > 18,
+      pack: t > 42,
+      weaver: t > 24,
+      rain: t > 30,
     };
   }
 
@@ -308,18 +314,22 @@
 
   function spawnWave() {
     const d = difficulty();
-    const far = openLanes(6.2, 10);
-    const pool = far.length ? far : [0, 1, 2];
-    if (pool.length <= 1) return;
+    const far = openLanes(7.2, 12);
+    let pool = far.length ? far.slice() : [0, 1, 2];
+    if (game.time < 8) pool = pool.filter((l) => l !== game.lane);
+    if (!pool.length) return;
     let count = 1;
-    if (d.double && Math.random() < 0.48) count = 2;
-    if (d.pack && Math.random() < 0.42) count = 2;
-    count = Math.min(count, 2, pool.length - 1);
-    const lanes = pool.slice().sort(() => Math.random() - 0.5);
-    const keep = lanes[0];
-    lanes
-      .filter((l) => l !== keep)
-      .slice(0, count)
+    if (game.time >= 8 && d.double && Math.random() < 0.5) count = 2;
+    if (d.pack && Math.random() < 0.45) count = 2;
+    const keep = pool.includes(game.lane) ? game.lane : pool[0];
+    const choices = pool.filter((l) => l !== keep);
+    if (!choices.length) {
+      if (game.time < 8) addCar(pool[0], d);
+      return;
+    }
+    choices
+      .sort(() => Math.random() - 0.5)
+      .slice(0, Math.min(count, choices.length))
       .forEach((lane) => addCar(lane, d));
   }
 
@@ -327,7 +337,7 @@
     game.cars.push({
       lane,
       x: LANE_X[lane],
-      z: rand(8.2, 9.6),
+      z: rand(9.2, 11.2),
       weave: d.weaver && Math.random() < 0.34,
       weaved: false,
       lid: Math.random() * Math.PI * 2,
@@ -340,7 +350,7 @@
     game.loot.push({
       lane,
       x: LANE_X[lane],
-      z: rand(7.6, 9.2),
+      z: rand(8.4, 10.4),
       kind: pick(POWERS).id,
       spin: Math.random() * Math.PI * 2,
     });
@@ -470,13 +480,14 @@
   }
 
   function project(worldX, z) {
-    const zSafe = Math.max(0.18, z);
-    const scale = 1 / (zSafe * 0.2 + 0.78);
-    const curveOff = (game?.curve || 0) * zSafe * zSafe * 0.055;
-    const horizon = cssH * 0.38;
-    const y = horizon + (cssH - horizon) * (1 - scale) * 1.12;
-    const roadW = cssW * 0.96 * scale;
-    const x = cssW * 0.5 + curveOff * cssW + (worldX - (game?.x || 0)) * roadW * 0.52;
+    const zFar = 11;
+    const t = clamp(z / zFar, 0, 1);
+    const ease = t ** 0.82;
+    const scale = lerp(1.1, 0.08, ease);
+    const y = lerp(cssH * 0.9, cssH * 0.37, ease);
+    const curveOff = (game?.curve || 0) * ease * ease;
+    const roadW = cssW * lerp(1.08, 0.08, ease);
+    const x = cssW * 0.5 + curveOff * cssW * 0.55 + (worldX - (game?.x || 0)) * roadW * 0.48;
     return { x, y, scale, roadW };
   }
 
@@ -581,7 +592,7 @@
     game.curve = lerp(game.curve, game.curveTo, 0.04);
     game.x = lerp(game.x, LANE_X[game.lane], 0.16);
 
-    const zSpeed = (speed + d.oncoming * (game.slow > 0 ? 0.42 : 1) + (game.nitro > 0 ? 3 : 0)) * t * 0.85;
+    const zSpeed = (speed + d.oncoming * (game.slow > 0 ? 0.42 : 1) + (game.nitro > 0 ? 2.2 : 0)) * t * 0.48;
 
     game.spawnIn -= t;
     if (game.spawnIn <= 0) {
@@ -605,10 +616,10 @@
         c.weaved = true;
       }
       c.x = lerp(c.x, LANE_X[c.lane], 0.08);
-      if (c.z < PLAYER_Z + HIT_Z && c.z > PLAYER_Z - 0.2 && !c.passed) {
+      if (c.z < PLAYER_Z + HIT_Z && c.z > PLAYER_Z - 0.28 && !c.passed) {
         const dx = Math.abs(c.x - game.x);
         if (dx < HIT_X && game.grace <= 0) crash();
-        else if (dx < 0.72 && dx >= HIT_X) {
+        else if (dx < 0.78 && dx >= HIT_X) {
           c.passed = true;
           game.near += 1;
           score += 40 * (game.gold > 0 ? 2 : 1);
@@ -738,10 +749,10 @@
   }
 
   function drawRoad(ctx) {
-    const segs = 42;
+    const segs = 48;
     for (let i = segs; i >= 0; i -= 1) {
-      const zA = i * 0.22;
-      const zB = (i + 1) * 0.22;
+      const zA = i * 0.23;
+      const zB = (i + 1) * 0.23;
       const a = project(0, zA);
       const b = project(0, zB);
       const stripe = Math.floor((zA + (game?.dist || 0) * 0.04) / 0.45) % 2;
@@ -795,33 +806,50 @@
   }
 
   function drawProcCab(ctx, s, nitro) {
-    ctx.fillStyle = "rgba(0,0,0,0.35)";
+    ctx.fillStyle = "rgba(0,0,0,0.4)";
     ctx.beginPath();
-    ctx.ellipse(0, 10, 28, 8, 0, 0, Math.PI * 2);
+    ctx.ellipse(0, 14, 34, 7, 0, 0, Math.PI * 2);
     ctx.fill();
-    const body = ctx.createLinearGradient(-30, -36, 30, 12);
-    body.addColorStop(0, "#8a6a32");
-    body.addColorStop(0.45, "#e6c36a");
-    body.addColorStop(1, "#6a5228");
+    const body = ctx.createLinearGradient(-36, -44, 36, 12);
+    body.addColorStop(0, "#6a5220");
+    body.addColorStop(0.32, "#e6c36a");
+    body.addColorStop(0.5, "#f3dc98");
+    body.addColorStop(0.72, "#c9a24c");
+    body.addColorStop(1, "#5a461c");
     ctx.fillStyle = body;
-    roundRect(ctx, -26, -34, 52, 38, 12);
+    roundRect(ctx, -32, -38, 64, 44, 16);
     ctx.fill();
-    ctx.fillStyle = "#14161c";
-    roundRect(ctx, -18, -32, 36, 16, 8);
+    ctx.fillStyle = "#0b0e14";
+    roundRect(ctx, -20, -36, 40, 18, 11);
     ctx.fill();
-    ctx.fillStyle = "#e23b48";
-    ctx.fillRect(-18, -2, 36, 3);
-    ctx.fillStyle = "#1a1408";
+    ctx.strokeStyle = "rgba(255,236,190,0.4)";
+    ctx.lineWidth = 1.3;
     ctx.beginPath();
-    ctx.ellipse(-20, 6, 7, 4, 0, 0, Math.PI * 2);
-    ctx.ellipse(20, 6, 7, 4, 0, 0, Math.PI * 2);
+    ctx.moveTo(-28, -8);
+    ctx.lineTo(-18, -30);
+    ctx.moveTo(28, -8);
+    ctx.lineTo(18, -30);
+    ctx.stroke();
+    ctx.save();
+    ctx.shadowColor = "#ff3344";
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = "#ff2d3c";
+    ctx.fillRect(-24, -3, 48, 3.4);
+    ctx.restore();
+    ctx.fillStyle = "#16120a";
+    roundRect(ctx, -14, 4, 28, 6, 3);
+    ctx.fill();
+    ctx.fillStyle = "#09090c";
+    ctx.beginPath();
+    ctx.ellipse(-24, 10, 9, 4.6, 0, 0, Math.PI * 2);
+    ctx.ellipse(24, 10, 9, 4.6, 0, 0, Math.PI * 2);
     ctx.fill();
     if (nitro) {
-      ctx.fillStyle = "rgba(255,140,60,0.8)";
+      ctx.fillStyle = "rgba(255,140,60,0.85)";
       ctx.beginPath();
-      ctx.moveTo(-8, 8);
-      ctx.lineTo(0, 22 + Math.sin(clock * 0.04) * 4);
-      ctx.lineTo(8, 8);
+      ctx.moveTo(-9, 10);
+      ctx.lineTo(0, 26 + Math.sin(clock * 0.04) * 5);
+      ctx.lineTo(9, 10);
       ctx.fill();
     }
   }
@@ -911,8 +939,8 @@
         ctx.restore();
       } else if (it.kind === "car") {
         const p = project(it.c.x, it.c.z);
-        const w = 92 * p.scale * 2.05;
-        const h = 58 * p.scale * 2.05;
+        const w = 128 * p.scale;
+        const h = 80 * p.scale;
         ctx.save();
         ctx.globalCompositeOperation = "screen";
         ctx.fillStyle = "rgba(255,236,190,0.18)";
@@ -924,8 +952,8 @@
       } else {
         const p = project(game.x, PLAYER_Z);
         const lean = (LANE_X[game.lane] - game.x) * 0.25 + game.curve * 0.04;
-        const w = 150 * p.scale * 1.55;
-        const h = 92 * p.scale * 1.55;
+        const w = 156 * p.scale;
+        const h = 96 * p.scale;
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(lean);
@@ -936,14 +964,10 @@
           ctx.ellipse(0, -h * 0.45, w * 0.55, h * 0.58, 0, 0, Math.PI * 2);
           ctx.stroke();
         }
-        if (sprites.cab) {
-          ctx.drawImage(sprites.cab, -w / 2, -h, w, h);
-        } else {
-          ctx.save();
-          ctx.scale(w / 64, w / 64);
-          drawProcCab(ctx, 1, game.nitro > 0);
-          ctx.restore();
-        }
+        ctx.save();
+        ctx.scale(w / 68, w / 68);
+        drawProcCab(ctx, 1, game.nitro > 0);
+        ctx.restore();
         if (game.nitro > 0) {
           ctx.fillStyle = "rgba(255,140,60,0.55)";
           ctx.beginPath();
@@ -998,6 +1022,10 @@
     if (game.gold > 0) buffs.push("×2");
     if (game.nitro > 0) buffs.push("Nitro");
     if (hudBuff) hudBuff.textContent = buffs.join(" · ");
+    if (!game._boardAt || game.time - game._boardAt > 0.28) {
+      game._boardAt = game.time;
+      renderBoard();
+    }
   }
 
   function resize() {
