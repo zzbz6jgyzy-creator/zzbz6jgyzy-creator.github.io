@@ -233,7 +233,7 @@ a:hover {
   position: relative;
   width: min(100% - 2.5rem, var(--max));
   margin: 0 auto;
-  padding: 6.5rem 0 2.8rem;
+  padding: 6.5rem 0 2.2rem;
   display: grid;
   gap: 1.1rem;
 }
