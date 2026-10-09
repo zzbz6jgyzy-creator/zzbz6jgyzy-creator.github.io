@@ -1,0 +1,549 @@
+.taxi-page {
+  width: min(100% - 2.5rem, var(--max));
+  margin: 0 auto;
+  padding: 1.8rem 0 2.4rem;
+}
+
+.taxi-intro h1 {
+  margin: 0.15rem 0 0.55rem;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.taxi-intro p {
+  margin: 0;
+  max-width: 38rem;
+  color: var(--ink-soft);
+}
+
+.taxi-intro .eyebrow a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.taxi-intro .eyebrow a:hover {
+  color: #fff;
+}
+
+.taxi-intro-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.taxi-intro-side {
+  display: grid;
+  justify-items: end;
+  align-content: end;
+  gap: 0.55rem;
+}
+
+.taxi-best {
+  margin: 0;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.taxi-intro-side .button[hidden] {
+  display: none !important;
+}
+
+.taxi-play {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16.8rem;
+  gap: 1.15rem 1.3rem;
+  align-items: start;
+  margin: 1.25rem 0 0.85rem;
+}
+
+.taxi-stage {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: 1rem 1rem 1.1rem;
+  overflow: hidden;
+  min-height: 34rem;
+}
+
+.taxi-hud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.45rem 0.8rem;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.taxi-week {
+  list-style: none;
+  margin: 0.85rem 0 0.7rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.3rem;
+}
+
+.taxi-week li {
+  text-align: center;
+  padding: 0.35rem 0.15rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.taxi-week li.is-now {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.taxi-week li.is-done {
+  color: var(--ink-soft);
+  background: rgba(236, 236, 232, 0.04);
+}
+
+.taxi-forecast {
+  margin: 0 0 0.85rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.taxi-map {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.taxi-zone {
+  appearance: none;
+  display: grid;
+  gap: 0.3rem;
+  text-align: left;
+  padding: 0.8rem 0.85rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #101218;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  min-height: 7.4rem;
+}
+
+.taxi-zone:hover,
+.taxi-zone.is-hot {
+  border-color: var(--line-strong);
+}
+
+.taxi-zone.is-on {
+  border-color: #fff;
+}
+
+.taxi-zone.is-rain {
+  background:
+    linear-gradient(180deg, rgba(110, 168, 255, 0.08), transparent 42%),
+    #101218;
+}
+
+.taxi-zone-art {
+  display: flex;
+  align-items: end;
+  gap: 0.18rem;
+  height: 1.6rem;
+  margin-bottom: 0.15rem;
+}
+
+.taxi-zone-art span {
+  display: block;
+  width: 0.42rem;
+  background: rgba(236, 236, 232, 0.22);
+  border-radius: 2px 2px 0 0;
+}
+
+.taxi-zone h3 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.taxi-zone p {
+  margin: 0;
+  color: var(--mute);
+  font-size: 0.82rem;
+}
+
+.taxi-zone-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.taxi-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.taxi-stepper button {
+  appearance: none;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.taxi-stepper button:hover:not(:disabled) {
+  background: #fff;
+  color: var(--bg);
+}
+
+.taxi-stepper button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.taxi-fleet-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 1rem 0 0.45rem;
+}
+
+.taxi-fleet-head p {
+  margin: 0;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.taxi-fleet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.taxi-cab {
+  appearance: none;
+  width: 4.6rem;
+  padding: 0.4rem 0.4rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0e0f13;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.taxi-cab.is-on {
+  border-color: #fff;
+}
+
+.taxi-cab.is-out {
+  opacity: 0.45;
+}
+
+.taxi-cab strong {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.taxi-cab span {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.taxi-batt {
+  display: block;
+  height: 0.28rem;
+  margin: 0.35rem 0 0.2rem;
+  border-radius: 99px;
+  background: rgba(236, 236, 232, 0.12);
+  overflow: hidden;
+}
+
+.taxi-batt i {
+  display: block;
+  height: 100%;
+  background: #8ee0c4;
+}
+
+.taxi-batt.is-mid i {
+  background: #e0c48e;
+}
+
+.taxi-batt.is-low i {
+  background: var(--tesla);
+}
+
+.taxi-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 0.4rem;
+}
+
+.taxi-actions .button {
+  margin: 0;
+}
+
+.taxi-log {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.28rem;
+  min-height: 4.5rem;
+}
+
+.taxi-log li {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.taxi-log li.is-good {
+  color: #8ee0c4;
+}
+
+.taxi-log li.is-bad {
+  color: #e8a0a8;
+}
+
+.taxi-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  margin: 0;
+  padding: 1.2rem 1.2rem 1.35rem;
+  height: min(28rem, 70vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 13, 16, 0.28) 0%,
+    rgba(12, 13, 16, 0.82) 32%,
+    rgba(12, 13, 16, 0.96) 100%
+  );
+}
+
+.taxi-overlay[hidden] {
+  display: none;
+}
+
+.taxi-overlay .button[hidden],
+.taxi-overlay a[hidden] {
+  display: none !important;
+}
+
+.taxi-kicker {
+  margin: 0 0 0.3rem;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.taxi-overlay h2 {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+.taxi-overlay p {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.taxi-overlay-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem !important;
+}
+
+.taxi-board {
+  padding: 0.95rem 1rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.taxi-board-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.taxi-board-head .eyebrow {
+  margin: 0;
+}
+
+.taxi-mute {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--mute);
+  border-radius: 6px;
+  padding: 0.2rem 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.taxi-mute.is-off {
+  color: var(--tesla);
+}
+
+.taxi-callsign {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0.85rem 0 0.7rem;
+  color: var(--mute);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.taxi-callsign input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #0e0f13;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.55rem;
+  touch-action: manipulation;
+}
+
+.taxi-callsign input:focus {
+  outline: 1px solid var(--ink-soft);
+  border-color: var(--ink-soft);
+}
+
+.taxi-board-now {
+  margin: 0 0 0.65rem;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.taxi-board-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.28rem;
+}
+
+.taxi-board-list li {
+  display: grid;
+  grid-template-columns: 1.2rem 1fr auto;
+  gap: 0.45rem;
+  align-items: baseline;
+  padding: 0.32rem 0.2rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.taxi-board-list li.is-empty {
+  display: block;
+  color: var(--mute);
+  border-bottom: 0;
+}
+
+.taxi-board-list li.is-fresh {
+  color: #fff;
+  background: rgba(200, 16, 46, 0.12);
+}
+
+.taxi-board-rank {
+  color: var(--mute);
+}
+
+.taxi-board-who {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.taxi-board-note,
+.taxi-fineprint {
+  margin: 0.75rem 0 0;
+  color: var(--mute);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.taxi-fineprint {
+  margin-top: 0.35rem;
+  font-size: 0.84rem;
+}
+
+@media (max-width: 880px) {
+  .taxi-play {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .taxi-map {
+    grid-template-columns: 1fr;
+  }
+
+  .taxi-zone {
+    min-height: 0;
+  }
+
+  .taxi-cab {
+    width: calc(25% - 0.32rem);
+    min-width: 4.2rem;
+  }
+}

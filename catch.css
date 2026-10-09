@@ -17,6 +17,15 @@
   color: var(--ink-soft);
 }
 
+.catch-intro .eyebrow a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.catch-intro .eyebrow a:hover {
+  color: #fff;
+}
+
 .catch-intro-row {
   display: flex;
   justify-content: space-between;
