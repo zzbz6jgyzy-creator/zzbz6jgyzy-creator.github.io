@@ -6,13 +6,13 @@
     <title>FSD Supervised Europe — @AlJR86</title>
     <meta
       name="description"
-      content="Country-by-country tracker for Tesla FSD Supervised approval in the EU. Which states have recognised the Dutch RDW type approval, and what is left for an EU-wide vote."
+      content="FSD Supervised in the EU: which countries have recognised the Dutch RDW approval, and what the TCMV in Brussels has put on the agenda. Two tracks, one page."
     />
     <link rel="canonical" href="https://zzbz6jgyzy-creator.github.io/fsd-europe.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="@AlJR86" />
     <meta property="og:title" content="FSD Supervised Europe — @AlJR86" />
-    <meta property="og:description" content="Country-by-country tracker for Tesla FSD Supervised approval in the EU. Which states have recognised the Dutch RDW type approval, and what is left for an EU-wide vote." />
+    <meta property="og:description" content="FSD Supervised in the EU: which countries have recognised the Dutch RDW approval, and what the TCMV in Brussels has put on the agenda. Two tracks, one page." />
     <meta property="og:url" content="https://zzbz6jgyzy-creator.github.io/fsd-europe.html" />
     <meta property="og:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/fsd-snow-poster.jpg" />
     <meta property="og:image:alt" content="FSD Supervised on a snowy European road" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@AlJR86" />
     <meta name="twitter:creator" content="@AlJR86" />
     <meta name="twitter:title" content="FSD Supervised Europe — @AlJR86" />
-    <meta name="twitter:description" content="Country-by-country tracker for Tesla FSD Supervised approval in the EU. Which states have recognised the Dutch RDW type approval, and what is left for an EU-wide vote." />
+    <meta name="twitter:description" content="FSD Supervised in the EU: which countries have recognised the Dutch RDW approval, and what the TCMV in Brussels has put on the agenda. Two tracks, one page." />
     <meta name="twitter:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/fsd-snow-poster.jpg" />
     <meta name="twitter:image:alt" content="FSD Supervised on a snowy European road" />
 
@@ -52,7 +52,6 @@
           <a href="/tsla.html">Markets</a>
           <a href="/reviews/index.html">Reviews</a>
           <a href="/fsd-europe.html" aria-current="page">FSD Europe</a>
-          <a href="/tcmv.html">TCMV</a>
           <a href="/games.html">Games</a>
           <a href="/spacex.html">SpaceX</a>
           <a href="/grok.html">Grok</a>
@@ -65,47 +64,91 @@
           <p class="eyebrow reveal">Tesla · Tracker</p>
           <h1 class="reveal delay-1">FSD Supervised in Europe</h1>
           <p class="reveal delay-2">
-            Which EU countries have recognised the Dutch RDW approval — and how far the
-            bloc still is from a qualified-majority vote.
+            Two tracks, one map. Countries can recognise the Dutch RDW approval on
+            their own. An EU-wide green light still needs a TCMV vote in Brussels.
           </p>
           <p class="meta reveal delay-3" id="fsd-updated">Updated</p>
+          <nav class="fsd-jump reveal delay-3" aria-label="On this page">
+            <a href="#tracks">Two tracks</a>
+            <a href="#path">Vote math</a>
+            <a href="#countries">Countries</a>
+            <a href="#tcmv">TCMV meetings</a>
+          </nav>
         </section>
 
         <section class="section" style="padding-top: 1.4rem" aria-labelledby="fsd-summary-heading">
           <div class="section-head">
             <h2 id="fsd-summary-heading" class="reveal">Snapshot</h2>
-            <p class="reveal delay-1">National recognition first. EU-wide later.</p>
+            <p class="reveal delay-1">Where the cars can drive today, and where Brussels is.</p>
           </div>
           <div class="stats">
-            <div class="stat reveal">
+            <a class="stat reveal" href="#countries">
               <b id="fsd-approved-count">0</b>
               <span>Countries approved</span>
-            </div>
-            <div class="stat reveal delay-1">
-              <b id="fsd-review-count">0</b>
-              <span>In review</span>
-            </div>
-            <div class="stat reveal delay-2">
-              <b id="fsd-states-needed">0</b>
-              <span>States still needed for 15</span>
-            </div>
-            <div class="stat reveal delay-3">
+            </a>
+            <a class="stat reveal delay-1" href="#path">
               <b id="fsd-pop-pct">0%</b>
               <span>EU population covered</span>
-            </div>
+            </a>
+            <a class="stat reveal delay-2" href="#tcmv">
+              <b id="tcmv-vote-count">0</b>
+              <span>TCMV votes taken</span>
+            </a>
+            <a class="stat reveal delay-3" href="#tcmv">
+              <b id="tcmv-next-label">—</b>
+              <span>Next TCMV window</span>
+            </a>
           </div>
         </section>
 
-        <section class="section" aria-labelledby="fsd-path-heading">
+        <section class="section" id="tracks" aria-labelledby="fsd-tracks-heading">
           <div class="section-head">
-            <h2 id="fsd-path-heading" class="reveal">Path to EU-wide approval</h2>
+            <h2 id="fsd-tracks-heading" class="reveal">Two tracks</h2>
+            <p class="reveal delay-1">National yeses do not wait for the EU-wide vote.</p>
+          </div>
+          <div class="fsd-tracks">
+            <article class="panel fsd-track-card fsd-track-national reveal">
+              <p class="eyebrow">Track 1 · National</p>
+              <h3>Countries recognise the Dutch approval</h3>
+              <p>
+                The RDW issued a provisional Art. 39 type approval. Other member states
+                can recognise that file on their own. That is how FSD Supervised is
+                already on the road in
+                <strong id="fsd-approved-count-copy">0</strong>
+                countries — without a Brussels vote.
+              </p>
+              <p>
+                Germany, France, Italy and Spain are still in review. Berlin alone is
+                about 19% of the EU population, which is why it matters more than
+                another small yes.
+              </p>
+              <p class="fsd-track-link"><a href="#countries">Country status →</a></p>
+            </article>
+            <article class="panel fsd-track-card fsd-track-brussels reveal delay-1">
+              <p class="eyebrow">Track 2 · Brussels</p>
+              <h3>TCMV votes for EU-wide recognition</h3>
+              <p>
+                The Technical Committee on Motor Vehicles is the EU comitology committee
+                that would need a qualified majority — 15 of 27 states covering 65% of
+                EU population — before the Commission can recognise the Dutch approval
+                across the whole bloc.
+              </p>
+              <p id="fsd-vote-detail"></p>
+              <p class="fsd-track-link"><a href="#tcmv">TCMV meeting log →</a></p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="path" aria-labelledby="fsd-path-heading">
+          <div class="section-head">
+            <h2 id="fsd-path-heading" class="reveal">Path to an EU-wide vote</h2>
             <p class="reveal delay-1">Needs 15 of 27 states and 65% of EU population.</p>
           </div>
           <div class="fsd-meters reveal">
             <div class="fsd-meter">
               <div class="fsd-meter-head">
                 <span>Approving states</span>
-                <span><strong id="fsd-approved-count-copy"></strong> / 27 · needs 15</span>
+                <span><strong id="fsd-states-bar-label"></strong> / 27 · needs 15</span>
               </div>
               <div class="fsd-track">
                 <div class="fsd-track-potential" id="fsd-states-potential"></div>
@@ -124,20 +167,12 @@
                 <div class="fsd-track-fill" id="fsd-pop-bar"></div>
                 <div class="fsd-track-mark" style="left: 65%" title="65%"></div>
               </div>
-              <p class="fsd-meter-foot">Germany alone is about 18.6% of the EU. That is why Berlin matters more than another small yes.</p>
+              <p class="fsd-meter-foot">National recognitions already count toward this math if those states vote yes at TCMV. They are not the vote itself.</p>
             </div>
-          </div>
-          <div class="panel reveal" style="margin-top: 0.85rem">
-            <p class="eyebrow">Vote watch</p>
-            <h2 style="font-size: 1.05rem; margin-bottom: 0.4rem">TCMV</h2>
-            <p id="fsd-vote-detail" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
-            <p style="margin: 0">
-              <a href="/tcmv.html">Open the TCMV meeting log →</a>
-            </p>
           </div>
         </section>
 
-        <section class="section" aria-labelledby="fsd-table-heading">
+        <section class="section" id="countries" aria-labelledby="fsd-table-heading">
           <div class="section-head">
             <h2 id="fsd-table-heading" class="reveal">Country status</h2>
             <p class="reveal delay-1" id="fsd-showing">27 of 27 countries</p>
@@ -164,27 +199,48 @@
           </div>
         </section>
 
-        <section class="section" aria-labelledby="fsd-timeline-heading">
+        <section class="section" id="timeline" aria-labelledby="fsd-timeline-heading">
           <div class="section-head">
             <h2 id="fsd-timeline-heading" class="reveal">Approval timeline</h2>
-            <p class="reveal delay-1">How the map filled in since April 2026.</p>
+            <p class="reveal delay-1">How the national map filled in since April 2026.</p>
           </div>
           <ol class="fsd-timeline reveal" id="fsd-timeline"></ol>
+        </section>
+
+        <section class="section" id="tcmv" aria-labelledby="tcmv-heading">
+          <div class="section-head">
+            <h2 id="tcmv-heading" class="reveal">TCMV meetings</h2>
+            <p class="reveal delay-1" id="tcmv-showing">Meetings</p>
+          </div>
+          <p class="fsd-tcmv-lead reveal">
+            What the Technical Committee on Motor Vehicles put on the agenda for the
+            Dutch Art. 39 request — by meeting number and date. A briefing or a
+            discussion is not a vote. National recognition can keep moving while this
+            file sits in Brussels.
+          </p>
+          <div class="fsd-filters reveal" role="group" aria-label="Filter meetings">
+            <button type="button" class="fsd-filter" data-tcmv-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="fsd-filter" data-tcmv-filter="briefing" aria-pressed="false">Briefing</button>
+            <button type="button" class="fsd-filter" data-tcmv-filter="discussion" aria-pressed="false">Discussion</button>
+            <button type="button" class="fsd-filter" data-tcmv-filter="upcoming" aria-pressed="false">Upcoming</button>
+          </div>
+          <div class="tcmv-list" id="tcmv-list"></div>
         </section>
 
         <section class="section" aria-labelledby="fsd-disclaimer-heading">
           <div class="panel reveal">
             <p class="eyebrow" id="fsd-disclaimer-heading">Sources &amp; disclaimer</p>
             <p id="fsd-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
+            <p id="tcmv-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
             <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
               FSD Supervised is SAE Level 2. The driver must supervise at all times.
               Status can change when a national authority recognises — or withdraws —
-              the RDW approval. Cross-check against Tesla Europe and the local regulator
+              the RDW approval, or when TCMV publishes a new agenda. Cross-check against
+              Tesla Europe, the local regulator, and the Commission comitology register
               before you drive.
             </p>
             <p style="margin: 1rem 0 0">
               <a class="button button-ghost" href="/tesla.html">Back to Tesla</a>
-              <a class="button button-ghost" href="/tcmv.html">TCMV meetings</a>
               <a class="button button-ghost" href="/dispatch/fsd-snow.html">Swiss snow clip</a>
             </p>
           </div>
@@ -192,15 +248,13 @@
       </main>
 
       <footer class="site-footer">
-        <p>© <span data-year></span> @AlJR86. Independent FSD Europe tracker. Not affiliated with Tesla.</p>
+        <p>© <span data-year></span> @AlJR86. Independent FSD Europe tracker. Not affiliated with Tesla or the European Commission.</p>
         <p>
           <a href="/tesla.html">Tesla</a>
           ·
           <a href="/reviews/index.html">Reviews</a>
           ·
           <a href="/fsd-europe.html">FSD Europe</a>
-          ·
-          <a href="/tcmv.html">TCMV</a>
           ·
           <a href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">Tesla referral</a>
           ·
@@ -210,6 +264,8 @@
     </div>
     <script src="/script.js"></script>
     <script src="/fsd-europe-data.js"></script>
+    <script src="/tcmv-data.js"></script>
     <script src="/fsd-europe.js"></script>
+    <script src="/tcmv.js"></script>
   </body>
 </html>

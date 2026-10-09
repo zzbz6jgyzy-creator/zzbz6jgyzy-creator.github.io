@@ -16,8 +16,8 @@ Open `http://localhost:4173`.
 
 - `index.html` — profile expansion
 - `tesla.html` / `spacex.html` / `grok.html` — the three desks
-- `fsd-europe.html` — FSD Supervised Europe approval tracker
-- `tcmv.html` — TCMV meeting log (what was discussed, by date)
+- `fsd-europe.html` — FSD Supervised Europe tracker (national approvals + TCMV meetings)
+- `tcmv.html` — redirects to `fsd-europe.html#tcmv`
 - `reviews/` — Tesla car reviews (index + Model 3 / Y / S / X / Cybertruck)
 - Referral: [ts.la/alex474841](https://ts.la/alex474841)
 - `dispatch/` — longer versions of posts, each linked back to X

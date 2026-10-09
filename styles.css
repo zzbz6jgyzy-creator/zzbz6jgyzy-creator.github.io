@@ -368,6 +368,11 @@ a:hover {
   display: block;
 }
 
+a.stat {
+  text-decoration: none;
+  color: inherit;
+}
+
 a.stat:hover {
   background: rgba(236, 236, 232, 0.03);
   color: inherit;
@@ -766,6 +771,98 @@ article.story-card {
   font-size: 1.05rem;
 }
 
+.page-hero .meta {
+  margin-top: 0.85rem;
+}
+
+.fsd-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.15rem;
+}
+
+.fsd-jump a {
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.fsd-jump a:hover {
+  color: var(--ink);
+  border-color: var(--ink-soft);
+}
+
+.fsd-tracks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.fsd-track-card {
+  position: relative;
+  padding-left: 1.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.fsd-track-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.fsd-track-national::before {
+  background: #9fd4b0;
+}
+
+.fsd-track-brussels::before {
+  background: #9db7e8;
+}
+
+.fsd-track-card h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.15rem;
+}
+
+.fsd-track-card p {
+  margin: 0 0 0.75rem;
+  color: var(--ink-soft);
+}
+
+.fsd-track-card p:last-child {
+  margin-bottom: 0;
+}
+
+.fsd-track-link {
+  font-weight: 500;
+  margin-top: auto;
+  padding-top: 0.35rem;
+}
+
+.fsd-tcmv-lead {
+  margin: -0.4rem 0 1.1rem;
+  max-width: 42rem;
+  color: var(--ink-soft);
+}
+
+#tracks,
+#path,
+#countries,
+#timeline,
+#tcmv,
+.tcmv-card {
+  scroll-margin-top: 4.75rem;
+}
+
 .article {
   width: min(100% - 2.5rem, 720px);
   margin: 0 auto;
@@ -999,7 +1096,8 @@ article.story-card {
   .story-grid,
   .lead-card,
   .crew,
-  .note-grid {
+  .note-grid,
+  .fsd-tracks {
     grid-template-columns: 1fr;
   }
 
@@ -1287,7 +1385,8 @@ article.story-card {
   margin-bottom: 0.85rem;
 }
 
-.tcmv-card-head h2 {
+.tcmv-card-head h2,
+.tcmv-card-head h3 {
   margin: 0.15rem 0 0.4rem;
   font-size: 1.25rem;
   font-weight: 600;
