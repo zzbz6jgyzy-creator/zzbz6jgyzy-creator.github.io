@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="home-x">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,13 +32,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href="/assets/brand/banner-wide.jpg" fetchpriority="high" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/home.css" />
   </head>
-  <body>
+  <body class="home-x">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <header class="topbar">
@@ -66,91 +65,125 @@
       </header>
 
       <main id="main">
-        <section class="hero" aria-labelledby="hero-name">
-          <div class="hero-plate" role="img" aria-label="White Tesla, a Starship on the pad at sunset, and an X constellation"></div>
-          <div class="hero-inner">
-            <div class="hero-identity reveal">
-              <img class="avatar" src="/assets/avatar.jpg" width="64" height="64" alt="Alex R standing beside a red Tesla" />
-              <div>
-                <p class="hero-kicker">Alex R · @ALJR86</p>
-                <h1 id="hero-name">Tesla, SpaceX &amp; Grok</h1>
-              </div>
+        <section class="hx-hero" aria-labelledby="hx-title">
+          <img class="hx-hero-img" src="/assets/brand/banner-wide.jpg" alt="White Tesla Model 3 in front of Starship on the pad at dusk" width="1500" height="500" fetchpriority="high" />
+          <div class="hx-hero-shade" aria-hidden="true"></div>
+          <div class="hx-hero-inner">
+            <p class="hx-live"><span class="hx-dot" aria-hidden="true"></span> Updated daily<span class="hx-live-x"> · Tesla · SpaceX · xAI · X</span></p>
+            <h1 id="hx-title" class="hx-title"><span>Supercharged</span> <span class="hx-red">Daily</span></h1>
+            <p class="hx-pitch">The whole Musk universe, decoded every day. News, numbers and launches, minus the noise.</p>
+            <div class="hx-cta">
+              <a class="hx-btn hx-btn-primary" href="#newsletter">Subscribe free</a>
+              <a class="hx-btn hx-btn-ghost" href="/news.html">Latest news <span aria-hidden="true">→</span></a>
             </div>
-            <p class="hero-lead reveal delay-1">
-              News, numbers and launch footage. Written out from the posts that don’t
-              fit in one caption.
-            </p>
-            <div class="hero-actions reveal delay-2">
-              <a class="button button-primary" href="/tesla.html">Tesla</a>
-              <a class="button button-ghost" href="/spacex.html">SpaceX</a>
-              <a class="button button-ghost" href="/grok.html">Grok</a>
-              <a class="button button-ghost" href="/news.html">News</a>
-              <a class="button button-ghost" href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">Order a Tesla</a>
-            </div>
-            <div class="latest-strip reveal is-visible delay-2" aria-labelledby="latest-heading">
-              <div class="latest-strip-head">
-                <h2 id="latest-heading">Latest</h2>
-                <a href="/dispatch.html">All dispatch →</a>
-              </div>
-              <div class="latest-strip-row">
-                <a class="latest-card" href="/dispatch/cybercab-austin.html">
-                  <img
-                    src="/assets/dispatch/cybercab-austin-poster.jpg"
-                    alt="Official Tesla Robotaxi footage of Cybercabs parked in rows"
-                    width="640"
-                    height="360"
-                  />
-                  <span class="tag">Tesla</span>
-                  <strong>300 Cybercabs in Austin</strong>
-                </a>
-                <a class="latest-card" href="/dispatch/starlink-latam.html">
-                  <img
-                    src="/assets/dispatch/starlink-latam-poster.jpg"
-                    alt="Official Starlink satellite footage"
-                    width="640"
-                    height="360"
-                    loading="lazy"
-                  />
-                  <span class="tag">SpaceX</span>
-                  <strong>Venezuela and Brazil, cleared</strong>
-                </a>
-                <a class="latest-card" href="/dispatch/fsd-cannonball.html">
-                  <img
-                    src="/assets/dispatch/fsd-cannonball-poster.jpg"
-                    alt="Stopwatch at the New York finish of an FSD Cannonball run"
-                    width="640"
-                    height="360"
-                    loading="lazy"
-                  />
-                  <span class="tag">Tesla</span>
-                  <strong>LA to NY, 45 hours 37 minutes</strong>
-                </a>
-              </div>
-            </div>
-            <div class="newsletter newsletter-hero reveal is-visible" data-newsletter="banner" id="newsletter">
-              <div class="newsletter-head">
-                <img class="newsletter-lockup" src="/assets/brand/lockup-1b-trim.svg" alt="" width="300" height="61" />
-                <div>
-                  <p class="newsletter-kicker">Free newsletter</p>
-                  <h2 id="newsletter-heading" class="visually-hidden">Supercharged Daily</h2>
-                  <p class="newsletter-tagline">Tesla, SpaceX, xAI and the whole Musk world, supercharged.</p>
-                </div>
-              </div>
-              <form class="newsletter-form" data-newsletter-form>
-                <label class="visually-hidden" for="newsletter-email-home">Email address</label>
-                <input id="newsletter-email-home" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="Your email address" />
-                <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
-                <button class="newsletter-button" type="submit">Subscribe</button>
-              </form>
-              <p class="newsletter-fine">Free. No spam. Unsubscribe anytime.</p>
-              <p class="newsletter-status" data-newsletter-status role="status"></p>
-            </div>
+          </div>
+          <a class="hx-scroll" href="#hx-ticker" aria-label="Scroll to live prices"><span></span></a>
+        </section>
+
+        <section class="hx-ticker" id="hx-ticker" aria-label="Live share prices">
+          <div class="hx-ticker-label"><span class="hx-dot" aria-hidden="true"></span>Live</div>
+          <div class="hx-ticker-widget" data-home-ticker>
+            <a class="hx-ticker-fallback" href="/tsla.html">TSLA · SPCX — open live prices →</a>
           </div>
         </section>
 
-        <section class="section" id="numbers" aria-labelledby="numbers-heading">
+        <section class="hx-section hx-top" aria-labelledby="hx-top-h">
+          <div class="hx-head">
+            <p class="hx-eyebrow reveal">Today’s top story</p>
+            <h2 id="hx-top-h" class="visually-hidden">Today’s top story</h2>
+          </div>
+          <a class="hx-feature reveal" href="/dispatch/cybercab-austin.html" data-top-story>
+            <div class="hx-feature-media">
+              <img src="/assets/dispatch/cybercab-austin-poster.jpg" alt="" width="1280" height="720" decoding="async" data-top-img />
+            </div>
+            <div class="hx-feature-copy">
+              <span class="hx-tag" data-top-tag>Tesla</span>
+              <h3 data-top-title>300 Cybercabs in Austin</h3>
+              <p data-top-desc>Eight times the launch fleet. Texas DMV lists 319.</p>
+              <span class="hx-feature-meta"><span data-top-source>Dispatch</span> <span class="hx-read">Read the story →</span></span>
+            </div>
+          </a>
+          <div class="hx-mini" data-top-more aria-live="polite"></div>
+        </section>
+
+        <section class="hx-section" aria-labelledby="hx-tiles-h">
+          <div class="hx-head">
+            <p class="hx-eyebrow reveal">Everything in one place</p>
+            <h2 id="hx-tiles-h" class="hx-h2 reveal">Pick your desk</h2>
+          </div>
+          <div class="hx-tiles">
+            <a class="hx-tile t-news hx-tile-big reveal" href="/news.html">
+              <img src="/assets/ship40.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Live</span>
+              <h3>News</h3>
+              <p>The last 24 hours across Tesla, SpaceX, xAI and X.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-fsd reveal" href="/fsd-europe.html">
+              <img src="/assets/fsd-snow.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Tracker</span>
+              <h3>FSD Europe</h3>
+              <p>Country by country, the road to Ireland.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-ship reveal" href="/starship.html">
+              <img src="/assets/starlink-stargaze.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Mission control</span>
+              <h3>Starship</h3>
+              <p>Next flight, objectives and every outcome.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-mk reveal" href="/tsla.html">
+              <span class="hx-tile-eb">Markets</span>
+              <h3>TSLA &amp; SPCX</h3>
+              <p>Live prices, the next print, the calendar.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-cal reveal" href="/calendar.html">
+              <span class="hx-tile-eb">Calendar</span>
+              <h3>Musk calendar</h3>
+              <p>Earnings, launches, ships and deadlines.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-tcmv reveal" href="/tcmv.html">
+              <span class="hx-tile-eb">Europe</span>
+              <h3>TCMV</h3>
+              <p>The EU vote that unlocks FSD.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-upd reveal" href="/updates.html">
+              <span class="hx-tile-eb">Database</span>
+              <h3>Software updates</h3>
+              <p>Every release, every feature.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-dis reveal" href="/dispatch.html">
+              <img src="/assets/dispatch/cybercab-austin-poster.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Long reads</span>
+              <h3>Dispatch</h3>
+              <p>The posts that don’t fit one caption.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-rev reveal" href="/reviews/index.html">
+              <img src="/assets/reviews/model-y.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Hands-on</span>
+              <h3>Reviews</h3>
+              <p>Cars, kit and software, tested.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-games reveal" href="/games.html">
+              <span class="hx-tile-eb">Play</span>
+              <h3>Games</h3>
+              <p>Catch the Cybercab and more.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+            <a class="hx-tile t-grok hx-tile-wide reveal" href="/grok.html">
+              <span class="hx-tile-eb">xAI</span>
+              <h3>Grok</h3>
+              <p>Bots that do jobs, from first install.</p>
+              <span class="hx-tile-go" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="hx-section section" id="numbers" aria-labelledby="numbers-heading">
           <div class="section-head">
-            <h2 id="numbers-heading" class="reveal">In numbers</h2>
+            <p class="hx-eyebrow reveal">Live counters</p><h2 id="numbers-heading" class="hx-h2 reveal">By the numbers</h2>
             <p class="reveal delay-1 news-status-line" id="home-stats-status" data-verified-updated="2026-10-10">
               <span class="news-dot" data-home-stats-dot aria-hidden="true"></span>
               <span data-home-stats-label>Checking last verified figures…</span>
@@ -194,187 +227,22 @@
           </noscript>
         </section>
 
-        <section class="section" aria-labelledby="trackers-heading">
-          <div class="section-head">
-            <h2 id="trackers-heading" class="reveal">Trackers</h2>
-            <p class="reveal delay-1">The three desks that stay open.</p>
-          </div>
-          <div class="trackers">
-            <a class="tracker-card reveal" href="/fsd.html">
-              <p class="eyebrow">Tesla</p>
-              <h3>FSD Global Tracker</h3>
-              <p>Country status, versions, milestones and a note when a market flips.</p>
-            </a>
-            <a class="tracker-card reveal delay-1" href="/starship.html">
-              <p class="eyebrow">SpaceX</p>
-              <h3>Starship Mission Control</h3>
-              <p>Next launch, objectives, schedule slips and every flight outcome.</p>
-            </a>
-            <a class="tracker-card reveal delay-2" href="/updates.html">
-              <p class="eyebrow">Tesla</p>
-              <h3>Software Update Database</h3>
-              <p>Searchable releases, features by model, and where that build showed up.</p>
-            </a>
-          </div>
-        </section>
 
-        <section class="section" aria-labelledby="desks-heading">
-          <div class="section-head">
-            <h2 id="desks-heading" class="reveal">Desks</h2>
-            <p class="reveal delay-1">Tesla. SpaceX. Grok.</p>
-          </div>
-          <div class="desks">
-            <a class="desk desk-tesla reveal" href="/tesla.html">
-              <p class="eyebrow">Tesla</p>
-              <h3>FSD, Europe, the car</h3>
-              <p>Swiss snow tape, German approval math, Terafab, and Grok Bot in the cabin.</p>
-            </a>
-            <a class="desk desk-spacex reveal delay-1" href="/spacex.html">
-              <p class="eyebrow">SpaceX</p>
-              <h3>Starship, Starlink, Dragon</h3>
-              <p>Ship 40 home, a 60-meter miss, 15,000 phone sats, Starmind at a million.</p>
-            </a>
-            <a class="desk desk-grok reveal delay-2" href="/grok.html">
-              <p class="eyebrow">Grok</p>
-              <h3>Bots that do jobs</h3>
-              <p>What Grok Bot is, then a tutorial from first install to routines.</p>
-            </a>
-          </div>
-        </section>
-
-        <section class="section" style="padding-top: 1.6rem">
-          <a class="referral-banner reveal" href="/news.html">
-            <div>
-              <p class="eyebrow">News</p>
-              <h2>Today on Tesla, SpaceX and Grok</h2>
-              <p>
-                Headlines from the last 24 hours, refreshed on the page — not a recap
-                of last week’s posts.
-              </p>
-            </div>
-            <span class="button button-primary">Open News</span>
-          </a>
-        </section>
-
-        <section class="section" style="padding-top: 1.6rem">
-          <a class="referral-banner reveal" href="/tsla.html">
-            <div>
-              <p class="eyebrow">Markets</p>
-              <h2>Tesla, SpaceX, and a calendar</h2>
-              <p>
-                Live TSLA and SPCX, the next Tesla print, SpaceX launches, Grok ships,
-                Fed and CPI — without anyone’s trading book on the page.
-              </p>
-            </div>
-            <span class="button button-primary">Open Markets</span>
-          </a>
-        </section>
-
-        <section class="section" aria-labelledby="lead-heading">
-          <div class="section-head">
-            <h2 id="lead-heading" class="reveal">Featured</h2>
-            <p class="reveal delay-1">SpaceX</p>
-          </div>
-          <a class="lead-card reveal" href="/dispatch/stargaze.html">
-            <div class="lead-media">
-              <span class="media-play">Video</span>
-              <video
-                muted
-                playsinline
-                preload="metadata"
-                poster="/assets/dispatch/stargaze-poster.jpg"
-                aria-label="Stargaze Starlink proximity clip from X"
-              >
-                <source src="/assets/dispatch/stargaze.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="lead-copy">
-              <span class="tag">SpaceX</span>
-              <h3>9,000 meters became 60. Stargaze saw it.</h3>
-              <p>
-                Five hours before a pass, a Starlink sat was set to miss another company’s satellite
-                by about 9 km. Then the other sat fired its engine without telling anyone.
-              </p>
-            </div>
-          </a>
-        </section>
-
-        <section class="section" aria-labelledby="from-x-heading">
-          <div class="section-head">
-            <h2 id="from-x-heading" class="reveal">From the posts</h2>
-          </div>
-          <div class="story-grid">
-            <a class="story-card reveal" href="/dispatch/cybercab-austin.html">
-              <div class="story-media">
-                <span class="media-play">Video</span>
-                <video
-                  muted
-                  playsinline
-                  preload="metadata"
-                  poster="/assets/dispatch/cybercab-austin-poster.jpg"
-                  aria-label="Official Tesla Robotaxi Cybercab fleet clip"
-                >
-                  <source src="/assets/dispatch/cybercab-austin.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="story-copy">
-                <span class="tag">Tesla</span>
-                <h3>300 Cybercabs in Austin</h3>
-                <p>Eight times the launch fleet. Texas DMV lists 319.</p>
-              </div>
-            </a>
-            <a class="story-card reveal delay-1" href="/dispatch/starlink-latam.html">
-              <div class="story-media">
-                <span class="media-play">Video</span>
-                <video
-                  muted
-                  playsinline
-                  preload="metadata"
-                  poster="/assets/dispatch/starlink-latam-poster.jpg"
-                  aria-label="Official Starlink satellite clip"
-                >
-                  <source src="/assets/dispatch/starlink-latam.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="story-copy">
-                <span class="tag">SpaceX</span>
-                <h3>Venezuela and Brazil, cleared</h3>
-                <p>Nationwide licence, 15+15 MHz to phones, plus the 800 MHz buy.</p>
-              </div>
-            </a>
-            <a class="story-card reveal delay-2" href="/dispatch/fsd-cannonball.html">
-              <img
-                src="/assets/dispatch/fsd-cannonball-poster.jpg"
-                alt="Stopwatch at the New York finish of an FSD Cannonball run"
-                width="1200"
-                height="675"
-                loading="lazy"
-              />
-              <div class="story-copy">
-                <span class="tag">Tesla</span>
-                <h3>LA to NY, 45 hours 37 minutes</h3>
-                <p>FSD v14.3.7, zero interventions, the team says. Self-reported.</p>
-              </div>
-            </a>
-            <article class="story-card reveal" id="musk-national-medal">
-              <div class="story-media">
-                <span class="media-play">Video</span>
-                <video
-                  muted
-                  playsinline
-                  preload="metadata"
-                  poster="/assets/dispatch/musk-national-medal-poster.jpg"
-                  aria-label="National Medal of Science clip"
-                >
-                  <source src="/assets/dispatch/musk-national-medal.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="story-copy">
-                <span class="tag">News</span>
-                <h3>National Medal of Science</h3>
-                <p>Elon Musk at the White House — the ceremony clip from the original post.</p>
-              </div>
-            </article>
+        <section class="hx-band" id="newsletter" aria-labelledby="newsletter-heading">
+          <div class="hx-band-glow" aria-hidden="true"></div>
+          <div class="hx-band-inner newsletter" data-newsletter="banner">
+            <img class="hx-band-icon" src="/assets/brand/icon-1b.svg" alt="" width="72" height="72" />
+            <p class="hx-eyebrow">Free weekly newsletter · Sundays</p>
+            <h2 id="newsletter-heading" class="hx-band-title">Get supercharged.</h2>
+            <p class="hx-band-sub">The week’s biggest Tesla, SpaceX, xAI and X stories, the moves in $TSLA and $SPCX, and the posts worth your time. One email. Every Sunday.</p>
+            <form class="newsletter-form hx-form" data-newsletter-form>
+              <label class="visually-hidden" for="newsletter-email-home">Email address</label>
+              <input id="newsletter-email-home" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
+              <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
+              <button class="newsletter-button hx-btn hx-btn-primary" type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-fine">Free. No spam. Unsubscribe anytime.</p>
+            <p class="newsletter-status" data-newsletter-status role="status"></p>
           </div>
         </section>
       </main>
@@ -409,5 +277,6 @@
     </div>
     <script src="/script.js"></script>
     <script src="/home-stats.js"></script>
+    <script src="/home.js" defer></script>
   </body>
 </html>
