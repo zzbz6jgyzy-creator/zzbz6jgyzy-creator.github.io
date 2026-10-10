@@ -203,7 +203,7 @@
     const latest = bundle.live?.latest
       ? versions.find((row) => row.id === bundle.live.latest) || versions[0]
       : versions[0];
-    const ireland = versions.find((row) => row.countries.includes("IE"));
+    const widest = raw.slice().sort((a, b) => (b.percent || 0) - (a.percent || 0) || (b.count || 0) - (a.count || 0))[0];
     const na = raw.find((row) => row.fsdHw4);
     const europeCodes = new Set(["NL", "BE", "DE", "FR", "IE", "GB", "IT", "ES", "PT", "AT", "CH", "DK", "NO", "SE", "FI", "PL", "CZ", "SK", "SI", "LT", "EE", "HR", "HU", "GR"]);
     const europe = raw.find((row) => {
@@ -212,7 +212,7 @@
       return isFsdRow(row, feats) && eu && !row.fsdHw4;
     });
     setText("stat-latest", latest?.id || "—");
-    setText("stat-ireland", ireland?.id || "—");
+    setText("stat-wide", widest?.id || "—");
     setText("stat-fsd-na", na?.fsdHw4 || "—");
     setText("stat-fsd-eu", europe?.id || "—");
 
@@ -269,7 +269,7 @@
   const kindButtons = document.querySelectorAll("[data-updates-kind]");
   const empty = document.getElementById("updates-empty");
 
-  let countryCode = "IE";
+  let countryCode = "";
   let kind = "all";
   let versionQuery = "";
   let current = { live: null, versions: curated.versions };
