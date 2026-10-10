@@ -1,0 +1,22 @@
+{
+  "updated": "2026-10-10",
+  "stats": {
+    "fsdCountries": {
+      "value": 16,
+      "markets": ["US", "CA", "MX", "PR", "CN", "AU", "NZ", "KR", "NL", "LT", "EE", "DK", "BE", "SI", "CZ", "HR"],
+      "source": "Tesla FSD Supervised listings plus the Supercharged Daily FSD Europe tracker. Includes Puerto Rico."
+    },
+    "starlink": {
+      "value": 11137,
+      "source": "Jonathan McDowell / KeepTrack in-orbit count, 10 Oct 2026. Working count was 11,123."
+    },
+    "directToPhone": {
+      "value": 15000,
+      "source": "Starlink Mobile licensed envelope cited in Supercharged Daily SpaceX coverage."
+    },
+    "dragonFreedom": {
+      "value": 237,
+      "source": "Crew-10 / Dragon Freedom ISS tour length from the Supercharged Daily dispatch."
+    }
+  }
+}

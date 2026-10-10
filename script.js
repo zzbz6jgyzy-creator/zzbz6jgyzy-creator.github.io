@@ -47,36 +47,15 @@
     reveals.forEach((el) => el.classList.add("is-visible"));
   }
 
-  const counts = document.querySelectorAll("[data-count]");
   const writeCount = (el) => {
-    el.textContent = Number(el.dataset.count).toLocaleString() + (el.dataset.suffix || "");
-  };
-  if (counts.length) {
-    if (reduce || !("IntersectionObserver" in window)) {
-      counts.forEach(writeCount);
-    } else {
-      const countIo = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const el = entry.target;
-            const end = Number(el.dataset.count);
-            const suffix = el.dataset.suffix || "";
-            const start = performance.now();
-            const tick = (now) => {
-              const t = Math.min(1, (now - start) / 900);
-              el.textContent = Math.round(end * (1 - (1 - t) ** 3)).toLocaleString() + suffix;
-              if (t < 1) requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-            countIo.unobserve(el);
-          });
-        },
-        { threshold: 0.4 }
-      );
-      counts.forEach((el) => countIo.observe(el));
+    const end = Number(el.dataset.count);
+    if (!Number.isFinite(end) || end <= 0) {
+      el.textContent = "—";
+      return;
     }
-  }
+    el.textContent = end.toLocaleString() + (el.dataset.suffix || "");
+  };
+  document.querySelectorAll("[data-count]").forEach(writeCount);
 
   document.querySelectorAll(".video-card-media video").forEach((video) => {
     const wrap = video.parentElement;

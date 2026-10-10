@@ -480,13 +480,45 @@ a.stat:hover {
   border-right: none;
 }
 
-.stat b {
+.stat b,
+.stat-value {
   display: block;
   font-family: var(--font-mono);
   font-size: 1.55rem;
   font-weight: 600;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
+}
+
+.stat-value.is-loading {
+  min-height: 1.2em;
+}
+
+.stat-skeleton {
+  display: block;
+  width: 3.4ch;
+  height: 0.7em;
+  margin: 0.45em 0 0.28em;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(236, 236, 232, 0.07), rgba(236, 236, 232, 0.2), rgba(236, 236, 232, 0.07));
+  background-size: 200% 100%;
+  animation: stat-shimmer 1.15s ease-in-out infinite;
+}
+
+.stat-skeleton-wide {
+  width: 6.2ch;
+}
+
+@keyframes stat-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-skeleton {
+    animation: none;
+    background: rgba(236, 236, 232, 0.12);
+  }
 }
 
 .stat span {
