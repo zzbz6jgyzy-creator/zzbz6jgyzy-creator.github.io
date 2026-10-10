@@ -210,13 +210,17 @@
     const features = mergeFeatures(base?.features, row.features);
     const fsd = base?.fsd || fsdLabel(row);
     const kind = base?.kind || (isFsdRow(row, liveFeatures) ? "fsd" : "cabin");
+    const firstFeature = (row.features || [])[0];
+    const liveHeadline = typeof firstFeature === "string"
+      ? featureTitle(firstFeature)
+      : (firstFeature?.title || featureTitle(featureText(firstFeature)));
     return {
       id: row.id,
       family: base?.family || row.id.split(".").slice(0, 2).join("."),
       date: row.date || base?.date || "",
       kind,
       status: row.count != null ? liveStatus(row) : base?.status || "rolling",
-      headline: base?.headline || liveFeatures[0]?.split(" — ")[0] || `Build ${row.id}`,
+      headline: base?.headline || liveHeadline || `Build ${row.id}`,
       summary:
         base?.summary ||
         (fsd ? `FSD ${fsd} on ${row.id}.` : `Cabin build ${row.id}, from Tesla’s public notes as cars report in.`),
