@@ -1,16 +1,61 @@
 {
-  "updated": "2026-10-10T21:58:55Z",
+  "updated": "2026-10-10T22:34:03Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3343,
-  "latest": "2026.38.3.1",
+  "latest": "2026.38.5",
   "versions": [
+    {
+      "id": "2026.38.5",
+      "date": "2026-10-10",
+      "count": 0,
+      "fleet": 3343,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": "14.3.12",
+      "features": [
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage in the following situations while you are driving manually: - Scenario 1: A\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.12",
+          "text": "Full Self-Driving (Supervised) v14.3.12 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Emergency Drive Away",
+          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.11",
+          "text": "Full Self-Driving (Supervised) v14.3.11 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        }
+      ],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 6,
+      "firstSeen": "2026-10-10T22:26:31Z",
+      "lastSeen": "2026-10-10T22:26:31Z"
+    },
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 61,
+      "count": 62,
       "fleet": 3343,
-      "percent": 1.8,
+      "percent": 1.9,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -71,7 +116,7 @@
         "TR"
       ],
       "countryCounts": {
-        "GB": 14,
+        "GB": 15,
         "DE": 6,
         "IT": 5,
         "CH": 5,
@@ -92,9 +137,9 @@
         "PL": 1,
         "TR": 1
       },
-      "pending": 20,
+      "pending": 52,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-10T20:52:09Z"
+      "lastSeen": "2026-10-10T22:32:21Z"
     },
     {
       "id": "2026.33.5",
@@ -457,9 +502,9 @@
     {
       "id": "2026.32.7",
       "date": "2026-09-23",
-      "count": 356,
+      "count": 357,
       "fleet": 3343,
-      "percent": 10.6,
+      "percent": 10.7,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -537,7 +582,7 @@
         "TR"
       ],
       "countryCounts": {
-        "US": 135,
+        "US": 136,
         "GB": 40,
         "DE": 26,
         "FR": 19,
@@ -575,9 +620,9 @@
         "AE": 1,
         "TR": 1
       },
-      "pending": 25,
+      "pending": 23,
       "firstSeen": "2026-09-23T02:08:40Z",
-      "lastSeen": "2026-10-10T09:40:21Z"
+      "lastSeen": "2026-10-10T22:25:08Z"
     },
     {
       "id": "2026.27.11",
@@ -941,65 +986,6 @@
       "pending": 4,
       "firstSeen": "2026-09-09T18:18:11Z",
       "lastSeen": "2026-10-02T06:50:37Z"
-    },
-    {
-      "id": "2026.27.6",
-      "date": "2026-09-08",
-      "count": 551,
-      "fleet": 3343,
-      "percent": 16.5,
-      "fsd": null,
-      "fsdHw3": "14.2 Lite",
-      "fsdHw4": "14.3.9",
-      "features": [
-        {
-          "title": "Arrival Options",
-          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
-        },
-        {
-          "title": "Automatic Collision Evasion",
-          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
-        },
-        {
-          "title": "FSD (Supervised) v14.2 Lite",
-          "text": "FSD (Supervised) v14.2 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
-        },
-        {
-          "title": "FSD (Supervised) v14.3.9",
-          "text": "Full Self-Driving (Supervised) v14.3.9 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neur\u2026"
-        },
-        {
-          "title": "Full Self-Driving (Supervised)",
-          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
-        },
-        {
-          "title": "Speed Profiles",
-          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
-        },
-        {
-          "title": "Start Self-Driving from Park",
-          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
-        },
-        {
-          "title": "UI Improvements",
-          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
-        }
-      ],
-      "countries": [
-        "US",
-        "CA",
-        "MX",
-        "PR"
-      ],
-      "countryCounts": {
-        "US": 521,
-        "CA": 27,
-        "MX": 2,
-        "PR": 1
-      },
-      "pending": 1,
-      "firstSeen": "2026-09-08T22:32:59Z",
-      "lastSeen": "2026-09-26T13:43:20Z"
     },
     {
       "id": "2026.27.200",
