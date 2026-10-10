@@ -993,9 +993,11 @@ article.story-card {
 
 .fsd-country-list {
   display: grid;
+  align-content: start;
   gap: 0.3rem;
+  flex: 1;
+  min-height: 16rem;
   overflow: auto;
-  max-height: 28rem;
   padding-right: 0.15rem;
 }
 
