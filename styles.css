@@ -2312,8 +2312,12 @@ button.fsd-kpi[aria-pressed="true"] {
   border-radius: 10px;
   border: 1px solid var(--line);
   background: #0b0c10;
-  touch-action: none;
+  touch-action: pan-y;
   cursor: grab;
+}
+
+.updates-map-shell.is-zoomed {
+  touch-action: none;
 }
 
 .updates-map-shell.is-panning {
@@ -2322,7 +2326,8 @@ button.fsd-kpi[aria-pressed="true"] {
 
 .updates-map-zoom {
   position: absolute;
-  top: 0.7rem;
+  top: auto;
+  bottom: 0.7rem;
   right: 0.7rem;
   z-index: 3;
   display: flex;
@@ -2392,7 +2397,13 @@ button.fsd-kpi[aria-pressed="true"] {
 }
 
 .updates-hot {
-  cursor: pointer;
+  pointer-events: none;
+}
+
+.updates-hot-halo,
+.updates-hot-ring,
+.updates-hot [data-hit] {
+  pointer-events: none;
 }
 
 .updates-hot-halo {
@@ -2914,7 +2925,8 @@ button.fsd-kpi[aria-pressed="true"] {
   }
 
   .updates-map-zoom {
-    top: 0.55rem;
+    top: auto;
+    bottom: 0.55rem;
     right: 0.55rem;
   }
 
