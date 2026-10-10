@@ -1,10 +1,10 @@
 window.STARSHIP = {
-  updated: "2026-10-09",
+  updated: "2026-10-10",
   note:
-    "Compiled from SpaceX flight pages and public launch records. Outcomes are this desk’s read of the whole flight — not SpaceX’s official score. Flight 15 is a planning target only. Not affiliated with SpaceX.",
+    "Compiled from SpaceX flight pages, FAA planning slides and public launch records. Outcomes are this desk’s read of the whole flight — not SpaceX’s official score. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
     flight: 15,
-    start: "2026-10-19T00:00:00Z",
+    start: "2026-11-08T00:00:00Z",
     precision: "day",
     pad: "Starbase · OLP-2",
     booster: "B22",
@@ -12,8 +12,40 @@ window.STARSHIP = {
     block: "Block 3",
     headline: "First serious Ship catch",
     tested:
-      "Planning target for the first real attempt to catch the upper stage on the tower. SpaceX has not set an official clock. Some reports have slipped the window to 8 November. Same date as the Musk-world calendar.",
+      "Working window is now NET 8 November on FAA air-traffic planning slides — not a SpaceX T-0. Ship 42’s Raptors were pulled in early October. The story is still the first real attempt to catch a Ship.",
+    objectives: [
+      "Catch Ship 42 on the Pad 2 tower — first serious Ship catch, not confirmed by SpaceX",
+      "Fly and recover Super Heavy B22 (catch or controlled splashdown)",
+      "Prove Block 3 after Flight 14’s first orbital Starlink V3 deploy",
+    ],
+    coverage: [
+      { label: "SpaceX launches", url: "https://www.spacex.com/launches" },
+      { label: "SpaceX on X", url: "https://x.com/SpaceX" },
+      { label: "SpaceX on YouTube", url: "https://www.youtube.com/@SpaceX" },
+      { label: "NASASpaceflight", url: "https://www.nasaspaceflight.com/" },
+      { label: "Calendar", url: "/calendar.html" },
+    ],
   },
+  schedule: [
+    {
+      date: "2026-10-08",
+      confirmed: false,
+      change:
+        "FAA CADENA planning slides moved Flight 15 from 19 October to NET 8 November. NASASpaceflight reported Ship 42’s Raptors off the vehicle. SpaceX has not published a mission page.",
+    },
+    {
+      date: "2026-09-28",
+      confirmed: false,
+      change:
+        "After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial.",
+    },
+    {
+      date: "2026-09-11",
+      confirmed: true,
+      change:
+        "Ship 42 ran catch-related tests on Pad 2. Hardware work is the only SpaceX-visible schedule signal.",
+    },
+  ],
   flights: [
     {
       flight: 14,

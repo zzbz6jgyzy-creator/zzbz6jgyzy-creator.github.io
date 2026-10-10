@@ -819,9 +819,25 @@
 
   let countryCode = "";
   let kind = "all";
+  let model = "";
+  let featureQuery = "";
   let versionQuery = "";
   let spotFilter = "wave";
   let current = { live: null, versions: curated.versions };
+
+  const versionModels = (version) => version.models || ["3", "Y", "S", "X", "Cybertruck"];
+  const versionHardware = (version) => version.hardware || ["HW3", "HW4"];
+  const matchModel = (version) => {
+    if (!model) return true;
+    return versionModels(version).includes(model) || versionHardware(version).includes(model);
+  };
+  const matchFeature = (version) => {
+    if (!featureQuery) return true;
+    const hay = [version.headline, version.summary, version.fsd, version.reached, ...(version.features || [])]
+      .join(" ")
+      .toLowerCase();
+    return hay.includes(featureQuery.toLowerCase());
+  };
 
   const syncStatButtons = () => {
     document.querySelectorAll("[data-updates-stat]").forEach((btn) => {
@@ -863,6 +879,8 @@
 
     const rows = bundle.versions
       .filter((v) => kind === "all" || v.kind === kind)
+      .filter(matchModel)
+      .filter(matchFeature)
       .filter((v) => matchVersion(v, versionQuery))
       .map((v) => ({ version: v, avail: availability(v, country) }))
       .sort((a, b) => {
@@ -878,11 +896,16 @@
     rows.forEach(({ version, avail }) => {
       const article = document.createElement("article");
       const on = versionQuery && norm(version.id) === norm(versionQuery);
-      article.className = `updates-row${avail.key === "away" ? " is-away" : ""}${on ? " is-on" : ""}`;
+      const open = on || Boolean(featureQuery);
+      article.className = `updates-row${avail.key === "away" ? " is-away" : ""}${on ? " is-on" : ""}${open ? " is-open" : ""}`;
       article.id = `build-${version.id.replace(/\./g, "-")}`;
       const places = (version.countries || []).slice(0, 5).map(countryName);
       const extra = (version.countries || []).length - places.length;
       const fleet = version.live?.percent != null ? `${version.live.percent}%` : "—";
+      const chips = [...versionModels(version), ...versionHardware(version)]
+        .map((tag) => `<span class="updates-chip">${escapeHtml(tag)}</span>`)
+        .join("");
+      const feats = (version.features || []).map((line) => `<li>${escapeHtml(line)}</li>`).join("");
       article.innerHTML = `
         <button type="button" class="updates-row-btn" data-version="${escapeHtml(version.id)}">
           <span class="updates-card-id">${escapeHtml(version.id)}</span>
@@ -896,12 +919,22 @@
             ${avail.label ? `<span class="updates-avail updates-avail-${avail.key}">${escapeHtml(avail.label)}</span>` : ""}
           </span>
         </button>
+        <div class="updates-row-body">
+          <p>${escapeHtml(version.summary || version.reached || "")}</p>
+          <div class="updates-chips">${chips}</div>
+          ${feats ? `<ul>${feats}</ul>` : ""}
+          ${version.fsd ? `<p>${escapeHtml(version.fsd)}</p>` : ""}
+        </div>
       `;
       article.querySelector("button")?.addEventListener("click", () => {
-        versionQuery = version.id;
-        if (versionInput) versionInput.value = version.id;
+        if (norm(versionQuery) === norm(version.id)) {
+          versionQuery = "";
+          if (versionInput) versionInput.value = "";
+        } else {
+          versionQuery = version.id;
+          if (versionInput) versionInput.value = version.id;
+        }
         rerender();
-        document.getElementById("map")?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
       list.append(article);
     });
@@ -955,6 +988,24 @@
       rerender();
     });
   });
+
+  document.querySelectorAll("[data-updates-model]").forEach((button) => {
+    button.addEventListener("click", () => {
+      model = button.dataset.updatesModel || "";
+      document.querySelectorAll("[data-updates-model]").forEach((b) => {
+        b.setAttribute("aria-pressed", String(b === button));
+      });
+      rerender();
+    });
+  });
+
+  const featureInput = document.getElementById("updates-feature");
+  if (featureInput) {
+    featureInput.addEventListener("input", () => {
+      featureQuery = featureInput.value.trim();
+      rerender();
+    });
+  }
 
   document.querySelectorAll("[data-updates-spots]").forEach((button) => {
     button.addEventListener("click", () => {

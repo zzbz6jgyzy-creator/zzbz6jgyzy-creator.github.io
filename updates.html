@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Software update tracker — Supercharged Daily</title>
+    <title>Tesla Software Update Database — Supercharged Daily</title>
     <meta
       name="description"
-      content="Live Tesla software update tracker: a searchable world map of where new builds are landing, plus what the number on the screen actually adds."
+      content="Searchable Tesla software releases: features by model, region availability, update history and change alerts. Independent database."
     />
     <link rel="canonical" href="https://superchargeddaily.com/updates.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
-    <meta property="og:title" content="Software update tracker — Supercharged Daily" />
-    <meta property="og:description" content="Live Tesla software update tracker: a searchable world map of where new builds are landing, plus what the number on the screen actually adds." />
+    <meta property="og:title" content="Tesla Software Update Database — Supercharged Daily" />
+    <meta property="og:description" content="Searchable Tesla software releases: features by model, region availability, update history and change alerts." />
     <meta property="og:url" content="https://superchargeddaily.com/updates.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/dispatch/fsd-snow-poster.jpg" />
     <meta property="og:image:alt" content="FSD Supervised on a snowy European road" />
@@ -21,8 +21,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
-    <meta name="twitter:title" content="Software update tracker — Supercharged Daily" />
-    <meta name="twitter:description" content="Live Tesla software update tracker: a searchable world map of where new builds are landing, plus what the number on the screen actually adds." />
+    <meta name="twitter:title" content="Tesla Software Update Database — Supercharged Daily" />
+    <meta name="twitter:description" content="Searchable Tesla software releases: features by model, region availability, update history and change alerts." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/dispatch/fsd-snow-poster.jpg" />
     <meta name="twitter:image:alt" content="FSD Supervised on a snowy European road" />
 
@@ -56,9 +56,9 @@
           <a href="/spacex.html">SpaceX</a>
           <a href="/grok.html">Grok</a>
           <a href="/tsla.html">Markets</a>
-          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/fsd.html">FSD</a>
           <a href="/starship.html">Starship</a>
-          <a href="/updates.html" aria-current="page">Software Update Tracker</a>
+          <a href="/updates.html" aria-current="page">Updates</a>
           <a href="/reviews/index.html">Reviews</a>
           <a href="/games.html">Games</a>
           <a class="nav-cta" href="https://x.com/ALJR86">Follow on X</a>
@@ -68,12 +68,17 @@
       <main id="main">
         <section class="fsd-hero">
           <div>
-            <p class="eyebrow">Tesla · Live map</p>
-            <h1>Where the new build is</h1>
+            <p class="eyebrow">Tesla · Software database</p>
+            <h1>Software Update Database</h1>
             <p>
-              Red dots are the newest wave Teslascope has seen on cars.
-              Search a country or a version number.
+              Searchable releases, what each number adds by model, where that
+              build has been seen, and a live map of the newest wave.
             </p>
+            <nav class="fsd-jump" aria-label="On this page">
+              <a href="#map">Map</a>
+              <a href="#builds">Releases</a>
+              <a href="#alerts">Alerts</a>
+            </nav>
           </div>
           <p class="meta news-status-line" id="updates-updated">Checking Teslascope…</p>
         </section>
@@ -181,16 +186,52 @@
 
         <section class="section updates-log" id="builds" aria-labelledby="updates-log-heading">
           <div class="section-head">
-            <h2 id="updates-log-heading">What that number means</h2>
+            <h2 id="updates-log-heading">Release history</h2>
             <p id="updates-showing">Builds</p>
           </div>
+          <label class="updates-search-label" for="updates-feature">Feature or model note</label>
+          <input
+            id="updates-feature"
+            class="updates-search"
+            type="search"
+            placeholder="Collision Evasion, Apple Music, Supercharger…"
+            autocomplete="off"
+          />
           <div class="fsd-filters" role="group" aria-label="Filter by type">
             <button type="button" class="fsd-filter" data-updates-kind="all" aria-pressed="true">All</button>
             <button type="button" class="fsd-filter" data-updates-kind="fsd" aria-pressed="false">FSD</button>
             <button type="button" class="fsd-filter" data-updates-kind="cabin" aria-pressed="false">Cabin</button>
           </div>
+          <div class="fsd-filters" role="group" aria-label="Filter by model">
+            <button type="button" class="fsd-filter" data-updates-model="" aria-pressed="true">All models</button>
+            <button type="button" class="fsd-filter" data-updates-model="3" aria-pressed="false">3</button>
+            <button type="button" class="fsd-filter" data-updates-model="Y" aria-pressed="false">Y</button>
+            <button type="button" class="fsd-filter" data-updates-model="S" aria-pressed="false">S</button>
+            <button type="button" class="fsd-filter" data-updates-model="X" aria-pressed="false">X</button>
+            <button type="button" class="fsd-filter" data-updates-model="Cybertruck" aria-pressed="false">Cybertruck</button>
+            <button type="button" class="fsd-filter" data-updates-model="HW3" aria-pressed="false">HW3</button>
+            <button type="button" class="fsd-filter" data-updates-model="HW4" aria-pressed="false">HW4</button>
+          </div>
           <p class="updates-empty" id="updates-empty" hidden>No listed build matches that number.</p>
           <div class="updates-rows" id="updates-list"></div>
+        </section>
+
+        <section class="section" id="alerts" aria-labelledby="updates-alert-heading">
+          <div class="flagship-alert newsletter" data-newsletter="updates-alerts">
+            <div>
+              <p class="newsletter-kicker">Change alerts</p>
+              <h2 id="updates-alert-heading">Get a note when a new wave lands</h2>
+              <p class="newsletter-tagline">New version numbers, FSD stack jumps, and where they showed up first.</p>
+            </div>
+            <form class="newsletter-form" data-newsletter-form>
+              <label class="visually-hidden" for="newsletter-email-updates">Email address</label>
+              <input id="newsletter-email-updates" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="Your email address" />
+              <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
+              <button class="newsletter-button" type="submit">Get alerts</button>
+            </form>
+            <p class="newsletter-fine">Free. Unsubscribe anytime.</p>
+            <p class="newsletter-status" data-newsletter-status role="status"></p>
+          </div>
         </section>
 
         <section class="section">
@@ -204,7 +245,7 @@
             </p>
             <p style="margin: 1rem 0 0">
               <a class="button button-ghost" href="/tesla.html">Tesla desk</a>
-              <a class="button button-ghost" href="/fsd-europe.html">FSD Europe</a>
+              <a class="button button-ghost" href="/fsd.html">FSD tracker</a>
             </p>
           </div>
         </section>
@@ -216,9 +257,9 @@
         <p>
           <a href="/tesla.html">Tesla</a>
           ·
-          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/fsd.html">FSD</a>
           ·
-          <a href="/updates.html">Software Update Tracker</a>
+          <a href="/updates.html">Updates</a>
           ·
           <a href="/starship.html">Starship</a>
           ·

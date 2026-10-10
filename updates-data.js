@@ -84,6 +84,8 @@ window.TESLA_UPDATES = {
         "Security fixes.",
       ],
       fsd: null,
+      models: ["3", "Y", "S", "X", "Cybertruck"],
+      hardware: ["HW3", "HW4"],
       reached:
         "Early wave. Seen in the US, Germany, France, Italy, Austria, Switzerland, the Netherlands and a handful of other European countries.",
       countries: ["US", "GB", "DE", "FR", "IT", "AT", "CH", "NL", "BE", "ES", "CZ", "PL", "DK", "NO", "TW", "IL", "UA", "MA", "TR"],
@@ -105,6 +107,8 @@ window.TESLA_UPDATES = {
         "Also carries the 2026.32 cabin items (Apple Music library, extra wheel visuals) for cars jumping branches.",
       ],
       fsd: "v14.3.11 (HW4) · v14.3 Lite (HW3) · North America",
+      models: ["3", "Y", "S", "X", "Cybertruck"],
+      hardware: ["HW3", "HW4"],
       reached:
         "Rolling in the United States and Canada only. About 2–3% of the tracked fleet. Not a European build.",
       countries: ["US", "CA"],
@@ -124,6 +128,8 @@ window.TESLA_UPDATES = {
         "Apple Music library and the usual security fixes on cars that skipped 2026.32.",
       ],
       fsd: "v14.2.2.6 · Europe",
+      models: ["3", "Y", "S", "X"],
+      hardware: ["HW3", "HW4"],
       reached:
         "Early European wave: Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia, Slovenia.",
       countries: ["NL", "BE", "CZ", "DK", "EE", "LT", "SK", "SI"],
@@ -145,6 +151,8 @@ window.TESLA_UPDATES = {
         "Security fixes. 2026.32.7 itself is mostly minor fixes on top of 2026.32.3.",
       ],
       fsd: null,
+      models: ["3", "Y", "S", "X", "Cybertruck"],
+      hardware: ["HW3", "HW4"],
       reached:
         "Wide. Seen across North America, Europe, the Middle East and parts of Asia. Still one of the largest slices of the fleet.",
       countries: [
@@ -169,6 +177,8 @@ window.TESLA_UPDATES = {
         "In-car browser ad blocker (also called out on later 2026.32.100).",
       ],
       fsd: null,
+      models: ["3", "Y", "S", "X", "Cybertruck"],
+      hardware: ["HW3", "HW4"],
       reached:
         "Still on a slice of the fleet in North America, Europe, Australia and Asia. Many cars have already moved on to 2026.32.7.",
       countries: [
@@ -191,6 +201,8 @@ window.TESLA_UPDATES = {
         "Start from Park, Arrival Options (parking lot / street / driveway) and Speed Profiles, including Sloth.",
       ],
       fsd: "v14.3.10 (HW4) · v14.2 Lite (HW3) · North America",
+      models: ["3", "Y", "S", "X", "Cybertruck"],
+      hardware: ["HW3", "HW4"],
       reached:
         "Wide in the United States and Canada. Roughly a quarter of the tracked fleet as of early October. Not a European branch.",
       countries: ["US", "CA"],
@@ -209,6 +221,8 @@ window.TESLA_UPDATES = {
         "Cabin carry-overs from the 2026.27 line.",
       ],
       fsd: "v14.2.2.6 · Europe",
+      models: ["3", "Y", "S", "X"],
+      hardware: ["HW3", "HW4"],
       reached:
         "European FSD cars — Netherlands, Belgium and neighbours — before 2026.33.100. Small remaining share.",
       countries: ["NL", "BE", "DE", "DK", "CZ", "EE", "LT", "SI"],
@@ -227,6 +241,8 @@ window.TESLA_UPDATES = {
         "Cabin and security items from the late-August / September line — not the US 14.3.11 FSD stack.",
       ],
       fsd: null,
+      models: ["3", "Y"],
+      hardware: ["HW3", "HW4"],
       reached: "Australia and New Zealand. Not used in Europe or North America.",
       countries: ["AU", "NZ"],
     },

@@ -16,6 +16,13 @@
     return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
   };
 
+  const escapeHtml = (value) =>
+    String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+
   const setText = (id, value) => {
     const el = document.getElementById(id);
     if (el) el.textContent = value;
@@ -57,7 +64,7 @@
       secsEl.textContent = "00";
       if (statusEl) {
         statusEl.textContent =
-          "The 19 October planning target has passed. Flight 15 is still NET — SpaceX has not set an official clock.";
+          "The current planning target has passed. Flight 15 is still NET — SpaceX has not set an official clock.";
       }
       return;
     }
@@ -76,6 +83,48 @@
     }
   };
 
+  const objectives = document.getElementById("starship-objectives");
+  if (objectives) {
+    (data.next.objectives || []).forEach((text) => {
+      const li = document.createElement("li");
+      li.className = "starship-objective";
+      li.textContent = text;
+      objectives.append(li);
+    });
+  }
+
+  const coverage = document.getElementById("starship-coverage");
+  if (coverage) {
+    (data.next.coverage || []).forEach((link) => {
+      const a = document.createElement("a");
+      a.href = link.url;
+      a.textContent = link.label;
+      if (/^https?:/.test(link.url)) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      }
+      coverage.append(a);
+    });
+  }
+
+  const changes = document.getElementById("starship-changes");
+  if (changes) {
+    (data.schedule || []).forEach((row) => {
+      const article = document.createElement("article");
+      article.className = "starship-change";
+      article.innerHTML = `
+        <div class="starship-change-head">
+          <time datetime="${escapeHtml(row.date)}">${escapeHtml(formatDate(row.date))}</time>
+          <span class="fsd-status ${row.confirmed ? "fsd-status-done" : "fsd-status-watch"}">${
+            row.confirmed ? "Confirmed work" : "Planning"
+          }</span>
+        </div>
+        <p>${escapeHtml(row.change)}</p>
+      `;
+      changes.append(article);
+    });
+  }
+
   renderCountdown();
   window.setInterval(renderCountdown, 1000);
 
@@ -89,13 +138,13 @@
     article.dataset.outcome = "next";
     article.innerHTML = `
       <div class="starship-flight-head">
-        <span class="starship-flight-num">Flight ${data.next.flight}</span>
-        <time datetime="${data.next.start}">NET ${formatDate(data.next.start)}</time>
+        <span class="starship-flight-num">Flight ${escapeHtml(data.next.flight)}</span>
+        <time datetime="${escapeHtml(data.next.start)}">NET ${escapeHtml(formatDate(data.next.start))}</time>
         <span class="fsd-status starship-status-next">${outcomeLabel.next}</span>
       </div>
-      <p class="starship-hw">${data.next.block} · ${data.next.booster} · ${data.next.ship} · ${data.next.pad}</p>
-      <h3>${data.next.headline}</h3>
-      <p>${data.next.tested}</p>
+      <p class="starship-hw">${escapeHtml(data.next.block)} · ${escapeHtml(data.next.booster)} · ${escapeHtml(data.next.ship)} · ${escapeHtml(data.next.pad)}</p>
+      <h3>${escapeHtml(data.next.headline)}</h3>
+      <p>${escapeHtml(data.next.tested)}</p>
     `;
     return article;
   };
@@ -106,13 +155,13 @@
     article.dataset.outcome = flight.outcome;
     article.innerHTML = `
       <div class="starship-flight-head">
-        <span class="starship-flight-num">Flight ${flight.flight}</span>
-        <time datetime="${flight.date}">${formatDate(flight.date)}</time>
+        <span class="starship-flight-num">Flight ${escapeHtml(flight.flight)}</span>
+        <time datetime="${escapeHtml(flight.date)}">${escapeHtml(formatDate(flight.date))}</time>
         <span class="fsd-status starship-status-${flight.outcome}">${outcomeLabel[flight.outcome]}</span>
       </div>
-      <p class="starship-hw">${flight.block} · ${flight.booster} · ${flight.ship} · ${flight.pad}</p>
-      <h3>${flight.headline}</h3>
-      <p>${flight.tested}</p>
+      <p class="starship-hw">${escapeHtml(flight.block)} · ${escapeHtml(flight.booster)} · ${escapeHtml(flight.ship)} · ${escapeHtml(flight.pad)}</p>
+      <h3>${escapeHtml(flight.headline)}</h3>
+      <p>${escapeHtml(flight.tested)}</p>
     `;
     return article;
   };
