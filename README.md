@@ -22,7 +22,7 @@ Open `http://localhost:4173`.
 - `cybercab.html` / `goldcab.html` — redirect to the Games hub
 - `robotaxi.html` — Robotaxi Boss (Tesla fleet, one week)
 - `catch.html` — Catch (Starship chopsticks)
-- `tesla.html` / `spacex.html` / `grok.html` — the three desks
+- `tesla.html` / `spacex.html` / `grok.html` — Tesla and SpaceX desks, plus the Grok Bot tutorial (introduction through advanced)
 - `fsd-europe.html` — FSD Supervised Europe tracker (national approvals + TCMV meetings)
 - `starship.html` — Starship flight tracker (every flight so far + Flight 15 countdown)
 - `updates.html` — Tesla update tracker (searchable live map + Teslascope snapshot + plain-English notes)
