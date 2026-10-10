@@ -72,6 +72,7 @@
           </p>
           <p class="meta reveal delay-3" id="fsd-updated">Updated</p>
           <nav class="fsd-jump reveal delay-3" aria-label="On this page">
+            <a href="#map">Map</a>
             <a href="#tracks">Two tracks</a>
             <a href="#path">Vote math</a>
             <a href="#countries">Countries</a>
@@ -101,6 +102,30 @@
               <b id="tcmv-next-label">—</b>
               <span>Next TCMV window</span>
             </a>
+          </div>
+        </section>
+
+        <section class="section" id="map" aria-labelledby="fsd-map-heading">
+          <div class="section-head">
+            <h2 id="fsd-map-heading" class="reveal">Where it's approved</h2>
+            <p class="reveal delay-1">Red countries have recognised the Dutch RDW file. Gold is still in review.</p>
+          </div>
+          <div class="fsd-map-board reveal">
+            <div class="fsd-map-shell">
+              <svg class="fsd-map" id="fsd-map" viewBox="0 0 900 780" width="900" height="780" role="img" aria-labelledby="fsd-map-heading">
+                <title>EU countries that have recognised FSD Supervised</title>
+                <rect class="fsd-map-ocean" width="900" height="780" />
+                <g id="fsd-map-land"></g>
+                <g id="fsd-map-pins"></g>
+              </svg>
+              <div class="fsd-map-tip" id="fsd-map-tip" hidden></div>
+            </div>
+            <div class="fsd-map-legend" aria-hidden="true">
+              <span><i class="fsd-map-key is-approved"></i> Approved</span>
+              <span><i class="fsd-map-key is-review"></i> In review</span>
+              <span><i class="fsd-map-key is-none"></i> No approval</span>
+            </div>
+            <p class="fsd-map-caption" id="fsd-map-caption">Loading map…</p>
           </div>
         </section>
 

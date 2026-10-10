@@ -1423,6 +1423,157 @@ article.story-card {
   color: var(--mute);
 }
 
+.fsd-map-board {
+  padding: 1rem 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(236, 236, 232, 0.03), transparent 40%),
+    var(--card);
+}
+
+.fsd-map-shell {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #0b0c10;
+}
+
+.fsd-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 900 / 780;
+  min-height: 260px;
+}
+
+.fsd-map-ocean {
+  fill: #10131a;
+}
+
+.fsd-map-country {
+  stroke: rgba(236, 236, 232, 0.22);
+  stroke-width: 0.8;
+  cursor: pointer;
+}
+
+.fsd-map-country.is-out {
+  fill: #1a1e26;
+  stroke: rgba(236, 236, 232, 0.08);
+  cursor: default;
+}
+
+.fsd-map-country.is-none {
+  fill: #2a303c;
+}
+
+.fsd-map-country.is-review {
+  fill: #5c4d32;
+}
+
+.fsd-map-country.is-approved {
+  fill: #c8102e;
+  stroke: rgba(255, 196, 196, 0.45);
+}
+
+.fsd-map-country.is-approved:hover,
+.fsd-map-country.is-review:hover,
+.fsd-map-country.is-none:hover {
+  filter: brightness(1.12);
+}
+
+.fsd-map-pin {
+  pointer-events: auto;
+  stroke: rgba(12, 13, 16, 0.45);
+  stroke-width: 1.2;
+}
+
+.fsd-map-pin.is-approved { fill: #ff4d42; }
+.fsd-map-pin.is-review { fill: #e2c48a; }
+.fsd-map-pin.is-none { fill: #6ea8ff; }
+
+.fsd-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.1rem;
+  margin: 0.75rem 0 0.35rem;
+  color: var(--mute);
+  font-size: 0.78rem;
+}
+
+.fsd-map-key {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.35rem;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.fsd-map-key.is-approved { background: #c8102e; }
+.fsd-map-key.is-review { background: #c4a46a; }
+.fsd-map-key.is-none { background: #2a303c; box-shadow: inset 0 0 0 1px rgba(236, 236, 232, 0.2); }
+
+.fsd-map-caption {
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.fsd-map-tip {
+  position: absolute;
+  transform: translate(-50%, -118%);
+  min-width: 7.5rem;
+  padding: 0.45rem 0.6rem 0.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: #12141a;
+  color: var(--ink);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fsd-map-tip strong,
+.fsd-map-tip span {
+  display: block;
+}
+
+.fsd-map-tip span {
+  color: var(--mute);
+  font-size: 0.78rem;
+}
+
+.fsd-table tr.is-focus td {
+  background: rgba(200, 16, 46, 0.08);
+}
+
+@media (max-width: 640px) {
+  .fsd-map-board {
+    padding: 0 0 0.85rem;
+    border: 0;
+    background: transparent;
+  }
+
+  .fsd-map-shell {
+    min-height: 300px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .fsd-map {
+    min-height: 300px;
+  }
+
+  .fsd-map-legend,
+  .fsd-map-caption {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+}
+
 .fsd-timeline {
   margin: 0;
   padding: 0;
