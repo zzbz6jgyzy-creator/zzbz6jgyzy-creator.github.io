@@ -2403,8 +2403,10 @@ button.fsd-kpi[aria-pressed="true"] {
 
 .updates-map-land {
   fill: #5c6778;
-  stroke: rgba(236, 236, 232, 0.45);
+  fill-rule: evenodd;
+  stroke: rgba(236, 236, 232, 0.38);
   stroke-width: 0.7;
+  vector-effect: non-scaling-stroke;
 }
 
 .updates-hot {

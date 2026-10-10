@@ -7,8 +7,6 @@
   const STALE_MS = 90 * 60 * 1000;
   const MAP_W = 1000;
   const MAP_H = 500;
-  const MAP_PAD_Y = 10;
-  const MAP_DRAW_H = 470;
 
   const POINTS = {
     US: [-98, 39.5],
@@ -73,7 +71,7 @@
     "NO", "SE", "FI", "PL", "CZ", "SK", "SI", "HR", "HU", "GR", "LT", "EE",
     "LU", "IS", "BG", "RO", "UA",
   ]);
-  const EUROPE_BOX = [450, 80, 130, 65];
+  const EUROPE_BOX = [435, 68, 170, 85];
   const MIN_VIEW_W = 48;
 
   const statusLabel = {
@@ -316,7 +314,7 @@
 
   const project = (lon, lat) => ({
     x: (lon + 180) * (MAP_W / 360),
-    y: MAP_PAD_Y + (90 - lat) * (MAP_DRAW_H / 180),
+    y: (90 - lat) * (MAP_H / 180),
   });
 
   const drawGrid = (svg) => {
@@ -355,6 +353,7 @@
       const clone = document.createElementNS("http://www.w3.org/2000/svg", "path");
       clone.setAttribute("d", path.getAttribute("d"));
       clone.setAttribute("class", "updates-map-land");
+      clone.setAttribute("fill-rule", path.getAttribute("fill-rule") || "evenodd");
       slot.append(clone);
     } catch {
       /* map still works with hotspots only */
