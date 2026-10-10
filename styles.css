@@ -1120,9 +1120,18 @@ button.fsd-kpi[aria-pressed="true"] {
 }
 
 .fsd-country-detail {
-  margin-top: 0.7rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--line);
+  margin: 0 0 0.65rem;
+  padding: 0.7rem 0.15rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.fsd-country-detail[hidden] {
+  display: none;
+}
+
+.fsd-country-detail h3 {
+  margin: 0.15rem 0 0;
+  font-size: 1.15rem;
 }
 
 .updates-board .fsd-country-detail {

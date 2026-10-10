@@ -216,7 +216,11 @@
       <h3>${escapeHtml(country.name)}</h3>
       <p><span class="fsd-status fsd-status-${country.status}">${statusLabel[country.status] || country.status}</span>
       ${country.date ? ` · ${escapeHtml(formatDate(country.date))}` : ""}</p>
-      <p>${escapeHtml(country.version)} · ${escapeHtml(country.hardware)}</p>
+      ${
+        [country.version, country.hardware].some((v) => v && v !== "—")
+          ? `<p>${escapeHtml([country.version, country.hardware].filter((v) => v && v !== "—").join(" · "))}</p>`
+          : ""
+      }
       <p>${escapeHtml(country.note)}</p>
       <p class="fsd-track-link">${src}</p>
     `;
@@ -277,12 +281,12 @@
     const query = search?.value || "";
     const rows = data.countries
       .filter((c) => {
+        if (query.trim()) return matches(c, query);
         if (active === "live") return c.status === "live" || c.status === "limited";
         if (active === "review") return c.status === "review" || c.status === "watch";
         if (active === "europe") return c.region === "Europe";
         return true;
       })
-      .filter((c) => matches(c, query))
       .sort((a, b) => {
         const rank = { live: 0, limited: 1, review: 2, watch: 3, none: 4 };
         if (rank[a.status] !== rank[b.status]) return rank[a.status] - rank[b.status];
@@ -291,6 +295,14 @@
 
     if (list) {
       list.replaceChildren();
+      if (!rows.length) {
+        const empty = document.createElement("p");
+        empty.className = "updates-empty";
+        empty.textContent = query.trim()
+          ? "No country matches that search."
+          : "No markets on this filter.";
+        list.append(empty);
+      }
       rows.forEach((country) => {
         const btn = document.createElement("button");
         btn.type = "button";
@@ -300,7 +312,9 @@
           <i class="fsd-country-dot is-${country.status}" aria-hidden="true"></i>
           <span class="fsd-code">${escapeHtml(country.code)}</span>
           <span class="fsd-country-name">${escapeHtml(country.name)}</span>
-          <span class="fsd-country-meta">${statusLabel[country.status]} · ${escapeHtml(country.version)}</span>
+          <span class="fsd-country-meta">${statusLabel[country.status]}${
+            country.version && country.version !== "—" ? ` · ${escapeHtml(country.version)}` : ""
+          }</span>
         `;
         btn.addEventListener("click", () => {
           focused = focused === country.code ? "" : country.code;

@@ -773,9 +773,14 @@
     const list = document.getElementById("updates-hot-list");
     if (list) {
       list.replaceChildren();
-      const wave = spots
+      let wave = spots
         .filter((s) => versionQuery || spotFilter === "all" || s.latest)
         .sort((a, b) => (b.count || 0) - (a.count || 0));
+      if (!wave.length && !versionQuery && spotFilter === "wave") {
+        wave = spots
+          .filter((s) => s.heat === "hot" || s.heat === "warm")
+          .sort((a, b) => (b.count || 0) - (a.count || 0));
+      }
       if (!wave.length) {
         const emptySpots = document.createElement("p");
         emptySpots.className = "updates-empty";
@@ -822,6 +827,7 @@
   let model = "";
   let featureQuery = "";
   let versionQuery = "";
+  let expandedId = "";
   let spotFilter = "wave";
   let current = { live: null, versions: curated.versions };
 
@@ -896,7 +902,7 @@
     rows.forEach(({ version, avail }) => {
       const article = document.createElement("article");
       const on = versionQuery && norm(version.id) === norm(versionQuery);
-      const open = on || Boolean(featureQuery);
+      const open = on || expandedId === version.id || Boolean(featureQuery);
       article.className = `updates-row${avail.key === "away" ? " is-away" : ""}${on ? " is-on" : ""}${open ? " is-open" : ""}`;
       article.id = `build-${version.id.replace(/\./g, "-")}`;
       const places = (version.countries || []).slice(0, 5).map(countryName);
@@ -927,13 +933,7 @@
         </div>
       `;
       article.querySelector("button")?.addEventListener("click", () => {
-        if (norm(versionQuery) === norm(version.id)) {
-          versionQuery = "";
-          if (versionInput) versionInput.value = "";
-        } else {
-          versionQuery = version.id;
-          if (versionInput) versionInput.value = version.id;
-        }
+        expandedId = expandedId === version.id ? "" : version.id;
         rerender();
       });
       list.append(article);
