@@ -18,9 +18,6 @@
         symbols: [
           { proName: "NASDAQ:TSLA", title: "Tesla" },
           { proName: "NASDAQ:SPCX", title: "SpaceX" },
-          { proName: "NASDAQ:NDX", title: "Nasdaq 100" },
-          { proName: "BITSTAMP:BTCUSD", title: "Bitcoin" },
-          { proName: "FX_IDC:EURUSD", title: "EUR/USD" },
         ],
         showSymbolLogo: true, isTransparent: true, displayMode: "adaptive",
         colorTheme: "dark", locale: "en",
