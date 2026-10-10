@@ -283,6 +283,24 @@
     setText("stat-wide", widest?.id || "—");
     setText("stat-fsd-na", na?.fsdHw4 || "—");
     setText("stat-fsd-eu", europe?.id || "—");
+    const ids = {
+      latest: latest?.id || "",
+      wide: widest?.id || "",
+      na: na?.id || "",
+      eu: europe?.id || "",
+    };
+    document.querySelectorAll("[data-updates-stat]").forEach((btn) => {
+      btn.dataset.version = ids[btn.dataset.updatesStat] || "";
+    });
+    syncStatButtons();
+    const now = document.getElementById("updates-now");
+    if (now) {
+      if (na?.fsdHw4 && europe?.id) {
+        now.textContent = `North America is on ${na.fsdHw4}. Europe is still on ${europe.id}.`;
+      } else {
+        now.textContent = curated.fsdNow?.lines?.[3] || "";
+      }
+    }
   };
 
   const project = (lon, lat) => ({
@@ -460,13 +478,17 @@
       .join("");
     el.hidden = false;
     el.innerHTML = `
-      <p class="eyebrow">${escapeHtml(countryName(countryCode))}</p>
-      <strong>${escapeHtml(spot ? spot.id : "No tracked build")}</strong>
-      <span>${
+      <div>
+        <strong>${escapeHtml(countryName(countryCode))}</strong>
+        <span class="fsd-status updates-status-${spot?.heat === "hot" ? "early" : spot?.heat === "warm" ? "rolling" : "wide"}">${
+          spot ? heatLabel(spot.heat) : "No report"
+        }</span>
+      </div>
+      <p>${
         spot
-          ? `${spot.count || "—"} tracked car${spot.count === 1 ? "" : "s"} on the newest report · ${heatLabel(spot.heat)}`
+          ? `${escapeHtml(spot.id)} · ${spot.count || "—"} tracked car${spot.count === 1 ? "" : "s"}`
           : "Teslascope has not reported this country on the current snapshot."
-      }</span>
+      }</p>
       ${rows ? `<ul class="updates-focus-list">${rows}</ul>` : ""}
     `;
   };
@@ -562,15 +584,28 @@
     if (list) {
       list.replaceChildren();
       const wave = spots
-        .filter((s) => (versionQuery ? true : s.latest))
-        .sort((a, b) => (b.count || 0) - (a.count || 0))
-        .slice(0, 8);
+        .filter((s) => versionQuery || spotFilter === "all" || s.latest)
+        .sort((a, b) => (b.count || 0) - (a.count || 0));
+      if (!wave.length) {
+        const emptySpots = document.createElement("p");
+        emptySpots.className = "updates-empty";
+        emptySpots.textContent = versionQuery
+          ? "No tracked country matches that version."
+          : "No tracked countries on this filter.";
+        list.append(emptySpots);
+      }
       wave.forEach((spot) => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = `updates-hot-chip${countryCode === spot.code ? " is-on" : ""}`;
-        const n = spot.count ? ` · ${spot.count}` : "";
-        btn.innerHTML = `<strong>${escapeHtml(countryName(spot.code))}</strong><span>${escapeHtml(spot.id)}${n}</span>`;
+        btn.className = `fsd-country${countryCode === spot.code ? " is-focus" : ""}`;
+        btn.dataset.country = spot.code;
+        const n = spot.count ? `${spot.count}` : "—";
+        btn.innerHTML = `
+          <i class="fsd-country-dot is-${spot.heat}" aria-hidden="true"></i>
+          <span class="fsd-code">${escapeHtml(spot.code)}</span>
+          <span class="fsd-country-name">${escapeHtml(countryName(spot.code))}</span>
+          <span class="fsd-country-meta">${escapeHtml(spot.id)} · ${n}</span>
+        `;
         btn.addEventListener("click", () => {
           const next = countryCode === spot.code ? "" : spot.code;
           setCountry(next, true);
@@ -578,6 +613,7 @@
         });
         list.append(btn);
       });
+      setText("updates-spot-count", `${wave.length} ${wave.length === 1 ? "country" : "countries"}`);
     }
   };
 
@@ -591,7 +627,16 @@
   let countryCode = "";
   let kind = "all";
   let versionQuery = "";
+  let spotFilter = "wave";
   let current = { live: null, versions: curated.versions };
+
+  const syncStatButtons = () => {
+    document.querySelectorAll("[data-updates-stat]").forEach((btn) => {
+      const on = Boolean(versionQuery && btn.dataset.version && norm(btn.dataset.version) === norm(versionQuery));
+      btn.classList.toggle("is-on", on);
+      btn.setAttribute("aria-pressed", String(on));
+    });
+  };
 
   const setCountry = (code, fillQuery) => {
     countryCode = code || "";
@@ -639,29 +684,32 @@
 
     rows.forEach(({ version, avail }) => {
       const article = document.createElement("article");
-      article.className = `updates-card${avail.key === "away" ? " is-away" : ""}`;
+      const on = versionQuery && norm(version.id) === norm(versionQuery);
+      article.className = `updates-row${avail.key === "away" ? " is-away" : ""}${on ? " is-on" : ""}`;
       article.id = `build-${version.id.replace(/\./g, "-")}`;
-      const pills = version.features.slice(0, 4).map((item) => `<li>${escapeHtml(featureTitle(item))}</li>`).join("");
-      const dots = (version.countries || [])
-        .slice(0, 8)
-        .map((code) => `<i class="updates-dot" title="${escapeHtml(countryName(code))}"></i>`)
-        .join("");
-      const fleet = version.live?.percent != null ? `${version.live.percent}%` : "";
+      const places = (version.countries || []).slice(0, 5).map(countryName);
+      const extra = (version.countries || []).length - places.length;
+      const fleet = version.live?.percent != null ? `${version.live.percent}%` : "—";
       article.innerHTML = `
-        <div class="updates-card-top">
+        <button type="button" class="updates-row-btn" data-version="${escapeHtml(version.id)}">
           <span class="updates-card-id">${escapeHtml(version.id)}</span>
-          <time datetime="${escapeHtml(version.date)}">${formatDate(version.date)}</time>
-        </div>
-        <div class="updates-card-tags">
-          <span class="fsd-status updates-status-${version.status}">${statusLabel[version.status] || version.status}</span>
-          <span class="fsd-status updates-kind-${version.kind}">${kindLabel[version.kind] || version.kind}</span>
-          ${fleet ? `<span class="updates-card-share">${fleet}</span>` : ""}
-        </div>
-        <h3>${escapeHtml(version.headline)}</h3>
-        <p>${escapeHtml(version.summary)}</p>
-        <ul class="updates-pills">${pills}</ul>
-        <p class="updates-card-geo">${dots}${avail.label ? `<span class="updates-avail updates-avail-${avail.key}">${escapeHtml(avail.label)}</span>` : ""}</p>
+          <span class="updates-row-share">${fleet}</span>
+          <span class="updates-row-status fsd-status updates-status-${version.status}">${statusLabel[version.status] || version.status}</span>
+          <span class="updates-row-kind fsd-status updates-kind-${version.kind}">${kindLabel[version.kind] || version.kind}</span>
+          <strong class="updates-row-title">${escapeHtml(version.headline)}</strong>
+          <span class="updates-row-foot">
+            <span class="updates-row-date">${escapeHtml(formatDate(version.date))}</span>
+            <span class="updates-row-geo">${escapeHtml(places.join(" · "))}${extra > 0 ? ` +${extra}` : ""}</span>
+            ${avail.label ? `<span class="updates-avail updates-avail-${avail.key}">${escapeHtml(avail.label)}</span>` : ""}
+          </span>
+        </button>
       `;
+      article.querySelector("button")?.addEventListener("click", () => {
+        versionQuery = version.id;
+        if (versionInput) versionInput.value = version.id;
+        rerender();
+        document.getElementById("map")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
       list.append(article);
     });
 
@@ -678,6 +726,7 @@
       setText("updates-showing", `${rows.length} current builds`);
     }
     if (empty) empty.hidden = rows.length > 0;
+    syncStatButtons();
   };
 
   const rerender = () => renderList(current);
@@ -709,6 +758,32 @@
       kind = button.dataset.updatesKind;
       kindButtons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
       rerender();
+    });
+  });
+
+  document.querySelectorAll("[data-updates-spots]").forEach((button) => {
+    button.addEventListener("click", () => {
+      spotFilter = button.dataset.updatesSpots;
+      document.querySelectorAll("[data-updates-spots]").forEach((b) => {
+        b.setAttribute("aria-pressed", String(b === button));
+      });
+      rerender();
+    });
+  });
+
+  document.querySelectorAll("[data-updates-stat]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.version;
+      if (!id) return;
+      if (norm(versionQuery) === norm(id)) {
+        versionQuery = "";
+        if (versionInput) versionInput.value = "";
+      } else {
+        versionQuery = id;
+        if (versionInput) versionInput.value = id;
+      }
+      rerender();
+      document.getElementById("map")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
