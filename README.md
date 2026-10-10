@@ -1,6 +1,6 @@
-# ALJR — Alex R · Tesla, SpaceX & Grok
+# Supercharged Daily — Tesla, SpaceX & Grok
 
-Tesla, SpaceX and Grok desk for [@ALJR86](https://x.com/ALJR86). News, numbers and launch footage. Not affiliated.
+Tesla, SpaceX and Grok desk from [@ALJR86](https://x.com/ALJR86). News, numbers and launch footage. Not affiliated.
 
 Static site for GitHub Pages.
 
