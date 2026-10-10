@@ -460,7 +460,7 @@
       <strong>${escapeHtml(spot ? spot.id : "No tracked build")}</strong>
       <span>${
         spot
-          ? `${spot.count || "—"} cars on the newest report · ${heatLabel(spot.heat)}`
+          ? `${spot.count || "—"} tracked car${spot.count === 1 ? "" : "s"} on the newest report · ${heatLabel(spot.heat)}`
           : "Teslascope has not reported this country on the current snapshot."
       }</span>
       ${rows ? `<ul class="updates-focus-list">${rows}</ul>` : ""}

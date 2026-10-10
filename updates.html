@@ -83,7 +83,7 @@
                 id="updates-version"
                 class="updates-search"
                 type="search"
-                placeholder="2026.38.3.1"
+                placeholder="Search a build"
                 inputmode="decimal"
                 autocomplete="off"
                 spellcheck="false"
@@ -95,12 +95,9 @@
                 id="updates-search"
                 class="updates-search"
                 type="search"
-                placeholder="Germany, United States, Australia…"
+                placeholder="Germany, Australia, Japan…"
                 autocomplete="off"
               />
-            </div>
-            <div class="updates-lookup-actions">
-              <button type="button" class="updates-clear" id="updates-clear" hidden>Reset map</button>
             </div>
           </form>
 
@@ -137,7 +134,10 @@
               <span><i class="updates-key updates-key-warm"></i> Rolling</span>
               <span><i class="updates-key updates-key-cool"></i> On cars</span>
             </div>
-            <p class="updates-map-caption" id="updates-map-caption">Live wave</p>
+            <div class="updates-map-actions">
+              <p class="updates-map-caption" id="updates-map-caption">Live wave</p>
+              <button type="button" class="updates-clear" id="updates-clear" hidden>Reset map</button>
+            </div>
           </div>
           <aside class="updates-focus" id="updates-focus" hidden></aside>
           <div class="updates-hot-list" id="updates-hot-list"></div>
