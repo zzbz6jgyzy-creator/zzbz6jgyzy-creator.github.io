@@ -7,8 +7,8 @@ window.TESLA_UPDATES = {
     lines: [
       "North America, HW4 / AI4: FSD Supervised v14.3.11 on 2026.33.5. Automatic Collision Evasion is in this build — US and Canada only.",
       "North America, HW3: FSD Supervised v14.3 Lite on the same 2026.33.5 branch. Parking, unparking and start-from-park. No Collision Evasion.",
-      "Europe: FSD Supervised v14.2.2.6 on 2026.33.100. Seen so far in the Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia and Slovenia — not Ireland yet.",
-      "The US FSD stack is ahead. Europe waits on approvals. That is why a car in Dublin can offer 2026.32.7 while a car in California is already on 14.3.11.",
+      "Europe: FSD Supervised v14.2.2.6 on 2026.33.100. Seen so far in the Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia and Slovenia.",
+      "The US FSD stack is ahead. Europe waits on approvals. That is why a car in the EU can still be on 2026.32.7 while a car in California is already on 14.3.11.",
     ],
   },
   countries: [
@@ -72,7 +72,7 @@ window.TESLA_UPDATES = {
       ],
       fsd: null,
       reached:
-        "Early wave. Seen in the US, UK, Germany, France, Italy, Austria, Switzerland, the Netherlands and a handful of other European countries. Ireland not reported yet.",
+        "Early wave. Seen in the US, Germany, France, Italy, Austria, Switzerland, the Netherlands and a handful of other European countries.",
       countries: ["US", "GB", "DE", "FR", "IT", "AT", "CH", "NL", "BE", "ES", "CZ", "PL", "DK", "NO", "TW", "IL", "UA", "MA", "TR"],
     },
     {
@@ -93,7 +93,7 @@ window.TESLA_UPDATES = {
       ],
       fsd: "v14.3.11 (HW4) · v14.3 Lite (HW3) · North America",
       reached:
-        "Rolling in the United States and Canada only. About 2–3% of the tracked fleet. Not an Irish or UK build.",
+        "Rolling in the United States and Canada only. About 2–3% of the tracked fleet. Not a European build.",
       countries: ["US", "CA"],
     },
     {
@@ -104,7 +104,7 @@ window.TESLA_UPDATES = {
       status: "rolling",
       headline: "Europe’s FSD build — still 14.2",
       summary:
-        "Same week as the US 14.3.11 drop, Europe got a 2026.33 build that keeps FSD Supervised on v14.2.2.6. That is the gap in one number: 14.3 in California, 14.2 in the EU, and Ireland has not been seen on this file yet.",
+        "Same week as the US 14.3.11 drop, Europe got a 2026.33 build that keeps FSD Supervised on v14.2.2.6. That is the gap in one number: 14.3 in California, 14.2 in the EU.",
       features: [
         "FSD Supervised v14.2.2.6 for countries that have recognised the Dutch approval.",
         "EU recall remedy 2026_103555 (UNECE R135) on Model 3 / Y — no service visit.",
@@ -112,7 +112,7 @@ window.TESLA_UPDATES = {
       ],
       fsd: "v14.2.2.6 · Europe",
       reached:
-        "Early European wave: Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia, Slovenia. Ireland and the UK not reported on this build as of 9 October.",
+        "Early European wave: Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia, Slovenia.",
       countries: ["NL", "BE", "CZ", "DK", "EE", "LT", "SK", "SI"],
     },
     {
@@ -123,7 +123,7 @@ window.TESLA_UPDATES = {
       status: "wide",
       headline: "The build most cars are being offered",
       summary:
-        "Widest 2026.32 point release. This is the one a lot of European cars — including Ireland — are actually seeing when the screen says an update is ready. Cabin and security, not a new FSD stack.",
+        "Widest 2026.32 point release. This is the one a lot of cars are actually seeing when the screen says an update is ready. Cabin and security, not a new FSD stack.",
       features: [
         "Apple Music: Search → Apple Music → Library for your own songs and playlists.",
         "More wheel options on the on-screen car.",
@@ -133,7 +133,7 @@ window.TESLA_UPDATES = {
       ],
       fsd: null,
       reached:
-        "Wide. Seen across North America, Europe (Ireland included), the Middle East and parts of Asia. Still one of the largest slices of the fleet.",
+        "Wide. Seen across North America, Europe, the Middle East and parts of Asia. Still one of the largest slices of the fleet.",
       countries: [
         "US", "CA", "GB", "IE", "DE", "FR", "NL", "BE", "IT", "ES", "PT", "AT", "CH", "DK", "NO", "SE",
         "FI", "PL", "CZ", "SK", "HR", "HU", "GR", "AE", "IL", "TR", "SG", "HK", "MY", "TH", "CO", "UA", "QA",
@@ -190,7 +190,7 @@ window.TESLA_UPDATES = {
       status: "rolling",
       headline: "Europe’s previous FSD file",
       summary:
-        "The European 2026.27 FSD branch, still on v14.2.2.6. Cars in the first 2026.33.100 countries are leaving this one. Ireland may still be offered 2026.32 cabin builds instead.",
+        "The European 2026.27 FSD branch, still on v14.2.2.6. Cars in the first 2026.33.100 countries are leaving this one. Other markets may still be offered 2026.32 cabin builds instead.",
       features: [
         "FSD Supervised v14.2.2.6 for approved EU countries.",
         "Cabin carry-overs from the 2026.27 line.",

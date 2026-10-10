@@ -68,8 +68,8 @@
           <h1>Update tracker</h1>
           <p>
             The car says an update is ready. Type the number. This is what it
-            actually adds — and whether Teslascope has seen that build on cars
-            here, or it is still a US-only FSD file.
+            actually adds — and which countries Teslascope has seen on that
+            build. Search any country. Nothing here is locked to one market.
           </p>
           <p class="meta news-status-line" id="updates-updated">Checking Teslascope…</p>
           <form class="updates-lookup" id="updates-lookup" action="#builds">
@@ -91,19 +91,19 @@
                 id="updates-search"
                 class="updates-search"
                 type="search"
-                placeholder="Ireland, United States, Germany…"
+                placeholder="United States, Germany, Australia…"
                 autocomplete="off"
               />
             </div>
           </form>
           <div class="updates-toolbar">
             <div class="fsd-filters" role="group" aria-label="Quick countries">
-              <button type="button" class="fsd-filter" data-updates-country="IE" aria-pressed="true">Ireland</button>
-              <button type="button" class="fsd-filter" data-updates-country="GB" aria-pressed="false">UK</button>
               <button type="button" class="fsd-filter" data-updates-country="US" aria-pressed="false">United States</button>
               <button type="button" class="fsd-filter" data-updates-country="DE" aria-pressed="false">Germany</button>
               <button type="button" class="fsd-filter" data-updates-country="NL" aria-pressed="false">Netherlands</button>
               <button type="button" class="fsd-filter" data-updates-country="AU" aria-pressed="false">Australia</button>
+              <button type="button" class="fsd-filter" data-updates-country="CA" aria-pressed="false">Canada</button>
+              <button type="button" class="fsd-filter" data-updates-country="FR" aria-pressed="false">France</button>
             </div>
           </div>
         </section>
@@ -111,7 +111,7 @@
         <section class="section" style="padding-top: 1.4rem" aria-labelledby="updates-fsd-heading">
           <div class="section-head">
             <h2 id="updates-fsd-heading">On cars right now</h2>
-            <p>Latest spotted build, Ireland, and the two FSD stacks.</p>
+            <p>Latest spotted build, the widest slice of the fleet, and the two FSD stacks.</p>
           </div>
           <div class="updates-fleet" id="updates-fleet" aria-label="Biggest slices of the tracked fleet"></div>
           <div class="stats" id="fsd">
@@ -120,8 +120,8 @@
               <span>Latest spotted</span>
             </div>
             <div class="stat">
-              <b id="stat-ireland">—</b>
-              <span>Seen in Ireland</span>
+              <b id="stat-wide">—</b>
+              <span>Widest build</span>
             </div>
             <div class="stat">
               <b id="stat-fsd-na">—</b>
