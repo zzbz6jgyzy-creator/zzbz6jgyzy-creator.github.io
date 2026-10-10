@@ -825,12 +825,6 @@ article.story-card {
   color: var(--mute);
 }
 
-.crew {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 0.85rem;
-}
-
 .panel {
   background: var(--card);
   border: 1px solid var(--line);
@@ -844,28 +838,6 @@ article.story-card {
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-}
-
-.bot-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 0.85rem;
-}
-
-.bot-list li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.7rem;
-  align-items: start;
-}
-
-.bot-dot {
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  margin-top: 0.5rem;
 }
 
 .page-hero {
@@ -1208,7 +1180,6 @@ article.story-card {
   .desks,
   .story-grid,
   .lead-card,
-  .crew,
   .note-grid,
   .fsd-tracks {
     grid-template-columns: 1fr;
