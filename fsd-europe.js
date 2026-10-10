@@ -168,6 +168,9 @@
       list.append(button);
     });
 
+    if (selected && !rows.some((row) => row.code === selected.code)) {
+      selected = null;
+    }
     setText("fsd-showing", `${rows.length} of ${data.countries.length}`);
     paintSelection();
   };
@@ -253,9 +256,7 @@
     const names = approved.map((row) => row.name);
     setText(
       "fsd-map-caption",
-      names.length
-        ? `${names.length} approved · ${names.join(", ")}`
-        : "No national recognitions on the file yet."
+      names.length ? `${names.length} approved` : "No national recognitions on the file yet."
     );
     paintSelection();
   };

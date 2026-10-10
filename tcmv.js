@@ -50,6 +50,8 @@
       .slice()
       .sort((a, b) => b.date.localeCompare(a.date));
 
+    const compact = list.hasAttribute("data-tcmv-compact");
+
     rows.forEach((meeting) => {
       const article = document.createElement("article");
       article.className = "tcmv-card reveal is-visible";
@@ -57,6 +59,26 @@
 
       const numberLabel = meeting.number ? `#${meeting.number}` : "Next";
       const dateLabel = formatDate(meeting.date, meeting.dateLabel);
+
+      if (compact) {
+        article.classList.add("tcmv-card-compact");
+        article.innerHTML = `
+          <header class="tcmv-card-head">
+            <div>
+              <p class="eyebrow">${numberLabel} · ${meeting.place}</p>
+              <h3>${meeting.title}</h3>
+              <p class="tcmv-meta">
+                <time datetime="${meeting.date}">${dateLabel}</time>
+              </p>
+            </div>
+            <span class="tcmv-status tcmv-status-${meeting.outcome}">${meeting.outcomeLabel}</span>
+          </header>
+          <p class="tcmv-summary">${meeting.summary}</p>
+          <p class="tcmv-more"><a href="/tcmv.html#meeting-${meeting.id}">Full note</a></p>
+        `;
+        list.append(article);
+        return;
+      }
 
       const highlights = (meeting.agendaHighlights || [])
         .map((item) => `<li>${item}</li>`)
