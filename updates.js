@@ -600,11 +600,14 @@
         btn.className = `fsd-country${countryCode === spot.code ? " is-focus" : ""}`;
         btn.dataset.country = spot.code;
         const n = spot.count ? `${spot.count}` : "—";
+        const meta = versionQuery || spotFilter === "all"
+          ? `${escapeHtml(spot.id)} · ${n}`
+          : n;
         btn.innerHTML = `
           <i class="fsd-country-dot is-${spot.heat}" aria-hidden="true"></i>
           <span class="fsd-code">${escapeHtml(spot.code)}</span>
           <span class="fsd-country-name">${escapeHtml(countryName(spot.code))}</span>
-          <span class="fsd-country-meta">${escapeHtml(spot.id)} · ${n}</span>
+          <span class="fsd-country-meta">${meta}</span>
         `;
         btn.addEventListener("click", () => {
           const next = countryCode === spot.code ? "" : spot.code;
