@@ -2312,6 +2312,51 @@ button.fsd-kpi[aria-pressed="true"] {
   border-radius: 10px;
   border: 1px solid var(--line);
   background: #0b0c10;
+  touch-action: none;
+  cursor: grab;
+}
+
+.updates-map-shell.is-panning {
+  cursor: grabbing;
+}
+
+.updates-map-zoom {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.updates-map-zoom button {
+  appearance: none;
+  min-height: 2rem;
+  padding: 0.28rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(12, 13, 16, 0.82);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.updates-map-zoom button[data-updates-zoom="in"],
+.updates-map-zoom button[data-updates-zoom="out"] {
+  min-width: 2.1rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.updates-map-zoom button:hover,
+.updates-map-zoom button.is-on {
+  border-color: var(--line-strong);
+  color: #fff;
 }
 
 .updates-map {
@@ -2866,6 +2911,15 @@ button.fsd-kpi[aria-pressed="true"] {
   .updates-map-badge {
     left: 0.7rem;
     bottom: 0.7rem;
+  }
+
+  .updates-map-zoom {
+    top: 0.55rem;
+    right: 0.55rem;
+  }
+
+  .updates-map-zoom button {
+    min-height: 2.4rem;
   }
 }
 

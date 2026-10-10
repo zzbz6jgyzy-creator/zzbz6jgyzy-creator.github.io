@@ -68,6 +68,13 @@
   };
 
   const WIDE_ZOOM = new Set(["US", "CA", "AU", "BR", "RU", "CN", "ZA"]);
+  const EUROPE_ZOOM = new Set([
+    "IE", "GB", "DE", "FR", "NL", "BE", "IT", "ES", "PT", "AT", "CH", "DK",
+    "NO", "SE", "FI", "PL", "CZ", "SK", "SI", "HR", "HU", "GR", "LT", "EE",
+    "LU", "IS", "BG", "RO", "UA",
+  ]);
+  const EUROPE_BOX = [450, 80, 130, 65];
+  const MIN_VIEW_W = 48;
 
   const statusLabel = {
     early: "Early wave",
@@ -409,56 +416,170 @@
   };
 
   let zoomFrame = 0;
+  let focusedCode = null;
+  let suppressMapClick = false;
+
+  const mapSvg = () => document.getElementById("updates-map");
 
   const readViewBox = (svg) =>
     (svg.getAttribute("viewBox") || `0 0 ${MAP_W} ${MAP_H}`).trim().split(/\s+/).map(Number);
 
-  const animateViewBox = (svg, next) => {
+  const sameBox = (a, b, slack = 0.8) =>
+    a.length === b.length && a.every((n, i) => Math.abs(n - b[i]) < slack);
+
+  const isNarrow = () => window.matchMedia("(max-width: 640px)").matches;
+
+  const worldBox = () => (isNarrow() ? [55, 18, 890, 355] : [0, 0, MAP_W, MAP_H]);
+
+  const clampBox = ([x, y, w]) => {
+    const [mx, my, mw, mh] = [0, 0, MAP_W, MAP_H];
+    const aspect = MAP_H / MAP_W;
+    w = Math.min(mw, Math.max(MIN_VIEW_W, w));
+    let h = w * aspect;
+    if (h > mh) {
+      h = mh;
+      w = h / aspect;
+    }
+    x = Math.max(mx, Math.min(mx + mw - w, x));
+    y = Math.max(my, Math.min(my + mh - h, y));
+    return [x, y, w, h];
+  };
+
+  const nearWorld = (svg = mapSvg()) => svg && sameBox(readViewBox(svg), worldBox(), 8);
+
+  const nearEurope = (svg = mapSvg()) => svg && sameBox(readViewBox(svg), EUROPE_BOX, 12);
+
+  const sizeHotspots = () => {
+    const layer = document.getElementById("updates-hotspots");
+    const svg = mapSvg();
+    if (!layer || !svg) return;
+    const max = Number(layer.dataset.max) || 1;
+    const width = svg.getBoundingClientRect().width || MAP_W;
+    const [, , vw] = readViewBox(svg);
+    const px = width / vw;
+    const stroke = Math.min(2.2, Math.max(0.4, 1.15 / px));
+    layer.querySelectorAll(".updates-hot").forEach((g) => {
+      const count = Number(g.dataset.count) || 1;
+      const target = (isNarrow() ? 10 : 7) + Math.sqrt(count / max) * (isNarrow() ? 5 : 3.5);
+      const r = Math.max(0.65, target / px);
+      const hit = Math.max(r * 2.1, (isNarrow() ? 22 : 14) / px);
+      g.querySelector("[data-hit]")?.setAttribute("r", hit.toFixed(2));
+      g.querySelector(".updates-hot-halo")?.setAttribute("r", (r * 1.85).toFixed(2));
+      const core = g.querySelector(".updates-hot-core");
+      if (core) {
+        core.setAttribute("r", r.toFixed(2));
+        core.setAttribute("stroke-width", stroke.toFixed(2));
+      }
+      const ring = g.querySelector(".updates-hot-ring");
+      if (ring) {
+        ring.setAttribute("r", r.toFixed(2));
+        ring.setAttribute("stroke-width", Math.max(0.35, 1.4 / px).toFixed(2));
+      }
+    });
+  };
+
+  const syncZoomButtons = () => {
+    const europe = document.querySelector('[data-updates-zoom="europe"]');
+    const world = document.querySelector('[data-updates-zoom="world"]');
+    europe?.classList.toggle("is-on", nearEurope());
+    world?.classList.toggle("is-on", nearWorld());
+  };
+
+  const syncClear = () => {
+    const clear = document.getElementById("updates-clear");
+    if (clear) clear.hidden = !(countryCode || versionQuery || !nearWorld());
+  };
+
+  const syncCaptionPlace = () => {
+    const caption = document.getElementById("updates-map-caption");
+    if (!caption || countryCode || versionQuery) return;
+    const latestId = current?.live?.latest;
+    if (nearEurope()) {
+      caption.textContent = latestId ? `Europe · ${latestId}` : "Europe";
+      return;
+    }
+    if (nearWorld()) {
+      const liveLatest = current?.live?.versions?.find((row) => row.id === latestId);
+      const names = (liveLatest?.countries || []).slice(0, 5).map(countryName);
+      caption.textContent = latestId
+        ? `New wave ${latestId} · ${names.join(", ")}${liveLatest?.countries?.length > 5 ? "…" : ""}`
+        : "Live wave";
+    }
+  };
+
+  const applyView = (box, animate = false) => {
+    const svg = mapSvg();
+    if (!svg) return;
+    const next = clampBox(box);
+    const write = (value) => {
+      svg.setAttribute("viewBox", value.map((n) => n.toFixed(2)).join(" "));
+      sizeHotspots();
+      syncZoomButtons();
+      syncClear();
+      syncCaptionPlace();
+    };
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    if (reduce) {
-      svg.setAttribute("viewBox", next.map((n) => n.toFixed(1)).join(" "));
+    if (!animate || reduce || sameBox(readViewBox(svg), next)) {
+      cancelAnimationFrame(zoomFrame);
+      write(next);
       return;
     }
     const from = readViewBox(svg);
     const start = performance.now();
     cancelAnimationFrame(zoomFrame);
     const tick = (now) => {
-      const t = Math.min(1, (now - start) / 520);
+      const t = Math.min(1, (now - start) / 420);
       const e = 1 - (1 - t) ** 3;
-      const box = from.map((value, i) => value + (next[i] - value) * e);
-      svg.setAttribute("viewBox", box.map((n) => n.toFixed(1)).join(" "));
+      write(from.map((value, i) => value + (next[i] - value) * e));
       if (t < 1) zoomFrame = requestAnimationFrame(tick);
     };
     zoomFrame = requestAnimationFrame(tick);
   };
 
-  const sameBox = (a, b) => a.length === b.length && a.every((n, i) => Math.abs(n - b[i]) < 0.6);
-
-  const isNarrow = () => window.matchMedia("(max-width: 640px)").matches;
-
-  const worldBox = () => (isNarrow() ? [55, 18, 890, 355] : [0, 0, MAP_W, MAP_H]);
-
-  const focusStage = (code) => {
-    const svg = document.getElementById("updates-map");
+  const zoomBy = (factor, clientX, clientY, animate = false) => {
+    const svg = mapSvg();
     if (!svg) return;
-    if (!code || !POINTS[code]) {
-      const world = worldBox();
-      if (!sameBox(readViewBox(svg), world)) animateViewBox(svg, world);
-      svg.classList.remove("is-focused");
-      return;
-    }
+    const [vx, vy, vw, vh] = readViewBox(svg);
+    const rect = svg.getBoundingClientRect();
+    const cx = clientX == null ? vx + vw / 2 : vx + ((clientX - rect.left) / rect.width) * vw;
+    const cy = clientY == null ? vy + vh / 2 : vy + ((clientY - rect.top) / rect.height) * vh;
+    const nw = vw / factor;
+    const nh = vh / factor;
+    applyView([cx - (cx - vx) * (nw / vw), cy - (cy - vy) * (nh / vh), nw, nh], animate);
+  };
+
+  const countryScale = (code) => {
+    if (WIDE_ZOOM.has(code)) return 1.85;
+    if (EUROPE_ZOOM.has(code)) return 9.2;
+    return 5.4;
+  };
+
+  const flyToCountry = (code) => {
+    const svg = mapSvg();
+    if (!svg || !POINTS[code]) return;
     const { x, y } = project(POINTS[code][0], POINTS[code][1]);
-    const scale = WIDE_ZOOM.has(code) ? 1.7 : 2.85;
+    const scale = countryScale(code);
     const w = MAP_W / scale;
     const h = MAP_H / scale;
-    const next = [
-      Math.max(0, Math.min(MAP_W - w, x - w / 2)),
-      Math.max(0, Math.min(MAP_H - h, y - h / 2)),
-      w,
-      h,
-    ];
-    if (!sameBox(readViewBox(svg), next)) animateViewBox(svg, next);
+    applyView([x - w / 2, y - h / 2, w, h], true);
     svg.classList.add("is-focused");
+  };
+
+  const focusStage = (code) => {
+    const svg = mapSvg();
+    if (!svg) return;
+    if (code === focusedCode) {
+      sizeHotspots();
+      svg.classList.toggle("is-focused", Boolean(code));
+      return;
+    }
+    focusedCode = code || "";
+    if (!code || !POINTS[code]) {
+      svg.classList.remove("is-focused");
+      sizeHotspots();
+      return;
+    }
+    flyToCountry(code);
   };
 
   const renderFocus = (bundle, spots) => {
@@ -503,6 +624,7 @@
     layer.replaceChildren();
     const spots = collectHotspots(bundle);
     const max = Math.max(1, ...spots.map((s) => s.count || 1));
+    layer.dataset.max = String(max);
     spots.forEach((spot) => {
       const ll = POINTS[spot.code];
       if (!ll) return;
@@ -511,11 +633,13 @@
       const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
       g.setAttribute("class", `updates-hot${spot.latest ? " is-new" : ""} is-${spot.heat}${countryCode === spot.code ? " is-focus" : ""}`);
       g.setAttribute("data-country", spot.code);
+      g.setAttribute("data-count", String(spot.count || 1));
       g.setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
       g.setAttribute("tabindex", "0");
       g.setAttribute("role", "button");
       g.setAttribute("aria-label", `${countryName(spot.code)}, ${spot.id}`);
       const hit = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      hit.setAttribute("data-hit", "");
       hit.setAttribute("r", String(Math.max(r * 2.1, isNarrow() ? 22 : 14)));
       hit.setAttribute("fill", "transparent");
       g.append(hit);
@@ -537,6 +661,7 @@
       g.addEventListener("mousemove", (event) => showTip(spot, event));
       g.addEventListener("mouseleave", hideTip);
       g.addEventListener("click", () => {
+        if (suppressMapClick) return;
         const next = countryCode === spot.code ? "" : spot.code;
         setCountry(next, true);
         rerender();
@@ -564,9 +689,11 @@
         const hit = spots.find((s) => s.code === countryCode);
         caption.textContent = hit ? `${countryName(countryCode)} · ${hit.id}` : `${countryName(countryCode)} · no tracked build`;
       } else {
-        caption.textContent = latestId
-          ? `New wave ${latestId} · ${hotCountries.slice(0, 5).join(", ")}${hotCountries.length > 5 ? "…" : ""}`
-          : "Live wave";
+        caption.textContent = nearEurope()
+          ? (latestId ? `Europe · ${latestId}` : "Europe")
+          : latestId
+            ? `New wave ${latestId} · ${hotCountries.slice(0, 5).join(", ")}${hotCountries.length > 5 ? "…" : ""}`
+            : "Live wave";
       }
     }
 
@@ -579,8 +706,9 @@
         : "";
     }
 
-    const clear = document.getElementById("updates-clear");
-    if (clear) clear.hidden = !(countryCode || versionQuery);
+    syncClear();
+    sizeHotspots();
+    syncZoomButtons();
 
     renderFocus(bundle, spots);
 
@@ -757,7 +885,9 @@
   };
 
   window.addEventListener("resize", () => {
-    if (!countryCode) focusStage("");
+    sizeHotspots();
+    syncZoomButtons();
+    syncClear();
   });
 
   kindButtons.forEach((button) => {
@@ -822,10 +952,158 @@
       versionQuery = "";
       if (versionInput) versionInput.value = "";
       setCountry("", true);
+      focusedCode = "";
       hideTip();
       rerender();
+      applyView(worldBox(), true);
     });
   }
+
+  const bindMapNav = () => {
+    const shell = document.querySelector(".updates-map-shell");
+    const svg = mapSvg();
+    if (!shell || !svg) return;
+
+    document.querySelectorAll("[data-updates-zoom]").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const how = button.dataset.updatesZoom;
+        if (how === "in") {
+          zoomBy(1.4, null, null, true);
+          return;
+        }
+        if (how === "out") {
+          zoomBy(1 / 1.4, null, null, true);
+          return;
+        }
+        if (how === "europe") {
+          if (countryCode) {
+            setCountry("", true);
+            focusedCode = "";
+            rerender();
+          }
+          applyView(EUROPE_BOX, true);
+          return;
+        }
+        if (countryCode) {
+          setCountry("", true);
+          focusedCode = "";
+          rerender();
+        }
+        applyView(worldBox(), true);
+      });
+    });
+
+    shell.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      zoomBy(event.deltaY < 0 ? 1.16 : 1 / 1.16, event.clientX, event.clientY, false);
+    }, { passive: false });
+
+    let drag = null;
+    let pinch = null;
+
+    const viewFromEvent = (event) => {
+      const [vx, vy, vw, vh] = readViewBox(svg);
+      const rect = svg.getBoundingClientRect();
+      return {
+        vx,
+        vy,
+        vw,
+        vh,
+        x: vx + ((event.clientX - rect.left) / rect.width) * vw,
+        y: vy + ((event.clientY - rect.top) / rect.height) * vh,
+      };
+    };
+
+    shell.addEventListener("pointerdown", (event) => {
+      if (event.target.closest("[data-updates-zoom]")) return;
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      if (pinch) return;
+      const view = viewFromEvent(event);
+      drag = {
+        id: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+        vx: view.vx,
+        vy: view.vy,
+        vw: view.vw,
+        vh: view.vh,
+        moved: false,
+      };
+      shell.setPointerCapture?.(event.pointerId);
+    });
+
+    shell.addEventListener("pointermove", (event) => {
+      if (!drag || event.pointerId !== drag.id || pinch) return;
+      const rect = svg.getBoundingClientRect();
+      const dx = (event.clientX - drag.x) / rect.width * drag.vw;
+      const dy = (event.clientY - drag.y) / rect.height * drag.vh;
+      if (!drag.moved && Math.hypot(event.clientX - drag.x, event.clientY - drag.y) < 6) return;
+      drag.moved = true;
+      suppressMapClick = true;
+      shell.classList.add("is-panning");
+      applyView([drag.vx - dx, drag.vy - dy, drag.vw, drag.vh], false);
+    });
+
+    const endDrag = (event) => {
+      if (!drag || (event && event.pointerId !== drag.id)) return;
+      if (drag.moved) {
+        window.setTimeout(() => {
+          suppressMapClick = false;
+        }, 0);
+      }
+      drag = null;
+      shell.classList.remove("is-panning");
+    };
+
+    shell.addEventListener("pointerup", endDrag);
+    shell.addEventListener("pointercancel", endDrag);
+
+    shell.addEventListener("dblclick", (event) => {
+      if (event.target.closest("[data-updates-zoom]")) return;
+      zoomBy(1.55, event.clientX, event.clientY, true);
+    });
+
+    const pinchDist = (touches) => Math.hypot(
+      touches[0].clientX - touches[1].clientX,
+      touches[0].clientY - touches[1].clientY,
+    );
+
+    const pinchMid = (touches) => ({
+      x: (touches[0].clientX + touches[1].clientX) / 2,
+      y: (touches[0].clientY + touches[1].clientY) / 2,
+    });
+
+    shell.addEventListener("touchstart", (event) => {
+      if (event.touches.length === 2) {
+        drag = null;
+        pinch = {
+          dist: pinchDist(event.touches),
+          box: readViewBox(svg),
+          mid: pinchMid(event.touches),
+        };
+      }
+    }, { passive: true });
+
+    shell.addEventListener("touchmove", (event) => {
+      if (!pinch || event.touches.length !== 2) return;
+      event.preventDefault();
+      const dist = pinchDist(event.touches);
+      if (pinch.dist < 8) return;
+      const mid = pinchMid(event.touches);
+      zoomBy(dist / pinch.dist, mid.x, mid.y, false);
+      pinch.dist = dist;
+      pinch.mid = mid;
+    }, { passive: false });
+
+    const endPinch = (event) => {
+      if ((event.touches?.length || 0) < 2) pinch = null;
+    };
+    shell.addEventListener("touchend", endPinch);
+    shell.addEventListener("touchcancel", endPinch);
+  };
+
+  bindMapNav();
 
   const hash = decodeURIComponent((location.hash || "").replace(/^#/, ""));
   if (hash && /^\d{4}\.\d+/.test(hash)) {
