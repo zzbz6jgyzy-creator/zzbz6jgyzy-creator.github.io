@@ -18,7 +18,7 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
-UA = "ALJR86-news/1.0 (+https://zzbz6jgyzy-creator.github.io/news.html)"
+UA = "ALJR86-news/1.0 (+https://superchargeddaily.com/news.html)"
 MAX_AGE_HOURS = 36
 PER_TOPIC = 16
 TOPICS = (

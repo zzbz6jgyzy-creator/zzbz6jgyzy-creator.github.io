@@ -14,7 +14,7 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-UA = "ALJR86-updates/1.0 (+https://zzbz6jgyzy-creator.github.io/updates.html)"
+UA = "ALJR86-updates/1.0 (+https://superchargeddaily.com/updates.html)"
 BASE = "https://teslascope.com/api/software"
 MAX_VERSIONS = 16
 SLEEP_S = 0.35
