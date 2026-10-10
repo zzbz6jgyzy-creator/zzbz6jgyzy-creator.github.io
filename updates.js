@@ -460,9 +460,9 @@
     const stroke = Math.min(2.2, Math.max(0.4, 1.15 / px));
     layer.querySelectorAll(".updates-hot").forEach((g) => {
       const count = Number(g.dataset.count) || 1;
-      const target = (isNarrow() ? 10 : 7) + Math.sqrt(count / max) * (isNarrow() ? 5 : 3.5);
-      const r = Math.max(0.65, target / px);
-      const hit = Math.max(r * 2.1, (isNarrow() ? 22 : 14) / px);
+    const target = (isNarrow() ? 9 : 6) + Math.sqrt(count / max) * (isNarrow() ? 4 : 2.8);
+    const r = Math.max(0.55, Math.min(5.2, target / px));
+    const hit = Math.max(r * 1.25, Math.min(6, (isNarrow() ? 18 : 12) / px));
       g.querySelector("[data-hit]")?.setAttribute("r", hit.toFixed(2));
       g.querySelector(".updates-hot-halo")?.setAttribute("r", (r * 1.85).toFixed(2));
       const core = g.querySelector(".updates-hot-core");
@@ -517,6 +517,7 @@
       syncZoomButtons();
       syncClear();
       syncCaptionPlace();
+      document.querySelector(".updates-map-shell")?.classList.toggle("is-zoomed", !nearWorld(svg));
     };
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
     if (!animate || reduce || sameBox(readViewBox(svg), next)) {
@@ -534,6 +535,70 @@
       if (t < 1) zoomFrame = requestAnimationFrame(tick);
     };
     zoomFrame = requestAnimationFrame(tick);
+  };
+
+  const clientToMap = (clientX, clientY) => {
+    const svg = mapSvg();
+    const [vx, vy, vw, vh] = readViewBox(svg);
+    const rect = svg.getBoundingClientRect();
+    return {
+      x: vx + ((clientX - rect.left) / Math.max(rect.width, 1)) * vw,
+      y: vy + ((clientY - rect.top) / Math.max(rect.height, 1)) * vh,
+      px: rect.width / vw,
+    };
+  };
+
+  const parseHot = (g) => {
+    const t = g.getAttribute("transform") || "";
+    const m = /translate\(([-0-9.]+)\s+([-0-9.]+)\)/.exec(t);
+    return {
+      g,
+      code: g.dataset.country,
+      id: g.dataset.id,
+      count: Number(g.dataset.count) || 0,
+      x: m ? Number(m[1]) : 0,
+      y: m ? Number(m[2]) : 0,
+    };
+  };
+
+  const nearestHot = (clientX, clientY) => {
+    const layer = document.getElementById("updates-hotspots");
+    const svg = mapSvg();
+    if (!layer || !svg) return { hit: null, nearby: [] };
+    const pt = clientToMap(clientX, clientY);
+    const threshold = 22 / Math.max(pt.px, 0.05);
+    let hit = null;
+    const nearby = [];
+    layer.querySelectorAll(".updates-hot").forEach((g) => {
+      const hot = parseHot(g);
+      const d = Math.hypot(pt.x - hot.x, pt.y - hot.y);
+      hot.d = d;
+      if (d <= threshold) nearby.push(hot);
+      if (!hit || d < hit.d) hit = hot;
+    });
+    if (!hit || hit.d > threshold) return { hit: null, nearby };
+    return { hit, nearby };
+  };
+
+  const pickCountryAt = (clientX, clientY) => {
+    const found = nearestHot(clientX, clientY);
+    if (!found.hit) return;
+    if (
+      nearWorld() &&
+      found.nearby.length >= 2 &&
+      found.nearby.every((spot) => EUROPE_ZOOM.has(spot.code))
+    ) {
+      if (countryCode) {
+        setCountry("", true);
+        focusedCode = "";
+        rerender();
+      }
+      applyView(EUROPE_BOX, true);
+      return;
+    }
+    const next = countryCode === found.hit.code ? "" : found.hit.code;
+    setCountry(next, true);
+    rerender();
   };
 
   const zoomBy = (factor, clientX, clientY, animate = false) => {
@@ -634,6 +699,7 @@
       g.setAttribute("class", `updates-hot${spot.latest ? " is-new" : ""} is-${spot.heat}${countryCode === spot.code ? " is-focus" : ""}`);
       g.setAttribute("data-country", spot.code);
       g.setAttribute("data-count", String(spot.count || 1));
+      g.setAttribute("data-id", spot.id);
       g.setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
       g.setAttribute("tabindex", "0");
       g.setAttribute("role", "button");
@@ -657,19 +723,12 @@
       core.setAttribute("class", "updates-hot-core");
       core.setAttribute("r", r.toFixed(1));
       g.append(core);
-      g.addEventListener("mouseenter", (event) => showTip(spot, event));
-      g.addEventListener("mousemove", (event) => showTip(spot, event));
-      g.addEventListener("mouseleave", hideTip);
-      g.addEventListener("click", () => {
-        if (suppressMapClick) return;
-        const next = countryCode === spot.code ? "" : spot.code;
-        setCountry(next, true);
-        rerender();
-      });
       g.addEventListener("keydown", (event) => {
         if (event.key !== "Enter" && event.key !== " ") return;
         event.preventDefault();
-        g.dispatchEvent(new Event("click"));
+        const next = countryCode === spot.code ? "" : spot.code;
+        setCountry(next, true);
+        rerender();
       });
       layer.append(g);
     });
@@ -995,6 +1054,8 @@
     });
 
     shell.addEventListener("wheel", (event) => {
+      if (event.target.closest("[data-updates-zoom]")) return;
+      if (nearWorld() && event.deltaY > 0) return;
       event.preventDefault();
       zoomBy(event.deltaY < 0 ? 1.16 : 1 / 1.16, event.clientX, event.clientY, false);
     }, { passive: false });
@@ -1002,66 +1063,81 @@
     let drag = null;
     let pinch = null;
 
-    const viewFromEvent = (event) => {
-      const [vx, vy, vw, vh] = readViewBox(svg);
-      const rect = svg.getBoundingClientRect();
-      return {
-        vx,
-        vy,
-        vw,
-        vh,
-        x: vx + ((event.clientX - rect.left) / rect.width) * vw,
-        y: vy + ((event.clientY - rect.top) / rect.height) * vh,
-      };
+    const tipFromPointer = (event) => {
+      if (event.target.closest("[data-updates-zoom]") || drag?.moved) {
+        hideTip();
+        return;
+      }
+      const found = nearestHot(event.clientX, event.clientY);
+      if (found.hit) showTip(found.hit, event);
+      else hideTip();
     };
 
     shell.addEventListener("pointerdown", (event) => {
       if (event.target.closest("[data-updates-zoom]")) return;
       if (event.pointerType === "mouse" && event.button !== 0) return;
       if (pinch) return;
-      const view = viewFromEvent(event);
+      const [vx, vy, vw, vh] = readViewBox(svg);
       drag = {
         id: event.pointerId,
         x: event.clientX,
         y: event.clientY,
-        vx: view.vx,
-        vy: view.vy,
-        vw: view.vw,
-        vh: view.vh,
+        vx,
+        vy,
+        vw,
+        vh,
         moved: false,
+        canPan: !nearWorld(),
       };
-      shell.setPointerCapture?.(event.pointerId);
     });
 
-    shell.addEventListener("pointermove", (event) => {
-      if (!drag || event.pointerId !== drag.id || pinch) return;
-      const rect = svg.getBoundingClientRect();
-      const dx = (event.clientX - drag.x) / rect.width * drag.vw;
-      const dy = (event.clientY - drag.y) / rect.height * drag.vh;
-      if (!drag.moved && Math.hypot(event.clientX - drag.x, event.clientY - drag.y) < 6) return;
-      drag.moved = true;
-      suppressMapClick = true;
-      shell.classList.add("is-panning");
-      applyView([drag.vx - dx, drag.vy - dy, drag.vw, drag.vh], false);
+    window.addEventListener("pointermove", (event) => {
+      if (drag && event.pointerId === drag.id && drag.canPan && !pinch) {
+        const rect = svg.getBoundingClientRect();
+        const dx = (event.clientX - drag.x) / rect.width * drag.vw;
+        const dy = (event.clientY - drag.y) / rect.height * drag.vh;
+        if (!drag.moved && Math.hypot(event.clientX - drag.x, event.clientY - drag.y) < 7) {
+          tipFromPointer(event);
+          return;
+        }
+        drag.moved = true;
+        suppressMapClick = true;
+        shell.classList.add("is-panning");
+        applyView([drag.vx - dx, drag.vy - dy, drag.vw, drag.vh], false);
+        hideTip();
+        return;
+      }
+      if (!drag) {
+        if (event.target?.closest?.(".updates-map-shell") && !event.target.closest("[data-updates-zoom]")) {
+          tipFromPointer(event);
+        } else {
+          hideTip();
+        }
+      }
     });
 
     const endDrag = (event) => {
-      if (!drag || (event && event.pointerId !== drag.id)) return;
-      if (drag.moved) {
+      if (!drag || event.pointerId !== drag.id) return;
+      const moved = drag.moved;
+      const x = event.clientX;
+      const y = event.clientY;
+      drag = null;
+      shell.classList.remove("is-panning");
+      if (moved) {
         window.setTimeout(() => {
           suppressMapClick = false;
         }, 0);
+        return;
       }
-      drag = null;
-      shell.classList.remove("is-panning");
+      if (!event.target?.closest?.(".updates-map-shell") || event.target.closest("[data-updates-zoom]")) return;
+      pickCountryAt(x, y);
     };
 
-    shell.addEventListener("pointerup", endDrag);
-    shell.addEventListener("pointercancel", endDrag);
-
-    shell.addEventListener("dblclick", (event) => {
-      if (event.target.closest("[data-updates-zoom]")) return;
-      zoomBy(1.55, event.clientX, event.clientY, true);
+    window.addEventListener("pointerup", endDrag);
+    window.addEventListener("pointercancel", (event) => {
+      if (!drag || event.pointerId !== drag.id) return;
+      drag = null;
+      shell.classList.remove("is-panning");
     });
 
     const pinchDist = (touches) => Math.hypot(
