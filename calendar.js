@@ -57,10 +57,10 @@
     {
       id: "starship-f15",
       title: "Starship Flight 15",
-      start: "2026-10-19T00:00:00Z",
+      start: "2026-11-08T00:00:00Z",
       group: "spacex",
       where: "Starbase · Pad 2",
-      note: "Planning target only — SpaceX has not set an official time. First serious Ship catch attempt is the story.",
+      note: "FAA planning target NET 8 Nov — SpaceX has not set an official time. First serious Ship catch is the story.",
       href: "https://www.spacex.com/launches/starship-flight-15",
       status: "net",
       precision: "day",

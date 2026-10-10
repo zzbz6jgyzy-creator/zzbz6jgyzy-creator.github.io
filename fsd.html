@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" class="fsd-page">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FSD Global Tracker — Supercharged Daily</title>
+    <meta
+      name="description"
+      content="Tesla FSD Supervised country by country: live markets, versions, expected milestones and source links. Independent global tracker."
+    />
+    <link rel="canonical" href="https://superchargeddaily.com/fsd.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Supercharged Daily" />
+    <meta property="og:title" content="FSD Global Tracker — Supercharged Daily" />
+    <meta property="og:description" content="Tesla FSD Supervised country by country: live markets, versions, expected milestones and source links." />
+    <meta property="og:url" content="https://superchargeddaily.com/fsd.html" />
+    <meta property="og:image" content="https://superchargeddaily.com/assets/dispatch/fsd-snow-poster.jpg" />
+    <meta property="og:image:alt" content="FSD Supervised on a snowy European road" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ALJR86" />
+    <meta name="twitter:creator" content="@ALJR86" />
+    <meta name="twitter:title" content="FSD Global Tracker — Supercharged Daily" />
+    <meta name="twitter:description" content="Tesla FSD Supervised country by country: live markets, versions, expected milestones and source links." />
+    <meta name="twitter:image" content="https://superchargeddaily.com/assets/dispatch/fsd-snow-poster.jpg" />
+    <meta name="twitter:image:alt" content="FSD Supervised on a snowy European road" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/index.html">
+          <img class="brand-mark" src="/assets/brand/icon-1b-mark.svg" alt="" width="30" height="30" />
+          <img class="brand-wordmark" src="/assets/brand/wordmark.svg" alt="Supercharged Daily" width="172" height="27" />
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="/news.html">News</a>
+          <a href="/tesla.html">Tesla</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
+          <a href="/tsla.html">Markets</a>
+          <a href="/fsd.html" aria-current="page">FSD</a>
+          <a href="/starship.html">Starship</a>
+          <a href="/updates.html">Updates</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/games.html">Games</a>
+          <a class="nav-cta" href="https://x.com/ALJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="fsd-hero">
+          <div>
+            <p class="eyebrow">Tesla · Global tracker</p>
+            <h1>FSD Global Tracker</h1>
+            <p>
+              Where FSD Supervised is actually live, which stack that market is on,
+              and what still has to move in Brussels, Berlin and London.
+              Europe’s vote math stays on the
+              <a href="/fsd-europe.html">Europe map</a>.
+            </p>
+            <nav class="fsd-jump" aria-label="On this page">
+              <a href="#map">Markets</a>
+              <a href="#versions">Versions</a>
+              <a href="#milestones">Milestones</a>
+              <a href="#alerts">Alerts</a>
+            </nav>
+          </div>
+          <p class="meta news-status-line" id="fsd-updated">Updated</p>
+        </section>
+
+        <section class="fsd-board" id="map" aria-labelledby="fsd-world-heading">
+          <div class="fsd-kpis" aria-label="Snapshot">
+            <a class="fsd-kpi" href="#countries">
+              <b id="fsd-live-count">—</b>
+              <span>markets live</span>
+            </a>
+            <a class="fsd-kpi" href="#countries">
+              <b id="fsd-review-count">—</b>
+              <span>in review</span>
+            </a>
+            <a class="fsd-kpi" href="#versions">
+              <b id="fsd-version-now">—</b>
+              <span>newest stack</span>
+            </a>
+            <a class="fsd-kpi" href="#milestones">
+              <b id="fsd-region-count">—</b>
+              <span>regions live</span>
+            </a>
+          </div>
+
+          <div class="fsd-stage">
+            <div class="fsd-map-pane">
+              <h2 class="visually-hidden" id="fsd-world-heading">FSD markets on the world map</h2>
+              <div class="updates-map-shell" id="fsd-world-shell">
+                <svg class="updates-map" id="fsd-world-map" viewBox="0 0 1000 500" width="1000" height="500" role="img" aria-labelledby="fsd-world-heading">
+                  <title>Where FSD Supervised is live</title>
+                  <defs>
+                    <radialGradient id="fsd-ocean" cx="50%" cy="42%" r="62%">
+                      <stop offset="0%" stop-color="#151922" />
+                      <stop offset="100%" stop-color="#0b0c10" />
+                    </radialGradient>
+                  </defs>
+                  <rect width="1000" height="500" fill="url(#fsd-ocean)" />
+                  <g id="fsd-world-land"></g>
+                  <g id="fsd-world-pins"></g>
+                </svg>
+                <div class="updates-map-zoom" role="group" aria-label="Zoom the map">
+                  <button type="button" data-fsd-zoom="in" aria-label="Zoom in">+</button>
+                  <button type="button" data-fsd-zoom="out" aria-label="Zoom out">−</button>
+                  <button type="button" data-fsd-zoom="europe">Europe</button>
+                  <button type="button" data-fsd-zoom="world">World</button>
+                </div>
+              </div>
+              <div class="fsd-map-meta">
+                <div class="fsd-map-legend" aria-hidden="true">
+                  <span><i class="fsd-map-key is-approved"></i> Live</span>
+                  <span><i class="fsd-map-key is-review"></i> Review / watch</span>
+                  <span><i class="fsd-map-key is-none"></i> Not yet</span>
+                </div>
+                <p class="fsd-map-caption" id="fsd-world-caption">Loading map…</p>
+              </div>
+            </div>
+
+            <aside class="fsd-panel" id="countries" aria-labelledby="fsd-world-list-heading">
+              <div class="fsd-panel-head">
+                <h2 id="fsd-world-list-heading">Countries</h2>
+                <p id="fsd-world-showing">—</p>
+              </div>
+              <label class="updates-search-label" for="fsd-world-search">Find a country</label>
+              <input
+                id="fsd-world-search"
+                class="updates-search"
+                type="search"
+                placeholder="Germany, Korea, v14.3…"
+                autocomplete="off"
+              />
+              <div class="fsd-filters" role="group" aria-label="Filter markets">
+                <button type="button" class="fsd-filter" data-fsd-world-filter="live" aria-pressed="true">Live</button>
+                <button type="button" class="fsd-filter" data-fsd-world-filter="review" aria-pressed="false">In review</button>
+                <button type="button" class="fsd-filter" data-fsd-world-filter="europe" aria-pressed="false">Europe</button>
+                <button type="button" class="fsd-filter" data-fsd-world-filter="all" aria-pressed="false">All</button>
+              </div>
+              <div class="fsd-country-detail" id="fsd-world-detail" hidden></div>
+              <div class="fsd-country-list" id="fsd-world-list"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section" id="versions" aria-labelledby="fsd-versions-heading">
+          <div class="section-head">
+            <h2 id="fsd-versions-heading">Version history</h2>
+            <p>The stack on the car, not just the marketing name.</p>
+          </div>
+          <div class="flagship-grid" id="fsd-versions"></div>
+        </section>
+
+        <section class="section" id="milestones" aria-labelledby="fsd-milestones-heading">
+          <div class="section-head">
+            <h2 id="fsd-milestones-heading">Expected milestones</h2>
+            <p>What already happened, and what would actually change the map.</p>
+          </div>
+          <ol class="flagship-miles" id="fsd-milestones"></ol>
+        </section>
+
+        <section class="section" id="alerts" aria-labelledby="fsd-alert-heading">
+          <div class="flagship-alert newsletter" data-newsletter="fsd-alerts">
+            <div>
+              <p class="newsletter-kicker">Change alerts</p>
+              <h2 id="fsd-alert-heading">Get a note when a country flips</h2>
+              <p class="newsletter-tagline">National yeses, version jumps, and the TCMV window. Same Supercharged Daily list.</p>
+            </div>
+            <form class="newsletter-form" data-newsletter-form>
+              <label class="visually-hidden" for="newsletter-email-fsd">Email address</label>
+              <input id="newsletter-email-fsd" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="Your email address" />
+              <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
+              <button class="newsletter-button" type="submit">Get alerts</button>
+            </form>
+            <p class="newsletter-fine">Free. Unsubscribe anytime.</p>
+            <p class="newsletter-status" data-newsletter-status role="status"></p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="panel">
+            <p class="eyebrow">Sources &amp; disclaimer</p>
+            <p id="fsd-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
+            <ul class="flagship-sources" id="fsd-sources"></ul>
+            <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
+              Tesla’s own
+              <a href="https://www.tesla.com/support/full-self-driving">FSD support page</a>
+              is the listing. Europe’s national yeses and the Brussels vote live on the
+              <a href="/fsd-europe.html">Europe tracker</a>
+              and the
+              <a href="/tcmv.html">TCMV log</a>.
+              FSD Supervised is SAE Level 2.
+            </p>
+            <p style="margin: 1rem 0 0">
+              <a class="button button-ghost" href="/fsd-europe.html">Europe map</a>
+              <a class="button button-ghost" href="/updates.html">Software database</a>
+              <a class="button button-ghost" href="/tesla.html">Tesla desk</a>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="footer-lockup" href="/index.html"><img src="/assets/brand/lockup-1b-trim.svg" alt="Supercharged Daily" width="220" height="45" /></a>
+        <p>© <span data-year></span> Supercharged Daily. Independent FSD tracker. Not affiliated with Tesla.</p>
+        <p>
+          <a href="/tesla.html">Tesla</a>
+          ·
+          <a href="/fsd.html">FSD</a>
+          ·
+          <a href="/updates.html">Updates</a>
+          ·
+          <a href="/starship.html">Starship</a>
+          ·
+          <a href="https://x.com/ALJR86">X</a>
+        </p>
+      </footer>
+    </div>
+    <script src="/script.js"></script>
+    <script src="/fsd-data.js"></script>
+    <script src="/fsd.js"></script>
+  </body>
+</html>

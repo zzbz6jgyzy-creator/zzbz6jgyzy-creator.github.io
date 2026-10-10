@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Starship flight tracker — Supercharged Daily</title>
+    <title>Starship Mission Control — Supercharged Daily</title>
     <meta
       name="description"
-      content="Every Starship flight so far: date, what it tested, and whether it worked. Plus a countdown to Flight 15."
+      content="Starship Mission Control: next launch, mission objectives, confirmed schedule changes, flight outcomes and live coverage links."
     />
     <link rel="canonical" href="https://superchargeddaily.com/starship.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
-    <meta property="og:title" content="Starship flight tracker — Supercharged Daily" />
-    <meta property="og:description" content="Every Starship flight so far: date, what it tested, and whether it worked. Plus a countdown to Flight 15." />
+    <meta property="og:title" content="Starship Mission Control — Supercharged Daily" />
+    <meta property="og:description" content="Next launch, mission objectives, schedule changes, flight outcomes and live coverage links." />
     <meta property="og:url" content="https://superchargeddaily.com/starship.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/dispatch/starship-catch-poster.jpg" />
     <meta property="og:image:alt" content="Starship catch clip" />
@@ -21,8 +21,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
-    <meta name="twitter:title" content="Starship flight tracker — Supercharged Daily" />
-    <meta name="twitter:description" content="Every Starship flight so far: date, what it tested, and whether it worked. Plus a countdown to Flight 15." />
+    <meta name="twitter:title" content="Starship Mission Control — Supercharged Daily" />
+    <meta name="twitter:description" content="Next launch, mission objectives, schedule changes, flight outcomes and live coverage links." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/dispatch/starship-catch-poster.jpg" />
     <meta name="twitter:image:alt" content="Starship catch clip" />
 
@@ -56,9 +56,9 @@
           <a href="/spacex.html">SpaceX</a>
           <a href="/grok.html">Grok</a>
           <a href="/tsla.html">Markets</a>
-          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/fsd.html">FSD</a>
           <a href="/starship.html" aria-current="page">Starship</a>
-          <a href="/updates.html">Software Update Tracker</a>
+          <a href="/updates.html">Updates</a>
           <a href="/reviews/index.html">Reviews</a>
           <a href="/games.html">Games</a>
           <a class="nav-cta" href="https://x.com/ALJR86">Follow on X</a>
@@ -67,13 +67,13 @@
 
       <main id="main">
         <section class="page-hero" id="next">
-          <p class="eyebrow">SpaceX · Tracker</p>
-          <h1>Starship flight tracker</h1>
+          <p class="eyebrow">SpaceX · Mission control</p>
+          <h1>Starship Mission Control</h1>
           <p>
-            Every flight so far — the date, what it tested, and whether it worked.
-            Flight 15 is the first serious attempt to catch a Ship.
+            Next launch, what that flight is for, what actually slipped, and
+            every outcome so far. Flight 15 is the first serious attempt to catch a Ship.
           </p>
-          <p class="meta" id="starship-updated">Updated</p>
+          <p class="meta news-status-line" id="starship-updated">Updated</p>
           <p class="starship-hero-kicker" id="starship-next-date">NET</p>
           <div class="starship-count" aria-hidden="true">
             <div class="starship-count-cell">
@@ -95,8 +95,10 @@
           </div>
           <p class="starship-cd-status" id="starship-cd-status"></p>
           <nav class="fsd-jump" aria-label="On this page">
+            <a href="#next-flight">Next launch</a>
+            <a href="#schedule">Schedule</a>
             <a href="#log">Flight log</a>
-            <a href="/calendar.html">Calendar</a>
+            <a href="#alerts">Alerts</a>
           </nav>
         </section>
 
@@ -107,35 +109,46 @@
           </div>
           <div class="stats">
             <a class="stat" href="#log">
-              <b id="starship-flown-count">0</b>
+              <b id="starship-flown-count">—</b>
               <span>Flights flown</span>
             </a>
             <a class="stat" href="#log">
-              <b id="starship-worked-count">0</b>
+              <b id="starship-worked-count">—</b>
               <span>Worked</span>
             </a>
             <a class="stat" href="#log">
-              <b id="starship-partial-count">0</b>
+              <b id="starship-partial-count">—</b>
               <span>Partial</span>
             </a>
             <a class="stat" href="#log">
-              <b id="starship-failed-count">0</b>
+              <b id="starship-failed-count">—</b>
               <span>Failed</span>
             </a>
           </div>
         </section>
 
-        <section class="section" aria-labelledby="starship-next-heading">
+        <section class="section" id="next-flight" aria-labelledby="starship-next-heading">
           <div class="section-head">
-            <h2 id="starship-next-heading">Flight 15</h2>
+            <h2 id="starship-next-heading">Next launch</h2>
             <p id="starship-next-flight">Flight 15</p>
           </div>
           <article class="panel starship-next">
             <h3 id="starship-next-headline">First serious Ship catch</h3>
             <p class="starship-hw" id="starship-next-hw"></p>
             <p id="starship-next-tested"></p>
-            <p class="fsd-track-link"><a href="/calendar.html">Same date on the calendar →</a></p>
+            <h4 class="starship-subhead">Mission objectives</h4>
+            <ul class="starship-objectives" id="starship-objectives"></ul>
+            <h4 class="starship-subhead">Live coverage</h4>
+            <div class="coverage-list" id="starship-coverage" aria-label="Live coverage"></div>
           </article>
+        </section>
+
+        <section class="section" id="schedule" aria-labelledby="starship-schedule-heading">
+          <div class="section-head">
+            <h2 id="starship-schedule-heading">Schedule changes</h2>
+            <p>What is confirmed hardware work versus unofficial planning slips.</p>
+          </div>
+          <div class="starship-changes" id="starship-changes"></div>
         </section>
 
         <section class="section" id="log" aria-labelledby="starship-log-heading">
@@ -151,6 +164,24 @@
             <button type="button" class="fsd-filter" data-starship-filter="next" aria-pressed="false">Next</button>
           </div>
           <div class="starship-list" id="starship-list"></div>
+        </section>
+
+        <section class="section" id="alerts" aria-labelledby="starship-alert-heading">
+          <div class="flagship-alert newsletter" data-newsletter="starship-alerts">
+            <div>
+              <p class="newsletter-kicker">Launch alerts</p>
+              <h2 id="starship-alert-heading">Get a note when the clock moves</h2>
+              <p class="newsletter-tagline">NET slips, a real T-0, and the catch. Same Supercharged Daily list.</p>
+            </div>
+            <form class="newsletter-form" data-newsletter-form>
+              <label class="visually-hidden" for="newsletter-email-starship">Email address</label>
+              <input id="newsletter-email-starship" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="Your email address" />
+              <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
+              <button class="newsletter-button" type="submit">Get alerts</button>
+            </form>
+            <p class="newsletter-fine">Free. Unsubscribe anytime.</p>
+            <p class="newsletter-status" data-newsletter-status role="status"></p>
+          </div>
         </section>
 
         <section class="section" aria-labelledby="starship-disclaimer-heading">
@@ -180,7 +211,7 @@
           ·
           <a href="/calendar.html">Calendar</a>
           ·
-          <a href="/fsd-europe.html">FSD Europe</a>
+          <a href="/fsd.html">FSD</a>
           ·
           <a href="/starship.html">Starship</a>
           ·
