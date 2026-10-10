@@ -1765,7 +1765,7 @@ article.story-card {
   position: relative;
   overflow: hidden;
   min-height: 260px;
-  max-height: 34rem;
+  max-height: 30rem;
   border-radius: 10px;
   border: 1px solid var(--line);
   background: #0b0c10;
@@ -1777,7 +1777,7 @@ article.story-card {
   height: auto;
   aspect-ratio: 900 / 780;
   min-height: 260px;
-  max-height: 34rem;
+  max-height: 30rem;
 }
 
 .fsd-map-ocean {
