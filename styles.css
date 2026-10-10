@@ -1465,12 +1465,9 @@ article.story-card {
   cursor: default;
 }
 
-.fsd-map-country.is-none {
-  fill: #2a303c;
-}
-
+.fsd-map-country.is-none,
 .fsd-map-country.is-review {
-  fill: #5c4d32;
+  fill: #2a303c;
 }
 
 .fsd-map-country.is-approved {
@@ -1491,8 +1488,6 @@ article.story-card {
 }
 
 .fsd-map-pin.is-approved { fill: #ff4d42; }
-.fsd-map-pin.is-review { fill: #e2c48a; }
-.fsd-map-pin.is-none { fill: #6ea8ff; }
 
 .fsd-map-legend {
   display: flex;
@@ -1513,7 +1508,6 @@ article.story-card {
 }
 
 .fsd-map-key.is-approved { background: #c8102e; }
-.fsd-map-key.is-review { background: #c4a46a; }
 .fsd-map-key.is-none { background: #2a303c; box-shadow: inset 0 0 0 1px rgba(236, 236, 232, 0.2); }
 
 .fsd-map-caption {
