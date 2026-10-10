@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tesla software updates — @ALJR86</title>
+    <title>Update tracker — @ALJR86</title>
     <meta
       name="description"
-      content="Tesla firmware in plain English: what each new version actually adds, what has reached cars, and which bits are still US-only."
+      content="Live Tesla software update tracker: the number on the screen, what it adds, and which countries Teslascope has actually seen on that build."
     />
     <link rel="canonical" href="https://zzbz6jgyzy-creator.github.io/updates.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="@ALJR86" />
-    <meta property="og:title" content="Tesla software updates — @ALJR86" />
-    <meta property="og:description" content="Tesla firmware in plain English: what each new version actually adds, what has reached cars, and which bits are still US-only." />
+    <meta property="og:title" content="Update tracker — @ALJR86" />
+    <meta property="og:description" content="Live Tesla software update tracker: the number on the screen, what it adds, and which countries Teslascope has actually seen on that build." />
     <meta property="og:url" content="https://zzbz6jgyzy-creator.github.io/updates.html" />
     <meta property="og:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/fsd-snow-poster.jpg" />
     <meta property="og:image:alt" content="FSD Supervised on a snowy European road" />
@@ -21,8 +21,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
-    <meta name="twitter:title" content="Tesla software updates — @ALJR86" />
-    <meta name="twitter:description" content="Tesla firmware in plain English: what each new version actually adds, what has reached cars, and which bits are still US-only." />
+    <meta name="twitter:title" content="Update tracker — @ALJR86" />
+    <meta name="twitter:description" content="Live Tesla software update tracker: the number on the screen, what it adds, and which countries Teslascope has actually seen on that build." />
     <meta name="twitter:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/fsd-snow-poster.jpg" />
     <meta name="twitter:image:alt" content="FSD Supervised on a snowy European road" />
 
@@ -55,7 +55,7 @@
           <a href="/tsla.html">Markets</a>
           <a href="/fsd-europe.html">FSD Europe</a>
           <a href="/starship.html">Starship</a>
-          <a href="/updates.html" aria-current="page">Updates</a>
+          <a href="/updates.html" aria-current="page">Update Tracker</a>
           <a href="/reviews/index.html">Reviews</a>
           <a href="/games.html">Games</a>
           <a class="nav-cta" href="https://x.com/ALJR86">Follow on X</a>
@@ -65,13 +65,13 @@
       <main id="main">
         <section class="page-hero">
           <p class="eyebrow">Tesla · Tracker</p>
-          <h1>Software update tracker</h1>
+          <h1>Update tracker</h1>
           <p>
             The car says an update is ready. Type the number. This is what it
-            actually adds — and whether that build has reached cars here, or is
-            still a US-only FSD file.
+            actually adds — and whether Teslascope has seen that build on cars
+            here, or it is still a US-only FSD file.
           </p>
-          <p class="meta" id="updates-updated">Updated</p>
+          <p class="meta news-status-line" id="updates-updated">Checking Teslascope…</p>
           <form class="updates-lookup" id="updates-lookup" action="#builds">
             <div>
               <label class="updates-search-label" for="updates-version">Number on the screen</label>
@@ -110,26 +110,27 @@
 
         <section class="section" style="padding-top: 1.4rem" aria-labelledby="updates-fsd-heading">
           <div class="section-head">
-            <h2 id="updates-fsd-heading">FSD right now</h2>
-            <p>Two continents, two version numbers.</p>
+            <h2 id="updates-fsd-heading">On cars right now</h2>
+            <p>Latest spotted build, Ireland, and the two FSD stacks.</p>
           </div>
+          <div class="updates-fleet" id="updates-fleet" aria-label="Biggest slices of the tracked fleet"></div>
           <div class="stats" id="fsd">
             <div class="stat">
-              <b>14.3.11</b>
-              <span>North America HW4</span>
+              <b id="stat-latest">—</b>
+              <span>Latest spotted</span>
             </div>
             <div class="stat">
-              <b>14.2.2.6</b>
-              <span>Europe so far</span>
+              <b id="stat-ireland">—</b>
+              <span>Seen in Ireland</span>
             </div>
             <div class="stat">
-              <b>2026.32.7</b>
-              <span>Typical Ireland offer</span>
+              <b id="stat-fsd-na">—</b>
+              <span>North America FSD</span>
             </div>
-            <a class="stat" href="/fsd-europe.html">
-              <b>8 / 27</b>
-              <span>EU countries approved</span>
-            </a>
+            <div class="stat">
+              <b id="stat-fsd-eu">—</b>
+              <span>Europe FSD build</span>
+            </div>
           </div>
         </section>
 
@@ -161,11 +162,12 @@
             <p class="eyebrow" id="updates-disclaimer-heading">Sources &amp; disclaimer</p>
             <p id="updates-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
             <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
-              Drawn from Tesla’s in-car release notes as republished by public trackers
-              (Not a Tesla App, TeslaFi, Teslascope) on 9 October 2026. “Seen in” means
-              a connected car in that country reported the build — not that Tesla has
-              finished the rollout. FSD Supervised is SAE Level 2. The driver supervises.
-              Nothing here is about one privately owned car.
+              Tesla does not publish a live public update API. This page snapshots
+              Teslascope’s connected-car reports about twice an hour — same idea as
+              the News wire. “Seen in” means a tracked car in that country reported
+              the build, not that Tesla has finished the rollout. FSD Supervised is
+              SAE Level 2. The driver supervises. Nothing here is about one privately
+              owned car.
             </p>
             <p style="margin: 1rem 0 0">
               <a class="button button-ghost" href="/tesla.html">Back to Tesla</a>
@@ -182,7 +184,7 @@
           ·
           <a href="/fsd-europe.html">FSD Europe</a>
           ·
-          <a href="/updates.html">Updates</a>
+          <a href="/updates.html">Update Tracker</a>
           ·
           <a href="/starship.html">Starship</a>
           ·

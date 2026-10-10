@@ -1,0 +1,1123 @@
+{
+  "updated": "2026-10-10T08:48:07Z",
+  "source": "teslascope",
+  "sourceUrl": "https://teslascope.com/software",
+  "fleet": 3344,
+  "latest": "2026.38.3.1",
+  "versions": [
+    {
+      "id": "2026.38.3.1",
+      "date": "2026-10-08",
+      "count": 43,
+      "fleet": 3344,
+      "percent": 1.3,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Emergency Drive Away",
+          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        },
+        {
+          "title": "Set Arrival Energy",
+          "text": "Set your desired Arrival Energy for any trip from your phone. Open the location tab in the Tesla Mobile App, enter your destination, and tap Set Arrival Energy. Requires Mobile App v4.58.0 or later."
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Supercharger Site Maps",
+          "text": "You can now see a detailed view of select Tesla Superchargers by tapping \"View Site Map.\" When navigating to a pilot location, the site layout and live occupancy (Available / Occupied / Down) will be displayed upon arri\u2026"
+        },
+        {
+          "title": "Visual Updates",
+          "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        }
+      ],
+      "countries": [
+        "GB",
+        "DE",
+        "US",
+        "FR",
+        "IT",
+        "CH",
+        "AT",
+        "TW",
+        "NL",
+        "TR",
+        "PL",
+        "IE",
+        "MA",
+        "SK",
+        "SE",
+        "IL",
+        "DK",
+        "ES"
+      ],
+      "countryCounts": {
+        "GB": 12,
+        "DE": 5,
+        "US": 3,
+        "FR": 3,
+        "IT": 3,
+        "CH": 2,
+        "AT": 2,
+        "TW": 2,
+        "NL": 2,
+        "TR": 1,
+        "PL": 1,
+        "IE": 1,
+        "MA": 1,
+        "SK": 1,
+        "SE": 1,
+        "IL": 1,
+        "DK": 1,
+        "ES": 1
+      },
+      "pending": 36,
+      "firstSeen": "2026-10-08T01:27:55Z",
+      "lastSeen": "2026-10-10T08:28:42Z"
+    },
+    {
+      "id": "2026.33.5",
+      "date": "2026-10-07",
+      "count": 92,
+      "fleet": 3344,
+      "percent": 2.8,
+      "fsd": null,
+      "fsdHw3": "14.3 Lite",
+      "fsdHw4": "14.3.11",
+      "features": [
+        {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
+        },
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3 Lite",
+          "text": "FSD (Supervised) v14.3 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.11",
+          "text": "Full Self-Driving (Supervised) v14.3.11 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
+        },
+        {
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
+        }
+      ],
+      "countries": [
+        "US",
+        "CA"
+      ],
+      "countryCounts": {
+        "US": 88,
+        "CA": 4
+      },
+      "pending": 19,
+      "firstSeen": "2026-10-07T02:27:41Z",
+      "lastSeen": "2026-10-10T07:46:51Z"
+    },
+    {
+      "id": "2026.38.3",
+      "date": "2026-10-06",
+      "count": 7,
+      "fleet": 3344,
+      "percent": 0.2,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Emergency Drive Away",
+          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Set Arrival Energy",
+          "text": "Set your desired Arrival Energy for any trip from your phone. Open the location tab in the Tesla Mobile App, enter your destination, and tap Set Arrival Energy. Requires Mobile App v4.58.0 or later."
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        },
+        {
+          "title": "Supercharger Site Maps",
+          "text": "You can now see a detailed view of select Tesla Superchargers by tapping \"View Site Map.\" When navigating to a pilot location, the site layout and live occupancy (Available / Occupied / Down) will be displayed upon arri\u2026"
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        }
+      ],
+      "countries": [
+        "GB",
+        "ES",
+        "DE",
+        "TW",
+        "NO",
+        "US"
+      ],
+      "countryCounts": {
+        "GB": 2,
+        "ES": 1,
+        "DE": 1,
+        "TW": 1,
+        "NO": 1,
+        "US": 1
+      },
+      "pending": 1,
+      "firstSeen": "2026-10-06T18:33:32Z",
+      "lastSeen": "2026-10-08T05:52:57Z"
+    },
+    {
+      "id": "2026.33.100",
+      "date": "2026-10-06",
+      "count": 36,
+      "fleet": 3344,
+      "percent": 1.1,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "FSD (Supervised)",
+          "text": "Under your supervision, FSD (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other vehicles and ob\u2026"
+        },
+        {
+          "title": "Minor Fixes",
+          "text": "This release contains minor fixes and improvements"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        }
+      ],
+      "countries": [
+        "NL",
+        "BE",
+        "CZ",
+        "DK",
+        "LT",
+        "SK",
+        "SI",
+        "EE"
+      ],
+      "countryCounts": {
+        "NL": 19,
+        "BE": 6,
+        "CZ": 4,
+        "DK": 3,
+        "LT": 1,
+        "SK": 1,
+        "SI": 1,
+        "EE": 1
+      },
+      "pending": 6,
+      "firstSeen": "2026-10-06T18:56:43Z",
+      "lastSeen": "2026-10-10T00:58:12Z"
+    },
+    {
+      "id": "2026.27.6.15",
+      "date": "2026-10-05",
+      "count": 3,
+      "fleet": 3344,
+      "percent": 0.1,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": "14.2.2.5",
+      "features": [
+        {
+          "title": "FSD (Supervised) v14.2.2.5",
+          "text": "- Added Arrival Options for you to select whether FSD should park or stop curbside. - Added navigation and routing into the vision-based neural network for real-time handling of blocked roads and detours. - Added additi\u2026"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. However, the speed determined by the FSD (Supervised) may differ from the speed limit, an\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "- Start Self-Driving with a tap of the touchscreen from Park, or any time during your drive. - Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center displa\u2026"
+        },
+        {
+          "title": "Alternative Routes",
+          "text": "See alternative routes while driving. Tap the map mode button or tap the next turn to switch to Overview mode and choose a different route."
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        },
+        {
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
+        },
+        {
+          "title": "Caraoke with Scoring",
+          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
+        }
+      ],
+      "countries": [
+        "KR"
+      ],
+      "countryCounts": {
+        "KR": 3
+      },
+      "pending": 0,
+      "firstSeen": "2026-10-05T04:28:52Z",
+      "lastSeen": "2026-10-06T08:23:11Z"
+    },
+    {
+      "id": "2026.38",
+      "date": "2026-09-30",
+      "count": 68,
+      "fleet": 3344,
+      "percent": 2.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Dynamic Headlight Leveling",
+          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
+        },
+        {
+          "title": "Supercharger Site Maps",
+          "text": "You can now see a detailed view of select Tesla Superchargers by tapping \"View Site Map.\" When navigating to a pilot location, the site layout and live occupancy (Available / Occupied / Down) will be displayed upon arri\u2026"
+        },
+        {
+          "title": "Visual Updates",
+          "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        }
+      ],
+      "countries": [
+        "US",
+        "GB",
+        "DE",
+        "CH",
+        "NL",
+        "IT",
+        "CZ",
+        "AT",
+        "TW",
+        "FR",
+        "PL",
+        "BE",
+        "ES",
+        "IL",
+        "UA",
+        "DK",
+        "MA",
+        "CA",
+        "NO",
+        "TR"
+      ],
+      "countryCounts": {
+        "US": 21,
+        "GB": 9,
+        "DE": 6,
+        "CH": 5,
+        "NL": 4,
+        "IT": 3,
+        "CZ": 3,
+        "AT": 3,
+        "TW": 2,
+        "FR": 2,
+        "PL": 1,
+        "BE": 1,
+        "ES": 1,
+        "IL": 1,
+        "UA": 1,
+        "DK": 1,
+        "MA": 1,
+        "CA": 1,
+        "NO": 1,
+        "TR": 1
+      },
+      "pending": 3,
+      "firstSeen": "2026-09-30T05:51:14Z",
+      "lastSeen": "2026-10-10T07:30:07Z"
+    },
+    {
+      "id": "2026.27.6.5",
+      "date": "2026-09-24",
+      "count": 1,
+      "fleet": 3344,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "FSD (Supervised) v14.1 Lite",
+          "text": "FSD (Supervised) v14.1 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Driver profile has a strong impact on behavior. The more assertive the profile, the higher\u2026"
+        },
+        {
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile directly from the Self-Driving visualization on the center display."
+        },
+        {
+          "title": "Alternative Routes",
+          "text": "See alternative routes while driving. Tap the map mode button or tap the next turn to switch to Overview mode and choose a different route."
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        }
+      ],
+      "countries": [
+        "KR"
+      ],
+      "countryCounts": {
+        "KR": 1
+      },
+      "pending": 0,
+      "firstSeen": "2026-09-24T04:36:56Z",
+      "lastSeen": "2026-09-24T09:23:36Z"
+    },
+    {
+      "id": "2026.32.7",
+      "date": "2026-09-23",
+      "count": 355,
+      "fleet": 3344,
+      "percent": 10.6,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Minor Fixes",
+          "text": "This release contains minor fixes and improvements"
+        },
+        {
+          "title": "\"Hey Grok\"",
+          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        },
+        {
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
+        },
+        {
+          "title": "Caraoke",
+          "text": "Sing along to your favorite songs by going to App Launcher > Caraoke. Requires Premium Connectivity."
+        },
+        {
+          "title": "Caraoke with Scoring",
+          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
+        },
+        {
+          "title": "Custom Wraps",
+          "text": "Use the Mobile App to upload custom wrap designs from images on your phone and send directly to your Tesla. Go to Creations > Wrap > Upload. Requires Mobile App v4.59.0 or later. To access in car, go to App Launcher > T\u2026"
+        }
+      ],
+      "countries": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "DK",
+        "CH",
+        "NL",
+        "CA",
+        "IT",
+        "AT",
+        "ES",
+        "PL",
+        "CZ",
+        "NO",
+        "SE",
+        "BE",
+        "PT",
+        "TW",
+        "HU",
+        "UA",
+        "IE",
+        "IL",
+        "GR",
+        "HK",
+        "RO",
+        "SI",
+        "CO",
+        "MY",
+        "BG",
+        "SG",
+        "LT",
+        "IS",
+        "SK",
+        "QA",
+        "MA",
+        "AE",
+        "TR"
+      ],
+      "countryCounts": {
+        "US": 135,
+        "GB": 40,
+        "DE": 26,
+        "FR": 19,
+        "DK": 12,
+        "CH": 12,
+        "NL": 11,
+        "CA": 10,
+        "IT": 10,
+        "AT": 9,
+        "ES": 8,
+        "PL": 7,
+        "CZ": 6,
+        "NO": 6,
+        "SE": 5,
+        "BE": 4,
+        "PT": 4,
+        "TW": 4,
+        "HU": 4,
+        "UA": 3,
+        "IE": 2,
+        "IL": 2,
+        "GR": 2,
+        "HK": 1,
+        "RO": 1,
+        "SI": 1,
+        "CO": 1,
+        "MY": 1,
+        "BG": 1,
+        "SG": 1,
+        "LT": 1,
+        "IS": 1,
+        "SK": 1,
+        "QA": 1,
+        "MA": 1,
+        "AE": 1,
+        "TR": 1
+      },
+      "pending": 27,
+      "firstSeen": "2026-09-23T02:08:40Z",
+      "lastSeen": "2026-10-10T01:18:54Z"
+    },
+    {
+      "id": "2026.27.11",
+      "date": "2026-09-23",
+      "count": 650,
+      "fleet": 3344,
+      "percent": 19.4,
+      "fsd": null,
+      "fsdHw3": "14.2 Lite",
+      "fsdHw4": "14.3.10",
+      "features": [
+        {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
+        },
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.2 Lite",
+          "text": "FSD (Supervised) v14.2 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.10",
+          "text": "Full Self-Driving (Supervised) v14.3.10 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
+        },
+        {
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
+        }
+      ],
+      "countries": [
+        "US",
+        "CA",
+        "MX",
+        "PR"
+      ],
+      "countryCounts": {
+        "US": 617,
+        "CA": 30,
+        "MX": 2,
+        "PR": 1
+      },
+      "pending": 15,
+      "firstSeen": "2026-09-23T05:58:06Z",
+      "lastSeen": "2026-10-09T15:54:34Z"
+    },
+    {
+      "id": "2026.27.10",
+      "date": "2026-09-19",
+      "count": 170,
+      "fleet": 3344,
+      "percent": 5.1,
+      "fsd": null,
+      "fsdHw3": "14.2 Lite",
+      "fsdHw4": "14.3.10",
+      "features": [
+        {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
+        },
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.2 Lite",
+          "text": "FSD (Supervised) v14.2 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.10",
+          "text": "Full Self-Driving (Supervised) v14.3.9 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neur\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
+        },
+        {
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
+        }
+      ],
+      "countries": [
+        "US",
+        "CA",
+        "MX"
+      ],
+      "countryCounts": {
+        "US": 156,
+        "CA": 13,
+        "MX": 1
+      },
+      "pending": 2,
+      "firstSeen": "2026-09-19T02:13:13Z",
+      "lastSeen": "2026-09-26T13:44:42Z"
+    },
+    {
+      "id": "2026.28.5",
+      "date": "2026-09-16",
+      "count": 5,
+      "fleet": 3344,
+      "percent": 0.1,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Carpark, Indoor Carpark, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted\u2026"
+        },
+        {
+          "title": "Brake Confirm",
+          "text": "Brake Confirm for the Start Self-Driving button is now defaulted off. When disabled, Start Self-Driving will not require you to press and release the brake to confirm engagement. You can enable Brake Confirm in Self-Dri\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.9 Down Under",
+          "text": "Full Self-Driving (Supervised) v14.3.9 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neur\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised) Down Under",
+          "text": "Under your supervision, Full Self-Driving (Supervised) Down Under can drive your Tesla almost anywhere. It will make lane changes, select forks to follow your navigation route, navigate around other vehicles and objects\u2026"
+        },
+        {
+          "title": "Minor Fixes",
+          "text": "This release contains minor fixes and improvements"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Driver profile now has a stronger impact on behavior. The more assertive the profile, t\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "- You can now view your Self-Driving stats under Controls > Self-Driving. - Start Self-Driving with a tap of the touchscreen from Park, or any time during your drive. - Adjust settings like the Speed Profile and Arrival\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        }
+      ],
+      "countries": [
+        "AU"
+      ],
+      "countryCounts": {
+        "AU": 5
+      },
+      "pending": 0,
+      "firstSeen": "2026-09-16T19:37:54Z",
+      "lastSeen": "2026-09-29T22:44:10Z"
+    },
+    {
+      "id": "2026.27.300",
+      "date": "2026-09-15",
+      "count": 38,
+      "fleet": 3344,
+      "percent": 1.1,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "FSD (Supervised)",
+          "text": "Under your supervision, FSD (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other vehicles and ob\u2026"
+        },
+        {
+          "title": "Minor Fixes",
+          "text": "This release contains minor fixes and improvements"
+        },
+        {
+          "title": "\"Hey Grok\"",
+          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        },
+        {
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
+        },
+        {
+          "title": "Caraoke with Scoring",
+          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
+        },
+        {
+          "title": "Custom Wraps",
+          "text": "Use the Mobile App to upload custom wrap designs from images on your phone and send directly to your Tesla. Go to Creations > Wrap > Upload. Requires Mobile App v4.59.0 or later. To access in car, go to App Launcher > T\u2026"
+        }
+      ],
+      "countries": [
+        "NL",
+        "BE",
+        "DK",
+        "LT",
+        "SI",
+        "CZ",
+        "SK"
+      ],
+      "countryCounts": {
+        "NL": 21,
+        "BE": 8,
+        "DK": 4,
+        "LT": 2,
+        "SI": 1,
+        "CZ": 1,
+        "SK": 1
+      },
+      "pending": 1,
+      "firstSeen": "2026-09-15T16:48:19Z",
+      "lastSeen": "2026-10-01T13:29:51Z"
+    },
+    {
+      "id": "2026.32.3",
+      "date": "2026-09-09",
+      "count": 374,
+      "fleet": 3344,
+      "percent": 11.2,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Recall Notice",
+          "text": "This software update includes the remedy for EU Recall Submission 2026_103555. It restores compliance with UNECE Regulation No. 135. After this update installs successfully, you do not need to take any further action fo\u2026"
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        },
+        {
+          "title": "\"Hey Grok\"",
+          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        },
+        {
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
+        },
+        {
+          "title": "Caraoke",
+          "text": "Sing along to your favorite songs by going to App Launcher > Caraoke. Requires Premium Connectivity."
+        },
+        {
+          "title": "Caraoke with Scoring",
+          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
+        }
+      ],
+      "countries": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "NL",
+        "DK",
+        "CA",
+        "CH",
+        "AT",
+        "IT",
+        "PL",
+        "CZ",
+        "ES",
+        "BE",
+        "SE",
+        "NO",
+        "HU",
+        "TW",
+        "AU",
+        "IE",
+        "IL",
+        "TR",
+        "BG",
+        "GR",
+        "AE",
+        "RO",
+        "SG",
+        "PH",
+        "HK",
+        "CO",
+        "IS",
+        "TH",
+        "LT",
+        "SI",
+        "MY",
+        "PT",
+        "QA",
+        "UA",
+        "SK"
+      ],
+      "countryCounts": {
+        "US": 152,
+        "GB": 38,
+        "DE": 26,
+        "FR": 20,
+        "NL": 13,
+        "DK": 13,
+        "CA": 12,
+        "CH": 10,
+        "AT": 10,
+        "IT": 9,
+        "PL": 7,
+        "CZ": 7,
+        "ES": 6,
+        "BE": 5,
+        "SE": 5,
+        "NO": 5,
+        "HU": 4,
+        "TW": 4,
+        "AU": 3,
+        "IE": 2,
+        "IL": 2,
+        "TR": 2,
+        "BG": 2,
+        "GR": 2,
+        "AE": 1,
+        "RO": 1,
+        "SG": 1,
+        "PH": 1,
+        "HK": 1,
+        "CO": 1,
+        "IS": 1,
+        "TH": 1,
+        "LT": 1,
+        "SI": 1,
+        "MY": 1,
+        "PT": 1,
+        "QA": 1,
+        "UA": 1,
+        "SK": 1
+      },
+      "pending": 4,
+      "firstSeen": "2026-09-09T18:18:11Z",
+      "lastSeen": "2026-10-02T06:50:37Z"
+    },
+    {
+      "id": "2026.27.6",
+      "date": "2026-09-08",
+      "count": 551,
+      "fleet": 3344,
+      "percent": 16.5,
+      "fsd": null,
+      "fsdHw3": "14.2 Lite",
+      "fsdHw4": "14.3.9",
+      "features": [
+        {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
+        },
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.2 Lite",
+          "text": "FSD (Supervised) v14.2 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.9",
+          "text": "Full Self-Driving (Supervised) v14.3.9 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neur\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
+        },
+        {
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
+        }
+      ],
+      "countries": [
+        "US",
+        "CA",
+        "MX",
+        "PR"
+      ],
+      "countryCounts": {
+        "US": 521,
+        "CA": 27,
+        "MX": 2,
+        "PR": 1
+      },
+      "pending": 1,
+      "firstSeen": "2026-09-08T22:32:59Z",
+      "lastSeen": "2026-09-26T13:43:20Z"
+    },
+    {
+      "id": "2026.27.200",
+      "date": "2026-09-01",
+      "count": 32,
+      "fleet": 3344,
+      "percent": 1.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "FSD (Supervised)",
+          "text": "Under your supervision, FSD (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other vehicles and ob\u2026"
+        },
+        {
+          "title": "Minor Fixes",
+          "text": "This release contains minor fixes and improvements"
+        },
+        {
+          "title": "Recall Notice",
+          "text": "This software update includes the remedy for EU Recall Submission 2026_103555. It restores compliance with UNECE Regulation No. 135. After this update installs successfully, you do not need to take any further action fo\u2026"
+        },
+        {
+          "title": "\"Hey Grok\"",
+          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        },
+        {
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
+        },
+        {
+          "title": "Caraoke with Scoring",
+          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
+        }
+      ],
+      "countries": [
+        "NL",
+        "BE",
+        "DK",
+        "LT",
+        "SI",
+        "CZ"
+      ],
+      "countryCounts": {
+        "NL": 18,
+        "BE": 7,
+        "DK": 4,
+        "LT": 1,
+        "SI": 1,
+        "CZ": 1
+      },
+      "pending": 1,
+      "firstSeen": "2026-09-01T21:38:57Z",
+      "lastSeen": "2026-09-22T11:21:10Z"
+    },
+    {
+      "id": "2026.27.100.1",
+      "date": "2026-08-24",
+      "count": 31,
+      "fleet": 3344,
+      "percent": 0.9,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "FSD (Supervised)",
+          "text": "Under your supervision, FSD (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other vehicles and ob\u2026"
+        },
+        {
+          "title": "\"Hey Grok\"",
+          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        },
+        {
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
+        },
+        {
+          "title": "Caraoke with Scoring",
+          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
+        },
+        {
+          "title": "Custom Wraps",
+          "text": "Use the Mobile App to upload custom wrap designs from images on your phone and send directly to your Tesla. Go to Creations > Wrap > Upload. Requires Mobile App v4.59.0 or later. To access in car, go to App Launcher > T\u2026"
+        },
+        {
+          "title": "Driving Visualization",
+          "text": "Customize your Self-Driving zoom preference. Select desired zoom level in Controls > Self-Driving > Visualization Camera Zoom."
+        }
+      ],
+      "countries": [
+        "NL",
+        "BE",
+        "DK",
+        "LT"
+      ],
+      "countryCounts": {
+        "NL": 20,
+        "BE": 6,
+        "DK": 4,
+        "LT": 1
+      },
+      "pending": 0,
+      "firstSeen": "2026-08-24T18:18:24Z",
+      "lastSeen": "2026-08-30T16:25:54Z"
+    }
+  ]
+}
