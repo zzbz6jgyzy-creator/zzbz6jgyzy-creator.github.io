@@ -6,13 +6,13 @@
     <title>Update tracker — @ALJR86</title>
     <meta
       name="description"
-      content="Live Tesla software update tracker: the number on the screen, what it adds, and which countries Teslascope has actually seen on that build."
+      content="Live Tesla software update tracker: a searchable world map of where new builds are landing, plus what the number on the screen actually adds."
     />
     <link rel="canonical" href="https://zzbz6jgyzy-creator.github.io/updates.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="@ALJR86" />
     <meta property="og:title" content="Update tracker — @ALJR86" />
-    <meta property="og:description" content="Live Tesla software update tracker: the number on the screen, what it adds, and which countries Teslascope has actually seen on that build." />
+    <meta property="og:description" content="Live Tesla software update tracker: a searchable world map of where new builds are landing, plus what the number on the screen actually adds." />
     <meta property="og:url" content="https://zzbz6jgyzy-creator.github.io/updates.html" />
     <meta property="og:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/fsd-snow-poster.jpg" />
     <meta property="og:image:alt" content="FSD Supervised on a snowy European road" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Update tracker — @ALJR86" />
-    <meta name="twitter:description" content="Live Tesla software update tracker: the number on the screen, what it adds, and which countries Teslascope has actually seen on that build." />
+    <meta name="twitter:description" content="Live Tesla software update tracker: a searchable world map of where new builds are landing, plus what the number on the screen actually adds." />
     <meta name="twitter:image" content="https://zzbz6jgyzy-creator.github.io/assets/dispatch/fsd-snow-poster.jpg" />
     <meta name="twitter:image:alt" content="FSD Supervised on a snowy European road" />
 
@@ -63,23 +63,27 @@
       </header>
 
       <main id="main">
-        <section class="page-hero">
-          <p class="eyebrow">Tesla · Tracker</p>
-          <h1>Update tracker</h1>
-          <p>
-            The car says an update is ready. Type the number. This is what it
-            actually adds — and which countries Teslascope has seen on that
-            build. Search any country. Nothing here is locked to one market.
-          </p>
+        <section class="updates-hero">
+          <div>
+            <p class="eyebrow">Tesla · Live map</p>
+            <h1>Update tracker</h1>
+            <p>
+              Hotspots light up as Teslascope sees a new build on cars.
+              Search a country or a version number.
+            </p>
+          </div>
           <p class="meta news-status-line" id="updates-updated">Checking Teslascope…</p>
-          <form class="updates-lookup" id="updates-lookup" action="#builds">
+        </section>
+
+        <section class="updates-board" aria-labelledby="updates-map-heading">
+          <form class="updates-lookup" id="updates-lookup" action="#map">
             <div>
-              <label class="updates-search-label" for="updates-version">Number on the screen</label>
+              <label class="updates-search-label" for="updates-version">Version</label>
               <input
                 id="updates-version"
                 class="updates-search"
                 type="search"
-                placeholder="e.g. 2026.32.7"
+                placeholder="2026.38.3.1"
                 inputmode="decimal"
                 autocomplete="off"
                 spellcheck="false"
@@ -91,29 +95,56 @@
                 id="updates-search"
                 class="updates-search"
                 type="search"
-                placeholder="United States, Germany, Australia…"
+                placeholder="Germany, United States, Australia…"
                 autocomplete="off"
               />
             </div>
-          </form>
-          <div class="updates-toolbar">
-            <div class="fsd-filters" role="group" aria-label="Quick countries">
-              <button type="button" class="fsd-filter" data-updates-country="US" aria-pressed="false">United States</button>
-              <button type="button" class="fsd-filter" data-updates-country="DE" aria-pressed="false">Germany</button>
-              <button type="button" class="fsd-filter" data-updates-country="NL" aria-pressed="false">Netherlands</button>
-              <button type="button" class="fsd-filter" data-updates-country="AU" aria-pressed="false">Australia</button>
-              <button type="button" class="fsd-filter" data-updates-country="CA" aria-pressed="false">Canada</button>
-              <button type="button" class="fsd-filter" data-updates-country="FR" aria-pressed="false">France</button>
+            <div class="updates-lookup-actions">
+              <button type="button" class="updates-clear" id="updates-clear" hidden>Reset map</button>
             </div>
+          </form>
+
+          <div class="updates-map-shell" id="map">
+            <svg class="updates-map" id="updates-map" viewBox="0 0 1000 500" role="img" aria-labelledby="updates-map-heading">
+              <title id="updates-map-heading">Where Tesla software is landing</title>
+              <defs>
+                <radialGradient id="updates-ocean" cx="50%" cy="42%" r="62%">
+                  <stop offset="0%" stop-color="#151922" />
+                  <stop offset="100%" stop-color="#0b0c10" />
+                </radialGradient>
+                <filter id="updates-glow" x="-60%" y="-60%" width="220%" height="220%">
+                  <feGaussianBlur stdDeviation="3.2" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              <rect width="1000" height="500" fill="url(#updates-ocean)" />
+              <g class="updates-map-stage" id="updates-map-stage">
+                <g class="updates-map-grid" id="updates-map-grid"></g>
+                <g id="updates-map-land"></g>
+                <g id="updates-hotspots"></g>
+              </g>
+            </svg>
+            <div class="updates-map-badge" id="updates-map-badge" hidden></div>
+            <div class="updates-map-tip" id="updates-map-tip" hidden></div>
           </div>
+
+          <div class="updates-map-meta">
+            <div class="updates-map-legend" aria-hidden="true">
+              <span><i class="updates-key updates-key-hot"></i> New wave</span>
+              <span><i class="updates-key updates-key-warm"></i> Rolling</span>
+              <span><i class="updates-key updates-key-cool"></i> On cars</span>
+            </div>
+            <p class="updates-map-caption" id="updates-map-caption">Live wave</p>
+          </div>
+          <aside class="updates-focus" id="updates-focus" hidden></aside>
+          <div class="updates-hot-list" id="updates-hot-list"></div>
         </section>
 
-        <section class="section" style="padding-top: 1.4rem" aria-labelledby="updates-fsd-heading">
-          <div class="section-head">
-            <h2 id="updates-fsd-heading">On cars right now</h2>
-            <p>Latest spotted build, the widest slice of the fleet, and the two FSD stacks.</p>
-          </div>
-          <div class="updates-fleet" id="updates-fleet" aria-label="Biggest slices of the tracked fleet"></div>
+        <section class="section updates-kpis" aria-labelledby="updates-fsd-heading">
+          <h2 class="visually-hidden" id="updates-fsd-heading">On cars right now</h2>
           <div class="stats" id="fsd">
             <div class="stat">
               <b id="stat-latest">—</b>
@@ -145,32 +176,20 @@
             <button type="button" class="fsd-filter" data-updates-kind="cabin" aria-pressed="false">Cabin</button>
           </div>
           <p class="updates-empty" id="updates-empty" hidden>No listed build matches that number.</p>
-          <div class="starship-list" id="updates-list"></div>
-        </section>
-
-        <section class="section" aria-labelledby="updates-fsd-detail-heading">
-          <article class="panel fsd-track-card fsd-track-brussels">
-            <p class="eyebrow" id="updates-fsd-detail-heading">Supervised · Public notes only</p>
-            <h3>v14.3 in North America. v14.2 in Europe.</h3>
-            <div id="updates-fsd-lines" class="updates-fsd-lines"></div>
-            <p class="fsd-track-link"><a href="/fsd-europe.html">FSD Europe country map →</a></p>
-          </article>
+          <div class="updates-grid" id="updates-list"></div>
         </section>
 
         <section class="section" aria-labelledby="updates-disclaimer-heading">
-          <div class="panel reveal">
-            <p class="eyebrow" id="updates-disclaimer-heading">Sources &amp; disclaimer</p>
+          <div class="panel">
+            <p class="eyebrow" id="updates-disclaimer-heading">Sources</p>
             <p id="updates-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
             <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
-              Tesla does not publish a live public update API. This page snapshots
-              Teslascope’s connected-car reports about twice an hour — same idea as
-              the News wire. “Seen in” means a tracked car in that country reported
-              the build, not that Tesla has finished the rollout. FSD Supervised is
-              SAE Level 2. The driver supervises. Nothing here is about one privately
-              owned car.
+              Tesla has no public live update API. The map snapshots Teslascope’s
+              connected cars about twice an hour. A hotspot means a tracked car
+              reported that build — not that Tesla finished the rollout.
             </p>
             <p style="margin: 1rem 0 0">
-              <a class="button button-ghost" href="/tesla.html">Back to Tesla</a>
+              <a class="button button-ghost" href="/tesla.html">Tesla desk</a>
               <a class="button button-ghost" href="/fsd-europe.html">FSD Europe</a>
             </p>
           </div>
