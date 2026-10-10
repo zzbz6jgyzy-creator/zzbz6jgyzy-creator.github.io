@@ -22,6 +22,17 @@
       precision: "datetime",
     },
     {
+      id: "tesla-roadster-unveil-2026",
+      title: "Roadster unveiling",
+      start: "2026-10-15T17:00:00Z",
+      group: "tesla",
+      where: "Waco / McGregor, Texas · outdoors",
+      note: "Tesla moved it from 1 October after calling weather on an outdoor-only demo. Time and stream still TBA.",
+      href: "https://x.com/Tesla/status/2104647484169728442",
+      status: "confirmed",
+      precision: "day",
+    },
+    {
       id: "tesla-q3-2026-earnings",
       title: "Tesla Q3 earnings",
       start: "2026-10-21T21:30:00Z",
@@ -180,7 +191,11 @@
     if (event.precision === "month") {
       return `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
     }
-    if (event.precision === "day" || event.status === "net") {
+    if (event.precision === "day") {
+      const day = `${d.getDate()} ${MONTHS[d.getMonth()]}`;
+      return event.status === "net" || event.status === "tbd" ? `NET ${day}` : day;
+    }
+    if (event.status === "net") {
       return `NET ${d.getDate()} ${MONTHS[d.getMonth()]}`;
     }
     const sameYear = d.getFullYear() === now.getFullYear();
@@ -362,7 +377,9 @@
         renderList(preview, upcoming.slice(0, 5), now);
       }
       if (nextTesla) {
-        const tesla = upcoming.find((e) => e.group === "tesla");
+        const tesla =
+          upcoming.find((e) => e.id === "tesla-q3-2026-earnings") ||
+          upcoming.find((e) => e.group === "tesla");
         if (tesla) {
           nextTesla.textContent = `${tesla.title} · ${formatWhen(tesla, now)}`;
         }
