@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="updates-page">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -66,102 +66,120 @@
       </header>
 
       <main id="main">
-        <section class="updates-hero">
+        <section class="fsd-hero">
           <div>
             <p class="eyebrow">Tesla · Live map</p>
-            <h1>Software update tracker</h1>
+            <h1>Where the new build is</h1>
             <p>
-              Hotspots light up as Teslascope sees a new build on cars.
+              Red dots are the newest wave Teslascope has seen on cars.
               Search a country or a version number.
             </p>
           </div>
           <p class="meta news-status-line" id="updates-updated">Checking Teslascope…</p>
         </section>
 
-        <section class="updates-board" aria-labelledby="updates-map-heading">
-          <form class="updates-lookup" id="updates-lookup" action="#map">
-            <div>
-              <label class="updates-search-label" for="updates-version">Version</label>
-              <input
-                id="updates-version"
-                class="updates-search"
-                type="search"
-                placeholder="Search a build"
-                inputmode="decimal"
-                autocomplete="off"
-                spellcheck="false"
-              />
-            </div>
-            <div>
-              <label class="updates-search-label" for="updates-search">Country</label>
-              <input
-                id="updates-search"
-                class="updates-search"
-                type="search"
-                placeholder="Germany, Australia, Japan…"
-                autocomplete="off"
-              />
-            </div>
-          </form>
-
-          <div class="updates-map-shell" id="map">
-            <svg class="updates-map" id="updates-map" viewBox="0 0 1000 500" width="1000" height="500" role="img" aria-labelledby="updates-map-heading">
-              <title id="updates-map-heading">Where Tesla software is landing</title>
-              <defs>
-                <radialGradient id="updates-ocean" cx="50%" cy="42%" r="62%">
-                  <stop offset="0%" stop-color="#151922" />
-                  <stop offset="100%" stop-color="#0b0c10" />
-                </radialGradient>
-              </defs>
-              <rect width="1000" height="500" fill="url(#updates-ocean)" />
-              <g class="updates-map-stage" id="updates-map-stage">
-                <g class="updates-map-grid" id="updates-map-grid"></g>
-                <g id="updates-map-land"></g>
-                <g id="updates-hotspots"></g>
-              </g>
-            </svg>
-            <div class="updates-map-badge" id="updates-map-badge" hidden></div>
-            <div class="updates-map-tip" id="updates-map-tip" hidden></div>
-          </div>
-
-          <div class="updates-map-meta">
-            <div class="updates-map-legend" aria-hidden="true">
-              <span><i class="updates-key updates-key-hot"></i> New wave</span>
-              <span><i class="updates-key updates-key-warm"></i> Rolling</span>
-              <span><i class="updates-key updates-key-cool"></i> On cars</span>
-            </div>
-            <div class="updates-map-actions">
-              <p class="updates-map-caption" id="updates-map-caption">Live wave</p>
-              <button type="button" class="updates-clear" id="updates-clear" hidden>Reset map</button>
-            </div>
-          </div>
-          <aside class="updates-focus" id="updates-focus" hidden></aside>
-          <div class="updates-hot-list" id="updates-hot-list"></div>
-        </section>
-
-        <section class="section updates-kpis" aria-labelledby="updates-fsd-heading">
-          <h2 class="visually-hidden" id="updates-fsd-heading">On cars right now</h2>
-          <div class="stats" id="fsd">
-            <div class="stat">
+        <section class="fsd-board updates-board" id="map" aria-labelledby="updates-map-heading">
+          <div class="fsd-kpis" aria-label="Snapshot">
+            <button type="button" class="fsd-kpi" data-updates-stat="latest">
               <b id="stat-latest">—</b>
-              <span>Latest spotted</span>
-            </div>
-            <div class="stat">
+              <span>latest spotted</span>
+            </button>
+            <button type="button" class="fsd-kpi" data-updates-stat="wide">
               <b id="stat-wide">—</b>
-              <span>Widest build</span>
-            </div>
-            <div class="stat">
+              <span>widest build</span>
+            </button>
+            <button type="button" class="fsd-kpi" data-updates-stat="na">
               <b id="stat-fsd-na">—</b>
               <span>North America FSD</span>
-            </div>
-            <div class="stat">
+            </button>
+            <button type="button" class="fsd-kpi" data-updates-stat="eu">
               <b id="stat-fsd-eu">—</b>
               <span>Europe FSD build</span>
+            </button>
+          </div>
+          <p class="updates-now" id="updates-now"></p>
+
+          <div class="fsd-stage">
+            <div class="fsd-map-pane">
+              <h2 class="visually-hidden" id="updates-map-heading">Where Tesla software is landing</h2>
+              <div class="updates-map-shell">
+                <svg class="updates-map" id="updates-map" viewBox="0 0 1000 500" width="1000" height="500" role="img" aria-labelledby="updates-map-heading">
+                  <title>Where Tesla software is landing</title>
+                  <defs>
+                    <radialGradient id="updates-ocean" cx="50%" cy="42%" r="62%">
+                      <stop offset="0%" stop-color="#151922" />
+                      <stop offset="100%" stop-color="#0b0c10" />
+                    </radialGradient>
+                  </defs>
+                  <rect width="1000" height="500" fill="url(#updates-ocean)" />
+                  <g class="updates-map-stage" id="updates-map-stage">
+                    <g class="updates-map-grid" id="updates-map-grid"></g>
+                    <g id="updates-map-land"></g>
+                    <g id="updates-hotspots"></g>
+                  </g>
+                </svg>
+                <div class="updates-map-badge" id="updates-map-badge" hidden></div>
+                <div class="updates-map-zoom" role="group" aria-label="Zoom the map">
+                  <button type="button" data-updates-zoom="in" aria-label="Zoom in">+</button>
+                  <button type="button" data-updates-zoom="out" aria-label="Zoom out">−</button>
+                  <button type="button" data-updates-zoom="europe">Europe</button>
+                  <button type="button" data-updates-zoom="world">World</button>
+                </div>
+                <div class="updates-map-tip" id="updates-map-tip" hidden></div>
+              </div>
+              <div class="fsd-map-meta">
+                <div class="updates-map-legend" aria-hidden="true">
+                  <span><i class="updates-key updates-key-hot"></i> New wave</span>
+                  <span><i class="updates-key updates-key-warm"></i> Rolling</span>
+                  <span><i class="updates-key updates-key-cool"></i> On cars</span>
+                </div>
+                <div class="updates-map-actions">
+                  <p class="updates-map-caption" id="updates-map-caption">Live wave</p>
+                  <button type="button" class="updates-clear" id="updates-clear" hidden>Reset</button>
+                </div>
+              </div>
             </div>
+
+            <aside class="fsd-panel" id="countries" aria-labelledby="updates-list-heading">
+              <div class="fsd-panel-head">
+                <h2 id="updates-list-heading">Countries</h2>
+                <p id="updates-spot-count">—</p>
+              </div>
+              <form class="updates-lookup" id="updates-lookup" action="#map">
+                <div>
+                  <label class="updates-search-label" for="updates-version">Version</label>
+                  <input
+                    id="updates-version"
+                    class="updates-search"
+                    type="search"
+                    placeholder="2026.38…"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </div>
+                <div>
+                  <label class="updates-search-label" for="updates-search">Country</label>
+                  <input
+                    id="updates-search"
+                    class="updates-search"
+                    type="search"
+                    placeholder="Germany, Japan…"
+                    autocomplete="off"
+                  />
+                </div>
+              </form>
+              <div class="fsd-filters" role="group" aria-label="Filter map countries">
+                <button type="button" class="fsd-filter" data-updates-spots="wave" aria-pressed="true">New wave</button>
+                <button type="button" class="fsd-filter" data-updates-spots="all" aria-pressed="false">All spots</button>
+              </div>
+              <div class="fsd-country-detail" id="updates-focus" hidden></div>
+              <div class="fsd-country-list" id="updates-hot-list"></div>
+            </aside>
           </div>
         </section>
 
-        <section class="section" id="builds" aria-labelledby="updates-log-heading">
+        <section class="section updates-log" id="builds" aria-labelledby="updates-log-heading">
           <div class="section-head">
             <h2 id="updates-log-heading">What that number means</h2>
             <p id="updates-showing">Builds</p>
@@ -172,12 +190,12 @@
             <button type="button" class="fsd-filter" data-updates-kind="cabin" aria-pressed="false">Cabin</button>
           </div>
           <p class="updates-empty" id="updates-empty" hidden>No listed build matches that number.</p>
-          <div class="updates-grid" id="updates-list"></div>
+          <div class="updates-rows" id="updates-list"></div>
         </section>
 
-        <section class="section" aria-labelledby="updates-disclaimer-heading">
+        <section class="section">
           <div class="panel">
-            <p class="eyebrow" id="updates-disclaimer-heading">Sources</p>
+            <p class="eyebrow">Sources</p>
             <p id="updates-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
             <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
               Tesla has no public live update API. The map snapshots Teslascope’s
