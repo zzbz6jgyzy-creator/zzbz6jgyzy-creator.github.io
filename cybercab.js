@@ -29,7 +29,7 @@
   const STORE = "aljr.cybercab.best";
   const BOARD_STORE = "aljr.cybercab.board";
   const NAME_STORE = "aljr.cybercab.name";
-  const SHARE_URL = "https://zzbz6jgyzy-creator.github.io/cybercab.html";
+  const SHARE_URL = "https://superchargeddaily.com/cybercab.html";
   const BOARD_MAX = 8;
   const LANE_X = [-0.7, 0, 0.7];
   const PLAYER_Z = 0.56;

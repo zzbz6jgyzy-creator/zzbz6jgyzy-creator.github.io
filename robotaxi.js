@@ -15,7 +15,7 @@
   const STORE = "aljr.taxi.best";
   const BOARD_STORE = "aljr.taxi.board";
   const NAME_STORE = "aljr.taxi.name";
-  const SHARE_URL = "https://zzbz6jgyzy-creator.github.io/robotaxi.html";
+  const SHARE_URL = "https://superchargeddaily.com/robotaxi.html";
 
   const ZONES = [
     { id: "downtown", name: "Downtown", fare: 16, base: 22, art: [18, 28, 22, 32, 16] },
