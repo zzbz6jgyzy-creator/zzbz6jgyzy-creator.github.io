@@ -178,9 +178,15 @@
       const next = mergeKnown(enriched, fallback);
       if (!KEYS.some((key) => known(next.values[key]))) throw new Error("empty");
       paint(next.values, false);
-      writeCache(next);
-      const day = formatDay(next.updated);
-      setStatus(day ? `Updated ${day}` : "Updated", "live");
+      const complete = KEYS.every((key) => known(next.values[key]));
+      const day = formatDay(next.updated || fallback.updated);
+      if (complete && next.updated) {
+        writeCache(next);
+        setStatus(`Updated ${day}`, "live");
+        return;
+      }
+      writeCache({ values: next.values, updated: next.updated || fallback.updated });
+      setStatus(day ? `Last verified ${day}` : "Last verified figures", "stale");
     } catch {
       if (KEYS.some((key) => known(fallback.values[key]))) {
         const recovered = { ...fallback, values: await enrichFsd(fallback.values) };
