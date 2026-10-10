@@ -72,19 +72,23 @@
             live fetch is quiet.
           </p>
           <div class="newsletter newsletter-hero reveal is-visible" data-newsletter="banner" id="newsletter">
-            <div>
-              <p class="eyebrow">Newsletter</p>
-              <h2 id="newsletter-heading">Get these headlines by email</h2>
-              <p>Tesla, SpaceX and Grok from the desk. Independent. No spam.</p>
+              <div class="newsletter-head">
+                <img class="newsletter-logo" src="/assets/brand/logo.png" alt="" width="56" height="56" />
+                <div>
+                  <p class="newsletter-kicker">Free newsletter</p>
+                  <h2 id="newsletter-heading">Supercharged Daily</h2>
+                  <p class="newsletter-tagline">Tesla, SpaceX, xAI and the whole Musk world, supercharged.</p>
+                </div>
+              </div>
+              <form class="newsletter-form" data-newsletter-form>
+                <label class="visually-hidden" for="newsletter-email-news">Email address</label>
+                <input id="newsletter-email-news" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="Your email address" />
+                <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
+                <button class="newsletter-button" type="submit">Subscribe</button>
+              </form>
+              <p class="newsletter-fine">Free. No spam. Unsubscribe anytime.</p>
+              <p class="newsletter-status" data-newsletter-status role="status"></p>
             </div>
-            <form class="newsletter-form" data-newsletter-form>
-              <label class="newsletter-label" for="newsletter-email-news">Email</label>
-              <input id="newsletter-email-news" name="email" type="email" required autocomplete="email" placeholder="you@email.com" />
-              <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
-              <button class="button button-primary" type="submit">Subscribe</button>
-            </form>
-            <p class="newsletter-status" data-newsletter-status role="status"></p>
-          </div>
         </section>
 
         <section class="section" style="padding-top: 1.5rem" aria-labelledby="news-heading">
