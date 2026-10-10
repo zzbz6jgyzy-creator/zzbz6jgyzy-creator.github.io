@@ -131,6 +131,12 @@ a:hover {
   color: #fff;
 }
 
+img.brand-mark {
+  background: none;
+  border-radius: 0;
+  object-fit: contain;
+}
+
 .brand-text {
   font-weight: 600;
   font-size: 0.95rem;
