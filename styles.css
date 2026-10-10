@@ -157,6 +157,16 @@ img.brand-mark {
   justify-content: flex-end;
 }
 
+@media (max-width: 1200px) and (min-width: 761px) {
+  .nav {
+    column-gap: 0.72rem;
+  }
+
+  .nav a {
+    font-size: 0.8rem;
+  }
+}
+
 .nav a {
   text-decoration: none;
   font-size: 0.88rem;
@@ -1647,7 +1657,7 @@ button.fsd-kpi[aria-pressed="true"] {
     position: absolute;
     top: calc(100% + 0.35rem);
     right: 1rem;
-    width: min(calc(100% - 2rem), 240px);
+    width: min(calc(100% - 2rem), 20rem);
     padding: 0.75rem;
     background: #15161b;
     border: 1px solid var(--line);
@@ -2454,6 +2464,10 @@ button.fsd-kpi[aria-pressed="true"] {
   stroke: rgba(236, 236, 232, 0.38);
   stroke-width: 0.7;
   vector-effect: non-scaling-stroke;
+}
+
+.updates-map-land-raster {
+  pointer-events: none;
 }
 
 .updates-hot {
@@ -4012,7 +4026,6 @@ a.news-card:hover h3 {
 }
 @media (min-width: 900px) {
   .brand-wordmark { height: 24px; }
-  .topbar .nav { column-gap: 1.1rem; }
 }
 
 /* Newsletter box: phone polish (iOS) */

@@ -4,6 +4,7 @@
 
   const LIVE_URL = "/updates-live.json";
   const LAND_URL = "/assets/world-land.svg";
+  const LAND_IMG = "/assets/world-land.png";
   const STALE_MS = 90 * 60 * 1000;
   const MAP_W = 1000;
   const MAP_H = 500;
@@ -71,7 +72,7 @@
     "NO", "SE", "FI", "PL", "CZ", "SK", "SI", "HR", "HU", "GR", "LT", "EE",
     "LU", "IS", "BG", "RO", "UA",
   ]);
-  const EUROPE_BOX = [435, 68, 170, 85];
+  const EUROPE_BOX = [420, 52, 200, 100];
   const MIN_VIEW_W = 48;
 
   const statusLabel = {
@@ -340,9 +341,7 @@
     }
   };
 
-  const loadLand = async () => {
-    const slot = document.getElementById("updates-map-land");
-    if (!slot || slot.childElementCount) return;
+  const loadLandPath = async (slot) => {
     try {
       const res = await fetch(LAND_URL, { cache: "force-cache" });
       if (!res.ok) return;
@@ -353,11 +352,27 @@
       const clone = document.createElementNS("http://www.w3.org/2000/svg", "path");
       clone.setAttribute("d", path.getAttribute("d"));
       clone.setAttribute("class", "updates-map-land");
-      clone.setAttribute("fill-rule", path.getAttribute("fill-rule") || "evenodd");
+      clone.setAttribute("fill-rule", "nonzero");
       slot.append(clone);
     } catch {
       /* map still works with hotspots only */
     }
+  };
+
+  const loadLand = async () => {
+    const slot = document.getElementById("updates-map-land");
+    if (!slot || slot.childElementCount) return;
+    const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
+    image.setAttribute("href", LAND_IMG);
+    image.setAttribute("width", String(MAP_W));
+    image.setAttribute("height", String(MAP_H));
+    image.setAttribute("preserveAspectRatio", "none");
+    image.setAttribute("class", "updates-map-land-raster");
+    image.addEventListener("error", () => {
+      image.remove();
+      loadLandPath(slot);
+    });
+    slot.append(image);
   };
 
   const heatOf = (row, latestId) => {
