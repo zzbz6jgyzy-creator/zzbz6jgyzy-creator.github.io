@@ -3331,3 +3331,19 @@ a.news-card:hover h3 {
     transition: none;
   }
 }
+
+/* Wordmark brand (logo 1b) */
+.brand-wordmark { display: block; height: 27px; width: auto; }
+.newsletter-head:has(.newsletter-lockup) { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+.newsletter-lockup { display: block; width: 300px; max-width: 100%; height: auto; }
+.footer-lockup { display: inline-block; margin-bottom: 0.75rem; }
+.footer-lockup img { display: block; width: 220px; height: auto; }
+@media (max-width: 420px) {
+  .brand { gap: 0.5rem; }
+  .brand-wordmark { height: 23px; }
+  .newsletter-lockup { width: 250px; }
+}
+@media (min-width: 900px) {
+  .brand-wordmark { height: 24px; }
+  .topbar .nav { column-gap: 1.1rem; }
+}
