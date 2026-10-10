@@ -1,7 +1,7 @@
 window.TESLA_UPDATES = {
   updated: "2026-10-09",
   note:
-    "Plain-English reading of Tesla’s public release notes, plus where community trackers have actually seen each build on cars. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
+    "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
     headline: "FSD right now",
     lines: [
