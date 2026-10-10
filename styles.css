@@ -1029,6 +1029,69 @@ article.story-card {
   text-decoration: underline;
 }
 
+.grok-levels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  width: min(100% - 2.5rem, var(--max));
+  margin: 1.5rem auto 0.4rem;
+}
+
+.grok-level-card {
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+  padding: 1rem 1.05rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.grok-level-card:hover {
+  border-color: var(--line-strong);
+  color: inherit;
+}
+
+.grok-tier {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tesla);
+}
+
+.grok-level-card strong {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.grok-level-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.article .level-kicker {
+  margin: 2.4rem 0 0.35rem;
+  color: var(--tesla);
+}
+
+@media (max-width: 900px) {
+  .grok-levels {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .grok-levels {
+    grid-template-columns: 1fr;
+  }
+}
+
 .prompt {
   margin: 0.9rem 0 1.2rem;
   padding: 0.95rem 1rem;
