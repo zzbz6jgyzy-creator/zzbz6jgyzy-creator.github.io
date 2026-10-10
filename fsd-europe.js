@@ -77,6 +77,7 @@
 
     rows.forEach((country) => {
       const tr = document.createElement("tr");
+      tr.id = `fsd-row-${country.code}`;
       tr.dataset.status = country.status;
       tr.innerHTML = `
         <td><span class="fsd-code">${country.code}</span> ${country.name}</td>
@@ -99,5 +100,109 @@
     });
   });
 
+  const escapeHtml = (value) =>
+    String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+  const showMapTip = (country, evt) => {
+    const tip = document.getElementById("fsd-map-tip");
+    const shell = document.querySelector(".fsd-map-shell");
+    if (!tip || !shell || !country) return;
+    tip.hidden = false;
+    tip.innerHTML = `<strong>${escapeHtml(country.name)}</strong><span>${statusLabel[country.status]}</span>`;
+    const rect = shell.getBoundingClientRect();
+    const x = evt.clientX - rect.left;
+    const y = evt.clientY - rect.top;
+    tip.style.left = `${Math.min(rect.width - 16, Math.max(16, x))}px`;
+    tip.style.top = `${Math.max(16, y - 12)}px`;
+  };
+
+  const hideMapTip = () => {
+    const tip = document.getElementById("fsd-map-tip");
+    if (tip) tip.hidden = true;
+  };
+
+  const bindCountryShape = (node, country) => {
+    if (!country) return;
+    node.setAttribute("tabindex", "0");
+    node.setAttribute("role", "button");
+    node.setAttribute("aria-label", `${country.name}, ${statusLabel[country.status]}`);
+    node.addEventListener("mouseenter", (event) => showMapTip(country, event));
+    node.addEventListener("mousemove", (event) => showMapTip(country, event));
+    node.addEventListener("mouseleave", hideMapTip);
+    const open = () => {
+      const row = document.getElementById(`fsd-row-${country.code}`);
+      row?.scrollIntoView({ behavior: "smooth", block: "center" });
+      document.querySelectorAll(".fsd-table tr.is-focus").forEach((tr) => tr.classList.remove("is-focus"));
+      row?.classList.add("is-focus");
+    };
+    node.addEventListener("click", open);
+    node.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      open();
+    });
+  };
+
+  const paintMap = () => {
+    const byCode = new Map(data.countries.map((row) => [row.code, row]));
+    const land = document.getElementById("fsd-map-land");
+    const pins = document.getElementById("fsd-map-pins");
+    if (!land) return;
+    land.querySelectorAll(".fsd-map-country").forEach((path) => {
+      const country = byCode.get(path.dataset.code);
+      const status = country ? country.status : "out";
+      path.setAttribute("class", `fsd-map-country is-${status}`);
+      bindCountryShape(path, country);
+      if (!country || !pins) return;
+      const tiny = new Set(["MT", "CY", "LU", "SI", "EE", "LT", "LV"]);
+      if (!tiny.has(country.code)) return;
+      const cx = Number(path.dataset.cx);
+      const cy = Number(path.dataset.cy);
+      if (!Number.isFinite(cx) || !Number.isFinite(cy)) return;
+      const pin = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      pin.setAttribute("class", `fsd-map-pin is-${country.status}`);
+      pin.setAttribute("cx", cx.toFixed(1));
+      pin.setAttribute("cy", cy.toFixed(1));
+      pin.setAttribute("r", country.status === "approved" ? "7" : "5");
+      bindCountryShape(pin, country);
+      pins.append(pin);
+    });
+
+    const names = approved.map((row) => row.name);
+    setText(
+      "fsd-map-caption",
+      names.length
+        ? `${names.length} approved · ${names.join(", ")}`
+        : "No national recognitions on the file yet."
+    );
+  };
+
+  const loadMap = async () => {
+    const land = document.getElementById("fsd-map-land");
+    if (!land || land.childElementCount) return;
+    try {
+      const res = await fetch("/assets/europe-fsd.svg", { cache: "force-cache" });
+      if (!res.ok) return;
+      const text = await res.text();
+      const doc = new DOMParser().parseFromString(text, "image/svg+xml");
+      doc.querySelectorAll("path[data-code]").forEach((path) => {
+        const clone = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        clone.setAttribute("d", path.getAttribute("d"));
+        clone.setAttribute("data-code", path.getAttribute("data-code"));
+        clone.setAttribute("data-cx", path.getAttribute("data-cx") || "");
+        clone.setAttribute("data-cy", path.getAttribute("data-cy") || "");
+        clone.setAttribute("class", path.getAttribute("class") || "fsd-map-country");
+        land.append(clone);
+      });
+      paintMap();
+    } catch {
+      setText("fsd-map-caption", "Map did not load. The country table below still has the list.");
+    }
+  };
+
   render();
+  loadMap();
 })();
