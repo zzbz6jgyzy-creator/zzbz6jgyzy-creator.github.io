@@ -1468,6 +1468,17 @@ button.fsd-kpi[aria-pressed="true"] {
   font-size: 0.84rem;
 }
 
+.figure.figure-shot {
+  background: #0a0a0a;
+}
+
+.figure.figure-shot img {
+  height: auto;
+  max-height: min(85vh, 1100px);
+  object-fit: contain;
+  object-position: top center;
+}
+
 .figure-video {
   margin: 1.3rem 0;
   border-radius: var(--radius);
