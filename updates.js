@@ -412,11 +412,15 @@
 
   const sameBox = (a, b) => a.length === b.length && a.every((n, i) => Math.abs(n - b[i]) < 0.6);
 
+  const isNarrow = () => window.matchMedia("(max-width: 640px)").matches;
+
+  const worldBox = () => (isNarrow() ? [55, 18, 890, 355] : [0, 0, MAP_W, MAP_H]);
+
   const focusStage = (code) => {
     const svg = document.getElementById("updates-map");
     if (!svg) return;
     if (!code || !POINTS[code]) {
-      const world = [0, 0, MAP_W, MAP_H];
+      const world = worldBox();
       if (!sameBox(readViewBox(svg), world)) animateViewBox(svg, world);
       svg.classList.remove("is-focused");
       return;
@@ -477,7 +481,7 @@
       const ll = POINTS[spot.code];
       if (!ll) return;
       const { x, y } = project(ll[0], ll[1]);
-      const r = 4.2 + (Math.sqrt((spot.count || 1) / max) * 8);
+      const r = (isNarrow() ? 12 : 6) + Math.sqrt((spot.count || 1) / max) * (isNarrow() ? 11 : 8);
       const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
       g.setAttribute("class", `updates-hot${spot.latest ? " is-new" : ""} is-${spot.heat}${countryCode === spot.code ? " is-focus" : ""}`);
       g.setAttribute("data-country", spot.code);
@@ -485,6 +489,10 @@
       g.setAttribute("tabindex", "0");
       g.setAttribute("role", "button");
       g.setAttribute("aria-label", `${countryName(spot.code)}, ${spot.id}`);
+      const hit = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      hit.setAttribute("r", String(Math.max(r * 2.1, isNarrow() ? 22 : 14)));
+      hit.setAttribute("fill", "transparent");
+      g.append(hit);
       const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       halo.setAttribute("class", "updates-hot-halo");
       halo.setAttribute("r", (r * 1.85).toFixed(1));
@@ -498,7 +506,6 @@
       const core = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       core.setAttribute("class", "updates-hot-core");
       core.setAttribute("r", r.toFixed(1));
-      core.setAttribute("filter", "url(#updates-glow)");
       g.append(core);
       g.addEventListener("mouseenter", (event) => showTip(spot, event));
       g.addEventListener("mousemove", (event) => showTip(spot, event));
@@ -692,6 +699,10 @@
     renderList(bundle);
     await landTask;
   };
+
+  window.addEventListener("resize", () => {
+    if (!countryCode) focusStage("");
+  });
 
   kindButtons.forEach((button) => {
     button.addEventListener("click", () => {
