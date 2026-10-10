@@ -869,7 +869,7 @@ article.story-card {
   gap: 1.2rem;
   width: min(100% - 2.5rem, var(--max));
   margin: 0 auto;
-  padding: 2.2rem 0 1.15rem;
+  padding: 1.85rem 0 1rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1023,7 +1023,7 @@ article.story-card {
   align-items: center;
   gap: 0.45rem 0.55rem;
   width: 100%;
-  padding: 0.55rem 0.6rem;
+  padding: 0.42rem 0.55rem;
   border: 1px solid transparent;
   border-radius: 8px;
   background: transparent;
