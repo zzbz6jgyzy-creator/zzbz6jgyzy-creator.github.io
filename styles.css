@@ -4328,7 +4328,8 @@ a.news-card:hover h3 {
 
 /* Footer support button (hidden in index.html until a Ko-fi/BMC URL is added) */
 .footer-support{margin-top:1rem}
-.support-button{display:inline-flex;align-items:center;gap:.45rem;padding:.65rem 1.15rem;border-radius:999px;border:1px solid #E31937;color:#fff;text-decoration:none;font-weight:600;transition:background .2s}
+.band-support{margin-top:1rem}
+.support-button{background:#000;display:inline-flex;align-items:center;gap:.45rem;padding:.65rem 1.15rem;border-radius:999px;border:1px solid #E31937;color:#fff;text-decoration:none;font-weight:600;transition:background .2s}
 .support-button:hover,.support-button:focus-visible{background:#E31937;color:#fff}
 
 /* ---- Gear for your Tesla (TESMAG affiliate) ---- */
