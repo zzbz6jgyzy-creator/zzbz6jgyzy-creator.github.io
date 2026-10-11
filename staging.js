@@ -1186,7 +1186,7 @@
     const night = spaceT();
     const lod = clamp(scale, 0, 1.4);
     const flicker = stack.alive ? 0.84 + Math.sin(clock * 0.08) * 0.16 : 0;
-    const sep = state === "sep" || state === "attract-sep";
+    const sep = state === "sep" || state === "attract-sep" || (state === "success" && sepT > 0);
     ctx.save();
     ctx.translate(originX, originY);
     ctx.scale(scale, scale);
@@ -1306,7 +1306,10 @@
     const portrait = cssH > cssW * 1.05;
     const base = Math.min(cssW / 340, cssH / (portrait ? 430 : 400));
     const scale = base * cam.zoom * (portrait ? 0.94 : 1);
-    const lookY = state === "sep" || state === "attract-sep" ? -96 + sepT * 6 : -52;
+    const lookY =
+      state === "sep" || state === "attract-sep" || (state === "success" && sepT > 0)
+        ? -96 + sepT * 6
+        : -52;
     const originX = cssW * 0.5 + (stack?.x || 0) * 0.45 + ox;
     const originY = cssH * 0.5 - lookY * scale + oy + Math.sin(clock * 0.012) * 1.2;
 
@@ -1384,7 +1387,7 @@
   }
 
   function followCam() {
-    const sep = state === "sep" || state === "attract-sep";
+    const sep = state === "sep" || state === "attract-sep" || (state === "success" && sepT > 0);
     const wantZoom = sep ? 1.04 : 1;
     cam.zoom = lerp(cam.zoom + cam.punch, wantZoom, 0.08);
     cam.punch *= 0.84;
