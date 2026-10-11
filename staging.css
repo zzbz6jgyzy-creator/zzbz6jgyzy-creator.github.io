@@ -223,20 +223,33 @@
 .staging-cue {
   position: absolute;
   left: 50%;
-  top: 18%;
+  top: 16%;
   transform: translateX(-50%);
-  padding: 0.28rem 0.85rem 0.34rem;
-  border: 1px solid rgba(255, 210, 140, 0.55);
-  border-radius: 6px;
-  background: rgba(120, 24, 8, 0.55);
+  display: grid;
+  justify-items: center;
+  gap: 0.08rem;
+  padding: 0.32rem 0.95rem 0.38rem;
+  border: 1px solid rgba(255, 210, 140, 0.6);
+  border-radius: 7px;
+  background: rgba(120, 24, 8, 0.58);
   color: #ffe7c2;
   font-family: var(--font-mono);
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   pointer-events: none;
   text-shadow: 0 0 18px rgba(255, 140, 40, 0.8);
   animation: staging-cue 0.7s ease-in-out infinite;
+}
+
+.staging-cue b {
+  font-weight: 600;
+}
+
+.staging-cue span {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  opacity: 0.82;
 }
 
 .staging-cue[hidden],
