@@ -30,7 +30,7 @@ Open `http://localhost:4173`.
 - `starship.html` — Starship Mission Control (next launch, objectives, schedule, flight log)
 - `updates.html` — Software Update Tracker (searchable releases, models, live map)
 - `.github/workflows/updates-snapshot.yml` — refreshes `updates-live.json` on main about twice an hour
-- Contact / newsletter: `superchargeddaily@gmail.com`
+- Contact / newsletter: `hello@superchargeddaily.com`
 - `tcmv.html` — TCMV meeting log (same data as the FSD Europe tracker)
 - `reviews/` — Tesla car reviews (index + Model 3 / Y / S / X / Cybertruck)
 - Referral: [ts.la/alex474841](https://ts.la/alex474841)
