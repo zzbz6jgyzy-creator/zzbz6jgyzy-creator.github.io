@@ -522,6 +522,10 @@
   margin: 0;
 }
 
+.taxi-board-head .game-board-status {
+  margin: 0.2rem 0 0;
+}
+
 .taxi-mute {
   appearance: none;
   border: 1px solid var(--line);

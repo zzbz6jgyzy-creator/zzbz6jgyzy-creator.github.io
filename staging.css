@@ -87,6 +87,10 @@
   margin: 0;
 }
 
+.staging-board-head .game-board-status {
+  margin: 0.2rem 0 0;
+}
+
 .staging-mute {
   appearance: none;
   border: 1px solid var(--line);

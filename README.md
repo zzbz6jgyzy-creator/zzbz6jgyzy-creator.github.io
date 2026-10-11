@@ -18,7 +18,9 @@ Open `http://localhost:4173`.
 - `news.html` — today’s Tesla, SpaceX and Grok headlines (live Google News in the browser, plus `news-data.json`)
 - `.github/workflows/news-snapshot.yml` — refreshes `news-data.json` on main about twice an hour
 - `tsla.html` / `calendar.html` — Markets and the Musk-world calendar
-- `games.html` — Games hub (Hot Staging, Catch, Robotaxi Boss)
+- `games.html` — Games hub (Hot Staging, Catch, Robotaxi Boss) plus the world board
+- `board.js` — shared world-board client (`https://aljr-boards.superchargeddaily.workers.dev`)
+- `workers/aljr-boards.js` — Cloudflare Worker + KV that stores the top 20 locked runs per game
 - `cybercab.html` — Cybercab Tracker (edit `cybercab-data.js` to update)
 - `goldcab.html` — redirects to the Games hub
 - `poll.js` — weekly TSLA poll on the homepage (Abacus free counter)

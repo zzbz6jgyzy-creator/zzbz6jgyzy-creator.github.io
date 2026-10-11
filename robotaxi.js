@@ -11,6 +11,7 @@
   const START_REP = 72;
   const MAX_CARS = 12;
   const REPAIR = 320;
+  const GAME = "robotaxi";
   const BOARD_MAX = 8;
   const STORE = "aljr.taxi.best";
   const BOARD_STORE = "aljr.taxi.board";
@@ -80,8 +81,19 @@
     localStorage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
   }
 
+  function storedRows() {
+    const local = loadBoard();
+    const world = window.AljrBoard?.rows?.(GAME) || [];
+    if (!world.length) return local;
+    const seen = new Set(world.map((row) => `${String(row.name || "").toUpperCase()}|${row.score}`));
+    const extra = local.filter((row) => !seen.has(`${String(row.name || "").toUpperCase()}|${row.score}`));
+    return [...world, ...extra]
+      .sort((a, b) => b.score - a.score || (a.at || 0) - (b.at || 0))
+      .slice(0, BOARD_MAX);
+  }
+
   function renderBoard(highlight) {
-    const rows = loadBoard();
+    const rows = storedRows();
     if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
     if (!boardList) return;
     boardList.replaceChildren();
@@ -738,6 +750,14 @@
     rows.sort((a, b) => b.score - a.score);
     saveBoard(rows);
     renderBoard(freshId);
+    const remote = window.AljrBoard;
+    if (remote) {
+      remote.submit(GAME, { name: callsign(), score, flights: game.rides }).then((res) => {
+        if (res?.rows) saveBoard(res.rows);
+        if (res?.id) freshId = res.id;
+        renderBoard(freshId);
+      });
+    }
     setNow(`Week locked · ${score.toLocaleString()} pts`);
     showOverlay(
       "Week over",
@@ -820,6 +840,12 @@
     pending: null,
     queueIndex: 0,
   };
+  if (window.AljrBoard) {
+    window.AljrBoard.onChange((id) => {
+      if (id === GAME) renderBoard(freshId);
+    });
+    window.AljrBoard.load(GAME);
+  }
   renderBoard();
   applyMute();
   paint();

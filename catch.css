@@ -85,6 +85,10 @@
   margin: 0;
 }
 
+.catch-board-head .game-board-status {
+  margin: 0.2rem 0 0;
+}
+
 .catch-mute {
   appearance: none;
   border: 1px solid var(--line);

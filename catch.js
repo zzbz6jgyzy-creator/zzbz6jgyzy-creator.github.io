@@ -19,6 +19,7 @@
   const nameInput = document.querySelector("[data-catch-name]");
   const muteBtn = document.querySelector("[data-catch-mute]");
 
+  const GAME = "catch";
   const STORE = "aljr.catch.best";
   const BOARD_STORE = "aljr.catch.board";
   const NAME_STORE = "aljr.catch.name";
@@ -196,8 +197,19 @@
     localStorage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
   }
 
+  function storedRows() {
+    const local = loadBoard();
+    const world = window.AljrBoard?.rows?.(GAME) || [];
+    if (!world.length) return local;
+    const seen = new Set(world.map((row) => `${String(row.name || "").toUpperCase()}|${row.score}`));
+    const extra = local.filter((row) => !seen.has(`${String(row.name || "").toUpperCase()}|${row.score}`));
+    return [...world, ...extra]
+      .sort((a, b) => b.score - a.score || (a.at || 0) - (b.at || 0))
+      .slice(0, BOARD_MAX);
+  }
+
   function visibleBoard() {
-    const stored = loadBoard();
+    const stored = storedRows();
     const live =
       score > 0 && (state === "fly" || state === "caught" || state === "pause")
         ? [
@@ -267,6 +279,13 @@
     freshId = entry.id;
     if (score > best) setBest(score);
     renderBoard();
+    const remote = window.AljrBoard;
+    if (!remote) return;
+    remote.submit(GAME, { name: entry.name, score: entry.score, flights: entry.flights }).then((res) => {
+      if (res?.rows) saveBoard(res.rows);
+      if (res?.id) freshId = res.id;
+      renderBoard();
+    });
   }
 
   let keysLocked = false;
@@ -1430,6 +1449,12 @@
   window.addEventListener("resize", resize);
   resize();
   beginAttract();
+  if (window.AljrBoard) {
+    window.AljrBoard.onChange((id) => {
+      if (id === GAME) renderBoard();
+    });
+    window.AljrBoard.load(GAME);
+  }
   renderBoard();
   requestAnimationFrame(frame);
 
@@ -1442,7 +1467,7 @@
     held: () => ({ ...held }),
     clearHolds: clearAllHolds,
     board: () => visibleBoard(),
-    storedBoard: () => loadBoard(),
+    storedBoard: () => storedRows(),
     submitRun,
     renderBoard,
     muted: () => muted,

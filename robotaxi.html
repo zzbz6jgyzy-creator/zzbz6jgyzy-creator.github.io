@@ -129,7 +129,10 @@
 
           <aside class="taxi-board" aria-label="Robotaxi leaderboard">
             <div class="taxi-board-head">
-              <p class="eyebrow">Board</p>
+              <div>
+                <p class="eyebrow">Board</p>
+                <p class="game-board-status" data-board-status="robotaxi">World · connecting</p>
+              </div>
               <button type="button" class="taxi-mute" data-taxi-mute>Sound on</button>
             </div>
             <label class="taxi-callsign">
@@ -152,8 +155,8 @@
             <p class="taxi-board-now" data-board-now>This week · on the pad</p>
             <ol class="taxi-board-list" data-board-list></ol>
             <p class="taxi-board-note">
-              Top weeks on this browser. Score is cash, fleet, rides and reputation.
-              Share the number on X.
+              World board. Locked weeks from every pad. Score is cash, fleet,
+              rides and reputation. Share the number on X.
             </p>
           </aside>
         </div>
@@ -181,6 +184,7 @@
       </footer>
     </div>
     <script src="/script.js"></script>
+    <script src="/board.js"></script>
     <script src="/robotaxi.js"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>

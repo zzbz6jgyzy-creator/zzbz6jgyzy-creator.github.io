@@ -75,7 +75,7 @@
           <p class="reveal delay-2">
             Three fan-made games. Light Ship inside Super Heavy’s fire, catch
             Starship on the chopsticks, or run a robotaxi fleet for a week.
-            None of them is a simulator.
+            Locked runs stay on the world board. None of them is a simulator.
           </p>
         </section>
 
@@ -110,6 +110,36 @@
             </a>
           </div>
         </section>
+
+        <section class="section" aria-labelledby="world-board-heading">
+          <div class="section-head">
+            <h2 id="world-board-heading" class="reveal">World board</h2>
+            <p class="reveal delay-1">
+              Locked runs from every pad. Live while the API is up; this pad
+              keeps a copy if the line drops.
+            </p>
+          </div>
+          <div class="world-boards">
+            <article class="world-board reveal delay-1">
+              <p class="eyebrow">SpaceX · Hot Staging</p>
+              <h3><a href="/staging.html">Hot Staging</a></h3>
+              <p class="game-board-status" data-board-status="staging">World · connecting</p>
+              <ol data-world-board="staging"></ol>
+            </article>
+            <article class="world-board reveal delay-2">
+              <p class="eyebrow">SpaceX · Catch</p>
+              <h3><a href="/catch.html">Catch</a></h3>
+              <p class="game-board-status" data-board-status="catch">World · connecting</p>
+              <ol data-world-board="catch"></ol>
+            </article>
+            <article class="world-board reveal delay-3">
+              <p class="eyebrow">Tesla · Robotaxi Boss</p>
+              <h3><a href="/robotaxi.html">Robotaxi Boss</a></h3>
+              <p class="game-board-status" data-board-status="robotaxi">World · connecting</p>
+              <ol data-world-board="robotaxi"></ol>
+            </article>
+          </div>
+        </section>
       </main>
 
       <footer class="site-footer">
@@ -133,6 +163,7 @@
       </footer>
     </div>
     <script src="/script.js"></script>
+    <script src="/board.js"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
   </body>

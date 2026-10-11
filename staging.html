@@ -127,7 +127,10 @@
 
           <aside class="staging-board" aria-label="Hot Staging leaderboard">
             <div class="staging-board-head">
-              <p class="eyebrow">Board</p>
+              <div>
+                <p class="eyebrow">Board</p>
+                <p class="game-board-status" data-board-status="staging">World · connecting</p>
+              </div>
               <button type="button" class="staging-mute" data-staging-mute>Sound on</button>
             </div>
             <label class="staging-callsign">
@@ -150,8 +153,8 @@
             <p class="staging-board-now" data-board-now>This run · on the pad</p>
             <ol class="staging-board-list" data-board-list></ol>
             <p class="staging-board-note">
-              Top runs on this browser. A clean staging locks the flight. A walk,
-              an early light, or a late punch ends the run.
+              World board. Locked runs from every pad. A clean staging locks
+              the flight. A walk, an early light, or a late punch ends the run.
             </p>
           </aside>
         </div>
@@ -179,6 +182,7 @@
       </footer>
     </div>
     <script src="/script.js"></script>
+    <script src="/board.js"></script>
     <script src="/staging.js"></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
   </body>
