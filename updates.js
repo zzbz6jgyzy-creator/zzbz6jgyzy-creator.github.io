@@ -524,11 +524,11 @@
     const stroke = Math.min(2.2, Math.max(0.4, 1.15 / px));
     layer.querySelectorAll(".updates-hot").forEach((g) => {
       const count = Number(g.dataset.count) || 1;
-    const target = (isNarrow() ? 10 : 7.5) + Math.sqrt(count / max) * (isNarrow() ? 3.2 : 2.2);
-    const r = Math.max(1.2, target / px);
+    const target = (isNarrow() ? 8 : 7) + Math.sqrt(count / max) * (isNarrow() ? 2.4 : 2);
+    const r = Math.max(1.15, target / px);
     const hit = Math.max(r * 1.25, Math.min(6, (isNarrow() ? 18 : 12) / px));
       g.querySelector("[data-hit]")?.setAttribute("r", hit.toFixed(2));
-      g.querySelector(".updates-hot-halo")?.setAttribute("r", (r * 1.85).toFixed(2));
+      g.querySelector(".updates-hot-halo")?.setAttribute("r", (r * (nearWorld() ? 1.28 : 1.5)).toFixed(2));
       const core = g.querySelector(".updates-hot-core");
       if (core) {
         core.setAttribute("r", r.toFixed(2));
@@ -554,19 +554,23 @@
     if (clear) clear.hidden = !(countryCode || versionQuery || !nearWorld());
   };
 
+  const waveRow = (bundle = current) => {
+    const rows = bundle?.live?.versions || [];
+    return rows.find((row) => (row.countries || []).length) || rows[0] || null;
+  };
+
   const syncCaptionPlace = () => {
     const caption = document.getElementById("updates-map-caption");
     if (!caption || countryCode || versionQuery) return;
-    const latestId = current?.live?.latest;
+    const wave = waveRow();
     if (nearEurope()) {
-      caption.textContent = latestId ? `Europe · ${latestId}` : "Europe";
+      caption.textContent = wave?.id ? `Europe · ${wave.id}` : "Europe";
       return;
     }
     if (nearWorld()) {
-      const liveLatest = current?.live?.versions?.find((row) => row.id === latestId);
-      const names = (liveLatest?.countries || []).slice(0, 5).map(countryName);
-      caption.textContent = latestId
-        ? `New wave ${latestId} · ${names.join(", ")}${liveLatest?.countries?.length > 5 ? "…" : ""}`
+      const names = (wave?.countries || []).slice(0, 5).map(countryName);
+      caption.textContent = wave?.id
+        ? `New wave ${wave.id} · ${names.join(", ")}${wave.countries?.length > 5 ? "…" : ""}`
         : "Live wave";
     }
   };
@@ -809,9 +813,9 @@
 
     focusStage(countryCode);
 
-    const latestId = bundle.live?.latest;
-    const liveLatest = bundle.live?.versions.find((row) => row.id === latestId);
-    const hotCountries = (liveLatest?.countries || []).slice(0, 8).map(countryName);
+    const wave = waveRow(bundle);
+    const waveId = wave?.id;
+    const hotCountries = (wave?.countries || []).slice(0, 8).map(countryName);
     const caption = document.getElementById("updates-map-caption");
     if (caption) {
       if (versionQuery && countryCode) {
@@ -823,16 +827,16 @@
         caption.textContent = hit ? `${countryName(countryCode)} · ${hit.id}` : `${countryName(countryCode)} · no tracked build`;
       } else {
         caption.textContent = nearEurope()
-          ? (latestId ? `Europe · ${latestId}` : "Europe")
-          : latestId
-            ? `New wave ${latestId} · ${hotCountries.slice(0, 5).join(", ")}${hotCountries.length > 5 ? "…" : ""}`
+          ? (waveId ? `Europe · ${waveId}` : "Europe")
+          : waveId
+            ? `New wave ${waveId} · ${hotCountries.slice(0, 5).join(", ")}${hotCountries.length > 5 ? "…" : ""}`
             : "Live wave";
       }
     }
 
     const badge = document.getElementById("updates-map-badge");
     if (badge) {
-      const shown = versionQuery || latestId;
+      const shown = versionQuery || waveId;
       badge.hidden = !shown;
       badge.innerHTML = shown
         ? `<em>${versionQuery ? "Search" : "New wave"}</em><strong>${escapeHtml(shown)}</strong>`

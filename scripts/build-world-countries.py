@@ -16,6 +16,11 @@ EXTRA = {
     "SG": (103.8, 1.35, 2.8, 2.1),
 }
 
+# Keep metropolitan France so French Guiana does not light up as FR.
+RING_KEEP = {
+    "FR": lambda lon, lat: lon > -10 and lat > 35,
+}
+
 
 def iso_code(props: dict) -> str | None:
     for key in ("ISO_A2", "ISO_A2_EH"):
@@ -80,7 +85,11 @@ def main() -> int:
         code = iso_code(feat.get("properties") or {})
         if not code or code in seen:
             continue
-        d = "".join(path_from_ring(ring) for ring in rings_from_geom(feat.get("geometry") or {}))
+        keep = RING_KEEP.get(code)
+        rings = rings_from_geom(feat.get("geometry") or {})
+        if keep:
+            rings = [ring for ring in rings if ring and keep(ring[0][0], ring[0][1])]
+        d = "".join(path_from_ring(ring) for ring in rings)
         if not d:
             continue
         seen.add(code)
