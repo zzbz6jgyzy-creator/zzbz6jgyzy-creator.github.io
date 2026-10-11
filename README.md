@@ -23,10 +23,10 @@ Open `http://localhost:4173`.
 - `robotaxi.html` — Robotaxi Boss (Tesla fleet, one week)
 - `catch.html` — Catch (Starship chopsticks)
 - `tesla.html` / `spacex.html` / `grok.html` — Tesla and SpaceX desks, plus the Grok Bot tutorial (introduction through advanced)
-- `fsd.html` — FSD Global Tracker (country status, versions, milestones, alerts)
-- `fsd-europe.html` — FSD Europe map and TCMV vote math
+- `fsd-europe.html` — FSD Europe tracker (approved countries in red, TCMV vote math)
+- `fsd.html` — wider FSD country list, versions and milestones
 - `starship.html` — Starship Mission Control (next launch, objectives, schedule, flight log)
-- `updates.html` — Tesla Software Update Database (searchable releases, models, live map)
+- `updates.html` — Software Update Tracker (searchable releases, models, live map)
 - `.github/workflows/updates-snapshot.yml` — refreshes `updates-live.json` on main about twice an hour
 - Contact / newsletter: `superchargeddaily@gmail.com`
 - `tcmv.html` — TCMV meeting log (same data as the FSD Europe tracker)
