@@ -2,14 +2,124 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=/games.html" />
-    <link rel="canonical" href="https://superchargeddaily.com/games.html" />
-    <title>Games — Supercharged Daily</title>
-    <script>
-      location.replace("/games.html");
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cybercab Tracker — Supercharged Daily</title>
+    <meta
+      name="description"
+      content="Tesla Cybercab fleet count, cities, milestones and dates, with sources. Updated 11 Oct 2026."
+    />
+    <link rel="canonical" href="https://superchargeddaily.com/cybercab.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Supercharged Daily" />
+    <meta property="og:title" content="Cybercab Tracker — Supercharged Daily" />
+    <meta property="og:description" content="Fleet count, cities, milestones and dates for Tesla’s Cybercab, with sources." />
+    <meta property="og:url" content="https://superchargeddaily.com/cybercab.html" />
+    <meta property="og:image" content="https://superchargeddaily.com/assets/og.jpg" />
+    <meta property="og:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ALJR86" />
+    <meta name="twitter:creator" content="@ALJR86" />
+    <meta name="twitter:title" content="Cybercab Tracker — Supercharged Daily" />
+    <meta name="twitter:description" content="Fleet count, cities, milestones and dates for Tesla’s Cybercab, with sources." />
+    <meta name="twitter:image" content="https://superchargeddaily.com/assets/og.jpg" />
+    <meta name="twitter:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/cybercab-tracker.css" />
   </head>
   <body>
-    <p><a href="/games.html">Games</a></p>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/index.html">
+          <img class="brand-mark" src="/assets/brand/icon-1b-mark.svg" alt="" width="30" height="30" />
+          <img class="brand-wordmark" src="/assets/brand/wordmark.svg" alt="Supercharged Daily" width="172" height="27" />
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="/news.html">News</a>
+          <a href="/tesla.html">Tesla</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
+          <a href="/tsla.html">Markets</a>
+          <a href="/fsd-europe.html">FSD Europe tracker</a>
+          <a href="/starship.html">Starship</a>
+          <a href="/cybercab.html" aria-current="page">Cybercab Tracker</a>
+          <a href="/updates.html">Software Update Tracker</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/gear.html">Gear</a>
+          <a href="/games.html" >Games</a>
+          <a class="nav-cta" href="https://x.com/ALJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="page-hero">
+          <p class="eyebrow reveal">Deep dive · Tesla</p>
+          <h1 class="reveal delay-1">Cybercab <span style="color:#E31937">Tracker</span></h1>
+          <p class="reveal delay-2">How many Cybercabs are out there, where you can ride one, and every milestone so far. Every figure links to its source.</p>
+          <p class="meta reveal delay-2">Updated <time data-cc-updated datetime="2026-10-11">11 Oct 2026</time></p>
+        </section>
+
+        <section class="section" aria-labelledby="cc-fleet-h">
+          <div class="section-head"><h2 id="cc-fleet-h" class="reveal">Fleet count</h2><p class="reveal delay-1">Tesla’s own figure and the Texas DMV registry are different things. A registration isn’t a car in service.</p></div>
+          <div class="cc-stats" data-cc-stats></div>
+        </section>
+
+        <section class="section" aria-labelledby="cc-cities-h">
+          <div class="section-head"><h2 id="cc-cities-h" class="reveal">Cities</h2></div>
+          <div class="cc-cities" data-cc-cities></div>
+        </section>
+
+        <section class="section" aria-labelledby="cc-ms-h">
+          <div class="section-head"><h2 id="cc-ms-h" class="reveal">Milestones</h2></div>
+          <ol class="cc-timeline" data-cc-timeline></ol>
+        </section>
+
+        <section class="section" aria-labelledby="cc-next-h">
+          <div class="section-head"><h2 id="cc-next-h" class="reveal">What to watch</h2></div>
+          <ul class="cc-watch" data-cc-watch></ul>
+          <p class="cc-fine">Fan-made tracker. Not affiliated with Tesla. Want a game instead? <a href="/games.html">Play Robotaxi Boss in Games</a>.</p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="footer-lockup" href="/index.html"><img src="/assets/brand/lockup-1b-trim.svg" alt="Supercharged Daily" width="220" height="45" /></a>
+        <p>© <span data-year></span> Supercharged Daily · @ALJR86. Fan account. Not affiliated with Tesla, SpaceX or xAI.</p>
+        <p>
+          <a href="/robotaxi.html">Robotaxi Boss</a>
+          ·
+          <a href="/catch.html">Catch</a>
+          ·
+          <a href="/tesla.html">Tesla</a>
+          ·
+          <a href="/spacex.html">SpaceX</a>
+          ·
+          <a href="https://x.com/ALJR86">X profile</a>
+        </p>
+        <p class="footer-disclosure">Some links are affiliate links; I may earn a commission at no extra cost to you.</p>
+      </footer>
+    </div>
+    <script src="/script.js"></script>
+    <script src="/cybercab-data.js"></script>
+    <script src="/cybercab-tracker.js"></script>
+      <!-- ANALYTICS: Cloudflare Web Analytics. Paste the site token from Cloudflare dashboard > Analytics & Logs > Web Analytics, then remove the comment markers.
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "PASTE_CF_TOKEN_HERE"}'></script>
+    -->
   </body>
 </html>
