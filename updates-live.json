@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T00:46:56Z",
+  "updated": "2026-10-11T01:06:06Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3344,
@@ -8,7 +8,7 @@
     {
       "id": "2026.38.5",
       "date": "2026-10-10",
-      "count": 2,
+      "count": 3,
       "fleet": 3344,
       "percent": 0.1,
       "fsd": null,
@@ -52,16 +52,16 @@
         "US"
       ],
       "countryCounts": {
-        "US": 2
+        "US": 3
       },
-      "pending": 4,
+      "pending": 3,
       "firstSeen": "2026-10-10T22:26:31Z",
-      "lastSeen": "2026-10-11T00:22:45Z"
+      "lastSeen": "2026-10-11T00:41:04Z"
     },
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 69,
+      "count": 70,
       "fleet": 3344,
       "percent": 2.1,
       "fsd": null,
@@ -89,16 +89,16 @@
           "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
         },
         {
+          "title": "Dynamic Headlight Leveling",
+          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
+        },
+        {
           "title": "Supercharger Site Maps",
           "text": "You can now see a detailed view of select Tesla Superchargers by tapping \"View Site Map.\" When navigating to a pilot location, the site layout and live occupancy (Available / Occupied / Down) will be displayed upon arri\u2026"
         },
         {
           "title": "Visual Updates",
           "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
-        },
-        {
-          "title": "Wheel Selection",
-          "text": "Choose from new wheel options to customize the appearance of your Tesla."
         }
       ],
       "countries": [
@@ -126,7 +126,7 @@
       ],
       "countryCounts": {
         "GB": 15,
-        "US": 7,
+        "US": 8,
         "DE": 6,
         "NL": 6,
         "IT": 5,
@@ -147,9 +147,9 @@
         "PL": 1,
         "TR": 1
       },
-      "pending": 66,
+      "pending": 65,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-11T00:26:41Z"
+      "lastSeen": "2026-10-11T00:42:07Z"
     },
     {
       "id": "2026.33.5",
