@@ -15,6 +15,8 @@
   const hudClock = document.querySelector("[data-hud-clock]");
   const hudAlt = document.querySelector("[data-hud-alt]");
   const hudScore = document.querySelector("[data-hud-score]");
+  const cueLabel = document.querySelector("[data-cue-label]");
+  const cueClock = document.querySelector("[data-cue-clock]");
   const boardList = document.querySelector("[data-board-list]");
   const boardNow = document.querySelector("[data-board-now]");
   const nameInput = document.querySelector("[data-staging-name]");
@@ -94,6 +96,12 @@
   let windowChimed = false;
   let keysLocked = false;
   let lastStageAt = -9;
+  let countT = 0;
+  let countMark = 0;
+  let ignite = 0;
+  let shock = 0;
+  let warnMark = 4;
+  let pausedFrom = "";
 
   const rand = (a, b) => a + Math.random() * (b - a);
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
@@ -152,6 +160,9 @@
     sepT = 0;
     windowChimed = false;
     lastStageAt = -9;
+    ignite = 0;
+    shock = 0;
+    warnMark = 4;
     const dead = pickOut(s.engineOut);
     stack = {
       x: rand(-10, 10),
@@ -252,7 +263,14 @@
   }
 
   function liveStates() {
-    return state === "boost" || state === "window" || state === "sep" || state === "pause" || state === "success";
+    return (
+      state === "count" ||
+      state === "boost" ||
+      state === "window" ||
+      state === "sep" ||
+      state === "pause" ||
+      state === "success"
+    );
   }
 
   function visibleBoard() {
@@ -557,11 +575,37 @@
     src.stop(t + dur + 0.03);
   }
 
+  function sfxCount(n) {
+    if (!audio || muted) return;
+    const t = audio.currentTime;
+    const freq = n <= 1 ? 880 : 480 + (4 - n) * 90;
+    toneAt(t, freq, freq * 0.94, 0.07, 0.14, "sine");
+    toneAt(t, freq * 2, freq * 1.55, 0.028, 0.1, "triangle");
+  }
+
+  function sfxIgnition() {
+    if (!audio || muted) return;
+    const t = audio.currentTime;
+    noiseAt(t, 0.42, 520, 0.2, 0.45, "brown");
+    noiseAt(t, 0.18, 2400, 0.12, 0.55, "white");
+    toneAt(t, 42, 26, 0.2, 0.72, "sine");
+    toneAt(t, 68, 34, 0.1, 0.48, "triangle");
+    toneAt(t + 0.04, 210, 70, 0.05, 0.28, "sawtooth");
+  }
+
+  function sfxWarn() {
+    if (!audio || muted) return;
+    const t = audio.currentTime;
+    toneAt(t, 640, 500, 0.04, 0.08, "sine");
+    toneAt(t + 0.03, 980, 720, 0.025, 0.07, "triangle");
+  }
+
   function sfxWindow() {
     if (!audio || muted) return;
     const t = audio.currentTime;
     toneAt(t, 740, 520, 0.045, 0.1, "sine");
     toneAt(t + 0.04, 1180, 840, 0.03, 0.09, "triangle");
+    toneAt(t + 0.08, 1480, 1100, 0.022, 0.12, "sine");
   }
 
   function sfxStage() {
@@ -647,6 +691,7 @@
 
   function heatAmt() {
     const s = spec();
+    if (state === "count") return ignite * 0.4;
     if (state === "sep" || state === "success") return 1;
     if (tPlay >= s.climb) return 1;
     return clamp((tPlay - (s.climb - 1.35)) / 1.35, 0, 1);
@@ -661,7 +706,7 @@
     showOverlay(
       "Starbase",
       "Light the Ship",
-      "A/D keeps the stack pointed. Space stages. Too early and Ship is dark. Too late and the bells eat each other.",
+      "Count, then climb. A/D keeps the stack pointed. When the clock hits, Stage.",
       "Play"
     );
     renderBoard();
@@ -670,17 +715,27 @@
   function startPlay() {
     ensureAudio();
     if (audio && audio.state === "suspended") audio.resume();
-    if (state !== "success") {
+    const fromSuccess = state === "success";
+    if (!fromSuccess) {
       score = 0;
       flight = 0;
     } else {
       flight += 1;
     }
     resetStack(false);
-    state = "boost";
     result = "";
+    countT = fromSuccess ? 2 : 3;
+    countMark = Math.ceil(countT) + 1;
+    ignite = 0;
+    shock = 0;
+    warnMark = 4;
+    tPlay = 0;
+    state = "count";
     hideOverlay();
     if (hud) hud.hidden = false;
+    if (cue) cue.hidden = true;
+    sfxCount(Math.ceil(countT));
+    countMark = Math.ceil(countT);
     renderBoard();
   }
 
@@ -722,13 +777,16 @@
     if (state !== "boost" && state !== "window" && state !== "attract") return;
     state = state === "attract" ? "attract-sep" : "sep";
     sepT = 0;
+    shock = 0.02;
     stack.shipLit = true;
-    shake = 14;
-    flash = 0.95;
-    cam.punch = 0.2;
+    shake = 18;
+    flash = 1;
+    cam.punch = 0.34;
     sfxStage();
-    burst(stack.x, -80, 38, "#ffb040", 4.4);
-    burst(stack.x, -80, 20, "#fff4d0", 2.6);
+    burst(stack.x, -80, 52, "#ffb040", 5.2);
+    burst(stack.x, -80, 28, "#fff4d0", 3.4);
+    burst(stack.x, -72, 16, "#9ec8ff", 2.8);
+    burst(stack.x, -40, 14, "#3a2a22", 1.4, "smoke");
     if (cue) cue.hidden = true;
   }
 
@@ -787,11 +845,19 @@
   }
 
   function tickAudio() {
-    const climbing = state === "boost" || state === "window" || state === "attract" || state === "sep" || state === "attract-sep";
+    const counting = state === "count";
+    const climbing =
+      counting ||
+      state === "boost" ||
+      state === "window" ||
+      state === "attract" ||
+      state === "sep" ||
+      state === "attract-sep";
     const shipMode = (state === "sep" || state === "attract-sep") && stack?.shipLit;
     const space = stack ? clamp((stack.alt - 58) / 16, 0, 1) : 0;
     if (!engine) return;
-    setEngine(climbing && stack?.alive ? (shipMode ? 0.72 : 0.96) : 0, shipMode ? "ship" : "boost");
+    const amount = counting ? ignite * 0.74 : climbing && stack?.alive ? (shipMode ? 0.72 : 0.96) : 0;
+    setEngine(amount, shipMode ? "ship" : "boost");
     const t = audio.currentTime;
     const wind = climbing ? 0.028 * (1 - space * 0.82) : 0.004;
     engine.windGain.gain.setTargetAtTime(muted ? 0 : wind, t, 0.12);
@@ -803,17 +869,59 @@
     }
   }
 
+  function stepCount(dt) {
+    if (!stack) return;
+    countT = Math.max(0, countT - dt / 1000);
+    const n = Math.ceil(countT);
+    if (n >= 1 && n < countMark) {
+      countMark = n;
+      sfxCount(n);
+      flash = 0.32;
+      cam.punch = 0.1;
+    }
+    ignite = countT <= 1.15 ? clamp((1.15 - countT) / 0.55, 0, 1) : 0;
+    if (!auto) {
+      const rise = 0.0028;
+      const fall = 0.0072;
+      ["left", "right"].forEach((k) => {
+        hold[k] = held[k] ? Math.min(1, hold[k] + rise * dt) : Math.max(0, hold[k] - fall * dt);
+      });
+    }
+    const steer = tiltCurve(hold.right) - tiltCurve(hold.left);
+    stack.av += steer * 0.00012 * dt;
+    stack.av *= Math.pow(0.88, dt * 0.08);
+    stack.angle = clamp(stack.angle + stack.av * dt, -0.35, 0.35);
+    stack.x += stack.vx * dt * 0.02;
+    if (ignite > 0.3) emitClimbFx();
+    tickAudio();
+    if (countT <= 0) {
+      state = "boost";
+      tPlay = 0;
+      ignite = 1;
+      sfxIgnition();
+      shake = 11;
+      flash = 0.72;
+      cam.punch = 0.22;
+      burst(stack.x, 70, 26, "#ff9a3a", 3.4);
+      burst(stack.x, 80, 12, "#fff0c0", 2.2);
+    }
+  }
+
   function step(dt) {
     if (!stack) return;
     if (state === "sep" || state === "attract-sep") {
-      sepT = clamp(sepT + dt / 2100, 0, 1);
-      stack.shipOff = ease(sepT) * 108;
-      stack.boostOff = ease(sepT) * 72;
-      stack.alt += 0.00055 * dt;
+      sepT = clamp(sepT + dt / 2360, 0, 1);
+      shock = Math.min(1.35, shock + dt / 480);
+      stack.shipOff = ease(sepT) * 128;
+      stack.boostOff = ease(sepT) * 78;
+      stack.alt += 0.00062 * dt;
       stack.x += stack.vx * dt * 0.02;
       emitClimbFx();
-      if (Math.random() < 0.7) {
-        burst(stack.x + rand(-6, 6), 4, 2, "#ff9a3a", 2.2);
+      if (Math.random() < 0.82) {
+        burst(stack.x + rand(-8, 8), 4 - sepT * 20, 3, "#ff9a3a", 2.6);
+      }
+      if (Math.random() < 0.28) {
+        burst(stack.x + rand(-4, 4), -80 - stack.shipOff * 0.4, 2, "#fff0c8", 1.8);
       }
       tickAudio();
       if (sepT >= 1) {
@@ -826,6 +934,11 @@
           succeed();
         }
       }
+      return;
+    }
+
+    if (state === "count") {
+      stepCount(dt);
       return;
     }
 
@@ -862,11 +975,24 @@
     emitClimbFx();
     tickAudio();
 
+    if (state === "boost") {
+      const left = s.climb - tPlay;
+      if (left <= 3 && left > 0) {
+        const tick = Math.ceil(left);
+        if (tick < warnMark) {
+          warnMark = tick;
+          sfxWarn();
+        }
+      }
+    }
     if (state === "boost" && tPlay >= s.climb) {
       state = state === "attract" ? "attract" : "window";
       if (!windowChimed && state === "window") {
         windowChimed = true;
         sfxWindow();
+        cam.punch = 0.16;
+        flash = Math.max(flash, 0.45);
+        shake = Math.max(shake, 6);
       }
     }
     if (state === "attract" && tPlay >= s.climb && !windowChimed) {
@@ -900,7 +1026,7 @@
       f.life -= 1;
       if (f.life <= 0) flakes.splice(i, 1);
     }
-    if (particles.length > 180) particles.splice(0, particles.length - 180);
+    if (particles.length > 240) particles.splice(0, particles.length - 240);
     if (flakes.length > 70) flakes.splice(0, flakes.length - 70);
   }
 
@@ -1014,16 +1140,17 @@
   function drawShipPlume(ctx, flicker) {
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
-    const g = ctx.createLinearGradient(0, 42, 0, 42 + 96);
-    g.addColorStop(0, `rgba(255,248,220,${0.9 * flicker})`);
-    g.addColorStop(0.16, `rgba(160,205,255,${0.55 * flicker})`);
-    g.addColorStop(0.5, `rgba(255,150,50,${0.32 * flicker})`);
+    const len = 96 + (state === "sep" || state === "attract-sep" || state === "success" ? sepT * 28 : 0);
+    const g = ctx.createLinearGradient(0, 42, 0, 42 + len);
+    g.addColorStop(0, `rgba(255,248,220,${0.95 * flicker})`);
+    g.addColorStop(0.14, `rgba(160,205,255,${0.6 * flicker})`);
+    g.addColorStop(0.48, `rgba(255,150,50,${0.36 * flicker})`);
     g.addColorStop(1, "rgba(255,50,10,0)");
     ctx.fillStyle = g;
     ctx.beginPath();
-    ctx.moveTo(-14, 44);
-    ctx.lineTo(14, 44);
-    ctx.lineTo(Math.sin(clock * 0.08) * 4, 44 + 96);
+    ctx.moveTo(-15, 44);
+    ctx.lineTo(15, 44);
+    ctx.lineTo(Math.sin(clock * 0.08) * 5, 44 + len);
     ctx.closePath();
     ctx.fill();
     ctx.restore();
@@ -1101,7 +1228,8 @@
     });
 
     ENGINES.forEach((e, i) => {
-      const lit = stack.alive && !stack.out.has(i) && (!stack.shipLit || sepT < 0.32);
+      const spool = state === "count" ? ignite > 0.38 : true;
+      const lit = stack.alive && !stack.out.has(i) && (!stack.shipLit || sepT < 0.32) && spool;
       if (lod > 0.35) drawRaptor(ctx, e.x, h * 0.46 + e.y * 0.15, e.s, lit && state !== "fail");
     });
     ctx.restore();
@@ -1179,25 +1307,46 @@
     ctx.save();
     ctx.translate(0, y);
     ctx.globalCompositeOperation = "lighter";
-    const pulse = 0.72 + Math.sin(clock * 0.03) * 0.28;
-    const g = ctx.createRadialGradient(0, 0, 6, 0, 0, 48 + heat * 22);
-    g.addColorStop(0, `rgba(255,200,120,${0.42 * heat * pulse})`);
-    g.addColorStop(0.28, `rgba(255,120,36,${0.38 * heat * pulse})`);
-    g.addColorStop(0.62, `rgba(255,60,12,${0.16 * heat})`);
+    const hot = state === "window" || state === "sep" || state === "attract-sep";
+    const pulse = 0.68 + Math.sin(clock * (hot ? 0.07 : 0.03)) * (hot ? 0.32 : 0.28);
+    const grow = hot ? 1.18 : 1;
+    const g = ctx.createRadialGradient(0, 0, 6, 0, 0, (48 + heat * 22) * grow);
+    g.addColorStop(0, `rgba(255,200,120,${0.48 * heat * pulse})`);
+    g.addColorStop(0.28, `rgba(255,120,36,${0.42 * heat * pulse})`);
+    g.addColorStop(0.62, `rgba(255,60,12,${0.18 * heat})`);
     g.addColorStop(1, "rgba(255,30,0,0)");
     ctx.fillStyle = g;
     ctx.beginPath();
-    ctx.arc(0, 0, 50 + heat * 18, 0, Math.PI * 2);
+    ctx.arc(0, 0, (50 + heat * 18) * grow, 0, Math.PI * 2);
     ctx.fill();
-    ctx.strokeStyle = `rgba(255,170,80,${0.7 * heat * pulse})`;
-    ctx.lineWidth = 2.6 + heat * 1.8;
+    ctx.strokeStyle = `rgba(255,170,80,${0.78 * heat * pulse})`;
+    ctx.lineWidth = 2.6 + heat * (hot ? 2.6 : 1.8);
     ctx.beginPath();
     ctx.ellipse(0, 0, 20 + heat * 3, 6.5, 0, 0, Math.PI * 2);
     ctx.stroke();
-    ctx.fillStyle = `rgba(255,210,140,${0.18 * heat * pulse})`;
+    ctx.fillStyle = `rgba(255,210,140,${0.22 * heat * pulse})`;
     ctx.beginPath();
     ctx.ellipse(0, 0, 9, 3.2, 0, 0, Math.PI * 2);
     ctx.fill();
+    ctx.restore();
+  }
+
+  function drawWindowTimer(ctx, y) {
+    const s = spec();
+    const left = Math.max(0, s.climb + s.window - tPlay);
+    const frac = clamp(left / s.window, 0, 1);
+    ctx.save();
+    ctx.translate(0, y);
+    ctx.strokeStyle = "rgba(255,180,80,0.28)";
+    ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 36, 12, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(255,220,150,0.95)";
+    ctx.lineWidth = 3.4;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 36, 12, 0, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * frac);
+    ctx.stroke();
     ctx.restore();
   }
 
@@ -1212,7 +1361,10 @@
     ctx.rotate(stack.angle);
 
     if (!sep || sepT < 0.98) {
-      if (stack.alive && (!stack.shipLit || sepT < 0.35)) drawBoosterPlume(ctx, flicker);
+      const spool = state === "count" ? ignite : 1;
+      if (stack.alive && (!stack.shipLit || sepT < 0.35) && spool > 0.04) {
+        drawBoosterPlume(ctx, flicker * spool);
+      }
       drawBooster(ctx, lod, night, sep ? stack.boostOff : 0);
     }
     if (sep) {
@@ -1226,6 +1378,7 @@
       drawShipBody(ctx, lod, night, -138 - stack.shipOff, stack.shipLit);
     } else {
       drawHotRing(ctx, heatAmt(), -80);
+      if (state === "window" && stack.alive) drawWindowTimer(ctx, -80);
       drawShipBody(ctx, lod, night, -138, false);
     }
 
@@ -1328,7 +1481,9 @@
     const lookY =
       state === "sep" || state === "attract-sep" || (state === "success" && sepT > 0)
         ? -96 + sepT * 6
-        : -52;
+        : state === "count"
+          ? -30
+          : -52;
     const originX = cssW * 0.5 + (stack?.x || 0) * 0.45 + ox;
     const originY = cssH * 0.5 - lookY * scale + oy + Math.sin(clock * 0.012) * 1.2;
 
@@ -1343,6 +1498,24 @@
     ctx.globalAlpha = 1;
 
     if (stack) drawStack(ctx, originX, originY, scale);
+
+    if (shock > 0 && shock < 1.25 && stack) {
+      ctx.save();
+      ctx.globalCompositeOperation = "lighter";
+      const ringR = (18 + shock * 210) * scale;
+      const fade = 1 - shock / 1.25;
+      ctx.strokeStyle = `rgba(255,210,140,${0.55 * fade})`;
+      ctx.lineWidth = 3.2 * fade + 1;
+      ctx.beginPath();
+      ctx.arc(originX, originY - 80 * scale, ringR, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.strokeStyle = `rgba(160,200,255,${0.22 * fade})`;
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.arc(originX, originY - 80 * scale, ringR * 0.72, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+    }
 
     particles.forEach((p) => {
       if (p.kind === "spark") return;
@@ -1362,7 +1535,7 @@
     ctx.fillRect(0, 0, cssW, cssH);
 
     const heat = heatAmt();
-    if (heat > 0.05 && (state === "window" || state === "boost" || state === "attract" || state === "sep")) {
+    if (heat > 0.05 && (state === "window" || state === "boost" || state === "attract" || state === "sep" || state === "count")) {
       const rim = ctx.createRadialGradient(cssW * 0.5, cssH * 0.5, cssW * 0.22, cssW * 0.5, cssH * 0.55, cssW * 0.7);
       rim.addColorStop(0, "rgba(255,80,10,0)");
       rim.addColorStop(1, `rgba(255,80,16,${0.18 * heat})`);
@@ -1381,6 +1554,70 @@
       ctx.fillStyle = `rgba(255,232,200,${flash * 0.22})`;
       ctx.fillRect(0, 0, cssW, cssH);
     }
+
+    drawCallouts(ctx);
+  }
+
+  function drawCallouts(ctx) {
+    if (!stack) return;
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const mono = '"IBM Plex Mono", ui-monospace, monospace';
+
+    if (state === "count") {
+      const ignition = countT <= 0.42;
+      const label = ignition ? "IGNITION" : String(Math.max(1, Math.ceil(countT)));
+      const pulse = ignition ? 1 : 0.78 + Math.sin(clock * 0.1) * 0.12;
+      ctx.shadowColor = "rgba(255,140,40,0.9)";
+      ctx.shadowBlur = reduceMotion ? 0 : 28;
+      ctx.fillStyle = `rgba(255,236,210,${pulse})`;
+      ctx.font = `600 ${Math.round(cssW * (ignition ? 0.068 : 0.2))}px ${mono}`;
+      ctx.fillText(label, cssW * 0.5, cssH * 0.17);
+      ctx.shadowBlur = 0;
+      ctx.font = `500 ${Math.round(Math.max(11, cssW * 0.018))}px ${mono}`;
+      ctx.fillStyle = "rgba(236,236,232,0.58)";
+      ctx.fillText(spec().name.toUpperCase(), cssW * 0.5, cssH * 0.17 + (ignition ? 28 : 46));
+    }
+
+    if (state === "boost" && stack.alive) {
+      const left = spec().climb - tPlay;
+      if (left <= 3.2 && left > 0) {
+        ctx.shadowColor = "rgba(255,90,20,0.7)";
+        ctx.shadowBlur = reduceMotion ? 0 : 16;
+        ctx.fillStyle = "rgba(255,214,150,0.95)";
+        ctx.font = `600 ${Math.round(cssW * 0.048)}px ${mono}`;
+        ctx.fillText(`STAGE IN ${left.toFixed(1)}`, cssW * 0.5, cssH * 0.155);
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    if (state === "window" && stack.alive) {
+      const s = spec();
+      const left = Math.max(0, s.climb + s.window - tPlay);
+      const frac = clamp(left / s.window, 0, 1);
+      const cx = cssW * 0.5;
+      const cy = Math.max(36, cssH * 0.08);
+      const r = Math.max(28, cssW * 0.038);
+      ctx.strokeStyle = "rgba(255,180,80,0.22)";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.strokeStyle = "rgba(255,210,130,0.95)";
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * frac);
+      ctx.stroke();
+      ctx.fillStyle = "#ffe7c2";
+      ctx.font = `600 ${Math.round(cssW * 0.032)}px ${mono}`;
+      ctx.fillText("STAGE", cx, cy - 1);
+      ctx.font = `500 ${Math.round(cssW * 0.02)}px ${mono}`;
+      ctx.fillStyle = "rgba(255,230,190,0.86)";
+      ctx.fillText(left.toFixed(1), cx, cy + r * 0.42);
+    }
+    ctx.restore();
   }
 
   function formatT(sec) {
@@ -1394,24 +1631,30 @@
   function updateHud() {
     if (!stack) return;
     const s = spec();
-    const showCue =
-      (state === "window" || (state === "attract" && windowOpen()) || (state === "boost" && tPlay >= s.climb - 0.12)) &&
-      stack.alive;
+    const showCue = state === "attract" && windowOpen() && stack.alive;
     if (cue) cue.hidden = !showCue;
+    if (cueLabel) cueLabel.textContent = "Stage";
+    if (cueClock) cueClock.textContent = "";
     if (!hud || hud.hidden) return;
     if (hudFlight) hudFlight.textContent = s.name;
-    if (hudClock) hudClock.textContent = formatT(T0 + tPlay);
+    if (hudClock) {
+      hudClock.textContent = state === "count" ? `T- ${countT.toFixed(1)}` : formatT(T0 + tPlay);
+    }
     if (hudAlt) hudAlt.textContent = `${stack.alt.toFixed(1)} km`;
     if (hudScore) hudScore.textContent = score.toLocaleString();
   }
 
   function followCam() {
     const sep = state === "sep" || state === "attract-sep" || (state === "success" && sepT > 0);
-    const wantZoom = sep ? 1.04 : 1;
+    let wantZoom = 1;
+    if (state === "count") wantZoom = 1.14;
+    else if (state === "window") wantZoom = 1.1;
+    else if (sep) wantZoom = 1.02 + sepT * 0.1;
     cam.zoom = lerp(cam.zoom + cam.punch, wantZoom, 0.08);
     cam.punch *= 0.84;
     cam.x = lerp(cam.x, -(stack?.x || 0) * 0.18, 0.06);
-    cam.y = lerp(cam.y, 0, 0.06);
+    const wantY = state === "count" ? 16 : sep ? -(stack?.shipOff || 0) * 0.2 : 0;
+    cam.y = lerp(cam.y, wantY, 0.08);
   }
 
   function frame(now) {
@@ -1425,7 +1668,12 @@
       followCam();
       shake *= 0.86;
       flash *= 0.9;
-      if (state === "boost" || state === "window" || state === "attract") {
+      if (
+        state === "boost" ||
+        state === "window" ||
+        state === "attract" ||
+        (state === "count" && ignite > 0.45)
+      ) {
         shake = Math.max(shake, reduceMotion ? 0 : 0.55);
       }
     }
@@ -1497,7 +1745,8 @@
   function startPlayResume() {
     if (state === "pause") {
       hideOverlay();
-      state = tPlay >= spec().climb ? "window" : "boost";
+      if (pausedFrom === "count") state = "count";
+      else state = tPlay >= spec().climb ? "window" : "boost";
       if (hud) hud.hidden = false;
       return;
     }
@@ -1523,7 +1772,8 @@
   window.addEventListener("keydown", (e) => {
     if (typingNow(e)) return;
     if (e.key === "p" || e.key === "P") {
-      if (state === "boost" || state === "window") {
+      if (state === "boost" || state === "window" || state === "count") {
+        pausedFrom = state;
         state = "pause";
         setEngine(0);
         showOverlay("Paused", "Hold", "The stack is waiting on the climb.", "Resume");
@@ -1577,7 +1827,8 @@
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       clearAllHolds();
-      if (state === "boost" || state === "window") {
+      if (state === "boost" || state === "window" || state === "count") {
+        pausedFrom = state;
         state = "pause";
         setEngine(0);
         showOverlay("Paused", "Hold", "The stack is waiting on the climb.", "Resume");
@@ -1615,6 +1866,7 @@
     spec,
     tPlay: () => tPlay,
     flight: () => flight,
+    countT: () => countT,
     tryStage,
     audio: () =>
       audio
