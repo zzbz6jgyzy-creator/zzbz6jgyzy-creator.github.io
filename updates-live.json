@@ -1,23 +1,31 @@
 {
-  "updated": "2026-10-10T23:58:24Z",
+  "updated": "2026-10-11T00:46:56Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fleet": 3346,
+  "fleet": 3344,
   "latest": "2026.38.5",
   "versions": [
     {
       "id": "2026.38.5",
       "date": "2026-10-10",
-      "count": 0,
-      "fleet": 3346,
-      "percent": 0.0,
+      "count": 2,
+      "fleet": 3344,
+      "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.12",
       "features": [
         {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
+        },
+        {
           "title": "Automatic Collision Evasion",
           "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage in the following situations while you are driving manually: - Scenario 1: A\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3 Lite",
+          "text": "FSD (Supervised) v14.3 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
         },
         {
           "title": "FSD (Supervised) v14.3.12",
@@ -28,34 +36,34 @@
           "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
         },
         {
-          "title": "Emergency Drive Away",
-          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
         },
         {
-          "title": "FSD (Supervised) v14.3.11",
-          "text": "Full Self-Driving (Supervised) v14.3.11 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
         },
         {
-          "title": "Halloween Mode",
-          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
-        },
-        {
-          "title": "Security Improvements",
-          "text": "This update includes important security fixes and improvements."
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
         }
       ],
-      "countries": [],
-      "countryCounts": {},
-      "pending": 6,
+      "countries": [
+        "US"
+      ],
+      "countryCounts": {
+        "US": 2
+      },
+      "pending": 4,
       "firstSeen": "2026-10-10T22:26:31Z",
-      "lastSeen": "2026-10-10T22:26:31Z"
+      "lastSeen": "2026-10-11T00:22:45Z"
     },
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 67,
-      "fleet": 3346,
-      "percent": 2.0,
+      "count": 69,
+      "fleet": 3344,
+      "percent": 2.1,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -100,10 +108,10 @@
         "NL",
         "IT",
         "CH",
-        "FR",
         "AT",
-        "ES",
         "TW",
+        "FR",
+        "ES",
         "BG",
         "IE",
         "HU",
@@ -123,10 +131,10 @@
         "NL": 6,
         "IT": 5,
         "CH": 5,
+        "AT": 4,
+        "TW": 4,
         "FR": 3,
-        "AT": 3,
         "ES": 3,
-        "TW": 3,
         "BG": 1,
         "IE": 1,
         "HU": 1,
@@ -139,15 +147,15 @@
         "PL": 1,
         "TR": 1
       },
-      "pending": 69,
+      "pending": 66,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-10T23:54:19Z"
+      "lastSeen": "2026-10-11T00:26:41Z"
     },
     {
       "id": "2026.33.5",
       "date": "2026-10-07",
       "count": 97,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 2.9,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -202,7 +210,7 @@
       "id": "2026.38.3",
       "date": "2026-10-06",
       "count": 7,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": null,
@@ -261,7 +269,7 @@
       "id": "2026.33.100",
       "date": "2026-10-06",
       "count": 38,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
@@ -316,7 +324,7 @@
       "id": "2026.27.6.15",
       "date": "2026-10-05",
       "count": 3,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
@@ -369,7 +377,7 @@
       "id": "2026.38",
       "date": "2026-09-30",
       "count": 68,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 2.0,
       "fsd": null,
       "fsdHw3": null,
@@ -452,7 +460,7 @@
       "id": "2026.27.6.5",
       "date": "2026-09-24",
       "count": 1,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 0.0,
       "fsd": null,
       "fsdHw3": null,
@@ -505,7 +513,7 @@
       "id": "2026.32.7",
       "date": "2026-09-23",
       "count": 357,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 10.7,
       "fsd": null,
       "fsdHw3": null,
@@ -630,7 +638,7 @@
       "id": "2026.27.11",
       "date": "2026-09-23",
       "count": 652,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 19.5,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -689,7 +697,7 @@
       "id": "2026.27.10",
       "date": "2026-09-19",
       "count": 170,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 5.1,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -746,7 +754,7 @@
       "id": "2026.28.5",
       "date": "2026-09-16",
       "count": 5,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
@@ -799,7 +807,7 @@
       "id": "2026.27.300",
       "date": "2026-09-15",
       "count": 38,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
@@ -864,7 +872,7 @@
       "id": "2026.32.3",
       "date": "2026-09-09",
       "count": 374,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 11.2,
       "fsd": null,
       "fsdHw3": null,
@@ -993,7 +1001,7 @@
       "id": "2026.27.200",
       "date": "2026-09-01",
       "count": 32,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 1.0,
       "fsd": null,
       "fsdHw3": null,
@@ -1056,7 +1064,7 @@
       "id": "2026.27.100.1",
       "date": "2026-08-24",
       "count": 31,
-      "fleet": 3346,
+      "fleet": 3344,
       "percent": 0.9,
       "fsd": null,
       "fsdHw3": null,
