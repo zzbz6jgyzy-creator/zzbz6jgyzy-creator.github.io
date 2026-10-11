@@ -597,6 +597,10 @@ a.stat:hover {
   --desk-image: url("assets/dispatch/starship-catch-poster.jpg");
 }
 
+.desk-staging {
+  --desk-image: url("assets/staging-poster.jpg");
+}
+
 .eyebrow {
   margin: 0 0 0.45rem;
   font-size: 0.68rem;

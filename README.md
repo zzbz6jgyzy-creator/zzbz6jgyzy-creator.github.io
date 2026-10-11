@@ -18,12 +18,13 @@ Open `http://localhost:4173`.
 - `news.html` — today’s Tesla, SpaceX and Grok headlines (live Google News in the browser, plus `news-data.json`)
 - `.github/workflows/news-snapshot.yml` — refreshes `news-data.json` on main about twice an hour
 - `tsla.html` / `calendar.html` — Markets and the Musk-world calendar
-- `games.html` — Games hub (Robotaxi Boss, Catch)
+- `games.html` — Games hub (Hot Staging, Catch, Robotaxi Boss)
 - `cybercab.html` — Cybercab Tracker (edit `cybercab-data.js` to update)
 - `goldcab.html` — redirects to the Games hub
 - `poll.js` — weekly TSLA poll on the homepage (Abacus free counter)
 - `robotaxi.html` — Robotaxi Boss (Tesla fleet, one week)
 - `catch.html` — Catch (Starship chopsticks)
+- `staging.html` — Hot Staging (Starship ascent / stage window)
 - `tesla.html` / `spacex.html` / `grok.html` — Tesla and SpaceX desks, plus the Grok Bot tutorial (introduction through advanced)
 - `fsd-europe.html` — FSD Europe tracker (approved countries in red, TCMV vote math)
 - `fsd.html` — wider FSD country list, versions and milestones

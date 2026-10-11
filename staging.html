@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Hot Staging — Supercharged Daily</title>
+    <meta
+      name="description"
+      content="Hot Staging: keep the Starship stack pointed, then light Ship inside Super Heavy’s fire. A fan-made SpaceX game from @ALJR86."
+    />
+    <link rel="canonical" href="https://superchargeddaily.com/staging.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Supercharged Daily" />
+    <meta property="og:title" content="Hot Staging — Supercharged Daily" />
+    <meta property="og:description" content="Keep the stack pointed. When the ring lights, stage. Fan-made SpaceX game from @ALJR86." />
+    <meta property="og:url" content="https://superchargeddaily.com/staging.html" />
+    <meta property="og:image" content="https://superchargeddaily.com/assets/staging-poster.jpg" />
+    <meta property="og:image:alt" content="Starship hot staging: Ship lighting in Super Heavy’s exhaust" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ALJR86" />
+    <meta name="twitter:creator" content="@ALJR86" />
+    <meta name="twitter:title" content="Hot Staging — Supercharged Daily" />
+    <meta name="twitter:description" content="Keep the stack pointed. When the ring lights, stage." />
+    <meta name="twitter:image" content="https://superchargeddaily.com/assets/staging-poster.jpg" />
+    <meta name="twitter:image:alt" content="Starship hot staging: Ship lighting in Super Heavy’s exhaust" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/staging.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/index.html">
+          <img class="brand-mark" src="/assets/brand/icon-1b-mark.svg" alt="" width="30" height="30" />
+          <img class="brand-wordmark" src="/assets/brand/wordmark.svg" alt="Supercharged Daily" width="172" height="27" />
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
+          <a href="/news.html">News</a>
+          <a href="/tesla.html">Tesla</a>
+          <a href="/spacex.html">SpaceX</a>
+          <a href="/grok.html">Grok</a>
+          <a href="/tsla.html">Markets</a>
+          <a href="/fsd-europe.html">FSD Europe tracker</a>
+          <a href="/starship.html">Starship</a>
+          <a href="/cybercab.html">Cybercab Tracker</a>
+          <a href="/updates.html">Software Update Tracker</a>
+          <a href="/reviews/index.html">Reviews</a>
+          <a href="/gear.html">Gear</a>
+          <a href="/games.html" aria-current="page">Games</a>
+          <a class="nav-cta" href="https://x.com/ALJR86">Follow on X</a>
+        </nav>
+      </header>
+
+      <main id="main" class="staging-page">
+        <section class="staging-intro">
+          <p class="eyebrow"><a href="/games.html">Games</a> · Hot Staging</p>
+          <div class="staging-intro-row">
+            <div>
+              <h1>Hot Staging</h1>
+              <p>
+                Keep Super Heavy pointed through the climb. When the ring lights,
+                hit Stage — Ship’s Raptors fire inside the booster’s exhaust.
+              </p>
+            </div>
+            <p class="staging-best" data-staging-best>Best 0</p>
+          </div>
+        </section>
+
+        <div class="staging-play">
+          <div class="staging-stage-wrap">
+            <div class="staging-stage" data-staging-stage>
+              <canvas data-staging-canvas aria-label="Starship hot staging game"></canvas>
+              <div class="staging-hud" data-staging-hud hidden>
+                <span data-hud-flight>Flight 7</span>
+                <span data-hud-clock>T+ 0.0</span>
+                <span data-hud-alt>0 km</span>
+                <span data-hud-score>0</span>
+              </div>
+              <div class="staging-cue" data-staging-cue hidden>Stage</div>
+              <div class="staging-overlay" data-staging-overlay>
+                <p class="staging-kicker" data-overlay-kicker>Starbase</p>
+                <h2 data-overlay-title>Light the Ship</h2>
+                <p data-overlay-copy>
+                  A/D keeps the stack upright. Space stages. Too early and Ship is
+                  dark. Too late and the bells eat each other.
+                </p>
+                <p class="staging-overlay-actions">
+                  <button type="button" class="button button-primary" data-staging-play>Play</button>
+                </p>
+              </div>
+            </div>
+
+            <div class="staging-pad" data-staging-pad>
+              <button type="button" data-hold="left" aria-label="Gimbal left">◀</button>
+              <button type="button" class="staging-stage-btn" data-hold="stage" aria-label="Stage">Stage</button>
+              <button type="button" data-hold="right" aria-label="Gimbal right">▶</button>
+            </div>
+
+            <p class="staging-keys">
+              <kbd>A</kbd><kbd>D</kbd> gimbal
+              ·
+              <kbd>Space</kbd> stage
+              ·
+              <kbd>P</kbd> pause
+              ·
+              <kbd>M</kbd> mute
+            </p>
+          </div>
+
+          <aside class="staging-board" aria-label="Hot Staging leaderboard">
+            <div class="staging-board-head">
+              <p class="eyebrow">Board</p>
+              <button type="button" class="staging-mute" data-staging-mute>Sound on</button>
+            </div>
+            <label class="staging-callsign">
+              <span>Callsign</span>
+              <input
+                id="staging-callsign"
+                name="callsign"
+                type="text"
+                inputmode="text"
+                enterkeyhint="done"
+                autocapitalize="characters"
+                autocorrect="off"
+                data-staging-name
+                maxlength="12"
+                spellcheck="false"
+                autocomplete="off"
+                value="Pilot"
+              />
+            </label>
+            <p class="staging-board-now" data-board-now>This run · on the pad</p>
+            <ol class="staging-board-list" data-board-list></ol>
+            <p class="staging-board-note">
+              Top runs on this browser. A clean staging locks the flight. A walk,
+              an early light, or a late punch ends the run.
+            </p>
+          </aside>
+        </div>
+        <p class="staging-fineprint">
+          Fan-made. Not affiliated with SpaceX. Nothing here is a simulator.
+        </p>
+      </main>
+
+      <footer class="site-footer">
+        <a class="footer-lockup" href="/index.html"><img src="/assets/brand/lockup-1b-trim.svg" alt="Supercharged Daily" width="220" height="45" /></a>
+        <p>© <span data-year></span> Supercharged Daily · @ALJR86. Fan account. Not affiliated with Tesla, SpaceX or xAI.</p>
+        <p>
+          <a href="/games.html">Games</a>
+          ·
+          <a href="/catch.html">Catch</a>
+          ·
+          <a href="/robotaxi.html">Robotaxi Boss</a>
+          ·
+          <a href="/spacex.html">SpaceX</a>
+          ·
+          <a href="https://x.com/ALJR86">X profile</a>
+        </p>
+        <p class="footer-support"><a class="support-button" href="https://buymeacoffee.com/Superchargeddaily" target="_blank" rel="noopener">Support Supercharged Daily ☕</a></p>
+        <p class="footer-disclosure">Some links are affiliate links; I may earn a commission at no extra cost to you.</p>
+      </footer>
+    </div>
+    <script src="/script.js"></script>
+    <script src="/staging.js"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
+  </body>
+</html>
