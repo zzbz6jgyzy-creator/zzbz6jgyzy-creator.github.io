@@ -5,6 +5,7 @@
   const LIVE_URL = "/updates-live.json";
   const LAND_URL = "/assets/world-land.svg";
   const LAND_IMG = "/assets/world-land.png";
+  const COUNTRIES_URL = "/assets/world-countries.svg";
   const STALE_MS = 90 * 60 * 1000;
   const MAP_W = 1000;
   const MAP_H = 500;
@@ -359,9 +360,7 @@
     }
   };
 
-  const loadLand = async () => {
-    const slot = document.getElementById("updates-map-land");
-    if (!slot || slot.childElementCount) return;
+  const loadLandRaster = (slot) => {
     const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
     image.setAttribute("href", LAND_IMG);
     image.setAttribute("width", String(MAP_W));
@@ -373,6 +372,56 @@
       loadLandPath(slot);
     });
     slot.append(image);
+  };
+
+  const paintCountries = (spots) => {
+    const slot = document.getElementById("updates-map-land");
+    if (!slot) return;
+    const by = new Map((spots || []).map((spot) => [spot.code, spot]));
+    slot.querySelectorAll(".updates-map-country").forEach((path) => {
+      const spot = by.get(path.getAttribute("data-code"));
+      path.setAttribute(
+        "class",
+        spot
+          ? `updates-map-country is-${spot.heat}${spot.latest ? " is-new" : ""}${
+              countryCode === spot.code ? " is-focus" : ""
+            }`
+          : "updates-map-country"
+      );
+    });
+  };
+
+  const loadCountries = async (slot) => {
+    const res = await fetch(COUNTRIES_URL, { cache: "force-cache" });
+    if (!res.ok) return false;
+    const text = await res.text();
+    const doc = new DOMParser().parseFromString(text, "image/svg+xml");
+    const source = [...doc.querySelectorAll("path[data-code]")];
+    if (!source.length) return false;
+    const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    group.setAttribute("class", "updates-map-countries");
+    source.forEach((path) => {
+      const clone = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      clone.setAttribute("d", path.getAttribute("d"));
+      clone.setAttribute("data-code", path.getAttribute("data-code"));
+      clone.setAttribute("class", "updates-map-country");
+      clone.setAttribute("fill-rule", "nonzero");
+      group.append(clone);
+    });
+    slot.replaceChildren(group);
+    if (current) paintCountries(collectHotspots(current));
+    return true;
+  };
+
+  const loadLand = async () => {
+    const slot = document.getElementById("updates-map-land");
+    if (!slot || slot.childElementCount) return;
+    try {
+      if (await loadCountries(slot)) return;
+    } catch {
+      slot.replaceChildren();
+    }
+    loadLandRaster(slot);
   };
 
   const heatOf = (row, latestId) => {
@@ -389,6 +438,7 @@
     });
     const scoped = versionQuery ? liveRows.filter((row) => matchVersion(row, versionQuery)) : liveRows;
     const latestId = bundle.live?.latest || scoped[0]?.id;
+    const waveId = scoped.find((row) => (row.countries || []).length)?.id || latestId;
     const spots = new Map();
     scoped.forEach((row) => {
       (row.countries || []).forEach((code) => {
@@ -397,8 +447,8 @@
           code,
           id: row.id,
           count: row.countryCounts?.[code] || 0,
-          heat: heatOf(row, latestId),
-          latest: row.id === latestId,
+          heat: heatOf(row, waveId),
+          latest: row.id === waveId,
         });
       });
     });
@@ -474,8 +524,8 @@
     const stroke = Math.min(2.2, Math.max(0.4, 1.15 / px));
     layer.querySelectorAll(".updates-hot").forEach((g) => {
       const count = Number(g.dataset.count) || 1;
-    const target = (isNarrow() ? 9 : 6) + Math.sqrt(count / max) * (isNarrow() ? 4 : 2.8);
-    const r = Math.max(0.55, Math.min(5.2, target / px));
+    const target = (isNarrow() ? 10 : 7.5) + Math.sqrt(count / max) * (isNarrow() ? 3.2 : 2.2);
+    const r = Math.max(1.2, target / px);
     const hit = Math.max(r * 1.25, Math.min(6, (isNarrow() ? 18 : 12) / px));
       g.querySelector("[data-hit]")?.setAttribute("r", hit.toFixed(2));
       g.querySelector(".updates-hot-halo")?.setAttribute("r", (r * 1.85).toFixed(2));
@@ -594,7 +644,16 @@
     return { hit, nearby };
   };
 
-  const pickCountryAt = (clientX, clientY) => {
+  const pickCountryAt = (clientX, clientY, target) => {
+    const path = target?.closest?.(".updates-map-country");
+    const pathCode = path?.getAttribute("data-code") || "";
+    const pathSpot = /(?:^|\s)is-(?:hot|warm|cool)(?:\s|$)/.test(path?.getAttribute("class") || "");
+    if (pathSpot && pathCode) {
+      const next = countryCode === pathCode ? "" : pathCode;
+      setCountry(next, true);
+      rerender();
+      return;
+    }
     const found = nearestHot(clientX, clientY);
     if (!found.hit) return;
     if (
@@ -702,6 +761,7 @@
     if (!layer) return;
     layer.replaceChildren();
     const spots = collectHotspots(bundle);
+    paintCountries(spots);
     const max = Math.max(1, ...spots.map((s) => s.count || 1));
     layer.dataset.max = String(max);
     spots.forEach((spot) => {
@@ -1133,6 +1193,15 @@
         hideTip();
         return;
       }
+      const path = event.target.closest?.(".updates-map-country");
+      const pathCode = path?.getAttribute("data-code") || "";
+      if (pathCode && current) {
+        const spot = collectHotspots(current).find((row) => row.code === pathCode);
+        if (spot) {
+          showTip(spot, event);
+          return;
+        }
+      }
       const found = nearestHot(event.clientX, event.clientY);
       if (found.hit) showTip(found.hit, event);
       else hideTip();
@@ -1195,7 +1264,7 @@
         return;
       }
       if (!event.target?.closest?.(".updates-map-shell") || event.target.closest("[data-updates-zoom]")) return;
-      pickCountryAt(x, y);
+      pickCountryAt(x, y, event.target);
     };
 
     window.addEventListener("pointerup", endDrag);
