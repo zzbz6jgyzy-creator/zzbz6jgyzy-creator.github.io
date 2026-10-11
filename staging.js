@@ -1331,6 +1331,25 @@
     ctx.restore();
   }
 
+  function drawWindowTimer(ctx, y) {
+    const s = spec();
+    const left = Math.max(0, s.climb + s.window - tPlay);
+    const frac = clamp(left / s.window, 0, 1);
+    ctx.save();
+    ctx.translate(0, y);
+    ctx.strokeStyle = "rgba(255,180,80,0.28)";
+    ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 36, 12, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(255,220,150,0.95)";
+    ctx.lineWidth = 3.4;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 36, 12, 0, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * frac);
+    ctx.stroke();
+    ctx.restore();
+  }
+
   function drawStack(ctx, originX, originY, scale) {
     const night = spaceT();
     const lod = clamp(scale, 0, 1.4);
@@ -1359,6 +1378,7 @@
       drawShipBody(ctx, lod, night, -138 - stack.shipOff, stack.shipLit);
     } else {
       drawHotRing(ctx, heatAmt(), -80);
+      if (state === "window" && stack.alive) drawWindowTimer(ctx, -80);
       drawShipBody(ctx, lod, night, -138, false);
     }
 
@@ -1578,7 +1598,7 @@
       const left = Math.max(0, s.climb + s.window - tPlay);
       const frac = clamp(left / s.window, 0, 1);
       const cx = cssW * 0.5;
-      const cy = cssH * 0.175;
+      const cy = Math.max(36, cssH * 0.08);
       const r = Math.max(28, cssW * 0.038);
       ctx.strokeStyle = "rgba(255,180,80,0.22)";
       ctx.lineWidth = 4;
