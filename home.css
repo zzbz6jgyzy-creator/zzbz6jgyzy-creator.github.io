@@ -109,5 +109,13 @@ body.home-x{background:#050505;color:#f4f4f2}
 }
 @media (max-width:600px){.hx-live-x{display:none}}
 .hx-tile.t-ref{background:radial-gradient(120% 120% at 100% 0%,rgba(227,25,55,.35),transparent 60%),linear-gradient(160deg,#17171a,#0b0b0c);border-color:rgba(227,25,55,.4)}
-.t-gear{grid-column:1/-1;min-height:150px;background:radial-gradient(90% 160% at 100% 50%,rgba(227,25,55,.28),transparent 60%),linear-gradient(160deg,#17171a,#0b0b0c)}
+.t-gear{background:radial-gradient(90% 160% at 100% 50%,rgba(227,25,55,.28),transparent 60%),linear-gradient(160deg,#17171a,#0b0b0c)}
 .t-gear p{max-width:52ch}
+
+/* uniform tile grid: every tile one cell, all rows equal height */
+.hx-tiles{grid-auto-rows:1fr}
+.hx-tiles>.hx-tile{grid-column:auto;grid-row:auto;min-height:200px}
+.hx-tiles>.hx-tile h3{font-size:clamp(1rem,1.6vw,1.25rem)}
+@media (max-width:600px){.hx-tiles>.hx-tile{min-height:170px}.hx-tiles>.hx-tile h3{font-size:.92rem}}
+.hx-tiles>.hx-tile.t-news{grid-column:1/-1}
+.hx-tiles>.hx-tile.t-news h3{font-size:clamp(1.6rem,3.5vw,2.6rem)}
