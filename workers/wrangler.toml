@@ -1,0 +1,10 @@
+name = "aljr-boards"
+main = "aljr-boards.js"
+compatibility_date = "2025-10-01"
+
+# Live: https://aljr-boards.superchargeddaily.workers.dev
+# Apex /api/boards is unused — superchargeddaily.com is DNS-only to GitHub Pages.
+
+[[kv_namespaces]]
+binding = "BOARDS"
+id = "ef52bf8877034d3fa713efcb9f86eb1e"

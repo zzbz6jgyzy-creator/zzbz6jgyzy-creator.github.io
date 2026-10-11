@@ -125,7 +125,10 @@
 
           <aside class="catch-board" aria-label="Catch leaderboard">
             <div class="catch-board-head">
-              <p class="eyebrow">Board</p>
+              <div>
+                <p class="eyebrow">Board</p>
+                <p class="game-board-status" data-board-status="catch">World · connecting</p>
+              </div>
               <button type="button" class="catch-mute" data-catch-mute>Sound on</button>
             </div>
             <label class="catch-callsign">
@@ -148,8 +151,8 @@
             <p class="catch-board-now" data-board-now>This run · on the pad</p>
             <ol class="catch-board-list" data-board-list></ol>
             <p class="catch-board-note">
-              Top runs on this browser. The board updates when you catch, and
-              locks a run when it ends.
+              World board. Locked runs from every pad. The live row stays on
+              this pad until the flight ends.
             </p>
           </aside>
         </div>
@@ -177,6 +180,7 @@
       </footer>
     </div>
     <script src="/script.js"></script>
+    <script src="/board.js"></script>
     <script src="/catch.js"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
