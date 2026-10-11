@@ -119,3 +119,15 @@ body.home-x{background:#050505;color:#f4f4f2}
 @media (max-width:600px){.hx-tiles>.hx-tile{min-height:170px}.hx-tiles>.hx-tile h3{font-size:.92rem}}
 .hx-tiles>.hx-tile.t-news{grid-column:1/-1}
 .hx-tiles>.hx-tile.t-news h3{font-size:clamp(1.6rem,3.5vw,2.6rem)}
+
+/* Weekly TSLA poll */
+.hx-poll{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--line-strong);border-radius:var(--radius);padding:1.6rem;text-align:center}
+.hx-poll h3{font-size:1.5rem;margin:.3rem 0 1.1rem}.hx-poll h3 b{color:#E31937}
+.hx-poll-btns{display:flex;gap:.8rem;justify-content:center;margin-bottom:1.1rem}
+.hx-poll-btns button{flex:1;max-width:200px;font:700 1rem var(--font);padding:.85rem 1rem;border-radius:999px;cursor:pointer;border:1px solid #E31937;background:transparent;color:var(--ink)}
+.hx-poll-btns button[data-vote="up"]{background:#E31937;color:#fff}
+.hx-poll-btns button:disabled{opacity:.45;cursor:default}
+.hx-poll-bar{height:10px;border-radius:999px;background:#2a2b31;overflow:hidden}
+.hx-poll-bar span{display:block;height:100%;width:50%;background:#E31937;transition:width .5s}
+.hx-poll-pcts{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.85rem;color:var(--ink-soft);margin-top:.4rem}
+.hx-poll-status{color:var(--mute);font-size:.85rem;margin:.8rem 0 0}

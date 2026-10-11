@@ -57,6 +57,7 @@
           <a href="/tsla.html">Markets</a>
           <a href="/fsd-europe.html">FSD Europe tracker</a>
           <a href="/starship.html">Starship</a>
+          <a href="/cybercab.html">Cybercab Tracker</a>
           <a href="/updates.html">Software Update Tracker</a>
           <a href="/reviews/index.html">Reviews</a>
           <a href="/gear.html">Gear</a>
@@ -241,6 +242,37 @@
         </section>
 
 
+        <section class="hx-section" id="poll" aria-labelledby="poll-h">
+          <div class="hx-head">
+            <p class="hx-eyebrow reveal">Weekly poll</p>
+            <h2 id="poll-h" class="hx-h2 reveal">Call the week</h2>
+          </div>
+          <div class="hx-poll reveal" data-tsla-poll>
+            <h3>Will <b>$TSLA</b> close the week up or down?</h3>
+            <div class="hx-poll-btns">
+              <button type="button" data-vote="up">▲ Up</button>
+              <button type="button" data-vote="down">▼ Down</button>
+            </div>
+            <div class="hx-poll-bar" aria-hidden="true"><span data-bar-up></span></div>
+            <div class="hx-poll-pcts"><span>Up <b data-pct-up>–</b></span><span>Down <b data-pct-down>–</b></span></div>
+            <p class="hx-poll-status" data-poll-status role="status">Loading votes…</p>
+          </div>
+        </section>
+
+        <section class="hx-section" aria-labelledby="hx-cc-h">
+          <a class="hx-feature reveal" href="/cybercab.html">
+            <div class="hx-feature-media">
+              <img src="/assets/dispatch/cybercab-austin-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+            </div>
+            <div class="hx-feature-copy">
+              <span class="hx-tag">Deep dive</span>
+              <h3 id="hx-cc-h">Cybercab Tracker</h3>
+              <p>Fleet count, cities, milestones and dates. Every number sourced. Updated 11 Oct 2026.</p>
+              <span class="hx-feature-meta"><span>Tracker</span> <span class="hx-read">Open the tracker →</span></span>
+            </div>
+          </a>
+        </section>
+
         <section class="hx-band" id="newsletter" aria-labelledby="newsletter-heading">
           <div class="hx-band-glow" aria-hidden="true"></div>
           <div class="hx-band-inner newsletter" data-newsletter="banner">
@@ -295,5 +327,9 @@
     <script src="/script.js"></script>
     <script src="/home-stats.js"></script>
     <script src="/home.js" defer></script>
+    <script src="/poll.js" defer></script>
+      <!-- ANALYTICS: Cloudflare Web Analytics. Paste the site token from Cloudflare dashboard > Analytics & Logs > Web Analytics, then remove the comment markers.
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "PASTE_CF_TOKEN_HERE"}'></script>
+    -->
   </body>
 </html>
