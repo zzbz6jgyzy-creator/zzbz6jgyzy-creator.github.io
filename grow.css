@@ -1,0 +1,24 @@
+/* Growth: referral card, end-of-page newsletter band, scroll prompt */
+.sd-ref{max-width:1100px;margin:2.5rem auto;padding:1.4rem 1.6rem;display:flex;gap:1.2rem;align-items:center;justify-content:space-between;flex-wrap:wrap;background:linear-gradient(135deg,rgba(227,25,55,.16),rgba(10,10,11,.9) 60%);border:1px solid rgba(227,25,55,.45);border-radius:14px;color:#fff}
+.sd-ref-eb{font:500 .68rem/1 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#E31937;margin:0 0 .5rem}
+.sd-ref h2{font-family:Michroma,sans-serif;font-weight:400;text-transform:uppercase;font-size:1.15rem;margin:0 0 .35rem;letter-spacing:.03em}
+.sd-ref p.sd-ref-sub{margin:0;color:#c4c5c9;font-size:.92rem;max-width:52ch}
+.sd-btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.8rem 1.3rem;border-radius:999px;background:#E31937;color:#fff!important;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:.95rem;white-space:nowrap}
+.sd-btn:hover{background:#ff2a4a}
+.sd-btn:focus-visible,.sd-x:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.sd-band{max-width:1100px;margin:2.5rem auto 1.5rem;padding:1.6rem;border-radius:14px;background:#0b0b0c;border:1px solid rgba(255,255,255,.1);border-top:3px solid #E31937;color:#fff;display:grid;grid-template-columns:1fr minmax(280px,420px);gap:1.2rem;align-items:center}
+.sd-band h2{font-family:Michroma,sans-serif;font-weight:400;text-transform:uppercase;font-size:1.05rem;margin:0 0 .35rem}
+.sd-band p{margin:0;color:#c4c5c9;font-size:.9rem}
+.sd-form{display:flex;gap:.5rem}
+.sd-form input[type=email]{flex:1;min-width:0;padding:.8rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:#151517;color:#fff;font-size:16px;-webkit-appearance:none;appearance:none}
+.sd-form input[type=email]:focus{outline:2px solid #E31937;border-color:transparent}
+.sd-fine{font-size:.75rem!important;color:#8a8b90!important;margin-top:.45rem!important}
+.sd-band .newsletter-status:empty{display:none}
+.sd-pop{position:fixed;right:20px;bottom:20px;z-index:9999;width:min(360px,calc(100vw - 24px));padding:1.2rem 1.2rem 1.1rem;border-radius:14px;background:#0b0b0c;border:1px solid rgba(227,25,55,.5);box-shadow:0 24px 60px -20px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.4);color:#fff;transform:translateY(16px);opacity:0;transition:transform .35s ease,opacity .35s ease}
+.sd-pop.is-in{transform:none;opacity:1}
+.sd-pop h2{font-family:Michroma,sans-serif;font-weight:400;text-transform:uppercase;font-size:.9rem;margin:0 2rem .35rem 0}
+.sd-pop p{margin:0 0 .8rem;color:#c4c5c9;font-size:.85rem}
+.sd-x{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:#aaa;font-size:1.3rem;cursor:pointer}
+.sd-x:hover{color:#fff;background:#1c1c1f}
+@media (max-width:720px){.sd-ref,.sd-band{margin-left:14px;margin-right:14px;padding:1.2rem}.sd-band{grid-template-columns:1fr}.sd-form{flex-direction:column}.sd-ref .sd-btn,.sd-form .sd-btn{width:100%}.sd-pop{right:12px;left:12px;bottom:12px;width:auto}}
+@media (prefers-reduced-motion:reduce){.sd-pop{transition:none;transform:none}}

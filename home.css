@@ -108,3 +108,4 @@ body.home-x{background:#050505;color:#f4f4f2}
  .hx-hero-img{transform:none}
 }
 @media (max-width:600px){.hx-live-x{display:none}}
+.hx-tile.t-ref{background:radial-gradient(120% 120% at 100% 0%,rgba(227,25,55,.35),transparent 60%),linear-gradient(160deg,#17171a,#0b0b0c);border-color:rgba(227,25,55,.4)}

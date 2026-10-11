@@ -4325,3 +4325,8 @@ a.news-card:hover h3 {
   .trackers { grid-template-columns: 1fr; }
   .flagship-mile { grid-template-columns: 1fr; gap: 0.25rem; }
 }
+
+/* Footer support button (hidden in index.html until a Ko-fi/BMC URL is added) */
+.footer-support{margin-top:1rem}
+.support-button{display:inline-flex;align-items:center;gap:.45rem;padding:.65rem 1.15rem;border-radius:999px;border:1px solid #E31937;color:#fff;text-decoration:none;font-weight:600;transition:background .2s}
+.support-button:hover,.support-button:focus-visible{background:#E31937;color:#fff}
