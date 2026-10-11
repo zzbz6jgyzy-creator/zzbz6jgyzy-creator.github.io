@@ -1116,7 +1116,7 @@ button.fsd-kpi[aria-pressed="true"] {
 .fsd-country-dot.is-review { background: #8a909c; box-shadow: none; }
 .fsd-country-dot.is-hot { background: #ff4d42; box-shadow: none; }
 .fsd-country-dot.is-warm { background: #e2c48a; box-shadow: none; }
-.fsd-country-dot.is-cool { background: #6ea8ff; box-shadow: none; }
+.fsd-country-dot.is-cool { background: #8ec0ff; box-shadow: none; }
 
 .fsd-country-name {
   font-weight: 600;
@@ -2386,6 +2386,10 @@ button.fsd-kpi[aria-pressed="true"] {
   touch-action: none;
 }
 
+.updates-map-shell:not(.is-zoomed) .updates-hot-ring {
+  display: none;
+}
+
 .updates-map-shell.is-panning {
   cursor: grabbing;
 }
@@ -2446,11 +2450,49 @@ button.fsd-kpi[aria-pressed="true"] {
 }
 
 .updates-map.is-focused .updates-hot {
-  opacity: 0.22;
+  opacity: 0.7;
 }
 
 .updates-map.is-focused .updates-hot.is-focus {
   opacity: 1;
+}
+
+.updates-map-countries {
+  pointer-events: none;
+}
+
+.updates-map-country {
+  fill: #4a5360;
+  stroke: rgba(11, 12, 16, 0.55);
+  stroke-width: 0.4;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.updates-map-country.is-cool,
+.updates-map-country.is-warm,
+.updates-map-country.is-hot,
+.updates-map-country.is-new {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.updates-map-country.is-cool {
+  fill: #4f86d6;
+}
+
+.updates-map-country.is-warm {
+  fill: #d4b06a;
+}
+
+.updates-map-country.is-hot,
+.updates-map-country.is-new {
+  fill: #e23b32;
+}
+
+.updates-map-country.is-focus {
+  stroke: #fff;
+  stroke-width: 1.2;
 }
 
 .updates-map-grid line {
@@ -2481,8 +2523,8 @@ button.fsd-kpi[aria-pressed="true"] {
 }
 
 .updates-hot-halo {
-  fill: #6ea8ff;
-  opacity: 0.16;
+  fill: #8ec0ff;
+  opacity: 0.28;
 }
 
 .updates-hot.is-warm .updates-hot-halo {
@@ -2495,9 +2537,9 @@ button.fsd-kpi[aria-pressed="true"] {
 }
 
 .updates-hot-core {
-  fill: #6ea8ff;
-  stroke: rgba(12, 13, 16, 0.35);
-  stroke-width: 1.1;
+  fill: #8ec0ff;
+  stroke: rgba(12, 13, 16, 0.72);
+  stroke-width: 1.15;
 }
 
 .updates-hot.is-warm .updates-hot-core {
@@ -2620,7 +2662,7 @@ button.fsd-kpi[aria-pressed="true"] {
 
 .updates-key-hot { background: #ff4d42; }
 .updates-key-warm { background: #e2c48a; }
-.updates-key-cool { background: #6ea8ff; }
+.updates-key-cool { background: #8ec0ff; }
 
 .updates-map-actions {
   display: flex;
