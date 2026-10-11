@@ -1,5 +1,5 @@
 window.STARSHIP = {
-  updated: "2026-10-10",
+  updated: "2026-10-11",
   note:
     "Compiled from SpaceX flight pages, FAA planning slides and public launch records. Outcomes are this desk’s read of the whole flight — not SpaceX’s official score. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
@@ -27,6 +27,12 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-10-11",
+      confirmed: false,
+      change:
+        "Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page.",
+    },
     {
       date: "2026-10-08",
       confirmed: false,
