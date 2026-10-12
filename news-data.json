@@ -1,6 +1,16 @@
 {
-  "updated": "2026-10-12T03:27:16Z",
+  "updated": "2026-10-12T03:57:15Z",
   "items": [
+    {
+      "id": "4d635f52e085",
+      "topic": "tesla",
+      "title": "Pilot and Tesla open first Megacharger site in Ellabell",
+      "source": "Bryan County News",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOaGFfVWd5dVJXQ3MtUXVXZlZuLUF0LXhJWnNLX2JhNEdHZXhPZkFnYWtlaHMtMmJWZlBWRkxQbUpQNnNabkNuOEFwdWRCWThndEZDQzRfMzJBdmNFTUxwSEJmdWNqbm9BaG5KTHREa3dORTU4TlNtcGlzX0dDR3BhcldocVRraVhRZWJRQ2ZqSGx4UmM1QlZzag?oc=5",
+      "published": "2026-10-12T03:27:21Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.hBX9ytx4P_4mqvB_8eZMQg&pid=News&w=640"
+    },
     {
       "id": "d2cef57e9074",
       "topic": "tesla",
@@ -161,6 +171,15 @@
       "snippet": ""
     },
     {
+      "id": "e5338829fc75",
+      "topic": "tesla",
+      "title": "Teslas And Hybrids Were Some Of The Fastest-Selling Used Cars In March",
+      "source": "InsideEVs",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQMXJXU0ZBaFViQzgwLXp4N255VXF0cXl2M2ctLWxCaVhGeHIyTjFvSVEwWXJDcWxtcUpiWk5qSWVjX3dqYm41akFuTmZRSmpWLXJGbTk0VkVTUzRJLU14T2Qya3hybDVvQTJWZXg5UU45clRZV2dzYmtUaTktRXROcA?oc=5",
+      "published": "2026-10-11T18:39:17Z",
+      "snippet": ""
+    },
+    {
       "id": "b38e9854c26d",
       "topic": "spacex",
       "title": "Musk vows affordable Starlink in India days before Ambani's record Jio IPO",
@@ -169,16 +188,6 @@
       "published": "2026-10-11T18:30:41Z",
       "snippet": "By Munsif Vengattil BENGALURU, Oct 11 (Reuters) - Elon Musk said he would price Starlink's satellite internet service affordably in India to take on Mukesh Ambani's low-cost Reliance Jio, escalating ...",
       "image": "https://www.bing.com/th?id=ONUT.zUpcavcQ-cEIk4QAl45liw&pid=News&w=640"
-    },
-    {
-      "id": "a00c73cad8a8",
-      "topic": "tesla",
-      "title": "Pilot, Tesla open megacharger site in Georgia",
-      "source": "TheTrucker.com",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPUllHTjNJNEZzeGwtbXhTOW0wS2dBUGNaTE9oeHpCbWg3enVsRG1IOGo4N0lfQzJObEFBbEJRSG1kYnREVFQyMTRONElScm56NVJvTncyYUYtQUpENWJvS21tWk9IOUZyRFhYRzh6dGpvMlhIVmM4bDFWWnJzbmxOZ0VRdW1mVi1yVVBUQzZRYzI0X2I2UHVfQ2NEUGtIUHlFU2c?oc=5",
-      "published": "2026-10-11T18:22:44Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.hNomI1j2CQgxNnmqVD-5vQ&pid=News&w=640"
     },
     {
       "id": "1141ef043cc9",
@@ -216,6 +225,16 @@
       "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPZWo5dXV4dWVVNzNVMGlxR0JscWhkUldWRVRQMXJ3WlZtcDlybF9RZVl4bjQzbG43UkdtTFhZdVBWRWhhaWNQdW9iTjRPSGtiSmgxVjZTU3BYRE1fdTFPVG10QWpLVGhnQk9HcVFVNnVjZER0RGZFMUhwS2RIYWI5QzJlM2tWbXNMQ2VqVW9qTTc?oc=5",
       "published": "2026-10-11T17:14:45Z",
       "snippet": ""
+    },
+    {
+      "id": "c79f1d2244a1",
+      "topic": "spacex",
+      "title": "Bank Earnings Hinge on Anthropic IPO as SpaceX Windfall Fades",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/bank-earnings-hinge-anthropic-ipo-010157467.html",
+      "published": "2026-10-11T17:00:00Z",
+      "snippet": "Banks report Q3 earnings this week, and Bloomberg Intelligence's Herman Chan says an Anthropic IPO could carry deal flow.",
+      "image": "https://www.bing.com/th?id=ONUT.yC2iOEYXzVSruNEIAKc_Sw&pid=News&w=640"
     },
     {
       "id": "66c5ad360de4",
@@ -263,7 +282,8 @@
       "source": "24/7 Wall St.",
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPVTJVRl9zTDZ6ZVZad3hRdlEtZ0RsZklGcUVJSkV4dmJCNlVIQ3RsTUVXclVRbkNmUktYcEJ5alVKdE9jX012UFNOSTR5UktrY1B3NGt4RDJ4bzlWUGVhWWJoVDFUSEJTdk5nREU1V0NMM0doZi1EeXZWcVg3UHRFVENfd2VjQ0ZlcHprZjlkUVZmcXRnZ2tIcWFwRWZmRkpW?oc=5",
       "published": "2026-10-11T15:46:00Z",
-      "snippet": ""
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.4fBgCivTutXEkwie3m4J2g&pid=News&w=640"
     },
     {
       "id": "302e064ae296",
@@ -273,16 +293,6 @@
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbGNHZzc4RWhPalFwcnllMVdQdmg1dlZacjRYUjIzTS0td09saWZLOU9mZmJyTDN4OWlhbEJRb3FXak9vQjhzM2JYM3FNRVVJTVl2dG4yaUt4RG5Bb043dk5sWEZvalRqaVFROVV3b01SeFREdlRRSEtTOXlWTWdrdDVQTXBIbDBLeUdtZTJKbGZ1b3Q5RmZZYUVRZVc4dU0?oc=5",
       "published": "2026-10-11T15:30:00Z",
       "snippet": ""
-    },
-    {
-      "id": "9b62efa76be5",
-      "topic": "spacex",
-      "title": "Starlink faces affordability test in India as low-cost telecom plans dominate market",
-      "source": "Telegraph India",
-      "url": "https://www.telegraphindia.com/business/starlink-in-india-faces-affordability-challenge-amid-low-cost-telecom-data-plans-prnt/cid/2184269",
-      "published": "2026-10-11T15:10:00Z",
-      "snippet": "With over 97 per cent of villages covered by mobile networks, satellite broadband may find early demand in remote areas, enterprises and shared community connections ...",
-      "image": "https://www.bing.com/th?id=ONUT.I1SXc85_IxAqF9q--4F1YA&pid=News&w=640"
     },
     {
       "id": "a337f5637f6d",
@@ -302,15 +312,6 @@
       "published": "2026-10-11T14:03:56Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.FlojBsZsbiEExxvE7RqqWw&pid=News&w=640"
-    },
-    {
-      "id": "179ee821a442",
-      "topic": "tesla",
-      "title": "Woman Gets Her Brand-New Tesla Delivered. Then She Realizes It’s Damaged",
-      "source": "Motor1.com",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5GV2VBbjJtVF9oRGdtN25tcWgweEVhcS1PNmxrUURpbkdBWF9fT00wNzc2amJmRk45cGZob1E0Y3RsbnJtRk94OFF0LW5VRmRkZUp1QnFHWi1lV0VBWnRna1AwcGlMSGlMV0tR?oc=5",
-      "published": "2026-10-11T14:02:26Z",
-      "snippet": ""
     },
     {
       "id": "8a8ee5e68e84",
@@ -349,7 +350,7 @@
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQcXJ5T0VWdHpvZUY3QmpDQV9MQ1RTZlVWRVl0Q2Y1eGduRnBxNzdIZnpqWnVzZWdMODlUSnNFbnBtQU9pQmtvWXNuTWFLejJrV016MkxJT0JTdzJlRlJTUjl6QlI3WDlvV1NucHp3bU91SE5VN2c1dmlLZzZUT3ZRQzBGUGpoZE1VVGNya3ZHU2hsd1E3Q1FR?oc=5",
       "published": "2026-10-11T13:08:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.J_on1X8_sVhGU5qBv8cJcg&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.2b0rHBMaGEhyRi9egKd0fA&pid=News&w=640"
     },
     {
       "id": "e8def3296af7",
@@ -397,6 +398,16 @@
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNWU12Ym03Zzh5QjQwbmthSjVQMDBfcW9HdzhyR1ljajlsQno3SUlCUWJadVNGaVdYRHN5bVZOVk5MSFJTVXQ3VDVhaTVFcXFrT2tCeUpOd0dsNmpzNXJzWUl6eEVmd0gxZnVyT18xbFZTM240MWlUN2NkZlpTcnpfZ2VZVzhLYUZxc3c?oc=5",
       "published": "2026-10-11T12:08:46Z",
       "snippet": ""
+    },
+    {
+      "id": "982db4984435",
+      "topic": "spacex",
+      "title": "Elon Musk vows affordable Starlink India pricing as Reliance Jio readies record IPO",
+      "source": "exchange4media",
+      "url": "https://www.exchange4media.com/media-others-news/elon-musk-vows-affordable-starlink-india-pricing-as-reliance-jio-readies-record-ipo-159055.html",
+      "published": "2026-10-11T12:08:00Z",
+      "snippet": "Both Starlink and Jio’s satellite venture are awaiting final security clearance in India, setting up a potentially significant battle in the country’s low-cost connectivity market ...",
+      "image": "https://www.bing.com/th?id=ONUT.NFVFqoL5MnvJr5Rj2k9ycA&pid=News&w=640"
     },
     {
       "id": "b5c805a9f43f",
