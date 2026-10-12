@@ -151,9 +151,9 @@
   }
 
   const PINS = {
-    "Austin, TX": { x: 118, y: 128, label: "Austin" },
-    "Dallas, TX": { x: 148, y: 72, label: "Dallas" },
-    "Houston, TX": { x: 158, y: 148, label: "Houston" },
+    "Austin, TX": { x: 128, y: 150, label: "Austin" },
+    "Dallas, TX": { x: 162, y: 86, label: "Dallas" },
+    "Houston, TX": { x: 176, y: 176, label: "Houston" },
   };
 
   function renderMap(mount, cities) {
@@ -169,9 +169,9 @@
         </g>`;
       })
       .join("");
-    mount.innerHTML = `<svg viewBox="0 0 220 210" role="img" aria-labelledby="cc-cities-h">
+    mount.innerHTML = `<svg viewBox="0 0 250 240" role="img" aria-labelledby="cc-cities-h">
       <title>Cybercab cities in Texas</title>
-      <path class="cc-tx-land" d="M70 10h92v22h32v38h14v34h-12v22l-24 38-18 32-28 12-24-10-20-22-26-12-22-22-14-28-4-26 10-32 16-26z" />
+      <path class="cc-tx-land" d="M150 8 H188 V44 H216 V76 H230 L198 164 176 202 138 226 104 212 78 176 48 160 24 128 20 92 34 58 40 44 H150 V8 Z" />
       <g role="list">${pins}</g>
     </svg>`;
 
