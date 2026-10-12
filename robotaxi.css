@@ -717,3 +717,16 @@
     animation: none;
   }
 }
+
+.taxi-credit {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.75rem;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.taxi-credit a {
+  color: inherit;
+  text-decoration: underline;
+}

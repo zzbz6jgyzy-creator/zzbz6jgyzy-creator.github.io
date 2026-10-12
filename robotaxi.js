@@ -338,7 +338,7 @@
       assigned.slice(0, 6).forEach((car) => {
         const pip = document.createElement("img");
         pip.className = car.broken ? "taxi-pip is-broke" : "taxi-pip";
-        pip.src = "/assets/robotaxi/cybercab-gold-side.jpg";
+        pip.src = "/assets/robotaxi/cybercab-real-pip.webp";
         pip.alt = "";
         pip.width = 120;
         pip.height = 68;
@@ -410,7 +410,7 @@
       const shot = el("span", "taxi-cab-shot");
       if (state === "night" && car.night) shot.classList.add("is-charging");
       const img = document.createElement("img");
-      img.src = "/assets/robotaxi/cybercab-gold-pod.jpg";
+      img.src = "/assets/robotaxi/cybercab-real-pod.webp";
       img.alt = "";
       img.width = 320;
       img.height = 180;
