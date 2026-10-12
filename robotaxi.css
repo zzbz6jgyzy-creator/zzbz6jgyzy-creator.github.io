@@ -436,27 +436,25 @@
   z-index: 3;
   margin: 0;
   padding: 1.2rem 1.2rem 1.35rem;
-  height: min(28rem, 70vh);
+  min-height: min(28rem, 70vh);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  background: linear-gradient(
-    180deg,
-    rgba(12, 13, 16, 0.18) 0%,
-    rgba(12, 13, 16, 0.72) 42%,
-    rgba(12, 13, 16, 0.96) 100%
-  );
+  justify-content: flex-start;
+  background: rgb(12, 13, 16);
 }
 
 .taxi-overlay-cab {
-  position: absolute;
-  right: -6%;
-  bottom: 0;
-  z-index: 0;
-  width: min(62%, 460px);
+  display: block;
+  width: 100%;
+  max-width: 40rem;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 18rem;
+  object-fit: cover;
+  object-position: 50% 60%;
+  margin: 0 0 1rem;
+  border-radius: 10px;
   pointer-events: none;
-  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55));
-  mask-image: linear-gradient(90deg, transparent, #000 18%);
 }
 
 .taxi-overlay[hidden] {
@@ -700,8 +698,7 @@
   }
 
   .taxi-overlay-cab {
-    width: min(78%, 320px);
-    opacity: 0.55;
+    max-height: 12rem;
   }
 
   .taxi-overlay p {
