@@ -32,10 +32,19 @@
 
   const FLIGHTS = [
     { name: "Flight 7", climb: 8.8, window: 1.2, wind: 0.006, engineOut: 0, failAngle: 0.44, stageAngle: 0.2 },
-    { name: "Flight 8", climb: 8.4, window: 1.0, wind: 0.012, engineOut: 0, failAngle: 0.38, stageAngle: 0.17 },
-    { name: "Flight 10", climb: 7.9, window: 0.82, wind: 0.018, engineOut: 3, failAngle: 0.34, stageAngle: 0.15 },
-    { name: "Flight 11", climb: 7.4, window: 0.7, wind: 0.024, engineOut: 6, failAngle: 0.3, stageAngle: 0.13 },
+    { name: "Flight 8", climb: 8.4, window: 1.1, wind: 0.009, engineOut: 0, failAngle: 0.42, stageAngle: 0.19 },
+    { name: "Flight 10", climb: 7.9, window: 1.0, wind: 0.012, engineOut: 1, failAngle: 0.4, stageAngle: 0.18 },
+    { name: "Flight 11", climb: 7.4, window: 0.92, wind: 0.014, engineOut: 2, failAngle: 0.4, stageAngle: 0.175 },
   ];
+
+  const HOLD_RISE = 0.0036;
+  const HOLD_FALL = 0.006;
+  const GIMBAL = 0.00028;
+  const WIND_AV = 0.000055;
+  const ENGINE_AV = 0.0000052;
+  const RESTORE_IDLE = 0.000048;
+  const RESTORE_STEER = 0.000024;
+  const AV_DAMP = 0.86;
 
   const ENGINES = (() => {
     const pos = [];
@@ -127,12 +136,12 @@
     const extra = flight - FLIGHTS.length + 1;
     return {
       name: `Flight ${11 + extra}`,
-      climb: Math.max(6.2, 7.4 - extra * 0.16),
-      window: Math.max(0.48, 0.7 - extra * 0.035),
-      wind: 0.024 + extra * 0.0045,
-      engineOut: Math.min(13, 6 + extra),
-      failAngle: Math.max(0.22, 0.3 - extra * 0.012),
-      stageAngle: Math.max(0.09, 0.13 - extra * 0.007),
+      climb: Math.max(6.4, 7.4 - extra * 0.14),
+      window: Math.max(0.62, 0.92 - extra * 0.03),
+      wind: Math.min(0.02, 0.014 + extra * 0.0016),
+      engineOut: Math.min(3, 2 + extra),
+      failAngle: Math.max(0.34, 0.4 - extra * 0.01),
+      stageAngle: Math.max(0.14, 0.175 - extra * 0.006),
     };
   }
 
@@ -831,7 +840,27 @@
 
   function tiltCurve(t) {
     const x = clamp(t, 0, 1);
-    return x * x;
+    return Math.pow(x, 1.35);
+  }
+
+  function tickHold(dt) {
+    ["left", "right"].forEach((k) => {
+      hold[k] = held[k] ? Math.min(1, hold[k] + HOLD_RISE * dt) : Math.max(0, hold[k] - HOLD_FALL * dt);
+    });
+  }
+
+  function applyAttitude(dt, { wind = true, gimbal = GIMBAL, angleCap = 0.7 } = {}) {
+    const s = spec();
+    const steer = tiltCurve(hold.right) - tiltCurve(hold.left);
+    stack.av += steer * gimbal * dt;
+    if (wind) {
+      stack.av += (s.wind * windGust * WIND_AV + stack.outBias * s.engineOut * ENGINE_AV) * dt;
+    }
+    const restore = Math.abs(steer) < 0.06 ? RESTORE_IDLE : RESTORE_STEER;
+    stack.av -= stack.angle * restore * dt;
+    stack.av *= Math.pow(AV_DAMP, dt * 0.08);
+    stack.angle = clamp(stack.angle + stack.av * dt, -angleCap, angleCap);
+    return steer;
   }
 
   function steerAuto() {
@@ -880,17 +909,8 @@
       cam.punch = 0.1;
     }
     ignite = countT <= 1.15 ? clamp((1.15 - countT) / 0.55, 0, 1) : 0;
-    if (!auto) {
-      const rise = 0.0028;
-      const fall = 0.0072;
-      ["left", "right"].forEach((k) => {
-        hold[k] = held[k] ? Math.min(1, hold[k] + rise * dt) : Math.max(0, hold[k] - fall * dt);
-      });
-    }
-    const steer = tiltCurve(hold.right) - tiltCurve(hold.left);
-    stack.av += steer * 0.00012 * dt;
-    stack.av *= Math.pow(0.88, dt * 0.08);
-    stack.angle = clamp(stack.angle + stack.av * dt, -0.35, 0.35);
+    if (!auto) tickHold(dt);
+    applyAttitude(dt, { wind: false, gimbal: GIMBAL * 0.7, angleCap: 0.35 });
     stack.x += stack.vx * dt * 0.02;
     if (ignite > 0.3) emitClimbFx();
     tickAudio();
@@ -949,21 +969,10 @@
 
     const s = spec();
     if (auto) steerAuto();
-    else {
-      const rise = 0.0028;
-      const fall = 0.0072;
-      ["left", "right"].forEach((k) => {
-        hold[k] = held[k] ? Math.min(1, hold[k] + rise * dt) : Math.max(0, hold[k] - fall * dt);
-      });
-    }
+    else tickHold(dt);
 
     windGust = lerp(windGust, rand(-1, 1), 0.018);
-    const steer = tiltCurve(hold.right) - tiltCurve(hold.left);
-    stack.av += steer * 0.0002 * dt;
-    stack.av += (s.wind * windGust * 0.000085 + stack.outBias * s.engineOut * 0.000011) * dt;
-    if (Math.abs(steer) < 0.06) stack.av -= stack.angle * 0.000028 * dt;
-    stack.av *= Math.pow(0.9, dt * 0.08);
-    stack.angle = clamp(stack.angle + stack.av * dt, -0.7, 0.7);
+    applyAttitude(dt);
 
     stack.vx += Math.sin(stack.angle) * 0.0034 * dt + s.wind * windGust * 0.0011 * dt;
     stack.vx *= Math.pow(0.994, dt * 0.06);
