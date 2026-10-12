@@ -4527,3 +4527,54 @@ a.news-card:hover h3 {
 @media (prefers-reduced-motion: reduce) {
   .live-stamp::before { animation: none; }
 }
+
+/* Subtle card and row hover, with matching keyboard focus */
+.starship-flight,
+.fsd-kpi,
+.tracker-card,
+.cc-stat,
+.cc-city,
+a.stat {
+  transition: border-color 0.18s ease, transform 0.18s ease, background-color 0.18s ease;
+}
+.fsd-country {
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+@media (hover: hover) {
+  .starship-flight:hover,
+  .fsd-kpi:hover,
+  .tracker-card:hover,
+  .cc-stat:hover,
+  .cc-city:hover {
+    border-color: rgba(227, 25, 55, 0.55);
+    transform: translateY(-2px);
+  }
+  a.stat:hover {
+    background-color: rgba(227, 25, 55, 0.06);
+  }
+  .fsd-country:hover {
+    background-color: rgba(236, 236, 232, 0.04);
+    box-shadow: inset 2px 0 0 #e31937;
+  }
+}
+.fsd-kpi:focus-visible,
+.tracker-card:focus-visible,
+a.stat:focus-visible,
+.fsd-country:focus-visible {
+  outline: 2px solid #e31937;
+  outline-offset: 2px;
+  border-color: rgba(227, 25, 55, 0.55);
+}
+.fsd-country:focus-visible {
+  outline-offset: -2px;
+  box-shadow: inset 2px 0 0 #e31937;
+}
+@media (prefers-reduced-motion: reduce) {
+  .starship-flight:hover,
+  .fsd-kpi:hover,
+  .tracker-card:hover,
+  .cc-stat:hover,
+  .cc-city:hover {
+    transform: none;
+  }
+}
