@@ -1,0 +1,67 @@
+/* Software Update Tracker redesign — scoped to updates.html */
+.updates-page main { display: flex; flex-direction: column; gap: 1.25rem; }
+.tracker-intro { padding-top: 1.5rem; max-width: 46rem; }
+.tracker-intro h1 { margin: 0.2rem 0 0.6rem; }
+.tracker-how { color: var(--ink-soft); line-height: 1.55; margin: 0 0 0.6rem; }
+.tracker-how strong { color: var(--ink); }
+
+.tracker-hero {
+  border: 1px solid rgba(200, 16, 46, 0.55);
+  border-radius: 14px;
+  padding: 1.25rem 1.25rem 1.1rem;
+  background: linear-gradient(135deg, rgba(200, 16, 46, 0.22), rgba(20, 21, 26, 0.95) 55%);
+  box-shadow: 0 10px 40px rgba(200, 16, 46, 0.12);
+}
+.tracker-hero-kicker { margin: 0; color: #ff5a6e; font: 600 0.78rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; }
+.tracker-hero-version { margin: 0.35rem 0 0.9rem; font-size: clamp(2.2rem, 9vw, 3.4rem); line-height: 1; letter-spacing: -0.02em; font-family: var(--font-mono); }
+.tracker-hero-facts, .tracker-card-facts { display: grid; grid-template-columns: 1fr; gap: 0.5rem; margin: 0 0 0.9rem; }
+.tracker-hero-facts div, .tracker-card-facts div { display: flex; gap: 0.6rem; }
+.tracker-hero-facts dt, .tracker-card-facts dt { min-width: 6.5rem; color: var(--mute); font-size: 0.85rem; }
+.tracker-hero-facts dd, .tracker-card-facts dd { margin: 0; color: var(--ink); font-size: 0.92rem; }
+.tracker-hero-what { margin: 0 0 0.8rem; font-size: 1.05rem; line-height: 1.5; }
+.tracker-hero-link { color: #ff5a6e; font-weight: 600; text-decoration: none; }
+.tracker-hero-link:hover { text-decoration: underline; }
+.tracker-jump { margin: 0; }
+
+.tracker-filters { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin: 0 0 1rem; }
+.tracker-select { appearance: none; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%), linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 2rem; }
+.tracker-select option { background: #14151a; color: var(--ink); }
+
+#updates-list { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+.tracker-card { border: 1px solid var(--line); border-radius: 12px; background: var(--card); padding: 1rem 1rem 0.8rem; }
+.tracker-card.is-on { border-color: var(--tesla); }
+.tracker-card.is-away { opacity: 0.6; }
+.tracker-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.tracker-card-id { margin: 0; margin-right: auto; font: 600 1.25rem/1.1 var(--font-mono); }
+.tracker-badge { font-size: 0.72rem; padding: 0.2rem 0.5rem; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.tracker-badge.updates-status-early { border-color: var(--tesla); color: #ff5a6e; }
+.tracker-badge-fsd { color: #fff; background: rgba(200, 16, 46, 0.35); border-color: transparent; }
+.tracker-card-what { margin: 0 0 0.75rem; line-height: 1.5; }
+.tracker-card-facts { margin-bottom: 0.6rem; }
+.tracker-more { appearance: none; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); border-radius: 6px; padding: 0.35rem 0.85rem; font: inherit; font-size: 0.85rem; cursor: pointer; }
+.tracker-more:hover { border-color: var(--tesla); }
+.tracker-card-body { margin-top: 0.75rem; border-top: 1px solid var(--line); padding-top: 0.75rem; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; }
+.tracker-card-body ul { padding-left: 1.1rem; margin: 0.4rem 0; }
+.tracker-card-body li { margin-bottom: 0.4rem; }
+.tracker-card-reach { color: var(--mute); font-size: 0.85rem; }
+
+.tracker-gear { position: relative; }
+.tracker-gear > summary { list-style: none; cursor: pointer; }
+.tracker-gear > summary::-webkit-details-marker { display: none; }
+.updates-map-zoom .tracker-gear > summary { min-height: 2rem; min-width: 2.1rem; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 6px; background: rgba(12, 13, 16, 0.82); color: var(--ink-soft); font-size: 1rem; }
+.tracker-gear-menu { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.35rem; }
+.tracker-gear-panel { margin: 0 0 0.75rem; border: 1px solid var(--line); border-radius: 8px; padding: 0.5rem 0.7rem; }
+.tracker-gear-panel > summary { color: var(--ink-soft); font-size: 0.85rem; }
+.tracker-gear-panel[open] > summary { margin-bottom: 0.6rem; }
+
+/* single column first; widen on desktop */
+@media (min-width: 760px) {
+  .tracker-hero { padding: 1.75rem 2rem 1.5rem; }
+  .tracker-hero-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tracker-filters { grid-template-columns: 1fr 1.4fr; }
+}
+@media (min-width: 960px) {
+  #updates-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+.tracker-show-all { display: block; width: 100%; margin-top: 1rem; padding: 0.7rem; font-weight: 600; }
+.tracker-show-all[hidden] { display: none; }
