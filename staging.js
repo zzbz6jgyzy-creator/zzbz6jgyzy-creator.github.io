@@ -34,17 +34,17 @@
     { name: "Flight 7", climb: 8.8, window: 1.2, wind: 0.006, engineOut: 0, failAngle: 0.44, stageAngle: 0.2 },
     { name: "Flight 8", climb: 8.4, window: 1.1, wind: 0.009, engineOut: 0, failAngle: 0.42, stageAngle: 0.19 },
     { name: "Flight 10", climb: 7.9, window: 1.0, wind: 0.012, engineOut: 1, failAngle: 0.4, stageAngle: 0.18 },
-    { name: "Flight 11", climb: 7.4, window: 0.92, wind: 0.015, engineOut: 2, failAngle: 0.38, stageAngle: 0.17 },
+    { name: "Flight 11", climb: 7.4, window: 0.92, wind: 0.014, engineOut: 2, failAngle: 0.4, stageAngle: 0.175 },
   ];
 
   const HOLD_RISE = 0.0036;
   const HOLD_FALL = 0.006;
   const GIMBAL = 0.00028;
   const WIND_AV = 0.000055;
-  const ENGINE_AV = 0.0000065;
-  const RESTORE_IDLE = 0.000042;
-  const RESTORE_STEER = 0.000018;
-  const AV_DAMP = 0.88;
+  const ENGINE_AV = 0.0000052;
+  const RESTORE_IDLE = 0.000048;
+  const RESTORE_STEER = 0.000024;
+  const AV_DAMP = 0.86;
 
   const ENGINES = (() => {
     const pos = [];
@@ -138,10 +138,10 @@
       name: `Flight ${11 + extra}`,
       climb: Math.max(6.4, 7.4 - extra * 0.14),
       window: Math.max(0.62, 0.92 - extra * 0.03),
-      wind: Math.min(0.022, 0.015 + extra * 0.002),
-      engineOut: Math.min(4, 2 + extra),
-      failAngle: Math.max(0.32, 0.38 - extra * 0.01),
-      stageAngle: Math.max(0.13, 0.17 - extra * 0.006),
+      wind: Math.min(0.02, 0.014 + extra * 0.0016),
+      engineOut: Math.min(3, 2 + extra),
+      failAngle: Math.max(0.34, 0.4 - extra * 0.01),
+      stageAngle: Math.max(0.14, 0.175 - extra * 0.006),
     };
   }
 
@@ -840,7 +840,7 @@
 
   function tiltCurve(t) {
     const x = clamp(t, 0, 1);
-    return x * x;
+    return Math.pow(x, 1.35);
   }
 
   function tickHold(dt) {
