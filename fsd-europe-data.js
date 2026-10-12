@@ -1,5 +1,5 @@
 window.FSD_EUROPE = {
-  updated: "2026-10-08",
+  updated: "2026-10-12",
   note:
     "Compiled from public reports of national recognition of the Dutch RDW provisional type approval (EU 2018/858 Art. 39). Not affiliated with Tesla. Not official.",
   thresholds: {
@@ -20,7 +20,7 @@ window.FSD_EUROPE = {
     { code: "SI", name: "Slovenia", status: "approved", date: "2026-09-07", pop: 2.1, note: "AVP recognised the RDW type approval." },
     { code: "CZ", name: "Czechia", status: "approved", date: "2026-09-21", pop: 10.9, note: "Transport ministry recognition; customer rollout under way." },
     { code: "HR", name: "Croatia", status: "approved", date: "2026-09-29", pop: 3.9, note: "Eighth EU country. DZM confirmed recognition." },
-    { code: "DE", name: "Germany", status: "review", date: null, pop: 83.4, note: "KBA reviewing. Bilger pushing EU-wide; ~19% of EU population." },
+    { code: "DE", name: "Germany", status: "review", date: null, pop: 83.4, note: "Transport ministry backs prompt EU-wide approval (6 Oct), with up to 10% over the limit. Tesla renamed the system Tesla Assisted Driving in Europe (9 Oct). ~19% of EU population." },
     { code: "FR", name: "France", status: "review", date: null, pop: 68.3, note: "Under review. Large vote weight for EU-wide path." },
     { code: "IT", name: "Italy", status: "review", date: null, pop: 59.0, note: "Under review." },
     { code: "ES", name: "Spain", status: "review", date: null, pop: 48.6, note: "Under review." },
@@ -34,7 +34,7 @@ window.FSD_EUROPE = {
     { code: "HU", name: "Hungary", status: "none", date: null, pop: 9.6, note: "No national recognition reported." },
     { code: "AT", name: "Austria", status: "none", date: null, pop: 9.1, note: "No national recognition reported." },
     { code: "BG", name: "Bulgaria", status: "none", date: null, pop: 6.4, note: "No national recognition reported." },
-    { code: "SK", name: "Slovakia", status: "none", date: null, pop: 5.4, note: "No national recognition reported." },
+    { code: "SK", name: "Slovakia", status: "review", date: null, pop: 5.4, note: "Transport minister said on 7 Oct a recognition letter goes to the RDW within days. Not yet confirmed sent." },
     { code: "LV", name: "Latvia", status: "none", date: null, pop: 1.9, note: "No national recognition reported." },
     { code: "CY", name: "Cyprus", status: "none", date: null, pop: 0.9, note: "No national recognition reported." },
     { code: "LU", name: "Luxembourg", status: "none", date: null, pop: 0.7, note: "No national recognition reported." },
