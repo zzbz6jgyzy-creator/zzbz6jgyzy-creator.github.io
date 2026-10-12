@@ -6,13 +6,13 @@
     <title>Tesla — Supercharged Daily</title>
     <meta
       name="description"
-      content="Owner notes from a Tesla driver and shareholder: FSD in the snow, European approvals, Beast, and Grok in the car."
+      content="Tesla on one page: the lineup, FSD and software, Robotaxi and Cybercab, Superchargers and energy, the stock, and the latest Tesla news."
     />
     <link rel="canonical" href="https://superchargeddaily.com/tesla.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="Tesla — Supercharged Daily" />
-    <meta property="og:description" content="Owner notes from a Tesla driver and shareholder: FSD in the snow, European approvals, Beast, and Grok in the car." />
+    <meta property="og:description" content="Tesla on one page: the lineup, FSD and software, Robotaxi and Cybercab, Superchargers and energy, the stock, and the latest Tesla news." />
     <meta property="og:url" content="https://superchargeddaily.com/tesla.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/dispatch/fsd-snow-poster.jpg" />
     <meta property="og:image:alt" content="FSD Supervised on a snowy European road" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Tesla — Supercharged Daily" />
-    <meta name="twitter:description" content="Owner notes from a Tesla driver and shareholder: FSD in the snow, European approvals, Beast, and Grok in the car." />
+    <meta name="twitter:description" content="Tesla on one page: the lineup, FSD and software, Robotaxi and Cybercab, Superchargers and energy, the stock, and the latest Tesla news." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/dispatch/fsd-snow-poster.jpg" />
     <meta name="twitter:image:alt" content="FSD Supervised on a snowy European road" />
 
@@ -41,6 +41,7 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/tesla-page.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -71,81 +72,150 @@
         </nav>
       </header>
 
-      <main id="main">
-        <section class="page-hero">
-          <p class="eyebrow reveal">Tesla</p>
-          <h1 class="reveal delay-1">FSD, Europe, the car</h1>
-          <p class="reveal delay-2">
-            Supervised driving, European approvals, Terafab, and Grok Bot in the cabin.
-            Tesla posts that need a price or a date go to
-            <a href="/tsla.html">Markets</a>.
-          </p>
+      <main id="main" class="tz">
+        <section class="tz-hero">
+          <img class="tz-hero-img" src="/assets/tesla/hero-model-3.webp" width="1600" height="900" alt="Quicksilver Tesla Model 3 Performance on display, front three-quarter view" fetchpriority="high" />
+          <div class="tz-hero-shade" aria-hidden="true"></div>
+          <div class="tz-hero-copy">
+            <p class="tz-kicker">Tesla</p>
+            <h1>Every part of Tesla, tracked.</h1>
+            <p class="tz-lede">The cars, the software, Robotaxi, charging and the stock, from an owner and shareholder. Facts with sources. The trackers update every weekday.</p>
+            <p class="tz-cta">
+              <a class="button button-primary" href="#news">Latest Tesla news</a>
+              <a class="button button-ghost" href="#trackers">Open the trackers</a>
+            </p>
+          </div>
+          <p class="tz-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Highland_Performance_Quicksilver_01.jpg" rel="noopener">Ethan Llamas</a>, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a></p>
         </section>
 
-        <section class="section" style="padding-top: 1.5rem">
-          <a class="referral-banner reveal" href="/tsla.html">
+        <nav class="tz-jump" aria-label="On this page">
+          <a href="#lineup">Lineup</a>
+          <a href="#trackers">FSD &amp; software</a>
+          <a href="#robotaxi">Robotaxi</a>
+          <a href="#energy">Charging</a>
+          <a href="#stock">Stock</a>
+          <a href="#news">News</a>
+        </nav>
+
+        <section class="tz-section" id="lineup" aria-labelledby="tz-lineup-h">
+          <div class="tz-head">
+            <h2 id="tz-lineup-h">Lineup</h2>
+            <p>Each car links to an independent review. Cybercab links to the tracker.</p>
+          </div>
+          <div class="tz-models">
+            <a class="tz-model" href="/reviews/model-s.html">
+              <img src="/assets/reviews/model-s.jpg" alt="Tesla Model S" width="1600" height="900" loading="lazy" decoding="async" />
+              <span class="tz-model-name">Model S</span>
+              <span class="tz-model-line">Flagship sedan</span>
+            </a>
+            <a class="tz-model" href="/reviews/model-3.html">
+              <img src="/assets/reviews/model-3.jpg" alt="Tesla Model 3" width="1600" height="900" loading="lazy" decoding="async" />
+              <span class="tz-model-name">Model 3</span>
+              <span class="tz-model-line">Compact sedan</span>
+            </a>
+            <a class="tz-model" href="/reviews/model-x.html">
+              <img src="/assets/reviews/model-x.jpg" alt="Tesla Model X" width="1600" height="900" loading="lazy" decoding="async" />
+              <span class="tz-model-name">Model X</span>
+              <span class="tz-model-line">SUV with falcon-wing doors</span>
+            </a>
+            <a class="tz-model" href="/reviews/model-y.html">
+              <img src="/assets/reviews/model-y.jpg" alt="Tesla Model Y" width="1600" height="900" loading="lazy" decoding="async" />
+              <span class="tz-model-name">Model Y</span>
+              <span class="tz-model-line">Midsize SUV</span>
+            </a>
+            <a class="tz-model" href="/reviews/cybertruck.html">
+              <img src="/assets/reviews/cybertruck.jpg" alt="Tesla Cybertruck" width="1600" height="900" loading="lazy" decoding="async" />
+              <span class="tz-model-name">Cybertruck</span>
+              <span class="tz-model-line">Stainless-steel pickup</span>
+            </a>
+            <a class="tz-model" href="/cybercab.html">
+              <img src="/assets/cybercab/cybercab-santana-row.webp" alt="Tesla Cybercab" width="1600" height="900" loading="lazy" decoding="async" />
+              <span class="tz-model-name">Cybercab</span>
+              <span class="tz-model-line">Two-seat robotaxi, no wheel or pedals</span>
+            </a>
+            <a class="tz-model" href="https://www.tesla.com/semi" target="_blank" rel="noopener">
+              <span class="tz-model-blank" aria-hidden="true"></span>
+              <span class="tz-model-name">Semi</span>
+              <span class="tz-model-line">Class 8 electric truck</span>
+            </a>
+            <a class="tz-model" href="https://www.tesla.com/AI" target="_blank" rel="noopener">
+              <span class="tz-model-blank" aria-hidden="true"></span>
+              <span class="tz-model-name">Optimus</span>
+              <span class="tz-model-line">Humanoid robot in development</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="tz-section" id="trackers" aria-labelledby="tz-fsd-h">
+          <div class="tz-head">
+            <h2 id="tz-fsd-h">FSD &amp; software</h2>
+            <p>What your car is running, and where FSD (Supervised) is allowed.</p>
+          </div>
+          <div class="tz-cards">
+            <a class="tz-card" href="/updates.html">
+              <span class="tz-card-k">Software Update Tracker</span>
+              <strong>Newest US build: 2026.38.5</strong>
+              <span>FSD v14.3.12 on HW4, v14.3 Lite on HW3. Release notes in plain English, by model and country.</span>
+            </a>
+            <a class="tz-card" href="/fsd-europe.html">
+              <span class="tz-card-k">FSD Europe tracker</span>
+              <strong>8 of 27 EU countries</strong>
+              <span>Now called Tesla Assisted Driving in Europe. EU-wide vote: December 2026 at the earliest.</span>
+            </a>
+            <a class="tz-card" href="/fsd.html">
+              <span class="tz-card-k">Global FSD tracker</span>
+              <strong>Every live market</strong>
+              <span>North America, Asia-Pacific and Europe, with versions and hardware.</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="tz-section" id="robotaxi" aria-labelledby="tz-rt-h">
+          <a class="tz-feature" href="/cybercab.html">
+            <img src="/assets/cybercab/cybercab-santana-row.webp" width="1280" height="960" alt="Tesla Cybercab on display with its butterfly door raised" loading="lazy" />
             <div>
-              <p class="eyebrow">Markets</p>
-              <h2>Tesla and SpaceX</h2>
-              <p>
-                Live TSLA and SPCX on one chart, Roadster unveil on 15 October,
-                Q3 earnings on the 21st, and last deliveries.
-              </p>
+              <p class="tz-card-k">Robotaxi &amp; Cybercab</p>
+              <h2 id="tz-rt-h">Austin first. Dallas next.</h2>
+              <p>Tesla says 300+ Cybercabs serve Austin. The Texas DMV lists 319. Dallas is next, with no date yet. The tracker has the count, cities and every milestone, with sources.</p>
+              <span class="tz-link">Open the Cybercab tracker →</span>
+            </div>
+          </a>
+          <p class="tz-credit tz-credit-inline">Photo: <a href="https://commons.wikimedia.org/wiki/File:Tesla_Cybercab_at_Santana_Row_oblique_view_dllu.jpg" rel="noopener">Dllu</a>, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a></p>
+        </section>
+
+        <section class="tz-section" id="energy" aria-labelledby="tz-en-h">
+          <div class="tz-split">
+            <figure class="tz-photo">
+              <img src="/assets/tesla/supercharger-night.webp" width="1200" height="672" alt="Tesla Superchargers at night with a Model 3 plugged in" loading="lazy" />
+              <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Tesla_supercharger_at_Majura_Park,_Canberra_at_night.jpg" rel="noopener">Chuq</a>, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a></figcaption>
+            </figure>
+            <div>
+              <p class="tz-card-k">Charging &amp; energy</p>
+              <h2 id="tz-en-h">Superchargers, Megapack, Powerwall</h2>
+              <p>Charging news, Semi Megachargers and Tesla Energy show up in the news feed as they happen. To find a charger near you, use Tesla’s live map.</p>
+              <p><a class="tz-link" href="https://www.tesla.com/findus?filters=supercharger" target="_blank" rel="noopener">Tesla Supercharger map ↗</a></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="tz-section" id="stock" aria-labelledby="tz-st-h">
+          <a class="tz-band" href="/tsla.html">
+            <div>
+              <p class="tz-card-k">TSLA</p>
+              <h2 id="tz-st-h">Stock and earnings</h2>
+              <p>Live TSLA quote and chart. Q3 2026 earnings on 21 October.</p>
             </div>
             <span class="button button-primary">Open Markets</span>
           </a>
         </section>
 
-        <section class="section" style="padding-top: 1.5rem">
-          <a class="lead-card reveal" href="/fsd-europe.html">
-            <div class="lead-media">
-              <span class="media-play">Video</span>
-              <video muted playsinline preload="metadata" poster="/assets/dispatch/fsd-snow-poster.jpg" aria-label="FSD Supervised on a snowy European road">
-                <source src="/assets/dispatch/fsd-snow.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="lead-copy">
-              <span class="tag">Tracker</span>
-              <h3>FSD Europe tracker</h3>
-              <p>
-                Which EU countries have recognised FSD Supervised. Approved
-                countries are red on the map. The Brussels vote still needs 15 of 27.
-              </p>
-            </div>
-          </a>
-        </section>
-
-        <section class="section" style="padding-top: 1.5rem">
-          <a class="referral-banner reveal" href="/updates.html">
-            <div>
-              <p class="eyebrow">Tracker</p>
-              <h2>Software Update Tracker</h2>
-              <p>
-                Searchable releases, features by model, region availability,
-                and a live map of the newest wave.
-              </p>
-            </div>
-            <span class="button button-ghost">Open tracker</span>
-          </a>
-        </section>
-
-        <section class="section" style="padding-top: 0.5rem">
-          <a class="lead-card reveal" href="/reviews/index.html">
-            <img src="/assets/reviews/model-3.jpg" alt="Highland Model 3 in Quicksilver" width="1200" height="675" loading="lazy" />
-            <div class="lead-copy">
-              <span class="tag">Reviews</span>
-              <h3>Tesla car reviews</h3>
-              <p>
-                Model 3, Y, S, X and Cybertruck — who each one is for, how they drive, and
-                what you give up. Independent notes, not a brochure.
-              </p>
-            </div>
-          </a>
-        </section>
-
-        <section class="section">
+        <section class="tz-section" id="news" aria-labelledby="tz-news-h">
+          <div class="tz-head">
+            <h2 id="tz-news-h">Latest Tesla news</h2>
+            <p><a href="/news.html">All news →</a></p>
+          </div>
           <div class="story-grid">
-<a class="story-card reveal" href="/dispatch/roadster-reveal.html">
+<a class="story-card" href="/dispatch/roadster-reveal.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="metadata" poster="/assets/dispatch/roadster-reveal-poster.jpg" aria-label="Official Tesla footage of the Roadster prototype rolling out in smoke at the 2017 reveal">
@@ -158,7 +228,8 @@
     <p>Nine years after the 2017 unveil promised 0-60 in 1.9 seconds. Start time not yet announced.</p>
   </div>
 </a>
-<a class="story-card reveal" href="/dispatch/tesla-automations-europe.html">
+
+<a class="story-card" href="/dispatch/tesla-automations-europe.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="metadata" poster="/assets/dispatch/tesla-automations-europe-poster.jpg" aria-label="Official Tesla Europe footage of a Tesla side camera in Amsterdam (not the Automations app)">
@@ -171,7 +242,8 @@
                 <p>“If this, then that” for your Tesla, seen on one car in Europe. Not confirmed by Tesla.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/fsd-15-billion-miles.html">
+
+<a class="story-card" href="/dispatch/fsd-15-billion-miles.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="metadata" poster="/assets/dispatch/fsd-15-billion-miles-poster.jpg" aria-label="Official Tesla footage of FSD (Supervised) on US roads">
@@ -184,7 +256,8 @@
     <p>About 35 million supervised miles a day, per Tesla’s safety report.</p>
   </div>
 </a>
-<a class="story-card reveal" href="/dispatch/paris-cybercab-europe.html">
+
+<a class="story-card" href="/dispatch/paris-cybercab-europe.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="metadata" poster="/assets/dispatch/paris-cybercab-europe-poster.jpg" aria-label="Official Tesla Robotaxi footage of a production Cybercab">
@@ -198,7 +271,7 @@
   </div>
 </a>
 
-            <a class="story-card reveal" href="/dispatch/tesla-headlight-leveling.html">
+<a class="story-card" href="/dispatch/tesla-headlight-leveling.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="metadata" poster="/assets/dispatch/tesla-headlight-leveling-poster.jpg" aria-label="Official Tesla footage of adaptive headlights at night">
@@ -211,7 +284,8 @@
                 <p>2026.38 adds Dynamic Headlight Leveling on select Model 3 and Cybertruck.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/cybercab-austin.html">
+
+<a class="story-card" href="/dispatch/cybercab-austin.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="metadata" poster="/assets/dispatch/cybercab-austin-poster.jpg" aria-label="Official Tesla Robotaxi Cybercab fleet clip">
@@ -224,222 +298,17 @@
                 <p>Eight times the launch fleet. Texas DMV lists 319 two-seaters with no wheel.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-1" href="/dispatch/fsd-cannonball.html">
-              <img src="/assets/dispatch/fsd-cannonball-poster.jpg" alt="Stopwatch at the New York finish of an FSD Cannonball run" width="1200" height="675" loading="lazy" />
-              <div class="story-copy">
-                <span class="tag tag-tesla">FSD</span>
-                <h3>LA to NY, 45 hours 37 minutes</h3>
-                <p>v14.3.7, 2,871 miles, Superchargers only. The team’s time. Not certified.</p>
-              </div>
-            </a>
-            <a class="story-card reveal delay-2" href="/dispatch/assisted-driving.html">
-              <img src="/assets/dispatch/assisted-driving-poster.jpg" alt="Tesla Assisted Driving Basic listed at €99 a month" width="1200" height="675" loading="lazy" />
-              <div class="story-copy">
-                <span class="tag tag-tesla">Europe</span>
-                <h3>Assisted Driving Basic, €99</h3>
-                <p>FSD Supervised renamed in Europe. Same stack, a name built for forms.</p>
-              </div>
-            </a>
-            <a class="story-card reveal" href="/dispatch/fsd-snow.html">
-              <div class="story-media">
-                <span class="media-play">Video</span>
-                <video muted playsinline preload="metadata" poster="/assets/dispatch/fsd-snow-poster.jpg" aria-label="FSD on a snowy Swiss road">
-                  <source src="/assets/dispatch/fsd-snow.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="story-copy">
-                <span class="tag tag-tesla">FSD</span>
-                <h3>Four minutes in the Alps</h3>
-                <p>Tesla Europe posted Supervised driving through Swiss snow. This is the clip the Nordics keep asking for.</p>
-              </div>
-            </a>
-            <article class="story-card reveal delay-1">
-              <img src="/assets/halloween.jpg" alt="Tesla Halloween Mode concept art" width="1200" height="675" loading="lazy" />
-              <div class="story-copy">
-                <span class="tag tag-tesla">Software</span>
-                <h3>Halloween Mode, Optimus hand</h3>
-                <p>
-                  Graveyard on the centre screen, car under a bedsheet, a robot hand out of the dirt.
-                  Looks a lot like the new Optimus hand if you ask me.
-                </p>
-              </div>
-            </article>
-            <article class="story-card reveal delay-2">
-              <img src="/assets/climate.jpg" alt="Tesla climate controls" width="1200" height="675" loading="lazy" />
-              <div class="story-copy">
-                <span class="tag tag-tesla">Owner ask</span>
-                <h3>Climate that reads the weather</h3>
-                <p>
-                  We can already schedule preconditioning by time. The winter update I want:
-                  only fire it if the outside temperature actually needs it.
-                </p>
-              </div>
-            </article>
+
           </div>
         </section>
 
-        <section class="section" aria-labelledby="tesla-videos-heading">
-          <div class="section-head">
-            <h2 id="tesla-videos-heading" class="reveal">From the posts</h2>
-          </div>
-          <div class="story-grid">
-            <article class="story-card reveal" id="germany-fsd-math">
-              <div class="story-media">
-                <span class="media-play">Video</span>
-                <video muted playsinline preload="metadata" poster="/assets/dispatch/germany-fsd-math-poster.jpg" aria-label="Germany FSD approval math clip">
-                  <source src="/assets/dispatch/germany-fsd-math.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="story-copy">
-                <span class="tag tag-tesla">FSD</span>
-                <h3>Germany is 19% of the EU</h3>
-                <p>More people than all eight approved countries combined.</p>
-              </div>
-            </article>
-            <article class="story-card reveal delay-1" id="semi-megacharger">
-              <div class="story-media">
-                <span class="media-play">Video</span>
-                <video muted playsinline preload="metadata" poster="/assets/dispatch/semi-megacharger-poster.jpg" aria-label="Semi Megacharger clip">
-                  <source src="/assets/dispatch/semi-megacharger.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="story-copy">
-                <span class="tag tag-tesla">Semi</span>
-                <h3>Megacharger in Georgia</h3>
-                <p>First site outside California — up to 1.2 MW per stall.</p>
-              </div>
-            </article>
-            <article class="story-card reveal delay-2" id="terafab">
-              <div class="story-media">
-                <span class="media-play">Video</span>
-                <video muted playsinline preload="metadata" poster="/assets/dispatch/terafab-poster.jpg" aria-label="Terafab clip">
-                  <source src="/assets/dispatch/terafab.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="story-copy">
-                <span class="tag tag-tesla">Chips</span>
-                <h3>Terafab, a million wafers</h3>
-                <p>Austin plan at roughly 70% of everything TSMC makes today.</p>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="note-grid">
-            <div class="panel reveal">
-              <p class="eyebrow">Europe</p>
-              <h2>Germany is the rest of the story</h2>
-              <p>
-                Germany is about 19% of the EU’s population — more than all eight countries
-                that have already approved FSD Supervised, combined. When Berlin moves,
-                the EU-wide vote math moves with it. The
-                <a href="/fsd.html">global tracker</a>
-                has every live market; the
-                <a href="/fsd-europe.html">Europe map</a>
-                still holds the vote.
-              </p>
-              <p>
-                <a href="/fsd-europe.html">Open the FSD Europe tracker →</a>
-              </p>
-            </div>
-            <div class="panel reveal delay-1">
-              <p class="eyebrow">FSD</p>
-              <h2>Beast vs the pothole</h2>
-              <p>
-                Tesla says FSD is finally learning to dodge potholes. That is the unglamorous
-                test — not a mountain pass, a crater on a regional road with oncoming
-                traffic and a bus that will not move.
-              </p>
-              <p>
-                One of Tesla’s top AI engineers told an owner this week that improvements are
-                coming for both potholes and dodgy navigation. The clip that matters is the
-                ordinary road, not the highlight reel.
-              </p>
-            </div>
-            <div class="panel reveal">
-              <p class="eyebrow">Chips</p>
-              <h2>Terafab is bigger than a car launch</h2>
-              <p>
-                Elon is in talks with TSMC about making chips in Texas. Terafab is the
-                $16.8 billion plant Tesla and SpaceX are building in Grimes County. The Austin
-                plan tops out at a million wafer starts a month — roughly 70% of everything
-                TSMC makes today, from a site none of these companies has ever run.
-              </p>
-              <p>
-                If TSMC actually operates it, that is a bigger deal than any trim or colour
-                this year. I posted it that way because that is how it reads from the
-                shareholder seat — the live quote and the next print live on
-                <a href="/tsla.html">Markets</a>.
-              </p>
-            </div>
-            <div class="panel reveal delay-1">
-              <p class="eyebrow">In the car</p>
-              <h2>Grok Bot can talk to a Tesla</h2>
-              <p>
-                Tesla developer options can grant a Bot enough to read vehicle state
-                and run the commands you actually want — climate, battery, lock status —
-                and nothing extra. Put the approval line in the Bot description before
-                the first command.
-              </p>
-              <p>
-                Setup and the rest of the product live in the
-                <a href="/grok.html#tutorial">Grok Bot tutorial</a>.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" style="padding-top: 1.5rem" aria-labelledby="tesla-games-heading">
-          <div class="section-head">
-            <h2 id="tesla-games-heading" class="reveal">Games</h2>
-            <p class="reveal delay-1">Robotaxi Boss on the desk.</p>
-          </div>
-          <div class="desks desks-one">
-            <a class="desk desk-robotaxi reveal delay-1" href="/robotaxi.html">
-              <p class="eyebrow">Tesla · 5–10 min</p>
-              <h3>Robotaxi Boss</h3>
-              <p>
-                Five gold Cybercabs, one city, seven days. Charge cheap at night
-                or pay to fast-charge.
-              </p>
-            </a>
-          </div>
-        </section>
-
-        <section class="section">
-<section class="gear-band" aria-labelledby="gear-h">
-  <div class="gear-head"><div>
-    <p class="gear-eyebrow">Partner store · TESMAG</p>
-    <h2 id="gear-h">Gear for your Tesla</h2>
-    <p class="gear-lede">Accessories I&rsquo;d actually fit: model-specific mats, screen protection and clever storage for every Tesla, Cybertruck included.</p>
-  </div></div>
-  <ul class="gear-cats">
-<li><a href="https://www.teslaacessories.com/collections/floor-mats?referral_code=J72E6FRRQ7QK&amp;source_type=sales_plugin_af&amp;slt=sales_plugin_af" target="_blank" rel="sponsored noopener"><span class="gear-ico" aria-hidden="true">▦</span><strong>Floor mats</strong><span class="gear-sub">All-weather fit for Model 3, Y, S, X</span></a></li>
-<li><a href="https://www.teslaacessories.com/collections/dashboard?referral_code=J72E6FRRQ7QK&amp;source_type=sales_plugin_af&amp;slt=sales_plugin_af" target="_blank" rel="sponsored noopener"><span class="gear-ico" aria-hidden="true">◧</span><strong>Dashboard &amp; screen</strong><span class="gear-sub">Screen protectors, trims, mounts</span></a></li>
-<li><a href="https://www.teslaacessories.com/collections/storage-boxes?referral_code=J72E6FRRQ7QK&amp;source_type=sales_plugin_af&amp;slt=sales_plugin_af" target="_blank" rel="sponsored noopener"><span class="gear-ico" aria-hidden="true">▣</span><strong>Storage &amp; organisers</strong><span class="gear-sub">Console trays and trunk boxes</span></a></li>
-<li><a href="https://www.teslaacessories.com/collections/wheel-covers?referral_code=J72E6FRRQ7QK&amp;source_type=sales_plugin_af&amp;slt=sales_plugin_af" target="_blank" rel="sponsored noopener"><span class="gear-ico" aria-hidden="true">◎</span><strong>Wheel covers</strong><span class="gear-sub">Aero caps and rim protection</span></a></li>
-  </ul>
-  <div class="gear-foot">
-    <a class="gear-see-all" href="/gear.html">See all gear →</a>
-    <a class="gear-btn" href="https://www.teslaacessories.com/?referral_code=J72E6FRRQ7QK&amp;source_type=sales_plugin_af&amp;slt=sales_plugin_af" target="_blank" rel="sponsored noopener">Shop Tesla accessories <span aria-hidden="true">↗</span></a>
-    <p class="gear-disclosure">Affiliate link: I may earn a commission if you buy through it, at no extra cost to you.</p>
-  </div>
-</section>
-        </section>
-
-        <section class="section">
-          <div class="referral-banner reveal">
+        <section class="tz-section tz-small">
+          <div class="tz-band tz-band-quiet">
             <div>
-              <p class="eyebrow">Referral</p>
-              <h2>Order a Tesla with my link</h2>
-              <p>
-                Buying a car? Use
-                <a href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">ts.la/alex474841</a>.
-                Credits depend on Tesla’s current referral program in your market.
-              </p>
+              <p class="tz-card-k">Owners</p>
+              <h2>Order with my referral, or kit out your car</h2>
+              <p>Order a Tesla with <a href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">ts.la/alex474841</a> (credits depend on Tesla’s current programme in your market), or browse <a href="/gear.html">gear</a>. Some links are affiliate links.</p>
             </div>
-            <a class="button button-primary" href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">Order with my referral</a>
           </div>
         </section>
       </main>
