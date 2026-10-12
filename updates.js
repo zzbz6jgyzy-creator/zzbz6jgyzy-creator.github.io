@@ -908,6 +908,8 @@
   let versionQuery = "";
   let expandedId = "";
   let spotFilter = "wave";
+  let showAll = false;
+  const SHOW_LIMIT = 6;
   let current = { live: null, versions: curated.versions };
 
   const versionModels = (version) => version.models || ["3", "Y", "S", "X", "Cybertruck"];
@@ -956,6 +958,7 @@
     el.querySelector("[data-hero-open]")?.addEventListener("click", () => {
       expandedId = latest.id;
       rerender();
+      document.getElementById(`build-${latest.id.replace(/\./g, "-")}`)?.scrollIntoView({ block: "start" });
     });
   };
   const matchFeature = (version) => {
@@ -1020,7 +1023,11 @@
         return String(b.version.date).localeCompare(String(a.version.date));
       });
 
-    rows.forEach(({ version, avail }) => {
+    const filtering = Boolean(model || featureQuery || versionQuery || country);
+    const visibleRows = rows.filter(
+      ({ version }, i) => showAll || filtering || i < SHOW_LIMIT || version.id === expandedId,
+    );
+    visibleRows.forEach(({ version, avail }) => {
       const article = document.createElement("article");
       const on = versionQuery && norm(version.id) === norm(versionQuery);
       const open = on || expandedId === version.id || Boolean(featureQuery);
@@ -1072,6 +1079,12 @@
       setText("updates-showing", `${rows.length} versions`);
     }
     if (empty) empty.hidden = rows.length > 0;
+    const moreBtn = document.getElementById("updates-show-all");
+    if (moreBtn) {
+      moreBtn.hidden = filtering || rows.length <= SHOW_LIMIT;
+      moreBtn.textContent = showAll ? "Show fewer" : `Show all versions (${rows.length})`;
+      moreBtn.setAttribute("aria-expanded", String(showAll));
+    }
     syncStatButtons();
   };
 
@@ -1109,6 +1122,15 @@
       rerender();
     });
   });
+
+  const showAllBtn = document.getElementById("updates-show-all");
+  if (showAllBtn) {
+    showAllBtn.addEventListener("click", () => {
+      showAll = !showAll;
+      rerender();
+      if (!showAll) document.getElementById("builds")?.scrollIntoView({ block: "start" });
+    });
+  }
 
   const carSelect = document.getElementById("updates-car");
   if (carSelect) {

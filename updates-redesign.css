@@ -63,3 +63,5 @@
 @media (min-width: 960px) {
   #updates-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
 }
+.tracker-show-all { display: block; width: 100%; margin-top: 1rem; padding: 0.7rem; font-weight: 600; }
+.tracker-show-all[hidden] { display: none; }
