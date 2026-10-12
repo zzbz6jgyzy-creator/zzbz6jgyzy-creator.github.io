@@ -1,8 +1,8 @@
 // Cybercab Tracker data. Edit this file to update the page.
 // Every item needs a real source link. Change `updated` when you edit.
 window.CYBERCAB = {
-  updated: "2026-10-11",
-  updatedLabel: "11 Oct 2026",
+  updated: "2026-10-12",
+  updatedLabel: "12 Oct 2026",
   stats: [
     { value: "300+", label: "Cybercabs serving Austin (Tesla Robotaxi, 10 Oct 2026)", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
     { value: "319", label: "Cybercabs on the Texas DMV automated-vehicle registry (8 Oct 2026)", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
@@ -22,9 +22,11 @@ window.CYBERCAB = {
     { date: "2026-09-25", label: "25 Sep 2026", text: "57 more Cybercabs registered, taking Tesla’s Texas fleet past 500.", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
     { date: "2026-10-02", label: "2 Oct 2026", text: "Registered Cybercabs reach 169.", src: "https://www.cybercab.news/article/production-decaled-cybercabs-leave-giga-texas-oct7" },
     { date: "2026-10-08", label: "8 Oct 2026", text: "Record batch of 150 added. 319 Cybercabs registered.", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
-    { date: "2026-10-10", label: "10 Oct 2026", text: "Tesla says 300+ Cybercabs serve Austin, 8x in 30 days. Dallas named next.", src: "https://www.cybercab.news/article/dallas-cybercab-next-oct10" }
+    { date: "2026-10-10", label: "10 Oct 2026", text: "Tesla says 300+ Cybercabs serve Austin, 8x in 30 days. Dallas named next.", src: "https://www.cybercab.news/article/dallas-cybercab-next-oct10" },
+    { date: "2026-10-12", label: "12 Oct 2026", text: "Tesla’s Robotaxi account confirms riders can now talk to their Grok bot inside a Robotaxi, Cybercab included.", src: "https://www.cybercab.news/article/dyk-grok-bot-cybercab-oct12" }
   ],
   watch: [
+    { text: "21 Oct 2026: Tesla Q3 earnings — a likely venue for official fleet numbers and a Dallas date.", src: "https://www.teslarati.com/tesla-cybercab-dallas/" },
     { text: "30 Oct 2026: NHTSA deadline for Tesla’s sworn answers on Cybercab federal safety-standard compliance.", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
     { text: "A launch date for public Cybercab rides in Dallas.", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" }
   ]
