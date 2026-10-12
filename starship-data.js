@@ -1,5 +1,5 @@
 window.STARSHIP = {
-  updated: "2026-10-11",
+  updated: "2026-10-12",
   note:
     "Compiled from SpaceX flight pages, FAA planning slides and public launch records. Outcomes are this desk’s read of the whole flight — not SpaceX’s official score. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
@@ -27,6 +27,12 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-10-09",
+      confirmed: false,
+      change:
+        "NASASpaceflight: Ship 42 rolled back to Massey’s for a third cryo-proof campaign after its six Raptors came off; engines and a static fire still to come. Booster 22 is in Mega Bay 1 and could be ready for static fire in the second half of October. NSF says NET 8 November looks achievable on vehicle readiness.",
+    },
     {
       date: "2026-10-11",
       confirmed: false,
