@@ -1,9 +1,18 @@
 window.FSD_GLOBAL = {
-  updated: "2026-10-10",
+  updated: "2026-10-12",
   note:
     "Country status is this desk’s read of Tesla listings, national regulator notes, and public reporting. “Live” means owners can use FSD Supervised (or Assisted Driving Basic in Europe) on public roads. “Approved” is a regulator yes that is not yet a customer rollout. Not Tesla’s official map. FSD Supervised is SAE Level 2 — the driver must supervise.",
   teslaList: "https://www.tesla.com/support/full-self-driving",
   versions: [
+    {
+      id: "v14.3.12",
+      date: "2026-10-10",
+      region: "United States",
+      hardware: "HW4 / AI4",
+      build: "2026.38.5",
+      status: "live",
+      note: "Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early US wave only. Source: notateslaapp.com / Teslascope.",
+    },
     {
       id: "v14.3.11",
       date: "2026-10-06",
@@ -11,14 +20,14 @@ window.FSD_GLOBAL = {
       hardware: "HW4 / AI4",
       build: "2026.33.5",
       status: "live",
-      note: "Current US / Canada stack. Automatic Collision Evasion is in this build.",
+      note: "Widest US / Canada HW4 stack. Automatic Collision Evasion is in this build and in 14.3.12.",
     },
     {
       id: "v14.3 Lite",
       date: "2026-10-06",
       region: "North America",
       hardware: "HW3",
-      build: "2026.33.5",
+      build: "2026.33.5 / 2026.38.5",
       status: "live",
       note: "Distilled from the HW4 model. Parking, unparking, start-from-park. No Collision Evasion.",
     },
@@ -95,7 +104,7 @@ window.FSD_GLOBAL = {
     },
   ],
   countries: [
-    { code: "US", name: "United States", region: "Americas", status: "live", date: "2022-11", version: "v14.3.11", hardware: "HW4 · HW3 Lite", lon: -98, lat: 39.5, note: "Home market. HW4 is on 14.3.11; HW3 is on 14.3 Lite.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
+    { code: "US", name: "United States", region: "Americas", status: "live", date: "2022-11", version: "v14.3.12", hardware: "HW4 · HW3 Lite", lon: -98, lat: 39.5, note: "Home market. 14.3.12 (2026.38.5) is in an early US wave since 10 Oct; most HW4 cars are on 14.3.11. HW3 is on 14.3 Lite.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "CA", name: "Canada", region: "Americas", status: "live", date: "2023-11", version: "v14.3.11", hardware: "HW4 · HW3 Lite", lon: -106, lat: 56, note: "Same North America branch as the US.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "MX", name: "Mexico", region: "Americas", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: -102.5, lat: 23.6, note: "Tesla lists Mexico. Not on the US 14.3.11 build map.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "PR", name: "Puerto Rico", region: "Americas", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: -66.5, lat: 18.2, note: "Tesla lists Puerto Rico as its own market.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
@@ -111,7 +120,7 @@ window.FSD_GLOBAL = {
     { code: "SI", name: "Slovenia", region: "Europe", status: "live", date: "2026-09-07", version: "v14.2.2.6", hardware: "HW3 / HW4", lon: 14.8, lat: 46.1, note: "AVP recognised the RDW type approval. Customer use confirmed.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "CZ", name: "Czechia", region: "Europe", status: "live", date: "2026-09-21", version: "v14.2.2.6", hardware: "HW3 / HW4", lon: 15.5, lat: 49.8, note: "Transport ministry recognition; rollout the same day.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "HR", name: "Croatia", region: "Europe", status: "live", date: "2026-09-29", version: "v14.2.2.6", hardware: "HW3 / HW4", lon: 15.2, lat: 45.1, note: "Eighth EU country. Tesla listed customer use by 1 October.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
-    { code: "DE", name: "Germany", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 10.4, lat: 51.2, note: "KBA reviewing. ~19% of EU population. Bilger has pushed an EU-wide path.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
+    { code: "DE", name: "Germany", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 10.4, lat: 51.2, note: "KBA reviewing. Transport ministry backs EU-wide approval after its 6 Oct agreement with Tesla. Tesla renamed the system Tesla Assisted Driving in Europe on 9 Oct. ~19% of EU population.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "FR", name: "France", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 2.3, lat: 46.6, note: "Under review. Large vote weight for the Brussels path.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "IT", name: "Italy", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 12.6, lat: 42.8, note: "Under review.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "ES", name: "Spain", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: -3.7, lat: 40.4, note: "Under review.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
@@ -129,7 +138,7 @@ window.FSD_GLOBAL = {
     { code: "PT", name: "Portugal", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: -8.2, lat: 39.6, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "HU", name: "Hungary", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 19.5, lat: 47.2, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "BG", name: "Bulgaria", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 25.5, lat: 42.7, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
-    { code: "SK", name: "Slovakia", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 19.7, lat: 48.7, note: "No national recognition. Some 2026.33.100 cars have been spotted — that is not approval.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
+    { code: "SK", name: "Slovakia", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 19.7, lat: 48.7, note: "Transport minister Ráž said on 7 Oct a recognition letter goes to the RDW within days. Not yet confirmed sent, so not approved.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "LV", name: "Latvia", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 24.6, lat: 56.9, note: "No national recognition reported. Sits between two live Baltic markets.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "CY", name: "Cyprus", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 33.4, lat: 35.1, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "LU", name: "Luxembourg", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 6.1, lat: 49.75, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
