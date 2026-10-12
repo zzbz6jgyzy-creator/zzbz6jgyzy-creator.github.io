@@ -4502,3 +4502,28 @@ a.news-card:hover h3 {
   .photo-banner img { aspect-ratio: 16 / 8; }
   .photo-banner figcaption { left: 0.7rem; right: auto; }
 }
+
+/* Pulsing live dot beside tracker "Updated" stamps */
+.live-stamp {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.live-stamp::before {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #e31937;
+  box-shadow: 0 0 0 0 rgba(227, 25, 55, 0.6);
+  animation: live-stamp-pulse 2.2s ease-out infinite;
+}
+@keyframes live-stamp-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(227, 25, 55, 0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(227, 25, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(227, 25, 55, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-stamp::before { animation: none; }
+}
