@@ -131,3 +131,12 @@ body.home-x{background:#050505;color:#f4f4f2}
 .hx-poll-bar span{display:block;height:100%;width:50%;background:#E31937;transition:width .5s}
 .hx-poll-pcts{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.85rem;color:var(--ink-soft);margin-top:.4rem}
 .hx-poll-status{color:var(--mute);font-size:.85rem;margin:.8rem 0 0}
+
+/* Ticker: keep LIVE label above the scrolling widget; tighten mobile hero */
+.hx-ticker-label{position:relative;z-index:2;box-shadow:8px 0 14px -6px rgba(0,0,0,.8)}
+.hx-ticker-widget{position:relative;z-index:1;overflow:hidden}
+@media (max-width:600px){
+ .hx-hero{min-height:78svh}
+ .hx-hero-inner{padding-bottom:2.25rem}
+ .hx-ticker-label{padding:0 .7rem}
+}

@@ -951,7 +951,7 @@
         <div><dt>First spotted</dt><dd>${escapeHtml(formatDate(spotted))}</dd></div>
         <div><dt>Cars</dt><dd>${escapeHtml(carsLine(latest))}</dd></div>
         ${latest.fsd ? `<div><dt>FSD</dt><dd>${escapeHtml(latest.fsd)}</dd></div>` : ""}
-        ${places.length ? `<div><dt>Seen in</dt><dd>${escapeHtml(places.join(", "))}</dd></div>` : ""}
+        ${places.length ? `<div><dt>Tracked cars seen in</dt><dd>${escapeHtml(places.join(", "))}</dd></div>` : ""}
       </dl>
       <p class="tracker-hero-what">${escapeHtml(plainWhatsNew(latest))}</p>
       <a class="tracker-hero-link" href="#build-${latest.id.replace(/\./g, "-")}" data-hero-open="${escapeHtml(latest.id)}">See full details ↓</a>`;
@@ -1048,7 +1048,7 @@
         <dl class="tracker-card-facts">
           <div><dt>Cars</dt><dd>${escapeHtml(carsLine(version))}</dd></div>
           <div><dt>First spotted</dt><dd>${escapeHtml(formatDate(version.date))}</dd></div>
-          ${places.length ? `<div><dt>Seen in</dt><dd>${escapeHtml(places.join(", "))}${extra > 0 ? ` +${extra}` : ""}</dd></div>` : ""}
+          ${places.length ? `<div><dt>Tracked cars seen in</dt><dd>${escapeHtml(places.join(", "))}${extra > 0 ? ` +${extra}` : ""}</dd></div>` : ""}
           ${fleet ? `<div><dt>Share</dt><dd>${escapeHtml(fleet)}</dd></div>` : ""}
         </dl>
         ${avail.label ? `<p class="updates-avail updates-avail-${avail.key}">${escapeHtml(avail.label)}</p>` : ""}

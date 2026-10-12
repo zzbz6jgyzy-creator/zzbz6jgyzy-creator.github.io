@@ -65,3 +65,17 @@
 }
 .tracker-show-all { display: block; width: 100%; margin-top: 1rem; padding: 0.7rem; font-weight: 600; }
 .tracker-show-all[hidden] { display: none; }
+
+/* Align intro, hero and jump links with the site column */
+.tracker-intro,
+.tracker-hero,
+.tracker-jump {
+  width: min(100% - 2.5rem, var(--max));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+.tracker-intro { max-width: none; }
+.tracker-intro > * { max-width: 46rem; }
+.tracker-hero { margin-top: 1rem; }
+.tracker-jump { margin-top: 1rem; }

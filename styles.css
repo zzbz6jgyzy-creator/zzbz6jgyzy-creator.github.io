@@ -4443,3 +4443,22 @@ a.news-card:hover h3 {
 .gear-models a{display:inline-block;padding:.6rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);color:#fff;text-decoration:none;font-size:.9rem;transition:border-color .3s,background .3s}
 .gear-models a:hover{border-color:#E31937;background:rgba(227,25,55,.12)}
 .gear-see-all{color:#fff;font-size:.9rem;text-decoration:underline;text-decoration-color:#E31937;text-underline-offset:3px}
+
+/* Starship countdown panel */
+.starship-cd-panel {
+  margin: 1.25rem 0 0.4rem;
+  padding: 1rem 1.1rem 0.2rem;
+  max-width: 30rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--tesla, #e31937);
+  border-radius: var(--radius);
+  background: rgba(236, 236, 232, 0.02);
+}
+.starship-cd-panel .starship-hero-kicker {
+  margin: 0 0 0.7rem;
+  color: #ff5a6e;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.starship-cd-panel .starship-count { max-width: none; }
