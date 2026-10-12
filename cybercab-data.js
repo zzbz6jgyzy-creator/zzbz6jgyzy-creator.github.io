@@ -9,6 +9,17 @@ window.CYBERCAB = {
     { value: "43%", label: "Share of Tesla’s 739 registered Texas robotaxis that are Cybercabs", src: "https://www.cybercab.news/article/dyk-cybercab-fleet-share-43-oct9" },
     { value: "125k+", label: "Listed yearly production capacity at Giga Texas", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
   ],
+  fleet: [
+    { date: "2026-09-03", label: "3 Sep", value: 45, src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
+    { date: "2026-09-25", label: "25 Sep", value: 102, src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
+    { date: "2026-10-02", label: "2 Oct", value: 169, src: "https://www.cybercab.news/article/production-decaled-cybercabs-leave-giga-texas-oct7" },
+    { date: "2026-10-08", label: "8 Oct", value: 319, src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
+  ],
+  share: {
+    cybercab: 319,
+    total: 739,
+    src: "https://www.cybercab.news/article/dyk-cybercab-fleet-share-43-oct9"
+  },
   cities: [
     { name: "Austin, TX", status: "live", note: "Public paid rides in the Tesla Robotaxi app since 3 Sep 2026. The only city with public Cybercab rides.", src: "https://www.cybercab.news/article/dallas-cybercab-next-oct10" },
     { name: "Dallas, TX", status: "next", note: "Named as the next Cybercab city by Tesla AI chief Ashok Elluswamy on 10 Oct 2026. No date yet (“soon”).", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },

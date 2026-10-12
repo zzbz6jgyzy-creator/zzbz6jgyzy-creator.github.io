@@ -14,17 +14,17 @@
     <meta property="og:title" content="Cybercab Tracker — Supercharged Daily" />
     <meta property="og:description" content="Fleet count, cities, milestones and dates for Tesla’s Cybercab, with sources." />
     <meta property="og:url" content="https://superchargeddaily.com/cybercab.html" />
-    <meta property="og:image" content="https://superchargeddaily.com/assets/og.jpg" />
-    <meta property="og:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="https://superchargeddaily.com/assets/robotaxi/cybercab-gold.jpg" />
+    <meta property="og:image:alt" content="Gold Tesla Cybercab with falcon-wing doors open" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Cybercab Tracker — Supercharged Daily" />
     <meta name="twitter:description" content="Fleet count, cities, milestones and dates for Tesla’s Cybercab, with sources." />
-    <meta name="twitter:image" content="https://superchargeddaily.com/assets/og.jpg" />
-    <meta name="twitter:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
+    <meta name="twitter:image" content="https://superchargeddaily.com/assets/robotaxi/cybercab-gold.jpg" />
+    <meta name="twitter:image:alt" content="Gold Tesla Cybercab with falcon-wing doors open" />
 
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -70,21 +70,60 @@
       </header>
 
       <main id="main">
-        <section class="page-hero">
-          <p class="eyebrow reveal">Deep dive · Tesla</p>
-          <h1 class="reveal delay-1">Cybercab <span style="color:#E31937">Tracker</span></h1>
-          <p class="reveal delay-2">How many Cybercabs are out there, where you can ride one, and every milestone so far. Every figure links to its source.</p>
-          <p class="meta reveal delay-2">Updated <time data-cc-updated datetime="2026-10-11">11 Oct 2026</time></p>
+        <section class="cc-hero">
+          <div class="cc-hero-copy">
+            <p class="eyebrow reveal">Deep dive · Tesla</p>
+            <h1 class="reveal delay-1">Cybercab <span>Tracker</span></h1>
+            <p class="reveal delay-2">How many Cybercabs are out there, where you can ride one, and every milestone so far. Every figure links to its source.</p>
+            <p class="meta reveal delay-2">Updated <time data-cc-updated datetime="2026-10-12">12 Oct 2026</time></p>
+          </div>
+          <figure class="cc-hero-shot reveal delay-1">
+            <img
+              src="/assets/robotaxi/cybercab-gold.jpg"
+              width="1280"
+              height="720"
+              alt="Gold Tesla Cybercab with falcon-wing doors open"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </figure>
         </section>
 
         <section class="section" aria-labelledby="cc-fleet-h">
-          <div class="section-head"><h2 id="cc-fleet-h" class="reveal">Fleet count</h2><p class="reveal delay-1">Tesla’s own figure and the Texas DMV registry are different things. A registration isn’t a car in service.</p></div>
+          <div class="section-head">
+            <h2 id="cc-fleet-h" class="reveal">Fleet count</h2>
+            <p class="reveal delay-1">Tesla’s own figure and the Texas DMV registry are different things. A registration isn’t a car in service.</p>
+          </div>
+          <div class="cc-visuals">
+            <article class="cc-panel cc-chart-panel" aria-labelledby="cc-chart-h">
+              <header class="cc-panel-head">
+                <div>
+                  <h3 id="cc-chart-h">Texas registry</h3>
+                  <p>Cybercabs on the DMV automated-vehicle list</p>
+                </div>
+                <p class="cc-chart-readout" data-cc-chart-readout></p>
+              </header>
+              <div class="cc-chart" data-cc-chart></div>
+            </article>
+            <article class="cc-panel cc-share-panel" aria-labelledby="cc-share-h">
+              <header class="cc-panel-head">
+                <div>
+                  <h3 id="cc-share-h">Texas mix</h3>
+                  <p>Of Tesla’s registered robotaxis</p>
+                </div>
+              </header>
+              <div class="cc-share" data-cc-share></div>
+            </article>
+          </div>
           <div class="cc-stats" data-cc-stats></div>
         </section>
 
         <section class="section" aria-labelledby="cc-cities-h">
           <div class="section-head"><h2 id="cc-cities-h" class="reveal">Cities</h2></div>
-          <div class="cc-cities" data-cc-cities></div>
+          <div class="cc-cities-board">
+            <div class="cc-map-panel cc-panel" data-cc-map></div>
+            <div class="cc-cities" data-cc-cities></div>
+          </div>
         </section>
 
         <section class="section" aria-labelledby="cc-ms-h">
