@@ -67,3 +67,19 @@
 .tz-credits a{color:var(--ink-soft)}
 .tz-hero-img{object-position:42% 55%}
 @media (max-width:600px){.tz-hero-img{object-position:38% 50%}}
+
+/* Grok page */
+.gk-hero{min-height:min(62svh,560px);background:radial-gradient(70% 90% at 85% 20%,rgba(227,25,55,.28),transparent 60%),radial-gradient(60% 70% at 10% 100%,rgba(255,255,255,.05),transparent 60%),#0b0b0d}
+.gk-hero h1{max-width:16ch}
+.gk-uses{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gk-src{margin-top:auto;padding-top:.4rem;font:500 .74rem/1 "IBM Plex Mono",monospace;color:var(--mute)}
+.tz-card span.gk-src:last-child{color:var(--mute);font-size:.74rem}
+.gk-note{margin:.7rem 0 0;font-size:.82rem;color:var(--mute)}
+.gk-note a,.tz-head p a{color:var(--ink-soft)}
+.gk-news{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.gk-news li{display:flex;gap:1.2rem;align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.gk-news time{flex:none;width:4.5rem;font:500 .78rem/1 "IBM Plex Mono",monospace;color:#ff5a6e}
+.gk-news a{color:var(--ink);text-decoration:none}
+.gk-news a:hover{text-decoration:underline}
+#tutorial,.grok-levels{scroll-margin-top:3.5rem}
+@media (max-width:900px){.gk-uses{grid-template-columns:1fr}}
