@@ -1,11 +1,11 @@
 window.TESLA_UPDATES = {
-  updated: "2026-10-12",
+  updated: "2026-10-13",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
     headline: "FSD right now",
     lines: [
-      "Newest US build, HW4 / AI4: FSD Supervised v14.3.12 on 2026.38.5. Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early US wave only so far.",
+      "Newest US build, HW4 / AI4: FSD Supervised v14.3.12 on 2026.38.5. Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early wave, mostly US, with the first cars in Mexico and Canada now reporting it.",
       "Wider North America HW4 build: v14.3.11 on 2026.33.5 (US and Canada). A big slice of US cars is still on v14.3.10 (2026.27.11). Automatic Collision Evasion is in 14.3.11 and 14.3.12 — North America only.",
       "North America, HW3: FSD Supervised v14.3 Lite on 2026.33.5 and 2026.38.5. Parking, unparking and start-from-park. No Collision Evasion.",
       "Europe: FSD Supervised v14.2.2.6 on 2026.33.100. Seen so far in the Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia and Slovenia.",
@@ -75,9 +75,9 @@ window.TESLA_UPDATES = {
       date: "2026-10-10",
       kind: "fsd",
       status: "early",
-      headline: "FSD v14.3.12 joins the 2026.38 branch — US only",
+      headline: "FSD v14.3.12 joins the 2026.38 branch — North America",
       summary:
-        "First build that puts the US FSD stack on top of the 2026.38 cabin features. HW4 gets v14.3.12, HW3 keeps v14.3 Lite. The FSD release notes read the same as 14.3.11. Early US wave only.",
+        "First build that puts the US FSD stack on top of the 2026.38 cabin features. HW4 gets v14.3.12, HW3 keeps v14.3 Lite. The FSD release notes read the same as 14.3.11. Early wave, mostly US.",
       features: [
         "HW4: v14.3.12 — same notes as 14.3.11: faster reactions, better rare-scene and low-visibility vision, cleaner parking pins, better emergency-vehicle, school-bus and yellow-light behaviour.",
         "Automatic Collision Evasion (HW4): can switch on Supervised FSD to try to avoid an imminent frontal crash, or if it looks like FSD was dropped by mistake.",
@@ -85,12 +85,12 @@ window.TESLA_UPDATES = {
         "Cabin items from 2026.38.3.1: Halloween Mode, Emergency Drive Away at Superchargers, plus Supercharger site maps and the sharper park scene from 2026.38.",
         "Cybertruck: Powershare home backup alongside Powerwall, and Set Arrival Energy from the phone app.",
       ],
-      fsd: "v14.3.12 (HW4) · v14.3 Lite (HW3) · United States",
+      fsd: "v14.3.12 (HW4) · v14.3 Lite (HW3) · North America",
       models: ["3", "Y", "S", "X", "Cybertruck"],
       hardware: ["HW3", "HW4"],
       reached:
-        "Early wave in the United States only. First spotted late on 10 Oct; well under 1% of the tracked fleet so far. Not a European build.",
-      countries: ["US"],
+        "Early wave, mostly in the United States. First spotted late on 10 Oct; by 13 Oct the first cars in Mexico and Canada were reporting it too. About 1% of the tracked fleet so far. Not a European build.",
+      countries: ["US", "MX", "CA"],
     },
     {
       id: "2026.38.3.1",
@@ -124,7 +124,7 @@ window.TESLA_UPDATES = {
       status: "rolling",
       headline: "FSD v14.3.11 — North America only",
       summary:
-        "The main US / Canada 14.3 branch. HW4 gets v14.3.11 (2026.38.5 brings v14.3.12 to a first US wave). HW3 gets v14.3 Lite. Europe does not get this build — the EU number is 2026.33.100, and it is still on 14.2.",
+        "The main US / Canada 14.3 branch. HW4 gets v14.3.11 (2026.38.5 brings v14.3.12 to a first North American wave). HW3 gets v14.3 Lite. Europe does not get this build — the EU number is 2026.33.100, and it is still on 14.2.",
       features: [
         "HW4: v14.3.11 — faster reactions, better rare-scene vision, cleaner parking pins, better emergency-vehicle and yellow-light behaviour.",
         "Automatic Collision Evasion (HW4, North America): if you look away or FSD drops unintentionally, the car can re-engage Supervised FSD to try to stay out of a crash.",
