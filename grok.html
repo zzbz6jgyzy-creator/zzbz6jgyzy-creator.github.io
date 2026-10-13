@@ -40,6 +40,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/tesla-page.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -71,21 +72,108 @@
       </header>
 
       <main id="main">
-        <section class="page-hero">
-          <p class="eyebrow reveal">Grok Bot</p>
-          <h1 class="reveal delay-1">Bots that do jobs</h1>
-          <p class="reveal delay-2">
-            Grok in the chat window answers a question. Grok Bot is a different product:
-            named teammates that keep a job, a memory, and a cloud computer, and that
-            keep working after the laptop closes.
-          </p>
-          <p class="reveal delay-3">
-            Download at
-            <a href="https://x.ai/bot" target="_blank" rel="noopener noreferrer">x.ai/bot</a>.
-            Official steps live in the
-            <a href="https://docs.x.ai/grok-bot/get-started" target="_blank" rel="noopener noreferrer">SpaceXAI docs</a>.
-            The tutorial below is independent — four levels, each one deeper than the last.
-          </p>
+        <section class="tz-hero gk-hero">
+          <div class="tz-hero-copy">
+            <p class="tz-kicker">Grok Bot</p>
+            <h1>AI teammates that finish the job.</h1>
+            <p class="tz-lede">Grok Bot gives you named Bots, each with its own job, memory and a cloud computer with a browser and terminal. You message them like a colleague. They work in your real tools, keep going after your laptop closes, and ask before anything goes out.</p>
+            <p class="tz-cta">
+              <a class="button button-primary" href="https://x.ai/bot" target="_blank" rel="noopener">Get Grok Bot</a>
+              <a class="button button-ghost" href="https://x.ai/bot/marketplace" target="_blank" rel="noopener">Browse the Marketplace</a>
+            </p>
+          </div>
+        </section>
+
+        <nav class="tz-jump" aria-label="On this page">
+          <a href="#what">What it is</a>
+          <a href="#uses">Use cases</a>
+          <a href="#marketplace">Marketplace</a>
+          <a href="#latest">Latest</a>
+          <a href="#tutorial">Tutorial</a>
+        </nav>
+
+        <section class="tz-section" id="what" aria-labelledby="gk-what-h">
+          <div class="tz-head">
+            <h2 id="gk-what-h">What it is</h2>
+            <p>From the <a href="https://docs.x.ai/grok-bot/overview" target="_blank" rel="noopener">official overview</a>.</p>
+          </div>
+          <div class="tz-cards">
+            <div class="tz-card"><span class="tz-card-k">A computer each</span><strong>Real work, not drafts</strong><span>Bots run on a persistent cloud computer with a browser, files and a terminal, and keep working while your devices are off.</span></div>
+            <div class="tz-card"><span class="tz-card-k">Skills &amp; routines</span><strong>Show it once</strong><span>Walk a Bot through a task, save it as a skill, then run it on a schedule as a routine.</span></div>
+            <div class="tz-card"><span class="tz-card-k">You stay in charge</span><strong>Approval before it acts</strong><span>Messages, purchases and other outside actions wait for your yes. Several Bots can work in parallel and hand off to each other.</span></div>
+          </div>
+        </section>
+
+        <section class="tz-section" id="uses" aria-labelledby="gk-uses-h">
+          <div class="tz-head">
+            <h2 id="gk-uses-h">Standout use cases</h2>
+            <p>Real examples, each linked to the source post.</p>
+          </div>
+          <div class="tz-cards gk-uses">
+            <a class="tz-card" href="https://x.com/bot/status/2090168864357384523" target="_blank" rel="noopener">
+              <span class="tz-card-k">Build &amp; ship</span>
+              <strong>A website, start to finish</strong>
+              <span>Build the site, buy the domain and deploy it, from one conversation.</span>
+              <span class="gk-src">@bot on X ↗</span>
+            </a>
+            <a class="tz-card" href="https://x.com/bot/status/2102460785649959362" target="_blank" rel="noopener">
+              <span class="tz-card-k">Business</span>
+              <strong>Customer support, run by Bots</strong>
+              <span>SpaceXAI says it rebuilt its own support around Grok Bot: answering customers, resolving tickets and managing the queue.</span>
+              <span class="gk-src">@bot on X ↗</span>
+            </a>
+            <a class="tz-card" href="https://x.com/bot/status/2099883726444610030" target="_blank" rel="noopener">
+              <span class="tz-card-k">One-person company</span>
+              <strong>A company in three days</strong>
+              <span>Three SpaceXAI staff used Grok Bot to go from market research to a launched business, live over three days.</span>
+              <span class="gk-src">@bot on X ↗</span>
+            </a>
+            <a class="tz-card" href="https://x.com/bot/status/2090168871991083392" target="_blank" rel="noopener">
+              <span class="tz-card-k">Everyday</span>
+              <strong>Inbox and refunds</strong>
+              <span>Clear piles of email and chase down refunds and discounts you are owed.</span>
+              <span class="gk-src">@bot on X ↗</span>
+            </a>
+            <a class="tz-card" href="https://x.com/grok/status/2102567609044517198" target="_blank" rel="noopener">
+              <span class="tz-card-k">In the car</span>
+              <strong>Grok Bot in your Tesla</strong>
+              <span>Use your Bots and their connectors from the car.</span>
+              <span class="gk-src">@grok on X ↗</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="tz-section" id="marketplace" aria-labelledby="gk-mk-h">
+          <a class="tz-band" href="https://x.ai/bot/marketplace" target="_blank" rel="noopener">
+            <div>
+              <p class="tz-card-k">Marketplace</p>
+              <h2 id="gk-mk-h">Start from a template</h2>
+              <p>Ready-made Bots by category, from sales and engineering to design and personal. A template copies a Bot’s instructions, skills and plugins, never its owner’s logins or chats. Add one in a click, or share your own.</p>
+            </div>
+            <span class="button button-primary">x.ai/bot/marketplace ↗</span>
+          </a>
+          <p class="gk-note">How templates work: <a href="https://x.ai/bot/guides/templates-for-grok-bot" target="_blank" rel="noopener">official guide</a>. Treat third-party Bots like software you did not write and check them before giving access.</p>
+        </section>
+
+        <section class="tz-section" id="latest" aria-labelledby="gk-new-h">
+          <div class="tz-head">
+            <h2 id="gk-new-h">Latest from Grok Bot</h2>
+            <p><a href="https://x.com/bot" target="_blank" rel="noopener">@bot on X ↗</a></p>
+          </div>
+          <ul class="gk-news">
+            <li><time>7 Oct</time><a href="https://x.com/bot/status/2107949161878606089" target="_blank" rel="noopener">Grok Bot can now search, read and monitor X</a></li>
+            <li><time>1 Oct</time><a href="https://x.com/bot/status/2105713240701538538" target="_blank" rel="noopener">Bots can suggest ways to help without being asked</a></li>
+            <li><time>26 Sept</time><a href="https://x.com/bot/status/2103936247995752705" target="_blank" rel="noopener">Finance integration: link bank, card and investment accounts</a></li>
+            <li><time>23 Sept</time><a href="https://x.com/grok/status/2102567609044517198" target="_blank" rel="noopener">Grok Bot and Connectors arrive in Tesla</a></li>
+            <li><time>17 Sept</time><a href="https://x.com/bot/status/2100659463569170779" target="_blank" rel="noopener">Grok Bot can talk: voice conversations</a></li>
+          </ul>
+        </section>
+
+        <section class="tz-section" aria-labelledby="gk-tut-h">
+          <div class="tz-head">
+            <h2 id="gk-tut-h">Tutorial</h2>
+            <p>Independent, four levels. Official steps are in the <a href="https://docs.x.ai/grok-bot/get-started" target="_blank" rel="noopener">docs</a>.</p>
+          </div>
         </section>
 
         <nav class="grok-levels reveal" aria-label="Tutorial levels">
