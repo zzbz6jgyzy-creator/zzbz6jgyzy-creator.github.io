@@ -1,0 +1,21 @@
+.lv{--r:#E31937;font-family:inherit;color:#fff;position:relative;z-index:30}
+.lv-bar,.lv-next{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.55rem 1rem;max-width:1200px;margin:0 auto;font-size:.88rem}
+.lv-bar{background:linear-gradient(90deg,#3a0610,#140306 70%);border-bottom:1px solid rgba(227,25,55,.55)}
+.lv-next{background:#0d0d0f;border-bottom:1px solid rgba(255,255,255,.1)}
+.lv-tag{color:var(--r);font-weight:800;letter-spacing:.2em;font-size:.75rem}
+.lv-dot{width:9px;height:9px;border-radius:50%;background:var(--r);animation:lvP 1.6s infinite}
+.lv-still .lv-dot{animation:none}
+@keyframes lvP{0%{box-shadow:0 0 0 0 rgba(227,25,55,.7)}70%{box-shadow:0 0 0 9px rgba(227,25,55,0)}100%{box-shadow:0 0 0 0 rgba(227,25,55,0)}}
+@media (prefers-reduced-motion:reduce){.lv-dot{animation:none}}
+.lv-chip{border:1px solid var(--r);color:var(--r);border-radius:99px;padding:.1rem .55rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.lv-cd{color:#fff;font-variant-numeric:tabular-nums}.lv-when{color:#a7a9ae}
+.lv-open{background:var(--r);color:#fff;border:0;border-radius:6px;padding:.35rem .8rem;font:inherit;font-weight:700;cursor:pointer}
+.lv-out{color:#ddd;text-decoration:underline;text-underline-offset:3px;margin-left:auto}
+.lv-panel{max-width:960px;margin:.75rem auto 1rem;aspect-ratio:16/9;background:#050506;border:1px solid rgba(227,25,55,.4);border-radius:10px;overflow:hidden;display:grid;place-items:center}
+.lv-panel.lv-loaded{aspect-ratio:auto;min-height:0}.lv-panel iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+.lv-load{background:none;border:0;color:#fff;font:inherit;font-weight:700;cursor:pointer;display:grid;justify-items:center;gap:.5rem}
+.lv-load small{color:#a7a9ae;font-weight:400}
+.lv-play{width:64px;height:64px;border-radius:50%;background:var(--r);clip-path:none;position:relative}
+.lv-play:after{content:"";position:absolute;left:26px;top:20px;border:12px solid transparent;border-left:18px solid #fff;border-right:0}
+.lv-none{color:#a7a9ae;padding:1rem}
+@media (max-width:600px){.lv-bar,.lv-next{font-size:.82rem;padding:.5rem .75rem}.lv-out{margin-left:0;flex-basis:100%}.lv-panel{margin:.5rem}}
