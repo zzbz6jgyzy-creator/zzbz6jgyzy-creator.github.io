@@ -314,6 +314,35 @@
     return row;
   }
 
+  let cdTimer = 0;
+  function renderCountdown(root, upcoming) {
+    const now = Date.now();
+    const timed = upcoming.filter((e) => e.precision === "datetime" && e.status !== "net" && parseStart(e.start) > now).slice(0, 3);
+    root.replaceChildren();
+    const cells = timed.map((event) => {
+      const card = el(event.href ? "a" : "div", `cal-next-card cal-${event.group}`);
+      if (event.href) { card.href = event.href; if (/^https?:/.test(event.href)) { card.target = "_blank"; card.rel = "noopener noreferrer"; } }
+      card.append(el("p", "eyebrow", GROUPS[event.group] || event.group), el("h3", "", event.title));
+      const d = new Date(parseStart(event.start));
+      card.append(el("p", "cal-next-when", d.toLocaleString("en-IE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Dublin" }) + " Irish time"));
+      const clock = el("p", "cal-next-clock");
+      card.append(clock);
+      root.append(card);
+      return { t: parseStart(event.start), clock };
+    });
+    const tick = () => {
+      const n = Date.now();
+      cells.forEach(({ t, clock }) => {
+        let s = Math.max(0, Math.floor((t - n) / 1000));
+        const dd = Math.floor(s / 86400); s %= 86400;
+        const hh = Math.floor(s / 3600); s %= 3600;
+        const mm = Math.floor(s / 60); const ss = s % 60;
+        clock.innerHTML = (dd ? `<b>${dd}</b>d ` : "") + `<b>${pad(hh)}</b>h <b>${pad(mm)}</b>m <b>${pad(ss)}</b>s`;
+      });
+    };
+    clearInterval(cdTimer); tick(); cdTimer = setInterval(tick, 1000);
+  }
+
   function renderList(root, events, now, emptyCopy) {
     root.replaceChildren();
     if (!events.length) {
@@ -354,9 +383,10 @@
     const watch = document.querySelector("[data-calendar-watch]");
     const status = document.querySelector("[data-calendar-status]");
     const filters = document.querySelector("[data-calendar-filters]");
+    const countdown = document.querySelector("[data-calendar-countdown]");
     const earnings = document.querySelector("[data-tsla-earnings]");
     const nextTesla = document.querySelector("[data-tsla-next]");
-    if (!list && !preview && !earnings && !nextTesla) return;
+    if (!list && !preview && !earnings && !nextTesla && !countdown) return;
 
     const now = new Date();
     let events = mergeEvents([]);
@@ -373,6 +403,7 @@
           filter === "xai" ? "Grok ships sit under No date yet until xAI puts a clock on them." : "Nothing in this slice."
         );
       }
+      if (countdown) renderCountdown(countdown, upcoming);
       if (preview) {
         renderList(preview, upcoming.slice(0, 5), now);
       }

@@ -46,3 +46,9 @@
 .lv-inhero .lv-img{min-height:220px}.lv-inhero .lv-ov h3{font-size:1.15rem}.lv-inhero .lv-d{font-size:.85rem}
 @media (max-width:600px){.lv-inhero .lv-out{flex-basis:auto;margin-left:auto}}
 .lv-panel[hidden]{display:none!important}.lv-inhero .lv-ov{padding:1rem 1.1rem}
+.lv-quiet .lv-next{gap:.5rem .8rem;padding:.45rem .8rem;font-size:.84rem}
+.lv-quiet .lv-chip{border-color:rgba(227,25,55,.7)}
+.lv-cd{font-variant-numeric:tabular-nums;color:#fff;font-family:"IBM Plex Mono",monospace;font-size:.82rem}
+.lv-cal{color:#ff5a6e}
+.lv:not(.lv-inhero) .lv-next{border-bottom:1px solid rgba(255,255,255,.08)}
+@media (max-width:600px){.lv-quiet .lv-next b{flex-basis:auto}.lv-inhero .lv-quiet .lv-next, .lv-inhero.lv-quiet .lv-next{font-size:.8rem}}

@@ -1,6 +1,6 @@
 /* Supercharged Daily live banner. Data: /live-data.json. Page: <script src="/live.js" data-page="home|starship|tesla">.
-   Preview overrides: ?livenow=ISO (fake clock), ?livedata=/path.json */
-   Rule: once a stream is live, fallbackUrl = the DIRECT stream URL (youtube.com/watch?v=… or x.com/i/broadcasts/…), postUrl = the official broadcast post.
+   Preview overrides: ?livenow=ISO (fake clock), ?livedata=/path.json
+   Rule: once a stream is live, fallbackUrl = the DIRECT stream URL (youtube.com/watch?v=… or x.com/i/broadcasts/…), postUrl = the official broadcast post. */
 (function () {
   var me = document.currentScript || document.querySelector("script[src*=\"live.js\"]"), page = (me && me.dataset.page) || 'home';
   var q = new URLSearchParams(location.search), H = 36e5;
@@ -29,8 +29,14 @@
   function render(slot, e, live, collapsed) {
     var link = '<a class="lv-out" href="' + esc(safeUrl(e.fallbackUrl)) + '" target="_blank" rel="noopener">' + esc(e.fallbackLabel || 'Watch') + ' \u2197</a>';
     if (!live) {
-      slot.innerHTML = '<div class="lv-next"><span class="lv-chip">Up next</span><b>' + esc(e.title) + '</b><span class="lv-cd">in ' +
-        cd(new Date(e.start) - now) + '</span><span class="lv-when">' + esc(when(e)) + '</span>' + link + '</div>';
+      var timed = !e.timeTbc && !e.net;
+      slot.innerHTML = '<div class="lv-next"><span class="lv-chip">Next live</span><b>' + esc(e.title) + '</b>' +
+        '<span class="lv-when">' + esc(when(e)) + '</span>' + (timed ? '<span class="lv-cd" aria-live="off"></span>' : '') +
+        '<a class="lv-out lv-cal" href="/calendar.html">Calendar \u2192</a></div>';
+      var c = slot.querySelector('.lv-cd');
+      if (c) { var t1 = function () { var ms = new Date(e.start) - Date.now(), sec = Math.max(0, Math.floor(ms / 1e3)), dd = Math.floor(sec / 86400);
+        c.textContent = 'in ' + (dd ? dd + 'd ' : '') + Math.floor(sec % 86400 / 3600) + 'h ' + String(Math.floor(sec % 3600 / 60)).padStart(2, '0') + 'm' + (dd ? '' : ' ' + String(sec % 60).padStart(2, '0') + 's'); };
+        t1(); setInterval(t1, 1e3); }
       return;
     }
     var canEmbed = e.provider === 'youtube' || e.provider === 'x';
@@ -48,17 +54,25 @@
     if (open) open.onclick = function () { var x = panel.hidden; panel.hidden = !x; open.setAttribute('aria-expanded', x); open.textContent = x ? 'Hide' : (collapsed ? 'Mission info' : 'Show'); };
     var ld = panel && panel.querySelector('.lv-load'); if (ld) ld.onclick = function () { panel.innerHTML = player(e); panel.classList.add('lv-loaded'); };
   }
+  function run() {
   fetch(q.get('livedata') || '/live-data.json', {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
-    var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && (page === 'home' || e.page === page); });
-    var live = ev.filter(function (e) { var s = new Date(e.start) - 0, en = new Date(e.end) - 0;
-      return now < en && (e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2)); })[0];
-    var next = ev.filter(function (e) { var s = new Date(e.start) - now; return !e.timeTbc && !e.net && s > 0 && s < 24 * H; })
-      .sort(function (a, b) { return new Date(a.start) - new Date(b.start); })[0];
-    var e = live || next; if (!e) return;
-    var mount = document.querySelector('[data-live-slot]'), slot = document.createElement('section'); slot.className = 'lv' + (mount ? ' lv-inhero' : ''); slot.setAttribute('aria-label', 'Live events');
+    now = q.get('livenow') ? now : Date.now();
+    var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page); });
+    var live = ev.filter(function (e) { var s = new Date(e.start) - 0;
+      return e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2); })[0];
+    var byStart = function (a, b) { return new Date(a.start) - new Date(b.start); };
+    var future = ev.filter(function (e) { return new Date(e.start) > now; }).sort(byStart);
+    var next = future.filter(function (e) { return !e.timeTbc && !e.net; })[0] || future[0]; // TBC/NET only if nothing timed
+    var e = live || next;
+    var old = document.querySelector('section.lv'); if (old) old.remove();
+    if (!e) return;
+    var mount = document.querySelector('[data-live-slot]'), slot = document.createElement('section'); slot.className = 'lv' + (mount ? ' lv-inhero' : '') + (live ? '' : ' lv-quiet'); slot.setAttribute('aria-label', live ? 'Live now' : 'Next livestream');
     if (mount) mount.appendChild(slot); else { var main = document.querySelector('main'); main.parentNode.insertBefore(slot, main); }
     var collapsed = !!(mount && mount.hasAttribute('data-collapsed'));
     render(slot, e, !!live, collapsed);
-    setTimeout(function () { slot.remove(); }, Math.max(0, new Date(e.end) - now) || 1); // auto-hide at end
+    var flip = live ? new Date(e.end) - now : (!e.timeTbc && !e.net ? new Date(e.start) - H / 2 - now : 0); // re-check at go-live / end
+    if (flip > 0 && flip < 864e5 && !q.get('livenow')) setTimeout(run, flip + 1e3);
   }).catch(function () {});
+  }
+  run();
 })();

@@ -24,7 +24,7 @@ body.home-x{background:#050505;color:#f4f4f2}
 .hx-btn:focus-visible,.hx-tile:focus-visible,.hx-feature:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .hx-scroll{position:absolute;left:50%;bottom:22px;width:26px;height:42px;border:2px solid rgba(255,255,255,.5);border-radius:14px;transform:translateX(-50%)}
 .hx-scroll span{position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:hxScroll 1.8s infinite}
-.hx-ticker{display:flex;align-items:stretch;border-block:1px solid var(--line);background:#0b0b0c;height:58px;overflow:hidden}
+.hx-ticker{display:flex;align-items:stretch;border-block:1px solid var(--line);background:#0b0b0c;min-height:58px;height:auto;overflow:hidden}
 .hx-ticker-label{display:flex;align-items:center;gap:.5rem;padding:0 1rem;background:var(--red);color:#fff;font:700 .72rem/1 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;flex:none}
 .hx-ticker-label .hx-dot{background:#fff}
 .hx-ticker-widget{flex:1;min-width:0}
@@ -140,3 +140,4 @@ body.home-x{background:#050505;color:#f4f4f2}
  .hx-hero-inner{padding-bottom:2.25rem}
  .hx-ticker-label{padding:0 .7rem}
 }
+.hx-ticker-widget,.hx-ticker-widget .tradingview-widget-container{height:auto!important;overflow-x:hidden;overflow-y:visible}.hx-ticker-widget iframe{display:block}

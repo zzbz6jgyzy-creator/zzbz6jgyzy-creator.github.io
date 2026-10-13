@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Musk-world calendar — Supercharged Daily</title>
+    <title>Calendar — Supercharged Daily</title>
     <meta
       name="description"
       content="Tesla earnings, SpaceX launches, xAI and Grok releases, plus Fed and CPI dates that move the tape — one calendar from @ALJR86."
@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://superchargeddaily.com/calendar.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
-    <meta property="og:title" content="Musk-world calendar — Supercharged Daily" />
+    <meta property="og:title" content="Calendar — Supercharged Daily" />
     <meta property="og:description" content="Tesla earnings, SpaceX launches, xAI and Grok releases, plus Fed and CPI dates that move the tape — one calendar from @ALJR86." />
     <meta property="og:url" content="https://superchargeddaily.com/calendar.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/og.jpg" />
@@ -40,6 +40,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/calendar-next.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -55,6 +56,7 @@
         </button>
         <nav class="nav" id="site-nav" data-nav aria-label="Primary">
           <a href="/news.html">News</a>
+          <a href="/calendar.html">Calendar</a>
           <a href="/tesla.html">Tesla</a>
           <a href="/spacex.html">SpaceX</a>
           <a href="/grok.html">Grok</a>
@@ -73,16 +75,21 @@
 
       <main id="main">
         <section class="page-hero">
-          <p class="eyebrow reveal">Markets · Calendar</p>
-          <h1 class="reveal delay-1">Musk-world calendar</h1>
+          <p class="eyebrow reveal">Tesla · SpaceX · xAI · Markets</p>
+          <h1 class="reveal delay-1">Calendar</h1>
           <p class="reveal delay-2">
             Tesla earnings, the Roadster unveil, SpaceX launches, Grok ships, and the
-            Fed and CPI mornings that shove the tape. One list. Times on dated rows
+            Fed and CPI mornings that shove the tape. One list. Countdowns run live; times on dated rows
             are local to your browser.
           </p>
         </section>
 
-        <section class="section" style="padding-top: 1.5rem">
+        <section class="section cal-next-wrap" aria-labelledby="cal-next-h" style="padding-top: 1.5rem">
+          <h2 id="cal-next-h" class="visually-hidden">Next up</h2>
+          <div class="cal-next" data-calendar-countdown aria-live="off"></div>
+        </section>
+
+        <section class="section" style="padding-top: 0">
           <a class="referral-banner reveal" href="/tsla.html">
             <div>
               <p class="eyebrow">Markets</p>
