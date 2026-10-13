@@ -50,7 +50,8 @@
       var c = slot.querySelector('.lw-cd'); if (c && dayOnly && new Date(e.start) <= Date.now()) { c.innerHTML = '<span class="lw-today">Today</span>'; c = null; }
       if (c) { var tile = function (n, l) { return '<span class="lw-tile"><b>' + n + '</b><i>' + l + '</i></span>'; };
         var t1 = function () { var sec = Math.max(0, Math.floor((new Date(e.start) - Date.now()) / 1e3)), dd = Math.floor(sec / 86400), p2 = function (n) { return String(n).padStart(2, '0'); };
-          c.innerHTML = tile(dd, dd === 1 ? 'day' : 'days') + tile(p2(Math.floor(sec % 86400 / 3600)), 'hrs') + tile(p2(Math.floor(sec % 3600 / 60)), 'mins') + (dd ? '' : tile(p2(sec % 60), 'secs')) + (dayOnly ? '<small class="lw-note">to the day</small>' : ''); };
+          var html = tile(dd, dd === 1 ? 'day' : 'days') + tile(p2(Math.floor(sec % 86400 / 3600)), 'hrs') + tile(p2(Math.floor(sec % 3600 / 60)), 'mins') + (dd ? '' : tile(p2(sec % 60), 'secs')) + (dayOnly ? '<small class="lw-note">to the day</small>' : '');
+          if (window.sdRoll && !reduce) window.sdRoll(c, html); else c.innerHTML = html; };
         t1(); setInterval(t1, 1e3); }
       return;
     }

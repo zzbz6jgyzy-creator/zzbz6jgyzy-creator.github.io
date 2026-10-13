@@ -1,0 +1,19 @@
+/* Adapted from 21st.dev, MIT: Border Beam & Magic Card (Magic UI, dillionverma), NumberFlow (barvian). Vanilla CSS port. */
+@property --bb-a{syntax:"<angle>";inherits:false;initial-value:0deg}
+/* 1. Border Beam on the live-stream card */
+.lw::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;z-index:3;
+  background:conic-gradient(from var(--bb-a),transparent 0deg,transparent 280deg,rgba(255,90,110,.2) 300deg,#ff2a44 340deg,#fff 352deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  animation:bbSpin 5s linear infinite}
+@keyframes bbSpin{to{--bb-a:360deg}}
+/* 2. NumberFlow-style rolling digits in countdown tiles */
+.lw-tile b{display:inline-flex;overflow:hidden;height:1em;line-height:1}
+.nf-d{display:inline-block;height:1em;overflow:hidden;position:relative;width:.62em}
+.nf-c{display:flex;flex-direction:column;transition:transform .6s cubic-bezier(.2,1.2,.3,1)}
+.nf-c span{height:1em;line-height:1;text-align:center}
+/* 3. Magic Card cursor spotlight on home tiles */
+.hx-tile::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .35s;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(227,25,55,.28),transparent 65%)}
+.hx-tile:hover::after{opacity:1}
+@media (hover:none){.hx-tile::after{opacity:.55;background:radial-gradient(200px circle at 85% 0%,rgba(227,25,55,.22),transparent 70%)}}
+@media (prefers-reduced-motion:reduce){.lw::after{animation:none;--bb-a:300deg}.nf-c{transition:none}.hx-tile::after{transition:none}}
