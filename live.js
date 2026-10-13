@@ -33,13 +33,19 @@
       return;
     }
     var canEmbed = e.provider === 'youtube' || e.provider === 'x';
+    var info = '<div class="lv-card">' + (e.image ? '<div class="lv-img" style="background-image:url(\'' + esc(e.image) + '\')">' + (e.imageCredit ? '<span class="lv-cr">' + esc(e.imageCredit) + '</span>' : '') + '</div>' : '') + '<div class="lv-ov">' +
+      '<span class="lv-tag">' + (e.provider === 'x' ? 'ON X' : e.provider === 'youtube' ? 'ON YOUTUBE' : 'WEBCAST') + '</span><h3>' + esc(e.title) + '</h3>' +
+      '<p class="lv-t">' + esc(when(e)) + ' · <span class="lv-cdl"></span></p>' + (e.description ? '<p class="lv-d">' + esc(e.description) + '</p>' : '') +
+      '<div class="lv-acts">' + (canEmbed ? '<button class="lv-load" type="button"><span class="lv-play"></span>Load stream</button>' : '') + link + '</div>' +
+      (canEmbed ? '<small class="lv-note">Loads ' + (e.provider === 'youtube' ? 'YouTube' : 'X') + ' content, which may set cookies</small>' : '') +
+      '</div></div>';
     slot.innerHTML = '<div class="lv-bar' + (reduce ? ' lv-still' : '') + '"><span class="lv-dot"></span><span class="lv-tag">LIVE NOW</span><b>' + esc(e.title) + '</b>' +
-      (canEmbed ? '<button class="lv-open" type="button" aria-expanded="false">Watch here</button>' : '') + link + '</div>' +
-      (canEmbed ? '<div class="lv-panel" hidden><button class="lv-load" type="button"><span class="lv-play"></span>Load stream<small>Loads ' +
-        (e.provider === 'youtube' ? 'YouTube' : 'X') + ' content, which may set cookies</small></button></div>' : '');
+      '<button class="lv-open" type="button" aria-expanded="true">Hide</button>' + link + '</div><div class="lv-panel">' + info + '</div>';
+    var tick = function () { var c = slot.querySelector('.lv-cdl'); if (!c) return; var ms = new Date(e.start) - Date.now();
+      c.textContent = ms > 0 ? 'T−' + cd(ms) : 'underway'; }; tick(); setInterval(tick, 3e4);
     var open = slot.querySelector('.lv-open'), panel = slot.querySelector('.lv-panel');
     if (open) open.onclick = function () { var x = panel.hidden; panel.hidden = !x; open.setAttribute('aria-expanded', x); open.textContent = x ? 'Hide' : 'Watch here'; };
-    if (panel) panel.querySelector('.lv-load').onclick = function () { panel.innerHTML = player(e); panel.classList.add('lv-loaded'); };
+    var ld = panel && panel.querySelector('.lv-load'); if (ld) ld.onclick = function () { panel.innerHTML = player(e); panel.classList.add('lv-loaded'); };
   }
   fetch(q.get('livedata') || '/live-data.json', {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
     var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && (page === 'home' || e.page === page); });

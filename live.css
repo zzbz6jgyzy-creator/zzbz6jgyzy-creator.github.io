@@ -19,3 +19,23 @@
 .lv-play:after{content:"";position:absolute;left:26px;top:20px;border:12px solid transparent;border-left:18px solid #fff;border-right:0}
 .lv-none{color:#a7a9ae;padding:1rem}
 @media (max-width:600px){.lv-bar,.lv-next{font-size:.82rem;padding:.5rem .75rem}.lv-out{margin-left:0;flex-basis:100%}.lv-panel{margin:.5rem}}
+.lv-panel{aspect-ratio:auto;display:block}
+.lv-card{position:relative;min-height:340px;background:#050506 center/cover no-repeat;display:flex;align-items:flex-end}
+.lv-ov{width:100%;padding:1.4rem 1.5rem 1.6rem;background:linear-gradient(0deg,rgba(5,5,6,.96) 30%,rgba(5,5,6,.55) 75%,rgba(5,5,6,.2));display:grid;gap:.5rem}
+.lv-ov h3{margin:0;font-size:1.6rem;line-height:1.15}.lv-t{margin:0;color:#ff5a6e;font-weight:700;font-variant-numeric:tabular-nums}
+.lv-d{margin:0;color:#d6d7da;max-width:62ch;line-height:1.5;font-size:.95rem}
+.lv-acts{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:.4rem}
+.lv-acts .lv-load{display:flex;align-items:center;gap:.6rem;background:var(--r);border-radius:8px;padding:.6rem 1rem}
+.lv-acts .lv-play{width:22px;height:22px;background:#fff;clip-path:polygon(20% 10%,90% 50%,20% 90%);border-radius:0}
+.lv-acts .lv-play:after{display:none}.lv-acts .lv-out{margin-left:0}
+.lv-note{color:#8b8d92;font-size:.75rem}
+.lv-cr{position:absolute;top:.5rem;right:.6rem;font-size:.68rem;color:#ddd;background:rgba(0,0,0,.55);padding:.15rem .45rem;border-radius:4px}
+.lv-panel.lv-loaded{display:block}
+@media (min-width:900px){.lv-card{min-height:420px}}
+@media (max-width:600px){.lv-ov{padding:1rem}.lv-ov h3{font-size:1.25rem}.lv-d{font-size:.88rem}.lv-card{min-height:440px}.lv-cr{left:.6rem;right:auto}}
+.lv-card{display:grid;grid-template-columns:42% 1fr;min-height:0;align-items:stretch}
+.lv-img{position:relative;background:#050506 center/cover no-repeat;min-height:360px}
+.lv-img:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,5,6,0) 60%,rgba(5,5,6,.9))}
+.lv-ov{background:#050506;align-content:center}
+.lv-cr{z-index:1;left:.6rem;right:auto;top:auto;bottom:.5rem}
+@media (max-width:700px){.lv-card{grid-template-columns:1fr}.lv-img{min-height:0;aspect-ratio:16/9}.lv-img:after{background:linear-gradient(0deg,rgba(5,5,6,.9),rgba(5,5,6,0) 45%)}.lv-cr{bottom:auto;top:.5rem}}
