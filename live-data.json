@@ -1,10 +1,78 @@
 {
-  "updated": "2026-10-13T10:45:00+01:00",
-  "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. timeTbc/net mark unconfirmed times.",
-  "events": [
-    {"id":"f9-ussf481","title":"Falcon 9 · USSF-481","page":"starship","start":"2026-10-15T19:44:00-04:00","end":"2026-10-15T23:44:00-04:00","status":"scheduled","provider":"link","embedId":"","postUrl":"","fallbackUrl":"https://www.spacex.com/launches/ussf481","fallbackLabel":"Watch on spacex.com","source":"https://www.spacex.com/launches/ussf481"},
-    {"id":"tesla-roadster-demo","title":"Tesla Roadster demo","page":"tesla","start":"2026-10-15T00:00:00-07:00","end":"2026-10-15T23:59:00-07:00","timeTbc":true,"status":"scheduled","provider":"x","embedId":"","postUrl":"","fallbackUrl":"https://x.com/Tesla","fallbackLabel":"Watch on X","source":"https://x.com/Tesla"},
-    {"id":"tesla-q3-2026-earnings","title":"Tesla Q3 2026 earnings call","page":"tesla","start":"2026-10-21T16:30:00-05:00","end":"2026-10-21T18:00:00-05:00","status":"scheduled","provider":"link","embedId":"","postUrl":"","fallbackUrl":"https://ir.tesla.com","fallbackLabel":"Webcast on ir.tesla.com","source":"https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm"},
-    {"id":"starship-flight-15","title":"Starship Flight 15","page":"starship","start":"2026-11-08T00:00:00-06:00","end":"2026-11-08T23:59:00-06:00","net":true,"status":"scheduled","provider":"x","embedId":"","postUrl":"","fallbackUrl":"https://x.com/SpaceX","fallbackLabel":"Watch on X","source":"https://www.spacex.com/launches/"}
-  ]
+ "updated": "2026-10-13T10:45:00+01:00",
+ "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. timeTbc/net mark unconfirmed times.",
+ "events": [
+  {
+   "id": "f9-crs35",
+   "title": "Falcon 9 · CRS-35 to the ISS",
+   "page": "starship",
+   "start": "2026-10-13T06:33:00-04:00",
+   "end": "2026-10-13T07:45:00-04:00",
+   "status": "live",
+   "provider": "x",
+   "embedId": "",
+   "postUrl": "https://x.com/SpaceX/status/2109941954326725035",
+   "fallbackUrl": "https://x.com/SpaceX",
+   "fallbackLabel": "Watch on X",
+   "source": "https://x.com/SpaceX/status/2109941954326725035"
+  },
+  {
+   "id": "f9-ussf481",
+   "title": "Falcon 9 · USSF-481",
+   "page": "starship",
+   "start": "2026-10-15T19:44:00-04:00",
+   "end": "2026-10-15T23:44:00-04:00",
+   "status": "scheduled",
+   "provider": "link",
+   "embedId": "",
+   "postUrl": "",
+   "fallbackUrl": "https://www.spacex.com/launches/ussf481",
+   "fallbackLabel": "Watch on spacex.com",
+   "source": "https://www.spacex.com/launches/ussf481"
+  },
+  {
+   "id": "tesla-roadster-demo",
+   "title": "Tesla Roadster demo",
+   "page": "tesla",
+   "start": "2026-10-15T00:00:00-07:00",
+   "end": "2026-10-15T23:59:00-07:00",
+   "timeTbc": true,
+   "status": "scheduled",
+   "provider": "x",
+   "embedId": "",
+   "postUrl": "",
+   "fallbackUrl": "https://x.com/Tesla",
+   "fallbackLabel": "Watch on X",
+   "source": "https://x.com/Tesla"
+  },
+  {
+   "id": "tesla-q3-2026-earnings",
+   "title": "Tesla Q3 2026 earnings call",
+   "page": "tesla",
+   "start": "2026-10-21T16:30:00-05:00",
+   "end": "2026-10-21T18:00:00-05:00",
+   "status": "scheduled",
+   "provider": "link",
+   "embedId": "",
+   "postUrl": "",
+   "fallbackUrl": "https://ir.tesla.com",
+   "fallbackLabel": "Webcast on ir.tesla.com",
+   "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm"
+  },
+  {
+   "id": "starship-flight-15",
+   "title": "Starship Flight 15",
+   "page": "starship",
+   "start": "2026-11-08T00:00:00-06:00",
+   "end": "2026-11-08T23:59:00-06:00",
+   "net": true,
+   "status": "scheduled",
+   "provider": "x",
+   "embedId": "",
+   "postUrl": "",
+   "fallbackUrl": "https://x.com/SpaceX",
+   "fallbackLabel": "Watch on X",
+   "source": "https://www.spacex.com/launches/"
+  }
+ ]
 }
