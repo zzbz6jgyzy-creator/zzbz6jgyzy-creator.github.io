@@ -1,8 +1,8 @@
 /* Adapted from 21st.dev, MIT: Border Beam & Magic Card (Magic UI, dillionverma), NumberFlow (barvian). Vanilla CSS port. */
 @property --bb-a{syntax:"<angle>";inherits:false;initial-value:0deg}
 /* 1. Border Beam on the live-stream card */
-.lw::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;z-index:3;
-  background:conic-gradient(from var(--bb-a),transparent 0deg,transparent 280deg,rgba(255,90,110,.2) 300deg,#ff2a44 340deg,#fff 352deg,transparent 360deg);
+.lw::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:2.5px;pointer-events:none;z-index:3;
+  background:conic-gradient(from var(--bb-a),transparent 0deg,transparent 220deg,rgba(255,90,110,.35) 280deg,#ff2a44 340deg,#fff 352deg,transparent 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
   animation:bbSpin 5s linear infinite}
 @keyframes bbSpin{to{--bb-a:360deg}}
