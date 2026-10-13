@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T16:41:10Z",
+  "updated": "2026-10-13T17:04:28Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3372,
@@ -65,9 +65,9 @@
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 153,
+      "count": 154,
       "fleet": 3372,
-      "percent": 4.5,
+      "percent": 4.6,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -123,6 +123,7 @@
         "HU",
         "CZ",
         "BG",
+        "BE",
         "UA",
         "QA",
         "LT",
@@ -155,6 +156,7 @@
         "HU": 2,
         "CZ": 2,
         "BG": 1,
+        "BE": 1,
         "UA": 1,
         "QA": 1,
         "LT": 1,
@@ -169,9 +171,9 @@
         "SE": 1,
         "SK": 1
       },
-      "pending": 95,
+      "pending": 94,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-13T16:18:56Z"
+      "lastSeen": "2026-10-13T16:41:13Z"
     },
     {
       "id": "2026.33.5",
