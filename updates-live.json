@@ -1,16 +1,16 @@
 {
-  "updated": "2026-10-13T00:01:13Z",
+  "updated": "2026-10-13T00:51:43Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fleet": 3359,
+  "fleet": 3361,
   "latest": "2026.38.5",
   "versions": [
     {
       "id": "2026.38.5",
       "date": "2026-10-10",
-      "count": 19,
-      "fleet": 3359,
-      "percent": 0.6,
+      "count": 25,
+      "fleet": 3361,
+      "percent": 0.7,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -53,18 +53,18 @@
         "MX"
       ],
       "countryCounts": {
-        "US": 18,
+        "US": 24,
         "MX": 1
       },
-      "pending": 24,
+      "pending": 22,
       "firstSeen": "2026-10-10T22:26:31Z",
-      "lastSeen": "2026-10-12T23:54:29Z"
+      "lastSeen": "2026-10-13T00:44:37Z"
     },
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 103,
-      "fleet": 3359,
+      "count": 105,
+      "fleet": 3361,
       "percent": 3.1,
       "fsd": null,
       "fsdHw3": null,
@@ -104,8 +104,8 @@
         }
       ],
       "countries": [
-        "GB",
         "US",
+        "GB",
         "IT",
         "DE",
         "NL",
@@ -131,8 +131,8 @@
         "TR"
       ],
       "countryCounts": {
+        "US": 19,
         "GB": 18,
-        "US": 17,
         "IT": 10,
         "DE": 7,
         "NL": 7,
@@ -157,15 +157,15 @@
         "MA": 1,
         "TR": 1
       },
-      "pending": 73,
+      "pending": 99,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-12T18:34:09Z"
+      "lastSeen": "2026-10-13T00:36:31Z"
     },
     {
       "id": "2026.33.5",
       "date": "2026-10-07",
       "count": 102,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 3.0,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -220,7 +220,7 @@
       "id": "2026.38.3",
       "date": "2026-10-06",
       "count": 7,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": null,
@@ -279,7 +279,7 @@
       "id": "2026.33.100",
       "date": "2026-10-06",
       "count": 38,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
@@ -334,7 +334,7 @@
       "id": "2026.27.6.15",
       "date": "2026-10-05",
       "count": 3,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
@@ -387,7 +387,7 @@
       "id": "2026.38",
       "date": "2026-09-30",
       "count": 68,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 2.0,
       "fsd": null,
       "fsdHw3": null,
@@ -462,7 +462,7 @@
         "NO": 1,
         "TR": 1
       },
-      "pending": 2,
+      "pending": 1,
       "firstSeen": "2026-09-30T05:51:14Z",
       "lastSeen": "2026-10-10T07:30:07Z"
     },
@@ -470,7 +470,7 @@
       "id": "2026.27.6.5",
       "date": "2026-09-24",
       "count": 1,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 0.0,
       "fsd": null,
       "fsdHw3": null,
@@ -522,9 +522,9 @@
     {
       "id": "2026.32.7",
       "date": "2026-09-23",
-      "count": 361,
-      "fleet": 3359,
-      "percent": 10.7,
+      "count": 362,
+      "fleet": 3361,
+      "percent": 10.8,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -603,7 +603,7 @@
         "TR"
       ],
       "countryCounts": {
-        "US": 137,
+        "US": 138,
         "GB": 40,
         "DE": 27,
         "FR": 19,
@@ -642,15 +642,15 @@
         "AE": 1,
         "TR": 1
       },
-      "pending": 20,
+      "pending": 19,
       "firstSeen": "2026-09-23T02:08:40Z",
-      "lastSeen": "2026-10-12T11:01:41Z"
+      "lastSeen": "2026-10-13T00:14:08Z"
     },
     {
       "id": "2026.27.11",
       "date": "2026-09-23",
       "count": 653,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 19.4,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -709,7 +709,7 @@
       "id": "2026.27.10",
       "date": "2026-09-19",
       "count": 170,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 5.1,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -766,7 +766,7 @@
       "id": "2026.28.5",
       "date": "2026-09-16",
       "count": 5,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
@@ -819,7 +819,7 @@
       "id": "2026.27.300",
       "date": "2026-09-15",
       "count": 38,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
@@ -884,7 +884,7 @@
       "id": "2026.32.3",
       "date": "2026-09-09",
       "count": 374,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 11.1,
       "fsd": null,
       "fsdHw3": null,
@@ -1013,7 +1013,7 @@
       "id": "2026.27.200",
       "date": "2026-09-01",
       "count": 32,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 1.0,
       "fsd": null,
       "fsdHw3": null,
@@ -1076,7 +1076,7 @@
       "id": "2026.27.100.1",
       "date": "2026-08-24",
       "count": 31,
-      "fleet": 3359,
+      "fleet": 3361,
       "percent": 0.9,
       "fsd": null,
       "fsdHw3": null,
