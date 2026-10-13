@@ -8,12 +8,16 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   function esc(s) { return String(s || '').replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function safeUrl(u) { return /^https:\/\//.test(u || '') ? u : '#'; }
+  function tzName(d) { // visitor's own zone, short form (BST, EDT, CET…)
+    try { var p = new Intl.DateTimeFormat(undefined, {timeZoneName:'short'}).formatToParts(d).filter(function (x) { return x.type === 'timeZoneName'; })[0]; return p ? p.value : ''; } catch (err) { return ''; }
+  }
   function when(e) {
-    var d = new Date(e.start), o = {weekday:'short', day:'numeric', month:'short', timeZone:'Europe/Dublin'};
-    var s = d.toLocaleDateString('en-IE', o);
+    var d = new Date(e.start), o = {weekday:'short', day:'numeric', month:'short'};
+    if (e.timeTbc || e.net) o.timeZone = 'America/Los_Angeles'; // date-only events: keep the event's own calendar day
+    var s = new Intl.DateTimeFormat(undefined, o).format(d);
     if (e.net) return 'NET ' + s;
     if (e.timeTbc) return s + ' · time TBC';
-    return s + ' · ' + d.toLocaleTimeString('en-IE', {hour:'2-digit', minute:'2-digit', timeZone:'Europe/Dublin'}) + ' Irish time';
+    return s + ' · ' + new Intl.DateTimeFormat(undefined, {hour:'2-digit', minute:'2-digit'}).format(d) + ' ' + tzName(d);
   }
   function cd(ms) { var h = Math.floor(ms / H), m = Math.floor(ms % H / 6e4); return (h ? h + 'h ' : '') + m + 'm'; }
   function player(e) {
@@ -31,7 +35,7 @@
     if (!live) {
       var timed = !e.net, dayOnly = !!e.timeTbc;
       slot.innerHTML = '<div class="lv-next"><span class="lv-chip">Next live</span><b>' + esc(e.title) + '</b>' +
-        '<span class="lv-when">' + esc(when(e).replace(' Irish time', '').replace(' · time TBC', '')) + '<span class="lv-tz">' + (e.timeTbc ? 'Time TBC' : e.net ? 'NET' : 'Irish time') + '</span></span>' + (timed ? '<span class="lv-cd" aria-live="off"></span>' : '') +
+        '<span class="lv-when">' + esc(e.timeTbc || e.net ? when(e).replace(' · time TBC', '').replace(/^NET /, '') : when(e).slice(0, -(tzName(new Date(e.start)).length + 1))) + '<span class="lv-tz">' + esc(e.timeTbc ? 'Time TBC' : e.net ? 'NET' : tzName(new Date(e.start))) + '</span></span>' + (timed ? '<span class="lv-cd" aria-live="off"></span>' : '') +
         '<a class="lv-out lv-cal" href="/calendar.html">Calendar \u2192</a></div>';
       var c = slot.querySelector('.lv-cd'); if (c && dayOnly && new Date(e.start) <= Date.now()) { c.textContent = 'today'; c = null; }
       if (c) { var t1 = function () { var ms = new Date(e.start) - Date.now(), sec = Math.max(0, Math.floor(ms / 1e3)), dd = Math.floor(sec / 86400);

@@ -263,6 +263,7 @@
   }
 
   let cdTimer = 0;
+  const tzShort = (d) => { try { return (new Intl.DateTimeFormat(undefined, { timeZoneName: "short" }).formatToParts(d).find((x) => x.type === "timeZoneName") || {}).value || ""; } catch { return ""; } };
   function renderCountdown(root, upcoming) {
     const now = Date.now();
     const feat = upcoming.filter((e) => e.featured && parseStart(e.end || e.start) > now);
@@ -283,9 +284,9 @@
       const dayOnly = event.precision === "day";
       const when = el("p", "cal-next-when");
       when.append(el("span", "cal-when-txt", dayOnly
-        ? d.toLocaleDateString("en-IE", { weekday: "short", day: "numeric", month: "short", timeZone: "America/Los_Angeles" })
-        : d.toLocaleString("en-IE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Dublin" }).replace(" at ", " · ")),
-        el("span", "cal-tz", dayOnly ? "Time TBC" : "Irish time"));
+        ? new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short", timeZone: "America/Los_Angeles" }).format(d)
+        : new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short" }).format(d) + " · " + new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" }).format(d)),
+        el("span", "cal-tz", dayOnly ? "Time TBC" : tzShort(d)));
       card.append(when);
       if (event.featured && event.note) card.append(el("p", "cal-feat-note", event.note));
       const clock = el("div", "cal-next-clock");
