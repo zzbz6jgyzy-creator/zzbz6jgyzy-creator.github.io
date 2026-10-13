@@ -56,3 +56,41 @@
 .lv-next .lv-when{color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:.4rem}
 .lv-tz{font:700 .6rem/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#ff5a6e;border:1px solid rgba(227,25,55,.6);border-radius:4px;padding:.2rem .35rem}
 .lv-next .lv-cd{background:#07070a;border:1px solid rgba(227,25,55,.4);border-radius:6px;padding:.2rem .45rem;font-weight:700}
+
+/* ===== 2026-10 redesign: "Watch live" card ===== */
+.lw{position:relative;border-radius:14px;overflow:hidden;text-align:left;background:linear-gradient(160deg,#1a0509 0%,#0b0b0d 55%);border:1px solid rgba(227,25,55,.55);box-shadow:0 0 0 1px rgba(227,25,55,.15),0 10px 40px -12px rgba(227,25,55,.45);animation:lwGlow 3.2s ease-in-out infinite}
+@keyframes lwGlow{50%{box-shadow:0 0 0 1px rgba(227,25,55,.3),0 10px 50px -8px rgba(227,25,55,.6)}}
+.lw-head{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;padding:.5rem .9rem;background:rgba(227,25,55,.14);border-bottom:1px solid rgba(227,25,55,.35);font:800 .72rem/1.2 inherit;letter-spacing:.18em;text-transform:uppercase;color:#ff5a6e}
+.lw-host{margin-left:auto;color:#d9dade;font-weight:600;letter-spacing:.06em;text-transform:none;font-size:.74rem}
+.lw-dot{width:9px;height:9px;border-radius:50%;background:var(--r);animation:lvP 1.6s infinite;flex:none}
+.lw-body{display:grid;grid-template-columns:200px 1fr;gap:1rem;padding:1rem}
+.lw-thumb{border-radius:10px;background:#050506 center/cover no-repeat;min-height:150px;border:1px solid rgba(255,255,255,.08)}
+.lw-info{display:grid;gap:.55rem;align-content:start;min-width:0}
+.lw-title{margin:0;font-size:1.35rem;line-height:1.2;font-weight:800;color:#fff}
+.lw-when{margin:0;color:#fff;font-weight:600;display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;font-size:.95rem}
+.lw-cd{display:flex;gap:.45rem;align-items:flex-end;flex-wrap:wrap}
+.lw-tile{display:grid;justify-items:center;min-width:3.6rem;padding:.4rem .5rem .35rem;background:#000;border:1px solid rgba(227,25,55,.5);border-radius:8px}
+.lw-tile b{font:700 1.65rem/1 "IBM Plex Mono",ui-monospace,monospace;color:#fff;font-variant-numeric:tabular-nums}
+.lw-tile i{font:700 .6rem/1.4 inherit;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:#ff5a6e;margin-top:.2rem}
+.lw-note{color:#a7a9ae;font-size:.72rem}.lw-today{font-weight:800;color:#fff;font-size:1.2rem}
+.lw-acts{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;margin-top:.2rem}
+.lw-btn{display:inline-flex;align-items:center;gap:.55rem;background:var(--r);color:#fff;border:0;border-radius:9px;padding:.7rem 1.15rem;font:inherit;font-weight:800;font-size:.95rem;text-decoration:none;cursor:pointer;box-shadow:0 6px 20px -6px rgba(227,25,55,.8)}
+.lw-btn:hover{filter:brightness(1.1)}.lw-btn-soft{background:rgba(227,25,55,.9)}
+.lw-play{width:0;height:0;border:7px solid transparent;border-left:11px solid #fff;border-right:0}
+.lw-cal{background:none;border:0;padding:0;font:inherit;font-size:.85rem;color:#c9cace;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.lw-cr{color:#7d7f85;font-size:.66rem}
+.lw-live{background:linear-gradient(160deg,#5a0715 0%,#1c0408 60%);border-color:var(--r);animation:lwGlowL 1.8s ease-in-out infinite}
+.lw-live .lw-head{background:var(--r);color:#fff;border-bottom-color:transparent}
+.lw-live .lw-head .lw-dot{background:#fff;animation:lwPw 1.4s infinite}.lw-live .lw-host{color:#fff}
+.lw-live .lw-btn{background:#fff;color:#c4102b;box-shadow:0 6px 24px -6px rgba(255,255,255,.5)}.lw-live .lw-play{border-left-color:#c4102b}
+@keyframes lwGlowL{50%{box-shadow:0 0 0 2px rgba(227,25,55,.6),0 12px 60px -6px rgba(227,25,55,.85)}}
+@keyframes lwPw{0%{box-shadow:0 0 0 0 rgba(255,255,255,.8)}70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.lv-still,.lv-still .lw-dot{animation:none!important}
+@media (prefers-reduced-motion:reduce){.lw,.lw-dot{animation:none!important}}
+.lv-inhero .lv-panel{margin-top:.6rem}
+@media (max-width:600px){
+ .lw-body{grid-template-columns:1fr;padding:.8rem;gap:.75rem}.lw-thumb{min-height:0;aspect-ratio:16/7}
+ .lw-head{padding:.45rem .75rem;font-size:.66rem}.lw-host{margin-left:0;flex-basis:100%;font-size:.7rem}
+ .lw-title{font-size:1.15rem}.lw-tile{min-width:0;flex:1}.lw-tile b{font-size:1.45rem}.lw-btn{flex:1;justify-content:center}
+}
+@media (min-width:1800px){.lv-slot-home{max-width:820px}.lw-body{grid-template-columns:260px 1fr}}

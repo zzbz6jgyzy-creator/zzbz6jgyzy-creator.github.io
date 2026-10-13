@@ -32,31 +32,45 @@
   }
   function render(slot, e, live, collapsed) {
     var link = '<a class="lv-out" href="' + esc(safeUrl(e.fallbackUrl)) + '" target="_blank" rel="noopener">' + esc(e.fallbackLabel || 'Watch') + ' \u2197</a>';
+    var canEmbed = e.provider === 'youtube' || e.provider === 'x';
+    var tz = tzName(new Date(e.start));
+    var dateTxt = e.timeTbc || e.net ? when(e).replace(' · time TBC', '').replace(/^NET /, '') : when(e).slice(0, -(tz.length + 1));
+    var chip = e.timeTbc ? 'Time TBC' : e.net ? 'NET' : tz;
+    var thumb = e.image ? '<div class="lw-thumb" style="background-image:url(\'' + esc(e.image) + '\')" role="img" aria-label="' + esc(e.title) + '"></div>' : '';
+    var credit = e.image && e.imageCredit ? '<small class="lw-cr">' + esc(e.imageCredit) + '</small>' : '';
+    var head = function (txt) { return '<div class="lw-head"><span class="lw-dot"></span><span>' + txt + '</span><span class="lw-host">' + (canEmbed ? 'Streamed here on Supercharged Daily' : 'Direct link to the official stream') + '</span></div>'; };
+    var meta = '<p class="lw-when">' + esc(dateTxt) + ' <span class="lv-tz">' + esc(chip) + '</span></p>';
     if (!live) {
       var timed = !e.net, dayOnly = !!e.timeTbc;
-      slot.innerHTML = '<div class="lv-next"><span class="lv-chip">Next live</span><b>' + esc(e.title) + '</b>' +
-        '<span class="lv-when">' + esc(e.timeTbc || e.net ? when(e).replace(' · time TBC', '').replace(/^NET /, '') : when(e).slice(0, -(tzName(new Date(e.start)).length + 1))) + '<span class="lv-tz">' + esc(e.timeTbc ? 'Time TBC' : e.net ? 'NET' : tzName(new Date(e.start))) + '</span></span>' + (timed ? '<span class="lv-cd" aria-live="off"></span>' : '') +
-        '<a class="lv-out lv-cal" href="/calendar.html">Calendar \u2192</a></div>';
-      var c = slot.querySelector('.lv-cd'); if (c && dayOnly && new Date(e.start) <= Date.now()) { c.textContent = 'today'; c = null; }
-      if (c) { var t1 = function () { var ms = new Date(e.start) - Date.now(), sec = Math.max(0, Math.floor(ms / 1e3)), dd = Math.floor(sec / 86400);
-        c.textContent = 'in ' + (dd ? dd + 'd ' : '') + Math.floor(sec % 86400 / 3600) + 'h ' + String(Math.floor(sec % 3600 / 60)).padStart(2, '0') + 'm' + (dd ? '' : ' ' + String(sec % 60).padStart(2, '0') + 's') + (dayOnly ? ' (to the day)' : ''); };
+      slot.innerHTML = '<div class="lw' + (reduce ? ' lv-still' : '') + '">' + head('Next live stream') + '<div class="lw-body">' + thumb +
+        '<div class="lw-info"><h3 class="lw-title">' + esc(e.title) + '</h3>' + meta +
+        (timed ? '<div class="lw-cd" aria-live="off"></div>' : '') +
+        '<div class="lw-acts"><a class="lw-btn lw-btn-soft" href="' + (canEmbed ? '/calendar.html' : esc(safeUrl(e.fallbackUrl))) + '"' + (canEmbed ? '' : ' target="_blank" rel="noopener"') + '><span class="lw-play"></span>' + (canEmbed ? 'Watch here when live' : esc(e.fallbackLabel || 'Stream link')) + '</a>' +
+        '<a class="lw-cal" href="/calendar.html">All events \u2192</a></div>' + credit + '</div></div></div>';
+      var c = slot.querySelector('.lw-cd'); if (c && dayOnly && new Date(e.start) <= Date.now()) { c.innerHTML = '<span class="lw-today">Today</span>'; c = null; }
+      if (c) { var tile = function (n, l) { return '<span class="lw-tile"><b>' + n + '</b><i>' + l + '</i></span>'; };
+        var t1 = function () { var sec = Math.max(0, Math.floor((new Date(e.start) - Date.now()) / 1e3)), dd = Math.floor(sec / 86400), p2 = function (n) { return String(n).padStart(2, '0'); };
+          c.innerHTML = tile(dd, dd === 1 ? 'day' : 'days') + tile(p2(Math.floor(sec % 86400 / 3600)), 'hrs') + tile(p2(Math.floor(sec % 3600 / 60)), 'mins') + (dd ? '' : tile(p2(sec % 60), 'secs')) + (dayOnly ? '<small class="lw-note">to the day</small>' : ''); };
         t1(); setInterval(t1, 1e3); }
       return;
     }
-    var canEmbed = e.provider === 'youtube' || e.provider === 'x';
     var info = '<div class="lv-card">' + (e.image ? '<div class="lv-img" style="background-image:url(\'' + esc(e.image) + '\')">' + (e.imageCredit ? '<span class="lv-cr">' + esc(e.imageCredit) + '</span>' : '') + '</div>' : '') + '<div class="lv-ov">' +
       '<span class="lv-tag">' + (e.provider === 'x' ? 'ON X' : e.provider === 'youtube' ? 'ON YOUTUBE' : 'WEBCAST') + '</span><h3>' + esc(e.title) + '</h3>' +
       '<p class="lv-t">' + esc(when(e)) + ' · <span class="lv-cdl"></span></p>' + (e.description ? '<p class="lv-d">' + esc(e.description) + '</p>' : '') +
       '<div class="lv-acts">' + (canEmbed ? '<button class="lv-load" type="button"><span class="lv-play"></span>Load stream</button>' : '') + link + '</div>' +
       (canEmbed ? '<small class="lv-note">Loads ' + (e.provider === 'youtube' ? 'YouTube' : 'X') + ' content, which may set cookies</small>' : '') +
       '</div></div>';
-    slot.innerHTML = '<div class="lv-bar' + (reduce ? ' lv-still' : '') + '"><span class="lv-dot"></span><span class="lv-tag">LIVE NOW</span><b>' + esc(e.title) + '</b>' +
-      '<button class="lv-open" type="button" aria-expanded="' + !collapsed + '">' + (collapsed ? 'Mission info' : 'Hide') + '</button>' + link + '</div><div class="lv-panel"' + (collapsed ? ' hidden' : '') + '>' + info + '</div>';
+    slot.innerHTML = '<div class="lw lw-live' + (reduce ? ' lv-still' : '') + '">' + head('Live now') + '<div class="lw-body">' + thumb +
+      '<div class="lw-info"><h3 class="lw-title">' + esc(e.title) + '</h3>' + meta +
+      '<div class="lw-acts">' + (canEmbed ? '<button class="lw-btn lw-watch" type="button"><span class="lw-play"></span>Watch live now</button>' : '<a class="lw-btn" href="' + esc(safeUrl(e.fallbackUrl)) + '" target="_blank" rel="noopener"><span class="lw-play"></span>Watch live now \u2197</a>') +
+      '<button class="lv-open lw-cal" type="button" aria-expanded="' + !collapsed + '">' + (collapsed ? 'Mission info' : 'Hide') + '</button></div>' + credit + '</div></div></div><div class="lv-panel"' + (collapsed ? ' hidden' : '') + '>' + info + '</div>';
     var tick = function () { var c = slot.querySelector('.lv-cdl'); if (!c) return; var ms = new Date(e.start) - Date.now();
       c.textContent = ms > 0 ? 'T−' + cd(ms) : 'underway'; }; tick(); setInterval(tick, 3e4);
     var open = slot.querySelector('.lv-open'), panel = slot.querySelector('.lv-panel');
     if (open) open.onclick = function () { var x = panel.hidden; panel.hidden = !x; open.setAttribute('aria-expanded', x); open.textContent = x ? 'Hide' : (collapsed ? 'Mission info' : 'Show'); };
-    var ld = panel && panel.querySelector('.lv-load'); if (ld) ld.onclick = function () { panel.innerHTML = player(e); panel.classList.add('lv-loaded'); };
+    var load = function () { panel.hidden = false; panel.innerHTML = player(e); panel.classList.add('lv-loaded'); if (open) open.remove(); panel.scrollIntoView({block: 'nearest', behavior: reduce ? 'auto' : 'smooth'}); };
+    var ld = panel && panel.querySelector('.lv-load'); if (ld) ld.onclick = load;
+    var wb = slot.querySelector('.lw-watch'); if (wb) wb.onclick = load;
   }
   function run() {
   fetch(q.get('livedata') || '/live-data.json?t=' + Math.floor(Date.now() / 6e4), {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
