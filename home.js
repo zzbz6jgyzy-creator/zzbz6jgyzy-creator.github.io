@@ -43,14 +43,23 @@
       const seen = new Set();
       const items = ((d && d.items) || []).filter((it) => { const k = clean(it.title).toLowerCase(); if (!k || seen.has(k)) return false; seen.add(k); return true; });
       if (!items.length) return;
+      // Lead with the newest of the top 5 that has its own image, so the picture matches the story
+      const lead = items.slice(0, 5).findIndex((it) => /^https:\/\//.test(it.image || ""));
+      if (lead > 0) items.unshift(items.splice(lead, 1)[0]);
       const top = items[0];
       card.href = top.url; card.target = "_blank"; card.rel = "noopener noreferrer";
       card.querySelector("[data-top-tag]").textContent = label[top.topic] || "News";
       card.querySelector("[data-top-title]").textContent = clean(top.title);
       card.querySelector("[data-top-desc]").textContent = top.snippet || "The story everyone’s talking about today. Read the full report at the source.";
       card.querySelector("[data-top-source]").textContent = top.source || "News";
-      const img = { tesla: "/assets/dispatch/cybercab-austin-poster.jpg", spacex: "/assets/ship40.jpg", grok: "/assets/starmind.jpg" }[top.topic];
-      if (img) card.querySelector("[data-top-img]").src = img;
+      // Story's own image (from news-data.json, refreshed by scripts/snapshot-news.py); topic photo if none or it fails
+      const fallback = { tesla: "/assets/dispatch/cybercab-austin-poster.jpg", spacex: "/assets/ship40.jpg", grok: "/assets/starmind.jpg", xai: "/assets/starmind.jpg", x: "/assets/starmind.jpg" }[top.topic] || "/assets/dispatch/cybercab-austin-poster.jpg";
+      const own = /^https:\/\//.test(top.image || "") ? top.image : "";
+      const pic = card.querySelector("[data-top-img]");
+      pic.onerror = () => { pic.onerror = null; pic.src = fallback; };
+      pic.referrerPolicy = "no-referrer";
+      pic.src = own || fallback;
+      pic.alt = clean(top.title);
       if (more) {
         more.replaceChildren(...items.slice(1, 4).map((it) => {
           const a = document.createElement("a");
