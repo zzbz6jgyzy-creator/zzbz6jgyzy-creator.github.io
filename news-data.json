@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T03:56:28Z",
+  "updated": "2026-10-13T04:27:17Z",
   "items": [
     {
       "id": "15bd568e84a3",
@@ -8,7 +8,8 @@
       "source": "KRON4",
       "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPdmc4SlZKMzAzRTU2Um9TdzRQalBxUEdRNTQ1bmpURUpEdnhvZmNYU2VGbnpYVDFUcjVTdkk1dG5PQlREZ2NRcVJpRmw4MVE0T3RZUy1FM1hKZnFNV2Q0Sml3blRRRV9vdURsdTNsTW5XYWtvUTl5SldGVktoYl93TG1RdVVpaU9aZllz0gGQAUFVX3lxTFBGcGpEMzdCX0cwX0s4bU1rZjZQRFcwV3dxY1ZQTVRlZkp4NmkwSEFHWDRjbjg1SjA5aW1ULTBMaVlyakhTT3FZVjBoalJCaUFXcmRZRVpXSGh2bnV6ay1DQ1AyNk9Sb1RZQUpDb0RqbzktM1RKU0JRSnNpaDZsQVdHOHdaSHNZRlZRdGFseExCcA?oc=5",
       "published": "2026-10-13T03:43:13Z",
-      "snippet": ""
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.hg05KRo_cNMWSs0v6WomKg&pid=News&w=640"
     },
     {
       "id": "b8bc72454280",
@@ -26,8 +27,7 @@
       "source": "SpaceX",
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBiQUk3UGNxTlZuMl92Qml4aU1Ob25ZRU42bEEtTnhuY0dENm1WZVRyQUhRMzFlRTUtV3JPNC02YkE0aWdnVTBWZ3JseFdLUQ?oc=5",
       "published": "2026-10-13T03:01:44Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ezcK0FiOkxKXvYFUKQUQ6g&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "b5e27da8a4f6",
@@ -57,6 +57,15 @@
       "published": "2026-10-13T02:23:39Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.ZOyWAAjOJ3Tp3JKrTqzgMg&pid=News&w=640"
+    },
+    {
+      "id": "72265419ebae",
+      "topic": "grok",
+      "title": "xAI bundles Grok, Cursor and X Premium into one subscription",
+      "source": "Cryptopolitan",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9oWmt4anVHTEhoS3NtcUVMZWhEd0UtQVFsMUlnUXNWcjRjM0dvamZKM1JPSXA2YUtRaUd2ejRqcVhYWnhJaS1kOHd5T1diV2lCdFJ1TDV0ZFJkVlpCRFlzejZlbnIxTEsteTFKTkE2UWJseldVNnFRS0pRMzBwUQ?oc=5",
+      "published": "2026-10-13T02:20:53Z",
+      "snippet": ""
     },
     {
       "id": "30fbbd4052ad",
@@ -158,8 +167,7 @@
       "source": "Autoblog",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQN0hBTFBEbHhINUFaaERhalBKQjZhRVNSU2ZaTGY1NElWNmlhekFabFJVWF95aHpfREpZODh3SWlUWEVhRC1ENHd2c0syRHpWS1VYa2RFUkF3YVJrQ1RCTXN4WDloclhMWVB2RmwwdEhPVkV1Q2piVDdYeVdYZE8yN3NmNTQ?oc=5",
       "published": "2026-10-12T22:43:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.BuetrQtAt1MdD-6RubdNKg&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "3c54c9ed5b30",
@@ -168,6 +176,15 @@
       "source": "xAI",
       "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1xSHZsR1pnaUw0LXBEbHZkY0owdTZ3N1hsTlQ1MGJ5cm9nYkRCOXgyTkhFUHVmaVphZ1FNU0xfWkFMN29jMnpN?oc=5",
       "published": "2026-10-12T22:41:48Z",
+      "snippet": ""
+    },
+    {
+      "id": "85bd9d6534c7",
+      "topic": "tesla",
+      "title": "TSLA Stock Jumps Nearly 4% — Tesla Integrates Starlink Into Cybercabs But Not For Safety Purposes",
+      "source": "Stocktwits",
+      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNaF9RWkVncTUzc1F0bmNTQUdTaTJfRjhUOVFIWm5vOFE0RHZPSy1BZ2tfQ1BuRXhqMXo0Z09adWNmSVJ1anZCV2RzOXlha184R29OUmtuSzAxSTRYRFRJWWMyMllqNnl4X0VDaFU5Y1lnSEg0a1ZBeFEtaG1OWjRQd0dNd1B2UjFzNnZjOXBLNjFRSUpqU0xRTmZuVzc4SFBLWDF4MDdpNUZ2N3RoZVV4V0Fuem0wVGlyWjQtYnVITXpuQTZoRzNRTFJaLWxIWFhwN1lVOGNkUGszVWZCRVdaWWgzRVNkbjlWSmRCVnYxOA?oc=5",
+      "published": "2026-10-12T21:17:47Z",
       "snippet": ""
     },
     {
@@ -205,8 +222,7 @@
       "source": "Autoblog",
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNVXBuNXNzNFZLcE5uLUNfRmxCUFZxRGNta2hQOWN1QWpFdkdfYloxb1pUdWRsaFpvdEtPQWZRMkE2LU12aldpSzV1X2JEc3pxOTVYZTUwcHhGVTJhbHRwN0x3cUZ1aXdLdDNOakFHRTNnSm1QT21ZdEN4Rk4yM2RBWTBEa2pjRHY0bjRPVzg3ZzhERTYyakNaNw?oc=5",
       "published": "2026-10-12T20:30:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.wZWj8cDuciUC_XsB5YzdSg&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "e9c5ceffabaa",
@@ -228,11 +244,11 @@
       "snippet": ""
     },
     {
-      "id": "933d452e047d",
+      "id": "bf65d9f58689",
       "topic": "grok",
       "title": "xAI launches X subscription to bundle X Premium, Grok, Grok Bot, and Cursor into one package",
       "source": "Cryptopolitan on MSN",
-      "url": "https://www.msn.com/en-us/money/general/xai-launches-x-subscription-to-bundle-x-premium-grok-grok-bot-and-cursor-into-one-package/ar-AA2e6y6V",
+      "url": "https://www.msn.com/en-us/news/other/xai-launches-x-subscription-to-bundle-x-premium-grok-grok-bot-and-cursor-into-one-package/ar-AA2e6y6V",
       "published": "2026-10-12T19:20:53Z",
       "snippet": "xAI has merged Grok, Grok Bot, Cursor and X Premium into single plan termed The X Subscription, priced from a free tier up to $200 a month. The change forces existing SuperGrok, Cursor and X Premium ...",
       "image": "https://www.bing.com/th?id=ONUT.-Syws26cdkxKZk8F2UJwMg&pid=News&w=640"
@@ -254,8 +270,7 @@
       "source": "Electrek",
       "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxORGNWaFJ5UHR0U0VkSHJQXzhrWERVeFphMkF2TDNBZkF6X3ZTOEpOVTFnQzBkV3IzakYzSUEyMFdrOTFOem41am1pV2Z1MS1QU2IzWmh2dXBfdmpOV0FZeTltT21iZ0l3UlBoQkwxUEtkdVVPZHRtVEstLV9TSkd5d3Y0NEU3Nlg4eVpN?oc=5",
       "published": "2026-10-12T18:57:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.5YZQ1hIvsKZt1tFXvCiu7g&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "03b8d552eb36",
@@ -264,8 +279,7 @@
       "source": "Bergen Record",
       "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNZnpMRUNtYl9ET1dPTC1MT1B0RDdkeEI5bW5ETzc1S28tMTRQQWtxN25WaTJKajhqRUdNQ2pHWk9JWHRIRXB2R3p1NnM0YmlTUVBMbGlZSUlYcE9tYzdDQmVPemRCdDVYVy1xaUN0dzBVWUFQSGhvTXd3RVhfbDNiQ0o4NTNta1lvaUdSakxoWUM3alkwY0IyaFNhX0o5bnByU1MzNF9HX1JWWndiNkFya0ZiQXk3SnpleHNfS1Q0TnNRdWV1T0p1eVRRd2Q1bVJ5aWhUdmxROGQ0OG5WcXZKUDFHNA?oc=5",
       "published": "2026-10-12T18:26:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.9IF_7xqcDHMZzTocbMxabg&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "40455b533bee",
@@ -312,8 +326,7 @@
       "source": "NASA Science (.gov)",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNRlpJbG1jcmJoM3FxN3JmaGRpdlhVYWQxN3V3ME5mS0ZGVkZlMG4xbGtaMVBHRTlrclVTRmVSUjZXNlZfdVltcjdxZ2tsa1I0cTh4YVFQOEc2TUtnMG4yR2tvd1UyUGttWHBZMmk2RkpVekY5dUhQdnBIdFBlQ1I1SkMweVZ5aHU4VFQ0QWV0OHY3clBCOFJXS0VZY0E?oc=5",
       "published": "2026-10-12T17:45:27Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ezcK0FiOkxKXvYFUKQUQ6g&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "b59057e530d2",
@@ -333,17 +346,7 @@
       "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNUjk4a3pqVUlyUWJXcEVFeENiOUJyU2Q0T0hKc0VDWVF6dmtsbDVXMW5BYjFlcmVTNmVLTFI1OFVyZVV4ckp3TTNVSUFzTFNzaHJPXzFVNndJbVlnbkdUN2M5R2J1WWg5a0ZEaWZiTVhheTJZY1JZVEpOQ1dJcGRNenF2cGRhdGJsVGJaWDUzTmZEdw?oc=5",
       "published": "2026-10-12T17:27:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Yxgzt2M4Rsd0dIDXFFLBGw&pid=News&w=640"
-    },
-    {
-      "id": "449eb9b55417",
-      "topic": "tesla",
-      "title": "TSLA Stock In Focus As Tesla Reportedly Preps Cybercab Public Launch In Austin This Month",
-      "source": "Stocktwits",
-      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOZDN0cEhPel9qRFp1VDFmQ2FzSm83ZUZvYkRzVFNxSjY0ajhYNDFqZ3RCUUFDWUlkaUJZNjNhOHBkbTZxN2d5RlUyRnZmeGRTUmtJcWtXdmc5STFSYmR5UTVTckZIeXdDOXZLVVBjbjVULTZNTkFSV25QVU9TR3hLQUVHWVg0U0JOTkFCcldYZHNoM0pId3VUeW1ndXhRemI0cGkwbnZTMXZTWUVoTzJDZnYzYmloaFdrYXRDMGt2bGhTMVVxRVdUa2hCbzdpeV9mZV8wNEI2TWhzNV9va0tZOWQzb19hOWVl?oc=5",
-      "published": "2026-10-12T16:38:22Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.oiOJNZUlZOFMbuNPktiVwg&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT._f3Vps0T7R51Pncj7fBBLw&pid=News&w=640"
     },
     {
       "id": "33d092898be5",
@@ -405,16 +408,6 @@
       "image": "https://www.bing.com/th?id=ONUT.uB3d02BGXJv0VYbOwqP8Ig&pid=News&w=640"
     },
     {
-      "id": "c7d11ea41fdb",
-      "topic": "spacex",
-      "title": "Starlink Now Supports Passkeys for Logins",
-      "source": "PCMag",
-      "url": "https://www.pcmag.com/news/starlink-now-supports-passkeys-for-logins",
-      "published": "2026-10-12T14:21:00Z",
-      "snippet": "Starlink is the latest tech platform to adopt passkeys, giving users an easier way to sign in over traditional passwords, which can be stolen or guessed.",
-      "image": "https://www.bing.com/th?id=ONUT.2sBwKSDgOPmv15L7l6Karw&pid=News&w=640"
-    },
-    {
       "id": "8f30e7c2118d",
       "topic": "tesla",
       "title": "How SpaceX’s Spectrum Purchase Brings It Closer to a Tesla Merger",
@@ -434,6 +427,26 @@
       "snippet": ""
     },
     {
+      "id": "3ffe00a022e8",
+      "topic": "tesla",
+      "title": "Tesla robotaxis face NHTSA review over alleged school zone speeding",
+      "source": "Austin American-Statesman on MSN",
+      "url": "https://www.msn.com/en-us/news/other/tesla-robotaxis-face-nhtsa-review-over-alleged-school-zone-speeding/ar-AA2e5CB9",
+      "published": "2026-10-12T12:58:57Z",
+      "snippet": "Federal regulators are reviewing a petition seeking an investigation into Tesla's Model Y and Cybercab robotaxis over allegations they sped through active school zones.",
+      "image": "https://www.bing.com/th?id=ONUT.jBrMF9PAZBtJ5oxiqxaylw&pid=News&w=640"
+    },
+    {
+      "id": "3375c0219df3",
+      "topic": "tesla",
+      "title": "Xpeng’s Tesla FSD rival arrives in Europe for test drives. I tried NGP for 30 minutes in chaotic Paris traffic",
+      "source": "CarNewsChina.com",
+      "url": "https://carnewschina.com/2026/10/12/xpengs-tesla-fsd-rival-arrives-in-europe-for-test-drives-i-tried-ngp-for-30-minutes-in-chaotic-paris-traffic/",
+      "published": "2026-10-12T12:58:00Z",
+      "snippet": "Tesla and Xpeng were the only two of 60 automakers to offer test drives on the chaotic streets of Paris at the 2026 Paris Motor Show (PMS). As I tried Xpeng’s NGP VLA 2.0 in April in Beijing, I was ...",
+      "image": "https://www.bing.com/th?id=ONUT.tK6tNDkC297R0OKV5WznSA&pid=News&w=640"
+    },
+    {
       "id": "7549effa63b1",
       "topic": "grok",
       "title": "This Grok portfolio just destroyed the S&P 500",
@@ -443,33 +456,14 @@
       "snippet": ""
     },
     {
-      "id": "d22c1a03f9ea",
-      "topic": "spacex",
-      "title": "T-Mobile Rebounds 3% After Record Drop on Starlink Spectrum Move; SpaceX Ticks Up, Verizon Edges Higher",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/10/12/t-mobile-rebounds-3-after-record-drop-on-starlink-spectrum-move-spacex-ticks-up-verizon-edges-higher/",
-      "published": "2026-10-12T11:50:00Z",
-      "snippet": "T-Mobile (NASDAQ:TMUS | TMUS Price Prediction) stock is up 3% to $152.65 in afternoon trading, recovering part of the worst one-day loss in its history as a public company. Meanwhile, Verizon (NYSE:VZ ...",
-      "image": "https://www.bing.com/th?id=ONUT.2Uhvp5u4a813Q_UGWNyb9Q&pid=News&w=640"
-    },
-    {
       "id": "148defa37073",
       "topic": "spacex",
       "title": "SpaceX stock poised for a catalyst-fueled 2027",
       "source": "Yahoo Finance",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNVmEwUzROeWkwQ05IUUdnT2R0MWtLcE84NzhmM0xreFByVzM3VHo4ZXNNU3A0a0RITThiSnd5ZmRxdFpodXkxZG5iQlRrOXItRWMxTTNEZTF5RFdQQnMtbDhLZnpvN0F2OWxrUnZobkVaNm1Xd09aNEhseUgxWFFqQUJzVUJOSWJhWlZVX1F4OXBGNExjcGM2c1NzWTFVUnBzcHRHU2xqTGJ0Ri1ScXhZ?oc=5",
       "published": "2026-10-12T11:49:40Z",
-      "snippet": ""
-    },
-    {
-      "id": "45b719c165bc",
-      "topic": "spacex",
-      "title": "Musk Promises Affordable Starlink in India, but the Price Tag Remains a Mystery",
-      "source": "Gadget Review",
-      "url": "https://www.gadgetreview.com/musk-promises-affordable-starlink-in-india-but-the-price-tag-remains-a-mystery",
-      "published": "2026-10-12T11:36:00Z",
-      "snippet": "Starlink pricing in India remains unconfirmed despite Musk's affordability pledge, with security clearance and terminal costs still the key hurdles to watch.",
-      "image": "https://www.bing.com/th?id=ONUT.qDxmUOJHKgMgk62gQQq0bw&pid=News&w=640"
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.HAbotrodpiFK4CZSv4fVeg&pid=News&w=640"
     },
     {
       "id": "a0b458ca67df",
@@ -489,15 +483,6 @@
       "published": "2026-10-12T11:16:00Z",
       "snippet": "Cybertruck sales are on pace for roughly 28,000 to 32,000 units annually, just 13% of Musk's reported 250,000-unit goal.",
       "image": "https://www.bing.com/th?id=ONUT.OCHwsf0eLlRtLR6H5KYo1g&pid=News&w=640"
-    },
-    {
-      "id": "c6a0f31368ff",
-      "topic": "grok",
-      "title": "Elon Musk says acquisition of Cursor is due to the need for programming training data to create superintelligence, with only three institutions having sufficient programming training data",
-      "source": "https://www.ababnews.com/",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9YakdKTDc2Y3lNa1B5TWZoM29TUUFUNFMwRG5XY2k5blJxeGxDWUc0dEF3cjRULXFDVDFXWTJwRmUzMngxbU5ISVdubjJZRUhzNHB5OXV2WG5GVkg3UXgxcENtVHFKNThxYlQzSWdCaUU5M0Uy?oc=5",
-      "published": "2026-10-12T11:13:33Z",
-      "snippet": ""
     },
     {
       "id": "0f6ce3f41341",
@@ -538,6 +523,16 @@
       "snippet": ""
     },
     {
+      "id": "e483509c80ca",
+      "topic": "tesla",
+      "title": "Tesla and Pilot Travel Centers launch proprietary truck charging network",
+      "source": "electrive.com",
+      "url": "https://www.electrive.com/2026/10/12/tesla-and-pilot-travel-centers-launch-proprietary-truck-charging-network/",
+      "published": "2026-10-12T09:30:00Z",
+      "snippet": "Pilot Travel Centers, the largest operator of truck stops in North America, has begun installing its proprietary charging stations for the Tesla Semi, as ...",
+      "image": "https://www.bing.com/th?id=ONUT.L0QXNC1bsFX4HbUhXgFPtg&pid=News&w=640"
+    },
+    {
       "id": "3b96af4b11bd",
       "topic": "tesla",
       "title": "Tesla's robotaxis face new regulator scrutiny over school zone-speeding claim",
@@ -568,6 +563,16 @@
       "image": "https://www.bing.com/th?id=ONUT.Ho6A1IHA8Zn3JzeyJTflMw&pid=News&w=640"
     },
     {
+      "id": "94cb027aaca9",
+      "topic": "spacex",
+      "title": "Is SpaceX Stock Cheap? 1 Wall Street Analyst Thinks So.",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/10/13/is-spacex-stock-cheap-1-wall-street-analyst-thinks/",
+      "published": "2026-10-12T08:00:00Z",
+      "snippet": "SpaceX is growing fast, and growth rates provide another perspective on valuation. When Space Exploration Technologies ( SPCX +0.52%) went public in June, the market loved the concept, but no one was ...",
+      "image": "https://www.bing.com/th?id=ONUT.VLc6O_3PG7yiQJ1qJDVmPA&pid=News&w=640"
+    },
+    {
       "id": "2302eb93f29d",
       "topic": "tesla",
       "title": "Tesla Drops Full Self-Driving Name in Europe Amid Regulatory Scrutiny",
@@ -576,16 +581,6 @@
       "published": "2026-10-12T07:52:00Z",
       "snippet": "Tesla has renamed Full Self-Driving in Europe as regulators question its branding and safety. Here's what the change means for drivers and EU approval.",
       "image": "https://www.bing.com/th?id=ONUT.3PYdSpKpBk8ZoJobpPo-Iw&pid=News&w=640"
-    },
-    {
-      "id": "eff3c8502250",
-      "topic": "spacex",
-      "title": "SpaceX's next Starship launch could be major catalyst, Morgan Stanley says",
-      "source": "Seeking Alpha on MSN",
-      "url": "https://www.msn.com/en-us/money/general/spacex-s-next-starship-launch-could-be-major-catalyst-morgan-stanley-says/ar-AA2e4JJu",
-      "published": "2026-10-12T07:43:34Z",
-      "snippet": "Morgan Stanley said SpaceX's (SPCX) upcoming Starship Flight 15 could mark a significant step toward making its next-generation rocket fully reusable, potentially expanding the company's opportunities ...",
-      "image": "https://www.bing.com/th?id=ONUT.M3VFTipMK-h03Rgo6D6lUw&pid=News&w=640"
     },
     {
       "id": "18c8824b4f35",
@@ -607,26 +602,6 @@
       "snippet": ""
     },
     {
-      "id": "f8f649678039",
-      "topic": "tesla",
-      "title": "Tesla Finally Forced to Rename Full Self-Driving as ‘Assisted Driving’—in Europe",
-      "source": "The Drive on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-finally-forced-to-rename-full-self-driving-as-assisted-driving-in-europe/ar-AA2e4xpD",
-      "published": "2026-10-12T06:41:20Z",
-      "snippet": "Tesla has marketed its hands-free driving feature under a deceptive name since it launched in 2016. That's starting to change now, but only in some markets.",
-      "image": "https://www.bing.com/th?id=ONUT.GT_C46wQGtLr_9V3hcozRg&pid=News&w=640"
-    },
-    {
-      "id": "ebdcbf5d2da5",
-      "topic": "spacex",
-      "title": "Starship will be key for SpaceX to execute on its growth strategy",
-      "source": "The Motley Fool",
-      "url": "https://www.fool.com/investing/2026/10/12/why-the-starship-launch-is-a-big-deal-for-spacex-s-stock/",
-      "published": "2026-10-12T06:20:00Z",
-      "snippet": "SpaceX's recent Starship launch marked a milestone for the company, as it was its first one that successfully went into orbit.",
-      "image": "https://www.bing.com/th?id=ONUT.1mZ1ps4V7OlzK6yFX0jwDA&pid=News&w=640"
-    },
-    {
       "id": "b84802b81ab3",
       "topic": "spacex",
       "title": "SpaceX's spectrum license 'not competitive' with Big 3 telecom offerings, says Julie Zhu",
@@ -635,26 +610,6 @@
       "published": "2026-10-12T05:23:07Z",
       "snippet": "Julie Zhu, MoffettNathanson research analyst, joins 'Squawk Box' to discuss the growth of SpaceX, the company's purchase of a nationwide spectrum portfolio, the rationale behind her $142 price target, ...",
       "image": "https://www.bing.com/th?id=ONUT.GA2AXt-YrUy2mI-vt3AQfA&pid=News&w=640"
-    },
-    {
-      "id": "d5f4b7638f9b",
-      "topic": "spacex",
-      "title": "Passengers ranked the top 10 airlines with the best in-flight WiFi. Elon Musk's Starlink is all over the list.",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/passengers-ranked-the-top-10-airlines-with-the-best-in-flight-wifi-elon-musks-starlink-is-all-over-the-list/ss-AA2e3pq3",
-      "published": "2026-10-12T03:32:00Z",
-      "snippet": "Of the top 10 airlines with the best in-flight WiFi, seven have partnerships with Starlink — an indication of how Elon Musk is cornering the market.",
-      "image": "https://www.bing.com/th?id=ONUT.Vc0Zoa3MB8hsOSEzo_BBzQ&pid=News&w=640"
-    },
-    {
-      "id": "e541dfc9cc9a",
-      "topic": "spacex",
-      "title": "DAL Stock Edges Up Premarket: CEO Says 'We've Been Around Starlink For A Lot Of Years' Amid Elon Musk's Feud",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/dal-stock-edges-premarket-ceo-084134136.html",
-      "published": "2026-10-12T01:41:00Z",
-      "snippet": "(DAL) stock edged higher overnight as CEO Ed Bastian revisited the airline's past discussions with Elon Musk's Starlink amid tensions between the two sides. B ...",
-      "image": "https://www.bing.com/th?id=ONUT.pL1Z_RfZfMNllGzbeKZHgg&pid=News&w=640"
     },
     {
       "id": "ddadf2fd6015",
@@ -695,26 +650,6 @@
       "published": "2026-10-11T22:09:00Z",
       "snippet": "Tesla rolls out Grok @Bot in Cybercab and Model Y, letting riders use voice commands to send emails, manage Amazon carts and order coffee.",
       "image": "https://www.bing.com/th?id=ONUT.cLEZBRYsIytL_1J_-5mKtg&pid=News&w=640"
-    },
-    {
-      "id": "18f5c6b8c03f",
-      "topic": "spacex",
-      "title": "Why SpaceX wants to catch Starship instead of giving it landing legs",
-      "source": "BGR on MSN",
-      "url": "https://www.msn.com/en-us/news/other/why-spacex-wants-to-catch-starship-instead-of-giving-it-landing-legs/ar-AA2e2xWX",
-      "published": "2026-10-11T17:47:00Z",
-      "snippet": "SpaceX has used landing legs for most of its spacecraft in the past, but the newest model will use another mechanism. Here's why SpaceX plans to catch Starship ...",
-      "image": "https://www.bing.com/th?id=ONUT.ostglWMQk31TX-ilJ5T_Bg&pid=News&w=640"
-    },
-    {
-      "id": "45b68f3a3efe",
-      "topic": "tesla",
-      "title": "Elon Musk’s 250,000 Cybertruck Goal Falls Well Short: New Data Shows Only 13% of Goal Sold Annually",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-250-000-cybertruck-233010061.html",
-      "published": "2026-10-11T16:30:00Z",
-      "snippet": "Elon Musk had ambitious goals for the Cybertruck, the electric pickup truck released by Tesla Inc in 2023. Three years later, the goals have been crushed and demand remains well below ambitious ...",
-      "image": "https://www.bing.com/th?id=ONUT.jfUxWU24nOM95YI3Ew1b9A&pid=News&w=640"
     },
     {
       "id": "d55e048b09e9",
