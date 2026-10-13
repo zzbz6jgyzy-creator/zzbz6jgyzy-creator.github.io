@@ -11,11 +11,15 @@
   const CURATED = [
     {
       id: "tesla-roadster-unveil-2026",
-      title: "Roadster unveiling",
-      start: "2026-10-15T17:00:00Z",
+      title: "Tesla Roadster reveal",
+      start: "2026-10-15T07:00:00Z",
+      end: "2026-10-16T07:00:00Z",
+      featured: true,
+      image: "/assets/live/roadster.jpg",
+      imageCredit: "2020 Roadster prototype · Photo: Smnt, Wikimedia Commons, CC BY-SA 4.0",
       group: "tesla",
-      where: "Waco / McGregor, Texas · outdoors",
-      note: "Tesla moved it from 1 October after calling weather on an outdoor-only demo. Time and stream still TBA.",
+      where: "Near Waco, Texas · outdoors · time TBC",
+      note: "Tesla's next-generation Roadster, first shown in 2017, gets its live demo. Tesla moved it from 1 October because the event can only be held outdoors and severe weather was forecast. Tesla hasn't posted a start time or stream yet.",
       href: "https://x.com/Tesla/status/2104647484169728442",
       status: "confirmed",
       precision: "day",
@@ -261,27 +265,38 @@
   let cdTimer = 0;
   function renderCountdown(root, upcoming) {
     const now = Date.now();
-    const timed = upcoming.filter((e) => e.precision === "datetime" && e.status !== "net" && parseStart(e.start) > now).slice(0, 3);
+    const feat = upcoming.filter((e) => e.featured && parseStart(e.end || e.start) > now);
+    const timed = feat.concat(upcoming.filter((e) => !e.featured && e.precision === "datetime" && e.status !== "net" && parseStart(e.start) > now)).slice(0, feat.length ? 4 : 3);
     root.replaceChildren();
     const cells = timed.map((event) => {
-      const card = el(event.href ? "a" : "div", `cal-next-card cal-${event.group}`);
+      const card = el(event.href ? "a" : "div", `cal-next-card cal-${event.group}${event.featured ? " is-featured" : ""}`);
+      if (event.featured && event.image) {
+        const fig = el("div", "cal-feat-img"); fig.style.backgroundImage = `url('${event.image}')`;
+        if (event.imageCredit) fig.append(el("span", "cal-feat-cr", event.imageCredit));
+        card.append(fig);
+      }
       if (event.href) { card.href = event.href; if (/^https?:/.test(event.href)) { card.target = "_blank"; card.rel = "noopener noreferrer"; } }
       card.append(el("p", "eyebrow", GROUPS[event.group] || event.group), el("h3", "", event.title));
       const d = new Date(parseStart(event.start));
-      card.append(el("p", "cal-next-when", d.toLocaleString("en-IE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Dublin" }) + " Irish time"));
+      const dayOnly = event.precision === "day";
+      card.append(el("p", "cal-next-when", dayOnly
+        ? d.toLocaleDateString("en-IE", { weekday: "short", day: "numeric", month: "short", timeZone: "America/Los_Angeles" }) + " · time TBC"
+        : d.toLocaleString("en-IE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Dublin" }) + " Irish time"));
+      if (event.featured && event.note) card.append(el("p", "cal-feat-note", event.note));
       const clock = el("p", "cal-next-clock");
       card.append(clock);
       root.append(card);
-      return { t: parseStart(event.start), clock };
+      return { t: parseStart(event.start), clock, dayOnly };
     });
     const tick = () => {
       const n = Date.now();
-      cells.forEach(({ t, clock }) => {
+      cells.forEach(({ t, clock, dayOnly }) => {
+        if (dayOnly && t <= n) { clock.innerHTML = "<b>Today</b> · start time TBC"; return; }
         let s = Math.max(0, Math.floor((t - n) / 1000));
         const dd = Math.floor(s / 86400); s %= 86400;
         const hh = Math.floor(s / 3600); s %= 3600;
         const mm = Math.floor(s / 60); const ss = s % 60;
-        clock.innerHTML = (dd ? `<b>${dd}</b>d ` : "") + `<b>${pad(hh)}</b>h <b>${pad(mm)}</b>m <b>${pad(ss)}</b>s`;
+        clock.innerHTML = (dd ? `<b>${dd}</b>d ` : "") + `<b>${pad(hh)}</b>h <b>${pad(mm)}</b>m <b>${pad(ss)}</b>s` + (dayOnly ? ' <span class="cal-to">to the day (US Pacific)</span>' : "");
       });
     };
     clearInterval(cdTimer); tick(); cdTimer = setInterval(tick, 1000);

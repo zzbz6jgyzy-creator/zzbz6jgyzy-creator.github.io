@@ -40,7 +40,7 @@
   },
   {
    "id": "tesla-roadster-demo",
-   "title": "Tesla Roadster demo",
+   "title": "Tesla Roadster reveal",
    "page": "tesla",
    "start": "2026-10-15T00:00:00-07:00",
    "end": "2026-10-15T23:59:00-07:00",
@@ -51,11 +51,12 @@
    "postUrl": "",
    "fallbackUrl": "https://x.com/Tesla",
    "fallbackLabel": "Watch on X",
-   "source": "https://x.com/Tesla",
+   "source": "https://x.com/Tesla/status/2104647484169728442",
    "image": "/assets/live/roadster.jpg",
-   "imageCredit": "Photo: Smnt, Wikimedia Commons, CC BY-SA 4.0",
-   "description": "Tesla's next-generation Roadster, first shown as a prototype in November 2017, is due for a demo on Thursday 15 Oct. Tesla hasn't announced a start time, so this will switch to live once the official stream is posted on @Tesla.",
-   "descSource": "https://x.com/Tesla"
+   "imageCredit": "2020 Roadster prototype · Photo: Smnt, Wikimedia Commons, CC BY-SA 4.0",
+   "description": "Tesla's next-generation Roadster, first shown in 2017, gets its live demo near Waco, Texas. Tesla moved it from 1 October because the event can only be held outdoors and severe weather was forecast. Tesla hasn't posted a start time or stream yet; this switches to LIVE as soon as the official stream is up.",
+   "descSource": "https://x.com/Tesla/status/2104647484169728442",
+   "featured": true
   },
   {
    "id": "tesla-q3-2026-earnings",

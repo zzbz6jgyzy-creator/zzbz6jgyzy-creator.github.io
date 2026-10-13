@@ -29,13 +29,13 @@
   function render(slot, e, live, collapsed) {
     var link = '<a class="lv-out" href="' + esc(safeUrl(e.fallbackUrl)) + '" target="_blank" rel="noopener">' + esc(e.fallbackLabel || 'Watch') + ' \u2197</a>';
     if (!live) {
-      var timed = !e.timeTbc && !e.net;
+      var timed = !e.net, dayOnly = !!e.timeTbc;
       slot.innerHTML = '<div class="lv-next"><span class="lv-chip">Next live</span><b>' + esc(e.title) + '</b>' +
         '<span class="lv-when">' + esc(when(e)) + '</span>' + (timed ? '<span class="lv-cd" aria-live="off"></span>' : '') +
         '<a class="lv-out lv-cal" href="/calendar.html">Calendar \u2192</a></div>';
-      var c = slot.querySelector('.lv-cd');
+      var c = slot.querySelector('.lv-cd'); if (c && dayOnly && new Date(e.start) <= Date.now()) { c.textContent = 'today'; c = null; }
       if (c) { var t1 = function () { var ms = new Date(e.start) - Date.now(), sec = Math.max(0, Math.floor(ms / 1e3)), dd = Math.floor(sec / 86400);
-        c.textContent = 'in ' + (dd ? dd + 'd ' : '') + Math.floor(sec % 86400 / 3600) + 'h ' + String(Math.floor(sec % 3600 / 60)).padStart(2, '0') + 'm' + (dd ? '' : ' ' + String(sec % 60).padStart(2, '0') + 's'); };
+        c.textContent = 'in ' + (dd ? dd + 'd ' : '') + Math.floor(sec % 86400 / 3600) + 'h ' + String(Math.floor(sec % 3600 / 60)).padStart(2, '0') + 'm' + (dd ? '' : ' ' + String(sec % 60).padStart(2, '0') + 's') + (dayOnly ? ' (to the day)' : ''); };
         t1(); setInterval(t1, 1e3); }
       return;
     }
@@ -62,7 +62,8 @@
       return e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2); })[0];
     var byStart = function (a, b) { return new Date(a.start) - new Date(b.start); };
     var future = ev.filter(function (e) { return new Date(e.start) > now; }).sort(byStart);
-    var next = future.filter(function (e) { return !e.timeTbc && !e.net; })[0] || future[0]; // TBC/NET only if nothing timed
+    var feat = ev.filter(function (e) { return e.featured && !live; })[0]; // featured event (e.g. Roadster) leads until it ends
+    var next = feat || future.filter(function (e) { return !e.timeTbc && !e.net; })[0] || future[0]; // TBC/NET only if nothing timed
     var e = live || next;
     var old = document.querySelector('section.lv'); if (old) old.remove();
     if (!e) return;
