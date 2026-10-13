@@ -55,7 +55,7 @@
     var ld = panel && panel.querySelector('.lv-load'); if (ld) ld.onclick = function () { panel.innerHTML = player(e); panel.classList.add('lv-loaded'); };
   }
   function run() {
-  fetch(q.get('livedata') || '/live-data.json', {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
+  fetch(q.get('livedata') || '/live-data.json?t=' + Math.floor(Date.now() / 6e4), {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
     now = q.get('livenow') ? now : Date.now();
     var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page); });
     var live = ev.filter(function (e) { var s = new Date(e.start) - 0;

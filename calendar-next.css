@@ -16,3 +16,9 @@
 .cal-feat-note{margin:.5rem 0 0;color:#cfd0d3;font-size:.92rem;line-height:1.5;max-width:60ch}
 .cal-to{font-size:.75rem;color:#8b8d92}
 @media (max-width:800px){.cal-next-card.is-featured{grid-template-columns:1fr}.is-featured>*:not(.cal-feat-img){grid-column:1;margin:0 1rem}.cal-feat-img{grid-row:auto;min-height:0;aspect-ratio:16/9}.is-featured h3{font-size:1.35rem}}
+
+/* v2 featured image: real <img>, credit caption below */
+.cal-feat-img{margin:0;min-height:0;background:none;display:flex;flex-direction:column}
+.cal-feat-img img{display:block;width:100%;flex:1;min-height:240px;object-fit:cover}
+.cal-feat-cr{position:static;background:none;padding:.35rem .6rem;font-size:.66rem;color:#8b8d92;border-radius:0}
+@media (max-width:800px){.cal-feat-img{aspect-ratio:auto}.cal-feat-img img{flex:none;aspect-ratio:16/9;min-height:0;height:auto}.is-featured .eyebrow{margin-top:.4rem}}

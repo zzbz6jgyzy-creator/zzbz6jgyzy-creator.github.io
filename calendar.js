@@ -271,8 +271,10 @@
     const cells = timed.map((event) => {
       const card = el(event.href ? "a" : "div", `cal-next-card cal-${event.group}${event.featured ? " is-featured" : ""}`);
       if (event.featured && event.image) {
-        const fig = el("div", "cal-feat-img"); fig.style.backgroundImage = `url('${event.image}')`;
-        if (event.imageCredit) fig.append(el("span", "cal-feat-cr", event.imageCredit));
+        const fig = el("figure", "cal-feat-img");
+        const im = el("img"); im.src = event.image; im.alt = event.title; im.loading = "lazy"; im.decoding = "async";
+        fig.append(im);
+        if (event.imageCredit) fig.append(el("figcaption", "cal-feat-cr", event.imageCredit));
         card.append(fig);
       }
       if (event.href) { card.href = event.href; if (/^https?:/.test(event.href)) { card.target = "_blank"; card.rel = "noopener noreferrer"; } }
