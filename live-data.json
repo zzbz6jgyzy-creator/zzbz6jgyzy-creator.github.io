@@ -1,6 +1,6 @@
 {
  "updated": "2026-10-13T11:17:00+01:00",
- "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. timeTbc/net mark unconfirmed times.",
+ "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
  "events": [
   {
    "id": "f9-crs35",
@@ -13,7 +13,7 @@
    "embedId": "",
    "postUrl": "https://x.com/SpaceX/status/2109950760054403371",
    "fallbackUrl": "https://x.com/i/broadcasts/1aJbdEzoAvYKX",
-   "fallbackLabel": "Watch the broadcast on X",
+   "fallbackLabel": "Watch the live broadcast on X",
    "source": "https://x.com/SpaceX/status/2109950760054403371",
    "image": "/assets/live/crs35.jpg",
    "imageCredit": "Photo: NASA/Kim Shiflett (CRS-25 liftoff), public domain",
