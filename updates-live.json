@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T21:49:27Z",
+  "updated": "2026-10-13T22:12:10Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3378,
@@ -8,7 +8,7 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 0,
+      "count": 1,
       "fleet": 3378,
       "percent": 0.0,
       "fsd": null,
@@ -16,8 +16,16 @@
       "fsdHw4": "14.3.12",
       "features": [
         {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
+        },
+        {
           "title": "Automatic Collision Evasion",
           "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage in the following situations while you are driving manually: - Scenario 1: A\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3 Lite",
+          "text": "FSD (Supervised) v14.3 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
         },
         {
           "title": "FSD (Supervised) v14.3.12",
@@ -28,31 +36,27 @@
           "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
         },
         {
-          "title": "Apple Music",
-          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
         },
         {
-          "title": "Emergency Drive Away",
-          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
         },
         {
-          "title": "Halloween Mode",
-          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
-        },
-        {
-          "title": "Security Improvements",
-          "text": "This update includes important security fixes and improvements."
-        },
-        {
-          "title": "Wheel Selection",
-          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
         }
       ],
-      "countries": [],
-      "countryCounts": {},
-      "pending": 7,
+      "countries": [
+        "US"
+      ],
+      "countryCounts": {
+        "US": 1
+      },
+      "pending": 6,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-13T21:28:13Z"
+      "lastSeen": "2026-10-13T21:52:47Z"
     },
     {
       "id": "2026.38.5",
@@ -107,7 +111,7 @@
         "MX": 1,
         "CA": 1
       },
-      "pending": 81,
+      "pending": 102,
       "firstSeen": "2026-10-10T22:26:31Z",
       "lastSeen": "2026-10-13T21:37:14Z"
     },
