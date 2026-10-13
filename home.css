@@ -141,3 +141,4 @@ body.home-x{background:#050505;color:#f4f4f2}
  .hx-ticker-label{padding:0 .7rem}
 }
 .hx-ticker-widget,.hx-ticker-widget .tradingview-widget-container{height:auto!important;overflow-x:hidden;overflow-y:visible}.hx-ticker-widget iframe{display:block}
+@media (max-width:600px){.hx-hero{padding-top:104px}.hx-live{margin-bottom:.9rem}}
