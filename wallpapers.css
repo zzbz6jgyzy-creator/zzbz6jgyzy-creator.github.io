@@ -44,3 +44,10 @@
 .wpr-info p{margin:0 0 .8rem;color:var(--mute,#9a9a9a);font-size:.9rem;line-height:1.45}
 .wpr-info .wp-dl{justify-content:center}
 @media (max-width:600px){.wpr-stage{height:400px;perspective:900px}.wpr-item{width:150px}}
+/* Wide screens: landscape desktop cards */
+.wpr-wide .wpr-stage{height:clamp(320px,42vh,390px);perspective:2200px}
+.wpr-wide .wpr-item.wpr-land{width:clamp(300px,28vw,400px);aspect-ratio:16/9}
+.wpr-wide .wpr-item:not(.wpr-land){width:clamp(100px,9vw,125px)}
+/* Opaque preview */
+.wp-lightbox::backdrop{background:rgba(5,5,7,.97)}
+.wp-lightbox{background:#050507;border-radius:14px}
