@@ -4503,6 +4503,9 @@ a.news-card:hover h3 {
   .photo-banner figcaption { left: 0.7rem; right: auto; }
 }
 
+/* FSD Europe banner: keep the Juniper light bar in frame on wide crops */
+.photo-banner--juniper img { object-position: 50% 62%; }
+
 /* Pulsing live dot beside tracker "Updated" stamps */
 .live-stamp {
   display: flex;
