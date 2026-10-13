@@ -1526,6 +1526,14 @@ button.fsd-kpi[aria-pressed="true"] {
   color: var(--tesla);
 }
 
+.article .grok-yt {
+  scroll-margin-top: 5.5rem;
+}
+
+.article .grok-yt > .eyebrow {
+  color: var(--tesla);
+}
+
 @media (max-width: 900px) {
   .grok-levels {
     grid-template-columns: 1fr 1fr;
