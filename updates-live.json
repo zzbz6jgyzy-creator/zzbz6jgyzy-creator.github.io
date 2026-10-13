@@ -1,14 +1,63 @@
 {
-  "updated": "2026-10-13T20:54:18Z",
+  "updated": "2026-10-13T21:49:27Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3378,
-  "latest": "2026.38.5",
+  "latest": "2026.38.5.1",
   "versions": [
+    {
+      "id": "2026.38.5.1",
+      "date": "2026-10-13",
+      "count": 0,
+      "fleet": 3378,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": "14.3.12",
+      "features": [
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage in the following situations while you are driving manually: - Scenario 1: A\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.12",
+          "text": "Full Self-Driving (Supervised) v14.3.12 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Emergency Drive Away",
+          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        }
+      ],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 7,
+      "firstSeen": "2026-10-13T21:28:13Z",
+      "lastSeen": "2026-10-13T21:28:13Z"
+    },
     {
       "id": "2026.38.5",
       "date": "2026-10-10",
-      "count": 36,
+      "count": 37,
       "fleet": 3378,
       "percent": 1.1,
       "fsd": null,
@@ -54,13 +103,13 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 34,
+        "US": 35,
         "MX": 1,
         "CA": 1
       },
-      "pending": 13,
+      "pending": 81,
       "firstSeen": "2026-10-10T22:26:31Z",
-      "lastSeen": "2026-10-13T19:32:33Z"
+      "lastSeen": "2026-10-13T21:37:14Z"
     },
     {
       "id": "2026.38.3.1",
@@ -226,7 +275,7 @@
         "US": 97,
         "CA": 5
       },
-      "pending": 7,
+      "pending": 6,
       "firstSeen": "2026-10-07T02:27:41Z",
       "lastSeen": "2026-10-12T16:14:30Z"
     },
@@ -481,62 +530,9 @@
       "lastSeen": "2026-10-10T07:30:07Z"
     },
     {
-      "id": "2026.27.6.5",
-      "date": "2026-09-24",
-      "count": 1,
-      "fleet": 3378,
-      "percent": 0.0,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [
-        {
-          "title": "FSD (Supervised) v14.1 Lite",
-          "text": "FSD (Supervised) v14.1 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
-        },
-        {
-          "title": "Full Self-Driving (Supervised)",
-          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
-        },
-        {
-          "title": "Speed Profiles",
-          "text": "FSD (Supervised) will determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Driver profile has a strong impact on behavior. The more assertive the profile, the higher\u2026"
-        },
-        {
-          "title": "Start Self-Driving from Park",
-          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
-        },
-        {
-          "title": "UI Improvements",
-          "text": "Adjust settings like the Speed Profile directly from the Self-Driving visualization on the center display."
-        },
-        {
-          "title": "Alternative Routes",
-          "text": "See alternative routes while driving. Tap the map mode button or tap the next turn to switch to Overview mode and choose a different route."
-        },
-        {
-          "title": "Apple Music",
-          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
-        },
-        {
-          "title": "Automatic Navigation",
-          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
-        }
-      ],
-      "countries": [
-        "KR"
-      ],
-      "countryCounts": {
-        "KR": 1
-      },
-      "pending": 0,
-      "firstSeen": "2026-09-24T04:36:56Z",
-      "lastSeen": "2026-09-24T09:23:36Z"
-    },
-    {
       "id": "2026.32.7",
       "date": "2026-09-23",
-      "count": 367,
+      "count": 368,
       "fleet": 3378,
       "percent": 10.9,
       "fsd": null,
@@ -621,7 +617,7 @@
       "countryCounts": {
         "US": 139,
         "GB": 40,
-        "DE": 27,
+        "DE": 28,
         "FR": 19,
         "DK": 12,
         "CH": 12,
@@ -660,9 +656,9 @@
         "AE": 1,
         "TR": 1
       },
-      "pending": 22,
+      "pending": 21,
       "firstSeen": "2026-09-23T02:08:40Z",
-      "lastSeen": "2026-10-13T19:30:40Z"
+      "lastSeen": "2026-10-13T21:29:48Z"
     },
     {
       "id": "2026.27.11",
@@ -719,7 +715,7 @@
         "MX": 2,
         "PR": 1
       },
-      "pending": 11,
+      "pending": 10,
       "firstSeen": "2026-09-23T05:58:06Z",
       "lastSeen": "2026-10-11T21:22:37Z"
     },
