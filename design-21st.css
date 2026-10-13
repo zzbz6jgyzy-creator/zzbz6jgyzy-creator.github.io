@@ -1,19 +1,35 @@
-/* Adapted from 21st.dev, MIT: Border Beam & Magic Card (Magic UI, dillionverma), NumberFlow (barvian). Vanilla CSS port. */
+/* Ports of 21st.dev MIT components to vanilla CSS:
+   Border Beam, Magic Card, Marquee, Blur Fade, Animated Shiny Text (Magic UI, dillionverma); NumberFlow (barvian). */
 @property --bb-a{syntax:"<angle>";inherits:false;initial-value:0deg}
-/* 1. Border Beam on the live-stream card */
-.lw::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:2.5px;pointer-events:none;z-index:3;
-  background:conic-gradient(from var(--bb-a),transparent 0deg,transparent 220deg,rgba(255,90,110,.35) 280deg,#ff2a44 340deg,#fff 352deg,transparent 360deg);
+/* Border Beam: live card + featured calendar card */
+.lw::after,.cal-next-card.is-featured::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:3px;pointer-events:none;z-index:3;
+  background:conic-gradient(from var(--bb-a),transparent 0deg,transparent 200deg,rgba(255,60,85,.45) 270deg,#ff2a44 335deg,#fff 352deg,transparent 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
-  animation:bbSpin 5s linear infinite}
+  filter:drop-shadow(0 0 4px rgba(255,42,68,.8));animation:bbSpin 4.5s linear infinite}
+.cal-next-card.is-featured{position:relative}
 @keyframes bbSpin{to{--bb-a:360deg}}
-/* 2. NumberFlow-style rolling digits in countdown tiles */
-.lw-tile b{display:inline-flex;overflow:hidden;height:1em;line-height:1}
-.nf-d{display:inline-block;height:1em;overflow:hidden;position:relative;width:.62em}
-.nf-c{display:flex;flex-direction:column;transition:transform .6s cubic-bezier(.2,1.2,.3,1)}
-.nf-c span{height:1em;line-height:1;text-align:center}
-/* 3. Magic Card cursor spotlight on home tiles */
+/* NumberFlow rolling digits */
+.nf{display:inline-flex;height:1em;line-height:1;overflow:hidden;vertical-align:top}
+.nf-d{display:inline-block;height:1em;overflow:hidden;width:.62em}
+.nf-c{display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.2,1.25,.35,1)}
+.nf-c span{display:block;height:1em;line-height:1;text-align:center}
+/* Magic Card glow on home tiles */
 .hx-tile::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .35s;
-  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(227,25,55,.28),transparent 65%)}
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(227,25,55,.32),transparent 65%)}
 .hx-tile:hover::after{opacity:1}
-@media (hover:none){.hx-tile::after{opacity:.55;background:radial-gradient(200px circle at 85% 0%,rgba(227,25,55,.22),transparent 70%)}}
-@media (prefers-reduced-motion:reduce){.lw::after{animation:none;--bb-a:300deg}.nf-c{transition:none}.hx-tile::after{transition:none}}
+@media (hover:none){.hx-tile::after{opacity:.6;background:radial-gradient(220px circle at 85% 0%,rgba(227,25,55,.24),transparent 70%)}}
+/* Marquee edge fades on the ticker (TradingView tape keeps its own scroll + pause-on-hover) */
+.hx-ticker-widget{-webkit-mask:linear-gradient(90deg,#000 0,#000 calc(100% - 48px),transparent);mask:linear-gradient(90deg,#000 0,#000 calc(100% - 48px),transparent)}
+.hx-ticker{min-height:62px}
+/* Blur Fade list items */
+.bf{opacity:0;filter:blur(6px);transform:translateY(10px);transition:opacity .6s ease,filter .6s ease,transform .6s ease}
+.bf.bf-in{opacity:1;filter:none;transform:none}
+/* Animated Shiny Text on live header */
+.lw-head>span:nth-child(2){background:linear-gradient(110deg,#ff5a6e 35%,#fff 50%,#ff5a6e 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3.2s linear infinite}
+@keyframes shine{from{background-position:100% 0}to{background-position:-150% 0}}
+@media (prefers-reduced-motion:reduce){
+  .lw::after,.cal-next-card.is-featured::after{animation:none;--bb-a:300deg}
+  .nf-c,.hx-tile::after{transition:none}
+  .bf{opacity:1;filter:none;transform:none;transition:none}
+  .lw-head>span:nth-child(2){animation:none;background-position:50% 0}
+}

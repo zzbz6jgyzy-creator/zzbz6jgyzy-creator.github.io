@@ -311,8 +311,9 @@
         const hh = Math.floor(s / 3600); s %= 3600;
         const mm = Math.floor(s / 60); const ss = s % 60;
         c.units.d.tile.hidden = !dd;
-        c.units.d.num.textContent = String(dd); c.units.h.num.textContent = pad(hh);
-        c.units.m.num.textContent = pad(mm); c.units.s.num.textContent = pad(ss);
+        const sn = window.sdNum || ((e, v) => { e.textContent = v; });
+        sn(c.units.d.num, String(dd)); sn(c.units.h.num, pad(hh));
+        sn(c.units.m.num, pad(mm)); sn(c.units.s.num, pad(ss));
         if (c.last !== ss) { const t = c.units.s.tile; t.classList.remove("tick"); void t.offsetWidth; t.classList.add("tick"); c.last = ss; }
       });
     };
