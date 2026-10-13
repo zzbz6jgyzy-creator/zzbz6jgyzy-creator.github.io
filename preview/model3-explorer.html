@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Model 3 Explorer (preview) | Supercharged Daily</title>
+    <meta name="description" content="Take a Tesla Model 3 apart in 3D." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/preview/model3-explorer.css?v=202610140100" />
+    <link rel="modulepreload" href="/vendor/three/three.module.min.js" />
+  </head>
+  <body>
+    <div class="m3x" data-m3x>
+      <header class="m3x-top">
+        <a class="m3x-back" href="/tesla.html" aria-label="Back to Supercharged Daily">← <span>Supercharged <b>Daily</b></span></a>
+        <div class="m3x-title"><p>Interactive · 3D</p><h1>Model 3, taken apart</h1></div>
+      </header>
+      <div class="m3x-canvas">
+        <img class="m3x-poster" src="/assets/3d/model3-poster.webp" alt="Red Tesla Model 3 rendered in 3D" />
+      </div>
+      <span class="m3x-status" aria-live="polite"></span>
+      <div class="m3x-tip" hidden></div>
+      <div class="m3x-label" hidden></div>
+      <aside class="m3x-card" hidden aria-live="polite"></aside>
+      <nav class="m3x-panel" aria-label="Parts">
+        <div class="m3x-panel-head"><b>Parts</b><span>Tap one to inspect</span><button type="button" class="m3x-close" aria-label="Close parts list">×</button></div>
+        <ul class="m3x-list"></ul>
+      </nav>
+      <div class="m3x-bar">
+        <button type="button" class="m3x-explode m3x-primary" aria-pressed="false">Explode</button>
+        <label class="m3x-range"><span>Assembled</span><input class="m3x-slider" type="range" min="0" max="100" value="0" aria-label="Explode amount" /><span>Exploded</span></label>
+        <button type="button" class="m3x-parts" aria-expanded="false">Parts</button>
+        <button type="button" class="m3x-reset">Reset</button>
+        <button type="button" class="m3x-pause" aria-pressed="false">Pause</button>
+      </div>
+      <p class="m3x-credit">Exterior: <a href="https://sketchfab.com/3d-models/tesla-model-3-123c10f376ec4f18b93c73afc382808b" target="_blank" rel="noopener">“Tesla Model 3” by David_Holiday</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>, materials changed. Internal parts are stylised illustrations, not exact. Rendered with <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> (MIT). Fan project, not affiliated with Tesla.</p>
+    </div>
+    <script type="module" src="/preview/model3-explorer.js?v=202610140100"></script>
+  </body>
+</html>
