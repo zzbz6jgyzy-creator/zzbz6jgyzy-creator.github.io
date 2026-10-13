@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T10:45:00+01:00",
+ "updated": "2026-10-13T11:17:00+01:00",
  "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. timeTbc/net mark unconfirmed times.",
  "events": [
   {
@@ -11,10 +11,10 @@
    "status": "live",
    "provider": "x",
    "embedId": "",
-   "postUrl": "https://x.com/SpaceX/status/2109941954326725035",
-   "fallbackUrl": "https://x.com/SpaceX",
-   "fallbackLabel": "Watch on X",
-   "source": "https://x.com/SpaceX/status/2109941954326725035",
+   "postUrl": "https://x.com/SpaceX/status/2109950760054403371",
+   "fallbackUrl": "https://x.com/i/broadcasts/1aJbdEzoAvYKX",
+   "fallbackLabel": "Watch the broadcast on X",
+   "source": "https://x.com/SpaceX/status/2109950760054403371",
    "image": "/assets/live/crs35.jpg",
    "imageCredit": "Photo: NASA/Kim Shiflett (CRS-25 liftoff), public domain",
    "description": "Falcon 9 launches Cargo Dragon C211 on NASA's 35th SpaceX resupply mission from pad 40 at Cape Canaveral, carrying more than 6,300 lb of supplies, science and the final pair of ISS Roll-Out Solar Arrays. The booster is on its eighth flight and will land at Landing Zone 40; Dragon docks with the station on Thursday 15 Oct around 16:00 Irish time.",
