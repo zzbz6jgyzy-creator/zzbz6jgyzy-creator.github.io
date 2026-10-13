@@ -52,3 +52,7 @@
 .lv-cal{color:#ff5a6e}
 .lv:not(.lv-inhero) .lv-next{border-bottom:1px solid rgba(255,255,255,.08)}
 @media (max-width:600px){.lv-quiet .lv-next b{flex-basis:auto}.lv-inhero .lv-quiet .lv-next, .lv-inhero.lv-quiet .lv-next{font-size:.8rem}}
+
+.lv-next .lv-when{color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:.4rem}
+.lv-tz{font:700 .6rem/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#ff5a6e;border:1px solid rgba(227,25,55,.6);border-radius:4px;padding:.2rem .35rem}
+.lv-next .lv-cd{background:#07070a;border:1px solid rgba(227,25,55,.4);border-radius:6px;padding:.2rem .45rem;font-weight:700}

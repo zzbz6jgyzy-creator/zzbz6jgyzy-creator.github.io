@@ -278,27 +278,41 @@
         card.append(fig);
       }
       if (event.href) { card.href = event.href; if (/^https?:/.test(event.href)) { card.target = "_blank"; card.rel = "noopener noreferrer"; } }
-      card.append(el("p", "eyebrow", GROUPS[event.group] || event.group), el("h3", "", event.title));
+      card.append(el("span", `cal-chip chip-${event.group}`, GROUPS[event.group] || event.group), el("h3", "", event.title));
       const d = new Date(parseStart(event.start));
       const dayOnly = event.precision === "day";
-      card.append(el("p", "cal-next-when", dayOnly
-        ? d.toLocaleDateString("en-IE", { weekday: "short", day: "numeric", month: "short", timeZone: "America/Los_Angeles" }) + " · time TBC"
-        : d.toLocaleString("en-IE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Dublin" }) + " Irish time"));
+      const when = el("p", "cal-next-when");
+      when.append(el("span", "cal-when-txt", dayOnly
+        ? d.toLocaleDateString("en-IE", { weekday: "short", day: "numeric", month: "short", timeZone: "America/Los_Angeles" })
+        : d.toLocaleString("en-IE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Dublin" }).replace(" at ", " · ")),
+        el("span", "cal-tz", dayOnly ? "Time TBC" : "Irish time"));
+      card.append(when);
       if (event.featured && event.note) card.append(el("p", "cal-feat-note", event.note));
-      const clock = el("p", "cal-next-clock");
+      const clock = el("div", "cal-next-clock");
+      const units = {};
+      ["d", "h", "m", "s"].forEach((u) => {
+        const tile = el("span", `cal-tile u-${u}`);
+        const num = el("b", "", "--");
+        tile.append(num, el("small", "", { d: "days", h: "hrs", m: "min", s: "sec" }[u]));
+        clock.append(tile); units[u] = { tile, num };
+      });
       card.append(clock);
+      if (dayOnly) card.append(el("p", "cal-to", "Counting to the start of the day, US Pacific"));
       root.append(card);
-      return { t: parseStart(event.start), clock, dayOnly };
+      return { t: parseStart(event.start), clock, units, dayOnly, last: -1 };
     });
     const tick = () => {
       const n = Date.now();
-      cells.forEach(({ t, clock, dayOnly }) => {
-        if (dayOnly && t <= n) { clock.innerHTML = "<b>Today</b> · start time TBC"; return; }
-        let s = Math.max(0, Math.floor((t - n) / 1000));
+      cells.forEach((c) => {
+        if (c.dayOnly && c.t <= n) { c.clock.innerHTML = '<span class="cal-today">Today · start time TBC</span>'; return; }
+        let s = Math.max(0, Math.floor((c.t - n) / 1000));
         const dd = Math.floor(s / 86400); s %= 86400;
         const hh = Math.floor(s / 3600); s %= 3600;
         const mm = Math.floor(s / 60); const ss = s % 60;
-        clock.innerHTML = (dd ? `<b>${dd}</b>d ` : "") + `<b>${pad(hh)}</b>h <b>${pad(mm)}</b>m <b>${pad(ss)}</b>s` + (dayOnly ? ' <span class="cal-to">to the day (US Pacific)</span>' : "");
+        c.units.d.tile.hidden = !dd;
+        c.units.d.num.textContent = String(dd); c.units.h.num.textContent = pad(hh);
+        c.units.m.num.textContent = pad(mm); c.units.s.num.textContent = pad(ss);
+        if (c.last !== ss) { const t = c.units.s.tile; t.classList.remove("tick"); void t.offsetWidth; t.classList.add("tick"); c.last = ss; }
       });
     };
     clearInterval(cdTimer); tick(); cdTimer = setInterval(tick, 1000);
