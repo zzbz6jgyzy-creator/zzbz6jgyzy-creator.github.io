@@ -25,7 +25,7 @@
     }
     return '<p class="lv-none">This stream can\u2019t be embedded. Use the link below.</p>';
   }
-  function render(slot, e, live) {
+  function render(slot, e, live, collapsed) {
     var link = '<a class="lv-out" href="' + esc(safeUrl(e.fallbackUrl)) + '" target="_blank" rel="noopener">' + esc(e.fallbackLabel || 'Watch') + ' \u2197</a>';
     if (!live) {
       slot.innerHTML = '<div class="lv-next"><span class="lv-chip">Up next</span><b>' + esc(e.title) + '</b><span class="lv-cd">in ' +
@@ -40,11 +40,11 @@
       (canEmbed ? '<small class="lv-note">Loads ' + (e.provider === 'youtube' ? 'YouTube' : 'X') + ' content, which may set cookies</small>' : '') +
       '</div></div>';
     slot.innerHTML = '<div class="lv-bar' + (reduce ? ' lv-still' : '') + '"><span class="lv-dot"></span><span class="lv-tag">LIVE NOW</span><b>' + esc(e.title) + '</b>' +
-      '<button class="lv-open" type="button" aria-expanded="true">Hide</button>' + link + '</div><div class="lv-panel">' + info + '</div>';
+      '<button class="lv-open" type="button" aria-expanded="' + !collapsed + '">' + (collapsed ? 'Mission info' : 'Hide') + '</button>' + link + '</div><div class="lv-panel"' + (collapsed ? ' hidden' : '') + '>' + info + '</div>';
     var tick = function () { var c = slot.querySelector('.lv-cdl'); if (!c) return; var ms = new Date(e.start) - Date.now();
       c.textContent = ms > 0 ? 'T−' + cd(ms) : 'underway'; }; tick(); setInterval(tick, 3e4);
     var open = slot.querySelector('.lv-open'), panel = slot.querySelector('.lv-panel');
-    if (open) open.onclick = function () { var x = panel.hidden; panel.hidden = !x; open.setAttribute('aria-expanded', x); open.textContent = x ? 'Hide' : 'Watch here'; };
+    if (open) open.onclick = function () { var x = panel.hidden; panel.hidden = !x; open.setAttribute('aria-expanded', x); open.textContent = x ? 'Hide' : (collapsed ? 'Mission info' : 'Show'); };
     var ld = panel && panel.querySelector('.lv-load'); if (ld) ld.onclick = function () { panel.innerHTML = player(e); panel.classList.add('lv-loaded'); };
   }
   fetch(q.get('livedata') || '/live-data.json', {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
@@ -54,9 +54,10 @@
     var next = ev.filter(function (e) { var s = new Date(e.start) - now; return !e.timeTbc && !e.net && s > 0 && s < 24 * H; })
       .sort(function (a, b) { return new Date(a.start) - new Date(b.start); })[0];
     var e = live || next; if (!e) return;
-    var slot = document.createElement('section'); slot.className = 'lv'; slot.setAttribute('aria-label', 'Live events');
-    var main = document.querySelector('main'); main.parentNode.insertBefore(slot, main);
-    render(slot, e, !!live);
+    var mount = document.querySelector('[data-live-slot]'), slot = document.createElement('section'); slot.className = 'lv' + (mount ? ' lv-inhero' : ''); slot.setAttribute('aria-label', 'Live events');
+    if (mount) mount.appendChild(slot); else { var main = document.querySelector('main'); main.parentNode.insertBefore(slot, main); }
+    var collapsed = !!(mount && mount.hasAttribute('data-collapsed'));
+    render(slot, e, !!live, collapsed);
     setTimeout(function () { slot.remove(); }, Math.max(0, new Date(e.end) - now) || 1); // auto-hide at end
   }).catch(function () {});
 })();
