@@ -40,6 +40,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/fsd-europe-v2.css?v=202610142030" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610141830" />
   </head>
   <body>
@@ -105,154 +106,116 @@
         <section class="fsd-hero">
           <div>
             <p class="eyebrow">Tesla · Europe · <a href="/fsd.html">Global tracker</a></p>
-            <h1>Where FSD is approved</h1>
+            <h1>Where FSD is approved in Europe</h1>
             <p>
-              Red means a country has recognised the Dutch RDW file.
-              An EU-wide green light still needs 15 of 27 states and 65% of the population.
-              Tesla now lists the package in Europe as
-              <a href="/dispatch/assisted-driving.html">Assisted Driving Basic</a>
-              at €99 a month.
+              Since 9 October, FSD (Supervised) is called Tesla Assisted Driving in Europe.
+              Each red country has recognised the Dutch RDW approval. To make it legal
+              across the EU, a TCMV vote needs <strong>15 of 27 states</strong> and
+              <strong>65% of the EU population</strong>, both at once.
             </p>
           </div>
           <p class="meta news-status-line live-stamp" id="fsd-updated">Updated</p>
         </section>
 
-        <section class="fsd-board" id="map" aria-labelledby="fsd-map-heading">
-          <div class="fsd-kpis" aria-label="Snapshot">
-            <a class="fsd-kpi" href="#countries">
-              <b id="fsd-approved-count">0</b>
-              <span>of 27 approved</span>
-            </a>
-            <a class="fsd-kpi" href="#path">
-              <b id="fsd-pop-pct">0%</b>
-              <span>of the EU</span>
-            </a>
-            <a class="fsd-kpi" href="#path">
-              <b id="fsd-states-needed">0</b>
-              <span>states still needed</span>
-            </a>
-            <a class="fsd-kpi" href="#tcmv">
-              <b id="tcmv-next-label">—</b>
-              <span>next TCMV window</span>
-            </a>
+        <section class="f2-hero" id="path" aria-labelledby="f2-path-h">
+          <div class="f2-big">
+            <b id="f2-count">0</b><span>of 27 EU states approved</span>
+            <small id="f2-popline"></small>
           </div>
-
-          <div class="fsd-stage">
-            <div class="fsd-map-pane">
-              <h2 class="visually-hidden" id="fsd-map-heading">Approved countries on the map</h2>
-              <div class="fsd-map-shell">
-                <svg class="fsd-map" id="fsd-map" viewBox="0 0 900 780" width="900" height="780" role="img" aria-labelledby="fsd-map-heading">
-                  <title>EU countries that have recognised FSD Supervised</title>
-                  <rect class="fsd-map-ocean" width="900" height="780" />
-                  <g id="fsd-map-land"></g>
-                  <g id="fsd-map-pins"></g>
-                </svg>
-                <div class="fsd-map-tip" id="fsd-map-tip" hidden></div>
-              </div>
-              <div class="fsd-map-meta">
-                <div class="fsd-map-legend" aria-hidden="true">
-                  <span><i class="fsd-map-key is-approved"></i> Approved</span>
-                  <span><i class="fsd-map-key is-none"></i> Not yet</span>
-                </div>
-                <p class="fsd-map-caption" id="fsd-map-caption">Loading map…</p>
-              </div>
+          <div class="f2-meter-box">
+            <h2 id="f2-path-h">Path to an EU-wide vote</h2>
+            <div class="f2-meter" data-k="states">
+              <div class="f2-mh"><span>States</span><span id="f2-st-l"></span></div>
+              <div class="f2-bar"><i class="f2-fill"></i><i class="f2-what"></i><em style="left:55.56%"><span>15</span></em></div>
             </div>
-
-            <aside class="fsd-panel" id="countries" aria-labelledby="fsd-list-heading">
-              <div class="fsd-panel-head">
-                <h2 id="fsd-list-heading">Countries</h2>
-                <p id="fsd-showing">27 of 27</p>
+            <div class="f2-meter" data-k="pop">
+              <div class="f2-mh"><span>Population</span><span id="f2-pp-l"></span></div>
+              <div class="f2-bar"><i class="f2-fill"></i><i class="f2-what"></i><em style="left:65%"><span>65%</span></em></div>
+            </div>
+            <p class="f2-verdict" id="f2-verdict" role="status" aria-live="polite"></p>
+            <details class="f2-whatif" id="whatif">
+              <summary>What if… <span>tap countries to add them</span></summary>
+              <div class="f2-scen" role="group" aria-label="Vote scenarios">
+                <button type="button" data-scen="none" aria-pressed="true">Approved only</button>
+                <button type="button" data-scen="support">+ Stated supporters</button>
+                <button type="button" data-scen="review">+ Everyone in review</button>
               </div>
-              <label class="updates-search-label" for="fsd-search">Find a country</label>
-              <input
-                id="fsd-search"
-                class="updates-search"
-                type="search"
-                placeholder="Germany, NL, Czechia…"
-                autocomplete="off"
-              />
-              <div class="fsd-filters" role="group" aria-label="Filter countries">
-                <button type="button" class="fsd-filter" data-fsd-filter="approved" aria-pressed="true">Approved</button>
-                <button type="button" class="fsd-filter" data-fsd-filter="review" aria-pressed="false">In review</button>
-                <button type="button" class="fsd-filter" data-fsd-filter="all" aria-pressed="false">All 27</button>
-              </div>
-              <div class="fsd-country-list" id="fsd-country-list"></div>
-              <div class="fsd-country-detail" id="fsd-country-detail" hidden></div>
-            </aside>
+              <div class="f2-chips" id="f2-chips" role="group" aria-label="Add countries to the what-if"></div>
+              <p class="f2-fine">Scenarios use each country’s public position (sources in the table below). This is not a forecast.</p>
+            </details>
           </div>
-
-          <div class="fsd-meters" id="path">
-            <div class="fsd-meter">
-              <div class="fsd-meter-head">
-                <span>Approving states</span>
-                <span><strong id="fsd-states-bar-label">0</strong> / 27 · needs 15</span>
-              </div>
-              <div class="fsd-track">
-                <div class="fsd-track-potential" id="fsd-states-potential"></div>
-                <div class="fsd-track-fill" id="fsd-states-bar"></div>
-                <div class="fsd-track-mark" style="left: 55.56%" title="15 of 27"></div>
-              </div>
-            </div>
-            <div class="fsd-meter">
-              <div class="fsd-meter-head">
-                <span>Population share</span>
-                <span><strong id="fsd-pop-needed">0%</strong> still needed for 65%</span>
-              </div>
-              <div class="fsd-track">
-                <div class="fsd-track-potential" id="fsd-pop-potential"></div>
-                <div class="fsd-track-fill" id="fsd-pop-bar"></div>
-                <div class="fsd-track-mark" style="left: 65%" title="65%"></div>
-              </div>
-            </div>
-            <p class="fsd-meter-foot" id="fsd-path-note">
-              Solid is approved. Faint is if every country in review also says yes.
-              National recognitions are not the Brussels vote.
-            </p>
+          <div class="f2-count-box" id="tcmv">
+            <h2>Next TCMV window</h2>
+            <p class="f2-cd"><b id="f2-days">—</b><span id="f2-days-l">days</span></p>
+            <p id="f2-tcmv-l" class="f2-fine"></p>
+            <a class="f2-link" href="/tcmv.html">Full TCMV log →</a>
           </div>
         </section>
 
-        <section class="section fsd-spread" id="timeline" aria-labelledby="fsd-timeline-heading">
+        <section class="section f2-you" id="your-country" aria-labelledby="f2-you-h">
+          <div class="f2-you-head">
+            <h2 id="f2-you-h">Your country</h2>
+            <label for="f2-pick" class="visually-hidden">Choose a country</label>
+            <select id="f2-pick"></select>
+          </div>
+          <article class="f2-card" id="f2-card" aria-live="polite"></article>
+        </section>
+
+        <section class="section f2-mapsec" id="map" aria-labelledby="f2-map-h">
           <div class="section-head">
-            <h2 id="fsd-timeline-heading">How it spread</h2>
-            <p>National yeses since the Dutch approval in April 2026.</p>
+            <h2 id="f2-map-h">How it spread</h2>
+            <p>Press play to replay every national yes since April. Tap a country for details.</p>
           </div>
-          <ol class="fsd-rail" id="fsd-timeline"></ol>
+          <div class="f2-map-wrap">
+            <svg class="f2-map" id="f2-map" viewBox="0 0 900 780" role="img" aria-labelledby="f2-map-t">
+              <title id="f2-map-t">Map of EU countries that have recognised the RDW approval</title>
+              <g id="f2-land"></g><g id="f2-pins"></g>
+            </svg>
+            <div class="f2-stamp" aria-hidden="true"><b id="f2-stamp-d"></b><span id="f2-stamp-n"></span></div>
+            <div class="f2-tip" id="f2-tip" hidden></div>
+          </div>
+          <div class="f2-player">
+            <button type="button" id="f2-play" class="f2-play" aria-label="Play">▶</button>
+            <label for="f2-scrub" class="visually-hidden">Timeline date</label>
+            <input type="range" id="f2-scrub" min="0" max="100" value="100" />
+            <span id="f2-scrub-l" class="f2-fine"></span>
+          </div>
+          <div class="f2-legend" aria-hidden="true"><span><i class="k-live"></i>Live</span><span><i class="k-rec"></i>Recognised</span><span><i class="k-rev"></i>Announced / review</span><span><i class="k-none"></i>Not yet</span></div>
         </section>
 
-        <section class="section" id="tcmv" aria-labelledby="tcmv-heading">
-          <div class="section-head">
-            <h2 id="tcmv-heading">TCMV meetings</h2>
-            <p id="tcmv-showing">Meetings</p>
-          </div>
-          <p class="fsd-tcmv-lead">
-            The committee that would have to pass a qualified majority before the
-            Commission can recognise the Dutch file EU-wide. A briefing or a
-            discussion is not a vote.
-            <span id="tcmv-vote-count" class="visually-hidden">0</span>
-          </p>
-          <div class="fsd-filters" role="group" aria-label="Filter meetings">
-            <button type="button" class="fsd-filter" data-tcmv-filter="all" aria-pressed="true">All</button>
-            <button type="button" class="fsd-filter" data-tcmv-filter="briefing" aria-pressed="false">Briefing</button>
-            <button type="button" class="fsd-filter" data-tcmv-filter="discussion" aria-pressed="false">Discussion</button>
-            <button type="button" class="fsd-filter" data-tcmv-filter="upcoming" aria-pressed="false">Upcoming</button>
-          </div>
-          <div class="tcmv-list" id="tcmv-list" data-tcmv-compact></div>
+        <section class="section" id="pipeline" aria-labelledby="f2-pipe-h">
+          <div class="section-head"><h2 id="f2-pipe-h">Regulatory pipeline</h2><p>Where every member state sits today, left to right.</p></div>
+          <div class="f2-pipe" id="f2-pipe"></div>
         </section>
 
-        <section class="section">
-          <div class="panel">
-            <p class="eyebrow">Sources &amp; disclaimer</p>
-            <p id="fsd-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
-            <p id="tcmv-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
-            <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
-              FSD Supervised is SAE Level 2. The driver must supervise at all times.
-              Status can change when a national authority recognises — or withdraws —
-              the RDW approval, or when TCMV publishes a new agenda.
-            </p>
-            <p style="margin: 1rem 0 0">
-              <a class="button button-ghost" href="/tcmv.html">Full TCMV log</a>
-              <a class="button button-ghost" href="/tesla.html">Tesla desk</a>
-            </p>
+        <section class="section" id="changes" aria-labelledby="f2-log-h">
+          <div class="section-head"><h2 id="f2-log-h">What changed</h2><p>Every dated move, with its source.</p></div>
+          <div class="f2-logwrap">
+            <div class="f2-log-filters" role="group" aria-label="Filter changes" id="f2-log-f"></div>
+            <ol class="f2-log" id="f2-log"></ol>
+            <button type="button" class="f2-more" id="f2-log-more" hidden>Show older</button>
+          </div>
+        </section>
+
+        <section class="section" id="countries" aria-labelledby="f2-tab-h">
+          <div class="section-head"><h2 id="f2-tab-h">All 27 countries</h2><p>Status, regulator, stated position, next step and sources.</p></div>
+          <div class="f2-tablewrap"><table class="f2-table" id="f2-table">
+            <thead><tr><th scope="col">Country</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Regulator</th><th scope="col">Position</th><th scope="col">Next step</th><th scope="col">Sources</th></tr></thead>
+            <tbody></tbody></table></div>
+        </section>
+
+        <section class="section" id="method">
+          <div class="panel f2-method">
+            <p class="eyebrow">Methodology &amp; sources</p>
+            <p id="fsd-note"></p>
+            <ul>
+              <li><b>Approved</b> means a national authority has recognised the RDW provisional approval (Art. 39, Reg. (EU) 2018/858). <b>Live</b> means public reports say the customer rollout has started.</li>
+              <li><b>The vote</b>: under Art. 39(3) the Commission needs a TCMV qualified majority, 15 of 27 states representing 65% of the EU population. National yeses are not that vote.</li>
+              <li><b>Population</b> figures are rounded millions; the EU total used is <span id="f2-eupop"></span>M.</li>
+              <li><b>Sources</b>: official or press sources first; trackers marked † (notanfsdtracker.com, tad-tracker.eu) are secondary and were used to fill gaps and cross-check. Blank fields mean we could not confirm them.</li>
+              <li>Dates are shown in your own time zone (<span id="f2-tz"></span>).</li>
+            </ul>
+            <p class="f2-fine">Tesla Assisted Driving / FSD (Supervised) is SAE Level 2. The driver must supervise at all times. Not affiliated with Tesla or the European Commission.</p>
           </div>
         </section>
       </main>
@@ -281,11 +244,9 @@
     </div>
     <script src="/script.js"></script>
     <script src="/grow.js?v=202610141830" data-ref data-band data-pop defer></script>
-    <script src="/fsd-europe-data.js"></script>
-    <script src="/tcmv-data.js"></script>
-    <script src="/fsd-europe.js"></script>
-    <script src="/tcmv.js"></script>
-    <script src="/countup.js" defer></script>
+    <script src="/fsd-europe-data.js?v=202610142030"></script>
+    <script src="/tcmv-data.js?v=202610142030"></script>
+    <script src="/fsd-europe-v2.js?v=202610142030"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/nav-pill.js?v=202610141830"></script>
