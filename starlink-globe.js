@@ -419,6 +419,13 @@
     }
   };
 
+  // One clock for lighting and orbits: the Cesium scene clock (system time).
+  const simNow = () => (viewer && window.Cesium ? window.Cesium.JulianDate.toDate(viewer.clock.currentTime) : new Date());
+  const darkenNight = () => {
+    const layers = viewer.imageryLayers;
+    for (let i = 0; i < layers.length; i++) { const l = layers.get(i); l.dayAlpha = 1; l.nightAlpha = 0.35; }
+  };
+
   async function addImagery() {
     const Cesium = window.Cesium;
     const layers = viewer.imageryLayers;
@@ -478,6 +485,55 @@
     setReset(true);
   };
 
+
+  // Zoom pill (+ / vertical slider / −), log scale on camera height. Same look as the 3D explorers.
+  const ZOOM_MIN_H = MIN_ZOOM, ZOOM_MAX_H = MAX_ZOOM - RE * 0.2;
+  const bindZoomUI = (onUse) => {
+    const Cesium = window.Cesium;
+    const stage = wrap()?.querySelector(".sl-orbit-stage");
+    if (!stage || stage.querySelector(".sl-zoom")) return;
+    const el = document.createElement("div");
+    el.className = "sl-zoom m3x-zoom";
+    el.innerHTML = '<button type="button" class="m3x-zoom-in" aria-label="Zoom in">+</button>' +
+      '<input type="range" class="m3x-zoom-range" min="0" max="100" step="0.5" value="0" aria-label="Globe zoom" aria-orientation="vertical" />' +
+      '<button type="button" class="m3x-zoom-out" aria-label="Zoom out">\u2212</button>';
+    stage.appendChild(el);
+    const range = el.querySelector("input");
+    const lo = Math.log(ZOOM_MIN_H), hi = Math.log(ZOOM_MAX_H);
+    const height = () => { const c = viewer.camera.positionCartographic; return c && Number.isFinite(c.height) ? c.height : HOME_RANGE - RE; };
+    const toVal = (h) => Math.min(100, Math.max(0, (100 * (hi - Math.log(Math.max(h, 1)))) / (hi - lo)));
+    const toH = (v) => Math.exp(hi - (v / 100) * (hi - lo));
+    let dragging = false;
+    const sync = (force) => {
+      if (dragging && !force) return;
+      const v = Math.round(toVal(height()) * 2) / 2;
+      if (+range.value !== v) range.value = v;
+      range.setAttribute("aria-valuetext", Math.round(height() / 1000).toLocaleString() + " km altitude");
+    };
+    const setHeight = (h) => {
+      h = Math.min(ZOOM_MAX_H, Math.max(ZOOM_MIN_H, h));
+      onUse();
+      const cam = viewer.camera;
+      const cur = height();
+      const p = Cesium.Cartesian3.clone(cam.positionWC);
+      const mag = Cesium.Cartesian3.magnitude(p);
+      const dest = Cesium.Cartesian3.multiplyByScalar(p, (mag + (h - cur)) / mag, new Cesium.Cartesian3());
+      cam.setView({ destination: dest, orientation: { heading: cam.heading, pitch: cam.pitch, roll: cam.roll } });
+      viewer.scene.requestRender();
+      sync(true);
+    };
+    range.addEventListener("input", () => { dragging = true; setHeight(toH(+range.value)); });
+    ["change", "pointerup", "blur"].forEach((t) => range.addEventListener(t, () => { dragging = false; }));
+    el.querySelector(".m3x-zoom-in").addEventListener("click", () => setHeight(height() / 1.6));
+    el.querySelector(".m3x-zoom-out").addEventListener("click", () => setHeight(height() * 1.6));
+    ["pointerdown", "wheel", "touchstart"].forEach((t) => el.addEventListener(t, (e) => e.stopPropagation(), { passive: true }));
+    viewer.camera.percentageChanged = 0.01;
+    viewer.camera.changed.addEventListener(() => sync());
+    viewer.camera.moveEnd.addEventListener(() => sync());
+    let lastSync = 0;
+    viewer.scene.postRender.addEventListener(() => { const n = performance.now(); if (n - lastSync > 200) { lastSync = n; sync(); } });
+    sync(true);
+  };
   const bindControls = () => {
     const Cesium = window.Cesium;
     const canvas = viewer.scene.canvas;
@@ -488,6 +544,7 @@
     canvas.addEventListener("pointerdown", onUse, { capture: true });
     canvas.addEventListener("wheel", onUse, { passive: true, capture: true });
     canvas.addEventListener("touchstart", onUse, { capture: true, passive: true });
+    bindZoomUI(onUse);
     document.getElementById("sl-globe-reset")?.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -511,10 +568,10 @@
         const height = cart && Number.isFinite(cart.height) ? cart.height : HOME_RANGE;
         const interval = height < 2.2e6 ? 2500 : 10000;
         if (now - lastProp > interval) {
-          placed = paintPoints(new Date());
+          placed = paintPoints(simNow());
         }
         if (!locked && now - lastModels > 140) {
-          updateModels(new Date());
+          updateModels(simNow());
           lastModels = now;
         }
       } catch (err) {
@@ -613,8 +670,19 @@
       return;
     }
     viewer.targetFrameRate = coarse() ? 30 : 60;
-    viewer.clock.shouldAnimate = false;
-    viewer.clock.currentTime = Cesium.JulianDate.fromIso8601("2026-06-21T14:00:00Z");
+    // Real-time day/night: the Sun position comes from the scene clock, which runs on the system clock
+    // (same wall-clock time the SGP4 propagation uses via simNow()).
+    viewer.clock.clockStep = Cesium.ClockStep.SYSTEM_CLOCK;
+    viewer.clock.multiplier = 1;
+    viewer.clock.shouldAnimate = true;
+    viewer.clock.currentTime = Cesium.JulianDate.now();
+    // Keep lighting and the darker night side at every zoom level (Cesium fades them out close in by default).
+    viewer.scene.globe.dynamicAtmosphereLighting = true;
+    viewer.scene.globe.dynamicAtmosphereLightingFromSun = true;
+    viewer.scene.globe.lightingFadeOutDistance = 1;
+    viewer.scene.globe.lightingFadeInDistance = 2;
+    viewer.scene.globe.nightFadeOutDistance = 1;
+    viewer.scene.globe.nightFadeInDistance = 2;
     viewer.scene.globe.show = true;
     viewer.scene.globe.enableLighting = true;
     viewer.scene.globe.showGroundAtmosphere = true;
@@ -640,6 +708,7 @@
     }
     try {
       await addImagery();
+      darkenNight();
     } catch {
       started = false;
       viewer.destroy();
@@ -647,7 +716,7 @@
       return;
     }
     loadRecs();
-    placed = paintPoints(new Date());
+    placed = paintPoints(simNow());
     lockHome();
     bindControls();
     show();
@@ -737,14 +806,14 @@
         roll: 0,
       },
     });
-    placed = paintPoints(new Date());
-    updateModels(new Date());
+    placed = paintPoints(simNow());
+    updateModels(simNow());
     lastModels = performance.now();
   };
   api.flyToNearest = (kind) => {
     if (!viewer || !recs.length) return null;
     const Cesium = window.Cesium;
-    placed = paintPoints(new Date());
+    placed = paintPoints(simNow());
     let best = null;
     recs.forEach((rec, i) => {
       if (kind && gens[i] !== kind) return;
@@ -806,8 +875,8 @@
     spinning = false;
     setZoomLimits();
     setReset(true);
-    placed = paintPoints(new Date());
-    updateModels(new Date());
+    placed = paintPoints(simNow());
+    updateModels(simNow());
     lastModels = performance.now();
     return { kind: gens[best.i], height: h, lon, lat };
   };

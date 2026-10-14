@@ -232,3 +232,11 @@
 #sl-updated { display: inline-flex; align-items: center; flex-wrap: nowrap; max-width: 100%; }
 #sl-updated time { white-space: nowrap; margin-left: 0.3em; }
 @media (max-width: 480px) { #sl-updated { font-size: 0.82rem; } }
+/* Globe zoom pill (styles shared with the 3D explorers' .m3x-zoom) */
+.sl-zoom{position:absolute;z-index:3;right:.7rem;top:50%;translate:0 -50%;display:none;flex-direction:column;align-items:center;gap:.35rem;padding:.4rem .3rem;background:rgba(12,12,15,.62);border:1px solid rgba(255,255,255,.12);border-radius:999px;backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 14px 34px rgba(0,0,0,.45);touch-action:none;cursor:default}
+.sl-orbit.is-globe .sl-zoom{display:flex}
+.sl-zoom button{width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.06);color:#eee;font:500 1.15rem/1 Inter,system-ui,sans-serif;cursor:pointer;display:grid;place-items:center;padding:0;margin:0}
+.sl-zoom button:hover{background:rgba(227,25,55,.9)}
+.sl-zoom button:focus-visible,.sl-zoom input:focus-visible{outline:2px solid #e31937;outline-offset:2px}
+.sl-zoom input{writing-mode:vertical-lr;direction:rtl;width:22px;height:120px;margin:.15rem 0;accent-color:#e31937;cursor:pointer;background:transparent}
+@media (max-width:700px){.sl-zoom{right:.45rem;gap:.2rem;padding:.25rem .15rem}.sl-zoom button{width:28px;height:28px;font-size:1rem}.sl-zoom input{height:80px;width:20px}}
