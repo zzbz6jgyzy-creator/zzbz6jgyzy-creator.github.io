@@ -84,6 +84,42 @@
     );
   }
 
+  const scratch = { carto: null, ground: null };
+  let occluder = null;
+
+  const occluderForCamera = () => {
+    const Cesium = window.Cesium;
+    const cam = viewer.camera.positionWC;
+    if (!occluder) occluder = new Cesium.EllipsoidalOccluder(Cesium.Ellipsoid.WGS84, cam);
+    else occluder.cameraPosition = cam;
+    return occluder;
+  };
+
+  const behindGlobe = (pos) => {
+    const Cesium = window.Cesium;
+    if (!scratch.carto) {
+      scratch.carto = new Cesium.Cartographic();
+      scratch.ground = new Cesium.Cartesian3();
+    }
+    const carto = Cesium.Cartographic.fromCartesian(pos, Cesium.Ellipsoid.WGS84, scratch.carto);
+    if (!carto) return true;
+    const ground = Cesium.Cartesian3.fromRadians(carto.longitude, carto.latitude, 0, Cesium.Ellipsoid.WGS84, scratch.ground);
+    return !occluderForCamera().isPointVisible(ground);
+  };
+
+  const occlude = () => {
+    if (!viewer) return;
+    const now = viewer.clock.currentTime;
+    viewer.entities.values.forEach((ent) => {
+      const pos = ent.position && ent.position.getValue(now);
+      if (!pos) return;
+      const hidden = behindGlobe(pos);
+      ent.show = !hidden;
+      if (ent.point) ent.point.show = !hidden;
+      if (ent.label) ent.label.show = !hidden && !!ent.slWantLabel;
+    });
+  };
+
   const paint = (payload) => {
     if (!viewer || !payload) return;
     const Cesium = window.Cesium;
@@ -122,6 +158,7 @@
         few ||
         spot.heat === "hot" ||
         (mode === "europe" && inEurope);
+      ent.slWantLabel = showLabel;
       ent.label = {
         text: spot.code,
         font: "600 12px IBM Plex Mono, monospace",
@@ -138,6 +175,7 @@
       const code = String(ent.id || "").replace(/^hot-/, "");
       if (!keep.has(code)) viewer.entities.remove(ent);
     });
+    occlude();
   };
 
   const bindPicks = () => {
@@ -208,6 +246,16 @@
     viewer.scene.globe.show = true;
     viewer.scene.globe.enableLighting = true;
     viewer.scene.globe.showGroundAtmosphere = true;
+    viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString("#0c1620");
+    viewer.scene.globe.undergroundColor = Cesium.Color.fromCssColorString("#07080c");
+    viewer.scene.globe.undergroundColorAlphaByDistance = new Cesium.NearFarScalar(0, 1, 1, 1);
+    viewer.scene.globe.backFaceCulling = true;
+    viewer.scene.globe.depthTestAgainstTerrain = true;
+    if (viewer.scene.globe.translucency) {
+      viewer.scene.globe.translucency.enabled = false;
+      viewer.scene.globe.translucency.frontFaceAlpha = 1;
+      viewer.scene.globe.translucency.backFaceAlpha = 1;
+    }
     viewer.scene.fog.enabled = true;
     viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#07080c");
     if (viewer.scene.skyAtmosphere) {
@@ -243,6 +291,7 @@
       return;
     }
     bindPicks();
+    viewer.scene.preRender.addEventListener(occlude);
     showGlobe();
     lookAt(WORLD, false);
     setMode("world");
@@ -254,6 +303,15 @@
 
   api.ready = false;
   api.active = () => Boolean(viewer);
+  api.visibleCodes = () => {
+    if (!viewer) return [];
+    occlude();
+    return viewer.entities.values
+      .filter((ent) => ent.show !== false)
+      .map((ent) => String(ent.id || "").replace(/^hot-/, ""))
+      .filter(Boolean)
+      .sort();
+  };
   api.mode = () => mode;
   api.sceneMode = () => viewer?.scene?.mode;
   api.setSpots = (spots, focus, points) => {
@@ -264,6 +322,18 @@
     if (!queued) return;
     queued.focus = code || "";
     paint(queued);
+  };
+  api.lookAt = (pose, animate = false) => {
+    lookAt(
+      {
+        lon: pose.lon,
+        lat: pose.lat,
+        height: pose.height ?? WORLD.height,
+        pitch: pose.pitch ?? WORLD.pitch,
+      },
+      animate
+    );
+    occlude();
   };
   api.flyWorld = (animate = true) => {
     setMode("world");
