@@ -174,8 +174,11 @@ SRC = {
 def fetch(url: str, dest: Path, min_size: int = 10000) -> Path:
     import urllib.request
     req = urllib.request.Request(url, headers={"User-Agent": "superchargeddaily.com starlink tracker (daily)"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        data = r.read()
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            data = r.read()
+    except Exception as exc:
+        raise SystemExit(f"download failed for {url}: {exc}")
     if len(data) < min_size:
         raise SystemExit(f"suspiciously small download from {url}: {len(data)} bytes")
     dest.write_bytes(data)

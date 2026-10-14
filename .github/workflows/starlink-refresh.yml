@@ -21,6 +21,8 @@ jobs:
       - name: McDowell counts -> starlink-live.js
         run: python3 scripts/build-starlink-stats.py
       - name: CelesTrak orbits + GCAT buses -> starlink-gp.js
+        # CelesTrak sometimes refuses GitHub's runners; counts still refresh if it does.
+        continue-on-error: true
         run: python3 scripts/build-starlink-gp.py
       - name: Bump cache-busting tags and commit if data changed
         run: |
