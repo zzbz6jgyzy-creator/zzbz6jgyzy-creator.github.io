@@ -1,6 +1,7 @@
 // Supercharged Daily: full-screen Cybertruck explorer. Original code. three.js r170 (MIT).
 // Exterior: "Tesla Cybertruck" by Sketcher (CC BY 4.0). Internal parts are illustrative, modelled here.
 import * as THREE from '/vendor/three/three.module.min.js';
+import { initZoom } from '/m3x-zoom.js?v=1';
 import { OrbitControls } from '/vendor/three/addons/OrbitControls.js';
 import { GLTFLoader } from '/vendor/three/addons/GLTFLoader.js';
 import { DRACOLoader } from '/vendor/three/addons/DRACOLoader.js';
@@ -498,6 +499,7 @@ function placeLabel() { if (!selected) return; const c = partBox(selected).getCe
 
 function resize() { const w = innerWidth, h = app.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w < h ? 50 : 34; frame(); kick(); }
 addEventListener('resize', resize); resize(); HOME.p.copy(homePos()); camera.position.copy(HOME.p); controls.target.copy(HOME.t);
+var zoomUI = initZoom({ app, camera, controls, kick, cancelFly: () => { fly = null; } });
 document.addEventListener('visibilitychange', () => { visible = !document.hidden; kick(); });
 function kick() {
   if (!raf) raf = requestAnimationFrame(tick);
@@ -523,7 +525,7 @@ function tick() {
     controls.autoRotate = !paused && !selected && now - last > 6500; controls.autoRotateSpeed = 0.45;
     if (controls.update() || controls.autoRotate) busy = true;
   }
-  renderer.render(scene, camera); placeLabel();
+  renderer.render(scene, camera); placeLabel(); zoomUI && zoomUI.sync();
   frames++; if (now - t0 > 1500) { const fps = frames * 1000 / (now - t0); if (fps < 32 && dpr > 1) { dpr = Math.max(1, dpr - 0.4); renderer.setPixelRatio(dpr); resize(); } frames = 0; t0 = now; }
   if (busy) kick();
 }
