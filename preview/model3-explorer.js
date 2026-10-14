@@ -5,6 +5,7 @@ import { OrbitControls } from '/vendor/three/addons/OrbitControls.js';
 import { GLTFLoader } from '/vendor/three/addons/GLTFLoader.js';
 import { DRACOLoader } from '/vendor/three/addons/DRACOLoader.js';
 import { RoomEnvironment } from '/vendor/three/addons/RoomEnvironment.js';
+import { mergeGeometries } from '/vendor/three/utils/BufferGeometryUtils.js';
 import { PARTS, ORDER, PHOTOS } from './model3-parts.js?v=2';
 
 // ---- Exterior config: swap this block to use another GLB ----
@@ -40,7 +41,7 @@ scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture; scene.
 const camera = new THREE.PerspectiveCamera(35, 1, 0.05, 80);
 const key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(4, 9, 5); key.castShadow = true;
 key.shadow.mapSize.set(coarse ? 1024 : 2048, coarse ? 1024 : 2048); Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 25 }); key.shadow.radius = 8; key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02;
-const rim = new THREE.DirectionalLight(0xff3344, 1.6); rim.position.set(-6, 3, -6);
+const rim = new THREE.DirectionalLight(0xff5a66, 1.25); rim.position.set(-6, 0.5, -6);
 const fill = new THREE.DirectionalLight(0xbfd2ff, 0.5); fill.position.set(-5, 4, 6);
 scene.add(key, rim, fill, new THREE.HemisphereLight(0x9aa8ff, 0x100404, 0.25));
 // floor: dark matte + soft contact shadow + thin red ring + faint grid
@@ -105,7 +106,7 @@ function inverter(x, y, z, s) {
 function buildInternals(d) {
   const { zf, zr, tw, R, rear, W, H } = d; const wb = zf - zr, mid = (zf + zr) / 2;
   // battery pack: tray, cooling plate, 4 module rows with cell tops, HV connector
-  const bl = wb - 0.62, bw = 2 * tw - 0.48, by = 0.17;
+  const bl = wb - 0.7, bw = 2 * tw - 0.62, by = 0.2;
   add('battery', box(bw + 0.04, 0.05, bl + 0.04), M.aluDark, V(0, by, mid));
   add('battery', box(bw - 0.04, 0.012, bl - 0.06), M.cool, V(0, by + 0.031, mid));
   const rowW = (bw - 0.1) / 4, cells = [];
@@ -115,16 +116,16 @@ function buildInternals(d) {
   inst('battery', cyl(0.016, 0.006, 10), M.cellTop, cells);
   add('battery', box(0.14, 0.08, 0.08), M.hv, V(0, by + 0.06, mid - bl / 2 - 0.02), null, 0.15);
   // drive units + inverters + HV cables
-  driveUnit('rearMotor', 0, R, zr + 0.03, 1, false); inverter(-0.08, R + 0.22, zr + 0.03, 1);
+  driveUnit('rearMotor', 0, R + 0.03, zr + 0.06, 0.88, false); inverter(-0.08, R + 0.22, zr + 0.06, 0.88);
   driveUnit('frontMotor', 0, R, zf - 0.03, 0.82, true); inverter(0.06, R + 0.18, zf - 0.03, 0.82);
   for (const z of [zr, zf]) add(z === zr ? 'rearMotor' : 'frontMotor', cyl(0.03, 2 * tw - 0.34, 12), M.steel, V(0, R, z), X90, 0.08);
   const cable = (a, b) => { const g = new THREE.TubeGeometry(new THREE.CatmullRomCurve3([a, a.clone().lerp(b, .5).add(V(0, -0.05, 0)), b]), 20, 0.014, 8); return addMesh('battery', new THREE.Mesh(g, M.hv), 0.08); };
   cable(V(0, by + 0.06, mid - bl / 2 - 0.05), V(-0.08, R + 0.22, zr + 0.17)); cable(V(0.05, by + 0.06, mid + bl / 2), V(0.06, R + 0.18, zf - 0.16));
   // heat pump: Supermanifold block + Octovalve + pipes ; LV battery beside it
-  const hp = V(0.24, R + 0.42, zf + 0.15);
+  const hp = V(0.24, R + 0.2, zf + 0.02);
   add('heatpump', box(0.22, 0.16, 0.12), M.hvac, hp); add('heatpump', cyl(0.055, 0.06, 24), M.blue, hp.clone().add(V(0, 0.11, 0)));
   for (let i = 0; i < 4; i++) add('heatpump', cyl(0.012, 0.06, 8), M.alu, hp.clone().add(V(-0.08 + i * 0.05, -0.1, 0.03)), null, 0.08);
-  add('lv', box(0.19, 0.13, 0.11), M.black, V(-0.25, R + 0.4, zf + 0.16)); add('lv', cyl(0.012, 0.02, 8), M.red, V(-0.3, R + 0.475, zf + 0.16), null, 0.08); add('lv', cyl(0.012, 0.02, 8), M.steel, V(-0.2, R + 0.475, zf + 0.16), null, 0.08);
+  add('lv', box(0.19, 0.13, 0.11), M.black, V(-0.25, R + 0.2, zf + 0.04)); add('lv', cyl(0.012, 0.02, 8), M.red, V(-0.3, R + 0.275, zf + 0.04), null, 0.08); add('lv', cyl(0.012, 0.02, 8), M.steel, V(-0.2, R + 0.275, zf + 0.04), null, 0.08);
   // suspension: front double wishbone + coilover, rear multi-link + coilover
   for (const sx of [-1, 1]) {
     const hubF = V(sx * (tw - 0.16), R, zf), inF = sx * (tw - 0.58);
@@ -132,26 +133,57 @@ function buildInternals(d) {
     arm('suspFront', V(inF + sx * 0.12, R + 0.2, zf + 0.1), hubF.clone().add(V(0, 0.17, 0)), 0.025); arm('suspFront', V(inF + sx * 0.12, R + 0.2, zf - 0.1), hubF.clone().add(V(0, 0.17, 0)), 0.025);
     add('suspFront', box(0.05, 0.3, 0.07), M.cast, hubF.clone().add(V(-sx * 0.02, 0.03, 0)), null, 0.15);
     const cF = V(sx * (tw - 0.36), R + 0.25, zf - 0.05); add('suspFront', coil(0.05, 0.22, 6, 0.008), M.red, cF, [0, 0, -sx * 0.25], 0.15); add('suspFront', cyl(0.022, 0.36, 12), M.spring, cF, [0, 0, -sx * 0.25], 0.12);
-    const hubR = V(sx * (tw - 0.16), R, zr), inR = sx * (tw - 0.6);
+    const hubR = V(sx * (tw - 0.16), R, zr), inR = sx * (tw - 0.52);
     [[-0.1, 0.16], [-0.1, -0.12], [0.16, 0.1], [0.16, -0.08], [0.0, -0.22]].forEach(([dy, dz]) => arm('suspRear', V(inR, R + dy, zr + dz), hubR.clone().add(V(0, dy * 0.8, dz * 0.4)), 0.02));
     add('suspRear', box(0.05, 0.28, 0.09), M.cast, hubR.clone().add(V(-sx * 0.02, 0.02, 0)), null, 0.15);
     const cR = V(sx * (tw - 0.38), R + 0.22, zr - 0.06); add('suspRear', coil(0.05, 0.2, 6, 0.008), M.red, cR, [0, 0, -sx * 0.2], 0.15); add('suspRear', cyl(0.022, 0.32, 12), M.spring, cR, [0, 0, -sx * 0.2], 0.12);
     add('suspFront', cyl(0.012, 2 * tw - 0.9, 8), M.steel, V(0, R - 0.06, zf + 0.22), X90, 0.08);
   }
   // charge port (inset behind the left tail light) — car's left is +x here
-  add('chargePort', box(0.06, 0.09, 0.1), M.black, V(W / 2 - 0.16, H * 0.6, rear + 0.32), null, 0.22);
-  add('chargePort', cyl(0.012, 0.03, 8), M.blue, V(W / 2 - 0.12, H * 0.6, rear + 0.32), X90, 0.22);
+  add('chargePort', box(0.06, 0.09, 0.1), M.black, V(W / 2 - 0.3, H * 0.6, rear + 0.5), null, 0.22);
+  add('chargePort', cyl(0.012, 0.03, 8), M.blue, V(W / 2 - 0.26, H * 0.6, rear + 0.5), X90, 0.22);
   // cameras
   const cam = (pos) => { add('cameras', box(0.05, 0.035, 0.05), M.black, pos, null, 0.22); add('cameras', new THREE.SphereGeometry(0.012, 12, 8), M.lens, pos.clone().add(V(0, 0, 0.026)), null, 0.1); };
-  cam(V(-0.03, H * 0.88, zf - 1.05)); cam(V(0.03, H * 0.88, zf - 1.05));
-  for (const sx of [-1, 1]) { cam(V(sx * (W / 2 - 0.08), H * 0.68, mid + 0.2)); cam(V(sx * (W / 2 - 0.06), R * 1.75, zf - 0.38)); }
-  cam(V(0, H * 0.55, rear + 0.08));
+  cam(V(-0.03, H * 0.8, zf - 1.15)); cam(V(0.03, H * 0.8, zf - 1.15));
+  for (const sx of [-1, 1]) { cam(V(sx * (W / 2 - 0.32), H * 0.6, mid + 0.2)); cam(V(sx * (W / 2 - 0.26), R * 1.9, zf - 0.5)); }
+  cam(V(0, H * 0.55, rear + 0.3));
   // HVAC module behind dash
   add('hvac', box(0.62, 0.22, 0.28), M.hvac, V(0, R + 0.42, zf - 0.78)); add('hvac', cyl(0.1, 0.13, 24), M.aluDark, V(0.25, R + 0.42, zf - 0.78), X90); add('hvac', box(0.5, 0.05, 0.05), M.black, V(0, R + 0.56, zf - 0.7), null, 0.12);
   // explode offsets
   const off = { body: V(0, 1.8, 0), glass: V(0, 2.6, 0), lights: V(0, 1.8, 0), mirrors: V(0, 1.8, 0), cameras: V(0, 1.8, 0), cabin: V(0, 0.95, 0), display: V(0, 1.2, 0), hvac: V(0, 1.05, 0.35), battery: V(0, -0.02, 0), rearMotor: V(0, 0.18, -1.0), frontMotor: V(0, 0.18, 0.95), inverter: V(0, 0.6, 0), heatpump: V(0.35, 0.8, 0.8), lv: V(-0.35, 0.8, 0.8), chargePort: V(0.7, 1.6, -0.3) };
   Object.entries(off).forEach(([k, v]) => { if (parts[k]) parts[k].off.copy(v); });
 }
+
+// Highland-style 3D wheels (hand-built): 10 twisted, bevelled spokes + thin lip, dark barrel and centre cap
+function buildWheels(d) {
+  const { R, zf, zr } = d, cy = d.cy || R, tx = d.tx || d.tw + 0.12, rr = R * 0.7, r0 = rr * 0.25, r1 = rr * 0.99, N = 10, k = 0.38;
+  const sh = new THREE.Shape(), L = [], Rt = [];
+  for (let i = 0; i <= 12; i++) { const t = i / 12, r = r0 + (r1 - r0) * t, a = k * t * t, hw = rr * (0.055 + 0.035 * t) / r;
+    L.push([Math.cos(a + hw) * r, Math.sin(a + hw) * r]); Rt.push([Math.cos(a - hw) * r, Math.sin(a - hw) * r]); }
+  sh.moveTo(...L[0]); L.slice(1).forEach((p) => sh.lineTo(...p)); Rt.reverse().forEach((p) => sh.lineTo(...p)); sh.closePath();
+  const one = new THREE.ExtrudeGeometry(sh, { depth: 0.022, bevelEnabled: true, bevelThickness: 0.009, bevelSize: 0.006, bevelSegments: 2, curveSegments: 1 });
+  one.rotateY(Math.PI / 2); // extrusion -> +x (outward face)
+  const pa = one.attributes.position; for (let i = 0; i < pa.count; i++) { const r = Math.hypot(pa.getY(i), pa.getZ(i)); pa.setX(i, pa.getX(i) - 0.035 * (r / rr)); } // dished: hub proud, rim recessed
+  one.computeVertexNormals();
+  const spokes = []; for (let i = 0; i < N; i++) spokes.push(one.clone().rotateX(i * Math.PI * 2 / N));
+  const lip = new THREE.TorusGeometry(rr, 0.014, 8, 72).rotateY(Math.PI / 2).translate(-0.022, 0, 0);
+  const silverG = mergeGeometries([...spokes.map((g) => g.toNonIndexed()), lip.toNonIndexed()].map((g) => { g.deleteAttribute('uv'); return g; }));
+  const barrel = new THREE.CylinderGeometry(rr * 0.985, rr * 0.985, 0.2, 56, 1, true).rotateZ(Math.PI / 2).translate(-0.13, 0, 0);
+  const cap = new THREE.CylinderGeometry(r0 * 0.9, r0 * 1.06, 0.035, 36).rotateZ(-Math.PI / 2).translate(-0.004, 0, 0);
+  const darkG = mergeGeometries([barrel.toNonIndexed(), cap.toNonIndexed()].map((g) => { g.deleteAttribute('uv'); return g; }));
+  const silver = P({ color: 0xd2d5da, metalness: 1, roughness: .2, clearcoat: .6, clearcoatRoughness: .12 }), dark = S({ color: 0x0c0d0f, metalness: .4, roughness: .55, side: THREE.DoubleSide });
+  const face = tx - 0.056;
+  for (const z of [zf, zr]) for (const side of [0, 1]) { const sx = side ? 1 : -1;
+    [[silverG, silver], [darkG, dark]].forEach(([g, m]) => { const o = new THREE.Mesh(g, m); o.position.set(sx * face, cy, z); o.scale.x = sx; o.castShadow = o.receiveShadow = true; o.userData = { part: 'wheels', side }; reg('wheels').meshes.push(o); }); }
+}
+
+// keep only triangles close to a hub centre (used to keep the T logo from the rim mesh)
+function keepNearHub(mesh, d) { const g = mesh.geometry, pos = g.attributes.position, v = new THREE.Vector3(), keep = [], lim = d.R * 0.17;
+  for (let t = 0; t < pos.count; t += 3) { let y = 0, z = 0; for (let k = 0; k < 3; k++) { v.fromBufferAttribute(pos, t + k).applyMatrix4(mesh.matrix); y += v.y / 3; z += v.z / 3; }
+    const zc = Math.abs(z - d.zf) < Math.abs(z - d.zr) ? d.zf : d.zr; if (Math.hypot(y - (d.cy || d.R), z - zc) < lim) keep.push(t); }
+  if (!keep.length) return null; const ng = new THREE.BufferGeometry();
+  for (const name of Object.keys(g.attributes)) { const a = g.attributes[name], n = a.itemSize, arr = new a.array.constructor(keep.length * 3 * n); keep.forEach((t, i) => arr.set(a.array.subarray(t * n, (t + 3) * n), i * 3 * n)); ng.setAttribute(name, new THREE.BufferAttribute(arr, n, a.normalized)); }
+  mesh.geometry = ng; return mesh; }
 
 // split a merged geometry into left/right meshes by triangle centroid x
 function splitLR(mesh) {
@@ -175,18 +207,6 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
   const k = EXTERIOR.length / s.z; root.scale.setScalar(k); root.updateMatrixWorld(true); b.setFromObject(root);
   const c = b.getCenter(new THREE.Vector3()); root.position.sub(V(c.x, b.min.y, c.z)); root.updateMatrixWorld(true); b.setFromObject(root);
   const paint = P({ color: 0xeeeae2, metalness: .05, roughness: .28, clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: .85 });
-  // Highland-style face: the model's face is a near-solid disc, so twisted spokes + dark pockets are masked in the shader
-  const rimU = { uW: { value: new THREE.Vector4(1.4, -1.4, 0.34, 0.34) } };
-  const rimMat = P({ color: 0xc4c7cc, metalness: 1, roughness: .2, clearcoat: .5, clearcoatRoughness: .12 });
-  rimMat.onBeforeCompile = (sh) => { sh.uniforms.uW = rimU.uW;
-    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vWP;').replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvWP = (modelMatrix * vec4(transformed, 1.0)).xyz;');
-    sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
-varying vec3 vWP; uniform vec4 uW; float rimM;`).replace('#include <color_fragment>', `#include <color_fragment>
-{ float zc = vWP.z > (uW.x + uW.y) * .5 ? uW.x : uW.y; vec2 dd = vec2(vWP.z - zc, vWP.y - uW.z); float r = length(dd) / uW.w; float th = atan(dd.y, dd.x);
-  float tw = sign(vWP.x); float f = fract(th * 10.0 / 6.2831853 + tw * r * 0.8); float sp = smoothstep(0.0, 0.03, f) * (1.0 - smoothstep(0.30, 0.34, f));
-  float face = smoothstep(0.24, 0.27, r) * (1.0 - smoothstep(0.80, 0.83, r)); rimM = mix(1.0, sp, face); diffuseColor.rgb = mix(vec3(0.012, 0.013, 0.015), diffuseColor.rgb, rimM); }`)
-      .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = mix(0.75, roughnessFactor, rimM);')
-      .replace('#include <metalnessmap_fragment>', '#include <metalnessmap_fragment>\nmetalnessFactor = mix(0.1, metalnessFactor, rimM);'); };
   const meshes = []; root.traverse((o) => { if (o.isMesh) meshes.push(o); });
   const tyres = [];
   meshes.forEach((o) => {
@@ -194,14 +214,13 @@ varying vec3 vWP; uniform vec4 uW; float rimM;`).replace('#include <color_fragme
     if (id === 'hide') { o.visible = false; return; }
     const mn = (o.material && o.material.name) || '';
     if (/carpaint/i.test(mn) && !/black/i.test(mn)) o.material = paint;
-    else if (n === 7 || n === 15 || n === 20) o.material = P({ color: 0x0a0d12, metalness: 0, roughness: .03, transparent: true, opacity: n === 7 ? .7 : .38, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide });
+    else if (n === 7 || n === 15 || n === 20) o.material = P({ color: 0x0a0d12, metalness: 0, roughness: .05, specularIntensity: .35, specularColor: 0xffffff, transparent: true, opacity: n === 7 ? .7 : .38, clearcoat: 0, depthWrite: false, side: THREE.DoubleSide });
     else if (n === 2 || n === 14) o.material = P({ color: 0xffffff, metalness: 0, roughness: .02, transparent: true, opacity: .18, clearcoat: 1, depthWrite: false });
     else if (n === 10) o.material = S({ color: RED, metalness: .3, roughness: .4 });
     else if (n === 9) o.material = M.disc;
-    else if (n === 25) o.material = P({ color: 0xd9dce1, metalness: 1, roughness: .2 }); // T logo
-    else if (n === 26) o.material = S({ color: 0x0e0f11, metalness: .3, roughness: .7 }); // gunmetal barrel / pockets
+    else if (n === 25) o.material = P({ color: 0x3a3d42, metalness: 1, roughness: .12, clearcoat: 1 }); // T logo medallion: dark gloss so the embossed T catches the light (outer rim tabs are trimmed off at registration)
     else if (n === 27) o.material = S({ color: 0x15171a, metalness: .6, roughness: .4 }); // centre cap
-    else if (n === 28) o.material = rimMat; // "blur spoke" mesh is actually the spoke face else if (n === 29) o.material = S({ color: 0x141518, metalness: .6, roughness: .35 }); // motion-blur spoke cards smear the face
+    else if (n === 29) o.material = S({ color: 0x141518, metalness: .6, roughness: .35 }); // motion-blur spoke cards smear the face
     else if (n === 31) o.material = S({ color: 0x0c0c0d, metalness: 0, roughness: .85 });
     else if (n === 22) o.material = S({ color: 0xffffff, emissive: 0xffe8e8, emissiveIntensity: 1.2 });
     if (n === 31) tyres.push(o);
@@ -211,14 +230,16 @@ varying vec3 vWP; uniform vec4 uW; float rimM;`).replace('#include <color_fragme
   const q = { fl: [], fr: [], rl: [], rr: [] }; pts.forEach((p) => q[(p.z > 0 ? 'f' : 'r') + (p.x > 0 ? 'l' : 'r')].push(p));
   const cen = (a) => { const bb = new THREE.Box3().setFromPoints(a); return { c: bb.getCenter(new THREE.Vector3()), r: bb.getSize(new THREE.Vector3()).y / 2 }; };
   let d;
-  try { const W4 = Object.values(q).map(cen); d = { zf: (W4[0].c.z + W4[1].c.z) / 2, zr: (W4[2].c.z + W4[3].c.z) / 2, tw: W4.reduce((a, w) => a + Math.abs(w.c.x), 0) / 4, R: W4.reduce((a, w) => a + w.r, 0) / 4, cy: W4.reduce((a, w) => a + w.c.y, 0) / 4 }; if (!isFinite(d.zf)) throw 0; rimU.uW.value.set(d.zf, d.zr, d.cy, d.R); }
+  try { const W4 = Object.values(q).map(cen); d = { zf: (W4[0].c.z + W4[1].c.z) / 2, zr: (W4[2].c.z + W4[3].c.z) / 2, tw: W4.reduce((a, w) => a + Math.abs(w.c.x), 0) / 4, R: W4.reduce((a, w) => a + w.r, 0) / 4, cy: W4.reduce((a, w) => a + w.c.y, 0) / 4, tx: pts.reduce((a, p) => Math.max(a, Math.abs(p.x)), 0) }; if (!isFinite(d.zf)) throw 0; }
   catch (e) { d = { zf: 1.45, zr: -1.43, tw: 0.8, R: 0.34 }; }
   Object.assign(d, { front: b.max.z, rear: b.min.z, W: b.max.x - b.min.x, H: b.max.y });
   // register exterior meshes; wheels/brakes split L/R
   meshes.forEach((o) => { const id = o.userData.part; if (id === 'hide') return;
-    if (id === 'wheels' || id === 'brakes') { splitLR(o).forEach((nm, i) => { if (!nm) return; nm.castShadow = nm.receiveShadow = true; nm.userData = { part: id, side: i }; reg(id).meshes.push(nm); }); return; }
+    if (id === 'wheels' && [26, 27, 28, 29].includes(NUM(o))) { o.visible = false; return; } // replaced by built 3D wheels
+    if (id === 'wheels' || id === 'brakes') { splitLR(o).forEach((nm, i) => { if (nm && NUM(o) === 25) nm = keepNearHub(nm, d); if (!nm) return; nm.castShadow = nm.receiveShadow = true; nm.userData = { part: id, side: i }; reg(id).meshes.push(nm); }); return; }
     const p = reg(id); p.group.attach(o); p.meshes.push(o); });
-  buildInternals(d);
+  buildInternals(d); if (/debug/.test(location.search)) window.__m3x = { THREE, parts, car, camera, controls, kick, d };
+  buildWheels(d);
   // body panels drift apart slightly (outward from their own centres) on top of the lift
   (parts.body ? parts.body.meshes : []).forEach((o) => { const cc = new THREE.Box3().setFromObject(o).getCenter(new THREE.Vector3()); o.userData.base = o.position.clone(); o.userData.eo = o.parent.worldToLocal(cc.clone().add(V(cc.x * 0.12, 0.03, cc.z * 0.04))).sub(o.parent.worldToLocal(cc.clone())); });
   // side groups for outward explode
