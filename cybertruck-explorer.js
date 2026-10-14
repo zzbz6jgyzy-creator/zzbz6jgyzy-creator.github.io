@@ -8,7 +8,7 @@ import { RoomEnvironment } from '/vendor/three/addons/RoomEnvironment.js';
 import { PARTS, ORDER, PHOTOS } from './cybertruck-parts.js?v=1';
 
 const EXTERIOR = {
-  url: '/assets/3d/cybertruck.glb?v=2',
+  url: '/assets/3d/cybertruck.glb?v=4',
   length: 5.682,
   classify(o) {
     const n = ((o.name || '') + ' ' + ((o.material && o.material.name) || '')).toLowerCase();
@@ -36,19 +36,19 @@ try { renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'hi
 catch (e) { fail('Your browser can’t run 3D here, so this is a still image.'); throw e; }
 let dpr = Math.min(devicePixelRatio || 1, coarse ? 1.75 : 2);
 renderer.setPixelRatio(dpr);
-renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.88;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 $('.m3x-canvas').appendChild(renderer.domElement);
 
-const scene = new THREE.Scene(); scene.background = new THREE.Color(0x050506); scene.fog = new THREE.Fog(0x050506, 16, 38);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x050506); scene.fog = new THREE.Fog(0x050506, 14, 34);
 const pmrem = new THREE.PMREMGenerator(renderer);
-scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture; scene.environmentIntensity = 1.05;
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture; scene.environmentIntensity = 0.58;
 const camera = new THREE.PerspectiveCamera(35, 1, 0.05, 90);
-const key = new THREE.DirectionalLight(0xffffff, 2.15); key.position.set(5, 10, 6); key.castShadow = true;
+const key = new THREE.DirectionalLight(0xffffff, 1.28); key.position.set(5, 10, 6); key.castShadow = true;
 key.shadow.mapSize.set(coarse ? 1024 : 2048, coarse ? 1024 : 2048); Object.assign(key.shadow.camera, { left: -7, right: 7, top: 7, bottom: -7, near: 1, far: 30 }); key.shadow.radius = 8; key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02;
-const rim = new THREE.DirectionalLight(0xff5a66, 1.15); rim.position.set(-7, 0.6, -7);
-const fill = new THREE.DirectionalLight(0xbfd2ff, 0.55); fill.position.set(-6, 4, 7);
+const rim = new THREE.DirectionalLight(0xff5a66, 0.32); rim.position.set(-7, 0.6, -7);
+const fill = new THREE.DirectionalLight(0xbfd2ff, 0.42); fill.position.set(-6, 4, 7);
 scene.add(key, rim, fill, new THREE.HemisphereLight(0x9aa8ff, 0x100404, 0.25));
 const floor = new THREE.Mesh(new THREE.CircleGeometry(20, 96), new THREE.MeshStandardMaterial({ color: 0x08080a, roughness: 1, metalness: 0, envMapIntensity: 0.1 }));
 floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
@@ -59,12 +59,13 @@ ring.rotation.x = -Math.PI / 2; ring.position.y = 0.004; scene.add(ring);
 const grid = new THREE.PolarGridHelper(10, 16, 6, 96, 0x2a0a0e, 0x1a0b0d); grid.position.y = 0.002; grid.material.transparent = true; grid.material.opacity = .35; scene.add(grid);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-Object.assign(controls, { enableDamping: true, dampingFactor: 0.07, enablePan: false, enableZoom: true, minDistance: 2.2, maxDistance: 18, minPolarAngle: 0.12, maxPolarAngle: Math.PI / 2 - 0.04, rotateSpeed: coarse ? 0.85 : 0.65, zoomSpeed: 0.7 });
+Object.assign(controls, { enableDamping: true, dampingFactor: 0.07, enablePan: false, enableZoom: true, minDistance: 1.8, maxDistance: 16, minPolarAngle: 0.12, maxPolarAngle: Math.PI / 2 - 0.04, rotateSpeed: coarse ? 0.85 : 0.65, zoomSpeed: 0.7 });
 renderer.domElement.style.touchAction = 'none';
-const HOME = { p: new THREE.Vector3(), t: new THREE.Vector3(0, 0.85, 0) };
-const homePos = () => new THREE.Vector3(7.2, 2.8, 8.0).multiplyScalar(portrait() ? 1.55 : 1);
+const HOME = { p: new THREE.Vector3(), t: new THREE.Vector3(0, 0.7, 0.12) };
+const homePos = () => new THREE.Vector3(4.7, 1.68, 5.2).multiplyScalar(portrait() ? 1.55 : 1);
 
 const parts = {};
+const HIDDEN_UNTIL_EXPLODE = new Set(['battery', 'rearMotor', 'frontMotor', 'inverter', 'lv', 'steer', 'vault', 'frunk', 'susp', 'hvac', 'display', 'brakes']);
 const reg = (id) => (parts[id] = parts[id] || { meshes: [], hits: [], group: new THREE.Group(), off: new THREE.Vector3() });
 const car = new THREE.Group(); scene.add(car);
 const S = (o) => new THREE.MeshStandardMaterial(o), P = (o) => new THREE.MeshPhysicalMaterial(o);
@@ -77,7 +78,8 @@ const M = {
   cool: S({ color: 0x3f6f8f, metalness: .8, roughness: .35 }), spring: S({ color: 0xd9dadd, metalness: .85, roughness: .25 }),
   disc: S({ color: 0x777a80, metalness: .95, roughness: .28 }), lens: P({ color: 0x0b0f18, metalness: .2, roughness: .05, clearcoat: 1 }),
   hvac: S({ color: 0x34373d, metalness: .3, roughness: .6 }), blue: S({ color: 0x2a5d9b, roughness: .5 }), red: S({ color: RED, roughness: .45 }),
-  stainless: P({ color: 0xb7bbc0, metalness: .96, roughness: .18, clearcoat: .28, clearcoatRoughness: .22, envMapIntensity: 1.15 }),
+  stainless: P({ color: 0x8f9297, metalness: .55, roughness: .52, clearcoat: 0, envMapIntensity: 0.32 }),
+  clad: S({ color: 0x0e0f11, metalness: .08, roughness: .86, envMapIntensity: 0.18 }),
 };
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 function addMesh(id, m, hitMin = 0.26) {
@@ -177,12 +179,97 @@ function buildInternals(d) {
   Object.entries(off).forEach(([k, v]) => { if (parts[k]) parts[k].off.copy(v); });
 }
 
+function geomFromTris(g, tris, mat, mesh) {
+  if (!tris.length) return null;
+  const ng = new THREE.BufferGeometry();
+  for (const name of Object.keys(g.attributes)) {
+    const a = g.attributes[name], arr = new a.array.constructor(tris.length * 3 * a.itemSize);
+    tris.forEach((t, i) => { for (let k = 0; k < 3 * a.itemSize; k++) arr[i * 3 * a.itemSize + k] = a.array[t * a.itemSize + k]; });
+    ng.setAttribute(name, new THREE.BufferAttribute(arr, a.itemSize, a.normalized));
+  }
+  const nm = new THREE.Mesh(ng, mat);
+  nm.name = mesh.name;
+  nm.matrixAutoUpdate = false;
+  nm.matrix.copy(mesh.matrixWorld);
+  nm.matrixWorldNeedsUpdate = true;
+  nm.castShadow = nm.receiveShadow = true;
+  return nm;
+}
 function splitLR(mesh) {
   const g = mesh.geometry.index ? mesh.geometry.toNonIndexed() : mesh.geometry; const pos = g.attributes.position; const out = [[], []];
   const v = new THREE.Vector3(), m = mesh.matrixWorld;
   for (let t = 0; t < pos.count; t += 3) { let cx = 0; for (let k = 0; k < 3; k++) { v.fromBufferAttribute(pos, t + k).applyMatrix4(m); cx += v.x; } out[cx < 0 ? 0 : 1].push(t); }
-  return out.map((tris) => { if (!tris.length) return null; const ng = new THREE.BufferGeometry(); for (const name of Object.keys(g.attributes)) { const a = g.attributes[name], arr = new a.array.constructor(tris.length * 3 * a.itemSize); tris.forEach((t, i) => { for (let k = 0; k < 3 * a.itemSize; k++) arr[i * 3 * a.itemSize + k] = a.array[t * a.itemSize + k]; }); ng.setAttribute(name, new THREE.BufferAttribute(arr, a.itemSize, a.normalized)); }
-    const nm = new THREE.Mesh(ng, mesh.material); nm.name = mesh.name; nm.matrixAutoUpdate = false; nm.matrix.copy(mesh.matrixWorld); nm.matrixWorldNeedsUpdate = true; return nm; });
+  return out.map((tris) => geomFromTris(g, tris, mesh.material, mesh));
+}
+// Wheel-arch flares and the lower rocker are the same stainless Bodyl mesh.
+// Split those triangles so they read as the truck’s dark plastic cladding.
+function splitCladding(mesh, d) {
+  const g = mesh.geometry.index ? mesh.geometry.toNonIndexed() : mesh.geometry;
+  const pos = g.attributes.position, mw = mesh.matrixWorld;
+  const va = new THREE.Vector3(), vb = new THREE.Vector3(), vc = new THREE.Vector3();
+  const wy = d.cy || d.R;
+  const wheels = [[d.tw, d.zf, d.R], [-d.tw, d.zf, d.R], [d.tw, d.zr, d.R], [-d.tw, d.zr, d.R]];
+  const xOut = Math.max(0.86, d.tw * 0.88);
+  const clad = [], rest = [];
+  for (let t = 0; t < pos.count; t += 3) {
+    va.fromBufferAttribute(pos, t).applyMatrix4(mw);
+    vb.fromBufferAttribute(pos, t + 1).applyMatrix4(mw);
+    vc.fromBufferAttribute(pos, t + 2).applyMatrix4(mw);
+    const cx = (va.x + vb.x + vc.x) / 3, cy = (va.y + vb.y + vc.y) / 3, cz = (va.z + vb.z + vc.z) / 3;
+    let arch = false;
+    for (let i = 0; i < 4; i++) {
+      const wx = wheels[i][0], wz = wheels[i][1], r = wheels[i][2];
+      // Side-view ring around the wheel, not a top-down cylinder — that
+      // painted the doors. Keep the flare on the outer skin.
+      const ring = Math.hypot(cy - wy, cz - wz);
+      // Top and upper sides of the opening only. A full ring paints the fender.
+      if (cy > wy + r * 0.5 && ring > r * 0.95 && ring < r * 1.34 && Math.abs(cz - wz) < r * 0.95 && Math.abs(cx) > xOut) { arch = true; break; }
+    }
+    const skirt = cy < 0.58 && Math.abs(cx) > Math.max(0.84, d.tw * 0.86);
+    const under = cy < 0.42;
+    const chin = cy < 0.50 && Math.abs(cz) > 2.28;
+    (arch || skirt || under || chin ? clad : rest).push(t);
+  }
+  const shell = geomFromTris(g, rest, M.stainless, mesh);
+  const trim = geomFromTris(g, clad, M.clad, mesh);
+  if (trim) trim.name = 'cladding';
+  globalThis.__ctxClad = { tris: clad.length, rest: rest.length, tw: d.tw, R: d.R, wy };
+  return [shell, trim].filter(Boolean);
+}
+function addCladdingFills(d) {
+  const p = reg('body');
+  const mid = (d.zf + d.zr) / 2;
+  const len = Math.max(1.35, d.zf - d.zr - 0.85);
+  for (const sx of [-1, 1]) {
+    const wall = new THREE.Mesh(box(0.04, 0.2, len), M.clad);
+    wall.position.set(sx * Math.min((d.tx || d.tw + 0.12) - 0.04, d.tw + 0.08), 0.36, mid);
+    wall.userData.part = 'body';
+    wall.name = 'rocker-fill';
+    wall.castShadow = wall.receiveShadow = true;
+    p.group.add(wall);
+    p.meshes.push(wall);
+  }
+  const tray = new THREE.Mesh(box(Math.min(d.W - 0.25, 2 * d.tw + 0.2), 0.035, d.zf - d.zr - 0.4), M.clad);
+  tray.position.set(0, 0.34, mid);
+  tray.userData.part = 'body';
+  tray.name = 'undertray';
+  tray.castShadow = tray.receiveShadow = true;
+  p.group.add(tray);
+  p.meshes.push(tray);
+  const wy = d.cy || d.R;
+  const rad = d.R * 1.26;
+  for (const sx of [-1, 1]) {
+    for (const z of [d.zf, d.zr]) {
+      const m = new THREE.Mesh(new THREE.TorusGeometry(rad, 0.028, 6, 28, Math.PI), M.clad);
+      m.position.set(sx * ((d.tx || d.tw + 0.1) - 0.05), wy, z);
+      m.rotation.y = Math.PI / 2;
+      m.userData.part = 'body';
+      m.name = 'arch-trim';
+      m.castShadow = m.receiveShadow = true;
+      p.group.add(m);
+      p.meshes.push(m);
+    }
+  }
 }
 
 const status = $('.m3x-status'); status.textContent = 'Loading Cybertruck…';
@@ -239,7 +326,14 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
   });
   const pts = []; const v = new THREE.Vector3(); tyres.forEach((t) => { const p = t.geometry.attributes.position; const step = Math.max(1, Math.floor(p.count / 400)); for (let i = 0; i < p.count; i += step) pts.push(v.fromBufferAttribute(p, i).applyMatrix4(t.matrixWorld).clone()); });
   const q = { fl: [], fr: [], rl: [], rr: [] }; pts.forEach((p) => q[(p.z > 0 ? 'f' : 'r') + (p.x > 0 ? 'l' : 'r')].push(p));
-  const cen = (a) => { const bb = new THREE.Box3().setFromPoints(a); return { c: bb.getCenter(new THREE.Vector3()), r: bb.getSize(new THREE.Vector3()).y / 2 }; };
+  const cen = (a) => {
+    if (!a.length) return { c: new THREE.Vector3(), r: 0.46 };
+    const abs = a.map((p) => Math.abs(p.x)).sort((x, y) => x - y);
+    const cut = abs[Math.floor(abs.length * 0.4)] || 0;
+    const outer = a.filter((p) => Math.abs(p.x) >= cut);
+    const bb = new THREE.Box3().setFromPoints(outer.length ? outer : a);
+    return { c: bb.getCenter(new THREE.Vector3()), r: bb.getSize(new THREE.Vector3()).y / 2 };
+  };
   let d;
   try { const W4 = Object.values(q).map(cen); d = { zf: (W4[0].c.z + W4[1].c.z) / 2, zr: (W4[2].c.z + W4[3].c.z) / 2, tw: W4.reduce((a, w) => a + Math.abs(w.c.x), 0) / 4, R: W4.reduce((a, w) => a + w.r, 0) / 4, cy: W4.reduce((a, w) => a + w.c.y, 0) / 4, tx: pts.reduce((a, p) => Math.max(a, Math.abs(p.x)), 0) }; if (!isFinite(d.zf) || !isFinite(d.R) || d.R < 0.2) throw 0; }
   catch (e) { d = { zf: 1.82, zr: -1.82, tw: 0.95, R: 0.46 }; }
@@ -247,10 +341,15 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
   globalThis.__ctxD = d;
   meshes.forEach((o) => {
     const id = o.userData.part;
-    if (id === 'wheels') { splitLR(o).forEach((nm, i) => { if (!nm) return; nm.castShadow = nm.receiveShadow = true; nm.userData = { part: id, side: i }; reg(id).meshes.push(nm); }); o.visible = false; return; }
+    if (id === 'wheels') { splitLR(o).forEach((nm, i) => { if (!nm) return; nm.userData = { part: id, side: i }; reg(id).meshes.push(nm); }); o.visible = false; return; }
+    if (id === 'body') {
+      splitCladding(o, d).forEach((nm) => { nm.userData.part = 'body'; const p = reg('body'); p.group.attach(nm); p.meshes.push(nm); });
+      o.visible = false; return;
+    }
     const p = reg(id); p.group.attach(o); p.meshes.push(o);
   });
   buildInternals(d);
+  addCladdingFills(d);
   if (/debug/.test(location.search)) window.__ctx = { THREE, parts, car, camera, controls, d };
   (parts.body ? parts.body.meshes : []).forEach((o) => { const cc = new THREE.Box3().setFromObject(o).getCenter(new THREE.Vector3()); o.userData.base = o.position.clone(); o.userData.eo = o.parent.worldToLocal(cc.clone().add(V(cc.x * 0.1, 0.03, cc.z * 0.04))).sub(o.parent.worldToLocal(cc.clone())); });
   const SPLIT = { wheels: 1.05, brakes: 0.85, susp: 0.5 };
@@ -260,6 +359,7 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
     if (Math.max(sz.x, sz.y, sz.z) > 1.4) return; const h = new THREE.Mesh(new THREE.BoxGeometry(Math.max(sz.x, .22), Math.max(sz.y, .22), Math.max(sz.z, .22)), new THREE.MeshBasicMaterial({ visible: false })); h.position.copy(cc); h.userData = { part: id, hit: true, side: o.userData.side };
     const parent = p.sides && o.parent && o.parent !== p.group ? o.parent : p.group; parent.attach ? parent.attach(h) : p.group.add(h); p.hits.push(h); }); });
   Object.values(parts).forEach((p) => car.add(p.group));
+  HIDDEN_UNTIL_EXPLODE.forEach((id) => { const p = parts[id]; if (p) p.group.visible = false; });
   buildList(); app.classList.add('m3x-ready'); status.textContent = ''; bar && (bar.style.opacity = 0); kick();
 }, (e) => { if (bar && e.total) bar.style.transform = 'scaleX(' + (e.loaded / e.total) + ')'; }, () => fail('Couldn’t load the 3D model, so this is a still image.'));
 
@@ -272,9 +372,20 @@ function setExplode(v) {
   syncEx(); kick();
 }
 slider.addEventListener('input', () => { exT = ex = slider.value / 100; exAnim = null; syncEx(); kick(); });
-exBtn.addEventListener('click', () => { const v = exT > 0.5 ? 0 : 1; setExplode(v); if (!selected) startFly(v ? homePos().multiplyScalar(1.22).add(V(0, 0.7, 0)) : homePos(), v ? V(0, 1.25, 0) : HOME.t.clone()); });
+exBtn.addEventListener('click', () => { const v = exT > 0.5 ? 0 : 1; setExplode(v); if (!selected) startFly(v ? homePos().multiplyScalar(1.48).add(V(0, 1.15, 0)) : homePos(), v ? V(0, 1.45, 0) : HOME.t.clone()); });
 const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-function applyExplode() { const e = ease(ex); Object.values(parts).forEach((p) => { p.group.position.copy(p.off).multiplyScalar(e); if (p.sides) { p.sides[0].position.x = -p.split * e; p.sides[1].position.x = p.split * e; } }); (parts.body ? parts.body.meshes : []).forEach((o) => { if (o.userData.eo) o.position.copy(o.userData.base).addScaledVector(o.userData.eo, e); }); }
+function applyExplode() {
+  const e = ease(ex);
+  Object.values(parts).forEach((p) => { p.group.position.copy(p.off).multiplyScalar(e); if (p.sides) { p.sides[0].position.x = -p.split * e; p.sides[1].position.x = p.split * e; } });
+  (parts.body ? parts.body.meshes : []).forEach((o) => { if (o.userData.eo) o.position.copy(o.userData.base).addScaledVector(o.userData.eo, e); });
+  const showInside = e > 0.05 || (selected && HIDDEN_UNTIL_EXPLODE.has(selected));
+  HIDDEN_UNTIL_EXPLODE.forEach((id) => {
+    const p = parts[id];
+    if (!p) return;
+    p.group.visible = showInside;
+    p.meshes.forEach((o) => { o.visible = showInside; });
+  });
+}
 
 let selected = null; const card = $('.m3x-card');
 ['pointerdown', 'pointerup', 'click'].forEach((type) => card.addEventListener(type, (e) => e.stopPropagation()));
@@ -316,18 +427,30 @@ function select(id, opts = {}) {
   }
   card.innerHTML = cardHTML(id); card.hidden = false; card.scrollTop = 0;
   card.querySelector('.m3x-x').onclick = (e) => { e.preventDefault(); e.stopPropagation(); select(null); };
+  if (HIDDEN_UNTIL_EXPLODE.has(id) && exT < 0.2) setExplode(1);
   label.textContent = PARTS[id].name; label.hidden = false; frame(); if (flyIt) flyTo(id); idle(); kick();
 }
 function frame() { const w = innerWidth, h = app.clientHeight;
   if (selected && portrait()) camera.setViewOffset(w, h, 0, h * 0.2, w, h);
   else if (selected && w > 900) camera.setViewOffset(w, h, -((460 + w - 286) / 2 - w / 2), 0, w, h);
   else camera.clearViewOffset(); camera.updateProjectionMatrix(); }
-function partBox(id) { applyExplode(); car.updateMatrixWorld(true); const bx = new THREE.Box3(); parts[id].meshes.forEach((o) => { if (o.visible) bx.expandByObject(o); }); return bx; }
+function partBox(id, atTarget) {
+  const saved = ex;
+  if (atTarget) ex = Math.max(ex, exT);
+  applyExplode(); car.updateMatrixWorld(true);
+  const bx = new THREE.Box3();
+  const p = parts[id];
+  if (p && p.group.visible) p.meshes.forEach((o) => { if (o.visible) bx.expandByObject(o); });
+  if (atTarget) { ex = saved; applyExplode(); }
+  return bx;
+}
 let fly = null;
-function flyTo(id) { const sd = parts[id] && parts[id].sides; const bx = partBox(id), c = bx.getCenter(new THREE.Vector3()), r = bx.getSize(new THREE.Vector3()).length() / 2;
+function flyTo(id) { const sd = parts[id] && parts[id].sides; const bx = partBox(id, true), c = bx.getCenter(new THREE.Vector3()), r = bx.getSize(new THREE.Vector3()).length() / 2;
   const dir = camera.position.clone().sub(controls.target).normalize(); dir.y = Math.max(dir.y, 0.42); dir.normalize();
   const fit = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * (portrait() ? 1.25 : 0.95);
-  const dist = THREE.MathUtils.clamp(fit, portrait() ? 3.6 : (sd ? 4.0 : 2.3), 13); if (sd) { startFly(homePos().multiplyScalar(ex > .5 ? 1.25 : 1.05).add(V(0, ex > .5 ? 0.45 : 0, 0)), V(0, 0.55, 0)); return; } startFly(c.clone().add(dir.multiplyScalar(dist)), c); }
+  const dist = THREE.MathUtils.clamp(fit, portrait() ? 3.6 : (sd ? 4.0 : 2.3), 13); if (sd) { startFly(homePos().multiplyScalar(exT > .5 ? 1.48 : 1.05).add(V(0, exT > .5 ? 0.9 : 0, 0)), V(0, 0.55, 0)); return; }
+  if (!isFinite(c.x) || !isFinite(r) || r < 0.01) { startFly(homePos().multiplyScalar(exT > .5 ? 1.22 : 1), exT > .5 ? V(0, 1.25, 0) : HOME.t.clone()); return; }
+  startFly(c.clone().add(dir.multiplyScalar(dist)), c); }
 function flyK(f) { return !f || f.dur <= 0 ? 1 : Math.min(1, (performance.now() - f.start) / f.dur); }
 function startFly(p, t) {
   const len = p.distanceTo(camera.position) + t.distanceTo(controls.target);
@@ -420,6 +543,7 @@ globalThis.__ctx = {
   ex: () => ex,
   exT: () => exT,
   face: () => globalThis.__ctxFace,
+  vis: () => Object.fromEntries(Object.entries(parts).map(([k, p]) => [k, !!p.group.visible])),
   view: () => ({
     selected,
     x: camera.position.x, y: camera.position.y, z: camera.position.z,
