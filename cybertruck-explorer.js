@@ -296,7 +296,13 @@ function setExplode(v) {
   syncEx(); kick();
 }
 slider.addEventListener('input', () => { exT = ex = slider.value / 100; exAnim = null; syncEx(); kick(); });
-exBtn.addEventListener('click', () => { const v = exT > 0.5 ? 0 : 1; setExplode(v); if (!selected) startFly(v ? homePos().multiplyScalar(1.48).add(V(0, 1.15, 0)) : homePos(), v ? V(0, 1.45, 0) : HOME.t.clone()); });
+exBtn.addEventListener('click', () => {
+  const v = exT > 0.5 ? 0 : 1;
+  setExplode(v);
+  idle();
+  // Keep the user's orbit. A scripted fly after a drag is what slung the camera off.
+  snapOrbit();
+});
 const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 function applyExplode() {
   const e = ease(ex);
@@ -369,17 +375,83 @@ function partBox(id, atTarget) {
   return bx;
 }
 let fly = null;
+function camRadius() {
+  const r = camera.position.distanceTo(controls.target);
+  return (isFinite(r) && r > 0.4) ? r : homePos().distanceTo(HOME.t);
+}
+function orbitOffset(pos, target) {
+  const off = pos.clone().sub(target);
+  if (!isFinite(off.lengthSq()) || off.lengthSq() < 0.16) off.copy(homePos().sub(HOME.t));
+  return off;
+}
+function poseOnRay(radius, target) {
+  const t = target.clone();
+  const r = THREE.MathUtils.clamp(radius, controls.minDistance + 0.05, controls.maxDistance - 0.05);
+  return { p: t.clone().add(orbitOffset(camera.position, controls.target).setLength(r)), t };
+}
+function snapOrbit() {
+  controls.autoRotate = false;
+  controls.state = -1;
+  if (controls._sphericalDelta) controls._sphericalDelta.set(0, 0, 0);
+  if (controls._panOffset) controls._panOffset.set(0, 0, 0);
+  controls._scale = 1;
+  camera.lookAt(controls.target);
+  controls.update();
+}
+function dollyAlongView(scale, lift = 0) {
+  const t = controls.target.clone();
+  t.y += lift;
+  return poseOnRay(camRadius() * scale, t);
+}
 function flyTo(id) { const sd = parts[id] && parts[id].sides; const bx = partBox(id, true), c = bx.getCenter(new THREE.Vector3()), r = bx.getSize(new THREE.Vector3()).length() / 2;
-  const dir = camera.position.clone().sub(controls.target).normalize(); dir.y = Math.max(dir.y, 0.42); dir.normalize();
+  const dir = orbitOffset(camera.position, controls.target).normalize(); dir.y = Math.max(dir.y, 0.42); dir.normalize();
   const fit = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * (portrait() ? 1.25 : 0.95);
-  const dist = THREE.MathUtils.clamp(fit, portrait() ? 3.6 : (sd ? 4.0 : 2.3), 13); if (sd) { startFly(homePos().multiplyScalar(exT > .5 ? 1.48 : 1.05).add(V(0, exT > .5 ? 0.9 : 0, 0)), V(0, 0.55, 0)); return; }
-  if (!isFinite(c.x) || !isFinite(r) || r < 0.01) { startFly(homePos().multiplyScalar(exT > .5 ? 1.22 : 1), exT > .5 ? V(0, 1.25, 0) : HOME.t.clone()); return; }
+  const dist = THREE.MathUtils.clamp(fit, portrait() ? 3.6 : (sd ? 4.0 : 2.3), 13); if (sd) { const next = dollyAlongView(exT > .5 ? 1.2 : 1, 0); startFly(next.p, next.t); return; }
+  if (!isFinite(c.x) || !isFinite(r) || r < 0.01) { const next = dollyAlongView(exT > .5 ? 1.2 : 1, 0); startFly(next.p, next.t); return; }
   startFly(c.clone().add(dir.multiplyScalar(dist)), c); }
 function flyK(f) { return !f || f.dur <= 0 ? 1 : Math.min(1, (performance.now() - f.start) / f.dur); }
+function shortestTheta(from, to) {
+  let d = to - from;
+  while (d > Math.PI) d -= Math.PI * 2;
+  while (d < -Math.PI) d += Math.PI * 2;
+  return from + d;
+}
 function startFly(p, t) {
-  const len = p.distanceTo(camera.position) + t.distanceTo(controls.target);
-  fly = { p0: camera.position.clone(), t0: controls.target.clone(), p1: p.clone(), t1: t.clone(), start: performance.now(), dur: reduce ? 0 : THREE.MathUtils.clamp(0.7 + len * 0.08, 0.8, 1.6) * 1000 };
+  if (!p || !t || !isFinite(p.x + p.y + p.z + t.x + t.y + t.z)) return;
+  snapOrbit();
+  const t1 = t.clone();
+  const off1 = orbitOffset(p, t1);
+  const r1 = THREE.MathUtils.clamp(off1.length(), controls.minDistance, controls.maxDistance);
+  const p1 = t1.clone().add(off1.setLength(r1));
+  const s0 = new THREE.Spherical().setFromVector3(orbitOffset(camera.position, controls.target));
+  const s1 = new THREE.Spherical().setFromVector3(p1.clone().sub(t1));
+  s0.phi = THREE.MathUtils.clamp(s0.phi, controls.minPolarAngle, controls.maxPolarAngle);
+  s1.phi = THREE.MathUtils.clamp(s1.phi, controls.minPolarAngle, controls.maxPolarAngle);
+  s0.makeSafe(); s1.makeSafe();
+  s1.theta = shortestTheta(s0.theta, s1.theta);
+  const len = p1.distanceTo(camera.position) + t1.distanceTo(controls.target);
+  fly = { t0: controls.target.clone(), t1, s0, s1, p1, start: performance.now(), dur: reduce ? 0 : THREE.MathUtils.clamp(0.55 + len * 0.07, 0.55, 1.35) * 1000 };
+  controls.enabled = false;
   kick();
+}
+function applyFly(k) {
+  const e = ease(k);
+  const s = new THREE.Spherical(
+    THREE.MathUtils.lerp(fly.s0.radius, fly.s1.radius, e),
+    THREE.MathUtils.lerp(fly.s0.phi, fly.s1.phi, e),
+    THREE.MathUtils.lerp(fly.s0.theta, fly.s1.theta, e)
+  );
+  s.makeSafe();
+  controls.target.lerpVectors(fly.t0, fly.t1, e);
+  camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(s));
+  camera.lookAt(controls.target);
+}
+function endFly() {
+  if (!fly) return;
+  applyFly(1);
+  fly = null;
+  snapOrbit();
+  controls.enabled = true;
 }
 $('.m3x-reset').addEventListener('click', () => { restoreView = null; select(null, { snapBack: false }); setExplode(0); startFly(homePos(), HOME.t.clone()); });
 addEventListener('keydown', (e) => { if (e.key === 'Escape' && selected) select(null); });
@@ -440,17 +512,9 @@ function tick() {
   } else ex = exT;
   applyExplode();
   if (fly) {
-    const k = flyK(fly), e = ease(k);
-    camera.position.lerpVectors(fly.p0, fly.p1, e);
-    controls.target.lerpVectors(fly.t0, fly.t1, e);
-    if (k >= 1) {
-      camera.position.copy(fly.p1);
-      controls.target.copy(fly.t1);
-      if (controls._sphericalDelta) controls._sphericalDelta.set(0, 0, 0);
-      if (controls._panOffset) controls._panOffset.set(0, 0, 0);
-      controls._scale = 1;
-      fly = null;
-    }
+    const k = flyK(fly);
+    applyFly(k);
+    if (k >= 1) endFly();
     busy = true;
   }
   else {
@@ -472,6 +536,8 @@ globalThis.__ctx = {
     selected,
     x: camera.position.x, y: camera.position.y, z: camera.position.z,
     tx: controls.target.x, ty: controls.target.y, tz: controls.target.z,
+    radius: camera.position.distanceTo(controls.target),
+    theta: Math.atan2(camera.position.x - controls.target.x, camera.position.z - controls.target.z),
     flying: Boolean(fly),
     ex, exT,
   }),
