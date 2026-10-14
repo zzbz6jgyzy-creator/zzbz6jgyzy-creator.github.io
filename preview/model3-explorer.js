@@ -41,7 +41,7 @@ scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture; scene.
 const camera = new THREE.PerspectiveCamera(35, 1, 0.05, 80);
 const key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(4, 9, 5); key.castShadow = true;
 key.shadow.mapSize.set(coarse ? 1024 : 2048, coarse ? 1024 : 2048); Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 25 }); key.shadow.radius = 8; key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02;
-const rim = new THREE.DirectionalLight(0xff3344, 1.6); rim.position.set(-6, 3, -6);
+const rim = new THREE.DirectionalLight(0xff5a66, 1.25); rim.position.set(-6, 0.5, -6);
 const fill = new THREE.DirectionalLight(0xbfd2ff, 0.5); fill.position.set(-5, 4, 6);
 scene.add(key, rim, fill, new THREE.HemisphereLight(0x9aa8ff, 0x100404, 0.25));
 // floor: dark matte + soft contact shadow + thin red ring + faint grid
@@ -214,7 +214,7 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
     if (id === 'hide') { o.visible = false; return; }
     const mn = (o.material && o.material.name) || '';
     if (/carpaint/i.test(mn) && !/black/i.test(mn)) o.material = paint;
-    else if (n === 7 || n === 15 || n === 20) o.material = P({ color: 0x0a0d12, metalness: 0, roughness: .03, transparent: true, opacity: n === 7 ? .7 : .38, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide });
+    else if (n === 7 || n === 15 || n === 20) o.material = P({ color: 0x0a0d12, metalness: 0, roughness: .05, specularIntensity: .35, specularColor: 0xffffff, transparent: true, opacity: n === 7 ? .7 : .38, clearcoat: 0, depthWrite: false, side: THREE.DoubleSide });
     else if (n === 2 || n === 14) o.material = P({ color: 0xffffff, metalness: 0, roughness: .02, transparent: true, opacity: .18, clearcoat: 1, depthWrite: false });
     else if (n === 10) o.material = S({ color: RED, metalness: .3, roughness: .4 });
     else if (n === 9) o.material = M.disc;
