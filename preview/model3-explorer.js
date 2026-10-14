@@ -174,7 +174,7 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
   root.updateMatrixWorld(true); b.setFromObject(root); s = b.getSize(new THREE.Vector3());
   const k = EXTERIOR.length / s.z; root.scale.setScalar(k); root.updateMatrixWorld(true); b.setFromObject(root);
   const c = b.getCenter(new THREE.Vector3()); root.position.sub(V(c.x, b.min.y, c.z)); root.updateMatrixWorld(true); b.setFromObject(root);
-  const paint = P({ color: 0x8f0a16, metalness: .35, roughness: .3, clearcoat: 1, clearcoatRoughness: .03 });
+  const paint = P({ color: 0xeeeae2, metalness: .05, roughness: .28, clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: .85 });
   const meshes = []; root.traverse((o) => { if (o.isMesh) meshes.push(o); });
   const tyres = [];
   meshes.forEach((o) => {
