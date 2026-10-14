@@ -1,11 +1,11 @@
 window.TESLA_UPDATES = {
-  updated: "2026-10-13",
+  updated: "2026-10-14",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
     headline: "FSD right now",
     lines: [
-      "Newest US build, HW4 / AI4: FSD Supervised v14.3.12 on 2026.38.5. Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early wave, mostly US, with the first cars in Mexico and Canada now reporting it.",
+      "Newest US build, HW4 / AI4: FSD Supervised v14.3.12 on 2026.38.5, plus a small 2026.38.5.1 point release (same FSD) that started reaching US cars on 13 Oct. Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early wave, mostly US, with the first cars in Mexico and Canada reporting 2026.38.5.",
       "Wider North America HW4 build: v14.3.11 on 2026.33.5 (US and Canada). A big slice of US cars is still on v14.3.10 (2026.27.11). Automatic Collision Evasion is in 14.3.11 and 14.3.12 — North America only.",
       "North America, HW3: FSD Supervised v14.3 Lite on 2026.33.5 and 2026.38.5. Parking, unparking and start-from-park. No Collision Evasion.",
       "Europe: FSD Supervised v14.2.2.6 on 2026.33.100. Seen so far in the Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia and Slovenia.",
@@ -69,6 +69,26 @@ window.TESLA_UPDATES = {
     { code: "SA", name: "Saudi Arabia", aliases: ["saudi"] },
   ],
   versions: [
+    {
+      id: "2026.38.5.1",
+      family: "2026.38",
+      date: "2026-10-13",
+      kind: "fsd",
+      status: "early",
+      headline: "2026.38.5.1 point release — same FSD, US first",
+      summary:
+        "A small follow-up to 2026.38.5. It carries the same FSD builds (v14.3.12 on HW4, v14.3 Lite on HW3) and no new release notes. Tesla usually ships a point release like this to fix bugs.",
+      features: [
+        "Same FSD as 2026.38.5: v14.3.12 on HW4 / AI4, v14.3 Lite on HW3.",
+        "No new features listed beyond 2026.38.5.",
+      ],
+      fsd: "v14.3.12 (HW4) · v14.3 Lite (HW3) · United States",
+      models: ["3", "Y", "S", "Cybertruck"],
+      hardware: ["HW3", "HW4"],
+      reached:
+        "First noticed on 13 Oct 2026 on US cars that were already on 2026.38.5 (Model 3, Model Y, Model S and Cybertruck). Under 1% of the tracked fleet so far (Teslascope).",
+      countries: ["US"],
+    },
     {
       id: "2026.38.5",
       family: "2026.38",
