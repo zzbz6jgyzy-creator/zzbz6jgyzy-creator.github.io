@@ -4,6 +4,7 @@
   const items = nav.querySelector(".pn-items");
   const kids = [...items.children];
   kids.forEach((el, i) => { el.style.setProperty("--i", i); el.style.setProperty("--n", kids.length); });
+  let sheet, ov, mb, sheetOpen;
   const app = nav.hasAttribute("data-start-collapsed");
   let expanded = true, last = window.scrollY, collapseAt = 0;
   const setW = () => { if (!expanded) return; nav.style.setProperty("--pn-w", "auto"); const w = nav.scrollWidth; nav.style.setProperty("--pn-w", w + "px"); };
@@ -20,14 +21,31 @@
     if (p === here) a.setAttribute("aria-current", "page");
   });
   if (app) { setExpanded(false); document.addEventListener("click", e => { if (expanded && !nav.contains(e.target)) setExpanded(false); }); }
-  window.addEventListener("scroll", () => {
+  const mobile = () => window.matchMedia("(max-width: 899px)").matches;
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
     if (app) return;
-    const y = window.scrollY;
-    if (expanded && y > last && y > 150) { setExpanded(false); collapseAt = y; }
-    else if (!expanded && y < last && collapseAt - y > 80) setExpanded(true);
+    const y = Math.max(0, window.scrollY);
+    if (mobile()) {
+      // phones: circle while scrolled, full pill only near the top (ignores rubber-band / momentum bounces)
+      if (expanded && y > 150) setExpanded(false);
+      else if (!expanded && y < 150) setExpanded(true);
+    } else {
+      if (expanded && y > last && y > 150) { setExpanded(false); collapseAt = y; }
+      else if (!expanded && (y < 150 || (y < last && collapseAt - y > 80))) setExpanded(true);
+    }
     last = y;
-  }, { passive: true });
-  nav.addEventListener("click", e => { if (!expanded) { e.preventDefault(); setExpanded(true); } }, true);
+  };
+  window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener("resize", () => requestAnimationFrame(onScroll));
+  let lock = 0;
+  nav.addEventListener("click", e => {
+    if (expanded) return;
+    e.preventDefault(); e.stopPropagation();
+    const now = Date.now(); if (now - lock < 450) return; lock = now;
+    if (mobile()) sheetOpen(true); else setExpanded(true);
+  }, true);
   nav.addEventListener("keydown", e => { if (!expanded && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); setExpanded(true); } });
 
   nav.querySelectorAll(".pn-dd").forEach(dd => {
@@ -47,13 +65,14 @@
   });
   document.addEventListener("click", e => { if (!nav.contains(e.target)) closeAll(); });
 
-  const sheet = document.querySelector(".pn-sheet"), ov = document.querySelector(".pn-overlay"), mb = nav.querySelector(".pn-menu");
-  const sheetOpen = v => {
+  sheet = document.querySelector(".pn-sheet"), ov = document.querySelector(".pn-overlay"), mb = nav.querySelector(".pn-menu");
+  sheetOpen = v => {
+    if (v === sheet.classList.contains("open")) return;
     sheet.classList.toggle("open", v); ov.classList.toggle("open", v); document.body.classList.toggle("pn-lock", v);
     sheet.setAttribute("aria-hidden", String(!v)); mb.setAttribute("aria-expanded", String(v));
-    if (v) sheet.querySelector(".pn-close").focus(); else mb.focus();
+    if (v) sheet.querySelector(".pn-close").focus({ preventScroll: true }); else (expanded ? mb : nav).focus({ preventScroll: true });
   };
-  mb.addEventListener("click", e => { if (expanded) sheetOpen(true); });
+  mb.addEventListener("click", () => { if (Date.now() - lock < 450) return; lock = Date.now(); sheetOpen(true); });
   ov.addEventListener("click", () => sheetOpen(false));
   sheet.querySelector(".pn-close").addEventListener("click", () => sheetOpen(false));
   document.addEventListener("keydown", e => { if (e.key === "Escape") { closeAll(); if (sheet.classList.contains("open")) sheetOpen(false); } });

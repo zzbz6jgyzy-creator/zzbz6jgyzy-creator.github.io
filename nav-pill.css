@@ -64,3 +64,5 @@ body.pn-lock{overflow:hidden}
 .pn-badge{display:inline-block;margin-left:6px;font:700 9px/1 Inter,sans-serif;letter-spacing:.06em;color:#fff;background:#e31937;border-radius:4px;padding:3px 4px;vertical-align:1px}
 /* full-screen explorer: pill starts as a circle */
 body.pn-app .pn-wrap{top:14px}
+.pn-logo img.pn-word{width:auto;height:18px}
+@media (max-width:899px){.pn-logo img.pn-word{height:20px}.pn-logo{transition-delay:0s!important}}
