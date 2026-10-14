@@ -296,22 +296,12 @@ function setExplode(v) {
   syncEx(); kick();
 }
 slider.addEventListener('input', () => { exT = ex = slider.value / 100; exAnim = null; syncEx(); kick(); });
-let preExplodeView = null;
 exBtn.addEventListener('click', () => {
   const v = exT > 0.5 ? 0 : 1;
   setExplode(v);
   idle();
-  if (selected) return;
+  // Keep the user's orbit. A scripted fly after a drag is what slung the camera off.
   snapOrbit();
-  if (v) {
-    preExplodeView = { radius: camRadius(), target: controls.target.clone() };
-    const next = dollyAlongView(1.38, 0.32);
-    startFly(next.p, next.t);
-  } else if (preExplodeView) {
-    const next = poseOnRay(preExplodeView.radius, preExplodeView.target);
-    startFly(next.p, next.t);
-    preExplodeView = null;
-  }
 });
 const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 function applyExplode() {
@@ -401,9 +391,11 @@ function poseOnRay(radius, target) {
 }
 function snapOrbit() {
   controls.autoRotate = false;
+  controls.state = -1;
   if (controls._sphericalDelta) controls._sphericalDelta.set(0, 0, 0);
   if (controls._panOffset) controls._panOffset.set(0, 0, 0);
   controls._scale = 1;
+  camera.lookAt(controls.target);
   controls.update();
 }
 function dollyAlongView(scale, lift = 0) {
@@ -452,6 +444,7 @@ function applyFly(k) {
   s.makeSafe();
   controls.target.lerpVectors(fly.t0, fly.t1, e);
   camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(s));
+  camera.lookAt(controls.target);
 }
 function endFly() {
   if (!fly) return;
@@ -460,7 +453,7 @@ function endFly() {
   snapOrbit();
   controls.enabled = true;
 }
-$('.m3x-reset').addEventListener('click', () => { restoreView = null; preExplodeView = null; select(null, { snapBack: false }); setExplode(0); startFly(homePos(), HOME.t.clone()); });
+$('.m3x-reset').addEventListener('click', () => { restoreView = null; select(null, { snapBack: false }); setExplode(0); startFly(homePos(), HOME.t.clone()); });
 addEventListener('keydown', (e) => { if (e.key === 'Escape' && selected) select(null); });
 
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
