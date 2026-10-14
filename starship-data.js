@@ -1,5 +1,5 @@
 window.STARSHIP = {
-  updated: "2026-10-12",
+  updated: "2026-10-14",
   note:
     "Compiled from SpaceX flight pages, FAA planning slides and public launch records. Outcomes are this desk’s read of the whole flight — not SpaceX’s official score. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
@@ -81,7 +81,7 @@ window.STARSHIP = {
       outcome: "partial",
       headline: "First real Starlink V3s, ship lived through tip-over",
       tested:
-        "Twenty Starlink V3 satellites flew the ship’s trajectory and burned up as planned. The ship splashed down and tipped over — and survived, so SpaceX got heat-shield and engine-bay photos. Booster 20 lost engines on the landing burn and hit the Gulf hard.",
+        "Twenty Starlink V3 satellites flew the ship’s trajectory and burned up as planned. The ship splashed down and tipped over — and survived, so SpaceX got heat-shield and engine-bay photos. Booster 20 lost engines on the landing burn and hit the Gulf hard. Ship 40 was towed to Christmas Island, shipped home on Forte and is now in a Megabay at Starbase, the first Starship returned to its launch site.",
     },
     {
       flight: 12,
