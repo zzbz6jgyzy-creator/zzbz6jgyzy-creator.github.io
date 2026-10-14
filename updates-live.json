@@ -1,15 +1,31 @@
 {
-  "updated": "2026-10-14T03:53:52Z",
+  "updated": "2026-10-14T04:53:37Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fleet": 3367,
-  "latest": "2026.38.5.1",
+  "fleet": 3368,
+  "latest": "2026.32.100",
   "versions": [
+    {
+      "id": "2026.32.100",
+      "date": "2026-10-14",
+      "count": 0,
+      "fleet": 3368,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 0,
+      "firstSeen": "2026-10-14T04:14:11Z",
+      "lastSeen": "2026-10-14T04:14:11Z"
+    },
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
       "count": 6,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -61,9 +77,9 @@
     {
       "id": "2026.38.5",
       "date": "2026-10-10",
-      "count": 101,
-      "fleet": 3367,
-      "percent": 3.0,
+      "count": 105,
+      "fleet": 3368,
+      "percent": 3.1,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -107,19 +123,19 @@
         "MX"
       ],
       "countryCounts": {
-        "US": 93,
+        "US": 97,
         "CA": 6,
         "MX": 2
       },
-      "pending": 53,
+      "pending": 47,
       "firstSeen": "2026-10-10T22:26:31Z",
-      "lastSeen": "2026-10-14T03:45:23Z"
+      "lastSeen": "2026-10-14T04:32:40Z"
     },
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 174,
-      "fleet": 3367,
+      "count": 175,
+      "fleet": 3368,
       "percent": 5.2,
       "fsd": null,
       "fsdHw3": null,
@@ -193,7 +209,7 @@
         "IS"
       ],
       "countryCounts": {
-        "US": 50,
+        "US": 51,
         "GB": 26,
         "DE": 14,
         "IT": 10,
@@ -226,15 +242,15 @@
         "MA": 1,
         "IS": 1
       },
-      "pending": 91,
+      "pending": 97,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-14T03:29:32Z"
+      "lastSeen": "2026-10-14T04:05:35Z"
     },
     {
       "id": "2026.33.5",
       "date": "2026-10-07",
       "count": 102,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 3.0,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -289,7 +305,7 @@
       "id": "2026.38.3",
       "date": "2026-10-06",
       "count": 7,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": null,
@@ -348,7 +364,7 @@
       "id": "2026.33.100",
       "date": "2026-10-06",
       "count": 38,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
@@ -400,63 +416,10 @@
       "lastSeen": "2026-10-10T13:03:53Z"
     },
     {
-      "id": "2026.27.6.15",
-      "date": "2026-10-05",
-      "count": 3,
-      "fleet": 3367,
-      "percent": 0.1,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": "14.2.2.5",
-      "features": [
-        {
-          "title": "FSD (Supervised) v14.2.2.5",
-          "text": "- Added Arrival Options for you to select whether FSD should park or stop curbside. - Added navigation and routing into the vision-based neural network for real-time handling of blocked roads and detours. - Added additi\u2026"
-        },
-        {
-          "title": "Speed Profiles",
-          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. However, the speed determined by the FSD (Supervised) may differ from the speed limit, an\u2026"
-        },
-        {
-          "title": "UI Improvements",
-          "text": "- Start Self-Driving with a tap of the touchscreen from Park, or any time during your drive. - Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center displa\u2026"
-        },
-        {
-          "title": "Alternative Routes",
-          "text": "See alternative routes while driving. Tap the map mode button or tap the next turn to switch to Overview mode and choose a different route."
-        },
-        {
-          "title": "Apple Music",
-          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
-        },
-        {
-          "title": "Automatic Navigation",
-          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
-        },
-        {
-          "title": "Camera Preview",
-          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
-        },
-        {
-          "title": "Caraoke with Scoring",
-          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
-        }
-      ],
-      "countries": [
-        "KR"
-      ],
-      "countryCounts": {
-        "KR": 3
-      },
-      "pending": 0,
-      "firstSeen": "2026-10-05T04:28:52Z",
-      "lastSeen": "2026-10-06T08:23:11Z"
-    },
-    {
       "id": "2026.38",
       "date": "2026-09-30",
       "count": 68,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 2.0,
       "fsd": null,
       "fsdHw3": null,
@@ -539,7 +502,7 @@
       "id": "2026.32.7",
       "date": "2026-09-23",
       "count": 368,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 10.9,
       "fsd": null,
       "fsdHw3": null,
@@ -670,7 +633,7 @@
       "id": "2026.27.11",
       "date": "2026-09-23",
       "count": 654,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 19.4,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -729,7 +692,7 @@
       "id": "2026.27.10",
       "date": "2026-09-19",
       "count": 170,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 5.0,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -786,7 +749,7 @@
       "id": "2026.28.5",
       "date": "2026-09-16",
       "count": 5,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
@@ -839,7 +802,7 @@
       "id": "2026.27.300",
       "date": "2026-09-15",
       "count": 38,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
@@ -904,7 +867,7 @@
       "id": "2026.32.3",
       "date": "2026-09-09",
       "count": 374,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 11.1,
       "fsd": null,
       "fsdHw3": null,
@@ -1033,7 +996,7 @@
       "id": "2026.27.200",
       "date": "2026-09-01",
       "count": 32,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 1.0,
       "fsd": null,
       "fsdHw3": null,
@@ -1096,7 +1059,7 @@
       "id": "2026.27.100.1",
       "date": "2026-08-24",
       "count": 31,
-      "fleet": 3367,
+      "fleet": 3368,
       "percent": 0.9,
       "fsd": null,
       "fsdHw3": null,
