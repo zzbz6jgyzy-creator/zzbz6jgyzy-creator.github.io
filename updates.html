@@ -35,12 +35,21 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://services.arcgisonline.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Widgets/widgets.css"
+    />
     <link rel="stylesheet" href="/styles.css?v=202610140930" />
     <link rel="stylesheet" href="/updates-redesign.css" />
+    <script>
+      window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -156,6 +165,11 @@
             <div class="fsd-map-pane">
               <h2 class="visually-hidden" id="updates-map-heading">Where Tesla software is landing</h2>
               <div class="updates-map-shell">
+                <div id="updates-globe" class="updates-globe" role="img" aria-label="Where Tesla software is landing"></div>
+                <div id="updates-globe-cesium-credit" class="visually-hidden"></div>
+                <p id="updates-globe-credit" class="updates-globe-credit" hidden>
+                  Imagery © Esri, Maxar, Earthstar Geographics · CesiumJS
+                </p>
                 <svg class="updates-map" id="updates-map" viewBox="0 0 1000 500" width="1000" height="500" role="img" aria-labelledby="updates-map-heading">
                   <title>Where Tesla software is landing</title>
                   <defs>
@@ -267,6 +281,13 @@
               connected cars about twice an hour. A hotspot means a tracked car
               reported that build — not that Tesla finished the rollout.
             </p>
+            <p style="margin: 0.85rem 0 0; color: var(--mute); font-size: 0.9rem">
+              The globe uses the same keyless Esri World Imagery stack as
+              <a href="https://github.com/bilawalsidhu/gods-eye-view" rel="noopener">God’s Eye View</a>
+              (MIT, Copyright (c) 2026 Bilawal Sidhu). Rendering is
+              <a href="https://cesium.com/platform/cesiumjs/" rel="noopener">CesiumJS</a>.
+              Imagery © Esri, Maxar, Earthstar Geographics, and the GIS User Community.
+            </p>
             <p style="margin: 1rem 0 0">
               <a class="button button-ghost" href="/tesla.html">Tesla desk</a>
               <a class="button button-ghost" href="/fsd-europe.html">FSD Europe tracker</a>
@@ -295,7 +316,9 @@
     </div>
     <script src="/script.js?v=202610140930"></script>
     <script src="/updates-data.js"></script>
+    <script src="/updates-globe.js"></script>
     <script src="/updates.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Cesium.js"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
   </body>

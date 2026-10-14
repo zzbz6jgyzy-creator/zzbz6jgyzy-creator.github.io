@@ -79,3 +79,65 @@
 .tracker-intro > * { max-width: 46rem; }
 .tracker-hero { margin-top: 1rem; }
 .tracker-jump { margin-top: 1rem; }
+
+.updates-globe {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  background: #07080c;
+}
+.updates-map-shell.is-globe {
+  touch-action: none;
+  min-height: 300px;
+}
+.updates-map-shell.is-globe .updates-globe {
+  opacity: 1;
+  pointer-events: auto;
+}
+.updates-map-shell.is-globe .updates-map {
+  visibility: hidden;
+  pointer-events: none;
+}
+.updates-globe .cesium-viewer,
+.updates-globe .cesium-viewer-cesiumWidgetContainer,
+.updates-globe .cesium-widget,
+.updates-globe .cesium-widget canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+.updates-globe .cesium-viewer-bottom,
+.updates-globe .cesium-viewer-toolbar,
+.updates-globe .cesium-viewer-animationContainer,
+.updates-globe .cesium-viewer-timelineContainer,
+.updates-globe .cesium-viewer-fullscreenContainer {
+  display: none !important;
+}
+.updates-globe-credit {
+  position: absolute;
+  left: 0.55rem;
+  right: 5.5rem;
+  bottom: 0.4rem;
+  z-index: 2;
+  margin: 0;
+  max-width: calc(100% - 6rem);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.62rem;
+  line-height: 1.35;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+}
+.updates-map-shell.is-globe .updates-map-badge {
+  top: 0.7rem;
+  bottom: auto;
+  z-index: 4;
+}
+.updates-map-shell.is-globe .updates-map-zoom {
+  z-index: 4;
+}
+@media (max-width: 640px) {
+  .updates-map-shell.is-globe {
+    min-height: 280px;
+  }
+}

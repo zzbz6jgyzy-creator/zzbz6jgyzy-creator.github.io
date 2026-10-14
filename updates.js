@@ -473,6 +473,14 @@
     if (tip) tip.hidden = true;
   };
 
+  const globeApi = () => window.UpdatesGlobe;
+  const globeOn = () => Boolean(globeApi()?.active?.());
+  const pushGlobe = (bundle = current) => {
+    const globe = globeApi();
+    if (!globe?.setSpots || !bundle) return;
+    globe.setSpots(collectHotspots(bundle), countryCode, POINTS);
+  };
+
   const heatLabel = (heat) => {
     if (heat === "hot") return "New wave";
     if (heat === "warm") return "Rolling";
@@ -509,9 +517,15 @@
     return [x, y, w, h];
   };
 
-  const nearWorld = (svg = mapSvg()) => svg && sameBox(readViewBox(svg), worldBox(), 8);
+  const nearWorld = (svg = mapSvg()) => {
+    if (globeOn()) return globeApi().mode() === "world";
+    return svg && sameBox(readViewBox(svg), worldBox(), 8);
+  };
 
-  const nearEurope = (svg = mapSvg()) => svg && sameBox(readViewBox(svg), EUROPE_BOX, 12);
+  const nearEurope = (svg = mapSvg()) => {
+    if (globeOn()) return globeApi().mode() === "europe";
+    return svg && sameBox(readViewBox(svg), EUROPE_BOX, 12);
+  };
 
   const sizeHotspots = () => {
     const layer = document.getElementById("updates-hotspots");
@@ -576,6 +590,19 @@
   };
 
   const applyView = (box, animate = false) => {
+    if (globeOn()) {
+      const globe = globeApi();
+      const next = clampBox(box);
+      if (sameBox(next, clampBox(EUROPE_BOX), 12) || sameBox(box, EUROPE_BOX, 12)) {
+        globe.flyEurope(animate);
+      } else if (sameBox(next, clampBox(worldBox()), 8)) {
+        globe.flyWorld(animate);
+      }
+      syncZoomButtons();
+      syncClear();
+      syncCaptionPlace();
+      return;
+    }
     const svg = mapSvg();
     if (!svg) return;
     const next = clampBox(box);
@@ -679,6 +706,12 @@
   };
 
   const zoomBy = (factor, clientX, clientY, animate = false) => {
+    if (globeOn()) {
+      globeApi().zoomBy(factor);
+      syncZoomButtons();
+      syncClear();
+      return;
+    }
     const svg = mapSvg();
     if (!svg) return;
     const [vx, vy, vw, vh] = readViewBox(svg);
@@ -697,6 +730,11 @@
   };
 
   const flyToCountry = (code) => {
+    if (globeOn() && POINTS[code]) {
+      const [lon, lat] = POINTS[code];
+      globeApi().flyCountry(code, lon, lat, countryScale(code));
+      return;
+    }
     const svg = mapSvg();
     if (!svg || !POINTS[code]) return;
     const { x, y } = project(POINTS[code][0], POINTS[code][1]);
@@ -709,16 +747,17 @@
 
   const focusStage = (code) => {
     const svg = mapSvg();
-    if (!svg) return;
     if (code === focusedCode) {
-      sizeHotspots();
-      svg.classList.toggle("is-focused", Boolean(code));
+      if (!globeOn()) {
+        sizeHotspots();
+        svg?.classList.toggle("is-focused", Boolean(code));
+      }
       return;
     }
     focusedCode = code || "";
     if (!code || !POINTS[code]) {
-      svg.classList.remove("is-focused");
-      sizeHotspots();
+      svg?.classList.remove("is-focused");
+      if (!globeOn()) sizeHotspots();
       return;
     }
     flyToCountry(code);
@@ -812,6 +851,7 @@
     });
 
     focusStage(countryCode);
+    pushGlobe(bundle);
 
     const wave = waveRow(bundle);
     const waveId = wave?.id;
@@ -1111,6 +1151,7 @@
 
   window.addEventListener("resize", () => {
     sizeHotspots();
+    globeApi()?.resize?.();
     syncZoomButtons();
     syncClear();
   });
@@ -1261,6 +1302,7 @@
     });
 
     shell.addEventListener("wheel", (event) => {
+      if (globeOn()) return;
       if (event.target.closest("[data-updates-zoom]")) return;
       if (nearWorld() && event.deltaY > 0) return;
       event.preventDefault();
@@ -1271,7 +1313,7 @@
     let pinch = null;
 
     const tipFromPointer = (event) => {
-      if (event.target.closest("[data-updates-zoom]") || drag?.moved) {
+      if (globeOn() || event.target.closest("[data-updates-zoom]") || drag?.moved) {
         hideTip();
         return;
       }
@@ -1290,6 +1332,7 @@
     };
 
     shell.addEventListener("pointerdown", (event) => {
+      if (globeOn()) return;
       if (event.target.closest("[data-updates-zoom]")) return;
       if (event.pointerType === "mouse" && event.button !== 0) return;
       if (pinch) return;
@@ -1367,6 +1410,7 @@
     });
 
     shell.addEventListener("touchstart", (event) => {
+      if (globeOn()) return;
       if (event.touches.length === 2) {
         drag = null;
         pinch = {
@@ -1378,7 +1422,7 @@
     }, { passive: true });
 
     shell.addEventListener("touchmove", (event) => {
-      if (!pinch || event.touches.length !== 2) return;
+      if (globeOn() || !pinch || event.touches.length !== 2) return;
       event.preventDefault();
       const dist = pinchDist(event.touches);
       if (pinch.dist < 8) return;
@@ -1396,6 +1440,31 @@
   };
 
   bindMapNav();
+
+  const globe = globeApi();
+  if (globe) {
+    globe.onPick = (code) => {
+      if (!code) return;
+      const next = countryCode === code ? "" : code;
+      setCountry(next, true);
+      rerender();
+    };
+    globe.onView = () => {
+      syncZoomButtons();
+      syncClear();
+      syncCaptionPlace();
+    };
+    globe.onReady = () => {
+      pushGlobe();
+      if (countryCode && POINTS[countryCode]) {
+        const [lon, lat] = POINTS[countryCode];
+        globe.flyCountry(countryCode, lon, lat, countryScale(countryCode));
+      }
+      syncZoomButtons();
+      syncClear();
+    };
+    if (globe.active()) globe.onReady();
+  }
 
   const hash = decodeURIComponent((location.hash || "").replace(/^#/, ""));
   if (hash && /^\d{4}\.\d+/.test(hash)) {
