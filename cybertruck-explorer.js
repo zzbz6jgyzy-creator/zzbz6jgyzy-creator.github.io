@@ -79,7 +79,6 @@ const M = {
   disc: S({ color: 0x777a80, metalness: .95, roughness: .28 }), lens: P({ color: 0x0b0f18, metalness: .2, roughness: .05, clearcoat: 1 }),
   hvac: S({ color: 0x34373d, metalness: .3, roughness: .6 }), blue: S({ color: 0x2a5d9b, roughness: .5 }), red: S({ color: RED, roughness: .45 }),
   stainless: P({ color: 0x8f9297, metalness: .55, roughness: .52, clearcoat: 0, envMapIntensity: 0.32 }),
-  clad: S({ color: 0x0e0f11, metalness: .08, roughness: .86, envMapIntensity: 0.18 }),
 };
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 function addMesh(id, m, hitMin = 0.26) {
@@ -201,76 +200,6 @@ function splitLR(mesh) {
   for (let t = 0; t < pos.count; t += 3) { let cx = 0; for (let k = 0; k < 3; k++) { v.fromBufferAttribute(pos, t + k).applyMatrix4(m); cx += v.x; } out[cx < 0 ? 0 : 1].push(t); }
   return out.map((tris) => geomFromTris(g, tris, mesh.material, mesh));
 }
-// Wheel-arch flares and the lower rocker are the same stainless Bodyl mesh.
-// Split those triangles so they read as the truck’s dark plastic cladding.
-function splitCladding(mesh, d) {
-  const g = mesh.geometry.index ? mesh.geometry.toNonIndexed() : mesh.geometry;
-  const pos = g.attributes.position, mw = mesh.matrixWorld;
-  const va = new THREE.Vector3(), vb = new THREE.Vector3(), vc = new THREE.Vector3();
-  const wy = d.cy || d.R;
-  const wheels = [[d.tw, d.zf, d.R], [-d.tw, d.zf, d.R], [d.tw, d.zr, d.R], [-d.tw, d.zr, d.R]];
-  const xOut = Math.max(0.86, d.tw * 0.88);
-  const clad = [], rest = [];
-  for (let t = 0; t < pos.count; t += 3) {
-    va.fromBufferAttribute(pos, t).applyMatrix4(mw);
-    vb.fromBufferAttribute(pos, t + 1).applyMatrix4(mw);
-    vc.fromBufferAttribute(pos, t + 2).applyMatrix4(mw);
-    const cx = (va.x + vb.x + vc.x) / 3, cy = (va.y + vb.y + vc.y) / 3, cz = (va.z + vb.z + vc.z) / 3;
-    let arch = false;
-    for (let i = 0; i < 4; i++) {
-      const wx = wheels[i][0], wz = wheels[i][1], r = wheels[i][2];
-      // Side-view ring around the wheel, not a top-down cylinder — that
-      // painted the doors. Keep the flare on the outer skin.
-      const ring = Math.hypot(cy - wy, cz - wz);
-      // Top and upper sides of the opening only. A full ring paints the fender.
-      if (cy > wy + r * 0.5 && ring > r * 0.95 && ring < r * 1.34 && Math.abs(cz - wz) < r * 0.95 && Math.abs(cx) > xOut) { arch = true; break; }
-    }
-    const skirt = cy < 0.58 && Math.abs(cx) > Math.max(0.84, d.tw * 0.86);
-    const under = cy < 0.42;
-    const chin = cy < 0.50 && Math.abs(cz) > 2.28;
-    (arch || skirt || under || chin ? clad : rest).push(t);
-  }
-  const shell = geomFromTris(g, rest, M.stainless, mesh);
-  const trim = geomFromTris(g, clad, M.clad, mesh);
-  if (trim) trim.name = 'cladding';
-  globalThis.__ctxClad = { tris: clad.length, rest: rest.length, tw: d.tw, R: d.R, wy };
-  return [shell, trim].filter(Boolean);
-}
-function addCladdingFills(d) {
-  const p = reg('body');
-  const mid = (d.zf + d.zr) / 2;
-  const len = Math.max(1.35, d.zf - d.zr - 0.85);
-  for (const sx of [-1, 1]) {
-    const wall = new THREE.Mesh(box(0.04, 0.2, len), M.clad);
-    wall.position.set(sx * Math.min((d.tx || d.tw + 0.12) - 0.04, d.tw + 0.08), 0.36, mid);
-    wall.userData.part = 'body';
-    wall.name = 'rocker-fill';
-    wall.castShadow = wall.receiveShadow = true;
-    p.group.add(wall);
-    p.meshes.push(wall);
-  }
-  const tray = new THREE.Mesh(box(Math.min(d.W - 0.25, 2 * d.tw + 0.2), 0.035, d.zf - d.zr - 0.4), M.clad);
-  tray.position.set(0, 0.34, mid);
-  tray.userData.part = 'body';
-  tray.name = 'undertray';
-  tray.castShadow = tray.receiveShadow = true;
-  p.group.add(tray);
-  p.meshes.push(tray);
-  const wy = d.cy || d.R;
-  const rad = d.R * 1.26;
-  for (const sx of [-1, 1]) {
-    for (const z of [d.zf, d.zr]) {
-      const m = new THREE.Mesh(new THREE.TorusGeometry(rad, 0.028, 6, 28, Math.PI), M.clad);
-      m.position.set(sx * ((d.tx || d.tw + 0.1) - 0.05), wy, z);
-      m.rotation.y = Math.PI / 2;
-      m.userData.part = 'body';
-      m.name = 'arch-trim';
-      m.castShadow = m.receiveShadow = true;
-      p.group.add(m);
-      p.meshes.push(m);
-    }
-  }
-}
 
 const status = $('.m3x-status'); status.textContent = 'Loading Cybertruck…';
 const bar = $('.m3x-loadbar');
@@ -342,14 +271,9 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
   meshes.forEach((o) => {
     const id = o.userData.part;
     if (id === 'wheels') { splitLR(o).forEach((nm, i) => { if (!nm) return; nm.userData = { part: id, side: i }; reg(id).meshes.push(nm); }); o.visible = false; return; }
-    if (id === 'body') {
-      splitCladding(o, d).forEach((nm) => { nm.userData.part = 'body'; const p = reg('body'); p.group.attach(nm); p.meshes.push(nm); });
-      o.visible = false; return;
-    }
     const p = reg(id); p.group.attach(o); p.meshes.push(o);
   });
   buildInternals(d);
-  addCladdingFills(d);
   if (/debug/.test(location.search)) window.__ctx = { THREE, parts, car, camera, controls, d };
   (parts.body ? parts.body.meshes : []).forEach((o) => { const cc = new THREE.Box3().setFromObject(o).getCenter(new THREE.Vector3()); o.userData.base = o.position.clone(); o.userData.eo = o.parent.worldToLocal(cc.clone().add(V(cc.x * 0.1, 0.03, cc.z * 0.04))).sub(o.parent.worldToLocal(cc.clone())); });
   const SPLIT = { wheels: 1.05, brakes: 0.85, susp: 0.5 };
