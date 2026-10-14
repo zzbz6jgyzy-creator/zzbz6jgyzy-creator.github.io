@@ -2,7 +2,7 @@
 (function () {
   if (!("IntersectionObserver" in window)) return;
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var els = document.querySelectorAll(".stats .stat b, .fsd-kpi b, .cc-stat b");
+  var els = document.querySelectorAll(".stats .stat b, .fsd-kpi b, .cc-stat b, .sl-n");
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (!e.isIntersecting) return;
@@ -33,6 +33,6 @@
     }
     requestAnimationFrame(step);
   }
-  function init() { els = document.querySelectorAll(".stats .stat b, .fsd-kpi b, .cc-stat b"); els.forEach(function (el) { io.observe(el); }); }
+  function init() { els = document.querySelectorAll(".stats .stat b, .fsd-kpi b, .cc-stat b, .sl-n"); els.forEach(function (el) { io.observe(el); }); }
   if (document.readyState === "complete") init(); else window.addEventListener("load", init);
 })();
