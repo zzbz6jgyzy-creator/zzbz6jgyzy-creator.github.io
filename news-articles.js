@@ -28,7 +28,7 @@
 
   // Signup box lives inside the story list as a full-width break after the first row.
   const nl = document.getElementById("newsletter"), nlSec = nl && nl.closest("section");
-  if (nl) { nl.classList.add("art-nl"); nl.remove(); if (nlSec && !nlSec.querySelector("*")) nlSec.remove(); }
+  if (nl) { nl.classList.add("art-nl"); if (nlSec) nlSec.hidden = true; } // stays in the DOM so grow.js/newsletter-cta see it
   function placeNl() {
     if (!nl) return;
     const cards = list.querySelectorAll(".art-grid > *");
@@ -43,7 +43,7 @@
   }
   let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(placeNl, 150); });
   function render() {
-    if (nl) nl.remove();
+    if (nl && nlSec && list.contains(nl)) nlSec.append(nl);
     const pool = all.filter((a) => topic === "all" || a.topic === topic);
     const L = pool.find((a) => a.pinned) || pool[0];
     if (!L) { lead.innerHTML = ""; list.innerHTML = '<p class="art-empty">No stories in this topic yet.</p>'; more.hidden = true; placeNl(); return; }
