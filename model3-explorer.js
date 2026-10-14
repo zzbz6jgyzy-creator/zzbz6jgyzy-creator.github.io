@@ -6,7 +6,7 @@ import { GLTFLoader } from '/vendor/three/addons/GLTFLoader.js';
 import { DRACOLoader } from '/vendor/three/addons/DRACOLoader.js';
 import { RoomEnvironment } from '/vendor/three/addons/RoomEnvironment.js';
 import { mergeGeometries } from '/vendor/three/utils/BufferGeometryUtils.js';
-import { PARTS, ORDER, PHOTOS } from './model3-parts.js?v=3';
+import { PARTS, ORDER, PHOTOS } from './model3-parts.js?v=5';
 
 // ---- Exterior config: swap this block to use another GLB ----
 const NUM = (o) => +((o.name.match(/Object_(\d+)/) || [])[1] || -1);
@@ -238,7 +238,7 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
     if (id === 'wheels' && [26, 27, 28, 29].includes(NUM(o))) { o.visible = false; return; } // replaced by built 3D wheels
     if (id === 'wheels' || id === 'brakes') { splitLR(o).forEach((nm, i) => { if (nm && NUM(o) === 25) nm = keepNearHub(nm, d); if (!nm) return; nm.castShadow = nm.receiveShadow = true; nm.userData = { part: id, side: i }; reg(id).meshes.push(nm); }); return; }
     const p = reg(id); p.group.attach(o); p.meshes.push(o); });
-  buildInternals(d); if (/debug/.test(location.search)) window.__m3x = { THREE, parts, car, camera, controls, kick, d };
+  buildInternals(d); if (/debug/.test(location.search)) window.__m3x = { THREE, parts, car, camera, controls, kick, d, getRestore: () => restoreView, getFly: () => fly && { k: flyK(fly), p1: fly.p1.toArray(), t1: fly.t1.toArray() }, getSelected: () => selected };
   buildWheels(d);
   // body panels drift apart slightly (outward from their own centres) on top of the lift
   (parts.body ? parts.body.meshes : []).forEach((o) => { const cc = new THREE.Box3().setFromObject(o).getCenter(new THREE.Vector3()); o.userData.base = o.position.clone(); o.userData.eo = o.parent.worldToLocal(cc.clone().add(V(cc.x * 0.12, 0.03, cc.z * 0.04))).sub(o.parent.worldToLocal(cc.clone())); });
@@ -265,29 +265,51 @@ function applyExplode() { const e = ease(ex); Object.values(parts).forEach((p) =
 
 // ---------- selection & card ----------
 let selected = null; const card = $('.m3x-card');
+['pointerdown', 'pointerup', 'click'].forEach((type) => card.addEventListener(type, (e) => e.stopPropagation()));
 const hl = S({ color: RED, emissive: RED, emissiveIntensity: .5, metalness: .4, roughness: .35 });
 function setLook(id) { Object.entries(parts).forEach(([pid, p]) => p.meshes.forEach((o) => { o.userData.orig = o.userData.orig || o.material;
   if (!id) { o.material = o.userData.orig; o.userData.ghost = false; return; }
   if (pid === id) { o.material = hl; o.userData.ghost = false; return; }
   if (!o.userData.dim) { const dm = o.userData.orig.clone(); dm.transparent = true; dm.opacity = .06; dm.depthWrite = false; o.userData.dim = dm; } o.material = o.userData.dim; o.userData.ghost = true; })); }
 function cardHTML(id) {
-  const P0 = PARTS[id], ph = PHOTOS[id], srcs = [P0.src, P0.src2].filter(Boolean);
+  const P0 = PARTS[id], ph = PHOTOS[id], srcs = [P0.src, P0.src2, P0.src3].filter(Boolean);
+  const specs = P0.specs || [];
   return '<button class="m3x-x" type="button" aria-label="Close">×</button>' +
     (ph ? '<figure class="m3x-photo"><img src="' + ph.src + '" alt="' + ph.alt + '" loading="lazy" decoding="async"><figcaption>Photo: <a href="' + ph.url + '" target="_blank" rel="noopener">' + ph.by + '</a>, <a href="' + ph.licUrl + '" target="_blank" rel="noopener">' + ph.lic + '</a></figcaption></figure>' : '') +
-    '<div class="m3x-cbody"><p class="m3x-var">' + P0.variant + '</p><h2>' + P0.name + '</h2><p class="m3x-desc">' + P0.desc + '</p>' + (P0.facts.length ? '<ul>' + P0.facts.map((f) => '<li>' + f + '</li>').join('') + '</ul>' : '') +
-    (srcs.length ? '<p class="m3x-src">Source: ' + srcs.map((s) => '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>').join(' · ') + '</p>' : '') + '</div>';
+    '<div class="m3x-cbody"><p class="m3x-var">' + P0.variant + '</p><h2>' + P0.name + '</h2>' +
+    '<p class="m3x-desc">' + P0.desc + '</p>' +
+    (specs.length ? '<h3>At a glance</h3><dl class="m3x-specs">' + specs.map((row) => '<div><dt>' + row[0] + '</dt><dd>' + row[1] + '</dd></div>').join('') + '</dl>' : '') +
+    (P0.how ? '<h3>How it works</h3><p class="m3x-how">' + P0.how + '</p>' : '') +
+    (P0.facts.length ? '<h3>Key facts</h3><ul>' + P0.facts.map((f) => '<li>' + f + '</li>').join('') + '</ul>' : '') +
+    (srcs.length ? '<p class="m3x-src">Sources: ' + srcs.map((s) => '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>').join(' · ') + '</p>' : '') + '</div>';
 }
-function select(id, flyIt = true) {
+let restoreView = null;
+let ignorePickUntil = 0;
+const snapView = () => ({ p: camera.position.clone(), t: controls.target.clone() });
+function select(id, opts = {}) {
+  const flyIt = opts.fly !== false;
+  const snapBack = opts.snapBack !== false;
+  if (id && !selected) restoreView = snapView();
   selected = id; setLook(id); app.classList.toggle('m3x-has-card', !!id);
   app.querySelectorAll('.m3x-list button').forEach((b) => b.setAttribute('aria-current', b.dataset.part === id));
-  if (!id) { card.hidden = true; label.hidden = true; frame(); kick(); return; }
-  card.innerHTML = cardHTML(id); card.hidden = false; card.scrollTop = 0; card.querySelector('.m3x-x').onclick = () => select(null);
+  if (!id) {
+    ignorePickUntil = performance.now() + 450;
+    card.hidden = true; label.hidden = true; frame();
+    const back = restoreView;
+    restoreView = null;
+    if (snapBack) startFly((back && back.p) ? back.p.clone() : homePos(), (back && back.t) ? back.t.clone() : HOME.t.clone());
+    idle();
+    kick();
+    return;
+  }
+  card.innerHTML = cardHTML(id); card.hidden = false; card.scrollTop = 0;
+  card.querySelector('.m3x-x').onclick = (e) => { e.preventDefault(); e.stopPropagation(); select(null); };
   label.textContent = PARTS[id].name; label.hidden = false; frame(); if (flyIt) flyTo(id); idle(); kick();
 }
 // keep the part visible beside/above the card using a view offset
 function frame() { const w = innerWidth, h = app.clientHeight;
-  if (selected && portrait()) camera.setViewOffset(w, h, 0, h * 0.17, w, h);
-  else if (selected && w > 900) camera.setViewOffset(w, h, -((366 + w - 286) / 2 - w / 2), 0, w, h);
+  if (selected && portrait()) camera.setViewOffset(w, h, 0, h * 0.2, w, h);
+  else if (selected && w > 900) camera.setViewOffset(w, h, -((460 + w - 286) / 2 - w / 2), 0, w, h);
   else camera.clearViewOffset(); camera.updateProjectionMatrix(); }
 function partBox(id) { applyExplode(); car.updateMatrixWorld(true); const bx = new THREE.Box3(); parts[id].meshes.forEach((o) => { if (o.visible) bx.expandByObject(o); }); return bx; }
 let fly = null;
@@ -295,8 +317,14 @@ function flyTo(id) { const sd = parts[id] && parts[id].sides; const bx = partBox
   const dir = camera.position.clone().sub(controls.target).normalize(); dir.y = Math.max(dir.y, 0.42); dir.normalize();
   const fit = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * (portrait() ? 1.25 : 0.95);
   const dist = THREE.MathUtils.clamp(fit, portrait() ? 3.2 : (sd ? 3.4 : 2.0), 11); if (sd) { startFly(homePos().multiplyScalar(ex > .5 ? 1.25 : 1.05).add(V(0, ex > .5 ? 0.4 : 0, 0)), V(0, 0.5, 0)); return; } startFly(c.clone().add(dir.multiplyScalar(dist)), c); }
-function startFly(p, t) { const len = p.distanceTo(camera.position) + t.distanceTo(controls.target); fly = { p0: camera.position.clone(), t0: controls.target.clone(), p1: p, t1: t, k: reduce ? 1 : 0, dur: THREE.MathUtils.clamp(0.7 + len * 0.08, 0.8, 1.6) }; kick(); }
-$('.m3x-reset').addEventListener('click', () => { select(null); setExplode(0); startFly(homePos(), HOME.t.clone()); });
+function flyK(f) { return !f || f.dur <= 0 ? 1 : Math.min(1, (performance.now() - f.start) / f.dur); }
+function startFly(p, t) {
+  const len = p.distanceTo(camera.position) + t.distanceTo(controls.target);
+  fly = { p0: camera.position.clone(), t0: controls.target.clone(), p1: p.clone(), t1: t.clone(), start: performance.now(), dur: reduce ? 0 : THREE.MathUtils.clamp(0.7 + len * 0.08, 0.8, 1.6) * 1000 };
+  kick();
+}
+$('.m3x-reset').addEventListener('click', () => { restoreView = null; select(null, { snapBack: false }); setExplode(0); startFly(homePos(), HOME.t.clone()); });
+addEventListener('keydown', (e) => { if (e.key === 'Escape' && selected) select(null); });
 
 // picking (ghosted surfaces ignored; enlarged hit volumes for small parts)
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
@@ -309,7 +337,15 @@ function pick(e) { const r = renderer.domElement.getBoundingClientRect(); ptr.se
   return real ? real.object.userData.part : hits[0].object.userData.part; }
 let down = null;
 renderer.domElement.addEventListener('pointerdown', (e) => { down = [e.clientX, e.clientY, performance.now()]; idle(); });
-renderer.domElement.addEventListener('pointerup', (e) => { if (!down) return; if (Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 8 && performance.now() - down[2] < 600) { const id = pick(e); select(id || null, !!id); } down = null; });
+renderer.domElement.addEventListener('pointerup', (e) => {
+  if (!down) return;
+  const tap = Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 8 && performance.now() - down[2] < 600;
+  down = null;
+  if (!tap || performance.now() < ignorePickUntil) return;
+  const id = pick(e);
+  if (id) select(id);
+  else if (selected) select(null);
+});
 const tip = $('.m3x-tip');
 renderer.domElement.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse' || e.buttons) { tip.hidden = true; return; } const id = pick(e);
   if (id) { tip.hidden = false; tip.textContent = PARTS[id].name; tip.style.transform = 'translate(' + (e.clientX + 14) + 'px,' + (e.clientY + 12) + 'px)'; renderer.domElement.style.cursor = 'pointer'; } else { tip.hidden = true; renderer.domElement.style.cursor = 'grab'; } });
@@ -324,7 +360,7 @@ let paused = reduce, last = performance.now(); const pauseBtn = $('.m3x-pause');
 function idle() { last = performance.now(); }
 function syncPause() { pauseBtn.textContent = paused ? 'Play' : 'Pause'; pauseBtn.setAttribute('aria-pressed', paused); }
 pauseBtn.addEventListener('click', () => { paused = !paused; syncPause(); kick(); }); syncPause();
-controls.addEventListener('start', () => { idle(); fly = null; }); controls.addEventListener('change', () => kick());
+controls.addEventListener('start', () => { idle(); if (!fly) return; /* keep a scripted snap/zoom */ }); controls.addEventListener('change', () => kick());
 
 const label = $('.m3x-label');
 function placeLabel() { if (!selected) return; const c = partBox(selected).getCenter(new THREE.Vector3()).project(camera); label.style.transform = 'translate(' + ((c.x + 1) / 2 * innerWidth) + 'px,' + ((1 - c.y) / 2 * app.clientHeight) + 'px)'; label.style.opacity = c.z < 1 ? 1 : 0; }
@@ -337,10 +373,39 @@ function tick() {
   raf = 0; const dt = Math.min(clock.getDelta(), 0.05), now = performance.now(); let busy = false;
   if (Math.abs(exT - ex) > 0.0008) { ex += Math.sign(exT - ex) * Math.min(Math.abs(exT - ex), dt / 1.4); busy = true; } else ex = exT;
   applyExplode();
-  if (fly) { fly.k = Math.min(1, fly.k + dt / fly.dur); const k = ease(fly.k); camera.position.lerpVectors(fly.p0, fly.p1, k); controls.target.lerpVectors(fly.t0, fly.t1, k); if (fly.k >= 1) fly = null; busy = true; }
-  controls.autoRotate = !paused && !selected && now - last > 6500; controls.autoRotateSpeed = 0.45;
-  if (controls.update() || controls.autoRotate) busy = true;
+  if (fly) {
+    const k = flyK(fly), e = ease(k);
+    camera.position.lerpVectors(fly.p0, fly.p1, e);
+    controls.target.lerpVectors(fly.t0, fly.t1, e);
+    if (k >= 1) {
+      camera.position.copy(fly.p1);
+      controls.target.copy(fly.t1);
+      if (controls._sphericalDelta) controls._sphericalDelta.set(0, 0, 0);
+      if (controls._panOffset) controls._panOffset.set(0, 0, 0);
+      controls._scale = 1;
+      fly = null;
+    }
+    busy = true;
+  }
+  else {
+    controls.autoRotate = !paused && !selected && now - last > 6500; controls.autoRotateSpeed = 0.45;
+    if (controls.update() || controls.autoRotate) busy = true;
+  }
   renderer.render(scene, camera); placeLabel();
   frames++; if (now - t0 > 1500) { const fps = frames * 1000 / (now - t0); if (fps < 32 && dpr > 1) { dpr = Math.max(1, dpr - 0.4); renderer.setPixelRatio(dpr); resize(); } frames = 0; t0 = now; }
   if (busy) kick();
 }
+
+globalThis.__m3x = {
+  selected: () => selected,
+  view: () => ({
+    selected,
+    x: camera.position.x,
+    y: camera.position.y,
+    z: camera.position.z,
+    tx: controls.target.x,
+    ty: controls.target.y,
+    tz: controls.target.z,
+    flying: Boolean(fly),
+  }),
+};
