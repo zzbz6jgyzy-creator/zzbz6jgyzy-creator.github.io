@@ -5,31 +5,6 @@
 
   const toggle = document.querySelector("[data-nav-toggle]");
   const nav = document.querySelector("[data-nav]");
-  if (nav && !nav.querySelector(".nav-more")) {
-    const core = ["/", "/index.html", "/news.html", "/calendar.html", "/tesla.html", "/spacex.html", "/grok.html", "/tsla.html", "/wallpapers.html"];
-    const extra = [...nav.querySelectorAll(":scope > a:not(.nav-cta)")].filter((a) => !core.includes(a.getAttribute("href")));
-    if (extra.length > 1) {
-      const wrap = document.createElement("div");
-      wrap.className = "nav-more";
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "nav-more-btn";
-      btn.setAttribute("aria-expanded", "false");
-      btn.setAttribute("aria-haspopup", "true");
-      btn.innerHTML = 'More <span aria-hidden="true">\u25BE</span>';
-      const panel = document.createElement("div");
-      panel.className = "nav-more-panel";
-      extra[0].before(wrap);
-      extra.forEach((a) => panel.append(a));
-      wrap.append(btn, panel);
-      if (panel.querySelector('[aria-current="page"]')) btn.classList.add("is-current");
-      const setOpen = (open) => { wrap.classList.toggle("is-open", open); btn.setAttribute("aria-expanded", String(open)); };
-      btn.addEventListener("click", (e) => { e.stopPropagation(); setOpen(!wrap.classList.contains("is-open")); });
-      document.addEventListener("click", (e) => { if (!wrap.contains(e.target)) setOpen(false); });
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
-    }
-  }
-
   if (toggle && nav) {
     toggle.addEventListener("click", () => {
       const open = nav.classList.toggle("is-open");
