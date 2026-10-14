@@ -36,19 +36,19 @@ try { renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'hi
 catch (e) { fail('Your browser can’t run 3D here, so this is a still image.'); throw e; }
 let dpr = Math.min(devicePixelRatio || 1, coarse ? 1.75 : 2);
 renderer.setPixelRatio(dpr);
-renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.96;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.88;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 $('.m3x-canvas').appendChild(renderer.domElement);
 
 const scene = new THREE.Scene(); scene.background = new THREE.Color(0x050506); scene.fog = new THREE.Fog(0x050506, 14, 34);
 const pmrem = new THREE.PMREMGenerator(renderer);
-scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture; scene.environmentIntensity = 0.78;
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture; scene.environmentIntensity = 0.58;
 const camera = new THREE.PerspectiveCamera(35, 1, 0.05, 90);
-const key = new THREE.DirectionalLight(0xffffff, 1.65); key.position.set(5, 10, 6); key.castShadow = true;
+const key = new THREE.DirectionalLight(0xffffff, 1.28); key.position.set(5, 10, 6); key.castShadow = true;
 key.shadow.mapSize.set(coarse ? 1024 : 2048, coarse ? 1024 : 2048); Object.assign(key.shadow.camera, { left: -7, right: 7, top: 7, bottom: -7, near: 1, far: 30 }); key.shadow.radius = 8; key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02;
-const rim = new THREE.DirectionalLight(0xff5a66, 0.55); rim.position.set(-7, 0.6, -7);
-const fill = new THREE.DirectionalLight(0xbfd2ff, 0.48); fill.position.set(-6, 4, 7);
+const rim = new THREE.DirectionalLight(0xff5a66, 0.32); rim.position.set(-7, 0.6, -7);
+const fill = new THREE.DirectionalLight(0xbfd2ff, 0.42); fill.position.set(-6, 4, 7);
 scene.add(key, rim, fill, new THREE.HemisphereLight(0x9aa8ff, 0x100404, 0.25));
 const floor = new THREE.Mesh(new THREE.CircleGeometry(20, 96), new THREE.MeshStandardMaterial({ color: 0x08080a, roughness: 1, metalness: 0, envMapIntensity: 0.1 }));
 floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
@@ -78,7 +78,7 @@ const M = {
   cool: S({ color: 0x3f6f8f, metalness: .8, roughness: .35 }), spring: S({ color: 0xd9dadd, metalness: .85, roughness: .25 }),
   disc: S({ color: 0x777a80, metalness: .95, roughness: .28 }), lens: P({ color: 0x0b0f18, metalness: .2, roughness: .05, clearcoat: 1 }),
   hvac: S({ color: 0x34373d, metalness: .3, roughness: .6 }), blue: S({ color: 0x2a5d9b, roughness: .5 }), red: S({ color: RED, roughness: .45 }),
-  stainless: P({ color: 0xa6a9ae, metalness: .78, roughness: .38, clearcoat: .06, clearcoatRoughness: .55, envMapIntensity: 0.58 }),
+  stainless: P({ color: 0x8f9297, metalness: .55, roughness: .52, clearcoat: 0, envMapIntensity: 0.32 }),
   clad: S({ color: 0x0e0f11, metalness: .08, roughness: .86, envMapIntensity: 0.18 }),
 };
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
@@ -372,7 +372,7 @@ function setExplode(v) {
   syncEx(); kick();
 }
 slider.addEventListener('input', () => { exT = ex = slider.value / 100; exAnim = null; syncEx(); kick(); });
-exBtn.addEventListener('click', () => { const v = exT > 0.5 ? 0 : 1; setExplode(v); if (!selected) startFly(v ? homePos().multiplyScalar(1.22).add(V(0, 0.7, 0)) : homePos(), v ? V(0, 1.25, 0) : HOME.t.clone()); });
+exBtn.addEventListener('click', () => { const v = exT > 0.5 ? 0 : 1; setExplode(v); if (!selected) startFly(v ? homePos().multiplyScalar(1.48).add(V(0, 1.15, 0)) : homePos(), v ? V(0, 1.45, 0) : HOME.t.clone()); });
 const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 function applyExplode() {
   const e = ease(ex);
@@ -448,7 +448,7 @@ let fly = null;
 function flyTo(id) { const sd = parts[id] && parts[id].sides; const bx = partBox(id, true), c = bx.getCenter(new THREE.Vector3()), r = bx.getSize(new THREE.Vector3()).length() / 2;
   const dir = camera.position.clone().sub(controls.target).normalize(); dir.y = Math.max(dir.y, 0.42); dir.normalize();
   const fit = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * (portrait() ? 1.25 : 0.95);
-  const dist = THREE.MathUtils.clamp(fit, portrait() ? 3.6 : (sd ? 4.0 : 2.3), 13); if (sd) { startFly(homePos().multiplyScalar(exT > .5 ? 1.25 : 1.05).add(V(0, exT > .5 ? 0.45 : 0, 0)), V(0, 0.55, 0)); return; }
+  const dist = THREE.MathUtils.clamp(fit, portrait() ? 3.6 : (sd ? 4.0 : 2.3), 13); if (sd) { startFly(homePos().multiplyScalar(exT > .5 ? 1.48 : 1.05).add(V(0, exT > .5 ? 0.9 : 0, 0)), V(0, 0.55, 0)); return; }
   if (!isFinite(c.x) || !isFinite(r) || r < 0.01) { startFly(homePos().multiplyScalar(exT > .5 ? 1.22 : 1), exT > .5 ? V(0, 1.25, 0) : HOME.t.clone()); return; }
   startFly(c.clone().add(dir.multiplyScalar(dist)), c); }
 function flyK(f) { return !f || f.dur <= 0 ? 1 : Math.min(1, (performance.now() - f.start) / f.dur); }
