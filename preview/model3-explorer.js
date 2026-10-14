@@ -175,6 +175,18 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
   const k = EXTERIOR.length / s.z; root.scale.setScalar(k); root.updateMatrixWorld(true); b.setFromObject(root);
   const c = b.getCenter(new THREE.Vector3()); root.position.sub(V(c.x, b.min.y, c.z)); root.updateMatrixWorld(true); b.setFromObject(root);
   const paint = P({ color: 0xeeeae2, metalness: .05, roughness: .28, clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: .85 });
+  // Highland-style face: the model's face is a near-solid disc, so twisted spokes + dark pockets are masked in the shader
+  const rimU = { uW: { value: new THREE.Vector4(1.4, -1.4, 0.34, 0.34) } };
+  const rimMat = P({ color: 0xc4c7cc, metalness: 1, roughness: .2, clearcoat: .5, clearcoatRoughness: .12 });
+  rimMat.onBeforeCompile = (sh) => { sh.uniforms.uW = rimU.uW;
+    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vWP;').replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvWP = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
+varying vec3 vWP; uniform vec4 uW; float rimM;`).replace('#include <color_fragment>', `#include <color_fragment>
+{ float zc = vWP.z > (uW.x + uW.y) * .5 ? uW.x : uW.y; vec2 dd = vec2(vWP.z - zc, vWP.y - uW.z); float r = length(dd) / uW.w; float th = atan(dd.y, dd.x);
+  float tw = sign(vWP.x); float f = fract(th * 10.0 / 6.2831853 + tw * r * 0.8); float sp = smoothstep(0.0, 0.03, f) * (1.0 - smoothstep(0.30, 0.34, f));
+  float face = smoothstep(0.24, 0.27, r) * (1.0 - smoothstep(0.80, 0.83, r)); rimM = mix(1.0, sp, face); diffuseColor.rgb = mix(vec3(0.012, 0.013, 0.015), diffuseColor.rgb, rimM); }`)
+      .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = mix(0.75, roughnessFactor, rimM);')
+      .replace('#include <metalnessmap_fragment>', '#include <metalnessmap_fragment>\nmetalnessFactor = mix(0.1, metalnessFactor, rimM);'); };
   const meshes = []; root.traverse((o) => { if (o.isMesh) meshes.push(o); });
   const tyres = [];
   meshes.forEach((o) => {
@@ -186,6 +198,11 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
     else if (n === 2 || n === 14) o.material = P({ color: 0xffffff, metalness: 0, roughness: .02, transparent: true, opacity: .18, clearcoat: 1, depthWrite: false });
     else if (n === 10) o.material = S({ color: RED, metalness: .3, roughness: .4 });
     else if (n === 9) o.material = M.disc;
+    else if (n === 25) o.material = P({ color: 0xd9dce1, metalness: 1, roughness: .2 }); // T logo
+    else if (n === 26) o.material = S({ color: 0x0e0f11, metalness: .3, roughness: .7 }); // gunmetal barrel / pockets
+    else if (n === 27) o.material = S({ color: 0x15171a, metalness: .6, roughness: .4 }); // centre cap
+    else if (n === 28) o.material = rimMat; // "blur spoke" mesh is actually the spoke face else if (n === 29) o.material = S({ color: 0x141518, metalness: .6, roughness: .35 }); // motion-blur spoke cards smear the face
+    else if (n === 31) o.material = S({ color: 0x0c0c0d, metalness: 0, roughness: .85 });
     else if (n === 22) o.material = S({ color: 0xffffff, emissive: 0xffe8e8, emissiveIntensity: 1.2 });
     if (n === 31) tyres.push(o);
   });
@@ -194,7 +211,7 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
   const q = { fl: [], fr: [], rl: [], rr: [] }; pts.forEach((p) => q[(p.z > 0 ? 'f' : 'r') + (p.x > 0 ? 'l' : 'r')].push(p));
   const cen = (a) => { const bb = new THREE.Box3().setFromPoints(a); return { c: bb.getCenter(new THREE.Vector3()), r: bb.getSize(new THREE.Vector3()).y / 2 }; };
   let d;
-  try { const W4 = Object.values(q).map(cen); d = { zf: (W4[0].c.z + W4[1].c.z) / 2, zr: (W4[2].c.z + W4[3].c.z) / 2, tw: W4.reduce((a, w) => a + Math.abs(w.c.x), 0) / 4, R: W4.reduce((a, w) => a + w.r, 0) / 4 }; if (!isFinite(d.zf)) throw 0; }
+  try { const W4 = Object.values(q).map(cen); d = { zf: (W4[0].c.z + W4[1].c.z) / 2, zr: (W4[2].c.z + W4[3].c.z) / 2, tw: W4.reduce((a, w) => a + Math.abs(w.c.x), 0) / 4, R: W4.reduce((a, w) => a + w.r, 0) / 4, cy: W4.reduce((a, w) => a + w.c.y, 0) / 4 }; if (!isFinite(d.zf)) throw 0; rimU.uW.value.set(d.zf, d.zr, d.cy, d.R); }
   catch (e) { d = { zf: 1.45, zr: -1.43, tw: 0.8, R: 0.34 }; }
   Object.assign(d, { front: b.max.z, rear: b.min.z, W: b.max.x - b.min.x, H: b.max.y });
   // register exterior meshes; wheels/brakes split L/R
