@@ -37,7 +37,13 @@
     const parts = new Intl.DateTimeFormat("en-GB", opts).formatToParts(when);
     const get = (t) => (parts.find((p) => p.type === t) || {}).value || "";
     const year = opts.year ? ` ${get("year")}` : "";
-    return `${get("day")} ${get("month")}${year}, ${get("hour")}:${get("minute")} ${get("timeZoneName")}`;
+    // en-US gives "EDT"/"PDT"; Ireland and the UK only get "GMT+1", so name those ourselves.
+    let zone = (new Intl.DateTimeFormat("en-US", { timeZoneName: "short" }).formatToParts(when).find((p) => p.type === "timeZoneName") || {}).value || get("timeZoneName");
+    const tzId = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    if (/^(GMT|UTC)\+1$/.test(zone) && tzId === "Europe/Dublin") zone = "IST";
+    else if (/^(GMT|UTC)\+1$/.test(zone) && tzId === "Europe/London") zone = "BST";
+    else if (/^(GMT|UTC)$/.test(zone) && /^Europe\/(Dublin|London)$/.test(tzId)) zone = "GMT";
+    return `${get("day")} ${get("month")}${year}, ${get("hour")}:${get("minute")} ${zone}`;
   })();
 
   const $ = (sel) => document.querySelector(sel);
