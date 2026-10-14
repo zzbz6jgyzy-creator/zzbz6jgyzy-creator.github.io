@@ -22,6 +22,8 @@
     const el = $(id);
     if (el) el.textContent = fmt(value);
   });
+  const capCount = document.querySelector("[data-sl-count]");
+  if (capCount) capCount.textContent = fmt(data.totals.inOrbit);
 
   const extra = $("#sl-extra");
   if (extra) {
