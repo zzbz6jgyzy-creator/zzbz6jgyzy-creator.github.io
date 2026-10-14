@@ -67,6 +67,7 @@
         ]
       }
     </script>
+      <link rel="stylesheet" href="/home-v2.css?v=202610141940" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610141830" />
   </head>
   <body class="home-x">
@@ -124,47 +125,40 @@
         <p class="pn-credit">Menu inspired by 21st.dev</p>
       </aside>
 
-      <main id="main">
-        <section class="hx-hero" aria-labelledby="hx-title">
-          <img class="hx-hero-img" src="/assets/brand/banner-wide.jpg" alt="White Tesla Model 3 in front of Starship on the pad at dusk" width="1500" height="500" fetchpriority="high" />
-          <div class="hx-hero-shade" aria-hidden="true"></div>
-          <div class="hx-hero-inner">
-            <p class="hx-live"><span class="hx-dot" aria-hidden="true"></span> Updated daily<span class="hx-live-x"> · Tesla · SpaceX · xAI · X</span></p>
-            <h1 id="hx-title" class="hx-title"><span>Supercharged</span> <span class="hx-red">Daily</span></h1>
-            <p class="hx-pitch">The whole Musk universe, decoded every day. News, numbers and launches, minus the noise.</p>
-            <div class="hx-cta">
-              <a class="hx-btn hx-btn-primary" href="#newsletter">Subscribe free</a>
-              <a class="hx-btn hx-btn-ghost" href="/news.html">Latest news <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="lv-slot-home" data-live-slot data-collapsed></div>
-          </div>
-          <a class="hx-scroll" href="#hx-ticker" aria-label="Scroll to live prices"><span></span></a>
-        </section>
+      <main id="main" class="hv">
+        <div class="pn-spacer"></div>
+        <header class="hv-mast">
+          <p class="hv-date" data-hv-today></p>
+          <h1 class="hv-title">Supercharged <span>Daily</span></h1>
+          <p class="hv-pitch">Original reporting and live trackers on Tesla, SpaceX, xAI and X.</p>
+        </header>
 
-        <section class="hx-ticker" id="hx-ticker" aria-label="Live share prices">
-          <div class="hx-ticker-label"><span class="hx-dot" aria-hidden="true"></span>Live</div>
-          <div class="hx-ticker-widget" data-home-ticker>
-            <a class="hx-ticker-fallback" href="/tsla.html">TSLA · SPCX — open live prices →</a>
-          </div>
-        </section>
-
-        <section class="hx-section hx-top" aria-labelledby="hx-top-h">
-          <div class="hx-head">
-            <p class="hx-eyebrow reveal">Today’s top story</p>
-            <h2 id="hx-top-h" class="visually-hidden">Today’s top story</h2>
-          </div>
-          <a class="hx-feature reveal" href="/dispatch/cybercab-319-analysis.html" data-top-story data-pinned>
-            <div class="hx-feature-media">
-              <img src="/assets/dispatch/cybercab-austin-poster.jpg" alt="" width="1280" height="720" decoding="async" data-top-img />
-            </div>
-            <div class="hx-feature-copy">
-              <span class="hx-tag" data-top-tag>Analysis</span>
-              <h3 data-top-title>319 Cybercabs, six weeks: what the Texas numbers really tell us</h3>
-              <p data-top-desc>Registered isn’t running. How the fleet compares with Musk’s S-curve, and what to watch next.</p>
-              <span class="hx-feature-meta"><span data-top-source>Original analysis</span> <span class="hx-read">Read the story →</span></span>
-            </div>
+        <section class="hv-top" aria-label="Top stories">
+          <a class="hv-lead" href="/dispatch.html" data-hv-lead>
+            <div class="hv-lead-media"><img alt="" data-hv-img /></div>
+            <div class="hv-lead-copy"><span class="hv-tag" data-hv-tag>Dispatch</span><h2 data-hv-h>Loading the latest Dispatch…</h2><p data-hv-p></p><span class="hv-read">Read the story →</span></div>
           </a>
-          <div class="hx-mini" data-top-more aria-live="polite"></div>
+          <div class="hv-side">
+            <div class="hv-live" data-live-slot data-collapsed></div>
+            <div class="hv-supp" data-hv-supp></div>
+            <a class="hv-all" href="/dispatch.html">All Dispatch stories →</a>
+          </div>
+        </section>
+
+        <section class="hv-trk" aria-labelledby="hv-trk-h">
+          <div class="hv-head"><h2 id="hv-trk-h">Trackers</h2><span>Live numbers from our data</span></div>
+          <div class="hv-trk-row" data-hv-trk></div>
+        </section>
+
+        <section class="hv-cols" aria-label="Headlines and countdowns">
+          <div class="hv-feed">
+            <div class="hv-head"><h2>Latest headlines</h2><a href="/news.html">All news →</a></div>
+            <ol class="hv-list" data-hv-feed></ol>
+          </div>
+          <aside class="hv-cd">
+            <div class="hv-head"><h2>Countdowns</h2><a href="/calendar.html">Calendar →</a></div>
+            <div data-hv-cd></div>
+          </aside>
         </section>
 
         <section class="hx-band" id="newsletter" aria-labelledby="newsletter-heading">
@@ -185,184 +179,6 @@
             <p class="newsletter-status" data-newsletter-status role="status"></p>
           </div>
         </section>
-
-        <section class="hx-section" aria-labelledby="hx-tiles-h">
-          <div class="hx-head">
-            <p class="hx-eyebrow reveal">Everything in one place</p>
-            <h2 id="hx-tiles-h" class="hx-h2 reveal">Pick your desk</h2>
-          </div>
-          <div class="hx-tiles">
-            <a class="hx-tile t-news reveal" href="/news.html">
-              <img src="/assets/ship40.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Live</span>
-              <h3>News</h3>
-              <p>The last 24 hours across Tesla, SpaceX, xAI and X.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-fsd reveal" href="/fsd-europe.html">
-              <img src="/assets/fsd-snow.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Tracker</span>
-              <h3>FSD Europe tracker</h3>
-              <p>Approved countries in red. The vote that would make it EU-wide.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-ship reveal" href="/starship.html">
-              <img src="/assets/starlink-stargaze.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Mission control</span>
-              <h3>Starship</h3>
-              <p>Next flight, objectives and every outcome.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-upd reveal" href="/starlink.html">
-              <img src="/assets/starlink-phones.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Tracker</span>
-              <h3>Starlink Tracker</h3>
-              <p>V1, V2 Mini, direct-to-cell and V3 — how many are up.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-mk reveal" href="/tsla.html">
-              <span class="hx-tile-eb">Markets</span>
-              <h3>TSLA &amp; SPCX</h3>
-              <p>Live prices, the next print, the calendar.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-cal reveal" href="/calendar.html">
-              <span class="hx-tile-eb">Calendar</span>
-              <h3>Calendar</h3>
-              <p>Earnings, launches, ships and deadlines.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-tcmv reveal" href="/tcmv.html">
-              <span class="hx-tile-eb">Europe</span>
-              <h3>TCMV</h3>
-              <p>The EU vote that unlocks FSD.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-upd reveal" href="/updates.html">
-              <span class="hx-tile-eb">Tracker</span>
-              <h3>Software Update Tracker</h3>
-              <p>Every release, every feature.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-dis reveal" href="/dispatch.html">
-              <img src="/assets/dispatch/cybercab-austin-poster.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Long reads</span>
-              <h3>Dispatch</h3>
-              <p>The posts that don’t fit one caption.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-wp reveal" href="/wallpapers.html">
-              <img src="/assets/wallpapers/og-wallpapers.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Free</span>
-              <h3>Wallpapers</h3>
-              <p>4K desktop and phone backgrounds in black and red.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-rev reveal" href="/reviews/index.html">
-              <img src="/assets/reviews/model-y.jpg" alt="" loading="lazy" decoding="async" /><span class="hx-tile-eb">Hands-on</span>
-              <h3>Reviews</h3>
-              <p>Cars, kit and software, tested.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-games reveal" href="/games.html">
-              <span class="hx-tile-eb">Play</span>
-              <h3>Games</h3>
-              <p>Hot Staging, Catch, Robotaxi Boss.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-grok reveal" href="/grok.html">
-              <span class="hx-tile-eb">xAI</span>
-              <h3>Grok</h3>
-              <p>Bots that do jobs, from first install.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-            <a class="hx-tile t-ref reveal" href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer sponsored">
-              <span class="hx-tile-eb">Referral link</span>
-              <h3>Buying a Tesla?</h3>
-              <p>Order with my referral for any perks Tesla offers in your market.</p>
-              <span class="hx-tile-go" aria-hidden="true">↗</span>
-            </a>
-            <a class="hx-tile t-gear reveal" href="/gear.html">
-              <span class="hx-tile-eb">Partner store · affiliate</span>
-              <h3>Gear for your Tesla</h3>
-              <p>Floor mats, screen protectors and organisers from TESMAG and EV Bandit.</p>
-              <span class="hx-tile-go" aria-hidden="true">→</span>
-            </a>
-          </div>
-        </section>
-
-        <section class="hx-section section" id="numbers" aria-labelledby="numbers-heading">
-          <div class="section-head">
-            <p class="hx-eyebrow reveal">Live counters</p><h2 id="numbers-heading" class="hx-h2 reveal">By the numbers</h2>
-            <p class="reveal delay-1 news-status-line" id="home-stats-status" data-verified-updated="2026-10-13">
-              <span class="news-dot" data-home-stats-dot aria-hidden="true"></span>
-              <span data-home-stats-label>Checking last verified figures…</span>
-            </p>
-          </div>
-          <div class="stats" id="home-stats">
-            <a class="stat reveal" href="/fsd.html" data-home-stat="fsdCountries">
-              <b class="stat-value is-loading" data-home-stat-value data-verified="16" aria-busy="true">
-                <span class="stat-skeleton" aria-hidden="true"></span>
-              </b>
-              <span>Countries on FSD Supervised</span>
-            </a>
-            <a class="stat reveal delay-1" href="/starlink.html" data-home-stat="starlink">
-              <b class="stat-value is-loading" data-home-stat-value data-verified="11156" aria-busy="true">
-                <span class="stat-skeleton stat-skeleton-wide" aria-hidden="true"></span>
-              </b>
-              <span>Starlink satellites flying</span>
-            </a>
-            <div class="stat reveal delay-2" data-home-stat="directToPhone">
-              <b class="stat-value is-loading" data-home-stat-value data-verified="15000" aria-busy="true">
-                <span class="stat-skeleton stat-skeleton-wide" aria-hidden="true"></span>
-              </b>
-              <span>Direct-to-phone sats approved</span>
-            </div>
-            <div class="stat reveal delay-3" data-home-stat="dragonFreedom">
-              <b class="stat-value is-loading" data-home-stat-value data-verified="237" aria-busy="true">
-                <span class="stat-skeleton" aria-hidden="true"></span>
-              </b>
-              <span>Days on Dragon Freedom</span>
-            </div>
-          </div>
-          <noscript>
-            <style>
-              .stat-skeleton { display: none !important; }
-              .stat-value.is-loading { min-height: 0; }
-              [data-home-stat="fsdCountries"] [data-home-stat-value]::before { content: "16"; }
-              [data-home-stat="starlink"] [data-home-stat-value]::before { content: "11,156"; }
-              [data-home-stat="directToPhone"] [data-home-stat-value]::before { content: "15,000"; }
-              [data-home-stat="dragonFreedom"] [data-home-stat-value]::before { content: "237"; }
-            </style>
-          </noscript>
-        </section>
-
-
-        <section class="hx-section" id="poll" aria-labelledby="poll-h">
-          <div class="hx-head">
-            <p class="hx-eyebrow reveal">Weekly poll</p>
-            <h2 id="poll-h" class="hx-h2 reveal">Call the week</h2>
-          </div>
-          <div class="hx-poll reveal" data-tsla-poll>
-            <h3>Will <b>$TSLA</b> close the week up or down?</h3>
-            <div class="hx-poll-btns">
-              <button type="button" data-vote="up">▲ Up</button>
-              <button type="button" data-vote="down">▼ Down</button>
-            </div>
-            <div class="hx-poll-bar" aria-hidden="true"><span data-bar-up></span></div>
-            <div class="hx-poll-pcts"><span>Up <b data-pct-up>–</b></span><span>Down <b data-pct-down>–</b></span></div>
-            <p class="hx-poll-status" data-poll-status role="status">Loading votes…</p>
-          </div>
-        </section>
-
-        <section class="hx-section" aria-labelledby="hx-cc-h">
-          <a class="hx-feature reveal" href="/cybercab.html">
-            <div class="hx-feature-media">
-              <img src="/assets/dispatch/cybercab-austin-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
-            </div>
-            <div class="hx-feature-copy">
-              <span class="hx-tag">Deep dive</span>
-              <h3 id="hx-cc-h">Cybercab Tracker</h3>
-              <p>Fleet count, cities, milestones and dates. Every number sourced. Updated 11 Oct 2026.</p>
-              <span class="hx-feature-meta"><span>Tracker</span> <span class="hx-read">Open the tracker →</span></span>
-            </div>
-          </a>
-        </section>
-
       </main>
 
       <footer class="site-footer">
@@ -399,11 +215,13 @@
     </div>
     <script src="/script.js"></script>
     <script src="/design-21st.js?v=202610132330"></script>
-    <script src="/home-stats.js"></script>
-    <script src="/home.js?v=202610141830" defer></script>
-    <script src="/poll.js" defer></script>
+            <script src="/poll.js" defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
+    <script src="/starship-data.js"></script>
+    <script src="/fsd-europe-data.js"></script>
+    <script src="/cybercab-data.js"></script>
+    <script src="/home-v2.js?v=202610141940" defer></script>
     <script src="/live.js?v=202610141815" data-page="home" defer></script>
       <script src="/nav-pill.js?v=202610141830"></script>
   </body>
