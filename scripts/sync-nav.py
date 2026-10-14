@@ -21,10 +21,10 @@ def links(lst, cls=""):
     return [f'            <a{c} href="{h}">{n}</a>' for n, h in lst]
 def block(navtag):
     t, m, (d1, d2, d3) = cfg["top"], cfg["mid"], cfg["dropdowns"]
-    items = links(t, "pn-link") + [dd(d1)] + links(m, "pn-link") + [dd(d2), dd(d3)] + [f'            <a class="pn-cta" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>']
+    items = links(t, "pn-link") + [dd(d1)] + links(m[:2], "pn-link") + [dd(d2)] + links(m[2:], "pn-link") + [dd(d3)] + [f'            <a class="pn-cta" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>']
     a = lambda lst: "".join(f'<a href="{h}">{n}</a>' for n, h in lst)
     sheet = [a(t + m)]
-    for d in (d1, d2, d3):
+    for d in (d2, d1, d3):
         sheet += [f'<h3>{d["label"]}</h3>', a([(i[0], i[1]) for i in d["items"]])]
     return f'''<div class="pn-wrap">
         {navtag}
