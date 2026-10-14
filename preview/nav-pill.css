@@ -1,0 +1,60 @@
+/* Floating pill nav — vanilla port inspired by 21st.dev "AnimatedNavFramer" (reimplemented from scratch) */
+:root{--pn-spring:cubic-bezier(.34,1.56,.64,1);--pn-ease:cubic-bezier(.2,.8,.2,1)}
+.pn-wrap{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:60;max-width:calc(100vw - 24px)}
+.pn{display:flex;align-items:center;height:48px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(10,10,10,.78);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:0 10px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);padding:0 6px 0 4px;width:var(--pn-w,auto);transition:width .55s var(--pn-spring),padding .4s var(--pn-ease),transform .3s var(--pn-spring);animation:pnDrop .8s var(--pn-spring) both;overflow:visible;position:relative}
+@keyframes pnDrop{from{transform:translateY(-80px);opacity:0}to{transform:none;opacity:1}}
+.pn-logo{display:flex;align-items:center;gap:8px;padding:0 10px 0 10px;flex-shrink:0;color:#fff;text-decoration:none;transition:opacity .3s,transform .45s var(--pn-spring)}
+.pn-logo img{width:26px;height:26px;display:block}
+.pn-items{display:flex;align-items:center;gap:2px;white-space:nowrap}
+.pn-items>*{transition:opacity .25s var(--pn-ease),transform .35s var(--pn-spring);transition-delay:calc(.2s + var(--i,0)*.05s)}
+.pn a.pn-link,.pn-dd>button{font:500 14px/1 Inter,system-ui,sans-serif;color:#d6d6d6;text-decoration:none;padding:9px 11px;border-radius:999px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:color .2s,background .2s}
+.pn a.pn-link:hover,.pn-dd>button:hover,.pn-dd.open>button,.pn a.pn-link[aria-current]{color:#fff;background:rgba(255,255,255,.07)}
+.pn-dd>button svg{width:14px;height:14px;transition:transform .25s}
+.pn-dd.open>button svg{transform:rotate(180deg)}
+.pn-cta{font:600 14px/1 Inter,system-ui,sans-serif;color:#fff!important;background:#e31937;padding:10px 16px;border-radius:999px;text-decoration:none;margin-left:6px;box-shadow:0 0 18px rgba(227,25,55,.45);transition:background .2s,box-shadow .2s}
+.pn-cta:hover{background:#ff2a4a;box-shadow:0 0 26px rgba(227,25,55,.7)}
+.pn-dd{position:relative}
+.pn-panel{position:absolute;top:calc(100% + 12px);left:50%;min-width:220px;transform:translate(-50%,-6px);opacity:0;visibility:hidden;background:rgba(12,12,12,.96);border:1px solid rgba(255,255,255,.1);border-top:2px solid #e31937;border-radius:14px;padding:6px;box-shadow:0 18px 50px rgba(0,0,0,.6);transition:opacity .2s,transform .25s var(--pn-spring),visibility .2s}
+.pn-panel::before{content:"";position:absolute;inset:-14px 0 auto;height:14px}
+.pn-dd.open .pn-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.pn-panel a{display:block;padding:10px 12px;border-radius:9px;color:#ddd;text-decoration:none;font:500 14px/1.2 Inter,system-ui,sans-serif}
+.pn-panel a:hover,.pn-panel a:focus-visible{background:rgba(227,25,55,.14);color:#fff;outline:none}
+.pn-panel a small{display:block;color:#888;font-size:12px;margin-top:3px}
+.pn-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.8);pointer-events:none;transition:opacity .2s,transform .3s var(--pn-spring);color:#fff}
+.pn-icon svg{width:20px;height:20px}
+.pn-menu{display:none;margin-left:auto;width:38px;height:38px;border-radius:999px;border:0;background:rgba(255,255,255,.08);color:#fff;align-items:center;justify-content:center;cursor:pointer}
+.pn-menu svg{width:20px;height:20px}
+/* collapsed */
+.pn.collapsed{--pn-w:48px!important;padding:0;cursor:pointer;justify-content:center;overflow:hidden}
+.pn.collapsed:hover{transform:scale(1.1)}
+.pn.collapsed .pn-logo{opacity:0;transform:translateX(-25px) rotate(-180deg);pointer-events:none}
+.pn.collapsed .pn-items>*{opacity:0;transform:translateX(-20px) scale(.95);pointer-events:none;transition-delay:calc(var(--n,10)*.03s - var(--i,0)*.03s)}
+.pn.collapsed .pn-icon{opacity:1;transform:none;transition-delay:.15s}
+.pn.collapsed .pn-menu{opacity:0}
+/* hero ticker clearance */
+.home-x .hx-hero-inner{padding-top:110px}
+/* 4K scale */
+@media (min-width:2400px){.pn-wrap{top:28px;zoom:1.45}}
+/* phones */
+@media (max-width:899px){
+ .pn-wrap{left:12px;right:12px;transform:none;max-width:none}
+ .pn{width:100%}
+ .pn-items{display:none}
+ .pn-menu{display:inline-flex}
+ .pn.collapsed{width:48px;margin-left:auto}
+}
+/* sheet (port of shadcn Sheet) */
+.pn-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:70;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.pn-sheet{position:fixed;top:0;right:0;bottom:0;width:min(86vw,360px);z-index:71;background:#0b0b0b;border-left:1px solid rgba(255,255,255,.1);box-shadow:-20px 0 60px rgba(0,0,0,.6);transform:translateX(100%);transition:transform .45s var(--pn-ease);overflow-y:auto;padding:22px 20px 40px;display:flex;flex-direction:column;gap:4px}
+.pn-sheet.open{transform:none}.pn-overlay.open{opacity:1;visibility:visible}
+.pn-sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.pn-sheet-head img{height:22px}
+.pn-close{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pn-close svg{width:18px;height:18px}
+.pn-sheet a{color:#e6e6e6;text-decoration:none;font:500 16px/1 Inter,system-ui,sans-serif;padding:13px 10px;border-radius:10px}
+.pn-sheet a:hover{background:rgba(227,25,55,.12)}
+.pn-sheet h3{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#e31937;margin:16px 10px 4px}
+.pn-sheet .pn-cta{text-align:center;margin:20px 0 0;padding:14px}
+body.pn-lock{overflow:hidden}
+.pn-credit{font-size:11px;color:#666;text-align:center;padding:10px}
+@media (prefers-reduced-motion:reduce){.pn,.pn *,.pn-sheet,.pn-overlay,.pn-panel{animation:none!important;transition:none!important}}
