@@ -1,15 +1,72 @@
 {
-  "updated": "2026-10-14T12:43:24Z",
+  "updated": "2026-10-14T13:41:12Z",
   "items": [
     {
-      "id": "76ced7bb5cba",
+      "id": "c76d891695e1",
+      "topic": "grok",
+      "title": "Elon Musk has Grok buying him Lego sets",
+      "source": "Mashable",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB5RTk5TF9STkFibjF0cl9zYjdzOTRrUklYTVhDR3RjRzQ3enktSVBZcGRXQko2T05VWWlibXh5NkZOd29WNkJJLW51ZUV2dnBxWDlkd2FjTy1FNHp1STRxeEhuZTVIclhY?oc=5",
+      "published": "2026-10-14T13:17:46Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.854PhcrI17eCxsYwdGw2Qw&pid=News&w=640"
+    },
+    {
+      "id": "9d337bc99145",
+      "topic": "tesla",
+      "title": "Tesla Stock Dips. Uber Raises a Trillion-Dollar Question.",
+      "source": "Barron's",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQTlZvcS1KRDVuYzZNZmFlN19xMHVYMkpMd2NzeVBrX0d3VjZib1poSVY5U0JRNEJjZFFMX1ZON2tuR216LXFjSWd0OU5jMzlTWm5BUzJqdUtITHBObV9ucVVBNUhjTWRBYnYxYVREaEY3QlJHUWdIdXBlMVJaWm9WZDRXTTBFbVBZYmF1bHVn?oc=5",
+      "published": "2026-10-14T13:16:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.upkfg4EOoRME18hwIHG7DA&pid=News&w=640"
+    },
+    {
+      "id": "2f6d8867f54d",
+      "topic": "spacex",
+      "title": "Elon Musk Says SpaceX Just Bought \"the Last Critical Piece\" Required to Take on the Wireless Giants. Here's Why It Will Need to Spend Billions More to Compete.",
+      "source": "The Motley Fool",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOcm9FUlp3Z1UtUURRV0YyeEFmMFNTVjVZNmYtd1pQYmV3ZExvazlBSXU2SmFoVjlQOF9uQ3B5SmlqUmVMal9tTG9vbTB4Q2JKVWs5eUFwdEQxQUtzQkJ5TWVlMkZ2YS1JUXI5TkxKQlp4YzBXaUhqMjNvak0ybzNwUmduWUVzOTZYSC1vdWt3MHJmWTdiNzltWg?oc=5",
+      "published": "2026-10-14T13:11:09Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.EIuQ1m9TDaV9qakvQB0IsQ&pid=News&w=640"
+    },
+    {
+      "id": "b34ea699488f",
+      "topic": "spacex",
+      "title": "The 1st SpaceX Starship to survive a launch to space just came home to its launch site",
+      "source": "Space",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQQzZKdFZIQVBlNUJ2WEMyMm1XZmp6T3NNR2p6Tmt6OWk2MklyMzNMWTRDSXkzY1gxcHRQaFdpNmJCa3pycHNENWFKOVNTakZwX0dIdnBMbXNyUTIxQ2d4RnRXS2w2RTJxQmdGcUotRXVYS3F3OHAtTElmTFlGY2ljckZwN2xHR1JKZHRRR0lhVEZTa2tmN0F1Y2g3LVpNUGJIZ3RfeF9LWDFBYXJVMF96eXVweHE2MkNzX29CUUdmZ2xfcjNqWFViWUJ3M0NVM2Vxbzdab1dha0E2ZWFDRTNz?oc=5",
+      "published": "2026-10-14T13:00:00Z",
+      "snippet": ""
+    },
+    {
+      "id": "1030b4e95979",
+      "topic": "spacex",
+      "title": "Ukraine says new Starlink restrictions disrupt military as it reels from intel gaps and Trump clash",
+      "source": "NBC News",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNVFZxOFpYUkhfNjVDUzFoSUhVQ3JRdERHWXdlbk1PUW9zc0tvNEo5cnVnODNTUHA0V1lmX1hyVERYc2FtX0d4MjMzdVZOVGpETjNTTy1FaHpFakZKYzQwWW9RV2hJeE9nQ0JoSUs4c0FJVE1ZSUdsWk5zSmxJcHVEaHJza2NjSEd1RmNYNVM0MHUxcDV1dzBraTB2UUh2RzhSdk05VmMyOUhVeEdKcFZjXzZGYUhTSlE?oc=5",
+      "published": "2026-10-14T12:51:09Z",
+      "snippet": ""
+    },
+    {
+      "id": "72f10d4cf8dc",
+      "topic": "spacex",
+      "title": "Ukraine accuses SpaceX of crippling drone missions as ties with US worsen",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNSmVTMHFJSVptMmRyQVZ3bTNtYktTRldrczlZUUF6dFBmZnl3WDRvcVpJOEU1azE3OEZlUXg2d005UGpnZ2NTR08tRC1xbmtMZVc4eldhb1ZaV1k3bVV1TXZ0VENlWWQ5MGduMk51dUNQVDJaaTNyRDk2dXB0X2xLT2FsNFRpemlybjZfZXlTei1TZEo5d2xLVmRUNTRJUkhhZEVZeWpBcHZrZ21VZFBYMVl6LTVHY2k2MkhFZnJ3RU9KS0Rs?oc=5",
+      "published": "2026-10-14T12:42:17Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.Eo939p8eilT9hcoBGD2tPw&pid=News&w=640"
+    },
+    {
+      "id": "ce45439d0cb7",
       "topic": "grok",
       "title": "Ofcom questions X’s handling of illegal content as Grok faces new restrictions",
       "source": "Firstpost",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNdGFSQWttOWRIeDQ5SkMxRUJ3aExKc3JLTDRxQnQ5ZGNkdF9kX05jVnlLSTRKZld1Vmdkb3ZKVVVUbmROMUtmYVVqYUJIWURhWFdzQW5JOWI2LTlocnVwVmFXV0dtaGxhSzJUUlN1VnE1MWl2VXpCN01BLTRMQnl4S3ZKMng2WHVDMjNYSU9ZS3FLTTVsRzA4Y3dTYTNqY1FDWnlFTDVhaWtxMTJfR1JrV3NpWDdBVGtDWExRSVlUdU5fa3hp0gHEAUFVX3lxTE10YVJBa205ZEh4NDlKQzFFQndoTEpzcktMNHFCdDlkY2R0X2RfTmNWeUtJNEpmV3VWZ2RvdkpVVVRuZE4xS2ZhVWphQkhZRGFYV3NBbkk5YjYtOWhydXBWYVdXR21obGFLMlRSU3VWcTUxaXZVekI3TUEtNExCeXhLdkoyeDZYdUMyM1hJT1lLcUtNNWxHMDhjd1NhM2pjUUNaeUVMNWFpa3ExMl9HUmtXc2lYN0FUa0NYTFFJWVR1Tl9reGk?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxObUdUaHdiTVRnc1NDanZjRjIyYndfQmJUNFRlamtZR2x0RC1fd1BvVWNDREZkREVWWmVuR2hTWHpmUjNqRzRPVl9Nb3JsT2hrVjJoeWgzRkJiS3NpREFKRTZEWW1jSWtPcmNDZ3Bmb1Uxal85dkoxMS1uRGd4MzNwWU4yTGk5cWNCbHZBZ29DeUFzc1pvck9OcUd6YnVua2xWV2RDYjBoV3pTcmFSXzF5QktqTHhxR3d0ZC1LZXRwY9IBxAFBVV95cUxNdGFSQWttOWRIeDQ5SkMxRUJ3aExKc3JLTDRxQnQ5ZGNkdF9kX05jVnlLSTRKZld1Vmdkb3ZKVVVUbmROMUtmYVVqYUJIWURhWFdzQW5JOWI2LTlocnVwVmFXV0dtaGxhSzJUUlN1VnE1MWl2VXpCN01BLTRMQnl4S3ZKMng2WHVDMjNYSU9ZS3FLTTVsRzA4Y3dTYTNqY1FDWnlFTDVhaWtxMTJfR1JrV3NpWDdBVGtDWExRSVlUdU5fa3hp?oc=5",
       "published": "2026-10-14T12:36:47Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.XTZrVZGuuPAyoXDLKNqLRw&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "0e50159f8f8e",
@@ -18,8 +75,17 @@
       "source": "Forbes",
       "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOLXhiejhnNnBqOEFpcGJsYXcxRy1seks5czNVZF9IWjhtZWtaczEzdUxaNl9xVjdvZ00xSlV1RGFZVGFVbXVQWEdFRV9STDJudkFUSkc4SmFRWDVpSVFvRHJYdTJtaklSNzVfQTBfWXBJLU03ZURFd0RjRkVTajNPWEZUYXQxd1REWHN0Zno3STc4aXNIRVVOQzFta0Z5RG5mdmkybWFRWnZtRGNMUUtXRkh5cng3Tm1DY1hhZ2Q5bTZ1S2hyOWwyOFJVLVFURWNyV1AzdzNYZlZWRk9U?oc=5",
       "published": "2026-10-14T12:16:24Z",
+      "snippet": ""
+    },
+    {
+      "id": "b2b95c8f68d3",
+      "topic": "tesla",
+      "title": "California Boosts Virtual Power Plants. Why Tesla Could Be A Winner.",
+      "source": "Investor's Business Daily",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNbjFVT2tGLTY0SGl1V1FmQU9oSlpGcTgxRkZGSHdhZEF2Q08xRm5PQzl2N19HbGk3aEZRUGFRVERnc1BPS0k4UjRHWVN0V1lCZ1ZMSXFCREV0VGdCamZLUjBWeU41MFlfTFFVVmc2cDRwOVkyU0tHSk1wMVFLRDNOaGVDZmdKaTVyOGlGNXFzU2RUM1E1aXV5QXU2WTQyYjRNVU9TYnNR?oc=5",
+      "published": "2026-10-14T12:00:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.krYqKxgZoROBozSlY1fgGw&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.cVRFYr1SkUiQFSP03ObpmQ&pid=News&w=640"
     },
     {
       "id": "1c2c54294253",
@@ -41,22 +107,21 @@
       "snippet": ""
     },
     {
-      "id": "72f10d4cf8dc",
-      "topic": "spacex",
-      "title": "Ukraine accuses SpaceX of crippling drone missions as ties with US worsen",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNSmVTMHFJSVptMmRyQVZ3bTNtYktTRldrczlZUUF6dFBmZnl3WDRvcVpJOEU1azE3OEZlUXg2d005UGpnZ2NTR08tRC1xbmtMZVc4eldhb1ZaV1k3bVV1TXZ0VENlWWQ5MGduMk51dUNQVDJaaTNyRDk2dXB0X2xLT2FsNFRpemlybjZfZXlTei1TZEo5d2xLVmRUNTRJUkhhZEVZeWpBcHZrZ21VZFBYMVl6LTVHY2k2MkhFZnJ3RU9KS0Rs?oc=5",
-      "published": "2026-10-14T11:26:39Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Eo939p8eilT9hcoBGD2tPw&pid=News&w=640"
-    },
-    {
       "id": "bee0f7442b54",
       "topic": "grok",
       "title": "Ofcom says it still has concerns over how X removes illegal hate content",
       "source": "The Next Web",
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQZXZ4SjhnMC1ncW1Ock9qdTFtTk1mdFVTVTJSZjZ5T0dLczRsc1J0OWVlTVJDTWJFVHR3WjRQUkE4ZE10RVJENkxLRHpSVXk4QVF0NVJXUUFBYlpNdU53RGszb1JZNUFFZFFWaGp4ZFdnekViNnFkWlp2OEIzQXVleA?oc=5",
       "published": "2026-10-14T11:24:47Z",
+      "snippet": ""
+    },
+    {
+      "id": "b4db099fb9c8",
+      "topic": "spacex",
+      "title": "SpaceX could be worth $50 trillion someday, billionaire investor Ron Baron says",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNVlp6SkNwMXhVVGNyUFF6NVRQaEllckljT0xmTU1fZ2kwMlMzdnRBRVRONVl2bFA2LVpiakZvN3JESk5ZV3VoYjB0bEtRdGFsT1FQbENRLTlVOXpkTG1YZGNrekNFMWY3a0cxWk1xZmlsNi0zZmU4b2RvZkJCWk9iZGVMaG81ZlpEUnpWYTJBQTFOTEtaQjd6X2ZLeU1jMlBJOUJMMDVBMm5VS2xCdjVabjN1ZTdmUDVPNWtBdHZrU2tjWHRKbm4yWmdHTDVJT0VIOGltTHZVeG4?oc=5",
+      "published": "2026-10-14T11:24:16Z",
       "snippet": ""
     },
     {
@@ -69,12 +134,12 @@
       "snippet": ""
     },
     {
-      "id": "ddba971cc775",
+      "id": "6fd23bfc94e6",
       "topic": "grok",
-      "title": "UK media regulator says concerns persist over X’s handling of illegal content",
-      "source": "927thevan.com",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPZWUzMkc1c1lKaTJTYUhsNGFzUDA4MmRIR3JTWTdUdzBWOThWcU0xRnBHN19ZdHliU05HRVA2SUhnT3BfZGsyZlJpaUo0REZqY3l3Q1d5UzE2SEdKT196TGNTNUJ3VjhrSGR0NTdhVjl1UDdJODFMV0hkVjhxUV9PcFBXZGczZ3QwekEyNWFKYVFlbnktS1dRUGhQczYzci1T?oc=5",
-      "published": "2026-10-14T11:23:44Z",
+      "title": "3 AI Interaction Styles: Turn-Taking, Task Agents, Always-On",
+      "source": "Jakob Nielsen on UX",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFB5WmJzZHBxcXEyV1VjNTU3Tm5ySkZlak9wYVd3eUs2eTdScGthR1E5TEJVRkpBV3VCSV80enpkY0M1YUhzUkF0SjB6VE5Cb0ZqSDhuTHUtMVZ0emdoNjFhUWZNYVVucjlRWXhUTA?oc=5",
+      "published": "2026-10-14T11:21:37Z",
       "snippet": ""
     },
     {
@@ -108,16 +173,6 @@
       "image": "https://www.bing.com/th?id=ONUT.nRcesg649gXi55vhTUOOOg&pid=News&w=640"
     },
     {
-      "id": "c76d891695e1",
-      "topic": "grok",
-      "title": "Elon Musk has Grok buying him Lego sets",
-      "source": "Mashable",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB5RTk5TF9STkFibjF0cl9zYjdzOTRrUklYTVhDR3RjRzQ3enktSVBZcGRXQko2T05VWWlibXh5NkZOd29WNkJJLW51ZUV2dnBxWDlkd2FjTy1FNHp1STRxeEhuZTVIclhY?oc=5",
-      "published": "2026-10-14T10:56:05Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.854PhcrI17eCxsYwdGw2Qw&pid=News&w=640"
-    },
-    {
       "id": "5c8d3cf421b9",
       "topic": "tesla",
       "title": "Tesla Swears It'll Livestream The New Roadster's Reveal On October 15",
@@ -125,7 +180,7 @@
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5XQ1V4dThXeGdNUzJvczJWendwRTlBM3c4ZTVNei05TW1tcENHaUEyLU9HeFozYUphMGo4QVg3RUNxZnFXX1hfZ1lrR2czaFR3WVY2N010cTVGaGpIa1hheTlMdzhyUFJOeDFDbm5YLXZidTA?oc=5",
       "published": "2026-10-14T10:55:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Z0snR7TXc66rO56WrS2tSg&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.r3Bhd0SYl5QfXsBSK4r9tQ&pid=News&w=640"
     },
     {
       "id": "f87c4d32aa8e",
@@ -147,12 +202,12 @@
       "image": "https://www.bing.com/th?id=ONUT.o6h7IH5OWcQPCxygnmMZVA&pid=News&w=640"
     },
     {
-      "id": "5839d3bd0fdc",
-      "topic": "tesla",
-      "title": "Ahead of Earnings, Is Tesla Stock a Buy, a Sell, or Fairly Valued?",
-      "source": "Morningstar",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOQ0ZRUFRZYkxFUVQzT1Q1ZW1JYUNSWlU0XzNRbnEzZXJEbUh1ekNGRDdvWXJXZlpCU19pU0FaU3BWamttbVJ5R0luZlRPODI1a1ZubWZCT3ZYcy1kNEtCdjlROTY1WUVUY183NlpSaWJqTUpRWWxnalpYZ2ROZjlOeHpTZE1RVFFsQ2lHcENPbkQtWFFXR1BV?oc=5",
-      "published": "2026-10-14T10:10:51Z",
+      "id": "9d816041824a",
+      "topic": "spacex",
+      "title": "One Analyst Said SpaceX Has \"Significant Moats\" and Just Put a Buy Rating on the Stock. Is He Right?",
+      "source": "The Motley Fool",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSUZaV055Tm1BY2NvUEdJOFY0M1JPQmR1dmdmaHFYX0xEYnBsTmxHc0FoV2RjRTJrZnlGVVYtTUJnRlVpQkFiWjhvTllmN1FzcEdHMGp2bEFEWTFZWE1pVmowNGZ3eW1PNllwVTNkVEpwU2ZEenVtcnF3cW1LMER2TTdFWHBSTWlvRURQd1JzVWQzQQ?oc=5",
+      "published": "2026-10-14T10:19:00Z",
       "snippet": ""
     },
     {
@@ -173,7 +228,7 @@
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPMVU3ZE1wUEtHZlZzUTA1WEVuaGt1ZE1IYXlhVm9KOU55X0MtY3VVQ0kzb2FyWXhMcEN3ZWhXUVF2UG5tcTY3LUxhNWpOclI3WFFrQjlheW1lMUdBQnFCNTdpbU9KVmpmQ3A2eVdsa25vSmN0anY2X2NZalJfbkpFdHZQMG0zUzhNNjFLTWp2a1BjUkZKdHduaW9lMEVSdXBNX0VuY0hXMA?oc=5",
       "published": "2026-10-14T09:30:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.sw50tEU0Tz6GY-kDjkzJVQ&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.lKemi1MHFTo_w-4C7d2KXw&pid=News&w=640"
     },
     {
       "id": "edfe57fa4885",
@@ -195,24 +250,6 @@
       "snippet": ""
     },
     {
-      "id": "054cc626c9bf",
-      "topic": "spacex",
-      "title": "Eyewitness footage captured a SpaceX Falcon 9 rocket streaking across the sky after lifting off from Cape Canaveral, Florida, on Tuesday, Oct. 13 carrying a Dragon spacecraft loaded with supplies for the International Space Station (ISS). Courtesy: Suffolk Sky",
-      "source": "Facebook",
-      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNbUFoS0tab1o2QkUtRUNvMnZ2cmE5UjVLS0lIWGs2Rmt1MzFHQzJ1R08wUjYzODhZbEU1aF9TYllRV2xKeHdaM1JOTTFsblBwb1pmbm5UeV96TmRPNDNlbDYyLVVJWlpNcEdHLWxoRFU3dTJfY2tCM01YN2hQTWo0N3ZjX1BVT29yWS1mbnNySEJIamZpSVM1c0g4dlFOMVhQZ1RvUF9nT3dQY0E5N0ZvTXRxQ0YxRUZvMlJEREI4TElsVmpIeWp4bmV4MkV6N1lvcExz?oc=5",
-      "published": "2026-10-14T08:06:40Z",
-      "snippet": ""
-    },
-    {
-      "id": "6fecb4b2a800",
-      "topic": "tesla",
-      "title": "Tesla Futures - Contract Specs",
-      "source": "CME Group",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQMVJnR2M0ZThPU2lHOXNUb2UwSGIwRjlpMk5KNnZQWHc1OERzcllYMEZTNGlOWTltQnBsZ3gxYk42REhjMjc1VHJIWkd0RDExanBKdHdBTTduRS1rRm1Xa3l6WXYxVDlUVGFrQUd0a0h2SF9zWHdMdll4M2tvNHlaS0tNdFBMdw?oc=5",
-      "published": "2026-10-14T07:27:31Z",
-      "snippet": ""
-    },
-    {
       "id": "56d0608929c2",
       "topic": "tesla",
       "title": "Tesla Roadster to debut on October 15; What to expect",
@@ -229,8 +266,37 @@
       "source": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNV2VEUDcwZ1kydUhNRmMzSjVVTEdoLUNlS3FVUjctT1JONXNOZjJzS2wwZ21kOVJwakRkbmU4Mnc0THVxMDAwejAyak90aDNWd0N5SElDRF9sbXVUVk54RGUwUko3Z1FlR0RVQlJFTG5LWVdhY2wtdEtmaFp3WEtzZDZoMTNNYnY5WEhyUXczamlWYVNHMzVTczVST2twUkZGMVI3UGZJODdCSGlfZEZzek94bjROQUc0ZnAw?oc=5",
       "published": "2026-10-14T06:34:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.O3xl1H15LTNzffVdQtIcFA&pid=News&w=640"
+      "snippet": ""
+    },
+    {
+      "id": "89a219c9f9d0",
+      "topic": "spacex",
+      "title": "Musk’s Starlink disrupts Ukrainian military operations: Drone connections drop, missions cancelled",
+      "source": "Moneycontrol",
+      "url": "https://www.moneycontrol.com/world/musk-s-starlink-disrupts-ukrainian-military-operations-drone-connections-drop-missions-cancelled-article-14052213.html",
+      "published": "2026-10-14T06:32:00Z",
+      "snippet": "SpaceX has restricted certain Starlink services in Ukraine, disrupting military drone missions and forcing some units to cancel operations. Ukrainian forces said connectivity interruptions occurred ...",
+      "image": "https://www.bing.com/th?id=ONUT.mGmwjw5JV0UQ_v8DxYXoRw&pid=News&w=640"
+    },
+    {
+      "id": "21678b18fc5f",
+      "topic": "tesla",
+      "title": "Tesla batteries help Texas energy site double storage capacity to 300 megawatts",
+      "source": "Interesting Engineering on MSN",
+      "url": "https://www.msn.com/en-us/news/other/tesla-batteries-help-texas-energy-site-double-storage-capacity-to-300-megawatts/ar-AA2eest8",
+      "published": "2026-10-14T06:23:19Z",
+      "snippet": "Nightpeak Energy has brought a second battery storage project near Houston into commercial operation, ...",
+      "image": "https://www.bing.com/th?id=ORMS.ba274bb28bbe2d2432d152d32580c4fd&pid=News&w=640"
+    },
+    {
+      "id": "6946f59a2660",
+      "topic": "spacex",
+      "title": "Ukraine says SpaceX restricted Starlink services, disrupting military operations as Russian attacks continue",
+      "source": "CNN on MSN",
+      "url": "https://www.msn.com/en-us/news/other/ukraine-says-spacex-restricted-starlink-services-disrupting-military-operations-as-russian-attacks-continue/ar-AA2ebQFP",
+      "published": "2026-10-14T06:10:08Z",
+      "snippet": "Ukrainian authorities say SpaceX has restricted Starlink internet services, disrupting military logistics and operations amid an escalating dispute with the Trump administration.",
+      "image": "https://www.bing.com/th?id=ONUT.2F9hGOKMJ_X3FMQLyScgSw&pid=News&w=640"
     },
     {
       "id": "3cc4e5bf0a0f",
@@ -251,6 +317,46 @@
       "snippet": ""
     },
     {
+      "id": "4f6617c17de0",
+      "topic": "tesla",
+      "title": "Tesla Changes ‘Full Self-Driving’ Name in Europe Following Regulatory Pushback Over Accuracy",
+      "source": "YAHOO!",
+      "url": "https://autos.yahoo.com/policy-and-environment/articles/tesla-changes-full-self-driving-130432634.html",
+      "published": "2026-10-14T06:03:00Z",
+      "snippet": "Driving” feature in Europe and is now calling it “Tesla Assisted Driving” on EU websites after some regulators expressed concerns. Reuters reported on October 9, that Tesla CEO Elon Musk had offered ...",
+      "image": "https://www.bing.com/th?id=ONUT.KYC_bYuIqql7akRmihkdrQ&pid=News&w=640"
+    },
+    {
+      "id": "fd9b3eda3af0",
+      "topic": "tesla",
+      "title": "When real-world data started turning Tesla's FSD skeptics into believers",
+      "source": "Electrified on MSN",
+      "url": "https://www.msn.com/en-us/money/general/when-real-world-data-started-turning-tesla-s-fsd-skeptics-into-believers/vi-AA1RWldp",
+      "published": "2026-10-14T06:01:31Z",
+      "snippet": "This video looks back at the moment when real-world testing began to validate Tesla's approach to autonomous driving. It explores the shifts in public sentiment and policy, marking a turning point for ...",
+      "image": "https://www.bing.com/th?id=ONUT.lJR5YyoRCllSbiYUuotPUQ&pid=News&w=640"
+    },
+    {
+      "id": "0bc2b2d1e2cf",
+      "topic": "spacex",
+      "title": "Ukraine Starlink Access Restricted as Musk Says Zelensky ‘Has Gone Too Far’",
+      "source": "Newsweek",
+      "url": "https://www.newsweek.com/ukraine-starlink-access-restricted-as-musk-says-zelensky-has-gone-too-far-12565652",
+      "published": "2026-10-14T05:49:00Z",
+      "snippet": "\"SpaceX likely took these measures at the request of the Trump administration,\" a former Ukrainian defense adviser said.",
+      "image": "https://www.bing.com/th?id=ONUT.dopbRu9bbeHiZ1-1UxBJOQ&pid=News&w=640"
+    },
+    {
+      "id": "673c4857874d",
+      "topic": "tesla",
+      "title": "Tesla: Germany's U-Turn Could Unlock Up To €932 Million A Year",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/article/4954050-tesla-germany-u-turn-could-unlock-up-to-932-million-a-year",
+      "published": "2026-10-14T05:43:00Z",
+      "snippet": "Tesla, Inc.'s Q3 deliveries beat production; Q4 needs higher output. Click for an earnings preview and where I now stand on TSLA stock and what I'm looking for.",
+      "image": "https://www.bing.com/th?id=ONUT.lYt5O2ha6O3cP2HWNvjuTQ&pid=News&w=640"
+    },
+    {
       "id": "25eb5da16d7e",
       "topic": "tesla",
       "title": "Tesla Roadster livestream: everything Tesla has revealed before Thursday night",
@@ -259,16 +365,6 @@
       "published": "2026-10-14T05:32:45Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.GGXcUx70VsMnxxk4uMgbDA&pid=News&w=640"
-    },
-    {
-      "id": "74e9201f60e6",
-      "topic": "spacex",
-      "title": "Sudden Starlink Restrictions Hamper Ukraine Just as Russia Escalates",
-      "source": "The New York Times",
-      "url": "https://www.nytimes.com/2026/10/14/world/europe/ukraine-starlink-energy.html",
-      "published": "2026-10-14T05:27:00Z",
-      "snippet": "Kyiv has found itself increasingly vulnerable. A huge attack cut power to 600,000 people there, and a Pentagon-funded satellite program appeared to be curbed without warning.",
-      "image": "https://www.bing.com/th?id=ONUT.qGPQ7LHBm3VzB9U8_qRIFw&pid=News&w=640"
     },
     {
       "id": "4fe1653c142f",
@@ -290,16 +386,6 @@
       "image": "https://www.bing.com/th?id=ONUT.g5l-RhS307sxGwuKqgssUQ&pid=News&w=640"
     },
     {
-      "id": "0bc2b2d1e2cf",
-      "topic": "spacex",
-      "title": "Ukraine Starlink Access Restricted as Musk Says Zelensky ‘Has Gone Too Far’",
-      "source": "Newsweek",
-      "url": "https://www.newsweek.com/ukraine-starlink-access-restricted-as-musk-says-zelensky-has-gone-too-far-12565652",
-      "published": "2026-10-14T04:50:00Z",
-      "snippet": "\"SpaceX likely took these measures at the request of the Trump administration,\" a former Ukrainian defense adviser said.",
-      "image": "https://www.bing.com/th?id=ONUT.dopbRu9bbeHiZ1-1UxBJOQ&pid=News&w=640"
-    },
-    {
       "id": "0192cd896d42",
       "topic": "spacex",
       "title": "Ukraine says new limits on Starlink are disrupting its military operations",
@@ -310,16 +396,6 @@
       "image": "https://www.bing.com/th?id=ONUT.-GHMKtP0WMh0YLD0z2QSWw&pid=News&w=640"
     },
     {
-      "id": "e41b755b96a3",
-      "topic": "spacex",
-      "title": "SpaceX could be worth $50 trillion some day says billionaire investor Ron Baron",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/article/spacex-could-be-worth-50-trillion-some-day-says-billionaire-investor-ron-baron-112416691.html",
-      "published": "2026-10-14T04:25:00Z",
-      "snippet": "In a new interview that just dropped on the Columbia Business School, Baron proclaims Spacex could be worth up to $50 trillion in ten years. Note SpaceX's current market cap is $2.06 trillion, per ...",
-      "image": "https://www.bing.com/th?id=ONUT.Z5F6qwbtz8kFltzKSbfEvw&pid=News&w=640"
-    },
-    {
       "id": "a7d87634a9c5",
       "topic": "tesla",
       "title": "Can the New SpaceX-Spec Tesla Roadster Actually Fly? Here’s What FAA Rules and Physics Tell Us",
@@ -328,16 +404,6 @@
       "published": "2026-10-14T04:00:00Z",
       "snippet": "Breaking down cold-gas thrusters, FAA no-fly zones, and what “flying” really means.",
       "image": "https://www.bing.com/th?id=ONUT.kFKqiQBblu_am0OBpuM6sQ&pid=News&w=640"
-    },
-    {
-      "id": "e06d5326af20",
-      "topic": "spacex",
-      "title": "Prediction: $1,000 Invested in SpaceX Will Be Worth This Much by 2030",
-      "source": "The Motley Fool",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQYXZSakRUQ1N2OEs4dzd3NWhiOHdjVDlwYXFzRVpNMGotQWptZjU1ejZSRWxhTkdzUWk3YjU4VUZ5R2hRem02anFOZUN2VHFFOXpYVDUzWUwtelNYQTFWOFZ2MUV6RU85TTJjTFV5UXNGWXNYdFczWXFxd2pmdUtkclYzOWVvQkR1dkxTODRjb240SVMtdlVLMw?oc=5",
-      "published": "2026-10-14T03:41:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.rEIQuA9Uij_m9Q4EQ_vj5g&pid=News&w=640"
     },
     {
       "id": "45689dc85820",
@@ -360,14 +426,23 @@
       "image": "https://www.bing.com/th?id=ONUT._bKPK7qZYwSapMingcrs_Q&pid=News&w=640"
     },
     {
-      "id": "129c1e638de4",
+      "id": "fd64fc1a3e37",
       "topic": "spacex",
-      "title": "Ukraine says its Starlink access has slowed down and it's affecting military operations",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/ukraine-says-its-starlink-access-has-slowed-down-and-its-affecting-military-operations/ar-AA2ed05v",
-      "published": "2026-10-14T02:59:00Z",
-      "snippet": "Ukraine's military relies heavily on Elon Musk's Starlink for battlefield communications and drone operations.",
-      "image": "https://www.bing.com/th?id=ONUT.ftLMswM86DGvMziYr42NxA&pid=News&w=640"
+      "title": "Prediction: $1,000 Invested in SpaceX Will Be Worth This Much by 2030",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQSDcxcm9MY1VWRHIwWHVBOFRJZ25mdUR1ell2RmdFSkNfdlA5RTRyNEdYTmRnbDdfVzU1bWt6MERFaThDVUNpdXNmYnpPQXNvM1Via0phVFk3TmJDTTJRLS1CeUVUbE10M09QOU1zVTJJLXZ1WnA5SXlKNW0xckxacmNhLU0yV04tWmxJc1FNSXBrcElfZ0hlN1hjYlVydw?oc=5",
+      "published": "2026-10-14T03:01:00Z",
+      "snippet": ""
+    },
+    {
+      "id": "5d7d0f04173b",
+      "topic": "tesla",
+      "title": "An ex-Tesla executive is steering Uber Freight’s turnaround",
+      "source": "The Wall Street Journal on MSN",
+      "url": "https://www.msn.com/en-us/news/other/an-ex-tesla-executive-is-steering-uber-freight-s-turnaround/ar-AA2ecJgf",
+      "published": "2026-10-14T02:30:00Z",
+      "snippet": "Rebecca Tinucci wants to make transportation management fit in at the tech giant known for ride hailing and food delivery.",
+      "image": "https://www.bing.com/th?id=ONUT.lKemi1MHFTo_w-4C7d2KXw&pid=News&w=640"
     },
     {
       "id": "bff0b9f93b83",
@@ -390,34 +465,14 @@
       "image": "https://www.bing.com/th?id=ONUT.od9cMhwlQfsRqBM85cPO0w&pid=News&w=640"
     },
     {
-      "id": "7daa4006977d",
-      "topic": "spacex",
-      "title": "Ukraine says SpaceX restricted Starlink services, disrupting military operations as Russian attacks continue",
-      "source": "CNN on MSN",
-      "url": "https://www.msn.com/en-us/news/other/russia-batters-ukraine-s-energy-facilities-hours-after-zelensky-appeals-for-early-warnings-from-partners/ar-AA2ebQFP",
-      "published": "2026-10-14T01:34:53Z",
-      "snippet": "A massive Russian attack on Ukrainian energy infrastructure left more than 600,000 people without power early Wednesday, President Volodymyr Zelensky said, hours after warning his country had received ...",
-      "image": "https://www.bing.com/th?id=ONUT.2F9hGOKMJ_X3FMQLyScgSw&pid=News&w=640"
-    },
-    {
-      "id": "6a1360743909",
+      "id": "955fbcc2a478",
       "topic": "spacex",
       "title": "Starlink restrictions affecting Ukraine's front line operations, Kyiv says",
       "source": "BBC",
-      "url": "https://www.bbc.co.uk/news/articles/cm2d6e62p49do?source=newscura",
+      "url": "https://www.bbc.co.uk/news/articles/cm2d6e62p49do",
       "published": "2026-10-14T01:21:00Z",
-      "snippet": "Critical energy infrastructure is hit, as Ukraine says speed restrictions of Elon Musk's Starlink are disrupting battlefield missions.",
-      "image": "https://www.bing.com/th?id=ONUT.NR51MOfV4V_Ew8kIb-qu1w&pid=News&w=640"
-    },
-    {
-      "id": "40af99c403a3",
-      "topic": "spacex",
-      "title": "GALLERY: SpaceX Falcon 9 rocket launch lights up Lowcountry sky",
-      "source": "WCIV",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPMzdzLUhxVHVkYlZuYTZjbThxNFV1eDgteGJ0cDZNb2sxa0NfUV9OaFg4aXpfN1FubC1NN1dDT2lLdGhFUm1hMGtwekdtd25rbTFfUUdpVzd4NTdfdExhZjdWTmR5bTJENHMxQldJZ0VGSkphbDJRazAzQnB4WUhtaWFOdnNYS09iNTBid29zTXJweWxpUlFxNFZvVk5oUXR4VmRLVHRxR2FrSE1RdWhhampCWTUxaGVCVDlkdVdibExRT3NIcDF1SVRwelY?oc=5",
-      "published": "2026-10-14T01:09:02Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.nRTBDvXuistPIRfCO4Hevw&pid=News&w=640"
+      "snippet": "Ukraine's president says \"critical\" infrastructure was hit overnight, while emergency services say at least three were killed.",
+      "image": "https://www.bing.com/th?id=ONUT.J9Kgg-K0KZFd2ZuNRnxQWw&pid=News&w=640"
     },
     {
       "id": "f6b92e4d8a6d",
@@ -426,26 +481,8 @@
       "source": "WAFB",
       "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQQzFQQ1RBXzN3Y1lQM3dFQ01jb2FjX28xMHg5NmJjMWJCM05pQlQ5NnU5OU1TMk4za3JLWTN0dHB2ZlRRMkJLbFRBUUVSVllrbGR5cXNBOFcwTzFVZGMwOTc4b2tVckxKQmpXSVFPa2FxdDZjZzNnaVpSYTNqRGpld3JHY1liWDdNTEFZelpJZ1ZoaV9oM3o1NXdDd1F3bDFRWlB0dg?oc=5",
       "published": "2026-10-14T00:48:00Z",
-      "snippet": ""
-    },
-    {
-      "id": "27dc040dff56",
-      "topic": "spacex",
-      "title": "SpaceX Could Be Worth $50 Trillion In 10 Years, Says Ron Baron: ‘Elon Thinks I’m Way Low’",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/spacex-worth-50-trillion-10-years-ron-baron-elon-thinks-im-way-low/cZxfiwQRBpg",
-      "published": "2026-10-14T00:28:00Z",
-      "snippet": "Baron sees Starlink reaching a $14 trillion to $15 trillion valuation, with annual revenue potentially climbing to $1 trillion.",
-      "image": "https://www.bing.com/th?id=ONUT.fQ8cqzPd1GmO7kD6c6iUiA&pid=News&w=640"
-    },
-    {
-      "id": "539b94934249",
-      "topic": "spacex",
-      "title": "SpaceX Stock Has Climbed About 50% Through 6 Insider Share Unlocks. The Biggest Is Still Ahead.",
-      "source": "The Motley Fool",
-      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOUkN2c2hxcE9La2ZVZHZZT1E0Sk9kWF90VWw0YkFpam5jWG5meHhlQTZLV0MybnhJOXduUXFuOFdNNlhiTkQ2Y2VyWDZ4a2RNdXNKMlU3WkJXUEtkcFBPVFUxUHpweXlvQmdKMk94UUw5dlZGSFVwb0o4bTlvbGMtN3lERTZHMG5hS09veDRWTUNFZ0g2VUVrc1h3eEdzNUVjMlNNSGRRVGN6QXN4QlhROFNnTHJBbmdUaTEwNEg0T2tQWkRDZDlQZ3NPemMxblR5?oc=5",
-      "published": "2026-10-14T00:19:00Z",
-      "snippet": ""
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.bSAZtr8L3_3PWZpWIS2zgw&pid=News&w=640"
     },
     {
       "id": "a05a45d77cd0",
@@ -467,6 +504,16 @@
       "snippet": ""
     },
     {
+      "id": "ec04a65c7769",
+      "topic": "spacex",
+      "title": "Ukraine forces lose Starlink connectivity amid tensions with United States",
+      "source": "UPI",
+      "url": "https://www.upi.com/Top_News/World-News/2026/10/14/Ukraine-forces-Starlink-access-restricted/9481791966251/",
+      "published": "2026-10-13T23:47:00Z",
+      "snippet": "The Ukrainian military's access to SpaceX's Starlink satellite communications system was suddenly cut off amid U.S. pressure over an energy cease-fire.",
+      "image": "https://www.bing.com/th?id=ONUT.zD54gEUKWiLFFX7UGaCcsw&pid=News&w=640"
+    },
+    {
       "id": "0674ab9bd0e8",
       "topic": "tesla",
       "title": "TSLA Stock Rises Overnight: Tesla’s Long-Delayed Roadster Event Is Back On — Musk Teases ‘Timing Is Everything’",
@@ -475,6 +522,16 @@
       "published": "2026-10-13T23:39:00Z",
       "snippet": "Nearly nine years after its prototype debut, the Roadster remained in “Design development” in Tesla’s latest quarterly update. Tesla, Inc. (TSLA) has confirmed a Thursday livestream for its postponed ...",
       "image": "https://www.bing.com/th?id=ONUT.3LdXptGMP-wPP4XAuxwcqw&pid=News&w=640"
+    },
+    {
+      "id": "225a22e25e14",
+      "topic": "spacex",
+      "title": "SpaceX targets classified rocket launch. How to watch in Arizona",
+      "source": "azcentral.com",
+      "url": "https://www.azcentral.com/story/news/arizona/2026/10/14/vandenberg-rocket-launch-today-arizona/92245222007/",
+      "published": "2026-10-13T23:02:00Z",
+      "snippet": "SpaceX is planning to launch its Falcon 9 rocket on what would be the 70th rocket launch of 2026 in California. Will it be visible in Arizona?",
+      "image": "https://www.bing.com/th?id=ONUT.GMXOBUXCDblZxlF5UNOdGA&pid=News&w=640"
     },
     {
       "id": "d374c3878d8b",
@@ -496,23 +553,14 @@
       "snippet": ""
     },
     {
-      "id": "609b58abae31",
+      "id": "819086b35010",
       "topic": "spacex",
-      "title": "SpaceX stock has 38% upside on Wall Street, so why are investors still selling?",
-      "source": "Invezz",
-      "url": "https://invezz.com/news/2026/10/14/spacex-stock-has-38-upside-on-wall-street-so-why-are-investors-still-selling/",
-      "published": "2026-10-13T21:30:00Z",
-      "snippet": "Analyst targets rising (Pivotal to $230) supports a near-term sentiment reset as investors re-rate the probability-weighted path to a low-cost carrier. Key Risk: Starlink Mobile and the needed ground ...",
-      "image": "https://www.bing.com/th?id=ONUT.c1-6S7TRzHdfFqNHOgTh-g&pid=News&w=640"
-    },
-    {
-      "id": "69ec985a8136",
-      "topic": "spacex",
-      "title": "Kentuckians spot ‘space jellyfish’ from SpaceX launch",
-      "source": "WKYT",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNTjlEZmNMUXlodkx3UDlGRXlfREhCSFl0OHV5NEFyQUNUZG5RZVBqYlpiSXpHUUhvbGxNM2xKQi14VDJNSUtMaHZMRFdiakc1bWhNcG1ka3lLZGFncThER3JYUF9STlZXMENVWWV4Sjd4VFg4ejVTZzhVMFpEbElTZ2NKWFI4QdIBmgFBVV95cUxQczJUSjZkejhhQzA1ZUVQS1pCNzZaTXc4Z1FHTEtVX3JaX2J1dnQ0TjlQUnQzZEpHX1NOM1FrMTVlUHpUUFFNdGdlMzhwVnlLV01qMlRoWEF3b253UG43a3Z4cmxWZTlzTE11bVA0U0E1T2EzbS1WQmtPSjNPMWU0Sy1QNk83dGlLQi1oWVNJXzdsaF8waVVQcFdB?oc=5",
-      "published": "2026-10-13T21:22:00Z",
-      "snippet": ""
+      "title": "SpaceX Starship upper stage Ship 40 returns to Texas intact",
+      "source": "NewsBytes",
+      "url": "https://www.newsbytesapp.com/news/science/spacex-starship-upper-stage-ship-40-returns-to-texas-intact/tldr",
+      "published": "2026-10-13T21:38:00Z",
+      "snippet": "SpaceX's Ship 40, the first Starship upper stage to survive a space launch and ocean splashdown, has returned to Starbase for evaluation after its July 24 flight.",
+      "image": "https://www.bing.com/th?id=ONUT.OPbLjhS7w7h_zLTn5QeXRQ&pid=News&w=640"
     },
     {
       "id": "d7a163a50513",
@@ -531,6 +579,15 @@
       "source": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQRWVJR2pCNjdfWktrdGpwUWVEeWE5NWVhSXNrTnRvTkQyNnFxMUgtR2RPOVU1MFdPV21URGFKX25vZ3pjTGVfS0FBdWRWakMySHl4Tl9nOVBMNzh5UmwtVFFqNzdCZkFCRWRJeG9VVDFWeHg4MHVNUmVuZ2ZVbFFOR2VmdWwzOGtHV29pNExiZE9LQ2ZEcjFKdnk2d2Z5OVpULXY2eUZqTU5qUzVtSUJYU2RlalItakoxNnZv?oc=5",
       "published": "2026-10-13T20:00:06Z",
+      "snippet": ""
+    },
+    {
+      "id": "9a03e0536a99",
+      "topic": "grok",
+      "title": "Elon Musk just blasted his home address and credit card on X. Someone cancelled his LEGO order.",
+      "source": "astig.ph",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNEVlM2ZxZFlrMi1OVDRqX291WFFMWFM0bVJOT2VFM1YwY3BkdTB2eHAtZ0RPXzg5TlBIWjdHaHd2N09ZQVlteWhwU3JtakRQSW1yekZXcVJEbFZLN0s4Q1hBWVppLVB2cF9iN2JKN1psVUs0NE9HS0hYYUN5SzVKRktrOWZBc2VfcmtNam8xSEcyY2k5VDNGcjViUWRlMDdqUXhxOGJrZkRHb2VIRDE0Uw?oc=5",
+      "published": "2026-10-13T19:08:40Z",
       "snippet": ""
     },
     {
@@ -563,13 +620,24 @@
       "image": "https://www.bing.com/th?id=ONUT._hS76h4XU-GwditTVQ7XJQ&pid=News&w=640"
     },
     {
-      "id": "e5fbf3e4b829",
+      "id": "74e9201f60e6",
       "topic": "spacex",
-      "title": "SpaceX rocket launch creates incredible 'space jellyfish' visible throughout US East Coast (photos)",
-      "source": "Space",
-      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxORkF0NDVSazlQRGsyeXhILWhqRmZXR24zZW8yaW5VRW5tYjBjekdZakZMTkpoQzgyMXk1YmE3dm1TNkxuUFBXRHFBdlpkZnVJUDllZlB5NUZCQ2R4YXVXbkdYWVlxWVNfOGtjRjJRUTViaU9Oa2tBMTNqV1lKSmtzb25QOXR0N3BvVmFGLVJaV3BKTE13MVEtT1lSTUdjamxPQlFhVDEwdzM4dHF2eDl5MVFvSlZHdURKNU56TWtyd1NOdHg2TDFUMmxqdzBIbEF0azVMUzJfQW9ScFFPSHdSMm4zLXJhSTI2ZDRj?oc=5",
-      "published": "2026-10-13T17:02:48Z",
-      "snippet": ""
+      "title": "Ukraine’s Vulnerability Grows as Starlink Is Restricted and Russia Escalates",
+      "source": "The New York Times",
+      "url": "https://www.nytimes.com/2026/10/14/world/europe/ukraine-starlink-energy.html",
+      "published": "2026-10-13T17:06:00Z",
+      "snippet": "Kyiv has found itself increasingly vulnerable. A huge attack cut power to 600,000 people there, and a Pentagon-funded satellite program appeared to be curbed without warning.",
+      "image": "https://www.bing.com/th?id=ONUT.qGPQ7LHBm3VzB9U8_qRIFw&pid=News&w=640"
+    },
+    {
+      "id": "b93b39d502f8",
+      "topic": "spacex",
+      "title": "Next California rocket launch coming up. Where to see SpaceX Falcon 9",
+      "source": "USA TODAY",
+      "url": "https://www.usatoday.com/story/news/local/california/2026/10/14/spacex-vandenberg-rocket-launch-today-where-california/92245210007/",
+      "published": "2026-10-13T17:02:00Z",
+      "snippet": "California is inching closer and closer to its record-setting launch, with its milestone 70th of the year due up this week. Here's where to see it.",
+      "image": "https://www.bing.com/th?id=ONUT.4i7qTwWSF1hXGatamUu9Rg&pid=News&w=640"
     },
     {
       "id": "25aba6a2e4a8",
@@ -630,16 +698,6 @@
       "image": "https://www.bing.com/th?id=ONUT.dnMntTPNTSAWGCRrb-wXzg&pid=News&w=640"
     },
     {
-      "id": "673c4857874d",
-      "topic": "tesla",
-      "title": "Tesla: Germany's U-Turn Could Unlock Up To €932 Million A Year",
-      "source": "Seeking Alpha",
-      "url": "https://seekingalpha.com/article/4954050-tesla-germany-u-turn-could-unlock-up-to-932-million-a-year",
-      "published": "2026-10-13T15:43:00Z",
-      "snippet": "Tesla, Inc.'s Q3 deliveries beat production; Q4 needs higher output. Click for an earnings preview and where I now stand on TSLA stock and what I'm looking for.",
-      "image": "https://www.bing.com/th?id=ONUT.lYt5O2ha6O3cP2HWNvjuTQ&pid=News&w=640"
-    },
-    {
       "id": "1d40773d26ae",
       "topic": "tesla",
       "title": "Feds Eye Probe Into Reports of Tesla Robotaxis Zooming Through School Zones",
@@ -659,21 +717,12 @@
       "snippet": ""
     },
     {
-      "id": "2ba567635e3c",
+      "id": "2e7a519d60ff",
       "topic": "grok",
-      "title": "xAI launches bundled SaaS subscription",
-      "source": "SaasRise",
-      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQLS16OGZDLXZjc1FlUUV1NGY1blZmQ3RtMW1ObVBadHFlMG9fRU1wbzd2X2NER1ZVM0ZUajFTdDQ0c0dWWmxlZWtrQlQwOTBJUC0ySzZJVFVNMEtGWEh5Znk4UVpGQUE2aTRmUzRFV1lNYkJ1dnk1T1EtcThvSm85WEdXNFU1bmpvejN5WlR2TWZlM0RtdHZITXJqdHRJdUo0VnVXaXRORTd1UHZHMEhyWjN0NmxKOWphZ0pBaEgzc2thWGZVeVNNRmNB?oc=5",
-      "published": "2026-10-13T13:00:18Z",
-      "snippet": ""
-    },
-    {
-      "id": "3f1f296131cb",
-      "topic": "grok",
-      "title": "Lawsuits Allege Grok Generates Sexualized Images of Real Children",
-      "source": "AboutLawsuits.com",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPaVc2WmhsSThKZWpiRWZIN1JaZXl4Y052NzZzWHY3NUhBOXpISm1iM3lPVW9EVVVKNU9zTFN1SU1XdERJdHM3VVo5X0tIalQwWnk4WG5RZWwtS0Zhb043dmo5RmVyY29vMTNtTEUwZnhoa3Z4dFQzMWFkWWxlT0x4VTc4a3JkRjcteC1fRFctSQ?oc=5",
-      "published": "2026-10-13T13:00:00Z",
+      "title": "SpaceXSI bundles X Premium, Grok, and Cursor into one subscription",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOcG1MbGQ3R0xNalZjQ0U5YTFDU2c0QkwyQ1QzY2JtTjNPMk5hSHlEV1p4dDRXS0JCR2R2Wm9mUUg4Z1NhYU9KcG4tcnp1UHBWY0lOb1FYYmVRRnFhVGk2SjFMUmtsclpmVVN3UWlJVFFuSC14cnJKaHVLNkJXR1RodFNLcXp0UnVocVNQTFRrQlFKS2xJaEQyNGVnNA?oc=5",
+      "published": "2026-10-13T13:50:19Z",
       "snippet": ""
     },
     {
@@ -707,16 +756,6 @@
       "image": "https://www.bing.com/th?id=ONUT.fuxLK14hhV38ffE897ZFcw&pid=News&w=640"
     },
     {
-      "id": "2b321fb0acbe",
-      "topic": "tesla",
-      "title": "Tesla Drops Enticing Model 3 Lease Offers for October",
-      "source": "Autoblog on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-drops-enticing-model-3-lease-offers-for-october/ar-AA2e9IdA",
-      "published": "2026-10-13T11:30:00Z",
-      "snippet": "Tesla's October lease offers put the Model 3 within reach for $419 a month, but a small increase could already get you a longer-range version.",
-      "image": "https://www.bing.com/th?id=ONUT.-63VNn9Ed1LkOL1quZfozg&pid=News&w=640"
-    },
-    {
       "id": "f4aced034657",
       "topic": "tesla",
       "title": "Tesla target lowered by analysts worried about runaway $25 billion spending",
@@ -745,6 +784,16 @@
       "published": "2026-10-13T08:53:00Z",
       "snippet": "Along with crew supplies and equipment, the Cargo Dragon is delivering two roll-out solar arrays to complete a major power system upgrade.",
       "image": "https://www.bing.com/th?id=ONUT.lJsVHIUwipHCvNzh8mWwyQ&pid=News&w=640"
+    },
+    {
+      "id": "0acfe1bc3013",
+      "topic": "spacex",
+      "title": "Space investment to top $100B in 2026 after SpaceX IPO",
+      "source": "The Seattle Times",
+      "url": "https://www.seattletimes.com/business/space-investment-to-top-100b-in-2026-after-spacex-ipo/",
+      "published": "2026-10-13T07:24:00Z",
+      "snippet": "Investment in the space economy is on track to exceed $100 billion for the first time ever in a given year in 2026. To explain the surge, all roads lead back to SpaceX.",
+      "image": "https://www.bing.com/th?id=ONUT.ltZ7fh0hXpKmPwh2h_UI5Q&pid=News&w=640"
     },
     {
       "id": "e172c0f049b4",
