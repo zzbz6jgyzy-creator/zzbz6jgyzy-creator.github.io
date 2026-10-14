@@ -6,8 +6,8 @@
   const ESRI_URL = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer";
   const ESRI_CREDIT =
     "Powered by Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community";
-  const WORLD = { lon: 8, lat: 18, height: 1.85e7 };
-  const EUROPE = { lon: 10.2, lat: 51.2, height: 4.35e6 };
+  const WORLD = { lon: -30, lat: 24, height: 1.9e7 };
+  const EUROPE = { lon: 10, lat: 50, height: 3.35e6, pitch: -85 };
   const COLORS = {
     hot: [227, 25, 55, 255],
     warm: [255, 138, 76, 255],
@@ -95,25 +95,27 @@
       const id = `hot-${spot.code}`;
       const on = focus === spot.code;
       const size = (on ? 14 : 9) + Math.sqrt(spot.count || 1) * 1.6;
+      const position = Cesium.Cartesian3.fromDegrees(ll[0], ll[1], 18000);
       let ent = viewer.entities.getById(id);
       if (!ent) {
         ent = viewer.entities.add({
           id,
           name: spot.code,
-          position: Cesium.Cartesian3.fromDegrees(ll[0], ll[1]),
+          position,
         });
       } else {
-        ent.position = Cesium.Cartesian3.fromDegrees(ll[0], ll[1]);
+        ent.position = position;
       }
       ent.point = {
         pixelSize: size,
         color: color(spot.heat),
         outlineColor: on ? Cesium.Color.WHITE : Cesium.Color.fromBytes(12, 13, 16, 220),
         outlineWidth: on ? 3 : 1.4,
-        disableDepthTestDistance: Number.POSITIVE_INFINITY,
         scaleByDistance: new Cesium.NearFarScalar(4.0e5, 1.35, 1.6e7, 0.55),
       };
-      const showLabel = mode !== "world" || on || spot.latest;
+      const inEurope = ll[0] > -12 && ll[0] < 32 && ll[1] > 34 && ll[1] < 72;
+      const showLabel =
+        on || spot.latest || spot.heat === "hot" || (mode === "europe" && inEurope);
       ent.label = {
         text: spot.code,
         font: "600 12px IBM Plex Mono, monospace",
@@ -122,7 +124,6 @@
         outlineWidth: 3,
         style: Cesium.LabelStyle.FILL_AND_OUTLINE,
         pixelOffset: new Cesium.Cartesian2(0, -18),
-        disableDepthTestDistance: Number.POSITIVE_INFINITY,
         show: showLabel,
       };
     });
@@ -175,6 +176,7 @@
     started = true;
     const Cesium = window.Cesium;
     if (Cesium.Ion) Cesium.Ion.defaultAccessToken = "";
+    const creditHost = document.getElementById("updates-globe-cesium-credit");
     const credit = document.getElementById("updates-globe-credit");
     try {
       viewer = new Cesium.Viewer(host(), {
@@ -190,7 +192,7 @@
         infoBox: false,
         selectionIndicator: false,
         baseLayer: false,
-        creditContainer: credit || undefined,
+        creditContainer: creditHost || undefined,
         msaaSamples: 4,
       });
     } catch {
@@ -245,7 +247,7 @@
   };
   api.flyEurope = (animate = true) => {
     setMode("europe");
-    lookAt({ ...EUROPE, pitch: -78 }, animate);
+    lookAt(EUROPE, animate);
     if (queued) paint(queued);
   };
   api.flyCountry = (code, lon, lat, scale = 5) => {

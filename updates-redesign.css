@@ -111,8 +111,7 @@
 .updates-globe .cesium-viewer-toolbar,
 .updates-globe .cesium-viewer-animationContainer,
 .updates-globe .cesium-viewer-timelineContainer,
-.updates-globe .cesium-viewer-fullscreenContainer,
-.updates-globe .cesium-credit-logoContainer {
+.updates-globe .cesium-viewer-fullscreenContainer {
   display: none !important;
 }
 .updates-globe-credit {
@@ -121,16 +120,13 @@
   right: 5.5rem;
   bottom: 0.4rem;
   z-index: 2;
+  margin: 0;
   max-width: calc(100% - 6rem);
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 0.62rem;
   line-height: 1.35;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
   pointer-events: none;
-}
-.updates-globe-credit a {
-  color: inherit;
-  pointer-events: auto;
 }
 .updates-map-shell.is-globe .updates-map-badge {
   top: 0.7rem;
