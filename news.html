@@ -6,13 +6,13 @@
     <title>News — Supercharged Daily</title>
     <meta
       name="description"
-      content="Today’s Tesla, SpaceX and Grok headlines, refreshed on the page. Independent desk from @ALJR86."
+      content="Original Tesla, SpaceX, xAI and X reporting from Supercharged Daily, plus today’s headlines from around the web. Independent desk from @ALJR86."
     />
     <link rel="canonical" href="https://superchargeddaily.com/news.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="News — Supercharged Daily" />
-    <meta property="og:description" content="Today’s Tesla, SpaceX and Grok headlines, refreshed on the page. Independent desk from @ALJR86." />
+    <meta property="og:description" content="Original Tesla, SpaceX, xAI and X reporting from Supercharged Daily, plus today’s headlines from around the web. Independent desk from @ALJR86." />
     <meta property="og:url" content="https://superchargeddaily.com/news.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/og.jpg" />
     <meta property="og:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="News — Supercharged Daily" />
-    <meta name="twitter:description" content="Today’s Tesla, SpaceX and Grok headlines, refreshed on the page. Independent desk from @ALJR86." />
+    <meta name="twitter:description" content="Original Tesla, SpaceX, xAI and X reporting from Supercharged Daily, plus today’s headlines from around the web. Independent desk from @ALJR86." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/og.jpg" />
     <meta name="twitter:image:alt" content="White Tesla, a Starship on the pad at sunset, and an X constellation" />
 
@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610141830" />
+    <link rel="stylesheet" href="/news-articles.css?v=202610141950" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -99,14 +100,30 @@
       <div class="pn-spacer" aria-hidden="true"></div>
 
       <main id="main" data-news>
-        <section class="page-hero">
-          <p class="eyebrow reveal">Desk · Today</p>
+        <section class="page-hero news-hero-compact">
+          <p class="eyebrow reveal">Supercharged Daily · Newsroom</p>
           <h1 class="reveal delay-1">News</h1>
-          <p class="reveal delay-2">
-            Tesla, SpaceX and Grok from the last day — not last week’s recap.
-            Headlines and photos from the wire, with a snapshot on this site if
-            live fetch is quiet.
-          </p>
+          <p class="reveal delay-2">Our own Tesla, SpaceX, xAI and X reporting, newest first. Headlines from other outlets are further down.</p>
+        </section>
+
+        <section class="section art-section" data-articles aria-labelledby="art-heading">
+          <h2 id="art-heading" class="visually-hidden">Latest stories</h2>
+          <div class="art-toolbar">
+            <div class="cal-filters" data-art-filters>
+              <button type="button" class="is-on" data-art-filter="all">All</button>
+              <button type="button" data-art-filter="tesla">Tesla</button>
+              <button type="button" data-art-filter="spacex">SpaceX</button>
+              <button type="button" data-art-filter="xai">xAI</button>
+              <button type="button" data-art-filter="x">X</button>
+            </div>
+            <p class="art-count" data-art-count></p>
+          </div>
+          <div data-art-lead></div>
+          <div class="art-list" data-art-list aria-live="polite"></div>
+          <div class="art-more-wrap"><button type="button" class="art-more" data-art-more hidden>Load more stories</button></div>
+        </section>
+
+        <section class="section" style="padding-top:0">
           <div class="newsletter newsletter-hero reveal is-visible" data-newsletter="banner" id="newsletter">
               <div class="newsletter-head">
                 <img class="newsletter-lockup" src="/assets/brand/lockup-1b-trim.svg" alt="" width="300" height="61" />
@@ -127,9 +144,9 @@
             </div>
         </section>
 
-        <section class="section" style="padding-top: 1.5rem" aria-labelledby="news-heading">
+        <section class="section web-section" aria-labelledby="news-heading">
           <div class="section-head">
-            <h2 id="news-heading" class="reveal">Headlines</h2>
+            <h2 id="news-heading" class="reveal">From around the web</h2>
             <p class="reveal delay-1 news-status-line">
               <span class="news-dot is-off" data-news-dot aria-hidden="true"></span>
               <span data-news-status>Checking the wire…</span>
@@ -184,7 +201,8 @@
     <script src="/script.js"></script>
     <script src="/design-21st.js?v=202610132330"></script>
     <script src="/grow.js?v=202610141830" data-band data-pop defer></script>
-    <script src="/news.js"></script>
+    <script src="/news-articles.js?v=202610141950"></script>
+    <script src="/news.js?v=202610141950"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/nav-pill.js?v=202610141830"></script>
