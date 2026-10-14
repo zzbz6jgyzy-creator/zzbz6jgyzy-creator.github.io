@@ -1,0 +1,20 @@
+{
+  "top": [["Home","/"],["News","/news.html"],["Calendar","/calendar.html"]],
+  "dropdowns": [
+    {"id":"pn-tesla","label":"Tesla","after":"/calendar.html","items":[
+      ["Tesla overview","/tesla.html","News, models &amp; data",""],
+      ["Buying guide","/guides/tesla-buying-guide.html","Which Tesla to buy in 2026",""],
+      ["Model 3 Explorer","/model3-explorer.html","Take the car apart","3D"],
+      ["Cybertruck Explorer","/cybertruck-explorer.html","Take the truck apart","3D"]]},
+    {"id":"pn-trk","label":"Trackers","items":[
+      ["FSD Europe","/fsd-europe.html","Approval tracker",""],
+      ["Starship flights","/starship.html","Every flight test",""],
+      ["Starlink","/starlink.html","Satellites by version",""],
+      ["Cybercab","/cybercab.html","Production &amp; sightings",""],
+      ["Software updates","/updates.html","Latest Tesla releases",""]]},
+    {"id":"pn-more","label":"More","items":[
+      ["Reviews","/reviews/index.html","",""],["Gear","/gear.html","",""],["Games","/games.html","",""],["Wallpapers","/wallpapers.html","",""]]}
+  ],
+  "mid": [["SpaceX","/spacex.html"],["Grok","/grok.html"],["Markets","/tsla.html"]],
+  "cta": ["Follow on X","https://x.com/ALJR86"]
+}
