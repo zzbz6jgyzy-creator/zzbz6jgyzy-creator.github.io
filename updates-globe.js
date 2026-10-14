@@ -252,8 +252,8 @@
   };
   api.flyCountry = (code, lon, lat, scale = 5) => {
     setMode("country");
-    const height = Math.max(7.5e5, Math.min(5.5e6, 1.05e7 / scale));
-    lookAt({ lon, lat, height, pitch: -58 }, true);
+    const height = Math.max(9e5, Math.min(4.8e6, 8.2e6 / scale));
+    lookAt({ lon, lat, height, pitch: -84 }, true);
     if (queued) {
       queued.focus = code;
       paint(queued);
