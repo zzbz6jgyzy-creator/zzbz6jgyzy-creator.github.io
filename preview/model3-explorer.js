@@ -1,19 +1,19 @@
-// Supercharged Daily: full-screen Model 3 explorer. Original code. three.js r170 (MIT).
-// Exterior: "Tesla Model 3" by David_Holiday (CC BY 4.0). Internal parts are stylised and modelled procedurally here.
+// Supercharged Daily: full-screen Model 3 explorer v2. Original code. three.js r170 (MIT).
+// Exterior: "2024 Tesla Model 3 + Interior" by tonielpro520 (CC BY 4.0). Internal parts are illustrative, modelled here.
 import * as THREE from '/vendor/three/three.module.min.js';
 import { OrbitControls } from '/vendor/three/addons/OrbitControls.js';
 import { GLTFLoader } from '/vendor/three/addons/GLTFLoader.js';
 import { DRACOLoader } from '/vendor/three/addons/DRACOLoader.js';
 import { RoomEnvironment } from '/vendor/three/addons/RoomEnvironment.js';
-import { PARTS, ORDER } from './model3-parts.js?v=1';
+import { PARTS, ORDER, PHOTOS } from './model3-parts.js?v=2';
 
-// Swap this config to use a higher-detail exterior later. `classify` maps mesh names to part ids.
+// ---- Exterior config: swap this block to use another GLB ----
+const NUM = (o) => +((o.name.match(/Object_(\d+)/) || [])[1] || -1);
+const IDS = { body: [32, 33, 36, 37, 34, 8, 35, 12, 13, 3, 52], wheels: [31, 25, 28, 29, 26, 27], brakes: [9, 10], lights: [2, 14, 21, 22, 23, 30], mirrors: [24], display: [19], cabin: [43, 44, 45, 40, 6, 38, 42, 39, 4, 41, 49, 5, 46, 47, 48, 50, 51, 18, 16, 17], glass: [7, 15, 20], hide: [11] };
 const EXTERIOR = {
-  url: '/assets/3d/model3.glb?v=1', length: 4.72,
-  classify(mesh) { const n = mesh.name, m = (mesh.material && mesh.material.name) || '';
-    if (/^cal/.test(n)) return 'brakes'; if (/^wheel/.test(n)) return 'wheels';
-    if (/Glass/i.test(n + m)) return 'glass'; if (/^int/.test(n)) return 'cabin'; return 'body'; },
-  paint: /CAR.?PAINT/i
+  url: '/assets/3d/model3-2024.glb?v=1', length: 4.72,
+  classify(o) { const n = NUM(o); for (const [k, v] of Object.entries(IDS)) if (v.includes(n)) return k; return 'body'; },
+  frontProbe: (o) => [2, 14].includes(NUM(o)) // headlight glass marks the front
 };
 const RED = 0xe11d2e;
 let raf = 0, frames = 0, t0 = performance.now(), visible = true; const clock = new THREE.Clock();
@@ -22,263 +22,287 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarse = matchMedia('(pointer: coarse)').matches;
 const $ = (s) => app.querySelector(s);
 const fail = (msg) => { app.classList.add('m3x-failed'); $('.m3x-status').textContent = msg; };
+const portrait = () => innerWidth < innerHeight;
 
 let renderer;
-try { renderer = new THREE.WebGLRenderer({ antialias: !coarse, powerPreference: 'high-performance' }); if (!renderer.getContext()) throw 0; }
+try { renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' }); if (!renderer.getContext()) throw 0; }
 catch (e) { fail('Your browser can’t run 3D here, so this is a still image.'); throw e; }
 let dpr = Math.min(devicePixelRatio || 1, coarse ? 1.75 : 2);
 renderer.setPixelRatio(dpr);
-renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.95;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 $('.m3x-canvas').appendChild(renderer.domElement);
 
-const scene = new THREE.Scene(); scene.background = new THREE.Color(0x060607); scene.fog = new THREE.Fog(0x060607, 14, 30);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x050506); scene.fog = new THREE.Fog(0x050506, 12, 28);
 const pmrem = new THREE.PMREMGenerator(renderer);
-scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.75;
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture; scene.environmentIntensity = 0.9;
 const camera = new THREE.PerspectiveCamera(35, 1, 0.05, 80);
-const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(5, 9, 4); key.castShadow = true;
-key.shadow.mapSize.set(coarse ? 1024 : 2048, coarse ? 1024 : 2048); Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 25 }); key.shadow.radius = 5; key.shadow.bias = -0.0005;
-const rim = new THREE.DirectionalLight(RED, 2.2); rim.position.set(-6, 3, -6);
-const warm = new THREE.PointLight(0xffb48a, 16, 14); warm.position.set(-3, 2.5, 4);
-scene.add(key, rim, warm, new THREE.HemisphereLight(0x8899ff, 0x110505, 0.35));
-const floor = new THREE.Mesh(new THREE.CircleGeometry(14, 64), new THREE.MeshStandardMaterial({ color: 0x08080a, roughness: 1, metalness: 0, envMapIntensity: 0.15 }));
+const key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(4, 9, 5); key.castShadow = true;
+key.shadow.mapSize.set(coarse ? 1024 : 2048, coarse ? 1024 : 2048); Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 25 }); key.shadow.radius = 8; key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02;
+const rim = new THREE.DirectionalLight(0xff3344, 1.6); rim.position.set(-6, 3, -6);
+const fill = new THREE.DirectionalLight(0xbfd2ff, 0.5); fill.position.set(-5, 4, 6);
+scene.add(key, rim, fill, new THREE.HemisphereLight(0x9aa8ff, 0x100404, 0.25));
+// floor: dark matte + soft contact shadow + thin red ring + faint grid
+const floor = new THREE.Mesh(new THREE.CircleGeometry(16, 96), new THREE.MeshStandardMaterial({ color: 0x08080a, roughness: 1, metalness: 0, envMapIntensity: 0.1 }));
 floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
-const ring = new THREE.Mesh(new THREE.RingGeometry(3.6, 3.63, 160), new THREE.MeshBasicMaterial({ color: RED, transparent: true, opacity: .4 }));
-ring.rotation.x = -Math.PI / 2; ring.position.y = 0.002; scene.add(ring);
+const contact = (() => { const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d'); const r = g.createRadialGradient(128, 128, 10, 128, 128, 128); r.addColorStop(0, 'rgba(0,0,0,.75)'); r.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = r; g.fillRect(0, 0, 256, 256);
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 6.2), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.position.y = 0.003; scene.add(m); return m; })();
+const ring = new THREE.Mesh(new THREE.RingGeometry(3.7, 3.72, 180), new THREE.MeshBasicMaterial({ color: RED, transparent: true, opacity: .45 }));
+ring.rotation.x = -Math.PI / 2; ring.position.y = 0.004; scene.add(ring);
+const grid = new THREE.PolarGridHelper(8, 16, 6, 96, 0x2a0a0e, 0x1a0b0d); grid.position.y = 0.002; grid.material.transparent = true; grid.material.opacity = .35; scene.add(grid);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-Object.assign(controls, { enableDamping: true, dampingFactor: 0.08, enablePan: false, enableZoom: true, minDistance: 1.2, maxDistance: 13, minPolarAngle: 0.1, maxPolarAngle: Math.PI / 2 - 0.03, rotateSpeed: coarse ? 0.9 : 0.7, zoomSpeed: 0.8 });
+Object.assign(controls, { enableDamping: true, dampingFactor: 0.07, enablePan: false, enableZoom: true, minDistance: 1.6, maxDistance: 14, minPolarAngle: 0.12, maxPolarAngle: Math.PI / 2 - 0.04, rotateSpeed: coarse ? 0.85 : 0.65, zoomSpeed: 0.7 });
 renderer.domElement.style.touchAction = 'none';
-const HOME = { p: new THREE.Vector3(5.6, 2.6, 6.2), t: new THREE.Vector3(0, 0.75, 0) };
+const HOME = { p: new THREE.Vector3(), t: new THREE.Vector3(0, 0.7, 0) };
+const homePos = () => new THREE.Vector3(5.4, 2.3, 6.0).multiplyScalar(portrait() ? 1.55 : 1);
 
-
-// ---------- part registry ----------
-const parts = {}; // id -> { meshes:[], hits:[], off: Vector3, center: Vector3 }
+// ---------- registry ----------
+const parts = {};
 const reg = (id) => (parts[id] = parts[id] || { meshes: [], hits: [], group: new THREE.Group(), off: new THREE.Vector3() });
 const car = new THREE.Group(); scene.add(car);
+const S = (o) => new THREE.MeshStandardMaterial(o), P = (o) => new THREE.MeshPhysicalMaterial(o);
 const M = {
-  alu: new THREE.MeshStandardMaterial({ color: 0x9aa0a8, metalness: .9, roughness: .35 }),
-  dark: new THREE.MeshStandardMaterial({ color: 0x1b1c20, metalness: .5, roughness: .5 }),
-  black: new THREE.MeshStandardMaterial({ color: 0x0c0c0e, metalness: .1, roughness: .8 }),
-  copper: new THREE.MeshStandardMaterial({ color: 0xb8733a, metalness: .9, roughness: .35 }),
-  orange: new THREE.MeshStandardMaterial({ color: 0xe8701a, metalness: .2, roughness: .5 }),
-  blue: new THREE.MeshStandardMaterial({ color: 0x1f4f8f, metalness: .2, roughness: .6, envMapIntensity: .5 }),
-  spring: new THREE.MeshStandardMaterial({ color: 0xc8c8cc, metalness: .8, roughness: .3 }),
-  disc: new THREE.MeshStandardMaterial({ color: 0x6d6f74, metalness: .95, roughness: .3 }),
-  glassLens: new THREE.MeshPhysicalMaterial({ color: 0x111827, metalness: .3, roughness: .05, clearcoat: 1 }),
-  screen: new THREE.MeshStandardMaterial({ color: 0x0b0d12, emissive: 0x1d3c7a, emissiveIntensity: .7, roughness: .2 }),
-  seat: new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: .7 }),
-  hvac: new THREE.MeshStandardMaterial({ color: 0x3a3d44, metalness: .3, roughness: .6 })
+  alu: S({ color: 0xa4a9b0, metalness: .95, roughness: .32 }), aluDark: S({ color: 0x5d6168, metalness: .9, roughness: .4 }),
+  cast: S({ color: 0x8a8d92, metalness: .8, roughness: .55 }), steel: S({ color: 0x2b2d31, metalness: .7, roughness: .45 }),
+  black: S({ color: 0x0d0d0f, roughness: .85 }), rubber: S({ color: 0x111112, roughness: .95 }),
+  copper: S({ color: 0xc27a3e, metalness: .95, roughness: .3 }), hv: S({ color: 0xff6a00, roughness: .55 }),
+  cell: S({ color: 0x1e3f6e, metalness: .4, roughness: .45 }), cellTop: S({ color: 0xb9c0c8, metalness: .9, roughness: .3 }),
+  cool: S({ color: 0x3f6f8f, metalness: .8, roughness: .35 }), spring: S({ color: 0xd9dadd, metalness: .85, roughness: .25 }),
+  disc: S({ color: 0x777a80, metalness: .95, roughness: .28 }), lens: P({ color: 0x0b0f18, metalness: .2, roughness: .05, clearcoat: 1 }),
+  hvac: S({ color: 0x34373d, metalness: .3, roughness: .6 }), blue: S({ color: 0x2a5d9b, roughness: .5 }), red: S({ color: RED, roughness: .45 })
 };
-function add(id, geo, mat, pos, rot, hitMin = 0.28) {
-  const p = reg(id); const m = new THREE.Mesh(geo, mat); m.position.copy(pos); if (rot) m.rotation.set(rot[0], rot[1], rot[2]);
-  m.castShadow = m.receiveShadow = true; m.userData.part = id; p.group.add(m); p.meshes.push(m);
-  // invisible enlarged hit volume for small parts
-  geo.computeBoundingBox(); const s = geo.boundingBox.getSize(new THREE.Vector3());
-  const hs = new THREE.Vector3(Math.max(s.x, hitMin), Math.max(s.y, hitMin), Math.max(s.z, hitMin));
-  const hit = new THREE.Mesh(new THREE.BoxGeometry(hs.x, hs.y, hs.z), new THREE.MeshBasicMaterial({ visible: false }));
-  hit.position.copy(pos); if (rot) hit.rotation.copy(m.rotation); hit.userData.part = id; hit.userData.hit = true; p.group.add(hit); p.hits.push(hit);
-  return m;
-}
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
-const box = (w, h, d) => new THREE.BoxGeometry(w, h, d);
-const cyl = (r, l, seg = 32) => new THREE.CylinderGeometry(r, r, l, seg);
+function addMesh(id, m, hitMin = 0.26) {
+  const p = reg(id); m.castShadow = m.receiveShadow = true; m.userData.part = id; p.group.add(m); p.meshes.push(m);
+  m.updateMatrix(); const bb = new THREE.Box3(); if (m.geometry) { m.geometry.computeBoundingBox(); bb.copy(m.geometry.boundingBox); if (m.isInstancedMesh) { m.computeBoundingBox(); bb.copy(m.boundingBox); } }
+  const s = bb.getSize(new THREE.Vector3()), c = bb.getCenter(new THREE.Vector3());
+  const hit = new THREE.Mesh(new THREE.BoxGeometry(Math.max(s.x, hitMin), Math.max(s.y, hitMin), Math.max(s.z, hitMin)), new THREE.MeshBasicMaterial({ visible: false }));
+  hit.position.copy(c).applyMatrix4(m.matrix); hit.quaternion.copy(m.quaternion); hit.userData = { part: id, hit: true }; p.group.add(hit); p.hits.push(hit); return m;
+}
+function add(id, geo, mat, pos, rot, hitMin) { const m = new THREE.Mesh(geo, mat); m.position.copy(pos); if (rot) m.rotation.set(rot[0], rot[1], rot[2]); return addMesh(id, m, hitMin); }
+const box = (w, h, d) => new THREE.BoxGeometry(w, h, d), cyl = (r, l, s = 32, r2) => new THREE.CylinderGeometry(r, r2 ?? r, l, s);
+const X90 = [0, 0, Math.PI / 2];
+function inst(id, geo, mat, list) { const im = new THREE.InstancedMesh(geo, mat, list.length); const o = new THREE.Object3D(); list.forEach((p, i) => { o.position.copy(p); o.updateMatrix(); im.setMatrixAt(i, o.matrix); }); return addMesh(id, im); }
+function coil(r, h, turns, tube) { const pts = []; for (let i = 0; i <= turns * 24; i++) { const a = i / 24 * Math.PI * 2; pts.push(V(Math.cos(a) * r, -h / 2 + h * i / (turns * 24), Math.sin(a) * r)); } return new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), turns * 24, tube, 6, false); }
+function arm(id, a, b, t = 0.03, mat = M.steel) { const d = b.clone().sub(a), m = new THREE.Mesh(cyl(t, d.length(), 10), mat); m.position.copy(a).add(b).multiplyScalar(.5); m.quaternion.setFromUnitVectors(V(0, 1, 0), d.normalize()); return addMesh(id, m, 0.16); }
+
+function driveUnit(id, x, y, z, s, flip) { // stator housing w/ cooling ribs + end cap + gearbox
+  const dir = flip ? -1 : 1;
+  add(id, cyl(0.15 * s, 0.34 * s, 40), M.cast, V(x - 0.12 * s * dir, y, z), X90);
+  for (let i = -2; i <= 2; i++) add(id, new THREE.TorusGeometry(0.152 * s, 0.008, 6, 40), M.aluDark, V(x - 0.12 * s * dir + i * 0.06 * s, y, z), [0, Math.PI / 2, 0], 0.1);
+  add(id, cyl(0.11 * s, 0.03, 32), M.alu, V(x - 0.3 * s * dir, y, z), X90, 0.1);
+  add(id, new THREE.BoxGeometry(0.24 * s, 0.34 * s, 0.32 * s), M.cast, V(x + 0.14 * s * dir, y - 0.01, z + 0.02));
+  add(id, cyl(0.07 * s, 0.25 * s, 24), M.cast, V(x + 0.14 * s * dir, y + 0.09 * s, z - 0.1 * s), X90, 0.1);
+}
+function inverter(x, y, z, s) {
+  add('inverter', box(0.34 * s, 0.07, 0.24 * s), M.aluDark, V(x, y, z));
+  const fins = []; for (let i = 0; i < 10; i++) fins.push(V(x - 0.15 * s + i * 0.033 * s, y + 0.055, z)); inst('inverter', box(0.006, 0.04, 0.22 * s), M.alu, fins);
+  add('inverter', box(0.06, 0.05, 0.05), M.hv, V(x + 0.19 * s, y, z), null, 0.12);
+}
 
 function buildInternals(d) {
-  const { zf, zr, tw, R, front, rear, W, H } = d; const wb = zf - zr, mid = (zf + zr) / 2;
-  // Battery pack under floor + module hint lines
-  const bl = wb - 0.55, bw = 2 * tw - 0.42;
-  add('battery', box(bw, 0.12, bl), M.dark, V(0, 0.2, mid + 0.05));
-  for (let i = 0; i < 4; i++) add('battery', box(bw * 0.2, 0.03, bl - 0.1), M.blue, V(-bw * 0.36 + i * bw * 0.24, 0.275, mid + 0.05));
-  // Rear drive unit: motor + gearbox, inverter on top
-  add('rearMotor', cyl(0.14, 0.36), M.alu, V(-0.12, R, zr + 0.02), [0, 0, Math.PI / 2]);
-  add('rearMotor', box(0.26, 0.3, 0.3), M.alu, V(0.16, R, zr + 0.02));
-  add('rearMotor', cyl(0.035, 2 * tw - 0.3, 16), M.dark, V(0, R, zr), [0, 0, Math.PI / 2], 0.1);
-  add('inverter', box(0.34, 0.08, 0.22), M.orange, V(-0.08, R + 0.19, zr + 0.06));
-  // Front drive unit (Dual Motor)
-  add('frontMotor', cyl(0.12, 0.3), M.alu, V(0.1, R, zf - 0.02), [0, 0, Math.PI / 2]);
-  add('frontMotor', box(0.22, 0.26, 0.26), M.alu, V(-0.14, R, zf - 0.02));
-  add('frontMotor', cyl(0.032, 2 * tw - 0.3, 16), M.dark, V(0, R, zf), [0, 0, Math.PI / 2], 0.1);
-  add('inverter', box(0.26, 0.07, 0.18), M.orange, V(0.08, R + 0.16, zf - 0.02));
-  // Heat pump / Octovalve (front, by the 12V battery)
-  add('heatpump', box(0.2, 0.16, 0.14), M.hvac, V(0.28, R + 0.36, zf + 0.12));
-  add('heatpump', cyl(0.06, 0.05), M.blue, V(0.28, R + 0.47, zf + 0.12));
-  add('lv', box(0.2, 0.14, 0.12), M.black, V(-0.26, R + 0.34, zf + 0.14));
-  add('lv', box(0.04, 0.02, 0.04), M.copper, V(-0.31, R + 0.42, zf + 0.14), null, 0.1);
-  // Suspension
+  const { zf, zr, tw, R, rear, W, H } = d; const wb = zf - zr, mid = (zf + zr) / 2;
+  // battery pack: tray, cooling plate, 4 module rows with cell tops, HV connector
+  const bl = wb - 0.62, bw = 2 * tw - 0.48, by = 0.17;
+  add('battery', box(bw + 0.04, 0.05, bl + 0.04), M.aluDark, V(0, by, mid));
+  add('battery', box(bw - 0.04, 0.012, bl - 0.06), M.cool, V(0, by + 0.031, mid));
+  const rowW = (bw - 0.1) / 4, cells = [];
+  for (let r = 0; r < 4; r++) { const x = -bw / 2 + 0.05 + rowW * (r + .5);
+    add('battery', box(rowW - 0.03, 0.09, bl - 0.12), M.cell, V(x, by + 0.083, mid));
+    for (let i = 0; i < 4; i++) for (let j = 0; j < 22; j++) cells.push(V(x - rowW * 0.33 + i * rowW * 0.22, by + 0.13, mid - (bl - 0.2) / 2 + j * (bl - 0.2) / 21)); }
+  inst('battery', cyl(0.016, 0.006, 10), M.cellTop, cells);
+  add('battery', box(0.14, 0.08, 0.08), M.hv, V(0, by + 0.06, mid - bl / 2 - 0.02), null, 0.15);
+  // drive units + inverters + HV cables
+  driveUnit('rearMotor', 0, R, zr + 0.03, 1, false); inverter(-0.08, R + 0.22, zr + 0.03, 1);
+  driveUnit('frontMotor', 0, R, zf - 0.03, 0.82, true); inverter(0.06, R + 0.18, zf - 0.03, 0.82);
+  for (const z of [zr, zf]) add(z === zr ? 'rearMotor' : 'frontMotor', cyl(0.03, 2 * tw - 0.34, 12), M.steel, V(0, R, z), X90, 0.08);
+  const cable = (a, b) => { const g = new THREE.TubeGeometry(new THREE.CatmullRomCurve3([a, a.clone().lerp(b, .5).add(V(0, -0.05, 0)), b]), 20, 0.014, 8); return addMesh('battery', new THREE.Mesh(g, M.hv), 0.08); };
+  cable(V(0, by + 0.06, mid - bl / 2 - 0.05), V(-0.08, R + 0.22, zr + 0.17)); cable(V(0.05, by + 0.06, mid + bl / 2), V(0.06, R + 0.18, zf - 0.16));
+  // heat pump: Supermanifold block + Octovalve + pipes ; LV battery beside it
+  const hp = V(0.24, R + 0.42, zf + 0.15);
+  add('heatpump', box(0.22, 0.16, 0.12), M.hvac, hp); add('heatpump', cyl(0.055, 0.06, 24), M.blue, hp.clone().add(V(0, 0.11, 0)));
+  for (let i = 0; i < 4; i++) add('heatpump', cyl(0.012, 0.06, 8), M.alu, hp.clone().add(V(-0.08 + i * 0.05, -0.1, 0.03)), null, 0.08);
+  add('lv', box(0.19, 0.13, 0.11), M.black, V(-0.25, R + 0.4, zf + 0.16)); add('lv', cyl(0.012, 0.02, 8), M.red, V(-0.3, R + 0.475, zf + 0.16), null, 0.08); add('lv', cyl(0.012, 0.02, 8), M.steel, V(-0.2, R + 0.475, zf + 0.16), null, 0.08);
+  // suspension: front double wishbone + coilover, rear multi-link + coilover
   for (const sx of [-1, 1]) {
-    const x0 = sx * (tw - 0.55), x1 = sx * (tw - 0.14);
-    for (const [dy, len] of [[-0.12, 0.42], [0.2, 0.32]]) add('suspFront', box(Math.abs(x1 - x0), 0.035, 0.24), M.dark, V((x0 + x1) / 2, R + dy, zf), null, 0.18);
-    add('suspFront', new THREE.TorusKnotGeometry(0.05, 0.012, 64, 6, 6, 1), M.spring, V(sx * (tw - 0.35), R + 0.25, zf - 0.04), [Math.PI / 2, 0, 0], 0.18);
-    add('suspFront', cyl(0.025, 0.42, 12), M.spring, V(sx * (tw - 0.35), R + 0.2, zf - 0.04), null, 0.18);
-    for (const [dy, dz] of [[-0.1, 0.12], [-0.1, -0.12], [0.18, 0.06], [0.18, -0.1]]) add('suspRear', box(Math.abs(x1 - x0), 0.03, 0.04), M.dark, V((x0 + x1) / 2, R + dy, zr + dz), null, 0.15);
-    add('suspRear', new THREE.TorusKnotGeometry(0.055, 0.012, 64, 6, 6, 1), M.spring, V(sx * (tw - 0.38), R + 0.2, zr - 0.05), [Math.PI / 2, 0, 0], 0.18);
-    // brake discs (calipers come from the model)
-    for (const z of [zf, zr]) add('brakes', cyl(R * 0.62, 0.03), M.disc, V(sx * (tw - 0.2), R, z), [0, 0, Math.PI / 2], 0.2);
+    const hubF = V(sx * (tw - 0.16), R, zf), inF = sx * (tw - 0.58);
+    arm('suspFront', V(inF, R - 0.1, zf + 0.16), hubF.clone().add(V(0, -0.11, 0))); arm('suspFront', V(inF, R - 0.1, zf - 0.16), hubF.clone().add(V(0, -0.11, 0)));
+    arm('suspFront', V(inF + sx * 0.12, R + 0.2, zf + 0.1), hubF.clone().add(V(0, 0.17, 0)), 0.025); arm('suspFront', V(inF + sx * 0.12, R + 0.2, zf - 0.1), hubF.clone().add(V(0, 0.17, 0)), 0.025);
+    add('suspFront', box(0.05, 0.3, 0.07), M.cast, hubF.clone().add(V(-sx * 0.02, 0.03, 0)), null, 0.15);
+    const cF = V(sx * (tw - 0.36), R + 0.25, zf - 0.05); add('suspFront', coil(0.05, 0.22, 6, 0.008), M.red, cF, [0, 0, -sx * 0.25], 0.15); add('suspFront', cyl(0.022, 0.36, 12), M.spring, cF, [0, 0, -sx * 0.25], 0.12);
+    const hubR = V(sx * (tw - 0.16), R, zr), inR = sx * (tw - 0.6);
+    [[-0.1, 0.16], [-0.1, -0.12], [0.16, 0.1], [0.16, -0.08], [0.0, -0.22]].forEach(([dy, dz]) => arm('suspRear', V(inR, R + dy, zr + dz), hubR.clone().add(V(0, dy * 0.8, dz * 0.4)), 0.02));
+    add('suspRear', box(0.05, 0.28, 0.09), M.cast, hubR.clone().add(V(-sx * 0.02, 0.02, 0)), null, 0.15);
+    const cR = V(sx * (tw - 0.38), R + 0.22, zr - 0.06); add('suspRear', coil(0.05, 0.2, 6, 0.008), M.red, cR, [0, 0, -sx * 0.2], 0.15); add('suspRear', cyl(0.022, 0.32, 12), M.spring, cR, [0, 0, -sx * 0.2], 0.12);
+    add('suspFront', cyl(0.012, 2 * tw - 0.9, 8), M.steel, V(0, R - 0.06, zf + 0.22), X90, 0.08);
   }
-  // Charge port: left rear tail light (driver's left = +x when front is +z? car's left is +x here)
-  add('chargePort', box(0.03, 0.08, 0.09), M.black, V(W / 2 - 0.06, H * 0.62, rear + 0.18), null, 0.25);
-  add('chargePort', box(0.035, 0.04, 0.04), M.blue, V(W / 2 - 0.05, H * 0.62, rear + 0.18), null, 0.25);
-  // Cameras
-  const cam = (pos) => add('cameras', new THREE.SphereGeometry(0.03, 16, 12), M.glassLens, pos, null, 0.22);
-  cam(V(0, H * 0.83, zf - 0.93)); cam(V(0.06, H * 0.83, zf - 0.93));
-  for (const sx of [-1, 1]) { cam(V(sx * W * 0.47, H * 0.7, mid + 0.25)); cam(V(sx * W * 0.495, R * 1.55, zf - 0.32)); }
-  cam(V(0, H * 0.52, rear + 0.05));
-  // HVAC under dash
-  add('hvac', box(0.7, 0.24, 0.3), M.hvac, V(0, R + 0.38, zf - 0.72));
-  add('hvac', cyl(0.1, 0.12), M.dark, V(0.28, R + 0.38, zf - 0.72), [0, 0, Math.PI / 2]);
-  // Seats + displays
-  for (const sx of [-1, 1]) { add('cabin', box(0.5, 0.14, 0.5), M.seat, V(sx * 0.38, 0.5, mid + 0.15)); add('cabin', box(0.48, 0.62, 0.12), M.seat, V(sx * 0.38, 0.84, mid - 0.12), [-0.2, 0, 0]); }
-  add('cabin', box(1.25, 0.14, 0.48), M.seat, V(0, 0.52, zr + 0.55)); add('cabin', box(1.25, 0.56, 0.12), M.seat, V(0, 0.82, zr + 0.3), [-0.25, 0, 0]);
-  add('display', box(0.39, 0.25, 0.02), M.screen, V(0, H * 0.66, zf - 0.98), [-0.25, 0, 0], 0.3);
-  add('display', box(0.18, 0.11, 0.02), M.screen, V(0, 0.62, mid - 0.32), [0.3, Math.PI, 0], 0.25);
-  // Explode offsets (multi-level)
-  const off = {
-    body: V(0, 1.7, 0), glass: V(0, 2.5, 0), cameras: V(0, 1.7, 0), cabin: V(0, 0.95, 0), display: V(0, 1.15, 0), hvac: V(0, 1.0, 0.35),
-    battery: V(0, -0.05, 0), rearMotor: V(0, 0.15, -0.95), frontMotor: V(0, 0.15, 0.9), inverter: V(0, 0.55, 0), heatpump: V(0.35, 0.75, 0.75), lv: V(-0.35, 0.75, 0.75),
-    chargePort: V(0.7, 1.5, -0.3), wheels: null, brakes: null, suspFront: null, suspRear: null
-  };
-  Object.entries(off).forEach(([k, v]) => { if (v && parts[k]) parts[k].off.copy(v); });
+  // charge port (inset behind the left tail light) — car's left is +x here
+  add('chargePort', box(0.06, 0.09, 0.1), M.black, V(W / 2 - 0.16, H * 0.6, rear + 0.32), null, 0.22);
+  add('chargePort', cyl(0.012, 0.03, 8), M.blue, V(W / 2 - 0.12, H * 0.6, rear + 0.32), X90, 0.22);
+  // cameras
+  const cam = (pos) => { add('cameras', box(0.05, 0.035, 0.05), M.black, pos, null, 0.22); add('cameras', new THREE.SphereGeometry(0.012, 12, 8), M.lens, pos.clone().add(V(0, 0, 0.026)), null, 0.1); };
+  cam(V(-0.03, H * 0.88, zf - 1.05)); cam(V(0.03, H * 0.88, zf - 1.05));
+  for (const sx of [-1, 1]) { cam(V(sx * (W / 2 - 0.08), H * 0.68, mid + 0.2)); cam(V(sx * (W / 2 - 0.06), R * 1.75, zf - 0.38)); }
+  cam(V(0, H * 0.55, rear + 0.08));
+  // HVAC module behind dash
+  add('hvac', box(0.62, 0.22, 0.28), M.hvac, V(0, R + 0.42, zf - 0.78)); add('hvac', cyl(0.1, 0.13, 24), M.aluDark, V(0.25, R + 0.42, zf - 0.78), X90); add('hvac', box(0.5, 0.05, 0.05), M.black, V(0, R + 0.56, zf - 0.7), null, 0.12);
+  // explode offsets
+  const off = { body: V(0, 1.8, 0), glass: V(0, 2.6, 0), lights: V(0, 1.8, 0), mirrors: V(0, 1.8, 0), cameras: V(0, 1.8, 0), cabin: V(0, 0.95, 0), display: V(0, 1.2, 0), hvac: V(0, 1.05, 0.35), battery: V(0, -0.02, 0), rearMotor: V(0, 0.18, -1.0), frontMotor: V(0, 0.18, 0.95), inverter: V(0, 0.6, 0), heatpump: V(0.35, 0.8, 0.8), lv: V(-0.35, 0.8, 0.8), chargePort: V(0.7, 1.6, -0.3) };
+  Object.entries(off).forEach(([k, v]) => { if (parts[k]) parts[k].off.copy(v); });
 }
 
-// ---------- load exterior ----------
-const draco = new DRACOLoader().setDecoderPath('/vendor/three/draco/');
+// split a merged geometry into left/right meshes by triangle centroid x
+function splitLR(mesh) {
+  const g = mesh.geometry.index ? mesh.geometry.toNonIndexed() : mesh.geometry; const pos = g.attributes.position; const out = [[], []];
+  const v = new THREE.Vector3(), m = mesh.matrixWorld;
+  for (let t = 0; t < pos.count; t += 3) { let cx = 0; for (let k = 0; k < 3; k++) { v.fromBufferAttribute(pos, t + k).applyMatrix4(m); cx += v.x; } out[cx < 0 ? 0 : 1].push(t); }
+  return out.map((tris) => { if (!tris.length) return null; const ng = new THREE.BufferGeometry(); for (const name of Object.keys(g.attributes)) { const a = g.attributes[name], arr = new a.array.constructor(tris.length * 3 * a.itemSize); tris.forEach((t, i) => { for (let k = 0; k < 3 * a.itemSize; k++) arr[i * 3 * a.itemSize + k] = a.array[t * a.itemSize + k]; }); ng.setAttribute(name, new THREE.BufferAttribute(arr, a.itemSize, a.normalized)); }
+    const nm = new THREE.Mesh(ng, mesh.material); nm.name = mesh.name; nm.matrixAutoUpdate = false; nm.matrix.copy(mesh.matrixWorld); nm.matrixWorldNeedsUpdate = true; return nm; });
+}
+
+// ---------- load ----------
 const status = $('.m3x-status'); status.textContent = 'Loading Model 3…';
-new GLTFLoader().setDRACOLoader(draco).load(EXTERIOR.url, (gltf) => {
-  const m = gltf.scene; const b = new THREE.Box3().setFromObject(m), s = b.getSize(new THREE.Vector3());
-  const k = EXTERIOR.length / Math.max(s.x, s.z); m.scale.setScalar(k); b.setFromObject(m); const c = b.getCenter(new THREE.Vector3());
-  m.position.sub(V(c.x, b.min.y, c.z)); m.updateMatrixWorld(true); b.setFromObject(m);
-  const paint = new THREE.MeshPhysicalMaterial({ color: 0x9a0a18, metalness: .25, roughness: .35, clearcoat: 1, clearcoatRoughness: .04 });
-  const glass = new THREE.MeshPhysicalMaterial({ color: 0x05070a, metalness: .2, roughness: .02, transparent: true, opacity: .82, clearcoat: 1 });
-  const meshes = []; m.traverse((o) => { if (o.isMesh) meshes.push(o); });
-  const wheelBoxes = {};
+const bar = $('.m3x-loadbar');
+new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/draco/')).load(EXTERIOR.url, (gltf) => {
+  const root = new THREE.Group(); root.add(gltf.scene); root.updateMatrixWorld(true);
+  let b = new THREE.Box3().setFromObject(root), s = b.getSize(new THREE.Vector3());
+  if (s.x > s.z) root.rotation.y = Math.PI / 2; root.updateMatrixWorld(true);
+  const fb = new THREE.Box3(); root.traverse((o) => { if (o.isMesh && EXTERIOR.frontProbe(o)) fb.expandByObject(o); }); b.setFromObject(root);
+  if (!fb.isEmpty() && fb.getCenter(new THREE.Vector3()).z < b.getCenter(new THREE.Vector3()).z) root.rotation.y += Math.PI;
+  root.updateMatrixWorld(true); b.setFromObject(root); s = b.getSize(new THREE.Vector3());
+  const k = EXTERIOR.length / s.z; root.scale.setScalar(k); root.updateMatrixWorld(true); b.setFromObject(root);
+  const c = b.getCenter(new THREE.Vector3()); root.position.sub(V(c.x, b.min.y, c.z)); root.updateMatrixWorld(true); b.setFromObject(root);
+  const paint = P({ color: 0x8f0a16, metalness: .35, roughness: .3, clearcoat: 1, clearcoatRoughness: .03 });
+  const meshes = []; root.traverse((o) => { if (o.isMesh) meshes.push(o); });
+  const tyres = [];
   meshes.forEach((o) => {
-    o.castShadow = o.receiveShadow = true; const id = EXTERIOR.classify(o), mn = (o.material && o.material.name) || '';
-    const om = o.material, col = om.color ? om.color.clone() : new THREE.Color(0x111111), lum = col.r + col.g + col.b;
-    if (EXTERIOR.paint.test(mn)) o.material = paint; else if (id === 'glass') o.material = glass;
-    else if (id === 'brakes') o.material = new THREE.MeshStandardMaterial({ color: RED, metalness: .3, roughness: .4 });
-    else if (id === 'wheels') o.material = lum > 1 ? new THREE.MeshPhysicalMaterial({ color: 0x2a2c30, metalness: .75, roughness: .28, clearcoat: .6 }) : new THREE.MeshStandardMaterial({ color: 0x0b0b0c, roughness: .92 });
-    else if (/chrome/i.test(mn)) o.material = new THREE.MeshStandardMaterial({ color: 0x111214, metalness: 1, roughness: .18 });
-    else if (/LED|PHARE/i.test(o.name)) o.material = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xdde6ff, emissiveIntensity: 1.5 });
-    else { o.material = om.clone(); o.material.roughness = Math.min(om.roughness, .55); }
-    o.material.side = THREE.DoubleSide; o.userData.part = id;
-    if (id === 'wheels') { const key = (o.parent && o.parent.name) || o.name; const wb = new THREE.Box3().setFromObject(o); wheelBoxes[key] = wheelBoxes[key] ? wheelBoxes[key].union(wb) : wb; }
+    const id = EXTERIOR.classify(o), n = NUM(o); o.userData.part = id; o.castShadow = o.receiveShadow = true;
+    if (id === 'hide') { o.visible = false; return; }
+    const mn = (o.material && o.material.name) || '';
+    if (/carpaint/i.test(mn) && !/black/i.test(mn)) o.material = paint;
+    else if (n === 7 || n === 15 || n === 20) o.material = P({ color: 0x0a0d12, metalness: 0, roughness: .03, transparent: true, opacity: n === 7 ? .7 : .38, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide });
+    else if (n === 2 || n === 14) o.material = P({ color: 0xffffff, metalness: 0, roughness: .02, transparent: true, opacity: .18, clearcoat: 1, depthWrite: false });
+    else if (n === 10) o.material = S({ color: RED, metalness: .3, roughness: .4 });
+    else if (n === 9) o.material = M.disc;
+    else if (n === 22) o.material = S({ color: 0xffffff, emissive: 0xffe8e8, emissiveIntensity: 1.2 });
+    if (n === 31) tyres.push(o);
   });
-  // measure layout from the wheels
-  const centers = Object.values(wheelBoxes).map((bx) => ({ c: bx.getCenter(new THREE.Vector3()), r: bx.getSize(new THREE.Vector3()).y / 2 }));
-  const zs = centers.map((w) => w.c.z), xs = centers.map((w) => Math.abs(w.c.x));
-  const d = { zf: Math.max(...zs), zr: Math.min(...zs), tw: xs.reduce((a, v) => a + v, 0) / xs.length, R: centers.reduce((a, w) => a + w.r, 0) / centers.length, front: b.max.z, rear: b.min.z, W: b.max.x - b.min.x, H: b.max.y };
-  if (!isFinite(d.zf) || centers.length < 4) { d.zf = 1.4; d.zr = -1.45; d.tw = 0.8; d.R = 0.34; }
-  // move exterior meshes into part groups (keeping world transforms)
-  meshes.forEach((o) => { const p = reg(o.userData.part); p.group.attach(o); p.meshes.push(o); });
+  // layout from tyres (4 clusters)
+  const pts = []; const v = new THREE.Vector3(); tyres.forEach((t) => { const p = t.geometry.attributes.position; for (let i = 0; i < p.count; i += 7) pts.push(v.fromBufferAttribute(p, i).applyMatrix4(t.matrixWorld).clone()); });
+  const q = { fl: [], fr: [], rl: [], rr: [] }; pts.forEach((p) => q[(p.z > 0 ? 'f' : 'r') + (p.x > 0 ? 'l' : 'r')].push(p));
+  const cen = (a) => { const bb = new THREE.Box3().setFromPoints(a); return { c: bb.getCenter(new THREE.Vector3()), r: bb.getSize(new THREE.Vector3()).y / 2 }; };
+  let d;
+  try { const W4 = Object.values(q).map(cen); d = { zf: (W4[0].c.z + W4[1].c.z) / 2, zr: (W4[2].c.z + W4[3].c.z) / 2, tw: W4.reduce((a, w) => a + Math.abs(w.c.x), 0) / 4, R: W4.reduce((a, w) => a + w.r, 0) / 4 }; if (!isFinite(d.zf)) throw 0; }
+  catch (e) { d = { zf: 1.45, zr: -1.43, tw: 0.8, R: 0.34 }; }
+  Object.assign(d, { front: b.max.z, rear: b.min.z, W: b.max.x - b.min.x, H: b.max.y });
+  // register exterior meshes; wheels/brakes split L/R
+  meshes.forEach((o) => { const id = o.userData.part; if (id === 'hide') return;
+    if (id === 'wheels' || id === 'brakes') { splitLR(o).forEach((nm, i) => { if (!nm) return; nm.castShadow = nm.receiveShadow = true; nm.userData = { part: id, side: i }; reg(id).meshes.push(nm); }); return; }
+    const p = reg(id); p.group.attach(o); p.meshes.push(o); });
   buildInternals(d);
-  // wheels/brakes/suspension move outward per side
-  ['wheels', 'brakes', 'suspFront', 'suspRear'].forEach((id) => { const p = parts[id]; if (!p) return; p.split = { wheels: 0.95, brakes: 0.8, suspFront: 0.45, suspRear: 0.45 }[id]; });
-  Object.values(parts).forEach((p) => { car.add(p.group); p.box = new THREE.Box3().setFromObject(p.group); });
-  // per-side splitting: put each mesh/hit in a side subgroup
-  Object.entries(parts).forEach(([id, p]) => { if (!p.split) return; const L = new THREE.Group(), Rg = new THREE.Group(); p.group.add(L, Rg);
-    [...p.meshes, ...p.hits].forEach((o) => { const wp = o.getWorldPosition(new THREE.Vector3()); (wp.x < 0 ? L : Rg).attach(o); }); p.sides = [L, Rg]; });
-  buildList(); app.classList.add('m3x-ready'); status.textContent = ''; setExplode(reduce ? 0 : 0); kick();
-}, undefined, () => fail('Couldn’t load the 3D model, so this is a still image.'));
+  // body panels drift apart slightly (outward from their own centres) on top of the lift
+  (parts.body ? parts.body.meshes : []).forEach((o) => { const cc = new THREE.Box3().setFromObject(o).getCenter(new THREE.Vector3()); o.userData.base = o.position.clone(); o.userData.eo = o.parent.worldToLocal(cc.clone().add(V(cc.x * 0.12, 0.03, cc.z * 0.04))).sub(o.parent.worldToLocal(cc.clone())); });
+  // side groups for outward explode
+  const SPLIT = { wheels: 0.95, brakes: 0.8, suspFront: 0.45, suspRear: 0.45 };
+  Object.entries(SPLIT).forEach(([id, amt]) => { const p = parts[id]; if (!p) return; const L = new THREE.Group(), Rg = new THREE.Group(); p.group.add(L, Rg); p.split = amt;
+    [...p.meshes, ...p.hits].forEach((o) => { if (o.userData.side !== undefined) (o.userData.side ? Rg : L).add(o); else { const wp = o.getWorldPosition(new THREE.Vector3()); (wp.x < 0 ? L : Rg).attach(o); } }); p.sides = [L, Rg]; });
+  // hit volumes for small real parts (mirrors, lights, display)
+  ['mirrors', 'display', 'lights', 'brakes'].forEach((id) => { const p = parts[id]; if (!p) return; p.meshes.forEach((o) => { const bb = new THREE.Box3().setFromObject(o), sz = bb.getSize(new THREE.Vector3()), cc = bb.getCenter(new THREE.Vector3());
+    if (Math.max(sz.x, sz.y, sz.z) > 1.2) return; const h = new THREE.Mesh(new THREE.BoxGeometry(Math.max(sz.x, .2), Math.max(sz.y, .2), Math.max(sz.z, .2)), new THREE.MeshBasicMaterial({ visible: false })); h.position.copy(cc); h.userData = { part: id, hit: true, side: o.userData.side };
+    const parent = p.sides && o.parent && o.parent !== p.group ? o.parent : p.group; parent.attach ? parent.attach(h) : p.group.add(h); p.hits.push(h); }); });
+  Object.values(parts).forEach((p) => car.add(p.group));
+  buildList(); app.classList.add('m3x-ready'); status.textContent = ''; bar && (bar.style.opacity = 0); kick();
+}, (e) => { if (bar && e.total) bar.style.transform = 'scaleX(' + (e.loaded / e.total) + ')'; }, () => fail('Couldn’t load the 3D model, so this is a still image.'));
 
 // ---------- explode ----------
-let ex = 0, exT = 0;
-const slider = $('.m3x-slider');
-function setExplode(v) { exT = v; slider.value = Math.round(v * 100); $('.m3x-explode').setAttribute('aria-pressed', v > 0.5); $('.m3x-explode').textContent = v > 0.5 ? 'Assemble' : 'Explode'; if (reduce) ex = v; kick(); }
-slider.addEventListener('input', () => { exT = slider.value / 100; ex = exT; kick(); $('.m3x-explode').textContent = exT > 0.5 ? 'Assemble' : 'Explode'; });
-$('.m3x-explode').addEventListener('click', () => setExplode(exT > 0.5 ? 0 : 1));
-function applyExplode() {
-  const e = ex * ex * (3 - 2 * ex);
-  Object.values(parts).forEach((p) => { p.group.position.copy(p.off).multiplyScalar(e); if (p.sides) { p.sides[0].position.x = -p.split * e; p.sides[1].position.x = p.split * e; } });
-}
+let ex = 0, exT = 0; const slider = $('.m3x-slider'), exBtn = $('.m3x-explode');
+function syncEx() { slider.value = Math.round(exT * 100); exBtn.textContent = exT > 0.5 ? 'Assemble' : 'Explode'; exBtn.setAttribute('aria-pressed', exT > 0.5); slider.style.setProperty('--p', slider.value + '%'); }
+function setExplode(v) { exT = v; if (reduce) ex = v; syncEx(); kick(); }
+slider.addEventListener('input', () => { exT = ex = slider.value / 100; syncEx(); kick(); });
+exBtn.addEventListener('click', () => { const v = exT > 0.5 ? 0 : 1; setExplode(v); if (!selected) startFly(v ? homePos().multiplyScalar(1.22).add(V(0, 0.6, 0)) : homePos(), v ? V(0, 1.15, 0) : HOME.t.clone()); });
+const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+function applyExplode() { const e = ease(ex); Object.values(parts).forEach((p) => { p.group.position.copy(p.off).multiplyScalar(e); if (p.sides) { p.sides[0].position.x = -p.split * e; p.sides[1].position.x = p.split * e; } }); (parts.body ? parts.body.meshes : []).forEach((o) => { if (o.userData.eo) o.position.copy(o.userData.base).addScaledVector(o.userData.eo, e); }); }
 
-// ---------- selection ----------
+// ---------- selection & card ----------
 let selected = null; const card = $('.m3x-card');
-const highlight = new THREE.MeshStandardMaterial({ color: RED, emissive: RED, emissiveIntensity: .55, metalness: .3, roughness: .4 });
-function setLook(id) {
-  Object.entries(parts).forEach(([pid, p]) => p.meshes.forEach((o) => {
-    if (!o.userData.orig) o.userData.orig = o.material;
-    if (!id) { o.material = o.userData.orig; o.userData.ghost = false; return; }
-    if (pid === id) { o.material = highlight; o.userData.ghost = false; }
-    else { if (!o.userData.dim) { o.userData.dim = o.userData.orig.clone(); o.userData.dim.transparent = true; o.userData.dim.opacity = .07; o.userData.dim.depthWrite = false; } o.material = o.userData.dim; o.userData.ghost = true; }
-  }));
+const hl = S({ color: RED, emissive: RED, emissiveIntensity: .5, metalness: .4, roughness: .35 });
+function setLook(id) { Object.entries(parts).forEach(([pid, p]) => p.meshes.forEach((o) => { o.userData.orig = o.userData.orig || o.material;
+  if (!id) { o.material = o.userData.orig; o.userData.ghost = false; return; }
+  if (pid === id) { o.material = hl; o.userData.ghost = false; return; }
+  if (!o.userData.dim) { const dm = o.userData.orig.clone(); dm.transparent = true; dm.opacity = .06; dm.depthWrite = false; o.userData.dim = dm; } o.material = o.userData.dim; o.userData.ghost = true; })); }
+function cardHTML(id) {
+  const P0 = PARTS[id], ph = PHOTOS[id], srcs = [P0.src, P0.src2].filter(Boolean);
+  return '<button class="m3x-x" type="button" aria-label="Close">×</button>' +
+    (ph ? '<figure class="m3x-photo"><img src="' + ph.src + '" alt="' + ph.alt + '" loading="lazy" decoding="async"><figcaption>Photo: <a href="' + ph.url + '" target="_blank" rel="noopener">' + ph.by + '</a>, <a href="' + ph.licUrl + '" target="_blank" rel="noopener">' + ph.lic + '</a></figcaption></figure>' : '') +
+    '<div class="m3x-cbody"><p class="m3x-var">' + P0.variant + '</p><h2>' + P0.name + '</h2><p class="m3x-desc">' + P0.desc + '</p>' + (P0.facts.length ? '<ul>' + P0.facts.map((f) => '<li>' + f + '</li>').join('') + '</ul>' : '') +
+    (srcs.length ? '<p class="m3x-src">Source: ' + srcs.map((s) => '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>').join(' · ') + '</p>' : '') + '</div>';
 }
-function select(id, fly = true) {
-  selected = id; setLook(id);
+function select(id, flyIt = true) {
+  selected = id; setLook(id); app.classList.toggle('m3x-has-card', !!id);
   app.querySelectorAll('.m3x-list button').forEach((b) => b.setAttribute('aria-current', b.dataset.part === id));
-  if (!id) { card.hidden = true; $('.m3x-label').hidden = true; offsetView(); return; }
-  const P = PARTS[id]; const srcs = [P.src, P.src2].filter(Boolean);
-  card.innerHTML = '<button class="m3x-x" type="button" aria-label="Close">×</button><p class="m3x-var">' + P.variant + '</p><h2>' + P.name + '</h2><p>' + P.desc + '</p><ul>' + P.facts.map((f) => '<li>' + f + '</li>').join('') + '</ul><p class="m3x-src">Source: ' + srcs.map((s) => '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>').join(' · ') + '</p>';
-  card.hidden = false; card.querySelector('.m3x-x').onclick = () => select(null);
-  $('.m3x-label').textContent = P.name; $('.m3x-label').hidden = false;
-  offsetView(); if (fly) flyTo(id); idle(); kick();
+  if (!id) { card.hidden = true; label.hidden = true; frame(); kick(); return; }
+  card.innerHTML = cardHTML(id); card.hidden = false; card.scrollTop = 0; card.querySelector('.m3x-x').onclick = () => select(null);
+  label.textContent = PARTS[id].name; label.hidden = false; frame(); if (flyIt) flyTo(id); idle(); kick();
 }
-function partCenter(id) { applyExplode(); car.updateMatrixWorld(true); const bx = new THREE.Box3(); parts[id].meshes.forEach((o) => bx.expandByObject(o)); return { c: bx.getCenter(new THREE.Vector3()), r: bx.getSize(new THREE.Vector3()).length() / 2 }; }
+// keep the part visible beside/above the card using a view offset
+function frame() { const w = innerWidth, h = app.clientHeight;
+  if (selected && portrait()) camera.setViewOffset(w, h, 0, h * 0.17, w, h);
+  else if (selected && w > 900) camera.setViewOffset(w, h, -((366 + w - 286) / 2 - w / 2), 0, w, h);
+  else camera.clearViewOffset(); camera.updateProjectionMatrix(); }
+function partBox(id) { applyExplode(); car.updateMatrixWorld(true); const bx = new THREE.Box3(); parts[id].meshes.forEach((o) => { if (o.visible) bx.expandByObject(o); }); return bx; }
 let fly = null;
-function flyTo(id) {
-  const { c, r } = partCenter(id); const dir = camera.position.clone().sub(controls.target).normalize();
-  if (dir.y < 0.45) dir.y = 0.55; dir.normalize();
-  const dist = Math.min(7, Math.max(camera.aspect < 1 ? 3.4 : 1.8, r * (camera.aspect < 1 ? 4.5 : 2.8)));
-  startFly(c.clone().add(dir.multiplyScalar(dist)), c);
-}
-function startFly(p, t) { fly = { p0: camera.position.clone(), t0: controls.target.clone(), p1: p, t1: t, k: reduce ? 1 : 0 }; kick(); }
-$('.m3x-reset').addEventListener('click', () => { select(null); setExplode(0); startFly(HOME.p.clone(), HOME.t.clone()); });
+function flyTo(id) { const sd = parts[id] && parts[id].sides; const bx = partBox(id), c = bx.getCenter(new THREE.Vector3()), r = bx.getSize(new THREE.Vector3()).length() / 2;
+  const dir = camera.position.clone().sub(controls.target).normalize(); dir.y = Math.max(dir.y, 0.42); dir.normalize();
+  const fit = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * (portrait() ? 1.25 : 0.95);
+  const dist = THREE.MathUtils.clamp(fit, portrait() ? 3.2 : (sd ? 3.4 : 2.0), 11); if (sd) { startFly(homePos().multiplyScalar(ex > .5 ? 1.25 : 1.05).add(V(0, ex > .5 ? 0.4 : 0, 0)), V(0, 0.5, 0)); return; } startFly(c.clone().add(dir.multiplyScalar(dist)), c); }
+function startFly(p, t) { const len = p.distanceTo(camera.position) + t.distanceTo(controls.target); fly = { p0: camera.position.clone(), t0: controls.target.clone(), p1: p, t1: t, k: reduce ? 1 : 0, dur: THREE.MathUtils.clamp(0.7 + len * 0.08, 0.8, 1.6) }; kick(); }
+$('.m3x-reset').addEventListener('click', () => { select(null); setExplode(0); startFly(homePos(), HOME.t.clone()); });
 
-// picking
+// picking (ghosted surfaces ignored; enlarged hit volumes for small parts)
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
-function pick(e) {
-  const r = renderer.domElement.getBoundingClientRect(); ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1); ray.setFromCamera(ptr, camera);
-  const hits = ray.intersectObject(car, true).filter((h) => h.object.userData.part && !h.object.userData.ghost);
+function pick(e) { const r = renderer.domElement.getBoundingClientRect(); ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1); ray.setFromCamera(ptr, camera);
+  const hits = ray.intersectObject(car, true).filter((h) => h.object.userData.part && !h.object.userData.ghost && h.object.userData.part !== 'hide' && (h.object.visible || h.object.userData.hit));
   if (!hits.length) return null;
-  // prefer real surfaces in front; small hidden parts win if their hit volume is the first thing after a ghosted/glass layer
-  const first = hits[0]; if (first.object.userData.hit) return first.object.userData.part;
-  const realFirst = hits.find((h) => !h.object.userData.hit);
-  return realFirst ? realFirst.object.userData.part : first.object.userData.part;
-}
+  const real = hits.find((h) => !h.object.userData.hit && !(h.object.material && h.object.material.transparent && h.object.material.opacity < .5));
+  const hit = hits.find((h) => h.object.userData.hit);
+  if (hit && (!real || hit.distance <= real.distance + 0.05)) return hit.object.userData.part;
+  return real ? real.object.userData.part : hits[0].object.userData.part; }
 let down = null;
 renderer.domElement.addEventListener('pointerdown', (e) => { down = [e.clientX, e.clientY, performance.now()]; idle(); });
-renderer.domElement.addEventListener('pointerup', (e) => { if (!down) return; const moved = Math.hypot(e.clientX - down[0], e.clientY - down[1]); if (moved < 8 && performance.now() - down[2] < 600) { const id = pick(e); select(id || null, !!id); } down = null; });
+renderer.domElement.addEventListener('pointerup', (e) => { if (!down) return; if (Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 8 && performance.now() - down[2] < 600) { const id = pick(e); select(id || null, !!id); } down = null; });
 const tip = $('.m3x-tip');
-renderer.domElement.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse' || e.buttons) { tip.hidden = true; return; } const id = pick(e); if (id) { tip.hidden = false; tip.textContent = PARTS[id].name; tip.style.transform = 'translate(' + (e.clientX + 14) + 'px,' + (e.clientY + 12) + 'px)'; renderer.domElement.style.cursor = 'pointer'; } else { tip.hidden = true; renderer.domElement.style.cursor = 'grab'; } });
+renderer.domElement.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse' || e.buttons) { tip.hidden = true; return; } const id = pick(e);
+  if (id) { tip.hidden = false; tip.textContent = PARTS[id].name; tip.style.transform = 'translate(' + (e.clientX + 14) + 'px,' + (e.clientY + 12) + 'px)'; renderer.domElement.style.cursor = 'pointer'; } else { tip.hidden = true; renderer.domElement.style.cursor = 'grab'; } });
 
-// parts list
-function buildList() {
-  const ul = $('.m3x-list'); ul.innerHTML = ORDER.filter((id) => parts[id]).map((id) => '<li><button type="button" data-part="' + id + '">' + PARTS[id].name + '</button></li>').join('');
-  ul.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => { if (coarse) app.classList.remove('m3x-list-open'); select(b.dataset.part); }));
-}
+function buildList() { const ul = $('.m3x-list'); ul.innerHTML = ORDER.filter((id) => parts[id]).map((id) => '<li><button type="button" data-part="' + id + '"><span class="m3x-dot"></span>' + PARTS[id].name + (PHOTOS[id] ? '<i title="Has photo">◉</i>' : '') + '</button></li>').join('');
+  ul.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => { if (portrait() || innerWidth <= 900) closeList(); select(b.dataset.part); })); }
+const closeList = () => { app.classList.remove('m3x-list-open'); $('.m3x-parts').setAttribute('aria-expanded', false); };
 $('.m3x-parts').addEventListener('click', () => { app.classList.toggle('m3x-list-open'); $('.m3x-parts').setAttribute('aria-expanded', app.classList.contains('m3x-list-open')); });
+$('.m3x-close').addEventListener('click', closeList);
 
-// pause / idle auto-rotate
-let paused = reduce, last = performance.now();
-const pauseBtn = $('.m3x-pause');
+let paused = reduce, last = performance.now(); const pauseBtn = $('.m3x-pause');
 function idle() { last = performance.now(); }
 function syncPause() { pauseBtn.textContent = paused ? 'Play' : 'Pause'; pauseBtn.setAttribute('aria-pressed', paused); }
 pauseBtn.addEventListener('click', () => { paused = !paused; syncPause(); kick(); }); syncPause();
-controls.addEventListener('start', () => { idle(); fly = null; });
-controls.addEventListener('change', () => kick());
+controls.addEventListener('start', () => { idle(); fly = null; }); controls.addEventListener('change', () => kick());
 
-// label anchored to selected part
 const label = $('.m3x-label');
-function placeLabel() { if (!selected) return; const { c } = partCenterCached(); const v = c.clone().project(camera); const r = renderer.domElement.getBoundingClientRect(); label.style.transform = 'translate(' + ((v.x + 1) / 2 * r.width) + 'px,' + ((1 - v.y) / 2 * r.height) + 'px)'; label.style.opacity = v.z < 1 ? 1 : 0; }
-function partCenterCached() { const bx = new THREE.Box3(); parts[selected].meshes.forEach((o) => bx.expandByObject(o)); return { c: bx.getCenter(new THREE.Vector3()) }; }
+function placeLabel() { if (!selected) return; const c = partBox(selected).getCenter(new THREE.Vector3()).project(camera); label.style.transform = 'translate(' + ((c.x + 1) / 2 * innerWidth) + 'px,' + ((1 - c.y) / 2 * app.clientHeight) + 'px)'; label.style.opacity = c.z < 1 ? 1 : 0; }
 
-// sizing, visibility, adaptive quality
-function resize() { const w = innerWidth, h = app.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w < h ? 52 : 35; HOME.p.set(5.6, 2.6, 6.2).multiplyScalar(w < h ? 1.45 : 1); offsetView(); kick(); }
-function offsetView() { const w = innerWidth, h = app.clientHeight; if (selected && w < h) camera.setViewOffset(w, h, 0, h * 0.2, w, h); else camera.clearViewOffset(); camera.updateProjectionMatrix(); }
-addEventListener('resize', resize); resize(); camera.position.copy(HOME.p); controls.target.copy(HOME.t);
+function resize() { const w = innerWidth, h = app.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w < h ? 50 : 34; frame(); kick(); }
+addEventListener('resize', resize); resize(); HOME.p.copy(homePos()); camera.position.copy(HOME.p); controls.target.copy(HOME.t);
 document.addEventListener('visibilitychange', () => { visible = !document.hidden; kick(); });
-
 function kick() { if (!raf && visible) raf = requestAnimationFrame(tick); }
 function tick() {
   raf = 0; const dt = Math.min(clock.getDelta(), 0.05), now = performance.now(); let busy = false;
-  if (Math.abs(exT - ex) > 0.001) { ex += (exT - ex) * Math.min(1, dt * 3.2); busy = true; } else ex = exT;
+  if (Math.abs(exT - ex) > 0.0008) { ex += Math.sign(exT - ex) * Math.min(Math.abs(exT - ex), dt / 1.4); busy = true; } else ex = exT;
   applyExplode();
-  if (fly) { fly.k = Math.min(1, fly.k + dt / 1.2); const k = 1 - Math.pow(1 - fly.k, 3); camera.position.lerpVectors(fly.p0, fly.p1, k); controls.target.lerpVectors(fly.t0, fly.t1, k); if (fly.k >= 1) fly = null; busy = true; }
-  controls.autoRotate = !paused && !selected && now - last > 6500; controls.autoRotateSpeed = 0.5;
+  if (fly) { fly.k = Math.min(1, fly.k + dt / fly.dur); const k = ease(fly.k); camera.position.lerpVectors(fly.p0, fly.p1, k); controls.target.lerpVectors(fly.t0, fly.t1, k); if (fly.k >= 1) fly = null; busy = true; }
+  controls.autoRotate = !paused && !selected && now - last > 6500; controls.autoRotateSpeed = 0.45;
   if (controls.update() || controls.autoRotate) busy = true;
   renderer.render(scene, camera); placeLabel();
-  frames++; if (now - t0 > 1500) { const fps = frames * 1000 / (now - t0); if (fps < 35 && dpr > 1) { dpr = Math.max(1, dpr - 0.4); renderer.setPixelRatio(dpr); resize(); } frames = 0; t0 = now; }
+  frames++; if (now - t0 > 1500) { const fps = frames * 1000 / (now - t0); if (fps < 32 && dpr > 1) { dpr = Math.max(1, dpr - 0.4); renderer.setPixelRatio(dpr); resize(); } frames = 0; t0 = now; }
   if (busy) kick();
 }
-$('.m3x-close').addEventListener('click', () => { app.classList.remove('m3x-list-open'); $('.m3x-parts').setAttribute('aria-expanded', false); });
