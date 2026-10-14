@@ -113,7 +113,7 @@
         outlineColor: on ? Cesium.Color.WHITE : Cesium.Color.fromBytes(12, 13, 16, 220),
         outlineWidth: on ? 3 : 1.4,
         scaleByDistance: new Cesium.NearFarScalar(6.0e5, 1.45, 2.2e7, 0.72),
-        disableDepthTestDistance: Number.POSITIVE_INFINITY,
+        disableDepthTestDistance: 0,
       };
       const inEurope = ll[0] > -12 && ll[0] < 32 && ll[1] > 34 && ll[1] < 72;
       const few = (spots || []).length <= 16;
@@ -130,7 +130,7 @@
         outlineWidth: 3,
         style: Cesium.LabelStyle.FILL_AND_OUTLINE,
         pixelOffset: new Cesium.Cartesian2(0, -18),
-        disableDepthTestDistance: Number.POSITIVE_INFINITY,
+        disableDepthTestDistance: 0,
         show: showLabel,
       };
     });
@@ -208,6 +208,8 @@
     viewer.scene.globe.show = true;
     viewer.scene.globe.enableLighting = true;
     viewer.scene.globe.showGroundAtmosphere = true;
+    viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString("#0c1620");
+    if (viewer.scene.globe.translucency) viewer.scene.globe.translucency.enabled = false;
     viewer.scene.fog.enabled = true;
     viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#07080c");
     if (viewer.scene.skyAtmosphere) {
