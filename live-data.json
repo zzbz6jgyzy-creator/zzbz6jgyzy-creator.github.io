@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T11:17:00+01:00",
+ "updated": "2026-10-14T01:40:00+01:00",
  "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
  "events": [
   {
@@ -42,19 +42,18 @@
    "id": "tesla-roadster-demo",
    "title": "Tesla Roadster reveal",
    "page": "tesla",
-   "start": "2026-10-15T00:00:00-07:00",
-   "end": "2026-10-15T23:59:00-07:00",
-   "timeTbc": true,
+   "start": "2026-10-15T19:55:00-05:00",
+   "end": "2026-10-15T21:55:00-05:00",
    "status": "scheduled",
    "provider": "x",
    "embedId": "",
    "postUrl": "",
    "fallbackUrl": "https://x.com/Tesla",
    "fallbackLabel": "Watch on X",
-   "source": "https://x.com/Tesla/status/2104647484169728442",
+   "source": "https://x.com/Tesla",
    "image": "/assets/live/roadster.jpg",
    "imageCredit": "2020 Roadster prototype · Photo: Smnt, Wikimedia Commons, CC BY-SA 4.0",
-   "description": "Tesla's next-generation Roadster, first shown in 2017, gets its live demo near Waco, Texas. Tesla moved it from 1 October because the event can only be held outdoors and severe weather was forecast. Tesla hasn't posted a start time or stream yet; this switches to LIVE as soon as the official stream is up.",
+   "description": "Tesla's next-generation Roadster, first shown in 2017, gets its live demo near Waco, Texas. Tesla moved it from 1 October because the event can only be held outdoors and severe weather was forecast. Tesla on X: streaming live Thursday 15 Oct at 7:55pm CDT. This switches to LIVE as soon as the official stream is up.",
    "descSource": "https://x.com/Tesla/status/2104647484169728442",
    "featured": true
   },
