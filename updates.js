@@ -192,6 +192,14 @@
     return parts.length ? parts.join(" · ") : null;
   };
 
+  const naFsdRow = (raw) => (raw || []).find((row) => row.fsdHw4);
+  const euFsdRow = (raw) =>
+    (raw || []).find((row) => {
+      const feats = (row.features || []).map(featureText);
+      const eu = (row.countries || []).some((code) => EUROPE_ZOOM.has(code));
+      return isFsdRow(row, feats) && eu && !row.fsdHw4;
+    });
+
   const liveStatus = (row) => {
     const percent = Number(row.percent) || 0;
     const countries = row.countries || [];
@@ -238,6 +246,7 @@
         count: row.count,
         percent: row.percent,
         lastSeen: row.lastSeen,
+        pending: row.pending || 0,
       },
     };
   };
@@ -286,13 +295,8 @@
     const latestId = reported || bundle.live?.latest;
     const latest = (latestId && versions.find((row) => row.id === latestId)) || versions[0];
     const widest = raw.slice().sort((a, b) => (b.percent || 0) - (a.percent || 0) || (b.count || 0) - (a.count || 0))[0];
-    const na = raw.find((row) => row.fsdHw4);
-    const europeCodes = new Set(["NL", "BE", "DE", "FR", "IE", "GB", "IT", "ES", "PT", "AT", "CH", "DK", "NO", "SE", "FI", "PL", "CZ", "SK", "SI", "LT", "EE", "HR", "HU", "GR"]);
-    const europe = raw.find((row) => {
-      const feats = (row.features || []).map(featureText);
-      const eu = (row.countries || []).some((code) => europeCodes.has(code));
-      return isFsdRow(row, feats) && eu && !row.fsdHw4;
-    });
+    const na = naFsdRow(raw);
+    const europe = euFsdRow(raw);
     setText("stat-latest", latest?.id || "—");
     setText("stat-wide", widest?.id || "—");
     setText("stat-fsd-na", na?.fsdHw4 || "—");
@@ -315,6 +319,7 @@
         now.textContent = curated.fsdNow?.lines?.[3] || "";
       }
     }
+    renderLanes(bundle);
   };
 
   const project = (lon, lat) => ({
@@ -982,6 +987,7 @@
   const empty = document.getElementById("updates-empty");
 
   let countryCode = "";
+  let garageCountryCode = "";
   let kind = "all";
   let model = "";
   let featureQuery = "";
@@ -1016,10 +1022,30 @@
     if (titles.length) return `New: ${titles.join(", ")}.`;
     return version.headline || "";
   };
+  const reportedLatestId = (bundle) => {
+    const vnum = (id) => String(id || "").split(".").map((n) => parseInt(n, 10) || 0);
+    const vcmp = (a, b) => {
+      const x = vnum(a);
+      const y = vnum(b);
+      for (let i = 0; i < Math.max(x.length, y.length); i++) {
+        const d = (x[i] || 0) - (y[i] || 0);
+        if (d) return d;
+      }
+      return 0;
+    };
+    const reported = (bundle.live?.versions || [])
+      .filter((row) => (row.count || 0) > 0)
+      .map((row) => row.id)
+      .sort(vcmp)
+      .pop();
+    return reported || bundle.live?.latest;
+  };
+
   const renderHero = (bundle) => {
     const el = document.getElementById("updates-hero");
     if (!el) return;
-    const latest = (bundle.live?.latest && bundle.versions.find((r) => r.id === bundle.live.latest)) || bundle.versions[0];
+    const latestId = reportedLatestId(bundle);
+    const latest = (latestId && bundle.versions.find((r) => r.id === latestId)) || bundle.versions[0];
     if (!latest) return;
     const raw = bundle.live?.versions?.find((r) => r.id === latest.id);
     const spotted = raw?.firstSeen || latest.date;
@@ -1032,6 +1058,7 @@
         <div><dt>Cars</dt><dd>${escapeHtml(carsLine(latest))}</dd></div>
         ${latest.fsd ? `<div><dt>FSD</dt><dd>${escapeHtml(latest.fsd)}</dd></div>` : ""}
         ${places.length ? `<div><dt>Tracked cars seen in</dt><dd>${escapeHtml(places.join(", "))}</dd></div>` : ""}
+        ${raw?.pending ? `<div><dt>Waiting</dt><dd>${raw.pending} cars queued</dd></div>` : ""}
       </dl>
       <p class="tracker-hero-what">${escapeHtml(plainWhatsNew(latest))}</p>
       <a class="tracker-hero-link" href="#build-${latest.id.replace(/\./g, "-")}" data-hero-open="${escapeHtml(latest.id)}">See full details ↓</a>`;
@@ -1049,6 +1076,192 @@
     return hay.includes(featureQuery.toLowerCase());
   };
 
+  const ago = (iso) => {
+    const t = Date.parse(iso);
+    if (!Number.isFinite(t)) return "";
+    const mins = Math.max(0, Math.round((Date.now() - t) / 60000));
+    if (mins < 1) return "just now";
+    if (mins < 60) return `${mins}m ago`;
+    const hours = Math.round(mins / 60);
+    if (hours < 36) return `${hours}h ago`;
+    return formatDate(iso);
+  };
+
+  const carName = () => {
+    if (!model) return "any Tesla";
+    const [m, hw] = model.split("|");
+    const name = m === "Cybertruck" ? "Cybertruck" : `Model ${m}`;
+    return hw ? `${name} ${hw}` : name;
+  };
+
+  const FLEET_COLORS = ["#e31937", "#ff8a4c", "#e2a06a", "#8aa0bc", "#5ad0ff", "#b7bcc6", "#6b7280", "#3f4450"];
+
+  const renderLanes = (bundle) => {
+    const el = document.getElementById("updates-lanes");
+    if (!el) return;
+    const raw = bundle.live?.versions || [];
+    const na = naFsdRow(raw);
+    const europe = euFsdRow(raw);
+    const items = [];
+    if (na?.fsdHw4) items.push({ label: "North America · HW4", value: na.fsdHw4, id: na.id, hint: na.id });
+    if (na?.fsdHw3) items.push({ label: "North America · HW3", value: na.fsdHw3, id: na.id, hint: na.id });
+    if (europe) items.push({ label: "Europe FSD", value: europe.fsd || europe.id, id: europe.id, hint: europe.id });
+    el.replaceChildren();
+    items.forEach((item) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `ut-lane${versionQuery && norm(versionQuery) === norm(item.id) ? " is-on" : ""}`;
+      btn.innerHTML = `<span>${escapeHtml(item.label)}</span><b>${escapeHtml(item.value)}</b><em>${escapeHtml(item.hint)}</em>`;
+      btn.addEventListener("click", () => {
+        if (norm(versionQuery) === norm(item.id)) applyVersionChoice("");
+        else applyVersionChoice(item.id);
+        rerender();
+        document.getElementById("map")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      el.append(btn);
+    });
+  };
+
+  const renderGarage = (bundle) => {
+    const box = document.getElementById("updates-garage-out");
+    if (!box) return;
+    const country = garageCountryCode ? curated.countries.find((c) => c.code === garageCountryCode) : null;
+    if (!model && !country) {
+      box.innerHTML = "<p>Pick a car and a country. I’ll say what’s been seen on cars like yours, and what is still US-only.</p>";
+      return;
+    }
+    const mine = bundle.versions.filter(matchModel);
+    const here = country ? mine.filter((v) => (v.countries || []).includes(country.code)) : mine;
+    const newest = here[0];
+    const raw = bundle.live?.versions || [];
+    const common = country
+      ? raw
+          .filter((r) => (r.countryCounts?.[country.code] || 0) > 0)
+          .sort((a, b) => (b.countryCounts[country.code] || 0) - (a.countryCounts[country.code] || 0))[0]
+      : null;
+    const na = naFsdRow(raw);
+    const europe = euFsdRow(raw);
+    const inEu = country && EUROPE_ZOOM.has(country.code);
+    const bits = [];
+    if (newest) {
+      bits.push(
+        `<p>Newest seen${country ? ` in <strong>${escapeHtml(country.name)}</strong>` : ""} on <strong>${escapeHtml(carName())}</strong>: <b>${escapeHtml(newest.id)}</b> — ${escapeHtml(plainWhatsNew(newest))}</p>`
+      );
+    } else if (country) {
+      bits.push(
+        `<p>No tracked <strong>${escapeHtml(carName())}</strong> in <strong>${escapeHtml(country.name)}</strong> is on a build I have notes for yet.</p>`
+      );
+    }
+    if (common && common.id !== newest?.id) {
+      const n = common.countryCounts[country.code];
+      bits.push(
+        `<p>Most common there right now: <b>${escapeHtml(common.id)}</b> · ${n} tracked car${n === 1 ? "" : "s"}.</p>`
+      );
+    }
+    if (inEu && europe) {
+      bits.push(`<p>Europe FSD is still <b>${escapeHtml(europe.fsd || europe.id)}</b>. Collision Evasion is North America only.</p>`);
+    } else if (!inEu && na) {
+      bits.push(`<p>North America FSD on HW4 is <b>${escapeHtml(na.fsdHw4)}</b>${na.fsdHw3 ? ` · HW3 ${escapeHtml(na.fsdHw3)}` : ""}.</p>`);
+    }
+    if (newest) {
+      bits.push(
+        `<div class="ut-garage-actions"><button type="button" class="tracker-more" data-garage-show="${escapeHtml(newest.id)}">Show ${escapeHtml(newest.id)} on the globe</button></div>`
+      );
+    }
+    box.innerHTML = bits.join("");
+    box.querySelector("[data-garage-show]")?.addEventListener("click", () => {
+      applyVersionChoice(newest.id);
+      if (garageCountryCode) setCountry(garageCountryCode, true);
+      rerender();
+      document.getElementById("map")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  const renderFleet = (bundle) => {
+    const bar = document.getElementById("updates-fleet-bar");
+    const keys = document.getElementById("updates-fleet-keys");
+    const cap = document.getElementById("updates-fleet-cap");
+    if (!bar || !keys) return;
+    const rows = (bundle.live?.versions || [])
+      .filter((r) => (r.percent || 0) > 0)
+      .sort((a, b) => (b.percent || 0) - (a.percent || 0))
+      .slice(0, 8);
+    const fleet = bundle.live?.fleet;
+    const waiting = (bundle.live?.versions || []).reduce((sum, row) => sum + (row.pending || 0), 0);
+    if (cap && fleet) {
+      cap.textContent = waiting
+        ? `${fleet.toLocaleString("en-GB")} connected cars · ${waiting.toLocaleString("en-GB")} waiting to install.`
+        : `${fleet.toLocaleString("en-GB")} connected cars in the last snapshot.`;
+    }
+    bar.replaceChildren();
+    keys.replaceChildren();
+    rows.forEach((row, i) => {
+      const color = FLEET_COLORS[i % FLEET_COLORS.length];
+      const slice = document.createElement("i");
+      slice.style.width = `${Math.max(row.percent, 0.6)}%`;
+      slice.style.background = color;
+      slice.title = `${row.id} · ${row.percent}%`;
+      bar.append(slice);
+      const li = document.createElement("li");
+      li.innerHTML = `<i style="background:${color}"></i><button type="button">${escapeHtml(row.id)}</button><b>${row.percent}%${
+        row.pending ? ` · ${row.pending} waiting` : ""
+      }</b>`;
+      li.querySelector("button")?.addEventListener("click", () => {
+        applyVersionChoice(row.id);
+        rerender();
+        document.getElementById("map")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      keys.append(li);
+    });
+    const family = document.getElementById("updates-family");
+    if (family) {
+      const groups = new Map();
+      (bundle.live?.versions || []).forEach((row) => {
+        const fam = String(row.id || "").split(".").slice(0, 2).join(".") || "other";
+        groups.set(fam, (groups.get(fam) || 0) + (Number(row.percent) || 0));
+      });
+      const ranked = [...groups.entries()].sort((a, b) => b[1] - a[1]);
+      const top = ranked.slice(0, 4);
+      const other = ranked.slice(4).reduce((sum, [, pct]) => sum + pct, 0);
+      const bits = top.map(([id, pct]) => `${id} ${pct.toFixed(0)}%`);
+      if (other >= 4) bits.push(`other ${other.toFixed(0)}%`);
+      family.textContent = bits.length ? `Of this snapshot · ${bits.join(" · ")}` : "";
+    }
+  };
+
+  const renderPulse = (bundle) => {
+    const ol = document.getElementById("updates-pulse");
+    if (!ol) return;
+    const rows = (bundle.live?.versions || [])
+      .filter((r) => r.lastSeen && (r.count || 0) > 0)
+      .slice()
+      .sort((a, b) => String(b.lastSeen).localeCompare(String(a.lastSeen)))
+      .slice(0, 7);
+    ol.replaceChildren();
+    rows.forEach((row) => {
+      const top = Object.entries(row.countryCounts || {}).sort((a, b) => b[1] - a[1])[0];
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${escapeHtml(row.id)}</strong><time datetime="${escapeHtml(row.lastSeen)}">${escapeHtml(ago(row.lastSeen))}</time><em>${
+        top ? `${escapeHtml(countryName(top[0]))} · ${row.count} cars` : `${row.count} cars`
+      }</em>`;
+      li.tabIndex = 0;
+      li.setAttribute("role", "button");
+      const openPulse = () => {
+        applyVersionChoice(row.id);
+        rerender();
+        document.getElementById("map")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+      li.addEventListener("click", openPulse);
+      li.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openPulse();
+        }
+      });
+      ol.append(li);
+    });
+  };
+
   const syncStatButtons = () => {
     document.querySelectorAll("[data-updates-stat]").forEach((btn) => {
       const on = Boolean(versionQuery && btn.dataset.version && norm(btn.dataset.version) === norm(versionQuery));
@@ -1059,10 +1272,9 @@
 
   const setCountry = (code, fillQuery) => {
     countryCode = code || "";
-    if (fillQuery && search) {
-      const row = curated.countries.find((c) => c.code === countryCode);
-      search.value = row ? row.name : "";
-    }
+    const row = curated.countries.find((c) => c.code === countryCode);
+    const name = row ? row.name : "";
+    if (fillQuery && search) search.value = name;
   };
 
   const availability = (version, country) => {
@@ -1110,7 +1322,7 @@
     visibleRows.forEach(({ version, avail }) => {
       const article = document.createElement("article");
       const on = versionQuery && norm(version.id) === norm(versionQuery);
-      const open = on || expandedId === version.id || Boolean(featureQuery);
+      const open = on || expandedId === version.id;
       article.className = `tracker-card${avail.key === "away" ? " is-away" : ""}${on ? " is-on" : ""}${open ? " is-open" : ""}`;
       article.id = `build-${version.id.replace(/\./g, "-")}`;
       const places = (version.countries || []).slice(0, 5).map(countryName);
@@ -1130,6 +1342,7 @@
           <div><dt>First spotted</dt><dd>${escapeHtml(formatDate(version.date))}</dd></div>
           ${places.length ? `<div><dt>Tracked cars seen in</dt><dd>${escapeHtml(places.join(", "))}${extra > 0 ? ` +${extra}` : ""}</dd></div>` : ""}
           ${fleet ? `<div><dt>Share</dt><dd>${escapeHtml(fleet)}</dd></div>` : ""}
+          ${version.live?.pending ? `<div><dt>Waiting</dt><dd>${version.live.pending} queued</dd></div>` : ""}
         </dl>
         ${avail.label ? `<p class="updates-avail updates-avail-${avail.key}">${escapeHtml(avail.label)}</p>` : ""}
         <button type="button" class="tracker-more" aria-expanded="${open}" aria-controls="${bodyId}">${open ? "Less" : "More"}</button>
@@ -1156,9 +1369,13 @@
     } else if (versionQuery) {
       setText("updates-showing", `${rows.length} matching ${versionQuery}`);
     } else {
-      setText("updates-showing", `${rows.length} versions`);
+      setText("updates-showing", model ? `${rows.length} versions · ${carName()}` : `${rows.length} versions`);
     }
     if (empty) empty.hidden = rows.length > 0;
+    renderGarage(bundle);
+    renderFleet(bundle);
+    renderPulse(bundle);
+    renderLanes(bundle);
     const moreBtn = document.getElementById("updates-show-all");
     if (moreBtn) {
       moreBtn.hidden = filtering || rows.length <= SHOW_LIMIT;
@@ -1235,6 +1452,48 @@
   if (featureInput) {
     featureInput.addEventListener("input", () => {
       featureQuery = featureInput.value.trim();
+      rerender();
+    });
+  }
+
+  const garageCountry = document.getElementById("updates-garage-country");
+  if (garageCountry) {
+    garageCountry.addEventListener("input", () => {
+      const found = matchCountry(garageCountry.value);
+      garageCountryCode = found ? found.code : "";
+      renderGarage(current);
+    });
+  }
+
+  const omni = document.getElementById("updates-omni");
+  if (omni) {
+    omni.addEventListener("input", () => {
+      const q = omni.value.trim();
+      if (!q) {
+        featureQuery = "";
+        if (featureInput) featureInput.value = "";
+        rerender();
+        return;
+      }
+      if (/^\d{4}\.\d+/.test(q)) {
+        applyVersionChoice(q);
+        featureQuery = "";
+        if (featureInput) featureInput.value = "";
+        rerender();
+        return;
+      }
+      const found = matchCountry(q);
+      if (found && q.length >= 3) {
+        setCountry(found.code, true);
+        garageCountryCode = found.code;
+        if (garageCountry) garageCountry.value = found.name;
+        featureQuery = "";
+        if (featureInput) featureInput.value = "";
+        rerender();
+        return;
+      }
+      featureQuery = q;
+      if (featureInput) featureInput.value = q;
       rerender();
     });
   }
