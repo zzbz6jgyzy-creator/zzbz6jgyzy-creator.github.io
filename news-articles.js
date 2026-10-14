@@ -26,10 +26,27 @@
       <div class="art-copy"><p class="art-meta"><span class="art-tag">${esc(a.tag || TOPICS[a.topic] || "Dispatch")}</span><time datetime="${esc(a.date)}">${esc(time(new Date(a.date)))}</time></p>
       <h3>${esc(a.title)}</h3>${a.summary ? `<p>${esc(a.summary)}</p>` : ""}</div></a>`;
 
+  // Signup box lives inside the story list as a full-width break after the first row.
+  const nl = document.getElementById("newsletter"), nlSec = nl && nl.closest("section");
+  if (nl) { nl.classList.add("art-nl"); nl.remove(); if (nlSec && !nlSec.querySelector("*")) nlSec.remove(); }
+  function placeNl() {
+    if (!nl) return;
+    const cards = list.querySelectorAll(".art-grid > *");
+    let n = 3;
+    if (!matchMedia("(max-width:720px)").matches) {
+      const g = list.querySelector(".art-grid");
+      const cols = g ? getComputedStyle(g).gridTemplateColumns.split(" ").filter(Boolean).length : 3;
+      n = Math.max(3, Math.min(4, cols));
+    }
+    const after = cards[Math.min(n, cards.length) - 1];
+    if (after) after.after(nl); else list.append(nl);
+  }
+  let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(placeNl, 150); });
   function render() {
+    if (nl) nl.remove();
     const pool = all.filter((a) => topic === "all" || a.topic === topic);
     const L = pool.find((a) => a.pinned) || pool[0];
-    if (!L) { lead.innerHTML = ""; list.innerHTML = '<p class="art-empty">No stories in this topic yet.</p>'; more.hidden = true; return; }
+    if (!L) { lead.innerHTML = ""; list.innerHTML = '<p class="art-empty">No stories in this topic yet.</p>'; more.hidden = true; placeNl(); return; }
     const d = new Date(L.date);
     lead.innerHTML = `<a class="art-lead art-${esc(L.topic)}" href="${esc(L.url)}">
       <div class="art-lead-media">${L.image ? `<img src="${esc(L.image)}" alt="" decoding="async" fetchpriority="high" />` : ""}</div>
@@ -44,6 +61,7 @@
     });
     if (g !== null) html += "</div>";
     list.innerHTML = html;
+    placeNl();
     more.hidden = rest.length <= shown;
     if (count) count.textContent = `${pool.length} ${pool.length === 1 ? "story" : "stories"}`;
   }
