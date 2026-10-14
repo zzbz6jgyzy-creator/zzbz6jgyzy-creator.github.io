@@ -6,8 +6,8 @@
   const ESRI_URL = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer";
   const ESRI_CREDIT =
     "Powered by Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community";
-  const WORLD_RECT = [-180, -56, 180, 84];
-  const EUROPE = { lon: 10.2, lat: 51.2, height: 2.85e6, pitch: -90 };
+  const WORLD = { lon: -8, lat: 22, height: 1.78e7, pitch: -87 };
+  const EUROPE = { lon: 10.2, lat: 49, height: 3.55e6, pitch: -74 };
   const COLORS = {
     hot: [227, 25, 55, 255],
     warm: [255, 138, 76, 255],
@@ -42,19 +42,6 @@
     flying = false;
   };
 
-  const goRect = (rect, animate) => {
-    if (!viewer) return;
-    flying = true;
-    const Cesium = window.Cesium;
-    const dest = Cesium.Rectangle.fromDegrees(rect[0], rect[1], rect[2], rect[3]);
-    if (!animate || reduce()) {
-      viewer.camera.setView({ destination: dest });
-      doneFly();
-      return;
-    }
-    viewer.camera.flyTo({ destination: dest, duration: duration(true), complete: doneFly, cancel: doneFly });
-  };
-
   const lookAt = (pose, animate) => {
     if (!viewer) return;
     flying = true;
@@ -62,7 +49,7 @@
     const dest = Cesium.Cartesian3.fromDegrees(pose.lon, pose.lat, pose.height);
     const orientation = {
       heading: 0,
-      pitch: Cesium.Math.toRadians(pose.pitch ?? -90),
+      pitch: Cesium.Math.toRadians(pose.pitch ?? -78),
       roll: 0,
     };
     if (!animate || reduce()) {
@@ -125,6 +112,7 @@
         color: color(spot.heat),
         outlineColor: on ? Cesium.Color.WHITE : Cesium.Color.fromBytes(12, 13, 16, 220),
         outlineWidth: on ? 3 : 1.4,
+        scaleByDistance: new Cesium.NearFarScalar(6.0e5, 1.45, 2.2e7, 0.72),
         disableDepthTestDistance: Number.POSITIVE_INFINITY,
       };
       const inEurope = ll[0] > -12 && ll[0] < 32 && ll[1] > 34 && ll[1] < 72;
@@ -215,26 +203,35 @@
       return;
     }
     viewer.targetFrameRate = 60;
+    viewer.clock.shouldAnimate = false;
+    viewer.clock.currentTime = Cesium.JulianDate.fromIso8601("2026-06-21T14:00:00Z");
     viewer.scene.globe.show = true;
-    viewer.scene.globe.enableLighting = false;
-    viewer.scene.globe.showGroundAtmosphere = false;
-    viewer.scene.fog.enabled = false;
+    viewer.scene.globe.enableLighting = true;
+    viewer.scene.globe.showGroundAtmosphere = true;
+    viewer.scene.fog.enabled = true;
     viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#07080c");
-    if (viewer.scene.skyAtmosphere) viewer.scene.skyAtmosphere.show = false;
-    if (viewer.scene.sun) viewer.scene.sun.show = false;
+    if (viewer.scene.skyAtmosphere) {
+      viewer.scene.skyAtmosphere.show = true;
+      viewer.scene.skyAtmosphere.atmosphereLightIntensity = 18;
+      viewer.scene.skyAtmosphere.saturationShift = -0.12;
+      viewer.scene.skyAtmosphere.brightnessShift = -0.08;
+    }
+    if (viewer.scene.sun) viewer.scene.sun.show = true;
     if (viewer.scene.moon) viewer.scene.moon.show = false;
     if (viewer.scene.skyBox) viewer.scene.skyBox.show = false;
     const control = viewer.scene.screenSpaceCameraController;
-    control.enableTilt = false;
+    control.enableTilt = true;
     control.enableLook = false;
-    control.enableRotate = false;
+    control.enableRotate = true;
     control.enableTranslate = true;
     control.enableZoom = true;
+    control.minimumZoomDistance = 4.5e5;
+    control.maximumZoomDistance = 3.8e7;
     if (credit) credit.hidden = false;
     try {
-      viewer.scene.morphTo2D(0);
+      viewer.scene.morphTo3D(0);
     } catch {
-      /* 3D nadir view still works */
+      /* already 3D */
     }
     try {
       await addImagery();
@@ -247,7 +244,7 @@
     }
     bindPicks();
     showGlobe();
-    goRect(WORLD_RECT, false);
+    lookAt(WORLD, false);
     setMode("world");
     if (queued) paint(queued);
     viewer.resize();
@@ -258,6 +255,7 @@
   api.ready = false;
   api.active = () => Boolean(viewer);
   api.mode = () => mode;
+  api.sceneMode = () => viewer?.scene?.mode;
   api.setSpots = (spots, focus, points) => {
     queued = { spots, focus, points };
     paint(queued);
@@ -269,7 +267,7 @@
   };
   api.flyWorld = (animate = true) => {
     setMode("world");
-    goRect(WORLD_RECT, animate);
+    lookAt(WORLD, animate);
     if (queued) paint(queued);
   };
   api.flyEurope = (animate = true) => {
