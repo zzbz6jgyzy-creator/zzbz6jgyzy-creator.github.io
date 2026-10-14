@@ -46,7 +46,10 @@
       // Lead with the newest of the top 5 that has its own image, so the picture matches the story
       const lead = items.slice(0, 5).findIndex((it) => /^https:\/\//.test(it.image || ""));
       if (lead > 0) items.unshift(items.splice(lead, 1)[0]);
+      const pinned = card.hasAttribute("data-pinned");
+      if (pinned) items.unshift(null);
       const top = items[0];
+      if (!pinned) {
       card.href = top.url; card.target = "_blank"; card.rel = "noopener noreferrer";
       card.querySelector("[data-top-tag]").textContent = label[top.topic] || "News";
       card.querySelector("[data-top-title]").textContent = clean(top.title);
@@ -60,6 +63,7 @@
       pic.referrerPolicy = "no-referrer";
       pic.src = own || fallback;
       pic.alt = clean(top.title);
+      }
       if (more) {
         more.replaceChildren(...items.slice(1, 4).map((it) => {
           const a = document.createElement("a");
