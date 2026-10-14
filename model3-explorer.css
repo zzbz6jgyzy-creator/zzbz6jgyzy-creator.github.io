@@ -86,3 +86,82 @@ a{color:#ff7a88}
 }
 @media (prefers-reduced-motion:reduce){.m3x-card,.m3x-bar .m3x-primary{animation:none}}
 .m3x-card[hidden]{display:none!important}
+/* ---- v3 premium polish (UI only; scene untouched) ---- */
+:root{--m3x-red:#e11d2e;--m3x-glass:rgba(12,12,15,.72);--m3x-line:rgba(255,255,255,.09)}
+.m3x{background:radial-gradient(90% 70% at 50% 40%,#121216 0%,#060607 70%)}
+.m3x-top{padding-top:max(18px,env(safe-area-inset-top));padding-left:24px}
+.m3x-title{max-width:560px;animation:m3xRise .7s cubic-bezier(.2,.8,.2,1) both}
+.m3x-title p:first-child{display:inline-flex;align-items:center;gap:.5rem}
+.m3x-title p:first-child::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--m3x-red);box-shadow:0 0 10px var(--m3x-red);animation:m3xBlink 2.4s ease-in-out infinite}
+.m3x-title h1{font-size:clamp(1.15rem,2.3vw,2rem);text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.m3x-title .m3x-intro{font:400 .82rem/1.5 Inter,system-ui,sans-serif;max-width:40ch!important;letter-spacing:0;text-transform:none;margin:.45rem 0 0;font-size:.82rem;line-height:1.5;color:#a9a9b2;max-width:36ch}
+.m3x-intro b{color:#fff;font-weight:600}
+.m3x-ready .m3x-intro{animation:m3xFadeOut .6s 7s forwards}
+@keyframes m3xRise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes m3xBlink{50%{opacity:.35}}
+@keyframes m3xFadeOut{to{opacity:0;visibility:hidden}}
+/* loading */
+.m3x-poster{opacity:1;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6));animation:m3xBreath 3s ease-in-out infinite}
+@keyframes m3xBreath{50%{transform:scale(1.015)}}
+.m3x-status:not(:empty){top:auto;bottom:118px;padding:.5rem .95rem .5rem 2.1rem;border-radius:999px;background:var(--m3x-glass);border:1px solid var(--m3x-line);backdrop-filter:blur(10px);color:#d4d4da;font-size:.72rem;letter-spacing:.06em;white-space:nowrap}
+.m3x-status:not(:empty)::before{content:"";position:absolute;left:.85rem;top:50%;width:11px;height:11px;margin-top:-6.5px;border-radius:50%;border:2px solid rgba(255,255,255,.18);border-top-color:var(--m3x-red);animation:m3xSpin .8s linear infinite}
+.m3x-ready .m3x-status::before,.m3x-failed .m3x-status::before{display:none}
+.m3x-failed .m3x-status{padding-left:.95rem}
+@keyframes m3xSpin{to{transform:rotate(360deg)}}
+.m3x-loadbar{height:3px;box-shadow:0 0 12px rgba(225,29,46,.8)}
+/* parts panel */
+.m3x-panel{width:264px;background:var(--m3x-glass);border-color:var(--m3x-line);border-radius:18px;backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 20px 50px rgba(0,0,0,.45);animation:m3xRise .7s .15s cubic-bezier(.2,.8,.2,1) both}
+.m3x-panel-head{padding:1rem 1.1rem .65rem;border-bottom:1px solid var(--m3x-line);margin-bottom:.4rem}
+.m3x-panel-head b{font:400 .78rem Michroma,Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.m3x-panel-head span{font:500 .6rem "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#7c7c86}
+.m3x-list{counter-reset:p;scrollbar-width:thin;scrollbar-color:#333 transparent}
+.m3x-list button{counter-increment:p;font-size:.82rem;transition:background .2s,color .2s,transform .2s}
+.m3x-list button::before{content:counter(p,decimal-leading-zero);font:500 .62rem "IBM Plex Mono",monospace;color:#5d5d66;width:1.3rem;flex:none}
+.m3x-list button:hover{transform:translateX(2px)}
+.m3x-list button[aria-current="true"]::before{color:#ff7a88}
+.m3x-list i{font-size:.55rem}
+/* control bar */
+.m3x-bar{background:var(--m3x-glass);border-color:var(--m3x-line);backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 18px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);animation:m3xRise .7s .25s cubic-bezier(.2,.8,.2,1) both}
+.m3x-bar button{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);transition:border-color .2s,background .2s,transform .15s}
+.m3x-bar button:hover{background:rgba(255,255,255,.08)}
+.m3x-bar button:active{transform:scale(.96)}
+.m3x-bar .m3x-primary{background:linear-gradient(180deg,#f0293b,#c9142a);border-color:transparent}
+.m3x-bar button:focus-visible,.m3x-list button:focus-visible,.m3x-x:focus-visible{outline:2px solid #ff7a88;outline-offset:2px}
+.m3x-range{padding:0 .4rem}
+/* info card */
+.m3x-card{left:24px;top:132px;width:min(400px,calc(100vw - 340px));max-height:calc(100svh - 230px);background:rgba(12,12,15,.86);border:1px solid var(--m3x-line);border-left:0;box-shadow:0 24px 60px rgba(0,0,0,.55);backdrop-filter:blur(16px) saturate(1.2);scrollbar-width:thin;scrollbar-color:#333 transparent}
+.m3x-card::before{content:"";position:sticky;top:0;display:block;height:2px;margin-bottom:-2px;background:linear-gradient(90deg,var(--m3x-red),transparent);z-index:3}
+.m3x-photo img{aspect-ratio:16/9;border-radius:16px 16px 0 0}
+.m3x-cbody{padding:1rem 1.2rem 1.25rem}
+.m3x-card h2{font:400 1.05rem/1.3 Michroma,Inter,sans-serif;letter-spacing:.01em;margin:.25rem 0 .55rem}
+.m3x-specs > div{border-top-color:var(--m3x-line)}
+.m3x-x{backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15)!important;transition:transform .2s}
+.m3x-x:hover{transform:rotate(90deg)}
+.m3x-credit{font-size:.58rem;max-width:400px;opacity:.85}
+.m3x-has-card .m3x-intro{opacity:0;transition:opacity .3s}
+@media (min-width:2200px){
+  .m3x-top{padding-left:48px;padding-top:40px}.m3x-title{max-width:640px}
+  .m3x-title h1{font-size:2.6rem}.m3x-title p{font-size:.85rem}.m3x-title .m3x-intro{font-size:1.05rem}
+  .m3x-panel{width:340px;right:40px;top:120px;bottom:130px}.m3x-list button{font-size:1rem;min-height:50px}.m3x-panel-head b{font-size:.95rem}
+  .m3x-card{left:48px;top:230px;width:520px;max-height:calc(100svh - 380px)}
+  .m3x-bar{zoom:1.35}.m3x-credit{right:40px;font-size:.75rem;max-width:560px}
+}
+@media (max-width:900px),(pointer:coarse){
+  .m3x-top{padding-left:14px;padding-right:76px}
+  .m3x-title h1{font-size:1.05rem}
+  .m3x-title .m3x-intro{font-size:.74rem;max-width:30ch}
+  .m3x-panel{width:auto;right:0;top:auto;bottom:0;animation:none;border-radius:20px 20px 0 0}
+  .m3x-panel-head{position:relative;padding-top:1.2rem}
+  .m3x-panel-head::before{content:"";position:absolute;left:50%;top:7px;width:38px;height:4px;margin-left:-19px;border-radius:4px;background:rgba(255,255,255,.2)}
+  .m3x-list button::before{width:1.1rem}
+  .m3x-card{left:0;right:0;top:auto;width:auto;max-height:58svh;border-left:0;backdrop-filter:blur(18px)}
+  .m3x-card::before{display:none}
+  .m3x-photo img{aspect-ratio:2.2/1}
+  .m3x-status:not(:empty){bottom:104px}
+  .m3x-bar{bottom:max(28px,calc(env(safe-area-inset-bottom) + 18px))}
+}
+/* phones in portrait: the 16:10 poster is mostly empty floor, so scale it up to match the car's on-screen size */
+@media (orientation:portrait) and (max-width:700px){
+  .m3x-poster{object-fit:contain;transform:scale(1.65);transform-origin:50% 50%;animation:none}
+}
+@media (prefers-reduced-motion:reduce){.m3x-title,.m3x-panel,.m3x-bar,.m3x-poster,.m3x-title p::before,.m3x-status::before{animation:none!important}.m3x-ready .m3x-intro{animation:none}}
