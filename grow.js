@@ -21,7 +21,7 @@
       <a class="sd-btn" href="${REF}" target="_blank" rel="noopener noreferrer sponsored">Order with my referral ↗</a>`;
     place(r);
   }
-  if (has("band") && !document.querySelector(".nl-end")) {
+  if (has("band") && !document.querySelector('.nl-end, #newsletter, [data-newsletter]:not(.sd-pop):not(.sd-band)')) {
     const b = document.createElement("section");
     b.className = "sd-band"; b.setAttribute("data-newsletter", "band"); b.setAttribute("aria-label", "Newsletter signup");
     b.innerHTML = `<div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>

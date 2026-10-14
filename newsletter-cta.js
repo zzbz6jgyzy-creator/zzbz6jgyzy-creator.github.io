@@ -32,6 +32,9 @@
     document.querySelectorAll(".sd-band").forEach((b) => b.remove()); // keep one signup block per page
     const js = document.createElement("script"); js.src = "/newsletter.js"; document.body.append(js);
   }
+  // Root-cause guard: if the page already has its own signup block, drop any extra sitewide band.
+  if (block) document.querySelectorAll(".sd-band").forEach((b) => { if (b !== block) b.remove(); });
+  else { const bands = document.querySelectorAll(".sd-band"); bands.forEach((b, i) => { if (i) b.remove(); }); }
   if (!block) block = document.querySelector(".sd-band");
   if (block && !document.getElementById("newsletter")) block.id = "newsletter";
   document.querySelectorAll("a.pn-sub").forEach((a) => {
