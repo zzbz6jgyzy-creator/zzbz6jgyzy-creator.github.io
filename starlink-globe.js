@@ -1,11 +1,16 @@
 /* Starlink Tracker globe. Same Cesium + Esri stack as the software tracker.
-   One dot per satellite still in orbit. Example shells, not live tracks. */
+   One marker per satellite still in orbit. Example shells, not live tracks. */
 (() => {
   const ESRI_URL = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer";
   const ESRI_CREDIT =
     "Powered by Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community";
   const RE = 6378137;
   const EXAG = 2.35;
+  const HOME_RANGE = 2.05e7;
+  const HOME_HEADING = 0.72;
+  const HOME_PITCH = -18;
+  const MIN_ZOOM = 1.2e5;
+  const MAX_ZOOM = 4.4e7;
   const SHELLS = {
     v10: [
       { inc: 53, alt: 550, w: 0.78 },
@@ -39,6 +44,7 @@
   let started = false;
   let placed = 0;
   let spinning = false;
+  let locked = false;
   let idleAt = 0;
   const reduce = () => window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
   const coarse = () => window.matchMedia?.("(pointer: coarse)")?.matches;
@@ -92,15 +98,15 @@
   const hexColor = (hex) => {
     const Cesium = window.Cesium;
     const c = Cesium.Color.fromCssColorString(hex) || Cesium.Color.WHITE;
-    c.alpha = 0.95;
+    c.alpha = 0.96;
     return c;
   };
 
   const dotSize = (n) => {
-    if (n >= 3000) return coarse() ? 1.35 : 1.2;
-    if (n >= 1500) return coarse() ? 1.55 : 1.4;
-    if (n >= 400) return coarse() ? 1.9 : 1.75;
-    return coarse() ? 3.1 : 2.8;
+    if (n >= 3000) return coarse() ? 1.55 : 1.45;
+    if (n >= 1500) return coarse() ? 1.8 : 1.65;
+    if (n >= 400) return coarse() ? 2.2 : 2.05;
+    return coarse() ? 3.4 : 3.15;
   };
 
   async function addImagery() {
@@ -132,6 +138,8 @@
     const Cesium = window.Cesium;
     if (!viewer || !data) return 0;
     const collection = viewer.scene.primitives.add(new Cesium.PointPrimitiveCollection());
+    const nearFar = new Cesium.NearFarScalar(4.8e4, 9.5, 1.95e7, 1);
+    const fade = new Cesium.NearFarScalar(3.2e4, 1, 2.35e7, 0.9);
     let n = 0;
     data.generations.forEach((g, gi) => {
       const shells = SHELLS[g.id] || [{ inc: 53, alt: 550, w: 1 }];
@@ -144,8 +152,11 @@
             position,
             color,
             pixelSize: size,
+            scaleByDistance: nearFar,
+            translucencyByDistance: fade,
             outlineColor: Cesium.Color.TRANSPARENT,
             outlineWidth: 0,
+            disableDepthTestDistance: 0,
           });
           n += 1;
         });
@@ -154,25 +165,57 @@
     return n;
   };
 
-  const look = () => {
+  const setReset = (on) => {
+    const btn = document.getElementById("sl-globe-reset");
+    if (btn) btn.hidden = !on;
+    wrap()?.classList.toggle("is-zoomed", on);
+  };
+
+  const setZoomLimits = () => {
+    if (!viewer) return;
+    const control = viewer.scene.screenSpaceCameraController;
+    control.minimumZoomDistance = locked ? RE + MIN_ZOOM : MIN_ZOOM;
+    control.maximumZoomDistance = MAX_ZOOM;
+  };
+
+  const lockHome = () => {
     const Cesium = window.Cesium;
     viewer.camera.lookAt(
       Cesium.Cartesian3.ZERO,
-      new Cesium.HeadingPitchRange(0.72, Cesium.Math.toRadians(-18), 2.05e7)
+      new Cesium.HeadingPitchRange(HOME_HEADING, Cesium.Math.toRadians(HOME_PITCH), HOME_RANGE)
     );
+    locked = true;
+    spinning = !reduce();
+    setZoomLimits();
+    setReset(false);
   };
 
-  const bindSpin = () => {
+  const unlock = () => {
+    if (!viewer || !locked) return;
+    viewer.camera.lookAtTransform(window.Cesium.Matrix4.IDENTITY);
+    locked = false;
+    spinning = false;
+    setZoomLimits();
+    setReset(true);
+  };
+
+  const bindControls = () => {
     const Cesium = window.Cesium;
     const canvas = viewer.scene.canvas;
-    const pause = () => {
-      spinning = false;
-      idleAt = performance.now() + 4500;
+    const onUse = () => {
+      unlock();
+      idleAt = performance.now() + 10000;
     };
-    canvas.addEventListener("pointerdown", pause);
-    canvas.addEventListener("wheel", pause, { passive: true });
+    canvas.addEventListener("pointerdown", onUse, { capture: true });
+    canvas.addEventListener("wheel", onUse, { passive: true, capture: true });
+    canvas.addEventListener("touchstart", onUse, { passive: true, capture: true });
+    document.getElementById("sl-globe-reset")?.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      lockHome();
+    });
     viewer.scene.preUpdate.addEventListener(() => {
-      if (reduce()) return;
+      if (reduce() || !locked) return;
       if (!spinning && performance.now() > idleAt) spinning = true;
       if (!spinning) return;
       viewer.camera.rotate(Cesium.Cartesian3.UNIT_Z, coarse() ? -0.0007 : -0.00105);
@@ -193,6 +236,41 @@
       cap.querySelector("[data-sl-count]")?.replaceChildren(document.createTextNode(n));
     }
     if (credit) credit.hidden = false;
+  };
+
+  const sharpen = () => {
+    const Cesium = window.Cesium;
+    const dpr = Math.min(window.devicePixelRatio || 1, coarse() ? 1.5 : 2);
+    viewer.resolutionScale = dpr;
+    viewer.scene.fxaa = true;
+    viewer.scene.globe.maximumScreenSpaceError = coarse() ? 1.55 : 1.05;
+    viewer.scene.globe.tileCacheSize = 400;
+    viewer.scene.globe.depthTestAgainstTerrain = true;
+    viewer.scene.globe.preloadAncestors = true;
+    viewer.scene.globe.preloadSiblings = true;
+    if (viewer.scene.fog) {
+      viewer.scene.fog.density = 2.2e-4;
+      viewer.scene.fog.screenSpaceErrorFactor = 2;
+    }
+    const control = viewer.scene.screenSpaceCameraController;
+    control.enableTilt = true;
+    control.enableLook = true;
+    control.enableRotate = true;
+    control.enableTranslate = true;
+    control.enableZoom = true;
+    control.enableCollisionDetection = true;
+    control.minimumZoomDistance = MIN_ZOOM;
+    control.maximumZoomDistance = MAX_ZOOM;
+    control.inertiaZoom = 0.82;
+    control.inertiaSpin = 0.88;
+    control.inertiaTranslate = 0.82;
+    control.minimumZoomRate = 80;
+    control.maximumZoomRate = 8.5e6;
+    control.zoomEventTypes = [
+      Cesium.CameraEventType.WHEEL,
+      Cesium.CameraEventType.PINCH,
+      Cesium.CameraEventType.RIGHT_DRAG,
+    ];
   };
 
   async function boot() {
@@ -216,7 +294,8 @@
         selectionIndicator: false,
         baseLayer: false,
         creditContainer: creditHost || undefined,
-        msaaSamples: coarse() ? 1 : 4,
+        msaaSamples: coarse() ? 2 : 4,
+        requestRenderMode: false,
       });
     } catch {
       started = false;
@@ -243,14 +322,7 @@
     if (viewer.scene.sun) viewer.scene.sun.show = true;
     if (viewer.scene.moon) viewer.scene.moon.show = false;
     if (viewer.scene.skyBox) viewer.scene.skyBox.show = false;
-    const control = viewer.scene.screenSpaceCameraController;
-    control.enableTilt = true;
-    control.enableLook = false;
-    control.enableRotate = true;
-    control.enableTranslate = false;
-    control.enableZoom = true;
-    control.minimumZoomDistance = 1.15e7;
-    control.maximumZoomDistance = 3.6e7;
+    sharpen();
     try {
       viewer.scene.morphTo3D(0);
     } catch {
@@ -265,8 +337,8 @@
       return;
     }
     placed = paint();
-    look();
-    bindSpin();
+    lockHome();
+    bindControls();
     show();
     viewer.resize();
     requestAnimationFrame(() => viewer?.resize());
@@ -277,6 +349,38 @@
   api.active = () => Boolean(viewer);
   api.count = () => placed;
   api.spinning = () => spinning;
+  api.locked = () => locked;
+  api.view = () => {
+    if (!viewer) return null;
+    const Cesium = window.Cesium;
+    const cart = viewer.camera.positionCartographic;
+    return {
+      height: cart.height,
+      range: Cesium.Cartesian3.magnitude(viewer.camera.positionWC),
+      lon: Cesium.Math.toDegrees(cart.longitude),
+      lat: Cesium.Math.toDegrees(cart.latitude),
+      locked,
+      spinning,
+      minZoom: MIN_ZOOM,
+      maxZoom: MAX_ZOOM,
+      count: placed,
+    };
+  };
+  api.reset = () => lockHome();
+  api.unlock = () => unlock();
+  api.setHeight = (height, lon = 18, lat = 22, heading = 70, pitch = -16) => {
+    if (!viewer) return;
+    const Cesium = window.Cesium;
+    unlock();
+    viewer.camera.setView({
+      destination: Cesium.Cartesian3.fromDegrees(lon, lat, height),
+      orientation: {
+        heading: Cesium.Math.toRadians(heading),
+        pitch: Cesium.Math.toRadians(pitch),
+        roll: 0,
+      },
+    });
+  };
 
   let tries = 0;
   const wait = () => {
@@ -292,5 +396,10 @@
   } else {
     wait();
   }
-  window.addEventListener("resize", () => viewer?.resize());
+  window.addEventListener("resize", () => {
+    if (!viewer) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, coarse() ? 1.5 : 2);
+    viewer.resolutionScale = dpr;
+    viewer.resize();
+  });
 })();

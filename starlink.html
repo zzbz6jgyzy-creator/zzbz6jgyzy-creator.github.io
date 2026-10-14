@@ -44,7 +44,7 @@
       href="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Widgets/widgets.css"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/starlink-tracker.css?v=202610141630" />
+    <link rel="stylesheet" href="/starlink-tracker.css?v=202610141700" />
     <link rel="stylesheet" href="/nav-pill.css?v=202610141020" />
     <script>
       window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
@@ -117,12 +117,13 @@
           </div>
           <figure class="sl-orbit" id="sl-orbit-fig">
             <div class="sl-orbit-stage">
-              <div id="sl-globe" class="sl-globe" role="img" aria-label="Starlink satellites around Earth"></div>
+              <div id="sl-globe" class="sl-globe" role="img" aria-label="Starlink satellites around Earth. Scroll or pinch to fly through the constellation."></div>
               <div id="sl-globe-cesium-credit" class="visually-hidden"></div>
               <svg id="sl-orbit-svg" viewBox="0 0 100 100" role="img" aria-hidden="true"></svg>
+              <button type="button" class="sl-globe-reset" id="sl-globe-reset" hidden>Reset view</button>
             </div>
             <figcaption class="sl-globe-cap" id="sl-globe-cap">
-              <span data-sl-count>—</span> dots — one per satellite still in orbit, coloured by generation. Example layout, not live tracks.
+              <span data-sl-count>—</span> satellites in orbit, coloured by generation. Scroll or pinch to fly through them. Example layout, not live tracks.
               <span class="sl-globe-credit" id="sl-globe-credit" hidden>Imagery © Esri, Maxar, Earthstar Geographics · CesiumJS</span>
             </figcaption>
           </figure>
@@ -229,7 +230,7 @@
     <script src="/starlink-data.js?v=202610141100"></script>
     <script src="/starlink-tracker.js?v=202610141630"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Cesium.js"></script>
-    <script src="/starlink-globe.js?v=202610141640"></script>
+    <script src="/starlink-globe.js?v=202610141700"></script>
     <script src="/countup.js" defer></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/nav-pill.js?v=202610141020"></script>
