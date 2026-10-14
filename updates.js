@@ -278,9 +278,13 @@
   const fillStats = (bundle) => {
     const versions = bundle.versions;
     const raw = bundle.live?.versions || [];
-    const latest = bundle.live?.latest
-      ? versions.find((row) => row.id === bundle.live.latest) || versions[0]
-      : versions[0];
+    // "Latest" = highest build number actually reported by cars (Teslascope's "latest" can be a just-seen,
+    // lower-numbered regional build like 2026.32.100 with 0 cars).
+    const vnum = (id) => String(id || "").split(".").map((n) => parseInt(n, 10) || 0);
+    const vcmp = (a, b) => { const x = vnum(a), y = vnum(b); for (let i = 0; i < Math.max(x.length, y.length); i++) { const d = (x[i] || 0) - (y[i] || 0); if (d) return d; } return 0; };
+    const reported = raw.filter((row) => (row.count || 0) > 0).map((row) => row.id).sort(vcmp).pop();
+    const latestId = reported || bundle.live?.latest;
+    const latest = (latestId && versions.find((row) => row.id === latestId)) || versions[0];
     const widest = raw.slice().sort((a, b) => (b.percent || 0) - (a.percent || 0) || (b.count || 0) - (a.count || 0))[0];
     const na = raw.find((row) => row.fsdHw4);
     const europeCodes = new Set(["NL", "BE", "DE", "FR", "IE", "GB", "IT", "ES", "PT", "AT", "CH", "DK", "NO", "SE", "FI", "PL", "CZ", "SK", "SI", "LT", "EE", "HR", "HU", "GR"]);

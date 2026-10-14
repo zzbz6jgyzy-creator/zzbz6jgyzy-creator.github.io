@@ -74,7 +74,10 @@
     var wb = slot.querySelector('.lw-watch'); if (wb) wb.onclick = load;
   }
   function run() {
-  fetch(q.get('livedata') || '/live-data.json?t=' + Math.floor(Date.now() / 6e4), {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (d) {
+  Promise.all([fetch(q.get('livedata') || '/live-data.json?t=' + Math.floor(Date.now() / 6e4), {cache: 'no-store'}).then(function (r) { return r.json(); }),
+    fetch('/data/events.json', {cache: 'no-cache'}).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })]).then(function (pair) {
+    var d = pair[0], shared = pair[1] && pair[1].events || {};
+    (d.events || []).forEach(function (e) { var s = shared[e.id]; if (s && s.date) { var tz = s.tz || 'Z'; e.start = s.date + 'T00:00:00' + tz; e.end = s.date + 'T23:59:00' + tz; } }); // shared dates win
     now = q.get('livenow') ? now : Date.now();
     var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page); });
     var live = ev.filter(function (e) { var s = new Date(e.start) - 0;

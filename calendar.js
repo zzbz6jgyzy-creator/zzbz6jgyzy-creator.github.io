@@ -38,7 +38,7 @@
     {
       id: "starship-f15",
       title: "Starship Flight 15",
-      start: "2026-11-08T00:00:00Z",
+      start: "2026-11-08T12:00:00Z",
       group: "spacex",
       where: "Starbase · Pad 2",
       note: "FAA planning target NET 8 Nov — SpaceX has not set an official time. First serious Ship catch is the story.",
@@ -365,6 +365,13 @@
     const nextTesla = document.querySelector("[data-tsla-next]");
     if (!list && !preview && !earnings && !nextTesla && !countdown) return;
 
+    try {
+      const r = await fetch("/data/events.json", { cache: "no-cache" });
+      const j = r.ok ? await r.json() : null;
+      const ev = j && j.events && j.events["starship-flight-15"];
+      const cur = CURATED.find((e) => e.id === "starship-f15");
+      if (ev && cur) { cur.start = `${ev.date}T12:00:00Z`; if (ev.summary) cur.note = ev.summary; }
+    } catch {}
     const now = new Date();
     let events = mergeEvents([]);
     let filter = "all";

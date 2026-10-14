@@ -1,0 +1,19 @@
+{
+  "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only.",
+  "updated": "2026-10-14",
+  "events": {
+    "starship-flight-15": {
+      "title": "Starship Flight 15",
+      "date": "2026-11-08",
+      "precision": "day",
+      "status": "net",
+      "tz": "-06:00",
+      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. Musk has said 4 to 6 weeks (from 10 Oct). Ship 42 needs extra cryo testing; Booster 22 has not static-fired.",
+      "sources": [
+        "FAA CADENA / air-traffic planning slides (NET 8 Nov)",
+        "Elon Musk, 10 Oct 2026: '4 to 6 weeks'",
+        "NASASpaceflight: Ship 42 cryo campaign, B22 static fire pending"
+      ]
+    }
+  }
+}
