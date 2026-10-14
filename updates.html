@@ -46,7 +46,7 @@
       href="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Widgets/widgets.css"
     />
     <link rel="stylesheet" href="/styles.css?v=202610141005" />
-    <link rel="stylesheet" href="/updates-redesign.css" />
+    <link rel="stylesheet" href="/updates-redesign.css?v=202610141100" />
     <script>
       window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
     </script>
@@ -207,6 +207,19 @@
                     <g id="updates-hotspots"></g>
                   </g>
                 </svg>
+                <div class="updates-map-toolbar">
+                  <label class="updates-map-version-wrap" for="updates-version">
+                    <span>Software version</span>
+                    <select id="updates-version" class="updates-map-version">
+                      <option value="">Latest wave</option>
+                      <option value="*" selected>All versions</option>
+                    </select>
+                  </label>
+                </div>
+                <aside class="updates-map-card" id="updates-map-card" hidden>
+                  <button type="button" class="updates-map-card-close" id="updates-map-card-close">Close</button>
+                  <div id="updates-map-card-body"></div>
+                </aside>
                 <div class="updates-map-badge" id="updates-map-badge" hidden></div>
                 <div class="updates-map-zoom" role="group" aria-label="Zoom the map">
                   <button type="button" data-updates-zoom="europe">Europe</button>
@@ -243,18 +256,6 @@
                 <summary>⚙ Map settings</summary>
               <form class="updates-lookup" id="updates-lookup" action="#map">
                 <div>
-                  <label class="updates-search-label" for="updates-version">Version</label>
-                  <input
-                    id="updates-version"
-                    class="updates-search"
-                    type="search"
-                    placeholder="2026.38…"
-                    inputmode="decimal"
-                    autocomplete="off"
-                    spellcheck="false"
-                  />
-                </div>
-                <div>
                   <label class="updates-search-label" for="updates-search">Country</label>
                   <input
                     id="updates-search"
@@ -266,8 +267,8 @@
                 </div>
               </form>
               <div class="fsd-filters" role="group" aria-label="Filter map countries">
-                <button type="button" class="fsd-filter" data-updates-spots="wave" aria-pressed="true">Newest version only</button>
-                <button type="button" class="fsd-filter" data-updates-spots="all" aria-pressed="false">All versions</button>
+                <button type="button" class="fsd-filter" data-updates-spots="wave" aria-pressed="false">Newest version only</button>
+                <button type="button" class="fsd-filter" data-updates-spots="all" aria-pressed="true">All versions</button>
               </div>
               </details>
               <div class="fsd-country-detail" id="updates-focus" hidden></div>
@@ -338,8 +339,8 @@
     </div>
     <script src="/script.js"></script>
     <script src="/updates-data.js"></script>
-    <script src="/updates-globe.js"></script>
-    <script src="/updates.js"></script>
+    <script src="/updates-globe.js?v=202610141100"></script>
+    <script src="/updates.js?v=202610141100"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Cesium.js"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>

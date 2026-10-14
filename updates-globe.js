@@ -6,8 +6,8 @@
   const ESRI_URL = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer";
   const ESRI_CREDIT =
     "Powered by Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community";
-  const WORLD = { lon: -30, lat: 24, height: 1.9e7 };
-  const EUROPE = { lon: 10, lat: 50, height: 3.35e6, pitch: -85 };
+  const WORLD_RECT = [-180, -56, 180, 84];
+  const EUROPE = { lon: 10.2, lat: 51.2, height: 2.85e6, pitch: -90 };
   const COLORS = {
     hot: [227, 25, 55, 255],
     warm: [255, 138, 76, 255],
@@ -38,6 +38,23 @@
     shell()?.classList.toggle("is-zoomed", next !== "world");
   };
 
+  const doneFly = () => {
+    flying = false;
+  };
+
+  const goRect = (rect, animate) => {
+    if (!viewer) return;
+    flying = true;
+    const Cesium = window.Cesium;
+    const dest = Cesium.Rectangle.fromDegrees(rect[0], rect[1], rect[2], rect[3]);
+    if (!animate || reduce()) {
+      viewer.camera.setView({ destination: dest });
+      doneFly();
+      return;
+    }
+    viewer.camera.flyTo({ destination: dest, duration: duration(true), complete: doneFly, cancel: doneFly });
+  };
+
   const lookAt = (pose, animate) => {
     if (!viewer) return;
     flying = true;
@@ -45,18 +62,15 @@
     const dest = Cesium.Cartesian3.fromDegrees(pose.lon, pose.lat, pose.height);
     const orientation = {
       heading: 0,
-      pitch: Cesium.Math.toRadians(pose.pitch ?? -88),
+      pitch: Cesium.Math.toRadians(pose.pitch ?? -90),
       roll: 0,
-    };
-    const done = () => {
-      flying = false;
     };
     if (!animate || reduce()) {
       viewer.camera.setView({ destination: dest, orientation });
-      done();
+      doneFly();
       return;
     }
-    viewer.camera.flyTo({ destination: dest, orientation, duration: duration(true), complete: done, cancel: done });
+    viewer.camera.flyTo({ destination: dest, orientation, duration: duration(true), complete: doneFly, cancel: doneFly });
   };
 
   async function addImagery() {
@@ -94,7 +108,7 @@
       keep.add(spot.code);
       const id = `hot-${spot.code}`;
       const on = focus === spot.code;
-      const size = (on ? 14 : 9) + Math.sqrt(spot.count || 1) * 1.6;
+      const size = Math.min(on ? 20 : 15, (on ? 10 : 7.5) + Math.sqrt(Math.min(spot.count || 1, 64)) * 1.05);
       const position = Cesium.Cartesian3.fromDegrees(ll[0], ll[1], 18000);
       let ent = viewer.entities.getById(id);
       if (!ent) {
@@ -111,11 +125,15 @@
         color: color(spot.heat),
         outlineColor: on ? Cesium.Color.WHITE : Cesium.Color.fromBytes(12, 13, 16, 220),
         outlineWidth: on ? 3 : 1.4,
-        scaleByDistance: new Cesium.NearFarScalar(4.0e5, 1.35, 1.6e7, 0.55),
+        disableDepthTestDistance: Number.POSITIVE_INFINITY,
       };
       const inEurope = ll[0] > -12 && ll[0] < 32 && ll[1] > 34 && ll[1] < 72;
+      const few = (spots || []).length <= 16;
       const showLabel =
-        on || spot.latest || spot.heat === "hot" || (mode === "europe" && inEurope);
+        on ||
+        few ||
+        spot.heat === "hot" ||
+        (mode === "europe" && inEurope);
       ent.label = {
         text: spot.code,
         font: "600 12px IBM Plex Mono, monospace",
@@ -124,6 +142,7 @@
         outlineWidth: 3,
         style: Cesium.LabelStyle.FILL_AND_OUTLINE,
         pixelOffset: new Cesium.Cartesian2(0, -18),
+        disableDepthTestDistance: Number.POSITIVE_INFINITY,
         show: showLabel,
       };
     });
@@ -149,14 +168,9 @@
       const lon = Cesium.Math.toDegrees(cart.longitude);
       const lat = Cesium.Math.toDegrees(cart.latitude);
       const height = cart.height;
-      if (mode !== "country") {
-        if (height > 1.45e7) setMode("world");
-        else if (lon > -12 && lon < 32 && lat > 34 && lat < 72 && height < 6.2e6 && height > 2.2e6) {
-          setMode("europe");
-        } else {
-          setMode("free");
-        }
-      }
+      if (height > 1.2e7) setMode("world");
+      else if (lon > -14 && lon < 34 && lat > 33 && lat < 73 && height < 4.8e6) setMode("europe");
+      else setMode("free");
       if (typeof api.onView === "function") api.onView();
     });
   };
@@ -202,18 +216,26 @@
     }
     viewer.targetFrameRate = 60;
     viewer.scene.globe.show = true;
-    viewer.scene.globe.enableLighting = true;
-    viewer.scene.globe.showGroundAtmosphere = true;
-    viewer.scene.fog.enabled = true;
+    viewer.scene.globe.enableLighting = false;
+    viewer.scene.globe.showGroundAtmosphere = false;
+    viewer.scene.fog.enabled = false;
     viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#07080c");
-    if (viewer.scene.skyAtmosphere) {
-      viewer.scene.skyAtmosphere.show = true;
-      viewer.scene.skyAtmosphere.atmosphereLightIntensity = 18;
-      viewer.scene.skyAtmosphere.saturationShift = -0.12;
-      viewer.scene.skyAtmosphere.brightnessShift = -0.08;
-    }
-    if (viewer.scene.sun) viewer.scene.sun.show = true;
+    if (viewer.scene.skyAtmosphere) viewer.scene.skyAtmosphere.show = false;
+    if (viewer.scene.sun) viewer.scene.sun.show = false;
+    if (viewer.scene.moon) viewer.scene.moon.show = false;
+    if (viewer.scene.skyBox) viewer.scene.skyBox.show = false;
+    const control = viewer.scene.screenSpaceCameraController;
+    control.enableTilt = false;
+    control.enableLook = false;
+    control.enableRotate = false;
+    control.enableTranslate = true;
+    control.enableZoom = true;
     if (credit) credit.hidden = false;
+    try {
+      viewer.scene.morphTo2D(0);
+    } catch {
+      /* 3D nadir view still works */
+    }
     try {
       await addImagery();
     } catch {
@@ -225,7 +247,7 @@
     }
     bindPicks();
     showGlobe();
-    lookAt(WORLD, false);
+    goRect(WORLD_RECT, false);
     setMode("world");
     if (queued) paint(queued);
     viewer.resize();
@@ -240,9 +262,14 @@
     queued = { spots, focus, points };
     paint(queued);
   };
+  api.highlight = (code) => {
+    if (!queued) return;
+    queued.focus = code || "";
+    paint(queued);
+  };
   api.flyWorld = (animate = true) => {
     setMode("world");
-    lookAt(WORLD, animate);
+    goRect(WORLD_RECT, animate);
     if (queued) paint(queued);
   };
   api.flyEurope = (animate = true) => {
@@ -250,14 +277,8 @@
     lookAt(EUROPE, animate);
     if (queued) paint(queued);
   };
-  api.flyCountry = (code, lon, lat, scale = 5) => {
-    setMode("country");
-    const height = Math.max(9e5, Math.min(4.8e6, 8.2e6 / scale));
-    lookAt({ lon, lat, height, pitch: -84 }, true);
-    if (queued) {
-      queued.focus = code;
-      paint(queued);
-    }
+  api.flyCountry = (code) => {
+    api.highlight(code);
   };
   api.zoomBy = (factor) => {
     if (!viewer) return;

@@ -67,7 +67,6 @@
     SA: [45, 24],
   };
 
-  const WIDE_ZOOM = new Set(["US", "CA", "AU", "BR", "RU", "CN", "ZA"]);
   const EUROPE_ZOOM = new Set([
     "IE", "GB", "DE", "FR", "NL", "BE", "IT", "ES", "PT", "AT", "CH", "DK",
     "NO", "SE", "FI", "PL", "CZ", "SK", "SI", "HR", "HU", "GR", "LT", "EE",
@@ -436,7 +435,12 @@
     const liveRows = (bundle.live?.versions || []).slice().sort((a, b) => {
       return String(b.date || "").localeCompare(String(a.date || "")) || String(b.id).localeCompare(String(a.id));
     });
-    const scoped = versionQuery ? liveRows.filter((row) => matchVersion(row, versionQuery)) : liveRows;
+    const exact = versionQuery ? liveRows.find((row) => row.id === versionQuery) : null;
+    const scoped = versionQuery
+      ? exact
+        ? [exact]
+        : liveRows.filter((row) => matchVersion(row, versionQuery))
+      : liveRows;
     const latestId = bundle.live?.latest || scoped[0]?.id;
     const waveId = scoped.find((row) => (row.countries || []).length)?.id || latestId;
     const spots = new Map();
@@ -475,10 +479,50 @@
 
   const globeApi = () => window.UpdatesGlobe;
   const globeOn = () => Boolean(globeApi()?.active?.());
+  const mapSpots = (bundle) => {
+    const spots = collectHotspots(bundle);
+    if (versionQuery || spotFilter === "all") return spots;
+    const wave = spots.filter((s) => s.latest);
+    if (wave.length) return wave;
+    return spots.filter((s) => s.heat === "hot" || s.heat === "warm");
+  };
   const pushGlobe = (bundle = current) => {
     const globe = globeApi();
     if (!globe?.setSpots || !bundle) return;
-    globe.setSpots(collectHotspots(bundle), countryCode, POINTS);
+    globe.setSpots(mapSpots(bundle), countryCode, POINTS);
+  };
+  const fillVersionSelect = (bundle) => {
+    const sel = document.getElementById("updates-version");
+    if (!sel || sel.tagName !== "SELECT") return;
+    const rows = (bundle.live?.versions || []).filter((row) => (row.countries || []).length);
+    const wanted = versionQuery === "" && spotFilter === "all" ? "*" : versionQuery || "";
+    if (sel.dataset.stamp === `${rows.map((row) => row.id).join("|")}|${wanted}` && sel.value === wanted) return;
+    sel.innerHTML = [
+      `<option value="">Latest wave</option>`,
+      `<option value="*">All versions</option>`,
+      ...rows.map((row) => {
+        const n = (row.countries || []).length;
+        const cars = row.count ? ` · ${row.count} cars` : "";
+        return `<option value="${escapeHtml(row.id)}">${escapeHtml(row.id)} · ${n} ${n === 1 ? "country" : "countries"}${cars}</option>`;
+      }),
+    ].join("");
+    sel.value = [...sel.options].some((opt) => opt.value === wanted) ? wanted : "";
+    sel.dataset.stamp = `${rows.map((row) => row.id).join("|")}|${sel.value}`;
+  };
+  const applyVersionChoice = (value) => {
+    if (value === "*") {
+      versionQuery = "";
+      spotFilter = "all";
+    } else if (!value) {
+      versionQuery = "";
+      spotFilter = "wave";
+    } else {
+      versionQuery = value;
+      spotFilter = "all";
+    }
+    document.querySelectorAll("[data-updates-spots]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.updatesSpots === spotFilter));
+    });
   };
 
   const heatLabel = (heat) => {
@@ -577,11 +621,18 @@
     const caption = document.getElementById("updates-map-caption");
     if (!caption || countryCode || versionQuery) return;
     const wave = waveRow();
+    const n = current ? mapSpots(current).length : 0;
     if (nearEurope()) {
-      caption.textContent = wave?.id ? `Europe · ${wave.id}` : "Europe";
+      caption.textContent = spotFilter === "all"
+        ? `Europe · ${n} countries`
+        : (wave?.id ? `Europe · ${wave.id}` : "Europe");
       return;
     }
     if (nearWorld()) {
+      if (spotFilter === "all") {
+        caption.textContent = `${n} countries · all versions`;
+        return;
+      }
       const names = (wave?.countries || []).slice(0, 5).map(countryName);
       caption.textContent = wave?.id
         ? `New wave ${wave.id} · ${names.join(", ")}${wave.countries?.length > 5 ? "…" : ""}`
@@ -723,52 +774,25 @@
     applyView([cx - (cx - vx) * (nw / vw), cy - (cy - vy) * (nh / vh), nw, nh], animate);
   };
 
-  const countryScale = (code) => {
-    if (WIDE_ZOOM.has(code)) return 1.85;
-    if (EUROPE_ZOOM.has(code)) return 9.2;
-    return 5.4;
-  };
-
-  const flyToCountry = (code) => {
-    if (globeOn() && POINTS[code]) {
-      const [lon, lat] = POINTS[code];
-      globeApi().flyCountry(code, lon, lat, countryScale(code));
-      return;
-    }
-    const svg = mapSvg();
-    if (!svg || !POINTS[code]) return;
-    const { x, y } = project(POINTS[code][0], POINTS[code][1]);
-    const scale = countryScale(code);
-    const w = MAP_W / scale;
-    const h = MAP_H / scale;
-    applyView([x - w / 2, y - h / 2, w, h], true);
-    svg.classList.add("is-focused");
-  };
-
   const focusStage = (code) => {
-    const svg = mapSvg();
-    if (code === focusedCode) {
-      if (!globeOn()) {
-        sizeHotspots();
-        svg?.classList.toggle("is-focused", Boolean(code));
-      }
-      return;
-    }
     focusedCode = code || "";
-    if (!code || !POINTS[code]) {
-      svg?.classList.remove("is-focused");
-      if (!globeOn()) sizeHotspots();
-      return;
-    }
-    flyToCountry(code);
+    const svg = mapSvg();
+    svg?.classList.toggle("is-focused", Boolean(code));
+    if (!globeOn()) sizeHotspots();
+    globeApi()?.highlight?.(code);
   };
 
   const renderFocus = (bundle, spots) => {
     const el = document.getElementById("updates-focus");
-    if (!el) return;
+    const card = document.getElementById("updates-map-card");
+    const body = document.getElementById("updates-map-card-body");
     if (!countryCode) {
-      el.hidden = true;
-      el.replaceChildren();
+      if (el) {
+        el.hidden = true;
+        el.replaceChildren();
+      }
+      if (card) card.hidden = true;
+      if (body) body.replaceChildren();
       return;
     }
     const spot = spots.find((s) => s.code === countryCode);
@@ -776,14 +800,13 @@
     const rows = here
       .slice()
       .sort((a, b) => (b.countryCounts?.[countryCode] || 0) - (a.countryCounts?.[countryCode] || 0))
-      .slice(0, 4)
+      .slice(0, 6)
       .map((row) => {
         const n = row.countryCounts?.[countryCode] || 0;
         return `<li><b>${escapeHtml(row.id)}</b><span>${n ? `${n} tracked` : "seen"}</span></li>`;
       })
       .join("");
-    el.hidden = false;
-    el.innerHTML = `
+    const html = `
       <div>
         <strong>${escapeHtml(countryName(countryCode))}</strong>
         <span class="fsd-status updates-status-${spot?.heat === "hot" ? "early" : spot?.heat === "warm" ? "rolling" : "wide"}">${
@@ -797,14 +820,23 @@
       }</p>
       ${rows ? `<ul class="updates-focus-list">${rows}</ul>` : ""}
     `;
+    if (el) {
+      el.hidden = false;
+      el.innerHTML = html;
+    }
+    if (card && body) {
+      card.hidden = false;
+      body.innerHTML = html;
+    }
   };
 
   const renderMap = (bundle) => {
     const layer = document.getElementById("updates-hotspots");
     if (!layer) return;
     layer.replaceChildren();
-    const spots = collectHotspots(bundle);
+    const spots = mapSpots(bundle);
     paintCountries(spots);
+    fillVersionSelect(bundle);
     const max = Math.max(1, ...spots.map((s) => s.count || 1));
     layer.dataset.max = String(max);
     spots.forEach((spot) => {
@@ -865,6 +897,10 @@
       } else if (countryCode) {
         const hit = spots.find((s) => s.code === countryCode);
         caption.textContent = hit ? `${countryName(countryCode)} · ${hit.id}` : `${countryName(countryCode)} · no tracked build`;
+      } else if (spotFilter === "all") {
+        caption.textContent = nearEurope()
+          ? `Europe · ${spots.length} countries`
+          : `${spots.length} countries · all versions`;
       } else {
         caption.textContent = nearEurope()
           ? (waveId ? `Europe · ${waveId}` : "Europe")
@@ -947,7 +983,7 @@
   let featureQuery = "";
   let versionQuery = "";
   let expandedId = "";
-  let spotFilter = "wave";
+  let spotFilter = "all";
   let showAll = false;
   const SHOW_LIMIT = 6;
   let current = { live: null, versions: curated.versions };
@@ -1201,10 +1237,7 @@
 
   document.querySelectorAll("[data-updates-spots]").forEach((button) => {
     button.addEventListener("click", () => {
-      spotFilter = button.dataset.updatesSpots;
-      document.querySelectorAll("[data-updates-spots]").forEach((b) => {
-        b.setAttribute("aria-pressed", String(b === button));
-      });
+      applyVersionChoice(button.dataset.updatesSpots === "all" ? "*" : "");
       rerender();
     });
   });
@@ -1213,13 +1246,8 @@
     button.addEventListener("click", () => {
       const id = button.dataset.version;
       if (!id) return;
-      if (norm(versionQuery) === norm(id)) {
-        versionQuery = "";
-        if (versionInput) versionInput.value = "";
-      } else {
-        versionQuery = id;
-        if (versionInput) versionInput.value = id;
-      }
+      if (norm(versionQuery) === norm(id)) applyVersionChoice("");
+      else applyVersionChoice(id);
       rerender();
       document.getElementById("map")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -1234,8 +1262,8 @@
   }
 
   if (versionInput) {
-    versionInput.addEventListener("input", () => {
-      versionQuery = versionInput.value.trim();
+    versionInput.addEventListener("change", () => {
+      applyVersionChoice(versionInput.value);
       rerender();
     });
   }
@@ -1247,17 +1275,23 @@
     });
   }
 
-  document.querySelectorAll(".updates-map-shell .tracker-gear").forEach((gear) => {
+  document.querySelectorAll(".updates-map-shell .tracker-gear, .updates-map-toolbar, .updates-map-card").forEach((gear) => {
     ["pointerdown", "mousedown", "touchstart", "wheel", "click"].forEach((type) =>
       gear.addEventListener(type, (event) => event.stopPropagation()),
     );
   });
 
+  document.getElementById("updates-map-card-close")?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setCountry("", true);
+    focusedCode = "";
+    rerender();
+  });
+
   const clearBtn = document.getElementById("updates-clear");
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
-      versionQuery = "";
-      if (versionInput) versionInput.value = "";
+      applyVersionChoice("");
       setCountry("", true);
       focusedCode = "";
       hideTip();
@@ -1284,18 +1318,8 @@
           return;
         }
         if (how === "europe") {
-          if (countryCode) {
-            setCountry("", true);
-            focusedCode = "";
-            rerender();
-          }
           applyView(EUROPE_BOX, true);
           return;
-        }
-        if (countryCode) {
-          setCountry("", true);
-          focusedCode = "";
-          rerender();
         }
         applyView(worldBox(), true);
       });
@@ -1333,7 +1357,7 @@
 
     shell.addEventListener("pointerdown", (event) => {
       if (globeOn()) return;
-      if (event.target.closest("[data-updates-zoom]")) return;
+      if (event.target.closest("[data-updates-zoom], .updates-map-toolbar, .updates-map-card")) return;
       if (event.pointerType === "mouse" && event.button !== 0) return;
       if (pinch) return;
       const [vx, vy, vw, vh] = readViewBox(svg);
@@ -1388,7 +1412,7 @@
         }, 0);
         return;
       }
-      if (!event.target?.closest?.(".updates-map-shell") || event.target.closest("[data-updates-zoom]")) return;
+      if (!event.target?.closest?.(".updates-map-shell") || event.target.closest("[data-updates-zoom], .updates-map-toolbar, .updates-map-card")) return;
       pickCountryAt(x, y, event.target);
     };
 
@@ -1456,10 +1480,7 @@
     };
     globe.onReady = () => {
       pushGlobe();
-      if (countryCode && POINTS[countryCode]) {
-        const [lon, lat] = POINTS[countryCode];
-        globe.flyCountry(countryCode, lon, lat, countryScale(countryCode));
-      }
+      globe.highlight?.(countryCode);
       syncZoomButtons();
       syncClear();
     };
@@ -1467,10 +1488,7 @@
   }
 
   const hash = decodeURIComponent((location.hash || "").replace(/^#/, ""));
-  if (hash && /^\d{4}\.\d+/.test(hash)) {
-    versionQuery = hash;
-    if (versionInput) versionInput.value = hash;
-  }
+  if (hash && /^\d{4}\.\d+/.test(hash)) applyVersionChoice(hash);
 
   boot();
 })();
