@@ -41,38 +41,60 @@
     />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
+      <link rel="stylesheet" href="/nav-pill.css?v=202610141000b" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
-      <header class="topbar">
-        <a class="brand" href="/">
-          <img class="brand-mark" src="/assets/brand/icon-1b-mark.svg" alt="" width="30" height="30" />
-          <img class="brand-wordmark" src="/assets/brand/wordmark.svg" alt="Supercharged Daily" width="172" height="27" />
-        </a>
-        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
-          <span></span>
-          <span class="visually-hidden">Menu</span>
-        </button>
-        <nav class="nav" id="site-nav" data-nav aria-label="Primary">
-          <a href="/">Home</a>
-          <a href="/news.html" aria-current="page">News</a>
-          <a href="/calendar.html">Calendar</a>
-          <a href="/tesla.html">Tesla</a>
-          <a href="/spacex.html">SpaceX</a>
-          <a href="/grok.html">Grok</a>
-          <a href="/tsla.html">Markets</a>
-          <a href="/fsd-europe.html">FSD Europe tracker</a>
-          <a href="/starship.html">Starship flight tracker</a>
-          <a href="/cybercab.html">Cybercab Tracker</a>
-          <a href="/updates.html">Software Update Tracker</a>
-          <a href="/reviews/index.html">Reviews</a>
-          <a href="/gear.html">Gear</a>
-          <a href="/games.html">Games</a>
-          <a href="/wallpapers.html">Wallpapers</a>
-          <a class="nav-cta" href="https://x.com/ALJR86">Follow on X</a>
+      <div class="pn-wrap">
+        <nav class="pn" aria-label="Primary" tabindex="-1">
+          <a class="pn-logo" href="/"><img src="/assets/brand/icon-1b-mark.svg" alt="Supercharged Daily" width="26" height="26" /></a>
+          <div class="pn-items">
+            <a class="pn-link" href="/">Home</a>
+            <a class="pn-link" href="/news.html">News</a>
+            <a class="pn-link" href="/calendar.html">Calendar</a>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla">Tesla<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-tesla">
+                <a href="/tesla.html">Tesla overview<small>News, models &amp; data</small></a>
+                <a href="/model3-explorer.html">Model 3 Explorer<span class="pn-badge">3D</span><small>Take the car apart</small></a>
+              </div></div>
+            <a class="pn-link" href="/spacex.html">SpaceX</a>
+            <a class="pn-link" href="/grok.html">Grok</a>
+            <a class="pn-link" href="/tsla.html">Markets</a>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-trk">Trackers<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-trk">
+                <a href="/fsd-europe.html">FSD Europe<small>Approval tracker</small></a>
+                <a href="/starship.html">Starship flights<small>Every flight test</small></a>
+                <a href="/cybercab.html">Cybercab<small>Production &amp; sightings</small></a>
+                <a href="/updates.html">Software updates<small>Latest Tesla releases</small></a>
+              </div></div>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-more">More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-more">
+                <a href="/reviews/index.html">Reviews</a>
+                <a href="/gear.html">Gear</a>
+                <a href="/games.html">Games</a>
+                <a href="/wallpapers.html">Wallpapers</a>
+              </div></div>
+            <a class="pn-cta" href="https://x.com/ALJR86">Follow on X</a>
+          </div>
+          <button class="pn-menu" type="button" aria-expanded="false" aria-controls="pn-sheet" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+          <span class="pn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
         </nav>
-      </header>
+      </div>
+      <div class="pn-overlay" aria-hidden="true"></div>
+      <aside class="pn-sheet" id="pn-sheet" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+        <div class="pn-sheet-head"><img src="/assets/brand/wordmark.svg" alt="Supercharged Daily" /><button class="pn-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+        <a href="/">Home</a><a href="/news.html">News</a><a href="/calendar.html">Calendar</a><a href="/spacex.html">SpaceX</a><a href="/grok.html">Grok</a><a href="/tsla.html">Markets</a>
+        <h3>Tesla</h3>
+        <a href="/tesla.html">Tesla overview</a><a href="/model3-explorer.html">Model 3 Explorer</a>
+        <h3>Trackers</h3>
+        <a href="/fsd-europe.html">FSD Europe</a><a href="/starship.html">Starship flights</a><a href="/cybercab.html">Cybercab</a><a href="/updates.html">Software updates</a>
+        <h3>More</h3>
+        <a href="/reviews/index.html">Reviews</a><a href="/gear.html">Gear</a><a href="/games.html">Games</a><a href="/wallpapers.html">Wallpapers</a>
+        <a class="pn-cta" href="https://x.com/ALJR86">Follow on X</a>
+        <p class="pn-credit">Menu inspired by 21st.dev</p>
+      </aside>
+      <div class="pn-spacer" aria-hidden="true"></div>
 
       <main id="main" data-news>
         <section class="page-hero">
@@ -163,5 +185,6 @@
     <script src="/news.js"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
+      <script src="/nav-pill.js?v=202610141000b"></script>
   </body>
 </html>

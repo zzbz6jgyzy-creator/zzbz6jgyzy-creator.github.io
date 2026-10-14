@@ -6,7 +6,7 @@ import { GLTFLoader } from '/vendor/three/addons/GLTFLoader.js';
 import { DRACOLoader } from '/vendor/three/addons/DRACOLoader.js';
 import { RoomEnvironment } from '/vendor/three/addons/RoomEnvironment.js';
 import { mergeGeometries } from '/vendor/three/utils/BufferGeometryUtils.js';
-import { PARTS, ORDER, PHOTOS } from './model3-parts.js?v=2';
+import { PARTS, ORDER, PHOTOS } from './model3-parts.js?v=3';
 
 // ---- Exterior config: swap this block to use another GLB ----
 const NUM = (o) => +((o.name.match(/Object_(\d+)/) || [])[1] || -1);

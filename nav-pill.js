@@ -4,6 +4,7 @@
   const items = nav.querySelector(".pn-items");
   const kids = [...items.children];
   kids.forEach((el, i) => { el.style.setProperty("--i", i); el.style.setProperty("--n", kids.length); });
+  const app = nav.hasAttribute("data-start-collapsed");
   let expanded = true, last = window.scrollY, collapseAt = 0;
   const setW = () => { if (!expanded) return; nav.style.setProperty("--pn-w", "auto"); const w = nav.scrollWidth; nav.style.setProperty("--pn-w", w + "px"); };
   const closeAll = () => nav.querySelectorAll(".pn-dd.open").forEach(d => { d.classList.remove("open"); d.querySelector("button").setAttribute("aria-expanded", "false"); });
@@ -13,7 +14,14 @@
   };
   requestAnimationFrame(setW); window.addEventListener("resize", setW);
   document.fonts && document.fonts.ready.then(setW);
+  const here = location.pathname.replace(/index\.html$/, "");
+  document.querySelectorAll(".pn a[href], .pn-sheet a[href]").forEach(a => {
+    const p = a.getAttribute("href").replace(/index\.html$/, "");
+    if (p === here) a.setAttribute("aria-current", "page");
+  });
+  if (app) { setExpanded(false); document.addEventListener("click", e => { if (expanded && !nav.contains(e.target)) setExpanded(false); }); }
   window.addEventListener("scroll", () => {
+    if (app) return;
     const y = window.scrollY;
     if (expanded && y > last && y > 150) { setExpanded(false); collapseAt = y; }
     else if (!expanded && y < last && collapseAt - y > 80) setExpanded(true);

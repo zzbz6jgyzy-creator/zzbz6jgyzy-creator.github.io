@@ -58,3 +58,9 @@
 body.pn-lock{overflow:hidden}
 .pn-credit{font-size:11px;color:#666;text-align:center;padding:10px}
 @media (prefers-reduced-motion:reduce){.pn,.pn *,.pn-sheet,.pn-overlay,.pn-panel{animation:none!important;transition:none!important}}
+.pn-spacer{height:84px}
+@media (min-width:2400px){.pn-spacer{height:120px}}
+.pn-panel a[aria-current],.pn-sheet a[aria-current]{color:#fff;box-shadow:inset 2px 0 0 #e31937}
+.pn-badge{display:inline-block;margin-left:6px;font:700 9px/1 Inter,sans-serif;letter-spacing:.06em;color:#fff;background:#e31937;border-radius:4px;padding:3px 4px;vertical-align:1px}
+/* full-screen explorer: pill starts as a circle */
+body.pn-app .pn-wrap{top:14px}

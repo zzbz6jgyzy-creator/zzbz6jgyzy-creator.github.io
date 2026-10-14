@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Model 3 Explorer | Supercharged Daily</title>
+    <link rel="canonical" href="https://superchargeddaily.com/model3-explorer.html" />
+    <meta name="description" content="Take a Tesla Model 3 apart in 3D." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/model3-explorer.css?v=202610140930" />
+    <link rel="modulepreload" href="/vendor/three/three.module.min.js" />
+    <link rel="preload" href="/assets/3d/model3-2024.glb?v=1" as="fetch" crossorigin />
+      <link rel="stylesheet" href="/nav-pill.css?v=202610141000b" />
+  </head>
+  <body class="pn-app">
+      <div class="pn-wrap">
+        <nav class="pn" data-start-collapsed aria-label="Primary" tabindex="-1">
+          <a class="pn-logo" href="/"><img src="/assets/brand/icon-1b-mark.svg" alt="Supercharged Daily" width="26" height="26" /></a>
+          <div class="pn-items">
+            <a class="pn-link" href="/">Home</a>
+            <a class="pn-link" href="/news.html">News</a>
+            <a class="pn-link" href="/calendar.html">Calendar</a>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla">Tesla<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-tesla">
+                <a href="/tesla.html">Tesla overview<small>News, models &amp; data</small></a>
+                <a href="/model3-explorer.html">Model 3 Explorer<span class="pn-badge">3D</span><small>Take the car apart</small></a>
+              </div></div>
+            <a class="pn-link" href="/spacex.html">SpaceX</a>
+            <a class="pn-link" href="/grok.html">Grok</a>
+            <a class="pn-link" href="/tsla.html">Markets</a>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-trk">Trackers<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-trk">
+                <a href="/fsd-europe.html">FSD Europe<small>Approval tracker</small></a>
+                <a href="/starship.html">Starship flights<small>Every flight test</small></a>
+                <a href="/cybercab.html">Cybercab<small>Production &amp; sightings</small></a>
+                <a href="/updates.html">Software updates<small>Latest Tesla releases</small></a>
+              </div></div>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-more">More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-more">
+                <a href="/reviews/index.html">Reviews</a>
+                <a href="/gear.html">Gear</a>
+                <a href="/games.html">Games</a>
+                <a href="/wallpapers.html">Wallpapers</a>
+              </div></div>
+            <a class="pn-cta" href="https://x.com/ALJR86">Follow on X</a>
+          </div>
+          <button class="pn-menu" type="button" aria-expanded="false" aria-controls="pn-sheet" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+          <span class="pn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
+        </nav>
+      </div>
+      <div class="pn-overlay" aria-hidden="true"></div>
+      <aside class="pn-sheet" id="pn-sheet" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+        <div class="pn-sheet-head"><img src="/assets/brand/wordmark.svg" alt="Supercharged Daily" /><button class="pn-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+        <a href="/">Home</a><a href="/news.html">News</a><a href="/calendar.html">Calendar</a><a href="/spacex.html">SpaceX</a><a href="/grok.html">Grok</a><a href="/tsla.html">Markets</a>
+        <h3>Tesla</h3>
+        <a href="/tesla.html">Tesla overview</a><a href="/model3-explorer.html">Model 3 Explorer</a>
+        <h3>Trackers</h3>
+        <a href="/fsd-europe.html">FSD Europe</a><a href="/starship.html">Starship flights</a><a href="/cybercab.html">Cybercab</a><a href="/updates.html">Software updates</a>
+        <h3>More</h3>
+        <a href="/reviews/index.html">Reviews</a><a href="/gear.html">Gear</a><a href="/games.html">Games</a><a href="/wallpapers.html">Wallpapers</a>
+        <a class="pn-cta" href="https://x.com/ALJR86">Follow on X</a>
+        <p class="pn-credit">Menu inspired by 21st.dev</p>
+      </aside>
+
+    <div class="m3x" data-m3x>
+      <header class="m3x-top">
+        <div class="m3x-title"><p>Interactive · 3D</p><h1>Model 3, taken apart</h1></div>
+      </header>
+      <div class="m3x-canvas">
+        <img class="m3x-poster" src="/assets/3d/model3-2024-poster.webp?v=1" alt="White 2024 Tesla Model 3 rendered in 3D" width="1440" height="900" fetchpriority="high" />
+      </div>
+      <span class="m3x-status" aria-live="polite"></span><span class="m3x-loadbar" aria-hidden="true"></span>
+      <div class="m3x-tip" hidden></div>
+      <div class="m3x-label" hidden></div>
+      <aside class="m3x-card" hidden aria-live="polite"></aside>
+      <nav class="m3x-panel" aria-label="Parts">
+        <div class="m3x-panel-head"><b>Parts</b><span>Tap one to inspect</span><button type="button" class="m3x-close" aria-label="Close parts list">×</button></div>
+        <ul class="m3x-list"></ul>
+      </nav>
+      <div class="m3x-bar">
+        <button type="button" class="m3x-explode m3x-primary" aria-pressed="false">Explode</button>
+        <label class="m3x-range"><span>Assembled</span><input class="m3x-slider" type="range" min="0" max="100" value="0" aria-label="Explode amount" /><span>Exploded</span></label>
+        <button type="button" class="m3x-parts" aria-expanded="false">Parts</button>
+        <button type="button" class="m3x-reset">Reset</button>
+        <button type="button" class="m3x-pause" aria-pressed="false">Pause</button>
+      </div>
+      <p class="m3x-credit">3D model: <a href="https://sketchfab.com/3d-models/2024-tesla-model-3-interior-61ddcbdbd3854c239e0c95bf60b00022" target="_blank" rel="noopener">“2024 Tesla Model 3 + Interior” by tonielpro520</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>, optimised for web. Battery, motors, suspension and other hidden parts are illustrative, not exact. Photos: Wikimedia Commons (credited on each card). Rendered with <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> (MIT). Fan project, not affiliated with Tesla.</p>
+    </div>
+    <script type="module" src="/model3-explorer.js?v=202610141000"></script>
+      <script src="/nav-pill.js?v=202610141000b"></script>
+  </body>
+</html>
