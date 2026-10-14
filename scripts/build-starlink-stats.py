@@ -85,7 +85,6 @@ def main() -> None:
 
     payload = {
         "updated": ts.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "fetched": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": URL,
         "totals": totals,
         "generations": gens,
