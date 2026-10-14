@@ -2,6 +2,13 @@
   const nav = document.querySelector(".pn");
   if (!nav) return;
   const items = nav.querySelector(".pn-items");
+  // Subscribe entry (desktop pill + phone sheet); newsletter-cta.js points it at the page's signup block
+  if (!nav.querySelector(".pn-sub")) {
+    const mk = (cls) => { const a = document.createElement("a"); a.className = cls; a.href = "/#newsletter"; a.textContent = "Subscribe"; return a; };
+    const cta = items.querySelector(".pn-cta"); items.insertBefore(mk("pn-link pn-sub"), cta);
+    const sh = document.querySelector(".pn-sheet"), shCta = sh && sh.querySelector(".pn-cta");
+    if (shCta) sh.insertBefore(mk("pn-sub pn-sub-sheet"), shCta);
+  }
   const kids = [...items.children];
   kids.forEach((el, i) => { el.style.setProperty("--i", i); el.style.setProperty("--n", kids.length); });
   let sheet, ov, mb, sheetOpen;
@@ -77,4 +84,5 @@
   sheet.querySelector(".pn-close").addEventListener("click", () => sheetOpen(false));
   document.addEventListener("keydown", e => { if (e.key === "Escape") { closeAll(); if (sheet.classList.contains("open")) sheetOpen(false); } });
   window.__pn = { setExpanded, sheetOpen };
+  const nl = document.createElement("script"); nl.src = "/newsletter-cta.js?v=202610141830"; document.body.append(nl);
 })();
