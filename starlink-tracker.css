@@ -227,3 +227,8 @@
 @media (max-width: 640px) {
   .sl-hero { width: 100%; padding: 1.2rem 1.25rem 0.2rem; box-sizing: border-box; }
 }
+
+/* Single "Updated" line: keep the date and time together on phones. */
+#sl-updated { display: inline-flex; align-items: center; flex-wrap: nowrap; max-width: 100%; }
+#sl-updated time { white-space: nowrap; margin-left: 0.3em; }
+@media (max-width: 480px) { #sl-updated { font-size: 0.82rem; } }

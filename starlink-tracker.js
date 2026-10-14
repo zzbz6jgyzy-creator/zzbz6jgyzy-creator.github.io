@@ -2,6 +2,44 @@
   const data = window.STARLINK;
   if (!data) return;
 
+  // Merge the daily-generated figures (starlink-live.js) over the editorial file.
+  const live = window.STARLINK_LIVE;
+  if (live && live.totals) {
+    data.updated = live.updated;
+    Object.assign(data.totals, live.totals);
+    data.generations.forEach((g) => {
+      const n = live.generations && live.generations[g.id];
+      if (n) Object.assign(g, { launched: n.launched, inOrbit: n.inOrbit, working: n.working, stats: n });
+    });
+  }
+  const fill = (text, g) =>
+    String(text).replace(/\{(?:(t|v10|v15|v2m|v2opt|v2dtc|v3)\.)?(\w+)\}/g, (m, scope, key) => {
+      let src;
+      if (scope === "t") src = data.totals;
+      else if (scope) src = (data.generations.find((x) => x.id === scope) || {}).stats;
+      else src = g && (g.stats || g);
+      const v = src && src[key];
+      return v == null ? m : Number(v).toLocaleString("en-US");
+    });
+  data.generations.forEach((g) => {
+    g.blurb = fill(g.blurb, g);
+    g.facts = g.facts.map((f) => fill(f, g));
+  });
+  data.notes = data.notes.map((n) => fill(n));
+  data.watch.forEach((w) => (w.text = fill(w.text)));
+
+  // One "Updated" line in the visitor's own time zone, e.g. "Updated 13 Oct, 10:30 BST".
+  const when = new Date(/T/.test(data.updated) ? data.updated : `${data.updated}T12:00:00Z`);
+  const stampText = (() => {
+    if (isNaN(when)) return data.updatedLabel || "";
+    const opts = { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZoneName: "short" };
+    if (when.getFullYear() !== new Date().getFullYear()) opts.year = "numeric";
+    const parts = new Intl.DateTimeFormat("en-GB", opts).formatToParts(when);
+    const get = (t) => (parts.find((p) => p.type === t) || {}).value || "";
+    const year = opts.year ? ` ${get("year")}` : "";
+    return `${get("day")} ${get("month")}${year}, ${get("hour")}:${get("minute")} ${get("timeZoneName")}`;
+  })();
+
   const $ = (sel) => document.querySelector(sel);
   const fmt = (n) => Number(n).toLocaleString("en-US");
   const src = data.source || {};
@@ -9,7 +47,8 @@
 
   const stamp = $("#sl-updated");
   if (stamp) {
-    stamp.innerHTML = `Updated <time datetime="${data.updated}">${data.updatedLabel}</time> · ${data.asOf}`;
+    stamp.innerHTML = `Updated <time datetime="${when.toISOString ? when.toISOString() : data.updated}">${stampText}</time>`;
+    stamp.title = "Time of the latest count from Jonathan McDowell’s Starlink statistics, shown in your time zone";
   }
 
   const kpis = [
@@ -79,7 +118,7 @@
 
   const credit = $("#sl-src");
   if (credit) {
-    credit.innerHTML = `Figures: <a href="${src.url}" target="_blank" rel="noopener">${src.label}</a>, ${data.asOf}. Independent tracker. Not affiliated with SpaceX.`;
+    credit.innerHTML = `Figures: <a href="${src.url}" target="_blank" rel="noopener">${src.label}</a>, updated ${stampText}. Independent tracker. Not affiliated with SpaceX.`;
   }
 
   const svg = $("#sl-orbit-svg");

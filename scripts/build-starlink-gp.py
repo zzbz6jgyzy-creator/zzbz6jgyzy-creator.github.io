@@ -163,11 +163,60 @@ def omm_to_tle(row: dict) -> tuple[str, str]:
     return l1, l2
 
 
+SRC = {
+    "gcat": "https://planet4589.org/space/gcat/tsv/cat/satcat.tsv",
+    "gcat100k": "https://planet4589.org/space/gcat/tsv/cat/satcat100k.tsv",
+    "tle": "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=tle",
+    "omm": "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=json",
+}
+
+
+def fetch(url: str, dest: Path, min_size: int = 10000) -> Path:
+    import urllib.request
+    req = urllib.request.Request(url, headers={"User-Agent": "superchargeddaily.com starlink tracker (daily)"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        data = r.read()
+    if len(data) < min_size:
+        raise SystemExit(f"suspiciously small download from {url}: {len(data)} bytes")
+    dest.write_bytes(data)
+    return dest
+
+
 def main() -> None:
-    gcat = parse_gcat(Path("/tmp/gcat.out"))
-    gcat.update(parse_gcat(Path("/tmp/gcat100.out")))
-    tle = parse_tle(Path("/tmp/rawtle.out"))
-    omm = parse_omm(Path("/tmp/satvisor.json"))
+    import tempfile
+    tmp = Path(tempfile.mkdtemp(prefix="starlink-gp-"))
+    gcat = parse_gcat(fetch(SRC["gcat"], tmp / "satcat.tsv"))
+    gcat.update(parse_gcat(fetch(SRC["gcat100k"], tmp / "satcat100k.tsv")))
+    tle = parse_tle(fetch(SRC["tle"], tmp / "starlink.tle"))
+    omm = parse_omm(fetch(SRC["omm"], tmp / "starlink.json"))
+    # Starlinks GCAT lists as in orbit but missing from CelesTrak's Starlink group
+    # (e.g. Starship-launched V3s): fetch them by launch designator.
+    tags = {}
+    for name in ("satcat.tsv", "satcat100k.tsv"):
+        for line in (tmp / name).read_text(encoding="utf-8", errors="replace").splitlines():
+            parts = line.split("\t")
+            if len(parts) > 2 and parts[1].strip().isdigit():
+                tags[int(parts[1])] = parts[2].strip()
+    missing = sorted({tags[c] for c in gcat if c not in tle and c not in omm and c in tags})
+    extra_rows = []
+    for tag in missing[:12]:
+        try:
+            fetch(f"https://celestrak.org/NORAD/elements/gp.php?INTDES={tag}&FORMAT=json", tmp / "x.json", 2)
+            extra_rows += json.loads((tmp / "x.json").read_text())
+        except Exception as exc:
+            print(f"skip {tag}: {exc}")
+    for row in extra_rows:
+        try:
+            c = int(row["NORAD_CAT_ID"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if c in gcat and c not in tle:
+            omm[c] = row
+    print(f"extra launches fetched: {missing[:12]} -> {len(extra_rows)} rows")
+    if len(tle) < 5000 or len(gcat) < 5000:
+        raise SystemExit(f"too few records (tle={len(tle)} gcat={len(gcat)}); not overwriting")
+    epochs = [str(r.get("EPOCH") or "") for r in omm.values()]
+    tle_as_of = max(epochs)[:10] if epochs else datetime.now(timezone.utc).strftime("%Y-%m-%d")
     extra_path = Path("/tmp/extra-omm.json")
     if extra_path.exists():
         for row in json.loads(extra_path.read_text(encoding="utf-8")):
@@ -208,12 +257,12 @@ def main() -> None:
 
     payload = {
         "asOf": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-        "tleAsOf": "2026-10-14",
+        "tleAsOf": tle_as_of,
         "gens": GENS,
         "counts": {g: gens[g] for g in GENS},
         "total": len(tle_sats),
         "sources": {
-            "orbits": "CelesTrak GP (TLE + JSON by international designator)",
+            "orbits": "CelesTrak GP, Starlink group (TLE + JSON)",
             "buses": "Jonathan McDowell, GCAT, CC BY 4.0, https://planet4589.org/space/gcat",
         },
         "tle": tle_sats,

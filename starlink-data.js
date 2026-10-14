@@ -1,9 +1,10 @@
 // Starlink Tracker. Edit this file to refresh the page.
-// Every headline figure is from the linked source. Change `updated` when you edit.
+// Counts come from starlink-live.js (scripts/build-starlink-stats.py, refreshed daily).
+// {launched}, {inOrbit}, {working}, {down}, {drift}, {ascent}, {operational}, {failedToOrbit}
+// in a generation's text use that generation's figure; {t.xxx} uses the constellation total.
 window.STARLINK = {
-  updated: "2026-10-13",
-  updatedLabel: "13 Oct 2026",
-  asOf: "2026 Oct 13 09:30 UTC",
+  // Fallback only; starlink-live.js overrides this with the source's own timestamp.
+  updated: "2026-10-13T09:30:20Z",
   source: {
     label: "Jonathan McDowell, Starlink launch statistics",
     url: "https://planet4589.org/space/con/star/stats.html",
@@ -30,9 +31,9 @@ window.STARLINK = {
       working: 577,
       blurb: "The first production Starlinks. Flat-panel, laser-linked after the early batches, and now the generation SpaceX is retiring fastest.",
       facts: [
-        "1,665 launched · 583 still in orbit · 577 working",
+        "{launched} launched · {inOrbit} still in orbit · {working} working",
         "Early Group 1 flights plus the visor-sat batches (launches 2–17 and 19+)",
-        "Most of the 1,859 re-entries so far are this generation and V1.5",
+        "Most of the {t.down} re-entries so far are this generation and V1.5",
       ],
     },
     {
@@ -45,7 +46,7 @@ window.STARLINK = {
       working: 2553,
       blurb: "Same skateboard as V1.0 with more throughput. Groups 2–5, including the polar and 43° shells that filled in coverage.",
       facts: [
-        "2,987 launched · 2,559 in orbit · 2,553 working",
+        "{launched} launched · {inOrbit} in orbit · {working} working",
         "Group 2, 3, 4 and 5 launches in McDowell’s Gen 1 table",
         "Still a large slice of the working constellation",
       ],
@@ -60,7 +61,7 @@ window.STARLINK = {
       working: 2561,
       blurb: "The first Falcon 9-sized Gen 2 bird. Bigger phased array than V1, flown into the 53°, 43° and a handful of 70° planes.",
       facts: [
-        "2,767 launched · 2,562 in orbit · 2,561 working",
+        "{launched} launched · {inOrbit} in orbit · {working} working",
         "Shells 1–3 in McDowell’s Gen 2 table (not the later “optimized” buses)",
         "Almost all of this generation is still working",
       ],
@@ -75,9 +76,9 @@ window.STARLINK = {
       working: 4788,
       blurb: "The current workhorse. Same Mini class, later bus. This is now the largest slice of Starlink in orbit — and the one Falcon 9 is still stacking.",
       facts: [
-        "4,814 launched · 4,789 in orbit · 4,788 working",
+        "{launched} launched · {inOrbit} in orbit · {working} working",
         "Shells at 53°, 43°, 70° and 97° (Groups 6, 10–13, 15, 17)",
-        "Only 25 of this generation have come down so far",
+        "Only {down} of this generation have come down so far",
       ],
     },
     {
@@ -90,7 +91,7 @@ window.STARLINK = {
       working: 637,
       blurb: "V2 Minis with a cellular payload so ordinary phones can reach Starlink. SpaceX’s licensed direct-to-cell envelope is much larger than the birds already flying.",
       facts: [
-        "674 launched · 637 in orbit · 637 working",
+        "{launched} launched · {inOrbit} in orbit · {working} working",
         "Two shells in McDowell’s table: 53° and 43°",
         "The 15,000 figure on the homepage is the licensed envelope, not sats in orbit",
       ],
@@ -104,10 +105,10 @@ window.STARLINK = {
       inOrbit: 26,
       working: 26,
       failedToOrbit: 20,
-      blurb: "The full-size Gen 2/3 satellite, flown on Super Heavy / Starship. Twenty did not reach orbit. Twenty-six are up — still raising or drifting, none yet marked in an operational shell.",
+      blurb: "The full-size Gen 2/3 satellite, flown on Super Heavy / Starship. Some were lost on flights that did not reach orbit; the rest are still raising or drifting towards their shells.",
       facts: [
-        "46 launched · 20 failed to reach orbit · 26 in orbit and working",
-        "16 drifting · 10 still climbing · 0 in an operational shell (13 Oct)",
+        "{launched} launched · {failedToOrbit} failed to reach orbit · {inOrbit} in orbit · {working} working",
+        "{drift} drifting · {ascent} still climbing · {operational} in an operational shell",
         "McDowell assigns V3 to the Starship-launched Starlinks",
       ],
     },
@@ -127,18 +128,18 @@ window.STARLINK = {
     },
   ],
   notes: [
-    "“Working” is McDowell’s total in orbit minus screened or dead/decaying birds — 11,142 of 11,156 on 13 Oct.",
-    "“Operational orbit” (9,726) means the satellite is in a finished shell. Birds still climbing, drifting or pulled out of the shell can still carry traffic.",
+    "“Working” is McDowell’s total in orbit minus screened or dead/decaying birds — {t.working} of {t.inOrbit} right now.",
+    "“Operational orbit” ({t.operational}) means the satellite is in a finished shell. Birds still climbing, drifting or pulled out of the shell can still carry traffic.",
     "Starshield, SpaceX’s national-security constellation, is not in this table. Those sats are not published as Starlink.",
-    "Dummy V3 simulator articles in square brackets on McDowell’s page are not counted in the 13,015 launched total.",
+    "Dummy V3 simulator articles in square brackets on McDowell’s page are not counted in the {t.launched} launched total.",
   ],
   watch: [
     {
-      text: "First V3 satellites marked in an operational shell — still zero on 13 Oct.",
+      text: "First V3 satellites marked in an operational shell ({v3.operational} so far).",
       src: "https://planet4589.org/space/con/star/stats.html",
     },
     {
-      text: "Starship cadence. V3 only rides Super Heavy; the 26 in orbit came from the flights that reached space.",
+      text: "Starship cadence. V3 only rides Super Heavy; the {v3.inOrbit} in orbit came from the flights that reached space.",
       src: "https://planet4589.org/space/con/star/stats.html",
     },
     {
