@@ -62,7 +62,8 @@ const controls = new OrbitControls(camera, renderer.domElement);
 Object.assign(controls, { enableDamping: true, dampingFactor: 0.07, enablePan: false, enableZoom: true, minDistance: 1.8, maxDistance: 16, minPolarAngle: 0.12, maxPolarAngle: Math.PI / 2 - 0.04, rotateSpeed: coarse ? 0.85 : 0.65, zoomSpeed: 0.7 });
 renderer.domElement.style.touchAction = 'none';
 const HOME = { p: new THREE.Vector3(), t: new THREE.Vector3(0, 0.7, 0.12) };
-const homePos = () => new THREE.Vector3(4.7, 1.68, 5.2).multiplyScalar(portrait() ? 1.55 : 1);
+const HOME_FIT_PORTRAIT = 1.25; // phones: pull back so the truck fits the screen width with a margin
+const homePos = () => new THREE.Vector3(4.7, 1.68, 5.2).multiplyScalar(portrait() ? 1.55 * HOME_FIT_PORTRAIT : 1);
 
 const parts = {};
 const HIDDEN_UNTIL_EXPLODE = new Set(['battery', 'rearMotor', 'frontMotor', 'inverter', 'lv', 'steer', 'vault', 'frunk', 'susp', 'hvac', 'display', 'brakes']);
