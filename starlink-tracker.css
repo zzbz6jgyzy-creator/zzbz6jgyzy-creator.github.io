@@ -1,0 +1,155 @@
+/* Starlink Tracker — scoped to starlink.html */
+.sl-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
+  gap: 1.5rem 2rem;
+  align-items: center;
+  width: min(100% - 2.5rem, var(--max));
+  margin: 0 auto;
+  padding: 1.7rem 0 0.4rem;
+}
+.sl-hero-copy h1 {
+  font-size: clamp(2.1rem, 5.4vw, 3.4rem);
+  margin: 0.25rem 0 0.7rem;
+  letter-spacing: -0.03em;
+}
+.sl-hero-copy h1 span { color: #e31937; }
+.sl-hero-copy p {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.sl-hero-copy .meta { margin-top: 0.85rem; }
+.sl-orbit {
+  margin: 0;
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 28rem;
+  justify-self: end;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 42% 38%, rgba(80, 110, 160, 0.22), transparent 42%),
+    radial-gradient(circle at 50% 50%, #12151c, #07080c 72%);
+  overflow: hidden;
+}
+.sl-orbit svg { display: block; width: 100%; height: 100%; }
+.sl-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+.sl-stack-panel,
+.sl-card,
+.sl-note {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.sl-stack-panel { padding: 1rem 1.1rem 1.15rem; }
+.sl-stack-panel h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+.sl-stack-panel p { margin: 0 0 0.85rem; color: var(--ink-soft); font-size: 0.92rem; }
+.sl-stack {
+  display: flex;
+  height: 2.15rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0b0c10;
+}
+.sl-stack i {
+  display: block;
+  height: 100%;
+  min-width: 2px;
+}
+.sl-stack-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.sl-stack-keys b { color: var(--ink); font-family: var(--font-mono); }
+.sl-stack-keys i {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+  vertical-align: -0.05rem;
+}
+.sl-gens {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+.sl-card { padding: 1rem 1.05rem 1rem; min-width: 0; }
+.sl-card-k {
+  margin: 0 0 0.35rem;
+  font: 600 0.7rem/1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.sl-card h3 { margin: 0 0 0.45rem; font-size: 1.35rem; letter-spacing: -0.02em; }
+.sl-card .sl-n {
+  margin: 0 0 0.55rem;
+  font: 700 clamp(1.8rem, 4vw, 2.4rem)/1 var(--font-mono);
+  letter-spacing: -0.03em;
+}
+.sl-bar {
+  height: 6px;
+  border-radius: 99px;
+  background: #22242a;
+  overflow: hidden;
+  margin: 0 0 0.7rem;
+}
+.sl-bar span { display: block; height: 100%; border-radius: inherit; }
+.sl-card p { margin: 0 0 0.65rem; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; }
+.sl-card ul { margin: 0; padding: 0; list-style: none; }
+.sl-card li {
+  position: relative;
+  padding: 0.32rem 0 0.32rem 0.9rem;
+  font-size: 0.84rem;
+  color: var(--ink);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.sl-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dot, #e31937);
+}
+.sl-retired {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.sl-note { padding: 0.85rem 1rem; }
+.sl-note h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+.sl-note p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.45; }
+.sl-fine, .sl-src {
+  color: var(--mute);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.sl-src { margin: 0.8rem 0 0; }
+.sl-watch { margin: 0; padding-left: 1.15rem; color: var(--ink-soft); }
+.sl-watch li { margin: 0 0 0.45rem; }
+@media (max-width: 960px) {
+  .sl-hero { grid-template-columns: 1fr; }
+  .sl-orbit { max-width: 22rem; justify-self: start; }
+  .sl-kpis { grid-template-columns: 1fr 1fr; }
+  .sl-gens, .sl-retired { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .sl-hero { width: 100%; padding: 1.2rem 1.25rem 0.2rem; box-sizing: border-box; }
+}
