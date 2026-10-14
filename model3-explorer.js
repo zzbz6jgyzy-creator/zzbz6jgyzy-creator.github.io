@@ -61,7 +61,8 @@ const HOME = { p: new THREE.Vector3(), t: new THREE.Vector3(0, 0.7, 0) };
 // the same camera-distance-to-car-length ratio (CT offset (4.7, 0.98, 5.08) for 5.682 m).
 const HOME_FIT = 1.02, HOME_FIT_PORTRAIT = 1.2; // tuned so the car looks the same size as the Cybertruck on first load (desktop) and fits the phone width
 const HOME_OFF = new THREE.Vector3(4.7, 0.98, 5.08).multiplyScalar(EXTERIOR.length / 5.682 * HOME_FIT);
-const homePos = () => HOME.t.clone().add(HOME_OFF.clone().multiplyScalar(portrait() ? 1.55 * HOME_FIT_PORTRAIT : 1));
+const HOME_ZOOM_OUT = 1.10; // opening view ~10% further out (Alex, 14 Oct)
+const homePos = () => HOME.t.clone().add(HOME_OFF.clone().multiplyScalar((portrait() ? 1.55 * HOME_FIT_PORTRAIT : 1) * HOME_ZOOM_OUT));
 
 // ---------- registry ----------
 const parts = {};

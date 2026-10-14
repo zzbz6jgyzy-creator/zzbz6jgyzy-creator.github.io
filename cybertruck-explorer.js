@@ -63,7 +63,8 @@ Object.assign(controls, { enableDamping: true, dampingFactor: 0.07, enablePan: f
 renderer.domElement.style.touchAction = 'none';
 const HOME = { p: new THREE.Vector3(), t: new THREE.Vector3(0, 0.7, 0.12) };
 const HOME_FIT_PORTRAIT = 1.25; // phones: pull back so the truck fits the screen width with a margin
-const homePos = () => new THREE.Vector3(4.7, 1.68, 5.2).multiplyScalar(portrait() ? 1.55 * HOME_FIT_PORTRAIT : 1);
+const HOME_ZOOM_OUT = 1.10; // opening view ~10% further out (Alex, 14 Oct)
+const homePos = () => new THREE.Vector3(4.7, 1.68, 5.2).multiplyScalar(portrait() ? 1.55 * HOME_FIT_PORTRAIT : 1).multiplyScalar(HOME_ZOOM_OUT);
 
 const parts = {};
 const HIDDEN_UNTIL_EXPLODE = new Set(['battery', 'rearMotor', 'frontMotor', 'inverter', 'lv', 'steer', 'vault', 'frunk', 'susp', 'hvac', 'display', 'brakes']);
