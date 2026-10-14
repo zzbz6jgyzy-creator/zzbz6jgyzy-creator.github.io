@@ -57,7 +57,10 @@ const controls = new OrbitControls(camera, renderer.domElement);
 Object.assign(controls, { enableDamping: true, dampingFactor: 0.07, enablePan: false, enableZoom: true, minDistance: 1.6, maxDistance: 14, minPolarAngle: 0.12, maxPolarAngle: Math.PI / 2 - 0.04, rotateSpeed: coarse ? 0.85 : 0.65, zoomSpeed: 0.7 });
 renderer.domElement.style.touchAction = 'none';
 const HOME = { p: new THREE.Vector3(), t: new THREE.Vector3(0, 0.7, 0) };
-const homePos = () => new THREE.Vector3(5.4, 2.3, 6.0).multiplyScalar(portrait() ? 1.55 : 1);
+// Opening framing matches the Cybertruck Explorer: same 3/4 view direction and
+// the same camera-distance-to-car-length ratio (CT offset (4.7, 0.98, 5.08) for 5.682 m).
+const HOME_OFF = new THREE.Vector3(4.7, 0.98, 5.08).multiplyScalar(EXTERIOR.length / 5.682);
+const homePos = () => HOME.t.clone().add(HOME_OFF.clone().multiplyScalar(portrait() ? 1.55 : 1));
 
 // ---------- registry ----------
 const parts = {};
