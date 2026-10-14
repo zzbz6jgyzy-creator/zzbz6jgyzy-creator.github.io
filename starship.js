@@ -1,4 +1,5 @@
 (() => {
+const main = () => {
   const data = window.STARSHIP;
   if (!data) return;
 
@@ -187,4 +188,18 @@
   });
 
   render();
+};
+  // Shared event dates (/data/events.json) override the bundled fallback so pages can't drift.
+  fetch("/data/events.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => {
+      const ev = j && j.events && j.events["starship-flight-15"];
+      const d = window.STARSHIP;
+      if (ev && d && d.next && d.next.flight === 15) {
+        d.next.start = `${ev.date}T00:00:00Z`;
+        if (ev.summary) d.next.tested = ev.summary;
+      }
+    })
+    .catch(() => {})
+    .finally(main);
 })();
