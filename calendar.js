@@ -103,7 +103,7 @@
     {
       id: "ll-ussf-481",
       title: "Falcon 9 · USSF-481",
-      start: "2026-10-15T23:44:00Z",
+      start: "2026-10-15T23:57:00Z",
       group: "spacex",
       where: "Vandenberg · SLC-4E",
       status: "go",
