@@ -1,0 +1,1240 @@
+{
+ "schema_version": 1,
+ "updated": "2026-10-15",
+ "promises": [
+  {
+   "id": "fsd-90-percent-2013",
+   "title": "90% of miles autonomous within three years",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2013-09",
+   "quote": "Tesla is working towards a car that can drive itself for about 90 percent of miles within three years.",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "IEEE Spectrum",
+    "title": "Tesla Working Towards 90 Percent Autonomous Car Within Three Years",
+    "url": "https://spectrum.ieee.org/tesla-working-towards-90-autonomous-car-within-three-years",
+    "date": "2013-09-18"
+   },
+   "deadline": "2016",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Paraphrase of the IEEE Spectrum headline; the article body could not be loaded to verify Musk's exact words."
+  },
+  {
+   "id": "summon-across-country-2018",
+   "title": "Summon your car from across the country within two years",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2016-01-10",
+   "quote": "I think that within two years, you'll be able to summon your car from across the country",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Verge",
+    "title": "Elon Musk predicts a Tesla will be able to drive itself across the country in 2018",
+    "url": "https://www.theverge.com/2016/1/10/10746020/elon-musk-tesla-autonomous-driving-predictions-summon",
+    "date": "2016-01-10"
+   },
+   "deadline": "2018",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "la-to-nyc-demo-2017",
+   "title": "Coast-to-coast autonomous demo drive by end of 2017",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2016-10-19",
+   "quote": "we'll be able to do a demonstration drive of full autonomy all the way from LA to New York ... by the end of next year",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "TechCrunch",
+    "title": "Musk targeting coast-to-coast test drive of fully self-driving Tesla by late 2017",
+    "url": "https://techcrunch.com/2016/10/19/musk-targeting-coast-to-coast-test-drive-of-fully-self-driving-tesla-by-late-2017/",
+    "date": "2016-10-19"
+   },
+   "deadline": "2017-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "No public no-intervention coast-to-coast demo was found in the sources checked."
+  },
+  {
+   "id": "fsd-feature-complete-2019",
+   "title": "FSD \"feature complete\" in 2019",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2019-02-19",
+   "quote": "I think we will be feature complete — full self-driving — this year",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "CNBC",
+    "title": "Elon Musk: Tesla will have all its self-driving car features by the end of the year",
+    "url": "https://www.cnbc.com/2019/02/19/elon-musk-tesla-will-have-all-its-self-driving-car-features-by-the-end-of-the-year.html",
+    "date": "2019-02-19"
+   },
+   "deadline": "2019-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "million-robotaxis-2020",
+   "title": "Over a million robotaxis on the road in 2020",
+   "company": "Tesla",
+   "topic": "Robotaxi / Cybercab",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2019-04-22",
+   "quote": "next year for sure, we'll have over a million robotaxis on the road",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "TechCrunch",
+    "title": "Tesla plans to launch a robotaxi network in 2020",
+    "url": "https://techcrunch.com/2019/04/22/tesla-plans-to-launch-a-robotaxi-network-in-2020/",
+    "date": "2019-04-22"
+   },
+   "deadline": "2020-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Tesla's official Robotaxi page lists rides in six US metro areas (Austin, Dallas, Houston, Miami, Orlando and Tampa), far from a million vehicles.",
+     "source": {
+      "outlet": "Tesla",
+      "title": "Robotaxi (official page)",
+      "url": "https://www.tesla.com/robotaxi",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Musk said at the time this would require regulatory approval."
+  },
+  {
+   "id": "level-five-basic-2020",
+   "title": "Basic Level 5 functionality complete in 2020",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2020-07-09",
+   "quote": "I remain confident that we will have the basic functionality for level five autonomy complete this year.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "BBC News",
+    "title": "Elon Musk says full self-driving Tesla tech 'very close'",
+    "url": "https://www.bbc.com/news/technology-53349313",
+    "date": "2020-07-09"
+   },
+   "deadline": "2020-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "better-than-human-2021",
+   "title": "Car drives itself more reliably than a human in 2021",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2021-01-27",
+   "quote": "I'm highly confident the car will drive itself for the reliability in excess of a human this year.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "Tesla (TSLA) Q4 2020 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2021/01/27/tesla-tsla-q4-2020-earnings-call-transcript/",
+    "date": "2021-01-27"
+   },
+   "deadline": "2021-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "robotaxi-volume-2024",
+   "title": "Dedicated robotaxi in volume production in 2024",
+   "company": "Tesla",
+   "topic": "Robotaxi / Cybercab",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2022-04-20",
+   "quote": "I think can be very powerful product where we aspire to reach volume production in 2024",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "TechCrunch",
+    "title": "Musk says Tesla aspires to mass produce robotaxis by 2024",
+    "url": "https://techcrunch.com/2022/04/20/elon-musk-mass-produce-robotaxi-by-2024/",
+    "date": "2022-04-20"
+   },
+   "deadline": "2024-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Cybercab production began in April 2026; Musk said early production would be \"very slow\".",
+     "source": {
+      "outlet": "CNET",
+      "title": "Cybercab Begins Production, but Elon Musk Says It Will Be 'Very Slow' to Start",
+      "url": "https://www.cnet.com/roadshow/news/tesla-cybercab-begins-production/",
+      "date": "2026-04-24"
+     },
+     "date": "2026-04-24"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "starship-orbit-2022",
+   "title": "Starship to orbit by end of 2022",
+   "company": "SpaceX",
+   "topic": "Starship",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX and Tesla",
+   "said_on": "2022-08-29",
+   "quote": "The two technologies I am focused on, trying to ideally get done before the end of the year, are getting our Starship into orbit… and then having Tesla cars to be able to do self-driving",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "Teslarati",
+    "title": "Tesla is focused on FSD wide release by end of 2022: Elon Musk",
+    "url": "https://www.teslarati.com/tesla-focused-fsd-wide-release-late-2022-elon-musk/",
+    "date": "2022-08-29"
+   },
+   "deadline": "2022-12-31",
+   "status": "Delivered late",
+   "evidence": [
+    {
+     "text": "Starship reached orbit for the first time on Flight 14 and deployed next-generation Starlink satellites.",
+     "source": {
+      "outlet": "Ars Technica",
+      "title": "SpaceX's Starship goes orbital, deploying first next-gen Starlinks",
+      "url": "https://arstechnica.com/space/2026/09/starships-first-orbital-launch-gives-lift-to-spacexs-next-gen-starlinks/",
+      "date": "2026-09-28"
+     },
+     "date": "2026-09-28"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Stated as an aim (\"ideally\"), at the ONS conference in Stavanger, Norway."
+  },
+  {
+   "id": "full-autonomy-2023",
+   "title": "Full autonomy \"gonna happen this year\" (2023)",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2023-05-16",
+   "quote": "I mean, it does look like it's gonna happen this year.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "CNBC",
+    "title": "CNBC Transcript: Elon Musk Sits Down with CNBC's David Faber",
+    "url": "https://www.cnbc.com/2023/05/16/cnbc-exclusive-cnbc-transcript-elon-musk-sits-down-with-cnbcs-david-faber-live-on-cnbc-tonight-.html",
+    "date": "2023-05-16"
+   },
+   "deadline": "2023-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Said in answer to when Tesla would have full autonomy; Musk stressed it was his opinion."
+  },
+  {
+   "id": "unsupervised-fsd-tx-ca-2025",
+   "title": "Unsupervised FSD in Texas and California in 2025",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2024-10-10",
+   "quote": "We do expect to start fully autonomous, unsupervised FSD in Texas and California next year. And that's with the Model 3 and Model Y.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Drive",
+    "title": "Here's Everything Tesla Claimed It Will Make Last Night: A Taxi, a Bus, and a Robot",
+    "url": "https://www.thedrive.com/news/heres-everything-tesla-claimed-it-will-make-last-night-a-taxi-a-bus-and-a-robot",
+    "date": "2024-10-11"
+   },
+   "deadline": "2025-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "The first public robotaxi rides with no safety monitor began in Austin on 22 January 2026, after the deadline and only in Tesla's own fleet.",
+     "source": {
+      "outlet": "The Verge",
+      "title": "Tesla is finally doing unsupervised robotaxi rides",
+      "url": "https://www.theverge.com/transportation/866165/tesla-robotaxi-unsupervised-austin-texas-safety-monitor",
+      "date": "2026-01-22"
+     },
+     "date": "2026-01-22"
+    },
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Partly met late in Texas via the robotaxi fleet; customer cars and California were not unsupervised by the deadline."
+  },
+  {
+   "id": "cybercab-production-before-2027",
+   "title": "Cybercab in production \"before 2027\"",
+   "company": "Tesla",
+   "topic": "Robotaxi / Cybercab",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2024-10-10",
+   "quote": "we expect to be in production with the Cybercab in probably—well, I tend to be a little optimistic with the timeframes—in 2026. So, yeah. Before 2027",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Drive",
+    "title": "Here's Everything Tesla Claimed It Will Make Last Night: A Taxi, a Bus, and a Robot",
+    "url": "https://www.thedrive.com/news/heres-everything-tesla-claimed-it-will-make-last-night-a-taxi-a-bus-and-a-robot",
+    "date": "2024-10-11"
+   },
+   "deadline": "2026-12-31",
+   "status": "Delivered",
+   "evidence": [
+    {
+     "text": "Cybercab production began; Musk said early production would be \"very slow\".",
+     "source": {
+      "outlet": "CNET",
+      "title": "Cybercab Begins Production, but Elon Musk Says It Will Be 'Very Slow' to Start",
+      "url": "https://www.cnet.com/roadshow/news/tesla-cybercab-begins-production/",
+      "date": "2026-04-24"
+     },
+     "date": "2026-04-24"
+    },
+    {
+     "text": "Tesla says more than 300 Cybercabs are serving Austin.",
+     "source": {
+      "outlet": "Teslarati",
+      "title": "Tesla's Cybercab fleet jumped 8x in a month, with Dallas up next",
+      "url": "https://www.teslarati.com/tesla-cybercab-dallas/",
+      "date": "2026-10-11"
+     },
+     "date": "2026-10-11"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "austin-unsupervised-june-2025",
+   "title": "Unsupervised paid FSD service in Austin in June 2025",
+   "company": "Tesla",
+   "topic": "Robotaxi / Cybercab",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2025-01-29",
+   "quote": "we're going to be launching unsupervised full self-driving as a paid service in Austin in June.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "Tesla (TSLA) Q4 2024 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2025/01/29/tesla-tsla-q4-2024-earnings-call-transcript/",
+    "date": "2025-01-29"
+   },
+   "deadline": "2025-06-30",
+   "status": "Delivered late",
+   "evidence": [
+    {
+     "text": "The Austin robotaxi service launched on 22 June 2025 with a small fleet, a limited area and a Tesla safety employee on board.",
+     "source": {
+      "outlet": "BBC News",
+      "title": "Tesla robotaxi 'low-key' launch in Texas",
+      "url": "https://www.bbc.com/news/articles/cjwnlje3yp1o",
+      "date": "2025-06-22"
+     },
+     "date": "2025-06-22"
+    },
+    {
+     "text": "Public rides with no safety monitor in the car began on 22 January 2026.",
+     "source": {
+      "outlet": "Teslarati",
+      "title": "Tesla launches public Robotaxi rides in Austin with no Safety Monitor",
+      "url": "https://www.teslarati.com/tesla-launches-robotaxi-rides-in-austin-with-no-safety-monitor/",
+      "date": "2026-01-22"
+     },
+     "date": "2026-01-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Judgment call: the paid service launched on time, but with a safety monitor in the car, so we count fully unsupervised rides (Jan 2026) as the delivery date."
+  },
+  {
+   "id": "sleep-in-car-2025",
+   "title": "Sleep in your car in many US cities by end of 2025",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2025-04-22",
+   "quote": "The acid test is, can you go to sleep in your car and wake up in your destination and I'm confident that will be available in many cities in the US by the end of this year.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Guardian",
+    "title": "Elon Musk to pull back in Doge role starting May amid 71% dip in Tesla profits",
+    "url": "https://www.theguardian.com/technology/2025/apr/22/tesla-sales-musk-white-house-exit",
+    "date": "2025-04-22"
+   },
+   "deadline": "2025-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "factory-to-customer-june-28",
+   "title": "First self-driving delivery from factory to customer on 28 June 2025",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2025-06-11",
+   "quote": "First Tesla that drives itself from factory end of line all the way to a customer house is June 28.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "CNET",
+    "title": "Elon Musk Says Tesla's Robotaxi Service Will 'Tentatively' Kick Off June 22 in Austin",
+    "url": "https://www.cnet.com/roadshow/news/elon-musk-says-teslas-robotaxi-service-will-tentatively-kick-off-june-22-in-austin/",
+    "date": "2025-06-11"
+   },
+   "deadline": "2025-06-28",
+   "status": "Delivered",
+   "evidence": [
+    {
+     "text": "Tesla said a Model Y drove itself from Giga Texas to a customer's home a day early; Musk said no people were in the car and no remote operators were in control.",
+     "source": {
+      "outlet": "The Verge",
+      "title": "Tesla says it delivered its first car autonomously from factory to customer",
+      "url": "https://www.theverge.com/news/694801/tesla-autonomous-delivery-factory-customer-robotaxi",
+      "date": "2025-06-28"
+     },
+     "date": "2025-06-28"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "The 'no remote operators' detail is Tesla's own claim, as reported."
+  },
+  {
+   "id": "ride-hailing-half-us-2025",
+   "title": "Autonomous ride-hailing for half the US population by end of 2025",
+   "company": "Tesla",
+   "topic": "Robotaxi / Cybercab",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2025-07-23",
+   "quote": "I think we will probably have autonomous ride-hailing in probably half the population of the US by the end of the year. That's at least our goal, subject to regulatory approvals.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "Tesla (TSLA) Q2 2025 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2025/07/23/tesla-tsla-q2-2025-earnings-call-transcript/",
+    "date": "2025-07-23"
+   },
+   "deadline": "2025-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Tesla's official Robotaxi page lists rides in Austin, Dallas, Houston, Miami, Orlando and Tampa.",
+     "source": {
+      "outlet": "Tesla",
+      "title": "Robotaxi (official page)",
+      "url": "https://www.tesla.com/robotaxi",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "unsupervised-personal-2025",
+   "title": "Unsupervised FSD for personal use by end of 2025",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2025-07-23",
+   "quote": "I think it will be available for unsupervised personal use by the end of this year in certain geographies.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "Tesla (TSLA) Q2 2025 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2025/07/23/tesla-tsla-q2-2025-earnings-call-transcript/",
+    "date": "2025-07-23"
+   },
+   "deadline": "2025-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Customer FSD is still sold as supervised. On the Q1 2026 call Musk guessed unsupervised FSD for customer cars would come \"probably in the, Fourth quarter\" of 2026.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     },
+     "date": "2026-04-22"
+    }
+   ],
+   "revisions": [
+    {
+     "date": "2026-04-22",
+     "text": "Musk: \"probably\" Q4 2026 for customer cars.",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Aims for Q4 Unsupervised FSD Release to Customers",
+      "url": "https://teslanorth.com/2026/04/22/tesla-aims-for-q4-unsupervised-fsd-release-to-customers/",
+      "date": "2026-04-22"
+     }
+    }
+   ],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "no-safety-driver-end-2025",
+   "title": "No robotaxi safety driver by end of 2025",
+   "company": "Tesla",
+   "topic": "Robotaxi / Cybercab",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2025-09-04",
+   "quote": "The safety driver is just there for the first few months to be extra safe. Should be no safety driver by end of year.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "Teslarati",
+    "title": "Elon Musk says Tesla will take Safety Drivers out of Robotaxi: here's when",
+    "url": "https://www.teslarati.com/elon-musk-tesla-will-take-safety-drivers-out-robotaxi-heres-when/",
+    "date": "2025-09-04"
+   },
+   "deadline": "2025-12-31",
+   "status": "Delivered late",
+   "evidence": [
+    {
+     "text": "Tesla began public Austin robotaxi rides with no safety monitor on 22 January 2026.",
+     "source": {
+      "outlet": "Teslarati",
+      "title": "Tesla launches public Robotaxi rides in Austin with no Safety Monitor",
+      "url": "https://www.teslarati.com/tesla-launches-robotaxi-rides-in-austin-with-no-safety-monitor/",
+      "date": "2026-01-22"
+     },
+     "date": "2026-01-22"
+    },
+    {
+     "text": "Tesla lists autonomous rides in Austin, Dallas, Houston, Miami, Orlando and Tampa.",
+     "source": {
+      "outlet": "Tesla",
+      "title": "Robotaxi (official page)",
+      "url": "https://www.tesla.com/robotaxi",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Judgment call: met in Austin about three weeks late, starting with a few vehicles."
+  },
+  {
+   "id": "cybercab-production-april-2026",
+   "title": "Cybercab production to start in April 2026",
+   "company": "Tesla",
+   "topic": "Robotaxi / Cybercab",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2026-01-28",
+   "quote": "We expect to start production in April.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "Tesla (TSLA) Q4 2025 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript/",
+    "date": "2026-01-28"
+   },
+   "deadline": "2026-04-30",
+   "status": "Delivered",
+   "evidence": [
+    {
+     "text": "CNET reported Cybercab production had begun, at a \"very slow\" initial rate.",
+     "source": {
+      "outlet": "CNET",
+      "title": "Cybercab Begins Production, but Elon Musk Says It Will Be 'Very Slow' to Start",
+      "url": "https://www.cnet.com/roadshow/news/tesla-cybercab-begins-production/",
+      "date": "2026-04-24"
+     },
+     "date": "2026-04-24"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "autonomy-quarter-half-us-2026",
+   "title": "Fully autonomous vehicles in a quarter to half of the US by end of 2026",
+   "company": "Tesla",
+   "topic": "Robotaxi / Cybercab",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2026-01-28",
+   "quote": "We expect to have fully autonomous vehicles in probably somewhere between a quarter and half of the United States by the end of the year, pending regulatory approval.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "Tesla (TSLA) Q4 2025 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript/",
+    "date": "2026-01-28"
+   },
+   "deadline": "2026-12-31",
+   "status": "In progress",
+   "evidence": [
+    {
+     "text": "Tesla lists robotaxi rides in six US metro areas: Austin, Dallas, Houston, Miami, Orlando and Tampa.",
+     "source": {
+      "outlet": "Tesla",
+      "title": "Robotaxi (official page)",
+      "url": "https://www.tesla.com/robotaxi",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "optimus-factories-2025",
+   "title": "Over 1,000 Optimus robots working at Tesla in 2025",
+   "company": "Tesla",
+   "topic": "Optimus",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2024-06-13",
+   "quote": "over 1,000, or a few thousand, Optimus robots working at Tesla",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "CNBC",
+    "title": "Elon Musk says Optimus robots could make Tesla $25 trillion company",
+    "url": "https://www.cnbc.com/2024/06/13/elon-musk-says-optimus-robots-could-make-tesla-25-trillion-company-.html",
+    "date": "2024-06-13"
+   },
+   "deadline": "2025-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "In January 2026 Tesla said Optimus was \"not in usage in our factories in a material way\".",
+     "source": {
+      "outlet": "The Motley Fool",
+      "title": "Tesla (TSLA) Q4 2025 Earnings Call Transcript",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript/",
+      "date": "2026-01-28"
+     },
+     "date": "2026-01-28"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Quote as reported by CNBC from the 2024 shareholder meeting."
+  },
+  {
+   "id": "optimus-10000-2025",
+   "title": "Roughly 10,000 Optimus built in 2025, \"several thousand\" doing useful things",
+   "company": "Tesla",
+   "topic": "Optimus",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2025-01-29",
+   "quote": "The normal internal plan calls for roughly 10,000 Optimus robots to be built this year. Will we succeed in building 10,000 exactly by the end of December this year? Probably not, but will we succeed in making several thousand? Yes, I think we will.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "Tesla (TSLA) Q4 2024 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2025/01/29/tesla-tsla-q4-2024-earnings-call-transcript/",
+    "date": "2025-01-29"
+   },
+   "deadline": "2025-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "TechSpot, citing The Information, reported Tesla paused mass production over hand and forearm design problems.",
+     "source": {
+      "outlet": "TechSpot",
+      "title": "Tesla temporarily halts mass production of Optimus robots citing design challenges",
+      "url": "https://www.techspot.com/news/109781-tesla-temporarily-halts-mass-production-optimus-robots-citing.html",
+      "date": "2025-10-08"
+     },
+     "date": "2025-10-08"
+    },
+    {
+     "text": "Tesla said Optimus was \"not in usage in our factories in a material way\" and still \"in the R&D phase\".",
+     "source": {
+      "outlet": "The Motley Fool",
+      "title": "Tesla (TSLA) Q4 2025 Earnings Call Transcript",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript/",
+      "date": "2026-01-28"
+     },
+     "date": "2026-01-28"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "optimus-3-unveil-2026",
+   "title": "Optimus 3 unveil \"in a few months\"",
+   "company": "Tesla",
+   "topic": "Optimus",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2026-01-28",
+   "quote": "We will probably unveil Optimus 3 in a few months.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "Tesla (TSLA) Q4 2025 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript/",
+    "date": "2026-01-28"
+   },
+   "deadline": "2026-06-30",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Embodied Wire's tracker: pushed to \"probably middle of this year\" in April; not unveiled as of late September 2026.",
+     "source": {
+      "outlet": "Embodied Wire",
+      "title": "Tesla Optimus V3 tracker",
+      "url": "https://embodiedwire.com/tesla-optimus-v3-production-tracker",
+      "date": "2026-09-28"
+     },
+     "date": "2026-09-28"
+    }
+   ],
+   "revisions": [
+    {
+     "date": "2026-04",
+     "text": "Target moved to \"probably middle of this year\".",
+     "source": {
+      "outlet": "Embodied Wire",
+      "title": "Tesla Optimus V3 tracker",
+      "url": "https://embodiedwire.com/tesla-optimus-v3-production-tracker",
+      "date": "2026-09-28"
+     }
+    }
+   ],
+   "last_verified": "2026-10-15",
+   "note": "Judgment call: \"a few months\" was read as by mid-2026, the date Musk later gave."
+  },
+  {
+   "id": "roadster-production-2020",
+   "title": "Next-gen Roadster production in 2020",
+   "company": "Tesla",
+   "topic": "Roadster",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2017-11-16",
+   "quote": "Musk said production isn't scheduled to start until 2020",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "The Verge",
+    "title": "Tesla's new second-generation Roadster will be the quickest production car ever made",
+    "url": "https://www.theverge.com/2017/11/17/16669024/tesla-roadster-2017-fastest-car-world",
+    "date": "2017-11-17"
+   },
+   "deadline": "2020-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "Tesla is set to unveil the redesigned Roadster on 15 Oct 2026; reservations are still $50,000.",
+     "source": {
+      "outlet": "Reuters via Investing.com",
+      "title": "Tesla set to unveil next generation Roadster sports EV after years of delay",
+      "url": "https://www.investing.com/news/stock-market-news/tesla-set-to-unveil-next-generation-roadster-sports-ev-after-years-of-delay-4951021",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    }
+   ],
+   "revisions": [
+    {
+     "date": "2021-01-29",
+     "text": "Musk: production \"next year\" (2022).",
+     "source": {
+      "outlet": "The Verge",
+      "title": "Tesla Roadster production delayed to 2022",
+      "url": "https://www.theverge.com/2021/1/29/22255902/tesla-roadster-production-2022-elon-musk-ceo-tweet",
+      "date": "2021-01-29"
+     }
+    },
+    {
+     "date": "2024-02-28",
+     "text": "Musk: unveil the design by end of 2024 and ship in 2025.",
+     "source": {
+      "outlet": "Car and Driver",
+      "title": "Tesla Roadster Promised in 2025 with Sub-1-Second 0-to-60 Time",
+      "url": "https://www.caranddriver.com/news/a60006649/tesla-roadster-coming-deposits-details/",
+      "date": "2024-02-28"
+     }
+    },
+    {
+     "date": "2026-10-15",
+     "text": "Unveil event scheduled at a SpaceX site in McGregor, Texas.",
+     "source": {
+      "outlet": "Reuters via Investing.com",
+      "title": "Tesla set to unveil next generation Roadster sports EV after years of delay",
+      "url": "https://www.investing.com/news/stock-market-news/tesla-set-to-unveil-next-generation-roadster-sports-ev-after-years-of-delay-4951021",
+      "date": "2026-10-15"
+     }
+    }
+   ],
+   "last_verified": "2026-10-15",
+   "note": "Reported speech from The Verge, not a direct quote. Status will be re-checked after the 15 Oct 2026 unveil."
+  },
+  {
+   "id": "roadster-ship-2025",
+   "title": "Roadster unveil by end of 2024, shipping in 2025",
+   "company": "Tesla",
+   "topic": "Roadster",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2024-02-28",
+   "quote": "Musk said he is hoping to complete and unveil the design of the Roadster by the end of this year and start to ship the car in 2025.",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "Car and Driver",
+    "title": "Tesla Roadster Promised in 2025 with Sub-1-Second 0-to-60 Time",
+    "url": "https://www.caranddriver.com/news/a60006649/tesla-roadster-coming-deposits-details/",
+    "date": "2024-02-28"
+   },
+   "deadline": "2025-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "The unveil is scheduled for 15 Oct 2026, nearly two years after the target.",
+     "source": {
+      "outlet": "Reuters via Investing.com",
+      "title": "Tesla set to unveil next generation Roadster sports EV after years of delay",
+      "url": "https://www.investing.com/news/stock-market-news/tesla-set-to-unveil-next-generation-roadster-sports-ev-after-years-of-delay-4951021",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Car and Driver's reported summary of Musk's post on X."
+  },
+  {
+   "id": "semi-production-2019",
+   "title": "Tesla Semi in production in 2019",
+   "company": "Tesla",
+   "topic": "Semi",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2017-11-16",
+   "quote": "a truck that isn't even planned to start production until 2019",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "The Verge",
+    "title": "Everything we learned from the Tesla Semi and Roadster event",
+    "url": "https://www.theverge.com/2017/11/17/16655800/tesla-electric-semi-truck-roadster-recap-elon-musk",
+    "date": "2017-11-17"
+   },
+   "deadline": "2019-12-31",
+   "status": "Delivered late",
+   "evidence": [
+    {
+     "text": "First Semis went to customers including PepsiCo in late 2022, built on a pilot line; deliveries from the high-volume Nevada line began in 2026.",
+     "source": {
+      "outlet": "Fox Business",
+      "title": "Tesla Semi deliveries begin with PepsiCo and DHL as first customers",
+      "url": "https://www.foxbusiness.com/markets/tesla-begins-delivering-semi-trucks-customers-after-years-delays",
+      "date": "2026-09"
+     },
+     "date": "2026-09"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "The production target was stated at the 2017 unveiling; this wording is The Verge's."
+  },
+  {
+   "id": "cybertruck-production-2021",
+   "title": "Cybertruck production in 2021",
+   "company": "Tesla",
+   "topic": "Cybertruck",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2019-11-21",
+   "quote": "Production begins in 2021 and the starting price is $39,900.",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "CNBC",
+    "title": "Tesla unveils its first electric pickup, the Cybertruck, starting at $39,900",
+    "url": "https://www.cnbc.com/2019/11/21/tesla-cybertruck-unveiled.html",
+    "date": "2019-11-21"
+   },
+   "deadline": "2021-12-31",
+   "status": "Delivered late",
+   "evidence": [
+    {
+     "text": "Cybertruck deliveries began on 30 November 2023, about two years after the initial target.",
+     "source": {
+      "outlet": "NPR",
+      "title": "After a 2-year delay, deliveries of Tesla's Cybertruck began Thursday",
+      "url": "https://www.npr.org/2023/11/30/1216083781/tesla-cybertruck-release-musk",
+      "date": "2023-11-30"
+     },
+     "date": "2023-11-30"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "CNBC's summary of the unveiling."
+  },
+  {
+   "id": "cybertruck-price-39900",
+   "title": "Cybertruck starting at $39,900",
+   "company": "Tesla",
+   "topic": "Cybertruck",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2019-11-21",
+   "quote": "Production begins in 2021 and the starting price is $39,900.",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "CNBC",
+    "title": "Tesla unveils its first electric pickup, the Cybertruck, starting at $39,900",
+    "url": "https://www.cnbc.com/2019/11/21/tesla-cybertruck-unveiled.html",
+    "date": "2019-11-21"
+   },
+   "deadline": "2023-11-30",
+   "status": "Revised",
+   "evidence": [
+    {
+     "text": "NPR: \"Tesla originally placed the starting price for the vehicle at $39,900\", before working out mass-manufacturing of the design.",
+     "source": {
+      "outlet": "NPR",
+      "title": "After a 2-year delay, deliveries of Tesla's Cybertruck began Thursday",
+      "url": "https://www.npr.org/2023/11/30/1216083781/tesla-cybertruck-release-musk",
+      "date": "2023-11-30"
+     },
+     "date": "2023-11-30"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Judgment call: no deadline was attached to the price, so it's marked Revised, not Missed."
+  },
+  {
+   "id": "mars-cargo-2022",
+   "title": "First Starships to Mars in 2022",
+   "company": "SpaceX",
+   "topic": "Mars",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2017-09-29",
+   "quote": "that's our goal, is to try to make the 2022 Mars rendezvous",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "Business Insider",
+    "title": "Elon Musk's Full SpaceX Mars Colonization Talk Transcript and Slides",
+    "url": "https://www.businessinsider.com/elon-musk-mars-iac-2017-transcript-slides-2017-10",
+    "date": "2017-10"
+   },
+   "deadline": "2022-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "SpaceX shifted its priority to the Moon; Musk said a Mars city would begin in about five to seven years.",
+     "source": {
+      "outlet": "CNN",
+      "title": "Elon Musk shifts SpaceX priorities to the Moon",
+      "url": "https://edition.cnn.com/2026/02/08/science/elon-musk-spacex-priorities-moon-intl-hnk",
+      "date": "2026-02-08"
+     },
+     "date": "2026-02-08"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Musk called the 2022 date \"aspirational\" in the same talk."
+  },
+  {
+   "id": "mars-crew-2024",
+   "title": "Crewed ships to Mars in 2024",
+   "company": "SpaceX",
+   "topic": "Mars",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2017-09-29",
+   "quote": "So then in 2024 we want to try to fly four ships, two of which would be crewed — two cargo and two crew.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "Business Insider",
+    "title": "Elon Musk's Full SpaceX Mars Colonization Talk Transcript and Slides",
+    "url": "https://www.businessinsider.com/elon-musk-mars-iac-2017-transcript-slides-2017-10",
+    "date": "2017-10"
+   },
+   "deadline": "2024-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "SpaceX shifted its priority to the Moon; Musk said a Mars city would begin in about five to seven years.",
+     "source": {
+      "outlet": "CNN",
+      "title": "Elon Musk shifts SpaceX priorities to the Moon",
+      "url": "https://edition.cnn.com/2026/02/08/science/elon-musk-spacex-priorities-moon-intl-hnk",
+      "date": "2026-02-08"
+     },
+     "date": "2026-02-08"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15"
+  },
+  {
+   "id": "mars-uncrewed-2026",
+   "title": "Uncrewed Starship landing on Mars as soon as late 2026",
+   "company": "SpaceX",
+   "topic": "Mars",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2025-05",
+   "quote": "Musk had said SpaceX was working to land its first uncrewed Starship on Mars as soon as late 2026",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "CNN",
+    "title": "Elon Musk shifts SpaceX priorities to the Moon",
+    "url": "https://edition.cnn.com/2026/02/08/science/elon-musk-spacex-priorities-moon-intl-hnk",
+    "date": "2026-02-08"
+   },
+   "deadline": "2026-12-31",
+   "status": "Revised",
+   "evidence": [
+    {
+     "text": "Musk: \"the overriding priority is securing the future of civilization and the Moon is faster\".",
+     "source": {
+      "outlet": "CNN",
+      "title": "Elon Musk shifts SpaceX priorities to the Moon",
+      "url": "https://edition.cnn.com/2026/02/08/science/elon-musk-spacex-priorities-moon-intl-hnk",
+      "date": "2026-02-08"
+     },
+     "date": "2026-02-08"
+    }
+   ],
+   "revisions": [
+    {
+     "date": "2026-02-08",
+     "text": "Priority moved to a \"self-growing city\" on the Moon; Mars city work in about five to seven years.",
+     "source": {
+      "outlet": "CNN",
+      "title": "Elon Musk shifts SpaceX priorities to the Moon",
+      "url": "https://edition.cnn.com/2026/02/08/science/elon-musk-spacex-priorities-moon-intl-hnk",
+      "date": "2026-02-08"
+     }
+    }
+   ],
+   "last_verified": "2026-10-15",
+   "note": "CNN's reported summary; the original May 2025 statement was not fetched."
+  },
+  {
+   "id": "grok-3-open-source",
+   "title": "Grok 3 to be open source in about six months",
+   "company": "xAI",
+   "topic": "Grok / xAI",
+   "person": "Elon Musk",
+   "role": "CEO, xAI",
+   "said_on": "2025-08-24",
+   "quote": "Grok 3 \"will be made open source in about 6 months.\"",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "TechCrunch",
+    "title": "Elon Musk says xAI has open sourced Grok 2.5",
+    "url": "https://techcrunch.com/2025/08/24/elon-musk-says-xai-has-open-sourced-grok-2-5/",
+    "date": "2025-08-24"
+   },
+   "deadline": "2026-02-28",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "xAI's Hugging Face account lists only grok-1 and grok-2 (checked 15 Oct 2026).",
+     "source": {
+      "outlet": "Hugging Face",
+      "title": "xai-org model listing (API)",
+      "url": "https://huggingface.co/xai-org",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-15",
+   "note": "Musk's post on X, as quoted by TechCrunch."
+  },
+  {
+   "id": "grok-5-end-2025",
+   "title": "Grok 5 by end of 2025",
+   "company": "xAI",
+   "topic": "Grok / xAI",
+   "person": "Elon Musk",
+   "role": "CEO, xAI",
+   "said_on": "2025-11-14",
+   "quote": "Grok 5 would be released \"in Q1 sometime\", later than a deadline he previously set of releasing the model by the end of 2025",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "Techmeme (summarising The Information)",
+    "title": "Elon Musk says Grok 5 would be released \"in Q1 sometime\"",
+    "url": "https://www.techmeme.com/251114/p25",
+    "date": "2025-11-14"
+   },
+   "deadline": "2025-12-31",
+   "status": "Missed",
+   "evidence": [
+    {
+     "text": "xAI's model documentation lists Grok 4.7 as the newest model; no Grok 5 (checked 15 Oct 2026).",
+     "source": {
+      "outlet": "xAI",
+      "title": "Models documentation",
+      "url": "https://docs.x.ai/docs/models",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    }
+   ],
+   "revisions": [
+    {
+     "date": "2025-11-14",
+     "text": "Moved to \"Q1 sometime\" 2026.",
+     "source": {
+      "outlet": "Techmeme (summarising The Information)",
+      "title": "Elon Musk says Grok 5 would be released \"in Q1 sometime\"",
+      "url": "https://www.techmeme.com/251114/p25",
+      "date": "2025-11-14"
+     }
+    }
+   ],
+   "last_verified": "2026-10-15",
+   "note": "The original end-2025 statement wasn't fetched. This entry relies on The Information's report, via Techmeme, of both targets."
+  }
+ ]
+}

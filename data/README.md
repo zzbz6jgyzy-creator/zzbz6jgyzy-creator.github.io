@@ -112,3 +112,27 @@ Any Roadster-reveal-level event (product reveals, Starship flights, major Tesla/
 - Time: either `"start"`/`"end"` full ISO with offset (preferred for timed events; live.js leaves these alone), or `"date"` + `"precision": "day"` + `"tz"` for NET-day events (shown as "NET <date>").
 - Required: `title`, `source` (real URL backing the date), optional `href` (page the card links to) and `summary`.
 - The Monday event scan and any bot adding events must set `major` only when sourced. Currently flagged: `tesla-roadster-demo`, `tesla-q3-2026-earnings`, `starship-flight-15`.
+
+## promises.json (Promise Tracker, preview)
+
+Feeds `/promise-tracker.html`. One object per promise in `promises[]`. **Every quote, date and outcome must come from a source you actually opened.** If you can't confirm the exact words, set `quote_type: "paraphrase"` and use the outlet's wording, or leave the entry out. Never cite Electrek. Keep it neutral: no mocking language.
+
+| field | meaning |
+|---|---|
+| `id` | unique kebab-case slug, used as the page anchor (`/promise-tracker.html#id`). Never change it once published. |
+| `title` | short neutral headline |
+| `company` | `Tesla` / `SpaceX` / `xAI` |
+| `topic` | e.g. `FSD / autonomy`, `Robotaxi / Cybercab`, `Optimus`, `Roadster`, `Semi`, `Cybertruck`, `Starship`, `Mars`, `Grok / xAI` |
+| `person`, `role` | who said it |
+| `said_on` | `YYYY`, `YYYY-MM` or `YYYY-MM-DD` |
+| `quote` | a short, exact quote, or the outlet's paraphrase |
+| `quote_type` | `exact` or `paraphrase` |
+| `source` | `{outlet, title, url, date}`: where the quote was read (original post, transcript, video timestamp or reputable outlet) |
+| `deadline` | the promised date (end of a period = last day, e.g. `2025-12-31`) |
+| `status` | one of `Delivered`, `Delivered late`, `In progress`, `Missed`, `Revised` (definitions are on the page) |
+| `evidence[]` | `{text, source, date}`: what actually happened, each with its own source |
+| `revisions[]` | `{date, text, source}`: later changes to the target, oldest first |
+| `note` | optional caveats and judgment calls |
+| `last_verified` | `YYYY-MM-DD` you last re-checked the status |
+
+The summary stats on the page are computed from this file, so there are no counts to update by hand. Update `updated` at the top when you edit. Run `python3 -m json.tool data/promises.json` before committing.
