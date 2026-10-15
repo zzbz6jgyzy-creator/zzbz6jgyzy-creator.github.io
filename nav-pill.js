@@ -87,4 +87,4 @@
   const nl = document.createElement("script"); nl.src = "/newsletter-cta.js?v=2026101520481"; document.body.append(nl);
 })();
 // Site-wide LIVE NOW alert (reads /live-data.json; shows nothing unless a stream is live)
-(() => { if (document.querySelector('script[src*="live-now.js"]')) return; const s = document.createElement("script"); s.src = "/live-now.js?v=202610152125"; s.defer = true; document.head.appendChild(s); })();
+(() => { if (document.querySelector('script[src*="live-now.js"]')) return; const s = document.createElement("script"); s.src = "/live-now.js?v=202610152135"; s.defer = true; document.head.appendChild(s); })();

@@ -79,7 +79,9 @@
     var d = pair[0], shared = pair[1] && pair[1].events || {};
     (d.events || []).forEach(function (e) { var s = shared[e.id]; if (s && s.date) { var tz = s.tz || 'Z'; e.start = s.date + 'T00:00:00' + tz; e.end = s.date + 'T23:59:00' + tz; } }); // shared dates win
     now = q.get('livenow') ? now : Date.now();
-    var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page); });
+    var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page || (page === 'spacex' && e.page === 'starship')); });
+    var featOn = ev.some(function (e) { return e.featured || (shared[e.id] && shared[e.id].major && e.page !== 'starship'); });
+    if (page === 'home' && featOn) ev = ev.filter(function (e) { return e.page !== 'starship'; }); // launch streams live on the SpaceX page while a featured event leads
     var live = ev.filter(function (e) { var s = new Date(e.start) - 0;
       return e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2); }).sort(function (a, b) { // several live: featured/major first, then latest start
         var pa = (a.featured || (shared[a.id] && shared[a.id].major)) ? 1 : 0, pb = (b.featured || (shared[b.id] && shared[b.id].major)) ? 1 : 0;
