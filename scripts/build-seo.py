@@ -70,7 +70,7 @@ def sitemap():
     rows = []
     for p in pages:
         rel = os.path.relpath(p, ROOT).replace(os.sep, "/")
-        if rel in ("404.html", "staging.html") or rel.startswith("preview/"):
+        if rel in ("404.html",) or rel.startswith("preview/"):
             continue
         head = open(p, encoding="utf-8").read()[:6000]
         if re.search(r'name="robots"[^>]*noindex', head):
