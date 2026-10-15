@@ -81,7 +81,9 @@
     now = q.get('livenow') ? now : Date.now();
     var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page); });
     var live = ev.filter(function (e) { var s = new Date(e.start) - 0;
-      return e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2); })[0];
+      return e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2); }).sort(function (a, b) { // several live: featured/major first, then latest start
+        var pa = (a.featured || (shared[a.id] && shared[a.id].major)) ? 1 : 0, pb = (b.featured || (shared[b.id] && shared[b.id].major)) ? 1 : 0;
+        return (pb - pa) || (new Date(b.start) - new Date(a.start)); })[0];
     var byStart = function (a, b) { return new Date(a.start) - new Date(b.start); };
     var future = ev.filter(function (e) { return new Date(e.start) > now; }).sort(byStart);
     var feat = ev.filter(function (e) { return e.featured && !live; })[0]; // featured event (e.g. Roadster) leads until it ends

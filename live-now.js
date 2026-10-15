@@ -6,7 +6,7 @@
    Polls every 60s. Dismiss = this tab session only. Preview: ?livedata=/path.json&livenow=ISO */
 (function () {
   if (window.__sdLiveNow) return; window.__sdLiveNow = 1;
-  var q = new URLSearchParams(location.search), V = '202610150930';
+  var q = new URLSearchParams(location.search), V = '202610152125';
   var home = location.pathname === '/' || /\/index\.html$/.test(location.pathname);
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/live-now.css?v=' + V; document.head.appendChild(css);
@@ -79,7 +79,8 @@
   function tick() {
     fetch((q.get('livedata') || '/live-data.json') + (q.get('livedata') ? '' : '?t=' + Math.floor(Date.now() / 6e4)), {cache: 'no-store'})
       .then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-        var t = nowMs(), e = ((d && d.events) || []).filter(function (x) { return isLive(x, t); })[0];
+        var t = nowMs(), e = ((d && d.events) || []).filter(function (x) { return isLive(x, t); }).sort(function (a, b) { // several live: featured/major first, then latest start
+          return ((b.featured || b.major ? 1 : 0) - (a.featured || a.major ? 1 : 0)) || (new Date(b.start) - new Date(a.start)); })[0];
         var dism = false; try { dism = e && sessionStorage.getItem(key(e)); } catch (err) {}
         if (!e || dism) { if (curId) clear(); return; }
         if (e.id !== curId) render(e);
