@@ -206,7 +206,7 @@ def main() -> None:
         try:
             fetch(f"https://celestrak.org/NORAD/elements/gp.php?INTDES={tag}&FORMAT=json", tmp / "x.json", 2)
             extra_rows += json.loads((tmp / "x.json").read_text())
-        except Exception as exc:
+        except (Exception, SystemExit) as exc:
             print(f"skip {tag}: {exc}")
     for row in extra_rows:
         try:
