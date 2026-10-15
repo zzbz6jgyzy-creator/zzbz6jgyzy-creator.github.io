@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15T02:16:29Z",
+  "updated": "2026-10-15T02:53:44Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3383,
@@ -72,7 +72,7 @@
         "US": 27,
         "CA": 1
       },
-      "pending": 61,
+      "pending": 139,
       "firstSeen": "2026-10-13T21:28:13Z",
       "lastSeen": "2026-10-14T21:06:59Z"
     },
@@ -131,7 +131,7 @@
         "MX": 2,
         "PR": 1
       },
-      "pending": 19,
+      "pending": 20,
       "firstSeen": "2026-10-10T22:26:31Z",
       "lastSeen": "2026-10-15T01:25:52Z"
     },
@@ -305,7 +305,7 @@
         "US": 97,
         "CA": 5
       },
-      "pending": 6,
+      "pending": 5,
       "firstSeen": "2026-10-07T02:27:41Z",
       "lastSeen": "2026-10-12T16:14:30Z"
     },
@@ -502,7 +502,7 @@
         "NO": 1,
         "TR": 1
       },
-      "pending": 1,
+      "pending": 0,
       "firstSeen": "2026-09-30T05:51:14Z",
       "lastSeen": "2026-10-10T07:30:07Z"
     },
@@ -633,7 +633,7 @@
         "MA": 1,
         "TR": 1
       },
-      "pending": 18,
+      "pending": 17,
       "firstSeen": "2026-09-23T02:08:40Z",
       "lastSeen": "2026-10-14T22:47:25Z"
     },
