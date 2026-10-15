@@ -6,13 +6,13 @@
     <title>Starship Mission Control — Supercharged Daily</title>
     <meta
       name="description"
-      content="Starship Mission Control: next launch, mission objectives, confirmed schedule changes, flight outcomes and live coverage links."
+      content="Starship Flight Lab: explore every flight test — objectives, phases, hardware, anomalies, official SpaceX footage and side-by-side compare."
     />
     <link rel="canonical" href="https://superchargeddaily.com/starship.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="Starship Mission Control — Supercharged Daily" />
-    <meta property="og:description" content="Next launch, mission objectives, schedule changes, flight outcomes and live coverage links." />
+    <meta property="og:description" content="Explore every Starship flight: objectives, phases, hardware, anomalies, official footage and side-by-side compare." />
     <meta property="og:url" content="https://superchargeddaily.com/starship.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/dispatch/starship-catch-poster.jpg" />
     <meta property="og:image:alt" content="Starship catch clip" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Starship Mission Control — Supercharged Daily" />
-    <meta name="twitter:description" content="Next launch, mission objectives, schedule changes, flight outcomes and live coverage links." />
+    <meta name="twitter:description" content="Explore every Starship flight: objectives, phases, hardware, anomalies, official footage and side-by-side compare." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/dispatch/starship-catch-poster.jpg" />
     <meta name="twitter:image:alt" content="Starship catch clip" />
 
@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="/styles.css?v=202610152121" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
     <link rel="stylesheet" href="/live.css?v=202610132330" />
+    <link rel="stylesheet" href="/starship-lab.css?v=202610152252" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610142355" />
   </head>
   <body>
@@ -67,7 +68,7 @@
             <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-spacex">SpaceX<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
               <div class="pn-panel" id="pn-spacex">
                 <a href="/spacex.html">SpaceX<small>News &amp; missions</small></a>
-                <a href="/starship.html">Starship flights<small>Every flight test</small></a>
+                <a href="/starship.html">Starship flights<small>Flight lab</small></a>
                 <a href="/starlink.html">Starlink tracker<small>Satellites by version</small></a>
                 <a href="/calendar.html">Calendar<small>Launches &amp; livestreams</small></a>
               </div></div>
@@ -77,7 +78,7 @@
                 <a href="/fsd-europe.html">FSD Europe<small>Approval tracker</small></a>
                 <a href="/promise-tracker.html">Promise tracker<span class="pn-badge">New</span><small>Musk deadlines vs reality</small></a>
                 <a href="/updates.html">Software updates<small>Latest Tesla releases</small></a>
-                <a href="/starship.html">Starship flights<small>Every flight test</small></a>
+                <a href="/starship.html">Starship flights<small>Flight lab</small></a>
                 <a href="/starlink.html">Starlink tracker<small>Satellites by version</small></a>
               </div></div>
             <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-more">More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
@@ -121,8 +122,9 @@
           <p class="eyebrow">SpaceX · Mission control</p>
           <h1>Starship Mission Control</h1>
           <p>
-            Next launch, what that flight is for, what actually slipped, and
-            every outcome so far. Flight 15 is the first serious attempt to catch a Ship.
+            Next launch, what that flight is for, and a flight lab for every test —
+            objectives, phases, hardware, anomalies and official SpaceX footage.
+            Flight 15 is the first serious attempt to catch a Ship.
           </p>
           <p class="meta news-status-line live-stamp" id="starship-updated">Updated</p>
           <div class="starship-cd-panel">
@@ -148,6 +150,7 @@
           <p class="starship-cd-status" id="starship-cd-status"></p>
           </div>
           <nav class="fsd-jump" aria-label="On this page">
+            <a href="#lab">Flight lab</a>
             <a href="#next-flight">Next launch</a>
             <a href="#schedule">Schedule</a>
             <a href="#log">Flight log</a>
@@ -178,6 +181,39 @@
               <span>Failed</span>
             </a>
           </div>
+        </section>
+
+        <section class="section slab" id="lab" aria-labelledby="slab-heading">
+          <div class="section-head">
+            <h2 id="slab-heading">Flight lab</h2>
+            <p class="slab-lede">
+              Explore each Starship flight — objectives, phases, hardware, anomalies and outcomes.
+              Compare two side by side. Watch official SpaceX recaps and clips of the moments that mattered.
+            </p>
+          </div>
+          <div class="slab-toolbar">
+            <div class="slab-modes" role="group" aria-label="Lab mode">
+              <button type="button" data-slab-mode="explore" aria-pressed="true">Explore</button>
+              <button type="button" data-slab-mode="compare" aria-pressed="false">Compare</button>
+            </div>
+            <div class="slab-pick" id="slab-compare-picks" hidden>
+              <label>Flight
+                <select id="slab-pick-a" aria-label="Compare flight A"></select>
+              </label>
+              <label>vs
+                <select id="slab-pick-b" aria-label="Compare flight B"></select>
+              </label>
+            </div>
+          </div>
+          <div class="slab-rail" id="slab-rail" role="tablist" aria-label="Starship flights"></div>
+          <div class="slab-stage" id="slab-explore">
+            <div id="slab-detail" class="slab-panel"></div>
+            <div id="slab-watch"></div>
+          </div>
+          <div class="slab-compare" id="slab-compare" hidden>
+            <div class="slab-panel" id="slab-compare-body"></div>
+          </div>
+          <p class="slab-fine" id="slab-note"></p>
         </section>
 
         <section class="section" id="next-flight" aria-labelledby="starship-next-heading">
@@ -262,7 +298,9 @@
     <script src="/script.js?v=202610151900"></script>
     <script src="/design-21st.js?v=202610132330"></script>
     <script src="/starship-data.js?v=202610141815"></script>
-    <script src="/starship.js?v=202610141815"></script>
+    <script src="/starship-lab-data.js?v=202610152252"></script>
+    <script src="/starship.js?v=202610152252"></script>
+    <script src="/starship-lab.js?v=202610152252"></script>
     <script src="/countup.js" defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>

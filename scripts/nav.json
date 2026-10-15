@@ -13,7 +13,7 @@
       ["Reviews","/reviews/index.html","Every model reviewed",""]]},
     {"id":"pn-spacex","label":"SpaceX","items":[
       ["SpaceX","/spacex.html","News &amp; missions",""],
-      ["Starship flights","/starship.html","Every flight test",""],
+      ["Starship flights","/starship.html","Flight lab",""],
       ["Starlink tracker","/starlink.html","Satellites by version",""],
       ["Calendar","/calendar.html","Launches &amp; livestreams",""]]},
     {"id":"pn-trk","label":"Trackers","items":[
@@ -21,7 +21,7 @@
       ["FSD Europe","/fsd-europe.html","Approval tracker",""],
       ["Promise tracker","/promise-tracker.html","Musk deadlines vs reality","New"],
       ["Software updates","/updates.html","Latest Tesla releases",""],
-      ["Starship flights","/starship.html","Every flight test",""],
+      ["Starship flights","/starship.html","Flight lab",""],
       ["Starlink tracker","/starlink.html","Satellites by version",""]]},
     {"id":"pn-more","label":"More","items":[
       ["Grok","/grok.html","",""],["Gear","/gear.html","",""],["Games","/games.html","",""],["Wallpapers","/wallpapers.html","",""]]}

@@ -133,6 +133,27 @@ const main = () => {
   const filters = document.querySelectorAll("[data-starship-filter]");
   let active = "all";
 
+  const openLab = (n) => {
+    if (window.StarshipLab && typeof window.StarshipLab.open === "function") {
+      window.StarshipLab.open(n, { mode: "explore" });
+      return;
+    }
+    location.hash = `#lab/${n}`;
+  };
+
+  const bindLabCard = (article, n) => {
+    article.dataset.flight = String(n);
+    article.setAttribute("role", "link");
+    article.tabIndex = 0;
+    article.addEventListener("click", () => openLab(n));
+    article.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLab(n);
+      }
+    });
+  };
+
   const upcomingCard = () => {
     const article = document.createElement("article");
     article.className = "starship-flight is-next";
@@ -146,7 +167,9 @@ const main = () => {
       <p class="starship-hw">${escapeHtml(data.next.block)} · ${escapeHtml(data.next.booster)} · ${escapeHtml(data.next.ship)} · ${escapeHtml(data.next.pad)}</p>
       <h3>${escapeHtml(data.next.headline)}</h3>
       <p>${escapeHtml(data.next.tested)}</p>
+      <p class="starship-lab-jump">Open in flight lab →</p>
     `;
+    bindLabCard(article, data.next.flight);
     return article;
   };
 
@@ -163,7 +186,9 @@ const main = () => {
       <p class="starship-hw">${escapeHtml(flight.block)} · ${escapeHtml(flight.booster)} · ${escapeHtml(flight.ship)} · ${escapeHtml(flight.pad)}</p>
       <h3>${escapeHtml(flight.headline)}</h3>
       <p>${escapeHtml(flight.tested)}</p>
+      <p class="starship-lab-jump">Open in flight lab →</p>
     `;
+    bindLabCard(article, flight.flight);
     return article;
   };
 
