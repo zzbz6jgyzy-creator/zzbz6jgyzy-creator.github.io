@@ -97,6 +97,10 @@ def fleet():
                "Texas": {"count": last["modelY"], "kind": "registered", "asOf": last["date"], "src": tx["source"]["url"],
                          "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."},
                **{k: v for k, v in rows.items() if k != "Texas"}}}
+    prev = json.loads((ROOT / "robotaxi-fleet.json").read_text()) if (ROOT / "robotaxi-fleet.json").exists() else {}
+    hist = [h for h in prev.get("history", []) if h["date"] != TODAY]
+    hist.append({"date": TODAY, **{k: {"count": v["count"], "asOf": v["asOf"]} for k, v in out["states"].items()}})
+    out["history"] = sorted(hist, key=lambda h: h["date"])
     (ROOT / "robotaxi-fleet.json").write_text(json.dumps(out, indent=1) + "\n")
     print("fleet:", {k: v["count"] for k, v in out["states"].items()})
 

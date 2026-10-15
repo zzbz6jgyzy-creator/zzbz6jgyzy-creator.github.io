@@ -44,3 +44,24 @@
 .rt-map .leaflet-popup-content { font-size: 0.85rem; line-height: 1.45; }
 .rt-map .leaflet-popup-close-button { color: var(--ink-soft) !important; }
 @media (max-width: 720px) { .rt-map { height: 360px; } }
+.rt-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.rt-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+.rt-table th, .rt-table td { text-align: left; padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
+.rt-table thead th { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mute); font-weight: 500; }
+.rt-table tbody th { color: var(--ink); font-weight: 600; white-space: nowrap; }
+.rt-table tr:last-child th, .rt-table tr:last-child td { border-bottom: 0; }
+.rt-table .is-active .rt-status { color: #5fd38a; }
+.rt-table .is-supervised .rt-status { color: #e9c46a; }
+.rt-sub { color: var(--mute); font-size: 0.92em; }
+@media (max-width: 720px) {
+  .rt-table thead { display: none; }
+  .rt-table, .rt-table tbody, .rt-table tr, .rt-table th, .rt-table td { display: block; width: auto; }
+  .rt-table tr { padding: 0.65rem 0.85rem; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.6rem; }
+  .rt-table tr:last-child { border-bottom: 0; }
+  .rt-table th, .rt-table td { padding: 0; border: 0; }
+  .rt-table td:nth-child(3) { grid-column: 2; grid-row: 1; text-align: right; color: var(--ink); }
+  .rt-table td:nth-child(2) { grid-column: 1 / -1; }
+  .rt-table td:nth-child(4)::before { content: "Last expanded: "; color: var(--mute); }
+  .rt-table td:nth-child(5)::before { content: "Fleet: "; color: var(--mute); }
+  .rt-table td:nth-child(4), .rt-table td:nth-child(5) { grid-column: 1 / -1; }
+}

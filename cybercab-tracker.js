@@ -90,7 +90,7 @@
       .join("");
     const last = series[series.length - 1];
     mount.innerHTML = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-labelledby="cc-chart-h">
-      <title>Registered Cybercabs on the Texas DMV list</title>
+      <title>Registered Cybercabs (Texas DMV list, the only published count)</title>
       <defs>
         <linearGradient id="ccFleetFill" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#E31937" stop-opacity="0.38" />
@@ -138,7 +138,7 @@
     const c = 2 * Math.PI * r;
     const cab = (pct / 100) * c;
     mount.innerHTML = `<svg viewBox="0 0 140 140" role="img" aria-labelledby="cc-share-h">
-      <title>Cybercabs are ${pct} percent of Tesla’s registered Texas robotaxis</title>
+      <title>Cybercabs are ${pct} percent of Tesla’s ${share.approx ? "known" : "registered Texas"} robotaxis</title>
       <circle cx="70" cy="70" r="${r}" fill="none" stroke="rgba(236,236,232,0.12)" stroke-width="14" />
       <circle cx="70" cy="70" r="${r}" fill="none" stroke="#E31937" stroke-width="14"
         stroke-dasharray="${cab.toFixed(1)} ${(c - cab).toFixed(1)}" stroke-dashoffset="${(c * 0.25).toFixed(1)}" stroke-linecap="round" />
@@ -147,7 +147,7 @@
     </svg>
     <ul class="cc-share-legend">
       <li class="is-cab"><i></i>${share.cybercab.toLocaleString()} Cybercab</li>
-      <li class="is-other"><i></i>${(share.total - share.cybercab).toLocaleString()} Robotaxi (Model Y)</li>
+      <li class="is-other"><i></i>${share.approx ? "~" : ""}${(share.total - share.cybercab).toLocaleString()} Robotaxi (Model Y)</li>
     </ul>
     <p style="margin:0">${src(share.src)}</p>`;
   }
@@ -203,16 +203,11 @@
     .then((tx) => {
       const last = tx.history?.[tx.history.length - 1];
       if (!last || !last.cybercab) return;
-      const total = last.cybercab + last.modelY;
       const when = new Date(last.date + "T12:00:00Z").toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
-      const pct = Math.round((last.cybercab / total) * 100);
-      d.share = { cybercab: last.cybercab, total, src: tx.source.url };
       d.stats.forEach((s) => {
-        if (s.live === "cybercab") Object.assign(s, { value: String(last.cybercab), label: `Cybercabs on the Texas DMV automated-vehicle registry (${when})`, src: tx.source.url });
-        if (s.live === "share") Object.assign(s, { value: `${pct}%`, label: `Share of Tesla’s ${total} registered Texas robotaxis that are Cybercabs (${when})`, src: tx.source.url });
+        if (s.live === "cybercab") Object.assign(s, { value: String(last.cybercab), label: `Cybercabs registered (${when}). Texas DMV list, the only state that publishes a count`, src: tx.source.url });
       });
       renderStats();
-      renderShare(q("[data-cc-share]"), d.share);
       const lastFleet = d.fleet[d.fleet.length - 1];
       if (last.date > lastFleet.date && last.cybercab !== lastFleet.value) {
         const chart = q("[data-cc-chart]");
@@ -222,4 +217,19 @@
     })
     .catch(() => {});
   renderMap(q("[data-cc-map]"), d.cities);
+
+  // Fleet mix across all known vehicles, once cybercab-count.js has the nationwide totals.
+  const applyTotals = (t) => {
+    if (!t) return;
+    const total = t.cybercab + t.modelY;
+    const pct = Math.round((t.cybercab / total) * 100);
+    d.share = { cybercab: t.cybercab, total, approx: true, src: t.rtSrc };
+    d.stats.forEach((s) => {
+      if (s.live === "share") Object.assign(s, { value: `${pct}%`, label: `Cybercab share of Tesla’s ~${total.toLocaleString()} known robotaxis, all states (approx.)`, src: t.rtSrc });
+    });
+    renderStats();
+    renderShare(q("[data-cc-share]"), d.share);
+  };
+  if (window.CC_TOTALS) applyTotals(window.CC_TOTALS);
+  document.addEventListener("cc:totals", (e) => applyTotals(e.detail));
 })();

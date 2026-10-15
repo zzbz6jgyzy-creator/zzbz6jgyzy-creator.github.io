@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-15T07:01:14Z",
+ "checked": "2026-10-15T07:14:53Z",
  "aggregator": {
   "name": "Platform Aeronaut AV Tracker",
   "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
@@ -26,5 +26,22 @@
    "note": "18 robotaxi-configured Model Ys observed in Florida ahead of service launches",
    "src": "https://www.basenor.com/blogs/news/tesla-robotaxi-model-ys-spotted-in-florida-with-new-hardware"
   }
- }
+ },
+ "history": [
+  {
+   "date": "2026-10-15",
+   "Texas": {
+    "count": 420,
+    "asOf": "2026-10-15"
+   },
+   "California": {
+    "count": 164,
+    "asOf": "2026-08-26"
+   },
+   "Florida": {
+    "count": 18,
+    "asOf": "2026-07-22"
+   }
+  }
+ ]
 }
