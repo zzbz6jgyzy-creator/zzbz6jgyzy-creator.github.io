@@ -37,8 +37,8 @@ def block(navtag):
         </nav>
       </div>
       <div class="pn-overlay" aria-hidden="true"></div>
-      <aside class="pn-sheet" id="pn-sheet" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
-        <div class="pn-sheet-head"><img src="/assets/brand/wordmark.svg" alt="Supercharged Daily" /><button class="pn-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+      <aside class="pn-sheet" id="pn-sheet" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert>
+        <div class="pn-sheet-head"><img src="/assets/brand/wordmark.svg" alt="Supercharged Daily" width="140" height="22" /><button class="pn-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
 ''' + "\n".join("        " + s for s in sheet) + f'''
         <a class="pn-cta" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>
         <!-- Menu inspired by 21st.dev -->

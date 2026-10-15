@@ -31,7 +31,7 @@
 .f2-fine { color: var(--mute); font-size: 0.8rem; margin: 0.4rem 0 0; }
 .f2-cd { margin: 0; } .f2-cd b { font: 700 clamp(2.8rem, 5vw, 4rem)/1 var(--font); font-variant-numeric: tabular-nums; }
 .f2-cd span { display: block; color: var(--ink-soft); font-size: 0.86rem; margin-top: 0.3rem; }
-.f2-link { display: inline-block; margin-top: 0.8rem; color: var(--tesla); font-weight: 600; text-decoration: none; }
+.f2-link { display: inline-block; margin-top: 0.8rem; color: var(--red-text, #f23a52); font-weight: 600; text-decoration: none; }
 /* your country */
 .f2-you-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
 .f2-you-head h2 { margin: 0; }

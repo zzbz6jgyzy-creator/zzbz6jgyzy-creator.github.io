@@ -76,7 +76,7 @@
   sheetOpen = v => {
     if (v === sheet.classList.contains("open")) return;
     sheet.classList.toggle("open", v); ov.classList.toggle("open", v); document.body.classList.toggle("pn-lock", v);
-    sheet.setAttribute("aria-hidden", String(!v)); mb.setAttribute("aria-expanded", String(v));
+    sheet.setAttribute("aria-hidden", String(!v)); sheet.inert = !v; mb.setAttribute("aria-expanded", String(v));
     if (v) sheet.querySelector(".pn-close").focus({ preventScroll: true }); else (expanded ? mb : nav).focus({ preventScroll: true });
   };
   mb.addEventListener("click", () => { if (Date.now() - lock < 450) return; lock = Date.now(); sheetOpen(true); });
@@ -84,7 +84,7 @@
   sheet.querySelector(".pn-close").addEventListener("click", () => sheetOpen(false));
   document.addEventListener("keydown", e => { if (e.key === "Escape") { closeAll(); if (sheet.classList.contains("open")) sheetOpen(false); } });
   window.__pn = { setExpanded, sheetOpen };
-  const nl = document.createElement("script"); nl.src = "/newsletter-cta.js?v=202610151300"; document.body.append(nl);
+  const nl = document.createElement("script"); nl.src = "/newsletter-cta.js?v=2026101520481"; document.body.append(nl);
 })();
 // Site-wide LIVE NOW alert (reads /live-data.json; shows nothing unless a stream is live)
 (() => { if (document.querySelector('script[src*="live-now.js"]')) return; const s = document.createElement("script"); s.src = "/live-now.js?v=202610150930"; s.defer = true; document.head.appendChild(s); })();

@@ -2,7 +2,8 @@
   --bg: #0c0d10;
   --ink: #ecece8;
   --ink-soft: #a7a9ae;
-  --mute: #7c7e84;
+  --mute: #8a8c92;
+  --red-text: #f23a52; /* accent red for small text on dark: >=4.5:1 (WCAG AA) */
   --line: rgba(236, 236, 232, 0.1);
   --line-strong: rgba(236, 236, 232, 0.16);
   --tesla: #c8102e;
@@ -1516,7 +1517,7 @@ button.fsd-kpi[aria-pressed="true"] {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--tesla);
+  color: var(--red-text);
 }
 
 .grok-level-card strong {
@@ -1534,7 +1535,7 @@ button.fsd-kpi[aria-pressed="true"] {
 
 .article .level-kicker {
   margin: 2.4rem 0 0.35rem;
-  color: var(--tesla);
+  color: var(--red-text);
 }
 
 @media (max-width: 900px) {
@@ -4441,7 +4442,7 @@ a.news-card:hover h3 {
 .gear-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.4rem;border-radius:999px;background:#E31937;color:#fff!important;font-weight:700;text-decoration:none;letter-spacing:.02em;transition:background .2s,transform .2s;box-shadow:0 14px 30px -14px rgba(227,25,55,.8)}
 .gear-btn:hover,.gear-btn:focus-visible{background:#ff2a4a;transform:translateY(-1px)}
 .gear-disclosure{margin:0;font-size:.78rem;color:rgba(255,255,255,.5);max-width:52ch}
-.footer-disclosure{font-size:.8rem;opacity:.65}
+.footer-disclosure{font-size:.8rem;color:var(--mute)}
 @media (max-width:900px){.gear-cats{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:420px){.gear-cats a{padding:.85rem}.gear-btn{width:100%;justify-content:center}}
 .gear-band ul.gear-cats{padding:0;margin-left:0;margin-right:0}

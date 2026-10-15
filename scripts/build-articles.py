@@ -137,7 +137,7 @@ def related_stories():
         t = rx.sub("", s)
         t = t.replace("</main>", block.lstrip("\n") + "\n      </main>", 1) if False else re.sub(r"(\s*)</main>", lambda m: block + m.group(1) + "</main>", t, count=1)
         if 'href="/related.css' not in t:
-            t = t.replace("</head>", '    <link rel="stylesheet" href="/related.css?v=202610151900" />\n  </head>', 1)
+            t = t.replace("</head>", '    <link rel="stylesheet" href="/related.css?v=202610152048" />\n  </head>', 1)
         if t != s: open(path, "w", encoding="utf-8").write(t); print("related:", os.path.relpath(path, ROOT))
 
 import glob
