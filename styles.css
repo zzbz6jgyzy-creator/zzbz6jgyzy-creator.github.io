@@ -4592,3 +4592,12 @@ a.stat:focus-visible,
     transform: none;
   }
 }
+
+/* Article photos: keep native aspect ratio (width/height attrs otherwise force a squashed height) */
+main figure:not(.figure):not(.figure-embed) > img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
