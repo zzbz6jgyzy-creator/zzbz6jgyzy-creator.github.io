@@ -337,7 +337,7 @@
   </div>
   <div class="story-copy">
     <span class="tag tag-tesla">Tesla</span>
-    <h3>Roadster livestream: Thu 8:55pm ET (5:55pm PT)</h3>
+    <h3>Roadster livestream: <time class="lt" datetime="2026-10-16T00:55:00Z">Thu 8:55pm ET (5:55pm PT)</time></h3>
     <p>What to watch for: the 1.1-second 0-60 claim, the 2017 targets and "Timing is everything."</p>
   </div>
 </a>
@@ -493,6 +493,14 @@
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/live.js?v=202610141815" data-page="tesla" defer></script>
     <script>
+      document.querySelectorAll("time.lt[datetime]").forEach(function (t) {
+        try {
+          var d = new Date(t.getAttribute("datetime"));
+          var s = d.toLocaleString(undefined, { weekday: "short", hour: "numeric", minute: "2-digit" });
+          var z = new Intl.DateTimeFormat(undefined, { timeZoneName: "short" }).formatToParts(d).filter(function (p) { return p.type === "timeZoneName"; })[0];
+          t.textContent = s + (z ? " " + z.value : "");
+        } catch (e) {}
+      });
       fetch("/data/robotaxi-tx.json?v=" + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
         var h = d && d.history; if (!h || !h.length) return; var l = h[h.length - 1]; if (!l.cybercab) return;
         var dt = new Date(l.date + "T12:00:00Z");
