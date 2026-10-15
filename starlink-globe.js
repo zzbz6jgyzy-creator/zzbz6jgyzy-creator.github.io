@@ -890,10 +890,25 @@
     if (++tries > 250) return;
     window.setTimeout(wait, 80);
   };
+  // Cesium is loaded lazily (cesium-lazy.js): on the first interaction once the globe
+  // is in view, or straight away when the "Load 3D globe" button is pressed.
+  const start = () => {
+    const btn = document.getElementById("sl-globe-load");
+    if (btn) { btn.disabled = true; btn.textContent = "Loading 3D globe…"; }
+    window.loadCesium().then(() => { if (btn) btn.remove(); wait(); }).catch(() => {
+      if (btn) { btn.disabled = false; btn.textContent = "Load 3D globe"; }
+    });
+  };
+  const arm = () => {
+    const el = document.getElementById("sl-orbit-fig") || host();
+    const go = el && window.whenGlobeWanted ? window.whenGlobeWanted(el, start) : start;
+    const btn = document.getElementById("sl-globe-load");
+    if (btn) btn.addEventListener("click", go, { once: true });
+  };
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", wait, { once: true });
+    document.addEventListener("DOMContentLoaded", arm, { once: true });
   } else {
-    wait();
+    arm();
   }
   window.addEventListener("resize", () => {
     if (!viewer) return;

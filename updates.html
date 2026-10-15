@@ -40,12 +40,9 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Widgets/widgets.css"
-    />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="stylesheet" href="/styles.css?v=202610152048" />
-    <link rel="stylesheet" href="/updates-v3.css?v=202610150840" />
+    <link rel="stylesheet" href="/updates-v3.css?v=202610152059" />
     <script>
       window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
     </script>
@@ -208,8 +205,8 @@
       </footer>
     </div>
     <script src="/script.js?v=202610151900"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Cesium.js"></script>
-    <script defer src="/updates-v3.js?v=202610150840"></script>
+    <script src="/cesium-lazy.js?v=202610152059"></script>
+    <script defer src="/updates-v3.js?v=202610152059"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/nav-pill.js?v=2026101520482"></script>

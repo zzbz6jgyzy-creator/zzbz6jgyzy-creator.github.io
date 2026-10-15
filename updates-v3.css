@@ -93,3 +93,9 @@
 .sw-reach{margin-top:10px;padding:10px 12px;border-radius:10px;background:#17191d;font-size:13px;color:#c9cfd6}
 .sw-reach b{color:#fff}
 @media (max-width:760px){.sw-two{grid-template-columns:1fr}}
+
+/* CLS: reserve the space the live snapshot fills in (measured 15 Oct 2026) */
+.sw-live{min-height:1.5em}
+.sw-now{min-height:127px}
+.sw-mycar:empty{min-height:215px}
+@media (max-width:760px){.sw-live{min-height:2.9em}.sw-now{min-height:292px}.sw-mycar:empty{min-height:437px}}

@@ -38,12 +38,9 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Widgets/widgets.css"
-    />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="stylesheet" href="/styles.css?v=202610152048" />
-    <link rel="stylesheet" href="/starlink-tracker.css?v=202610150005" />
+    <link rel="stylesheet" href="/starlink-tracker.css?v=202610152059" />
     <link rel="stylesheet" href="/nav-pill.css?v=202610142355" />
     <script>
       window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
@@ -134,6 +131,7 @@
               <div id="sl-globe-cesium-credit" class="visually-hidden"></div>
               <svg id="sl-orbit-svg" viewBox="0 0 100 100" role="img" aria-hidden="true"></svg>
               <button type="button" class="sl-globe-reset" id="sl-globe-reset" hidden>Reset view</button>
+              <button type="button" class="sl-globe-load" id="sl-globe-load">Load 3D globe</button>
             </div>
             <figcaption class="sl-globe-cap" id="sl-globe-cap">
               <span data-sl-count>—</span> published orbits, propagated with SGP4. Each bird is the real hardware for its generation — zoom in to fly past them. Not a live operator feed.
@@ -245,8 +243,8 @@
     <script src="/starlink-gp.js?v=202610151025"></script>
     <script src="/starlink-tracker.js?v=202610142345"></script>
     <script src="https://cdn.jsdelivr.net/npm/satellite.js@4.1.4/dist/satellite.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Cesium.js"></script>
-    <script src="/starlink-globe.js?v=202610150005"></script>
+    <script src="/cesium-lazy.js?v=202610152059"></script>
+    <script src="/starlink-globe.js?v=202610152059"></script>
     <script src="/countup.js" defer></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/nav-pill.js?v=2026101520482"></script>

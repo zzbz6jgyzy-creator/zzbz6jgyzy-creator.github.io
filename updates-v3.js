@@ -196,7 +196,7 @@
   let viewer = null, entities = [], playing = null;
   function globeInit() {
     const C = window.Cesium;
-    if (!C) return setTimeout(globeInit, 300);
+    if (!C) return window.loadCesium().then(globeInit).catch(() => {});
     viewer = new C.Viewer("sw-globe", {
       baseLayer: C.ImageryLayer.fromProviderAsync(C.ArcGisMapServerImageryProvider.fromUrl("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer")),
       baseLayerPicker: false, geocoder: false, homeButton: false, sceneModePicker: false, navigationHelpButton: false,
@@ -243,9 +243,9 @@
     drawGlobe();
     let started = false;
     const go = () => { if (!started) { started = true; globeInit(); } };
-    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { io.disconnect(); go(); } }, { rootMargin: "400px" });
+    // Cesium (~3 MB) loads only when the globe card scrolls near the viewport.
+    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { io.disconnect(); go(); } }, { rootMargin: "300px" });
     io.observe($("sw-globe"));
-    window.addEventListener("load", () => setTimeout(go, 1500));
   }
 
   function seg(id, key) {
