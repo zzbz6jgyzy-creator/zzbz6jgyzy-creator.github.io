@@ -1,6 +1,36 @@
 {
-  "updated": "2026-10-14T22:04:48Z",
+  "updated": "2026-10-15T09:09:53Z",
   "articles": [
+    {
+      "url": "/dispatch/roadster-banger-demo-day.html",
+      "title": "Roadster day: a “BANGER” tonight",
+      "date": "2026-10-15T08:56:38Z",
+      "topic": "tesla",
+      "tag": "Tesla",
+      "image": "/assets/dispatch/roadster-banger-demo-day-poster.jpg",
+      "summary": "Musk’s hype, and the physics and safety of cold-gas thrusters.",
+      "pinned": false
+    },
+    {
+      "url": "/dispatch/tesla-spacex-merger-barclays.html",
+      "title": "Barclays: Tesla–SpaceX merger “consensus”",
+      "date": "2026-10-15T08:56:38Z",
+      "topic": "spacex",
+      "tag": "Analysis",
+      "image": "/assets/dispatch/tesla-spacex-merger-barclays-poster.jpg",
+      "summary": "Analyst speculation: an all-stock deal before Tesla’s AGM.",
+      "pinned": false
+    },
+    {
+      "url": "/dispatch/cybercab-349-texas.html",
+      "title": "349 Cybercabs registered in Texas",
+      "date": "2026-10-15T08:56:38Z",
+      "topic": "tesla",
+      "tag": "Robotaxi",
+      "image": "/assets/dispatch/cybercab-349-texas-poster.jpg",
+      "summary": "30 more on the DMV list, and every new car is a Cybercab.",
+      "pinned": false
+    },
     {
       "url": "/dispatch/tesla-dream-scenario.html",
       "title": "The Tesla dream scenario",
