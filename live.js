@@ -30,8 +30,12 @@
     }
     return '<p class="lv-none">This stream can\u2019t be embedded. Use the link below.</p>';
   }
+  function streamUrl(e) { // direct stream: official YouTube watch URL when set, else the official broadcast link
+    if (e.provider === 'youtube' && /^[\w-]{6,20}$/.test(e.embedId || '')) return 'https://www.youtube.com/watch?v=' + e.embedId;
+    return safeUrl(e.fallbackUrl || e.postUrl || '/calendar.html');
+  }
   function render(slot, e, live, collapsed) {
-    var link = '<a class="lv-out" href="' + esc(safeUrl(e.fallbackUrl)) + '" target="_blank" rel="noopener">' + esc(e.fallbackLabel || 'Watch') + ' \u2197</a>';
+    var link = '<a class="lv-out" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener">' + esc(e.fallbackLabel || 'Watch') + ' \u2197</a>';
     var canEmbed = e.provider === 'youtube' || e.provider === 'x';
     var tz = tzName(new Date(e.start));
     var dateTxt = e.timeTbc || e.net ? when(e).replace(' · time TBC', '').replace(/^NET /, '') : when(e).slice(0, -(tz.length + 1));
@@ -45,7 +49,7 @@
       slot.innerHTML = '<div class="lw' + (reduce ? ' lv-still' : '') + '">' + head('Next live stream') + '<div class="lw-body">' + thumb +
         '<div class="lw-info"><h3 class="lw-title">' + esc(e.title) + '</h3>' + meta +
         (timed ? '<div class="lw-cd" aria-live="off"></div>' : '') +
-        '<div class="lw-acts"><a class="lw-btn lw-btn-soft" href="' + (canEmbed ? '/calendar.html' : esc(safeUrl(e.fallbackUrl))) + '"' + (canEmbed ? '' : ' target="_blank" rel="noopener"') + '><span class="lw-play"></span>' + (canEmbed ? 'Watch here when live' : esc(e.fallbackLabel || 'Stream link')) + '</a>' +
+        '<div class="lw-acts"><a class="lw-btn lw-btn-soft" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener"><span class="lw-play"></span>' + 'Watch the live stream \u2197' + '</a>' +
         '<a class="lw-cal" href="/calendar.html">All events \u2192</a></div>' + credit + '</div></div></div>';
       var c = slot.querySelector('.lw-cd'); if (c && dayOnly && new Date(e.start) <= Date.now()) { c.innerHTML = '<span class="lw-today">Today</span>'; c = null; }
       if (c) { var tile = function (n, l) { return '<span class="lw-tile"><b>' + n + '</b><i>' + l + '</i></span>'; };
@@ -63,7 +67,7 @@
       '</div></div>';
     slot.innerHTML = '<div class="lw lw-live' + (reduce ? ' lv-still' : '') + '">' + head('Live now') + '<div class="lw-body">' + thumb +
       '<div class="lw-info"><h3 class="lw-title">' + esc(e.title) + '</h3>' + meta +
-      '<div class="lw-acts">' + (canEmbed ? '<button class="lw-btn lw-watch" type="button"><span class="lw-play"></span>Watch live now</button>' : '<a class="lw-btn" href="' + esc(safeUrl(e.fallbackUrl)) + '" target="_blank" rel="noopener"><span class="lw-play"></span>Watch live now \u2197</a>') +
+      '<div class="lw-acts">' + '<a class="lw-btn" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener"><span class="lw-play"></span>Watch live now \u2197</a>' +
       '<button class="lv-open lw-cal" type="button" aria-expanded="' + !collapsed + '">' + (collapsed ? 'Mission info' : 'Hide') + '</button></div>' + credit + '</div></div></div><div class="lv-panel"' + (collapsed ? ' hidden' : '') + '>' + info + '</div>';
     var tick = function () { var c = slot.querySelector('.lv-cdl'); if (!c) return; var ms = new Date(e.start) - Date.now();
       c.textContent = ms > 0 ? 'T−' + cd(ms) : 'underway'; }; tick(); setInterval(tick, 3e4);
