@@ -3,34 +3,32 @@
   // Uses the existing Beehiiv flow in /newsletter.js (no new form endpoint).
   const SUB = "https://alexs-newsletter-84b17e.beehiiv.com/";
   const p = location.pathname;
-  const trackers = ["/starship.html", "/fsd-europe.html", "/starlink.html", "/cybercab.html", "/updates.html", "/fsd.html"];
+  const trackers = ["/starship.html", "/fsd-europe.html", "/starlink.html", "/cybercab.html", "/updates.html", "/fsd.html", "/wallpapers.html"];
   const isArticle = /^\/dispatch\/[^/]+\.html$/.test(p);
   const want = isArticle || trackers.includes(p);
   let block = document.getElementById("newsletter") || document.querySelector("[data-newsletter]:not(.sd-band):not(.sd-pop)");
   if (!block && want) {
-    if (!document.querySelector('link[href^="/newsletter-cta.css"]')) {
-      const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/newsletter-cta.css?v=202610141830"; document.head.append(l);
+    // Always the sleek sitewide "Get Supercharged Daily" band (same markup as grow.js data-band).
+    // The old red end-of-article box (.nl-end) is retired. grow.js adds this band itself on pages
+    // that load it with data-band; this only fills in on pages that don't.
+    block = document.querySelector(".sd-band");
+    if (!block) {
+      if (!document.querySelector('link[href^="/grow.css"]')) {
+        const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/grow.css"; document.head.append(l);
+      }
+      const s = document.createElement("section");
+      s.className = "sd-band"; s.setAttribute("data-newsletter", "band"); s.setAttribute("aria-label", "Newsletter signup");
+      s.innerHTML = '<div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>' +
+        '<div><form class="sd-form" data-newsletter-form><label class="visually-hidden" for="sd-band-email">Email address</label>' +
+        '<input id="sd-band-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />' +
+        '<input type="text" name="website" hidden tabindex="-1" autocomplete="off" />' +
+        '<button class="sd-btn" type="submit">Subscribe</button></form>' +
+        '<p class="sd-fine">Free. No spam. Unsubscribe anytime.</p><p class="newsletter-status" data-newsletter-status role="status"></p></div>';
+      const footer = document.querySelector(".site-footer");
+      if (footer) footer.before(s); else (document.querySelector("main") || document.body).append(s);
+      block = s;
+      const js = document.createElement("script"); js.src = "/newsletter.js"; document.body.append(js);
     }
-    const s = document.createElement("section");
-    s.className = "nl-end"; s.id = "newsletter"; s.setAttribute("data-newsletter", isArticle ? "article-end" : "tracker-end");
-    s.setAttribute("aria-labelledby", "nl-end-h");
-    s.innerHTML =
-      '<div class="nl-end-in">' +
-      '<div class="nl-end-copy"><p class="nl-end-eye">Free newsletter · Every Sunday</p>' +
-      '<h2 id="nl-end-h">' + (isArticle ? "Liked this? Get the week in one email." : "Get this tracker’s big moves every Sunday.") + '</h2>' +
-      '<p class="nl-end-sub">Tesla, SpaceX, xAI and X: the week’s biggest stories and numbers, sourced. Free, no spam, unsubscribe anytime.</p></div>' +
-      '<form class="newsletter-form nl-end-form" data-newsletter-form>' +
-      '<label class="visually-hidden" for="nl-end-email">Email address</label>' +
-      '<input id="nl-end-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />' +
-      '<input type="text" name="website" hidden tabindex="-1" autocomplete="off" />' +
-      '<button type="submit">Subscribe free</button></form>' +
-      '<p class="newsletter-status nl-end-status" data-newsletter-status role="status"></p></div>';
-    const main = document.querySelector("main") || document.body;
-    const art = isArticle && main.querySelector("article.article");
-    if (art) art.after(s); else main.append(s);
-    block = s;
-    document.querySelectorAll(".sd-band").forEach((b) => b.remove()); // keep one signup block per page
-    const js = document.createElement("script"); js.src = "/newsletter.js"; document.body.append(js);
   }
   // Root-cause guard: if the page already has its own signup block, drop any extra sitewide band.
   if (block) document.querySelectorAll(".sd-band").forEach((b) => { if (b !== block) b.remove(); });

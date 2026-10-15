@@ -76,3 +76,14 @@ To flip a stream live, a routine edits that event in `live-data.json`:
   "fallbackUrl": "<direct stream URL>", "postUrl": "<official post>", "title": "…" }
 ```
 Set `"status": "ended"` when it's over. Test locally with `?livedata=/some.json` (and optionally `&livenow=<ISO>`).
+
+## Newsletter sign-up (always the sleek band)
+Every page and article uses ONE sign-up: the sleek "Get Supercharged Daily" band from `grow.js`
+(`<script src="/grow.js?v=…" data-band data-pop defer></script>`, which also keeps the scroll pop-up).
+Do not add the old red inline box (`<section class="newsletter sd-nl">`, `.nl-end`, `.flagship-alert.newsletter`, `newsletter-hero`).
+- `newsletter-cta.js` (loaded by `nav-pill.js`) no longer builds a red box: on Dispatch articles, trackers and
+  Wallpapers without a band it inserts the same `.sd-band` markup, and it keeps one sign-up per page.
+- New Daily analysis articles: copy an existing dispatch article (they're clean), end the article with the
+  sources line, and include the grow.js tag above. `scripts/build-articles.py` strips any `.sd-nl` box from
+  `dispatch/` and `guides/` and adds the grow.js band tag if missing, every time it runs.
+- Pattern: commit 3fe2772 (buying guide) and the 15 Oct newsletter-sleek commit.

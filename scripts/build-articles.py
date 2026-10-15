@@ -85,4 +85,17 @@ def main():
               open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(f"wrote {len(arts)} articles")
 
+def sleek_signup():
+    """Newsletter rule: articles use only the sleek grow.js band (data-band), never the old red
+    inline .sd-nl / .nl-end box. Strip any red box a new article was copied with, and make sure
+    grow.js is loaded with data-band data-pop."""
+    import glob, re
+    box = re.compile(r'\n[ \t]*<section class="newsletter sd-nl".*?</section>', re.S)
+    for path in glob.glob(os.path.join(ROOT, "dispatch", "*.html")) + glob.glob(os.path.join(ROOT, "guides", "*.html")):
+        s = open(path, encoding="utf-8").read(); t = box.sub("", s)
+        if "/grow.js" not in t and "<main" in t and "</body>" in t:
+            t = t.replace("</body>", '    <script src="/grow.js?v=202610142125" data-band data-pop defer></script>\n  </body>', 1)
+        if t != s: open(path, "w", encoding="utf-8").write(t); print("sleek signup:", os.path.relpath(path, ROOT))
+
+sleek_signup()
 main()
