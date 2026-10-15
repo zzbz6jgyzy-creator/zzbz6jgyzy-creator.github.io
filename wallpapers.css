@@ -52,3 +52,5 @@
 /* Opaque preview */
 .wp-lightbox::backdrop{background:rgba(5,5,7,.97)}
 .wp-lightbox{background:#050507;border-radius:14px}
+
+.wp-tag{display:inline-block;margin-left:.4em;padding:.1em .5em;border:1px solid #E31937;border-radius:999px;color:#ff6b7f;font-size:.62em;font-weight:600;letter-spacing:.04em;text-transform:uppercase;vertical-align:middle}
