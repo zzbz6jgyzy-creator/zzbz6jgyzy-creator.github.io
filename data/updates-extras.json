@@ -1,0 +1,578 @@
+{
+ "updated": "2026-10-15T07:36:24Z",
+ "teslafi": {
+  "source": "TeslaFi",
+  "sourceUrl": "https://www.teslafi.com/firmware",
+  "fetched": "2026-10-15T07:36:24Z",
+  "fleet": 12441,
+  "versions": [
+   {
+    "id": "2026.38.5.1",
+    "installs": 308,
+    "percent": 2.5,
+    "pending": 357
+   },
+   {
+    "id": "2026.38.5",
+    "installs": 399,
+    "percent": 3.2,
+    "pending": 67
+   },
+   {
+    "id": "2026.38.3.1",
+    "installs": 3608,
+    "percent": 29.0,
+    "pending": 1731
+   },
+   {
+    "id": "2026.38.3",
+    "installs": 19,
+    "percent": 0.2,
+    "pending": 0
+   },
+   {
+    "id": "2026.38",
+    "installs": 213,
+    "percent": 1.7,
+    "pending": 4
+   },
+   {
+    "id": "2026.33.100",
+    "installs": 224,
+    "percent": 1.8,
+    "pending": 13
+   },
+   {
+    "id": "2026.33.5",
+    "installs": 298,
+    "percent": 2.4,
+    "pending": 20
+   },
+   {
+    "id": "2026.32.7",
+    "installs": 1952,
+    "percent": 15.7,
+    "pending": 162
+   },
+   {
+    "id": "2026.32.3",
+    "installs": 398,
+    "percent": 3.2,
+    "pending": 8
+   },
+   {
+    "id": "2026.28.5",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.27.300",
+    "installs": 12,
+    "percent": 0.1,
+    "pending": 0
+   },
+   {
+    "id": "2026.27.200",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.27.11",
+    "installs": 1381,
+    "percent": 11.1,
+    "pending": 26
+   },
+   {
+    "id": "2026.27.6.15",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.27.6.5",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.27.6",
+    "installs": 27,
+    "percent": 0.2,
+    "pending": 1
+   },
+   {
+    "id": "2026.26.300",
+    "installs": 8,
+    "percent": 0.1,
+    "pending": 0
+   },
+   {
+    "id": "2026.26.200",
+    "installs": 4,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.26.100.1",
+    "installs": 3,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.26.6.5",
+    "installs": 1660,
+    "percent": 13.3,
+    "pending": 49
+   },
+   {
+    "id": "2026.26.6.3",
+    "installs": 274,
+    "percent": 2.2,
+    "pending": 24
+   },
+   {
+    "id": "2026.26.6.2",
+    "installs": 26,
+    "percent": 0.2,
+    "pending": 1
+   },
+   {
+    "id": "2026.26.6.1",
+    "installs": 352,
+    "percent": 2.8,
+    "pending": 8
+   },
+   {
+    "id": "2026.26.1",
+    "installs": 30,
+    "percent": 0.2,
+    "pending": 0
+   },
+   {
+    "id": "2026.26",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.21.6",
+    "installs": 24,
+    "percent": 0.2,
+    "pending": 1
+   },
+   {
+    "id": "2026.20.300",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.20.200.1",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.20.200",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.20.10",
+    "installs": 115,
+    "percent": 0.9,
+    "pending": 1
+   },
+   {
+    "id": "2026.20.7.5",
+    "installs": 5,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.20.6.11",
+    "installs": 32,
+    "percent": 0.3,
+    "pending": 0
+   },
+   {
+    "id": "2026.20.6.9",
+    "installs": 22,
+    "percent": 0.2,
+    "pending": 0
+   },
+   {
+    "id": "2026.20.6.6",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.20.6.1",
+    "installs": 179,
+    "percent": 1.4,
+    "pending": 4
+   },
+   {
+    "id": "2026.20.3",
+    "installs": 37,
+    "percent": 0.3,
+    "pending": 1
+   },
+   {
+    "id": "2026.20",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 1
+   },
+   {
+    "id": "2026.14.6.12",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 1
+   },
+   {
+    "id": "2026.14.6.11",
+    "installs": 3,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.14.6",
+    "installs": 23,
+    "percent": 0.2,
+    "pending": 4
+   },
+   {
+    "id": "2026.14.3",
+    "installs": 5,
+    "percent": 0.0,
+    "pending": 1
+   },
+   {
+    "id": "2026.14.2",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.8.6",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 2
+   },
+   {
+    "id": "2026.8.3.10",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.8.3",
+    "installs": 12,
+    "percent": 0.1,
+    "pending": 0
+   },
+   {
+    "id": "2026.8",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.2.200",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.2.9.10",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.2.9.3",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.2.9.1",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.2.6.1",
+    "installs": 4,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.2.6",
+    "installs": 9,
+    "percent": 0.1,
+    "pending": 1
+   },
+   {
+    "id": "2026.2.3",
+    "installs": 21,
+    "percent": 0.2,
+    "pending": 6
+   },
+   {
+    "id": "2025.45.10",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.45.9.1",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.45.9",
+    "installs": 3,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.45.8",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.45.7",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.45.5",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.44.25.5",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 1
+   },
+   {
+    "id": "2025.44.25.4",
+    "installs": 11,
+    "percent": 0.1,
+    "pending": 3
+   },
+   {
+    "id": "2025.44.25.3",
+    "installs": 18,
+    "percent": 0.1,
+    "pending": 4
+   },
+   {
+    "id": "2025.44.25.1",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 1
+   },
+   {
+    "id": "2025.44.3",
+    "installs": 10,
+    "percent": 0.1,
+    "pending": 0
+   },
+   {
+    "id": "2025.44",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.38.13",
+    "installs": 191,
+    "percent": 1.5,
+    "pending": 1
+   },
+   {
+    "id": "2025.38.12",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.38.9.6",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.38.9",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.38.8",
+    "installs": 3,
+    "percent": 0.0,
+    "pending": 2
+   },
+   {
+    "id": "2025.38.6",
+    "installs": 4,
+    "percent": 0.0,
+    "pending": 1
+   },
+   {
+    "id": "2025.38.3.1",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.38",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.32.8",
+    "installs": 3,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.32.6",
+    "installs": 10,
+    "percent": 0.1,
+    "pending": 2
+   },
+   {
+    "id": "2025.32.3.1",
+    "installs": 4,
+    "percent": 0.0,
+    "pending": 1
+   },
+   {
+    "id": "2025.32.3",
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2025.32",
+    "installs": 6,
+    "percent": 0.0,
+    "pending": 1
+   },
+   {
+    "id": "2025.26.8",
+    "installs": 7,
+    "percent": 0.1,
+    "pending": 1
+   },
+   {
+    "id": "2025.26.7",
+    "installs": 17,
+    "percent": 0.1,
+    "pending": 6
+   }
+  ]
+ },
+ "recent": {
+  "source": "Teslascope",
+  "sourceUrl": "https://teslascope.com/software",
+  "fetched": "2026-10-15T07:36:24Z",
+  "items": [
+   {
+    "t": "2026-10-15T07:23:08Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model 3 Performance (2018)",
+    "hw": "2.5",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T07:22:08Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T07:08:28Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T07:07:07Z",
+    "to": "2026.38.3.1",
+    "from": "2026.38",
+    "model": "Model Y AWD LR (2020)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T07:05:21Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model 3 SR (2021)",
+    "hw": "3.0",
+    "country": "Canada"
+   },
+   {
+    "t": "2026-10-15T07:01:27Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model 3 AWD LR (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T06:59:18Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 AWD LR (2022)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T06:55:19Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model Y AWD LR (2021)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T06:53:41Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model 3 SR (2024)",
+    "hw": "4.0",
+    "country": "Iceland"
+   },
+   {
+    "t": "2026-10-15T06:44:29Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.3",
+    "model": "Model 3 AWD LR (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   }
+  ]
+ }
+}

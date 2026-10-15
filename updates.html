@@ -46,7 +46,7 @@
       href="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Widgets/widgets.css"
     />
     <link rel="stylesheet" href="/styles.css?v=202610141500" />
-    <link rel="stylesheet" href="/updates-redesign.css?v=202610142245" />
+    <link rel="stylesheet" href="/updates-v3.css?v=202610150840" />
     <script>
       window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
     </script>
@@ -108,269 +108,75 @@
       </aside>
       <div class="pn-spacer" aria-hidden="true"></div>
 
-      <main id="main">
-        <section class="ut-head">
-          <div class="ut-head-copy">
-            <p class="eyebrow">Tesla · Software Update Tracker</p>
-            <h1>Software Update Tracker</h1>
-            <p class="tracker-how">Twice an hour I read Teslascope’s connected cars, then Tesla’s notes in plain English. This is where a build has been <em>seen</em> — not Tesla’s official rollout list.</p>
-            <p class="meta news-status-line" id="updates-updated">Checking Teslascope…</p>
-          </div>
-          <label class="ut-omni" for="updates-omni">
-            <span>Find anything</span>
-            <input id="updates-omni" type="search" placeholder="Germany, 2026.38.5, Halloween, Collision Evasion…" autocomplete="off" />
-            <small>Version, country or feature — one search, no menus.</small>
-          </label>
+      <main id="main" class="sw">
+        <header class="sw-head">
+          <p class="eyebrow">Tesla · Software Update Tracker</p>
+          <h1>Software Update Tracker</h1>
+          <p class="sw-lede">Which Tesla build is rolling out, how fast, where, and what it means for your car.</p>
+          <p class="sw-live" id="sw-live">Loading Teslascope snapshot…</p>
+        </header>
+
+        <section class="sw-now" aria-label="Right now">
+          <div class="sw-tile"><span>Newest build</span><b id="t-new">—</b><small id="t-new-s"></small></div>
+          <div class="sw-tile"><span>Fastest rollout now</span><b id="t-fast">—</b><small id="t-fast-s"></small></div>
+          <div class="sw-tile"><span>Most common</span><b id="t-common">—</b><small id="t-common-s"></small></div>
+          <div class="sw-tile sw-tile-next"><span>Next new build likely</span><b id="t-next">—</b><small id="t-next-s"></small></div>
         </section>
 
-        <nav class="fsd-jump tracker-jump" aria-label="On this page">
-          <a href="#garage">My car</a>
-          <a href="#map">Globe</a>
-          <a href="#builds">History</a>
-          <a href="#alerts">Newsletter</a>
-        </nav>
-
-        <section class="ut-snap" aria-label="Snapshot">
-          <div class="fsd-kpis ut-kpis" aria-label="Tap a number to show it on the globe">
-            <button type="button" class="fsd-kpi" data-updates-stat="latest">
-              <b id="stat-latest">—</b>
-              <span>newest version</span>
-            </button>
-            <button type="button" class="fsd-kpi" data-updates-stat="wide">
-              <b id="stat-wide">—</b>
-              <span>most common</span>
-            </button>
-            <button type="button" class="fsd-kpi" data-updates-stat="na">
-              <b id="stat-fsd-na">—</b>
-              <span>FSD in North America</span>
-            </button>
-            <button type="button" class="fsd-kpi" data-updates-stat="eu">
-              <b id="stat-fsd-eu">—</b>
-              <span>FSD in Europe</span>
-            </button>
+        <section class="sw-card" id="mycar" aria-labelledby="mycar-h">
+          <div class="sw-card-head"><h2 id="mycar-h">What should my car get?</h2><p>Pick your hardware and region.</p></div>
+          <div class="sw-seg" role="group" aria-label="Hardware" id="seg-hw">
+            <button data-v="hw4" aria-pressed="true">HW4 / AI4</button><button data-v="hw3" aria-pressed="false">HW3</button>
           </div>
-          <p class="updates-now" id="updates-now"></p>
-          <div class="ut-lanes" id="updates-lanes" aria-label="FSD by hardware and region"></div>
-          <article class="tracker-hero ut-whats" id="updates-hero" aria-live="polite">
-            <p class="tracker-hero-kicker">Latest update</p>
-            <h2 class="tracker-hero-version">Loading…</h2>
-          </article>
+          <div class="sw-seg" role="group" aria-label="Region" id="seg-rg">
+            <button data-v="NA" aria-pressed="true">North America</button><button data-v="EU" aria-pressed="false">Europe</button><button data-v="AP" aria-pressed="false">Asia-Pacific</button><button data-v="OT" aria-pressed="false">Middle East &amp; other</button>
+          </div>
+          <div class="sw-mycar" id="mycar-out"></div>
         </section>
 
-        <section class="section ut-garage" id="garage" aria-labelledby="ut-garage-h">
-          <div class="section-head">
-            <h2 id="ut-garage-h">What’s on cars like yours</h2>
-            <p>Teslascope, TeslaFi and Not a Tesla App show the fleet. This answers your car, in your country.</p>
+        <section class="sw-card" id="waves" aria-labelledby="waves-h">
+          <div class="sw-card-head"><h2 id="waves-h">Rollout waves</h2><p>Cars seen on each build over the last 5 days, and how fast it is spreading.</p></div>
+          <ol class="sw-waves" id="waves-list"></ol>
+        </section>
+
+        <section class="sw-card sw-globe-card" id="globe" aria-labelledby="globe-h">
+          <div class="sw-card-head"><h2 id="globe-h">Where it’s landing</h2><p>Drag the timeline to replay the rollout.</p></div>
+          <div class="sw-globe-wrap">
+            <div id="sw-globe" class="sw-globe" role="img" aria-label="Globe showing countries reporting the selected build"></div>
+            <div class="sw-globe-zoom"><button id="gz-in" aria-label="Zoom in">+</button><button id="gz-out" aria-label="Zoom out">−</button></div>
           </div>
-          <div class="ut-garage-bar">
-            <div>
-              <label class="updates-search-label" for="updates-car">Your car</label>
-              <select id="updates-car" class="updates-search tracker-select">
-                <option value="">All cars</option>
-                <option value="3">Model 3 (any)</option>
-                <option value="3|HW3">Model 3 · HW3</option>
-                <option value="3|HW4">Model 3 · HW4</option>
-                <option value="Y">Model Y (any)</option>
-                <option value="Y|HW3">Model Y · HW3</option>
-                <option value="Y|HW4">Model Y · HW4</option>
-                <option value="S">Model S (any)</option>
-                <option value="S|HW3">Model S · HW3</option>
-                <option value="S|HW4">Model S · HW4</option>
-                <option value="X">Model X (any)</option>
-                <option value="X|HW3">Model X · HW3</option>
-                <option value="X|HW4">Model X · HW4</option>
-                <option value="Cybertruck">Cybertruck</option>
-              </select>
-            </div>
-            <div>
-              <label class="updates-search-label" for="updates-garage-country">Your country</label>
-              <input id="updates-garage-country" class="updates-search" type="search" placeholder="United States, Germany…" autocomplete="off" />
-            </div>
+          <div class="sw-replay">
+            <select id="g-ver" aria-label="Build"></select>
+            <button id="g-play" aria-label="Play replay">▶</button>
+            <input type="range" id="g-time" min="0" max="0" value="0" aria-label="Snapshot time" />
+            <span id="g-when" class="sw-mono"></span>
           </div>
-          <div class="ut-garage-out" id="updates-garage-out">
-            <p>Pick a car and a country. I’ll say what’s been seen on cars like yours, and what is still US-only.</p>
+          <p class="sw-fine" id="g-sum"></p>
+        </section>
+
+        <section class="sw-card" id="check" aria-labelledby="check-h">
+          <div class="sw-card-head"><h2 id="check-h">Two trackers, side by side</h2><p>Different car samples, so the shares differ.</p></div>
+          <div class="sw-two">
+            <div><table class="sw-xc" id="xc-table"><thead><tr><th>Build</th><th>Teslascope</th><th>TeslaFi</th></tr></thead><tbody></tbody></table>
+              <p class="sw-fine" id="xc-note"></p></div>
+            <div><h3 class="sw-sub">Just updated</h3><ol class="sw-feed" id="feed"></ol><p class="sw-fine" id="feed-note"></p></div>
           </div>
         </section>
 
-        <section class="fsd-board updates-board ut-desk" id="map" aria-labelledby="updates-map-heading">
-          <div class="section-head">
-            <h2 id="updates-map-heading">Where it’s landing</h2>
-            <p>Drag to spin. Europe, World and +/− stay on the globe. Tap a country or pick a version — nothing is hidden in a gear menu.</p>
-          </div>
-          <div class="fsd-stage">
-            <div class="fsd-map-pane">
-              <div class="updates-map-shell">
-                <div id="updates-globe" class="updates-globe" role="img" aria-label="Where Tesla software is landing"></div>
-                <div id="updates-globe-cesium-credit" class="visually-hidden"></div>
-                <p id="updates-globe-credit" class="updates-globe-credit" hidden>
-                  Imagery © Esri, Maxar, Earthstar Geographics · CesiumJS
-                </p>
-                <svg class="updates-map" id="updates-map" viewBox="0 0 1000 500" width="1000" height="500" role="img" aria-labelledby="updates-map-heading">
-                  <title>Where Tesla software is landing</title>
-                  <defs>
-                    <radialGradient id="updates-ocean" cx="50%" cy="42%" r="62%">
-                      <stop offset="0%" stop-color="#151922" />
-                      <stop offset="100%" stop-color="#0b0c10" />
-                    </radialGradient>
-                  </defs>
-                  <rect width="1000" height="500" fill="url(#updates-ocean)" />
-                  <g class="updates-map-stage" id="updates-map-stage">
-                    <g class="updates-map-grid" id="updates-map-grid"></g>
-                    <g id="updates-map-land"></g>
-                    <g id="updates-hotspots"></g>
-                  </g>
-                </svg>
-                <div class="updates-map-toolbar">
-                  <label class="updates-map-version-wrap" for="updates-version">
-                    <span>Software version</span>
-                    <select id="updates-version" class="updates-map-version">
-                      <option value="">Latest wave</option>
-                      <option value="*" selected>All versions</option>
-                    </select>
-                  </label>
-                </div>
-                <aside class="updates-map-card" id="updates-map-card" hidden>
-                  <button type="button" class="updates-map-card-close" id="updates-map-card-close">Close</button>
-                  <div id="updates-map-card-body"></div>
-                </aside>
-                <div class="updates-map-badge" id="updates-map-badge" hidden></div>
-                <div class="updates-map-tip" id="updates-map-tip" hidden></div>
-              </div>
-              <div class="fsd-map-meta ut-map-meta">
-                <div class="updates-map-legend" aria-hidden="true">
-                  <span><i class="updates-key updates-key-hot"></i> Just arrived</span>
-                  <span><i class="updates-key updates-key-warm"></i> Rolling</span>
-                  <span><i class="updates-key updates-key-cool"></i> Widely installed</span>
-                </div>
-                <div class="updates-map-zoom" role="group" aria-label="Move the globe">
-                  <button type="button" data-updates-zoom="europe">Europe</button>
-                  <button type="button" data-updates-zoom="world">World</button>
-                  <button type="button" data-updates-zoom="in" aria-label="Zoom in">+</button>
-                  <button type="button" data-updates-zoom="out" aria-label="Zoom out">−</button>
-                </div>
-                <div class="updates-map-actions">
-                  <p class="updates-map-caption" id="updates-map-caption">Live wave</p>
-                  <button type="button" class="updates-clear" id="updates-clear" hidden>Reset</button>
-                </div>
-              </div>
-            </div>
-
-            <aside class="fsd-panel" id="countries" aria-labelledby="updates-list-heading">
-              <div class="fsd-panel-head">
-                <h2 id="updates-list-heading">Countries</h2>
-                <p id="updates-spot-count">—</p>
-              </div>
-              <form class="updates-lookup" id="updates-lookup" action="#map">
-                <div>
-                  <label class="updates-search-label" for="updates-search">Find a country</label>
-                  <input
-                    id="updates-search"
-                    class="updates-search"
-                    type="search"
-                    placeholder="Germany, Japan…"
-                    autocomplete="off"
-                  />
-                </div>
-              </form>
-              <div class="fsd-filters" role="group" aria-label="Filter map countries">
-                <button type="button" class="fsd-filter" data-updates-spots="wave" aria-pressed="false">Newest only</button>
-                <button type="button" class="fsd-filter" data-updates-spots="all" aria-pressed="true">All versions</button>
-              </div>
-              <div class="fsd-country-detail" id="updates-focus" hidden></div>
-              <div class="fsd-country-list" id="updates-hot-list"></div>
-            </aside>
-          </div>
+        <section class="sw-card" id="ladder" aria-labelledby="ladder-h">
+          <div class="sw-card-head"><h2 id="ladder-h">FSD version ladder</h2><p>Which FSD (Supervised) build ships on which software, by hardware and region.</p></div>
+          <div class="sw-ladder" id="ladder-out"></div>
         </section>
 
-        <section class="section ut-intel" id="mix" aria-labelledby="ut-intel-h">
-          <div class="section-head">
-            <h2 id="ut-intel-h">The mix</h2>
-            <p>Fleet share like TeslaFi, plus a live sighting pulse like Teslascope — without the spreadsheet.</p>
-          </div>
-          <div class="ut-intel-grid">
-            <article class="ut-card">
-              <h3>Tracked fleet</h3>
-              <p class="ut-card-fine" id="updates-fleet-cap">Share of connected cars on each build.</p>
-              <div class="ut-fleet-bar" id="updates-fleet-bar" role="img" aria-label="Fleet share by version"></div>
-              <ul class="ut-fleet-keys" id="updates-fleet-keys"></ul>
-              <p class="ut-family" id="updates-family"></p>
-            </article>
-            <article class="ut-card">
-              <h3>Just seen</h3>
-              <p class="ut-card-fine">Newest reports from the last snapshot.</p>
-              <ol class="ut-pulse" id="updates-pulse"></ol>
-            </article>
-          </div>
+        <section class="sw-card" id="diff" aria-labelledby="diff-h">
+          <div class="sw-card-head"><h2 id="diff-h">What changed?</h2><p>Release notes compared with the build before it.</p></div>
+          <div class="sw-diff-pick"><select id="d-a" aria-label="Build"></select><span>vs</span><select id="d-b" aria-label="Compare with"></select></div>
+          <div id="diff-out" class="sw-diff"></div>
         </section>
 
-        <section class="section updates-log" id="builds" aria-labelledby="updates-log-heading">
-          <div class="section-head">
-            <h2 id="updates-log-heading">Release history</h2>
-            <p id="updates-showing">Builds</p>
-          </div>
-          <div class="tracker-filters ut-hist-filters">
-            <div class="ut-kinds" role="group" aria-label="Build type">
-              <button type="button" class="fsd-filter" data-updates-kind="all" aria-pressed="true">All</button>
-              <button type="button" class="fsd-filter" data-updates-kind="fsd" aria-pressed="false">FSD</button>
-              <button type="button" class="fsd-filter" data-updates-kind="cabin" aria-pressed="false">Cabin</button>
-            </div>
-            <div>
-              <label class="updates-search-label" for="updates-feature">Search features</label>
-              <input id="updates-feature" class="updates-search" type="search"
-                placeholder="Collision Evasion, Apple Music…" autocomplete="off" />
-            </div>
-          </div>
-          <p class="updates-empty" id="updates-empty" hidden>No version matches. Try another car or search.</p>
-          <div class="updates-rows" id="updates-list"></div>
-          <button type="button" class="tracker-more tracker-show-all" id="updates-show-all" aria-controls="updates-list" hidden>Show all versions</button>
-        </section>
-
-        <section class="section" id="alerts" aria-labelledby="updates-alert-heading">
-          <div class="flagship-alert newsletter" data-newsletter="updates-alerts">
-            <div>
-              <p class="newsletter-kicker">Weekly newsletter</p>
-              <h2 id="updates-alert-heading">Never miss a new update wave</h2>
-              <p class="newsletter-tagline">New versions, FSD jumps and where they landed first, all in the free Supercharged Daily newsletter every Sunday.</p>
-            </div>
-            <form class="newsletter-form" data-newsletter-form>
-              <label class="visually-hidden" for="newsletter-email-updates">Email address</label>
-              <input id="newsletter-email-updates" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="Your email address" />
-              <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
-              <button class="newsletter-button" type="submit">Subscribe free</button>
-            </form>
-            <p class="newsletter-fine">Free. Unsubscribe anytime.</p>
-            <p class="newsletter-status" data-newsletter-status role="status"></p>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="panel">
-            <p class="eyebrow">Sources</p>
-            <p id="updates-note" style="margin: 0 0 0.75rem; color: var(--ink-soft)"></p>
-            <p style="margin: 0; color: var(--mute); font-size: 0.9rem">
-              Tesla has no public live update API. The map snapshots Teslascope’s
-              connected cars about twice an hour. A hotspot means a tracked car
-              reported that build — not that Tesla finished the rollout.
-            </p>
-            <p style="margin: 0.85rem 0 0; color: var(--mute); font-size: 0.9rem">
-              Dashboard layout takes cues from
-              <a href="https://21st.dev/community/components/s/dashboard" rel="noopener">21st.dev</a>
-              stats and activity blocks, rebuilt in this site’s own CSS.
-            </p>
-            <p style="margin: 0.85rem 0 0; color: var(--mute); font-size: 0.9rem">
-              The globe uses the same keyless Esri World Imagery stack as
-              <a href="https://github.com/bilawalsidhu/gods-eye-view" rel="noopener">God’s Eye View</a>
-              (MIT, Copyright (c) 2026 Bilawal Sidhu). Rendering is
-              <a href="https://cesium.com/platform/cesiumjs/" rel="noopener">CesiumJS</a>.
-              Imagery © Esri, Maxar, Earthstar Geographics, and the GIS User Community.
-            </p>
-            <p style="margin: 1rem 0 0">
-              <a class="button button-ghost" href="/tesla.html">Tesla desk</a>
-              <a class="button button-ghost" href="/fsd-europe.html">FSD Europe tracker</a>
-            </p>
-          </div>
-        </section>
+        <p class="sw-sources">Sources: fleet counts, countries and release notes from <a href="https://teslascope.com/software" rel="noopener">Teslascope</a> (snapshot every 30 min, history from our own saved snapshots). Pending installs, the TeslaFi share column and Europe FSD builds from the <a href="https://www.teslafi.com/firmware" rel="noopener">TeslaFi Firmware Tracker</a>. Teslascope sees a few thousand connected cars, so shares are a sample, not Tesla’s official numbers.</p>
       </main>
+
 
       <footer class="site-footer">
         <a class="footer-lockup" href="/"><img src="/assets/brand/lockup-1b-trim.svg" alt="Supercharged Daily" width="220" height="45" /></a>
@@ -391,10 +197,8 @@
       </footer>
     </div>
     <script src="/script.js"></script>
-    <script src="/updates-data.js"></script>
-    <script src="/updates-globe.js?v=202610141500"></script>
-    <script src="/updates.js?v=202610142245"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Cesium.js"></script>
+    <script defer src="/updates-v3.js?v=202610150840"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/nav-pill.js?v=202610142355"></script>
