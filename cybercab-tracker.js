@@ -16,11 +16,13 @@
   }
 
   const statsEl = q("[data-cc-stats]");
-  if (statsEl) {
+  const renderStats = () => {
+    if (!statsEl) return;
     statsEl.innerHTML = d.stats
       .map((s) => `<div class="cc-stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span>${src(s.src)}</div>`)
       .join("");
-  }
+  };
+  renderStats();
 
   const tag = { live: "Live", next: "Next", staging: "Staging" };
   const citiesEl = q("[data-cc-cities]");
@@ -145,7 +147,7 @@
     </svg>
     <ul class="cc-share-legend">
       <li class="is-cab"><i></i>${share.cybercab.toLocaleString()} Cybercab</li>
-      <li class="is-other"><i></i>${(share.total - share.cybercab).toLocaleString()} other</li>
+      <li class="is-other"><i></i>${(share.total - share.cybercab).toLocaleString()} Robotaxi (Model Y)</li>
     </ul>
     <p style="margin:0">${src(share.src)}</p>`;
   }
@@ -194,5 +196,30 @@
 
   renderChart(q("[data-cc-chart]"), d.fleet);
   renderShare(q("[data-cc-share]"), d.share);
+
+  // Live VIN-split counts (refreshed twice a day) replace the hand-entered figures.
+  fetch("/data/robotaxi-tx.json", { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((tx) => {
+      const last = tx.history?.[tx.history.length - 1];
+      if (!last || !last.cybercab) return;
+      const total = last.cybercab + last.modelY;
+      const when = new Date(last.date + "T12:00:00Z").toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+      const pct = Math.round((last.cybercab / total) * 100);
+      d.share = { cybercab: last.cybercab, total, src: tx.source.url };
+      d.stats.forEach((s) => {
+        if (s.live === "cybercab") Object.assign(s, { value: String(last.cybercab), label: `Cybercabs on the Texas DMV automated-vehicle registry (${when})`, src: tx.source.url });
+        if (s.live === "share") Object.assign(s, { value: `${pct}%`, label: `Share of Tesla’s ${total} registered Texas robotaxis that are Cybercabs (${when})`, src: tx.source.url });
+      });
+      renderStats();
+      renderShare(q("[data-cc-share]"), d.share);
+      const lastFleet = d.fleet[d.fleet.length - 1];
+      if (last.date > lastFleet.date && last.cybercab !== lastFleet.value) {
+        const chart = q("[data-cc-chart]");
+        chart?.nextElementSibling?.matches("p") && chart.nextElementSibling.remove();
+        renderChart(chart, d.fleet.concat({ date: last.date, label: when.replace(/,? \d{4}$/, ""), value: last.cybercab, src: tx.source.url }));
+      }
+    })
+    .catch(() => {});
   renderMap(q("[data-cc-map]"), d.cities);
 })();

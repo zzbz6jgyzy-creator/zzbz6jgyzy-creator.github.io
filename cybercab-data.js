@@ -5,8 +5,8 @@ window.CYBERCAB = {
   updatedLabel: "14 Oct 2026",
   stats: [
     { value: "300+", label: "Cybercabs serving Austin (Tesla Robotaxi, 10 Oct 2026)", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
-    { value: "319", label: "Cybercabs on the Texas DMV automated-vehicle registry (8 Oct 2026)", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
-    { value: "43%", label: "Share of Tesla’s 739 registered Texas robotaxis that are Cybercabs", src: "https://www.cybercab.news/article/dyk-cybercab-fleet-share-43-oct9" },
+    { live: "cybercab", value: "319", label: "Cybercabs on the Texas DMV automated-vehicle registry (8 Oct 2026)", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
+    { live: "share", value: "43%", label: "Share of Tesla’s 739 registered Texas robotaxis that are Cybercabs", src: "https://www.cybercab.news/article/dyk-cybercab-fleet-share-43-oct9" },
     { value: "125k+", label: "Listed yearly production capacity at Giga Texas", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
   ],
   fleet: [
