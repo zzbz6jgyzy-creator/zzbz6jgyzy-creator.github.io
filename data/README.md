@@ -102,3 +102,13 @@ Privacy-friendly counters, no cookies, no IPs, no user IDs, no cookie banner nee
 - **Beehiiv attribution**: sign-ups redirect to Beehiiv with `utm_source=website`, `utm_medium=site-band` (sleek bar) / `site-pop` (scroll prompt) / `site-form` (other), and `utm_campaign=<page path>`. The latest-issue link carries `utm_medium=site-band&utm_campaign=latest-issue`. See Beehiiv → Subscribers → acquisition source.
 - **Pageviews** remain in Cloudflare Web Analytics (beacon on every page). No GA, Plausible or Zaraz on the site (the domain is DNS-only to GitHub Pages, so Zaraz can't run).
 - Counts are approximate: ad blockers may drop beacons, and the Worker only accepts requests from superchargeddaily.com.
+
+## Major events: homepage countdown (`"major": true` in data/events.json)
+
+Any Roadster-reveal-level event (product reveals, Starship flights, major Tesla/SpaceX/xAI events such as earnings calls) gets `"major": true` in `data/events.json` → `events.<id>`.
+
+- The homepage (`home-v2.js`) shows a big countdown card (days/hrs/mins/secs, visitor's local time + zone label) for every major event that starts **within 7 days**, just below the Live now slot and above the lead story (max 2, soonest first).
+- It hides **30 min before start** (when live.js shows the Live now card at the top) or as soon as `live-data.json` has the same `id` with `status` `live` or `ended`. Use the **same id** in both files.
+- Time: either `"start"`/`"end"` full ISO with offset (preferred for timed events; live.js leaves these alone), or `"date"` + `"precision": "day"` + `"tz"` for NET-day events (shown as "NET <date>").
+- Required: `title`, `source` (real URL backing the date), optional `href` (page the card links to) and `summary`.
+- The Monday event scan and any bot adding events must set `major` only when sourced. Currently flagged: `tesla-roadster-demo`, `tesla-q3-2026-earnings`, `starship-flight-15`.

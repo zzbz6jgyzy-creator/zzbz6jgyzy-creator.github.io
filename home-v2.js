@@ -92,3 +92,38 @@
   }).catch(() => {}).finally(() => { draw(); setInterval(draw, 30000); });
   });
 })();
+
+// Major-event countdown: any data/events.json entry with "major": true starting within 7 days.
+// Hides 30 min before start (live.js shows the Live now card from then) or if live-data says live/ended.
+(() => {
+  const slot = document.querySelector("[data-major-slot]"); if (!slot) return;
+  const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const qs = new URLSearchParams(location.search);
+  Promise.all([
+    fetch("/data/events.json", { cache: "no-cache" }).then((r) => r.json()),
+    fetch(qs.get("livedata") || "/live-data.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
+  ]).then(([j, ld]) => {
+    const live = {}; (ld.events || []).forEach((e) => { live[e.id] = e; });
+    const list = Object.entries(j.events || {}).filter(([, e]) => e.major).map(([id, e]) => {
+      const day = !e.start && e.precision === "day";
+      const t = new Date(e.start || (e.date + "T" + (e.time || "00:00") + ":00" + (e.tz || "Z"))).getTime();
+      return { id, e, t, day };
+    });
+    const tick = () => {
+      const now = Date.now();
+      const show = list.filter((m) => {
+        const l = live[m.id];
+        if (l && (l.status === "live" || l.status === "ended")) return false;
+        return m.t - now > 30 * 6e4 && m.t - now <= 7 * 864e5;
+      }).sort((a, b) => a.t - b.t).slice(0, 2);
+      slot.innerHTML = show.map((m) => {
+        const s = Math.max(0, (m.t - now) / 1e3), d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), mi = Math.floor((s % 3600) / 60), se = Math.floor(s % 60);
+        const when = m.day ? "NET " + new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }).format(new Date(m.t))
+          : new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit", timeZoneName: "short" }).format(new Date(m.t));
+        const box = (v, l) => `<span class="mj-b"><strong>${String(v).padStart(2, "0")}</strong><small>${l}</small></span>`;
+        return `<a class="mj" href="${esc(m.e.href || "/calendar.html")}"><span class="mj-eb"><i></i>Countdown · big event</span><span class="mj-t">${esc(m.e.title)}</span><span class="mj-w">${esc(when)}</span><span class="mj-c">${box(d, "days")}${box(h, "hrs")}${box(mi, "mins")}${box(se, "secs")}</span></a>`;
+      }).join("");
+    };
+    tick(); setInterval(tick, 1000);
+  }).catch(() => {});
+})();

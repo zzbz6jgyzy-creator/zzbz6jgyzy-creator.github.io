@@ -1,6 +1,6 @@
 {
-  "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only.",
-  "updated": "2026-10-15",
+  "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
+  "updated": "2026-10-15T19:05:00+01:00",
   "events": {
     "starship-flight-15": {
       "title": "Starship Flight 15",
@@ -13,20 +13,39 @@
         "FAA CADENA / air-traffic planning slides (NET 8 Nov)",
         "Elon Musk, 10 Oct 2026: '4 to 6 weeks'",
         "NASASpaceflight: Ship 42 cryo campaign, B22 static fire pending"
-      ]
+      ],
+      "major": true
     },
     "crs35-docking": {
-      "title": "Dragon \u00b7 CRS-35 docked with the ISS",
+      "title": "Dragon · CRS-35 docked with the ISS",
       "date": "2026-10-15",
       "time": "10:27",
       "tz": "-04:00",
       "precision": "datetime",
       "status": "done",
-      "summary": "Docked 10:27 a.m. EDT to Harmony\u2019s space-facing port with 6,300+ lb of cargo and the final IROSA pair. About 30 minutes ahead of the ~11:00 a.m. ET plan.",
+      "summary": "Docked 10:27 a.m. EDT to Harmony’s space-facing port with 6,300+ lb of cargo and the final IROSA pair. About 30 minutes ahead of the ~11:00 a.m. ET plan.",
       "sources": [
         "NASA space station blog, 15 Oct 2026: docked at 10:27 a.m. EDT",
         "https://blogs.nasa.gov/spacestation/2026/10/15/spacex-dragon-docks-with-science-supplies-and-roll-out-solar-arrays/"
       ]
+    },
+    "tesla-roadster-demo": {
+      "title": "Tesla Roadster reveal",
+      "start": "2026-10-15T19:55:00-05:00",
+      "end": "2026-10-15T21:55:00-05:00",
+      "major": true,
+      "href": "/tesla.html",
+      "source": "https://x.com/Tesla/status/2110165104713183485",
+      "summary": "Tesla's Roadster demo livestream, per Tesla on X."
+    },
+    "tesla-q3-2026-earnings": {
+      "title": "Tesla Q3 2026 earnings call",
+      "start": "2026-10-21T16:30:00-05:00",
+      "end": "2026-10-21T18:00:00-05:00",
+      "major": true,
+      "href": "/tsla.html",
+      "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
+      "summary": "Q3 2026 results webcast, per Tesla's SEC filing."
     }
   }
 }

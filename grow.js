@@ -26,7 +26,7 @@
     b.className = "sd-band"; b.setAttribute("data-newsletter", "band"); b.setAttribute("aria-label", "Newsletter signup");
     b.innerHTML = `<div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
       <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-1?utm_source=website&utm_medium=site-band&utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
-    place(b);
+    const bs = document.querySelector("[data-band-slot]"); if (bs) bs.appendChild(b); else place(b);
   }
   const KEY = "sd-pop-seen";
   const store = { get(k){try{return localStorage.getItem(k)}catch(e){return "1"}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}} };

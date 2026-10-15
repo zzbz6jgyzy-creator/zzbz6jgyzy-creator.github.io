@@ -89,7 +89,8 @@
     var e = live || next;
     var old = document.querySelector('section.lv'); if (old) old.remove();
     if (!e) return;
-    var mount = document.querySelector('[data-live-slot]'), slot = document.createElement('section'); slot.className = 'lv' + (mount ? ' lv-inhero' : '') + (live ? '' : ' lv-quiet'); slot.setAttribute('aria-label', live ? 'Live now' : 'Next livestream');
+    var top = document.querySelector('[data-live-slot][data-live-only]'), rest = document.querySelector('[data-live-slot]:not([data-live-only])');
+    var mount = live ? (top || rest) : rest; if (!mount && top) return; var slot = document.createElement('section'); slot.className = 'lv' + (mount ? ' lv-inhero' : '') + (live ? '' : ' lv-quiet'); slot.setAttribute('aria-label', live ? 'Live now' : 'Next livestream');
     if (mount) mount.appendChild(slot); else { var main = document.querySelector('main'); main.parentNode.insertBefore(slot, main); }
     var collapsed = !!(mount && mount.hasAttribute('data-collapsed'));
     render(slot, e, !!live, collapsed);
