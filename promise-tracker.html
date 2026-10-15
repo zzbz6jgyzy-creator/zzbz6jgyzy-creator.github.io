@@ -30,9 +30,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=202610152121" />
-    <link rel="stylesheet" href="/promise-tracker.css?v=1" />
+    <link rel="stylesheet" href="/promise-tracker.css?v=2" />
     <link rel="stylesheet" href="/nav-pill.css?v=202610142355" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Supercharged Daily Promise Tracker","description":"A sourced archive of major public promises and predictions from Elon Musk and Tesla, SpaceX and xAI, with the original quote, deadline, status and evidence.","url":"https://superchargeddaily.com/promise-tracker.html","creator":{"@type":"Organization","name":"Supercharged Daily","url":"https://superchargeddaily.com/"},"dateModified":"2026-10-15","isAccessibleForFree":true,"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://superchargeddaily.com/data/promises.json"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Supercharged Daily Promise Tracker","description":"A sourced archive of major public promises and predictions from Elon Musk and Tesla, SpaceX and xAI, with the original quote, deadline, status and evidence.","url":"https://superchargeddaily.com/promise-tracker.html","creator":{"@type":"Organization","name":"Supercharged Daily","url":"https://superchargeddaily.com/"},"dateModified":"2026-10-16","isAccessibleForFree":true,"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://superchargeddaily.com/data/promises.json"}]}</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -104,12 +104,30 @@
 
       <main id="main" class="pt">
         <header class="pt-hero">
-          <p class="pt-kicker">Promise Tracker <span class="pt-preview">Preview</span></p>
-          <h1>Promises, deadlines, receipts.</h1>
-          <p class="pt-lede">Major public predictions from Elon Musk and Tesla, SpaceX and xAI, set against what actually happened. Every quote links to the place we read it. Paraphrases are labelled as paraphrases.</p>
+          <div class="pt-hero-copy">
+            <p class="pt-kicker">Promise Tracker <span class="pt-preview">Preview</span></p>
+            <h1>Promises, deadlines, receipts.</h1>
+            <p class="pt-lede">Major public predictions from Elon Musk and Tesla, SpaceX and xAI leaders, set against what actually happened. Every quote links to where we read it, and paraphrases are labelled.</p>
+            <div class="pt-kpis">
+              <div class="pt-kpi"><b id="pt-ontime">–</b><span>delivered on time<small id="pt-ontime-sub"></small></span></div>
+              <div class="pt-kpi"><b id="pt-delay">–</b><span>average delay when delivered late<small id="pt-delay-sub"></small></span></div>
+            </div>
+          </div>
+          <figure class="pt-ring" aria-labelledby="pt-ring-cap">
+            <svg viewBox="0 0 200 200" role="img" aria-labelledby="pt-ring-cap"><g id="pt-ring-g" transform="rotate(-90 100 100)"></g><text x="100" y="96" text-anchor="middle" class="pt-ring-n" id="pt-ring-n">0</text><text x="100" y="120" text-anchor="middle" class="pt-ring-l">promises</text></svg>
+            <figcaption id="pt-ring-cap" class="pt-legend"></figcaption>
+          </figure>
         </header>
 
-        <section class="pt-stats" aria-label="Summary by status" id="pt-stats"></section>
+        <section class="pt-strips" aria-label="Highlights">
+          <div class="pt-strip"><h2>Biggest misses</h2><ol id="pt-misses" class="pt-chips"></ol></div>
+          <div class="pt-strip"><h2>Recently delivered</h2><ol id="pt-recent" class="pt-chips"></ol></div>
+        </section>
+
+        <section aria-labelledby="pt-topics-h">
+          <h2 id="pt-topics-h" class="pt-h2">By topic</h2>
+          <div class="pt-tiles" id="pt-tiles"></div>
+        </section>
 
         <section class="pt-controls" aria-label="Filter promises">
           <label class="pt-search"><span class="sr-only">Search promises</span><input id="pt-q" type="search" placeholder="Search quotes, people, topics…" autocomplete="off" /></label>
@@ -118,10 +136,17 @@
             <label>Topic <select id="pt-topic"><option value="">All</option></select></label>
             <label>Status <select id="pt-status"><option value="">All</option></select></label>
           </div>
-          <p class="pt-count" id="pt-count" aria-live="polite"></p>
+          <div class="pt-bar">
+            <p class="pt-count" id="pt-count" aria-live="polite"></p>
+            <div class="pt-toggle" role="group" aria-label="View">
+              <button type="button" data-view="cards" aria-pressed="true">Cards</button>
+              <button type="button" data-view="timeline" aria-pressed="false">Timeline</button>
+            </div>
+          </div>
         </section>
 
         <ol class="pt-list" id="pt-list"></ol>
+        <section class="pt-tl" id="pt-tl" hidden aria-label="Timeline: promise date, deadline and outcome"></section>
         <noscript><p class="pt-note">This tracker needs JavaScript. The raw data is at <a href="/data/promises.json">/data/promises.json</a>.</p></noscript>
 
         <section class="pt-method">
@@ -131,9 +156,10 @@
             <li><b>Delivered late</b>: done, but after the deadline.</li>
             <li><b>In progress</b>: the deadline hasn't passed yet.</li>
             <li><b>Missed</b>: the deadline passed without it happening, even if a new date was given later.</li>
-            <li><b>Revised</b>: the goal or plan was changed before it could be judged.</li>
+            <li><b>Revised</b>: the goal or plan was changed, or no deadline was given, so it can't be scored.</li>
           </ul>
-          <p>Each entry shows when we last checked it. Spotted an error or a better source? Tell us on <a href="https://x.com/ALJR86">X</a>. Data: <a href="/data/promises.json">promises.json</a>.</p>
+          <p>"On time" is Delivered ÷ (Delivered + Delivered late + Missed). Average delay compares each late item's deadline with the date it happened. Vague deadlines ("this year", "a few months") are read as the end of that period, and each card notes the judgment calls. Spotted an error or a better source? Tell us on <a href="https://x.com/ALJR86">X</a>. Data: <a href="/data/promises.json">promises.json</a>.</p>
+          <p class="pt-credits"><b>Photos:</b> Optimus by <a href="https://commons.wikimedia.org/wiki/File:Latest_Tesla_Optimus_Humanoid_Robot.jpg">Steve Jurvetson</a> (CC BY 2.0); Semi by <a href="https://commons.wikimedia.org/wiki/File:Tesla_Semi_Pepsi_2023-10-31-13-39-37_DSCF2583_dllu.jpg">Dllu</a> (CC BY-SA 4.0); Roadster prototype by <a href="https://commons.wikimedia.org/wiki/File:Tesla_roadster_2020_prototype_(cropped).jpg">Smnt</a> (CC BY-SA 4.0); Mars by <a href="https://commons.wikimedia.org/wiki/File:Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg">NASA</a> (public domain); Starship by <a href="https://commons.wikimedia.org/wiki/File:SpaceX_Starship_before_IFT-5.jpg">Steve Jurvetson</a> (CC BY 2.0); Cybercab and Cybertruck by <a href="https://commons.wikimedia.org/wiki/File:Tesla_Cybercab_at_Santana_Row_oblique_view_dllu.jpg">Dllu</a> (CC BY-SA 4.0); Model Y by Damian B Oh and Model 3 by Ethan Llamas (CC BY-SA 4.0). All via Wikimedia Commons, cropped.</p>
         </section>
       </main>
 
@@ -156,7 +182,7 @@
       </footer>
     </div>
     <script src="/script.js?v=202610151900"></script>
-    <script src="/promise-tracker.js?v=1" defer></script>
+    <script src="/promise-tracker.js?v=2" defer></script>
     <script src="/grow.js?v=2026101520481" data-band defer></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/nav-pill.js?v=202610152135"></script>

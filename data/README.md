@@ -136,3 +136,5 @@ Feeds `/promise-tracker.html`. One object per promise in `promises[]`. **Every q
 | `last_verified` | `YYYY-MM-DD` you last re-checked the status |
 
 The summary stats on the page are computed from this file, so there are no counts to update by hand. Update `updated` at the top when you edit. Run `python3 -m json.tool data/promises.json` before committing.
+
+- `outcome_date` (v2): when a Delivered / Delivered late promise actually happened (YYYY, YYYY-MM or YYYY-MM-DD). Used for the on-time rate, average delay and the timeline. Topics now include "Affordable car & batteries", "Energy" and "AI compute".
