@@ -5,8 +5,8 @@ window.CYBERCAB = {
   updatedLabel: "14 Oct 2026",
   stats: [
     { value: "300+", label: "Cybercabs serving Austin (Tesla Robotaxi, 10 Oct 2026)", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
-    { live: "cybercab", value: "319", label: "Cybercabs on the Texas DMV automated-vehicle registry (8 Oct 2026)", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
-    { live: "share", value: "43%", label: "Share of Tesla’s 739 registered Texas robotaxis that are Cybercabs", src: "https://www.cybercab.news/article/dyk-cybercab-fleet-share-43-oct9" },
+    { live: "cybercab", value: "349", label: "Cybercabs registered (15 Oct 2026). Texas DMV list, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { live: "share", value: "37%", label: "Cybercab share of Tesla’s ~951 known robotaxis, all states (approx.)", src: "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi" },
     { value: "125k+", label: "Listed yearly production capacity at Giga Texas", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
   ],
   fleet: [
@@ -16,9 +16,10 @@ window.CYBERCAB = {
     { date: "2026-10-08", label: "8 Oct", value: 319, src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
   ],
   share: {
-    cybercab: 319,
-    total: 739,
-    src: "https://www.cybercab.news/article/dyk-cybercab-fleet-share-43-oct9"
+    cybercab: 349,
+    total: 951,
+    approx: true,
+    src: "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
   },
   cities: [
     { name: "Austin, TX", status: "live", note: "Public paid rides in the Tesla Robotaxi app since 3 Sep 2026. The only city with public Cybercab rides.", src: "https://www.cybercab.news/article/dallas-cybercab-next-oct10" },
