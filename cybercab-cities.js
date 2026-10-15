@@ -34,7 +34,8 @@
       '<p class="rt-total-n"><strong>' + num(total) + "</strong> Model Y robotaxis across " + Object.keys(states).length + " states</p>" +
       '<ul class="rt-total-parts">' + parts.join("") + "</ul>" +
       '<p class="rt-fine">Adds Texas registrations to third-party estimates elsewhere, so treat it as a rough total. Cybercabs aren’t included (they’re counted above). Updated ' + stamp(fleet.checked) + " · via " + link(fleet.aggregator.url, fleet.aggregator.name) + "</p></article>";
-    html += '<div class="rt-legend" aria-hidden="true"><span><i class="rt-sw-now"></i>Current service area</span><span><i class="rt-sw-prev"></i>Area before last change</span></div>';
+    html += '<div class="rt-map-wrap"><div class="rt-chips" role="toolbar" aria-label="Jump to a service area" data-rt-chips></div><div class="rt-map" data-rt-map aria-label="Street map of Tesla Robotaxi service areas"><p class="rt-map-hint">Map loads when you scroll here&hellip;</p></div></div>';
+    html += '<div class="rt-legend" aria-hidden="true"><span><i class="rt-sw-now"></i>Current service area</span><span><i class="rt-sw-prev"></i>Area before last change</span><span>Click or tap the map to zoom with the wheel</span></div>';
     html += '<div class="rt-grid">';
     geo.features.forEach(function (f) {
       var p = f.properties, h = (hist.cities || {})[p.slug] || {}, log = h.log || [];
@@ -59,5 +60,6 @@
     html += "</div>";
     html += '<p class="rt-fine">Service areas from ' + link(geo.source.url, "robotaxi-service-areas") + " (MIT), traced from the Tesla Robotaxi app. Earlier expansions from " + link("https://robotracker.app/updates", "robotracker.app") + ". Status: " + link("https://robotracker.app/updates", "robotracker.app") + ", Bay Area " + link("https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/", "CPUC via Electrek") + ". Each map is scaled to fit its card, so compare areas by the mi² figure. Shapes checked " + stamp(geo.checked) + ".</p>";
     root.innerHTML = html;
+    document.dispatchEvent(new CustomEvent("rt:cities-ready"));
   }).catch(function () { root.innerHTML = '<p class="cc-count-empty">City data couldn’t load.</p>'; });
 })();
