@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only.",
-  "updated": "2026-10-14",
+  "updated": "2026-10-15",
   "events": {
     "starship-flight-15": {
       "title": "Starship Flight 15",
@@ -13,6 +13,19 @@
         "FAA CADENA / air-traffic planning slides (NET 8 Nov)",
         "Elon Musk, 10 Oct 2026: '4 to 6 weeks'",
         "NASASpaceflight: Ship 42 cryo campaign, B22 static fire pending"
+      ]
+    },
+    "crs35-docking": {
+      "title": "Dragon \u00b7 CRS-35 docked with the ISS",
+      "date": "2026-10-15",
+      "time": "10:27",
+      "tz": "-04:00",
+      "precision": "datetime",
+      "status": "done",
+      "summary": "Docked 10:27 a.m. EDT to Harmony\u2019s space-facing port with 6,300+ lb of cargo and the final IROSA pair. About 30 minutes ahead of the ~11:00 a.m. ET plan.",
+      "sources": [
+        "NASA space station blog, 15 Oct 2026: docked at 10:27 a.m. EDT",
+        "https://blogs.nasa.gov/spacestation/2026/10/15/spacex-dragon-docks-with-science-supplies-and-roll-out-solar-arrays/"
       ]
     }
   }

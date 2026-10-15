@@ -89,6 +89,18 @@
       source: "fallback",
     },
     {
+      id: "crs35-docking",
+      title: "Dragon · CRS-35 docked with the ISS",
+      start: "2026-10-15T14:27:00Z",
+      group: "spacex",
+      where: "ISS · Harmony zenith",
+      note: "Docked 10:27 a.m. EDT (14:27 UTC) to Harmony’s space-facing port — about 30 minutes early. NASA space station blog.",
+      href: "https://blogs.nasa.gov/spacestation/2026/10/15/spacex-dragon-docks-with-science-supplies-and-roll-out-solar-arrays/",
+      status: "go",
+      precision: "datetime",
+      source: "curated",
+    },
+    {
       id: "ll-ussf-481",
       title: "Falcon 9 · USSF-481",
       start: "2026-10-15T23:44:00Z",
