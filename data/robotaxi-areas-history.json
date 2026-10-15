@@ -1,0 +1,162 @@
+{
+ "note": "Pre-Oct-2026 entries from robotracker.app/updates; later entries detected by scripts/build-robotaxi-cities.py.",
+ "cities": {
+  "austin": {
+   "name": "Austin, TX",
+   "lastExpanded": "2026-08-31",
+   "log": [
+    {
+     "date": "2025-06-22",
+     "areaSqMi": 19,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2025-07-14",
+     "areaSqMi": 42,
+     "from": 19,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2025-08-03",
+     "areaSqMi": 90,
+     "from": 42,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2025-08-26",
+     "areaSqMi": 169,
+     "from": 90,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2025-10-28",
+     "areaSqMi": 243,
+     "from": 169,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2026-08-31",
+     "areaSqMi": 264,
+     "from": 243,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "active",
+   "statusLabel": "Public rides",
+   "statusSrc": "https://robotracker.app/updates"
+  },
+  "bay_area": {
+   "name": "Bay Area, CA",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2025-08-31",
+     "areaSqMi": 834,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2026-04-20",
+     "areaSqMi": 1094,
+     "from": 834,
+     "kind": "expanded",
+     "dateApprox": true,
+     "note": "First seen at this size in robotaxi-service-areas on 20 Apr 2026. Exact expansion date not published.",
+     "src": "https://github.com/EthanMcKanna/robotaxi-service-areas/commit/9c5480d"
+    }
+   ],
+   "status": "supervised",
+   "statusLabel": "Safety driver",
+   "statusSrc": "https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/"
+  },
+  "dallas": {
+   "name": "Dallas, TX",
+   "lastExpanded": "2026-08-29",
+   "log": [
+    {
+     "date": "2026-04-18",
+     "areaSqMi": 31,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2026-08-29",
+     "areaSqMi": 81,
+     "from": 31,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "testing",
+   "statusLabel": "Testing",
+   "statusSrc": "https://robotracker.app/updates"
+  },
+  "houston": {
+   "name": "Houston, TX",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2026-04-18",
+     "areaSqMi": 25,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "testing",
+   "statusLabel": "Testing",
+   "statusSrc": "https://robotracker.app/updates"
+  },
+  "miami": {
+   "name": "Miami, FL",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2026-07-03",
+     "areaSqMi": 30,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "testing",
+   "statusLabel": "Testing",
+   "statusSrc": "https://robotracker.app/updates"
+  },
+  "orlando": {
+   "name": "Orlando, FL",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2026-07-27",
+     "areaSqMi": 26,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "testing",
+   "statusLabel": "Testing",
+   "statusSrc": "https://robotracker.app/updates"
+  },
+  "tampa": {
+   "name": "Tampa, FL",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2026-07-27",
+     "areaSqMi": 24,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "testing",
+   "statusLabel": "Testing",
+   "statusSrc": "https://robotracker.app/updates"
+  }
+ },
+ "checked": "2026-10-15T07:01:14Z"
+}

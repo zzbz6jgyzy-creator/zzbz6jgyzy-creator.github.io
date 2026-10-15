@@ -1,0 +1,28 @@
+.rt-total { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; box-shadow: inset 3px 0 0 var(--ink-soft); margin-bottom: 1rem; }
+.rt-total h3 { margin: 0 0 0.3rem; font-size: 1.05rem; }
+.rt-total-n { margin: 0 0 0.6rem; color: var(--ink-soft); }
+.rt-total-n strong { font-size: 2rem; color: var(--ink); letter-spacing: -0.03em; margin-right: 0.3rem; }
+.rt-total-parts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; font-size: 0.9rem; color: var(--ink-soft); }
+.rt-total-parts strong { color: var(--ink); }
+.rt-kind { color: var(--mute); font-size: 0.82em; }
+.rt-total a, .rt-city a, .rt-fine a { color: var(--ink-soft); font-size: 0.85em; }
+.rt-fine { margin: 0.75rem 0 0; font-size: 0.76rem; color: var(--mute); }
+.rt-legend { display: flex; gap: 1.2rem; font-size: 0.78rem; color: var(--mute); margin: 0 0 0.7rem; }
+.rt-legend i { display: inline-block; width: 14px; height: 10px; margin-right: 0.4rem; vertical-align: -1px; border-radius: 2px; }
+.rt-sw-now { background: rgba(200, 16, 46, 0.35); border: 1px solid #e0233f; }
+.rt-sw-prev { border: 1px dashed var(--ink-soft); }
+.rt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; }
+.rt-city { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; min-width: 0; }
+.rt-geo { display: block; width: 100%; height: auto; background: radial-gradient(circle at 50% 40%, #191a20, #101115); border-bottom: 1px solid var(--line); }
+.rt-geo-now { fill: rgba(200, 16, 46, 0.32); stroke: #e0233f; stroke-width: 1.2; stroke-linejoin: round; }
+.rt-geo-prev { fill: none; stroke: var(--ink-soft); stroke-width: 1; stroke-dasharray: 3 3; }
+.rt-city-body { padding: 0.8rem 0.95rem 0.9rem; }
+.rt-city header { display: flex; justify-content: space-between; gap: 0.5rem; align-items: baseline; margin-bottom: 0.5rem; }
+.rt-city h3 { margin: 0; font-size: 1rem; }
+.rt-status { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mute); white-space: nowrap; }
+.rt-city.is-active .rt-status { color: #5fd38a; }
+.rt-city.is-supervised .rt-status { color: #e9c46a; }
+.rt-city dl { margin: 0; display: grid; gap: 0.35rem; font-size: 0.82rem; }
+.rt-city dl div { display: grid; grid-template-columns: 6rem 1fr; gap: 0.5rem; }
+.rt-city dt { color: var(--mute); }
+.rt-city dd { margin: 0; color: var(--ink-soft); }

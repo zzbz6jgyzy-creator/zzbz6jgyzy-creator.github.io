@@ -41,7 +41,8 @@
     />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/cybercab-tracker.css?v=202610150740" />
-    <link rel="stylesheet" href="/cybercab-count.css?v=202610150740" />
+    <link rel="stylesheet" href="/cybercab-count.css?v=202610150805" />
+    <link rel="stylesheet" href="/cybercab-cities.css?v=202610150805" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610142355" />
   </head>
   <body>
@@ -131,6 +132,14 @@
           </div>
         </section>
 
+        <section class="section cc-rt-sec" aria-labelledby="rt-cities-h">
+          <div class="section-head">
+            <h2 id="rt-cities-h" class="reveal">Robotaxi (Model Y) cities</h2>
+            <p class="reveal delay-1">Tesla&rsquo;s Model Y ride-hail service, city by city, with each gated service area. Cybercabs only carry riders in Austin so far.</p>
+          </div>
+          <div data-rt-cities><p class="cc-count-empty">Loading cities&hellip;</p></div>
+        </section>
+
         <section class="section" aria-labelledby="cc-fleet-h">
           <div class="section-head">
             <h2 id="cc-fleet-h" class="reveal">Fleet count</h2>
@@ -201,7 +210,8 @@
     <script src="/script.js"></script>
     <script src="/cybercab-data.js"></script>
     <script src="/cybercab-tracker.js"></script>
-    <script src="/cybercab-count.js?v=202610150740" defer></script>
+    <script src="/cybercab-count.js?v=202610150805" defer></script>
+    <script src="/cybercab-cities.js?v=202610150805" defer></script>
     <script src="/countup.js" defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>

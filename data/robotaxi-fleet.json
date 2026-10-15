@@ -1,0 +1,30 @@
+{
+ "checked": "2026-10-15T07:01:14Z",
+ "aggregator": {
+  "name": "Platform Aeronaut AV Tracker",
+  "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
+ },
+ "states": {
+  "Texas": {
+   "count": 420,
+   "kind": "registered",
+   "asOf": "2026-10-15",
+   "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+   "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."
+  },
+  "California": {
+   "count": 164,
+   "kind": "estimate",
+   "asOf": "2026-08-26",
+   "note": "Third-party market tracker estimates 164 active Tesla vehicles in the Bay Area",
+   "src": "https://tesorb.com/robotaxi-pilot-cities-ranked-austin-data/"
+  },
+  "Florida": {
+   "count": 18,
+   "kind": "estimate",
+   "asOf": "2026-07-22",
+   "note": "18 robotaxi-configured Model Ys observed in Florida ahead of service launches",
+   "src": "https://www.basenor.com/blogs/news/tesla-robotaxi-model-ys-spotted-in-florida-with-new-hardware"
+  }
+ }
+}

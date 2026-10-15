@@ -43,8 +43,8 @@
   fetch("/data/robotaxi-tx.json", { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (data) {
     if (!data.history || !data.history.length) throw 0;
     root.innerHTML =
-      card("cybercab", "Cybercabs", "Purpose-built two-seater. No steering wheel, no pedals.", "cybercab", data) +
-      card("robotaxi", "Robotaxis (Model Y)", "Standard Model Y cars running Tesla’s ride-hail service.", "modelY", data) +
+      card("cybercab", "Cybercabs, Texas", "Purpose-built two-seater. No steering wheel, no pedals.", "cybercab", data) +
+      card("robotaxi", "Robotaxis (Model Y), Texas", "Standard Model Y cars running Tesla’s ride-hail service.", "modelY", data) +
       '<p class="cc-count-note">Split by VIN: Cybercabs start 5YJAJ, Model Ys start 7SAY. Earlier points: <a href="https://teslant.com/en/news/tesla-cybercab-300-austin-dallas-next-2026-10" rel="noopener">TeslAnt</a> (26 Sep, 3 Oct) and <a href="https://notateslakiller.com/en/tesla-cybercab-record-150-registrations-texas-319-nhtsa/" rel="noopener">NotATeslaKiller</a> (8 Oct). Refreshed twice a day.</p>';
   }).catch(function () {
     root.innerHTML = '<p class="cc-count-empty">The registry count couldn’t load. See the <a href="https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" rel="noopener">Texas Robotaxi Database</a>.</p>';
