@@ -161,7 +161,8 @@
   background: #08090c;
 }
 
-.taxi-zone-media > img:first-of-type {
+.taxi-zone-media > img:first-of-type,
+.taxi-zone-media > picture:first-of-type > img {
   width: 100%;
   height: 100%;
   object-fit: cover;

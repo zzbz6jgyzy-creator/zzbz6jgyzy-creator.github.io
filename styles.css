@@ -4595,7 +4595,8 @@ a.stat:focus-visible,
 }
 
 /* Article photos: keep native aspect ratio (width/height attrs otherwise force a squashed height) */
-main figure:not(.figure):not(.figure-embed) > img {
+main figure:not(.figure):not(.figure-embed) > img,
+main figure:not(.figure):not(.figure-embed) > picture > img {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -4604,3 +4605,8 @@ main figure:not(.figure):not(.figure-embed) > img {
 }
 
 .ref-note{display:inline-block;margin-left:.4em;font-size:.72rem;color:#8a8b90;font-weight:400;letter-spacing:0;text-transform:none;vertical-align:middle}
+
+/* <picture> wrappers from scripts/build-images.mjs must not change layout */
+picture { display: contents; }
+picture > source { display: none !important; }
+:where(picture) > img { height: auto; }
