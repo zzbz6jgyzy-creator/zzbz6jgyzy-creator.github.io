@@ -1,0 +1,10 @@
+.related-stories{max-width:860px;margin:2.5rem auto 1rem;padding:1.4rem 1.2rem 1.2rem;border-top:3px solid #E31937;border-radius:14px;background:#0b0b0c;border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);color:#fff}
+.related-stories h2{font-family:Michroma,sans-serif;font-weight:400;text-transform:uppercase;font-size:1rem;margin:0 0 1rem;letter-spacing:.04em}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.rel-card{display:flex;flex-direction:column;gap:.35rem;color:#fff;text-decoration:none;border-radius:10px;padding:.5rem;background:#121214;border:1px solid rgba(255,255,255,.07);transition:border-color .2s}
+.rel-card:hover{border-color:#E31937}
+.rel-card img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:7px;display:block}
+.rel-tag{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#E31937;font-weight:700}
+.rel-h{font-size:.92rem;line-height:1.3;font-weight:600}
+.rel-more{margin:1rem 0 0;font-size:.9rem}.rel-more a{color:#E31937;text-decoration:none}.rel-more a:hover{text-decoration:underline}
+@media (max-width:720px){.related-stories{margin-left:14px;margin-right:14px}.rel-grid{grid-template-columns:1fr}.rel-card{flex-direction:row;align-items:center;flex-wrap:wrap}.rel-card img{width:96px;flex:0 0 96px}.rel-card .rel-tag{flex-basis:calc(100% - 110px)}}

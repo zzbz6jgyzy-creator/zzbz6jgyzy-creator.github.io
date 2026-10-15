@@ -97,5 +97,50 @@ def sleek_signup():
             t = t.replace("</body>", '    <script src="/grow.js?v=202610142125" data-band data-pop defer></script>\n  </body>', 1)
         if t != s: open(path, "w", encoding="utf-8").write(t); print("sleek signup:", os.path.relpath(path, ROOT))
 
+# ---- Related stories: 3 internal links + "More on <topic>" at the bottom of every Dispatch article ----
+SUBJECTS = [  # (keyword regex, label, link)
+    (r"starlink", "Starlink", "/starlink.html"),
+    (r"starship|super heavy|raptor|ship \d|booster|b10\d\d|flight 1\d", "Starship", "/starship.html"),
+    (r"cybercab|robotaxi", "Cybercab", "/cybercab.html"),
+    (r"\bfsd\b|full self|assisted driving|autopilot", "FSD", "/fsd-europe.html"),
+    (r"software|firmware|update \d|automations|headlight", "Tesla software", "/updates.html"),
+    (r"roadster", "Roadster", "/tesla.html"),
+    (r"grok|xai", "Grok", "/grok.html"),
+    (r"dragon|falcon|crs-?\d|crew|space station|\biss\b|solar (arrays|wings)", "SpaceX", "/spacex.html"),
+]
+TOPIC_PAGE = {"tesla": ("Tesla", "/tesla.html"), "spacex": ("SpaceX", "/spacex.html"), "xai": ("Grok", "/grok.html"), "x": ("X", "/news.html")}
+def subjects(a):
+    t = (a.get("title", "") + " " + a.get("tag", "") + " " + a["url"].replace("-", " ")).lower()
+    return [i for i, (rx, _, _) in enumerate(SUBJECTS) if re.search(rx, t)]
+def related_stories():
+    arts = json.load(open(OUT, encoding="utf-8")).get("articles", [])
+    by = {a["url"]: a for a in arts}
+    rx = re.compile(r'\n?[ \t]*<!--related:start-->.*?<!--related:end-->', re.S)
+    for path in glob.glob(os.path.join(ROOT, "dispatch", "*.html")):
+        url = "/dispatch/" + os.path.basename(path)
+        s = open(path, encoding="utf-8").read()
+        if "</main>" not in s: continue
+        me = by.get(url) or {"url": url, "title": os.path.basename(path), "topic": "", "tag": ""}
+        ms = set(subjects(me))
+        def score(o):
+            os_ = set(subjects(o)); return (len(ms & os_) * 3 + (2 if o.get("topic") == me.get("topic") else 0), o.get("date", ""))
+        cands = sorted((o for o in arts if o["url"] != url and os.path.exists(os.path.join(ROOT, o["url"].lstrip("/")))), key=score, reverse=True)[:3]
+        if me.get("topic") in TOPIC_PAGE: lab, link = TOPIC_PAGE[me["topic"]]
+        else: lab, link = "Dispatch", "/dispatch.html"
+        if ms: _, lab, link = SUBJECTS[min(ms)]
+        cards = "".join(
+            f'<a class="rel-card" href="{html.escape(o["url"])}">'
+            + (f'<img src="{html.escape(o["image"])}" alt="" loading="lazy" width="320" height="180" />' if o.get("image") else "")
+            + f'<span class="rel-tag">{html.escape(o.get("tag") or "Dispatch")}</span><span class="rel-h">{html.escape(o["title"], quote=False)}</span></a>' for o in cands)
+        block = (f'\n        <!--related:start--><section class="related-stories" aria-labelledby="rel-h"><h2 id="rel-h">Related stories</h2>'
+                 f'<div class="rel-grid">{cards}</div><p class="rel-more"><a href="{link}">More on {html.escape(lab)} →</a></p></section><!--related:end-->')
+        t = rx.sub("", s)
+        t = t.replace("</main>", block.lstrip("\n") + "\n      </main>", 1) if False else re.sub(r"(\s*)</main>", lambda m: block + m.group(1) + "</main>", t, count=1)
+        if 'href="/related.css' not in t:
+            t = t.replace("</head>", '    <link rel="stylesheet" href="/related.css?v=202610151900" />\n  </head>', 1)
+        if t != s: open(path, "w", encoding="utf-8").write(t); print("related:", os.path.relpath(path, ROOT))
+
+import glob
 sleek_signup()
 main()
+related_stories()

@@ -25,7 +25,7 @@
     const b = document.createElement("section");
     b.className = "sd-band"; b.setAttribute("data-newsletter", "band"); b.setAttribute("aria-label", "Newsletter signup");
     b.innerHTML = `<div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
-      <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-1" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
+      <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-1?utm_source=website&utm_medium=site-band&utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
     place(b);
   }
   const KEY = "sd-pop-seen";
@@ -53,6 +53,6 @@
     };
     addEventListener("scroll", onScroll, { passive: true });
   }
-  function bindForms() { const s = document.createElement("script"); s.src = "/newsletter.js"; document.body.appendChild(s); }
+  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610151900"; document.body.appendChild(t); }  const s = document.createElement("script"); s.src = "/newsletter.js?v=202610151900"; document.body.appendChild(s); }
   bindForms();
 })();

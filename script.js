@@ -127,6 +127,9 @@
   });
 
   const newsletter = document.createElement("script");
-  newsletter.src = "/newsletter.js";
+  newsletter.src = "/newsletter.js?v=202610151900";
   document.body.append(newsletter);
+  const track = document.createElement("script");
+  track.src = "/track.js?v=202610151900";
+  document.body.append(track);
 })();

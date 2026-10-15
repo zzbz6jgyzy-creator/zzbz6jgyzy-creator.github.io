@@ -87,3 +87,18 @@ Do not add the old red inline box (`<section class="newsletter sd-nl">`, `.nl-en
   sources line, and include the grow.js tag above. `scripts/build-articles.py` strips any `.sd-nl` box from
   `dispatch/` and `guides/` and adds the grow.js band tag if missing, every time it runs.
 - Pattern: commit 3fe2772 (buying guide) and the 15 Oct newsletter-sleek commit.
+
+## Site event tracking (sign-ups, latest-issue clicks, Tesla referral clicks)
+
+Privacy-friendly counters, no cookies, no IPs, no user IDs, no cookie banner needed.
+
+- **What's counted** (`/track.js`, loaded by `script.js` and `grow.js` on every page):
+  - `signup_submit`: a newsletter form with an email was submitted (sleek bar and any other form).
+  - `latest_issue_click`: click on "Read the latest issue →" in the sleek bar (`a.sd-latest`).
+  - `referral_click`: click on any `https://ts.la/…` Tesla referral link.
+- **Where counts live**: Cloudflare Worker `sd-events` + KV namespace `sd-events` (id `57ee0b9c3c2647fe84176ca976aba17e`), account Superchargeddaily@gmail.com. Code: `workers/sd-events/`. Free tier.
+- **Read the numbers**: `GET https://sd-events.superchargeddaily.workers.dev/stats?days=30` returns JSON
+  `{ since, totals:{event:n}, byDay:{"YYYY-MM-DD":{event:n}}, topPages:{event:{path:n}} }` (UTC days; topPages all-time).
+- **Beehiiv attribution**: sign-ups redirect to Beehiiv with `utm_source=website`, `utm_medium=site-band` (sleek bar) / `site-pop` (scroll prompt) / `site-form` (other), and `utm_campaign=<page path>`. The latest-issue link carries `utm_medium=site-band&utm_campaign=latest-issue`. See Beehiiv → Subscribers → acquisition source.
+- **Pageviews** remain in Cloudflare Web Analytics (beacon on every page). No GA, Plausible or Zaraz on the site (the domain is DNS-only to GitHub Pages, so Zaraz can't run).
+- Counts are approximate: ad blockers may drop beacons, and the Worker only accepts requests from superchargeddaily.com.

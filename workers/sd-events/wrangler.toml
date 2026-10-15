@@ -1,0 +1,7 @@
+name = "sd-events"
+main = "sd-events.js"
+compatibility_date = "2025-10-01"
+# Live: https://sd-events.superchargeddaily.workers.dev  (stats: /stats?days=30)
+[[kv_namespaces]]
+binding = "EVENTS"
+id = "57ee0b9c3c2647fe84176ca976aba17e"

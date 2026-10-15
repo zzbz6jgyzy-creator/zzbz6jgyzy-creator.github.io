@@ -16,7 +16,8 @@
         return;
       }
       const url = SUBSCRIBE_URL + "?email=" + encodeURIComponent(email) +
-        "&utm_source=website&utm_medium=" + encodeURIComponent(location.pathname);
+        "&utm_source=website&utm_medium=" + (form.closest(".sd-band") ? "site-band" : form.closest(".sd-pop") ? "site-pop" : "site-form") +
+        "&utm_campaign=" + encodeURIComponent(location.pathname);
       if (status) { status.textContent = "Taking you to Supercharged Daily…"; status.classList.add("is-ok"); }
       location.href = url;
     });
