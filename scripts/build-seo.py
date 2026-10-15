@@ -21,7 +21,7 @@ def meta(src, attr, name):
     return html.unescape(m.group(1)) if m else None
 
 def git_date(path):
-    out = subprocess.run(["git", "log", "-1", "--format=%cI", "--perl-regexp", "--author=^(?!github-actions)", "--", path], cwd=ROOT,
+    out = subprocess.run(["git", "log", "-1", "--format=%cI", "--perl-regexp", "--author=^(?!github-actions)", "--invert-grep", "--grep=^SEO", "--", path], cwd=ROOT,
                          capture_output=True, text=True).stdout.strip()
     return out or None
 
