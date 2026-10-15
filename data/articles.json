@@ -1,9 +1,19 @@
 {
-  "updated": "2026-10-15T15:12:33Z",
+  "updated": "2026-10-15T18:17:32Z",
   "articles": [
     {
+      "url": "/dispatch/starmind-volume-production.html",
+      "title": "Star Mind computer hits volume production next year",
+      "date": "2026-10-15T18:17:07Z",
+      "topic": "spacex",
+      "tag": "Starmind",
+      "image": "/assets/dispatch/starmind-volume-production-poster.jpg",
+      "summary": "Musk puts a year on the orbital AI computer SpaceX is building with Nvidia.",
+      "pinned": false
+    },
+    {
       "url": "/dispatch/crs35-dragon-docks.html",
-      "title": "Dragon docks with the station\u2019s last new solar arrays",
+      "title": "Dragon docks with the station’s last new solar arrays",
       "date": "2026-10-15T14:53:06Z",
       "topic": "spacex",
       "tag": "SpaceX",
@@ -13,7 +23,7 @@
     },
     {
       "url": "/dispatch/united-starlink-half.html",
-      "title": "Starlink on nearly half of United\u2019s flights",
+      "title": "Starlink on nearly half of United’s flights",
       "date": "2026-10-15T12:18:28Z",
       "topic": "spacex",
       "tag": "Starlink",
@@ -23,32 +33,32 @@
     },
     {
       "url": "/dispatch/grok-bot-make-you-whole-analysis.html",
-      "title": "SpaceX will \u2018make you whole\u2019 if Grok Bot shops wrong",
+      "title": "SpaceX will ‘make you whole’ if Grok Bot shops wrong",
       "date": "2026-10-15T11:50:00Z",
       "topic": "xai",
       "tag": "Analysis",
       "image": "/assets/dispatch/grok-bot-make-you-whole-analysis-poster.jpg",
-      "summary": "Musk\u2019s refund promise vs Grok Bot Terms that put the risk on you.",
+      "summary": "Musk’s refund promise vs Grok Bot Terms that put the risk on you.",
       "pinned": false
     },
     {
       "url": "/dispatch/roadster-banger-demo-day.html",
-      "title": "Roadster day: a \u201cBANGER\u201d tonight",
+      "title": "Roadster day: a “BANGER” tonight",
       "date": "2026-10-15T08:56:38Z",
       "topic": "tesla",
       "tag": "Tesla",
       "image": "/assets/dispatch/roadster-banger-demo-day-poster.jpg",
-      "summary": "Musk\u2019s hype, and the physics and safety of cold-gas thrusters.",
+      "summary": "Musk’s hype, and the physics and safety of cold-gas thrusters.",
       "pinned": false
     },
     {
       "url": "/dispatch/tesla-spacex-merger-barclays.html",
-      "title": "Barclays: Tesla\u2013SpaceX merger \u201cconsensus\u201d",
+      "title": "Barclays: Tesla–SpaceX merger “consensus”",
       "date": "2026-10-15T08:56:38Z",
       "topic": "spacex",
       "tag": "Analysis",
       "image": "/assets/dispatch/tesla-spacex-merger-barclays-poster.jpg",
-      "summary": "Analyst speculation: an all-stock deal before Tesla\u2019s AGM.",
+      "summary": "Analyst speculation: an all-stock deal before Tesla’s AGM.",
       "pinned": false
     },
     {
@@ -88,7 +98,7 @@
       "topic": "tesla",
       "tag": "Analysis",
       "image": "/assets/dispatch/cybercab-austin-poster.jpg",
-      "summary": "Registered isn\u2019t running. The S-curve, the NHTSA deadline and what to watch next.",
+      "summary": "Registered isn’t running. The S-curve, the NHTSA deadline and what to watch next.",
       "pinned": false
     },
     {
@@ -208,7 +218,7 @@
       "topic": "tesla",
       "tag": "Software",
       "image": "/assets/dispatch/tesla-automations-europe-poster.jpg",
-      "summary": "\u201cIf this, then that\u201d for your Tesla, seen on one car in Europe. Not confirmed by Tesla.",
+      "summary": "“If this, then that” for your Tesla, seen on one car in Europe. Not confirmed by Tesla.",
       "pinned": false
     },
     {
@@ -218,7 +228,7 @@
       "topic": "tesla",
       "tag": "FSD",
       "image": "/assets/dispatch/fsd-15-billion-miles-poster.jpg",
-      "summary": "About 35 million supervised miles a day, per Tesla\u2019s safety report.",
+      "summary": "About 35 million supervised miles a day, per Tesla’s safety report.",
       "pinned": false
     },
     {
@@ -228,7 +238,7 @@
       "topic": "spacex",
       "tag": "Starlink",
       "image": "/assets/dispatch/starlink-two-thirds-poster.jpg",
-      "summary": "11,143 Starlinks vs 5,770 for the rest of the world, per McDowell\u2019s catalogue.",
+      "summary": "11,143 Starlinks vs 5,770 for the rest of the world, per McDowell’s catalogue.",
       "pinned": false
     },
     {
@@ -263,7 +273,7 @@
     },
     {
       "url": "/dispatch/starship-f15-ship-catch.html",
-      "title": "Ship catch in 4\u20136 weeks",
+      "title": "Ship catch in 4–6 weeks",
       "date": "2026-10-11T12:14:16Z",
       "topic": "spacex",
       "tag": "Starship",
@@ -303,7 +313,7 @@
     },
     {
       "url": "/dispatch/assisted-driving.html",
-      "title": "Assisted Driving Basic, \u20ac99",
+      "title": "Assisted Driving Basic, €99",
       "date": "2026-10-10T22:50:41Z",
       "topic": "tesla",
       "tag": "Tesla",
