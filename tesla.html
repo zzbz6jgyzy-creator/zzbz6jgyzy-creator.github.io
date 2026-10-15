@@ -226,7 +226,7 @@
             <div>
               <p class="tz-card-k">Robotaxi &amp; Cybercab</p>
               <h2 id="tz-rt-h">Austin first. Dallas next.</h2>
-              <p>Tesla says 300+ Cybercabs serve Austin. The Texas DMV registry listed 349 on 15 Oct. Dallas is next, with no date yet. The tracker has the count, cities and every milestone, with sources.</p>
+              <p>Tesla says 300+ Cybercabs serve Austin. The Texas DMV registry listed <span data-cc-count>349</span> on <span data-cc-date>15 Oct</span>. Dallas is next, with no date yet. The tracker has the count, cities and every milestone, with sources.</p>
               <span class="tz-link">Open the Cybercab tracker →</span>
             </div>
           </a>
@@ -492,6 +492,14 @@
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/live.js?v=202610141815" data-page="tesla" defer></script>
+    <script>
+      fetch("/data/robotaxi-tx.json?v=" + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+        var h = d && d.history; if (!h || !h.length) return; var l = h[h.length - 1]; if (!l.cybercab) return;
+        var dt = new Date(l.date + "T12:00:00Z");
+        document.querySelectorAll("[data-cc-count]").forEach(function (e) { e.textContent = l.cybercab; });
+        document.querySelectorAll("[data-cc-date]").forEach(function (e) { e.textContent = dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" }); });
+      }).catch(function () {});
+    </script>
       <script src="/nav-pill.js?v=202610150930"></script>
   </body>
 </html>
