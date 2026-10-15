@@ -13,8 +13,8 @@
     // that load it with data-band; this only fills in on pages that don't.
     block = document.querySelector(".sd-band");
     if (!block) {
-      if (!document.querySelector('link[href^="/grow.css?v=202610151840"]')) {
-        const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/grow.css?v=202610151840"; document.head.append(l);
+      if (!document.querySelector('link[href^="/grow.css?v=202610151845"]')) {
+        const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/grow.css?v=202610151845"; document.head.append(l);
       }
       const s = document.createElement("section");
       s.className = "sd-band"; s.setAttribute("data-newsletter", "band"); s.setAttribute("aria-label", "Newsletter signup");

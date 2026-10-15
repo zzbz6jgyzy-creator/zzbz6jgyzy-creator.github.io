@@ -5,7 +5,7 @@
   const has = (k) => me && me.hasAttribute("data-" + k);
   const REF = "https://ts.la/alex474841";
   const css = document.createElement("link");
-  css.rel = "stylesheet"; css.href = "/grow.css?v=202610151840"; document.head.appendChild(css);
+  css.rel = "stylesheet"; css.href = "/grow.css?v=202610151845"; document.head.appendChild(css);
   const footer = document.querySelector(".site-footer");
   const place = (el) => footer ? footer.before(el) : document.body.appendChild(el);
   const form = (id) => `<form class="sd-form" data-newsletter-form>
