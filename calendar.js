@@ -106,9 +106,11 @@
       start: "2026-10-15T23:57:00Z",
       group: "spacex",
       where: "Vandenberg · SLC-4E",
+      note: "Window opens 4:57 p.m. PT. SpaceX webcast on X.",
+      href: "https://x.com/i/broadcasts/1aJbdEzYpPaKX",
       status: "go",
       precision: "datetime",
-      source: "fallback",
+      source: "curated",
     },
   ];
 
@@ -235,12 +237,37 @@
   function mergeEvents(liveLaunches) {
     const live = (liveLaunches || []).map(mapLaunch).filter(Boolean);
     const liveKeys = new Set(live.map((e) => launchKey(e.title)));
+    const prefer = new Map();
+    CURATED.forEach((e) => {
+      if (e.source !== "fallback") prefer.set(launchKey(e.title), e);
+    });
+    const mergedLive = live.map((l) => {
+      const c = prefer.get(launchKey(l.title));
+      if (!c) return l;
+      return {
+        ...l,
+        id: c.id || l.id,
+        title: c.title || l.title,
+        start: c.start || l.start,
+        end: c.end || l.end,
+        href: c.href != null ? c.href : l.href,
+        note: c.note || l.note,
+        where: c.where || l.where,
+        status: c.status || l.status,
+        precision: c.precision || l.precision,
+        featured: c.featured != null ? c.featured : l.featured,
+        image: c.image || l.image,
+        imageCredit: c.imageCredit || l.imageCredit,
+        source: "curated",
+      };
+    });
     const curated = CURATED.filter((e) => {
-      if (e.source === "fallback" && liveKeys.has(launchKey(e.title))) return false;
+      const key = launchKey(e.title);
+      if (liveKeys.has(key)) return false;
       if (e.id === "starship-f15" && live.some((l) => /starship.*flight 15|flight 15/i.test(l.title))) return false;
       return true;
     });
-    return [...curated, ...live].sort((a, b) => parseStart(a.start) - parseStart(b.start) || a.title.localeCompare(b.title));
+    return [...curated, ...mergedLive].sort((a, b) => parseStart(a.start) - parseStart(b.start) || a.title.localeCompare(b.title));
   }
 
   function el(tag, className, text) {
@@ -380,9 +407,44 @@
     try {
       const r = await fetch("/data/events.json", { cache: "no-cache" });
       const j = r.ok ? await r.json() : null;
-      const ev = j && j.events && j.events["starship-flight-15"];
-      const cur = CURATED.find((e) => e.id === "starship-f15");
-      if (ev && cur) { cur.start = `${ev.date}T12:00:00Z`; if (ev.summary) cur.note = ev.summary; }
+      if (j && j.events) {
+        const idMap = {
+          "starship-flight-15": "starship-f15",
+          "ussf-481": "ll-ussf-481",
+          "crs35-docking": "crs35-docking",
+          "tesla-q3-2026-earnings": "tesla-q3-2026-earnings",
+        };
+        Object.keys(j.events).forEach((eid) => {
+          if (eid === "tesla-roadster-demo") return;
+          const ev = j.events[eid];
+          const cid = idMap[eid] || eid;
+          let cur = CURATED.find((e) => e.id === cid || launchKey(e.title) === launchKey(ev.title || ""));
+          if (!cur && (ev.href || ev.start || ev.date)) {
+            cur = {
+              id: cid,
+              title: ev.title || eid,
+              start: ev.start || `${ev.date}T12:00:00Z`,
+              group: /tesla|earnings|roadster/i.test(ev.title || eid) ? "tesla" : "spacex",
+              where: "",
+              note: ev.summary || "",
+              href: ev.href || "",
+              status: ev.status === "done" ? "go" : (ev.status || "go"),
+              precision: ev.precision || (ev.time || ev.start ? "datetime" : "day"),
+              source: "curated",
+            };
+            CURATED.push(cur);
+          }
+          if (!cur) return;
+          if (ev.start) cur.start = ev.start;
+          else if (ev.date && ev.time && ev.tz) cur.start = `${ev.date}T${ev.time}:00${ev.tz}`;
+          else if (ev.date) cur.start = `${ev.date}T12:00:00Z`;
+          if (ev.href) cur.href = ev.href;
+          if (ev.summary) cur.note = ev.summary;
+          if (ev.precision) cur.precision = ev.precision;
+          if (ev.status && ev.status !== "done") cur.status = ev.status;
+          cur.source = "curated";
+        });
+      }
     } catch {}
     const now = new Date();
     let events = mergeEvents([]);
