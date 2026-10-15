@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-10-15T19:05:00+01:00",
+  "updated": "2026-10-15T19:20:19+01:00",
   "events": {
     "starship-flight-15": {
       "title": "Starship Flight 15",
@@ -35,8 +35,8 @@
       "end": "2026-10-15T21:55:00-05:00",
       "major": true,
       "href": "/tesla.html",
-      "source": "https://x.com/Tesla/status/2110165104713183485",
-      "summary": "Tesla's Roadster demo livestream, per Tesla on X."
+      "source": "https://x.com/Tesla/status/2110788059008819215",
+      "summary": "Tesla's Roadster demo livestream on X (official broadcast posted 15 Oct)."
     },
     "tesla-q3-2026-earnings": {
       "title": "Tesla Q3 2026 earnings call",
