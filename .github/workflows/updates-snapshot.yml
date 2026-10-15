@@ -21,7 +21,7 @@ jobs:
       - name: Pull TeslaFi shares + Teslascope recent feed
         # TeslaFi every 2 hours (polite), Teslascope feed every run. Keeps old data if a source blocks us.
         run: |
-          if [ $(( 10#$(date -u +%H) % 2 )) -eq 0 ] && [ $(( 10#$(date -u +%M) )) -lt 35 ]; then
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || { [ $(( 10#$(date -u +%H) % 2 )) -eq 0 ] && [ $(( 10#$(date -u +%M) )) -lt 35 ]; }; then
             python3 scripts/snapshot-extras.py || true
           else
             python3 scripts/snapshot-extras.py --skip-teslafi || true
