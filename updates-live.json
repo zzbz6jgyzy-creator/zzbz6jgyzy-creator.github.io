@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15T07:56:10Z",
+  "updated": "2026-10-15T08:56:36Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3387,
@@ -24,9 +24,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 85,
+      "count": 88,
       "fleet": 3387,
-      "percent": 2.5,
+      "percent": 2.6,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -69,19 +69,19 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 83,
+        "US": 86,
         "CA": 2
       },
-      "pending": 88,
+      "pending": 85,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-15T07:22:09Z"
+      "lastSeen": "2026-10-15T08:47:59Z"
     },
     {
       "id": "2026.38.5",
       "date": "2026-10-10",
-      "count": 133,
+      "count": 134,
       "fleet": 3387,
-      "percent": 3.9,
+      "percent": 4.0,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -126,19 +126,19 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 121,
+        "US": 122,
         "CA": 9,
         "MX": 2,
         "PR": 1
       },
-      "pending": 19,
+      "pending": 18,
       "firstSeen": "2026-10-10T22:26:31Z",
-      "lastSeen": "2026-10-15T07:43:56Z"
+      "lastSeen": "2026-10-15T08:42:07Z"
     },
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 236,
+      "count": 238,
       "fleet": 3387,
       "percent": 7.0,
       "fsd": null,
@@ -195,12 +195,13 @@
         "BE",
         "NO",
         "CZ",
-        "IS",
         "HU",
         "BG",
+        "IS",
         "TR",
         "IL",
         "HK",
+        "SI",
         "MY",
         "PT",
         "UA",
@@ -215,7 +216,7 @@
         "SE"
       ],
       "countryCounts": {
-        "US": 79,
+        "US": 80,
         "GB": 30,
         "DE": 19,
         "IT": 11,
@@ -231,12 +232,13 @@
         "BE": 4,
         "NO": 3,
         "CZ": 3,
-        "IS": 2,
         "HU": 2,
         "BG": 2,
+        "IS": 2,
         "TR": 2,
         "IL": 2,
         "HK": 1,
+        "SI": 1,
         "MY": 1,
         "PT": 1,
         "UA": 1,
@@ -250,9 +252,9 @@
         "SK": 1,
         "SE": 1
       },
-      "pending": 94,
+      "pending": 92,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-15T07:49:29Z"
+      "lastSeen": "2026-10-15T08:30:52Z"
     },
     {
       "id": "2026.33.5",
