@@ -1,0 +1,20 @@
+.cc-count { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.cc-count-empty { color: var(--mute); margin: 0; }
+.cc-count-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem 1rem; min-width: 0; position: relative; overflow: hidden; }
+.cc-count-card.is-cybercab { border-color: rgba(200, 16, 46, 0.45); box-shadow: inset 3px 0 0 var(--tesla); }
+.cc-count-card.is-robotaxi { box-shadow: inset 3px 0 0 var(--ink-soft); }
+.cc-count-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); margin: 0 0 0.55rem; }
+.is-cybercab .cc-count-tag { color: #ff8095; border-color: rgba(200, 16, 46, 0.5); background: rgba(200, 16, 46, 0.1); }
+.cc-count-card h3 { margin: 0 0 0.15rem; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.02em; }
+.cc-count-what { margin: 0 0 0.8rem; color: var(--mute); font-size: 0.82rem; }
+.cc-count-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; align-items: baseline; color: var(--ink-soft); font-size: 0.95rem; }
+.cc-count-facts strong { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+.cc-count-total strong { font-size: 2rem; letter-spacing: -0.03em; margin-right: 0.3rem; }
+.cc-count-facts .is-up strong { color: #5fd38a; }
+.cc-count-facts .is-flat strong { color: var(--ink-soft); }
+.cc-count-pct { color: var(--mute); font-size: 0.85em; }
+.cc-count-total { flex-basis: 100%; }
+.cc-count-meta { margin: 0.85rem 0 0; padding-top: 0.6rem; border-top: 1px solid var(--line); font-size: 0.76rem; color: var(--mute); display: flex; flex-wrap: wrap; gap: 0.25rem 0.8rem; }
+.cc-count-meta a { color: var(--ink-soft); }
+.cc-count-note { grid-column: 1 / -1; margin: 0; font-size: 0.76rem; color: var(--mute); }
+@media (max-width: 720px) { .cc-count { grid-template-columns: 1fr; } .cc-count-total strong { font-size: 1.7rem; } }

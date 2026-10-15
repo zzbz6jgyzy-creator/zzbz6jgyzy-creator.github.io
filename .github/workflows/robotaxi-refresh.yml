@@ -1,0 +1,30 @@
+name: Refresh Texas Cybercab and Robotaxi counts
+
+on:
+  schedule:
+    - cron: "35 5,17 * * *"   # twice a day, 06:35 and 18:35 Dublin (summer time)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: robotaxi-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Texas Robotaxi Database -> data/robotaxi-tx.json
+        run: python3 scripts/build-robotaxi-tx.py
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data/robotaxi-tx.json; then echo "No change"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/robotaxi-tx.json
+          git commit -m "Refresh Texas Cybercab and Robotaxi counts."
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
