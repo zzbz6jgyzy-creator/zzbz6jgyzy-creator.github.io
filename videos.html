@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="refresh" content="0; url=/videos/index.html" />
+    <meta name="robots" content="noindex, follow" />
+    <meta http-equiv="refresh" content="0; url=/" />
+    <link rel="canonical" href="https://superchargeddaily.com/" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
@@ -11,31 +13,44 @@
     <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
-    <title>Videos from X — Supercharged Daily</title>
-    <meta name="description" content="Playable video clips from @ALJR86 posts on Tesla, SpaceX and Grok." />
-    <link rel="canonical" href="https://superchargeddaily.com/videos/index.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Supercharged Daily" />
-    <meta property="og:title" content="Videos from X — Supercharged Daily" />
-    <meta property="og:description" content="Playable video clips from @ALJR86 posts on Tesla, SpaceX and Grok." />
-    <meta property="og:url" content="https://superchargeddaily.com/videos/index.html" />
-    <meta property="og:image" content="https://superchargeddaily.com/assets/dispatch/musk-national-medal-poster.jpg" />
-    <meta property="og:image:alt" content="National Medal of Science clip from an @ALJR86 post" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="675" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@ALJR86" />
-    <meta name="twitter:creator" content="@ALJR86" />
-    <meta name="twitter:title" content="Videos from X — Supercharged Daily" />
-    <meta name="twitter:description" content="Playable video clips from @ALJR86 posts on Tesla, SpaceX and Grok." />
-    <meta name="twitter:image" content="https://superchargeddaily.com/assets/dispatch/musk-national-medal-poster.jpg" />
-    <meta name="twitter:image:alt" content="National Medal of Science clip from an @ALJR86 post" />
-
+    <title>Videos — Supercharged Daily</title>
+    <meta name="description" content="Clips from @ALJR86 now live on the Tesla, SpaceX and Grok desks." />
     <script>
-      location.replace("/videos/index.html" + location.hash);
+      const map = {
+        "musk-medal-ceremony": "/index.html#musk-national-medal",
+        "musk-national-medal": "/index.html#musk-national-medal",
+        "klm-starlink": "/spacex.html#klm-starlink",
+        "grok-bot-x-monitor": "/grok.html#grok-bot-x-monitor",
+        "semi-megacharger": "/tesla.html#semi-megacharger",
+        "dragon-freedom": "/dispatch/dragon-freedom.html",
+        "fsd-snow": "/dispatch/fsd-snow.html",
+        "starlink-direct": "/dispatch/starlink-direct.html",
+        "grok-bot-claude": "/grok.html#grok-bot-claude",
+        "starmind-million": "/spacex.html#starmind-million",
+        "stargaze": "/dispatch/stargaze.html",
+        "starship-catch": "/spacex.html#starship-catch",
+        "germany-fsd-math": "/tesla.html#germany-fsd-math",
+        "terafab": "/tesla.html#terafab",
+        "spacex-pipeline": "/spacex.html",
+        "boring-dublin": "/spacex.html",
+        "kazakhstan-starlink": "/spacex.html",
+        "ship-40": "/dispatch/ship-40.html",
+        "cybercab-austin": "/dispatch/cybercab-austin.html",
+        "starship-f15-ship-catch": "/dispatch/starship-f15-ship-catch.html",
+        "super-heavy-thrust": "/dispatch/super-heavy-thrust.html",
+        "tesla-headlight-leveling": "/dispatch/tesla-headlight-leveling.html",
+        "starlink-latam": "/dispatch/starlink-latam.html",
+        "fsd-cannonball": "/dispatch/fsd-cannonball.html",
+        "assisted-driving": "/dispatch/assisted-driving.html",
+      };
+      const key = (location.hash || "").replace(/^#/, "");
+      location.replace(map[key] || "/");
     </script>
   </head>
   <body>
-    <p><a href="/">Continue to the home page</a></p>
+    <p>
+      Those clips now live on the Tesla, SpaceX and Grok desks.
+      <a href="/">Continue to the home page</a>
+    </p>
   </body>
 </html>
