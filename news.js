@@ -1,5 +1,5 @@
 (() => {
-  const CACHE_KEY = "aljr-news-v2";
+  const CACHE_KEY = "v2-aljr-news-v2";
   const CACHE_MS = 10 * 60 * 1000;
   const MAX_AGE_MS = 36 * 60 * 60 * 1000;
   const PER_TOPIC = 12;
@@ -195,35 +195,6 @@
     return normalizeItems(rows, topic, now);
   };
 
-  const fetchRssThroughProxies = async (rss, topicId, now) => {
-    const encoded = encodeURIComponent(rss);
-    try {
-      const wrapped = await fetchJson(`https://api.allorigins.win/get?url=${encoded}`, 12000);
-      if (wrapped && wrapped.contents) return parseRssXml(wrapped.contents, topicId, now);
-    } catch {
-      /* next proxy */
-    }
-    try {
-      const xml = await fetchText(`https://api.allorigins.win/raw?url=${encoded}`, 10000);
-      return parseRssXml(xml, topicId, now);
-    } catch {
-      /* next proxy */
-    }
-    const data = await fetchJson(`https://api.rss2json.com/v1/api.json?rss_url=${encoded}`, 10000);
-    return parseRss2Json(data, topicId, now);
-  };
-
-  const fetchTopicLive = async (topic, now) => fetchRssThroughProxies(rssUrl(topic.query), topic.id, now);
-
-  const fetchTopicPhotos = async (topic, now) => {
-    if (!topic.bing) return [];
-    try {
-      return await fetchRssThroughProxies(bingRssUrl(topic.bing), topic.id, now);
-    } catch {
-      return [];
-    }
-  };
-
   const attachImages = (items, photos) => {
     const byKey = new Map();
     photos.forEach((row) => {
@@ -389,7 +360,7 @@
     }
 
     const loadSnapshot = async () => {
-      const data = await fetchJson(SNAPSHOT, 8000);
+      const data = await fetchJson(`${SNAPSHOT}?t=${Math.floor(Date.now() / 60000)}`, 8000);
       const rows = Array.isArray(data.items) ? data.items : [];
       const grouped = TOPICS.flatMap((topic) =>
         normalizeItems(
@@ -404,32 +375,6 @@
       };
     };
 
-    const loadLive = async (base) => {
-      const results = await Promise.allSettled(TOPICS.map((topic) => fetchTopicLive(topic, now)));
-      const photoResults = await Promise.allSettled(TOPICS.map((topic) => fetchTopicPhotos(topic, now)));
-      const live = [];
-      const photos = [];
-      results.forEach((result) => {
-        if (result.status === "fulfilled" && result.value.length) live.push(...result.value);
-      });
-      photoResults.forEach((result) => {
-        if (result.status === "fulfilled" && result.value.length) photos.push(...result.value);
-      });
-      if (!live.length && !photos.length) throw new Error("live-empty");
-      const merged = mergeByTopic(base, live.length ? live : photos);
-      const pictured = attachImages(merged, [...base, ...photos]);
-      const seen = new Set(pictured.map((item) => titleKey(item.title)));
-      photos.forEach((row) => {
-        const key = titleKey(row.title);
-        if (row.image && key && !seen.has(key)) {
-          seen.add(key);
-          pictured.push(row);
-        }
-      });
-      pictured.sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
-      return pictured;
-    };
-
     const run = async (force) => {
       renderSkeletons(list);
       setStatus(root, "Checking the wire…", "off");
@@ -442,8 +387,8 @@
           root,
           source === "live"
             ? `Live from Google News · ${formatStamp(new Date(cached.fetchedAt).toISOString())}`
-            : `Last snapshot · ${formatStamp(new Date(cached.fetchedAt).toISOString())}`,
-          source === "live" ? "live" : "stale"
+            : `Updated · ${formatStamp(new Date(cached.fetchedAt).toISOString())}`,
+          "live"
         );
         return;
       }
@@ -460,7 +405,7 @@
           paint();
           setStatus(
             root,
-            `Snapshot · ${formatStamp(snapshotUpdated)} · checking live headlines…`,
+            `Updated ${formatStamp(snapshotUpdated)}`,
             "stale"
           );
         }
@@ -468,29 +413,16 @@
         /* live may still work */
       }
 
-      try {
-        const liveItems = await loadLive(snapshotItems);
-        items = liveItems;
-        source = "live";
-        writeCache(items, "live");
+      // Headlines come only from the site's own snapshot (/news-data.json),
+      // rebuilt every 30 minutes by .github/workflows/news-snapshot.yml.
+      // The old browser-side CORS proxies (allorigins / rss2json) were unreliable.
+      if (snapshotItems.length) {
+        writeCache(items, "snapshot");
+        setStatus(root, `Updated ${formatStamp(snapshotUpdated)} · refreshed every 30 min`, "live");
+      } else {
+        items = [];
         paint();
-        setStatus(root, `Live from Google News · ${formatStamp(new Date().toISOString())}`, "live");
-      } catch {
-        if (snapshotItems.length) {
-          items = snapshotItems;
-          source = "snapshot";
-          writeCache(items, "snapshot");
-          paint();
-          setStatus(
-            root,
-            `Showing the last snapshot${snapshotUpdated ? ` · ${formatStamp(snapshotUpdated)}` : ""}. Refresh to try the live wire again.`,
-            "stale"
-          );
-        } else {
-          items = [];
-          paint();
-          setStatus(root, "Could not reach the wire. Try refresh.", "off");
-        }
+        setStatus(root, "Could not load headlines. Try refresh.", "off");
       }
     };
 
