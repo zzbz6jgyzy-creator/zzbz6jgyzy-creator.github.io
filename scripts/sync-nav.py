@@ -41,7 +41,7 @@ def block(navtag):
         <div class="pn-sheet-head"><img src="/assets/brand/wordmark.svg" alt="Supercharged Daily" /><button class="pn-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
 ''' + "\n".join("        " + s for s in sheet) + f'''
         <a class="pn-cta" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>
-        <p class="pn-credit">Menu inspired by 21st.dev</p>
+        <!-- Menu inspired by 21st.dev -->
       </aside>'''
 RX = re.compile(r'<div class="pn-wrap">\s*(<nav class="pn"[^>]*>).*?</aside>', re.S)
 check = "--check" in sys.argv; bad = []

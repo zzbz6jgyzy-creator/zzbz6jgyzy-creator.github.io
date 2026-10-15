@@ -4601,3 +4601,5 @@ main figure:not(.figure):not(.figure-embed) > img {
   height: auto;
   object-fit: cover;
 }
+
+.ref-note{display:inline-block;margin-left:.4em;font-size:.72rem;color:#8a8b90;font-weight:400;letter-spacing:0;text-transform:none;vertical-align:middle}

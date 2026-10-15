@@ -1,0 +1,35 @@
+name: Pre-render homepage
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - dispatch.html
+      - starship-data.js
+      - fsd-europe-data.js
+      - cybercab-data.js
+      - updates-live.json
+      - news-data.json
+      - data/events.json
+      - scripts/build-home.js
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild static homepage fallbacks
+        run: node scripts/build-home.js
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then echo "No change"; else
+            git commit -m "Pre-render homepage headlines, Dispatch and tracker numbers."
+            git pull --rebase && git push
+          fi

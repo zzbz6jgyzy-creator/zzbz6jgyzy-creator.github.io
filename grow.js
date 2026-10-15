@@ -5,7 +5,7 @@
   const has = (k) => me && me.hasAttribute("data-" + k);
   const REF = "https://ts.la/alex474841";
   const css = document.createElement("link");
-  css.rel = "stylesheet"; css.href = "/grow.css"; document.head.appendChild(css);
+  css.rel = "stylesheet"; css.href = "/grow.css?v=202610151840"; document.head.appendChild(css);
   const footer = document.querySelector(".site-footer");
   const place = (el) => footer ? footer.before(el) : document.body.appendChild(el);
   const form = (id) => `<form class="sd-form" data-newsletter-form>
@@ -18,14 +18,14 @@
     r.className = "sd-ref"; r.setAttribute("aria-label", "Tesla referral link");
     r.innerHTML = `<div><p class="sd-ref-eb">Referral link</p><h2>Buying a Tesla?</h2>
       <p class="sd-ref-sub">Use my referral link when you order for any perks Tesla offers in your market. I may get credits too.</p></div>
-      <a class="sd-btn" href="${REF}" target="_blank" rel="noopener noreferrer sponsored">Order with my referral ↗</a>`;
+      <a class="sd-btn" href="${REF}" target="_blank" rel="noopener noreferrer sponsored">Order with my referral ↗</a><span class="ref-note">Referral link: we may earn a reward</span>`;
     place(r);
   }
   if (has("band") && !document.querySelector('.nl-end, #newsletter, [data-newsletter]:not(.sd-pop):not(.sd-band)')) {
     const b = document.createElement("section");
     b.className = "sd-band"; b.setAttribute("data-newsletter", "band"); b.setAttribute("aria-label", "Newsletter signup");
     b.innerHTML = `<div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
-      <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime.</p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
+      <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-1" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
     place(b);
   }
   const KEY = "sd-pop-seen";
