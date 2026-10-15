@@ -27,3 +27,7 @@
 .mj-b strong{font-size:1.45rem;font-variant-numeric:tabular-nums;color:#fff}
 .mj-b small{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#E31937}
 @media (max-width:760px){.hv-major{grid-template-columns:1fr;margin-left:0;margin-right:0}.mj{grid-template-columns:1fr;grid-template-areas:"eb" "t" "w" "c"}.mj-c{margin-top:.5rem}.mj-b{flex:1}}
+/* One event card at a time: the pre-ef248b0 "Next live stream" card (live.js .lw), placed near the top. Hidden while the Live now card is up (live.js mounts live into .hv-live-top). */
+.hv-event:empty{display:none}
+.hv-event{max-width:620px;margin:.4rem auto 1.2rem}
+.pv-more-row{grid-template-columns:1fr}
