@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-14T01:40:00+01:00",
+ "updated": "2026-10-15T10:25:00+01:00",
  "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
  "events": [
   {
@@ -21,6 +21,24 @@
    "descSource": "https://www.spacex.com/launches/crs35"
   },
   {
+   "id": "crs35-docking",
+   "title": "Dragon · CRS-35 docks with the ISS",
+   "page": "starship",
+   "start": "2026-10-15T09:15:00-04:00",
+   "end": "2026-10-15T12:30:00-04:00",
+   "status": "scheduled",
+   "provider": "link",
+   "embedId": "",
+   "postUrl": "https://x.com/SpaceX/status/2109962954762527179",
+   "fallbackUrl": "https://www.nasa.gov/live/",
+   "fallbackLabel": "Watch on NASA Live",
+   "source": "https://www.spacex.com/launches/crs35",
+   "image": "/assets/live/crs35.jpg",
+   "imageCredit": "Photo: NASA/Kim Shiflett (CRS-25 liftoff), public domain",
+   "description": "Cargo Dragon C211 on CRS-35 docks autonomously with the ISS around 11:00 a.m. ET (NASA coverage from about 9:15 a.m. ET). SpaceX confirmed the docking time after CRS-35 liftoff. No site-embeddable stream id verified yet — watch on NASA Live.",
+   "descSource": "https://www.spacex.com/launches/crs35"
+  },
+  {
    "id": "f9-ussf481",
    "title": "Falcon 9 · USSF-481",
    "page": "starship",
@@ -35,7 +53,7 @@
    "source": "https://www.spacex.com/launches/ussf481",
    "image": "/assets/live/falcon9.jpg",
    "imageCredit": "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain",
-   "description": "A Falcon 9 national security launch for the U.S. Space Force from SLC-4E at Vandenberg, California, with a four-hour window. The payload is classified; the first stage lands on a droneship, and a backup opportunity is on Friday 16 Oct.",
+   "description": "A Falcon 9 national security launch for the U.S. Space Force from SLC-4E at Vandenberg, California, with a four-hour window opening at 4:44 p.m. PT (7:44 p.m. ET). The payload is classified; the first stage lands on a droneship, and a backup opportunity is on Friday 16 Oct at 4:35 p.m. PT.",
    "descSource": "https://www.spacex.com/launches/ussf481"
   },
   {
@@ -47,14 +65,14 @@
    "status": "scheduled",
    "provider": "x",
    "embedId": "",
-   "postUrl": "",
+   "postUrl": "https://x.com/Tesla/status/2110165104713183485",
    "fallbackUrl": "https://x.com/Tesla",
    "fallbackLabel": "Watch on X",
-   "source": "https://x.com/Tesla",
+   "source": "https://x.com/Tesla/status/2110165104713183485",
    "image": "/assets/live/roadster.jpg",
    "imageCredit": "2020 Roadster prototype · Photo: Smnt, Wikimedia Commons, CC BY-SA 4.0",
-   "description": "Tesla's next-generation Roadster, first shown in 2017, gets its live demo near Waco, Texas. Tesla moved it from 1 October because the event can only be held outdoors and severe weather was forecast. Tesla on X: streaming live Thursday 15 Oct at 7:55pm CDT. This switches to LIVE as soon as the official stream is up.",
-   "descSource": "https://x.com/Tesla/status/2104647484169728442",
+   "description": "Tesla's next-generation Roadster, first shown in 2017, gets its live demo near Waco, Texas. Tesla moved it from 1 October because the event can only be held outdoors and severe weather was forecast. Tesla on X (14 Oct): streaming live Thursday 15 Oct at 7:55pm CST (Central / CDT local). This switches to LIVE as soon as the official stream is up.",
+   "descSource": "https://x.com/Tesla/status/2110165104713183485",
    "featured": true
   },
   {

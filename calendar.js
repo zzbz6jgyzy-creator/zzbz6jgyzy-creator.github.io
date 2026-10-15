@@ -20,7 +20,7 @@
       group: "tesla",
       where: "Near Waco, Texas · outdoors · livestream on X",
       note: "Tesla's next-generation Roadster, first shown in 2017, gets its live demo. Tesla moved it from 1 October because the event can only be held outdoors and severe weather was forecast. Tesla on X: the livestream starts Thursday 15 Oct at 7:55pm Central (CDT); shown here in your local time.",
-      href: "https://x.com/Tesla",
+      href: "https://x.com/Tesla/status/2110165104713183485",
       status: "confirmed",
       precision: "datetime",
     },
