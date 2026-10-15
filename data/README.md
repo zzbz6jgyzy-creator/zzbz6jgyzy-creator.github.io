@@ -56,3 +56,23 @@ When a country is approved: set `status: "approved"`, `date`, `stage` (`recognis
 add a changelog entry, and bump `updated`. The TCMV countdown reads the first `outcome: "upcoming"` meeting in `tcmv-data.js`
 (if its `dateLabel` has no day number, the page says the exact date is unpublished).
 The map outline is `assets/europe-fsd-v2.svg`, built from Natural Earth 1:50m (public domain) by `scripts/build-europe-map.py`.
+
+## LIVE NOW alert (site-wide)
+
+`/live-now.js` (+ `/live-now.css`) is loaded on every page by `nav-pill.js`. It reads **`/live-data.json`**
+(the same file `live.js` and the stream-watch routines already update, so there is one source of truth) and polls it every 60 s with cache busting.
+
+An event shows the LIVE NOW alert when `status: "live"`, **or** it has an exact time (no `timeTbc`/`net`), `status` isn't `"ended"`, and `start <= now < end`.
+It auto-hides once `end` passes (even if status is still `live`) or when status becomes `ended`. Visitors can dismiss it for their tab session.
+
+- Homepage: big banner at the very top. Everywhere else: pulsing "LIVE NOW" pill bottom-right that expands into the player/link card.
+- Embeddable (muted autoplay + "Tap to unmute"): `provider: "youtube"` with `embedId` = the 11-char video id.
+- Everything else (`provider: "x"`, `"link"`, SpaceX.com, X broadcasts): badge + "Watch live on X / SpaceX / YouTube / <host>" button pointing at `fallbackUrl` (falls back to `postUrl`). Platform name is derived from the URL.
+
+To flip a stream live, a routine edits that event in `live-data.json`:
+```json
+{ "id": "tesla-roadster-demo", "status": "live", "start": "<ISO>", "end": "<ISO est. end>",
+  "provider": "youtube" | "x" | "link", "embedId": "<YouTube id or empty>",
+  "fallbackUrl": "<direct stream URL>", "postUrl": "<official post>", "title": "…" }
+```
+Set `"status": "ended"` when it's over. Test locally with `?livedata=/some.json` (and optionally `&livenow=<ISO>`).
