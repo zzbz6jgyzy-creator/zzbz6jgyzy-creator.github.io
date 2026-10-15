@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15T03:54:08Z",
+  "updated": "2026-10-15T04:52:39Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3386,
@@ -24,9 +24,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 33,
+      "count": 57,
       "fleet": 3386,
-      "percent": 1.0,
+      "percent": 1.7,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -69,12 +69,12 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 32,
+        "US": 56,
         "CA": 1
       },
-      "pending": 136,
+      "pending": 114,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-15T03:43:19Z"
+      "lastSeen": "2026-10-15T04:42:29Z"
     },
     {
       "id": "2026.38.5",
@@ -138,9 +138,9 @@
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 220,
+      "count": 223,
       "fleet": 3386,
-      "percent": 6.5,
+      "percent": 6.6,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -198,6 +198,7 @@
         "HU",
         "BG",
         "TR",
+        "IL",
         "HK",
         "MY",
         "PT",
@@ -207,7 +208,6 @@
         "LT",
         "PH",
         "TH",
-        "IL",
         "SG",
         "MA",
         "IE",
@@ -215,9 +215,9 @@
         "SE"
       ],
       "countryCounts": {
-        "US": 71,
+        "US": 72,
         "GB": 30,
-        "DE": 17,
+        "DE": 18,
         "IT": 11,
         "FR": 9,
         "NL": 9,
@@ -234,6 +234,7 @@
         "HU": 2,
         "BG": 2,
         "TR": 2,
+        "IL": 2,
         "HK": 1,
         "MY": 1,
         "PT": 1,
@@ -243,16 +244,15 @@
         "LT": 1,
         "PH": 1,
         "TH": 1,
-        "IL": 1,
         "SG": 1,
         "MA": 1,
         "IE": 1,
         "SK": 1,
         "SE": 1
       },
-      "pending": 97,
+      "pending": 94,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-15T03:43:19Z"
+      "lastSeen": "2026-10-15T04:41:42Z"
     },
     {
       "id": "2026.33.5",
