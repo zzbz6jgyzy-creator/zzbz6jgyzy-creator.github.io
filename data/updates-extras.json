@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-15T16:56:09Z",
+ "updated": "2026-10-15T17:49:57Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,40 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-15T16:56:09Z",
+  "fetched": "2026-10-15T17:49:57Z",
   "items": [
+   {
+    "t": "2026-10-15T17:43:42Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model Y SR (2026)",
+    "hw": "4.0",
+    "country": "France"
+   },
+   {
+    "t": "2026-10-15T17:36:22Z",
+    "to": "2026.38.5.1",
+    "from": "2026.33.5",
+    "model": "Model S AWD (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T17:19:05Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model Y Performance (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-15T17:03:40Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 SR (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-15T16:45:04Z",
     "to": "2026.38.5.1",
@@ -538,38 +570,6 @@
     "to": "2026.38.5.1",
     "from": "2026.27.11",
     "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-15T15:41:40Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model 3 RWD LR (2026)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-15T15:41:16Z",
-    "to": "2026.38.5.1",
-    "from": "2026.33.5",
-    "model": "Model Y AWD LR (2025)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-15T15:35:37Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model Y AWD LR (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-15T15:28:03Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model 3 AWD LR (2024)",
     "hw": "4.0",
     "country": "United States"
    }
