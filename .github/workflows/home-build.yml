@@ -14,6 +14,7 @@ on:
       - news-data.json
       - data/events.json
       - scripts/build-home.js
+      - scripts/build-seo.py
   workflow_dispatch:
 
 permissions:
@@ -24,15 +25,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Articles index + related stories
         run: python3 scripts/build-articles.py
       - name: Rebuild static homepage fallbacks
         run: node scripts/build-home.js
+      - name: NewsArticle structured data + sitemap
+        run: python3 scripts/build-seo.py
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/articles.json dispatch/*.html
+          git add index.html data/articles.json dispatch/*.html sitemap.xml
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Pre-render homepage headlines, Dispatch and tracker numbers."
             git pull --rebase && git push
