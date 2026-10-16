@@ -1,6 +1,24 @@
 {
-  "updated": "2026-10-16T04:35:13Z",
+  "updated": "2026-10-16T05:06:32Z",
   "items": [
+    {
+      "id": "fbb697bdb2b6",
+      "topic": "grok",
+      "title": "Grok Voice 3.0 vs Sesame Preview: No API, No Score",
+      "source": "OrcaRouter",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1tbm5VaklKY3RNVzJnSmhxdllPWW14VjZRWk8xYk11bndwN2QxRDFRVFFzS3lFekRhZFRaUlZEcUgtSWZuZFF6MUNxNkNOaDBxZk5pSW1BZHIyeVc5Q1ZTX3RRQnd5SUk3djdKb0RscUM?oc=5",
+      "published": "2026-10-16T04:49:31Z",
+      "snippet": ""
+    },
+    {
+      "id": "ec457c2bead7",
+      "topic": "grok",
+      "title": "Grok Voice 3.0 : l'affirmation d'une latence de 40 % omet un chiffre",
+      "source": "OrcaRouter",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBMS1dJem9UVlJ1QXVMRTRhUWZpQktYU290Y2tsUXhYTl9fYm0yQmJTcGJKdEJxb2FIblJEejFPNVBzVWtZbmF1MmpFVGRsLTJnN1ZucndjNWllcF9CckMycjhkVVRQSnFubFlYUjJwM2NzYzhrLTVyTw?oc=5",
+      "published": "2026-10-16T04:41:50Z",
+      "snippet": ""
+    },
     {
       "id": "16ac4d9aaba3",
       "topic": "spacex",
@@ -11,6 +29,16 @@
       "snippet": ""
     },
     {
+      "id": "e4bc3d215eef",
+      "topic": "tesla",
+      "title": "View Exterior Photos of the New Tesla Roadster",
+      "source": "Car and Driver",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNZTZ4Vy1seS1MOENjc3ZqUHViV0JDVERzQ3Z3bzVWR3gyWHdkdTVNOThOMldZRmo2UXpBRHVjV0dvRTNjWlBIcEJwalBpWXdQb3lBS2haT09KeTMwdktKSDFOQzZVaHNyZ3J5RDJjaTNXY25jVVhvMlhfZ3BBeS16b3FaNHpqbDN2TXJ3M2xsaGc?oc=5",
+      "published": "2026-10-16T04:20:47Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.XMSTuJ4QdNSs1B_X1WHtZw&pid=News&w=640"
+    },
+    {
       "id": "cfe73ce606ca",
       "topic": "tesla",
       "title": "Tesla's flying Roadster is a weapon in the talent wars",
@@ -18,7 +46,26 @@
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNV0NxeWhTRWg5OGhhYzBxVDVpcHowNkQwQl9jY21CTlp6QXVTTG11X2I1TFlOX09HTkRDYTZ0QVN5RFcxLXprcFVDQTctU1pKRTNjcnQycGIwNDBKcTJtaUVSdlJQWndlRXB2N29fcWZVWmpPWHBNNThrcjRWTThCUENsME8?oc=5",
       "published": "2026-10-16T04:03:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.WV7PHUnkDsWnaoP4fspwlQ&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.Nr7fKd_uuwuTiW5LvCnv7Q&pid=News&w=640"
+    },
+    {
+      "id": "b1ba5bc65c37",
+      "topic": "tesla",
+      "title": "An updated technical look at Tesla’s kick-flipping, 0-60 in 1s, next-gen Roadster",
+      "source": "Electrek",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQM0R3TEZXV3FmX2xHS0ZNRU5jSGNMOUZPVnJMcHZIdEtaT3RvbHRMNGF0dE5xMldVVkJHcjZkQTNydkVFdUV0blYwcjJQNWFoUVppZzZncmh4cDEzbExReGJYcHlsWHU0b21MU1lGb1QwTEFtU1dxWnJucTF4MEZLTEVZUHpCZDQtS1V1RXdkWG13WWd6dmFkeWJoUy1zWWJoelBOSUd0S251UURXWUtV?oc=5",
+      "published": "2026-10-16T03:36:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.gLzclBMtGUGLEdgRudzUTw&pid=News&w=640"
+    },
+    {
+      "id": "155580fdfd9e",
+      "topic": "spacex",
+      "title": "Tesla reveals next generation flying Roadster sports EV with SpaceX thrusters",
+      "source": "LiveNOW from FOX",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQWEoyNEhUZEg5Z0lsN3ptVW1zcHhHWmdfbWNsWTU1NDd3WXNaUHRnNlB2eEYwX1J4cHdjQjF2THJzU2tCeWNCbjh3ZWxMdXhUN25CWUdZVUxtMTMwRC1WdTVvWHVaR2cxTTNqSFNtVFJYSEtJNFFmd0VvUU9RNFVFYVlZb04tRkNqeXlHTFozUTZjTElaY0RtRjRCUG1OcjBMVmhIbG9hcWJIelNJeW1hYg?oc=5",
+      "published": "2026-10-16T03:29:49Z",
+      "snippet": ""
     },
     {
       "id": "a79ff46c7e83",
@@ -28,7 +75,7 @@
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5scEhxQUNQMUZoaENsT2U1YUVkVWlmRTdhcFlKT3VzYzRLVW9zWENYUjE2X2otTEEwVTltWFV1R1NtZkN1enhpZkhLc3loVmFzYnJtVF8wd0ZzVWxGTTB2UE5GMUdLNi1qZjUyNkJiRG0xLVFCS21v?oc=5",
       "published": "2026-10-16T03:24:38Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ORMS.85b570cce087071b9ac6ee00129cf4ae&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.TrQPVVQ7qSYsKoYK_NjeuQ&pid=News&w=640"
     },
     {
       "id": "69e5313f2f67",
@@ -38,7 +85,7 @@
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5scEhxQUNQMUZoaENsT2U1YUVkVWlmRTdhcFlKT3VzYzRLVW9zWENYUjE2X2otTEEwVTltWFV1R1NtZkN1enhpZkhLc3loVmFzYnJtVF8wd0ZzVWxGTTB2UE5GMUdLNi1qZjUyNkJiRG0xLVFCS21v?oc=5",
       "published": "2026-10-16T03:24:38Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ORMS.85b570cce087071b9ac6ee00129cf4ae&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.TrQPVVQ7qSYsKoYK_NjeuQ&pid=News&w=640"
     },
     {
       "id": "45a1ed907c22",
@@ -48,7 +95,7 @@
       "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBkYmZoSHM1Q200YTZ3TUo2RWtsX0p1NXlHMmxlRHp2a1FQenlnV3c3R2d3aEFSdXp4VWU1MF85Z3N1a0RiVUcxc09raWlnR0owbVVMUElhaE5LbjVOTkE?oc=5",
       "published": "2026-10-16T03:18:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.c7tGP4DUoYNk5THig_QPLw&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.Rk2XzMgLA9aW_wrjWmVuaw&pid=News&w=640"
     },
     {
       "id": "801f70c62fc6",
@@ -58,7 +105,7 @@
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQdWZRVXV0VGJfdW50cTBacXNfM3B1SWhWSXdKZUFhLUZpM21CTFRSbHNacXNqTVVPSHBKaWlSLVZxeHpBSTNqV0otVkdwaEdCTDBqekhKdjN1RUtHMElaN2lGa0NmQjQyZ3lJUTNmM3Q0SmJ5a05NNlNERmZBb2FEUkdR?oc=5",
       "published": "2026-10-16T03:16:58Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.WV7PHUnkDsWnaoP4fspwlQ&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.08_qupEYG5TJbxcnmDq2kg&pid=News&w=640"
     },
     {
       "id": "f7f7890ad8eb",
@@ -100,6 +147,15 @@
       "snippet": ""
     },
     {
+      "id": "242e806f6fe7",
+      "topic": "spacex",
+      "title": "Tesla unveils ‘flying’ sports car with SpaceX rocket thrusters",
+      "source": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPSXBHa1NpdEU0Zjg2Q1lwVlR0djdXaHZvalJvajdnWkYwR1cyNG1UMDdQS3h5bmVfLXcweUhLMnNQQWM2NlhNVDhUY2tpT3hDc1BLUVRDaEJCYmg2aFhKbFdWZkZ2N2N0UlpkRElqQUpWbTRzTGJPSXZEVTBPN1B1LUNkeFc?oc=5",
+      "published": "2026-10-16T02:42:08Z",
+      "snippet": ""
+    },
+    {
       "id": "3bb0d3966494",
       "topic": "tesla",
       "title": "Tesla finally delivers on its promise to create a flying car",
@@ -110,24 +166,23 @@
       "image": "https://www.bing.com/th?id=ONUT.-690W_U6mbAAKb_caiDQmw&pid=News&w=640"
     },
     {
-      "id": "e620a98359cc",
-      "topic": "tesla",
-      "title": "Tesla Debuts 2026 Roadster, an EV Sports Car at Least $200,000",
-      "source": "The New York Times",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOemtTYzlLRlNsdU1lbUV2OG84eFNvenhtdFFGeVlGdGdyaWtJZmJzSlRfQmlKX3ZKdldkcWpXb3ZfamtWNEE4MF9VNnFLRnR1NHN3VnpBYkZvZTFQZkhybzY5OGlHZldFaUozcXdrRF9PNXlWRnhOZUtXNjU5SFB2UnhOS29lUFVqUlE?oc=5",
-      "published": "2026-10-16T02:34:29Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.jgbfTTo2l_iPE-8ykZxQBw&pid=News&w=640"
-    },
-    {
       "id": "6ad3d17ed3b9",
       "topic": "tesla",
       "title": "Tesla unveils what it says is a flying car",
       "source": "CNN",
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQcDNkZ0NmTUtLYkNwbEUyRklCUE9rUnE4WHNfQk42d0ZHVUpoUGpQd1JMQWNUSElNQkVQbExQSmdWcVRnRXdjWEZMeHUxSVdOTVNCbHdHWGRBUGI3c2dxMnNrc3RqSExQZlBQb1g0bkYzMTZHb1RtNUpfSHRCZ1NDS0x5SnlVdFhWTmc?oc=5",
       "published": "2026-10-16T02:34:00Z",
+      "snippet": ""
+    },
+    {
+      "id": "f563daffcc6c",
+      "topic": "tesla",
+      "title": "Tesla Roadster Unveiled: Flight, Downforce, and 0-60 in 0.59s - BASENOR",
+      "source": "BASENOR - Tesla Accessories",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQM1hBZXNqSjk3OFJVZ2NVNlVTOWFLd3cyNVoxa3Z2dS1zT2dWRDRQTnZHQnpVdEVua3pOcDRhdDBGeHRXel9yaUR6MmlCYlhMcDdXMTdvNFVSV19Xc1h1ZmhLVDA4dVFrdE9QeXRuSTlIMnRaYUFuc1h5RllXQ3ZOYWZCbDF0MzdVejlFckJEbExJLTBCV3VLNg?oc=5",
+      "published": "2026-10-16T02:17:55Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.yKNsSSV93NsGmiXYxsPHoQ&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.p_VM6vcmQi-t2tqf-_7hkQ&pid=News&w=640"
     },
     {
       "id": "25f4f11fb0be",
@@ -175,36 +230,8 @@
       "source": "Yahoo Finance",
       "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQTTE2bFo5RzI2Z1NZejRpb1lNdjBiNmk1cUIzTlNXSVRsTXYwQnRPOXliNlJRejV0b0V4UXFfd0ZybVdIRWN4LWNrMmlNZHA4VnZ2SmVvVWU4Q2ZiZHJYcWE2YmtrMDNZbUZMWWVHUy1aekxrbWdURVpZVGlPRFdQVUpYWWJLUTBjV2tFRE15djlfMHNFRWI5UUNRTHUzbHd5dXhGNm12Wjc5UUxCRmx3MUhZbWhNOUNDRVZOSDR4TEF2OFlyVVlObG9fUk4zYTAzaG5nMlFxRQ?oc=5",
       "published": "2026-10-16T01:47:00Z",
-      "snippet": ""
-    },
-    {
-      "id": "cbe31e5cd894",
-      "topic": "spacex",
-      "title": "AI could drive a Tesla-SpaceX tie-up as soon as this fall, analysts say",
-      "source": "Axios",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE91RkVtdC1DR1ZXa1AxUTRKNDZ0VUxCVnk4ZUNjMUE1RERObkxMTU5CMUJxMHFZTHYwajFmdkpRS0tIZ0hVNzh3VlYxb3l6SFRlUTRvUTYzVXZobnVDbHJQS3l6QWUtV3JNQk1tV0txV0FKZTRNTWRoUTNR?oc=5",
-      "published": "2026-10-16T01:42:02Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.-qOEXKVIgWLo5xisIdZPxA&pid=News&w=640"
-    },
-    {
-      "id": "362d8f1417d7",
-      "topic": "tesla",
-      "title": "Tesla Roadster 2 Lifts Off at SpaceX Facility",
-      "source": "Yahoo Autos",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMHBndm8xNG9GRV9kUVZiSEFYakxPVjRxUURwT1A1TlhMMFZERFZNVEFGU0gya0RTUFF3OGtrQ2RoUFlqbFNHNnpqanpIXzFXOTVfcDA5eTFLSFQ1YnBZZE9DMHYtYnJ3aEU5NWExWVQxSmV1WmhEVGtMckNPckowYkNWdkRIQlZFZWhJbmU1bFo4RXhRWUYwbg?oc=5",
-      "published": "2026-10-16T01:41:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.y1Sex-RdDD3qcLRJxemqNg&pid=News&w=640"
-    },
-    {
-      "id": "1b632da238cc",
-      "topic": "tesla",
-      "title": "The Tesla Roadster Is More Insane Than You Could Possibly Have Imagined",
-      "source": "The Autopian",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQNVZkcFJXYnAza1kyYUdHdGF2SWRxVWE4N3BlQXg2RDZrR3VJNlVac0V5bU05Z0RaS3ZzbFRsa2puUF9YWXRGaVp5U3R1LXFvRzBDY0lGa096ckFlVUxxSGlWMjFyOGlINjBtOUZXenJFUlBmMlk0aGdmZWN0bl9lQ0QzMEtrZmgzUElOWk5wMGd4T29pdld0U0NBVUNkQ09iM2c?oc=5",
-      "published": "2026-10-16T01:40:12Z",
-      "snippet": ""
+      "image": "https://www.bing.com/th?id=ONUT.RbH75te-GRxjuQPfXbFbNA&pid=News&w=640"
     },
     {
       "id": "fa428ba8f8fa",
@@ -235,12 +262,12 @@
       "snippet": ""
     },
     {
-      "id": "eb0b37964ebd",
-      "topic": "grok",
-      "title": "Grok Voice 3.0 Tops a Speech Index but Responds Slower Than Version 2.0",
-      "source": "The Eastern Herald",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5zcTBtTDhYZWkwRnVHRUo3MC13clVWSmpfcmNncU94SGtuVm12X2JaVlNod3VqOGFKcDV5MlJKOHREalNxd0NOSVRLLS1FYzE0TFdYN0NRdW5sTjVoMjVxenZTQ2xJbVBsTDBfenFrelZmZnpvUHJfM0hXZw?oc=5",
-      "published": "2026-10-15T22:36:21Z",
+      "id": "cbe31e5cd894",
+      "topic": "spacex",
+      "title": "AI could drive a Tesla-SpaceX tie-up as soon as this fall, analysts say",
+      "source": "Axios",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE91RkVtdC1DR1ZXa1AxUTRKNDZ0VUxCVnk4ZUNjMUE1RERObkxMTU5CMUJxMHFZTHYwajFmdkpRS0tIZ0hVNzh3VlYxb3l6SFRlUTRvUTYzVXZobnVDbHJQS3l6QWUtV3JNQk1tV0txV0FKZTRNTWRoUTNR?oc=5",
+      "published": "2026-10-15T22:00:11Z",
       "snippet": ""
     },
     {
@@ -253,11 +280,11 @@
       "snippet": ""
     },
     {
-      "id": "71d7695eefe5",
+      "id": "8ee9c3d2fed6",
       "topic": "spacex",
       "title": "Tesla's new Roadster turns in air with SpaceX thrusters, won't land until 2028",
       "source": "Reuters on MSN",
-      "url": "https://www.msn.com/en-us/technology/tech-companies/tesla-s-new-roadster-turns-in-air-with-spacex-thrusters-won-t-land-until-2028/ar-AA2elueC",
+      "url": "https://www.msn.com/en-us/autos/general/tesla-s-new-roadster-turns-in-air-with-spacex-thrusters-won-t-land-until-2028/ar-AA2elueC",
       "published": "2026-10-15T21:14:18Z",
       "snippet": "By Abhirup Roy and Mrinmay Dey SAN FRANCISCO, Oct 15 (Reuters) - Tesla unveiled a redesigned Roadster powered with rocket-style thrusters on Thursday and said it would start production in 2028, more ...",
       "image": "https://www.bing.com/th?id=ONUT.BXloTfThzqzOFz1YMh1riw&pid=News&w=640"
@@ -272,24 +299,14 @@
       "snippet": ""
     },
     {
-      "id": "56d36b160f9b",
+      "id": "b9fce5dc8619",
       "topic": "tesla",
-      "title": "The flying Tesla Roadster is ‘not approved for public road use.’",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/transportation/1012609/the-flying-tesla-roadster-is-not-approved-for-public-road-use",
-      "published": "2026-10-15T20:46:00Z",
-      "snippet": "I mean, duh. But still I’m glad they are making that explicit. [Image: ...",
-      "image": "https://www.bing.com/th?id=ONUT.sUaPhiQTZ0VMxUnuyubRGA&pid=News&w=640"
-    },
-    {
-      "id": "40ebccaa979d",
-      "topic": "tesla",
-      "title": "Elon Musk Touts ‘Flying Cars’ as Video of Tesla Roadster Takes Off Online",
-      "source": "Newsweek",
-      "url": "https://www.newsweek.com/elon-musk-flying-tesla-12576772",
-      "published": "2026-10-15T20:39:00Z",
-      "snippet": "Elon Musk unveiled a Tesla Roadster capable of aboveground hovering at a SpaceX facility in Texas on Thursday, sparking a wave of reactions on X from politicians, celebrities and Tesla enthusiasts who ...",
-      "image": "https://www.bing.com/th?id=ONUT.ryxhp_0a8lL-7oYjJsLK0A&pid=News&w=640"
+      "title": "Elon Musk touts \"flying cars\" as video of Tesla Roadster takes off online",
+      "source": "Newsweek on MSN",
+      "url": "https://www.msn.com/en-us/news/other/elon-musk-touts-flying-cars-as-video-of-tesla-roadster-takes-off-online/ar-AA2elDFe",
+      "published": "2026-10-15T20:39:53Z",
+      "snippet": "Elon Musk unveiled a Tesla Roadster capable of aboveground hovering.",
+      "image": "https://www.bing.com/th?id=ORMS.58d99c5bdb880395f16ca906db9a270b&pid=News&w=640"
     },
     {
       "id": "23e245aede13",
@@ -298,7 +315,7 @@
       "source": "Reuters on MSN",
       "url": "https://www.msn.com/en-us/news/other/ambanis-reliance-welcomes-starlink-competition-in-first-response-to-musk/ar-AA2elouO",
       "published": "2026-10-15T20:14:57Z",
-      "snippet": "Oct 16 (Reuters) - Mukesh Ambani's Reliance Industries said it welcomed competition from Elon Musk's Starlink in India's satellite internet market, its first public response to a week of attacks by Musk,",
+      "snippet": "Oct 16 (Reuters) - Mukesh Ambani's Reliance Industries said it welcomed competition from Elon Musk's Starlink in India's satellite internet market, its first public response to a week of attacks by ...",
       "image": "https://www.bing.com/th?id=ONUT.cPOMv0y8c9KOomCSQyfsZA&pid=News&w=640"
     },
     {
@@ -322,6 +339,16 @@
       "image": "https://www.bing.com/th?id=ONUT.14driKHgovSTev8e6czIww&pid=News&w=640"
     },
     {
+      "id": "ba328861935d",
+      "topic": "tesla",
+      "title": "Tesla may finally debut a flying car today, after testing fans’ patience for nearly a decade",
+      "source": "MarketWatch on MSN",
+      "url": "https://www.msn.com/en-us/news/other/tesla-may-finally-debut-a-flying-car-today-after-testing-fans-patience-for-nearly-a-decade/ar-AA2ejQ0h?ocid=BingNewsVerp",
+      "published": "2026-10-15T19:42:00Z",
+      "snippet": "Tesla’s demonstration of a levitating Roadster sports car was “an engineering flex with no commercial value beyond embarrassing traditional car makers.”",
+      "image": "https://www.bing.com/th?id=ONUT.c7tGP4DUoYNk5THig_QPLw&pid=News&w=640"
+    },
+    {
       "id": "fc073a763d33",
       "topic": "spacex",
       "title": "Harvard’s endowment jumps 27% in fiscal 2026, lifted by SpaceX as top holding",
@@ -332,16 +359,6 @@
       "image": "https://www.bing.com/th?id=ONUT.IeCmbmwtMPtxneGtwWCtaA&pid=News&w=640"
     },
     {
-      "id": "412613afb731",
-      "topic": "tesla",
-      "title": "Elon Musk just unveiled a Tesla Roadster that flies — take a look",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-ca/autos/general/elon-musk-just-unveiled-a-tesla-roadster-that-flies-take-a-look/ar-AA2elsSa",
-      "published": "2026-10-15T18:44:20Z",
-      "snippet": "The revised Tesla Roadster has been a long time coming, with Elon Musk first showing off an earlier version back in November 2017.",
-      "image": "https://www.bing.com/th?id=ONUT.0WkIn0iQhox-e9aaGsZJgw&pid=News&w=640"
-    },
-    {
       "id": "a5974f30a871",
       "topic": "spacex",
       "title": "University Endowments Land Biggest Returns Since 2021 on SpaceX, AI Gains",
@@ -349,36 +366,6 @@
       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQck1UWnpNekstSGdvaVJNTVE0THUtcDNzLVlnajFvZjhiRFNvUW9Jb0FKZTZWOEpEY3FPbk9yQzhENldDcTV2OGEtRml0RWlmZ3FKVGUwTTNKazQwaXZYSnNjRVlJUVMxYjdiUHVLV0NTQmZEMU1Qa01neFprcXNVT3YtekFvdG1UOC1qMV9wNVZkWmhyNm9BN0NzZ1NRNktmOUpNclFORXRPYXVTYXlGMkFhMmdkN2ZwUU8w?oc=5",
       "published": "2026-10-15T17:10:00Z",
       "snippet": ""
-    },
-    {
-      "id": "9d0649d3fdae",
-      "topic": "tesla",
-      "title": "Relive Tesla's ridiculous(ly fun) Roadster stunt show",
-      "source": "Engadget",
-      "url": "https://www.engadget.com/2288448/relive-tesla-ridiculously-fun-roadster-stunt-show/",
-      "published": "2026-10-15T17:01:00Z",
-      "snippet": "Tesla's Roadster launch event was pretty exciting to say the least, with loads of car stunts that we enjoyed watching. The Roadster first appeared during the event at the bottom of C-shaped ramp. It ...",
-      "image": "https://www.bing.com/th?id=ONUT.EOwSvSb56u9nyPxVsFarhg&pid=News&w=640"
-    },
-    {
-      "id": "daa53876ba7c",
-      "topic": "spacex",
-      "title": "Questions flare over US role in Ukraine’s Starlink shut-off: What to know",
-      "source": "The Hill",
-      "url": "https://thehill.com/policy/technology/6152345-elon-musk-starlink-ukraine-starshield/",
-      "published": "2026-10-15T16:44:00Z",
-      "snippet": "On Wednesday, Elon Musk’s Starlink was pulled into the center of a controversy after Ukraine’s military faced restricted access to Starshield, the military version of the satellite-based system.",
-      "image": "https://www.bing.com/th?id=ONUT.MBfpNmKeUCUIMOLsNZ-7aw&pid=News&w=640"
-    },
-    {
-      "id": "5a7fb16ea08a",
-      "topic": "tesla",
-      "title": "Tesla’s New Roadster Can Somehow Do Corkscrews in the Air (Without Exploding—Yet)",
-      "source": "Gizmodo",
-      "url": "https://gizmodo.com/teslas-new-roadster-can-somehow-do-corkscrews-in-the-air-without-exploding-yet-2000826761",
-      "published": "2026-10-15T15:45:00Z",
-      "snippet": "This engineering marvel / catastrophe-in-the-making will definitely come out in 2028, Tesla CEO Elon Musk promised.",
-      "image": "https://www.bing.com/th?id=ONUT.vVo29fUurqKiYZ9GoYkLDA&pid=News&w=640"
     },
     {
       "id": "6e352e96b047",
@@ -391,15 +378,6 @@
       "image": "https://www.bing.com/th?id=ONUT.Vd3WeSRDV38KxUu9NrabxA&pid=News&w=640"
     },
     {
-      "id": "b52a92102ce8",
-      "topic": "spacex",
-      "title": "SpaceX Cargo Dragon delivers more than 6,000 pounds of supplies to the ISS",
-      "source": "Space",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPREJfaDR2Wmh4YVQ3VXUyM1NOQ09KcU9yaWZzaEhfUGlEMnp4VTBrMDZUSS01WVl1WGd3TmNVcG5FaXppdEs0Wm9ZYmJWVWh2cDFkSUZMLUJzcWhKWXdmVU9ZcU5MWno2UEdYLVR1WnItSE4ta3hpang1VnhzeUR2S0Nzb3ZIam5IS1dBSy04UmYtQVpMSS1fRndEVi1rLTlJ?oc=5",
-      "published": "2026-10-15T14:56:17Z",
-      "snippet": ""
-    },
-    {
       "id": "c76d891695e1",
       "topic": "grok",
       "title": "Elon Musk has Grok buying him Lego sets",
@@ -409,23 +387,14 @@
       "snippet": ""
     },
     {
-      "id": "01c3f7bcfe2c",
-      "topic": "tesla",
-      "title": "The Tesla Roadster 2 Is Here—and It Flies",
-      "source": "Wired",
-      "url": "https://www.wired.com/story/tesla-roadster-2-launch/",
-      "published": "2026-10-15T14:22:00Z",
-      "snippet": "The automaker unveiled its next luxury sports car at an event in Texas. It has thrusters on it that can send it airborne.",
-      "image": "https://www.bing.com/th?id=ONUT.0ZGJi3T79be2cRZYqe8BdQ&pid=News&w=640"
-    },
-    {
-      "id": "6976b097379b",
+      "id": "84497ef062c2",
       "topic": "spacex",
-      "title": "What Is Starshield, SpaceX’s Military-Grade Satellite Internet Service Ukraine Relies On?",
-      "source": "The New York Times",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQSGplSHNaMzZncXQyMGZhZmwtdlNwMmZYOVMwaU9mQ1c3SnVRaGgxOF9lZEQ4c3lmaU9WVGtOVmNzdzhaeWZJei1BOXExYVhkemZQa1NLM0Q4RkY5T3hHYkdMWFEwYTlpQVE4d1FPaVdpQnI1R0lJT1ByVnREMkNaVVBic0xZQ00zOXNVUnJ5Z2cxMXBOYk1xeTF1WTNfQk95?oc=5",
-      "published": "2026-10-15T14:17:00Z",
-      "snippet": ""
+      "title": "UK's Streeting says he and Hegseth welcomed Starlink restoration in Ukraine",
+      "source": "Reuters on MSN",
+      "url": "https://www.msn.com/en-us/news/other/uk-s-streeting-says-he-and-hegseth-welcomed-starlink-restoration-in-ukraine/ar-AA2ekFRB",
+      "published": "2026-10-15T14:17:28Z",
+      "snippet": "WASHINGTON, Oct 15 (Reuters) - Britain's defense minister said he and US Defense Secretary Pete Hegseth welcomed the restoration of the Starlink service in Ukraine in talks on Thursday, and he ...",
+      "image": "https://www.bing.com/th?id=ONUT.KyUoBiEeqeg6LRlVRJiGKg&pid=News&w=640"
     },
     {
       "id": "22903dd9beb8",
@@ -435,6 +404,16 @@
       "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxPOGhCaVNWZE9NcHNQN0lBNnI4LUZPellobG1vbW1iQzQtcDZWMTNCckNRVzJUYlo2SW5COVNSTm1iZDVWd2s5dGx5cVJDeWNMYUplR2wzWUNyUlJnY0RycUlGRkM1TE9GTmZXUFY4bGNpT0Z3WmtSZ3hxaU5fU0gzdUNXdDYwOTY4ZU5QVzJtZFdKb1hRdXdZby1rVjdHWnhPSWVOeU82N1JCdmE5MVVueW1fbURobk9KbkNLUU54VW5NTmRxMUtxdVBpQ1NYbHJ5d1ZoY3Z5dGRQWXFUVjJ6Y3g0RzdRNDNubUVKNTNDRmM3U2NPYWYzVG1vUmZHTl9WWkE?oc=5",
       "published": "2026-10-15T14:14:00Z",
       "snippet": ""
+    },
+    {
+      "id": "ff21ab37e2ad",
+      "topic": "tesla",
+      "title": "Cybertruck vs fire hydrant: Will there be fire?",
+      "source": "StacheD Training on MSN",
+      "url": "https://www.msn.com/en-us/news/other/cybertruck-vs-fire-hydrant-will-there-be-fire/vi-AA2ejRDr",
+      "published": "2026-10-15T14:01:05Z",
+      "snippet": "What happens next might not surprise you—spoiler: the Cybertruck catches fire—but there's more to this story than meets the eye. In this unique incident, a Cybertruck crashes into a fire hydrant near ...",
+      "image": "https://www.bing.com/th?id=ONUT.nsv-KsCUTnCviQxvYWSTGw&pid=News&w=640"
     },
     {
       "id": "69f5d12f5fa7",
@@ -454,15 +433,6 @@
       "published": "2026-10-15T13:44:33Z",
       "snippet": "Ukrainian forces said its battlefield efforts were temporarily hampered after losing some access to SpaceX’s military-grade satellite Internet service. Experts tell TIME why Starshield is so uniquely ...",
       "image": "https://www.bing.com/th?id=ORMS.3e562e3b7be1fcea3bc1664ac41d8367&pid=News&w=640"
-    },
-    {
-      "id": "fc75a15eb469",
-      "topic": "grok",
-      "title": "Should Start Amazon Competitor, Says Elon Musk After Amazon Blocks Grok Bot On Its Platform",
-      "source": "OfficeChai",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBHNHZkdzNWcW9tN21nZllkaVpjUVRiVjk0amZFSGNramFYOTB2Z3FtNUFkTHBIR290ZTlVdlhpbTd4ZkhyUDRBczNXVjBuLXlQNHNLcThrMHMtV1RJYVFfdFpYZFM?oc=5",
-      "published": "2026-10-15T13:30:18Z",
-      "snippet": ""
     },
     {
       "id": "793d790e3a56",
@@ -493,16 +463,6 @@
       "snippet": ""
     },
     {
-      "id": "45db66b7e511",
-      "topic": "tesla",
-      "title": "People who paid $50K to reserve a Roadster would have made bank investing that into Tesla stock instead",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/people-who-paid-50k-to-reserve-a-roadster-would-have-made-bank-investing-that-in-tesla-stock-instead/ar-AA2ek3my",
-      "published": "2026-10-15T12:34:00Z",
-      "snippet": "Tesla is re-revealing the Roadster, nine years after reservation holders forked over $50,000. Here's what an investment in TSLA would have yielded.",
-      "image": "https://www.bing.com/th?id=ORMS.aa01644aaee951b2bed8d5b756f95582&pid=News&w=640"
-    },
-    {
       "id": "a45add4f81b6",
       "topic": "grok",
       "title": "GrokBot’s Price Tag Is Public. The Deployment Bill Behind It Is Not.",
@@ -529,16 +489,6 @@
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdTFEM0VYMWxiWEQxYVc4LUJuaVdDSUdvSlRCc3ZlQko0NXBrTE11SWUtTDY4T2h1azdMSU5zZkxGeVhPWWtSWXE2VC1mOEJGYTN6Ql80UG9hYm5nNjdlM3hQMmdTWlFzeFc0OGZIY1pWaFpBTzBZZGljeUZhTUJsNjdyaU00NGtnUTRkb1YwRWlzdGdnWTN1SXZ5UnBPZWRzM2c?oc=5",
       "published": "2026-10-15T10:13:21Z",
       "snippet": ""
-    },
-    {
-      "id": "f2707c7b8780",
-      "topic": "tesla",
-      "title": "Tesla's long-awaited Roadster gets its moment after years of delays",
-      "source": "Fox Business on MSN",
-      "url": "https://www.msn.com/en-us/news/other/teslas-long-awaited-roadster-gets-its-moment-after-years-of-delays/ar-AA2ejLfj",
-      "published": "2026-10-15T10:03:51Z",
-      "snippet": "Tesla's redesigned Roadster debuts at a SpaceX test site in Texas, nearly nine years after Elon Musk first previewed the electric sports car.",
-      "image": "https://www.bing.com/th?id=ORMS.22c5151e5c43c994a14e57f86c02d7f7&pid=News&w=640"
     },
     {
       "id": "8409c584e8f5",
@@ -579,6 +529,26 @@
       "image": "https://www.bing.com/th?id=ONUT.McVr_Vl4IPXgo1DZv6kJpA&pid=News&w=640"
     },
     {
+      "id": "e293b49221c4",
+      "topic": "spacex",
+      "title": "Starlink Suspicions and a Frantic Warning: Inside Trump’s Turn on Zelensky",
+      "source": "The Wall Street Journal on MSN",
+      "url": "https://www.msn.com/en-us/news/other/starlink-suspicions-and-a-frantic-warning-inside-trump-s-turn-on-zelensky/ar-AA2efCf6",
+      "published": "2026-10-15T08:43:00Z",
+      "snippet": "Limitations on Ukraine’s access to military-grade Starlink terminals sparked panic among its officials and several U.S. lawmakers.",
+      "image": "https://www.bing.com/th?id=ORMS.ac48dba689efc013eda7d94504cbd110&pid=News&w=640"
+    },
+    {
+      "id": "2668271389f0",
+      "topic": "spacex",
+      "title": "United finally made it easier to see if your flight has Starlink",
+      "source": "Insider",
+      "url": "https://www.businessinsider.com/united-airlines-starlink-check-if-flight-has-wifi-2026-10",
+      "published": "2026-10-15T07:56:00Z",
+      "snippet": "United Airlines released a tool that tracks how many of its airplanes are equipped with Starlink. You can type in your flight number to check.",
+      "image": "https://www.bing.com/th?id=ONUT.M8W48IgCW-mdi1tt1BaLLw&pid=News&w=640"
+    },
+    {
       "id": "00899f795a8a",
       "topic": "grok",
       "title": "SpaceXAI Expands Grok Integration To Google Workspace After Microsoft 365",
@@ -596,6 +566,26 @@
       "published": "2026-10-15T06:43:00Z",
       "snippet": "A Cybertruck owner says he finally understands why people love their trucks after 6 months and 5,000 miles with his Cybertruck. He adds that the truck hasn’t had any issues and has been a Swiss Army ...",
       "image": "https://www.bing.com/th?id=ONUT.VAnTzAjNKjR5u3zQHm4Rbg&pid=News&w=640"
+    },
+    {
+      "id": "c68370cfcedf",
+      "topic": "spacex",
+      "title": "United will now let you check if your flight has Starlink Wi-Fi",
+      "source": "Engadget",
+      "url": "https://www.engadget.com/2287350/united-offers-starlink-wi-fi-flight-tracker/",
+      "published": "2026-10-15T06:00:00Z",
+      "snippet": "The airline says nearly half of its daily departures now offer Starlink.",
+      "image": "https://www.bing.com/th?id=ONUT.4HvL_9U9iVK0d5r3sRLJDg&pid=News&w=640"
+    },
+    {
+      "id": "4b947163a88f",
+      "topic": "spacex",
+      "title": "SpaceX’s Starlink expansion is a bold gamble on the future",
+      "source": "The Economist",
+      "url": "https://www.economist.com/business/2026/10/15/spacexs-starlink-expansion-is-a-bold-gamble-on-the-future",
+      "published": "2026-10-15T05:50:00Z",
+      "snippet": "But although satellites are good at offering widespread coverage, they are less good when it comes to serving cities, towns and other large concentrations of people efficiently. Each Starlink ...",
+      "image": "https://www.bing.com/th?id=ONUT.w4vyCKruivTV777lZbRndw&pid=News&w=640"
     },
     {
       "id": "691881b2214d",
@@ -636,6 +626,16 @@
       "image": "https://www.bing.com/th?id=ONUT.uygSIRo98vKRcziz1Dz5wQ&pid=News&w=640"
     },
     {
+      "id": "af2e6bbd9390",
+      "topic": "spacex",
+      "title": "Why is Starlink internet so important on the battlefield in Ukraine?",
+      "source": "BBC on MSN",
+      "url": "https://www.msn.com/en-xl/news/other/why-is-starlink-internet-so-important-on-the-battlefield-in-ukraine/ar-AA2efcar",
+      "published": "2026-10-15T04:25:00Z",
+      "snippet": "It is the \"backbone of military communications in Ukraine\" and there could be severe implications if Elon Musk's SpaceX keeps restricting access.",
+      "image": "https://www.bing.com/th?id=ONUT.O2mEDZkdLZoNcAy8T59g3w&pid=News&w=640"
+    },
+    {
       "id": "a12d2f7fe5eb",
       "topic": "grok",
       "title": "xAI Announces Grok Voice 3.0 & GitHub Copilot Speedup! Today's AI x Stocks [10/15]",
@@ -644,6 +644,16 @@
       "published": "2026-10-15T04:20:00Z",
       "snippet": "Impact of AI on Stock Prices (October 15, 2026)Today's (October 15, 2026) main topics are xAI's new voice model and development environment optimization. Let's take a look right away!Today's 3-Line ...",
       "image": "https://www.bing.com/th?id=ONUT.mHclZE_zDeBYt3R6gRcLbA&pid=News&w=640"
+    },
+    {
+      "id": "3427ac42fad3",
+      "topic": "spacex",
+      "title": "I preferred flying Delta until I tried United's Starlink WiFi. It felt almost magical.",
+      "source": "Insider",
+      "url": "https://www.businessinsider.com/loyal-delta-customer-frequent-flier-consider-switch-united-starlink-wifi-2026-10",
+      "published": "2026-10-15T03:08:00Z",
+      "snippet": "Kenny Totten has been a loyal Delta customer for years. A trip onboard a Starlink-equipped United flight led his loyalty to start swaying.",
+      "image": "https://www.bing.com/th?id=ONUT.Tv2qA8q6lxicnq-3oq0kIQ&pid=News&w=640"
     },
     {
       "id": "a87ad5f8c524",
@@ -704,16 +714,6 @@
       "published": "2026-10-14T23:31:34Z",
       "snippet": "For owners of older Tesla flagships, a long-awaited software notification has finally arrived—but the update does not deliver everything found ...",
       "image": "https://www.bing.com/th?id=ONUT.gD1mHxwaiFB4YsvYEgbIoQ&pid=News&w=640"
-    },
-    {
-      "id": "5988b833d826",
-      "topic": "tesla",
-      "title": "How Tesla’s Roadster fan system and thrusters are built to dominate the corners",
-      "source": "TESLARATI",
-      "url": "https://www.teslarati.com/tesla-roadster-downforce-fan-system/",
-      "published": "2026-10-14T17:00:00Z",
-      "snippet": "Tesla’s new Roadster is best known for flipping through the air in Texas, but the technology that matters most for a race track is the stuff that keeps it on the ground. Teslas ...",
-      "image": "https://www.bing.com/th?id=ONUT.Ml4BGmdZpTrF9oxU3wgeVw&pid=News&w=640"
     }
   ]
 }
