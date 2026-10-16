@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-10-16T00:51:22+01:00",
+  "updated": "2026-10-16T03:18:51+01:00",
   "events": {
     "starship-flight-15": {
       "title": "Starship Flight 15",
@@ -17,13 +17,13 @@
       "major": true
     },
     "crs35-docking": {
-      "title": "Dragon · CRS-35 docked with the ISS",
+      "title": "Dragon \u00b7 CRS-35 docked with the ISS",
       "date": "2026-10-15",
       "time": "10:27",
       "tz": "-04:00",
       "precision": "datetime",
       "status": "done",
-      "summary": "Docked 10:27 a.m. EDT to Harmony’s space-facing port with 6,300+ lb of cargo and the final IROSA pair. About 30 minutes ahead of the ~11:00 a.m. ET plan.",
+      "summary": "Docked 10:27 a.m. EDT to Harmony\u2019s space-facing port with 6,300+ lb of cargo and the final IROSA pair. About 30 minutes ahead of the ~11:00 a.m. ET plan.",
       "sources": [
         "NASA space station blog, 15 Oct 2026: docked at 10:27 a.m. EDT",
         "https://blogs.nasa.gov/spacestation/2026/10/15/spacex-dragon-docks-with-science-supplies-and-roll-out-solar-arrays/"
@@ -49,16 +49,18 @@
       "summary": "Q3 2026 results webcast, per Tesla's SEC filing."
     },
     "ussf-481": {
-      "title": "Falcon 9 · USSF-481",
-      "start": "2026-10-15T23:57:00Z",
+      "title": "Falcon 9 \u00b7 USSF-481",
+      "start": "2026-10-16T00:02:07Z",
       "precision": "datetime",
-      "status": "go",
-      "href": "https://x.com/i/broadcasts/1aJbdEzYpPaKX",
-      "summary": "Vandenberg SLC-4E. Window opens 4:57 p.m. PT (00:57 Dublin). SpaceX webcast on X.",
+      "status": "done",
+      "href": "https://x.com/SpaceX/status/2110883955004035154",
+      "summary": "Liftoff ~5:02 p.m. PT (00:02 UTC 16 Oct); first stage landed on Of Course I Still Love You.",
       "sources": [
-        "https://www.spacex.com/launches/ussf481",
-        "https://x.com/i/broadcasts/1aJbdEzYpPaKX"
-      ]
+        "https://x.com/SpaceX/status/2110883955004035154",
+        "https://x.com/SpaceX/status/2110886603371536546",
+        "https://www.spacex.com/launches/ussf481"
+      ],
+      "end": "2026-10-16T00:12:39Z"
     }
   }
 }

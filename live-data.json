@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15T23:51:58+01:00",
+  "updated": "2026-10-16T03:18:51+01:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
     {
@@ -43,18 +43,18 @@
       "title": "Falcon 9 \u00b7 USSF-481",
       "page": "starship",
       "start": "2026-10-15T19:57:00-04:00",
-      "end": "2026-10-15T23:57:00-04:00",
-      "status": "scheduled",
+      "end": "2026-10-15T20:20:00-04:00",
+      "status": "ended",
       "provider": "link",
       "embedId": "",
-      "postUrl": "",
+      "postUrl": "https://x.com/SpaceX/status/2110883955004035154",
       "fallbackUrl": "https://x.com/i/broadcasts/1aJbdEzYpPaKX",
       "fallbackLabel": "Watch the live broadcast on X",
       "source": "https://www.spacex.com/launches/ussf481",
       "image": "/assets/live/falcon9.jpg",
       "imageCredit": "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain",
-      "description": "A Falcon 9 national security launch for the U.S. Space Force from SLC-4E at Vandenberg, California, with a four-hour window opening at 4:57 p.m. PT (7:57 p.m. ET). SpaceX's live webcast on X starts about 10 minutes before liftoff. The payload is classified; the first stage, on its 28th flight, lands on the Of Course I Still Love You droneship, and a backup opportunity is on Friday 16 Oct at 4:35 p.m. PT.",
-      "descSource": "https://www.spacex.com/launches/ussf481"
+      "description": "Falcon 9 launched the USSF-481 national security mission from SLC-4E at Vandenberg at about 5:02 p.m. PT on 15 Oct. The first stage, on its 28th flight, landed on the Of Course I Still Love You droneship in the Pacific. Coverage has ended.",
+      "descSource": "https://x.com/SpaceX/status/2110883955004035154"
     },
     {
       "id": "tesla-roadster-demo",
