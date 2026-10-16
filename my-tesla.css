@@ -1,0 +1,60 @@
+/* My Tesla intelligence dashboard */
+.mt{--mt-red:#e31937;--mt-ok:#7dcea0;--mt-soon:#e2c48a;--mt-lock:#e29a9a;--mt-skip:#6d7178;max-width:1040px;margin:0 auto;padding:24px 18px 64px}
+.mt [hidden]{display:none!important}
+.mt-head h1{font-size:clamp(28px,4.4vw,40px);margin:4px 0 8px;letter-spacing:-.02em}
+.mt-lede{color:#c9cfd6;margin:0 0 8px;max-width:62ch}
+.mt-live{color:var(--mute);font-size:13px;margin:0}
+.mt-live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#3ddc97;margin-right:7px;vertical-align:1px}
+.mt-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:18px 0 0}
+.mt-card h2{font-size:19px;margin:0 0 4px}
+.mt-card .mt-sub{margin:0 0 14px;color:var(--mute);font-size:13px}
+.mt-form{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.mt-field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.mt-field span{font:600 10px/1 Inter,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+.mt-field select{appearance:none;background:#1b1e22;color:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 10px;font:500 13px "IBM Plex Mono",ui-monospace,monospace;width:100%}
+.mt-hint{margin:10px 0 0;color:#c9cfd6;font-size:13px}
+.mt-hint b{color:#fff}
+.mt-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.mt-actions button,.mt-chip{appearance:none;border:1px solid var(--line);background:#17191d;color:#dfe3e8;border-radius:999px;padding:7px 12px;font:500 13px Inter,sans-serif;cursor:pointer}
+.mt-actions button:hover,.mt-chip:hover{border-color:#fff;color:#fff}
+.mt-now{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.mt-tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.mt-tile span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.mt-tile b{font-size:18px;color:#fff;letter-spacing:-.02em}
+.mt-tile small{font-size:12px;color:var(--mute);line-height:1.45}
+.mt-tile-ok{border-color:rgba(125,206,160,.4)}
+.mt-tile-soon{border-color:rgba(226,196,138,.4)}
+.mt-tile-lock{border-color:rgba(226,154,154,.4)}
+.mt-list{list-style:none;margin:0;padding:0}
+.mt-list li{padding:10px 0;border-top:1px solid var(--line)}
+.mt-list li:first-child{border-top:0;padding-top:0}
+.mt-list b{display:block;color:#fff;font-size:15px}
+.mt-list p{margin:4px 0 0;color:#c9cfd6;font-size:14px}
+.mt-list .mt-meta{display:block;margin-top:4px;color:var(--mute);font:12px/1.4 "IBM Plex Mono",ui-monospace,monospace}
+.mt-feats{display:grid;gap:8px}
+.mt-feat{display:grid;grid-template-columns:108px 1fr;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--line)}
+.mt-feat:first-child{border-top:0;padding-top:0}
+.mt-pill{display:inline-block;font:600 10px/1 Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:5px 7px}
+.mt-pill.yes{background:rgba(125,206,160,.16);color:#7dcea0}
+.mt-pill.soon{background:rgba(226,196,138,.16);color:#e2c48a}
+.mt-pill.locked{background:rgba(226,154,154,.16);color:#e29a9a}
+.mt-pill.no{background:rgba(255,255,255,.06);color:#8a929b}
+.mt-feat h3{margin:0 0 3px;font-size:15px}
+.mt-feat p{margin:0;color:#c9cfd6;font-size:13px}
+.mt-guides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mt-guide{display:flex;flex-direction:column;gap:4px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#17191d;color:inherit;text-decoration:none}
+.mt-guide:hover{border-color:#fff}
+.mt-guide strong{font-size:15px}
+.mt-guide span{color:var(--mute);font-size:13px}
+.mt-empty{color:#c9cfd6;margin:8px 0 0}
+#mt-empty{background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:22px 18px;margin-top:18px}
+.mt-fine{font-size:12px;color:var(--mute);margin:12px 0 0;line-height:1.6}
+.mt-fine a{color:#dfe3e8}
+@media (max-width:900px){
+  .mt-form{grid-template-columns:1fr 1fr}
+  .mt-now{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .mt-form,.mt-now,.mt-guides{grid-template-columns:1fr}
+  .mt-feat{grid-template-columns:1fr}
+}
