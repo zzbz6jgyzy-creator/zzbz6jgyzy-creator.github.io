@@ -37,10 +37,14 @@ html[data-vx-tab="tesla"] [data-vx-cards="spacex"] { display: none !important; }
 .vx-facts span { display: block; margin-top: 5px; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
 .vx-sae { border: 1px solid rgba(226, 196, 138, 0.4); background: rgba(226, 196, 138, 0.08); border-radius: 12px; padding: 12px 14px; margin: 0 0 16px; color: var(--vx-warn); font-size: 14px; }
 .vx-stage { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr); gap: 16px; align-items: start; }
-.vx-board { background: var(--vx-sky); border: 1px solid var(--line); border-radius: 16px 16px 0 0; overflow: hidden; position: relative; height: min(520px, 68vh); }
-.vx-board [data-vx-diagram] { height: 100%; }
+.vx-board { background: var(--vx-sky); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px 16px 0 0; overflow: hidden; position: relative; height: min(580px, 74vh); box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.45); }
+.vx-board::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at 50% 38%, transparent 42%, rgba(0, 0, 0, 0.38) 100%); }
+.vx-board-fsd { height: min(260px, 40vh); border-radius: 16px; margin: 0 0 16px; }
+.vx-board [data-vx-diagram] { height: 100%; position: relative; z-index: 0; }
 .vx-board svg { display: block; width: 100%; height: 100%; }
-.vx-callout, .vx-clock { position: absolute; z-index: 1; margin: 0; padding: 6px 9px; border-radius: 999px; background: rgba(7, 13, 20, 0.82); color: #fff; font: 600 11px/1 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.vx-flicker { animation: vx-flicker 0.7s ease-in-out infinite; }
+@keyframes vx-flicker { 0%, 100% { opacity: 0.82; } 50% { opacity: 1; } }
+.vx-callout, .vx-clock { position: absolute; z-index: 2; margin: 0; padding: 7px 10px; border-radius: 999px; background: rgba(7, 13, 20, 0.78); color: #fff; font: 600 11px/1 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; backdrop-filter: blur(8px); }
 .vx-callout { left: 12px; top: 12px; border: 1px solid rgba(227, 25, 55, 0.55); }
 .vx-clock { right: 12px; top: 12px; border: 1px solid rgba(255, 255, 255, 0.18); color: #c9cdd3; }
 .vx-caption { margin: 0; padding: 10px 12px; background: #10141a; color: #dfe3e8; font-size: 13px; line-height: 1.45; border: 1px solid var(--line); border-top: 0; }
@@ -100,10 +104,10 @@ html[data-vx-tab="tesla"] [data-vx-cards="spacex"] { display: none !important; }
 @media (max-width: 900px) {
   .vx-cards, .vx-why, .vx-stage, .vx-diff, .vx-facts, .vx-timeline, .vx-tri { grid-template-columns: 1fr; }
   .vx-jump { position: static; top: auto; }
-  .vx-board { height: min(400px, 64vh); }
+  .vx-board { height: min(440px, 66vh); }
+  .vx-board-fsd { height: min(210px, 38vh); }
   .vx-tabs { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   .vx-board * { transition: none !important; animation: none !important; }
 }
-.vx-kicker{color:#ff4d5e}
