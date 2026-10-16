@@ -20,6 +20,15 @@ for (const m of rd("dispatch.html").matchAll(/<a class="story-card[^"]*" href="(
 }
 const decode = (s) => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&rsquo;/g, "’");
 cards.forEach((c) => { c.h = decode(c.h); c.p = decode(c.p); c.tag = decode(c.tag); });
+// Pin: data/articles.json "pinned": true (+ optional "pinUntil" ISO time) holds a story as the lead until it expires
+try {
+  const now = Date.now(), pin = (JSON.parse(rd("data/articles.json")).articles || []).find((a) => a.pinned && (!a.pinUntil || Date.parse(a.pinUntil) > now));
+  if (pin) {
+    let i = cards.findIndex((c) => c.href === pin.url);
+    const pc = i >= 0 ? cards.splice(i, 1)[0] : { href: pin.url, img: pin.image, tag: pin.tag || "Dispatch", h: pin.title, p: pin.summary };
+    cards.unshift(pc);
+  }
+} catch (e) { console.warn("pin skip", e.message); }
 const L = cards[0];
 const lead = L ? `<a class="hv-lead" href="${esc(L.href)}" data-hv-lead>
             <div class="hv-lead-media"><img src="${esc(L.img || "/assets/dispatch/cybercab-austin-poster.jpg")}" alt="" data-hv-img /></div>

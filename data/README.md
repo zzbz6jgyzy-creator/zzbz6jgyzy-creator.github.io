@@ -10,7 +10,7 @@ One entry per Dispatch article, newest first:
 
 - `topic` is one of `tesla`, `spacex`, `xai`, `x` (drives the filter chips).
 - `date` is ISO 8601 UTC; the page groups by Today / Yesterday / date in the reader's own time zone.
-- `pinned: true` holds a story as the featured lead (otherwise the newest leads).
+- `pinned: true` holds a story as the featured lead (otherwise the newest leads). Add `"pinUntil": "<ISO UTC time>"` to auto-expire the pin; build-home.js and home-v2.js both ignore it after that time.
 
 How to add an article:
 1. Publish `/dispatch/<slug>.html` and put its `story-card` at the top of `/dispatch.html` (as before).

@@ -19,7 +19,8 @@
       "tag": "Roadster",
       "image": "/assets/dispatch/roadster-reveal-2026-poster.jpg",
       "summary": "Upside down on a ramp, over five Teslas, 0–60 under 0.59s. $50,000 to reserve, production 2028.",
-      "pinned": false
+      "pinned": true,
+      "pinUntil": "2026-10-19T23:00:00Z"
     },
     {
       "url": "/dispatch/southwest-starlink-full-fleet.html",

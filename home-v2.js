@@ -5,7 +5,8 @@
   const t = $("[data-hv-today]"); if (t) t.textContent = fmtDay(new Date(), { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
   // Lead + supporting stories: newest cards on /dispatch.html (newest first), so new Dispatch posts show up automatically
-  fetch("/dispatch.html", { cache: "no-cache" }).then((r) => r.text()).then((html) => {
+  const pinP = fetch("/data/articles.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  Promise.all([fetch("/dispatch.html", { cache: "no-cache" }).then((r) => r.text()), pinP]).then(([html, aj]) => {
     const doc = new DOMParser().parseFromString(html, "text/html");
     const cards = [...doc.querySelectorAll("a.story-card[href^='/dispatch/']")].map((a) => {
       const v = a.querySelector("video"), i = a.querySelector("img");
@@ -17,6 +18,12 @@
         p: (a.querySelector(".story-copy p") || {}).textContent || "",
       };
     }).filter((c, k, arr) => c.h && arr.findIndex((x) => x.href === c.href) === k);
+    // Pinned lead (data/articles.json pinned + pinUntil) beats the newest card until it expires
+    const pin = aj && (aj.articles || []).find((a) => a.pinned && (!a.pinUntil || Date.parse(a.pinUntil) > Date.now()));
+    if (pin) {
+      const i = cards.findIndex((c) => c.href === pin.url);
+      cards.unshift(i >= 0 ? cards.splice(i, 1)[0] : { href: pin.url, img: pin.image || "", tag: pin.tag || "Dispatch", h: pin.title, p: pin.summary || "" });
+    }
     if (!cards.length) return;
     const L = cards[0], el = $("[data-hv-lead]");
     el.href = L.href; $("[data-hv-tag]").textContent = L.tag.trim(); $("[data-hv-h]").textContent = L.h.trim(); $("[data-hv-p]").textContent = L.p.trim();
