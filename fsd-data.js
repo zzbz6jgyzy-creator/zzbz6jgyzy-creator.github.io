@@ -1,5 +1,5 @@
 window.FSD_GLOBAL = {
-  updated: "2026-10-12",
+  updated: "2026-10-16",
   note:
     "Country status is this desk’s read of Tesla listings, national regulator notes, and public reporting. “Live” means owners can use FSD Supervised (or Assisted Driving Basic in Europe) on public roads. “Approved” is a regulator yes that is not yet a customer rollout. Not Tesla’s official map. FSD Supervised is SAE Level 2 — the driver must supervise.",
   teslaList: "https://www.tesla.com/support/full-self-driving",
@@ -138,7 +138,7 @@ window.FSD_GLOBAL = {
     { code: "PT", name: "Portugal", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: -8.2, lat: 39.6, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "HU", name: "Hungary", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 19.5, lat: 47.2, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "BG", name: "Bulgaria", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 25.5, lat: 42.7, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
-    { code: "SK", name: "Slovakia", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 19.7, lat: 48.7, note: "Transport minister Ráž said on 7 Oct a recognition letter goes to the RDW within days. Not yet confirmed sent, so not approved.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
+    { code: "SK", name: "Slovakia", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 19.7, lat: 48.7, note: "Ministry of Transport recognised the RDW approval on 16 Oct (ninth EU country). Not live yet: Tesla has not announced a customer rollout.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "LV", name: "Latvia", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 24.6, lat: 56.9, note: "No national recognition reported. Sits between two live Baltic markets.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "CY", name: "Cyprus", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 33.4, lat: 35.1, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "LU", name: "Luxembourg", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 6.1, lat: 49.75, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
