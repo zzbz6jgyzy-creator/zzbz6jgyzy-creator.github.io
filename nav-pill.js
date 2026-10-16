@@ -58,9 +58,9 @@
   nav.querySelectorAll(".pn-dd").forEach(dd => {
     const btn = dd.querySelector("button");
     const open = v => { if (v) closeAll(); dd.classList.toggle("open", v); btn.setAttribute("aria-expanded", String(v)); };
-    let t;
-    btn.addEventListener("click", () => open(!dd.classList.contains("open")));
-    dd.addEventListener("mouseenter", () => { if (matchMedia("(hover:hover)").matches) { clearTimeout(t); open(true); } });
+    let t, hov = 0;
+    btn.addEventListener("click", () => { if (matchMedia("(hover:hover)").matches && Date.now() - hov < 600) { open(true); return; } open(!dd.classList.contains("open")); });
+    dd.addEventListener("mouseenter", () => { if (matchMedia("(hover:hover)").matches) { clearTimeout(t); if (!dd.classList.contains("open")) hov = Date.now(); open(true); } });
     dd.addEventListener("mouseleave", () => { t = setTimeout(() => open(false), 160); });
     dd.addEventListener("keydown", e => {
       const links = [...dd.querySelectorAll(".pn-panel a")];
