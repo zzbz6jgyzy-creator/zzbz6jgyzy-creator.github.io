@@ -4610,4 +4610,4 @@ main figure:not(.figure):not(.figure-embed) > picture > img {
 picture { display: contents; }
 picture > source { display: none !important; }
 :where(picture) > img { height: auto; }
-.is-expected time{color:#ff5a6a}
+.flagship-mile.is-expected time{color:#ff5a6a}
