@@ -1,4 +1,4 @@
-/* Roadster hub v3: photo hero, flight loop, reveals, count-ups, filmstrip, lightbox, tabs, lazy embeds. No libraries. */
+/* Roadster hub v3: photo hero, flight loop, reveals, count-ups, tabs, lazy embeds. Gallery uses wallpapers.js viewer. */
 (function () {
   "use strict";
   var d = document, root = d.documentElement;
@@ -97,41 +97,7 @@
     para();
   }
 
-  // Filmstrip arrows.
-  var strip = d.querySelector(".rd-strip");
-  function nudge(dir) { if (strip) strip.scrollBy({ left: dir * strip.clientWidth * 0.8, behavior: reduce ? "auto" : "smooth" }); }
-  var pv = d.querySelector(".rd-prev"), nx = d.querySelector(".rd-next");
-  if (pv) pv.addEventListener("click", function () { nudge(-1); });
-  if (nx) nx.addEventListener("click", function () { nudge(1); });
 
-  // Lightbox with swipe and keys.
-  var lb = d.querySelector(".rd-lb"), shots = [].slice.call(d.querySelectorAll(".rd-shot a"));
-  if (lb && shots.length) {
-    var img = lb.querySelector("img"), cap = lb.querySelector("figcaption"), idx = 0, last = null;
-    function show(i) {
-      idx = (i + shots.length) % shots.length;
-      var a = shots[idx], im = a.querySelector("img");
-      img.src = a.getAttribute("href"); img.alt = im ? im.alt : "";
-      var fc = a.parentNode.querySelector("figcaption"); cap.textContent = fc ? fc.textContent : "";
-    }
-    function open(i) { last = d.activeElement; show(i); lb.hidden = false; d.body.style.overflow = "hidden"; lb.querySelector(".rd-lb-x").focus(); }
-    function close() { lb.hidden = true; d.body.style.overflow = ""; img.removeAttribute("src"); if (last) last.focus(); }
-    shots.forEach(function (a, i) { a.addEventListener("click", function (e) { e.preventDefault(); open(i); }); });
-    lb.querySelector(".rd-lb-x").addEventListener("click", close);
-    lb.querySelector(".rd-lb-p").addEventListener("click", function () { show(idx - 1); });
-    lb.querySelector(".rd-lb-n").addEventListener("click", function () { show(idx + 1); });
-    lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
-    d.addEventListener("keydown", function (e) {
-      if (lb.hidden) return;
-      if (e.key === "Escape") close(); else if (e.key === "ArrowLeft") show(idx - 1); else if (e.key === "ArrowRight") show(idx + 1);
-    });
-    var sx = null;
-    lb.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
-    lb.addEventListener("touchend", function (e) {
-      if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; sx = null;
-      if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
-    });
-  }
 
   // Trim tabs.
   var tabs = [].slice.call(d.querySelectorAll('.rd-tabs [role="tab"]')), bar = d.querySelector(".rd-tabs");
@@ -176,15 +142,66 @@
     } else loadX();
   }
 
-  // Highlight the current section chip.
-  var chips = [].slice.call(d.querySelectorAll(".rd-toc a[href^=\"#\"]"));
-  if (hasIO && chips.length) {
-    var so = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        chips.forEach(function (c) { c.classList.toggle("is-on", c.getAttribute("href") === "#" + e.target.id); });
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    chips.forEach(function (c) { var s = d.querySelector(c.getAttribute("href")); if (s) so.observe(s); });
+  // Overview (#top; legacy #intro on first load): scroll to the very top so the hero is visible.
+  function goPageTop(smooth) {
+    var rootEl = d.documentElement;
+    // styles.css sets scroll-behavior:smooth on :root — defeat it for a true top jump
+    if (reduce || !smooth) {
+      rootEl.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
   }
+  function hashOf(href) {
+    var i = (href || "").indexOf("#");
+    return i < 0 ? "" : href.slice(i);
+  }
+  function sameRoadsterPage(path) {
+    if (!path) return true;
+    try {
+      var u = new URL(path, location.href);
+      return /\/roadster\.html$/.test(u.pathname) || u.pathname === location.pathname;
+    } catch (e) { return false; }
+  }
+  d.addEventListener("click", function (e) {
+    var a = e.target.closest("a[href]");
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    if (hashOf(href) !== "#top") return;
+    if (!sameRoadsterPage(href.split("#")[0])) return;
+    e.preventDefault();
+    if (location.hash !== "#top") history.pushState(null, "", "#top");
+    goPageTop(false);
+  });
+  function lockTopFromHash(rewriteIntro) {
+    var h = location.hash;
+    if (h !== "#top" && h !== "#intro") return;
+    goPageTop(false);
+    if (rewriteIntro && h === "#intro") {
+      try { history.replaceState(null, "", "#top"); } catch (e) {}
+    }
+  }
+  // Browser may smooth-scroll to #intro/#top before our script; keep forcing top.
+  if (location.hash === "#top" || location.hash === "#intro") {
+    lockTopFromHash(true);
+    var n = 0;
+    var iv = setInterval(function () {
+      lockTopFromHash(false);
+      if (++n >= 30) clearInterval(iv);
+    }, 16);
+    addEventListener("load", function () {
+      lockTopFromHash(false);
+      setTimeout(function () { lockTopFromHash(false); }, 100);
+      setTimeout(function () { lockTopFromHash(false); }, 400);
+    });
+  }
+  addEventListener("hashchange", function () {
+    if (location.hash === "#top") goPageTop(false);
+  });
+  addEventListener("popstate", function () {
+    if (location.hash === "#top" || location.hash === "") goPageTop(false);
+  });
+
+
 })();

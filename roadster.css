@@ -5,6 +5,8 @@
 .rd a{color:inherit}
 .rd h2{margin:0 0 .7rem;font-size:clamp(2rem,6vw,3.6rem);line-height:1;letter-spacing:-.03em;font-weight:700}
 .rd section{scroll-margin-top:140px}
+/* Overview lands at the hero, not below the sticky header */
+.rd-top-anchor,#top{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;scroll-margin-top:0;scroll-margin-bottom:0}
 .rd-wrap>section{padding-top:clamp(56px,9vw,110px)}
 .rd-kicker{font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red2);margin:0 0 .6rem}
 .rd-note,.rd-cite{color:var(--mute);font-size:.92rem;max-width:70ch}
@@ -42,26 +44,15 @@
 .rd-stats b{display:block;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums}
 .rd-stats span{font-size:.85rem;color:var(--mute)}
 
-/* sticky TOC chips */
-.rd-toc{position:sticky;top:calc(var(--pn-h,64px) + 4px);z-index:20;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;max-width:1180px;margin:40px auto 0;padding:8px clamp(16px,3vw,28px)}
-.rd-toc::-webkit-scrollbar{display:none}
-.rd-toc a{flex:none;padding:7px 14px;border:1px solid #2c2c31;border-radius:999px;text-decoration:none;font-size:.85rem;background:rgba(10,10,12,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.rd-toc a:hover,.rd-toc a.is-on{border-color:var(--red);color:#fff;box-shadow:0 0 14px rgba(232,33,39,.35)}
 
-/* GALLERY filmstrip */
+/* GALLERY — wallpapers photo viewer grid */
 .rd-gal{padding-top:clamp(56px,9vw,110px)}
-.rd-strip-wrap{position:relative;margin-top:18px}
-.rd-strip{display:grid;grid-auto-flow:column;grid-auto-columns:min(82vw,560px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px max(16px,calc((100vw - 1180px)/2 + 28px)) 18px;scroll-padding:0 max(16px,calc((100vw - 1180px)/2 + 28px));scrollbar-width:thin;scrollbar-color:var(--red) #111;overscroll-behavior-x:contain}
-.rd-shot{margin:0;scroll-snap-align:start;background:#0b0b0d;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .4s,border-color .4s}
-.rd-shot:hover{transform:translateY(-4px);border-color:#3a1214}
-.rd-shot>a{display:block;overflow:hidden}
-.rd-shot img,.rd-shot picture{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
-.rd-shot:hover img{transform:scale(1.04)}
-.rd-shot figcaption{padding:10px 12px;font-size:.8rem;color:var(--mute)}
-.rd-arrow{position:absolute;top:calc(50% - 40px);z-index:2;width:46px;height:46px;border-radius:50%;border:1px solid #333;background:rgba(10,10,12,.8);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;display:none}
-.rd-prev{left:14px}.rd-next{right:14px}
-.rd-arrow:hover{border-color:var(--red);box-shadow:0 0 16px rgba(232,33,39,.5)}
-@media (hover:hover) and (min-width:900px){.rd-arrow{display:block}}
+.rd-gal .wp-grid{margin-top:18px}
+.rd-gal .wp-thumb{aspect-ratio:16/9;cursor:zoom-in;height:auto}
+.rd-gal .wp-thumb picture,.rd-gal .wp-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.rd-gal .wp-card figcaption{padding:.7rem .85rem .9rem}
+.rd-gal .wp-card figcaption p{margin:0;color:var(--mute,#9a9a9a);font-size:.8rem;line-height:1.4}
+.rd-gal .wp-card figcaption a{color:#ff7b7f}
 
 /* Sticky parallax moments */
 .rd-moment{position:relative;height:160svh;margin-top:clamp(56px,9vw,110px)}
@@ -160,14 +151,6 @@
 .rd-btn:hover{box-shadow:0 0 36px rgba(232,33,39,.8);transform:translateY(-2px)}
 .rd-credit{margin-top:3rem;font-size:.8rem;color:#8a8a90}
 
-/* Lightbox */
-.rd-lb{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;touch-action:pan-y}
-.rd-lb[hidden]{display:none}
-.rd-lb figure{margin:0;max-width:94vw;text-align:center}
-.rd-lb img{max-width:94vw;max-height:82vh;width:auto;height:auto;object-fit:contain;border-radius:8px}
-.rd-lb figcaption{color:#ccc;font-size:.85rem;margin-top:10px}
-.rd-lb button{position:absolute;border:1px solid #333;background:rgba(20,20,22,.8);color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.6rem;cursor:pointer}
-.rd-lb-x{top:14px;right:14px}.rd-lb-p{left:12px;top:50%}.rd-lb-n{right:12px;top:50%}
 
 /* Scroll reveal */
 .rd-js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.1,1),transform .8s cubic-bezier(.2,.7,.1,1)}
@@ -176,7 +159,6 @@
  .rd-js .rv{opacity:1;transform:none;transition:none}
  .rd-word,.rd-sub,.rd-hero-stat,.rd-cue span,.rd-card::before{animation:none}
  .rd-moment{height:auto}.rd-moment-sticky{position:relative;height:auto;min-height:70svh}.rd-moment-img{transform:none}
- .rd-strip{scroll-behavior:auto}
 }
 
 /* ===== v3 "stronger": heavier type, more contrast, red light-streaks, full-bleed, less card clutter ===== */
@@ -207,8 +189,6 @@
 .rd-flight-cap{position:absolute;z-index:1;left:0;right:0;bottom:0;max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,28px) clamp(16px,4vw,48px)}
 .rd-flight-line{margin:0;font-size:clamp(2.8rem,11vw,8rem);font-weight:900;letter-spacing:-.05em;line-height:.9;text-transform:uppercase;text-shadow:0 0 40px rgba(232,33,39,.5)}
 /* full-bleed, card-free blocks */
-.rd-shot{border:0;border-radius:4px;background:none}
-.rd-shot figcaption{padding:8px 0}
 .rd-moment-sticky::after{background:linear-gradient(180deg,#000 0%,transparent 20%,transparent 45%,rgba(0,0,0,.95) 100%)}
 .rd-quote p{font-weight:900;font-size:clamp(2.2rem,7vw,5.2rem);letter-spacing:-.04em;text-transform:uppercase;line-height:.95}
 .rd-cards{gap:0;border-top:1px solid #222}

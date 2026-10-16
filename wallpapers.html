@@ -39,7 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=20261016094523" />
-    <link rel="stylesheet" href="/wallpapers.css?v=20261016094523" />
+    <link rel="stylesheet" href="/wallpapers.css?v=20261016104500" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610142355" />
   </head>
   <body>
@@ -67,7 +67,7 @@
               </div></div>
             <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster">Roadster<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
               <div class="pn-panel" id="pn-roadster">
-                <a href="/roadster.html#intro">Overview<span class="pn-badge">New</span><small>The key numbers</small></a>
+                <a href="/roadster.html#top">Overview<span class="pn-badge">New</span><small>The hero and key numbers</small></a>
                 <a href="/roadster.html#gallery">Gallery<small>22 angles</small></a>
                 <a href="/roadster.html#video">Videos<small>Clips, incl. Interior video</small></a>
                 <a href="/roadster.html#trims">Trims &amp; Specs<small>Performance, Thrust, Rocket</small></a>
@@ -117,7 +117,7 @@
         <h3>Tesla</h3>
         <a href="/tesla.html">Tesla overview</a><a href="/my-tesla.html">My Tesla</a><a href="/explainers.html">Explainers</a><a href="/guides/tesla-buying-guide.html">Buying guide</a><a href="/model3-explorer.html">Model 3 Explorer</a><a href="/cybertruck-explorer.html">Cybertruck Explorer</a><a href="/tsla.html">Markets</a><a href="/reviews/index.html">Reviews</a>
         <h3>Roadster</h3>
-        <a href="/roadster.html#intro">Overview</a><a href="/roadster.html#gallery">Gallery</a><a href="/roadster.html#video">Videos</a><a href="/roadster.html#trims">Trims &amp; Specs</a><a href="/roadster.html#tech">How it works</a><a href="/roadster.html#money">Price &amp; Reservations</a><a href="/roadster.html#timeline">Timeline</a><a href="/roadster.html#promise">Promise vs Reality</a><a href="/dispatch/roadster-reveal-2026.html">Reveal article</a>
+        <a href="/roadster.html#top">Overview</a><a href="/roadster.html#gallery">Gallery</a><a href="/roadster.html#video">Videos</a><a href="/roadster.html#trims">Trims &amp; Specs</a><a href="/roadster.html#tech">How it works</a><a href="/roadster.html#money">Price &amp; Reservations</a><a href="/roadster.html#timeline">Timeline</a><a href="/roadster.html#promise">Promise vs Reality</a><a href="/dispatch/roadster-reveal-2026.html">Reveal article</a>
         <h3>SpaceX</h3>
         <a href="/spacex.html">SpaceX</a><a href="/starship.html">Starship flights</a><a href="/explainers.html">Explainers</a><a href="/starlink.html">Starlink tracker</a><a href="/calendar.html">Calendar</a><a href="/see-the-launch.html">Can I see it?</a>
         <h3>Trackers</h3>
@@ -137,7 +137,7 @@
         </section>
 
         <section class="section" aria-label="Wallpapers">
-          <div class="wp-grid">
+          <div class="wp-grid" data-wp-gallery>
           <figure class="wp-card reveal">
             <button class="wp-thumb" type="button" data-wp-open data-full="/assets/wallpapers/ai-golden-hour-starship-desktop.jpg" data-phone="/assets/wallpapers/ai-golden-hour-starship-phone.jpg?v=2" data-title="Golden Hour Starship" aria-label="Preview Golden Hour Starship">
               <img src="/assets/wallpapers/thumbs/ai-golden-hour-starship.webp?v=2" alt="Starship lifts off at golden hour. AI artwork via Supercharged Daily." width="480" height="1040" loading="lazy" decoding="async" />
@@ -354,10 +354,13 @@
 
       <dialog class="wp-lightbox" data-wp-box aria-label="Wallpaper preview">
         <button class="wp-close" type="button" data-wp-close aria-label="Close">×</button>
+        <button class="wp-nav wp-prev" type="button" data-wp-prev aria-label="Previous" hidden>‹</button>
+        <button class="wp-nav wp-next" type="button" data-wp-next aria-label="Next" hidden>›</button>
         <img data-wp-img alt="" />
         <div class="wp-box-bar"><strong data-wp-title></strong>
-          <span><a class="wp-btn" data-wp-phone download>Phone</a> <a class="wp-btn wp-btn-alt" data-wp-desk download>Desktop</a> <button class="wp-btn wp-btn-alt" type="button" data-wp-toggle>Show phone</button></span>
+          <span class="wp-dl-slot"><a class="wp-btn" data-wp-phone download>Phone</a> <a class="wp-btn wp-btn-alt" data-wp-desk download>Desktop</a> <button class="wp-btn wp-btn-alt" type="button" data-wp-toggle>Show phone</button></span>
         </div>
+        <p class="wp-cap" data-wp-caption hidden></p>
       </dialog>
 
 
@@ -380,7 +383,7 @@
       </footer>
     </div>
     <script src="/script.js?v=202610161013"></script>
-    <script src="/wallpapers.js?v=202610151120"></script>
+    <script src="/wallpapers.js?v=20261016104500"></script>
     <script src="/wallpapers-ring.js?v=202610151120"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>

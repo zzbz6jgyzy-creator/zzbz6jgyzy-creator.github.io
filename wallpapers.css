@@ -56,3 +56,13 @@
 .wp-tag{display:inline-block;margin-left:.4em;padding:.1em .5em;border:1px solid #E31937;border-radius:999px;color:#ff6b7f;font-size:.62em;font-weight:600;letter-spacing:.04em;text-transform:uppercase;vertical-align:middle}
 .wpr-item.wpr-contain:not(.wpr-land) img{object-fit:contain;background:#05060a}
 .wp-btn small{color:#fff;opacity:1}
+
+/* Gallery nav (Roadster + wallpaper lightbox) */
+.wp-nav{position:fixed;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(227,25,55,.55);background:rgba(11,11,13,.85);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;z-index:2}
+.wp-nav:hover{background:#E31937}
+.wp-prev{left:12px}.wp-next{right:12px}
+.wp-nav[hidden]{display:none}
+.wp-cap{margin:.4rem .2rem 0;color:#ccc;font-size:.85rem;text-align:center;max-width:90vw}
+.wp-cap a{color:#ff7b7f}
+.wp-lightbox.wp-preview .wp-dl-slot{display:none}
+.wp-dl-slot[hidden]{display:none}
