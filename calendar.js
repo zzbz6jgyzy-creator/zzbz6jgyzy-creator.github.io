@@ -391,6 +391,7 @@
     });
   }
 
+  const LL2_CACHE = "sd-ll2-spacex";
   async function fetchLaunches() {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 8000);
@@ -398,7 +399,15 @@
       const res = await fetch(LL2, { signal: ctrl.signal });
       if (!res.ok) throw new Error(String(res.status));
       const data = await res.json();
-      return Array.isArray(data.results) ? data.results : [];
+      const results = Array.isArray(data.results) ? data.results : [];
+      try { localStorage.setItem(LL2_CACHE, JSON.stringify({ t: Date.now(), results })); } catch {}
+      return { results, t: Date.now(), cached: false };
+    } catch (err) {
+      try {
+        const c = JSON.parse(localStorage.getItem(LL2_CACHE) || "null");
+        if (c && Array.isArray(c.results) && Date.now() - c.t < 14 * 864e5) return { results: c.results, t: c.t, cached: true };
+      } catch {}
+      throw err;
     } finally {
       clearTimeout(timer);
     }
@@ -528,14 +537,18 @@
     if (!list && !preview && !countdown) return; // hooks-only pages (e.g. SpaceX earnings line) skip Launch Library
     try {
       const live = await fetchLaunches();
-      events = mergeEvents(live);
+      events = mergeEvents(live.results);
       paint();
       if (status) {
-        status.textContent = `Falcon dates from Launch Library 2 · ${now.toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}`;
+        const d = new Date(live.t);
+        const when = `${d.toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} ${tzShort(d)}`.trim();
+        status.textContent = live.cached
+          ? `Falcon dates from Launch Library 2 · last updated ${when}`
+          : `Falcon dates from Launch Library 2 · updated ${when}`;
       }
     } catch {
       if (status) {
-        status.textContent = "Launch Library did not load. Showing the last known Falcon slate plus curated dates.";
+        status.textContent = "Showing curated dates. Falcon dates from Launch Library 2 will appear when it responds.";
       }
     }
   }

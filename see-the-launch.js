@@ -854,17 +854,29 @@
     launches = mergeLaunches([]);
     bind();
     render();
+    const LLC = "sd-ll2-see";
+    const stampLive = (t) => {
+      const live = $("see-live");
+      if (!live) return;
+      const d = new Date(t);
+      let tz = "";
+      try { tz = (new Intl.DateTimeFormat(undefined, { timeZoneName: "short" }).formatToParts(d).find((x) => x.type === "timeZoneName") || {}).value || ""; } catch {}
+      live.textContent = `Saved on this device · Launch Library updated ${d.toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} ${tz}`.trim();
+    };
     fetch(LL2)
-      .then((r) => (r.ok ? r.json() : null))
+      .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
       .then((j) => {
         launches = mergeLaunches(j?.results || []);
-        const live = $("see-live");
-        if (live) live.textContent = `Saved on this device · Launch Library ${new Date().toISOString().slice(0, 16)}Z`;
+        try { localStorage.setItem(LLC, JSON.stringify({ t: Date.now(), results: j?.results || [] })); } catch {}
+        stampLive(Date.now());
         if (state.lat != null) loadWeather();
         else render();
       })
       .catch(() => {
-        launches = mergeLaunches([]);
+        let c = null;
+        try { c = JSON.parse(localStorage.getItem(LLC) || "null"); } catch {}
+        if (c && Array.isArray(c.results) && Date.now() - c.t < 14 * 864e5) { launches = mergeLaunches(c.results); stampLive(c.t); }
+        else launches = mergeLaunches([]);
         if (state.lat != null) loadWeather();
         else render();
       });
