@@ -72,6 +72,29 @@
   });
   document.addEventListener("click", e => { if (!nav.contains(e.target)) closeAll(); });
 
+  // Phone sheet: fold each section under its red heading so the major sections fit on one screen.
+  // The section holding the current page starts open. Without JS every link stays visible.
+  (() => {
+    const sh = document.querySelector(".pn-sheet");
+    if (!sh || sh.dataset.grouped) return;
+    sh.dataset.grouped = "1";
+    [...sh.querySelectorAll("h3")].forEach((h, i) => {
+      const links = [];
+      for (let n = h.nextElementSibling; n && n.tagName === "A" && !n.classList.contains("pn-cta") && !n.classList.contains("pn-sub-sheet"); n = n.nextElementSibling) links.push(n);
+      if (!links.length) return;
+      const id = "pn-grp-" + i;
+      const box = document.createElement("div");
+      box.className = "pn-grp"; box.id = id;
+      h.after(box); links.forEach((l) => box.appendChild(l));
+      const btn = document.createElement("button");
+      btn.type = "button"; btn.className = "pn-grp-t"; btn.setAttribute("aria-controls", id);
+      btn.innerHTML = h.innerHTML + '<span class="pn-grp-c" aria-hidden="true"></span>';
+      h.textContent = ""; h.appendChild(btn);
+      const set = (open) => { box.hidden = !open; btn.setAttribute("aria-expanded", String(open)); };
+      set(!!box.querySelector("[aria-current]") || links.some((l) => { try { const u = new URL(l.href, location.href); return u.pathname === location.pathname && u.pathname !== "/"; } catch { return false; } }));
+      btn.addEventListener("click", () => set(box.hidden));
+    });
+  })();
   sheet = document.querySelector(".pn-sheet"), ov = document.querySelector(".pn-overlay"), mb = nav.querySelector(".pn-menu");
   sheetOpen = v => {
     if (v === sheet.classList.contains("open")) return;
