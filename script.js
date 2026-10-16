@@ -75,6 +75,16 @@
     });
   });
 
+  // Lazy video posters: pages ship data-poster + preload="none" so off-screen clips cost nothing
+  const lazyPosters = document.querySelectorAll("video[data-poster]");
+  if (lazyPosters.length) {
+    const setPoster = (v) => { v.poster = v.dataset.poster; v.removeAttribute("data-poster"); };
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) { setPoster(en.target); io.unobserve(en.target); } }), { rootMargin: "600px 0px" });
+      lazyPosters.forEach((v) => io.observe(v));
+    } else lazyPosters.forEach(setPoster);
+  }
+
   // Mute preview play on hover for listing-card videos (no controls inside links)
   if (!reduce) {
     document.querySelectorAll(".story-media video, .lead-media video").forEach((video) => {

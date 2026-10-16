@@ -53,8 +53,9 @@ for (const rel of files) {
     const tag = m[0]; const at = m.index;
     const src = (tag.match(/\ssrc="(\/assets\/[^"]+\.(?:jpe?g|png))"/i) || [])[1];
     const inRelated = relStart >= 0 && at > relStart && at < relEnd;
-    const before = s.slice(Math.max(0, at - 200), at);
-    const inPicture = /<picture[^>]*>\s*(<source[^>]*>\s*)*$/.test(before);
+    // Already inside a <picture>? (look back to the last <picture> opener; <source> lists can be long)
+    const before = s.slice(0, at); const po = before.lastIndexOf("<picture");
+    const inPicture = po >= 0 && before.indexOf("</picture>", po) < 0;
     if (!src || inRelated || inPicture || /\sdata-[\w-]+=/.test(tag) || /\ssrcset=/.test(tag) || !fs.existsSync(path.join(ROOT, src))) {
       if (/\ssrc="/.test(tag) && !/\.svg"/.test(tag)) first = false;
       continue;

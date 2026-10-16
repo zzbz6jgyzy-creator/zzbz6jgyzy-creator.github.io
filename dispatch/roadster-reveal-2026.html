@@ -142,7 +142,7 @@
           </figure>
           <figure class="figure figure-embed">
             <div class="review-video-frame">
-              <iframe src="https://www.youtube.com/embed/qt5p-_tE8d0?rel=0&amp;modestbranding=1&amp;playsinline=1" title="Roadster Event — Tesla (full replay)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe loading="lazy" src="https://www.youtube.com/embed/qt5p-_tE8d0?rel=0&amp;modestbranding=1&amp;playsinline=1" title="Roadster Event — Tesla (full replay)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <figcaption>Full replay: <a href="https://www.youtube.com/watch?v=qt5p-_tE8d0">“Roadster Event”, Tesla on YouTube</a>. Also on <a href="https://x.com/i/broadcasts/1yKAPwNggRaxb">Tesla’s X broadcast</a>.</figcaption>
           </figure>
@@ -228,8 +228,17 @@
         <p class="footer-disclosure">Some links are affiliate links; I may earn a commission at no extra cost to you.</p>
       </footer>
     </div>
-    <script src="/script.js?v=202610151900"></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="/script.js?v=202610161013"></script>
+    <script>
+      /* Load X's widget script only when the first embedded post nears the screen */
+      (function () {
+        var q = document.querySelectorAll("blockquote.twitter-tweet"); if (!q.length) return; var done = false;
+        function load() { if (done) return; done = true; var s = document.createElement("script"); s.async = true; s.src = "https://platform.twitter.com/widgets.js"; s.charset = "utf-8"; document.body.appendChild(s); }
+        if (!("IntersectionObserver" in window)) return load();
+        var io = new IntersectionObserver(function (en) { if (en.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); } }, { rootMargin: "1200px 0px" });
+        q.forEach(function (b) { io.observe(b); });
+      })();
+    </script>
     <script src="/grow.js?v=20261016093121" data-band data-pop defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>

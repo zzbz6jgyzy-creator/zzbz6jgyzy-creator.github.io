@@ -72,7 +72,7 @@
 .pt-body{padding:0 16px 16px;margin-top:-28px;position:relative;z-index:1}
 .pt-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
 .pt-badge{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--st);color:#0c0d10}
-.st-missed .pt-badge,.st-progress .pt-badge,.st-revised .pt-badge{color:#fff}
+.st-missed .pt-badge{color:#fff}
 .pt-tag{font-size:12px;color:var(--ink-soft);border:1px solid var(--line-strong);padding:3px 8px;border-radius:999px;background:rgba(12,13,16,.6)}
 .pt-anchor{margin-left:auto;font-size:13px;color:var(--mute);text-decoration:none;padding:4px 6px}
 .pt-anchor:hover{color:var(--ink)}

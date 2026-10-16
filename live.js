@@ -40,7 +40,7 @@
     var tz = tzName(new Date(e.start));
     var dateTxt = e.timeTbc || e.net ? when(e).replace(' · time TBC', '').replace(/^NET /, '') : when(e).slice(0, -(tz.length + 1));
     var chip = e.timeTbc ? 'Time TBC' : e.net ? 'NET' : tz;
-    var thumb = e.image ? '<div class="lw-thumb" style="background-image:url(\'' + esc(e.thumb || e.image) + '\')" role="img" aria-label="' + esc(e.title) + '"></div>' : '';
+    var thumb = e.image ? '<div class="lw-thumb" role="img" aria-label="' + esc(e.title) + '"><img src="' + esc(e.thumb || e.image) + '" alt="" fetchpriority="high" decoding="async" /></div>' : '';
     var credit = e.image && e.imageCredit ? '<small class="lw-cr">' + esc(e.imageCredit) + '</small>' : '';
     var head = function (txt) { return '<div class="lw-head"><span class="lw-dot"></span><span>' + txt + '</span><span class="lw-host">' + (canEmbed ? 'Streamed here on Supercharged Daily' : 'Direct link to the official stream') + '</span></div>'; };
     var meta = '<p class="lw-when">' + esc(dateTxt) + ' <span class="lv-tz">' + esc(chip) + '</span></p>';

@@ -101,7 +101,7 @@ function eventCardFor(page) {
     const o = { weekday: "short", day: "numeric", month: "short", timeZone: (e.timeTbc || e.net) ? "America/Los_Angeles" : "UTC" };
     const date = new Intl.DateTimeFormat("en-GB", o).format(new Date(e.start)) + (e.timeTbc || e.net ? "" : " · " + new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(new Date(e.start)));
     const chip = e.timeTbc ? "Time TBC" : e.net ? "NET" : "UTC";
-    const thumb = e.image ? `<div class="lw-thumb" style="background-image:url('${esc(e.thumb || e.image)}')" role="img" aria-label="${esc(e.title)}"></div>` : "";
+    const thumb = e.image ? `<div class="lw-thumb" role="img" aria-label="${esc(e.title)}"><img src="${esc(e.thumb || e.image)}" alt="" fetchpriority="high" decoding="async" /></div>` : "";
     const credit = e.image && e.imageCredit ? `<small class="lw-cr">${esc(e.imageCredit)}</small>` : "";
     const tile = (n, l) => `<span class="lw-tile"><b>${n}</b><i>${l}</i></span>`;
     const tiles = e.net ? "" : `<div class="lw-cd" aria-live="off">${tile("–", "days") + tile("––", "hrs") + tile("––", "mins")}</div>`;
