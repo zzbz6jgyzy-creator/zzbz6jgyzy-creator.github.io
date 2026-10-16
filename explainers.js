@@ -11,14 +11,15 @@
     stamp.setAttribute("datetime", D.updated);
   }
 
+  const kickerEl = document.querySelector("[data-vx-kicker]");
+  const ledeEl = document.querySelector("[data-vx-lede]");
+  const players = [];
+
   function shareUrl(id) {
     return `https://superchargeddaily.com/explainers.html#${id}`;
   }
-  function tweet(id, text) {
-    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl(id))}`;
-  }
 
-  function player(root, { duration = 9000, onTick, labels }) {
+  function player(root, { onTick, labels, initial = 0.42 }) {
     const play = root.querySelector("[data-vx-play]");
     const range = root.querySelector("[data-vx-range]");
     const out = root.querySelector("[data-vx-readout]");
@@ -34,11 +35,18 @@
     const loop = (now) => {
       if (!running) return;
       if (!last) last = now;
-      t += (now - last) / duration;
+      t += (now - last) / 9000;
       last = now;
       if (t >= 1) t = 0;
       set(t);
       requestAnimationFrame(loop);
+    };
+    const stop = () => {
+      running = false;
+      if (play) {
+        play.textContent = "Play";
+        play.setAttribute("aria-pressed", "false");
+      }
     };
     play?.addEventListener("click", () => {
       running = !running;
@@ -48,21 +56,13 @@
       if (running) requestAnimationFrame(loop);
     });
     range?.addEventListener("input", () => {
-      running = false;
-      if (play) {
-        play.textContent = "Play";
-        play.setAttribute("aria-pressed", "false");
-      }
+      stop();
       set(Number(range.value) / 1000, true);
     });
-    set(reduce ? 0.55 : 0);
-    if (!reduce && play) {
-      running = true;
-      play.textContent = "Pause";
-      play.setAttribute("aria-pressed", "true");
-      requestAnimationFrame(loop);
-    }
-    return { set, stop: () => { running = false; } };
+    set(initial);
+    const ctl = { set, stop, root };
+    players.push(ctl);
+    return ctl;
   }
 
   function hotSvg() {
@@ -82,7 +82,8 @@
             <rect x="178" y="292" width="12" height="36" rx="1"/>
             <rect x="210" y="292" width="12" height="36" rx="1"/>
           </g>
-          <text x="248" y="300" fill="#8b939c" font-size="11" font-family="IBM Plex Mono,monospace">SUPER HEAVY</text>
+          <text x="248" y="286" fill="#8b939c" font-size="11" font-family="IBM Plex Mono,monospace">SUPER HEAVY</text>
+          <text x="248" y="302" fill="#6f7780" font-size="10" font-family="IBM Plex Mono,monospace">33 RAPTORS</text>
           <g data-hot-grid>
             ${[-36, -18, 0, 18, 36].map((a) => `<g transform="translate(200 380) rotate(${a})"><rect x="-3" y="0" width="6" height="28" rx="1" fill="#d7dbe0"/></g>`).join("")}
           </g>
@@ -109,7 +110,8 @@
           <path d="M168 86 l-28 22 v36 l28-12z" fill="#9aa3ad"/>
           <path d="M232 86 l28 22 v36 l-28-12z" fill="#9aa3ad"/>
           <rect x="186" y="78" width="28" height="10" rx="2" fill="#2b3038"/>
-          <text x="248" y="78" fill="#8b939c" font-size="11" font-family="IBM Plex Mono,monospace">SHIP</text>
+          <text x="248" y="72" fill="#8b939c" font-size="11" font-family="IBM Plex Mono,monospace">SHIP</text>
+          <text x="248" y="88" fill="#6f7780" font-size="10" font-family="IBM Plex Mono,monospace">6 RAPTORS</text>
           <g data-hot-ship-plumes opacity="0">
             <path d="M178 194 l8 70 l12-70z" fill="#ffb020"/>
             <path d="M194 194 l8 86 l12-86z" fill="#ffe38a"/>
@@ -117,7 +119,11 @@
           </g>
         </g>
       </g>
-      <text x="18" y="462" fill="#6f7780" font-size="11" font-family="IBM Plex Mono,monospace">Original diagram · not to scale</text>
+      <g data-hot-coast opacity="0">
+        <rect x="176" y="168" width="48" height="22" rx="4" fill="#3a3030"/>
+        <text x="184" y="183" fill="#c98a8a" font-size="11" font-family="IBM Plex Mono,monospace">COAST</text>
+      </g>
+      <text x="18" y="462" fill="#6f7780" font-size="11" font-family="IBM Plex Mono,monospace">Original diagram · not to scale · F14 clocks</text>
     </svg>`;
   }
 
@@ -145,6 +151,7 @@
         <rect x="-18" y="-70" width="8" height="140" fill="#dfe3e8"/>
         <rect x="-34" y="-10" width="14" height="22" rx="1" fill="#e31937"/>
         <rect x="20" y="-10" width="14" height="22" rx="1" fill="#e31937"/>
+        <text x="38" y="6" fill="#e31937" font-size="10" font-family="IBM Plex Mono,monospace">PINS</text>
         <g transform="translate(0 76)">
           <rect x="-28" y="0" width="8" height="22" fill="#9aa3ad"/>
           <rect x="20" y="0" width="8" height="22" fill="#9aa3ad"/>
@@ -155,13 +162,74 @@
           <path d="M2 76 l10 92 l12-92z" fill="#ffe38a"/>
         </g>
       </g>
-      <text x="18" y="390" fill="#6f7780" font-size="11" font-family="IBM Plex Mono,monospace">Original diagram · not to scale</text>
+      <text x="300" y="394" fill="#6f7780" font-size="10" font-family="IBM Plex Mono,monospace">MISS → CONTROLLED SPLASH</text>
+      <text x="18" y="390" fill="#6f7780" font-size="11" font-family="IBM Plex Mono,monospace">Original diagram · not to scale · F5 clocks</text>
+    </svg>`;
+  }
+
+  function evasionSvg() {
+    return `<svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Collision Evasion: HW4 can re-engage Supervised FSD">
+      <rect width="520" height="300" fill="#070d14"/>
+      <rect x="0" y="210" width="520" height="90" fill="#161b22"/>
+      <rect x="0" y="248" width="520" height="6" fill="#3a414b"/>
+      <g data-ev-threat>
+        <rect x="400" y="168" width="86" height="42" rx="8" fill="#6a717a"/>
+        <rect x="408" y="176" width="28" height="12" rx="2" fill="#2b3038"/>
+        <text x="412" y="160" fill="#e2c48a" font-size="11" font-family="IBM Plex Mono,monospace">AHEAD</text>
+      </g>
+      <g data-ev-car>
+        <rect x="70" y="176" width="120" height="40" rx="10" fill="#c8ced6"/>
+        <rect x="78" y="182" width="36" height="14" rx="2" fill="#2b3038"/>
+        <circle cx="94" cy="220" r="10" fill="#2f333a"/>
+        <circle cx="166" cy="220" r="10" fill="#2f333a"/>
+        <g data-ev-driver>
+          <circle cx="98" cy="168" r="10" fill="#e8eaee"/>
+          <rect x="90" y="176" width="16" height="12" fill="#9aa3ad"/>
+        </g>
+        <g data-ev-badge>
+          <rect x="128" y="154" width="54" height="18" rx="9" fill="#1b3d2a"/>
+          <text x="138" y="167" fill="#7dcea0" font-size="11" font-family="IBM Plex Mono,monospace">FSD</text>
+        </g>
+      </g>
+      <text x="18" y="284" fill="#6f7780" font-size="11" font-family="IBM Plex Mono,monospace">Original diagram · not a crash test · SAE Level 2</text>
     </svg>`;
   }
 
   function lerp(a, b, t) { return a + (b - a) * t; }
   function clamp01(t) { return Math.max(0, Math.min(1, t)); }
   function span(t, a, b) { return clamp01((t - a) / (b - a)); }
+
+  function stepAt(steps, t) {
+    let idx = 0;
+    steps.forEach((s, i) => { if (t >= s.at - 0.08) idx = i; });
+    return steps[idx];
+  }
+  function syncSteps(section, steps, t) {
+    const s = stepAt(steps, t);
+    section.querySelectorAll("[data-vx-step]").forEach((el, i) => el.classList.toggle("is-on", steps[i] === s));
+    const cap = section.querySelector("[data-vx-caption]");
+    const call = section.querySelector("[data-vx-callout]");
+    const clock = section.querySelector("[data-vx-clock]");
+    if (cap && s) cap.textContent = s.caption;
+    if (call && s) call.textContent = s.callout;
+    if (clock && s) clock.textContent = s.clock || "";
+  }
+  function fillSteps(section, steps) {
+    section.querySelectorAll("[data-vx-step]").forEach((el, i) => {
+      const s = steps[i];
+      if (!s) return;
+      const b = el.querySelector("b");
+      const span = el.querySelector("span");
+      if (b) b.textContent = s.title;
+      if (span) span.textContent = s.text;
+    });
+  }
+  function wireSteps(section, steps, ctl) {
+    fillSteps(section, steps);
+    section.querySelectorAll("[data-vx-step]").forEach((el, i) => {
+      el.addEventListener("click", () => ctl.set(steps[i].at));
+    });
+  }
 
   function mountHot(section) {
     const board = section.querySelector("[data-vx-diagram]");
@@ -175,6 +243,7 @@
     const shipPlumes = board.querySelector("[data-hot-ship-plumes]");
     const boosterPlumes = board.querySelector("[data-hot-booster-plumes]");
     const booster = board.querySelector("[data-hot-booster]");
+    const coast = board.querySelector("[data-hot-coast]");
     const tick = (t) => {
       if (hot) {
         const shipOn = span(t, 0.3, 0.46);
@@ -184,6 +253,7 @@
         shipPlumes.setAttribute("opacity", String(shipOn));
         vents.setAttribute("opacity", String(span(t, 0.22, 0.38)));
         boosterPlumes.setAttribute("opacity", String(0.35 + boost * 0.65));
+        coast?.setAttribute("opacity", "0");
         ship.setAttribute("transform", `translate(0 ${(-sep * 42).toFixed(1)})`);
         ring.setAttribute("transform", `translate(0 ${(-sep * 8).toFixed(1)})`);
         booster.setAttribute("transform", `rotate(${(-flip * 22).toFixed(1)} 200 340)`);
@@ -195,6 +265,7 @@
         shipPlumes.setAttribute("opacity", String(light));
         vents.setAttribute("opacity", "0");
         boosterPlumes.setAttribute("opacity", String(1 - cut));
+        coast?.setAttribute("opacity", String(gap * (1 - light)));
         ship.setAttribute("transform", `translate(0 ${(-gap * 36).toFixed(1)})`);
         ring.setAttribute("transform", "translate(0 0)");
         booster.setAttribute("transform", `rotate(${(-span(t, 0.7, 1) * 14).toFixed(1)} 200 340)`);
@@ -204,7 +275,11 @@
     };
     const ctl = player(section, {
       onTick: tick,
-      labels: (t) => (hot ? "Hot staging" : "Cold staging") + " · " + Math.round(t * 100) + "%",
+      initial: 0.44,
+      labels: (t) => {
+        const s = stepAt(D.hot.steps, t);
+        return (hot ? "Hot staging" : "Cold staging") + (s?.clock ? " · " + s.clock : "") + " · " + Math.round(t * 100) + "%";
+      },
     });
     modeBtn?.addEventListener("click", () => {
       hot = !hot;
@@ -213,7 +288,6 @@
       ctl.set(hot ? 0.44 : 0.66);
     });
     wireSteps(section, D.hot.steps, ctl);
-    if (reduce) ctl.set(0.44);
   }
 
   function mountCatch(section) {
@@ -237,21 +311,13 @@
     };
     const ctl = player(section, {
       onTick: tick,
-      labels: (t) => (t < 0.35 ? "Boostback" : t < 0.7 ? "Landing burn" : "Catch") + " · " + Math.round(t * 100) + "%",
+      initial: 0.72,
+      labels: (t) => {
+        const s = stepAt(D.catch.steps, t);
+        return (s?.clock || (t < 0.35 ? "Boostback" : t < 0.7 ? "Landing burn" : "Catch")) + " · " + Math.round(t * 100) + "%";
+      },
     });
     wireSteps(section, D.catch.steps, ctl);
-    if (reduce) ctl.set(0.72);
-  }
-
-  function syncSteps(section, steps, t) {
-    let idx = 0;
-    steps.forEach((s, i) => { if (t >= s.at - 0.08) idx = i; });
-    section.querySelectorAll("[data-vx-step]").forEach((el, i) => el.classList.toggle("is-on", i === idx));
-  }
-  function wireSteps(section, steps, ctl) {
-    section.querySelectorAll("[data-vx-step]").forEach((el, i) => {
-      el.addEventListener("click", () => ctl.set(steps[i].at));
-    });
   }
 
   function mountFsd(section) {
@@ -286,6 +352,65 @@
     render();
   }
 
+  function mountEvasion(section) {
+    const board = section.querySelector("[data-vx-diagram]");
+    board.innerHTML = evasionSvg();
+    const car = board.querySelector("[data-ev-car]");
+    const threat = board.querySelector("[data-ev-threat]");
+    const driver = board.querySelector("[data-ev-driver]");
+    const badge = board.querySelector("[data-ev-badge] rect");
+    const badgeT = board.querySelector("[data-ev-badge] text");
+    let mode = "hw4";
+    const can = () => mode === "hw4";
+    const tick = (t) => {
+      const drop = span(t, 0.28, 0.4);
+      const close = span(t, 0.45, 0.78);
+      const save = can() ? span(t, 0.7, 0.9) : 0;
+      car.setAttribute("transform", `translate(${(close * 70 + save * 36).toFixed(1)} ${(-save * 6).toFixed(1)}) rotate(${(-save * 4).toFixed(1)})`);
+      threat.setAttribute("transform", `translate(${(-close * 40).toFixed(1)} 0)`);
+      driver.setAttribute("transform", `rotate(${(drop * 28 - save * 28).toFixed(1)} 98 168)`);
+      const on = t < 0.32 || save > 0.15;
+      if (!can() && t >= 0.62) {
+        badge.setAttribute("fill", "#3a3030");
+        badgeT.setAttribute("fill", "#c98a8a");
+        badgeT.textContent = "NO";
+      } else {
+        badge.setAttribute("fill", on ? "#1b3d2a" : "#3a3030");
+        badgeT.setAttribute("fill", on ? "#7dcea0" : "#c98a8a");
+        badgeT.textContent = on ? "FSD" : "OFF";
+      }
+      syncSteps(section, D.evasion.steps, t);
+    };
+    const note = section.querySelector("[data-vx-mode-note]");
+    const setNote = () => {
+      const m = D.evasion.modes.find((x) => x.id === mode);
+      if (note && m) note.textContent = m.id === "hw4"
+        ? "HW4 in North America (14.3.11 / 14.3.12) can re-engage Supervised FSD for an imminent frontal crash, or an unintentional drop."
+        : m.id === "hw3"
+          ? "HW3 Lite: parking, unparking, start-from-park. Distilled from HW4. No Collision Evasion — the re-engage step does not exist."
+          : "Europe 14.2: Assisted Driving Basic on 2026.33.100. Same week as US 14.3.11, still on 14.2. Collision Evasion is North America only.";
+    };
+    const ctl = player(section, {
+      onTick: tick,
+      initial: 0.76,
+      labels: (t) => {
+        const name = D.evasion.modes.find((m) => m.id === mode);
+        const s = stepAt(D.evasion.steps, t);
+        return (name ? name.label : mode) + (s?.clock ? " · " + s.clock : "") + " · " + Math.round(t * 100) + "%";
+      },
+    });
+    setNote();
+    section.querySelectorAll("[data-vx-hw]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        mode = btn.getAttribute("data-vx-hw");
+        section.querySelectorAll("[data-vx-hw]").forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+        setNote();
+        ctl.set(0.76);
+      });
+    });
+    wireSteps(section, D.evasion.steps, ctl);
+  }
+
   function wireShare(section, item) {
     const copy = section.querySelector("[data-vx-copy]");
     copy?.addEventListener("click", async () => {
@@ -306,24 +431,85 @@
     if (id === "hot-staging") mountHot(section);
     if (id === "catch") mountCatch(section);
     if (id === "fsd") mountFsd(section);
+    if (id === "evasion") mountEvasion(section);
     wireShare(section, item);
   });
 
-  const jumps = document.querySelectorAll(".vx-jump a");
-  const pieces = [...document.querySelectorAll("[data-vx-piece]")];
+  let currentTab = "spacex";
+  function setTab(name, { scrollId } = {}) {
+    currentTab = name === "tesla" ? "tesla" : "spacex";
+    const meta = D.tabs[currentTab];
+    if (kickerEl) kickerEl.textContent = meta.kicker;
+    if (ledeEl) ledeEl.textContent = meta.lede;
+    document.documentElement.setAttribute("data-vx-tab", currentTab);
+    document.querySelectorAll("button[data-vx-tab]").forEach((btn) => {
+      const on = btn.getAttribute("data-vx-tab") === currentTab;
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+      btn.setAttribute("tabindex", on ? "0" : "-1");
+    });
+    document.querySelectorAll("[data-vx-pane]").forEach((pane) => {
+      const on = pane.getAttribute("data-vx-pane") === currentTab;
+      pane.hidden = !on;
+    });
+    document.querySelectorAll("[data-vx-jump]").forEach((nav) => {
+      nav.hidden = nav.getAttribute("data-vx-jump") !== currentTab;
+    });
+    document.querySelectorAll("[data-vx-cards]").forEach((el) => {
+      el.hidden = el.getAttribute("data-vx-cards") !== currentTab;
+    });
+    players.forEach((p) => {
+      const pane = p.root.closest("[data-vx-pane]");
+      if (pane && pane.hidden) p.stop();
+    });
+    mark();
+    if (scrollId) {
+      const el = document.getElementById(scrollId);
+      el?.scrollIntoView({ block: "start" });
+    }
+  }
+
+  function tabOf(hash) {
+    const id = String(hash || "").replace(/^#/, "");
+    if (id === "tesla" || id === "spacex") return id;
+    const item = D.items.find((x) => x.id === id);
+    return item ? item.tab : "spacex";
+  }
+
+  const jumps = () => document.querySelectorAll("[data-vx-jump]:not([hidden]) a");
   const mark = () => {
+    const pane = document.querySelector(`[data-vx-pane="${currentTab}"]`);
+    const pieces = pane ? [...pane.querySelectorAll("[data-vx-piece]")] : [];
     const y = window.scrollY + 140;
     let on = pieces[0]?.id;
     pieces.forEach((p) => { if (p.offsetTop <= y) on = p.id; });
-    jumps.forEach((a) => a.classList.toggle("is-on", a.getAttribute("href") === "#" + on));
+    jumps().forEach((a) => a.classList.toggle("is-on", a.getAttribute("href") === "#" + on));
   };
   window.addEventListener("scroll", mark, { passive: true });
-  mark();
+
+  document.querySelectorAll("button[data-vx-tab]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const name = btn.getAttribute("data-vx-tab");
+      if (location.hash.replace("#", "") !== name) location.hash = name;
+      else setTab(name);
+    });
+    btn.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+      e.preventDefault();
+      const next = currentTab === "spacex" ? "tesla" : "spacex";
+      if (location.hash.replace("#", "") !== next) location.hash = next;
+      else setTab(next);
+      document.querySelector(`button[data-vx-tab="${next}"]`)?.focus();
+    });
+  });
+
   const goHash = () => {
-    if (!location.hash) return;
-    const el = document.querySelector(location.hash);
-    el?.scrollIntoView({ block: "start" });
-    mark();
+    const raw = location.hash.replace("#", "");
+    const tab = tabOf(location.hash);
+    const isPiece = D.items.some((x) => x.id === raw);
+    setTab(tab, { scrollId: isPiece ? raw : null });
+    if (!raw || raw === "spacex" || raw === "tesla") {
+      document.querySelector(".vx-tabs")?.scrollIntoView({ block: "start" });
+    }
   };
   window.addEventListener("hashchange", goHash);
   goHash();
