@@ -94,7 +94,7 @@ def sleek_signup():
     for path in glob.glob(os.path.join(ROOT, "dispatch", "*.html")) + glob.glob(os.path.join(ROOT, "guides", "*.html")):
         s = open(path, encoding="utf-8").read(); t = box.sub("", s)
         if "/grow.js" not in t and "<main" in t and "</body>" in t:
-            t = t.replace("</body>", '    <script src="/grow.js?v=202610142125" data-band data-pop defer></script>\n  </body>', 1)
+            t = t.replace("</body>", '    <script src="/grow.js?v=20261016093121" data-band data-pop defer></script>\n  </body>', 1)
         if t != s: open(path, "w", encoding="utf-8").write(t); print("sleek signup:", os.path.relpath(path, ROOT))
 
 # ---- Related stories: 3 internal links + "More on <topic>" at the bottom of every Dispatch article ----
