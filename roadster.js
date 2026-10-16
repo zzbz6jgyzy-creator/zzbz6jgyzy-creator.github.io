@@ -39,7 +39,7 @@
   // Count-up numbers. The source text in the HTML is the truth: we cache it once
   // and always end on it (reduced motion, interruption, background tab, bfcache).
   var counters = [].slice.call(d.querySelectorAll("[data-count]"));
-  counters.forEach(function (el) { el.setAttribute("data-final", el.textContent); });
+  counters.forEach(function (el) { if (!el.hasAttribute("data-final")) el.setAttribute("data-final", el.textContent); });
   function finish(el) { el._cuDone = true; el.textContent = el.getAttribute("data-final"); }
   function finishAll() { counters.forEach(finish); }
   function countUp(el) {

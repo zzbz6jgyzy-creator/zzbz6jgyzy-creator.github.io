@@ -55,7 +55,7 @@
     }
     el.textContent = end.toLocaleString() + (el.dataset.suffix || "");
   };
-  document.querySelectorAll("[data-count]").forEach(writeCount);
+  document.querySelectorAll("[data-count]:not([data-dec]):not([data-final])").forEach(writeCount);
 
   document.querySelectorAll(".video-card-media video").forEach((video) => {
     const wrap = video.parentElement;
