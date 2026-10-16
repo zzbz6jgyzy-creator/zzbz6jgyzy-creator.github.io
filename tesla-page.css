@@ -85,3 +85,4 @@
 .gk-news a:hover{text-decoration:underline}
 #tutorial,.grok-levels{scroll-margin-top:3.5rem}
 @media (max-width:900px){.gk-uses{grid-template-columns:1fr}}
+.tz-hero picture{display:contents}

@@ -30,8 +30,23 @@ try {
   }
 } catch (e) { console.warn("pin skip", e.message); }
 const L = cards[0];
+// Lead image: <picture> with the AVIF/WebP sets build-images.mjs makes (<name>-<w>w.avif/webp), plus a preload
+const pinAlt = (() => { try { const a = (JSON.parse(rd("data/articles.json")).articles || []).find((x) => L && x.url === L.href); return a && a.imageAlt; } catch (e) { return ""; } })();
+const leadSrc = (L && L.img) || "/assets/dispatch/cybercab-austin-poster.jpg";
+const sets = {};
+if (/^\/assets\/.+\.(jpe?g|png)$/i.test(leadSrc)) {
+  const base = leadSrc.replace(/\.(jpe?g|png)$/i, ""), dir = path.join(R, path.dirname(leadSrc)), stem = path.basename(base);
+  for (const fmt of ["avif", "webp"]) {
+    const ws = (fs.existsSync(dir) ? fs.readdirSync(dir) : []).map((f) => (f.match(new RegExp("^" + stem.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "-(\\d+)w\\." + fmt + "$")) || [])[1]).filter(Boolean).map(Number).filter((w) => w <= 1600).sort((a, b) => a - b);
+    if (ws.length) sets[fmt] = ws.map((w) => `${base}-${w}w.${fmt} ${w}w`).join(", ");
+  }
+}
+const SZ = "(max-width: 760px) 100vw, 640px";
+const leadAlt = pinAlt || (L ? L.h : "");
+const leadImg = `${sets.avif ? `<source type="image/avif" srcset="${esc(sets.avif)}" sizes="${SZ}" />` : ""}${sets.webp ? `<source type="image/webp" srcset="${esc(sets.webp)}" sizes="${SZ}" />` : ""}<img src="${esc(leadSrc)}" alt="${esc(leadAlt)}" fetchpriority="high" decoding="async" data-hv-img />`;
+const preload = sets.avif ? `<link rel="preload" as="image" type="image/avif" imagesrcset="${esc(sets.avif)}" imagesizes="${SZ}" fetchpriority="high" />` : `<link rel="preload" as="image" href="${esc(leadSrc)}" fetchpriority="high" />`;
 const lead = L ? `<a class="hv-lead" href="${esc(L.href)}" data-hv-lead>
-            <div class="hv-lead-media"><img src="${esc(L.img || "/assets/dispatch/cybercab-austin-poster.jpg")}" alt="" data-hv-img /></div>
+            <div class="hv-lead-media"><picture>${leadImg}</picture></div>
             <div class="hv-lead-copy"><span class="hv-tag" data-hv-tag>${esc(L.tag)}</span><h2 data-hv-h>${esc(L.h)}</h2><p data-hv-p>${esc(L.p)}</p><span class="hv-read">Read the story →</span></div>
           </a>` : null;
 const supp = cards.slice(1, 4).map((c) => `<a class="hv-s" href="${esc(c.href)}">${c.img ? `<img src="${esc(c.img)}" alt="" loading="lazy" />` : ""}<div><span class="hv-tag">${esc(c.tag)}</span><h3>${esc(c.h)}</h3></div></a>`).join("");
@@ -86,7 +101,7 @@ function eventCardFor(page) {
     const o = { weekday: "short", day: "numeric", month: "short", timeZone: (e.timeTbc || e.net) ? "America/Los_Angeles" : "UTC" };
     const date = new Intl.DateTimeFormat("en-GB", o).format(new Date(e.start)) + (e.timeTbc || e.net ? "" : " · " + new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(new Date(e.start)));
     const chip = e.timeTbc ? "Time TBC" : e.net ? "NET" : "UTC";
-    const thumb = e.image ? `<div class="lw-thumb" style="background-image:url('${esc(e.image)}')" role="img" aria-label="${esc(e.title)}"></div>` : "";
+    const thumb = e.image ? `<div class="lw-thumb" style="background-image:url('${esc(e.thumb || e.image)}')" role="img" aria-label="${esc(e.title)}"></div>` : "";
     const credit = e.image && e.imageCredit ? `<small class="lw-cr">${esc(e.imageCredit)}</small>` : "";
     const tile = (n, l) => `<span class="lw-tile"><b>${n}</b><i>${l}</i></span>`;
     const tiles = e.net ? "" : `<div class="lw-cd" aria-live="off">${tile("–", "days") + tile("––", "hrs") + tile("––", "mins")}</div>`;
@@ -117,7 +132,7 @@ const put = (name, inner) => {
   if (!re.test(html)) throw new Error("marker missing: " + name);
   html = html.replace(re, () => `<!--hv:${name}-->${inner}<!--/hv:${name}-->`);
 };
-put("lead", lead); put("band", band);
+put("lead", lead); put("preload", preload); put("band", band);
 html = html.replace(/<!--hv:event-->[\s\S]*?<!--\/hv:event-->/, () => `<!--hv:event-->${eventCard}<!--/hv:event-->`);
  put("supp", supp); put("trk", trkHtml); put("feed", feed);
 if (html !== before) { fs.writeFileSync(path.join(R, "index.html"), html); console.log("index.html updated"); } else console.log("index.html unchanged");

@@ -4,7 +4,7 @@
   "events": [
     {
       "id": "f9-crs35",
-      "title": "Falcon 9 \u00b7 CRS-35 to the ISS",
+      "title": "Falcon 9 · CRS-35 to the ISS",
       "page": "starship",
       "start": "2026-10-13T06:33:00-04:00",
       "end": "2026-10-13T07:45:00-04:00",
@@ -22,7 +22,7 @@
     },
     {
       "id": "crs35-docking",
-      "title": "Dragon \u00b7 CRS-35 docked with the ISS",
+      "title": "Dragon · CRS-35 docked with the ISS",
       "page": "starship",
       "start": "2026-10-15T09:15:00-04:00",
       "end": "2026-10-15T11:50:18-04:00",
@@ -40,7 +40,7 @@
     },
     {
       "id": "f9-ussf481",
-      "title": "Falcon 9 \u00b7 USSF-481",
+      "title": "Falcon 9 · USSF-481",
       "page": "starship",
       "start": "2026-10-15T19:57:00-04:00",
       "end": "2026-10-15T20:20:00-04:00",
@@ -70,8 +70,8 @@
       "fallbackLabel": "Watch the live broadcast on X",
       "source": "https://x.com/Tesla/status/2110788059008819215",
       "image": "/assets/live/roadster.jpg",
-      "imageCredit": "2020 Roadster prototype \u00b7 Photo: Smnt, Wikimedia Commons, CC BY-SA 4.0",
-      "description": "Tesla revealed the next-generation Roadster at the SpaceX test site in McGregor, Texas. The stream ran from 7:55pm to about 8:26pm Central on 15 Oct (01:55\u201302:26 Irish time on 16 Oct). Full replay and write-up: superchargeddaily.com/dispatch/roadster-reveal-2026.html",
+      "imageCredit": "2020 Roadster prototype · Photo: Smnt, Wikimedia Commons, CC BY-SA 4.0",
+      "description": "Tesla revealed the next-generation Roadster at the SpaceX test site in McGregor, Texas. The stream ran from 7:55pm to about 8:26pm Central on 15 Oct (01:55–02:26 Irish time on 16 Oct). Full replay and write-up: superchargeddaily.com/dispatch/roadster-reveal-2026.html",
       "descSource": "https://x.com/Tesla/status/2110788059008819215",
       "featured": false,
       "replayUrl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
@@ -93,7 +93,8 @@
       "image": "/assets/live/factory.jpg",
       "imageCredit": "Photo: Steve Jurvetson, Wikimedia Commons, CC BY 2.0",
       "description": "Tesla posts its Q3 2026 results after the US market close, then management holds a live Q&A webcast at 4:30pm Central Time. The webcast and replay are on ir.tesla.com, which can't be embedded here.",
-      "descSource": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm"
+      "descSource": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
+      "thumb": "/assets/live/factory-480w.webp"
     },
     {
       "id": "starship-flight-15",
@@ -112,7 +113,8 @@
       "image": "/assets/live/starship.jpg",
       "imageCredit": "Photo: Shujianyang, Wikimedia Commons, CC BY-SA 4.0",
       "description": "Starship's fifteenth flight test from Starbase, Texas, targeted no earlier than 8 November. It's expected to be the first serious attempt to catch a Ship back at the tower.",
-      "descSource": "https://www.spacex.com/launches/"
+      "descSource": "https://www.spacex.com/launches/",
+      "thumb": "/assets/live/starship-480w.webp"
     }
   ]
 }

@@ -30,7 +30,7 @@
     // Lead image: card image, else the article's og:image / first image, else a licensed site image from another card
     const img = $("[data-hv-img]");
     const fallback = (cards.find((c) => c.img) || {}).img || "/assets/dispatch/cybercab-austin-poster.jpg";
-    const setImg = (src) => { img.src = src; img.onerror = () => { img.onerror = null; img.src = fallback; }; };
+    const setImg = (src) => { if (img.getAttribute("src") === src) return; if (img.parentNode && img.parentNode.tagName === "PICTURE") img.parentNode.querySelectorAll("source").forEach((x) => x.remove()); img.alt = L.h.trim(); img.src = src; img.onerror = () => { img.onerror = null; img.src = fallback; }; };
     if (L.img) setImg(L.img);
     else fetch(L.href, { cache: "no-cache" }).then((r) => r.text()).then((h) => {
       const d = new DOMParser().parseFromString(h, "text/html");
