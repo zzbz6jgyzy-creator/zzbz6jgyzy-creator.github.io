@@ -41,6 +41,7 @@
 .tz-band p{margin:.5rem 0 0;max-width:52ch}
 .tz-band-quiet{border-color:var(--line);background:var(--card)}
 .tz-band + .tz-cards{margin-top:1.4rem}
+.tz-cards + .tz-band{margin-top:1.4rem}
 .tz-band-quiet a{color:var(--ink)}
 .tz-small{padding-bottom:3rem}
 @media (hover:hover){

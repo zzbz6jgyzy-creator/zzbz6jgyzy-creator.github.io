@@ -7,6 +7,7 @@
     {"id":"pn-tesla","label":"Tesla","items":[
       ["Tesla overview","/tesla.html","News, models &amp; data",""],
       ["My Tesla","/my-tesla.html","Your car, personalised",""],
+      ["Explainers","/explainers.html","Hot staging, catch, FSD",""],
       ["Buying guide","/guides/tesla-buying-guide.html","Which Tesla to buy in 2026",""],
       ["Model 3 Explorer","/model3-explorer.html","Take the car apart","3D"],
       ["Cybertruck Explorer","/cybertruck-explorer.html","Take the truck apart","3D"],
@@ -15,6 +16,7 @@
     {"id":"pn-spacex","label":"SpaceX","items":[
       ["SpaceX","/spacex.html","News &amp; missions",""],
       ["Starship flights","/starship.html","Flight lab",""],
+      ["Explainers","/explainers.html","Hot staging, catch, FSD",""],
       ["Starlink tracker","/starlink.html","Satellites by version",""],
       ["Calendar","/calendar.html","Launches &amp; livestreams",""],
       ["Can I see it?","/see-the-launch.html","Visible from here?",""]]},
