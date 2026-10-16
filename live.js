@@ -34,7 +34,7 @@
     if (e.provider === 'youtube' && /^[\w-]{6,20}$/.test(e.embedId || '')) return 'https://www.youtube.com/watch?v=' + e.embedId;
     return safeUrl(e.fallbackUrl || e.postUrl || '/calendar.html');
   }
-  function render(slot, e, live, collapsed) {
+  function render(slot, e, live, collapsed, slim) {
     var link = '<a class="lv-out" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener">' + esc(e.fallbackLabel || 'Watch') + ' \u2197</a>';
     var canEmbed = e.provider === 'youtube' || e.provider === 'x';
     var tz = tzName(new Date(e.start));
@@ -44,6 +44,13 @@
     var credit = e.image && e.imageCredit ? '<small class="lw-cr">' + esc(e.imageCredit) + '</small>' : '';
     var head = function (txt) { return '<div class="lw-head"><span class="lw-dot"></span><span>' + txt + '</span><span class="lw-host">' + (canEmbed ? 'Streamed here on Supercharged Daily' : 'Direct link to the official stream') + '</span></div>'; };
     var meta = '<p class="lw-when">' + esc(dateTxt) + ' <span class="lv-tz">' + esc(chip) + '</span></p>';
+    if (!live && slim) { // >72h out: slim one-line card (fixed 56px, see live.css .lw-slim)
+      var days = function () { var ms = new Date(e.start) - Date.now(), dd = Math.round(ms / 864e5); return ms <= 0 ? 'today' : dd <= 1 ? 'in 1d' : 'in ' + dd + 'd'; };
+      slot.innerHTML = '<a class="lw lw-slim" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener"><span class="lw-dot"></span><span class="lws-txt"><b class="lws-t">' + esc(e.title) + '</b>' +
+        '<span class="lws-m">' + esc(dateTxt) + ' <span class="lv-tz">' + esc(chip) + '</span> <span class="lws-cd">' + days() + '</span></span></span><span class="lws-go">Watch \u2197</span></a>';
+      setInterval(function () { var c = slot.querySelector('.lws-cd'); if (c) c.textContent = days(); }, 6e4);
+      return;
+    }
     if (!live) {
       var timed = !e.net, dayOnly = !!e.timeTbc;
       slot.innerHTML = '<div class="lw' + (reduce ? ' lv-still' : '') + '">' + head('Next live stream') + '<div class="lw-body">' + thumb +
@@ -99,11 +106,11 @@
     document.querySelectorAll('section.lv[data-prebuilt]').forEach(function (p) { p.remove(); });
     if (!e) return;
     var top = document.querySelector('[data-live-slot][data-live-only]'), rest = document.querySelector('[data-live-slot]:not([data-live-only])');
-    var mount = live ? (top || rest) : rest; if (!mount && top) return; var slot = document.createElement('section'); slot.className = 'lv' + (mount ? ' lv-inhero' : '') + (live ? '' : ' lv-quiet'); slot.setAttribute('aria-label', live ? 'Live now' : 'Next livestream');
+    var mount = live ? (top || rest) : rest; if (!mount && top) return; var slim = !live && new Date(e.start) - now > 72 * H; var slot = document.createElement('section'); slot.className = 'lv' + (mount ? ' lv-inhero' : '') + (live ? '' : ' lv-quiet') + (slim ? ' lv-slim' : ''); slot.setAttribute('aria-label', live ? 'Live now' : 'Next livestream');
     if (mount) mount.appendChild(slot); else { var main = document.querySelector('main'); main.parentNode.insertBefore(slot, main); }
     var collapsed = !!(mount && mount.hasAttribute('data-collapsed'));
-    render(slot, e, !!live, collapsed);
-    var flip = live ? new Date(e.end) - now : (!e.timeTbc && !e.net ? new Date(e.start) - H / 2 - now : 0); // re-check at go-live / end
+    render(slot, e, !!live, collapsed, slim);
+    var flip = live ? new Date(e.end) - now : slim ? new Date(e.start) - 72 * H - now : (!e.timeTbc && !e.net ? new Date(e.start) - H / 2 - now : 0); // re-check at slim→full (72h), go-live, end
     if (flip > 0 && flip < 864e5 && !q.get('livenow')) setTimeout(run, flip + 1e3);
   }).catch(function () {});
   }

@@ -105,6 +105,10 @@ function eventCardFor(page) {
     const credit = e.image && e.imageCredit ? `<small class="lw-cr">${esc(e.imageCredit)}</small>` : "";
     const tile = (n, l) => `<span class="lw-tile"><b>${n}</b><i>${l}</i></span>`;
     const tiles = e.net ? "" : `<div class="lw-cd" aria-live="off">${tile("–", "days") + tile("––", "hrs") + tile("––", "mins")}</div>`;
+    if (new Date(e.start) - now > 72 * H) { // >72h out: slim card (live.js swaps in the visitor's zone)
+      const dd = Math.round((new Date(e.start) - now) / 864e5);
+      return `<section class="lv${page === "home" ? " lv-inhero" : ""} lv-quiet lv-slim" aria-label="Next livestream" data-prebuilt><a class="lw lw-slim" href="${esc(url)}" target="_blank" rel="noopener"><span class="lw-dot"></span><span class="lws-txt"><b class="lws-t">${esc(e.title)}</b><span class="lws-m">${esc(date)} <span class="lv-tz">${esc(chip)}</span> <span class="lws-cd">in ${dd}d</span></span></span><span class="lws-go">Watch ↗</span></a></section>`;
+    }
     return `<section class="lv${page === "home" ? " lv-inhero" : ""} lv-quiet" aria-label="Next livestream" data-prebuilt><div class="lw"><div class="lw-head"><span class="lw-dot"></span><span>Next live stream</span><span class="lw-host">${canEmbed ? "Streamed here on Supercharged Daily" : "Direct link to the official stream"}</span></div><div class="lw-body">${thumb}<div class="lw-info"><h3 class="lw-title">${esc(e.title)}</h3><p class="lw-when">${esc(date)} <span class="lv-tz">${esc(chip)}</span></p>${tiles}<div class="lw-acts"><a class="lw-btn lw-btn-soft" href="${esc(url)}" target="_blank" rel="noopener"><span class="lw-play"></span>Watch the live stream ↗</a><a class="lw-cal" href="/calendar.html">All events →</a></div>${credit}</div></div></div></section>`;
   } catch (err) { console.warn("event card skip", err.message); return ""; }
 }
