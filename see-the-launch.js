@@ -336,21 +336,72 @@
     return wrap360(h + screenAngle());
   };
 
-  const compassTicks = () =>
-    Array.from({ length: 72 }, (_, i) => {
+  const polar = (deg, r) => {
+    const rad = (deg * Math.PI) / 180;
+    return [50 + r * Math.sin(rad), 50 - r * Math.cos(rad)];
+  };
+  const pt = (deg, r) => {
+    const [x, y] = polar(deg, r);
+    return `${x.toFixed(2)},${y.toFixed(2)}`;
+  };
+
+  const compassRose = () => {
+    const ticks = Array.from({ length: 72 }, (_, i) => {
       const a = i * 5;
-      const major = i % 18 === 0;
-      const mid = i % 6 === 0;
-      const r1 = 44.5;
-      const r2 = major ? 37.5 : mid ? 40 : 42.2;
-      const rad = (a * Math.PI) / 180;
-      const x1 = 50 + r1 * Math.sin(rad);
-      const y1 = 50 - r1 * Math.cos(rad);
-      const x2 = 50 + r2 * Math.sin(rad);
-      const y2 = 50 - r2 * Math.cos(rad);
+      const major = a % 30 === 0;
+      const mid = a % 10 === 0;
+      const r1 = 43.7;
+      const r2 = major ? 37 : mid ? 39.4 : 41.5;
+      const [x1, y1] = polar(a, r1);
+      const [x2, y2] = polar(a, r2);
       return `<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="${
-        major ? "#c4b8a4" : "rgba(255,255,255,.22)"
-      }" stroke-width="${major ? 1.3 : 0.7}"/>`;
+        major ? "#ecd9b0" : mid ? "rgba(236,217,176,.5)" : "rgba(255,255,255,.2)"
+      }" stroke-width="${major ? 1.4 : mid ? 0.9 : 0.5}" stroke-linecap="round"/>`;
+    }).join("");
+    const pips = [0, 90, 180, 270]
+      .map(
+        (a) =>
+          `<polygon points="${pt(a, 36.6)} ${pt(a - 3.5, 32.2)} ${pt(a + 3.5, 32.2)}" fill="${a === 0 ? "#e8c36a" : "#c9c2b3"}"/>`
+      )
+      .join("");
+    const cards = [
+      [0, "N", 8.4, "#fff"],
+      [90, "E", 7.1, "#d7dde3"],
+      [180, "S", 7.1, "#d7dde3"],
+      [270, "W", 7.1, "#d7dde3"],
+    ]
+      .map(([a, t, s, c]) => {
+        const [x, y] = polar(a, 23.6);
+        return `<text x="${x.toFixed(2)}" y="${(y + s * 0.36).toFixed(2)}" text-anchor="middle" fill="${c}" font-size="${s}" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">${t}</text>`;
+      })
+      .join("");
+    const inter = [
+      [45, "NE"],
+      [135, "SE"],
+      [225, "SW"],
+      [315, "NW"],
+    ]
+      .map(([a, t]) => {
+        const [x, y] = polar(a, 27.6);
+        return `<text x="${x.toFixed(2)}" y="${(y + 1.55).toFixed(2)}" text-anchor="middle" fill="#8b949e" font-size="3.5" font-weight="500" font-family="IBM Plex Mono,ui-monospace,monospace">${t}</text>`;
+      })
+      .join("");
+    const nums = [30, 60, 120, 150, 210, 240, 300, 330]
+      .map((a) => {
+        const [x, y] = polar(a, 32.4);
+        return `<text x="${x.toFixed(2)}" y="${(y + 1.45).toFixed(2)}" text-anchor="middle" fill="#b7aa91" font-size="4" font-family="IBM Plex Mono,ui-monospace,monospace">${a}</text>`;
+      })
+      .join("");
+    return `<circle cx="50" cy="50" r="43.95" fill="none" stroke="rgba(232,195,106,.2)" stroke-width=".45"/>${ticks}${pips}${nums}${inter}${cards}`;
+  };
+
+  const compassCaseTicks = () =>
+    Array.from({ length: 12 }, (_, i) => {
+      if (i === 0) return "";
+      const a = i * 30;
+      const [x1, y1] = polar(a, 47.9);
+      const [x2, y2] = polar(a, 46.15);
+      return `<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="rgba(255,255,255,.38)" stroke-width="1" stroke-linecap="round"/>`;
     }).join("");
 
   const cueFor = (look, heading, on) => {
@@ -408,7 +459,7 @@
     }
     if (hint) {
       hint.textContent = live.on
-        ? "Hold the phone flat, screen up. The white tick is the top of the phone."
+        ? "Hold the phone flat, screen up. The white mark is the top of the phone."
         : "North is up. On a phone, point it to turn this into a live compass.";
     }
   };
@@ -472,22 +523,51 @@
       const onPhone = window.matchMedia("(pointer: coarse)").matches || /iPhone|iPad|iPod/.test(navigator.userAgent);
       const showArm = canOrient && (needsTap || onPhone);
       host.innerHTML = `<div class="see-compass-frame">
+        <div class="see-compass-well">
         <svg class="see-compass" viewBox="0 0 100 100" role="img" aria-label="Look direction">
-          <circle cx="50" cy="50" r="47" fill="#121417" stroke="rgba(255,255,255,.14)"/>
-          <polygon points="50,3 53.4,10 46.6,10" fill="#fff"/>
+          <defs>
+            <radialGradient id="see-cmp-face" cx="46%" cy="36%" r="64%">
+              <stop offset="0%" stop-color="#2a3846"/>
+              <stop offset="42%" stop-color="#151b22"/>
+              <stop offset="100%" stop-color="#07090c"/>
+            </radialGradient>
+            <radialGradient id="see-cmp-vignette" cx="50%" cy="50%" r="50%">
+              <stop offset="62%" stop-color="rgba(0,0,0,0)"/>
+              <stop offset="100%" stop-color="rgba(0,0,0,.5)"/>
+            </radialGradient>
+            <linearGradient id="see-cmp-needle" x1="50" y1="10" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff5d6c"/>
+              <stop offset="100%" stop-color="#c0102a"/>
+            </linearGradient>
+            <linearGradient id="see-cmp-glass" x1="50" y1="4" x2="50" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,.16)"/>
+              <stop offset="55%" stop-color="rgba(255,255,255,0)"/>
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="49.4" fill="#14171c"/>
+          <circle cx="50" cy="50" r="46.5" fill="url(#see-cmp-face)"/>
+          <circle cx="50" cy="50" r="46.5" fill="none" stroke="rgba(232,195,106,.28)" stroke-width=".7"/>
+          <circle cx="50" cy="50" r="44.15" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="2.2"/>
+          ${compassCaseTicks()}
+          <polygon points="50,1.2 54.4,9.5 45.6,9.5" fill="#f7f8fa"/>
+          <rect x="49.2" y="8.6" width="1.6" height="8" rx=".7" fill="#fff"/>
           <g data-see-rose>
-            ${compassTicks()}
-            <text x="50" y="22" text-anchor="middle" fill="#e8eef2" font-size="8" font-family="IBM Plex Mono,ui-monospace,monospace">N</text>
-            <text x="50" y="86" text-anchor="middle" fill="#9aa3ad" font-size="8" font-family="IBM Plex Mono,ui-monospace,monospace">S</text>
-            <text x="16" y="53" text-anchor="middle" fill="#9aa3ad" font-size="8" font-family="IBM Plex Mono,ui-monospace,monospace">W</text>
-            <text x="84" y="53" text-anchor="middle" fill="#9aa3ad" font-size="8" font-family="IBM Plex Mono,ui-monospace,monospace">E</text>
+            ${compassRose()}
             <g data-see-needle>
-              <polygon points="50,14 55.5,52 50,46 44.5,52" fill="#e31937"/>
-              <polygon points="50,86 55.5,52 50,58 44.5,52" fill="rgba(255,255,255,.3)"/>
+              <polygon points="50,7.6 57.8,51.4 50,44.8 42.2,51.4" fill="#e31937" opacity=".28"/>
+              <polygon points="50,8.8 55.8,51.3 50,45.2 44.2,51.3" fill="url(#see-cmp-needle)"/>
+              <polygon points="50,8.8 52.35,49.6 50,45.2 47.65,49.6" fill="#ff9aa3" opacity=".55"/>
+              <polygon points="50,90.6 56.8,51.3 50,57.6 43.2,51.3" fill="#5f6872"/>
+              <polygon points="50,90.6 52.55,52.2 50,57.6 47.45,52.2" fill="#d5dbe2" opacity=".4"/>
             </g>
           </g>
-          <circle cx="50" cy="50" r="3.2" fill="#fff"/>
+          <circle cx="50" cy="50" r="46.5" fill="url(#see-cmp-glass)"/>
+          <circle cx="50" cy="50" r="46.5" fill="url(#see-cmp-vignette)"/>
+          <circle cx="50" cy="50" r="6.15" fill="#101318" stroke="#e8c36a" stroke-width=".55"/>
+          <circle cx="50" cy="50" r="4.15" fill="#2c333c"/>
+          <circle cx="50" cy="50" r="2.15" fill="#f4f6f8"/>
         </svg>
+        </div>
         <p class="see-compass-cue" data-see-cue></p>
         <p class="visually-hidden" data-see-cue-live aria-live="polite"></p>
         <button type="button" class="see-compass-arm" data-see-arm ${showArm ? "" : "hidden"}>Click here to use live compass</button>
