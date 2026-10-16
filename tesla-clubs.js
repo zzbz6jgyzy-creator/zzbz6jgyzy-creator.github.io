@@ -43,7 +43,40 @@
     return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
   };
   const placeLine = (c) => [c.region, c.country].filter(Boolean).join(", ");
-  const isNational = (c) => !c.region || /^(national|nationwide|online|worldwide)/i.test(c.region);
+  const IDLE = "Search a town or city to see what’s near you. The full directory stays hidden.";
+  const isLabeledNational = (c) => /^(national|nationwide|online|worldwide)/i.test(c.region || "");
+  const isNational = (c) => isLabeledNational(c);
+  const hasSearch = () => !!(state.place && state.lat != null) || !!norm(state.q);
+  const inferAdmin = (place, country, admin1) => {
+    if (admin1) return admin1;
+    const parts = String(place || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (parts.length === 2) return countryOf(parts[1]) === countryOf(country) ? "" : parts[1];
+    if (parts.length >= 3) return countryOf(parts[parts.length - 1]) === countryOf(country) ? parts[parts.length - 2] : parts[1];
+    return "";
+  };
+  const regionMatch = (clubRegion, admin1, place) => {
+    if (!clubRegion) return false;
+    const r = norm(clubRegion);
+    if (admin1 && r === norm(admin1)) return true;
+    const hay = norm(place || "");
+    if (!hay) return false;
+    if (hay.includes(r)) return true;
+    const city = hay.split(" ")[0];
+    return !!(city && city.length >= 3 && (r === city || r.includes(` ${city} `) || r.endsWith(` ${city}`) || r.startsWith(`${city} `)));
+  };
+  const nameTouchesPlace = (c, admin1, place) => {
+    const hay = norm([c.name, c.parent].join(" "));
+    const city = norm(String(place || "").split(",")[0]);
+    if (city && city.length >= 4 && hay.includes(city)) return true;
+    if (!c.region && admin1) {
+      const a = norm(admin1);
+      if (a && a.length >= 4 && hay.includes(a)) return true;
+    }
+    return false;
+  };
 
   const countries = [...new Set(DATA.clubs.map((c) => c.country).filter((c) => c && c !== "Global" && c !== "International"))].sort(
     (a, b) => a.localeCompare(b)
@@ -83,16 +116,29 @@
     const q = norm(state.q);
     if (!matchesText(c, q)) return null;
     if (state.chip && c.country !== state.chip && c.country !== "Global" && c.country !== "International") return null;
-    let score = 0;
+    const located = state.lat != null;
     const hereCountry = countryOf(state.country);
     const sameCountry = hereCountry && countryOf(c.country) === hereCountry;
-    const sameRegion = state.admin1 && c.region && (norm(c.region).includes(norm(state.admin1)) || norm(state.admin1).includes(norm(c.region)));
+    const sameRegion = regionMatch(c.region, state.admin1, state.place);
     let dist = null;
-    if (state.lat != null && c.lat != null) dist = haversine(state.lat, state.lon, c.lat, c.lon);
+    if (located && c.lat != null) dist = haversine(state.lat, state.lon, c.lat, c.lon);
+    const worldwide = c.country === "Global" || c.country === "International";
+    if (located) {
+      if (worldwide) return null;
+      if (!sameCountry) return null;
+      const namedHere = nameTouchesPlace(c, state.admin1, state.place);
+      const nearby = dist != null && dist < (c.section === "club" ? 350 : 140);
+      if (c.section === "chapter" && !sameRegion && !namedHere && !nearby) return null;
+      if (c.section === "club") {
+        const countryClub = isLabeledNational(c) || (!c.region && c.country !== "United States");
+        if (!sameRegion && !countryClub && !namedHere && !nearby) return null;
+      }
+      if (c.section === "community" && !sameRegion && !namedHere && !isLabeledNational(c) && !( !c.region && sameCountry) && !nearby) return null;
+    }
+    let score = 0;
     if (sameCountry) score += 1200;
     if (sameRegion) score += 600;
     if (dist != null) score += Math.max(0, 400 - dist / 8);
-    if (c.country === "Global" || c.country === "International") score += state.lat != null ? 40 : 80;
     return { ...c, score, dist, sameCountry, sameRegion };
   };
 
@@ -134,12 +180,17 @@
     </article>`;
   };
 
-  const fillSection = (id, secId, rows, empty) => {
+  const fillSection = (id, secId, rows) => {
     const host = $(id);
     const wrap = $(secId);
     if (!host || !wrap) return;
+    if (!rows.length) {
+      wrap.hidden = true;
+      host.innerHTML = "";
+      return;
+    }
     wrap.hidden = false;
-    host.innerHTML = rows.length ? rows.map(card).join("") : `<p class="tc-empty">${esc(empty)}</p>`;
+    host.innerHTML = rows.map(card).join("");
   };
 
   const fillCountries = () => {
@@ -151,28 +202,63 @@
   };
 
   const render = () => {
+    const idle = $("tc-idle");
+    const now = $("tc-now");
+    if (!hasSearch()) {
+      if (idle) {
+        idle.hidden = false;
+        idle.textContent = IDLE;
+      }
+      if (now) {
+        now.hidden = true;
+        now.innerHTML = "";
+      }
+      ["tc-sec-club", "tc-sec-chapter", "tc-sec-community"].forEach((id) => {
+        const el = $(id);
+        if (el) el.hidden = true;
+      });
+      ["tc-clubs", "tc-chapters", "tc-communities"].forEach((id) => {
+        const el = $(id);
+        if (el) el.innerHTML = "";
+      });
+      const live = $("tc-live");
+      if (live) live.textContent = `Search a town to see clubs · ${DATA.updated}`;
+      const hint = $("tc-hint");
+      if (hint && !hint.dataset.hold) hint.textContent = "Pick a city. We only then show clubs for that place.";
+      const sel = $("tc-cc");
+      if (sel && sel.value !== state.chip) sel.value = state.chip;
+      writeQuery();
+      return;
+    }
+    if (idle) idle.hidden = true;
     const clubs = ranked("club");
     const chapters = ranked("chapter");
     const communities = ranked("community");
     const n = clubs.length + chapters.length + communities.length;
-    $("tc-now").innerHTML = `
-      <div class="tc-tile"><span>Owners clubs</span><b>${clubs.length}</b><small>${state.place || state.chip ? "Matching this search." : `${DATA.counts.club} in the active list.`}</small></div>
-      <div class="tc-tile"><span>Chapters</span><b>${chapters.length}</b><small>${state.place || state.chip ? "Regional groups nearby or matching." : `${DATA.counts.chapter} regional chapters.`}</small></div>
-      <div class="tc-tile"><span>Communities</span><b>${communities.length}</b><small>${state.place || state.chip ? "Independent groups in view." : `${DATA.counts.community} independent communities.`}</small></div>
-      <div class="tc-tile"><span>Held out</span><b>${DATA.counts.excluded}</b><small>Historical, duplicate or unresolved — not listed.</small></div>`;
-    const none = state.place || state.chip || state.q ? "Nothing matches this search." : "No listings in this section.";
-    fillSection("tc-clubs", "tc-sec-club", clubs, none);
-    fillSection("tc-chapters", "tc-sec-chapter", chapters, none);
-    fillSection("tc-communities", "tc-sec-community", communities, none);
+    if (now) {
+      now.hidden = false;
+      now.innerHTML = `
+      <div class="tc-tile"><span>Owners clubs</span><b>${clubs.length}</b><small>For this search.</small></div>
+      <div class="tc-tile"><span>Chapters</span><b>${chapters.length}</b><small>Regional groups here.</small></div>
+      <div class="tc-tile"><span>Communities</span><b>${communities.length}</b><small>Independent groups here.</small></div>
+      <div class="tc-tile"><span>Matches</span><b>${n}</b><small>${state.place ? esc(state.place) : state.chip || "Name filter"}.</small></div>`;
+    }
+    fillSection("tc-clubs", "tc-sec-club", clubs);
+    fillSection("tc-chapters", "tc-sec-chapter", chapters);
+    fillSection("tc-communities", "tc-sec-community", communities);
+    if (!n && idle) {
+      idle.hidden = false;
+      idle.textContent = "Nothing in the directory for that place.";
+    }
     const live = $("tc-live");
-    if (live) live.textContent = `Active directory · ${DATA.updated} · ${n} listed`;
+    if (live) live.textContent = `${n} near ${state.place || state.chip || state.q} · ${DATA.updated}`;
     const hint = $("tc-hint");
     if (hint && !hint.dataset.hold) {
       hint.textContent = state.place
-        ? `Showing clubs near ${state.place}.`
+        ? `Only clubs for ${state.place}.`
         : state.chip
-          ? `Showing ${state.chip}.`
-          : "Search a city to rank clubs by how close they are.";
+          ? `Only clubs in ${state.chip}.`
+          : "Only clubs matching that name.";
     }
     const sel = $("tc-cc");
     if (sel && sel.value !== state.chip) sel.value = state.chip;
@@ -184,7 +270,7 @@
     state.lat = lat;
     state.lon = lon;
     state.country = countryOf(country);
-    state.admin1 = admin1 || "";
+    state.admin1 = inferAdmin(place, state.country, admin1);
     $("tc-q").value = place;
     $("tc-suggest").hidden = true;
     $("tc-hint").dataset.hold = "";

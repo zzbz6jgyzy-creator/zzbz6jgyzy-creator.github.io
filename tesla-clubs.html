@@ -40,7 +40,7 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=20261016094523" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
-    <link rel="stylesheet" href="/tesla-clubs.css?v=202610162237" />
+    <link rel="stylesheet" href="/tesla-clubs.css?v=202610162355" />
     <link rel="stylesheet" href="/nav-pill.css?v=202610161834" />
   </head>
   <body>
@@ -136,9 +136,9 @@
           <p class="eyebrow">Tesla · Owners</p>
           <h1>Owners clubs</h1>
           <p class="tc-lede">
-            Search a city or use this phone. We list active owners clubs, regional chapters
-            and independent communities. Historical, duplicate and unresolved records stay
-            in the research archive — not here.
+            Search your town or city, or use this phone. We only show clubs for that place —
+            owners clubs, regional chapters and independent communities. Historical, duplicate
+            and unresolved records stay in the research archive.
           </p>
           <p class="tc-live" id="tc-live">Directory snapshot</p>
         </header>
@@ -157,23 +157,24 @@
           <p class="tc-hint" id="tc-hint"></p>
         </section>
 
-        <section class="tc-now" id="tc-now" aria-label="Directory snapshot"></section>
+        <p class="tc-idle" id="tc-idle">Search a town or city to see what’s near you. The full directory stays hidden.</p>
+        <section class="tc-now" id="tc-now" aria-label="Matches" hidden></section>
 
-        <section class="tc-card" id="tc-sec-club" aria-labelledby="tc-club-h">
+        <section class="tc-card" id="tc-sec-club" aria-labelledby="tc-club-h" hidden>
           <h2 id="tc-club-h">Owners clubs</h2>
-          <p class="tc-sub">National and recognised owners clubs with a public presence.</p>
+          <p class="tc-sub">National and recognised owners clubs for this place.</p>
           <div class="tc-grid" id="tc-clubs"></div>
         </section>
 
-        <section class="tc-card" id="tc-sec-chapter" aria-labelledby="tc-ch-h">
+        <section class="tc-card" id="tc-sec-chapter" aria-labelledby="tc-ch-h" hidden>
           <h2 id="tc-ch-h">Regional chapters</h2>
-          <p class="tc-sub">Local chapters and regional groups under a parent club.</p>
+          <p class="tc-sub">Local chapters and regional groups for this place.</p>
           <div class="tc-grid" id="tc-chapters"></div>
         </section>
 
-        <section class="tc-card" id="tc-sec-community" aria-labelledby="tc-co-h">
+        <section class="tc-card" id="tc-sec-community" aria-labelledby="tc-co-h" hidden>
           <h2 id="tc-co-h">Independent communities</h2>
-          <p class="tc-sub">Forums, Telegram, Meetup and other owner-run groups. Not Tesla official.</p>
+          <p class="tc-sub">Owner-run groups for this place. Not Tesla official.</p>
           <div class="tc-grid" id="tc-communities"></div>
         </section>
 
@@ -202,8 +203,8 @@
     </div>
     <script src="/script.js?v=202610161013"></script>
     <script src="/design-21st.js?v=20261016094430"></script>
-    <script src="/tesla-clubs-data.js?v=202610162237"></script>
-    <script src="/tesla-clubs.js?v=202610162237"></script>
+    <script src="/tesla-clubs-data.js?v=202610162355"></script>
+    <script src="/tesla-clubs.js?v=202610162355"></script>
     <script src="/nav-pill.js?v=202610161834"></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
   </body>
