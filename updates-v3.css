@@ -15,6 +15,7 @@
 .sw-card-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;margin-bottom:14px}
 .sw-card-head h2{font-size:19px;margin:0}
 .sw-card-head p{margin:0;color:var(--mute);font-size:13px}
+.sw-card-head a{color:#dfe3e8}
 .sw-seg{display:inline-flex;flex-wrap:wrap;gap:6px;margin:0 10px 10px 0}
 .sw-seg button,.sw-replay button,.sw-globe-zoom button{background:#1b1e22;color:#dfe3e8;border:1px solid var(--line);border-radius:99px;padding:7px 12px;font:500 13px Inter,sans-serif;cursor:pointer}
 .sw-seg button[aria-pressed=true]{background:#fff;color:#0b0c0e;border-color:#fff}

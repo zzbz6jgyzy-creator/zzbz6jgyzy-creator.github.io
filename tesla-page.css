@@ -40,6 +40,7 @@
 .tz-band{display:flex;justify-content:space-between;align-items:center;gap:1.4rem;flex-wrap:wrap;padding:clamp(1.3rem,3vw,2.2rem);border:1px solid rgba(227,25,55,.45);border-radius:14px;background:linear-gradient(120deg,rgba(227,25,55,.16),rgba(20,21,26,.95) 55%);color:inherit;text-decoration:none}
 .tz-band p{margin:.5rem 0 0;max-width:52ch}
 .tz-band-quiet{border-color:var(--line);background:var(--card)}
+.tz-band + .tz-cards{margin-top:1.4rem}
 .tz-band-quiet a{color:var(--ink)}
 .tz-small{padding-bottom:3rem}
 @media (hover:hover){
