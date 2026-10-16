@@ -1,5 +1,5 @@
 window.TESLA_UPDATES = {
-  updated: "2026-10-14",
+  updated: "2026-10-16",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {

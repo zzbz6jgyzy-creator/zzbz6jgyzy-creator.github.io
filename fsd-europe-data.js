@@ -1,5 +1,5 @@
 window.FSD_EUROPE = {
-  updated: "2026-10-12",
+  updated: "2026-10-16",
   note:
     "Compiled from public reports of national recognition of the Dutch RDW provisional type approval (EU 2018/858 Art. 39). Not affiliated with Tesla. Not official.",
   thresholds: {
