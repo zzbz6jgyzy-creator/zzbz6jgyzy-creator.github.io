@@ -12,7 +12,7 @@
       const v = a.querySelector("video"), i = a.querySelector("img");
       return {
         href: a.getAttribute("href"),
-        img: (v && v.getAttribute("poster")) || (i && i.getAttribute("src")) || "",
+        img: (v && (v.getAttribute("poster") || v.getAttribute("data-poster"))) || (i && i.getAttribute("src")) || "",
         tag: (a.querySelector(".tag") || {}).textContent || "Dispatch",
         h: (a.querySelector("h3") || {}).textContent || "",
         p: (a.querySelector(".story-copy p") || {}).textContent || "",

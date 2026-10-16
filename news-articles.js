@@ -81,7 +81,7 @@
       const tag = tg ? tg.textContent.trim() : "Dispatch", title = ((a.querySelector("h3") || {}).textContent || "").trim();
       const s = (tag + " " + title).toLowerCase();
       return { url: a.getAttribute("href"), title, tag, summary: ((a.querySelector(".story-copy p") || {}).textContent || "").trim(),
-        image: (v && v.getAttribute("poster")) || (i && i.getAttribute("src")) || "",
+        image: (v && (v.getAttribute("poster") || v.getAttribute("data-poster"))) || (i && i.getAttribute("src")) || "",
         topic: /\bgrok\b|\bxai\b/.test(s) ? "xai" : tg && tg.className.includes("spacex") ? "spacex" : "tesla" };
     }).filter((c) => c.title);
   }).catch(() => []);
