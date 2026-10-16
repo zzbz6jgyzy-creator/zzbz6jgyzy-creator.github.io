@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16T03:18:51+01:00",
+  "updated": "2026-10-16T14:15:00+01:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
     {
@@ -76,6 +76,24 @@
       "featured": false,
       "replayUrl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
       "articleUrl": "/dispatch/roadster-reveal-2026.html"
+    },
+    {
+      "id": "spacex-q3-2026-earnings",
+      "title": "SpaceX Q3 2026 earnings call",
+      "page": "spacex",
+      "start": "2026-10-20T15:30:00-05:00",
+      "end": "2026-10-20T16:30:00-05:00",
+      "status": "scheduled",
+      "provider": "link",
+      "embedId": "",
+      "postUrl": "https://x.com/SpaceX/status/2111072697690317011",
+      "fallbackUrl": "https://events.q4inc.com/attendee/273501782/guest",
+      "fallbackLabel": "Join the audio webcast (SpaceX IR)",
+      "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
+      "image": "/assets/live/falcon9.jpg",
+      "imageCredit": "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain",
+      "description": "SpaceX posts its Q3 2026 financial and operational results after the US market close, then management hosts a live audio-only webcast at 3:30pm Central Time. Webcast and replay on ir.spacex.com; SpaceX says it will also be livestreamed on X @SpaceX.",
+      "descSource": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx"
     },
     {
       "id": "tesla-q3-2026-earnings",

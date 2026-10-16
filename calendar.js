@@ -25,6 +25,17 @@
       precision: "datetime",
     },
     {
+      id: "spacex-q3-2026-earnings",
+      title: "SpaceX Q3 earnings",
+      start: "2026-10-20T20:30:00Z",
+      group: "spacex",
+      where: "Audio-only webcast · 3:30 p.m. CT / 4:30 p.m. ET · also on X @SpaceX",
+      note: "Q3 2026 financial and operational results after the close, per SpaceX IR. Webcast and replay on ir.spacex.com.",
+      href: "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
+      status: "confirmed",
+      precision: "datetime",
+    },
+    {
       id: "tesla-q3-2026-earnings",
       title: "Tesla Q3 earnings",
       start: "2026-10-21T21:30:00Z",
@@ -402,7 +413,8 @@
     const countdown = document.querySelector("[data-calendar-countdown]");
     const earnings = document.querySelector("[data-tsla-earnings]");
     const nextTesla = document.querySelector("[data-tsla-next]");
-    if (!list && !preview && !earnings && !nextTesla && !countdown) return;
+    const spxEarnings = document.querySelectorAll("[data-spx-earnings]");
+    if (!list && !preview && !earnings && !nextTesla && !countdown && !spxEarnings.length) return;
 
     try {
       const r = await fetch("/data/events.json", { cache: "no-cache" });
@@ -413,6 +425,7 @@
           "ussf-481": "ll-ussf-481",
           "crs35-docking": "crs35-docking",
           "tesla-q3-2026-earnings": "tesla-q3-2026-earnings",
+          "spacex-q3-2026-earnings": "spacex-q3-2026-earnings",
         };
         Object.keys(j.events).forEach((eid) => {
           if (eid === "tesla-roadster-demo") return;
@@ -473,6 +486,14 @@
           nextTesla.textContent = `${tesla.title} · ${formatWhen(tesla, now)}`;
         }
       }
+      if (spxEarnings.length) {
+        const spx = upcoming.find((e) => e.id === "spacex-q3-2026-earnings");
+        spxEarnings.forEach((n) => {
+          if (!spx) { n.textContent = "Webcast ended · replay on ir.spacex.com"; return; }
+          const tz = tzShort(new Date(parseStart(spx.start)));
+          n.textContent = `${formatWhen(spx, now)}${tz ? ` ${tz}` : ""} your time · ${formatUntil(spx, now)}`;
+        });
+      }
       if (earnings) {
         const call = upcoming.find((e) => e.id === "tesla-q3-2026-earnings") || upcoming.find((e) => e.group === "tesla");
         if (call) {
@@ -504,6 +525,7 @@
       paint();
     });
 
+    if (!list && !preview && !countdown) return; // hooks-only pages (e.g. SpaceX earnings line) skip Launch Library
     try {
       const live = await fetchLaunches();
       events = mergeEvents(live);
