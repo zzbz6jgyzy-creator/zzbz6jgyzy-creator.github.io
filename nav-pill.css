@@ -70,3 +70,9 @@ body.pn-app .pn-wrap{top:14px}
 .pn a.pn-sub:hover{background:rgba(227,25,55,.16)}
 .pn-sheet a.pn-sub-sheet{margin-top:20px;text-align:center;border:1px solid rgba(227,25,55,.6);font-weight:600}
 .pn-sheet a.pn-sub-sheet+.pn-cta{margin-top:10px}
+.pn-sheet h3 .pn-grp-t{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;width:100%;cursor:pointer;padding:10px 0;font:inherit;letter-spacing:inherit;color:inherit}
+.pn-sheet h3{margin-top:6px;margin-bottom:0}
+.pn-sheet h3 .pn-grp-t:focus-visible{outline:2px solid #e31937;outline-offset:4px;border-radius:4px}
+.pn-grp-c{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .25s;margin-right:4px}
+.pn-grp-t[aria-expanded="true"] .pn-grp-c{transform:rotate(-135deg)}
+.pn-grp{display:flex;flex-direction:column}.pn-grp[hidden]{display:none}

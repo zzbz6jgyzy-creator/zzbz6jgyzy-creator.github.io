@@ -34,7 +34,7 @@ jobs:
       - name: Articles index + related stories
         run: python3 scripts/build-articles.py
       - name: Rebuild static homepage fallbacks
-        run: node scripts/build-home.js
+        run: node scripts/build-home.js && node scripts/build-noscript.mjs
       - name: Responsive AVIF/WebP images (build-images.mjs)
         run: |
           npm i --no-save --no-package-lock sharp@0.33 >/dev/null 2>&1 || true
