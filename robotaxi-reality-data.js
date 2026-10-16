@@ -172,8 +172,8 @@ window.ROBOTAXI_REALITY = {
       title: "Bay Area rides with a safety driver",
       text: "App-traced area of about 1,096 mi². This is not unsupervised robotaxi service — a safety driver is in the car.",
       date: "2026-04-20",
-      src: "https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/",
-      srcLabel: "Electrek / CPUC"
+      src: "https://gizmodo.com/california-regulator-says-teslas-robotaxis-are-more-like-a-limo-in-the-eyes-of-the-law-2000738512",
+      srcLabel: "Gizmodo / CPUC"
     },
     {
       id: "bay-area-expanded",
@@ -202,8 +202,8 @@ window.ROBOTAXI_REALITY = {
       title: "CPUC: not an autonomous AV service",
       text: "California’s regulator confirmed Tesla is not operating an autonomous vehicle service in the state.",
       date: "2026-03-25",
-      src: "https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/",
-      srcLabel: "Electrek / CPUC"
+      src: "https://gizmodo.com/california-regulator-says-teslas-robotaxis-are-more-like-a-limo-in-the-eyes-of-the-law-2000738512",
+      srcLabel: "Gizmodo / CPUC"
     },
     {
       id: "tx-sb2807",

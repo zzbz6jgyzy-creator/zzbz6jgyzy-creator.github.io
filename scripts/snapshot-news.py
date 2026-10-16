@@ -314,6 +314,8 @@ def collect(now: datetime) -> list[dict]:
             continue
         seen.add(key)
         items.append(row)
+    # Alex's rule: never cite Electrek.
+    items = [r for r in items if "electrek" not in (r.get("url", "") + " " + r.get("source", "")).lower()]
     items.sort(key=lambda row: row.get("published") or "", reverse=True)
     if errors and not items:
         raise RuntimeError("; ".join(errors))

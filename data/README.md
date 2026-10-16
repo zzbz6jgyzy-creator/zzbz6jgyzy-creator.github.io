@@ -41,7 +41,7 @@ One row per EU member state (all 27):
   `live` = public reports say the customer rollout has started (set `rolloutLive: true` too).
 - `regulator`, `position`, `nextStep`: **leave `""` if unconfirmed**; the page shows "Unconfirmed" / "No statement found". Never guess.
   The what-if "stated supporters" scenario matches `position` containing support / positive / fast-track / announced recognition.
-- `sources`: primary first (regulator, ministry, Reuters, Electrek…). Labels ending in ` †` are secondary trackers
+- `sources`: primary first (regulator, ministry, Reuters, Verge… never Electrek). Labels ending in ` †` are secondary trackers
   (notanfsdtracker.com, tad-tracker.eu), used to fill gaps.
 
 `changelog` — newest first, one entry per dated move, each with a source:
