@@ -231,3 +231,21 @@
 .rd-embed-title{margin:0 0 10px;font-size:1.15rem;font-weight:800;letter-spacing:-.01em;text-transform:uppercase}
 #promise,#interior{scroll-margin-top:140px}
 .rd-btn{background:#cc1a20}
+
+/* Inline rotating gallery (all widths) */
+.rd-car{position:relative;max-width:1100px;margin:0 auto}
+.rd-car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:14px;outline:none;overscroll-behavior-x:contain}
+.rd-car-track::-webkit-scrollbar{display:none}
+.rd-car .rd-slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;margin:0;opacity:1;transform:none}
+.rd-car .wp-thumb{display:block;width:100%;padding:0;border:0;background:#000;cursor:zoom-in;aspect-ratio:16/9;height:auto;border-radius:14px;overflow:hidden}
+.rd-car .wp-thumb picture,.rd-car .wp-thumb img{display:block;width:100%;height:100%;object-fit:cover;max-height:none}
+.rd-car figcaption{padding:.6rem .2rem 0;min-height:2.6em;color:#bbb;font-size:.9rem}
+.rd-car figcaption a{color:#ff4d4d}
+.rd-car-btn{position:absolute;top:0;margin-top:calc(min(100vw,1100px)*.28);transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(10,10,10,.65);color:#fff;font-size:28px;line-height:1;cursor:pointer;z-index:2;backdrop-filter:blur(6px)}
+.rd-car-prev{left:10px}.rd-car-next{right:10px}
+.rd-car-btn:hover,.rd-car-btn:focus-visible{background:#e31937;border-color:#e31937}
+.rd-car-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.4rem;font-family:"IBM Plex Mono",monospace;font-size:.85rem;color:#ddd}
+.rd-car-play{background:none;border:1px solid rgba(255,255,255,.25);color:#ddd;border-radius:999px;padding:.3rem .8rem;font:inherit;cursor:pointer}
+.rd-car-play[aria-pressed="true"]{border-color:#e31937;color:#fff}
+@media (max-width:760px){.rd-car-btn{width:38px;height:38px;font-size:24px;margin-top:calc(94vw*.28)}}
+@media (prefers-reduced-motion:reduce){.rd-car-track{scroll-behavior:auto}.rd-car-play{display:none}}
