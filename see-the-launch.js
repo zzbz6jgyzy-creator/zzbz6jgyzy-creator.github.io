@@ -18,6 +18,16 @@
   let wxHere = null;
   let wxPad = {};
   let suggestTimer = 0;
+  const live = {
+    look: null,
+    heading: null,
+    on: false,
+    attached: false,
+    gotAbsolute: false,
+    raf: 0,
+    pending: null,
+    bucket: "",
+  };
 
   const toRad = (d) => (d * Math.PI) / 180;
   const toDeg = (r) => (r * 180) / Math.PI;
@@ -307,21 +317,186 @@
     return rows[0]?.l.id || "";
   };
 
-  const compassSvg = (deg) => {
-    const rot = deg;
-    return `<svg class="see-compass" viewBox="0 0 100 100" role="img" aria-label="Look ${esc(compass(deg))}">
-      <circle cx="50" cy="50" r="46" fill="#121417" stroke="rgba(255,255,255,.12)"/>
-      <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(255,255,255,.08)"/>
-      <text x="50" y="14" text-anchor="middle" fill="#9aa3ad" font-size="7" font-family="IBM Plex Mono,monospace">N</text>
-      <text x="50" y="96" text-anchor="middle" fill="#9aa3ad" font-size="7" font-family="IBM Plex Mono,monospace">S</text>
-      <text x="8" y="53" fill="#9aa3ad" font-size="7" font-family="IBM Plex Mono,monospace">W</text>
-      <text x="88" y="53" fill="#9aa3ad" font-size="7" font-family="IBM Plex Mono,monospace">E</text>
-      <g transform="rotate(${rot.toFixed(1)} 50 50)">
-        <polygon points="50,16 55,52 50,46 45,52" fill="#e31937"/>
-        <polygon points="50,84 55,52 50,58 45,52" fill="rgba(255,255,255,.28)"/>
-      </g>
-      <circle cx="50" cy="50" r="3" fill="#fff"/>
-    </svg>`;
+  const wrap360 = (d) => ((d % 360) + 360) % 360;
+  const signedDelta = (from, to) => ((to - from + 540) % 360) - 180;
+  const screenAngle = () => {
+    if (screen.orientation && Number.isFinite(screen.orientation.angle)) return screen.orientation.angle;
+    if (typeof window.orientation === "number") return window.orientation;
+    return 0;
+  };
+  const headingFromEvent = (e) => {
+    if (!e) return null;
+    let h = null;
+    if (typeof e.webkitCompassHeading === "number" && Number.isFinite(e.webkitCompassHeading)) {
+      h = e.webkitCompassHeading;
+    } else if (typeof e.alpha === "number" && Number.isFinite(e.alpha)) {
+      h = (360 - e.alpha) % 360;
+    }
+    if (h == null) return null;
+    return wrap360(h + screenAngle());
+  };
+
+  const compassTicks = () =>
+    Array.from({ length: 72 }, (_, i) => {
+      const a = i * 5;
+      const major = i % 18 === 0;
+      const mid = i % 6 === 0;
+      const r1 = 44.5;
+      const r2 = major ? 37.5 : mid ? 40 : 42.2;
+      const rad = (a * Math.PI) / 180;
+      const x1 = 50 + r1 * Math.sin(rad);
+      const y1 = 50 - r1 * Math.cos(rad);
+      const x2 = 50 + r2 * Math.sin(rad);
+      const y2 = 50 - r2 * Math.cos(rad);
+      return `<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="${
+        major ? "#c4b8a4" : "rgba(255,255,255,.22)"
+      }" stroke-width="${major ? 1.3 : 0.7}"/>`;
+    }).join("");
+
+  const cueFor = (look, heading, on) => {
+    if (look == null) return { text: "Pick a place to get a bearing.", bucket: "none", onTarget: false };
+    if (!on || heading == null) {
+      return {
+        text: `Look ${compass(look)} · ${Math.round(look)}°`,
+        bucket: "static",
+        onTarget: false,
+      };
+    }
+    const d = signedDelta(heading, look);
+    const ad = Math.abs(d);
+    if (ad <= 12) return { text: "You're pointing at it", bucket: "on", onTarget: true };
+    if (d > 0) return { text: `Turn right ${Math.round(ad)}°`, bucket: "right", onTarget: false };
+    return { text: `Turn left ${Math.round(ad)}°`, bucket: "left", onTarget: false };
+  };
+
+  const applyCompass = () => {
+    const rose = document.querySelector("[data-see-rose]");
+    const needle = document.querySelector("[data-see-needle]");
+    const cue = document.querySelector("[data-see-cue]");
+    const cueLive = document.querySelector("[data-see-cue-live]");
+    const hint = document.querySelector("[data-see-hint]");
+    const frame = document.querySelector(".see-compass-frame");
+    const svg = document.querySelector(".see-compass");
+    const lookB = document.querySelector("[data-see-look-b]");
+    const lookS = document.querySelector("[data-see-look-s]");
+    const look = live.look;
+    if (look == null) return;
+    const heading = live.on && live.heading != null ? live.heading : 0;
+    if (rose) rose.setAttribute("transform", `rotate(${(-heading).toFixed(1)} 50 50)`);
+    if (needle) needle.setAttribute("transform", `rotate(${look.toFixed(1)} 50 50)`);
+    const cueInfo = cueFor(look, live.heading, live.on);
+    if (cue) {
+      cue.textContent = cueInfo.text;
+      cue.classList.toggle("is-on", cueInfo.onTarget);
+    }
+    if (cueLive && cueInfo.bucket !== live.bucket) {
+      cueLive.textContent = cueInfo.text;
+      live.bucket = cueInfo.bucket;
+    }
+    if (frame) frame.classList.toggle("is-on", cueInfo.onTarget);
+    if (svg) {
+      svg.setAttribute(
+        "aria-label",
+        live.on && live.heading != null
+          ? `${cueInfo.text}. Launch is ${compass(look)}.`
+          : `Look ${compass(look)}`
+      );
+    }
+    if (live.on && live.heading != null) {
+      if (lookB) lookB.textContent = cueInfo.onTarget ? "This way" : cueInfo.text;
+      if (lookS) lookS.textContent = `Phone ${Math.round(live.heading)}° · launch ${compassShort(look)} ${Math.round(look)}°`;
+    }
+    if (hint) {
+      hint.textContent = live.on
+        ? "Hold the phone flat, screen up. The white tick is the top of the phone."
+        : "North is up. On a phone, point it to turn this into a live compass.";
+    }
+  };
+
+  const onOrient = (e) => {
+    if (e.type === "deviceorientationabsolute") live.gotAbsolute = true;
+    if (e.type === "deviceorientation" && live.gotAbsolute && typeof e.webkitCompassHeading !== "number") return;
+    live.pending = e;
+    if (live.raf) return;
+    live.raf = requestAnimationFrame(() => {
+      live.raf = 0;
+      const h = headingFromEvent(live.pending);
+      if (h == null) return;
+      live.heading = h;
+      live.on = true;
+      const arm = document.querySelector("[data-see-arm]");
+      if (arm) arm.hidden = true;
+      applyCompass();
+    });
+  };
+
+  const attachCompass = () => {
+    window.addEventListener("deviceorientationabsolute", onOrient, true);
+    window.addEventListener("deviceorientation", onOrient, true);
+    screen.orientation?.addEventListener?.("change", applyCompass);
+    live.attached = true;
+  };
+
+  const startCompass = async () => {
+    const arm = document.querySelector("[data-see-arm]");
+    const cue = document.querySelector("[data-see-cue]");
+    try {
+      if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
+        const res = await DeviceOrientationEvent.requestPermission();
+        if (res !== "granted") {
+          if (cue) cue.textContent = "Compass blocked. Keep using the static bearing.";
+          return;
+        }
+      }
+    } catch {
+      if (cue) cue.textContent = "This browser will not share a heading.";
+      return;
+    }
+    attachCompass();
+    if (arm) arm.textContent = "Waiting for the compass…";
+    window.setTimeout(() => {
+      if (live.on) return;
+      if (cue) cue.textContent = "No compass on this device. The needle still shows the bearing.";
+      if (arm) arm.hidden = true;
+    }, 2500);
+  };
+
+  const ensureCompass = () => {
+    const host = $("see-compass-col");
+    if (!host) return;
+    if (!host.querySelector(".see-compass")) {
+      const canOrient = typeof DeviceOrientationEvent !== "undefined";
+      const needsTap = typeof DeviceOrientationEvent.requestPermission === "function";
+      const onPhone = window.matchMedia("(pointer: coarse)").matches || /iPhone|iPad|iPod/.test(navigator.userAgent);
+      const showArm = canOrient && (needsTap || onPhone);
+      host.innerHTML = `<div class="see-compass-frame">
+        <svg class="see-compass" viewBox="0 0 100 100" role="img" aria-label="Look direction">
+          <circle cx="50" cy="50" r="47" fill="#121417" stroke="rgba(255,255,255,.14)"/>
+          <polygon points="50,3 53.4,10 46.6,10" fill="#fff"/>
+          <g data-see-rose>
+            ${compassTicks()}
+            <text x="50" y="22" text-anchor="middle" fill="#e8eef2" font-size="8" font-family="IBM Plex Mono,ui-monospace,monospace">N</text>
+            <text x="50" y="86" text-anchor="middle" fill="#9aa3ad" font-size="8" font-family="IBM Plex Mono,ui-monospace,monospace">S</text>
+            <text x="16" y="53" text-anchor="middle" fill="#9aa3ad" font-size="8" font-family="IBM Plex Mono,ui-monospace,monospace">W</text>
+            <text x="84" y="53" text-anchor="middle" fill="#9aa3ad" font-size="8" font-family="IBM Plex Mono,ui-monospace,monospace">E</text>
+            <g data-see-needle>
+              <polygon points="50,14 55.5,52 50,46 44.5,52" fill="#e31937"/>
+              <polygon points="50,86 55.5,52 50,58 44.5,52" fill="rgba(255,255,255,.3)"/>
+            </g>
+          </g>
+          <circle cx="50" cy="50" r="3.2" fill="#fff"/>
+        </svg>
+        <p class="see-compass-cue" data-see-cue></p>
+        <p class="visually-hidden" data-see-cue-live aria-live="polite"></p>
+        <p class="see-compass-hint" data-see-hint></p>
+        <button type="button" class="see-compass-arm" data-see-arm ${showArm ? "" : "hidden"}>Point your phone</button>
+      </div>`;
+      host.querySelector("[data-see-arm]")?.addEventListener("click", () => {
+        startCompass();
+      });
+      if (canOrient) attachCompass();
+    }
+    applyCompass();
   };
 
   const renderEmpty = () => {
@@ -360,8 +535,10 @@
     const launch = launches.find((l) => l.id === state.launchId);
     if (!launch) {
       $("see-now").innerHTML = "";
-      $("see-brief").innerHTML = "";
+      const copy = $("see-brief-copy");
+      if (copy) copy.innerHTML = "";
       $("see-alerts").innerHTML = "";
+      live.look = null;
       return;
     }
     if (!state.launchId) state.launchId = launch.id;
@@ -385,7 +562,7 @@
       <div class="see-tile see-tile-${s?.key || "maybe"}"><span>From here</span><b>${s ? verdictLabel[s.key] : "—"}</b><small>${
         s ? `${s.night ? "Night" : "Day"} launch · ${Math.round(s.dist)} km from the pad.` : "Pick a place first."
       }</small></div>
-      <div class="see-tile"><span>Look</span><b>${esc(lookTxt)}</b><small>${
+      <div class="see-tile"><span>Look</span><b data-see-look-b>${esc(lookTxt)}</b><small data-see-look-s>${
         s ? `Toward the pad at ${Math.round(s.padBrg)}°, then along the climb.` : "Direction appears once you pick a place."
       }</small></div>
       <div class="see-tile"><span>Your sky</span><b>${esc(s && s.cloud != null ? `${Math.round(s.cloud)}%` : "—")}</b><small>${esc(
@@ -393,10 +570,12 @@
       )}</small></div>
       <div class="see-tile"><span>This flight</span><b>${esc(pad.short)}</b><small>${esc(formatWhen(launch))} · typical azimuth ${s ? Math.round(s.az) : pad.az}°</small></div>`;
 
-    $("see-brief").innerHTML = s
-      ? `${compassSvg(s.look)}
-        <div>
-          <h2>${esc(launch.title)}</h2>
+    live.look = s ? s.look : null;
+    live.bucket = "";
+    const copy = $("see-brief-copy");
+    if (copy) {
+      copy.innerHTML = s
+        ? `<h2>${esc(launch.title)}</h2>
           <p class="see-sub">${esc(pad.name)} · ${esc(formatWhen(launch))}</p>
           <p>${
             s.key === "likely"
@@ -407,9 +586,11 @@
                   ? `A faint chance at best. ${alignTxt}`
                   : `Treat this as a webcast night. ${alignTxt}`
           }</p>
-          <p>Look ${esc(compass(s.look))} (${Math.round(s.look)}°). Peak plume sits around ${Math.max(0, s.elev80).toFixed(0)}° above the horizon if the vehicle reaches 80 km on this heading.</p>
-        </div>`
-      : "";
+          <p>Look ${esc(compass(s.look))} (${Math.round(s.look)}°). Peak plume sits around ${Math.max(0, s.elev80).toFixed(0)}° above the horizon if the vehicle reaches 80 km on this heading.</p>`
+        : "";
+    }
+    if (s) ensureCompass();
+    else applyCompass();
 
     const alerts = [];
     if (launch.status === "live") alerts.push(`<li><b>This one is already flying</b><p>If you can still see a plume, look ${s ? compass(s.look) : "toward the pad"} now.</p></li>`);
