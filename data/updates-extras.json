@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-16T02:52:59Z",
+ "updated": "2026-10-16T03:53:43Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,18 +491,26 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-16T02:52:59Z",
+  "fetched": "2026-10-16T03:53:43Z",
   "items": [
    {
-    "t": "2026-10-16T02:48:27Z",
+    "t": "2026-10-16T03:51:45Z",
     "to": "2026.38.5.1",
-    "from": "2026.27.11",
+    "from": "2026.33.5",
     "model": "Model Y Performance (2024)",
     "hw": "4.0",
     "country": "United States"
    },
    {
-    "t": "2026-10-16T02:46:54Z",
+    "t": "2026-10-16T03:51:31Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model 3 RWD LR (2025)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-16T03:51:09Z",
     "to": "2026.38.5.1",
     "from": "2026.27.11",
     "model": "Model Y AWD LR (2026)",
@@ -510,23 +518,47 @@
     "country": "United States"
    },
    {
-    "t": "2026-10-16T02:45:34Z",
+    "t": "2026-10-16T03:50:06Z",
     "to": "2026.38.5.1",
-    "from": "2026.32.3",
-    "model": "Model 3 SR (2023)",
+    "from": "2026.33.5",
+    "model": "Model 3 AWD LR (2026)",
     "hw": "4.0",
     "country": "United States"
    },
    {
-    "t": "2026-10-16T02:44:50Z",
+    "t": "2026-10-16T03:48:44Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model Y Performance (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-16T03:48:44Z",
     "to": "2026.38.5.1",
     "from": "2026.27.11",
-    "model": "Model Y Performance (2024)",
+    "model": "Model Y AWD LR (2024)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-16T03:47:56Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model Y RWD LR (2026)",
     "hw": "4.0",
     "country": "United States"
    },
    {
-    "t": "2026-10-16T02:42:21Z",
+    "t": "2026-10-16T03:47:45Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-16T03:47:33Z",
     "to": "2026.38.5.1",
     "from": "2026.27.11",
     "model": "Model Y AWD LR (2024)",
@@ -534,44 +566,12 @@
     "country": "United States"
    },
    {
-    "t": "2026-10-16T02:41:47Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model 3 AWD LR (2025)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-16T02:39:40Z",
-    "to": "2026.38.5.1",
-    "from": "2026.33.5",
-    "model": "Model S AWD (2022)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-16T02:39:27Z",
+    "t": "2026-10-16T03:46:01Z",
     "to": "2026.38.5.1",
     "from": "2026.27.11",
     "model": "Model Y AWD LR (2026)",
     "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-16T02:38:52Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-16T02:35:17Z",
-    "to": "2026.38.5.1",
-    "from": "2026.33.5",
-    "model": "Model X Plaid (2022)",
-    "hw": "3.0",
-    "country": "United States"
+    "country": "Canada"
    }
   ]
  }
