@@ -870,22 +870,14 @@
    "status": "Missed",
    "evidence": [
     {
-     "text": "Tesla is set to unveil the redesigned Roadster on 15 Oct 2026; reservations are still $50,000.",
+     "text": "Tesla revealed the next-generation Roadster on 15 Oct 2026 at a SpaceX test site in McGregor, Texas, almost nine years after the 2017 unveil. Musk said it will enter production in 2028; no price was announced. Reservations take $50,000 deposits.",
      "source": {
-      "outlet": "Reuters via Investing.com",
-      "title": "Tesla set to unveil next generation Roadster sports EV after years of delay",
-      "url": "https://www.investing.com/news/stock-market-news/tesla-set-to-unveil-next-generation-roadster-sports-ev-after-years-of-delay-4951021",
+      "outlet": "CNBC",
+      "title": "Tesla reveals next-generation Roadster after almost a decade of delays",
+      "url": "https://www.cnbc.com/2026/10/15/tesla-roadster-reveal-what-to-know-about-the-delayed-ev.html",
       "date": "2026-10-15"
      },
      "date": "2026-10-15"
-    },
-    {
-     "text": "Tesla revealed the next-generation Roadster on 15 Oct 2026 at a SpaceX test site in McGregor, Texas. Musk said production will start in 2028; no price was given.",
-     "source": {
-      "outlet": "CNBC",
-      "url": "https://www.cnbc.com/2026/10/15/tesla-roadster-reveal-what-to-know-about-the-delayed-ev.html",
-      "date": "2026-10-15"
-     }
     }
    ],
    "revisions": [
@@ -911,17 +903,17 @@
     },
     {
      "date": "2026-10-15",
-     "text": "Unveil event scheduled at a SpaceX site in McGregor, Texas.",
+     "text": "At the reveal, Musk said production will start in 2028.",
      "source": {
-      "outlet": "Reuters via Investing.com",
-      "title": "Tesla set to unveil next generation Roadster sports EV after years of delay",
-      "url": "https://www.investing.com/news/stock-market-news/tesla-set-to-unveil-next-generation-roadster-sports-ev-after-years-of-delay-4951021",
+      "outlet": "CNBC",
+      "title": "Tesla reveals next-generation Roadster after almost a decade of delays",
+      "url": "https://www.cnbc.com/2026/10/15/tesla-roadster-reveal-what-to-know-about-the-delayed-ev.html",
       "date": "2026-10-15"
      }
     }
    ],
-   "last_verified": "2026-10-15",
-   "note": "Reported speech from The Verge, not a direct quote. Status will be re-checked after the 15 Oct 2026 unveil. Pending re-check after the 15 Oct 2026 unveil event."
+   "last_verified": "2026-10-16",
+   "note": "Reported speech from The Verge, not a direct quote. Re-checked after the 15 Oct 2026 reveal: production is now targeted for 2028."
   },
   {
    "id": "roadster-ship-2025",
@@ -943,27 +935,19 @@
    "status": "Missed",
    "evidence": [
     {
-     "text": "The unveil is scheduled for 15 Oct 2026, nearly two years after the target.",
+     "text": "The design was finally revealed on 15 Oct 2026, almost two years after the end-2024 target, and Musk said production will start in 2028, so no cars shipped in 2025.",
      "source": {
-      "outlet": "Reuters via Investing.com",
-      "title": "Tesla set to unveil next generation Roadster sports EV after years of delay",
-      "url": "https://www.investing.com/news/stock-market-news/tesla-set-to-unveil-next-generation-roadster-sports-ev-after-years-of-delay-4951021",
+      "outlet": "CNBC",
+      "title": "Tesla reveals next-generation Roadster after almost a decade of delays",
+      "url": "https://www.cnbc.com/2026/10/15/tesla-roadster-reveal-what-to-know-about-the-delayed-ev.html",
       "date": "2026-10-15"
      },
      "date": "2026-10-15"
-    },
-    {
-     "text": "Tesla revealed the next-generation Roadster on 15 Oct 2026 at a SpaceX test site in McGregor, Texas. Musk said production will start in 2028; no price was given.",
-     "source": {
-      "outlet": "CNBC",
-      "url": "https://www.cnbc.com/2026/10/15/tesla-roadster-reveal-what-to-know-about-the-delayed-ev.html",
-      "date": "2026-10-15"
-     }
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-15",
-   "note": "Car and Driver's reported summary of Musk's post on X. Pending re-check after the 15 Oct 2026 unveil event."
+   "last_verified": "2026-10-16",
+   "note": "Car and Driver's reported summary of Musk's post on X. Re-checked after the 15 Oct 2026 reveal."
   },
   {
    "id": "semi-production-2019",
