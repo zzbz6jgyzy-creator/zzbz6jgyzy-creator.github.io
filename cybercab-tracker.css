@@ -455,4 +455,4 @@
     animation: none;
   }
 }
-.cc-badge,.cc-city.is-live .cc-badge,.cc-fine a{color:#ff4d5e}
+.cc-city.is-live .cc-badge{color:#ff4d5e!important}.cc-fine a{color:#ff4d5e}
