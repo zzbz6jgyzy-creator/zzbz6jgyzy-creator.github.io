@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-16",
   "stats": {
     "fsdCountries": {
       "value": 16,
@@ -7,8 +7,8 @@
       "source": "Tesla FSD Supervised listings plus the Supercharged Daily FSD Europe tracker. Includes Puerto Rico."
     },
     "starlink": {
-      "value": 11156,
-      "source": "Jonathan McDowell Starlink statistics, 13 Oct 2026. 11,156 in orbit, 11,142 working."
+      "value": 11154,
+      "source": "Jonathan McDowell Starlink statistics, 15 Oct 2026 (19:00 UTC). 11,154 in orbit, 11,140 working."
     },
     "directToPhone": {
       "value": 15000,

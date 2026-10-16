@@ -26,6 +26,7 @@
     g.facts = g.facts.map((f) => fill(f, g));
   });
   data.notes = data.notes.map((n) => fill(n));
+  document.querySelectorAll("[data-sl-total]").forEach((el) => { if (data.totals.inOrbit) el.textContent = Number(data.totals.inOrbit).toLocaleString("en-US"); });
   data.watch.forEach((w) => (w.text = fill(w.text)));
 
   // One "Updated" line in the visitor's own time zone, e.g. "Updated 13 Oct, 10:30 BST".
