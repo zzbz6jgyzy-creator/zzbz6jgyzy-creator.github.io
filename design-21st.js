@@ -4,12 +4,12 @@
   function col(d){var h='';for(var i=0;i<10;i++)h+='<span>'+i+'</span>';return '<span class="nf-d"><span class="nf-c" style="transform:translateY(-'+d+'em)">'+h+'</span></span>';}
   // Set a number on element el, rolling changed digits.
   window.sdNum=function(el,v){v=String(v);
-    if(reduce||!/^\d+$/.test(v)){el.textContent=v;delete el.dataset.v;return;}
+    if(reduce||!/^\d+$/.test(v)){el.textContent=v;delete el.dataset.v;el.removeAttribute('role');el.removeAttribute('aria-label');return;}
     if(el.dataset.v===v)return;
     var cs=el.querySelectorAll('.nf-c');
     if(!el.dataset.v||cs.length!==v.length){el.innerHTML='<span class="nf" aria-hidden="true">'+v.split('').map(col).join('')+'</span>';}
     else v.split('').forEach(function(d,j){cs[j].style.transform='translateY(-'+d+'em)';});
-    el.dataset.v=v;el.setAttribute('aria-label',v);};
+    el.dataset.v=v;el.setAttribute('role','img');el.setAttribute('aria-label',v);};
   // Live card: reuse tiles in place.
   window.sdRoll=function(c,html){
     var t=document.createElement('div');t.innerHTML=html;

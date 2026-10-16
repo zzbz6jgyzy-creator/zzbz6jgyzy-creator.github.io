@@ -137,3 +137,4 @@
 }
 @media (prefers-reduced-motion: reduce) { .f2-bar i, .f2-map .m-node { transition: none; } .f2-map .is-new { animation: none; } }
 .f2-srcs a { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.f2-col-recognised h3,.f2-col-live h3,.f2-whatif summary{color:#ff5a6a}

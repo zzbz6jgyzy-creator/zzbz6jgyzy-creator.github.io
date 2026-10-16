@@ -167,7 +167,7 @@
       });
       if (!steps.length) return "";
       const lastF = steps[steps.length - 1].f;
-      return `<div class="sw-lane"><div class="sw-lane-name">${L.name}<small>${L.note}</small></div><div class="sw-steps">${steps.map((s) =>
+      return `<div class="sw-lane"><div class="sw-lane-name">${L.name}<small>${L.note}</small></div><div class="sw-steps" tabindex="0" role="region" aria-label="${L.name} releases">${steps.map((s) =>
         `<div class="sw-step${s.f === lastF ? " now" : ""}"><b>v${esc(s.f)}</b><span>${esc(s.ids.join(", "))}</span><span>since ${fmt(s.v.date)}</span></div>`).join("")}</div></div>`;
     }).join("");
     requestAnimationFrame(() => document.querySelectorAll(".sw-steps").forEach((el) => (el.scrollLeft = el.scrollWidth)));

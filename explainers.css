@@ -67,3 +67,4 @@
 @media (prefers-reduced-motion: reduce) {
   .vx-board * { transition: none !important; animation: none !important; }
 }
+.vx-kicker{color:#ff4d5e}
