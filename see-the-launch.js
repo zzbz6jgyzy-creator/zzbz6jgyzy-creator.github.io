@@ -440,20 +440,22 @@
   const startCompass = async () => {
     const arm = document.querySelector("[data-see-arm]");
     const cue = document.querySelector("[data-see-cue]");
+    if (arm) arm.textContent = "Waiting for the compass…";
     try {
       if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
         const res = await DeviceOrientationEvent.requestPermission();
         if (res !== "granted") {
           if (cue) cue.textContent = "Compass blocked. Keep using the static bearing.";
+          if (arm) arm.textContent = "Click here to use live compass";
           return;
         }
       }
     } catch {
       if (cue) cue.textContent = "This browser will not share a heading.";
+      if (arm) arm.textContent = "Click here to use live compass";
       return;
     }
     attachCompass();
-    if (arm) arm.textContent = "Waiting for the compass…";
     window.setTimeout(() => {
       if (live.on) return;
       if (cue) cue.textContent = "No compass on this device. The needle still shows the bearing.";
@@ -488,8 +490,8 @@
         </svg>
         <p class="see-compass-cue" data-see-cue></p>
         <p class="visually-hidden" data-see-cue-live aria-live="polite"></p>
+        <button type="button" class="see-compass-arm" data-see-arm ${showArm ? "" : "hidden"}>Click here to use live compass</button>
         <p class="see-compass-hint" data-see-hint></p>
-        <button type="button" class="see-compass-arm" data-see-arm ${showArm ? "" : "hidden"}>Point your phone</button>
       </div>`;
       host.querySelector("[data-see-arm]")?.addEventListener("click", () => {
         startCompass();
