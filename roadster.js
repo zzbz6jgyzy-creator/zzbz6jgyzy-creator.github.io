@@ -36,21 +36,34 @@
     vio.observe(v);
   }
 
-  // Count-up numbers.
+  // Count-up numbers. The source text in the HTML is the truth: we cache it once
+  // and always end on it (reduced motion, interruption, background tab, bfcache).
+  var counters = [].slice.call(d.querySelectorAll("[data-count]"));
+  counters.forEach(function (el) { el.setAttribute("data-final", el.textContent); });
+  function finish(el) { el._cuDone = true; el.textContent = el.getAttribute("data-final"); }
+  function finishAll() { counters.forEach(finish); }
   function countUp(el) {
+    if (el._cuStarted) return;
+    el._cuStarted = true;
+    var final = el.getAttribute("data-final");
     var to = parseFloat(el.getAttribute("data-count")), from = parseFloat(el.getAttribute("data-from") || "0");
     var dec = +el.getAttribute("data-dec") || 0, pre = el.getAttribute("data-pre") || "", suf = el.getAttribute("data-suf") || "";
-    var final = el.textContent;
-    if (reduce) return;
+    if (reduce || !isFinite(to) || !isFinite(from)) return finish(el);
     var t0 = null, dur = 1400;
+    setTimeout(function () { finish(el); }, dur + 300);
     function step(ts) {
+      if (el._cuDone) return;
       if (!t0) t0 = ts;
       var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-      el.textContent = pre + (from + (to - from) * e).toFixed(dec) + suf;
-      if (k < 1) requestAnimationFrame(step); else el.textContent = final;
+      if (k >= 1) return finish(el);
+      el.textContent = pre + String((from + (to - from) * e).toFixed(dec)) + suf;
+      requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
+  d.addEventListener("visibilitychange", function () { if (d.hidden) finishAll(); });
+  addEventListener("pagehide", finishAll);
+  addEventListener("pageshow", function (ev) { if (ev.persisted) finishAll(); });
 
   // Scroll reveal + count-ups.
   var rv = d.querySelectorAll(".rv");
