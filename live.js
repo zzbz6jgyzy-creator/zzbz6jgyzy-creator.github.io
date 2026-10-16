@@ -95,7 +95,8 @@
     var feat = ev.filter(function (e) { return e.featured && !live; })[0]; // featured event (e.g. Roadster) leads until it ends
     var next = feat || future.filter(function (e) { return !e.timeTbc && !e.net; })[0] || future[0]; // TBC/NET only if nothing timed
     var e = live || next;
-    var old = document.querySelector('section.lv'); if (old) old.remove();
+    var old = document.querySelector('section.lv:not([data-prebuilt])'); if (old) old.remove();
+    document.querySelectorAll('section.lv[data-prebuilt]').forEach(function (p) { p.remove(); });
     if (!e) return;
     var top = document.querySelector('[data-live-slot][data-live-only]'), rest = document.querySelector('[data-live-slot]:not([data-live-only])');
     var mount = live ? (top || rest) : rest; if (!mount && top) return; var slot = document.createElement('section'); slot.className = 'lv' + (mount ? ' lv-inhero' : '') + (live ? '' : ' lv-quiet'); slot.setAttribute('aria-label', live ? 'Live now' : 'Next livestream');

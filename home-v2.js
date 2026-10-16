@@ -95,7 +95,8 @@
   };
   evReady.then(() => { if (S && S.next) rows.push({ title: "Starship Flight " + S.next.flight, t: new Date(S.next.start).getTime(), day: S.next.precision === "day", href: "/starship.html" });
   fetch("/live-data.json", { cache: "no-cache" }).then((r) => r.json()).then((d) => {
-    (d.events || []).forEach((e) => { if (e.status !== "ended" && e.start) rows.push({ title: e.title, t: new Date(e.start).getTime(), href: "/calendar.html" }); });
+    const norm = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    (d.events || []).forEach((e) => { if (e.status !== "ended" && e.start && !rows.some((r) => norm(r.title) === norm(e.title))) rows.push({ title: e.title, t: new Date(e.start).getTime(), href: e.url || e.href || "/calendar.html" }); });
   }).catch(() => {}).finally(() => { draw(); setInterval(draw, 30000); });
   });
 })();

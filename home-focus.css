@@ -31,3 +31,4 @@
 .hv-event:empty{display:none}
 .hv-event{max-width:620px;margin:.4rem auto 1.2rem}
 .pv-more-row{grid-template-columns:1fr}
+.hv-date:empty::before{content:"\00a0"}
