@@ -61,8 +61,8 @@
       "title": "Tesla Roadster reveal",
       "page": "tesla",
       "start": "2026-10-15T19:55:00-05:00",
-      "end": "2026-10-15T21:55:00-05:00",
-      "status": "scheduled",
+      "end": "2026-10-15T20:26:00-05:00",
+      "status": "ended",
       "provider": "x",
       "embedId": "",
       "postUrl": "https://x.com/Tesla/status/2110788059008819215",
@@ -71,9 +71,11 @@
       "source": "https://x.com/Tesla/status/2110788059008819215",
       "image": "/assets/live/roadster.jpg",
       "imageCredit": "2020 Roadster prototype \u00b7 Photo: Smnt, Wikimedia Commons, CC BY-SA 4.0",
-      "description": "Tesla's next-generation Roadster, first shown in 2017, gets its live demo near Waco, Texas. Tesla moved it from 1 October because the event can only be held outdoors and severe weather was forecast. Tesla posted the official X broadcast on 15 Oct for streaming live at 7:55pm CST (Central / CDT local). This switches to LIVE as soon as the stream goes live.",
+      "description": "Tesla revealed the next-generation Roadster at the SpaceX test site in McGregor, Texas. The stream ran from 7:55pm to about 8:26pm Central on 15 Oct (01:55\u201302:26 Irish time on 16 Oct). Full replay and write-up: superchargeddaily.com/dispatch/roadster-reveal-2026.html",
       "descSource": "https://x.com/Tesla/status/2110788059008819215",
-      "featured": true
+      "featured": false,
+      "replayUrl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
+      "articleUrl": "/dispatch/roadster-reveal-2026.html"
     },
     {
       "id": "tesla-q3-2026-earnings",

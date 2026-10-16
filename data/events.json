@@ -32,11 +32,12 @@
     "tesla-roadster-demo": {
       "title": "Tesla Roadster reveal",
       "start": "2026-10-15T19:55:00-05:00",
-      "end": "2026-10-15T21:55:00-05:00",
+      "end": "2026-10-15T20:26:00-05:00",
+      "status": "ended",
       "major": true,
-      "href": "/tesla.html",
-      "source": "https://x.com/Tesla/status/2110788059008819215",
-      "summary": "Tesla's Roadster demo livestream on X (official broadcast posted 15 Oct)."
+      "href": "/dispatch/roadster-reveal-2026.html",
+      "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
+      "summary": "Past: Tesla revealed the next-gen Roadster on 15 Oct (16 Oct Irish time). Replay and write-up on the Dispatch."
     },
     "tesla-q3-2026-earnings": {
       "title": "Tesla Q3 2026 earnings call",
