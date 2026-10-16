@@ -6,13 +6,13 @@
     <title>Cybercab Tracker — Supercharged Daily</title>
     <meta
       name="description"
-      content="Tesla Cybercab fleet count, cities, milestones and dates, with sources. Updated 11 Oct 2026."
+      content="Tesla Cybercab and Robotaxi Reality Map: verified operational areas, expansions, approvals and sightings, each with a source. Updated 15 Oct 2026."
     />
     <link rel="canonical" href="https://superchargeddaily.com/cybercab.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="Cybercab Tracker — Supercharged Daily" />
-    <meta property="og:description" content="Fleet count, cities, milestones and dates for Tesla’s Cybercab, with sources." />
+    <meta property="og:description" content="Verified operational areas, expansions, approvals and sightings for Tesla Cybercab and Robotaxi, each with a source." />
     <meta property="og:url" content="https://superchargeddaily.com/cybercab.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/cybercab/cybercab-santana-row.jpg" />
     <meta property="og:image:alt" content="Tesla Cybercab on display in a Tesla showroom with its butterfly door raised" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Cybercab Tracker — Supercharged Daily" />
-    <meta name="twitter:description" content="Fleet count, cities, milestones and dates for Tesla’s Cybercab, with sources." />
+    <meta name="twitter:description" content="Verified operational areas, expansions, approvals and sightings for Tesla Cybercab and Robotaxi, each with a source." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/cybercab/cybercab-santana-row.jpg" />
     <meta name="twitter:image:alt" content="Tesla Cybercab on display in a Tesla showroom with its butterfly door raised" />
 
@@ -39,9 +39,9 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=202610152121" />
-    <link rel="stylesheet" href="/cybercab-tracker.css?v=202610150830" />
+    <link rel="stylesheet" href="/cybercab-tracker.css?v=202610161200" />
     <link rel="stylesheet" href="/cybercab-count.css?v=202610150830" />
-    <link rel="stylesheet" href="/cybercab-cities.css?v=202610150830" />
+    <link rel="stylesheet" href="/cybercab-cities.css?v=202610161200" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610142355" />
   </head>
   <body>
@@ -76,7 +76,7 @@
               </div></div>
             <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-trk">Trackers<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
               <div class="pn-panel" id="pn-trk">
-                <a href="/cybercab.html">Cybercab tracker<small>Production &amp; sightings</small></a>
+                <a href="/cybercab.html">Cybercab tracker<small>Reality map &amp; fleet</small></a>
                 <a href="/fsd-europe.html">FSD Europe<small>Approval tracker</small></a>
                 <a href="/promise-tracker.html">Promise tracker<span class="pn-badge">New</span><small>Musk deadlines vs reality</small></a>
                 <a href="/updates.html">Software updates<small>Latest Tesla releases</small></a>
@@ -120,7 +120,12 @@
           <div class="cc-hero-copy">
             <p class="eyebrow reveal">Deep dive · Tesla</p>
             <h1 class="reveal delay-1">Cybercab <span>Tracker</span></h1>
-            <p class="reveal delay-2">How many Cybercabs are out there, where you can ride one, and every milestone so far. Every figure links to its source.</p>
+            <p class="reveal delay-2">How many Cybercabs are out there, where you can ride one, and what’s verified versus only announced. Every claim on the Reality Map links to a source.</p>
+            <p class="cc-jumps reveal delay-2">
+              <a href="#reality-map">Reality Map</a>
+              <a href="#cc-count-h">Fleet</a>
+              <a href="#cc-ms-h">Milestones</a>
+            </p>
             <p class="meta reveal delay-2 live-stamp"><span>Updated <time data-cc-updated datetime="2026-10-12">12 Oct 2026</time></span></p>
           </div>
           <figure class="cc-hero-shot reveal delay-1">
@@ -146,12 +151,12 @@
           </div>
         </section>
 
-        <section class="section cc-rt-sec" aria-labelledby="rt-cities-h">
+        <section class="section cc-rt-sec" id="reality-map" aria-labelledby="rt-cities-h">
           <div class="section-head">
-            <h2 id="rt-cities-h" class="reveal">Robotaxi (Model Y) cities</h2>
-            <p class="reveal delay-1">Tesla&rsquo;s Model Y ride-hail service, city by city, with each gated service area. Cybercabs only carry riders in Austin so far.</p>
+            <h2 id="rt-cities-h" class="reveal">Robotaxi Reality Map</h2>
+            <p class="reveal delay-1">Verified operational areas, expansion announcements, regulatory calls, and vehicle sightings. Tesla&rsquo;s Model Y ride-hail geofences are traced from the Robotaxi app. Cybercabs only carry public riders in Austin so far. A shape on the map is not the same as unsupervised service — each claim carries a verification status and a source.</p>
           </div>
-          <div data-rt-cities><p class="cc-count-empty">Loading cities&hellip;</p></div>
+          <div data-rt-cities><p class="cc-count-empty">Loading the Reality Map&hellip;</p></div>
         </section>
 
         <section class="section" aria-labelledby="cc-fleet-h">
@@ -223,10 +228,11 @@
     </div>
     <script src="/script.js?v=202610151900"></script>
     <script src="/cybercab-data.js?v=202610151025"></script>
+    <script src="/robotaxi-reality-data.js?v=202610161200"></script>
     <script src="/cybercab-tracker.js?v=202610150830"></script>
     <script src="/cybercab-count.js?v=202610150830" defer></script>
-    <script src="/cybercab-cities.js?v=202610150830" defer></script>
-    <script src="/robotaxi-map.js?v=202610150830" defer></script>
+    <script src="/cybercab-cities.js?v=202610161200" defer></script>
+    <script src="/robotaxi-map.js?v=202610161200" defer></script>
     <script src="/countup.js" defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
