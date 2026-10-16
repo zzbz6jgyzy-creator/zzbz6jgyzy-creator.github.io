@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-vx-tab="spacex">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Visual Explainers — Supercharged Daily</title>
     <meta
       name="description"
-      content="Short animated explainers: why Starship uses hot staging, how a Super Heavy catch works, and what changed between FSD releases. Official footage only."
+      content="SpaceX and Tesla visual explainers, in two tabs. Why Starship uses hot staging, how a booster catch works, what changed between FSD stacks, and where Collision Evasion actually lives. Official footage only."
     />
     <link rel="canonical" href="https://superchargeddaily.com/explainers.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="Visual Explainers — Supercharged Daily" />
-    <meta property="og:description" content="Hot staging, booster catch, FSD stacks — short diagrams you can scrub, with official SpaceX and Tesla footage." />
+    <meta property="og:description" content="Two tabs: SpaceX (hot staging, catch) and Tesla (FSD stacks, Collision Evasion). Original diagrams, official footage." />
     <meta property="og:url" content="https://superchargeddaily.com/explainers.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/dispatch/starship-catch-poster.jpg" />
     <meta property="og:image:alt" content="Starship approaching the chopsticks" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Visual Explainers — Supercharged Daily" />
-    <meta name="twitter:description" content="Hot staging, booster catch, FSD stacks — short diagrams you can scrub, with official SpaceX and Tesla footage." />
+    <meta name="twitter:description" content="Two tabs: SpaceX (hot staging, catch) and Tesla (FSD stacks, Collision Evasion). Original diagrams, official footage." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/dispatch/starship-catch-poster.jpg" />
     <meta name="twitter:image:alt" content="Starship approaching the chopsticks" />
 
@@ -39,7 +39,14 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=20261016094523" />
-    <link rel="stylesheet" href="/explainers.css?v=20261016094430" />
+    <script>
+      (function () {
+        var id = (location.hash || "").replace(/^#/, "");
+        var tesla = id === "tesla" || id === "fsd" || id === "evasion";
+        document.documentElement.setAttribute("data-vx-tab", tesla ? "tesla" : "spacex");
+      })();
+    </script>
+    <link rel="stylesheet" href="/explainers.css?v=202610162400" />
     <link rel="stylesheet" href="/nav-pill.css?v=202610142355" />
   </head>
   <body>
@@ -58,7 +65,7 @@
               <div class="pn-panel" id="pn-tesla">
                 <a href="/tesla.html">Tesla overview<small>News, models &amp; data</small></a>
                 <a href="/my-tesla.html">My Tesla<small>Your car, personalised</small></a>
-                <a href="/explainers.html">Explainers<small>Hot staging, catch, FSD</small></a>
+                <a href="/explainers.html#tesla">Explainers<small>FSD stacks</small></a>
                 <a href="/guides/tesla-buying-guide.html">Buying guide<small>Which Tesla to buy in 2026</small></a>
                 <a href="/model3-explorer.html">Model 3 Explorer<span class="pn-badge">3D</span><small>Take the car apart</small></a>
                 <a href="/cybertruck-explorer.html">Cybertruck Explorer<span class="pn-badge">3D</span><small>Take the truck apart</small></a>
@@ -81,7 +88,7 @@
               <div class="pn-panel" id="pn-spacex">
                 <a href="/spacex.html">SpaceX<small>News &amp; missions</small></a>
                 <a href="/starship.html">Starship flights<small>Flight lab</small></a>
-                <a href="/explainers.html">Explainers<small>Hot staging, catch, FSD</small></a>
+                <a href="/explainers.html#spacex">Explainers<small>Hot staging, catch</small></a>
                 <a href="/starlink.html">Starlink tracker<small>Satellites by version</small></a>
                 <a href="/calendar.html">Calendar<small>Launches &amp; livestreams</small></a>
                 <a href="/see-the-launch.html">Can I see it?<small>Visible from here?</small></a>
@@ -115,11 +122,11 @@
         <h3>News</h3>
         <a href="/news.html">News</a><a href="/dispatch.html">Dispatch</a>
         <h3>Tesla</h3>
-        <a href="/tesla.html">Tesla overview</a><a href="/my-tesla.html">My Tesla</a><a href="/explainers.html">Explainers</a><a href="/guides/tesla-buying-guide.html">Buying guide</a><a href="/model3-explorer.html">Model 3 Explorer</a><a href="/cybertruck-explorer.html">Cybertruck Explorer</a><a href="/tsla.html">Markets</a><a href="/reviews/index.html">Reviews</a>
+        <a href="/tesla.html">Tesla overview</a><a href="/my-tesla.html">My Tesla</a><a href="/explainers.html#tesla">Explainers</a><a href="/guides/tesla-buying-guide.html">Buying guide</a><a href="/model3-explorer.html">Model 3 Explorer</a><a href="/cybertruck-explorer.html">Cybertruck Explorer</a><a href="/tsla.html">Markets</a><a href="/reviews/index.html">Reviews</a>
         <h3>Roadster</h3>
         <a href="/roadster.html#top">Overview</a><a href="/roadster.html#gallery">Gallery</a><a href="/roadster.html#video">Videos</a><a href="/roadster.html#trims">Trims &amp; Specs</a><a href="/roadster.html#tech">How it works</a><a href="/roadster.html#money">Price &amp; Reservations</a><a href="/roadster.html#timeline">Timeline</a><a href="/roadster.html#promise">Promise vs Reality</a><a href="/dispatch/roadster-reveal-2026.html">Reveal article</a>
         <h3>SpaceX</h3>
-        <a href="/spacex.html">SpaceX</a><a href="/starship.html">Starship flights</a><a href="/explainers.html">Explainers</a><a href="/starlink.html">Starlink tracker</a><a href="/calendar.html">Calendar</a><a href="/see-the-launch.html">Can I see it?</a>
+        <a href="/spacex.html">SpaceX</a><a href="/starship.html">Starship flights</a><a href="/explainers.html#spacex">Explainers</a><a href="/starlink.html">Starlink tracker</a><a href="/calendar.html">Calendar</a><a href="/see-the-launch.html">Can I see it?</a>
         <h3>Trackers</h3>
         <a href="/cybercab.html">Cybercab tracker</a><a href="/fsd-europe.html">FSD Europe</a><a href="/promise-tracker.html">Promise tracker</a><a href="/updates.html">Software updates</a><a href="/starship.html">Starship flights</a><a href="/starlink.html">Starlink tracker</a>
         <h3>More</h3>
@@ -131,31 +138,59 @@
 
       <main id="main" class="vx">
         <header class="vx-head">
-          <p class="eyebrow">SpaceX · Tesla</p>
+          <p class="eyebrow" data-vx-kicker>SpaceX · Tesla</p>
           <h1>Visual Explainers</h1>
-          <p class="vx-lede">Short, scrubbable answers. Original diagrams, then official footage. These are also the posts — copy a link and send people here, not to a random clip.</p>
+          <p class="vx-lede" data-vx-lede>Two tabs. SpaceX: hot staging and the catch. Tesla: FSD stacks and Collision Evasion. Original diagrams, then official footage.</p>
           <p class="vx-live">Updated <time data-vx-updated datetime="2026-10-16">16 Oct 2026</time></p>
         </header>
 
-        <nav class="vx-jump" aria-label="Explainers">
-          <a href="#hot-staging">Hot staging</a>
-          <a href="#catch">Booster catch</a>
-          <a href="#fsd">FSD releases</a>
-        </nav>
-
-        <div class="vx-cards">
-          <a class="vx-card" href="#hot-staging"><span>SpaceX</span><strong>Why hot staging?</strong><p>Ship lights inside Super Heavy’s exhaust. No coast.</p></a>
-          <a class="vx-card" href="#catch"><span>SpaceX</span><strong>How a catch works</strong><p>Boostback, flip, pins on the chopsticks. Flight 5.</p></a>
-          <a class="vx-card" href="#fsd"><span>Tesla</span><strong>What changed in FSD</strong><p>HW4 vs HW3 Lite vs Europe 14.2. Sourced.</p></a>
+        <div class="vx-tabs" role="tablist" aria-label="Explainer desk">
+          <button type="button" role="tab" id="tab-spacex" data-vx-tab="spacex" aria-selected="true" tabindex="0" aria-controls="spacex">
+            SpaceX
+            <small>Hot staging · booster catch</small>
+          </button>
+          <button type="button" role="tab" id="tab-tesla" data-vx-tab="tesla" aria-selected="false" tabindex="-1" aria-controls="tesla">
+            Tesla
+            <small>FSD stacks · Collision Evasion</small>
+          </button>
         </div>
 
+        <nav class="vx-jump" data-vx-jump="spacex" aria-label="SpaceX explainers">
+          <a href="#hot-staging">Hot staging</a>
+          <a href="#catch">Booster catch</a>
+        </nav>
+        <nav class="vx-jump" data-vx-jump="tesla" aria-label="Tesla explainers">
+          <a href="#fsd">FSD stacks</a>
+          <a href="#evasion">Collision Evasion</a>
+        </nav>
+
+        <div class="vx-cards" data-vx-cards="spacex">
+          <a class="vx-card" href="#hot-staging"><span>SpaceX</span><strong>Why hot staging?</strong><p>Ship lights inside Super Heavy’s exhaust. No coast. Flight 14 at T+2:22.</p></a>
+          <a class="vx-card" href="#catch"><span>SpaceX</span><strong>How a catch works</strong><p>Boostback, flip, pins on the chopsticks. Flight 5, B12, ~T+6:56.</p></a>
+        </div>
+        <div class="vx-cards" data-vx-cards="tesla">
+          <a class="vx-card" href="#fsd"><span>Tesla</span><strong>What changed in FSD</strong><p>HW4 vs HW3 Lite vs Europe 14.2. Sourced from the trackers.</p></a>
+          <a class="vx-card" href="#evasion"><span>Tesla</span><strong>Collision Evasion</strong><p>HW4 in North America can re-engage Supervised FSD. HW3 and Europe cannot.</p></a>
+        </div>
+
+        <section class="vx-pane" id="spacex" data-vx-pane="spacex" role="tabpanel" aria-labelledby="tab-spacex">
         <article class="vx-piece" id="hot-staging" data-vx-piece="hot-staging">
           <p class="vx-kicker">SpaceX · Starship</p>
           <h2>Why does Starship use hot staging?</h2>
-          <p class="vx-intro">Ship lights while it is still on Super Heavy. The stack never coasts. That is the whole point — and why the ring looks like it is on fire. First tried on Flight 2 (18 Nov 2023). Flight 14 staged at T+2:22.</p>
+          <p class="vx-intro">Ship lights while it is still on Super Heavy. The stack never coasts. That is the whole point — and why the ring looks like it is on fire. Toggle cold staging to see the wait hot staging refuses to take.</p>
+          <div class="vx-facts">
+            <div><b>Flight 2</b><span>18 Nov 2023 · first hot-stage. First water deluge. Both vehicles were then lost.</span></div>
+            <div><b>Flight 14</b><span>MECO at T+2:20. Hot-stage at T+2:22. Official SpaceX timeline.</span></div>
+            <div><b>Block 3</b><span>First Block 3 hot-stage on Flight 12, ~T+2:30. Same family through Flight 14.</span></div>
+          </div>
           <div class="vx-stage">
             <div>
-              <div class="vx-board" data-vx-diagram></div>
+              <div class="vx-board">
+                <p class="vx-callout" data-vx-callout>Ascent</p>
+                <p class="vx-clock" data-vx-clock>F14 · before MECO</p>
+                <div data-vx-diagram></div>
+              </div>
+              <p class="vx-caption" data-vx-caption>Thirty-three Super Heavy Raptors are doing the work. Ship is still a passenger.</p>
               <div class="vx-controls">
                 <button type="button" data-vx-play aria-pressed="false">Play</button>
                 <input type="range" data-vx-range min="0" max="1000" value="0" aria-label="Scrub hot staging" />
@@ -164,17 +199,23 @@
               </div>
             </div>
             <ol class="vx-steps">
-              <li><button type="button" data-vx-step><b>Climb</b><span>Thirty-three Raptors lift the stack.</span></button></li>
-              <li><button type="button" data-vx-step><b>The ring dumps</b><span>Exhaust has to leave sideways when Ship lights.</span></button></li>
-              <li><button type="button" data-vx-step><b>Ship lights first</b><span>No coast. No ullage wait.</span></button></li>
-              <li><button type="button" data-vx-step><b>Separate under thrust</b><span>The clamp opens. Ship is already pushing.</span></button></li>
-              <li><button type="button" data-vx-step><b>Booster flips</b><span>Super Heavy turns around for boostback.</span></button></li>
+              <li><button type="button" data-vx-step><b>Climb</b><span>Until the ring says otherwise, Ship is mass. Super Heavy is the engine.</span></button></li>
+              <li><button type="button" data-vx-step><b>The ring dumps</b><span>Sideways vents. Super Heavy’s exhaust must leave the stack, not punch Ship.</span></button></li>
+              <li><button type="button" data-vx-step><b>Ship lights first</b><span>Clamp still closed. No coast, no ullage wait. Flight 14: T+2:22.</span></button></li>
+              <li><button type="button" data-vx-step><b>Separate under thrust</b><span>Ship is already pushing. Super Heavy falls away instead of dragging the stack.</span></button></li>
+              <li><button type="button" data-vx-step><b>Booster flips</b><span>Boostback starts. Staging already worked if Ship is clean.</span></button></li>
             </ol>
           </div>
           <div class="vx-why">
-            <article><h3>No coast</h3><p>Cold staging cuts the booster, waits, then lights the upper stage. Hot staging never drops the thrust. For a heavy stack, that wait is expensive.</p></article>
-            <article><h3>More payload</h3><p>Continuous acceleration means less gravity loss. SpaceX’s published reason is performance.</p></article>
-            <article><h3>The hardware cost</h3><p>The ring has to survive Ship lighting in the booster’s plume. Flight 2 proved the staging. Both vehicles still died afterwards.</p></article>
+            <article><h3>No coast</h3><p>Cold staging cuts the booster, waits, then lights the upper stage. Hot staging never drops the thrust. For a stack this heavy, that wait is expensive in gravity loss and attitude propellant.</p></article>
+            <article><h3>More payload</h3><p>Continuous acceleration is SpaceX’s published reason. We do not invent a kilogram number. The ring exists because the payload argument won.</p></article>
+            <article><h3>The hardware cost</h3><p>The ring has to survive Ship lighting in the booster’s plume. Flight 2 proved the staging (~T+2:49) and then lost both vehicles. Later flights kept the idea and made the ring live.</p></article>
+          </div>
+          <div class="vx-timeline">
+            <article><h3>F2 · 18 Nov 2023</h3><p>First hot-stage. First deluge. Staging paid off; both vehicles died afterwards.</p></article>
+            <article><h3>F3 · 14 Mar 2024</h3><p>First Starship to space. Staging held.</p></article>
+            <article><h3>F12</h3><p>First Block 3 hot-stage, ~T+2:30.</p></article>
+            <article><h3>F14</h3><p>Hot-stage on time at T+2:22 after MECO at T+2:20.</p></article>
           </div>
           <figure class="vx-media review-video">
             <p class="eyebrow">Official footage</p>
@@ -200,10 +241,20 @@
         <article class="vx-piece" id="catch" data-vx-piece="catch">
           <p class="vx-kicker">SpaceX · Super Heavy</p>
           <h2>How does a booster catch work?</h2>
-          <p class="vx-intro">The booster flies back to the tower it left. Chopsticks close on the pins. Flight 5 (13 Oct 2024, B12) proved it. Everything since is the same idea, faster. Flight 15 is the first serious attempt to catch a Ship.</p>
+          <p class="vx-intro">The booster flies back to the tower it left. Chopsticks close on the pins. Flight 5 proved it. Everything since is the same geometry, faster. A miss still prefers splash to a tower strike.</p>
+          <div class="vx-facts">
+            <div><b>Flight 5</b><span>13 Oct 2024 · B12 · first Super Heavy catch, ~T+6:56. No engine failures on the way up.</span></div>
+            <div><b>Divert</b><span>If the approach is off, SpaceX sends it to a controlled splashdown. Missing is allowed.</span></div>
+            <div><b>Flight 15</b><span>First serious attempt to catch a Ship. Same chopsticks, harder timing. NET 8 Nov.</span></div>
+          </div>
           <div class="vx-stage">
             <div>
-              <div class="vx-board" data-vx-diagram></div>
+              <div class="vx-board">
+                <p class="vx-callout" data-vx-callout>Liftoff</p>
+                <p class="vx-clock" data-vx-clock>T+0</p>
+                <div data-vx-diagram></div>
+              </div>
+              <p class="vx-caption" data-vx-caption>The chopsticks that will catch it later have just released the stack.</p>
               <div class="vx-controls">
                 <button type="button" data-vx-play aria-pressed="false">Play</button>
                 <input type="range" data-vx-range min="0" max="1000" value="0" aria-label="Scrub booster catch" />
@@ -211,17 +262,17 @@
               </div>
             </div>
             <ol class="vx-steps">
-              <li><button type="button" data-vx-step><b>Leave the tower</b><span>The chopsticks that catch it later just released the stack.</span></button></li>
-              <li><button type="button" data-vx-step><b>Boostback</b><span>Super Heavy burns toward home, not downrange.</span></button></li>
-              <li><button type="button" data-vx-step><b>Flip and landing burn</b><span>Grid fins aim. Engines kill the speed.</span></button></li>
-              <li><button type="button" data-vx-step><b>Pins on the arms</b><span>Upright, slow, at the right height.</span></button></li>
-              <li><button type="button" data-vx-step><b>Hang</b><span>Arms close. No legs. The tower is the pad.</span></button></li>
+              <li><button type="button" data-vx-step><b>Leave the tower</b><span>Mechazilla is the pad and the landing site.</span></button></li>
+              <li><button type="button" data-vx-step><b>Boostback</b><span>Reverse the downrange velocity so it falls at the tower, not the Gulf.</span></button></li>
+              <li><button type="button" data-vx-step><b>Flip and landing burn</b><span>Upright, slow, at the right height. The pins are small.</span></button></li>
+              <li><button type="button" data-vx-step><b>Pins on the arms</b><span>~T+6:56 on Flight 5. B12 hung. A miss still prefers splash.</span></button></li>
+              <li><button type="button" data-vx-step><b>Hang</b><span>No legs. The catch spends that mass once, in the tower.</span></button></li>
             </ol>
           </div>
           <div class="vx-why">
-            <article><h3>No legs</h3><p>A Super Heavy that lands on legs needs mass and a huge pad. A catch puts that mass in the tower you already built.</p></article>
-            <article><h3>Catch or splash</h3><p>If the approach is off, SpaceX diverts to a controlled splashdown. Missing is allowed. Hitting the tower wrong is not.</p></article>
-            <article><h3>Ship is next</h3><p>Flight 15 is the first serious attempt to catch a Ship. Same chopsticks idea, harder timing.</p></article>
+            <article><h3>No legs</h3><p>Landing legs are mass you fly, then a pad you pour. A catch spends that mass once, in Mechazilla, and every booster reuses it.</p></article>
+            <article><h3>Catch or splash</h3><p>Flight 11’s booster did a controlled splash, not a catch. Divert is a success mode when the approach is off. A bad tower hit is not.</p></article>
+            <article><h3>Ship is next</h3><p>Flight 15 is the first serious attempt to catch a Ship (S42 on the Pad 2 tower). SpaceX has not confirmed it as the plan of record.</p></article>
           </div>
           <figure class="vx-media">
             <p class="eyebrow">Official footage</p>
@@ -250,30 +301,82 @@
             <a href="/see-the-launch.html">Can I see it?</a>
           </div>
         </article>
+        </section>
 
+        <section class="vx-pane" id="tesla" data-vx-pane="tesla" role="tabpanel" aria-labelledby="tab-tesla">
         <article class="vx-piece" id="fsd" data-vx-piece="fsd">
           <p class="vx-kicker">Tesla · FSD</p>
           <h2>What changed between FSD releases?</h2>
-          <p class="vx-intro">Same brand, three stacks. US HW4 has Collision Evasion. HW3 is on Lite. Europe is still Assisted Driving Basic on 14.2. The driver still supervises — SAE Level 2. Pick two stacks.</p>
+          <p class="vx-intro">Same brand, three stacks. US HW4 has Collision Evasion. HW3 is on Lite. Europe is still Assisted Driving Basic on 14.2. Pick two stacks. Then open Collision Evasion for the HW4-only note.</p>
+          <p class="vx-sae">SAE Level 2. The driver must supervise. Europe lists the same idea as Tesla Assisted Driving. Not Tesla’s official comparison.</p>
+          <figure class="vx-media vx-media-hero">
+            <p class="eyebrow">Official footage</p>
+            <video class="vx-file" controls playsinline preload="metadata" poster="/assets/dispatch/fsd-15-billion-miles-poster.jpg">
+              <source src="/assets/dispatch/fsd-15-billion-miles.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Official @Tesla footage, FSD (Supervised) on US streets. Already on this site. Supervised — not a hands-off demo, and not a Collision Evasion clip.</figcaption>
+          </figure>
+          <div class="vx-tri" aria-label="Three live FSD stacks">
+            <article>
+              <p>North America · HW4</p>
+              <strong>FSD (Supervised)</strong>
+              <em>v14.3.11 / 14.3.12 · 2026.33.5 / 2026.38.5</em>
+              <ul>
+                <li data-on>Collision Evasion <span>On</span></li>
+                <li data-on>Park / unpark / start-from-park <span>On</span></li>
+                <li data-on>2026.38 cabin branch <span>On</span></li>
+                <li>Listed as Assisted Driving <span>Off</span></li>
+              </ul>
+            </article>
+            <article>
+              <p>North America · HW3</p>
+              <strong>FSD (Supervised) Lite</strong>
+              <em>v14.3 Lite · distilled from HW4</em>
+              <ul>
+                <li>Collision Evasion <span>Off</span></li>
+                <li data-on>Park / unpark / start-from-park <span>On</span></li>
+                <li data-on>HW3 Lite model <span>On</span></li>
+                <li>Listed as Assisted Driving <span>Off</span></li>
+              </ul>
+            </article>
+            <article>
+              <p>Europe</p>
+              <strong>Assisted Driving Basic</strong>
+              <em>v14.2.2.6 · 2026.33.100 · €99 / month</em>
+              <ul>
+                <li>Collision Evasion <span>Off</span></li>
+                <li data-on>Park / unpark / start-from-park <span>On</span></li>
+                <li>2026.38 cabin branch <span>Off</span></li>
+                <li data-on>Listed as Assisted Driving <span>On</span></li>
+              </ul>
+            </article>
+          </div>
+          <div class="vx-facts">
+            <div><b>US HW4</b><span>v14.3.12 on 2026.38.5 — same notes as 14.3.11, early US wave since 10 Oct. Collision Evasion on.</span></div>
+            <div><b>US HW3</b><span>v14.3 Lite. Parking, unparking, start-from-park. Distilled from HW4. No Collision Evasion.</span></div>
+            <div><b>Europe</b><span>v14.2.2.6 on 2026.33.100. Assisted Driving Basic, €99 a month. Still on 14.2.</span></div>
+          </div>
           <div class="vx-diff">
             <label>Stack A <select data-vx-a></select></label>
             <label>Stack B <select data-vx-b></select></label>
           </div>
           <div data-vx-flags class="vx-flags"></div>
           <div class="vx-stack-note" data-vx-stack-note></div>
+          <table class="vx-versions">
+            <thead><tr><th>Stack</th><th>Build</th><th>Where</th><th>Note</th></tr></thead>
+            <tbody>
+              <tr><td>v14.3.12</td><td>2026.38.5</td><td>United States, early wave</td><td>Same notes as 14.3.11, on the 2026.38 cabin branch. HW4.</td></tr>
+              <tr><td>v14.3.11</td><td>2026.33.5</td><td>North America</td><td>Widest HW4 stack. Collision Evasion starts here.</td></tr>
+              <tr><td>v14.3 Lite</td><td>2026.33.5 / 2026.38.5</td><td>North America HW3</td><td>Park / unpark / start-from-park. No evasion.</td></tr>
+              <tr><td>v14.2.2.6</td><td>2026.33.100</td><td>Europe</td><td>Assisted Driving Basic. Same week as US 14.3.11, still 14.2.</td></tr>
+            </tbody>
+          </table>
           <ul class="vx-jumps">
-            <li><b>9 Oct 2026 — Europe rename</b><p>FSD (Supervised) is called Tesla Assisted Driving in Europe. <a href="/dispatch/assisted-driving.html">Dispatch</a></p></li>
+            <li><b>9 Oct 2026 — Europe rename</b><p>FSD (Supervised) is called Tesla Assisted Driving in Europe. Autosteer, Summon, Autopark — a name built for regulators. <a href="/dispatch/assisted-driving.html">Dispatch</a></p></li>
             <li><b>6 Oct 2026 — 14.3.11 + Lite</b><p>HW4 gets Collision Evasion. HW3 gets Lite parking. Europe stays on 14.2. <a href="/updates.html">Software tracker</a></p></li>
-            <li><b>10 Oct 2026 — 14.3.12</b><p>Same notes as 14.3.11, on the 2026.38 cabin branch. Early US wave. <a href="/fsd.html#versions">Global tracker</a></p></li>
+            <li><b>10 Oct 2026 — 14.3.12</b><p>Same notes as 14.3.11, on the 2026.38 cabin branch. Early US wave; Mexico and Canada reporting by 13 Oct. <a href="/fsd.html#versions">Global tracker</a></p></li>
           </ul>
-          <figure class="vx-media">
-            <p class="eyebrow">Official footage</p>
-            <video class="vx-file" controls playsinline preload="metadata" poster="/assets/dispatch/fsd-15-billion-miles-poster.jpg">
-              <source src="/assets/dispatch/fsd-15-billion-miles.mp4" type="video/mp4" />
-            </video>
-            <figcaption>Official @Tesla footage, FSD (Supervised) on US streets. Already on this site. Supervised — not a hands-off demo.</figcaption>
-          </figure>
-          <p class="vx-fine">FSD Supervised is SAE Level 2. Not Tesla’s official comparison. Version notes from the <a href="/fsd.html">global tracker</a> and <a href="/updates.html">software tracker</a>.</p>
+          <p class="vx-fine">Version notes from the <a href="/fsd.html">global tracker</a> and <a href="/updates.html">software tracker</a>. <a href="#evasion">Collision Evasion explainer</a>.</p>
           <div class="vx-share">
             <a href="https://twitter.com/intent/tweet?text=What%20actually%20changed%20between%20Tesla%20FSD%20stacks%20%E2%80%94%20HW4%2C%20HW3%20Lite%2C%20Europe.&url=https%3A%2F%2Fsuperchargeddaily.com%2Fexplainers.html%23fsd">Share on X</a>
             <button type="button" data-vx-copy>Copy link</button>
@@ -285,6 +388,61 @@
             <a href="/my-tesla.html">My Tesla</a>
           </div>
         </article>
+
+        <article class="vx-piece" id="evasion" data-vx-piece="evasion">
+          <p class="vx-kicker">Tesla · HW4</p>
+          <h2>How does Collision Evasion work?</h2>
+          <p class="vx-intro">It is not a separate Autopilot. On HW4 in North America, the car can switch Supervised FSD back on to try to avoid an imminent frontal crash, or if FSD looks like it was dropped by mistake. Toggle HW3 or Europe to see the step that does not exist there.</p>
+          <p class="vx-sae">Still SAE Level 2. The driver still has to supervise. This is not unsupervised Robotaxi.</p>
+          <div class="vx-facts">
+            <div><b>What it is</b><span>HW4 can re-engage Supervised FSD for an imminent frontal crash, or an unintentional FSD drop.</span></div>
+            <div><b>Where</b><span>North America, 14.3.11 and 14.3.12. Not on HW3 Lite. Not on Europe 14.2.</span></div>
+            <div><b>What it is not</b><span>The notes say frontal. We do not invent side or rear coverage, or a hands-off guardian.</span></div>
+          </div>
+          <div class="vx-stage">
+            <div>
+              <div class="vx-board">
+                <p class="vx-callout" data-vx-callout>FSD on</p>
+                <p class="vx-clock" data-vx-clock>HW4 NA · 14.3</p>
+                <div data-vx-diagram></div>
+              </div>
+              <p class="vx-caption" data-vx-caption>City or highway, SAE Level 2. You are still the driver.</p>
+              <div class="vx-controls">
+                <button type="button" data-vx-play aria-pressed="false">Play</button>
+                <input type="range" data-vx-range min="0" max="1000" value="0" aria-label="Scrub Collision Evasion" />
+                <button type="button" data-vx-hw="hw4" aria-pressed="true">HW4 NA</button>
+                <button type="button" data-vx-hw="hw3" aria-pressed="false">HW3 Lite</button>
+                <button type="button" data-vx-hw="eu" aria-pressed="false">Europe 14.2</button>
+                <span class="vx-readout" data-vx-readout></span>
+              </div>
+              <p class="vx-mode-note" data-vx-mode-note>HW4 in North America (14.3.11 / 14.3.12) can re-engage Supervised FSD for an imminent frontal crash, or an unintentional drop.</p>
+            </div>
+            <ol class="vx-steps">
+              <li><button type="button" data-vx-step><b>Supervised FSD is on</b><span>Collision Evasion is a way to put it back on, not a new system.</span></button></li>
+              <li><button type="button" data-vx-step><b>Attention drops</b><span>You look away, or FSD disengages unintentionally.</span></button></li>
+              <li><button type="button" data-vx-step><b>Frontal crash incoming</b><span>HW4 is watching for an imminent frontal collision.</span></button></li>
+              <li><button type="button" data-vx-step><b>HW4 can re-engage</b><span>On Lite and Europe 14.2 this step does not exist.</span></button></li>
+              <li><button type="button" data-vx-step><b>You are still driving</b><span>SAE Level 2. Evasion is not a robotaxi stack.</span></button></li>
+            </ol>
+          </div>
+          <div class="vx-why">
+            <article><h3>HW4, North America</h3><p>14.3.11 and 14.3.12. Tesla’s notes: if you look away or FSD drops by mistake, the car can re-engage Supervised FSD to try to stay out of a crash, then keep going.</p></article>
+            <article><h3>HW3 Lite</h3><p>Distilled from the HW4 model for parking, unparking and start-from-park. Tesla is not promising HW3 the full HW4 stack. No Collision Evasion.</p></article>
+            <article><h3>Europe 14.2</h3><p>Assisted Driving Basic on 2026.33.100. Same week as US 14.3.11, still on 14.2. Collision Evasion is North America only.</p></article>
+          </div>
+          <p class="vx-fine">Sourced from the <a href="/updates.html">software tracker</a> and <a href="/my-tesla.html">My Tesla</a> feature notes. Official Tesla street footage on the <a href="#fsd">FSD stacks</a> piece is not an evasion demo.</p>
+          <div class="vx-share">
+            <a href="https://twitter.com/intent/tweet?text=Collision%20Evasion%20is%20HW4%20in%20North%20America.%20HW3%20Lite%20and%20Europe%2014.2%20do%20not%20have%20it.&url=https%3A%2F%2Fsuperchargeddaily.com%2Fexplainers.html%23evasion">Share on X</a>
+            <button type="button" data-vx-copy>Copy link</button>
+          </div>
+          <div class="vx-more">
+            <a href="#fsd">FSD stacks</a>
+            <a href="/updates.html">Software updates</a>
+            <a href="/fsd.html">Global FSD tracker</a>
+            <a href="/my-tesla.html">My Tesla</a>
+          </div>
+        </article>
+        </section>
       </main>
 
       <footer class="site-footer">
@@ -308,8 +466,8 @@
       </footer>
     </div>
     <script src="/script.js?v=202610161013"></script>
-    <script src="/explainers-data.js?v=202610161400"></script>
-    <script src="/explainers.js?v=202610161400"></script>
+    <script src="/explainers-data.js?v=202610162400"></script>
+    <script src="/explainers.js?v=202610162400"></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/grow.js?v=20261016093121" data-band defer></script>
     <script src="/nav-pill.js?v=202610161000"></script>
