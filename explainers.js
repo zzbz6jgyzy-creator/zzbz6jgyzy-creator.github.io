@@ -464,41 +464,6 @@
     </svg>`;
   }
 
-  function fsdSvg() {
-    return `<svg viewBox="0 0 560 200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Three FSD stacks: HW4, HW3 Lite, Europe">
-      <defs>
-        <linearGradient id="vx-fsd-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#080c12"/><stop offset="1" stop-color="#161b22"/>
-        </linearGradient>
-        <linearGradient id="vx-fsd-road" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#222830"/><stop offset="1" stop-color="#101418"/>
-        </linearGradient>
-      </defs>
-      <rect width="560" height="200" fill="url(#vx-fsd-sky)"/>
-      <rect x="0" y="128" width="560" height="72" fill="url(#vx-fsd-road)"/>
-      <path d="M0 128 H560" stroke="#3a424c" stroke-width="2"/>
-      <path d="M16 168 H544" stroke="#c4b060" stroke-width="2" stroke-dasharray="16 14" opacity=".55"/>
-      <g>
-        ${chip(24, 10, "HW4 NA")}
-        ${teslaBody("f1", 10, 68, { sensors: true, scale: 0.72 })}
-        <rect x="24" y="172" width="72" height="16" rx="8" fill="#1b3d2a"/>
-        <text x="34" y="184" fill="#7dcea0" font-size="10" font-family="IBM Plex Mono,ui-monospace,monospace">EVASION</text>
-      </g>
-      <g>
-        ${chip(204, 10, "HW3 LITE")}
-        ${teslaBody("f2", 196, 68, { dark: true, scale: 0.72 })}
-        <rect x="204" y="172" width="48" height="16" rx="8" fill="#3a3030"/>
-        <text x="218" y="184" fill="#c98a8a" font-size="10" font-family="IBM Plex Mono,ui-monospace,monospace">NO</text>
-      </g>
-      <g>
-        ${chip(386, 10, "EUROPE")}
-        ${teslaBody("f3", 382, 68, { dark: true, scale: 0.72 })}
-        <rect x="386" y="172" width="88" height="16" rx="8" fill="#3a3030"/>
-        <text x="398" y="184" fill="#c98a8a" font-size="10" font-family="IBM Plex Mono,ui-monospace,monospace">14.2 ONLY</text>
-      </g>
-    </svg>`;
-  }
-
   function lerp(a, b, t) { return a + (b - a) * t; }
   function clamp01(t) { return Math.max(0, Math.min(1, t)); }
   function span(t, a, b) { return clamp01((t - a) / (b - a)); }
@@ -630,8 +595,6 @@
     const flags = section.querySelector("[data-vx-flags]");
     const note = section.querySelector("[data-vx-stack-note]");
     const stacks = D.fsd.stacks;
-    const art = section.querySelector("[data-vx-fsd]");
-    if (art) art.innerHTML = fsdSvg();
     const fill = (sel, picked) => {
       sel.innerHTML = stacks.map((s) => `<option value="${esc(s.id)}"${s.id === picked ? " selected" : ""}>${esc(s.label)} · ${esc(s.version)}</option>`).join("");
     };
