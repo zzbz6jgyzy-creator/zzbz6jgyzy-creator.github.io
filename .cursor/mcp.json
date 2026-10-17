@@ -1,7 +1,10 @@
 {
   "mcpServers": {
     "mailerlite": {
-      "url": "https://mcp.mailerlite.com/mcp"
+      "url": "https://mcp.mailerlite.com/mcp",
+      "headers": {
+        "X-Acc-Id": "2687664"
+      }
     }
   }
 }
