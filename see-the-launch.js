@@ -10,13 +10,18 @@
   const LL2 = "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX&limit=16";
   const GEO = "https://geocoding-api.open-meteo.com/v1/search";
   const WX = "https://api.open-meteo.com/v1/forecast";
+  const WX_SEASON = "https://seasonal-api.open-meteo.com/v1/seasonal";
+  const WX_HOURLY = "cloud_cover,visibility,precipitation,weather_code,is_day";
+  const WX_SEASON_HOURLY = "cloud_cover,precipitation,weather_code";
   const R = 6371;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   const state = { place: "", lat: null, lon: null, launchId: "" };
   let launches = [];
-  let wxHere = null;
+  let wxHere = { forecast: null, season: null };
   let wxPad = {};
+  let wxStatus = "idle";
+  const wxPending = new Set();
   let suggestTimer = 0;
   const live = {
     look: null,
@@ -134,19 +139,31 @@
     return "Cloud";
   };
 
-  const pickHour = (wx, when) => {
-    if (!wx?.hourly?.time?.length) return null;
-    const t = when.getTime();
+  /* Open-Meteo GMT / unix times are UTC. Naive ISO strings are treated as UTC
+     so they line up with Launch Library `net` values (always Z). */
+  const wxTimeMs = (t) => {
+    if (t == null) return NaN;
+    if (typeof t === "number") return t < 1e12 ? t * 1000 : t;
+    const s = String(t);
+    if (/^\d+$/.test(s)) return Number(s) * 1000;
+    if (/Z$|[+-]\d{2}:?\d{2}$/.test(s)) return Date.parse(s);
+    return Date.parse(`${s}Z`);
+  };
+
+  const pickHour = (wx, when, maxGapMs) => {
+    if (!wx?.hourly?.time?.length || !when || !Number.isFinite(+when)) return null;
+    const t = +when;
+    const limit = maxGapMs != null ? maxGapMs : wx._source === "seasonal" ? 9 * 36e5 : 12 * 36e5;
     let best = 0,
       gap = Infinity;
     wx.hourly.time.forEach((iso, i) => {
-      const d = Math.abs(Date.parse(iso) - t);
+      const d = Math.abs(wxTimeMs(iso) - t);
       if (d < gap) {
         gap = d;
         best = i;
       }
     });
-    if (gap > 36e5 * 20) return null;
+    if (!Number.isFinite(gap) || gap > limit) return null;
     return {
       cloud: wx.hourly.cloud_cover?.[best],
       vis: wx.hourly.visibility?.[best],
@@ -154,8 +171,16 @@
       code: wx.hourly.weather_code?.[best],
       day: wx.hourly.is_day?.[best],
       time: wx.hourly.time[best],
+      source: wx._source || "forecast",
     };
   };
+
+  const hourAt = (pack, when) => {
+    if (!pack) return null;
+    return pickHour(pack.forecast, when, 12 * 36e5) || pickHour(pack.season, when, 9 * 36e5);
+  };
+  const hourHere = (when) => hourAt(wxHere, when);
+  const hourPad = (id, when) => hourAt(wxPad[id], when);
 
   const scoreLaunch = (launch) => {
     if (state.lat == null) return null;
@@ -169,7 +194,7 @@
     const toObs = bearing(pad.lat, pad.lon, state.lat, state.lon);
     const align = angDiff(az, toObs);
     const night = (() => {
-      const hour = pickHour(wxHere, new Date(launch.start));
+      const hour = hourHere(new Date(launch.start));
       if (hour && hour.day != null) return hour.day === 0;
       const h = new Date(launch.start).getHours();
       return h < 6 || h >= 19;
@@ -181,7 +206,7 @@
     const good = rng.good * (toward ? 1.15 : farAway ? 0.78 : 1);
     const maybe = rng.maybe * (toward ? 1.12 : farAway ? 0.82 : 1);
     const elev80 = elevation(80, dist);
-    const hour = pickHour(wxHere, new Date(launch.start));
+    const hour = hourHere(new Date(launch.start));
     const cloud = hour?.cloud;
     const rain = hour?.rain;
     let key = "maybe";
@@ -205,6 +230,7 @@
       cloud,
       rain,
       code: hour?.code,
+      wxSource: hour?.source,
       key,
       pad,
     };
@@ -673,10 +699,23 @@
     if (!state.launchId) state.launchId = launch.id;
     const s = scoreLaunch(launch);
     const pad = padOf(launch);
-    const wxP = pickHour(wxPad[pad.id], new Date(launch.start));
+    const when = new Date(launch.start);
+    const wxP = hourPad(pad.id, when);
+    const wxSettled = wxStatus === "ready" || wxStatus === "fail";
+    if (state.lat != null && wxSettled && !hourHere(when)) ensureSeasonal(wxHere, state.lat, state.lon, when);
+    if (wxSettled && wxP == null && DATA.pads[pad.id]) {
+      const slot = wxPad[pad.id] || (wxPad[pad.id] = { forecast: null, season: null });
+      if (slot.forecast || wxStatus === "fail") ensureSeasonal(slot, pad.lat, pad.lon, when);
+    }
     const lookTxt = s ? `${compassShort(s.look)} · ${compass(s.look)}` : "—";
     const cloudTxt =
-      s && s.cloud != null ? `${Math.round(s.cloud)}% cloud${s.code != null ? ` · ${wmoText(s.code)}` : ""}` : "Weather loading";
+      s && s.cloud != null
+        ? `${s.wxSource === "seasonal" ? "Seasonal outlook · " : ""}${Math.round(s.cloud)}% cloud${s.code != null ? ` · ${wmoText(s.code)}` : ""}`
+        : wxStatus === "fail"
+          ? "Weather unavailable"
+          : wxStatus === "ready"
+            ? "No forecast yet for this T-0"
+            : "Weather loading";
     const alignTxt = !s
       ? ""
       : s.toward
@@ -759,24 +798,65 @@
     if (stamp) stamp.textContent = `Saved on this device · launches ${DATA.updated}`;
   };
 
-  const loadWeather = () => {
-    if (state.lat == null) return;
-    const hours = "cloud_cover,visibility,precipitation,weather_code,is_day";
-    fetch(`${WX}?latitude=${state.lat}&longitude=${state.lon}&hourly=${hours}&forecast_days=16&timezone=auto`)
+  const ymdUtc = (d) => {
+    const x = new Date(d);
+    return `${x.getUTCFullYear()}-${String(x.getUTCMonth() + 1).padStart(2, "0")}-${String(x.getUTCDate()).padStart(2, "0")}`;
+  };
+
+  /* 16-day hourly forecast first. Far NET dates (Flight 15, Cygnus) sit past
+     that window, so we pull a short seasonal slice around T-0 instead of
+     leaving the tile on "Weather loading". */
+  const ensureSeasonal = (pack, lat, lon, when) => {
+    if (!pack || lat == null || lon == null || !when || !Number.isFinite(+when)) return;
+    if (hourAt(pack, when)) return;
+    const start = new Date(+when - 864e5);
+    const end = new Date(+when + 864e5);
+    const key = `${lat.toFixed(2)},${lon.toFixed(2)},${ymdUtc(when)}`;
+    if (wxPending.has(key)) return;
+    wxPending.add(key);
+    fetch(
+      `${WX_SEASON}?latitude=${lat}&longitude=${lon}&hourly=${WX_SEASON_HOURLY}&start_date=${ymdUtc(start)}&end_date=${ymdUtc(end)}&timezone=GMT`
+    )
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
-        wxHere = j;
+        if (!j || j.error || !j.hourly) return;
+        pack.season = Object.assign(j, { _source: "seasonal" });
+        wxStatus = "ready";
         render();
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => wxPending.delete(key));
+  };
+
+  const readForecast = (lat, lon) =>
+    fetch(`${WX}?latitude=${lat}&longitude=${lon}&hourly=${WX_HOURLY}&forecast_days=16&timezone=GMT`).then((r) =>
+      r.ok ? r.json() : Promise.reject(new Error(String(r.status)))
+    );
+
+  const loadWeather = () => {
+    if (state.lat == null) return;
+    wxHere = { forecast: null, season: null };
+    wxStatus = "loading";
+    readForecast(state.lat, state.lon)
+      .then((j) => {
+        if (!j || j.error) throw new Error(j?.reason || "wx");
+        wxHere.forecast = Object.assign(j, { _source: "forecast" });
+        wxStatus = "ready";
+        render();
+      })
+      .catch(() => {
+        if (!wxHere.forecast) wxStatus = "fail";
+        render();
+      });
     const pads = [...new Set(launches.map((l) => l.pad).concat(["sb2", "slc40", "slc4e"]))];
     pads.forEach((id) => {
       const p = DATA.pads[id];
       if (!p) return;
-      fetch(`${WX}?latitude=${p.lat}&longitude=${p.lon}&hourly=${hours}&forecast_days=16&timezone=auto`)
-        .then((r) => (r.ok ? r.json() : null))
+      const slot = wxPad[id] || (wxPad[id] = { forecast: null, season: null });
+      readForecast(p.lat, p.lon)
         .then((j) => {
-          wxPad[id] = j;
+          if (!j || j.error) return;
+          slot.forecast = Object.assign(j, { _source: "forecast" });
           render();
         })
         .catch(() => {});
