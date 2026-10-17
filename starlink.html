@@ -6,13 +6,13 @@
     <title>Starlink Tracker — Supercharged Daily</title>
     <meta
       name="description"
-      content="How many Starlink satellites SpaceX has in orbit, split by V1.0, V1.5, V2 Mini, V2 Mini Optimized, direct-to-cell and V3. Sourced from Jonathan McDowell."
+      content="How many Starlink satellites SpaceX has in orbit, split by generation — and a phone tool to point at the sky and name the one you are looking at."
     />
     <link rel="canonical" href="https://superchargeddaily.com/starlink.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="Starlink Tracker — Supercharged Daily" />
-    <meta property="og:description" content="SpaceX’s constellation by hardware generation: V1, V2 Mini, direct-to-cell and V3." />
+    <meta property="og:description" content="SpaceX’s constellation by hardware generation, plus point-and-identify from your phone." />
     <meta property="og:url" content="https://superchargeddaily.com/starlink.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/starlink-stargaze.jpg" />
     <meta property="og:image:alt" content="Starlink satellites against the Earth" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Starlink Tracker — Supercharged Daily" />
-    <meta name="twitter:description" content="SpaceX’s constellation by hardware generation: V1, V2 Mini, direct-to-cell and V3." />
+    <meta name="twitter:description" content="SpaceX’s constellation by hardware generation, plus point-and-identify from your phone." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/starlink-stargaze.jpg" />
     <meta name="twitter:image:alt" content="Starlink satellites against the Earth" />
 
@@ -40,7 +40,7 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="stylesheet" href="/styles.css?v=20261016094523" />
-    <link rel="stylesheet" href="/starlink-tracker.css?v=202610152059" />
+    <link rel="stylesheet" href="/starlink-tracker.css?v=202610180010" />
     <link rel="stylesheet" href="/nav-pill.css?v=202610161834" />
     <script>
       window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
@@ -141,8 +141,10 @@
             <h1>Starlink <span>Tracker</span></h1>
             <p>
               How many SpaceX satellites are up, split by the hardware people actually mean
-              when they say V1, V2 and V3. Starlink is the constellation. Starshield is not in this table.
+              when they say V1, V2 and V3. On a phone you can also point at a moving light
+              and we name the Starlink. Starshield is not in this table.
             </p>
+            <p class="sl-id-jump"><a href="#identify">Point &amp; identify a Starlink →</a></p>
             <p class="meta live-stamp" id="sl-updated">Updated</p>
           </div>
           <figure class="sl-orbit" id="sl-orbit-fig">
@@ -183,6 +185,75 @@
               <b id="sl-down">—</b>
               <span>already down</span>
             </div>
+          </div>
+        </section>
+
+        <section class="section sl-id" id="identify" aria-labelledby="sl-id-h">
+          <div class="section-head">
+            <h2 id="sl-id-h">Point &amp; identify</h2>
+            <p>Point your phone at the sky. We name the Starlink inside a 10° cone.</p>
+          </div>
+          <p class="sl-id-age" id="sl-id-age">Starlink catalog</p>
+          <p class="sl-id-warn" id="sl-id-stale" hidden>This catalog is more than 24 hours old. Orbits drift — a pointed match can be off.</p>
+          <p class="sl-id-desk" id="sl-id-desk">Point-and-identify needs a phone compass. On this computer you can still see which Starlinks are up from your location.</p>
+          <div class="sl-id-loc">
+            <input id="sl-id-q" type="search" placeholder="City or place" autocomplete="off" aria-label="Search a city" />
+            <button type="button" id="sl-id-geo">Use my location</button>
+            <button type="button" id="sl-id-clear">Clear</button>
+          </div>
+          <ul class="sl-id-suggest" id="sl-id-suggest" hidden></ul>
+          <p class="sl-id-loc-hint" id="sl-id-hint"></p>
+          <p class="sl-id-status" id="sl-id-status">Pick a place, then point your phone at the sky.</p>
+          <div id="sl-id-dash" hidden>
+            <div class="sl-id-grid">
+              <article class="sl-id-panel">
+                <h3>Point at the sky</h3>
+                <p>Lift the top of the phone toward the moving light. White mark is the top.</p>
+                <div class="sl-id-aim">
+                  <div class="sl-id-compass-col">
+                    <div class="sl-id-compass-frame">
+                      <div class="sl-id-compass-well">
+                        <svg class="sl-id-compass" viewBox="0 0 100 100" role="img" aria-label="Phone heading">
+                          <defs>
+                            <radialGradient id="sl-id-face" cx="46%" cy="36%" r="64%">
+                              <stop offset="0%" stop-color="#2a3846"/>
+                              <stop offset="42%" stop-color="#151b22"/>
+                              <stop offset="100%" stop-color="#07090c"/>
+                            </radialGradient>
+                          </defs>
+                          <circle cx="50" cy="50" r="46.5" fill="url(#sl-id-face)" stroke="rgba(232,195,106,.28)" stroke-width=".7"/>
+                          <polygon points="50,2 54.2,10 45.8,10" fill="#f7f8fa"/>
+                          <g data-sl-id-rose>
+                            <text x="50" y="22" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">N</text>
+                            <text x="78" y="53" text-anchor="middle" fill="#d7dde3" font-size="7" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">E</text>
+                            <text x="50" y="84" text-anchor="middle" fill="#d7dde3" font-size="7" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">S</text>
+                            <text x="22" y="53" text-anchor="middle" fill="#d7dde3" font-size="7" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">W</text>
+                            <g data-sl-id-needle>
+                              <polygon points="50,12 55.5,51 50,46 44.5,51" fill="#e31937"/>
+                              <polygon points="50,88 55,51 50,56 45,51" fill="#5f6872"/>
+                            </g>
+                          </g>
+                          <circle cx="50" cy="50" r="3.2" fill="#f4f6f8"/>
+                        </svg>
+                      </div>
+                      <p class="sl-id-cue" data-sl-id-cue>Point your phone at the sky</p>
+                      <button type="button" class="sl-id-arm" id="sl-id-arm">Click here to use live compass</button>
+                      <p class="sl-id-compass-hint" data-sl-id-hint>On a phone, tap live compass and point at the sky.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p id="sl-id-msg">Point your phone at the sky.</p>
+                    <div id="sl-id-hits"></div>
+                  </div>
+                </div>
+              </article>
+              <article class="sl-id-panel">
+                <h3>Up now</h3>
+                <p>Starlinks currently above 15° from here. Not every one is visible to the eye.</p>
+                <ul class="sl-id-up" id="sl-id-up"></ul>
+              </article>
+            </div>
+            <p class="sl-fine">Orbits from the cached CelesTrak GP file on this site, hardware generations from Jonathan McDowell’s GCAT. The browser never talks to CelesTrak.</p>
           </div>
         </section>
 
@@ -262,6 +333,7 @@
     <script src="/starlink-live.js?v=20261016094118"></script>
     <script defer src="/starlink-gp.js?v=202610160554"></script>
     <script src="/starlink-tracker.js?v=202610161826"></script>
+    <script src="/starlink-identify.js?v=202610180010"></script>
     <script src="https://cdn.jsdelivr.net/npm/satellite.js@4.1.4/dist/satellite.min.js"></script>
     <script src="/cesium-lazy.js?v=202610152059"></script>
     <script src="/starlink-globe.js?v=202610152059"></script>
