@@ -7,9 +7,11 @@
 .pv-more{margin-top:2.5rem;opacity:.95}
 .pv-more .hv-supp{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .pv-more-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
+.hv-trk{max-width:1180px;margin-left:auto;margin-right:auto}
+.hv-feat{gap:.8rem;margin-bottom:.8rem}
 .hv-trk-row{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:.8rem}
 .hv-mast{padding-bottom:.6rem}.hv-pitch{display:none}
-@media (max-width:760px){.pv-lead .hv-lead{grid-template-columns:1fr}.hv-trk-row{grid-template-columns:1fr 1fr!important}.pv-more .hv-supp,.pv-more-row{grid-template-columns:1fr}.hv-pitch{display:block}}
+@media (max-width:760px){.pv-lead .hv-lead{grid-template-columns:1fr}.hv-feat{grid-template-columns:1fr}.hv-trk-row{grid-template-columns:1fr 1fr!important}.pv-more .hv-supp,.pv-more-row{grid-template-columns:1fr}.hv-pitch{display:block}}
 .hv-live-top:empty{display:none}
 .hv-live-top{max-width:1180px;margin:.4rem auto 1rem}
 .hv-next:empty{display:none}
@@ -34,5 +36,5 @@
 .hv-date:empty::before{content:"\00a0"}
 .hv-lead-media picture{display:contents}
 /* contrast (axe 16 Oct): small red labels on near-black */
-.hv .hv-tag,.hv .hv-read,.hv .hv-f-t{color:#ff4d5e}
+.hv .hv-tag,.hv .hv-read,.hv .hv-f-t,.hv .hv-feat-go{color:#ff4d5e}
 .hv .hv-c-t{color:#ff4d5e}
