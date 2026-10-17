@@ -1,16 +1,16 @@
 {
- "updated": "2026-10-17T13:46:13Z",
+ "updated": "2026-10-17T14:08:33Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-17T12:06:32Z",
-  "fleet": 12439,
+  "fetched": "2026-10-17T14:08:33Z",
+  "fleet": 12438,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 2022,
-    "percent": 16.3,
-    "pending": 765
+    "installs": 2091,
+    "percent": 16.8,
+    "pending": 700
    },
    {
     "id": "2026.38.5",
@@ -20,9 +20,9 @@
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4488,
-    "percent": 36.1,
-    "pending": 1134
+    "installs": 4507,
+    "percent": 36.2,
+    "pending": 1119
    },
    {
     "id": "2026.38.3",
@@ -32,8 +32,8 @@
    },
    {
     "id": "2026.38",
-    "installs": 119,
-    "percent": 1.0,
+    "installs": 117,
+    "percent": 0.9,
     "pending": 3
    },
    {
@@ -50,14 +50,14 @@
    },
    {
     "id": "2026.32.7",
-    "installs": 1256,
-    "percent": 10.1,
-    "pending": 108
+    "installs": 1233,
+    "percent": 9.9,
+    "pending": 107
    },
    {
     "id": "2026.32.3",
-    "installs": 319,
-    "percent": 2.6,
+    "installs": 316,
+    "percent": 2.5,
     "pending": 8
    },
    {
@@ -80,8 +80,8 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 358,
-    "percent": 2.9,
+    "installs": 352,
+    "percent": 2.8,
     "pending": 17
    },
    {
@@ -98,7 +98,7 @@
    },
    {
     "id": "2026.27.6",
-    "installs": 26,
+    "installs": 25,
     "percent": 0.2,
     "pending": 1
    },
@@ -122,8 +122,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 1292,
-    "percent": 10.4,
+    "installs": 1239,
+    "percent": 10.0,
     "pending": 40
    },
    {
@@ -194,7 +194,7 @@
    },
    {
     "id": "2026.20.6.11",
-    "installs": 31,
+    "installs": 30,
     "percent": 0.2,
     "pending": 0
    },
@@ -491,7 +491,7 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-17T13:46:13Z",
+  "fetched": "2026-10-17T14:08:33Z",
   "items": [
    {
     "t": "2026-10-17T13:05:30Z",
