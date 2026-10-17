@@ -18,6 +18,15 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "starlink-gp.js"
 GENS = ["v10", "v15", "v2m", "v2opt", "v2dtc", "v3"]
 GEN_I = {g: i for i, g in enumerate(GENS)}
+GEN_LABELS = {
+    "v10": "V1.0",
+    "v15": "V1.5",
+    "v2m": "V2 Mini",
+    "v2opt": "V2 Mini Optimized",
+    "v2dtc": "V2 Mini Direct-to-Cell",
+    "v3": "V3",
+}
+CATALOG = ROOT / "data" / "starlink.json"
 
 
 def parse_gcat(path: Path) -> dict[int, str]:
@@ -230,6 +239,7 @@ def main() -> None:
             omm[cat] = row
 
     tle_sats = []
+    catalog = []
     gens = Counter()
     seen = set()
 
@@ -239,7 +249,9 @@ def main() -> None:
             if cat in gcat:
                 continue
             gen = "v2opt"
+        label = name if name.upper().startswith("STARLINK") else f"STARLINK-{cat}"
         tle_sats.append([GEN_I[gen], l1, l2])
+        catalog.append([label, cat, gen, l1, l2])
         gens[gen] += 1
         seen.add(cat)
 
@@ -255,6 +267,7 @@ def main() -> None:
         except Exception:
             continue
         tle_sats.append([GEN_I[gen], l1, l2])
+        catalog.append([name, cat, gen, l1, l2])
         gens[gen] += 1
         seen.add(cat)
 
@@ -273,6 +286,23 @@ def main() -> None:
     text = "window.STARLINK_GP = " + json.dumps(payload, separators=(",", ":")) + ";\n"
     OUT.write_text(text, encoding="utf-8")
     print(f"wrote {OUT} ({OUT.stat().st_size} bytes) total={payload['total']} gens={dict(gens)}")
+    write_identify_catalog(catalog, payload["tleAsOf"], payload["sources"])
+
+
+def write_identify_catalog(rows: list, tle_as_of: str, sources: dict) -> None:
+    """Same-origin JSON for the see-the-launch identify tool. Browser never hits CelesTrak."""
+    CATALOG.parent.mkdir(parents=True, exist_ok=True)
+    body = {
+        "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "tleAsOf": tle_as_of,
+        "count": len(rows),
+        "fields": ["name", "norad", "gen", "tle1", "tle2"],
+        "gens": GEN_LABELS,
+        "sources": sources,
+        "satellites": rows,
+    }
+    CATALOG.write_text(json.dumps(body, separators=(",", ":")), encoding="utf-8")
+    print(f"wrote {CATALOG} ({CATALOG.stat().st_size} bytes) count={len(rows)}")
 
 
 if __name__ == "__main__":
