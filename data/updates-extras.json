@@ -1,16 +1,16 @@
 {
- "updated": "2026-10-17T15:45:26Z",
+ "updated": "2026-10-17T16:06:45Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-17T14:08:33Z",
-  "fleet": 12438,
+  "fetched": "2026-10-17T16:06:45Z",
+  "fleet": 12436,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 2091,
-    "percent": 16.8,
-    "pending": 700
+    "installs": 2147,
+    "percent": 17.3,
+    "pending": 657
    },
    {
     "id": "2026.38.5",
@@ -20,9 +20,9 @@
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4507,
-    "percent": 36.2,
-    "pending": 1119
+    "installs": 4525,
+    "percent": 36.4,
+    "pending": 1101
    },
    {
     "id": "2026.38.3",
@@ -32,7 +32,7 @@
    },
    {
     "id": "2026.38",
-    "installs": 117,
+    "installs": 115,
     "percent": 0.9,
     "pending": 3
    },
@@ -44,19 +44,19 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 91,
+    "installs": 88,
     "percent": 0.7,
     "pending": 6
    },
    {
     "id": "2026.32.7",
-    "installs": 1233,
-    "percent": 9.9,
+    "installs": 1212,
+    "percent": 9.7,
     "pending": 107
    },
    {
     "id": "2026.32.3",
-    "installs": 316,
+    "installs": 312,
     "percent": 2.5,
     "pending": 8
    },
@@ -80,9 +80,9 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 352,
+    "installs": 348,
     "percent": 2.8,
-    "pending": 17
+    "pending": 18
    },
    {
     "id": "2026.27.6.15",
@@ -122,8 +122,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 1239,
-    "percent": 10.0,
+    "installs": 1199,
+    "percent": 9.6,
     "pending": 40
    },
    {
@@ -140,7 +140,7 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 229,
+    "installs": 227,
     "percent": 1.8,
     "pending": 8
    },
@@ -322,7 +322,7 @@
     "id": "2026.2.3",
     "installs": 21,
     "percent": 0.2,
-    "pending": 6
+    "pending": 5
    },
    {
     "id": "2025.45.10",
@@ -491,7 +491,7 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-17T15:45:26Z",
+  "fetched": "2026-10-17T16:06:45Z",
   "items": [
    {
     "t": "2026-10-17T15:30:52Z",
