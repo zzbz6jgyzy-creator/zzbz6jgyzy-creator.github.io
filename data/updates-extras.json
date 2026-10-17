@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-17T06:10:23Z",
+ "updated": "2026-10-17T07:01:38Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,24 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-17T06:10:23Z",
+  "fetched": "2026-10-17T07:01:38Z",
   "items": [
+   {
+    "t": "2026-10-17T06:51:16Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-17T06:45:15Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model 3 AWD LR (2020)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-17T05:49:51Z",
     "to": "2026.38.5.1",
@@ -554,22 +570,6 @@
     "to": "2026.38.5.1",
     "from": "2026.27.11",
     "model": "Cybertruck AWD (2025)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-17T03:58:10Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model Y RWD LR (2026)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-17T03:46:43Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model 3 AWD LR (2025)",
     "hw": "4.0",
     "country": "United States"
    }
