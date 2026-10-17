@@ -7,7 +7,9 @@
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const GEO = "https://geocoding-api.open-meteo.com/v1/search";
-  const REV = "https://geocoding-api.open-meteo.com/v1/reverse";
+  const BDC = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+  const PHOTON = "https://photon.komoot.io/reverse";
+  const NOM = "https://nominatim.openstreetmap.org/reverse";
   const R = 6371;
   const KEY = "sd-tesla-clubs-v1";
   const ALIAS = {
@@ -15,12 +17,68 @@
     "united states of america": "United States",
     uk: "United Kingdom",
     "great britain": "United Kingdom",
+    "united kingdom of great britain and northern ireland": "United Kingdom",
+    england: "United Kingdom",
+    scotland: "United Kingdom",
+    wales: "United Kingdom",
+    "northern ireland": "United Kingdom",
     "czech republic": "Czechia",
     turkey: "Türkiye",
     "hong kong": "Hong Kong & Macau",
     macau: "Hong Kong & Macau",
     "hong kong sar": "Hong Kong & Macau",
+    "republic of ireland": "Ireland",
+    eire: "Ireland",
+    "eire ireland": "Ireland",
   };
+  const ISO = {
+    ae: "United Arab Emirates",
+    at: "Austria",
+    au: "Australia",
+    be: "Belgium",
+    bg: "Bulgaria",
+    br: "Brazil",
+    ca: "Canada",
+    ch: "Switzerland",
+    cl: "Chile",
+    co: "Colombia",
+    cz: "Czechia",
+    de: "Germany",
+    dk: "Denmark",
+    es: "Spain",
+    fr: "France",
+    gb: "United Kingdom",
+    hk: "Hong Kong & Macau",
+    hu: "Hungary",
+    ie: "Ireland",
+    il: "Israel",
+    in: "India",
+    it: "Italy",
+    jp: "Japan",
+    kr: "South Korea",
+    mo: "Hong Kong & Macau",
+    mx: "Mexico",
+    my: "Malaysia",
+    nl: "Netherlands",
+    no: "Norway",
+    nz: "New Zealand",
+    ph: "Philippines",
+    pl: "Poland",
+    pt: "Portugal",
+    ro: "Romania",
+    rs: "Serbia",
+    se: "Sweden",
+    sg: "Singapore",
+    si: "Slovenia",
+    sk: "Slovakia",
+    th: "Thailand",
+    tr: "Türkiye",
+    tw: "Taiwan",
+    us: "United States",
+  };
+  const DIRECTORY_COUNTRIES = [
+    ...new Set(DATA.clubs.map((c) => c.country).filter((c) => c && c !== "Global" && c !== "International")),
+  ];
 
   const state = { place: "", country: "", admin1: "", lat: null, lon: null, q: "", chip: "" };
   let suggestTimer = 0;
@@ -32,7 +90,24 @@
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, " ")
       .trim();
-  const countryOf = (s) => ALIAS[norm(s)] || s || "";
+  const countryOf = (s, iso) => {
+    const code = String(iso || "")
+      .trim()
+      .toLowerCase();
+    if (ISO[code]) return ISO[code];
+    const n = norm(s);
+    if (!n) return "";
+    if (ALIAS[n]) return ALIAS[n];
+    const exact = DIRECTORY_COUNTRIES.find((c) => norm(c) === n);
+    if (exact) return exact;
+    const contained = DIRECTORY_COUNTRIES.filter((c) => {
+      const cn = norm(c);
+      if (!cn || !n.includes(cn)) return false;
+      if (cn === "ireland" && n.includes("northern ireland") && !n.includes("republic")) return false;
+      return true;
+    }).sort((a, b) => norm(b).length - norm(a).length);
+    return contained[0] || "";
+  };
   const toRad = (d) => (d * Math.PI) / 180;
   const haversine = (aLat, aLon, bLat, bLon) => {
     const p1 = toRad(aLat),
@@ -78,9 +153,82 @@
     return false;
   };
 
-  const countries = [...new Set(DATA.clubs.map((c) => c.country).filter((c) => c && c !== "Global" && c !== "International"))].sort(
-    (a, b) => a.localeCompare(b)
-  );
+  const countries = DIRECTORY_COUNTRIES.slice().sort((a, b) => a.localeCompare(b));
+
+  const inferCountryFromCoords = (lat, lon) => {
+    let best = null;
+    DATA.clubs.forEach((c) => {
+      if (c.lat == null || !c.country || c.country === "Global" || c.country === "International") return;
+      const d = haversine(lat, lon, c.lat, c.lon);
+      if (!best || d < best.d) best = { country: c.country, d };
+    });
+    return best && best.d < 600 ? best.country : "";
+  };
+
+  const jsonOk = (r) => (r && r.ok ? r.json() : null);
+
+  const fromBdc = (j) => {
+    if (!j || (!j.countryName && !j.countryCode)) return null;
+    const country = countryOf(j.countryName, j.countryCode);
+    if (!country) return null;
+    const city = j.city || j.locality || j.principalSubdivision || "";
+    const admin1 = j.principalSubdivision || "";
+    const place = [city, admin1, country].filter((v, i, a) => v && a.indexOf(v) === i).join(", ") || country;
+    return { place, country, admin1 };
+  };
+
+  const fromPhoton = (j) => {
+    const p = j?.features?.[0]?.properties;
+    if (!p) return null;
+    const country = countryOf(p.country, p.countrycode);
+    if (!country) return null;
+    const city = p.city || p.town || p.village || p.county || p.name || "";
+    const admin1 = p.state || p.county || "";
+    const place = [city, admin1, country].filter((v, i, a) => v && a.indexOf(v) === i).join(", ") || country;
+    return { place, country, admin1 };
+  };
+
+  const fromNominatim = (j) => {
+    const a = j?.address;
+    if (!a) return null;
+    const country = countryOf(a.country, a.country_code);
+    if (!country) return null;
+    const city = a.city || a.town || a.village || a.municipality || a.county || "";
+    const admin1 = a.state || a.region || "";
+    const place = [city, admin1, country].filter((v, i, a) => v && a.indexOf(v) === i).join(", ") || country;
+    return { place, country, admin1 };
+  };
+
+  const resolveCoords = (lat, lon) =>
+    fetch(`${BDC}?latitude=${lat}&longitude=${lon}&localityLanguage=en`)
+      .then(jsonOk)
+      .then(fromBdc)
+      .catch(() => null)
+      .then(
+        (hit) =>
+          hit ||
+          fetch(`${PHOTON}?lat=${lat}&lon=${lon}`)
+            .then(jsonOk)
+            .then(fromPhoton)
+            .catch(() => null)
+      )
+      .then(
+        (hit) =>
+          hit ||
+          fetch(`${NOM}?lat=${lat}&lon=${lon}&format=jsonv2&accept-language=en`)
+            .then(jsonOk)
+            .then(fromNominatim)
+            .catch(() => null)
+      )
+      .then((hit) => {
+        if (hit) return hit;
+        const country = inferCountryFromCoords(lat, lon);
+        return {
+          place: country ? `Your location, ${country}` : "Your location",
+          country,
+          admin1: "",
+        };
+      });
 
   const writeQuery = () => {
     const u = new URL(location.href);
@@ -125,7 +273,8 @@
     const worldwide = c.country === "Global" || c.country === "International";
     if (located) {
       if (worldwide) return null;
-      if (!sameCountry) return null;
+      if (hereCountry && !sameCountry) return null;
+      if (!hereCountry && (dist == null || dist > 400)) return null;
       const namedHere = nameTouchesPlace(c, state.admin1, state.place);
       const nearby = dist != null && dist < (c.section === "club" ? 350 : 140);
       if (c.section === "chapter" && !sameRegion && !namedHere && !nearby) return null;
@@ -269,7 +418,7 @@
     state.place = place;
     state.lat = lat;
     state.lon = lon;
-    state.country = countryOf(country);
+    state.country = countryOf(country) || (lat != null ? inferCountryFromCoords(lat, lon) : "");
     state.admin1 = inferAdmin(place, state.country, admin1);
     $("tc-q").value = place;
     $("tc-suggest").hidden = true;
@@ -361,14 +510,12 @@
         (pos) => {
           const lat = pos.coords.latitude,
             lon = pos.coords.longitude;
-          fetch(`${REV}?latitude=${lat}&longitude=${lon}&language=en&format=json`)
-            .then((r) => (r.ok ? r.json() : null))
-            .then((j) => {
-              const r = j?.results?.[0];
-              const label = r ? [r.name, r.admin1, r.country].filter(Boolean).join(", ") : "Your location";
-              setPlace(label, lat, lon, r?.country || "", r?.admin1 || "");
-            })
-            .catch(() => setPlace("Your location", lat, lon, "", ""));
+          resolveCoords(lat, lon)
+            .then((hit) => setPlace(hit.place, lat, lon, hit.country, hit.admin1))
+            .catch(() => {
+              const country = inferCountryFromCoords(lat, lon);
+              setPlace(country ? `Your location, ${country}` : "Your location", lat, lon, country, "");
+            });
         },
         () => {
           $("tc-hint").textContent = "Location blocked. Search a city instead.";
