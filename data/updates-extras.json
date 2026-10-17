@@ -1,38 +1,38 @@
 {
- "updated": "2026-10-17T01:48:10Z",
+ "updated": "2026-10-17T02:13:39Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-17T00:04:43Z",
-  "fleet": 12437,
+  "fetched": "2026-10-17T02:13:39Z",
+  "fleet": 12438,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 1695,
-    "percent": 13.6,
-    "pending": 528
+    "installs": 1740,
+    "percent": 14.0,
+    "pending": 486
    },
    {
     "id": "2026.38.5",
-    "installs": 422,
+    "installs": 423,
     "percent": 3.4,
     "pending": 8
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4365,
-    "percent": 35.1,
-    "pending": 1246
+    "installs": 4412,
+    "percent": 35.5,
+    "pending": 1200
    },
    {
     "id": "2026.38.3",
-    "installs": 7,
-    "percent": 0.1,
+    "installs": 6,
+    "percent": 0.0,
     "pending": 0
    },
    {
     "id": "2026.38",
-    "installs": 130,
+    "installs": 125,
     "percent": 1.0,
     "pending": 3
    },
@@ -44,19 +44,19 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 136,
-    "percent": 1.1,
+    "installs": 128,
+    "percent": 1.0,
     "pending": 9
    },
    {
     "id": "2026.32.7",
-    "installs": 1368,
-    "percent": 11.0,
+    "installs": 1334,
+    "percent": 10.7,
     "pending": 118
    },
    {
     "id": "2026.32.3",
-    "installs": 336,
+    "installs": 330,
     "percent": 2.7,
     "pending": 8
    },
@@ -80,8 +80,8 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 474,
-    "percent": 3.8,
+    "installs": 453,
+    "percent": 3.6,
     "pending": 17
    },
    {
@@ -122,8 +122,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 1411,
-    "percent": 11.3,
+    "installs": 1399,
+    "percent": 11.2,
     "pending": 49
    },
    {
@@ -140,7 +140,7 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 254,
+    "installs": 250,
     "percent": 2.0,
     "pending": 8
    },
@@ -224,7 +224,7 @@
    },
    {
     "id": "2026.20",
-    "installs": 2,
+    "installs": 1,
     "percent": 0.0,
     "pending": 1
    },
@@ -491,8 +491,24 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-17T01:48:10Z",
+  "fetched": "2026-10-17T02:13:39Z",
   "items": [
+   {
+    "t": "2026-10-17T02:01:19Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model 3 SR (2024)",
+    "hw": "4.0",
+    "country": "France"
+   },
+   {
+    "t": "2026-10-17T01:40:19Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 SR (2022)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-17T01:35:53Z",
     "to": "2026.38.5.1",
@@ -556,22 +572,6 @@
     "model": "Model Y SR (2026)",
     "hw": "4.0",
     "country": "Spain"
-   },
-   {
-    "t": "2026-10-17T00:36:52Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model X Plaid (2023)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-17T00:32:28Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.1",
-    "model": "Model S AWD (2021)",
-    "hw": "3.0",
-    "country": "United States"
    }
   ]
  }
