@@ -1,16 +1,16 @@
 {
- "updated": "2026-10-17T19:41:58Z",
+ "updated": "2026-10-17T20:04:33Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-17T18:04:09Z",
-  "fleet": 12437,
+  "fetched": "2026-10-17T20:04:33Z",
+  "fleet": 12435,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 2187,
-    "percent": 17.6,
-    "pending": 619
+    "installs": 2221,
+    "percent": 17.9,
+    "pending": 592
    },
    {
     "id": "2026.38.5",
@@ -20,9 +20,9 @@
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4538,
-    "percent": 36.5,
-    "pending": 1091
+    "installs": 4551,
+    "percent": 36.6,
+    "pending": 1080
    },
    {
     "id": "2026.38.3",
@@ -44,15 +44,15 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 86,
+    "installs": 83,
     "percent": 0.7,
     "pending": 6
    },
    {
     "id": "2026.32.7",
-    "installs": 1190,
-    "percent": 9.6,
-    "pending": 107
+    "installs": 1172,
+    "percent": 9.4,
+    "pending": 104
    },
    {
     "id": "2026.32.3",
@@ -80,9 +80,9 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 346,
+    "installs": 344,
     "percent": 2.8,
-    "pending": 19
+    "pending": 18
    },
    {
     "id": "2026.27.6.15",
@@ -98,7 +98,7 @@
    },
    {
     "id": "2026.27.6",
-    "installs": 25,
+    "installs": 24,
     "percent": 0.2,
     "pending": 1
    },
@@ -122,8 +122,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 1177,
-    "percent": 9.5,
+    "installs": 1157,
+    "percent": 9.3,
     "pending": 40
    },
    {
@@ -140,7 +140,7 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 225,
+    "installs": 222,
     "percent": 1.8,
     "pending": 8
    },
@@ -212,7 +212,7 @@
    },
    {
     "id": "2026.20.6.1",
-    "installs": 176,
+    "installs": 175,
     "percent": 1.4,
     "pending": 4
    },
@@ -368,7 +368,7 @@
    },
    {
     "id": "2025.44.25.4",
-    "installs": 11,
+    "installs": 10,
     "percent": 0.1,
     "pending": 3
    },
@@ -491,7 +491,7 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-17T19:41:58Z",
+  "fetched": "2026-10-17T20:04:33Z",
   "items": [
    {
     "t": "2026-10-17T19:33:52Z",
