@@ -1,16 +1,16 @@
 {
- "updated": "2026-10-17T07:47:49Z",
+ "updated": "2026-10-17T08:09:17Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-17T06:10:23Z",
+  "fetched": "2026-10-17T08:09:17Z",
   "fleet": 12439,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 1799,
-    "percent": 14.5,
-    "pending": 450
+    "installs": 1903,
+    "percent": 15.3,
+    "pending": 869
    },
    {
     "id": "2026.38.5",
@@ -20,9 +20,9 @@
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4431,
-    "percent": 35.6,
-    "pending": 1187
+    "installs": 4453,
+    "percent": 35.8,
+    "pending": 1165
    },
    {
     "id": "2026.38.3",
@@ -32,7 +32,7 @@
    },
    {
     "id": "2026.38",
-    "installs": 124,
+    "installs": 122,
     "percent": 1.0,
     "pending": 3
    },
@@ -44,19 +44,19 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 117,
-    "percent": 0.9,
-    "pending": 8
+    "installs": 105,
+    "percent": 0.8,
+    "pending": 6
    },
    {
     "id": "2026.32.7",
-    "installs": 1324,
-    "percent": 10.6,
-    "pending": 114
+    "installs": 1299,
+    "percent": 10.4,
+    "pending": 111
    },
    {
     "id": "2026.32.3",
-    "installs": 325,
+    "installs": 322,
     "percent": 2.6,
     "pending": 8
    },
@@ -80,8 +80,8 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 425,
-    "percent": 3.4,
+    "installs": 395,
+    "percent": 3.2,
     "pending": 17
    },
    {
@@ -122,8 +122,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 1384,
-    "percent": 11.1,
+    "installs": 1339,
+    "percent": 10.8,
     "pending": 40
    },
    {
@@ -140,8 +140,8 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 245,
-    "percent": 2.0,
+    "installs": 236,
+    "percent": 1.9,
     "pending": 8
    },
    {
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-17T07:47:49Z",
+  "fetched": "2026-10-17T08:09:17Z",
   "items": [
+   {
+    "t": "2026-10-17T07:56:16Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model X AWD (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-17T07:34:45Z",
     "to": "2026.38.5.1",
@@ -562,14 +570,6 @@
     "to": "2026.38.5.1",
     "from": "2026.27.11",
     "model": "Model 3 Performance (2024)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-17T07:22:35Z",
-    "to": "2026.38.5.1",
-    "from": "2026.32.7",
-    "model": "Model X Performance (2020)",
     "hw": "3.0",
     "country": "United States"
    }
