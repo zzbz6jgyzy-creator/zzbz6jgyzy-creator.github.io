@@ -21,13 +21,22 @@
   const live = {
     look: null,
     heading: null,
+    beta: null,
+    gamma: null,
     on: false,
     attached: false,
     gotAbsolute: false,
     raf: 0,
     pending: null,
     bucket: "",
+    cueMode: "launch",
+    satCue: null,
   };
+  const locListeners = [];
+  const aimListeners = [];
+  const emitLoc = () => locListeners.forEach((fn) => fn({ place: state.place, lat: state.lat, lon: state.lon }));
+  const emitAim = () =>
+    aimListeners.forEach((fn) => fn({ heading: live.heading, beta: live.beta, gamma: live.gamma, on: live.on }));
 
   const toRad = (d) => (d * Math.PI) / 180;
   const toDeg = (r) => (r * 180) / Math.PI;
@@ -231,6 +240,8 @@
     }
     if (state.place) q.set("place", state.place);
     if (state.launchId) q.set("launch", state.launchId);
+    const mode = new URLSearchParams(location.search).get("mode");
+    if (mode) q.set("mode", mode);
     const qs = q.toString();
     const next = location.pathname + (qs ? "?" + qs : "") + location.hash;
     if (location.search !== (qs ? "?" + qs : "")) history.replaceState(null, "", next);
@@ -246,6 +257,7 @@
     state.launchId = "";
     loadWeather();
     render();
+    emitLoc();
   };
 
   const mapLl2 = (row) => {
@@ -431,6 +443,30 @@
     const lookB = document.querySelector("[data-see-look-b]");
     const lookS = document.querySelector("[data-see-look-s]");
     const look = live.look;
+    if (live.cueMode === "sat") {
+      const heading = live.on && live.heading != null ? live.heading : 0;
+      const needleAz = look != null ? look : heading;
+      if (rose) rose.setAttribute("transform", `rotate(${(-heading).toFixed(1)} 50 50)`);
+      if (needle) needle.setAttribute("transform", `rotate(${needleAz.toFixed(1)} 50 50)`);
+      const info = live.satCue || {};
+      if (cue) {
+        cue.textContent = info.text || "Point your phone at the sky";
+        cue.classList.toggle("is-on", !!info.onTarget);
+      }
+      if (cueLive && info.text && info.text !== live.bucket) {
+        cueLive.textContent = info.text;
+        live.bucket = info.text;
+      }
+      if (frame) frame.classList.toggle("is-on", !!info.onTarget);
+      if (hint) {
+        hint.textContent =
+          info.hint ||
+          (live.on
+            ? "Lift the top of the phone toward the moving light. White mark is the top."
+            : "On a phone, tap live compass and point at the sky.");
+      }
+      return;
+    }
     if (look == null) return;
     const heading = live.on && live.heading != null ? live.heading : 0;
     if (rose) rose.setAttribute("transform", `rotate(${(-heading).toFixed(1)} 50 50)`);
@@ -468,6 +504,8 @@
     if (e.type === "deviceorientationabsolute") live.gotAbsolute = true;
     if (e.type === "deviceorientation" && live.gotAbsolute && typeof e.webkitCompassHeading !== "number") return;
     live.pending = e;
+    if (typeof e.beta === "number" && Number.isFinite(e.beta)) live.beta = e.beta;
+    if (typeof e.gamma === "number" && Number.isFinite(e.gamma)) live.gamma = e.gamma;
     if (live.raf) return;
     live.raf = requestAnimationFrame(() => {
       live.raf = 0;
@@ -478,6 +516,7 @@
       const arm = document.querySelector("[data-see-arm]");
       if (arm) arm.hidden = true;
       applyCompass();
+      emitAim();
     });
   };
 
@@ -517,7 +556,7 @@
   const ensureCompass = () => {
     const host = $("see-compass-col");
     if (!host) return;
-    if (!host.querySelector(".see-compass")) {
+    if (!document.querySelector(".see-compass")) {
       const canOrient = typeof DeviceOrientationEvent !== "undefined";
       const needsTap = typeof DeviceOrientationEvent.requestPermission === "function";
       const onPhone = window.matchMedia("(pointer: coarse)").matches || /iPhone|iPad|iPod/.test(navigator.userAgent);
@@ -578,6 +617,14 @@
       });
       if (canOrient) attachCompass();
     }
+    applyCompass();
+  };
+
+  const moveCompass = (host) => {
+    if (!host) return;
+    if (!document.querySelector(".see-compass-frame")) ensureCompass();
+    const frame = document.querySelector(".see-compass-frame");
+    if (frame && frame.parentElement !== host) host.appendChild(frame);
     applyCompass();
   };
 
@@ -826,6 +873,7 @@
         localStorage.removeItem(KEY);
       } catch {}
       render();
+      emitLoc();
     });
   };
 
@@ -881,6 +929,28 @@
         else render();
       });
     if (state.lat != null) loadWeather();
+    emitLoc();
+  };
+
+  window.SEE = {
+    location: () => ({ place: state.place, lat: state.lat, lon: state.lon }),
+    aim: () => ({ heading: live.heading, beta: live.beta, gamma: live.gamma, on: live.on }),
+    onLocation: (fn) => locListeners.push(fn),
+    onAim: (fn) => aimListeners.push(fn),
+    startCompass,
+    moveCompass,
+    setLook: (az) => {
+      live.look = az;
+      applyCompass();
+    },
+    setCueMode: (mode) => {
+      live.cueMode = mode === "sat" ? "sat" : "launch";
+      applyCompass();
+    },
+    setSatCue: (info) => {
+      live.satCue = info;
+      applyCompass();
+    },
   };
 
   boot();

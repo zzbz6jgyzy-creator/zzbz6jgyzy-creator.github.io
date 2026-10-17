@@ -2,7 +2,8 @@ name: Refresh Starlink tracker
 
 on:
   schedule:
-    - cron: "25 5,17 * * *"   # twice a day, 06:25 and 18:25 Dublin (summer time)
+    # Every 8 hours. Feeds the tracker globe and the see-the-launch identify catalog.
+    - cron: "25 1,9,17 * * *"
   workflow_dispatch:
 
 permissions:
@@ -20,19 +21,26 @@ jobs:
       - uses: actions/checkout@v4
       - name: McDowell counts -> starlink-live.js
         run: python3 scripts/build-starlink-stats.py
-      - name: CelesTrak orbits + GCAT buses -> starlink-gp.js
+      - name: CelesTrak orbits + GCAT buses -> starlink-gp.js and data/starlink.json
         # CelesTrak sometimes refuses GitHub's runners; counts still refresh if it does.
+        # The browser never calls CelesTrak — only this job does.
         continue-on-error: true
         run: python3 scripts/build-starlink-gp.py
+      - name: Seed identify catalog from baked GP if CelesTrak was skipped
+        run: |
+          if [ ! -s data/starlink.json ]; then
+            python3 scripts/export-starlink-catalog.py
+          fi
       - name: Bump cache-busting tags and commit if data changed
         run: |
-          if git diff --quiet -- starlink-live.js starlink-gp.js; then
+          if git diff --quiet -- starlink-live.js starlink-gp.js data/starlink.json; then
             echo "No Starlink data change"; exit 0
           fi
           V=$(date -u +%Y%m%d%H%M)
           sed -i -E "s#(/starlink-(live|gp)\.js\?v=)[0-9]+#\1$V#g" starlink.html
+          sed -i -E "s#(STARLINK_CATALOG = \"/data/starlink.json\?v=)[0-9]+#\1$V#" see-the-launch-sats.js
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add starlink-live.js starlink-gp.js starlink.html
-          git commit -m "Refresh Starlink counts and orbits."
+          git add starlink-live.js starlink-gp.js data/starlink.json starlink.html see-the-launch-sats.js
+          git commit -m "Refresh Starlink counts, orbits and identify catalog."
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done

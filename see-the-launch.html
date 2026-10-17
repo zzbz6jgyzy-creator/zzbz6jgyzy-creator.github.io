@@ -6,13 +6,13 @@
     <title>Can I see the launch? — Supercharged Daily</title>
     <meta
       name="description"
-      content="Pick your location and a SpaceX launch. We estimate whether you might see it, which way to look, local weather and the alerts that matter."
+      content="Pick your location. Estimate whether you might see the next SpaceX launch, or point your phone at the sky to identify a Starlink."
     />
     <link rel="canonical" href="https://superchargeddaily.com/see-the-launch.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="Can I see the launch? — Supercharged Daily" />
-    <meta property="og:description" content="Pick your location and a SpaceX launch. We estimate whether you might see it, which way to look, local weather and the alerts that matter." />
+    <meta property="og:description" content="Pick your location. Estimate whether you might see the next SpaceX launch, or point your phone at the sky to identify a Starlink." />
     <meta property="og:url" content="https://superchargeddaily.com/see-the-launch.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/og.jpg" />
     <meta property="og:image:alt" content="A Falcon 9 night launch climbing from the pad" />
@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Can I see the launch? — Supercharged Daily" />
-    <meta name="twitter:description" content="Pick your location and a SpaceX launch. We estimate whether you might see it, which way to look, local weather and the alerts that matter." />
+    <meta name="twitter:description" content="Pick your location. Estimate whether you might see the next SpaceX launch, or point your phone at the sky to identify a Starlink." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/og.jpg" />
     <meta name="twitter:image:alt" content="A Falcon 9 night launch climbing from the pad" />
 
@@ -40,7 +40,7 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=20261016094523" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
-    <link rel="stylesheet" href="/see-the-launch.css?v=202610161520" />
+    <link rel="stylesheet" href="/see-the-launch.css?v=202610172330" />
     <link rel="stylesheet" href="/nav-pill.css?v=202610161834" />
   </head>
   <body>
@@ -136,9 +136,9 @@
           <p class="eyebrow">SpaceX · Viewing</p>
           <h1>Can I see the launch?</h1>
           <p class="see-lede">
-            Pick a place and a flight. We estimate whether the climb may be visible,
-            which way to look, what the sky is doing, and the alerts that actually change the night —
-            without pretending this is a full trajectory tool.
+            Pick a place. We estimate whether the next SpaceX climb may be visible,
+            or — on a phone — you can point at a moving light and we name the Starlink.
+            Not a full trajectory tool.
           </p>
           <p class="see-live" id="see-live">Upcoming SpaceX slate</p>
         </header>
@@ -156,6 +156,12 @@
           <p class="see-hint" id="see-hint"></p>
         </section>
 
+        <div class="see-modes" role="tablist" aria-label="Viewing mode">
+          <button type="button" class="see-mode is-on" id="see-tab-launch" role="tab" aria-selected="true" aria-controls="see-mode-launch">Launch visibility</button>
+          <button type="button" class="see-mode" id="see-tab-sat" role="tab" aria-selected="false" aria-controls="see-mode-sat">Identify satellite</button>
+        </div>
+
+        <div id="see-mode-launch">
         <p class="see-empty" id="see-empty">Pick a place first. Then we rank the next SpaceX launches for that sky.</p>
 
         <div id="see-dash" hidden>
@@ -182,6 +188,34 @@
             <p class="see-fine">Dates refresh from Launch Library 2, same feed as the <a href="/calendar.html">calendar</a>. Starship Flight 15 stays on the <a href="/starship.html">flight lab</a>.</p>
           </section>
         </div>
+        </div>
+
+        <div id="see-mode-sat" hidden>
+          <p class="see-live" id="see-sat-age">Starlink catalog</p>
+          <p class="see-sat-warn" id="see-sat-stale" hidden>This catalog is more than 24 hours old. Orbits drift — a pointed match can be off.</p>
+          <p class="see-sat-desk" id="see-sat-desk">Point-and-identify needs a phone compass. On this computer you can still see which Starlinks are up from your location.</p>
+          <p class="see-empty" id="see-sat-status">Pick a place, then point your phone at the sky.</p>
+          <p class="see-empty" id="see-sat-empty" hidden>Pick a place first.</p>
+          <div id="see-sat-dash" hidden>
+            <section class="see-card" aria-labelledby="see-sat-id-h">
+              <h2 id="see-sat-id-h">Point at the sky</h2>
+              <p class="see-sub">Same live compass as the launch tool. Lift the top of the phone toward the moving light.</p>
+              <div class="see-brief">
+                <div class="see-compass-col" id="see-sat-compass"></div>
+                <div>
+                  <p id="see-sat-msg">Point your phone at the sky.</p>
+                  <div id="see-sat-hits"></div>
+                </div>
+              </div>
+            </section>
+            <section class="see-card" aria-labelledby="see-sat-up-h">
+              <h2 id="see-sat-up-h">Up now</h2>
+              <p class="see-sub">Starlinks currently above 15° from here. Not every one is visible to the eye.</p>
+              <ul class="see-sat-up" id="see-sat-up"></ul>
+            </section>
+            <p class="see-fine">Orbits from the cached CelesTrak GP file on this site, hardware generations from Jonathan McDowell’s GCAT. The browser never talks to CelesTrak.</p>
+          </div>
+        </div>
 
         <p class="see-fine" id="see-note"></p>
       </main>
@@ -207,7 +241,8 @@
     <script src="/script.js?v=202610161013"></script>
     <script src="/design-21st.js?v=20261016094430"></script>
     <script src="/see-the-launch-data.js?v=202610160020"></script>
-    <script src="/see-the-launch.js?v=202610161826"></script>
+    <script src="/see-the-launch.js?v=202610172330"></script>
+    <script src="/see-the-launch-sats.js?v=202610172330"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/grow.js?v=20261016093121" data-band defer></script>
