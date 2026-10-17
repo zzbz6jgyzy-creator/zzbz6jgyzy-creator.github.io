@@ -935,6 +935,26 @@
    "status": "Missed",
    "evidence": [
     {
+     "text": "Unveil delivered late: Tesla unveiled the new Roadster on 15 Oct 2026, almost two years after the end-2024 target. Shipping in 2025 was still missed, so the status stays Missed.",
+     "source": {
+      "outlet": "Tesla on X",
+      "title": "Our design language has evolved since the last reveal",
+      "url": "https://x.com/Tesla/status/2110903770838384773",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    },
+    {
+     "text": "Our full coverage of the reveal.",
+     "source": {
+      "outlet": "Supercharged Daily",
+      "title": "Tesla Roadster reveal",
+      "url": "/dispatch/roadster-reveal-2026.html",
+      "date": "2026-10-15"
+     },
+     "date": "2026-10-15"
+    },
+    {
      "text": "The design was finally revealed on 15 Oct 2026, almost two years after the end-2024 target, and Musk said production will start in 2028, so no cars shipped in 2025.",
      "source": {
       "outlet": "CNBC",
@@ -946,7 +966,7 @@
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-16",
+   "last_verified": "2026-10-17",
    "note": "Car and Driver's reported summary of Musk's post on X. Re-checked after the 15 Oct 2026 reveal."
   },
   {
