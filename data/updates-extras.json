@@ -1,16 +1,16 @@
 {
- "updated": "2026-10-17T21:45:45Z",
+ "updated": "2026-10-17T22:06:40Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-17T20:04:33Z",
-  "fleet": 12435,
+  "fetched": "2026-10-17T22:06:40Z",
+  "fleet": 12436,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 2221,
-    "percent": 17.9,
-    "pending": 592
+    "installs": 2249,
+    "percent": 18.1,
+    "pending": 571
    },
    {
     "id": "2026.38.5",
@@ -20,9 +20,9 @@
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4551,
-    "percent": 36.6,
-    "pending": 1080
+    "installs": 4563,
+    "percent": 36.7,
+    "pending": 1070
    },
    {
     "id": "2026.38.3",
@@ -32,7 +32,7 @@
    },
    {
     "id": "2026.38",
-    "installs": 114,
+    "installs": 113,
     "percent": 0.9,
     "pending": 3
    },
@@ -44,15 +44,15 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 83,
+    "installs": 81,
     "percent": 0.7,
     "pending": 6
    },
    {
     "id": "2026.32.7",
-    "installs": 1172,
-    "percent": 9.4,
-    "pending": 104
+    "installs": 1156,
+    "percent": 9.3,
+    "pending": 102
    },
    {
     "id": "2026.32.3",
@@ -80,9 +80,9 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 344,
-    "percent": 2.8,
-    "pending": 18
+    "installs": 342,
+    "percent": 2.7,
+    "pending": 17
    },
    {
     "id": "2026.27.6.15",
@@ -122,8 +122,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 1157,
-    "percent": 9.3,
+    "installs": 1141,
+    "percent": 9.2,
     "pending": 40
    },
    {
@@ -140,13 +140,13 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 222,
+    "installs": 221,
     "percent": 1.8,
     "pending": 8
    },
    {
     "id": "2026.26.1",
-    "installs": 30,
+    "installs": 29,
     "percent": 0.2,
     "pending": 0
    },
@@ -491,7 +491,7 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-17T21:45:45Z",
+  "fetched": "2026-10-17T22:06:40Z",
   "items": [
    {
     "t": "2026-10-17T20:46:04Z",
