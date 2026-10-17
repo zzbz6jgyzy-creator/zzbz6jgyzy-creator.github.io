@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-17T18:49:35Z",
+ "updated": "2026-10-17T19:10:33Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,24 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-17T18:49:35Z",
+  "fetched": "2026-10-17T19:10:33Z",
   "items": [
+   {
+    "t": "2026-10-17T19:10:05Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model 3 SR (2021)",
+    "hw": "3.0",
+    "country": "France"
+   },
+   {
+    "t": "2026-10-17T19:08:10Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model 3 AWD LR (2021)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-17T17:49:20Z",
     "to": "2026.38.5.1",
@@ -556,22 +572,6 @@
     "model": "Model 3 AWD LR (2019)",
     "hw": "3.0",
     "country": "Canada"
-   },
-   {
-    "t": "2026-10-17T16:21:50Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Cybertruck AWD (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-17T16:21:50Z",
-    "to": "2026.38.5.1",
-    "from": "2026.32.7",
-    "model": "Model X 100D (2017)",
-    "hw": "0.0",
-    "country": "United States"
    }
   ]
  }
