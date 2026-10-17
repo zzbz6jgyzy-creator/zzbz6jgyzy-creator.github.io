@@ -50,3 +50,9 @@ jobs:
             git commit -m "Pre-render homepage headlines, Dispatch and tracker numbers."
             git pull --rebase && git push
           fi
+      - name: IndexNow ping (after Pages deploy)
+        continue-on-error: true
+        timeout-minutes: 5
+        run: |
+          sleep 90
+          python3 scripts/indexnow-ping.py --since "${{ github.event.before || 'HEAD~1' }}" || true
