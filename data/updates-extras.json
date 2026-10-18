@@ -1,28 +1,28 @@
 {
- "updated": "2026-10-18T21:46:08Z",
+ "updated": "2026-10-18T22:07:18Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-18T20:04:21Z",
-  "fleet": 12432,
+  "fetched": "2026-10-18T22:07:18Z",
+  "fleet": 12430,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 3012,
-    "percent": 24.2,
-    "pending": 735
+    "installs": 3050,
+    "percent": 24.5,
+    "pending": 804
    },
    {
     "id": "2026.38.5",
-    "installs": 333,
-    "percent": 2.7,
-    "pending": 3
+    "installs": 329,
+    "percent": 2.6,
+    "pending": 2
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4691,
-    "percent": 37.7,
-    "pending": 950
+    "installs": 4705,
+    "percent": 37.8,
+    "pending": 937
    },
    {
     "id": "2026.38.3",
@@ -32,8 +32,8 @@
    },
    {
     "id": "2026.38",
-    "installs": 94,
-    "percent": 0.8,
+    "installs": 91,
+    "percent": 0.7,
     "pending": 2
    },
    {
@@ -44,25 +44,25 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 48,
+    "installs": 44,
     "percent": 0.4,
-    "pending": 4
+    "pending": 3
    },
    {
     "id": "2026.32.7",
-    "installs": 945,
-    "percent": 7.6,
+    "installs": 931,
+    "percent": 7.5,
     "pending": 88
    },
    {
     "id": "2026.32.3",
-    "installs": 286,
+    "installs": 285,
     "percent": 2.3,
     "pending": 8
    },
    {
     "id": "2026.28.5",
-    "installs": 2,
+    "installs": 3,
     "percent": 0.0,
     "pending": 0
    },
@@ -80,9 +80,9 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 272,
-    "percent": 2.2,
-    "pending": 10
+    "installs": 264,
+    "percent": 2.1,
+    "pending": 7
    },
    {
     "id": "2026.27.6.15",
@@ -122,9 +122,9 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 735,
-    "percent": 5.9,
-    "pending": 30
+    "installs": 718,
+    "percent": 5.8,
+    "pending": 27
    },
    {
     "id": "2026.26.6.3",
@@ -140,9 +140,9 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 202,
+    "installs": 199,
     "percent": 1.6,
-    "pending": 7
+    "pending": 6
    },
    {
     "id": "2026.26.1",
@@ -218,7 +218,7 @@
    },
    {
     "id": "2026.20.3",
-    "installs": 36,
+    "installs": 35,
     "percent": 0.3,
     "pending": 1
    },
@@ -491,7 +491,7 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-18T21:46:08Z",
+  "fetched": "2026-10-18T22:07:18Z",
   "items": [
    {
     "t": "2026-10-18T21:34:44Z",
