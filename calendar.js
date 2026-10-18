@@ -124,6 +124,18 @@
       source: "curated",
     },
     {
+      id: "spcx-q3-lockup-release",
+      title: "SpaceX lock-up release · up to 1.3B shares",
+      start: "2026-10-22T12:00:00Z",
+      group: "spacex",
+      where: "Nasdaq · SPCX",
+      note: "Second full trading day after Q3 results: up to 1.3 billion shares (28% of the 180-day pool) can be sold, per SpaceX's prospectus.",
+      href: "/dispatch/musk-earnings-week-q3-2026.html",
+      status: "confirmed",
+      precision: "day",
+      source: "curated",
+    },
+    {
       id: "ll-bandwagon-5",
       title: "Falcon 9 · Bandwagon-5",
       start: "2026-10-19T10:30:00Z",
