@@ -1,6 +1,15 @@
 {
-  "updated": "2026-10-18T18:33:48Z",
+  "updated": "2026-10-18T19:02:10Z",
   "items": [
+    {
+      "id": "c57730c6b90f",
+      "topic": "spacex",
+      "title": "Zelensky says Musk-owned satellite system still restricted in Ukraine",
+      "source": "Axios",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5jOWlPNXdueVRQQm5uQWxna2N5VnVudnQwcjdDXzhqZDV5LTRFSkxld0l0dHBpeV9RUmZ4VTZwQkdaVTFxMTBuVGZTWC1selFjejAtVktJR2NwZFNyWHdONTg2bTVqVkNHNnp2X0I2dDdWRmVv?oc=5",
+      "published": "2026-10-18T18:24:12Z",
+      "snippet": ""
+    },
     {
       "id": "8e3141abf77f",
       "topic": "tesla",
@@ -8,7 +17,8 @@
       "source": "Barron's",
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5wWGQ3SW01bVFIUUV2QXIwRTZCLTdPMkRnaFUwenRaSTFlZHZnNWdUVVZIb1RuUDc3amg5T1ZVTUxKZi1qbnJVRFBtM3VMWDI5V0JGNUxLX05BRkVpTUFub0Y2cGoxaXA3MTAzalJmY2p0Q1hicGpj?oc=5",
       "published": "2026-10-18T18:15:00Z",
-      "snippet": ""
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.ylgzkut20AhhZOwcmV7o1g&pid=News&w=640"
     },
     {
       "id": "ce3f9aa4b172",
@@ -29,16 +39,6 @@
       "snippet": ""
     },
     {
-      "id": "bea0651ffaf3",
-      "topic": "tesla",
-      "title": "Tesla, Meta, GE Aerospace, GM, IBM, and More Stocks to Watch This Week",
-      "source": "Barron's",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxORnhRYXc4NWFxdV9CRG5wMkRHWXgyNW5qNVBKc2U0bHgxTFZndVJOUU05cGdaSmIzT3ZWYUduVkxJelFMcFNGcktvaHo0SUEyYm90cHRVTWY0dXRCMGxtSWpVaFEwWDYyZ054QVlkSFZOYlJKdTFMenF5TGdNSThadTN4VW9rWEZRQVN3NWhtdEVYZ0ZBa0dHMmh3b04zZHJza2dBdWFnTTRWWlU?oc=5",
-      "published": "2026-10-18T18:00:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.HoEEb2OUQfRUHQDTPFZKjw&pid=News&w=640"
-    },
-    {
       "id": "cce697618aee",
       "topic": "spacex",
       "title": "The SpaceX Roadster Could Hit 60 MPH in Under a Second, but There's a Catch",
@@ -48,13 +48,32 @@
       "snippet": ""
     },
     {
+      "id": "e9c5ceffabaa",
+      "topic": "spacex",
+      "title": "Why SpaceX’s Spectrum Purchase Is Good for AST SpaceMobile Stock",
+      "source": "Barron's",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQWDcwdDk3Ri1aSXljQnc2OExqUTJkd0FNQzBFM09vNWM1VTRpM1N5V1VPVzhOdFJHMlJzZ1ZQc1hEUWNQbFpWOXRFa2hfRkJ2M21XZE5XaU5uUDJ5N2QzdHd2bnlvOXI0Rk10TkRiVlRNSGl0SUlJcnctQ1FOZ0cwbE43bml1Q2pXYlhBcDJacjc?oc=5",
+      "published": "2026-10-18T17:06:21Z",
+      "snippet": ""
+    },
+    {
+      "id": "67c4bfe0ffb0",
+      "topic": "tesla",
+      "title": "What Tesla’s Flying Roadster Really Means for the Global Auto Race",
+      "source": "WSJ",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQbXFSbnVSM0FJd1F5NmJEZmpFdVpIekF6LUR6cVllNURwemcxekdLNUFUUEg0RU1HU1l4UEFOSVkxb2VhZmpVdXdpWDFUZmxEYmRRdVVEYnNEWWFBZEVfZXBzMWNWMzVST1FrZk42NE9NRFR5c0xTdWNvM2xpT1kzRjk3aHdsUzRrdzNGRHhzWTVwR19tZVJjOE05NVdEOUJmcng1V0toYzJzcFhaRXc?oc=5",
+      "published": "2026-10-18T17:01:37Z",
+      "snippet": ""
+    },
+    {
       "id": "7c82d5822a4b",
       "topic": "spacex",
       "title": "SpaceX rocket launch tracker: Falcon 9 to liftoff on Bandwagon-5",
       "source": "Miami Herald",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9XRm9JTDk3MDBFbjhPV2pKTWExaWhxNEc1N0xGQkpkQ2JGZUxmUUlPY09BM2dhdVZoeUNvMTZ1Y0gyM2tMWEp3SGJuVTV5TUE1RExzY1YtWm5kM3JkeGF5NmpiOXI?oc=5",
       "published": "2026-10-18T16:52:00Z",
-      "snippet": ""
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.HLsaZCBoxN0aaqK-GnyeJw&pid=News&w=640"
     },
     {
       "id": "44012b998b9a",
@@ -72,8 +91,7 @@
       "source": "Fox News",
       "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9oTGx0Tkx0di0tM0pYOUJycTVRNklxb2NOWWlOTGpqY0E2aHNDUll3S3FYSDZnNkc2MTJCUk5RMTlwOGtnU1NBMGo1azNOYnlGVXh2OWxxRWZzQjFoV2gtRDIxc2IweUg3WVdHUXdza1JKTEJiTENhMnB1aUFJUdIBgwFBVV95cUxQSEJKZFN2RnlXQUZCRDA3R2xWQ0M4RXVlVjE1QkJKVmNIdEtEbnB1WktnVDVQZUhsX3liTmZDbC1kcDRQdFpDSldTUjJZTzBuWFczNkpLeFJZSWtMUHFuclhYV1pvT2R1N1pld2hGRm16TVpGUGNEbzQtRG8weUpGRDBsVQ?oc=5",
       "published": "2026-10-18T15:16:28Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.uW3pbf2MCdwZJh-Ni24PyA&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "db710a47345a",
@@ -110,7 +128,7 @@
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOWjBjTXdwYU9jeDRaLTFrSGF4ZUpwalNMMlBjUTVWa3B3RG5ZZmRxbjhDOE5tRUQzT3hlNEFVcXo2SnBaV0RsRkswLU1uZHQ5TzZHUG9kQnZqVE9PTWNqS1RZN0RMSGktdjQzVUdQZlNIZGozaWFXTVJyUzJobmRUTmhEUXAzZW5YYTJvWXN4OTRNMlhybjc1b1pyRlhVUTdDUTJwd25VSXU?oc=5",
       "published": "2026-10-18T14:43:01Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.GXtARFXrSDKLdmlufukPAQ&pid=News&w=640"
+      "image": "https://www.bing.com/th?id=ONUT.OH0VItFkOQ8XGpS6jtflgA&pid=News&w=640"
     },
     {
       "id": "1a889aafd5ff",
@@ -119,8 +137,7 @@
       "source": "CarBuzz",
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5HV2JlUmQxcmJqTWkySkpmVjB4YWI4Mmt1U0ZqTGo3VWFJWnBFcW1rNFVVeFJhTDcwVFM4WXBRcjhsRjVJR2MxeEdwUnJkVm1TZlZWOWM3UTU0S013WkY0ZkJyeVlCdnhIdmNpZ2JmSkFjTGs?oc=5",
       "published": "2026-10-18T14:30:12Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ZQ_tXpdGU1Ai1rvmPPCP8A&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "0f115c9d95b2",
@@ -147,8 +164,7 @@
       "source": "CarBuzz",
       "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAybFk4Rmpna0FmNjJFU1Nac3VLaEctakJSNi1EVE5mQmF1QmxZZmxsV3EtdlY1REtialdPU1I3Y3Q1NEZmc0gyWjh6MGZBOEhjbXBiTGZUMk9kM3ZzaWdzMy1SZF9jXy10OGRUcWxHWklSTXhx?oc=5",
       "published": "2026-10-18T14:06:12Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.UTXhmxqvX6Ni8KfIBDFmqQ&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "fab9ce15df3f",
@@ -206,16 +222,6 @@
       "image": "https://www.bing.com/th?id=ONUT.zOjwgZ-K469s3rzjW5wi7Q&pid=News&w=640"
     },
     {
-      "id": "1209b473cac3",
-      "topic": "tesla",
-      "title": "Tesla shows off sports car that can fly through the air",
-      "source": "NBC News",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSEQzMURBcE55OEx0WmhPSzEtaHRSNnk5QjFxOHNUSDhGVWJubDU5TDE4S2pTTjR4MHB0ajhReXlReTlZeFI2OE52QUlNVU5EZmhvekR5djNpTkVWUXdPbEU5eHp6cHgxcHJiQ183bEhPQU9LMnpUSURHYkhCTHUxVTZZQ1Q4WHNMTUJZOUJkekx1ZnBZLTBPcVc3Uk50cUh4Q1BFYXpPaE8?oc=5",
-      "published": "2026-10-18T12:05:19Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.8BR_qlLaM0oLJSfANCryFw&pid=News&w=640"
-    },
-    {
       "id": "e97cc9e5facd",
       "topic": "tesla",
       "title": "Tesla Model Y L Debuts With A Human-Sized Third Row",
@@ -225,24 +231,23 @@
       "snippet": ""
     },
     {
+      "id": "6f86a01c348d",
+      "topic": "spacex",
+      "title": "Rep. Turner calls for congressional probe into Starlink disruption",
+      "source": "CBS News on MSN",
+      "url": "https://www.msn.com/en-us/news/other/rep-turner-calls-for-congressional-probe-into-starlink-disruption/ar-AA2evf7G",
+      "published": "2026-10-18T11:43:22Z",
+      "snippet": "GOP Rep. Mike Turner of Ohio called for a congressional investigation into disruptions in Ukraine to satellite communications with Starlink, the technology owned by SpaceX's Elon Musk.",
+      "image": "https://www.bing.com/th?id=ORMS.61816d670c2ec36cdc7f625af58c5f90&pid=News&w=640"
+    },
+    {
       "id": "13e0e02b6788",
       "topic": "spacex",
       "title": "SpaceX Bids for Space Dominance, Plans 456 Starship Launches Per Year",
       "source": "The Motley Fool",
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOR1pWbU1NdUMyYldzbHBHYTlEWjF1Tmt6QmpKbHBOMmNxaldaZHhsSDlod0JTa1ZVc2lVa052d2E3RTNxYUwyTkFURGV5MFMtN3EtNEpoZkItRWxlWFAxS19IclhUeURVRm1aQWp1ZXZneWpJcjlOczgwVnNkODNmNUpwQVExTVBNWUtQYXBFQktPWjVvSmZoaQ?oc=5",
       "published": "2026-10-18T11:06:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.WMwdRH-hc-_HwXYhCEczhQ&pid=News&w=640"
-    },
-    {
-      "id": "199b1f8e2f12",
-      "topic": "spacex",
-      "title": "'Ukraine Is the Target': Lithuania Links Starlink Fire to Russian Sabotage",
-      "source": "Times Now on MSN",
-      "url": "https://www.msn.com/en-in/news/other/ukraine-is-the-target-lithuania-links-starlink-fire-to-russian-sabotage/ar-AA2euG0Z",
-      "published": "2026-10-18T11:01:00Z",
-      "snippet": "Lithuania says an attempted arson at a Starlink base station near Vilnius was Russia-linked sabotage aimed at undermining Ukraine’s military.",
-      "image": "https://www.bing.com/th?id=ORMS.f3b50bc4bf3898dafd835acb25e4d0f8&pid=News&w=640"
+      "snippet": ""
     },
     {
       "id": "c73d3848666b",
@@ -251,6 +256,15 @@
       "source": "NewsBytes",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNUEF5QnFGdng3RjZ0QXhVcHpoZ2VEUEV2MFVHSk5PVUpaUmVrbG9EZ29qbzZ3X1pBdUg0SFBsRDFGNjhwWjhpZ255aG5UY2k3MmRzVEc0aWUwbm1GNkhtd05GMXljM0x3UXhlNU1fek5aQ3NDU2NMcDZHQVFITkljRDJoaFl6Nll0RDdwRE5qT1lTT2RzUGs0Rm81VnFDRTVINllpZlA3UjI5dlNFYnlF?oc=5",
       "published": "2026-10-18T10:51:25Z",
+      "snippet": ""
+    },
+    {
+      "id": "1dfdb6b3bfbc",
+      "topic": "tesla",
+      "title": "Will The Flying Tesla Roadster Be Street Legal? Nope.",
+      "source": "InsideEVs",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1semRwNzBSZ2FUeVFFeDlSOWRBVEYzbUxpTWxMNU5OMk91aC15eWpTWnZUU2xNcjNpaXBTUWFWOGFfRmNSTjRCenFJNFZLRE1qQW03OWxKbTRiUG1vMVBIUDVKdkJFVnlJQzhLWDlLWWlnZElVZ3l2X212Q3U?oc=5",
+      "published": "2026-10-18T10:12:19Z",
       "snippet": ""
     },
     {
@@ -281,83 +295,14 @@
       "snippet": ""
     },
     {
-      "id": "d90076389a88",
-      "topic": "spacex",
-      "title": "SpaceX is coming to Louisiana. Here’s how it turned Texas’s poorest town into a ‘space city.’",
-      "source": "NOLA.com",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNSEh4am9Xejc5UDJ6SnVqdGo0QlBjRll3OU0xaENYRzVGbGJmbkxGcXc4QnR5V01yOUpSWkVaTVQtRlBReW5YTW5mZHN6SUdjZVVYaExHb1Vib0dwR200MUdlOWhvbXVjOGUxOWctNVVEQ0Rkc1ZFM1kyN3p1MGhBdzJFZUxCN2FKX1hpOUFVZjhSV29ueXpHbWFyVUM1QmEwOHdnb3NfWF9rcDVTQzFXUjU2bFdYOWpxd2NBLWt2VdIBxAFBVV95cUxOVTA3RFBVeVRVUlc2MGw0bkY5SnpwUi1fTDVBNV9LMUlKYXdydDZFbGw2M3dWazFtOWxqMXlsR002SlNwRzBibzRhRi1jR2dlaC1BbVFZR0JwU1NyNGZqMGIzVzRFdk5mYXlGVmZPcTNPdXdWc01fbVQ0R3B0eTFTZkZYMENoUmxRaGxPdVdTMWNwbXBvVnRlVUJiYk1NR1dRNlVlREhrMHdnQW1RTlVfTkxPOWZWR0JjblRFMjdrQTYyZ2hQ?oc=5",
-      "published": "2026-10-18T09:00:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.CHHpsGL8zzsMdkafeRP35w&pid=News&w=640"
-    },
-    {
-      "id": "6f070f98915a",
-      "topic": "spacex",
-      "title": "Lithuania suspects Russia after attack on Starlink equipment",
-      "source": "Newsweek on MSN",
-      "url": "https://www.msn.com/en-us/news/other/lithuania-suspects-russia-after-attack-on-starlink-equipment/ar-AA2eurYC",
-      "published": "2026-10-18T08:54:00Z",
-      "snippet": "Lithuanian authorities have opened an investigation after an attempted arson attack targeted a company storing Starlink equipment.",
-      "image": "https://www.bing.com/th?id=ORMS.d9d6080790bb20855f6d8202aba26f8f&pid=News&w=640"
-    },
-    {
-      "id": "e734128a42c5",
-      "topic": "spacex",
-      "title": "Prediction: SpaceX Will Be the Biggest Winner If Neoclouds Collapse",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOMElSdFJtOUl5TExEbXBGNjcyLTRkM0hTSE9sZFpkSnZmZkZFWkp4NUV5RFZqWDJnck5jZnd1Yk90ME95c0E2d04yT3BLTEVkN040TDM4LVAyWVZMRXB3WnI2WENGNk1GMldMMGgtZ2JLeldCbG1BaTBvZjhudUstS3dORFVfdVg0Y1hrOFRyekplZjZqY1JlT042STFkaGxUSFU2MXNGa2s4UWM?oc=5",
-      "published": "2026-10-18T08:20:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.X-CsIXIYyFPo5Rlvb0ahMA&pid=News&w=640"
-    },
-    {
-      "id": "c0ad140eb2e5",
+      "id": "6be54fae6315",
       "topic": "spacex",
       "title": "How many Starlink satellites are in orbit today?",
       "source": "BGR on MSN",
-      "url": "https://www.msn.com/en-us/technology/space-exploration/how-many-starlink-satellites-are-in-orbit-today/ar-AA2euRIU",
+      "url": "https://www.msn.com/en-us/technology/space-exploration/how-many-starlink-satellites-are-in-orbit-today/ar-AA2euRIU?ocid=BingNewsVerp",
       "published": "2026-10-18T08:17:00Z",
       "snippet": "There are more Starlink satellites in Earth's lower orbit than any other brand of satellite, providing thousands of people with internet access.",
       "image": "https://www.bing.com/th?id=ONUT.2tSRAAiFwzvGapKQ8BkqMA&pid=News&w=640"
-    },
-    {
-      "id": "f128f3bbf9f6",
-      "topic": "grok",
-      "title": "Tencent AI agents showed unintended web-browsing behaviour",
-      "source": "TechGig",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNZ29ZWm1GOFVxNlktR0w3VE1uVldLS2RqVzQyX0M5eUJnMzA5bElmaTZXcDNlQmJRSEFiN0ZjVHRPTzgzVTM3aEotcW83UUpVdkQzd0h6RUY4bEUwLUpSVnFxRGIzdWlMUmNObzBUdnJLV3lUaVcybjdxengxZzZmOHpsZ1BETnpGSjVPZTlhNmh5THNUVmJyVDlKOFnSAaIBQVVfeXFMUFRhRUJCeVppOVk0SHFlazBzLXZWeTdSY0hNc1hJU2hxLWl0c0NLdW44Z2RVZUtDdm1xNUlhTUJmbVVqZlVpZG45WnhZcWNuTmlsdGJEVG1VU2NiTzFNQ0ZUVFNDVGQ4ZmpheF8xalhnZHhNNmUtdXRKZjE3cjdWSlQ1bXNvNGlWdlcxdjJtTzFtOEVWU0NCdzJQNWphUE9pQlpn?oc=5",
-      "published": "2026-10-18T08:08:51Z",
-      "snippet": ""
-    },
-    {
-      "id": "6acc2d8567f4",
-      "topic": "spacex",
-      "title": "Rubio: Nobody ordered Starlink slowdown in Ukraine",
-      "source": "Yahoo",
-      "url": "https://www.yahoo.com/news/us/articles/rubio-nobody-ordered-starlink-slowdown-150820971.html",
-      "published": "2026-10-18T08:08:00Z",
-      "snippet": "The US did not order Starlink to be slowed down in Ukraine, Marco Rubio has insisted. The US secretary of state said that the White House \"had nothing to do\" with the satellite system's speed issues, ...",
-      "image": "https://www.bing.com/th?id=ONUT.irbQ2x-7FJRM-8bruVGMIg&pid=News&w=640"
-    },
-    {
-      "id": "15a8f2e82fbc",
-      "topic": "spacex",
-      "title": "Bessent warns Zelenskyy to be very careful about claims US is throttling Starlink",
-      "source": "CNBC on MSN",
-      "url": "https://www.msn.com/en-us/money/markets/bessent-warns-zelenskyy-to-be-very-careful-about-claims-us-is-throttling-starlink/ar-AA2eu3yR",
-      "published": "2026-10-18T07:37:36Z",
-      "snippet": "Starlink, high-speed satellite internet provided by Elon Musk's SpaceX, is critical to Ukraine's defense.",
-      "image": "https://www.bing.com/th?id=ONUT.ajg04sKeXuYqcZdHeV9QOg&pid=News&w=640"
-    },
-    {
-      "id": "1dfdb6b3bfbc",
-      "topic": "tesla",
-      "title": "Will The Flying Tesla Roadster Be Street Legal? Nope.",
-      "source": "InsideEVs",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1semRwNzBSZ2FUeVFFeDlSOWRBVEYzbUxpTWxMNU5OMk91aC15eWpTWnZUU2xNcjNpaXBTUWFWOGFfRmNSTjRCenFJNFZLRE1qQW03OWxKbTRiUG1vMVBIUDVKdkJFVnlJQzhLWDlLWWlnZElVZ3l2X212Q3U?oc=5",
-      "published": "2026-10-18T07:12:19Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.CKhgKMObXnEklX-CjX4yfg&pid=News&w=640"
     },
     {
       "id": "fa344f6d5161",
@@ -375,6 +320,15 @@
       "source": "Stocktwits",
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPbVZVQmpqVjVVSXJvLXFKVlloc0xoOWJLbnRzYnAzWHk2RWxja2R2NlJ1M3R5TGtvNUF1cWI4b3QtS0hINndVYVpZVjFfU0k4R1duTnNCeTFhOFRTazkwRjdlem9oMnhXblVHdTA4VVozZkFTWklOZU5Qem01bWVlN0VEaVhiQnQzY3k5ZFZ2ZzNoNHZzRUUwdTVLb3pXdW1SbXNnOWY1b1NNUVFoTnJIZjdvVC05Zw?oc=5",
       "published": "2026-10-18T06:28:23Z",
+      "snippet": ""
+    },
+    {
+      "id": "52ea21c4c7ac",
+      "topic": "tesla",
+      "title": "What Tesla's dramatic Roadster reveal says about Musk's strategy",
+      "source": "DW.com",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQazNKSDlnR1N3cjdQbWdlV0xUYTdSVWdUS2dWaE91T1N2U0kwMzhjaHk0SjdEZk1TR1dNWUFRSGQzWUpIMDVPT1VmZmowYUlBZi1PVXFybmNmdGRtc1ptMVFFRUJQb09idlBleFBKek1KS2hKeUxROG5hb0xBVG9GcEIwY1MyOENnRUktVGZRbk1INkpfOTFXbDVUci1TQTZ2?oc=5",
+      "published": "2026-10-18T05:50:31Z",
       "snippet": ""
     },
     {
@@ -414,14 +368,14 @@
       "snippet": ""
     },
     {
-      "id": "703a0201ccfc",
-      "topic": "spacex",
-      "title": "SpaceX (SPCX) Stock: What Wall Street Expects from Earnings Tuesday",
-      "source": "CoinCentral",
-      "url": "https://coincentral.com/spacex-spcx-stock-what-wall-street-expects-from-earnings-tuesday/",
-      "published": "2026-10-18T01:15:00Z",
-      "snippet": "SpaceX (SPCX) stock fell 2% to $146 ahead of Q3 earnings Tuesday. See what analysts expect, key support levels and what the chart says.",
-      "image": "https://www.bing.com/th?id=ONUT.XGwsUvhb-96tSgxMhAO_fg&pid=News&w=640"
+      "id": "140d815be18a",
+      "topic": "grok",
+      "title": "If Grok changes 20 times a day, don't rely on last month's AI evaluations—re-measure it with your own 5 questions",
+      "source": "note",
+      "url": "https://note.com/unikoukokun/n/nedce61518532?hl=en",
+      "published": "2026-10-18T01:16:00Z",
+      "snippet": "\"I tried Grok last month, but it was mediocre.\" That statement might no longer be useful. Because impressions from a month ago don't apply to a tool that changes its content every day.📅 At Uniko's AI ...",
+      "image": "https://www.bing.com/th?id=ONUT.rYA039TrwP-lvMFqgm3qHQ&pid=News&w=640"
     },
     {
       "id": "f0d6f9b4d310",
@@ -442,6 +396,15 @@
       "snippet": ""
     },
     {
+      "id": "13bc625cdfa9",
+      "topic": "grok",
+      "title": "Websites block AI agents, raising utility questions",
+      "source": "TechGig",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPSTM1RlRzbWc3RThPbXh0LUxEMVVZYlF6SjBjY0E2TlBhZU9zT0t6VDlSazczaktjaTVsTFNETFBXS21EU09IZF9ldExldW5SRXFzTlhlMi00c2ctMHZUTmJuMlRhcnpubmwxX21Nc0tLWHpSOTFuMGxacGl5NUFUbldMQ0JYaVhycHdYdmQ4anRpSmN5NVFTREdZdzhRel90Um0yRFpna0ZRZWpkLVhOeS1vMnQ3NVBtYjctWDBqNTBqaTY5bGFpWTJtMFpnb3BjY1NR0gGXAUFVX3lxTE9MZXhoc1ZmQ09RR3U0OHdzQmx3azYyQ2tUWEt2OTNmbHpSVm5HckNmZGxnaGVXdTBGcGIydnN5LWZ1S0RreEtQaEV3dTZVelNpTDdmU2VqM0hMZUhKZ0U3Mk84NFVDZEtULWJDQWtva1k1Z01DVm5BWVl5MDEtaUtFaUpRMHJGZ2NMaFUwRW15dmxnUEV6S00?oc=5",
+      "published": "2026-10-18T00:20:55Z",
+      "snippet": ""
+    },
+    {
       "id": "e5dba2ed2cc5",
       "topic": "grok",
       "title": "ChatGPT vs Claude vs Perplexity: 3-Month Cutoff Gap [2026]",
@@ -449,16 +412,6 @@
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNUmROX2d5UjRKTzBfRFlRX1FXN1ZKRnlrNXBnQS1hM3hFS0c2dXY5S0E1bHVNMGtaR2JsVVRyc2gxdmxWbzV5Vm4tSVBUaDlrZV96Z2lVR0R4bXI0S3p6b0VYNVh4a1RQSHdNTWJ3bDlhQkt6RGlsT0xFWHJpN2FxRA?oc=5",
       "published": "2026-10-17T21:32:39Z",
       "snippet": ""
-    },
-    {
-      "id": "09977b82f26a",
-      "topic": "spacex",
-      "title": "Marco Rubio denies White House ordered Ukraine Starlink slowdown",
-      "source": "Newsweek on MSN",
-      "url": "https://www.msn.com/en-us/news/other/marco-rubio-denies-white-house-ordered-ukraine-starlink-slowdown/ar-AA2esHIt",
-      "published": "2026-10-17T18:57:24Z",
-      "snippet": "Secretary of State Marco Rubio denied that the White House ordered satellite internet service used by Ukraine to be slowed.",
-      "image": "https://www.bing.com/th?id=ORMS.1b210d8a78d0bbd8010f762342233aa9&pid=News&w=640"
     }
   ]
 }
