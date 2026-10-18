@@ -83,8 +83,18 @@ def main() -> None:
         if s != totals[k]:
             raise SystemExit(f"generation sum mismatch for {k}: {s} vs {totals[k]}")
 
+    prev_orbits = ""
+    if OUT.exists():
+        try:
+            blob = OUT.read_text(encoding="utf-8")
+            prev = json.loads(blob[blob.index("{") : blob.rindex("}") + 1])
+            prev_orbits = prev.get("orbitsUpdated") or ""
+        except (json.JSONDecodeError, ValueError):
+            prev_orbits = ""
+
     payload = {
         "updated": ts.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        **({"orbitsUpdated": prev_orbits} if prev_orbits else {}),
         "source": URL,
         "totals": totals,
         "generations": gens,

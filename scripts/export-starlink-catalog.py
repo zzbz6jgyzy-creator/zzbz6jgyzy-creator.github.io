@@ -8,7 +8,7 @@ from a fresh download.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +38,36 @@ def norad_of(tle1: str) -> int:
         return 0
 
 
+def tle_epoch_iso(line1: str) -> str | None:
+    if not line1 or len(line1) < 32:
+        return None
+    try:
+        yy = int(line1[18:20])
+        day = float(line1[20:32])
+        year = 2000 + yy if yy < 57 else 1900 + yy
+        dt = datetime(year, 1, 1, tzinfo=timezone.utc) + timedelta(days=day - 1)
+        return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    except (TypeError, ValueError):
+        return None
+
+
+def vintage_of(gp: dict) -> str:
+    raw = gp.get("tleAsOf") or gp.get("asOf") or ""
+    if isinstance(raw, str) and "T" in raw:
+        return raw
+    stamps = []
+    for row in gp.get("tle") or []:
+        if isinstance(row, list) and len(row) > 1:
+            iso = tle_epoch_iso(row[1])
+            if iso:
+                stamps.append(iso)
+    if stamps:
+        return max(stamps)
+    if raw:
+        return raw
+    raise SystemExit("baked GP has no CelesTrak epoch; not writing a bake-clock fallback")
+
+
 def main() -> None:
     gp = load_gp()
     gens = gp.get("gens") or list(GEN_LABELS)
@@ -49,10 +79,11 @@ def main() -> None:
         gen = gens[gi] if isinstance(gi, int) and 0 <= gi < len(gens) else "v2opt"
         cat = norad_of(l1)
         rows.append([f"STARLINK-{cat}", cat, gen, l1, l2])
+    vintage = vintage_of(gp)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     body = {
-        "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "tleAsOf": gp.get("tleAsOf") or gp.get("asOf") or "",
+        "updated": vintage,
+        "tleAsOf": vintage,
         "count": len(rows),
         "fields": ["name", "norad", "gen", "tle1", "tle2"],
         "gens": GEN_LABELS,
