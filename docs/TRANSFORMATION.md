@@ -42,12 +42,26 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Every Dispatch article gets NewsArticle + BreadcrumbList JSON-LD, a visible Home → Dispatch → story crumb, and a desk block (Supercharged Daily / Alex R / @ALJR86 / About). No invented Person credentials.
 - `about.html` gets Organization JSON-LD from the same facts.
 
-### Batch 6 — Performance (this PR)
+### Batch 6 — Performance (merged #112)
 
 - Wallpaper lightbox opens a 1280w / 720w WebP preview, not the 4K / phone master. Download links stay full-res. Remaining JPG grid thumbs converted to WebP.
 - Homepage drops unused `home.css` (old hx-hero) and folds `home-focus.css` into `home-v2.css`.
 - Homepage fonts: drop Inter 800 (use 700), load Michroma subsetted to “Supercharged Daily”.
 - “More from Dispatch” uses existing 480w WebP posters.
+
+### Batch 7 — Search (merged #113)
+
+- Overlay (`⌘K` / nav Search) plus `/search.html`. Index is `data/articles.json` + `data/pages.json`.
+- Injected by `nav-pill.js` — do not edit `nav.json`.
+
+### Batch 8 — Buying-guide cash sheet (merged #114)
+
+- Sourced Tesla list prices, dest/order fees, charger SKUs, FSD $99/mo. Tax / rebate / install / FSD months are the reader’s.
+
+### Batch 9 — Search everywhere (this PR)
+
+- Cache-bump `nav-pill.js` / `nav-pill.css` to `202610182231` on every leftover page so Search injects sitewide.
+- No `nav.json` / `sync-nav.py`. Redirect stubs (`videos.html`, `goldcab.html`, `grok-bot.html`) still have no pill.
 
 ## Architecture (do not rip out)
 
@@ -65,7 +79,7 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 1. **Light theme** — last; dark is the brand. Do not bolt on a half theme.
 
-Shipped this window: buying-guide cash sheet on `/guides/tesla-buying-guide.html`. Tesla list prices, dest/order fees, charger SKUs and FSD $99/mo from the existing 14 Oct 2026 sources. Tax, rebate, install and FSD months are the reader’s. No invented incentives.
+Shipped this window: Search in the pill on every page that already loads `nav-pill.js` (cache bump only — no `nav.json` / `sync-nav.py`). Light theme still last.
 
 ## Rules that stay in force
 
