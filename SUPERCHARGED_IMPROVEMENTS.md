@@ -18,67 +18,59 @@ Static GitHub Pages site. Pill nav is generated from `scripts/nav.json` by `scri
 - Roadster hub, Tesla / SpaceX desks, Starship flight lab, Starlink tracker, FSD Europe, Software Update Tracker, Cybercab tracker, Promise tracker, calendar, see-the-launch, explainers, clubs, explorers, markets, reviews, Grok, Gear, Games, wallpapers.
 - Follow on X → `https://x.com/ALJR86`. Subscribe → `/#newsletter`.
 
-### Confirmed problems
-
-1. **Nav** — six mixed dropdowns (News, Tesla, Roadster, SpaceX, Trackers, More). No desktop Home. Trackers duplicated Starship / Starlink. Sheet always prepended Home.
-2. **Homepage** — explore row hid Calendar and Starship. Prerendered feed could lead with Motley Fool “$5,000 Invested…” speculation.
-3. **News** — per-topic title_key only; same story could appear twice across topics. Electrek dropped in Python but not in a shared keep layer. No finance-speculation filter. No hold list.
-4. **Dispatch** — one long grid. Site-wide search only. No topic chips, local filter, incremental load, or reading time.
-5. **Search** — no synonyms, no recency boost, no kind filters, no wire index on the full page.
-6. **My Tesla** — no opt-in alert preferences. No delivery system (correctly not claimed).
-7. **Analytics** — Cloudflare pageviews only; no event taxonomy in-product.
-8. **Commercial** — affiliate disclosure exists; no ad slots (do not activate without approval).
-
 ## Prioritised tasks
 
-1. Navigation restructure (Home / Tesla / SpaceX / Roadster / Explore / News)
-2. News keep / dedupe / relevance
-3. Dispatch browse
-4. Search ranking + filters
-5. Homepage explore + feed quality
-6. My Tesla opt-in prefs
-7. Tests + this document
-8. Later sessions: leftover light wells (`.mj`, `.gear-band`, Dispatch `.sd-box`), Core Web Vitals lab numbers, commercial briefs, event analytics wiring
+1. Navigation restructure — done (#119)
+2. News keep / dedupe / relevance — done (#119)
+3. Dispatch browse — done (#119)
+4. Search ranking + filters — done (#119)
+5. Homepage explore + feed quality — done (#119)
+6. My Tesla opt-in prefs — done (#119)
+7. Leftover light wells + interactive tools + newsletter/mobile — this session
+8. Later: Core Web Vitals lab numbers, commercial briefs (no activation), event analytics wiring
+
+## Completed earlier (#119)
+
+- Nav: Home / Tesla / SpaceX / Roadster / Explore / News.
+- Shared `news-keep.js` + `scripts/news_keep.py`, Dispatch chips/search/reading time, search aliases/filters, homepage 3×2 explore, My Tesla on-device notify prefs (not delivered).
 
 ## Completed this session
 
-- Restructured nav to Home, Tesla, SpaceX, Roadster, Explore, News. Explore is a two-column desktop panel of high-value tools. Sheet no longer doubles Home. Dropdown parents get `aria-current` when a child matches. Focus rings added.
-- Shared `news-keep.js` + `scripts/news_keep.py`: drop Electrek, drop finance-speculation titles, global `title_key`, near-dupe clustering, source trust boost/demote, speculation flag, human hold list (`data/news-hold.json`). Score is **not** a fact check.
-- Re-filtered `news-data.json` without refetch. Refreshed only the homepage `<!--hv:feed-->` block (did not run full `build-home.js`).
-- Dispatch: topic chips (only categories with cards), local search, incremental load, publication date + reading time from `articles.json`.
-- Search: aliases, recency boost, Stories / Pages / Headlines filters, optional wire index on `/search.html` only, better empty state.
-- Homepage explore adds Starship Mission Control and Launch calendar (3×2).
-- My Tesla: on-device alert checkboxes. Copy states delivery is not live.
+- Light theme leftover wells now use paper surfaces: `.mj` / `.mj-b`, review `.gear-band` (and category tiles), older Dispatch `.sd-box` / `.sd-table` / `.sd-nl`, plus newer table `thead` wells. LIVE / Watch-live / maps / explainer boards stay dark.
+- Calendar: `Checking Launch Library 2…` status before the fetch, `role="status"`, filter chips `min-height: 40px`. Existing curated fallback and Launch Library 2 attribution unchanged.
+- Promise tracker: `#pt-list` starts with `Loading promises…`. Existing load-fail copy kept.
+- Starship Flight Lab: visible fail copy in `#slab-detail` if `STARSHIP_LAB` / `STARSHIP` is missing. Desk-read disclaimer already on the page.
+- Newsletter band copy follows the page (Roadster / Tesla software / SpaceX / Tesla desk / default). Scroll popup is skipped on every mobile viewport — not just the first view. No new popups. Homepage prerendered band stays the default week copy.
+- Affiliate codes, Follow on X, `twitter:site`, and `nav.json` untouched.
 
 ## Files modified
 
-- `scripts/nav.json`, `scripts/sync-nav.py` (and every HTML nav block it rewrites)
-- `nav-pill.js`, `nav-pill.css`
-- `scripts/news_keep.py`, `news-keep.js`, `data/news-hold.json`, `scripts/snapshot-news.py`, `scripts/build-home.js`, `home-v2.js`, `news.js`, `news-data.json`
-- `scripts/refresh-home-feed.js`, `index.html` (explore + feed + script pins)
-- `dispatch.html`, `dispatch-browse.js`, `dispatch-browse.css`, `scripts/add-reading-minutes.py`, `data/articles.json` (`minutes` only)
-- `search.js`, `search.html`, `search.css`
-- `my-tesla.html`, `my-tesla.js`, `my-tesla.css`
-- `home-v2.css`, `theme.css`, `styles.css`
-- `scripts/test_news_keep.py`, `scripts/test-site-optimisation.mjs`
+- `theme.css` — leftover well lifts
+- `styles.css` — calendar filter touch target
+- `grow.js`, `scripts/build-articles.py` — topic band + no mobile pop; cache pin
+- `calendar.js`, `calendar.html` — checking status
+- `starship-lab.js` — fail copy
+- `promise-tracker.html` — loading row
+- HTML cache pins: `theme.css`, `styles.css`, `grow.js`, `calendar.js`, `starship-lab.js`, `promise-tracker.js` → `202610190500`
+- `scripts/test-tools-polish.mjs`
 - `SUPERCHARGED_IMPROVEMENTS.md`
 
 ## Tests performed
 
 All executed in this session:
 
-- `python3 scripts/test_news_keep.py` → `news_keep ALL_PASS` (finance titles dropped, Electrek dropped, exact-title collapse, speculation flag).
-- `python3 scripts/sync-nav.py --check` → `out of sync: 0`.
-- `node scripts/test-site-optimisation.mjs` against `http://127.0.0.1:4173` → `ALL_PASS`:
-  - Desktop labels Home / Tesla / SpaceX / Roadster / Explore / News; no Trackers / More.
-  - Sheet has a single Home link (desktop source + 390px sheet).
-  - Homepage feed no longer includes “$5,000 Invested…”.
-  - Explore cards include Starship and Calendar.
-  - Dispatch chips omit Optimus; Roadster filter only shows Roadster-related cards; local Starship search returns cards.
-  - Search queries: Roadster, FSD Europe, Starship, Tesla software, Starlink, Optimus all returned matches. Empty query shows grouped latest stories + pages.
-  - My Tesla alerts copy states delivery is not live.
-- Re-filtered snapshot: `news-data.json` 49 → 46 items (finance / duplicate title_key removed).
-- Reading time: `minutes` added to 48 existing `articles.json` rows; dates/topics/titles untouched.
+- `node scripts/test-tools-polish.mjs` against `http://127.0.0.1:4173` → `ALL_PASS`:
+  - Light theme via `localStorage sd-theme=light`
+  - `.gear-band` and `.sd-box` not near-black; table `th` lifted
+  - Injected `.mj` uses paper
+  - TESMAG `J72E6FRRQ7QK` and Tesla `ts.la/alex474841` unchanged
+  - Calendar status + 40px filters
+  - Starship disclaimer + populated lab + fail-copy present in JS
+  - Promise cards replace the loading row
+  - Starlink CelesTrak stamp
+  - Newsletter topics on Roadster / My Tesla / SpaceX
+  - No `.sd-pop` on a 390px Tesla page after a mid-scroll
+  - Follow on X still `https://x.com/ALJR86`
 
 ## Measured performance
 
@@ -89,21 +81,19 @@ No new Lighthouse / CWV lab run this session. Do not invent numbers. Previous me
 - Notifications are preferences only. Nothing is sent.
 - Wire relevance is deterministic string/source scoring, not factual accuracy.
 - Homepage feed prerender is updated by `scripts/refresh-home-feed.js`; do not run full `build-home.js` unless tesla.html / spacex.html `<picture>` diffs are reverted.
-- Cloudflare analytics remains pageview-only; `data-sd-track="search"` is a hook, not a live dashboard.
-- Leftover light-theme wells (`.mj`, review `.gear-band`, Dispatch inline `.sd-box`) are unchanged.
+- Cloudflare analytics remains pageview-only.
 - Official SpaceX YouTube only; Follow on X and `twitter:site` unchanged.
+- Newsletter topic copy is path/tag framing, not Beehiiv list tags. Topic-specific Beehiiv tags still need approval.
+- Scroll popup still exists on desktop after 50% scroll (one-time). Mobile never gets it.
 
 ## Remaining work
 
-- Broader tool QA (Starlink globe, Flight Lab, games chrome only).
 - Lab CWV measurements on a production-like host.
-- Article-end newsletter already exists via `grow.js`; topic-specific Beehiiv tags need approval.
 - Commercial: labelled sponsorship slots only after approval.
 - Event-level analytics if a privacy-respecting store is connected.
+- Broader tool QA on globes / games chrome only if something regresses.
 
 ## Recommended next steps
 
-1. Merge this nav + news + Dispatch + search batch.
-2. Run a mobile pass on Starship / Starlink / My Tesla with the new Explore menu.
-3. Fill `data/news-hold.json` when a wire story needs a human hold.
-4. Only then consider ads or a notification delivery worker.
+1. Merge this tools + leftover-wells batch.
+2. Only then consider a CWV lab run or ads / a notification delivery worker.

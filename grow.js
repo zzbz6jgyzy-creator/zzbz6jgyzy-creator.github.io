@@ -21,10 +21,30 @@
       <a class="sd-btn" href="${REF}" target="_blank" rel="noopener noreferrer sponsored">Order with my referral ↗</a><span class="ref-note">Referral link: we may earn a reward</span>`;
     place(r);
   }
+  const bandCopy = () => {
+    const path = (location.pathname || "").toLowerCase();
+    const section = (document.querySelector('meta[property="article:section"]')?.content || "").toLowerCase();
+    const tag = (document.querySelector(".art-tag, .tag")?.textContent || "").toLowerCase();
+    const hay = `${path} ${section} ${tag}`;
+    if (/roadster/.test(hay)) {
+      return ["roadster", "Roadster on Supercharged Daily", "Reveal clocks, thruster notes and the Tesla desk — one free Sunday email."];
+    }
+    if (/my-tesla|\/updates|fsd|tcmv|cybercab|robotaxi/.test(hay)) {
+      return ["tesla-software", "Tesla software on Supercharged Daily", "FSD, software updates and My Tesla notes — free, every Sunday."];
+    }
+    if (/starship|starlink|spacex|falcon|dragon|see-the-launch|\/calendar/.test(hay)) {
+      return ["spacex", "SpaceX on Supercharged Daily", "Starship flights, Starlink and Falcon dates — the week in one Sunday email."];
+    }
+    if (/\/tesla\.html|\/reviews|buying-guide|\/gear\.html/.test(hay)) {
+      return ["tesla", "Tesla on Supercharged Daily", "Reviews, buying notes and the Tesla desk — free, every Sunday."];
+    }
+    return ["default", "Get Supercharged Daily", "The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday."];
+  };
   if (has("band") && !document.querySelector("[data-band-slot] .sd-band") && !document.querySelector('.nl-end, #newsletter, [data-newsletter]:not(.sd-pop):not(.sd-band)')) {
+    const [topic, heading, blurb] = bandCopy();
     const b = document.createElement("section");
-    b.className = "sd-band"; b.id = "newsletter"; b.setAttribute("data-newsletter", "band"); b.setAttribute("aria-label", "Newsletter signup");
-    b.innerHTML = `<div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
+    b.className = "sd-band"; b.id = "newsletter"; b.setAttribute("data-newsletter", "band"); b.setAttribute("data-band-topic", topic); b.setAttribute("aria-label", "Newsletter signup");
+    b.innerHTML = `<div><h2>${heading}</h2><p>${blurb}</p></div>
       <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-1?utm_source=website&utm_medium=site-band&utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
     const bs = document.querySelector("[data-band-slot]"); if (bs) bs.appendChild(b); else place(b);
   }
@@ -32,8 +52,8 @@
   const store = { get(k){try{return localStorage.getItem(k)}catch(e){return "1"}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}} };
   const views = Number(sessionStorage.getItem("sd-views") || 0) + 1;
   try { sessionStorage.setItem("sd-views", views); } catch (e) {}
-  const mobileFirst = matchMedia("(max-width:720px)").matches && views < 2;
-  if (has("pop") && !store.get(KEY) && !mobileFirst) {
+  const skipPop = matchMedia("(max-width:720px)").matches;
+  if (has("pop") && !store.get(KEY) && !skipPop) {
     const onScroll = () => {
       const h = document.documentElement.scrollHeight - innerHeight;
       if (h <= 0 || scrollY / h < 0.5) return;

@@ -1,7 +1,13 @@
 (() => {
   const lab = window.STARSHIP_LAB;
   const catalog = window.STARSHIP;
-  if (!lab || !catalog) return;
+  if (!lab || !catalog) {
+    const detail = document.getElementById("slab-detail");
+    if (detail) {
+      detail.innerHTML = '<p class="slab-fine" data-slab-fail>Flight Lab data didn’t load. Refresh the page, or read the desk note above — times are a desk read of SpaceX pages, not live telemetry.</p>';
+    }
+    return;
+  }
 
   const outcomeLabel = {
     worked: "Worked",

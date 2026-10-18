@@ -3833,6 +3833,7 @@ a.referral-banner:hover {
   color: var(--ink-soft);
   border-radius: 6px;
   padding: 0.35rem 0.7rem;
+  min-height: 40px;
   font: inherit;
   font-size: 0.82rem;
   cursor: pointer;

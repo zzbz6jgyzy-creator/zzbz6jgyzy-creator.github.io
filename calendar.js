@@ -560,6 +560,7 @@
     });
 
     if (!list && !preview && !countdown) return; // hooks-only pages (e.g. SpaceX earnings line) skip Launch Library
+    if (status) status.textContent = "Checking Launch Library 2…";
     try {
       const live = await fetchLaunches();
       events = mergeEvents(live.results);
