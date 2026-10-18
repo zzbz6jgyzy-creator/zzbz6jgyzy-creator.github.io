@@ -63,12 +63,20 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Cache-bump `nav-pill.js` / `nav-pill.css` to `202610182231` on every leftover page so Search injects sitewide.
 - No `nav.json` / `sync-nav.py`. Redirect stubs (`videos.html`, `goldcab.html`, `grok-bot.html`) still have no pill.
 
-### Batch 10 — Light theme (this PR)
+### Batch 10 — Light theme (merged #116 / #117)
 
 - Dark stays the default. An explicit Light / Dark control in the pill persists in `localStorage` (`sd-theme`).
 - Tokens remapped on `html[data-theme=light]`; homepage, nav, search, Dispatch, newsletter, forms and hubs lift to warm paper.
 - Photo heroes, maps, globes, explainer boards, 3D explorers and game stages stay dark. Games were not rewritten.
 - No `prefers-color-scheme` auto-switch. No `nav.json` / `sync-nav.py`.
+
+### Batch 11 — Tracker light wells (this PR)
+
+- Starship chips / moments / compare heads / selects lift to paper. Official player and empty poster stay black.
+- Software Update Tracker remaps local `--card` / `--line` / `--mute` and hardcoded `#fff` numbers. Globe well stays `#050608`.
+- FSD Europe buttons, flags, bar track, table head and log rail lift. Europe map stays dark.
+- Calendar countdown cards, tiles and clock ink lift. Featured photo stays a photo.
+- Gear photo tiles stay dark under the images. Page chrome already used tokens.
 
 ## Architecture (do not rip out)
 

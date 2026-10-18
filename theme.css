@@ -348,10 +348,6 @@ html[data-theme="light"] .lv-next {
 html[data-theme="light"] .lv-next .lv-when { color: var(--ink); }
 html[data-theme="light"] .lv:not(.lv-inhero) .lv-next { border-bottom-color: var(--line); }
 html[data-theme="light"] .lv-inhero .lv-next { background: rgba(255, 255, 255, 0.86); border-color: var(--line); }
-html[data-theme="light"] .cal-next-card {
-  background: var(--card);
-  border-color: var(--line);
-}
 
 /* Wallpapers / gear cards */
 html[data-theme="light"] .wp-card,
@@ -362,6 +358,140 @@ html[data-theme="light"] .sl-id-status { background: var(--card); }
 
 /* Support / markets leftovers */
 html[data-theme="light"] .support-button { background: #fff; color: var(--ink); }
+
+/* Tracker leftover wells — page CSS still hardcodes ink chips / cards / clocks */
+html[data-theme="light"] .slab-chip,
+html[data-theme="light"] .slab-moment {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+html[data-theme="light"] .slab-moment[aria-pressed="true"],
+html[data-theme="light"] .slab-moment:hover,
+html[data-theme="light"] .slab-moment:focus-visible {
+  color: var(--ink);
+  border-color: var(--slab-red, #e31937);
+}
+html[data-theme="light"] .slab-pick select {
+  background: var(--input-bg);
+  color: var(--ink);
+  border-color: var(--line);
+}
+html[data-theme="light"] .slab-modes button[aria-pressed="true"],
+html[data-theme="light"] .fsd-filter[aria-pressed="true"],
+html[data-theme="light"] .cal-filters button.is-on,
+html[data-theme="light"] .cal-filters button:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+html[data-theme="light"] .slab-cmp-h { background: var(--surface-2); }
+html[data-theme="light"] a.cal-title:hover { color: var(--ink); }
+
+html[data-theme="light"] .sw {
+  --line: rgba(22, 23, 27, 0.1);
+  --mute: #6d7077;
+  --card: #fff;
+}
+html[data-theme="light"] .sw-lede,
+html[data-theme="light"] .sw-mycar p,
+html[data-theme="light"] .sw-wave .rate,
+html[data-theme="light"] .sw-lane-name,
+html[data-theme="light"] .sw-reach { color: var(--ink-soft); }
+html[data-theme="light"] .sw-tile b,
+html[data-theme="light"] .sw-mycar .big,
+html[data-theme="light"] .sw-wave b,
+html[data-theme="light"] .sw-step b,
+html[data-theme="light"] .sw-xc td:first-child,
+html[data-theme="light"] .sw-feed b,
+html[data-theme="light"] .sw-reach b { color: var(--ink); }
+html[data-theme="light"] .sw-card-head a,
+html[data-theme="light"] .sw-sources a { color: var(--ink); }
+html[data-theme="light"] .sw-seg button,
+html[data-theme="light"] .sw-replay button,
+html[data-theme="light"] .sw-replay select,
+html[data-theme="light"] .sw-diff-pick select {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--line);
+}
+html[data-theme="light"] .sw-seg button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+html[data-theme="light"] .sw-step,
+html[data-theme="light"] .sw-diff li,
+html[data-theme="light"] .sw-reach { background: var(--surface-2); }
+html[data-theme="light"] .sw-diff .gone li { color: var(--ink-soft); }
+html[data-theme="light"] .sw-diff .same li { color: var(--mute); }
+html[data-theme="light"] .sw-pill.steady {
+  background: rgba(22, 23, 27, 0.06);
+  color: var(--ink-soft);
+}
+html[data-theme="light"] .sw-pill.slow {
+  background: rgba(22, 23, 27, 0.04);
+  color: var(--mute);
+}
+
+html[data-theme="light"] .f2-bar { background: var(--surface-2); }
+html[data-theme="light"] .f2-scen button,
+html[data-theme="light"] .f2-chips button,
+html[data-theme="light"] .f2-log-filters button,
+html[data-theme="light"] .f2-pipe button,
+html[data-theme="light"] .f2-more {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+html[data-theme="light"] .f2-scen button[aria-pressed="true"],
+html[data-theme="light"] .f2-log-filters button[aria-pressed="true"] {
+  background: var(--tesla);
+  border-color: var(--tesla);
+  color: #fff;
+}
+html[data-theme="light"] .f2-chips button[aria-pressed="true"] {
+  border-color: var(--f2-live, #ff2a44);
+  background: rgba(200, 16, 46, 0.14);
+}
+html[data-theme="light"] .f2-pipe button.s-live,
+html[data-theme="light"] .f2-pipe button.s-rec {
+  border-color: rgba(200, 16, 46, 0.6);
+  background: rgba(200, 16, 46, 0.12);
+}
+html[data-theme="light"] .f2-flag { background: var(--surface-2); }
+html[data-theme="light"] .f2-steps li::before { background: var(--surface-2); }
+html[data-theme="light"] .f2-steps li.done::before { background: #7a1020; }
+html[data-theme="light"] .f2-steps li.now::before { background: var(--f2-live, #ff2a44); }
+html[data-theme="light"] .f2-log { border-left-color: var(--line-strong); }
+html[data-theme="light"] .f2-log li::before { background: var(--ink-soft); }
+html[data-theme="light"] .f2-log li.t-approval::before { background: var(--tesla); }
+html[data-theme="light"] .f2-log li.t-tcmv::before { background: #e0b04a; }
+html[data-theme="light"] .f2-table thead th { background: var(--surface-2); }
+html[data-theme="light"] .fsd-kpi,
+html[data-theme="light"] .fsd-panel,
+html[data-theme="light"] .fsd-board .fsd-meter,
+html[data-theme="light"] .updates-search { background: var(--card); }
+
+html[data-theme="light"] .cal-next-card {
+  background: var(--card);
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="light"] .cal-next-card.is-featured {
+  background: radial-gradient(120% 140% at 100% 0%, rgba(227, 25, 55, 0.08), transparent 55%), #fff;
+  border-color: rgba(227, 25, 55, 0.32);
+  box-shadow: var(--shadow);
+}
+html[data-theme="light"] .cal-next-when,
+html[data-theme="light"] .cal-today { color: var(--ink); }
+html[data-theme="light"] .cal-next-clock { color: var(--mute); }
+html[data-theme="light"] .cal-next-clock b { color: var(--ink); }
+html[data-theme="light"] .cal-tile {
+  background: var(--surface-2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+html[data-theme="light"] .cal-tile b { color: var(--ink); }
+html[data-theme="light"] .cal-feat-note { color: var(--ink-soft); }
+html[data-theme="light"] .cal-feat-cr { color: var(--mute); }
 
 /* Keep instruments dark: maps, globes, games, photo heroes, explainer boards, 3D explorers */
 html[data-theme="light"] .vx-board,
@@ -375,6 +505,17 @@ html[data-theme="light"] .rt-map .leaflet-container,
 html[data-theme="light"] body.pn-app,
 html[data-theme="light"] .catch-stage,
 html[data-theme="light"] .catch-board,
-html[data-theme="light"] .staging-page canvas { color-scheme: dark; }
+html[data-theme="light"] .staging-page canvas,
+html[data-theme="light"] .slab-player,
+html[data-theme="light"] .slab-poster,
+html[data-theme="light"] .slab-empty,
+html[data-theme="light"] .f2-map-wrap,
+html[data-theme="light"] .f2-map,
+html[data-theme="light"] .fsd-map-shell,
+html[data-theme="light"] .updates-map-shell,
+html[data-theme="light"] .gs-feature-media,
+html[data-theme="light"] .gs-tile,
+html[data-theme="light"] .gs-product-media,
+html[data-theme="light"] .cal-feat-img { color-scheme: dark; }
 html[data-theme="light"] .catch-intro .eyebrow a:hover,
 html[data-theme="light"] .staging-intro .eyebrow a:hover { color: var(--hover-ink); }
