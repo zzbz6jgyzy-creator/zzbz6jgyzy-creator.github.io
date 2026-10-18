@@ -23,7 +23,7 @@
   }
   if (has("band") && !document.querySelector("[data-band-slot] .sd-band") && !document.querySelector('.nl-end, #newsletter, [data-newsletter]:not(.sd-pop):not(.sd-band)')) {
     const b = document.createElement("section");
-    b.className = "sd-band"; b.setAttribute("data-newsletter", "band"); b.setAttribute("aria-label", "Newsletter signup");
+    b.className = "sd-band"; b.id = "newsletter"; b.setAttribute("data-newsletter", "band"); b.setAttribute("aria-label", "Newsletter signup");
     b.innerHTML = `<div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
       <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-1?utm_source=website&utm_medium=site-band&utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
     const bs = document.querySelector("[data-band-slot]"); if (bs) bs.appendChild(b); else place(b);
