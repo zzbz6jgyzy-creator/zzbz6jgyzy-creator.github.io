@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """SEO build step (runs in home-build.yml after build-articles.py).
 
-1. Every Dispatch article listed in data/articles.json gets NewsArticle JSON-LD
-   (between <!-- seo:ld --> markers), og:type=article and article:published_time.
-   Facts come only from the page itself + articles.json; nothing is invented.
-2. sitemap.xml is rebuilt from every public page (skips noindex pages, 404,
+1. Every Dispatch article listed in data/articles.json gets NewsArticle +
+   BreadcrumbList JSON-LD (between <!-- seo:ld --> markers), og:type=article
+   and article:published_time. A missing </head> is repaired first — that is
+   why /dispatch/roadster-reveal-2026.html had no JSON-LD.
+2. The same pass injects a visible Home → Dispatch → story crumb
+   (<!-- seo:nav -->) and a desk/author block (<!-- seo:about -->) using only
+   facts already on about.html: Supercharged Daily, Alex R, @ALJR86, not
+   affiliated. No Person credentials are invented.
+3. about.html gets Organization JSON-LD (same facts).
+4. sitemap.xml is rebuilt from every public page (skips noindex pages, 404,
    staging and /preview/), lastmod = last git commit date of each file.
 Idempotent: re-running produces no diff.
 """
@@ -12,7 +18,13 @@ import json, os, re, subprocess, html, glob
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://superchargeddaily.com"
+X_URL = "https://x.com/ALJR86"
 LD_RE = re.compile(r"\n?\s*<!-- seo:ld -->.*?<!-- /seo:ld -->", re.S)
+NAV_RE = re.compile(r"\n?\s*<!-- seo:nav -->.*?<!-- /seo:nav -->", re.S)
+ABOUT_RE = re.compile(r"\n?\s*<!-- seo:about -->.*?<!-- /seo:about -->", re.S)
+RELATED_CSS_RE = re.compile(r"/related\.css\?v=[^\"\s]+")
+CSS_VER = "202610182245"
+
 
 def meta(src, attr, name):
     m = re.search(r'<meta\s+%s="%s"\s+content="([^"]*)"' % (attr, re.escape(name)), src)
@@ -20,13 +32,96 @@ def meta(src, attr, name):
         m = re.search(r'<meta\s+%s="%s"\s*\n?\s*content="([^"]*)"' % (attr, re.escape(name)), src)
     return html.unescape(m.group(1)) if m else None
 
+
 def git_date(path):
-    out = subprocess.run(["git", "log", "-1", "--format=%cI", "--perl-regexp", "--author=^(?!github-actions)", "--invert-grep", "--grep=^SEO", "--", path], cwd=ROOT,
-                         capture_output=True, text=True).stdout.strip()
+    out = subprocess.run(
+        ["git", "log", "-1", "--format=%cI", "--perl-regexp",
+         "--author=^(?!github-actions)", "--invert-grep", "--grep=^SEO", "--", path],
+        cwd=ROOT, capture_output=True, text=True,
+    ).stdout.strip()
     return out or None
+
+
+def dumps(obj):
+    return json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
+def org():
+    return {
+        "@type": "Organization",
+        "name": "Supercharged Daily",
+        "url": SITE + "/about.html",
+        "sameAs": [X_URL],
+        "logo": {"@type": "ImageObject", "url": SITE + "/favicon-512.png", "width": 512, "height": 512},
+    }
+
+
+def ensure_head(src):
+    if "</head>" in src:
+        return src
+    return re.sub(r"(\n[ \t]*)<body\b", r"\n  </head>\1<body", src, count=1)
+
+
+def ld_block(news, crumbs):
+    return (
+        "\n    <!-- seo:ld -->\n"
+        '    <script type="application/ld+json">' + dumps(news) + "</script>\n"
+        '    <script type="application/ld+json">' + dumps(crumbs) + "</script>\n"
+        "    <!-- /seo:ld -->"
+    )
+
+
+def crumb_html(short_title):
+    label = html.escape(short_title)
+    return (
+        "\n          <!-- seo:nav -->\n"
+        '          <nav class="sd-crumbs" aria-label="Breadcrumb">\n'
+        "            <ol>\n"
+        '              <li><a href="/">Home</a></li>\n'
+        '              <li><a href="/dispatch.html">Dispatch</a></li>\n'
+        f'              <li aria-current="page">{label}</li>\n'
+        "            </ol>\n"
+        "          </nav>\n"
+        "          <!-- /seo:nav -->"
+    )
+
+
+def about_html():
+    return (
+        "\n          <!-- seo:about -->\n"
+        '          <aside class="sd-about" aria-label="About Supercharged Daily">\n'
+        '            <p class="sd-about-kicker">The desk</p>\n'
+        "            <p>Supercharged Daily is an independent Tesla, SpaceX and Grok desk from "
+        f'<a href="{X_URL}">Alex R — @ALJR86</a>. '
+        "Not affiliated with Tesla, SpaceX or xAI.</p>\n"
+        '            <p><a href="/about.html">About this site</a></p>\n'
+        "          </aside>\n"
+        "          <!-- /seo:about -->"
+    )
+
+
+def inject_nav(src, short_title):
+    src = NAV_RE.sub("", src)
+    m = re.search(r'<article\s+class="article"[^>]*>', src)
+    if not m:
+        return src
+    return src[: m.end()] + crumb_html(short_title) + src[m.end() :]
+
+
+def inject_about(src):
+    src = ABOUT_RE.sub("", src)
+    block = about_html()
+    m = re.search(r"(\n[ \t]*)</article>", src)
+    if not m:
+        return src
+    return src[: m.start()] + block + m.group(0) + src[m.end() :]
+
 
 def articles():
     data = json.load(open(os.path.join(ROOT, "data", "articles.json")))
+    publisher = org()
+    publisher["url"] = SITE + "/"
+    author = org()
     for a in data["articles"]:
         path = os.path.join(ROOT, a["url"].lstrip("/"))
         if not os.path.exists(path):
@@ -34,39 +129,87 @@ def articles():
         src = open(path, encoding="utf-8").read()
         if "noindex" in src[:4000]:
             continue
+        src = ensure_head(src)
+        src = RELATED_CSS_RE.sub("/related.css?v=" + CSS_VER, src)
         title = meta(src, "property", "og:title") or a["title"]
         title = re.sub(r"\s+—\s+Supercharged Daily$", "", title)
+        short = a.get("title") or title
         desc = meta(src, "name", "description") or a.get("summary", "")
         img = meta(src, "property", "og:image") or (SITE + a["image"] if a.get("image") else None)
-        ld = {
-            "@context": "https://schema.org", "@type": "NewsArticle",
+        news = {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
             "mainEntityOfPage": {"@type": "WebPage", "@id": SITE + a["url"]},
-            "headline": title[:110], "description": desc,
+            "headline": title[:110],
+            "description": desc,
             "datePublished": a["date"],
             "dateModified": max(a["date"], git_date(path) or a["date"]),
-            "author": {"@type": "Organization", "name": "Supercharged Daily", "url": SITE + "/"},
-            "publisher": {"@type": "Organization", "name": "Supercharged Daily", "url": SITE + "/",
-                          "logo": {"@type": "ImageObject", "url": SITE + "/favicon-512.png", "width": 512, "height": 512}},
+            "author": author,
+            "publisher": publisher,
             "articleSection": a.get("tag") or a.get("topic", ""),
         }
         if img:
-            ld["image"] = [img]
-        block = ('\n    <!-- seo:ld -->\n    <script type="application/ld+json">' +
-                 json.dumps(ld, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") +
-                 '</script>\n    <!-- /seo:ld -->')
+            news["image"] = [img]
+        crumbs = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+                {"@type": "ListItem", "position": 2, "name": "Dispatch", "item": SITE + "/dispatch.html"},
+                {"@type": "ListItem", "position": 3, "name": short, "item": SITE + a["url"]},
+            ],
+        }
+        block = ld_block(news, crumbs)
         new = LD_RE.sub("", src)
         new = new.replace('<meta property="og:type" content="website" />', '<meta property="og:type" content="article" />')
-        if 'article:published_time' not in new:
-            new = new.replace('<meta property="og:type" content="article" />',
-                              '<meta property="og:type" content="article" />\n    <meta property="article:published_time" content="%s" />' % a["date"], 1)
+        if "article:published_time" not in new:
+            new = new.replace(
+                '<meta property="og:type" content="article" />',
+                '<meta property="og:type" content="article" />\n    <meta property="article:published_time" content="%s" />' % a["date"],
+                1,
+            )
         new = new.replace("</head>", block + "\n  </head>", 1)
         new = re.sub(r"(<!-- /seo:ld -->)\n\s*\n?\s*</head>", r"\1\n  </head>", new)
+        new = inject_nav(new, short)
+        new = inject_about(new)
         if new != src:
             open(path, "w", encoding="utf-8").write(new)
 
+
+def about_page():
+    path = os.path.join(ROOT, "about.html")
+    src = open(path, encoding="utf-8").read()
+    if "noindex" in src[:4000]:
+        return
+    ld = org()
+    ld["@context"] = "https://schema.org"
+    ld["url"] = SITE + "/"
+    ld["email"] = "hello@superchargeddaily.com"
+    ld["description"] = (
+        "Independent Tesla, SpaceX and Grok desk from @ALJR86. "
+        "Not affiliated with Tesla, SpaceX or xAI."
+    )
+    block = (
+        "\n    <!-- seo:ld -->\n"
+        '    <script type="application/ld+json">' + dumps(ld) + "</script>\n"
+        "    <!-- /seo:ld -->"
+    )
+    new = LD_RE.sub("", src)
+    if "</head>" not in new:
+        return
+    new = new.replace("</head>", block + "\n  </head>", 1)
+    new = re.sub(r"(<!-- /seo:ld -->)\n\s*\n?\s*</head>", r"\1\n  </head>", new)
+    if new != src:
+        open(path, "w", encoding="utf-8").write(new)
+
+
 def sitemap():
-    pages = sorted(glob.glob(os.path.join(ROOT, "*.html")) + glob.glob(os.path.join(ROOT, "dispatch", "*.html"))
-                   + glob.glob(os.path.join(ROOT, "guides", "*.html")) + glob.glob(os.path.join(ROOT, "reviews", "*.html")))
+    pages = sorted(
+        glob.glob(os.path.join(ROOT, "*.html"))
+        + glob.glob(os.path.join(ROOT, "dispatch", "*.html"))
+        + glob.glob(os.path.join(ROOT, "guides", "*.html"))
+        + glob.glob(os.path.join(ROOT, "reviews", "*.html"))
+    )
     rows = []
     for p in pages:
         rel = os.path.relpath(p, ROOT).replace(os.sep, "/")
@@ -79,8 +222,16 @@ def sitemap():
         d = (git_date(rel) or "")[:10]
         rows.append("  <url><loc>%s</loc>%s</url>" % (loc, "<lastmod>%s</lastmod>" % d if d else ""))
     rows.sort(key=lambda r: (0 if r.startswith("  <url><loc>%s/</loc>" % SITE) else 1, r))
-    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(rows) + "\n</urlset>\n"
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(rows)
+        + "\n</urlset>\n"
+    )
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(xml)
 
+
 if __name__ == "__main__":
-    articles(); sitemap()
+    articles()
+    about_page()
+    sitemap()
