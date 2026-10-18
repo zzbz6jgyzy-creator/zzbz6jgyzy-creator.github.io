@@ -41,6 +41,16 @@
 .mt-pill.no{background:rgba(255,255,255,.06);color:#8a929b}
 .mt-feat h3{margin:0 0 3px;font-size:15px}
 .mt-feat p{margin:0;color:#c9cfd6;font-size:13px}
+.mt-trust{display:block;margin-top:5px;font:600 10px/1.3 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;color:#8a929b}
+.mt-trust-tracker{color:#7dcea0}
+.mt-trust-estimate{color:#e2c48a}
+.mt-trust-desk{color:#9aa3ad}
+.mt-legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin:-4px 0 14px;font:12px/1.3 Inter,sans-serif;color:var(--mute)}
+.mt-legend span{display:inline-flex;align-items:center;gap:6px}
+.mt-dot{display:inline-block;width:8px;height:8px;border-radius:50%}
+.mt-dot-tracker{background:#7dcea0}
+.mt-dot-desk{background:#8a929b}
+.mt-dot-estimate{background:#e2c48a}
 .mt-guides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .mt-guide{display:flex;flex-direction:column;gap:4px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#17191d;color:inherit;text-decoration:none}
 .mt-guide:hover{border-color:#fff}

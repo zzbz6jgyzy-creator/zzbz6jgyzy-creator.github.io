@@ -47,6 +47,7 @@
 
   const state = { model: "", year: "", hw: "", sw: "", cc: "" };
   let live = null;
+  let hwSource = ""; // "user" | "guess" — year→computer is an estimate until the owner confirms
 
   const readStore = () => {
     try {
@@ -143,10 +144,11 @@
     if (gen) bits.push(gen.label);
     if (row) bits.push(row.label);
     hint.innerHTML = bits.length
-      ? `For a ${esc(state.year)} ${esc(m.name)} we expect <b>${esc(bits.join(" · "))}</b>. Override hardware if the car was a late-year swap.`
+      ? `For a ${esc(state.year)} ${esc(m.name)} we <em>estimate</em> <b>${esc(bits.join(" · "))}</b>. Override hardware if the computer was swapped later.`
       : "";
     if (row && !state.hw) {
       state.hw = row.id;
+      hwSource = "guess";
       if ($("mt-hw")) $("mt-hw").value = row.id;
     }
   };
@@ -171,40 +173,43 @@
 
   const featureState = (feat) => {
     if (feat.models && state.model && !feat.models.includes(state.model)) {
-      return { key: "no", label: "Not this model", detail: "This car never got it." };
+      return { key: "no", label: "Not this model", detail: "This car never got it.", trust: "desk", trustLabel: "Desk read" };
     }
     if (feat.except && state.model && state.year) {
       const hit = feat.except.find((e) => e.model === state.model && state.year <= (e.to || 9999) && state.year >= (e.from || 0));
-      if (hit) return { key: "no", label: "Not this body", detail: "The refresh cabin is what this refers to." };
+      if (hit) return { key: "no", label: "Not this body", detail: "The refresh cabin is what this refers to.", trust: "desk", trustLabel: "Desk read" };
     }
     if (feat.yearFrom && state.year && state.year < feat.yearFrom) {
-      return { key: "no", label: "Older body", detail: `Starts on ${feat.yearFrom}+ cars.` };
+      return { key: "no", label: "Older body", detail: `Starts on ${feat.yearFrom}+ cars.`, trust: "desk", trustLabel: "Desk read" };
     }
     if (feat.hw && state.hw && !feat.hw.includes(state.hw)) {
-      return { key: "no", label: "Wrong computer", detail: feat.whyNoHw || `Needs ${feat.hw.map((h) => DATA.hardware.find((x) => x.id === h)?.short || h).join(" or ")}.` };
+      return { key: "no", label: "Wrong computer", detail: feat.whyNoHw || `Needs ${feat.hw.map((h) => DATA.hardware.find((x) => x.id === h)?.short || h).join(" or ")}.`, trust: "desk", trustLabel: "Desk read" };
     }
     if (feat.kind === "fsd") {
       const row = fsdRow();
-      if (!row) return { key: "locked", label: "Unlisted", detail: "Tesla has not listed Supervised FSD for this country in our tracker." };
+      if (!row) return { key: "locked", label: "Unlisted", detail: "Tesla has not listed Supervised FSD for this country in our tracker.", trust: "tracker", trustLabel: "From our FSD tracker" };
       if (row.status === "live") {
         const name = state.cc && EUC.includes(state.cc) ? "Assisted Driving Basic" : "FSD (Supervised)";
-        return { key: "yes", label: "Live", detail: `${name} is listed here${row.version ? ` · ${row.version}` : ""}. Driver still supervises.` };
+        return { key: "yes", label: "Live", detail: `${name} is listed here${row.version ? ` · ${row.version}` : ""}. Driver still supervises.`, trust: "tracker", trustLabel: "From our FSD tracker" };
       }
-      if (row.status === "limited") return { key: "soon", label: "Limited", detail: row.note };
-      if (row.status === "review" || row.status === "watch") return { key: "locked", label: row.status === "review" ? "In review" : "Watching", detail: row.note };
-      return { key: "locked", label: "Not approved", detail: row.note || "No national yes yet." };
+      if (row.status === "limited") return { key: "soon", label: "Limited", detail: row.note, trust: "tracker", trustLabel: "From our FSD tracker" };
+      if (row.status === "review" || row.status === "watch") return { key: "locked", label: row.status === "review" ? "In review" : "Watching", detail: row.note, trust: "tracker", trustLabel: "From our FSD tracker" };
+      return { key: "locked", label: "Not approved", detail: row.note || "No national yes yet.", trust: "tracker", trustLabel: "From our FSD tracker" };
     }
     const rg = regionOf(state.cc);
     if (feat.regions && rg && !feat.regions.includes(rg) && !(feat.countries || []).includes(state.cc)) {
-      return { key: "locked", label: "Region lock", detail: feat.whyNoRegion || `Listed for ${feat.regions.map((r) => RNAME[r] || r).join(", ")}, not ${countryName()}.` };
+      return { key: "locked", label: "Region lock", detail: feat.whyNoRegion || `Listed for ${feat.regions.map((r) => RNAME[r] || r).join(", ")}, not ${countryName()}.`, trust: "desk", trustLabel: "Desk read of Tesla listings" };
     }
     if (feat.minSw && state.sw && cmpVer(state.sw, feat.minSw) < 0) {
-      return { key: "soon", label: "Needs a newer build", detail: `On your car after ${feat.minSw}. You are on ${state.sw}.` };
+      return { key: "soon", label: "Needs a newer build", detail: `On your car after ${feat.minSw}. You are on ${state.sw}.`, trust: "desk", trustLabel: "From the notes we track" };
     }
     if (feat.minSw && !state.sw) {
-      return { key: "soon", label: "Build-dependent", detail: `In the notes from ${feat.minSw}. Add your software version to be sure.` };
+      return { key: "soon", label: "Build-dependent", detail: `In the notes from ${feat.minSw}. Add your software version to be sure.`, trust: "estimate", trustLabel: "Estimate — add your software" };
     }
-    return { key: "yes", label: "Fits this car", detail: feat.summary };
+    if (feat.minSw || feat.regions) {
+      return { key: "yes", label: "Listed here", detail: feat.summary, trust: "desk", trustLabel: "Desk read of Tesla listings" };
+    }
+    return { key: "yes", label: "This body", detail: feat.summary, trust: "desk", trustLabel: "Desk read of the product" };
   };
 
   const relevantNotes = () => {
@@ -224,6 +229,24 @@
         return true;
       })
       .slice(0, 3);
+  };
+
+  const liveFeatureNotes = () => {
+    if (!state.cc || !live?.versions?.length) return [];
+    const local = liveForCountry();
+    const v = local.newest?.v;
+    if (!v || !(v.features || []).length) return [];
+    return v.features
+      .filter((f) => {
+        const t = `${f.title} ${f.text}`.toLowerCase();
+        if (state.hw === "hw3" && /collision evasion/.test(t)) return false;
+        if (state.hw === "hw3" && /v14\.3\.12/.test(t) && !/lite|hw3/.test(t)) return false;
+        if (state.hw === "hw4" && /v14\.3 lite/.test(t)) return false;
+        if (state.model && state.model !== "CT" && /powershare/.test(t)) return false;
+        return true;
+      })
+      .slice(0, 3)
+      .map((f) => ({ v, f }));
   };
 
   const guides = () => {
@@ -277,8 +300,11 @@
     const fsdBig = !state.cc ? "Pick a country" : fsd?.status === "live" ? (EUC.includes(state.cc) ? "Assisted Driving" : "FSD live") : fsd?.status === "review" ? "In review" : fsd?.status === "watch" ? "Watching" : fsd?.status === "limited" ? "Limited" : "Not live";
     const fsdSmall = fsd?.note || (state.cc ? "No FSD listing for this country in the tracker." : "Country decides whether Supervised FSD is even legal.");
 
+    const gen = pickRange(m?.gen, state.year)?.label || "";
     const hwSmall = state.hw
-      ? `${hwName()} on a ${state.year || ""} ${m?.name || "Tesla"}. ${pickRange(m?.gen, state.year)?.label || ""}`.trim()
+      ? hwSource === "guess"
+        ? `Estimate from a ${state.year || ""} ${m?.name || "Tesla"} — we guessed ${hwName()}. Override if it was swapped.`
+        : `${hwName()} on a ${state.year || ""} ${m?.name || "Tesla"} (you set this). ${gen}`.trim()
       : "Hardware decides Collision Evasion, Lite parking and camera features.";
 
     const lockCount = (DATA.features || [])
@@ -310,9 +336,16 @@
     }
     notes.forEach((v) => {
       items.push(`<li><b>${esc(v.id)} — ${esc(v.headline)}</b><p>${esc(v.reached || v.summary)}</p>
-        <span class="mt-meta">${esc(v.date)} · ${esc((v.countries || []).join(", ") || "countries vary")}</span></li>`);
+        <span class="mt-meta">Desk notes · ${esc(v.date)} · ${esc((v.countries || []).join(", ") || "countries vary")}</span></li>`);
     });
-    ul.innerHTML = items.slice(0, 4).join("");
+    const blob = notes.map((v) => `${v.headline} ${v.summary}`.toLowerCase()).join(" ");
+    liveFeatureNotes()
+      .filter(({ f }) => !blob.includes((f.title || "").toLowerCase()))
+      .forEach(({ v, f }) => {
+        items.push(`<li><b>${esc(f.title)} — ${esc(v.id)}</b><p>${esc(f.text)}</p>
+          <span class="mt-meta">Teslascope sample · ${live.sourceUrl ? `<a href="${esc(live.sourceUrl)}" target="_blank" rel="noopener noreferrer">Teslascope</a> · ` : ""}${esc(v.date)} · not Tesla’s official owner notes</span></li>`);
+      });
+    ul.innerHTML = items.slice(0, 5).join("");
   };
 
   const renderFeatures = () => {
@@ -326,7 +359,8 @@
       .filter(({ s }) => !(s.key === "no" && s.label === "Not this model"))
       .map(
         ({ feat, s }) => `<article class="mt-feat"><span class="mt-pill ${s.key}">${esc(s.label)}</span>
-          <div><h3>${esc(feat.name)}</h3><p>${esc(s.detail)}</p></div></article>`
+          <div><h3>${esc(feat.name)}</h3><p>${esc(s.detail)}</p>
+          <span class="mt-trust mt-trust-${esc(s.trust)}">${esc(s.trustLabel)}</span></div></article>`
       )
       .join("");
   };
@@ -382,7 +416,7 @@
     const stamp = $("mt-live");
     if (stamp) {
       const when = live?.updated || DATA.updated;
-      stamp.textContent = `Saved on this device · fleet sample ${when}`;
+      stamp.textContent = `Saved on this device · never uploaded · fleet sample ${when}`;
     }
   };
 
@@ -391,6 +425,7 @@
       state.model = $("mt-model").value;
       state.year = "";
       state.hw = "";
+      hwSource = "";
       fillYears();
       fillHw();
       hintHw();
@@ -399,11 +434,13 @@
     $("mt-year").addEventListener("change", () => {
       state.year = Number($("mt-year").value) || "";
       state.hw = "";
+      hwSource = "";
       hintHw();
       render();
     });
     $("mt-hw").addEventListener("change", () => {
       state.hw = $("mt-hw").value;
+      hwSource = state.hw ? "user" : "";
       render();
     });
     $("mt-sw").addEventListener("change", () => {
@@ -416,6 +453,7 @@
     });
     $("mt-clear").addEventListener("click", () => {
       state.model = state.year = state.hw = state.sw = state.cc = "";
+      hwSource = "";
       $("mt-model").value = "";
       fillYears();
       fillHw();
@@ -429,6 +467,7 @@
     const saved = readStore() || {};
     const q = fromQuery();
     Object.assign(state, saved, q);
+    if (state.hw) hwSource = "user";
     DATA.models.forEach((m) => $("mt-model").append(new Option(m.name, m.id)));
     $("mt-model").value = state.model;
     fillYears();
