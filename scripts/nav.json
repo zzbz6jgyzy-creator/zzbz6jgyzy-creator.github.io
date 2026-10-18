@@ -1,9 +1,6 @@
 {
-  "top": [],
+  "top": [["Home","/"]],
   "dropdowns": [
-    {"id":"pn-news","label":"News","items":[
-      ["News","/news.html","Today’s headlines",""],
-      ["Dispatch","/dispatch.html","Our own stories",""]]},
     {"id":"pn-tesla","label":"Tesla","items":[
       ["Tesla overview","/tesla.html","News, models &amp; data",""],
       ["My Tesla","/my-tesla.html","Your car, personalised",""],
@@ -14,6 +11,13 @@
       ["Cybertruck Explorer","/cybertruck-explorer.html","Take the truck apart","3D"],
       ["Markets","/tsla.html","TSLA stock",""],
       ["Reviews","/reviews/index.html","Every model reviewed",""]]},
+    {"id":"pn-spacex","label":"SpaceX","items":[
+      ["SpaceX","/spacex.html","News &amp; missions",""],
+      ["Starship flights","/starship.html","Flight lab",""],
+      ["Explainers","/explainers.html#spacex","Hot staging, catch",""],
+      ["Starlink tracker","/starlink.html","Satellites by version",""],
+      ["Calendar","/calendar.html","Launches &amp; livestreams",""],
+      ["Can I see it?","/see-the-launch.html","Visible from here?",""]]},
     {"id":"pn-roadster","label":"Roadster","items":[
       ["Overview","/roadster.html#top","The hero and key numbers","New"],
       ["Gallery","/roadster.html#gallery","22 angles",""],
@@ -24,22 +28,23 @@
       ["Timeline","/roadster.html#timeline","2017 promise to 2026 reveal",""],
       ["Promise vs Reality","/roadster.html#promise","2017 claims vs 2026 figures",""],
       ["Reveal article","/dispatch/roadster-reveal-2026.html","The night it flew",""]]},
-    {"id":"pn-spacex","label":"SpaceX","items":[
-      ["SpaceX","/spacex.html","News &amp; missions",""],
+    {"id":"pn-ex","label":"Explore","wide":true,"items":[
+      ["My Tesla","/my-tesla.html","Your car, personalised",""],
       ["Starship flights","/starship.html","Flight lab",""],
-      ["Explainers","/explainers.html#spacex","Hot staging, catch",""],
+      ["FSD Europe tracker","/fsd-europe.html","Approval tracker",""],
+      ["Software Update Tracker","/updates.html","Latest Tesla releases",""],
       ["Starlink tracker","/starlink.html","Satellites by version",""],
       ["Calendar","/calendar.html","Launches &amp; livestreams",""],
-      ["Can I see it?","/see-the-launch.html","Visible from here?",""]]},
-    {"id":"pn-trk","label":"Trackers","items":[
       ["Cybercab tracker","/cybercab.html","Reality map &amp; fleet",""],
-      ["FSD Europe","/fsd-europe.html","Approval tracker",""],
       ["Promise tracker","/promise-tracker.html","Musk deadlines vs reality","New"],
-      ["Software updates","/updates.html","Latest Tesla releases",""],
-      ["Starship flights","/starship.html","Flight lab",""],
-      ["Starlink tracker","/starlink.html","Satellites by version",""]]},
-    {"id":"pn-more","label":"More","items":[
-      ["Grok","/grok.html","",""],["Gear","/gear.html","",""],["Games","/games.html","",""],["Wallpapers","/wallpapers.html","",""]]}
+      ["Explainers","/explainers.html","FSD stacks, hot staging",""],
+      ["Grok","/grok.html","Tutorial",""],
+      ["Gear","/gear.html","Owner kit",""],
+      ["Games","/games.html","Starbase games",""],
+      ["Wallpapers","/wallpapers.html","Desktop &amp; phone",""]]},
+    {"id":"pn-news","label":"News","items":[
+      ["News","/news.html","Today’s headlines",""],
+      ["Dispatch","/dispatch.html","Our own stories",""]]}
   ],
   "mid": [],
   "cta": ["Follow on X","https://x.com/ALJR86"]

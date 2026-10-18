@@ -2,7 +2,7 @@
    Overlay (⌘K / nav Search) on pages that load this file; full page on /search.html. */
 (() => {
   if (window.__sdFind) return;
-  const V = "202610182231";
+  const V = "202610190400";
   const PAGE = /\/search\.html$/.test(location.pathname);
   const LIMIT = PAGE ? 60 : 24;
   const LATEST = PAGE ? 12 : 8;
@@ -39,25 +39,58 @@
     return out;
   };
 
+  const ALIAS = {
+    fsd: ["fsd", "full self driving", "supervised", "assisted driving"],
+    software: ["software", "update", "firmware", "teslascope"],
+    starlink: ["starlink", "satellite"],
+    starship: ["starship", "super heavy", "flight lab"],
+    roadster: ["roadster", "halo"],
+    optimus: ["optimus", "humanoid"],
+    tesla: ["tesla"],
+    spacex: ["spacex"],
+  };
+  function expandToks(toks) {
+    const out = new Set(toks);
+    toks.forEach((t) => {
+      (ALIAS[t] || []).forEach((a) => a.split(/\s+/).forEach((w) => { if (w.length > 1) out.add(w); }));
+    });
+    if (toks.includes("fsd") && toks.includes("europe")) out.add("rdw");
+    if (toks.includes("tesla") && toks.includes("software")) ["update", "firmware", "teslascope"].forEach((w) => out.add(w));
+    return [...out];
+  }
+  function recencyBoost(item) {
+    if (item.kind !== "story" && item.kind !== "wire") return 0;
+    const t = Date.parse(item.date || "");
+    if (!Number.isFinite(t)) return 0;
+    const days = (Date.now() - t) / 864e5;
+    if (days < 3) return 18;
+    if (days < 14) return 10;
+    if (days < 45) return 4;
+    return 0;
+  }
   function score(item, q, toks) {
     const title = (item.title || "").toLowerCase();
     const summary = (item.summary || "").toLowerCase();
     const tag = (item.tag || item.topic || "").toLowerCase();
     const raw = q.toLowerCase().trim();
-    if (!raw) return item.kind === "story" ? 10 : 50;
+    if (!raw) return item.kind === "story" ? 10 : item.kind === "wire" ? 4 : 50;
     let s = 0;
     if (title === raw) s += 220;
     if (title.startsWith(raw)) s += 140;
     if (title.includes(raw)) s += 90;
     const ct = compact(title), cq = compact(raw);
     if (cq.length >= 4 && ct.includes(cq)) s += 50;
-    for (const t of toks) {
+    const expanded = expandToks(toks);
+    for (const t of expanded) {
       if (title === t) s += 70;
       else if (title.startsWith(t) || title.split(/\s+/).includes(t)) s += 45;
       else if (title.includes(t)) s += 28;
       if (tag === t || tag.includes(t)) s += 22;
       if (summary.includes(t)) s += 10;
     }
+    if (item.kind === "story") s += 8;
+    if (item.kind === "page") s += 4;
+    s += recencyBoost(item);
     return s;
   }
 
@@ -101,6 +134,26 @@
           kind: "page",
         });
       }
+      if (PAGE) {
+        try {
+          const news = await fetch("/news-data.json").then((r) => (r.ok ? r.json() : null));
+          (news && news.items || []).forEach((n) => {
+            if (!n || !n.url || !n.title) return;
+            items.push({
+              url: n.url,
+              title: n.title,
+              summary: n.snippet || n.source || "",
+              tag: n.source || n.topic || "Wire",
+              topic: n.topic || "",
+              date: n.published || "",
+              image: n.image || "",
+              kind: "wire",
+            });
+          });
+        } catch {
+          /* wire is optional */
+        }
+      }
       catalog = items;
       return catalog;
     } catch (err) {
@@ -110,19 +163,25 @@
     }
   }
 
+  function activeKind() {
+    const on = document.querySelector("[data-sd-kind].is-on");
+    return (on && on.getAttribute("data-sd-kind")) || "all";
+  }
   function queryItems(q) {
     const raw = String(q || "").trim();
     const toks = tokens(raw);
-    const all = catalog || [];
+    const kind = PAGE ? activeKind() : "all";
+    const all = (catalog || []).filter((i) => kind === "all" || i.kind === kind);
     if (!raw) {
       const stories = all.filter((i) => i.kind === "story").slice(0, LATEST);
-      let pages = all.filter((i) => i.kind !== "story");
+      let pages = all.filter((i) => i.kind === "page");
+      const wires = PAGE ? all.filter((i) => i.kind === "wire").slice(0, 8) : [];
       if (PAGE) pages = pages.sort((a, b) => a.title.localeCompare(b.title));
       else {
         const want = new Map(OVERLAY_PAGES.map((u, i) => [u, i]));
         pages = pages.filter((p) => want.has(p.url)).sort((a, b) => want.get(a.url) - want.get(b.url));
       }
-      return { grouped: true, pages, stories, n: pages.length + stories.length };
+      return { grouped: true, pages, stories, wires, n: pages.length + stories.length + wires.length };
     }
     const ranked = all
       .map((item) => ({ item, s: score(item, raw, toks) }))
@@ -138,7 +197,7 @@
       ? `<span class="sd-find-media"><img src="${esc(item.image)}" alt="" width="112" height="70" loading="lazy" onerror="this.parentNode.hidden=true" /></span>`
       : "";
     const when = fmtDate(item.date);
-    const kind = item.kind === "story" ? "Story" : "Page";
+    const kind = item.kind === "story" ? "Story" : item.kind === "wire" ? "Headline" : "Page";
     return `<a class="sd-find-hit${item.image ? "" : " no-img"}" role="option" id="sd-find-opt-${i}" href="${esc(item.url)}" data-i="${i}">
       ${img}
       <span>
@@ -166,7 +225,7 @@
         : "Pages and latest stories";
     }
     if (!res.n) {
-      hits.innerHTML = `<p class="sd-find-empty">No matches on this site for “${esc(q.trim())}”.</p>`;
+      hits.innerHTML = `<p class="sd-find-empty">No matches on this site for “${esc(q.trim())}”. Try <a href="/search.html?q=Roadster">Roadster</a>, <a href="/search.html?q=Starship">Starship</a>, <a href="/search.html?q=FSD+Europe">FSD Europe</a> or <a href="/search.html?q=Starlink">Starlink</a>.</p>`;
       return 0;
     }
     if (res.grouped) {
@@ -176,7 +235,10 @@
       const pageBlock = res.pages.length
         ? `<p class="sd-find-sec">Pages</p>` + res.pages.map((item, i) => hitHtml(item, toks, res.stories.length + i)).join("")
         : "";
-      hits.innerHTML = storyBlock + pageBlock;
+      const wireBlock = (res.wires || []).length
+        ? `<p class="sd-find-sec">Headlines</p>` + res.wires.map((item, i) => hitHtml(item, toks, res.stories.length + res.pages.length + i)).join("")
+        : "";
+      hits.innerHTML = storyBlock + pageBlock + wireBlock;
     } else {
       hits.innerHTML = res.items.map((item, i) => hitHtml(item, toks, i)).join("");
     }
@@ -301,6 +363,24 @@
       t = setTimeout(paintPage, 60);
     });
     form.addEventListener("submit", (e) => { e.preventDefault(); paintPage(); });
+    const kinds = document.querySelector("[data-sd-kinds]");
+    if (kinds) {
+      const startKind = new URLSearchParams(location.search).get("kind") || "all";
+      kinds.querySelectorAll("[data-sd-kind]").forEach((b) => {
+        b.classList.toggle("is-on", b.getAttribute("data-sd-kind") === startKind);
+      });
+      kinds.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-sd-kind]");
+        if (!b) return;
+        kinds.querySelectorAll("[data-sd-kind]").forEach((x) => x.classList.toggle("is-on", x === b));
+        const url = new URL(location.href);
+        const k = b.getAttribute("data-sd-kind") || "all";
+        if (k === "all") url.searchParams.delete("kind");
+        else url.searchParams.set("kind", k);
+        history.replaceState(null, "", url.pathname + url.search + url.hash);
+        paintPage();
+      });
+    }
   }
 
   document.addEventListener("click", (e) => {

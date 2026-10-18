@@ -36,6 +36,7 @@
 .sd-search-page .sd-search-form svg{width:18px;height:18px;color:#888;flex-shrink:0}
 .sd-search-page .sd-search-form .sd-find-q{padding:12px 6px;font-size:1.1rem}
 .sd-search-page .sd-search-go{font:600 .9rem/1 Inter,system-ui,sans-serif;color:#fff;background:#e31937;border:0;border-radius:10px;padding:.7rem 1rem;cursor:pointer}
+.sd-search-kinds{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0}
 .sd-search-page .sd-search-panel{width:min(100% - 2.5rem,var(--max,1100px));margin:1.2rem auto 2rem}
 .sd-search-page .sd-find-hits{max-height:none;padding:0}
 .sd-search-page .sd-find-hit{grid-template-columns:112px minmax(0,1fr);padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-bottom:8px;background:#0e0e10}

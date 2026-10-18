@@ -18,6 +18,9 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from news_keep import apply_keep, load_hold, title_key
+
 UA = "ALJR86-news/1.0 (+https://superchargeddaily.com/news.html)"
 MAX_AGE_HOURS = 36
 PER_TOPIC = 16
@@ -182,8 +185,7 @@ def abs_image(raw: str) -> str:
     return url
 
 
-def title_key(title: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "", (title or "").lower())[:80]
+# title_key imported from news_keep
 
 
 def bing_url(query: str) -> str:
@@ -314,8 +316,8 @@ def collect(now: datetime) -> list[dict]:
             continue
         seen.add(key)
         items.append(row)
-    # Alex's rule: never cite Electrek.
-    items = [r for r in items if "electrek" not in (r.get("url", "") + " " + r.get("source", "")).lower()]
+    hold = load_hold(Path(__file__).resolve().parent.parent / "data" / "news-hold.json")
+    items = apply_keep(items, hold)
     items.sort(key=lambda row: row.get("published") or "", reverse=True)
     if errors and not items:
         raise RuntimeError("; ".join(errors))

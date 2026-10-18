@@ -8,7 +8,8 @@
 .pn-items{display:flex;align-items:center;gap:2px;white-space:nowrap}
 .pn-items>*{transition:opacity .25s var(--pn-ease),transform .35s var(--pn-spring);transition-delay:calc(.2s + var(--i,0)*.05s)}
 .pn a.pn-link,.pn button.pn-link,.pn-dd>button{font:500 14px/1 Inter,system-ui,sans-serif;color:#d6d6d6;text-decoration:none;padding:9px 11px;border-radius:999px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:color .2s,background .2s}
-.pn a.pn-link:hover,.pn button.pn-link:hover,.pn-dd>button:hover,.pn-dd.open>button,.pn a.pn-link[aria-current]{color:#fff;background:rgba(255,255,255,.07)}
+.pn a.pn-link:hover,.pn button.pn-link:hover,.pn-dd>button:hover,.pn-dd.open>button,.pn a.pn-link[aria-current],.pn-dd>button[aria-current]{color:#fff;background:rgba(255,255,255,.07)}
+.pn a:focus-visible,.pn button:focus-visible,.pn-sheet a:focus-visible,.pn-sheet button:focus-visible{outline:2px solid #e31937;outline-offset:2px}
 .pn-dd>button svg{width:14px;height:14px;transition:transform .25s}
 .pn-dd.open>button svg{transform:rotate(180deg)}
 .pn-cta{font:600 14px/1 Inter,system-ui,sans-serif;color:#fff!important;background:#e31937;padding:10px 16px;border-radius:999px;text-decoration:none;margin-left:6px;box-shadow:0 0 18px rgba(227,25,55,.45);transition:background .2s,box-shadow .2s}
@@ -17,6 +18,7 @@
 .pn-panel{position:absolute;top:calc(100% + 12px);left:50%;min-width:220px;transform:translate(-50%,-6px);opacity:0;visibility:hidden;background:rgba(12,12,12,.96);border:1px solid rgba(255,255,255,.1);border-top:2px solid #e31937;border-radius:14px;padding:6px;box-shadow:0 18px 50px rgba(0,0,0,.6);transition:opacity .2s,transform .25s var(--pn-spring),visibility .2s}
 .pn-panel::before{content:"";position:absolute;inset:-14px 0 auto;height:14px}
 .pn-dd.open .pn-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (min-width:900px){.pn-panel.pn-wide{min-width:440px;display:grid;grid-template-columns:1fr 1fr;gap:0 4px}}
 .pn-panel a{display:block;padding:10px 12px;border-radius:9px;color:#ddd;text-decoration:none;font:500 14px/1.2 Inter,system-ui,sans-serif}
 .pn-panel a:hover,.pn-panel a:focus-visible{background:rgba(227,25,55,.14);color:#fff;outline:none}
 .pn-panel a small{display:block;color:#888;font-size:12px;margin-top:3px}

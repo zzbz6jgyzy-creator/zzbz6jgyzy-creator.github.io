@@ -1,5 +1,5 @@
 (() => {
-  const CACHE_KEY = "v2-aljr-news-v2";
+  const CACHE_KEY = "v2-aljr-news-v3";
   const CACHE_MS = 10 * 60 * 1000;
   const MAX_AGE_MS = 36 * 60 * 60 * 1000;
   const PER_TOPIC = 12;
@@ -310,6 +310,8 @@
       const when = relTime(item.published, now);
       if (when) meta.append(el("span", "", when));
       if (item.source) meta.append(el("span", "", item.source));
+      if (item.flag === "speculation") meta.append(el("span", "news-flag", "Wording is speculative"));
+      if (item.related && item.related.length) meta.append(el("span", "", `+${item.related.length} other source${item.related.length === 1 ? "" : "s"}`));
       body.append(meta);
       body.append(el("h3", "", item.title));
       if (item.snippet) body.append(el("p", "", item.snippet));
@@ -400,7 +402,7 @@
         snapshotItems = snap.items;
         snapshotUpdated = snap.updated || "";
         if (snapshotItems.length) {
-          items = snapshotItems;
+          items = window.SDNewsKeep ? window.SDNewsKeep.prepare(snapshotItems) : snapshotItems;
           source = "snapshot";
           paint();
           setStatus(

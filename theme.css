@@ -519,3 +519,20 @@ html[data-theme="light"] .gs-product-media,
 html[data-theme="light"] .cal-feat-img { color-scheme: dark; }
 html[data-theme="light"] .catch-intro .eyebrow a:hover,
 html[data-theme="light"] .staging-intro .eyebrow a:hover { color: var(--hover-ink); }
+html[data-theme="light"] .sd-disp-chip {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="light"] .sd-disp-chip.is-on {
+  background: #e31937;
+  border-color: #e31937;
+  color: #fff;
+}
+html[data-theme="light"] .sd-disp-status,
+html[data-theme="light"] .sd-disp-meta { color: var(--mute); }
+html[data-theme="light"] .sd-disp-more {
+  color: var(--ink);
+  border-color: var(--line);
+}
+html[data-theme="light"] .mt-notify label { color: var(--ink); }

@@ -84,7 +84,9 @@ try {
   let arts = [];
   try { arts = (JSON.parse(rd("data/articles.json")).articles || []); } catch (e2) {}
   const used = new Set();
-  feed = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || s2.has(k)) return false; s2.add(k); return /^https:\/\//.test(it.url || ""); }).slice(0, 8)
+  const keep = require("../news-keep.js");
+  const held = (() => { try { return JSON.parse(rd("data/news-hold.json")); } catch (e3) { return {}; } })();
+  feed = keep.forHomepage((d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || s2.has(k)) return false; s2.add(k); return /^https:\/\//.test(it.url || ""); }), held).slice(0, 8)
     .map((it) => pairer.itemHtml(it, pairer.pairItem(it, arts, used), esc, `${it.source || ""} · ${it.published ? day(new Date(it.published)) : ""}`.replace(/^ · /, ""))).join("");
 } catch (e) {}
 

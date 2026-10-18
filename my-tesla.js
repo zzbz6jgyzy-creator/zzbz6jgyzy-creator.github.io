@@ -10,6 +10,7 @@
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "sd-my-tesla-v1";
+  const NOTIFY_KEY = "sd-my-tesla-notify-v1";
   const NA = ["US", "CA", "MX", "PR"];
   const EUC = (EU?.countries || []).map((c) => c.code);
   const AP = ["AU", "NZ", "JP", "KR", "TW", "HK", "SG", "MY", "TH", "PH", "CN"];
@@ -420,6 +421,41 @@
     }
   };
 
+  const notifyDefaults = { software: false, recall: false, compat: false, news: false };
+  const readNotify = () => {
+    try {
+      return { ...notifyDefaults, ...(JSON.parse(localStorage.getItem(NOTIFY_KEY) || "null") || {}) };
+    } catch {
+      return { ...notifyDefaults };
+    }
+  };
+  const writeNotify = (next) => {
+    try {
+      localStorage.setItem(NOTIFY_KEY, JSON.stringify(next));
+    } catch {}
+  };
+  const bindNotify = () => {
+    const box = $("mt-notify");
+    if (!box) return;
+    const stateN = readNotify();
+    box.querySelectorAll("[data-mt-n]").forEach((input) => {
+      const key = input.getAttribute("data-mt-n");
+      input.checked = !!stateN[key];
+      input.addEventListener("change", () => {
+        const next = readNotify();
+        next[key] = !!input.checked;
+        writeNotify(next);
+        const stamp = $("mt-notify-state");
+        if (stamp) {
+          const on = Object.keys(notifyDefaults).filter((k) => next[k]);
+          stamp.textContent = on.length
+            ? `Saved on this device: ${on.join(", ")}. Delivery is not live.`
+            : "Preferences stay in this browser. No account. No emails yet.";
+        }
+      });
+    });
+  };
+
   const bind = () => {
     $("mt-model").addEventListener("change", () => {
       state.model = $("mt-model").value;
@@ -477,6 +513,7 @@
     const note = $("mt-note");
     if (note && DATA.note) note.textContent = DATA.note;
     bind();
+    bindNotify();
     render();
     fetch("/updates-live.json", { cache: "no-cache" })
       .then((r) => (r.ok ? r.json() : null))
