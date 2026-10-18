@@ -1,28 +1,28 @@
 {
- "updated": "2026-10-18T13:46:32Z",
+ "updated": "2026-10-18T14:08:38Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-18T12:06:07Z",
-  "fleet": 12433,
+  "fetched": "2026-10-18T14:08:38Z",
+  "fleet": 12434,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 2867,
-    "percent": 23.1,
-    "pending": 857
+    "installs": 2911,
+    "percent": 23.4,
+    "pending": 822
    },
    {
     "id": "2026.38.5",
-    "installs": 345,
-    "percent": 2.8,
+    "installs": 339,
+    "percent": 2.7,
     "pending": 3
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4638,
-    "percent": 37.3,
-    "pending": 999
+    "installs": 4649,
+    "percent": 37.4,
+    "pending": 990
    },
    {
     "id": "2026.38.3",
@@ -32,7 +32,7 @@
    },
    {
     "id": "2026.38",
-    "installs": 99,
+    "installs": 98,
     "percent": 0.8,
     "pending": 2
    },
@@ -44,19 +44,19 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 52,
+    "installs": 49,
     "percent": 0.4,
     "pending": 5
    },
    {
     "id": "2026.32.7",
-    "installs": 1016,
-    "percent": 8.2,
-    "pending": 95
+    "installs": 996,
+    "percent": 8.0,
+    "pending": 94
    },
    {
     "id": "2026.32.3",
-    "installs": 297,
+    "installs": 294,
     "percent": 2.4,
     "pending": 8
    },
@@ -80,9 +80,9 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 291,
+    "installs": 285,
     "percent": 2.3,
-    "pending": 9
+    "pending": 10
    },
    {
     "id": "2026.27.6.15",
@@ -122,8 +122,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 798,
-    "percent": 6.4,
+    "installs": 784,
+    "percent": 6.3,
     "pending": 30
    },
    {
@@ -146,7 +146,7 @@
    },
    {
     "id": "2026.26.1",
-    "installs": 29,
+    "installs": 28,
     "percent": 0.2,
     "pending": 0
    },
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-18T13:46:32Z",
+  "fetched": "2026-10-18T14:08:38Z",
   "items": [
+   {
+    "t": "2026-10-18T13:59:05Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model S AWD (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-18T13:37:41Z",
     "to": "2026.38.3.1",
@@ -563,14 +571,6 @@
     "from": "2026.32.7",
     "model": "Model S 75D (2016)",
     "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-18T12:16:46Z",
-    "to": "2026.38.5.1",
-    "from": "2026.32.7",
-    "model": "Model S 100D (2017)",
-    "hw": "0.0",
     "country": "United States"
    }
   ]
