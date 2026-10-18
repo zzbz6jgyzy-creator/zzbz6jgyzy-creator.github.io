@@ -1,28 +1,28 @@
 {
- "updated": "2026-10-18T05:47:49Z",
+ "updated": "2026-10-18T06:09:34Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-18T02:13:19Z",
-  "fleet": 12434,
+  "fetched": "2026-10-18T06:09:34Z",
+  "fleet": 12435,
   "versions": [
    {
     "id": "2026.38.5.1",
-    "installs": 2509,
-    "percent": 20.2,
-    "pending": 1110
+    "installs": 2720,
+    "percent": 21.9,
+    "pending": 986
    },
    {
     "id": "2026.38.5",
-    "installs": 390,
-    "percent": 3.1,
+    "installs": 354,
+    "percent": 2.8,
     "pending": 3
    },
    {
     "id": "2026.38.3.1",
-    "installs": 4605,
-    "percent": 37.0,
-    "pending": 1025
+    "installs": 4612,
+    "percent": 37.1,
+    "pending": 1020
    },
    {
     "id": "2026.38.3",
@@ -32,8 +32,8 @@
    },
    {
     "id": "2026.38",
-    "installs": 107,
-    "percent": 0.9,
+    "installs": 104,
+    "percent": 0.8,
     "pending": 3
    },
    {
@@ -44,19 +44,19 @@
    },
    {
     "id": "2026.33.5",
-    "installs": 70,
-    "percent": 0.6,
+    "installs": 57,
+    "percent": 0.5,
     "pending": 5
    },
    {
     "id": "2026.32.7",
-    "installs": 1081,
-    "percent": 8.7,
-    "pending": 100
+    "installs": 1047,
+    "percent": 8.4,
+    "pending": 96
    },
    {
     "id": "2026.32.3",
-    "installs": 303,
+    "installs": 304,
     "percent": 2.4,
     "pending": 8
    },
@@ -80,9 +80,9 @@
    },
    {
     "id": "2026.27.11",
-    "installs": 322,
-    "percent": 2.6,
-    "pending": 11
+    "installs": 306,
+    "percent": 2.5,
+    "pending": 9
    },
    {
     "id": "2026.27.6.15",
@@ -122,8 +122,8 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 997,
-    "percent": 8.0,
+    "installs": 890,
+    "percent": 7.2,
     "pending": 30
    },
    {
@@ -140,9 +140,9 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 219,
-    "percent": 1.8,
-    "pending": 8
+    "installs": 215,
+    "percent": 1.7,
+    "pending": 7
    },
    {
     "id": "2026.26.1",
@@ -158,7 +158,7 @@
    },
    {
     "id": "2026.21.6",
-    "installs": 21,
+    "installs": 19,
     "percent": 0.2,
     "pending": 0
    },
@@ -194,7 +194,7 @@
    },
    {
     "id": "2026.20.6.11",
-    "installs": 29,
+    "installs": 28,
     "percent": 0.2,
     "pending": 0
    },
@@ -212,9 +212,9 @@
    },
    {
     "id": "2026.20.6.1",
-    "installs": 175,
+    "installs": 174,
     "percent": 1.4,
-    "pending": 4
+    "pending": 3
    },
    {
     "id": "2026.20.3",
@@ -491,8 +491,32 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-18T05:47:49Z",
+  "fetched": "2026-10-18T06:09:34Z",
   "items": [
+   {
+    "t": "2026-10-18T06:00:45Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-18T05:57:19Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-18T05:55:03Z",
+    "to": "2026.38.5.1",
+    "from": "2026.32.7",
+    "model": "Model S Performance (2016)",
+    "hw": "0.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-18T05:39:39Z",
     "to": "2026.38.5.1",
@@ -546,30 +570,6 @@
     "to": "2026.38.5.1",
     "from": "2026.26.6.5",
     "model": "Model Y AWD LR (2021)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-18T04:15:29Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model 3 AWD LR (2019)",
-    "hw": "0.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-18T04:13:57Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model Y AWD LR (2020)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-18T04:04:10Z",
-    "to": "2026.38.5.1",
-    "from": "2026.33.5",
-    "model": "Model S AWD (2022)",
     "hw": "3.0",
     "country": "United States"
    }
