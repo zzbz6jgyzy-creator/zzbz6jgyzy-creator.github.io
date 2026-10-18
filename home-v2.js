@@ -75,12 +75,24 @@
     paint();
   }).catch(() => {});
 
-  // Headlines feed
-  fetch("/news-data.json", { cache: "no-cache" }).then((r) => r.json()).then((d) => {
-    const seen = new Set(), lab = { tesla: "Tesla", spacex: "SpaceX", grok: "xAI", xai: "xAI", x: "X" };
+  // Headlines feed — keep the off-site wire, add an on-site Dispatch or tracker jump
+  Promise.all([
+    fetch("/news-data.json", { cache: "no-cache" }).then((r) => r.json()),
+    pinP,
+  ]).then(([d, aj]) => {
+    const seen = new Set();
     const items = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || seen.has(k)) return false; seen.add(k); return /^https:\/\//.test(it.url || ""); }).slice(0, 8);
     const ago = (s) => { const m = Math.round((Date.now() - new Date(s)) / 6e4); return m < 60 ? m + "m" : m < 1440 ? Math.round(m / 60) + "h" : Math.round(m / 1440) + "d"; };
-    $("[data-hv-feed]").innerHTML = items.map((it) => `<li><a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer"><span class="hv-f-t">${esc(lab[it.topic] || "News")}</span><span class="hv-f-h">${esc((it.title || "").replace(/\s+-\s+[^-]+$/, ""))}<span class="hv-f-ext" aria-hidden="true"> ↗</span></span><span class="hv-f-m">${esc(it.source || "")} · ${ago(it.published)}</span></a></li>`).join("");
+    const pairer = window.SDHomePair;
+    const used = new Set();
+    const arts = (aj && aj.articles) || [];
+    $("[data-hv-feed]").innerHTML = items.map((it) => {
+      const meta = `${it.source || ""} · ${ago(it.published)}`.replace(/^ · /, "");
+      if (!pairer) {
+        return `<li><a class="hv-f-off" href="${esc(it.url)}" target="_blank" rel="noopener noreferrer"><span class="hv-f-t">${esc({ tesla: "Tesla", spacex: "SpaceX", grok: "xAI", xai: "xAI", x: "X" }[it.topic] || "News")}</span><span class="hv-f-h">${esc((it.title || "").replace(/\s+-\s+[^-]+$/, ""))}<span class="hv-f-ext" aria-hidden="true"> ↗</span></span><span class="hv-f-m">${esc(meta)}</span></a></li>`;
+      }
+      return pairer.itemHtml(it, pairer.pairItem(it, arts, used), esc, meta);
+    }).join("");
   }).catch(() => {});
 
   // Countdowns: upcoming livestreams (live-data.json) + next Starship flight, shown in the visitor's own zone
