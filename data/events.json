@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-10-16T14:15:00+01:00",
+  "updated": "2026-10-18T02:40:00+01:00",
   "events": {
     "starship-flight-15": {
       "title": "Starship Flight 15",
@@ -77,6 +77,19 @@
         "https://www.spacex.com/launches/ussf481"
       ],
       "end": "2026-10-16T00:12:39Z"
+    },
+    "bandwagon-5": {
+      "title": "Falcon 9 · Bandwagon-5 rideshare",
+      "start": "2026-10-19T10:30:00Z",
+      "precision": "datetime",
+      "status": "go",
+      "href": "/dispatch/bandwagon5-starfall-second-demo.html",
+      "summary": "One-hour window opens 6:30 a.m. ET from SLC-40, Cape Canaveral; backup Tue 20 Oct same window. 32 payloads incl. Varda W-Series 7 and SpaceX's second Starfall demo.",
+      "sources": [
+        "https://www.spacex.com/launches/bandwagon5",
+        "https://x.com/SpaceX/status/2111482288135446909"
+      ],
+      "end": "2026-10-19T11:30:00Z"
     }
   }
 }

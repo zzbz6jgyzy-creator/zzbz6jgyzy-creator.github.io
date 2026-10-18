@@ -123,6 +123,18 @@
       precision: "datetime",
       source: "curated",
     },
+    {
+      id: "ll-bandwagon-5",
+      title: "Falcon 9 · Bandwagon-5",
+      start: "2026-10-19T10:30:00Z",
+      group: "spacex",
+      where: "Cape Canaveral · SLC-40",
+      note: "Window opens 6:30 a.m. ET; backup Tue 20 Oct. Rideshare with Varda W-7 and SpaceX's second Starfall demo.",
+      href: "/dispatch/bandwagon5-starfall-second-demo.html",
+      status: "go",
+      precision: "datetime",
+      source: "curated",
+    },
   ];
 
   const WATCHING = [
@@ -432,6 +444,7 @@
         const idMap = {
           "starship-flight-15": "starship-f15",
           "ussf-481": "ll-ussf-481",
+          "bandwagon-5": "ll-bandwagon-5",
           "crs35-docking": "crs35-docking",
           "tesla-q3-2026-earnings": "tesla-q3-2026-earnings",
           "spacex-q3-2026-earnings": "spacex-q3-2026-earnings",
