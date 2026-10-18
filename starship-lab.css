@@ -215,6 +215,35 @@
   font-size: 0.72rem;
   color: var(--mute);
   padding-top: 0.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.slab-clock {
+  font-style: normal;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.slab-clock-official { color: #7dcea0; }
+.slab-clock-approx { color: #e2c48a; }
+.slab-clock-pending { color: #8a929b; }
+.slab-sources { margin: 1rem 0 0; font-size: 0.86rem; }
+.slab-cmp-heads {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+.slab-cmp-h {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+}
+.slab-cmp-h h3 { margin: 0.15rem 0 0.35rem; font-size: 1.05rem; }
+@media (max-width: 700px) {
+  .slab-cmp-heads { grid-template-columns: 1fr; }
 }
 
 .slab-dot {
