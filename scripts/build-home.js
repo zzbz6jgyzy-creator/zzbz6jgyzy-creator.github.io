@@ -77,7 +77,7 @@ let feed = "";
 try {
   const d = JSON.parse(rd("news-data.json")), s2 = new Set(), lab = { tesla: "Tesla", spacex: "SpaceX", grok: "xAI", xai: "xAI", x: "X" };
   feed = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || s2.has(k)) return false; s2.add(k); return /^https:\/\//.test(it.url || ""); }).slice(0, 8)
-    .map((it) => `<li><a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer"><span class="hv-f-t">${esc(lab[it.topic] || "News")}</span><span class="hv-f-h">${esc((it.title || "").replace(/\s+-\s+[^-]+$/, ""))}</span><span class="hv-f-m">${esc(it.source || "")} · ${it.published ? day(new Date(it.published)) : ""}</span></a></li>`).join("");
+    .map((it) => `<li><a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer"><span class="hv-f-t">${esc(lab[it.topic] || "News")}</span><span class="hv-f-h">${esc((it.title || "").replace(/\s+-\s+[^-]+$/, ""))}<span class="hv-f-ext" aria-hidden="true"> ↗</span></span><span class="hv-f-m">${esc(it.source || "")} · ${it.published ? day(new Date(it.published)) : ""}</span></a></li>`).join("");
 } catch (e) {}
 
 // Next-livestream card (same pick + markup as live.js's "Next live stream" card), prebuilt so the
@@ -122,7 +122,7 @@ for (const [f, pg] of [["tesla.html", "tesla"], ["spacex.html", "spacex"]]) {
 }
 
 // Newsletter band (same markup as grow.js data-band; grow.js skips building it when it's already here)
-const band = `<section class="sd-band" data-newsletter="band" aria-label="Newsletter signup"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
+const band = `<section class="sd-band" id="newsletter" data-newsletter="band" aria-label="Newsletter signup"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
       <div><form class="sd-form" data-newsletter-form>
       <label class="visually-hidden" for="sd-band-email">Email address</label>
       <input id="sd-band-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
