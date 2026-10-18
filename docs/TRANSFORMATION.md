@@ -36,11 +36,18 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Each row gets an “On this site” jump to a matching Dispatch piece, tracker, or topic hub.
 - Weak matches fall back to Tesla / SpaceX / Grok desks — no invented coverage.
 
-### Batch 5 — SEO cluster (this PR)
+### Batch 5 — SEO cluster (merged #111)
 
 - Roadster reveal was in `articles.json` but missing `</head>`, so `build-seo.py` never injected JSON-LD. Script now repairs that.
 - Every Dispatch article gets NewsArticle + BreadcrumbList JSON-LD, a visible Home → Dispatch → story crumb, and a desk block (Supercharged Daily / Alex R / @ALJR86 / About). No invented Person credentials.
 - `about.html` gets Organization JSON-LD from the same facts.
+
+### Batch 6 — Performance (this PR)
+
+- Wallpaper lightbox opens a 1280w / 720w WebP preview, not the 4K / phone master. Download links stay full-res. Remaining JPG grid thumbs converted to WebP.
+- Homepage drops unused `home.css` (old hx-hero) and folds `home-focus.css` into `home-v2.css`.
+- Homepage fonts: drop Inter 800 (use 700), load Michroma subsetted to “Supercharged Daily”.
+- “More from Dispatch” uses existing 480w WebP posters.
 
 ## Architecture (do not rip out)
 
@@ -56,10 +63,9 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 ## Ranked next batches
 
-1. **Performance** — wallpaper thumbs, home CSS merge (`home.css` vs `home-v2.css`), font subset.
-2. **Search** — client-side index over `data/articles.json` + nav pages (no paid API).
-3. **Buying advisor / cost calculator** — only with editable assumptions and sourced defaults.
-4. **Light theme** — last; dark is the brand. Do not bolt on a half theme.
+1. **Search** — client-side index over `data/articles.json` + nav pages (no paid API).
+2. **Buying advisor / cost calculator** — only with editable assumptions and sourced defaults.
+3. **Light theme** — last; dark is the brand. Do not bolt on a half theme.
 
 ## Rules that stay in force
 

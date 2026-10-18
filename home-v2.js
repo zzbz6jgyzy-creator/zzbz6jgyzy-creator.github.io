@@ -1,6 +1,10 @@
 (() => {
   const $ = (s) => document.querySelector(s);
   const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const suppThumb = (src) => {
+    const webp = String(src).replace(/\.(jpe?g|png)$/i, "-480w.webp");
+    return `<img src="${esc(webp)}" alt="" width="112" height="70" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${esc(src)}'" />`;
+  };
   const fmtDay = (d, o) => new Intl.DateTimeFormat(undefined, o || { day: "numeric", month: "short" }).format(d);
   const t = $("[data-hv-today]"); if (t) t.textContent = fmtDay(new Date(), { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
@@ -38,7 +42,7 @@
       setImg((og && og.getAttribute("content")) || (fi && fi.getAttribute("src")) || fallback);
     }).catch(() => setImg(fallback));
     $("[data-hv-supp]").innerHTML = cards.slice(1, 4).map((c) =>
-      `<a class="hv-s" href="${esc(c.href)}">${c.img ? `<img src="${esc(c.img)}" alt="" loading="lazy" />` : ""}<div><span class="hv-tag">${esc(c.tag.trim())}</span><h3>${esc(c.h.trim())}</h3></div></a>`).join("");
+      `<a class="hv-s" href="${esc(c.href)}">${c.img ? suppThumb(c.img) : ""}<div><span class="hv-tag">${esc(c.tag.trim())}</span><h3>${esc(c.h.trim())}</h3></div></a>`).join("");
   }).catch(() => {});
 
   // Trackers strip, read from each tracker's own data file

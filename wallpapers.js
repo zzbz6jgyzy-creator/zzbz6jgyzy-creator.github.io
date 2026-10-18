@@ -23,11 +23,28 @@
       (el.closest && el.closest("[data-wp-preview]"))));
   }
 
+  function slugOf(src) {
+    return (src || "").split("/").pop().split("?")[0]
+      .replace(/-desktop\.jpe?g$/i, "")
+      .replace(/-phone\.jpe?g$/i, "")
+      .replace(/\.jpe?g$/i, "");
+  }
+
+  function previewOf(full, phone) {
+    var slug = slugOf(full);
+    if (!slug) return "";
+    return phone
+      ? "/assets/wallpapers/previews/" + slug + "-phone.webp"
+      : "/assets/wallpapers/previews/" + slug + ".webp";
+  }
+
   function show() {
     if (!cur) return;
     if (cur.hasAttribute("data-no-desktop")) isPhone = true;
     if (cur.hasAttribute("data-no-phone")) isPhone = false;
-    var src = isPhone ? (cur.dataset.phone || cur.dataset.full) : cur.dataset.full;
+    var full = isPhone ? (cur.dataset.phone || cur.dataset.full) : cur.dataset.full;
+    var src = previewOf(full, isPhone) || full;
+    img.onerror = function () { img.onerror = null; if (full && img.src.indexOf(full) < 0) img.src = full; };
     img.src = src;
     img.alt = (cur.dataset.title || "") + (isPhone ? " (phone)" : " (desktop)");
     if (t) t.textContent = cur.dataset.title || "";

@@ -1,3 +1,4 @@
+/* Leftover hx-hero homepage. Not loaded — homepage uses home-v2.css. Kept so the old design is recoverable. */
 /* Homepage redesign — scoped to .home-x */
 .home-x{--red:#E31937;--red2:#ff2d4b;--line:rgba(255,255,255,.1);--mute:#a7a9ae}
 body.home-x{background:#050505;color:#f4f4f2}

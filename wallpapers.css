@@ -1,6 +1,7 @@
 .wp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem}
 .wp-card{margin:0;background:#0b0b0d;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
 .wp-card:hover{border-color:#E31937;transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.wp-card{transition:none}.wp-card:hover{transform:none}}
 .wp-thumb{display:block;padding:0;border:0;background:#000;cursor:zoom-in;aspect-ratio:480/1040;width:100%}
 .wp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .wp-card figcaption{padding:.9rem 1rem 1rem}

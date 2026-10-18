@@ -18,6 +18,7 @@ on:
       - scripts/build-home.js
       - scripts/build-seo.py
       - scripts/build-images.mjs
+      - scripts/build-wallpaper-thumbs.mjs
       - 'assets/**'
   workflow_dispatch:
 
@@ -39,6 +40,7 @@ jobs:
         run: |
           npm i --no-save --no-package-lock sharp@0.33 >/dev/null 2>&1 || true
           node scripts/build-images.mjs || echo "image build skipped"
+          node scripts/build-wallpaper-thumbs.mjs || echo "wallpaper thumbs skipped"
       - name: NewsArticle structured data + sitemap
         run: python3 scripts/build-seo.py
       - name: Commit if changed
