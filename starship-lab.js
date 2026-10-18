@@ -75,6 +75,15 @@
   const xUrl = (q) =>
     "https://x.com/search?q=" + encodeURIComponent(q || "from:SpaceX Starship") + "&f=live";
 
+  const clockKind = (tPlus) => {
+    const t = String(tPlus || "").trim();
+    if (!t || t === "—" || /^NET/i.test(t) || /^pending$/i.test(t)) return "pending";
+    if (/^~/.test(t) || /^(splash|entry|coast|lost)$/i.test(t)) return "approx";
+    if (/^T\+/i.test(t)) return "official";
+    return "approx";
+  };
+  const clockLabel = { official: "SpaceX clock", approx: "Approx", pending: "No clock" };
+
   const ytThumb = (id) => "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/hqdefault.jpg";
 
   const writeHash = () => {
@@ -147,7 +156,7 @@
       .map(
         (p) => `
       <li class="slab-phase is-${escapeHtml(p.result)}">
-        <time>${escapeHtml(p.tPlus)}</time>
+        <time>${escapeHtml(p.tPlus)}<i class="slab-clock slab-clock-${clockKind(p.tPlus)}">${clockLabel[clockKind(p.tPlus)]}</i></time>
         <span class="slab-dot" aria-hidden="true"></span>
         <div>
           <b>${escapeHtml(lab.phaseLabel[p.id] || p.id)}</b>
@@ -335,7 +344,13 @@
         .map((item) => `<span class="slab-chip">${escapeHtml(item)}</span>`)
         .join("")}</div>
       <h4 class="slab-sub">Anomalies &amp; outcomes</h4>
-      ${listHtml(more.anomalies, "slab-anom")}`;
+      ${listHtml(more.anomalies, "slab-anom")}
+      <p class="slab-sources">
+        <a href="${escapeHtml(more.spacex || "https://www.spacex.com/launches")}" rel="noopener noreferrer" target="_blank">SpaceX flight page</a>
+        ·
+        <a href="${escapeHtml(xUrl(more.xq))}" rel="noopener noreferrer" target="_blank">@SpaceX on X</a>
+      </p>
+      <p class="slab-fine">Phase times are a desk read of SpaceX pages and recaps. They are not live telemetry.</p>`;
   };
 
   const cell = (n, id) => {
@@ -343,16 +358,29 @@
     if (!phase) {
       return `<td class="slab-cell is-skip"><b>No data</b></td>`;
     }
+    const kind = clockKind(phase.tPlus);
     return `<td class="slab-cell is-${escapeHtml(phase.result)}"><b>${escapeHtml(
       resultLabel[phase.result] || phase.result
-    )}</b>${escapeHtml(phase.note)} <span class="slab-fine">${escapeHtml(phase.tPlus)}</span></td>`;
+    )}</b>${escapeHtml(phase.note)} <span class="slab-fine">${escapeHtml(phase.tPlus)} · ${clockLabel[kind]}</span></td>`;
   };
 
   const renderCompare = () => {
     if (!compareBody) return;
     const a = meta(compareA);
     const b = meta(compareB);
+    const head = (n, row) => {
+      const more = extra(n);
+      return `<article class="slab-cmp-h">
+        <p class="slab-kicker">Flight ${escapeHtml(n)} · ${escapeHtml(outcomeLabel[row.outcome])}</p>
+        <h3>${escapeHtml(row.headline)}</h3>
+        <p class="slab-hwline">${escapeHtml(row.block)} · ${escapeHtml(row.booster)} · ${escapeHtml(row.ship)}</p>
+        <p class="slab-sources">
+          <a href="${escapeHtml(more.spacex || "https://www.spacex.com/launches")}" rel="noopener noreferrer" target="_blank">SpaceX flight page</a>
+        </p>
+      </article>`;
+    };
     compareBody.innerHTML = `
+      <div class="slab-cmp-heads">${head(compareA, a)}${head(compareB, b)}</div>
       <div class="slab-table-wrap">
         <table class="slab-table">
           <thead>
@@ -376,7 +404,7 @@
           </tbody>
         </table>
       </div>
-      <p class="slab-fine" style="margin-top:0.85rem">Same ten phases on every flight, so a catch attempt and an orbital debut can sit on one row. Skip means that flight never tried it.</p>`;
+      <p class="slab-fine" style="margin-top:0.85rem">Same ten phases on every flight. Skip means that flight never tried it. Times marked Approx are a desk read, not a SpaceX clock, and never live telemetry.</p>`;
   };
 
   const setModeUi = () => {
