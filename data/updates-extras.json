@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-18T06:09:34Z",
+ "updated": "2026-10-18T07:00:27Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-18T06:09:34Z",
+  "fetched": "2026-10-18T07:00:27Z",
   "items": [
+   {
+    "t": "2026-10-18T06:50:53Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model Y AWD LR (2021)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-18T06:32:51Z",
+    "to": "2026.38.5.1",
+    "from": "2026.32.7",
+    "model": "Model S Performance (2017)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-18T06:22:32Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model Y AWD LR (2024)",
+    "hw": "3.0",
+    "country": "Germany"
+   },
+   {
+    "t": "2026-10-18T06:17:50Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 SR (2022)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-18T06:04:09Z",
+    "to": "2026.38.5.1",
+    "from": "2026.32.7",
+    "model": "Model Y AWD LR (2021)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-18T06:00:45Z",
     "to": "2026.38.5.1",
@@ -532,46 +572,6 @@
     "model": "Model 3 AWD LR (2020)",
     "hw": "3.0",
     "country": "Canada"
-   },
-   {
-    "t": "2026-10-18T05:26:15Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model Y AWD LR (2020)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-18T04:58:26Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model Y RWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-18T04:45:06Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model 3 SR (2021)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-18T04:26:39Z",
-    "to": "2026.38.3.1",
-    "from": "2026.32.7",
-    "model": "Model 3 AWD LR (2021)",
-    "hw": "3.0",
-    "country": "Germany"
-   },
-   {
-    "t": "2026-10-18T04:24:51Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model Y AWD LR (2021)",
-    "hw": "3.0",
-    "country": "United States"
    }
   ]
  }
