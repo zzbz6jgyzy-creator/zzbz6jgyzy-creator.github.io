@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script src="/theme-boot.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tesla — Supercharged Daily</title>
     <meta
@@ -42,11 +43,12 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" /></noscript>
-    <link rel="stylesheet" href="/styles.css?v=20261016094523" />
+    <link rel="stylesheet" href="/styles.css?v=202610182359" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
     <link rel="stylesheet" href="/live.css?v=202610161100" />
     <link rel="stylesheet" href="/tesla-page.css" />
-      <link rel="stylesheet" href="/nav-pill.css?v=202610182231" />
+      <link rel="stylesheet" href="/nav-pill.css?v=202610182359" />
+    <link rel="stylesheet" href="/theme.css?v=202610182359" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -580,6 +582,6 @@
         document.querySelectorAll("[data-cc-date]").forEach(function (e) { e.textContent = dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" }); });
       }).catch(function () {});
     </script>
-      <script src="/nav-pill.js?v=202610182231"></script>
+      <script src="/nav-pill.js?v=202610182359"></script>
   </body>
 </html>

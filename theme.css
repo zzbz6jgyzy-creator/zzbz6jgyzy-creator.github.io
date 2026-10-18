@@ -1,0 +1,414 @@
+/* Light theme. Dark stays default. html[data-theme=light] is explicit — not prefers-color-scheme. */
+html[data-theme="light"] {
+  --bg: #f3f1ec;
+  --ink: #16171b;
+  --ink-soft: #5a5d64;
+  --mute: #6d7077;
+  --red-text: #b01028;
+  --line: rgba(22, 23, 27, 0.1);
+  --line-strong: rgba(22, 23, 27, 0.16);
+  --card: #fff;
+  --hover-ink: #111;
+  --surface: #fff;
+  --surface-2: #e8e6e0;
+  --input-bg: #fff;
+  --glass: rgba(255, 255, 255, 0.88);
+  --glass-line: rgba(22, 23, 27, 0.12);
+  --overlay: rgba(22, 18, 16, 0.42);
+  --shadow: 0 14px 40px rgba(22, 23, 27, 0.1);
+  color-scheme: light;
+}
+
+html[data-theme="light"] img.pn-word,
+html[data-theme="light"] .pn-sheet-head > img {
+  content: url("/assets/brand/wordmark-ink.svg");
+}
+
+html[data-theme="light"] body { background: var(--bg); color: var(--ink); }
+html[data-theme="light"] .topbar { background: rgba(243, 241, 236, 0.9); }
+html[data-theme="light"] .latest-card { background: rgba(255, 255, 255, 0.86); }
+html[data-theme="light"] .latest-strip-head a:hover,
+html[data-theme="light"] .world-board h3 a:hover,
+html[data-theme="light"] .review-video-caption a:hover,
+html[data-theme="light"] .art-more:hover { color: var(--hover-ink); }
+html[data-theme="light"] .button-ghost:hover { color: var(--hover-ink); }
+html[data-theme="light"] .nav-cta:hover { background: var(--ink); color: var(--bg) !important; }
+
+/* Nav pill + sheet */
+html[data-theme="light"] .pn {
+  border-color: var(--glass-line);
+  background: var(--glass);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+html[data-theme="light"] .pn-logo { color: var(--ink); }
+html[data-theme="light"] .pn a.pn-link,
+html[data-theme="light"] .pn-dd > button { color: #3d4046; }
+html[data-theme="light"] .pn a.pn-link:hover,
+html[data-theme="light"] .pn-dd > button:hover,
+html[data-theme="light"] .pn-dd.open > button,
+html[data-theme="light"] .pn a.pn-link[aria-current] { color: var(--ink); background: rgba(22, 23, 27, 0.06); }
+html[data-theme="light"] .pn-panel {
+  background: #fff;
+  border-color: var(--glass-line);
+  box-shadow: var(--shadow);
+}
+html[data-theme="light"] .pn-panel a { color: #2a2c31; }
+html[data-theme="light"] .pn-panel a:hover,
+html[data-theme="light"] .pn-panel a:focus-visible { color: var(--ink); }
+html[data-theme="light"] .pn-panel a small { color: #6d7077; }
+html[data-theme="light"] .pn-icon { color: var(--ink); }
+html[data-theme="light"] .pn-menu { background: rgba(22, 23, 27, 0.06); color: var(--ink); }
+html[data-theme="light"] .pn-overlay { background: var(--overlay); }
+html[data-theme="light"] .pn-sheet {
+  background: #f7f5f1;
+  border-left-color: var(--glass-line);
+  box-shadow: -16px 0 40px rgba(22, 23, 27, 0.12);
+}
+html[data-theme="light"] .pn-close { border-color: var(--glass-line); color: var(--ink); }
+html[data-theme="light"] .pn-sheet a { color: #2a2c31; }
+html[data-theme="light"] .pn-sheet a.pn-search-sheet { border-color: var(--glass-line); }
+html[data-theme="light"] .pn-panel a[aria-current],
+html[data-theme="light"] .pn-sheet a[aria-current] { color: var(--ink); }
+html[data-theme="light"] .pn a.pn-sub {
+  color: #16171b;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(227, 25, 55, 0.7);
+}
+html[data-theme="light"] .pn-credit { color: #7a7d84; }
+
+html[data-theme="light"] .pn-theme {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  margin-left: 2px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: #3d4046;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+html[data-theme="light"] .pn-theme:hover { background: rgba(22, 23, 27, 0.06); color: var(--ink); }
+.pn-theme { appearance: none; width: 36px; height: 36px; margin-left: 2px; border: 0; border-radius: 999px; background: none; color: #d6d6d6; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0; }
+.pn-theme:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
+.pn-theme svg { width: 16px; height: 16px; display: none; }
+.pn-theme .i-sun { display: block; }
+html[data-theme="light"] .pn-theme .i-sun { display: none; }
+html[data-theme="light"] .pn-theme .i-moon { display: block; }
+.pn-sheet .pn-theme-sheet {
+  width: auto;
+  height: auto;
+  margin: 4px 0 10px;
+  padding: 13px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font: 600 16px/1 Inter, system-ui, sans-serif;
+  color: #e6e6e6;
+  justify-content: center;
+  gap: 8px;
+}
+html[data-theme="light"] .pn-sheet .pn-theme-sheet { border-color: var(--glass-line); color: #2a2c31; }
+.pn-sheet .pn-theme-sheet svg { width: 16px; height: 16px; }
+@media (max-width: 1200px) and (min-width: 900px) {
+  .pn-theme .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+}
+
+/* Search */
+html[data-theme="light"] .sd-find-root { background: var(--overlay); }
+html[data-theme="light"] .sd-find-box {
+  background: #fff;
+  border-color: var(--glass-line);
+  box-shadow: var(--shadow);
+}
+html[data-theme="light"] .sd-find-bar { border-bottom-color: var(--line); }
+html[data-theme="light"] .sd-find-bar svg { color: var(--mute); }
+html[data-theme="light"] .sd-find-q,
+html[data-theme="light"] .sd-search-page .sd-find-q { color: var(--ink); }
+html[data-theme="light"] .sd-find-q::placeholder { color: var(--mute); }
+html[data-theme="light"] .sd-find-x { color: var(--ink-soft); }
+html[data-theme="light"] .sd-find-x:hover { background: rgba(22, 23, 27, 0.06); color: var(--ink); }
+html[data-theme="light"] .sd-find-status,
+html[data-theme="light"] .sd-find-k { color: var(--mute); }
+html[data-theme="light"] .sd-find-hit:hover,
+html[data-theme="light"] .sd-find-hit.is-on { color: var(--ink); }
+html[data-theme="light"] .sd-find-tag { color: var(--ink); }
+html[data-theme="light"] .sd-find-hit p,
+html[data-theme="light"] .sd-find-empty,
+html[data-theme="light"] .sd-find-hint { color: var(--ink-soft); }
+html[data-theme="light"] .sd-find-media { background: var(--surface-2); }
+html[data-theme="light"] .sd-find-inline input[type="search"],
+html[data-theme="light"] .sd-search-page .sd-search-form,
+html[data-theme="light"] .sd-search-page .sd-find-hit {
+  background: var(--card);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+/* Homepage */
+html[data-theme="light"] body.home-x { background: var(--bg); color: var(--ink); }
+html[data-theme="light"] .hv { color: var(--ink); }
+html[data-theme="light"] .hv-mast { border-bottom-color: var(--line); }
+html[data-theme="light"] .hv-date { color: var(--mute); }
+html[data-theme="light"] .hv-title { color: var(--ink); }
+html[data-theme="light"] .hv-pitch { color: var(--ink-soft); }
+html[data-theme="light"] .hv-lead,
+html[data-theme="light"] .hv-feat-card,
+html[data-theme="light"] .hv-t,
+html[data-theme="light"] .hv-ex,
+html[data-theme="light"] .hv-c {
+  background: var(--card);
+  border-color: var(--line);
+}
+html[data-theme="light"] .hv-lead-media { background: var(--surface-2); }
+html[data-theme="light"] .hv-lead h2,
+html[data-theme="light"] .hv-s h3,
+html[data-theme="light"] .hv-head h2,
+html[data-theme="light"] .hv-feat-card strong,
+html[data-theme="light"] .hv-t strong,
+html[data-theme="light"] .hv-ex strong,
+html[data-theme="light"] .hv-c-n { color: var(--ink); }
+html[data-theme="light"] .hv-lead p,
+html[data-theme="light"] .hv-feat-s,
+html[data-theme="light"] .hv-t-s,
+html[data-theme="light"] .hv-ex-s { color: var(--ink-soft); }
+html[data-theme="light"] .hv-s { border-bottom-color: var(--line); }
+html[data-theme="light"] .hv-s:hover h3 { color: #c8102e; }
+html[data-theme="light"] .hv-head span,
+html[data-theme="light"] .hv-head a,
+html[data-theme="light"] .hv-feat-k,
+html[data-theme="light"] .hv-t-k,
+html[data-theme="light"] .hv-ex-k,
+html[data-theme="light"] .hv-c-w { color: var(--mute); }
+html[data-theme="light"] .hv-head a:hover { color: var(--ink); }
+html[data-theme="light"] .hv-feat-promise { background: linear-gradient(135deg, rgba(227, 25, 55, 0.1), transparent 58%), #fff; }
+html[data-theme="light"] .hv-feat-sky { background: linear-gradient(160deg, rgba(22, 23, 27, 0.03), transparent 55%), #fff; }
+html[data-theme="light"] .hv-list li { border-bottom-color: var(--line); }
+html[data-theme="light"] .hv-f-h { color: #2a2c31; }
+html[data-theme="light"] .hv-list .hv-f-off:hover .hv-f-h { color: var(--ink); }
+html[data-theme="light"] .hv-f-m,
+html[data-theme="light"] .hv-f-on,
+html[data-theme="light"] .hv-feed-sub,
+html[data-theme="light"] .hv-f-ext,
+html[data-theme="light"] .hv-c-none { color: var(--mute); }
+html[data-theme="light"] .hv-f-on:hover { color: var(--ink); }
+
+/* Dispatch / news / about */
+html[data-theme="light"] .related-stories,
+html[data-theme="light"] .sd-about,
+html[data-theme="light"] .rel-card {
+  background: var(--card);
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="light"] .rel-card { color: var(--ink); }
+html[data-theme="light"] .sd-crumbs { color: var(--mute); }
+html[data-theme="light"] .sd-crumbs li:not(:last-child)::after { color: rgba(22, 23, 27, 0.28); }
+html[data-theme="light"] .sd-crumbs a { color: var(--ink-soft); }
+html[data-theme="light"] .sd-crumbs a:hover,
+html[data-theme="light"] .sd-crumbs [aria-current="page"] { color: var(--ink); }
+html[data-theme="light"] .sd-about p { color: var(--ink-soft); }
+html[data-theme="light"] .art-x .art-tag { background: rgba(22, 23, 27, 0.06); border-color: rgba(22, 23, 27, 0.16); }
+
+/* Newsletter / growth — keep Tesla red, lift the paper */
+html[data-theme="light"] .newsletter {
+  background: radial-gradient(120% 140% at 0% 0%, rgba(200, 16, 46, 0.1), transparent 55%), #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+html[data-theme="light"] .newsletter h2 { color: var(--ink); }
+html[data-theme="light"] .newsletter .newsletter-tagline,
+html[data-theme="light"] .newsletter .newsletter-fine,
+html[data-theme="light"] .newsletter-status { color: var(--ink-soft); }
+html[data-theme="light"] .newsletter-form {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+html[data-theme="light"] .newsletter-form input[type="email"] { color: var(--ink); }
+html[data-theme="light"] .newsletter-form input[type="email"]::placeholder { color: var(--mute); }
+html[data-theme="light"] .nl-end-in {
+  background: linear-gradient(135deg, rgba(227, 25, 55, 0.08), rgba(255, 255, 255, 0.6) 55%), #fff;
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+}
+html[data-theme="light"] .nl-end h2 { color: var(--ink); }
+html[data-theme="light"] .nl-end-sub,
+html[data-theme="light"] .nl-end-status { color: var(--ink-soft); }
+html[data-theme="light"] .nl-end-form input[type="email"] {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line);
+}
+html[data-theme="light"] .sd-ref {
+  background: linear-gradient(135deg, rgba(227, 25, 55, 0.1), #fff 60%);
+  color: var(--ink);
+}
+html[data-theme="light"] .sd-ref p.sd-ref-sub { color: var(--ink-soft); }
+html[data-theme="light"] .sd-band,
+html[data-theme="light"] .sd-pop {
+  background: #fff;
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="light"] .sd-band p,
+html[data-theme="light"] .sd-pop p { color: var(--ink-soft); }
+html[data-theme="light"] .sd-form input[type="email"] {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line);
+}
+html[data-theme="light"] .sd-x:hover { color: var(--ink); background: var(--surface-2); }
+html[data-theme="light"] .sd-fine,
+html[data-theme="light"] .ref-note { color: var(--mute) !important; }
+
+/* Tesla hub — photo heroes stay cinematic */
+html[data-theme="light"] .tz-hero,
+html[data-theme="light"] .tz-hero-copy,
+html[data-theme="light"] .gk-hero,
+html[data-theme="light"] .gs-hero { color: #f4f4f2; }
+html[data-theme="light"] .tz-lede { color: #d9d9d6; }
+html[data-theme="light"] .tz-credit { color: rgba(255, 255, 255, 0.55); }
+html[data-theme="light"] .tz-hero .button-ghost,
+html[data-theme="light"] .tz-hero .button { color: #f4f4f2; }
+html[data-theme="light"] .tz-jump { background: rgba(243, 241, 236, 0.94); }
+html[data-theme="light"] .tz-photo figcaption { color: var(--mute); }
+html[data-theme="light"] .tz-band {
+  background: linear-gradient(120deg, rgba(227, 25, 55, 0.1), #fff 55%);
+}
+
+/* Roadster — hero/flight stay black; page chrome lifts */
+html[data-theme="light"] .rd-page {
+  --ink: #16171b;
+  --mute: #5a5d64;
+  --line: rgba(22, 23, 27, 0.1);
+  background: var(--bg);
+}
+html[data-theme="light"] .rd-embed,
+html[data-theme="light"] .rd-tabs,
+html[data-theme="light"] .rd-money li,
+html[data-theme="light"] .rd-card {
+  background: var(--card);
+}
+html[data-theme="light"] .rd-panels {
+  background: radial-gradient(90% 120% at 100% 0%, rgba(232, 33, 39, 0.1), transparent 55%), #fff;
+}
+html[data-theme="light"] .rd-tabs { border-color: var(--line); }
+
+/* Shared inputs / chips */
+html[data-theme="light"] .mt-field select,
+html[data-theme="light"] .sl-id-loc input[type="search"],
+html[data-theme="light"] .see-loc input[type="search"],
+html[data-theme="light"] .tc-loc input[type="search"],
+html[data-theme="light"] .tc-loc select,
+html[data-theme="light"] .vx-diff select {
+  background: var(--input-bg);
+  color: var(--ink);
+}
+html[data-theme="light"] .mt-actions button,
+html[data-theme="light"] .mt-chip,
+html[data-theme="light"] .mt-guide,
+html[data-theme="light"] .sl-id-loc button,
+html[data-theme="light"] .see-loc button,
+html[data-theme="light"] .see-chip,
+html[data-theme="light"] .tc-loc button,
+html[data-theme="light"] .sl-id-card,
+html[data-theme="light"] .tc-item,
+html[data-theme="light"] .vx-tabs button,
+html[data-theme="light"] .vx-jump a,
+html[data-theme="light"] .vx-share a,
+html[data-theme="light"] .vx-share button,
+html[data-theme="light"] .vx-more a,
+html[data-theme="light"] .vx-controls button {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+html[data-theme="light"] .sl-id-suggest,
+html[data-theme="light"] .see-suggest,
+html[data-theme="light"] .tc-suggest { background: #fff; }
+html[data-theme="light"] .see-empty,
+html[data-theme="light"] .tc-idle { color: var(--ink-soft); }
+html[data-theme="light"] .vx-tabs button[aria-selected="true"],
+html[data-theme="light"] .vx-jump a:hover,
+html[data-theme="light"] .vx-jump a.is-on { color: var(--ink); }
+html[data-theme="light"] .vx-tabs button[aria-selected="true"] small { color: var(--ink-soft); }
+html[data-theme="light"] .vx-jump {
+  background: linear-gradient(var(--bg) 70%, rgba(243, 241, 236, 0));
+}
+html[data-theme="light"] .vx-caption,
+html[data-theme="light"] .vx-controls {
+  background: var(--card);
+  color: var(--ink);
+}
+html[data-theme="light"] .vx-share a:hover,
+html[data-theme="light"] .vx-share button:hover,
+html[data-theme="light"] .vx-more a:hover { border-color: var(--ink); color: var(--ink); }
+html[data-theme="light"] .vx-pill.off { background: rgba(22, 23, 27, 0.06); color: var(--mute); }
+
+/* Buying advisor */
+html[data-theme="light"] .sd-calc {
+  background: var(--card);
+  border-color: var(--line);
+}
+html[data-theme="light"] .sd-calc-car,
+html[data-theme="light"] .sd-calc input,
+html[data-theme="light"] .sd-calc select,
+html[data-theme="light"] .sd-calc-cmp-card {
+  background: var(--surface-2);
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="light"] .sd-calc-car small,
+html[data-theme="light"] .sd-calc label,
+html[data-theme="light"] .sd-calc-hint,
+html[data-theme="light"] .sd-calc-out dt,
+html[data-theme="light"] .sd-calc-cmp-card span,
+html[data-theme="light"] .sd-calc-cmp-card small { color: var(--mute); }
+html[data-theme="light"] .sd-calc-out dd,
+html[data-theme="light"] .sd-calc-out .sd-calc-total dd,
+html[data-theme="light"] .sd-calc-rows b { color: var(--ink); }
+html[data-theme="light"] .sd-calc-rows li { border-bottom-color: var(--line); color: var(--ink-soft); }
+html[data-theme="light"] .sd-calc-reset {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+/* Live “next” strip lifts; LIVE / Watch-live cards stay dark-red */
+html[data-theme="light"] .lv-next {
+  background: var(--card);
+  border-bottom-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="light"] .lv-next .lv-when { color: var(--ink); }
+html[data-theme="light"] .lv:not(.lv-inhero) .lv-next { border-bottom-color: var(--line); }
+html[data-theme="light"] .lv-inhero .lv-next { background: rgba(255, 255, 255, 0.86); border-color: var(--line); }
+html[data-theme="light"] .cal-next-card {
+  background: var(--card);
+  border-color: var(--line);
+}
+
+/* Wallpapers / gear cards */
+html[data-theme="light"] .wp-card,
+html[data-theme="light"] .wpr-info { background: var(--card); border-color: var(--line); }
+
+/* Starlink stack panels that were ink wells */
+html[data-theme="light"] .sl-id-status { background: var(--card); }
+
+/* Support / markets leftovers */
+html[data-theme="light"] .support-button { background: #fff; color: var(--ink); }
+
+/* Keep instruments dark: maps, globes, games, photo heroes, explainer boards, 3D explorers */
+html[data-theme="light"] .vx-board,
+html[data-theme="light"] .vx-file,
+html[data-theme="light"] .rd-hero,
+html[data-theme="light"] .rd-flight,
+html[data-theme="light"] .rd-facade,
+html[data-theme="light"] .sw-globe-wrap,
+html[data-theme="light"] .rt-map,
+html[data-theme="light"] .rt-map .leaflet-container,
+html[data-theme="light"] body.pn-app,
+html[data-theme="light"] .catch-stage,
+html[data-theme="light"] .catch-board,
+html[data-theme="light"] .staging-page canvas { color-scheme: dark; }
+html[data-theme="light"] .catch-intro .eyebrow a:hover,
+html[data-theme="light"] .staging-intro .eyebrow a:hover { color: var(--hover-ink); }

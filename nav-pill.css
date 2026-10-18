@@ -74,6 +74,16 @@ body.pn-app .pn-wrap{top:14px}
 .pn-sheet a.pn-search-sheet svg{width:16px;height:16px}
 .pn-sheet a.pn-sub-sheet{margin-top:20px;text-align:center;border:1px solid rgba(227,25,55,.6);font-weight:600}
 .pn-sheet a.pn-search-sheet+.pn-sub-sheet{margin-top:10px}
+.pn-theme{appearance:none;width:36px;height:36px;margin-left:2px;border:0;border-radius:999px;background:none;color:#d6d6d6;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.pn-theme:hover{background:rgba(255,255,255,.07);color:#fff}
+.pn-theme svg{width:16px;height:16px}
+.pn-theme .i-moon{display:none}
+html[data-theme="light"] .pn-theme .i-sun{display:none}
+html[data-theme="light"] .pn-theme .i-moon{display:block}
+.pn-theme .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.pn-sheet .pn-theme-sheet{width:auto;height:auto;margin:4px 0 10px;padding:13px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.16);font:600 16px/1 Inter,system-ui,sans-serif;color:#e6e6e6;justify-content:center;gap:8px}
+.pn-sheet .pn-search-sheet+.pn-theme-sheet{margin-top:0}
+.pn-sheet .pn-theme-sheet svg{width:16px;height:16px}
 .pn-sheet a.pn-sub-sheet+.pn-cta{margin-top:10px}
 .pn-sheet h3 .pn-grp-t{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;width:100%;cursor:pointer;padding:10px 0;font:inherit;letter-spacing:inherit;color:inherit}
 .pn-sheet h3{margin-top:6px;margin-bottom:0}

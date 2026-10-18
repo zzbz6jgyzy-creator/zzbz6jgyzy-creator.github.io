@@ -58,10 +58,17 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 - Sourced Tesla list prices, dest/order fees, charger SKUs, FSD $99/mo. Tax / rebate / install / FSD months are the reader’s.
 
-### Batch 9 — Search everywhere (this PR)
+### Batch 9 — Search everywhere (merged #115)
 
 - Cache-bump `nav-pill.js` / `nav-pill.css` to `202610182231` on every leftover page so Search injects sitewide.
 - No `nav.json` / `sync-nav.py`. Redirect stubs (`videos.html`, `goldcab.html`, `grok-bot.html`) still have no pill.
+
+### Batch 10 — Light theme (this PR)
+
+- Dark stays the default. An explicit Light / Dark control in the pill persists in `localStorage` (`sd-theme`).
+- Tokens remapped on `html[data-theme=light]`; homepage, nav, search, Dispatch, newsletter, forms and hubs lift to warm paper.
+- Photo heroes, maps, globes, explainer boards, 3D explorers and game stages stay dark. Games were not rewritten.
+- No `prefers-color-scheme` auto-switch. No `nav.json` / `sync-nav.py`.
 
 ## Architecture (do not rip out)
 
@@ -77,9 +84,7 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 ## Ranked next batches
 
-1. **Light theme** — last; dark is the brand. Do not bolt on a half theme.
-
-Shipped this window: Search in the pill on every page that already loads `nav-pill.js` (cache bump only — no `nav.json` / `sync-nav.py`). Light theme still last.
+None queued. Dark remains the default brand. Do not auto-switch on OS light mode.
 
 ## Rules that stay in force
 
