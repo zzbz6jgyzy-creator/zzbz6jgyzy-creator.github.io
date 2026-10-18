@@ -56,6 +56,9 @@
 .mt-guide:hover{border-color:#fff}
 .mt-guide strong{font-size:15px}
 .mt-guide span{color:var(--mute);font-size:13px}
+.mt-notify{display:grid;gap:10px;margin:4px 0 8px}
+.mt-notify label{display:flex;align-items:flex-start;gap:10px;font:500 14px/1.4 Inter,sans-serif;color:#dfe3e8;cursor:pointer}
+.mt-notify input{width:18px;height:18px;margin-top:2px;accent-color:#e31937;flex-shrink:0}
 .mt-empty{color:#c9cfd6;margin:8px 0 0}
 #mt-empty{background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:22px 18px;margin-top:18px}
 .mt-fine{font-size:12px;color:var(--mute);margin:12px 0 0;line-height:1.6}

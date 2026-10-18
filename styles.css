@@ -4077,6 +4077,9 @@ a.news-card:hover h3 {
   text-transform: uppercase;
   color: var(--mute);
 }
+.news-flag {
+  color: #e2c48a;
+}
 
 .news-card h3 {
   margin: 0;

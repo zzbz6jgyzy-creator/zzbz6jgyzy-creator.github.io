@@ -14,8 +14,9 @@ def dd(d):
         b = f'<span class="pn-badge">{badge}</span>' if badge else ""
         s = f"<small>{sub}</small>" if sub else ""
         rows.append(f'                <a href="{href}">{name}{b}{s}</a>')
+    wide = " pn-wide" if d.get("wide") else ""
     return (f'            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="{d["id"]}">{d["label"]}{CH}</button>\n'
-            f'              <div class="pn-panel" id="{d["id"]}">\n' + "\n".join(rows) + "\n              </div></div>")
+            f'              <div class="pn-panel{wide}" id="{d["id"]}">\n' + "\n".join(rows) + "\n              </div></div>")
 def links(lst, cls=""):
     c = f' class="{cls}"' if cls else ""
     return [f'            <a{c} href="{h}">{n}</a>' for n, h in lst]
@@ -23,7 +24,8 @@ def block(navtag):
     t, m, ds = cfg.get("top", []), cfg.get("mid", []), cfg["dropdowns"]
     items = links(t, "pn-link") + [dd(d) for d in ds] + links(m, "pn-link") + [f'            <a class="pn-cta" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>']
     a = lambda lst: "".join(f'<a href="{h}">{n}</a>' for n, h in lst)
-    sheet = [a([("Home", "/")] + t + m)]
+    top_has_home = any((n or "").lower() == "home" or h in ("/", "/index.html") for n, h in t)
+    sheet = [a((t if top_has_home else [("Home", "/")] + t) + m)]
     for d in ds:
         sheet += [f'<h3>{d["label"]}</h3>', a([(i[0], i[1]) for i in d["items"]])]
     return f'''<div class="pn-wrap">

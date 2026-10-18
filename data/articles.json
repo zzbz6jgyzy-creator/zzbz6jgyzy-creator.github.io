@@ -10,7 +10,8 @@
       "image": "/assets/dispatch/musk-earnings-week-q3-2026-poster.jpg",
       "summary": "SpaceX reports Tuesday, Tesla Wednesday, then up to 1.3 billion SpaceX shares unlock on Thursday.",
       "pinned": false,
-      "imageAlt": "The long grey facade of Tesla's Gigafactory Texas Building 1 near Austin on a clear day (Larry D. Moore, CC BY 4.0)"
+      "imageAlt": "The long grey facade of Tesla's Gigafactory Texas Building 1 near Austin on a clear day (Larry D. Moore, CC BY 4.0)",
+      "minutes": 8
     },
     {
       "url": "/dispatch/bandwagon5-starfall-second-demo.html",
@@ -21,7 +22,8 @@
       "image": "/assets/dispatch/bandwagon5-starfall-second-demo-poster.jpg",
       "summary": "Bandwagon-5 flies 32 payloads, including two capsules built to come home: Varda’s W-7 and SpaceX’s Starfall.",
       "pinned": false,
-      "imageAlt": "Long-exposure photo of a Falcon 9 night launch from Space Launch Complex 40, its bright arc curving across a starry sky over Cape Canaveral (U.S. Space Force photo by Joshua Conti, public domain)"
+      "imageAlt": "Long-exposure photo of a Falcon 9 night launch from Space Launch Complex 40, its bright arc curving across a starry sky over Cape Canaveral (U.S. Space Force photo by Joshua Conti, public domain)",
+      "minutes": 8
     },
     {
       "url": "/dispatch/robotaxi-austin-midnight-803.html",
@@ -32,7 +34,8 @@
       "image": "/assets/dispatch/robotaxi-austin-midnight-803-poster.jpg",
       "summary": "An app alert pushed Austin’s day to 6am–midnight. Texas registrations passed 800, and all 34 new cars are Model Ys.",
       "pinned": false,
-      "imageAlt": "A silver current-generation Tesla Model Y parked under trees (Damian B Oh, CC BY-SA 4.0)"
+      "imageAlt": "A silver current-generation Tesla Model Y parked under trees (Damian B Oh, CC BY-SA 4.0)",
+      "minutes": 6
     },
     {
       "url": "/dispatch/boca-chica-state-park-spacex.html",
@@ -43,7 +46,8 @@
       "image": "/assets/dispatch/boca-chica-state-park-spacex-poster.jpg",
       "summary": "A draft agenda listed a closed-door 1,300-acre sale. Sources say SpaceX is the buyer; the state says it’s off November’s agenda.",
       "pinned": false,
-      "imageAlt": "Two cars on Boca Chica Beach with SpaceX’s Starship launch tower under construction behind the dunes (Alexander Hatley, CC BY 2.0)"
+      "imageAlt": "Two cars on Boca Chica Beach with SpaceX’s Starship launch tower under construction behind the dunes (Alexander Hatley, CC BY 2.0)",
+      "minutes": 8
     },
     {
       "url": "/dispatch/grok-bot-3x-faster-connectors.html",
@@ -54,7 +58,8 @@
       "image": "/assets/dispatch/grok-bot-3x-faster-connectors-poster.jpg",
       "summary": "The speed figure is the company’s own claim. What’s new, and what to check before you connect a brokerage.",
       "pinned": false,
-      "imageAlt": "Grok Bot’s redesigned chat cards, image from the official @bot update thread"
+      "imageAlt": "Grok Bot’s redesigned chat cards, image from the official @bot update thread",
+      "minutes": 7
     },
     {
       "url": "/dispatch/x-ads-esthetic-standard.html",
@@ -65,7 +70,8 @@
       "image": "/assets/dispatch/x-ads-esthetic-standard-poster.jpg",
       "summary": "Musk’s new ad “esthetic standard” vs Google’s and Meta’s rules: vaguer test, tougher penalty.",
       "pinned": false,
-      "imageAlt": "“Start Building Beautiful Ads,” still from the @XBusiness promo video (X)"
+      "imageAlt": "“Start Building Beautiful Ads,” still from the @XBusiness promo video (X)",
+      "minutes": 6
     },
     {
       "url": "/dispatch/starlink-india-reliance-reply.html",
@@ -75,7 +81,8 @@
       "tag": "Starlink",
       "image": "/assets/dispatch/starlink-india-reliance-reply-poster.jpg",
       "summary": "Three licensees, none selling yet. The real gate is a Home Ministry security review, then spectrum pricing.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 5
     },
     {
       "url": "/dispatch/slovakia-fsd-ninth-eu.html",
@@ -85,7 +92,8 @@
       "tag": "FSD Europe",
       "image": "/assets/dispatch/slovakia-fsd-ninth-eu-poster.jpg",
       "summary": "Nine EU yeses, but only ~14% of the EU's people. An EU-wide approval needs 65%.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 5
     },
     {
       "url": "/dispatch/project-bromo-eu-spacex-rival.html",
@@ -95,7 +103,8 @@
       "tag": "Starlink",
       "image": "/assets/dispatch/project-bromo-eu-spacex-rival-poster.jpg",
       "summary": "€6.5B Airbus–Leonardo–Thales merger vs Starlink’s 11,000+ satellites — the scale gap.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 5
     },
     {
       "url": "/dispatch/roadster-reveal-2026.html",
@@ -107,7 +116,8 @@
       "summary": "Upside down on a ramp, over five Teslas, 0–60 under 0.59s. $50,000 to reserve, production 2028.",
       "pinned": true,
       "pinUntil": "2026-10-19T23:00:00Z",
-      "imageAlt": "Rear view of the new Tesla Roadster, its full-width red light bar lit"
+      "imageAlt": "Rear view of the new Tesla Roadster, its full-width red light bar lit",
+      "minutes": 7
     },
     {
       "url": "/dispatch/southwest-starlink-full-fleet.html",
@@ -117,7 +127,8 @@
       "tag": "Starlink",
       "image": "/assets/dispatch/southwest-starlink-full-fleet-poster.jpg",
       "summary": "Full fleet by fall 2027, setting up a race with United to finish first.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 5
     },
     {
       "url": "/dispatch/starmind-volume-production.html",
@@ -127,7 +138,8 @@
       "tag": "Starmind",
       "image": "/assets/dispatch/starmind-volume-production-poster.jpg",
       "summary": "Musk puts a year on the orbital AI computer SpaceX is building with Nvidia.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 4
     },
     {
       "url": "/dispatch/crs35-dragon-docks.html",
@@ -137,7 +149,8 @@
       "tag": "SpaceX",
       "image": "/assets/dispatch/crs35-dragon-docks-poster.jpg",
       "summary": "CRS-35 arrived half an hour early with 6,300+ lb of cargo and health experiments.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 4
     },
     {
       "url": "/dispatch/united-starlink-half.html",
@@ -147,7 +160,8 @@
       "tag": "Starlink",
       "image": "/assets/dispatch/united-starlink-half-poster.jpg",
       "summary": "635+ jets, 250,000+ passengers a day, and a tracker for your flight.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 4
     },
     {
       "url": "/dispatch/grok-bot-make-you-whole-analysis.html",
@@ -157,7 +171,8 @@
       "tag": "Analysis",
       "image": "/assets/dispatch/grok-bot-make-you-whole-analysis-poster.jpg",
       "summary": "Musk’s refund promise vs Grok Bot Terms that put the risk on you.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 5
     },
     {
       "url": "/dispatch/roadster-banger-demo-day.html",
@@ -167,7 +182,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/roadster-banger-demo-day-poster.jpg",
       "summary": "Musk’s hype, and the physics and safety of cold-gas thrusters.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 6
     },
     {
       "url": "/dispatch/tesla-spacex-merger-barclays.html",
@@ -177,7 +193,8 @@
       "tag": "Analysis",
       "image": "/assets/dispatch/tesla-spacex-merger-barclays-poster.jpg",
       "summary": "Analyst speculation: an all-stock deal before Tesla’s AGM.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 4
     },
     {
       "url": "/dispatch/cybercab-349-texas.html",
@@ -187,7 +204,8 @@
       "tag": "Robotaxi",
       "image": "/assets/dispatch/cybercab-349-texas-poster.jpg",
       "summary": "30 more on the DMV list, and every new car is a Cybercab.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 3
     },
     {
       "url": "/dispatch/tesla-dream-scenario.html",
@@ -197,7 +215,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/tesla-dream-scenario-poster.jpg",
       "summary": "Optimus, Cybercab, a thruster Roadster and a truck for Mars: what's real, and what could be.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 6
     },
     {
       "url": "/dispatch/grok-voice-3-spacexsi.html",
@@ -207,7 +226,8 @@
       "tag": "SpaceX AI",
       "image": "/assets/dispatch/grok-voice-3-spacexsi-poster.jpg",
       "summary": "Already running ~20,000 Starlink support calls a day, ~70% with no human.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/cybercab-319-analysis.html",
@@ -217,7 +237,8 @@
       "tag": "Analysis",
       "image": "/assets/dispatch/cybercab-austin-poster.jpg",
       "summary": "Registered isn’t running. The S-curve, the NHTSA deadline and what to watch next.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 4
     },
     {
       "url": "/dispatch/roadster-falcon9-cold-gas-thrusters.html",
@@ -227,7 +248,8 @@
       "tag": "SpaceX",
       "image": "/assets/dispatch/roadster-falcon9-cold-gas-thrusters-poster.jpg",
       "summary": "How cold gas flips a booster, and what it could do on a car.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 6
     },
     {
       "url": "/dispatch/powerwall-745mw-record.html",
@@ -237,7 +259,8 @@
       "tag": "Tesla Energy",
       "image": "/assets/dispatch/powerwall-745mw-record-poster.jpg",
       "summary": "Tesla and Sunrun sent enough power to California's grid for every home in San Francisco and San Jose at peak.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/roadster-livestream.html",
@@ -247,7 +270,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/roadster-livestream-poster.jpg",
       "summary": "What to watch for: the 1.1-second 0-60 claim, the 2017 targets and \"Timing is everything.\"",
-      "pinned": false
+      "pinned": false,
+      "minutes": 2
     },
     {
       "url": "/dispatch/roadster-cold-gas-thrusters.html",
@@ -257,7 +281,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/roadster-cold-gas-thrusters-poster.jpg",
       "summary": "About 10 thrusters and a claimed 1.1s 0-60, ahead of Thursday's reveal.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 2
     },
     {
       "url": "/dispatch/super-heavy-raptor3.html",
@@ -267,7 +292,8 @@
       "tag": "Starship",
       "image": "/assets/dispatch/super-heavy-raptor3-poster.jpg",
       "summary": "Super Heavy makes roughly 2.4 times a Saturn V's thrust, the most powerful rocket ever flown.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/tesla-us-ev-share-q3.html",
@@ -277,7 +303,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/tesla-us-ev-share-q3-poster.jpg",
       "summary": "99,037 Model Ys in Q3; Tesla took 54% of US EV sales, per Cox / KBB.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/crs35-final-solar-arrays.html",
@@ -287,7 +314,8 @@
       "tag": "Dragon",
       "image": "/assets/dispatch/crs35-final-solar-arrays-poster.jpg",
       "summary": "CRS-35 launched at 6:33am ET (3:33am PT); Dragon has carried every one of them.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/b1088-20th-flight.html",
@@ -297,7 +325,8 @@
       "tag": "Falcon 9",
       "image": "/assets/dispatch/b1088-20th-flight-poster.jpg",
       "summary": "Starlink 15-25 from Vandenberg, landing on Of Course I Still Love You.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/x-subscription.html",
@@ -307,7 +336,8 @@
       "tag": "Grok",
       "image": "/assets/dispatch/x-subscription-poster.jpg",
       "summary": "Five tiers from free to $200 a month; Grok Bot starts at $30.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/roadster-reveal.html",
@@ -317,7 +347,8 @@
       "tag": "Roadster",
       "image": "/assets/dispatch/roadster-reveal-poster.jpg",
       "summary": "Nine years after the 2017 unveil promised 0-60 in 1.9 seconds. Start time not yet announced.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/falcon-668-landings.html",
@@ -327,7 +358,8 @@
       "tag": "Falcon 9",
       "image": "/assets/dispatch/falcon-668-landings-poster.jpg",
       "summary": "B1103 made it 668 on Saturday. CRS-35 followed on Tuesday 13 Oct, with B1096 landing at LZ-40.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/tesla-automations-europe.html",
@@ -337,7 +369,8 @@
       "tag": "Software",
       "image": "/assets/dispatch/tesla-automations-europe-poster.jpg",
       "summary": "“If this, then that” for your Tesla, seen on one car in Europe. Not confirmed by Tesla.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/fsd-15-billion-miles.html",
@@ -347,7 +380,8 @@
       "tag": "FSD",
       "image": "/assets/dispatch/fsd-15-billion-miles-poster.jpg",
       "summary": "About 35 million supervised miles a day, per Tesla’s safety report.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/starlink-two-thirds.html",
@@ -357,7 +391,8 @@
       "tag": "Starlink",
       "image": "/assets/dispatch/starlink-two-thirds-poster.jpg",
       "summary": "11,143 Starlinks vs 5,770 for the rest of the world, per McDowell’s catalogue.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/paris-cybercab-europe.html",
@@ -367,7 +402,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/paris-cybercab-europe-poster.jpg",
       "summary": "Production Cybercab on show in Hall 7.1, stand C25. Static display, no rides.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/tesla-headlight-leveling.html",
@@ -377,7 +413,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/tesla-headlight-leveling-poster.jpg",
       "summary": "2026.38 adds Dynamic Headlight Leveling on select Model 3 and Cybertruck.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/super-heavy-thrust.html",
@@ -387,7 +424,8 @@
       "tag": "Starship",
       "image": "/assets/dispatch/super-heavy-thrust-poster.jpg",
       "summary": "Super Heavy out-pushes the Saturn V more than twice over.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/starship-f15-ship-catch.html",
@@ -397,7 +435,8 @@
       "tag": "Starship",
       "image": "/assets/dispatch/starship-f15-ship-catch-poster.jpg",
       "summary": "Elon says Flight 15 will try to catch the ship itself for the first time.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/cybercab-austin.html",
@@ -407,7 +446,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/cybercab-austin-poster.jpg",
       "summary": "Eight times the launch fleet. Texas DMV lists 319 two-seaters.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/starlink-latam.html",
@@ -417,7 +457,8 @@
       "tag": "SpaceX",
       "image": "/assets/dispatch/starlink-latam-poster.jpg",
       "summary": "Nationwide licence, 15+15 MHz to phones, plus the 800 MHz buy.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 2
     },
     {
       "url": "/dispatch/fsd-cannonball.html",
@@ -427,7 +468,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/fsd-cannonball-poster.jpg",
       "summary": "FSD v14.3.7, zero interventions, the team says. Self-reported.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/assisted-driving.html",
@@ -437,7 +479,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/assisted-driving-poster.jpg",
       "summary": "FSD Supervised renamed in Europe. Same stack, a name for the forms.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/ship-40.html",
@@ -447,7 +490,8 @@
       "tag": "SpaceX",
       "image": "/assets/dispatch/ship-40-megabay-poster.jpg",
       "summary": "Flight 13, an intact splashdown, a 75-day trip home and a Megabay at Starbase.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 3
     },
     {
       "url": "/dispatch/stargaze.html",
@@ -457,7 +501,8 @@
       "tag": "SpaceX",
       "image": "/assets/dispatch/stargaze-poster.jpg",
       "summary": "Stargaze, a silent burn, and the miss that almost was not a miss.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 2
     },
     {
       "url": "/dispatch/dragon-freedom.html",
@@ -467,7 +512,8 @@
       "tag": "SpaceX",
       "image": "/assets/dispatch/dragon-freedom-poster.jpg",
       "summary": "Four astronauts, two extra months, 262 miles over Cuba.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/starlink-direct.html",
@@ -477,7 +523,8 @@
       "tag": "SpaceX",
       "image": "/assets/dispatch/starlink-direct-poster.jpg",
       "summary": "FCC approval for a constellation that talks to ordinary phones.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     },
     {
       "url": "/dispatch/fsd-snow.html",
@@ -487,7 +534,8 @@
       "tag": "Tesla",
       "image": "/assets/dispatch/fsd-snow-poster.jpg",
       "summary": "Mountain passes, village lanes, and the European argument.",
-      "pinned": false
+      "pinned": false,
+      "minutes": 1
     }
   ]
 }

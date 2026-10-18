@@ -36,10 +36,21 @@
   };
   requestAnimationFrame(setW); window.addEventListener("resize", setW);
   document.fonts && document.fonts.ready.then(setW);
-  const here = location.pathname.replace(/index\.html$/, "");
+  const here = location.pathname.replace(/index\.html$/, "") || "/";
+  const hash = location.hash || "";
   document.querySelectorAll(".pn a[href], .pn-sheet a[href]").forEach(a => {
-    const p = a.getAttribute("href").replace(/index\.html$/, "");
-    if (p === here) a.setAttribute("aria-current", "page");
+    const raw = a.getAttribute("href") || "";
+    const path = (raw.split("#")[0] || "/").replace(/index\.html$/, "") || "/";
+    const aHash = raw.includes("#") ? raw.slice(raw.indexOf("#")) : "";
+    const pathMatch = path === here;
+    const hashMatch = !aHash || aHash === hash || (aHash === "#top" && !hash);
+    if (pathMatch && hashMatch) a.setAttribute("aria-current", "page");
+  });
+  document.querySelectorAll(".pn-dd").forEach((dd) => {
+    if (dd.querySelector("a[aria-current=page]")) {
+      const btn = dd.querySelector("button");
+      if (btn) btn.setAttribute("aria-current", "true");
+    }
   });
   if (app) { setExpanded(false); document.addEventListener("click", e => { if (expanded && !nav.contains(e.target)) setExpanded(false); }); }
   const mobile = () => window.matchMedia("(max-width: 899px)").matches;
@@ -125,5 +136,5 @@
 })();
 // Site-wide LIVE NOW alert (reads /live-data.json; shows nothing unless a stream is live)
 (() => { if (document.querySelector('script[src*="live-now.js"]')) return; const s = document.createElement("script"); s.src = "/live-now.js?v=202610152135"; s.defer = true; document.head.appendChild(s); })();
-(() => { if (document.querySelector('script[src*="search.js"]')) return; const s = document.createElement("script"); s.src = "/search.js?v=202610182231"; s.defer = true; document.head.appendChild(s); })();
+(() => { if (document.querySelector('script[src*="search.js"]')) return; const s = document.createElement("script"); s.src = "/search.js?v=202610190400"; s.defer = true; document.head.appendChild(s); })();
 (() => { if (document.querySelector('script[src*="theme.js"]')) return; const s = document.createElement("script"); s.src = "/theme.js?v=202610190015"; s.defer = true; document.head.appendChild(s); })();

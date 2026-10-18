@@ -85,7 +85,9 @@
     pinP,
   ]).then(([d, aj]) => {
     const seen = new Set();
-    const items = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || seen.has(k)) return false; seen.add(k); return /^https:\/\//.test(it.url || ""); }).slice(0, 8);
+    const raw = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || seen.has(k)) return false; seen.add(k); return /^https:\/\//.test(it.url || ""); });
+    const keep = window.SDNewsKeep;
+    const items = (keep ? keep.forHomepage(raw) : raw).slice(0, 8);
     const ago = (s) => { const m = Math.round((Date.now() - new Date(s)) / 6e4); return m < 60 ? m + "m" : m < 1440 ? Math.round(m / 60) + "h" : Math.round(m / 1440) + "d"; };
     const pairer = window.SDHomePair;
     const used = new Set();
