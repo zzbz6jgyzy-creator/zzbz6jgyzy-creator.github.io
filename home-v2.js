@@ -80,7 +80,7 @@
     const seen = new Set(), lab = { tesla: "Tesla", spacex: "SpaceX", grok: "xAI", xai: "xAI", x: "X" };
     const items = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || seen.has(k)) return false; seen.add(k); return /^https:\/\//.test(it.url || ""); }).slice(0, 8);
     const ago = (s) => { const m = Math.round((Date.now() - new Date(s)) / 6e4); return m < 60 ? m + "m" : m < 1440 ? Math.round(m / 60) + "h" : Math.round(m / 1440) + "d"; };
-    $("[data-hv-feed]").innerHTML = items.map((it) => `<li><a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer"><span class="hv-f-t">${esc(lab[it.topic] || "News")}</span><span class="hv-f-h">${esc((it.title || "").replace(/\s+-\s+[^-]+$/, ""))}</span><span class="hv-f-m">${esc(it.source || "")} · ${ago(it.published)}</span></a></li>`).join("");
+    $("[data-hv-feed]").innerHTML = items.map((it) => `<li><a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer"><span class="hv-f-t">${esc(lab[it.topic] || "News")}</span><span class="hv-f-h">${esc((it.title || "").replace(/\s+-\s+[^-]+$/, ""))}<span class="hv-f-ext" aria-hidden="true"> ↗</span></span><span class="hv-f-m">${esc(it.source || "")} · ${ago(it.published)}</span></a></li>`).join("");
   }).catch(() => {});
 
   // Countdowns: upcoming livestreams (live-data.json) + next Starship flight, shown in the visitor's own zone
