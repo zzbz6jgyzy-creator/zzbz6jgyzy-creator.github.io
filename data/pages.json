@@ -1,0 +1,293 @@
+{
+  "updated": "2026-10-18",
+  "pages": [
+    {
+      "url": "/",
+      "title": "Home",
+      "tag": "Home",
+      "summary": "Original Tesla and SpaceX reporting, plus live trackers for Starship, FSD Europe, Starlink and software updates."
+    },
+    {
+      "url": "/about.html",
+      "title": "About",
+      "tag": "About",
+      "summary": "Independent Tesla, SpaceX and Grok desk from @ALJR86. Not affiliated with Tesla, SpaceX or xAI."
+    },
+    {
+      "url": "/news.html",
+      "title": "News",
+      "tag": "News",
+      "summary": "Today’s headlines"
+    },
+    {
+      "url": "/dispatch.html",
+      "title": "Dispatch",
+      "tag": "News",
+      "summary": "Our own stories"
+    },
+    {
+      "url": "/tesla.html",
+      "title": "Tesla overview",
+      "tag": "Tesla",
+      "summary": "News, models & data"
+    },
+    {
+      "url": "/my-tesla.html",
+      "title": "My Tesla",
+      "tag": "Tesla",
+      "summary": "Your car, personalised"
+    },
+    {
+      "url": "/tesla-clubs.html",
+      "title": "Owners clubs",
+      "tag": "Tesla",
+      "summary": "Find a club near you"
+    },
+    {
+      "url": "/explainers.html",
+      "title": "Visual Explainers",
+      "tag": "Lab",
+      "summary": "SpaceX and Tesla visual explainers, in two tabs. Why Starship uses hot staging, how a booster catch works, what changed between FSD stacks, and where Collision Evasion actually lives."
+    },
+    {
+      "url": "/explainers.html#tesla",
+      "title": "Tesla explainers",
+      "tag": "Tesla",
+      "summary": "FSD stacks, Collision Evasion"
+    },
+    {
+      "url": "/explainers.html#spacex",
+      "title": "SpaceX explainers",
+      "tag": "SpaceX",
+      "summary": "Hot staging, catch"
+    },
+    {
+      "url": "/guides/tesla-buying-guide.html",
+      "title": "Buying guide",
+      "tag": "Tesla",
+      "summary": "Which Tesla to buy in 2026"
+    },
+    {
+      "url": "/model3-explorer.html",
+      "title": "Model 3 Explorer",
+      "tag": "Tesla",
+      "summary": "Take the car apart"
+    },
+    {
+      "url": "/cybertruck-explorer.html",
+      "title": "Cybertruck Explorer",
+      "tag": "Tesla",
+      "summary": "Take the truck apart"
+    },
+    {
+      "url": "/tsla.html",
+      "title": "Markets",
+      "tag": "Tesla",
+      "summary": "TSLA stock"
+    },
+    {
+      "url": "/reviews/index.html",
+      "title": "Reviews",
+      "tag": "Tesla",
+      "summary": "Every model reviewed"
+    },
+    {
+      "url": "/reviews/model-3.html",
+      "title": "Model 3 review",
+      "tag": "Reviews",
+      "summary": "Independent Model 3 review: drive, cabin, charging, FSD, and who should buy it."
+    },
+    {
+      "url": "/reviews/model-y.html",
+      "title": "Model Y review",
+      "tag": "Reviews",
+      "summary": "Independent Model Y review: space, drive, ownership, and when to pick it over Model 3."
+    },
+    {
+      "url": "/reviews/model-s.html",
+      "title": "Model S review",
+      "tag": "Reviews",
+      "summary": "Independent Model S review: range, Plaid pace, cabin, and who the flagship sedan is for."
+    },
+    {
+      "url": "/reviews/model-x.html",
+      "title": "Model X review",
+      "tag": "Reviews",
+      "summary": "Independent Model X review: falcon doors, three rows, performance, and when Y is enough."
+    },
+    {
+      "url": "/reviews/cybertruck.html",
+      "title": "Cybertruck review",
+      "tag": "Reviews",
+      "summary": "Independent Cybertruck review: capability, architecture, markets, and who should actually buy one."
+    },
+    {
+      "url": "/roadster.html",
+      "title": "Roadster",
+      "tag": "Roadster",
+      "summary": "The hero and key numbers"
+    },
+    {
+      "url": "/roadster.html#gallery",
+      "title": "Roadster gallery",
+      "tag": "Roadster",
+      "summary": "22 angles"
+    },
+    {
+      "url": "/roadster.html#video",
+      "title": "Roadster videos",
+      "tag": "Roadster",
+      "summary": "Clips, incl. Interior video"
+    },
+    {
+      "url": "/roadster.html#trims",
+      "title": "Roadster trims & specs",
+      "tag": "Roadster",
+      "summary": "Performance, Thrust, Rocket"
+    },
+    {
+      "url": "/roadster.html#tech",
+      "title": "How the Roadster works",
+      "tag": "Roadster",
+      "summary": "Thrusters, suction, aero"
+    },
+    {
+      "url": "/roadster.html#money",
+      "title": "Roadster price & reservations",
+      "tag": "Roadster",
+      "summary": "Deposits and 2028 production"
+    },
+    {
+      "url": "/roadster.html#timeline",
+      "title": "Roadster timeline",
+      "tag": "Roadster",
+      "summary": "2017 promise to 2026 reveal"
+    },
+    {
+      "url": "/roadster.html#promise",
+      "title": "Roadster promise vs reality",
+      "tag": "Roadster",
+      "summary": "2017 claims vs 2026 figures"
+    },
+    {
+      "url": "/spacex.html",
+      "title": "SpaceX",
+      "tag": "SpaceX",
+      "summary": "News & missions"
+    },
+    {
+      "url": "/starship.html",
+      "title": "Starship flights",
+      "tag": "SpaceX",
+      "summary": "Flight lab"
+    },
+    {
+      "url": "/starlink.html",
+      "title": "Starlink tracker",
+      "tag": "SpaceX",
+      "summary": "Satellites by version"
+    },
+    {
+      "url": "/starlink.html#identify",
+      "title": "Point & identify",
+      "tag": "Starlink",
+      "summary": "Name the satellite you are looking at."
+    },
+    {
+      "url": "/calendar.html",
+      "title": "Calendar",
+      "tag": "SpaceX",
+      "summary": "Launches & livestreams"
+    },
+    {
+      "url": "/see-the-launch.html",
+      "title": "Can I see it?",
+      "tag": "SpaceX",
+      "summary": "Visible from here?"
+    },
+    {
+      "url": "/cybercab.html",
+      "title": "Cybercab tracker",
+      "tag": "Trackers",
+      "summary": "Reality map & fleet"
+    },
+    {
+      "url": "/fsd-europe.html",
+      "title": "FSD Europe",
+      "tag": "Trackers",
+      "summary": "Approval tracker"
+    },
+    {
+      "url": "/promise-tracker.html",
+      "title": "Promise tracker",
+      "tag": "Trackers",
+      "summary": "Musk deadlines vs reality"
+    },
+    {
+      "url": "/updates.html",
+      "title": "Software updates",
+      "tag": "Trackers",
+      "summary": "Latest Tesla releases"
+    },
+    {
+      "url": "/fsd.html",
+      "title": "FSD Global Tracker",
+      "tag": "Trackers",
+      "summary": "Tesla FSD Supervised country by country: live markets, versions, expected milestones and source links."
+    },
+    {
+      "url": "/tcmv.html",
+      "title": "TCMV meetings",
+      "tag": "Trackers",
+      "summary": "What the EU Technical Committee on Motor Vehicles put on the agenda for Tesla FSD Supervised, by meeting number and date."
+    },
+    {
+      "url": "/grok.html",
+      "title": "Grok",
+      "tag": "More",
+      "summary": "What Grok Bot is, then a four-level tutorial: introduction, beginner, intermediate and advanced."
+    },
+    {
+      "url": "/gear.html",
+      "title": "Gear",
+      "tag": "More",
+      "summary": "Shop Tesla accessories by model: fitted floor mats, screen protection, storage and upgrades for Model 3, Y, S, X and Cybertruck, from TESMAG and EV Bandit."
+    },
+    {
+      "url": "/games.html",
+      "title": "Games",
+      "tag": "More",
+      "summary": "Fan-made games from @ALJR86: Hot Staging, Catch, and Robotaxi Boss. Not affiliated with Tesla or SpaceX."
+    },
+    {
+      "url": "/wallpapers.html",
+      "title": "Wallpapers",
+      "tag": "More",
+      "summary": "Free high-res black and Tesla-red wallpapers for phone (1290×2796) and 4K desktop: lightning, night drives, a rocket climb and the Supercharged Daily name."
+    },
+    {
+      "url": "/catch.html",
+      "title": "Catch",
+      "tag": "Games",
+      "summary": "Catch: fly Starship into the chopsticks. A fan-made SpaceX game from @ALJR86."
+    },
+    {
+      "url": "/staging.html",
+      "title": "Hot Staging",
+      "tag": "Games",
+      "summary": "Hot Staging: keep the Starship stack pointed, then light Ship inside Super Heavy’s fire. A fan-made SpaceX game from @ALJR86."
+    },
+    {
+      "url": "/robotaxi.html",
+      "title": "Robotaxi Boss",
+      "tag": "Games",
+      "summary": "Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from @ALJR86."
+    },
+    {
+      "url": "/videos.html",
+      "title": "Videos",
+      "tag": "More",
+      "summary": "Clips from @ALJR86 now live on the Tesla, SpaceX and Grok desks."
+    }
+  ]
+}

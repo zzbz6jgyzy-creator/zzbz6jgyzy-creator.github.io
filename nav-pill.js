@@ -9,6 +9,20 @@
     const sh = document.querySelector(".pn-sheet"), shCta = sh && sh.querySelector(".pn-cta");
     if (shCta) sh.insertBefore(mk("pn-sub pn-sub-sheet"), shCta);
   }
+  // Search — same inject pattern as Subscribe; search.js opens the overlay (or /search.html)
+  if (!nav.querySelector(".pn-search")) {
+    const icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+    const mk = (cls) => { const a = document.createElement("a"); a.className = cls; a.href = "/search.html"; a.innerHTML = icon + "<span>Search</span>"; return a; };
+    const sub = items.querySelector(".pn-sub");
+    const cta = items.querySelector(".pn-cta");
+    items.insertBefore(mk("pn-link pn-search"), sub || cta);
+    const sh = document.querySelector(".pn-sheet");
+    const shHome = sh && [...sh.querySelectorAll('a[href="/"]')].find((a) => a.textContent.trim() === "Home");
+    const shSub = sh && sh.querySelector(".pn-sub-sheet");
+    const shCta = sh && sh.querySelector(".pn-cta");
+    if (shHome) shHome.after(mk("pn-search pn-search-sheet"));
+    else if (shSub || shCta) (shSub || shCta).before(mk("pn-search pn-search-sheet"));
+  }
   const kids = [...items.children];
   kids.forEach((el, i) => { el.style.setProperty("--i", i); el.style.setProperty("--n", kids.length); });
   let sheet, ov, mb, sheetOpen;
@@ -80,7 +94,7 @@
     sh.dataset.grouped = "1";
     [...sh.querySelectorAll("h3")].forEach((h, i) => {
       const links = [];
-      for (let n = h.nextElementSibling; n && n.tagName === "A" && !n.classList.contains("pn-cta") && !n.classList.contains("pn-sub-sheet"); n = n.nextElementSibling) links.push(n);
+      for (let n = h.nextElementSibling; n && n.tagName === "A" && !n.classList.contains("pn-cta") && !n.classList.contains("pn-sub-sheet") && !n.classList.contains("pn-search-sheet"); n = n.nextElementSibling) links.push(n);
       if (!links.length) return;
       const id = "pn-grp-" + i;
       const box = document.createElement("div");
@@ -111,3 +125,4 @@
 })();
 // Site-wide LIVE NOW alert (reads /live-data.json; shows nothing unless a stream is live)
 (() => { if (document.querySelector('script[src*="live-now.js"]')) return; const s = document.createElement("script"); s.src = "/live-now.js?v=202610152135"; s.defer = true; document.head.appendChild(s); })();
+(() => { if (document.querySelector('script[src*="search.js"]')) return; const s = document.createElement("script"); s.src = "/search.js?v=202610182231"; s.defer = true; document.head.appendChild(s); })();

@@ -63,9 +63,10 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 ## Ranked next batches
 
-1. **Search** — client-side index over `data/articles.json` + nav pages (no paid API).
-2. **Buying advisor / cost calculator** — only with editable assumptions and sourced defaults.
-3. **Light theme** — last; dark is the brand. Do not bolt on a half theme.
+1. **Buying advisor / cost calculator** — only with editable assumptions and sourced defaults.
+2. **Light theme** — last; dark is the brand. Do not bolt on a half theme.
+
+Shipped this window: client-side search (`search.js`, `/search.html`, overlay via ⌘K / nav Search) over `data/articles.json` + `data/pages.json`. No paid API. Blurbs copied from nav and existing page descriptions only.
 
 ## Rules that stay in force
 

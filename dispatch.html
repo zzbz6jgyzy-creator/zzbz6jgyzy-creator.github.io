@@ -39,7 +39,8 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=20261016094523" />
-      <link rel="stylesheet" href="/nav-pill.css?v=202610161834" />
+      <link rel="stylesheet" href="/nav-pill.css?v=202610182231" />
+    <link rel="stylesheet" href="/search.css?v=202610182231" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -136,6 +137,11 @@
           <p class="reveal delay-2">
             Longer versions of Tesla, SpaceX and Grok posts, each linked back to X.
           </p>
+          <form class="sd-find-inline" action="/search.html" method="get" role="search">
+            <label class="visually-hidden" for="disp-site-q">Search the site</label>
+            <input id="disp-site-q" name="q" type="search" placeholder="Search stories and pages" autocomplete="off" />
+            <button type="submit">Search</button>
+          </form>
         </section>
 
         <section class="section" style="padding-top: 1.5rem">
@@ -705,6 +711,6 @@
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/grow.js?v=20261016093121" data-band defer></script>
-      <script src="/nav-pill.js?v=202610161834"></script>
+      <script src="/nav-pill.js?v=202610182231"></script>
   </body>
 </html>
