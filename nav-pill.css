@@ -7,8 +7,8 @@
 .pn-logo img{width:26px;height:26px;display:block}
 .pn-items{display:flex;align-items:center;gap:2px;white-space:nowrap}
 .pn-items>*{transition:opacity .25s var(--pn-ease),transform .35s var(--pn-spring);transition-delay:calc(.2s + var(--i,0)*.05s)}
-.pn a.pn-link,.pn-dd>button{font:500 14px/1 Inter,system-ui,sans-serif;color:#d6d6d6;text-decoration:none;padding:9px 11px;border-radius:999px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:color .2s,background .2s}
-.pn a.pn-link:hover,.pn-dd>button:hover,.pn-dd.open>button,.pn a.pn-link[aria-current]{color:#fff;background:rgba(255,255,255,.07)}
+.pn a.pn-link,.pn button.pn-link,.pn-dd>button{font:500 14px/1 Inter,system-ui,sans-serif;color:#d6d6d6;text-decoration:none;padding:9px 11px;border-radius:999px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:color .2s,background .2s}
+.pn a.pn-link:hover,.pn button.pn-link:hover,.pn-dd>button:hover,.pn-dd.open>button,.pn a.pn-link[aria-current]{color:#fff;background:rgba(255,255,255,.07)}
 .pn-dd>button svg{width:14px;height:14px;transition:transform .25s}
 .pn-dd.open>button svg{transform:rotate(180deg)}
 .pn-cta{font:600 14px/1 Inter,system-ui,sans-serif;color:#fff!important;background:#e31937;padding:10px 16px;border-radius:999px;text-decoration:none;margin-left:6px;box-shadow:0 0 18px rgba(227,25,55,.45);transition:background .2s,box-shadow .2s}
@@ -68,20 +68,14 @@ body.pn-app .pn-wrap{top:14px}
 @media (max-width:899px){.pn-logo img.pn-word{height:20px}.pn-logo{transition-delay:0s!important}}
 .pn a.pn-sub{color:#fff;box-shadow:inset 0 0 0 1px rgba(227,25,55,.6);margin-left:4px}
 .pn a.pn-sub:hover{background:rgba(227,25,55,.16)}
-.pn a.pn-search svg{width:15px;height:15px}
-@media (max-width:1200px) and (min-width:900px){.pn a.pn-search span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}}
+.pn a.pn-search svg,.pn button.pn-theme svg{width:15px;height:15px}
+@media (max-width:1200px) and (min-width:900px){.pn a.pn-search span,.pn button.pn-theme span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}}
 .pn-sheet a.pn-search-sheet{margin:4px 0 10px;text-align:center;border:1px solid rgba(255,255,255,.16);font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}
 .pn-sheet a.pn-search-sheet svg{width:16px;height:16px}
 .pn-sheet a.pn-sub-sheet{margin-top:20px;text-align:center;border:1px solid rgba(227,25,55,.6);font-weight:600}
 .pn-sheet a.pn-search-sheet+.pn-sub-sheet{margin-top:10px}
-.pn-theme{appearance:none;width:36px;height:36px;margin-left:2px;border:0;border-radius:999px;background:none;color:#d6d6d6;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
-.pn-theme:hover{background:rgba(255,255,255,.07);color:#fff}
-.pn-theme svg{width:16px;height:16px}
-.pn-theme .i-moon{display:none}
-html[data-theme="light"] .pn-theme .i-sun{display:none}
-html[data-theme="light"] .pn-theme .i-moon{display:block}
 .pn-theme .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-.pn-sheet .pn-theme-sheet{width:auto;height:auto;margin:4px 0 10px;padding:13px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.16);font:600 16px/1 Inter,system-ui,sans-serif;color:#e6e6e6;justify-content:center;gap:8px}
+.pn-sheet .pn-theme-sheet{display:flex;align-items:center;margin:4px 0 10px;padding:13px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.16);font:600 16px/1 Inter,system-ui,sans-serif;color:#e6e6e6;justify-content:center;gap:8px;width:auto;height:auto;background:none;cursor:pointer}
 .pn-sheet .pn-search-sheet+.pn-theme-sheet{margin-top:0}
 .pn-sheet .pn-theme-sheet svg{width:16px;height:16px}
 .pn-sheet a.pn-sub-sheet+.pn-cta{margin-top:10px}
