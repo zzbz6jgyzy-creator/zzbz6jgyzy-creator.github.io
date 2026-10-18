@@ -2,7 +2,7 @@
   "use strict";
   /* Point-and-identify on the Starlink tracker. Catalog is /data/starlink.json
      only — the browser never talks to CelesTrak. */
-  const STARLINK_CATALOG = "/data/starlink.json?v=202610172320";
+  const STARLINK_CATALOG = "/data/starlink.json?v=202610180931";
   const GEO = "https://geocoding-api.open-meteo.com/v1/search";
   const KEY = "sd-sl-identify-v1";
   const CONE_DEG = 10;
