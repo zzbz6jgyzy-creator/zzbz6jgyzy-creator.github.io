@@ -81,7 +81,7 @@ try {
   try { arts = (JSON.parse(rd("data/articles.json")).articles || []); } catch (e2) {}
   const used = new Set();
   feed = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || s2.has(k)) return false; s2.add(k); return /^https:\/\//.test(it.url || ""); }).slice(0, 8)
-    .map((it) => pairer.itemHtml(it, pairer.pairItem(it, arts, used), esc, `${it.source || ""} · ${it.published ? day(new Date(it.published)) : ""}`.replace(/^ · /, "")));
+    .map((it) => pairer.itemHtml(it, pairer.pairItem(it, arts, used), esc, `${it.source || ""} · ${it.published ? day(new Date(it.published)) : ""}`.replace(/^ · /, ""))).join("");
 } catch (e) {}
 
 // Next-livestream card (same pick + markup as live.js's "Next live stream" card), prebuilt so the
