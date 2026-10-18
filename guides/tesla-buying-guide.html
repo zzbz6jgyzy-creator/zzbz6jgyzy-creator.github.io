@@ -39,7 +39,8 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=20261016094523" />
-      <link rel="stylesheet" href="/nav-pill.css?v=202610161834" />
+      <link rel="stylesheet" href="/nav-pill.css?v=202610182231" />
+    <link rel="stylesheet" href="/guides/buy-calc.css?v=202610182248" />
     <style>.sd-table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:.95rem}.sd-table th,.sd-table td{border-bottom:1px solid rgba(255,255,255,.12);padding:.55rem .5rem;text-align:left;vertical-align:top}.sd-table th{color:rgba(255,255,255,.7);font-weight:600}.sd-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.sd-box{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:1rem 1.2rem;margin:1.5rem 0;background:rgba(255,255,255,.03)}.sd-box a.button{display:inline-block;margin:.3rem .5rem .3rem 0}.sd-note{font-size:.88rem;opacity:.75}.sd-nl{border:1px solid rgba(232,33,39,.35);border-radius:16px;padding:1.2rem;margin:2rem 0}.sd-nl form{display:flex;gap:.5rem;flex-wrap:wrap}.sd-nl input[type=email]{flex:1 1 220px;min-width:0;padding:.7rem .9rem;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.3);color:inherit}.sd-nl button{padding:.7rem 1.1rem;border-radius:10px;border:0;background:#e82127;color:#fff;font-weight:600;cursor:pointer}</style>
   </head>
   <body>
@@ -143,6 +144,7 @@
 
           <h2>The short answer</h2>
           <p>For most people it is a choice between the two cheapest cars Tesla sells: the <strong>Model 3 Rear-Wheel Drive</strong> sedan and the <strong>Model Y Rear-Wheel Drive</strong> SUV. Buy the Model 3 if you want the lowest price and the quicker car. Buy the Model Y if you need more cargo space, a higher seat or towing.</p>
+          <p><a href="#buy-calc">Work the cash numbers →</a></p>
 
           <h2>Picking a model</h2>
           <div class="sd-scroll"><table class="sd-table">
@@ -157,6 +159,62 @@
           </table></div>
           <p class="sd-note">Sources, checked 14 Oct 2026: prices, fees and towing from Tesla’s <a href="https://www.tesla.com/compare">compare page (US)</a>. Range, 0–60, charging and cargo for each car from its spec table on Tesla’s own model page: <a href="https://www.tesla.com/model3">Model 3</a> (Rear-Wheel Drive), <a href="https://www.tesla.com/modely">Model Y</a> (Rear-Wheel Drive) and <a href="https://www.tesla.com/cybertruck">Cybertruck</a> (Dual Motor All-Wheel Drive). All ranges are Tesla’s EPA estimates. Car and Driver reports both entry cars use a 69.5 kWh usable battery and Supercharge at up to 225 kW (<a href="https://www.caranddriver.com/news/a68849916/2026-tesla-model-3-model-y-standard-revealed/">Car and Driver</a>).</p>
           <p>The <strong>Cybertruck</strong> is the big step up: a pickup with far more cargo and towing capacity, at roughly twice the price. Model S and Model X were not listed on Tesla’s compare page when we checked.</p>
+
+          <section class="sd-calc" id="buy-calc" data-buy-calc aria-labelledby="buy-calc-h">
+            <h2 id="buy-calc-h">Work the numbers</h2>
+            <p class="sd-note sd-calc-lead">US list prices and Tesla extras from the table above (checked 14 Oct 2026). Tax, rebate, install and how long you keep FSD are yours — change them. This is a cash sheet, not a quote and not advice.</p>
+            <div class="sd-calc-cars" role="group" aria-label="Choose a car">
+              <button type="button" class="sd-calc-car" data-car="m3" aria-pressed="true"><b>Model 3 RWD</b><small>$36,990 list</small></button>
+              <button type="button" class="sd-calc-car" data-car="my" aria-pressed="false"><b>Model Y RWD</b><small>$39,990 list</small></button>
+              <button type="button" class="sd-calc-car" data-car="ct" aria-pressed="false"><b>Cybertruck AWD</b><small>$74,990 list</small></button>
+            </div>
+            <div class="sd-calc-grid">
+              <label><span>Destination &amp; order fees ($)</span>
+                <input name="fees" type="number" inputmode="decimal" min="0" step="1" value="1640" />
+                <span class="sd-calc-hint">Tesla’s US fee on this car. Edit if yours differs.</span>
+              </label>
+              <label><span>Sales tax (%)</span>
+                <input name="tax" type="number" inputmode="decimal" min="0" step="0.1" value="0" />
+                <span class="sd-calc-hint">Your rate. Default 0 — we do not guess a state.</span>
+              </label>
+              <label><span>Your rebate ($)</span>
+                <input name="rebate" type="number" inputmode="decimal" min="0" step="1" value="0" />
+                <span class="sd-calc-hint">State or utility only. Federal new-car credit ended 30 Sept 2025.</span>
+              </label>
+              <label><span>Home charger</span>
+                <select name="charger">
+                  <option value="none">None — $0</option>
+                  <option value="mobile">Mobile Connector — $300</option>
+                  <option value="wall">Wall Connector — $585</option>
+                  <option value="universal">Universal Wall Connector — $660</option>
+                </select>
+                <span class="sd-calc-hint">Tesla home-charging prices, 14 Oct 2026.</span>
+              </label>
+              <label class="sd-calc-wide"><span>Charger install ($)</span>
+                <input name="install" type="number" inputmode="decimal" min="0" step="1" value="0" />
+                <span class="sd-calc-hint" data-install-hint hidden>Tesla estimates $750–$1,500 to install a Wall Connector. Type your installer quote.</span>
+              </label>
+              <label><span>FSD Supervised</span>
+                <select name="fsd">
+                  <option value="off">Off — $0</option>
+                  <option value="on">On — $99 / month</option>
+                </select>
+                <span class="sd-calc-hint">US subscription on Tesla’s compare page. Supervised, not autonomous.</span>
+              </label>
+              <label><span>Months of FSD to include</span>
+                <input name="months" type="number" inputmode="numeric" min="0" max="120" step="1" value="12" />
+                <span class="sd-calc-hint">Your assumption. Tesla also offers a 1-month trial.</span>
+              </label>
+            </div>
+            <div data-result></div>
+            <p class="sd-note" style="margin:1rem 0 .4rem">Same extras on the other two cars (each keeps Tesla’s own destination fee):</p>
+            <div class="sd-calc-cmp" data-compare></div>
+            <div class="sd-calc-bar">
+              <button type="button" class="sd-calc-reset" data-reset>Reset to Tesla defaults</button>
+              <a href="https://www.tesla.com/compare" target="_blank" rel="noopener">Check Tesla’s compare page ↗</a>
+            </div>
+            <noscript><p class="sd-note">Turn on JavaScript to add tax, a charger or FSD to the table prices above.</p></noscript>
+          </section>
 
           <h2>Trims and range</h2>
           <p>Above the entry cars, Tesla’s compare page lists these US trims:</p>
@@ -223,7 +281,8 @@
     <script src="/grow.js?v=20261016093121" data-band data-pop defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
-      <script src="/nav-pill.js?v=202610161834"></script>
+      <script src="/nav-pill.js?v=202610182231"></script>
+    <script src="/guides/buy-calc.js?v=202610182248"></script>
     <script src="/newsletter.js" defer></script>
   </body>
 </html>

@@ -63,10 +63,9 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 ## Ranked next batches
 
-1. **Buying advisor / cost calculator** — only with editable assumptions and sourced defaults.
-2. **Light theme** — last; dark is the brand. Do not bolt on a half theme.
+1. **Light theme** — last; dark is the brand. Do not bolt on a half theme.
 
-Shipped this window: client-side search (`search.js`, `/search.html`, overlay via ⌘K / nav Search) over `data/articles.json` + `data/pages.json`. No paid API. Blurbs copied from nav and existing page descriptions only.
+Shipped this window: buying-guide cash sheet on `/guides/tesla-buying-guide.html`. Tesla list prices, dest/order fees, charger SKUs and FSD $99/mo from the existing 14 Oct 2026 sources. Tax, rebate, install and FSD months are the reader’s. No invented incentives.
 
 ## Rules that stay in force
 

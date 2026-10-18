@@ -1,0 +1,38 @@
+/* Buying-guide cash calculator — stays inside the 720px article column */
+.sd-calc{margin:1.8rem 0 2rem;padding:1.1rem 1.05rem 1.15rem;border:1px solid rgba(255,255,255,.1);border-top:3px solid #e31937;border-radius:14px;background:#0b0b0c;scroll-margin-top:5.5rem}
+.sd-calc h2{margin:0 0 .45rem}
+.sd-calc-lead{margin:0 0 1rem;font-size:.92rem}
+.sd-calc-cars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin:0 0 1rem}
+.sd-calc-car{appearance:none;margin:0;padding:.7rem .45rem .75rem;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:#121214;color:#fff;font:inherit;cursor:pointer;text-align:left}
+.sd-calc-car:hover{border-color:rgba(227,25,55,.55)}
+.sd-calc-car[aria-pressed="true"]{border-color:#e31937;background:rgba(227,25,55,.12);box-shadow:inset 0 0 0 1px #e31937}
+.sd-calc-car b{display:block;font-size:.92rem;line-height:1.25}
+.sd-calc-car small{display:block;margin-top:.25rem;color:#9a9a9e;font-size:.78rem}
+.sd-calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem .8rem;margin:0 0 1rem}
+.sd-calc label{display:flex;flex-direction:column;gap:.28rem;margin:0;font:600 .68rem/1.2 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a8a8e}
+.sd-calc label span{font:inherit}
+.sd-calc input,.sd-calc select{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:#101012;color:#fff;padding:.55rem .65rem;font:500 .95rem/1.2 Inter,system-ui,sans-serif}
+.sd-calc input:focus,.sd-calc select:focus{outline:none;border-color:#e31937;box-shadow:0 0 0 3px rgba(227,25,55,.25)}
+.sd-calc-hint{font:500 .78rem/1.35 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;color:#7a7a7e}
+.sd-calc-wide{grid-column:1/-1}
+.sd-calc-out{margin:0;padding:.2rem 0 0}
+.sd-calc-out dt{font:600 .68rem/1.2 "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;color:#8a8a8e;margin:.55rem 0 0}
+.sd-calc-out dd{margin:.15rem 0 0;font:700 1.35rem/1.2 Inter,system-ui,sans-serif;color:#fff}
+.sd-calc-out .sd-calc-total dd{font-size:1.7rem;color:#fff}
+.sd-calc-rows{margin:.75rem 0 0;padding:0;list-style:none}
+.sd-calc-rows li{display:flex;justify-content:space-between;gap:1rem;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.9rem;color:#c8c8cc}
+.sd-calc-rows b{font-weight:600;color:#fff}
+.sd-calc-cmp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin:1rem 0 0}
+.sd-calc-cmp-card{padding:.7rem .65rem;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:#121214}
+.sd-calc-cmp-card.is-on{border-color:rgba(227,25,55,.55)}
+.sd-calc-cmp-card span{display:block;font:600 .66rem/1 "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;color:#8a8a8e}
+.sd-calc-cmp-card strong{display:block;margin:.35rem 0 .15rem;font-size:1.05rem}
+.sd-calc-cmp-card small{color:#9a9a9e}
+.sd-calc-bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between;margin:.85rem 0 0}
+.sd-calc-reset{font:600 .85rem/1 Inter,system-ui,sans-serif;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.5rem .9rem;cursor:pointer}
+.sd-calc-reset:hover{border-color:#e31937}
+.sd-calc-src{margin:.8rem 0 0}
+@media (max-width:640px){
+  .sd-calc-cars,.sd-calc-cmp,.sd-calc-grid{grid-template-columns:1fr}
+  .sd-calc{padding:1rem .85rem}
+}
