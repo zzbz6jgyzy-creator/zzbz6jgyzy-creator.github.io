@@ -3,7 +3,8 @@
 // {launched}, {inOrbit}, {working}, {down}, {drift}, {ascent}, {operational}, {failedToOrbit}
 // in a generation's text use that generation's figure; {t.xxx} uses the constellation total.
 window.STARLINK = {
-  // Fallback only; starlink-live.js overrides this with the source's own timestamp.
+  // Fallback only. The hero stamp prefers STARLINK_LIVE.orbitsUpdated (CelesTrak
+  // epoch written by build-starlink-gp.py), then McDowell live.updated.
   updated: "2026-10-13T09:30:20Z",
   source: {
     label: "Jonathan McDowell, Starlink launch statistics",

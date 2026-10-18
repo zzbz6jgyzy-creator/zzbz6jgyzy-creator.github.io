@@ -10,8 +10,9 @@ from __future__ import annotations
 
 import json
 import math
+import re
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,6 +28,63 @@ GEN_LABELS = {
     "v3": "V3",
 }
 CATALOG = ROOT / "data" / "starlink.json"
+LIVE = ROOT / "starlink-live.js"
+
+
+def epoch_to_iso(raw) -> str | None:
+    if raw is None or raw == "":
+        return None
+    try:
+        dt = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    except ValueError:
+        return None
+
+
+def tle_epoch_iso(line1: str) -> str | None:
+    if not line1 or len(line1) < 32:
+        return None
+    try:
+        yy = int(line1[18:20])
+        day = float(line1[20:32])
+        year = 2000 + yy if yy < 57 else 1900 + yy
+        dt = datetime(year, 1, 1, tzinfo=timezone.utc) + timedelta(days=day - 1)
+        return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    except (TypeError, ValueError):
+        return None
+
+
+def latest_epoch_iso(omm: dict, tle: dict) -> str:
+    """Newest epoch from the fresh CelesTrak download — never a bake-clock fallback."""
+    stamps = []
+    for row in omm.values():
+        iso = epoch_to_iso(row.get("EPOCH"))
+        if iso:
+            stamps.append(iso)
+    for rec in tle.values():
+        line1 = rec[1] if isinstance(rec, tuple) and len(rec) > 1 else ""
+        iso = tle_epoch_iso(line1)
+        if iso:
+            stamps.append(iso)
+    if not stamps:
+        raise SystemExit("no TLE/OMM epochs in CelesTrak fetch; not writing a fallback date")
+    return max(stamps)
+
+
+def write_live_orbit_stamp(tle_as_of: str) -> None:
+    """Put the CelesTrak epoch on STARLINK_LIVE so the tracker stamp can read it
+    without waiting for the deferred GP file."""
+    if not LIVE.exists():
+        return
+    text = LIVE.read_text(encoding="utf-8")
+    if re.search(r'"orbitsUpdated"\s*:', text):
+        text = re.sub(r'"orbitsUpdated"\s*:\s*"[^"]*"', f'"orbitsUpdated": "{tle_as_of}"', text, count=1)
+    else:
+        text = re.sub(r'("updated"\s*:\s*"[^"]*")', rf'\1,\n "orbitsUpdated": "{tle_as_of}"', text, count=1)
+    LIVE.write_text(text, encoding="utf-8")
+    print(f"wrote orbitsUpdated {tle_as_of} into {LIVE.name}")
 
 
 def parse_gcat(path: Path) -> dict[int, str]:
@@ -227,8 +285,6 @@ def main() -> None:
     print(f"extra launches fetched: {missing[:12]} -> {len(extra_rows)} rows")
     if len(tle) < 5000 or len(gcat) < 5000:
         raise SystemExit(f"too few records (tle={len(tle)} gcat={len(gcat)}); not overwriting")
-    epochs = [str(r.get("EPOCH") or "") for r in omm.values()]
-    tle_as_of = max(epochs)[:10] if epochs else datetime.now(timezone.utc).strftime("%Y-%m-%d")
     extra_path = Path("/tmp/extra-omm.json")
     if extra_path.exists():
         for row in json.loads(extra_path.read_text(encoding="utf-8")):
@@ -237,6 +293,7 @@ def main() -> None:
             except (KeyError, TypeError, ValueError):
                 continue
             omm[cat] = row
+    tle_as_of = latest_epoch_iso(omm, tle)
 
     tle_sats = []
     catalog = []
@@ -287,13 +344,14 @@ def main() -> None:
     OUT.write_text(text, encoding="utf-8")
     print(f"wrote {OUT} ({OUT.stat().st_size} bytes) total={payload['total']} gens={dict(gens)}")
     write_identify_catalog(catalog, payload["tleAsOf"], payload["sources"])
+    write_live_orbit_stamp(payload["tleAsOf"])
 
 
 def write_identify_catalog(rows: list, tle_as_of: str, sources: dict) -> None:
     """Same-origin JSON for the see-the-launch identify tool. Browser never hits CelesTrak."""
     CATALOG.parent.mkdir(parents=True, exist_ok=True)
     body = {
-        "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "updated": tle_as_of,
         "tleAsOf": tle_as_of,
         "count": len(rows),
         "fields": ["name", "norad", "gen", "tle1", "tle2"],

@@ -33,8 +33,8 @@ const load = async (url) => {
   return {
     type: "ready",
     count: recs.length,
-    updated: data.updated || "",
-    tleAsOf: data.tleAsOf || "",
+    updated: data.tleAsOf || data.updated || "",
+    tleAsOf: data.tleAsOf || data.updated || "",
     gens: data.gens || {},
     sources: data.sources || {},
   };

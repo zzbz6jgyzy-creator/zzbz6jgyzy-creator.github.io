@@ -4,8 +4,8 @@
 
   // Merge the daily-generated figures (starlink-live.js) over the editorial file.
   const live = window.STARLINK_LIVE;
+  const countUpdated = (live && live.updated) || data.updated;
   if (live && live.totals) {
-    data.updated = live.updated;
     Object.assign(data.totals, live.totals);
     data.generations.forEach((g) => {
       const n = live.generations && live.generations[g.id];
@@ -29,10 +29,12 @@
   document.querySelectorAll("[data-sl-total]").forEach((el) => { if (data.totals.inOrbit) el.textContent = Number(data.totals.inOrbit).toLocaleString("en-US"); });
   data.watch.forEach((w) => (w.text = fill(w.text)));
 
-  // One "Updated" line in the visitor's own time zone, e.g. "Updated 13 Oct, 10:30 BST".
-  const when = new Date(/T/.test(data.updated) ? data.updated : `${data.updated}T12:00:00Z`);
-  const stampText = (() => {
-    if (isNaN(when)) return data.updatedLabel || "";
+  // Hero stamp uses the CelesTrak orbit epoch (orbitsUpdated / STARLINK_GP.tleAsOf),
+  // not the editorial fallback in starlink-data.js and not McDowell's count date.
+  const formatStamp = (raw) => {
+    if (!raw) return { when: null, text: data.updatedLabel || "" };
+    const when = new Date(/T/.test(raw) ? raw : `${raw}T12:00:00Z`);
+    if (isNaN(when)) return { when: null, text: data.updatedLabel || raw };
     const opts = { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZoneName: "short" };
     if (when.getFullYear() !== new Date().getFullYear()) opts.year = "numeric";
     const parts = new Intl.DateTimeFormat("en-GB", opts).formatToParts(when);
@@ -44,19 +46,37 @@
     if (/^(GMT|UTC)\+1$/.test(zone) && tzId === "Europe/Dublin") zone = "IST";
     else if (/^(GMT|UTC)\+1$/.test(zone) && tzId === "Europe/London") zone = "BST";
     else if (/^(GMT|UTC)$/.test(zone) && /^Europe\/(Dublin|London)$/.test(tzId)) zone = "GMT";
-    return `${get("day")} ${get("month")}${year}, ${get("hour")}:${get("minute")} ${zone}`;
-  })();
+    return { when, text: `${get("day")} ${get("month")}${year}, ${get("hour")}:${get("minute")} ${zone}` };
+  };
+
+  const orbitUpdated = () =>
+    (live && live.orbitsUpdated) ||
+    (window.STARLINK_GP && (window.STARLINK_GP.tleAsOf || window.STARLINK_GP.asOf)) ||
+    "";
+
+  const writeStamp = () => {
+    const raw = orbitUpdated() || countUpdated;
+    data.updated = raw;
+    const { when, text } = formatStamp(raw);
+    const el = document.querySelector("#sl-updated");
+    if (el) {
+      el.innerHTML = `Updated <time datetime="${when && when.toISOString ? when.toISOString() : raw}">${text}</time>`;
+      el.title = orbitUpdated()
+        ? "Time of the latest CelesTrak orbit data, shown in your time zone"
+        : "Time of the latest count from Jonathan McDowell’s Starlink statistics, shown in your time zone";
+    }
+    return text;
+  };
+
+  const stampText = writeStamp();
+  document.querySelectorAll('script[src*="starlink-gp.js"]').forEach((s) => {
+    s.addEventListener("load", writeStamp);
+  });
 
   const $ = (sel) => document.querySelector(sel);
   const fmt = (n) => Number(n).toLocaleString("en-US");
   const src = data.source || {};
   const totalOrbit = data.totals.inOrbit || 1;
-
-  const stamp = $("#sl-updated");
-  if (stamp) {
-    stamp.innerHTML = `Updated <time datetime="${when.toISOString ? when.toISOString() : data.updated}">${stampText}</time>`;
-    stamp.title = "Time of the latest count from Jonathan McDowell’s Starlink statistics, shown in your time zone";
-  }
 
   const kpis = [
     ["#sl-orbit", data.totals.inOrbit, "in orbit"],
@@ -125,7 +145,8 @@
 
   const credit = $("#sl-src");
   if (credit) {
-    credit.innerHTML = `Figures: <a href="${src.url}" target="_blank" rel="noopener">${src.label}</a>, updated ${stampText}. Independent tracker. Not affiliated with SpaceX.`;
+    const countText = formatStamp(countUpdated).text || stampText;
+    credit.innerHTML = `Figures: <a href="${src.url}" target="_blank" rel="noopener">${src.label}</a>, updated ${countText}. Independent tracker. Not affiliated with SpaceX.`;
   }
 
   const svg = $("#sl-orbit-svg");
