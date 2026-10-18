@@ -4,6 +4,7 @@
 // raw HTML for crawlers and no-JS visitors. home-v2.js still replaces it live in the browser.
 // Run: node scripts/build-home.js   (refresh workflows + home-build.yml re-run it)
 const fs = require("fs"), path = require("path"), vm = require("vm");
+const pairer = require("../home-pair.js");
 const R = path.join(__dirname, ".."), rd = (f) => fs.readFileSync(path.join(R, f), "utf8");
 const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const strip = (h) => h.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
@@ -75,9 +76,12 @@ const trkHtml = trk.map((x) => `<a class="hv-t" href="${x.href}"><span class="hv
 // Headlines
 let feed = "";
 try {
-  const d = JSON.parse(rd("news-data.json")), s2 = new Set(), lab = { tesla: "Tesla", spacex: "SpaceX", grok: "xAI", xai: "xAI", x: "X" };
+  const d = JSON.parse(rd("news-data.json")), s2 = new Set();
+  let arts = [];
+  try { arts = (JSON.parse(rd("data/articles.json")).articles || []); } catch (e2) {}
+  const used = new Set();
   feed = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || s2.has(k)) return false; s2.add(k); return /^https:\/\//.test(it.url || ""); }).slice(0, 8)
-    .map((it) => `<li><a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer"><span class="hv-f-t">${esc(lab[it.topic] || "News")}</span><span class="hv-f-h">${esc((it.title || "").replace(/\s+-\s+[^-]+$/, ""))}<span class="hv-f-ext" aria-hidden="true"> ↗</span></span><span class="hv-f-m">${esc(it.source || "")} · ${it.published ? day(new Date(it.published)) : ""}</span></a></li>`).join("");
+    .map((it) => pairer.itemHtml(it, pairer.pairItem(it, arts, used), esc, `${it.source || ""} · ${it.published ? day(new Date(it.published)) : ""}`.replace(/^ · /, "")));
 } catch (e) {}
 
 // Next-livestream card (same pick + markup as live.js's "Next live stream" card), prebuilt so the
