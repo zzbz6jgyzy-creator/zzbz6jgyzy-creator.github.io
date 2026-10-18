@@ -1,3 +1,7 @@
+/* Homepage v2 + focus overrides. home.css (hx-hero) is no longer loaded. */
+body.home-x{background:#050505;color:#f4f4f2}
+.home-x .site-shell{max-width:none;padding:0}
+.home-x .site-footer{max-width:1200px;margin-left:auto;margin-right:auto;padding-inline:20px}
 .hv{max-width:1240px;margin:0 auto;padding:0 24px 40px;color:#e8e8e8;font-family:Inter,system-ui,sans-serif}
 .hv a{color:inherit;text-decoration:none}
 .hv-mast{text-align:center;padding:18px 0 22px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:26px}
@@ -9,7 +13,7 @@
 .hv-lead-media{aspect-ratio:16/9;background:#111;overflow:hidden}.hv-lead-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
 .hv-lead:hover img{transform:scale(1.03)}
 .hv-lead-copy{padding:20px 24px 24px}
-.hv-lead h2{font:800 clamp(24px,2.6vw,36px)/1.12 Inter,sans-serif;color:#fff;margin:10px 0;letter-spacing:-.02em}
+.hv-lead h2{font:700 clamp(24px,2.6vw,36px)/1.12 Inter,sans-serif;color:#fff;margin:10px 0;letter-spacing:-.02em}
 .hv-lead p{color:#aaa;margin:0 0 14px;font-size:16px;line-height:1.5}
 .hv-read{color:#e31937;font-weight:600;font-size:14px}
 .hv-tag{display:inline-block;font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#e31937}
@@ -32,14 +36,14 @@
 .hv-feat-sky{background:linear-gradient(160deg,rgba(255,255,255,.05),transparent 55%),#0e0e0e}
 .hv-feat-k{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#888;display:flex;align-items:center;gap:8px}
 .hv-feat-new{display:inline-block;font:700 9px/1 Inter,sans-serif;letter-spacing:.06em;color:#fff;background:#e31937;border-radius:4px;padding:3px 5px;text-transform:uppercase}
-.hv-feat-card strong{font:800 clamp(22px,2.4vw,30px)/1.12 Inter,sans-serif;color:#fff;letter-spacing:-.02em}
+.hv-feat-card strong{font:700 clamp(22px,2.4vw,30px)/1.12 Inter,sans-serif;color:#fff;letter-spacing:-.02em}
 .hv-feat-s{font-size:14px;color:#9a9a9a;line-height:1.4}
 .hv-feat-go{color:#ff4d5e;font-weight:600;font-size:14px;margin-top:4px}
 .hv-trk-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .hv-t{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-radius:14px;background:#0e0e0e;border:1px solid rgba(255,255,255,.08);transition:border-color .2s,transform .2s}
 .hv-t:hover{border-color:rgba(227,25,55,.6);transform:translateY(-2px)}
 .hv-t-k{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#888}
-.hv-t strong{font:800 26px/1.1 Inter,sans-serif;color:#fff;letter-spacing:-.01em}
+.hv-t strong{font:700 26px/1.1 Inter,sans-serif;color:#fff;letter-spacing:-.01em}
 .hv-t-s{font-size:13px;color:#9a9a9a;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .hv-explore{margin:0 0 44px}
 .hv-ex-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -71,3 +75,43 @@
   .hv-lead:hover img{transform:none}
 }
 @media (min-width:2400px){.hv{max-width:1800px;zoom:1.3}}
+
+/* Was home-focus.css — keep last so these overrides win. */
+.pv-lead .hv-lead{display:grid;grid-template-columns:1.25fr 1fr;align-items:stretch;max-width:1180px;margin:0 auto}
+.pv-lead .hv-lead-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+.pv-lead .hv-lead-copy h2{font-size:clamp(1.6rem,3.2vw,2.6rem);line-height:1.1}
+.pv-feed .hv-list li:nth-child(n+9){display:none}
+.pv-feed,.pv-more,.pv-lead{max-width:1180px;margin-left:auto;margin-right:auto}
+.pv-feed{margin-top:2rem}
+.pv-more{margin-top:2.5rem;opacity:.95}
+.pv-more .hv-supp{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.pv-more-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
+.hv-trk,.hv-explore{max-width:1180px;margin-left:auto;margin-right:auto}
+.hv-feat{gap:.8rem;margin-bottom:.8rem}
+.hv-trk-row{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:.8rem}
+.hv-mast{padding-bottom:.6rem}
+@media (max-width:760px){.pv-lead .hv-lead{grid-template-columns:1fr}.hv-feat{grid-template-columns:1fr}.hv-trk-row{grid-template-columns:1fr 1fr!important}.hv-ex-row{grid-template-columns:1fr 1fr}.pv-more .hv-supp,.pv-more-row{grid-template-columns:1fr}}
+.hv-live-top:empty{display:none}
+.hv-live-top{max-width:1180px;margin:.4rem auto 1rem}
+.hv-next:empty{display:none}
+.hv-major:empty{display:none}
+.hv-major{max-width:1180px;margin:0 auto 1.2rem;display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.mj{display:grid;grid-template-columns:1fr auto;grid-template-areas:"eb c" "t c" "w c";gap:.25rem 1.2rem;align-items:center;padding:1rem 1.2rem;border-radius:14px;background:linear-gradient(135deg,#1a0a0d,#0b0b0c 60%);border:1px solid rgba(227,25,55,.55);box-shadow:0 0 28px rgba(227,25,55,.18);color:#fff;text-decoration:none}
+.mj:hover{border-color:#E31937}
+.mj-eb{grid-area:eb;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#E31937;font-weight:700;display:flex;align-items:center;gap:.45rem}
+.mj-eb i{width:8px;height:8px;border-radius:50%;background:#E31937;animation:mjp 1.6s infinite}
+@keyframes mjp{0%{box-shadow:0 0 0 0 rgba(227,25,55,.7)}70%{box-shadow:0 0 0 9px rgba(227,25,55,0)}100%{box-shadow:0 0 0 0 rgba(227,25,55,0)}}
+.mj-t{grid-area:t;font-size:1.3rem;font-weight:700;line-height:1.15}
+.mj-w{grid-area:w;font-size:.85rem;color:#c4c5c9}
+.mj-c{grid-area:c;display:flex;gap:.4rem}
+.mj-b{display:flex;flex-direction:column;align-items:center;min-width:3.4rem;padding:.45rem .3rem;border:1px solid rgba(227,25,55,.45);border-radius:9px;background:#0b0b0c}
+.mj-b strong{font-size:1.45rem;font-variant-numeric:tabular-nums;color:#fff}
+.mj-b small{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#E31937}
+@media (max-width:760px){.hv-major{grid-template-columns:1fr;margin-left:0;margin-right:0}.mj{grid-template-columns:1fr;grid-template-areas:"eb" "t" "w" "c"}.mj-c{margin-top:.5rem}.mj-b{flex:1}}
+.hv-event:empty{display:none}
+.hv-event{max-width:620px;margin:.4rem auto 1.2rem}
+.pv-more-row{grid-template-columns:1fr}
+.hv-date:empty::before{content:"\00a0"}
+.hv-lead-media picture{display:contents}
+.hv .hv-tag,.hv .hv-read,.hv .hv-f-t,.hv .hv-feat-go{color:#ff4d5e}
+.hv .hv-c-t{color:#ff4d5e}

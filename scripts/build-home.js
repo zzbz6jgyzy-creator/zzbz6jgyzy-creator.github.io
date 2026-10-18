@@ -50,7 +50,11 @@ const lead = L ? `<a class="hv-lead" href="${esc(L.href)}" data-hv-lead>
             <div class="hv-lead-media"><picture>${leadImg}</picture></div>
             <div class="hv-lead-copy"><span class="hv-tag" data-hv-tag>${esc(L.tag)}</span><h2 data-hv-h>${esc(L.h)}</h2><p data-hv-p>${esc(L.p)}</p><span class="hv-read">Read the story →</span></div>
           </a>` : null;
-const supp = cards.slice(1, 4).map((c) => `<a class="hv-s" href="${esc(c.href)}">${c.img ? `<img src="${esc(c.img)}" alt="" loading="lazy" />` : ""}<div><span class="hv-tag">${esc(c.tag)}</span><h3>${esc(c.h)}</h3></div></a>`).join("");
+const suppThumb = (src) => {
+  const webp = String(src).replace(/\.(jpe?g|png)$/i, "-480w.webp");
+  return `<img src="${esc(webp)}" alt="" width="112" height="70" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${esc(src)}'" />`;
+};
+const supp = cards.slice(1, 4).map((c) => `<a class="hv-s" href="${esc(c.href)}">${c.img ? suppThumb(c.img) : ""}<div><span class="hv-tag">${esc(c.tag)}</span><h3>${esc(c.h)}</h3></div></a>`).join("");
 
 // Trackers (same rules as home-v2.js)
 const trk = [], S = win.STARSHIP, F = win.FSD_EUROPE, C = win.CYBERCAB;

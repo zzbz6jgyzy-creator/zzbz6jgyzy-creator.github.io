@@ -1,3 +1,4 @@
+/* Merged into home-v2.css. File kept so old cached <link>s still resolve. */
 .pv-lead .hv-lead{display:grid;grid-template-columns:1.25fr 1fr;align-items:stretch;max-width:1180px;margin:0 auto}
 .pv-lead .hv-lead-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
 .pv-lead .hv-lead-copy h2{font-size:clamp(1.6rem,3.2vw,2.6rem);line-height:1.1}
