@@ -105,6 +105,7 @@ Privacy-friendly counters, no cookies, no IPs, no user IDs, no cookie banner nee
 - **Where counts live**: Cloudflare Worker `sd-events` + KV namespace `sd-events` (id `57ee0b9c3c2647fe84176ca976aba17e`), account Superchargeddaily@gmail.com. Code: `workers/sd-events/`. Free tier.
 - **Read the numbers**: `GET https://sd-events.superchargeddaily.workers.dev/stats?days=30` returns JSON
   `{ since, totals:{event:n}, byDay:{"YYYY-MM-DD":{event:n}}, topPages:{event:{path:n}} }` (UTC days; topPages all-time).
+  Unlisted page `/counts.html` paints that JSON. `noindex`. Linked from About. Not in the nav. Not unique visitors.
 - **Beehiiv attribution**: sign-ups redirect to Beehiiv with `utm_source=website`, `utm_medium=site-band` (sleek bar) / `site-pop` (scroll prompt) / `site-form` (other), and `utm_campaign=<page path>`. The latest-issue link carries `utm_medium=site-band&utm_campaign=latest-issue`. See Beehiiv → Subscribers → acquisition source.
 - **Pageviews** remain in Cloudflare Web Analytics (beacon on every page). No GA, Plausible or Zaraz on the site (the domain is DNS-only to GitHub Pages, so Zaraz can't run).
 - Counts are approximate: ad blockers may drop beacons, and the Worker only accepts requests from superchargeddaily.com.

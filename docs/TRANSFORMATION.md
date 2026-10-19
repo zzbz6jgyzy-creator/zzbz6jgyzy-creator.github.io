@@ -105,12 +105,18 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Promise Tracker empty chips / tiles / legend reserve height before JSON lands.
 - Tesla clubs city lookup and blocked geolocation write `#tc-hint` and hold it.
 
-### Batch 17 — Newsletter tags (this session)
+### Batch 17 — Newsletter tags (merged #125)
 
 - Site signup sends allowlisted `utm_content` (`roadster`, `tesla`, `tesla-software`, `spacex`, `website`).
 - Topic is inferred from the page path first, then `.art-tag` — not from story-card `.tag` chips.
 - Beehiiv subscriber tags created. Three live UTM segments. Tag-apply automations are draft until published in the editor.
 - Sunday send is still one list. No per-car mail. No ads.
+
+### Batch 18 — Watch counts (this session)
+
+- Unlisted `/counts.html` paints live `sd-events` `/stats?days=30`. Eight allowlisted actions only.
+- About links to it. `noindex`. Not in nav. Zeros stay zeros. Fail copy when the Worker is blocked.
+- Not unique visitors. No invented traffic. No ads.
 
 ## Architecture (do not rip out)
 
