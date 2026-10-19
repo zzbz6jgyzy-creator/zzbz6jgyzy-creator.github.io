@@ -99,11 +99,17 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Production Dispatch after #122: CLS 0, LCP 2.2 s.
 - Ads and per-car notification delivery not activated (no sponsor creative; no mail/push hook).
 
-### Batch 16 — Leftover polish (this session)
+### Batch 16 — Leftover polish (merged #124)
 
 - Tesla / SpaceX story-grid posters lock to 160px (CSS `!important` beats leftover `height:auto`).
 - Promise Tracker empty chips / tiles / legend reserve height before JSON lands.
 - Tesla clubs city lookup and blocked geolocation write `#tc-hint` and hold it.
+
+### Batch 17 — Watch counts (this session)
+
+- Unlisted `/counts.html` paints live `sd-events` `/stats?days=30`. Eight allowlisted actions only.
+- About links to it. `noindex`. Not in nav. Zeros stay zeros. Fail copy when the Worker is blocked.
+- Not unique visitors. No invented traffic. No ads.
 
 ## Architecture (do not rip out)
 
