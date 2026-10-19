@@ -111,7 +111,10 @@ function eventCardFor(page) {
     const o = { weekday: "short", day: "numeric", month: "short", timeZone: (e.timeTbc || e.net) ? "America/Los_Angeles" : "UTC" };
     const date = new Intl.DateTimeFormat("en-GB", o).format(new Date(e.start)) + (e.timeTbc || e.net ? "" : " · " + new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(new Date(e.start)));
     const chip = e.timeTbc ? "Time TBC" : e.net ? "NET" : "UTC";
-    const thumb = e.image ? `<div class="lw-thumb" role="img" aria-label="${esc(e.title)}"><img src="${esc(e.thumb || e.image)}" alt="" fetchpriority="high" decoding="async" /></div>` : "";
+    const src = e.thumb || e.image || "";
+    const thumb = /\/assets\/live\/falcon9\.(jpe?g|png|webp)$/i.test(src)
+      ? `<div class="lw-thumb" role="img" aria-label="${esc(e.title)}"><picture><source type="image/avif" srcset="/assets/live/falcon9-480w.avif 480w, /assets/live/falcon9-960w.avif 960w, /assets/live/falcon9-1200w.avif 1200w" sizes="(max-width:760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/live/falcon9-480w.webp 480w, /assets/live/falcon9-960w.webp 960w, /assets/live/falcon9-1200w.webp 1200w" sizes="(max-width:760px) 92vw, 360px" /><img src="/assets/live/falcon9.jpg" alt="" width="1200" height="800" fetchpriority="high" decoding="async" /></picture></div>`
+      : (e.image ? `<div class="lw-thumb" role="img" aria-label="${esc(e.title)}"><img src="${esc(src)}" alt="" width="1200" height="800" fetchpriority="high" decoding="async" /></div>` : "");
     const credit = e.image && e.imageCredit ? `<small class="lw-cr">${esc(e.imageCredit)}</small>` : "";
     const tile = (n, l) => `<span class="lw-tile"><b>${n}</b><i>${l}</i></span>`;
     const tiles = e.net ? "" : `<div class="lw-cd" aria-live="off">${tile("–", "days") + tile("––", "hrs") + tile("––", "mins")}</div>`;

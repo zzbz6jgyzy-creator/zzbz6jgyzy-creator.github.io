@@ -70,13 +70,23 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Photo heroes, maps, globes, explainer boards, 3D explorers and game stages stay dark. Games were not rewritten.
 - No `prefers-color-scheme` auto-switch. No `nav.json` / `sync-nav.py`.
 
-### Batch 11 — Tracker light wells (this PR)
+### Batch 11 — Tracker light wells (merged #118)
 
 - Starship chips / moments / compare heads / selects lift to paper. Official player and empty poster stay black.
 - Software Update Tracker remaps local `--card` / `--line` / `--mute` and hardcoded `#fff` numbers. Globe well stays `#050608`.
 - FSD Europe buttons, flags, bar track, table head and log rail lift. Europe map stays dark.
 - Calendar countdown cards, tiles and clock ink lift. Featured photo stays a photo.
 - Gear photo tiles stay dark under the images. Page chrome already used tokens.
+
+### Batch 12 — Site optimisation + tools (merged #119 / #120)
+
+- Nav Home / Tesla / SpaceX / Roadster / Explore / News. News keep, Dispatch browse, search filters, leftover light wells, tool fail/loading copy, topic newsletter bands, no mobile pop.
+
+### Batch 13 — Events + lab CWV (this PR)
+
+- Production Lighthouse recorded (mobile lab, 19 Oct 2026). Calendar CLS reserved; homepage Falcon 9 live thumb uses existing AVIF/WebP.
+- `sd-events` gains search / theme / Dispatch / TESMAG counts. Worker allowlist updated in-repo; live Worker not deployed from this PR.
+- Commercial brief only. No ads.
 
 ## Architecture (do not rip out)
 

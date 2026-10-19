@@ -4,96 +4,75 @@ Living progress document for the full-site optimisation mission. Dark remains th
 
 ## Initial audit (2026-10-18)
 
-### Architecture
-
-Static GitHub Pages site. Pill nav is generated from `scripts/nav.json` by `scripts/sync-nav.py`. Homepage dual-renders `<!--hv:*-->` blocks via `scripts/build-home.js` + `home-v2.js`. Wire headlines live in `news-data.json` (CI snapshot every 30 minutes). Dispatch cards are static HTML; `data/articles.json` is additive. Search indexes `data/articles.json` + `data/pages.json`. Newsletter is Beehiiv via `newsletter.js` / `grow.js`. Analytics: Cloudflare Web Analytics beacon `1927a50f248444ec9bdcf9f5607e7d7b` (pageviews only). Theme is an explicit toggle (`html[data-theme=light]`), not `prefers-color-scheme`.
-
-### Feature inventory (working)
-
-- Homepage: live slot, mast, lead Dispatch, trackers, explore, wire feed with on-site pairing, newsletter, more Dispatch, countdowns.
-- News (`/news.html`): snapshot-only wire + Dispatch article list with topic chips.
-- Dispatch archive and individual `/dispatch/*.html` stories with related links.
-- Site search overlay (⌘K) and `/search.html`.
-- My Tesla: model / year / hardware / software / country, localStorage + query params, no country guess.
-- Roadster hub, Tesla / SpaceX desks, Starship flight lab, Starlink tracker, FSD Europe, Software Update Tracker, Cybercab tracker, Promise tracker, calendar, see-the-launch, explainers, clubs, explorers, markets, reviews, Grok, Gear, Games, wallpapers.
-- Follow on X → `https://x.com/ALJR86`. Subscribe → `/#newsletter`.
+Static GitHub Pages. Nav from `scripts/nav.json`. Homepage `<!--hv:*-->` via `scripts/build-home.js` + `home-v2.js`. Wire in `news-data.json`. Newsletter Beehiiv. Analytics: Cloudflare Web Analytics pageviews + `sd-events` Worker counters. Theme is an explicit toggle, not `prefers-color-scheme`.
 
 ## Prioritised tasks
 
-1. Navigation restructure — done (#119)
-2. News keep / dedupe / relevance — done (#119)
-3. Dispatch browse — done (#119)
-4. Search ranking + filters — done (#119)
-5. Homepage explore + feed quality — done (#119)
-6. My Tesla opt-in prefs — done (#119)
-7. Leftover light wells + interactive tools + newsletter/mobile — this session
-8. Later: Core Web Vitals lab numbers, commercial briefs (no activation), event analytics wiring
-
-## Completed earlier (#119)
-
-- Nav: Home / Tesla / SpaceX / Roadster / Explore / News.
-- Shared `news-keep.js` + `scripts/news_keep.py`, Dispatch chips/search/reading time, search aliases/filters, homepage 3×2 explore, My Tesla on-device notify prefs (not delivered).
+1–7. Nav, news keep, Dispatch browse, search, homepage explore, My Tesla prefs, leftover wells / tools / newsletter — done (#119, #120)
+8. Lab CWV numbers + event wiring + commercial brief — this session
 
 ## Completed this session
 
-- Light theme leftover wells now use paper surfaces: `.mj` / `.mj-b`, review `.gear-band` (and category tiles), older Dispatch `.sd-box` / `.sd-table` / `.sd-nl`, plus newer table `thead` wells. LIVE / Watch-live / maps / explainer boards stay dark.
-- Calendar: `Checking Launch Library 2…` status before the fetch, `role="status"`, filter chips `min-height: 40px`. Existing curated fallback and Launch Library 2 attribution unchanged.
-- Promise tracker: `#pt-list` starts with `Loading promises…`. Existing load-fail copy kept.
-- Starship Flight Lab: visible fail copy in `#slab-detail` if `STARSHIP_LAB` / `STARSHIP` is missing. Desk-read disclaimer already on the page.
-- Newsletter band copy follows the page (Roadster / Tesla software / SpaceX / Tesla desk / default). Scroll popup is skipped on every mobile viewport — not just the first view. No new popups. Homepage prerendered band stays the default week copy.
-- Affiliate codes, Follow on X, `twitter:site`, and `nav.json` untouched.
+- Ran Lighthouse 12.6.1 mobile lab against **production** `https://superchargeddaily.com` on 19 Oct 2026. Numbers below are measured, not invented.
+- Calendar CLS 0.523 was the worst lab result. Reserved countdown space (skeletons + min-height), paint curated rows before `events.json`, and dropped `.reveal` on the calendar hero (LCP was waiting on the fade-in).
+- Homepage live thumb used full `falcon9.jpg` (~LCP). Now a `<picture>` of the existing 480/960/1200 AVIF/WebP set. `live.js` and `scripts/build-home.js` match (builder not run).
+- Event counts: `track.js` now also records `search_open`, `search_go`, `theme_toggle`, `dispatch_filter`, `tesmag_click`. No query text, emails, or IDs. Worker allowlist updated in-repo — **not deployed** (needs `wrangler deploy` in `workers/sd-events` after merge).
+- Commercial: brief only. No slots, no ads.
 
 ## Files modified
 
-- `theme.css` — leftover well lifts
-- `styles.css` — calendar filter touch target
-- `grow.js`, `scripts/build-articles.py` — topic band + no mobile pop; cache pin
-- `calendar.js`, `calendar.html` — checking status
-- `starship-lab.js` — fail copy
-- `promise-tracker.html` — loading row
-- HTML cache pins: `theme.css`, `styles.css`, `grow.js`, `calendar.js`, `starship-lab.js`, `promise-tracker.js` → `202610190500`
-- `scripts/test-tools-polish.mjs`
-- `SUPERCHARGED_IMPROVEMENTS.md`
+- `track.js`, `workers/sd-events/sd-events.js`, `data/README.md`
+- `theme.js`, `search.js`, `dispatch-browse.js`, `nav-pill.js`, `script.js`, `grow.js`
+- `calendar.js`, `calendar.html`, `calendar-next.css`
+- `live.js`, `scripts/build-home.js`, `index.html` (event thumb only)
+- HTML cache pins for `script.js`, `grow.js`, `nav-pill.js`, `live.js`, `calendar.js`
+- `scripts/test-events-cwv.mjs`, `SUPERCHARGED_IMPROVEMENTS.md`
 
 ## Tests performed
 
-All executed in this session:
-
-- `node scripts/test-tools-polish.mjs` against `http://127.0.0.1:4173` → `ALL_PASS`:
-  - Light theme via `localStorage sd-theme=light`
-  - `.gear-band` and `.sd-box` not near-black; table `th` lifted
-  - Injected `.mj` uses paper
-  - TESMAG `J72E6FRRQ7QK` and Tesla `ts.la/alex474841` unchanged
-  - Calendar status + 40px filters
-  - Starship disclaimer + populated lab + fail-copy present in JS
-  - Promise cards replace the loading row
-  - Starlink CelesTrak stamp
-  - Newsletter topics on Roadster / My Tesla / SpaceX
-  - No `.sd-pop` on a 390px Tesla page after a mid-scroll
-  - Follow on X still `https://x.com/ALJR86`
+- `node scripts/test-events-cwv.mjs` against `http://127.0.0.1:4173`
+- Local Lighthouse re-check of `/` and `/calendar.html` after the CLS / picture changes (localhost, not production)
 
 ## Measured performance
 
-No new Lighthouse / CWV lab run this session. Do not invent numbers. Previous merged perf work (#112) still applies.
+Lighthouse 12.6.1, mobile emulation, headless Chrome, **production host** (19 Oct 2026). Lab only — not CrUX field data.
+
+| Page | Perf | FCP | LCP | TBT | CLS | SI |
+|---|---|---|---|---|---|---|
+| `/` | 0.83 | 2.6 s | 3.7 s | 140 ms | 0.003 | 3.2 s |
+| `/dispatch.html` | 0.87 | 1.6 s | 3.6 s | 30 ms | 0.104 | 1.8 s |
+| `/calendar.html` | 0.73 | 1.5 s | 2.7 s | 130 ms | **0.523** | 1.5 s |
+
+Homepage LCP element: live Falcon 9 JPEG. Calendar LCP: hero paragraph (78% render delay from `.reveal`). Calendar CLS: empty countdown / list filling after JS.
+
+Same Lighthouse settings on **localhost :4173** after this PR’s calendar / picture changes (not comparable to production CDN / Cloudflare JS):
+
+| Page | Perf | FCP | LCP | TBT | CLS | SI |
+|---|---|---|---|---|---|---|
+| `/` | 0.88 | 2.3 s | 3.5 s | 80 ms | 0.003 | 2.3 s |
+| `/calendar.html` | 0.96 | 2.1 s | 2.5 s | 30 ms | **0** | 2.1 s |
+
+Local homepage LCP is now the `<picture>` thumb. Local calendar CLS dropped from the production 0.523 to 0. Do not treat localhost as field CWV. Re-run production after merge.
+
+## Commercial brief (not activated)
+
+If sponsorship is ever approved, labelled slots only:
+
+- Homepage: one labelled “Sponsored” band below Explore, never inside Live / Dispatch / newsletter.
+- Dispatch archive: not inside the story grid.
+- Gear: TESMAG is an affiliate disclosure, not an ad slot.
+
+Nothing was added to the HTML. No ad network, no empty slot markup.
 
 ## Known limitations
 
-- Notifications are preferences only. Nothing is sent.
-- Wire relevance is deterministic string/source scoring, not factual accuracy.
-- Homepage feed prerender is updated by `scripts/refresh-home-feed.js`; do not run full `build-home.js` unless tesla.html / spacex.html `<picture>` diffs are reverted.
-- Cloudflare analytics remains pageview-only.
-- Official SpaceX YouTube only; Follow on X and `twitter:site` unchanged.
-- Newsletter topic copy is path/tag framing, not Beehiiv list tags. Topic-specific Beehiiv tags still need approval.
-- Scroll popup still exists on desktop after 50% scroll (one-time). Mobile never gets it.
+- New event names 400 on the live Worker until it is deployed.
+- Notifications are preferences only.
+- Do not run full `build-home.js` unless tesla.html / spacex.html `<picture>` diffs are reverted.
+- Follow on X and `twitter:site` unchanged.
 
 ## Remaining work
 
-- Lab CWV measurements on a production-like host.
-- Commercial: labelled sponsorship slots only after approval.
-- Event-level analytics if a privacy-respecting store is connected.
-- Broader tool QA on globes / games chrome only if something regresses.
-
-## Recommended next steps
-
-1. Merge this tools + leftover-wells batch.
-2. Only then consider a CWV lab run or ads / a notification delivery worker.
+- Deploy `sd-events` Worker when ready.
+- Re-run production Lighthouse after merge to see calendar CLS / homepage LCP.
+- Ads / notification delivery only with explicit approval.

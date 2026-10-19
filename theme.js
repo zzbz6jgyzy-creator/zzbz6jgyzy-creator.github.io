@@ -39,7 +39,10 @@
     b.innerHTML = icon + (labeled
       ? "<span>Theme</span>"
       : '<span class="visually-hidden">Theme</span>');
-    b.addEventListener("click", () => apply(get() === "light" ? "dark" : "light"));
+    b.addEventListener("click", () => {
+      apply(get() === "light" ? "dark" : "light");
+      if (window.sdTrack) window.sdTrack("theme_toggle");
+    });
     return b;
   };
 

@@ -449,50 +449,6 @@
     const spxEarnings = document.querySelectorAll("[data-spx-earnings]");
     if (!list && !preview && !earnings && !nextTesla && !countdown && !spxEarnings.length) return;
 
-    try {
-      const r = await fetch("/data/events.json", { cache: "no-cache" });
-      const j = r.ok ? await r.json() : null;
-      if (j && j.events) {
-        const idMap = {
-          "starship-flight-15": "starship-f15",
-          "ussf-481": "ll-ussf-481",
-          "bandwagon-5": "ll-bandwagon-5",
-          "crs35-docking": "crs35-docking",
-          "tesla-q3-2026-earnings": "tesla-q3-2026-earnings",
-          "spacex-q3-2026-earnings": "spacex-q3-2026-earnings",
-        };
-        Object.keys(j.events).forEach((eid) => {
-          if (eid === "tesla-roadster-demo") return;
-          const ev = j.events[eid];
-          const cid = idMap[eid] || eid;
-          let cur = CURATED.find((e) => e.id === cid || launchKey(e.title) === launchKey(ev.title || ""));
-          if (!cur && (ev.href || ev.start || ev.date)) {
-            cur = {
-              id: cid,
-              title: ev.title || eid,
-              start: ev.start || `${ev.date}T12:00:00Z`,
-              group: /tesla|earnings|roadster/i.test(ev.title || eid) ? "tesla" : "spacex",
-              where: "",
-              note: ev.summary || "",
-              href: ev.href || "",
-              status: ev.status === "done" ? "go" : (ev.status || "go"),
-              precision: ev.precision || (ev.time || ev.start ? "datetime" : "day"),
-              source: "curated",
-            };
-            CURATED.push(cur);
-          }
-          if (!cur) return;
-          if (ev.start) cur.start = ev.start;
-          else if (ev.date && ev.time && ev.tz) cur.start = `${ev.date}T${ev.time}:00${ev.tz}`;
-          else if (ev.date) cur.start = `${ev.date}T12:00:00Z`;
-          if (ev.href) cur.href = ev.href;
-          if (ev.summary) cur.note = ev.summary;
-          if (ev.precision) cur.precision = ev.precision;
-          if (ev.status && ev.status !== "done") cur.status = ev.status;
-          cur.source = "curated";
-        });
-      }
-    } catch {}
     const now = new Date();
     let events = mergeEvents([]);
     let filter = "all";
@@ -537,6 +493,53 @@
     };
 
     paint();
+
+    try {
+      const r = await fetch("/data/events.json", { cache: "no-cache" });
+      const j = r.ok ? await r.json() : null;
+      if (j && j.events) {
+        const idMap = {
+          "starship-flight-15": "starship-f15",
+          "ussf-481": "ll-ussf-481",
+          "bandwagon-5": "ll-bandwagon-5",
+          "crs35-docking": "crs35-docking",
+          "tesla-q3-2026-earnings": "tesla-q3-2026-earnings",
+          "spacex-q3-2026-earnings": "spacex-q3-2026-earnings",
+        };
+        Object.keys(j.events).forEach((eid) => {
+          if (eid === "tesla-roadster-demo") return;
+          const ev = j.events[eid];
+          const cid = idMap[eid] || eid;
+          let cur = CURATED.find((e) => e.id === cid || launchKey(e.title) === launchKey(ev.title || ""));
+          if (!cur && (ev.href || ev.start || ev.date)) {
+            cur = {
+              id: cid,
+              title: ev.title || eid,
+              start: ev.start || `${ev.date}T12:00:00Z`,
+              group: /tesla|earnings|roadster/i.test(ev.title || eid) ? "tesla" : "spacex",
+              where: "",
+              note: ev.summary || "",
+              href: ev.href || "",
+              status: ev.status === "done" ? "go" : (ev.status || "go"),
+              precision: ev.precision || (ev.time || ev.start ? "datetime" : "day"),
+              source: "curated",
+            };
+            CURATED.push(cur);
+          }
+          if (!cur) return;
+          if (ev.start) cur.start = ev.start;
+          else if (ev.date && ev.time && ev.tz) cur.start = `${ev.date}T${ev.time}:00${ev.tz}`;
+          else if (ev.date) cur.start = `${ev.date}T12:00:00Z`;
+          if (ev.href) cur.href = ev.href;
+          if (ev.summary) cur.note = ev.summary;
+          if (ev.precision) cur.precision = ev.precision;
+          if (ev.status && ev.status !== "done") cur.status = ev.status;
+          cur.source = "curated";
+        });
+        events = mergeEvents([]);
+        paint();
+      }
+    } catch {}
 
     if (watch) {
       watch.replaceChildren();

@@ -73,6 +73,6 @@
     };
     addEventListener("scroll", onScroll, { passive: true });
   }
-  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610151900"; document.body.appendChild(t); }  const s = document.createElement("script"); s.src = "/newsletter.js?v=202610151900"; document.body.appendChild(s); }
+  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610190630"; document.body.appendChild(t); }  const s = document.createElement("script"); s.src = "/newsletter.js?v=202610151900"; document.body.appendChild(s); }
   bindForms();
 })();

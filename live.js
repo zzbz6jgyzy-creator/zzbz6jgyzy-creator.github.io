@@ -34,13 +34,23 @@
     if (e.provider === 'youtube' && /^[\w-]{6,20}$/.test(e.embedId || '')) return 'https://www.youtube.com/watch?v=' + e.embedId;
     return safeUrl(e.fallbackUrl || e.postUrl || '/calendar.html');
   }
+  function liveThumb(src, title) {
+    var s = src || '';
+    if (/\/assets\/live\/falcon9\.(jpe?g|png|webp)$/i.test(s)) {
+      return '<div class="lw-thumb" role="img" aria-label="' + esc(title) + '"><picture>' +
+        '<source type="image/avif" srcset="/assets/live/falcon9-480w.avif 480w, /assets/live/falcon9-960w.avif 960w, /assets/live/falcon9-1200w.avif 1200w" sizes="(max-width:760px) 92vw, 360px" />' +
+        '<source type="image/webp" srcset="/assets/live/falcon9-480w.webp 480w, /assets/live/falcon9-960w.webp 960w, /assets/live/falcon9-1200w.webp 1200w" sizes="(max-width:760px) 92vw, 360px" />' +
+        '<img src="/assets/live/falcon9.jpg" alt="" width="1200" height="800" fetchpriority="high" decoding="async" /></picture></div>';
+    }
+    return s ? '<div class="lw-thumb" role="img" aria-label="' + esc(title) + '"><img src="' + esc(s) + '" alt="" width="1200" height="800" fetchpriority="high" decoding="async" /></div>' : '';
+  }
   function render(slot, e, live, collapsed, slim) {
     var link = '<a class="lv-out" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener">' + esc(e.fallbackLabel || 'Watch') + ' \u2197</a>';
     var canEmbed = e.provider === 'youtube' || e.provider === 'x';
     var tz = tzName(new Date(e.start));
     var dateTxt = e.timeTbc || e.net ? when(e).replace(' · time TBC', '').replace(/^NET /, '') : when(e).slice(0, -(tz.length + 1));
     var chip = e.timeTbc ? 'Time TBC' : e.net ? 'NET' : tz;
-    var thumb = e.image ? '<div class="lw-thumb" role="img" aria-label="' + esc(e.title) + '"><img src="' + esc(e.thumb || e.image) + '" alt="" fetchpriority="high" decoding="async" /></div>' : '';
+    var thumb = e.image ? liveThumb(e.thumb || e.image, e.title) : '';
     var credit = e.image && e.imageCredit ? '<small class="lw-cr">' + esc(e.imageCredit) + '</small>' : '';
     var head = function (txt) { return '<div class="lw-head"><span class="lw-dot"></span><span>' + txt + '</span><span class="lw-host">' + (canEmbed ? 'Streamed here on Supercharged Daily' : 'Direct link to the official stream') + '</span></div>'; };
     var meta = '<p class="lw-when">' + esc(dateTxt) + ' <span class="lv-tz">' + esc(chip) + '</span></p>';

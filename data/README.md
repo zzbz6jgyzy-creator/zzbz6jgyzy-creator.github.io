@@ -92,10 +92,16 @@ Do not add the old red inline box (`<section class="newsletter sd-nl">`, `.nl-en
 
 Privacy-friendly counters, no cookies, no IPs, no user IDs, no cookie banner needed.
 
-- **What's counted** (`/track.js`, loaded by `script.js` and `grow.js` on every page):
+- **What's counted** (`/track.js`, loaded by `script.js` and `grow.js` on every page). Never sends the search box text, emails, or user IDs:
   - `signup_submit`: a newsletter form with an email was submitted (sleek bar and any other form).
   - `latest_issue_click`: click on "Read the latest issue →" in the sleek bar (`a.sd-latest`).
   - `referral_click`: click on any `https://ts.la/…` Tesla referral link.
+  - `tesmag_click`: TESMAG affiliate click (`teslaacessories.com` + `J72E6FRRQ7QK`).
+  - `search_open`: the ⌘K / nav Search overlay opened (not `/search.html` pageviews).
+  - `search_go`: a search form submit or overlay Enter to a hit. Path only — not the query.
+  - `theme_toggle`: Light / Dark control clicked.
+  - `dispatch_filter`: a Dispatch topic chip was pressed (not the local search box).
+  Worker allowlist lives in `workers/sd-events/sd-events.js`. New names need a Worker deploy.
 - **Where counts live**: Cloudflare Worker `sd-events` + KV namespace `sd-events` (id `57ee0b9c3c2647fe84176ca976aba17e`), account Superchargeddaily@gmail.com. Code: `workers/sd-events/`. Free tier.
 - **Read the numbers**: `GET https://sd-events.superchargeddaily.workers.dev/stats?days=30` returns JSON
   `{ since, totals:{event:n}, byDay:{"YYYY-MM-DD":{event:n}}, topPages:{event:{path:n}} }` (UTC days; topPages all-time).
