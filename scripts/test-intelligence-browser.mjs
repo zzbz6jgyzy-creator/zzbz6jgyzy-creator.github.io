@@ -31,6 +31,11 @@ else bad("follow persist press", pressed);
 await page.screenshot({ path: SHOT + "/intel-home-changed.png", fullPage: false });
 
 await page.goto(BASE + "/optimus.html", { waitUntil: "networkidle" });
+await page.locator("[data-intel-demos] .intel-demo").first().waitFor({ timeout: 8000 });
+const demoText = await page.locator("[data-intel-demos]").innerText();
+const demoCards = await page.locator("[data-intel-demos] .intel-demo").count();
+if (demoCards >= 4 && /shown/i.test(demoText) && /not shown/i.test(demoText) && /Autonomy:/i.test(demoText) && /Remote assistance:/i.test(demoText) && /The Verge/.test(demoText) && /Engadget/.test(demoText) && /not established|Unknown/i.test(demoText) && /We Robot 2024 omitted|until a source is opened/.test(demoText)) ok("optimus demo archive");
+else bad("optimus demo archive", `cards=${demoCards} ` + demoText.slice(0, 280));
 await page.locator("[data-intel-optimus] table").waitFor({ timeout: 8000 });
 const optText = await page.locator("[data-intel-optimus]").innerText();
 if (/Missed|In progress|Delivered/.test(optText) && /CNBC|Motley Fool|Verge/.test(optText)) ok("optimus sourced table");
@@ -52,6 +57,9 @@ else bad("starship freshness", "missing");
 const fresh = await page.locator("[data-intel='starship']").innerText();
 if (/Last checked/.test(fresh) && /Last verified/.test(fresh)) ok("starship checked vs verified");
 else bad("starship checked vs verified", fresh);
+const shipChanges = await page.locator("#starship-changes").innerText();
+if (/What changed on Flight 15/.test(await page.locator("#starship-schedule-heading").innerText()) && /FAA CADENA|NASASpaceflight|dispatch/i.test(shipChanges) && /Not live telemetry/.test(shipChanges)) ok("starship sourced mission changes");
+else bad("starship sourced mission changes", shipChanges.slice(0, 240));
 await page.screenshot({ path: SHOT + "/intel-starship.png" });
 
 await page.goto(BASE + "/updates.html", { waitUntil: "networkidle" });
@@ -94,9 +102,35 @@ const rd = await page.locator("[data-intel-promises]").innerText();
 if (/No invented progress percentage/.test(rd) && /Missed|In progress|Delivered/.test(rd)) ok("roadster promises table");
 else bad("roadster promises table", rd.slice(0, 200));
 
-await page.goto(BASE + "/my-tesla.html", { waitUntil: "networkidle" });
+await page.goto(BASE + "/my-tesla.html?model=3&year=2024&hw=hw4&cc=US", { waitUntil: "networkidle" });
 if (await page.locator("[data-intel='mytesla']").count()) ok("my tesla intel bar");
 else bad("my tesla intel bar", "missing");
+await page.locator("#mt-waves").waitFor({ timeout: 8000 });
+const wavesMine = await page.locator("#mt-waves").innerText();
+if (/not Tesla offering this build to this VIN|not an offer to a particular VIN|not a notice that this VIN is eligible/i.test(wavesMine) && /Teslascope|sample/i.test(wavesMine) && !/you are eligible/i.test(wavesMine)) ok("my tesla region waves");
+else bad("my tesla region waves", wavesMine.slice(0, 280));
+await page.screenshot({ path: SHOT + "/intel-my-tesla-waves.png" });
+
+await page.goto(BASE + "/calendar.html", { waitUntil: "networkidle" });
+await page.locator("[data-calendar-list] .cal-title").first().waitFor({ timeout: 10000 });
+await page.fill("[data-calendar-search]", "Starship");
+await page.waitForFunction(() => {
+  const titles = [...document.querySelectorAll("[data-calendar-list] .cal-title")].map((e) => e.textContent);
+  const empty = document.querySelector("[data-calendar-list] .cal-empty");
+  return titles.every((t) => /starship/i.test(t)) || (empty && /match this search/.test(empty.textContent));
+}, null, { timeout: 8000 });
+const calHits = await page.$$eval("[data-calendar-list] .cal-title", (els) => els.map((e) => e.textContent));
+if (calHits.length && calHits.every((t) => /starship/i.test(t))) ok("calendar search starship");
+else bad("calendar search starship", JSON.stringify(calHits));
+await page.fill("[data-calendar-search]", "zzz-no-such-event");
+await page.waitForFunction(() => /No events match this search/.test(document.querySelector("[data-calendar-list]")?.textContent || ""), null, { timeout: 5000 });
+ok("calendar search empty");
+await page.screenshot({ path: SHOT + "/intel-calendar-search.png" });
+
+const explore = await page.locator("#pn-ex");
+const navHrefs = await explore.locator("a").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
+if (["/autonomy.html", "/daily.html", "/production.html", "/optimus.html"].every((h) => navHrefs.includes(h))) ok("explore nav four trackers");
+else bad("explore nav four trackers", JSON.stringify(navHrefs));
 
 await page.setViewportSize({ width: 390, height: 844 });
 await page.goto(BASE + "/", { waitUntil: "networkidle" });

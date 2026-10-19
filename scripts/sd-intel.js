@@ -74,6 +74,7 @@ function main() {
     starship: job("starship", () => loadJs("starship-data.js", "STARSHIP")),
     articles: job("articles", () => j("data/articles.json")),
     production: job("production", () => j("data/production.json")),
+    optimusDemos: job("optimus-demos", () => j("data/optimus-demos.json")),
     merge,
     jobs,
   };

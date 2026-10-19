@@ -196,6 +196,22 @@
         summary: "A version appearing in a public sample is not the same as Tesla offering it to a given car.",
       }));
     }
+    const demos = (src.optimusDemos && src.optimusDemos.demos) || [];
+    if (demos.length) {
+      facts.push(makeFact({
+        topic: "optimus",
+        tracker: "optimus",
+        field: "sourced-demos",
+        value: String(demos.length),
+        label: "Sourced Optimus demonstrations",
+        at: src.optimusDemos.updated,
+        evidence: "independently_corroborated",
+        source: "Opened Verge, Engadget and Dispatch pages",
+        href: "/optimus.html#demos",
+        summary: "Each card records what was shown, what was not shown, and that autonomy is unknown unless a source established it.",
+      }));
+    }
+
     const common = commonSoftware(src.updates);
     if (common) {
       facts.push(makeFact({
@@ -374,6 +390,67 @@
     return out.sort((a, b) => String(b.at).localeCompare(String(a.at))).slice(0, 20);
   }
 
+  function snapCountryCount(row, cc) {
+    if (!row || !Array.isArray(row) || !row[1] || typeof row[1] !== "object") return 0;
+    return Number(row[1][cc]) || 0;
+  }
+
+  function softwareWavesForCountry(history, countryCode) {
+    const cc = String(countryCode || "").toUpperCase();
+    if (!cc) return [];
+    const snaps = ((history && history.snapshots) || []).slice().sort((a, b) => String(a.t).localeCompare(String(b.t)));
+    if (!snaps.length) return [];
+    const firstSeen = {};
+    const lastCount = {};
+    const out = [];
+    snaps.forEach((s) => {
+      Object.keys(s.v || {}).forEach((id) => {
+        const n = snapCountryCount(s.v[id], cc);
+        if (n <= 0) return;
+        if (!firstSeen[id]) {
+          firstSeen[id] = { t: s.t, n };
+          lastCount[id] = n;
+          out.push({
+            type: "appeared",
+            version: id,
+            country: cc,
+            at: s.t,
+            previous: "0",
+            next: String(n),
+            summary: id + " first appeared in the Teslascope sample for " + cc + " with " + n + (n === 1 ? " car" : " cars") + ". A sample sighting is not a rollout and not an offer to a particular VIN.",
+          });
+          return;
+        }
+        const prev = lastCount[id] || 0;
+        if (n - prev >= 10) {
+          out.push({
+            type: "changed",
+            version: id,
+            country: cc,
+            at: s.t,
+            previous: String(prev),
+            next: String(n),
+            summary: id + " moved from " + prev + " to " + n + " cars in the Teslascope sample for " + cc + ". That is a sample-count change, not Tesla confirming this car is eligible.",
+          });
+        }
+        lastCount[id] = n;
+      });
+    });
+    out.sort((a, b) => String(b.at).localeCompare(String(a.at)));
+    const seenJump = {};
+    const deduped = [];
+    out.forEach((w) => {
+      if (w.type === "appeared") {
+        deduped.push(w);
+        return;
+      }
+      if (seenJump[w.version]) return;
+      seenJump[w.version] = true;
+      deduped.push(w);
+    });
+    return deduped.slice(0, 12);
+  }
+
   function autonomyLayer(kind, flags) {
     const f = flags || {};
     if (kind === "fsd-supervised") {
@@ -483,10 +560,11 @@
         next: row.change,
         at: iso(row.date) || row.date,
         evidence: row.confirmed ? "independently_corroborated" : "reported_unconfirmed",
-        source: "starship-data.js schedule",
-        href: "/starship.html",
+        source: (row.source && (row.source.outlet || row.source.url)) || "starship-data.js schedule",
+        sourceUrl: (row.source && row.source.url) || "",
+        href: "/starship.html#schedule",
         summary: row.change,
-        title: "Starship schedule note",
+        title: row.mission ? ("Flight " + row.mission + " change") : "Starship schedule note",
       };
       c.id = changeId(c);
       if (!validateChange(c).length) out.push(c);
@@ -707,7 +785,7 @@
     add("promises", generatedAt, src.promises && src.promises.updated, "Every quote needs a source that was opened.");
     add("production", generatedAt, src.production && src.production.updated, "Tesla IR production and delivery tables only.");
     add("roadster", generatedAt, src.promises && src.promises.updated, "Reveal is past. Production target remains a company claim.");
-    add("optimus", generatedAt, src.promises && src.promises.updated, "Demonstration ≠ autonomy. Production targets are company claims.");
+    add("optimus", generatedAt, (src.optimusDemos && src.optimusDemos.updated) || (src.promises && src.promises.updated), "Demonstration ≠ autonomy. Production targets are company claims.");
     add("mytesla", generatedAt, src.updates && src.updates.updated, "Vehicle prefs stay in this browser.");
     return rows;
   }
@@ -940,6 +1018,7 @@
     snapCount,
     firstSeenVersion,
     softwareWaves,
+    softwareWavesForCountry,
     autonomyLayer,
     collectFacts,
     collectHistorical,

@@ -149,3 +149,34 @@ html[data-theme="light"] .intel-m { color: var(--mute, #666); }
 html[data-theme="light"] .intel-item,
 html[data-theme="light"] .intel-compare th,
 html[data-theme="light"] .intel-compare td { border-bottom-color: var(--line, #ddd); }
+
+.intel-demos { display: grid; gap: 16px; margin: 16px 0 28px; }
+.intel-demo {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: #0e0e0e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.intel-demo h3 { margin: 6px 0 8px; font: 700 20px/1.25 Inter, sans-serif; }
+.intel-demo h4 {
+  margin: 14px 0 6px;
+  font: 600 11px/1.2 "IBM Plex Mono", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e31937;
+}
+.intel-demo ul { margin: 0; padding-left: 1.15em; color: #c8c8c8; }
+.intel-demo li { margin: 0 0 4px; }
+.intel-demo-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  margin: 12px 0;
+}
+.intel-ev-unknown,
+.intel-ev-not_established { color: #d0b48a; border-color: rgba(180, 140, 70, 0.4); }
+@media (max-width: 760px) {
+  .intel-demo-cols { grid-template-columns: 1fr; }
+}
+html[data-theme="light"] .intel-demo { background: var(--card, #fff); border-color: var(--line, #ddd); }
+html[data-theme="light"] .intel-demo ul { color: var(--ink-soft, #555); }

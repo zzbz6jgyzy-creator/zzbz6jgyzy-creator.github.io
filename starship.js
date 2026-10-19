@@ -110,9 +110,17 @@ const main = () => {
 
   const changes = document.getElementById("starship-changes");
   if (changes) {
-    (data.schedule || []).forEach((row) => {
+    const mission = data.next && data.next.flight;
+    const rows = (data.schedule || []).filter((row) => !mission || !row.mission || row.mission === mission);
+    rows.forEach((row) => {
       const article = document.createElement("article");
       article.className = "starship-change";
+      const src = row.source || {};
+      const srcHtml = src.url
+        ? `<a href="${escapeHtml(src.url)}" ${/^https?:/.test(src.url) ? 'rel="noopener"' : ""}>${escapeHtml(src.outlet || "Source")}</a>`
+        : src.outlet
+          ? `<span>${escapeHtml(src.outlet)}</span>`
+          : "";
       article.innerHTML = `
         <div class="starship-change-head">
           <time datetime="${escapeHtml(row.date)}">${escapeHtml(formatDate(row.date))}</time>
@@ -121,6 +129,7 @@ const main = () => {
           }</span>
         </div>
         <p>${escapeHtml(row.change)}</p>
+        ${srcHtml ? `<p class="starship-change-src">Source: ${srcHtml}. Not live telemetry.</p>` : `<p class="starship-change-src">Not live telemetry.</p>`}
       `;
       changes.append(article);
     });

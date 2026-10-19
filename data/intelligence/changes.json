@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19T11:21:32.142Z",
+  "updated": "2026-10-19T12:08:29.789Z",
   "changes": [
     {
       "type": "logged",
@@ -34,6 +34,23 @@
       "summary": "One share each for about 72 million children is worth roughly $10.5 billion. How it compares, and how it could work.",
       "title": "Musk pledges a SpaceX share to every kid in America",
       "id": "logged|dispatch:/dispatch/musk-spacex-share-every-kid.html|2026-10-19T09:23:56.000Z|Musk pledges a SpaceX share to every kid in America"
+    },
+    {
+      "type": "appeared",
+      "factId": "optimus:sourced-demos",
+      "topic": "optimus",
+      "tracker": "optimus",
+      "field": "sourced-demos",
+      "previous": "",
+      "next": "4",
+      "at": "2026-10-19T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Opened Verge, Engadget and Dispatch pages",
+      "sourceUrl": "",
+      "href": "/optimus.html#demos",
+      "summary": "Each card records what was shown, what was not shown, and that autonomy is unknown unless a source established it.",
+      "title": "Sourced Optimus demonstrations",
+      "id": "appeared|optimus:sourced-demos|2026-10-19T00:00:00.000Z|4"
     },
     {
       "type": "logged",
@@ -436,10 +453,11 @@
       "next": "Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page.",
       "at": "2026-10-11T00:00:00.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "starship-data.js schedule",
-      "href": "/starship.html",
+      "source": "Supercharged Daily dispatch",
+      "sourceUrl": "/dispatch/starship-f15-ship-catch.html",
+      "href": "/starship.html#schedule",
       "summary": "Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page.",
-      "title": "Starship schedule note",
+      "title": "Flight 15 change",
       "id": "logged|starship:schedule|2026-10-11T00:00:00.000Z|Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page."
     },
     {
@@ -673,10 +691,11 @@
       "next": "NASASpaceflight: Ship 42 rolled back to Massey’s for a third cryo-proof campaign after its six Raptors came off; engines and a static fire still to come. Booster 22 is in Mega Bay 1 and could be ready for static fire in the second half of October. NSF says NET 8 November looks achievable on vehicle readiness.",
       "at": "2026-10-09T00:00:00.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "starship-data.js schedule",
-      "href": "/starship.html",
+      "source": "NASASpaceflight",
+      "sourceUrl": "https://www.nasaspaceflight.com/",
+      "href": "/starship.html#schedule",
       "summary": "NASASpaceflight: Ship 42 rolled back to Massey’s for a third cryo-proof campaign after its six Raptors came off; engines and a static fire still to come. Booster 22 is in Mega Bay 1 and could be ready for static fire in the second half of October. NSF says NET 8 November looks achievable on vehicle readiness.",
-      "title": "Starship schedule note",
+      "title": "Flight 15 change",
       "id": "logged|starship:schedule|2026-10-09T00:00:00.000Z|NASASpaceflight: Ship 42 rolled back to Massey’s for a third cryo-proof campaign after its six Raptors came off; engines and a static fire still to come. Booster 22 is in Mega Bay 1 and could be ready for static fire in the second half of October. NSF says NET 8 November looks achievable on vehicle readiness."
     },
     {
@@ -689,10 +708,11 @@
       "next": "FAA CADENA planning slides moved Flight 15 from 19 October to NET 8 November. NASASpaceflight reported Ship 42’s Raptors off the vehicle. SpaceX has not published a mission page.",
       "at": "2026-10-08T00:00:00.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "starship-data.js schedule",
-      "href": "/starship.html",
+      "source": "FAA CADENA planning slides",
+      "sourceUrl": "",
+      "href": "/starship.html#schedule",
       "summary": "FAA CADENA planning slides moved Flight 15 from 19 October to NET 8 November. NASASpaceflight reported Ship 42’s Raptors off the vehicle. SpaceX has not published a mission page.",
-      "title": "Starship schedule note",
+      "title": "Flight 15 change",
       "id": "logged|starship:schedule|2026-10-08T00:00:00.000Z|FAA CADENA planning slides moved Flight 15 from 19 October to NET 8 November. NASASpaceflight reported Ship 42’s Raptors off the vehicle. SpaceX has not published a mission page."
     },
     {
@@ -807,10 +827,11 @@
       "next": "After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial.",
       "at": "2026-09-28T00:00:00.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "starship-data.js schedule",
-      "href": "/starship.html",
+      "source": "Desk read after Flight 14",
+      "sourceUrl": "/starship.html#log",
+      "href": "/starship.html#schedule",
       "summary": "After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial.",
-      "title": "Starship schedule note",
+      "title": "Flight 15 change",
       "id": "logged|starship:schedule|2026-09-28T00:00:00.000Z|After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial."
     },
     {
@@ -840,10 +861,11 @@
       "next": "Ship 42 ran catch-related tests on Pad 2. Hardware work is the only SpaceX-visible schedule signal.",
       "at": "2026-09-11T00:00:00.000Z",
       "evidence": "independently_corroborated",
-      "source": "starship-data.js schedule",
-      "href": "/starship.html",
+      "source": "Hardware work visible at Pad 2",
+      "sourceUrl": "",
+      "href": "/starship.html#schedule",
       "summary": "Ship 42 ran catch-related tests on Pad 2. Hardware work is the only SpaceX-visible schedule signal.",
-      "title": "Starship schedule note",
+      "title": "Flight 15 change",
       "id": "logged|starship:schedule|2026-09-11T00:00:00.000Z|Ship 42 ran catch-related tests on Pad 2. Hardware work is the only SpaceX-visible schedule signal."
     },
     {

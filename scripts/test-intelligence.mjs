@@ -71,7 +71,8 @@ const src = {
   promises: { updated: "2026-10-16", promises: [{ id: "optimus-x", topic: "Optimus", title: "Test", status: "Missed", source: { outlet: "CNBC", url: "https://www.cnbc.com/" }, revisions: [] }] },
   robotaxiTx: { history: [{ date: "2026-10-08", cybercab: 319, src: "https://fsddb.com/" }, { date: "2026-10-15", cybercab: 349, src: "https://fsddb.com/" }] },
   starlinkLive: { updated: "2026-10-15T19:00:26Z", totals: { inOrbit: 11154 }, source: "https://planet4589.org/space/con/star/stats.html" },
-  starship: { updated: "2026-10-16", next: { flight: 15, start: "2026-11-08T12:00:00Z", precision: "day" }, schedule: [] },
+  starship: { updated: "2026-10-16", next: { flight: 15, start: "2026-11-08T12:00:00Z", precision: "day" }, schedule: [{ date: "2026-10-08", mission: 15, confirmed: false, change: "FAA CADENA moved Flight 15 to NET 8 November.", source: { outlet: "FAA CADENA planning slides", url: "" } }] },
+  optimusDemos: { updated: "2026-10-19", demos: [{ id: "ai-day-2022", date: "2022-09-30", shown: ["walked"], notShown: ["factory work"], autonomy: { state: "not_established" }, remoteAssistance: { state: "unknown" } }] },
   articles: { articles: [] },
   production: { updated: "2026-10-19", quarters: [{ id: "Q3 2026", deliveries: 486532, production: 464391, published: "2026-10-02", sourceUrl: "https://ir.tesla.com/" }] },
   merge: M,
@@ -104,6 +105,11 @@ const stale = M.mergeEvents(
 if (stale.length === 1 && stale[0].start === a.start) ok("reschedule keeps later date");
 else bad("reschedule keeps later date", JSON.stringify(stale[0]));
 
+if (bundle.facts.some((f) => f.field === "sourced-demos" && f.value === "1")) ok("optimus demo fact");
+else bad("optimus demo fact", "missing sourced-demos");
+if (bundle.changes.some((c) => /Flight 15 change/.test(c.title) && /FAA CADENA/.test(c.source))) ok("starship sourced change");
+else bad("starship sourced change", "missing schedule source");
+
 if (I.filterChanges(bundle.changes, { topics: ["robotaxi"] }).every((c) => c.topic === "robotaxi")) ok("topic filter");
 else bad("topic filter", "mixed topics");
 
@@ -117,6 +123,22 @@ if (waves.some((w) => w.previous === "4" && w.next === "50")) ok("software wave 
 else bad("software wave count jump", JSON.stringify(waves));
 if (bundle.changes.some((c) => c.field === "wave:2026.38.5.1" && /Teslascope/.test(c.source))) ok("software wave in bundle");
 else bad("software wave in bundle", "missing wave change");
+
+const countryHist = { snapshots: [
+  { t: "2026-10-12T00:00:00Z", v: { "2026.38.5.1": [4, { US: 4, DE: 0 }] } },
+  { t: "2026-10-13T00:00:00Z", v: { "2026.38.5.1": [50, { US: 40, DE: 8 }] } },
+  { t: "2026-10-14T00:00:00Z", v: { "2026.38.5.1": [80, { US: 60, DE: 18 }] } },
+] };
+const usWaves = I.softwareWavesForCountry(countryHist, "US");
+if (usWaves.some((w) => w.version === "2026.38.5.1" && w.country === "US" && /not an offer to a particular VIN/.test(w.summary))) ok("country wave first seen");
+else bad("country wave first seen", JSON.stringify(usWaves[0]));
+if (usWaves.some((w) => w.previous === "40" && w.next === "60")) ok("country wave count jump");
+else bad("country wave count jump", JSON.stringify(usWaves));
+const deWaves = I.softwareWavesForCountry(countryHist, "DE");
+if (deWaves.some((w) => w.type === "appeared" && w.next === "8") && !deWaves.some((w) => w.previous === "40")) ok("country wave is regional");
+else bad("country wave is regional", JSON.stringify(deWaves));
+if (!I.softwareWavesForCountry(countryHist, "").length) ok("country wave needs country");
+else bad("country wave needs country", "empty country leaked waves");
 
 const sk = I.autonomyLayer("eu", { approved: true, recognised: true, rolloutLive: false });
 if (sk.layer === "permit_not_rollout") ok("slovakia recognised not live");

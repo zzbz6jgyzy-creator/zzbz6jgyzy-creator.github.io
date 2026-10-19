@@ -38,7 +38,7 @@ Do not replace that stack with a fashionable backend. A Postgres intelligence wa
 | Starlink | `/starlink.html` | McDowell + CelesTrak snapshot | Not a live operator feed. |
 | Promise Tracker | `/promise-tracker.html` | `data/promises.json` | Manual, sourced. |
 | Roadster hub | `/roadster.html` | Static + sourced table | No invented progress %. |
-| Optimus Evolution Lab | `/optimus.html` | Promises-only | No invented specs. |
+| Optimus Evolution Lab | `/optimus.html` | Promises + sourced demo cards | Shown / not shown / autonomy / remote. No invented specs. We Robot 2024 omitted until a source is opened. |
 | Production & deliveries | `/production.html` | Tesla IR Q3 2025–Q3 2026 | Official tables only. YoY only when both quarters opened. |
 | Intelligence health | `/intel-health.html` | noindex | Admin view of last bundle. |
 
@@ -72,6 +72,10 @@ Conflicts are recorded, not overwritten. Canonical launch clocks stay in `data/e
 9. FSD & Robotaxi evidence board (`/autonomy.html`).
 10. Your Supercharged Daily + local digest preview (`/daily.html`). Alert enqueue never sends.
 11. CI hooks on news, updates, and home-build workflows.
+12. Optimus demonstration archive (`data/optimus-demos.json`) — four opened sources; autonomy never assumed.
+13. Autonomy, Daily, Production, Optimus in Explore (and Tesla where they belong) via `scripts/nav.json`.
+14. Calendar search on top of All/Tesla/SpaceX/xAI filters. Starship Flight 15 “what changed” list with source lines. Not telemetry.
+15. My Tesla surfaces Teslascope sample waves for the saved country. VIN eligibility is never claimed. Recall row stays official-link only.
 
 ## Explicitly not done (blockers / approval)
 

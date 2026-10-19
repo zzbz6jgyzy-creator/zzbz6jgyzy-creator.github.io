@@ -1,0 +1,179 @@
+{
+  "updated": "2026-10-19",
+  "note": "Demonstration archive only. A demo is not a commercial product. Walking, waving or sitting in a car does not establish autonomy. Remote assistance is unknown unless a named source disclosed it. Specs Tesla stated on stage stay labelled as company claims. We Robot 2024 and other events stay off this list until a source is opened.",
+  "demos": [
+    {
+      "id": "ai-day-2021",
+      "title": "AI Day 2021 — Tesla Bot announced",
+      "date": "2021-08-19",
+      "event": "Tesla AI Day 2021",
+      "kind": "announcement",
+      "generation": "Tesla Bot (announced name Optimus)",
+      "lede": "Tesla announced a humanoid robot and showed drawings plus a non-working stage figure. The opened source does not describe a walking machine.",
+      "shown": [
+        "Drawings of a planned Tesla Bot near the end of AI Day.",
+        "A mannequin version on the stage that was not working, as reported by The Verge."
+      ],
+      "notShown": [
+        "A working robot.",
+        "Walking, object handling, or factory work.",
+        "A commercially deployed product."
+      ],
+      "autonomy": {
+        "state": "unknown",
+        "note": "No robot task was shown. Autonomy is not established."
+      },
+      "remoteAssistance": {
+        "state": "unknown",
+        "note": "Not disclosed in the opened source."
+      },
+      "uncertain": [
+        "Whether the stage figure was a mannequin, as The Verge wrote in 2021, or a person in a suit, as Musk later said at AI Day 2022.",
+        "Whether any of the stated size, weight or face-screen figures were more than a concept slide."
+      ],
+      "companyClaims": [
+        "Code name Optimus.",
+        "About 5 ft 8 in, 125 lb, screen for a face — Tesla figures reported by The Verge, not independently measured here.",
+        "A prototype 'sometime next year' (The Verge's wording of Musk)."
+      ],
+      "source": {
+        "outlet": "The Verge",
+        "title": "Elon Musk says Tesla is working on humanoid robots",
+        "url": "https://www.theverge.com/2021/8/19/22633514/tesla-robot-prototype-elon-musk-humanoid-ai-day",
+        "date": "2021-08-20"
+      },
+      "laterNote": {
+        "text": "At AI Day 2022 Musk said they had 'a guy in a suit' the year before.",
+        "outlet": "The Verge",
+        "url": "https://www.theverge.com/2022/9/30/23374729/tesla-bot-ai-day-robot-elon-musk-prototype-optimus-humanoid",
+        "date": "2022-09-30"
+      }
+    },
+    {
+      "id": "ai-day-2022",
+      "title": "AI Day 2022 — walking prototype on stage",
+      "date": "2022-09-30",
+      "event": "Tesla AI Day 2022",
+      "kind": "prototype",
+      "generation": "Optimus prototype (Bumble C plus a stand unit)",
+      "lede": "Tesla showed a walking prototype and a separate body on a stand. The Verge recorded what happened live versus what was only on video or claimed.",
+      "shown": [
+        "A unit Tesla called Bumble C walked forward and did a 'raise the roof' move.",
+        "Video clips of a robot picking up boxes — shown as recordings, not as the live stage act.",
+        "A 'very close to production' body held up on a stand; it waved, showing wrist and hand range. Workers later rolled that unit off."
+      ],
+      "notShown": [
+        "The production-looking unit walking under its own power.",
+        "Untethered factory work in public.",
+        "A priced, orderable product."
+      ],
+      "autonomy": {
+        "state": "not_established",
+        "note": "The Verge reported Tesla moved Autopilot software onto the bot and used motion capture plus inverse kinematics. Completing a staged walk or a recorded box pickup does not establish autonomy."
+      },
+      "remoteAssistance": {
+        "state": "unknown",
+        "note": "The opened source does not say whether anyone was driving the robot remotely."
+      },
+      "uncertain": [
+        "How much of the live walk was scripted, limited, or assisted.",
+        "Whether the recorded box-pickup clips were the same unit, the same software, or the same constraints as the stage walk."
+      ],
+      "companyClaims": [
+        "Musk said this was 'the first time it operated without a tether' — on stage that night (company claim via The Verge).",
+        "Price 'probably less than $20,000' (company claim).",
+        "2.3 kWh pack, Tesla SoC, Wi-Fi and LTE, six actuator types, biologically inspired hands — Tesla engineering claims reported by The Verge, not measured here."
+      ],
+      "source": {
+        "outlet": "The Verge",
+        "title": "Tesla CEO Elon Musk unveils prototype humanoid Optimus robot",
+        "url": "https://www.theverge.com/2022/9/30/23374729/tesla-bot-ai-day-robot-elon-musk-prototype-optimus-humanoid",
+        "date": "2022-09-30"
+      }
+    },
+    {
+      "id": "roadster-reveal-2026",
+      "title": "Roadster reveal — Optimus in the driver's seat",
+      "date": "2026-10-15",
+      "event": "Tesla Roadster event, SpaceX McGregor",
+      "kind": "stage_prop",
+      "generation": "Optimus (generation not stated by the opened source)",
+      "lede": "When the Roadster door opened after programmed stunts, an Optimus robot was in the seat. Engadget says that was for show. The opened source is about the car, not a robot demo.",
+      "shown": [
+        "An Optimus robot seated in the Roadster when the door opened.",
+        "The car completing ramp and thruster stunts that Engadget says were programmed into the vehicle."
+      ],
+      "notShown": [
+        "Optimus driving, steering, or controlling the car.",
+        "Optimus walking, working, or speaking.",
+        "Any robot autonomy test."
+      ],
+      "autonomy": {
+        "state": "not_established",
+        "note": "Engadget reports the stunts were programmed into the car and no human was driving. That is a statement about the Roadster, not about Optimus autonomy."
+      },
+      "remoteAssistance": {
+        "state": "unknown",
+        "note": "Not disclosed for the robot. The car's path was described as programmed."
+      },
+      "uncertain": [
+        "Which Optimus generation sat in the seat.",
+        "Whether the robot was powered, posed, or doing anything beyond occupying the seat."
+      ],
+      "companyClaims": [],
+      "source": {
+        "outlet": "Engadget",
+        "title": "Tesla's redesigned Roadster has a cold-gas thruster option, but you'll need $250,000 just to reserve it",
+        "url": "https://www.engadget.com/2288437/teslas-redesigned-roadster-cold-gas-thruster-option-reservation/",
+        "date": "2026-10-15"
+      },
+      "video": {
+        "label": "Roadster Event — Tesla on YouTube",
+        "url": "https://www.youtube.com/watch?v=qt5p-_tE8d0"
+      },
+      "related": {
+        "label": "Our Roadster reveal dispatch",
+        "url": "/dispatch/roadster-reveal-2026.html"
+      }
+    },
+    {
+      "id": "paris-motor-show-2026",
+      "title": "Paris Motor Show — Optimus Gen 2 on the stand",
+      "date": "2026-10-12",
+      "event": "Mondial de l'Auto, Paris Expo Porte de Versailles",
+      "kind": "static_display",
+      "generation": "Optimus Gen 2",
+      "lede": "Tesla's Paris stand had Optimus Gen 2 on display beside the Cybercab. The opened desk report does not describe it walking or working.",
+      "shown": [
+        "Optimus Gen 2 on the Tesla stand (Hall 7.1, stand C25) during press day."
+      ],
+      "notShown": [
+        "Walking, object handling, or factory work at the stand — not described in the opened source.",
+        "A European commercial deployment."
+      ],
+      "autonomy": {
+        "state": "unknown",
+        "note": "A robot on a show stand is not established autonomy."
+      },
+      "remoteAssistance": {
+        "state": "unknown",
+        "note": "Not disclosed in the opened source."
+      },
+      "uncertain": [
+        "Whether the unit was powered or posed.",
+        "What, if anything, visitors could see it do beyond standing on the stand."
+      ],
+      "companyClaims": [],
+      "source": {
+        "outlet": "Supercharged Daily",
+        "title": "Tesla’s production Cybercab is in Europe for the first time…",
+        "url": "/dispatch/paris-cybercab-europe.html",
+        "date": "2026-10-12"
+      },
+      "video": {
+        "label": "David Moss’s Paris booth walk on X",
+        "url": "https://x.com/DavidMoss/status/2109512574874366204"
+      }
+    }
+  ]
+}

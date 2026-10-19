@@ -45,6 +45,7 @@ YoY for Q3 2026 vs Q3 2025 uses only those two opened tables: deliveries −2.1%
 | `starship-data.js` | Flight log + schedule notes | Desk read of SpaceX pages / FAA slides; NET ≠ T-0 |
 | `fsd-europe-data.js` / `fsd-data.js` / `tcmv-data.js` | Approval maps + `/autonomy.html` | Ministry / RDW / Reuters; empty if unconfirmed |
 | `data/promises.json` | Promise tracker, Optimus, Roadster, autonomy promises | Quote opened; Electrek banned |
+| `data/optimus-demos.json` | Optimus demonstration archive | Opened Verge 2021 + 2022, Engadget Roadster 2026, Dispatch Paris 2026. No invented specs. |
 | `cybercab-data.js` | Robotaxi reality map + autonomy city layers | Permit ≠ commercial service |
 | `data/articles.json` | Dispatch index, homepage lead | Our own stories |
 
@@ -75,7 +76,7 @@ Written by `node scripts/sd-intel.js` (also on news / updates / home-build workf
 ## Rate / honesty notes
 
 - Teslascope `latest` can be a 0-count ghost. Site logic uses `count > 0`.
-- Software waves are sample first-seen / sample-count changes. Not Tesla offering a build to a car.
+- Software waves are sample first-seen / sample-count changes. Not Tesla offering a build to a car. Country waves use `countryCounts` inside `data/updates-history.json` snapshots.
 - Launch Library 2 can rewind slips. `calendar-merge.pickStart` keeps the later official date unless the flight is flown.
 - Starlink globe is SGP4 on a snapshot, not live telemetry.
 - Software sample ≠ rollout ≠ regional availability ≠ your car being offered an update.

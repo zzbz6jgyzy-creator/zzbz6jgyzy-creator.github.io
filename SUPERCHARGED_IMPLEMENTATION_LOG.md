@@ -83,3 +83,32 @@ Browser verification used Playwright click-through against `http://127.0.0.1:417
 ### Next batch
 
 See `SUPERCHARGED_MASTER_PLAN.md` → Next implementation batch.
+
+## Batch 3 — Optimus demos, nav, calendar search, Starship change list, My Tesla waves
+
+User order: 1 → 2 → 3 → 4.
+
+### Implemented
+
+- `data/optimus-demos.json` + `/optimus.html#demos`: AI Day 2021 (Verge), AI Day 2022 (Verge), Roadster seat (Engadget + Tesla YouTube already on Dispatch), Paris Gen 2 stand (Dispatch + David Moss X). Each card: date, source, shown, not shown, autonomy, remote assistance, uncertain, company claims. We Robot 2024 omitted.
+- Explore + Tesla nav: Autonomy, Daily, Production, Optimus via `scripts/nav.json` + `sync-nav.py`.
+- Calendar: search input filters upcoming + watched rows. Existing All/Tesla/SpaceX/xAI filters unchanged.
+- Starship: “What changed on Flight 15” with source attribution. Copy says not live telemetry.
+- My Tesla: `#mt-waves` uses `softwareWavesForCountry` on `data/updates-history.json` country counts. Sample ≠ VIN offer.
+- Engine: sourced-demo fact; schedule rows keep outlet + URL.
+
+### Tests
+
+```
+node scripts/test-intelligence.mjs
+node scripts/test-intelligence-browser.mjs
+node scripts/test-intel-batch3-verify.mjs
+node scripts/test-launch-consistency.mjs
+node scripts/test-search.mjs
+node scripts/test-leftover-copy.mjs
+node scripts/test-build-home-lock.mjs
+python3 scripts/sync-nav.py --check
+```
+
+ALL_PASS. Engine after this batch: facts 17, changes 68, conflicts 2. Screenshots in `/opt/cursor/artifacts/batch3-*.png`.
+

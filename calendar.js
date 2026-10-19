@@ -398,6 +398,18 @@
     });
   }
 
+  function eventHay(event) {
+    return [event.title, event.where, event.note, event.status, event.group, GROUPS[event.group]]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+  }
+
+  function matchQuery(event, q) {
+    if (!q) return true;
+    return eventHay(event).indexOf(q) !== -1;
+  }
+
   const LL2_CACHE = "sd-ll2-spacex";
   async function fetchLaunches() {
     const ctrl = new AbortController();
@@ -435,18 +447,46 @@
     const now = new Date();
     let events = mergeEvents([]);
     let filter = "all";
+    let query = "";
+    const search = document.querySelector("[data-calendar-search]");
+
+    const paintWatch = () => {
+      if (!watch) return;
+      watch.replaceChildren();
+      const slice = WATCHING.filter((item) => {
+        if (filter !== "all" && item.group !== filter) return false;
+        return matchQuery(item, query);
+      });
+      if (!slice.length) {
+        watch.append(el("p", "cal-empty", query ? "No watched items match this search." : "Nothing in this slice."));
+        return;
+      }
+      slice.forEach((item) => {
+        const row = el("article", `cal-row cal-${item.group} is-watch`);
+        const when = el("div", "cal-when");
+        when.append(el("strong", "", "No date"));
+        when.append(el("span", "", "Watching"));
+        const body = el("div", "cal-body");
+        body.append(el("p", "eyebrow", GROUPS[item.group] || item.group));
+        body.append(el("h3", "cal-title", item.title));
+        body.append(el("p", "cal-note", item.note));
+        row.append(when, body, el("span", "cal-status is-watching", "TBA"));
+        watch.append(row);
+      });
+    };
 
     const paint = () => {
       const upcoming = events.filter((e) => isUpcoming(e, now));
       if (list) {
-        const slice = filter === "all" ? upcoming : upcoming.filter((e) => e.group === filter);
-        renderList(
-          list,
-          slice,
-          now,
-          filter === "xai" ? "Grok ships sit under No date yet until xAI puts a clock on them." : "Nothing in this slice."
-        );
+        const slice = upcoming.filter((e) => (filter === "all" || e.group === filter) && matchQuery(e, query));
+        const empty = query
+          ? "No events match this search."
+          : filter === "xai"
+            ? "Grok ships sit under No date yet until xAI puts a clock on them."
+            : "Nothing in this slice.";
+        renderList(list, slice, now, empty);
       }
+      paintWatch();
       if (countdown) renderCountdown(countdown, upcoming);
       if (preview) {
         renderList(preview, upcoming.slice(0, 5), now);
@@ -525,26 +565,18 @@
       }
     } catch {}
 
-    if (watch) {
-      watch.replaceChildren();
-      WATCHING.forEach((item) => {
-        const row = el("article", `cal-row cal-${item.group} is-watch`);
-        const when = el("div", "cal-when");
-        when.append(el("strong", "", "No date"));
-        when.append(el("span", "", "Watching"));
-        const body = el("div", "cal-body");
-        body.append(el("p", "eyebrow", GROUPS[item.group] || item.group));
-        body.append(el("h3", "cal-title", item.title));
-        body.append(el("p", "cal-note", item.note));
-        row.append(when, body, el("span", "cal-status is-watching", "TBA"));
-        watch.append(row);
-      });
-    }
+    paintWatch();
 
     bindFilters(filters, (next) => {
       filter = next;
       paint();
     });
+    if (search) {
+      search.addEventListener("input", () => {
+        query = String(search.value || "").trim().toLowerCase();
+        paint();
+      });
+    }
 
     if (!list && !preview && !countdown) return; // hooks-only pages (e.g. SpaceX earnings line) skip Launch Library
     if (status) status.textContent = "Checking Launch Library 2…";
