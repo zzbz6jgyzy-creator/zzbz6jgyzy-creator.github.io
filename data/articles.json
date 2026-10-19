@@ -1,6 +1,18 @@
 {
-  "updated": "2026-10-19T13:27:35Z",
+  "updated": "2026-10-19T18:43:49Z",
   "articles": [
+    {
+      "url": "/dispatch/starlink-eu-spectrum-bid.html",
+      "title": "Europe’s big four carriers eye Starlink’s satellite airwaves",
+      "date": "2026-10-19T18:40:00Z",
+      "topic": "spacex",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/starlink-eu-spectrum-poster.jpg",
+      "summary": "A letter of intent to explore a joint EU 2 GHz bid, an EU proposal still awaiting approval, and a US warning of “devastating” retaliation.",
+      "pinned": false,
+      "author": "Alex R",
+      "minutes": 4
+    },
     {
       "url": "/dispatch/spacex-cant-rent-compute.html",
       "title": "SpaceX rents out its compute, but can’t rent any itself",
