@@ -131,11 +131,17 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Tesla / SpaceX desk rewrite aborts if it would drop a `<picture>`.
 - `/search.html` is `noindex` and off the sitemap. No ads. No notify delivery.
 
-### Batch 21 — Homepage wire quality (this session)
+### Batch 21 — Homepage wire quality (merged #129)
 
 - Clickbait no longer counts as a Roadster milestone. One jellyfish story. At most two Roadster wires.
 - Jellyfish pairs to Can I see it? Class-action pairs to the FSD tracker.
 - Tesla, SpaceX, News and Calendar get WebPage JSON-LD from existing page facts. No ads. No notify delivery.
+
+### Batch 22 — Hub stamps + tracker JSON-LD (this session)
+
+- Tesla hub stamp and software/FSD cards fill from `fsd-europe-data.js` and Teslascope `updates-live.json` (count>0, newest firstSeen). Not “US build”. Not the ghost `latest` field.
+- SpaceX hub stamp is Starship’s compile date only.
+- Flagship tracker pages get WebPage JSON-LD from existing title/meta. No ads. No notify delivery.
 
 ## Architecture (do not rip out)
 

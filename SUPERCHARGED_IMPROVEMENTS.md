@@ -1,43 +1,43 @@
-# Supercharged Daily — homepage wire quality (batch 21)
+# Supercharged Daily — hub stamps + tracker JSON-LD (batch 22)
 
 Living progress document. Dark remains the default. Existing routes kept. No production deploy.
 
 ## Why this batch
 
-After #128 the homepage builder stays locked, but the prebuilt eight still led with Roadster clickbait (Motor1 “sentient”, Top Gear “forget the Tesla”, CarBuzz “380 MPH”) and two copies of the same jellyfish launch. #127 downranked those titles by 4 and still classified them as **milestone** because “Roadster” is checked first.
+After #129 the homepage eight is honest, but Tesla and SpaceX hubs still promised weekday tracker updates with no date, and Tesla cards hardcoded a software build and an EU count that can drift from `updates-live.json` / `fsd-europe-data.js`. Flagship tracker pages also lacked WebPage JSON-LD.
 
 ## Changes implemented
 
-### 1. News ranking
-- Clickbait is classified as speculation *before* milestone. Penalty is −10.
-- Regex also catches `380 mph` and `autonomous stunts`.
-- Same-story clusters: one jellyfish, one Bandwagon/Starfall, one class-action. At most two Roadster wires.
-- MarketBeat-style “lowers position” / price-target copy is finance when the source is a stock desk.
+### 1. Tesla hub
+- Stamp under the lede fills from FSD Europe `updated` and Teslascope `updates-live.json` `updated`.
+- Software card uses the same pick as the homepage tracker: `count > 0`, newest `firstSeen`. Not the ghost `latest` field (`2026.32.100` / count 0).
+- Copy is “Newest reporting” / “Teslascope sample”, not “US build”.
+- FSD card fills the approved count as `N of 27 EU countries` from `FSD_EUROPE.countries`.
+- Fallback HTML stays if the fetch fails. Tesla `<picture>` set is not rewritten.
 
-### 2. On-this-site pairing
-- Jellyfish / Carolina skies → Can I see it?
-- Class-action / self-driving claims → FSD tracker.
-- Bandwagon / Starfall still → Launch calendar.
+### 2. SpaceX hub
+- Stamp is **Starship compiled {date}.** from `STARSHIP.updated` only.
+- Falcon and Starlink are not labelled fresh from `starship-data.js`.
 
-### 3. Hub JSON-LD
-- Tesla, SpaceX, News and Calendar get a WebPage block from the existing title, description and `@ALJR86`. No invented Person credentials.
+### 3. Tracker JSON-LD
+- WebPage blocks on FSD Europe, FSD, Software Update Tracker, Starlink, Starship, My Tesla, Can I see the launch?, and Cybercab.
+- Name, description and URL come from each page’s existing title/meta. Publisher is Organization Supercharged Daily / `@ALJR86`. No invented Person.
 
-`nav.json` untouched. Follow on X / `twitter:site` / referral untouched. Tesla / SpaceX `<picture>` sets not rewritten. `build-home.js` not run.
+`nav.json` untouched. Follow on X / `twitter:site` / referral untouched. `build-home.js` not run.
 
 ## Files modified
 
-- `news-keep.js`, `scripts/news_keep.py`, `home-pair.js`
-- `index.html` (feed + pins only), `news.html` (pin + JSON-LD)
-- `tesla.html`, `spacex.html`, `calendar.html` (JSON-LD)
-- `scripts/test-news-keep.mjs`, `scripts/test-wire-quality.mjs`
+- `tesla-hub.js`, `spacex-hub.js` (new)
+- `tesla.html`, `tesla-page.css`, `spacex.html`
+- `fsd-europe.html`, `fsd.html`, `updates.html`, `starlink.html`, `starship.html`, `my-tesla.html`, `see-the-launch.html`, `cybercab.html`
+- `scripts/test-hub-stamps.mjs`
 - `SUPERCHARGED_IMPROVEMENTS.md`, `docs/TRANSFORMATION.md`
 
 ## Tests executed
 
-- `node scripts/test-news-keep.mjs`
-- `node scripts/test-wire-quality.mjs` @ `http://127.0.0.1:4173`
-- `node scripts/test-build-home-lock.mjs` (homepage locks still hold)
-- `python3 -m py_compile scripts/news_keep.py`
+- `node scripts/test-hub-stamps.mjs` @ `http://127.0.0.1:4173`
+- `node scripts/test-build-home-lock.mjs`
+- `node scripts/test-wire-quality.mjs`
 
 ## Outstanding / incomplete
 
