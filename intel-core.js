@@ -1000,7 +1000,7 @@
     ).join("");
     return `<section class="hv-changed" aria-labelledby="hv-ch-h">
           <div class="hv-head"><h2 id="hv-ch-h">What changed</h2><span><a href="/daily.html">Your Supercharged Daily</a> · <a href="/data/intelligence/bundle.json">Machine-readable log</a></span></div>
-          <p class="hv-feed-sub">Sourced tracker moves, not the wire. Follow topics in this browser to filter. Last checked is not the same as last verified update.</p>
+          <p class="hv-feed-sub">The latest sourced changes on our trackers. Follow topics to filter this list in your browser.</p>
           <div class="intel-follow" data-intel-follow role="group" aria-label="Follow topics">${follow}</div>
           <div data-intel-changed>${changesHtml(recent)}</div>
         </section>`;
