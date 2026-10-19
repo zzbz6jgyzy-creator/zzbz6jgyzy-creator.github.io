@@ -4,6 +4,7 @@
      only — the browser never talks to CelesTrak. */
   const STARLINK_CATALOG = "/data/starlink.json?v=202610181148";
   const GEO = "https://geocoding-api.open-meteo.com/v1/search";
+  const GEO_OPTS = { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 };
   const KEY = "sd-sl-identify-v1";
   const CONE_DEG = 10;
   const UP_MIN_EL = 15;
@@ -29,6 +30,20 @@
     return names[Math.round((((deg % 360) + 360) % 360) / 45) % 8];
   };
   const isPhone = () => window.matchMedia("(pointer: coarse)").matches || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const inAppBrowser = () =>
+    /Twitter|Tweetbot|FBAN|FBAV|FBIOS|FB_IAB|Instagram|Line\/|Snapchat|BytedanceWebview|musical_ly|TikTok|Pinterest|LinkedInApp/i.test(
+      navigator.userAgent || ""
+    ) || /; wv\)/i.test(navigator.userAgent || "");
+  const geoFailHint = (err) => {
+    if (inAppBrowser()) {
+      return "This in-app browser will not share a location. Open in Safari or Chrome, or search a city.";
+    }
+    const code = err && err.code;
+    if (code === 1) return "Location is off or blocked for this site. Search a city instead.";
+    if (code === 3) return "Location timed out. Search a city instead.";
+    if (code === 2) return "This device could not find you. Search a city instead.";
+    return "Could not use this device’s location. Search a city instead.";
+  };
 
   const skySep = (az1, el1, az2, el2) => {
     const e1 = toRad(el1);
@@ -419,15 +434,24 @@
     $("sl-id-geo")?.addEventListener("click", () => {
       const hint = $("sl-id-hint");
       if (!navigator.geolocation) {
-        if (hint) hint.textContent = "This browser will not share a location. Search a city instead.";
+        if (hint) {
+          hint.textContent = inAppBrowser()
+            ? "This in-app browser will not share a location. Open in Safari or Chrome, or search a city."
+            : "This browser will not share a location. Search a city instead.";
+        }
         return;
       }
-      if (hint) hint.textContent = "Finding you…";
+      if (hint) {
+        hint.textContent = inAppBrowser()
+          ? "Trying this browser… if it fails, open in Safari or Chrome, or search a city."
+          : "Finding you…";
+      }
       navigator.geolocation.getCurrentPosition(
         (pos) => setPlace("Your location", pos.coords.latitude, pos.coords.longitude),
-        () => {
-          if (hint) hint.textContent = "Location blocked. Search a city — we will not guess one.";
-        }
+        (err) => {
+          if (hint) hint.textContent = geoFailHint(err);
+        },
+        GEO_OPTS
       );
     });
     $("sl-id-clear")?.addEventListener("click", () => {

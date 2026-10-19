@@ -9,6 +9,7 @@
   const KEY = "sd-see-launch-v1";
   const LL2 = "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX&limit=16";
   const GEO = "https://geocoding-api.open-meteo.com/v1/search";
+  const GEO_OPTS = { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 };
   const WX = "https://api.open-meteo.com/v1/forecast";
   const WX_SEASON = "https://seasonal-api.open-meteo.com/v1/seasonal";
   const WX_HOURLY = "cloud_cover,visibility,precipitation,weather_code,is_day";
@@ -32,6 +33,69 @@
     raf: 0,
     pending: null,
     bucket: "",
+  };
+
+  const inAppBrowser = () =>
+    /Twitter|Tweetbot|FBAN|FBAV|FBIOS|FB_IAB|Instagram|Line\/|Snapchat|BytedanceWebview|musical_ly|TikTok|Pinterest|LinkedInApp/i.test(
+      navigator.userAgent || ""
+    ) || /; wv\)/i.test(navigator.userAgent || "");
+
+  const geoFailHint = (err) => {
+    if (inAppBrowser()) {
+      return "This in-app browser will not share a location. Open in Safari or Chrome, or search a city.";
+    }
+    const code = err && err.code;
+    if (code === 1) return "Location is off or blocked for this site. Search a city or tap a nearby pad town.";
+    if (code === 3) return "Location timed out. Search a city or tap a nearby pad town.";
+    if (code === 2) return "This device could not find you. Search a city or tap a nearby pad town.";
+    return "Could not use this device’s location. Search a city or tap a nearby pad town.";
+  };
+
+  const cityKey = (c) => `${c.name}|${c.lat}|${c.lon}`;
+
+  const localCities = (q) => {
+    const n = String(q || "").trim().toLowerCase();
+    if (n.length < 2) return [];
+    return (DATA.cities || []).filter((c) => {
+      const full = `${c.name}, ${c.region}`.toLowerCase();
+      return c.name.toLowerCase().includes(n) || full.includes(n) || n.includes(c.name.toLowerCase());
+    });
+  };
+
+  const matchCity = (q) => {
+    const n = String(q || "").trim().toLowerCase();
+    if (!n) return null;
+    const cities = DATA.cities || [];
+    const exact = cities.find((c) => {
+      const full = `${c.name}, ${c.region}`.toLowerCase();
+      return n === c.name.toLowerCase() || n === full || n.startsWith(`${c.name.toLowerCase()},`);
+    });
+    if (exact) return exact;
+    const hits = localCities(n);
+    return hits.length === 1 ? hits[0] : null;
+  };
+
+  const applyCity = (city) => {
+    if (!city) return false;
+    $("see-suggest").hidden = true;
+    setPlace(`${city.name}, ${city.region}`, city.lat, city.lon);
+    return true;
+  };
+
+  const paintSuggest = (rows) => {
+    const box = $("see-suggest");
+    if (!rows.length) {
+      box.hidden = true;
+      box.innerHTML = "";
+      return;
+    }
+    box.hidden = false;
+    box.innerHTML = rows
+      .map(
+        (r) =>
+          `<li><button type="button" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${esc(r.label)}">${esc(r.label)}</button></li>`
+      )
+      .join("");
   };
 
   const toRad = (d) => (d * Math.PI) / 180;
@@ -262,12 +326,27 @@
     if (location.search !== (qs ? "?" + qs : "")) history.replaceState(null, "", next);
   };
 
+  const markChip = (place, lat, lon) => {
+    const chips = $("see-chips");
+    if (!chips) return;
+    chips.querySelectorAll(".see-chip").forEach((c) => {
+      const city = DATA.cities.find((x) => x.name === c.dataset.city);
+      const on = !!(
+        city &&
+        ((place && (place === city.name || String(place).startsWith(`${city.name},`))) ||
+          (lat != null && Math.abs(city.lat - lat) < 0.05 && Math.abs(city.lon - lon) < 0.05))
+      );
+      c.classList.toggle("is-on", on);
+    });
+  };
+
   const setPlace = (place, lat, lon) => {
     state.place = place;
     state.lat = lat;
     state.lon = lon;
     $("see-q").value = place;
     $("see-hint").textContent = `${place} · ${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
+    markChip(place, lat, lon);
     writeStore();
     state.launchId = "";
     loadWeather();
@@ -808,30 +887,32 @@
   };
 
   const searchPlace = (q) => {
-    const box = $("see-suggest");
-    if (!q || q.trim().length < 2) {
-      box.hidden = true;
-      box.innerHTML = "";
+    const raw = String(q || "").trim();
+    const locals = localCities(raw).map((c) => ({
+      lat: c.lat,
+      lon: c.lon,
+      label: `${c.name}, ${c.region}`,
+      key: cityKey(c),
+    }));
+    if (raw.length < 2) {
+      paintSuggest([]);
       return;
     }
-    fetch(`${GEO}?name=${encodeURIComponent(q.trim())}&count=6&language=en&format=json`)
+    paintSuggest(locals);
+    fetch(`${GEO}?name=${encodeURIComponent(raw)}&count=6&language=en&format=json`)
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
-        const rows = j?.results || [];
-        if (!rows.length) {
-          box.hidden = true;
-          return;
-        }
-        box.hidden = false;
-        box.innerHTML = rows
+        const seen = new Set(locals.map((r) => r.key));
+        const remote = (j?.results || [])
           .map((r) => {
             const label = [r.name, r.admin1, r.country].filter(Boolean).join(", ");
-            return `<li><button type="button" data-lat="${r.latitude}" data-lon="${r.longitude}" data-name="${esc(label)}">${esc(label)}</button></li>`;
+            return { lat: r.latitude, lon: r.longitude, label, key: `${r.name}|${r.latitude}|${r.longitude}` };
           })
-          .join("");
+          .filter((r) => r.label && !seen.has(r.key));
+        paintSuggest(locals.concat(remote).slice(0, 8));
       })
       .catch(() => {
-        box.hidden = true;
+        paintSuggest(locals);
       });
   };
 
@@ -844,7 +925,13 @@
       if (e.key === "Enter") {
         e.preventDefault();
         const first = $("see-suggest").querySelector("button");
-        if (first) first.click();
+        if (first) {
+          first.click();
+          return;
+        }
+        if (!applyCity(matchCity(e.target.value))) {
+          $("see-hint").textContent = "No matching city yet. Tap a nearby pad town or pick a suggestion.";
+        }
       }
     });
     $("see-suggest").addEventListener("click", (e) => {
@@ -855,21 +942,22 @@
     });
     $("see-geo").addEventListener("click", () => {
       if (!navigator.geolocation) {
-        $("see-hint").textContent = "This browser will not share a location. Search a city instead.";
+        $("see-hint").textContent = inAppBrowser()
+          ? "This in-app browser will not share a location. Open in Safari or Chrome, or search a city."
+          : "This browser will not share a location. Search a city instead.";
         return;
       }
-      $("see-hint").textContent = "Finding you…";
+      $("see-hint").textContent = inAppBrowser()
+        ? "Trying this browser… if it fails, open in Safari or Chrome, or search a city."
+        : "Finding you…";
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          const lat = pos.coords.latitude,
-            lon = pos.coords.longitude;
-          fetch(`${GEO}?name=${encodeURIComponent(lat.toFixed(2) + " " + lon.toFixed(2))}&count=1`)
-            .then(() => setPlace(`Your location`, lat, lon))
-            .catch(() => setPlace("Your location", lat, lon));
+          setPlace("Your location", pos.coords.latitude, pos.coords.longitude);
         },
-        () => {
-          $("see-hint").textContent = "Location blocked. Search a city — we will not guess one.";
-        }
+        (err) => {
+          $("see-hint").textContent = geoFailHint(err);
+        },
+        GEO_OPTS
       );
     });
     $("see-chips").addEventListener("click", (e) => {
@@ -892,7 +980,7 @@
       state.launchId = "";
       $("see-q").value = "";
       $("see-hint").textContent = "";
-      $("see-chips").querySelectorAll(".see-chip").forEach((c) => c.classList.remove("is-on"));
+      markChip("", null, null);
       try {
         localStorage.removeItem(KEY);
       } catch {}

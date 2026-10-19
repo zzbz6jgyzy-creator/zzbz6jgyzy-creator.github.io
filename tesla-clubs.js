@@ -27,6 +27,20 @@
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const GEO = "https://geocoding-api.open-meteo.com/v1/search";
+  const GEO_OPTS = { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 };
+  const inAppBrowser = () =>
+    /Twitter|Tweetbot|FBAN|FBAV|FBIOS|FB_IAB|Instagram|Line\/|Snapchat|BytedanceWebview|musical_ly|TikTok|Pinterest|LinkedInApp/i.test(
+      navigator.userAgent || ""
+    ) || /; wv\)/i.test(navigator.userAgent || "");
+  const geoFailHint = (err) => {
+    if (inAppBrowser()) {
+      return "Location blocked. This in-app browser will not share a location. Open in Safari or Chrome, or search a city.";
+    }
+    const code = err && err.code;
+    if (code === 3) return "Location blocked. The request timed out. Search a city instead.";
+    if (code === 2) return "Location blocked. This device could not find you. Search a city instead.";
+    return "Location blocked. Search a city instead.";
+  };
   const BDC = "https://api.bigdatacloud.net/data/reverse-geocode-client";
   const PHOTON = "https://photon.komoot.io/reverse";
   const NOM = "https://nominatim.openstreetmap.org/reverse";
@@ -531,10 +545,20 @@
     });
     $("tc-geo").addEventListener("click", () => {
       if (!navigator.geolocation) {
-        setHint("This browser will not share a location. Search a city instead.", true);
+        setHint(
+          inAppBrowser()
+            ? "Location blocked. This in-app browser will not share a location. Open in Safari or Chrome, or search a city."
+            : "This browser will not share a location. Search a city instead.",
+          true
+        );
         return;
       }
-      setHint("Finding you…", true);
+      setHint(
+        inAppBrowser()
+          ? "Finding you… if this browser blocks it, open in Safari or Chrome, or search a city."
+          : "Finding you…",
+        true
+      );
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           const lat = pos.coords.latitude,
@@ -546,9 +570,10 @@
               setPlace(country ? `Your location, ${country}` : "Your location", lat, lon, country, "");
             });
         },
-        () => {
-          setHint("Location blocked. Search a city instead.", true);
-        }
+        (err) => {
+          setHint(geoFailHint(err), true);
+        },
+        GEO_OPTS
       );
     });
     $("tc-clear").addEventListener("click", clearPlace);

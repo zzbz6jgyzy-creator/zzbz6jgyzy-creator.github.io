@@ -35,11 +35,11 @@ if (ptHtml.includes("https://x.com/ALJR86") && ptHtml.includes("ts.la/alex474841
 else bad("promise follow + referral", "handle or referral changed");
 
 const clubsHtml = await (await fetch(BASE + "/tesla-clubs.html")).text();
-if (clubsHtml.includes("/tesla-clubs.js?v=202610190700") && clubsHtml.includes("https://x.com/ALJR86")) ok("clubs pin + follow");
+if (clubsHtml.includes("/tesla-clubs.js?v=202610191945") && clubsHtml.includes("https://x.com/ALJR86")) ok("clubs pin + follow");
 else bad("clubs pin + follow", "pin or handle changed");
 
-const clubsJs = await (await fetch(BASE + "/tesla-clubs.js?v=202610190700")).text();
-if (clubsJs.includes("Couldn't look up that city") && clubsJs.includes("No matching city") && clubsJs.includes('setHint("Location blocked')) ok("clubs fail copy");
+const clubsJs = await (await fetch(BASE + "/tesla-clubs.js?v=202610191945")).text();
+if (clubsJs.includes("Couldn't look up that city") && clubsJs.includes("No matching city") && clubsJs.includes("Location blocked. Search a city instead.")) ok("clubs fail copy");
 else bad("clubs fail copy", "missing hint strings");
 
 const browser = await chromium.launch({ headless: true });
