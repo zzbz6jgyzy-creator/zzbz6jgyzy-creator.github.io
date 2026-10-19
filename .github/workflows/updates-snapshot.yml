@@ -45,3 +45,17 @@ jobs:
             git pull --rebase
             git push
           fi
+      - name: Ping per-car mail scan
+        env:
+          MAIL_SCAN_SECRET: ${{ secrets.MAIL_SCAN_SECRET }}
+        run: |
+          if [ -z "$MAIL_SCAN_SECRET" ]; then
+            echo "No MAIL_SCAN_SECRET; scan hook not armed"
+            exit 0
+          fi
+          curl -sS -X POST \
+            -H "Authorization: Bearer $MAIL_SCAN_SECRET" \
+            -H "Content-Type: application/json" \
+            --data '{"source":"updates-snapshot"}' \
+            https://sd-mail.superchargeddaily.workers.dev/scan \
+            || echo "sd-mail Worker not live yet"

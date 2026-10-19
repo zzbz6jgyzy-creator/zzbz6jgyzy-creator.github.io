@@ -263,6 +263,7 @@ html[data-theme="light"] .rd-tabs { border-color: var(--line); }
 
 /* Shared inputs / chips */
 html[data-theme="light"] .mt-field select,
+html[data-theme="light"] .mt-field input[type="email"],
 html[data-theme="light"] .sl-id-loc input[type="search"],
 html[data-theme="light"] .see-loc input[type="search"],
 html[data-theme="light"] .tc-loc input[type="search"],

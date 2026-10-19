@@ -1,0 +1,20 @@
+name = "sd-mail"
+main = "sd-mail.js"
+compatibility_date = "2025-10-01"
+# After deploy: https://sd-mail.superchargeddaily.workers.dev
+# Secrets (wrangler secret put): BEEHIIV_API_KEY, SCAN_SECRET
+# Do not store subscriber emails in KV — Beehiiv holds them.
+# Do not publish the Beehiiv automation from this repo. Editor:
+# https://app.beehiiv.com/automations/2a6b7603-cdd1-4bc1-9fef-64f509ca3dc3/workflow
+
+[vars]
+BEEHIIV_PUBLICATION_ID = "pub_28af78be-fb43-4dfe-8048-49f9f79e730e"
+BEEHIIV_AUTOMATION_ID = "aut_2a6b7603-cdd1-4bc1-9fef-64f509ca3dc3"
+SNAPSHOT_URL = "https://superchargeddaily.com/updates-live.json"
+
+[triggers]
+crons = ["25,55 * * * *"]
+
+[[kv_namespaces]]
+binding = "MAIL"
+id = "612db1a5b0784de39ceda04edba73ae4"

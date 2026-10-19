@@ -153,11 +153,17 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Dispatch meta names the current lead stories, not “300 Cybercabs in Austin”.
 - WebPage JSON-LD on the remaining nav desks from existing title/meta. Clubs stamp is a compiled date. Game pages not rewritten. No ads. No notify delivery.
 
-### Batch 25 — Leftover copy + quiet light cards (this session)
+### Batch 25 — Leftover copy + quiet light cards (merged #133)
 
 - Tesla hub drops “update every weekday.” Stamp is compiled dates, not a schedule.
 - Software Update Tracker and My Tesla say **Newest reporting**, not newest build.
 - Quiet next-stream cards lift in light theme. LIVE / Watch-live stay dark-red. No ads. No notify delivery.
+
+### Batch 26 — Per-car mail hook (this session)
+
+- My Tesla email + notify flags POST to `sd-mail` Worker → Beehiiv custom fields / `my-tesla` tag. No API key in public JS.
+- Teslascope newest-per-country scan enrolls software-notify subscribers into draft automation **My Tesla · software reporting**. Automation stays draft. Worker not deployed until secrets are set.
+- Copy stays honest: capture can succeed; delivery is not live. Recall / hardware / news stored only. No ads.
 
 ## Architecture (do not rip out)
 
@@ -168,13 +174,14 @@ Living progress document for the product rebuild. Resume from here in later Curs
 | Dispatch | `dispatch/*.html`, `data/articles.json` |
 | Trackers | Starship, FSD Europe, Cybercab, Software updates, Starlink, Promise |
 | Newsletter | Beehiiv via `newsletter.js` — `alexs-newsletter-84b17e.beehiiv.com`. Topic via `utm_content` + subscriber tags |
+| Per-car mail | `workers/sd-mail/` + My Tesla form. Draft Beehiiv API automation. Do not claim live until published + deployed |
 | X handle | `@ALJR86` / `twitter:site` — do not change |
 | Referral | `ts.la/alex474841` — do not invent affiliates |
 
 ## Ranked next batches
 
-1. Publish Beehiiv `Tag ·` automations only if segmented signup mail is wanted.
-2. Per-car mail only after a real send hook exists.
+1. Deploy `sd-mail` with `BEEHIIV_API_KEY` + `SCAN_SECRET`, then publish **My Tesla · software reporting** in Beehiiv if software mail should actually send.
+2. Publish Beehiiv `Tag ·` automations only if segmented signup mail is wanted.
 
 Dark remains the default brand. Do not auto-switch on OS light mode.
 
