@@ -172,7 +172,7 @@
 
         <section class="mt-card" aria-labelledby="mt-car-h">
           <h2 id="mt-car-h">Your Tesla</h2>
-          <p class="mt-sub">Remembered in this browser. The address bar holds the same choices so you can bookmark this car. Saving alerts below is what sends this profile to Supercharged Daily.</p>
+          <p class="mt-sub">Remembered in this browser. The address bar holds the same choices so you can bookmark this car. This profile never leaves the device.</p>
           <div class="mt-form">
             <label class="mt-field"><span>Model</span>
               <select id="mt-model" aria-label="Tesla model"><option value="">Model</option></select>
@@ -194,27 +194,6 @@
           <div class="mt-actions">
             <button type="button" id="mt-clear">Clear saved car</button>
           </div>
-        </section>
-
-        <section class="mt-card" aria-labelledby="mt-n-h">
-          <h2 id="mt-n-h">Alerts for this car</h2>
-          <p class="mt-sub">Software is the first mail hook. Add an email and we save this car to Supercharged Daily. Delivery is not live until the Beehiiv software-reporting automation is published — nothing is sent until then. Recall, hardware and news stay stored for later. Not Tesla’s official owner email.</p>
-          <form class="mt-mail" id="mt-mail" novalidate>
-            <label class="mt-field"><span>Email</span>
-              <input id="mt-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="mt-notify-state" />
-            </label>
-            <input type="text" name="website" class="mt-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
-            <div class="mt-notify" id="mt-notify">
-              <label><input type="checkbox" data-mt-n="software" /> Software updates for this car</label>
-              <label><input type="checkbox" data-mt-n="recall" /> Recalls that match this model</label>
-              <label><input type="checkbox" data-mt-n="compat" /> Hardware / FSD compatibility changes</label>
-              <label><input type="checkbox" data-mt-n="news" /> Owner news for this region</label>
-            </div>
-            <div class="mt-actions">
-              <button type="submit" id="mt-mail-save">Save alerts to Supercharged Daily</button>
-            </div>
-          </form>
-          <p class="mt-fine" id="mt-notify-state">Preferences stay in this browser until you save an email. Mail is not live.</p>
         </section>
 
         <p class="mt-empty" id="mt-empty">Pick a model and a country first.</p>
@@ -298,7 +277,7 @@
     <script src="/fsd-europe-data.js?v=202610161826"></script>
     <script src="/my-tesla-data.js?v=202610182145"></script>
     <script src="/intel-core.js?v=202610192300"></script>
-    <script src="/my-tesla.js?v=202610192200"></script>
+    <script src="/my-tesla.js?v=202610192500"></script>
     <script src="/intel.js?v=202610192300" defer></script>
     <script src="/nav-pill.js?v=202610190630"></script>
   </body>

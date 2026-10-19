@@ -93,10 +93,10 @@ await my.goto(BASE + "/my-tesla.html", { waitUntil: "domcontentloaded" });
 const empty = await my.locator("#mt-empty").textContent();
 if (empty && /Pick a model and a country first/.test(empty) && !/Ireland/.test(empty)) ok("my tesla empty copy");
 else bad("my tesla empty copy", empty || "");
-const notify = await my.locator("#mt-notify-state, [data-notify], .mt-notify").first().textContent().catch(() => "");
 const body = await my.locator("body").innerText();
-if (/not live|Mail is not live|nothing is sent/i.test(body)) ok("my tesla notify honest");
-else ok("my tesla notify honest soft");
+const mailCount = await my.locator("#mt-mail, #mt-email, #mt-notify").count();
+if (mailCount === 0 && !/Save alerts to Supercharged Daily/.test(body)) ok("my tesla mail gone");
+else bad("my tesla mail gone", `count=${mailCount} body=${body.slice(0, 160)}`);
 
 await browser.close();
 if (fail.length) {

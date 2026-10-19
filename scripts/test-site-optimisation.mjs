@@ -103,10 +103,9 @@ if (/latest stories|pages/i.test(empty)) ok("search empty grouped");
 else bad("search empty grouped", empty.slice(0, 120));
 
 await page.goto(BASE + "/my-tesla.html", { waitUntil: "domcontentloaded" });
-const n = await page.$("#mt-notify");
-const copy = n ? await n.evaluate((el) => el.closest(".mt-card").innerText) : "";
-if (n && /not live|not sent|does not send/i.test(copy)) ok("my tesla notify copy");
-else bad("my tesla notify copy", copy.slice(0, 160));
+const n = await page.$("#mt-notify, #mt-mail, #mt-email");
+if (!n) ok("my tesla mail form gone");
+else bad("my tesla mail form gone", "email/alerts form still in the DOM");
 
 await browser.close();
 if (fail.length) {

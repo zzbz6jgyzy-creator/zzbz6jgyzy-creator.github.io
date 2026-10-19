@@ -10,9 +10,6 @@
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "sd-my-tesla-v1";
-  const NOTIFY_KEY = "sd-my-tesla-notify-v1";
-  const MAIL_KEY = "sd-my-tesla-mail-v1";
-  const MAIL_URL = "https://sd-mail.superchargeddaily.workers.dev/mail";
   const NA = ["US", "CA", "MX", "PR"];
   const EUC = (EU?.countries || []).map((c) => c.code);
   const AP = ["AU", "NZ", "JP", "KR", "TW", "HK", "SG", "MY", "TH", "PH", "CN"];
@@ -504,122 +501,6 @@
     }
   };
 
-  const notifyDefaults = { software: false, recall: false, compat: false, news: false };
-  const readNotify = () => {
-    try {
-      return { ...notifyDefaults, ...(JSON.parse(localStorage.getItem(NOTIFY_KEY) || "null") || {}) };
-    } catch {
-      return { ...notifyDefaults };
-    }
-  };
-  const writeNotify = (next) => {
-    try {
-      localStorage.setItem(NOTIFY_KEY, JSON.stringify(next));
-    } catch {}
-  };
-  const readMail = () => {
-    try {
-      return JSON.parse(localStorage.getItem(MAIL_KEY) || "null") || {};
-    } catch {
-      return {};
-    }
-  };
-  const writeMail = (next) => {
-    try {
-      localStorage.setItem(MAIL_KEY, JSON.stringify(next));
-    } catch {}
-  };
-  const notifyStamp = (text) => {
-    const el = $("mt-notify-state");
-    if (el) el.textContent = text;
-  };
-  const localNotifyCopy = (next) => {
-    const on = Object.keys(notifyDefaults).filter((k) => next[k]);
-    return on.length
-      ? `Saved on this device: ${on.join(", ")}. Mail is not live until you save an email.`
-      : "Preferences stay in this browser until you save an email. Mail is not live.";
-  };
-  const bindNotify = () => {
-    const box = $("mt-notify");
-    const form = $("mt-mail");
-    if (!box) return;
-    const stateN = readNotify();
-    const savedMail = readMail();
-    const emailEl = $("mt-email");
-    if (emailEl && savedMail.email) emailEl.value = savedMail.email;
-    box.querySelectorAll("[data-mt-n]").forEach((input) => {
-      const key = input.getAttribute("data-mt-n");
-      input.checked = !!stateN[key];
-      input.addEventListener("change", () => {
-        const next = readNotify();
-        next[key] = !!input.checked;
-        writeNotify(next);
-        notifyStamp(localNotifyCopy(next));
-      });
-    });
-    notifyStamp(localNotifyCopy(stateN));
-    if (!form || form.dataset.bound) return;
-    form.dataset.bound = "1";
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const honey = form.querySelector("input[name='website']");
-      if (honey && honey.value) return;
-      const email = String(emailEl?.value || "").trim().toLowerCase();
-      const next = readNotify();
-      writeNotify(next);
-      if (email) writeMail({ email });
-      if (!email) {
-        notifyStamp("Add an email to send this off the device. Until then it stays in this browser. Mail is not live.");
-        return;
-      }
-      if (next.software && !state.cc) {
-        notifyStamp("Pick a country so we know which Teslascope sample to watch. Mail is not live.");
-        return;
-      }
-      notifyStamp("Saving the car to Supercharged Daily…");
-      let res = null;
-      try {
-        res = await fetch(MAIL_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email,
-            model: state.model,
-            year: state.year,
-            hw: state.hw,
-            software: state.sw,
-            country: state.cc,
-            notify: next,
-          }),
-        });
-      } catch {
-        notifyStamp("Saved on this device. Mail hook is not live yet — nothing is sent.");
-        return;
-      }
-      let payload = {};
-      try {
-        payload = await res.json();
-      } catch {}
-      if (res.status === 503 || res.status === 404) {
-        notifyStamp("Saved on this device. Mail hook is not live yet — nothing is sent.");
-        return;
-      }
-      if (!res.ok || !payload.ok) {
-        if (payload.reason === "country") {
-          notifyStamp("Pick a country so we know which Teslascope sample to watch. Mail is not live.");
-          return;
-        }
-        notifyStamp("Could not save to Supercharged Daily. Preferences stay in this browser. Mail is not live.");
-        return;
-      }
-      if (payload.delivery === "ready") {
-        notifyStamp("Saved to Supercharged Daily. We will mail when Teslascope newest-reporting changes in this country. Not Tesla’s owner email.");
-        return;
-      }
-      notifyStamp("Saved to Supercharged Daily. Software mail waits on a published Beehiiv automation — nothing is sent yet.");
-    });
-  };
-
   const bind = () => {
     $("mt-model").addEventListener("change", () => {
       state.model = $("mt-model").value;
@@ -677,7 +558,6 @@
     const note = $("mt-note");
     if (note && DATA.note) note.textContent = DATA.note;
     bind();
-    bindNotify();
     render();
     fetch("/updates-live.json", { cache: "no-cache" })
       .then((r) => (r.ok ? r.json() : null))
