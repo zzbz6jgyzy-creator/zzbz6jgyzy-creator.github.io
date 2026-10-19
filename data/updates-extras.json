@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T19:53:11Z",
+ "updated": "2026-10-19T20:53:11Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,32 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-19T19:53:11Z",
+  "fetched": "2026-10-19T20:53:11Z",
   "items": [
+   {
+    "t": "2026-10-19T20:06:40Z",
+    "to": "2026.38.3.1",
+    "from": "2026.32.7",
+    "model": "Model S Performance (2016)",
+    "hw": "3.0",
+    "country": "Austria"
+   },
+   {
+    "t": "2026-10-19T19:51:17Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 SR (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-19T19:47:27Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model 3 AWD LR (2023)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-19T18:49:19Z",
     "to": "2026.38.3.1",
@@ -546,30 +570,6 @@
     "to": "2026.38.5.1",
     "from": "2026.26.6.5",
     "model": "Model Y AWD LR (2023)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-19T17:05:40Z",
-    "to": "2026.38.5.1",
-    "from": "2026.32.7",
-    "model": "Model S 100D (2020)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-19T15:59:50Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model 3 AWD LR (2021)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-19T15:29:32Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model Y AWD LR (2024)",
     "hw": "4.0",
     "country": "United States"
    }
