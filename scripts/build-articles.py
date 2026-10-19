@@ -78,12 +78,27 @@ def main():
         old[c["url"]] = {"url": c["url"], "title": " ".join(c["title"].split()), "date": first_date(c["url"].lstrip("/")),
                          "topic": topic_of(c), "tag": " ".join(c["tag"].split()) or "Dispatch",
                          "image": c["image"], "summary": " ".join(c["summary"].split()), "pinned": False}
+    for a in old.values(): a["author"] = AUTHOR
     arts = sorted(old.values(), key=lambda a: a["date"], reverse=True)
     prev = json.load(open(OUT, encoding="utf-8")).get("articles") if os.path.exists(OUT) else None
     if prev == arts: print("articles.json unchanged"); return
     json.dump({"updated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "articles": arts},
               open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(f"wrote {len(arts)} articles")
+
+AUTHOR = "Alex R"  # article byline / sign-off name (not the X handle)
+
+def bylines():
+    """Byline rule: article bylines and sign-offs name the author as AUTHOR, never the X handle.
+    Only the <p class="meta"> "From ..." span and <p class="signoff"> text are touched; links to
+    x.com/AlJR86, embedded posts, citations and Follow-on-X links are left alone."""
+    import glob, re
+    sign = re.compile(r'(<p class="signoff">— (?:<a href="https://x\.com/A[Ll]JR86">)?)@A[Ll]JR86(</a>)?(</p>)')
+    meta = re.compile(r'(<p class="meta">\s*<span>)From @A[Ll]JR86(</span>)')
+    for path in glob.glob(os.path.join(ROOT, "dispatch", "*.html")) + glob.glob(os.path.join(ROOT, "guides", "*.html")):
+        s = open(path, encoding="utf-8").read()
+        t = meta.sub(r"\1From " + AUTHOR + r"\2", sign.sub(lambda m: m.group(1) + AUTHOR + (m.group(2) or "") + m.group(3), s))
+        if t != s: open(path, "w", encoding="utf-8").write(t); print("byline:", os.path.relpath(path, ROOT))
 
 def sleek_signup():
     """Newsletter rule: articles use only the sleek grow.js band (data-band), never the old red
@@ -141,6 +156,12 @@ def related_stories():
         if t != s: open(path, "w", encoding="utf-8").write(t); print("related:", os.path.relpath(path, ROOT))
 
 import glob
+bylines()
 sleek_signup()
+try:
+    import importlib.util as _u
+    _sp = _u.spec_from_file_location("footer_contact", os.path.join(ROOT, "scripts", "footer_contact.py")); _m = _u.module_from_spec(_sp); _sp.loader.exec_module(_m); _m.run()
+except Exception as e:
+    print("footer contact skip:", e)
 main()
 related_stories()

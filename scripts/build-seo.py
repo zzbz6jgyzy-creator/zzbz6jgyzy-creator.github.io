@@ -62,9 +62,13 @@ def ensure_head(src):
     return re.sub(r"(\n[ \t]*)<body\b", r"\n  </head>\1<body", src, count=1)
 
 
+AUTHOR = "Alex R"  # byline name on every Dispatch article (not the X handle)
+
+
 def ld_block(news, crumbs):
     return (
         "\n    <!-- seo:ld -->\n"
+        f'    <meta name="author" content="{AUTHOR}" />\n'
         '    <script type="application/ld+json">' + dumps(news) + "</script>\n"
         '    <script type="application/ld+json">' + dumps(crumbs) + "</script>\n"
         "    <!-- /seo:ld -->"
@@ -92,7 +96,7 @@ def about_html():
         '          <aside class="sd-about" aria-label="About Supercharged Daily">\n'
         '            <p class="sd-about-kicker">The desk</p>\n'
         "            <p>Supercharged Daily is an independent Tesla, SpaceX and Grok desk from "
-        f'<a href="{X_URL}">Alex R — @ALJR86</a>. '
+        f'<a href="{X_URL}">{AUTHOR}</a>. '
         "Not affiliated with Tesla, SpaceX or xAI.</p>\n"
         '            <p><a href="/about.html">About this site</a></p>\n'
         "          </aside>\n"
@@ -121,7 +125,7 @@ def articles():
     data = json.load(open(os.path.join(ROOT, "data", "articles.json")))
     publisher = org()
     publisher["url"] = SITE + "/"
-    author = org()
+    author = {"@type": "Person", "name": AUTHOR, "url": SITE + "/about.html", "sameAs": [X_URL]}
     for a in data["articles"]:
         path = os.path.join(ROOT, a["url"].lstrip("/"))
         if not os.path.exists(path):
