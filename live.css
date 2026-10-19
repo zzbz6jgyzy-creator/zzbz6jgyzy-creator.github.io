@@ -93,6 +93,13 @@
  .lw-head{padding:.45rem .75rem;font-size:.66rem}.lw-host{margin-left:0;flex-basis:100%;font-size:.7rem}
  .lw-title{font-size:1.15rem}.lw-tile{min-width:0;flex:1}.lw-tile b{font-size:1.45rem}.lw-btn{flex:1;justify-content:center}
 }
+@media (max-width:480px){
+ .lw-body{grid-template-columns:96px 1fr;gap:.65rem;padding:.65rem;align-items:start}.lw-thumb{aspect-ratio:1/1;align-self:start}
+ .lw-head{padding:.4rem .7rem}.lw-host{display:none}
+ .lw-info{gap:.35rem}.lw-title{font-size:1rem}.lw-when{font-size:.82rem}
+ .lw-tile{padding:.25rem .3rem .2rem}.lw-tile b{font-size:1.05rem}.lw-tile i{font-size:.5rem;margin-top:.1rem}.lw-note{display:none}
+ .lw-acts{grid-column:1/-1;gap:.6rem;margin-top:0}.lw-btn{padding:.55rem .9rem;font-size:.88rem}.lw-cr{display:none}
+}
 @media (min-width:1800px){.lv-slot-home{max-width:820px}.lw-body{grid-template-columns:260px 1fr}}
 
 .lw-thumb>img,

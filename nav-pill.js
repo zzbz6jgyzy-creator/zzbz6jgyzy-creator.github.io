@@ -98,7 +98,7 @@
   document.addEventListener("click", e => { if (!nav.contains(e.target)) closeAll(); });
 
   // Phone sheet: fold each section under its red heading so the major sections fit on one screen.
-  // The section holding the current page starts open. Without JS every link stays visible.
+  // All sections start folded. Without JS every link stays visible.
   (() => {
     const sh = document.querySelector(".pn-sheet");
     if (!sh || sh.dataset.grouped) return;
@@ -116,7 +116,7 @@
       btn.innerHTML = h.innerHTML + '<span class="pn-grp-c" aria-hidden="true"></span>';
       h.textContent = ""; h.appendChild(btn);
       const set = (open) => { box.hidden = !open; btn.setAttribute("aria-expanded", String(open)); };
-      set(!!box.querySelector("[aria-current]") || links.some((l) => { try { const u = new URL(l.href, location.href); return u.pathname === location.pathname && u.pathname !== "/"; } catch { return false; } }));
+      set(false); // every section starts folded; tap a heading to open it
       btn.addEventListener("click", () => set(box.hidden));
     });
   })();
