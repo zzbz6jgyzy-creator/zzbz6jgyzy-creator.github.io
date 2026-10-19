@@ -110,6 +110,16 @@ Privacy-friendly counters, no cookies, no IPs, no user IDs, no cookie banner nee
 - **Pageviews** remain in Cloudflare Web Analytics (beacon on every page). No GA, Plausible or Zaraz on the site (the domain is DNS-only to GitHub Pages, so Zaraz can't run).
 - Counts are approximate: ad blockers may drop beacons, and the Worker only accepts requests from superchargeddaily.com.
 
+## Per-car mail (My Tesla → Beehiiv)
+
+Capture lives on `/my-tesla.html`. Checkboxes still save in this browser. **Save alerts to Supercharged Daily** POSTs email + car prefs to the `sd-mail` Worker, which upserts Beehiiv custom fields. No Beehiiv API key in public JS.
+
+- **Worker** (not deployed until a Beehiiv API key + `SCAN_SECRET` are set): `workers/sd-mail/`. Live URL after deploy: `https://sd-mail.superchargeddaily.workers.dev`. KV `sd-mail` id `612db1a5b0784de39ceda04edba73ae4` (firmware last-seen only — no emails).
+- **Beehiiv publication** `pub_28af78be-fb43-4dfe-8048-49f9f79e730e`. Custom fields `tesla_model`, `tesla_year`, `tesla_hw`, `tesla_software`, `tesla_country`, `tesla_notify_*`. Tags `my-tesla` + `tesla-software`.
+- **Send hook**: Teslascope `updates-live.json` newest-per-country (`count > 0`, skip ghost `latest`). Worker cron `:25`/`:55` plus the snapshot Action (needs GitHub secret `MAIL_SCAN_SECRET`) POSTs `/scan`. Matching `tesla_notify_software` subscribers are API-enrolled in **My Tesla · software reporting** (`aut_2a6b7603-cdd1-4bc1-9fef-64f509ca3dc3`).
+- **Not live**: that automation is **draft**. Publish it in the Beehiiv editor before anything is sent. Recall / hardware / news flags are stored only. Not Tesla’s official owner mail.
+- **Secrets**: `wrangler secret put BEEHIIV_API_KEY` and `SCAN_SECRET` on `sd-mail`. Never commit them. Newsletter.js still has no API key.
+
 ## Major events: homepage countdown (`"major": true` in data/events.json)
 
 Any Roadster-reveal-level event (product reveals, Starship flights, major Tesla/SpaceX/xAI events such as earnings calls) gets `"major": true` in `data/events.json` → `events.<id>`.
