@@ -22,7 +22,7 @@ const action = fs.readFileSync(".github/workflows/updates-snapshot.yml", "utf8")
 
 if (/id="mt-email"/.test(html) && /Save alerts to Supercharged Daily/.test(html) && /not live/.test(html) && /Not Tesla/.test(html)) ok("my-tesla form copy");
 else bad("my-tesla form copy", "missing email, save, or honest copy");
-if (/my-tesla\.js\?v=202610191930/.test(html) && /my-tesla\.css\?v=202610191930/.test(html)) ok("pins");
+if (/my-tesla\.js\?v=202610192200/.test(html) && /my-tesla\.css\?v=202610191930/.test(html)) ok("pins");
 else bad("pins", "my-tesla assets not bumped");
 if (js.includes("sd-mail.superchargeddaily.workers.dev/mail") && !/api[_-]?key|BEEHIIV_/i.test(js)) ok("client posts to worker, no key");
 else bad("client posts to worker, no key", "missing MAIL_URL or secret leaked");

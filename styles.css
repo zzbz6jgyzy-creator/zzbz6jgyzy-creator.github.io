@@ -3832,11 +3832,38 @@ a.referral-banner:hover {
   background: var(--card);
 }
 
+.cal-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  margin: 0 0 1rem;
+}
+.cal-search {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+.cal-search input {
+  width: 100%;
+  min-height: 40px;
+  appearance: none;
+  border: 1px solid var(--line-strong);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font: inherit;
+  font-size: 0.92rem;
+}
+.cal-search input:focus {
+  outline: 2px solid #e31937;
+  outline-offset: 2px;
+}
 .cal-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin: 0 0 1rem;
+  margin: 0;
 }
 
 .cal-filters button {
@@ -3944,6 +3971,11 @@ a.cal-title:hover {
 .cal-status.is-watching {
   color: #e0c48e;
   border-color: rgba(224, 196, 142, 0.35);
+}
+
+.cal-status.is-done {
+  color: #9aa0a6;
+  border-color: rgba(154, 160, 166, 0.4);
 }
 
 .cal-empty {
@@ -4374,6 +4406,7 @@ a.news-card:hover h3 {
   border-color: var(--ink-soft);
 }
 
+.starship-change-src,
 .sourced-change-src {
   margin: 0.35rem 0 0;
   font-size: 0.8rem;

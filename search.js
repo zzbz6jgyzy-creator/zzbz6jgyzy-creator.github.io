@@ -2,11 +2,11 @@
    Overlay (⌘K / nav Search) on pages that load this file; full page on /search.html. */
 (() => {
   if (window.__sdFind) return;
-  const V = "202610192000";
+  const V = "202610192200";
   const PAGE = /\/search\.html$/.test(location.pathname);
   const LIMIT = PAGE ? 60 : 24;
   const LATEST = PAGE ? 12 : 8;
-  const OVERLAY_PAGES = ["/", "/news.html", "/dispatch.html", "/tesla.html", "/roadster.html", "/spacex.html", "/starship.html", "/starlink.html", "/fsd-europe.html", "/updates.html", "/cybercab.html", "/reviews/index.html"];
+  const OVERLAY_PAGES = ["/", "/news.html", "/dispatch.html", "/tesla.html", "/optimus.html", "/production.html", "/autonomy.html", "/my-tesla.html", "/daily.html", "/roadster.html", "/spacex.html", "/starship.html", "/calendar.html", "/starlink.html", "/fsd-europe.html", "/updates.html", "/cybercab.html", "/reviews/index.html"];
   const MAG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
 
   if (!document.querySelector('link[href^="/search.css"]')) {
@@ -46,8 +46,10 @@
     starship: ["starship", "super heavy", "flight lab"],
     roadster: ["roadster", "halo"],
     optimus: ["optimus", "humanoid"],
+    production: ["production", "deliveries"],
     tesla: ["tesla"],
     spacex: ["spacex"],
+    calendar: ["calendar", "launch"],
   };
   function expandToks(toks) {
     const out = new Set(toks);
@@ -96,7 +98,11 @@
     if (item.kind === "story") s += 8;
     if (item.kind === "page") s += 4;
     if (toks.includes("tesla") && toks.includes("software") && /updates\.html/.test(item.url || "")) s += 40;
-    if (toks.includes("optimus") && /promise-tracker|tesla\.html|dream-scenario/.test(item.url || "")) s += 24;
+    if (toks.includes("optimus") && /\/optimus\.html/.test(item.url || "")) s += 48;
+    if (toks.includes("optimus") && /promise-tracker|tesla\.html/.test(item.url || "")) s += 16;
+    if ((toks.includes("production") || toks.includes("deliveries")) && /production\.html/.test(item.url || "")) s += 40;
+    if ((toks.includes("autonomy") || (toks.includes("robotaxi") && toks.includes("evidence"))) && /autonomy\.html/.test(item.url || "")) s += 36;
+    if (toks.includes("calendar") && /calendar\.html/.test(item.url || "")) s += 30;
     s += recencyBoost(item);
     return s;
   }

@@ -104,3 +104,25 @@ Four slices, in order:
 - Cybercab in-service fleet
 - Slovakia customer rollout
 - Notifications / Postgres / Fleet / NHTSA ingest / faster cron
+
+## Batch 6 — Leftover desks (off merged main after #138)
+
+Branch: `cursor/optimus-archive-5e96`  
+Date: 19 Oct 2026
+
+PR #137 squash-merged only batches 1–2. Batches 3–4 never landed. Reimplemented off current main:
+
+1. **Optimus demonstration archive** on `/optimus.html#demos`. Four opened events (AI Day 2021, AI Day 2022, Roadster reveal seat, Paris Motor Show 2026). Shown / not shown / autonomy / remote assistance. We Robot 2024 omitted.
+2. **Nav.** Autonomy, Daily, Production, Optimus in Tesla and Explore via `scripts/nav.json` + `sync-nav.py`.
+3. **Calendar search + Recently done (21 days).** CRS-35 and USSF-481 findable. Canonical clocks stay in `data/events.json`.
+4. **Starship Flight 15 sourced schedule notes.** Outlet + URL. Not live telemetry.
+5. **My Tesla country waves** from Teslascope history. Sample ≠ VIN offer.
+6. **Production YoY Q1 and Q2 2026** from opened Tesla IR Q1 2025 and Q2 2025 tables. Q4 2025 still has no year-ago table.
+7. **Search** ranks Optimus lab, demo cards, Production, Autonomy, Daily, Calendar.
+
+### Not claimed
+
+- We Robot 2024 demo card
+- Q4 2025 YoY
+- VIN eligibility
+- Live notifications / Postgres / Fleet / NHTSA ingest / faster cron

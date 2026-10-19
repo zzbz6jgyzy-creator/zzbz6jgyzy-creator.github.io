@@ -113,7 +113,7 @@
       where: "ISS · Harmony zenith",
       note: "Docked 10:27 a.m. EDT (14:27 UTC) to Harmony’s space-facing port — about 30 minutes early. NASA space station blog.",
       href: "https://blogs.nasa.gov/spacestation/2026/10/15/spacex-dragon-docks-with-science-supplies-and-roll-out-solar-arrays/",
-      status: "go",
+      status: "done",
       precision: "datetime",
       source: "curated",
     },
@@ -230,6 +230,25 @@
     return t > now.getTime() - 6 * 36e5;
   }
 
+  function isRecentPast(event, now) {
+    const t = parseStart(event.start);
+    if (!Number.isFinite(t)) return false;
+    if (isUpcoming(event, now)) return false;
+    return t > now.getTime() - 21 * 864e5;
+  }
+
+  function eventHay(event) {
+    return [event.title, event.where, event.note, event.status, event.group, GROUPS[event.group]]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+  }
+
+  function matchQuery(event, q) {
+    if (!q) return true;
+    return eventHay(event).indexOf(q) !== -1;
+  }
+
   const Merge = window.SDCalendarMerge || {
     launchKey(name) {
       return String(name || "")
@@ -314,7 +333,8 @@
     body.append(title);
     if (event.where) body.append(el("p", "cal-where", event.where));
     if (event.note) body.append(el("p", "cal-note", event.note));
-    const stamp = el("span", `cal-status is-${event.status}`, event.status === "go" ? "Go" : event.status);
+    const done = until === "Done" || event.status === "done";
+    const stamp = el("span", `cal-status ${done ? "is-done" : "is-" + event.status}`, done ? "Done" : event.status === "go" ? "Go" : event.status);
     row.append(when, body, stamp);
     return row;
   }
@@ -435,18 +455,60 @@
     const now = new Date();
     let events = mergeEvents([]);
     let filter = "all";
+    let query = "";
+    const search = document.querySelector("[data-calendar-search]");
+
+    const paintWatch = () => {
+      if (!watch) return;
+      watch.replaceChildren();
+      const slice = WATCHING.filter((item) => {
+        if (filter !== "all" && item.group !== filter) return false;
+        return matchQuery(item, query);
+      });
+      if (!slice.length) {
+        watch.append(el("p", "cal-empty", query ? "No watched items match this search." : "Nothing in this slice."));
+        return;
+      }
+      slice.forEach((item) => {
+        const row = el("article", `cal-row cal-${item.group} is-watch`);
+        const when = el("div", "cal-when");
+        when.append(el("strong", "", "No date"));
+        when.append(el("span", "", "Watching"));
+        const body = el("div", "cal-body");
+        body.append(el("p", "eyebrow", GROUPS[item.group] || item.group));
+        body.append(el("h3", "cal-title", item.title));
+        body.append(el("p", "cal-note", item.note));
+        row.append(when, body, el("span", "cal-status is-watching", "TBA"));
+        watch.append(row);
+      });
+    };
 
     const paint = () => {
       const upcoming = events.filter((e) => isUpcoming(e, now));
+      const recent = events
+        .filter((e) => isRecentPast(e, now))
+        .sort((a, b) => parseStart(b.start) - parseStart(a.start));
       if (list) {
-        const slice = filter === "all" ? upcoming : upcoming.filter((e) => e.group === filter);
-        renderList(
-          list,
-          slice,
-          now,
-          filter === "xai" ? "Grok ships sit under No date yet until xAI puts a clock on them." : "Nothing in this slice."
-        );
+        const pool = query ? upcoming.concat(recent) : upcoming;
+        const slice = pool.filter((e) => (filter === "all" || e.group === filter) && matchQuery(e, query));
+        const empty = query
+          ? "No events match this search."
+          : filter === "xai"
+            ? "Grok ships sit under No date yet until xAI puts a clock on them."
+            : "Nothing in this slice.";
+        renderList(list, slice, now, empty);
       }
+      const recentRoot = document.querySelector("[data-calendar-recent]");
+      if (recentRoot) {
+        if (query) {
+          recentRoot.replaceChildren();
+          recentRoot.append(el("p", "cal-empty", "Matching recent flights are listed with upcoming results above."));
+        } else {
+          const slice = recent.filter((e) => filter === "all" || e.group === filter);
+          renderList(recentRoot, slice, now, "Nothing flown in the last three weeks in this slice.");
+        }
+      }
+      paintWatch();
       if (countdown) renderCountdown(countdown, upcoming);
       if (preview) {
         renderList(preview, upcoming.slice(0, 5), now);
@@ -517,7 +579,7 @@
           if (ev.href) cur.href = ev.href;
           if (ev.summary) cur.note = ev.summary;
           if (ev.precision) cur.precision = ev.precision;
-          if (ev.status && ev.status !== "done") cur.status = ev.status;
+          if (ev.status) cur.status = ev.status;
           cur.source = "curated";
         });
         events = mergeEvents([]);
@@ -525,26 +587,18 @@
       }
     } catch {}
 
-    if (watch) {
-      watch.replaceChildren();
-      WATCHING.forEach((item) => {
-        const row = el("article", `cal-row cal-${item.group} is-watch`);
-        const when = el("div", "cal-when");
-        when.append(el("strong", "", "No date"));
-        when.append(el("span", "", "Watching"));
-        const body = el("div", "cal-body");
-        body.append(el("p", "eyebrow", GROUPS[item.group] || item.group));
-        body.append(el("h3", "cal-title", item.title));
-        body.append(el("p", "cal-note", item.note));
-        row.append(when, body, el("span", "cal-status is-watching", "TBA"));
-        watch.append(row);
-      });
-    }
+    paintWatch();
 
     bindFilters(filters, (next) => {
       filter = next;
       paint();
     });
+    if (search) {
+      search.addEventListener("input", () => {
+        query = String(search.value || "").trim().toLowerCase();
+        paint();
+      });
+    }
 
     if (!list && !preview && !countdown) return; // hooks-only pages (e.g. SpaceX earnings line) skip Launch Library
     if (status) status.textContent = "Checking Launch Library 2…";

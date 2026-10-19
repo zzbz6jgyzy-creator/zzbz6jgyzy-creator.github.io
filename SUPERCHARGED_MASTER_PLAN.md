@@ -66,7 +66,7 @@ Conflicts are recorded, not overwritten. Canonical launch clocks stay in `data/e
 3. Homepage **What changed** from sourced tracker/Dispatch rows.
 4. Follow topics in `sd-follow-v1`.
 5. Freshness bars (last checked vs last verified) on major trackers.
-6. Optimus lab and Production IR dashboard (Q3 2025–Q3 2026, sourced YoY).
+6. Optimus lab, demonstration archive (4 opened events; We Robot 2024 off), and Production IR dashboard (Q1 2025–Q3 2026, sourced YoY when both quarters opened).
 7. Roadster sourced promises table (no progress %).
 8. Teslascope software-wave sentences (first seen / sample-count jumps), including per-country sample waves on `/updates.html` (sample ≠ VIN).
 9. FSD & Robotaxi evidence board (`/autonomy.html`). FSD Europe changelog honesty: recognition ≠ rollout (Slovakia).
@@ -75,6 +75,10 @@ Conflicts are recorded, not overwritten. Canonical launch clocks stay in `data/e
 12. Cybercab sourced Texas registration jumps (registered ≠ serving). Unchanged days labelled.
 13. See-the-launch + calendar kept-clock tables (events.json wins).
 14. Starlink McDowell snapshot diffs (`data/starlink-history.json`). Not a live operator feed.
+15. Autonomy, Daily, Production, Optimus in Tesla and Explore nav.
+16. Calendar search + Recently done (21 days). CRS-35 / USSF-481 findable.
+17. Starship Flight 15 sourced schedule notes (not telemetry).
+18. My Tesla Teslascope country sample waves (sample ≠ VIN).
 
 ## Explicitly not done (blockers / approval)
 

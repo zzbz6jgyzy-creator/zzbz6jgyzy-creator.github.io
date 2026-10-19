@@ -4,6 +4,34 @@
   "source": "Tesla Investor Relations",
   "quarters": [
     {
+      "id": "Q1 2025",
+      "periodEnd": "2025-03-31",
+      "published": "2025-04-02",
+      "production": 362615,
+      "deliveries": 336681,
+      "model3yProduction": 345454,
+      "model3yDeliveries": 323800,
+      "otherProduction": 17161,
+      "otherDeliveries": 12881,
+      "energyGwh": 10.4,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-first-quarter-2025-production-deliveries-and-deployments",
+      "sourceTitle": "Tesla First Quarter 2025 Production, Deliveries & Deployments"
+    },
+    {
+      "id": "Q2 2025",
+      "periodEnd": "2025-06-30",
+      "published": "2025-07-02",
+      "production": 410244,
+      "deliveries": 384122,
+      "model3yProduction": 396835,
+      "model3yDeliveries": 373728,
+      "otherProduction": 13409,
+      "otherDeliveries": 10394,
+      "energyGwh": 9.6,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-second-quarter-2025-production-deliveries-deployments",
+      "sourceTitle": "Tesla Second Quarter 2025 Production, Deliveries & Deployments"
+    },
+    {
       "id": "Q3 2025",
       "periodEnd": "2025-09-30",
       "published": "2025-10-02",

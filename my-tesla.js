@@ -452,6 +452,32 @@
     }).catch(() => {});
   };
 
+  let history = null;
+
+  const renderWaves = () => {
+    const ul = $("mt-waves");
+    if (!ul) return;
+    if (!state.cc) {
+      ul.innerHTML = `<li><b>Pick a country</b><p>Waves are filtered to the Teslascope sample for that country. They are not a notice that this VIN is eligible.</p></li>`;
+      return;
+    }
+    const fn = window.SDIntel && window.SDIntel.softwareWavesForCountry;
+    if (!history || !fn) {
+      ul.innerHTML = `<li><b>Loading sample history</b><p>Teslascope snapshots for ${esc(countryName())} will appear here. A first-seen row is not an offer to this car.</p></li>`;
+      return;
+    }
+    const waves = fn(history, state.cc);
+    if (!waves.length) {
+      ul.innerHTML = `<li><b>No sample waves for ${esc(countryName())} yet</b><p>The saved Teslascope history has no first-seen or count-jump row for this country. That is not a statement about this VIN.</p></li>`;
+      return;
+    }
+    ul.innerHTML = waves.slice(0, 6).map((w) =>
+      `<li><span class="mt-pill soon">Sample only</span><b>${esc(w.version)} — ${w.type === "appeared" ? "first seen in this country sample" : "sample count jump"}</b>
+        <p>${esc(w.summary)}</p>
+        <span class="mt-meta">Teslascope sample · ${esc((w.at || "").slice(0, 10))} · not Tesla offering this build to this VIN</span></li>`
+    ).join("");
+  };
+
   const renderGuides = () => {
     const box = $("mt-guides");
     box.innerHTML = guides()
@@ -465,6 +491,7 @@
     renderTiles();
     renderWhatsNew();
     renderUpdates();
+    renderWaves();
     renderFeatures();
     renderLimits();
     renderGuides();
@@ -658,6 +685,13 @@
         live = j;
         fillSw();
         render();
+      })
+      .catch(() => {});
+    fetch("/data/updates-history.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        history = j;
+        renderWaves();
       })
       .catch(() => {});
     fetch("/data/articles.json", { cache: "no-cache" })
