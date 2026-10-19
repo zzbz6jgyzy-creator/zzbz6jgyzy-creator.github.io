@@ -138,10 +138,10 @@
     {
       id: "ll-bandwagon-5",
       title: "Falcon 9 · Bandwagon-5",
-      start: "2026-10-19T10:30:00Z",
+      start: "2026-10-20T10:30:00Z",
       group: "spacex",
       where: "Cape Canaveral · SLC-40",
-      note: "Window opens 6:30 a.m. ET; backup Tue 20 Oct. Rideshare with Varda W-7 and SpaceX's second Starfall demo.",
+      note: "NET Tue 20 Oct (moved from Mon for recovery weather). Window opens 6:30 a.m. ET; backup Wed 21 Oct. Rideshare with Varda W-7 and SpaceX's second Starfall demo.",
       href: "/dispatch/bandwagon5-starfall-second-demo.html",
       status: "go",
       precision: "datetime",

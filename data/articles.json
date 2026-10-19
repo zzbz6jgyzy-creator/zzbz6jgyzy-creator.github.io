@@ -1,6 +1,28 @@
 {
-  "updated": "2026-10-18T07:34:58Z",
+  "updated": "2026-10-19T09:23:56Z",
   "articles": [
+    {
+      "url": "/dispatch/spacex-cant-rent-compute.html",
+      "title": "SpaceX rents out its compute, but can’t rent any itself",
+      "date": "2026-10-19T09:23:56Z",
+      "topic": "xai",
+      "tag": "SpaceX AI",
+      "image": "/assets/dispatch/spacex-cant-rent-compute-poster.jpg",
+      "summary": "Musk says AWS, Google Cloud “or anyone” had no inference capacity, while SpaceX leases GPUs to Google and Anthropic.",
+      "pinned": false,
+      "minutes": 6
+    },
+    {
+      "url": "/dispatch/musk-spacex-share-every-kid.html",
+      "title": "Musk pledges a SpaceX share to every kid in America",
+      "date": "2026-10-19T09:23:56Z",
+      "topic": "spacex",
+      "tag": "Markets",
+      "image": "/assets/dispatch/musk-spacex-share-every-kid-poster.jpg",
+      "summary": "One share each for about 72 million children is worth roughly $10.5 billion. How it compares, and how it could work.",
+      "pinned": false,
+      "minutes": 7
+    },
     {
       "url": "/dispatch/musk-earnings-week-q3-2026.html",
       "title": "SpaceX reports Tuesday, Tesla Wednesday, then 1.3B shares unlock",
@@ -15,7 +37,7 @@
     },
     {
       "url": "/dispatch/bandwagon5-starfall-second-demo.html",
-      "title": "Monday’s Falcon 9 carries SpaceX’s second Starfall test",
+      "title": "Tuesday’s Falcon 9 carries SpaceX’s second Starfall test",
       "date": "2026-10-18T01:34:10Z",
       "topic": "spacex",
       "tag": "SpaceX",

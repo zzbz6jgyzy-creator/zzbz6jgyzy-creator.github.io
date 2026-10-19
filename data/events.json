@@ -80,16 +80,17 @@
     },
     "bandwagon-5": {
       "title": "Falcon 9 · Bandwagon-5 rideshare",
-      "start": "2026-10-19T10:30:00Z",
+      "start": "2026-10-20T10:30:00Z",
       "precision": "datetime",
       "status": "go",
       "href": "/dispatch/bandwagon5-starfall-second-demo.html",
-      "summary": "One-hour window opens 6:30 a.m. ET from SLC-40, Cape Canaveral; backup Tue 20 Oct same window. 32 payloads incl. Varda W-Series 7 and SpaceX's second Starfall demo.",
+      "summary": "NET Tue 20 Oct (moved from Mon 19 Oct for unfavourable recovery weather). One-hour window opens 6:30 a.m. ET from SLC-40, Cape Canaveral; backup Wed 21 Oct same window. 32 payloads incl. Varda W-Series 7 and SpaceX's second Starfall demo.",
       "sources": [
         "https://www.spacex.com/launches/bandwagon5",
-        "https://x.com/SpaceX/status/2111482288135446909"
+        "https://x.com/SpaceX/status/2111482288135446909",
+        "https://x.com/SpaceX/status/2112083213124272563"
       ],
-      "end": "2026-10-19T11:30:00Z"
+      "end": "2026-10-20T11:30:00Z"
     },
     "spcx-q3-lockup-release": {
       "title": "SpaceX lock-up release · up to 1.3B shares",
