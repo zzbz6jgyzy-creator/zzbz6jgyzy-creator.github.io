@@ -4,6 +4,20 @@
   if (!DATA) return;
 
   const $ = (id) => document.getElementById(id);
+  const compiled = (iso) => {
+    const d = new Date(iso);
+    if (!Number.isFinite(+d)) return "";
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      timeZone: "UTC",
+    }).format(d);
+  };
+  const stamp = (iso) => {
+    const when = compiled(iso);
+    return when ? "Directory compiled " + when + "." : "";
+  };
   const setHint = (msg, hold) => {
     const hint = $("tc-hint");
     if (!hint) return;
@@ -377,7 +391,7 @@
         if (el) el.innerHTML = "";
       });
       const live = $("tc-live");
-      if (live) live.textContent = `Search a town to see clubs · ${DATA.updated}`;
+      if (live) live.textContent = `${stamp(DATA.updated)} Search a town to see clubs.`.trim();
       const hint = $("tc-hint");
       if (hint && !hint.dataset.hold) hint.textContent = "Pick a city. We only then show clubs for that place.";
       const sel = $("tc-cc");
@@ -406,7 +420,7 @@
       idle.textContent = "Nothing in the directory for that place.";
     }
     const live = $("tc-live");
-    if (live) live.textContent = `${n} near ${state.place || state.chip || state.q} · ${DATA.updated}`;
+    if (live) live.textContent = `${n} near ${state.place || state.chip || state.q}. ${stamp(DATA.updated)}`.trim();
     const hint = $("tc-hint");
     if (hint && !hint.dataset.hold) {
       hint.textContent = state.place

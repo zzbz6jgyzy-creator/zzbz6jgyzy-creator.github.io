@@ -143,10 +143,15 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - SpaceX hub stamp is Starship’s compile date only.
 - Flagship tracker pages get WebPage JSON-LD from existing title/meta. No ads. No notify delivery.
 
-### Batch 23 — Desk honesty (this session)
+### Batch 23 — Desk honesty (merged #131)
 
 - News desk ranks the full unique wire (`forDesk`). Homepage cluster caps stay on the eight.
 - Homepage Cybercab tracker uses the Texas DMV `live: "cybercab"` count (349), not Tesla’s older 300+ serving claim. No ads. No notify delivery.
+
+### Batch 24 — Remaining desk JSON-LD (this session)
+
+- Dispatch meta names the current lead stories, not “300 Cybercabs in Austin”.
+- WebPage JSON-LD on the remaining nav desks from existing title/meta. Clubs stamp is a compiled date. Game pages not rewritten. No ads. No notify delivery.
 
 ## Architecture (do not rip out)
 
