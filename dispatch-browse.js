@@ -11,6 +11,7 @@
     { id: "roadster", label: "Roadster", re: /roadster/i },
     { id: "starship", label: "Starship", re: /starship|super heavy|raptor|\bship \d/i },
     { id: "analysis", label: "Analysis", re: /analysis/i },
+    { id: "xai", label: "Grok / X", re: /\bgrok\b|\bxai\b|x subscription|x will bar/i },
   ];
   const chipsEl = document.querySelector("[data-disp-chips]");
   const qEl = document.querySelector("[data-disp-q]");
@@ -47,7 +48,8 @@
       b.className = "sd-disp-chip" + (c.id === topic ? " is-on" : "");
       b.setAttribute("data-disp-topic", c.id);
       b.setAttribute("aria-pressed", String(c.id === topic));
-      b.textContent = c.label;
+      const n = c.id === "all" ? cards.length : cards.filter((row) => row.topics.includes(c.id)).length;
+      b.textContent = `${c.label} · ${n}`;
       chipsEl.append(b);
     });
   };
@@ -74,16 +76,19 @@
 
   const pool = () => {
     const q = query.trim().toLowerCase();
+    const toks = q.split(/\s+/).filter((t) => t.length > 1);
     const rows = cards.filter((c) => {
       if (topic !== "all" && !c.topics.includes(topic)) return false;
       if (!q) return true;
-      return `${c.title} ${c.summary} ${c.tag}`.toLowerCase().includes(q);
+      const hay = `${c.title} ${c.summary} ${c.tag}`.toLowerCase();
+      if (toks.length > 1) return toks.every((t) => hay.includes(t));
+      return hay.includes(q);
     });
     rows.sort((a, b) => {
       const da = a.date || "";
       const db = b.date || "";
       if (da && db && da !== db) return sort === "oldest" ? da.localeCompare(db) : db.localeCompare(da);
-      return sort === "oldest" ? a.i - b.i : a.i - b.i;
+      return sort === "oldest" ? a.i - b.i : b.i - a.i;
     });
     return rows;
   };
@@ -164,6 +169,11 @@
         const copy = c.el.querySelector(".story-copy");
         if (!copy) return;
         const bits = [];
+        if (a.topic) {
+          const t = String(a.topic).toLowerCase();
+          const mapped = t === "x" ? "xai" : t;
+          if (CHIPS.some((ch) => ch.id === mapped) && !c.topics.includes(mapped)) c.topics.push(mapped);
+        }
         if (a.date) {
           c.date = a.date;
           const d = new Date(a.date);
@@ -181,9 +191,25 @@
         p.textContent = bits.join(" · ");
         p.removeAttribute("aria-hidden");
       });
+      paintChips();
       paint();
     })
     .catch(() => {});
+
+  const readUrl = () => {
+    const p = new URLSearchParams(location.search);
+    topic = chips.some((c) => c.id === p.get("topic")) ? p.get("topic") : "all";
+    query = p.get("dq") || "";
+    sort = p.get("sort") === "oldest" ? "oldest" : "newest";
+    if (qEl) qEl.value = query;
+  };
+  window.addEventListener("popstate", () => {
+    readUrl();
+    shown = PAGE;
+    paintChips();
+    paintSort();
+    paint();
+  });
 
   paintChips();
   paintSort();

@@ -4,7 +4,7 @@ window.STARSHIP = {
     "Compiled from SpaceX flight pages, FAA planning slides and public launch records. Outcomes are this desk’s read of the whole flight — not SpaceX’s official score. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
     flight: 15,
-    start: "2026-11-08T00:00:00Z",
+    start: "2026-11-08T12:00:00Z",
     precision: "day",
     pad: "Starbase · OLP-2",
     booster: "B22",

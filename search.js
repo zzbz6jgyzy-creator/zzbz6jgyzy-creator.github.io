@@ -2,7 +2,7 @@
    Overlay (⌘K / nav Search) on pages that load this file; full page on /search.html. */
 (() => {
   if (window.__sdFind) return;
-  const V = "202610191200";
+  const V = "202610192000";
   const PAGE = /\/search\.html$/.test(location.pathname);
   const LIMIT = PAGE ? 60 : 24;
   const LATEST = PAGE ? 12 : 8;
@@ -22,7 +22,7 @@
     return p.replace(/\/$/, "") || "/";
   };
   const compact = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
-  const tokens = (q) => String(q || "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim().split(/\s+/).filter(Boolean);
+  const tokens = (q) => String(q || "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim().split(/\s+/).filter((t) => t.length > 1);
   const fmtDate = (iso) => {
     if (!iso) return "";
     const d = new Date(iso);
@@ -74,20 +74,25 @@
     const tag = (item.tag || item.topic || "").toLowerCase();
     const raw = q.toLowerCase().trim();
     if (!raw) return item.kind === "story" ? 10 : item.kind === "wire" ? 4 : 50;
+    if (!toks.length) return 0;
     let s = 0;
-    if (title === raw) s += 220;
-    if (title.startsWith(raw)) s += 140;
-    if (title.includes(raw)) s += 90;
+    let hits = 0;
+    if (title === raw) { s += 220; hits += 1; }
+    if (title.startsWith(raw)) { s += 140; hits += 1; }
+    if (title.includes(raw)) { s += 90; hits += 1; }
     const ct = compact(title), cq = compact(raw);
-    if (cq.length >= 4 && ct.includes(cq)) s += 50;
+    if (cq.length >= 4 && ct.includes(cq)) { s += 50; hits += 1; }
     const expanded = expandToks(toks);
     for (const t of expanded) {
-      if (title === t) s += 70;
-      else if (title.startsWith(t) || title.split(/\s+/).includes(t)) s += 45;
-      else if (title.includes(t)) s += 28;
-      if (tag === t || tag.includes(t)) s += 22;
-      if (summary.includes(t)) s += 10;
+      let hit = false;
+      if (title === t) { s += 70; hit = true; }
+      else if (title.startsWith(t) || title.split(/\s+/).includes(t)) { s += 45; hit = true; }
+      else if (title.includes(t)) { s += 28; hit = true; }
+      if (tag === t || tag.includes(t)) { s += 22; hit = true; }
+      if (summary.includes(t)) { s += 10; hit = true; }
+      if (hit) hits += 1;
     }
+    if (!hits) return 0;
     if (item.kind === "story") s += 8;
     if (item.kind === "page") s += 4;
     if (toks.includes("tesla") && toks.includes("software") && /updates\.html/.test(item.url || "")) s += 40;
@@ -346,14 +351,18 @@
   function isOpen() { return root && !root.hidden; }
 
   /* —— /search.html —— */
-  function paintPage() {
+  function paintPage(opts) {
     const box = document.querySelector("[data-sd-page]");
     if (!box) return;
     render(box, (document.getElementById("sd-search-q") || {}).value || "");
+    if (opts && opts.skipUrl) return;
     const q = ((document.getElementById("sd-search-q") || {}).value || "").trim();
     const url = new URL(location.href);
     if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
-    history.replaceState(null, "", url.pathname + url.search + url.hash);
+    const next = url.pathname + url.search + url.hash;
+    if (next === location.pathname + location.search + location.hash) return;
+    if (opts && opts.push) history.pushState(null, "", next);
+    else history.replaceState(null, "", next);
   }
 
   async function bootPage() {
@@ -371,7 +380,7 @@
       clearTimeout(t);
       t = setTimeout(paintPage, 60);
     });
-    form.addEventListener("submit", (e) => { e.preventDefault(); paintPage(); });
+    form.addEventListener("submit", (e) => { e.preventDefault(); paintPage({ push: true }); });
     const kinds = document.querySelector("[data-sd-kinds]");
     if (kinds) {
       const startKind = new URLSearchParams(location.search).get("kind") || "all";
@@ -386,10 +395,21 @@
         const k = b.getAttribute("data-sd-kind") || "all";
         if (k === "all") url.searchParams.delete("kind");
         else url.searchParams.set("kind", k);
-        history.replaceState(null, "", url.pathname + url.search + url.hash);
-        paintPage();
+        history.pushState(null, "", url.pathname + url.search + url.hash);
+        paintPage({ skipUrl: true });
       });
     }
+    window.addEventListener("popstate", () => {
+      const p = new URLSearchParams(location.search);
+      input.value = p.get("q") || "";
+      const startKind = p.get("kind") || "all";
+      if (kinds) {
+        kinds.querySelectorAll("[data-sd-kind]").forEach((b) => {
+          b.classList.toggle("is-on", b.getAttribute("data-sd-kind") === startKind);
+        });
+      }
+      paintPage({ skipUrl: true });
+    });
   }
 
   document.addEventListener("click", (e) => {

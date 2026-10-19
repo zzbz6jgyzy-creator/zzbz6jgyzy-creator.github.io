@@ -65,6 +65,44 @@
     return [e.id, e.ll2Id, e.providerId].filter(Boolean).map(String);
   }
 
+  function aliasesOf(e) {
+    const out = new Set(idsOf(e));
+    const bw = bandwagonNum(e && e.title);
+    if (bw) {
+      out.add(`bandwagon-${bw}`);
+      out.add(`f9-bandwagon${bw}`);
+      out.add(`ll-bandwagon-${bw}`);
+    }
+    const sf = starshipFlight(e && e.title);
+    if (sf) {
+      out.add(`starship-f${sf}`);
+      out.add(`starship-flight-${sf}`);
+    }
+    const us = ussfNum(e && e.title);
+    if (us) {
+      out.add(`ussf-${us}`);
+      out.add(`f9-ussf${us}`);
+      out.add(`ll-ussf-${us}`);
+    }
+    return [...out];
+  }
+
+  function isFlown(status) {
+    return /success|failure|partial|in.?flight|^live$/.test(String(status || "").toLowerCase());
+  }
+
+  function pickStart(curated, live) {
+    const liveStart = parseStart(live && live.start);
+    const curStart = parseStart(curated && curated.start);
+    if (isFlown(live && live.status) && Number.isFinite(liveStart)) return live.start;
+    if (!Number.isFinite(liveStart)) return (curated && curated.start) || (live && live.start);
+    if (!Number.isFinite(curStart)) return live.start;
+    if (Math.abs(liveStart - curStart) <= WINDOW_MS) {
+      return curated.source === "fallback" ? live.start || curated.start : curated.start || live.start;
+    }
+    return liveStart > curStart ? live.start : curated.start;
+  }
+
   function padNorm(e) {
     const s = `${e.where || ""} ${e.pad || ""} ${e.location || ""}`.toLowerCase();
     if (/slc-?40|cape canaveral/.test(s)) return "slc40";
@@ -98,8 +136,8 @@
     if (!a || !b) return false;
     if (missionConflict(a, b)) return false;
 
-    const idsA = idsOf(a);
-    const idsB = idsOf(b);
+    const idsA = aliasesOf(a);
+    const idsB = aliasesOf(b);
     if (idsA.some((id) => idsB.includes(id))) return true;
 
     const ka = launchKey(a.title);
@@ -121,14 +159,7 @@
   function blend(curated, live) {
     const liveStatus = String(live.status || "").toLowerCase();
     const preferLiveStatus = /tbd|hold|in.?flight|live/.test(liveStatus);
-    const liveStart = parseStart(live.start);
-    const curStart = parseStart(curated.start);
-    let start = curated.start || live.start;
-    if (Number.isFinite(liveStart) && Number.isFinite(curStart) && Math.abs(liveStart - curStart) > WINDOW_MS) {
-      start = live.start;
-    } else if (curated.source === "fallback") {
-      start = live.start || curated.start;
-    }
+    const start = pickStart(curated, live);
     return {
       ...live,
       id: curated.id || live.id,
@@ -194,6 +225,8 @@
     parseStart,
     launchKey,
     sameLaunch,
+    aliasesOf,
+    pickStart,
     mergeEvents,
     uniqueByLaunch,
     starlinkGroup,

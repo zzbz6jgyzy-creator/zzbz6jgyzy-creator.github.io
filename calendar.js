@@ -186,14 +186,14 @@
     if (!Number.isFinite(t)) return "Date TBA";
     const d = new Date(t);
     if (event.precision === "month") {
-      return `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+      return `${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
     }
     if (event.precision === "day") {
-      const day = `${d.getDate()} ${MONTHS[d.getMonth()]}`;
+      const day = `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
       return event.status === "net" || event.status === "tbd" ? `NET ${day}` : day;
     }
     if (event.status === "net") {
-      return `NET ${d.getDate()} ${MONTHS[d.getMonth()]}`;
+      return `NET ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
     }
     const sameYear = d.getFullYear() === now.getFullYear();
     const day = `${d.getDate()} ${MONTHS[d.getMonth()]}${sameYear ? "" : ` ${d.getFullYear()}`}`;

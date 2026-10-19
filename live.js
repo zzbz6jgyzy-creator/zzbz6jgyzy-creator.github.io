@@ -100,7 +100,18 @@
   Promise.all([fetch(q.get('livedata') || '/live-data.json?t=' + Math.floor(Date.now() / 6e4), {cache: 'no-store'}).then(function (r) { return r.json(); }),
     fetch('/data/events.json', {cache: 'no-cache'}).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })]).then(function (pair) {
     var d = pair[0], shared = pair[1] && pair[1].events || {};
-    (d.events || []).forEach(function (e) { var s = shared[e.id]; if (s && s.date) { var tz = s.tz || 'Z'; e.start = s.date + 'T00:00:00' + tz; e.end = s.date + 'T23:59:00' + tz; } }); // shared dates win
+    var sharedIds = { 'f9-bandwagon5': 'bandwagon-5', 'f9-ussf481': 'ussf-481', 'f9-crs35': 'crs35-docking' };
+    (d.events || []).forEach(function (e) {
+      var s = shared[e.id] || shared[sharedIds[e.id]];
+      if (!s) return;
+      if (s.start) e.start = s.start;
+      if (s.end) e.end = s.end;
+      if (s.date && !s.start) {
+        var tz = s.tz || 'Z';
+        e.start = s.date + 'T00:00:00' + tz;
+        e.end = s.date + 'T23:59:00' + tz;
+      }
+    });
     now = q.get('livenow') ? now : Date.now();
     var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page || (page === 'spacex' && e.page === 'starship')); });
     // Home: keep timed Falcon/Dragon; drop NET Starship. Same rule as scripts/live-home-pick.js.

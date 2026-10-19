@@ -37,7 +37,7 @@ window.SEE_LAUNCH = {
     {
       id: "starship-f15",
       title: "Starship Flight 15",
-      start: "2026-11-08T18:00:00Z",
+      start: "2026-11-08T12:00:00Z",
       pad: "sb2",
       vehicle: "starship",
       orbit: "suborbital",
@@ -48,15 +48,15 @@ window.SEE_LAUNCH = {
     },
     {
       id: "ll-bandwagon-5",
-      title: "Falcon 9 · Bandwagon 5",
-      start: "2026-10-19T10:30:00Z",
+      title: "Falcon 9 · Bandwagon-5",
+      start: "2026-10-20T10:30:00Z",
       pad: "slc40",
       vehicle: "falcon",
       orbit: "leo",
       status: "go",
       precision: "datetime",
-      href: "https://www.spacex.com/launches",
-      note: "Dedicated mid-inclination rideshare from SLC-40.",
+      href: "/dispatch/bandwagon5-starfall-second-demo.html",
+      note: "NET Tue 20 Oct (moved from Mon for recovery weather). Window opens 6:30 a.m. ET from SLC-40.",
     },
     {
       id: "ll-starlink-15-15",
