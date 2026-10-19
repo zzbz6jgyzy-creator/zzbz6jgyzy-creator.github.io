@@ -1,17 +1,17 @@
 {
-  "updated": "2026-10-19T15:06:46.182Z",
+  "updated": "2026-10-19T15:14:03.692Z",
   "trackers": [
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Compiled desk file. FAA NET is not a SpaceX clock."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-18T07:50:00.000Z",
       "note": "Canonical dates in data/events.json. Launch Library 2 is a live overlay."
     },
@@ -25,14 +25,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-18T00:00:00.000Z",
       "note": "Manual editorial file with ministry sources."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-19T06:00:37.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -46,35 +46,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Every quote needs a source that was opened."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Tesla IR production and delivery tables only."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Demonstration ≠ autonomy. Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-19T15:06:46.182Z",
+      "lastChecked": "2026-10-19T15:14:03.692Z",
       "lastVerified": "2026-10-19T14:57:45.000Z",
       "note": "Vehicle prefs stay in this browser."
     }

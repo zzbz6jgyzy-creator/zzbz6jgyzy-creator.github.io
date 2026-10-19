@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19T15:06:46.182Z",
+  "updated": "2026-10-19T15:14:03.692Z",
   "changes": [
     {
       "type": "logged",
@@ -34,23 +34,6 @@
       "summary": "One share each for about 72 million children is worth roughly $10.5 billion. How it compares, and how it could work.",
       "title": "Musk pledges a SpaceX share to every kid in America",
       "id": "logged|dispatch:/dispatch/musk-spacex-share-every-kid.html|2026-10-19T09:23:56.000Z|Musk pledges a SpaceX share to every kid in America"
-    },
-    {
-      "type": "appeared",
-      "factId": "optimus:sourced-demos",
-      "topic": "optimus",
-      "tracker": "optimus",
-      "field": "sourced-demos",
-      "previous": "",
-      "next": "4",
-      "at": "2026-10-19T00:00:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Opened Verge, Engadget and Dispatch pages",
-      "sourceUrl": "",
-      "href": "/optimus.html#demos",
-      "summary": "Each card records what was shown, what was not shown, and that autonomy is unknown unless a source established it.",
-      "title": "Sourced Optimus demonstrations",
-      "id": "appeared|optimus:sourced-demos|2026-10-19T00:00:00.000Z|4"
     },
     {
       "type": "logged",
