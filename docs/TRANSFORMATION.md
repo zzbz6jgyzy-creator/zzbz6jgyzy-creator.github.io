@@ -124,12 +124,18 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Homepage editorial lead sits above the next-event card. News ranking downranks accessory and finance-speculation wires without dropping small publishers.
 - Dispatch newest/oldest sort. My Tesla “What’s new for your Tesla?” is labelled. Homepage band topic restored. No ads. No notify delivery.
 
-### Batch 20 — Homepage builder lock (this session)
+### Batch 20 — Homepage builder lock (merged #128)
 
 - `build-home.js` keeps `data-band-topic="website"` so the next pre-render cannot strip Beehiiv’s homepage tag.
 - Home next-event pick matches `live.js`: timed Falcon stays, NET Starship drops. Prebuilt card is Bandwagon-5, not Q3 earnings.
 - Tesla / SpaceX desk rewrite aborts if it would drop a `<picture>`.
 - `/search.html` is `noindex` and off the sitemap. No ads. No notify delivery.
+
+### Batch 21 — Homepage wire quality (this session)
+
+- Clickbait no longer counts as a Roadster milestone. One jellyfish story. At most two Roadster wires.
+- Jellyfish pairs to Can I see it? Class-action pairs to the FSD tracker.
+- Tesla, SpaceX, News and Calendar get WebPage JSON-LD from existing page facts. No ads. No notify delivery.
 
 ## Architecture (do not rip out)
 

@@ -81,6 +81,27 @@ const prepared = keep.prepare([
 if (prepared.length === 1 && (prepared[0].related || []).length === 1) ok("duplicate stem collapsed");
 else bad("duplicate stem collapsed", JSON.stringify(prepared.map((p) => p.title)));
 
+if (keep.classify(fixtures[6]) === "speculation") ok("sentient is speculation");
+else bad("sentient is speculation", keep.classify(fixtures[6]));
+
+const mph = row({ title: "Musk Wants The New Tesla Roadster To Go Over 380 MPH", source: "CarBuzz" });
+if (keep.classify(mph) === "speculation") ok("380 mph is speculation");
+else bad("380 mph is speculation", keep.classify(mph));
+if (keep.rankScore(fixtures[0], NOW) > keep.rankScore(fixtures[6], NOW)) ok("launch beats sentient");
+else bad("launch beats sentient", `${keep.rankScore(fixtures[0], NOW)} vs ${keep.rankScore(fixtures[6], NOW)}`);
+
+const jelly = keep.forHomepage(
+  [
+    row({ title: "SpaceX launch Monday morning could bring another space jellyfish to Carolina skies", source: "WRAL", topic: "spacex" }),
+    row({ title: "SpaceX Launch Could Create a Giant Jellyfish in the Sky Over the East Coast Monday", source: "Benzinga", topic: "spacex" }),
+    row({ title: "SpaceX confirms Falcon 9 Bandwagon-5 is go", source: "SpaceX", topic: "spacex" }),
+  ],
+  {},
+  NOW
+);
+if (jelly.filter((r) => /jellyfish/i.test(r.title)).length === 1) ok("one jellyfish");
+else bad("one jellyfish", jelly.map((r) => r.title).join(" | "));
+
 if (keep.RANK && keep.RANK.note && keep.RANK.kindScore.launch === 8) ok("transparent RANK");
 else bad("transparent RANK", "missing export");
 

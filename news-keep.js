@@ -9,7 +9,7 @@
   const FINANCE_RE =
     /\$[\d,.]+\s+invested|could be worth|if you.{0,40}invested|become a millionaire|this one stock to buy|stock to buy now|\bone stock\b|should you buy/i;
   const FINANCE_SOFT =
-    /unlock value|growth drivers|shares down \d+%|failed .+ pump|cast[s]? .+ as its next|industry analyst/i;
+    /unlock value|growth drivers|shares down \d+%|failed .+ pump|cast[s]? .+ as its next|industry analyst|lowers position|raises position|price target|initiates coverage/i;
   const ACCESSORY_SRC = /basenor|tesla accessories|aftermarket|evbandit|tesmag/i;
   const ACCESSORY_TITLE = /floor mat|mud flap|console organizer|sunshade|cup holder|accessories\b|aftermarket/i;
   const RELEVANT =
@@ -19,7 +19,14 @@
   const SOFTWARE = /\b(fsd|software|firmware|assisted driving|supervised|2026\.\d+)\b/i;
   const MILESTONE = /\b(roadster|optimus|cybercab|robotaxi|halo)\b/i;
   const REGULATORY = /\b(court|regulator|nhtsa|faa|approval|class action|appeals)\b/i;
-  const CLICKBAIT = /\bsentient\b|failed .+ pump|you won't believe|forget the tesla|ev sportscars on sale|trillion man/i;
+  const CLICKBAIT =
+    /\bsentient\b|failed .+ pump|you won't believe|forget the tesla|ev sportscars on sale|trillion man|\b380\s*mph\b|autonomous stunts/i;
+  const CLUSTER = [
+    [/jellyfish/, "jellyfish", 1],
+    [/bandwagon-?5|\bstarfall\b/, "bandwagon5", 1],
+    [/class action|self-driving claims/, "class-action", 1],
+    [/\broadster\b|\bhalo\b/, "roadster", 2],
+  ];
   const SPECULATION = /\b(could|might|reportedly|rumou?r|sources say|allegedly|odd new promise|speculation)\b/i;
   const TRUST_BOOST = [
     ["tesla", 8],
@@ -89,9 +96,10 @@
     if (ACCESSORY_SRC.test(source) && !LAUNCH.test(title) && !SOFTWARE.test(title) && !REGULATORY.test(title) && !MILESTONE.test(title)) {
       return /wait|launch series|production|delivery|recall/.test(title) ? "general" : "accessory";
     }
-    if (isFinance(title) || (FINANCE_SOFT.test(title) && /seeking alpha|tradingview|simply wall|motley|benzinga|investorplace/i.test(source))) {
+    if (isFinance(title) || (FINANCE_SOFT.test(title) && /seeking alpha|tradingview|simply wall|motley|benzinga|investorplace|marketbeat/i.test(source))) {
       return "finance";
     }
+    if (CLICKBAIT.test(title)) return "speculation";
     if (/tesla,?\s*inc|official tesla|spacex\.com|nasa /i.test(source)) return "official";
     if (LAUNCH.test(title) || (LAUNCH_VERB.test(title) && /spacex|falcon|starship|cape|vandenberg/i.test(blob) && !/launch series/i.test(title))) {
       return "launch";
@@ -99,8 +107,35 @@
     if (SOFTWARE.test(title)) return "software";
     if (MILESTONE.test(title) && !FINANCE_SOFT.test(title)) return "milestone";
     if (REGULATORY.test(title)) return "regulatory";
-    if (SPECULATION.test(title) || CLICKBAIT.test(title)) return "speculation";
+    if (SPECULATION.test(title)) return "speculation";
     return RELEVANT.test(blob) ? "general" : "general";
+  };
+
+  const clusterOf = (row) => {
+    const title = String((row && row.title) || "").toLowerCase();
+    for (let i = 0; i < CLUSTER.length; i++) {
+      if (CLUSTER[i][0].test(title)) return { key: CLUSTER[i][1], cap: CLUSTER[i][2] };
+    }
+    return { key: titleKey(row && row.title), cap: 1 };
+  };
+
+  const clusterKey = (row) => clusterOf(row).key;
+
+  const diversify = (rows) => {
+    const counts = Object.create(null);
+    const out = [];
+    rows.forEach((row) => {
+      const { key, cap } = clusterOf(row);
+      if (!key) {
+        out.push(row);
+        return;
+      }
+      counts[key] = counts[key] || 0;
+      if (counts[key] >= cap) return;
+      counts[key] += 1;
+      out.push(row);
+    });
+    return out;
   };
 
   const relevanceScore = (row) => {
@@ -133,7 +168,7 @@
     const t = now || Date.now();
     const kind = (row && row.kind) || classify(row);
     let s = relevanceScore(row) + recencyScore(row, t) + (KIND_SCORE[kind] || 0) + editorialScore(row);
-    if (CLICKBAIT.test((row && row.title) || "")) s -= 4;
+    if (CLICKBAIT.test((row && row.title) || "")) s -= 10;
     if (ACCESSORY_SRC.test((row && row.source) || "") && kind !== "accessory") s -= 2;
     return s;
   };
@@ -173,9 +208,11 @@
 
   const forHomepage = (items, hold, now) => {
     const t = now || Date.now();
-    return prepare(items, hold)
-      .slice()
-      .sort((a, b) => rankScore(b, t) - rankScore(a, t) || String(b.published || "").localeCompare(String(a.published || "")));
+    return diversify(
+      prepare(items, hold)
+        .slice()
+        .sort((a, b) => rankScore(b, t) - rankScore(a, t) || String(b.published || "").localeCompare(String(a.published || "")))
+    );
   };
 
   return {
@@ -188,6 +225,8 @@
     rankScore,
     prepare,
     forHomepage,
+    clusterKey,
+    diversify,
     RANK,
   };
 });
