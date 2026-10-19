@@ -67,7 +67,9 @@
         '<div class="lw-info"><h3 class="lw-title">' + esc(e.title) + '</h3>' + meta +
         (timed ? '<div class="lw-cd" aria-live="off"></div>' : '') +
         '<div class="lw-acts"><a class="lw-btn lw-btn-soft" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener"><span class="lw-play"></span>' + 'Watch the live stream \u2197' + '</a>' +
-        '<a class="lw-cal" href="/calendar.html">All events \u2192</a></div>' + credit + '</div></div></div>';
+        '<a class="lw-cal" href="/calendar.html">All events \u2192</a></div>' +
+        (e.source ? '<small class="lw-cr">Source · ' + esc((e.source || '').replace(/^https?:\/\//, '').split('/')[0]) + '</small>' : '') +
+        credit + '</div></div></div>';
       var c = slot.querySelector('.lw-cd'); if (c && dayOnly && new Date(e.start) <= Date.now()) { c.innerHTML = '<span class="lw-today">Today</span>'; c = null; }
       if (c) { var tile = function (n, l) { return '<span class="lw-tile"><b>' + n + '</b><i>' + l + '</i></span>'; };
         var t1 = function () { var sec = Math.max(0, Math.floor((new Date(e.start) - Date.now()) / 1e3)), dd = Math.floor(sec / 86400), p2 = function (n) { return String(n).padStart(2, '0'); };
@@ -101,8 +103,10 @@
     (d.events || []).forEach(function (e) { var s = shared[e.id]; if (s && s.date) { var tz = s.tz || 'Z'; e.start = s.date + 'T00:00:00' + tz; e.end = s.date + 'T23:59:00' + tz; } }); // shared dates win
     now = q.get('livenow') ? now : Date.now();
     var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page || (page === 'spacex' && e.page === 'starship')); });
-    var featOn = ev.some(function (e) { return e.featured || (shared[e.id] && shared[e.id].major && e.page !== 'starship'); });
-    if (page === 'home' && featOn) ev = ev.filter(function (e) { return e.page !== 'starship'; }); // launch streams live on the SpaceX page while a featured event leads
+    if (page === 'home') ev = ev.filter(function (e) {
+      if (e.page !== 'starship') return true;
+      return !e.net && !e.timeTbc && e.status !== 'ended';
+    });
     var live = ev.filter(function (e) { var s = new Date(e.start) - 0;
       return e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2); }).sort(function (a, b) { // several live: featured/major first, then latest start
         var pa = (a.featured || (shared[a.id] && shared[a.id].major)) ? 1 : 0, pb = (b.featured || (shared[b.id] && shared[b.id].major)) ? 1 : 0;

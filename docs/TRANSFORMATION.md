@@ -112,11 +112,17 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Beehiiv subscriber tags created. Three live UTM segments. Tag-apply automations are draft until published in the editor.
 - Sunday send is still one list. No per-car mail. No ads.
 
-### Batch 18 — Watch counts (this session)
+### Batch 18 — Watch counts (merged #126)
 
 - Unlisted `/counts.html` paints live `sd-events` `/stats?days=30`. Eight allowlisted actions only.
 - About links to it. `noindex`. Not in nav. Zeros stay zeros. Fail copy when the Worker is blocked.
 - Not unique visitors. No invented traffic. No ads.
+
+### Batch 19 — Review fixes (this session)
+
+- Calendar / see-the-launch / homepage countdown share `calendar-merge.js`. Bandwagon-5 is one mission; Starlink 15-25 stays distinct from 15-26; CRS launch stays distinct from docking.
+- Homepage editorial lead sits above the next-event card. News ranking downranks accessory and finance-speculation wires without dropping small publishers.
+- Dispatch newest/oldest sort. My Tesla “What’s new for your Tesla?” is labelled. Homepage band topic restored. No ads. No notify delivery.
 
 ## Architecture (do not rip out)
 
@@ -132,7 +138,11 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 ## Ranked next batches
 
-None queued. Dark remains the default brand. Do not auto-switch on OS light mode.
+1. Measure production CWV after this merge.
+2. Publish Beehiiv `Tag ·` automations only if segmented signup mail is wanted.
+3. Per-car mail only after a real send hook exists.
+
+Dark remains the default brand. Do not auto-switch on OS light mode.
 
 ## Rules that stay in force
 

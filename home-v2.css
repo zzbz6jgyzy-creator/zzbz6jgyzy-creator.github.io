@@ -19,6 +19,7 @@ body.home-x{background:#050505;color:#f4f4f2}
 .hv-tag{display:inline-block;font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#e31937}
 .hv-side{display:flex;flex-direction:column;gap:14px}
 .hv-live:empty{display:none}.hv-live .lv{margin:0!important;max-width:none!important}
+.hv-event{margin:0 0 28px}
 .hv-supp{display:flex;flex-direction:column}
 .hv-s{display:grid;grid-template-columns:112px 1fr;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
 .hv-s:first-child{padding-top:0}

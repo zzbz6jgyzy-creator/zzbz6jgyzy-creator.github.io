@@ -111,10 +111,17 @@
       return `<a class="hv-c" href="${r.href}"><span class="hv-c-n">${esc(r.title)}</span><span class="hv-c-w">${esc(when)}</span><span class="hv-c-t">${r.day ? "~" + dd + "d" : (dd ? dd + "d " : "") + hh + "h " + String(mm).padStart(2, "0") + "m"}</span></a>`;
     }).join("") || '<p class="hv-c-none">No dated events right now.</p>';
   };
-  evReady.then(() => { if (S && S.next) rows.push({ title: "Starship Flight " + S.next.flight, t: new Date(S.next.start).getTime(), day: S.next.precision === "day", href: "/starship.html" });
+  evReady.then(() => { if (S && S.next) rows.push({ title: "Starship Flight " + S.next.flight, t: new Date(S.next.start).getTime(), start: S.next.start, day: S.next.precision === "day", href: "/starship.html" });
   fetch("/live-data.json", { cache: "no-cache" }).then((r) => r.json()).then((d) => {
     const norm = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-    (d.events || []).forEach((e) => { if (e.status !== "ended" && e.start && !rows.some((r) => norm(r.title) === norm(e.title))) rows.push({ title: e.title, t: new Date(e.start).getTime(), href: e.url || e.href || "/calendar.html" }); });
+    (d.events || []).forEach((e) => {
+      if (e.status === "ended" || !e.start) return;
+      const next = { title: e.title, t: new Date(e.start).getTime(), start: e.start, href: e.url || e.href || "/calendar.html" };
+      const dup = rows.some((r) => window.SDCalendarMerge
+        ? window.SDCalendarMerge.sameLaunch({ title: r.title, start: r.start || new Date(r.t).toISOString() }, e)
+        : norm(r.title) === norm(e.title));
+      if (!dup) rows.push(next);
+    });
   }).catch(() => {}).finally(() => { draw(); setInterval(draw, 30000); });
   });
 })();

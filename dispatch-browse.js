@@ -18,6 +18,7 @@
   const more = document.querySelector("[data-disp-more]");
   const empty = document.querySelector("[data-disp-empty]");
   const form = document.querySelector("[data-disp-find]");
+  const sortEl = document.querySelector("[data-disp-sort]");
 
   const cards = [...grid.querySelectorAll("a.story-card")].map((el, i) => {
     const tag = ((el.querySelector(".tag") || {}).textContent || "").trim();
@@ -26,7 +27,7 @@
     const href = el.getAttribute("href") || "";
     const hay = `${tag} ${title} ${summary} ${href}`;
     const topics = CHIPS.filter((c) => c.id !== "all" && c.re.test(hay)).map((c) => c.id);
-    return { el, tag, title, summary, href, topics, i };
+    return { el, tag, title, summary, href, topics, i, date: "" };
   });
 
   const present = new Set(cards.flatMap((c) => c.topics));
@@ -34,6 +35,7 @@
   const params = new URLSearchParams(location.search);
   let topic = chips.some((c) => c.id === params.get("topic")) ? params.get("topic") : "all";
   let query = params.get("dq") || "";
+  let sort = params.get("sort") === "oldest" ? "oldest" : "newest";
   let shown = PAGE;
 
   const paintChips = () => {
@@ -56,28 +58,53 @@
     else url.searchParams.delete("topic");
     if (query) url.searchParams.set("dq", query);
     else url.searchParams.delete("dq");
+    if (sort === "oldest") url.searchParams.set("sort", "oldest");
+    else url.searchParams.delete("sort");
     history.replaceState(null, "", url.pathname + url.search + url.hash);
+  };
+
+  const paintSort = () => {
+    if (!sortEl) return;
+    sortEl.querySelectorAll("[data-disp-dir]").forEach((b) => {
+      const on = b.getAttribute("data-disp-dir") === sort;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
   };
 
   const pool = () => {
     const q = query.trim().toLowerCase();
-    return cards.filter((c) => {
+    const rows = cards.filter((c) => {
       if (topic !== "all" && !c.topics.includes(topic)) return false;
       if (!q) return true;
       return `${c.title} ${c.summary} ${c.tag}`.toLowerCase().includes(q);
     });
+    rows.sort((a, b) => {
+      const da = a.date || "";
+      const db = b.date || "";
+      if (da && db && da !== db) return sort === "oldest" ? da.localeCompare(db) : db.localeCompare(da);
+      return sort === "oldest" ? a.i - b.i : a.i - b.i;
+    });
+    return rows;
   };
 
   const paint = () => {
     const rows = pool();
-    cards.forEach((c) => { c.el.hidden = true; });
-    rows.slice(0, shown).forEach((c) => { c.el.hidden = false; });
+    cards.forEach((c) => {
+      c.el.hidden = true;
+      c.el.classList.remove("disp-featured");
+    });
+    rows.slice(0, shown).forEach((c, i) => {
+      c.el.hidden = false;
+      if (sort === "newest" && topic === "all" && !query.trim() && i === 0) c.el.classList.add("disp-featured");
+    });
     if (empty) empty.hidden = rows.length > 0;
     if (more) more.hidden = rows.length <= shown;
     if (status) {
       const label = chips.find((c) => c.id === topic);
+      const order = sort === "oldest" ? "oldest first" : "newest first";
       status.textContent = rows.length
-        ? `${rows.length} ${rows.length === 1 ? "story" : "stories"}${topic === "all" ? "" : " in " + (label ? label.label : topic)}${query ? " matching “" + query + "”" : ""}`
+        ? `${rows.length} ${rows.length === 1 ? "story" : "stories"}${topic === "all" ? "" : " in " + (label ? label.label : topic)}${query ? " matching “" + query + "”" : ""} · ${order}`
         : "No Dispatch stories match that filter.";
     }
     grid.classList.add("disp-ready");
@@ -115,6 +142,17 @@
   }
   if (form) form.addEventListener("submit", (e) => { e.preventDefault(); paint(); });
   if (more) more.addEventListener("click", () => { shown += PAGE; paint(); });
+  if (sortEl) {
+    sortEl.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-disp-dir]");
+      if (!b) return;
+      sort = b.getAttribute("data-disp-dir") === "oldest" ? "oldest" : "newest";
+      shown = PAGE;
+      paintSort();
+      writeUrl();
+      paint();
+    });
+  }
 
   fetch("/data/articles.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
@@ -127,10 +165,12 @@
         if (!copy) return;
         const bits = [];
         if (a.date) {
+          c.date = a.date;
           const d = new Date(a.date);
           if (!Number.isNaN(d.getTime())) bits.push(d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }));
         }
         if (a.minutes) bits.push(a.minutes + " min read");
+        bits.push("Supercharged Daily");
         if (!bits.length) return;
         let p = copy.querySelector(".sd-disp-meta");
         if (!p) {
@@ -141,9 +181,11 @@
         p.textContent = bits.join(" · ");
         p.removeAttribute("aria-hidden");
       });
+      paint();
     })
     .catch(() => {});
 
   paintChips();
+  paintSort();
   paint();
 })();

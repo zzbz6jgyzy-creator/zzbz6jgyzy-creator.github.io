@@ -2,7 +2,7 @@
    Overlay (⌘K / nav Search) on pages that load this file; full page on /search.html. */
 (() => {
   if (window.__sdFind) return;
-  const V = "202610190630";
+  const V = "202610191200";
   const PAGE = /\/search\.html$/.test(location.pathname);
   const LIMIT = PAGE ? 60 : 24;
   const LATEST = PAGE ? 12 : 8;
@@ -90,6 +90,8 @@
     }
     if (item.kind === "story") s += 8;
     if (item.kind === "page") s += 4;
+    if (toks.includes("tesla") && toks.includes("software") && /updates\.html/.test(item.url || "")) s += 40;
+    if (toks.includes("optimus") && /promise-tracker|tesla\.html|dream-scenario/.test(item.url || "")) s += 24;
     s += recencyBoost(item);
     return s;
   }
@@ -215,6 +217,11 @@
     if (loadErr) {
       if (status) status.textContent = loadErr;
       hits.innerHTML = `<p class="sd-find-empty">${esc(loadErr)} Browse <a href="/news.html">News</a> or <a href="/dispatch.html">Dispatch</a>.</p>`;
+      return 0;
+    }
+    if (!catalog) {
+      if (status) status.textContent = "Loading…";
+      hits.innerHTML = `<p class="sd-find-empty">Loading the index…</p>`;
       return 0;
     }
     const res = queryItems(q);

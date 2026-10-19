@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="/styles.css?v=202610190500" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/search.css?v=202610190400" />
-    <link rel="stylesheet" href="/dispatch-browse.css?v=202610190700" />
+    <link rel="stylesheet" href="/dispatch-browse.css?v=202610191200" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
   </head>
   <body>
@@ -154,6 +154,10 @@
               <input id="disp-q" data-disp-q type="search" placeholder="Search Dispatch" autocomplete="off" />
               <button type="submit">Filter</button>
             </form>
+            <div class="sd-disp-sort" data-disp-sort role="group" aria-label="Sort stories">
+              <button type="button" class="sd-disp-chip is-on" data-disp-dir="newest" aria-pressed="true">Newest</button>
+              <button type="button" class="sd-disp-chip" data-disp-dir="oldest" aria-pressed="false">Oldest</button>
+            </div>
             <p class="sd-disp-status" data-disp-status>Stories</p>
             <p class="sd-disp-site"><a href="/search.html">Search the whole site →</a></p>
           </div>
@@ -728,7 +732,7 @@
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/grow.js?v=202610190800" data-band defer></script>
-      <script src="/dispatch-browse.js?v=202610190700"></script>
+      <script src="/dispatch-browse.js?v=202610191200"></script>
       <script src="/nav-pill.js?v=202610190630"></script>
   </body>
 </html>
