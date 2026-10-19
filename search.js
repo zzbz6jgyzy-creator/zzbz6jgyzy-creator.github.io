@@ -2,7 +2,7 @@
    Overlay (⌘K / nav Search) on pages that load this file; full page on /search.html. */
 (() => {
   if (window.__sdFind) return;
-  const V = "202610190400";
+  const V = "202610190630";
   const PAGE = /\/search\.html$/.test(location.pathname);
   const LIMIT = PAGE ? 60 : 24;
   const LATEST = PAGE ? 12 : 8;
@@ -264,6 +264,7 @@
         const go = (active >= 0 && list[active]) || list[0];
         if (go && document.activeElement && document.activeElement.matches("input,textarea")) {
           e.preventDefault();
+          if (window.sdTrack) window.sdTrack("search_go");
           location.href = go.href;
         }
       }
@@ -325,6 +326,7 @@
     overlayNav.reset();
     overlayInput.focus();
     overlayInput.select();
+    if (window.sdTrack) window.sdTrack("search_open");
   }
 
   function close() {

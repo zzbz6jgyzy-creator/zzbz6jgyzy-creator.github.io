@@ -136,5 +136,5 @@
 })();
 // Site-wide LIVE NOW alert (reads /live-data.json; shows nothing unless a stream is live)
 (() => { if (document.querySelector('script[src*="live-now.js"]')) return; const s = document.createElement("script"); s.src = "/live-now.js?v=202610152135"; s.defer = true; document.head.appendChild(s); })();
-(() => { if (document.querySelector('script[src*="search.js"]')) return; const s = document.createElement("script"); s.src = "/search.js?v=202610190400"; s.defer = true; document.head.appendChild(s); })();
-(() => { if (document.querySelector('script[src*="theme.js"]')) return; const s = document.createElement("script"); s.src = "/theme.js?v=202610190015"; s.defer = true; document.head.appendChild(s); })();
+(() => { if (document.querySelector('script[src*="search.js"]')) return; const s = document.createElement("script"); s.src = "/search.js?v=202610190630"; s.defer = true; document.head.appendChild(s); })();
+(() => { if (document.querySelector('script[src*="theme.js"]')) return; const s = document.createElement("script"); s.src = "/theme.js?v=202610190630"; s.defer = true; document.head.appendChild(s); })();

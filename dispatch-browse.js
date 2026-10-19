@@ -91,6 +91,7 @@
       paintChips();
       writeUrl();
       paint();
+      if (window.sdTrack) window.sdTrack("dispatch_filter");
     });
   }
   if (qEl) {

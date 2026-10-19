@@ -41,7 +41,7 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/styles.css?v=202610190500" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
-    <link rel="stylesheet" href="/calendar-next.css?v=202610131735" />
+    <link rel="stylesheet" href="/calendar-next.css?v=202610190630" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
   </head>
@@ -134,9 +134,9 @@
 
       <main id="main">
         <section class="page-hero">
-          <p class="eyebrow reveal">Tesla · SpaceX · xAI · Markets</p>
-          <h1 class="reveal delay-1">Calendar</h1>
-          <p class="reveal delay-2">
+          <p class="eyebrow">Tesla · SpaceX · xAI · Markets</p>
+          <h1>Calendar</h1>
+          <p>
             Tesla earnings, the Roadster unveil, SpaceX launches and Grok ships. One list. Countdowns run live; times on dated rows
             are local to your browser.
           </p>
@@ -144,7 +144,11 @@
 
         <section class="section cal-next-wrap" aria-labelledby="cal-next-h" style="padding-top: 1.5rem">
           <h2 id="cal-next-h" class="visually-hidden">Next up</h2>
-          <div class="cal-next" data-calendar-countdown aria-live="off"></div>
+          <div class="cal-next" data-calendar-countdown aria-live="off">
+            <article class="cal-next-card cal-skel" aria-hidden="true"></article>
+            <article class="cal-next-card cal-skel" aria-hidden="true"></article>
+            <article class="cal-next-card cal-skel" aria-hidden="true"></article>
+          </div>
         </section>
 
         <section class="section" style="padding-top: 0">
@@ -218,12 +222,12 @@
         <p class="footer-disclosure">Some links are affiliate links; I may earn a commission at no extra cost to you.</p>
       </footer>
     </div>
-    <script src="/script.js?v=202610161013"></script>
+    <script src="/script.js?v=202610190630"></script>
     <script src="/design-21st.js?v=20261016094430"></script>
-    <script src="/calendar.js?v=202610190500"></script>
+    <script src="/calendar.js?v=202610190630"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
-      <script src="/grow.js?v=202610190500" data-band defer></script>
-      <script src="/nav-pill.js?v=202610190400"></script>
+      <script src="/grow.js?v=202610190630" data-band defer></script>
+      <script src="/nav-pill.js?v=202610190630"></script>
   </body>
 </html>

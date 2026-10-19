@@ -3,7 +3,16 @@
 // POST/GET /e?n=<event>&p=<path>  -> increments  day:<YYYY-MM-DD>:<event>  and  page:<event>:<path>
 // GET  /stats?days=30             -> JSON totals by event, by day and top pages
 // KV binding EVENTS -> sd-events. Live: https://sd-events.superchargeddaily.workers.dev
-const EVENTS = ["signup_submit", "latest_issue_click", "referral_click"];
+const EVENTS = [
+  "signup_submit",
+  "latest_issue_click",
+  "referral_click",
+  "search_open",
+  "search_go",
+  "theme_toggle",
+  "dispatch_filter",
+  "tesmag_click",
+];
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Cache-Control": "no-store" };
 const json = (d, s = 200) => new Response(JSON.stringify(d, null, 1), { status: s, headers: { ...cors, "Content-Type": "application/json" } });
 const bump = async (kv, k) => { const v = parseInt((await kv.get(k)) || "0", 10) + 1; await kv.put(k, String(v)); };
