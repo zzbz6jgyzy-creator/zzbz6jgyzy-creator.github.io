@@ -79,8 +79,13 @@
         <div class="intel-card"><strong>${h.conflictCount}</strong><span>Conflicts kept, not overwritten</span></div>
       </div>
       <p class="intel-note">Generated ${I.esc(h.generatedAt)}. Notifications are not sent from this page.</p>
-      <ul class="intel-list">${(h.issues || []).map((i) => `<li class="intel-item"><strong>${I.esc(i.level)}</strong><span class="intel-s">${I.esc(i.text)}</span></li>`).join("") || '<li class="intel-empty">No open engine errors.</li>'}</ul>`;
+      <ul class="intel-list">${(h.issues || []).map((i) => `<li class="intel-item"><strong>${I.esc(i.level)}</strong><span class="intel-s">${I.esc(i.text)}</span></li>`).join("") || '<li class="intel-empty">No open engine errors.</li>'}</ul>
+      <h2>Kept launch clocks</h2>
+      ${I.conflictsHtml(bundle.conflicts)}`;
     }
+
+    const clocks = $("[data-intel-clocks]");
+    if (clocks) clocks.innerHTML = I.conflictsHtml(bundle.conflicts);
 
     const promisesBox = $("[data-intel-promises]");
     if (promisesBox) {

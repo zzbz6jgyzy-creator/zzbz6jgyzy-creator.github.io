@@ -173,6 +173,12 @@ else bad("digest preview not sent", JSON.stringify(preview));
 if (!/sent="true"/.test(I.digestHtml(preview))) ok("digest html marks unsent");
 else bad("digest html marks unsent", I.digestHtml(preview).slice(0, 120));
 
+const clockHtml = I.conflictsHtml(bundle.conflicts);
+if (/events\.json/.test(clockHtml) && /Live overlay/.test(clockHtml) && /Canonical start stays/.test(clockHtml) && /2026-10-20|20 Oct 2026/.test(clockHtml)) ok("conflicts html keeps canonical");
+else bad("conflicts html keeps canonical", clockHtml.slice(0, 280));
+if (/No kept-clock/.test(I.conflictsHtml([]))) ok("conflicts html empty");
+else bad("conflicts html empty", I.conflictsHtml([]));
+
 if (fail.length) {
   console.log("\nFAILED", fail.length);
   fail.forEach((f) => console.log(" -", f));

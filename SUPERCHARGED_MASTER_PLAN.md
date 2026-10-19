@@ -39,7 +39,7 @@ Do not replace that stack with a fashionable backend. A Postgres intelligence wa
 | Promise Tracker | `/promise-tracker.html` | `data/promises.json` | Manual, sourced. |
 | Roadster hub | `/roadster.html` | Static + sourced table | No invented progress %. |
 | Optimus Evolution Lab | `/optimus.html` | Promises + sourced demo cards | Shown / not shown / autonomy / remote. No invented specs. We Robot 2024 omitted until a source is opened. |
-| Production & deliveries | `/production.html` | Tesla IR Q3 2025–Q3 2026 | Official tables only. YoY only when both quarters opened. |
+| Production & deliveries | `/production.html` | Tesla IR Q1 2025–Q3 2026 | Official tables only. YoY only when both quarters opened. |
 | Intelligence health | `/intel-health.html` | noindex | Admin view of last bundle. |
 
 ## Supercharged Intelligence Engine (implemented)
@@ -66,7 +66,7 @@ Conflicts are recorded, not overwritten. Canonical launch clocks stay in `data/e
 3. Homepage **What changed** from sourced tracker/Dispatch rows.
 4. Follow topics in `sd-follow-v1`.
 5. Freshness bars (last checked vs last verified) on major trackers.
-6. Optimus lab and Production IR dashboard (Q3 2025–Q3 2026, sourced YoY).
+6. Optimus lab and Production IR dashboard (Q1 2025–Q3 2026, sourced YoY).
 7. Roadster sourced promises table (no progress %).
 8. Teslascope software-wave sentences (first seen / sample-count jumps).
 9. FSD & Robotaxi evidence board (`/autonomy.html`).
@@ -76,6 +76,10 @@ Conflicts are recorded, not overwritten. Canonical launch clocks stay in `data/e
 13. Autonomy, Daily, Production, Optimus in Explore (and Tesla where they belong) via `scripts/nav.json`.
 14. Calendar search on top of All/Tesla/SpaceX/xAI filters. Starship Flight 15 “what changed” list with source lines. Not telemetry.
 15. My Tesla surfaces Teslascope sample waves for the saved country. VIN eligibility is never claimed. Recall row stays official-link only.
+16. Calendar kept-clock panel from `conflicts.json`. Canonical `data/events.json` times stay; live overlay is shown, not used.
+17. Calendar search includes the last three weeks of flown events (CRS-35, USSF-481). Recently done section lists them without a query.
+18. Site search overlay browse includes Optimus, Production, Autonomy, Daily, My Tesla, Calendar. Optimus queries rank `/optimus.html` and the demo archive.
+19. Tesla desk freshness bars. Production YoY for Q1 and Q2 2026 vs opened Q1 and Q2 2025 IR tables.
 
 ## Explicitly not done (blockers / approval)
 

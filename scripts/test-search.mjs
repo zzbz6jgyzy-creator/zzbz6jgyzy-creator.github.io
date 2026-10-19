@@ -40,7 +40,9 @@ expectHit(await runQuery("Roadster"), /roadster/i, "search Roadster");
 expectHit(await runQuery("FSD Europe"), /fsd-europe|FSD/i, "search FSD Europe");
 expectHit(await runQuery("Starship"), /starship/i, "search Starship");
 expectHit(await runQuery("Tesla software"), /updates\.html|software/i, "search Tesla software");
-expectHit(await runQuery("Optimus"), /optimus|promise-tracker|tesla\.html/i, "search Optimus");
+expectHit(await runQuery("Optimus"), /\/optimus\.html/, "search Optimus");
+expectHit(await runQuery("AI Day 2022"), /ai-day-2022/, "search Optimus demo");
+expectHit(await runQuery("Tesla production"), /production\.html/, "search production");
 expectHit(await runQuery("Starlink"), /starlink/i, "search Starlink");
 
 const none = await runQuery("xyznonexistent123");

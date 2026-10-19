@@ -112,3 +112,27 @@ python3 scripts/sync-nav.py --check
 
 ALL_PASS. Engine after this batch: facts 17, changes 68, conflicts 2. Screenshots in `/opt/cursor/artifacts/batch3-*.png`.
 
+## Batch 4 — Kept clocks, search intelligence, recent calendar, Production YoY Q1/Q2
+
+User: Go (next unblocked product slices; not merge/deploy).
+
+### Implemented
+
+- Calendar `data-intel-clocks` + intel-health conflict table: CRS-35 docking kept 15 Oct 2026 14:27 UTC vs live 13:15 UTC; USSF-481 kept 16 Oct 2026 00:02 UTC vs live 15 Oct 23:57 UTC. Canonical `data/events.json`.
+- Calendar Recently done (21 days) + search includes that window so CRS-35 / USSF-481 are findable.
+- Search overlay empty browse: Optimus, Production, Autonomy, Daily, My Tesla, Calendar. Optimus queries boost `/optimus.html`. Demo archive indexed in `data/pages.json`.
+- Tesla desk freshness bars (software, FSD, production).
+- Opened Tesla IR Q1 2025 and Q2 2025; Production YoY for Q1 and Q2 2026. Q4 2025 still has no year-ago table.
+
+### Tests
+
+```
+node scripts/test-intelligence.mjs
+node scripts/test-intelligence-browser.mjs
+node scripts/test-intel-batch4-verify.mjs
+node scripts/test-search.mjs
+node scripts/test-launch-consistency.mjs
+```
+
+Screenshots in `/opt/cursor/artifacts/batch4-*.png`.
+

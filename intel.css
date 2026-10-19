@@ -180,3 +180,9 @@ html[data-theme="light"] .intel-compare td { border-bottom-color: var(--line, #d
 }
 html[data-theme="light"] .intel-demo { background: var(--card, #fff); border-color: var(--line, #ddd); }
 html[data-theme="light"] .intel-demo ul { color: var(--ink-soft, #555); }
+
+.intel-desk { display: grid; gap: 10px; margin: 0 0 22px; }
+.intel-desk .intel-bar { margin: 0; }
+.intel-clocks { margin: 14px 0 0; max-width: 70rem; }
+.intel-clocks .intel-compare { margin-top: 8px; }
+.intel-conflicts { margin: 12px 0 20px; }

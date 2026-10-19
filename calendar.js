@@ -113,7 +113,7 @@
       where: "ISS · Harmony zenith",
       note: "Docked 10:27 a.m. EDT (14:27 UTC) to Harmony’s space-facing port — about 30 minutes early. NASA space station blog.",
       href: "https://blogs.nasa.gov/spacestation/2026/10/15/spacex-dragon-docks-with-science-supplies-and-roll-out-solar-arrays/",
-      status: "go",
+      status: "done",
       precision: "datetime",
       source: "curated",
     },
@@ -230,6 +230,13 @@
     return t > now.getTime() - 6 * 36e5;
   }
 
+  function isRecentPast(event, now) {
+    const t = parseStart(event.start);
+    if (!Number.isFinite(t)) return false;
+    if (isUpcoming(event, now)) return false;
+    return t > now.getTime() - 21 * 864e5;
+  }
+
   const Merge = window.SDCalendarMerge || {
     launchKey(name) {
       return String(name || "")
@@ -314,7 +321,8 @@
     body.append(title);
     if (event.where) body.append(el("p", "cal-where", event.where));
     if (event.note) body.append(el("p", "cal-note", event.note));
-    const stamp = el("span", `cal-status is-${event.status}`, event.status === "go" ? "Go" : event.status);
+    const done = until === "Done" || event.status === "done";
+    const stamp = el("span", `cal-status ${done ? "is-done" : "is-" + event.status}`, done ? "Done" : event.status === "go" ? "Go" : event.status);
     row.append(when, body, stamp);
     return row;
   }
@@ -477,14 +485,28 @@
 
     const paint = () => {
       const upcoming = events.filter((e) => isUpcoming(e, now));
+      const recent = events
+        .filter((e) => isRecentPast(e, now))
+        .sort((a, b) => parseStart(b.start) - parseStart(a.start));
       if (list) {
-        const slice = upcoming.filter((e) => (filter === "all" || e.group === filter) && matchQuery(e, query));
+        const pool = query ? upcoming.concat(recent) : upcoming;
+        const slice = pool.filter((e) => (filter === "all" || e.group === filter) && matchQuery(e, query));
         const empty = query
           ? "No events match this search."
           : filter === "xai"
             ? "Grok ships sit under No date yet until xAI puts a clock on them."
             : "Nothing in this slice.";
         renderList(list, slice, now, empty);
+      }
+      const recentRoot = document.querySelector("[data-calendar-recent]");
+      if (recentRoot) {
+        if (query) {
+          recentRoot.replaceChildren();
+          recentRoot.append(el("p", "cal-empty", "Matching recent flights are listed with upcoming results above."));
+        } else {
+          const slice = recent.filter((e) => filter === "all" || e.group === filter);
+          renderList(recentRoot, slice, now, "Nothing flown in the last three weeks in this slice.");
+        }
       }
       paintWatch();
       if (countdown) renderCountdown(countdown, upcoming);
@@ -557,7 +579,7 @@
           if (ev.href) cur.href = ev.href;
           if (ev.summary) cur.note = ev.summary;
           if (ev.precision) cur.precision = ev.precision;
-          if (ev.status && ev.status !== "done") cur.status = ev.status;
+          if (ev.status) cur.status = ev.status;
           cur.source = "curated";
         });
         events = mergeEvents([]);

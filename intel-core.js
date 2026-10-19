@@ -847,6 +847,41 @@
     return `<ol class="intel-list">${changes.map(changeItemHtml).join("")}</ol>`;
   }
 
+  function fmtClock(isoStr) {
+    const t = Date.parse(isoStr);
+    if (!Number.isFinite(t)) return isoStr || "—";
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "UTC",
+      hourCycle: "h23",
+    }).format(new Date(t)) + " UTC";
+  }
+
+  function conflictsHtml(conflicts) {
+    const rows = conflicts || [];
+    if (!rows.length) {
+      return '<p class="intel-empty">No kept-clock disagreements in the last bundle.</p>';
+    }
+    const cell = (row, source) => {
+      const hit = (row.values || []).find((v) => v.source === source);
+      return fmtClock((hit && hit.value) || (source === "data/events.json" ? row.kept : ""));
+    };
+    return `<div class="intel-conflicts"><p class="intel-note">Canonical start stays in data/events.json. Live overlay times are shown, not used to rewind a flown or later official clock.</p>
+      <div class="intel-compare"><table>
+        <thead><tr><th>Entity</th><th>Kept (events.json)</th><th>Live overlay</th><th>Resolution</th></tr></thead>
+        <tbody>${rows.map((c) => `<tr>
+          <td><b>${esc(c.entity)}</b></td>
+          <td>${esc(cell(c, "data/events.json"))}</td>
+          <td>${esc(cell(c, "live-data.json"))}</td>
+          <td>${esc(c.resolution || "keep_canonical_events_json")}. ${esc(c.note || "")}</td>
+        </tr>`).join("")}</tbody>
+      </table></div></div>`;
+  }
+
   function freshnessHtml(row) {
     if (!row) return "";
     const checked = row.lastChecked ? fmtWhen(row.lastChecked) : "—";
@@ -1030,6 +1065,8 @@
     filterChanges,
     changesHtml,
     freshnessHtml,
+    fmtClock,
+    conflictsHtml,
     followRead,
     followWrite,
     alertRead,

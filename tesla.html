@@ -60,6 +60,7 @@
     <link rel="stylesheet" href="/tesla-page.css?v=202610191500" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
+    <link rel="stylesheet" href="/intel.css?v=202610192300" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -256,7 +257,12 @@
         <section class="tz-section" id="trackers" aria-labelledby="tz-fsd-h">
           <div class="tz-head">
             <h2 id="tz-fsd-h">FSD &amp; software</h2>
-            <p>What your car is running, and where FSD (Supervised) is allowed.</p>
+            <p>What your car is running, and where FSD (Supervised) is allowed. Last-checked stamps below are compiled, not live telemetry.</p>
+          </div>
+          <div class="intel-desk">
+            <div class="intel-bar" data-intel="software"></div>
+            <div class="intel-bar" data-intel="fsd"></div>
+            <div class="intel-bar" data-intel="production"></div>
           </div>
           <a class="tz-band" href="/my-tesla.html">
             <div>
@@ -295,7 +301,7 @@
             <a class="tz-card" href="/production.html">
               <span class="tz-card-k">Production &amp; deliveries</span>
               <strong>Official Tesla IR tables</strong>
-              <span>Official IR tables from Q3 2025 through Q3 2026. No estimated model splits.</span>
+              <span>Official IR tables from Q1 2025 through Q3 2026. Year-over-year only when both quarters were opened. No estimated model splits.</span>
             </a>
             <a class="tz-card" href="/promise-tracker.html">
               <span class="tz-card-k">Promise Tracker</span>
@@ -622,6 +628,8 @@
         document.querySelectorAll("[data-cc-date]").forEach(function (e) { e.textContent = dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" }); });
       }).catch(function () {});
     </script>
+    <script src="/intel-core.js?v=202610192300" defer></script>
+    <script src="/intel.js?v=202610192300" defer></script>
       <script src="/nav-pill.js?v=202610190630"></script>
   </body>
 </html>

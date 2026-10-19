@@ -95,6 +95,21 @@ await page.locator("[data-intel-production] table").waitFor({ timeout: 8000 });
 const prodPage = await page.locator("[data-intel-production]").innerText();
 if (prodPage.includes("497,099") && prodPage.includes("418,227") && /Q3 2026 vs Q3 2025/.test(prodPage)) ok("production yoy official");
 else bad("production yoy official", prodPage.slice(0, 280));
+if (/Q1 2026 vs Q1 2025/.test(prodPage) && /336,681/.test(prodPage) && /358,023/.test(prodPage) && /Q2 2026 vs Q2 2025/.test(prodPage) && /384,122/.test(prodPage) && /480,126/.test(prodPage)) ok("production yoy q1 q2");
+else bad("production yoy q1 q2", prodPage.slice(0, 400));
+
+await page.goto(BASE + "/tesla.html#trackers", { waitUntil: "networkidle" });
+await page.locator(".intel-desk [data-intel='software'] .intel-fresh").waitFor({ timeout: 8000 });
+const desk = await page.locator(".intel-desk").innerText();
+if (/Last checked/.test(desk) && /Last verified/.test(desk) && /Teslascope|sample|IR/.test(desk)) ok("tesla desk intel bars");
+else bad("tesla desk intel bars", desk.slice(0, 240));
+await page.screenshot({ path: SHOT + "/intel-tesla-desk.png" });
+
+await page.goto(BASE + "/intel-health.html", { waitUntil: "networkidle" });
+await page.locator(".intel-conflicts table").waitFor({ timeout: 8000 });
+const health = await page.locator("[data-intel-health]").innerText();
+if (/crs35-docking|CRS-35/i.test(health) && /ussf-481|USSF/i.test(health) && /events\.json|Kept/.test(health) && /14:27|13:15/.test(health)) ok("health conflict rows");
+else bad("health conflict rows", health.slice(0, 360));
 
 await page.goto(BASE + "/roadster.html", { waitUntil: "networkidle" });
 await page.locator("[data-intel-promises] table").waitFor({ timeout: 8000 });
@@ -122,6 +137,20 @@ await page.waitForFunction(() => {
 const calHits = await page.$$eval("[data-calendar-list] .cal-title", (els) => els.map((e) => e.textContent));
 if (calHits.length && calHits.every((t) => /starship/i.test(t))) ok("calendar search starship");
 else bad("calendar search starship", JSON.stringify(calHits));
+await page.fill("[data-calendar-search]", "");
+await page.waitForTimeout(200);
+const recentText = await page.locator("[data-calendar-recent]").innerText();
+if (/CRS-35|USSF-481|Roadster/i.test(recentText)) ok("calendar recent past");
+else bad("calendar recent past", recentText.slice(0, 240));
+await page.fill("[data-calendar-search]", "CRS-35");
+await page.waitForFunction(() => {
+  const titles = [...document.querySelectorAll("[data-calendar-list] .cal-title")].map((e) => e.textContent);
+  return titles.some((t) => /CRS-35/i.test(t));
+}, null, { timeout: 8000 });
+ok("calendar search past crs-35");
+const clocks = await page.locator("[data-intel-clocks]").innerText();
+if (/events\.json|Kept/.test(clocks) && /14:27|13:15|00:02|23:57/.test(clocks)) ok("calendar kept clocks");
+else bad("calendar kept clocks", clocks.slice(0, 280));
 await page.fill("[data-calendar-search]", "zzz-no-such-event");
 await page.waitForFunction(() => /No events match this search/.test(document.querySelector("[data-calendar-list]")?.textContent || ""), null, { timeout: 5000 });
 ok("calendar search empty");
