@@ -80,7 +80,17 @@
         ? `${rows.length} ${rows.length === 1 ? "story" : "stories"}${topic === "all" ? "" : " in " + (label ? label.label : topic)}${query ? " matching “" + query + "”" : ""}`
         : "No Dispatch stories match that filter.";
     }
+    grid.classList.add("disp-ready");
   };
+
+  cards.forEach((c) => {
+    const copy = c.el.querySelector(".story-copy");
+    if (!copy || copy.querySelector(".sd-disp-meta")) return;
+    const p = document.createElement("p");
+    p.className = "sd-disp-meta";
+    p.setAttribute("aria-hidden", "true");
+    copy.append(p);
+  });
 
   if (chipsEl) {
     chipsEl.addEventListener("click", (e) => {
@@ -114,7 +124,7 @@
         const a = by.get(c.href);
         if (!a) return;
         const copy = c.el.querySelector(".story-copy");
-        if (!copy || copy.querySelector(".sd-disp-meta")) return;
+        if (!copy) return;
         const bits = [];
         if (a.date) {
           const d = new Date(a.date);
@@ -122,10 +132,14 @@
         }
         if (a.minutes) bits.push(a.minutes + " min read");
         if (!bits.length) return;
-        const p = document.createElement("p");
-        p.className = "sd-disp-meta";
+        let p = copy.querySelector(".sd-disp-meta");
+        if (!p) {
+          p = document.createElement("p");
+          p.className = "sd-disp-meta";
+          copy.append(p);
+        }
         p.textContent = bits.join(" · ");
-        copy.append(p);
+        p.removeAttribute("aria-hidden");
       });
     })
     .catch(() => {});

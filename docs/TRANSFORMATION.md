@@ -82,11 +82,16 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 - Nav Home / Tesla / SpaceX / Roadster / Explore / News. News keep, Dispatch browse, search filters, leftover light wells, tool fail/loading copy, topic newsletter bands, no mobile pop.
 
-### Batch 13 — Events + lab CWV (this PR)
+### Batch 13 — Events + lab CWV (merged #121)
 
 - Production Lighthouse recorded (mobile lab, 19 Oct 2026). Calendar CLS reserved; homepage Falcon 9 live thumb uses existing AVIF/WebP.
 - `sd-events` gains search / theme / Dispatch / TESMAG counts. Worker allowlist updated in-repo; live Worker not deployed from this PR.
 - Commercial brief only. No ads.
+
+### Batch 14 — Dispatch CLS (this PR)
+
+- Re-measured production after #121: calendar CLS 0, home LCP is the picture thumb. Dispatch still 0.104.
+- Archive no longer paints every card before pagination. Hero/cards drop `.reveal`. First poster eager. News hero + explorer skip links.
 
 ## Architecture (do not rip out)
 
@@ -102,7 +107,7 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 ## Ranked next batches
 
-None queued. Dark remains the default brand. Do not auto-switch on OS light mode.
+None queued after Dispatch CLS. Dark remains the default brand. Do not auto-switch on OS light mode.
 
 ## Rules that stay in force
 

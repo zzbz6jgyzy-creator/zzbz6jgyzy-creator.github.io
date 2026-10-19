@@ -8,65 +8,54 @@ Static GitHub Pages. Nav from `scripts/nav.json`. Homepage `<!--hv:*-->` via `sc
 
 ## Prioritised tasks
 
-1–7. Nav, news keep, Dispatch browse, search, homepage explore, My Tesla prefs, leftover wells / tools / newsletter — done (#119, #120)
-8. Lab CWV numbers + event wiring + commercial brief — this session
+1–8. Nav, news keep, Dispatch browse, search, homepage, My Tesla, leftover wells / tools, events + lab CWV — done (#119–#121)
+9. Dispatch archive CLS (the leftover 0.104) + related reveal / a11y leftovers — this session
 
 ## Completed this session
 
-- Ran Lighthouse 12.6.1 mobile lab against **production** `https://superchargeddaily.com` on 19 Oct 2026. Numbers below are measured, not invented.
-- Calendar CLS 0.523 was the worst lab result. Reserved countdown space (skeletons + min-height), paint curated rows before `events.json`, and dropped `.reveal` on the calendar hero (LCP was waiting on the fade-in).
-- Homepage live thumb used full `falcon9.jpg` (~LCP). Now a `<picture>` of the existing 480/960/1200 AVIF/WebP set. `live.js` and `scripts/build-home.js` match (builder not run).
-- Event counts: `track.js` now also records `search_open`, `search_go`, `theme_toggle`, `dispatch_filter`, `tesmag_click`. No query text, emails, or IDs. Worker allowlist updated in-repo — **not deployed** (needs `wrangler deploy` in `workers/sd-events` after merge).
-- Commercial: brief only. No slots, no ads.
+- Re-ran production Lighthouse after #121 merged. Calendar CLS is now **0** on the live host; homepage LCP is the Falcon 9 `<picture>` thumb.
+- Dispatch archive still **CLS 0.104** on production. Cards 13+ no longer paint before JS paginates. Chips, status and date/read-time lines are reserved. Hero and cards no longer start at `opacity: 0`. First poster is preloaded and eager; `sizes` match the 3-column grid. Inline `height:auto` no longer wins over the 160px row.
+- News hero dropped the same `.reveal` fade. Light theme lifts `.art-lead-media` / `.art-media` off charcoal.
+- Model 3 and Cybertruck explorers get a skip link and `<main id="main">`. 3D stages stay dark.
 
 ## Files modified
 
-- `track.js`, `workers/sd-events/sd-events.js`, `data/README.md`
-- `theme.js`, `search.js`, `dispatch-browse.js`, `nav-pill.js`, `script.js`, `grow.js`
-- `calendar.js`, `calendar.html`, `calendar-next.css`
-- `live.js`, `scripts/build-home.js`, `index.html` (event thumb only)
-- HTML cache pins for `script.js`, `grow.js`, `nav-pill.js`, `live.js`, `calendar.js`
-- `scripts/test-events-cwv.mjs`, `SUPERCHARGED_IMPROVEMENTS.md`
+- `dispatch.html`, `dispatch-browse.js`, `dispatch-browse.css`
+- `news.html`, `news-articles.css`
+- `model3-explorer.html`, `cybertruck-explorer.html`, `model3-explorer.css`
+- `scripts/test-dispatch-cls.mjs`, `SUPERCHARGED_IMPROVEMENTS.md`
 
 ## Tests performed
 
-- `node scripts/test-events-cwv.mjs` against `http://127.0.0.1:4173`
-- Local Lighthouse re-check of `/` and `/calendar.html` after the CLS / picture changes (localhost, not production)
+- `node scripts/test-dispatch-cls.mjs` against `http://127.0.0.1:4173` → `ALL_PASS`
+- Local Lighthouse on `/dispatch.html` after the CLS reserve
+- Production Lighthouse re-check of `/`, `/calendar.html`, `/dispatch.html` (19 Oct 2026)
 
 ## Measured performance
 
-Lighthouse 12.6.1, mobile emulation, headless Chrome, **production host** (19 Oct 2026). Lab only — not CrUX field data.
+Lighthouse 12.6.1, mobile, headless Chrome. Lab only — not CrUX.
+
+**Production after #121** (this session, 19 Oct 2026):
 
 | Page | Perf | FCP | LCP | TBT | CLS | SI |
 |---|---|---|---|---|---|---|
-| `/` | 0.83 | 2.6 s | 3.7 s | 140 ms | 0.003 | 3.2 s |
-| `/dispatch.html` | 0.87 | 1.6 s | 3.6 s | 30 ms | 0.104 | 1.8 s |
-| `/calendar.html` | 0.73 | 1.5 s | 2.7 s | 130 ms | **0.523** | 1.5 s |
+| `/` | 0.98 | 1.7 s | 2.1 s | 7 ms | 0.003 | 1.7 s |
+| `/calendar.html` | 0.99 | 1.6 s | 1.7 s | 45 ms | **0** | 1.6 s |
+| `/dispatch.html` | 0.86 | 1.6 s | 3.7 s | 56 ms | **0.104** | 1.9 s |
 
-Homepage LCP element: live Falcon 9 JPEG. Calendar LCP: hero paragraph (78% render delay from `.reveal`). Calendar CLS: empty countdown / list filling after JS.
+Home LCP element is now `div.lw-thumb > picture > img`. Calendar LCP is the hero paragraph (no fade). Dispatch LCP is the first archive poster; CLS is the leftover this PR targets.
 
-Same Lighthouse settings on **localhost :4173** after this PR’s calendar / picture changes (not comparable to production CDN / Cloudflare JS):
+**Localhost :4173 after this PR** (not comparable to production CDN / Cloudflare JS):
 
 | Page | Perf | FCP | LCP | TBT | CLS | SI |
 |---|---|---|---|---|---|---|
-| `/` | 0.88 | 2.3 s | 3.5 s | 80 ms | 0.003 | 2.3 s |
-| `/calendar.html` | 0.96 | 2.1 s | 2.5 s | 30 ms | **0** | 2.1 s |
+| `/dispatch.html` | 0.91 | 2.3 s | 3.2 s | 0 | **0** | 2.3 s |
 
-Local homepage LCP is now the `<picture>` thumb. Local calendar CLS dropped from the production 0.523 to 0. Do not treat localhost as field CWV. Re-run production after merge.
-
-## Commercial brief (not activated)
-
-If sponsorship is ever approved, labelled slots only:
-
-- Homepage: one labelled “Sponsored” band below Explore, never inside Live / Dispatch / newsletter.
-- Dispatch archive: not inside the story grid.
-- Gear: TESMAG is an affiliate disclosure, not an ad slot.
-
-Nothing was added to the HTML. No ad network, no empty slot markup.
+Do not treat localhost as field CWV. Re-run production Dispatch after merge.
 
 ## Known limitations
 
-- New event names 400 on the live Worker until it is deployed.
+- `sd-events` Worker still needs a deploy for the new event names.
 - Notifications are preferences only.
 - Do not run full `build-home.js` unless tesla.html / spacex.html `<picture>` diffs are reverted.
 - Follow on X and `twitter:site` unchanged.
@@ -74,5 +63,5 @@ Nothing was added to the HTML. No ad network, no empty slot markup.
 ## Remaining work
 
 - Deploy `sd-events` Worker when ready.
-- Re-run production Lighthouse after merge to see calendar CLS / homepage LCP.
+- Re-run production Dispatch Lighthouse after this merge.
 - Ads / notification delivery only with explicit approval.
