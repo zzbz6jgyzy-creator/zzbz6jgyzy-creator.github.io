@@ -1,0 +1,31 @@
+name: Newsletter latest-issue link
+
+on:
+  schedule:
+    - cron: "30 13 * * 0"   # Sunday afternoon, after the weekly issue
+    - cron: "40 6 * * *"    # daily safety net
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsletter-latest
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Point "Read the latest issue" at the newest Beehiiv issue
+        run: node scripts/newsletter-latest.js
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- '*.html' grow.js scripts/build-home.js
+          if git diff --cached --quiet; then echo "No change"; else
+            git commit -m "Point Read the latest issue at the newest newsletter issue."
+            git pull --rebase && git push
+          fi
