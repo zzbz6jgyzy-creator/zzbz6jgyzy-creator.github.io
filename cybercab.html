@@ -275,12 +275,20 @@
       </footer>
     </div>
     <script src="/script.js?v=202610190800"></script>
-    <script src="/cybercab-data.js?v=202610191150"></script>
-    <script src="/robotaxi-reality-data.js?v=20261016093020"></script>
-    <script src="/cybercab-tracker.js?v=202610150830"></script>
+    <script src="/cybercab-data.js?v=202610191150" defer></script>
+    <script src="/cybercab-tracker.js?v=202610150830" defer></script>
     <script src="/cybercab-count.js?v=202610150830" defer></script>
-    <script src="/cybercab-cities.js?v=20261016093020" defer></script>
-    <script src="/robotaxi-map.js?v=202610161200" defer></script>
+    <script>
+      /* Reality Map loads when it nears the screen or once the page is idle (keeps phone first paint fast). */
+      (function () {
+        var files = ["/robotaxi-reality-data.js?v=20261016093020", "/cybercab-cities.js?v=20261016093020", "/robotaxi-map.js?v=202610161200"], started = false;
+        function next(i) { if (i >= files.length) return; var s = document.createElement("script"); s.src = files[i]; s.onload = s.onerror = function () { next(i + 1); }; document.body.appendChild(s); }
+        function go() { if (started) return; started = true; next(0); }
+        var el = document.getElementById("reality-map");
+        if (el && "IntersectionObserver" in window) { var io = new IntersectionObserver(function (e) { if (e.some(function (x) { return x.isIntersecting; })) { io.disconnect(); go(); } }, { rootMargin: "800px 0px" }); io.observe(el); } else { go(); }
+        window.addEventListener("load", function () { (window.requestIdleCallback || function (f) { setTimeout(f, 1500); })(go, { timeout: 3000 }); });
+      })();
+    </script>
     <script src="/countup.js" defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
