@@ -93,11 +93,17 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Re-measured production after #121: calendar CLS 0, home LCP is the picture thumb. Dispatch still 0.104.
 - Archive no longer paints every card before pagination. Hero/cards drop `.reveal`. First poster eager. News hero + explorer skip links.
 
-### Batch 15 — Live events Worker (this session)
+### Batch 15 — Live events Worker (merged #123)
 
 - `sd-events` Worker deployed 19 Oct 2026. New event names return 204.
 - Production Dispatch after #122: CLS 0, LCP 2.2 s.
 - Ads and per-car notification delivery not activated (no sponsor creative; no mail/push hook).
+
+### Batch 16 — Leftover polish (this session)
+
+- Tesla / SpaceX story-grid posters lock to 160px (CSS `!important` beats leftover `height:auto`).
+- Promise Tracker empty chips / tiles / legend reserve height before JSON lands.
+- Tesla clubs city lookup and blocked geolocation write `#tc-hint` and hold it.
 
 ## Architecture (do not rip out)
 

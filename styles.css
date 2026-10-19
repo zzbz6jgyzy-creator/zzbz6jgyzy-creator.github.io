@@ -821,6 +821,19 @@ article.story-card {
   background: #000;
 }
 
+.story-grid .story-card > picture {
+  display: block;
+  height: 160px;
+  overflow: hidden;
+  background: #000;
+}
+
+.story-grid .story-card img {
+  width: 100% !important;
+  height: 160px !important;
+  object-fit: cover;
+}
+
 .lead-media {
   position: relative;
   min-height: 220px;

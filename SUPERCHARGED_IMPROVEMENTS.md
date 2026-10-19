@@ -1,43 +1,29 @@
-# Supercharged Daily — site optimisation
+# Supercharged Daily — leftover polish
 
-Living progress document for the full-site optimisation mission. Dark remains the default. Existing routes kept.
-
-## Initial audit (2026-10-18)
-
-Static GitHub Pages. Nav from `scripts/nav.json`. Homepage `<!--hv:*-->` via `scripts/build-home.js` + `home-v2.js`. Wire in `news-data.json`. Newsletter Beehiiv. Analytics: Cloudflare Web Analytics pageviews + `sd-events` Worker counters. Theme is an explicit toggle, not `prefers-color-scheme`.
+Living progress document for leftover cheap polish after the 15-phase optimisation mission. Dark remains the default. Existing routes kept.
 
 ## Prioritised tasks
 
-1–9. Nav through Dispatch CLS — done (#119–#122)
-10. Live `sd-events` Worker deploy + production Dispatch re-measure — this session
+1–10. Nav through live Worker — done (#119–#123)
+11. Tesla / SpaceX story-card poster lock, Promise Tracker reserved wells, Tesla clubs lookup fail copy — this session
 
 ## Completed this session
 
-- Deployed `sd-events` Worker from `workers/sd-events/sd-events.js` (Cloudflare account Superchargeddaily@gmail.com, 19 Oct 2026 06:30 UTC). Same KV `EVENTS` / `57ee0b9c3c2647fe84176ca976aba17e`. New names `search_open`, `search_go`, `theme_toggle`, `dispatch_filter`, `tesmag_click` now return **204**. Unknown names still **400**.
-- Re-ran production Lighthouse after #122. Dispatch CLS is **0** on the live host (was 0.104).
-- Ads: not activated. No network, no empty “Sponsored” slot. Brief in the previous batch still stands — need a real sponsor creative first.
-- Notifications: My Tesla prefs stay on-device. Newsletter (Beehiiv) is the live mail channel. No push hook, no per-car email job. Copy still says delivery is not live.
+- Story-grid posters stay 160px even when a card still has inline `height:auto`. Lock lives in `styles.css` (`.story-grid .story-card > picture` + `img { height:160px !important }`). Pin bumped on `tesla.html` and `spacex.html` only. Inline `height:auto` stripped from those two desks. Did **not** run `build-home.js`.
+- Promise Tracker empty chips, topic tiles, and ring legend reserve space before `promises.json` lands. List still starts with “Loading promises…”.
+- Tesla clubs city lookup now writes `#tc-hint` and holds it when Open-Meteo fails, returns no city, or location is blocked. No invented clubs. No Ireland/UK default.
 
 ## Files modified
 
-- `data/README.md`, `SUPERCHARGED_IMPROVEMENTS.md`, `docs/TRANSFORMATION.md`
+- `styles.css`, `tesla.html`, `spacex.html`
+- `promise-tracker.css`, `promise-tracker.html`
+- `tesla-clubs.js`, `tesla-clubs.html`
+- `scripts/test-leftover-polish.mjs`
+- `SUPERCHARGED_IMPROVEMENTS.md`, `docs/TRANSFORMATION.md`
 
 ## Tests performed
 
-- Live `GET /e?n=theme_toggle` and `search_open` → 204; bogus name → 400
-- Live `/stats?days=7` totals include the eight allowlisted names
-- Production Lighthouse `/dispatch.html` after #122
-
-## Measured performance
-
-Lighthouse 12.6.1, mobile, headless Chrome, **production** `https://superchargeddaily.com`. Lab only.
-
-| When | Page | Perf | LCP | CLS |
-|---|---|---|---|---|
-| After #121 | `/dispatch.html` | 0.86 | 3.7 s | **0.104** |
-| After #122 (this session) | `/dispatch.html` | 0.98 | 2.2 s | **0** |
-
-LCP element remains the first archive poster (`div.story-grid > a.story-card > picture > img`).
+- `node scripts/test-leftover-polish.mjs` against `http://127.0.0.1:4173` — ALL_PASS (Tesla/SpaceX/Dispatch posters 160px, Promise empty wells reserved then filled, clubs fail/empty/geo hold, Austin still returns 3 clubs)
 
 ## Known limitations
 
@@ -48,5 +34,6 @@ LCP element remains the first archive poster (`div.story-grid > a.story-card > p
 
 ## Remaining work
 
-- Per-car software / recall mail or push only after a real hook (Beehiiv tags or Web Push) is designed and tested.
+- Watch live `sd-events` counts.
+- Per-car software / recall mail or push only after a real hook is designed and tested.
 - Labelled sponsorship only when there is a creative to put in the slot.
