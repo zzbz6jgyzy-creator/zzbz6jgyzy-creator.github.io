@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "pages": [
     {
       "url": "/",
@@ -222,6 +222,30 @@
       "title": "Promise tracker",
       "tag": "Trackers",
       "summary": "Musk deadlines vs reality, including Optimus"
+    },
+    {
+      "url": "/optimus.html",
+      "title": "Optimus Evolution Lab",
+      "tag": "Trackers",
+      "summary": "Sourced Optimus promises versus demonstrations. A demo is not autonomy."
+    },
+    {
+      "url": "/production.html",
+      "title": "Tesla production & deliveries",
+      "tag": "Trackers",
+      "summary": "Official Tesla IR quarterly production, deliveries and energy."
+    },
+    {
+      "url": "/autonomy.html",
+      "title": "FSD & Robotaxi evidence",
+      "tag": "Trackers",
+      "summary": "Supervised FSD, permits and commercial robotaxi rides in separate layers."
+    },
+    {
+      "url": "/daily.html",
+      "title": "Your Supercharged Daily",
+      "tag": "Trackers",
+      "summary": "Followed tracker changes in this browser. Digest preview only."
     },
     {
       "url": "/updates.html",

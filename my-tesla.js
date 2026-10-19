@@ -420,9 +420,10 @@
         <p>${esc(fsd?.note || "No FSD listing for this country in the tracker. Treat Supervised FSD as unavailable until Tesla or a regulator says otherwise.")}</p>
         <span class="mt-meta">Vehicle-specific · FSD tracker</span></li>`);
     }
-    items.push(`<li><span class="mt-pill no">Desk</span><b>Verified recalls</b>
-      <p>No matching recall is in our desk notes for this profile. We do not invent recall lists. Check Tesla’s official safety page if you need a legal notice.</p>
-      <span class="mt-meta">None on file · not live alerts</span></li>`);
+    items.push(`<li><span class="mt-pill no">Official lookup</span><b>Recalls for this VIN</b>
+      <p>We do not invent recall lists from model and year. Tesla’s VIN recall search and NHTSA’s VIN lookup are official; this site is not.</p>
+      <p><a href="https://www.tesla.com/vin-recall-search" rel="noopener">Tesla VIN recall search</a> · <a href="https://www.nhtsa.gov/recalls" rel="noopener">NHTSA recall lookup</a></p>
+      <span class="mt-meta">Not a notice for this VIN · official sites</span></li>`);
     const modelName = (modelOf()?.name || "").toLowerCase();
     const general = deskStories.filter((a) => {
       const hay = `${a.title} ${a.summary} ${a.tag} ${a.topic}`.toLowerCase();
@@ -437,6 +438,18 @@
         <span class="mt-meta">Not specific to this car · Dispatch</span></li>`);
     });
     ul.innerHTML = items.join("");
+    fetch("/data/intelligence/bundle.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((b) => {
+      if (!b || !window.SDIntel) return;
+      const topics = ["tesla-software", "fsd"];
+      if (state.model === "RD") topics.push("roadster");
+      const extra = window.SDIntel.filterChanges(b.changes, { topics, limit: 3 });
+      if (!extra.length) return;
+      ul.insertAdjacentHTML("beforeend", extra.map((c) =>
+        `<li><span class="mt-pill soon">Tracker change</span><b><a href="${esc(c.href)}">${esc(c.title || c.field)}</a></b>
+        <p>${esc(c.summary)}</p>
+        <span class="mt-meta">${esc((window.SDIntel.EVIDENCE_LABEL && window.SDIntel.EVIDENCE_LABEL[c.evidence]) || c.evidence)} · not a notice for this VIN</span></li>`
+      ).join(""));
+    }).catch(() => {});
   };
 
   const renderGuides = () => {

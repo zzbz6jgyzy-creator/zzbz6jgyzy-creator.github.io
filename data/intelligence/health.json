@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "generatedAt": "2026-10-19T11:21:32.142Z",
+  "factCount": 16,
+  "changeCount": 67,
+  "conflictCount": 2,
+  "issues": [
+    {
+      "level": "warn",
+      "code": "conflicts",
+      "text": "2 conflicting launch clocks kept, not overwritten."
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+/* Shared Supercharged Intelligence Engine UI */
+.intel-fresh {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 10px 0 0;
+  font: 500 12px/1.45 "IBM Plex Mono", monospace;
+  color: #8a8a8a;
+}
+.intel-fresh-note { flex-basis: 100%; font-family: Inter, system-ui, sans-serif; color: #9a9a9a; }
+.intel-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin: 12px 0 20px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: #0e0e0e;
+}
+.intel-bar .intel-fresh { margin: 0; }
+.intel-follow { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.intel-chip {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #141414;
+  color: #ddd;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font: 600 12px/1 Inter, system-ui, sans-serif;
+  cursor: pointer;
+}
+.intel-chip[aria-pressed="true"] {
+  background: rgba(227, 25, 55, 0.18);
+  border-color: rgba(227, 25, 55, 0.7);
+  color: #fff;
+}
+.intel-chip:focus-visible { outline: 2px solid #e31937; outline-offset: 2px; }
+.intel-list { list-style: none; margin: 0; padding: 0; }
+.intel-item { border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+.intel-item a {
+  display: grid;
+  gap: 4px;
+  padding: 12px 0;
+  color: inherit;
+  text-decoration: none;
+}
+.intel-item a:hover strong { color: #ff4d5e; }
+.intel-k {
+  font: 600 11px/1 "IBM Plex Mono", monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+}
+.intel-item strong { font: 700 16px/1.25 Inter, sans-serif; color: #fff; }
+.intel-s { font-size: 14px; line-height: 1.45; color: #9a9a9a; }
+.intel-m { display: flex; flex-wrap: wrap; gap: 8px 12px; font-size: 12px; color: #777; }
+.intel-ev {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.intel-ev-officially_confirmed { color: #8ee0a8; border-color: rgba(80, 180, 110, 0.45); }
+.intel-ev-independently_corroborated { color: #9ec4ff; border-color: rgba(90, 140, 220, 0.45); }
+.intel-ev-company_claim { color: #f4c97a; border-color: rgba(210, 160, 60, 0.45); }
+.intel-ev-reported_unconfirmed,
+.intel-ev-estimated { color: #d0b48a; border-color: rgba(180, 140, 70, 0.4); }
+.intel-ev-historical { color: #bbb; }
+.intel-ev-superseded,
+.intel-ev-disputed { color: #f0a0a8; border-color: rgba(227, 25, 55, 0.4); }
+.intel-empty { color: #888; font-size: 14px; }
+.hv-changed { margin: 0 0 44px; max-width: 1180px; margin-left: auto; margin-right: auto; }
+.intel-compare { overflow-x: auto; margin: 16px 0; }
+.intel-compare table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.intel-compare th,
+.intel-compare td { text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; }
+.intel-compare th { font: 600 11px/1.2 "IBM Plex Mono", monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #e31937; }
+.intel-chart { display: grid; gap: 10px; margin: 16px 0; }
+.intel-barrow { display: grid; grid-template-columns: 72px 1fr 88px; gap: 10px; align-items: center; }
+.intel-barrow b { font: 600 12px/1 "IBM Plex Mono", monospace; }
+.intel-barrow i {
+  display: block;
+  height: 10px;
+  border-radius: 99px;
+  background: #e31937;
+}
+.intel-barrow span { font-size: 13px; color: #aaa; text-align: right; }
+.intel-note { font-size: 13px; color: #8a8a8a; max-width: 70ch; }
+.intel-digest {
+  margin: 16px 0;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px dashed rgba(227, 25, 55, 0.45);
+  background: #0e0e0e;
+}
+.intel-digest[data-sent="false"] { border-style: dashed; }
+.intel-layer {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font: 600 11px/1.4 "IBM Plex Mono", monospace;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.intel-layer-supervised_assistance,
+.intel-layer-customer_live { color: #9ec4ff; border-color: rgba(90, 140, 220, 0.45); }
+.intel-layer-commercial_service { color: #8ee0a8; border-color: rgba(80, 180, 110, 0.45); }
+.intel-layer-permit,
+.intel-layer-permit_not_rollout,
+.intel-layer-review,
+.intel-layer-testing { color: #f4c97a; border-color: rgba(210, 160, 60, 0.45); }
+.intel-layer-company_claim,
+.intel-layer-reported_unconfirmed { color: #d0b48a; }
+.intel-yoy { font: 600 13px/1.4 Inter, sans-serif; color: #bbb; }
+.intel-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 12px 0; }
+.intel-page { max-width: 1100px; margin: 0 auto; padding: 8px 20px 48px; }
+.intel-page h1 { font: 700 clamp(28px, 4vw, 42px)/1.1 Inter, sans-serif; letter-spacing: -0.02em; margin: 8px 0 12px; }
+.intel-page .eyebrow { font: 600 12px/1 "IBM Plex Mono", monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #e31937; }
+.intel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 18px 0; }
+.intel-card {
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #0e0e0e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.intel-card strong { display: block; font-size: 28px; letter-spacing: -0.02em; }
+.intel-card span { color: #9a9a9a; font-size: 13px; }
+@media (max-width: 760px) {
+  .intel-barrow { grid-template-columns: 56px 1fr 72px; }
+  .intel-item strong { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intel-chip { transition: none; }
+}
+html[data-theme="light"] .intel-bar,
+html[data-theme="light"] .intel-card,
+html[data-theme="light"] .intel-digest { background: var(--card, #fff); border-color: var(--line, #ddd); }
+html[data-theme="light"] .intel-chip { background: #fff; color: var(--ink, #111); border-color: var(--line, #ddd); }
+html[data-theme="light"] .intel-chip[aria-pressed="true"] { background: rgba(227, 25, 55, 0.08); color: #111; }
+html[data-theme="light"] .intel-item strong { color: var(--ink, #111); }
+html[data-theme="light"] .intel-s,
+html[data-theme="light"] .intel-fresh-note,
+html[data-theme="light"] .intel-note,
+html[data-theme="light"] .intel-card span { color: var(--ink-soft, #555); }
+html[data-theme="light"] .intel-k,
+html[data-theme="light"] .intel-fresh,
+html[data-theme="light"] .intel-m { color: var(--mute, #666); }
+html[data-theme="light"] .intel-item,
+html[data-theme="light"] .intel-compare th,
+html[data-theme="light"] .intel-compare td { border-bottom-color: var(--line, #ddd); }

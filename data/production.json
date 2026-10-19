@@ -1,0 +1,77 @@
+{
+  "updated": "2026-10-19",
+  "note": "Official Tesla Investor Relations production, delivery and energy tables only. Other Models is Tesla’s own bucket (not a model-level estimate). Energy GWh is storage deployed, not vehicles. Year-over-year figures appear only when both quarters were copied from opened IR pages.",
+  "source": "Tesla Investor Relations",
+  "quarters": [
+    {
+      "id": "Q3 2025",
+      "periodEnd": "2025-09-30",
+      "published": "2025-10-02",
+      "production": 447450,
+      "deliveries": 497099,
+      "model3yProduction": 435826,
+      "model3yDeliveries": 481166,
+      "otherProduction": 11624,
+      "otherDeliveries": 15933,
+      "energyGwh": 12.5,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-third-quarter-2025-production-deliveries-deployments",
+      "sourceTitle": "Tesla Third Quarter 2025 Production, Deliveries & Deployments"
+    },
+    {
+      "id": "Q4 2025",
+      "periodEnd": "2025-12-31",
+      "published": "2026-01-02",
+      "production": 434358,
+      "deliveries": 418227,
+      "model3yProduction": 422652,
+      "model3yDeliveries": 406585,
+      "otherProduction": 11706,
+      "otherDeliveries": 11642,
+      "energyGwh": 14.2,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-fourth-quarter-2025-production-deliveries-deployments",
+      "sourceTitle": "Tesla Fourth Quarter 2025 Production, Deliveries & Deployments"
+    },
+    {
+      "id": "Q1 2026",
+      "periodEnd": "2026-03-31",
+      "published": "2026-04-02",
+      "production": 408386,
+      "deliveries": 358023,
+      "model3yProduction": 394611,
+      "model3yDeliveries": 341893,
+      "otherProduction": 13775,
+      "otherDeliveries": 16130,
+      "energyGwh": 8.8,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-first-quarter-2026-production-deliveries-and-deployments",
+      "sourceTitle": "Tesla First Quarter 2026 Production, Deliveries & Deployments"
+    },
+    {
+      "id": "Q2 2026",
+      "periodEnd": "2026-06-30",
+      "published": "2026-07-02",
+      "production": 451758,
+      "deliveries": 480126,
+      "model3yProduction": 442936,
+      "model3yDeliveries": 467762,
+      "otherProduction": 8822,
+      "otherDeliveries": 12364,
+      "energyGwh": 13.5,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-second-quarter-2026-production-deliveries-and-deployments",
+      "sourceTitle": "Tesla Second Quarter 2026 Production, Deliveries & Deployments"
+    },
+    {
+      "id": "Q3 2026",
+      "periodEnd": "2026-09-30",
+      "published": "2026-10-02",
+      "production": 464391,
+      "deliveries": 486532,
+      "model3yProduction": 457387,
+      "model3yDeliveries": 478237,
+      "otherProduction": 7004,
+      "otherDeliveries": 8295,
+      "energyGwh": 13.7,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments",
+      "sourceTitle": "Tesla Third Quarter 2026 Production, Deliveries & Deployments"
+    }
+  ]
+}

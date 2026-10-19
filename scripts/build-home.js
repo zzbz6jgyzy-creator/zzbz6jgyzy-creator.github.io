@@ -195,4 +195,9 @@ const put = (name, inner) => {
 put("lead", lead); put("preload", preload); put("band", band);
 html = replaceEventCard(html, eventCard, "index.html");
  put("supp", supp); put("slasof", slAsOf); put("trk", trkHtml); put("feed", feed);
+try {
+  const intel = require("../intel-core.js");
+  const bundle = JSON.parse(rd("data/intelligence/bundle.json"));
+  put("changed", intel.homeSection(bundle));
+} catch (e) { console.warn("intel changed skip", e.message); }
 if (html !== before) { fs.writeFileSync(path.join(R, "index.html"), html); console.log("index.html updated"); } else console.log("index.html unchanged");
