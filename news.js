@@ -1,5 +1,5 @@
 (() => {
-  const CACHE_KEY = "v2-aljr-news-v3";
+  const CACHE_KEY = "v2-aljr-news-v4";
   const CACHE_MS = 10 * 60 * 1000;
   const MAX_AGE_MS = 36 * 60 * 60 * 1000;
   const PER_TOPIC = 12;
@@ -402,7 +402,8 @@
         snapshotItems = snap.items;
         snapshotUpdated = snap.updated || "";
         if (snapshotItems.length) {
-          items = window.SDNewsKeep ? window.SDNewsKeep.prepare(snapshotItems) : snapshotItems;
+          const keep = window.SDNewsKeep;
+          items = keep ? (keep.forDesk || keep.prepare)(snapshotItems) : snapshotItems;
           source = "snapshot";
           paint();
           setStatus(

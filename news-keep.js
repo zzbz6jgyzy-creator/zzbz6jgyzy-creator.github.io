@@ -68,7 +68,7 @@
     accessory: -10,
   };
   const RANK = {
-    note: "Editorial priorities for the homepage wire. Not a fact check. Overrides never rewrite headlines or timestamps.",
+    note: "Editorial priorities for the homepage eight and the news desk wire. Not a fact check. Overrides never rewrite headlines or timestamps.",
     kindScore: KIND_SCORE,
     recency: { h6: 10, h18: 6, h36: 3, h72: 1, staleDays: 7, stalePenalty: 12 },
     boostTitleKeys: [],
@@ -206,14 +206,16 @@
     return out;
   };
 
-  const forHomepage = (items, hold, now) => {
+  const byRank = (items, hold, now) => {
     const t = now || Date.now();
-    return diversify(
-      prepare(items, hold)
-        .slice()
-        .sort((a, b) => rankScore(b, t) - rankScore(a, t) || String(b.published || "").localeCompare(String(a.published || "")))
-    );
+    return prepare(items, hold)
+      .slice()
+      .sort((a, b) => rankScore(b, t) - rankScore(a, t) || String(b.published || "").localeCompare(String(a.published || "")));
   };
+  // Homepage eight: rank, then cap same-story clusters.
+  const forHomepage = (items, hold, now) => diversify(byRank(items, hold, now));
+  // News desk: same rank, full unique wire. Do not drop the second jellyfish.
+  const forDesk = (items, hold, now) => byRank(items, hold, now);
 
   return {
     titleKey,
@@ -224,7 +226,9 @@
     recencyScore,
     rankScore,
     prepare,
+    byRank,
     forHomepage,
+    forDesk,
     clusterKey,
     diversify,
     RANK,

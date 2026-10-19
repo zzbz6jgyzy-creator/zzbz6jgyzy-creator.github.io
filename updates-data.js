@@ -5,7 +5,7 @@ window.TESLA_UPDATES = {
   fsdNow: {
     headline: "FSD right now",
     lines: [
-      "Newest US build, HW4 / AI4: FSD Supervised v14.3.12 on 2026.38.5, plus a small 2026.38.5.1 point release (same FSD) that started reaching US cars on 13 Oct. Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early wave, mostly US, with the first cars in Mexico and Canada reporting 2026.38.5.",
+      "Newest reporting in the Teslascope sample, HW4 / AI4: FSD Supervised v14.3.12 on 2026.38.5, plus a small 2026.38.5.1 point release (same FSD) that started reaching US cars on 13 Oct. Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early wave, mostly US, with the first cars in Mexico and Canada reporting 2026.38.5.",
       "Wider North America HW4 build: v14.3.11 on 2026.33.5 (US and Canada). A big slice of US cars is still on v14.3.10 (2026.27.11). Automatic Collision Evasion is in 14.3.11 and 14.3.12 — North America only.",
       "North America, HW3: FSD Supervised v14.3 Lite on 2026.33.5 and 2026.38.5. Parking, unparking and start-from-park. No Collision Evasion.",
       "Europe: FSD Supervised v14.2.2.6 on 2026.33.100. Seen so far in the Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia and Slovenia.",

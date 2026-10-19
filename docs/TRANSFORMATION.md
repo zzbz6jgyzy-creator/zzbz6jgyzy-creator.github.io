@@ -137,11 +137,16 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Jellyfish pairs to Can I see it? Class-action pairs to the FSD tracker.
 - Tesla, SpaceX, News and Calendar get WebPage JSON-LD from existing page facts. No ads. No notify delivery.
 
-### Batch 22 — Hub stamps + tracker JSON-LD (this session)
+### Batch 22 — Hub stamps + tracker JSON-LD (merged #130)
 
 - Tesla hub stamp and software/FSD cards fill from `fsd-europe-data.js` and Teslascope `updates-live.json` (count>0, newest firstSeen). Not “US build”. Not the ghost `latest` field.
 - SpaceX hub stamp is Starship’s compile date only.
 - Flagship tracker pages get WebPage JSON-LD from existing title/meta. No ads. No notify delivery.
+
+### Batch 23 — Desk honesty (this session)
+
+- News desk ranks the full unique wire (`forDesk`). Homepage cluster caps stay on the eight.
+- Homepage Cybercab tracker uses the Texas DMV `live: "cybercab"` count (349), not Tesla’s older 300+ serving claim. No ads. No notify delivery.
 
 ## Architecture (do not rip out)
 
