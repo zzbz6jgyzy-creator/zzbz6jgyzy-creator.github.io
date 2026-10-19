@@ -183,7 +183,7 @@ const band = `<section class="sd-band" id="newsletter" data-newsletter="band" da
       <label class="visually-hidden" for="sd-band-email">Email address</label>
       <input id="sd-band-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
       <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
-      <button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-1?utm_source=website&amp;utm_medium=site-band&amp;utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div></section>`;
+      <button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/roadster-just-flew?utm_source=website&amp;utm_medium=site-band&amp;utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div></section>`;
 
 let html = rd("index.html"); const before = html;
 const put = (name, inner) => {
