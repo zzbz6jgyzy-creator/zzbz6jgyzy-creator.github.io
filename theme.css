@@ -544,6 +544,7 @@ html[data-theme="light"] .mj {
   border-color: rgba(227, 25, 55, 0.45);
   box-shadow: var(--shadow);
 }
+html[data-theme="light"] .mj-eb { color: var(--red-text); }
 html[data-theme="light"] .mj-t { color: var(--ink); }
 html[data-theme="light"] .mj-w { color: var(--ink-soft); }
 html[data-theme="light"] .mj-b {
@@ -551,6 +552,7 @@ html[data-theme="light"] .mj-b {
   border-color: rgba(227, 25, 55, 0.35);
 }
 html[data-theme="light"] .mj-b strong { color: var(--ink); }
+html[data-theme="light"] .mj-b small { color: var(--red-text); }
 
 html[data-theme="light"] .gear-band {
   background: radial-gradient(120% 140% at 100% 0, rgba(227, 25, 55, 0.1), transparent 55%), #fff;
