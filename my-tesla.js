@@ -286,7 +286,7 @@
       if (d >= 0) {
         swKey = "ok";
         swBig = you;
-        swSmall = d === 0 ? `You match the newest build seen in ${countryName()}.` : `Newer than the sample’s newest in ${countryName()} (${newest.id}).`;
+        swSmall = d === 0 ? `You match the newest reporting in ${countryName()}.` : `Newer than the sample’s newest in ${countryName()} (${newest.id}).`;
       } else {
         swKey = "soon";
         swBig = you;
@@ -295,7 +295,7 @@
     } else if (newest) {
       swKey = "ok";
       swBig = newest.id;
-      swSmall = `Newest build Teslascope has seen in ${countryName()} (${local.newest.n} cars).`;
+      swSmall = `Newest reporting Teslascope has seen in ${countryName()} (${local.newest.n} cars).`;
     }
 
     const fsdKey = !fsd ? "lock" : fsd.status === "live" ? "ok" : fsd.status === "limited" ? "soon" : "lock";

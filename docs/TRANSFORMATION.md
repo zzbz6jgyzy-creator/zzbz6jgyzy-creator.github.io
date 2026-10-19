@@ -148,10 +148,16 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - News desk ranks the full unique wire (`forDesk`). Homepage cluster caps stay on the eight.
 - Homepage Cybercab tracker uses the Texas DMV `live: "cybercab"` count (349), not Tesla’s older 300+ serving claim. No ads. No notify delivery.
 
-### Batch 24 — Remaining desk JSON-LD (this session)
+### Batch 24 — Remaining desk JSON-LD (merged #132)
 
 - Dispatch meta names the current lead stories, not “300 Cybercabs in Austin”.
 - WebPage JSON-LD on the remaining nav desks from existing title/meta. Clubs stamp is a compiled date. Game pages not rewritten. No ads. No notify delivery.
+
+### Batch 25 — Leftover copy + quiet light cards (this session)
+
+- Tesla hub drops “update every weekday.” Stamp is compiled dates, not a schedule.
+- Software Update Tracker and My Tesla say **Newest reporting**, not newest build.
+- Quiet next-stream cards lift in light theme. LIVE / Watch-live stay dark-red. No ads. No notify delivery.
 
 ## Architecture (do not rip out)
 
@@ -167,9 +173,8 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 ## Ranked next batches
 
-1. Measure production CWV after this merge.
-2. Publish Beehiiv `Tag ·` automations only if segmented signup mail is wanted.
-3. Per-car mail only after a real send hook exists.
+1. Publish Beehiiv `Tag ·` automations only if segmented signup mail is wanted.
+2. Per-car mail only after a real send hook exists.
 
 Dark remains the default brand. Do not auto-switch on OS light mode.
 

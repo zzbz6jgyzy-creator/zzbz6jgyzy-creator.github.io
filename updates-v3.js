@@ -43,7 +43,7 @@
     const seen = versions.filter((v) => v.count > 0);
     const newest = [...seen].sort((a, b) => cmpVer(b.id, a.id))[0];
     $("t-new").textContent = newest.id;
-    $("t-new-s").textContent = `first seen ${fmt(newest.firstSeen || newest.date)} · ${newest.percent}% of cars`;
+    $("t-new-s").textContent = `first seen ${fmt(newest.firstSeen || newest.date)} · ${newest.percent}% of tracked cars`;
     const common = [...seen].sort((a, b) => b.count - a.count)[0];
     $("t-common").textContent = common.id;
     $("t-common-s").textContent = `${common.percent}% of ${live.fleet.toLocaleString()} tracked cars`;
@@ -76,7 +76,7 @@
     const common = [...inRg].sort((a, b) => b.n - a.n)[0];
     const fsd = fsdFor(best.v, hw);
     const fsdTxt = fsd ? `FSD (Supervised) v${esc(fsd)}` : rg === "NA" ? "No new FSD build in it" : "No FSD build listed for this region";
-    out.innerHTML = `<div><span class="lbl">Newest build reaching ${RNAME[rg]}</span><b class="big">${esc(best.v.id)}</b>
+    out.innerHTML = `<div><span class="lbl">Newest reporting in ${RNAME[rg]}</span><b class="big">${esc(best.v.id)}</b>
       <p>${fsdTxt}${hw === "hw3" && rg !== "NA" && !best.v.fsdHw3 ? " for HW3" : ""}. First seen ${fmt(best.v.firstSeen || best.v.date)}; ${best.n} tracked cars here have it.</p>
       <p>Most cars here are on <b>${esc(common.v.id)}</b> (${Math.round((common.n / total) * 100)}%). If you are older than that, you are in the queue, not forgotten.</p>
       ${reach(rg)}</div>
