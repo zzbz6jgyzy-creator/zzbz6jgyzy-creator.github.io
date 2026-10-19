@@ -23,13 +23,14 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet" /></noscript>
-    <link rel="stylesheet" href="/model3-explorer.css?v=202610142355" />
+    <link rel="stylesheet" href="/model3-explorer.css?v=202610190700" />
     <link rel="modulepreload" href="/vendor/three/three.module.min.js" />
     <link rel="preload" href="/assets/3d/model3-2024.glb?v=1" as="fetch" crossorigin />
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
   </head>
   <body class="pn-app">
+    <a class="skip-link" href="#main">Skip to content</a>
       <div class="pn-wrap">
         <nav class="pn" data-start-collapsed aria-label="Primary" tabindex="-1">
           <a class="pn-logo" href="/" aria-label="Supercharged Daily home"><img src="/assets/brand/icon-1b-mark.svg" alt="" width="26" height="26" /><img class="pn-word" src="/assets/brand/wordmark.svg" alt="" width="114" height="18" /></a>
@@ -113,7 +114,7 @@
         <!-- Menu inspired by 21st.dev -->
       </aside>
 
-    <div class="m3x" data-m3x>
+    <main id="main" class="m3x" data-m3x>
       <header class="m3x-top">
         <div class="m3x-title"><p>Interactive · 3D</p><h1>Model 3, taken apart</h1><p class="m3x-intro">Drag to orbit, pinch or scroll to zoom. Hit <b>Explode</b> to pull the Model 3 apart, or tap any part to see what it does.</p></div>
       </header>
@@ -136,7 +137,7 @@
         <button type="button" class="m3x-pause" aria-pressed="false">Pause</button>
       </div>
       <p class="m3x-credit">3D model: <a href="https://sketchfab.com/3d-models/2024-tesla-model-3-interior-61ddcbdbd3854c239e0c95bf60b00022" target="_blank" rel="noopener">“2024 Tesla Model 3 + Interior” by tonielpro520</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>, optimised for web. Battery, motors, suspension and other hidden parts are illustrative, not exact. Photos: Wikimedia Commons (credited on each card). Rendered with <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> (MIT). Fan project, not affiliated with Tesla.</p>
-    </div>
+    </main>
     <script type="module" src="/model3-explorer.js?v=202610142355"></script>
       <script src="/nav-pill.js?v=202610190630"></script>
     <p style="position:fixed;left:.6rem;bottom:.35rem;margin:0;font-size:.68rem;color:#9a9aa2;pointer-events:none;z-index:5">© 2026 Supercharged Daily</p>

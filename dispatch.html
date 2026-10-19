@@ -39,10 +39,11 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+    <link rel="preload" as="image" type="image/avif" imagesrcset="/assets/dispatch/musk-earnings-week-q3-2026-poster-480w.avif 480w, /assets/dispatch/musk-earnings-week-q3-2026-poster-960w.avif 960w" imagesizes="(max-width: 760px) 92vw, 360px" fetchpriority="high" />
     <link rel="stylesheet" href="/styles.css?v=202610190500" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/search.css?v=202610190400" />
-    <link rel="stylesheet" href="/dispatch-browse.css?v=202610190400" />
+    <link rel="stylesheet" href="/dispatch-browse.css?v=202610190700" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
   </head>
   <body>
@@ -134,27 +135,34 @@
 
       <main id="main">
         <section class="page-hero">
-          <p class="eyebrow reveal">Dispatch</p>
-          <h1 class="reveal delay-1">Original reporting</h1>
-          <p class="reveal delay-2">
+          <p class="eyebrow">Dispatch</p>
+          <h1>Original reporting</h1>
+          <p>
             Longer versions of Tesla, SpaceX and Grok posts, each linked back to X.
           </p>
           <div class="sd-disp-tools" data-disp-browse>
-            <div class="sd-disp-chips" data-disp-chips role="group" aria-label="Dispatch topics"></div>
+            <div class="sd-disp-chips" data-disp-chips role="group" aria-label="Dispatch topics">
+              <button type="button" class="sd-disp-chip is-on" data-disp-topic="all" aria-pressed="true">All</button>
+              <button type="button" class="sd-disp-chip" data-disp-topic="tesla" aria-pressed="false">Tesla</button>
+              <button type="button" class="sd-disp-chip" data-disp-topic="spacex" aria-pressed="false">SpaceX</button>
+              <button type="button" class="sd-disp-chip" data-disp-topic="roadster" aria-pressed="false">Roadster</button>
+              <button type="button" class="sd-disp-chip" data-disp-topic="starship" aria-pressed="false">Starship</button>
+              <button type="button" class="sd-disp-chip" data-disp-topic="analysis" aria-pressed="false">Analysis</button>
+            </div>
             <form class="sd-find-inline sd-disp-find" data-disp-find role="search">
               <label class="visually-hidden" for="disp-q">Search Dispatch stories</label>
               <input id="disp-q" data-disp-q type="search" placeholder="Search Dispatch" autocomplete="off" />
               <button type="submit">Filter</button>
             </form>
-            <p class="sd-disp-status" data-disp-status></p>
+            <p class="sd-disp-status" data-disp-status>Stories</p>
             <p class="sd-disp-site"><a href="/search.html">Search the whole site →</a></p>
           </div>
         </section>
 
         <section class="section" style="padding-top: 1.5rem">
           <div class="story-grid" data-disp-grid>
-            <a class="story-card reveal" href="/dispatch/musk-earnings-week-q3-2026.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/musk-earnings-week-q3-2026-poster-480w.avif 480w, /assets/dispatch/musk-earnings-week-q3-2026-poster-960w.avif 960w, /assets/dispatch/musk-earnings-week-q3-2026-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/musk-earnings-week-q3-2026-poster-480w.webp 480w, /assets/dispatch/musk-earnings-week-q3-2026-poster-960w.webp 960w, /assets/dispatch/musk-earnings-week-q3-2026-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/musk-earnings-week-q3-2026-poster.jpg" alt="The long grey facade of Tesla's Gigafactory Texas Building 1 near Austin on a clear day (Larry D. Moore, CC BY 4.0)" width="1200" height="675" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/musk-earnings-week-q3-2026.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/musk-earnings-week-q3-2026-poster-480w.avif 480w, /assets/dispatch/musk-earnings-week-q3-2026-poster-960w.avif 960w, /assets/dispatch/musk-earnings-week-q3-2026-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/musk-earnings-week-q3-2026-poster-480w.webp 480w, /assets/dispatch/musk-earnings-week-q3-2026-poster-960w.webp 960w, /assets/dispatch/musk-earnings-week-q3-2026-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/musk-earnings-week-q3-2026-poster.jpg" alt="The long grey facade of Tesla's Gigafactory Texas Building 1 near Austin on a clear day (Larry D. Moore, CC BY 4.0)" width="1200" height="675" fetchpriority="high" decoding="async" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">Markets</span>
                 <h3>Musk’s earnings week, explained</h3>
@@ -162,8 +170,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/bandwagon5-starfall-second-demo.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/bandwagon5-starfall-second-demo-poster-480w.avif 480w, /assets/dispatch/bandwagon5-starfall-second-demo-poster-960w.avif 960w, /assets/dispatch/bandwagon5-starfall-second-demo-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/bandwagon5-starfall-second-demo-poster-480w.webp 480w, /assets/dispatch/bandwagon5-starfall-second-demo-poster-960w.webp 960w, /assets/dispatch/bandwagon5-starfall-second-demo-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/bandwagon5-starfall-second-demo-poster.jpg" alt="Long-exposure photo of a Falcon 9 night launch from Space Launch Complex 40, its bright arc curving across a starry sky over Cape Canaveral (U.S. Space Force photo by Joshua Conti, public domain)" width="1200" height="675" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/bandwagon5-starfall-second-demo.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/bandwagon5-starfall-second-demo-poster-480w.avif 480w, /assets/dispatch/bandwagon5-starfall-second-demo-poster-960w.avif 960w, /assets/dispatch/bandwagon5-starfall-second-demo-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/bandwagon5-starfall-second-demo-poster-480w.webp 480w, /assets/dispatch/bandwagon5-starfall-second-demo-poster-960w.webp 960w, /assets/dispatch/bandwagon5-starfall-second-demo-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/bandwagon5-starfall-second-demo-poster.jpg" alt="Long-exposure photo of a Falcon 9 night launch from Space Launch Complex 40, its bright arc curving across a starry sky over Cape Canaveral (U.S. Space Force photo by Joshua Conti, public domain)" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">SpaceX</span>
                 <h3>Monday’s Falcon 9 carries SpaceX’s second Starfall test</h3>
@@ -171,8 +179,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/robotaxi-austin-midnight-803.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/robotaxi-austin-midnight-803-poster-480w.avif 480w, /assets/dispatch/robotaxi-austin-midnight-803-poster-960w.avif 960w, /assets/dispatch/robotaxi-austin-midnight-803-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/robotaxi-austin-midnight-803-poster-480w.webp 480w, /assets/dispatch/robotaxi-austin-midnight-803-poster-960w.webp 960w, /assets/dispatch/robotaxi-austin-midnight-803-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/robotaxi-austin-midnight-803-poster.jpg" alt="A silver current-generation Tesla Model Y parked under trees (Damian B Oh, CC BY-SA 4.0)" width="1200" height="675" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/robotaxi-austin-midnight-803.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/robotaxi-austin-midnight-803-poster-480w.avif 480w, /assets/dispatch/robotaxi-austin-midnight-803-poster-960w.avif 960w, /assets/dispatch/robotaxi-austin-midnight-803-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/robotaxi-austin-midnight-803-poster-480w.webp 480w, /assets/dispatch/robotaxi-austin-midnight-803-poster-960w.webp 960w, /assets/dispatch/robotaxi-austin-midnight-803-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/robotaxi-austin-midnight-803-poster.jpg" alt="A silver current-generation Tesla Model Y parked under trees (Damian B Oh, CC BY-SA 4.0)" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-tesla">Robotaxi</span>
                 <h3>Tesla Robotaxi now runs until midnight in Austin</h3>
@@ -180,8 +188,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/boca-chica-state-park-spacex.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/boca-chica-state-park-spacex-poster-480w.avif 480w, /assets/dispatch/boca-chica-state-park-spacex-poster-960w.avif 960w, /assets/dispatch/boca-chica-state-park-spacex-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/boca-chica-state-park-spacex-poster-480w.webp 480w, /assets/dispatch/boca-chica-state-park-spacex-poster-960w.webp 960w, /assets/dispatch/boca-chica-state-park-spacex-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/boca-chica-state-park-spacex-poster.jpg" alt="Two cars on Boca Chica Beach with SpaceX’s Starship launch tower under construction behind the dunes (Alexander Hatley, CC BY 2.0)" width="1200" height="675" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/boca-chica-state-park-spacex.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/boca-chica-state-park-spacex-poster-480w.avif 480w, /assets/dispatch/boca-chica-state-park-spacex-poster-960w.avif 960w, /assets/dispatch/boca-chica-state-park-spacex-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/boca-chica-state-park-spacex-poster-480w.webp 480w, /assets/dispatch/boca-chica-state-park-spacex-poster-960w.webp 960w, /assets/dispatch/boca-chica-state-park-spacex-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/boca-chica-state-park-spacex-poster.jpg" alt="Two cars on Boca Chica Beach with SpaceX’s Starship launch tower under construction behind the dunes (Alexander Hatley, CC BY 2.0)" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">SpaceX</span>
                 <h3>Texas weighed selling Boca Chica State Park to SpaceX</h3>
@@ -189,8 +197,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/grok-bot-3x-faster-connectors.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/grok-bot-3x-faster-connectors-poster-480w.avif 480w, /assets/dispatch/grok-bot-3x-faster-connectors-poster-960w.avif 960w, /assets/dispatch/grok-bot-3x-faster-connectors-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/grok-bot-3x-faster-connectors-poster-480w.webp 480w, /assets/dispatch/grok-bot-3x-faster-connectors-poster-960w.webp 960w, /assets/dispatch/grok-bot-3x-faster-connectors-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/grok-bot-3x-faster-connectors-poster.jpg" alt="Grok Bot’s redesigned chat cards, image from the official @bot update thread" width="1200" height="675" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/grok-bot-3x-faster-connectors.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/grok-bot-3x-faster-connectors-poster-480w.avif 480w, /assets/dispatch/grok-bot-3x-faster-connectors-poster-960w.avif 960w, /assets/dispatch/grok-bot-3x-faster-connectors-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/grok-bot-3x-faster-connectors-poster-480w.webp 480w, /assets/dispatch/grok-bot-3x-faster-connectors-poster-960w.webp 960w, /assets/dispatch/grok-bot-3x-faster-connectors-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/grok-bot-3x-faster-connectors-poster.jpg" alt="Grok Bot’s redesigned chat cards, image from the official @bot update thread" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">Grok</span>
                 <h3>Grok Bot says it’s 3x faster, adds Robinhood and Coinbase</h3>
@@ -198,8 +206,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/x-ads-esthetic-standard.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/x-ads-esthetic-standard-poster-480w.avif 480w, /assets/dispatch/x-ads-esthetic-standard-poster-960w.avif 960w, /assets/dispatch/x-ads-esthetic-standard-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/x-ads-esthetic-standard-poster-480w.webp 480w, /assets/dispatch/x-ads-esthetic-standard-poster-960w.webp 960w, /assets/dispatch/x-ads-esthetic-standard-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/x-ads-esthetic-standard-poster.jpg" alt="“Start Building Beautiful Ads,” still from the @XBusiness promo video (X)" width="1200" height="675" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/x-ads-esthetic-standard.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/x-ads-esthetic-standard-poster-480w.avif 480w, /assets/dispatch/x-ads-esthetic-standard-poster-960w.avif 960w, /assets/dispatch/x-ads-esthetic-standard-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/x-ads-esthetic-standard-poster-480w.webp 480w, /assets/dispatch/x-ads-esthetic-standard-poster-960w.webp 960w, /assets/dispatch/x-ads-esthetic-standard-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/x-ads-esthetic-standard-poster.jpg" alt="“Start Building Beautiful Ads,” still from the @XBusiness promo video (X)" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">X</span>
                 <h3>X will bar “ugly” and “shrill” advertisers</h3>
@@ -207,8 +215,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/starlink-india-reliance-reply.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/starlink-india-reliance-reply-poster-480w.avif 480w, /assets/dispatch/starlink-india-reliance-reply-poster-960w.avif 960w, /assets/dispatch/starlink-india-reliance-reply-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/starlink-india-reliance-reply-poster-480w.webp 480w, /assets/dispatch/starlink-india-reliance-reply-poster-960w.webp 960w, /assets/dispatch/starlink-india-reliance-reply-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/starlink-india-reliance-reply-poster.jpg" alt="Official Starlink satellite footage (SpaceX / Starlink)" width="1200" height="675" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/starlink-india-reliance-reply.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/starlink-india-reliance-reply-poster-480w.avif 480w, /assets/dispatch/starlink-india-reliance-reply-poster-960w.avif 960w, /assets/dispatch/starlink-india-reliance-reply-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/starlink-india-reliance-reply-poster-480w.webp 480w, /assets/dispatch/starlink-india-reliance-reply-poster-960w.webp 960w, /assets/dispatch/starlink-india-reliance-reply-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/starlink-india-reliance-reply-poster.jpg" alt="Official Starlink satellite footage (SpaceX / Starlink)" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">Starlink</span>
                 <h3>Starlink answers Reliance: “ready to connect India”</h3>
@@ -216,8 +224,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/slovakia-fsd-ninth-eu.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/slovakia-fsd-ninth-eu-poster-480w.avif 480w, /assets/dispatch/slovakia-fsd-ninth-eu-poster-960w.avif 960w, /assets/dispatch/slovakia-fsd-ninth-eu-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/slovakia-fsd-ninth-eu-poster-480w.webp 480w, /assets/dispatch/slovakia-fsd-ninth-eu-poster-960w.webp 960w, /assets/dispatch/slovakia-fsd-ninth-eu-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/slovakia-fsd-ninth-eu-poster.jpg" alt="Frame from Tesla Europe's FSD (Supervised) winter-driving video" width="1200" height="675" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/slovakia-fsd-ninth-eu.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/slovakia-fsd-ninth-eu-poster-480w.avif 480w, /assets/dispatch/slovakia-fsd-ninth-eu-poster-960w.avif 960w, /assets/dispatch/slovakia-fsd-ninth-eu-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/slovakia-fsd-ninth-eu-poster-480w.webp 480w, /assets/dispatch/slovakia-fsd-ninth-eu-poster-960w.webp 960w, /assets/dispatch/slovakia-fsd-ninth-eu-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/slovakia-fsd-ninth-eu-poster.jpg" alt="Frame from Tesla Europe's FSD (Supervised) winter-driving video" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-tesla">FSD Europe</span>
                 <h3>Slovakia approves FSD, the 9th EU country</h3>
@@ -225,8 +233,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/project-bromo-eu-spacex-rival.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/project-bromo-eu-spacex-rival-poster-480w.avif 480w, /assets/dispatch/project-bromo-eu-spacex-rival-poster-960w.avif 960w, /assets/dispatch/project-bromo-eu-spacex-rival-poster-1280w.avif 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/project-bromo-eu-spacex-rival-poster-480w.webp 480w, /assets/dispatch/project-bromo-eu-spacex-rival-poster-960w.webp 960w, /assets/dispatch/project-bromo-eu-spacex-rival-poster-1280w.webp 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/project-bromo-eu-spacex-rival-poster.jpg" alt="Starlink V3 deploying from Starship — Europe’s Project Bromo is racing this cadence" width="1280" height="720" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/project-bromo-eu-spacex-rival.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/project-bromo-eu-spacex-rival-poster-480w.avif 480w, /assets/dispatch/project-bromo-eu-spacex-rival-poster-960w.avif 960w, /assets/dispatch/project-bromo-eu-spacex-rival-poster-1280w.avif 1280w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/project-bromo-eu-spacex-rival-poster-480w.webp 480w, /assets/dispatch/project-bromo-eu-spacex-rival-poster-960w.webp 960w, /assets/dispatch/project-bromo-eu-spacex-rival-poster-1280w.webp 1280w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/project-bromo-eu-spacex-rival-poster.jpg" alt="Starlink V3 deploying from Starship — Europe’s Project Bromo is racing this cadence" width="1280" height="720" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">Starlink</span>
                 <h3>EU fast-tracks Project Bromo vs SpaceX</h3>
@@ -234,8 +242,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/roadster-reveal-2026.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/roadster-reveal-2026-rearhero-480w.avif 480w, /assets/dispatch/roadster-reveal-2026-rearhero-960w.avif 960w, /assets/dispatch/roadster-reveal-2026-rearhero-1600w.avif 1600w, /assets/dispatch/roadster-reveal-2026-rearhero-1920w.avif 1920w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/roadster-reveal-2026-rearhero-480w.webp 480w, /assets/dispatch/roadster-reveal-2026-rearhero-960w.webp 960w, /assets/dispatch/roadster-reveal-2026-rearhero-1600w.webp 1600w, /assets/dispatch/roadster-reveal-2026-rearhero-1920w.webp 1920w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/roadster-reveal-2026-rearhero.jpg" alt="Rear of the next-generation Tesla Roadster with its red light bar and thruster nozzles" width="1280" height="720" loading="lazy" /></picture>
+            <a class="story-card" href="/dispatch/roadster-reveal-2026.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/roadster-reveal-2026-rearhero-480w.avif 480w, /assets/dispatch/roadster-reveal-2026-rearhero-960w.avif 960w, /assets/dispatch/roadster-reveal-2026-rearhero-1600w.avif 1600w, /assets/dispatch/roadster-reveal-2026-rearhero-1920w.avif 1920w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/roadster-reveal-2026-rearhero-480w.webp 480w, /assets/dispatch/roadster-reveal-2026-rearhero-960w.webp 960w, /assets/dispatch/roadster-reveal-2026-rearhero-1600w.webp 1600w, /assets/dispatch/roadster-reveal-2026-rearhero-1920w.webp 1920w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/roadster-reveal-2026-rearhero.jpg" alt="Rear of the next-generation Tesla Roadster with its red light bar and thruster nozzles" width="1280" height="720" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-tesla">Roadster</span>
                 <h3>Tesla’s new Roadster flew</h3>
@@ -243,8 +251,8 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/southwest-starlink-full-fleet.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/southwest-starlink-full-fleet-poster-480w.avif 480w, /assets/dispatch/southwest-starlink-full-fleet-poster-960w.avif 960w, /assets/dispatch/southwest-starlink-full-fleet-poster-1280w.avif 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/southwest-starlink-full-fleet-poster-480w.webp 480w, /assets/dispatch/southwest-starlink-full-fleet-poster-960w.webp 960w, /assets/dispatch/southwest-starlink-full-fleet-poster-1280w.webp 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/southwest-starlink-full-fleet-poster.jpg" alt="Southwest Airlines and Starlink graphic: Starlink coming to every plane" width="1280" height="720" loading="lazy" style="width:100%;height:auto" /></picture>
+            <a class="story-card" href="/dispatch/southwest-starlink-full-fleet.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/southwest-starlink-full-fleet-poster-480w.avif 480w, /assets/dispatch/southwest-starlink-full-fleet-poster-960w.avif 960w, /assets/dispatch/southwest-starlink-full-fleet-poster-1280w.avif 1280w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/southwest-starlink-full-fleet-poster-480w.webp 480w, /assets/dispatch/southwest-starlink-full-fleet-poster-960w.webp 960w, /assets/dispatch/southwest-starlink-full-fleet-poster-1280w.webp 1280w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/southwest-starlink-full-fleet-poster.jpg" alt="Southwest Airlines and Starlink graphic: Starlink coming to every plane" width="1280" height="720" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">Starlink</span>
                 <h3>Southwest puts Starlink on every plane</h3>
@@ -252,7 +260,7 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/starmind-volume-production.html">
+            <a class="story-card" href="/dispatch/starmind-volume-production.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="metadata" poster="/assets/dispatch/starmind-volume-production-poster.jpg" aria-label="SpaceX Starmind AI1 satellite clip">
@@ -265,10 +273,10 @@
                 <p>Musk puts a year on the orbital AI computer SpaceX is building with Nvidia.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/crs35-dragon-docks.html">
+            <a class="story-card" href="/dispatch/crs35-dragon-docks.html">
               <div class="story-media">
                 <span class="media-play">Dragon</span>
-                <picture><source type="image/avif" srcset="/assets/dispatch/crs35-dragon-docks-poster-480w.avif 480w, /assets/dispatch/crs35-dragon-docks-poster-960w.avif 960w, /assets/dispatch/crs35-dragon-docks-poster-1280w.avif 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/crs35-dragon-docks-poster-480w.webp 480w, /assets/dispatch/crs35-dragon-docks-poster-960w.webp 960w, /assets/dispatch/crs35-dragon-docks-poster-1280w.webp 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><img width="1280" height="720" src="/assets/dispatch/crs35-dragon-docks-poster.jpg" alt="SpaceX cargo Dragon approaching the space station with its nose cone open" loading="lazy" decoding="async" /></picture>
+                <picture><source type="image/avif" srcset="/assets/dispatch/crs35-dragon-docks-poster-480w.avif 480w, /assets/dispatch/crs35-dragon-docks-poster-960w.avif 960w, /assets/dispatch/crs35-dragon-docks-poster-1280w.avif 1280w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/crs35-dragon-docks-poster-480w.webp 480w, /assets/dispatch/crs35-dragon-docks-poster-960w.webp 960w, /assets/dispatch/crs35-dragon-docks-poster-1280w.webp 1280w" sizes="(max-width: 760px) 92vw, 360px" /><img width="1280" height="720" src="/assets/dispatch/crs35-dragon-docks-poster.jpg" alt="SpaceX cargo Dragon approaching the space station with its nose cone open" loading="lazy" decoding="async" /></picture>
               </div>
               <div class="story-copy">
                 <span class="tag tag-spacex">SpaceX</span>
@@ -277,7 +285,7 @@
               </div>
             </a>
 
-            <a class="story-card reveal" href="/dispatch/united-starlink-half.html">
+            <a class="story-card" href="/dispatch/united-starlink-half.html">
             <div class="story-media">
               <span class="media-play">Video</span>
               <video muted playsinline preload="none" data-poster="/assets/dispatch/united-starlink-half-poster-960w.webp" aria-label="United Airlines official Starlink film">
@@ -291,39 +299,39 @@
             </div>
           </a>
 
-            <a class="story-card reveal" href="/dispatch/grok-bot-make-you-whole-analysis.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/grok-bot-make-you-whole-analysis-poster-480w.avif 480w, /assets/dispatch/grok-bot-make-you-whole-analysis-poster-960w.avif 960w, /assets/dispatch/grok-bot-make-you-whole-analysis-poster-1280w.avif 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/grok-bot-make-you-whole-analysis-poster-480w.webp 480w, /assets/dispatch/grok-bot-make-you-whole-analysis-poster-960w.webp 960w, /assets/dispatch/grok-bot-make-you-whole-analysis-poster-1280w.webp 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/grok-bot-make-you-whole-analysis-poster.jpg" alt="Grok Bot logo" width="1280" height="720" loading="lazy" /></picture>
+            <a class="story-card" href="/dispatch/grok-bot-make-you-whole-analysis.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/grok-bot-make-you-whole-analysis-poster-480w.avif 480w, /assets/dispatch/grok-bot-make-you-whole-analysis-poster-960w.avif 960w, /assets/dispatch/grok-bot-make-you-whole-analysis-poster-1280w.avif 1280w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/grok-bot-make-you-whole-analysis-poster-480w.webp 480w, /assets/dispatch/grok-bot-make-you-whole-analysis-poster-960w.webp 960w, /assets/dispatch/grok-bot-make-you-whole-analysis-poster-1280w.webp 1280w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/grok-bot-make-you-whole-analysis-poster.jpg" alt="Grok Bot logo" width="1280" height="720" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">Analysis</span>
                 <h3>SpaceX will ‘make you whole’ if Grok Bot shops wrong</h3>
                 <p>Musk’s refund promise vs Grok Bot Terms that put the risk on you.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/roadster-banger-demo-day.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/roadster-banger-demo-day-poster-480w.avif 480w, /assets/dispatch/roadster-banger-demo-day-poster-960w.avif 960w, /assets/dispatch/roadster-banger-demo-day-poster-1280w.avif 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/roadster-banger-demo-day-poster-480w.webp 480w, /assets/dispatch/roadster-banger-demo-day-poster-960w.webp 960w, /assets/dispatch/roadster-banger-demo-day-poster-1280w.webp 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/roadster-banger-demo-day-poster.jpg" alt="Tesla Roadster livestream poster" width="1280" height="720" loading="lazy" /></picture>
+            <a class="story-card" href="/dispatch/roadster-banger-demo-day.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/roadster-banger-demo-day-poster-480w.avif 480w, /assets/dispatch/roadster-banger-demo-day-poster-960w.avif 960w, /assets/dispatch/roadster-banger-demo-day-poster-1280w.avif 1280w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/roadster-banger-demo-day-poster-480w.webp 480w, /assets/dispatch/roadster-banger-demo-day-poster-960w.webp 960w, /assets/dispatch/roadster-banger-demo-day-poster-1280w.webp 1280w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/roadster-banger-demo-day-poster.jpg" alt="Tesla Roadster livestream poster" width="1280" height="720" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-tesla">Tesla</span>
                 <h3>Before the reveal: Musk’s “BANGER” promise</h3>
                 <p>Pre-event explainer: the physics and safety of cold-gas thrusters.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/tesla-spacex-merger-barclays.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/tesla-spacex-merger-barclays-poster-480w.avif 480w, /assets/dispatch/tesla-spacex-merger-barclays-poster-960w.avif 960w, /assets/dispatch/tesla-spacex-merger-barclays-poster-1280w.avif 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/tesla-spacex-merger-barclays-poster-480w.webp 480w, /assets/dispatch/tesla-spacex-merger-barclays-poster-960w.webp 960w, /assets/dispatch/tesla-spacex-merger-barclays-poster-1280w.webp 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/tesla-spacex-merger-barclays-poster.jpg" alt="Tesla and SpaceX" width="1280" height="720" loading="lazy" /></picture>
+            <a class="story-card" href="/dispatch/tesla-spacex-merger-barclays.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/tesla-spacex-merger-barclays-poster-480w.avif 480w, /assets/dispatch/tesla-spacex-merger-barclays-poster-960w.avif 960w, /assets/dispatch/tesla-spacex-merger-barclays-poster-1280w.avif 1280w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/tesla-spacex-merger-barclays-poster-480w.webp 480w, /assets/dispatch/tesla-spacex-merger-barclays-poster-960w.webp 960w, /assets/dispatch/tesla-spacex-merger-barclays-poster-1280w.webp 1280w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/tesla-spacex-merger-barclays-poster.jpg" alt="Tesla and SpaceX" width="1280" height="720" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-spacex">Analysis</span>
                 <h3>Barclays: Tesla–SpaceX merger “consensus”</h3>
                 <p>Analyst speculation: an all-stock deal before Tesla’s AGM.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/cybercab-349-texas.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/cybercab-349-texas-poster-480w.avif 480w, /assets/dispatch/cybercab-349-texas-poster-960w.avif 960w, /assets/dispatch/cybercab-349-texas-poster-1280w.avif 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/cybercab-349-texas-poster-480w.webp 480w, /assets/dispatch/cybercab-349-texas-poster-960w.webp 960w, /assets/dispatch/cybercab-349-texas-poster-1280w.webp 1280w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/cybercab-349-texas-poster.jpg" alt="Gold Cybercab" width="1280" height="720" loading="lazy" /></picture>
+            <a class="story-card" href="/dispatch/cybercab-349-texas.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/cybercab-349-texas-poster-480w.avif 480w, /assets/dispatch/cybercab-349-texas-poster-960w.avif 960w, /assets/dispatch/cybercab-349-texas-poster-1280w.avif 1280w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/cybercab-349-texas-poster-480w.webp 480w, /assets/dispatch/cybercab-349-texas-poster-960w.webp 960w, /assets/dispatch/cybercab-349-texas-poster-1280w.webp 1280w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/cybercab-349-texas-poster.jpg" alt="Gold Cybercab" width="1280" height="720" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-tesla">Robotaxi</span>
                 <h3>349 Cybercabs registered in Texas</h3>
                 <p>30 more on the DMV list, and every new car is a Cybercab.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/tesla-dream-scenario.html">
+            <a class="story-card" href="/dispatch/tesla-dream-scenario.html">
             <div class="story-media">
               <span class="media-play">Video</span>
               <video muted playsinline preload="none" data-poster="/assets/dispatch/tesla-dream-scenario-poster-960w.webp" aria-label="Edit of official Tesla and SpaceX footage including the Flight 5 booster catch">
@@ -336,7 +344,7 @@
               <p>Optimus, Cybercab, a thruster Roadster and a truck for Mars: what's real, and what could be.</p>
             </div>
           </a>
-          <a class="story-card reveal" href="/dispatch/grok-voice-3-spacexsi.html">
+          <a class="story-card" href="/dispatch/grok-voice-3-spacexsi.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/grok-voice-3-spacexsi-poster-960w.webp" aria-label="Tesla Grok Connectors in-car demo footage">
@@ -349,10 +357,10 @@
                 <p>Already running ~20,000 Starlink support calls a day, ~70% with no human.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/cybercab-319-analysis.html">
+            <a class="story-card" href="/dispatch/cybercab-319-analysis.html">
               <div class="story-media">
                 <span class="media-play">Analysis</span>
-                <picture><source type="image/avif" srcset="/assets/dispatch/cybercab-austin-poster-480w.avif 480w, /assets/dispatch/cybercab-austin-poster-960w.avif 960w, /assets/dispatch/cybercab-austin-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/cybercab-austin-poster-480w.webp 480w, /assets/dispatch/cybercab-austin-poster-960w.webp 960w, /assets/dispatch/cybercab-austin-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img width="1200" height="675" src="/assets/dispatch/cybercab-austin-poster.jpg" alt="Official Robotaxi footage of the Austin Cybercab fleet" loading="lazy" decoding="async" /></picture>
+                <picture><source type="image/avif" srcset="/assets/dispatch/cybercab-austin-poster-480w.avif 480w, /assets/dispatch/cybercab-austin-poster-960w.avif 960w, /assets/dispatch/cybercab-austin-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/cybercab-austin-poster-480w.webp 480w, /assets/dispatch/cybercab-austin-poster-960w.webp 960w, /assets/dispatch/cybercab-austin-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img width="1200" height="675" src="/assets/dispatch/cybercab-austin-poster.jpg" alt="Official Robotaxi footage of the Austin Cybercab fleet" loading="lazy" decoding="async" /></picture>
               </div>
               <div class="story-copy">
                 <span class="tag tag-tesla">Analysis</span>
@@ -360,7 +368,7 @@
                 <p>Registered isn’t running. The S-curve, the NHTSA deadline and what to watch next.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/roadster-falcon9-cold-gas-thrusters.html">
+            <a class="story-card" href="/dispatch/roadster-falcon9-cold-gas-thrusters.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/roadster-falcon9-cold-gas-thrusters-poster-960w.webp" aria-label="Falcon 9 booster flip and droneship landing">
@@ -373,7 +381,7 @@
                 <p>How cold gas flips a booster, and what it could do on a car.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/powerwall-745mw-record.html">
+            <a class="story-card" href="/dispatch/powerwall-745mw-record.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/powerwall-745mw-record-poster-960w.webp" aria-label="Tesla Energy virtual power plant explainer footage">
@@ -386,7 +394,7 @@
                 <p>Tesla and Sunrun sent enough power to California's grid for every home in San Francisco and San Jose at peak.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-1" href="/dispatch/ship-40.html">
+            <a class="story-card" href="/dispatch/ship-40.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/ship-40-megabay-poster-960w.webp" aria-label="Ship 40 heatshield transport at Starbase">
@@ -399,7 +407,7 @@
                 <p>Flight 13, an intact splashdown, a 75-day trip home and a Megabay at Starbase.</p>
               </div>
             </a>
-<a class="story-card reveal" href="/dispatch/roadster-livestream.html">
+<a class="story-card" href="/dispatch/roadster-livestream.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="none" data-poster="/assets/dispatch/roadster-livestream-poster-960w.webp" aria-label="SpaceX footage of Starman in the original Tesla Roadster above Earth, 2018 (not Thursday&#x27;s car)">
@@ -412,7 +420,7 @@
     <p>What to watch for: the 1.1-second 0-60 claim, the 2017 targets and "Timing is everything."</p>
   </div>
 </a>
-<a class="story-card reveal" href="/dispatch/roadster-cold-gas-thrusters.html">
+<a class="story-card" href="/dispatch/roadster-cold-gas-thrusters.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="none" data-poster="/assets/dispatch/roadster-cold-gas-thrusters-poster-960w.webp" aria-label="SpaceX webcast footage of a Falcon 9 booster firing nitrogen cold-gas thrusters as it flips (not Roadster)">
@@ -425,7 +433,7 @@
     <p>About 10 thrusters and a claimed 1.1s 0-60, ahead of Thursday's reveal.</p>
   </div>
 </a>
-            <a class="story-card reveal" href="/dispatch/super-heavy-raptor3.html">
+            <a class="story-card" href="/dispatch/super-heavy-raptor3.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/super-heavy-raptor3-poster-960w.webp" aria-label="Super Heavy's 33 Raptor 3 engines lighting on Starship Flight 14">
@@ -438,7 +446,7 @@
                 <p>Super Heavy makes roughly 2.4 times a Saturn V's thrust, the most powerful rocket ever flown.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/tesla-us-ev-share-q3.html">
+            <a class="story-card" href="/dispatch/tesla-us-ev-share-q3.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/tesla-us-ev-share-q3-poster-960w.webp" aria-label="Official Tesla Model Y L film footage">
@@ -451,7 +459,7 @@
                 <p>99,037 Model Ys in Q3; Tesla took 54% of US EV sales, per Cox / KBB.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/crs35-final-solar-arrays.html">
+            <a class="story-card" href="/dispatch/crs35-final-solar-arrays.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/crs35-final-solar-arrays-poster-960w.webp" aria-label="Official SpaceX footage from the CRS-35 Dragon launch">
@@ -464,7 +472,7 @@
                 <p>CRS-35 launched at 6:33am ET (3:33am PT); Dragon has carried every one of them.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/b1088-20th-flight.html">
+            <a class="story-card" href="/dispatch/b1088-20th-flight.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/b1088-20th-flight-poster-960w.webp" aria-label="Official SpaceX footage from the Starlink 15-25 launch and booster landing">
@@ -477,7 +485,7 @@
                 <p>Starlink 15-25 from Vandenberg, landing on Of Course I Still Love You.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/x-subscription.html">
+            <a class="story-card" href="/dispatch/x-subscription.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/x-subscription-poster.jpg" aria-label="SpaceXSI launch video for The X Subscription">
@@ -490,7 +498,7 @@
                 <p>Five tiers from free to $200 a month; Grok Bot starts at $30.</p>
               </div>
             </a>
-<a class="story-card reveal" href="/dispatch/roadster-reveal.html">
+<a class="story-card" href="/dispatch/roadster-reveal.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="none" data-poster="/assets/dispatch/roadster-reveal-poster-960w.webp" aria-label="Official Tesla footage of the Roadster prototype rolling out in smoke at the 2017 reveal">
@@ -503,7 +511,7 @@
     <p>Pre-event story: the 2017 unveil promised 0-60 in 1.9 seconds. The car was revealed on 16 Oct.</p>
   </div>
 </a>
-<a class="story-card reveal" href="/dispatch/falcon-668-landings.html">
+<a class="story-card" href="/dispatch/falcon-668-landings.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="none" data-poster="/assets/dispatch/falcon-668-landings-poster-960w.webp" aria-label="Official SpaceX footage of Falcon 9 boosters landing">
@@ -516,7 +524,7 @@
     <p>B1103 made it 668 on Saturday. CRS-35 followed on Tuesday 13 Oct, with B1096 landing at LZ-40.</p>
   </div>
 </a>
-<a class="story-card reveal" href="/dispatch/tesla-automations-europe.html">
+<a class="story-card" href="/dispatch/tesla-automations-europe.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/tesla-automations-europe-poster-960w.webp" aria-label="Official Tesla Europe footage of a Tesla side camera in Amsterdam (not the Automations app)">
@@ -529,7 +537,7 @@
                 <p>“If this, then that” for your Tesla, seen on one car in Europe. Not confirmed by Tesla.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/fsd-15-billion-miles.html">
+            <a class="story-card" href="/dispatch/fsd-15-billion-miles.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="none" data-poster="/assets/dispatch/fsd-15-billion-miles-poster-960w.webp" aria-label="Official Tesla footage of FSD (Supervised) on US roads">
@@ -542,7 +550,7 @@
     <p>About 35 million supervised miles a day, per Tesla’s safety report.</p>
   </div>
 </a>
-            <a class="story-card reveal" href="/dispatch/starlink-two-thirds.html">
+            <a class="story-card" href="/dispatch/starlink-two-thirds.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/starlink-two-thirds-poster-960w.webp" aria-label="Starlink V3 satellite leaving Starship's slot door">
@@ -555,7 +563,7 @@
                 <p>11,143 Starlinks vs 5,770 for the rest of the world, per McDowell’s catalogue.</p>
               </div>
             </a>
-<a class="story-card reveal" href="/dispatch/paris-cybercab-europe.html">
+<a class="story-card" href="/dispatch/paris-cybercab-europe.html">
   <div class="story-media">
     <span class="media-play">Video</span>
     <video muted playsinline preload="none" data-poster="/assets/dispatch/paris-cybercab-europe-poster-960w.webp" aria-label="Official Tesla Robotaxi footage of a production Cybercab">
@@ -569,7 +577,7 @@
   </div>
 </a>
 
-            <a class="story-card reveal" href="/dispatch/tesla-headlight-leveling.html">
+            <a class="story-card" href="/dispatch/tesla-headlight-leveling.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/tesla-headlight-leveling-poster-960w.webp" aria-label="Official Tesla footage of adaptive headlights at night">
@@ -582,7 +590,7 @@
                 <p>2026.38 adds Dynamic Headlight Leveling on select Model 3 and Cybertruck.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/super-heavy-thrust.html">
+            <a class="story-card" href="/dispatch/super-heavy-thrust.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/super-heavy-thrust-poster-960w.webp" aria-label="Official SpaceX Flight 14 footage of Super Heavy lifting off">
@@ -595,7 +603,7 @@
                 <p>Super Heavy out-pushes the Saturn V more than twice over.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/starship-f15-ship-catch.html">
+            <a class="story-card" href="/dispatch/starship-f15-ship-catch.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/starship-f15-ship-catch-poster-960w.webp" aria-label="Official SpaceX Flight 14 footage of Starship launching from Starbase">
@@ -608,7 +616,7 @@
                 <p>Elon says Flight 15 will try to catch the ship itself for the first time.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/cybercab-austin.html">
+            <a class="story-card" href="/dispatch/cybercab-austin.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/cybercab-austin-poster-960w.webp" aria-label="Official Tesla Robotaxi Cybercab fleet clip">
@@ -621,7 +629,7 @@
                 <p>Eight times the launch fleet. Texas DMV lists 319 two-seaters.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-1" href="/dispatch/starlink-latam.html">
+            <a class="story-card" href="/dispatch/starlink-latam.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/starlink-latam-poster-960w.webp" aria-label="Official Starlink satellite clip">
@@ -634,23 +642,23 @@
                 <p>Nationwide licence, 15+15 MHz to phones, plus the 800 MHz buy.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-2" href="/dispatch/fsd-cannonball.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/fsd-cannonball-poster-480w.avif 480w, /assets/dispatch/fsd-cannonball-poster-960w.avif 960w, /assets/dispatch/fsd-cannonball-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/fsd-cannonball-poster-480w.webp 480w, /assets/dispatch/fsd-cannonball-poster-960w.webp 960w, /assets/dispatch/fsd-cannonball-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/fsd-cannonball-poster.jpg" alt="Stopwatch at the New York finish of an FSD Cannonball run" width="1200" height="675" loading="lazy" /></picture>
+            <a class="story-card" href="/dispatch/fsd-cannonball.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/fsd-cannonball-poster-480w.avif 480w, /assets/dispatch/fsd-cannonball-poster-960w.avif 960w, /assets/dispatch/fsd-cannonball-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/fsd-cannonball-poster-480w.webp 480w, /assets/dispatch/fsd-cannonball-poster-960w.webp 960w, /assets/dispatch/fsd-cannonball-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/fsd-cannonball-poster.jpg" alt="Stopwatch at the New York finish of an FSD Cannonball run" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-tesla">Tesla</span>
                 <h3>LA to NY, 45 hours 37 minutes</h3>
                 <p>FSD v14.3.7, zero interventions, the team says. Self-reported.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/assisted-driving.html">
-              <picture><source type="image/avif" srcset="/assets/dispatch/assisted-driving-poster-480w.avif 480w, /assets/dispatch/assisted-driving-poster-960w.avif 960w, /assets/dispatch/assisted-driving-poster-1200w.avif 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/assisted-driving-poster-480w.webp 480w, /assets/dispatch/assisted-driving-poster-960w.webp 960w, /assets/dispatch/assisted-driving-poster-1200w.webp 1200w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/assisted-driving-poster.jpg" alt="Tesla Assisted Driving Basic listed at €99 a month" width="1200" height="675" loading="lazy" /></picture>
+            <a class="story-card" href="/dispatch/assisted-driving.html">
+              <picture><source type="image/avif" srcset="/assets/dispatch/assisted-driving-poster-480w.avif 480w, /assets/dispatch/assisted-driving-poster-960w.avif 960w, /assets/dispatch/assisted-driving-poster-1200w.avif 1200w" sizes="(max-width: 760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/dispatch/assisted-driving-poster-480w.webp 480w, /assets/dispatch/assisted-driving-poster-960w.webp 960w, /assets/dispatch/assisted-driving-poster-1200w.webp 1200w" sizes="(max-width: 760px) 92vw, 360px" /><img src="/assets/dispatch/assisted-driving-poster.jpg" alt="Tesla Assisted Driving Basic listed at €99 a month" width="1200" height="675" loading="lazy" /></picture>
               <div class="story-copy">
                 <span class="tag tag-tesla">Tesla</span>
                 <h3>Assisted Driving Basic, €99</h3>
                 <p>FSD Supervised renamed in Europe. Same stack, a name for the forms.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-1" href="/dispatch/stargaze.html">
+            <a class="story-card" href="/dispatch/stargaze.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/stargaze-poster-960w.webp" aria-label="Stargaze proximity clip">
@@ -663,7 +671,7 @@
                 <p>Stargaze, a silent burn, and the miss that almost was not a miss.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-2" href="/dispatch/dragon-freedom.html">
+            <a class="story-card" href="/dispatch/dragon-freedom.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/dragon-freedom-poster-960w.webp" aria-label="Dragon Freedom undock clip">
@@ -676,7 +684,7 @@
                 <p>Four astronauts, two extra months, 262 miles over Cuba.</p>
               </div>
             </a>
-            <a class="story-card reveal" href="/dispatch/starlink-direct.html">
+            <a class="story-card" href="/dispatch/starlink-direct.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/starlink-direct-poster-960w.webp" aria-label="Direct-to-phone Starlink clip">
@@ -689,7 +697,7 @@
                 <p>FCC approval for a constellation that talks to ordinary phones.</p>
               </div>
             </a>
-            <a class="story-card reveal delay-1" href="/dispatch/fsd-snow.html">
+            <a class="story-card" href="/dispatch/fsd-snow.html">
               <div class="story-media">
                 <span class="media-play">Video</span>
                 <video muted playsinline preload="none" data-poster="/assets/dispatch/fsd-snow-poster.jpg" aria-label="FSD Swiss snow clip">
@@ -720,7 +728,7 @@
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/grow.js?v=202610190630" data-band defer></script>
-      <script src="/dispatch-browse.js?v=202610190630"></script>
+      <script src="/dispatch-browse.js?v=202610190700"></script>
       <script src="/nav-pill.js?v=202610190630"></script>
   </body>
 </html>

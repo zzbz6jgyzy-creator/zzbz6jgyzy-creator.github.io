@@ -45,3 +45,6 @@
 [data-art-lead]:empty { min-height: 437px; }
 [data-art-list]:empty { min-height: 100vh; }
 @media (min-width: 900px) { [data-art-lead]:empty { min-height: 351px; } }
+
+html[data-theme="light"] .art-lead-media,
+html[data-theme="light"] .art-media { background: var(--surface-2, #e8e6e0); }
