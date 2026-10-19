@@ -39,8 +39,9 @@ jobs:
           V=$(date -u +%Y%m%d%H%M)
           sed -i -E "s#(/starlink-(live|gp|identify)\.js\?v=)[0-9]+#\1$V#g" starlink.html
           sed -i -E "s#(STARLINK_CATALOG = \"/data/starlink.json\?v=)[0-9]+#\1$V#" starlink-identify.js
+          node scripts/build-home.js || echo "build-home skipped"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add starlink-live.js starlink-gp.js data/starlink.json starlink.html starlink-identify.js
+          git add starlink-live.js starlink-gp.js data/starlink.json starlink.html starlink-identify.js index.html grok.html
           git commit -m "Refresh Starlink counts, orbits and identify catalog."
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done

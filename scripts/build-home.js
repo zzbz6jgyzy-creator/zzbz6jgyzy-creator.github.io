@@ -151,6 +151,32 @@ for (const [f, pg] of [["tesla.html", "tesla"], ["spacex.html", "spacex"]]) {
   if (h !== h0) { fs.writeFileSync(path.join(R, f), h); console.log(f + " updated"); }
 }
 
+
+// Starlink "as of" label (homepage Starlink tile) from starlink-live.js, which
+// scripts/build-starlink-stats.py bakes from Jonathan McDowell's stats page.
+let slAsOf = "";
+try {
+  const SL = JSON.parse(rd("starlink-live.js").replace(/^[\s\S]*?window\.STARLINK_LIVE\s*=\s*/, "").replace(/;\s*$/, ""));
+  const n = SL.totals && SL.totals.inOrbit, t = Date.parse(SL.updated);
+  if (n && Number.isFinite(t)) slAsOf = `${Number(n).toLocaleString("en-US")} in orbit · as of ${day(new Date(t), { year: "numeric" })} · Jonathan McDowell`;
+} catch (e) { console.warn("starlink as-of skip", e.message); }
+
+// Grok page story strip: AI / Grok / xAI / SpaceX AI articles from data/articles.json,
+// newest first, reusing the exact story-card markup from dispatch.html.
+try {
+  const arts = (JSON.parse(rd("data/articles.json")).articles || [])
+    .filter((a) => a.topic === "xai" || /\b(AI|Grok|xAI)\b/.test(a.tag || ""))
+    .sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 6);
+  const dh = rd("dispatch.html"), blocks = {};
+  for (const m of dh.matchAll(/<a class="story-card[^"]*" href="(\/dispatch\/[^"]+)">[\s\S]*?<\/a>/g)) if (!blocks[m[1]]) blocks[m[1]] = m[0];
+  const strip6 = arts.filter((a) => blocks[a.url]).map((a) => blocks[a.url].replace(/^<a class="story-card[^"]*"/, '<a class="story-card reveal"')).join("\n            ");
+  const g0 = rd("grok.html"), re = /<!--gk:stories-->[\s\S]*?<!--\/gk:stories-->/;
+  if (strip6 && re.test(g0)) {
+    const g1 = g0.replace(re, () => `<!--gk:stories-->\n            ${strip6}\n          <!--/gk:stories-->`);
+    if (g1 !== g0) { fs.writeFileSync(path.join(R, "grok.html"), g1); console.log("grok.html updated"); }
+  }
+} catch (e) { console.warn("grok strip skip", e.message); }
+
 // Newsletter band (same markup as grow.js data-band; grow.js skips building it when it's already here)
 const band = `<section class="sd-band" id="newsletter" data-newsletter="band" data-band-topic="website" aria-label="Newsletter signup"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
       <div><form class="sd-form" data-newsletter-form>
@@ -168,5 +194,5 @@ const put = (name, inner) => {
 };
 put("lead", lead); put("preload", preload); put("band", band);
 html = replaceEventCard(html, eventCard, "index.html");
- put("supp", supp); put("trk", trkHtml); put("feed", feed);
+ put("supp", supp); put("slasof", slAsOf); put("trk", trkHtml); put("feed", feed);
 if (html !== before) { fs.writeFileSync(path.join(R, "index.html"), html); console.log("index.html updated"); } else console.log("index.html unchanged");

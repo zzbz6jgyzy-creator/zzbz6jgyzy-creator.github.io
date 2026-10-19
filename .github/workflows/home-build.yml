@@ -10,6 +10,7 @@ on:
       - starship-data.js
       - fsd-europe-data.js
       - cybercab-data.js
+      - starlink-live.js
       - updates-live.json
       - news-data.json
       - data/events.json
