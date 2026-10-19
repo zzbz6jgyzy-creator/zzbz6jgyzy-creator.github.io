@@ -1,7 +1,7 @@
 window.SEE_LAUNCH = {
   updated: "2026-10-16",
   note:
-    "A desk estimate, not a FlightClub trajectory. We use the pad, a typical azimuth for that mission type, distance, night vs day, and Open-Meteo cloud cover. A feature in the notes can still be hidden by haze, a late slip, or a dogleg. Not SpaceX’s official viewing guide.",
+    "Our estimate, not a full FlightClub trajectory. We use the pad, a typical azimuth for that mission type, distance, night vs day, and Open-Meteo cloud cover. A feature in the notes can still be hidden by haze, a late slip, or a dogleg. Not SpaceX’s official viewing guide.",
   pads: {
     slc40: { id: "slc40", name: "Cape Canaveral · SLC-40", short: "Cape", lat: 28.5619, lon: -80.5774, az: 48, coast: "east" },
     lc39a: { id: "lc39a", name: "Kennedy · LC-39A", short: "KSC", lat: 28.6082, lon: -80.6043, az: 48, coast: "east" },

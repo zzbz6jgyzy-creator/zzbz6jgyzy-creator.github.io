@@ -369,7 +369,7 @@
             at: s.t,
             previous: "0",
             next: String(n),
-            summary: id + " first appeared in the Teslascope sample with " + n + (n === 1 ? " car" : " cars") + ". A sample sighting is not a rollout and not an offer to a particular car.",
+            summary: id + " first appeared in the Teslascope sample with " + n + (n === 1 ? " car" : " cars") + ". Spotting a build isn’t the same as a wide rollout, or your car getting it.",
           });
           return;
         }
@@ -381,7 +381,7 @@
             at: s.t,
             previous: String(prev),
             next: String(n),
-            summary: id + " moved from " + prev + " to " + n + " cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
+            summary: id + " moved from " + prev + " to " + n + " cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
           });
         }
         lastCount[id] = n;
@@ -428,7 +428,7 @@
             at: s.t,
             previous: "0",
             next: String(n),
-            summary: id + " first appeared in the Teslascope sample for " + cc + " with " + n + (n === 1 ? " car" : " cars") + ". A sample sighting is not a rollout and not an offer to a particular VIN.",
+            summary: id + " first appeared in the Teslascope sample for " + cc + " with " + n + (n === 1 ? " car" : " cars") + ". Spotting a build isn’t the same as a wide rollout, or your car getting it.",
           });
           return;
         }
@@ -441,7 +441,7 @@
             at: s.t,
             previous: String(prev),
             next: String(n),
-            summary: id + " moved from " + prev + " to " + n + " cars in the Teslascope sample for " + cc + ". That is a sample-count change, not Tesla confirming this car is eligible.",
+            summary: id + " moved from " + prev + " to " + n + " cars in the Teslascope sample for " + cc + ". That’s Teslascope’s count, not Tesla confirming your car will get it.",
           });
         }
         lastCount[id] = n;
@@ -472,7 +472,7 @@
         previous: hist[i - 1].cybercab,
         next: hist[i].cybercab,
         src: hist[i].src || "",
-        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registration is not a car in service.",
+        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registered car isn’t necessarily in service yet.",
       });
     }
     const last = hist[hist.length - 1] || null;
@@ -484,7 +484,7 @@
         count: last.cybercab,
         since: lastJump.date,
         src: last.src || "",
-        summary: "Still " + last.cybercab + " registered on " + last.date + ". Unchanged days are not a new jump. A registration is not a car in service.",
+        summary: "Still " + last.cybercab + " registered on " + last.date + ". No change since the last count. A registered car isn’t necessarily in service yet.",
       };
     }
     return { jumps, unchanged, last };
@@ -648,7 +648,7 @@
         source: "Texas DMV list via fsddb.com",
         sourceUrl: hist[i].src || "",
         href: "/cybercab.html#cc-changes",
-        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registration is not a car in service.",
+        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registered car isn’t necessarily in service yet.",
         title: "Texas Cybercab count",
       };
       c.id = changeId(c);
@@ -866,15 +866,15 @@
     };
     add("starship", generatedAt, src.starship && src.starship.updated, "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times.");
     add("launches", generatedAt, src.events && src.events.updated, "Sources: SpaceX, Launch Library 2.");
-    add("software", src.updates && src.updates.updated, src.updates && src.updates.updated, "Teslascope sample. A build existing ≠ your car being offered it.");
+    add("software", src.updates && src.updates.updated, src.updates && src.updates.updated, "Source: Teslascope.");
     add("fsd", generatedAt, src.fsdEurope && src.fsdEurope.updated, "Sources: national ministries and regulators.");
     add("robotaxi", generatedAt, src.robotaxiTx && src.robotaxiTx.checked, "Texas DMV count via fsddb.com.");
     add("starlink", src.starlinkLive && src.starlinkLive.orbitsUpdated, src.starlinkLive && src.starlinkLive.updated, "Sources: Jonathan McDowell (counts), CelesTrak (orbits).");
-    add("promises", generatedAt, src.promises && src.promises.updated, "Every quote needs a source that was opened.");
-    add("production", generatedAt, src.production && src.production.updated, "Tesla IR production and delivery tables only.");
+    add("promises", generatedAt, src.promises && src.promises.updated, "Every quote is sourced.");
+    add("production", generatedAt, src.production && src.production.updated, "Source: Tesla investor relations.");
     add("roadster", generatedAt, src.promises && src.promises.updated, "Reveal is past. Production target remains a company claim.");
-    add("optimus", generatedAt, (src.optimusDemos && src.optimusDemos.updated) || (src.promises && src.promises.updated), "Demonstration ≠ autonomy. Production targets are company claims.");
-    add("mytesla", generatedAt, src.updates && src.updates.updated, "Vehicle prefs stay in this browser.");
+    add("optimus", generatedAt, (src.optimusDemos && src.optimusDemos.updated) || (src.promises && src.promises.updated), "Production targets are company claims.");
+    add("mytesla", generatedAt, src.updates && src.updates.updated, "Your car details stay in this browser.");
     return rows;
   }
 
@@ -1101,7 +1101,7 @@
     if (!rows || !rows.length) {
       return '<p class="intel-empty">No Teslascope sample first-seen rows for ' + esc(name) + " in this window. A missing country in the sample is not Tesla saying the build is unavailable.</p>";
     }
-    return '<p class="intel-note">Teslascope sample for ' + esc(name) + " (" + esc(code) + ") only. A sample sighting is not a rollout and not an offer to a particular VIN.</p>" +
+    return '<p class="intel-note">Teslascope sample for ' + esc(name) + " (" + esc(code) + ") only. Spotting a build isn’t the same as a wide rollout, or your car getting it.</p>" +
       changesHtml(rows.map((w) => ({
         topic: "tesla-software",
         tracker: "software",

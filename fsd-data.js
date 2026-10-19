@@ -1,7 +1,7 @@
 window.FSD_GLOBAL = {
   updated: "2026-10-16",
   note:
-    "Country status is this desk’s read of Tesla listings, national regulator notes, and public reporting. “Live” means owners can use FSD Supervised (or Assisted Driving Basic in Europe) on public roads. “Approved” is a regulator yes that is not yet a customer rollout. Not Tesla’s official map. FSD Supervised is SAE Level 2 — the driver must supervise.",
+    "Country status is based on Tesla’s listings, national regulator notes and public reporting. “Live” means owners can use FSD Supervised (or Assisted Driving Basic in Europe) on public roads. “Approved” means a regulator has said yes, but customers don’t have it yet. Not Tesla’s official map. FSD Supervised is SAE Level 2 — the driver must supervise.",
   teslaList: "https://www.tesla.com/support/full-self-driving",
   versions: [
     {

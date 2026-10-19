@@ -257,7 +257,7 @@
       "url": "/optimus.html#paris-motor-show-2026",
       "title": "Optimus demo: Paris Motor Show 2026",
       "tag": "Optimus",
-      "summary": "Optimus Gen 2 on the Tesla stand. Static display. Walking not described in the opened source."
+      "summary": "Optimus Gen 2 on the Tesla stand. Static display. Walking not described in the source."
     },
     {
       "url": "/production.html",
@@ -269,7 +269,7 @@
       "url": "/autonomy.html",
       "title": "FSD & Robotaxi evidence",
       "tag": "Trackers",
-      "summary": "Supervised FSD, permits and commercial robotaxi rides in separate layers."
+      "summary": "Supervised FSD, permits and paid robotaxi rides, tracked separately."
     },
     {
       "url": "/daily.html",
@@ -285,9 +285,9 @@
     },
     {
       "url": "/updates.html#sample-waves",
-      "title": "Tesla software sample waves",
+      "title": "Tesla software rollout waves",
       "tag": "Trackers",
-      "summary": "Teslascope first-seen and sample-count jumps by country. A sample sighting is not a VIN offer."
+      "summary": "Teslascope first-seen and sample-count jumps by country. Spotting a build doesn’t mean your car will get it."
     },
     {
       "url": "/fsd.html",

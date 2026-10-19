@@ -1,7 +1,7 @@
 window.STARSHIP = {
   updated: "2026-10-16",
   note:
-    "Compiled from SpaceX flight pages, FAA planning slides and public launch records. Outcomes are this desk’s read of the whole flight — not SpaceX’s official score. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
+    "Compiled from SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
     flight: 15,
     start: "2026-11-08T12:00:00Z",
@@ -57,7 +57,7 @@ window.STARSHIP = {
       confirmed: false,
       change:
         "After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial.",
-      source: { outlet: "Desk read after Flight 14", url: "/starship.html#log" },
+      source: { outlet: "Our analysis after Flight 14", url: "/starship.html#log" },
     },
     {
       date: "2026-09-11",

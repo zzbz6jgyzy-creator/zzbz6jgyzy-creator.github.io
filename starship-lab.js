@@ -4,7 +4,7 @@
   if (!lab || !catalog) {
     const detail = document.getElementById("slab-detail");
     if (detail) {
-      detail.innerHTML = '<p class="slab-fine" data-slab-fail>Flight Lab data didn’t load. Refresh the page, or read the desk note above — times are a desk read of SpaceX pages, not live telemetry.</p>';
+      detail.innerHTML = '<p class="slab-fine" data-slab-fail>Flight Lab data didn’t load. Refresh the page, or read the note above — times are our reading of SpaceX pages, not live telemetry.</p>';
     }
     return;
   }
@@ -356,7 +356,7 @@
         ·
         <a href="${escapeHtml(xUrl(more.xq))}" rel="noopener noreferrer" target="_blank">@SpaceX on X</a>
       </p>
-      <p class="slab-fine">Phase times are a desk read of SpaceX pages and recaps. They are not live telemetry.</p>`;
+      <p class="slab-fine">Phase times are our reading of SpaceX pages and recaps. They are not live telemetry.</p>`;
   };
 
   const cell = (n, id) => {
@@ -410,7 +410,7 @@
           </tbody>
         </table>
       </div>
-      <p class="slab-fine" style="margin-top:0.85rem">Same ten phases on every flight. Skip means that flight never tried it. Times marked Approx are a desk read, not a SpaceX clock, and never live telemetry.</p>`;
+      <p class="slab-fine" style="margin-top:0.85rem">Same ten phases on every flight. Skip means that flight never tried it. Times marked Approx are our estimate, not an official SpaceX time.</p>`;
   };
 
   const setModeUi = () => {

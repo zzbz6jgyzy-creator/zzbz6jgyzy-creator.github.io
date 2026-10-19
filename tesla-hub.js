@@ -20,7 +20,7 @@
   const stampFrom = (u) => {
     const stamp = [];
     if (F && F.updated) stamp.push("FSD Europe updated " + day(F.updated));
-    if (u && u.updated) stamp.push("software sample " + day(u.updated) + " via Teslascope");
+    if (u && u.updated) stamp.push("software data " + day(u.updated) + " via Teslascope");
     if (stamp.length) set("#tz-updated", stamp.join(". ") + ".");
   };
   stampFrom(null);
@@ -34,7 +34,7 @@
         const bits = [];
         if (nw.fsdHw4) bits.push(nw.fsdHw4 + " on HW4");
         if (nw.fsdHw3) bits.push(nw.fsdHw3 + " on HW3");
-        set("[data-tz-sw-note]", (bits.length ? "FSD " + bits.join(", ") + ". " : "") + "Teslascope sample.");
+        set("[data-tz-sw-note]", (bits.length ? "FSD " + bits.join(", ") + ". " : "") + "Source: Teslascope.");
       }
       stampFrom(u);
     })

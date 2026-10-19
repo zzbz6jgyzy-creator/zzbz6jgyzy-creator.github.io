@@ -34,7 +34,7 @@
       </div>
       <p class="intel-note">${esc((FSD && FSD.note) || "")} Supervised FSD is not unsupervised autonomy. A Texas registration is not a ride. A ministry yes is not a customer rollout.</p>
 
-      <h2>Evidence layers</h2>
+      <h2>Where things stand</h2>
       <div class="intel-compare"><table>
         <thead><tr><th>Layer</th><th>Means</th><th>Does not mean</th></tr></thead>
         <tbody>
@@ -84,7 +84,7 @@
       </table></div>
 
       <h2>Sourced autonomy promises</h2>
-      <p class="intel-note">From the Promise Tracker. Status is editorial against opened quotes, not a score.</p>
+      <p class="intel-note">From the Promise Tracker. Each status is our judgement against the sourced quote, not a score.</p>
       <div class="intel-compare"><table>
         <thead><tr><th>Promise</th><th>Topic</th><th>Deadline</th><th>Status</th><th>Source</th></tr></thead>
         <tbody>${promises.map((p) => `<tr>
