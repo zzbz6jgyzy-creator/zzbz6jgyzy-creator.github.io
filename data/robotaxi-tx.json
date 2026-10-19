@@ -48,6 +48,13 @@
    "modelY": 454,
    "other": 0,
    "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+  },
+  {
+   "date": "2026-10-19",
+   "cybercab": 349,
+   "modelY": 454,
+   "other": 0,
+   "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
   }
  ],
  "vins": {
@@ -859,5 +866,5 @@
   "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
   "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
  },
- "checked": "2026-10-18T17:50:44Z"
+ "checked": "2026-10-19T06:00:37Z"
 }
