@@ -4,6 +4,12 @@
   if (!DATA) return;
 
   const $ = (id) => document.getElementById(id);
+  const setHint = (msg, hold) => {
+    const hint = $("tc-hint");
+    if (!hint) return;
+    hint.textContent = msg || "";
+    hint.dataset.hold = hold ? "1" : "";
+  };
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const GEO = "https://geocoding-api.open-meteo.com/v1/search";
@@ -437,11 +443,20 @@
     fetch(`${GEO}?name=${encodeURIComponent(q.trim())}&count=6&language=en&format=json`)
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
-        const rows = j?.results || [];
-        if (!rows.length) {
+        if (!j) {
           box.hidden = true;
+          box.innerHTML = "";
+          setHint("Couldn't look up that city. Try again.", true);
           return;
         }
+        const rows = j.results || [];
+        if (!rows.length) {
+          box.hidden = true;
+          box.innerHTML = "";
+          setHint("No matching city. Try another spelling.", true);
+          return;
+        }
+        setHint("", false);
         box.hidden = false;
         box.innerHTML = rows
           .map((r) => {
@@ -454,6 +469,8 @@
       })
       .catch(() => {
         box.hidden = true;
+        box.innerHTML = "";
+        setHint("Couldn't look up that city. Try again.", true);
       });
   };
 
@@ -500,12 +517,10 @@
     });
     $("tc-geo").addEventListener("click", () => {
       if (!navigator.geolocation) {
-        $("tc-hint").textContent = "This browser will not share a location. Search a city instead.";
-        $("tc-hint").dataset.hold = "1";
+        setHint("This browser will not share a location. Search a city instead.", true);
         return;
       }
-      $("tc-hint").textContent = "Finding you…";
-      $("tc-hint").dataset.hold = "1";
+      setHint("Finding you…", true);
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           const lat = pos.coords.latitude,
@@ -518,7 +533,7 @@
             });
         },
         () => {
-          $("tc-hint").textContent = "Location blocked. Search a city instead.";
+          setHint("Location blocked. Search a city instead.", true);
         }
       );
     });
