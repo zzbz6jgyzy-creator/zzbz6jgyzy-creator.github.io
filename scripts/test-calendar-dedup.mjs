@@ -140,6 +140,49 @@ try {
   bad("uniqueByLaunch", err.message);
 }
 
+try {
+  const curatedTue = { ...curatedBand, start: "2026-10-20T10:30:00Z", source: "curated" };
+  const staleMon = { ...liveBand, start: "2026-10-19T10:30:00Z", status: "go" };
+  const merged = M.mergeEvents([curatedTue], [staleMon]);
+  assert.equal(merged.length, 1);
+  assert.equal(merged[0].start, "2026-10-20T10:30:00Z");
+  ok("stale LL2 cannot rewind Bandwagon");
+} catch (err) {
+  bad("stale LL2 cannot rewind Bandwagon", err.message);
+}
+
+try {
+  const a = { id: "bandwagon-5", title: "Falcon 9 · Bandwagon-5 rideshare", start: "2026-10-20T10:30:00Z" };
+  const b = { id: "f9-bandwagon5", title: "Falcon 9 · Bandwagon-5 rideshare", start: "2026-10-20T10:30:00Z" };
+  assert.equal(M.sameLaunch(a, b), true);
+  assert.ok(M.aliasesOf(a).includes("f9-bandwagon5"));
+  ok("bandwagon id aliases");
+} catch (err) {
+  bad("bandwagon id aliases", err.message);
+}
+
+try {
+  const flown = { ...liveBand, start: "2026-10-19T10:30:00Z", status: "success" };
+  const curatedTue = { ...curatedBand, start: "2026-10-20T10:30:00Z", source: "curated" };
+  const merged = M.mergeEvents([curatedTue], [flown]);
+  assert.equal(merged[0].start, "2026-10-19T10:30:00Z");
+  ok("flown LL2 wins over later curated");
+} catch (err) {
+  bad("flown LL2 wins over later curated", err.message);
+}
+
+try {
+  const cancelled = { id: "x", title: "Falcon 9 · Bandwagon-5", start: "2026-10-20T10:30:00Z", status: "tbd" };
+  const go = { id: "y", ll2Id: "999", title: "Falcon 9 · Bandwagon-5", start: "2026-10-21T10:30:00Z", status: "hold", source: "ll2" };
+  const merged = M.mergeEvents([{ ...cancelled, source: "curated" }], [go]);
+  assert.equal(merged.length, 1);
+  assert.equal(merged[0].start, "2026-10-21T10:30:00Z");
+  assert.equal(merged[0].status, "hold");
+  ok("later slip + hold");
+} catch (err) {
+  bad("later slip + hold", err.message);
+}
+
 if (fail.length) {
   console.log("FAILED", fail.length);
   fail.forEach((f) => console.log(" -", f));

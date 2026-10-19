@@ -164,12 +164,35 @@
     return 0;
   };
 
+  const isOriginal = (row) =>
+    /supercharged daily/i.test((row && row.source) || "") || /^\/dispatch\//.test((row && row.url) || "");
+
+  const validPublished = (row, now) => {
+    const t = Date.parse((row && row.published) || "");
+    if (!Number.isFinite(t)) return false;
+    const n = now || Date.now();
+    return t <= n + 36e5;
+  };
+
+  const breakingEligible = (row, now) => {
+    const t = now || Date.now();
+    const kind = classify(row);
+    if (kind === "accessory" || kind === "finance" || kind === "speculation") return false;
+    if (!RELEVANT.test(`${(row && row.title) || ""} ${(row && row.snippet) || ""}`)) return false;
+    if (!validPublished(row, t)) return false;
+    const published = Date.parse(row.published);
+    return (t - published) / 36e5 < 6;
+  };
+
   const rankScore = (row, now) => {
     const t = now || Date.now();
     const kind = (row && row.kind) || classify(row);
     let s = relevanceScore(row) + recencyScore(row, t) + (KIND_SCORE[kind] || 0) + editorialScore(row);
     if (CLICKBAIT.test((row && row.title) || "")) s -= 10;
     if (ACCESSORY_SRC.test((row && row.source) || "") && kind !== "accessory") s -= 2;
+    if (isOriginal(row)) s += 6;
+    if (breakingEligible(row, t)) s += 4;
+    if (!validPublished(row, t)) s -= 8;
     return s;
   };
 
@@ -231,6 +254,9 @@
     forDesk,
     clusterKey,
     diversify,
+    isOriginal,
+    breakingEligible,
+    validPublished,
     RANK,
   };
 });

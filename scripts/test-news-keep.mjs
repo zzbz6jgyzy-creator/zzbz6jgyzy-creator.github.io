@@ -105,6 +105,28 @@ else bad("one jellyfish", jelly.map((r) => r.title).join(" | "));
 if (keep.RANK && keep.RANK.note && keep.RANK.kindScore.launch === 8) ok("transparent RANK");
 else bad("transparent RANK", "missing export");
 
+const original = row({
+  title: "Tuesday's Falcon 9 carries two reentry capsules",
+  source: "Supercharged Daily",
+  url: "/dispatch/bandwagon5-starfall-second-demo.html",
+  topic: "spacex",
+});
+if (keep.isOriginal(original) && keep.rankScore(original, NOW) > keep.rankScore(fixtures[8], NOW)) ok("original desk boost");
+else bad("original desk boost", `${keep.rankScore(original, NOW)} vs ${keep.rankScore(fixtures[8], NOW)}`);
+
+const breaking = row({
+  title: "SpaceX Falcon 9 Bandwagon-5 is go from Cape Canaveral",
+  source: "SpaceX",
+  published: "2026-10-19T11:00:00Z",
+  topic: "spacex",
+});
+if (keep.breakingEligible(breaking, NOW) && !keep.breakingEligible(fixtures[9], NOW)) ok("breaking eligibility");
+else bad("breaking eligibility", String(keep.breakingEligible(breaking, NOW)));
+
+const future = row({ title: "Tesla FSD Supervised expands in Europe", source: "Teslarati", published: "2026-10-21T00:00:00Z" });
+if (!keep.validPublished(future, NOW) && keep.rankScore(future, NOW) < keep.rankScore(fixtures[1], NOW)) ok("future date downranked");
+else bad("future date downranked", `${keep.rankScore(future, NOW)} vs ${keep.rankScore(fixtures[1], NOW)}`);
+
 if (fail.length) {
   console.log("FAILED", fail.length);
   fail.forEach((f) => console.log(" -", f));

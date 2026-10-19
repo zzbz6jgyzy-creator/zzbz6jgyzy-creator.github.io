@@ -33,7 +33,7 @@ if (/updates-v3\.js\?v=202610191800/.test(updates)) ok("updates-v3 pin");
 else bad("updates-v3 pin", "pin not bumped");
 if (/Newest reporting Teslascope has seen/.test(myTesla) && /newest reporting in \$\{countryName\(\)\}/.test(myTesla) && !/Newest build/.test(myTesla)) ok("my-tesla copy");
 else bad("my-tesla copy", "my-tesla.js still says Newest build");
-if (/my-tesla\.js\?v=202610191930/.test(myTeslaHtml)) ok("my-tesla pin");
+if (/my-tesla\.js\?v=202610192000/.test(myTeslaHtml)) ok("my-tesla pin");
 else bad("my-tesla pin", "pin not bumped");
 if (/html\[data-theme="light"\] \.lv-quiet \.lw:not\(\.lw-live\)/.test(liveCss) && /LIVE \/ Watch-live/.test(liveCss)) ok("live.css quiet lift");
 else bad("live.css quiet lift", "missing light-theme quiet .lw rules");

@@ -373,7 +373,7 @@
     const ul = $("mt-limits");
     const bits = [];
     if (!state.cc) {
-      ul.innerHTML = `<li><b>Country first</b><p>Regional locks are the whole point of this page. We do not assume Ireland, the UK, or anywhere else.</p></li>`;
+      ul.innerHTML = `<li><b>Country first</b><p>Regional locks are the whole point of this page. Pick a country so we only show what applies there.</p></li>`;
       return;
     }
     const fsd = fsdRow();

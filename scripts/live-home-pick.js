@@ -10,11 +10,16 @@ function keepOnHome(e) {
   return !e.net && !e.timeTbc && e.status !== "ended";
 }
 
+const SHARED_IDS = { "f9-bandwagon5": "bandwagon-5", "f9-ussf481": "ussf-481", "f9-crs35": "crs35-docking" };
+
 function withSharedDates(events, shared) {
   return (events || []).map((e) => {
     const x = Object.assign({}, e);
-    const s = shared && shared[e.id];
-    if (s && s.date) {
+    const s = shared && (shared[e.id] || shared[SHARED_IDS[e.id]]);
+    if (!s) return x;
+    if (s.start) x.start = s.start;
+    if (s.end) x.end = s.end;
+    if (s.date && !s.start) {
       const tz = s.tz || "Z";
       x.start = s.date + "T00:00:00" + tz;
       x.end = s.date + "T23:59:00" + tz;
@@ -50,4 +55,4 @@ function pickNextEvent(events, opts) {
   return evs.find((x) => x.featured) || fut.find((x) => !x.timeTbc && !x.net) || fut[0] || null;
 }
 
-module.exports = { keepOnHome, pickNextEvent, isLive };
+module.exports = { keepOnHome, pickNextEvent, isLive, withSharedDates, SHARED_IDS };
