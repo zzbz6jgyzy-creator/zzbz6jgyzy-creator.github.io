@@ -37,7 +37,7 @@ if (/my-tesla\.js\?v=202610192500/.test(myTeslaHtml)) ok("my-tesla pin");
 else bad("my-tesla pin", "pin not bumped");
 if (/html\[data-theme="light"\] \.lv-quiet \.lw:not\(\.lw-live\)/.test(liveCss) && /LIVE \/ Watch-live/.test(liveCss)) ok("live.css quiet lift");
 else bad("live.css quiet lift", "missing light-theme quiet .lw rules");
-const livePin = "live.css?v=202610191800";
+const livePin = "live.css?v=202610192000";
 if ([tesla, index, spacex, starship, myTeslaHtml].every((h) => h.includes(livePin))) ok("live.css pins");
 else bad("live.css pins", "a live page still on 202610190630");
 if (/theme\.css\?v=202610191800/.test(index)) ok("home theme pin");
