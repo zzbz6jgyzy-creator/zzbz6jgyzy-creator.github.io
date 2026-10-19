@@ -99,11 +99,18 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Production Dispatch after #122: CLS 0, LCP 2.2 s.
 - Ads and per-car notification delivery not activated (no sponsor creative; no mail/push hook).
 
-### Batch 16 — Leftover polish (this session)
+### Batch 16 — Leftover polish (merged #124)
 
 - Tesla / SpaceX story-grid posters lock to 160px (CSS `!important` beats leftover `height:auto`).
 - Promise Tracker empty chips / tiles / legend reserve height before JSON lands.
 - Tesla clubs city lookup and blocked geolocation write `#tc-hint` and hold it.
+
+### Batch 17 — Newsletter tags (this session)
+
+- Site signup sends allowlisted `utm_content` (`roadster`, `tesla`, `tesla-software`, `spacex`, `website`).
+- Topic is inferred from the page path first, then `.art-tag` — not from story-card `.tag` chips.
+- Beehiiv subscriber tags created. Three live UTM segments. Tag-apply automations are draft until published in the editor.
+- Sunday send is still one list. No per-car mail. No ads.
 
 ## Architecture (do not rip out)
 
@@ -113,7 +120,7 @@ Living progress document for the product rebuild. Resume from here in later Curs
 | Homepage slots | `<!--hv:*-->` in `index.html`, filled by `scripts/build-home.js` and `home-v2.js` |
 | Dispatch | `dispatch/*.html`, `data/articles.json` |
 | Trackers | Starship, FSD Europe, Cybercab, Software updates, Starlink, Promise |
-| Newsletter | Beehiiv via `newsletter.js` — `alexs-newsletter-84b17e.beehiiv.com` |
+| Newsletter | Beehiiv via `newsletter.js` — `alexs-newsletter-84b17e.beehiiv.com`. Topic via `utm_content` + subscriber tags |
 | X handle | `@ALJR86` / `twitter:site` — do not change |
 | Referral | `ts.la/alex474841` — do not invent affiliates |
 

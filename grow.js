@@ -23,22 +23,25 @@
   }
   const bandCopy = () => {
     const path = (location.pathname || "").toLowerCase();
-    const section = (document.querySelector('meta[property="article:section"]')?.content || "").toLowerCase();
-    const tag = (document.querySelector(".art-tag, .tag")?.textContent || "").toLowerCase();
-    const hay = `${path} ${section} ${tag}`;
-    if (/roadster/.test(hay)) {
-      return ["roadster", "Roadster on Supercharged Daily", "Reveal clocks, thruster notes and the Tesla desk — one free Sunday email."];
+    let topic = "website";
+    if (/roadster/.test(path)) topic = "roadster";
+    else if (/my-tesla|\/updates|fsd|tcmv|cybercab|robotaxi/.test(path)) topic = "tesla-software";
+    else if (/starship|starlink|spacex|falcon|dragon|see-the-launch|\/calendar/.test(path)) topic = "spacex";
+    else if (/tesla|\/reviews|buying-guide|\/gear\.html/.test(path)) topic = "tesla";
+    else {
+      const section = (document.querySelector('meta[property="article:section"]')?.content || "").toLowerCase();
+      const tag = (document.querySelector(".art-tag")?.textContent || "").toLowerCase();
+      const hay = `${section} ${tag}`;
+      if (/roadster/.test(hay)) topic = "roadster";
+      else if (/fsd|software|update|cybercab|robotaxi/.test(hay)) topic = "tesla-software";
+      else if (/starship|starlink|spacex|falcon|dragon/.test(hay)) topic = "spacex";
+      else if (/tesla/.test(hay)) topic = "tesla";
     }
-    if (/my-tesla|\/updates|fsd|tcmv|cybercab|robotaxi/.test(hay)) {
-      return ["tesla-software", "Tesla software on Supercharged Daily", "FSD, software updates and My Tesla notes — free, every Sunday."];
-    }
-    if (/starship|starlink|spacex|falcon|dragon|see-the-launch|\/calendar/.test(hay)) {
-      return ["spacex", "SpaceX on Supercharged Daily", "Starship flights, Starlink and Falcon dates — the week in one Sunday email."];
-    }
-    if (/\/tesla\.html|\/reviews|buying-guide|\/gear\.html/.test(hay)) {
-      return ["tesla", "Tesla on Supercharged Daily", "Reviews, buying notes and the Tesla desk — free, every Sunday."];
-    }
-    return ["default", "Get Supercharged Daily", "The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday."];
+    if (topic === "roadster") return ["roadster", "Roadster on Supercharged Daily", "Reveal clocks, thruster notes and the Tesla desk — one free Sunday email."];
+    if (topic === "tesla-software") return ["tesla-software", "Tesla software on Supercharged Daily", "FSD, software updates and My Tesla notes — free, every Sunday."];
+    if (topic === "spacex") return ["spacex", "SpaceX on Supercharged Daily", "Starship flights, Starlink and Falcon dates — the week in one Sunday email."];
+    if (topic === "tesla") return ["tesla", "Tesla on Supercharged Daily", "Reviews, buying notes and the Tesla desk — free, every Sunday."];
+    return ["website", "Get Supercharged Daily", "The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday."];
   };
   if (has("band") && !document.querySelector("[data-band-slot] .sd-band") && !document.querySelector('.nl-end, #newsletter, [data-newsletter]:not(.sd-pop):not(.sd-band)')) {
     const [topic, heading, blurb] = bandCopy();
@@ -73,6 +76,6 @@
     };
     addEventListener("scroll", onScroll, { passive: true });
   }
-  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610190630"; document.body.appendChild(t); }  const s = document.createElement("script"); s.src = "/newsletter.js?v=202610151900"; document.body.appendChild(s); }
+  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610190630"; document.body.appendChild(t); }  const s = document.createElement("script"); s.src = "/newsletter.js?v=202610190800"; document.body.appendChild(s); }
   bindForms();
 })();
