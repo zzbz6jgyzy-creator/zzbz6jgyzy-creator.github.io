@@ -105,7 +105,14 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Promise Tracker empty chips / tiles / legend reserve height before JSON lands.
 - Tesla clubs city lookup and blocked geolocation write `#tc-hint` and hold it.
 
-### Batch 17 — Watch counts (this session)
+### Batch 17 — Newsletter tags (merged #125)
+
+- Site signup sends allowlisted `utm_content` (`roadster`, `tesla`, `tesla-software`, `spacex`, `website`).
+- Topic is inferred from the page path first, then `.art-tag` — not from story-card `.tag` chips.
+- Beehiiv subscriber tags created. Three live UTM segments. Tag-apply automations are draft until published in the editor.
+- Sunday send is still one list. No per-car mail. No ads.
+
+### Batch 18 — Watch counts (this session)
 
 - Unlisted `/counts.html` paints live `sd-events` `/stats?days=30`. Eight allowlisted actions only.
 - About links to it. `noindex`. Not in nav. Zeros stay zeros. Fail copy when the Worker is blocked.
@@ -119,7 +126,7 @@ Living progress document for the product rebuild. Resume from here in later Curs
 | Homepage slots | `<!--hv:*-->` in `index.html`, filled by `scripts/build-home.js` and `home-v2.js` |
 | Dispatch | `dispatch/*.html`, `data/articles.json` |
 | Trackers | Starship, FSD Europe, Cybercab, Software updates, Starlink, Promise |
-| Newsletter | Beehiiv via `newsletter.js` — `alexs-newsletter-84b17e.beehiiv.com` |
+| Newsletter | Beehiiv via `newsletter.js` — `alexs-newsletter-84b17e.beehiiv.com`. Topic via `utm_content` + subscriber tags |
 | X handle | `@ALJR86` / `twitter:site` — do not change |
 | Referral | `ts.la/alex474841` — do not invent affiliates |
 

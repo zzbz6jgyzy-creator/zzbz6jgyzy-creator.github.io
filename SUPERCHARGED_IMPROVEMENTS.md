@@ -4,8 +4,8 @@ Living progress document. Dark remains the default. Existing routes kept.
 
 ## Prioritised tasks
 
-1–11. Nav through leftover polish — done (#119–#124)
-12. Watch live `sd-events` counts — this session
+1–12. Nav through newsletter tags — done (#119–#125)
+13. Watch live `sd-events` counts — this session
 
 ## Completed this session
 
@@ -28,13 +28,15 @@ Living progress document. Dark remains the default. Existing routes kept.
 ## Known limitations
 
 - Counts are approximate. Ad blockers drop some. `/verify` paths can appear from Cloudflare challenges.
-- Tag automations from the newsletter-tags branch stay draft until published.
-- Notifications are preferences only.
+- Tag automations stay draft until published at app.beehiiv.com.
+- Beehiiv plan allowed three saved segments. SpaceX / website use `utm_content` until a slot frees up.
+- Notifications are preferences only. Newsletter signup is the live email path.
 - No ads. Do not add empty slots.
 - Do not run full `build-home.js` unless tesla.html / spacex.html `<picture>` diffs are reverted.
 - Follow on X and `twitter:site` unchanged.
 
 ## Remaining work
 
+- Publish the five `Tag ·` automations in Beehiiv if you want tags applied automatically.
 - Per-car software / recall mail only after a real send hook is designed and tested.
 - Labelled sponsorship only when there is a creative to put in the slot.

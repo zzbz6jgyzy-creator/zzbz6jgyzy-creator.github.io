@@ -17,7 +17,7 @@
         const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "/grow.css?v=202610152048"; document.head.append(l);
       }
       const s = document.createElement("section");
-      s.className = "sd-band"; s.setAttribute("data-newsletter", "band"); s.setAttribute("aria-label", "Newsletter signup");
+      s.className = "sd-band"; s.setAttribute("data-newsletter", "band"); s.setAttribute("data-band-topic", "website"); s.setAttribute("aria-label", "Newsletter signup");
       s.innerHTML = '<div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>' +
         '<div><form class="sd-form" data-newsletter-form><label class="visually-hidden" for="sd-band-email">Email address</label>' +
         '<input id="sd-band-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />' +
@@ -27,7 +27,7 @@
       const footer = document.querySelector(".site-footer");
       if (footer) footer.before(s); else (document.querySelector("main") || document.body).append(s);
       block = s;
-      const js = document.createElement("script"); js.src = "/newsletter.js"; document.body.append(js);
+      const js = document.createElement("script"); js.src = "/newsletter.js?v=202610190800"; document.body.append(js);
     }
   }
   // Root-cause guard: if the page already has its own signup block, drop any extra sitewide band.
