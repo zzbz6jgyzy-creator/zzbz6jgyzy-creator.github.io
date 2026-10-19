@@ -54,7 +54,8 @@ TRUST_DOWN = {
 
 FINANCE_SOFT = re.compile(
     r"unlock value|growth drivers|shares down \d+%|failed .+ pump|"
-    r"cast[s]? .+ as its next|industry analyst",
+    r"cast[s]? .+ as its next|industry analyst|"
+    r"lowers position|raises position|price target|initiates coverage",
     re.I,
 )
 ACCESSORY_SRC = re.compile(r"basenor|tesla accessories|aftermarket|evbandit|tesmag", re.I)
@@ -71,7 +72,8 @@ SOFTWARE = re.compile(r"\b(fsd|software|firmware|assisted driving|supervised|202
 MILESTONE = re.compile(r"\b(roadster|optimus|cybercab|robotaxi|halo)\b", re.I)
 REGULATORY = re.compile(r"\b(court|regulator|nhtsa|faa|approval|class action|appeals)\b", re.I)
 CLICKBAIT = re.compile(
-    r"\bsentient\b|failed .+ pump|you won't believe|forget the tesla|ev sportscars on sale|trillion man",
+    r"\bsentient\b|failed .+ pump|you won't believe|forget the tesla|"
+    r"ev sportscars on sale|trillion man|\b380\s*mph\b|autonomous stunts",
     re.I,
 )
 
@@ -132,9 +134,11 @@ def classify(row: dict) -> str:
         return "general" if re.search(r"wait|launch series|production|delivery|recall", title, re.I) else "accessory"
     if is_finance_speculation(title) or (
         FINANCE_SOFT.search(title)
-        and re.search(r"seeking alpha|tradingview|simply wall|motley|benzinga|investorplace", source, re.I)
+        and re.search(r"seeking alpha|tradingview|simply wall|motley|benzinga|investorplace|marketbeat", source, re.I)
     ):
         return "finance"
+    if CLICKBAIT.search(title):
+        return "speculation"
     blob = f"{title} {source}"
     if LAUNCH.search(title) or (
         LAUNCH_VERB.search(title)
@@ -148,7 +152,7 @@ def classify(row: dict) -> str:
         return "milestone"
     if REGULATORY.search(title):
         return "regulatory"
-    if SPECULATION.search(title) or CLICKBAIT.search(title):
+    if SPECULATION.search(title):
         return "speculation"
     return "general"
 

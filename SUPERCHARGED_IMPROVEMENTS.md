@@ -1,61 +1,53 @@
-# Supercharged Daily — homepage builder lock (batch 20)
+# Supercharged Daily — homepage wire quality (batch 21)
 
 Living progress document. Dark remains the default. Existing routes kept. No production deploy.
 
 ## Why this batch
 
-`#127` restored `data-band-topic="website"` on the homepage band and taught `live.js` to keep timed Falcon flights on the home next-event card. The next `home-build.yml` pre-render (`bcfd5a4`) ran `scripts/build-home.js` and undid both:
-
-1. The band template in `build-home.js` still omitted `data-band-topic`, so grow.js skipped rebuilding the band and the topic attr disappeared.
-2. `eventCardFor("home")` still used the old `featOn` filter (`hide every page === "starship" whenever a major non-Starship event exists`), so the static card showed Tuesday’s SpaceX Q3 earnings instead of Monday’s timed Bandwagon-5.
-
-`live.js` was already correct; crawlers and no-JS visitors got the stale prebuilt card.
+After #128 the homepage builder stays locked, but the prebuilt eight still led with Roadster clickbait (Motor1 “sentient”, Top Gear “forget the Tesla”, CarBuzz “380 MPH”) and two copies of the same jellyfish launch. #127 downranked those titles by 4 and still classified them as **milestone** because “Roadster” is checked first.
 
 ## Changes implemented
 
-### 1. Homepage band topic
-- `scripts/build-home.js` band markup now includes `data-band-topic="website"`.
-- Restored the attr on `index.html` so homepage signups keep `utm_content=website`.
+### 1. News ranking
+- Clickbait is classified as speculation *before* milestone. Penalty is −10.
+- Regex also catches `380 mph` and `autonomous stunts`.
+- Same-story clusters: one jellyfish, one Bandwagon/Starfall, one class-action. At most two Roadster wires.
+- MarketBeat-style “lowers position” / price-target copy is finance when the source is a stock desk.
 
-### 2. Homepage next-event pick
-- New `scripts/live-home-pick.js`: keep timed Falcon/Dragon on home, drop NET Starship planning. Featured/major earnings no longer hide a timed Falcon.
-- `build-home.js` uses that pick. `live.js` documents the same filter.
-- Prebuilt homepage card is now **Falcon 9 · Bandwagon-5 rideshare** (Mon 19 Oct · 10:30 UTC). SpaceX Q3 earnings stays the next event after Bandwagon ends.
+### 2. On-this-site pairing
+- Jellyfish / Carolina skies → Can I see it?
+- Class-action / self-driving claims → FSD tracker.
+- Bandwagon / Starfall still → Launch calendar.
 
-### 3. Tesla / SpaceX picture guard
-- Desk rewrite only replaces an existing `<!--hv:event-->` pair.
-- Aborts if the markers span `<main>` or the write would drop a `<picture>`.
-- Tesla still 10 `<picture>` sets, SpaceX still 7. Story-grid posters untouched.
+### 3. Hub JSON-LD
+- Tesla, SpaceX, News and Calendar get a WebPage block from the existing title, description and `@ALJR86`. No invented Person credentials.
 
-### 4. Search noindex
-- `/search.html` is a utility page. `noindex,follow` plus drop from `sitemap.xml` (same skip as `/counts.html`).
-- Canonical, Follow on X, and `twitter:site` unchanged.
+`nav.json` untouched. Follow on X / `twitter:site` / referral untouched. Tesla / SpaceX `<picture>` sets not rewritten. `build-home.js` not run.
 
 ## Files modified
 
-- `scripts/live-home-pick.js` (new), `scripts/build-home.js`, `live.js`
-- `index.html` (band topic + Bandwagon prebuilt card)
-- `search.html`, `sitemap.xml`
-- `scripts/test-build-home-lock.mjs`
+- `news-keep.js`, `scripts/news_keep.py`, `home-pair.js`
+- `index.html` (feed + pins only), `news.html` (pin + JSON-LD)
+- `tesla.html`, `spacex.html`, `calendar.html` (JSON-LD)
+- `scripts/test-news-keep.mjs`, `scripts/test-wire-quality.mjs`
 - `SUPERCHARGED_IMPROVEMENTS.md`, `docs/TRANSFORMATION.md`
-
-`nav.json` untouched. Follow on X / `twitter:site` / referral untouched. Tesla / SpaceX desks not rewritten.
 
 ## Tests executed
 
-- `node scripts/test-build-home-lock.mjs` @ `http://127.0.0.1:4173`
-- `node scripts/test-newsletter-tags.mjs` (homepage `utm_content=website`)
-- `node --check` on edited JS
+- `node scripts/test-news-keep.mjs`
+- `node scripts/test-wire-quality.mjs` @ `http://127.0.0.1:4173`
+- `node scripts/test-build-home-lock.mjs` (homepage locks still hold)
+- `python3 -m py_compile scripts/news_keep.py`
 
 ## Outstanding / incomplete
 
 - Production Lighthouse / CWV not claimed.
 - My Tesla notifications: preferences only.
-- Beehiiv `Tag ·` automations stay draft until published at app.beehiiv.com.
+- Beehiiv `Tag ·` automations stay draft.
 - No ads. No Worker deploy.
 
 ## Next recommended batch
 
 - Measure production CWV after merge.
 - Publish Beehiiv tag automations if segmented signup mail is wanted.
-- Design a real per-car mail hook before claiming alerts.
+- Per-car mail only after a real send hook exists.
