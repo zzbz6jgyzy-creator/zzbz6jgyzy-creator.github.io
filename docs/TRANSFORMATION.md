@@ -88,10 +88,16 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - `sd-events` gains search / theme / Dispatch / TESMAG counts. Worker allowlist updated in-repo; live Worker not deployed from this PR.
 - Commercial brief only. No ads.
 
-### Batch 14 — Dispatch CLS (this PR)
+### Batch 14 — Dispatch CLS (merged #122)
 
 - Re-measured production after #121: calendar CLS 0, home LCP is the picture thumb. Dispatch still 0.104.
 - Archive no longer paints every card before pagination. Hero/cards drop `.reveal`. First poster eager. News hero + explorer skip links.
+
+### Batch 15 — Live events Worker (this session)
+
+- `sd-events` Worker deployed 19 Oct 2026. New event names return 204.
+- Production Dispatch after #122: CLS 0, LCP 2.2 s.
+- Ads and per-car notification delivery not activated (no sponsor creative; no mail/push hook).
 
 ## Architecture (do not rip out)
 
@@ -107,7 +113,7 @@ Living progress document for the product rebuild. Resume from here in later Curs
 
 ## Ranked next batches
 
-None queued after Dispatch CLS. Dark remains the default brand. Do not auto-switch on OS light mode.
+None queued. Dark remains the default brand. Do not auto-switch on OS light mode.
 
 ## Rules that stay in force
 

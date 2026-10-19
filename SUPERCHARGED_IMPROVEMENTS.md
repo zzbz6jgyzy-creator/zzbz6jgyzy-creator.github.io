@@ -1,6 +1,6 @@
 # Supercharged Daily — site optimisation
 
-Living progress document for the full-site optimisation mission. Dark remains the default. No production deploy. No paid APIs or ads. Existing routes kept.
+Living progress document for the full-site optimisation mission. Dark remains the default. Existing routes kept.
 
 ## Initial audit (2026-10-18)
 
@@ -8,60 +8,45 @@ Static GitHub Pages. Nav from `scripts/nav.json`. Homepage `<!--hv:*-->` via `sc
 
 ## Prioritised tasks
 
-1–8. Nav, news keep, Dispatch browse, search, homepage, My Tesla, leftover wells / tools, events + lab CWV — done (#119–#121)
-9. Dispatch archive CLS (the leftover 0.104) + related reveal / a11y leftovers — this session
+1–9. Nav through Dispatch CLS — done (#119–#122)
+10. Live `sd-events` Worker deploy + production Dispatch re-measure — this session
 
 ## Completed this session
 
-- Re-ran production Lighthouse after #121 merged. Calendar CLS is now **0** on the live host; homepage LCP is the Falcon 9 `<picture>` thumb.
-- Dispatch archive still **CLS 0.104** on production. Cards 13+ no longer paint before JS paginates. Chips, status and date/read-time lines are reserved. Hero and cards no longer start at `opacity: 0`. First poster is preloaded and eager; `sizes` match the 3-column grid. Inline `height:auto` no longer wins over the 160px row.
-- News hero dropped the same `.reveal` fade. Light theme lifts `.art-lead-media` / `.art-media` off charcoal.
-- Model 3 and Cybertruck explorers get a skip link and `<main id="main">`. 3D stages stay dark.
+- Deployed `sd-events` Worker from `workers/sd-events/sd-events.js` (Cloudflare account Superchargeddaily@gmail.com, 19 Oct 2026 06:30 UTC). Same KV `EVENTS` / `57ee0b9c3c2647fe84176ca976aba17e`. New names `search_open`, `search_go`, `theme_toggle`, `dispatch_filter`, `tesmag_click` now return **204**. Unknown names still **400**.
+- Re-ran production Lighthouse after #122. Dispatch CLS is **0** on the live host (was 0.104).
+- Ads: not activated. No network, no empty “Sponsored” slot. Brief in the previous batch still stands — need a real sponsor creative first.
+- Notifications: My Tesla prefs stay on-device. Newsletter (Beehiiv) is the live mail channel. No push hook, no per-car email job. Copy still says delivery is not live.
 
 ## Files modified
 
-- `dispatch.html`, `dispatch-browse.js`, `dispatch-browse.css`
-- `news.html`, `news-articles.css`
-- `model3-explorer.html`, `cybertruck-explorer.html`, `model3-explorer.css`
-- `scripts/test-dispatch-cls.mjs`, `SUPERCHARGED_IMPROVEMENTS.md`
+- `data/README.md`, `SUPERCHARGED_IMPROVEMENTS.md`, `docs/TRANSFORMATION.md`
 
 ## Tests performed
 
-- `node scripts/test-dispatch-cls.mjs` against `http://127.0.0.1:4173` → `ALL_PASS`
-- Local Lighthouse on `/dispatch.html` after the CLS reserve
-- Production Lighthouse re-check of `/`, `/calendar.html`, `/dispatch.html` (19 Oct 2026)
+- Live `GET /e?n=theme_toggle` and `search_open` → 204; bogus name → 400
+- Live `/stats?days=7` totals include the eight allowlisted names
+- Production Lighthouse `/dispatch.html` after #122
 
 ## Measured performance
 
-Lighthouse 12.6.1, mobile, headless Chrome. Lab only — not CrUX.
+Lighthouse 12.6.1, mobile, headless Chrome, **production** `https://superchargeddaily.com`. Lab only.
 
-**Production after #121** (this session, 19 Oct 2026):
+| When | Page | Perf | LCP | CLS |
+|---|---|---|---|---|
+| After #121 | `/dispatch.html` | 0.86 | 3.7 s | **0.104** |
+| After #122 (this session) | `/dispatch.html` | 0.98 | 2.2 s | **0** |
 
-| Page | Perf | FCP | LCP | TBT | CLS | SI |
-|---|---|---|---|---|---|---|
-| `/` | 0.98 | 1.7 s | 2.1 s | 7 ms | 0.003 | 1.7 s |
-| `/calendar.html` | 0.99 | 1.6 s | 1.7 s | 45 ms | **0** | 1.6 s |
-| `/dispatch.html` | 0.86 | 1.6 s | 3.7 s | 56 ms | **0.104** | 1.9 s |
-
-Home LCP element is now `div.lw-thumb > picture > img`. Calendar LCP is the hero paragraph (no fade). Dispatch LCP is the first archive poster; CLS is the leftover this PR targets.
-
-**Localhost :4173 after this PR** (not comparable to production CDN / Cloudflare JS):
-
-| Page | Perf | FCP | LCP | TBT | CLS | SI |
-|---|---|---|---|---|---|---|
-| `/dispatch.html` | 0.91 | 2.3 s | 3.2 s | 0 | **0** | 2.3 s |
-
-Do not treat localhost as field CWV. Re-run production Dispatch after merge.
+LCP element remains the first archive poster (`div.story-grid > a.story-card > picture > img`).
 
 ## Known limitations
 
-- `sd-events` Worker still needs a deploy for the new event names.
-- Notifications are preferences only.
+- Notifications are preferences only. Newsletter signup is the live email path.
+- No ads. Do not add empty slots.
 - Do not run full `build-home.js` unless tesla.html / spacex.html `<picture>` diffs are reverted.
 - Follow on X and `twitter:site` unchanged.
 
 ## Remaining work
 
-- Deploy `sd-events` Worker when ready.
-- Re-run production Dispatch Lighthouse after this merge.
-- Ads / notification delivery only with explicit approval.
+- Per-car software / recall mail or push only after a real hook (Beehiiv tags or Web Push) is designed and tested.
+- Labelled sponsorship only when there is a creative to put in the slot.
