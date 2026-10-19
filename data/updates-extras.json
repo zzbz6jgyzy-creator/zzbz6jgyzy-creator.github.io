@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T14:57:45Z",
+ "updated": "2026-10-19T15:52:32Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,40 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-19T14:57:45Z",
+  "fetched": "2026-10-19T15:52:32Z",
   "items": [
+   {
+    "t": "2026-10-19T15:29:32Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model Y AWD LR (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-19T15:28:50Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model 3 Performance (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-19T15:21:29Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model X Plaid (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-19T15:06:53Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 AWD LR (2020)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-19T13:30:20Z",
     "to": "2026.38.5.1",
@@ -538,38 +570,6 @@
     "to": "2026.38.5.1",
     "from": "2026.27.11",
     "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-19T09:08:19Z",
-    "to": "2026.38.5.1",
-    "from": "2026.38.5",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "Canada"
-   },
-   {
-    "t": "2026-10-19T08:49:41Z",
-    "to": "2026.38.5.1",
-    "from": "2026.38.5",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-19T08:42:51Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model 3 AWD LR (2019)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-19T07:47:19Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model Y RWD LR (2026)",
     "hw": "4.0",
     "country": "United States"
    }
