@@ -987,6 +987,9 @@
           <p class="hv-feed-sub">Sourced tracker moves, not the wire. Follow topics in this browser to filter. Last checked is not the same as last verified update.</p>
           <div class="intel-follow" data-intel-follow role="group" aria-label="Follow topics">${follow}</div>
           <div data-intel-changed>${changesHtml(recent)}</div>
+          <h2 id="hv-clocks-h">Kept launch clocks</h2>
+          <p class="hv-feed-sub">Canonical start stays in data/events.json. Live overlay times are shown, not used to rewind a flown or later official clock.</p>
+          <div class="intel-clocks" data-intel-clocks>${conflictsHtml(bundle.conflicts)}</div>
         </section>`;
   }
 

@@ -213,6 +213,9 @@ else bad("starlink html snapshot", slHtml.slice(0, 240));
 const clocks = I.conflictsHtml(bundle.conflicts);
 if (/Kept \(events.json\)/.test(clocks) && /Live overlay/.test(clocks) && /keep_canonical_events_json|keep_completed/.test(clocks) && /2026-10-20/.test(JSON.stringify(bundle.conflicts))) ok("conflicts html kept clocks");
 else bad("conflicts html kept clocks", clocks.slice(0, 280));
+const home = I.homeSection(bundle);
+if (/data-intel-clocks/.test(home) && /Kept launch clocks/.test(home) && /data-intel-changed/.test(home) && /keep_canonical_events_json|Bandwagon|events\.json/.test(home)) ok("home section kept clocks");
+else bad("home section kept clocks", home.slice(0, 400));
 if (I.fmtClock("2026-10-15T14:27:00.000Z").indexOf("UTC") >= 0) ok("fmtClock utc");
 else bad("fmtClock utc", I.fmtClock("2026-10-15T14:27:00.000Z"));
 

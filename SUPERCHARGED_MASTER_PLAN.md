@@ -73,16 +73,20 @@ Conflicts are recorded, not overwritten. Canonical launch clocks stay in `data/e
 10. Your Supercharged Daily + local digest preview (`/daily.html`). Alert enqueue never sends.
 11. CI hooks on news, updates, and home-build workflows.
 12. Cybercab sourced Texas registration jumps (registered ≠ serving). Unchanged days labelled.
-13. See-the-launch + calendar kept-clock tables (events.json wins).
+13. See-the-launch + calendar + homepage kept-clock tables (events.json wins).
 14. Starlink McDowell snapshot diffs (`data/starlink-history.json`). Not a live operator feed.
 15. Autonomy, Daily, Production, Optimus in Tesla and Explore nav.
-16. Calendar search + Recently done (21 days). CRS-35 / USSF-481 findable.
+16. Calendar search + Recently done (21 days) + Earlier archive (older than 21 days). CRS-35 / USSF-481 / Flight 14 findable.
 17. Starship Flight 15 sourced schedule notes (not telemetry).
 18. My Tesla Teslascope country sample waves (sample ≠ VIN).
 19. Dispatch rows in What changed labelled Dispatch, not Promise Tracker.
 20. SpaceX hub compiled-desk strip (Starship, calendar, Starlink).
 21. Search overlay covers Promise tracker, Can I see it?, FSD global, TCMV; `#demos` and `#sample-waves` indexed.
 22. Light-theme tokens for YoY, My Tesla waves, Starship sources. Promise tracker ↔ Optimus archive. Intel-health per-tracker freshness table.
+23. Homepage What changed includes Kept launch clocks (`[data-intel-clocks]`).
+24. Production energy GWh YoY when both IR quarters opened (Q1–Q3 2026 vs 2025). Q4 2025 has no opened year-ago table.
+25. Cybercab ↔ FSD & Robotaxi evidence honesty: registration ≠ serving; city layers ≠ DMV count.
+26. Calendar Earlier list for compiled dated rows older than three weeks. Not live telemetry.
 
 ## Explicitly not done (blockers / approval)
 

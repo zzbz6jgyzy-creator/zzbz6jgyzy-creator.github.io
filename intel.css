@@ -188,3 +188,5 @@ html[data-theme="light"] .intel-demo ul { color: var(--ink-soft, #555); }
 
 .intel-desk { display: grid; gap: 10px; margin: 0 0 22px; }
 .intel-desk .intel-bar { margin: 0; }
+.intel-related { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 18px; }
+a.intel-chip { text-decoration: none; display: inline-flex; align-items: center; }

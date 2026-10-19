@@ -36,7 +36,7 @@ Respect robots, ToS, copyright, and rate limits. Do not scrape X, Tesla owner ac
 | Q4 2025 | https://ir.tesla.com/press-release/tesla-fourth-quarter-2025-production-deliveries-deployments | Prod 434,358 / Del 418,227 / Energy 14.2 GWh |
 | Q3 2026 | https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments | Prod 464,391 / Del 486,532 / Energy 13.7 GWh (already on file; re-opened) |
 
-YoY uses only opened pairs: Q1 2026 vs Q1 2025 (del +6.3%, prod +12.6%), Q2 2026 vs Q2 2025 (del +25.0%, prod +10.1%), Q3 2026 vs Q3 2025 (del −2.1%, prod +3.8%). Q4 2025 has no opened year-ago table.
+YoY uses only opened pairs: Q1 2026 vs Q1 2025 (del +6.3%, prod +12.6%, energy −15.4%), Q2 2026 vs Q2 2025 (del +25.0%, prod +10.1%, energy +40.6%), Q3 2026 vs Q3 2025 (del −2.1%, prod +3.8%, energy +9.6%). Q4 2025 has no opened year-ago table. Energy is storage deployed, not vehicles.
 
 ## Editorial compiled files (in use)
 

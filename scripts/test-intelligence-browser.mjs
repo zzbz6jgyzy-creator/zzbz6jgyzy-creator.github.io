@@ -35,6 +35,10 @@ const dispatchHome = homeRows.filter((r) => /\/dispatch\//.test(r.href));
 if (dispatchHome.length && dispatchHome.every((r) => r.k === "Dispatch")) ok("home dispatch labelled Dispatch");
 else if (!dispatchHome.length) ok("home dispatch labelled Dispatch");
 else bad("home dispatch labelled Dispatch", JSON.stringify(dispatchHome.slice(0, 4)));
+await page.locator("[data-intel-clocks] table").waitFor({ timeout: 8000 });
+const homeClocks = await page.locator("[data-intel-clocks]").innerText();
+if (/crs35-docking/.test(homeClocks) && /ussf-481/.test(homeClocks) && /events.json/.test(homeClocks) && /Live overlay/.test(homeClocks)) ok("home kept clocks");
+else bad("home kept clocks", homeClocks.slice(0, 400));
 await page.screenshot({ path: SHOT + "/intel-home-changed.png", fullPage: false });
 
 await page.goto(BASE + "/optimus.html", { waitUntil: "networkidle" });
@@ -89,6 +93,9 @@ await page.locator("[data-cc-changes] .sourced-change").first().waitFor({ timeou
 const cabText = await page.locator("[data-cc-changes]").innerText();
 if (/126/.test(cabText) && /169/.test(cabText) && /319/.test(cabText) && /349/.test(cabText) && /Unchanged/.test(cabText) && /not a car in service/.test(cabText)) ok("cybercab sourced jumps");
 else bad("cybercab sourced jumps", cabText.slice(0, 400));
+const cabHero = await page.locator(".cc-hero-copy").innerText();
+if (/How we judge/.test(cabHero) && /not a car in service/.test(cabHero) && await page.locator('.cc-hero-copy a[href="/autonomy.html"]').count()) ok("cybercab autonomy cross-link");
+else bad("cybercab autonomy cross-link", cabHero.slice(0, 280));
 await page.locator("[data-cc-changes]").evaluate((el) => el.scrollIntoView({ block: "start" }));
 await page.screenshot({ path: SHOT + "/intel-cybercab-changes.png" });
 
@@ -121,6 +128,9 @@ if (/Driver-supervised assistance/.test(auto) && /Recognised, rollout not confir
 else bad("autonomy layers", auto.slice(0, 280));
 if (/Slovakia/.test(auto) && /recognised-not-live|not the same as owners receiving/.test(auto)) ok("slovakia not rollout");
 else bad("slovakia not rollout", auto.slice(0, 240));
+const autoMain = await page.locator("main").innerText();
+if (/not a car in service/.test(autoMain) && await page.locator('main a[href="/cybercab.html"]').count()) ok("autonomy cybercab cross-link");
+else bad("autonomy cybercab cross-link", autoMain.slice(0, 280));
 await page.screenshot({ path: SHOT + "/intel-autonomy.png" });
 
 await page.goto(BASE + "/daily.html", { waitUntil: "networkidle" });
@@ -138,6 +148,8 @@ await page.locator("[data-intel-production] table").waitFor({ timeout: 8000 });
 const prodPage = await page.locator("[data-intel-production]").innerText();
 if (prodPage.includes("497,099") && prodPage.includes("418,227") && /Q3 2026 vs Q3 2025/.test(prodPage)) ok("production yoy official");
 else bad("production yoy official", prodPage.slice(0, 280));
+if (/-15\.4%/.test(prodPage) && /\+40\.6%/.test(prodPage) && /energy/.test(prodPage) && /13\.7 vs 12\.5 GWh/.test(prodPage) && !/Q4 2025 vs/.test(prodPage)) ok("production energy yoy opened pairs");
+else bad("production energy yoy opened pairs", prodPage.slice(0, 500));
 
 await page.goto(BASE + "/roadster.html", { waitUntil: "networkidle" });
 await page.locator("[data-intel-promises] table").waitFor({ timeout: 8000 });

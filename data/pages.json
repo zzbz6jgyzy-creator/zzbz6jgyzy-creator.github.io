@@ -197,7 +197,7 @@
       "url": "/calendar.html",
       "title": "Calendar",
       "tag": "SpaceX",
-      "summary": "Launches & livestreams"
+      "summary": "Launches, livestreams, recently done and earlier dated rows. Canonical clocks stay in events.json. Search Flight 14, CRS-35, USSF-481."
     },
     {
       "url": "/see-the-launch.html",
@@ -209,7 +209,7 @@
       "url": "/cybercab.html",
       "title": "Cybercab tracker",
       "tag": "Trackers",
-      "summary": "Reality map & fleet"
+      "summary": "Reality map and Texas DMV fleet. A registration is not a car in service. Supervised FSD and paid rides stay on FSD & Robotaxi evidence."
     },
     {
       "url": "/fsd-europe.html",
@@ -263,13 +263,13 @@
       "url": "/production.html",
       "title": "Tesla production & deliveries",
       "tag": "Trackers",
-      "summary": "Official Tesla IR quarterly production, deliveries and energy."
+      "summary": "Official Tesla IR quarterly production, deliveries and energy GWh. Year-over-year only when both quarters were opened."
     },
     {
       "url": "/autonomy.html",
       "title": "FSD & Robotaxi evidence",
       "tag": "Trackers",
-      "summary": "Supervised FSD, permits and commercial robotaxi rides in separate layers."
+      "summary": "Supervised FSD, permits and commercial robotaxi rides in separate layers. Texas Cybercab registrations are not serving cars."
     },
     {
       "url": "/daily.html",
