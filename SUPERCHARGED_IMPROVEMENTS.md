@@ -64,6 +64,14 @@ Confirmed on `origin/main` at `8fd18f2`:
 - `scripts/test-calendar-dedup.mjs`, `scripts/test-news-keep.mjs`, `scripts/test-review-fixes.mjs`
 - `SUPERCHARGED_IMPROVEMENTS.md`, `docs/TRANSFORMATION.md`
 
+## Merge with `origin/main` (19 Oct 2026)
+
+Fetched `origin/main` at `b41282c`. Three snapshot commits after our branch point (`8fd18f2`): headlines, software updates, TeslaFi extras.
+
+One conflict, **simple**: generated `<!--hv:feed-->` in `index.html`. Main’s snapshot used the old ranker (BASENOR / TradingView / Simply Wall Street). Ours had the new ranker on an older snapshot. Resolution: keep main’s `news-data.json` (updated `2026-10-19T07:52:07Z`) and re-run `scripts/refresh-home-feed.js`. Hero order and `data-band-topic="website"` were already merged cleanly.
+
+No complicated conflicts.
+
 ## Tests executed
 
 - `node scripts/test-calendar-dedup.mjs` — ALL_PASS (Bandwagon once, Starlink 15-25 ≠ 15-26, CRS launch ≠ docking, reschedule/hold, missing IDs)
