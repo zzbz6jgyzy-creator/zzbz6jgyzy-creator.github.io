@@ -103,6 +103,7 @@
     (d.events || []).forEach(function (e) { var s = shared[e.id]; if (s && s.date) { var tz = s.tz || 'Z'; e.start = s.date + 'T00:00:00' + tz; e.end = s.date + 'T23:59:00' + tz; } }); // shared dates win
     now = q.get('livenow') ? now : Date.now();
     var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page || (page === 'spacex' && e.page === 'starship')); });
+    // Home: keep timed Falcon/Dragon; drop NET Starship. Same rule as scripts/live-home-pick.js.
     if (page === 'home') ev = ev.filter(function (e) {
       if (e.page !== 'starship') return true;
       return !e.net && !e.timeTbc && e.status !== 'ended';

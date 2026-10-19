@@ -3,8 +3,12 @@
 // into index.html between <!--hv:NAME--> ... <!--/hv:NAME--> markers, so the content is in the
 // raw HTML for crawlers and no-JS visitors. home-v2.js still replaces it live in the browser.
 // Run: node scripts/build-home.js   (refresh workflows + home-build.yml re-run it)
+// Locks: homepage band always includes data-band-topic="website"; home event pick
+// matches live.js (timed Falcon stays, NET Starship drops); tesla/spacex rewrite
+// never inserts markers before <main> and aborts if it would drop a <picture>.
 const fs = require("fs"), path = require("path"), vm = require("vm");
 const pairer = require("../home-pair.js");
+const { pickNextEvent } = require("./live-home-pick");
 const R = path.join(__dirname, ".."), rd = (f) => fs.readFileSync(path.join(R, f), "utf8");
 const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const strip = (h) => h.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
@@ -96,15 +100,7 @@ try {
 function eventCardFor(page) {
   try {
   const d = JSON.parse(rd("live-data.json")), shared = (ev && ev.events) || {}, now = Date.now(), H = 36e5;
-  const list = (d.events || []).map((e) => Object.assign({}, e)).filter((e) => {
-    const s = shared[e.id]; if (s && s.date) { const tz = s.tz || "Z"; e.start = s.date + "T00:00:00" + tz; e.end = s.date + "T23:59:00" + tz; }
-    return e.status !== "ended" && new Date(e.end) > now && (page === "home" || e.page === page || (page === "spacex" && e.page === "starship"));
-  });
-  const featOn = list.some((e) => e.featured || (shared[e.id] && shared[e.id].major && e.page !== "starship"));
-  const evs = page === "home" && featOn ? list.filter((e) => e.page !== "starship") : list;
-  const live = evs.some((e) => e.status === "live" || (!e.timeTbc && !e.net && now >= new Date(e.start) - H / 2));
-  const fut = evs.filter((e) => new Date(e.start) > now).sort((a, b) => new Date(a.start) - new Date(b.start));
-  const e = live ? null : (evs.find((x) => x.featured) || fut.find((x) => !x.timeTbc && !x.net) || fut[0]);
+  const e = pickNextEvent(d.events || [], { page, shared, now, H });
   if (!e) return "";
     const canEmbed = e.provider === "youtube" || e.provider === "x";
     const url = e.provider === "youtube" && /^[\w-]{6,20}$/.test(e.embedId || "") ? "https://www.youtube.com/watch?v=" + e.embedId : (/^https:\/\//.test(e.fallbackUrl || e.postUrl || "") ? (e.fallbackUrl || e.postUrl) : "/calendar.html");
@@ -126,16 +122,36 @@ function eventCardFor(page) {
   } catch (err) { console.warn("event card skip", err.message); return ""; }
 }
 const eventCard = eventCardFor("home");
-// tesla.html / spacex.html: live.js inserts its card just before <main>; prebuild the same card there
+// Only rewrite an existing <!--hv:event--> pair. Never insert a marker in front of
+// <main> — that path previously swallowed tesla.html / spacex.html <picture> sets.
+function replaceEventCard(html, card, file) {
+  const open = html.indexOf("<!--hv:event-->");
+  const close = html.indexOf("<!--/hv:event-->");
+  if (open < 0 || close < 0 || close < open) {
+    console.warn(file + ": event markers missing; skip");
+    return html;
+  }
+  const block = html.slice(open, close + "<!--/hv:event-->".length);
+  if (/<main[\s>]/.test(block)) {
+    console.warn(file + ": event markers span <main>; skip");
+    return html;
+  }
+  const next = html.slice(0, open) + "<!--hv:event-->" + card + "<!--/hv:event-->" + html.slice(close + "<!--/hv:event-->".length);
+  const pics0 = (html.match(/<picture\b/gi) || []).length;
+  const pics1 = (next.match(/<picture\b/gi) || []).length;
+  if (pics1 < pics0) {
+    console.warn(file + ": would drop <picture> (" + pics0 + " → " + pics1 + "); skip");
+    return html;
+  }
+  return next;
+}
 for (const [f, pg] of [["tesla.html", "tesla"], ["spacex.html", "spacex"]]) {
-  let h = rd(f); const h0 = h, card = eventCardFor(pg);
-  if (!/<!--hv:event-->/.test(h)) h = h.replace(/(\n\s*)<main id="main"/, (m, ws) => `${ws}<!--hv:event--><!--/hv:event-->${ws}<main id="main"`);
-  h = h.replace(/<!--hv:event-->[\s\S]*?<!--\/hv:event-->/, () => `<!--hv:event-->${card}<!--/hv:event-->`);
+  const h0 = rd(f), h = replaceEventCard(h0, eventCardFor(pg), f);
   if (h !== h0) { fs.writeFileSync(path.join(R, f), h); console.log(f + " updated"); }
 }
 
 // Newsletter band (same markup as grow.js data-band; grow.js skips building it when it's already here)
-const band = `<section class="sd-band" id="newsletter" data-newsletter="band" aria-label="Newsletter signup"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
+const band = `<section class="sd-band" id="newsletter" data-newsletter="band" data-band-topic="website" aria-label="Newsletter signup"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
       <div><form class="sd-form" data-newsletter-form>
       <label class="visually-hidden" for="sd-band-email">Email address</label>
       <input id="sd-band-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
@@ -150,6 +166,6 @@ const put = (name, inner) => {
   html = html.replace(re, () => `<!--hv:${name}-->${inner}<!--/hv:${name}-->`);
 };
 put("lead", lead); put("preload", preload); put("band", band);
-html = html.replace(/<!--hv:event-->[\s\S]*?<!--\/hv:event-->/, () => `<!--hv:event-->${eventCard}<!--/hv:event-->`);
+html = replaceEventCard(html, eventCard, "index.html");
  put("supp", supp); put("trk", trkHtml); put("feed", feed);
 if (html !== before) { fs.writeFileSync(path.join(R, "index.html"), html); console.log("index.html updated"); } else console.log("index.html unchanged");
