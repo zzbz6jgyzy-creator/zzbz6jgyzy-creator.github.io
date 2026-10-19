@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-19T19:21:43.678Z",
+  "updated": "2026-10-19T19:32:44.190Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-2026-proxy-three-items.html",
+      "topic": "fsd",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla’s December vote: three items, no shareholder proposals",
+      "at": "2026-10-19T19:35:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-2026-proxy-three-items.html",
+      "href": "/dispatch/tesla-2026-proxy-three-items.html",
+      "summary": "The 2026 proxy: re-elect Musk, Denholm and Straubel, say-on-pay and PwC on 3 Dec. Last year’s ballot had 14 items.",
+      "title": "Tesla’s December vote: three items, no shareholder proposals",
+      "id": "logged|dispatch:/dispatch/tesla-2026-proxy-three-items.html|2026-10-19T19:35:00.000Z|Tesla’s December vote: three items, no shareholder proposals"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starlink-eu-spectrum-bid.html",
@@ -221,23 +238,6 @@
       "summary": "2026.38.5.1 moved from 329 to 426 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-16T05:50:23.000Z|426"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/project-bromo-eu-spacex-rival.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "EU fast-tracks Project Bromo vs SpaceX",
-      "at": "2026-10-16T05:34:19.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/project-bromo-eu-spacex-rival.html",
-      "href": "/dispatch/project-bromo-eu-spacex-rival.html",
-      "summary": "€6.5B Airbus–Leonardo–Thales merger vs Starlink’s 11,000+ satellites — the scale gap.",
-      "title": "EU fast-tracks Project Bromo vs SpaceX",
-      "id": "logged|dispatch:/dispatch/project-bromo-eu-spacex-rival.html|2026-10-16T05:34:19.000Z|EU fast-tracks Project Bromo vs SpaceX"
     },
     {
       "type": "changed",
