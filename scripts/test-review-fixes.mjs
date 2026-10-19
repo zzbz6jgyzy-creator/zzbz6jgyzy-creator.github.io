@@ -120,9 +120,9 @@ await page.waitForTimeout(400);
 const neu = await page.$eval("#mt-whats-new", (el) => el.innerText).catch(() => "");
 if (/What.s new|For this car|General Tesla news|Verified recalls/i.test(neu)) ok("my tesla whats new");
 else bad("my tesla whats new", neu.slice(0, 180));
-const notify = await page.$eval("#mt-notify-state", (el) => el.innerText);
-if (/No account|not live|No emails/i.test(notify)) ok("notify not claimed live");
-else bad("notify not claimed live", notify);
+const mailForm = await page.$("#mt-mail, #mt-email, #mt-notify");
+if (!mailForm) ok("my tesla mail form gone");
+else bad("my tesla mail form gone", "email/alerts form still in the DOM");
 
 await page.setViewportSize({ width: 768, height: 900 });
 await page.goto(BASE + "/dispatch.html", { waitUntil: "domcontentloaded" });

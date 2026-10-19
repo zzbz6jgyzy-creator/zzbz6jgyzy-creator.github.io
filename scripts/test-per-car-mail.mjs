@@ -1,5 +1,5 @@
 import fs from "fs";
-import { cmpVer, newestByCountry, deltas, matchSoftware } from "../workers/sd-mail/newest.mjs";
+import path from "path";
 import pkg from "/home/ubuntu/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/index.js";
 const { chromium } = pkg;
 
@@ -14,64 +14,66 @@ const bad = (name, msg) => {
 
 const html = fs.readFileSync("my-tesla.html", "utf8");
 const js = fs.readFileSync("my-tesla.js", "utf8");
-const worker = fs.readFileSync("workers/sd-mail/sd-mail.js", "utf8");
-const toml = fs.readFileSync("workers/sd-mail/wrangler.toml", "utf8");
 const newsJs = fs.readFileSync("newsletter.js", "utf8");
-const snap = JSON.parse(fs.readFileSync("updates-live.json", "utf8"));
 const action = fs.readFileSync(".github/workflows/updates-snapshot.yml", "utf8");
+const repoText = [
+  html,
+  js,
+  newsJs,
+  action,
+  fs.readFileSync("updates.html", "utf8"),
+].join("\n");
 
-if (/id="mt-email"/.test(html) && /Save alerts to Supercharged Daily/.test(html) && /not live/.test(html) && /Not Tesla/.test(html)) ok("my-tesla form copy");
-else bad("my-tesla form copy", "missing email, save, or honest copy");
-if (/my-tesla\.js\?v=202610192200/.test(html) && /my-tesla\.css\?v=202610191930/.test(html)) ok("pins");
+if (!fs.existsSync("workers/sd-mail")) ok("sd-mail worker removed");
+else bad("sd-mail worker removed", "workers/sd-mail still on disk");
+
+if (!/id="mt-email"|id="mt-mail"|id="mt-notify"|Save alerts to Supercharged Daily|Alerts for this car/.test(html)) ok("my-tesla form gone");
+else bad("my-tesla form gone", "email/alerts markup still in my-tesla.html");
+if (/This profile never leaves the device/.test(html)) ok("profile stays local");
+else bad("profile stays local", "missing never-leaves-device copy");
+if (/my-tesla\.js\?v=202610192500/.test(html) && /my-tesla\.css\?v=202610191930/.test(html)) ok("pins");
 else bad("pins", "my-tesla assets not bumped");
-if (js.includes("sd-mail.superchargeddaily.workers.dev/mail") && !/api[_-]?key|BEEHIIV_/i.test(js)) ok("client posts to worker, no key");
-else bad("client posts to worker, no key", "missing MAIL_URL or secret leaked");
-if (!/api[_-]?key|BEEHIIV_/i.test(newsJs)) ok("newsletter still keyless");
-else bad("newsletter still keyless", "secret leaked");
-if (worker.includes("tesla_notify_software") && worker.includes("automations/") && worker.includes("delivery") && !worker.includes("BEEHIIV_API_KEY =")) ok("worker hook");
-else bad("worker hook", "missing Beehiiv upsert/scan or a baked-in key");
-if (toml.includes("aut_2a6b7603-cdd1-4bc1-9fef-64f509ca3dc3") && toml.includes("612db1a5b0784de39ceda04edba73ae4")) ok("wrangler ids");
-else bad("wrangler ids", toml.slice(0, 200));
-if (action.includes("sd-mail.superchargeddaily.workers.dev/scan") && action.includes("MAIL_SCAN_SECRET")) ok("snapshot ping");
-else bad("snapshot ping", "workflow missing scan hook");
+
+if (!/sd-mail|MAIL_URL|MAIL_KEY|NOTIFY_KEY|sd-my-tesla-mail-v1|sd-my-tesla-notify-v1/.test(js)) ok("client has no mail hook");
+else bad("client has no mail hook", "mail constants or sd-mail URL remain");
+if (!/api[_-]?key|BEEHIIV_|reactivate_existing/i.test(js)) ok("client no beehiiv secret");
+else bad("client no beehiiv secret", "secret or reactivate flag leaked");
+
+if (/alexs-newsletter-84b17e\.beehiiv\.com/.test(newsJs) && /location\.href/.test(newsJs) && !/api[_-]?key|BEEHIIV_|reactivate_existing/i.test(newsJs)) ok("newsletter still keyless");
+else bad("newsletter still keyless", "Sunday signup changed");
+
+if (!/sd-mail|MAIL_SCAN_SECRET/.test(action)) ok("snapshot ping gone");
+else bad("snapshot ping gone", "workflow still pings sd-mail");
+
+const walk = (dir, acc = []) => {
+  for (const name of fs.readdirSync(dir)) {
+    if (name === "node_modules" || name === ".git" || name === ".tmp-shots") continue;
+    const p = path.join(dir, name);
+    const st = fs.statSync(p);
+    if (st.isDirectory()) walk(p, acc);
+    else if (/\.(js|mjs|html|yml|toml|css)$/.test(name)) acc.push(p);
+  }
+  return acc;
+};
+const reactivateHits = walk(".").filter((p) => {
+  if (p.includes("test-per-car-mail")) return false;
+  return fs.readFileSync(p, "utf8").includes("reactivate_existing");
+});
+if (!reactivateHits.length) ok("no reactivate_existing");
+else bad("no reactivate_existing", reactivateHits.join(", "));
+const mailHits = walk(".").filter((p) => {
+  if (p.includes("test-per-car-mail") || p.includes("SUPERCHARGED_") || p.includes("TRANSFORMATION") || p.includes("data/README") || p.includes("IMPROVEMENTS")) return false;
+  return /sd-mail\.superchargeddaily|workers\/sd-mail/.test(fs.readFileSync(p, "utf8"));
+});
+if (!mailHits.length) ok("no live sd-mail callers");
+else bad("no live sd-mail callers", mailHits.join(", "));
+
 if (/https:\/\/x\.com\/ALJR86/.test(html) && /twitter:site" content="@ALJR86"/.test(html)) ok("follow + site");
 else bad("follow + site", "handle changed");
 if (/ts\.la\/alex474841/.test(html)) ok("referral");
 else bad("referral", "affiliate changed");
-
-const newest = newestByCountry(snap);
-if (newest.US && newest.US.id === "2026.38.5.1" && newest.US.n > 0) ok("US newest reporting");
-else bad("US newest reporting", JSON.stringify(newest.US || null));
-if (!Object.values(newest).some((v) => v.id === snap.latest && !(snap.versions || []).find((x) => x.id === snap.latest && x.count > 0))) ok("skip ghost latest");
-else bad("skip ghost latest", "zero-count latest leaked into newest map");
-if (cmpVer("2026.38.5.1", "2026.32.100") > 0) ok("cmpVer");
-else bad("cmpVer", "version order");
-
-const seen = { US: { id: "2026.26.3" } };
-const d = deltas(newest, seen);
-if (d.find((x) => x.cc === "US" && x.previous === "2026.26.3")) ok("delta vs last-seen");
-else bad("delta vs last-seen", JSON.stringify(d.filter((x) => x.cc === "US")));
-
-const sub = {
-  status: "active",
-  custom_fields: [
-    { name: "tesla_notify_software", value: true },
-    { name: "tesla_country", value: "US" },
-    { name: "tesla_software", value: "2026.26.3" },
-  ],
-};
-if (matchSoftware(sub, "US", "2026.38.5.1") && !matchSoftware(sub, "DE", "2026.38.5.1")) ok("match country");
-else bad("match country", "filter failed");
-const current = {
-  status: "active",
-  custom_fields: [
-    { name: "tesla_notify_software", value: true },
-    { name: "tesla_country", value: "US" },
-    { name: "tesla_software", value: "2026.38.5.1" },
-  ],
-};
-if (!matchSoftware(current, "US", "2026.38.5.1")) ok("skip already-current");
-else bad("skip already-current", "would mail a car already on the sample");
+if (!/reactivate_existing/.test(repoText)) ok("html/js workflow no reactivate");
+else bad("html/js workflow no reactivate", "flag still present");
 
 fs.mkdirSync(SHOT, { recursive: true });
 const browser = await chromium.launch({ headless: true });
@@ -82,58 +84,49 @@ await page.addInitScript(() => {
   localStorage.removeItem("sd-my-tesla-notify-v1");
   localStorage.removeItem("sd-my-tesla-mail-v1");
 });
-let posted = null;
+let mailed = false;
 await page.route("https://sd-mail.superchargeddaily.workers.dev/**", async (route) => {
-  posted = JSON.parse(route.request().postData() || "{}");
-  await route.fulfill({
-    status: 200,
-    contentType: "application/json",
-    body: JSON.stringify({ ok: true, saved: true, delivery: "not_live" }),
-  });
+  mailed = true;
+  await route.abort("failed");
 });
 await page.goto(BASE + "/my-tesla.html?model=3&year=2024&hw=hw4&cc=US", { waitUntil: "domcontentloaded" });
-await page.waitForSelector("#mt-email", { timeout: 8000 });
-const heading = await page.$eval("#mt-n-h", (el) => el.textContent);
-if (/Alerts for this car/.test(heading)) ok("heading");
-else bad("heading", heading);
-await page.fill("#mt-email", "qa@example.com");
-await page.check('[data-mt-n="software"]');
-await page.click("#mt-mail-save");
-await page.waitForTimeout(400);
-const stamp = await page.$eval("#mt-notify-state", (el) => el.innerText);
-if (/Saved to Supercharged Daily/.test(stamp) && /nothing is sent yet|not live/i.test(stamp) && !/emails are live/i.test(stamp)) ok("captured not live");
-else bad("captured not live", stamp);
-if (posted?.email === "qa@example.com" && posted?.country === "US" && posted?.model === "3" && posted?.notify?.software === true) ok("payload");
-else bad("payload", JSON.stringify(posted));
-await page.screenshot({ path: SHOT + "/per-car-mail-saved.png" });
+await page.waitForSelector("#mt-dash", { timeout: 8000 });
+const hidden = await page.$eval("#mt-dash", (el) => el.hidden);
+if (!hidden) ok("dashboard shown");
+else bad("dashboard shown", "dash stayed hidden");
+const stamp = await page.$eval("#mt-live", (el) => el.innerText);
+if (/never uploaded/.test(stamp)) ok("never uploaded stamp");
+else bad("never uploaded stamp", stamp);
+const form = await page.$("#mt-mail, #mt-email, #mt-notify, #mt-mail-save");
+if (!form) ok("no mail form in browser");
+else bad("no mail form in browser", "form still rendered");
+const feat = await page.$eval("#mt-feats", (el) => el.innerText);
+if (feat && feat.length > 20) ok("features still render");
+else bad("features still render", feat.slice(0, 120));
+if (!mailed) ok("no sd-mail fetch");
+else bad("no sd-mail fetch", "client still posted");
+await page.screenshot({ path: SHOT + "/per-car-mail-removed.png" });
 await page.close();
 
 const down = await browser.newPage({ viewport: { width: 390, height: 844 } });
-await down.addInitScript(() => {
-  localStorage.removeItem("sd-my-tesla-notify-v1");
-  localStorage.removeItem("sd-my-tesla-mail-v1");
-});
-await down.route("https://sd-mail.superchargeddaily.workers.dev/**", async (route) => {
-  await route.abort("failed");
-});
 await down.goto(BASE + "/my-tesla.html?model=Y&year=2025&hw=hw4&cc=DE", { waitUntil: "domcontentloaded" });
-await down.fill("#mt-email", "qa@example.com");
-await down.check('[data-mt-n="software"]');
-await down.click("#mt-mail-save");
-await down.waitForTimeout(400);
-const downStamp = await down.$eval("#mt-notify-state", (el) => el.innerText);
-if (/not live yet|nothing is sent/i.test(downStamp)) ok("hook down copy");
-else bad("hook down copy", downStamp);
+await down.waitForSelector("#mt-dash");
+const downForm = await down.$("#mt-email");
+if (!downForm) ok("mobile no email");
+else bad("mobile no email", "email field on phone");
+const downDash = await down.$eval("#mt-dash", (el) => !el.hidden);
+if (downDash) ok("mobile dashboard");
+else bad("mobile dashboard", "dash hidden on phone");
 await down.screenshot({ path: SHOT + "/per-car-mail-mobile.png" });
 await down.close();
 
 const light = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 await light.addInitScript(() => localStorage.setItem("sd-theme", "light"));
 await light.goto(BASE + "/my-tesla.html?model=3&year=2024&hw=hw4&cc=US", { waitUntil: "domcontentloaded" });
-await light.waitForSelector("#mt-email");
-const card = await light.$eval("#mt-mail", (el) => el.closest(".mt-card").innerText);
-if (/not live|nothing is sent/i.test(card) && /Software is the first mail hook/.test(card)) ok("light copy");
-else bad("light copy", card.slice(0, 200));
+await light.waitForSelector("#mt-dash");
+const lightBody = await light.$eval("body", (el) => el.innerText);
+if (!/Save alerts to Supercharged Daily|Alerts for this car/.test(lightBody)) ok("light copy");
+else bad("light copy", lightBody.slice(0, 200));
 await light.screenshot({ path: SHOT + "/per-car-mail-light.png" });
 await light.close();
 

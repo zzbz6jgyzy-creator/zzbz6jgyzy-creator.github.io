@@ -144,3 +144,10 @@ After #139 merged:
 - Homepage fifth Production tile (4-column tracker row stays)
 - We Robot 2024 / Q4 2025 YoY
 - Live notifications / Postgres / Fleet / NHTSA ingest / faster cron
+
+## My Tesla mail removal
+
+Branch: `cursor/drop-my-tesla-mail-5e96`  
+Date: 19 Oct 2026
+
+Removed the My Tesla email/alerts form and the JS that POSTed to `sd-mail`. Deleted `workers/sd-mail/` and the updates-snapshot ping. Sunday Beehiiv signup, Welcome, and the five tag automations were not touched. Draft **My Tesla · software reporting** left unpublished. No `reactivate_existing`.

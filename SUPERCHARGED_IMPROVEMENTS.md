@@ -86,7 +86,7 @@ Living progress log for this batch. Dark remains the default. No production depl
 | Files modified | `my-tesla.html`, `my-tesla.js` |
 | Fix implemented | Empty / country-first copy no longer names Ireland/UK. No default country. Notify copy unchanged and still honest. |
 | Tests executed | Production-quality test: empty copy + “not live” body text. |
-| Remaining limitations | No recall feed. No live push/email until Worker + Beehiiv software automation are approved and deployed. Do not claim notifications are live. |
+| Remaining limitations | No recall feed. No email capture on My Tesla. Do not restore sd-mail or claim notifications are live. |
 
 ## Priority 7 — Mobile QA
 
@@ -161,7 +161,7 @@ No typecheck/lint toolchain in this static repo.
 
 ## Outstanding (blocked or not this batch)
 
-- Deploy `sd-mail` Worker / publish My Tesla software automation — **needs approval**.
+- Restore `sd-mail` / publish My Tesla software automation — **do not**. Leave the Beehiiv draft unpublished.
 - Ads — **needs approval**.
 - Production deploy — **needs approval**.
 - New CWV field measure — not run.
