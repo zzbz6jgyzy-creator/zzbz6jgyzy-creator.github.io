@@ -1,0 +1,53 @@
+"use strict";
+// Shared homepage next-event pick used by scripts/build-home.js.
+// Must stay aligned with live.js's home filter: keep timed Falcon/Dragon
+// (page === "starship" but not NET/TBC/ended), drop NET Starship planning.
+// Featured/major earnings must not hide a timed Falcon.
+
+function keepOnHome(e) {
+  if (!e) return false;
+  if (e.page !== "starship") return true;
+  return !e.net && !e.timeTbc && e.status !== "ended";
+}
+
+function withSharedDates(events, shared) {
+  return (events || []).map((e) => {
+    const x = Object.assign({}, e);
+    const s = shared && shared[e.id];
+    if (s && s.date) {
+      const tz = s.tz || "Z";
+      x.start = s.date + "T00:00:00" + tz;
+      x.end = s.date + "T23:59:00" + tz;
+    }
+    return x;
+  });
+}
+
+function eligible(events, page, now) {
+  return events.filter(
+    (e) =>
+      e.status !== "ended" &&
+      new Date(e.end) > now &&
+      (page === "home" || e.page === page || (page === "spacex" && e.page === "starship"))
+  );
+}
+
+function isLive(e, now, H) {
+  return e.status === "live" || (!e.timeTbc && !e.net && now >= new Date(e.start) - H / 2);
+}
+
+// Prebuilt card pick. Returns null when something is already live — live.js
+// mounts that card itself, so the static fallback stays empty.
+function pickNextEvent(events, opts) {
+  const page = (opts && opts.page) || "home";
+  const shared = (opts && opts.shared) || {};
+  const now = opts && opts.now != null ? opts.now : Date.now();
+  const H = (opts && opts.H) || 36e5;
+  const list = eligible(withSharedDates(events, shared), page, now);
+  const evs = page === "home" ? list.filter(keepOnHome) : list;
+  if (evs.some((e) => isLive(e, now, H))) return null;
+  const fut = evs.filter((e) => new Date(e.start) > now).sort((a, b) => new Date(a.start) - new Date(b.start));
+  return evs.find((x) => x.featured) || fut.find((x) => !x.timeTbc && !x.net) || fut[0] || null;
+}
+
+module.exports = { keepOnHome, pickNextEvent, isLive };

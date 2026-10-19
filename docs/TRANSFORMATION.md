@@ -118,11 +118,18 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - About links to it. `noindex`. Not in nav. Zeros stay zeros. Fail copy when the Worker is blocked.
 - Not unique visitors. No invented traffic. No ads.
 
-### Batch 19 — Review fixes (this session)
+### Batch 19 — Review fixes (merged #127)
 
 - Calendar / see-the-launch / homepage countdown share `calendar-merge.js`. Bandwagon-5 is one mission; Starlink 15-25 stays distinct from 15-26; CRS launch stays distinct from docking.
 - Homepage editorial lead sits above the next-event card. News ranking downranks accessory and finance-speculation wires without dropping small publishers.
 - Dispatch newest/oldest sort. My Tesla “What’s new for your Tesla?” is labelled. Homepage band topic restored. No ads. No notify delivery.
+
+### Batch 20 — Homepage builder lock (this session)
+
+- `build-home.js` keeps `data-band-topic="website"` so the next pre-render cannot strip Beehiiv’s homepage tag.
+- Home next-event pick matches `live.js`: timed Falcon stays, NET Starship drops. Prebuilt card is Bandwagon-5, not Q3 earnings.
+- Tesla / SpaceX desk rewrite aborts if it would drop a `<picture>`.
+- `/search.html` is `noindex` and off the sitemap. No ads. No notify delivery.
 
 ## Architecture (do not rip out)
 
