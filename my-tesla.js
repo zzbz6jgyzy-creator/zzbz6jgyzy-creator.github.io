@@ -48,6 +48,7 @@
 
   const state = { model: "", year: "", hw: "", sw: "", cc: "" };
   let live = null;
+  let deskStories = [];
   let hwSource = ""; // "user" | "guess" — year→computer is an estimate until the owner confirms
 
   const readStore = () => {
@@ -397,6 +398,45 @@
     ul.innerHTML = bits.join("");
   };
 
+  const renderWhatsNew = () => {
+    const ul = $("mt-whats-new");
+    if (!ul) return;
+    if (!state.model && !state.cc) {
+      ul.innerHTML = "";
+      return;
+    }
+    const items = [];
+    const local = state.cc ? liveForCountry() : null;
+    if (local?.newest) {
+      items.push(`<li><span class="mt-pill yes">For this car</span><b>${esc(local.newest.v.id)} is the newest sample in ${esc(countryName())}</b>
+        <p>${state.sw && cmpVer(state.sw, local.newest.v.id) < 0 ? `You are on ${esc(state.sw)}. This is a fleet sample, not Tesla’s owner email.` : "From the Teslascope sample for this country — not Tesla’s official owner notes."}</p>
+        <span class="mt-meta">Vehicle-specific · Software Update Tracker</span></li>`);
+    }
+    const fsd = fsdRow();
+    if (state.cc) {
+      items.push(`<li><span class="mt-pill ${fsd && fsd.status === "live" ? "yes" : "locked"}">For this car</span><b>Driver assistance in ${esc(countryName())}</b>
+        <p>${esc(fsd?.note || "No FSD listing for this country in the tracker. Treat Supervised FSD as unavailable until Tesla or a regulator says otherwise.")}</p>
+        <span class="mt-meta">Vehicle-specific · FSD tracker</span></li>`);
+    }
+    items.push(`<li><span class="mt-pill no">Desk</span><b>Verified recalls</b>
+      <p>No matching recall is in our desk notes for this profile. We do not invent recall lists. Check Tesla’s official safety page if you need a legal notice.</p>
+      <span class="mt-meta">None on file · not live alerts</span></li>`);
+    const modelName = (modelOf()?.name || "").toLowerCase();
+    const general = deskStories.filter((a) => {
+      const hay = `${a.title} ${a.summary} ${a.tag} ${a.topic}`.toLowerCase();
+      if (!/tesla|fsd|software|recall|optimus|roadster|cyber/.test(hay)) return false;
+      if (state.model === "CT") return /cybertruck|tesla/.test(hay);
+      if (modelName && hay.includes(modelName.replace("model ", ""))) return true;
+      return /tesla|fsd|software|owner/.test(hay);
+    }).slice(0, 3);
+    general.forEach((a) => {
+      items.push(`<li><span class="mt-pill soon">General Tesla news</span><b><a href="${esc(a.url)}">${esc(a.title)}</a></b>
+        <p>${esc(a.summary || "")}</p>
+        <span class="mt-meta">Not specific to this car · Dispatch</span></li>`);
+    });
+    ul.innerHTML = items.join("");
+  };
+
   const renderGuides = () => {
     const box = $("mt-guides");
     box.innerHTML = guides()
@@ -408,6 +448,7 @@
   const render = () => {
     hintHw();
     renderTiles();
+    renderWhatsNew();
     renderUpdates();
     renderFeatures();
     renderLimits();
@@ -521,6 +562,13 @@
         live = j;
         fillSw();
         render();
+      })
+      .catch(() => {});
+    fetch("/data/articles.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        deskStories = (j && j.articles) || [];
+        renderWhatsNew();
       })
       .catch(() => {});
   };

@@ -28,7 +28,9 @@
 .mt-list{list-style:none;margin:0;padding:0}
 .mt-list li{padding:10px 0;border-top:1px solid var(--line)}
 .mt-list li:first-child{border-top:0;padding-top:0}
+.mt-list .mt-pill{margin-bottom:6px}
 .mt-list b{display:block;color:#fff;font-size:15px}
+.mt-list b a{color:inherit}
 .mt-list p{margin:4px 0 0;color:#c9cfd6;font-size:14px}
 .mt-list .mt-meta{display:block;margin-top:4px;color:var(--mute);font:12px/1.4 "IBM Plex Mono",ui-monospace,monospace}
 .mt-feats{display:grid;gap:8px}

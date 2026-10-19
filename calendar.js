@@ -224,12 +224,19 @@
     return t > now.getTime() - 6 * 36e5;
   }
 
-  function launchKey(name) {
-    return String(name || "")
-      .toLowerCase()
-      .replace(/falcon (9|heavy)( block 5)?/g, "")
-      .replace(/[^a-z0-9]+/g, "");
-  }
+  const Merge = window.SDCalendarMerge || {
+    launchKey(name) {
+      return String(name || "")
+        .toLowerCase()
+        .replace(/falcon (9|heavy)( block 5)?/g, "")
+        .replace(/\b(rideshare|mission|launch|demo)\b/g, "")
+        .replace(/[^a-z0-9]+/g, "");
+    },
+    mergeEvents(curated, live) {
+      return (curated || []).concat(live || []);
+    },
+  };
+  const launchKey = (name) => Merge.launchKey(name);
 
   function mapLaunch(row) {
     const net = row.net;
@@ -257,6 +264,7 @@
     const statusAbbrev = row.status?.abbrev || "";
     return {
       id: `ll-${row.id}`,
+      ll2Id: String(row.id),
       title: row.name.replace(/^Falcon 9 Block 5 \| /, "Falcon 9 · ").replace(/^Falcon Heavy \| /, "Falcon Heavy · "),
       start: net,
       group: "spacex",
@@ -271,38 +279,7 @@
 
   function mergeEvents(liveLaunches) {
     const live = (liveLaunches || []).map(mapLaunch).filter(Boolean);
-    const liveKeys = new Set(live.map((e) => launchKey(e.title)));
-    const prefer = new Map();
-    CURATED.forEach((e) => {
-      if (e.source !== "fallback") prefer.set(launchKey(e.title), e);
-    });
-    const mergedLive = live.map((l) => {
-      const c = prefer.get(launchKey(l.title));
-      if (!c) return l;
-      return {
-        ...l,
-        id: c.id || l.id,
-        title: c.title || l.title,
-        start: c.start || l.start,
-        end: c.end || l.end,
-        href: c.href != null ? c.href : l.href,
-        note: c.note || l.note,
-        where: c.where || l.where,
-        status: c.status || l.status,
-        precision: c.precision || l.precision,
-        featured: c.featured != null ? c.featured : l.featured,
-        image: c.image || l.image,
-        imageCredit: c.imageCredit || l.imageCredit,
-        source: "curated",
-      };
-    });
-    const curated = CURATED.filter((e) => {
-      const key = launchKey(e.title);
-      if (liveKeys.has(key)) return false;
-      if (e.id === "starship-f15" && live.some((l) => /starship.*flight 15|flight 15/i.test(l.title))) return false;
-      return true;
-    });
-    return [...curated, ...mergedLive].sort((a, b) => parseStart(a.start) - parseStart(b.start) || a.title.localeCompare(b.title));
+    return Merge.mergeEvents(CURATED, live);
   }
 
   function el(tag, className, text) {
@@ -527,6 +504,7 @@
             CURATED.push(cur);
           }
           if (!cur) return;
+          if (ev.title) cur.title = ev.title;
           if (ev.start) cur.start = ev.start;
           else if (ev.date && ev.time && ev.tz) cur.start = `${ev.date}T${ev.time}:00${ev.tz}`;
           else if (ev.date) cur.start = `${ev.date}T12:00:00Z`;

@@ -292,6 +292,7 @@
     const go = /go for launch|in flight|hold/i.test(statusName);
     return {
       id: `ll-${row.id}`,
+      ll2Id: String(row.id),
       title: (row.name || "")
         .replace(/^Falcon 9 Block 5 \| /, "Falcon 9 · ")
         .replace(/^Falcon Heavy \| /, "Falcon Heavy · "),
@@ -309,23 +310,13 @@
     };
   };
 
-  const launchKey = (title) =>
-    String(title || "")
-      .toLowerCase()
-      .replace(/falcon (9|heavy)/g, "")
-      .replace(/\([^)]*\)/g, "")
-      .replace(/[^a-z0-9]+/g, "");
-
   const mergeLaunches = (live) => {
     const mapped = (live || []).map(mapLl2).filter(Boolean);
-    const keys = new Set(mapped.map((l) => launchKey(l.title)));
-    const extra = DATA.fallback.filter((f) => {
-      const k = launchKey(f.title);
-      if (keys.has(k) || [...keys].some((x) => x.includes(k) || k.includes(x))) return false;
-      if (/starship.*15/.test(f.title) && mapped.some((l) => /starship.*15|flight 15/i.test(l.title))) return false;
-      return Date.parse(f.start) > Date.now() - 12 * 36e5;
-    });
-    return [...mapped, ...extra]
+    const curated = (DATA.fallback || []).map((f) => ({ ...f, source: "curated" }));
+    const merged = window.SDCalendarMerge
+      ? window.SDCalendarMerge.mergeEvents(curated, mapped)
+      : mapped.concat(curated);
+    return merged
       .filter((l) => Date.parse(l.start) > Date.now() - 8 * 36e5)
       .sort((a, b) => Date.parse(a.start) - Date.parse(b.start));
   };
