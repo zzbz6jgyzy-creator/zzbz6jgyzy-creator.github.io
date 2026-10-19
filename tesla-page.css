@@ -5,7 +5,8 @@
 .tz-hero-copy{width:min(100% - 2.5rem,var(--max));margin:0 auto;padding:0 0 4.5rem}
 .tz-kicker{margin:0 0 .9rem;font:600 .78rem/1 "IBM Plex Mono",monospace;letter-spacing:.32em;text-transform:uppercase;color:#e31937}
 .tz-hero h1{margin:0;font-size:clamp(2.3rem,5.6vw,4.6rem);font-weight:600;letter-spacing:-.025em;line-height:1.02;max-width:14ch}
-.tz-lede{margin:1.1rem 0 1.6rem;max-width:44ch;font-size:clamp(1.02rem,1.6vw,1.2rem);line-height:1.55;color:#d9d9d6}
+.tz-lede{margin:1.1rem 0 .55rem;max-width:44ch;font-size:clamp(1.02rem,1.6vw,1.2rem);line-height:1.55;color:#d9d9d6}
+.tz-stamp{margin:0 0 1.6rem;max-width:64ch;font:500 .82rem/1.45 "IBM Plex Mono",monospace;color:rgba(217,217,214,.78)}
 .tz-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin:0}
 .tz-credit{position:absolute;right:1rem;bottom:.6rem;margin:0;font-size:.68rem;color:rgba(255,255,255,.55)}
 .tz-credit a,.tz-photo figcaption a{color:inherit;text-decoration:underline}

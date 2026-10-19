@@ -57,7 +57,7 @@
     <link rel="stylesheet" href="/styles.css?v=202610190700" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
     <link rel="stylesheet" href="/live.css?v=202610190630" />
-    <link rel="stylesheet" href="/tesla-page.css" />
+    <link rel="stylesheet" href="/tesla-page.css?v=202610191500" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
   </head>
@@ -158,6 +158,7 @@
             <p class="tz-kicker">Tesla</p>
             <h1>Every part of Tesla, tracked.</h1>
             <p class="tz-lede">The cars, the software, Robotaxi, charging and the stock, from an owner and shareholder. Facts with sources. The trackers update every weekday.</p>
+            <p class="tz-stamp" id="tz-updated">The trackers update every weekday. Dates below are compiled stamps, not live telemetry.</p>
             <p class="tz-cta">
               <a class="button button-primary" href="#news">Latest Tesla news</a>
               <a class="button button-ghost" href="#trackers">Open the trackers</a>
@@ -261,12 +262,12 @@
           <div class="tz-cards">
             <a class="tz-card" href="/updates.html">
               <span class="tz-card-k">Software Update Tracker</span>
-              <strong>Newest US build: 2026.38.5.1</strong>
-              <span>FSD v14.3.12 on HW4, v14.3 Lite on HW3. Release notes in plain English, by model and country.</span>
+              <strong data-tz-sw-id>Newest reporting: 2026.38.5.1</strong>
+              <span data-tz-sw-note>FSD v14.3.12 on HW4, v14.3 Lite on HW3. Teslascope sample.</span>
             </a>
             <a class="tz-card" href="/fsd-europe.html">
               <span class="tz-card-k">FSD Europe tracker</span>
-              <strong>9 of 27 EU countries</strong>
+              <strong data-tz-eu-n>9 of 27 EU countries</strong>
               <span>Now called Tesla Assisted Driving in Europe. EU-wide vote: December 2026 at the earliest.</span>
             </a>
             <a class="tz-card" href="/fsd.html">
@@ -576,6 +577,8 @@
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/live.js?v=202610190630" data-page="tesla" defer></script>
+    <script src="/fsd-europe-data.js" defer></script>
+    <script src="/tesla-hub.js?v=202610191500" defer></script>
     <script>
       document.querySelectorAll("time.lt[datetime]").forEach(function (t) {
         try {
