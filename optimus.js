@@ -32,7 +32,7 @@
     demosBox.innerHTML = `
       <div class="intel-grid">
         <div class="intel-card"><strong>${demos.length}</strong><span>Sourced demonstrations</span></div>
-        <div class="intel-card"><strong>${shown}</strong><span>With a shown / not-shown split</span></div>
+        <div class="intel-card"><strong>${shown}</strong><span>With what was shown and what wasn’t</span></div>
         <div class="intel-card"><strong>0</strong><span>Where autonomy was established</span></div>
       </div>
       <p class="intel-note">${esc(data.note || "")}</p>
