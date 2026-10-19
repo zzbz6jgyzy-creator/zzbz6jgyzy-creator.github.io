@@ -55,6 +55,7 @@
     mytesla: { id: "mytesla", label: "My Tesla", href: "/my-tesla.html", topic: "tesla-software" },
     autonomy: { id: "autonomy", label: "FSD & Robotaxi evidence", href: "/autonomy.html", topic: "fsd" },
     daily: { id: "daily", label: "Your Supercharged Daily", href: "/daily.html", topic: "promises" },
+    dispatch: { id: "dispatch", label: "Dispatch", href: "/dispatch.html", topic: "promises" },
   };
 
   const FOLLOW_KEY = "sd-follow-v1";
@@ -720,11 +721,12 @@
     });
 
     ((src.articles && src.articles.articles) || []).slice(0, 12).forEach((a) => {
+      const hay = [a.title, a.tag, a.topic, a.summary].filter(Boolean).join(" ");
       const c = {
         type: "logged",
         factId: factId("dispatch", a.url),
-        topic: a.topic === "spacex" ? "spacex-launches" : /roadster/i.test(a.tag || a.title || "") ? "roadster" : /optimus/i.test(a.title || "") ? "optimus" : a.topic === "tesla" ? "fsd" : "promises",
-        tracker: "promises",
+        topic: a.topic === "spacex" ? "spacex-launches" : a.topic === "tesla" ? "fsd" : "promises",
+        tracker: "dispatch",
         field: "dispatch",
         previous: "",
         next: a.title,
@@ -736,12 +738,16 @@
         summary: a.summary || a.title,
         title: a.title,
       };
-      if (/roadster/i.test(a.tag || a.title || "")) c.topic = "roadster";
-      if (/optimus/i.test(a.title || a.tag || "")) c.topic = "optimus";
-      if (/starship|starlink|falcon|bandwagon/i.test(a.title || "")) c.topic = /starship/i.test(a.title || "") ? "starship" : "spacex-launches";
-      if (/software|firmware|2026\.\d+/i.test(a.title || "")) c.topic = "tesla-software";
-      if (/cybercab|robotaxi/i.test(a.title || a.tag || "")) c.topic = "robotaxi";
-      if (/fsd|assisted driving/i.test(a.title || a.tag || "")) c.topic = "fsd";
+      if (/roadster/i.test(hay)) c.topic = "roadster";
+      if (/optimus/i.test(hay)) c.topic = "optimus";
+      if (/starship/i.test(hay)) c.topic = "starship";
+      else if (/starlink/i.test(hay)) c.topic = "starlink";
+      else if (/falcon|bandwagon|dragon|crs-/i.test(hay)) c.topic = "spacex-launches";
+      if (/software|firmware|2026\.\d+/i.test(hay)) c.topic = "tesla-software";
+      if (/cybercab|robotaxi/i.test(hay)) c.topic = "robotaxi";
+      if (/\bfsd\b|assisted driving/i.test(hay)) c.topic = "fsd";
+      if (/production|deliveries/i.test(hay) && /tesla|ir\b/i.test(hay)) c.topic = "production";
+      if (c.topic === "promises" && /spacex/i.test(hay)) c.topic = "spacex-launches";
       c.id = changeId(c);
       if (!validateChange(c).length) out.push(c);
     });
@@ -938,6 +944,22 @@
       `<span>Last verified update <time datetime="${esc(row.lastVerified)}">${esc(verified)}</time></span>` +
       (row.note ? `<span class="intel-fresh-note">${esc(row.note)}</span>` : "") +
       `</p>`;
+  }
+
+  function freshnessTableHtml(rows) {
+    if (!rows || !rows.length) return '<p class="intel-empty">No freshness rows in the last bundle.</p>';
+    return `<div class="intel-compare"><table>
+      <thead><tr><th>Tracker</th><th>Last checked</th><th>Last verified</th><th>Note</th></tr></thead>
+      <tbody>${rows.map((row) => {
+        const label = (TRACKERS[row.tracker] && TRACKERS[row.tracker].label) || row.tracker;
+        const href = row.href || (TRACKERS[row.tracker] && TRACKERS[row.tracker].href) || "";
+        const name = href ? `<a href="${esc(href)}">${esc(label)}</a>` : esc(label);
+        return `<tr><td>${name}</td>` +
+          `<td><time datetime="${esc(row.lastChecked || "")}">${esc(row.lastChecked ? fmtWhen(row.lastChecked) : "—")}</time></td>` +
+          `<td><time datetime="${esc(row.lastVerified || "")}">${esc(row.lastVerified ? fmtWhen(row.lastVerified) : "—")}</time></td>` +
+          `<td>${esc(row.note || "")}</td></tr>`;
+      }).join("")}</tbody></table></div>
+      <p class="intel-note">Compiled stamps only. This is not live telemetry, a VIN offer, or mail that was sent.</p>`;
   }
 
   function followRead(store) {
@@ -1260,6 +1282,7 @@
     filterChanges,
     changesHtml,
     freshnessHtml,
+    freshnessTableHtml,
     followRead,
     followWrite,
     alertRead,

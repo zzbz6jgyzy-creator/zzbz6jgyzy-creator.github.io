@@ -53,7 +53,8 @@
     <link rel="stylesheet" href="/styles.css?v=202610190700" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/live.css?v=202610191800" />
-    <link rel="stylesheet" href="/theme.css?v=202610190500" />
+    <link rel="stylesheet" href="/theme.css?v=202610192300" />
+    <link rel="stylesheet" href="/intel.css?v=202610192300" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -161,6 +162,18 @@
             <a href="/calendar.html">Calendar</a>.
           </p>
           <p class="meta live-stamp" id="sx-updated">Starship dates are compiled from public sources, not live telemetry.</p>
+        </section>
+
+        <section class="section" style="padding-top: 1.5rem" aria-labelledby="sx-desk-h">
+          <div class="section-head">
+            <h2 id="sx-desk-h">Compiled desks</h2>
+            <p>Last-checked stamps are compiled, not live telemetry. Canonical launch clocks stay in <code>data/events.json</code>.</p>
+          </div>
+          <div class="intel-desk">
+            <div class="intel-bar" data-intel="starship"></div>
+            <div class="intel-bar" data-intel="launches"></div>
+            <div class="intel-bar" data-intel="starlink"></div>
+          </div>
         </section>
 
         <section class="section" style="padding-top: 1.5rem">
@@ -683,6 +696,8 @@
       <script src="/spacex-hub.js?v=202610191500" defer></script>
       <script src="/calendar-merge.js?v=202610192000" defer></script>
       <script src="/calendar.js?v=202610191150" defer></script>
+    <script src="/intel-core.js?v=202610192300" defer></script>
+    <script src="/intel.js?v=202610192300" defer></script>
     <script src="/nav-pill.js?v=202610190630"></script>
   </body>
 </html>

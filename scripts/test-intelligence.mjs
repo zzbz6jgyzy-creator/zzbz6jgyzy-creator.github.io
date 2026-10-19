@@ -98,7 +98,10 @@ const src = {
     { date: "2026-10-19", cybercab: 349, src: "https://fsddb.com/" },
   ] },
   starlinkLive: { updated: "2026-10-15T19:00:26Z", totals: { inOrbit: 11154 }, source: "https://planet4589.org/space/con/star/stats.html" },
-  articles: { articles: [] },
+  articles: { articles: [
+    { url: "/dispatch/spacex-cant-rent-compute.html", title: "SpaceX rents out its compute, but can’t rent any itself", summary: "Musk says AWS had no inference capacity.", date: "2026-10-19T09:23:56Z", topic: "xai", tag: "SpaceX AI" },
+    { url: "/dispatch/musk-spacex-share-every-kid.html", title: "Musk pledges a SpaceX share to every kid in America", summary: "One share each.", date: "2026-10-18T12:00:00Z", topic: "spacex", tag: "SpaceX" },
+  ] },
   production: { updated: "2026-10-19", quarters: [{ id: "Q3 2026", deliveries: 486532, production: 464391, published: "2026-10-02", sourceUrl: "https://ir.tesla.com/" }] },
   merge: M,
   jobs: [],
@@ -217,6 +220,19 @@ if (bundle.changes.some((c) => c.field === "approval" && /Recognition is not a c
 else bad("fsd approval honesty in bundle", "missing");
 if (bundle.changes.some((c) => c.evidence === "company_claim" && /Soon is not a date/.test(c.summary))) ok("fsd tesla europe company claim");
 else bad("fsd tesla europe company claim", "missing");
+
+const dispatchRows = bundle.changes.filter((c) => c.field === "dispatch");
+if (dispatchRows.length === 2 && dispatchRows.every((c) => c.tracker === "dispatch" && c.href.indexOf("/dispatch/") === 0)) ok("dispatch tracker not promises");
+else bad("dispatch tracker not promises", JSON.stringify(dispatchRows.map((c) => c.tracker)));
+const dispHtml = I.changesHtml(dispatchRows);
+if (/Dispatch/.test(dispHtml) && !/Promise Tracker/.test(dispHtml)) ok("dispatch html label");
+else bad("dispatch html label", dispHtml.slice(0, 220));
+if (dispatchRows.some((c) => /compute/.test(c.title) && c.topic === "spacex-launches")) ok("dispatch spacex topic");
+else bad("dispatch spacex topic", JSON.stringify(dispatchRows[0]));
+
+const freshTable = I.freshnessTableHtml(bundle.freshness);
+if (/Last checked/.test(freshTable) && /Last verified/.test(freshTable) && /not live telemetry/.test(freshTable) && /Starship Mission Control/.test(freshTable)) ok("freshness table");
+else bad("freshness table", freshTable.slice(0, 240));
 
 if (fail.length) {
   console.log("\nFAILED", fail.length);

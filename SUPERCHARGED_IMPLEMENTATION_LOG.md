@@ -126,3 +126,21 @@ PR #137 squash-merged only batches 1–2. Batches 3–4 never landed. Reimplemen
 - Q4 2025 YoY
 - VIN eligibility
 - Live notifications / Postgres / Fleet / NHTSA ingest / faster cron
+
+## Batch 7 — Hubs, Dispatch labels, search, light desks
+
+Branch: `cursor/intel-hubs-5e96`  
+Date: 19 Oct 2026
+
+After #139 merged:
+
+1. **Dispatch what-changed labels.** Article rows use tracker `dispatch`. Homepage and Daily no longer stamp SpaceX compute / share-a-kid stories as Promise Tracker.
+2. **SpaceX hub intel-desk.** Starship, launch calendar, and Starlink freshness bars after the hero. Same compiled-not-telemetry copy as Tesla.
+3. **Search.** Overlay browse includes Promise tracker, Can I see it?, FSD global, TCMV. `pages.json` adds `/optimus.html#demos` and `/updates.html#sample-waves`.
+4. **Light theme + cross-links.** YoY, My Tesla wave titles, Starship source lines. Promise “How we judge” points at the demonstration archive. Roadster cite notes seated ≠ driving. `/intel-health.html` lists per-tracker last checked / last verified.
+
+### Not claimed
+
+- Homepage fifth Production tile (4-column tracker row stays)
+- We Robot 2024 / Q4 2025 YoY
+- Live notifications / Postgres / Fleet / NHTSA ingest / faster cron

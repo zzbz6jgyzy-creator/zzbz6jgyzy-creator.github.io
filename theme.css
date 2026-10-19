@@ -542,6 +542,14 @@ html[data-theme="light"] .sd-disp-more {
   border-color: var(--line);
 }
 html[data-theme="light"] .mt-notify label { color: var(--ink); }
+html[data-theme="light"] .mt-list b,
+html[data-theme="light"] .mt-tile b,
+html[data-theme="light"] .mt-hint b { color: var(--ink); }
+html[data-theme="light"] .mt-list p,
+html[data-theme="light"] .mt-lede,
+html[data-theme="light"] .mt-hint { color: var(--ink-soft); }
+html[data-theme="light"] .starship-change-src,
+html[data-theme="light"] .sourced-change-src { color: var(--mute); }
 
 /* Leftover wells: major countdown, review gear band, older Dispatch boxes/tables */
 html[data-theme="light"] .mj {

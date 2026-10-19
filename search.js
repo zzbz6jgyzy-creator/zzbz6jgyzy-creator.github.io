@@ -2,11 +2,11 @@
    Overlay (⌘K / nav Search) on pages that load this file; full page on /search.html. */
 (() => {
   if (window.__sdFind) return;
-  const V = "202610192200";
+  const V = "202610192300";
   const PAGE = /\/search\.html$/.test(location.pathname);
   const LIMIT = PAGE ? 60 : 24;
   const LATEST = PAGE ? 12 : 8;
-  const OVERLAY_PAGES = ["/", "/news.html", "/dispatch.html", "/tesla.html", "/optimus.html", "/production.html", "/autonomy.html", "/my-tesla.html", "/daily.html", "/roadster.html", "/spacex.html", "/starship.html", "/calendar.html", "/starlink.html", "/fsd-europe.html", "/updates.html", "/cybercab.html", "/reviews/index.html"];
+  const OVERLAY_PAGES = ["/", "/news.html", "/dispatch.html", "/tesla.html", "/optimus.html", "/production.html", "/autonomy.html", "/my-tesla.html", "/daily.html", "/roadster.html", "/spacex.html", "/starship.html", "/calendar.html", "/starlink.html", "/fsd-europe.html", "/updates.html", "/cybercab.html", "/promise-tracker.html", "/see-the-launch.html", "/fsd.html", "/tcmv.html", "/reviews/index.html"];
   const MAG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
 
   if (!document.querySelector('link[href^="/search.css"]')) {
@@ -50,6 +50,7 @@
     tesla: ["tesla"],
     spacex: ["spacex"],
     calendar: ["calendar", "launch"],
+    promise: ["promise", "deadline", "tracker"],
   };
   function expandToks(toks) {
     const out = new Set(toks);
@@ -103,6 +104,10 @@
     if ((toks.includes("production") || toks.includes("deliveries")) && /production\.html/.test(item.url || "")) s += 40;
     if ((toks.includes("autonomy") || (toks.includes("robotaxi") && toks.includes("evidence"))) && /autonomy\.html/.test(item.url || "")) s += 36;
     if (toks.includes("calendar") && /calendar\.html/.test(item.url || "")) s += 30;
+    if ((toks.includes("promise") || toks.includes("promises") || toks.includes("deadlines")) && /promise-tracker\.html/.test(item.url || "")) s += 40;
+    if (((toks.includes("see") && toks.includes("launch")) || toks.includes("visible")) && /see-the-launch\.html/.test(item.url || "")) s += 40;
+    if (toks.includes("sample") && toks.includes("waves") && /updates\.html/.test(item.url || "")) s += 36;
+    if (toks.includes("demos") && /\/optimus\.html/.test(item.url || "")) s += 20;
     s += recencyBoost(item);
     return s;
   }
