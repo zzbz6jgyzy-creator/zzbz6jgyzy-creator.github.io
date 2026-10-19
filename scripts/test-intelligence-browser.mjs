@@ -62,6 +62,50 @@ await page.locator("[data-intel-waves]").waitFor({ timeout: 8000 });
 const waves = await page.locator("[data-intel-waves]").innerText();
 if (/Teslascope|sample|first appeared|not a rollout/i.test(waves + sw)) ok("software sample waves");
 else bad("software sample waves", waves.slice(0, 200));
+await page.locator("[data-intel-wave-country] option[value='US']").waitFor({ state: "attached", timeout: 8000 });
+await page.selectOption("[data-intel-wave-country]", "US");
+const usWaves = await page.locator("[data-intel-waves]").innerText();
+if (/particular VIN|this car is eligible/i.test(usWaves) && !/you are eligible|this VIN is eligible|your car is eligible/i.test(usWaves)) ok("software country waves");
+else bad("software country waves", usWaves.slice(0, 280));
+await page.locator("#sample-waves").screenshot({ path: SHOT + "/intel-updates-country-waves.png" });
+
+await page.goto(BASE + "/fsd-europe.html#changes", { waitUntil: "networkidle" });
+await page.locator("#f2-log").waitFor({ timeout: 8000 });
+const fsdLog = await page.locator("#f2-log").innerText();
+if (/Slovakia/.test(fsdLog) && /Recognition is not a customer rollout/.test(fsdLog) && /Company claim/.test(fsdLog) && /Soon/.test(fsdLog)) ok("fsd slovakia honesty");
+else bad("fsd slovakia honesty", fsdLog.slice(0, 400));
+await page.locator("#f2-log").evaluate((el) => el.scrollIntoView({ block: "start" }));
+await page.screenshot({ path: SHOT + "/intel-fsd-changes.png" });
+
+await page.goto(BASE + "/cybercab.html#cc-changes", { waitUntil: "networkidle" });
+await page.locator("[data-cc-changes] .sourced-change").first().waitFor({ timeout: 8000 });
+const cabText = await page.locator("[data-cc-changes]").innerText();
+if (/126/.test(cabText) && /169/.test(cabText) && /319/.test(cabText) && /349/.test(cabText) && /Unchanged/.test(cabText) && /not a car in service/.test(cabText)) ok("cybercab sourced jumps");
+else bad("cybercab sourced jumps", cabText.slice(0, 400));
+await page.locator("[data-cc-changes]").evaluate((el) => el.scrollIntoView({ block: "start" }));
+await page.screenshot({ path: SHOT + "/intel-cybercab-changes.png" });
+
+await page.goto(BASE + "/see-the-launch.html", { waitUntil: "domcontentloaded" });
+await page.locator("[data-intel-clocks] table").waitFor({ timeout: 8000 });
+const seeClocks = await page.locator("[data-intel-clocks]").innerText();
+if (/crs35-docking/.test(seeClocks) && /ussf-481/.test(seeClocks) && /events.json/.test(seeClocks) && /Live overlay/.test(seeClocks)) ok("see-the-launch kept clocks");
+else bad("see-the-launch kept clocks", seeClocks.slice(0, 400));
+await page.locator("[data-intel-clocks]").evaluate((el) => el.scrollIntoView({ block: "start" }));
+await page.screenshot({ path: SHOT + "/intel-see-clocks.png" });
+
+await page.goto(BASE + "/calendar.html", { waitUntil: "networkidle" });
+await page.locator("[data-intel-clocks] table").waitFor({ timeout: 8000 });
+const calClocks = await page.locator("[data-intel-clocks]").innerText();
+if (/crs35-docking/.test(calClocks) && /ussf-481/.test(calClocks) && calClocks === seeClocks) ok("calendar clocks match see-the-launch");
+else bad("calendar clocks match see-the-launch", calClocks.slice(0, 280));
+
+await page.goto(BASE + "/starlink.html#counts-changed", { waitUntil: "domcontentloaded" });
+await page.locator("[data-sl-changes] .sourced-change").first().waitFor({ timeout: 8000 });
+const slText = await page.locator("[data-sl-changes]").innerText();
+if (/11,156/.test(slText) && /11,154/.test(slText) && /not a live operator feed/.test(slText) && /not interpolated/i.test(slText)) ok("starlink sourced diffs");
+else bad("starlink sourced diffs", slText.slice(0, 400));
+await page.locator("[data-sl-changes]").evaluate((el) => el.scrollIntoView({ block: "start" }));
+await page.screenshot({ path: SHOT + "/intel-starlink-changes.png" });
 
 await page.goto(BASE + "/autonomy.html", { waitUntil: "networkidle" });
 await page.locator("[data-intel-autonomy] table").first().waitFor({ timeout: 8000 });

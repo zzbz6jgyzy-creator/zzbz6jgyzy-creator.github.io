@@ -95,6 +95,8 @@
 .f2-log li.t-tcmv::before { background: #e0b04a; }
 .f2-log time { font: 500 0.8rem var(--font-mono); color: var(--ink-soft); padding-top: 0.15rem; }
 .f2-log p { margin: 0.15rem 0; }
+.f2-honest { font-size: 0.82rem; color: var(--mute); max-width: 62ch; }
+.f2-card .f2-honest { margin: 0.35rem 0 0; }
 .f2-tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mute); }
 .f2-log a { font-size: 0.8rem; }
 .f2-more { margin-top: 0.6rem; }

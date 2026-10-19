@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-19T14:41:39.528Z",
+  "generatedAt": "2026-10-19T14:51:42.979Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -493,11 +493,11 @@
       "previous": "",
       "next": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given.",
       "at": "2026-10-16T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "company_claim",
       "source": "https://x.com/teslaeurope/status/2111095942015566145",
       "sourceUrl": "https://x.com/teslaeurope/status/2111095942015566145",
       "href": "/fsd-europe.html",
-      "summary": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given.",
+      "summary": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given. Company claim. “Soon” is not a date, and recognition is not a live customer rollout.",
       "title": "SK · statement",
       "id": "logged|fsd:country:SK|2026-10-16T00:00:00.000Z|Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given."
     },
@@ -514,7 +514,7 @@
       "source": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou",
       "sourceUrl": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou",
       "href": "/fsd-europe.html",
-      "summary": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country.",
+      "summary": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country. Recognition is not a customer rollout. Owners have not been shown receiving the software.",
       "title": "SK · approval",
       "id": "logged|fsd:country:SK|2026-10-16T00:00:00.000Z|Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country."
     },
@@ -534,6 +534,23 @@
       "summary": "2026.38.5.1 moved from 153 to 230 cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-15T23:44:21.000Z|230"
+    },
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11156",
+      "next": "11154",
+      "at": "2026-10-15T19:00:26.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html#counts-changed",
+      "summary": "McDowell snapshot: inOrbit 11,156 → 11,154; working 11,142 → 11,140. This is a published table snapshot, not a live operator feed.",
+      "title": "Starlink McDowell snapshot",
+      "id": "changed|starlink:in-orbit|2026-10-15T19:00:26.000Z|11154"
     },
     {
       "type": "changed",
@@ -581,8 +598,8 @@
       "evidence": "independently_corroborated",
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
-      "href": "/cybercab.html",
-      "summary": "Texas Cybercab registrations moved from 319 to 349.",
+      "href": "/cybercab.html#cc-changes",
+      "summary": "Texas Cybercab registrations moved from 319 to 349. A registration is not a car in service.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-15T00:00:00.000Z|349"
     },
@@ -935,8 +952,8 @@
       "evidence": "independently_corroborated",
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://notateslakiller.com/en/tesla-cybercab-record-150-registrations-texas-319-nhtsa/",
-      "href": "/cybercab.html",
-      "summary": "Texas Cybercab registrations moved from 169 to 319.",
+      "href": "/cybercab.html#cc-changes",
+      "summary": "Texas Cybercab registrations moved from 169 to 319. A registration is not a car in service.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-08T00:00:00.000Z|319"
     },
@@ -1003,8 +1020,8 @@
       "evidence": "independently_corroborated",
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://teslant.com/en/news/tesla-cybercab-300-austin-dallas-next-2026-10",
-      "href": "/cybercab.html",
-      "summary": "Texas Cybercab registrations moved from 126 to 169.",
+      "href": "/cybercab.html#cc-changes",
+      "summary": "Texas Cybercab registrations moved from 126 to 169. A registration is not a car in service.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-03T00:00:00.000Z|169"
     },
@@ -1406,14 +1423,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Compiled desk file. FAA NET is not a SpaceX clock."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-18T07:50:00.000Z",
       "note": "Canonical dates in data/events.json. Launch Library 2 is a live overlay."
     },
@@ -1427,14 +1444,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-18T00:00:00.000Z",
       "note": "Manual editorial file with ministry sources."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-19T06:00:37.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1448,35 +1465,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Every quote needs a source that was opened."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Tesla IR production and delivery tables only."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Demonstration ≠ autonomy. Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-19T14:41:39.528Z",
+      "lastChecked": "2026-10-19T14:51:42.979Z",
       "lastVerified": "2026-10-19T14:03:39.000Z",
       "note": "Vehicle prefs stay in this browser."
     }
@@ -1485,75 +1502,81 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.374Z",
-      "finished": "2026-10-19T14:41:39.522Z"
+      "started": "2026-10-19T14:51:42.965Z",
+      "finished": "2026-10-19T14:51:42.966Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.522Z",
-      "finished": "2026-10-19T14:41:39.522Z"
+      "started": "2026-10-19T14:51:42.966Z",
+      "finished": "2026-10-19T14:51:42.967Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.522Z",
-      "finished": "2026-10-19T14:41:39.522Z"
+      "started": "2026-10-19T14:51:42.967Z",
+      "finished": "2026-10-19T14:51:42.967Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.522Z",
-      "finished": "2026-10-19T14:41:39.524Z"
+      "started": "2026-10-19T14:51:42.967Z",
+      "finished": "2026-10-19T14:51:42.971Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.524Z",
-      "finished": "2026-10-19T14:41:39.526Z"
+      "started": "2026-10-19T14:51:42.971Z",
+      "finished": "2026-10-19T14:51:42.974Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.526Z",
-      "finished": "2026-10-19T14:41:39.526Z"
+      "started": "2026-10-19T14:51:42.974Z",
+      "finished": "2026-10-19T14:51:42.975Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.526Z",
-      "finished": "2026-10-19T14:41:39.527Z"
+      "started": "2026-10-19T14:51:42.975Z",
+      "finished": "2026-10-19T14:51:42.977Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.527Z",
-      "finished": "2026-10-19T14:41:39.527Z"
+      "started": "2026-10-19T14:51:42.977Z",
+      "finished": "2026-10-19T14:51:42.977Z"
+    },
+    {
+      "name": "starlink-history",
+      "status": "ok",
+      "started": "2026-10-19T14:51:42.977Z",
+      "finished": "2026-10-19T14:51:42.977Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.527Z",
-      "finished": "2026-10-19T14:41:39.528Z"
+      "started": "2026-10-19T14:51:42.977Z",
+      "finished": "2026-10-19T14:51:42.979Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.528Z",
-      "finished": "2026-10-19T14:41:39.528Z"
+      "started": "2026-10-19T14:51:42.979Z",
+      "finished": "2026-10-19T14:51:42.979Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-19T14:41:39.528Z",
-      "finished": "2026-10-19T14:41:39.528Z"
+      "started": "2026-10-19T14:51:42.979Z",
+      "finished": "2026-10-19T14:51:42.979Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-19T14:41:39.528Z",
+    "generatedAt": "2026-10-19T14:51:42.979Z",
     "factCount": 16,
-    "changeCount": 67,
+    "changeCount": 68,
     "conflictCount": 2,
     "issues": [
       {

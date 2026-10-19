@@ -45,6 +45,24 @@
     box.innerHTML = I.changesHtml(rows);
   };
 
+  const cabBox = $("[data-cc-changes]");
+  if (cabBox) {
+    fetch("/data/robotaxi-tx.json", { cache: "no-cache" }).then((r) => r.json()).then((tx) => {
+      cabBox.innerHTML = I.cybercabChangesHtml(tx.history);
+    }).catch(() => {
+      cabBox.innerHTML = '<p class="intel-empty">Texas Cybercab history could not load.</p>';
+    });
+  }
+
+  const slBox = $("[data-sl-changes]");
+  if (slBox) {
+    fetch("/data/starlink-history.json", { cache: "no-cache" }).then((r) => r.json()).then((h) => {
+      slBox.innerHTML = I.starlinkChangesHtml(h);
+    }).catch(() => {
+      slBox.innerHTML = '<p class="intel-empty">Committed McDowell snapshots could not load.</p>';
+    });
+  }
+
   load.then((bundle) => {
     if (!bundle) return;
     const topics = I.followRead(localStorage);
@@ -79,8 +97,13 @@
         <div class="intel-card"><strong>${h.conflictCount}</strong><span>Conflicts kept, not overwritten</span></div>
       </div>
       <p class="intel-note">Generated ${I.esc(h.generatedAt)}. Notifications are not sent from this page.</p>
-      <ul class="intel-list">${(h.issues || []).map((i) => `<li class="intel-item"><strong>${I.esc(i.level)}</strong><span class="intel-s">${I.esc(i.text)}</span></li>`).join("") || '<li class="intel-empty">No open engine errors.</li>'}</ul>`;
+      <ul class="intel-list">${(h.issues || []).map((i) => `<li class="intel-item"><strong>${I.esc(i.level)}</strong><span class="intel-s">${I.esc(i.text)}</span></li>`).join("") || '<li class="intel-empty">No open engine errors.</li>'}</ul>
+      <h2>Kept launch clocks</h2>
+      ${I.conflictsHtml(bundle.conflicts)}`;
     }
+
+    const clocks = $("[data-intel-clocks]");
+    if (clocks) clocks.innerHTML = I.conflictsHtml(bundle.conflicts);
 
     const promisesBox = $("[data-intel-promises]");
     if (promisesBox) {
@@ -112,7 +135,35 @@
     }
 
     const wavesBox = $("[data-intel-waves]");
+    const waveSelect = $("[data-intel-wave-country]");
+    const paintWaves = (history, cc) => {
+      if (!wavesBox) return;
+      if (!cc) {
+        wavesBox.innerHTML = I.wavesHtml(bundle.changes);
+        return;
+      }
+      wavesBox.innerHTML = I.countryWavesHtml(I.softwareWavesForCountry(history, cc), cc);
+    };
     if (wavesBox) wavesBox.innerHTML = I.wavesHtml(bundle.changes);
+    if (waveSelect) {
+      fetch("/data/updates-history.json", { cache: "no-cache" }).then((r) => r.json()).then((history) => {
+        const last = ((history && history.snapshots) || []).slice().sort((a, b) => String(a.t).localeCompare(String(b.t))).pop();
+        const counts = {};
+        Object.keys((last && last.v) || {}).forEach((id) => {
+          const row = last.v[id];
+          if (!row || !Array.isArray(row) || !row[1]) return;
+          Object.keys(row[1]).forEach((cc) => { counts[cc] = (counts[cc] || 0) + (Number(row[1][cc]) || 0); });
+        });
+        const codes = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+        const cur = waveSelect.value;
+        waveSelect.innerHTML = '<option value="">All countries in the sample</option>' + codes.map((cc) =>
+          `<option value="${I.esc(cc)}">${I.esc((I.COUNTRY_NAMES && I.COUNTRY_NAMES[cc]) || cc)} (${counts[cc]})</option>`
+        ).join("");
+        if (cur) waveSelect.value = cur;
+        paintWaves(history, waveSelect.value);
+        waveSelect.addEventListener("change", () => paintWaves(history, waveSelect.value));
+      }).catch(() => {});
+    }
 
     const dailyBox = $("[data-intel-daily]");
     if (dailyBox) {

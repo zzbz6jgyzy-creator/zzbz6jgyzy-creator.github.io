@@ -51,14 +51,14 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="stylesheet" href="/styles.css?v=202610190500" />
-    <link rel="stylesheet" href="/starlink-tracker.css?v=202610180010" />
+    <link rel="stylesheet" href="/styles.css?v=202610191900" />
+    <link rel="stylesheet" href="/starlink-tracker.css?v=202610191900" />
     <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <script>
       window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
     </script>
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
-    <link rel="stylesheet" href="/intel.css?v=202610191430" />
+    <link rel="stylesheet" href="/intel.css?v=202610191900" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -200,6 +200,14 @@
               <span>already down</span>
             </div>
           </div>
+        </section>
+
+        <section class="section" id="counts-changed" aria-labelledby="sl-chg-h">
+          <div class="section-head">
+            <h2 id="sl-chg-h">What changed</h2>
+            <p>Committed Jonathan McDowell snapshots only. Not a live operator feed. Days between snapshots are not interpolated.</p>
+          </div>
+          <div data-sl-changes><p class="sl-fine">Loading sourced McDowell diffs&hellip;</p></div>
         </section>
 
         <section class="section sl-id" id="identify" aria-labelledby="sl-id-h">
@@ -355,8 +363,8 @@
     <script src="/starlink-globe.js?v=202610152059"></script>
     <script src="/countup.js" defer></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
-    <script src="/intel-core.js?v=202610191430" defer></script>
-    <script src="/intel.js?v=202610191430" defer></script>
+    <script src="/intel-core.js?v=202610191900" defer></script>
+    <script src="/intel.js?v=202610191900" defer></script>
     <script src="/nav-pill.js?v=202610190630"></script>
   </body>
 </html>

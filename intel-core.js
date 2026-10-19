@@ -374,6 +374,129 @@
     return out.sort((a, b) => String(b.at).localeCompare(String(a.at))).slice(0, 20);
   }
 
+  function snapCountryCount(row, cc) {
+    if (!row || !Array.isArray(row) || !row[1] || typeof row[1] !== "object") return 0;
+    return Number(row[1][cc]) || 0;
+  }
+
+  const COUNTRY_NAMES = {
+    AE: "United Arab Emirates", AT: "Austria", AU: "Australia", BE: "Belgium", BG: "Bulgaria",
+    CA: "Canada", CH: "Switzerland", CO: "Colombia", CZ: "Czechia", DE: "Germany", DK: "Denmark",
+    EE: "Estonia", ES: "Spain", FR: "France", GB: "United Kingdom", GR: "Greece", HK: "Hong Kong",
+    HU: "Hungary", IE: "Ireland", IL: "Israel", IS: "Iceland", IT: "Italy", JP: "Japan", KR: "South Korea",
+    LT: "Lithuania", MA: "Morocco", MX: "Mexico", MY: "Malaysia", NL: "Netherlands", NO: "Norway",
+    NZ: "New Zealand", PH: "Philippines", PL: "Poland", PR: "Puerto Rico", PT: "Portugal", QA: "Qatar",
+    RO: "Romania", SE: "Sweden", SG: "Singapore", SI: "Slovenia", SK: "Slovakia", TH: "Thailand",
+    TR: "Turkey", TW: "Taiwan", UA: "Ukraine", US: "United States",
+  };
+
+  function softwareWavesForCountry(history, countryCode) {
+    const cc = String(countryCode || "").toUpperCase();
+    if (!cc) return [];
+    const snaps = ((history && history.snapshots) || []).slice().sort((a, b) => String(a.t).localeCompare(String(b.t)));
+    if (!snaps.length) return [];
+    const firstSeen = {};
+    const lastCount = {};
+    const out = [];
+    snaps.forEach((s) => {
+      Object.keys(s.v || {}).forEach((id) => {
+        const n = snapCountryCount(s.v[id], cc);
+        if (n <= 0) return;
+        if (!firstSeen[id]) {
+          firstSeen[id] = { t: s.t, n };
+          lastCount[id] = n;
+          out.push({
+            type: "appeared",
+            version: id,
+            country: cc,
+            at: s.t,
+            previous: "0",
+            next: String(n),
+            summary: id + " first appeared in the Teslascope sample for " + cc + " with " + n + (n === 1 ? " car" : " cars") + ". A sample sighting is not a rollout and not an offer to a particular VIN.",
+          });
+          return;
+        }
+        const prev = lastCount[id] || 0;
+        if (n - prev >= 10) {
+          out.push({
+            type: "changed",
+            version: id,
+            country: cc,
+            at: s.t,
+            previous: String(prev),
+            next: String(n),
+            summary: id + " moved from " + prev + " to " + n + " cars in the Teslascope sample for " + cc + ". That is a sample-count change, not Tesla confirming this car is eligible.",
+          });
+        }
+        lastCount[id] = n;
+      });
+    });
+    out.sort((a, b) => String(b.at).localeCompare(String(a.at)));
+    const seenJump = {};
+    const deduped = [];
+    out.forEach((w) => {
+      if (w.type === "appeared") {
+        deduped.push(w);
+        return;
+      }
+      if (seenJump[w.version]) return;
+      seenJump[w.version] = true;
+      deduped.push(w);
+    });
+    return deduped.slice(0, 12);
+  }
+
+  function cybercabJumps(history) {
+    const hist = (history || []).slice().sort((a, b) => String(a.date).localeCompare(String(b.date)));
+    const jumps = [];
+    for (let i = 1; i < hist.length; i++) {
+      if (hist[i].cybercab === hist[i - 1].cybercab) continue;
+      jumps.push({
+        date: hist[i].date,
+        previous: hist[i - 1].cybercab,
+        next: hist[i].cybercab,
+        src: hist[i].src || "",
+        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registration is not a car in service.",
+      });
+    }
+    const last = hist[hist.length - 1] || null;
+    const lastJump = jumps.length ? jumps[jumps.length - 1] : null;
+    let unchanged = null;
+    if (last && lastJump && last.date !== lastJump.date && last.cybercab === lastJump.next) {
+      unchanged = {
+        date: last.date,
+        count: last.cybercab,
+        since: lastJump.date,
+        src: last.src || "",
+        summary: "Still " + last.cybercab + " registered on " + last.date + ". Unchanged days are not a new jump. A registration is not a car in service.",
+      };
+    }
+    return { jumps, unchanged, last };
+  }
+
+  function starlinkDiffs(history) {
+    const rows = ((history && history.snapshots) || []).slice().sort((a, b) => String(a.updated || a.at || "").localeCompare(String(b.updated || b.at || "")));
+    const out = [];
+    for (let i = 1; i < rows.length; i++) {
+      const a = rows[i - 1];
+      const b = rows[i];
+      const fields = ["inOrbit", "working", "operational", "launched"];
+      const parts = [];
+      fields.forEach((f) => {
+        if (a[f] !== b[f]) parts.push(f + " " + Number(a[f]).toLocaleString("en-US") + " → " + Number(b[f]).toLocaleString("en-US"));
+      });
+      if (!parts.length) continue;
+      out.push({
+        at: b.updated || b.at,
+        previous: String(a.inOrbit),
+        next: String(b.inOrbit),
+        summary: "McDowell snapshot: " + parts.join("; ") + ". This is a published table snapshot, not a live operator feed.",
+        source: b.source || (history && history.source) || "https://planet4589.org/space/con/star/stats.html",
+      });
+    }
+    return out;
+  }
+
   function autonomyLayer(kind, flags) {
     const f = flags || {};
     if (kind === "fsd-supervised") {
@@ -461,11 +584,11 @@
         previous: "",
         next: row.text,
         at: iso(row.date) || row.date,
-        evidence: row.type === "approval" ? "officially_confirmed" : "independently_corroborated",
+        evidence: row.evidence || (row.type === "approval" ? "officially_confirmed" : "independently_corroborated"),
         source: row.source,
         sourceUrl: row.source,
         href: "/fsd-europe.html",
-        summary: row.text,
+        summary: row.text + (row.honesty ? " " + row.honesty : ""),
         title: row.code ? (row.code + " · " + row.type) : row.type,
       };
       c.id = changeId(c);
@@ -507,13 +630,34 @@
         evidence: "independently_corroborated",
         source: "Texas DMV list via fsddb.com",
         sourceUrl: hist[i].src || "",
-        href: "/cybercab.html",
-        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ".",
+        href: "/cybercab.html#cc-changes",
+        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registration is not a car in service.",
         title: "Texas Cybercab count",
       };
       c.id = changeId(c);
       if (!validateChange(c).length) out.push(c);
     }
+
+    starlinkDiffs(src.starlinkHistory).forEach((w) => {
+      const c = {
+        type: "changed",
+        factId: factId("starlink", "in-orbit"),
+        topic: "starlink",
+        tracker: "starlink",
+        field: "in-orbit",
+        previous: w.previous,
+        next: w.next,
+        at: iso(w.at) || w.at,
+        evidence: "independently_corroborated",
+        source: "Jonathan McDowell Starlink statistics",
+        sourceUrl: w.source || "https://planet4589.org/space/con/star/stats.html",
+        href: "/starlink.html#counts-changed",
+        summary: w.summary,
+        title: "Starlink McDowell snapshot",
+      };
+      c.id = changeId(c);
+      if (!validateChange(c).length) out.push(c);
+    });
 
     softwareWaves(src.updatesHistory).forEach((w) => {
       const c = {
@@ -897,6 +1041,150 @@
     return changesHtml(rows.slice(0, 12));
   }
 
+  function countryWavesHtml(rows, cc) {
+    const code = String(cc || "").toUpperCase();
+    const name = (COUNTRY_NAMES[code] || code);
+    if (!rows || !rows.length) {
+      return '<p class="intel-empty">No Teslascope sample first-seen rows for ' + esc(name) + " in this window. A missing country in the sample is not Tesla saying the build is unavailable.</p>";
+    }
+    return '<p class="intel-note">Teslascope sample for ' + esc(name) + " (" + esc(code) + ") only. A sample sighting is not a rollout and not an offer to a particular VIN.</p>" +
+      changesHtml(rows.map((w) => ({
+        topic: "tesla-software",
+        tracker: "software",
+        title: w.version,
+        summary: w.summary,
+        evidence: "reported_unconfirmed",
+        at: w.at,
+        href: "/updates.html#sample-waves",
+        field: "wave:" + w.version,
+      })));
+  }
+
+  function fmtClock(isoStr) {
+    const t = Date.parse(isoStr);
+    if (!Number.isFinite(t)) return isoStr || "—";
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "UTC",
+      hourCycle: "h23",
+    }).format(new Date(t)) + " UTC";
+  }
+
+  function conflictsHtml(conflicts) {
+    const rows = conflicts || [];
+    if (!rows.length) {
+      return '<p class="intel-empty">No kept-clock disagreements in the last bundle.</p>';
+    }
+    const cell = (row, source) => {
+      const hit = (row.values || []).find((v) => v.source === source);
+      return fmtClock((hit && hit.value) || (source === "data/events.json" ? row.kept : ""));
+    };
+    return `<div class="intel-conflicts"><p class="intel-note">Canonical start stays in data/events.json. Live overlay times are shown, not used to rewind a flown or later official clock.</p>
+      <div class="intel-compare"><table>
+        <thead><tr><th>Entity</th><th>Kept (events.json)</th><th>Live overlay</th><th>Resolution</th></tr></thead>
+        <tbody>${rows.map((c) => `<tr>
+          <td><b>${esc(c.entity)}</b></td>
+          <td>${esc(cell(c, "data/events.json"))}</td>
+          <td>${esc(cell(c, "live-data.json"))}</td>
+          <td>${esc(c.resolution || "keep_canonical_events_json")}. ${esc(c.note || "")}</td>
+        </tr>`).join("")}</tbody>
+      </table></div></div>`;
+  }
+
+  function fmtDayLabel(d) {
+    const raw = String(d || "");
+    const t = Date.parse(/T/.test(raw) ? raw : raw.length === 10 ? raw + "T12:00:00Z" : raw);
+    if (!Number.isFinite(t)) return raw;
+    return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(t));
+  }
+
+  function sourcedChangeHtml(row) {
+    const src = row.src
+      ? `<p class="sourced-change-src">Source: <a href="${esc(row.src)}" rel="noopener">${esc(row.srcLabel || "Opened source")}</a>. ${esc(row.note || "")}</p>`
+      : (row.note ? `<p class="sourced-change-src">${esc(row.note)}</p>` : "");
+    return `<article class="sourced-change">
+      <div class="sourced-change-head">
+        <time datetime="${esc(row.datetime || row.date || "")}">${esc(row.dateLabel || fmtDayLabel(row.date) || "")}</time>
+        <span class="fsd-status ${esc(row.statusClass || "fsd-status-watch")}">${esc(row.status || "")}</span>
+      </div>
+      <p>${esc(row.summary)}</p>
+      ${src}
+    </article>`;
+  }
+
+  function cybercabChangesHtml(history) {
+    const { jumps, unchanged } = cybercabJumps(history);
+    if (!jumps.length && !unchanged) {
+      return '<p class="intel-empty">No sourced Cybercab registration jumps in the stored Texas history.</p>';
+    }
+    const rows = [];
+    if (unchanged) {
+      rows.push(sourcedChangeHtml({
+        date: unchanged.date,
+        status: "Unchanged",
+        statusClass: "fsd-status-watch",
+        summary: unchanged.summary,
+        src: unchanged.src,
+        srcLabel: "Texas DMV list",
+        note: "Not live fleet telemetry.",
+      }));
+    }
+    jumps.slice().reverse().forEach((j) => {
+      rows.push(sourcedChangeHtml({
+        date: j.date,
+        status: "Count jump",
+        statusClass: "fsd-status-done",
+        summary: j.summary,
+        src: j.src,
+        srcLabel: "Texas DMV list",
+        note: "Not live fleet telemetry.",
+      }));
+    });
+    return `<div class="sourced-changes">${rows.join("")}</div>`;
+  }
+
+  function starlinkChangesHtml(history) {
+    const snaps = ((history && history.snapshots) || []).slice().sort((a, b) => String(a.updated || "").localeCompare(String(b.updated || "")));
+    const diffs = starlinkDiffs(history);
+    if (!snaps.length) {
+      return '<p class="intel-empty">No committed McDowell snapshots on this site yet. Current as-of counts stay on the tracker; we do not invent the days between.</p>';
+    }
+    const rows = [];
+    const last = snaps[snaps.length - 1];
+    const src = (history && history.source) || last.source || "https://planet4589.org/space/con/star/stats.html";
+    rows.push(sourcedChangeHtml({
+      date: last.updated,
+      datetime: last.updated,
+      dateLabel: fmtClock(last.updated),
+      status: diffs.length ? "Latest snapshot" : "As-of only",
+      statusClass: "fsd-status-watch",
+      summary: diffs.length
+        ? ("Latest McDowell snapshot: " + Number(last.inOrbit).toLocaleString("en-US") + " in orbit, " + Number(last.working).toLocaleString("en-US") + " working. Only committed snapshots are listed. Days between them are not interpolated.")
+        : ("As of " + fmtClock(last.updated) + ": " + Number(last.inOrbit).toLocaleString("en-US") + " in orbit. No earlier committed McDowell snapshot on this site to diff against."),
+      src,
+      srcLabel: "Jonathan McDowell",
+      note: "Published table snapshot, not a live operator feed.",
+    }));
+    diffs.slice().reverse().forEach((d) => {
+      rows.push(sourcedChangeHtml({
+        date: d.at,
+        datetime: d.at,
+        dateLabel: fmtClock(d.at),
+        status: "Count change",
+        statusClass: "fsd-status-done",
+        summary: d.summary,
+        src: d.source || src,
+        srcLabel: "Jonathan McDowell",
+        note: "Not live telemetry.",
+      }));
+    });
+    return `<div class="sourced-changes">${rows.join("")}</div>`;
+  }
+
   function build(src, prevSnapshot, now) {
     const generatedAt = iso(now || new Date());
     const facts = collectFacts(src);
@@ -940,6 +1228,11 @@
     snapCount,
     firstSeenVersion,
     softwareWaves,
+    snapCountryCount,
+    COUNTRY_NAMES,
+    softwareWavesForCountry,
+    cybercabJumps,
+    starlinkDiffs,
     autonomyLayer,
     collectFacts,
     collectHistorical,
@@ -959,6 +1252,12 @@
     digestPreview,
     digestHtml,
     wavesHtml,
+    countryWavesHtml,
+    fmtClock,
+    conflictsHtml,
+    sourcedChangeHtml,
+    cybercabChangesHtml,
+    starlinkChangesHtml,
     homeSection,
     build,
   };

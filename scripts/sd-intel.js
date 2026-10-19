@@ -71,6 +71,7 @@ function main() {
     promises: job("promises", () => j("data/promises.json")),
     robotaxiTx: job("robotaxi-tx", () => j("data/robotaxi-tx.json")),
     starlinkLive: job("starlink", () => loadStarlink()),
+    starlinkHistory: job("starlink-history", () => j("data/starlink-history.json")),
     starship: job("starship", () => loadJs("starship-data.js", "STARSHIP")),
     articles: job("articles", () => j("data/articles.json")),
     production: job("production", () => j("data/production.json")),

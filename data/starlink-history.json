@@ -1,0 +1,22 @@
+{
+  "source": "https://planet4589.org/space/con/star/stats.html",
+  "note": "Committed Jonathan McDowell snapshots taken from starlink-live.js git history. Not a live operator feed. Days between snapshots are not interpolated.",
+  "snapshots": [
+    {
+      "updated": "2026-10-13T09:30:20Z",
+      "inOrbit": 11156,
+      "working": 11142,
+      "operational": 9726,
+      "launched": 13015,
+      "commit": "bfbcc3628e3f"
+    },
+    {
+      "updated": "2026-10-15T19:00:26Z",
+      "inOrbit": 11154,
+      "working": 11140,
+      "operational": 9726,
+      "launched": 13015,
+      "commit": "bebfeb88bd2e"
+    }
+  ]
+}

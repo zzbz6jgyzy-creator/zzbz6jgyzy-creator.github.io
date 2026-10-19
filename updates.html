@@ -54,13 +54,13 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="stylesheet" href="/styles.css?v=202610190500" />
-    <link rel="stylesheet" href="/updates-v3.css?v=202610152059" />
+    <link rel="stylesheet" href="/updates-v3.css?v=202610191900" />
     <script>
       window.CESIUM_BASE_URL = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
     </script>
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
-    <link rel="stylesheet" href="/intel.css?v=202610191430" />
+    <link rel="stylesheet" href="/intel.css?v=202610191900" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -183,7 +183,13 @@
         </section>
 
         <section class="sw-card" id="sample-waves" aria-labelledby="sample-waves-h">
-          <div class="sw-card-head"><h2 id="sample-waves-h">When builds first appeared in the sample</h2><p>Teslascope snapshots only. First seen is not a rollout and not an offer to a particular car.</p></div>
+          <div class="sw-card-head"><h2 id="sample-waves-h">When builds first appeared in the sample</h2><p>Teslascope snapshots only. First seen is not a rollout and not an offer to a particular car or VIN.</p></div>
+          <label class="sw-wave-cc">Country in the Teslascope sample
+            <select id="sw-wave-cc" data-intel-wave-country aria-describedby="sw-wave-cc-n">
+              <option value="">All countries in the sample</option>
+            </select>
+          </label>
+          <p class="sw-fine" id="sw-wave-cc-n">A country sample count is not Tesla confirming this VIN is eligible.</p>
           <div data-intel-waves></div>
         </section>
 
@@ -249,8 +255,8 @@
     <script src="/script.js?v=202610190800"></script>
     <script src="/cesium-lazy.js?v=202610152059"></script>
     <script defer src="/updates-v3.js?v=202610191800"></script>
-    <script src="/intel-core.js?v=202610191430" defer></script>
-    <script src="/intel.js?v=202610191430" defer></script>
+    <script src="/intel-core.js?v=202610191900" defer></script>
+    <script src="/intel.js?v=202610191900" defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/nav-pill.js?v=202610190630"></script>
