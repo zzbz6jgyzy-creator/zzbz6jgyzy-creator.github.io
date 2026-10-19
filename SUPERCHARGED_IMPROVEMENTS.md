@@ -1,32 +1,36 @@
-# Supercharged Daily — leftover polish
+# Supercharged Daily — newsletter tags
 
-Living progress document for leftover cheap polish after the 15-phase optimisation mission. Dark remains the default. Existing routes kept.
+Living progress document. Dark remains the default. Existing routes kept.
 
 ## Prioritised tasks
 
-1–10. Nav through live Worker — done (#119–#123)
-11. Tesla / SpaceX story-card poster lock, Promise Tracker reserved wells, Tesla clubs lookup fail copy — this session
+1–11. Nav through leftover polish — done (#119–#124)
+12. Beehiiv subscriber tags from site topic bands — this session
 
 ## Completed this session
 
-- Story-grid posters stay 160px even when a card still has inline `height:auto`. Lock lives in `styles.css` (`.story-grid .story-card > picture` + `img { height:160px !important }`). Pin bumped on `tesla.html` and `spacex.html` only. Inline `height:auto` stripped from those two desks. Did **not** run `build-home.js`.
-- Promise Tracker empty chips, topic tiles, and ring legend reserve space before `promises.json` lands. List still starts with “Loading promises…”.
-- Tesla clubs city lookup now writes `#tc-hint` and holds it when Open-Meteo fails, returns no city, or location is blocked. No invented clubs. No Ireland/UK default.
+- Signup still redirects to Beehiiv with no API key in public code. It now sends allowlisted `utm_content`: `roadster`, `tesla`, `tesla-software`, `spacex`, or `website`.
+- Topic comes from the path first (then `.art-tag`), so Tesla desk cards tagged Roadster do not steal the signup.
+- Homepage band is `data-band-topic="website"`. `grow.js` uses `website` instead of `default`.
+- Beehiiv tags created: `roadster`, `tesla`, `tesla-software`, `spacex`, `website`. Existing `creator` tag left alone.
+- Live segments (plan limit 3): Site · Roadster, Site · Tesla, Site · Tesla software. SpaceX and website can be filtered by `utm_content` in the subscriber table.
+- Draft automations apply the matching tag on signup. They are **not live** until published in the Beehiiv editor. Sunday send is still one list. No per-car mail. No ads.
 
 ## Files modified
 
-- `styles.css`, `tesla.html`, `spacex.html`
-- `promise-tracker.css`, `promise-tracker.html`
-- `tesla-clubs.js`, `tesla-clubs.html`
-- `scripts/test-leftover-polish.mjs`
+- `newsletter.js`, `grow.js`, `script.js`, `newsletter-cta.js`, `index.html`
+- Cache-bust `script.js` / `grow.js` / `newsletter.js` pins on the pages that load them
+- `scripts/test-newsletter-tags.mjs`
 - `SUPERCHARGED_IMPROVEMENTS.md`, `docs/TRANSFORMATION.md`
 
 ## Tests performed
 
-- `node scripts/test-leftover-polish.mjs` against `http://127.0.0.1:4173` — ALL_PASS (Tesla/SpaceX/Dispatch posters 160px, Promise empty wells reserved then filled, clubs fail/empty/geo hold, Austin still returns 3 clubs)
+- `node scripts/test-newsletter-tags.mjs` against `http://127.0.0.1:4173` — ALL_PASS (home/roadster/tesla/tesla-software/spacex UTMs, honeypot, Follow on X)
 
 ## Known limitations
 
+- Tag automations stay draft until published at app.beehiiv.com.
+- Beehiiv plan allowed three saved segments. SpaceX / website use `utm_content` until a slot frees up.
 - Notifications are preferences only. Newsletter signup is the live email path.
 - No ads. Do not add empty slots.
 - Do not run full `build-home.js` unless tesla.html / spacex.html `<picture>` diffs are reverted.
@@ -34,6 +38,6 @@ Living progress document for leftover cheap polish after the 15-phase optimisati
 
 ## Remaining work
 
-- Watch live `sd-events` counts.
-- Per-car software / recall mail or push only after a real hook is designed and tested.
+- Publish the five `Tag ·` automations in Beehiiv if you want tags applied automatically.
+- Per-car software / recall mail only after a real send hook is designed and tested.
 - Labelled sponsorship only when there is a creative to put in the slot.

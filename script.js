@@ -137,7 +137,7 @@
   });
 
   const newsletter = document.createElement("script");
-  newsletter.src = "/newsletter.js?v=202610151900";
+  newsletter.src = "/newsletter.js?v=202610190800";
   document.body.append(newsletter);
   const track = document.createElement("script");
   track.src = "/track.js?v=202610190630";
