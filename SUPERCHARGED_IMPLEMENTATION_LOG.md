@@ -83,3 +83,24 @@ Browser verification used Playwright click-through against `http://127.0.0.1:417
 ### Next batch
 
 See `SUPERCHARGED_MASTER_PLAN.md` → Next implementation batch.
+
+## Batch 5 — Sourced tracker change lists (off merged main)
+
+Branch: `cursor/tracker-sourced-changes-5e96`  
+Date: 19 Oct 2026
+
+Four slices, in order:
+
+1. **FSD Europe + Cybercab what-changed.** Changelog already had sources. Slovakia 16 Oct 2026 now carries an honesty line: recognition is not a customer rollout. Tesla Europe “soon” is labelled a company claim. Cybercab `/cybercab.html#cc-changes` lists Texas DMV jumps 126→169→319→349 and labels 15–19 Oct as unchanged. A registration is not a car in service.
+2. **See-the-launch kept clocks.** `/see-the-launch.html` and the calendar share `[data-intel-clocks]`. Canonical start stays in `data/events.json`. Current disagreements: CRS-35 docking 15 Oct 14:27Z vs live 13:15Z; USSF-481 16 Oct 00:02:07Z vs live 15 Oct 23:57Z.
+3. **Starlink sourced diffs.** `data/starlink-history.json` is two committed McDowell snapshots from `starlink-live.js` git history (13 Oct 11,156 in orbit → 15 Oct 11,154). Not a live operator feed. Days between snapshots are not interpolated. `scripts/build-starlink-stats.py` appends only when McDowell’s published table actually moved.
+4. **Software tracker country waves.** `/updates.html#sample-waves` can filter the Teslascope sample by country. First seen + latest ≥10-car jump per version. Sample ≠ rollout ≠ VIN offer.
+
+### Not claimed
+
+- Live operator Starlink counts
+- Tesla VIN eligibility
+- Interpolated Starlink days
+- Cybercab in-service fleet
+- Slovakia customer rollout
+- Notifications / Postgres / Fleet / NHTSA ingest / faster cron

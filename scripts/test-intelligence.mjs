@@ -59,17 +59,42 @@ const src = {
     versions: [{ id: "2026.38.5.1", count: 4, percent: 40, firstSeen: "2026-10-13T00:00:00Z" }],
   },
   updatesHistory: { snapshots: [
-    { t: "2026-10-12T00:00:00Z", v: { "2026.33.5": [10, {}] } },
-    { t: "2026-10-13T00:00:00Z", v: { "2026.33.5": [10, {}], "2026.38.5.1": [4, {}] } },
-    { t: "2026-10-14T00:00:00Z", v: { "2026.33.5": [10, {}], "2026.38.5.1": [50, {}] } },
+    { t: "2026-10-12T00:00:00Z", v: { "2026.33.5": [10, { US: 8, CA: 2 }] } },
+    { t: "2026-10-13T00:00:00Z", v: { "2026.33.5": [10, { US: 8, CA: 2 }], "2026.38.5.1": [4, { US: 4 }] } },
+    { t: "2026-10-14T00:00:00Z", v: { "2026.33.5": [10, { US: 8, CA: 2 }], "2026.38.5.1": [50, { US: 40, CA: 10 }] } },
+  ] },
+  starlinkHistory: { source: "https://planet4589.org/space/con/star/stats.html", snapshots: [
+    { updated: "2026-10-13T09:30:20Z", inOrbit: 11156, working: 11142, operational: 9726, launched: 13015 },
+    { updated: "2026-10-15T19:00:26Z", inOrbit: 11154, working: 11140, operational: 9726, launched: 13015 },
   ] },
   fsdEurope: {
     updated: "2026-10-18",
     countries: [{ code: "NL", status: "approved" }, { code: "DE", status: "review" }],
-    changelog: [{ date: "2026-10-16", code: "SK", type: "approval", text: "Slovakia recognises RDW.", source: "https://example.test/sk" }],
+    changelog: [{
+      date: "2026-10-16",
+      code: "SK",
+      type: "approval",
+      text: "Slovakia recognises RDW.",
+      source: "https://example.test/sk",
+      honesty: "Recognition is not a customer rollout. Owners have not been shown receiving the software.",
+    }, {
+      date: "2026-10-16",
+      code: "SK",
+      type: "statement",
+      text: "Tesla Europe: rollout begins soon.",
+      source: "https://example.test/tesla-europe",
+      evidence: "company_claim",
+      honesty: "Company claim. Soon is not a date.",
+    }],
   },
   promises: { updated: "2026-10-16", promises: [{ id: "optimus-x", topic: "Optimus", title: "Test", status: "Missed", source: { outlet: "CNBC", url: "https://www.cnbc.com/" }, revisions: [] }] },
-  robotaxiTx: { history: [{ date: "2026-10-08", cybercab: 319, src: "https://fsddb.com/" }, { date: "2026-10-15", cybercab: 349, src: "https://fsddb.com/" }] },
+  robotaxiTx: { history: [
+    { date: "2026-09-26", cybercab: 126, src: "https://teslant.com/" },
+    { date: "2026-10-03", cybercab: 169, src: "https://teslant.com/" },
+    { date: "2026-10-08", cybercab: 319, src: "https://notateslakiller.com/" },
+    { date: "2026-10-15", cybercab: 349, src: "https://fsddb.com/" },
+    { date: "2026-10-19", cybercab: 349, src: "https://fsddb.com/" },
+  ] },
   starlinkLive: { updated: "2026-10-15T19:00:26Z", totals: { inOrbit: 11154 }, source: "https://planet4589.org/space/con/star/stats.html" },
   starship: { updated: "2026-10-16", next: { flight: 15, start: "2026-11-08T12:00:00Z", precision: "day" }, schedule: [] },
   articles: { articles: [] },
@@ -150,6 +175,43 @@ if (preview.sent === false && /not sent/.test(preview.subject) && /No email/.tes
 else bad("digest preview not sent", JSON.stringify(preview));
 if (!/sent="true"/.test(I.digestHtml(preview))) ok("digest html marks unsent");
 else bad("digest html marks unsent", I.digestHtml(preview).slice(0, 120));
+
+const countryWaves = I.softwareWavesForCountry(src.updatesHistory, "US");
+if (countryWaves.some((w) => w.version === "2026.38.5.1" && w.type === "appeared" && /particular VIN/.test(w.summary))) ok("country wave first seen");
+else bad("country wave first seen", JSON.stringify(countryWaves[0]));
+if (countryWaves.some((w) => w.previous === "4" && w.next === "40" && /not Tesla confirming this car is eligible/.test(w.summary))) ok("country wave jump");
+else bad("country wave jump", JSON.stringify(countryWaves));
+if (!/you are eligible|this VIN is eligible|your car is eligible/i.test(I.countryWavesHtml(countryWaves, "US"))) ok("country waves never claim VIN eligible");
+else bad("country waves never claim VIN eligible", "eligibility leaked");
+
+const cab = I.cybercabJumps(src.robotaxiTx.history);
+if (cab.jumps.map((j) => j.previous + "->" + j.next).join(",") === "126->169,169->319,319->349") ok("cybercab sourced jumps");
+else bad("cybercab sourced jumps", JSON.stringify(cab.jumps));
+if (cab.unchanged && cab.unchanged.date === "2026-10-19" && cab.unchanged.count === 349 && /Unchanged days/.test(cab.unchanged.summary) && /not a car in service/.test(cab.unchanged.summary)) ok("cybercab unchanged streak");
+else bad("cybercab unchanged streak", JSON.stringify(cab.unchanged));
+const cabHtml = I.cybercabChangesHtml(src.robotaxiTx.history);
+if (/Count jump/.test(cabHtml) && /Unchanged/.test(cabHtml) && /not a car in service/.test(cabHtml) && /Not live fleet telemetry/.test(cabHtml)) ok("cybercab html honesty");
+else bad("cybercab html honesty", cabHtml.slice(0, 240));
+
+const sl = I.starlinkDiffs(src.starlinkHistory);
+if (sl.length === 1 && sl[0].previous === "11156" && sl[0].next === "11154" && /not a live operator feed/.test(sl[0].summary)) ok("starlink mcdowell diff");
+else bad("starlink mcdowell diff", JSON.stringify(sl));
+if (bundle.changes.some((c) => c.topic === "starlink" && c.previous === "11156" && /not a live operator feed/.test(c.summary))) ok("starlink diff in bundle");
+else bad("starlink diff in bundle", "missing");
+const slHtml = I.starlinkChangesHtml(src.starlinkHistory);
+if (/not interpolated/i.test(slHtml) && /not a live operator feed/.test(slHtml) && /11,154/.test(slHtml)) ok("starlink html snapshot");
+else bad("starlink html snapshot", slHtml.slice(0, 240));
+
+const clocks = I.conflictsHtml(bundle.conflicts);
+if (/Kept \(events.json\)/.test(clocks) && /Live overlay/.test(clocks) && /keep_canonical_events_json|keep_completed/.test(clocks) && /2026-10-20/.test(JSON.stringify(bundle.conflicts))) ok("conflicts html kept clocks");
+else bad("conflicts html kept clocks", clocks.slice(0, 280));
+if (I.fmtClock("2026-10-15T14:27:00.000Z").indexOf("UTC") >= 0) ok("fmtClock utc");
+else bad("fmtClock utc", I.fmtClock("2026-10-15T14:27:00.000Z"));
+
+if (bundle.changes.some((c) => c.field === "approval" && /Recognition is not a customer rollout/.test(c.summary))) ok("fsd approval honesty in bundle");
+else bad("fsd approval honesty in bundle", "missing");
+if (bundle.changes.some((c) => c.evidence === "company_claim" && /Soon is not a date/.test(c.summary))) ok("fsd tesla europe company claim");
+else bad("fsd tesla europe company claim", "missing");
 
 if (fail.length) {
   console.log("\nFAILED", fail.length);

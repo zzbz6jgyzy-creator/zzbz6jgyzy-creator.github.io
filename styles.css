@@ -4259,7 +4259,8 @@ a.news-card:hover h3 {
 
 .flagship-card,
 .starship-objective,
-.starship-change {
+.starship-change,
+.sourced-change {
   margin: 0;
   padding: 1rem 1.05rem 1.05rem;
   border: 1px solid var(--line);
@@ -4268,7 +4269,8 @@ a.news-card:hover h3 {
 }
 
 .flagship-card-head,
-.starship-change-head {
+.starship-change-head,
+.sourced-change-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -4277,7 +4279,8 @@ a.news-card:hover h3 {
 }
 
 .flagship-card time,
-.starship-change time {
+.starship-change time,
+.sourced-change time {
   display: block;
   margin-top: 0.65rem;
   color: var(--mute);
@@ -4371,8 +4374,15 @@ a.news-card:hover h3 {
   border-color: var(--ink-soft);
 }
 
+.sourced-change-src {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--mute);
+}
+
 .starship-objectives,
-.starship-changes {
+.starship-changes,
+.sourced-changes {
   display: grid;
   gap: 0.65rem;
   list-style: none;

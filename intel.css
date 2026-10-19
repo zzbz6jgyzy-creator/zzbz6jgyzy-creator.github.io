@@ -20,6 +20,9 @@
   background: #0e0e0e;
 }
 .intel-bar .intel-fresh { margin: 0; }
+.intel-clocks { margin: 8px 0 18px; max-width: 100%; }
+.intel-clocks .intel-compare { margin-top: 8px; }
+.intel-conflicts { margin: 8px 0 0; }
 .intel-follow { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
 .intel-chip {
   appearance: none;

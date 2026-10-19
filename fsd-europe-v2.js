@@ -116,6 +116,7 @@
     el.innerHTML = `
       <div class="f2-card-top"><span class="f2-flag" aria-hidden="true">${code}</span><div><h3>${esc(c.name)}</h3>
       <p class="f2-badge">${esc(stageName[st])}${c.date ? " · since " + fmt(c.date) : ""}</p></div>${via ? `<span class="f2-via">Detected from your ${esc(via)}</span>` : ""}</div>
+      ${!c.rolloutLive && (c.status === "approved" || st === "recognised") ? '<p class="f2-honest">Recognised is not live. A ministry yes is not the same as owners receiving the software.</p>' : ""}
       <ol class="f2-steps" aria-label="Stage ${idx + 1} of ${STAGES.length}">${STAGES.map((s, i) => `<li class="${i < idx ? "done" : i === idx ? "now" : ""}"><span>${s[1]}</span></li>`).join("")}</ol>
       <dl class="f2-dl">
         <div><dt>Regulator</dt><dd>${esc(c.regulator) || '<i class="unc">Unconfirmed</i>'}</dd></div>
@@ -216,11 +217,20 @@
   const TYPES = { all: "All", approval: "Approvals", statement: "Statements", tcmv: "TCMV", testing: "Testing", rename: "Rename" };
   let lf = "all", lmax = 6;
   $("f2-log-f").innerHTML = Object.entries(TYPES).filter(([k]) => k === "all" || LOG.some((e) => e.type === k)).map(([k, v]) => `<button type="button" data-t="${k}" aria-pressed="${k === "all"}">${v}</button>`).join("");
+  const logHonesty = (e) => {
+    if (e.honesty) return e.honesty;
+    const c = by.get(e.code);
+    if (e.type === "approval" && c && !c.rolloutLive) return "Recognition is not a customer rollout. Owners have not been shown receiving the software.";
+    if (e.type === "statement" && /Tesla Europe|Tesla says/i.test(e.text) && c && !c.rolloutLive) return "Company claim. “Soon” is not a date.";
+    return "";
+  };
   const renderLog = () => {
     const rows = LOG.filter((e) => lf === "all" || e.type === lf);
     $("f2-log").innerHTML = rows.slice(0, lmax).map((e) => {
       const c = by.get(e.code);
-      return `<li class="t-${e.type}"><time datetime="${e.date}">${fmt(e.date)}</time><div><span class="f2-tag">${esc(TYPES[e.type] || e.type)}${c ? " · " + esc(c.name) : ""}</span><p>${esc(e.text)}</p>${e.source ? `<a href="${esc(e.source)}" target="_blank" rel="noopener">Source</a>` : ""}</div></li>`;
+      const note = logHonesty(e);
+      const claim = e.evidence === "company_claim" || /Tesla Europe/i.test(e.text);
+      return `<li class="t-${e.type}"><time datetime="${e.date}">${fmt(e.date)}</time><div><span class="f2-tag">${esc(TYPES[e.type] || e.type)}${c ? " · " + esc(c.name) : ""}${claim ? " · company claim" : ""}</span><p>${esc(e.text)}</p>${note ? `<p class="f2-honest">${esc(note)}</p>` : ""}${e.source ? `<a href="${esc(e.source)}" target="_blank" rel="noopener">Source</a>` : ""}</div></li>`;
     }).join("");
     $("f2-log-more").hidden = rows.length <= lmax;
   };

@@ -20,7 +20,7 @@ Respect robots, ToS, copyright, and rate limits. Do not scrape X, Tesla owner ac
 | Teslascope software list | `updates-live.json` | `scripts/snapshot-updates.py` | Public site; sample, not Tesla | ~30 min CI |
 | Teslascope history we saved | `data/updates-history.json` → software waves | `scripts/build-updates-history.py` | Same sample caveat | With updates snapshot |
 | TeslaFi firmware page | `data/updates-extras.json` | `scripts/snapshot-extras.py` every ~2h | Public page; polite | CI |
-| Jonathan McDowell Starlink stats | `starlink-live.js` | `scripts/build-starlink-stats.py` | Cite McDowell | 8h CI |
+| Jonathan McDowell Starlink stats | `starlink-live.js`, `data/starlink-history.json` | `scripts/build-starlink-stats.py` (appends history only when the published table moved) | Cite McDowell | 8h CI |
 | CelesTrak GP | `starlink-gp.js`, `data/starlink.json` | CI only; browser never calls CelesTrak | CelesTrak terms | 8h CI |
 | Texas DMV via fsddb.com | `data/robotaxi-tx.json` | `scripts/build-robotaxi-tx.py` | Public mirror | 2× daily |
 | Google News RSS | `news-data.json` | `scripts/snapshot-news.py` | Headlines only, not rewritten | ~30 min CI |
@@ -77,7 +77,8 @@ Written by `node scripts/sd-intel.js` (also on news / updates / home-build workf
 - Teslascope `latest` can be a 0-count ghost. Site logic uses `count > 0`.
 - Software waves are sample first-seen / sample-count changes. Not Tesla offering a build to a car.
 - Launch Library 2 can rewind slips. `calendar-merge.pickStart` keeps the later official date unless the flight is flown.
-- Starlink globe is SGP4 on a snapshot, not live telemetry.
+- Starlink globe is SGP4 on a snapshot, not live telemetry. McDowell count diffs are committed snapshots only (13 Oct 2026: 11,156 in orbit; 15 Oct 2026: 11,154). Not interpolated.
 - Software sample ≠ rollout ≠ regional availability ≠ your car being offered an update.
-- Slovakia RDW recognition (16 Oct 2026) is not a confirmed customer rollout.
+- Slovakia RDW recognition (16 Oct 2026) is not a confirmed customer rollout. Tesla Europe “soon” is a company claim, not a date.
+- Texas Cybercab registrations jumped 126→169 (3 Oct), 169→319 (8 Oct), 319→349 (15 Oct), then unchanged through 19 Oct. Registered ≠ serving.
 - Digest / alert queue is local preview. `sent` is always 0 until approval.
