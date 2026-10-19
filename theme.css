@@ -385,6 +385,11 @@ html[data-theme="light"] .cal-filters button:hover {
   color: var(--bg);
   border-color: var(--ink);
 }
+html[data-theme="light"] .cal-search input {
+  background: var(--input-bg, #fff);
+  color: var(--ink);
+  border-color: var(--line-strong, var(--line));
+}
 html[data-theme="light"] .slab-cmp-h { background: var(--surface-2); }
 html[data-theme="light"] a.cal-title:hover { color: var(--ink); }
 

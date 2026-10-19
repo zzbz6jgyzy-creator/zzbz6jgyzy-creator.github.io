@@ -88,6 +88,8 @@ const src = {
     }],
   },
   promises: { updated: "2026-10-16", promises: [{ id: "optimus-x", topic: "Optimus", title: "Test", status: "Missed", source: { outlet: "CNBC", url: "https://www.cnbc.com/" }, revisions: [] }] },
+  optimusDemos: { updated: "2026-10-19", demos: [{ id: "ai-day-2022", shown: ["walk"] }] },
+  starship: { updated: "2026-10-16", next: { flight: 15, start: "2026-11-08T12:00:00Z", precision: "day" }, schedule: [{ date: "2026-10-09", mission: 15, confirmed: false, change: "Ship 42 cryo campaign", source: { outlet: "NASASpaceflight", url: "https://www.nasaspaceflight.com/" } }] },
   robotaxiTx: { history: [
     { date: "2026-09-26", cybercab: 126, src: "https://teslant.com/" },
     { date: "2026-10-03", cybercab: 169, src: "https://teslant.com/" },
@@ -96,7 +98,6 @@ const src = {
     { date: "2026-10-19", cybercab: 349, src: "https://fsddb.com/" },
   ] },
   starlinkLive: { updated: "2026-10-15T19:00:26Z", totals: { inOrbit: 11154 }, source: "https://planet4589.org/space/con/star/stats.html" },
-  starship: { updated: "2026-10-16", next: { flight: 15, start: "2026-11-08T12:00:00Z", precision: "day" }, schedule: [] },
   articles: { articles: [] },
   production: { updated: "2026-10-19", quarters: [{ id: "Q3 2026", deliveries: 486532, production: 464391, published: "2026-10-02", sourceUrl: "https://ir.tesla.com/" }] },
   merge: M,
@@ -106,6 +107,10 @@ const src = {
 const bundle = I.build(src, { facts: prev }, "2026-10-19T12:00:00Z");
 if (bundle.facts.some((f) => f.field === "newest-reporting" && f.value === "2026.38.5.1")) ok("software fact");
 else bad("software fact", "missing newest");
+if (bundle.facts.some((f) => f.field === "sourced-demos" && f.value === "1" && /shown/.test(f.summary))) ok("optimus sourced demos fact");
+else bad("optimus sourced demos fact", "missing");
+if (bundle.changes.some((c) => c.topic === "starship" && c.source === "NASASpaceflight" && /Flight 15 change/.test(c.title))) ok("starship schedule keeps outlet");
+else bad("starship schedule keeps outlet", JSON.stringify(bundle.changes.filter((c) => c.topic === "starship").slice(0, 2)));
 if (bundle.conflicts.length === 1 && bundle.conflicts[0].kept.indexOf("2026-10-20") >= 0) ok("conflict keeps Tuesday");
 else bad("conflict keeps Tuesday", JSON.stringify(bundle.conflicts[0]));
 if (bundle.changes.some((c) => c.previous === "319" && c.next === "349")) ok("robotaxi history change");

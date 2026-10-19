@@ -196,6 +196,21 @@
         summary: "A version appearing in a public sample is not the same as Tesla offering it to a given car.",
       }));
     }
+    const demos = (src.optimusDemos && src.optimusDemos.demos) || [];
+    if (demos.length) {
+      facts.push(makeFact({
+        topic: "optimus",
+        tracker: "optimus",
+        field: "sourced-demos",
+        value: String(demos.length),
+        label: "Sourced Optimus demonstrations",
+        at: src.optimusDemos.updated,
+        evidence: "independently_corroborated",
+        source: "Opened Verge, Engadget and Dispatch pages",
+        href: "/optimus.html#demos",
+        summary: "Each card records what was shown, what was not shown, and that autonomy is unknown unless a source established it.",
+      }));
+    }
     const common = commonSoftware(src.updates);
     if (common) {
       facts.push(makeFact({
@@ -606,10 +621,11 @@
         next: row.change,
         at: iso(row.date) || row.date,
         evidence: row.confirmed ? "independently_corroborated" : "reported_unconfirmed",
-        source: "starship-data.js schedule",
-        href: "/starship.html",
+        source: (row.source && (row.source.outlet || row.source.url)) || "starship-data.js schedule",
+        sourceUrl: (row.source && row.source.url) || "",
+        href: "/starship.html#schedule",
         summary: row.change,
-        title: "Starship schedule note",
+        title: row.mission ? ("Flight " + row.mission + " change") : "Starship schedule note",
       };
       c.id = changeId(c);
       if (!validateChange(c).length) out.push(c);
@@ -851,7 +867,7 @@
     add("promises", generatedAt, src.promises && src.promises.updated, "Every quote needs a source that was opened.");
     add("production", generatedAt, src.production && src.production.updated, "Tesla IR production and delivery tables only.");
     add("roadster", generatedAt, src.promises && src.promises.updated, "Reveal is past. Production target remains a company claim.");
-    add("optimus", generatedAt, src.promises && src.promises.updated, "Demonstration ≠ autonomy. Production targets are company claims.");
+    add("optimus", generatedAt, (src.optimusDemos && src.optimusDemos.updated) || (src.promises && src.promises.updated), "Demonstration ≠ autonomy. Production targets are company claims.");
     add("mytesla", generatedAt, src.updates && src.updates.updated, "Vehicle prefs stay in this browser.");
     return rows;
   }

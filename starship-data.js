@@ -29,33 +29,43 @@ window.STARSHIP = {
   schedule: [
     {
       date: "2026-10-09",
+      mission: 15,
       confirmed: false,
       change:
         "NASASpaceflight: Ship 42 rolled back to Massey’s for a third cryo-proof campaign after its six Raptors came off; engines and a static fire still to come. Booster 22 is in Mega Bay 1 and could be ready for static fire in the second half of October. NSF says NET 8 November looks achievable on vehicle readiness.",
+      source: { outlet: "NASASpaceflight", url: "https://www.nasaspaceflight.com/" },
     },
     {
       date: "2026-10-11",
+      mission: 15,
       confirmed: false,
       change:
         "Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page.",
+      source: { outlet: "Supercharged Daily dispatch", url: "/dispatch/starship-f15-ship-catch.html" },
     },
     {
       date: "2026-10-08",
+      mission: 15,
       confirmed: false,
       change:
         "FAA CADENA planning slides moved Flight 15 from 19 October to NET 8 November. NASASpaceflight reported Ship 42’s Raptors off the vehicle. SpaceX has not published a mission page.",
+      source: { outlet: "FAA CADENA planning slides", url: "" },
     },
     {
       date: "2026-09-28",
+      mission: 15,
       confirmed: false,
       change:
         "After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial.",
+      source: { outlet: "Desk read after Flight 14", url: "/starship.html#log" },
     },
     {
       date: "2026-09-11",
+      mission: 15,
       confirmed: true,
       change:
         "Ship 42 ran catch-related tests on Pad 2. Hardware work is the only SpaceX-visible schedule signal.",
+      source: { outlet: "Hardware work visible at Pad 2", url: "" },
     },
   ],
   flights: [

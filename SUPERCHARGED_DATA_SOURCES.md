@@ -10,7 +10,7 @@ Respect robots, ToS, copyright, and rate limits. Do not scrape X, Tesla owner ac
 
 | Source | Used for | How | Licence / access | Cadence |
 |---|---|---|---|---|
-| Tesla IR production releases | `/production.html`, engine facts | Copied tables from opened IR pages: Q3 2025, Q4 2025, Q1–Q3 2026 | Public IR | Event-driven (quarterly print) |
+| Tesla IR production releases | `/production.html`, engine facts | Copied tables from opened IR pages: Q1 2025, Q2 2025, Q3 2025, Q4 2025, Q1–Q3 2026 | Public IR | Event-driven (quarterly print) |
 | Tesla IR / SpaceX IR / SEC | Earnings clocks in `data/events.json` | Hand-entered with URL | Public | Editorial |
 | Tesla VIN recall search | My Tesla official-lookup row | Link only: `https://www.tesla.com/vin-recall-search` (opened 19 Oct 2026) | Tesla public tool | On use |
 | NHTSA VIN recall lookup | My Tesla official-lookup row | Link only: `https://www.nhtsa.gov/recalls` | US public | On use |
@@ -30,11 +30,13 @@ Respect robots, ToS, copyright, and rate limits. Do not scrape X, Tesla owner ac
 
 | Quarter | URL | Totals copied |
 |---|---|---|
+| Q1 2025 | https://ir.tesla.com/press-release/tesla-first-quarter-2025-production-deliveries-and-deployments | Prod 362,615 / Del 336,681 / Energy 10.4 GWh |
+| Q2 2025 | https://ir.tesla.com/press-release/tesla-second-quarter-2025-production-deliveries-deployments | Prod 410,244 / Del 384,122 / Energy 9.6 GWh |
 | Q3 2025 | https://ir.tesla.com/press-release/tesla-third-quarter-2025-production-deliveries-deployments | Prod 447,450 / Del 497,099 / Energy 12.5 GWh |
 | Q4 2025 | https://ir.tesla.com/press-release/tesla-fourth-quarter-2025-production-deliveries-deployments | Prod 434,358 / Del 418,227 / Energy 14.2 GWh |
 | Q3 2026 | https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments | Prod 464,391 / Del 486,532 / Energy 13.7 GWh (already on file; re-opened) |
 
-YoY for Q3 2026 vs Q3 2025 uses only those two opened tables: deliveries −2.1%, production +3.8%.
+YoY uses only opened pairs: Q1 2026 vs Q1 2025 (del +6.3%, prod +12.6%), Q2 2026 vs Q2 2025 (del +25.0%, prod +10.1%), Q3 2026 vs Q3 2025 (del −2.1%, prod +3.8%). Q4 2025 has no opened year-ago table.
 
 ## Editorial compiled files (in use)
 
@@ -45,6 +47,7 @@ YoY for Q3 2026 vs Q3 2025 uses only those two opened tables: deliveries −2.1%
 | `starship-data.js` | Flight log + schedule notes | Desk read of SpaceX pages / FAA slides; NET ≠ T-0 |
 | `fsd-europe-data.js` / `fsd-data.js` / `tcmv-data.js` | Approval maps + `/autonomy.html` | Ministry / RDW / Reuters; empty if unconfirmed |
 | `data/promises.json` | Promise tracker, Optimus, Roadster, autonomy promises | Quote opened; Electrek banned |
+| `data/optimus-demos.json` | `/optimus.html#demos` | Opened Verge, Engadget, Dispatch pages. We Robot 2024 omitted until a source is opened. |
 | `cybercab-data.js` | Robotaxi reality map + autonomy city layers | Permit ≠ commercial service |
 | `data/articles.json` | Dispatch index, homepage lead | Our own stories |
 
