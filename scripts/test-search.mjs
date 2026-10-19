@@ -44,6 +44,9 @@ expectHit(await runQuery("Optimus"), /\/optimus\.html/, "search Optimus");
 expectHit(await runQuery("AI Day 2022"), /ai-day-2022/, "search Optimus demo");
 expectHit(await runQuery("Tesla production"), /production\.html/, "search production");
 expectHit(await runQuery("Starlink"), /starlink/i, "search Starlink");
+expectHit(await runQuery("Promise tracker"), /promise-tracker\.html/, "search promise tracker");
+expectHit(await runQuery("Can I see the launch"), /see-the-launch\.html/, "search see the launch");
+expectHit(await runQuery("sample waves"), /updates\.html/, "search sample waves");
 
 const none = await runQuery("xyznonexistent123");
 if (!none.hits.length && /No matches/i.test(none.status + none.empty)) ok("search no-results");

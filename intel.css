@@ -152,6 +152,8 @@ html[data-theme="light"] .intel-m { color: var(--mute, #666); }
 html[data-theme="light"] .intel-item,
 html[data-theme="light"] .intel-compare th,
 html[data-theme="light"] .intel-compare td { border-bottom-color: var(--line, #ddd); }
+html[data-theme="light"] .intel-yoy { color: var(--ink-soft, #555); }
+html[data-theme="light"] .intel-barrow span { color: var(--ink-soft, #555); }
 
 .intel-demos { display: grid; gap: 16px; margin: 16px 0 28px; }
 .intel-demo {

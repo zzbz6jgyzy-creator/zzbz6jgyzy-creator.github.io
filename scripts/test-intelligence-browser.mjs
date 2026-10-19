@@ -28,6 +28,13 @@ await page.locator('[data-follow="optimus"]').click();
 const pressed = await page.locator('[data-follow="optimus"]').getAttribute("aria-pressed");
 if (pressed === "true") ok("follow persist press");
 else bad("follow persist press", pressed);
+const homeRows = await page.$$eval("[data-intel-changed] .intel-item a", (as) =>
+  as.map((a) => ({ href: a.getAttribute("href") || "", k: (a.querySelector(".intel-k") || {}).textContent || "" }))
+);
+const dispatchHome = homeRows.filter((r) => /\/dispatch\//.test(r.href));
+if (dispatchHome.length && dispatchHome.every((r) => r.k === "Dispatch")) ok("home dispatch labelled Dispatch");
+else if (!dispatchHome.length) ok("home dispatch labelled Dispatch");
+else bad("home dispatch labelled Dispatch", JSON.stringify(dispatchHome.slice(0, 4)));
 await page.screenshot({ path: SHOT + "/intel-home-changed.png", fullPage: false });
 
 await page.goto(BASE + "/optimus.html", { waitUntil: "networkidle" });

@@ -38,9 +38,9 @@ Do not replace that stack with a fashionable backend. A Postgres intelligence wa
 | Starlink | `/starlink.html` | McDowell + CelesTrak snapshot | Not a live operator feed. |
 | Promise Tracker | `/promise-tracker.html` | `data/promises.json` | Manual, sourced. |
 | Roadster hub | `/roadster.html` | Static + sourced table | No invented progress %. |
-| Optimus Evolution Lab | `/optimus.html` | Promises-only | No invented specs. |
-| Production & deliveries | `/production.html` | Tesla IR Q3 2025–Q3 2026 | Official tables only. YoY only when both quarters opened. |
-| Intelligence health | `/intel-health.html` | noindex | Admin view of last bundle. |
+| Optimus Evolution Lab | `/optimus.html` | Promises + sourced demo archive | We Robot 2024 omitted until a source is opened. |
+| Production & deliveries | `/production.html` | Tesla IR Q1 2025–Q3 2026 | Official tables only. YoY only when both quarters opened. |
+| Intelligence health | `/intel-health.html` | noindex | Admin view of last bundle plus per-tracker freshness. Not live ops. |
 
 ## Supercharged Intelligence Engine (implemented)
 
@@ -79,6 +79,10 @@ Conflicts are recorded, not overwritten. Canonical launch clocks stay in `data/e
 16. Calendar search + Recently done (21 days). CRS-35 / USSF-481 findable.
 17. Starship Flight 15 sourced schedule notes (not telemetry).
 18. My Tesla Teslascope country sample waves (sample ≠ VIN).
+19. Dispatch rows in What changed labelled Dispatch, not Promise Tracker.
+20. SpaceX hub compiled-desk strip (Starship, calendar, Starlink).
+21. Search overlay covers Promise tracker, Can I see it?, FSD global, TCMV; `#demos` and `#sample-waves` indexed.
+22. Light-theme tokens for YoY, My Tesla waves, Starship sources. Promise tracker ↔ Optimus archive. Intel-health per-tracker freshness table.
 
 ## Explicitly not done (blockers / approval)
 

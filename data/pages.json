@@ -203,7 +203,7 @@
       "url": "/see-the-launch.html",
       "title": "Can I see it?",
       "tag": "SpaceX",
-      "summary": "Visible from here?"
+      "summary": "Visible from here? Canonical launch clocks stay in events.json; Launch Library 2 is a live overlay."
     },
     {
       "url": "/cybercab.html",
@@ -221,13 +221,19 @@
       "url": "/promise-tracker.html",
       "title": "Promise tracker",
       "tag": "Trackers",
-      "summary": "Musk deadlines vs reality, including Optimus"
+      "summary": "Musk deadlines vs reality, including Optimus. Deadlines here; demonstrations on the Optimus archive."
     },
     {
       "url": "/optimus.html",
       "title": "Optimus Evolution Lab",
       "tag": "Trackers",
       "summary": "Sourced Optimus demonstration archive: shown, not shown, autonomy unknown. A demo is not autonomy."
+    },
+    {
+      "url": "/optimus.html#demos",
+      "title": "Optimus demonstration archive",
+      "tag": "Optimus",
+      "summary": "Four opened events. Shown, not shown, autonomy, remote assistance. We Robot 2024 is not listed until a source is opened. A demo is not autonomy."
     },
     {
       "url": "/optimus.html#ai-day-2021",
@@ -276,6 +282,12 @@
       "title": "Software updates",
       "tag": "Trackers",
       "summary": "Latest Tesla software and firmware releases"
+    },
+    {
+      "url": "/updates.html#sample-waves",
+      "title": "Tesla software sample waves",
+      "tag": "Trackers",
+      "summary": "Teslascope first-seen and sample-count jumps by country. A sample sighting is not a VIN offer."
     },
     {
       "url": "/fsd.html",
