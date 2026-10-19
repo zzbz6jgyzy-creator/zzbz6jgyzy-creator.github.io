@@ -78,7 +78,7 @@ if (cc) trk.push({ href: "/cybercab.html", k: "Cybercab", v: cc.value, s: cc.lab
 try {
   const u = JSON.parse(rd("updates-live.json")), vs = (u.versions || []).filter((x) => x.count > 0);
   const top = [...vs].sort((a, b) => b.count - a.count)[0], nw = [...vs].sort((a, b) => (b.firstSeen || "").localeCompare(a.firstSeen || ""))[0];
-  if (nw) trk.push({ href: "/updates.html", k: "Software updates", v: nw.id, s: "newest build reporting · most common: " + (top ? top.id + " (" + top.percent + "%)" : "—") + " · Teslascope" });
+  if (nw) trk.push({ href: "/updates.html", k: "Software updates", v: nw.id, s: "newest build reporting · most common: " + (top ? top.id + " (" + top.percent + "% of " + Number(u.fleet || top.fleet).toLocaleString("en-US") + " cars)" : "—") + " · Teslascope, " + String(u.updated || "").slice(0, 10) });
 } catch (e) {}
 const trkHtml = trk.map((x) => `<a class="hv-t" href="${x.href}"><span class="hv-t-k">${esc(x.k)}</span><strong>${esc(x.v)}</strong><span class="hv-t-s">${esc(x.s)}</span></a>`).join("");
 
