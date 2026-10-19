@@ -1,0 +1,41 @@
+{
+  "updated": "2026-10-19T11:21:32.142Z",
+  "conflicts": [
+    {
+      "id": "conflict:crs35-docking:crs35-docking",
+      "entity": "crs35-docking",
+      "field": "start",
+      "values": [
+        {
+          "source": "data/events.json",
+          "value": "2026-10-15T14:27:00.000Z"
+        },
+        {
+          "source": "live-data.json",
+          "value": "2026-10-15T13:15:00.000Z"
+        }
+      ],
+      "resolution": "keep_completed",
+      "kept": "2026-10-15T14:27:00.000Z",
+      "note": "Canonical start stays in data/events.json. Live overlay must not silently rewind a later official slip."
+    },
+    {
+      "id": "conflict:ussf-481:f9-ussf481",
+      "entity": "ussf-481",
+      "field": "start",
+      "values": [
+        {
+          "source": "data/events.json",
+          "value": "2026-10-16T00:02:07.000Z"
+        },
+        {
+          "source": "live-data.json",
+          "value": "2026-10-15T23:57:00.000Z"
+        }
+      ],
+      "resolution": "keep_completed",
+      "kept": "2026-10-16T00:02:07.000Z",
+      "note": "Canonical start stays in data/events.json. Live overlay must not silently rewind a later official slip."
+    }
+  ]
+}
