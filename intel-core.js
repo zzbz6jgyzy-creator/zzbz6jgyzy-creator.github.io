@@ -935,11 +935,27 @@
     return `<ol class="intel-list">${changes.map(changeItemHtml).join("")}</ol>`;
   }
 
+  const CARD_TITLES = {
+    starship: "Starship flights",
+    launches: "SpaceX launch dates",
+    software: "Tesla software updates",
+    fsd: "FSD Europe approvals",
+    robotaxi: "Texas Robotaxi count",
+    starlink: "Starlink satellites",
+    promises: "Musk promises",
+    production: "Tesla production and deliveries",
+    roadster: "Roadster",
+    optimus: "Optimus",
+    mytesla: "My Tesla",
+  };
+
   function freshnessHtml(row) {
     if (!row) return "";
+    const title = CARD_TITLES[row.tracker] || (TRACKERS[row.tracker] && TRACKERS[row.tracker].label) || "";
     const checked = row.lastChecked ? fmtWhen(row.lastChecked) : "—";
     const verified = row.lastVerified ? fmtWhen(row.lastVerified) : "—";
     return `<p class="intel-fresh" data-intel-fresh="${esc(row.tracker)}">` +
+      (title ? `<span class="intel-fresh-note"><strong>${esc(title)}</strong></span>` : "") +
       `<span>Last checked <time datetime="${esc(row.lastChecked)}">${esc(checked)}</time></span>` +
       `<span>Last verified update <time datetime="${esc(row.lastVerified)}">${esc(verified)}</time></span>` +
       (row.note ? `<span class="intel-fresh-note">${esc(row.note)}</span>` : "") +
@@ -1202,7 +1218,7 @@
       statusClass: "fsd-status-watch",
       summary: diffs.length
         ? ("Latest McDowell snapshot: " + Number(last.inOrbit).toLocaleString("en-US") + " in orbit, " + Number(last.working).toLocaleString("en-US") + " working. Only committed snapshots are listed. Days between them are not interpolated.")
-        : ("As of " + fmtClock(last.updated) + ": " + Number(last.inOrbit).toLocaleString("en-US") + " in orbit. No earlier committed McDowell snapshot on this site to diff against."),
+        : ("As of " + fmtClock(last.updated) + ": " + Number(last.inOrbit).toLocaleString("en-US") + " in orbit (source: Jonathan McDowell). No earlier count saved yet to compare with."),
       src,
       srcLabel: "Jonathan McDowell",
       note: "Published table snapshot, not a live operator feed.",

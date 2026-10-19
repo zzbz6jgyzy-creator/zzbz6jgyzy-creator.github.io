@@ -59,7 +59,7 @@
     fetch("/data/starlink-history.json", { cache: "no-cache" }).then((r) => r.json()).then((h) => {
       slBox.innerHTML = I.starlinkChangesHtml(h);
     }).catch(() => {
-      slBox.innerHTML = '<p class="intel-empty">Committed McDowell snapshots could not load.</p>';
+      slBox.innerHTML = '<p class="intel-empty">Starlink history could not load.</p>';
     });
   }
 
