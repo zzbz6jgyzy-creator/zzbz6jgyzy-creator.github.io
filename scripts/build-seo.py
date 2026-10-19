@@ -190,7 +190,7 @@ def about_page():
     ld["url"] = SITE + "/"
     ld["email"] = "hello@superchargeddaily.com"
     ld["description"] = (
-        "Independent Tesla, SpaceX and Grok desk from @ALJR86. "
+        "Independent Tesla, SpaceX and Grok desk from Alex R. "
         "Not affiliated with Tesla, SpaceX or xAI."
     )
     block = (
