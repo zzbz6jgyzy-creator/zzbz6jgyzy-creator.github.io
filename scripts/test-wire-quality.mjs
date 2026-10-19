@@ -38,7 +38,7 @@ else bad("bandwagon pairs to calendar", JSON.stringify(ons));
 
 if (/data-band-topic="website"/.test(home) && /Bandwagon/i.test(home)) ok("home locks kept");
 else bad("home locks kept", "band topic or Bandwagon event missing");
-if (/news-keep\.js\?v=202610191400/.test(home) && /home-pair\.js\?v=202610191400/.test(home)) ok("pins");
+if (/news-keep\.js\?v=202610191600/.test(home) && /home-pair\.js\?v=202610191400/.test(home)) ok("pins");
 else bad("pins", "news-keep or home-pair pin not bumped");
 
 const ld = (html, name) =>

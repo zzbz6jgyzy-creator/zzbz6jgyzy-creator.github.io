@@ -73,7 +73,8 @@ if (F && F.countries) {
   const pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
   trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " / " + (F.thresholds ? F.thresholds.statesNeeded : 15), s: "states recognise RDW approval · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
 }
-if (C && C.stats && C.stats[0]) trk.push({ href: "/cybercab.html", k: "Cybercab", v: C.stats[0].value, s: C.stats[0].label });
+const cc = C && C.stats && (C.stats.find((s) => s.live === "cybercab") || C.stats[0]);
+if (cc) trk.push({ href: "/cybercab.html", k: "Cybercab", v: cc.value, s: cc.label });
 try {
   const u = JSON.parse(rd("updates-live.json")), vs = (u.versions || []).filter((x) => x.count > 0);
   const top = [...vs].sort((a, b) => b.count - a.count)[0], nw = [...vs].sort((a, b) => (b.firstSeen || "").localeCompare(a.firstSeen || ""))[0];

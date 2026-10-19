@@ -59,7 +59,8 @@
     const pop = ok.reduce((a, c) => a + (c.pop || 0), 0), pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
     trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " / " + (F.thresholds ? F.thresholds.statesNeeded : 15), s: "states recognise RDW approval · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
   }
-  if (C && C.stats && C.stats[0]) trk.push({ href: "/cybercab.html", k: "Cybercab", v: C.stats[0].value, s: C.stats[0].label });
+  const cc = C && C.stats && (C.stats.find((s) => s.live === "cybercab") || C.stats[0]);
+  if (cc) trk.push({ href: "/cybercab.html", k: "Cybercab", v: cc.value, s: cc.label });
   const paint = () => { $("[data-hv-trk]").innerHTML = trk.map((x) => `<a class="hv-t" href="${x.href}"><span class="hv-t-k">${esc(x.k)}</span><strong>${esc(x.v)}</strong><span class="hv-t-s">${esc(x.s)}</span></a>`).join(""); };
   paint();
   // Shared dates (/data/events.json) override the starship-data.js fallback
