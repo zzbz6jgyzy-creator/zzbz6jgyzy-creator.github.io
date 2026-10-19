@@ -19,7 +19,7 @@
   }
   const stampFrom = (u) => {
     const stamp = [];
-    if (F && F.updated) stamp.push("FSD Europe compiled " + day(F.updated));
+    if (F && F.updated) stamp.push("FSD Europe updated " + day(F.updated));
     if (u && u.updated) stamp.push("software sample " + day(u.updated) + " via Teslascope");
     if (stamp.length) set("#tz-updated", stamp.join(". ") + ".");
   };

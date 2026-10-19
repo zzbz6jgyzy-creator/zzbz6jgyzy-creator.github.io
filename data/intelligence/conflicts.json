@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19T19:03:24.393Z",
+  "updated": "2026-10-19T19:04:24.067Z",
   "conflicts": [
     {
       "id": "conflict:crs35-docking:crs35-docking",
@@ -17,7 +17,7 @@
       ],
       "resolution": "keep_completed",
       "kept": "2026-10-15T14:27:00.000Z",
-      "note": "Canonical start stays in data/events.json. Live overlay must not silently rewind a later official slip."
+      "note": "Kept the confirmed time."
     },
     {
       "id": "conflict:ussf-481:f9-ussf481",
@@ -35,7 +35,7 @@
       ],
       "resolution": "keep_completed",
       "kept": "2026-10-16T00:02:07.000Z",
-      "note": "Canonical start stays in data/events.json. Live overlay must not silently rewind a later official slip."
+      "note": "Kept the confirmed time."
     }
   ]
 }

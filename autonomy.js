@@ -47,7 +47,7 @@
       </table></div>
 
       <h2>Supervised FSD markets</h2>
-      <p class="intel-note">From the compiled global tracker. “Live” here is Tesla’s listing plus desk sources — still supervised.</p>
+      <p class="intel-note">From our global FSD tracker. “Live” means Tesla lists it and sources confirm it — still supervised.</p>
       <div class="intel-compare"><table>
         <thead><tr><th>Market</th><th>Layer</th><th>Version</th><th>Note</th><th>Source</th></tr></thead>
         <tbody>${live.concat(limited).map((c) => {

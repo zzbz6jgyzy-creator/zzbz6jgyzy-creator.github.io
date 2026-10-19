@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T19:03:24.393Z",
+  "generatedAt": "2026-10-19T19:04:24.067Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -206,7 +206,7 @@
       "label": "Next Starship flight",
       "at": "2026-10-18T07:50:00.000Z",
       "evidence": "estimated",
-      "source": "data/events.json (FAA planning / desk overlay)",
+      "source": "FAA planning slides",
       "sourceUrl": "",
       "href": "/starship.html",
       "summary": "NET windows are not SpaceX T-0."

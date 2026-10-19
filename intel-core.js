@@ -290,7 +290,7 @@
         label: "Next Starship flight",
         at: ev && ev.date ? src.events.updated : ship.updated,
         evidence: ev ? "estimated" : "reported_unconfirmed",
-        source: ev ? "data/events.json (FAA planning / desk overlay)" : "starship-data.js",
+        source: ev ? "FAA planning slides" : "starship-data.js",
         href: "/starship.html",
         summary: "NET windows are not SpaceX T-0.",
       }));
@@ -846,7 +846,7 @@
           ],
           resolution: flown ? "keep_completed" : "keep_canonical_events_json",
           kept: a.start,
-          note: "Canonical start stays in data/events.json. Live overlay must not silently rewind a later official slip.",
+          note: "Kept the confirmed time.",
         });
       });
     });
@@ -864,12 +864,12 @@
         note: note || "",
       });
     };
-    add("starship", generatedAt, src.starship && src.starship.updated, "Compiled desk file. FAA NET is not a SpaceX clock.");
-    add("launches", generatedAt, src.events && src.events.updated, "Canonical dates in data/events.json. Launch Library 2 is a live overlay.");
+    add("starship", generatedAt, src.starship && src.starship.updated, "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times.");
+    add("launches", generatedAt, src.events && src.events.updated, "Sources: SpaceX, Launch Library 2.");
     add("software", src.updates && src.updates.updated, src.updates && src.updates.updated, "Teslascope sample. A build existing ≠ your car being offered it.");
-    add("fsd", generatedAt, src.fsdEurope && src.fsdEurope.updated, "Manual editorial file with ministry sources.");
+    add("fsd", generatedAt, src.fsdEurope && src.fsdEurope.updated, "Sources: national ministries and regulators.");
     add("robotaxi", generatedAt, src.robotaxiTx && src.robotaxiTx.checked, "Texas DMV count via fsddb.com.");
-    add("starlink", src.starlinkLive && src.starlinkLive.orbitsUpdated, src.starlinkLive && src.starlinkLive.updated, "Counts: Jonathan McDowell. Orbits: CelesTrak snapshot, not a live operator feed.");
+    add("starlink", src.starlinkLive && src.starlinkLive.orbitsUpdated, src.starlinkLive && src.starlinkLive.updated, "Sources: Jonathan McDowell (counts), CelesTrak (orbits).");
     add("promises", generatedAt, src.promises && src.promises.updated, "Every quote needs a source that was opened.");
     add("production", generatedAt, src.production && src.production.updated, "Tesla IR production and delivery tables only.");
     add("roadster", generatedAt, src.promises && src.promises.updated, "Reveal is past. Production target remains a company claim.");
@@ -1121,14 +1121,14 @@
       const hit = (row.values || []).find((v) => v.source === source);
       return fmtClock((hit && hit.value) || (source === "data/events.json" ? row.kept : ""));
     };
-    return `<div class="intel-conflicts"><p class="intel-note">Canonical start stays in data/events.json. Live overlay times are shown, not used to rewind a flown or later official clock.</p>
+    return `<div class="intel-conflicts"><p class="intel-note">When a live launch feed and the confirmed time disagree, we keep the confirmed time.</p>
       <div class="intel-compare"><table>
-        <thead><tr><th>Entity</th><th>Kept (events.json)</th><th>Live overlay</th><th>Resolution</th></tr></thead>
+        <thead><tr><th>Event</th><th>Confirmed time</th><th>Live feed</th><th>Result</th></tr></thead>
         <tbody>${rows.map((c) => `<tr>
           <td><b>${esc(c.entity)}</b></td>
           <td>${esc(cell(c, "data/events.json"))}</td>
           <td>${esc(cell(c, "live-data.json"))}</td>
-          <td>${esc(c.resolution || "keep_canonical_events_json")}. ${esc(c.note || "")}</td>
+          <td>${esc(c.note || "Kept the confirmed time.")}</td>
         </tr>`).join("")}</tbody>
       </table></div></div>`;
   }

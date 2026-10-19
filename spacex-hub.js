@@ -7,5 +7,5 @@
   const d = new Date(S.updated);
   if (!Number.isFinite(+d)) return;
   const when = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(d);
-  el.textContent = "Starship compiled " + when + ".";
+  el.textContent = "Starship dates updated " + when + ".";
 })();

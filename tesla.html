@@ -166,7 +166,7 @@
             <p class="tz-kicker">Tesla</p>
             <h1>Every part of Tesla, tracked.</h1>
             <p class="tz-lede">The cars, the software, Robotaxi, charging and the stock, from an owner and shareholder. Facts with sources.</p>
-            <p class="tz-stamp" id="tz-updated">Dates below are compiled stamps, not live telemetry.</p>
+            <p class="tz-stamp" id="tz-updated">Dates below show when each tracker was last updated.</p>
             <p class="tz-cta">
               <a class="button button-primary" href="#news">Latest Tesla news</a>
               <a class="button button-ghost" href="#trackers">Open the trackers</a>
@@ -257,7 +257,7 @@
         <section class="tz-section" id="trackers" aria-labelledby="tz-fsd-h">
           <div class="tz-head">
             <h2 id="tz-fsd-h">FSD &amp; software</h2>
-            <p>What your car is running, and where FSD (Supervised) is allowed. Last-checked stamps below are compiled, not live telemetry.</p>
+            <p>What your car is running, and where FSD (Supervised) is allowed. Each tracker below shows when it was last checked.</p>
           </div>
           <div class="intel-desk">
             <div class="intel-bar" data-intel="software"></div>
@@ -613,7 +613,7 @@
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/live.js?v=202610192000" data-page="tesla" defer></script>
     <script src="/fsd-europe-data.js" defer></script>
-    <script src="/tesla-hub.js?v=202610191500" defer></script>
+    <script src="/tesla-hub.js?v=202610191950" defer></script>
     <script>
       document.querySelectorAll("time.lt[datetime]").forEach(function (t) {
         try {
@@ -630,8 +630,8 @@
         document.querySelectorAll("[data-cc-date]").forEach(function (e) { e.textContent = dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" }); });
       }).catch(function () {});
     </script>
-    <script src="/intel-core.js?v=202610192300" defer></script>
-    <script src="/intel.js?v=202610192300" defer></script>
+    <script src="/intel-core.js?v=202610191950" defer></script>
+    <script src="/intel.js?v=202610191950" defer></script>
       <script src="/nav-pill.js?v=202610192000"></script>
   </body>
 </html>
