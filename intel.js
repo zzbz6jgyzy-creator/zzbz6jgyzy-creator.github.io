@@ -59,7 +59,7 @@
     fetch("/data/starlink-history.json", { cache: "no-cache" }).then((r) => r.json()).then((h) => {
       slBox.innerHTML = I.starlinkChangesHtml(h);
     }).catch(() => {
-      slBox.innerHTML = '<p class="intel-empty">Committed McDowell snapshots could not load.</p>';
+      slBox.innerHTML = '<p class="intel-empty">Starlink history could not load.</p>';
     });
   }
 
@@ -92,7 +92,7 @@
       const h = bundle.health;
       health.innerHTML = `<div class="intel-grid">
         <div class="intel-card"><strong>${h.ok ? "OK" : "Issues"}</strong><span>Engine status</span></div>
-        <div class="intel-card"><strong>${h.factCount}</strong><span>Canonical facts</span></div>
+        <div class="intel-card"><strong>${h.factCount}</strong><span>Sourced facts</span></div>
         <div class="intel-card"><strong>${h.changeCount}</strong><span>Sourced change rows</span></div>
         <div class="intel-card"><strong>${h.conflictCount}</strong><span>Conflicts kept, not overwritten</span></div>
       </div>

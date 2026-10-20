@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-19",
-  "note": "Demonstration archive only. A demo is not a commercial product. Walking, waving or sitting in a car does not establish autonomy. Remote assistance is unknown unless a named source disclosed it. Specs Tesla stated on stage stay labelled as company claims. We Robot 2024 and other events stay off this list until a source is opened.",
+  "note": "Public Optimus demos only. A demo isn’t a product on sale, and walking, waving or sitting in a car doesn’t show the robot is working on its own. We only mention remote help when a named source says so. Specs Tesla gave on stage are labelled as company claims. We Robot 2024 and other events will be added once we have a source.",
   "demos": [
     {
       "id": "ai-day-2021",
@@ -9,7 +9,7 @@
       "event": "Tesla AI Day 2021",
       "kind": "announcement",
       "generation": "Tesla Bot (announced name Optimus)",
-      "lede": "Tesla announced a humanoid robot and showed drawings plus a non-working stage figure. The opened source does not describe a walking machine.",
+      "lede": "Tesla announced a humanoid robot and showed drawings plus a non-working stage figure. The source doesn’t describe a walking machine.",
       "shown": [
         "Drawings of a planned Tesla Bot near the end of AI Day.",
         "A mannequin version on the stage that was not working, as reported by The Verge."
@@ -21,11 +21,11 @@
       ],
       "autonomy": {
         "state": "unknown",
-        "note": "No robot task was shown. Autonomy is not established."
+        "note": "No robot task was shown, so there’s no sign it worked on its own."
       },
       "remoteAssistance": {
         "state": "unknown",
-        "note": "Not disclosed in the opened source."
+        "note": "Not mentioned in the source."
       },
       "uncertain": [
         "Whether the stage figure was a mannequin, as The Verge wrote in 2021, or a person in a suit, as Musk later said at AI Day 2022.",
@@ -69,11 +69,11 @@
       ],
       "autonomy": {
         "state": "not_established",
-        "note": "The Verge reported Tesla moved Autopilot software onto the bot and used motion capture plus inverse kinematics. Completing a staged walk or a recorded box pickup does not establish autonomy."
+        "note": "The Verge reported Tesla moved Autopilot software onto the bot and used motion capture plus inverse kinematics. A staged walk or a recorded box pickup doesn’t show it was working on its own."
       },
       "remoteAssistance": {
         "state": "unknown",
-        "note": "The opened source does not say whether anyone was driving the robot remotely."
+        "note": "The source doesn’t say whether anyone was controlling the robot remotely."
       },
       "uncertain": [
         "How much of the live walk was scripted, limited, or assisted.",
@@ -97,8 +97,8 @@
       "date": "2026-10-15",
       "event": "Tesla Roadster event, SpaceX McGregor",
       "kind": "stage_prop",
-      "generation": "Optimus (generation not stated by the opened source)",
-      "lede": "When the Roadster door opened after programmed stunts, an Optimus robot was in the seat. Engadget says that was for show. The opened source is about the car, not a robot demo.",
+      "generation": "Optimus (generation not given in the source)",
+      "lede": "When the Roadster door opened after programmed stunts, an Optimus robot was in the seat. Engadget says that was for show. The source is about the car, not a robot demo.",
       "shown": [
         "An Optimus robot seated in the Roadster when the door opened.",
         "The car completing ramp and thruster stunts that Engadget says were programmed into the vehicle."
@@ -143,21 +143,21 @@
       "event": "Mondial de l'Auto, Paris Expo Porte de Versailles",
       "kind": "static_display",
       "generation": "Optimus Gen 2",
-      "lede": "Tesla's Paris stand had Optimus Gen 2 on display beside the Cybercab. The opened desk report does not describe it walking or working.",
+      "lede": "Tesla's Paris stand had Optimus Gen 2 on display beside the Cybercab. The report doesn’t describe it walking or working.",
       "shown": [
         "Optimus Gen 2 on the Tesla stand (Hall 7.1, stand C25) during press day."
       ],
       "notShown": [
-        "Walking, object handling, or factory work at the stand — not described in the opened source.",
+        "Walking, object handling, or factory work at the stand — not described in the source.",
         "A European commercial deployment."
       ],
       "autonomy": {
         "state": "unknown",
-        "note": "A robot on a show stand is not established autonomy."
+        "note": "A robot on a show stand doesn’t show it can work on its own."
       },
       "remoteAssistance": {
         "state": "unknown",
-        "note": "Not disclosed in the opened source."
+        "note": "Not mentioned in the source."
       },
       "uncertain": [
         "Whether the unit was powered or posed.",

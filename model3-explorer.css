@@ -47,7 +47,7 @@ a{color:#ff7a88}
   .m3x-bar button{padding:0 .75rem;font-size:.78rem}.m3x-bar .m3x-primary{min-width:84px}
   .m3x-pause{display:none!important}
   .m3x-card{left:10px;right:10px;width:auto;bottom:88px;max-height:44svh}
-  .m3x-credit{left:10px;right:10px;max-width:none;text-align:center;font-size:.52rem;bottom:max(4px,env(safe-area-inset-bottom))}
+  .m3x-credit{left:10px;right:10px;max-width:none;text-align:center;font-size:.52rem;bottom:calc(max(4px,env(safe-area-inset-bottom)) + 1.15rem)}
   .m3x-list-open .m3x-bar{opacity:0;pointer-events:none}
 }
 @media (prefers-reduced-motion:reduce){.m3x-panel,.m3x-poster{transition:none}}
@@ -159,8 +159,8 @@ a{color:#ff7a88}
   .m3x-card{left:0;right:0;top:auto;width:auto;max-height:58svh;border-left:0;backdrop-filter:blur(18px)}
   .m3x-card::before{display:none}
   .m3x-photo img{aspect-ratio:2.2/1}
-  .m3x-status:not(:empty){bottom:104px}
-  .m3x-bar{bottom:max(28px,calc(env(safe-area-inset-bottom) + 18px))}
+  .m3x-status:not(:empty){bottom:154px}
+  .m3x-bar{bottom:max(78px,calc(env(safe-area-inset-bottom) + 18px))}
 }
 /* phones in portrait: the 16:10 poster is mostly empty floor, so scale it up to match the car's on-screen size */
 @media (orientation:portrait) and (max-width:700px){
@@ -179,3 +179,5 @@ a{color:#ff7a88}
   .m3x-zoom input{height:96px}
   .m3x-list-open .m3x-zoom,.m3x-has-card .m3x-zoom{opacity:0;pointer-events:none}
 }
+/* keep the 3D credit clear of the centred control bar on desktop */
+@media (min-width:901px) and (pointer:fine){.m3x-credit{max-width:min(400px,calc(50vw - 320px))}}

@@ -1,82 +1,82 @@
 {
-  "updated": "2026-10-19T16:16:29.126Z",
+  "updated": "2026-10-20T09:53:13.930Z",
   "trackers": [
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
-      "note": "Compiled desk file. FAA NET is not a SpaceX clock."
+      "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-18T07:50:00.000Z",
-      "note": "Canonical dates in data/events.json. Launch Library 2 is a live overlay."
+      "note": "Sources: SpaceX, Launch Library 2."
     },
     {
       "tracker": "software",
       "href": "/updates.html",
-      "lastChecked": "2026-10-19T15:52:32.000Z",
-      "lastVerified": "2026-10-19T15:52:32.000Z",
-      "note": "Teslascope sample. A build existing ≠ your car being offered it."
+      "lastChecked": "2026-10-20T09:53:12.000Z",
+      "lastVerified": "2026-10-20T09:53:12.000Z",
+      "note": "Source: Teslascope."
     },
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-18T00:00:00.000Z",
-      "note": "Manual editorial file with ministry sources."
+      "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
-      "lastVerified": "2026-10-19T06:00:37.000Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
+      "lastVerified": "2026-10-20T05:59:35.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
     {
       "tracker": "starlink",
       "href": "/starlink.html",
-      "lastChecked": "2026-10-19T06:05:40.000Z",
+      "lastChecked": "2026-10-20T06:59:47.000Z",
       "lastVerified": "2026-10-15T19:00:26.000Z",
-      "note": "Counts: Jonathan McDowell. Orbits: CelesTrak snapshot, not a live operator feed."
+      "note": "Sources: Jonathan McDowell (counts), CelesTrak (orbits)."
     },
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
-      "note": "Every quote needs a source that was opened."
+      "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
-      "note": "Tesla IR production and delivery tables only."
+      "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
-      "note": "Demonstration ≠ autonomy. Production targets are company claims."
+      "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
-      "lastVerified": "2026-10-19T15:52:32.000Z",
-      "note": "Vehicle prefs stay in this browser."
+      "lastChecked": "2026-10-20T09:53:13.930Z",
+      "lastVerified": "2026-10-20T09:53:12.000Z",
+      "note": "Your car details stay in this browser."
     }
   ]
 }

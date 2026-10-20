@@ -11,7 +11,7 @@
       "url": "/about.html",
       "title": "About",
       "tag": "About",
-      "summary": "Independent Tesla, SpaceX and Grok desk from @ALJR86. Not affiliated with Tesla, SpaceX or xAI."
+      "summary": "Independent Tesla, SpaceX and Grok desk from Alex R. Not affiliated with Tesla, SpaceX or xAI."
     },
     {
       "url": "/news.html",
@@ -203,7 +203,7 @@
       "url": "/see-the-launch.html",
       "title": "Can I see it?",
       "tag": "SpaceX",
-      "summary": "Visible from here? Canonical launch clocks stay in events.json; Launch Library 2 is a live overlay."
+      "summary": "Visible from here? Where to look for the next SpaceX launch, with local weather."
     },
     {
       "url": "/cybercab.html",
@@ -233,7 +233,7 @@
       "url": "/optimus.html#demos",
       "title": "Optimus demonstration archive",
       "tag": "Optimus",
-      "summary": "Four opened events. Shown, not shown, autonomy, remote assistance. We Robot 2024 is not listed until a source is opened. A demo is not autonomy."
+      "summary": "Four sourced Optimus demos: what was shown, what wasn’t, and whether it worked on its own."
     },
     {
       "url": "/optimus.html#ai-day-2021",
@@ -257,7 +257,7 @@
       "url": "/optimus.html#paris-motor-show-2026",
       "title": "Optimus demo: Paris Motor Show 2026",
       "tag": "Optimus",
-      "summary": "Optimus Gen 2 on the Tesla stand. Static display. Walking not described in the opened source."
+      "summary": "Optimus Gen 2 on the Tesla stand. Static display. Walking not described in the source."
     },
     {
       "url": "/production.html",
@@ -269,7 +269,7 @@
       "url": "/autonomy.html",
       "title": "FSD & Robotaxi evidence",
       "tag": "Trackers",
-      "summary": "Supervised FSD, permits and commercial robotaxi rides in separate layers. Texas Cybercab registrations are not serving cars."
+      "summary": "Supervised FSD, permits and paid robotaxi rides, tracked separately. Texas Cybercab registrations are not serving cars."
     },
     {
       "url": "/daily.html",
@@ -285,9 +285,9 @@
     },
     {
       "url": "/updates.html#sample-waves",
-      "title": "Tesla software sample waves",
+      "title": "Tesla software rollout waves",
       "tag": "Trackers",
-      "summary": "Teslascope first-seen and sample-count jumps by country. A sample sighting is not a VIN offer."
+      "summary": "Teslascope first-seen and sample-count jumps by country. Spotting a build doesn’t mean your car will get it."
     },
     {
       "url": "/fsd.html",
@@ -317,7 +317,7 @@
       "url": "/games.html",
       "title": "Games",
       "tag": "More",
-      "summary": "Fan-made games from @ALJR86: Hot Staging, Catch, and Robotaxi Boss. Not affiliated with Tesla or SpaceX."
+      "summary": "Fan-made games from Alex R: Hot Staging, Catch, and Robotaxi Boss. Not affiliated with Tesla or SpaceX."
     },
     {
       "url": "/wallpapers.html",
@@ -329,25 +329,25 @@
       "url": "/catch.html",
       "title": "Catch",
       "tag": "Games",
-      "summary": "Catch: fly Starship into the chopsticks. A fan-made SpaceX game from @ALJR86."
+      "summary": "Catch: fly Starship into the chopsticks. A fan-made SpaceX game from Alex R."
     },
     {
       "url": "/staging.html",
       "title": "Hot Staging",
       "tag": "Games",
-      "summary": "Hot Staging: keep the Starship stack pointed, then light Ship inside Super Heavy’s fire. A fan-made SpaceX game from @ALJR86."
+      "summary": "Hot Staging: keep the Starship stack pointed, then light Ship inside Super Heavy’s fire. A fan-made SpaceX game from Alex R."
     },
     {
       "url": "/robotaxi.html",
       "title": "Robotaxi Boss",
       "tag": "Games",
-      "summary": "Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from @ALJR86."
+      "summary": "Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from Alex R."
     },
     {
       "url": "/videos.html",
       "title": "Videos",
       "tag": "More",
-      "summary": "Clips from @ALJR86 now live on the Tesla, SpaceX and Grok desks."
+      "summary": "Clips from Alex R now live on the Tesla, SpaceX and Grok desks."
     }
   ]
 }

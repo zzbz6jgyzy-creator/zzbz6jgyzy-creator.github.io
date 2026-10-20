@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-19T16:16:29.126Z",
+  "generatedAt": "2026-10-20T09:53:13.930Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -120,9 +120,9 @@
       "topic": "tesla-software",
       "tracker": "software",
       "field": "newest-reporting",
-      "value": "2026.38.5.1",
+      "value": "2026.38.5.10",
       "label": "Newest reporting build",
-      "at": "2026-10-19T15:52:32.000Z",
+      "at": "2026-10-20T09:53:12.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample (3387 cars)",
       "sourceUrl": "https://teslascope.com/software",
@@ -148,9 +148,9 @@
       "topic": "tesla-software",
       "tracker": "software",
       "field": "most-common",
-      "value": "2026.38.5.1@25.7",
+      "value": "2026.38.5.1@26.5",
       "label": "Most common sample build",
-      "at": "2026-10-19T15:52:32.000Z",
+      "at": "2026-10-20T09:53:12.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
@@ -192,7 +192,7 @@
       "field": "tx-cybercab",
       "value": "349",
       "label": "Texas Cybercab registrations",
-      "at": "2026-10-19T00:00:00.000Z",
+      "at": "2026-10-20T00:00:00.000Z",
       "evidence": "independently_corroborated",
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
@@ -208,7 +208,7 @@
       "label": "Next Starship flight",
       "at": "2026-10-18T07:50:00.000Z",
       "evidence": "estimated",
-      "source": "data/events.json (FAA planning / desk overlay)",
+      "source": "FAA planning slides",
       "sourceUrl": "",
       "href": "/starship.html",
       "summary": "NET windows are not SpaceX T-0."
@@ -243,6 +243,108 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/hagerty-roadster-moravy-interview.html",
+      "topic": "optimus",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin",
+      "at": "2026-10-20T09:39:28.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/hagerty-roadster-moravy-interview.html",
+      "href": "/dispatch/hagerty-roadster-moravy-interview.html",
+      "summary": "Lars Moravy on the 1 MW rear-drive powertrain, the fan “sucker” system, an Optimus-actuated wing and SpaceX cold-gas thrusters, and what’s still a target.",
+      "title": "Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin",
+      "id": "logged|dispatch:/dispatch/hagerty-roadster-moravy-interview.html|2026-10-20T09:39:28.000Z|Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin"
+    },
+    {
+      "type": "appeared",
+      "factId": "tesla-software:wave:2026.38.5.10",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.10",
+      "previous": "0",
+      "next": "1",
+      "at": "2026-10-20T08:56:06.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.10 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "title": "2026.38.5.10",
+      "id": "appeared|tesla-software:wave:2026.38.5.10|2026-10-20T08:56:06.000Z|1"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-iphone-action-button.html",
+      "topic": "promises",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok Bot now works from the iPhone Action Button",
+      "at": "2026-10-20T07:50:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-iphone-action-button.html",
+      "href": "/dispatch/grok-bot-iphone-action-button.html",
+      "summary": "App 1.16 lets iPhone 15 Pro and newer start a Bot voice chat with one press. The setup, who qualifies, and two weeks of updates.",
+      "title": "Grok Bot now works from the iPhone Action Button",
+      "id": "logged|dispatch:/dispatch/grok-bot-iphone-action-button.html|2026-10-20T07:50:00.000Z|Grok Bot now works from the iPhone Action Button"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/ark-tesla-2031-model.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast",
+      "at": "2026-10-20T01:40:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/ark-tesla-2031-model.html",
+      "href": "/dispatch/ark-tesla-2031-model.html",
+      "summary": "ARK’s new 2031 model lifts its target from $2,600, but its robotaxi revenue range came down. Optimus, storage and margins fill the gap.",
+      "title": "ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast",
+      "id": "logged|dispatch:/dispatch/ark-tesla-2031-model.html|2026-10-20T01:40:00.000Z|ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-2026-proxy-three-items.html",
+      "topic": "fsd",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla’s December vote: three items, no shareholder proposals",
+      "at": "2026-10-19T19:35:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-2026-proxy-three-items.html",
+      "href": "/dispatch/tesla-2026-proxy-three-items.html",
+      "summary": "The 2026 proxy: re-elect Musk, Denholm and Straubel, say-on-pay and PwC on 3 Dec. Last year’s ballot had 14 items.",
+      "title": "Tesla’s December vote: three items, no shareholder proposals",
+      "id": "logged|dispatch:/dispatch/tesla-2026-proxy-three-items.html|2026-10-19T19:35:00.000Z|Tesla’s December vote: three items, no shareholder proposals"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starlink-eu-spectrum-bid.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Europe’s big four carriers eye Starlink’s satellite airwaves",
+      "at": "2026-10-19T18:40:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starlink-eu-spectrum-bid.html",
+      "href": "/dispatch/starlink-eu-spectrum-bid.html",
+      "summary": "A letter of intent to explore a joint EU 2 GHz bid, an EU proposal still awaiting approval, and a US warning of “devastating” retaliation.",
+      "title": "Europe’s big four carriers eye Starlink’s satellite airwaves",
+      "id": "logged|dispatch:/dispatch/starlink-eu-spectrum-bid.html|2026-10-19T18:40:00.000Z|Europe’s big four carriers eye Starlink’s satellite airwaves"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-cant-rent-compute.html",
@@ -307,7 +409,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 moved from 658 to 727 cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
+      "summary": "2026.38.5.1 moved from 658 to 727 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-18T02:50:02.000Z|727"
     },
@@ -380,57 +482,6 @@
       "id": "logged|dispatch:/dispatch/grok-bot-3x-faster-connectors.html|2026-10-17T01:55:00.000Z|Grok Bot says it’s 3x faster, adds Robinhood and Coinbase"
     },
     {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/x-ads-esthetic-standard.html",
-      "topic": "promises",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "X will bar “ugly” and “shrill” advertisers",
-      "at": "2026-10-17T01:50:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/x-ads-esthetic-standard.html",
-      "href": "/dispatch/x-ads-esthetic-standard.html",
-      "summary": "Musk’s new ad “esthetic standard” vs Google’s and Meta’s rules: vaguer test, tougher penalty.",
-      "title": "X will bar “ugly” and “shrill” advertisers",
-      "id": "logged|dispatch:/dispatch/x-ads-esthetic-standard.html|2026-10-17T01:50:00.000Z|X will bar “ugly” and “shrill” advertisers"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-india-reliance-reply.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Starlink answers Reliance: “ready to connect India”",
-      "at": "2026-10-16T19:45:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-india-reliance-reply.html",
-      "href": "/dispatch/starlink-india-reliance-reply.html",
-      "summary": "Three licensees, none selling yet. The real gate is a Home Ministry security review, then spectrum pricing.",
-      "title": "Starlink answers Reliance: “ready to connect India”",
-      "id": "logged|dispatch:/dispatch/starlink-india-reliance-reply.html|2026-10-16T19:45:00.000Z|Starlink answers Reliance: “ready to connect India”"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/slovakia-fsd-ninth-eu.html",
-      "topic": "fsd",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Slovakia approves FSD, the 9th EU country",
-      "at": "2026-10-16T11:42:37.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/slovakia-fsd-ninth-eu.html",
-      "href": "/dispatch/slovakia-fsd-ninth-eu.html",
-      "summary": "Nine EU yeses, but only ~14% of the EU's people. An EU-wide approval needs 65%.",
-      "title": "Slovakia approves FSD, the 9th EU country",
-      "id": "logged|dispatch:/dispatch/slovakia-fsd-ninth-eu.html|2026-10-16T11:42:37.000Z|Slovakia approves FSD, the 9th EU country"
-    },
-    {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.1",
       "topic": "tesla-software",
@@ -443,26 +494,9 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 moved from 329 to 426 cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
+      "summary": "2026.38.5.1 moved from 329 to 426 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-16T05:50:23.000Z|426"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/project-bromo-eu-spacex-rival.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "EU fast-tracks Project Bromo vs SpaceX",
-      "at": "2026-10-16T05:34:19.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/project-bromo-eu-spacex-rival.html",
-      "href": "/dispatch/project-bromo-eu-spacex-rival.html",
-      "summary": "€6.5B Airbus–Leonardo–Thales merger vs Starlink’s 11,000+ satellites — the scale gap.",
-      "title": "EU fast-tracks Project Bromo vs SpaceX",
-      "id": "logged|dispatch:/dispatch/project-bromo-eu-spacex-rival.html|2026-10-16T05:34:19.000Z|EU fast-tracks Project Bromo vs SpaceX"
     },
     {
       "type": "changed",
@@ -477,26 +511,9 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 moved from 230 to 329 cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
+      "summary": "2026.38.5.1 moved from 230 to 329 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-16T02:52:59.000Z|329"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/roadster-reveal-2026.html",
-      "topic": "production",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla’s new Roadster flew",
-      "at": "2026-10-16T02:13:46.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/roadster-reveal-2026.html",
-      "href": "/dispatch/roadster-reveal-2026.html",
-      "summary": "Upside down on a ramp, over five Teslas, 0–60 under 0.59s. $50,000 to reserve, production 2028.",
-      "title": "Tesla’s new Roadster flew",
-      "id": "logged|dispatch:/dispatch/roadster-reveal-2026.html|2026-10-16T02:13:46.000Z|Tesla’s new Roadster flew"
     },
     {
       "type": "logged",
@@ -511,7 +528,7 @@
       "source": "https://x.com/teslaeurope/status/2111095942015566145",
       "sourceUrl": "https://x.com/teslaeurope/status/2111095942015566145",
       "href": "/fsd-europe.html",
-      "summary": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given. Company claim. “Soon” is not a date, and recognition is not a live customer rollout.",
+      "summary": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given. Company claim. “Soon” has no date yet, and recognition doesn’t mean customers have it.",
       "title": "SK · statement",
       "id": "logged|fsd:country:SK|2026-10-16T00:00:00.000Z|Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given."
     },
@@ -528,7 +545,7 @@
       "source": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou",
       "sourceUrl": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou",
       "href": "/fsd-europe.html",
-      "summary": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country. Recognition is not a customer rollout. Owners have not been shown receiving the software.",
+      "summary": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country. Recognised, but no owners have been reported getting the software yet.",
       "title": "SK · approval",
       "id": "logged|fsd:country:SK|2026-10-16T00:00:00.000Z|Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country."
     },
@@ -545,7 +562,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 moved from 153 to 230 cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
+      "summary": "2026.38.5.1 moved from 153 to 230 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-15T23:44:21.000Z|230"
     },
@@ -579,7 +596,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 moved from 28 to 73 cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
+      "summary": "2026.38.5.1 moved from 28 to 73 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-15T05:51:24.000Z|73"
     },
@@ -613,7 +630,7 @@
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
       "href": "/cybercab.html#cc-changes",
-      "summary": "Texas Cybercab registrations moved from 319 to 349. A registration is not a car in service.",
+      "summary": "Texas Cybercab registrations moved from 319 to 349. A registered car isn’t necessarily in service yet.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-15T00:00:00.000Z|349"
     },
@@ -647,7 +664,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5 moved from 52 to 92 cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
+      "summary": "2026.38.5 moved from 52 to 92 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5",
       "id": "changed|tesla-software:wave:2026.38.5|2026-10-14T02:50:43.000Z|92"
     },
@@ -664,7 +681,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 first appeared in the Teslascope sample with 5 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.38.5.1 first appeared in the Teslascope sample with 5 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.5.1",
       "id": "appeared|tesla-software:wave:2026.38.5.1|2026-10-13T23:44:44.000Z|5"
     },
@@ -681,7 +698,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5 first appeared in the Teslascope sample with 5 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.38.5 first appeared in the Teslascope sample with 5 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.5",
       "id": "appeared|tesla-software:wave:2026.38.5|2026-10-11T02:36:17.000Z|5"
     },
@@ -715,7 +732,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.3.1 first appeared in the Teslascope sample with 43 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.38.3.1 first appeared in the Teslascope sample with 43 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.3.1",
       "id": "appeared|tesla-software:wave:2026.38.3.1|2026-10-10T08:48:07.000Z|43"
     },
@@ -732,7 +749,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.33.5 first appeared in the Teslascope sample with 92 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.33.5 first appeared in the Teslascope sample with 92 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.33.5",
       "id": "appeared|tesla-software:wave:2026.33.5|2026-10-10T08:48:07.000Z|92"
     },
@@ -749,7 +766,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.3 first appeared in the Teslascope sample with 7 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.38.3 first appeared in the Teslascope sample with 7 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.3",
       "id": "appeared|tesla-software:wave:2026.38.3|2026-10-10T08:48:07.000Z|7"
     },
@@ -766,7 +783,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.33.100 first appeared in the Teslascope sample with 36 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.33.100 first appeared in the Teslascope sample with 36 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.33.100",
       "id": "appeared|tesla-software:wave:2026.33.100|2026-10-10T08:48:07.000Z|36"
     },
@@ -783,7 +800,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.27.6.15 first appeared in the Teslascope sample with 3 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.27.6.15 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.27.6.15",
       "id": "appeared|tesla-software:wave:2026.27.6.15|2026-10-10T08:48:07.000Z|3"
     },
@@ -800,7 +817,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38 first appeared in the Teslascope sample with 68 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.38 first appeared in the Teslascope sample with 68 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38",
       "id": "appeared|tesla-software:wave:2026.38|2026-10-10T08:48:07.000Z|68"
     },
@@ -817,7 +834,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.27.6.5 first appeared in the Teslascope sample with 1 car. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.27.6.5 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.27.6.5",
       "id": "appeared|tesla-software:wave:2026.27.6.5|2026-10-10T08:48:07.000Z|1"
     },
@@ -834,7 +851,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.32.7 first appeared in the Teslascope sample with 355 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.32.7 first appeared in the Teslascope sample with 355 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.32.7",
       "id": "appeared|tesla-software:wave:2026.32.7|2026-10-10T08:48:07.000Z|355"
     },
@@ -851,7 +868,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.27.11 first appeared in the Teslascope sample with 650 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.27.11 first appeared in the Teslascope sample with 650 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.27.11",
       "id": "appeared|tesla-software:wave:2026.27.11|2026-10-10T08:48:07.000Z|650"
     },
@@ -868,7 +885,7 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.27.10 first appeared in the Teslascope sample with 170 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.27.10 first appeared in the Teslascope sample with 170 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.27.10",
       "id": "appeared|tesla-software:wave:2026.27.10|2026-10-10T08:48:07.000Z|170"
     },
@@ -885,26 +902,9 @@
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.28.5 first appeared in the Teslascope sample with 5 cars. A sample sighting is not a rollout and not an offer to a particular car.",
+      "summary": "2026.28.5 first appeared in the Teslascope sample with 5 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.28.5",
       "id": "appeared|tesla-software:wave:2026.28.5|2026-10-10T08:48:07.000Z|5"
-    },
-    {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.27.300",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.27.300",
-      "previous": "0",
-      "next": "38",
-      "at": "2026-10-10T08:48:07.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.27.300 first appeared in the Teslascope sample with 38 cars. A sample sighting is not a rollout and not an offer to a particular car.",
-      "title": "2026.27.300",
-      "id": "appeared|tesla-software:wave:2026.27.300|2026-10-10T08:48:07.000Z|38"
     },
     {
       "type": "logged",
@@ -970,7 +970,7 @@
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://notateslakiller.com/en/tesla-cybercab-record-150-registrations-texas-319-nhtsa/",
       "href": "/cybercab.html#cc-changes",
-      "summary": "Texas Cybercab registrations moved from 169 to 319. A registration is not a car in service.",
+      "summary": "Texas Cybercab registrations moved from 169 to 319. A registered car isn’t necessarily in service yet.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-08T00:00:00.000Z|319"
     },
@@ -1038,7 +1038,7 @@
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://teslant.com/en/news/tesla-cybercab-300-austin-dallas-next-2026-10",
       "href": "/cybercab.html#cc-changes",
-      "summary": "Texas Cybercab registrations moved from 126 to 169. A registration is not a car in service.",
+      "summary": "Texas Cybercab registrations moved from 126 to 169. A registered car isn’t necessarily in service yet.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-03T00:00:00.000Z|169"
     },
@@ -1069,7 +1069,7 @@
       "next": "After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial.",
       "at": "2026-09-28T00:00:00.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Desk read after Flight 14",
+      "source": "Our analysis after Flight 14",
       "sourceUrl": "/starship.html#log",
       "href": "/starship.html#schedule",
       "summary": "After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial.",
@@ -1417,7 +1417,7 @@
       ],
       "resolution": "keep_completed",
       "kept": "2026-10-15T14:27:00.000Z",
-      "note": "Canonical start stays in data/events.json. Live overlay must not silently rewind a later official slip."
+      "note": "Kept the confirmed time."
     },
     {
       "id": "conflict:ussf-481:f9-ussf481",
@@ -1435,171 +1435,171 @@
       ],
       "resolution": "keep_completed",
       "kept": "2026-10-16T00:02:07.000Z",
-      "note": "Canonical start stays in data/events.json. Live overlay must not silently rewind a later official slip."
+      "note": "Kept the confirmed time."
     }
   ],
   "freshness": [
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
-      "note": "Compiled desk file. FAA NET is not a SpaceX clock."
+      "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-18T07:50:00.000Z",
-      "note": "Canonical dates in data/events.json. Launch Library 2 is a live overlay."
+      "note": "Sources: SpaceX, Launch Library 2."
     },
     {
       "tracker": "software",
       "href": "/updates.html",
-      "lastChecked": "2026-10-19T15:52:32.000Z",
-      "lastVerified": "2026-10-19T15:52:32.000Z",
-      "note": "Teslascope sample. A build existing ≠ your car being offered it."
+      "lastChecked": "2026-10-20T09:53:12.000Z",
+      "lastVerified": "2026-10-20T09:53:12.000Z",
+      "note": "Source: Teslascope."
     },
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-18T00:00:00.000Z",
-      "note": "Manual editorial file with ministry sources."
+      "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
-      "lastVerified": "2026-10-19T06:00:37.000Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
+      "lastVerified": "2026-10-20T05:59:35.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
     {
       "tracker": "starlink",
       "href": "/starlink.html",
-      "lastChecked": "2026-10-19T06:05:40.000Z",
+      "lastChecked": "2026-10-20T06:59:47.000Z",
       "lastVerified": "2026-10-15T19:00:26.000Z",
-      "note": "Counts: Jonathan McDowell. Orbits: CelesTrak snapshot, not a live operator feed."
+      "note": "Sources: Jonathan McDowell (counts), CelesTrak (orbits)."
     },
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
-      "note": "Every quote needs a source that was opened."
+      "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
-      "note": "Tesla IR production and delivery tables only."
+      "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
+      "lastChecked": "2026-10-20T09:53:13.930Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
-      "note": "Demonstration ≠ autonomy. Production targets are company claims."
+      "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-19T16:16:29.126Z",
-      "lastVerified": "2026-10-19T15:52:32.000Z",
-      "note": "Vehicle prefs stay in this browser."
+      "lastChecked": "2026-10-20T09:53:13.930Z",
+      "lastVerified": "2026-10-20T09:53:12.000Z",
+      "note": "Your car details stay in this browser."
     }
   ],
   "jobs": [
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.118Z",
-      "finished": "2026-10-19T16:16:29.119Z"
+      "started": "2026-10-20T09:53:13.914Z",
+      "finished": "2026-10-20T09:53:13.919Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.119Z",
-      "finished": "2026-10-19T16:16:29.119Z"
+      "started": "2026-10-20T09:53:13.919Z",
+      "finished": "2026-10-20T09:53:13.920Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.119Z",
-      "finished": "2026-10-19T16:16:29.119Z"
+      "started": "2026-10-20T09:53:13.920Z",
+      "finished": "2026-10-20T09:53:13.920Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.119Z",
-      "finished": "2026-10-19T16:16:29.121Z"
+      "started": "2026-10-20T09:53:13.920Z",
+      "finished": "2026-10-20T09:53:13.924Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.121Z",
-      "finished": "2026-10-19T16:16:29.123Z"
+      "started": "2026-10-20T09:53:13.924Z",
+      "finished": "2026-10-20T09:53:13.926Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.123Z",
-      "finished": "2026-10-19T16:16:29.123Z"
+      "started": "2026-10-20T09:53:13.926Z",
+      "finished": "2026-10-20T09:53:13.926Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.123Z",
-      "finished": "2026-10-19T16:16:29.125Z"
+      "started": "2026-10-20T09:53:13.926Z",
+      "finished": "2026-10-20T09:53:13.927Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.125Z",
-      "finished": "2026-10-19T16:16:29.125Z"
+      "started": "2026-10-20T09:53:13.927Z",
+      "finished": "2026-10-20T09:53:13.927Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.125Z",
-      "finished": "2026-10-19T16:16:29.125Z"
+      "started": "2026-10-20T09:53:13.927Z",
+      "finished": "2026-10-20T09:53:13.928Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.125Z",
-      "finished": "2026-10-19T16:16:29.126Z"
+      "started": "2026-10-20T09:53:13.928Z",
+      "finished": "2026-10-20T09:53:13.929Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.126Z",
-      "finished": "2026-10-19T16:16:29.126Z"
+      "started": "2026-10-20T09:53:13.929Z",
+      "finished": "2026-10-20T09:53:13.930Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.126Z",
-      "finished": "2026-10-19T16:16:29.126Z"
+      "started": "2026-10-20T09:53:13.930Z",
+      "finished": "2026-10-20T09:53:13.930Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-19T16:16:29.126Z",
-      "finished": "2026-10-19T16:16:29.126Z"
+      "started": "2026-10-20T09:53:13.930Z",
+      "finished": "2026-10-20T09:53:13.930Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-19T16:16:29.126Z",
+    "generatedAt": "2026-10-20T09:53:13.930Z",
     "factCount": 17,
     "changeCount": 68,
     "conflictCount": 2,

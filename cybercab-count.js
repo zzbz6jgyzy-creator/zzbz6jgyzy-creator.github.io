@@ -70,7 +70,7 @@
       '<ul class="cc-count-facts"><li class="cc-count-total"><strong>~' + num(total) + "</strong>across " + names.length + " states (approx.)</li>" + wk + mo + "</ul>" +
       '<ul class="cc-count-break">' + lines + "</ul>" +
       '<p class="cc-count-meta"><span>Approximate: adds Texas registrations to third-party estimates. Changes cover Texas only; the latest estimates for ' + esc(cover) + " have no earlier figure to compare.</span><span>Updated " + stamp(fleet.checked) + " · via " + link(fleet.aggregator.url, fleet.aggregator.name) + "</span></p></article>";
-    root.innerHTML = cab + rt + '<p class="cc-count-note">Texas figures split by VIN: Cybercabs start 5YJAJ, Model Ys start 7SAY. Earlier Texas points: ' +
+    root.innerHTML = cab + rt + '<p class="cc-count-note">Texas figures by VIN: Cybercabs start 5YJAJ, Model Ys start 7SAY. Earlier Texas points: ' +
       link("https://teslant.com/en/news/tesla-cybercab-300-austin-dallas-next-2026-10", "TeslAnt") + " (26 Sep, 3 Oct) and " +
       link("https://notateslakiller.com/en/tesla-cybercab-record-150-registrations-texas-319-nhtsa/", "NotATeslaKiller") + " (8 Oct). Refreshed twice a day.</p>";
     window.CC_TOTALS = { cybercab: last.cybercab, modelY: total, asOf: last.date, cabSrc: tx.source.url, rtSrc: fleet.aggregator.url };

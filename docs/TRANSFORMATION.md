@@ -159,11 +159,15 @@ Living progress document for the product rebuild. Resume from here in later Curs
 - Software Update Tracker and My Tesla say **Newest reporting**, not newest build.
 - Quiet next-stream cards lift in light theme. LIVE / Watch-live stay dark-red. No ads. No notify delivery.
 
-### Batch 26 — Per-car mail hook (this session)
+### Batch 26 — Per-car mail hook (removed)
 
-- My Tesla email + notify flags POST to `sd-mail` Worker → Beehiiv custom fields / `my-tesla` tag. No API key in public JS.
-- Teslascope newest-per-country scan enrolls software-notify subscribers into draft automation **My Tesla · software reporting**. Automation stays draft. Worker not deployed until secrets are set.
-- Copy stays honest: capture can succeed; delivery is not live. Recall / hardware / news stored only. No ads.
+- Shipped a draft My Tesla email hook, then taken out on request. Worker never deployed. Beehiiv automation never published.
+
+### Mail removal — My Tesla email dropped (this session)
+
+- Removed the My Tesla alerts form, fields, copy, and JS that POSTed to `sd-mail`. Car profile stays in this browser.
+- Deleted `workers/sd-mail/` and the updates-snapshot `/scan` ping. Do not deploy that Worker.
+- Beehiiv **My Tesla · software reporting** left unpublished. Welcome, five tag automations, and the Sunday newsletter untouched. No `reactivate_existing`. No ads.
 
 ## Architecture (do not rip out)
 
@@ -174,14 +178,14 @@ Living progress document for the product rebuild. Resume from here in later Curs
 | Dispatch | `dispatch/*.html`, `data/articles.json` |
 | Trackers | Starship, FSD Europe, Cybercab, Software updates, Starlink, Promise |
 | Newsletter | Beehiiv via `newsletter.js` — `alexs-newsletter-84b17e.beehiiv.com`. Topic via `utm_content` + subscriber tags |
-| Per-car mail | `workers/sd-mail/` + My Tesla form. Draft Beehiiv API automation. Do not claim live until published + deployed |
+| Per-car mail | Removed. Do not restore `workers/sd-mail/` or the My Tesla email form. Draft Beehiiv automation stays unpublished |
 | X handle | `@ALJR86` / `twitter:site` — do not change |
 | Referral | `ts.la/alex474841` — do not invent affiliates |
 
 ## Ranked next batches
 
-1. Deploy `sd-mail` with `BEEHIIV_API_KEY` + `SCAN_SECRET`, then publish **My Tesla · software reporting** in Beehiiv if software mail should actually send.
-2. Publish Beehiiv `Tag ·` automations only if segmented signup mail is wanted.
+1. Do not publish **My Tesla · software reporting** and do not restore `sd-mail`.
+2. Beehiiv `Tag ·` automations are already live from a prior human publish — leave them.
 
 Dark remains the default brand. Do not auto-switch on OS light mode.
 

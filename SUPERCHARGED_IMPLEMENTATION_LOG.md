@@ -145,6 +145,13 @@ After #139 merged:
 - We Robot 2024 / Q4 2025 YoY
 - Live notifications / Postgres / Fleet / NHTSA ingest / faster cron
 
+## My Tesla mail removal
+
+Branch: `cursor/drop-my-tesla-mail-5e96`  
+Date: 19 Oct 2026
+
+Removed the My Tesla email/alerts form and the JS that POSTed to `sd-mail`. Deleted `workers/sd-mail/` and the updates-snapshot ping. Sunday Beehiiv signup, Welcome, and the five tag automations were not touched. Draft **My Tesla · software reporting** left unpublished. No `reactivate_existing`.
+
 ## Batch 8 — Homepage clocks, energy YoY, desks, calendar archive
 
 Branch: `cursor/intel-crosslinks-5e96`  

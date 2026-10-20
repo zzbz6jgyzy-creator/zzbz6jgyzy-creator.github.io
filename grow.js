@@ -48,7 +48,7 @@
     const b = document.createElement("section");
     b.className = "sd-band"; b.id = "newsletter"; b.setAttribute("data-newsletter", "band"); b.setAttribute("data-band-topic", topic); b.setAttribute("aria-label", "Newsletter signup");
     b.innerHTML = `<div><h2>${heading}</h2><p>${blurb}</p></div>
-      <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-1?utm_source=website&utm_medium=site-band&utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
+      <div>${form("sd-band-email")}<p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/roadster-just-flew?utm_source=website&utm_medium=site-band&utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div>`;
     const bs = document.querySelector("[data-band-slot]"); if (bs) bs.appendChild(b); else place(b);
   }
   const KEY = "sd-pop-seen";

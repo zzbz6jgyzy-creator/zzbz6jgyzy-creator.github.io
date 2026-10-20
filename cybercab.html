@@ -157,7 +157,7 @@
           <div class="cc-hero-copy">
             <p class="eyebrow reveal">Deep dive · Tesla</p>
             <h1 class="reveal delay-1">Cybercab <span>Tracker</span></h1>
-            <p class="reveal delay-2">How many Cybercabs are out there, where you can ride one, and what’s verified versus only announced. Every claim on the Reality Map links to a source. Supervised FSD, Texas permits and paid rides stay on <a href="/autonomy.html">FSD &amp; Robotaxi evidence</a>. A Texas registration is not a car in service and is not the same as Austin commercial rides.</p>
+            <p class="reveal delay-2">How many Cybercabs are out there, where you can ride one, and what’s verified versus only announced. Every claim on the Reality Map links to a source. For supervised FSD, Texas permits and paid rides, see <a href="/autonomy.html">FSD & Robotaxi evidence</a>. A Texas registration is not a car in service and is not the same as Austin commercial rides.</p>
             <p class="cc-jumps reveal delay-2">
               <a href="#reality-map">Reality Map</a>
               <a href="#cc-count-h">Fleet</a>
@@ -198,7 +198,7 @@
         <section class="section" id="cc-changes" aria-labelledby="cc-chg-h">
           <div class="section-head">
             <h2 id="cc-chg-h" class="reveal">What changed</h2>
-            <p class="reveal delay-1">Texas DMV Cybercab registrations, jump by jump. Unchanged days are labelled unchanged. A registration is not a car in service.</p>
+            <p class="reveal delay-1">Texas DMV Cybercab registrations, jump by jump. Unchanged days are labelled unchanged. A registered car isn’t necessarily in service yet.</p>
           </div>
           <div data-cc-changes><p class="cc-count-empty">Loading sourced jumps&hellip;</p></div>
         </section>
@@ -281,17 +281,25 @@
       </footer>
     </div>
     <script src="/script.js?v=202610190800"></script>
-    <script src="/cybercab-data.js?v=202610191150"></script>
-    <script src="/robotaxi-reality-data.js?v=20261016093020"></script>
-    <script src="/cybercab-tracker.js?v=202610150830"></script>
-    <script src="/cybercab-count.js?v=202610150830" defer></script>
-    <script src="/cybercab-cities.js?v=20261016093020" defer></script>
-    <script src="/robotaxi-map.js?v=202610161200" defer></script>
+    <script src="/cybercab-data.js?v=202610191150" defer></script>
+    <script src="/cybercab-tracker.js?v=202610150830" defer></script>
+    <script src="/cybercab-count.js?v=202610192045" defer></script>
+    <script>
+      /* Reality Map loads when it nears the screen or once the page is idle (keeps phone first paint fast). */
+      (function () {
+        var files = ["/robotaxi-reality-data.js?v=20261016093020", "/cybercab-cities.js?v=20261016093020", "/robotaxi-map.js?v=202610161200"], started = false;
+        function next(i) { if (i >= files.length) return; var s = document.createElement("script"); s.src = files[i]; s.onload = s.onerror = function () { next(i + 1); }; document.body.appendChild(s); }
+        function go() { if (started) return; started = true; next(0); }
+        var el = document.getElementById("reality-map");
+        if (el && "IntersectionObserver" in window) { var io = new IntersectionObserver(function (e) { if (e.some(function (x) { return x.isIntersecting; })) { io.disconnect(); go(); } }, { rootMargin: "800px 0px" }); io.observe(el); } else { go(); }
+        window.addEventListener("load", function () { (window.requestIdleCallback || function (f) { setTimeout(f, 1500); })(go, { timeout: 3000 }); });
+      })();
+    </script>
     <script src="/countup.js" defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <script src="/intel-core.js?v=202610192400" defer></script>
     <script src="/intel.js?v=202610192300" defer></script>
-      <script src="/nav-pill.js?v=202610190630"></script>
+      <script src="/nav-pill.js?v=202610192000"></script>
   </body>
 </html>

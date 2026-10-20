@@ -17,7 +17,7 @@
   };
   const list = (items) => {
     const rows = (items || []).map((x) => `<li>${esc(x)}</li>`).join("");
-    return rows ? `<ul>${rows}</ul>` : "<p>None listed from the opened source.</p>";
+    return rows ? `<ul>${rows}</ul>` : "<p>None listed in the source.</p>";
   };
   const fmtDate = (iso) => {
     if (!iso) return "—";
@@ -32,7 +32,7 @@
     demosBox.innerHTML = `
       <div class="intel-grid">
         <div class="intel-card"><strong>${demos.length}</strong><span>Sourced demonstrations</span></div>
-        <div class="intel-card"><strong>${shown}</strong><span>With a shown / not-shown split</span></div>
+        <div class="intel-card"><strong>${shown}</strong><span>With what was shown and what wasn’t</span></div>
         <div class="intel-card"><strong>0</strong><span>Where autonomy was established</span></div>
       </div>
       <p class="intel-note">${esc(data.note || "")}</p>
@@ -74,7 +74,7 @@
         <div class="intel-card"><strong>${by("In progress")}</strong><span>In progress</span></div>
         <div class="intel-card"><strong>${by("Delivered")}</strong><span>Delivered</span></div>
       </div>
-      <p class="intel-note">A demonstration is not a commercial product, and a walking robot is not established autonomy. Remote assistance is treated as unknown unless a source disclosed it.</p>
+      <p class="intel-note">A demo isn’t a product on sale, and a walking robot doesn’t show it can work on its own. We only mention remote help when a source says so.</p>
       <div class="intel-compare"><table>
         <thead><tr><th>Promise</th><th>Said</th><th>Deadline</th><th>Status</th><th>Evidence</th></tr></thead>
         <tbody>${rows.map((p) => {

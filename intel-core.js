@@ -290,7 +290,7 @@
         label: "Next Starship flight",
         at: ev && ev.date ? src.events.updated : ship.updated,
         evidence: ev ? "estimated" : "reported_unconfirmed",
-        source: ev ? "data/events.json (FAA planning / desk overlay)" : "starship-data.js",
+        source: ev ? "FAA planning slides" : "starship-data.js",
         href: "/starship.html",
         summary: "NET windows are not SpaceX T-0.",
       }));
@@ -369,7 +369,7 @@
             at: s.t,
             previous: "0",
             next: String(n),
-            summary: id + " first appeared in the Teslascope sample with " + n + (n === 1 ? " car" : " cars") + ". A sample sighting is not a rollout and not an offer to a particular car.",
+            summary: id + " first appeared in the Teslascope sample with " + n + (n === 1 ? " car" : " cars") + ". Spotting a build isn’t the same as a wide rollout, or your car getting it.",
           });
           return;
         }
@@ -381,7 +381,7 @@
             at: s.t,
             previous: String(prev),
             next: String(n),
-            summary: id + " moved from " + prev + " to " + n + " cars in the Teslascope sample. That is a sample-count change, not Tesla confirming a regional rollout or an offer to a VIN.",
+            summary: id + " moved from " + prev + " to " + n + " cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
           });
         }
         lastCount[id] = n;
@@ -428,7 +428,7 @@
             at: s.t,
             previous: "0",
             next: String(n),
-            summary: id + " first appeared in the Teslascope sample for " + cc + " with " + n + (n === 1 ? " car" : " cars") + ". A sample sighting is not a rollout and not an offer to a particular VIN.",
+            summary: id + " first appeared in the Teslascope sample for " + cc + " with " + n + (n === 1 ? " car" : " cars") + ". Spotting a build isn’t the same as a wide rollout, or your car getting it.",
           });
           return;
         }
@@ -441,7 +441,7 @@
             at: s.t,
             previous: String(prev),
             next: String(n),
-            summary: id + " moved from " + prev + " to " + n + " cars in the Teslascope sample for " + cc + ". That is a sample-count change, not Tesla confirming this car is eligible.",
+            summary: id + " moved from " + prev + " to " + n + " cars in the Teslascope sample for " + cc + ". That’s Teslascope’s count, not Tesla confirming your car will get it.",
           });
         }
         lastCount[id] = n;
@@ -472,7 +472,7 @@
         previous: hist[i - 1].cybercab,
         next: hist[i].cybercab,
         src: hist[i].src || "",
-        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registration is not a car in service.",
+        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registered car isn’t necessarily in service yet.",
       });
     }
     const last = hist[hist.length - 1] || null;
@@ -484,7 +484,7 @@
         count: last.cybercab,
         since: lastJump.date,
         src: last.src || "",
-        summary: "Still " + last.cybercab + " registered on " + last.date + ". Unchanged days are not a new jump. A registration is not a car in service.",
+        summary: "Still " + last.cybercab + " registered on " + last.date + ". No change since the last count. A registered car isn’t necessarily in service yet.",
       };
     }
     return { jumps, unchanged, last };
@@ -648,7 +648,7 @@
         source: "Texas DMV list via fsddb.com",
         sourceUrl: hist[i].src || "",
         href: "/cybercab.html#cc-changes",
-        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registration is not a car in service.",
+        summary: "Texas Cybercab registrations moved from " + hist[i - 1].cybercab + " to " + hist[i].cybercab + ". A registered car isn’t necessarily in service yet.",
         title: "Texas Cybercab count",
       };
       c.id = changeId(c);
@@ -846,7 +846,7 @@
           ],
           resolution: flown ? "keep_completed" : "keep_canonical_events_json",
           kept: a.start,
-          note: "Canonical start stays in data/events.json. Live overlay must not silently rewind a later official slip.",
+          note: "Kept the confirmed time.",
         });
       });
     });
@@ -864,17 +864,17 @@
         note: note || "",
       });
     };
-    add("starship", generatedAt, src.starship && src.starship.updated, "Compiled desk file. FAA NET is not a SpaceX clock.");
-    add("launches", generatedAt, src.events && src.events.updated, "Canonical dates in data/events.json. Launch Library 2 is a live overlay.");
-    add("software", src.updates && src.updates.updated, src.updates && src.updates.updated, "Teslascope sample. A build existing ≠ your car being offered it.");
-    add("fsd", generatedAt, src.fsdEurope && src.fsdEurope.updated, "Manual editorial file with ministry sources.");
+    add("starship", generatedAt, src.starship && src.starship.updated, "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times.");
+    add("launches", generatedAt, src.events && src.events.updated, "Sources: SpaceX, Launch Library 2.");
+    add("software", src.updates && src.updates.updated, src.updates && src.updates.updated, "Source: Teslascope.");
+    add("fsd", generatedAt, src.fsdEurope && src.fsdEurope.updated, "Sources: national ministries and regulators.");
     add("robotaxi", generatedAt, src.robotaxiTx && src.robotaxiTx.checked, "Texas DMV count via fsddb.com.");
-    add("starlink", src.starlinkLive && src.starlinkLive.orbitsUpdated, src.starlinkLive && src.starlinkLive.updated, "Counts: Jonathan McDowell. Orbits: CelesTrak snapshot, not a live operator feed.");
-    add("promises", generatedAt, src.promises && src.promises.updated, "Every quote needs a source that was opened.");
-    add("production", generatedAt, src.production && src.production.updated, "Tesla IR production and delivery tables only.");
+    add("starlink", src.starlinkLive && src.starlinkLive.orbitsUpdated, src.starlinkLive && src.starlinkLive.updated, "Sources: Jonathan McDowell (counts), CelesTrak (orbits).");
+    add("promises", generatedAt, src.promises && src.promises.updated, "Every quote is sourced.");
+    add("production", generatedAt, src.production && src.production.updated, "Source: Tesla investor relations.");
     add("roadster", generatedAt, src.promises && src.promises.updated, "Reveal is past. Production target remains a company claim.");
-    add("optimus", generatedAt, (src.optimusDemos && src.optimusDemos.updated) || (src.promises && src.promises.updated), "Demonstration ≠ autonomy. Production targets are company claims.");
-    add("mytesla", generatedAt, src.updates && src.updates.updated, "Vehicle prefs stay in this browser.");
+    add("optimus", generatedAt, (src.optimusDemos && src.optimusDemos.updated) || (src.promises && src.promises.updated), "Production targets are company claims.");
+    add("mytesla", generatedAt, src.updates && src.updates.updated, "Your car details stay in this browser.");
     return rows;
   }
 
@@ -935,11 +935,27 @@
     return `<ol class="intel-list">${changes.map(changeItemHtml).join("")}</ol>`;
   }
 
+  const CARD_TITLES = {
+    starship: "Starship flights",
+    launches: "SpaceX launch dates",
+    software: "Tesla software updates",
+    fsd: "FSD Europe approvals",
+    robotaxi: "Texas Robotaxi count",
+    starlink: "Starlink satellites",
+    promises: "Musk promises",
+    production: "Tesla production and deliveries",
+    roadster: "Roadster",
+    optimus: "Optimus",
+    mytesla: "My Tesla",
+  };
+
   function freshnessHtml(row) {
     if (!row) return "";
+    const title = CARD_TITLES[row.tracker] || (TRACKERS[row.tracker] && TRACKERS[row.tracker].label) || "";
     const checked = row.lastChecked ? fmtWhen(row.lastChecked) : "—";
     const verified = row.lastVerified ? fmtWhen(row.lastVerified) : "—";
     return `<p class="intel-fresh" data-intel-fresh="${esc(row.tracker)}">` +
+      (title ? `<span class="intel-fresh-note"><strong>${esc(title)}</strong></span>` : "") +
       `<span>Last checked <time datetime="${esc(row.lastChecked)}">${esc(checked)}</time></span>` +
       `<span>Last verified update <time datetime="${esc(row.lastVerified)}">${esc(verified)}</time></span>` +
       (row.note ? `<span class="intel-fresh-note">${esc(row.note)}</span>` : "") +
@@ -984,7 +1000,7 @@
     ).join("");
     return `<section class="hv-changed" aria-labelledby="hv-ch-h">
           <div class="hv-head"><h2 id="hv-ch-h">What changed</h2><span><a href="/daily.html">Your Supercharged Daily</a> · <a href="/data/intelligence/bundle.json">Machine-readable log</a></span></div>
-          <p class="hv-feed-sub">Sourced tracker moves, not the wire. Follow topics in this browser to filter. Last checked is not the same as last verified update.</p>
+          <p class="hv-feed-sub">The latest sourced changes on our trackers. Follow topics to filter this list in your browser.</p>
           <div class="intel-follow" data-intel-follow role="group" aria-label="Follow topics">${follow}</div>
           <div data-intel-changed>${changesHtml(recent)}</div>
           <h2 id="hv-clocks-h">Kept launch clocks</h2>
@@ -1088,7 +1104,7 @@
     if (!rows || !rows.length) {
       return '<p class="intel-empty">No Teslascope sample first-seen rows for ' + esc(name) + " in this window. A missing country in the sample is not Tesla saying the build is unavailable.</p>";
     }
-    return '<p class="intel-note">Teslascope sample for ' + esc(name) + " (" + esc(code) + ") only. A sample sighting is not a rollout and not an offer to a particular VIN.</p>" +
+    return '<p class="intel-note">Teslascope sample for ' + esc(name) + " (" + esc(code) + ") only. Spotting a build isn’t the same as a wide rollout, or your car getting it.</p>" +
       changesHtml(rows.map((w) => ({
         topic: "tesla-software",
         tracker: "software",
@@ -1124,14 +1140,14 @@
       const hit = (row.values || []).find((v) => v.source === source);
       return fmtClock((hit && hit.value) || (source === "data/events.json" ? row.kept : ""));
     };
-    return `<div class="intel-conflicts"><p class="intel-note">Canonical start stays in data/events.json. Live overlay times are shown, not used to rewind a flown or later official clock.</p>
+    return `<div class="intel-conflicts"><p class="intel-note">When a live launch feed and the confirmed time disagree, we keep the confirmed time.</p>
       <div class="intel-compare"><table>
-        <thead><tr><th>Entity</th><th>Kept (events.json)</th><th>Live overlay</th><th>Resolution</th></tr></thead>
+        <thead><tr><th>Event</th><th>Confirmed time</th><th>Live feed</th><th>Result</th></tr></thead>
         <tbody>${rows.map((c) => `<tr>
           <td><b>${esc(c.entity)}</b></td>
           <td>${esc(cell(c, "data/events.json"))}</td>
           <td>${esc(cell(c, "live-data.json"))}</td>
-          <td>${esc(c.resolution || "keep_canonical_events_json")}. ${esc(c.note || "")}</td>
+          <td>${esc(c.note || "Kept the confirmed time.")}</td>
         </tr>`).join("")}</tbody>
       </table></div></div>`;
   }
@@ -1205,7 +1221,7 @@
       statusClass: "fsd-status-watch",
       summary: diffs.length
         ? ("Latest McDowell snapshot: " + Number(last.inOrbit).toLocaleString("en-US") + " in orbit, " + Number(last.working).toLocaleString("en-US") + " working. Only committed snapshots are listed. Days between them are not interpolated.")
-        : ("As of " + fmtClock(last.updated) + ": " + Number(last.inOrbit).toLocaleString("en-US") + " in orbit. No earlier committed McDowell snapshot on this site to diff against."),
+        : ("As of " + fmtClock(last.updated) + ": " + Number(last.inOrbit).toLocaleString("en-US") + " in orbit (source: Jonathan McDowell). No earlier count saved yet to compare with."),
       src,
       srcLabel: "Jonathan McDowell",
       note: "Published table snapshot, not a live operator feed.",

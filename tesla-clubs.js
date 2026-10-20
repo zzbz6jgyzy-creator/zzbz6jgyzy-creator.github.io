@@ -16,7 +16,7 @@
   };
   const stamp = (iso) => {
     const when = compiled(iso);
-    return when ? "Directory compiled " + when + "." : "";
+    return when ? "Directory updated " + when + "." : "";
   };
   const setHint = (msg, hold) => {
     const hint = $("tc-hint");

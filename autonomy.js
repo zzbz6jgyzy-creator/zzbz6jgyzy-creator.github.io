@@ -34,7 +34,7 @@
       </div>
       <p class="intel-note">${esc((FSD && FSD.note) || "")} Supervised FSD is not unsupervised autonomy. A Texas registration is not a ride. A ministry yes is not a customer rollout.</p>
 
-      <h2>Evidence layers</h2>
+      <h2>Where things stand</h2>
       <div class="intel-compare"><table>
         <thead><tr><th>Layer</th><th>Means</th><th>Does not mean</th></tr></thead>
         <tbody>
@@ -47,7 +47,7 @@
       </table></div>
 
       <h2>Supervised FSD markets</h2>
-      <p class="intel-note">From the compiled global tracker. “Live” here is Tesla’s listing plus desk sources — still supervised.</p>
+      <p class="intel-note">From our global FSD tracker. “Live” means Tesla lists it and sources confirm it — still supervised.</p>
       <div class="intel-compare"><table>
         <thead><tr><th>Market</th><th>Layer</th><th>Version</th><th>Note</th><th>Source</th></tr></thead>
         <tbody>${live.concat(limited).map((c) => {
@@ -84,7 +84,7 @@
       </table></div>
 
       <h2>Sourced autonomy promises</h2>
-      <p class="intel-note">From the Promise Tracker. Status is editorial against opened quotes, not a score.</p>
+      <p class="intel-note">From the Promise Tracker. Each status is our judgement against the sourced quote, not a score.</p>
       <div class="intel-compare"><table>
         <thead><tr><th>Promise</th><th>Topic</th><th>Deadline</th><th>Status</th><th>Source</th></tr></thead>
         <tbody>${promises.map((p) => `<tr>

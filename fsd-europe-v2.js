@@ -220,8 +220,8 @@
   const logHonesty = (e) => {
     if (e.honesty) return e.honesty;
     const c = by.get(e.code);
-    if (e.type === "approval" && c && !c.rolloutLive) return "Recognition is not a customer rollout. Owners have not been shown receiving the software.";
-    if (e.type === "statement" && /Tesla Europe|Tesla says/i.test(e.text) && c && !c.rolloutLive) return "Company claim. “Soon” is not a date.";
+    if (e.type === "approval" && c && !c.rolloutLive) return "Recognised, but no owners have been reported getting the software yet.";
+    if (e.type === "statement" && /Tesla Europe|Tesla says/i.test(e.text) && c && !c.rolloutLive) return "Company claim. “Soon” has no date yet.";
     return "";
   };
   const renderLog = () => {

@@ -6,7 +6,7 @@
     ["latest_issue_click", "Latest issue", "Clicks on Read the latest issue"],
     ["referral_click", "Tesla referral", "ts.la referral clicks"],
     ["tesmag_click", "TESMAG", "TESMAG affiliate clicks"],
-    ["search_open", "Search opened", "⌘K / nav Search overlay"],
+    ["search_open", "Search opened", "⌘K or the Search button"],
     ["search_go", "Search go", "Search submitted — path only"],
     ["theme_toggle", "Theme toggles", "Light / Dark clicks"],
     ["dispatch_filter", "Dispatch filters", "Topic chips, not the search box"],
