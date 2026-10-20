@@ -1,6 +1,29 @@
 {
-  "updated": "2026-10-20T11:35:57Z",
+  "updated": "2026-10-20T12:06:05Z",
   "items": [
+    {
+      "id": "44e3803090f8",
+      "topic": "spacex",
+      "title": "SpaceX launches Falcon 9 rocket carrying 32 payloads from Cape Canaveral",
+      "source": "WESH",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPRUhzSndxbVdQS21ha0daTVJoOEx6SE5BX1ozaDVPOURSWW9JdDc1NXRVeVAxajU1OUc0TTVBMnVhWkstYlFxRGpLME9YdHozVUFDMnBoY2NOUEhBZl9URm93UFFxUkJpQUk0YUlTVTBFelM3N0VFcE5peWJLTlFzeGNKS3M1eXh4ZHpxTE00RHc2MUVoTjZlLS1BUmk?oc=5",
+      "published": "2026-10-20T11:53:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.cKttlM40glDUuXBieRTNkg&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "a013f5b7545c",
+      "topic": "spacex",
+      "title": "Space jellyfish makes tiny encore as weather clears for SpaceX launch",
+      "source": "Orlando Sentinel",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNWUZCaGlwdU0tR0VuQURtVno1OVd5SVIyVkR5LW5LdkEyWjVieEZIdjY0TWN5UEVVSnFycEhtcDR0MnlIM2kyX3lLRWpNaEtFSzBfOGM4MFZpNUhpMFVTenZ2b01MRTJNYWFlVnpLbk1MY3dKaTVMUnNITkFSYmE3ZzRJaGpodmlYQXhzbm9CNUNHZXV5X0tDUWJWbE53aVg0b01ZbWlUc3ZRX1FqaklR?oc=5",
+      "published": "2026-10-20T11:31:18Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 12
+    },
     {
       "id": "3bf506406ee0",
       "topic": "spacex",
@@ -20,21 +43,9 @@
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNVkR1VkcwYXE2MFBFbDlBSUVrUmdJRnQtZWV1TmdZeTcwQU1MV1J0R28wdGZKUUFNVzJZOVRpeEM2b2tDclJ3eE44elJ4SmpoOTUyc3RHVmw2NVV4S3BLa20tOE13QkhKWXZmTlRmOGlmZUZ2TVpTZVdEVVlybk1FQnkyYVlZWXh4ZTJ1RnZ3TGJaalpkZjlxdGJoRkI2a2RT?oc=5",
       "published": "2026-10-20T11:15:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.6HqEKyoYrErqKw4fhmg2MQ&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.yDMl00H0-j2TX1HnWHUtgg&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "2c842c624006",
-      "topic": "tesla",
-      "title": "Tesla Roadster Targets 330 MPH to Break the Production-Car Speed Record",
-      "source": "Autoblog",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRHF3S193OEZtREdKNl85eHVKSEgyTTNrd3hnNEhSWVpYcFZ1ajBRN2dIX3pRUzZMUDQzM184R2pxaFJkcDhna09ua1d1bGJfU2h0a05yODhsci1VMHZtZzd3WDhZY3pMLVdrQ2xFTUJTU0stdVNzWUxNbFlkV0haLU1PMUlMM1hKQ3BWakpybXNMejdyampRbUY5WW5LOEpQRW0w?oc=5",
-      "published": "2026-10-20T11:15:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.q7wlwvs1PRTKuWVBrkzKlA&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
     },
     {
       "id": "bd1453da2c15",
@@ -48,17 +59,6 @@
       "score": 11
     },
     {
-      "id": "41b28a5660fb",
-      "topic": "tesla",
-      "title": "Tesla Roadster’s Feat and Defeat: 0.81s, No Price [2026]",
-      "source": "shattered.io",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE80aTJJUUxTWWZQR1N0Rk5wQ01GZ1BKQnc2MTRCWDU0RXZqaHFLSHNZTWk2NWhjSWxjb0FyRUM4VDdnNWo2dndsSWx3VFk5aENHVUtzeUVDZWpZZ3JmVFVDN2hqR3U0LS01?oc=5",
-      "published": "2026-10-20T10:56:32Z",
-      "snippet": "",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
       "id": "4cbbe3d1d7ff",
       "topic": "tesla",
       "title": "The Physics Behind Tesla’s Flying Roadster",
@@ -66,19 +66,20 @@
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFAxY2tOcWRTQkNtMDFDZE9oamE4Q1NDM2R3WFVCT0xaZVVLSlFlZl83dnJidlRjT0tmUUVCQjdyTUIwRXdNcnBBcDRZYmtSMkoyWTJYUVdDMGFRazFBNmI0RFBieVFNTk93QUh5LW5kZ3RPc0k?oc=5",
       "published": "2026-10-20T10:45:00Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.Muc6wCfxqzVnKS3BwXNBvA&pid=News&w=640",
       "kind": "milestone",
       "score": 11
     },
     {
-      "id": "f9462d3f0316",
+      "id": "061652cdc334",
       "topic": "spacex",
-      "title": "SpaceX's rocket has flown 18 times. It's launching again Tuesday morning.",
-      "source": "CT Insider",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNYm9zbmMzc3E3ZFBZLXVOUzd5aXJEVERoWEdGei1SOVZ0Z0tXd0F3Q2k4Y3pqVHc3VC1OZ1NPMDJ2d3lIMHhLdWhJaEgxT0RDZjdld2picUFZRkgwWFYwMkhBSWEwZTdlbllkODR5VVBEaUtKa1M3Qjgyd0tJN0Y0WjJ3YTZpTUZST3c?oc=5",
-      "published": "2026-10-20T10:42:52Z",
+      "title": "CoreWeave, SpaceX, Netflix, IREN, AMD, and More Stocks That Explain Today’s Market",
+      "source": "Barron's",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBleUVzUDRycy1NVnFrck9XZ0VKQlVYOWRBQ2hlYUI0RDRGNGtBMXZVbFMycHVIWmlNRzRBa29YWHNHNXRvaEc5YzVCLWl5ejFqaC1ZeFJHb0R4VERpUDNrRmV3dVY?oc=5",
+      "published": "2026-10-20T10:41:00Z",
       "snippet": "",
-      "kind": "launch",
-      "score": 12
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "e39379278ac4",
@@ -88,6 +89,7 @@
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPdmFwZ1V0cW1EODM0QWNXR1lLc3NQTnJ0SzhRVnlXU2xZd0dDamk2bThfdkROVFh0bG5qZlZBa3FfaGp5ZVd5OU9Gd0ZLeEZkdlZaX1lENXl1M3RfYzh5ZTRSRE1NRU1UZXBTX2hFY1JndHVSVDk5UW00amIzNFRidTlsNlVVdkRrU2d4b3JZTFVuSHd2ODEwWmhTWQ?oc=5",
       "published": "2026-10-20T10:31:00Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.rDWTLAqngyL2x7vvHmKq8A&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -99,21 +101,8 @@
       "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOaTVCQ1JuTk15OXhBZmtjaHFNZWRCZlJ6eDQwUHVKOWxWRUV0NXhZVVg5bGppd2JwbDF2azNEVEMyN3c1VlItVC1meXZWLTgwQ2pBMklYVWg5YUJKMjhMRVdBNXZqZEZ0Nk5ZMlhaQk5MbmV2c2FnazgzUjZwS0xsYU92NmlXWl9pclpYb2xDVERQU1ZQLWZtWnpveEdtWEhaM3BXbDYxTzVCcE40WTJBekJwa0tkdVRqRXU5VlY0RmpoNFFMS1RWRk1XTlJpOHR1b2VFdjJB?oc=5",
       "published": "2026-10-20T10:30:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.oI1n_g_KWPBngpM4Xwhtzg&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "a013f5b7545c",
-      "topic": "spacex",
-      "title": "Space jellyfish encore possible as weather clears for SpaceX launch today",
-      "source": "Orlando Sentinel",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNWUZCaGlwdU0tR0VuQURtVno1OVd5SVIyVkR5LW5LdkEyWjVieEZIdjY0TWN5UEVVSnFycEhtcDR0MnlIM2kyX3lLRWpNaEtFSzBfOGM4MFZpNUhpMFVTenZ2b01MRTJNYWFlVnpLbk1MY3dKaTVMUnNITkFSYmE3ZzRJaGpodmlYQXhzbm9CNUNHZXV5X0tDUWJWbE53aVg0b01ZbWlUc3ZRX1FqaklR?oc=5",
-      "published": "2026-10-20T10:26:23Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.VDzAktZbF0lp4bNQVT1jhA&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
     },
     {
       "id": "716c12a1a64f",
@@ -135,7 +124,6 @@
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQVVFmWk53OVMwRTE1Wk5TNlo0SEE4ZFA3dWcydXdKQlVSTVdvaDRFSWFJY0cyeDI2MkhIelRSdUpxVVl3b1JseURfczRjeW12QUo3YTA4ejdqTDM4V2lQTXpOZnM2RHpUc2IxQ2NCdUJRVnVZMVM3WmtDTktmQmVrdm53?oc=5",
       "published": "2026-10-20T10:24:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.hUMUj9nE-6X0x83501gVjQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -147,7 +135,6 @@
       "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPNDRyRWVJT0RndnUyZ09xSEZNSDdQTC1PXy13QU5Xbk95a3gwY0RWYTdkTUpwYlpESUk5aTlUdlAtSmpMaXNnLWROQUQxWXZkd05pYkRwMFBfLWFWTkdPMzJtSG83aUtrMlNISThnbFdURTB5ejZDS1pLS2F4dWVHaGdMZmJOOEJEMGt4M01FVTRGXzVtcWZDUzlVV2J1RWxJTWFjWDdnVnhudXNvYkVOZUNSZl83a0RQSDZCTTdzZDlDaFRxbWpsVmVNVUkxTEIwS0hCRWthMmo1SzhHZ0pDZg?oc=5",
       "published": "2026-10-20T10:21:38Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.lc4B05seLqKJILP-plsC9A&pid=News&w=640",
       "kind": "launch",
       "flag": "speculation",
       "score": 12
@@ -183,18 +170,7 @@
       "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOMktPUmZrNmgyUDhFbTJGVUxVWmRHd0dIenBPV2o1Z3pzWkNuNlFsZWZuSXBBWGMtRXd0U1RoTlZRbUtJTG11bVhiUzNSeGFOT0U1TUt6OE5NclFZNnM5cFZLNnNhZU5qRkhXeTZjQUFCWGpSSUcxZUNUWjMwZU9aRW1BRlpucXZDQ09MWnBVSGJOQ1lCWV9DckUxTzZEMGl6SnR0NU1zZ0VnUQ?oc=5",
       "published": "2026-10-20T09:50:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.S2lZ3KguJjUUhcPFKoIRig&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "0f949b3d5727",
-      "topic": "spacex",
-      "title": "Elon Musk says he will give SpaceX share to ‘every kid in America'",
-      "source": "WCAX",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOWk93TEJiUWpoQ1VKTXVEdURWOGFJcUNJbXExRnZCMFo1YXRjNFRlOG1vSEdFUXY1SThZbFlsdXZzQ0lkajVqZW5WcVphdmJmdklFR2dCU2NuWmlDbDlaWnJxd0tMekM5V2k4eFJWZVdRUEdHSkpHaVZhaVdHWVROV0ZzcjBlckpBMXJodjhiWDhRMnpUZ29mQzZ5clJXdw?oc=5",
-      "published": "2026-10-20T09:49:00Z",
-      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.qIITKeb0ySKnI1WocYURaw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -239,7 +215,6 @@
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNeDlUSGZnZERMbEpsZl9LdzM4a04taHFWa1hFTjlOX0p4TzJ2TV9FRVhDazZIei1DUmUtMVBYajBhdmhPcU9TV0wwbDVKcWh0cnBfMkF5YnVLSk56OXlpaDRrcElIYkwwRGtpMkMzZmFLYjVkaGRLLVIycUtoMGhyamI1QllZbTdDTlBLQjlXVl9YQXo2dEtZag?oc=5",
       "published": "2026-10-20T09:12:31Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.eaRETCRz8-CdOCDg4-y0ZA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -263,7 +238,6 @@
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPU2d4UmN5T3Rpb1lBSGZfcWVNaHVKNTVMRm40ZTlHdnZURl9zcXdsOE1HX28xdk1QSnBYbERXMnJ1T00yUlhoc2E1MXJ6M1FDR21iQXc4NnNmSUxIeFZXVno1SEFqbjlZR3B3dXlHS1MwaDEyMDFLQ05kaVphRmJVN2N2WC1HQUh2eXdUMWE5QXpHZjZkT0c5MGhzajVXZ1lqbDhPekdPaDc0cDZ2YkNJ0gG0AUFVX3lxTFBhLWVVTUhpV3JtOVN2X3ZmZV9kd3hNZm5EMTUzUjFBY19NZlZlNUR4WUprbmRfcFRnaDhTRXJpX0lSaWloa09aenp4QWdBb2ZrQ25wenJma21VU3pLaVdPX3hMRzZkZjlXZWlqeUF3d09sZjlqLVVYVnBrcFljZHo3QTNFbWE3SmJiU21qRzVfNllNb3FJY196bC1SZGc5SzJpQkdoYXZxbTNvbFpFbHN4eGNLRg?oc=5",
       "published": "2026-10-20T08:35:32Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.1ZLOyi5MTsZ2Evkd3WCxVA&pid=News&w=640",
       "kind": "launch",
       "flag": "speculation",
       "score": 12
@@ -276,9 +250,20 @@
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOZ2JDRi0tVlhFRGJYUzVVLUd6LVdJQ2dIbnNXTjJkeTdNWjNGT2NLcm1feHJmcFVWd3NHSkR0R3c1Q3NCeC1ZZXd5ZWxWcUdQZklDTUxuWEx5bW44T2FieGFwa0FOeFhjZ2t2TnVEb3ZfMU5TLU5qd3VJeFZXLVVxeEhIQ09ZdVZ4NUgwdTc1eGgyOG9UTU5mdA?oc=5",
       "published": "2026-10-20T08:00:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ED_zzvkarfkVvq-PjNkVDg&pid=News&w=640",
       "kind": "general",
       "score": -2
+    },
+    {
+      "id": "c26ff4db8295",
+      "topic": "tesla",
+      "title": "Tesla (TSLA) Reports Earnings Tomorrow: What To Expect",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPdXJsR3cwSE5KdmM5TGs2Z25ENnk0U0JOZ3NYUGhadDEtYXFkRzlrT2ZqYW1oT2lIekNMYzR4bWFVZmZQVm5NX2hfQTBpdjE2T3RtdXdyWHVieVlRY3E0TDd0T0hpckNQZUtScWlWVHI4N0x6RVdEWG1rcmQ2Yk00dFFlLWhSTzRUYWtrQWZXdy1PQXluQ2hFSHJ1ekF2VWhnZGZr?oc=5",
+      "published": "2026-10-20T07:49:50Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.SJswWY2L24RvMH7Hj7N6Bg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "81a769b0eced",
@@ -297,11 +282,35 @@
       "title": "[2026 Latest] What is Grok Bot? A complete guide to the mechanism, pricing, and differences from @grok of the autonomous AI colleague that operates cloud PCs for you",
       "source": "note",
       "url": "https://note.com/clear_serval8310/n/n4f1f025ee51f?hl=en",
-      "published": "2026-10-20T04:36:00Z",
+      "published": "2026-10-20T05:06:00Z",
       "snippet": "Introduction: From AI that 'answers in chat' to the era of 'operating PCs to finish work'The AI 'Grok,' developed by SpaceXAI (formerly xAI) led by Elon Musk, is currently undergoing a major evolution ...",
       "image": "https://www.bing.com/th?id=ONUT.WBqlnAJJXOm2xdwfQQtqMg&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "0733d820603f",
+      "topic": "spacex",
+      "title": "Elon Musk wants every American kid to own a SpaceX share",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/investing/elon-musk-wants-every-american-kid-to-own-a-spacex-share",
+      "published": "2026-10-20T04:37:00Z",
+      "snippet": "Then SpaceX ’s own No. 2 raised the stakes. SpaceX President Gwynne Shotwell and her husband would gift one SpaceX share to a Trump Account for each of more than 2 million children between the ages of ...",
+      "image": "https://www.bing.com/th?id=ONUT.jPBAbmyyN7QTXeTo6AKAAg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "7acce966bcfb",
+      "topic": "spacex",
+      "title": "Throwback to SpaceX revealing new Starship designs after flight 10",
+      "source": "Ellie in Space on MSN",
+      "url": "https://www.msn.com/en-us/technology/space-exploration/throwback-to-spacex-revealing-new-starship-designs-after-flight-10/vi-AA1O5kTS",
+      "published": "2026-10-20T04:31:43Z",
+      "snippet": "The video recaps SpaceX's Starship updates after Flight 10, including heat shield patterns, improved materials, and system changes for future missions.",
+      "image": "https://www.bing.com/th?id=ONUT.fBCbqndRcslARlqSLNoocg&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
     },
     {
       "id": "8f63c4f06beb",
@@ -311,6 +320,18 @@
       "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9DLVdNVFBOM2loNlNwbXhpZm5BTWtmRzZWS1pyVEFjcEpIal9KMUhaMEVZNHZ5c3pEaEdDZEp6UG5zdFpPQ0VuOWJGWVZPT3c3VnE3THA2cHJmbUVwQTRxMVZvWlgzX2k1eWNj?oc=5",
       "published": "2026-10-20T04:20:23Z",
       "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "971337f66726",
+      "topic": "spacex",
+      "title": "SpaceX earnings are only hours away. Here's what to watch for.",
+      "source": "MarketWatch",
+      "url": "https://www.marketwatch.com/livecoverage/spacex-earnings-stock-results-musk-spcx",
+      "published": "2026-10-20T04:05:00Z",
+      "snippet": "On Tuesday, SpaceX is due to post its second earnings report as a public company. Investors will be focused on the company's business of renting out AI capacity, which is a driver of fast revenue ...",
+      "image": "https://www.bing.com/th?id=ONUT.3y4YLjlfxEsAxhmlQm3JFA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -333,7 +354,6 @@
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOS210bkFMTDJFSU9IajNfVDBOcklSamQyR05CQkZEUHQxX3VyNEFyTFJ0NDMybDNkUS1wN2NuSF9kWDFFYXBmVjR4Vld5MDg1VUdzSGJweU9NaUJMZm1RYmdlamJrSUJRSHpRcTJLUzdka3d2cmYxTVlpUlpLeGUzUnQ3dU5IUzBGZnREV1RvNnp3Q3o1Sk51bHJ6YmRWV2FybjhjLVg0QlVGVE9zSVZpY1ktMG9XcVk?oc=5",
       "published": "2026-10-20T03:56:10Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.lc4B05seLqKJILP-plsC9A&pid=News&w=640",
       "kind": "launch",
       "score": 12
     },
@@ -350,40 +370,16 @@
       "score": 4
     },
     {
-      "id": "6c679f7aa35a",
-      "topic": "tesla",
-      "title": "Tesla’s Nevada expansion, Cybertruck demo and monopoly claims revisited",
-      "source": "Electrified on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-s-nevada-expansion-cybertruck-demo-and-monopoly-claims-revisited/vi-AA2ejv0U",
-      "published": "2026-10-20T02:48:59Z",
-      "snippet": "Host Dylan Lumis revisits Tesla’s Nevada and Giga Texas expansion plans, a Cybertruck demonstration, monopoly claims, a lithium deal, EV charging updates and robotics comments from Jensen.",
-      "image": "https://www.bing.com/th?id=ONUT.IRdtOpI8egH0yqs3gwW1gg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "d74682463c62",
+      "id": "fdc86d0e56ef",
       "topic": "spacex",
-      "title": "Throwback to SpaceX's Starship flight 12 checklist at Starbase",
+      "title": "Recap of SpaceX preparing Starship flight 11 for the final V2 flight",
       "source": "Ellie in Space on MSN",
-      "url": "https://www.msn.com/en-us/news/other/throwback-to-spacexs-starship-flight-12-checklist-at-starbase/vi-AA26Mrpk",
-      "published": "2026-10-20T02:43:15Z",
-      "snippet": "This recap looks back at SpaceX's Starship Flight 12 preparations at Starbase, including tower certification, launch mount validation, tank-farm testing and V3 Raptor static-fire work. Ellie in Space ...",
-      "image": "https://www.bing.com/th?id=ONUT.QG0ACGSfaYhZrBcSVOXlKQ&pid=News&w=640",
+      "url": "https://www.msn.com/en-us/technology/space-exploration/recap-of-spacex-preparing-starship-flight-11-for-the-final-v2-flight/vi-AA1SAwjY",
+      "published": "2026-10-20T03:20:45Z",
+      "snippet": "The video looks back at SpaceX preparing Starship Flight 11, with Ship 38 and Booster 15, after a 33-engine static fire test. It explains why the flight was expected to close the V2 phase and move ...",
+      "image": "https://www.bing.com/th?id=ONUT.c-JeTNTbU5jVx5c0rnturg&pid=News&w=640",
       "kind": "launch",
       "score": 12
-    },
-    {
-      "id": "9aedac9e6519",
-      "topic": "tesla",
-      "title": "Tesla FSD runs off-road in Cybertruck as 12.5.6 unifies driving",
-      "source": "Electrified on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-fsd-runs-off-road-in-cybertruck-as-1256-unifies-driving/vi-AA2eqhyv",
-      "published": "2026-10-20T02:10:54Z",
-      "snippet": "The video reviews a Cybertruck using FSD off-road and notes Tesla’s 12.5.6 end-to-end stack for highway and city driving. It also follows updates on FSD trials, Cybertruck, Project Juniper, Oasis, ...",
-      "image": "https://www.bing.com/th?id=ONUT.s7DzHVcxkRGIrI8uhiBUfg&pid=News&w=640",
-      "kind": "software",
-      "score": 11
     },
     {
       "id": "f52972cbd293",
@@ -408,6 +404,17 @@
       "score": 4
     },
     {
+      "id": "08c6b190dc71",
+      "topic": "grok",
+      "title": "SpaceX IPO set for liftoff in record market debut",
+      "source": "weekendargus.co.za",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9ZRVBDZmtfV01Ba1dyemd5T2xrX3FPSXh5ZUJqeXY5WnJXeEpNN2Z4ZkdWcU1QQ0gwQ1JoWVJZdTVCb3lWc0xtUlZDYldPVmRick8wci1TamVhMEtLRGpPUWpzWjBiRFA3YlZDMkNFMnVybFZZR0ZpVXVraFBpdmc?oc=5",
+      "published": "2026-10-20T00:43:07Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "82328d1b66c6",
       "topic": "spacex",
       "title": "Boca Chica state park rumored to be for sale to SpaceX",
@@ -426,7 +433,29 @@
       "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPaU9sZHRrOFU4aEkyNDRMT0ItMWZfSHFtYVJFNHhjckNxZFVtU0NMM1FndDlqVzZMQzQyOGMyaUdwUDJaQXMwV2NFaTVDd1lLaGk3WlgyMmRQSExGRTRmNUJlNlBtM0hxRmVkblVSVjRpRzdfbE55c1JjSHRGSktkcVpUTURJZk9WZnhCSG1aMm1NYkxqSGVQZFZDeEVLeFQtUFB5YkFYOFdJdXc?oc=5",
       "published": "2026-10-19T23:39:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.QWe-oNtq4vHtIFghG_dU0w&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "370559bfab3e",
+      "topic": "grok",
+      "title": "7 Ways to Master Grok Bot: Our Real-World Examples of Automating X Research Every Morning, and the Pitfall of Fake Links",
+      "source": "note",
+      "url": "https://note.com/claudegptai/n/nace0c1a396b2?hl=en",
+      "published": "2026-10-19T22:59:00Z",
+      "snippet": "Have you ever opened X in the morning to catch up on industry news, only to realize 30 minutes have passed? We've all been there.Hello, I'm Ai Kudo from Burning Tribe. We entrust this \"X research\" to ...",
+      "image": "https://www.bing.com/th?id=ONUT.mcEFsqS1w6z-zhxmRmoV-g&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "aa7087839abc",
+      "topic": "spacex",
+      "title": "Elon Musk Says He Will Give a SpaceX Share to ‘Every Kid in America’",
+      "source": "The New York Times",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQckE2dFR2Rkx1NUU3SG42MGRCRndvR1B1TVBEZHNZREQza1ZieFk4NXRoQkRDbUVvQ05WMHYzX19seFRGSG1idzlTMlZnTFVYSWpHOGc0dmJpQXdqUGR4MDBXM0YtdjNDMWpKT1hYQU9wNDAtVnJwa09YQWFLc0dfUTRuOW4yNE0xMXFCdzViUHJXU21ESlVR?oc=5",
+      "published": "2026-10-19T22:12:02Z",
+      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -522,41 +551,6 @@
       "score": 4
     },
     {
-      "id": "c1f3d201d7a9",
-      "topic": "tesla",
-      "title": "For Tesla, It's Not Just the Cars Taking Off, but Also Its “Master Plan”",
-      "source": "Gasgoo Automotive News",
-      "url": "https://autonews.gasgoo.com/articles/ev/for-tesla-its-not-just-the-cars-taking-off-but-also-its-master-plan-2112425903543439360",
-      "published": "2026-10-19T17:08:00Z",
-      "snippet": "The Roadster is less a volume play than an engineering halo. For Tesla, short-term sales aren't the only point; the car is a platform to showcase the fruits of its SpaceX partnership and test the limits of what an automo",
-      "image": "https://www.bing.com/th?id=ONUT.Ro1wjbM4INL1FIFjmSgFLQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "4b44fd148f5f",
-      "topic": "spacex",
-      "title": "Stocks to Watch: Elice, SK hynix, SpaceX, Netflix",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026/card/y3UITyh69I763gOpY5R6",
-      "published": "2026-10-19T17:00:00Z",
-      "snippet": "Shares in the South Korean data-center startup plummeted over 30% on their trading debut, signaling renewed investor ca",
-      "image": "https://www.bing.com/th?id=ONUT.ZeXRgqXoE-PVkhZEo-MAHQ&pid=News&w=640",
-      "kind": "general",
-      "score": 8
-    },
-    {
-      "id": "a2570f8f2042",
-      "topic": "grok",
-      "title": "SpaceX Stock Forecast: Elon Musk’s $1.9 Trillion Space Company May Deliver Limited Returns Through 2027 Despite 92% Revenue Growth; Check What Investors Should Know",
-      "source": "The Sunday Guardian",
-      "url": "https://news.google.com/rss/articles/CBMitAJBVV95cUxOR3JmeGI2b2hESm1ONWFPU0NQTHBaS094U1NiQWJFN0g3eHc4Z1BIMGlSUmNpRzU4WExMcnEwRFFlaUREQlNyRF90QWtvYXRBNWtzVUhkVWFYZTh2S1FXcGVrdXhtb2plckJId19uUlVwX29nM1U2S2dDbUpnVS1GTTBfdlIxS2NyQ2pLZUhXek9RZDJEcXhlNy10WGRZRzlJSG5xNFM0MlJHUmc3MWNjWDJtZmViWUFadTJ3azV4ZWRoU1k4ZTA1b3gtRVYxYU5SVWctS29VWUZuUnZvSFlzZHF6UTR0VVBvWFB5WERvVGtZX2hIYW5wbGVOU0stYlM0ZTNNZThVOVhsLTloeHZpakt1c2w4YzZYUlI4U0xCdnZHQzVON3UxTnFHTW1aQ0xWQUdoN9IBtAJBVV95cUxOR3JmeGI2b2hESm1ONWFPU0NQTHBaS094U1NiQWJFN0g3eHc4Z1BIMGlSUmNpRzU4WExMcnEwRFFlaUREQlNyRF90QWtvYXRBNWtzVUhkVWFYZTh2S1FXcGVrdXhtb2plckJId19uUlVwX29nM1U2S2dDbUpnVS1GTTBfdlIxS2NyQ2pLZUhXek9RZDJEcXhlNy10WGRZRzlJSG5xNFM0MlJHUmc3MWNjWDJtZmViWUFadTJ3azV4ZWRoU1k4ZTA1b3gtRVYxYU5SVWctS29VWUZuUnZvSFlzZHF6UTR0VVBvWFB5WERvVGtZX2hIYW5wbGVOU0stYlM0ZTNNZThVOVhsLTloeHZpakt1c2w4YzZYUlI4U0xCdnZHQzVON3UxTnFHTW1aQ0xWQUdoNw?oc=5",
-      "published": "2026-10-19T16:47:36Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "baf5376ce881",
       "topic": "grok",
       "title": "Tesla, Starlink, Neuralink: 9 major Elon Musk ventures you should know",
@@ -579,6 +573,18 @@
       "score": 4
     },
     {
+      "id": "5c0870345ea9",
+      "topic": "spacex",
+      "title": "Investors Await Musk’s Next Big SpaceX Deal",
+      "source": "The New York Times",
+      "url": "https://www.nytimes.com/2026/10/20/business/dealbook/musk-spacex-deal-tesla.html",
+      "published": "2026-10-19T15:49:00Z",
+      "snippet": "Ahead of SpaceX’s quarterly earnings report, many on Wall Street are wondering whether Elon Musk will combine it with Tesla.",
+      "image": "https://www.bing.com/th?id=ONUT.6uM2ZKna122jWvXZ5VP9kA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "de4777371b65",
       "topic": "tesla",
       "title": "Tesla Q3 Preview: FSD Could Be The Key Driver Of Profitability (Downgrade)",
@@ -590,6 +596,18 @@
       "kind": "software",
       "flag": "speculation",
       "score": 7
+    },
+    {
+      "id": "8ad658335683",
+      "topic": "spacex",
+      "title": "Elon Musk pledges to give a SpaceX share to every US child",
+      "source": "CBS News on MSN",
+      "url": "https://www.msn.com/en-us/news/other/elon-musk-pledges-to-give-a-spacex-share-to-every-us-child/ar-AA2fAahu",
+      "published": "2026-10-19T14:38:07Z",
+      "snippet": "The SpaceX CEO wrote on social media on Monday that the gift \"will be the first of many.\" ...",
+      "image": "https://www.bing.com/th?id=ONUT.JnFpK6VBxik2bqK_dpI_Mg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "04b530496828",
@@ -614,16 +632,16 @@
       "score": 4
     },
     {
-      "id": "de05bebb231a",
-      "topic": "tesla",
-      "title": "Here’s How Much Tesla Stock Is Expected to Move After Earnings",
-      "source": "Investopedia",
-      "url": "https://www.investopedia.com/here-is-how-much-tesla-stock-is-expected-to-move-after-earnings-tsla-q3-fy2026-12181693",
-      "published": "2026-10-19T12:33:00Z",
-      "snippet": "Tesla is set to report earnings after Wednesday’s closing bell, with the electric vehicle maker’s stock seen making a big move following the results.",
-      "image": "https://www.bing.com/th?id=ONUT.uSnzGeI5MES5bz4yDGocGQ&pid=News&w=640",
+      "id": "f3180b9e20ec",
+      "topic": "spacex",
+      "title": "Bulgarian authorities seek arrests Germans in arson of Starlink antennas",
+      "source": "Associated Press News",
+      "url": "https://apnews.com/article/bulgaria-starlink-arson-suspects-germany-4fd7c426befbf98a7e361d0156a3509f",
+      "published": "2026-10-19T12:29:00Z",
+      "snippet": "Bulgaria issued an international arrest warrant for two German citizens suspected of setting fire to Starlink antennas outside the Bulgarian capital.",
+      "image": "https://www.bing.com/th?id=ONUT.0bGOZYxTzUn0DaByHyjQLA&pid=News&w=640",
       "kind": "general",
-      "score": 4
+      "score": 9
     },
     {
       "id": "b9b6bf6d1e7f",
@@ -648,14 +666,98 @@
       "score": 4
     },
     {
-      "id": "1f4fc2c76504",
-      "topic": "tesla",
-      "title": "Musk's Tesla jumps 32 spots on the Roundtable 100 after 'flying car' reveal",
-      "source": "TheStreet",
-      "url": "https://www.thestreet.com/crypto/markets/musks-tesla-jumps-32-spots-on-the-roundtable-100-after-flying-car-reveal",
+      "id": "33b8c91a9e92",
+      "topic": "spacex",
+      "title": "Ukraine’s drones lose their Starlink link above 100 mph. Musk, Rubio, and Trump all say it wasn’t them",
+      "source": "Fortune on MSN",
+      "url": "https://www.msn.com/en-us/news/other/ukraine-s-drones-lose-their-starlink-link-above-100-mph-musk-rubio-and-trump-all-say-it-wasn-t-them/ar-AA2fBbKy",
+      "published": "2026-10-19T11:50:48Z",
+      "snippet": "Kyiv says a sudden SpaceX speed limit is knocking out interceptor drones it needs against Russia’s jet-powered Shaheds. Musk, the White House, and Trump all say it wasn’t them.",
+      "image": "https://www.bing.com/th?id=ONUT.ektU3gPL1zPZteoehG_Lrg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "e2e42a268581",
+      "topic": "spacex",
+      "title": "Elon Musk Wants Every U.S. Child to Own SpaceX Stock. Experts Have 3 Unanswered Questions",
+      "source": "Inc.com",
+      "url": "https://www.inc.com/rachel-suleymanov/elon-musk-wants-every-us-child-own-spacex-stock-experts-have-3-questions/91422069",
+      "published": "2026-10-19T10:55:00Z",
+      "snippet": "SpaceX shares traded near $150 each, as of Monday morning. With an estimated 72 million minors in the United States, the transfer could be worth over $10 billion, a sliver of Musk’s ownership of the ...",
+      "image": "https://www.bing.com/th?id=ONUT.-qVDeH6VFRE736G80MyknQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "8c26680ad7ea",
+      "topic": "spacex",
+      "title": "Elon Musk Giving Out SpaceX Shares As ‘Universal Basic Income’ Becomes A Major Proposal To Tackle AI",
+      "source": "Forbes",
+      "url": "https://www.forbes.com/sites/alisondurkee/2026/10/19/elon-musk-giving-out-spacex-shares-as-universal-basic-income-becomes-a-major-proposal-to-tackle-ai/",
       "published": "2026-10-19T09:45:00Z",
-      "snippet": "The model named Roadster 2 used SpaceX's (Nasdaq: SPCX) rocket thruster technology to leap over a row of Tesla’s existing models parked side-by-side and accelerate from 0 to 60 mph in a record time of less than a second.",
-      "image": "https://www.bing.com/th?id=ONUT.bENuzFMQ9fbdkWQ9KeOt7g&pid=News&w=640",
+      "snippet": "The policy has attracted support from both sides of the aisle on how to respond to AI, but economists still have concerns.",
+      "image": "https://www.bing.com/th?id=ONUT.gGV94Pov5tlMhmiLIKXNKA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "f5c0eaf9bf1d",
+      "topic": "spacex",
+      "title": "Fire at Starlink Center in Lithuania Was Sabotage, Officials Say",
+      "source": "The New York Times",
+      "url": "https://www.nytimes.com/2026/10/19/world/europe/lithuania-starlink-sabotage-ukraine-russia.html",
+      "published": "2026-10-19T08:48:00Z",
+      "snippet": "The fire, which did not seriously damage the network, came after similar incidents in Bulgaria and Poland involving the satellite internet provider, a key defense tool for Ukraine’s armed forces.",
+      "image": "https://www.bing.com/th?id=ONUT.uMaXEcOuI01A4Z8-kyptpw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "454c378c1497",
+      "topic": "spacex",
+      "title": "Elon Musk makes this bold SpaceX promise to every American child",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/crypto/markets/elon-musk-makes-this-bold-spacex-promise-to-every-american-child",
+      "published": "2026-10-19T08:30:00Z",
+      "snippet": "Days earlier, President Donald Trump told CNBC he expected Musk to donate SpaceX stock to Trump Accounts, which seed $1,000 for children born between 2025 and 2028. Corporate America has piled into ...",
+      "image": "https://www.bing.com/th?id=ONUT.x_HZsWbbzgYcAdeipybP4g&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "99f3cf9830d6",
+      "topic": "spacex",
+      "title": "Starlink Faces Third Attempted Arson Attack In Europe",
+      "source": "PCMag",
+      "url": "https://www.pcmag.com/news/starlink-faces-third-attempted-arson-attack-in-europe",
+      "published": "2026-10-19T07:33:00Z",
+      "snippet": "A third attempted arson attack on a Starlink-related facility has been reported in Europe, amid concerns the Russian government has been allegedly orchestrating the sabotage effor ...",
+      "image": "https://www.bing.com/th?id=ONUT.FNE5vqMzno6kw-rNuA7VhQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "dcadb6fe5365",
+      "topic": "spacex",
+      "title": "Musk Pledges SpaceX Stock for ‘Every Kid in America’ as Billionaires Push Direct Donations",
+      "source": "The New York Times",
+      "url": "https://www.nytimes.com/2026/10/19/technology/elon-musk-spacex-stock-anthropic-giveaway.html",
+      "published": "2026-10-19T05:33:00Z",
+      "snippet": "Anthropic, an A.I. rival to SpaceX, earlier said it would form a “public benefit fund” and other tech moguls have contributed to savings accounts for children.",
+      "image": "https://www.bing.com/th?id=ONUT.YVVgnL5J8muiGAmQZiqdbA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "696d954f50cc",
+      "topic": "spacex",
+      "title": "Elon Musk says he will give SpaceX shares to all children in America",
+      "source": "UPI",
+      "url": "https://www.upi.com/Top_News/US/2026/10/19/elon-musk-spacex-shares-to-children/5751792417909/",
+      "published": "2026-10-19T03:02:00Z",
+      "snippet": "SpaceX CEO Elon Musk said in a post on social media Monday that he will give every child in the United States a share of the company next year.",
+      "image": "https://www.bing.com/th?id=ONUT.4--L8aZjg5ULRaspYJT_lw&pid=News&w=640",
       "kind": "general",
       "score": 4
     }
