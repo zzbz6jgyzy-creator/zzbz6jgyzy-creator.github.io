@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20T05:35:42Z",
+  "updated": "2026-10-20T06:06:18Z",
   "items": [
     {
       "id": "c76d891695e1",
@@ -11,6 +11,17 @@
       "snippet": "",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "bb8c86321d36",
+      "topic": "spacex",
+      "title": "SpaceX targets Tuesday morning launch from Cape Canaveral; ‘space jellyfish’ possible",
+      "source": "FOX 35 Orlando",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOS210bkFMTDJFSU9IajNfVDBOcklSamQyR05CQkZEUHQxX3VyNEFyTFJ0NDMybDNkUS1wN2NuSF9kWDFFYXBmVjR4Vld5MDg1VUdzSGJweU9NaUJMZm1RYmdlamJrSUJRSHpRcTJLUzdka3d2cmYxTVlpUlpLeGUzUnQ3dU5IUzBGZnREV1RvNnp3Q3o1Sk51bHJ6YmRWV2FybjhjLVg0QlVGVE9zSVZpY1ktMG9XcVk?oc=5",
+      "published": "2026-10-20T03:56:10Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 12
     },
     {
       "id": "afc3b7e2d466",
@@ -126,7 +137,7 @@
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNeDlUSGZnZERMbEpsZl9LdzM4a04taHFWa1hFTjlOX0p4TzJ2TV9FRVhDazZIei1DUmUtMVBYajBhdmhPcU9TV0wwbDVKcWh0cnBfMkF5YnVLSk56OXlpaDRrcElIYkwwRGtpMkMzZmFLYjVkaGRLLVIycUtoMGhyamI1QllZbTdDTlBLQjlXVl9YQXo2dEtZag?oc=5",
       "published": "2026-10-19T21:48:50Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ra49XV9S3lETLtzJxn2mUw&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.birhXeFJasjBsm5G_dtCBw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -141,17 +152,6 @@
       "image": "https://www.bing.com/th?id=ONUT.oB9tncbkdKQXNp5jWbJXJQ&pid=News&w=640",
       "kind": "general",
       "score": 8
-    },
-    {
-      "id": "a48e48dea13a",
-      "topic": "spacex",
-      "title": "Elon Musk pledges one SpaceX share to every child in America — a $10.5 billion giveaway with major unknowns",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNT2NJRkdITThENXhicEFUNjJHc0VDQXl5Z1BNRklGSXVuODFJMWUxN2Fkczg5OGZkSWIwbTRHMk5OemUzVjFxUDg3cVNWZWNfUWw5ZGpLOVdDamlHV1JQelJFWnVGZHZKTmhRQzEwY1pwazg1VGtzSExfMElmZ1duUWc5TWtuZ2FIZlY0bG93SVpkQzFoWFIxdQ?oc=5",
-      "published": "2026-10-19T21:00:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "8b002fe4ab39",
@@ -215,18 +215,6 @@
       "score": 4
     },
     {
-      "id": "9e9925b84ae8",
-      "topic": "tesla",
-      "title": "Tesla Stock At $4,400? Cathie Wood's ARK Pins Hopes On Robotaxis, Sees SpaceX Merger In 5 Years",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/tesla-stock-cathie-wood-ark-robotaxis-spacex-merger-5-years/cZxqgkXRBuE",
-      "published": "2026-10-19T18:42:00Z",
-      "snippet": "ARK says Tesla’s robotaxi cash flow could help finance SpaceX’s orbital data centers, while SpaceX’s frontier AI models could support Optimus. Together, it estimates the companies to generate $3.8 ...",
-      "image": "https://www.bing.com/th?id=ONUT.q5UGITODmHou0zssZBtAVA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "4bb6ecff9235",
       "topic": "grok",
       "title": "X Bundles Grok, Cursor and Premium Into One Subscription",
@@ -283,18 +271,6 @@
       "score": 4
     },
     {
-      "id": "6d1906b5425d",
-      "topic": "spacex",
-      "title": "Starshield vs. Starlink: How Ukraine's military use both",
-      "source": "CBS News on MSN",
-      "url": "https://www.msn.com/en-us/technology/cybersecurity/starshield-vs-starlink-how-ukraine-s-military-use-both/vi-AA2fC6pu",
-      "published": "2026-10-19T17:15:38Z",
-      "snippet": "Starshield has become essential for Ukrainian military operations. Jericka Duncan explains what it is and how it's related to Starlink.",
-      "image": "https://www.bing.com/th?id=ONUT.WPgTBdnmJRPeTGMBYH7fHQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "12411f98fca3",
       "topic": "tesla",
       "title": "Tesla CEO Elon Musk reminds everyone about Roadster’s true meaning",
@@ -337,7 +313,6 @@
       "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQN2tXTGZVRXBGSUdkY3FpZGV3T21fS0ozQ2xwUHdNSlkyNkNRb0I2YXU5VkVxUTVESEpoNEsxY2VTN0ZOQUdFdjFGaUVJcHNxYkJzM1hneHpZZHFVRVpDWm1jRlc4ZDVfZG44QWRxc1p1Tmp4Sy05bVhXUkhWTllScThvOUhMbFk3V3I2MHhlcDRrMXVoSE1jc2k4bDhMemFNUUJDby1WcVY2TDVUQ01yWTdFbWUxV1RQU3YtYjdUWkJuMkVVMUFwLUxJS3ZWZXpmaW1MZHQxbFA2V19ydUN1Q2xsd01hM3M?oc=5",
       "published": "2026-10-19T16:45:34Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.gGV94Pov5tlMhmiLIKXNKA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -350,17 +325,6 @@
       "published": "2026-10-19T16:33:35Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.Xh7fWP5KgtFrXNcUiJDBJQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "a06d0b1a206f",
-      "topic": "spacex",
-      "title": "SpaceX earnings preview: AI spending, annual recurring revenue now becoming the bigger story",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxObTBwanpKY2FFd0ZmUFdHZVZFRkZnTzhPRW1YM2txemttSzhhZ0RSRVVEWTZ0SVU3elM0dml0WjNmNE8yS3NFd1ZvYXF0b1lXajhKZVZxbXN4SWRObWluOHZ3RERTOGZXMHVHQ0N6YUhsQU1kSGlvYW8takJoN21JTlFPcGM2UlhvY2tKUFA1QzBVUnRnY2xWZXpOM0xCT0xfajJkRWgyUXV5S3ZtVWxsS0tuZUU5S0RzbnAwcVh5QlhwNzBBZExOWTY0VDZURXdrck1tOWRJckFVbGFaWWtzXzZSSjZjU3N2eEE?oc=5",
-      "published": "2026-10-19T16:26:10Z",
-      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -438,18 +402,6 @@
       "score": 7
     },
     {
-      "id": "8ad658335683",
-      "topic": "spacex",
-      "title": "Elon Musk pledges to give a SpaceX share to every US child",
-      "source": "CBS News on MSN",
-      "url": "https://www.msn.com/en-us/news/other/elon-musk-pledges-to-give-a-spacex-share-to-every-us-child/ar-AA2fAahu",
-      "published": "2026-10-19T14:38:07Z",
-      "snippet": "The SpaceX CEO wrote on social media on Monday that the gift \"will be the first of many.\" ...",
-      "image": "https://www.bing.com/th?id=ONUT.JnFpK6VBxik2bqK_dpI_Mg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "ac9efc879659",
       "topic": "grok",
       "title": "doola MCP Brings US LLC Formation to Grok Build, Closing the Gap Between Building an App and Owning a Company",
@@ -484,30 +436,6 @@
       "score": 4
     },
     {
-      "id": "f5c0eaf9bf1d",
-      "topic": "spacex",
-      "title": "Fire at Starlink Center in Lithuania Was Sabotage, Officials Say",
-      "source": "The New York Times",
-      "url": "https://www.nytimes.com/2026/10/19/world/europe/lithuania-starlink-sabotage-ukraine-russia.html",
-      "published": "2026-10-19T12:33:00Z",
-      "snippet": "The fire, which did not seriously damage the network, came after similar incidents in Bulgaria and Poland involving the satellite internet provider, a key defense tool for Ukraine’s armed forces.",
-      "image": "https://www.bing.com/th?id=ONUT.uMaXEcOuI01A4Z8-kyptpw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "f3180b9e20ec",
-      "topic": "spacex",
-      "title": "Bulgarian authorities seek arrests Germans in arson of Starlink antennas",
-      "source": "Associated Press News",
-      "url": "https://apnews.com/article/bulgaria-starlink-arson-suspects-germany-4fd7c426befbf98a7e361d0156a3509f",
-      "published": "2026-10-19T12:29:00Z",
-      "snippet": "Bulgaria issued an international arrest warrant for two German citizens suspected of setting fire to Starlink antennas outside the Bulgarian capital.",
-      "image": "https://www.bing.com/th?id=ONUT.0bGOZYxTzUn0DaByHyjQLA&pid=News&w=640",
-      "kind": "general",
-      "score": 9
-    },
-    {
       "id": "8f596a3f8170",
       "topic": "tesla",
       "title": "SpaceX, Tesla earnings to test Musk's AI spending ambitions as merger talk grows",
@@ -538,18 +466,6 @@
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNY0tZdkd0RFoyZ2xkQV90MmdJdGNhZnB4X1ZWdmlkTEhRYTFaUzE1d3M3UkxURDdaZXAzdlpZVm5lWTg5Z2l0d1prRl9HZ2RYMVZDcHgtOW84OE11X01QMmRvdjc3VFpxVlFmVkl3T2tfdmNQM0ZURGdkZU9oemVXa3N3TGtzcm1oLTRyTlZqNzFMVXlQdEN1c0JZUQ?oc=5",
       "published": "2026-10-19T12:23:00Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "33b8c91a9e92",
-      "topic": "spacex",
-      "title": "Ukraine’s drones lose their Starlink link above 100 mph. Musk, Rubio, and Trump all say it wasn’t them",
-      "source": "Fortune on MSN",
-      "url": "https://www.msn.com/en-us/news/other/ukraine-s-drones-lose-their-starlink-link-above-100-mph-musk-rubio-and-trump-all-say-it-wasn-t-them/ar-AA2fBbKy",
-      "published": "2026-10-19T11:50:48Z",
-      "snippet": "Kyiv says a sudden SpaceX speed limit is knocking out interceptor drones it needs against Russia’s jet-powered Shaheds. Musk, the White House, and Trump all say it wasn’t them.",
-      "image": "https://www.bing.com/th?id=ONUT.ektU3gPL1zPZteoehG_Lrg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -588,38 +504,13 @@
       "score": 4
     },
     {
-      "id": "30fa5e11e6d8",
-      "topic": "spacex",
-      "title": "Elon Musk's SpaceX pledge could give 73M children stock in rocket company",
-      "source": "USA TODAY",
-      "url": "https://www.usatoday.com/story/tech/science/space/2026/10/19/elon-musk-spacex-shares-every-kid-america/92329629007/",
-      "published": "2026-10-19T09:51:00Z",
-      "snippet": "Elon Musk's ambitious promise means tens of millions of children across the US could get a share of SpaceX stock in 2027.",
-      "image": "https://www.bing.com/th?id=ONUT.3fBTSvdvwk09MxvoUmzBXQ&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
-    },
-    {
-      "id": "a5f96b50dcc0",
-      "topic": "tesla",
-      "title": "Tesla Rises 4% as DeSantis Vows to Make Flying Roadster Legal in Florida; Rivian and Lucid Slip",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/tesla-rises-4-desantis-vows-165038673.html",
-      "published": "2026-10-19T09:50:00Z",
-      "snippet": "A pledge from Florida’s governor is lifting one electric vehicle maker while its smaller rivals retreat. Tesla (NASDAQ:TSLA) shares are up 4% to $367.59 in afternoon trading after Florida Governor Ron ...",
-      "image": "https://www.bing.com/th?id=ONUT.vaI1Caezdgdcf-Ip5pQC1Q&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
       "id": "1f4fc2c76504",
       "topic": "tesla",
       "title": "Musk's Tesla jumps 32 spots on the Roundtable 100 after 'flying car' reveal",
       "source": "TheStreet",
       "url": "https://www.thestreet.com/crypto/markets/musks-tesla-jumps-32-spots-on-the-roundtable-100-after-flying-car-reveal",
       "published": "2026-10-19T09:45:00Z",
-      "snippet": "The model named Roadster 2 used SpaceX's (Nasdaq: SPCX) rocket thruster technology to leap over a row of Tesla’s existing models parked side-by-side and accelerate from 0 to 60 mph in a record time of ...",
+      "snippet": "The model named Roadster 2 used SpaceX's (Nasdaq: SPCX) rocket thruster technology to leap over a row of Tesla’s existing models parked side-by-side and accelerate from 0 to 60 mph in a record time of less than a second.",
       "image": "https://www.bing.com/th?id=ONUT.bENuzFMQ9fbdkWQ9KeOt7g&pid=News&w=640",
       "kind": "general",
       "score": 4
@@ -688,7 +579,7 @@
       "source": "PCMag",
       "url": "https://www.pcmag.com/news/starlink-faces-third-attempted-arson-attack-in-europe",
       "published": "2026-10-19T07:33:00Z",
-      "snippet": "A third attempted arson attack on a Starlink-related facility has been reported in Europe, amid concerns the Russian government has been allegedly orchestrating the sabotage effor ...",
+      "snippet": "A third attempted arson attack on a Starlink-related facility has been reported in Europe, amid concerns the Russian government has been allegedly orchestrating the sabotage effor",
       "image": "https://www.bing.com/th?id=ONUT.FNE5vqMzno6kw-rNuA7VhQ&pid=News&w=640",
       "kind": "general",
       "score": 4
@@ -706,38 +597,26 @@
       "score": 4
     },
     {
-      "id": "b2a3bf8ade30",
+      "id": "9b3d77e03f62",
       "topic": "spacex",
-      "title": "Major European mobile carriers are teaming up for a ‘direct’ satellite program without Starlink",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/policy/1013680/european-mobile-carriers-mobile-satellite-starlink",
-      "published": "2026-10-19T07:24:00Z",
-      "snippet": "The joint initiative by Deutsche Telekom, Orange, Telefónica and Vodafone has a clear ambition: to meet customer demand for universal coverage in underserved areas, strengthen the resilience of public ...",
-      "image": "https://www.bing.com/th?id=ONUT.9LKOPWslHZL1-4w6Y6gVrg&pid=News&w=640",
+      "title": "Musk pledges to give a share of his SpaceX company to every kid in America",
+      "source": "Associated Press News on MSN",
+      "url": "https://www.msn.com/en-us/money/general/musk-pledges-a-share-of-his-spacex-company-to-every-kid-in-america/ar-AA2fyZ2v",
+      "published": "2026-10-19T05:35:27Z",
+      "snippet": "Billionaire Elon Musk on Monday pledged to give one share of his company SpaceX to “every kid in America” next year. The offer arrived a day after artificial intelligence company Anthropic announced ...",
+      "image": "https://www.bing.com/th?id=ONUT.YMw4F0LaczjVnJXpCQYX_A&pid=News&w=640",
       "kind": "general",
-      "score": 7
+      "score": 9
     },
     {
-      "id": "ce48dc8cfe5f",
+      "id": "dcadb6fe5365",
       "topic": "spacex",
-      "title": "Rubio Says the Starlink Slowdown Was Never Ordered — Inside the Disabling of Ukraine's Air Defenses",
-      "source": "Latin Times",
-      "url": "https://www.latintimes.com/rubio-says-starlink-slowdown-was-never-ordered-inside-disabling-ukraines-air-defenses-600319",
-      "published": "2026-10-19T06:47:00Z",
-      "snippet": "Rubio denied ordering Starlink cuts in Ukraine but admitted they occurred. Here's what the speed cap did to Ukrainian drones and who sources say approved it.",
-      "image": "https://www.bing.com/th?id=ONUT.uWBfNrU1gxBYOnccFn7VsQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "9bca40b80320",
-      "topic": "spacex",
-      "title": "Elon Musk: I'll Give a SpaceX Share to Every Child In America",
-      "source": "PCMag",
-      "url": "https://www.pcmag.com/news/elon-musk-ill-give-a-spacex-share-to-every-child-in-america",
-      "published": "2026-10-19T05:02:00Z",
-      "snippet": "Musk's new plan comes after Anthropic promised to commit 5% of its shares to a scheme it calls the Public Benefit Fund.",
-      "image": "https://www.bing.com/th?id=ONUT.8Y_huGQkm3KA1gaeMg64ag&pid=News&w=640",
+      "title": "Musk Pledges SpaceX Stock for ‘Every Kid in America’ as Billionaires Push Direct Donations",
+      "source": "The New York Times",
+      "url": "https://www.nytimes.com/2026/10/19/technology/elon-musk-spacex-stock-anthropic-giveaway.html",
+      "published": "2026-10-19T05:33:00Z",
+      "snippet": "Anthropic, an A.I. rival to SpaceX, earlier said it would form a “public benefit fund” and other tech moguls have contributed to savings accounts for children.",
+      "image": "https://www.bing.com/th?id=ONUT.YVVgnL5J8muiGAmQZiqdbA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -778,38 +657,14 @@
       "score": 4
     },
     {
-      "id": "c29bf01e8aa3",
-      "topic": "tesla",
-      "title": "Five years, 2 million recalls, still hitting police cars: The fatal flaw inside Tesla’s self-driving tech",
-      "source": "Digital Trends",
-      "url": "https://www.digitaltrends.com/cars/five-years-2-million-recalls-still-hitting-police-cars-the-fatal-flaw-inside-teslas-fsd/",
-      "published": "2026-10-18T22:03:00Z",
-      "snippet": "The central question is not whether driver assistance makes driving easier. It is whether drivers, manufacturers, and regulators understand its limits well enough to stop that convenience from ...",
-      "image": "https://www.bing.com/th?id=ONUT.twqr4Z0Cg6CfJoN0sAkWqg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "0e4103acb8de",
+      "id": "92822ecad5e9",
       "topic": "spacex",
-      "title": "European telecoms groups join forces to challenge Elon Musk’s Starlink",
-      "source": "Financial Times",
-      "url": "https://www.ft.com/content/555bbf91-4c38-43ce-94b6-90f7fc04e82c?syn-25a6b1a6=1",
-      "published": "2026-10-18T21:22:00Z",
-      "snippet": "Deutsche Telekom, Orange, Telefónica and Vodafone to explore joint bid for spectrum to provide mobile satellite coverage ...",
-      "image": "https://www.bing.com/th?id=ONUT.8E283j62RagT5C2whsgoSA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "898996fbef29",
-      "topic": "spacex",
-      "title": "Republicans Call for Investigation Into Ukraine Starlink Disruption",
-      "source": "Newsweek",
-      "url": "https://www.newsweek.com/republicans-investigation-ukraine-starlink-disruption-12586449",
-      "published": "2026-10-18T18:19:00Z",
-      "snippet": "Conflicting accounts from U.S. officials and Ukraine are fueling calls for an investigation into the satellite restrictions.",
-      "image": "https://www.bing.com/th?id=ONUT.Qeq8mZAF3h6Ev98nNih17Q&pid=News&w=640",
+      "title": "Elon Musk says he'll give every child in America a share in SpaceX",
+      "source": "Insider on MSN",
+      "url": "https://www.msn.com/en-us/news/other/elon-musk-says-hell-give-every-child-in-america-a-share-in-spacex/ar-AA2fyrvg",
+      "published": "2026-10-19T02:43:00Z",
+      "snippet": "Elon Musk's plan to gift SpaceX shares to U.S. children in 2027 would be worth equivalent to roughly $10.5 billion at current market prices.",
+      "image": "https://www.bing.com/th?id=ONUT.QcCtCDvlf4lhsPj5DD6Gow&pid=News&w=640",
       "kind": "general",
       "score": 4
     }
