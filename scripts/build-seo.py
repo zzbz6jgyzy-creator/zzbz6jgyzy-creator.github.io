@@ -188,7 +188,7 @@ def about_page():
     ld = org()
     ld["@context"] = "https://schema.org"
     ld["url"] = SITE + "/"
-    ld["email"] = "hello@superchargeddaily.com"
+    ld["email"] = "superchargeddaily@gmail.com"
     ld["description"] = (
         "Independent Tesla, SpaceX and Grok news site from Alex R. "
         "Not affiliated with Tesla, SpaceX or xAI."
