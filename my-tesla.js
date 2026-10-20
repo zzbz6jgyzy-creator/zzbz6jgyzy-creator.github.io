@@ -174,17 +174,17 @@
 
   const featureState = (feat) => {
     if (feat.models && state.model && !feat.models.includes(state.model)) {
-      return { key: "no", label: "Not this model", detail: "This car never got it.", trust: "desk", trustLabel: "Desk read" };
+      return { key: "no", label: "Not this model", detail: "This car never got it.", trust: "desk", trustLabel: "Our read" };
     }
     if (feat.except && state.model && state.year) {
       const hit = feat.except.find((e) => e.model === state.model && state.year <= (e.to || 9999) && state.year >= (e.from || 0));
-      if (hit) return { key: "no", label: "Not this body", detail: "The refresh cabin is what this refers to.", trust: "desk", trustLabel: "Desk read" };
+      if (hit) return { key: "no", label: "Not this body", detail: "The refresh cabin is what this refers to.", trust: "desk", trustLabel: "Our read" };
     }
     if (feat.yearFrom && state.year && state.year < feat.yearFrom) {
-      return { key: "no", label: "Older body", detail: `Starts on ${feat.yearFrom}+ cars.`, trust: "desk", trustLabel: "Desk read" };
+      return { key: "no", label: "Older body", detail: `Starts on ${feat.yearFrom}+ cars.`, trust: "desk", trustLabel: "Our read" };
     }
     if (feat.hw && state.hw && !feat.hw.includes(state.hw)) {
-      return { key: "no", label: "Wrong computer", detail: feat.whyNoHw || `Needs ${feat.hw.map((h) => DATA.hardware.find((x) => x.id === h)?.short || h).join(" or ")}.`, trust: "desk", trustLabel: "Desk read" };
+      return { key: "no", label: "Wrong computer", detail: feat.whyNoHw || `Needs ${feat.hw.map((h) => DATA.hardware.find((x) => x.id === h)?.short || h).join(" or ")}.`, trust: "desk", trustLabel: "Our read" };
     }
     if (feat.kind === "fsd") {
       const row = fsdRow();
@@ -199,7 +199,7 @@
     }
     const rg = regionOf(state.cc);
     if (feat.regions && rg && !feat.regions.includes(rg) && !(feat.countries || []).includes(state.cc)) {
-      return { key: "locked", label: "Region lock", detail: feat.whyNoRegion || `Listed for ${feat.regions.map((r) => RNAME[r] || r).join(", ")}, not ${countryName()}.`, trust: "desk", trustLabel: "Desk read of Tesla listings" };
+      return { key: "locked", label: "Region lock", detail: feat.whyNoRegion || `Listed for ${feat.regions.map((r) => RNAME[r] || r).join(", ")}, not ${countryName()}.`, trust: "desk", trustLabel: "Our read of Tesla listings" };
     }
     if (feat.minSw && state.sw && cmpVer(state.sw, feat.minSw) < 0) {
       return { key: "soon", label: "Needs a newer build", detail: `On your car after ${feat.minSw}. You are on ${state.sw}.`, trust: "desk", trustLabel: "From the notes we track" };
@@ -208,9 +208,9 @@
       return { key: "soon", label: "Build-dependent", detail: `In the notes from ${feat.minSw}. Add your software version to be sure.`, trust: "estimate", trustLabel: "Estimate — add your software" };
     }
     if (feat.minSw || feat.regions) {
-      return { key: "yes", label: "Listed here", detail: feat.summary, trust: "desk", trustLabel: "Desk read of Tesla listings" };
+      return { key: "yes", label: "Listed here", detail: feat.summary, trust: "desk", trustLabel: "Our read of Tesla listings" };
     }
-    return { key: "yes", label: "This body", detail: feat.summary, trust: "desk", trustLabel: "Desk read of the product" };
+    return { key: "yes", label: "This body", detail: feat.summary, trust: "desk", trustLabel: "Our read of the product" };
   };
 
   const relevantNotes = () => {
@@ -337,7 +337,7 @@
     }
     notes.forEach((v) => {
       items.push(`<li><b>${esc(v.id)} — ${esc(v.headline)}</b><p>${esc(v.reached || v.summary)}</p>
-        <span class="mt-meta">Desk notes · ${esc(v.date)} · ${esc((v.countries || []).join(", ") || "countries vary")}</span></li>`);
+        <span class="mt-meta">Our notes · ${esc(v.date)} · ${esc((v.countries || []).join(", ") || "countries vary")}</span></li>`);
     });
     const blob = notes.map((v) => `${v.headline} ${v.summary}`.toLowerCase()).join(" ");
     liveFeatureNotes()
