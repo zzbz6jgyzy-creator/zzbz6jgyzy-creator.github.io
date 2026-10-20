@@ -8,18 +8,53 @@ root = pathlib.Path(__file__).resolve().parent.parent
 cfg = json.loads((root / "scripts/nav.json").read_text())
 CH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
 BURGER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>'
+
+def slug(s):
+    return re.sub(r"[^a-z0-9]+", "-", (s or "").lower()).strip("-")
+
+def is_group(it):
+    return isinstance(it, dict) and "items" in it
+
+def link_html(it, indent="                "):
+    name, href, sub, badge = (list(it) + ["", ""])[:4]
+    b = f'<span class="pn-badge">{badge}</span>' if badge else ""
+    s = f"<small>{sub}</small>" if sub else ""
+    return f'{indent}<a href="{href}">{name}{b}{s}</a>'
+
+def nest_html(parent_id, group):
+    gid = f'{parent_id}-{slug(group["label"])}'
+    kids = "\n".join(link_html(it, indent="                  ") for it in group["items"])
+    return (
+        f'                <div class="pn-nest">\n'
+        f'                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="{gid}">{group["label"]}{CH}</button>\n'
+        f'                  <div class="pn-nest-panel" id="{gid}" hidden>\n'
+        f'{kids}\n'
+        f'                  </div>\n'
+        f'                </div>'
+    )
+
 def dd(d):
     rows = []
-    for name, href, sub, badge in d["items"]:
-        b = f'<span class="pn-badge">{badge}</span>' if badge else ""
-        s = f"<small>{sub}</small>" if sub else ""
-        rows.append(f'                <a href="{href}">{name}{b}{s}</a>')
+    for it in d["items"]:
+        rows.append(nest_html(d["id"], it) if is_group(it) else link_html(it))
     wide = " pn-wide" if d.get("wide") else ""
     return (f'            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="{d["id"]}">{d["label"]}{CH}</button>\n'
             f'              <div class="pn-panel{wide}" id="{d["id"]}">\n' + "\n".join(rows) + "\n              </div></div>")
+
 def links(lst, cls=""):
     c = f' class="{cls}"' if cls else ""
     return [f'            <a{c} href="{h}">{n}</a>' for n, h in lst]
+
+def sheet_bits(d):
+    bits = [f'<h3>{d["label"]}</h3>']
+    for it in d["items"]:
+        if is_group(it):
+            bits.append(f'<h4>{it["label"]}</h4>')
+            bits.append("".join(f'<a href="{h}">{n}</a>' for n, h, *_ in it["items"]))
+        else:
+            bits.append(f'<a href="{it[1]}">{it[0]}</a>')
+    return bits
+
 def block(navtag):
     t, m, ds = cfg.get("top", []), cfg.get("mid", []), cfg["dropdowns"]
     items = links(t, "pn-link") + [dd(d) for d in ds] + links(m, "pn-link") + [f'            <a class="pn-cta" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>']
@@ -27,7 +62,7 @@ def block(navtag):
     top_has_home = any((n or "").lower() == "home" or h in ("/", "/index.html") for n, h in t)
     sheet = [a((t if top_has_home else [("Home", "/")] + t) + m)]
     for d in ds:
-        sheet += [f'<h3>{d["label"]}</h3>', a([(i[0], i[1]) for i in d["items"]])]
+        sheet += sheet_bits(d)
     return f'''<div class="pn-wrap">
         {navtag}
           <a class="pn-logo" href="/" aria-label="Supercharged Daily home"><img src="/assets/brand/icon-1b-mark.svg" alt="" width="26" height="26" /><img class="pn-word" src="/assets/brand/wordmark.svg" alt="" width="114" height="18" /></a>
