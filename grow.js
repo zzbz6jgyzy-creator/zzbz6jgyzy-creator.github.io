@@ -37,10 +37,10 @@
       else if (/starship|starlink|spacex|falcon|dragon/.test(hay)) topic = "spacex";
       else if (/tesla/.test(hay)) topic = "tesla";
     }
-    if (topic === "roadster") return ["roadster", "Roadster on Supercharged Daily", "Reveal clocks, thruster notes and the Tesla desk — one free Sunday email."];
+    if (topic === "roadster") return ["roadster", "Roadster on Supercharged Daily", "Reveal clocks, thruster notes and the latest Tesla news — one free Sunday email."];
     if (topic === "tesla-software") return ["tesla-software", "Tesla software on Supercharged Daily", "FSD, software updates and My Tesla notes — free, every Sunday."];
     if (topic === "spacex") return ["spacex", "SpaceX on Supercharged Daily", "Starship flights, Starlink and Falcon dates — the week in one Sunday email."];
-    if (topic === "tesla") return ["tesla", "Tesla on Supercharged Daily", "Reviews, buying notes and the Tesla desk — free, every Sunday."];
+    if (topic === "tesla") return ["tesla", "Tesla on Supercharged Daily", "Reviews, buying notes and the latest Tesla news — free, every Sunday."];
     return ["website", "Get Supercharged Daily", "The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday."];
   };
   if (has("band") && !document.querySelector("[data-band-slot] .sd-band") && !document.querySelector('.nl-end, #newsletter, [data-newsletter]:not(.sd-pop):not(.sd-band)')) {
