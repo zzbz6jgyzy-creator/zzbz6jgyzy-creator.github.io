@@ -1,7 +1,7 @@
 window.MY_TESLA = {
   updated: "2026-10-15",
   note:
-    "This desk’s read of Tesla listings, Teslascope fleet samples, and the FSD trackers already on this site. Tracker rows are labelled. Year-to-hardware is an estimate. A feature in the notes can still be missing on your hardware, in your country, or on your software package. Not Tesla’s official owner portal.",
+    "Our read of Tesla listings, Teslascope fleet samples, and the FSD trackers already on this site. Tracker rows are labelled. Year-to-hardware is an estimate. A feature in the notes can still be missing on your hardware, in your country, or on your software package. Not Tesla’s official owner portal.",
   models: [
     {
       id: "3",

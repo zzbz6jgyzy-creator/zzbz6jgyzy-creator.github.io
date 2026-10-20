@@ -1,7 +1,7 @@
 window.STARSHIP_LAB = {
   updated: "2026-10-15",
   note:
-    "Lab notes are this desk’s read of SpaceX flight pages and the public record. Video is official SpaceX only — recaps, a pre-flight film, or clips already on this site. Recap chips jump inside the highlight edit, not T+ mission time. Flights without a SpaceX recap link the mission page and @SpaceX.",
+    "Lab notes are our read of SpaceX flight pages and the public record. Video is official SpaceX only — recaps, a pre-flight film, or clips already on this site. Recap chips jump inside the highlight edit, not T+ mission time. Flights without a SpaceX recap link the mission page and @SpaceX.",
   phaseOrder: [
     "liftoff",
     "staging",

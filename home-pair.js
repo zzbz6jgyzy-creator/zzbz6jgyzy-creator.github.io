@@ -44,7 +44,7 @@
   ]);
   const RULES = [
     { re: /\broadster\b|\bhalo\b/, href: "/roadster.html", label: "Roadster hub" },
-    { re: /\bmerg(e|er|ing)\b/, href: "/dispatch/tesla-spacex-merger-barclays.html", label: "Merger desk" },
+    { re: /\bmerg(e|er|ing)\b/, href: "/dispatch/tesla-spacex-merger-barclays.html", label: "Merger" },
     { re: /\bstarshield\b|\bstarlink\b/, href: "/starlink.html", label: "Starlink tracker" },
     { re: /\bclass action\b|self-driving claims/, href: "/fsd.html", label: "FSD tracker" },
     { re: /\bfsd\b|assisted driving|supervised/, href: "/fsd-europe.html", label: "FSD Europe tracker" },
@@ -52,16 +52,16 @@
     { re: /\brobotaxi\b|\bcybercab\b/, href: "/cybercab.html", label: "Robotaxi map" },
     { re: /\bstarship\b|\bship catch\b|\braptor\b/, href: "/starship.html", label: "Starship flights" },
     { re: /\bsoftware update|\bfirmware\b|2026\.\d+/, href: "/updates.html", label: "Software updates" },
-    { re: /\bpowerwall\b|\bmegapack\b/, href: "/dispatch/powerwall-745mw-record.html", label: "Powerwall desk" },
+    { re: /\bpowerwall\b|\bmegapack\b/, href: "/dispatch/powerwall-745mw-record.html", label: "Powerwall" },
     { re: /\bearnings\b|\bunlock\b|\b1\.3\s*b(?:illion)?\b/, href: "/dispatch/musk-earnings-week-q3-2026.html", label: "Earnings week" },
     { re: /\bgrok\b|\bai agents?\b/, href: "/grok.html", label: "Grok tutorial" },
     { re: /\boptimus\b/, href: "/promise-tracker.html", label: "Promise tracker" },
     { re: /\bfalcon\b|\bdragon\b|\bbandwagon\b|\bstarfall\b/, href: "/calendar.html", label: "Launch calendar" },
-    { re: /\bboca chica\b|\bstarbase\b/, href: "/dispatch/boca-chica-state-park-spacex.html", label: "Boca Chica desk" },
+    { re: /\bboca chica\b|\bstarbase\b/, href: "/dispatch/boca-chica-state-park-spacex.html", label: "Boca Chica" },
   ];
   const HUB = {
-    tesla: { href: "/tesla.html", label: "Tesla desk" },
-    spacex: { href: "/spacex.html", label: "SpaceX desk" },
+    tesla: { href: "/tesla.html", label: "Tesla" },
+    spacex: { href: "/spacex.html", label: "SpaceX" },
     grok: { href: "/grok.html", label: "Grok tutorial" },
     xai: { href: "/grok.html", label: "Grok tutorial" },
     x: { href: "/dispatch.html", label: "Dispatch" },
