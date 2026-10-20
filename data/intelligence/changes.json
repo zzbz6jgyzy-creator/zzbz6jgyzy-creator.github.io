@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-20T17:49:00.211Z",
+  "updated": "2026-10-20T18:02:55.419Z",
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:most-common",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "most-common",
-      "previous": "2026.38.5.1@27.1",
-      "next": "2026.38.5.1@27.2",
-      "at": "2026-10-20T17:48:58.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Most common sample build changed from 2026.38.5.1@27.1 to 2026.38.5.1@27.2.",
-      "title": "Most common sample build",
-      "id": "changed|tesla-software:most-common|2026-10-20T17:48:58.000Z|2026.38.5.1@27.2"
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-q3-2026-preview.html",
+      "topic": "production",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla Q3 preview: 486,532 deliveries in, now the cash-flow test",
+      "at": "2026-10-20T18:30:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-q3-2026-preview.html",
+      "href": "/dispatch/tesla-q3-2026-preview.html",
+      "summary": "Deliveries are in at 486,532. Tesla reports after the US close on Wednesday; its own analyst consensus expects $28.34B in revenue and negative free cash flow.",
+      "title": "Tesla Q3 preview: 486,532 deliveries in, now the cash-flow test",
+      "id": "logged|dispatch:/dispatch/tesla-q3-2026-preview.html|2026-10-20T18:30:00.000Z|Tesla Q3 preview: 486,532 deliveries in, now the cash-flow test"
     },
     {
       "type": "logged",
@@ -238,23 +238,6 @@
       "summary": "An app alert pushed Austin’s day to 6am–midnight. Texas registrations passed 800, and all 34 new cars are Model Ys.",
       "title": "Tesla Robotaxi now runs until midnight in Austin",
       "id": "logged|dispatch:/dispatch/robotaxi-austin-midnight-803.html|2026-10-17T13:40:27.000Z|Tesla Robotaxi now runs until midnight in Austin"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/boca-chica-state-park-spacex.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Texas weighed selling Boca Chica State Park to SpaceX",
-      "at": "2026-10-17T07:41:14.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/boca-chica-state-park-spacex.html",
-      "href": "/dispatch/boca-chica-state-park-spacex.html",
-      "summary": "A draft agenda listed a closed-door 1,300-acre sale. Sources say SpaceX is the buyer; the state says it’s off November’s agenda.",
-      "title": "Texas weighed selling Boca Chica State Park to SpaceX",
-      "id": "logged|dispatch:/dispatch/boca-chica-state-park-spacex.html|2026-10-17T07:41:14.000Z|Texas weighed selling Boca Chica State Park to SpaceX"
     },
     {
       "type": "changed",
