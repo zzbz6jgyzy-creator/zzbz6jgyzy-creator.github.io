@@ -178,50 +178,6 @@
         `<h2>Followed topics</h2>${followed.length ? I.changesHtml(followRows) : '<p class="intel-empty">Follow topics above. Anonymous browsing still works.</p>'}`;
     }
 
-    const digestBox = $("[data-intel-digest]");
-    const enable = $("[data-intel-alerts-enable]");
-    const previewBtn = $("[data-intel-alerts-preview]");
-    const testBtn = $("[data-intel-alerts-test]");
-    const paintDigest = (preview) => {
-      if (digestBox) digestBox.innerHTML = I.digestHtml(preview);
-    };
-    if (enable) {
-      enable.checked = I.alertRead(localStorage).enabled;
-      enable.addEventListener("change", () => {
-        const cur = I.alertRead(localStorage);
-        I.alertWrite(localStorage, { ...cur, enabled: enable.checked });
-      });
-    }
-    if (previewBtn) {
-      previewBtn.addEventListener("click", () => {
-        paintDigest(I.digestPreview(bundle.changes, I.followRead(localStorage), bundle.generatedAt));
-      });
-    }
-    if (testBtn) {
-      testBtn.addEventListener("click", () => {
-        const cur = I.alertRead(localStorage);
-        I.alertWrite(localStorage, { ...cur, enabled: true });
-        if (enable) enable.checked = true;
-        const result = I.alertEnqueue(localStorage, bundle.changes, I.followRead(localStorage));
-        const queued = I.alertRead(localStorage).items;
-        paintDigest({
-          mode: "preview",
-          sent: result.sent === 0 ? false : true,
-          subject: "Test queue — " + result.queued + " new rows, " + result.sent + " sent",
-          items: queued.slice(0, 12).map((c) => ({
-            title: c.title,
-            summary: c.summary,
-            evidence: (I.EVIDENCE_LABEL && I.EVIDENCE_LABEL[c.evidence]) || c.evidence,
-            at: c.at,
-          })),
-          disclaimer: "Queued in this browser only. sent=" + result.sent + ". No email or push left this machine.",
-        });
-      });
-    }
-    if (digestBox && !digestBox.innerHTML) {
-      paintDigest(I.digestPreview(bundle.changes, I.followRead(localStorage), bundle.generatedAt));
-    }
-
     try { localStorage.setItem(I.VISIT_KEY, bundle.generatedAt); } catch (e) {}
   });
 })();

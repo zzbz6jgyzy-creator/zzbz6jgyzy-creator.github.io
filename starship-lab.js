@@ -150,8 +150,11 @@
       rail.append(button);
     });
     const current = rail.querySelector(`[data-flight="${selected}"]`);
-    if (current && typeof current.scrollIntoView === "function") {
-      current.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+    if (current) {
+      // Centre the selected flight inside the rail only; never move the page itself.
+      const left = current.offsetLeft - (rail.clientWidth - current.offsetWidth) / 2;
+      if (typeof rail.scrollTo === "function") rail.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+      else rail.scrollLeft = Math.max(0, left);
     }
   };
 
