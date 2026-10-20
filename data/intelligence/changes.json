@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-20T07:23:40.533Z",
+  "updated": "2026-10-20T07:49:27.347Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-iphone-action-button.html",
+      "topic": "promises",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok Bot now works from the iPhone Action Button",
+      "at": "2026-10-20T07:50:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-iphone-action-button.html",
+      "href": "/dispatch/grok-bot-iphone-action-button.html",
+      "summary": "App 1.16 lets iPhone 15 Pro and newer start a Bot voice chat with one press. The setup, who qualifies, and two weeks of updates.",
+      "title": "Grok Bot now works from the iPhone Action Button",
+      "id": "logged|dispatch:/dispatch/grok-bot-iphone-action-button.html|2026-10-20T07:50:00.000Z|Grok Bot now works from the iPhone Action Button"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/ark-tesla-2031-model.html",
@@ -204,23 +221,6 @@
       "summary": "Musk’s new ad “esthetic standard” vs Google’s and Meta’s rules: vaguer test, tougher penalty.",
       "title": "X will bar “ugly” and “shrill” advertisers",
       "id": "logged|dispatch:/dispatch/x-ads-esthetic-standard.html|2026-10-17T01:50:00.000Z|X will bar “ugly” and “shrill” advertisers"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-india-reliance-reply.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Starlink answers Reliance: “ready to connect India”",
-      "at": "2026-10-16T19:45:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-india-reliance-reply.html",
-      "href": "/dispatch/starlink-india-reliance-reply.html",
-      "summary": "Three licensees, none selling yet. The real gate is a Home Ministry security review, then spectrum pricing.",
-      "title": "Starlink answers Reliance: “ready to connect India”",
-      "id": "logged|dispatch:/dispatch/starlink-india-reliance-reply.html|2026-10-16T19:45:00.000Z|Starlink answers Reliance: “ready to connect India”"
     },
     {
       "type": "changed",

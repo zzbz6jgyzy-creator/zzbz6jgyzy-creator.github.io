@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-20T07:23:40.533Z",
+  "generatedAt": "2026-10-20T07:49:27.347Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -245,6 +245,23 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-iphone-action-button.html",
+      "topic": "promises",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok Bot now works from the iPhone Action Button",
+      "at": "2026-10-20T07:50:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-iphone-action-button.html",
+      "href": "/dispatch/grok-bot-iphone-action-button.html",
+      "summary": "App 1.16 lets iPhone 15 Pro and newer start a Bot voice chat with one press. The setup, who qualifies, and two weeks of updates.",
+      "title": "Grok Bot now works from the iPhone Action Button",
+      "id": "logged|dispatch:/dispatch/grok-bot-iphone-action-button.html|2026-10-20T07:50:00.000Z|Grok Bot now works from the iPhone Action Button"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/ark-tesla-2031-model.html",
       "topic": "robotaxi",
       "tracker": "dispatch",
@@ -446,23 +463,6 @@
       "summary": "Musk’s new ad “esthetic standard” vs Google’s and Meta’s rules: vaguer test, tougher penalty.",
       "title": "X will bar “ugly” and “shrill” advertisers",
       "id": "logged|dispatch:/dispatch/x-ads-esthetic-standard.html|2026-10-17T01:50:00.000Z|X will bar “ugly” and “shrill” advertisers"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-india-reliance-reply.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Starlink answers Reliance: “ready to connect India”",
-      "at": "2026-10-16T19:45:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-india-reliance-reply.html",
-      "href": "/dispatch/starlink-india-reliance-reply.html",
-      "summary": "Three licensees, none selling yet. The real gate is a Home Ministry security review, then spectrum pricing.",
-      "title": "Starlink answers Reliance: “ready to connect India”",
-      "id": "logged|dispatch:/dispatch/starlink-india-reliance-reply.html|2026-10-16T19:45:00.000Z|Starlink answers Reliance: “ready to connect India”"
     },
     {
       "type": "changed",
@@ -1442,14 +1442,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-18T07:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1463,14 +1463,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-18T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-20T05:59:35.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1484,35 +1484,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-20T07:23:40.533Z",
+      "lastChecked": "2026-10-20T07:49:27.347Z",
       "lastVerified": "2026-10-20T07:07:26.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1521,85 +1521,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.521Z",
-      "finished": "2026-10-20T07:23:40.525Z"
+      "started": "2026-10-20T07:49:27.318Z",
+      "finished": "2026-10-20T07:49:27.339Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.525Z",
-      "finished": "2026-10-20T07:23:40.525Z"
+      "started": "2026-10-20T07:49:27.339Z",
+      "finished": "2026-10-20T07:49:27.339Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.525Z",
-      "finished": "2026-10-20T07:23:40.525Z"
+      "started": "2026-10-20T07:49:27.339Z",
+      "finished": "2026-10-20T07:49:27.339Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.525Z",
-      "finished": "2026-10-20T07:23:40.528Z"
+      "started": "2026-10-20T07:49:27.339Z",
+      "finished": "2026-10-20T07:49:27.342Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.528Z",
-      "finished": "2026-10-20T07:23:40.530Z"
+      "started": "2026-10-20T07:49:27.342Z",
+      "finished": "2026-10-20T07:49:27.344Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.530Z",
-      "finished": "2026-10-20T07:23:40.531Z"
+      "started": "2026-10-20T07:49:27.344Z",
+      "finished": "2026-10-20T07:49:27.344Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.531Z",
-      "finished": "2026-10-20T07:23:40.531Z"
+      "started": "2026-10-20T07:49:27.344Z",
+      "finished": "2026-10-20T07:49:27.345Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.531Z",
-      "finished": "2026-10-20T07:23:40.531Z"
+      "started": "2026-10-20T07:49:27.345Z",
+      "finished": "2026-10-20T07:49:27.345Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.531Z",
-      "finished": "2026-10-20T07:23:40.531Z"
+      "started": "2026-10-20T07:49:27.345Z",
+      "finished": "2026-10-20T07:49:27.345Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.531Z",
-      "finished": "2026-10-20T07:23:40.532Z"
+      "started": "2026-10-20T07:49:27.345Z",
+      "finished": "2026-10-20T07:49:27.346Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.532Z",
-      "finished": "2026-10-20T07:23:40.533Z"
+      "started": "2026-10-20T07:49:27.346Z",
+      "finished": "2026-10-20T07:49:27.347Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.533Z",
-      "finished": "2026-10-20T07:23:40.533Z"
+      "started": "2026-10-20T07:49:27.347Z",
+      "finished": "2026-10-20T07:49:27.347Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-20T07:23:40.533Z",
-      "finished": "2026-10-20T07:23:40.533Z"
+      "started": "2026-10-20T07:49:27.347Z",
+      "finished": "2026-10-20T07:49:27.347Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-20T07:23:40.533Z",
+    "generatedAt": "2026-10-20T07:49:27.347Z",
     "factCount": 17,
     "changeCount": 68,
     "conflictCount": 2,
