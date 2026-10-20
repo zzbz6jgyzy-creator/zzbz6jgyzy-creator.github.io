@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20T07:57:08Z",
+  "updated": "2026-10-20T08:56:06Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3387,
@@ -8,7 +8,7 @@
     {
       "id": "2026.38.5.10",
       "date": "2026-10-20",
-      "count": 0,
+      "count": 1,
       "fleet": 3387,
       "percent": 0.0,
       "fsd": null,
@@ -16,8 +16,16 @@
       "fsdHw4": "14.3.13",
       "features": [
         {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
+        },
+        {
           "title": "Automatic Collision Evasion",
           "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3 Lite",
+          "text": "FSD (Supervised) v14.3 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
         },
         {
           "title": "FSD (Supervised) v14.3.13",
@@ -28,31 +36,27 @@
           "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
         },
         {
-          "title": "Apple Music",
-          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
         },
         {
-          "title": "Dynamic Headlight Leveling",
-          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
         },
         {
-          "title": "Emergency Drive Away",
-          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
-        },
-        {
-          "title": "FSD (Supervised) v14.3.12",
-          "text": "Full Self-Driving (Supervised) v14.3.12 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
-        },
-        {
-          "title": "Halloween Mode",
-          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
         }
       ],
-      "countries": [],
-      "countryCounts": {},
-      "pending": 7,
+      "countries": [
+        "US"
+      ],
+      "countryCounts": {
+        "US": 1
+      },
+      "pending": 6,
       "firstSeen": "2026-10-20T07:52:55Z",
-      "lastSeen": "2026-10-20T07:52:55Z"
+      "lastSeen": "2026-10-20T08:26:59Z"
     },
     {
       "id": "2026.32.200",
@@ -89,9 +93,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 892,
+      "count": 896,
       "fleet": 3387,
-      "percent": 26.3,
+      "percent": 26.5,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -135,13 +139,13 @@
         "MX"
       ],
       "countryCounts": {
-        "US": 840,
+        "US": 843,
         "CA": 49,
-        "MX": 3
+        "MX": 4
       },
-      "pending": 82,
+      "pending": 108,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-20T07:47:50Z"
+      "lastSeen": "2026-10-20T08:52:42Z"
     },
     {
       "id": "2026.38.5",
