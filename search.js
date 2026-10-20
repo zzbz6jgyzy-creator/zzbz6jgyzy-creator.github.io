@@ -2,7 +2,7 @@
    Overlay (⌘K / nav Search) on pages that load this file; full page on /search.html. */
 (() => {
   if (window.__sdFind) return;
-  const V = "202610192300";
+  const V = "202610192400";
   const PAGE = /\/search\.html$/.test(location.pathname);
   const LIMIT = PAGE ? 60 : 24;
   const LATEST = PAGE ? 12 : 8;
@@ -49,7 +49,7 @@
     production: ["production", "deliveries"],
     tesla: ["tesla"],
     spacex: ["spacex"],
-    calendar: ["calendar", "launch"],
+    calendar: ["calendar", "launch", "archive"],
     promise: ["promise", "deadline", "tracker"],
   };
   function expandToks(toks) {
@@ -104,6 +104,7 @@
     if ((toks.includes("production") || toks.includes("deliveries")) && /production\.html/.test(item.url || "")) s += 40;
     if ((toks.includes("autonomy") || (toks.includes("robotaxi") && toks.includes("evidence"))) && /autonomy\.html/.test(item.url || "")) s += 36;
     if (toks.includes("calendar") && /calendar\.html/.test(item.url || "")) s += 30;
+    if ((toks.includes("archive") || toks.includes("earlier")) && /calendar\.html/.test(item.url || "")) s += 28;
     if ((toks.includes("promise") || toks.includes("promises") || toks.includes("deadlines")) && /promise-tracker\.html/.test(item.url || "")) s += 40;
     if (((toks.includes("see") && toks.includes("launch")) || toks.includes("visible")) && /see-the-launch\.html/.test(item.url || "")) s += 40;
     if (toks.includes("sample") && toks.includes("waves") && /updates\.html/.test(item.url || "")) s += 36;

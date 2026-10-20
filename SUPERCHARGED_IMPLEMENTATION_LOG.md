@@ -151,3 +151,21 @@ Branch: `cursor/drop-my-tesla-mail-5e96`
 Date: 19 Oct 2026
 
 Removed the My Tesla email/alerts form and the JS that POSTed to `sd-mail`. Deleted `workers/sd-mail/` and the updates-snapshot ping. Sunday Beehiiv signup, Welcome, and the five tag automations were not touched. Draft **My Tesla · software reporting** left unpublished. No `reactivate_existing`.
+
+## Batch 8 — Homepage clocks, energy YoY, desks, calendar archive
+
+Branch: `cursor/intel-crosslinks-5e96`  
+Date: 19 Oct 2026
+
+After #140 merged:
+
+1. **Homepage kept clocks.** `homeSection()` now emits Kept launch clocks under What changed. Canonical start stays in `data/events.json`. Same CRS-35 docking and USSF-481 disagreements as the calendar / see-the-launch tables. Homepage tracker row stays four columns — no Production tile.
+2. **Production energy GWh YoY.** Sentences and table use opened IR pairs only: Q1 2026 8.8 vs Q1 2025 10.4 GWh (−15.4%); Q2 13.5 vs 9.6 (+40.6%); Q3 13.7 vs 12.5 (+9.6%). Q4 2025 still has no year-ago table.
+3. **Cybercab ↔ autonomy.** Evidence board points at the Cybercab tracker and says a registration is not a car in service. Cybercab hero How we judge points at autonomy layers. Related-desk chips, not a fifth homepage card.
+4. **Calendar Earlier.** Dated compiled rows older than 21 days (Starship Flight 14 / 13 from the flight log). Search includes upcoming + recent + archive. Not live telemetry.
+
+### Not claimed
+
+- We Robot 2024 / Q4 2024 IR / Q4 2025 YoY
+- Live notifications / Postgres / Fleet / NHTSA ingest / faster cron / ads
+- Homepage fifth Production tile

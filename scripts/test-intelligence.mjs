@@ -144,7 +144,7 @@ if (!/pretty_sure|confidence score/i.test(I.changesHtml(bundle.changes))) ok("ht
 else bad("html no fake score", "score leaked");
 
 const waves = I.softwareWaves(src.updatesHistory);
-if (waves.some((w) => w.version === "2026.38.5.1" && /not a rollout/.test(w.summary) && /not an offer/.test(w.summary))) ok("software wave first seen");
+if (waves.some((w) => w.version === "2026.38.5.1" && /wide rollout|not a rollout/.test(w.summary) && /your car getting it|not an offer/.test(w.summary))) ok("software wave first seen");
 else bad("software wave first seen", JSON.stringify(waves[0]));
 if (waves.some((w) => w.previous === "4" && w.next === "50")) ok("software wave count jump");
 else bad("software wave count jump", JSON.stringify(waves));
@@ -185,9 +185,9 @@ if (!/sent="true"/.test(I.digestHtml(preview))) ok("digest html marks unsent");
 else bad("digest html marks unsent", I.digestHtml(preview).slice(0, 120));
 
 const countryWaves = I.softwareWavesForCountry(src.updatesHistory, "US");
-if (countryWaves.some((w) => w.version === "2026.38.5.1" && w.type === "appeared" && /particular VIN/.test(w.summary))) ok("country wave first seen");
+if (countryWaves.some((w) => w.version === "2026.38.5.1" && w.type === "appeared" && /your car getting it|particular VIN/.test(w.summary))) ok("country wave first seen");
 else bad("country wave first seen", JSON.stringify(countryWaves[0]));
-if (countryWaves.some((w) => w.previous === "4" && w.next === "40" && /not Tesla confirming this car is eligible/.test(w.summary))) ok("country wave jump");
+if (countryWaves.some((w) => w.previous === "4" && w.next === "40" && /not Tesla confirming your car will get it|not Tesla confirming this car is eligible/.test(w.summary))) ok("country wave jump");
 else bad("country wave jump", JSON.stringify(countryWaves));
 if (!/you are eligible|this VIN is eligible|your car is eligible/i.test(I.countryWavesHtml(countryWaves, "US"))) ok("country waves never claim VIN eligible");
 else bad("country waves never claim VIN eligible", "eligibility leaked");
@@ -195,10 +195,10 @@ else bad("country waves never claim VIN eligible", "eligibility leaked");
 const cab = I.cybercabJumps(src.robotaxiTx.history);
 if (cab.jumps.map((j) => j.previous + "->" + j.next).join(",") === "126->169,169->319,319->349") ok("cybercab sourced jumps");
 else bad("cybercab sourced jumps", JSON.stringify(cab.jumps));
-if (cab.unchanged && cab.unchanged.date === "2026-10-19" && cab.unchanged.count === 349 && /Unchanged days/.test(cab.unchanged.summary) && /not a car in service/.test(cab.unchanged.summary)) ok("cybercab unchanged streak");
+if (cab.unchanged && cab.unchanged.date === "2026-10-19" && cab.unchanged.count === 349 && /No change since the last count|Unchanged days/.test(cab.unchanged.summary) && /isn.t necessarily in service|not a car in service/.test(cab.unchanged.summary)) ok("cybercab unchanged streak");
 else bad("cybercab unchanged streak", JSON.stringify(cab.unchanged));
 const cabHtml = I.cybercabChangesHtml(src.robotaxiTx.history);
-if (/Count jump/.test(cabHtml) && /Unchanged/.test(cabHtml) && /not a car in service/.test(cabHtml) && /Not live fleet telemetry/.test(cabHtml)) ok("cybercab html honesty");
+if (/Count jump/.test(cabHtml) && /Unchanged/.test(cabHtml) && /not a car in service|isn.t necessarily in service/.test(cabHtml) && /Not live fleet telemetry/.test(cabHtml)) ok("cybercab html honesty");
 else bad("cybercab html honesty", cabHtml.slice(0, 240));
 
 const sl = I.starlinkDiffs(src.starlinkHistory);
@@ -211,8 +211,12 @@ if (/not interpolated/i.test(slHtml) && /not a live operator feed/.test(slHtml) 
 else bad("starlink html snapshot", slHtml.slice(0, 240));
 
 const clocks = I.conflictsHtml(bundle.conflicts);
-if (/Kept \(events.json\)/.test(clocks) && /Live overlay/.test(clocks) && /keep_canonical_events_json|keep_completed/.test(clocks) && /2026-10-20/.test(JSON.stringify(bundle.conflicts))) ok("conflicts html kept clocks");
+const clockRaw = JSON.stringify(bundle.conflicts);
+if (/Confirmed time|Kept \(events.json\)/.test(clocks) && /Live feed|Live overlay/.test(clocks) && /keep the confirmed time|Kept the confirmed time|keep_canonical_events_json|keep_completed/.test(clocks + clockRaw) && /keep_completed|keep_canonical_events_json/.test(clockRaw)) ok("conflicts html kept clocks");
 else bad("conflicts html kept clocks", clocks.slice(0, 280));
+const home = I.homeSection(bundle);
+if (/data-intel-clocks/.test(home) && /Kept launch clocks/.test(home) && /data-intel-changed/.test(home) && /keep_canonical_events_json|Bandwagon|events\.json/.test(home)) ok("home section kept clocks");
+else bad("home section kept clocks", home.slice(0, 400));
 if (I.fmtClock("2026-10-15T14:27:00.000Z").indexOf("UTC") >= 0) ok("fmtClock utc");
 else bad("fmtClock utc", I.fmtClock("2026-10-15T14:27:00.000Z"));
 

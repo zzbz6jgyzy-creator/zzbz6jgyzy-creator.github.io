@@ -55,7 +55,7 @@
     <link rel="stylesheet" href="/calendar-next.css?v=202610190630" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
     <link rel="stylesheet" href="/theme.css?v=202610192300" />
-    <link rel="stylesheet" href="/intel.css?v=202610192300" />
+    <link rel="stylesheet" href="/intel.css?v=202610192400" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -197,8 +197,8 @@
               <button type="button" data-cal-filter="xai">xAI</button>
             </div>
             <label class="cal-search">
-              <span class="visually-hidden">Search upcoming, recent, and watched items</span>
-              <input type="search" data-calendar-search placeholder="Search launches, CRS-35, earnings, Starship…" autocomplete="off" />
+              <span class="visually-hidden">Search upcoming, recent, earlier, and watched items</span>
+              <input type="search" data-calendar-search placeholder="Search launches, CRS-35, Flight 14, earnings, Starship…" autocomplete="off" />
             </label>
           </div>
           <div class="cal-list" data-calendar-list></div>
@@ -210,6 +210,14 @@
             <p class="reveal delay-1">Flown or finished in the last three weeks. Times come from the sources listed below.</p>
           </div>
           <div class="cal-list" data-calendar-recent></div>
+        </section>
+
+        <section class="section" aria-labelledby="cal-archive-h">
+          <div class="section-head">
+            <h2 id="cal-archive-h" class="reveal">Earlier</h2>
+            <p class="reveal delay-1">Dated rows older than three weeks, from the compiled calendar — not live telemetry. Canonical clocks stay in data/events.json.</p>
+          </div>
+          <div class="cal-list" data-calendar-archive></div>
         </section>
 
         <section class="section" aria-labelledby="watch-heading">
@@ -261,12 +269,12 @@
     <script src="/script.js?v=202610190800"></script>
     <script src="/design-21st.js?v=20261016094430"></script>
     <script src="/calendar-merge.js?v=202610192000"></script>
-    <script src="/calendar.js?v=202610192200"></script>
+    <script src="/calendar.js?v=202610192400"></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
       <script src="/grow.js?v=202610191830" data-band defer></script>
-    <script src="/intel-core.js?v=202610192100" defer></script>
-    <script src="/intel.js?v=202610192045" defer></script>
+    <script src="/intel-core.js?v=202610192400" defer></script>
+    <script src="/intel.js?v=202610192300" defer></script>
       <script src="/nav-pill.js?v=202610192000"></script>
   </body>
 </html>

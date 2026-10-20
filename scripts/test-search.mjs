@@ -47,6 +47,7 @@ expectHit(await runQuery("Starlink"), /starlink/i, "search Starlink");
 expectHit(await runQuery("Promise tracker"), /promise-tracker\.html/, "search promise tracker");
 expectHit(await runQuery("Can I see the launch"), /see-the-launch\.html/, "search see the launch");
 expectHit(await runQuery("sample waves"), /updates\.html/, "search sample waves");
+expectHit(await runQuery("calendar archive"), /calendar\.html/, "search calendar archive");
 
 const none = await runQuery("xyznonexistent123");
 if (!none.hits.length && /No matches/i.test(none.status + none.empty)) ok("search no-results");

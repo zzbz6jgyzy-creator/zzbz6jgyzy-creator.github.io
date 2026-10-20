@@ -24,9 +24,13 @@
     const bar = (n) => Math.max(4, Math.round((n / max) * 100));
     const num = (n) => Number(n).toLocaleString("en-US");
     const pairs = qs.map((q) => ({ q, p: priorOf(q) })).filter((x) => x.p);
+    const energyBit = (q, p) => {
+      if (!Number.isFinite(q.energyGwh) || !Number.isFinite(p.energyGwh)) return "";
+      return `; energy ${esc(pct(q.energyGwh, p.energyGwh))} (${esc(String(q.energyGwh))} vs ${esc(String(p.energyGwh))} GWh)`;
+    };
     const yoy = pairs.length
       ? pairs.map(({ q, p }) =>
-          `<p class="intel-yoy">${esc(q.id)} vs ${esc(p.id)} (both Tesla IR): deliveries ${esc(pct(q.deliveries, p.deliveries))} (${num(q.deliveries)} vs ${num(p.deliveries)}); production ${esc(pct(q.production, p.production))} (${num(q.production)} vs ${num(p.production)}).</p>`
+          `<p class="intel-yoy">${esc(q.id)} vs ${esc(p.id)} (both Tesla IR): deliveries ${esc(pct(q.deliveries, p.deliveries))} (${num(q.deliveries)} vs ${num(p.deliveries)}); production ${esc(pct(q.production, p.production))} (${num(q.production)} vs ${num(p.production)})${energyBit(q, p)}.</p>`
         ).join("")
       : `<p class="intel-note">No opened IR table for ${esc(priorId(last.id) || "the year-ago quarter")} — no invented year-over-year count.</p>`;
     box.innerHTML = `
@@ -44,9 +48,12 @@
         `).join("")}
       </div>
       <div class="intel-compare"><table>
-        <thead><tr><th>Quarter</th><th>Production</th><th>Deliveries</th><th>YoY del.</th><th>Model 3/Y del.</th><th>Other del.</th><th>Energy</th><th>Source</th></tr></thead>
+        <thead><tr><th>Quarter</th><th>Production</th><th>Deliveries</th><th>YoY del.</th><th>Model 3/Y del.</th><th>Other del.</th><th>Energy</th><th>YoY energy</th><th>Source</th></tr></thead>
         <tbody>${qs.map((q) => {
           const prior = priorOf(q);
+          const energyYoy = prior && Number.isFinite(q.energyGwh) && Number.isFinite(prior.energyGwh)
+            ? esc(pct(q.energyGwh, prior.energyGwh))
+            : "—";
           return `<tr>
           <td>${esc(q.id)}</td>
           <td>${num(q.production)}</td>
@@ -55,6 +62,7 @@
           <td>${num(q.model3yDeliveries)}</td>
           <td>${num(q.otherDeliveries)}</td>
           <td>${esc(String(q.energyGwh))} GWh</td>
+          <td>${energyYoy}</td>
           <td><a href="${esc(q.sourceUrl)}" rel="noopener">Tesla IR</a></td>
         </tr>`;
         }).join("")}</tbody>

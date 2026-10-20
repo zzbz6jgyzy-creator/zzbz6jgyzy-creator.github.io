@@ -153,6 +153,30 @@
       precision: "datetime",
       source: "curated",
     },
+    {
+      id: "starship-f14",
+      title: "Starship Flight 14",
+      start: "2026-09-28T12:00:00Z",
+      group: "spacex",
+      where: "Starbase · OLP-2",
+      note: "Flown 28 Sep. Compiled Starship flight log — first orbit and 26 Starlink V3. Not live telemetry.",
+      href: "https://www.spacex.com/launches/starship-flight-14",
+      status: "done",
+      precision: "day",
+      source: "curated",
+    },
+    {
+      id: "starship-f13",
+      title: "Starship Flight 13",
+      start: "2026-07-24T12:00:00Z",
+      group: "spacex",
+      where: "Starbase · OLP-2",
+      note: "Flown 24 Jul. Compiled Starship flight log — first real Starlink V3s. Not live telemetry. Full read on Mission Control.",
+      href: "/starship.html",
+      status: "done",
+      precision: "day",
+      source: "curated",
+    },
   ];
 
   const WATCHING = [
@@ -235,6 +259,13 @@
     if (!Number.isFinite(t)) return false;
     if (isUpcoming(event, now)) return false;
     return t > now.getTime() - 21 * 864e5;
+  }
+
+  function isArchivePast(event, now) {
+    const t = parseStart(event.start);
+    if (!Number.isFinite(t)) return false;
+    if (isUpcoming(event, now) || isRecentPast(event, now)) return false;
+    return t <= now.getTime();
   }
 
   function eventHay(event) {
@@ -488,8 +519,12 @@
       const recent = events
         .filter((e) => isRecentPast(e, now))
         .sort((a, b) => parseStart(b.start) - parseStart(a.start));
+      const archive = events
+        .filter((e) => isArchivePast(e, now))
+        .sort((a, b) => parseStart(b.start) - parseStart(a.start))
+        .slice(0, 12);
       if (list) {
-        const pool = query ? upcoming.concat(recent) : upcoming;
+        const pool = query ? upcoming.concat(recent, archive) : upcoming;
         const slice = pool.filter((e) => (filter === "all" || e.group === filter) && matchQuery(e, query));
         const empty = query
           ? "No events match this search."
@@ -506,6 +541,16 @@
         } else {
           const slice = recent.filter((e) => filter === "all" || e.group === filter);
           renderList(recentRoot, slice, now, "Nothing flown in the last three weeks in this slice.");
+        }
+      }
+      const archiveRoot = document.querySelector("[data-calendar-archive]");
+      if (archiveRoot) {
+        if (query) {
+          archiveRoot.replaceChildren();
+          archiveRoot.append(el("p", "cal-empty", "Matching earlier flights are listed with upcoming results above."));
+        } else {
+          const slice = archive.filter((e) => filter === "all" || e.group === filter);
+          renderList(archiveRoot, slice, now, "No dated rows older than three weeks in this slice.");
         }
       }
       paintWatch();
@@ -619,6 +664,13 @@
       }
     }
   }
+
+  window.SDCalendar = {
+    isUpcoming,
+    isRecentPast,
+    isArchivePast,
+    RECENT_DAYS: 21,
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
