@@ -159,7 +159,7 @@
       start: "2026-09-28T12:00:00Z",
       group: "spacex",
       where: "Starbase · OLP-2",
-      note: "Flown 28 Sep. Compiled Starship flight log — first orbit and 26 Starlink V3. Not live telemetry.",
+      note: "Flown 28 Sep. Starship flight log: first orbit and 26 Starlink V3. Not live telemetry.",
       href: "https://www.spacex.com/launches/starship-flight-14",
       status: "done",
       precision: "day",
@@ -171,7 +171,7 @@
       start: "2026-07-24T12:00:00Z",
       group: "spacex",
       where: "Starbase · OLP-2",
-      note: "Flown 24 Jul. Compiled Starship flight log — first real Starlink V3s. Not live telemetry. Full read on Mission Control.",
+      note: "Flown 24 Jul. Starship flight log: first real Starlink V3s. Not live telemetry. Full read on Mission Control.",
       href: "/starship.html",
       status: "done",
       precision: "day",
@@ -188,7 +188,7 @@
     {
       title: "Grok 4.9",
       group: "xai",
-      note: "Queued after 4.8. Still unannounced.",
+      note: "Expected after 4.8. Still unannounced.",
     },
     {
       title: "Grok 5",

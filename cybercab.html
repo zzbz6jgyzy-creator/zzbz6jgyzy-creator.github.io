@@ -287,7 +287,7 @@
     <script>
       /* Reality Map loads when it nears the screen or once the page is idle (keeps phone first paint fast). */
       (function () {
-        var files = ["/robotaxi-reality-data.js?v=20261016093020", "/cybercab-cities.js?v=20261016093020", "/robotaxi-map.js?v=202610161200"], started = false;
+        var files = ["/robotaxi-reality-data.js?v=202610201215", "/cybercab-cities.js?v=202610201215", "/robotaxi-map.js?v=202610161200"], started = false;
         function next(i) { if (i >= files.length) return; var s = document.createElement("script"); s.src = files[i]; s.onload = s.onerror = function () { next(i + 1); }; document.body.appendChild(s); }
         function go() { if (started) return; started = true; next(0); }
         var el = document.getElementById("reality-map");

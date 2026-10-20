@@ -185,10 +185,10 @@ window.ROBOTAXI_REALITY = {
       supervision: "supervised",
       vehicle: "Model Y",
       title: "Bay Area first seen at 1,094 mi²",
-      text: "First recorded at this size in robotaxi-service-areas on 20 Apr 2026. The exact expansion date was not published.",
+      text: "First recorded at this size in the Robotaxi Service Areas project on 20 Apr 2026. The exact expansion date was not published.",
       date: "2026-04-20",
       src: "https://github.com/EthanMcKanna/robotaxi-service-areas/commit/9c5480d",
-      srcLabel: "robotaxi-service-areas"
+      srcLabel: "Robotaxi Service Areas project"
     },
     {
       id: "ca-cpuc",

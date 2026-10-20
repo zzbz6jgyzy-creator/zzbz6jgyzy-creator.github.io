@@ -1,7 +1,7 @@
 window.TCMV_MEETINGS = {
   updated: "2026-10-08",
   note:
-    "Compiled from published TCMV draft agendas and public reporting on the Dutch Art. 39 request for FSD (Supervised). Committee minutes are not always public. Not affiliated with Tesla or the European Commission.",
+    "Based on published TCMV draft agendas and public reporting on the Dutch Art. 39 request for FSD (Supervised). Committee minutes are not always public. Not affiliated with Tesla or the European Commission.",
   thresholds: {
     statesNeeded: 15,
     populationNeeded: 65,
@@ -112,7 +112,7 @@ window.TCMV_MEETINGS = {
         "A vote requires at least 15 of 27 states representing 65% of the EU population",
       ],
       whatWasDiscussed: [
-        "Nothing yet — placeholder for the next session",
+        "Nothing yet — agenda not published",
         "Watch for whether the Dutch Art. 39 request appears as a vote item or another continuation of discussions",
       ],
       sources: [

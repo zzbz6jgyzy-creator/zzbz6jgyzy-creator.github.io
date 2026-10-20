@@ -1,7 +1,7 @@
 window.FSD_EUROPE = {
   updated: "2026-10-18",
   note:
-    "Compiled from public reports of national recognition of the Dutch RDW provisional type approval (EU 2018/858 Art. 39). Not affiliated with Tesla. Not official.",
+    "Based on public reports of national recognition of the Dutch RDW provisional type approval (EU 2018/858 Art. 39). Not affiliated with Tesla. Not official.",
   thresholds: {
     statesNeeded: 15,
     populationNeeded: 65,
