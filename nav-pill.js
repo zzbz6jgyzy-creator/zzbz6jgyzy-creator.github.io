@@ -29,7 +29,26 @@
   const app = nav.hasAttribute("data-start-collapsed");
   let expanded = true, last = window.scrollY, collapseAt = 0;
   const setW = () => { if (!expanded) return; nav.style.setProperty("--pn-w", "auto"); const w = nav.scrollWidth; nav.style.setProperty("--pn-w", w + "px"); };
-  const closeAll = () => nav.querySelectorAll(".pn-dd.open").forEach(d => { d.classList.remove("open"); d.querySelector("button").setAttribute("aria-expanded", "false"); });
+  const closeNests = (root) => {
+    (root || nav).querySelectorAll(".pn-nest.open").forEach((n) => {
+      if (n.querySelector("a[aria-current=page]")) return;
+      n.classList.remove("open");
+      const b = n.querySelector(".pn-nest-t");
+      const p = n.querySelector(".pn-nest-panel");
+      if (b) b.setAttribute("aria-expanded", "false");
+      if (p) p.hidden = true;
+    });
+  };
+  const setNest = (nest, open) => {
+    const panel = nest.closest(".pn-panel");
+    if (open && panel) panel.querySelectorAll(".pn-nest.open").forEach((n) => { if (n !== nest) setNest(n, false); });
+    nest.classList.toggle("open", open);
+    const b = nest.querySelector(".pn-nest-t");
+    const p = nest.querySelector(".pn-nest-panel");
+    if (b) b.setAttribute("aria-expanded", String(open));
+    if (p) p.hidden = !open;
+  };
+  const closeAll = () => nav.querySelectorAll(".pn-dd.open").forEach(d => { d.classList.remove("open"); d.querySelector("button").setAttribute("aria-expanded", "false"); closeNests(d); });
   const setExpanded = v => {
     expanded = v; nav.classList.toggle("collapsed", !v); nav.setAttribute("aria-label", v ? "Primary" : "Open navigation");
     if (v) setW(); else closeAll();
@@ -88,12 +107,37 @@
     dd.addEventListener("mouseenter", () => { if (matchMedia("(hover:hover)").matches) { clearTimeout(t); if (!dd.classList.contains("open")) hov = Date.now(); open(true); } });
     dd.addEventListener("mouseleave", () => { t = setTimeout(() => open(false), 160); });
     dd.addEventListener("keydown", e => {
-      const links = [...dd.querySelectorAll(".pn-panel a")];
+      const links = [...dd.querySelectorAll(".pn-panel a, .pn-nest-t")].filter((el) => !el.closest(".pn-nest-panel")?.hidden);
       if (e.key === "Escape") { open(false); btn.focus(); }
       else if (e.key === "ArrowDown") { e.preventDefault(); if (!dd.classList.contains("open")) open(true); const i = links.indexOf(document.activeElement); (links[i + 1] || links[0]).focus(); }
       else if (e.key === "ArrowUp") { e.preventDefault(); const i = links.indexOf(document.activeElement); (links[i - 1] || links[links.length - 1]).focus(); }
+      else if ((e.key === "Enter" || e.key === " ") && document.activeElement.classList.contains("pn-nest-t")) {
+        e.preventDefault();
+        const nest = document.activeElement.closest(".pn-nest");
+        if (nest) setNest(nest, !nest.classList.contains("open"));
+      }
     });
     dd.addEventListener("focusout", e => { if (!dd.contains(e.relatedTarget)) open(false); });
+  });
+  nav.querySelectorAll(".pn-nest").forEach((nest) => {
+    const nestBtn = nest.querySelector(".pn-nest-t");
+    if (!nestBtn) return;
+    let nestTimer;
+    nestBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setNest(nest, !nest.classList.contains("open"));
+    });
+    nest.addEventListener("mouseenter", () => {
+      if (matchMedia("(hover:hover)").matches) { clearTimeout(nestTimer); setNest(nest, true); }
+    });
+    nest.addEventListener("mouseleave", () => {
+      if (matchMedia("(hover:hover)").matches) nestTimer = setTimeout(() => setNest(nest, false), 180);
+    });
+    if (nest.querySelector("a[aria-current=page]")) {
+      setNest(nest, true);
+      nestBtn.setAttribute("aria-current", "true");
+    }
   });
   document.addEventListener("click", e => { if (!nav.contains(e.target)) closeAll(); });
 
@@ -103,21 +147,44 @@
     const sh = document.querySelector(".pn-sheet");
     if (!sh || sh.dataset.grouped) return;
     sh.dataset.grouped = "1";
+    const stop = (n) => !n || n.tagName === "H3" || n.classList.contains("pn-cta") || n.classList.contains("pn-sub-sheet") || n.classList.contains("pn-search-sheet") || n.classList.contains("pn-theme-sheet");
+    const onPage = (el) => {
+      if (el.matches?.("[aria-current]")) return true;
+      return [...(el.querySelectorAll ? el.querySelectorAll("a") : []), el.tagName === "A" ? el : null].filter(Boolean).some((l) => {
+        try { const u = new URL(l.href, location.href); return u.pathname === location.pathname && u.pathname !== "/"; } catch { return false; }
+      });
+    };
     [...sh.querySelectorAll("h3")].forEach((h, i) => {
-      const links = [];
-      for (let n = h.nextElementSibling; n && n.tagName === "A" && !n.classList.contains("pn-cta") && !n.classList.contains("pn-sub-sheet") && !n.classList.contains("pn-search-sheet"); n = n.nextElementSibling) links.push(n);
-      if (!links.length) return;
+      const kids = [];
+      for (let n = h.nextElementSibling; n && !stop(n); n = n.nextElementSibling) kids.push(n);
+      if (!kids.length) return;
       const id = "pn-grp-" + i;
       const box = document.createElement("div");
       box.className = "pn-grp"; box.id = id;
-      h.after(box); links.forEach((l) => box.appendChild(l));
+      h.after(box); kids.forEach((l) => box.appendChild(l));
       const btn = document.createElement("button");
       btn.type = "button"; btn.className = "pn-grp-t"; btn.setAttribute("aria-controls", id);
       btn.innerHTML = h.innerHTML + '<span class="pn-grp-c" aria-hidden="true"></span>';
       h.textContent = ""; h.appendChild(btn);
       const set = (open) => { box.hidden = !open; btn.setAttribute("aria-expanded", String(open)); };
-      set(false); // every section starts folded; tap a heading to open it
+      set(onPage(box));
       btn.addEventListener("click", () => set(box.hidden));
+      [...box.querySelectorAll("h4")].forEach((h4, j) => {
+        const links = [];
+        for (let n = h4.nextElementSibling; n && n.tagName === "A"; n = n.nextElementSibling) links.push(n);
+        if (!links.length) return;
+        const sid = id + "-s" + j;
+        const sub = document.createElement("div");
+        sub.className = "pn-grp"; sub.id = sid;
+        h4.after(sub); links.forEach((l) => sub.appendChild(l));
+        const sbtn = document.createElement("button");
+        sbtn.type = "button"; sbtn.className = "pn-grp-t"; sbtn.setAttribute("aria-controls", sid);
+        sbtn.innerHTML = h4.innerHTML + '<span class="pn-grp-c" aria-hidden="true"></span>';
+        h4.textContent = ""; h4.appendChild(sbtn);
+        const setSub = (open) => { sub.hidden = !open; sbtn.setAttribute("aria-expanded", String(open)); };
+        setSub(onPage(sub));
+        sbtn.addEventListener("click", () => setSub(sub.hidden));
+      });
     });
   })();
   sheet = document.querySelector(".pn-sheet"), ov = document.querySelector(".pn-overlay"), mb = nav.querySelector(".pn-menu");

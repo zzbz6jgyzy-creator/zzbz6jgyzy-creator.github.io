@@ -4,51 +4,65 @@
     {"id":"pn-tesla","label":"Tesla","items":[
       ["Tesla overview","/tesla.html","News, models &amp; data",""],
       ["My Tesla","/my-tesla.html","Your car, personalised",""],
-      ["Optimus Evolution Lab","/optimus.html","Promises versus demonstrations",""],
-      ["FSD & Robotaxi evidence","/autonomy.html","Supervised vs commercial layers",""],
-      ["Production & deliveries","/production.html","Official Tesla IR tables",""],
-      ["Owners clubs","/tesla-clubs.html","Find a club near you","New"],
-      ["Explainers","/explainers.html#tesla","FSD stacks, Collision Evasion",""],
-      ["Buying guide","/guides/tesla-buying-guide.html","Which Tesla to buy in 2026",""],
-      ["Model 3 Explorer","/model3-explorer.html","Take the car apart","3D"],
-      ["Cybertruck Explorer","/cybertruck-explorer.html","Take the truck apart","3D"],
-      ["Markets","/tsla.html","TSLA stock",""],
-      ["Reviews","/reviews/index.html","Every model reviewed",""]]},
+      {"label":"Autonomy","items":[
+        ["FSD & Robotaxi evidence","/autonomy.html","Supervised vs commercial layers",""],
+        ["Explainers","/explainers.html#tesla","FSD stacks, Collision Evasion",""]]},
+      {"label":"Cars & owners","items":[
+        ["Buying guide","/guides/tesla-buying-guide.html","Which Tesla to buy in 2026",""],
+        ["Reviews","/reviews/index.html","Every model reviewed",""],
+        ["Model 3 Explorer","/model3-explorer.html","Take the car apart","3D"],
+        ["Cybertruck Explorer","/cybertruck-explorer.html","Take the truck apart","3D"],
+        ["Owners clubs","/tesla-clubs.html","Find a club near you","New"]]},
+      {"label":"Company","items":[
+        ["Production & deliveries","/production.html","Official Tesla IR tables",""],
+        ["Optimus Evolution Lab","/optimus.html","Promises versus demonstrations",""],
+        ["Markets","/tsla.html","TSLA stock",""]]}
+    ]},
     {"id":"pn-spacex","label":"SpaceX","items":[
       ["SpaceX","/spacex.html","News &amp; missions",""],
       ["Starship flights","/starship.html","Flight lab",""],
-      ["Explainers","/explainers.html#spacex","Hot staging, catch",""],
       ["Starlink tracker","/starlink.html","Satellites by version",""],
-      ["Calendar","/calendar.html","Launches &amp; livestreams",""],
-      ["Can I see it?","/see-the-launch.html","Visible from here?",""]]},
+      {"label":"Launches","items":[
+        ["Calendar","/calendar.html","Launches &amp; livestreams",""],
+        ["Can I see it?","/see-the-launch.html","Visible from here?",""]]},
+      ["Explainers","/explainers.html#spacex","Hot staging, catch",""]
+    ]},
     {"id":"pn-roadster","label":"Roadster","items":[
       ["Overview","/roadster.html#top","The hero and key numbers","New"],
-      ["Gallery","/roadster.html#gallery","22 angles",""],
-      ["Videos","/roadster.html#video","Clips, incl. Interior video",""],
-      ["Trims &amp; Specs","/roadster.html#trims","Performance, Thrust, Rocket",""],
-      ["How it works","/roadster.html#tech","Thrusters, suction, aero",""],
-      ["Price &amp; Reservations","/roadster.html#money","Deposits and 2028 production",""],
-      ["Timeline","/roadster.html#timeline","2017 promise to 2026 reveal",""],
-      ["Promise vs Reality","/roadster.html#promise","2017 claims vs 2026 figures",""],
-      ["Reveal article","/dispatch/roadster-reveal-2026.html","The night it flew",""]]},
-    {"id":"pn-ex","label":"Explore","wide":true,"items":[
-      ["My Tesla","/my-tesla.html","Your car, personalised",""],
-      ["Starship flights","/starship.html","Flight lab",""],
-      ["FSD Europe tracker","/fsd-europe.html","Approval tracker",""],
-      ["Software Update Tracker","/updates.html","Latest Tesla releases",""],
-      ["Starlink tracker","/starlink.html","Satellites by version",""],
-      ["Calendar","/calendar.html","Launches &amp; livestreams",""],
-      ["Cybercab tracker","/cybercab.html","Reality map &amp; fleet",""],
-      ["Promise tracker","/promise-tracker.html","Musk deadlines vs reality","New"],
+      {"label":"Look","items":[
+        ["Gallery","/roadster.html#gallery","22 angles",""],
+        ["Videos","/roadster.html#video","Clips, incl. Interior video",""]]},
+      {"label":"The car","items":[
+        ["Trims &amp; Specs","/roadster.html#trims","Performance, Thrust, Rocket",""],
+        ["How it works","/roadster.html#tech","Thrusters, suction, aero",""],
+        ["Price &amp; Reservations","/roadster.html#money","Deposits and 2028 production",""]]},
+      {"label":"The story","items":[
+        ["Timeline","/roadster.html#timeline","2017 promise to 2026 reveal",""],
+        ["Promise vs Reality","/roadster.html#promise","2017 claims vs 2026 figures",""],
+        ["Reveal article","/dispatch/roadster-reveal-2026.html","The night it flew",""]]}
+    ]},
+    {"id":"pn-ex","label":"Explore","items":[
       ["Your Supercharged Daily","/daily.html","Followed changes in this browser",""],
-      ["FSD & Robotaxi evidence","/autonomy.html","Supervised vs commercial layers",""],
-      ["Production & deliveries","/production.html","Official Tesla IR tables",""],
-      ["Optimus Evolution Lab","/optimus.html","Promises versus demonstrations",""],
-      ["Explainers","/explainers.html","FSD stacks, hot staging",""],
-      ["Grok","/grok.html","Tutorial",""],
-      ["Gear","/gear.html","Owner kit",""],
-      ["Games","/games.html","Starbase games",""],
-      ["Wallpapers","/wallpapers.html","Desktop &amp; phone",""]]},
+      {"label":"Tesla","items":[
+        ["My Tesla","/my-tesla.html","Your car, personalised",""],
+        ["Software Update Tracker","/updates.html","Latest Tesla releases",""],
+        ["FSD Europe tracker","/fsd-europe.html","Approval tracker",""],
+        ["Cybercab tracker","/cybercab.html","Reality map &amp; fleet",""],
+        ["FSD & Robotaxi evidence","/autonomy.html","Supervised vs commercial layers",""],
+        ["Production & deliveries","/production.html","Official Tesla IR tables",""],
+        ["Optimus Evolution Lab","/optimus.html","Promises versus demonstrations",""],
+        ["Promise tracker","/promise-tracker.html","Musk deadlines vs reality","New"]]},
+      {"label":"SpaceX","items":[
+        ["Starship flights","/starship.html","Flight lab",""],
+        ["Starlink tracker","/starlink.html","Satellites by version",""],
+        ["Calendar","/calendar.html","Launches &amp; livestreams",""]]},
+      {"label":"More","items":[
+        ["Explainers","/explainers.html","FSD stacks, hot staging",""],
+        ["Grok","/grok.html","Tutorial",""],
+        ["Gear","/gear.html","Owner kit",""],
+        ["Games","/games.html","Starbase games",""],
+        ["Wallpapers","/wallpapers.html","Desktop &amp; phone",""]]}
+    ]},
     {"id":"pn-news","label":"News","items":[
       ["News","/news.html","Today’s headlines",""],
       ["Dispatch","/dispatch.html","Our own stories",""],

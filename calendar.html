@@ -53,7 +53,7 @@
     <link rel="stylesheet" href="/styles.css?v=202610192200" />
     <link rel="stylesheet" href="/design-21st.css?v=202610132330" />
     <link rel="stylesheet" href="/calendar-next.css?v=202610190630" />
-      <link rel="stylesheet" href="/nav-pill.css?v=202610190400" />
+      <link rel="stylesheet" href="/nav-pill.css?v=202610202100" />
     <link rel="stylesheet" href="/theme.css?v=202610192300" />
     <link rel="stylesheet" href="/intel.css?v=202610192400" />
   </head>
@@ -69,57 +69,107 @@
               <div class="pn-panel" id="pn-tesla">
                 <a href="/tesla.html">Tesla overview<small>News, models &amp; data</small></a>
                 <a href="/my-tesla.html">My Tesla<small>Your car, personalised</small></a>
-                <a href="/optimus.html">Optimus Evolution Lab<small>Promises versus demonstrations</small></a>
-                <a href="/autonomy.html">FSD & Robotaxi evidence<small>Supervised vs commercial layers</small></a>
-                <a href="/production.html">Production & deliveries<small>Official Tesla IR tables</small></a>
-                <a href="/tesla-clubs.html">Owners clubs<span class="pn-badge">New</span><small>Find a club near you</small></a>
-                <a href="/explainers.html#tesla">Explainers<small>FSD stacks, Collision Evasion</small></a>
-                <a href="/guides/tesla-buying-guide.html">Buying guide<small>Which Tesla to buy in 2026</small></a>
-                <a href="/model3-explorer.html">Model 3 Explorer<span class="pn-badge">3D</span><small>Take the car apart</small></a>
-                <a href="/cybertruck-explorer.html">Cybertruck Explorer<span class="pn-badge">3D</span><small>Take the truck apart</small></a>
-                <a href="/tsla.html">Markets<small>TSLA stock</small></a>
-                <a href="/reviews/index.html">Reviews<small>Every model reviewed</small></a>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla-autonomy">Autonomy<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-tesla-autonomy" hidden>
+                  <a href="/autonomy.html">FSD & Robotaxi evidence<small>Supervised vs commercial layers</small></a>
+                  <a href="/explainers.html#tesla">Explainers<small>FSD stacks, Collision Evasion</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla-cars-owners">Cars & owners<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-tesla-cars-owners" hidden>
+                  <a href="/guides/tesla-buying-guide.html">Buying guide<small>Which Tesla to buy in 2026</small></a>
+                  <a href="/reviews/index.html">Reviews<small>Every model reviewed</small></a>
+                  <a href="/model3-explorer.html">Model 3 Explorer<span class="pn-badge">3D</span><small>Take the car apart</small></a>
+                  <a href="/cybertruck-explorer.html">Cybertruck Explorer<span class="pn-badge">3D</span><small>Take the truck apart</small></a>
+                  <a href="/tesla-clubs.html">Owners clubs<span class="pn-badge">New</span><small>Find a club near you</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla-company">Company<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-tesla-company" hidden>
+                  <a href="/production.html">Production & deliveries<small>Official Tesla IR tables</small></a>
+                  <a href="/optimus.html">Optimus Evolution Lab<small>Promises versus demonstrations</small></a>
+                  <a href="/tsla.html">Markets<small>TSLA stock</small></a>
+                  </div>
+                </div>
               </div></div>
             <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-spacex">SpaceX<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
               <div class="pn-panel" id="pn-spacex">
                 <a href="/spacex.html">SpaceX<small>News &amp; missions</small></a>
                 <a href="/starship.html">Starship flights<small>Flight lab</small></a>
-                <a href="/explainers.html#spacex">Explainers<small>Hot staging, catch</small></a>
                 <a href="/starlink.html">Starlink tracker<small>Satellites by version</small></a>
-                <a href="/calendar.html">Calendar<small>Launches &amp; livestreams</small></a>
-                <a href="/see-the-launch.html">Can I see it?<small>Visible from here?</small></a>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-spacex-launches">Launches<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-spacex-launches" hidden>
+                  <a href="/calendar.html">Calendar<small>Launches &amp; livestreams</small></a>
+                  <a href="/see-the-launch.html">Can I see it?<small>Visible from here?</small></a>
+                  </div>
+                </div>
+                <a href="/explainers.html#spacex">Explainers<small>Hot staging, catch</small></a>
               </div></div>
             <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster">Roadster<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
               <div class="pn-panel" id="pn-roadster">
                 <a href="/roadster.html#top">Overview<span class="pn-badge">New</span><small>The hero and key numbers</small></a>
-                <a href="/roadster.html#gallery">Gallery<small>22 angles</small></a>
-                <a href="/roadster.html#video">Videos<small>Clips, incl. Interior video</small></a>
-                <a href="/roadster.html#trims">Trims &amp; Specs<small>Performance, Thrust, Rocket</small></a>
-                <a href="/roadster.html#tech">How it works<small>Thrusters, suction, aero</small></a>
-                <a href="/roadster.html#money">Price &amp; Reservations<small>Deposits and 2028 production</small></a>
-                <a href="/roadster.html#timeline">Timeline<small>2017 promise to 2026 reveal</small></a>
-                <a href="/roadster.html#promise">Promise vs Reality<small>2017 claims vs 2026 figures</small></a>
-                <a href="/dispatch/roadster-reveal-2026.html">Reveal article<small>The night it flew</small></a>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster-look">Look<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-roadster-look" hidden>
+                  <a href="/roadster.html#gallery">Gallery<small>22 angles</small></a>
+                  <a href="/roadster.html#video">Videos<small>Clips, incl. Interior video</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster-the-car">The car<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-roadster-the-car" hidden>
+                  <a href="/roadster.html#trims">Trims &amp; Specs<small>Performance, Thrust, Rocket</small></a>
+                  <a href="/roadster.html#tech">How it works<small>Thrusters, suction, aero</small></a>
+                  <a href="/roadster.html#money">Price &amp; Reservations<small>Deposits and 2028 production</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster-the-story">The story<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-roadster-the-story" hidden>
+                  <a href="/roadster.html#timeline">Timeline<small>2017 promise to 2026 reveal</small></a>
+                  <a href="/roadster.html#promise">Promise vs Reality<small>2017 claims vs 2026 figures</small></a>
+                  <a href="/dispatch/roadster-reveal-2026.html">Reveal article<small>The night it flew</small></a>
+                  </div>
+                </div>
               </div></div>
             <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-ex">Explore<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-              <div class="pn-panel pn-wide" id="pn-ex">
-                <a href="/my-tesla.html">My Tesla<small>Your car, personalised</small></a>
-                <a href="/starship.html">Starship flights<small>Flight lab</small></a>
-                <a href="/fsd-europe.html">FSD Europe tracker<small>Approval tracker</small></a>
-                <a href="/updates.html">Software Update Tracker<small>Latest Tesla releases</small></a>
-                <a href="/starlink.html">Starlink tracker<small>Satellites by version</small></a>
-                <a href="/calendar.html">Calendar<small>Launches &amp; livestreams</small></a>
-                <a href="/cybercab.html">Cybercab tracker<small>Reality map &amp; fleet</small></a>
-                <a href="/promise-tracker.html">Promise tracker<span class="pn-badge">New</span><small>Musk deadlines vs reality</small></a>
+              <div class="pn-panel" id="pn-ex">
                 <a href="/daily.html">Your Supercharged Daily<small>Followed changes in this browser</small></a>
-                <a href="/autonomy.html">FSD & Robotaxi evidence<small>Supervised vs commercial layers</small></a>
-                <a href="/production.html">Production & deliveries<small>Official Tesla IR tables</small></a>
-                <a href="/optimus.html">Optimus Evolution Lab<small>Promises versus demonstrations</small></a>
-                <a href="/explainers.html">Explainers<small>FSD stacks, hot staging</small></a>
-                <a href="/grok.html">Grok<small>Tutorial</small></a>
-                <a href="/gear.html">Gear<small>Owner kit</small></a>
-                <a href="/games.html">Games<small>Starbase games</small></a>
-                <a href="/wallpapers.html">Wallpapers<small>Desktop &amp; phone</small></a>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-ex-tesla">Tesla<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-ex-tesla" hidden>
+                  <a href="/my-tesla.html">My Tesla<small>Your car, personalised</small></a>
+                  <a href="/updates.html">Software Update Tracker<small>Latest Tesla releases</small></a>
+                  <a href="/fsd-europe.html">FSD Europe tracker<small>Approval tracker</small></a>
+                  <a href="/cybercab.html">Cybercab tracker<small>Reality map &amp; fleet</small></a>
+                  <a href="/autonomy.html">FSD & Robotaxi evidence<small>Supervised vs commercial layers</small></a>
+                  <a href="/production.html">Production & deliveries<small>Official Tesla IR tables</small></a>
+                  <a href="/optimus.html">Optimus Evolution Lab<small>Promises versus demonstrations</small></a>
+                  <a href="/promise-tracker.html">Promise tracker<span class="pn-badge">New</span><small>Musk deadlines vs reality</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-ex-spacex">SpaceX<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-ex-spacex" hidden>
+                  <a href="/starship.html">Starship flights<small>Flight lab</small></a>
+                  <a href="/starlink.html">Starlink tracker<small>Satellites by version</small></a>
+                  <a href="/calendar.html">Calendar<small>Launches &amp; livestreams</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-ex-more">More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-ex-more" hidden>
+                  <a href="/explainers.html">Explainers<small>FSD stacks, hot staging</small></a>
+                  <a href="/grok.html">Grok<small>Tutorial</small></a>
+                  <a href="/gear.html">Gear<small>Owner kit</small></a>
+                  <a href="/games.html">Games<small>Starbase games</small></a>
+                  <a href="/wallpapers.html">Wallpapers<small>Desktop &amp; phone</small></a>
+                  </div>
+                </div>
               </div></div>
             <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-news">News<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
               <div class="pn-panel" id="pn-news">
@@ -138,15 +188,41 @@
         <div class="pn-sheet-head"><img src="/assets/brand/wordmark.svg" alt="Supercharged Daily" width="140" height="22" /><button class="pn-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
         <a href="/">Home</a>
         <h3>Tesla</h3>
-        <a href="/tesla.html">Tesla overview</a><a href="/my-tesla.html">My Tesla</a><a href="/optimus.html">Optimus Evolution Lab</a><a href="/autonomy.html">FSD & Robotaxi evidence</a><a href="/production.html">Production & deliveries</a><a href="/tesla-clubs.html">Owners clubs</a><a href="/explainers.html#tesla">Explainers</a><a href="/guides/tesla-buying-guide.html">Buying guide</a><a href="/model3-explorer.html">Model 3 Explorer</a><a href="/cybertruck-explorer.html">Cybertruck Explorer</a><a href="/tsla.html">Markets</a><a href="/reviews/index.html">Reviews</a>
+        <a href="/tesla.html">Tesla overview</a>
+        <a href="/my-tesla.html">My Tesla</a>
+        <h4>Autonomy</h4>
+        <a href="/autonomy.html">FSD & Robotaxi evidence</a><a href="/explainers.html#tesla">Explainers</a>
+        <h4>Cars & owners</h4>
+        <a href="/guides/tesla-buying-guide.html">Buying guide</a><a href="/reviews/index.html">Reviews</a><a href="/model3-explorer.html">Model 3 Explorer</a><a href="/cybertruck-explorer.html">Cybertruck Explorer</a><a href="/tesla-clubs.html">Owners clubs</a>
+        <h4>Company</h4>
+        <a href="/production.html">Production & deliveries</a><a href="/optimus.html">Optimus Evolution Lab</a><a href="/tsla.html">Markets</a>
         <h3>SpaceX</h3>
-        <a href="/spacex.html">SpaceX</a><a href="/starship.html">Starship flights</a><a href="/explainers.html#spacex">Explainers</a><a href="/starlink.html">Starlink tracker</a><a href="/calendar.html">Calendar</a><a href="/see-the-launch.html">Can I see it?</a>
+        <a href="/spacex.html">SpaceX</a>
+        <a href="/starship.html">Starship flights</a>
+        <a href="/starlink.html">Starlink tracker</a>
+        <h4>Launches</h4>
+        <a href="/calendar.html">Calendar</a><a href="/see-the-launch.html">Can I see it?</a>
+        <a href="/explainers.html#spacex">Explainers</a>
         <h3>Roadster</h3>
-        <a href="/roadster.html#top">Overview</a><a href="/roadster.html#gallery">Gallery</a><a href="/roadster.html#video">Videos</a><a href="/roadster.html#trims">Trims &amp; Specs</a><a href="/roadster.html#tech">How it works</a><a href="/roadster.html#money">Price &amp; Reservations</a><a href="/roadster.html#timeline">Timeline</a><a href="/roadster.html#promise">Promise vs Reality</a><a href="/dispatch/roadster-reveal-2026.html">Reveal article</a>
+        <a href="/roadster.html#top">Overview</a>
+        <h4>Look</h4>
+        <a href="/roadster.html#gallery">Gallery</a><a href="/roadster.html#video">Videos</a>
+        <h4>The car</h4>
+        <a href="/roadster.html#trims">Trims &amp; Specs</a><a href="/roadster.html#tech">How it works</a><a href="/roadster.html#money">Price &amp; Reservations</a>
+        <h4>The story</h4>
+        <a href="/roadster.html#timeline">Timeline</a><a href="/roadster.html#promise">Promise vs Reality</a><a href="/dispatch/roadster-reveal-2026.html">Reveal article</a>
         <h3>Explore</h3>
-        <a href="/my-tesla.html">My Tesla</a><a href="/starship.html">Starship flights</a><a href="/fsd-europe.html">FSD Europe tracker</a><a href="/updates.html">Software Update Tracker</a><a href="/starlink.html">Starlink tracker</a><a href="/calendar.html">Calendar</a><a href="/cybercab.html">Cybercab tracker</a><a href="/promise-tracker.html">Promise tracker</a><a href="/daily.html">Your Supercharged Daily</a><a href="/autonomy.html">FSD & Robotaxi evidence</a><a href="/production.html">Production & deliveries</a><a href="/optimus.html">Optimus Evolution Lab</a><a href="/explainers.html">Explainers</a><a href="/grok.html">Grok</a><a href="/gear.html">Gear</a><a href="/games.html">Games</a><a href="/wallpapers.html">Wallpapers</a>
+        <a href="/daily.html">Your Supercharged Daily</a>
+        <h4>Tesla</h4>
+        <a href="/my-tesla.html">My Tesla</a><a href="/updates.html">Software Update Tracker</a><a href="/fsd-europe.html">FSD Europe tracker</a><a href="/cybercab.html">Cybercab tracker</a><a href="/autonomy.html">FSD & Robotaxi evidence</a><a href="/production.html">Production & deliveries</a><a href="/optimus.html">Optimus Evolution Lab</a><a href="/promise-tracker.html">Promise tracker</a>
+        <h4>SpaceX</h4>
+        <a href="/starship.html">Starship flights</a><a href="/starlink.html">Starlink tracker</a><a href="/calendar.html">Calendar</a>
+        <h4>More</h4>
+        <a href="/explainers.html">Explainers</a><a href="/grok.html">Grok</a><a href="/gear.html">Gear</a><a href="/games.html">Games</a><a href="/wallpapers.html">Wallpapers</a>
         <h3>News</h3>
-        <a href="/news.html">News</a><a href="/dispatch.html">Dispatch</a><a href="/about.html">About me</a>
+        <a href="/news.html">News</a>
+        <a href="/dispatch.html">Dispatch</a>
+        <a href="/about.html">About me</a>
         <a class="pn-cta" href="https://x.com/ALJR86">Follow on X</a>
         <!-- Menu inspired by 21st.dev -->
       </aside>
@@ -276,6 +352,6 @@
       <script src="/grow.js?v=202610201920" data-band defer></script>
     <script src="/intel-core.js?v=202610201230" defer></script>
     <script src="/intel.js?v=202610201140" defer></script>
-      <script src="/nav-pill.js?v=202610192000"></script>
+      <script src="/nav-pill.js?v=202610202100"></script>
   </body>
 </html>
