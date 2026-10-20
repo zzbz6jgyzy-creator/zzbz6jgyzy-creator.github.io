@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T20:53:48Z",
+ "updated": "2026-10-20T21:52:02Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-20T20:53:48Z",
+  "fetched": "2026-10-20T21:52:02Z",
   "items": [
+   {
+    "t": "2026-10-20T21:42:22Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model 3 AWD LR (2026)",
+    "hw": "4.0",
+    "country": "Canada"
+   },
    {
     "t": "2026-10-20T20:53:36Z",
     "to": "2026.38.5.1",
@@ -564,14 +572,6 @@
     "model": "Model S AWD (2026)",
     "hw": "4.0",
     "country": "Denmark"
-   },
-   {
-    "t": "2026-10-20T18:06:56Z",
-    "to": "2026.38.3.1",
-    "from": "2026.38",
-    "model": "Model X Performance (2018)",
-    "hw": "3.0",
-    "country": "United States"
    }
   ]
  }
