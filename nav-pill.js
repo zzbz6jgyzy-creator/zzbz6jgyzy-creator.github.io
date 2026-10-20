@@ -169,21 +169,15 @@
       const set = (open) => { box.hidden = !open; btn.setAttribute("aria-expanded", String(open)); };
       set(onPage(box));
       btn.addEventListener("click", () => set(box.hidden));
-      [...box.querySelectorAll("h4")].forEach((h4, j) => {
+      [...box.querySelectorAll("h4")].forEach((h4) => {
         const links = [];
         for (let n = h4.nextElementSibling; n && n.tagName === "A"; n = n.nextElementSibling) links.push(n);
         if (!links.length) return;
-        const sid = id + "-s" + j;
-        const sub = document.createElement("div");
-        sub.className = "pn-grp"; sub.id = sid;
-        h4.after(sub); links.forEach((l) => sub.appendChild(l));
-        const sbtn = document.createElement("button");
-        sbtn.type = "button"; sbtn.className = "pn-grp-t"; sbtn.setAttribute("aria-controls", sid);
-        sbtn.innerHTML = h4.innerHTML + '<span class="pn-grp-c" aria-hidden="true"></span>';
-        h4.textContent = ""; h4.appendChild(sbtn);
-        const setSub = (open) => { sub.hidden = !open; sbtn.setAttribute("aria-expanded", String(open)); };
-        setSub(onPage(sub));
-        sbtn.addEventListener("click", () => setSub(sub.hidden));
+        const slab = document.createElement("div");
+        slab.className = "pn-slab";
+        h4.before(slab);
+        slab.appendChild(h4);
+        links.forEach((l) => slab.appendChild(l));
       });
     });
   })();

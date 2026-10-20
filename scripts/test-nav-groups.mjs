@@ -39,7 +39,7 @@ if (/pn-tesla-autonomy/.test(html) && /pn-tesla-cars-owners/.test(html) && /pn-t
 else bad("tesla nests", "missing tesla submenu ids");
 if (/pn-spacex-launches/.test(html) && /pn-roadster-the-car/.test(html) && /pn-ex-tesla/.test(html)) ok("other nests");
 else bad("other nests", "missing spacex/roadster/explore groups");
-if (/nav-pill\.css\?v=202610202100/.test(index) && /nav-pill\.js\?v=202610202100/.test(index)) ok("nav pins");
+if (/nav-pill\.css\?v=202610202200/.test(index) && /nav-pill\.js\?v=202610202200/.test(index)) ok("nav pins");
 else bad("nav pins", "index still on old nav-pill");
 if (/theme\.css\?v=202610191800/.test(index)) ok("home theme pin");
 else bad("home theme pin", "index.html theme.css pin changed");
@@ -106,12 +106,14 @@ await teslaBtn.click();
 const subH = await page.$$eval(".pn-sheet h4", (els) => els.map((h) => h.textContent.replace(/\s+/g, " ").trim()));
 if (subH.some((x) => /Autonomy/.test(x)) && subH.some((x) => /Cars/.test(x))) ok("sheet subheads");
 else bad("sheet subheads", JSON.stringify(subH));
-await page.screenshot({ path: SHOT + "/nav_mobile_sheet_grouped.png" });
-
-await page.locator(".pn-sheet h4").filter({ hasText: "Cars & owners" }).locator("button").click();
+const h4Btns = await page.locator(".pn-sheet h4 button").count();
+if (h4Btns === 0) ok("sheet no nested buttons");
+else bad("sheet no nested buttons", String(h4Btns));
 const clubVis = await page.locator('.pn-sheet a[href="/tesla-clubs.html"]').isVisible();
-if (clubVis) ok("sheet cars open");
-else bad("sheet cars open", "clubs hidden");
+const buyVis = await page.locator('.pn-sheet a[href="/guides/tesla-buying-guide.html"]').isVisible();
+if (clubVis && buyVis) ok("sheet groups visible");
+else bad("sheet groups visible", JSON.stringify({ clubVis, buyVis }));
+await page.screenshot({ path: SHOT + "/nav_mobile_sheet_grouped.png" });
 await page.screenshot({ path: SHOT + "/nav_mobile_cars_open.png" });
 
 await browser.close();
