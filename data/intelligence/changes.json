@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-20T09:39:38.247Z",
+  "updated": "2026-10-20T09:40:28.217Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/hagerty-roadster-moravy-interview.html",
+      "topic": "optimus",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin",
+      "at": "2026-10-20T09:39:28.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/hagerty-roadster-moravy-interview.html",
+      "href": "/dispatch/hagerty-roadster-moravy-interview.html",
+      "summary": "Lars Moravy on the 1 MW rear-drive powertrain, the fan “sucker” system, an Optimus-actuated wing and SpaceX cold-gas thrusters, and what’s still a target.",
+      "title": "Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin",
+      "id": "logged|dispatch:/dispatch/hagerty-roadster-moravy-interview.html|2026-10-20T09:39:28.000Z|Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin"
+    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.38.5.10",
@@ -221,23 +238,6 @@
       "summary": "The speed figure is the company’s own claim. What’s new, and what to check before you connect a brokerage.",
       "title": "Grok Bot says it’s 3x faster, adds Robinhood and Coinbase",
       "id": "logged|dispatch:/dispatch/grok-bot-3x-faster-connectors.html|2026-10-17T01:55:00.000Z|Grok Bot says it’s 3x faster, adds Robinhood and Coinbase"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/x-ads-esthetic-standard.html",
-      "topic": "promises",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "X will bar “ugly” and “shrill” advertisers",
-      "at": "2026-10-17T01:50:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/x-ads-esthetic-standard.html",
-      "href": "/dispatch/x-ads-esthetic-standard.html",
-      "summary": "Musk’s new ad “esthetic standard” vs Google’s and Meta’s rules: vaguer test, tougher penalty.",
-      "title": "X will bar “ugly” and “shrill” advertisers",
-      "id": "logged|dispatch:/dispatch/x-ads-esthetic-standard.html|2026-10-17T01:50:00.000Z|X will bar “ugly” and “shrill” advertisers"
     },
     {
       "type": "changed",
