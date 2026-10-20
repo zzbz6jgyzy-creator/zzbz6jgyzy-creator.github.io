@@ -1,10 +1,26 @@
 {
-  "updated": "2026-10-20T01:51:41Z",
+  "updated": "2026-10-20T02:53:36Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3391,
-  "latest": "2026.32.100",
+  "latest": "2026.32.200",
   "versions": [
+    {
+      "id": "2026.32.200",
+      "date": "2026-10-20",
+      "count": 0,
+      "fleet": 3391,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 0,
+      "firstSeen": "2026-10-20T02:38:08Z",
+      "lastSeen": "2026-10-20T02:38:09Z"
+    },
     {
       "id": "2026.32.100",
       "date": "2026-10-14",
@@ -74,7 +90,7 @@
         "CA": 48,
         "MX": 3
       },
-      "pending": 82,
+      "pending": 81,
       "firstSeen": "2026-10-13T21:28:13Z",
       "lastSeen": "2026-10-20T01:43:12Z"
     },
@@ -140,7 +156,7 @@
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 305,
+      "count": 306,
       "fleet": 3391,
       "percent": 9.0,
       "fsd": null,
@@ -197,28 +213,28 @@
         "NO",
         "BE",
         "CZ",
+        "PT",
         "IS",
         "UA",
-        "LT",
         "AE",
+        "LT",
         "HU",
         "BG",
-        "TR",
         "IL",
         "SE",
-        "CO",
-        "RO",
-        "SI",
-        "MY",
-        "PT",
-        "MA",
-        "SK",
-        "QA",
-        "PH",
-        "TH",
-        "HK",
+        "TR",
         "SG",
-        "IE"
+        "HK",
+        "TH",
+        "PH",
+        "IE",
+        "QA",
+        "SK",
+        "MA",
+        "MY",
+        "SI",
+        "RO",
+        "CO"
       ],
       "countryCounts": {
         "US": 97,
@@ -237,32 +253,32 @@
         "NO": 6,
         "BE": 4,
         "CZ": 3,
+        "PT": 2,
         "IS": 2,
         "UA": 2,
-        "LT": 2,
         "AE": 2,
+        "LT": 2,
         "HU": 2,
         "BG": 2,
-        "TR": 2,
         "IL": 2,
         "SE": 2,
-        "CO": 1,
-        "RO": 1,
-        "SI": 1,
-        "MY": 1,
-        "PT": 1,
-        "MA": 1,
-        "SK": 1,
-        "QA": 1,
-        "PH": 1,
-        "TH": 1,
-        "HK": 1,
+        "TR": 2,
         "SG": 1,
-        "IE": 1
+        "HK": 1,
+        "TH": 1,
+        "PH": 1,
+        "IE": 1,
+        "QA": 1,
+        "SK": 1,
+        "MA": 1,
+        "MY": 1,
+        "SI": 1,
+        "RO": 1,
+        "CO": 1
       },
       "pending": 42,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-19T20:06:40Z"
+      "lastSeen": "2026-10-20T02:30:10Z"
     },
     {
       "id": "2026.33.5",
@@ -705,63 +721,6 @@
       "pending": 2,
       "firstSeen": "2026-09-23T05:58:06Z",
       "lastSeen": "2026-10-19T22:48:29Z"
-    },
-    {
-      "id": "2026.27.10",
-      "date": "2026-09-19",
-      "count": 170,
-      "fleet": 3391,
-      "percent": 5.0,
-      "fsd": null,
-      "fsdHw3": "14.2 Lite",
-      "fsdHw4": "14.3.10",
-      "features": [
-        {
-          "title": "Arrival Options",
-          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
-        },
-        {
-          "title": "Automatic Collision Evasion",
-          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
-        },
-        {
-          "title": "FSD (Supervised) v14.2 Lite",
-          "text": "FSD (Supervised) v14.2 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
-        },
-        {
-          "title": "FSD (Supervised) v14.3.10",
-          "text": "Full Self-Driving (Supervised) v14.3.9 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neur\u2026"
-        },
-        {
-          "title": "Full Self-Driving (Supervised)",
-          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
-        },
-        {
-          "title": "Speed Profiles",
-          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
-        },
-        {
-          "title": "Start Self-Driving from Park",
-          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
-        },
-        {
-          "title": "UI Improvements",
-          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
-        }
-      ],
-      "countries": [
-        "US",
-        "CA",
-        "MX"
-      ],
-      "countryCounts": {
-        "US": 156,
-        "CA": 13,
-        "MX": 1
-      },
-      "pending": 2,
-      "firstSeen": "2026-09-19T02:13:13Z",
-      "lastSeen": "2026-09-26T13:44:42Z"
     },
     {
       "id": "2026.28.5",
