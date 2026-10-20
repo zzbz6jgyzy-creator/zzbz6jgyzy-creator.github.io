@@ -104,8 +104,6 @@
       ${I.freshnessTableHtml(bundle.freshness)}`;
     }
 
-    const clocks = $("[data-intel-clocks]");
-    if (clocks) clocks.innerHTML = I.conflictsHtml(bundle.conflicts);
 
     const promisesBox = $("[data-intel-promises]");
     if (promisesBox) {
