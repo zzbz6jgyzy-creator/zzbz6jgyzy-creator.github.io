@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T13:58:49Z",
+ "updated": "2026-10-20T14:55:20Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-20T13:58:49Z",
+  "fetched": "2026-10-20T14:55:20Z",
   "items": [
+   {
+    "t": "2026-10-20T14:54:11Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "Canada"
+   },
+   {
+    "t": "2026-10-20T14:53:12Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 RWD LR (2018)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-20T14:20:33Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model 3 Performance (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-20T14:02:45Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Cybertruck AWD (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-20T13:58:44Z",
+    "to": "2026.38.5.1",
+    "from": "2026.38.5",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-20T13:49:31Z",
     "to": "2026.38.5.1",
@@ -531,46 +571,6 @@
     "from": "2026.38.5.1",
     "model": "Model S Plaid (2024)",
     "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-20T12:23:31Z",
-    "to": "2026.38.5.1",
-    "from": "2026.38.5",
-    "model": "Model Y RWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-20T12:15:58Z",
-    "to": "2026.38.5.1",
-    "from": "2026.38.5",
-    "model": "Cybertruck AWD (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-20T11:49:52Z",
-    "to": "2026.38.5.1",
-    "from": "2026.38.5",
-    "model": "Model Y Performance (2026)",
-    "hw": "4.0",
-    "country": "Canada"
-   },
-   {
-    "t": "2026-10-20T11:46:20Z",
-    "to": "2026.38.5.10",
-    "from": "2026.38.5.1",
-    "model": "Cybertruck AWD (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-20T11:46:06Z",
-    "to": "2026.38.5.1",
-    "from": "2026.32.7",
-    "model": "Model X 100D (2021)",
-    "hw": "3.0",
     "country": "United States"
    }
   ]
