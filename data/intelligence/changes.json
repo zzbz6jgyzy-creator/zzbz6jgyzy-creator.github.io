@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-20T22:06:08.378Z",
+  "updated": "2026-10-20T22:23:18.953Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-q3-2026-results.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business",
+      "at": "2026-10-20T22:22:32.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-q3-2026-results.html",
+      "href": "/dispatch/spacex-q3-2026-results.html",
+      "summary": "Revenue of $14.58B beat the $12.72B estimate, with $4.40B in net income. AI brought in more than Starlink for the first time, and capex hit $19.59B.",
+      "title": "SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business",
+      "id": "logged|dispatch:/dispatch/spacex-q3-2026-results.html|2026-10-20T22:22:32.000Z|SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/canada-starlink-telesat-fact-check.html",
@@ -221,23 +238,6 @@
       "summary": "2026.38.5.1 moved from 658 to 727 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-18T02:50:02.000Z|727"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/bandwagon5-starfall-second-demo.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tuesday’s Falcon 9 carries SpaceX’s second Starfall test",
-      "at": "2026-10-18T01:34:10.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/bandwagon5-starfall-second-demo.html",
-      "href": "/dispatch/bandwagon5-starfall-second-demo.html",
-      "summary": "Bandwagon-5 flies 32 payloads, including two capsules built to come home: Varda’s W-7 and SpaceX’s Starfall.",
-      "title": "Tuesday’s Falcon 9 carries SpaceX’s second Starfall test",
-      "id": "logged|dispatch:/dispatch/bandwagon5-starfall-second-demo.html|2026-10-18T01:34:10.000Z|Tuesday’s Falcon 9 carries SpaceX’s second Starfall test"
     },
     {
       "type": "changed",
