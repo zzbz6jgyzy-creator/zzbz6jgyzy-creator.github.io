@@ -1,6 +1,87 @@
 {
-  "updated": "2026-10-20T20:36:27Z",
+  "updated": "2026-10-20T21:06:17Z",
   "items": [
+    {
+      "id": "d9ce59245220",
+      "topic": "spacex",
+      "title": "AFRL demonstrates Rocket Cargo delivery with SpaceX Starfall reentry capsule",
+      "source": "Eglin Air Force Base website (.mil)",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNTHhTRHdqb0RkeHlZeW5nbUhtaWF1N0xnNXpYeWUzLU8tbWVaSkRVRERfQ2xacGRZbHlJSFEwY19iQXF1aUhuVjhUSnJhYXd2TFVweUpSWjBReXhXVFpjTUwxNDNta0RJd3J0Y0FnODJ2X0dybWdNSzZ0Q214WjNtZXl3YTNjUlp6eVY4S0NKOE90bnV0WU9GQ21ReU5SUi1lRGZXNEpRY0dKSDVGeFFGN1J2Z1RIdENYSWtfSWo1andIN0MtWkFsdnhLcWZrLU1mWW5rbV9B?oc=5",
+      "published": "2026-10-20T20:59:12Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "09dd86a38035",
+      "topic": "grok",
+      "title": "SpaceX quarterly revenue beats estimates as AI business surges",
+      "source": "The Independent",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPcFZHYl9FazlBbnZvdVhFakp0M3Nqa0JHMGZLenpPRGRBZW83NUgtcTlHb2pFdjF0bWVNbDhoOGJhNDExaTJ1Vl8wZlNUX29TNUw1d0dlSHpONjllaldXZ00zRDBvY2xDcVRSLTNBc0J4cmIzcmpVNWJRamY0NWpfVlVfUnhNeU9odEJoNGVvMXdQNE82aGxvQzNR?oc=5",
+      "published": "2026-10-20T20:55:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "31bed32f2aee",
+      "topic": "spacex",
+      "title": "SpaceX Q3 2026 earnings show revenue up 161% to $14.6 billion",
+      "source": "Quartz",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQeW5uZVhjblRpTVRMTXdzUWlEMC1WUGcxREV6M1NQb25ZZm9uamd5aW53dmd4c2FEczZqbHp3UkhLTE5oZkpHRks4MkJ4U0daRUtIalI0WnhpRW5KY1VkWUloUjZzWTdGQzYtZG9JdFJTWXFNbTVnR29qXzJ1blhSaVdvYlMwTEdaaE5WYw?oc=5",
+      "published": "2026-10-20T20:38:55Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "d1bc4108cf48",
+      "topic": "spacex",
+      "title": "SpaceX earnings soar past expectations as AI business surges",
+      "source": "Axios",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9Xd0txUl95UWQzdi1zYzBLRWxZNVE3ZmhXR0pwUG9kRWZkX2VQOWJfNnVlbURaeV93Nnp1aFVXQUJmSVFLRWQ3MWFzanFGZUhiUXl0S0ZVdklCNVdwWnMya3VoT1Y3cHpGckloX3Jn?oc=5",
+      "published": "2026-10-20T20:37:51Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ORMS.fdd6659e96f2c99dc39ce747303e0cb9&pid=News&w=640",
+      "kind": "general",
+      "score": 7
+    },
+    {
+      "id": "cb8cbf6bf5dc",
+      "topic": "spacex",
+      "title": "SpaceX Swings to a Profit, Even as A.I. Spending Soars",
+      "source": "The New York Times",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOY0d1bHRTNzNlX2RsWHg4dmdkQzBaNmFUaGtTUExMa19od3FMTTA4MzBBUXBKakU5VW9jT1U4OHk0dHlzTVNTWTJGWU03SndzVHhqbzFSdzlHOTBpcUtjZmxJUklFLVQ4d3JmUHlMU04yWFBvOHRJSXdITEJLNXB0UXRR?oc=5",
+      "published": "2026-10-20T20:32:32Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.Fne-HlZ77PV0j8yAcRNgZQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "4792245c6b0e",
+      "topic": "spacex",
+      "title": "SpaceX quarterly revenue jumps, beats estimates as AI business surges",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONHZoMzBtaGg1TmlMN19NRUEzM1lOZkpYb1ZXeWlLTnR4SkxObm1xbDBlN0RsQ2huaHBCMzRxU0VLb3ZPSS1ZeEdhampNY3VNclpoU2xGOWpoQjNfVzVDTHpqOVVRd0pZcVY3eGlpVkxjWTRrMGh4aWtCbVJVVnZ1Nnd1RkU1dFNtcUZCUnVxX1pRWXRTd09QUnpodWJSeEhpS3BKcmxsQkM1aFA1eExGSkNMMVIteV93OXZWa0Q2Vl9yUQ?oc=5",
+      "published": "2026-10-20T20:27:22Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.Zqz3NPD1U_YiyD0FGdGSEw&pid=News&w=640",
+      "kind": "general",
+      "score": 9
+    },
+    {
+      "id": "f0a95da6a478",
+      "topic": "spacex",
+      "title": "SpaceX Delivers Q3 Double Beat as AI Revenue Soars",
+      "source": "Benzinga",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPWTFVTG5VdWtOeEVwdWtEMXlfM2w5Y3V3TGticm5Sby1OVTVpS0lzSkIyQjdkcW1BTnhGaTZfNmNQeDZIajNqbjJFWHYxY2E0dEV6UndBc0UwUXVDYUZTdVhfT29xU3FSNFRzUHQ2ZE1FSHRCa05YWW14RUpLWmNKSkNtZHprVFcwOGRwY3V6Ul9RWl9QS1lYcExXU1QyMTdoUllEQVhaV2FTOFE?oc=5",
+      "published": "2026-10-20T20:22:56Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.CJ-zqDCSImuMuA2PDCi6Yw&pid=News&w=640",
+      "kind": "general",
+      "score": 1
+    },
     {
       "id": "5d7ae48fd271",
       "topic": "spacex",
@@ -14,6 +95,18 @@
       "score": 8
     },
     {
+      "id": "ec51313400a9",
+      "topic": "spacex",
+      "title": "SpaceX's Q3 revenue beats expectations: Earnings breakdown",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQa3ZRMVkwYVFrWTBUekstenphSkZlTVJzVmhXczFSRHhJNkROUEtGNElDYnFhTUxNcWF5YzhsT0tGRV8zMTN4Y01lS01Hb0V4Sld4Y3M5VFI5aDFvM2I3OVpJMXN6M25yVUFxcUtROGNWajJaZWNQVTBxTWxRa0FQc2NxNUNNd2p2d0JveGY0UDYzeVQwek5BcUNWLVR6Y0NsNEpoSFFn?oc=5",
+      "published": "2026-10-20T20:21:24Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.kX0RudgZOKN8-M7hvzdOmA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "f8a43d585b91",
       "topic": "grok",
       "title": "SpaceX Q3 revenue soars 161% YoY on AI business growth, beating estimates",
@@ -23,29 +116,6 @@
       "snippet": "",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "7cad7c48b6f3",
-      "topic": "grok",
-      "title": "SpaceX’s quarterly revenue beats estimates as AI business surges",
-      "source": "The Globe and Mail",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQR1hnX0hMM1RaQm9uQ0VEMzBsWmRFSUhIYUd2Y1M5b3hLTVpRS1dHMFQ0RkhKVTJ2T2dhaHlkbnNUSWJodDhKRklwNURDLW8wWUNDT2Z1UWI2SXF5bkdzWHd2ejZiekdDbWZlM2k1YWZPbFdya2luZTQ3Q3BVY05TZXZ0X3A3dw?oc=5",
-      "published": "2026-10-20T20:19:33Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "4792245c6b0e",
-      "topic": "spacex",
-      "title": "SpaceX quarterly revenue jumps, beats estimates as AI business surges",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONHZoMzBtaGg1TmlMN19NRUEzM1lOZkpYb1ZXeWlLTnR4SkxObm1xbDBlN0RsQ2huaHBCMzRxU0VLb3ZPSS1ZeEdhampNY3VNclpoU2xGOWpoQjNfVzVDTHpqOVVRd0pZcVY3eGlpVkxjWTRrMGh4aWtCbVJVVnZ1Nnd1RkU1dFNtcUZCUnVxX1pRWXRTd09QUnpodWJSeEhpS3BKcmxsQkM1aFA1eExGSkNMMVIteV93OXZWa0Q2Vl9yUQ?oc=5",
-      "published": "2026-10-20T20:14:06Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Zqz3NPD1U_YiyD0FGdGSEw&pid=News&w=640",
-      "kind": "general",
-      "score": 9
     },
     {
       "id": "475c212c7a4e",
@@ -65,17 +135,6 @@
       "source": "Action News 5",
       "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOUVI0SUp1dnBQTWNyRkZnSTJWdUx3Y05pM2ozaHJXMVFVZnpPUTNhYWVldGlaR3pEN21yQWdRdTgweWlmaDA0WlU1dllGRWRZVDZKMXZLdXNJNDV4dnNkdFNtcV9OaU1EU3ozdkR5SW50QmhKRWJIUmxCdHp5cjdiSldfTldEUi1zTE5nazhVTQ?oc=5",
       "published": "2026-10-20T19:51:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "061652cdc334",
-      "topic": "spacex",
-      "title": "SpaceX, GE Aerospace, Micron, GM, CoreWeave, Braze, and More Stocks That Explain Today’s Market",
-      "source": "Barron's",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBleUVzUDRycy1NVnFrck9XZ0VKQlVYOWRBQ2hlYUI0RDRGNGtBMXZVbFMycHVIWmlNRzRBa29YWHNHNXRvaEc5YzVCLWl5ejFqaC1ZeFJHb0R4VERpUDNrRmV3dVY?oc=5",
-      "published": "2026-10-20T18:51:00Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -114,18 +173,6 @@
       "image": "https://www.bing.com/th?id=ONUT.v8MglluOdZJj-k995LOBxA&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "ae2ac92810f8",
-      "topic": "spacex",
-      "title": "SpaceX Reports Earnings Today. Here Are the Key Numbers Investors Should Watch.",
-      "source": "The Motley Fool",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQT0dIZS1zNG03bWdXWjNSbS04c3NtSHVzNWVvcjdSS3JON1ExNDRGQ0hGd05wTWc2c2lKR1hNNTJGbVY4UHVfb3FMNmhuck9ZQVBpWDJ5Rkl1OW9VY3hQWThSeXJySDBHemVGTFRRZTZjWWdVNUZSSGhtNHpCVTNDbnFmTlpwVVNXb3FfVi0yNXd4Z2pVVEpSV3BGWkZCbzNLWEg0cVVVazFMZmFkdkxrZG5GQzRtdE1OZ29hRg?oc=5",
-      "published": "2026-10-20T18:08:01Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.T2R1wzAEJHbtkrtWWlwc2w&pid=News&w=640",
-      "kind": "general",
-      "score": -2
     },
     {
       "id": "bee5f096197b",
@@ -169,7 +216,7 @@
       "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9RQzRtUmJaLTFEdkxCM0tZSXZ3bGdQcTI4c1daVDJWSVZDQVZCZDZ0amNNTHhKemh5dDdwLWU0ZDFzYjRWa1RHSXQyTGR5dDNHTHQwM19jNHluc3lHNGdlYWFhRzNNNkRjZDU0M3lQa2hOeFpzWTlNdjUzYXJsOUHSAYQBQVVfeXFMTlYxYzUyVlFuTVJGa2EtVGduZ2lsbEQtd2hNblFHUklLby1rQTl5Y21DS0kydF8wMG52LTQ4MWdnUU5CZElvOE9CNWVCTFA3bGMzUnY2NFFrRmpCbnE5T1JWanFjc2lzSWo1SXJnMVhVZDE3Vk9fTkxVQXFqZWJfVzhicUsw?oc=5",
       "published": "2026-10-20T17:10:37Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.eLXYk1kMvkRT8Ha4Pz4WCA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.bOkvbK8V7rZZHBCU3VFi8A&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -207,17 +254,6 @@
       "score": 4
     },
     {
-      "id": "cce6b12e2dc8",
-      "topic": "grok",
-      "title": "Kalshi ‘Best LLM of the Decade’ Odds Surge +63 Points in a Day",
-      "source": "tech-insider.org",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBvZEwyWVJ6SzFKeXFJSXkySFRLcXJob1gtbHcwOG5zTlNiOXBaalZ1b040SlhDNmFCZWVLWDFkekVmRG9ySWFGVmYwWkYyMnlFQm9tOW1RX3VvWVJWQVBSWGhxMTdTMXh0b3pHNUgzU1d0aDY4U2tVel9kcw?oc=5",
-      "published": "2026-10-20T16:03:34Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "3727ef9d7058",
       "topic": "spacex",
       "title": "If SpaceX Stock Falls Below $135, Here's the Move I'd Make",
@@ -229,11 +265,11 @@
       "score": 4
     },
     {
-      "id": "234a9cc81435",
+      "id": "87789a832da2",
       "topic": "grok",
       "title": "Judge Says Trump’s DOJ Can’t Get a Citizen Lawsuit Against xAI Dismissed",
-      "source": "NOTUS",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQc2FJYl84TWpEU2Y4STlWMEt1WmN6VVplUXBfNENHWU00N1hjUy03cmlHYk4wV2U0SUZnZ2dYS2xDeU5xUGpMSXpCbzEzZVdjT2xOZTYyUF8yYzRMM0hXVjlwWFFCS3BOS181SHRJUl9MVUhRTlZvLTNMX0pUU0Y2SUxFb0pJQQ?oc=5",
+      "source": "notus.org",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBWc0xwZTM2bXJCalF0aHEtanliZUtmbzl0M25KYVlHLWVtTjhyeVVFa3FIbXZaN0tsUExXTnpNdTRqcGN2RU9wdGFjZmprMGhqdkJGcjJwRXFZcV9TcUtKTHp4OUd0blhYZFZLMzU4T0JRbEw3R2VubDF5Zw?oc=5",
       "published": "2026-10-20T15:39:20Z",
       "snippet": "",
       "kind": "general",
@@ -269,7 +305,6 @@
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQa1YzVTd2azBmdGVVbklZQ3hTckF1TGZZQ05FTGdsQm14VHBBOTlDNE54d2JCT2ZxRjJPU0wxYnUybEpBeE1hOEpMdzZITkxrdWhQZVFBaXJ2YjlTNFFjWFdZNTg1bExRZkJJV1c5YTU0NWhBQ2czMEZDNjdYem01S0FMOU5vZ3dCd1hfcVZfNi1GREE?oc=5",
       "published": "2026-10-20T15:10:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.BKq5xWu2OmQU-EVhz_9wkg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -298,16 +333,16 @@
       "score": 11
     },
     {
-      "id": "89a8239b77bb",
-      "topic": "tesla",
-      "title": "Hey Elon, Where’s My $25,000 EV?",
-      "source": "The Drive",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE16MFVoVjlpYVU1TXZlZjRvalZLTUczSGZXOXg5TWUtdl9Hd0dPNldYTnktZHd2Ui1kVUVwd3ZsMzdvN09PR1VPcmNtYmp2TDhZV2tidHdJVEg4X3h2Q0Z3TjQ2NmdVbThj?oc=5",
-      "published": "2026-10-20T14:11:50Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.gX7L13_a2Fp1w8UtaTOuaQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
+      "id": "f4f263afd6c1",
+      "topic": "spacex",
+      "title": "SpaceX will try catching Starship and its booster for first time, Musk says",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/science/1014913/spacex-will-try-catching-starship-and-its-booster-for-first-time-musk-says",
+      "published": "2026-10-20T14:02:00Z",
+      "snippet": "If successful, it would be the first time in history an orbital launch vehicle has been fully recovered. If successful, it would be the first time in history an orbital launch vehicle has been fully ...",
+      "image": "https://www.bing.com/th?id=ONUT.n6Q9KOXHVztVJFHJL5UeHw&pid=News&w=640",
+      "kind": "launch",
+      "score": 15
     },
     {
       "id": "77a09acac587",
@@ -322,15 +357,40 @@
       "score": 16
     },
     {
-      "id": "7378b2cdbcdf",
+      "id": "01f38228bcd6",
       "topic": "spacex",
-      "title": "What options traders expect from SpaceX earnings after the bell",
-      "source": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPZGJqaVJJeFFKTGNRNHdKeDU0b3B3V1dtS2xhQ0NuWDZzRVNVNXpwMFRFU0gta0RBclY5MF9LY2JsSm15YmRVdWdBMEFfSWt6OFVpbkZlMmF2LTNOMEJLOVA2Z25iNk1RTTROZnZJQ2E1VE9PWUlWS3BkRHRLOTA4aWlua1B5enZ2NjRkdUdGaEliX25JdmNfTHo2SXdaSDJ2Q2tv0gGoAUFVX3lxTE9oa3lGVVRoRmdOWnJhaS1fY2JEQ29JcXpPa2d4QmR0a3B0aHNsTlFoVmdXNUV1RnQ0c3JPb0hCbDh3M3FyZWdidHI4UVpncmJQT1dvVmVjY2gzbWRsVlVqUExWa3NoMVBaR01oaUtaMXpieU5WYkt5LVNEMTdZcXJXTjJhLWNkTDY0T0pVZlRKTlRoaWh3LWM5dGFCQnp6NFkwRkowOUhfUA?oc=5",
-      "published": "2026-10-20T13:40:28Z",
-      "snippet": "",
+      "title": "SpaceX is spending more than ever on AI. Its AI business is also bringing in more than Starlink for the first time.",
+      "source": "Insider on MSN",
+      "url": "https://www.msn.com/en-us/news/other/spacex-is-spending-more-than-ever-on-ai-its-ai-business-is-also-bringing-in-more-than-starlink-for-the-first-time/ar-AA2fFWRy",
+      "published": "2026-10-20T13:58:55Z",
+      "snippet": "SpaceX's AI spending was lower than Wall Street expected but higher than the company spent the quarter before.",
+      "image": "https://www.bing.com/th?id=ORMS.1b5787597349ffd9bb7bd57671246476&pid=News&w=640",
       "kind": "general",
-      "score": 7
+      "score": 4
+    },
+    {
+      "id": "54d74b242675",
+      "topic": "spacex",
+      "title": "SpaceX turns a profit after a string of losses as its satellite and computer leasing businesses soar",
+      "source": "Associated Press News",
+      "url": "https://apnews.com/article/spacex-musk-turns-profit-losses-67064446bf0afdf529db55bdec82af69",
+      "published": "2026-10-20T13:49:00Z",
+      "snippet": "SpaceX reported a bigger quarterly profit than expected Tuesday as its satellite communications operations and its business of leasing computing power to other companies boomed.",
+      "image": "https://www.bing.com/th?id=ONUT.kCq9KevZhzsopoYBBPCuZw&pid=News&w=640",
+      "kind": "general",
+      "score": 9
+    },
+    {
+      "id": "8d41e3c90702",
+      "topic": "spacex",
+      "title": "Musk ordered Starlink slowdown for Ukraine: WSJ",
+      "source": "Just The News",
+      "url": "https://justthenews.com/politics-policy/musk-ordered-starlink-slowdown-ukraine-wsj",
+      "published": "2026-10-20T13:35:00Z",
+      "snippet": "SpaceX founder Elon Musk ordered the slowdown of Starlink that Ukraine said plagued its military operations in recent days, the Wall Street Journal reported, citing \"U.S. officials and people familiar ...",
+      "image": "https://www.bing.com/th?id=ONUT.QOf3nKPSIKjGYY0ge7-Ccg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "837246185044",
@@ -345,8 +405,20 @@
       "score": 7
     },
     {
-      "id": "d97c10146d56",
+      "id": "01f1eeaf52c5",
       "topic": "spacex",
+      "title": "Musk Ordered Starlink Slowdown That Blindsided Ukraine",
+      "source": "The Wall Street Journal on MSN",
+      "url": "https://www.msn.com/en-us/news/other/musk-ordered-starlink-slowdown-that-blindsided-ukraine/ar-AA2fG6ww",
+      "published": "2026-10-20T13:25:00Z",
+      "snippet": "The SpaceX founder authorized the move and has been discussing Ukraine with Trump, but the president has denied ordering the restrictions.",
+      "image": "https://www.bing.com/th?id=ORMS.50e679bac2da13f3a6b1c9fee171a891&pid=News&w=640",
+      "kind": "general",
+      "score": 8
+    },
+    {
+      "id": "cb2c097fd314",
+      "topic": "tesla",
       "title": "What could a Tesla-SpaceX merger earn? Cathie Wood's Ark Invest has a $2.7 trillion answer.",
       "source": "Yahoo Finance",
       "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxONHg4SGtQOXhLUUhTSDJTcE4wUlRCV1lLdy1ETlNObUU0bDJreDZoZHozQzBsRjM3aE5WOUR4dnZsZE81YTdjZ0VSbXVZR003REhydzZxelZxcWZORHBNSHpZc0IybTdtLUJWelhjbndsQ2I4T0Y5MU5FS0dUd01TeU8xczQ5QmhCWWNkN1ZQU0MwcERFcDl3a2xDemZSWWg4WWp5VGtwa0I3SlBFQUtsSnJOWlVzM3JNWTNFeDQ2d0F5akpockpHZlkzdWNya25oQTN2elc0LUlfSXM?oc=5",
@@ -406,18 +478,6 @@
       "score": 4
     },
     {
-      "id": "5a34f73d80f3",
-      "topic": "spacex",
-      "title": "Photos: ‘Space jellyfish’ light up Bay Area sky after SpaceX launch",
-      "source": "FOX 13 Tampa Bay",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZUdyVVZmeDBubnRtOVMwTktHSm1xNGhiVWwxcUd2N01Gakt1V0lnM01wZHFiR1oyMUp1MWlZQVBndlRBakJNU0lBdzZEcG54cm5HSkk3S19BSFkxNUR2eFpLU3BOTHBVQWFiLXgwcnNwaXFDT1Y3Ym1wWGt4WnFFdWhuNVFMeVJOMlFZN1FzeE9zMUNlVFhRZjRvUQ?oc=5",
-      "published": "2026-10-20T12:03:12Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.OT-tfpgTiqV5qfLHohXUFA&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "3bf506406ee0",
       "topic": "spacex",
       "title": "SpaceX launches its 'Starfall' return capsule for 2nd time ever (video)",
@@ -425,7 +485,6 @@
       "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNRjdqQ01oN2pUNHpXd0NsU1JKZEhJampaeFo5ZGhqMzBrUlFtNVB0S3prUFIyQkdiUFh0TGRlNTh0RGRreVhLNjg0OGllUVZrVDU3OU5pUGhzOUdfVE1RQ2VQV0JnVk9GUlhEWWdMWWt4Z2pTemFlYmpFaGVaVldsZHVucGthd0tUSFNfY3Q3N0FSUEl4SHFEeUljb01fNENmanNKM0FTNkl2RVNTbFNYMlVIRDczZGJrYWQyaEVscHJyTGxLd2c?oc=5",
       "published": "2026-10-20T11:16:37Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.hI_qDsndo7eWeEkYpZKyTg&pid=News&w=640",
       "kind": "launch",
       "score": 12
     },
@@ -441,18 +500,6 @@
       "score": 11
     },
     {
-      "id": "8817dcaa69ce",
-      "topic": "spacex",
-      "title": "SpaceX prepares for Q3 earnings with focus on Starship, AI spending",
-      "source": "Benzinga on MSN",
-      "url": "https://www.msn.com/en-us/news/other/spacex-prepares-for-q3-earnings-with-focus-on-starship-ai-spending/ar-AA2fGvl7",
-      "published": "2026-10-20T11:11:19Z",
-      "snippet": "Space Exploration Technologies Corp. SPCX heads into third-quarter earnings with investors focused on Starship progress, Starlink’s wireless ambitions, AI infrastructure spending and whether the ...",
-      "image": "https://www.bing.com/th?id=ONUT.p0bEyvFFvCSJ7oDzosEg6w&pid=News&w=640",
-      "kind": "launch",
-      "score": 9
-    },
-    {
       "id": "4a25a9507086",
       "topic": "spacex",
       "title": "Bandwagon-5 Mission",
@@ -460,7 +507,7 @@
       "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1hcTN1ZDc2Qi15Z1dibnBFdjFDU2tKUDVNbmw0WkNWMlZQRi02UktWZlhTdk1lc2RRMkdDQ1NkeXQ1a2prMW9laHQwbDlwQWdYRFJyaQ?oc=5",
       "published": "2026-10-20T11:04:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.WfwQ2UZ-qTsF0kAifBa_NA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.cKttlM40glDUuXBieRTNkg&pid=News&w=640",
       "kind": "launch",
       "score": 20
     },
@@ -487,29 +534,6 @@
       "image": "https://www.bing.com/th?id=ONUT.7S_9jy37eQDLVbt3NaHE_g&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "58dd9be9a644",
-      "topic": "grok",
-      "title": "Rerunning GPT-1’s Training Would Cost Less Than ChatGPT Plus",
-      "source": "Business Model Analyst",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1MU1lSNko3WkpXVzNfc01SZGxLcFNiNDVGaGxqX0hJNl9yOHJoYm1XbE1xR3lWa2xIaEFDWmlfNmlnWjJDMzIxaEYzS3dGZk1FbnBNR1hFZXB0Z19FVTN1RkJBb2lyR2doN0sxX1ZQNGxVVFppalR2WmNZNG9CMlk?oc=5",
-      "published": "2026-10-20T10:00:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "179a5ce5b456",
-      "topic": "spacex",
-      "title": "40 Years Later, Starship Troopers Should Return To Anime",
-      "source": "ComicBook.com",
-      "url": "https://comicbook.com/anime/feature/40-years-later-starship-troopers-should-return-to-anime/",
-      "published": "2026-10-20T09:16:00Z",
-      "snippet": "A recently reported reboot of the Starship Troopers franchise brings the 1997 cult classic to mind for a lot of people, but it wasn’t the first attempt at bringing Robert Heinlein’s novel to life.",
-      "image": "https://www.bing.com/th?id=ONUT.8bl_90EEGY1nGuseCdMMLQ&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
     },
     {
       "id": "b7154f4e4b9f",
@@ -545,18 +569,6 @@
       "snippet": "",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "a84ad346ca6e",
-      "topic": "tesla",
-      "title": "Throwback to Tesla's Q3 report and FSD 12.5's 100x improvement claim",
-      "source": "Electrified on MSN",
-      "url": "https://www.msn.com/en-us/news/other/throwback-to-teslas-q3-report-and-fsd-125s-100x-improvement-claim/vi-AA2fELhx?ocid=BingNewsVerp",
-      "published": "2026-10-20T06:49:50Z",
-      "snippet": "The video recaps Tesla's Q3 report and focuses on autonomy, cost reductions and business growth. It also reviews comments from Elon Musk and Ashok about FSD 12.5 and miles per intervention.",
-      "image": "https://www.bing.com/th?id=ONUT.p9pW2m4czlRTckbo31YN_g&pid=News&w=640",
-      "kind": "software",
-      "score": 11
     },
     {
       "id": "909eeaf1423d",
@@ -608,61 +620,25 @@
       "score": 4
     },
     {
-      "id": "9801b984629d",
+      "id": "2ffe44cf436d",
       "topic": "spacex",
-      "title": "Elon Musk wants every American kid to own a SpaceX share",
-      "source": "TheStreet on MSN",
-      "url": "https://www.msn.com/en-us/money/economy/elon-musk-wants-every-american-kid-to-own-a-spacex-share/ar-AA2fFv6e",
-      "published": "2026-10-20T04:37:00Z",
-      "snippet": "The pledge is worth about $10.7 billion on paper, but the fine print decides what it is worth to your family.",
-      "image": "https://www.bing.com/th?id=ONUT.XUgYz6N9mFCQQHuSLxnPtA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "5446c1bca0c5",
-      "topic": "spacex",
-      "title": "SpaceX earnings put Elon Musk's Starlink cash cow to the test",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/spacex-earnings-put-elon-musks-starlink-cash-cow-to-the-test/ar-AA2fEkv6",
-      "published": "2026-10-20T04:31:00Z",
-      "snippet": "Elon Musk is taking a big swing in his bet to turn Starlink into a mobile carrier just in time for earnings.",
-      "image": "https://www.bing.com/th?id=ONUT.rDWTLAqngyL2x7vvHmKq8A&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "8d3425529fda",
-      "topic": "spacex",
-      "title": "SpaceX earnings in focus as Starlink growth and AI spending take center stage",
-      "source": "CNBC on MSN",
-      "url": "https://www.msn.com/en-au/money/general/spacex-earnings-in-focus-as-starlink-growth-and-ai-spending-take-center-stage/vi-AA2fEP6R",
-      "published": "2026-10-20T04:07:29Z",
-      "snippet": "CNBC's Morgan Brennan reports on SpaceX's Q3 earnings outlook, Starlink subscriber growth, AI compute expansion, capital spending, Starship plans and questions surrounding future funding.",
-      "image": "https://www.bing.com/th?id=ONUT.My7sv6UfnYmz5_DrKLgGww&pid=News&w=640",
-      "kind": "general",
-      "score": 7
-    },
-    {
-      "id": "659d18cf018b",
-      "topic": "spacex",
-      "title": "SpaceX shares dip with earnings just moments away",
+      "title": "SpaceX plans to finally 'catch' Starship next month",
       "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/livecoverage/spacex-earnings-stock-results-musk-spcx/card/spacex-shares-dip-with-earnings-just-moments-away-vqLihSD8pgnEKf3i9ZRN",
+      "url": "https://www.marketwatch.com/livecoverage/spacex-earnings-stock-results-musk-spcx/card/spacex-plans-to-finally-catch-starship-next-month-BI2G3gYGqqEu07SBYi2d",
       "published": "2026-10-20T04:05:00Z",
-      "snippet": "SpaceX shares are set to end the market narrowly in the red, with just minutes to go before investors can start digesting the company's third-quarter earnings. The stock was down by 0.5% in recent ...",
+      "snippet": "SpaceX plans to try and catch its Starship rocket for the very first time next month, according to CEO Elon Musk. The company played a simulation of how it would go down, showing a rendered Starship ...",
       "image": "https://www.bing.com/th?id=ONUT.3y4YLjlfxEsAxhmlQm3JFA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
+      "kind": "launch",
+      "score": 12
     },
     {
-      "id": "5ed2ccf25442",
+      "id": "8ecc002aec28",
       "topic": "spacex",
-      "title": "Funding SpaceX's AI spending is a major risk, analyst says",
+      "title": "SpaceX's stock climbs as investors overlook hefty spending",
       "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/livecoverage/spacex-earnings-stock-results-musk-spcx/card/funding-spacex-s-ai-spending-is-a-major-risk-analyst-says-rDO7SQOZLVgEhvPIkTfu",
+      "url": "https://www.marketwatch.com/livecoverage/spacex-earnings-stock-results-musk-spcx/card/spacex-s-stock-climbs-as-investors-overlook-hefty-spending-KoAYcXhqUJBTtKioozAF",
       "published": "2026-10-20T04:05:00Z",
-      "snippet": "SpaceX's artificial-intelligence buildout has been rapid, but it's also been coming at a big cost. \"Need for additional financing remains a key overhang for sentiment, especially given the recent [neo ...",
+      "snippet": "Shares of SpaceX were trading up 2.4% in the aftermarket following news of the company's third-quarter earnings beat. The company's robust revenue and profit performances were enough for investors to ...",
       "image": "https://www.bing.com/th?id=ONUT.3y4YLjlfxEsAxhmlQm3JFA&pid=News&w=640",
       "kind": "general",
       "score": 4
@@ -680,6 +656,18 @@
       "score": 4
     },
     {
+      "id": "5446c1bca0c5",
+      "topic": "spacex",
+      "title": "SpaceX earnings put Elon Musk's Starlink cash cow to the test",
+      "source": "Insider on MSN",
+      "url": "https://www.msn.com/en-us/news/other/spacex-earnings-put-elon-musks-starlink-cash-cow-to-the-test/ar-AA2fEkv6",
+      "published": "2026-10-20T03:31:00Z",
+      "snippet": "Elon Musk is taking a big swing in his bet to turn Starlink into a mobile carrier just in time for earnings.",
+      "image": "https://www.bing.com/th?id=ONUT.jwKTEi1caUJUTmqJ8SztyQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "4c1d32770213",
       "topic": "tesla",
       "title": "Is a SpaceX-Tesla Merger in the Cards?",
@@ -692,6 +680,18 @@
       "score": 8
     },
     {
+      "id": "16481d735d45",
+      "topic": "spacex",
+      "title": "Starlink Still Keeps the Lights On at SpaceX",
+      "source": "The Wall Street Journal",
+      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026/card/starlink-still-keeps-the-lights-on-at-spacex-tJ6JU2av3iv6HfGoryBM",
+      "published": "2026-10-20T03:13:00Z",
+      "snippet": "SpaceX's connectivity business churned out a $2.37 billion profit in the latest quarter, delivering the lion's share of the space company's earnings. That helped offset heavy spending in its space and ...",
+      "image": "https://www.bing.com/th?id=ONUT.Fb2t384nl180lfu2ILRPYw&pid=News&w=640",
+      "kind": "general",
+      "score": 8
+    },
+    {
       "id": "53096d6a6cda",
       "topic": "spacex",
       "title": "SpaceX Says It Is Profitable",
@@ -699,18 +699,6 @@
       "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026/card/spacex-says-it-is-profitable-bgOIDrRn6tmYUT7wl1jk",
       "published": "2026-10-20T03:13:00Z",
       "snippet": "SpaceX reported net income of $4.4 billion as revenue in the third quarter more than doubled over the same period last year. Growth at the world’s largest rocket company and satellite-internet ...",
-      "image": "https://www.bing.com/th?id=ONUT.ZeXRgqXoE-PVkhZEo-MAHQ&pid=News&w=640",
-      "kind": "general",
-      "score": 8
-    },
-    {
-      "id": "c4ded8313696",
-      "topic": "spacex",
-      "title": "Listen to (or Watch) the SpaceX Earnings Call Live",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026/card/LjkqKxHfqeCGiQlgmNmT",
-      "published": "2026-10-20T03:13:00Z",
-      "snippet": "Elon Musk’s SpaceX reports its third-quarter earnings today after the bell. It's the second earnings report since the space-tech company went public. The earnings call webcast is scheduled for 4:30 p.",
       "image": "https://www.bing.com/th?id=ONUT.ZeXRgqXoE-PVkhZEo-MAHQ&pid=News&w=640",
       "kind": "general",
       "score": 8
@@ -751,14 +739,25 @@
       "score": 4
     },
     {
-      "id": "5010d92421e4",
-      "topic": "tesla",
-      "title": "Can The BMW iX3 Take Down The Tesla Model Y L And Rivian R2?",
-      "source": "InsideEVs",
-      "url": "https://insideevs.com/news/812651/bmw-ix3-tesla-rivian-comparison/",
-      "published": "2026-10-20T00:08:00Z",
-      "snippet": "The iX3 is one of the most sophisticated electric crossovers on sale. But can it beat the latest and greatest from Tesla and Rivian?",
-      "image": "https://www.bing.com/th?id=ONUT.8dvPDJ4bvWTuIFWhSBG7hg&pid=News&w=640",
+      "id": "08c6b190dc71",
+      "topic": "grok",
+      "title": "SpaceX IPO set for liftoff in record market debut",
+      "source": "weekendargus.co.za",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9ZRVBDZmtfV01Ba1dyemd5T2xrX3FPSXh5ZUJqeXY5WnJXeEpNN2Z4ZkdWcU1QQ0gwQ1JoWVJZdTVCb3lWc0xtUlZDYldPVmRick8wci1TamVhMEtLRGpPUWpzWjBiRFA3YlZDMkNFMnVybFZZR0ZpVXVraFBpdmc?oc=5",
+      "published": "2026-10-20T00:43:07Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "8b58ccc497fa",
+      "topic": "spacex",
+      "title": "Musk ordered Starlink slowdown in Ukraine: WSJ",
+      "source": "The Hill",
+      "url": "https://thehill.com/policy/international/6161243-musk-ordered-starshield-slowdown/",
+      "published": "2026-10-20T00:43:00Z",
+      "snippet": "Tesla and SpaceX CEO Elon Musk ordered the slowdown of Starshield, the military version of Starlink internet, which Ukraine said hampered its ability to respond to Russian attacks, the Wall Street ...",
+      "image": "https://www.bing.com/th?id=ONUT.-H3BKflPxGuHA-777c3y-w&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -776,16 +775,41 @@
       "score": 1
     },
     {
-      "id": "6d1906b5425d",
+      "id": "c6cbd2d46cb8",
       "topic": "spacex",
-      "title": "Starshield vs. Starlink: How Ukraine's military use both",
-      "source": "CBS News on MSN",
-      "url": "https://www.msn.com/en-us/technology/cybersecurity/starshield-vs-starlink-how-ukraine-s-military-use-both/vi-AA2fC6pu",
-      "published": "2026-10-19T17:15:38Z",
-      "snippet": "Starshield has become essential for Ukrainian military operations. Jericka Duncan explains what it is and how it's related to Starlink.",
-      "image": "https://www.bing.com/th?id=ONUT.WPgTBdnmJRPeTGMBYH7fHQ&pid=News&w=640",
+      "title": "World in Brief: Ukraine says US intelligence is back; SpaceX revenues soar",
+      "source": "The Economist",
+      "url": "https://www.economist.com/the-world-in-brief/2026/10/20/c0e735a7-aca7-457a-9df6-23add819e2ee",
+      "published": "2026-10-19T17:00:00Z",
+      "snippet": "Elon Musk’s SpaceX reported revenues of $14.6bn in the third quarter, up 161% year on year. Profits reached $4.4bn, up from a net loss of $1.1bn during the same period a year ago. The company said its ...",
+      "image": "https://www.bing.com/th?id=ONUT.MT4PrUGahgkWVV-Zpj-uRQ&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "f416bcd51472",
+      "topic": "spacex",
+      "title": "World in Brief: Zelensky says Ukraine is receiving US intelligence; SpaceX revenues soar",
+      "source": "The Economist",
+      "url": "https://www.economist.com/the-world-in-brief/2026/10/20/6ad86564-ccba-4493-b80c-1c268052df4b",
+      "published": "2026-10-19T17:00:00Z",
+      "snippet": "Volodymyr Zelensky said Ukraine was now receiving American intelligence about Russian strikes. America has denied ever pausing it. Earlier, Ukraine’s president met Steve Witkoff, America’s special ...",
+      "image": "https://www.bing.com/th?id=ONUT.MT4PrUGahgkWVV-Zpj-uRQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "de4777371b65",
+      "topic": "tesla",
+      "title": "Tesla Q3 Preview: FSD Could Be The Key Driver Of Profitability (Downgrade)",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/article/4955309-tesla-q3-preview-fsd-could-be-the-key-driver-of-profitability-downgrade",
+      "published": "2026-10-19T14:44:00Z",
+      "snippet": "Tesla, Inc. is shifting to physical AI as FSD subscriptions surge. Click for this TSLA update and see what to look for in the Q3 earnings release.",
+      "image": "https://www.bing.com/th?id=ONUT.eAMUTQEiZTNnTm2y1rQN4g&pid=News&w=640",
+      "kind": "software",
+      "flag": "speculation",
+      "score": 7
     },
     {
       "id": "1f4fc2c76504",
@@ -796,18 +820,6 @@
       "published": "2026-10-19T09:45:00Z",
       "snippet": "The model named Roadster 2 used SpaceX's (Nasdaq: SPCX) rocket thruster technology to leap over a row of Tesla’s existing models parked side-by-side and accelerate from 0 to 60 mph in a record time of ...",
       "image": "https://www.bing.com/th?id=ONUT.bENuzFMQ9fbdkWQ9KeOt7g&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "f5c0eaf9bf1d",
-      "topic": "spacex",
-      "title": "Fire at Starlink Center in Lithuania Was Sabotage, Officials Say",
-      "source": "The New York Times",
-      "url": "https://www.nytimes.com/2026/10/19/world/europe/lithuania-starlink-sabotage-ukraine-russia.html",
-      "published": "2026-10-19T08:48:00Z",
-      "snippet": "The fire, which did not seriously damage the network, came after similar incidents in Bulgaria and Poland involving the satellite internet provider, a key defense tool for Ukraine’s armed forces.",
-      "image": "https://www.bing.com/th?id=ONUT.uMaXEcOuI01A4Z8-kyptpw&pid=News&w=640",
       "kind": "general",
       "score": 4
     }
