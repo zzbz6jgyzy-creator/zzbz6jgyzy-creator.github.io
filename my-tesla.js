@@ -420,7 +420,7 @@
     items.push(`<li><span class="mt-pill no">Official lookup</span><b>Recalls for this VIN</b>
       <p>We do not invent recall lists from model and year. Tesla’s VIN recall search and NHTSA’s VIN lookup are official; this site is not.</p>
       <p><a href="https://www.tesla.com/vin-recall-search" rel="noopener">Tesla VIN recall search</a> · <a href="https://www.nhtsa.gov/recalls" rel="noopener">NHTSA recall lookup</a></p>
-      <span class="mt-meta">Not a notice for this VIN · official sites</span></li>`);
+      <span class="mt-meta">Check your own car on the official sites</span></li>`);
     const modelName = (modelOf()?.name || "").toLowerCase();
     const general = deskStories.filter((a) => {
       const hay = `${a.title} ${a.summary} ${a.tag} ${a.topic}`.toLowerCase();
@@ -444,7 +444,7 @@
       ul.insertAdjacentHTML("beforeend", extra.map((c) =>
         `<li><span class="mt-pill soon">Tracker change</span><b><a href="${esc(c.href)}">${esc(c.title || c.field)}</a></b>
         <p>${esc(c.summary)}</p>
-        <span class="mt-meta">${esc((window.SDIntel.EVIDENCE_LABEL && window.SDIntel.EVIDENCE_LABEL[c.evidence]) || c.evidence)} · not a notice for this VIN</span></li>`
+        <span class="mt-meta">${esc((window.SDIntel.EVIDENCE_LABEL && window.SDIntel.EVIDENCE_LABEL[c.evidence]) || c.evidence)} · general news, not specific to your car</span></li>`
       ).join(""));
     }).catch(() => {});
   };
@@ -455,23 +455,23 @@
     const ul = $("mt-waves");
     if (!ul) return;
     if (!state.cc) {
-      ul.innerHTML = `<li><b>Pick a country</b><p>Waves are filtered to the Teslascope sample for that country. They are not a notice that this VIN is eligible.</p></li>`;
+      ul.innerHTML = `<li><b>Pick a country</b><p>We’ll show which builds Teslascope owners in that country are getting. It doesn’t mean your car is due one.</p></li>`;
       return;
     }
     const fn = window.SDIntel && window.SDIntel.softwareWavesForCountry;
     if (!swHistory || !fn) {
-      ul.innerHTML = `<li><b>Loading sample history</b><p>Teslascope snapshots for ${esc(countryName())} will appear here. A first-seen row is not an offer to this car.</p></li>`;
+      ul.innerHTML = `<li><b>Loading sample history</b><p>Teslascope snapshots for ${esc(countryName())} will appear here. Seeing a new build here doesn’t mean your car will get it yet.</p></li>`;
       return;
     }
     const waves = fn(swHistory, state.cc);
     if (!waves.length) {
-      ul.innerHTML = `<li><b>No sample waves for ${esc(countryName())} yet</b><p>The saved Teslascope history has no first-seen or count-jump row for this country. That is not a statement about this VIN.</p></li>`;
+      ul.innerHTML = `<li><b>No sample waves for ${esc(countryName())} yet</b><p>Teslascope hasn’t spotted any new builds spreading in this country yet. That doesn’t tell us anything about your car.</p></li>`;
       return;
     }
     ul.innerHTML = waves.slice(0, 6).map((w) =>
       `<li><span class="mt-pill soon">Sample only</span><b>${esc(w.version)} — ${w.type === "appeared" ? "first seen in this country sample" : "sample count jump"}</b>
         <p>${esc(w.summary)}</p>
-        <span class="mt-meta">Teslascope sample · ${esc((w.at || "").slice(0, 10))} · not Tesla offering this build to this VIN</span></li>`
+        <span class="mt-meta">Teslascope sample · ${esc((w.at || "").slice(0, 10))} · seen on other cars, not necessarily yours yet</span></li>`
     ).join("");
   };
 

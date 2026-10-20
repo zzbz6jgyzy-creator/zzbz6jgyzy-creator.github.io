@@ -88,6 +88,15 @@ def main():
 
 AUTHOR = "Alex R"  # article byline / sign-off name (not the X handle)
 
+DESK_TOPIC = {"Launch footage": "SpaceX"}  # byline labels show the plain topic, never "<topic> desk"
+
+def desk_labels(s):
+    """Byline label rule: "<span>Tesla desk · News</span>" becomes "<span>Tesla · News</span>"."""
+    import re
+    fix = lambda m: m.group(1) + DESK_TOPIC.get(m.group(2), m.group(2))
+    s = re.compile(r'(<span>)([A-Z][A-Za-z ]*?) desk(?=( · [^<]*)?</span>)').sub(fix, s)
+    return re.compile(r'(\n\s*<span>)([A-Z][A-Za-z ]*?) desk(?=</span>)').sub(fix, s)
+
 def bylines():
     """Byline rule: article bylines and sign-offs name the author as AUTHOR, never the X handle.
     Only the <p class="meta"> "From ..." span and <p class="signoff"> text are touched; links to
@@ -98,6 +107,7 @@ def bylines():
     for path in glob.glob(os.path.join(ROOT, "dispatch", "*.html")) + glob.glob(os.path.join(ROOT, "guides", "*.html")):
         s = open(path, encoding="utf-8").read()
         t = meta.sub(r"\1From " + AUTHOR + r"\2", sign.sub(lambda m: m.group(1) + AUTHOR + (m.group(2) or "") + m.group(3), s))
+        t = desk_labels(t)
         if t != s: open(path, "w", encoding="utf-8").write(t); print("byline:", os.path.relpath(path, ROOT))
 
 def sleek_signup():

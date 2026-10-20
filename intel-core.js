@@ -1003,6 +1003,7 @@
           <p class="hv-feed-sub">The latest sourced changes on our trackers. Follow topics to filter this list in your browser.</p>
           <div class="intel-follow" data-intel-follow role="group" aria-label="Follow topics">${follow}</div>
           <div data-intel-changed>${changesHtml(recent)}</div>
+          <p class="hv-feed-sub"><a href="/daily.html">See all changes →</a></p>
         </section>`;
   }
 
