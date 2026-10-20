@@ -449,7 +449,7 @@
     }).catch(() => {});
   };
 
-  let history = null;
+  let swHistory = null;
 
   const renderWaves = () => {
     const ul = $("mt-waves");
@@ -459,11 +459,11 @@
       return;
     }
     const fn = window.SDIntel && window.SDIntel.softwareWavesForCountry;
-    if (!history || !fn) {
+    if (!swHistory || !fn) {
       ul.innerHTML = `<li><b>Loading sample history</b><p>Teslascope snapshots for ${esc(countryName())} will appear here. A first-seen row is not an offer to this car.</p></li>`;
       return;
     }
-    const waves = fn(history, state.cc);
+    const waves = fn(swHistory, state.cc);
     if (!waves.length) {
       ul.innerHTML = `<li><b>No sample waves for ${esc(countryName())} yet</b><p>The saved Teslascope history has no first-seen or count-jump row for this country. That is not a statement about this VIN.</p></li>`;
       return;
@@ -570,7 +570,7 @@
     fetch("/data/updates-history.json", { cache: "no-cache" })
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
-        history = j;
+        swHistory = j;
         renderWaves();
       })
       .catch(() => {});
