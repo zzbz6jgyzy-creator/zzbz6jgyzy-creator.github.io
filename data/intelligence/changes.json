@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-20T19:15:35.767Z",
+  "updated": "2026-10-20T19:31:37.219Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/canada-starlink-telesat-fact-check.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "No, Canada isn’t cutting off Starlink. Here’s what Carney actually said, and why Telesat still needs SpaceX",
+      "at": "2026-10-20T19:30:55.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/canada-starlink-telesat-fact-check.html",
+      "href": "/dispatch/canada-starlink-telesat-fact-check.html",
+      "summary": "The viral claim stitches an August military contract to a September quote. There’s no ban, and Canada’s rival network launches on SpaceX rockets.",
+      "title": "No, Canada isn’t cutting off Starlink. Here’s what Carney actually said, and why Telesat still needs SpaceX",
+      "id": "logged|dispatch:/dispatch/canada-starlink-telesat-fact-check.html|2026-10-20T19:30:55.000Z|No, Canada isn’t cutting off Starlink. Here’s what Carney actually said, and why Telesat still needs SpaceX"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-q3-2026-preview.html",
@@ -221,23 +238,6 @@
       "summary": "Bandwagon-5 flies 32 payloads, including two capsules built to come home: Varda’s W-7 and SpaceX’s Starfall.",
       "title": "Tuesday’s Falcon 9 carries SpaceX’s second Starfall test",
       "id": "logged|dispatch:/dispatch/bandwagon5-starfall-second-demo.html|2026-10-18T01:34:10.000Z|Tuesday’s Falcon 9 carries SpaceX’s second Starfall test"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/robotaxi-austin-midnight-803.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla Robotaxi now runs until midnight in Austin",
-      "at": "2026-10-17T13:40:27.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/robotaxi-austin-midnight-803.html",
-      "href": "/dispatch/robotaxi-austin-midnight-803.html",
-      "summary": "An app alert pushed Austin’s day to 6am–midnight. Texas registrations passed 800, and all 34 new cars are Model Ys.",
-      "title": "Tesla Robotaxi now runs until midnight in Austin",
-      "id": "logged|dispatch:/dispatch/robotaxi-austin-midnight-803.html|2026-10-17T13:40:27.000Z|Tesla Robotaxi now runs until midnight in Austin"
     },
     {
       "type": "changed",
