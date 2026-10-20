@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-20T14:38:21.460Z",
+  "updated": "2026-10-20T14:55:21.355Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:most-common",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "most-common",
+      "previous": "2026.38.5.1@26.8",
+      "next": "2026.38.5.1@27",
+      "at": "2026-10-20T14:55:20.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Most common sample build changed from 2026.38.5.1@26.8 to 2026.38.5.1@27.",
+      "title": "Most common sample build",
+      "id": "changed|tesla-software:most-common|2026-10-20T14:55:20.000Z|2026.38.5.1@27"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/hagerty-roadster-moravy-interview.html",
