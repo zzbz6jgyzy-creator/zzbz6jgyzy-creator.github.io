@@ -20,11 +20,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Point "Read the latest issue" at the newest Beehiiv issue
         run: node scripts/newsletter-latest.js
+      - name: Refresh signup blocks with the new slug and issue count
+        run: python3 scripts/inject_newsletter.py
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A -- '*.html' grow.js scripts/build-home.js
+          git add -A -- '*.html' grow.js scripts/build-home.js data/newsletter-latest.json dispatch/*.html
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Point Read the latest issue at the newest newsletter issue."
             git pull --rebase && git push

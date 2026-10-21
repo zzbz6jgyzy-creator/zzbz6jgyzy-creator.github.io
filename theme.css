@@ -226,6 +226,7 @@ html[data-theme="light"] .sd-form input[type="email"] {
 }
 html[data-theme="light"] .sd-x:hover { color: var(--ink); background: var(--surface-2); }
 html[data-theme="light"] .sd-fine,
+html[data-theme="light"] .sd-proof,
 html[data-theme="light"] .ref-note { color: var(--mute) !important; }
 
 /* Tesla hub — photo heroes stay cinematic */
