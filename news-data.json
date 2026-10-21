@@ -1,17 +1,16 @@
 {
-  "updated": "2026-10-21T17:36:58Z",
+  "updated": "2026-10-21T18:06:15Z",
   "items": [
     {
-      "id": "2de138b5d55a",
+      "id": "303926373f70",
       "topic": "tesla",
-      "title": "Tesla is trading more like SpaceX than a car company",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNeDEyRlUtRTJ1SzVpSVQ1blJNYlhvSmZ6S0dReE85Q1c1cWR2dk96Z3VrTmZfemxjaGhqWTlGUkRqZ285NHRhZW93XzFaM0lRN3lZdTdZM3BDdVIwTGpzVnZVOHJELTd0TXZJSjBmUElMVmZ2ZV8tdU9HRGdHUXF0MUlnS0tNX0VQdnhGVUZiemkxN28taEVpMllzN2N5QXhlZklRd2NiLXY4UGRYM2c?oc=5",
-      "published": "2026-10-21T17:15:34Z",
+      "title": "Breakingviews - COMMENTARY: SpaceX offer will be hard for Tesla to refuse",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQbkpFTzAxRkZQM1JHNUhZcnljc3Z2OUNQamZURVAydnNmUGJrQ2hiTU40c0xxMUxjM3V2TWVFUjRxV2VlVGlib2NIRlkxaDhsdnkyTTJfcjl2Q0FaN3I5N19BZElCVXhrSHhQbTlRN0syUG4wV1BiVkp1WURxRjRsdnloNTFBcHZPM2tENFJsUTJyZjRZMkJ6WkhmZWNkTXR5?oc=5",
+      "published": "2026-10-21T17:45:59Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.GvfVLGasVBUohqi1s6T7aQ&pid=News&w=640",
       "kind": "general",
-      "score": 4
+      "score": 9
     },
     {
       "id": "40b172ca1525",
@@ -21,6 +20,18 @@
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQWnRMQkJtckU5amdkeTZMUWRVdUV0cmdfYzYyQVMyaTlxTzdIOTNOR3lJazl3TFZBWFllSEtQUkhReWtuWlE1eFFBU0VfUVYtV3ZvdWJNVUhyMnQ3VmVteXA2NlRDSEl1ODlFSnBZYU5XeldWRERkU1poSm8yU1UyOWRiMWxNb1pLLVRjMk9aUE10QXNRY1lNc3V5cjA4dzJpTWZNX1B3bHk?oc=5",
       "published": "2026-10-21T17:01:27Z",
       "snippet": "",
+      "kind": "general",
+      "score": 8
+    },
+    {
+      "id": "7ec4102f9d66",
+      "topic": "spacex",
+      "title": "What to Know About the SpaceX-Tesla Merger Talks",
+      "source": "WSJ",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQbXFsVW11RFNRRmRqS2I3dHk1dUlLOXlzMDc1bFN1d21nanZrNTV0REFMR2hwVXBxTUxtZHlvS1pDR3YwR0ZJeUxWczBaTVJxOGMtVU1TT2xtLUZxQm5BTGRva1FlQkdMMEU5eUREWUJuOHhUd2xpU0tCdTM1X3o0N1luZ29PUQ?oc=5",
+      "published": "2026-10-21T16:48:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.UDh2PbVB56LyMua3uXhRjA&pid=News&w=640",
       "kind": "general",
       "score": 8
     },
@@ -49,17 +60,6 @@
       "score": 9
     },
     {
-      "id": "3313ee53efe3",
-      "topic": "spacex",
-      "title": "Nasdaq climbs over 1% as SpaceX, Super Micro improve AI sentiment",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQZUJTOXdaa0JmVzZubm12MGt4VnNSemsyOW1fQXpCMnhEc25HSVJRZk93d2NYUXQ3eHBuQklaNE1FT1QyQ1NqdTFkdExDbmoxY2JtOWhLQkVtYXczMHh3a3VsZmhub1JFc0FIZHN1eEcwc3FRZVZWQnBoSjFjekFYTUN6X2d5WHJUWGpDU2paekhhU24zenhNbWpXUmtfdmo5cTFIZVZwTXdiRzZoeUtiazhHWkJEWEVZLTVmQmRMcw?oc=5",
-      "published": "2026-10-21T16:18:30Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 9
-    },
-    {
       "id": "5e6befcabf2a",
       "topic": "grok",
       "title": "AI Price Prediction: We Asked Elon Musk's Grok if XRP Can Get Back to $2 by the End of 2027",
@@ -67,9 +67,19 @@
       "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxPR1M2NlJKWFJGd21mY3lidHVfMWsxYjRnSFRsQTZ1elB2NEY1MGxxbjlnd0pUU2R4T1JQWm1MQkFYaTVkNnFUTTRvSHVGc0xHVmFjblNFVDNFNS05aF95alJ1RUpEN013V0pMMGR0TXNvemp1NE1EUEpCMi1oNUo5cTgxMUs3b1JLN3BiQkJXZ0lvOEpBcmZVVkZDcXA1NDFHMkdkOXQ4VWxrdDQ4bnE0OVpHa1hQTHFCSlZkcVQ2dldmS2VTalFYNGU3Z25rY1NlSDNmRzlyeDlnUUNzeEM3dXVYWk92cjQybzVlVzAzTDdWYURGT1Zhc1pucFpHVHZxRWFVWnZ2d0JTanhfUHdn?oc=5",
       "published": "2026-10-21T16:07:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.hh42sOOH1nkQzLTgl1JVJw&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "5720427ad62a",
+      "topic": "spacex",
+      "title": "SpaceX confirms Starship 15 launch window with massive ambitions",
+      "source": "Teslarati",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQa3RsT0J4OEQ5bGNheGNPWjdmV3lJNEg0SHRwRmRYUldhdS1DTnlxZjBpWE80UktoOTFYWlhZN1lfUzVfWDJRUDNsOUN6THJrY1Vxb2cxbzU0Q2lzb2JBcGpaaG1WRnh5NVdPdU9TWUs1cVV5N3dOUmpZUy1CNDhzaF9PM0VSRmpOaThfSWhlYw?oc=5",
+      "published": "2026-10-21T16:05:45Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 22
     },
     {
       "id": "946938a7dae6",
@@ -79,7 +89,6 @@
       "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1rRTRZdEQyQ0tYemI0R0tuYi04TWhxWEVoRGx6M3h3MWpWTzhRdnpvZTk4R2tSV09GX2dNS0p6ckxOMkpDd3NCbEViY1ZtOUNOU0JjejU5VjhoVTRIRjZ2SHBiOG0wbXY0NmVBUmFUTDFWZ01LSmZraHN4TdIBgAFBVV95cUxPdzZSSklMOG1fb1hCcUpGSmpyVDAxVlZuXzZ4ZDEwdkJhX2xoWXdVb1V5Vkp0b0tkekhaVHhoa2szSC0tejZ6aTYtb1JJUWo4aG90ZTN5UURiS19sMGhCUHFxZUdhdk9rd3JaN0xRVVk3OGZ0VkhZSjFDMU11dUJIVw?oc=5",
       "published": "2026-10-21T16:00:01Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.TRO9W7fVT4-3zCd2VT_hjQ&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -91,7 +100,6 @@
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFA2dV9MRExtT3Y2bm1GMG82STB5ZHAxa29IUkZZZjJqbkJwU2E0TVhhaTRkWGVNdVhvQ085Rzk1UElJRkNCMENlcWo0cnlKZnZuYUx0T05zazlJUnVKNF9qUF9KQy1reHVqY1dMQTVmdnZiNUxVbFlN0gF8QVVfeXFMTzlLWWFLT1NGTE52ekdjbG5vRnZGTUh3WGcxUU4ybU9IRmRkNEtlSk5PdlVwaVExb0ZnOC1iRDhCb1B2eE1QWXZ0ckdRQVFBU0M0XzhpaTJ1VWlya2ZSa3ZPNkRvT3pxS0hRV3FKSmRiR0o5TGhjZlJIeWx3Sg?oc=5",
       "published": "2026-10-21T15:58:45Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ucc1YDS-CIlOh2QeeHuchQ&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -103,7 +111,6 @@
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFB4YUloR29taVBza2QtN3ZsRGdXckdKeU9oQ3MwdG8yTkJOMjFVU1JyRktyc0pqYk45UlZXUUd6aGhxQXdJM3BrN0JUUkFzYUtHakp4c1Y2MW1YdTlWdkpjQWxFZGw?oc=5",
       "published": "2026-10-21T15:56:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ipcSfdfgnqqbCjCwtvat5Q&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -115,7 +122,7 @@
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVkhhOWVLeWlmenVYanV6ZlZmaV8yNEthdHJHUFk2LVVTOXNUaHA2REpfdDd4Z3BTb1llYnljQjZ6T2FUeF9TZUI2WGRISXVwMTl4MVdqb05ZSGlDaWtZbjhJaW9MRFJNX09KNUR2Z0ZLVjZhb1I3T1E0XzVrRnlpcVg1dXJOcjZuM201U1Y0TnBueC0tSWRGTEpZWjYtanUzczBoN01NMW9qbndMbTJpM2R1cmZ6NnNmeldRWFpJZFQ?oc=5",
       "published": "2026-10-21T15:46:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.f81cNZX7E1TddHLBko7LoQ&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.l4JF1YtIU6IAMK8sltWw5Q&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -151,7 +158,7 @@
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQSDl0bFZKVE8xSmpFQ0o1UUFzSEZJRG1sdXZWbnRtUUFWUmxPMEhPZExkcm50SldPTk15OWxkckQtWTBBZEZUbzNiQ2ozV3RRZ09Kd2ViNjZvQ0ZUVTAxWlcwZnJvSVoxRFNTQ01XaGZQVVN3YUt1N1EzNmpDUkl2Mm1IZUxoYWt0VlVtS0xsdUdINzctaEhTRms2SmhqTm1EVlZZaE9mektMREhseTBzbzNJNUxsbHIw?oc=5",
       "published": "2026-10-21T15:00:44Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.J57AvZm9cB4Q1Jhj2vG6rw&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.SNZF7OHn64oYrTJw_ozjAg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -163,7 +170,6 @@
       "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNUHFfdEtOSDZSQ0xXZ3VQS2pnMzZxcUxNejNjc19Nd1JNQnJBOHBCc2ZpbGZ1TUZLVmQwT2JNQmI1blJUMzJmRzl3XzJ1bnloMUpUWkxETGtEY25reWNTMDJHOFdlV05Cd19NRVdHU1RaNXJzTkhQSExGYzliVzU3Y1NmSGJOckV0X3RRcUhuQ3NsTVBLNEJyakhnYjVQMVUxTC1qTnBIUXZTZjBk?oc=5",
       "published": "2026-10-21T14:47:37Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.WRW0eMAAoD8VQxmtreanXA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -187,7 +193,7 @@
       "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOdUlBXzBBVXhmeWF0S0xVNU10OG44WmdLTTdrWFhtNk9nQ2tpbU9ia1VVTFZsclNzdElmclZPNTFBN3pZNWV2YWNWYVg4V1loQWw5aDhodnpIWEkxak4zY0RwdF91bTk3bllHTFB6VTVYMXFNVklleWw1bFJUNEVwTksxTXJYdUdCTDMzQ0NoV3BXOTk5ZmZJUjhSTklUSWFsNGNJUWx1TDFHakU3R2kwTVNaZ3czd3lUNlJHaHV4R3F2eEozVkVYUlJIODJweDNJUFRhVnJWTzBJMFNiVDZGSg?oc=5",
       "published": "2026-10-21T14:16:25Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.U8Aml7qAHHYGHbPjlkAwXQ&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.if1Zs_iZ1UHHvhUDG8s3ZA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -211,7 +217,6 @@
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9XaEZwTktvd3JhMjAta21YYk9RMW9oUkwzZFRJU0loWjZza3FDQkg3R0M4eS1pSkRXY0pjb2lOWThseTNncHVvU1dUdU5WRnM0V3M2Q1pnSGU4VVRFeVp4dGQxekdLZXNKT1E?oc=5",
       "published": "2026-10-21T14:08:08Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.50ow4BkLfRwnACp8NO9tpw&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -223,7 +228,6 @@
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQLTdFWU01NlhUUHR4RGdCd2xtbHRZZ0pubFBnLVBpcm9TVUVuLVhEMksxblN5NVZjczQ4QldLNkJ2X09SaDJkNVYzOW9xV1pIVzF6LUpuUUdJMkFSR091dk5ZQnROcy16b05pZEJUTVotWDZDaUhTUHpoUGV4X2F4Vw?oc=5",
       "published": "2026-10-21T13:37:04Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.80e2kex_tqlDtoYWB296MQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -314,7 +318,6 @@
       "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNdW96ajBBSUMzcDFxMTRvM2ZlMEdKZVFYbXlfMTg0MjdXY2p0SnUxcHNIS0tQOEtDNnNpX1NUemM1M0l1bURxc0ZPWXZYQ2pHMjRaamZSSEp0ZHJUVnBaRWU5eE9HTThlMmFUdUhxTExYTkRnUFZOTXQyNzF4NGd3VWEtZTZhdF9CaXlyb09hQWtHU0x2SWJvNFhFalltN2RnVWpmM1ZlcmhvWExFXzhxaW5n?oc=5",
       "published": "2026-10-21T10:26:46Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.yilKS-CFeWCn15yV6KhsOg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -326,31 +329,18 @@
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPS0RvZTY3MzlmY3VaSE9CTGVlUWZLZWlBYzU5a29qVlpCZE1YbFozWUxabjNRYmx1TEV4WHZ5d2dVYjBvenQ4TnVobjlfN2NGdHZJQXFRUHVQTHJsUm9RTEktOGgzVzJaRVNJT1E1bTRpVXJCMGhxVHRCdnhqcmVYYjdBMVZOVlNsUUU4V3hGeWtHWk1fWU5tUE1NbzB3VWc2cUhxYWJSRQ?oc=5",
       "published": "2026-10-21T10:10:55Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT._08PnHZz1I4ampMn4tFT0w&pid=News&w=640",
       "kind": "milestone",
       "score": 11
     },
     {
-      "id": "93dc5cc0bbc8",
-      "topic": "spacex",
-      "title": "SpaceX Is Finally Going for the Starship Double Catch",
-      "source": "Gizmodo",
-      "url": "https://gizmodo.com/spacex-is-finally-going-for-the-starship-double-catch-2000828826",
-      "published": "2026-10-21T09:21:00Z",
-      "snippet": "Starship’s most recent test flight sent the SpaceX megarocket to orbit for the first time, marking a major technical milestone that will pave the way for commercial viability. Still, that road remains ...",
-      "image": "https://www.bing.com/th?id=ONUT.JH3h0sWebxLyaPjGxcYDqw&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "e406941aaf8c",
+      "id": "3ea26b65cd38",
       "topic": "spacex",
       "title": "AT&T's CEO throws shade at Musk's Starlink mobile ambitions",
       "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-ca/technology/tech-companies/at-t-s-ceo-throws-shade-at-musk-s-starlink-mobile-ambitions/ar-AA2fKtjW",
+      "url": "https://www.msn.com/en-us/news/other/at-ts-ceo-throws-shade-at-musks-starlink-mobile-ambitions/ar-AA2fKtjW",
       "published": "2026-10-21T09:08:27Z",
       "snippet": "AT&T CEO John Stankey said he sees potential in satellite-based networks, but that they \"cannot and will not match\" fiber-connected performance.",
-      "image": "https://www.bing.com/th?id=ONUT.YY8nwqCHszAnJC_b0-tWTg&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.HnkSgw4W-HnDodn4eIw1mQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -398,45 +388,8 @@
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8xQVFkemlnVHpuR0hUUWJNMzNoZWoxbEVWa2sxMUlTd1BIRXBocmRDLThIYUtOR2JDWjJ4ZWFZbWZuWDhVWnFLb0NNajRJQm9QTU9oSUZXRnFEUEE?oc=5",
       "published": "2026-10-21T08:42:49Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.TRPymW4YJgsbEqWDCYuKHA&pid=News&w=640",
       "kind": "general",
       "score": 7
-    },
-    {
-      "id": "6fa2a34363f8",
-      "topic": "tesla",
-      "title": "SpaceX and Tesla Explore Merger to Create a De Facto Elon Inc.",
-      "source": "The New York Times",
-      "url": "https://www.nytimes.com/2026/10/21/business/elon-musk-spacex-tesla-merger.html",
-      "published": "2026-10-21T08:39:00Z",
-      "snippet": "A deal would consolidate Elon Musk’s holdings in rockets, cars and artificial intelligence into a company worth well over $3 trillion.",
-      "image": "https://www.bing.com/th?id=ONUT.GvfVLGasVBUohqi1s6T7aQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "34ab906971c5",
-      "topic": "tesla",
-      "title": "SpaceX stock jumps 9% after earnings beat and Musk confirms Tesla merger talks",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/money/top-stocks/spacex-stock-jumps-9-after-earnings-beat-and-musk-confirms-tesla-merger-talks/ar-AA2fIS7k",
-      "published": "2026-10-21T08:32:53Z",
-      "snippet": "Elon Musk said in an earnings call that SpaceX and Tesla have formed special committees to discuss the mechanics of a potential combination.",
-      "image": "https://www.bing.com/th?id=ONUT.TRO9W7fVT4-3zCd2VT_hjQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "16e0ab1cf3a4",
-      "topic": "tesla",
-      "title": "Musk says SpaceX-Tesla merger has \"a lot of merit.\" Here's why.",
-      "source": "CBS News on MSN",
-      "url": "https://www.msn.com/en-us/news/other/musk-says-spacex-tesla-merger-has-a-lot-of-merit-heres-why/ar-AA2fKSvF",
-      "published": "2026-10-21T08:29:08Z",
-      "snippet": "Combining SpaceX and Tesla, whose stocks jumped after Musk said the companies are exploring a deal, would be the biggest corporate merger of all time.",
-      "image": "https://www.bing.com/th?id=ORMS.46bed5a06ceec3a3c81629e22c6735f5&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "c797d21315b1",
@@ -461,59 +414,35 @@
       "score": 4
     },
     {
-      "id": "3f4dfd4f1ba6",
+      "id": "557fa6165d36",
       "topic": "spacex",
       "title": "Trump administration points to Elon Musk over orders for Starlink slowdown on Ukraine",
       "source": "CNBC on MSN",
-      "url": "https://www.msn.com/en-us/news/other/trump-administration-points-to-elon-musk-over-orders-for-starlink-slowdown-on-ukraine/vi-AA2fKqk5",
+      "url": "https://www.msn.com/en-us/news/news/trump-administration-points-to-elon-musk-over-orders-for-starlink-slowdown-on-ukraine/vi-AA2fKqk5",
       "published": "2026-10-21T07:42:08Z",
       "snippet": "CNBC's Eamon Javers reports that Elon Musk reportedly ordered a slowdown of military-grade Starlink service relied upon by Ukraine, prompting disputed accounts of White House involvement.",
-      "image": "https://www.bing.com/th?id=ORMS.ceaabfe6a9a8ad630acde61347943129&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.EURHm2yjcMyLb1dHFmNUDA&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
     {
-      "id": "57d1df84d0bc",
+      "id": "e5300950618b",
       "topic": "spacex",
-      "title": "Recap: FAA approved Starship flight 7 early as Starliner crew stayed on ISS",
-      "source": "Ellie in Space on MSN",
-      "url": "https://www.msn.com/en-us/news/other/recap-faa-approved-starship-flight-7-early-as-starliner-crew-stayed-on-iss/vi-AA2fKzTo?ocid=BingNewsVerp",
-      "published": "2026-10-21T07:17:25Z",
-      "snippet": "The video recaps an earlier update on the FAA license authorization for Starship Flight 7 and the Starliner crew’s extended stay on the ISS. It explains that Crew-10 was targeting a later launch because of preparation de",
-      "image": "https://www.bing.com/th?id=ONUT.1sVHknQ-z1qZI88keCgVQw&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "03ff37294c73",
-      "topic": "spacex",
-      "title": "Elon Musk says SpaceX hitting $1 trillion in revenue in 2028 is 'no longer impossible'",
+      "title": "Starlink is getting dragged into Russia's hybrid war against the West",
       "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/elon-musk-says-spacex-hitting-1-trillion-in-revenue-in-2028-is-no-longer-impossible/ar-AA2fJNHU",
-      "published": "2026-10-21T06:41:00Z",
-      "snippet": "After its latest earnings, SpaceX's famously optimistic CEO made one of his most bullish suggestions yet.",
-      "image": "https://www.bing.com/th?id=ONUT.MzCAX2Bbwebtac6OIBq0Wg&pid=News&w=640",
+      "url": "https://www.msn.com/en-us/news/other/starlink-is-getting-dragged-into-russia-s-hybrid-war-against-the-west/ar-AA2fKsek",
+      "published": "2026-10-21T06:17:25Z",
+      "snippet": "The past few weeks have seen attacks and attempted sabotage against Starlink infrastructure across Europe.",
+      "image": "https://www.bing.com/th?id=ONUT.Pr9snhiXdQ8j6arTAaPIhg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "6d111e550828",
-      "topic": "spacex",
-      "title": "Here's How SpaceX Plans To Catch Starship's Upper Stage For The First Time",
-      "source": "Engadget on MSN",
-      "url": "https://www.msn.com/en-us/news/other/heres-how-spacex-plans-to-catch-starships-upper-stage-for-the-first-time/ar-AA2fKC79",
-      "published": "2026-10-21T06:19:00Z",
-      "snippet": "SpaceX has released a demo showing how it intends to catch Starship's upper stage, which could happen as soon as next month.",
-      "image": "https://www.bing.com/th?id=ONUT.4O9yOu4HZW5b_Q18XLK0Bw&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "a6afd4eb6318",
+      "id": "2556de2919a1",
       "topic": "tesla",
       "title": "Tesla’s FSD class action stalled because nothing forced buyers to open the page with the promise",
       "source": "The Auto Wire on MSN",
-      "url": "https://www.msn.com/en-us/technology/hardware-and-devices/tesla-s-fsd-class-action-stalled-because-nothing-forced-buyers-to-open-the-page-with-the-promise/ar-AA2fKgfU",
+      "url": "https://www.msn.com/en-us/autos/general/tesla-s-fsd-class-action-stalled-because-nothing-forced-buyers-to-open-the-page-with-the-promise/ar-AA2fKgfU",
       "published": "2026-10-21T06:00:00Z",
       "snippet": "Tesla’s website told shoppers that every car it built had the hardware needed for full self-driving capability. On October 16, a federal appeals court said that a promise on a web page is only as ...",
       "image": "https://www.bing.com/th?id=ONUT.t2sATfJBsGOnQMDccrevew&pid=News&w=640",
@@ -532,108 +461,23 @@
       "score": 12
     },
     {
-      "id": "2720aa8288b7",
-      "topic": "tesla",
-      "title": "Tesla Cybertruck Still Broken After Five Months and $63,000 in Repairs",
-      "source": "YAHOO!",
-      "url": "https://autos.yahoo.com/ownership/articles/tesla-cybertruck-still-broken-five-120033028.html",
-      "published": "2026-10-21T05:01:00Z",
-      "snippet": "A Florida Tesla Cybertruck owner says his truck has spent five months at a collision center, accumulated approximately $63,000 in damage, and been declared ready for pickup seven times. Each time, ...",
-      "image": "https://www.bing.com/th?id=ONUT.sVaT2mc34UZIvxf43htN2w&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "82da18821750",
-      "topic": "spacex",
-      "title": "Rep. Brian Fitzpatrick says if Elon Musk ordered the slowdown of Starlink's speed in Ukraine, it is \"likely a violation of the law\"",
-      "source": "PRIMETIMER",
-      "url": "https://www.primetimer.com/news/rep-brian-fitzpatrick-says-if-elon-musk-ordered-the-slowdown-of-starlinks-speed-in-ukraine-it-is-likely-a-violation-of-the-law",
-      "published": "2026-10-21T04:07:00Z",
-      "snippet": "Ukraine President Volodymyr Zelenskyy said the country faced restricted access to Starshield, the military version of Starlink, since last week.",
-      "image": "https://www.bing.com/th?id=ONUT.7pEnWxIG3IOYzZNRmEQIfA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "ac2801cde59f",
-      "topic": "tesla",
-      "title": "YouTuber disappointed his gold-plated Tesla Cybertruck sells for less than expected",
-      "source": "Moneywise on MSN",
-      "url": "https://www.msn.com/en-us/autos/general/youtuber-disappointed-his-gold-plated-tesla-cybertruck-sells-for-less-than-expected/ar-AA2fJaZa",
-      "published": "2026-10-21T04:00:00Z",
-      "snippet": "Custom modifications on your car can make you stand out but experts warn it could end up costing you down the road.",
-      "image": "https://www.bing.com/th?id=ONUT.rkTlPrbcPxeml-MiRxbFeg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "37a0a75c6c2e",
-      "topic": "tesla",
-      "title": "Tesla earnings are just hours away. Here’s what Wall Street wants to know.",
-      "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/livecoverage/tesla-earnings-stock-results-q3-musk-tsla",
-      "published": "2026-10-21T03:59:00Z",
-      "snippet": "Tesla reports third-quarter earnings on Wednesday. Investors will be more focused on the company's commentary than on the financial results themselves.",
-      "image": "https://www.bing.com/th?id=ONUT.7hv4c0UMNTm0J0L4e8kxLA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "f267cfc80ce8",
-      "topic": "tesla",
-      "title": "Tesla-SpaceX deal: Wall St says inevitable but Musk says it's not certain",
-      "source": "Reuters on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-spacex-deal-wall-st-says-inevitable-but-musk-says-its-not-certain/ar-AA2fISH2",
-      "published": "2026-10-21T03:34:54Z",
-      "snippet": "By Akash Sriram Oct 21 (Reuters) - Elon Musk sees \"a lot of merit\" in combining Tesla and SpaceX, but the decision is not his to make: two special committees he cannot join and a Tesla shareholder ...",
-      "image": "https://www.bing.com/th?id=ORMS.fc36538cbc7c5af699c72201e4a90c02&pid=News&w=640",
-      "kind": "general",
-      "score": 9
-    },
-    {
-      "id": "0165bfbe5297",
-      "topic": "tesla",
-      "title": "In Minnesota, raccoons chew up a Cybertruck's vault after seeming to mistake it for a dumpster",
-      "source": "The Cool Down on MSN",
-      "url": "https://www.msn.com/en-us/news/other/in-minnesota-raccoons-chew-up-a-cybertrucks-vault-after-seeming-to-mistake-it-for-a-dumpster/ar-AA2fJiNz",
-      "published": "2026-10-21T03:27:00Z",
-      "snippet": "\"Glad it wasn't a bear. Damage would have been worse.\" ...",
-      "image": "https://www.bing.com/th?id=ONUT.BZ36DOOL5PJBmgewzRwLxg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "46774026b6c8",
-      "topic": "tesla",
-      "title": "Elon Musk says he wants to merge Tesla, SpaceX",
-      "source": "UPI",
-      "url": "https://www.upi.com/Top_News/US/2026/10/21/elon-musk-discusses-tesla-spacex-merger/4971792590436/",
-      "published": "2026-10-21T03:11:00Z",
-      "snippet": "Elon Musk said during a SpaceX earnings call on Tuesday that he is exploring merging SpaceX and Tesla, telling analysts there is \"a lot to be gained.\" ...",
-      "image": "https://www.bing.com/th?id=ONUT.ju5x8ZeblN4Cde-nBL63sQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "eeeb26ad91b6",
-      "topic": "tesla",
-      "title": "SpaceX And Tesla Are Exploring A Possible Merger",
-      "source": "Engadget on MSN",
-      "url": "https://www.msn.com/en-us/technology/tech-companies/spacex-and-tesla-are-exploring-a-possible-merger/ar-AA2fJlEi",
-      "published": "2026-10-21T02:40:00Z",
-      "snippet": "SpaceX and Tesla have formed special committees to discuss a merger, but Elon Musk says it's not a certainty.",
-      "image": "https://www.bing.com/th?id=ONUT.0bECdH68-DHxrliKqOoxYg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "234a9cc81435",
       "topic": "grok",
       "title": "Judge Says Trump’s DOJ Can’t Get a Citizen Lawsuit Against xAI Dismissed",
       "source": "NOTUS",
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQc2FJYl84TWpEU2Y4STlWMEt1WmN6VVplUXBfNENHWU00N1hjUy03cmlHYk4wV2U0SUZnZ2dYS2xDeU5xUGpMSXpCbzEzZVdjT2xOZTYyUF8yYzRMM0hXVjlwWFFCS3BOS181SHRJUl9MVUhRTlZvLTNMX0pUU0Y2SUxFb0pJQQ?oc=5",
       "published": "2026-10-21T02:24:08Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "a9696c99ba1b",
+      "topic": "grok",
+      "title": "Ashley St. Clair Can't Toss XAI Forum Clause Suit",
+      "source": "Law360",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSDF6dEM2dWdRR3dXWmZlYzlOZVNqNVRuSVBzZ2taR2lZMVlPWGpTcENOY2E0VE85Y3ZEM1FrQl9qUHVOQnVTVkdmYVE2aGJfd2dwZm1OdFE0ZWk0NGtXcld3X1pMa2hibjF5TWxmRmVha2Jia3VzWXlfak9hM2NBS2s4WThuX2I3ZURFVmE0OFdpd9IBVkFVX3lxTE96a1NPQWNfU2E4ZmwzUDY5VTl5M1VaY08yQUVhSmlhaHhqR20yeml1bXdha203VmVsS0F6ME5Pa2pOaE9ZZFB3enVFSFhVZkV6b3plbmVB?oc=5",
+      "published": "2026-10-21T02:12:50Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -672,18 +516,6 @@
       "score": 4
     },
     {
-      "id": "6756052ea574",
-      "topic": "tesla",
-      "title": "Why does Elon Musk want to merge Tesla and SpaceX?",
-      "source": "BBC on MSN",
-      "url": "https://www.msn.com/en-us/news/other/why-does-elon-musk-want-to-merge-tesla-and-spacex/ar-AA2fHGCF",
-      "published": "2026-10-20T21:13:14Z",
-      "snippet": "Musk, who is CEO of both companies, says there is \"a lot to be gained\" from the merger, which would be the biggest in history.",
-      "image": "https://www.bing.com/th?id=ORMS.fd2bbbbebb219162cb9aca793bb3c96d&pid=News&w=640",
-      "kind": "general",
-      "score": 7
-    },
-    {
       "id": "50be4c7980bf",
       "topic": "grok",
       "title": "SpaceX quarterly revenue jumps, beats estimates as AI business surges",
@@ -717,27 +549,16 @@
       "score": 4
     },
     {
-      "id": "eddc3ab9786a",
-      "topic": "grok",
-      "title": "NYC Council Holds Follow-Up AI Safety Hearing on SpaceXAI",
-      "source": "BKReader",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPQTR3RWVJT051ZmpnUXg1S0R0eEdvbldXaUdpMEttV3RQYV8zWVJKMkhOekk2TEpEc21ZMG5GUmRvWjZrWU9NWDRyWHoxMENmYk9Zc1pGWjBCT1dZX0g0N0ZvQjQ3U3hveXZoZTRRNjNrSmV6ZWNVRS1rX01IdGVoV0lJektDZzRaVXBSNkItcFVKUFQ3RUZITEFuUkJUNHpkMXd3TmV6UXo?oc=5",
-      "published": "2026-10-20T17:37:08Z",
-      "snippet": "",
+      "id": "a664da7f2943",
+      "topic": "spacex",
+      "title": "Republican lawmaker vows ‘consequences’ for Musk over Ukraine’s Starlink access",
+      "source": "CNN",
+      "url": "https://www.cnn.com/2026/10/20/politics/video/elon-musk-ukraine-brian-fitzpatrick-donald-trump-kaitlan-collins-politics",
+      "published": "2026-10-20T18:49:00Z",
+      "snippet": "Rep. Brian Fitzpatrick (R-PA) calls for Congressional investigation after the Wall Street Journal’s report that Elon Musk was responsible for the Starlink slowdown that blindsided Ukraine.",
+      "image": "https://www.bing.com/th?id=ONUT.LUB_R3er262pYAzIbWZ4aA&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "2b77d3f3a9f9",
-      "topic": "spacex",
-      "title": "SpaceX will attempt 1st-ever double Starship rocket catch on next test launch, Elon Musk says",
-      "source": "Space.com on MSN",
-      "url": "https://www.msn.com/en-us/news/other/spacex-will-attempt-1st-ever-double-starship-rocket-catch-on-next-test-launch-elon-musk-says/ar-AA2fGVB5",
-      "published": "2026-10-20T15:29:46Z",
-      "snippet": "SpaceX will try to recover both Starship stages during the megarocket's next test flight, which is expected to take place in November, according to Elon Musk.",
-      "image": "https://www.bing.com/th?id=ONUT._FjUfPudNr6TvHwpWNQEhg&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
     },
     {
       "id": "004749110b1c",
@@ -752,41 +573,16 @@
       "score": 4
     },
     {
-      "id": "2d08bf5bc3da",
+      "id": "70af652c7091",
       "topic": "spacex",
-      "title": "Musk ordered Starlink slowdown in Ukraine: Wall Street Journal",
-      "source": "Yahoo",
-      "url": "https://www.yahoo.com/news/us/articles/musk-ordered-starlink-slowdown-ukraine-204236342.html",
-      "published": "2026-10-20T13:43:00Z",
-      "snippet": "Tesla and SpaceX CEO Elon Musk ordered the slowdown of Starshield, the military version of Starlink internet, which Ukraine said hampered its ability to respond to Russian attacks, The Wall Street ...",
-      "image": "https://www.bing.com/th?id=ONUT.ljFBKKDSlEPwMQKK_rVGow&pid=News&w=640",
+      "title": "Starlink's subscriber growth missed. Its profits didn't.",
+      "source": "Insider on MSN",
+      "url": "https://www.msn.com/en-us/news/other/starlinks-subscriber-growth-missed-its-profits-didnt/ar-AA2fG46b",
+      "published": "2026-10-20T14:39:52Z",
+      "snippet": "SpaceX's Starlink beat earnings estimates while missing its subscriber growth. The company is looking to become a challenger in the mobile arena.",
+      "image": "https://www.bing.com/th?id=ORMS.e4f2795873b89a65680a4abd669ef605&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "01f1eeaf52c5",
-      "topic": "spacex",
-      "title": "Musk ordered Starlink slowdown that blindsided Ukraine",
-      "source": "The Wall Street Journal on MSN",
-      "url": "https://www.msn.com/en-us/news/other/musk-ordered-starlink-slowdown-that-blindsided-ukraine/ar-AA2fG6ww",
-      "published": "2026-10-20T13:25:00Z",
-      "snippet": "The SpaceX founder authorized the move and has been discussing Ukraine with Trump, but the president has denied ordering the restrictions.",
-      "image": "https://www.bing.com/th?id=ONUT.HEqqhYsmpQVmvf-2NqlMeQ&pid=News&w=640",
-      "kind": "general",
-      "score": 8
-    },
-    {
-      "id": "45cebd926d88",
-      "topic": "spacex",
-      "title": "Trump Accounts could soon hold SpaceX stock. Here's what parents need to know.",
-      "source": "Insider",
-      "url": "https://www.businessinsider.com/trump-accounts-individual-stock-donations-explained-parents-2026-10",
-      "published": "2026-10-20T09:32:00Z",
-      "snippet": "Donors like Elon Musk can gift stock to American children via Trump Accounts. It's free money, but that doesn't mean parents shouldn't have questions.",
-      "image": "https://www.bing.com/th?id=ONUT.2EAGUa6lXrc7d5PeZDkSsQ&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
     }
   ]
 }
