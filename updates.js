@@ -280,7 +280,7 @@
     const text = document.createElement("span");
     text.textContent = live
       ? `${fresh ? "Live" : "Snapshot"} · ${stamp} · ${live.fleet.toLocaleString("en-GB")} cars`
-      : `Desk notes · ${stamp}`;
+      : `Our notes · ${stamp}`;
     line.append(dot, text);
   };
 
