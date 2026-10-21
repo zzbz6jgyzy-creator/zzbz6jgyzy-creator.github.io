@@ -19,12 +19,12 @@
 
 .f2-verdict { margin: 0.4rem 0 0.6rem; font-weight: 600; font-size: 0.95rem; }
 .f2-verdict.is-pass { color: #6ee7a0; } .f2-verdict.is-fail { color: var(--ink); }
-.f2-whatif summary { cursor: pointer; font-weight: 600; color: var(--tesla); list-style: none; padding: 0.4rem 0; }
+.f2-whatif summary { cursor: pointer; font-weight: 600; color: var(--red-text, #f23a52); list-style: none; padding: 0.6rem 0; min-height: 44px; }
 .f2-whatif summary::-webkit-details-marker { display: none; }
 .f2-whatif summary span { color: var(--ink-soft); font-weight: 400; font-size: 0.85rem; margin-left: 0.4rem; }
 .f2-scen, .f2-chips, .f2-log-filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
 .f2-scen button, .f2-chips button, .f2-log-filters button, .f2-pipe button, .f2-more {
-  font: inherit; font-size: 0.82rem; color: var(--ink); background: #1d1f25; border: 1px solid var(--line-strong); border-radius: 999px; padding: 0.35rem 0.7rem; cursor: pointer; min-height: 32px; }
+  font: inherit; font-size: 0.82rem; color: var(--ink); background: #1d1f25; border: 1px solid var(--line-strong); border-radius: 999px; padding: 0.55rem 0.85rem; cursor: pointer; min-height: 44px; }
 .f2-chips small { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.72rem; }
 .f2-scen button[aria-pressed="true"], .f2-log-filters button[aria-pressed="true"] { background: var(--tesla); border-color: var(--tesla); }
 .f2-chips button[aria-pressed="true"] { border-color: var(--f2-live); background: rgba(200,16,46,.28); }
@@ -67,7 +67,7 @@
 @keyframes f2pulse { 0% { fill: #fff; } 100% { } }
 .f2-stamp { position: absolute; left: 1rem; top: 1rem; pointer-events: none; }
 .f2-stamp b { display: block; font: 700 clamp(1.1rem, 2.4vw, 1.8rem) var(--font); }
-.f2-stamp span { color: var(--tesla); font-weight: 600; font-size: 0.9rem; }
+.f2-stamp span { color: var(--red-text, #f23a52); font-weight: 600; font-size: 0.9rem; }
 .f2-tip { position: absolute; transform: translate(-50%, calc(-100% - 12px)); background: #000c; border: 1px solid var(--line-strong); border-radius: 8px; padding: 0.4rem 0.6rem; font-size: 0.82rem; pointer-events: none; white-space: nowrap; }
 .f2-tip b, .f2-tip span { display: block; } .f2-tip span { color: var(--ink-soft); }
 .f2-player { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.8rem; }
@@ -82,7 +82,7 @@
 .f2-col { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.7rem; min-width: 0; }
 .f2-col h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin: 0 0 0.6rem; display: flex; justify-content: space-between; gap: 0.3rem; }
 .f2-col h3 span { color: var(--ink); font-family: var(--font-mono); }
-.f2-col-live h3, .f2-col-recognised h3 { color: var(--tesla); }
+.f2-col-live h3, .f2-col-recognised h3 { color: var(--red-text, #f23a52); }
 .f2-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
 .f2-pipe button { width: 100%; text-align: left; border-radius: 6px; padding: 0.3rem 0.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .f2-pipe button.s-live, .f2-pipe button.s-rec { border-color: rgba(200,16,46,.6); background: rgba(200,16,46,.18); }

@@ -30,10 +30,14 @@
   background: #141414;
   color: #ddd;
   border-radius: 999px;
-  padding: 7px 12px;
-  font: 600 12px/1 Inter, system-ui, sans-serif;
+  padding: 10px 14px;
+  min-height: 44px;
+  font: 600 13px/1 Inter, system-ui, sans-serif;
   cursor: pointer;
 }
+[data-intel]:empty,
+[data-intel-waves]:empty,
+[data-intel-changed]:empty { min-height: 7.5rem; }
 .intel-chip[aria-pressed="true"] {
   background: rgba(227, 25, 55, 0.18);
   border-color: rgba(227, 25, 55, 0.7);
@@ -58,7 +62,7 @@
 }
 .intel-item strong { font: 700 16px/1.25 Inter, sans-serif; color: #fff; }
 .intel-s { font-size: 14px; line-height: 1.45; color: #9a9a9a; }
-.intel-m { display: flex; flex-wrap: wrap; gap: 8px 12px; font-size: 12px; color: #777; }
+.intel-m { display: flex; flex-wrap: wrap; gap: 8px 12px; font-size: 12px; color: var(--mute, #8a8c92); }
 .intel-ev {
   display: inline-block;
   padding: 2px 7px;

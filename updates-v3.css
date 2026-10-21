@@ -17,7 +17,9 @@
 .sw-card-head p{margin:0;color:var(--mute);font-size:13px}
 .sw-card-head a{color:#dfe3e8}
 .sw-seg{display:inline-flex;flex-wrap:wrap;gap:6px;margin:0 10px 10px 0}
-.sw-seg button,.sw-replay button,.sw-globe-zoom button{background:#1b1e22;color:#dfe3e8;border:1px solid var(--line);border-radius:99px;padding:7px 12px;font:500 13px Inter,sans-serif;cursor:pointer}
+.sw-seg button,.sw-replay button,.sw-globe-zoom button{background:#1b1e22;color:#dfe3e8;border:1px solid var(--line);border-radius:99px;padding:11px 14px;min-height:44px;font:500 13px Inter,sans-serif;cursor:pointer}
+.sw-xc-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+[data-intel-waves]:empty{min-height:8rem}
 .sw-seg button[aria-pressed=true]{background:#fff;color:#0b0c0e;border-color:#fff}
 .sw-mycar{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-top:6px}
 .sw-mycar .big{font-size:26px;color:#fff;display:block;margin:4px 0}
@@ -78,7 +80,8 @@
  .sw-wave svg{grid-column:1 / -1;grid-row:2}
  .sw-lane{grid-template-columns:1fr}
 }
-.sw-two{display:grid;grid-template-columns:1.1fr 1fr;gap:22px}
+.sw-two{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;min-width:0}
+.sw-two > div{min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .sw-xc{width:100%;border-collapse:collapse;font-size:13px}
 .sw-xc th{text-align:left;font:600 11px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding:0 0 8px}
 .sw-xc td{padding:8px 0;border-top:1px solid var(--line);vertical-align:middle}
