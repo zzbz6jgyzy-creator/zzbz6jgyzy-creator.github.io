@@ -4,6 +4,19 @@
   var BASE = "https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/";
   var p = null;
   window.CESIUM_BASE_URL = window.CESIUM_BASE_URL || BASE;
+  window.loadSatellite = function () {
+    if (window.satellite) return Promise.resolve(window.satellite);
+    if (window.__satP) return window.__satP;
+    window.__satP = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = "/vendor/satellite.min.js";
+      s.async = true;
+      s.onload = function () { window.satellite ? resolve(window.satellite) : reject(new Error("satellite")); };
+      s.onerror = function () { window.__satP = null; reject(new Error("satellite-load")); };
+      document.head.appendChild(s);
+    });
+    return window.__satP;
+  };
   window.loadCesium = function () {
     if (window.Cesium) return Promise.resolve(window.Cesium);
     if (p) return p;

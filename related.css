@@ -19,6 +19,6 @@
 .sd-about-kicker{margin:0 0 .4rem;font:700 .68rem/1.2 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#f23a52}
 .sd-about p{margin:0 0 .5rem;color:#c8c8cc;font-size:.92rem;line-height:1.5}
 .sd-about p:last-child{margin:0}
-.sd-about a{color:#f23a52;text-decoration:none}
+.sd-about a{color:#f23a52;text-decoration:underline;text-underline-offset:.18em}
 .sd-about a:hover{text-decoration:underline}
 @media (prefers-reduced-motion:reduce){.sd-crumbs a,.sd-about a{text-decoration:underline}}

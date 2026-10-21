@@ -42,6 +42,12 @@ for (const f of fonts) {
 const styles = readFileSync("styles.css", "utf8");
 if (styles.includes('@font-face') && styles.includes("/assets/fonts/inter-latin.woff2") && styles.includes("font-display: swap")) ok("styles font-face");
 else bad("styles font-face", "missing self-hosted @font-face");
+if (styles.includes("Inter Fallback") && styles.includes("size-adjust: 108%") && styles.includes('"Inter Fallback"')) ok("styles font fallback");
+else bad("styles font fallback", "missing metric-matched Inter fallback");
+if (styles.includes(".article p a") && styles.includes("text-decoration: underline")) ok("article link underline");
+else bad("article link underline", "body links not underlined");
+if (styles.includes(".intel-note") && styles.includes("font-size: 13px")) ok("intel-note blocking");
+else bad("intel-note blocking", "intel-note still only in async intel.css");
 if (styles.includes(".newsletter-kicker") && styles.includes("var(--red-text)")) ok("newsletter kicker contrast");
 else bad("newsletter kicker contrast", "still uses --tesla for text");
 
@@ -52,6 +58,20 @@ else bad("nav tap 44", "menu still under 44px");
 const homeCss = readFileSync("home-v2.css", "utf8");
 if (homeCss.includes("[data-hv-cd]") && homeCss.includes("min-height:232px")) ok("countdown well");
 else bad("countdown well", "missing reserved height");
+if (homeCss.includes(".hv-feed-sub a") && homeCss.includes("min-height:44px")) ok("home feed-sub tap");
+else bad("home feed-sub tap", "See all changes link still under 44px");
+
+const updatesCss = readFileSync("updates-v3.css", "utf8");
+if (updatesCss.includes("min-height:22.5rem") && updatesCss.includes(".sw-tile{") && updatesCss.includes("min-height:10.5rem")) ok("updates sw-now well");
+else bad("updates sw-now well", "mobile reservation still 292px or missing tile min-height");
+
+const fsdCss = readFileSync("fsd-europe-v2.css", "utf8");
+if (fsdCss.includes(".f2-srcs a") && fsdCss.includes("min-height: 44px")) ok("fsd source tap");
+else bad("fsd source tap", "source links still under 44px");
+
+const related = readFileSync("related.css", "utf8");
+if (related.includes(".sd-about a") && related.includes("text-decoration:underline")) ok("about link underline");
+else bad("about link underline", "sd-about links not underlined");
 
 for (const path of KEY) {
   const html = await (await fetch(BASE + path)).text();
@@ -65,6 +85,12 @@ for (const path of KEY) {
   if (/<script[^>]+src="\/nav-pill\.js[^"]*"[^>]*\bdefer\b/.test(html) || /<script defer src="\/nav-pill\.js/.test(html)) ok(label + " nav defer");
   else bad(label + " nav defer", "nav-pill.js not deferred");
 }
+
+const slHtml = await (await fetch(BASE + "/starlink.html")).text();
+if (!slHtml.includes("cdn.jsdelivr.net/npm/satellite.js")) ok("starlink no eager satellite.js");
+else bad("starlink no eager satellite.js", "satellite.js still in the document");
+if (slHtml.includes('id="sl-orbit-svg"') && slHtml.includes('id="sl-earth"')) ok("starlink static orbit svg");
+else bad("starlink static orbit svg", "orbit svg still empty");
 
 if (!chromium) {
   console.log("SKIP browser checks (playwright not installed)");

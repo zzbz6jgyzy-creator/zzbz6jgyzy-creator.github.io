@@ -66,6 +66,7 @@ body.home-x{background:#050505;color:#f4f4f2}
 .hv-f-on{display:inline-block;margin:6px 0 0 76px;font:600 12px/1.35 Inter,sans-serif;color:#8a929b}
 .hv-f-on:hover{color:#fff}
 .hv-feed-sub{margin:0 0 8px;font-size:13px;color:#8a929b;max-width:62ch}
+.hv-feed-sub a{display:inline-flex;align-items:center;min-height:44px}
 [data-hv-cd]{min-height:232px}
 [data-hv-cd]:empty{min-height:232px}
 .hv-c{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 14px;border-radius:12px;background:#0e0e0e;border:1px solid rgba(255,255,255,.08);margin-bottom:10px;min-width:0}
