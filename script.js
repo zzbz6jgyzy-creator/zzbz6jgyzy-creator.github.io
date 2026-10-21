@@ -136,10 +136,14 @@
     }
   });
 
-  const newsletter = document.createElement("script");
-  newsletter.src = "/newsletter.js?v=202610190800";
-  document.body.append(newsletter);
-  const track = document.createElement("script");
-  track.src = "/track.js?v=202610190630";
-  document.body.append(track);
+  if (!window.__sdNewsletter) {
+    const newsletter = document.createElement("script");
+    newsletter.src = "/newsletter.js?v=202610190800";
+    document.body.append(newsletter);
+  }
+  if (!window.__sdTrack) {
+    const track = document.createElement("script");
+    track.src = "/track.js?v=202610190630";
+    document.body.append(track);
+  }
 })();

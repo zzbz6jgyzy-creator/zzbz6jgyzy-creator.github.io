@@ -1,0 +1,214 @@
+{
+  "outDir": "assets/js",
+  "keep": ["theme-boot.js", "starlink-gp.js"],
+  "skipPages": [
+    "goldcab.html",
+    "grok-bot.html",
+    "videos.html",
+    "videos/index.html",
+    "dispatch/grok-crew.html"
+  ],
+  "bundles": {
+    "core": [
+      "track.js",
+      "newsletter.js",
+      "newsletter-cta.js",
+      "theme.js",
+      "live-now.js",
+      "search.js",
+      "design-21st.js",
+      "script.js",
+      "grow.js",
+      "nav-pill.js"
+    ],
+    "intel": ["intel-core.js", "intel.js"],
+    "home": [
+      "starship-data.js",
+      "fsd-europe-data.js",
+      "cybercab-data.js",
+      "calendar-merge.js",
+      "news-keep.js",
+      "home-pair.js",
+      "home-v2.js",
+      "live.js"
+    ],
+    "starship": [
+      "starship-data.js",
+      "starship-lab-data.js",
+      "starship.js",
+      "starship-lab.js",
+      "countup.js",
+      "live.js"
+    ],
+    "starlink": [
+      "starlink-data.js",
+      "starlink-live.js",
+      "starlink-tracker.js",
+      "starlink-identify.js",
+      "cesium-lazy.js",
+      "starlink-globe.js",
+      "countup.js"
+    ],
+    "tesla": ["fsd-europe-data.js", "tesla-hub.js", "live.js"],
+    "my-tesla": [
+      "updates-data.js",
+      "fsd-data.js",
+      "fsd-europe-data.js",
+      "my-tesla-data.js",
+      "my-tesla.js",
+      "live.js"
+    ],
+    "updates": ["cesium-lazy.js", "updates-v3.js"],
+    "spacex": [
+      "starship-data.js",
+      "spacex-hub.js",
+      "calendar-merge.js",
+      "calendar.js",
+      "live.js"
+    ],
+    "dispatch": ["dispatch-browse.js"],
+    "calendar": ["calendar-merge.js", "calendar.js"],
+    "fsd-europe": ["fsd-europe-data.js", "tcmv-data.js", "fsd-europe-v2.js"],
+    "fsd": ["fsd-data.js", "fsd.js"],
+    "cybercab": [
+      "cybercab-data.js",
+      "cybercab-tracker.js",
+      "cybercab-count.js",
+      "countup.js"
+    ],
+    "autonomy": [
+      "fsd-data.js",
+      "fsd-europe-data.js",
+      "cybercab-data.js",
+      "autonomy.js"
+    ],
+    "roadster": ["roadster.js", "wallpapers.js", "rd-carousel.js"],
+    "news": ["news-keep.js", "news-articles.js", "news.js"],
+    "see-the-launch": [
+      "calendar-merge.js",
+      "see-the-launch-data.js",
+      "see-the-launch.js"
+    ],
+    "tsla": ["calendar-merge.js", "calendar.js", "markets.js"],
+    "tcmv": ["tcmv-data.js", "tcmv.js"],
+    "tesla-clubs": ["tesla-clubs-data.js", "tesla-clubs.js"],
+    "explainers": ["explainers-data.js", "explainers.js"],
+    "optimus": ["optimus.js"],
+    "production": ["production.js"],
+    "promise-tracker": ["promise-tracker.js"],
+    "counts": ["counts.js"],
+    "wallpapers": ["wallpapers.js", "wallpapers-ring.js"],
+    "catch": ["board.js", "catch.js"],
+    "staging": ["board.js", "staging.js"],
+    "robotaxi": ["board.js", "robotaxi.js"],
+    "games": ["board.js"],
+    "buy-guide": ["guides/buy-calc.js"]
+  },
+  "pages": {
+    "index.html": {
+      "bundles": ["core", "intel", "home"],
+      "grow": ["data-band", "data-pop"],
+      "livePage": "home"
+    },
+    "starship.html": {
+      "bundles": ["core", "intel", "starship"],
+      "livePage": "starship"
+    },
+    "starlink.html": { "bundles": ["core", "intel", "starlink"] },
+    "my-tesla.html": {
+      "bundles": ["core", "intel", "my-tesla"],
+      "grow": ["data-band", "data-pop"],
+      "livePage": "my-tesla"
+    },
+    "updates.html": { "bundles": ["core", "intel", "updates"] },
+    "tesla.html": {
+      "bundles": ["core", "intel", "tesla"],
+      "grow": ["data-band", "data-pop"],
+      "livePage": "tesla"
+    },
+    "spacex.html": {
+      "bundles": ["core", "intel", "spacex"],
+      "grow": ["data-band", "data-pop"],
+      "livePage": "spacex"
+    },
+    "fsd-europe.html": {
+      "bundles": ["core", "intel", "fsd-europe"],
+      "grow": ["data-ref", "data-band", "data-pop"]
+    },
+    "fsd.html": { "bundles": ["core", "fsd"] },
+    "cybercab.html": { "bundles": ["core", "intel", "cybercab"] },
+    "autonomy.html": {
+      "bundles": ["core", "intel", "autonomy"],
+      "grow": ["data-band"]
+    },
+    "calendar.html": {
+      "bundles": ["core", "intel", "calendar"],
+      "grow": ["data-band"]
+    },
+    "dispatch.html": {
+      "bundles": ["core", "dispatch"],
+      "grow": ["data-band"]
+    },
+    "roadster.html": {
+      "bundles": ["core", "intel", "roadster"],
+      "grow": ["data-band"]
+    },
+    "news.html": { "bundles": ["core", "news"], "grow": ["data-band"] },
+    "see-the-launch.html": {
+      "bundles": ["core", "intel", "see-the-launch"],
+      "grow": ["data-band"]
+    },
+    "tsla.html": { "bundles": ["core", "tsla"], "grow": ["data-band"] },
+    "tcmv.html": { "bundles": ["core", "tcmv"], "grow": ["data-band"] },
+    "tesla-clubs.html": { "bundles": ["core", "tesla-clubs"] },
+    "explainers.html": {
+      "bundles": ["core", "explainers"],
+      "grow": ["data-band"]
+    },
+    "optimus.html": {
+      "bundles": ["core", "intel", "optimus"],
+      "grow": ["data-band"]
+    },
+    "production.html": {
+      "bundles": ["core", "intel", "production"],
+      "grow": ["data-band"]
+    },
+    "promise-tracker.html": {
+      "bundles": ["core", "intel", "promise-tracker"],
+      "grow": ["data-band"]
+    },
+    "counts.html": { "bundles": ["core", "counts"], "grow": ["data-band"] },
+    "wallpapers.html": { "bundles": ["core", "wallpapers"] },
+    "catch.html": { "bundles": ["core", "catch"], "grow": ["data-band"] },
+    "staging.html": { "bundles": ["core", "staging"] },
+    "robotaxi.html": {
+      "bundles": ["core", "robotaxi"],
+      "grow": ["data-band"]
+    },
+    "games.html": { "bundles": ["core", "games"], "grow": ["data-band"] },
+    "search.html": { "bundles": ["core"], "grow": ["data-band"] },
+    "daily.html": { "bundles": ["core", "intel"], "grow": ["data-band"] },
+    "intel-health.html": {
+      "bundles": ["core", "intel"],
+      "grow": ["data-band"]
+    },
+    "guides/tesla-buying-guide.html": {
+      "bundles": ["core", "buy-guide"],
+      "grow": ["data-band"]
+    },
+    "model3-explorer.html": { "bundles": ["core"] },
+    "cybertruck-explorer.html": { "bundles": ["core"] },
+    "404.html": { "bundles": ["core"] }
+  },
+  "pageGlobs": {
+    "dispatch/*.html": {
+      "bundles": ["core"],
+      "grow": ["data-band", "data-pop"]
+    },
+    "reviews/*.html": {
+      "bundles": ["core"],
+      "grow": ["data-band", "data-pop"]
+    }
+  },
+  "defaultPage": { "bundles": ["core"], "grow": ["data-band"] }
+}

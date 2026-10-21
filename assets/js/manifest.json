@@ -1,0 +1,294 @@
+{
+  "generated": "2026-10-21T09:26:26.523Z",
+  "bundles": {
+    "core": {
+      "file": "/assets/js/core.bundle.745ee5f257.js",
+      "bytes": 43733,
+      "sources": [
+        "track.js",
+        "newsletter.js",
+        "newsletter-cta.js",
+        "theme.js",
+        "live-now.js",
+        "search.js",
+        "design-21st.js",
+        "script.js",
+        "grow.js",
+        "nav-pill.js"
+      ]
+    },
+    "intel": {
+      "file": "/assets/js/intel.bundle.72961aa255.js",
+      "bytes": 40520,
+      "sources": [
+        "intel-core.js",
+        "intel.js"
+      ]
+    },
+    "home": {
+      "file": "/assets/js/home.bundle.063572a63d.js",
+      "bytes": 65226,
+      "sources": [
+        "starship-data.js",
+        "fsd-europe-data.js",
+        "cybercab-data.js",
+        "calendar-merge.js",
+        "news-keep.js",
+        "home-pair.js",
+        "home-v2.js",
+        "live.js"
+      ]
+    },
+    "starship": {
+      "file": "/assets/js/starship.bundle.8c2dd553ea.js",
+      "bytes": 57202,
+      "sources": [
+        "starship-data.js",
+        "starship-lab-data.js",
+        "starship.js",
+        "starship-lab.js",
+        "countup.js",
+        "live.js"
+      ]
+    },
+    "starlink": {
+      "file": "/assets/js/starlink.bundle.7586376a07.js",
+      "bytes": 45413,
+      "sources": [
+        "starlink-data.js",
+        "starlink-live.js",
+        "starlink-tracker.js",
+        "starlink-identify.js",
+        "cesium-lazy.js",
+        "starlink-globe.js",
+        "countup.js"
+      ]
+    },
+    "tesla": {
+      "file": "/assets/js/tesla.bundle.663320a05d.js",
+      "bytes": 29188,
+      "sources": [
+        "fsd-europe-data.js",
+        "tesla-hub.js",
+        "live.js"
+      ]
+    },
+    "my-tesla": {
+      "file": "/assets/js/my-tesla.bundle.9a2bbaa67a.js",
+      "bytes": 79097,
+      "sources": [
+        "updates-data.js",
+        "fsd-data.js",
+        "fsd-europe-data.js",
+        "my-tesla-data.js",
+        "my-tesla.js",
+        "live.js"
+      ]
+    },
+    "updates": {
+      "file": "/assets/js/updates.bundle.a60a93ab04.js",
+      "bytes": 15503,
+      "sources": [
+        "cesium-lazy.js",
+        "updates-v3.js"
+      ]
+    },
+    "spacex": {
+      "file": "/assets/js/spacex.bundle.9f3b313a14.js",
+      "bytes": 40355,
+      "sources": [
+        "starship-data.js",
+        "spacex-hub.js",
+        "calendar-merge.js",
+        "calendar.js",
+        "live.js"
+      ]
+    },
+    "dispatch": {
+      "file": "/assets/js/dispatch.bundle.418529c579.js",
+      "bytes": 5257,
+      "sources": [
+        "dispatch-browse.js"
+      ]
+    },
+    "calendar": {
+      "file": "/assets/js/calendar.bundle.1a4a0b8cc9.js",
+      "bytes": 21787,
+      "sources": [
+        "calendar-merge.js",
+        "calendar.js"
+      ]
+    },
+    "fsd-europe": {
+      "file": "/assets/js/fsd-europe.bundle.23fdcc8ab4.js",
+      "bytes": 38256,
+      "sources": [
+        "fsd-europe-data.js",
+        "tcmv-data.js",
+        "fsd-europe-v2.js"
+      ]
+    },
+    "fsd": {
+      "file": "/assets/js/fsd.bundle.d5c06889e7.js",
+      "bytes": 23843,
+      "sources": [
+        "fsd-data.js",
+        "fsd.js"
+      ]
+    },
+    "cybercab": {
+      "file": "/assets/js/cybercab.bundle.2f9459756b.js",
+      "bytes": 18916,
+      "sources": [
+        "cybercab-data.js",
+        "cybercab-tracker.js",
+        "cybercab-count.js",
+        "countup.js"
+      ]
+    },
+    "autonomy": {
+      "file": "/assets/js/autonomy.bundle.a8947ff1c7.js",
+      "bytes": 42975,
+      "sources": [
+        "fsd-data.js",
+        "fsd-europe-data.js",
+        "cybercab-data.js",
+        "autonomy.js"
+      ]
+    },
+    "roadster": {
+      "file": "/assets/js/roadster.bundle.d5ed9fc672.js",
+      "bytes": 10567,
+      "sources": [
+        "roadster.js",
+        "wallpapers.js",
+        "rd-carousel.js"
+      ]
+    },
+    "news": {
+      "file": "/assets/js/news.bundle.9c5dca4436.js",
+      "bytes": 19018,
+      "sources": [
+        "news-keep.js",
+        "news-articles.js",
+        "news.js"
+      ]
+    },
+    "see-the-launch": {
+      "file": "/assets/js/see-the-launch.bundle.4832df4c72.js",
+      "bytes": 36730,
+      "sources": [
+        "calendar-merge.js",
+        "see-the-launch-data.js",
+        "see-the-launch.js"
+      ]
+    },
+    "tsla": {
+      "file": "/assets/js/tsla.bundle.875b68f953.js",
+      "bytes": 25667,
+      "sources": [
+        "calendar-merge.js",
+        "calendar.js",
+        "markets.js"
+      ]
+    },
+    "tcmv": {
+      "file": "/assets/js/tcmv.bundle.a2ef7e4bbf.js",
+      "bytes": 8935,
+      "sources": [
+        "tcmv-data.js",
+        "tcmv.js"
+      ]
+    },
+    "tesla-clubs": {
+      "file": "/assets/js/tesla-clubs.bundle.40abe59381.js",
+      "bytes": 59897,
+      "sources": [
+        "tesla-clubs-data.js",
+        "tesla-clubs.js"
+      ]
+    },
+    "explainers": {
+      "file": "/assets/js/explainers.bundle.002ee5681e.js",
+      "bytes": 43722,
+      "sources": [
+        "explainers-data.js",
+        "explainers.js"
+      ]
+    },
+    "optimus": {
+      "file": "/assets/js/optimus.bundle.b361564171.js",
+      "bytes": 4776,
+      "sources": [
+        "optimus.js"
+      ]
+    },
+    "production": {
+      "file": "/assets/js/production.bundle.bae24c1028.js",
+      "bytes": 3251,
+      "sources": [
+        "production.js"
+      ]
+    },
+    "promise-tracker": {
+      "file": "/assets/js/promise-tracker.bundle.79d0470704.js",
+      "bytes": 11953,
+      "sources": [
+        "promise-tracker.js"
+      ]
+    },
+    "counts": {
+      "file": "/assets/js/counts.bundle.3db30bcda4.js",
+      "bytes": 2981,
+      "sources": [
+        "counts.js"
+      ]
+    },
+    "wallpapers": {
+      "file": "/assets/js/wallpapers.bundle.a67dcb0c57.js",
+      "bytes": 8080,
+      "sources": [
+        "wallpapers.js",
+        "wallpapers-ring.js"
+      ]
+    },
+    "catch": {
+      "file": "/assets/js/catch.bundle.5cbc780909.js",
+      "bytes": 29902,
+      "sources": [
+        "board.js",
+        "catch.js"
+      ]
+    },
+    "staging": {
+      "file": "/assets/js/staging.bundle.b1d937f7f2.js",
+      "bytes": 37209,
+      "sources": [
+        "board.js",
+        "staging.js"
+      ]
+    },
+    "robotaxi": {
+      "file": "/assets/js/robotaxi.bundle.4111b41f00.js",
+      "bytes": 18493,
+      "sources": [
+        "board.js",
+        "robotaxi.js"
+      ]
+    },
+    "games": {
+      "file": "/assets/js/games.bundle.92010b2bbd.js",
+      "bytes": 3092,
+      "sources": [
+        "board.js"
+      ]
+    },
+    "buy-guide": {
+      "file": "/assets/js/buy-guide.bundle.7b4d28e4b3.js",
+      "bytes": 3486,
+      "sources": [
+        "guides/buy-calc.js"
+      ]
+    }
+  }
+}

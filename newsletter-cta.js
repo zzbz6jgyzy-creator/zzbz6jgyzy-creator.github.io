@@ -1,4 +1,5 @@
 (() => {
+  window.__sdNewsletterCta = 1;
   // Wire the nav Subscribe control to the page's signup block.
   // Inline article/tracker blocks are injected at build time (<!--nl:start-->).
   // grow.js still adds a footer band only when no inline block exists.
@@ -10,7 +11,7 @@
   else { const bands = document.querySelectorAll(".sd-band"); bands.forEach((b, i) => { if (i) b.remove(); }); }
   if (!block) block = document.querySelector(".sd-band");
   if (block && !document.getElementById("newsletter")) block.id = "newsletter";
-  if (block && !document.querySelector('script[src^="/newsletter.js"]')) {
+  if (block && !window.__sdNewsletter && !document.querySelector('script[src^="/newsletter.js"]')) {
     const js = document.createElement("script"); js.src = "/newsletter.js?v=202610210800"; document.body.append(js);
   }
   document.querySelectorAll("a.pn-sub").forEach((a) => {

@@ -142,7 +142,7 @@ def ensure_assets(html, need_newsletter_js):
                 f'    <link rel="stylesheet" href="/grow.css?v={GROW_CSS_V}" />\n  </head>',
                 1,
             )
-    if need_newsletter_js and "/newsletter.js" not in html and "/grow.js" not in html:
+    if need_newsletter_js and "/newsletter.js" not in html and "/grow.js" not in html and "sd:bundles" not in html and "/assets/js/core.bundle." not in html:
         html = html.replace(
             "</body>",
             f'    <script src="/newsletter.js?v={NEWSLETTER_JS_V}" defer></script>\n  </body>',
