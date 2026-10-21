@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T00:44:52.892Z",
+  "generatedAt": "2026-10-21T01:05:36.688Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -120,9 +120,9 @@
       "field": "newest-reporting",
       "value": "2026.38.5.10",
       "label": "Newest reporting build",
-      "at": "2026-10-21T00:08:23.000Z",
+      "at": "2026-10-21T01:05:31.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3387 cars)",
+      "source": "Teslascope sample (3384 cars)",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html",
       "summary": "A version appearing in a public sample is not the same as Tesla offering it to a given car."
@@ -146,9 +146,9 @@
       "topic": "tesla-software",
       "tracker": "software",
       "field": "most-common",
-      "value": "2026.38.5.1@27.4",
+      "value": "2026.38.5.1@27.6",
       "label": "Most common sample build",
-      "at": "2026-10-21T00:08:23.000Z",
+      "at": "2026-10-21T01:05:31.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
