@@ -7,11 +7,17 @@
    why /dispatch/roadster-reveal-2026.html had no JSON-LD.
 2. The same pass injects a visible Home → Dispatch → story crumb
    (<!-- seo:nav -->) and a desk/author block (<!-- seo:about -->) using only
-   facts already on about.html: Supercharged Daily, Alex R, @ALJR86, not
+    facts already on about.html: Supercharged Daily, Alex R, @ALJR86, not
    affiliated. No Person credentials are invented.
 3. about.html gets Organization JSON-LD (same facts).
-4. sitemap.xml is rebuilt from every public page (skips noindex pages, 404,
-   staging and /preview/), lastmod = last git commit date of each file.
+4. Listed non-article pages missing JSON-LD get a single <!-- seo:ld -->
+   block (CollectionPage / WebApplication / Dataset / WebPage). name and
+   description come from existing meta; url is the canonical; publisher is
+   Supercharged Daily. Replaces only the seo:ld markers, so it is idempotent.
+5. sitemap.xml is rebuilt from every public page (skips noindex pages, 404
+   and /preview/). staging.html is the public Hot Staging game — it stays
+   in the sitemap unless it has noindex. lastmod = last git commit date of
+   each file.
 Idempotent: re-running produces no diff.
 """
 import json, os, re, subprocess, html, glob
@@ -207,6 +213,87 @@ def about_page():
         open(path, "w", encoding="utf-8").write(new)
 
 
+# Non-article pages that were missing JSON-LD. Types:
+#   Dataset         sourced trackers / evidence tables
+#   WebApplication  games, 3D explorers, search, personal follow tool
+#   CollectionPage  hubs (none of this set)
+#   WebPage         fallback
+PAGE_TYPES = {
+    "autonomy.html": "Dataset",
+    "catch.html": "WebApplication",
+    "cybertruck-explorer.html": "WebApplication",
+    "daily.html": "WebApplication",
+    "model3-explorer.html": "WebApplication",
+    "optimus.html": "Dataset",
+    "production.html": "Dataset",
+    "robotaxi.html": "WebApplication",
+    "search.html": "WebApplication",
+    "staging.html": "WebApplication",
+}
+
+
+def canonical(src, rel):
+    m = re.search(r'<link\s+rel="canonical"\s+href="([^"]+)"', src)
+    if not m:
+        m = re.search(r'<link\s+href="([^"]+)"\s+rel="canonical"', src)
+    return m.group(1) if m else SITE + "/" + rel
+
+
+def page_name(src):
+    name = meta(src, "property", "og:title")
+    if name:
+        return name
+    m = re.search(r"<title>(.*?)</title>", src, re.S)
+    if not m:
+        return None
+    return html.unescape(re.sub(r"\s+", " ", m.group(1))).strip()
+
+
+def pages():
+    """Inject one seo:ld JSON-LD block on listed pages. Idempotent."""
+    publisher = org()
+    publisher["url"] = SITE + "/"
+    for rel, typ in PAGE_TYPES.items():
+        path = os.path.join(ROOT, rel)
+        if not os.path.exists(path):
+            continue
+        src = open(path, encoding="utf-8").read()
+        src = ensure_head(src)
+        name = page_name(src)
+        desc = meta(src, "name", "description") or meta(src, "property", "og:description") or ""
+        if not name:
+            continue
+        ld = {
+            "@context": "https://schema.org",
+            "@type": typ,
+            "name": name,
+            "url": canonical(src, rel),
+            "description": desc,
+            "publisher": publisher,
+        }
+        found = re.search(r"<!-- seo:ld -->.*?<!-- /seo:ld -->", src, re.S)
+        if found:
+            sm = re.search(r'<script type="application/ld\+json">(.*?)</script>', found.group(0), re.S)
+            if sm:
+                try:
+                    if json.loads(sm.group(1)) == ld:
+                        continue
+                except json.JSONDecodeError:
+                    pass
+        block = (
+            "\n    <!-- seo:ld -->\n"
+            '    <script type="application/ld+json">' + dumps(ld) + "</script>\n"
+            "    <!-- /seo:ld -->"
+        )
+        new = LD_RE.sub("", src)
+        if "</head>" not in new:
+            continue
+        new = new.replace("</head>", block + "\n  </head>", 1)
+        new = re.sub(r"(<!-- /seo:ld -->)\n\s*\n?\s*</head>", r"\1\n  </head>", new)
+        if new != src:
+            open(path, "w", encoding="utf-8").write(new)
+
+
 def sitemap():
     pages = sorted(
         glob.glob(os.path.join(ROOT, "*.html"))
@@ -238,4 +325,5 @@ def sitemap():
 if __name__ == "__main__":
     articles()
     about_page()
+    pages()
     sitemap()
