@@ -3,7 +3,8 @@
 .mt [hidden]{display:none!important}
 .mt-head h1{font-size:clamp(28px,4.4vw,40px);margin:4px 0 8px;letter-spacing:-.02em}
 .mt-lede{color:#c9cfd6;margin:0 0 8px;max-width:62ch}
-.mt-live{color:var(--mute);font-size:13px;margin:0}
+.mt-live{color:var(--mute);font-size:13px;margin:0;min-height:2.7em}
+.mt-hint{min-height:2.6em}
 .mt-live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#3ddc97;margin-right:7px;vertical-align:1px}
 .mt-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:18px 0 0}
 .mt-card h2{font-size:19px;margin:0 0 4px}
@@ -11,14 +12,14 @@
 .mt-form{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
 .mt-field{display:flex;flex-direction:column;gap:5px;min-width:0}
 .mt-field span{font:600 10px/1 Inter,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
-.mt-field select,.mt-field input[type=email]{appearance:none;background:#1b1e22;color:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 10px;font:500 13px "IBM Plex Mono",ui-monospace,monospace;width:100%}
+.mt-field select,.mt-field input[type=email]{appearance:none;background:#1b1e22;color:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 10px;min-height:44px;font:500 13px "IBM Plex Mono",ui-monospace,monospace;width:100%}
 .mt-mail{margin:0}
 .mt-mail .mt-field{max-width:420px;margin:0 0 12px}
 .mt-honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .mt-hint{margin:10px 0 0;color:#c9cfd6;font-size:13px}
 .mt-hint b{color:#fff}
 .mt-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.mt-actions button,.mt-chip{appearance:none;border:1px solid var(--line);background:#17191d;color:#dfe3e8;border-radius:999px;padding:7px 12px;font:500 13px Inter,sans-serif;cursor:pointer}
+.mt-actions button,.mt-chip{appearance:none;border:1px solid var(--line);background:#17191d;color:#dfe3e8;border-radius:999px;padding:11px 14px;min-height:44px;font:500 13px Inter,sans-serif;cursor:pointer}
 .mt-actions button:hover,.mt-chip:hover{border-color:#fff;color:#fff}
 .mt-now{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
 .mt-tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
@@ -75,4 +76,8 @@
 @media (max-width:560px){
   .mt-form,.mt-now,.mt-guides{grid-template-columns:1fr}
   .mt-feat{grid-template-columns:1fr}
+}
+@media (max-width:400px){
+  .mt{padding:20px 14px 56px}
+  .mt-tile b{overflow-wrap:anywhere}
 }

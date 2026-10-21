@@ -78,6 +78,7 @@
   flex: 0 0 auto;
   scroll-snap-align: start;
   min-width: 3.35rem;
+  min-height: 44px;
   border: 1px solid var(--line);
   background: var(--card);
   color: var(--ink);

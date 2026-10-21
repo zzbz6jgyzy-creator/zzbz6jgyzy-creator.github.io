@@ -31,7 +31,7 @@
 .pn-panel a small{display:block;color:#888;font-size:12px;margin-top:3px}
 .pn-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.8);pointer-events:none;transition:opacity .2s,transform .3s var(--pn-spring);color:#fff}
 .pn-icon svg{width:20px;height:20px}
-.pn-menu{display:none;margin-left:auto;width:38px;height:38px;border-radius:999px;border:0;background:rgba(255,255,255,.08);color:#fff;align-items:center;justify-content:center;cursor:pointer}
+.pn-menu{display:none;margin-left:auto;width:44px;height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.08);color:#fff;align-items:center;justify-content:center;cursor:pointer}
 .pn-menu svg{width:20px;height:20px}
 /* collapsed */
 .pn.collapsed{--pn-w:48px!important;padding:0;cursor:pointer;justify-content:center;overflow:hidden}
@@ -58,11 +58,11 @@
 .pn-sheet.open{transform:none}.pn-overlay.open{opacity:1;visibility:visible}
 .pn-sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .pn-sheet-head img{height:22px}
-.pn-close{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pn-close{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .pn-close svg{width:18px;height:18px}
 .pn-sheet a{color:#e6e6e6;text-decoration:none;font:500 16px/1 Inter,system-ui,sans-serif;padding:13px 10px;border-radius:10px}
 .pn-sheet a:hover{background:rgba(227,25,55,.12)}
-.pn-sheet h3{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#e31937;margin:16px 10px 4px}
+.pn-sheet h3{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text,#f23a52);margin:16px 10px 4px}
 .pn-sheet h4{font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8b8b;margin:0;padding:0}
 .pn-sheet .pn-cta{text-align:center;margin:20px 0 0;padding:14px}
 body.pn-lock{overflow:hidden}
@@ -75,7 +75,7 @@ body.pn-lock{overflow:hidden}
 /* full-screen explorer: pill starts as a circle */
 body.pn-app .pn-wrap{top:14px}
 .pn-logo img.pn-word{width:auto;height:18px}
-@media (max-width:899px){.pn-logo img.pn-word{height:20px}.pn-logo{transition-delay:0s!important}}
+@media (max-width:899px){.pn-logo img.pn-word{height:20px}.pn-logo{transition-delay:0s!important;min-height:44px}.pn-sheet a{min-height:44px;display:flex;align-items:center}}
 .pn a.pn-sub{color:#fff;box-shadow:inset 0 0 0 1px rgba(227,25,55,.6);margin-left:4px}
 .pn a.pn-sub:hover{background:rgba(227,25,55,.16)}
 .pn a.pn-search svg,.pn button.pn-theme svg{width:15px;height:15px}
@@ -89,7 +89,7 @@ body.pn-app .pn-wrap{top:14px}
 .pn-sheet .pn-search-sheet+.pn-theme-sheet{margin-top:0}
 .pn-sheet .pn-theme-sheet svg{width:16px;height:16px}
 .pn-sheet a.pn-sub-sheet+.pn-cta{margin-top:10px}
-.pn-sheet h3 .pn-grp-t{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;width:100%;cursor:pointer;padding:10px 0;font:inherit;letter-spacing:inherit;color:inherit}
+.pn-sheet h3 .pn-grp-t{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;cursor:pointer;padding:10px 0;font:inherit;letter-spacing:inherit;color:inherit}
 .pn-sheet h3{margin-top:6px;margin-bottom:0}
 .pn-sheet h3 .pn-grp-t:focus-visible{outline:2px solid #e31937;outline-offset:4px;border-radius:4px}
 .pn-grp-c{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .25s;margin-right:4px}
