@@ -6,8 +6,7 @@ Called from scripts/build-articles.py after related_stories(), or standalone:
     python3 scripts/inject_newsletter.py
 
 Reuses the homepage Beehiiv flow in /newsletter.js (no new endpoint).
-Social proof is issue count from data/newsletter-latest.json only — never a
-subscriber figure, and omitted when the count is missing or below 2.
+Do not add issue-count or subscriber social-proof copy to the signup block.
 """
 from __future__ import annotations
 
@@ -66,24 +65,15 @@ TRACKERS = {
 }
 TRACKER_HEADING = "Get the weekly tracker digest"
 
-PROOF_MIN = 2
-
 
 def latest_meta():
-    slug, count = "roadster-just-flew", 0
+    slug = "roadster-just-flew"
     try:
         data = json.load(open(LATEST_JSON, encoding="utf-8"))
         slug = data.get("slug") or slug
-        count = int(data.get("issueCount") or 0)
     except (OSError, ValueError, TypeError):
         pass
-    return slug, count
-
-
-def proof_html(count):
-    if not count or count < PROOF_MIN:
-        return ""
-    return f'<p class="sd-proof">{count} Sunday issues so far.</p>'
+    return slug
 
 
 def latest_link(slug, medium):
@@ -104,14 +94,13 @@ def form_html(field_id):
     )
 
 
-def block_html(*, kind, topic, heading, blurb, field_id, slug, count, extra_class):
+def block_html(*, kind, topic, heading, blurb, field_id, slug, extra_class):
     medium = "site-article" if kind == "article" else "site-tracker"
-    proof = proof_html(count)
     status_id = f"{field_id}-status"
     return (
         f'<!--nl:start--><section class="sd-band {extra_class}" id="newsletter" '
         f'data-newsletter="{kind}" data-band-topic="{topic}" aria-label="Newsletter signup">'
-        f"<div><h2>{heading}</h2><p>{blurb}</p>{proof}</div>"
+        f"<div><h2>{heading}</h2><p>{blurb}</p></div>"
         f"<div>{form_html(field_id)}"
         f'<p class="sd-fine">Free. No spam. Unsubscribe anytime. '
         f'<a class="sd-latest" href="{latest_link(slug, medium)}" target="_blank" rel="noopener">'
@@ -187,7 +176,7 @@ def write_if_changed(path, original, updated):
     return True
 
 
-def inject_articles(slug, count):
+def inject_articles(slug):
     n = 0
     for path in sorted(glob.glob(os.path.join(ROOT, "dispatch", "*.html"))):
         html = open(path, encoding="utf-8").read()
@@ -202,7 +191,6 @@ def inject_articles(slug, count):
             blurb=blurb,
             field_id="sd-nl-email",
             slug=slug,
-            count=count,
             extra_class="sd-band-article",
         )
         updated = ensure_assets(insert_block(html, block), need_newsletter_js=False)
@@ -212,7 +200,7 @@ def inject_articles(slug, count):
     return n
 
 
-def inject_trackers(slug, count):
+def inject_trackers(slug):
     n = 0
     for name, (topic, blurb) in TRACKERS.items():
         path = os.path.join(ROOT, name)
@@ -228,7 +216,6 @@ def inject_trackers(slug, count):
             blurb=blurb,
             field_id="sd-nl-email",
             slug=slug,
-            count=count,
             extra_class="sd-band-compact",
         )
         need_js = "/grow.js" not in html
@@ -254,11 +241,11 @@ def bump_cache_tags():
 
 
 def run():
-    slug, count = latest_meta()
-    a = inject_articles(slug, count)
-    t = inject_trackers(slug, count)
+    slug = latest_meta()
+    a = inject_articles(slug)
+    t = inject_trackers(slug)
     g = bump_cache_tags()
-    print(f"newsletter inject: {a} articles, {t} trackers, cache bump {g} (slug={slug}, issues={count})")
+    print(f"newsletter inject: {a} articles, {t} trackers, cache bump {g} (slug={slug})")
 
 
 if __name__ == "__main__":

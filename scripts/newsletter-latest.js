@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Points every "Read the latest issue" link at the newest published Beehiiv issue.
 // Source: the public Beehiiv sitemap (no API key). On any failure, links are left unchanged.
-// Also writes data/newsletter-latest.json (slug + public issue count) for signup social proof.
+// Also writes data/newsletter-latest.json (slug + public issue count) so latest-issue links stay current.
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
