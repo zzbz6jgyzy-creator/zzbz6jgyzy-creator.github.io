@@ -1,6 +1,6 @@
 {
   "outDir": "assets/js",
-  "keep": ["theme-boot.js", "starlink-gp.js"],
+  "keep": ["theme-boot.js"],
   "skipPages": [
     "goldcab.html",
     "grok-bot.html",
@@ -44,10 +44,12 @@
       "starlink-data.js",
       "starlink-live.js",
       "starlink-tracker.js",
-      "starlink-identify.js",
-      "cesium-lazy.js",
-      "starlink-globe.js",
       "countup.js"
+    ],
+    "starlink-orbit": [
+      "cesium-lazy.js",
+      "starlink-identify.js",
+      "starlink-globe.js"
     ],
     "tesla": ["fsd-europe-data.js", "tesla-hub.js", "live.js"],
     "my-tesla": [
@@ -114,13 +116,20 @@
       "bundles": ["core", "intel", "starship"],
       "livePage": "starship"
     },
-    "starlink.html": { "bundles": ["core", "intel", "starlink"] },
+    "starlink.html": {
+      "bundles": ["core", "starlink"],
+      "asyncBundles": ["intel", "starlink-orbit"],
+      "lateFiles": ["starlink-gp.js"]
+    },
     "my-tesla.html": {
       "bundles": ["core", "intel", "my-tesla"],
       "grow": ["data-band", "data-pop"],
       "livePage": "my-tesla"
     },
-    "updates.html": { "bundles": ["core", "intel", "updates"] },
+    "updates.html": {
+      "bundles": ["core", "updates"],
+      "asyncBundles": ["intel"]
+    },
     "tesla.html": {
       "bundles": ["core", "intel", "tesla"],
       "grow": ["data-band", "data-pop"],

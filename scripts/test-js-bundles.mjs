@@ -81,10 +81,10 @@ for (const [name, path] of KEY) {
   else bad(label + " theme-boot early", "missing or late");
   if (html.includes("<!--sd:bundles-->") && html.includes("<!--/sd:bundles-->")) ok(label + " markers");
   else bad(label + " markers", "missing");
-  const bundles = [...html.matchAll(/\/assets\/js\/([a-z0-9-]+)\.bundle\.[a-f0-9]+\.js/g)].map((m) => m[1]);
-  if (bundles.length >= 1 && bundles.length <= 3) ok(label + " bundle count " + bundles.length);
-  else bad(label + " bundle count", String(bundles.length));
-  if (bundles.every((_, i, a) => html.indexOf("/assets/js/" + a[i]) > 0)) ok(label + " deferred bundles present");
+  const deferred = [...html.matchAll(/<script defer src="\/assets\/js\/([a-z0-9-]+)\.bundle\.[a-f0-9]+\.js/g)].map((m) => m[1]);
+  if (deferred.length >= 1 && deferred.length <= 3) ok(label + " deferred bundle count " + deferred.length);
+  else bad(label + " deferred bundle count", String(deferred.length));
+  if (deferred.every((n) => html.includes("/assets/js/" + n + ".bundle."))) ok(label + " deferred bundles present");
   const looseHit = LOOSE.filter((f) => new RegExp(`src="/${f.replace(".", "\\.")}`).test(html));
   if (!looseHit.length) ok(label + " no loose sources");
   else bad(label + " no loose sources", looseHit.join(" "));
@@ -93,11 +93,32 @@ for (const [name, path] of KEY) {
 }
 
 const sl = htmlOf("/starlink.html");
-if (sl.includes("/starlink-gp.js") && !/src="\/starlink-live\.js/.test(sl)) ok("starlink gp kept");
-else bad("starlink gp kept", "gp missing or live.js still linked");
+if (
+  /id="sd-late-starlink-gp"/.test(sl) &&
+  /\/starlink-gp\.js\?v=\d+/.test(sl) &&
+  !/<script[^>]+src="\/starlink-gp\.js/.test(sl)
+)
+  ok("starlink gp after paint");
+else bad("starlink gp after paint", "gp still a parser-discovered script or lost cache-bust");
+if (/<script defer src="\/assets\/js\/starlink\.bundle/.test(sl) && /<script async src="\/assets\/js\/starlink-orbit\.bundle/.test(sl))
+  ok("starlink orbit async");
+else bad("starlink orbit async", "orbit still on the deferred critical path");
+if (/<script async src="\/assets\/js\/intel\.bundle/.test(sl) && !/<script defer src="\/assets\/js\/intel\.bundle/.test(sl))
+  ok("starlink intel async");
+else bad("starlink intel async", "intel still deferred on starlink");
 if (!sl.includes("cdn.jsdelivr.net/npm/satellite.js") && !/src="\/vendor\/satellite\.min\.js"/.test(sl))
   ok("starlink satellite lazy");
 else bad("starlink satellite lazy", "satellite still eager");
+const slSources = MANIFEST.bundles.starlink.sources;
+if (!slSources.some((s) => /identify|globe|cesium-lazy/.test(s))) ok("starlink bundle is light");
+else bad("starlink bundle is light", slSources.join(" "));
+if ((MANIFEST.bundles["starlink-orbit"]?.sources || []).join(" ").includes("starlink-globe.js")) ok("starlink-orbit bundle");
+else bad("starlink-orbit bundle", "missing globe sources");
+
+const updates = htmlOf("/updates.html");
+if (/<script defer src="\/assets\/js\/updates\.bundle/.test(updates) && /<script async src="\/assets\/js\/intel\.bundle/.test(updates))
+  ok("updates intel async");
+else bad("updates intel async", "intel still deferred on updates");
 
 const home = htmlOf("/");
 if (home.includes("data-band") && home.includes("data-pop") && home.includes('data-page="home"')) ok("home attrs");
@@ -218,6 +239,30 @@ await page.waitForTimeout(800);
 const sln = await page.$(".sl-n, #sl-orbit-svg, main");
 if (sln) ok("starlink main");
 else bad("starlink main", "missing");
+try {
+  await page.waitForFunction(() => {
+    const n = (document.querySelector("#sl-orbit")?.textContent || "").replace(/\D/g, "");
+    return Number(n) > 1000 && window.STARLINK && window.STARLINK.totals;
+  }, { timeout: 8000 });
+  ok("starlink tracker counts");
+} catch {
+  bad("starlink tracker counts", "KPI did not hydrate");
+}
+try {
+  await page.waitForFunction(() => window.STARLINK_GP && window.STARLINK_GP.total > 1000, { timeout: 25000 });
+  ok("starlink gp arrived");
+} catch {
+  bad("starlink gp arrived", "STARLINK_GP missing after async load");
+}
+const globeBtn = await page.$("#sl-globe-load");
+const orbitSvg = await page.$("#sl-orbit-svg");
+if (globeBtn && orbitSvg) ok("starlink globe still opt-in");
+else bad("starlink globe still opt-in", "missing load button or static svg");
+await page.evaluate(() => document.getElementById("identify")?.scrollIntoView());
+await page.waitForTimeout(400);
+const idInput = await page.$("#sl-id-q");
+if (idInput) ok("starlink identify present");
+else bad("starlink identify present", "missing");
 
 await page.goto(BASE + "/my-tesla.html", { waitUntil: "networkidle", timeout: 30000 });
 const sel = await page.$("select, #car, [data-car], main");

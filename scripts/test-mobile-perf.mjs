@@ -95,6 +95,9 @@ if (!slHtml.includes("cdn.jsdelivr.net/npm/satellite.js")) ok("starlink no eager
 else bad("starlink no eager satellite.js", "satellite.js still in the document");
 if (slHtml.includes('id="sl-orbit-svg"') && slHtml.includes('id="sl-earth"')) ok("starlink static orbit svg");
 else bad("starlink static orbit svg", "orbit svg still empty");
+if (/id="sd-late-starlink-gp"/.test(slHtml) && !/<script[^>]+src="\/starlink-gp\.js/.test(slHtml))
+  ok("starlink gp not on defer queue");
+else bad("starlink gp not on defer queue", "1.6MB catalog still blocks first paint");
 
 if (!chromium) {
   console.log("SKIP browser checks (playwright not installed)");
