@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-21T07:30:13.387Z",
+  "updated": "2026-10-21T07:38:24.260Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starship-flight-15-catch-timeline.html",
+      "topic": "starship",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into",
+      "at": "2026-10-21T07:37:42.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starship-flight-15-catch-timeline.html",
+      "href": "/dispatch/starship-flight-15-catch-timeline.html",
+      "summary": "A double catch on Flight 15 next month, a reflown ship and orbital refuelling early in 2027, then weekly flights. Each date checked against earlier targets and the FAA launch caps.",
+      "title": "SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into",
+      "id": "logged|dispatch:/dispatch/starship-flight-15-catch-timeline.html|2026-10-21T07:37:42.000Z|SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html",
@@ -221,23 +238,6 @@
       "summary": "Musk says AWS, Google Cloud “or anyone” had no inference capacity, while SpaceX leases GPUs to Google and Anthropic.",
       "title": "SpaceX rents out its compute, but can’t rent any itself",
       "id": "logged|dispatch:/dispatch/spacex-cant-rent-compute.html|2026-10-19T09:23:56.000Z|SpaceX rents out its compute, but can’t rent any itself"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/musk-spacex-share-every-kid.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Musk pledges a SpaceX share to every kid in America",
-      "at": "2026-10-19T09:23:56.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/musk-spacex-share-every-kid.html",
-      "href": "/dispatch/musk-spacex-share-every-kid.html",
-      "summary": "One share each for about 72 million children is worth roughly $10.5 billion. How it compares, and how it could work.",
-      "title": "Musk pledges a SpaceX share to every kid in America",
-      "id": "logged|dispatch:/dispatch/musk-spacex-share-every-kid.html|2026-10-19T09:23:56.000Z|Musk pledges a SpaceX share to every kid in America"
     },
     {
       "type": "changed",
