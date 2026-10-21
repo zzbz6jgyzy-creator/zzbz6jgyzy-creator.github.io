@@ -1,14 +1,63 @@
 {
-  "updated": "2026-10-21T01:53:37Z",
+  "updated": "2026-10-21T02:53:08Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3385,
-  "latest": "2026.38.5.10",
+  "latest": "2026.38.5.5",
   "versions": [
+    {
+      "id": "2026.38.5.5",
+      "date": "2026-10-21",
+      "count": 0,
+      "fleet": 3385,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Carpark, Indoor Carpark, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted\u2026"
+        },
+        {
+          "title": "Brake Confirm",
+          "text": "Brake Confirm for the Start Self-Driving button is now defaulted off. When disabled, Start Self-Driving will not require you to press and release the brake to confirm engagement. You can enable Brake Confirm in Self-Dri\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.12 Down Under",
+          "text": "Full Self-Driving (Supervised) v14.3.12 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Driver profile now has a stronger impact on behavior. The more assertive the profile, t\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "- You can now view your Self-Driving stats under Controls > Self-Driving. - Start Self-Driving with a tap of the touchscreen from Park, or any time during your drive. - Adjust settings like the Speed Profile and Arrival\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        }
+      ],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 1,
+      "firstSeen": "2026-10-21T02:20:52Z",
+      "lastSeen": "2026-10-21T02:20:52Z"
+    },
     {
       "id": "2026.38.5.10",
       "date": "2026-10-20",
-      "count": 7,
+      "count": 8,
       "fleet": 3385,
       "percent": 0.2,
       "fsd": null,
@@ -52,11 +101,11 @@
         "US"
       ],
       "countryCounts": {
-        "US": 7
+        "US": 8
       },
-      "pending": 4,
+      "pending": 3,
       "firstSeen": "2026-10-20T07:52:55Z",
-      "lastSeen": "2026-10-20T13:49:09Z"
+      "lastSeen": "2026-10-21T01:52:32Z"
     },
     {
       "id": "2026.32.200",
@@ -93,9 +142,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 934,
+      "count": 938,
       "fleet": 3385,
-      "percent": 27.6,
+      "percent": 27.7,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -140,14 +189,14 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 877,
-        "CA": 52,
+        "US": 880,
+        "CA": 53,
         "MX": 4,
         "PR": 1
       },
-      "pending": 85,
+      "pending": 84,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-21T01:44:07Z"
+      "lastSeen": "2026-10-21T02:44:17Z"
     },
     {
       "id": "2026.38.5",
@@ -1027,65 +1076,6 @@
       "pending": 1,
       "firstSeen": "2026-09-01T21:38:57Z",
       "lastSeen": "2026-09-22T11:21:10Z"
-    },
-    {
-      "id": "2026.27.100.1",
-      "date": "2026-08-24",
-      "count": 31,
-      "fleet": 3387,
-      "percent": 0.9,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [
-        {
-          "title": "FSD (Supervised)",
-          "text": "Under your supervision, FSD (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other vehicles and ob\u2026"
-        },
-        {
-          "title": "\"Hey Grok\"",
-          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
-        },
-        {
-          "title": "Apple Music",
-          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
-        },
-        {
-          "title": "Automatic Navigation",
-          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
-        },
-        {
-          "title": "Camera Preview",
-          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
-        },
-        {
-          "title": "Caraoke with Scoring",
-          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
-        },
-        {
-          "title": "Custom Wraps",
-          "text": "Use the Mobile App to upload custom wrap designs from images on your phone and send directly to your Tesla. Go to Creations > Wrap > Upload. Requires Mobile App v4.59.0 or later. To access in car, go to App Launcher > T\u2026"
-        },
-        {
-          "title": "Driving Visualization",
-          "text": "Customize your Self-Driving zoom preference. Select desired zoom level in Controls > Self-Driving > Visualization Camera Zoom."
-        }
-      ],
-      "countries": [
-        "NL",
-        "BE",
-        "DK",
-        "LT"
-      ],
-      "countryCounts": {
-        "NL": 20,
-        "BE": 6,
-        "DK": 4,
-        "LT": 1
-      },
-      "pending": 0,
-      "firstSeen": "2026-08-24T18:18:24Z",
-      "lastSeen": "2026-08-30T16:25:54Z"
     }
   ]
 }
