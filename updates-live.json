@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T02:53:08Z",
+  "updated": "2026-10-21T03:55:10Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3385,
@@ -57,9 +57,9 @@
     {
       "id": "2026.38.5.10",
       "date": "2026-10-20",
-      "count": 8,
+      "count": 9,
       "fleet": 3385,
-      "percent": 0.2,
+      "percent": 0.3,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -101,11 +101,11 @@
         "US"
       ],
       "countryCounts": {
-        "US": 8
+        "US": 9
       },
       "pending": 3,
       "firstSeen": "2026-10-20T07:52:55Z",
-      "lastSeen": "2026-10-21T01:52:32Z"
+      "lastSeen": "2026-10-21T03:42:22Z"
     },
     {
       "id": "2026.32.200",
@@ -142,9 +142,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 938,
+      "count": 940,
       "fleet": 3385,
-      "percent": 27.7,
+      "percent": 27.8,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -189,14 +189,14 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 880,
+        "US": 882,
         "CA": 53,
         "MX": 4,
         "PR": 1
       },
-      "pending": 84,
+      "pending": 81,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-21T02:44:17Z"
+      "lastSeen": "2026-10-21T02:56:11Z"
     },
     {
       "id": "2026.38.5",
@@ -640,8 +640,8 @@
       "id": "2026.32.7",
       "date": "2026-09-23",
       "count": 374,
-      "fleet": 3385,
-      "percent": 11.0,
+      "fleet": 3384,
+      "percent": 11.1,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -771,7 +771,7 @@
       "id": "2026.28.5",
       "date": "2026-09-16",
       "count": 5,
-      "fleet": 3385,
+      "fleet": 3384,
       "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
@@ -824,7 +824,7 @@
       "id": "2026.27.300",
       "date": "2026-09-15",
       "count": 38,
-      "fleet": 3385,
+      "fleet": 3384,
       "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
@@ -889,8 +889,8 @@
       "id": "2026.32.3",
       "date": "2026-09-09",
       "count": 374,
-      "fleet": 3385,
-      "percent": 11.0,
+      "fleet": 3384,
+      "percent": 11.1,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -1018,7 +1018,7 @@
       "id": "2026.27.200",
       "date": "2026-09-01",
       "count": 32,
-      "fleet": 3385,
+      "fleet": 3384,
       "percent": 0.9,
       "fsd": null,
       "fsdHw3": null,
