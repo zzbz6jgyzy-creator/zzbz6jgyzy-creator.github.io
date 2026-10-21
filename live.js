@@ -2,7 +2,7 @@
    Preview overrides: ?livenow=ISO (fake clock), ?livedata=/path.json
    Rule: once a stream is live, fallbackUrl = the DIRECT stream URL (youtube.com/watch?v=… or x.com/i/broadcasts/…), postUrl = the official broadcast post. */
 (function () {
-  var me = document.currentScript || document.querySelector("script[src*=\"live.js\"]"), page = (me && me.dataset.page) || 'home';
+  var me = document.currentScript || document.querySelector("script[data-page]") || document.querySelector("script[src*=\"live.js\"]"), page = (me && me.dataset.page) || 'home';
   var q = new URLSearchParams(location.search), H = 36e5;
   var now = q.get('livenow') ? new Date(q.get('livenow')).getTime() : Date.now();
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

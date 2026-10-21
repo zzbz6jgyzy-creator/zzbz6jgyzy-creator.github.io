@@ -1,0 +1,37 @@
+name: Rebuild JS bundles
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*.js"
+      - "guides/*.js"
+      - scripts/build-js.mjs
+      - scripts/inject-js-bundles.py
+      - scripts/js-bundles.json
+      - scripts/rebuild-js.sh
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: js-bundle
+  cancel-in-progress: false
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bundle first-party JS
+        run: sh scripts/rebuild-js.sh
+      - name: Commit if bundles or HTML tags changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/js scripts/js-bundles.json *.html dispatch/*.html guides reviews
+          if git diff --cached --quiet; then echo "No bundle change"; else
+            git commit -m "Rebuild hashed JS bundles."
+            git pull --rebase && git push
+          fi

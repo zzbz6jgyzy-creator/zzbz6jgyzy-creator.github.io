@@ -84,6 +84,6 @@
     };
     addEventListener("scroll", onScroll, { passive: true });
   }
-  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610190630"; document.body.appendChild(t); }  if (!document.querySelector('script[src^="/newsletter.js"]')) { const s = document.createElement("script"); s.src = "/newsletter.js?v=202610210800"; document.body.appendChild(s); } }
+  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610190630"; document.body.appendChild(t); }  if (!window.__sdNewsletter && !document.querySelector('script[src^="/newsletter.js"]')) { const s = document.createElement("script"); s.src = "/newsletter.js?v=202610210800"; document.body.appendChild(s); } }
   bindForms();
 })();

@@ -710,14 +710,8 @@
         <p class="footer-disclosure">Some links are affiliate links; I may earn a commission at no extra cost to you.</p>
       </footer>
     </div>
-    <script src="/script.js?v=202610190800"></script>
-    <script src="/design-21st.js?v=20261016094430"></script>
-    <script src="/grow.js?v=202610210800" data-band data-pop defer></script>
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
-    <script src="/live.js?v=202610192000" data-page="tesla" defer></script>
-    <script src="/fsd-europe-data.js?v=202610201240" defer></script>
-    <script src="/tesla-hub.js?v=202610192045" defer></script>
     <script>
       document.querySelectorAll("time.lt[datetime]").forEach(function (t) {
         try {
@@ -734,8 +728,10 @@
         document.querySelectorAll("[data-cc-date]").forEach(function (e) { e.textContent = dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" }); });
       }).catch(function () {});
     </script>
-    <script src="/intel-core.js?v=202610201230" defer></script>
-    <script src="/intel.js?v=202610201140" defer></script>
-      <script src="/nav-pill.js?v=202610210800"></script>
+    <!--sd:bundles-->
+    <script defer src="/assets/js/core.bundle.745ee5f257.js" data-band data-pop></script>
+    <script defer src="/assets/js/intel.bundle.72961aa255.js"></script>
+    <script defer src="/assets/js/tesla.bundle.663320a05d.js" data-page="tesla"></script>
+    <!--/sd:bundles-->
   </body>
 </html>

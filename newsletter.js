@@ -1,4 +1,5 @@
 (() => {
+  window.__sdNewsletter = 1;
   // Signups go to Beehiiv (Supercharged Daily). No API key or email address in public code.
   // utm_content is an allowlisted topic so Beehiiv can tag / segment the signup.
   const SUBSCRIBE_URL = "https://alexs-newsletter-84b17e.beehiiv.com/";

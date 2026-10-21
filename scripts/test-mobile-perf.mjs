@@ -80,10 +80,14 @@ for (const path of KEY) {
   else bad(label + " no gfonts", "still loads Google Fonts");
   if (html.includes("/assets/fonts/inter-latin.woff2")) ok(label + " preload");
   else bad(label + " preload", "missing Inter preload");
-  if (/<script[^>]+src="\/script\.js[^"]*"[^>]*\bdefer\b/.test(html) || /<script defer src="\/script\.js/.test(html)) ok(label + " script defer");
-  else bad(label + " script defer", "script.js not deferred");
-  if (/<script[^>]+src="\/nav-pill\.js[^"]*"[^>]*\bdefer\b/.test(html) || /<script defer src="\/nav-pill\.js/.test(html)) ok(label + " nav defer");
-  else bad(label + " nav defer", "nav-pill.js not deferred");
+  const coreRe = /<script[^>]+src="\/assets\/js\/core\.bundle\.[^"]+"[^>]*>/;
+  const coreTag = (html.match(coreRe) || [])[0] || "";
+  if (coreTag && /\bdefer\b/.test(coreTag)) ok(label + " core defer");
+  else if (/<script[^>]+src="\/script\.js[^"]*"[^>]*\bdefer\b/.test(html) || /<script defer src="\/script\.js/.test(html)) ok(label + " script defer");
+  else bad(label + " core defer", "core bundle / script.js not deferred");
+  if (coreTag && /\bdefer\b/.test(coreTag)) ok(label + " nav defer");
+  else if (/<script[^>]+src="\/nav-pill\.js[^"]*"[^>]*\bdefer\b/.test(html) || /<script defer src="\/nav-pill\.js/.test(html)) ok(label + " nav defer");
+  else bad(label + " nav defer", "core bundle / nav-pill.js not deferred");
 }
 
 const slHtml = await (await fetch(BASE + "/starlink.html")).text();
