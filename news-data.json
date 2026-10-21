@@ -1,6 +1,63 @@
 {
-  "updated": "2026-10-21T20:35:32Z",
+  "updated": "2026-10-21T21:06:39Z",
   "items": [
+    {
+      "id": "d8c6967db04f",
+      "topic": "tesla",
+      "title": "Tesla posts surprise positive cash flow on lower-than-expected AI spending",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNS3hNUU9fZGR5WUQ1NElPSE9qdjdWSmtWSmVodXRzWENUMzFnVDZVYUlvckprUGFOSXljOE5DSVJOTWw1b1FlTTkwV0NJY0NyWEd5bFdGUDJrZVBqNWNFMHR6TUFMVERfenZyNTgwQmFJSU9OR3dKdl9EY1ZiS2doUlhjbmYyUEI0c2c4NGhQX3VxOHNCQ185V05xdUVkMTQtZVJHbTYybUV1U0NWQmFfZlN6enNtR2poWnpvOFBaQmo1TU9yd0xn?oc=5",
+      "published": "2026-10-21T20:41:44Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 9
+    },
+    {
+      "id": "3313ee53efe3",
+      "topic": "spacex",
+      "title": "Nasdaq leads Wall Street gains as SpaceX, Super Micro boost AI sentiment",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQZUJTOXdaa0JmVzZubm12MGt4VnNSemsyOW1fQXpCMnhEc25HSVJRZk93d2NYUXQ3eHBuQklaNE1FT1QyQ1NqdTFkdExDbmoxY2JtOWhLQkVtYXczMHh3a3VsZmhub1JFc0FIZHN1eEcwc3FRZVZWQnBoSjFjekFYTUN6X2d5WHJUWGpDU2paekhhU24zenhNbWpXUmtfdmo5cTFIZVZwTXdiRzZoeUtiazhHWkJEWEVZLTVmQmRMcw?oc=5",
+      "published": "2026-10-21T20:37:58Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 9
+    },
+    {
+      "id": "37519ed78f00",
+      "topic": "tesla",
+      "title": "Tesla Reports Flat Revenue, Increased Cash Flow as SpaceX Merger Talk Looms",
+      "source": "WSJ",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOb09OVGpVM3FDM3I4RzJVTnVHcDk5c0Z5aHVEVS1BZ2RDRnVpQU13Yld0VTdWS0xBb3JGbWVzSHhZU0J0cVVUWjBlZWVNM3FDTGJOOWtFN2EwMTlkN1VmcjJSTDhiVnpYMFByX2c4RFhfd3pRSU0tSEhtcnlldGx1NU9GWGo3aVctSFRvTg?oc=5",
+      "published": "2026-10-21T20:36:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 8
+    },
+    {
+      "id": "33e004f1db55",
+      "topic": "spacex",
+      "title": "SpaceX Soars 10% After Earnings—and Could Climb to $500 Next",
+      "source": "Barron's",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9JQUZVRXc0eTF2eU5qQnlJYlBGckhyclVoNjhZeUlDdmx1SVJyYXB2dW9aVGgxbS0zbTFZbjVXTHIwUnEzajJEcWhYdG5qRk9zN0lhMVN3Rkd6X2pPNTlMR3JJQUNqdEI4SUJYREhZLWRPUllG?oc=5",
+      "published": "2026-10-21T20:31:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.komdEyb2akGh726W_Qljhg&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 1
+    },
+    {
+      "id": "dbc9a32ab8ab",
+      "topic": "spacex",
+      "title": "SpaceX and Tesla Consider Merger",
+      "source": "WSJ",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQOERBYml1d0x3SXJZZExNX2dObEFRTnJmTzhtYTZzblNMWXNjV01YUDFObl9kSllBY1c0ZXZZZ1JGVGxvcUZiSnlXbnlxQnZzenZncWd3VzNhRDlZSU5seVpCRXZiWFJPZGpjNzNmX0RKS0NnYUI4cDFndFJwZjRSUXJB?oc=5",
+      "published": "2026-10-21T20:26:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 8
+    },
     {
       "id": "ec871544a173",
       "topic": "tesla",
@@ -10,6 +67,17 @@
       "published": "2026-10-21T20:20:06Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.50ow4BkLfRwnACp8NO9tpw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "49a97b50768b",
+      "topic": "spacex",
+      "title": "SpaceX’s massive AI targets will test the limits of reality",
+      "source": "MarketWatch",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQUl1ZUszcXkweVlFeDdVRUxfN1JtamhJRlVCRDFzWW80OU1kdkx4ODJQX2RNMGkzWWoyN0o5SkJ0ZlBMUF9BcFAxeGxsMU9DdXYzcF9lS2JQMndhY3hORnI0ZzEyZ0JXRkhURENnQ0JRVnFVS0hmY2R1Y2pSazVFeFF3dzd2eHZfWXk5VFMzdWZpWGdUQ1NFb2JsSS1wazlJdFhJ?oc=5",
+      "published": "2026-10-21T20:15:00Z",
+      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -25,15 +93,15 @@
       "score": 4
     },
     {
-      "id": "d8c6967db04f",
+      "id": "f2591ca48eaa",
       "topic": "tesla",
-      "title": "Musk's Tesla revenue beats estimates as deliveries rebound, energy storage grows",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNS3hNUU9fZGR5WUQ1NElPSE9qdjdWSmtWSmVodXRzWENUMzFnVDZVYUlvckprUGFOSXljOE5DSVJOTWw1b1FlTTkwV0NJY0NyWEd5bFdGUDJrZVBqNWNFMHR6TUFMVERfenZyNTgwQmFJSU9OR3dKdl9EY1ZiS2doUlhjbmYyUEI0c2c4NGhQX3VxOHNCQ185V05xdUVkMTQtZVJHbTYybUV1U0NWQmFfZlN6enNtR2poWnpvOFBaQmo1TU9yd0xn?oc=5",
-      "published": "2026-10-21T20:10:31Z",
+      "title": "Tesla Q3 2026 Earnings results: in-line revenues, slight beat on EPS",
+      "source": "Teslarati",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5rQWFreGd2di1HYVlOTnA5NlFCamFUa21pVmxMTVdnWkpQM3E1WW9waGdjejlBdGdYLVNXSDNLQjRpRUFZQW5BSGpWMGg0MUp1NmFNUlBMYUpFc1pEVlYyc3lTQ1k4OGYzMEU4VmZndw?oc=5",
+      "published": "2026-10-21T20:11:14Z",
       "snippet": "",
       "kind": "general",
-      "score": 9
+      "score": 14
     },
     {
       "id": "4d614f050726",
@@ -48,15 +116,27 @@
       "score": 4
     },
     {
+      "id": "af050745a6c2",
+      "topic": "tesla",
+      "title": "Tesla reports Q3 earnings beat, positive free cash flow, and better-than-expected capex",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOMXRxRW11MUZwRDUzSndWT282Vi1QNXRRQ2VMNzlrOVloME1vZFFrQ1B6U3JLYXA0ZWgzVHFIS1VCMDNMTUIyQ3hFTk5FNHhFcUNwZ2tWSFJ5U25FdldfWm8yWWlXNGtsa0RfN0tFbmlVT2hjNE50M3doQnVqSTNMbjQ4eWM3YlhPcVRVNVF1S216QVJVRjc2T2hxbV9lbDRWbWEycVJ1YWt6YVgxc0MydXhsQ3RLM2FSVVU2amJ2Qk1ibU5YeWFKWFEtdnhsdm56aEtxdkZhQmZzcndZWi1GWFZ3bw?oc=5",
+      "published": "2026-10-21T20:07:15Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.GyApljYMGxcX-8BDg-Bi4Q&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "f359538dbba3",
       "topic": "tesla",
-      "title": "Tesla's third-quarter results are out. Management will take questions at 4:30 p.m. CT.",
+      "title": "Tesla produced and delivered its 10 millionth vehicle. Cybercab rides began in Austin.",
       "source": "Stock Titan",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdU5EMXVnd3FBQVg5MDVFV3lnTVl0OC15Y0pDdE4zUk1LYjY1ZUNaVGJEMHo1WlhWajIwMEE2VGVUODBkQTVXZHk4VHloMy03czN4LWRmZ25uZG5QTGdDZDhhN3V5WnNUeTU4REphTHR2aGZOU3BESEZpWEtsQm01OEdyWWJrckJDelpnYzJ6dEdXZ0VubXAtTHUxUzVjaTA?oc=5",
       "published": "2026-10-21T20:06:00Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
+      "kind": "milestone",
+      "score": 11
     },
     {
       "id": "1645d3140c1f",
@@ -71,26 +151,15 @@
       "score": 8
     },
     {
-      "id": "f2559264b890",
-      "topic": "tesla",
-      "title": "Tesla books $28B in Q3 revenue, tops forecasts",
-      "source": "Breakingthenews.net",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNY2VVRjlUbnZVTWJfRlg4bVdBOUdRQ2Fndjd4WDZyUVFOUmF0QnBONTM2Nm9uLVp0ZndUZ2Z0ZExBVTF2T2puU052eEduQTI3TzhSQ1ZTVDBNTlM3Y3FlVlBydDRaeDI2cjkyeEZjYjFUVU5XOUJiMVN3WmpJaXlsUnp0OHRTSXJrMk4zZ0ZXcEE?oc=5",
-      "published": "2026-10-21T20:05:00Z",
+      "id": "1b31d88023ba",
+      "topic": "spacex",
+      "title": "Nasdaq leads Wall Street to higher close as SpaceX, Super Micro boost AI sentiment",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPdnY3ME95NFJPaGhhOVNxUFV3dDZ0anROWUVlWU1yZHBVZVJ0TVp2b1dwQXpGWFBMdHRBanFKZXlhRFJydEJVZmJkSmxjSGNHLTlBbkJnbU5rVTZVNXd4cl9FVEMza3hFOEFNRUtoMVQxdEtIQ1c3VHAtTTRsSzVZNXNYZHBEelh2cHJIV2tmVk9fVjd1aGExWm9ldWw?oc=5",
+      "published": "2026-10-21T20:00:35Z",
       "snippet": "",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "3313ee53efe3",
-      "topic": "spacex",
-      "title": "Nasdaq leads Wall Street to higher close as SpaceX, Super Micro boost AI sentiment",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQZUJTOXdaa0JmVzZubm12MGt4VnNSemsyOW1fQXpCMnhEc25HSVJRZk93d2NYUXQ3eHBuQklaNE1FT1QyQ1NqdTFkdExDbmoxY2JtOWhLQkVtYXczMHh3a3VsZmhub1JFc0FIZHN1eEcwc3FRZVZWQnBoSjFjekFYTUN6X2d5WHJUWGpDU2paekhhU24zenhNbWpXUmtfdmo5cTFIZVZwTXdiRzZoeUtiazhHWkJEWEVZLTVmQmRMcw?oc=5",
-      "published": "2026-10-21T20:01:09Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 9
     },
     {
       "id": "64bfd884d36e",
@@ -101,17 +170,6 @@
       "published": "2026-10-21T19:52:30Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.-Pai0oBLY35uryJvGEfapA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "716060c5dc14",
-      "topic": "grok",
-      "title": "How a SpaceX and Tesla Merger Would Reshape Musk’s AI Empire",
-      "source": "Decrypt",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBSdEhQWl9CTWlsV1ludFJ1U18zX0tiX3ItbGQ0SFk2d1YzVEJfWm45dkNNQmNTLUZHN1NUMWhENmFmem9NQkNmaGlUNlQyVVZieUlYTVhYZkd1OEFHdEhjcWo2dDJ0OWdqQTZKOTB5WTJzQ25keHRqczVtRQ?oc=5",
-      "published": "2026-10-21T18:16:03Z",
-      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -157,7 +215,7 @@
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9XaEZwTktvd3JhMjAta21YYk9RMW9oUkwzZFRJU0loWjZza3FDQkg3R0M4eS1pSkRXY0pjb2lOWThseTNncHVvU1dUdU5WRnM0V3M2Q1pnSGU4VVRFeVp4dGQxekdLZXNKT1E?oc=5",
       "published": "2026-10-21T17:09:22Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Y7dKMCBY5JXAZEI0enUleA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.is2GHqsHqbQVg_SQT3eRkQ&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -180,6 +238,7 @@
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQbXFsVW11RFNRRmRqS2I3dHk1dUlLOXlzMDc1bFN1d21nanZrNTV0REFMR2hwVXBxTUxtZHlvS1pDR3YwR0ZJeUxWczBaTVJxOGMtVU1TT2xtLUZxQm5BTGRva1FlQkdMMEU5eUREWUJuOHhUd2xpU0tCdTM1X3o0N1luZ29PUQ?oc=5",
       "published": "2026-10-21T16:48:00Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.UDh2PbVB56LyMua3uXhRjA&pid=News&w=640",
       "kind": "general",
       "score": 8
     },
@@ -207,19 +266,6 @@
       "score": 4
     },
     {
-      "id": "33e004f1db55",
-      "topic": "spacex",
-      "title": "SpaceX Soars 10% After Earnings—and Could Climb to $500 Next",
-      "source": "Barron's",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9JQUZVRXc0eTF2eU5qQnlJYlBGckhyclVoNjhZeUlDdmx1SVJyYXB2dW9aVGgxbS0zbTFZbjVXTHIwUnEzajJEcWhYdG5qRk9zN0lhMVN3Rkd6X2pPNTlMR3JJQUNqdEI4SUJYREhZLWRPUllG?oc=5",
-      "published": "2026-10-21T16:02:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ORMS.6e19a44bcef5596f96a2c7b027924e2a&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
-    },
-    {
       "id": "946938a7dae6",
       "topic": "tesla",
       "title": "Tesla earnings are out – here are the numbers",
@@ -227,6 +273,7 @@
       "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1rRTRZdEQyQ0tYemI0R0tuYi04TWhxWEVoRGx6M3h3MWpWTzhRdnpvZTk4R2tSV09GX2dNS0p6ckxOMkpDd3NCbEViY1ZtOUNOU0JjejU5VjhoVTRIRjZ2SHBiOG0wbXY0NmVBUmFUTDFWZ01LSmZraHN4TdIBgAFBVV95cUxPdzZSSklMOG1fb1hCcUpGSmpyVDAxVlZuXzZ4ZDEwdkJhX2xoWXdVb1V5Vkp0b0tkekhaVHhoa2szSC0tejZ6aTYtb1JJUWo4aG90ZTN5UURiS19sMGhCUHFxZUdhdk9rd3JaN0xRVVk3OGZ0VkhZSjFDMU11dUJIVw?oc=5",
       "published": "2026-10-21T16:00:01Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.ClCsgM0qKft08VhTsl4dAA&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -241,18 +288,6 @@
       "image": "https://www.bing.com/th?id=ONUT.ucc1YDS-CIlOh2QeeHuchQ&pid=News&w=640",
       "kind": "general",
       "score": 7
-    },
-    {
-      "id": "78cbbf407e65",
-      "topic": "tesla",
-      "title": "Here’s How Much Tesla Stock Is Expected to Move After Earnings",
-      "source": "Investopedia",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVkhhOWVLeWlmenVYanV6ZlZmaV8yNEthdHJHUFk2LVVTOXNUaHA2REpfdDd4Z3BTb1llYnljQjZ6T2FUeF9TZUI2WGRISXVwMTl4MVdqb05ZSGlDaWtZbjhJaW9MRFJNX09KNUR2Z0ZLVjZhb1I3T1E0XzVrRnlpcVg1dXJOcjZuM201U1Y0TnBueC0tSWRGTEpZWjYtanUzczBoN01NMW9qbndMbTJpM2R1cmZ6NnNmeldRWFpJZFQ?oc=5",
-      "published": "2026-10-21T15:46:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.f81cNZX7E1TddHLBko7LoQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "c5c1496c6009",
@@ -279,18 +314,6 @@
       "score": 1
     },
     {
-      "id": "a63f2e07f2dc",
-      "topic": "tesla",
-      "title": "Tesla Q3 preview: Delivery outlook, cash flow, and a dash of merger speculation on tap",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOdUlBXzBBVXhmeWF0S0xVNU10OG44WmdLTTdrWFhtNk9nQ2tpbU9ia1VVTFZsclNzdElmclZPNTFBN3pZNWV2YWNWYVg4V1loQWw5aDhodnpIWEkxak4zY0RwdF91bTk3bllHTFB6VTVYMXFNVklleWw1bFJUNEVwTksxTXJYdUdCTDMzQ0NoV3BXOTk5ZmZJUjhSTklUSWFsNGNJUWx1TDFHakU3R2kwTVNaZ3czd3lUNlJHaHV4R3F2eEozVkVYUlJIODJweDNJUFRhVnJWTzBJMFNiVDZGSg?oc=5",
-      "published": "2026-10-21T14:16:25Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.if1Zs_iZ1UHHvhUDG8s3ZA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "1a9357d3bcda",
       "topic": "spacex",
       "title": "Why SpaceX’s stock is surging — and lifting the broader AI universe along with it",
@@ -298,20 +321,32 @@
       "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOTEFnYzRHMjJLY2p3eFE0WkFzZlhhTFNISVF0d2RudDZTcW9UZTh3MWNXV3Zmb3RqSzZFT0ZIbDJJNjlpWFJwMXROQVZ0SDBtVllqbkRJVnE0VlN5Znl6WTJ1NnVjRUYyTTRTZ0dkX3l6SEFPQWMtOF9PRXJNZ3dLR1pRNXhLcjB2cjNRWFVRbk1QRUxYckRBQUtoaGdxUlA3Y08tU1BFZk1GbjhRUzQ2b1lNUUVHcVlBb1dtcFJB?oc=5",
       "published": "2026-10-21T14:10:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Rhlor6lTaJgrBsftlhWhtA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "14ae4410ce03",
-      "topic": "spacex",
-      "title": "SpaceX Bulls Rejoice: JPMorgan Sees 209% Upside",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNb0hCQWd2ZFlMVXoyNXhCUHR1Snd4NWZPV2Z2UWJzbnowZXUzVEJpUHpuZC1XODVIdm80WDJVdk5Kblhqejl4VDVuQ1J4UmgycW8teHBTeDRqQWxiUU5jdjJ6SFp3MFd2ZXpsQWUwRk1lcERpMGpZTFBjbjFZdnpteEk0Rlk2cVRpNThVclhBQmxReXZFdnRCSUNRQjVzajFR?oc=5",
-      "published": "2026-10-21T13:28:29Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
+      "id": "9d00d0a67e1a",
+      "topic": "tesla",
+      "title": "Tesla Earnings Mixed; Elon Musk Looms With SpaceX, Robotaxi, Optimus In Focus (Live Coverage)",
+      "source": "Investor's Business Daily on MSN",
+      "url": "https://www.msn.com/en-us/news/other/tesla-earnings-mixed-spacex-merger-robotaxi-optimus-capex-in-focus-live-coverage/ar-AA2fJyIb",
+      "published": "2026-10-21T13:38:00Z",
+      "snippet": "Tesla earnings beat views after hours. Investor focus will be on Elon Musk, SpaceX merger buzz, robotaxis and more. Tesla is near a buy point.",
+      "image": "https://www.bing.com/th?id=ONUT.mPblmLTsQqv9qeAigwSzCg&pid=News&w=640",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
+      "id": "542fb3095d8f",
+      "topic": "tesla",
+      "title": "Tesla sees FSD strength, margin beats, and positive free cash flow in Q3",
+      "source": "Seeking Alpha on MSN",
+      "url": "https://www.msn.com/en-us/money/other/tesla-sees-fsd-strength-margin-beats-and-positive-free-cash-flow-in-q3/ar-AA2fLti2",
+      "published": "2026-10-21T13:16:37Z",
+      "snippet": "Tesla (TSLA) gained slightly in after-hours trading on Wednesday after the Austin-based company released its third-quarter earnings report. The electric vehicle giant reported revenue was flat ...",
+      "image": "https://www.bing.com/th?id=ONUT.fE94mD7g4qsKiPemqc51pw&pid=News&w=640",
+      "kind": "software",
+      "score": 7
     },
     {
       "id": "f043246517b9",
@@ -325,15 +360,17 @@
       "score": 4
     },
     {
-      "id": "cfa2164d5d43",
-      "topic": "spacex",
-      "title": "Musk backs SpaceX-Tesla merger idea as both boards form special committees",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPNnJPQ0hUeGVqU1RfZHRCeVFtcnZJaGItX1RLYWlmZmZtTG5wT2dOQUJOcGIwUEM4SG90ZzE2X01xTFAtLU40dUtHVDdTTzlNOVBrUmZKWHNFM2J5V3A1c3JZdDVXUnE0ZkZYVlBDdTkwdFZ0Qlp1c3kzdzQxUXhnY3FvcGtSU2gwZ05oLXhrWWU5R1l0UWdfMFg4YnEtWGpCdmhlNi1ZWERqTzA3YUpIaVhsRzBPTG1KNnlpOE1lNXdrVjBSSWI3TnNsTHBvd2x4MC1yOA?oc=5",
-      "published": "2026-10-21T12:41:05Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
+      "id": "76be98788003",
+      "topic": "tesla",
+      "title": "A SpaceX-Tesla megamerger could benefit both companies and Elon Musk’s personal fortune",
+      "source": "Associated Press News",
+      "url": "https://apnews.com/article/spacex-tesla-musk-merger-ai-e828348887c5855c22cb2be5c83beb46",
+      "published": "2026-10-21T12:58:00Z",
+      "snippet": "Stocks of Elon Musk's two biggest companies are rising Wednesday after he suggested a combination was in the works to form a trillion dollar colossus in possibly the biggest deal ever.",
+      "image": "https://www.bing.com/th?id=ONUT.8apBGp5ty5H4i_2UWjo6zQ&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 6
     },
     {
       "id": "43d5e739758f",
@@ -366,17 +403,6 @@
       "source": "WREG.com",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOTGtSR3ZtU2p5aF96WjlibVFQN2k5ZE9NeWdPWEtzNnR6QlNCMUgtYjFpMjVwNU5MUjVQamxpUnNoaUVuZ0d1VVpkLWVCZXhaem0ycEwwVDYwbHZhaVBJVm1adFhVY3RJZ1FVRWhVMW1aNlVhNWZES0pqVjZ0ZWl5WGZfM01tQnF0YmRXU0FkbExjNnoydUdtakRwZm9vZzVoZjlwOEZYMWFkYVpJSDRDbEhpTjhTa0o3OC1tTEtyRlA2T1HSAcMBQVVfeXFMTkxrUkd2bVNqeWhfelo5Ym1RUDdpOWRPTXlnT1hLczZ0ekJTQjFILWIxaTI1cDVOTFI1UGpsaVJzaGlFbmdHdVVaZC1lQmV4WnptMnBMMFQ2MGx2YWlQSVZtWnRYVWN0SWdRVUVoVTFtWjZVYTVmREtKalY2dGVpeVhmXzNNbUJxdGJkV1NBZGxMYzZ6MnVHbWpEcGZvb2c1aGY5cDhGWDFhZGFaSUg0Q2xIaU44U2tKNzgtbUxLckZQNk9R?oc=5",
       "published": "2026-10-21T10:27:47Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "60a3d612858c",
-      "topic": "spacex",
-      "title": "SpaceX earnings left one big question unanswered",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNdW96ajBBSUMzcDFxMTRvM2ZlMEdKZVFYbXlfMTg0MjdXY2p0SnUxcHNIS0tQOEtDNnNpX1NUemM1M0l1bURxc0ZPWXZYQ2pHMjRaamZSSEp0ZHJUVnBaRWU5eE9HTThlMmFUdUhxTExYTkRnUFZOTXQyNzF4NGd3VWEtZTZhdF9CaXlyb09hQWtHU0x2SWJvNFhFalltN2RnVWpmM1ZlcmhvWExFXzhxaW5n?oc=5",
-      "published": "2026-10-21T10:26:46Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -430,18 +456,6 @@
       "score": 4
     },
     {
-      "id": "a06947375f8f",
-      "topic": "tesla",
-      "title": "Tesla earnings loom after Musk calls SpaceX merger a 'good idea'",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/10/21/tesla-tsla-q3-2026-earnings-report.html",
-      "published": "2026-10-21T09:00:00Z",
-      "snippet": "On the earnings call, CEO Elon Musk said the boards of both SpaceX and Tesla have formed special committees to discuss a potential merger. Tesla shares are down 14% so far this year, underperforming ...",
-      "image": "https://www.bing.com/th?id=ONUT.ClCsgM0qKft08VhTsl4dAA&pid=News&w=640",
-      "kind": "general",
-      "score": 7
-    },
-    {
       "id": "dcb8974765fd",
       "topic": "tesla",
       "title": "What the Tesla Flying Roadster Reveal Means to the Flying Car Market",
@@ -478,14 +492,14 @@
       "score": 4
     },
     {
-      "id": "0b9425098af1",
+      "id": "d1a332eadd07",
       "topic": "tesla",
       "title": "SpaceX stock jumps 9% after earnings beat and Musk confirms Tesla merger talks",
       "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/spacex-stock-jumps-9-after-earnings-beat-and-musk-confirms-tesla-merger-talks/ar-AA2fIS7k",
+      "url": "https://www.msn.com/en-us/news/other/spacex-stock-jumps-10-after-musk-says-the-company-is-exploring-a-merger-with-tesla/ar-AA2fIS7k",
       "published": "2026-10-21T08:32:53Z",
       "snippet": "Elon Musk said in an earnings call that SpaceX and Tesla have formed special committees to discuss the mechanics of a potential combination.",
-      "image": "https://www.bing.com/th?id=ORMS.f6be7aa4bfdc12a8032a3ebe964a499e&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.TRO9W7fVT4-3zCd2VT_hjQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -502,15 +516,16 @@
       "score": 4
     },
     {
-      "id": "c797d21315b1",
-      "topic": "spacex",
-      "title": "SpaceX stock jumps 10% after earnings beat and Musk hints at Tesla tie-up",
-      "source": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5PUXotbEFpamZqOGNVR1V3QjBZa1JlMk9BYlEtSXlRVVdZaUx5enhFczJmYzd6RzluMld3T1IxWFpKdUdFd3RLU0hxWTRuV28xVXRhUGt3QUlRWXVnZjcwNld0Y0Uzc3ZySXc1Ykx0dlA5SGtVbVFTZkN1QknSAYIBQVVfeXFMTjR2c3F2OV81OXNqTUxINlRMODJwbzhSNjgxNFlDOURjY0dxSDczVEZKWUdZaWRCc0RGMERLaEY3Y0NJMkIzdHFLMktLTEpkbHY3NTRyUllEYmJ3TWFFSXk5LUZRYUg0NVdpODRzaWJ0Slg3U293UkpETms3aUlDeWlmdw?oc=5",
-      "published": "2026-10-21T08:05:56Z",
-      "snippet": "",
+      "id": "e26814a4b4bf",
+      "topic": "tesla",
+      "title": "A Cybertruck showed up at a tractor pull",
+      "source": "TFLstudios on MSN",
+      "url": "https://www.msn.com/en-us/autos/general/a-cybertruck-showed-up-at-a-tractor-pull/vi-AA24EHbF",
+      "published": "2026-10-21T08:03:30Z",
+      "snippet": "The Tesla Cybertruck is already one of the most polarizing vehicles in America, so bringing it to a tractor pull packed with diesel truck enthusiasts was always going to create strong reactions. This ...",
+      "image": "https://www.bing.com/th?id=ONUT.4jwJN6UGBcBov-0R54mFvg&pid=News&w=640",
       "kind": "general",
-      "score": 7
+      "score": 4
     },
     {
       "id": "814542cb7fa1",
@@ -560,6 +575,18 @@
       "score": 11
     },
     {
+      "id": "e5e0e0ae1a17",
+      "topic": "tesla",
+      "title": "Futures orbit around SpaceX as Tesla merger talk cheers investors",
+      "source": "CNBC on MSN",
+      "url": "https://www.msn.com/en-us/money/markets/futures-orbit-around-spacex-as-tesla-merger-talk-cheers-investors/ar-AA2fK5qp",
+      "published": "2026-10-21T05:44:19Z",
+      "snippet": "Here are the key things investors need to know to start the trading day.",
+      "image": "https://www.bing.com/th?id=ONUT.Nj3yhIwqcw76WnKBCv7yDA&pid=News&w=640",
+      "kind": "general",
+      "score": 7
+    },
+    {
       "id": "768b0654de44",
       "topic": "grok",
       "title": "Gemini Launches Grok-Powered AI Feed via SpaceX Partnership",
@@ -595,14 +622,14 @@
       "score": 4
     },
     {
-      "id": "1ffdebc81e20",
+      "id": "ce8fb740222b",
       "topic": "tesla",
-      "title": "YouTuber disappointed his gold-plated Tesla Cybertruck sells for less than expected",
-      "source": "Moneywise on MSN",
-      "url": "https://www.msn.com/en-us/technology/tech-companies/youtuber-disappointed-his-gold-plated-tesla-cybertruck-sells-for-less-than-expected/ar-AA2fJaZa",
-      "published": "2026-10-21T04:00:00Z",
-      "snippet": "Custom modifications on your car can make you stand out but experts warn it could end up costing you down the road.",
-      "image": "https://www.bing.com/th?id=ONUT.rkTlPrbcPxeml-MiRxbFeg&pid=News&w=640",
+      "title": "Tesla's stock rises after earnings beat",
+      "source": "MarketWatch",
+      "url": "https://www.marketwatch.com/livecoverage/tesla-earnings-stock-results-q3-musk-tsla/card/tesla-s-stock-rises-after-earnings-beat-gDr0GhSt04mx62oPNwBV",
+      "published": "2026-10-21T03:59:00Z",
+      "snippet": "Tesla topped profit expectations for the third quarter, helping to send its stock about 2% higher in Wednesday's late trading. The company posted earnings per share of 48 cents, while Wall Street ...",
+      "image": "https://www.bing.com/th?id=ONUT.7hv4c0UMNTm0J0L4e8kxLA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -620,18 +647,6 @@
       "score": 1
     },
     {
-      "id": "a717bd8e1314",
-      "topic": "tesla",
-      "title": "Merger mania is on the minds of Tesla investors",
-      "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/livecoverage/tesla-earnings-stock-results-q3-musk-tsla/card/merger-mania-is-on-the-minds-of-tesla-investors-26b4YhfP5up8Dm1wA7AG",
-      "published": "2026-10-21T03:59:00Z",
-      "snippet": "On SpaceX's Tuesday earnings call, Elon Musk addressed the possibility of a merger with Tesla. Soon analysts covering Tesla will have the chance to raise the topic themselves. Special committees made ...",
-      "image": "https://www.bing.com/th?id=ONUT.7hv4c0UMNTm0J0L4e8kxLA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "0165bfbe5297",
       "topic": "tesla",
       "title": "In Minnesota, raccoons chew up a Cybertruck's vault after seeming to mistake it for a dumpster",
@@ -644,8 +659,8 @@
       "score": 4
     },
     {
-      "id": "46774026b6c8",
-      "topic": "tesla",
+      "id": "8063c6f53a63",
+      "topic": "spacex",
       "title": "Elon Musk says he wants to merge Tesla, SpaceX",
       "source": "UPI",
       "url": "https://www.upi.com/Top_News/US/2026/10/21/elon-musk-discusses-tesla-spacex-merger/4971792590436/",
@@ -679,6 +694,17 @@
       "score": 4
     },
     {
+      "id": "a9696c99ba1b",
+      "topic": "grok",
+      "title": "Ashley St. Clair Can't Toss XAI Forum Clause Suit",
+      "source": "Law360",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSDF6dEM2dWdRR3dXWmZlYzlOZVNqNVRuSVBzZ2taR2lZMVlPWGpTcENOY2E0VE85Y3ZEM1FrQl9qUHVOQnVTVkdmYVE2aGJfd2dwZm1OdFE0ZWk0NGtXcld3X1pMa2hibjF5TWxmRmVha2Jia3VzWXlfak9hM2NBS2s4WThuX2I3ZURFVmE0OFdpd9IBVkFVX3lxTE96a1NPQWNfU2E4ZmwzUDY5VTl5M1VaY08yQUVhSmlhaHhqR20yeml1bXdha203VmVsS0F6ME5Pa2pOaE9ZZFB3enVFSFhVZkV6b3plbmVB?oc=5",
+      "published": "2026-10-21T02:12:50Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "888b009f190e",
       "topic": "grok",
       "title": "AI Models Vary in Risk-Taking Across Domains",
@@ -686,18 +712,6 @@
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNUVY5ZTFGTlRCSDRja0g5SnpYT2p2NHpGNDhOa25xTDhxd2ZmUkFBNEVDLUdFSDR1UFVTbkpFYzRWTmRaQWdLSlhTRnFfQkxaQVpKU1ZETmZRck03czVxNHdWcnJjQU13aUw1STJnZVhoUV8xWHdYZjdGNmNKZHlnNWUyTGVXVTdn?oc=5",
       "published": "2026-10-21T01:54:10Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "1653b03f4500",
-      "topic": "tesla",
-      "title": "Why Elon Musk Wants to Merge SpaceX and Tesla",
-      "source": "Time on MSN",
-      "url": "https://www.msn.com/en-us/technology/tech-companies/why-elon-musk-wants-to-merge-spacex-and-tesla/ar-AA2fJL2D",
-      "published": "2026-10-21T01:45:59Z",
-      "snippet": "The CEO and largest shareholder of both companies said a merger would be a “good idea” and that they had formed committees to discuss the possibility.",
-      "image": "https://www.bing.com/th?id=ONUT.wXrzSRg1t673gLgNXfFd3g&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -736,15 +750,27 @@
       "score": 0
     },
     {
-      "id": "5df0e5aafc20",
+      "id": "28adf8fa4a00",
       "topic": "grok",
-      "title": "Meta's Muse Notches 10.9 Million Downloads as ChatGPT's US Momentum Slips 25%",
-      "source": "BigGo Finance",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE50MFMtWUZ4M1IyazZ3LXhfOE81Q2FaNTNRcm9TR2ptcUVXZ0dlTzVlVTdEUXZFSGhYRXZ4bk9rejVHN2d1SURYQkNPa21KQlNMWUNFaEk2Yy1hYXQxTzVmUWR4WldIRDlES1lhNDBwQlBaX0lnN3c?oc=5",
-      "published": "2026-10-20T22:05:00Z",
+      "title": "Judge Lets NAACP Lawsuit Over Southaven xAI Turbines Proceed",
+      "source": "DeSoto County News",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNWDEwTU50QWdERG4za19ZTllIaHlPZmZhYXdPRUdTaWE2Z1poZjVUcDBRZ21UbG1zclVacy1IZTdrcU93R1llM2tNYklRMDdrLUExUzcyc2JhRWxaX0d1d1VyVk9yMkplS0EzbzhkSkdqekViMWJXN1Z2SnBLY3lTVlVZMkRUZFlSeVFzbUE1UQ?oc=5",
+      "published": "2026-10-20T22:23:25Z",
       "snippet": "",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "86e031adef43",
+      "topic": "spacex",
+      "title": "A strong profit report from SpaceX helps lift tech stocks and Wall Street",
+      "source": "Associated Press News",
+      "url": "https://apnews.com/article/stocks-markets-rates-oil-earnings-ai-4fa93685cd49e51e7ff0d840fdd38b0d",
+      "published": "2026-10-20T21:53:00Z",
+      "snippet": "Asian shares are mixed with Japan and South Korea tech stocks advancing following a broad rally on Wall Street.",
+      "image": "https://www.bing.com/th?id=ONUT.UITbjcs6H00GEUYx3PEF2w&pid=News&w=640",
+      "kind": "general",
+      "score": 9
     },
     {
       "id": "514894f2b59f",
@@ -793,18 +819,6 @@
       "image": "https://www.bing.com/th?id=ONUT._FjUfPudNr6TvHwpWNQEhg&pid=News&w=640",
       "kind": "launch",
       "score": 12
-    },
-    {
-      "id": "004749110b1c",
-      "topic": "spacex",
-      "title": "Starlink Tips a Holiday Sales Push for Newest Dish Models",
-      "source": "PCMag on MSN",
-      "url": "https://www.msn.com/en-us/news/other/starlink-tips-a-holiday-sales-push-for-newest-dish-models/ar-AA2fIYsi",
-      "published": "2026-10-20T15:21:42Z",
-      "snippet": "During today's earnings call, SpaceX's CFO mentioned shipping more Starlink units to retailers for the holiday season, several months after the company teased a new Mini dish model.",
-      "image": "https://www.bing.com/th?id=ONUT.1sRmZiYHuaWbqrtfFT8YEg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "357c04cf1434",
