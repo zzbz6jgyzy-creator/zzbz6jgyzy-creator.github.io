@@ -1,6 +1,17 @@
 {
-  "updated": "2026-10-21T15:10:36Z",
+  "updated": "2026-10-21T15:41:54Z",
   "items": [
+    {
+      "id": "c5c1496c6009",
+      "topic": "grok",
+      "title": "Grok identifies Jesus as ‘Palestinian’ in viral X exchange",
+      "source": "Roya News",
+      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBOam81bm13T2I5SXJOQ0R6WkZHaS1iT3lCQ0ZaZmtJMVZ0N1AybFNyQTkxTWF6Y0ZJR1hYakJSWmw3Zm8xZXVVTA?oc=5",
+      "published": "2026-10-21T15:13:08Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
     {
       "id": "666dea2ba27a",
       "topic": "spacex",
@@ -12,6 +23,53 @@
       "image": "https://www.bing.com/th?id=ONUT.YSnniyK6a789hQw3MZQBTA&pid=News&w=640",
       "kind": "accessory",
       "score": -6
+    },
+    {
+      "id": "2600969f0543",
+      "topic": "tesla",
+      "title": "NASA launches SpaceX Crew-13",
+      "source": "LiveNOW from FOX",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBvV0ZGYlFQR21XTFVkQ3RZaXBiVnpCNHljZDJmOE9nZHphSG5ETEFwYUV4WUZCSFR0ckVzMnNwTHA3M3Yzd2loaU9MYWxlNHlsVTBidHFJWEFNUUhVRTFCblJZcmhwNDlJcVE1NFB30gFzQVVfeXFMT1NYNlRYRlBKQV9kU3hHQndubjJIdkJXbVczZ243QmxsVUh5S1diOWx3enhheGlFb25FblRyVDE2ci1jMFhtMWk0dDVwQkJUTnB6TDIxU1NtRjJZRUpKMkVtUnp0QkVUbkZKTnd3TW1wWnlrOA?oc=5",
+      "published": "2026-10-21T15:05:08Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "7778a49c0c36",
+      "topic": "spacex",
+      "title": "John Malone Predicts a Major Deal Between Skydance and Elon Musk’s SpaceX",
+      "source": "The Hollywood Reporter",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQSDl0bFZKVE8xSmpFQ0o1UUFzSEZJRG1sdXZWbnRtUUFWUmxPMEhPZExkcm50SldPTk15OWxkckQtWTBBZEZUbzNiQ2ozV3RRZ09Kd2ViNjZvQ0ZUVTAxWlcwZnJvSVoxRFNTQ01XaGZQVVN3YUt1N1EzNmpDUkl2Mm1IZUxoYWt0VlVtS0xsdUdINzctaEhTRms2SmhqTm1EVlZZaE9mektMREhseTBzbzNJNUxsbHIw?oc=5",
+      "published": "2026-10-21T15:00:44Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.J57AvZm9cB4Q1Jhj2vG6rw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "c29699eec1db",
+      "topic": "tesla",
+      "title": "Tesla-SpaceX deal: Wall St says inevitable but Musk says it's not certain",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNSTVHd2VEZUVrVDJpZzdZTFpLRDlEdXdVck83NDhpeUlyZnNwVVNqRWppNThJVVFiMDJPazVOblA1ZDdScmJ2SWFodWpKMC1BZHdjTmlsdFROVkZfRWJpbzZ6VEdUUnVpcnE4NWxxNGI0V1VVNTJ6YnNaR01wT0VsZmhVNlJIU1BFV3ZPVUprek8ySE83U2xfaldDaGhwLTRHem5QMnBYTE9VbjEzS0JkSENkZTc2UUpETVpTUGtWejg?oc=5",
+      "published": "2026-10-21T14:45:16Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ORMS.fc36538cbc7c5af699c72201e4a90c02&pid=News&w=640",
+      "kind": "general",
+      "score": 9
+    },
+    {
+      "id": "ec871544a173",
+      "topic": "tesla",
+      "title": "Elon Musk Says SpaceX and Tesla Are Exploring a Merger",
+      "source": "The New York Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZWg4ZGc4eElFTUc3STkzZnNLZ3hoZkVQWDMwbm9MMnFpRFIyYTV1OGh0NEo3RFZxUExBOV9fckd6SlV1WjNPTGdnbm83LTFpRS15elZOeWlWajI1TlhvQ0pSNVdLNWptMFZyRjZob2paWXFObkhOR1dFNWpUdUZfcWlHUTg?oc=5",
+      "published": "2026-10-21T14:39:11Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.TRO9W7fVT4-3zCd2VT_hjQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "3313ee53efe3",
@@ -33,6 +91,7 @@
       "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOdUlBXzBBVXhmeWF0S0xVNU10OG44WmdLTTdrWFhtNk9nQ2tpbU9ia1VVTFZsclNzdElmclZPNTFBN3pZNWV2YWNWYVg4V1loQWw5aDhodnpIWEkxak4zY0RwdF91bTk3bllHTFB6VTVYMXFNVklleWw1bFJUNEVwTksxTXJYdUdCTDMzQ0NoV3BXOTk5ZmZJUjhSTklUSWFsNGNJUWx1TDFHakU3R2kwTVNaZ3czd3lUNlJHaHV4R3F2eEozVkVYUlJIODJweDNJUFRhVnJWTzBJMFNiVDZGSg?oc=5",
       "published": "2026-10-21T14:16:25Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.U8Aml7qAHHYGHbPjlkAwXQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -61,18 +120,6 @@
       "score": 4
     },
     {
-      "id": "ff933baec25d",
-      "topic": "tesla",
-      "title": "Elon Musk Says SpaceX, Tesla Exploring Merger; Satellite Company's Shares Rally",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPWlV0WVdzMENVQi1lVzE1QjJ5TndSMVJaWVF3N3k3ck1abVZBUENPcWctRVNySHdoX0RoeXMzZkN1eWZnSjZTSzZYQkFXTmFnbmlBYkdUZnczeXJrczlNZkJaMmx0dTIxWjZTaW50eV9pNXJYSEs5aV9QdXRWaFFVVGR0TXhCcXBSdXd3SWVIV1k2OVlaNkI0?oc=5",
-      "published": "2026-10-21T14:02:09Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.q_iFfGLAH73JUdeZwALmvg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "74e762fe2963",
       "topic": "tesla",
       "title": "Tesla (TSLA) Needs Stronger Earnings to Justify Its Autonomy Ambitions",
@@ -81,18 +128,6 @@
       "published": "2026-10-21T13:54:12Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.iWda7K3CGqkE_XBNtWyGKQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "ec871544a173",
-      "topic": "tesla",
-      "title": "Elon Musk Says SpaceX and Tesla Are Exploring a Merger",
-      "source": "The New York Times",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZWg4ZGc4eElFTUc3STkzZnNLZ3hoZkVQWDMwbm9MMnFpRFIyYTV1OGh0NEo3RFZxUExBOV9fckd6SlV1WjNPTGdnbm83LTFpRS15elZOeWlWajI1TlhvQ0pSNVdLNWptMFZyRjZob2paWXFObkhOR1dFNWpUdUZfcWlHUTg?oc=5",
-      "published": "2026-10-21T13:53:16Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.TRO9W7fVT4-3zCd2VT_hjQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -108,16 +143,16 @@
       "score": 4
     },
     {
-      "id": "c29699eec1db",
-      "topic": "tesla",
-      "title": "Tesla-SpaceX deal: Wall Street says inevitable but Musk says it's not certain",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNSTVHd2VEZUVrVDJpZzdZTFpLRDlEdXdVck83NDhpeUlyZnNwVVNqRWppNThJVVFiMDJPazVOblA1ZDdScmJ2SWFodWpKMC1BZHdjTmlsdFROVkZfRWJpbzZ6VEdUUnVpcnE4NWxxNGI0V1VVNTJ6YnNaR01wT0VsZmhVNlJIU1BFV3ZPVUprek8ySE83U2xfaldDaGhwLTRHem5QMnBYTE9VbjEzS0JkSENkZTc2UUpETVpTUGtWejg?oc=5",
-      "published": "2026-10-21T13:47:31Z",
+      "id": "322357e93b9e",
+      "topic": "spacex",
+      "title": "SpaceX Boosts the A.I. Rally",
+      "source": "The New York Times",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQLTdFWU01NlhUUHR4RGdCd2xtbHRZZ0pubFBnLVBpcm9TVUVuLVhEMksxblN5NVZjczQ4QldLNkJ2X09SaDJkNVYzOW9xV1pIVzF6LUpuUUdJMkFSR091dk5ZQnROcy16b05pZEJUTVotWDZDaUhTUHpoUGV4X2F4Vw?oc=5",
+      "published": "2026-10-21T13:37:04Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.E7y13sft4TB2bvy-6lKueA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.UQU9CQ0NVkUbla6qHW5FRw&pid=News&w=640",
       "kind": "general",
-      "score": 9
+      "score": 4
     },
     {
       "id": "14ae4410ce03",
@@ -138,6 +173,18 @@
       "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPLVRseTdtbEdWckNoZlBJYmVPS0Y4MDZKRVNmeGpIUnRvcmxla0lBSWV2bjk3aXlFY0VFX2xqaURCZ1RZYVFSNDNzY3E2WFhEMzdudlZnRl95MWd4Q3Bvc0d4WkE5MWxZbTNPajJmc3YyNzIxSUhrR2N5b3BrcXdCWFVua2FYd0N0Q3pzc1ZXWHltQk1hWTktYWxnQTNVWjlVem01Y2lLRC0wdTBiSEpyUEFVZGdWeHh2WkVEVDhLZGJLR0I0Xy1TV2pkNGdvRk5V?oc=5",
       "published": "2026-10-21T13:00:00Z",
       "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "b22edef62206",
+      "topic": "tesla",
+      "title": "SpaceX, Tesla, Meta, Nvidia, Netflix, AT&T, Super Micro, and More Stocks That Explain Today’s Market",
+      "source": "Barron's",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFB4YUloR29taVBza2QtN3ZsRGdXckdKeU9oQ3MwdG8yTkJOMjFVU1JyRktyc0pqYk45UlZXUUd6aGhxQXdJM3BrN0JUUkFzYUtHakp4c1Y2MW1YdTlWdkpjQWxFZGw?oc=5",
+      "published": "2026-10-21T12:48:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.ipcSfdfgnqqbCjCwtvat5Q&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -166,18 +213,6 @@
       "score": 4
     },
     {
-      "id": "322357e93b9e",
-      "topic": "spacex",
-      "title": "SpaceX Boosts the A.I. Rally",
-      "source": "The New York Times",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQLTdFWU01NlhUUHR4RGdCd2xtbHRZZ0pubFBnLVBpcm9TVUVuLVhEMksxblN5NVZjczQ4QldLNkJ2X09SaDJkNVYzOW9xV1pIVzF6LUpuUUdJMkFSR091dk5ZQnROcy16b05pZEJUTVotWDZDaUhTUHpoUGV4X2F4Vw?oc=5",
-      "published": "2026-10-21T12:23:14Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.80e2kex_tqlDtoYWB296MQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "81cdf2fd68ad",
       "topic": "spacex",
       "title": "Stocks making the biggest moves premarket: SpaceX, Super Micro Computer, Netflix, Dell and more",
@@ -185,6 +220,18 @@
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxObVNjYTVFQWZpS3czVDVnNUFGamY2ZFRtRkhuYk9qZUZYSVhENUV2djMzcW5DTE50RGFHc21wa2pxaEY3THhtZ3RfRVNoQmFpbDdPNXFMTl96UzdqXy1CRlB3RkpYZ1pnaGo1TVhuUDRhdTQ2aTdMekE1eW9HZDVFTzhHVXdoZE52U21QV3ZJNXd0Q2xCcm9WSDBzX2RQSUE?oc=5",
       "published": "2026-10-21T11:43:00Z",
       "snippet": "",
+      "kind": "general",
+      "score": 7
+    },
+    {
+      "id": "a72c185ae501",
+      "topic": "spacex",
+      "title": "Space X and Tesla exploring merger, CEO Elon Musk says",
+      "source": "Axios",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9XaEZwTktvd3JhMjAta21YYk9RMW9oUkwzZFRJU0loWjZza3FDQkg3R0M4eS1pSkRXY0pjb2lOWThseTNncHVvU1dUdU5WRnM0V3M2Q1pnSGU4VVRFeVp4dGQxekdLZXNKT1E?oc=5",
+      "published": "2026-10-21T11:12:40Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.TRO9W7fVT4-3zCd2VT_hjQ&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -198,17 +245,6 @@
       "snippet": "",
       "kind": "milestone",
       "score": 11
-    },
-    {
-      "id": "39d57e0beb2a",
-      "topic": "tesla",
-      "title": "Space X and Tesla exploring merger, CEO Elon Musk says",
-      "source": "Axios",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9XaEZwTktvd3JhMjAta21YYk9RMW9oUkwzZFRJU0loWjZza3FDQkg3R0M4eS1pSkRXY0pjb2lOWThseTNncHVvU1dUdU5WRnM0V3M2Q1pnSGU4VVRFeVp4dGQxekdLZXNKT1E?oc=5",
-      "published": "2026-10-21T11:03:42Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 7
     },
     {
       "id": "1d5331a87455",
@@ -281,38 +317,26 @@
       "score": 4
     },
     {
-      "id": "ff12c8b81c63",
-      "topic": "tesla",
-      "title": "Throwback to Tesla’s 19% improvement and Waymo’s scaling plans",
-      "source": "Electrified on MSN",
-      "url": "https://www.msn.com/en-us/technology/tech-companies/throwback-to-tesla-s-19-improvement-and-waymo-s-scaling-plans/vi-AA2fJJez",
-      "published": "2026-10-21T07:13:01Z",
-      "snippet": "Electrified revisits that moment in EV news, including Tesla’s financing and sales context, FSD updates, tariff impacts and autonomous semi plans. The recap also covers Waymo’s scaling plans, ...",
-      "image": "https://www.bing.com/th?id=ONUT.oS9Q2H4L0YuYM1hCnqTDHA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
+      "id": "57d1df84d0bc",
+      "topic": "spacex",
+      "title": "Recap: FAA approved Starship flight 7 early as Starliner crew stayed on ISS",
+      "source": "Ellie in Space on MSN",
+      "url": "https://www.msn.com/en-us/news/other/recap-faa-approved-starship-flight-7-early-as-starliner-crew-stayed-on-iss/vi-AA2fKzTo?ocid=BingNewsVerp",
+      "published": "2026-10-21T07:17:25Z",
+      "snippet": "The video recaps an earlier update on the FAA license authorization for Starship Flight 7 and the Starliner crew’s extended stay on the ISS. It explains that Crew-10 was targeting a later launch because of preparation de",
+      "image": "https://www.bing.com/th?id=ONUT.1sVHknQ-z1qZI88keCgVQw&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
     },
     {
-      "id": "0af929ed982e",
-      "topic": "tesla",
+      "id": "570462a509cc",
+      "topic": "spacex",
       "title": "SpaceX stock surges after Musk says a merger with Tesla would be a good idea",
       "source": "CNN on MSN",
       "url": "https://www.msn.com/en-us/news/other/spacex-and-tesla-have-formed-committees-to-discuss-potential-merger-musk-says/ar-AA2fGetk",
       "published": "2026-10-21T06:42:48Z",
       "snippet": "SpaceX shares shot up more than 8% Wednesday morning after a better-than-expected earnings report and CEO Elon Musk’s revelation that SpaceX and Tesla had formed special committees to discuss a ...",
       "image": "https://www.bing.com/th?id=ONUT.kof2CZF5UaNjw_6_8NlPfA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "d1a332eadd07",
-      "topic": "tesla",
-      "title": "SpaceX stock jumps 9% after Musk says the company is exploring a merger with Tesla",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/spacex-stock-jumps-10-after-musk-says-the-company-is-exploring-a-merger-with-tesla/ar-AA2fIS7k",
-      "published": "2026-10-21T06:41:57Z",
-      "snippet": "Elon Musk said that SpaceX and Tesla have formed special committees to discuss the mechanics of a potential combination.",
-      "image": "https://www.bing.com/th?id=ONUT.TRO9W7fVT4-3zCd2VT_hjQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -327,18 +351,6 @@
       "image": "https://www.bing.com/th?id=ONUT.wXrzSRg1t673gLgNXfFd3g&pid=News&w=640",
       "kind": "general",
       "score": 7
-    },
-    {
-      "id": "858d825eed7a",
-      "topic": "spacex",
-      "title": "Wall Street ticks higher after SpaceX jumps and AI stocks steady",
-      "source": "Associated Press News on MSN",
-      "url": "https://www.msn.com/en-us/money/top-stocks/wall-street-ticks-higher-after-spacex-jumps-and-ai-stocks-steady/ar-AA2fHQFf",
-      "published": "2026-10-21T06:36:01Z",
-      "snippet": "The U.S. stock market is drifting higher on Wednesday as strong profit reports from SpaceX, Capital One Financial and other big companies help offset updates from Netflix and AT&T that investors found ...",
-      "image": "https://www.bing.com/th?id=ONUT.sR0slYfPmIkxWUVoo3JYHQ&pid=News&w=640",
-      "kind": "general",
-      "score": 9
     },
     {
       "id": "6d111e550828",
@@ -377,17 +389,6 @@
       "score": 11
     },
     {
-      "id": "544846ebb7c0",
-      "topic": "spacex",
-      "title": "Elon Musk’s SpaceX posts first profit since going public",
-      "source": "The Washington Post",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNZ0lUWi0yLXlhTEpUZVBWa0dybVBZUGFvc2JUcjZXdndNSm1QM0pDVDBxUkdpWmd6WUZUbEpGVUtMUjhJMXdPVWlRX2RwZlgzUFVXUmkzUEhmN09ncEM3aHZaZDdjUmtIWFdIcWhvYWlYQ0VOQ0JvMDZ2Rk1TTHotLThMWDgxa3FpRG9DTmF6aVhYZnF4TWVyV19PVUFWUjU5UmZxNWwxdm9DSFFYZEE?oc=5",
-      "published": "2026-10-21T05:54:13Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "cd39935b253d",
       "topic": "spacex",
       "title": "Burnham voices concern over Ukraine facing Starlink restrictions",
@@ -411,90 +412,6 @@
       "score": 12
     },
     {
-      "id": "2720aa8288b7",
-      "topic": "tesla",
-      "title": "Tesla Cybertruck Still Broken After Five Months and $63,000 in Repairs",
-      "source": "YAHOO!",
-      "url": "https://autos.yahoo.com/ownership/articles/tesla-cybertruck-still-broken-five-120033028.html",
-      "published": "2026-10-21T05:01:00Z",
-      "snippet": "A Florida Tesla Cybertruck owner says his truck has spent five months at a collision center, accumulated approximately $63,000 in damage, and been declared ready for pickup seven times. Each time, ...",
-      "image": "https://www.bing.com/th?id=ONUT.sVaT2mc34UZIvxf43htN2w&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "ac2801cde59f",
-      "topic": "tesla",
-      "title": "YouTuber disappointed his gold-plated Tesla Cybertruck sells for less than expected",
-      "source": "Moneywise on MSN",
-      "url": "https://www.msn.com/en-us/autos/general/youtuber-disappointed-his-gold-plated-tesla-cybertruck-sells-for-less-than-expected/ar-AA2fJaZa",
-      "published": "2026-10-21T04:00:00Z",
-      "snippet": "Custom modifications on your car can make you stand out but experts warn it could end up costing you down the road.",
-      "image": "https://www.bing.com/th?id=ONUT.rkTlPrbcPxeml-MiRxbFeg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "37a0a75c6c2e",
-      "topic": "tesla",
-      "title": "Tesla earnings are just hours away. Here’s what Wall Street wants to know.",
-      "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/livecoverage/tesla-earnings-stock-results-q3-musk-tsla",
-      "published": "2026-10-21T03:59:00Z",
-      "snippet": "Tesla reports third-quarter earnings on Wednesday. Investors will be more focused on the company's commentary than on the financial results themselves.",
-      "image": "https://www.bing.com/th?id=ONUT.7hv4c0UMNTm0J0L4e8kxLA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "b008f64968a2",
-      "topic": "spacex",
-      "title": "SpaceX stock jumps 10% after Musk says the company is exploring a merger with Tesla",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/spacex-stock-jumps-10-after-musk-says-the-company-is-exploring-a-merger-with-tesla/ar-AA2fIS7k",
-      "published": "2026-10-21T03:39:00Z",
-      "snippet": "Elon Musk said that SpaceX and Tesla have formed special committees to discuss the mechanics of a potential combination.",
-      "image": "https://www.bing.com/th?id=ONUT.xEUC2VQGDT8KfzD0FS0PAA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "f267cfc80ce8",
-      "topic": "tesla",
-      "title": "Tesla-SpaceX deal: Wall St says inevitable but Musk says it's not certain",
-      "source": "Reuters on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-spacex-deal-wall-st-says-inevitable-but-musk-says-its-not-certain/ar-AA2fISH2",
-      "published": "2026-10-21T03:34:54Z",
-      "snippet": "By Akash Sriram Oct 21 (Reuters) - Elon Musk sees \"a lot of merit\" in combining Tesla and SpaceX, but the decision is not his to make: two special committees he cannot join and a Tesla shareholder ...",
-      "image": "https://www.bing.com/th?id=ORMS.fc36538cbc7c5af699c72201e4a90c02&pid=News&w=640",
-      "kind": "general",
-      "score": 9
-    },
-    {
-      "id": "3fad407a8218",
-      "topic": "tesla",
-      "title": "In Minnesota, raccoons chew up a Cybertruck's vault after seeming to mistake it for a dumpster",
-      "source": "The Cool Down on MSN",
-      "url": "https://www.msn.com/en-us/autos/general/in-minnesota-raccoons-chew-up-a-cybertruck-s-vault-after-seeming-to-mistake-it-for-a-dumpster/ar-AA2fJiNz",
-      "published": "2026-10-21T03:27:00Z",
-      "snippet": "\"Glad it wasn't a bear. Damage would have been worse.\" ...",
-      "image": "https://www.bing.com/th?id=ONUT.BZ36DOOL5PJBmgewzRwLxg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "d21abd145486",
-      "topic": "tesla",
-      "title": "Wall Street is going into Tesla's Q3 earnings looking for fresh merger clues and AI updates",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-us/news/other/wall-street-is-going-into-teslas-q3-earnings-looking-for-fresh-merger-clues-and-ai-updates/ss-AA2fJvwc",
-      "published": "2026-10-21T03:16:00Z",
-      "snippet": "Tesla is on deck to report third-quarter earnings. Investors are seeking guidance on robotaxis, Optimus, and a possible merger with SpaceX.",
-      "image": "https://www.bing.com/th?id=ONUT.jROfQ_h0YIfZ3GtXeDproQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "2d321e014edc",
       "topic": "spacex",
       "title": "SpaceX’s Wireless Ambitions Batter Telecom Stocks",
@@ -507,20 +424,8 @@
       "score": 8
     },
     {
-      "id": "5d266a9e2fd1",
+      "id": "97a38d08fa16",
       "topic": "spacex",
-      "title": "Our Takeaways From SpaceX’s Q3 Earnings",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-21-2026/card/ux9aAQrGj1uTCLK9iBLT",
-      "published": "2026-10-21T03:07:00Z",
-      "snippet": "In its second earnings report since its market debut, Elon Musk's rocket company and satellite-internet provider had a lot to say. Here are a couple of highlights: SpaceX is making money: AI and ...",
-      "image": "https://www.bing.com/th?id=ONUT.dos6ts7UQwfp7P8vNiEKJg&pid=News&w=640",
-      "kind": "general",
-      "score": 8
-    },
-    {
-      "id": "eeeb26ad91b6",
-      "topic": "tesla",
       "title": "SpaceX And Tesla Are Exploring A Possible Merger",
       "source": "Engadget on MSN",
       "url": "https://www.msn.com/en-us/technology/tech-companies/spacex-and-tesla-are-exploring-a-possible-merger/ar-AA2fJlEi",
@@ -600,18 +505,6 @@
       "score": 4
     },
     {
-      "id": "388e0a08dee9",
-      "topic": "spacex",
-      "title": "Elon Musk teases a 'profound technology milestone' for Starship's flight next month",
-      "source": "TweakTown",
-      "url": "https://www.tweaktown.com/news/114198/elon-musk-teases-a-profound-technology-milestone-for-starships-flight-next-month/index.html",
-      "published": "2026-10-21T01:20:00Z",
-      "snippet": "SpaceX will try to catch both Starship stages on Flight 15 next month, which Elon Musk says would be the first full recovery of an orbital launch vehicle.",
-      "image": "https://www.bing.com/th?id=ONUT.zxJkFVExltH_APwStvcvFg&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "4455fcbdd9b0",
       "topic": "grok",
       "title": "Musk says SpaceX-Tesla merger a ‘good idea’ as AI revenue jumps ninefold",
@@ -623,19 +516,8 @@
       "score": 1
     },
     {
-      "id": "514894f2b59f",
-      "topic": "grok",
-      "title": "SpaceX quarterly revenue jumps, led by rental income for data-center capacity",
-      "source": "NBC News",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNZU1YMzVaYWJkSlB0UUVRQm5sdjVrWTdsWU0yNkFyVmlzY0VYSy1pSDZ4T0EydklZeElsczVhNldmOTBFRi02dmM3MERzWHJDUkZYZFpCV196OVBxeDNWd21CTXhiSWY0YWY2bjAwNUU1R1NKR2J5N0R6b1J0N0tJMzZldE5BVXRwNzlFNnRyTG43UkhiVmJ4VHZPaVVQYVFLalE?oc=5",
-      "published": "2026-10-20T21:18:22Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "6756052ea574",
-      "topic": "tesla",
+      "id": "c18f0c0499bb",
+      "topic": "spacex",
       "title": "Why does Elon Musk want to merge Tesla and SpaceX?",
       "source": "BBC on MSN",
       "url": "https://www.msn.com/en-us/news/other/why-does-elon-musk-want-to-merge-tesla-and-spacex/ar-AA2fHGCF",
@@ -679,52 +561,28 @@
       "score": 4
     },
     {
-      "id": "61deb94227a1",
+      "id": "93dc5cc0bbc8",
       "topic": "spacex",
-      "title": "SpaceX's Starship to fly twice a week by 2027-end",
-      "source": "NewsBytes",
-      "url": "https://www.newsbytesapp.com/news/science/spacex-aims-to-make-starship-fly-like-an-airplane/story",
-      "published": "2026-10-20T19:40:00Z",
-      "snippet": "SpaceX aims to catch its Starship spacecraft upon reentry, with Elon Musk targeting weekly flights by 2027, revolutionizing space travel frequency and efficiency.",
-      "image": "https://www.bing.com/th?id=ONUT._UUN_J52ASR1wN-I1js58Q&pid=News&w=640",
+      "title": "SpaceX Is Finally Going for the Starship Double Catch",
+      "source": "Gizmodo",
+      "url": "https://gizmodo.com/spacex-is-finally-going-for-the-starship-double-catch-2000828826",
+      "published": "2026-10-20T19:19:00Z",
+      "snippet": "Starship’s most recent test flight sent the SpaceX megarocket to orbit for the first time, marking a major technical milestone that will pave the way for commercial viability. Still, that road remains ...",
+      "image": "https://www.bing.com/th?id=ONUT.JH3h0sWebxLyaPjGxcYDqw&pid=News&w=640",
       "kind": "launch",
       "score": 12
     },
     {
-      "id": "9fd5f3ca866c",
+      "id": "943d804ff770",
       "topic": "tesla",
-      "title": "Elon Musk says Tesla-SpaceX merger would be 'a good idea' as companies form special committees",
-      "source": "Fox Business on MSN",
-      "url": "https://www.msn.com/en-us/news/other/elon-musk-says-tesla-spacex-merger-would-be-a-good-idea-as-companies-form-special-committees/ar-AA2fGRvP",
-      "published": "2026-10-20T19:20:07Z",
-      "snippet": "Both Tesla and SpaceX have formed special committees to explore a potential merger, with Elon Musk citing overlap in robotics and chip design.",
-      "image": "https://www.bing.com/th?id=ONUT.UpkQp6YcYx8EFQjpfQb5sQ&pid=News&w=640",
+      "title": "Tesla Stock: Earnings Are All About a SpaceX Merger",
+      "source": "Barron's",
+      "url": "https://www.barrons.com/livecoverage/tesla-earnings-stock-price-musk-ai-evs",
+      "published": "2026-10-20T18:05:00Z",
+      "snippet": "Follow live coverage of Tesla's third-quarter earnings, which are due to be released after Wednesday's market close, and the stock's reaction.",
+      "image": "https://www.bing.com/th?id=ONUT.f81cNZX7E1TddHLBko7LoQ&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "e61392e396fe",
-      "topic": "spacex",
-      "title": "Musk Aims for Weekly Starship Flights Next Year",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026/card/UwauKoy1896jUW9DYvjG",
-      "published": "2026-10-20T19:16:00Z",
-      "snippet": "Musk started his Q&A session with a simulation video depicting plans for the launch of Starship Flight 15, which will attempt to catch both the booster and ship for later reuse. \"We expect the ...",
-      "image": "https://www.bing.com/th?id=ONUT.dkFYoMZDxbzqom4dQPkVkw&pid=News&w=640",
-      "kind": "launch",
-      "score": 16
-    },
-    {
-      "id": "a2d0d5e2f4f0",
-      "topic": "spacex",
-      "title": "Next Starship Flight Will Try to Recover Both Booster and Ship",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026/card/wUqtzjOLvutnSOA3icEI",
-      "published": "2026-10-20T19:16:00Z",
-      "snippet": "SpaceX will have its 15th Starship launch next month, and Elon Musk says the mission will attempt to catch both the booster and the ship. “It will be the first time an orbital launch vehicle has been ...",
-      "image": "https://www.bing.com/th?id=ONUT.ZeXRgqXoE-PVkhZEo-MAHQ&pid=News&w=640",
-      "kind": "launch",
-      "score": 16
     },
     {
       "id": "eddc3ab9786a",
@@ -734,18 +592,6 @@
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPQTR3RWVJT051ZmpnUXg1S0R0eEdvbldXaUdpMEttV3RQYV8zWVJKMkhOekk2TEpEc21ZMG5GUmRvWjZrWU9NWDRyWHoxMENmYk9Zc1pGWjBCT1dZX0g0N0ZvQjQ3U3hveXZoZTRRNjNrSmV6ZWNVRS1rX01IdGVoV0lJektDZzRaVXBSNkItcFVKUFQ3RUZITEFuUkJUNHpkMXd3TmV6UXo?oc=5",
       "published": "2026-10-20T17:37:08Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "a30353c09d42",
-      "topic": "spacex",
-      "title": "SpaceX and Tesla Have Officially Begun Merger Discussions",
-      "source": "Gizmodo",
-      "url": "https://gizmodo.com/spacex-and-tesla-have-officially-begun-merger-discussions-2000828355",
-      "published": "2026-10-20T17:34:00Z",
-      "snippet": "Musk said its not a certainty, but the two companies have formed special committees to lay down the terms for a potential merger.",
-      "image": "https://www.bing.com/th?id=ONUT.6JPEfCbsEb35gQK6HYy55w&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -761,18 +607,6 @@
       "score": 4
     },
     {
-      "id": "38ae4cff93ae",
-      "topic": "tesla",
-      "title": "World in Brief: A SpaceX-Tesla tie-up in the works; American envoy meets Vladimir Putin",
-      "source": "The Economist",
-      "url": "https://www.economist.com/the-world-in-brief/2026/10/21/dfe62254-9772-4b75-a02f-49351a5d27f3",
-      "published": "2026-10-20T17:00:00Z",
-      "snippet": "Brent crude briefly hit $111 a barrel, a price it has not reached since May. The global benchmark has been driven up by recent reports of attacks on tankers in and beyond the Strait of Hormuz, ...",
-      "image": "https://www.bing.com/th?id=ONUT.fU1kODBlIzG3llgMz8G40A&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "1f89bc487790",
       "topic": "grok",
       "title": "Who’s the Best Basketball Handicapper? BASports.com Sweeps Vegas Basketball Contests Last Season with Dominant Margin",
@@ -784,27 +618,27 @@
       "score": 4
     },
     {
-      "id": "357c04cf1434",
-      "topic": "tesla",
-      "title": "Tesla and SpaceX have set up committees to explore a merger",
-      "source": "Insider",
-      "url": "https://www.businessinsider.com/tesla-spacex-merger-exploratory-commitees-2026-10",
-      "published": "2026-10-20T16:16:00Z",
-      "snippet": "Elon Musk, who is CEO of both companies and owns billions in stock, said he can't be a part of those merger discussions.",
-      "image": "https://www.bing.com/th?id=ONUT.0pBXBNeJOv3FgDgMl7fAeQ&pid=News&w=640",
+      "id": "01f38228bcd6",
+      "topic": "spacex",
+      "title": "SpaceX is spending more than ever on AI. Its AI business is also bringing in more than Starlink for the first time.",
+      "source": "Insider on MSN",
+      "url": "https://www.msn.com/en-us/news/other/spacex-is-spending-more-than-ever-on-ai-its-ai-business-is-also-bringing-in-more-than-starlink-for-the-first-time/ar-AA2fFWRy",
+      "published": "2026-10-20T16:33:00Z",
+      "snippet": "SpaceX's AI spending was lower than Wall Street expected but higher than the company spent the quarter before.",
+      "image": "https://www.bing.com/th?id=ORMS.1b5787597349ffd9bb7bd57671246476&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "1e0608bbf303",
+      "id": "72e043802352",
       "topic": "grok",
-      "title": "Mercury 3 vs Grok 4.6: Two Speed Claims, One Measured",
-      "source": "OrcaRouter",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9ya2VCRE8wZjZYNjQ2NEN3MUxBb2ZsbzlwVnp0Z0pxV3VVQmJWNVBmWGhaQ2oySzgzU2k0RDRQVGhSNGFjQmRUX1BXR0kyam9JMDBETlVNRldPWHg1ME5KZ19R?oc=5",
-      "published": "2026-10-20T15:35:15Z",
+      "title": "Zetaris launches AI data harness with SpaceXAI tie-up",
+      "source": "IT Brief Asia",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOU19xUmY4Z21fUVRqVGU3bWNmYTh5VU9ucmN0eTl2RXN5OGN5Zlk2S3Z5dEZnZjhwSmNqbnAwcHE2Mk5PWGVXU3NGMjQtc1F6MWhZWnFZY3E3cUZzTk5HTk43M3VuaXNrRXNGeTh5SUx5X3MwUG9sLURSOTVzd3Z2WjZBYmE4TnM?oc=5",
+      "published": "2026-10-20T16:30:00Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
+      "kind": "launch",
+      "score": 12
     },
     {
       "id": "2b77d3f3a9f9",
@@ -819,28 +653,16 @@
       "score": 12
     },
     {
-      "id": "f4f263afd6c1",
+      "id": "d0545aef8c06",
       "topic": "spacex",
-      "title": "SpaceX will try catching Starship and its booster for first time, Musk says",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/science/1014913/spacex-will-try-catching-starship-and-its-booster-for-first-time-musk-says",
-      "published": "2026-10-20T14:02:00Z",
-      "snippet": "SpaceX CEO Elon Musk said the company would attempt to catch Starship and its booster next month, with the goal of recovering the entire orbital launch system for the first time. If successful, Musk ...",
-      "image": "https://www.bing.com/th?id=ONUT.n6Q9KOXHVztVJFHJL5UeHw&pid=News&w=640",
-      "kind": "launch",
-      "score": 15
-    },
-    {
-      "id": "2ffe44cf436d",
-      "topic": "spacex",
-      "title": "SpaceX plans to finally 'catch' Starship next month",
-      "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/livecoverage/spacex-earnings-stock-results-musk-spcx/card/spacex-plans-to-finally-catch-starship-next-month-BI2G3gYGqqEu07SBYi2d",
-      "published": "2026-10-20T04:05:00Z",
-      "snippet": "SpaceX plans to try and catch its Starship rocket for the very first time next month, according to CEO Elon Musk. The company played a simulation of how it would go down, showing a rendered Starship ...",
-      "image": "https://www.bing.com/th?id=ONUT.3y4YLjlfxEsAxhmlQm3JFA&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
+      "title": "SpaceX's latest earnings humble the rocket industry",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/crypto/markets/spacexs-latest-earnings-humble-the-rocket-industry",
+      "published": "2026-10-20T14:25:00Z",
+      "snippet": "Here's what SpaceX stock investors should care about after Q3 2026 earnings: revenue, profit, Starlink, AI and Elon Musk's bitcoin holdings.",
+      "image": "https://www.bing.com/th?id=ONUT.f5l_OFWYsh1pFqvbRgseUw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     }
   ]
 }
