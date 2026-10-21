@@ -895,6 +895,7 @@
   const start = () => {
     const btn = document.getElementById("sl-globe-load");
     if (btn) { btn.disabled = true; btn.textContent = "Loading 3D globe…"; }
+    if (window.loadStarlinkGp) window.loadStarlinkGp();
     const satP = window.loadSatellite ? window.loadSatellite() : Promise.resolve();
     Promise.all([window.loadCesium(), satP]).then(() => { if (btn) btn.remove(); wait(); }).catch(() => {
       if (btn) { btn.disabled = false; btn.textContent = "Load 3D globe"; }

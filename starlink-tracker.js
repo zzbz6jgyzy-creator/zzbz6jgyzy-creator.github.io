@@ -69,9 +69,37 @@
   };
 
   const stampText = writeStamp();
-  document.querySelectorAll('script[src*="starlink-gp.js"]').forEach((s) => {
+  const loadGp = () => {
+    if (window.STARLINK_GP) {
+      writeStamp();
+      return;
+    }
+    const existing = document.querySelector('script[src*="starlink-gp.js"]');
+    if (existing) {
+      existing.addEventListener("load", writeStamp);
+      return;
+    }
+    let src = "/starlink-gp.js";
+    const ptr = document.getElementById("sd-late-starlink-gp");
+    if (ptr) {
+      try {
+        src = JSON.parse(ptr.textContent).src || src;
+      } catch {
+        /* keep default */
+      }
+    }
+    const s = document.createElement("script");
+    s.src = src;
+    s.async = true;
     s.addEventListener("load", writeStamp);
-  });
+    document.head.appendChild(s);
+  };
+  window.loadStarlinkGp = loadGp;
+  const afterPaint = () => {
+    if (typeof requestIdleCallback === "function") requestIdleCallback(loadGp, { timeout: 1500 });
+    else window.setTimeout(loadGp, 0);
+  };
+  requestAnimationFrame(() => requestAnimationFrame(afterPaint));
 
   const $ = (sel) => document.querySelector(sel);
   const fmt = (n) => Number(n).toLocaleString("en-US");

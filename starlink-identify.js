@@ -481,6 +481,23 @@
     applyCompass();
   };
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bind);
-  else bind();
+  const arm = () => {
+    const el = document.getElementById("identify");
+    if (el && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (es) => {
+          if (es.some((x) => x.isIntersecting)) {
+            io.disconnect();
+            bind();
+          }
+        },
+        { rootMargin: "400px" }
+      );
+      io.observe(el);
+      return;
+    }
+    bind();
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", arm);
+  else arm();
 })();

@@ -2,8 +2,14 @@
 """Replace first-party <script src> tags with hashed bundle tags.
 
 Idempotent markers: <!--sd:bundles--> ... <!--/sd:bundles-->
-Keeps theme-boot.js (head, blocking), starlink-gp.js, workers, type=module
-scripts, Cloudflare/Twitter tags, and inline scripts.
+Keeps theme-boot.js (head, blocking), workers, type=module scripts,
+Cloudflare/Twitter tags, and inline scripts.
+
+Page spec keys:
+  bundles       deferred (run in order, before first paint)
+  asyncBundles  async hashed bundles (do not block hero paint)
+  lateFiles     first-party files injected after first paint (e.g. starlink-gp.js)
+  asyncFiles    alias of lateFiles (kept for older specs)
 
 Run after scripts/build-js.mjs:
     python3 scripts/inject-js-bundles.py
@@ -60,7 +66,20 @@ def src_name(src: str) -> str:
     return path.lstrip("/")
 
 
-def should_remove(src: str) -> bool:
+def late_files(spec: dict | None) -> list[str]:
+    spec = spec or {}
+    return list(spec.get("lateFiles") or spec.get("asyncFiles") or [])
+
+
+def async_file_names(spec: dict | None) -> set[str]:
+    names = set()
+    for f in late_files(spec):
+        names.add(f.lstrip("/"))
+        names.add(f.split("/")[-1])
+    return names
+
+
+def should_remove(src: str, spec: dict | None = None) -> bool:
     name = src_name(src)
     if name.startswith("http://") or name.startswith("https://"):
         return False
@@ -68,11 +87,13 @@ def should_remove(src: str) -> bool:
         return False
     if name in KEEP:
         return False
+    base = name.split("/")[-1]
+    if name in async_file_names(spec) or base in async_file_names(spec):
+        return True
     if name.startswith("vendor/") or name.startswith("assets/vendor/") or name.startswith("workers/"):
         return False
     if name.startswith(CFG["outDir"].rstrip("/") + "/"):
         return True
-    base = name.split("/")[-1]
     return name in BUNDLED or base in BUNDLED
 
 
@@ -96,15 +117,29 @@ def live_from_html(html: str, spec: dict) -> str:
     return spec.get("livePage") or ""
 
 
-def bundle_tag(name: str, extra: str) -> str:
+def bundle_tag(name: str, extra: str, how: str = "defer") -> str:
     info = MANIFEST["bundles"][name]
-    attrs = ' defer src="' + info["file"] + '"'
+    attrs = f' {how} src="' + info["file"] + '"'
+    if how == "async":
+        attrs += ' fetchpriority="low"'
     if extra:
         attrs += " " + extra
     return f"<script{attrs}></script>"
 
 
-def render_block(spec: dict, grow: list[str], live: str) -> str:
+def late_file_tag(html: str, rel: str) -> str:
+    name = rel.lstrip("/")
+    m = re.search(
+        rf'(?:src="|"src":\s*")(/{re.escape(name)}\?v=\d+)',
+        html,
+    )
+    src = m.group(1) if m else "/" + name
+    key = name[:-3] if name.endswith(".js") else name
+    payload = json.dumps({"src": src}, separators=(",", ":"))
+    return f'<script type="application/json" id="sd-late-{key}">{payload}</script>'
+
+
+def render_block(spec: dict, grow: list[str], live: str, html: str) -> str:
     lines = ["    " + BEGIN]
     for name in spec["bundles"]:
         extra = []
@@ -113,13 +148,20 @@ def render_block(spec: dict, grow: list[str], live: str) -> str:
         if live and "live.js" in MANIFEST["bundles"][name]["sources"]:
             extra.append(f'data-page="{live}"')
         lines.append("    " + bundle_tag(name, " ".join(extra)))
+    for name in spec.get("asyncBundles") or []:
+        extra = []
+        if live and "live.js" in MANIFEST["bundles"][name]["sources"]:
+            extra.append(f'data-page="{live}"')
+        lines.append("    " + bundle_tag(name, " ".join(extra), "async"))
+    for rel in late_files(spec):
+        lines.append("    " + late_file_tag(html, rel))
     lines.append("    " + END)
     return "\n".join(lines) + "\n"
 
 
-def strip_bundled_scripts(html: str) -> str:
+def strip_bundled_scripts(html: str, spec: dict | None = None) -> str:
     def repl(m: re.Match) -> str:
-        return "" if should_remove(m.group(3)) else m.group(0)
+        return "" if should_remove(m.group(3), spec) else m.group(0)
 
     html = SRC_RX.sub(repl, html)
     html = re.sub(r"\n{3,}", "\n\n", html)
@@ -129,10 +171,13 @@ def strip_bundled_scripts(html: str) -> str:
 def patch(html: str, spec: dict) -> str:
     grow = grow_from_html(html, spec)
     live = live_from_html(html, spec)
-    block = render_block(spec, grow, live)
-    if BEGIN in html:
-        return MARKER_RX.sub(block, html, count=1)
-    html = strip_bundled_scripts(html)
+    block = render_block(spec, grow, live, html)
+    marker = MARKER_RX.search(html)
+    if marker:
+        before = strip_bundled_scripts(html[: marker.start()], spec)
+        after = strip_bundled_scripts(html[marker.end() :], spec)
+        return before + block + after
+    html = strip_bundled_scripts(html, spec)
     if "</body>" not in html:
         return html.rstrip() + "\n" + block
     return html.replace("</body>", block + "  </body>", 1)

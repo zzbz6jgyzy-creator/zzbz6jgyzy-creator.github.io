@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-21T09:34:26.341Z",
+  "generated": "2026-10-21T09:50:14.837Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.745ee5f257.js",
@@ -52,16 +52,22 @@
       ]
     },
     "starlink": {
-      "file": "/assets/js/starlink.bundle.eefb1c51d7.js",
-      "bytes": 45413,
+      "file": "/assets/js/starlink.bundle.9dd404062d.js",
+      "bytes": 14032,
       "sources": [
         "starlink-data.js",
         "starlink-live.js",
         "starlink-tracker.js",
-        "starlink-identify.js",
-        "cesium-lazy.js",
-        "starlink-globe.js",
         "countup.js"
+      ]
+    },
+    "starlink-orbit": {
+      "file": "/assets/js/starlink-orbit.bundle.9f42149221.js",
+      "bytes": 32101,
+      "sources": [
+        "cesium-lazy.js",
+        "starlink-identify.js",
+        "starlink-globe.js"
       ]
     },
     "tesla": {
