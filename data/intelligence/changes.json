@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-21T19:16:40.144Z",
+  "updated": "2026-10-21T19:41:10.391Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-robotaxi-safety-report-zeros.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla’s first Robotaxi safety report: 3.1 million miles, zero injuries. What the zeros prove, and what they don’t",
+      "at": "2026-10-21T19:40:28.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-robotaxi-safety-report-zeros.html",
+      "href": "/dispatch/tesla-robotaxi-safety-report-zeros.html",
+      "summary": "No injuries, airbag deployments or pedestrians hit in 3.1 million driverless miles. I ran the odds on each zero and put it next to Waymo’s 271 million miles.",
+      "title": "Tesla’s first Robotaxi safety report: 3.1 million miles, zero injuries. What the zeros prove, and what they don’t",
+      "id": "logged|dispatch:/dispatch/tesla-robotaxi-safety-report-zeros.html|2026-10-21T19:40:28.000Z|Tesla’s first Robotaxi safety report: 3.1 million miles, zero injuries. What the zeros prove, and what they don’t"
+    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.38.5.5",
@@ -238,23 +255,6 @@
       "summary": "The 2026 proxy: re-elect Musk, Denholm and Straubel, say-on-pay and PwC on 3 Dec. Last year’s ballot had 14 items.",
       "title": "Tesla’s December vote: three items, no shareholder proposals",
       "id": "logged|dispatch:/dispatch/tesla-2026-proxy-three-items.html|2026-10-19T19:35:00.000Z|Tesla’s December vote: three items, no shareholder proposals"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-eu-spectrum-bid.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Europe’s big four carriers eye Starlink’s satellite airwaves",
-      "at": "2026-10-19T18:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-eu-spectrum-bid.html",
-      "href": "/dispatch/starlink-eu-spectrum-bid.html",
-      "summary": "A letter of intent to explore a joint EU 2 GHz bid, an EU proposal still awaiting approval, and a US warning of “devastating” retaliation.",
-      "title": "Europe’s big four carriers eye Starlink’s satellite airwaves",
-      "id": "logged|dispatch:/dispatch/starlink-eu-spectrum-bid.html|2026-10-19T18:40:00.000Z|Europe’s big four carriers eye Starlink’s satellite airwaves"
     },
     {
       "type": "changed",
