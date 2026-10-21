@@ -1,15 +1,16 @@
 window.TESLA_UPDATES = {
-  updated: "2026-10-16",
+  updated: "2026-10-21",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
     headline: "FSD right now",
     lines: [
-      "Newest reporting in the Teslascope sample, HW4 / AI4: FSD Supervised v14.3.12 on 2026.38.5, plus a small 2026.38.5.1 point release (same FSD) that started reaching US cars on 13 Oct. Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early wave, mostly US, with the first cars in Mexico and Canada reporting 2026.38.5.",
-      "Wider North America HW4 build: v14.3.11 on 2026.33.5 (US and Canada). A big slice of US cars is still on v14.3.10 (2026.27.11). Automatic Collision Evasion is in 14.3.11 and 14.3.12 — North America only.",
+      "Newest reporting, HW4 / AI4: FSD Supervised v14.3.13 on 2026.38.5.10, first spotted on a handful of US cars on 20 Oct (about 0.3% of the Teslascope sample). Its notes add better handling of small animals, rare objects leaning into the road, short system glitches and driver-monitoring gaze tracking, plus one shared model for Smart Summon, FSD and Robotaxi.",
+      "Most common FSD build on 2026.38: v14.3.12 on 2026.38.5.1, the point release that started reaching US cars on 13 Oct. Mostly US, with the first cars in Mexico and Canada on 2026.38.5.",
+      "Wider North America HW4 build: v14.3.11 on 2026.33.5 (US and Canada). A big slice of US cars is still on v14.3.10 (2026.27.11). Automatic Collision Evasion is in 14.3.11, 14.3.12 and 14.3.13 — North America only.",
       "North America, HW3: FSD Supervised v14.3 Lite on 2026.33.5 and 2026.38.5. Parking, unparking and start-from-park. No Collision Evasion.",
       "Europe: FSD Supervised v14.2.2.6 on 2026.33.100. Seen so far in the Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia and Slovenia.",
-      "The US FSD stack is ahead. Europe waits on approvals. That is why a car in the EU can still be on 2026.32.7 while a car in California is already on 14.3.12.",
+      "The US FSD stack is ahead. Europe waits on approvals. That is why a car in the EU can still be on 2026.32.7 while a car in California is already on 14.3.13.",
     ],
   },
   countries: [
@@ -69,6 +70,30 @@ window.TESLA_UPDATES = {
     { code: "SA", name: "Saudi Arabia", aliases: ["saudi"] },
   ],
   versions: [
+    {
+      id: "2026.38.5.10",
+      family: "2026.38",
+      date: "2026-10-20",
+      kind: "fsd",
+      status: "early",
+      headline: "FSD v14.3.13 — North America, early wave",
+      summary:
+        "New HW4 FSD build on the 2026.38 branch. v14.3.13 keeps the 14.3.12 improvements and adds better handling of small animals, odd objects leaning into the car's path, brief system faults and driver-monitoring. HW3 stays on v14.3 Lite. Only a handful of US cars so far.",
+      features: [
+        "HW4: v14.3.13 — better reactions to small animals, and to rare objects hanging or leaning into the car's path.",
+        "Keeps control through short system glitches and recovers on its own, so fewer needless disengagements.",
+        "Sharper driver monitoring: better eye-gaze tracking, glasses handling and accuracy in changing light.",
+        "One shared model for Actually Smart Summon, FSD and Robotaxi. Parking options now show on the map when you arrive.",
+        "Pick a reason after you take over, and see your longest intervention-free FSD streak. Tesla lists pothole avoidance as coming next.",
+        "HW3: v14.3 Lite, unchanged. Cabin items from 2026.38.5 (Halloween Mode, Emergency Drive Away, Set Arrival Energy) carry over.",
+      ],
+      fsd: "v14.3.13 (HW4) · v14.3 Lite (HW3) · United States",
+      models: ["3", "Y", "S", "X", "Cybertruck"],
+      hardware: ["HW3", "HW4"],
+      reached:
+        "First spotted on 20 Oct 2026 on US cars only. About 0.2–0.3% of tracked fleets so far (TeslaFi via Not a Tesla App; Teslascope). Not a European build.",
+      countries: ["US"],
+    },
     {
       id: "2026.38.5.1",
       family: "2026.38",

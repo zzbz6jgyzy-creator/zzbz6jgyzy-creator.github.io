@@ -1,12 +1,12 @@
 // Cybercab Tracker data. Edit this file to update the page.
 // Every item needs a real source link. Change `updated` when you edit.
 window.CYBERCAB = {
-  updated: "2026-10-20",
-  updatedLabel: "20 Oct 2026",
+  updated: "2026-10-21",
+  updatedLabel: "21 Oct 2026",
   stats: [
     { value: "300+", label: "Cybercabs serving Austin (Tesla Robotaxi, 10 Oct 2026)", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
-    { live: "cybercab", value: "349", label: "Cybercabs registered (unchanged since 15 Oct; checked 20 Oct 2026). Texas DMV list, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
-    { live: "share", value: "35%", label: "Cybercab share of Tesla’s ~985 estimated active robotaxis, all states (approx., Platform Aeronaut, 20 Oct 2026)", src: "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi" },
+    { live: "cybercab", value: "349", label: "Cybercabs registered (unchanged since 15 Oct; checked 21 Oct 2026). Texas DMV list, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { live: "share", value: "35%", label: "Cybercab share of Tesla’s ~985 estimated active robotaxis, all states (approx., Platform Aeronaut, 21 Oct 2026)", src: "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi" },
     { value: "125k+", label: "Listed yearly production capacity at Giga Texas", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
   ],
   fleet: [
