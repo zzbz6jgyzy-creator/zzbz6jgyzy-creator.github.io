@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-21T06:45:01.418Z",
+  "generatedAt": "2026-10-21T07:08:18.676Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -10,12 +10,12 @@
       "field": "event:starship-flight-15",
       "value": "2026-11-08T06:00:00.000Z|net",
       "label": "Starship Flight 15",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "estimated",
       "source": "FAA CADENA / air-traffic planning slides (NET 8 Nov)",
       "sourceUrl": "",
       "href": "/calendar.html",
-      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. Musk has said 4 to 6 weeks (from 10 Oct). Ship 42 needs extra cryo testing; Booster 22 has not static-fired."
+      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Ship 42 needs extra cryo testing; Booster 22 has not static-fired."
     },
     {
       "id": "spacex-launches:event:crs35-docking",
@@ -24,7 +24,7 @@
       "field": "event:crs35-docking",
       "value": "2026-10-15T14:27:00.000Z|done",
       "label": "Dragon · CRS-35 docked with the ISS",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "independently_corroborated",
       "source": "NASA space station blog, 15 Oct 2026: docked at 10:27 a.m. EDT",
       "sourceUrl": "",
@@ -38,7 +38,7 @@
       "field": "event:tesla-roadster-demo",
       "value": "2026-10-16T00:55:00.000Z|ended",
       "label": "Tesla Roadster reveal",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "independently_corroborated",
       "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
       "sourceUrl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
@@ -50,14 +50,14 @@
       "topic": "production",
       "tracker": "launches",
       "field": "event:spacex-q3-2026-earnings",
-      "value": "2026-10-20T20:30:00.000Z|confirmed",
+      "value": "2026-10-20T20:30:00.000Z|ended",
       "label": "SpaceX Q3 2026 earnings call",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
       "sourceUrl": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
-      "href": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
-      "summary": "Q3 2026 results after the US close on Tue 20 Oct, then a live audio-only webcast at 3:30 p.m. CT, per SpaceX IR. Also livestreamed on X @SpaceX."
+      "href": "/dispatch/spacex-q3-2026-results.html",
+      "summary": "Past: SpaceX reported Q3 2026 revenue of $14.58B and net income of $4.40B after the US close on Tue 20 Oct, then held its webcast at 3:30 p.m. CT. Replay on ir.spacex.com; write-up on the Dispatch."
     },
     {
       "id": "production:event:tesla-q3-2026-earnings",
@@ -66,7 +66,7 @@
       "field": "event:tesla-q3-2026-earnings",
       "value": "2026-10-21T21:30:00.000Z|confirmed",
       "label": "Tesla Q3 2026 earnings call",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
       "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
@@ -80,7 +80,7 @@
       "field": "event:ussf-481",
       "value": "2026-10-16T00:02:07.000Z|done",
       "label": "Falcon 9 · USSF-481",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://x.com/SpaceX/status/2110883955004035154",
       "sourceUrl": "",
@@ -92,14 +92,14 @@
       "topic": "spacex-launches",
       "tracker": "launches",
       "field": "event:bandwagon-5",
-      "value": "2026-10-20T10:30:00.000Z|go",
+      "value": "2026-10-20T11:04:00.000Z|done",
       "label": "Falcon 9 · Bandwagon-5 rideshare",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.spacex.com/launches/bandwagon5",
       "sourceUrl": "",
       "href": "/dispatch/bandwagon5-starfall-second-demo.html",
-      "summary": "NET Tue 20 Oct (moved from Mon 19 Oct for unfavourable recovery weather). One-hour window opens 6:30 a.m. ET from SLC-40, Cape Canaveral; backup Wed 21 Oct same window. 32 payloads incl. Varda W-Series 7 and SpaceX's second Starfall demo."
+      "summary": "Launched Tue 20 Oct at 7:04 a.m. ET from SLC-40, Cape Canaveral, with 32 payloads incl. SpaceX's second Starfall demo. The first stage, on its 19th flight, landed on A Shortfall of Gravitas."
     },
     {
       "id": "spacex-launches:event:spcx-q3-lockup-release",
@@ -108,7 +108,7 @@
       "field": "event:spcx-q3-lockup-release",
       "value": "2026-10-22T00:00:00.000Z|confirmed",
       "label": "SpaceX lock-up release · up to 1.3B shares",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
       "sourceUrl": "",
@@ -206,7 +206,7 @@
       "field": "next-flight",
       "value": "15|2026-11-08|day",
       "label": "Next Starship flight",
-      "at": "2026-10-18T07:50:00.000Z",
+      "at": "2026-10-21T07:30:00.000Z",
       "evidence": "estimated",
       "source": "FAA planning slides",
       "sourceUrl": "",
@@ -232,9 +232,9 @@
       "topic": "promises",
       "tracker": "promises",
       "field": "status-counts",
-      "value": "Delivered:6,Delivered late:11,In progress:5,Missed:27,Revised:4",
+      "value": "Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4",
       "label": "Promise status mix",
-      "at": "2026-10-16T00:00:00.000Z",
+      "at": "2026-10-21T00:00:00.000Z",
       "evidence": "historical",
       "source": "data/promises.json",
       "sourceUrl": "",
@@ -243,6 +243,40 @@
     }
   ],
   "changes": [
+    {
+      "type": "changed",
+      "factId": "production:event:spacex-q3-2026-earnings",
+      "topic": "production",
+      "tracker": "launches",
+      "field": "event:spacex-q3-2026-earnings",
+      "previous": "2026-10-20T20:30:00.000Z|confirmed",
+      "next": "2026-10-20T20:30:00.000Z|ended",
+      "at": "2026-10-21T07:30:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
+      "sourceUrl": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
+      "href": "/dispatch/spacex-q3-2026-results.html",
+      "summary": "SpaceX Q3 2026 earnings call changed from 2026-10-20T20:30:00.000Z|confirmed to 2026-10-20T20:30:00.000Z|ended.",
+      "title": "SpaceX Q3 2026 earnings call",
+      "id": "changed|production:event:spacex-q3-2026-earnings|2026-10-21T07:30:00.000Z|2026-10-20T20:30:00.000Z|ended"
+    },
+    {
+      "type": "changed",
+      "factId": "spacex-launches:event:bandwagon-5",
+      "topic": "spacex-launches",
+      "tracker": "launches",
+      "field": "event:bandwagon-5",
+      "previous": "2026-10-20T10:30:00.000Z|go",
+      "next": "2026-10-20T11:04:00.000Z|done",
+      "at": "2026-10-21T07:30:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://www.spacex.com/launches/bandwagon5",
+      "sourceUrl": "",
+      "href": "/dispatch/bandwagon5-starfall-second-demo.html",
+      "summary": "Falcon 9 · Bandwagon-5 rideshare changed from 2026-10-20T10:30:00.000Z|go to 2026-10-20T11:04:00.000Z|done.",
+      "title": "Falcon 9 · Bandwagon-5 rideshare",
+      "id": "changed|spacex-launches:event:bandwagon-5|2026-10-21T07:30:00.000Z|2026-10-20T11:04:00.000Z|done"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html",
@@ -259,6 +293,23 @@
       "summary": "The Wall Street Journal reports Musk ordered the cap. Musk said the US military decides, and Trump says he’d like to find out. What’s confirmed, what’s alleged, and the November 2 deadline.",
       "title": "Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed",
       "id": "logged|dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html|2026-10-21T01:36:23.000Z|Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed"
+    },
+    {
+      "type": "changed",
+      "factId": "promises:status-counts",
+      "topic": "promises",
+      "tracker": "promises",
+      "field": "status-counts",
+      "previous": "Delivered:6,Delivered late:11,In progress:5,Missed:27,Revised:4",
+      "next": "Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4",
+      "at": "2026-10-21T00:00:00.000Z",
+      "evidence": "historical",
+      "source": "data/promises.json",
+      "sourceUrl": "",
+      "href": "/promise-tracker.html",
+      "summary": "Promise status mix changed from Delivered:6,Delivered late:11,In progress:5,Missed:27,Revised:4 to Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4.",
+      "title": "Promise status mix",
+      "id": "changed|promises:status-counts|2026-10-21T00:00:00.000Z|Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4"
     },
     {
       "type": "logged",
@@ -324,7 +375,7 @@
       "source": "Supercharged Daily Dispatch",
       "sourceUrl": "/dispatch/spacex-q3-2026-preview.html",
       "href": "/dispatch/spacex-q3-2026-preview.html",
-      "summary": "Results land after the US close today. Analysts expect $12.72B in revenue and 13c a share, with AI forecast as the biggest segment. What to watch.",
+      "summary": "Written before the results. Analysts expected $12.72B in revenue and 13c a share, with AI forecast as the biggest segment.",
       "title": "SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece",
       "id": "logged|dispatch:/dispatch/spacex-q3-2026-preview.html|2026-10-20T16:30:00.000Z|SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece"
     },
@@ -395,6 +446,23 @@
       "summary": "ARK’s new 2031 model lifts its target from $2,600, but its robotaxi revenue range came down. Optimus, storage and margins fill the gap.",
       "title": "ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast",
       "id": "logged|dispatch:/dispatch/ark-tesla-2031-model.html|2026-10-20T01:40:00.000Z|ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time.",
+      "at": "2026-10-20T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "SpaceX Q3 2026 earnings call (Motley Fool transcript)",
+      "sourceUrl": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+      "href": "/starship.html#schedule",
+      "summary": "On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-10-20T00:00:00.000Z|On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time."
     },
     {
       "type": "logged",
@@ -1442,15 +1510,15 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
-      "lastVerified": "2026-10-18T07:50:00.000Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
+      "lastVerified": "2026-10-21T07:30:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
     {
@@ -1463,14 +1531,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
       "lastVerified": "2026-10-18T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
       "lastVerified": "2026-10-21T05:59:59.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1484,35 +1552,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
-      "lastVerified": "2026-10-16T00:00:00.000Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
+      "lastVerified": "2026-10-21T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
-      "lastVerified": "2026-10-16T00:00:00.000Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
+      "lastVerified": "2026-10-21T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-21T06:45:01.418Z",
+      "lastChecked": "2026-10-21T07:08:18.676Z",
       "lastVerified": "2026-10-21T04:54:08.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1521,87 +1589,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.402Z",
-      "finished": "2026-10-21T06:45:01.408Z"
+      "started": "2026-10-21T07:08:18.667Z",
+      "finished": "2026-10-21T07:08:18.667Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.408Z",
-      "finished": "2026-10-21T06:45:01.408Z"
+      "started": "2026-10-21T07:08:18.667Z",
+      "finished": "2026-10-21T07:08:18.667Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.408Z",
-      "finished": "2026-10-21T06:45:01.409Z"
+      "started": "2026-10-21T07:08:18.667Z",
+      "finished": "2026-10-21T07:08:18.667Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.409Z",
-      "finished": "2026-10-21T06:45:01.412Z"
+      "started": "2026-10-21T07:08:18.667Z",
+      "finished": "2026-10-21T07:08:18.670Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.412Z",
-      "finished": "2026-10-21T06:45:01.414Z"
+      "started": "2026-10-21T07:08:18.670Z",
+      "finished": "2026-10-21T07:08:18.671Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.414Z",
-      "finished": "2026-10-21T06:45:01.415Z"
+      "started": "2026-10-21T07:08:18.671Z",
+      "finished": "2026-10-21T07:08:18.672Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.415Z",
-      "finished": "2026-10-21T06:45:01.415Z"
+      "started": "2026-10-21T07:08:18.672Z",
+      "finished": "2026-10-21T07:08:18.673Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.415Z",
-      "finished": "2026-10-21T06:45:01.415Z"
+      "started": "2026-10-21T07:08:18.673Z",
+      "finished": "2026-10-21T07:08:18.673Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.415Z",
-      "finished": "2026-10-21T06:45:01.416Z"
+      "started": "2026-10-21T07:08:18.673Z",
+      "finished": "2026-10-21T07:08:18.673Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.416Z",
-      "finished": "2026-10-21T06:45:01.417Z"
+      "started": "2026-10-21T07:08:18.673Z",
+      "finished": "2026-10-21T07:08:18.674Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.417Z",
-      "finished": "2026-10-21T06:45:01.418Z"
+      "started": "2026-10-21T07:08:18.674Z",
+      "finished": "2026-10-21T07:08:18.676Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.418Z",
-      "finished": "2026-10-21T06:45:01.418Z"
+      "started": "2026-10-21T07:08:18.676Z",
+      "finished": "2026-10-21T07:08:18.676Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-21T06:45:01.418Z",
-      "finished": "2026-10-21T06:45:01.418Z"
+      "started": "2026-10-21T07:08:18.676Z",
+      "finished": "2026-10-21T07:08:18.676Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-21T06:45:01.418Z",
+    "generatedAt": "2026-10-21T07:08:18.676Z",
     "factCount": 17,
-    "changeCount": 68,
+    "changeCount": 72,
     "conflictCount": 2,
     "issues": [
       {

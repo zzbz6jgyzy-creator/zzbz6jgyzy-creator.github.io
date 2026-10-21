@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T02:40:00+01:00",
+  "updated": "2026-10-21T08:30:00+01:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
     {
@@ -83,7 +83,7 @@
       "page": "spacex",
       "start": "2026-10-20T15:30:00-05:00",
       "end": "2026-10-20T16:30:00-05:00",
-      "status": "scheduled",
+      "status": "ended",
       "provider": "link",
       "embedId": "",
       "postUrl": "https://x.com/SpaceX/status/2111072697690317011",
@@ -92,8 +92,9 @@
       "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
       "image": "/assets/live/falcon9.jpg",
       "imageCredit": "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain",
-      "description": "SpaceX posts its Q3 2026 financial and operational results after the US market close, then management hosts a live audio-only webcast at 3:30pm Central Time. Webcast and replay on ir.spacex.com; SpaceX says it will also be livestreamed on X @SpaceX.",
-      "descSource": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx"
+      "description": "SpaceX posted its Q3 2026 results after the US market close on 20 Oct: revenue of $14.58B and net income of $4.40B. Management then held an audio-only webcast at 3:30pm Central Time, also streamed on X @SpaceX. Replay on ir.spacex.com; write-up: superchargeddaily.com/dispatch/spacex-q3-2026-results.html",
+      "descSource": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm",
+      "articleUrl": "/dispatch/spacex-q3-2026-results.html"
     },
     {
       "id": "tesla-q3-2026-earnings",
@@ -130,7 +131,7 @@
       "source": "https://www.spacex.com/launches/",
       "image": "/assets/live/starship.jpg",
       "imageCredit": "Photo: Shujianyang, Wikimedia Commons, CC BY-SA 4.0",
-      "description": "Starship's fifteenth flight test from Starbase, Texas, targeted no earlier than 8 November. It's expected to be the first serious attempt to catch a Ship back at the tower.",
+      "description": "Starship's fifteenth flight test from Starbase, Texas, targeted no earlier than 8 November. On the 20 Oct earnings call Musk said SpaceX expects it next month and will try to catch both the booster and the ship.",
       "descSource": "https://www.spacex.com/launches/",
       "thumb": "/assets/live/starship-480w.webp"
     },
@@ -138,9 +139,9 @@
       "id": "f9-bandwagon5",
       "title": "Falcon 9 · Bandwagon-5 rideshare",
       "page": "starship",
-      "start": "2026-10-20T06:30:00-04:00",
-      "end": "2026-10-20T07:30:00-04:00",
-      "status": "scheduled",
+      "start": "2026-10-20T07:04:00-04:00",
+      "end": "2026-10-20T08:05:00-04:00",
+      "status": "ended",
       "provider": "link",
       "embedId": "",
       "postUrl": "https://x.com/SpaceX/status/2112083213124272563",
@@ -149,7 +150,7 @@
       "source": "https://www.spacex.com/launches/bandwagon5",
       "image": "/assets/live/falcon9.jpg",
       "imageCredit": "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain",
-      "description": "Falcon 9 launches the Bandwagon-5 rideshare with 32 payloads from SLC-40 at Cape Canaveral, including Varda's W-Series 7 capsule and SpaceX's second Starfall reentry demo. The one-hour window opens at 6:30 a.m. ET, and the launch is now no earlier than Tue 20 Oct after SpaceX moved it from Monday for recovery weather, with a backup on Wed 21 Oct. The 19th-flight booster lands on A Shortfall of Gravitas.",
+      "description": "Falcon 9 launched the Bandwagon-5 rideshare with 32 payloads from SLC-40 at Cape Canaveral at 7:04 a.m. ET on Tue 20 Oct, a day late for recovery weather. It carried SpaceX's second Starfall reentry demo. The 19th-flight booster landed on the A Shortfall of Gravitas droneship.",
       "descSource": "https://www.spacex.com/launches/bandwagon5"
     }
   ]

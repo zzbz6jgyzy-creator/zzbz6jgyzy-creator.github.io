@@ -28,6 +28,14 @@ window.STARSHIP = {
   },
   schedule: [
     {
+      date: "2026-10-20",
+      mission: 15,
+      confirmed: false,
+      change:
+        "On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time.",
+      source: { outlet: "SpaceX Q3 2026 earnings call (Motley Fool transcript)", url: "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/" },
+    },
+    {
       date: "2026-10-09",
       mission: 15,
       confirmed: false,

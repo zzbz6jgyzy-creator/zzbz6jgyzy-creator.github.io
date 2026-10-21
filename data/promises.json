@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "updated": "2026-10-16",
+ "updated": "2026-10-21",
  "promises": [
   {
    "id": "fsd-90-percent-2013",
@@ -2003,6 +2003,201 @@
    "revisions": [],
    "last_verified": "2026-10-15",
    "note": "Post on X, as reported by The Verge. Outcome re-checked after the 15 Oct 2026 reveal (CNBC, above)."
+  },
+  {
+   "id": "spacex-arr-500b-1t-2027",
+   "title": "SpaceX annual recurring revenue of $500 billion to $1 trillion by end of 2027",
+   "company": "SpaceX",
+   "topic": "AI compute",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2026-10-20",
+   "quote": "what this implies for SpaceX annual recurring revenue by the end of '27 is somewhere between $500 billion and $1 trillion.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "SpaceX (SPCX) Q3 2026 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+    "date": "2026-10-20"
+   },
+   "deadline": "2027-12-31",
+   "status": "In progress",
+   "evidence": [
+    {
+     "text": "Reuters also reported Musk saying he expected annual recurring revenue of between $500 billion and $1 trillion by the end of 2027.",
+     "source": {
+      "outlet": "Reuters via Investing.com",
+      "title": "Musk says SpaceX-Tesla merger is 'a good idea' as companies form deal committees",
+      "url": "https://ca.investing.com/news/stock-market-news/spacex-quarterly-revenue-jumps-beats-estimates-as-ai-business-surges-4891702",
+      "date": "2026-10-20"
+     },
+     "date": "2026-10-20"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-21",
+   "note": "Said on SpaceX's Q3 2026 earnings call. Musk's own aspiration, not company guidance. For scale, Q3 2026 revenue was $14.58B."
+  },
+  {
+   "id": "terafab-test-chip-mid-2027",
+   "title": "First Terafab test chip working around May or June 2027",
+   "company": "SpaceX",
+   "topic": "AI compute",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2026-10-20",
+   "quote": "internally, Terafab aims to have a first test chip, using static random-access memory (SRAM) circuits, functional in roughly May or June of next year at the Terafab research facility in Austin.",
+   "quote_type": "paraphrase",
+   "source": {
+    "outlet": "Reuters via Investing.com",
+    "title": "SpaceX and Tesla's Terafab targets 2028 for volume chip production, Musk says",
+    "url": "https://www.investing.com/news/stock-market-news/spacex-and-teslas-terafab-targets-2028-for-volume-chip-production-musk-says-4961351",
+    "date": "2026-10-20"
+   },
+   "deadline": "2027-06-30",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-21",
+   "note": "Reuters' reported summary of the call. Musk called the dates \"very aggressive\" with \"big error bars\". Terafab is a SpaceX and Tesla joint venture."
+  },
+  {
+   "id": "terafab-volume-q3-2028",
+   "title": "Terafab volume chip production by Q3 2028",
+   "company": "SpaceX",
+   "topic": "AI compute",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2026-10-20",
+   "quote": "Let's just say that outcome of achieving volume production is at least in the set of possible outcomes for Q3 or Q4 of '28",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "Reuters via Investing.com",
+    "title": "SpaceX and Tesla's Terafab targets 2028 for volume chip production, Musk says",
+    "url": "https://www.investing.com/news/stock-market-news/spacex-and-teslas-terafab-targets-2028-for-volume-chip-production-musk-says-4961351",
+    "date": "2026-10-20"
+   },
+   "deadline": "2028-09-30",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-21",
+   "note": "Reuters reports the aim as volume production by Q3 2028; Musk also allowed Q4 2028. We use the end of Q3 2028 as the deadline. Musk: \"I put big error bars on this because we don't know if we will actually achieve this or not.\""
+  },
+  {
+   "id": "compute-13gw-end-2027",
+   "title": "At least 13 gigawatts of SpaceX AI compute by end of 2027",
+   "company": "SpaceX",
+   "topic": "AI compute",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2026-10-20",
+   "quote": "I would be surprised if we brought on less than 13 gigawatts of compute by the end of next year.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "SpaceX (SPCX) Q3 2026 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+    "date": "2026-10-20"
+   },
+   "deadline": "2027-12-31",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-21",
+   "note": "Musk said he was \"fairly confident\" of adding 10 GW in 2027 on top of about 2.5 to 3 GW by the end of 2026. SpaceX reported 1.7 GW of nameplate compute at 30 Sep 2026."
+  },
+  {
+   "id": "training-cluster-q2-2027",
+   "title": "Most powerful training cluster online by end of Q2 2027",
+   "company": "SpaceX",
+   "topic": "AI compute",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2026-10-20",
+   "quote": "We're also planning to have the most powerful training cluster online by the end of Q2, which will be 440,000 Vera Rubin computers deployed for optimal training.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "SpaceX (SPCX) Q3 2026 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+    "date": "2026-10-20"
+   },
+   "deadline": "2027-06-30",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-21",
+   "note": "Judgment call: \"end of Q2\" on an October 2026 call is read as Q2 2027, since Musk had just said next year's compute is mainly Vera Rubin."
+  },
+  {
+   "id": "grok-bot-enterprise-few-weeks",
+   "title": "Grok Bot in wide deployment for enterprise customers \"within a few weeks\"",
+   "company": "SpaceX",
+   "topic": "Grok / xAI",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2026-10-20",
+   "quote": "we expect to be in wide deployment within a few weeks for enterprise customers for Grok bot.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "SpaceX (SPCX) Q3 2026 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+    "date": "2026-10-20"
+   },
+   "deadline": "2026-11-30",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-21",
+   "note": "Vague deadline: \"a few weeks\" from 20 Oct 2026 is read as the end of November 2026."
+  },
+  {
+   "id": "starship-flight15-next-month",
+   "title": "Starship Flight 15 \"next month\" (November 2026), with a catch of both stages",
+   "company": "SpaceX",
+   "topic": "Starship",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2026-10-20",
+   "quote": "For Flight 15, which we expect to happen next month, we're going to attempt to catch both the booster and the ship.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "SpaceX (SPCX) Q3 2026 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+    "date": "2026-10-20"
+   },
+   "deadline": "2026-11-30",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-21",
+   "note": "Musk added that success is \"not guaranteed\" but \"more likely than not\". The FAA planning date is NET 8 November."
+  },
+  {
+   "id": "starship-weekly-h1-2027",
+   "title": "Starship flying weekly in the first half of 2027",
+   "company": "SpaceX",
+   "topic": "Starship",
+   "person": "Elon Musk",
+   "role": "CEO, SpaceX",
+   "said_on": "2026-10-20",
+   "quote": "We expect Starship to fly weekly at some point in the first half next year and then second half next year, twice weekly or maybe even more frequently than that by the end of next year.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "The Motley Fool",
+    "title": "SpaceX (SPCX) Q3 2026 Earnings Call Transcript",
+    "url": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+    "date": "2026-10-20"
+   },
+   "deadline": "2027-06-30",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-21",
+   "note": "Deadline is the weekly cadence in H1 2027; the twice-weekly goal for the end of 2027 is part of the same quote."
   }
  ]
 }

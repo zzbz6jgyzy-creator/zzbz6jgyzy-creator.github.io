@@ -1,6 +1,40 @@
 {
-  "updated": "2026-10-21T06:45:01.418Z",
+  "updated": "2026-10-21T07:08:18.676Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "production:event:spacex-q3-2026-earnings",
+      "topic": "production",
+      "tracker": "launches",
+      "field": "event:spacex-q3-2026-earnings",
+      "previous": "2026-10-20T20:30:00.000Z|confirmed",
+      "next": "2026-10-20T20:30:00.000Z|ended",
+      "at": "2026-10-21T07:30:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
+      "sourceUrl": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
+      "href": "/dispatch/spacex-q3-2026-results.html",
+      "summary": "SpaceX Q3 2026 earnings call changed from 2026-10-20T20:30:00.000Z|confirmed to 2026-10-20T20:30:00.000Z|ended.",
+      "title": "SpaceX Q3 2026 earnings call",
+      "id": "changed|production:event:spacex-q3-2026-earnings|2026-10-21T07:30:00.000Z|2026-10-20T20:30:00.000Z|ended"
+    },
+    {
+      "type": "changed",
+      "factId": "spacex-launches:event:bandwagon-5",
+      "topic": "spacex-launches",
+      "tracker": "launches",
+      "field": "event:bandwagon-5",
+      "previous": "2026-10-20T10:30:00.000Z|go",
+      "next": "2026-10-20T11:04:00.000Z|done",
+      "at": "2026-10-21T07:30:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://www.spacex.com/launches/bandwagon5",
+      "sourceUrl": "",
+      "href": "/dispatch/bandwagon5-starfall-second-demo.html",
+      "summary": "Falcon 9 · Bandwagon-5 rideshare changed from 2026-10-20T10:30:00.000Z|go to 2026-10-20T11:04:00.000Z|done.",
+      "title": "Falcon 9 · Bandwagon-5 rideshare",
+      "id": "changed|spacex-launches:event:bandwagon-5|2026-10-21T07:30:00.000Z|2026-10-20T11:04:00.000Z|done"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html",
@@ -17,6 +51,23 @@
       "summary": "The Wall Street Journal reports Musk ordered the cap. Musk said the US military decides, and Trump says he’d like to find out. What’s confirmed, what’s alleged, and the November 2 deadline.",
       "title": "Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed",
       "id": "logged|dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html|2026-10-21T01:36:23.000Z|Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed"
+    },
+    {
+      "type": "changed",
+      "factId": "promises:status-counts",
+      "topic": "promises",
+      "tracker": "promises",
+      "field": "status-counts",
+      "previous": "Delivered:6,Delivered late:11,In progress:5,Missed:27,Revised:4",
+      "next": "Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4",
+      "at": "2026-10-21T00:00:00.000Z",
+      "evidence": "historical",
+      "source": "data/promises.json",
+      "sourceUrl": "",
+      "href": "/promise-tracker.html",
+      "summary": "Promise status mix changed from Delivered:6,Delivered late:11,In progress:5,Missed:27,Revised:4 to Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4.",
+      "title": "Promise status mix",
+      "id": "changed|promises:status-counts|2026-10-21T00:00:00.000Z|Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4"
     },
     {
       "type": "logged",
@@ -82,7 +133,7 @@
       "source": "Supercharged Daily Dispatch",
       "sourceUrl": "/dispatch/spacex-q3-2026-preview.html",
       "href": "/dispatch/spacex-q3-2026-preview.html",
-      "summary": "Results land after the US close today. Analysts expect $12.72B in revenue and 13c a share, with AI forecast as the biggest segment. What to watch.",
+      "summary": "Written before the results. Analysts expected $12.72B in revenue and 13c a share, with AI forecast as the biggest segment.",
       "title": "SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece",
       "id": "logged|dispatch:/dispatch/spacex-q3-2026-preview.html|2026-10-20T16:30:00.000Z|SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece"
     },
@@ -153,6 +204,23 @@
       "summary": "ARK’s new 2031 model lifts its target from $2,600, but its robotaxi revenue range came down. Optimus, storage and margins fill the gap.",
       "title": "ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast",
       "id": "logged|dispatch:/dispatch/ark-tesla-2031-model.html|2026-10-20T01:40:00.000Z|ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time.",
+      "at": "2026-10-20T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "SpaceX Q3 2026 earnings call (Motley Fool transcript)",
+      "sourceUrl": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+      "href": "/starship.html#schedule",
+      "summary": "On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-10-20T00:00:00.000Z|On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time."
     },
     {
       "type": "logged",
