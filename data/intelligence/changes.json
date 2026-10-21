@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-21T01:05:36.688Z",
+  "updated": "2026-10-21T01:36:59.859Z",
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:most-common",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "most-common",
-      "previous": "2026.38.5.1@27.4",
-      "next": "2026.38.5.1@27.6",
-      "at": "2026-10-21T01:05:31.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Most common sample build changed from 2026.38.5.1@27.4 to 2026.38.5.1@27.6.",
-      "title": "Most common sample build",
-      "id": "changed|tesla-software:most-common|2026-10-21T01:05:31.000Z|2026.38.5.1@27.6"
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed",
+      "at": "2026-10-21T01:36:23.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starlink-ukraine-slowdown-who-ordered.html",
+      "href": "/dispatch/starlink-ukraine-slowdown-who-ordered.html",
+      "summary": "The Wall Street Journal reports Musk ordered the cap. Musk said the US military decides, and Trump says he’d like to find out. What’s confirmed, what’s alleged, and the November 2 deadline.",
+      "title": "Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed",
+      "id": "logged|dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html|2026-10-21T01:36:23.000Z|Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed"
     },
     {
       "type": "logged",
@@ -221,23 +221,6 @@
       "summary": "One share each for about 72 million children is worth roughly $10.5 billion. How it compares, and how it could work.",
       "title": "Musk pledges a SpaceX share to every kid in America",
       "id": "logged|dispatch:/dispatch/musk-spacex-share-every-kid.html|2026-10-19T09:23:56.000Z|Musk pledges a SpaceX share to every kid in America"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/musk-earnings-week-q3-2026.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX reports Tuesday, Tesla Wednesday, then 1.3B shares unlock",
-      "at": "2026-10-18T07:45:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/musk-earnings-week-q3-2026.html",
-      "href": "/dispatch/musk-earnings-week-q3-2026.html",
-      "summary": "SpaceX reports Tuesday, Tesla Wednesday, then up to 1.3 billion SpaceX shares unlock on Thursday.",
-      "title": "SpaceX reports Tuesday, Tesla Wednesday, then 1.3B shares unlock",
-      "id": "logged|dispatch:/dispatch/musk-earnings-week-q3-2026.html|2026-10-18T07:45:00.000Z|SpaceX reports Tuesday, Tesla Wednesday, then 1.3B shares unlock"
     },
     {
       "type": "changed",
