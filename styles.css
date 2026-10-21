@@ -64,6 +64,34 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Metric-matched fallbacks so font-display:swap does not reflow body text.
+   Inter/Arial values from https://developer.chrome.com/blog/framework-tools-font-fallback
+   Roboto covers Android / Lighthouse mobile when Arial is missing. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Liberation Sans"), local("Arial"), local("Helvetica Neue"), local("Helvetica");
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 108%;
+}
+@font-face {
+  font-family: "Inter Fallback Android";
+  src: local("Roboto"), local("Noto Sans"), local("Droid Sans");
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+@font-face {
+  font-family: "IBM Plex Mono Fallback";
+  src: local("Courier New"), local("Courier");
+  ascent-override: 102.5%;
+  descent-override: 26.5%;
+  line-gap-override: 0%;
+  size-adjust: 86%;
+}
+
 :root {
   --bg: #0c0d10;
   --ink: #ecece8;
@@ -83,8 +111,8 @@
   --overlay: rgba(0, 0, 0, 0.72);
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
   --max: 1080px;
-  --font: "Inter", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font: "Inter", "Inter Fallback", "Inter Fallback Android", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", ui-monospace, monospace;
   --radius: 10px;
   color-scheme: dark;
 }
@@ -1524,6 +1552,37 @@ button.fsd-kpi[aria-pressed="true"] {
 .article p,
 .article li {
   color: var(--ink-soft);
+}
+
+/* Keep intel-note sized before async intel.css arrives, or CLS hits the next section. */
+.intel-note {
+  font-size: 13px;
+  color: #8a8a8a;
+  max-width: 70ch;
+}
+
+.article p a,
+.article li a,
+.article .sd-note a,
+.article .signoff a,
+.sd-about a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.article > figure {
+  margin: 1.25rem 0 1.6rem;
+}
+
+.article > figure > picture {
+  display: block;
+  width: 100%;
+}
+
+.article > figure img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .article ol,
