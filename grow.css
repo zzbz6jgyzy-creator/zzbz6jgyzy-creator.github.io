@@ -19,7 +19,6 @@
 .sd-band-compact{padding:1.15rem 1.3rem;gap:.85rem}
 .sd-band-compact h2{font-size:.92rem}
 .sd-band-compact p{font-size:.85rem}
-.sd-proof{margin:.4rem 0 0!important;font-size:.75rem!important;color:#8a8b90!important}
 .sd-pop{position:fixed;right:20px;bottom:20px;z-index:9999;width:min(360px,calc(100vw - 24px));padding:1.2rem 1.2rem 1.1rem;border-radius:14px;background:#0b0b0c;border:1px solid rgba(227,25,55,.5);box-shadow:0 24px 60px -20px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.4);color:#fff;transform:translateY(16px);opacity:0;transition:transform .35s ease,opacity .35s ease}
 .sd-pop.is-in{transform:none;opacity:1}
 .sd-pop h2{font-family:Michroma,sans-serif;font-weight:400;text-transform:uppercase;font-size:.9rem;margin:0 2rem .35rem 0}

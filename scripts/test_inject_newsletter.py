@@ -65,12 +65,11 @@ class InjectNewsletter(unittest.TestCase):
     def test_article_insert_is_idempotent_and_reuses_beehiiv(self):
         path = self.tmp / "dispatch" / "starlink-direct.html"
         path.write_text(ARTICLE, encoding="utf-8")
-        slug, count = mod.latest_meta()
+        slug = mod.latest_meta()
         self.assertEqual(slug, "roadster-just-flew")
-        self.assertEqual(count, 2)
-        n1 = mod.inject_articles(slug, count)
+        n1 = mod.inject_articles(slug)
         first = path.read_text(encoding="utf-8")
-        n2 = mod.inject_articles(slug, count)
+        n2 = mod.inject_articles(slug)
         second = path.read_text(encoding="utf-8")
         self.assertEqual(n1, 1)
         self.assertEqual(n2, 0)
@@ -81,7 +80,8 @@ class InjectNewsletter(unittest.TestCase):
         self.assertIn('name="website"', first)
         self.assertIn('autocomplete="email"', first)
         self.assertIn("SpaceX on Supercharged Daily", first)
-        self.assertIn("2 Sunday issues so far.", first)
+        self.assertNotIn("sd-proof", first)
+        self.assertNotIn("Sunday issues so far", first)
         self.assertIn("utm_medium=site-article", first)
         self.assertIn("alexs-newsletter-84b17e.beehiiv.com/p/roadster-just-flew", first)
         self.assertLess(first.index("<!--nl:start-->"), first.index("<!--related:start-->"))
@@ -91,9 +91,9 @@ class InjectNewsletter(unittest.TestCase):
     def test_tracker_copy_and_script(self):
         path = self.tmp / "starship.html"
         path.write_text(TRACKER, encoding="utf-8")
-        n1 = mod.inject_trackers("roadster-just-flew", 2)
+        n1 = mod.inject_trackers("roadster-just-flew")
         html = path.read_text(encoding="utf-8")
-        n2 = mod.inject_trackers("roadster-just-flew", 2)
+        n2 = mod.inject_trackers("roadster-just-flew")
         self.assertEqual(n1, 1)
         self.assertEqual(n2, 0)
         self.assertIn("Get the weekly tracker digest", html)
@@ -103,6 +103,8 @@ class InjectNewsletter(unittest.TestCase):
         self.assertIn("/newsletter.js?", html)
         self.assertIn("/grow.css?", html)
         self.assertEqual(html.count("<!--nl:start-->"), 1)
+        self.assertNotIn("sd-proof", html)
+        self.assertNotIn("Sunday issues so far", html)
         self.assertLess(html.index("<!--nl:start-->"), html.index("</main>"))
         self.assertRegex(html, r"<!--nl:end-->\s*</main>")
 
@@ -110,10 +112,19 @@ class InjectNewsletter(unittest.TestCase):
         html = '<meta property="article:section" content="SpaceX" /><p class="eyebrow">SpaceX · Updated 14 Oct 2026</p>'
         self.assertEqual(mod.article_topic(html, "dispatch/ship-40.html"), "spacex")
 
-    def test_no_proof_when_count_missing(self):
-        self.assertEqual(mod.proof_html(0), "")
-        self.assertEqual(mod.proof_html(1), "")
-        self.assertIn("2 Sunday", mod.proof_html(2))
+    def test_block_has_no_issue_count_proof(self):
+        html = mod.block_html(
+            kind="article",
+            topic="spacex",
+            heading="SpaceX on Supercharged Daily",
+            blurb="Starship flights, Starlink and Falcon dates — the week in one Sunday email.",
+            field_id="sd-nl-email",
+            slug="roadster-just-flew",
+            extra_class="sd-band-article",
+        )
+        self.assertNotIn("sd-proof", html)
+        self.assertNotIn("Sunday issues so far", html)
+        self.assertNotIn("issueCount", html)
 
     def test_newsletter_js_uses_same_endpoint(self):
         src = (ROOT / "newsletter.js").read_text(encoding="utf-8")
