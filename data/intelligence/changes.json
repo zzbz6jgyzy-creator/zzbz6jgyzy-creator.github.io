@@ -1,6 +1,40 @@
 {
-  "updated": "2026-10-21T17:37:04.205Z",
+  "updated": "2026-10-21T17:50:47.782Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:newest-reporting",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "newest-reporting",
+      "previous": "2026.38.5.10",
+      "next": "2026.38.5.5",
+      "at": "2026-10-21T17:50:46.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample (3379 cars)",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Newest reporting build changed from 2026.38.5.10 to 2026.38.5.5.",
+      "title": "Newest reporting build",
+      "id": "changed|tesla-software:newest-reporting|2026-10-21T17:50:46.000Z|2026.38.5.5"
+    },
+    {
+      "type": "changed",
+      "factId": "tesla-software:most-common",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "most-common",
+      "previous": "2026.38.5.1@27.8",
+      "next": "2026.38.5.1@28.2",
+      "at": "2026-10-21T17:50:46.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Most common sample build changed from 2026.38.5.1@27.8 to 2026.38.5.1@28.2.",
+      "title": "Most common sample build",
+      "id": "changed|tesla-software:most-common|2026-10-21T17:50:46.000Z|2026.38.5.1@28.2"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/terafab-top-20-gdp-math.html",
