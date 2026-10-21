@@ -87,8 +87,7 @@ and the main tracker pages get a matching `.sd-band` injected at build time betw
   (Dispatch) / `site-tracker` (trackers) / `site-pop` (scroll prompt) / `site-form` (other),
   `utm_campaign=<page path>`, `utm_content=<topic>`. Latest-issue links stay
   `utm_medium=site-band|site-article|site-tracker&utm_campaign=latest-issue`.
-- Social proof is issue count from `data/newsletter-latest.json` (public Beehiiv sitemap). Never
-  invent subscriber numbers; omit the line when the count is missing or below 2.
+- Do not add issue-count or subscriber social-proof copy to the signup block.
 - `grow.js` still loads with `data-band` / `data-pop` where those tags already exist, but it
   skips the footer band and the scroll popup when an inline `#newsletter` / `[data-newsletter]`
   block is already on the page, and when `localStorage.sd-nl-sub` is set after a submit.
