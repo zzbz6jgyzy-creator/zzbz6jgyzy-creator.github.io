@@ -4,8 +4,10 @@
   const me = document.currentScript;
   const has = (k) => me && me.hasAttribute("data-" + k);
   const REF = "https://ts.la/alex474841";
-  const css = document.createElement("link");
-  css.rel = "stylesheet"; css.href = "/grow.css?v=202610152048"; document.head.appendChild(css);
+  if (!document.querySelector('link[href^="/grow.css"]')) {
+    const css = document.createElement("link");
+    css.rel = "stylesheet"; css.href = "/grow.css?v=202610210800"; document.head.appendChild(css);
+  }
   const footer = document.querySelector(".site-footer");
   const place = (el) => footer ? footer.before(el) : document.body.appendChild(el);
   const form = (id) => `<form class="sd-form" data-newsletter-form>
@@ -52,10 +54,16 @@
     const bs = document.querySelector("[data-band-slot]"); if (bs) bs.appendChild(b); else place(b);
   }
   const KEY = "sd-pop-seen";
+  const SUBKEY = "sd-nl-sub";
   const store = { get(k){try{return localStorage.getItem(k)}catch(e){return "1"}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}} };
   const views = Number(sessionStorage.getItem("sd-views") || 0) + 1;
   try { sessionStorage.setItem("sd-views", views); } catch (e) {}
-  const skipPop = matchMedia("(max-width:720px)").matches;
+  // One nag per visit: skip the scroll popup when an inline signup is already on
+  // the page, the reader already subscribed in this browser, or grow.js was asked
+  // not to pop (data-pop omitted). There is no Beehiiv subscriber cookie on this
+  // custom grow.js — respect sd-nl-sub the same way a grow embed would hide for subscribers.
+  const hasInline = !!document.querySelector("[data-newsletter]:not(.sd-pop), #newsletter, .sd-band");
+  const skipPop = matchMedia("(max-width:720px)").matches || hasInline || store.get(SUBKEY) === "1";
   if (has("pop") && !store.get(KEY) && !skipPop) {
     const onScroll = () => {
       const h = document.documentElement.scrollHeight - innerHeight;
@@ -76,6 +84,6 @@
     };
     addEventListener("scroll", onScroll, { passive: true });
   }
-  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610190630"; document.body.appendChild(t); }  const s = document.createElement("script"); s.src = "/newsletter.js?v=202610190800"; document.body.appendChild(s); }
+  function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610190630"; document.body.appendChild(t); }  if (!document.querySelector('script[src^="/newsletter.js"]')) { const s = document.createElement("script"); s.src = "/newsletter.js?v=202610210800"; document.body.appendChild(s); } }
   bindForms();
 })();

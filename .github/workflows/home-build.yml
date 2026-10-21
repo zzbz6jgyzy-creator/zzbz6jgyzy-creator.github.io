@@ -39,6 +39,8 @@ jobs:
         run: node scripts/sd-intel.js
       - name: Newsletter latest-issue link (public Beehiiv sitemap; keeps link on failure)
         run: node scripts/newsletter-latest.js || true
+      - name: Refresh newsletter signup blocks (slug + issue count)
+        run: python3 scripts/inject_newsletter.py
       - name: Rebuild static homepage fallbacks
         run: node scripts/build-home.js && node scripts/build-noscript.mjs
       - name: Responsive AVIF/WebP images (build-images.mjs)
@@ -52,7 +54,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add grow.js scripts/build-home.js index.html tesla.html spacex.html data/articles.json data/intelligence dispatch/*.html sitemap.xml *.html guides reviews assets
+          git add grow.js grow.css newsletter.js newsletter-cta.js nav-pill.js scripts/build-home.js scripts/inject_newsletter.py scripts/newsletter-latest.js index.html tesla.html spacex.html data/articles.json data/newsletter-latest.json data/intelligence dispatch/*.html sitemap.xml *.html guides reviews assets
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Pre-render homepage headlines, Dispatch and tracker numbers."
             git pull --rebase && git push

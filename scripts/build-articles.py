@@ -111,15 +111,16 @@ def bylines():
         if t != s: open(path, "w", encoding="utf-8").write(t); print("byline:", os.path.relpath(path, ROOT))
 
 def sleek_signup():
-    """Newsletter rule: articles use only the sleek grow.js band (data-band), never the old red
-    inline .sd-nl / .nl-end box. Strip any red box a new article was copied with, and make sure
-    grow.js is loaded with data-band data-pop."""
+    """Newsletter rule: strip any old red inline .sd-nl / .nl-end box a new article was copied
+    with, and make sure grow.js is present. The end-of-article / tracker signup HTML is injected
+    later by scripts/inject_newsletter.py (<!--nl:start-->). grow.js then skips its footer band
+    and scroll popup when that inline block is already on the page."""
     import glob, re
     box = re.compile(r'\n[ \t]*<section class="newsletter sd-nl".*?</section>', re.S)
     for path in glob.glob(os.path.join(ROOT, "dispatch", "*.html")) + glob.glob(os.path.join(ROOT, "guides", "*.html")):
         s = open(path, encoding="utf-8").read(); t = box.sub("", s)
         if "/grow.js" not in t and "<main" in t and "</body>" in t:
-            t = t.replace("</body>", '    <script src="/grow.js?v=202610201920" data-band data-pop defer></script>\n  </body>', 1)
+            t = t.replace("</body>", '    <script src="/grow.js?v=202610210800" data-band data-pop defer></script>\n  </body>', 1)
         if t != s: open(path, "w", encoding="utf-8").write(t); print("sleek signup:", os.path.relpath(path, ROOT))
 
 # ---- Related stories: 3 internal links + "More on <topic>" at the bottom of every Dispatch article ----
@@ -175,3 +176,9 @@ except Exception as e:
     print("footer contact skip:", e)
 main()
 related_stories()
+try:
+    import importlib.util as _nlu
+    _nlp = _nlu.spec_from_file_location("inject_newsletter", os.path.join(ROOT, "scripts", "inject_newsletter.py"))
+    _nlm = _nlu.module_from_spec(_nlp); _nlp.loader.exec_module(_nlm); _nlm.run()
+except Exception as e:
+    print("newsletter inject skip:", e)

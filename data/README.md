@@ -77,16 +77,25 @@ To flip a stream live, a routine edits that event in `live-data.json`:
 ```
 Set `"status": "ended"` when it's over. Test locally with `?livedata=/some.json` (and optionally `&livenow=<ISO>`).
 
-## Newsletter sign-up (always the sleek band)
-Every page and article uses ONE sign-up: the sleek "Get Supercharged Daily" band from `grow.js`
-(`<script src="/grow.js?v=…" data-band data-pop defer></script>`, which also keeps the scroll pop-up).
-Do not add the old red inline box (`<section class="newsletter sd-nl">`, `.nl-end`, `.flagship-alert.newsletter`, `newsletter-hero`).
-- `newsletter-cta.js` (loaded by `nav-pill.js`) no longer builds a red box: on Dispatch articles, trackers and
-  Wallpapers without a band it inserts the same `.sd-band` markup, and it keeps one sign-up per page.
-- New Daily analysis articles: copy an existing dispatch article (they're clean), end the article with the
-  sources line, and include the grow.js tag above. `scripts/build-articles.py` strips any `.sd-nl` box from
-  `dispatch/` and `guides/` and adds the grow.js band tag if missing, every time it runs.
-- Pattern: commit 3fe2772 (buying guide) and the 15 Oct newsletter-sleek commit.
+## Newsletter sign-up (one block per page)
+Homepage keeps the pre-rendered sleek band in `data-band-slot` (`<!--hv:band-->`). Dispatch articles
+and the main tracker pages get a matching `.sd-band` injected at build time between
+`<!--nl:start-->` … `<!--nl:end-->` by `scripts/inject_newsletter.py` (called from
+`scripts/build-articles.py`). New articles pick it up automatically the next time that script runs.
+- Same Beehiiv redirect as the homepage: `/newsletter.js` → `https://alexs-newsletter-84b17e.beehiiv.com/`.
+- UTM: `utm_source=website`, `utm_medium=site-band` (homepage / grow.js band) / `site-article`
+  (Dispatch) / `site-tracker` (trackers) / `site-pop` (scroll prompt) / `site-form` (other),
+  `utm_campaign=<page path>`, `utm_content=<topic>`. Latest-issue links stay
+  `utm_medium=site-band|site-article|site-tracker&utm_campaign=latest-issue`.
+- Social proof is issue count from `data/newsletter-latest.json` (public Beehiiv sitemap). Never
+  invent subscriber numbers; omit the line when the count is missing or below 2.
+- `grow.js` still loads with `data-band` / `data-pop` where those tags already exist, but it
+  skips the footer band and the scroll popup when an inline `#newsletter` / `[data-newsletter]`
+  block is already on the page, and when `localStorage.sd-nl-sub` is set after a submit.
+- Do not add the old red inline box (`<section class="newsletter sd-nl">`, `.nl-end`,
+  `.flagship-alert.newsletter`, `newsletter-hero`).
+- New Daily analysis articles: copy an existing dispatch article, end with the sources line, and
+  include the grow.js tag. The inject script adds the signup block.
 
 ## Site event tracking (sign-ups, latest-issue clicks, Tesla referral clicks)
 
@@ -106,7 +115,7 @@ Privacy-friendly counters, no cookies, no IPs, no user IDs, no cookie banner nee
 - **Read the numbers**: `GET https://sd-events.superchargeddaily.workers.dev/stats?days=30` returns JSON
   `{ since, totals:{event:n}, byDay:{"YYYY-MM-DD":{event:n}}, topPages:{event:{path:n}} }` (UTC days; topPages all-time).
   Unlisted page `/counts.html` paints that JSON. `noindex`. Linked from About. Not in the nav. Not unique visitors.
-- **Beehiiv attribution**: sign-ups redirect to Beehiiv with `utm_source=website`, `utm_medium=site-band` (sleek bar) / `site-pop` (scroll prompt) / `site-form` (other), and `utm_campaign=<page path>`. The latest-issue link carries `utm_medium=site-band&utm_campaign=latest-issue`. See Beehiiv → Subscribers → acquisition source.
+- **Beehiiv attribution**: sign-ups redirect to Beehiiv with `utm_source=website`, `utm_medium=site-band` (sleek bar) / `site-article` (Dispatch) / `site-tracker` (trackers) / `site-pop` (scroll prompt) / `site-form` (other), and `utm_campaign=<page path>`. The latest-issue link carries `utm_medium=site-band|site-article|site-tracker&utm_campaign=latest-issue`. See Beehiiv → Subscribers → acquisition source.
 - **Pageviews** remain in Cloudflare Web Analytics (beacon on every page). No GA, Plausible or Zaraz on the site (the domain is DNS-only to GitHub Pages, so Zaraz can't run).
 - Counts are approximate: ad blockers may drop beacons, and the Worker only accepts requests from superchargeddaily.com.
 
