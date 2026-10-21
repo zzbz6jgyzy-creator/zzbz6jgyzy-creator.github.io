@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-21T12:48:17.439Z",
+  "updated": "2026-10-21T13:42:55.187Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/terafab-top-20-gdp-math.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says Terafab’s output will rank in the top 20 of world GDP. I checked the math",
+      "at": "2026-10-21T13:38:07.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/terafab-top-20-gdp-math.html",
+      "href": "/dispatch/terafab-top-20-gdp-math.html",
+      "summary": "That’s about $1.14 trillion a year: roughly 69% of the 2026 world chip market and six times TSMC’s pace. What’s on file, what’s reported, and what the math requires.",
+      "title": "Musk says Terafab’s output will rank in the top 20 of world GDP. I checked the math",
+      "id": "logged|dispatch:/dispatch/terafab-top-20-gdp-math.html|2026-10-21T13:38:07.000Z|Musk says Terafab’s output will rank in the top 20 of world GDP. I checked the math"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starship-flight-15-catch-timeline.html",
@@ -221,23 +238,6 @@
       "summary": "A letter of intent to explore a joint EU 2 GHz bid, an EU proposal still awaiting approval, and a US warning of “devastating” retaliation.",
       "title": "Europe’s big four carriers eye Starlink’s satellite airwaves",
       "id": "logged|dispatch:/dispatch/starlink-eu-spectrum-bid.html|2026-10-19T18:40:00.000Z|Europe’s big four carriers eye Starlink’s satellite airwaves"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-cant-rent-compute.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX rents out its compute, but can’t rent any itself",
-      "at": "2026-10-19T09:23:56.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-cant-rent-compute.html",
-      "href": "/dispatch/spacex-cant-rent-compute.html",
-      "summary": "Musk says AWS, Google Cloud “or anyone” had no inference capacity, while SpaceX leases GPUs to Google and Anthropic.",
-      "title": "SpaceX rents out its compute, but can’t rent any itself",
-      "id": "logged|dispatch:/dispatch/spacex-cant-rent-compute.html|2026-10-19T09:23:56.000Z|SpaceX rents out its compute, but can’t rent any itself"
     },
     {
       "type": "changed",
