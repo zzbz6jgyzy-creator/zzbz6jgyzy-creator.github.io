@@ -158,7 +158,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", default="updates-live.json")
     args = parser.parse_args()
-    data = snapshot()
+    try:
+        data = snapshot()
+    except Exception as e:  # source blocked or down: keep last snapshot
+        print(f"::warning::snapshot skipped, keeping existing data ({e})")
+        return 0
     path = Path(args.out)
     path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
     print(f"wrote {path} · {len(data['versions'])} builds · latest {data['latest']}")
