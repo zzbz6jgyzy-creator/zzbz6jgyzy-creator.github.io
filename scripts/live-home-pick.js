@@ -56,13 +56,14 @@ function pickNextEvent(events, opts) {
 }
 
 // Mirror of live.js ll2Events(): upcoming LL2 launches (data/launches.json) as live-card events.
-function ll2Events(L, have, H) {
-  H = H || 36e5;
+function ll2Events(L, have, H, now) {
+  H = H || 36e5; now = now != null ? now : Date.now();
   return ((L && L.results) || []).map((r) => {
     const parts = String(r.name || "").split(" | "), rocket = (parts[0] || "").replace(/\s*Block \d+$/, ""), mission = parts[1] || parts[0] || "";
     const p = (r.net_precision && r.net_precision.abbrev) || "", s = (r.status && r.status.abbrev) || "";
     if (!r.net || /starship/i.test(r.name) || !/^(SEC|MIN|HR|HOUR|DAY)?$/.test(p) || /^(Success|Failure|Partial Failure)$/.test(s)) return null;
     const t = new Date(r.net).getTime();
+    if (/^(Hold|TBD)$/.test(s) || (/^(SEC|MIN)?$/.test(p) && s !== "In Flight" && now - t > H / 2)) return null;
     if ((have || []).some((e) => e.page === "starship" && Math.abs(new Date(e.start) - t) < 6 * H)) return null;
     const day = p === "DAY", falcon = /falcon/i.test(rocket);
     return { id: "ll2-" + r.id, page: "starship", title: rocket + " \u00b7 " + mission.replace(/^Starlink Group /, "Starlink "),

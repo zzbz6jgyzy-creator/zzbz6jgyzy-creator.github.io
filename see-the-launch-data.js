@@ -59,18 +59,6 @@ window.SEE_LAUNCH = {
       note: "NET Tue 20 Oct (moved from Mon for recovery weather). Window opens 6:30 a.m. ET from SLC-40.",
     },
     {
-      id: "ll-starlink-15-15",
-      title: "Falcon 9 · Starlink Group 15-15",
-      start: "2026-10-20T22:14:00Z",
-      pad: "slc4e",
-      vehicle: "falcon",
-      orbit: "sso",
-      status: "go",
-      precision: "datetime",
-      href: "https://www.spacex.com/launches",
-      note: "Vandenberg polar Starlink.",
-    },
-    {
       id: "ll-starlink-15-16",
       title: "Falcon 9 · Starlink Group 15-16",
       start: "2026-10-24T05:29:00Z",

@@ -11,6 +11,21 @@ URL = "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX&limit
 OUT = os.path.join(os.path.dirname(__file__), "..", "data", "launches.json")
 KEEP = ("id", "name", "net", "window_start", "window_end", "url")
 
+# Drop launches that are scrubbed/on hold, or whose timed NET passed >30 min ago
+# without lifting off (LL2 still lists them until it sets a new date). They come
+# back on their own once LL2 gives a new NET with a Go/TBC status.
+def skip_launch(x, now):
+    st = (x.get("status") or {}).get("abbrev") or ""
+    prec = (x.get("net_precision") or {}).get("abbrev") or ""
+    timed = prec in ("SEC", "MIN", "")
+    if st == "Hold" or (st == "TBD" and timed):
+        return True
+    try:
+        t = datetime.datetime.fromisoformat(str(x.get("net")).replace("Z", "+00:00"))
+    except Exception:
+        return False
+    return timed and st not in ("In Flight", "Success") and now - t > datetime.timedelta(minutes=30)
+
 def main():
     try:
         req = urllib.request.Request(URL, headers={"User-Agent": "superchargeddaily.com launch refresh"})
@@ -20,7 +35,10 @@ def main():
         print("LL2 fetch failed, keeping previous file:", e)
         return 0
     rows = []
+    now = datetime.datetime.now(datetime.timezone.utc)
     for x in data.get("results") or []:
+        if skip_launch(x, now):
+            continue
         row = {k: x.get(k) for k in KEEP}
         row["status"] = {k: (x.get("status") or {}).get(k) for k in ("name", "abbrev")}
         np = x.get("net_precision") or {}

@@ -27,6 +27,8 @@
       var p = (r.net_precision && r.net_precision.abbrev) || '', s = (r.status && r.status.abbrev) || '';
       if (!r.net || /starship/i.test(r.name) || !/^(SEC|MIN|HR|HOUR|DAY)?$/.test(p) || /^(Success|Failure|Partial Failure)$/.test(s)) return null;
       var t = new Date(r.net).getTime();
+      // scrubbed / on hold / TBD, or timed NET passed 30+ min without lift-off: skip so the next launch counts down
+      if (/^(Hold|TBD)$/.test(s) || (/^(SEC|MIN)?$/.test(p) && s !== 'In Flight' && now - t > H / 2)) return null;
       if (have.some(function (e) { return e.page === 'starship' && Math.abs(new Date(e.start) - t) < 6 * H; })) return null;
       var day = p === 'DAY';
       return { id: 'll2-' + r.id, page: 'starship', title: rocket + ' \u00b7 ' + mission.replace(/^Starlink Group /, 'Starlink '),

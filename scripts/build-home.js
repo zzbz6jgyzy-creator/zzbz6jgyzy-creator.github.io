@@ -159,8 +159,10 @@ function replaceEventCard(html, card, file) {
     return html;
   }
   const next = html.slice(0, open) + "<!--hv:event-->" + card + "<!--/hv:event-->" + html.slice(close + "<!--/hv:event-->".length);
-  const pics0 = (html.match(/<picture\b/gi) || []).length;
-  const pics1 = (next.match(/<picture\b/gi) || []).length;
+  // count <picture> sets outside the card itself (the old card's own thumb may go)
+  const np = (x) => (String(x).match(/<picture\b/gi) || []).length;
+  const pics0 = np(html) - np(block);
+  const pics1 = np(next) - np("<!--hv:event-->" + card + "<!--/hv:event-->");
   if (pics1 < pics0) {
     console.warn(file + ": would drop <picture> (" + pics0 + " → " + pics1 + "); skip");
     return html;
