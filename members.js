@@ -194,7 +194,7 @@ async function moderation(root){
   refresh.addEventListener('click',()=>busy(refresh,load,target));mode.addEventListener('change',()=>busy(refresh,load,target));
   try{await load();}catch(e){status(target,errorText(e),true);}
 }
-function renderAccount(root){
+function renderAccount(root,notice=''){
   const target=el('p',{class:'sdm-status',role:'status','aria-live':'polite'}),ret=safeReturn(new URLSearchParams(location.search).get('return') || sessionStorage.getItem('sd-member-return') || '/');
   const back=el('a',{href:ret,class:'sdm-text-button'},ret==='/'?'Back to the homepage →':'Return to the article →');root.replaceChildren();
   if(!user){
@@ -207,11 +207,17 @@ function renderAccount(root){
   if(profile?.blocked){root.append(el('p',{},messages.account_blocked),el('a',{href:'mailto:superchargeddaily@gmail.com'},'Contact the editor'),signout,target);return;}
   const name=el('input',{id:'sd-member-name',name:'display_name',type:'text',required:true,minlength:2,maxlength:40,autocomplete:'nickname',value:profile?.display_name||''});
   const accept=el('input',{id:'sd-member-rules',name:'rules',type:'checkbox',required:true});accept.checked=!!profile?.accepted;
+  target.id='sd-profile-status';status(target,notice);
   const save=el('button',{type:'submit',class:'sdm-button'},'Save profile'),form=el('form',{class:'sdm-profile'},el('label',{for:name.id},'Public display name'),name,
     el('p',{class:'sdm-fine'},'Use a nickname rather than your email address. This name appears beside your comments.'),
-    el('label',{class:'sdm-check',for:accept.id},accept,el('span',{},'I agree to the ',el('a',{href:'/community.html'},'community rules and privacy information'),'.')),save);
-  form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;busy(save,async()=>{profile=await rpc('sd_set_profile',{p_name:name.value,p_accept:accept.checked});renderAccount(root);},target);});
-  root.append(el('h2',{},profile?.display_name?'Your member profile':'Choose how you appear'),form,el('div',{class:'sdm-actions'},signout,back),target);
+    el('label',{class:'sdm-check',for:accept.id},accept,el('span',{},'I agree to the ',el('a',{href:'/community.html'},'community rules and privacy information'),'.')),target,save);
+  form.addEventListener('invalid',()=>status(target,name.validity.valid?messages.rules_required:messages.invalid_name,true),true);
+  form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;busy(save,async()=>{
+    save.textContent='Saving…';status(target,'Saving your profile…');
+    try{profile=await rpc('sd_set_profile',{p_name:name.value,p_accept:accept.checked});renderAccount(root,'Profile saved. You can now comment and give thumbs-up.');}
+    finally{save.textContent='Save profile';}
+  },target);});
+  root.append(el('h2',{},profile?.display_name?'Your member profile':'Choose how you appear'),form,el('div',{class:'sdm-actions'},signout,back));
   if(profile?.moderator){const mod=el('section',{class:'sdm-moderation'});root.append(mod);moderation(mod);}
 }
 async function boot(){

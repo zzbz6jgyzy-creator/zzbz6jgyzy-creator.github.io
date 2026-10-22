@@ -30,7 +30,7 @@ async def main():
    page=await context.new_page();errors=[];calls=[];oauth=[]
    profile={'display_name':None if new else 'Reader','moderator':moderator,'blocked':False,'accepted':not new}
    rows=[comment(),comment('2',body='Another viewpoint.',replies=0)];replyrows=[comment('3',parent_id='1',body='A reply.',replies=0)]
-   article_vote={'likes':7,'liked':False};failpost=[True];nextid=[10]
+   article_vote={'likes':7,'liked':False};failpost=[True];nextid=[10];failprofile=[new];profile_pending=asyncio.Event();profile_release=asyncio.Event()
    async def route(r):
     url=r.request.url
     if url.startswith(PROJECT):
@@ -43,7 +43,11 @@ async def main():
      if '/rest/v1/rpc/' in url:
       method=url.split('/rpc/')[1].split('?')[0];args=json.loads(r.request.post_data or '{}');calls.append((method,args))
       if method=='sd_member_profile':data=profile
-      elif method=='sd_set_profile':profile.update(display_name=args['p_name'],accepted=True);data=profile
+      elif method=='sd_set_profile':
+       if failprofile[0]:
+        profile_pending.set();await profile_release.wait();failprofile[0]=False
+        return await r.fulfill(status=503,headers=headers,body=json.dumps({'message':'unavailable','code':'503'}))
+       profile.update(display_name=args['p_name'],accepted=True);data=profile
       elif method=='sd_comments':
        current=replyrows if args.get('p_parent') else rows
        data={'items':current,'next':None,'count':len(rows)+len(replyrows),'likes':article_vote['likes'],'liked':article_vote['liked']}
@@ -118,8 +122,24 @@ async def main():
      if logged:
       await page.get_by_label('Public display name',exact=True).wait_for(timeout=20000)
       if new:
-       await page.get_by_label('Public display name',exact=True).fill('New Reader');await page.locator('#sd-member-rules').check();await page.get_by_role('button',name='Save profile',exact=True).click()
+       await page.get_by_label('Public display name',exact=True).fill('New Reader');await page.get_by_role('button',name='Save profile',exact=True).click()
+       await page.get_by_text('Please accept the community rules.',exact=True).wait_for();assert not any(m=='sd_set_profile' for m,a in calls)
+       await page.locator('#sd-member-rules').check();await page.get_by_role('button',name='Save profile',exact=True).click()
+       await asyncio.wait_for(profile_pending.wait(),timeout=15)
+       assert await page.get_by_role('button',name='Saving…',exact=True).is_disabled()
+       await page.get_by_text('Saving your profile…',exact=True).wait_for();profile_release.set()
+       await page.get_by_text('We couldn’t complete that request. Please try again.',exact=True).wait_for()
+       assert await page.get_by_label('Public display name',exact=True).input_value()=='New Reader'
+       assert await page.locator('#sd-member-rules').is_checked()
+       assert await page.get_by_role('button',name='Save profile',exact=True).is_enabled()
+       await page.get_by_role('button',name='Save profile',exact=True).click()
+       await page.get_by_text('Profile saved. You can now comment and give thumbs-up.',exact=True).wait_for()
        await page.get_by_role('heading',name='Your member profile').wait_for();assert any(m=='sd_set_profile' for m,a in calls)
+       await page.reload(wait_until='domcontentloaded');await page.get_by_role('heading',name='Your member profile').wait_for()
+       assert await page.get_by_label('Public display name',exact=True).input_value()=='New Reader'
+       assert await page.locator('#sd-member-rules').is_checked()
+       await page.get_by_role('button',name='Save profile',exact=True).click()
+       await page.get_by_text('Profile saved. You can now comment and give thumbs-up.',exact=True).wait_for()
       if moderator:
        await page.get_by_role('heading',name='Editor moderation',exact=True).wait_for();assert await page.get_by_role('button',name='Approve',exact=True).count()==0
        await page.locator('#sd-mod-mode').select_option('reported');await page.get_by_text('spam: Please review.').wait_for()
@@ -142,6 +162,7 @@ async def main():
     await page.screenshot(path=str(OUT/(name+'-failure.png')),full_page=True)
    await context.close()
   cases=[('anonymous-mobile',('/dispatch/tesla-ai-maps-v15.html',390),{}),('member-mobile',('/dispatch/tesla-ai-maps-v15.html',390,True),{}),('new-account-light',('/members.html',320,True),{'new':True,'theme':'light'}),('moderator-desktop',('/members.html',1440,True,True),{}),('google-pkce',('/members.html?return=%2F%2Fevil.example',390),{}),('inactive',('/members.html',390),{'enabled':False}),('nav-900',('/',900),{}),('nav-1024',('/',1024),{}),('nav-1440',('/',1440),{})]
+  cases.append(('new-account-mobile',('/members.html',390,True),{'new':True}))
   selected=set(sys.argv[1:]);await asyncio.gather(*[scenario(name,*args,**kwargs) for name,args,kwargs in cases if not selected or name in selected])
   (OUT/'results.json').write_text(json.dumps(results,indent=2));await browser.close()
   if not all(x['passed'] for x in results):raise SystemExit(1)
