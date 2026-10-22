@@ -49,7 +49,7 @@ window.SEE_LAUNCH = {
     {
       id: "ll-bandwagon-5",
       title: "Falcon 9 · Bandwagon-5",
-      start: "2026-10-20T10:30:00Z",
+      start: "2026-10-20T11:04:00Z",
       pad: "slc40",
       vehicle: "falcon",
       orbit: "leo",
