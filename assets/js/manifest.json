@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22T19:42:49.081Z",
+  "generated": "2026-10-22T22:40:13.650Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.5243ad45a9.js",
@@ -18,8 +18,8 @@
       ]
     },
     "intel": {
-      "file": "/assets/js/intel.bundle.72961aa255.js",
-      "bytes": 40520,
+      "file": "/assets/js/intel.bundle.b96a0c019c.js",
+      "bytes": 41061,
       "sources": [
         "intel-core.js",
         "intel.js"
@@ -93,8 +93,8 @@
       ]
     },
     "updates": {
-      "file": "/assets/js/updates.bundle.a60a93ab04.js",
-      "bytes": 15503,
+      "file": "/assets/js/updates.bundle.25e13b3a74.js",
+      "bytes": 16442,
       "sources": [
         "cesium-lazy.js",
         "updates-v3.js"
@@ -144,8 +144,8 @@
       ]
     },
     "cybercab": {
-      "file": "/assets/js/cybercab.bundle.bee87b7324.js",
-      "bytes": 19490,
+      "file": "/assets/js/cybercab.bundle.a8bab28c73.js",
+      "bytes": 20356,
       "sources": [
         "cybercab-data.js",
         "cybercab-tracker.js",
