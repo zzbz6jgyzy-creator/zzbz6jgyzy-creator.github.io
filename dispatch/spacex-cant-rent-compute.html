@@ -69,6 +69,7 @@
     <link rel="stylesheet" href="/members.css?v=20261022" />
     <script type="module" src="/members.js?v=20261022"></script>
     <!--/sd:members-->
+    <!--sd:wayfinding-style--><link rel="stylesheet" href="/wayfinding.css?v=2026102301" /><!--/sd:wayfinding-style-->
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -260,13 +261,15 @@
   <h1>SpaceX rents its supercomputers to Google and Anthropic. Now Musk says SpaceX can't rent any compute itself</h1>
   <p class="standfirst"><strong>On Sunday night, Elon Musk said SpaceX has tried to rent AI inference computing "from AWS, GCP or anyone" so it can take load off its own training clusters, and posted a video about how that conversation goes. It's an odd thing to hear from a company that rents its own data centers to Anthropic and Google for a combined $2.17 billion a month. But the two facts fit together, and they explain a lot about what SpaceX is likely to say when it reports its results on Tuesday.</strong></p>
   <p class="meta"><span>From Alex R</span><span>AI · News &amp; analysis</span></p>
+<!--sd:article-wayfinding--><div class="sd-article-tools"><details class="sd-contents"><summary>On this page</summary><nav aria-label="Article sections"><ol><li><a href="#section-what-musk-posted">What Musk posted</a></li><li><a href="#section-the-landlord-who-can-t-find-a-room">The landlord who can&#x27;t find a room</a></li><li><a href="#section-why-training-and-inference-are-different-problems">Why training and inference are different problems</a></li><li><a href="#section-the-numbers-behind-the-squeeze">The numbers behind the squeeze</a></li><li><a href="#section-the-escape-hatch">The escape hatch</a></li><li><a href="#section-what-to-ask-on-tuesday">What to ask on Tuesday</a></li><li><a href="#section-my-read">My read</a></li></ol></nav></details><a class="sd-discussion-jump" href="#comments" data-discussion-jump hidden>Jump to discussion <span aria-hidden="true">→</span></a></div><!--/sd:article-wayfinding-->
+
 
   <figure>
     <picture><source type="image/avif" srcset="/assets/dispatch/server-racks-480w.avif 480w, /assets/dispatch/server-racks-960w.avif 960w, /assets/dispatch/server-racks-1600w.avif 1600w, /assets/dispatch/server-racks-1920w.avif 1920w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/server-racks-480w.webp 480w, /assets/dispatch/server-racks-960w.webp 960w, /assets/dispatch/server-racks-1600w.webp 1600w, /assets/dispatch/server-racks-1920w.webp 1920w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/server-racks.jpg" alt="Close-up of a dark data center aisle with rows of rack-mounted servers, their front panels lit by small blue and green status lights" width="1920" height="1080" loading="lazy" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover" /></picture>
     <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Wikimedia_Foundation_Servers-8055_13.jpg">Victor Grigas (Victorgrigas), via Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, cropped by Supercharged Daily. Generic photo of Wikimedia Foundation servers, 2012. Servers at a data center, shown for illustration; this is not a SpaceX facility.</figcaption>
   </figure>
 
-  <h2>What Musk posted</h2>
+  <h2 id="section-what-musk-posted">What Musk posted</h2>
   <p>At <time class="lt" datetime="2026-10-18T21:21:41Z">5:21pm ET</time>, Musk posted a 79-second video with the caption "What it's like trying to rent AI/SI compute." By Monday morning it had about 3.2 million views.</p>
 
   <figure>
@@ -278,7 +281,7 @@
   <p>Almost six hours later, at <time class="lt" datetime="2026-10-19T03:05:35Z">11:05pm ET</time>, he explained it in a <a href="https://x.com/elonmusk/status/2112017286764659176">reply to himself</a>: "This describes the conversation SpaceX has had when we have tried to rent inference compute from AWS, GCP or anyone at, so that we can shift load off our training clusters!!"</p>
   <p>AWS is Amazon's cloud. GCP is Google Cloud Platform. Which is where it gets interesting.</p>
 
-  <h2>The landlord who can't find a room</h2>
+  <h2 id="section-the-landlord-who-can-t-find-a-room">The landlord who can't find a room</h2>
   <p>SpaceX is one of the biggest landlords in AI computing right now. Here's what it has disclosed:</p>
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
     <div class="sd-table-wrap" tabindex="0" role="region" aria-label="SpaceX compute tenants"><table class="sd-table">
@@ -294,12 +297,12 @@
   <p class="sd-table-note">Sources: <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026039278/filename1.htm">SpaceX's June 1 SEC correspondence</a> (Anthropic), <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026041150/spacexagreementfwp.htm">SpaceX's June 5 filing</a> (Google), and <a href="https://techcrunch.com/2026/06/05/google-will-pay-spacex-920m-per-month-for-compute/">TechCrunch</a>, which says the Anthropic deal runs through 2029.</p>
   <p>So Google is paying SpaceX nearly a billion dollars a month for GPUs, and according to Musk, Google's own cloud wouldn't rent SpaceX any inference capacity when it asked. Both can be true at the same time. It simply shows how sold-out AI computing is: anyone with spare GPUs can sign a multi-year contract, and anyone who needs more, including the company doing the renting, is stuck waiting.</p>
 
-  <h2>Why training and inference are different problems</h2>
+  <h2 id="section-why-training-and-inference-are-different-problems">Why training and inference are different problems</h2>
   <p>There are two kinds of AI computing. <strong>Training</strong> is building a model: huge, tightly connected clusters running for weeks. <strong>Inference</strong> is using the model: answering every Grok question, running every Grok Bot task, every time someone talks to Grok in their Tesla. Training needs one giant machine. Inference needs a lot of capacity, spread out and always on, and it grows with every new user.</p>
   <p>What Musk is describing is the inference side eating into the training side. When demand for Grok spikes, SpaceX has to serve it from somewhere, and the GPUs it would rather use to train its next model are the obvious place. Renting inference capacity from a cloud company would let it keep the training clusters free. Apparently, nobody had any to rent.</p>
   <p>And SpaceX is actively trying to grow that demand. In the same 24 hours, Musk posted "Try Grok @Bot," "Grok @Bot can call restaurants by phone and book you a table," and, at <time class="lt" datetime="2026-10-19T07:29:25Z">3:29am ET</time>, "<a href="https://x.com/elonmusk/status/2112083685872644421">Hire Grok @Bot today. You won't regret it.</a>" A week ago, SpaceX folded Grok, Cursor and X Premium into <a href="/dispatch/x-subscription.html">one subscription</a>. Each of those pushes adds to the inference load.</p>
 
-  <h2>The numbers behind the squeeze</h2>
+  <h2 id="section-the-numbers-behind-the-squeeze">The numbers behind the squeeze</h2>
   <ul>
     <li><strong>Capacity:</strong> SpaceX had 1.4 gigawatts of nameplate AI compute at the end of June, up from 1.0 GW in March, according to its <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/earningsreleaseq22608042.htm">Q2 results</a>.</li>
     <li><strong>Rentals already paying off:</strong> in the same report, SpaceX said its cloud service agreements totaled $14.1 billion in contracted sales and added $1.6 billion of AI infrastructure revenue in the second quarter alone.</li>
@@ -307,10 +310,10 @@
   </ul>
   <p>Put simply, SpaceX has made a deliberate trade. It took capacity it could have used itself and rented it out for guaranteed revenue that is already lifting its results. The cost of that choice is what Musk described on Sunday: when its own demand jumps, there's nowhere else to go.</p>
 
-  <h2>The escape hatch</h2>
+  <h2 id="section-the-escape-hatch">The escape hatch</h2>
   <p>There's one detail in the Google contract worth watching. After December 31, 2026, either side can end it on 90 days' notice. By my own calculation, that means that if SpaceX gave notice on January 1, it could take back about 110,000 GPUs around the start of April 2027. It would be giving up about $920 million a month to do it, so it's not something it would do lightly. But if Grok demand keeps outrunning supply, it's the one lever SpaceX controls. Nothing suggests it plans to pull it.</p>
 
-  <h2>What to ask on Tuesday</h2>
+  <h2 id="section-what-to-ask-on-tuesday">What to ask on Tuesday</h2>
   <p>SpaceX <a href="/dispatch/musk-earnings-week-q3-2026.html">reports its third quarter on Tuesday</a>, with the audio webcast at <time class="lt" datetime="2026-10-20T20:30:00Z">Tue 4:30pm ET</time>. Sunday's posts give analysts some sharp questions:</p>
   <ul>
     <li><strong>How much capacity is there now?</strong> The September figure against 1.4 GW in June.</li>
@@ -319,7 +322,7 @@
     <li><strong>Is Grok demand limited by capacity?</strong> If SpaceX can't find inference capacity, is it turning users away, or slowing down training?</li>
   </ul>
 
-  <h2>My read</h2>
+  <h2 id="section-my-read">My read</h2>
   <p>This is a good problem to have, and Musk clearly knows it. A company that can't rent compute because its own AI products are so busy is in a better position than one with empty data centers. It's also the most useful clue yet ahead of Tuesday: SpaceX's AI business is being squeezed from both sides, by paying tenants on one and fast-growing Grok demand on the other, and the answer to both is building more, faster. The 10 GW goal no longer looks like ambition for its own sake. Going by Sunday's posts, it's what SpaceX needs just to keep up.</p>
 
   <p class="sd-note">Sources: <a href="https://x.com/elonmusk/status/2111930742615802163">@elonmusk on X (18 Oct 2026)</a>, view count checked Monday morning; <a href="https://x.com/elonmusk/status/2112017286764659176">@elonmusk reply (18 Oct 2026, 11:05pm ET)</a>; <a href="https://x.com/elonmusk/status/2112083685872644421">@elonmusk on Grok Bot (19 Oct 2026)</a>; <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/earningsreleaseq22608042.htm">SpaceX Q2 2026 results, SEC filing (4 Aug 2026)</a>; <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026039278/filename1.htm">SpaceX SEC correspondence on the Anthropic agreement (1 Jun 2026)</a>; <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026041150/spacexagreementfwp.htm">SpaceX free writing prospectus on the Google agreement (5 Jun 2026)</a>; <a href="https://techcrunch.com/2026/06/05/google-will-pay-spacex-920m-per-month-for-compute/">TechCrunch (5 Jun 2026)</a>; <a href="https://finance.yahoo.com/technology/ai/articles/spacex-500-billion-ai-data-154735698.html">Benzinga via Yahoo Finance</a>. The April 2027 date is my own calculation from the contract terms, not a SpaceX plan. This is news and analysis, not investment advice.</p>

@@ -69,6 +69,7 @@
     <link rel="stylesheet" href="/members.css?v=20261022" />
     <script type="module" src="/members.js?v=20261022"></script>
     <!--/sd:members-->
+    <!--sd:wayfinding-style--><link rel="stylesheet" href="/wayfinding.css?v=2026102301" /><!--/sd:wayfinding-style-->
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -260,6 +261,8 @@
   <h1>Grok Bot now works from the iPhone Action Button. Here's how to set it up, and what it actually does</h1>
   <p class="standfirst"><strong>The Grok Bot app can now sit on the iPhone's Action Button, so one press starts a live voice chat with your Bot without opening the app first. It needs an iPhone 15 Pro or newer and Grok Bot version 1.16. It's a small feature, but it's the clearest sign yet that Grok Bot wants to be something you talk to all day rather than an app you visit.</strong></p>
   <p class="meta"><span>From Alex R</span><span>Grok · News &amp; how-to</span></p>
+<!--sd:article-wayfinding--><div class="sd-article-tools"><details class="sd-contents"><summary>On this page</summary><nav aria-label="Article sections"><ol><li><a href="#section-what-was-announced">What was announced</a></li><li><a href="#section-how-to-set-it-up">How to set it up</a></li><li><a href="#section-what-changes-in-practice">What changes, in practice</a></li><li><a href="#section-who-can-use-it">Who can use it</a></li><li><a href="#section-part-of-a-busy-two-weeks">Part of a busy two weeks</a></li><li><a href="#section-my-read">My read</a></li></ol></nav></details><a class="sd-discussion-jump" href="#comments" data-discussion-jump hidden>Jump to discussion <span aria-hidden="true">→</span></a></div><!--/sd:article-wayfinding-->
+
 
   <figure>
     <blockquote class="twitter-tweet" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">Grok Bot is now one step closer.<br><br>Set it as your iPhone's Action Button and press it to talk with Bot.</p>&mdash; Grok Bot (@bot) <a href="https://x.com/bot/status/2112252507762368684">October 19, 2026</a></blockquote>
@@ -267,12 +270,12 @@
     <figcaption>The 13-second announcement clip, posted <time class="lt" datetime="2026-10-19T18:40:16Z">Mon 2:40pm ET</time>. Video: <a href="https://x.com/bot/status/2112252507762368684">@bot (Grok Bot) on X</a>.</figcaption>
   </figure>
 
-  <h2>What was announced</h2>
+  <h2 id="section-what-was-announced">What was announced</h2>
   <p>The official Grok Bot account <a href="https://x.com/bot/status/2112252507762368684">posted the news</a> on Monday, October 19, at <time class="lt" datetime="2026-10-19T18:40:16Z">2:40pm ET (11:40am PT)</time>: "Set it as your iPhone's Action Button and press it to talk with Bot." Two hours later, at <time class="lt" datetime="2026-10-19T20:39:28Z">4:39pm ET (1:39pm PT)</time>, it <a href="https://x.com/bot/status/2112282506284445787">followed up with the setup steps</a>. By Tuesday morning the first post had passed 1.3 million views and more than 13,500 likes.</p>
   <p>This one is a shipped feature, not a promise. The setup post names a specific app version, 1.16, and the <a href="https://apps.apple.com/us/app/grok-bot/id6794501026">Grok Bot listing on the US App Store</a> lists version 1.16.0 as the latest release, shown as "1d ago" when I checked on Tuesday morning. Its release notes only mention a fix for a grayed-out "+" button and "improved overall app performance", so the Action Button support arrived quietly in that build and was announced a day later.</p>
   <p>The demo clip shows the Bot's orange mascot moving to the Action Button on the side of the phone. After the press, the Dynamic Island, the pill-shaped area at the top of the screen, expands into what looks like a phone call, with a timer, the Bot's name and mute and end buttons, then shrinks back to a small pill with the timer running while the home screen stays in view.</p>
 
-  <h2>How to set it up</h2>
+  <h2 id="section-how-to-set-it-up">How to set it up</h2>
   <p>These are the steps from <a href="https://x.com/bot/status/2112282506284445787">Grok Bot's own follow-up post</a>:</p>
   <ol>
     <li>Use an iPhone 15 Pro or newer. Those are the models with an <a href="https://support.apple.com/guide/iphone/use-and-customize-the-action-button-iphe89d61d66/ios">Action Button</a> in place of the old Ring/Silent switch.</li>
@@ -283,7 +286,7 @@
   <p>Apple's support page has one gotcha worth knowing: when you pick the Shortcut option, you have to tap the button under it and choose a specific action, "otherwise the Action button does nothing." If Grok Bot doesn't show up in the list, update the app and open it once first.</p>
   <p>Japan's <a href="https://www.itmedia.co.jp/aiplus/article/2610/20/2000002411/">ITmedia AI+</a> reported that in its testing, Grok Bot offers three actions there, not one: "List Bots", "Send Message" and "Start Voice Chat". Grok Bot's announcement only mentions voice chat, so treat the other two as a bonus that may vary by setup.</p>
 
-  <h2>What changes, in practice</h2>
+  <h2 id="section-what-changes-in-practice">What changes, in practice</h2>
   <p>Grok Bot already had live voice chat. The <a href="https://docs.x.ai/grok-bot/mobile">mobile help page</a> says you start one by choosing "Start voice chat" in a conversation when the message box is empty. The Action Button just removes the steps in between. Here's the difference, based on that help page and the setup post:</p>
   <div class="sd-table-wrap" tabindex="0" role="region" aria-label="Starting a voice chat, before and after"><table class="sd-table">
     <thead><tr><th></th><th>Before</th><th>With the Action Button</th></tr></thead>
@@ -296,11 +299,11 @@
   <p>Why that matters more for Grok Bot than for a normal chatbot: according to the help page, your Bots run on their own cloud computer and "work continues in the cloud when the app is closed." So a request you say into the button, such as checking an order or drafting a reply, can turn into a task that keeps running after you put the phone back in your pocket. The difference from a plain voice assistant is that the thing on the other end of the call can go off and do the job.</p>
   <p>Benji Taylor summed up the reaction: "The Action Button has been waiting its whole life for this," <a href="https://x.com/benjitaylor/status/2112256930513367131">he wrote</a>, in a post that had about 99,000 views by Tuesday morning.</p>
 
-  <h2>Who can use it</h2>
+  <h2 id="section-who-can-use-it">Who can use it</h2>
   <p>The app is a free download, but Grok Bot itself isn't free. The <a href="https://docs.x.ai/grok-bot/mobile">requirements</a> list "every paid individual Cursor plan or the Cursor Teams plan, or an individual SuperGrok, SuperGrok Plus, or SuperGrok Heavy subscription linked to your Cursor account," plus iOS 18 or later.</p>
   <p>What the announcement doesn't cover is just as useful to know. Neither post says anything about Android, CarPlay, or older iPhones without the button. Android phones can still run the Grok Bot app (Android 9 or later, per the help page) and start voice chats inside it, but there's no announced one-press equivalent yet.</p>
 
-  <h2>Part of a busy two weeks</h2>
+  <h2 id="section-part-of-a-busy-two-weeks">Part of a busy two weeks</h2>
   <p>The Action Button is the latest in a run of Grok Bot updates, all announced on the <a href="https://x.com/bot">@bot account</a>. Put together, they show where the product is heading: more ways to reach your Bot, and more things it can do once you do.</p>
   <div class="sd-table-wrap" tabindex="0" role="region" aria-label="Grok Bot updates, 7 to 19 October"><table class="sd-table">
     <thead><tr><th>Date</th><th>What Grok Bot added</th></tr></thead>
@@ -314,7 +317,7 @@
   </table></div>
   <p class="sd-table-note">Dates are from each linked post, in US Eastern time. The 3x speed figure is Grok Bot's own claim, not an independent test.</p>
 
-  <h2>My read</h2>
+  <h2 id="section-my-read">My read</h2>
   <p>On its own, a hardware shortcut is a minor update. But the October 16 update made voice calls faster and better at remembering past conversations, and now the voice call is one press away. Together they push Grok Bot toward working like a phone call to an assistant rather than a chat app. The open question is whether people will use it that way, for real errands and tasks, or mostly for quick questions they could have asked any chatbot. If you have an iPhone 15 Pro or newer and a plan that includes Grok Bot, it takes about 30 seconds to set up and costs nothing extra to try.</p>
 
   <p class="sd-note">Sources: <a href="https://x.com/bot/status/2112252507762368684">@bot announcement on X (19 Oct 2026)</a>; <a href="https://x.com/bot/status/2112282506284445787">@bot setup steps on X (19 Oct 2026)</a>; <a href="https://apps.apple.com/us/app/grok-bot/id6794501026">Grok Bot on the US App Store (version 1.16.0, 18 Oct 2026)</a>; <a href="https://docs.x.ai/grok-bot/mobile">SpaceXSI Docs, "Grok Bot for Mobile"</a>; <a href="https://support.apple.com/guide/iphone/use-and-customize-the-action-button-iphe89d61d66/ios">Apple Support, "Use and customize the Action button on iPhone"</a>; <a href="https://www.itmedia.co.jp/aiplus/article/2610/20/2000002411/">ITmedia AI+ (20 Oct 2026)</a>; <a href="https://x.com/benjitaylor/status/2112256930513367131">@benjitaylor on X</a>; <a href="https://x.com/runwayml/status/2112247791678541845">@runwayml on X</a>; earlier @bot posts linked in the table. View and like counts were checked on the morning of 20 Oct 2026. The before-and-after comparison and the update timeline are my own, built from those sources.</p>

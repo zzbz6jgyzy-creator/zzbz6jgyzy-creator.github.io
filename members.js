@@ -249,7 +249,7 @@ async function boot(){
   const article=ARTICLE.test(location.pathname)&&(config.articles==='all'||Array.isArray(config.articles)&&config.articles.includes(location.pathname))?document.querySelector('main article.article'):null;
   if(!account&&!article)return;
   let root;
-  if(article){root=el('section',{class:'sdm-discussion',id:'comments','aria-labelledby':'sd-comments-title'},el('h2',{id:'sd-comments-title'},'Join the discussion'),el('p',{},'Loading the conversation…'));article.append(root);}
+  if(article){root=el('section',{class:'sdm-discussion',id:'comments','aria-labelledby':'sd-comments-title'},el('h2',{id:'sd-comments-title'},'Join the discussion'),el('p',{},'Loading the conversation…'));article.append(root);article.querySelectorAll('[data-discussion-jump]').forEach(link=>{link.hidden=false;});}
   async function initialize(){
     try{
       const {createClient}=await import('/vendor/supabase-2.118.0.js');

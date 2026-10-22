@@ -1,0 +1,14 @@
+/* Compact links using the site's existing type, colours and surfaces. */
+.hv-start{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:480px;margin:12px auto 4px}
+.hv .hv-start a{display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:44px;padding:8px 6px;border:1px solid var(--line-strong,rgba(255,255,255,.16));border-radius:10px;color:var(--ink,#ecece8);font-size:13px;line-height:1.35;text-align:center;overflow-wrap:anywhere}
+.hv .hv-start a:hover{border-color:var(--red-text,#f23a52);color:var(--red-text,#f23a52)}
+.sd-article-tools{display:flex;align-items:flex-start;flex-wrap:wrap;gap:4px 20px;margin:1rem 0 1.5rem;padding:.5rem 0;border-block:1px solid var(--line,rgba(255,255,255,.1))}
+.sd-contents{flex:1 1 130px;min-width:0}
+.sd-contents summary{box-sizing:border-box;min-height:44px;padding:12px 0;cursor:pointer;color:var(--ink,#ecece8);font:600 14px/1.4 Inter,system-ui,sans-serif}
+.sd-contents ol{margin:6px 0 12px;padding-left:1.25rem}
+.sd-contents li{margin:0}
+.article .sd-contents a{display:inline-flex;align-items:center;min-height:44px;padding:5px 0;color:var(--red-text,#f23a52);font-size:14px;line-height:1.5;text-underline-offset:3px}
+.article .sd-discussion-jump{display:inline-flex;align-items:center;gap:5px;min-height:44px;color:var(--red-text,#f23a52);font:600 14px/1.4 Inter,system-ui,sans-serif;text-underline-offset:3px}
+.article .sd-discussion-jump[hidden]{display:none}
+.hv-start a:focus-visible,.sd-article-tools a:focus-visible,.sd-contents summary:focus-visible{outline:2px solid var(--red-text,#f23a52);outline-offset:3px;border-radius:4px}
+.article h2[id],#hv-trk-h{scroll-margin-top:110px}

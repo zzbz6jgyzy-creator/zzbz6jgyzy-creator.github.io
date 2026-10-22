@@ -69,6 +69,7 @@
     <link rel="stylesheet" href="/members.css?v=20261022" />
     <script type="module" src="/members.js?v=20261022"></script>
     <!--/sd:members-->
+    <!--sd:wayfinding-style--><link rel="stylesheet" href="/wayfinding.css?v=2026102301" /><!--/sd:wayfinding-style-->
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -260,13 +261,15 @@
   <h1>ARK raised its Tesla target to $4,400, but cut its robotaxi revenue forecast. Here's what changed</h1>
   <p class="standfirst"><strong>Cathie Wood's ARK Invest published a new open-source Tesla model on Monday evening, two days before Tesla's Q3 results. It puts the stock at about $4,400 a share in 2031, up from the $2,600-by-2029 figure in ARK's last model. Put the two side by side and the surprise is that ARK now expects less robotaxi revenue, not more. The higher target comes from Optimus, energy storage and much bigger margins.</strong></p>
   <p class="meta"><span>From Alex R</span><span>Tesla · News &amp; analysis</span></p>
+<!--sd:article-wayfinding--><div class="sd-article-tools"><details class="sd-contents"><summary>On this page</summary><nav aria-label="Article sections"><ol><li><a href="#section-what-ark-published">What ARK published</a></li><li><a href="#section-the-2024-model-next-to-the-2026-model">The 2024 model next to the 2026 model</a></li><li><a href="#section-the-robotaxi-forecast-went-down-not-up">The robotaxi forecast went down, not up</a></li><li><a href="#section-so-where-does-the-extra-1-800-a-share-come-from">So where does the extra $1,800 a share come from?</a></li><li><a href="#section-the-cost-side-and-the-merger-nobody-has-announced">The cost side, and the merger nobody has announced</a></li><li><a href="#section-what-it-would-take">What it would take</a></li><li><a href="#section-my-read">My read</a></li></ol></nav></details><a class="sd-discussion-jump" href="#comments" data-discussion-jump hidden>Jump to discussion <span aria-hidden="true">→</span></a></div><!--/sd:article-wayfinding-->
+
 
   <figure>
     <picture><source type="image/avif" srcset="/assets/dispatch/cybercab-santana-row-480w.avif 480w, /assets/dispatch/cybercab-santana-row-960w.avif 960w, /assets/dispatch/cybercab-santana-row-1600w.avif 1600w, /assets/dispatch/cybercab-santana-row-1920w.avif 1920w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/cybercab-santana-row-480w.webp 480w, /assets/dispatch/cybercab-santana-row-960w.webp 960w, /assets/dispatch/cybercab-santana-row-1600w.webp 1600w, /assets/dispatch/cybercab-santana-row-1920w.webp 1920w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/cybercab-santana-row.jpg" alt="A champagne-gold, two-door Tesla Cybercab with its butterfly doors raised, on display inside a Tesla showroom with visitors and a Cybertruck in the background" width="1920" height="1080" fetchpriority="high" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover" /></picture>
     <figcaption>A Tesla Cybercab on display at Santana Row, San Jose, in November 2024. ARK now expects about 8.1 million Tesla robotaxis on the road by 2031 in its base case. Photo: <a href="https://commons.wikimedia.org/wiki/File:Tesla_Cybercab_at_Santana_Row_oblique_view_dllu.jpg">Dllu, via Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, cropped.</figcaption>
   </figure>
 
-  <h2>What ARK published</h2>
+  <h2 id="section-what-ark-published">What ARK published</h2>
   <p>ARK posted <a href="https://www.ark-invest.com/articles/valuation-models/arks-expected-share-price-for-tesla-2031">"ARK's Expected Share Price For Tesla In 2031"</a> on Monday, October 19, by analysts Tasha Keeney and Daniel Maguire, and <a href="https://x.com/ARKInvest/status/2112294776318165258">shared it on X</a> at about <time class="lt" datetime="2026-10-19T21:28:13Z">5:28pm ET (2:28pm PT)</time>. The spreadsheet behind it, "Tesla 2031 Valuation Extract for Github", is in ARK's public <a href="https://github.com/arkinvest/ark-invest-tesla-valuation-model">Tesla model repository on GitHub</a>, so anyone can change the inputs.</p>
   <p>The headline numbers come from a Monte Carlo simulation, which runs thousands of random combinations of 32 inputs. ARK's expected value is <strong>about $4,400 a share in 2031</strong>. Its bear and bull cases, the 25th and 75th percentile results, are about <strong>$3,300</strong> and <strong>$5,000</strong>. Tesla closed Monday at <a href="https://stockanalysis.com/stocks/tsla/history/">$368.06</a>, up 3.8% on the day.</p>
 
@@ -278,7 +281,7 @@
 
   <p>To be clear about what this is: it's a forecast from a fund manager that has been bullish on Tesla for years, not anything Tesla has said or done. ARK's own disclaimer says its forecasts "reflect ARK's inherent bias toward positive expected results".</p>
 
-  <h2>The 2024 model next to the 2026 model</h2>
+  <h2 id="section-the-2024-model-next-to-the-2026-model">The 2024 model next to the 2026 model</h2>
   <p>ARK's previous Tesla model came out in June 2024 and aimed at 2029: <a href="https://www.ark-invest.com/articles/valuation-models/arks-tesla-price-target-2029">an expected $2,600 a share</a>, with a bear case of $2,000 and a bull case of $3,100, built from 45 inputs. Here are the figures both reports publish, side by side.</p>
   <div class="sd-table-wrap" tabindex="0" role="region" aria-label="ARK Tesla model, 2024 vs 2026"><table class="sd-table">
     <thead><tr><th></th><th>2024 model (target year 2029)</th><th>2026 model (target year 2031)</th></tr></thead>
@@ -296,12 +299,12 @@
   </table></div>
   <p class="sd-table-note">Sources: <a href="https://www.ark-invest.com/articles/valuation-models/arks-tesla-price-target-2029">ARK 2029 model (June 2024)</a> and <a href="https://www.ark-invest.com/articles/valuation-models/arks-expected-share-price-for-tesla-2031">ARK 2031 model (October 2026)</a>. The 2024 report gave example bear and bull cases only, with no base-case table. The comparison and percentage changes are my own.</p>
 
-  <h2>The robotaxi forecast went down, not up</h2>
+  <h2 id="section-the-robotaxi-forecast-went-down-not-up">The robotaxi forecast went down, not up</h2>
   <p>This is the part most headlines will skip. Even with two extra years to grow, ARK's 2031 bull case for robotaxi net revenue, $899 billion, is about 5% <em>lower</em> than its 2029 bull case of $951 billion. The bear case fell further, from $603 billion to $526 billion, a drop of about 13%. The range of car sales also got narrower: the 2024 bull case had 14.4 million cars sold in 2029, while the new one has 11.7 million in 2031.</p>
   <p>ARK points to a few reasons. It reworked robotaxi pricing using "willingness-to-pay segmented by income", left out surge pricing "to be conservative", and dropped China robotaxi operations from the model entirely, arguing that Tesla will put the US first. It also cut smaller lines such as insurance and human-driven ride-hail, which it says had a "de minimis" effect on the target.</p>
   <p>The robotaxi case still carries most of the weight: about 80% of enterprise value, with a base case of about 8.1 million Tesla robotaxis on the road in 2031 (ARK's text rounds this to about 8 million deployed cumulatively). ARK also repeats some progress claims, which come from its own report and the posts it cites rather than from Tesla filings: service in seven cities across three states, and more than 1 million unsupervised driverless miles in about seven months (ARK's cited source counts rider miles), which it says is about four times faster than Waymo reached its first million.</p>
 
-  <h2>So where does the extra $1,800 a share come from?</h2>
+  <h2 id="section-so-where-does-the-extra-1-800-a-share-come-from">So where does the extra $1,800 a share come from?</h2>
   <p>By my reading of the two reports, three things more than make up for the smaller robotaxi forecast.</p>
   <ul>
     <li><strong>Margins.</strong> The 2024 example cases had Tesla keeping 32 cents of EBITDA (earnings before interest, tax, depreciation and amortization) from every revenue dollar. The new base case has 61 cents. The valuation multiple barely moved: my math puts the new cases at about 18 times EBITDA, against 16.8 to 18.1 times in 2024. So almost all of the bigger target comes from bigger profits, not a richer multiple.</li>
@@ -310,15 +313,15 @@
   </ul>
   <p>Add it up and ARK's base case has Tesla's revenue going from $95 billion in 2025 to about $1.45 trillion in 2031, roughly 15 times bigger. By my math, robotaxi rides would be 52% of that, car sales 22%, Optimus 15% and storage 11%.</p>
 
-  <h2>The cost side, and the merger nobody has announced</h2>
+  <h2 id="section-the-cost-side-and-the-merger-nobody-has-announced">The cost side, and the merger nobody has announced</h2>
   <p>The new model adds a line for AI infrastructure. ARK assumes Tesla's cumulative spending on it grows from about $7 billion at the end of 2025 to about <strong>$225 billion by the end of 2031</strong>, partly through the Terafab chip project with SpaceX. ARK estimates Tesla's share of the initial research work at about $3 billion. Tesla hasn't announced a total capital commitment for Terafab. ARK also assumes Musk's 2025 performance award fully vests by 2031 and counts that dilution, which it calls "a win-win in our view".</p>
   <p>ARK models Tesla as a standalone company, but it takes a guess at a combined Tesla and SpaceX. It says the pair could bring in <strong>$3.8 trillion of revenue and $2.7 trillion of EBIT</strong> in 2031, with SpaceX supplying about 62% of the revenue and 69% of the EBIT. "SpaceX could contribute almost 2/3 of combined entity revenue in the next 5" years, Keeney <a href="https://x.com/TashaARK/status/2112296366768877726">wrote on X</a>. That's ARK's speculation. Neither company has announced talks, and Tesla's <a href="/dispatch/tesla-2026-proxy-three-items.html">2026 proxy statement</a> has no merger item, even after <a href="/dispatch/tesla-spacex-merger-barclays.html">Barclays called a deal "market consensus"</a> last week.</p>
 
-  <h2>What it would take</h2>
+  <h2 id="section-what-it-would-take">What it would take</h2>
   <p>$4,400 is about 12 times Monday's close. Using the 3.95 billion shares in Tesla's proxy, Tesla is worth about $1.46 trillion today, and ARK's $17.5 trillion base case is again about 12 times that. If the target means the end of 2031, about 5.2 years away, my math says it needs the stock to rise about 61% a year, every year. ARK's own table gives 62% a year, but it measures from a 2025 share price of $450, not Monday's close. Even ARK's bear case, $3,300, is about nine times today's price.</p>
   <p>ARK's history here deserves a mention too. Its GitHub repository holds seven Tesla model spreadsheets going back to 2019, and each new one moves the target year further out. The 2029 model, ARK notes, correctly picked 2025 as the most likely year for a robotaxi launch, and Tesla launched in Austin in June 2025. ARK names a slower robotaxi ramp, because of regulators or "unexpected events" such as Musk leaving, as the main risk to the forecast.</p>
 
-  <h2>My read</h2>
+  <h2 id="section-my-read">My read</h2>
   <p>The interesting thing in this update isn't the $4,400. It's that ARK has cut its robotaxi revenue range and now leans on Optimus and on margins above 60% to get a higher target. That makes the Optimus timeline the assumption to watch. ARK itself says real-world training data is the bottleneck and expects human-level proficiency around 2031, which is the same year the model needs a million robots earning money. Tesla's Q3 update on Wednesday, which <a href="https://x.com/Tesla/status/2106008799605923958">streams on X at 4:30pm CT</a>, which is 5:30pm ET (2:30pm PT), or <time class="lt" datetime="2026-10-21T21:30:00Z">Wed 5:30pm ET</time> in your time zone, is the next chance to see how Tesla's own numbers on Robotaxi, Optimus and storage compare with ARK's.</p>
 
   <p class="sd-note">Sources: <a href="https://www.ark-invest.com/articles/valuation-models/arks-expected-share-price-for-tesla-2031">ARK Invest, "ARK's Expected Share Price For Tesla In 2031" (19 Oct 2026)</a>; <a href="https://www.ark-invest.com/articles/valuation-models/arks-tesla-price-target-2029">ARK Invest, "ARK's Expected Value For Tesla In 2029: $2,600 Per Share" (June 2024)</a>; <a href="https://github.com/arkinvest/ark-invest-tesla-valuation-model">ARK Tesla valuation model repository on GitHub</a>; <a href="https://x.com/ARKInvest/status/2112294776318165258">@ARKInvest on X (19 Oct 2026)</a>; <a href="https://x.com/TashaARK/status/2112296366768877726">@TashaARK on X (19 Oct 2026)</a>; <a href="https://stockanalysis.com/stocks/tsla/history/">TSLA price history (StockAnalysis)</a>; <a href="https://www.sec.gov/Archives/edgar/data/1318605/000110465926116700/tm267596-1_def14a.htm">Tesla 2026 proxy statement (share count)</a>; <a href="https://x.com/Tesla/status/2106008799605923958">@Tesla Q3 2026 update post</a>. The 2024-versus-2026 comparison, revenue mix, per-robot figure, multiples and growth-rate calculations are my own. ARK's figures are forecasts, not results, and the merger figures are ARK's speculation. This is news and analysis, not investment advice.</p>

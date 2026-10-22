@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="/members.css?v=20261022" />
     <script type="module" src="/members.js?v=20261022"></script>
     <!--/sd:members-->
+    <!--sd:wayfinding-style--><link rel="stylesheet" href="/wayfinding.css?v=2026102301" /><!--/sd:wayfinding-style-->
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -245,13 +246,15 @@
   <h1>Tesla is ditching outside maps for its own AI maps. Its fleet's 15.8 billion FSD miles are the whole bet</h1>
   <p class="standfirst"><strong>Tesla cars on FSD have driven enough miles to cover every public road in America about 3,760 times. Yet owners still complain that FSD gets speed limits, parking and everyday routes wrong, because those come partly from other companies' maps. On Wednesday's earnings call, Tesla's AI chief said that's ending: Tesla is building "an entirely new architecture with essentially AI-based mapping and navigation," starting with FSD V15. Can a fleet of cameras out-map the mapmakers?</strong></p>
   <p class="meta"><span>From Alex R</span><span>FSD</span></p>
+<!--sd:article-wayfinding--><div class="sd-article-tools"><details class="sd-contents"><summary>On this page</summary><nav aria-label="Article sections"><ol><li><a href="#section-what-tesla-said">What Tesla said</a></li><li><a href="#section-done-vs-promised">Done vs. promised</a></li><li><a href="#section-why-fsd-still-needs-maps-at-all">Why FSD still needs maps at all</a></li><li><a href="#section-the-numbers-tesla-s-fleet-vs-the-mapmakers">The numbers: Tesla&#x27;s fleet vs. the mapmakers</a></li><li><a href="#section-two-very-different-philosophies">Two very different philosophies</a></li><li><a href="#section-what-owners-should-actually-notice-first">What owners should actually notice first</a></li><li><a href="#section-my-read">My read</a></li></ol></nav></details><a class="sd-discussion-jump" href="#comments" data-discussion-jump hidden>Jump to discussion <span aria-hidden="true">→</span></a></div><!--/sd:article-wayfinding-->
+
 
   <figure>
     <picture><source type="image/avif" srcset="/assets/dispatch/tesla-nav-screen-hero-480w.avif 480w, /assets/dispatch/tesla-nav-screen-hero-960w.avif 960w, /assets/dispatch/tesla-nav-screen-hero-1600w.avif 1600w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/tesla-nav-screen-hero-480w.webp 480w, /assets/dispatch/tesla-nav-screen-hero-960w.webp 960w, /assets/dispatch/tesla-nav-screen-hero-1600w.webp 1600w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/tesla-nav-screen-hero.jpg" alt="A Tesla Model 3 touchscreen showing the car on the left and a satellite navigation map on the right" width="1600" height="900" loading="lazy" style="width:100%;height:auto" /></picture>
     <figcaption>The navigation map on a Tesla Model 3 touchscreen (December 2020 software). This is the part of the car Tesla now says it will rebuild with AI. Photo: <a href="https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Screen_Dec_2020.jpg">SirAsdof, via Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> (cropped).</figcaption>
   </figure>
 
-  <h2>What Tesla said</h2>
+  <h2 id="section-what-tesla-said">What Tesla said</h2>
   <p>Near the end of Tesla's third-quarter call on Wednesday, October 21 (it began at <time class="lt" datetime="2026-10-21T21:30:00Z">5:30pm ET (2:30pm PT)</time> <small>(shown in your time zone)</small>, <a href="https://x.com/Tesla/status/2112998793927160254">per Tesla</a>), investor relations head Travis Axelrod read out a shareholder question: "Mapping for FSD continues to be a problem. The three biggest issues are recognizing proper speed limits, parking, and typical routes. I understand you use various third-party maps, but why not use your own maps?"</p>
   <p>Ashok Elluswamy, Tesla's vice president of AI, didn't push back. "You're totally right that we shouldn't be depending on external people's maps," he said, according to the <a href="https://stockanalysis.com/stocks/tsla/transcripts/712902-q3-2026/">call transcript</a>. Tesla is "building our own maps, but not the same way as OpenStreetMap," using "an entirely new architecture with essentially AI-based mapping and navigation."</p>
   <p>He listed what it should do:</p>
@@ -265,7 +268,7 @@
   <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Q3 2026 Earnings Call</p>&mdash; Tesla (@Tesla) <a href="https://x.com/Tesla/status/2113019308356039038">October 21, 2026</a></blockquote>
   <p class="credit">Post and call recording: <a href="https://x.com/Tesla/status/2113019308356039038">@Tesla on X</a>. The maps answer comes in the final Q&amp;A round.</p>
 
-  <h2>Done vs. promised</h2>
+  <h2 id="section-done-vs-promised">Done vs. promised</h2>
   <ul>
     <li><strong>Done:</strong> nothing shipped yet. This was a spoken answer on an earnings call, not a release note. Tesla's <a href="https://ir.tesla.com/">Q3 shareholder update</a> doesn't mention mapping at all.</li>
     <li><strong>Promised, no date:</strong> AI-built trip start and end points "pretty soon" in V15. Tesla gave no version number or month.</li>
@@ -274,11 +277,11 @@
     <li><strong>Linked promise:</strong> on the same call, Elluswamy said the V15 software is what customer Model Ys need to join the Robotaxi fleet, "somewhere around Q2 next year." Robotaxi runs inside geofences, so better in-house maps and that timeline are tied together.</li>
   </ul>
 
-  <h2>Why FSD still needs maps at all</h2>
+  <h2 id="section-why-fsd-still-needs-maps-at-all">Why FSD still needs maps at all</h2>
   <p>FSD drives on cameras and a neural network. But to choose a route, know the limit on a road with no sign in view, or find the right entrance to a parking lot, it leans on map data. Tesla has never published a full list of its map suppliers, and the shareholder's question, plus Elluswamy's "external people's maps" answer, confirms that part of today's data comes from outside. Owners trade theories about which provider is behind a wrong speed limit. Tesla's own <a href="https://www.tesla.com/fsd/safety">FSD safety page</a> says it even sorts highway from non-highway miles using "map data routing classes," and warns of "map dependencies."</p>
   <p>The problem with outside maps is speed of fixes. If a third party has the wrong speed limit on your commute, FSD can keep slowing down or speeding up in the wrong place until the next map data update reaches the car. Elluswamy's pitch is that Tesla's own cars become the map, and the map updates from what the fleet sees.</p>
 
-  <h2>The numbers: Tesla's fleet vs. the mapmakers</h2>
+  <h2 id="section-the-numbers-tesla-s-fleet-vs-the-mapmakers">The numbers: Tesla's fleet vs. the mapmakers</h2>
   <p>This is where Tesla's bet looks big. Here's what each system has actually driven or photographed:</p>
   <div class="table-wrap">
   <table>
@@ -301,7 +304,7 @@
   </ul>
   <p>The catch is that more miles is not the same as a better map. The hard part is turning messy camera footage into reliable facts, like "this sign says 45" or "this is the lot entrance, not a driveway," and doing it without mistakes multiplying across the fleet. Tesla hasn't said how it will check AI-made map data before cars act on it.</p>
 
-  <h2>Two very different philosophies</h2>
+  <h2 id="section-two-very-different-philosophies">Two very different philosophies</h2>
   <p>Waymo's approach is the opposite of Tesla's. In its own <a href="https://waymo.com/blog/2020/09/the-waymo-driver-handbook-mapping">2020 explainer</a>, Waymo said that to map a new city, "our team starts by manually driving our sensor equipped vehicles down each street, so our custom lidar can paint a 3D picture," then processes it with details like speed limits and lane lines, and tests it "before a map gets shared with the rest of the self-driving fleet." Waymo's cars also flag road changes and share them with the fleet, sometimes after a check by its mapping team.</p>
   <ul>
     <li><strong>Waymo:</strong> detailed, checked maps built city by city. Slower to expand, but each map is verified before use.</li>
@@ -309,7 +312,7 @@
   </ul>
   <p>Elluswamy's "not the same way as OpenStreetMap" line matters too. OpenStreetMap is edited by people. Tesla is promising the opposite: a map no human edits, built from what the cars see.</p>
 
-  <h2>What owners should actually notice first</h2>
+  <h2 id="section-what-owners-should-actually-notice-first">What owners should actually notice first</h2>
   <ul>
     <li><strong>Start and end of trips:</strong> pulling out of your driveway and finding the right parking spot or drop-off point. That's the first thing Elluswamy said V15 will handle with the new tech. It's also where Robotaxi riders notice problems most.</li>
     <li><strong>Talking to the map:</strong> asking for a different route by voice. Elluswamy didn't say whether this runs through Grok, which Tesla's Q3 update says is already in Cybercab.</li>
@@ -317,7 +320,7 @@
   </ul>
   <p>Not on the list: any word on whether owners will be able to report a map mistake directly, or whether older HW3 cars will get any of this.</p>
 
-  <h2>My read</h2>
+  <h2 id="section-my-read">My read</h2>
   <p>This could be one of the most useful things Tesla said on the call, and it got almost no airtime. Wrong speed limits and bad parking-lot handling are two of the most common FSD gripes, and Tesla just admitted outside map data is part of why. No other carmaker has a fleet that drives billions of camera-watched miles a year, so if anyone can build a living map from scratch, it's Tesla. But "pretty soon" and "several months" are not dates, and the 10x bigger model Musk first talked up in 2025 is now tied to V15, aimed at late 2026 or early 2027. Watch the first V15 release notes: if they mention navigation or parking, this has started. Would you trust a map that no human ever checked?</p>
 
   <p class="sources"><strong>Sources:</strong> Tesla Q3 2026 earnings call (21 Oct 2026), transcript via Stock Analysis and recording via @Tesla on X; Tesla Q3 2026 shareholder update (SEC exhibit 99.1, 21 Oct 2026); Tesla FSD (Supervised) Vehicle Safety Report page (counter read 22 Oct 2026); Tesla Robotaxi Safety Report; Waymo Safety Impact hub (data to June 2026); Waymo "Driver Handbook: mapping" blog (21 Sep 2020); Google Street View 15th anniversary page (2022); FHWA Highway Statistics 2023, table HM-20; Not a Tesla App report on Tesla's Q1 2026 call (23 Apr 2026). Calculations are mine. Not investment advice.</p>
