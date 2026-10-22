@@ -186,7 +186,8 @@
   const wmoText = (code) => {
     const n = Number(code);
     if (n === 0) return "Clear";
-    if (n <= 3) return "Partly cloudy";
+    if (n === 3) return "Overcast";
+    if (n <= 2) return "Partly cloudy";
     if (n <= 48) return "Fog";
     if (n <= 67) return "Rain";
     if (n <= 77) return "Snow";
