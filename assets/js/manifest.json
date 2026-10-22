@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22T12:09:01.836Z",
+  "generated": "2026-10-22T12:43:19.392Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.5243ad45a9.js",
@@ -26,8 +26,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.5dbfea39b7.js",
-      "bytes": 68261,
+      "file": "/assets/js/home.bundle.9b164de139.js",
+      "bytes": 69807,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -35,6 +35,7 @@
         "calendar-merge.js",
         "news-keep.js",
         "home-pair.js",
+        "home-tracker-data.js",
         "home-v2.js",
         "live.js"
       ]

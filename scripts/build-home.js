@@ -8,6 +8,7 @@
 // never inserts markers before <main> and aborts if it would drop a <picture>.
 const fs = require("fs"), path = require("path"), vm = require("vm");
 const pairer = require("../home-pair.js");
+const homeTrackers = require("../home-tracker-data.js");
 const { pickNextEvent, ll2Events } = require("./live-home-pick");
 const R = path.join(__dirname, ".."), rd = (f) => fs.readFileSync(path.join(R, f), "utf8");
 const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -73,7 +74,14 @@ if (F && F.countries) {
   const pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
   trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " / " + (F.thresholds ? F.thresholds.statesNeeded : 15), s: "states recognise RDW approval · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
 }
-const cc = C && C.stats && (C.stats.find((s) => s.live === "cybercab") || C.stats[0]);
+let tx = null; try { tx = JSON.parse(rd("data/robotaxi-tx.json")); } catch (e) {}
+let savedCc = null;
+try {
+  const saved = rd("index.html").match(/<a class="hv-t" href="\/cybercab\.html">([\s\S]*?)<\/a>/);
+  const value = saved && saved[1].match(/<strong>([\s\S]*?)<\/strong>/), label = saved && saved[1].match(/<span class="hv-t-s">([\s\S]*?)<\/span>/);
+  if (value && label) savedCc = { value: decode(strip(value[1])), label: decode(strip(label[1])) };
+} catch (e) {}
+const cc = homeTrackers.cybercab(tx, savedCc || C && C.stats && C.stats.find((s) => s.live === "cybercab"));
 if (cc) trk.push({ href: "/cybercab.html", k: "Cybercab", v: cc.value, s: cc.label });
 try {
   const u = JSON.parse(rd("updates-live.json")), vs = (u.versions || []).filter((x) => x.count > 0);
@@ -81,6 +89,16 @@ try {
   if (nw) trk.push({ href: "/updates.html", k: "Software updates", v: nw.id, s: "newest build reporting · most common: " + (top ? top.id + " (" + top.percent + "% of " + Number(u.fleet || top.fleet).toLocaleString("en-US") + " cars)" : "—") + " · Teslascope, " + String(u.updated || "").slice(0, 10) });
 } catch (e) {}
 const trkHtml = trk.map((x) => `<a class="hv-t" href="${x.href}"><span class="hv-t-k">${esc(x.k)}</span><strong>${esc(x.v)}</strong><span class="hv-t-s">${esc(x.s)}</span></a>`).join("");
+// Snapshot refreshes must update saved counts without rewriting other pages.
+if (process.argv.includes("--trackers-only")) {
+  const file = path.join(R, "index.html"), before = rd("index.html");
+  const marker = /<!--hv:trk-->[\s\S]*?<!--\/hv:trk-->/;
+  if (!marker.test(before)) throw new Error("homepage tracker markers missing");
+  const after = before.replace(marker, () => `<!--hv:trk-->${trkHtml}<!--/hv:trk-->`);
+  if (after !== before) fs.writeFileSync(file, after);
+  console.log(after === before ? "homepage trackers unchanged" : "homepage trackers updated");
+  process.exit(0);
+}
 
 // Headlines
 let feed = "";

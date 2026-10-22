@@ -59,10 +59,22 @@
     const pop = ok.reduce((a, c) => a + (c.pop || 0), 0), pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
     trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " / " + (F.thresholds ? F.thresholds.statesNeeded : 15), s: "states recognise RDW approval · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
   }
-  const cc = C && C.stats && (C.stats.find((s) => s.live === "cybercab") || C.stats[0]);
+  // Keep the pre-rendered snapshot until a newer JSON response arrives.
+  const savedCc = $("[data-hv-trk] a[href='/cybercab.html']");
+  const cc = savedCc && savedCc.querySelector("strong") && savedCc.querySelector(".hv-t-s")
+    ? { value: savedCc.querySelector("strong").textContent, label: savedCc.querySelector(".hv-t-s").textContent }
+    : C && C.stats && C.stats.find((s) => s.live === "cybercab");
   if (cc) trk.push({ href: "/cybercab.html", k: "Cybercab", v: cc.value, s: cc.label });
   const paint = () => { $("[data-hv-trk]").innerHTML = trk.map((x) => `<a class="hv-t" href="${x.href}"><span class="hv-t-k">${esc(x.k)}</span><strong>${esc(x.v)}</strong><span class="hv-t-s">${esc(x.s)}</span></a>`).join(""); };
   paint();
+  fetch("/data/robotaxi-tx.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).then((snapshot) => {
+    const next = window.SDHomeTrackers.cybercab(snapshot, cc);
+    if (!next) return;
+    const i = trk.findIndex((x) => x.k === "Cybercab");
+    const card = { href: "/cybercab.html", k: "Cybercab", v: next.value, s: next.label };
+    if (i >= 0) trk[i] = card; else trk.push(card);
+    paint();
+  }).catch(() => {});
   // Shared dates (/data/events.json) override the starship-data.js fallback
   const evReady = fetch("/data/events.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((j) => {
     const ev = j && j.events && j.events["starship-flight-" + (S && S.next ? S.next.flight : "")];

@@ -18,8 +18,8 @@ def main():
     cc = [v for v in vins if v.startswith("5YJAJ")]
     my = [v for v in vins if v.startswith("7SAY")]
     if len(vins) < 100 or not cc or not my:
-        print("Unexpected page shape; leaving data untouched", file=sys.stderr)
-        return 0
+        print(f"Registry response not accepted: {len(vins)} VINs, {len(cc)} Cybercabs, {len(my)} Model Ys; leaving data untouched", file=sys.stderr)
+        return 1
     data = json.loads(OUT.read_text()) if OUT.exists() else {"history": [], "vins": {}}
     now = datetime.datetime.now(datetime.timezone.utc)
     day = now.date().isoformat()
