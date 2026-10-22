@@ -1,14 +1,67 @@
 {
-  "updated": "2026-10-22T19:52:57Z",
+  "updated": "2026-10-22T20:53:15Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3381,
-  "latest": "2026.38.5.5",
+  "latest": "2026.38.3.2",
   "versions": [
+    {
+      "id": "2026.38.3.2",
+      "date": "2026-10-22",
+      "count": 3,
+      "fleet": 3381,
+      "percent": 0.1,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Emergency Drive Away",
+          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        },
+        {
+          "title": "Supercharger Site Maps",
+          "text": "You can now see a detailed view of select Tesla Superchargers by tapping \"View Site Map.\" When navigating to a pilot location, the site layout and live occupancy (Available / Occupied / Down) will be displayed upon arri\u2026"
+        },
+        {
+          "title": "Visual Updates",
+          "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        }
+      ],
+      "countries": [
+        "DE",
+        "GB",
+        "SE"
+      ],
+      "countryCounts": {
+        "DE": 1,
+        "GB": 1,
+        "SE": 1
+      },
+      "pending": 30,
+      "firstSeen": "2026-10-22T20:10:42Z",
+      "lastSeen": "2026-10-22T20:43:07Z"
+    },
     {
       "id": "2026.38.5.5",
       "date": "2026-10-21",
-      "count": 73,
+      "count": 75,
       "fleet": 3381,
       "percent": 2.2,
       "fsd": null,
@@ -53,12 +106,12 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 70,
-        "NZ": 3
+        "AU": 71,
+        "NZ": 4
       },
-      "pending": 24,
+      "pending": 22,
       "firstSeen": "2026-10-21T02:20:52Z",
-      "lastSeen": "2026-10-22T19:45:43Z"
+      "lastSeen": "2026-10-22T20:25:39Z"
     },
     {
       "id": "2026.38.5.10",
@@ -390,7 +443,7 @@
         "TH": 1,
         "HK": 1
       },
-      "pending": 36,
+      "pending": 35,
       "firstSeen": "2026-10-08T01:27:55Z",
       "lastSeen": "2026-10-22T13:38:56Z"
     },
@@ -453,7 +506,7 @@
       "id": "2026.38.3",
       "date": "2026-10-06",
       "count": 7,
-      "fleet": 3381,
+      "fleet": 3380,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": null,
@@ -567,7 +620,7 @@
       "id": "2026.38",
       "date": "2026-09-30",
       "count": 69,
-      "fleet": 3381,
+      "fleet": 3380,
       "percent": 2.0,
       "fsd": null,
       "fsdHw3": null,
@@ -650,7 +703,7 @@
       "id": "2026.32.7",
       "date": "2026-09-23",
       "count": 375,
-      "fleet": 3381,
+      "fleet": 3380,
       "percent": 11.1,
       "fsd": null,
       "fsdHw3": null,
@@ -781,7 +834,7 @@
       "id": "2026.28.5",
       "date": "2026-09-16",
       "count": 5,
-      "fleet": 3381,
+      "fleet": 3380,
       "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
@@ -834,7 +887,7 @@
       "id": "2026.27.300",
       "date": "2026-09-15",
       "count": 38,
-      "fleet": 3381,
+      "fleet": 3380,
       "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
@@ -899,7 +952,7 @@
       "id": "2026.32.3",
       "date": "2026-09-09",
       "count": 374,
-      "fleet": 3381,
+      "fleet": 3380,
       "percent": 11.1,
       "fsd": null,
       "fsdHw3": null,
@@ -1023,69 +1076,6 @@
       "pending": 4,
       "firstSeen": "2026-09-09T18:18:11Z",
       "lastSeen": "2026-10-02T06:50:37Z"
-    },
-    {
-      "id": "2026.27.200",
-      "date": "2026-09-01",
-      "count": 32,
-      "fleet": 3380,
-      "percent": 0.9,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [
-        {
-          "title": "FSD (Supervised)",
-          "text": "Under your supervision, FSD (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other vehicles and ob\u2026"
-        },
-        {
-          "title": "Minor Fixes",
-          "text": "This release contains minor fixes and improvements"
-        },
-        {
-          "title": "Recall Notice",
-          "text": "This software update includes the remedy for EU Recall Submission 2026_103555. It restores compliance with UNECE Regulation No. 135. After this update installs successfully, you do not need to take any further action fo\u2026"
-        },
-        {
-          "title": "\"Hey Grok\"",
-          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
-        },
-        {
-          "title": "Apple Music",
-          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
-        },
-        {
-          "title": "Automatic Navigation",
-          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
-        },
-        {
-          "title": "Camera Preview",
-          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
-        },
-        {
-          "title": "Caraoke with Scoring",
-          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
-        }
-      ],
-      "countries": [
-        "NL",
-        "BE",
-        "DK",
-        "LT",
-        "SI",
-        "CZ"
-      ],
-      "countryCounts": {
-        "NL": 18,
-        "BE": 7,
-        "DK": 4,
-        "LT": 1,
-        "SI": 1,
-        "CZ": 1
-      },
-      "pending": 1,
-      "firstSeen": "2026-09-01T21:38:57Z",
-      "lastSeen": "2026-09-22T11:21:10Z"
     }
   ]
 }

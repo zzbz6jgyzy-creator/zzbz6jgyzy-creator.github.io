@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-22T20:34:54.602Z",
+  "updated": "2026-10-22T20:53:17.236Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:newest-reporting",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "newest-reporting",
+      "previous": "2026.38.5.5",
+      "next": "2026.38.3.2",
+      "at": "2026-10-22T20:53:15.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample (3381 cars)",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Newest reporting build changed from 2026.38.5.5 to 2026.38.3.2.",
+      "title": "Newest reporting build",
+      "id": "changed|tesla-software:newest-reporting|2026-10-22T20:53:15.000Z|2026.38.3.2"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-10q-spacex-committee.html",
