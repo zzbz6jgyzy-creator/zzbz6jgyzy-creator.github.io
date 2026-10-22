@@ -182,3 +182,7 @@ try:
     _nlm = _nlu.module_from_spec(_nlp); _nlp.loader.exec_module(_nlm); _nlm.run()
 except Exception as e:
     print("newsletter inject skip:", e)
+
+# Static navigation for the homepage and current/future long articles.
+import runpy
+runpy.run_path(os.path.join(ROOT, "scripts", "build-wayfinding.py"))["run"]()

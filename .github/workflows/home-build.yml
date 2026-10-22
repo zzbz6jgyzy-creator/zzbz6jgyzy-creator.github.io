@@ -7,6 +7,8 @@ on:
       - dispatch.html
       - 'dispatch/**'
       - scripts/build-articles.py
+      - scripts/build-wayfinding.py
+      - wayfinding.css
       - starship-data.js
       - fsd-europe-data.js
       - cybercab-data.js
