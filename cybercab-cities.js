@@ -113,6 +113,11 @@
     return fetch(u, { cache: "no-store" }).then(function (r) { if (!r.ok) throw u; return r.json(); });
   })).then(function (res) {
     var fleet = res[0], geo = res[1], hist = res[2];
+    if (!window.ROBOTAXI_REALITY || !Array.isArray(REAL.claims) || !fleet.states || !Array.isArray(geo.features) || !geo.features.length || !hist.cities) throw new Error("Invalid city snapshot");
+    if (!Number.isFinite(Date.parse(REAL.updated)) || !Number.isFinite(Date.parse(fleet.checked)) || !REAL.areas ||
+        geo.features.some(function (f) { var p = f.properties, a = p && REAL.areas[p.slug], h = p && hist.cities[p.slug]; return !p || !p.name || !Number.isFinite(p.areaSqMi) || p.areaSqMi < 0 || !a || !a.verification || !a.supervision || !h || !h.statusLabel || !h.statusSrc; }) ||
+        REAL.claims.some(function (c) { return !c.id || !c.title || !c.src || !Number.isFinite(Date.parse(c.date)); })) throw new Error("Incomplete city snapshot");
+    if (!Number.isFinite(Date.parse(geo.checked)) || Date.parse(root.getAttribute("data-snapshot-at")) > Date.parse(geo.checked) || Date.parse(root.getAttribute("data-snapshot-claims-at")) > Date.parse(REAL.updated) || Date.parse(root.getAttribute("data-snapshot-fleet-at")) > Date.parse(fleet.checked)) throw new Error("Older city snapshot");
     var states = fleet.states, html = "";
     html += '<div class="rt-glance" data-rt-glance></div>';
     html += renderFilters();
@@ -147,6 +152,9 @@
     html += '<div class="rt-table-wrap"><table class="rt-table"><thead><tr><th scope="col">City</th><th scope="col">Status</th><th scope="col">Verification</th><th scope="col">Supervision</th><th scope="col">Area</th><th scope="col">Last expanded</th><th scope="col">Model Y fleet</th></tr></thead><tbody>' + rows + "</tbody></table></div>";
     html += '<p class="rt-fine">Service areas from ' + link(geo.source.url, "Robotaxi Service Areas project") + " (MIT), traced from the Tesla Robotaxi app. Earlier expansions from " + link("https://robotracker.app/updates", "robotracker.app") + ". Status: " + link("https://robotracker.app/updates", "robotracker.app") + ", Bay Area " + link("https://gizmodo.com/california-regulator-says-teslas-robotaxis-are-more-like-a-limo-in-the-eyes-of-the-law-2000738512", "CPUC via Gizmodo") + ". A geofence in the app is not the same as public unsupervised rides. Shapes checked " + stamp(geo.checked) + ".</p>";
     root.innerHTML = html;
+    root.setAttribute("data-snapshot-at", geo.checked);
+    root.setAttribute("data-snapshot-claims-at", REAL.updated);
+    root.setAttribute("data-snapshot-fleet-at", fleet.checked);
     renderGlance(root.querySelector("[data-rt-glance]"), REAL.claims || []);
     renderClaims(root.querySelector("[data-rt-claims]"), REAL.claims || []);
     document.dispatchEvent(new CustomEvent("rt:cities-ready"));
@@ -182,5 +190,11 @@
         focusClaim(cid, true);
       }
     }
-  }).catch(function () { root.innerHTML = '<p class="cc-count-empty">City data couldn’t load.</p>'; });
+  }).catch(function () {
+    if (root.hasAttribute("data-snapshot-at")) {
+      if (!root.querySelector("[data-refresh-status]")) root.insertAdjacentHTML("beforeend", '<p class="rt-fine" role="status" data-refresh-status>Refresh unavailable. Showing the saved city records and source dates above.</p>');
+      return;
+    }
+    root.innerHTML = '<p class="cc-count-empty">City data couldn’t load.</p>';
+  });
 })();

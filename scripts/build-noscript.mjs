@@ -4,6 +4,7 @@
 // the interactive tracker is unchanged. Re-run whenever the data files change.
 import fs from "node:fs";
 import vm from "node:vm";
+import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
 const root = new URL("..", import.meta.url).pathname;
 const read = (f) => fs.readFileSync(root + f, "utf8");
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -45,3 +46,4 @@ function inject(file, tag, html) {
   inject("starship.html", "starship", `<h2>Starship flights (updated ${esc(d.updated)})</h2>${nx}<div style="overflow-x:auto"><table ${T}><thead><tr>${th("Flight")}${th("Date")}${th("Booster / Ship")}${th("Outcome")}${th("Story")}</tr></thead><tbody>${rows}</tbody></table></div>`);
 }
 console.log("noscript blocks written");
+buildTrackerSnapshots(root);

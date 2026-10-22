@@ -39,7 +39,8 @@ jobs:
             git add data/updates-history.json
             git commit --amend --no-edit
           fi
-          git add data/updates-extras.json
+          node scripts/build-tracker-snapshots.mjs --page updates
+          git add data/updates-extras.json updates.html
           if git diff --cached --quiet && git diff --quiet origin/main HEAD; then
             echo "No firmware change"
           else

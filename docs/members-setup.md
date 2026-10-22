@@ -101,4 +101,4 @@ No paid tool is required for the code. Supabase free-tier quotas, project inacti
 
 Database test dependency: `@electric-sql/pglite@0.5.11`. Browser tests need Python Playwright and Chromium. The runtime vendor is `@supabase/supabase-js@2.118.0`, bundled for the browser with esbuild 0.25.12; the MIT license is included. `scripts/build-members-vendor.mjs` documents a reproducible rebuild. Live Google sign-in and hosted PostgREST behavior require the owner-controlled setup and smoke test above.
 
-The Member permissions and integration checks workflow runs the SQL, injector and syntax tests for related pull requests and pushes. Browser flows are verified separately with mocked provider APIs.
+The Member permissions and integration checks workflow runs the SQL, return-route, injector, syntax and browser tests for related pull requests and pushes. Browser flows use mocked provider APIs and never write to the live project. The local browser executable can be selected with `CHROMIUM_PATH`.

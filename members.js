@@ -36,8 +36,10 @@ function errorText(error) {
     ? 'This is taking too long. Your text is still here; please try again.' : 'We couldn’t complete that request. Please try again.');
 }
 function safeReturn(value) {
-  if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//') || value.includes('\\')) return '/';
-  try { const u = new URL(value,location.origin); return u.origin === location.origin && (ARTICLE.test(u.pathname) || u.pathname === '/' || u.pathname === '/members.html') ? u.pathname + (u.hash === '#comments' ? u.hash : '') : '/'; } catch { return '/'; }
+  // Validate the literal static-page route before a URL parser can normalize it.
+  // No encoding, queries, traversal, controls or protocol-relative destinations.
+  if(typeof value!=='string'||value!==value.trim())return '/';
+  return /^(?:\/|\/(?:[a-z0-9]+(?:-[a-z0-9]+)*\.html|(?:dispatch|guides|reviews|videos)\/[a-z0-9]+(?:-[a-z0-9]+)*\.html))(?:#[A-Za-z][A-Za-z0-9_-]*)?$/.test(value) ? value : '/';
 }
 function accountLink(label = 'Sign in to comment') {
   return el('a',{href:'/members.html?return='+encodeURIComponent(safeReturn(location.pathname + (ARTICLE.test(location.pathname) ? '#comments' : ''))),class:'sdm-button'},label);
@@ -73,7 +75,7 @@ async function signIn(target, button) {
   },target);
 }
 function installNav() {
-  const href='/members.html?return='+encodeURIComponent(safeReturn(location.pathname+(ARTICLE.test(location.pathname)?'#comments':'')));
+  const href='/members.html?return='+encodeURIComponent(safeReturn(location.pathname+(ARTICLE.test(location.pathname)?'#comments':location.hash)));
   const items=document.querySelector('.pn-items'),sheet=document.querySelector('.pn-sheet'),explore=document.querySelector('#pn-ex');
   if(items&&!items.querySelector('.sdm-nav-primary')){
     const link=el('a',{href,class:'pn-link sdm-nav sdm-nav-primary','data-member-nav':true},'Members');
@@ -120,8 +122,9 @@ function reportDialog(id,target){
   form.addEventListener('submit',e=>{e.preventDefault();busy(send,async()=>{await rpc('sd_report_comment',{p_id:id,p_reason:reason.value,p_details:detail.value});dialog.close();status(target,'Report sent to the editor. Thank you.');},local);});
   dialog.append(form);dialog.addEventListener('close',()=>dialog.remove(),{once:true});document.body.append(dialog);dialog.showModal();
 }
-function commentNode(article,c,target){
+function commentNode(article,c,target,updateSummary){
   const node=el('li',{class:'sdm-comment',id:'comment-'+c.id}),actions=el('div',{class:'sdm-actions'});
+  let loadReplies;
   const author=el('strong',{},c.status==='deleted'?'Removed comment':c.name||'Former member');
   const time=el('time',{datetime:c.created_at},dateLabel(c.created_at));
   node.append(el('header',{class:'sdm-comment-head'},author,c.moderator?el('span',{class:'sdm-badge'},'Editor'):null,time));
@@ -130,7 +133,7 @@ function commentNode(article,c,target){
     actions.append(voteButton(article,c.id,c,target));
     if(!c.parent_id){
       const area=el('div',{class:'sdm-reply-form',hidden:true}),reply=el('button',{type:'button',class:'sdm-text-button','aria-expanded':'false','aria-controls':'reply-form-'+c.id},'Reply');area.id='reply-form-'+c.id;
-      reply.addEventListener('click',()=>{if(!canParticipate(target))return;area.hidden=!area.hidden;reply.setAttribute('aria-expanded',String(!area.hidden));if(!area.hidden){area.replaceChildren(composer(article,c.id,async(result)=>{await refreshThread();status(target,'Your reply is published. Open the replies to see it.');}));area.querySelector('textarea')?.focus();}});
+      reply.addEventListener('click',()=>{if(!canParticipate(target))return;area.hidden=!area.hidden;reply.setAttribute('aria-expanded',String(!area.hidden));if(!area.hidden){area.replaceChildren(composer(article,c.id,async(result)=>{await loadReplies({reset:true,focusId:result.id});status(target,'Your reply is published.');}));area.querySelector('textarea')?.focus();}});
       actions.append(reply);node.append(area);
     }
     if(!c.own)actions.append(el('button',{type:'button',class:'sdm-text-button',onclick:()=>reportDialog(c.id,target)},'Report'));
@@ -146,13 +149,19 @@ function commentNode(article,c,target){
     remove.addEventListener('click',()=>{if(!confirmed){confirmed=true;remove.textContent='Confirm delete';return;}busy(remove,async()=>{await rpc('sd_delete_comment',{p_id:c.id});await refreshThread();status(target,'Your comment was removed.');},target);});actions.append(remove);
   }
   node.append(actions);
-  if(!c.parent_id&&c.replies>0){
-    const children=el('ol',{class:'sdm-replies',id:'replies-'+c.id,hidden:true}),more=el('button',{type:'button',class:'sdm-text-button','aria-expanded':'false','aria-controls':children.id},'View replies ('+c.replies+')');let before=null;
-    more.addEventListener('click',()=>busy(more,async()=>{
-      const data=await rpc('sd_comments',{p_article:article,p_parent:c.id,p_before:before,p_limit:10});
-      for(const row of data.items)children.append(commentNode(article,row,target));before=data.next;children.hidden=false;
+  if(!c.parent_id){
+    const children=el('ol',{class:'sdm-replies',id:'replies-'+c.id,hidden:true}),more=el('button',{type:'button',class:'sdm-text-button',hidden:c.replies===0,'aria-expanded':'false','aria-controls':children.id},'View replies ('+c.replies+')');let before=null;
+    loadReplies=async({reset=false,focusId=null}={})=>{
+      // Anchor a saved reply's page to its ID, even if newer replies arrive meanwhile.
+      const cursor=focusId?String(BigInt(focusId)+1n):reset?null:before;
+      const data=await rpc('sd_comments',{p_article:article,p_parent:c.id,p_before:cursor,p_limit:10});
+      if(reset)children.replaceChildren();
+      for(const row of data.items)children.append(commentNode(article,row,target,updateSummary));before=data.next;children.hidden=false;
       more.setAttribute('aria-expanded','true');more.textContent=before?'More replies':'All replies shown';more.hidden=!before;
-    },target));node.append(more,children);
+      updateSummary(data);
+      if(focusId){const published=children.querySelector('#comment-'+CSS.escape(String(focusId)));if(published){published.tabIndex=-1;published.focus({preventScroll:true});published.scrollIntoView({block:'center'});}}
+    };
+    more.addEventListener('click',()=>busy(more,()=>loadReplies(),target));node.append(more,children);
   }return node;
 }
 async function startThread(article,root){
@@ -161,14 +170,17 @@ async function startThread(article,root){
   const refresh=el('button',{type:'button',class:'sdm-text-button'},'Refresh discussion');
   root.replaceChildren(reaction,el('div',{class:'sdm-discussion-head'},el('h2',{id:'sd-comments-title'},'Join the discussion'),count),el('p',{class:'sdm-muted'},'Be curious. Be constructive. Comments publish immediately; report anything that breaks the community rules.'),forms,target,refresh,list,more);
   forms.append(composer(article,null,()=>load(true)));
+  function updateSummary(data){
+    count.textContent=data.count+' published '+(data.count===1?'comment':'comments');
+    reaction.replaceChildren(el('span',{},'Enjoyed this article?'),voteButton(article,null,data,target));
+  }
   async function load(reset=false){
     const version=++revision;more.disabled=true;
     try{
       const data=await rpc('sd_comments',{p_article:article,p_parent:null,p_before:reset?null:before,p_limit:20});if(version!==revision)return;
       if(reset)list.replaceChildren();
-      const existing=new Set([...list.children].map(e=>e.id));for(const c of data.items)if(!existing.has('comment-'+c.id))list.append(commentNode(article,c,target));
-      before=data.next;more.hidden=!before;count.textContent=data.count+' published '+(data.count===1?'comment':'comments');
-      reaction.replaceChildren(el('span',{},'Enjoyed this article?'),voteButton(article,null,data,target));
+      const existing=new Set([...list.children].map(e=>e.id));for(const c of data.items)if(!existing.has('comment-'+c.id))list.append(commentNode(article,c,target,updateSummary));
+      before=data.next;more.hidden=!before;updateSummary(data);
       if(!list.children.length)list.append(el('li',{class:'sdm-empty'},'No comments yet. Start the conversation.'));
       status(target,'');
     }finally{more.disabled=false;}
@@ -196,7 +208,7 @@ async function moderation(root){
 }
 function renderAccount(root,saved=false){
   const target=el('p',{class:'sdm-status',role:'status','aria-live':'polite'}),ret=safeReturn(new URLSearchParams(location.search).get('return') || sessionStorage.getItem('sd-member-return') || '/');
-  const back=el('a',{href:ret,class:'sdm-text-button'},ret==='/'?'Back to the homepage →':'Return to the article →');root.replaceChildren();
+  const back=el('a',{href:ret,class:'sdm-text-button'},ret==='/'?'Back to the homepage →':ARTICLE.test(ret.split('#')[0])?'Return to the article →':'Return to the page →');root.replaceChildren();
   if(!user){
     const google=el('button',{type:'button',class:'sdm-button sdm-google'},'Continue with Google');google.addEventListener('click',()=>signIn(target,google));
     root.append(el('h2',{},'A place for your perspective'),el('p',{},'Create your free member account or sign in to comment, reply and give a thumbs-up.'),google,

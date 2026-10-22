@@ -25,11 +25,13 @@ jobs:
       # GITHUB_TOKEN commits do not trigger the separate homepage push workflow.
       - name: Refresh homepage evidence and saved tracker counts
         run: node scripts/sd-intel.js && node scripts/build-home.js --trackers-only
+      - name: Refresh Cybercab figures in the initial HTML
+        run: node scripts/build-tracker-snapshots.mjs --page cybercab
       - name: Commit if changed
         run: |
-          if git diff --quiet -- data/robotaxi-tx.json data/robotaxi-areas.geojson data/robotaxi-areas-history.json data/robotaxi-fleet.json data/intelligence index.html; then echo "No change"; exit 0; fi
+          if git diff --quiet -- data/robotaxi-tx.json data/robotaxi-areas.geojson data/robotaxi-areas-history.json data/robotaxi-fleet.json data/intelligence index.html cybercab.html; then echo "No change"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/robotaxi-tx.json data/robotaxi-areas.geojson data/robotaxi-areas-history.json data/robotaxi-fleet.json data/intelligence index.html
+          git add data/robotaxi-tx.json data/robotaxi-areas.geojson data/robotaxi-areas-history.json data/robotaxi-fleet.json data/intelligence index.html cybercab.html
           git commit -m "Refresh Cybercab/Robotaxi counts and service areas."
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done

@@ -32,6 +32,9 @@
     return fetch(u, { cache: "no-store" }).then(function (r) { if (!r.ok) throw u; return r.json(); });
   })).then(function (res) {
     var tx = res[0], fleet = res[1], h = tx.history, last = h[h.length - 1];
+    if (!last || !Number.isFinite(last.cybercab) || last.cybercab < 0 || !Number.isFinite(Date.parse(tx.checked)) || !Number.isFinite(Date.parse(fleet.checked)) || !fleet.states ||
+        !Object.keys(fleet.states).length || Object.keys(fleet.states).some(function (k) { return !Number.isFinite(fleet.states[k].count) || fleet.states[k].count < 0; })) throw new Error("Invalid count snapshot");
+    if (Date.parse(root.getAttribute("data-snapshot-at")) > Date.parse(tx.checked) || Date.parse(root.getAttribute("data-snapshot-fleet-at")) > Date.parse(fleet.checked)) throw new Error("Older count snapshot");
     // Cybercab
     var cab = '<article class="cc-count-card is-cybercab"><p class="cc-count-tag">Cybercab</p><h3>Cybercabs</h3>' +
       '<p class="cc-count-what">Purpose-built two-seater. No steering wheel, no pedals.</p>' +
@@ -73,9 +76,15 @@
     root.innerHTML = cab + rt + '<p class="cc-count-note">Texas figures by VIN: Cybercabs start 5YJAJ, Model Ys start 7SAY. Earlier Texas points: ' +
       link("https://teslant.com/en/news/tesla-cybercab-300-austin-dallas-next-2026-10", "TeslAnt") + " (26 Sep, 3 Oct) and " +
       link("https://notateslakiller.com/en/tesla-cybercab-record-150-registrations-texas-319-nhtsa/", "NotATeslaKiller") + " (8 Oct). Refreshed twice a day.</p>";
+    root.setAttribute("data-snapshot-at", tx.checked);
+    root.setAttribute("data-snapshot-fleet-at", fleet.checked);
     window.CC_TOTALS = { cybercab: last.cybercab, modelY: total, asOf: last.date, cabSrc: tx.source.url, rtSrc: fleet.aggregator.url };
     document.dispatchEvent(new CustomEvent("cc:totals", { detail: window.CC_TOTALS }));
   }).catch(function () {
+    if (root.hasAttribute("data-snapshot-at")) {
+      if (!root.querySelector("[data-refresh-status]")) root.insertAdjacentHTML("beforeend", '<p class="cc-count-note" role="status" data-refresh-status>Refresh unavailable. Showing the saved counts and source dates above.</p>');
+      return;
+    }
     root.innerHTML = '<p class="cc-count-empty">The counts couldn’t load. See the <a href="https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" rel="noopener">Texas Robotaxi Database</a>.</p>';
   });
 })();

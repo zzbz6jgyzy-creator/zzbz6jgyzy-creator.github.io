@@ -48,8 +48,14 @@
   const cabBox = $("[data-cc-changes]");
   if (cabBox) {
     fetch("/data/robotaxi-tx.json", { cache: "no-cache" }).then((r) => r.json()).then((tx) => {
+      if (!Array.isArray(tx?.history) || !tx.history.length || !Number.isFinite(Date.parse(tx.checked)) || Date.parse(cabBox.getAttribute("data-snapshot-at")) > Date.parse(tx.checked)) throw new Error("Invalid or older Cybercab history");
       cabBox.innerHTML = I.cybercabChangesHtml(tx.history);
+      cabBox.setAttribute("data-snapshot-at", tx.checked);
     }).catch(() => {
+      if (cabBox.hasAttribute("data-snapshot-at")) {
+        if (!cabBox.querySelector("[data-refresh-status]")) cabBox.insertAdjacentHTML("beforeend", '<p class="intel-empty" role="status" data-refresh-status>Refresh unavailable. Showing the saved registration history and source dates above.</p>');
+        return;
+      }
       cabBox.innerHTML = '<p class="intel-empty">Texas Cybercab history could not load.</p>';
     });
   }

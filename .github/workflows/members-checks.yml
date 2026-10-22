@@ -20,5 +20,10 @@ jobs:
           python-version: '3.12'
       - run: npm i --no-save --no-package-lock --ignore-scripts @electric-sql/pglite@0.5.11
       - run: node tests/members-db.mjs
+      - run: node tests/members-return.mjs
       - run: python3 tests/test_members_injection.py
       - run: node --check members.js
+      - name: Browser regression checks (mocked accounts, no live writes)
+        run: |
+          python3 -m pip install playwright==1.62.0
+          CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/members-browser.py
