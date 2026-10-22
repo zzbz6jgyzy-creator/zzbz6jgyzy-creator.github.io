@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T23:48:48Z",
+ "updated": "2026-10-22T00:09:16Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-21T23:48:48Z",
+  "fetched": "2026-10-22T00:09:16Z",
   "items": [
+   {
+    "t": "2026-10-22T00:04:42Z",
+    "to": "2026.38.5.1",
+    "from": "2026.27.11",
+    "model": "Model Y Performance (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-21T22:15:04Z",
     "to": "2026.38.5.1",
@@ -564,14 +572,6 @@
     "model": "Model 3 SR (2023)",
     "hw": "4.0",
     "country": "United States"
-   },
-   {
-    "t": "2026-10-21T10:35:33Z",
-    "to": "2026.38.3.1",
-    "from": "2026.32.7",
-    "model": "Model 3 AWD LR (2021)",
-    "hw": "3.0",
-    "country": "Denmark"
    }
   ]
  }
