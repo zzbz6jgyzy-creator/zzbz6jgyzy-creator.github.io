@@ -56,6 +56,7 @@ body.home-x{background:#050505;color:#f4f4f2}
 .hv-ex-s{font-size:13px;color:#9a9a9a;line-height:1.4}
 .hv-f-ext{color:#777;font-weight:500}
 #newsletter{scroll-margin-top:88px}
+.home-x #newsletter>div,.home-x #newsletter .sd-form{min-width:0}
 .hv-cols{display:grid;grid-template-columns:1.65fr 1fr;gap:26px;margin-bottom:44px}
 .hv-list{list-style:none;margin:0;padding:0}
 .hv-list li{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07)}
@@ -86,6 +87,7 @@ body.home-x{background:#050505;color:#f4f4f2}
 /* Was home-focus.css — keep last so these overrides win. */
 .pv-lead .hv-lead{display:grid;grid-template-columns:1.25fr 1fr;align-items:stretch;max-width:1180px;margin:0 auto}
 .pv-lead .hv-lead-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+@media (min-width:761px){.pv-lead .hv-lead-media{min-width:0;width:100%;aspect-ratio:auto}}
 .pv-lead .hv-lead-copy h2{font-size:clamp(1.6rem,3.2vw,2.6rem);line-height:1.1}
 .pv-feed .hv-list li:nth-child(n+9){display:none}
 .pv-feed,.pv-more,.pv-lead{max-width:1180px;margin-left:auto;margin-right:auto}

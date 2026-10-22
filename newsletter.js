@@ -3,12 +3,7 @@
   // Signups go to Beehiiv (Supercharged Daily). No API key or email address in public code.
   // utm_content is an allowlisted topic so Beehiiv can tag / segment the signup.
   const SUBSCRIBE_URL = "https://alexs-newsletter-84b17e.beehiiv.com/";
-  const SUBKEY = "sd-nl-sub";
   const TOPICS = new Set(["roadster", "tesla-software", "spacex", "tesla", "website"]);
-  const store = {
-    get(k) { try { return localStorage.getItem(k); } catch (e) { return ""; } },
-    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-  };
   const topicFromPath = () => {
     const path = (location.pathname || "").toLowerCase();
     if (/roadster/.test(path)) return "roadster";
@@ -47,23 +42,12 @@
       input.setAttribute("aria-invalid", ok ? "false" : "true");
     }
   };
-  const markSubscribed = (root) => {
-    const form = root.querySelector("[data-newsletter-form]");
-    const status = root.querySelector("[data-newsletter-status]");
-    const input = form && form.querySelector("input[type=email]");
-    if (form) form.hidden = true;
-    setStatus(status, input, "You're already on the list.", true);
-  };
   const bind = (root) => {
     const form = root.querySelector("[data-newsletter-form]");
     if (!form || form.dataset.bound) return;
     form.dataset.bound = "1";
     const status = root.querySelector("[data-newsletter-status]");
     const input = form.querySelector("input[type=email]");
-    if (store.get(SUBKEY) === "1") {
-      markSubscribed(root);
-      return;
-    }
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const honey = form.querySelector("input[name='website']");
@@ -79,7 +63,8 @@
         "&utm_source=website&utm_medium=" + mediumOf(form) +
         "&utm_campaign=" + encodeURIComponent(location.pathname) +
         "&utm_content=" + encodeURIComponent(topic);
-      store.set(SUBKEY, "1");
+      // Beehiiv confirms signup after this redirect. Keep the form available if
+      // the visitor returns without completing it; old browser flags prove nothing.
       setStatus(status, input, "Taking you to Supercharged Daily…", true);
       location.href = url;
     });
