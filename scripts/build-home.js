@@ -72,7 +72,7 @@ if (S && S.next) {
 if (F && F.countries) {
   const ok = F.countries.filter((c) => c.status === "approved"), pop = ok.reduce((a, c) => a + (c.pop || 0), 0);
   const pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
-  trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " / " + (F.thresholds ? F.thresholds.statesNeeded : 15), s: "states recognise RDW approval · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
+  trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " approved", s: "EU-wide vote needs " + (F.thresholds ? F.thresholds.statesNeeded : 15) + " states · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
 }
 let tx = null; try { tx = JSON.parse(rd("data/robotaxi-tx.json")); } catch (e) {}
 let savedCc = null;
@@ -200,7 +200,7 @@ try {
 } catch (e) { console.warn("grok strip skip", e.message); }
 
 // Newsletter band (same markup as grow.js data-band; grow.js skips building it when it's already here)
-const band = `<section class="sd-band" id="newsletter" data-newsletter="band" data-band-topic="website" aria-label="Newsletter signup"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories plus $TSLA and $SPCX moves. Free, every Sunday.</p></div>
+const band = `<section class="sd-band" id="newsletter" data-newsletter="band" data-band-topic="website" aria-label="Newsletter signup"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX and Grok stories and tracker changes. One free Sunday briefing.</p></div>
       <div><form class="sd-form" data-newsletter-form>
       <label class="visually-hidden" for="sd-band-email">Email address</label>
       <input id="sd-band-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
@@ -223,3 +223,4 @@ try {
   put("changed", intel.homeSection(bundle));
 } catch (e) { console.warn("intel changed skip", e.message); }
 if (html !== before) { fs.writeFileSync(path.join(R, "index.html"), html); console.log("index.html updated"); } else console.log("index.html unchanged");
+

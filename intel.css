@@ -194,3 +194,11 @@ html[data-theme="light"] .intel-demo ul { color: var(--ink-soft, #555); }
 .intel-desk .intel-bar { margin: 0; }
 .intel-related { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 18px; }
 a.intel-chip { text-decoration: none; display: inline-flex; align-items: center; }
+
+
+/* Readable source labels and consistent evidence-card spacing. */
+.intel-fresh, .intel-k, .intel-m { color: var(--mute); }
+.intel-k { font-size: 12px; line-height: 1.3; }
+.intel-s, .intel-note, .intel-fresh-note, .intel-card span { color: var(--ink-soft); }
+.intel-item a { padding-block: 16px; gap: 6px; }
+.intel-card, .intel-demo { border-radius: var(--radius-card,14px); padding: var(--space-card,20px); }

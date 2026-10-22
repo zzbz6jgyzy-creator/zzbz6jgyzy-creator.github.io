@@ -129,3 +129,35 @@ body.home-x{background:#050505;color:#f4f4f2}
 .hv .hv-tag,.hv .hv-read,.hv .hv-f-t,.hv .hv-feat-go{color:#ff4d5e}
 .hv .hv-c-t{color:#ff4d5e}
 .hv-ex-asof{font-size:11px;color:var(--mute,#8a8c92);margin-top:2px}
+
+
+/* Visual refinements: supporting sections only; the lead and live card stay intact. */
+.hv-feat-card, .hv-t, .hv-ex { border-radius: var(--radius-card,14px); padding: var(--space-card,20px); }
+.hv-t { gap: 8px; }
+.hv-t strong { font-size: clamp(20px,2vw,26px); line-height: 1.2; }
+.hv-t-s { display: block; overflow: visible; -webkit-line-clamp: unset; font-size: 14px; line-height: 1.5; }
+.hv-t-k, .hv-feat-k, .hv-ex-k { font-size: 12px; line-height: 1.3; color: var(--mute); }
+.hv-t-s, .hv-feat-s, .hv-ex-s { color: var(--ink-soft); }
+.hv-head span, .hv-head a, .hv-f-m, .hv-f-on, .hv-feed-sub, .hv-c-w, .hv-ex-asof { color: var(--mute); }
+.hv-f-m, .hv-f-on, .hv-ex-asof { font-size: 13px; line-height: 1.5; }
+.hv-trk, .hv-changed, .hv-explore, .pv-feed, .pv-more { margin-top: 40px; margin-bottom: 40px; }
+.hv .pv-band-slot { max-width: 1180px; margin: 0 auto 40px; }
+.hv .pv-band-slot .sd-band { max-width: none; margin: 0; padding: var(--space-card,20px); border-radius: var(--radius-card,14px); }
+.hv .sd-band h2 { font-size: .95rem; line-height: 1.5; }
+.hv .sd-band p { line-height: 1.5; }
+.hv-more-toggle { display: none; }
+@media (max-width:760px) {
+  .hv-trk, .hv-changed, .hv-explore, .pv-feed, .pv-more { margin-top: 32px; margin-bottom: 32px; }
+  .hv .pv-band-slot { margin-bottom: 32px; }
+  .hv-ex-row { grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 10px; }
+  .hv-ex { padding: 12px; gap: 4px; }
+  .hv-ex strong { font-size: 16px; line-height: 1.3; }
+  .hv-ex-s { font-size: 13px; line-height: 1.45; }
+  .hv-t { padding: 14px; }
+  .hv-t strong { font-size: 20px; }
+  .hv-head { flex-wrap: wrap; row-gap: 8px; }
+  .hv-compact-feed:not([data-expanded]) li:nth-child(n+5) { display: none; }
+  .hv-more-toggle:not([hidden]) { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; margin: 12px 0; padding: 10px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--ink); font: 600 14px/1.3 Inter,sans-serif; cursor: pointer; }
+  .hv-more-toggle:focus-visible { outline: 2px solid var(--red-text); outline-offset: 3px; }
+}
+@media (max-width:350px) { .hv-ex-row { grid-template-columns: 1fr !important; } }
