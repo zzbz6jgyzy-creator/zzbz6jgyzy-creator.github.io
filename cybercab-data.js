@@ -1,8 +1,8 @@
 // Cybercab Tracker data. Edit this file to update the page.
 // Every item needs a real source link. Change `updated` when you edit.
 window.CYBERCAB = {
-  updated: "2026-10-21",
-  updatedLabel: "21 Oct 2026",
+  updated: "2026-10-22",
+  updatedLabel: "22 Oct 2026",
   stats: [
     { value: "300+", label: "Cybercabs serving Austin (Tesla Robotaxi, 10 Oct 2026)", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
     { live: "cybercab", value: "349", label: "Cybercabs registered (unchanged since 15 Oct; checked 21 Oct 2026). Texas DMV list, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
@@ -24,7 +24,7 @@ window.CYBERCAB = {
   },
   cities: [
     { name: "Austin, TX", status: "live", note: "Public paid rides in the Tesla Robotaxi app since 3 Sep 2026. The only city with public Cybercab rides.", src: "https://www.cybercab.news/article/dallas-cybercab-next-oct10" },
-    { name: "Dallas, TX", status: "next", note: "Named as the next Cybercab city by Tesla AI chief Ashok Elluswamy on 10 Oct 2026. No date yet (“soon”).", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
+    { name: "Dallas, TX", status: "next", note: "On Tesla’s Q3 call (21 Oct 2026), AI chief Ashok Elluswamy said “next month we’ll be launching in Dallas.” No exact day yet. Model Y Robotaxi rides already run there.", src: "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/" },
     { name: "Houston, TX", status: "staging", note: "Large Cybercab staging lot spotted. No public Cybercab service announced.", src: "https://www.cybercab.news/article/production-decaled-cybercabs-leave-giga-texas-oct7" }
   ],
   milestones: [
@@ -39,11 +39,11 @@ window.CYBERCAB = {
     { date: "2026-10-12", label: "12 Oct 2026", text: "Tesla’s Robotaxi account confirms riders can now talk to their Grok bot inside a Robotaxi, Cybercab included.", src: "https://www.cybercab.news/article/dyk-grok-bot-cybercab-oct12" },
     { date: "2026-10-15", label: "15 Oct 2026", text: "Texas DMV registry reaches 349 Cybercabs (+30 from 319 on 8 Oct); Model Y robotaxis still 420. Weekly Cybercabs added: +30.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
     { date: "2026-10-16", label: "16 Oct 2026", text: "Robotaxi app tells Austin riders rides now run until midnight (6am–midnight, up from 11pm). Same evening, Tesla’s Texas DMV registry passes 800: +34 Model Ys (454), Cybercabs flat at 349. Full story in Dispatch.", src: "/dispatch/robotaxi-austin-midnight-803.html" },
-    { date: "2026-10-13", label: "13 Oct 2026", text: "A Tesla UI engineer says on-demand rear and side camera views for Cybercab riders are in development (no date). New seats are also coming, per chief engineer Eric Earley.", src: "https://www.notateslaapp.com/news/4819/tesla-cybercab-to-let-riders-see-rear-and-side-camera-feeds" }
+    { date: "2026-10-13", label: "13 Oct 2026", text: "A Tesla UI engineer says on-demand rear and side camera views for Cybercab riders are in development (no date). New seats are also coming, per chief engineer Eric Earley.", src: "https://www.notateslaapp.com/news/4819/tesla-cybercab-to-let-riders-see-rear-and-side-camera-feeds" },
+    { date: "2026-10-21", label: "21 Oct 2026", text: "Q3 earnings call: Tesla says Cybercab launches in Dallas next month and more cities follow before year-end. Musk says the Austin Cybercab fleet is up about 10x since launch.", src: "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/" }
   ],
   watch: [
-    { text: "21 Oct 2026: Tesla Q3 earnings — a likely venue for official fleet numbers and a Dallas date.", src: "https://www.teslarati.com/tesla-cybercab-dallas/" },
     { text: "30 Oct 2026: NHTSA deadline for Tesla’s sworn answers on Cybercab federal safety-standard compliance.", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
-    { text: "A launch date for public Cybercab rides in Dallas.", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" }
+    { text: "November 2026: Cybercab rides in Dallas (Tesla said “next month” on 21 Oct). Tesla also said more cities before year-end and Cybercabs to customers by end of 2026.", src: "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/" }
   ]
 };

@@ -2,8 +2,8 @@
 // Every claim needs a real source and a verification status.
 // Do not mark a city live unless a source says public rides are happening.
 window.ROBOTAXI_REALITY = {
-  updated: "2026-10-15",
-  updatedLabel: "15 Oct 2026",
+  updated: "2026-10-22",
+  updatedLabel: "22 Oct 2026",
   kinds: [
     { id: "operational", label: "Operational" },
     { id: "expansion", label: "Expansions" },
@@ -94,11 +94,11 @@ window.ROBOTAXI_REALITY = {
       verification: "announced",
       supervision: "unknown",
       vehicle: "Cybercab",
-      title: "Dallas named next Cybercab city",
-      text: "Tesla AI chief Ashok Elluswamy named Dallas as the next Cybercab city on 10 Oct 2026. No public date yet (“soon”).",
-      date: "2026-10-10",
-      src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/",
-      srcLabel: "Eletric Vehicles"
+      title: "Cybercab coming to Dallas next month",
+      text: "Named as the next Cybercab city on 10 Oct 2026. On the Q3 call on 21 Oct, Ashok Elluswamy said “next month we’ll be launching in Dallas.” No exact day yet.",
+      date: "2026-10-21",
+      src: "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/",
+      srcLabel: "TeslaNorth"
     },
     {
       id: "dallas-modely-testing",
