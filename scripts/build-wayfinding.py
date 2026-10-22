@@ -49,6 +49,8 @@ class Sections(HTMLParser):
 def stylesheet(src,needed):
  clean=STYLE_RX.sub('',src)
  if not needed:return clean
+ if '<!--sd:members-->' in clean:
+  return re.sub(r'[ \t]*<!--sd:members-->',lambda _:STYLE+'\n    <!--sd:members-->',clean,count=1)
  return re.sub(r'[ \t]*</head>',lambda _:STYLE+'\n  </head>',clean,count=1)
 
 def article(src):

@@ -1,5 +1,5 @@
 """Exercise generated contents against real anchor collisions and future articles."""
-import importlib.util,pathlib,tempfile,unittest
+import importlib.util,pathlib,tempfile,unittest,runpy
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('wayfinding',ROOT/'scripts/build-wayfinding.py');build=importlib.util.module_from_spec(spec);spec.loader.exec_module(build)
 
@@ -7,6 +7,12 @@ def page(headings):
  return '<html><head></head><body><div id="section-repeat"></div><article class="article"><h1>Story</h1><p class="meta">By Alex</p>'+headings+'<!-- seo:about --><h2>About the author</h2></article><h2>Related stories</h2></body></html>'
 
 class Wayfinding(unittest.TestCase):
+ def test_stylesheet_and_member_injection_keep_a_stable_order(self):
+  inject=runpy.run_path(str(ROOT/'scripts/inject-members.py'))['inject']
+  src=page(''.join('<h2>Section '+str(i)+'</h2>' for i in range(4))).replace('<body>','<body><div class="pn-wrap"></div><main>').replace('</body>','</main></body>')
+  built=build.article(inject(src))
+  self.assertEqual(inject(built),built)
+  self.assertEqual(build.article(inject(built)),built)
  def test_preserves_existing_anchors_and_escapes_heading_text(self):
   src=page('<h2 id="kept">An <em>existing</em> heading</h2><h2>Repeat</h2><h2>Repeat</h2><h2>Sources &amp; &lt;script&gt;</h2>')
   new=build.article(src)
