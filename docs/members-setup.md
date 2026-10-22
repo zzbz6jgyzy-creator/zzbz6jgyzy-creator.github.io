@@ -4,7 +4,9 @@ This feature adds Google sign-in, public display names, immediate article commen
 
 ## Status and activation
 
-`members-config.json` contains the project's public URL and publishable key. `enabled` stays `false` until the database migration, Google provider, redirects, and real sign-in smoke test are complete. With it off, existing pages show no member controls and the Members page says sign-in opens soon. No production comments, votes, users or SQL were created by the implementation tests.
+`members-config.json` contains the project's public URL and publishable key. The checked-in configuration enables member sign-in and a discussion pilot on `/dispatch/tesla-ai-maps-v15.html` after deployment. Sign-in is publicly reachable; the article list limits discussion coverage, not who may join. Other article discussions remain off. The hosted public read RPC and Google authorization redirect have been verified; a real login/profile test, owner moderator setup and two-account smoke test remain before enabling all articles. No production comments, votes, users or SQL were created by the implementation tests.
+
+To pause the pilot, set `enabled` to `false`. Existing pages then show no member controls and the Members page says sign-in opens soon, without deleting accounts or discussion data.
 
 The publishable key is intentionally public. Never place a Supabase secret key, service-role key, database password, Google client secret or user access token in GitHub or chat. These are not needed in this browser integration.
 
@@ -33,18 +35,18 @@ Create an OAuth client in a Google Cloud project you control, following [Supabas
 
 - Configure the Google Auth Platform branding and audience for Supercharged Daily.
 - Website homepage: `https://superchargeddaily.com`
-- Privacy policy: `https://superchargeddaily.com/community.html#privacy`
+- Privacy policy: `https://superchargeddaily.com/community.html#privacy` (add this in Google branding after the page is deployed and publicly reachable).
 - Authorized JavaScript origin: `https://superchargeddaily.com`
 - Authorized redirect URI: `https://luidcuzdrcvmzdxpiiwf.supabase.co/auth/v1/callback`
 - Use basic identity scopes (`openid`, email and profile); no Google mailbox, contacts or other account access is needed.
 
-Enter the Google Client ID and Client Secret directly into Supabase **Authentication → Sign In / Providers → Google**, enable it and save. Keep the secret in those dashboards. Google's Testing audience restricts sign-in to listed test users; make the audience available to your intended readers before public launch. Google may require branding/domain verification.
+Enter the Google Client ID and Client Secret directly into Supabase **Authentication → Sign In / Providers → Google**, enable it and save. Keep the secret in those dashboards. Google's Testing status has a [basic identity scope exception](https://developers.google.com/identity/protocols/oauth2/production-readiness/overview); this integration requests email/profile identity only. Confirm audience and publishing settings are appropriate for the intended readers before the full launch. Google may require branding/domain verification.
 
 The Supabase provider callback and the website return URL serve different parts of the flow; configure both exactly as above. Google sign-in avoids public email/password verification delivery setup for this first version.
 
 ### 4. Make the editor account a moderator
 
-First sign in with the Google account that will moderate the site and save a display name, agreeing to the community rules. During an initial pilot, set `articles` in the public configuration to `["/dispatch/tesla-ai-maps-v15.html"]` and enable the configuration only when steps 1–3 work.
+First sign in with the Google account that will moderate the site and save a display name, agreeing to the community rules. The checked-in pilot already sets `articles` to `["/dispatch/tesla-ai-maps-v15.html"]` and `enabled` to `true`, following hosted database and Google handoff checks. Complete the real sign-in and moderator setup before expanding discussion coverage.
 
 In Supabase Authentication → Users, identify your own account UUID. In SQL Editor, replace the example UUID below with that exact UUID:
 
