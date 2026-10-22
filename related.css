@@ -22,3 +22,11 @@
 .sd-about a{color:#f23a52;text-decoration:underline;text-underline-offset:.18em}
 .sd-about a:hover{text-decoration:underline}
 @media (prefers-reduced-motion:reduce){.sd-crumbs a,.sd-about a{text-decoration:underline}}
+
+
+/* The H1 names the current story; keep the visual breadcrumb concise. */
+.sd-crumbs [aria-current="page"] { display: none; }
+.sd-crumbs li:nth-last-child(2)::after { content: none; }
+.sd-crumbs { font-size: .85rem; }
+.sd-crumbs a { display: inline-flex; align-items: center; min-height: 36px; }
+@media (max-width: 760px) { .sd-crumbs a { min-height: 44px; } }

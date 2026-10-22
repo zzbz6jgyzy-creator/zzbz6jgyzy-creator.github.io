@@ -57,7 +57,7 @@
   if (F && F.countries) {
     const ok = F.countries.filter((c) => c.status === "approved");
     const pop = ok.reduce((a, c) => a + (c.pop || 0), 0), pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
-    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " / " + (F.thresholds ? F.thresholds.statesNeeded : 15), s: "states recognise RDW approval · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
+    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " approved", s: "EU-wide vote needs " + (F.thresholds ? F.thresholds.statesNeeded : 15) + " states · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
   }
   // Keep the pre-rendered snapshot until a newer JSON response arrives.
   const savedCc = $("[data-hv-trk] a[href='/cybercab.html']");
@@ -185,4 +185,36 @@
     };
     tick(); setInterval(tick, 1000);
   }).catch(() => {});
+})();
+
+
+// Compact mobile feeds without dropping stories or changing topic filters.
+(() => {
+  function compact(selector, id, label) {
+    const root = document.querySelector(selector);
+    if (!root) return;
+    root.id = id;
+    root.classList.add("hv-compact-feed");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "hv-more-toggle";
+    button.setAttribute("aria-controls", id);
+    button.setAttribute("aria-expanded", "false");
+    root.after(button);
+    function update() {
+      const list = root.matches("ol") ? root : root.querySelector("ol");
+      const count = list ? list.children.length : 0;
+      button.hidden = count <= 4;
+      button.textContent = root.hasAttribute("data-expanded") ? "Show fewer " + label : "Show all " + label + " (" + count + ")";
+    }
+    button.addEventListener("click", () => {
+      const expanded = root.toggleAttribute("data-expanded");
+      button.setAttribute("aria-expanded", String(expanded));
+      update();
+    });
+    new MutationObserver(update).observe(root, { childList: true, subtree: true });
+    update();
+  }
+  compact("[data-intel-changed]", "home-changes-list", "changes");
+  compact("[data-hv-feed]", "home-headlines-list", "headlines");
 })();
