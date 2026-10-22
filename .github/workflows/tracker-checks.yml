@@ -1,0 +1,69 @@
+name: Tracker snapshot checks
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/build-*snapshot*.mjs'
+      - scripts/build-noscript.mjs
+      - 'tests/tracker*'
+      - updates.html
+      - updates-v3.js
+      - updates-live.json
+      - cybercab.html
+      - cybercab-count.js
+      - cybercab-cities.js
+      - robotaxi-reality-data.js
+      - intel.js
+      - 'data/robotaxi-*'
+      - 'data/updates-*'
+      - .github/workflows/tracker-checks.yml
+      - .github/workflows/home-build.yml
+      - .github/workflows/updates-snapshot.yml
+      - .github/workflows/robotaxi-refresh.yml
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-*snapshot*.mjs'
+      - scripts/build-noscript.mjs
+      - 'tests/tracker*'
+      - updates.html
+      - updates-v3.js
+      - updates-live.json
+      - cybercab.html
+      - cybercab-count.js
+      - cybercab-cities.js
+      - robotaxi-reality-data.js
+      - intel.js
+      - 'data/robotaxi-*'
+      - 'data/updates-*'
+      - .github/workflows/tracker-checks.yml
+      - .github/workflows/home-build.yml
+      - .github/workflows/updates-snapshot.yml
+      - .github/workflows/robotaxi-refresh.yml
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: node --test tests/tracker-snapshots.test.mjs
+      - name: Build current snapshots and check syntax
+        run: |
+          node scripts/build-tracker-snapshots.mjs
+          node --check updates-v3.js
+          node --check cybercab-count.js
+          node --check cybercab-cities.js
+          node --check intel.js
+      - name: Browser regression checks (local data, no external requests)
+        run: |
+          python3 -m pip install playwright==1.62.0
+          CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/tracker-browser.py

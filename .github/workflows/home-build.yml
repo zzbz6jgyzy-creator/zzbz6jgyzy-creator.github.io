@@ -15,9 +15,13 @@ on:
       - news-data.json
       - data/events.json
       - data/robotaxi-tx.json
+      - 'data/robotaxi-*'
+      - 'data/updates-*.json'
       - live-data.json
       - data/articles.json
       - scripts/build-home.js
+      - scripts/build-noscript.mjs
+      - scripts/build-tracker-snapshots.mjs
       - scripts/build-js.mjs
       - scripts/inject-js-bundles.py
       - scripts/js-bundles.json

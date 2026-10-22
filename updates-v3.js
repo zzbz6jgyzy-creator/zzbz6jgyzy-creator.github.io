@@ -50,16 +50,21 @@
     const fast = seen.map((v) => ({ v, r: rate(v.id) })).sort((a, b) => b.r.d1 - a.r.d1)[0];
     $("t-fast").textContent = fast.v.id;
     $("t-fast-s").textContent = `+${fast.r.d1} cars in the last 24 h`;
-    // Next build window: median gap between first sightings of recent builds.
-    const days = [...new Set(versions.map((v) => v.date))].map((d) => Date.parse(d + "T12:00:00Z")).sort((a, b) => a - b);
+    // Match the initial HTML: estimate from the saved snapshot, not the reader's clock.
+    const savedDay = (d) => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+    const days = [...new Set(versions.map((v) => v.date).filter((d) => typeof d === "string" && /^\d{4}-\d{2}-\d{2}(?:T.*)?$/.test(d) && Number.isFinite(Date.parse(d))))].map((d) => Date.parse(d)).sort((a, b) => a - b);
     const gaps = days.slice(1).map((d, i) => (d - days[i]) / dayMs).sort((a, b) => a - b);
-    const med = gaps[Math.floor(gaps.length / 2)] || 3;
-    const lo = gaps[Math.floor(gaps.length / 4)] || med, hi = gaps[Math.floor((gaps.length * 3) / 4)] || med;
+    if (!gaps.length) {
+      $("t-next").textContent = "No estimate";
+      $("t-next-s").textContent = "Not enough first-sighting dates; Tesla has no fixed release schedule";
+      return;
+    }
+    const med = gaps[Math.floor(gaps.length / 2)];
+    const lo = gaps[Math.floor(gaps.length / 4)], hi = gaps[Math.floor((gaps.length * 3) / 4)];
     const last = days[days.length - 1];
-    let from = last + lo * dayMs, to = last + hi * dayMs;
-    if (to < Date.now()) { from = Date.now(); to = Date.now() + med * dayMs; }
-    $("t-next").textContent = from === to || fmt(from) === fmt(to) ? fmt(from) : `${fmt(from)}–${fmt(to)}`;
-    $("t-next-s").textContent = `Tesla shipped a new build every ~${med.toFixed(0)} days lately (${gaps.length + 1} builds)`;
+    const from = Math.max(Date.parse(live.updated), last + lo * dayMs), to = Math.max(from, last + hi * dayMs);
+    $("t-next").textContent = savedDay(from) === savedDay(to) ? savedDay(from) : `${savedDay(from)}–${savedDay(to)}`;
+    $("t-next-s").textContent = `Estimate at ${savedDay(live.updated)} · recent median gap ${med.toFixed(0)} days`;
   }
 
   function mycar() {
@@ -260,11 +265,19 @@
   Promise.all([fetch("/updates-live.json", { cache: "no-store" }).then((r) => r.json()), fetch("/data/updates-history.json", { cache: "no-store" }).then((r) => r.json()),
     fetch("/data/updates-extras.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}))])
     .then(([l, h, x]) => {
+      if (!Array.isArray(l?.versions) || !l.versions.some((v) => Number.isFinite(v.count) && v.count > 0) || !Number.isFinite(l.fleet) || l.fleet <= 0 || !Array.isArray(h?.snapshots) || !Number.isFinite(Date.parse(l.updated))) throw new Error("Invalid software snapshot");
+      if (Date.parse($("sw-live").getAttribute("data-snapshot-at")) > Date.parse(l.updated)) throw new Error("Older software snapshot");
       live = l; hist = h; extras = x || {}; versions = l.versions; snaps = h.snapshots;
       if (!snaps.length || snaps[snaps.length - 1].t !== l.updated) snaps.push({ t: l.updated, v: Object.fromEntries(versions.map((v) => [v.id, [v.count, v.countryCounts || {}]])) });
       $("sw-live").textContent = `Live · ${fmt(l.updated, true)} · ${l.fleet.toLocaleString()} connected cars · times in ${tz}`;
       tiles(); mycar(); waves(); crossCheck(); ladder(); diffSetup(); globeSetup();
       seg("seg-hw", "hw"); seg("seg-rg", "rg");
     })
-    .catch((err) => { $("sw-live").textContent = "Could not load the snapshot."; console.error(err); });
+    .catch((err) => {
+      const status = $("sw-live");
+      if (status.hasAttribute("data-snapshot-at")) {
+        if (!status.querySelector("[data-refresh-status]")) status.insertAdjacentHTML("beforeend", ' <span role="status" data-refresh-status>Refresh unavailable. Showing the saved snapshot.</span>');
+      } else status.textContent = "Could not load the snapshot.";
+      console.error(err);
+    });
 })();
