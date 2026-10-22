@@ -1,7 +1,7 @@
 {
  "_about": "Upcoming SpaceX launches from Launch Library 2 (ll.thespacedevs.com), refreshed by .github/workflows/launches-refresh.yml. Do not hand-edit.",
  "source": "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX",
- "updated": "2026-10-22T14:41:56Z",
+ "updated": "2026-10-22T16:41:24Z",
  "results": [
   {
    "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
@@ -70,15 +70,15 @@
    }
   },
   {
-   "id": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
-   "name": "Falcon 9 Block 5 | NROL-195",
-   "net": "2026-11-05T22:34:00Z",
-   "window_start": "2026-11-05T22:34:00Z",
-   "window_end": "2026-11-06T02:34:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
+   "id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-21",
+   "net": "2026-11-05T05:14:00Z",
+   "window_start": "2026-11-05T05:14:00Z",
+   "window_end": "2026-11-05T09:14:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
    "status": {
-    "name": "To Be Confirmed",
-    "abbrev": "TBC"
+    "name": "Go for Launch",
+    "abbrev": "Go"
    },
    "net_precision": {
     "name": "Minute",
@@ -92,19 +92,19 @@
    }
   },
   {
-   "id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
-   "name": "Falcon 9 Block 5 | Starlink Group 15-21",
-   "net": "2026-11-10T00:00:00Z",
-   "window_start": "2026-11-10T00:00:00Z",
-   "window_end": "2026-11-10T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
+   "id": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
+   "name": "Falcon 9 Block 5 | NROL-195",
+   "net": "2026-11-05T22:34:00Z",
+   "window_start": "2026-11-05T22:34:00Z",
+   "window_end": "2026-11-06T02:34:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
    "status": {
-    "name": "To Be Determined",
-    "abbrev": "TBD"
+    "name": "To Be Confirmed",
+    "abbrev": "TBC"
    },
    "net_precision": {
-    "name": "Day",
-    "abbrev": "DAY"
+    "name": "Minute",
+    "abbrev": "MIN"
    },
    "pad": {
     "name": "Space Launch Complex 4E",
