@@ -18,6 +18,7 @@
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   const state = { place: "", lat: null, lon: null, launchId: "" };
+  let stampText = `Saved on this device · launches ${DATA.updated}`;
   let launches = [];
   let wxHere = { forecast: null, season: null };
   let wxPad = {};
@@ -818,7 +819,7 @@
     renderBrief();
     writeQuery();
     const stamp = $("see-live");
-    if (stamp) stamp.textContent = `Saved on this device · launches ${DATA.updated}`;
+    if (stamp) stamp.textContent = stampText;
   };
 
   const ymdUtc = (d) => {
@@ -1024,14 +1025,18 @@
       const d = new Date(t);
       let tz = "";
       try { tz = (new Intl.DateTimeFormat(undefined, { timeZoneName: "short" }).formatToParts(d).find((x) => x.type === "timeZoneName") || {}).value || ""; } catch {}
+      stampText = `Saved on this device · Launch Library updated ${d.toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} ${tz}`.trim();
       live.textContent = `Saved on this device · Launch Library updated ${d.toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} ${tz}`.trim();
     };
-    fetch(LL2)
-      .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
-      .then((j) => {
+    // Site copy of LL2 (data/launches.json, refreshed hourly) first; direct LL2 only if that fails.
+    const getJson = (u) => fetch(u, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); });
+    getJson("/data/launches.json")
+      .then((j) => { if (!Array.isArray(j?.results) || !j.results.length) throw new Error("empty"); return { j, t: Date.parse(j.updated) || Date.now() }; })
+      .catch(() => getJson(LL2).then((j) => ({ j, t: Date.now() })))
+      .then(({ j, t }) => {
         launches = mergeLaunches(j?.results || []);
-        try { localStorage.setItem(LLC, JSON.stringify({ t: Date.now(), results: j?.results || [] })); } catch {}
-        stampLive(Date.now());
+        try { localStorage.setItem(LLC, JSON.stringify({ t, results: j?.results || [] })); } catch {}
+        stampLive(t);
         if (state.lat != null) loadWeather();
         else render();
       })

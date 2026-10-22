@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22T07:42:00.700Z",
+  "generated": "2026-10-22T07:49:15.898Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.745ee5f257.js",
@@ -26,8 +26,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.23818d0ee2.js",
-      "bytes": 66023,
+      "file": "/assets/js/home.bundle.198f20a2d2.js",
+      "bytes": 67559,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -40,8 +40,8 @@
       ]
     },
     "starship": {
-      "file": "/assets/js/starship.bundle.8c2dd553ea.js",
-      "bytes": 57202,
+      "file": "/assets/js/starship.bundle.574cae3466.js",
+      "bytes": 58744,
       "sources": [
         "starship-data.js",
         "starship-lab-data.js",
@@ -71,8 +71,8 @@
       ]
     },
     "tesla": {
-      "file": "/assets/js/tesla.bundle.663320a05d.js",
-      "bytes": 29188,
+      "file": "/assets/js/tesla.bundle.305ca03092.js",
+      "bytes": 30724,
       "sources": [
         "fsd-europe-data.js",
         "tesla-hub.js",
@@ -80,8 +80,8 @@
       ]
     },
     "my-tesla": {
-      "file": "/assets/js/my-tesla.bundle.9a41fe07c1.js",
-      "bytes": 80756,
+      "file": "/assets/js/my-tesla.bundle.5a72dc1c17.js",
+      "bytes": 82300,
       "sources": [
         "updates-data.js",
         "fsd-data.js",
@@ -100,8 +100,8 @@
       ]
     },
     "spacex": {
-      "file": "/assets/js/spacex.bundle.94412a1e02.js",
-      "bytes": 40695,
+      "file": "/assets/js/spacex.bundle.2323955f46.js",
+      "bytes": 42231,
       "sources": [
         "starship-data.js",
         "spacex-hub.js",
@@ -181,12 +181,13 @@
       ]
     },
     "see-the-launch": {
-      "file": "/assets/js/see-the-launch.bundle.ebb8338a62.js",
-      "bytes": 36720,
+      "file": "/assets/js/see-the-launch.bundle.0bdd59c065.js",
+      "bytes": 48248,
       "sources": [
         "calendar-merge.js",
         "see-the-launch-data.js",
-        "see-the-launch.js"
+        "see-the-launch.js",
+        "live.js"
       ]
     },
     "tsla": {

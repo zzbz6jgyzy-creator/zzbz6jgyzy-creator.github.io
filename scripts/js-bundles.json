@@ -89,7 +89,8 @@
     "see-the-launch": [
       "calendar-merge.js",
       "see-the-launch-data.js",
-      "see-the-launch.js"
+      "see-the-launch.js",
+      "live.js"
     ],
     "tsla": ["calendar-merge.js", "calendar.js", "markets.js"],
     "tcmv": ["tcmv-data.js", "tcmv.js"],
@@ -165,6 +166,7 @@
     "news.html": { "bundles": ["core", "news"], "grow": ["data-band"] },
     "see-the-launch.html": {
       "bundles": ["core", "intel", "see-the-launch"],
+      "livePage": "spacex",
       "grow": ["data-band"]
     },
     "tsla.html": { "bundles": ["core", "tsla"], "grow": ["data-band"] },

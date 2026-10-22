@@ -8,7 +8,7 @@
 // never inserts markers before <main> and aborts if it would drop a <picture>.
 const fs = require("fs"), path = require("path"), vm = require("vm");
 const pairer = require("../home-pair.js");
-const { pickNextEvent } = require("./live-home-pick");
+const { pickNextEvent, ll2Events } = require("./live-home-pick");
 const R = path.join(__dirname, ".."), rd = (f) => fs.readFileSync(path.join(R, f), "utf8");
 const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const strip = (h) => h.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
@@ -101,12 +101,15 @@ try {
 function eventCardFor(page) {
   try {
   const d = JSON.parse(rd("live-data.json")), shared = (ev && ev.events) || {}, now = Date.now(), H = 36e5;
-  const e = pickNextEvent(d.events || [], { page, shared, now, H });
+  let L = null; try { L = JSON.parse(rd("data/launches.json")); } catch (_) {}
+  const all = (d.events || []).concat(ll2Events(L, (d.events || []).filter((x) => x.status !== "ended"), H));
+  const e = pickNextEvent(all, { page, shared, now, H });
   if (!e) return "";
     const canEmbed = e.provider === "youtube" || e.provider === "x";
     const url = e.provider === "youtube" && /^[\w-]{6,20}$/.test(e.embedId || "") ? "https://www.youtube.com/watch?v=" + e.embedId : (/^https:\/\//.test(e.fallbackUrl || e.postUrl || "") ? (e.fallbackUrl || e.postUrl) : "/calendar.html");
-    const o = { weekday: "short", day: "numeric", month: "short", timeZone: (e.timeTbc || e.net) ? "America/Los_Angeles" : "UTC" };
-    const date = new Intl.DateTimeFormat("en-GB", o).format(new Date(e.start)) + (e.timeTbc || e.net ? "" : " · " + new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(new Date(e.start)));
+    const o = { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" };
+    const dm = /^(\d{4})-(\d\d)-(\d\d)/.exec(e.start || ""), dayD = (e.timeTbc || e.net) && dm ? new Date(Date.UTC(+dm[1], dm[2] - 1, +dm[3], 12)) : new Date(e.start);
+    const date = new Intl.DateTimeFormat("en-GB", o).format(dayD) + (e.timeTbc || e.net ? "" : " · " + new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(new Date(e.start)));
     const chip = e.timeTbc ? "Time TBC" : e.net ? "NET" : "UTC";
     const src = e.thumb || e.image || "";
     const thumb = /\/assets\/live\/falcon9\.(jpe?g|png|webp)$/i.test(src)
@@ -117,7 +120,7 @@ function eventCardFor(page) {
     const tiles = e.net ? "" : `<div class="lw-cd" aria-live="off">${tile("–", "days") + tile("––", "hrs") + tile("––", "mins")}</div>`;
     if (new Date(e.start) - now > 72 * H) { // >72h out: slim card (live.js swaps in the visitor's zone)
       const dd = Math.round((new Date(e.start) - now) / 864e5);
-      return `<section class="lv${page === "home" ? " lv-inhero" : ""} lv-quiet lv-slim" aria-label="Next livestream" data-prebuilt><a class="lw lw-slim" href="${esc(url)}" target="_blank" rel="noopener"><span class="lw-dot"></span><span class="lws-txt"><b class="lws-t">${esc(e.title)}</b><span class="lws-m">${esc(date)} <span class="lv-tz">${esc(chip)}</span> <span class="lws-cd">in ${dd}d</span></span></span><span class="lws-go">Watch ↗</span></a></section>`;
+      return `<section class="lv${page === "home" ? " lv-inhero" : ""} lv-quiet lv-slim" aria-label="Next livestream" data-prebuilt><a class="lw lw-slim" href="${esc(url)}" target="_blank" rel="noopener"><span class="lw-dot"></span><span class="lws-txt"><b class="lws-t">${esc(e.title)}</b><span class="lws-m">${esc(date)} <span class="lv-tz">${esc(chip)}</span> <span class="lws-cd">in ${dd}d</span></span></span>${/^https:\/\/(www\.)?(spacex\.com\/launches|x\.com\/|youtube\.com\/watch)/.test(url) ? '<span class="lws-go">Watch ↗</span>' : ""}</a></section>`;
     }
     return `<section class="lv${page === "home" ? " lv-inhero" : ""} lv-quiet" aria-label="Next livestream" data-prebuilt><div class="lw"><div class="lw-head"><span class="lw-dot"></span><span>Next live stream</span><span class="lw-host">${canEmbed ? "Streamed here on Supercharged Daily" : "Direct link to the official stream"}</span></div><div class="lw-body">${thumb}<div class="lw-info"><h3 class="lw-title">${esc(e.title)}</h3><p class="lw-when">${esc(date)} <span class="lv-tz">${esc(chip)}</span></p>${tiles}<div class="lw-acts"><a class="lw-btn lw-btn-soft" href="${esc(url)}" target="_blank" rel="noopener"><span class="lw-play"></span>Watch the live stream ↗</a><a class="lw-cal" href="/calendar.html">All events →</a></div>${credit}</div></div></div></section>`;
   } catch (err) { console.warn("event card skip", err.message); return ""; }

@@ -55,4 +55,22 @@ function pickNextEvent(events, opts) {
   return evs.find((x) => x.featured) || fut.find((x) => !x.timeTbc && !x.net) || fut[0] || null;
 }
 
-module.exports = { keepOnHome, pickNextEvent, isLive, withSharedDates, SHARED_IDS };
+// Mirror of live.js ll2Events(): upcoming LL2 launches (data/launches.json) as live-card events.
+function ll2Events(L, have, H) {
+  H = H || 36e5;
+  return ((L && L.results) || []).map((r) => {
+    const parts = String(r.name || "").split(" | "), rocket = (parts[0] || "").replace(/\s*Block \d+$/, ""), mission = parts[1] || parts[0] || "";
+    const p = (r.net_precision && r.net_precision.abbrev) || "", s = (r.status && r.status.abbrev) || "";
+    if (!r.net || /starship/i.test(r.name) || !/^(SEC|MIN|HR|HOUR|DAY)?$/.test(p) || /^(Success|Failure|Partial Failure)$/.test(s)) return null;
+    const t = new Date(r.net).getTime();
+    if ((have || []).some((e) => e.page === "starship" && Math.abs(new Date(e.start) - t) < 6 * H)) return null;
+    const day = p === "DAY", falcon = /falcon/i.test(rocket);
+    return { id: "ll2-" + r.id, page: "starship", title: rocket + " \u00b7 " + mission.replace(/^Starlink Group /, "Starlink "),
+      start: day ? r.net.slice(0, 10) + "T00:00:00Z" : r.net, end: day ? r.net.slice(0, 10) + "T23:59:00Z" : new Date(t + H).toISOString(),
+      net: day || undefined, timeTbc: (p === "HR" || p === "HOUR") || undefined, status: "scheduled", provider: "link",
+      fallbackUrl: "https://x.com/SpaceX", fallbackLabel: "Webcast on X (@SpaceX)", source: "https://thespacedevs.com/llapi",
+      image: falcon ? "/assets/live/falcon9.jpg" : "", imageCredit: falcon ? "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain" : "" };
+  }).filter(Boolean);
+}
+
+module.exports = { ll2Events, keepOnHome, pickNextEvent, isLive, withSharedDates, SHARED_IDS };

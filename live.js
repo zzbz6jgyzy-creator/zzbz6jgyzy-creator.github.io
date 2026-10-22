@@ -13,12 +13,31 @@
   }
   function when(e) {
     var d = new Date(e.start), o = {weekday:'short', day:'numeric', month:'short'};
-    if (e.timeTbc || e.net) o.timeZone = 'America/Los_Angeles'; // date-only events: keep the event's own calendar day
+    if (e.timeTbc || e.net) { d = ownDay(e); o.timeZone = 'UTC'; } // date-only events: keep the event's own calendar day
     var s = new Intl.DateTimeFormat(undefined, o).format(d);
     if (e.net) return 'NET ' + s;
     if (e.timeTbc) return s + ' · time TBC';
     return s + ' · ' + new Intl.DateTimeFormat(undefined, {hour:'2-digit', minute:'2-digit'}).format(d) + ' ' + tzName(d);
   }
+  // Every upcoming SpaceX launch from data/launches.json (LL2, refreshed hourly) becomes a live-card event.
+  // Watch goes to SpaceX's own X account, never to the LL2 API. Starship stays on data/events.json.
+  function ll2Events(L, have) {
+    return ((L && L.results) || []).map(function (r) {
+      var parts = String(r.name || '').split(' | '), rocket = (parts[0] || '').replace(/\s*Block \d+$/, ''), mission = parts[1] || parts[0] || '';
+      var p = (r.net_precision && r.net_precision.abbrev) || '', s = (r.status && r.status.abbrev) || '';
+      if (!r.net || /starship/i.test(r.name) || !/^(SEC|MIN|HR|HOUR|DAY)?$/.test(p) || /^(Success|Failure|Partial Failure)$/.test(s)) return null;
+      var t = new Date(r.net).getTime();
+      if (have.some(function (e) { return e.page === 'starship' && Math.abs(new Date(e.start) - t) < 6 * H; })) return null;
+      var day = p === 'DAY';
+      return { id: 'll2-' + r.id, page: 'starship', title: rocket + ' \u00b7 ' + mission.replace(/^Starlink Group /, 'Starlink '),
+        start: day ? r.net.slice(0, 10) + 'T00:00:00Z' : r.net, end: day ? r.net.slice(0, 10) + 'T23:59:00Z' : new Date(t + H).toISOString(),
+        net: day || undefined, timeTbc: (p === 'HR' || p === 'HOUR') || undefined, status: 'scheduled', provider: 'link',
+        fallbackUrl: 'https://x.com/SpaceX', fallbackLabel: 'Webcast on X (@SpaceX)', source: 'https://thespacedevs.com/llapi',
+        image: /falcon/i.test(rocket) ? '/assets/live/falcon9.jpg' : '', imageCredit: /falcon/i.test(rocket) ? 'Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain' : '' };
+    }).filter(Boolean);
+  }
+  // NET / date-only events: show the event's own calendar day (start string), not a shifted zone.
+  function ownDay(e) { var m = /^(\d{4})-(\d\d)-(\d\d)/.exec(e.start || ''); return m ? new Date(Date.UTC(+m[1], m[2] - 1, +m[3], 12)) : new Date(e.start); }
   function cd(ms) { var h = Math.floor(ms / H), m = Math.floor(ms % H / 6e4); return (h ? h + 'h ' : '') + m + 'm'; }
   function player(e) {
     if (e.provider === 'youtube' && /^[\w-]{6,20}$/.test(e.embedId || ''))
@@ -57,7 +76,7 @@
     if (!live && slim) { // >72h out: slim one-line card (fixed 56px, see live.css .lw-slim)
       var days = function () { var ms = new Date(e.start) - Date.now(), dd = Math.round(ms / 864e5); return ms <= 0 ? 'today' : dd <= 1 ? 'in 1d' : 'in ' + dd + 'd'; };
       slot.innerHTML = '<a class="lw lw-slim" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener"><span class="lw-dot"></span><span class="lws-txt"><b class="lws-t">' + esc(e.title) + '</b>' +
-        '<span class="lws-m">' + esc(dateTxt) + ' <span class="lv-tz">' + esc(chip) + '</span> <span class="lws-cd">' + days() + '</span></span></span><span class="lws-go">Watch \u2197</span></a>';
+        '<span class="lws-m">' + esc(dateTxt) + ' <span class="lv-tz">' + esc(chip) + '</span> <span class="lws-cd">' + days() + '</span></span></span>' + (/^https:\/\/(www\.)?(spacex\.com\/launches|x\.com\/|youtube\.com\/watch)/.test(streamUrl(e)) ? '<span class="lws-go">Watch \u2197</span>' : '') + '</a>';
       setInterval(function () { var c = slot.querySelector('.lws-cd'); if (c) c.textContent = days(); }, 6e4);
       return;
     }
@@ -98,7 +117,8 @@
   }
   function run() {
   Promise.all([fetch(q.get('livedata') || '/live-data.json?t=' + Math.floor(Date.now() / 6e4), {cache: 'no-store'}).then(function (r) { return r.json(); }),
-    fetch('/data/events.json', {cache: 'no-cache'}).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })]).then(function (pair) {
+    fetch('/data/events.json', {cache: 'no-cache'}).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    fetch('/data/launches.json', {cache: 'no-cache'}).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })]).then(function (pair) {
     var d = pair[0], shared = pair[1] && pair[1].events || {};
     var sharedIds = { 'f9-bandwagon5': 'bandwagon-5', 'f9-ussf481': 'ussf-481', 'f9-crs35': 'crs35-docking' };
     (d.events || []).forEach(function (e) {
@@ -113,6 +133,7 @@
       }
     });
     now = q.get('livenow') ? now : Date.now();
+    d.events = (d.events || []).concat(ll2Events(pair[2], (d.events || []).filter(function (e) { return e.status !== 'ended'; })));
     var ev = (d.events || []).filter(function (e) { return e.status !== 'ended' && new Date(e.end) > now && (page === 'home' || e.page === page || (page === 'spacex' && e.page === 'starship')); });
     // Home: keep timed Falcon/Dragon; drop NET Starship. Same rule as scripts/live-home-pick.js.
     if (page === 'home') ev = ev.filter(function (e) {
