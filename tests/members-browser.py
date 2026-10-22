@@ -133,13 +133,21 @@ async def main():
        assert await page.locator('#sd-member-rules').is_checked()
        assert await page.get_by_role('button',name='Save profile',exact=True).is_enabled()
        await page.get_by_role('button',name='Save profile',exact=True).click()
-       await page.get_by_text('Profile saved. You can now comment and give thumbs-up.',exact=True).wait_for()
+       await page.get_by_text('Your profile is saved',exact=True).wait_for()
+       await page.wait_for_function("document.activeElement.classList.contains('sdm-profile-success')")
+       box=await page.locator('.sdm-profile-success').bounding_box();height=await page.evaluate('innerHeight')
+       assert box and box['y']>=0 and box['y']+box['height']<=height
        await page.get_by_role('heading',name='Your member profile').wait_for();assert any(m=='sd_set_profile' for m,a in calls)
        await page.reload(wait_until='domcontentloaded');await page.get_by_role('heading',name='Your member profile').wait_for()
        assert await page.get_by_label('Public display name',exact=True).input_value()=='New Reader'
        assert await page.locator('#sd-member-rules').is_checked()
        await page.get_by_role('button',name='Save profile',exact=True).click()
-       await page.get_by_text('Profile saved. You can now comment and give thumbs-up.',exact=True).wait_for()
+       await page.get_by_text('Your profile is saved',exact=True).wait_for()
+       await page.wait_for_function("document.activeElement.classList.contains('sdm-profile-success')")
+       await page.get_by_label('Public display name',exact=True).fill('Updated Reader')
+       assert await page.locator('.sdm-profile-success').count()==0
+       await page.get_by_role('button',name='Save profile',exact=True).click()
+       await page.get_by_text('Your profile is saved',exact=True).wait_for()
       if moderator:
        await page.get_by_role('heading',name='Editor moderation',exact=True).wait_for();assert await page.get_by_role('button',name='Approve',exact=True).count()==0
        await page.locator('#sd-mod-mode').select_option('reported');await page.get_by_text('spam: Please review.').wait_for()

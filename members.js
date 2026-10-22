@@ -194,7 +194,7 @@ async function moderation(root){
   refresh.addEventListener('click',()=>busy(refresh,load,target));mode.addEventListener('change',()=>busy(refresh,load,target));
   try{await load();}catch(e){status(target,errorText(e),true);}
 }
-function renderAccount(root,notice=''){
+function renderAccount(root,saved=false){
   const target=el('p',{class:'sdm-status',role:'status','aria-live':'polite'}),ret=safeReturn(new URLSearchParams(location.search).get('return') || sessionStorage.getItem('sd-member-return') || '/');
   const back=el('a',{href:ret,class:'sdm-text-button'},ret==='/'?'Back to the homepage →':'Return to the article →');root.replaceChildren();
   if(!user){
@@ -205,19 +205,24 @@ function renderAccount(root,notice=''){
   }
   const signout=el('button',{type:'button',class:'sdm-button sdm-secondary'},'Sign out');signout.addEventListener('click',()=>busy(signout,async()=>{const {error}=await client.auth.signOut({scope:'local'});if(error)throw error;sessionStorage.removeItem('sd-member-return');},target));
   if(profile?.blocked){root.append(el('p',{},messages.account_blocked),el('a',{href:'mailto:superchargeddaily@gmail.com'},'Contact the editor'),signout,target);return;}
+  const confirmation=saved?el('div',{class:'sdm-profile-success',role:'status','aria-live':'polite',tabindex:'-1'},
+    el('span',{class:'sdm-success-mark','aria-hidden':true},'✓'),el('div',{},el('strong',{},'Your profile is saved'),el('p',{},'You can now comment and give thumbs-up.'))):null;
   const name=el('input',{id:'sd-member-name',name:'display_name',type:'text',required:true,minlength:2,maxlength:40,autocomplete:'nickname',value:profile?.display_name||''});
   const accept=el('input',{id:'sd-member-rules',name:'rules',type:'checkbox',required:true});accept.checked=!!profile?.accepted;
-  target.id='sd-profile-status';status(target,notice);
+  target.id='sd-profile-status';
+  name.addEventListener('input',()=>confirmation?.remove());accept.addEventListener('change',()=>confirmation?.remove());
   const save=el('button',{type:'submit',class:'sdm-button'},'Save profile'),form=el('form',{class:'sdm-profile'},el('label',{for:name.id},'Public display name'),name,
     el('p',{class:'sdm-fine'},'Use a nickname rather than your email address. This name appears beside your comments.'),
     el('label',{class:'sdm-check',for:accept.id},accept,el('span',{},'I agree to the ',el('a',{href:'/community.html'},'community rules and privacy information'),'.')),target,save);
   form.addEventListener('invalid',()=>status(target,name.validity.valid?messages.rules_required:messages.invalid_name,true),true);
   form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;busy(save,async()=>{
-    save.textContent='Saving…';status(target,'Saving your profile…');
-    try{profile=await rpc('sd_set_profile',{p_name:name.value,p_accept:accept.checked});renderAccount(root,'Profile saved. You can now comment and give thumbs-up.');}
+    confirmation?.remove();save.textContent='Saving…';status(target,'Saving your profile…');
+    try{profile=await rpc('sd_set_profile',{p_name:name.value,p_accept:accept.checked});renderAccount(root,true);}
     finally{save.textContent='Save profile';}
   },target);});
+  if(confirmation)root.append(confirmation);
   root.append(el('h2',{},profile?.display_name?'Your member profile':'Choose how you appear'),form,el('div',{class:'sdm-actions'},signout,back));
+  if(confirmation)requestAnimationFrame(()=>{if(confirmation.isConnected){confirmation.focus({preventScroll:true});confirmation.scrollIntoView({block:'center'});}});
   if(profile?.moderator){const mod=el('section',{class:'sdm-moderation'});root.append(mod);moderation(mod);}
 }
 async function boot(){
