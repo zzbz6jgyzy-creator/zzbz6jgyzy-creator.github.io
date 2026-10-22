@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T14:55:04Z",
+ "updated": "2026-10-22T15:53:39Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-22T14:55:04Z",
+  "fetched": "2026-10-22T15:53:39Z",
   "items": [
+   {
+    "t": "2026-10-22T15:49:09Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model 3 SR (2025)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-22T15:41:42Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "New Zealand"
+   },
+   {
+    "t": "2026-10-22T15:40:21Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 AWD LR (2018)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-22T15:40:06Z",
+    "to": "2026.38.5.10",
+    "from": "2026.38.5.1",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-22T15:10:47Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
    {
     "t": "2026-10-22T14:39:53Z",
     "to": "2026.38.5.1",
@@ -530,46 +570,6 @@
     "to": "2026.38.5.5",
     "from": "2026.20.10",
     "model": "Model Y AWD LR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-22T13:58:09Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model 3 Performance (2026)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-22T13:40:22Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model Y AWD LR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-22T13:38:56Z",
-    "to": "2026.38.3.1",
-    "from": "2026.32.7",
-    "model": "Model 3 AWD LR (2021)",
-    "hw": "3.0",
-    "country": "Switzerland"
-   },
-   {
-    "t": "2026-10-22T13:37:37Z",
-    "to": "2026.33.100",
-    "from": "2026.27.300",
-    "model": "Model Y SR (2024)",
-    "hw": "4.0",
-    "country": "Belgium"
-   },
-   {
-    "t": "2026-10-22T13:35:19Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model 3 SR (2025)",
     "hw": "4.0",
     "country": "Australia"
    }
