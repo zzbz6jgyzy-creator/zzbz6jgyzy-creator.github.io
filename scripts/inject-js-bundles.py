@@ -216,3 +216,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    # Keep the standalone member module on new articles and regenerated pages.
+    import runpy
+    runpy.run_path(str(ROOT / "scripts" / "inject-members.py"))["run"]()
