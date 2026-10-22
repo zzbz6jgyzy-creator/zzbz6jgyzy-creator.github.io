@@ -1,11 +1,12 @@
 window.TESLA_UPDATES = {
-  updated: "2026-10-21",
+  updated: "2026-10-22",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
     headline: "FSD right now",
     lines: [
-      "Newest reporting, HW4 / AI4: FSD Supervised v14.3.13 on 2026.38.5.10, first spotted on a handful of US cars on 20 Oct (about 0.3% of the Teslascope sample). Its notes add better handling of small animals, rare objects leaning into the road, short system glitches and driver-monitoring gaze tracking, plus one shared model for Smart Summon, FSD and Robotaxi.",
+      "Newest reporting, HW4 / AI4: FSD Supervised v14.3.13 on 2026.38.5.10, first spotted on a handful of US cars on 20 Oct (15 cars, about 0.4% of the Teslascope sample, by 22 Oct). Its notes add better handling of small animals, rare objects leaning into the road, short system glitches and driver-monitoring gaze tracking, plus one shared model for Smart Summon, FSD and Robotaxi.",
+      "Australia and New Zealand, HW4 / AI4: FSD Supervised v14.3.12 on 2026.38.5.5 (Tesla calls it “v14.3.12 Down Under”). First cars in Australia from 20 Oct; 14 installs on Teslascope by 22 Oct, with cars in New Zealand waiting to install. Model 3 and Model Y. It adds Brake Confirm off by default for Start Self-Driving, and the new Arrival Options, Speed Profiles and Self-Driving stats.",
       "Most common FSD build on 2026.38: v14.3.12 on 2026.38.5.1, the point release that started reaching US cars on 13 Oct. Mostly US, with the first cars in Mexico and Canada on 2026.38.5.",
       "Wider North America HW4 build: v14.3.11 on 2026.33.5 (US and Canada). A big slice of US cars is still on v14.3.10 (2026.27.11). Automatic Collision Evasion is in 14.3.11, 14.3.12 and 14.3.13 — North America only.",
       "North America, HW3: FSD Supervised v14.3 Lite on 2026.33.5 and 2026.38.5. Parking, unparking and start-from-park. No Collision Evasion.",
@@ -71,6 +72,30 @@ window.TESLA_UPDATES = {
   ],
   versions: [
     {
+      id: "2026.38.5.5",
+      family: "2026.38",
+      date: "2026-10-20",
+      kind: "fsd",
+      status: "early",
+      headline: "FSD v14.3.12 Down Under — Australia and New Zealand",
+      summary:
+        "The 2026.38 FSD stack reaches Australia and New Zealand. HW4 / AI4 Model 3 and Model Y get FSD Supervised v14.3.12, which Tesla titles “v14.3.12 Down Under”. Most cars are jumping straight from 2026.20.10. Early wave, a handful of cars so far.",
+      features: [
+        "HW4: FSD Supervised v14.3.12 — faster reactions from a rebuilt AI compiler, better vision in rare and low-visibility scenes, better handling of small animals, emergency vehicles, school buses and complex traffic lights.",
+        "Arrival Options: pick Carpark, Indoor Carpark, Street, Driveway or Pull Over at your destination.",
+        "Speed Profiles now follow driver profile, speed limit and traffic, with new SLOTH and MAD MAX profiles. The right scroll wheel now changes the profile.",
+        "Brake Confirm for Start Self-Driving is now off by default (you can turn it back on in Self-Driving settings).",
+        "Self-Driving stats under Controls > Self-Driving, your longest intervention-free streak, and a way to pick a reason after you take over.",
+        "Cabin items carried over: Halloween Mode, Set Arrival Energy and Apple Music.",
+      ],
+      fsd: "v14.3.12 (HW4) · Australia and New Zealand",
+      models: ["3", "Y"],
+      hardware: ["HW4"],
+      reached:
+        "First installs in Australia on 20 Oct 2026. 14 cars on Teslascope by 22 Oct, all in Australia, with more waiting to install in Australia and New Zealand. HW4 only (Teslascope; release notes via Not a Tesla App).",
+      countries: ["AU", "NZ"],
+    },
+    {
       id: "2026.38.5.10",
       family: "2026.38",
       date: "2026-10-20",
@@ -91,7 +116,7 @@ window.TESLA_UPDATES = {
       models: ["3", "Y", "S", "X", "Cybertruck"],
       hardware: ["HW3", "HW4"],
       reached:
-        "First spotted on 20 Oct 2026 on US cars only. About 0.2–0.3% of tracked fleets so far (TeslaFi via Not a Tesla App; Teslascope). Not a European build.",
+        "First spotted on 20 Oct 2026 on US cars only. 15 cars on Teslascope by 22 Oct (about 0.4% of its sample), all coming from 2026.38.5.1. Not a European build.",
       countries: ["US"],
     },
     {

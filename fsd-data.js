@@ -1,9 +1,27 @@
 window.FSD_GLOBAL = {
-  updated: "2026-10-16",
+  updated: "2026-10-22",
   note:
     "Country status is based on Tesla’s listings, national regulator notes and public reporting. “Live” means owners can use FSD Supervised (or Assisted Driving Basic in Europe) on public roads. “Approved” means a regulator has said yes, but customers don’t have it yet. Not Tesla’s official map. FSD Supervised is SAE Level 2 — the driver must supervise.",
   teslaList: "https://www.tesla.com/support/full-self-driving",
   versions: [
+    {
+      id: "v14.3.13",
+      date: "2026-10-20",
+      region: "United States",
+      hardware: "HW4 / AI4",
+      build: "2026.38.5.10",
+      status: "live",
+      note: "Newest US build, on top of 2026.38.5.1. Early wave: 15 US cars on Teslascope by 22 Oct. HW3 stays on v14.3 Lite. Source: Teslascope.",
+    },
+    {
+      id: "v14.3.12 Down Under",
+      date: "2026-10-20",
+      region: "Australia / New Zealand",
+      hardware: "HW4 / AI4",
+      build: "2026.38.5.5",
+      status: "live",
+      note: "The 2026.38 FSD stack reaches Oceania. 14 cars in Australia on Teslascope by 22 Oct, with cars in New Zealand waiting to install. Adds Arrival Options and Speed Profiles. Source: Teslascope.",
+    },
     {
       id: "v14.3.12",
       date: "2026-10-10",
@@ -11,7 +29,7 @@ window.FSD_GLOBAL = {
       hardware: "HW4 / AI4",
       build: "2026.38.5",
       status: "live",
-      note: "Same release notes as 14.3.11, now on the 2026.38 cabin branch. Early US wave only. Source: notateslaapp.com / Teslascope.",
+      note: "On the 2026.38 cabin branch. Also on the 2026.38.5.1 point release, now the most common 2026.38 build in North America. Source: notateslaapp.com / Teslascope.",
     },
     {
       id: "v14.3.11",
@@ -20,7 +38,7 @@ window.FSD_GLOBAL = {
       hardware: "HW4 / AI4",
       build: "2026.33.5",
       status: "live",
-      note: "Widest US / Canada HW4 stack. Automatic Collision Evasion is in this build and in 14.3.12.",
+      note: "Widest US / Canada HW4 stack. Automatic Collision Evasion is in this build, 14.3.12 and 14.3.13.",
     },
     {
       id: "v14.3 Lite",
@@ -104,14 +122,14 @@ window.FSD_GLOBAL = {
     },
   ],
   countries: [
-    { code: "US", name: "United States", region: "Americas", status: "live", date: "2022-11", version: "v14.3.12", hardware: "HW4 · HW3 Lite", lon: -98, lat: 39.5, note: "Home market. 14.3.12 (2026.38.5) is in an early US wave since 10 Oct; most HW4 cars are on 14.3.11. HW3 is on 14.3 Lite.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
+    { code: "US", name: "United States", region: "Americas", status: "live", date: "2022-11", version: "v14.3.13", hardware: "HW4 · HW3 Lite", lon: -98, lat: 39.5, note: "Home market. 14.3.13 (2026.38.5.10) is in an early US wave since 20 Oct; 14.3.12 on 2026.38.5.1 is the most common 2026.38 build. HW3 is on 14.3 Lite.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "CA", name: "Canada", region: "Americas", status: "live", date: "2023-11", version: "v14.3.11", hardware: "HW4 · HW3 Lite", lon: -106, lat: 56, note: "Same North America branch as the US.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "MX", name: "Mexico", region: "Americas", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: -102.5, lat: 23.6, note: "Tesla lists Mexico. Not on the US 14.3.11 build map.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "PR", name: "Puerto Rico", region: "Americas", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: -66.5, lat: 18.2, note: "Tesla lists Puerto Rico as its own market.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "CN", name: "China", region: "Asia-Pacific", status: "limited", date: "2026-05", version: "Limited", hardware: "HW4", lon: 104, lat: 35, note: "Listed, then dropped from some regional pages. Data-compliance limits. Not a full open.", source: { label: "Tesla China", url: "https://www.tesla.cn" } },
     { code: "KR", name: "South Korea", region: "Asia-Pacific", status: "live", date: "2026", version: "Supervised", hardware: "HW4", lon: 127.8, lat: 36.4, note: "Tesla lists South Korea as available.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
-    { code: "AU", name: "Australia", region: "Asia-Pacific", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: 134.5, lat: -25.3, note: "Live. Often on its own software point (2026.26.x), not the US 14.3.11 file.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
-    { code: "NZ", name: "New Zealand", region: "Asia-Pacific", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: 172.6, lat: -41.3, note: "Live, usually paired with Australia on the 2026.26 branch.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
+    { code: "AU", name: "Australia", region: "Asia-Pacific", status: "live", date: "2025", version: "v14.3.12", hardware: "HW4", lon: 134.5, lat: -25.3, note: "Live. v14.3.12 Down Under on 2026.38.5.5 started reaching HW4 cars on 20 Oct (early wave, Teslascope).", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
+    { code: "NZ", name: "New Zealand", region: "Asia-Pacific", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: 172.6, lat: -41.3, note: "Live, usually paired with Australia. Cars are waiting to install 2026.38.5.5 (v14.3.12 Down Under), per Teslascope.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "NL", name: "Netherlands", region: "Europe", status: "live", date: "2026-04-10", version: "v14.2.2.6", hardware: "HW3 / HW4", lon: 5.3, lat: 52.1, note: "RDW issued the provisional Art. 39 type approval every later EU yes has recognised.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "LT", name: "Lithuania", region: "Europe", status: "live", date: "2026-05-20", version: "v14.2.2.6", hardware: "HW3 / HW4", lon: 23.9, lat: 55.2, note: "First state to recognise the Dutch approval.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "EE", name: "Estonia", region: "Europe", status: "live", date: "2026-05-29", version: "v14.2.2.6", hardware: "HW3 / HW4", lon: 25.5, lat: 58.6, note: "National recognition of the RDW file.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
@@ -138,10 +156,10 @@ window.FSD_GLOBAL = {
     { code: "PT", name: "Portugal", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: -8.2, lat: 39.6, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "HU", name: "Hungary", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 19.5, lat: 47.2, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "BG", name: "Bulgaria", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 25.5, lat: 42.7, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
-    { code: "SK", name: "Slovakia", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 19.7, lat: 48.7, note: "Ministry of Transport recognised the RDW approval on 16 Oct (ninth EU country). Not live yet: Tesla has not announced a customer rollout.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
+    { code: "SK", name: "Slovakia", region: "Europe", status: "review", date: null, version: "—", hardware: "—", lon: 19.7, lat: 48.7, note: "Ministry of Transport recognised the RDW approval on 16 Oct (ninth EU country). Not live yet: Tesla Europe says the rollout begins soon, with no date.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "LV", name: "Latvia", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 24.6, lat: 56.9, note: "No national recognition reported. Sits between two live Baltic markets.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "CY", name: "Cyprus", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 33.4, lat: 35.1, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
-    { code: "LU", name: "Luxembourg", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 6.1, lat: 49.75, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
+    { code: "LU", name: "Luxembourg", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 6.1, lat: 49.75, note: "No national recognition. On 20 Oct the mobility minister told parliament Luxembourg will rely on the EU-wide procedure.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
     { code: "MT", name: "Malta", region: "Europe", status: "none", date: null, version: "—", hardware: "—", lon: 14.4, lat: 35.9, note: "No national recognition reported.", source: { label: "Europe tracker", url: "/fsd-europe.html" } },
   ],
 };

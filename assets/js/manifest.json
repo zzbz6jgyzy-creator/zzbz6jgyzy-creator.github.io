@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22T08:05:25.360Z",
+  "generated": "2026-10-22T09:41:12.642Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.745ee5f257.js",
@@ -26,8 +26,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.d2ccae2b37.js",
-      "bytes": 67965,
+      "file": "/assets/js/home.bundle.5dbfea39b7.js",
+      "bytes": 68261,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -80,8 +80,8 @@
       ]
     },
     "my-tesla": {
-      "file": "/assets/js/my-tesla.bundle.089366b5e8.js",
-      "bytes": 82399,
+      "file": "/assets/js/my-tesla.bundle.f221e8fa27.js",
+      "bytes": 85221,
       "sources": [
         "updates-data.js",
         "fsd-data.js",
@@ -100,8 +100,8 @@
       ]
     },
     "spacex": {
-      "file": "/assets/js/spacex.bundle.3dd304346c.js",
-      "bytes": 42260,
+      "file": "/assets/js/spacex.bundle.1e86a4f0b8.js",
+      "bytes": 41941,
       "sources": [
         "starship-data.js",
         "spacex-hub.js",
@@ -118,8 +118,8 @@
       ]
     },
     "calendar": {
-      "file": "/assets/js/calendar.bundle.a355a51f9a.js",
-      "bytes": 22127,
+      "file": "/assets/js/calendar.bundle.fc773fe0ea.js",
+      "bytes": 21808,
       "sources": [
         "calendar-merge.js",
         "calendar.js"
@@ -135,16 +135,16 @@
       ]
     },
     "fsd": {
-      "file": "/assets/js/fsd.bundle.d5c06889e7.js",
-      "bytes": 23843,
+      "file": "/assets/js/fsd.bundle.c54df8344c.js",
+      "bytes": 24680,
       "sources": [
         "fsd-data.js",
         "fsd.js"
       ]
     },
     "cybercab": {
-      "file": "/assets/js/cybercab.bundle.7308253b96.js",
-      "bytes": 19194,
+      "file": "/assets/js/cybercab.bundle.bee87b7324.js",
+      "bytes": 19490,
       "sources": [
         "cybercab-data.js",
         "cybercab-tracker.js",
@@ -153,8 +153,8 @@
       ]
     },
     "autonomy": {
-      "file": "/assets/js/autonomy.bundle.79a1bae66d.js",
-      "bytes": 43352,
+      "file": "/assets/js/autonomy.bundle.010f216aba.js",
+      "bytes": 44485,
       "sources": [
         "fsd-data.js",
         "fsd-europe-data.js",
@@ -191,8 +191,8 @@
       ]
     },
     "tsla": {
-      "file": "/assets/js/tsla.bundle.bf7d7023c8.js",
-      "bytes": 26007,
+      "file": "/assets/js/tsla.bundle.edd4a2150d.js",
+      "bytes": 25688,
       "sources": [
         "calendar-merge.js",
         "calendar.js",
