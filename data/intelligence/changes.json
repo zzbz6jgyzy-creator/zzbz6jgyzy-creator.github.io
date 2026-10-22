@@ -1,23 +1,6 @@
 {
-  "updated": "2026-10-22T05:51:46.930Z",
+  "updated": "2026-10-22T06:09:04.893Z",
   "changes": [
-    {
-      "type": "changed",
-      "factId": "tesla-software:most-common",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "most-common",
-      "previous": "2026.38.5.1@28.4",
-      "next": "2026.38.5.1@28.5",
-      "at": "2026-10-22T05:51:45.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Most common sample build changed from 2026.38.5.1@28.4 to 2026.38.5.1@28.5.",
-      "title": "Most common sample build",
-      "id": "changed|tesla-software:most-common|2026-10-22T05:51:45.000Z|2026.38.5.1@28.5"
-    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-q3-2026-results.html",
@@ -34,6 +17,23 @@
       "summary": "Revenue flat at $28.05B, GAAP net income down 43% as R&D jumped 69%, and free cash flow back at $1.53B. I took apart the cash, the capex math and every new date from the call.",
       "title": "Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock",
       "id": "logged|dispatch:/dispatch/tesla-q3-2026-results.html|2026-10-22T01:38:03.000Z|Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock"
+    },
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "349",
+      "next": "351",
+      "at": "2026-10-22T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html",
+      "summary": "Texas Cybercab registrations changed from 349 to 351.",
+      "title": "Texas Cybercab registrations",
+      "id": "changed|robotaxi:tx-cybercab|2026-10-22T00:00:00.000Z|351"
     },
     {
       "type": "logged",
