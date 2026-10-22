@@ -1,2 +1,5 @@
 tmp/
 node_modules/
+dev/
+__pycache__/
+*.pyc

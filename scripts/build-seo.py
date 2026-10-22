@@ -327,3 +327,5 @@ if __name__ == "__main__":
     about_page()
     pages()
     sitemap()
+    import runpy
+    runpy.run_path(os.path.join(ROOT, "scripts", "inject-members.py"))["run"]()
