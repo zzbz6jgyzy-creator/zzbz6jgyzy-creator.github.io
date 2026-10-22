@@ -35,11 +35,11 @@ const must = [
 if (must.every((h) => hrefs.includes(h))) ok("all dests kept");
 else bad("all dests kept", must.filter((h) => !hrefs.includes(h)).join(", "));
 
-if (/pn-tesla-autonomy/.test(html) && /pn-tesla-cars-owners/.test(html) && /pn-tesla-company/.test(html)) ok("tesla nests");
+if (/pn-tesla-software-autonomy/.test(html) && /pn-tesla-cars-owners/.test(html) && /pn-tesla-company/.test(html)) ok("tesla nests");
 else bad("tesla nests", "missing tesla submenu ids");
 if (/pn-spacex-launches/.test(html) && /pn-roadster-the-car/.test(html) && /pn-ex-tesla/.test(html)) ok("other nests");
 else bad("other nests", "missing spacex/roadster/explore groups");
-if (/nav-pill\.css\?v=202610202200/.test(index) && /nav-pill\.js\?v=202610202200/.test(index)) ok("nav pins");
+if (/nav-pill\.css\?v=202610222255/.test(index) && /nav-pill\.js\?v=202610202200/.test(index)) ok("nav pins");
 else bad("nav pins", "index still on old nav-pill");
 if (/theme\.css\?v=202610191800/.test(index)) ok("home theme pin");
 else bad("home theme pin", "index.html theme.css pin changed");
@@ -60,7 +60,7 @@ else ok("no Trackers top");
 const teslaKids = await page.$$eval("#pn-tesla > a, #pn-tesla > .pn-nest > .pn-nest-t", (els) =>
   els.map((el) => el.childNodes[0]?.textContent?.trim() || el.textContent.trim())
 );
-if (teslaKids.includes("Tesla overview") && teslaKids.includes("My Tesla") && teslaKids.includes("Autonomy") && teslaKids.includes("Cars & owners") && teslaKids.includes("Company") && teslaKids.length === 5) ok("tesla short");
+if (teslaKids.includes("Tesla overview") && teslaKids.includes("My Tesla") && teslaKids.includes("Software & autonomy") && teslaKids.includes("Cars & owners") && teslaKids.includes("Company") && teslaKids.length === 5) ok("tesla short");
 else bad("tesla short", JSON.stringify(teslaKids));
 
 await page.hover(".pn-dd:has(#pn-tesla) > button");
@@ -104,7 +104,7 @@ else bad("sheet sections", JSON.stringify(sheetH));
 const teslaBtn = page.locator(".pn-sheet h3").filter({ hasText: "Tesla" }).locator("button");
 await teslaBtn.click();
 const subH = await page.$$eval(".pn-sheet h4", (els) => els.map((h) => h.textContent.replace(/\s+/g, " ").trim()));
-if (subH.some((x) => /Autonomy/.test(x)) && subH.some((x) => /Cars/.test(x))) ok("sheet subheads");
+if (subH.some((x) => /Software & autonomy/.test(x)) && subH.some((x) => /Cars/.test(x))) ok("sheet subheads");
 else bad("sheet subheads", JSON.stringify(subH));
 const h4Btns = await page.locator(".pn-sheet h4 button").count();
 if (h4Btns === 0) ok("sheet no nested buttons");

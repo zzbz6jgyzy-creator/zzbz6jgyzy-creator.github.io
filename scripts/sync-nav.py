@@ -6,6 +6,7 @@ Use --check to fail (exit 1) if any page is out of sync."""
 import json, pathlib, re, sys
 root = pathlib.Path(__file__).resolve().parent.parent
 cfg = json.loads((root / "scripts/nav.json").read_text())
+CSS_VERSION = "202610222255"
 CH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
 BURGER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>'
 
@@ -61,6 +62,9 @@ def block(navtag):
     a = lambda lst: "".join(f'<a href="{h}">{n}</a>' for n, h in lst)
     top_has_home = any((n or "").lower() == "home" or h in ("/", "/index.html") for n, h in t)
     sheet = [a((t if top_has_home else [("Home", "/")] + t) + m)]
+    shortcuts = cfg.get("mobileShortcuts", [])
+    if shortcuts:
+        sheet.append('<nav class="pn-shortcuts" aria-label="Quick links"><p class="pn-shortcuts-label">Quick links</p><div class="pn-shortcuts-grid">' + a(shortcuts) + '</div></nav>')
     for d in ds:
         sheet += sheet_bits(d)
     return f'''<div class="pn-wrap">
@@ -86,6 +90,8 @@ for p in sorted(root.rglob("*.html")):
     if ".git" in p.parts: continue
     s = p.read_text()
     n = RX.sub(lambda mo: block(mo.group(1)), s, count=1)
+    if RX.search(s):
+        n = re.sub(r'(?<=href="/nav-pill\.css)(?:\?v=[^"]*)?(?=")', '?v=' + CSS_VERSION, n)
     if n != s:
         bad.append(str(p.relative_to(root)))
         if not check: p.write_text(n)

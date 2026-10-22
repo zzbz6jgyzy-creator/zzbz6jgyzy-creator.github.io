@@ -1,10 +1,19 @@
 {
   "top": [["Home","/"]],
+  "mobileShortcuts": [
+    ["Original stories","/dispatch.html"],
+    ["Software updates","/updates.html"],
+    ["Cybercab","/cybercab.html"],
+    ["Starship","/starship.html"]
+  ],
   "dropdowns": [
     {"id":"pn-tesla","label":"Tesla","items":[
       ["Tesla overview","/tesla.html","News, models &amp; data",""],
       ["My Tesla","/my-tesla.html","Your car, personalised",""],
-      {"label":"Autonomy","items":[
+      {"label":"Software & autonomy","items":[
+        ["Software Update Tracker","/updates.html","Latest Tesla releases",""],
+        ["FSD Europe tracker","/fsd-europe.html","Approval tracker",""],
+        ["Cybercab tracker","/cybercab.html","Reality map &amp; fleet",""],
         ["FSD & Robotaxi evidence","/autonomy.html","Supervised vs commercial layers",""],
         ["Explainers","/explainers.html#tesla","FSD stacks, Collision Evasion",""]]},
       {"label":"Cars & owners","items":[
@@ -64,8 +73,8 @@
         ["Wallpapers","/wallpapers.html","Desktop &amp; phone",""]]}
     ]},
     {"id":"pn-news","label":"News","items":[
-      ["News","/news.html","Today’s headlines",""],
-      ["Dispatch","/dispatch.html","Our own stories",""],
+      ["Latest headlines","/news.html","Today’s headlines from across the web",""],
+      ["Original stories · Dispatch","/dispatch.html","Our reporting &amp; analysis",""],
       ["About me","/about.html","Who runs the site",""]]}
   ],
   "mid": [],
