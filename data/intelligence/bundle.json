@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-22T07:11:23.099Z",
+  "generatedAt": "2026-10-22T07:41:55.566Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -243,6 +243,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-ai-maps-v15.html",
+      "topic": "fsd",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet",
+      "at": "2026-10-22T07:41:03.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-ai-maps-v15.html",
+      "href": "/dispatch/tesla-ai-maps-v15.html",
+      "summary": "Tesla’s AI chief says FSD will stop relying on other companies’ maps, starting with V15. I put 15.8 billion FSD miles next to Street View, Waymo and every US road.",
+      "title": "Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet",
+      "id": "logged|dispatch:/dispatch/tesla-ai-maps-v15.html|2026-10-22T07:41:03.000Z|Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-q3-2026-results.html",
@@ -497,23 +514,6 @@
       "summary": "App 1.16 lets iPhone 15 Pro and newer start a Bot voice chat with one press. The setup, who qualifies, and two weeks of updates.",
       "title": "Grok Bot now works from the iPhone Action Button",
       "id": "logged|dispatch:/dispatch/grok-bot-iphone-action-button.html|2026-10-20T07:50:00.000Z|Grok Bot now works from the iPhone Action Button"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/ark-tesla-2031-model.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast",
-      "at": "2026-10-20T01:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/ark-tesla-2031-model.html",
-      "href": "/dispatch/ark-tesla-2031-model.html",
-      "summary": "ARK’s new 2031 model lifts its target from $2,600, but its robotaxi revenue range came down. Optimus, storage and margins fill the gap.",
-      "title": "ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast",
-      "id": "logged|dispatch:/dispatch/ark-tesla-2031-model.html|2026-10-20T01:40:00.000Z|ARK’s $4,400 Tesla target comes with a smaller robotaxi forecast"
     },
     {
       "type": "logged",
@@ -1493,14 +1493,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-16T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-21T07:30:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1514,14 +1514,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-18T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-22T06:00:23.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1535,35 +1535,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-22T07:11:23.099Z",
+      "lastChecked": "2026-10-22T07:41:55.566Z",
       "lastVerified": "2026-10-22T07:11:21.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1572,85 +1572,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.000Z",
-      "finished": "2026-10-22T07:11:23.089Z"
+      "started": "2026-10-22T07:41:55.551Z",
+      "finished": "2026-10-22T07:41:55.555Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.089Z",
-      "finished": "2026-10-22T07:11:23.089Z"
+      "started": "2026-10-22T07:41:55.555Z",
+      "finished": "2026-10-22T07:41:55.556Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.089Z",
-      "finished": "2026-10-22T07:11:23.089Z"
+      "started": "2026-10-22T07:41:55.556Z",
+      "finished": "2026-10-22T07:41:55.556Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.089Z",
-      "finished": "2026-10-22T07:11:23.093Z"
+      "started": "2026-10-22T07:41:55.556Z",
+      "finished": "2026-10-22T07:41:55.559Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.093Z",
-      "finished": "2026-10-22T07:11:23.095Z"
+      "started": "2026-10-22T07:41:55.559Z",
+      "finished": "2026-10-22T07:41:55.561Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.095Z",
-      "finished": "2026-10-22T07:11:23.096Z"
+      "started": "2026-10-22T07:41:55.561Z",
+      "finished": "2026-10-22T07:41:55.562Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.096Z",
-      "finished": "2026-10-22T07:11:23.097Z"
+      "started": "2026-10-22T07:41:55.562Z",
+      "finished": "2026-10-22T07:41:55.563Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.097Z",
-      "finished": "2026-10-22T07:11:23.097Z"
+      "started": "2026-10-22T07:41:55.563Z",
+      "finished": "2026-10-22T07:41:55.563Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.097Z",
-      "finished": "2026-10-22T07:11:23.097Z"
+      "started": "2026-10-22T07:41:55.563Z",
+      "finished": "2026-10-22T07:41:55.563Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.097Z",
-      "finished": "2026-10-22T07:11:23.098Z"
+      "started": "2026-10-22T07:41:55.563Z",
+      "finished": "2026-10-22T07:41:55.565Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.098Z",
-      "finished": "2026-10-22T07:11:23.098Z"
+      "started": "2026-10-22T07:41:55.565Z",
+      "finished": "2026-10-22T07:41:55.565Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.098Z",
-      "finished": "2026-10-22T07:11:23.098Z"
+      "started": "2026-10-22T07:41:55.565Z",
+      "finished": "2026-10-22T07:41:55.565Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-22T07:11:23.098Z",
-      "finished": "2026-10-22T07:11:23.099Z"
+      "started": "2026-10-22T07:41:55.565Z",
+      "finished": "2026-10-22T07:41:55.566Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-22T07:11:23.099Z",
+    "generatedAt": "2026-10-22T07:41:55.566Z",
     "factCount": 17,
     "changeCount": 71,
     "conflictCount": 2,
