@@ -1,8 +1,30 @@
 {
  "_about": "Upcoming SpaceX launches from Launch Library 2 (ll.thespacedevs.com), refreshed by .github/workflows/launches-refresh.yml. Do not hand-edit.",
  "source": "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX",
- "updated": "2026-10-22T23:07:26Z",
+ "updated": "2026-10-22T23:36:41Z",
  "results": [
+  {
+   "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-15",
+   "net": "2026-10-23T21:30:00Z",
+   "window_start": "2026-10-23T21:30:00Z",
+   "window_end": "2026-10-24T01:30:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/f6af629d-39b5-4f86-bc0c-f8776444a858/",
+   "status": {
+    "name": "Go for Launch",
+    "abbrev": "Go"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
   {
    "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
    "name": "Falcon 9 Block 5 | Starlink Group 15-16",
