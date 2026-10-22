@@ -326,7 +326,7 @@
       group: "spacex",
       where,
       note: "",
-      href: row.url || "https://ll.thespacedevs.com",
+      href: "", // LL2 is data only; never link to its API pages
       status: go ? "go" : statusAbbrev.toLowerCase() === "tbd" ? "tbd" : "net",
       precision: /go|hold|in flight/i.test(statusName) ? "datetime" : "day",
       source: "ll2",

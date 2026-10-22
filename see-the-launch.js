@@ -381,7 +381,7 @@
       orbit: row.mission?.type || row.mission?.orbit?.name || "",
       status: /in flight/i.test(statusName) ? "live" : go ? "go" : /hold/i.test(statusName) ? "hold" : "net",
       precision: /go|hold|in flight/i.test(statusName) ? "datetime" : "day",
-      href: row.url || "https://www.spacex.com/launches",
+      href: "", // LL2 is data only; never link to its API pages
       note: row.mission?.description || row.weather_concerns || "",
       weather: row.weather_concerns || "",
       windowStart: row.window_start,
@@ -799,7 +799,7 @@
     if (launch.vehicle === "starship")
       alerts.push(`<li><b>Catch attempt, not a cruise</b><p>Flight 15 is the first serious Ship catch. If you are on the Brownsville side you may see tower activity as well as the climb.</p></li>`);
     alerts.push(
-      `<li><b>Webcast</b><p><a href="${esc(launch.href)}" ${/^https?:/.test(launch.href) ? 'target="_blank" rel="noopener noreferrer"' : ""}>Official / Launch Library page</a> · <a href="/calendar.html">Full calendar</a>${
+      `<li><b>Webcast</b><p>${launch.href && !/thespacedevs/.test(launch.href) ? `<a href="${esc(launch.href)}" ${/^https?:/.test(launch.href) ? 'target="_blank" rel="noopener noreferrer"' : ""}>Official page</a> · ` : ""}<a href="/calendar.html">Full calendar</a>${
         launch.vehicle === "starship" ? ' · <a href="/starship.html">Starship flight lab</a>' : ""
       }</p></li>`
     );

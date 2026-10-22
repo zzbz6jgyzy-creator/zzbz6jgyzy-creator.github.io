@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22T07:39:50.585Z",
+  "generated": "2026-10-22T07:40:30.974Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.745ee5f257.js",
@@ -100,8 +100,8 @@
       ]
     },
     "spacex": {
-      "file": "/assets/js/spacex.bundle.bb6cce8868.js",
-      "bytes": 40729,
+      "file": "/assets/js/spacex.bundle.94412a1e02.js",
+      "bytes": 40695,
       "sources": [
         "starship-data.js",
         "spacex-hub.js",
@@ -118,8 +118,8 @@
       ]
     },
     "calendar": {
-      "file": "/assets/js/calendar.bundle.221201dc44.js",
-      "bytes": 22161,
+      "file": "/assets/js/calendar.bundle.a355a51f9a.js",
+      "bytes": 22127,
       "sources": [
         "calendar-merge.js",
         "calendar.js"
@@ -181,8 +181,8 @@
       ]
     },
     "see-the-launch": {
-      "file": "/assets/js/see-the-launch.bundle.4832df4c72.js",
-      "bytes": 36730,
+      "file": "/assets/js/see-the-launch.bundle.ebb8338a62.js",
+      "bytes": 36720,
       "sources": [
         "calendar-merge.js",
         "see-the-launch-data.js",
@@ -190,8 +190,8 @@
       ]
     },
     "tsla": {
-      "file": "/assets/js/tsla.bundle.4985dfab15.js",
-      "bytes": 26041,
+      "file": "/assets/js/tsla.bundle.bf7d7023c8.js",
+      "bytes": 26007,
       "sources": [
         "calendar-merge.js",
         "calendar.js",
