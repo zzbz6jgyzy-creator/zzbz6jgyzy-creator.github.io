@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22T09:56:14Z",
+  "updated": "2026-10-22T10:53:23Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3381,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.5",
       "date": "2026-10-21",
-      "count": 14,
+      "count": 22,
       "fleet": 3381,
-      "percent": 0.4,
+      "percent": 0.7,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.12",
@@ -52,11 +52,11 @@
         "AU"
       ],
       "countryCounts": {
-        "AU": 14
+        "AU": 22
       },
-      "pending": 79,
+      "pending": 73,
       "firstSeen": "2026-10-21T02:20:52Z",
-      "lastSeen": "2026-10-22T09:02:06Z"
+      "lastSeen": "2026-10-22T10:47:26Z"
     },
     {
       "id": "2026.38.5.10",
@@ -146,7 +146,7 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 964,
+      "count": 965,
       "fleet": 3381,
       "percent": 28.5,
       "fsd": null,
@@ -193,14 +193,14 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 905,
+        "US": 906,
         "CA": 54,
         "MX": 4,
         "PR": 1
       },
-      "pending": 55,
+      "pending": 54,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-22T06:48:07Z"
+      "lastSeen": "2026-10-22T10:18:10Z"
     },
     {
       "id": "2026.38.5",
@@ -645,7 +645,7 @@
     {
       "id": "2026.32.7",
       "date": "2026-09-23",
-      "count": 374,
+      "count": 375,
       "fleet": 3381,
       "percent": 11.1,
       "fsd": null,
@@ -693,8 +693,8 @@
         "DK",
         "CH",
         "NL",
-        "IT",
         "CA",
+        "IT",
         "AT",
         "ES",
         "PL",
@@ -706,25 +706,25 @@
         "PT",
         "HU",
         "UA",
+        "KR",
         "NZ",
         "BG",
         "GR",
-        "LT",
         "JP",
+        "LT",
         "IL",
         "IE",
         "AE",
         "IS",
         "SK",
-        "QA",
         "SG",
-        "MA",
+        "QA",
         "SI",
         "HK",
         "CO",
         "MY",
         "RO",
-        "KR",
+        "MA",
         "TR"
       ],
       "countryCounts": {
@@ -735,8 +735,8 @@
         "DK": 13,
         "CH": 12,
         "NL": 11,
-        "IT": 10,
         "CA": 10,
+        "IT": 10,
         "AT": 9,
         "ES": 8,
         "PL": 7,
@@ -748,30 +748,30 @@
         "PT": 4,
         "HU": 4,
         "UA": 3,
+        "KR": 2,
         "NZ": 2,
         "BG": 2,
         "GR": 2,
-        "LT": 2,
         "JP": 2,
+        "LT": 2,
         "IL": 2,
         "IE": 2,
         "AE": 2,
         "IS": 1,
         "SK": 1,
-        "QA": 1,
         "SG": 1,
-        "MA": 1,
+        "QA": 1,
         "SI": 1,
         "HK": 1,
         "CO": 1,
         "MY": 1,
         "RO": 1,
-        "KR": 1,
+        "MA": 1,
         "TR": 1
       },
       "pending": 12,
       "firstSeen": "2026-09-23T02:08:40Z",
-      "lastSeen": "2026-10-20T16:20:09Z"
+      "lastSeen": "2026-10-22T10:49:08Z"
     },
     {
       "id": "2026.28.5",
