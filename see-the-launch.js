@@ -246,7 +246,10 @@
     const az = azimuthOf(launch);
     const climb = destPoint(pad.lat, pad.lon, az, 120);
     const climbBrg = bearing(state.lat, state.lon, climb.lat, climb.lon);
-    const look = dist > 80 ? climbBrg : padBrg;
+    /* Initial look = true bearing to the pad. Liftoff and the first minutes of
+       ascent sit over the pad from anywhere this tool rates; a point 120 km
+       downrange pulled the needle up to 60° off (Santa Barbara: 226° vs 286°). */
+    const look = padBrg;
     const toObs = bearing(pad.lat, pad.lon, state.lat, state.lon);
     const align = angDiff(az, toObs);
     const night = (() => {
@@ -750,12 +753,19 @@
             ? "It climbs out over the water in front of you. That is the usual viewing geometry."
             : "It crosses your sky rather than coming straight at you.";
 
+    const whyTxt = !s
+      ? ""
+      : s.cloud != null && s.cloud >= 82
+        ? ` — the forecast is ${Math.round(s.cloud)}% cloud over ${state.place || "you"}, not the distance`
+        : s.elev80 < 1.5 || s.dist > 180
+          ? " — you are too far away for the rocket to clear your horizon well"
+          : "";
     $("see-now").innerHTML = `
       <div class="see-tile see-tile-${s?.key || "maybe"}"><span>From here</span><b>${s ? verdictLabel[s.key] : "—"}</b><small>${
         s ? `${s.night ? "Night" : "Day"} launch · ${Math.round(s.dist)} km from the pad.` : "Pick a place first."
       }</small></div>
       <div class="see-tile"><span>Look</span><b data-see-look-b>${esc(lookTxt)}</b><small data-see-look-s>${
-        s ? `Toward the pad at ${Math.round(s.padBrg)}°, then along the climb.` : "Direction appears once you pick a place."
+        s ? `Toward the pad at ${Math.round(s.padBrg)}°, then it climbs toward ${compass(s.climbBrg)}.` : "Direction appears once you pick a place."
       }</small></div>
       <div class="see-tile"><span>Your sky</span><b>${esc(s && s.cloud != null ? `${Math.round(s.cloud)}%` : "—")}</b><small>${esc(
         cloudTxt
@@ -775,9 +785,13 @@
               : s.key === "maybe"
                 ? `Possible, not a lock. ${alignTxt}`
                 : s.key === "unlikely"
-                  ? `A faint chance at best. ${alignTxt}`
-                  : `Treat this as a webcast night. ${alignTxt}`
-          }</p>
+                  ? `A faint chance at best${whyTxt}. ${alignTxt}`
+                  : `Treat this as a webcast ${s.night ? "night" : "launch"}${whyTxt}. ${alignTxt}`
+          }</p>${
+            !s.night && s.dist <= 400
+              ? `<p>Daytime launch: no glowing twilight plume. In a clear sky you may still spot the rocket and its exhaust trail climbing.</p>`
+              : ""
+          }
           <p>Look ${esc(compass(s.look))} (${Math.round(s.look)}°). Peak plume sits around ${Math.max(0, s.elev80).toFixed(0)}° above the horizon if the vehicle reaches 80 km on this heading.</p>`
         : "";
     }

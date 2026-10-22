@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22T07:54:30.882Z",
+  "generated": "2026-10-22T08:00:45.321Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.745ee5f257.js",
@@ -181,8 +181,8 @@
       ]
     },
     "see-the-launch": {
-      "file": "/assets/js/see-the-launch.bundle.0bdd59c065.js",
-      "bytes": 48248,
+      "file": "/assets/js/see-the-launch.bundle.27ec6b24a7.js",
+      "bytes": 48677,
       "sources": [
         "calendar-merge.js",
         "see-the-launch-data.js",

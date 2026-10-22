@@ -155,13 +155,14 @@ for (const [f, pg] of [["tesla.html", "tesla"], ["spacex.html", "spacex"]]) {
 }
 
 
-// Starlink "as of" label (homepage Starlink tile) from starlink-live.js, which
-// scripts/build-starlink-stats.py bakes from Jonathan McDowell's stats page.
+// Starlink "as of" label (homepage Point & identify tile). The tile describes the
+// identify catalog, so it reads data/starlink.json (CelesTrak orbits), not
+// McDowell's stats page, which updates less often.
 let slAsOf = "";
 try {
-  const SL = JSON.parse(rd("starlink-live.js").replace(/^[\s\S]*?window\.STARLINK_LIVE\s*=\s*/, "").replace(/;\s*$/, ""));
-  const n = SL.totals && SL.totals.inOrbit, t = Date.parse(SL.updated);
-  if (n && Number.isFinite(t)) slAsOf = `${Number(n).toLocaleString("en-US")} in orbit · as of ${day(new Date(t), { year: "numeric" })} · Jonathan McDowell`;
+  const SL = JSON.parse(rd("data/starlink.json"));
+  const n = SL.count, t = Date.parse(SL.tleAsOf || SL.updated);
+  if (n && Number.isFinite(t)) slAsOf = `${Number(n).toLocaleString("en-US")} tracked · orbits as of ${day(new Date(t), { year: "numeric" })} · CelesTrak`;
 } catch (e) { console.warn("starlink as-of skip", e.message); }
 
 // Grok page story strip: AI / Grok / xAI / SpaceX AI articles from data/articles.json,
