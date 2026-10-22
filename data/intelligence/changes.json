@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22T01:42:38.836Z",
+  "updated": "2026-10-22T01:53:08.078Z",
   "changes": [
     {
       "type": "logged",
@@ -17,23 +17,6 @@
       "summary": "Revenue flat at $28.05B, GAAP net income down 43% as R&D jumped 69%, and free cash flow back at $1.53B. I took apart the cash, the capex math and every new date from the call.",
       "title": "Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock",
       "id": "logged|dispatch:/dispatch/tesla-q3-2026-results.html|2026-10-22T01:38:03.000Z|Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock"
-    },
-    {
-      "type": "changed",
-      "factId": "promises:status-counts",
-      "topic": "promises",
-      "tracker": "promises",
-      "field": "status-counts",
-      "previous": "Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4",
-      "next": "Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4",
-      "at": "2026-10-22T00:00:00.000Z",
-      "evidence": "historical",
-      "source": "data/promises.json",
-      "sourceUrl": "",
-      "href": "/promise-tracker.html",
-      "summary": "Promise status mix changed from Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4 to Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4.",
-      "title": "Promise status mix",
-      "id": "changed|promises:status-counts|2026-10-22T00:00:00.000Z|Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4"
     },
     {
       "type": "logged",
@@ -102,23 +85,6 @@
       "summary": "A double catch on Flight 15 next month, a reflown ship and orbital refuelling early in 2027, then weekly flights. Each date checked against earlier targets and the FAA launch caps.",
       "title": "SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into",
       "id": "logged|dispatch:/dispatch/starship-flight-15-catch-timeline.html|2026-10-21T07:37:42.000Z|SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into"
-    },
-    {
-      "type": "changed",
-      "factId": "production:event:tesla-q3-2026-earnings",
-      "topic": "production",
-      "tracker": "launches",
-      "field": "event:tesla-q3-2026-earnings",
-      "previous": "2026-10-21T21:30:00.000Z|confirmed",
-      "next": "2026-10-21T21:30:00.000Z|ended",
-      "at": "2026-10-21T07:30:00.000Z",
-      "evidence": "officially_confirmed",
-      "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
-      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
-      "href": "/dispatch/tesla-q3-2026-results.html",
-      "summary": "Tesla Q3 2026 earnings call changed from 2026-10-21T21:30:00.000Z|confirmed to 2026-10-21T21:30:00.000Z|ended.",
-      "title": "Tesla Q3 2026 earnings call",
-      "id": "changed|production:event:tesla-q3-2026-earnings|2026-10-21T07:30:00.000Z|2026-10-21T21:30:00.000Z|ended"
     },
     {
       "type": "logged",
