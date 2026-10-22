@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "updated": "2026-10-21",
+ "updated": "2026-10-22",
  "promises": [
   {
    "id": "fsd-90-percent-2013",
@@ -1684,10 +1684,31 @@
       "date": "2026-04-22"
      },
      "date": "2026-04-22"
+    },
+    {
+     "text": "CNBC reported Elluswamy's Q3 call comment that Tesla plans to give some customer cars access to FSD (Unsupervised) around the second quarter of next year.",
+     "source": {
+      "outlet": "CNBC",
+      "title": "Tesla beats on earnings and sales even as auto revenue declines",
+      "url": "https://www.cnbc.com/2026/10/21/tesla-tsla-q3-2026-earnings-report.html",
+      "date": "2026-10-21"
+     },
+     "date": "2026-10-21"
     }
    ],
-   "revisions": [],
-   "last_verified": "2026-10-15"
+   "revisions": [
+    {
+     "date": "2026-10-21",
+     "text": "On the Q3 2026 call, Tesla AI chief Ashok Elluswamy said: \"We suspect somewhere around Q2 next year is when we can turn on some of the first customer vehicles to be part of the Robotaxi fleet.\" That points to about Q2 2027, after this promise's Q4 2026 deadline.",
+     "source": {
+      "outlet": "StockAnalysis (Quartr)",
+      "title": "Tesla (TSLA) Q3 2026 Earnings Call Transcript",
+      "url": "https://stockanalysis.com/stocks/tsla/transcripts/712902-q3-2026/",
+      "date": "2026-10-21"
+     }
+    }
+   ],
+   "last_verified": "2026-10-22"
   },
   {
    "id": "optimus-volume-end-2026",
@@ -2198,6 +2219,86 @@
    "revisions": [],
    "last_verified": "2026-10-21",
    "note": "Deadline is the weekly cadence in H1 2027; the twice-weekly goal for the end of 2027 is part of the same quote."
+  },
+  {
+   "id": "optimus-external-end-2027",
+   "title": "Optimus delivered to companies outside Tesla around the end of 2027",
+   "company": "Tesla",
+   "topic": "Optimus",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2026-10-21",
+   "quote": "I do expect these issues to be solved around the end of next year. That's the time to expect when we're delivering Optimus to companies outside of Tesla.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "StockAnalysis (Quartr)",
+    "title": "Tesla (TSLA) Q3 2026 Earnings Call Transcript",
+    "url": "https://stockanalysis.com/stocks/tsla/transcripts/712902-q3-2026/",
+    "date": "2026-10-21"
+   },
+   "deadline": "2027-12-31",
+   "status": "In progress",
+   "evidence": [
+    {
+     "text": "CNBC reported Musk's comment that the AI, design and reliability issues would be \"solved around the end of next year.\"",
+     "source": {
+      "outlet": "CNBC",
+      "title": "Tesla beats on earnings and sales even as auto revenue declines",
+      "url": "https://www.cnbc.com/2026/10/21/tesla-tsla-q3-2026-earnings-report.html",
+      "date": "2026-10-21"
+     },
+     "date": "2026-10-21"
+    }
+   ],
+   "revisions": [],
+   "last_verified": "2026-10-22",
+   "note": "Said on the Q3 2026 call on 21 Oct 2026; CNBC also reported the \"solved around the end of next year\" quote. Later in the call Musk said delivery to customers was \"likely to be towards the end of next year\"."
+  },
+  {
+   "id": "fsd-eu-approval-q1-2027",
+   "title": "EU-wide FSD (Supervised) approval no later than Q1 2027",
+   "company": "Tesla",
+   "topic": "FSD / autonomy",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2026-10-21",
+   "quote": "It is hard to predict, but maybe within a few months, but I would be surprised if it takes longer than Q1.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "StockAnalysis (Quartr)",
+    "title": "Tesla (TSLA) Q3 2026 Earnings Call Transcript",
+    "url": "https://stockanalysis.com/stocks/tsla/transcripts/712902-q3-2026/",
+    "date": "2026-10-21"
+   },
+   "deadline": "2027-03-31",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-22",
+   "note": "Said in Musk's opening remarks on the Q3 2026 call (21 Oct 2026). He added that approval is \"not a timeframe we control\". Q1 is read as Q1 2027."
+  },
+  {
+   "id": "tesla-5m-vehicles-2030",
+   "title": "Tesla making 5 million vehicles a year by about 2030",
+   "company": "Tesla",
+   "topic": "Production",
+   "person": "Elon Musk",
+   "role": "CEO, Tesla",
+   "said_on": "2026-10-21",
+   "quote": "We are, I think, aiming for 5 million vehicles a year by approximately 2030.",
+   "quote_type": "exact",
+   "source": {
+    "outlet": "StockAnalysis (Quartr)",
+    "title": "Tesla (TSLA) Q3 2026 Earnings Call Transcript",
+    "url": "https://stockanalysis.com/stocks/tsla/transcripts/712902-q3-2026/",
+    "date": "2026-10-21"
+   },
+   "deadline": "2030-12-31",
+   "status": "In progress",
+   "evidence": [],
+   "revisions": [],
+   "last_verified": "2026-10-22",
+   "note": "Said in Musk's opening remarks on the Q3 2026 call (21 Oct 2026); Lars Moravy repeated the \"5 million goal by 2030\" later in the call. For scale, Tesla built 464,391 vehicles in Q3 2026."
   }
  ]
 }

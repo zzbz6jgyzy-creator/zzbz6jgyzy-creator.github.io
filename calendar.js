@@ -41,9 +41,9 @@
       start: "2026-10-21T21:30:00Z",
       group: "tesla",
       where: "Webcast · 4:30 p.m. CT / 5:30 p.m. ET",
-      note: "Results after the close. Update deck and Q&A on ir.tesla.com.",
-      href: "https://ir.tesla.com",
-      status: "confirmed",
+      note: "Past event. Tesla reported Q3 2026 revenue of $28.05B, GAAP net income of $787M and free cash flow of $1.53B. Replay on ir.tesla.com; read the write-up on the Dispatch.",
+      href: "/dispatch/tesla-q3-2026-results.html",
+      status: "done",
       precision: "datetime",
     },
     {

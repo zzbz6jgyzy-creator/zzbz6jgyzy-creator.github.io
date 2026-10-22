@@ -102,7 +102,7 @@
       "page": "tesla",
       "start": "2026-10-21T16:30:00-05:00",
       "end": "2026-10-21T18:00:00-05:00",
-      "status": "scheduled",
+      "status": "ended",
       "provider": "link",
       "embedId": "",
       "postUrl": "",
@@ -111,8 +111,9 @@
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
       "image": "/assets/live/factory.jpg",
       "imageCredit": "Photo: Steve Jurvetson, Wikimedia Commons, CC BY 2.0",
-      "description": "Tesla posts its Q3 2026 results after the US market close, then management holds a live Q&A webcast at 4:30pm Central Time. The webcast and replay are on ir.tesla.com, which can't be embedded here.",
-      "descSource": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
+      "description": "Tesla posted its Q3 2026 results after the US market close on 21 Oct: revenue of $28.05B, GAAP net income of $787M and free cash flow of $1.53B. Management then held a live Q&A webcast at 4:30pm Central Time. Replay on ir.tesla.com; write-up: superchargeddaily.com/dispatch/tesla-q3-2026-results.html",
+      "descSource": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm",
+      "articleUrl": "/dispatch/tesla-q3-2026-results.html",
       "thumb": "/assets/live/factory-480w.webp"
     },
     {

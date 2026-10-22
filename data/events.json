@@ -58,13 +58,17 @@
     },
     "tesla-q3-2026-earnings": {
       "title": "Tesla Q3 2026 earnings call",
-      "status": "confirmed",
+      "status": "ended",
       "start": "2026-10-21T16:30:00-05:00",
       "end": "2026-10-21T18:00:00-05:00",
       "major": true,
-      "href": "/tsla.html",
+      "href": "/dispatch/tesla-q3-2026-results.html",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
-      "summary": "Q3 2026 results webcast, per Tesla's SEC filing."
+      "summary": "Past: Tesla reported Q3 2026 revenue of $28.05B, GAAP net income of $787M and free cash flow of $1.53B after the US close on Wed 21 Oct, then held its Q&A webcast at 4:30 p.m. CT. Replay on ir.tesla.com; write-up on the Dispatch.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm",
+        "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm"
+      ]
     },
     "ussf-481": {
       "title": "Falcon 9 · USSF-481",
