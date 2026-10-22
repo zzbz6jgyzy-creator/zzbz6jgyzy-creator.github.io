@@ -1,0 +1,23 @@
+name: Navigation checks
+on:
+  pull_request:
+    paths: ['scripts/nav.json', 'scripts/sync-nav.py', 'nav-pill*', 'tests/*nav*', '.github/workflows/nav-checks.yml']
+  push:
+    branches: [main]
+    paths: ['scripts/nav.json', 'scripts/sync-nav.py', 'nav-pill*', 'tests/*nav*', '.github/workflows/nav-checks.yml']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 tests/test_nav_generation.py
+      - run: python3 scripts/sync-nav.py --check
+      - name: Browser navigation journeys (local pages, no external requests)
+        run: |
+          python3 -m pip install playwright==1.62.0
+          CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/nav-browser.py

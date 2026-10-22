@@ -62,6 +62,11 @@
 .pn-close svg{width:18px;height:18px}
 .pn-sheet a{color:#e6e6e6;text-decoration:none;font:500 16px/1 Inter,system-ui,sans-serif;padding:13px 10px;border-radius:10px}
 .pn-sheet a:hover{background:rgba(227,25,55,.12)}
+.pn-shortcuts{margin:4px 0 10px}
+.pn-sheet .pn-shortcuts-label{margin:0 0 9px;font:600 10px/1.4 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text,#f23a52)}
+.pn-shortcuts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pn-sheet .pn-shortcuts a{display:flex;align-items:center;min-height:44px;padding:10px;border:1px solid rgba(255,255,255,.16);font-size:14px;line-height:1.3;overflow-wrap:anywhere}
+html[data-theme="light"] .pn-sheet .pn-shortcuts a{border-color:rgba(0,0,0,.16)}
 .pn-sheet h3{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text,#f23a52);margin:16px 10px 4px}
 .pn-sheet h4{font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8b8b;margin:0;padding:0}
 .pn-sheet .pn-cta{text-align:center;margin:20px 0 0;padding:14px}
