@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T01:03:56.858Z",
+  "generatedAt": "2026-10-22T01:42:38.836Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -62,14 +62,14 @@
       "topic": "production",
       "tracker": "launches",
       "field": "event:tesla-q3-2026-earnings",
-      "value": "2026-10-21T21:30:00.000Z|confirmed",
+      "value": "2026-10-21T21:30:00.000Z|ended",
       "label": "Tesla Q3 2026 earnings call",
       "at": "2026-10-21T07:30:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
       "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
-      "href": "/tsla.html",
-      "summary": "Q3 2026 results webcast, per Tesla's SEC filing."
+      "href": "/dispatch/tesla-q3-2026-results.html",
+      "summary": "Past: Tesla reported Q3 2026 revenue of $28.05B, GAAP net income of $787M and free cash flow of $1.53B after the US close on Wed 21 Oct, then held its Q&A webcast at 4:30 p.m. CT. Replay on ir.tesla.com; write-up on the Dispatch."
     },
     {
       "id": "spacex-launches:event:ussf-481",
@@ -230,9 +230,9 @@
       "topic": "promises",
       "tracker": "promises",
       "field": "status-counts",
-      "value": "Delivered:6,Delivered late:11,In progress:13,Missed:27,Revised:4",
+      "value": "Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4",
       "label": "Promise status mix",
-      "at": "2026-10-21T00:00:00.000Z",
+      "at": "2026-10-22T00:00:00.000Z",
       "evidence": "historical",
       "source": "data/promises.json",
       "sourceUrl": "",
