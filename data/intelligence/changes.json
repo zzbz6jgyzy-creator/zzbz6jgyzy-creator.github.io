@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-22T19:16:47.225Z",
+  "updated": "2026-10-22T19:42:43.673Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-10q-spacex-committee.html",
+      "topic": "fsd",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
+      "at": "2026-10-22T19:40:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-10q-spacex-committee.html",
+      "href": "/dispatch/tesla-10q-spacex-committee.html",
+      "summary": "Tesla’s Q3 10-Q makes the SpaceX special committee official. Tesla’s $2.0B SpaceX stake was worth $2.87B on 30 Sep, and SpaceX bought $626M of Megapacks this year.",
+      "title": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
+      "id": "logged|dispatch:/dispatch/tesla-10q-spacex-committee.html|2026-10-22T19:40:00.000Z|Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starlink-south-africa-schools.html",
@@ -238,23 +255,6 @@
       "summary": "Written before the results. Analysts expected $12.72B in revenue and 13c a share, with AI forecast as the biggest segment.",
       "title": "SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece",
       "id": "logged|dispatch:/dispatch/spacex-q3-2026-preview.html|2026-10-20T16:30:00.000Z|SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/hagerty-roadster-moravy-interview.html",
-      "topic": "optimus",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin",
-      "at": "2026-10-20T09:39:28.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/hagerty-roadster-moravy-interview.html",
-      "href": "/dispatch/hagerty-roadster-moravy-interview.html",
-      "summary": "Lars Moravy on the 1 MW rear-drive powertrain, the fan “sucker” system, an Optimus-actuated wing and SpaceX cold-gas thrusters, and what’s still a target.",
-      "title": "Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin",
-      "id": "logged|dispatch:/dispatch/hagerty-roadster-moravy-interview.html|2026-10-20T09:39:28.000Z|Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin"
     },
     {
       "type": "appeared",
