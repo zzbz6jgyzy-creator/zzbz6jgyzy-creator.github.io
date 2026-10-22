@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22T07:49:15.898Z",
+  "generated": "2026-10-22T07:50:05.412Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.745ee5f257.js",
@@ -52,7 +52,7 @@
       ]
     },
     "starlink": {
-      "file": "/assets/js/starlink.bundle.9dd404062d.js",
+      "file": "/assets/js/starlink.bundle.5fe3b203b3.js",
       "bytes": 14032,
       "sources": [
         "starlink-data.js",
@@ -62,7 +62,7 @@
       ]
     },
     "starlink-orbit": {
-      "file": "/assets/js/starlink-orbit.bundle.9f42149221.js",
+      "file": "/assets/js/starlink-orbit.bundle.f0743a7db6.js",
       "bytes": 32101,
       "sources": [
         "cesium-lazy.js",
