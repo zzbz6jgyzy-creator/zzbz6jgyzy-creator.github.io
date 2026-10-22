@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T15:53:39Z",
+ "updated": "2026-10-22T16:55:15Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,24 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-22T15:53:39Z",
+  "fetched": "2026-10-22T16:55:15Z",
   "items": [
+   {
+    "t": "2026-10-22T16:18:43Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model 3 AWD LR (2024)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-22T15:55:05Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model 3 SR (2026)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
    {
     "t": "2026-10-22T15:49:09Z",
     "to": "2026.38.5.5",
@@ -555,22 +571,6 @@
     "from": "2026.20.10",
     "model": "Model Y AWD LR (2026)",
     "hw": "3.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-22T14:29:08Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "3.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-22T14:25:05Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model Y AWD LR (2025)",
-    "hw": "4.0",
     "country": "Australia"
    }
   ]
