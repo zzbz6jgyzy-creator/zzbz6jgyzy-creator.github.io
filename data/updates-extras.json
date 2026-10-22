@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T19:52:57Z",
+ "updated": "2026-10-22T20:53:15Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-22T19:52:57Z",
+  "fetched": "2026-10-22T20:53:15Z",
   "items": [
+   {
+    "t": "2026-10-22T20:43:07Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "Sweden"
+   },
+   {
+    "t": "2026-10-22T20:42:51Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United Kingdom"
+   },
+   {
+    "t": "2026-10-22T20:40:20Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 Performance (2024)",
+    "hw": "4.0",
+    "country": "Germany"
+   },
+   {
+    "t": "2026-10-22T20:25:39Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-22T19:56:08Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "New Zealand"
+   },
    {
     "t": "2026-10-22T19:45:43Z",
     "to": "2026.38.5.5",
@@ -532,46 +572,6 @@
     "model": "Model Y SR (2026)",
     "hw": "4.0",
     "country": "New Zealand"
-   },
-   {
-    "t": "2026-10-22T16:18:43Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model 3 AWD LR (2024)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-22T15:55:05Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model 3 SR (2026)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-22T15:49:09Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model 3 SR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-22T15:41:42Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "New Zealand"
-   },
-   {
-    "t": "2026-10-22T15:40:21Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model 3 AWD LR (2018)",
-    "hw": "3.0",
-    "country": "United States"
    }
   ]
  }
