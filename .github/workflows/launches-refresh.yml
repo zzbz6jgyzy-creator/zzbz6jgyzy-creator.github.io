@@ -1,0 +1,31 @@
+name: Refresh launch list
+
+on:
+  schedule:
+    # Every hour at :17. Launch Library 2 allows 15 free calls/hour; this uses one.
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: launches-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Launch Library 2 -> data/launches.json
+        run: python3 scripts/fetch-launches.py
+      - name: Commit if launches changed
+        run: |
+          if git diff --quiet -- data/launches.json; then echo "No change"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/launches.json
+          git commit -m "Refresh upcoming launches from Launch Library 2."
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done

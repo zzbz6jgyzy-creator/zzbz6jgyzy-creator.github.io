@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22T01:42:43.824Z",
+  "generated": "2026-10-22T07:38:29.728Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.745ee5f257.js",
@@ -26,8 +26,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.3d13720936.js",
-      "bytes": 65226,
+      "file": "/assets/js/home.bundle.23818d0ee2.js",
+      "bytes": 66023,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -100,8 +100,8 @@
       ]
     },
     "spacex": {
-      "file": "/assets/js/spacex.bundle.9efccbeb77.js",
-      "bytes": 40473,
+      "file": "/assets/js/spacex.bundle.bb6cce8868.js",
+      "bytes": 40729,
       "sources": [
         "starship-data.js",
         "spacex-hub.js",
@@ -118,8 +118,8 @@
       ]
     },
     "calendar": {
-      "file": "/assets/js/calendar.bundle.e217201cac.js",
-      "bytes": 21905,
+      "file": "/assets/js/calendar.bundle.221201dc44.js",
+      "bytes": 22161,
       "sources": [
         "calendar-merge.js",
         "calendar.js"
@@ -190,8 +190,8 @@
       ]
     },
     "tsla": {
-      "file": "/assets/js/tsla.bundle.6ee7d70eda.js",
-      "bytes": 25785,
+      "file": "/assets/js/tsla.bundle.4985dfab15.js",
+      "bytes": 26041,
       "sources": [
         "calendar-merge.js",
         "calendar.js",

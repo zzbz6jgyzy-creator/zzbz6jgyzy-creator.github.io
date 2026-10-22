@@ -123,6 +123,19 @@
         : norm(r.title) === norm(e.title));
       if (!dup) rows.push(next);
     });
+  }).catch(() => {}).then(() => fetch("/data/launches.json", { cache: "no-cache" })).then((r) => r.json()).then((d) => {
+    // Every SpaceX launch in the next 14 days (Launch Library 2 copy, refreshed hourly).
+    const now = Date.now();
+    (d.results || []).forEach((l) => {
+      const t = Date.parse(l.net), p = (l.net_precision && l.net_precision.name) || "";
+      if (!Number.isFinite(t) || t < now || t - now > 14 * 864e5 || !/second|minute|hour|day/i.test(p)) return;
+      const e = { title: String(l.name || "").replace(/^Falcon 9 Block 5 \| /, "Falcon 9 · ").replace(/^Falcon Heavy \| /, "Falcon Heavy · ").replace(/^Starship \| /, "Starship · "), start: l.net };
+      const norm = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+      const dup = rows.some((r) => window.SDCalendarMerge
+        ? window.SDCalendarMerge.sameLaunch({ title: r.title, start: r.start || new Date(r.t).toISOString() }, e)
+        : norm(r.title) === norm(e.title));
+      if (!dup) rows.push({ title: e.title, t, start: l.net, day: /day/i.test(p), href: "/calendar.html" });
+    });
   }).catch(() => {}).finally(() => { draw(); setInterval(draw, 30000); });
   });
 })();

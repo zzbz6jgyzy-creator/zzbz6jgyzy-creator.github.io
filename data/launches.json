@@ -1,0 +1,887 @@
+{
+ "_about": "Upcoming SpaceX launches from Launch Library 2 (ll.thespacedevs.com), refreshed by .github/workflows/launches-refresh.yml. Do not hand-edit.",
+ "source": "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX",
+ "updated": "2026-10-22T07:38:00Z",
+ "results": [
+  {
+   "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-15",
+   "net": "2026-10-22T22:40:24Z",
+   "window_start": "2026-10-22T21:45:00Z",
+   "window_end": "2026-10-23T01:45:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/f6af629d-39b5-4f86-bc0c-f8776444a858/",
+   "status": {
+    "name": "Go for Launch",
+    "abbrev": "Go"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-16",
+   "net": "2026-10-26T05:00:00Z",
+   "window_start": "2026-10-26T05:00:00Z",
+   "window_end": "2026-10-26T09:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/e2886a96-5ce9-4f45-872f-4e25a00be837/",
+   "status": {
+    "name": "Go for Launch",
+    "abbrev": "Go"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "57ce0a39-d035-4f16-a418-bd6108f78199",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-18",
+   "net": "2026-10-29T04:17:00Z",
+   "window_start": "2026-10-29T04:17:00Z",
+   "window_end": "2026-10-29T08:17:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/57ce0a39-d035-4f16-a418-bd6108f78199/",
+   "status": {
+    "name": "Go for Launch",
+    "abbrev": "Go"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
+   "name": "Falcon 9 Block 5 | NROL-195",
+   "net": "2026-11-05T22:34:00Z",
+   "window_start": "2026-11-05T22:34:00Z",
+   "window_end": "2026-11-06T02:34:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
+   "status": {
+    "name": "To Be Confirmed",
+    "abbrev": "TBC"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-21",
+   "net": "2026-11-10T00:00:00Z",
+   "window_start": "2026-11-10T00:00:00Z",
+   "window_end": "2026-11-10T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Day",
+    "abbrev": "DAY"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
+   "name": "Falcon 9 Block 5 | Cygnus CRS-2 NG-25",
+   "net": "2026-11-30T00:00:00Z",
+   "window_start": "2026-11-30T00:00:00Z",
+   "window_end": "2026-11-30T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Space Launch Complex 40",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "71df1dd0-d658-4762-b0bc-0fca6886aea7",
+   "name": "Falcon 9 Block 5 | SDA Tranche 2 Transport Layer D",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/71df1dd0-d658-4762-b0bc-0fca6886aea7/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "71ed4649-8d71-42e8-8548-d42ffa2c5a6e",
+   "name": "Falcon 9 Block 5 | SDA Tranche 2 Transport Layer E",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/71ed4649-8d71-42e8-8548-d42ffa2c5a6e/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
+   "name": "Falcon 9 Block 5 | Telesat Lightspeed 1",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/ce1317de-ec94-4479-9b28-38ebf11f13ae/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+   "name": "Falcon Heavy | Griffin Mission One",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/d3bd7fb2-fac6-49fc-ae52-cee07d2fde67/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Launch Complex 39A",
+    "location": {
+     "name": "Kennedy Space Center, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "11b218b1-5e40-4b9d-854e-50320299239d",
+   "name": "Falcon 9 Block 5 | BlueBird 14-16 (Block 2 #9-11)",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/11b218b1-5e40-4b9d-854e-50320299239d/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Space Launch Complex 40",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "8bf5f61e-a7e1-41e6-aede-7b87e4beebab",
+   "name": "Falcon 9 Block 5 | CHORUS",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/8bf5f61e-a7e1-41e6-aede-7b87e4beebab/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "01ca3653-126a-4c01-94fb-a9467b39cdac",
+   "name": "Falcon 9 Block 5 | Inmarsat-7 F1 (GX-7)",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/01ca3653-126a-4c01-94fb-a9467b39cdac/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
+   "name": "Falcon 9 Block 5 | SDA Tranche 1 Tracking Layer A",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/2d0472b9-463d-49c8-afb1-7925e49a3368/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
+   "name": "Falcon 9 Block 5 | SDA Tranche 1 Tracking Layer C",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/dca8749f-1552-485a-8061-f1ad79055b8d/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
+   "name": "Falcon 9 Block 5 | SDA Tranche 1 Tracking Layer E",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
+   "name": "Falcon 9 Block 5 | SDA Tranche 1 Transport Layer D",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/4541ce85-0e38-42ac-a9a0-20474bb5f2cd/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "c5783e2b-d458-4b99-9936-4043c236190b",
+   "name": "Falcon 9 Block 5 | SDA Tranche 1 Transport Layer F",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/c5783e2b-d458-4b99-9936-4043c236190b/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
+   "name": "Starship | Flight 15",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/0f867f0c-5422-4d44-93b8-d7faaae7019b/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Quarter 4",
+    "abbrev": "Q4"
+   },
+   "pad": {
+    "name": "Orbital Launch Pad 2",
+    "location": {
+     "name": "SpaceX Starbase, TX, USA"
+    }
+   }
+  },
+  {
+   "id": "e61d353c-db55-4a57-8184-0fab187231e6",
+   "name": "Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 9)",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/e61d353c-db55-4a57-8184-0fab187231e6/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year Half 2",
+    "abbrev": "H2"
+   },
+   "pad": {
+    "name": "Space Launch Complex 40",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "4d3943e9-c894-46c4-a318-84d526d0ef40",
+   "name": "Falcon 9 Block 5 | Cygnus CRS-2 NG-22",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/4d3943e9-c894-46c4-a318-84d526d0ef40/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
+   "name": "Falcon 9 Block 5 | Rivada 1",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/dfd444f9-ddda-4b35-8f51-cda7cd801809/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "511a3ef8-799e-4723-9293-b954d9d2eb83",
+   "name": "Falcon 9 Block 5 | Rivada 10",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/511a3ef8-799e-4723-9293-b954d9d2eb83/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
+   "name": "Falcon 9 Block 5 | Rivada 11",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/d08d8b46-353b-4eee-ab5e-e1385b329008/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
+   "name": "Falcon 9 Block 5 | Rivada 12",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/bf5c6fa2-3add-49ff-aad6-c6450148cd89/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "20fa8dc4-8cab-41cf-b452-98a2620f7e86",
+   "name": "Falcon 9 Block 5 | Rivada 2",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/20fa8dc4-8cab-41cf-b452-98a2620f7e86/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "ab932c60-d808-4825-ab71-b6fe0a745f15",
+   "name": "Falcon 9 Block 5 | Rivada 3",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/ab932c60-d808-4825-ab71-b6fe0a745f15/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "2f31a7f0-968a-448d-b447-333bf0341078",
+   "name": "Falcon 9 Block 5 | Rivada 4",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/2f31a7f0-968a-448d-b447-333bf0341078/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
+   "name": "Falcon 9 Block 5 | Rivada 5",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/fa895702-687b-4ba3-95fb-9462a2c9844b/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "46d6822b-82aa-452c-aa34-80b6f052de84",
+   "name": "Falcon 9 Block 5 | Rivada 6",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/46d6822b-82aa-452c-aa34-80b6f052de84/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "1fa3741c-3339-4954-a026-2cd9d36161c0",
+   "name": "Falcon 9 Block 5 | Rivada 7",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/1fa3741c-3339-4954-a026-2cd9d36161c0/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "7d77bd89-af23-4a5a-b632-de0034003a64",
+   "name": "Falcon 9 Block 5 | Rivada 8",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/7d77bd89-af23-4a5a-b632-de0034003a64/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
+   "name": "Falcon 9 Block 5 | Rivada 9",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/5ce7e9b6-b471-4a88-891f-2a6f21cb369f/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "0a07a23e-606a-4589-bf3e-c3e41bd4de51",
+   "name": "Falcon 9 Block 5 | SDA Tranche 2 Tracking Layer A",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/0a07a23e-606a-4589-bf3e-c3e41bd4de51/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
+   "name": "Falcon 9 Block 5 | SDA Tranche 2 Tracking Layer B",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/cb1762f0-90f4-4902-a5f6-655a7ade25bf/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
+   "name": "Falcon 9 Block 5 | SDA Tranche 2 Transport Layer A",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/c703fab3-2ce4-4cf1-861d-754da3f3ad42/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   }
+  },
+  {
+   "id": "428edcbe-bbd7-4475-8eb1-3dd90b39ad75",
+   "name": "Falcon 9 Block 5 | Telesat Lightspeed 2",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/428edcbe-bbd7-4475-8eb1-3dd90b39ad75/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "d6615c37-dcef-45d1-96c1-3d1a5250bf13",
+   "name": "Falcon 9 Block 5 | Telesat Lightspeed 3",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/d6615c37-dcef-45d1-96c1-3d1a5250bf13/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "adfc829a-6704-4d9e-b2ca-1068c38b2b83",
+   "name": "Falcon 9 Block 5 | Telesat Lightspeed 4",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/adfc829a-6704-4d9e-b2ca-1068c38b2b83/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  },
+  {
+   "id": "98b905bb-4060-40a2-b299-2773b6883203",
+   "name": "Falcon 9 Block 5 | Telesat Lightspeed 5",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.2.0/launch/98b905bb-4060-40a2-b299-2773b6883203/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Year",
+    "abbrev": "Y"
+   },
+   "pad": {
+    "name": "Unknown Pad",
+    "location": {
+     "name": "Cape Canaveral SFS, FL, USA"
+    }
+   }
+  }
+ ]
+}

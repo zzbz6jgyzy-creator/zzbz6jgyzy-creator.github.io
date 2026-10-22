@@ -453,6 +453,14 @@
   async function fetchLaunches() {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 8000);
+    // Site copy refreshed hourly by launches-refresh.yml (every SpaceX launch, no curation);
+    // only go to LL2 directly if that copy is missing or more than 3 hours old.
+    try {
+      const f = await fetch("/data/launches.json", { cache: "no-cache", signal: ctrl.signal });
+      const j = f.ok ? await f.json() : null;
+      const ft = j && Date.parse(j.updated);
+      if (j && Array.isArray(j.results) && j.results.length && Date.now() - ft < 3 * 36e5) return { results: j.results, t: ft, cached: false };
+    } catch {}
     try {
       const res = await fetch(LL2, { signal: ctrl.signal });
       if (!res.ok) throw new Error(String(res.status));
