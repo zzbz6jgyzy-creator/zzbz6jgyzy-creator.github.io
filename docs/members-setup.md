@@ -4,9 +4,13 @@ This feature adds Google sign-in, public display names, immediate article commen
 
 ## Status and activation
 
-`members-config.json` contains the project's public URL and publishable key. The checked-in configuration enables member sign-in and a discussion pilot on `/dispatch/tesla-ai-maps-v15.html` after deployment. Sign-in is publicly reachable; the article list limits discussion coverage, not who may join. Other article discussions remain off. The hosted public read RPC and Google authorization redirect have been verified; a real login/profile test, owner moderator setup and two-account smoke test remain before enabling all articles. No production comments, votes, users or SQL were created by the implementation tests.
+`members-config.json` contains the project's public URL and publishable key. The checked-in configuration sets `enabled` to `true` and `articles` to `"all"`, enabling discussions across existing and future Dispatch articles after deployment. Sign-in is publicly reachable; an article allowlist limits discussion coverage, not who may join.
 
-To pause the pilot, set `enabled` to `false`. Existing pages then show no member controls and the Members page says sign-in opens soon, without deleting accounts or discussion data.
+Verified on 2026-10-22: owner Google sign-in and saved profile, the visible save confirmation, editor moderation access, and a real published comment/reply. A signed-out API read returned both owner-created test entries, each with one thumbs-up and an Editor badge. All 67 published Dispatch article pages have the supported article wrapper, member module and pathname. Automated implementation tests use local PostgreSQL or mocked provider APIs; the real pilot posts were created by the owner.
+
+Remaining manual checks: use a second Google account to exercise reporting, editor removal and blocking against the hosted project. Google branding still needs the live privacy link and an audience/publishing review (last observed as Testing). Remove the temporary test thread through Editor moderation when finished.
+
+To pause membership, set `enabled` to `false`. Existing pages then show no member controls and the Members page says sign-in opens soon, without deleting accounts or discussion data.
 
 The publishable key is intentionally public. Never place a Supabase secret key, service-role key, database password, Google client secret or user access token in GitHub or chat. These are not needed in this browser integration.
 
@@ -35,7 +39,7 @@ Create an OAuth client in a Google Cloud project you control, following [Supabas
 
 - Configure the Google Auth Platform branding and audience for Supercharged Daily.
 - Website homepage: `https://superchargeddaily.com`
-- Privacy policy: `https://superchargeddaily.com/community.html#privacy` (add this in Google branding after the page is deployed and publicly reachable).
+- Privacy policy: `https://superchargeddaily.com/community.html#privacy` (verified publicly reachable; add this in Google branding).
 - Authorized JavaScript origin: `https://superchargeddaily.com`
 - Authorized redirect URI: `https://luidcuzdrcvmzdxpiiwf.supabase.co/auth/v1/callback`
 - Use basic identity scopes (`openid`, email and profile); no Google mailbox, contacts or other account access is needed.
@@ -46,7 +50,7 @@ The Supabase provider callback and the website return URL serve different parts 
 
 ### 4. Make the editor account a moderator
 
-First sign in with the Google account that will moderate the site and save a display name, agreeing to the community rules. The checked-in pilot already sets `articles` to `["/dispatch/tesla-ai-maps-v15.html"]` and `enabled` to `true`, following hosted database and Google handoff checks. Complete the real sign-in and moderator setup before expanding discussion coverage.
+The owner's editor role is configured and verified. To add another editor, first sign in with that person's intended Google account and save a display name, agreeing to the community rules. During staged setup, discussions can be restricted by setting `articles` to `["/dispatch/tesla-ai-maps-v15.html"]`; the current rollout uses `"all"` after the owner pilot.
 
 In Supabase Authentication → Users, identify your own account UUID. In SQL Editor, replace the example UUID below with that exact UUID:
 
@@ -60,9 +64,9 @@ Refresh `/members.html`. It will show **Editor moderation**, with **Recent comme
 
 Moderators can remove comments or block an account. Blocking stops commenting, reporting and reactions, removes that account's comment bodies, and removes its reactions. An editor account cannot be blocked through the member API. To reverse an accidental block, the project owner can update `blocked=false` for the verified member UUID in SQL Editor.
 
-### 5. Pilot, then enable all Dispatch articles
+### 5. Rollout and follow-up checks
 
-Check with two real Google accounts:
+The owner pilot verified Google login, profile saving, public comments/replies, comment thumbs-up and editor access. Complete the following broader checks using two real Google accounts; hosted second-account reporting, removal and blocking remain unverified:
 
 1. Sign in/out, choose a display name and return to the original article.
 2. Post a comment and a reply. Both must appear immediately for another reader without owner approval.
@@ -71,7 +75,7 @@ Check with two real Google accounts:
 5. Remove a comment, check its placeholder/replies, and test a block using a test member account.
 6. Check a signed-out reader on mobile and desktop.
 
-Then set `articles` to `"all"` and `enabled` to `true` in `members-config.json`. Disabling the flag again hides the feature without deleting any accounts or discussion data. Public configuration uses `cache: no-cache`; normal hosting/CDN cache behavior still applies to responses.
+The rollout sets `articles` to `"all"` and `enabled` to `true` in `members-config.json`. To stage a future change on one article, replace `"all"` with an explicit article-path array. Disabling the flag again hides the feature without deleting any accounts or discussion data. Public configuration uses `cache: no-cache`; normal hosting/CDN cache behavior still applies to responses.
 
 The module initially loads the discussion near the end of an article. The pinned, self-hosted Supabase SDK is fetched only for member accounts and articles when their discussion is near the viewport. Ordinary hub pages get the small navigation link without loading the SDK.
 
