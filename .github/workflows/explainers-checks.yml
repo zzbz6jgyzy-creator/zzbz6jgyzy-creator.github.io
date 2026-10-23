@@ -1,0 +1,26 @@
+name: Visual explainer checks
+on:
+  pull_request:
+    paths: ['explainers.html', 'explainers/**', 'explainers.css', 'explainers.js', 'data/explainers.json', 'fsd-data.js', 'scripts/build-explainers.py', 'scripts/lesson-graphics.py', 'scripts/js-bundles.json', 'tests/*explainers*', '.github/workflows/explainers-checks.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  explainers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generated pages and source integrity
+        run: python -m unittest discover -s tests -p test_explainers.py
+      - name: Install browser driver
+        run: pip install playwright==1.62.0
+      - name: Responsive interactions and fallbacks
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: python tests/explainers-browser.py

@@ -317,6 +317,7 @@ def sitemap():
         + glob.glob(os.path.join(ROOT, "dispatch", "*.html"))
         + glob.glob(os.path.join(ROOT, "guides", "*.html"))
         + glob.glob(os.path.join(ROOT, "reviews", "*.html"))
+        + glob.glob(os.path.join(ROOT, "explainers", "*.html"))
     )
     rows = []
     for p in pages:
