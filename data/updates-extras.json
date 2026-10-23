@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T22:50:04Z",
+ "updated": "2026-10-23T23:13:01Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-23T22:50:04Z",
+  "fetched": "2026-10-23T23:13:01Z",
   "items": [
+   {
+    "t": "2026-10-23T22:47:41Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y AWD LR (2022)",
+    "hw": "3.0",
+    "country": "United Kingdom"
+   },
    {
     "t": "2026-10-23T22:38:05Z",
     "to": "2026.38.5.1",
@@ -564,14 +572,6 @@
     "model": "Model S Plaid (2023)",
     "hw": "4.0",
     "country": "Iceland"
-   },
-   {
-    "t": "2026-10-23T21:36:07Z",
-    "to": "2026.38.3.2",
-    "from": "2026.32.7",
-    "model": "Model Y AWD LR (2022)",
-    "hw": "3.0",
-    "country": "Netherlands"
    }
   ]
  }
