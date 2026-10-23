@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-23T13:21:00.437Z",
+  "generatedAt": "2026-10-23T13:37:46.166Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -243,6 +243,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starlink-mobile-80000-towers.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers",
+      "at": "2026-10-23T13:36:27.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starlink-mobile-80000-towers.html",
+      "href": "/dispatch/starlink-mobile-80000-towers.html",
+      "summary": "Bloomberg says SpaceX is in talks for at least 80,000 US cell sites, including with Crown Castle. What’s signed, what’s only talks, and the numbers behind it.",
+      "title": "SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers",
+      "id": "logged|dispatch:/dispatch/starlink-mobile-80000-towers.html|2026-10-23T13:36:27.000Z|SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starship-moon-refuel-22-vs-8.html",
@@ -497,23 +514,6 @@
       "summary": "On the Q3 2026 call, Tesla AI chief Ashok Elluswamy said: \"We suspect somewhere around Q2 next year is when we can turn on some of the first customer vehicles to be part of the Robotaxi fleet.\" That points to about Q2 2027, after this promise's Q4 2026 deadline.",
       "title": "Unsupervised FSD for customer cars \"probably\" in Q4 2026",
       "id": "logged|promises:unsupervised-fsd-customers-q4-2026|2026-10-21T00:00:00.000Z|On the Q3 2026 call, Tesla AI chief Ashok Elluswamy said: \"We suspect somewhere around Q2 next year is when we can turn on some of the first customer vehicles to be part of the Robotaxi fleet.\" That points to about Q2 2027, after this promise's Q4 2026 deadline."
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-q3-2026-results.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business",
-      "at": "2026-10-20T22:22:32.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-q3-2026-results.html",
-      "href": "/dispatch/spacex-q3-2026-results.html",
-      "summary": "Revenue of $14.58B beat the $12.72B estimate, with $4.40B in net income. AI brought in more than Starlink for the first time, and capex hit $19.59B.",
-      "title": "SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business",
-      "id": "logged|dispatch:/dispatch/spacex-q3-2026-results.html|2026-10-20T22:22:32.000Z|SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business"
     },
     {
       "type": "appeared",
@@ -1493,14 +1493,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-23T08:30:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1514,14 +1514,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-23T05:59:59.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1535,35 +1535,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-23T13:21:00.437Z",
+      "lastChecked": "2026-10-23T13:37:46.166Z",
       "lastVerified": "2026-10-23T13:04:07.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1572,85 +1572,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.427Z",
-      "finished": "2026-10-23T13:21:00.430Z"
+      "started": "2026-10-23T13:37:46.094Z",
+      "finished": "2026-10-23T13:37:46.156Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.430Z",
-      "finished": "2026-10-23T13:21:00.431Z"
+      "started": "2026-10-23T13:37:46.156Z",
+      "finished": "2026-10-23T13:37:46.156Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.431Z",
-      "finished": "2026-10-23T13:21:00.431Z"
+      "started": "2026-10-23T13:37:46.156Z",
+      "finished": "2026-10-23T13:37:46.156Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.431Z",
-      "finished": "2026-10-23T13:21:00.433Z"
+      "started": "2026-10-23T13:37:46.156Z",
+      "finished": "2026-10-23T13:37:46.160Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.433Z",
-      "finished": "2026-10-23T13:21:00.435Z"
+      "started": "2026-10-23T13:37:46.160Z",
+      "finished": "2026-10-23T13:37:46.162Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.435Z",
-      "finished": "2026-10-23T13:21:00.435Z"
+      "started": "2026-10-23T13:37:46.162Z",
+      "finished": "2026-10-23T13:37:46.163Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.435Z",
-      "finished": "2026-10-23T13:21:00.436Z"
+      "started": "2026-10-23T13:37:46.163Z",
+      "finished": "2026-10-23T13:37:46.164Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.436Z",
-      "finished": "2026-10-23T13:21:00.436Z"
+      "started": "2026-10-23T13:37:46.164Z",
+      "finished": "2026-10-23T13:37:46.164Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.436Z",
-      "finished": "2026-10-23T13:21:00.436Z"
+      "started": "2026-10-23T13:37:46.164Z",
+      "finished": "2026-10-23T13:37:46.165Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.436Z",
-      "finished": "2026-10-23T13:21:00.437Z"
+      "started": "2026-10-23T13:37:46.165Z",
+      "finished": "2026-10-23T13:37:46.166Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.437Z",
-      "finished": "2026-10-23T13:21:00.437Z"
+      "started": "2026-10-23T13:37:46.166Z",
+      "finished": "2026-10-23T13:37:46.166Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.437Z",
-      "finished": "2026-10-23T13:21:00.437Z"
+      "started": "2026-10-23T13:37:46.166Z",
+      "finished": "2026-10-23T13:37:46.166Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-23T13:21:00.437Z",
-      "finished": "2026-10-23T13:21:00.437Z"
+      "started": "2026-10-23T13:37:46.166Z",
+      "finished": "2026-10-23T13:37:46.166Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-23T13:21:00.437Z",
+    "generatedAt": "2026-10-23T13:37:46.166Z",
     "factCount": 17,
     "changeCount": 71,
     "conflictCount": 2,
