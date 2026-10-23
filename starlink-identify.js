@@ -17,6 +17,7 @@
     v2opt: "V2 Mini Optimized",
     v2dtc: "V2 Mini Direct-to-Cell",
     v3: "V3",
+    unknown: "Unclassified hardware",
   };
 
   const $ = (id) => document.getElementById(id);
@@ -184,12 +185,12 @@
       if (msg) {
         msg.textContent = aiming
           ? "Searching… keep the top of the phone on the moving light."
-          : "Point your phone at the sky. We match Starlinks inside a 10° cone.";
+          : "Point your phone at the sky. Candidates are within a 10° cone.";
       }
       return;
     }
     if (msg) msg.textContent = hits.length === 1 ? "This is the closest Starlink." : "Closest Starlinks in your cone.";
-    host.innerHTML = hits.map((h, i) => card(h, i === 0 ? "Best match" : `Also in view · ${h.sep.toFixed(0)}° off`)).join("");
+    host.innerHTML = hits.map((h, i) => card(h, i === 0 ? "Closest candidate" : `Also in view · ${h.sep.toFixed(0)}° off`)).join("");
   };
 
   const paintUp = () => {
@@ -218,7 +219,7 @@
       live.cue = isPhone() ? "Point your phone at the sky" : "Best on a phone";
       live.hint = isPhone()
         ? "Tap the live compass, then lift the top of the phone toward the satellite."
-        : "Use a phone for point-and-identify. The list below is still live from this location.";
+        : "Use a phone for point-and-identify. The list below calculates positions above this location.";
       applyCompass();
       paintHits([], false);
       return;

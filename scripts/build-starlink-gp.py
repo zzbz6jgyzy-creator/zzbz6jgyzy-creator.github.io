@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "starlink-gp.js"
-GENS = ["v10", "v15", "v2m", "v2opt", "v2dtc", "v3"]
+GENS = ["v10", "v15", "v2m", "v2opt", "v2dtc", "v3", "unknown"]
 GEN_I = {g: i for i, g in enumerate(GENS)}
 GEN_LABELS = {
     "v10": "V1.0",
@@ -26,6 +26,7 @@ GEN_LABELS = {
     "v2opt": "V2 Mini Optimized",
     "v2dtc": "V2 Mini Direct-to-Cell",
     "v3": "V3",
+    "unknown": "Unclassified hardware",
 }
 CATALOG = ROOT / "data" / "starlink.json"
 LIVE = ROOT / "starlink-live.js"
@@ -140,7 +141,7 @@ def classify(bus: str, name: str, pln: str) -> str | None:
     if "Starlink" in name or "STARLINK" in name:
         if "V3" in bus:
             return "v3"
-        return "v2opt"
+        return "unknown"
     return None
 
 
@@ -305,7 +306,7 @@ def main() -> None:
         if not gen:
             if cat in gcat:
                 continue
-            gen = "v2opt"
+            gen = "unknown"
         label = name if name.upper().startswith("STARLINK") else f"STARLINK-{cat}"
         tle_sats.append([GEN_I[gen], l1, l2])
         catalog.append([label, cat, gen, l1, l2])
@@ -318,7 +319,7 @@ def main() -> None:
         name = str(row.get("OBJECT_NAME") or "")
         if not name.upper().startswith("STARLINK"):
             continue
-        gen = gcat.get(cat) or "v2opt"
+        gen = gcat.get(cat) or "unknown"
         try:
             l1, l2 = omm_to_tle(row)
         except Exception:

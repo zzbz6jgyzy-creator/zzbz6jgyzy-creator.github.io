@@ -1,0 +1,46 @@
+name: Starlink observatory checks
+on:
+  pull_request:
+    paths:
+      - 'starlink*'
+      - 'templates/starlink-sky.html'
+      - 'assets/starlink/**'
+      - 'data/starlink*'
+      - 'scripts/*starlink*'
+      - 'scripts/js-bundles.json'
+      - 'tests/*starlink*'
+      - '.github/workflows/starlink*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  observatory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+          python -m playwright install --with-deps chromium
+      - name: Validate data, sources and reproducible saved render
+        run: |
+          node --test tests/starlink-observatory.test.mjs
+          python tests/test_starlink_sources.py
+          node scripts/build-starlink-observatory.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- starlink.html data/starlink-observatory.json assets/js
+      - name: Responsive, accessibility, worker and fallback checks
+        run: python tests/starlink-observatory-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: starlink-observatory-previews
+          path: /tmp/starlink-observatory
