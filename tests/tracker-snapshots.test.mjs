@@ -74,17 +74,11 @@ test("missing comparison history and small samples never manufacture zero growth
   assert.doesNotMatch(html, /(?:\+0|±0) cars/);
 });
 
-test("browser and initial HTML keep the same dated next-build estimate", () => {
-  const source = fs.readFileSync(path.join(repo, "updates-v3.js"), "utf8");
-  const tiles = source.match(/  function tiles\(\) \{[\s\S]*?(?=\n  function mycar)/)[0];
-  for (const input of [live, { ...live, updated: "2026-12-01T23:00:00Z" }, { ...live, versions: [live.versions[0]] }]) {
-    const values = {};
-    const context = { live: input, versions: input.versions, dayMs: 864e5, rate: () => ({ d1: 0 }), fmt: () => "date", cmpVer: (a,b) => a.localeCompare(b, undefined, { numeric: true }), $: (id) => values[id] ||= {} };
-    vm.runInNewContext(tiles + "\ntiles();", context);
-    const html = renderUpdates(updates, input, history);
-    assert.equal(values["t-next"].textContent, html.match(/id="t-next">([^<]*)</)[1]);
-    assert.equal(values["t-next-s"].textContent, html.match(/id="t-next-s">([^<]*)</)[1]);
-  }
+test("the workspace uses source dates instead of a prominent next-build forecast", () => {
+ const src=fs.readFileSync(path.join(repo,"updates.html"),"utf8");
+ assert.match(src,/Latest first sighting/);
+ assert.doesNotMatch(src,/Next new build likely|id="t-next"/);
+ assert.match(src,/<!--snapshot:software-workspace-->/);
 });
 
 test("counts retain registered/estimated distinctions and old source dates", () => {

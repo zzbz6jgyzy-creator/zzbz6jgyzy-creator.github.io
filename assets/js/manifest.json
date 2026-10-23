@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23T13:37:54.528Z",
+  "generated": "2026-10-23T14:43:15.243Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.5243ad45a9.js",
@@ -94,10 +94,12 @@
       ]
     },
     "updates": {
-      "file": "/assets/js/updates.bundle.25e13b3a74.js",
-      "bytes": 16442,
+      "file": "/assets/js/updates.bundle.8816b77ef5.js",
+      "bytes": 39072,
       "sources": [
         "cesium-lazy.js",
+        "software-data.js",
+        "software-view.js",
         "updates-v3.js"
       ]
     },

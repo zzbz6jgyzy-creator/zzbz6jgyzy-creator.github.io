@@ -62,7 +62,7 @@
       "my-tesla.js",
       "live.js"
     ],
-    "updates": ["cesium-lazy.js", "updates-v3.js"],
+    "updates": ["cesium-lazy.js", "software-data.js", "software-view.js", "updates-v3.js"],
     "spacex": [
       "starship-data.js",
       "spacex-hub.js",

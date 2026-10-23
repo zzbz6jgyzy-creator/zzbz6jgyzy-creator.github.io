@@ -8,6 +8,10 @@ on:
       - 'tests/tracker*'
       - updates.html
       - updates-v3.js
+      - updates-v3.css
+      - software-data.js
+      - software-view.js
+      - 'tests/software-*'
       - updates-live.json
       - cybercab.html
       - cybercab-count.js
@@ -28,6 +32,10 @@ on:
       - 'tests/tracker*'
       - updates.html
       - updates-v3.js
+      - updates-v3.css
+      - software-data.js
+      - software-view.js
+      - 'tests/software-*'
       - updates-live.json
       - cybercab.html
       - cybercab-count.js
@@ -55,11 +63,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: node --test tests/tracker-snapshots.test.mjs
+      - run: node --test tests/tracker-snapshots.test.mjs tests/software-workspace.test.mjs
       - name: Build current snapshots and check syntax
         run: |
           node scripts/build-tracker-snapshots.mjs
           node --check updates-v3.js
+          node --check software-data.js
+          node --check software-view.js
           node --check cybercab-count.js
           node --check cybercab-cities.js
           node --check intel.js
@@ -67,3 +77,14 @@ jobs:
         run: |
           python3 -m pip install playwright==1.62.0
           CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/tracker-browser.py
+      - name: Software workspace navigation, responsive layouts and source fallbacks
+        if: github.event_name == 'pull_request'
+        run: CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/software-workspace-browser.py
+      - name: Software workspace review screenshots
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: software-workspace-preview
+          path: /tmp/software-workspace
+          retention-days: 7
+          if-no-files-found: ignore
