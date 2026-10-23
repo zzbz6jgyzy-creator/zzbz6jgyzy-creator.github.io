@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23T09:33:43.220Z",
+  "generated": "2026-10-23T10:16:32.492Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.5243ad45a9.js",
@@ -218,11 +218,17 @@
       ]
     },
     "explainers": {
-      "file": "/assets/js/explainers.bundle.002ee5681e.js",
-      "bytes": 43722,
+      "file": "/assets/js/explainers.bundle.90ce42fcb8.js",
+      "bytes": 5074,
       "sources": [
-        "explainers-data.js",
         "explainers.js"
+      ]
+    },
+    "explainers-fsd": {
+      "file": "/assets/js/explainers-fsd.bundle.0ec9131552.js",
+      "bytes": 13601,
+      "sources": [
+        "fsd-data.js"
       ]
     },
     "optimus": {

@@ -29,6 +29,12 @@ on:
       - scripts/js-bundles.json
       - scripts/rebuild-js.sh
       - scripts/build-seo.py
+      - scripts/build-explainers.py
+      - scripts/lesson-graphics.py
+      - data/explainers.json
+      - explainers.css
+      - explainers.html
+      - 'explainers/**'
       - scripts/editorial-dates.py
       - scripts/build-images.mjs
       - scripts/build-wallpaper-thumbs.mjs
@@ -63,13 +69,17 @@ jobs:
           node scripts/build-wallpaper-thumbs.mjs || echo "wallpaper thumbs skipped"
       - name: Bundle first-party JS
         run: sh scripts/rebuild-js.sh
+      - name: Rebuild visual explainer hub and lessons
+        run: |
+          python3 scripts/build-explainers.py
+          python3 scripts/inject-js-bundles.py
       - name: NewsArticle structured data + sitemap
         run: python3 scripts/build-seo.py
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add grow.js grow.css newsletter.js newsletter-cta.js nav-pill.js scripts/build-home.js scripts/inject_newsletter.py scripts/newsletter-latest.js index.html tesla.html spacex.html data/articles.json data/newsletter-latest.json data/intelligence dispatch/*.html sitemap.xml *.html guides reviews assets
+          git add grow.js grow.css newsletter.js newsletter-cta.js nav-pill.js scripts/build-home.js scripts/inject_newsletter.py scripts/newsletter-latest.js index.html tesla.html spacex.html data/articles.json data/pages.json data/newsletter-latest.json data/intelligence dispatch/*.html sitemap.xml *.html guides reviews assets explainers
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Pre-render homepage headlines, Dispatch and tracker numbers."
             git pull --rebase && git push

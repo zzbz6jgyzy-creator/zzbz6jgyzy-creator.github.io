@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-23",
   "pages": [
     {
       "url": "/",
@@ -45,15 +45,15 @@
     },
     {
       "url": "/explainers.html",
-      "title": "Visual Explainers",
+      "title": "Visual explainers",
       "tag": "Lab",
-      "summary": "SpaceX and Tesla visual explainers, in two tabs. Why Starship uses hot staging, how a booster catch works, what changed between FSD stacks, and where Collision Evasion actually lives."
+      "summary": "Four illustrated Tesla and SpaceX guides: hot staging, booster catches, FSD hardware and software, and collision assistance."
     },
     {
       "url": "/explainers.html#tesla",
       "title": "Tesla explainers",
       "tag": "Tesla",
-      "summary": "FSD stacks, Collision Evasion"
+      "summary": "FSD hardware and software, plus warnings and braking assistance."
     },
     {
       "url": "/explainers.html#spacex",
@@ -348,6 +348,30 @@
       "title": "Videos",
       "tag": "More",
       "summary": "Clips from Alex R now live on the Tesla, SpaceX and Grok pages."
+    },
+    {
+      "url": "/explainers/hot-staging.html",
+      "title": "Why Starship uses hot staging",
+      "tag": "Explainers",
+      "summary": "Follow the ignition, venting and separation sequence through an illustrated cutaway of the hot-staging ring."
+    },
+    {
+      "url": "/explainers/booster-catch.html",
+      "title": "How a booster catch works",
+      "tag": "Explainers",
+      "summary": "See the return, alignment and transfer of load to the tower, with elevation and overhead views."
+    },
+    {
+      "url": "/explainers/fsd.html",
+      "title": "Why FSD differs between cars",
+      "tag": "Explainers",
+      "summary": "Untangle the three things that determine a car’s feature set, then compare the tracker’s reported software branches."
+    },
+    {
+      "url": "/explainers/collision-evasion.html",
+      "title": "Understanding Collision Evasion",
+      "tag": "Explainers",
+      "summary": "An overhead visual guide to a developing hazard, driver warnings and possible braking assistance, with the limits kept clear."
     }
   ]
 }

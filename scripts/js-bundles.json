@@ -97,7 +97,8 @@
     "tsla": ["calendar-merge.js", "calendar.js", "markets.js"],
     "tcmv": ["tcmv-data.js", "tcmv.js"],
     "tesla-clubs": ["tesla-clubs-data.js", "tesla-clubs.js"],
-    "explainers": ["explainers-data.js", "explainers.js"],
+    "explainers": ["explainers.js"],
+    "explainers-fsd": ["fsd-data.js"],
     "optimus": ["optimus.js"],
     "production": ["production.js"],
     "promise-tracker": ["promise-tracker.js"],
@@ -174,6 +175,10 @@
     "tsla.html": { "bundles": ["core", "tsla"], "grow": ["data-band"] },
     "tcmv.html": { "bundles": ["core", "tcmv"], "grow": ["data-band"] },
     "tesla-clubs.html": { "bundles": ["core", "tesla-clubs"] },
+    "explainers/fsd.html": {
+      "bundles": ["core", "explainers-fsd", "explainers"],
+      "grow": ["data-band"]
+    },
     "explainers.html": {
       "bundles": ["core", "explainers"],
       "grow": ["data-band"]
@@ -214,6 +219,10 @@
     "404.html": { "bundles": ["core"] }
   },
   "pageGlobs": {
+    "explainers/*.html": {
+      "bundles": ["core", "explainers"],
+      "grow": ["data-band"]
+    },
     "dispatch/*.html": {
       "bundles": ["core"],
       "grow": ["data-band", "data-pop"]
