@@ -46,3 +46,25 @@ python tests/software-workspace-browser.py
 The software workflow runs source/snapshot tests, syntax checks, existing tracker regression checks and the broader workspace browser suite for pull requests. It uploads phone/desktop light/dark screenshots as a seven-day review artifact. Browser routes supply local first-party files and block external requests: these are functional/layout checks, not live speed measurements. The broader suite exercises search, filters, modal focus, keyboard navigation, share links, country-profile defaults, legacy anchors, deliberate globe failure and no-JavaScript/blocked/older/malformed/partial-data cases.
 
 The sandboxed Node runner can use `--test-isolation=none` where worker-process sockets are restricted. Chromium requires the execution environment's socket permission; this is independent of whether the test routes request external URLs.
+
+
+## Automatic updates and maintenance
+
+The existing `Snapshot Tesla updates` GitHub Actions workflow (`.github/workflows/updates-snapshot.yml`) is scheduled at minutes **20 and 50 of every hour, UTC**. GitHub may delay or skip a scheduled run; this is a polling schedule, not a freshness guarantee. The workflow also supports **Run workflow** on the `main` branch in GitHub Actions.
+
+1. `scripts/snapshot-updates.py` requests Teslascope's public software API and individual release records. It currently keeps up to **16 builds**, considering the source's first 24 valid version identifiers plus its `latest` endpoint. Version identifiers are accepted across year boundaries. These records include observed car/country counts, first/last sightings, explicit FSD hardware fields and saved release-note excerpts. The importer currently limits each build to eight feature excerpts and 220 characters per description; it does not ingest a complete release archive.
+2. `scripts/snapshot-extras.py` refreshes Teslascope's recent-update feed each run. TeslaFi is attempted on manual runs and in the first 35 minutes of even-numbered UTC hours, aiming for roughly two-hourly requests. Delayed GitHub runs can miss that window. Each provider retains its own successful-fetch timestamp and previous data on a source failure.
+3. The job commits `updates-live.json`, reconstructs saved count/country history from committed snapshots, keeps one history point per approximately three-hour bucket, and rebuilds the software page's saved HTML with the shared renderer. The history is retained Git snapshots, not continuous vehicle telemetry.
+4. GitHub Pages publishes the committed files. The browser displays the saved page first, then requests the published primary JSON, history and extras once on page load. It does not poll continuously while a page stays open; reload to request newer published data. Refresh arriving during interaction waits for the reader to apply it.
+
+Source outages retain the last successful data rather than making up observations. The primary importer rejects empty listings, an absent/zero observed fleet, all-zero observations, negative counts and counts exceeding the reported fleet before writing. Per-provider dates remain visible; the top-level extras timestamp does not establish that TeslaFi refreshed successfully. As checked on 23 October 2026, the primary/recent feed had refreshed at 14:57 UTC, while TeslaFi's retained snapshot was from 19 October and was correctly withheld from current comparisons.
+
+The additional `fsd-data.js` global FSD mappings are maintained editorial data, not automatically refreshed by this workflow. Deeper release-note curation, applicability checks and an expanded historical release library also need their own subsequent ingestion/editorial work. This tracker does not connect to a reader's vehicle or send software notifications.
+
+## Build timestamp conflict follow-up
+
+The homepage and JavaScript workflows both rebuild hashed bundles. On the 23 October merge, they produced identical bundle content but different wall-clock `generated` values in `assets/js/manifest.json`; the homepage job then failed while rebasing that manifest onto the other job's commit. The site deployment and tracker checks succeeded separately.
+
+The bundle manifest now describes only content: bundle paths, byte sizes and input filenames. Identical inputs generate byte-identical files, independent of build time, so the timestamp-only conflict and unnecessary timestamp-only commits disappear. It does not remove the real source timestamps shown to readers. It also does not automatically resolve unrelated simultaneous edits to generated pages or different source changes.
+
+`tests/js-bundle-build.test.mjs` builds with two deliberately different clocks, checks that a source edit changes only its bundle, and reproduces the concurrent homepage/bundle push-and-rebase sequence in temporary local Git repositories. `tests/test_software_import.py` covers year rollover, unusable upstream data and retention of the previous file. `.github/workflows/build-pipeline-checks.yml` runs these checks without contacting data providers or writing to the live repository.
