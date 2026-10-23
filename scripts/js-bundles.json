@@ -103,10 +103,9 @@
       "fsd.js"
     ],
     "cybercab": [
-      "cybercab-data.js",
-      "cybercab-tracker.js",
-      "cybercab-count.js",
-      "countup.js"
+      "mobility-model.js",
+      "mobility-view.js",
+      "mobility-workspace.js"
     ],
     "autonomy": [
       "fsd-data.js",
@@ -559,6 +558,41 @@
       ]
     },
     "fsd-europe/slovakia.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "cybercab-cities/austin.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "cybercab-cities/dallas.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "cybercab-cities/houston.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "cybercab-cities/miami.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "cybercab-cities/orlando.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "cybercab-cities/tampa.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "cybercab-cities/bay-area.html": {
       "bundles": [
         "core"
       ]

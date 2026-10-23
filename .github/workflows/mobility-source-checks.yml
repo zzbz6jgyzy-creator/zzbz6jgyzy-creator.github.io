@@ -1,0 +1,58 @@
+name: Check Robotaxi primary sources
+on:
+  schedule:
+    - cron: '15 6 * * *'
+  workflow_dispatch:
+    inputs:
+      review_source:
+        description: 'Optional source ID to acknowledge after editorial review'
+        required: false
+        type: string
+      review_hash:
+        description: 'Current observedHash from data/robotaxi-source-checks.json'
+        required: false
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: mobility-source-checks
+  cancel-in-progress: false
+jobs:
+  check:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check sources or acknowledge reviewed content
+        env:
+          MOBILITY_REVIEW_SOURCE: ${{ inputs.review_source }}
+          MOBILITY_REVIEW_HASH: ${{ inputs.review_hash }}
+        run: |
+          if [ -n "$MOBILITY_REVIEW_SOURCE" ]; then
+            python3 scripts/check-mobility-sources.py --ack "$MOBILITY_REVIEW_SOURCE" --hash "$MOBILITY_REVIEW_HASH"
+          else
+            python3 scripts/check-mobility-sources.py
+          fi
+          node scripts/build-mobility.mjs
+      - name: Publish source metadata and saved pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/robotaxi-source-checks.json data/mobility-snapshot.json cybercab.html cybercab-cities
+          if git diff --cached --quiet; then
+            echo 'No source-check change'
+          else
+            git commit -m 'Check Robotaxi sources and retain editorial review flags.'
+            git pull --rebase
+            git push
+          fi

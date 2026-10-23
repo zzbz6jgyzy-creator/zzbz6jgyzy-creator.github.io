@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Dated initial HTML for the existing tracker mounts; browser scripts enhance it in place.
 import fs from "node:fs";
+import { buildMobility } from "./build-mobility.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -198,6 +199,7 @@ export function buildTrackerSnapshots(root = defaultRoot, { page = "all", warn =
     }
   });
   if (page !== "updates") edit("cybercab.html", (src) => {
+    if (src.includes("<!--snapshot:mobility-workspace-->")) { buildMobility(root); return fs.readFileSync(path.join(root,"cybercab.html"),"utf8"); }
     try {
       const tx = readJson(root, "data/robotaxi-tx.json"), fleet = readJson(root, "data/robotaxi-fleet.json");
       const counts = renderCounts(tx, fleet);

@@ -1,0 +1,45 @@
+name: Cybercab and Robotaxi workspace checks
+on:
+  pull_request:
+    paths:
+      - 'mobility-*'
+      - 'cybercab.html'
+      - 'cybercab-cities/**'
+      - 'assets/mobility/**'
+      - 'data/robotaxi-*'
+      - 'data/mobility-*'
+      - 'scripts/*mobility*'
+      - 'scripts/build-robotaxi*'
+      - 'scripts/build-tracker-snapshots.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/*mobility*'
+      - '.github/workflows/*mobility*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm install --no-save --no-package-lock esbuild@0.25.12
+      - run: node --test tests/mobility-workspace.test.mjs tests/tracker-snapshots.test.mjs tests/software-workspace.test.mjs
+      - run: python3 -m unittest discover -s tests -p test_mobility_sources.py
+      - run: node scripts/build-mobility.mjs && node scripts/build-js.mjs && python3 scripts/inject-js-bundles.py
+      - run: git diff --exit-code -- cybercab.html cybercab-cities data/mobility-snapshot.json assets/js
+      - run: pip install playwright==1.62.0
+      - name: Responsive, functional and no-JavaScript checks
+        run: CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/mobility-workspace-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobility-responsive-screenshots
+          path: /tmp/mobility-workspace
+          retention-days: 7

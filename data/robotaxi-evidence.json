@@ -1,0 +1,763 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-23",
+  "revision": "2026-10-23.1",
+  "scope": "Tesla Cybercab and Model Y Robotaxi",
+  "sources": [
+    {
+      "id": "s-ccaaee3c9c8d",
+      "url": "https://www.tesla.com/support/robotaxi",
+      "label": "Tesla Robotaxi availability and rider guidance",
+      "type": "manufacturer",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-0cffd265d479",
+      "url": "https://www.tesla.com/support/robotaxi/cybercab",
+      "label": "Tesla Cybercab availability and vehicle guidance",
+      "type": "manufacturer",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-ff84ae0cf870",
+      "url": "https://www.tesla.com/robotaxi",
+      "label": "Tesla Robotaxi fleet and current service cities",
+      "type": "manufacturer",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-c9f84c001b2c",
+      "url": "https://www.tesla.com/robotaxi/safety",
+      "label": "Tesla Robotaxi safety report and methodology",
+      "type": "manufacturer",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-1c8cd934cb0d",
+      "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828026066738/tsla-20261021-gen.pdf",
+      "label": "Tesla Q3 2026 update, furnished with Form 8-K",
+      "type": "manufacturer",
+      "checkedAt": "2026-10-23",
+      "publishedAt": "2026-10-21"
+    },
+    {
+      "id": "s-b58b31837c2f",
+      "url": "https://www.txdmv.gov/AVprogram",
+      "label": "Texas automated vehicle authorisation programme",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-37faae23b50d",
+      "url": "https://txmccs.txdmv.gov/automated-vehicles/operators/AV8313426653583",
+      "label": "TxDMV: Tesla Robotaxi operator record",
+      "type": "authority",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-fef316c7def7",
+      "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "label": "FSD Database: Texas registry mirror",
+      "type": "tracker",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-29bb5c4b65c2",
+      "url": "https://github.com/Robotaxi-Tracker/robotaxi-service-areas",
+      "label": "Robotaxi Tracker service-area data, CC BY 4.0",
+      "type": "tracker",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-b3eb5460565a",
+      "url": "https://www.cpuc.ca.gov/regulatory-services/licensing/transportation-licensing-and-analysis-branch/autonomous-vehicle-programs",
+      "label": "CPUC autonomous-vehicle passenger-service programmes",
+      "type": "authority",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-b84e4234e421",
+      "url": "https://gizmodo.com/california-regulator-says-teslas-robotaxis-are-more-like-a-limo-in-the-eyes-of-the-law-2000738512",
+      "label": "CPUC classification of Bay Area service, reported by Gizmodo",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-b35c094ac663",
+      "url": "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/",
+      "label": "Tesla Q3 call reporting: Dallas Cybercab expansion",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": "2026-10-21"
+    },
+    {
+      "id": "s-9b046acf944b",
+      "url": "https://www.cybercab.news/article/production-decaled-cybercabs-leave-giga-texas-oct7",
+      "label": "Reported Houston Cybercab staging",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-286feb973f19",
+      "url": "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/",
+      "label": "Reporting of Tesla’s Austin Cybercab fleet statement",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": "2026-10-10"
+    },
+    {
+      "id": "s-4af35a2b22f3",
+      "url": "https://www.notateslaapp.com/news/4004/tesla-launches-unsupervised-robotaxi-service-in-dallas-and-houston",
+      "label": "Dallas and Houston launch reporting, with Tesla announcement",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": "2026-04-18"
+    },
+    {
+      "id": "s-6b4af7121484",
+      "url": "https://www.fox13news.com/news/tesla-robotaxi-launches-driverless-ride-service-tampa.amp",
+      "label": "Tampa and Orlando launch reporting",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": "2026-07-22"
+    },
+    {
+      "id": "s-7bb593b2c07d",
+      "url": "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting",
+      "label": "NHTSA ADS and Level 2 crash-reporting datasets and limits",
+      "type": "authority",
+      "checkedAt": null,
+      "publishedAt": null
+    }
+  ],
+  "cities": [
+    {
+      "id": "austin",
+      "name": "Austin",
+      "state": "TX",
+      "stateName": "Texas",
+      "coordinates": [
+        -97.7431,
+        30.2672
+      ],
+      "robotaxi": {
+        "status": "listed",
+        "evidence": [
+          "s-ccaaee3c9c8d",
+          "s-ff84ae0cf870"
+        ],
+        "date": null,
+        "vehicle": "model_y",
+        "note": "Tesla lists Robotaxi service in limited parts of this city. The app is the current check for bookings and availability."
+      },
+      "cybercab": {
+        "status": "available",
+        "evidence": [
+          "s-0cffd265d479",
+          "s-1c8cd934cb0d"
+        ],
+        "date": "2026-09-03",
+        "note": "Tesla lists Cybercab rides in limited parts of Austin."
+      },
+      "supervision": {
+        "status": "manufacturer_no_onboard_monitor",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-ff84ae0cf870"
+        ],
+        "note": "Operator-level reports do not guarantee the configuration of every individual ride."
+      },
+      "hours": {
+        "value": "06:00–00:00 CT",
+        "evidence": [
+          "s-1c8cd934cb0d"
+        ],
+        "note": "Tesla reported these Austin hours in its Q3 update; check the app before travelling."
+      },
+      "fare": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+      },
+      "airport": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Enter the actual pickup and destination in the app. An area boundary is not confirmation of airport access."
+      },
+      "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-0cffd265d479",
+        "s-ff84ae0cf870"
+      ]
+    },
+    {
+      "id": "dallas",
+      "name": "Dallas",
+      "state": "TX",
+      "stateName": "Texas",
+      "coordinates": [
+        -96.797,
+        32.7767
+      ],
+      "robotaxi": {
+        "status": "listed",
+        "evidence": [
+          "s-ccaaee3c9c8d",
+          "s-ff84ae0cf870"
+        ],
+        "date": null,
+        "vehicle": "model_y",
+        "note": "Tesla lists Robotaxi service in limited parts of this city. The app is the current check for bookings and availability."
+      },
+      "cybercab": {
+        "status": "announced",
+        "evidence": [
+          "s-0cffd265d479",
+          "s-b35c094ac663"
+        ],
+        "date": null,
+        "note": "Tesla lists only Austin for current Cybercab rides. Dallas was reported as a November target; an exact launch day is not established."
+      },
+      "supervision": {
+        "status": "manufacturer_no_onboard_monitor",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-ff84ae0cf870"
+        ],
+        "note": "Operator-level reports do not guarantee the configuration of every individual ride."
+      },
+      "hours": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Operating hours vary by area. Check Tesla’s app."
+      },
+      "fare": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+      },
+      "airport": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Enter the actual pickup and destination in the app. An area boundary is not confirmation of airport access."
+      },
+      "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-0cffd265d479",
+        "s-ff84ae0cf870"
+      ]
+    },
+    {
+      "id": "houston",
+      "name": "Houston",
+      "state": "TX",
+      "stateName": "Texas",
+      "coordinates": [
+        -95.3698,
+        29.7604
+      ],
+      "robotaxi": {
+        "status": "listed",
+        "evidence": [
+          "s-ccaaee3c9c8d",
+          "s-ff84ae0cf870"
+        ],
+        "date": null,
+        "vehicle": "model_y",
+        "note": "Tesla lists Robotaxi service in limited parts of this city. The app is the current check for bookings and availability."
+      },
+      "cybercab": {
+        "status": "reported_staging",
+        "evidence": [
+          "s-0cffd265d479",
+          "s-9b046acf944b"
+        ],
+        "date": null,
+        "note": "A staging report is not public passenger service. Tesla’s checked Cybercab list does not include Houston."
+      },
+      "supervision": {
+        "status": "manufacturer_no_onboard_monitor",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-ff84ae0cf870"
+        ],
+        "note": "Operator-level reports do not guarantee the configuration of every individual ride."
+      },
+      "hours": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Operating hours vary by area. Check Tesla’s app."
+      },
+      "fare": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+      },
+      "airport": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Enter the actual pickup and destination in the app. An area boundary is not confirmation of airport access."
+      },
+      "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-0cffd265d479",
+        "s-ff84ae0cf870"
+      ]
+    },
+    {
+      "id": "miami",
+      "name": "Miami",
+      "state": "FL",
+      "stateName": "Florida",
+      "coordinates": [
+        -80.1918,
+        25.7617
+      ],
+      "robotaxi": {
+        "status": "listed",
+        "evidence": [
+          "s-ccaaee3c9c8d",
+          "s-ff84ae0cf870"
+        ],
+        "date": null,
+        "vehicle": "model_y",
+        "note": "Tesla lists Robotaxi service in limited parts of this city. The app is the current check for bookings and availability."
+      },
+      "cybercab": {
+        "status": "not_listed",
+        "evidence": [
+          "s-0cffd265d479"
+        ],
+        "date": null,
+        "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+      },
+      "supervision": {
+        "status": "manufacturer_no_onboard_monitor",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-ff84ae0cf870"
+        ],
+        "note": "Operator-level reports do not guarantee the configuration of every individual ride."
+      },
+      "hours": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Operating hours vary by area. Check Tesla’s app."
+      },
+      "fare": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+      },
+      "airport": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Enter the actual pickup and destination in the app. An area boundary is not confirmation of airport access."
+      },
+      "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-0cffd265d479",
+        "s-ff84ae0cf870"
+      ]
+    },
+    {
+      "id": "orlando",
+      "name": "Orlando",
+      "state": "FL",
+      "stateName": "Florida",
+      "coordinates": [
+        -81.3792,
+        28.5383
+      ],
+      "robotaxi": {
+        "status": "listed",
+        "evidence": [
+          "s-ccaaee3c9c8d",
+          "s-ff84ae0cf870"
+        ],
+        "date": null,
+        "vehicle": "not_city_specific",
+        "note": "Tesla’s general availability page lists Orlando. The Cybercab FAQ’s shorter Model Y city list omits it; a city-specific vehicle assignment is not established here."
+      },
+      "cybercab": {
+        "status": "not_listed",
+        "evidence": [
+          "s-0cffd265d479"
+        ],
+        "date": null,
+        "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+      },
+      "supervision": {
+        "status": "manufacturer_no_onboard_monitor",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-ff84ae0cf870"
+        ],
+        "note": "Operator-level reports do not guarantee the configuration of every individual ride."
+      },
+      "hours": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Operating hours vary by area. Check Tesla’s app."
+      },
+      "fare": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+      },
+      "airport": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Enter the actual pickup and destination in the app. An area boundary is not confirmation of airport access."
+      },
+      "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-0cffd265d479",
+        "s-ff84ae0cf870"
+      ]
+    },
+    {
+      "id": "tampa",
+      "name": "Tampa",
+      "state": "FL",
+      "stateName": "Florida",
+      "coordinates": [
+        -82.4572,
+        27.9506
+      ],
+      "robotaxi": {
+        "status": "listed",
+        "evidence": [
+          "s-ccaaee3c9c8d",
+          "s-ff84ae0cf870"
+        ],
+        "date": null,
+        "vehicle": "model_y",
+        "note": "Tesla lists Robotaxi service in limited parts of this city. The app is the current check for bookings and availability."
+      },
+      "cybercab": {
+        "status": "not_listed",
+        "evidence": [
+          "s-0cffd265d479"
+        ],
+        "date": null,
+        "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+      },
+      "supervision": {
+        "status": "manufacturer_no_onboard_monitor",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-ff84ae0cf870"
+        ],
+        "note": "Operator-level reports do not guarantee the configuration of every individual ride."
+      },
+      "hours": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Operating hours vary by area. Check Tesla’s app."
+      },
+      "fare": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+      },
+      "airport": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Enter the actual pickup and destination in the app. An area boundary is not confirmation of airport access."
+      },
+      "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-0cffd265d479",
+        "s-ff84ae0cf870"
+      ]
+    },
+    {
+      "id": "bay_area",
+      "name": "San Francisco Bay Area",
+      "state": "CA",
+      "stateName": "California",
+      "coordinates": [
+        -122.2,
+        37.65
+      ],
+      "robotaxi": {
+        "status": "reported_supervised",
+        "evidence": [
+          "s-b84e4234e421"
+        ],
+        "date": null,
+        "vehicle": "model_y",
+        "note": "Reported Bay Area service uses a safety driver. It is separate from Tesla’s listed driverless markets."
+      },
+      "cybercab": {
+        "status": "not_listed",
+        "evidence": [
+          "s-0cffd265d479"
+        ],
+        "date": null,
+        "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+      },
+      "supervision": {
+        "status": "safety_driver_reported",
+        "evidence": [
+          "s-b84e4234e421"
+        ],
+        "note": "Operator-level reports do not guarantee the configuration of every individual ride."
+      },
+      "hours": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Operating hours vary by area. Check Tesla’s app."
+      },
+      "fare": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+      },
+      "airport": {
+        "value": null,
+        "evidence": [
+          "s-ccaaee3c9c8d"
+        ],
+        "note": "Enter the actual pickup and destination in the app. An area boundary is not confirmation of airport access."
+      },
+      "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-0cffd265d479",
+        "s-ff84ae0cf870"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "austin-cybercab-launch",
+      "date": "2026-09-03",
+      "precision": "day",
+      "city": "austin",
+      "vehicle": "cybercab",
+      "kind": "service",
+      "title": "Cybercab rides begin in Austin",
+      "summary": "Tesla’s Q3 update dates the start of Cybercab Robotaxi rides to 3 September.",
+      "evidence": [
+        "s-1c8cd934cb0d"
+      ],
+      "type": "manufacturer"
+    },
+    {
+      "id": "tx-authorization",
+      "date": "2026-05-14",
+      "precision": "day",
+      "city": null,
+      "vehicle": "all",
+      "kind": "regulatory",
+      "title": "Texas operator authorisation recorded",
+      "summary": "A statewide operator record is separate from a city fleet count or a vehicle being in service.",
+      "evidence": [
+        "s-37faae23b50d",
+        "s-fef316c7def7"
+      ],
+      "type": "tracker"
+    },
+    {
+      "id": "dallas-houston-launch",
+      "date": "2026-04-18",
+      "precision": "day",
+      "city": null,
+      "vehicle": "model_y",
+      "kind": "service",
+      "title": "Dallas and Houston Robotaxi launch reported",
+      "summary": "Reporting linked Tesla’s rollout announcement and videos; current availability is separately listed by Tesla.",
+      "evidence": [
+        "s-4af35a2b22f3",
+        "s-ccaaee3c9c8d"
+      ],
+      "type": "media",
+      "cities": [
+        "dallas",
+        "houston"
+      ]
+    },
+    {
+      "id": "florida-launch",
+      "date": "2026-07-22",
+      "precision": "day",
+      "city": null,
+      "vehicle": "model_y",
+      "kind": "service",
+      "title": "Tampa and Orlando service reported",
+      "summary": "Publication date of local reporting, not an asserted first ride time.",
+      "evidence": [
+        "s-6b4af7121484",
+        "s-ccaaee3c9c8d"
+      ],
+      "type": "media",
+      "cities": [
+        "tampa",
+        "orlando"
+      ]
+    },
+    {
+      "id": "austin-300-company",
+      "date": "2026-10-10",
+      "precision": "day",
+      "city": "austin",
+      "vehicle": "cybercab",
+      "kind": "company_claim",
+      "title": "300+ Austin Cybercabs reported in Tesla statement",
+      "summary": "A manufacturer statement reported by a secondary source. It is not independent live fleet telemetry.",
+      "evidence": [
+        "s-286feb973f19"
+      ],
+      "type": "media"
+    },
+    {
+      "id": "q3-austin",
+      "date": "2026-10-21",
+      "precision": "day",
+      "city": "austin",
+      "vehicle": "all",
+      "kind": "company_claim",
+      "title": "Q3 report adds current operating context",
+      "summary": "Tesla reports Austin hours of 6am to midnight and nearly two million cumulative unsupervised Robotaxi miles at quarter end. These are operator-level company figures.",
+      "evidence": [
+        "s-1c8cd934cb0d"
+      ],
+      "type": "manufacturer"
+    },
+    {
+      "id": "dallas-month-target",
+      "date": "2026-11",
+      "precision": "month",
+      "city": "dallas",
+      "vehicle": "cybercab",
+      "kind": "announcement",
+      "title": "Dallas Cybercab expansion target",
+      "summary": "Reported November target from the Q3 call. No exact launch day is verified.",
+      "evidence": [
+        "s-b35c094ac663"
+      ],
+      "type": "media"
+    }
+  ],
+  "companyClaims": [
+    {
+      "id": "austin-300",
+      "label": "Cybercabs serving Austin",
+      "value": "300+",
+      "date": "2026-10-10",
+      "scope": "Austin; Tesla statement reported by media",
+      "evidence": [
+        "s-286feb973f19"
+      ],
+      "note": "Company-reported statement; no independent live active-fleet total is established."
+    },
+    {
+      "id": "capacity",
+      "label": "Installed annual Cybercab manufacturing capacity",
+      "value": ">125,000",
+      "date": "2026-10-21",
+      "scope": "Giga Texas; Tesla Q3 installed-capacity table",
+      "evidence": [
+        "s-1c8cd934cb0d"
+      ],
+      "note": "Installed capacity is not actual annual output, registrations or deployed vehicles."
+    }
+  ],
+  "methodology": [
+    "Texas counts describe vehicles listed on the operator registry, via a named mirror. They are not city allocations or active vehicles.",
+    "Only same-scope, same-snapshot registry counts are combined into a fleet share. Regional estimates are shown separately with their source dates.",
+    "Tesla-listed availability, reported operation, app boundaries and vehicle observations are independent evidence tracks.",
+    "The map shows city records, not live vehicle locations. An app-derived area is not a vehicle-specific guarantee.",
+    "Source retrieval, publication, event date and first observation are separate clocks. A month-only target remains month-only."
+  ],
+  "conflicts": [
+    {
+      "id": "orlando-list",
+      "city": "orlando",
+      "title": "Tesla’s city lists differ",
+      "summary": "The general Robotaxi page lists Orlando. The Cybercab FAQ’s Model Y list omits it. The general listing is retained, with vehicle attribution unresolved.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-0cffd265d479",
+        "s-ff84ae0cf870"
+      ]
+    },
+    {
+      "id": "live-fleet-unknown",
+      "city": null,
+      "title": "No verified live Cybercab fleet total",
+      "summary": "Registration counts and the reported 300+ Austin statement are different measures. Neither is a live operating counter.",
+      "evidence": [
+        "s-fef316c7def7",
+        "s-286feb973f19"
+      ]
+    },
+    {
+      "id": "legacy-city-labels",
+      "city": null,
+      "title": "Earlier testing labels were outdated",
+      "summary": "The previous tracker marked several cities as testing. Current Tesla pages list six driverless service markets; those new company listings are displayed with their source type.",
+      "evidence": [
+        "s-ccaaee3c9c8d",
+        "s-ff84ae0cf870"
+      ]
+    }
+  ]
+}
