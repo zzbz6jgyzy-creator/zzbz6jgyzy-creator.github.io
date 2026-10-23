@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tesla Robotaxi service areas (geofences) + per-state fleet figures.
 
-Geofences: EthanMcKanna/robotaxi-service-areas (MIT), boundaries taken from the
+Geofences: Robotaxi-Tracker/robotaxi-service-areas (CC BY 4.0), boundaries taken from the
 Tesla Robotaxi app's fleet areas. Writes data/robotaxi-areas.geojson and keeps
 data/robotaxi-areas-history.json, which logs every area change (sq mi) with the
 date it was first seen here. Expansion history before Oct 2026 is seeded from
@@ -14,7 +14,7 @@ Writes data/robotaxi-fleet.json. On any fetch/parse failure the old file stays.
 import json, re, sys, math, hashlib, datetime, pathlib, urllib.request, html as H
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent / "data"
-REPO = "EthanMcKanna/robotaxi-service-areas"
+REPO = "Robotaxi-Tracker/robotaxi-service-areas"
 RAW = f"https://raw.githubusercontent.com/{REPO}/main/areas/tesla/{{slug}}/{{f}}"
 TREE = f"https://api.github.com/repos/{REPO}/git/trees/main?recursive=1"
 PA = "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
@@ -37,7 +37,10 @@ def geom_area(g):
     return sum(ring_area(p[0]) - sum(ring_area(h) for h in p[1:]) for p in polys)
 
 def areas():
-    tree = json.loads(get(TREE))["tree"]
+    tree_data = json.loads(get(TREE))
+    tree = tree_data["tree"]
+    revision = tree_data["sha"]
+    raw = RAW.replace("/main/", "/" + revision + "/")
     slugs = sorted({p["path"].split("/")[2] for p in tree if re.match(r"areas/tesla/[^/]+/boundary\.geojson$", p["path"])})
     if not slugs:
         raise RuntimeError("no Tesla areas")
@@ -47,8 +50,8 @@ def areas():
     old = {f["properties"]["slug"]: f for f in json.loads(old_p.read_text())["features"]} if old_p.exists() else {}
     feats = []
     for slug in slugs:
-        meta = json.loads(get(RAW.format(slug=slug, f="meta.json")))
-        b = json.loads(get(RAW.format(slug=slug, f="boundary.geojson")))
+        meta = json.loads(get(raw.format(slug=slug, f="meta.json")))
+        b = json.loads(get(raw.format(slug=slug, f="boundary.geojson")))
         g = b.get("geometry") or b["features"][0]["geometry"]
         g["coordinates"] = json.loads(json.dumps(g["coordinates"]), parse_float=lambda s: round(float(s), 5))
         a = round(geom_area(g), 1)
@@ -68,8 +71,8 @@ def areas():
             "slug": slug, "name": (b.get("properties") or {}).get("name") or meta.get("name"),
             "areaSqMi": a, "hash": h, "center": [meta.get("centerLng"), meta.get("centerLat")]}})
     fc = {"type": "FeatureCollection", "source": {
-        "name": "robotaxi-service-areas (MIT), from Tesla Robotaxi app fleet areas", "url": f"https://github.com/{REPO}",
-        "licence": "MIT"}, "checked": STAMP, "features": feats}
+        "name": "Robotaxi Tracker service areas, app-derived", "url": f"https://github.com/{REPO}",
+        "licence": "CC BY 4.0", "licenceUrl": "https://creativecommons.org/licenses/by/4.0/", "revision": revision}, "checked": STAMP, "features": feats}
     old_p.write_text(json.dumps(fc, separators=(",", ":")) + "\n")
     hist["checked"] = STAMP
     hist_p.write_text(json.dumps(hist, indent=1) + "\n")

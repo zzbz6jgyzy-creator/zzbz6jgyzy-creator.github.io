@@ -52,24 +52,40 @@ async def main():
                 else:
                     tx = json.loads((ROOT/'data/robotaxi-tx.json').read_text())
                     geo = json.loads((ROOT/'data/robotaxi-areas.geojson').read_text())
-                    await page.locator('[data-rt-cities]').scroll_into_view_if_needed()
-                    if mode=='blocked':
-                        await page.locator('[data-rt-cities] [data-refresh-status]').wait_for()
-                        await page.locator('[data-cc-count] [data-refresh-status]').wait_for()
-                        await page.locator('[data-cc-changes] [data-refresh-status]').wait_for()
-                    elif mode=='live':
-                        button=page.locator('[data-rt-filter]').first
-                        await button.wait_for()
-                        before=await button.get_attribute('aria-pressed')
-                        await button.click()
-                        assert await button.get_attribute('aria-pressed')!=before
-                        assert await page.locator('[data-rt-map]').count()==1
-                    assert await page.locator('[data-cc-count] .cc-count-card').count()==2
-                    assert await page.locator('[data-cc-count] .is-cybercab .cc-count-total strong').inner_text()==format(tx['history'][-1]['cybercab'], ',')
-                    assert await page.locator('[data-rt-cities] table').count()==1
-                    assert await page.locator('[data-rt-city]').count()==len(geo['features'])
-                    assert await page.locator('[data-rt-cities] a[href]').count()>0
-                    await page.locator('[data-cc-count]').screenshot(path=str(ROOT/'dev'/f'tracker-cybercab-{mode}-{width}.png'))
+                    if await page.locator('#mw-app').count():
+                        expected=format(tx['history'][-1]['cybercab'], ',')
+                        assert expected in await page.locator('.mw-metrics').inner_text()
+                        if mode!='no-js':
+                            await page.locator('#mw-app[data-enhanced="true"]').wait_for()
+                            await page.locator('.mw-tabs [data-mw-route="cities"]').click()
+                            await page.locator('#mw-city-select').select_option('dallas')
+                            assert 'Announced target' in await page.locator('#mw-city-detail').inner_text()
+                            assert 'Robotaxi service listed' in await page.locator('#mw-city-detail').inner_text()
+                            if mode=='blocked':await page.locator('.mw-refresh-note').wait_for()
+                        else:
+                            assert await page.locator('.mw-city-card').count()==7
+                        assert await page.locator('#mobility-snapshot').count()==1
+                        if mode!='no-js':await page.locator('.mw-tabs [data-mw-route="overview"]').click()
+                        await page.locator('.mw-metrics').screenshot(path=str(ROOT/'dev'/f'tracker-cybercab-{mode}-{width}.png'))
+                    else:
+                        await page.locator('[data-rt-cities]').scroll_into_view_if_needed()
+                        if mode=='blocked':
+                            await page.locator('[data-rt-cities] [data-refresh-status]').wait_for()
+                            await page.locator('[data-cc-count] [data-refresh-status]').wait_for()
+                            await page.locator('[data-cc-changes] [data-refresh-status]').wait_for()
+                        elif mode=='live':
+                            button=page.locator('[data-rt-filter]').first
+                            await button.wait_for()
+                            before=await button.get_attribute('aria-pressed')
+                            await button.click()
+                            assert await button.get_attribute('aria-pressed')!=before
+                            assert await page.locator('[data-rt-map]').count()==1
+                        assert await page.locator('[data-cc-count] .cc-count-card').count()==2
+                        assert await page.locator('[data-cc-count] .is-cybercab .cc-count-total strong').inner_text()==format(tx['history'][-1]['cybercab'], ',')
+                        assert await page.locator('[data-rt-cities] table').count()==1
+                        assert await page.locator('[data-rt-city]').count()==len(geo['features'])
+                        assert await page.locator('[data-rt-cities] a[href]').count()>0
+                        await page.locator('[data-cc-count]').screenshot(path=str(ROOT/'dev'/f'tracker-cybercab-{mode}-{width}.png'))
                 assert not errors, errors
                 assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth'), 'Page overflows viewport'
                 print(json.dumps({'page':page_name,'mode':mode,'width':width,'passed':True}), flush=True)

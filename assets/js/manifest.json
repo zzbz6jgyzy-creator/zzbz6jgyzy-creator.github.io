@@ -148,13 +148,12 @@
       ]
     },
     "cybercab": {
-      "file": "/assets/js/cybercab.bundle.2882bfb906.js",
-      "bytes": 20359,
+      "file": "/assets/js/cybercab.bundle.033feaad11.js",
+      "bytes": 50824,
       "sources": [
-        "cybercab-data.js",
-        "cybercab-tracker.js",
-        "cybercab-count.js",
-        "countup.js"
+        "mobility-model.js",
+        "mobility-view.js",
+        "mobility-workspace.js"
       ]
     },
     "autonomy": {
