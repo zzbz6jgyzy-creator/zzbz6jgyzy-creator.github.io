@@ -11,7 +11,7 @@
 
   const live = ((FSD && FSD.countries) || []).filter((c) => c.status === "live");
   const limited = ((FSD && FSD.countries) || []).filter((c) => c.status === "limited");
-  const eu = (EU && EU.countries) || [];
+  const eu = ((EU && EU.countries) || []).filter(c => !c.jurisdiction || c.jurisdiction === "EU");
   const euLive = eu.filter((c) => c.rolloutLive);
   const euYes = eu.filter((c) => c.status === "approved" && !c.rolloutLive);
   const cities = (CC && CC.cities) || [];
@@ -28,7 +28,7 @@
     box.innerHTML = `
       <div class="intel-grid">
         <div class="intel-card"><strong>${live.length}</strong><span>Markets Tesla lists as live for supervised FSD</span></div>
-        <div class="intel-card"><strong>${euLive.length}</strong><span>EU states with reported customer use</span></div>
+        <div class="intel-card"><strong>${euLive.length}</strong><span>EU markets listed by Tesla</span></div>
         <div class="intel-card"><strong>${euYes.length}</strong><span>EU states recognised, rollout not confirmed</span></div>
         <div class="intel-card"><strong>${cities.filter((c) => c.status === "live").length}</strong><span>Cities with sourced paid Cybercab rides</span></div>
       </div>
@@ -40,7 +40,7 @@
         <tbody>
           <tr><td>${pill(layer("fsd-supervised"))}</td><td>Driver must supervise. SAE Level 2.</td><td>Unsupervised robotaxi. Hands-off legal duty.</td></tr>
           <tr><td>${pill(layer("eu", { approved: true }))}</td><td>A regulator recognised a file.</td><td>Owners have the software.</td></tr>
-          <tr><td>${pill(layer("eu", { rolloutLive: true }))}</td><td>Recognition plus reported customer use.</td><td>Unsupervised driving.</td></tr>
+          <tr><td>${pill(layer("eu", { rolloutLive: true }))}</td><td>Market availability listed by Tesla; vehicle eligibility applies.</td><td>Unsupervised driving.</td></tr>
           <tr><td>${pill(layer("robotaxi", { permit: true }))}</td><td>Authorisation to operate or test.</td><td>Paid public rides everywhere.</td></tr>
           <tr><td>${pill(layer("robotaxi", { commercial: true }))}</td><td>Sourced paid public rides in a city.</td><td>The same as a DMV registration count.</td></tr>
         </tbody>
@@ -57,7 +57,7 @@
       </table></div>
 
       <h2>Europe: approval vs recognition vs live</h2>
-      <p class="intel-note">${esc((EU && EU.note) || "")} Slovakia is the current recognised-not-live case: a ministry yes is not the same as owners receiving the software.</p>
+      <p class="intel-note">${esc((EU && EU.note) || "")} Tesla market listings, national permissions and individual customer delivery observations are tracked separately.</p>
       <div class="intel-compare"><table>
         <thead><tr><th>State</th><th>Layer</th><th>Date</th><th>Note</th><th>Source</th></tr></thead>
         <tbody>${eu.filter((c) => c.status === "approved" || c.rolloutLive || c.stage === "testing" || c.stage === "review").map((c) => {

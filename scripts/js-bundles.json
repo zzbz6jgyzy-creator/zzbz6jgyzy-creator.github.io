@@ -1,6 +1,8 @@
 {
   "outDir": "assets/js",
-  "keep": ["theme-boot.js"],
+  "keep": [
+    "theme-boot.js"
+  ],
   "skipPages": [
     "goldcab.html",
     "grok-bot.html",
@@ -21,7 +23,10 @@
       "grow.js",
       "nav-pill.js"
     ],
-    "intel": ["intel-core.js", "intel.js"],
+    "intel": [
+      "intel-core.js",
+      "intel.js"
+    ],
     "home": [
       "starship-data.js",
       "fsd-europe-data.js",
@@ -53,7 +58,11 @@
       "starlink-identify.js",
       "starlink-globe.js"
     ],
-    "tesla": ["fsd-europe-data.js", "tesla-hub.js", "live.js"],
+    "tesla": [
+      "fsd-europe-data.js",
+      "tesla-hub.js",
+      "live.js"
+    ],
     "my-tesla": [
       "updates-data.js",
       "fsd-data.js",
@@ -62,7 +71,12 @@
       "my-tesla.js",
       "live.js"
     ],
-    "updates": ["cesium-lazy.js", "software-data.js", "software-view.js", "updates-v3.js"],
+    "updates": [
+      "cesium-lazy.js",
+      "software-data.js",
+      "software-view.js",
+      "updates-v3.js"
+    ],
     "spacex": [
       "starship-data.js",
       "spacex-hub.js",
@@ -70,10 +84,24 @@
       "calendar.js",
       "live.js"
     ],
-    "dispatch": ["dispatch-browse.js"],
-    "calendar": ["calendar-merge.js", "calendar.js"],
-    "fsd-europe": ["fsd-europe-data.js", "tcmv-data.js", "fsd-europe-v2.js"],
-    "fsd": ["fsd-data.js", "fsd.js"],
+    "dispatch": [
+      "dispatch-browse.js"
+    ],
+    "calendar": [
+      "calendar-merge.js",
+      "calendar.js"
+    ],
+    "fsd-europe": [
+      "fsd-europe-data.js",
+      "fsd-europe-model.js",
+      "fsd-europe-view.js",
+      "fsd-europe-v2.js",
+      "fsd-europe-tools.js"
+    ],
+    "fsd": [
+      "fsd-data.js",
+      "fsd.js"
+    ],
     "cybercab": [
       "cybercab-data.js",
       "cybercab-tracker.js",
@@ -86,151 +114,491 @@
       "cybercab-data.js",
       "autonomy.js"
     ],
-    "roadster": ["roadster.js", "wallpapers.js", "rd-carousel.js"],
-    "news": ["news-keep.js", "news-articles.js", "news.js"],
+    "roadster": [
+      "roadster.js",
+      "wallpapers.js",
+      "rd-carousel.js"
+    ],
+    "news": [
+      "news-keep.js",
+      "news-articles.js",
+      "news.js"
+    ],
     "see-the-launch": [
       "calendar-merge.js",
       "see-the-launch-data.js",
       "see-the-launch.js",
       "live.js"
     ],
-    "tsla": ["calendar-merge.js", "calendar.js", "markets.js"],
-    "tcmv": ["tcmv-data.js", "tcmv.js"],
-    "tesla-clubs": ["tesla-clubs-data.js", "tesla-clubs.js"],
-    "explainers": ["explainers.js"],
-    "explainers-fsd": ["fsd-data.js"],
-    "optimus": ["optimus.js"],
-    "production": ["production.js"],
-    "promise-tracker": ["promise-tracker.js"],
-    "counts": ["counts.js"],
-    "wallpapers": ["wallpapers.js", "wallpapers-ring.js"],
-    "catch": ["board.js", "catch.js"],
-    "staging": ["board.js", "staging.js"],
-    "robotaxi": ["board.js", "robotaxi.js"],
-    "games": ["board.js"],
-    "buy-guide": ["guides/buy-calc.js"]
+    "tsla": [
+      "calendar-merge.js",
+      "calendar.js",
+      "markets.js"
+    ],
+    "tcmv": [
+      "tcmv-data.js",
+      "tcmv.js"
+    ],
+    "tesla-clubs": [
+      "tesla-clubs-data.js",
+      "tesla-clubs.js"
+    ],
+    "explainers": [
+      "explainers.js"
+    ],
+    "explainers-fsd": [
+      "fsd-data.js"
+    ],
+    "optimus": [
+      "optimus.js"
+    ],
+    "production": [
+      "production.js"
+    ],
+    "promise-tracker": [
+      "promise-tracker.js"
+    ],
+    "counts": [
+      "counts.js"
+    ],
+    "wallpapers": [
+      "wallpapers.js",
+      "wallpapers-ring.js"
+    ],
+    "catch": [
+      "board.js",
+      "catch.js"
+    ],
+    "staging": [
+      "board.js",
+      "staging.js"
+    ],
+    "robotaxi": [
+      "board.js",
+      "robotaxi.js"
+    ],
+    "games": [
+      "board.js"
+    ],
+    "buy-guide": [
+      "guides/buy-calc.js"
+    ]
   },
   "pages": {
     "index.html": {
-      "bundles": ["core", "intel", "home"],
-      "grow": ["data-band", "data-pop"],
+      "bundles": [
+        "core",
+        "intel",
+        "home"
+      ],
+      "grow": [
+        "data-band",
+        "data-pop"
+      ],
       "livePage": "home"
     },
     "starship.html": {
-      "bundles": ["core", "intel", "starship"],
+      "bundles": [
+        "core",
+        "intel",
+        "starship"
+      ],
       "livePage": "starship"
     },
     "starlink.html": {
-      "bundles": ["core", "starlink"],
-      "asyncBundles": ["intel", "starlink-orbit"],
-      "lateFiles": ["starlink-gp.js"]
+      "bundles": [
+        "core",
+        "starlink"
+      ],
+      "asyncBundles": [
+        "intel",
+        "starlink-orbit"
+      ],
+      "lateFiles": [
+        "starlink-gp.js"
+      ]
     },
     "my-tesla.html": {
-      "bundles": ["core", "intel", "my-tesla"],
-      "grow": ["data-band", "data-pop"],
+      "bundles": [
+        "core",
+        "intel",
+        "my-tesla"
+      ],
+      "grow": [
+        "data-band",
+        "data-pop"
+      ],
       "livePage": "my-tesla"
     },
     "updates.html": {
-      "bundles": ["core", "updates"],
-      "asyncBundles": ["intel"]
+      "bundles": [
+        "core",
+        "updates"
+      ],
+      "asyncBundles": [
+        "intel"
+      ]
     },
     "tesla.html": {
-      "bundles": ["core", "intel", "tesla"],
-      "grow": ["data-band", "data-pop"],
+      "bundles": [
+        "core",
+        "intel",
+        "tesla"
+      ],
+      "grow": [
+        "data-band",
+        "data-pop"
+      ],
       "livePage": "tesla"
     },
     "spacex.html": {
-      "bundles": ["core", "intel", "spacex"],
-      "grow": ["data-band", "data-pop"],
+      "bundles": [
+        "core",
+        "intel",
+        "spacex"
+      ],
+      "grow": [
+        "data-band",
+        "data-pop"
+      ],
       "livePage": "spacex"
     },
     "fsd-europe.html": {
-      "bundles": ["core", "intel", "fsd-europe"],
-      "grow": ["data-ref", "data-band", "data-pop"]
+      "bundles": [
+        "core",
+        "intel",
+        "fsd-europe"
+      ],
+      "grow": [
+        "data-ref",
+        "data-band",
+        "data-pop"
+      ]
     },
-    "fsd.html": { "bundles": ["core", "fsd"] },
-    "cybercab.html": { "bundles": ["core", "intel", "cybercab"] },
+    "fsd.html": {
+      "bundles": [
+        "core",
+        "fsd"
+      ]
+    },
+    "cybercab.html": {
+      "bundles": [
+        "core",
+        "intel",
+        "cybercab"
+      ]
+    },
     "autonomy.html": {
-      "bundles": ["core", "intel", "autonomy"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "intel",
+        "autonomy"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "calendar.html": {
-      "bundles": ["core", "intel", "calendar"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "intel",
+        "calendar"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "dispatch.html": {
-      "bundles": ["core", "dispatch"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "dispatch"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "roadster.html": {
-      "bundles": ["core", "intel", "roadster"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "intel",
+        "roadster"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
-    "news.html": { "bundles": ["core", "news"], "grow": ["data-band"] },
+    "news.html": {
+      "bundles": [
+        "core",
+        "news"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
     "see-the-launch.html": {
-      "bundles": ["core", "intel", "see-the-launch"],
+      "bundles": [
+        "core",
+        "intel",
+        "see-the-launch"
+      ],
       "livePage": "spacex",
-      "grow": ["data-band"]
+      "grow": [
+        "data-band"
+      ]
     },
-    "tsla.html": { "bundles": ["core", "tsla"], "grow": ["data-band"] },
-    "tcmv.html": { "bundles": ["core", "tcmv"], "grow": ["data-band"] },
-    "tesla-clubs.html": { "bundles": ["core", "tesla-clubs"] },
+    "tsla.html": {
+      "bundles": [
+        "core",
+        "tsla"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "tcmv.html": {
+      "bundles": [
+        "core",
+        "tcmv"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "tesla-clubs.html": {
+      "bundles": [
+        "core",
+        "tesla-clubs"
+      ]
+    },
     "explainers/fsd.html": {
-      "bundles": ["core", "explainers-fsd", "explainers"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "explainers-fsd",
+        "explainers"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "explainers.html": {
-      "bundles": ["core", "explainers"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "explainers"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "optimus.html": {
-      "bundles": ["core", "intel", "optimus"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "intel",
+        "optimus"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "production.html": {
-      "bundles": ["core", "intel", "production"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "intel",
+        "production"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "promise-tracker.html": {
-      "bundles": ["core", "intel", "promise-tracker"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "intel",
+        "promise-tracker"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
-    "counts.html": { "bundles": ["core", "counts"], "grow": ["data-band"] },
-    "wallpapers.html": { "bundles": ["core", "wallpapers"] },
-    "catch.html": { "bundles": ["core", "catch"], "grow": ["data-band"] },
-    "staging.html": { "bundles": ["core", "staging"] },
+    "counts.html": {
+      "bundles": [
+        "core",
+        "counts"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "wallpapers.html": {
+      "bundles": [
+        "core",
+        "wallpapers"
+      ]
+    },
+    "catch.html": {
+      "bundles": [
+        "core",
+        "catch"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "staging.html": {
+      "bundles": [
+        "core",
+        "staging"
+      ]
+    },
     "robotaxi.html": {
-      "bundles": ["core", "robotaxi"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "robotaxi"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
-    "games.html": { "bundles": ["core", "games"], "grow": ["data-band"] },
-    "search.html": { "bundles": ["core"], "grow": ["data-band"] },
-    "daily.html": { "bundles": ["core", "intel"], "grow": ["data-band"] },
+    "games.html": {
+      "bundles": [
+        "core",
+        "games"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "search.html": {
+      "bundles": [
+        "core"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "daily.html": {
+      "bundles": [
+        "core",
+        "intel"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
     "intel-health.html": {
-      "bundles": ["core", "intel"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "intel"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "guides/tesla-buying-guide.html": {
-      "bundles": ["core", "buy-guide"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "buy-guide"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
-    "model3-explorer.html": { "bundles": ["core"] },
-    "cybertruck-explorer.html": { "bundles": ["core"] },
-    "404.html": { "bundles": ["core"] }
+    "model3-explorer.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "cybertruck-explorer.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "404.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/netherlands.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/lithuania.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/estonia.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/denmark.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/belgium.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/slovenia.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/czechia.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/croatia.html": {
+      "bundles": [
+        "core"
+      ]
+    },
+    "fsd-europe/slovakia.html": {
+      "bundles": [
+        "core"
+      ]
+    }
   },
   "pageGlobs": {
     "explainers/*.html": {
-      "bundles": ["core", "explainers"],
-      "grow": ["data-band"]
+      "bundles": [
+        "core",
+        "explainers"
+      ],
+      "grow": [
+        "data-band"
+      ]
     },
     "dispatch/*.html": {
-      "bundles": ["core"],
-      "grow": ["data-band", "data-pop"]
+      "bundles": [
+        "core"
+      ],
+      "grow": [
+        "data-band",
+        "data-pop"
+      ]
     },
     "reviews/*.html": {
-      "bundles": ["core"],
-      "grow": ["data-band", "data-pop"]
+      "bundles": [
+        "core"
+      ],
+      "grow": [
+        "data-band",
+        "data-pop"
+      ]
     }
   },
-  "defaultPage": { "bundles": ["core"], "grow": ["data-band"] }
+  "defaultPage": {
+    "bundles": [
+      "core"
+    ],
+    "grow": [
+      "data-band"
+    ]
+  }
 }

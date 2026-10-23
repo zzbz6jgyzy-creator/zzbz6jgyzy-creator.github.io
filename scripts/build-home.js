@@ -75,7 +75,7 @@ if (S && S.next) {
 if (F && F.countries) {
   const ok = F.countries.filter((c) => c.status === "approved"), pop = ok.reduce((a, c) => a + (c.pop || 0), 0);
   const pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
-  trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " approved", s: "EU-wide vote needs " + (F.thresholds ? F.thresholds.statesNeeded : 15) + " states · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
+  trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length + " Tesla-listed EU markets", s: "Vehicle eligibility applies · national recognition and committee votes are separate" });
 }
 let tx = null; try { tx = JSON.parse(rd("data/robotaxi-tx.json")); } catch (e) {}
 let savedCc = null;
