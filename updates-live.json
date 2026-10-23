@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T10:51:55Z",
+  "updated": "2026-10-23T11:53:51Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3368,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 50,
+      "count": 57,
       "fleet": 3368,
-      "percent": 1.5,
+      "percent": 1.7,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -51,55 +51,55 @@
       "countries": [
         "US",
         "GB",
-        "FR",
         "DE",
+        "FR",
         "DK",
-        "TW",
         "CH",
-        "ES",
-        "AT",
+        "TW",
         "BG",
+        "AT",
         "IT",
+        "ES",
+        "NL",
         "SE",
         "CZ",
         "TR",
         "QA",
-        "NL",
         "PL",
         "MY",
         "IE"
       ],
       "countryCounts": {
-        "US": 8,
-        "GB": 7,
+        "US": 11,
+        "GB": 8,
+        "DE": 6,
         "FR": 5,
-        "DE": 5,
         "DK": 4,
+        "CH": 3,
         "TW": 3,
-        "CH": 2,
-        "ES": 2,
-        "AT": 2,
         "BG": 2,
+        "AT": 2,
         "IT": 2,
+        "ES": 2,
+        "NL": 2,
         "SE": 1,
         "CZ": 1,
         "TR": 1,
         "QA": 1,
-        "NL": 1,
         "PL": 1,
         "MY": 1,
         "IE": 1
       },
-      "pending": 51,
+      "pending": 46,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-23T10:33:18Z"
+      "lastSeen": "2026-10-23T11:45:22Z"
     },
     {
       "id": "2026.38.5.5",
       "date": "2026-10-21",
-      "count": 112,
+      "count": 114,
       "fleet": 3368,
-      "percent": 3.3,
+      "percent": 3.4,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.12",
@@ -142,19 +142,19 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 105,
+        "AU": 107,
         "NZ": 7
       },
-      "pending": 35,
+      "pending": 33,
       "firstSeen": "2026-10-21T02:20:52Z",
-      "lastSeen": "2026-10-23T10:39:50Z"
+      "lastSeen": "2026-10-23T11:15:41Z"
     },
     {
       "id": "2026.38.5.10",
       "date": "2026-10-20",
-      "count": 69,
+      "count": 74,
       "fleet": 3368,
-      "percent": 2.0,
+      "percent": 2.2,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -194,15 +194,17 @@
       ],
       "countries": [
         "US",
-        "CA"
+        "CA",
+        "MX"
       ],
       "countryCounts": {
-        "US": 68,
-        "CA": 1
+        "US": 72,
+        "CA": 1,
+        "MX": 1
       },
-      "pending": 28,
+      "pending": 25,
       "firstSeen": "2026-10-20T07:52:55Z",
-      "lastSeen": "2026-10-23T09:22:23Z"
+      "lastSeen": "2026-10-23T11:46:20Z"
     },
     {
       "id": "2026.32.200",
@@ -239,7 +241,7 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 1003,
+      "count": 1004,
       "fleet": 3368,
       "percent": 29.8,
       "fsd": null,
@@ -287,15 +289,15 @@
         "UA"
       ],
       "countryCounts": {
-        "US": 939,
+        "US": 940,
         "CA": 58,
         "MX": 4,
         "PR": 1,
         "UA": 1
       },
-      "pending": 60,
+      "pending": 59,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-23T10:17:32Z"
+      "lastSeen": "2026-10-23T11:15:12Z"
     },
     {
       "id": "2026.38.5",
