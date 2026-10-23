@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T03:09:12Z",
+  "updated": "2026-10-23T03:38:07Z",
   "items": [
     {
       "id": "064b214c39fa",
@@ -9,7 +9,6 @@
       "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNbzJ0RXJhU0hVRlhhanlpaG5uc3M1dzVRNFVVY1lTc3ZuT05MNEs0OHQ5Vm1jU1BmYmNrcE5hcllRZWd2U3d0cFNWM2xJcXEya0ktMDBrNWNiLXRhUEtVWjdZWjVRaU5HSjBqckFORnNnQXgwcE1ELXZpUmJpNDBSYXhVb2dJZDgyNWtVZlhXQzhxQnprVFBlZklrMGI5cWU5STFiclctWjFYM21GX2ZNRXhhTUlISVZKSmpKcl8tcVYycmtCVml2bldmNHpDS0FnUFBGem9uaw?oc=5",
       "published": "2026-10-23T02:11:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.1oC2B1H_ILKoXLOzc5N-yg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -59,17 +58,6 @@
       "score": 12
     },
     {
-      "id": "7778a49c0c36",
-      "topic": "spacex",
-      "title": "John Malone Predicts a Major Deal Between Skydance and Elon Musk’s SpaceX",
-      "source": "The Hollywood Reporter",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQSDl0bFZKVE8xSmpFQ0o1UUFzSEZJRG1sdXZWbnRtUUFWUmxPMEhPZExkcm50SldPTk15OWxkckQtWTBBZEZUbzNiQ2ozV3RRZ09Kd2ViNjZvQ0ZUVTAxWlcwZnJvSVoxRFNTQ01XaGZQVVN3YUt1N1EzNmpDUkl2Mm1IZUxoYWt0VlVtS0xsdUdINzctaEhTRms2SmhqTm1EVlZZaE9mektMREhseTBzbzNJNUxsbHIw?oc=5",
-      "published": "2026-10-22T23:31:06Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "a5813c26a0ba",
       "topic": "spacex",
       "title": "Elon Musk’s $10.5B SpaceX gift to kids has a catch: Families can’t say no — and may need to wait 5 years to cash out",
@@ -93,6 +81,17 @@
       "score": 4
     },
     {
+      "id": "00b0deee9830",
+      "topic": "tesla",
+      "title": "Porsche launched a car on flying Tesla day and the memes are incredible",
+      "source": "Mashable",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9uWTBHUXRqVmtKWHFwMnRfOEFJVUxFWVMxMFNJV095ZF9ETUpGVmdHWTZnMWZ4NU9MZkVvZ0NNZUxocjdfWlFJVlpJN2prWjA2bWo2Zk5NOW9oVnFjNVdJeFd4cDFDNVVFblBaOS1QdzdPSmVOM0E?oc=5",
+      "published": "2026-10-22T23:18:59Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "8a4812b0a56b",
       "topic": "spacex",
       "title": "SpaceX seeks access to 80,000 US cell sites for wireless network, Bloomberg News reports",
@@ -103,6 +102,17 @@
       "image": "https://www.bing.com/th?id=ONUT.dO5LztgoOJtfKlqxYZsewQ&pid=News&w=640",
       "kind": "general",
       "score": 9
+    },
+    {
+      "id": "7778a49c0c36",
+      "topic": "spacex",
+      "title": "John Malone Predicts a Major Deal Between Skydance and Elon Musk’s SpaceX",
+      "source": "The Hollywood Reporter",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQSDl0bFZKVE8xSmpFQ0o1UUFzSEZJRG1sdXZWbnRtUUFWUmxPMEhPZExkcm50SldPTk15OWxkckQtWTBBZEZUbzNiQ2ozV3RRZ09Kd2ViNjZvQ0ZUVTAxWlcwZnJvSVoxRFNTQ01XaGZQVVN3YUt1N1EzNmpDUkl2Mm1IZUxoYWt0VlVtS0xsdUdINzctaEhTRms2SmhqTm1EVlZZaE9mektMREhseTBzbzNJNUxsbHIw?oc=5",
+      "published": "2026-10-22T23:01:06Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "70c30d100fb3",
@@ -147,6 +157,7 @@
       "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOb0VmTzBjdXQ1U0dsalFTZzJSaVpBbVlXS0xlYWhEUXVDdFVQeV9pMGtmaG5pSm5DdUEwYXR5Z2MxcG44Q2xtSFM3S0NmaG9zcHRfWUZYNTRScmJCcEhkekRUMUMtQ1Q1a3dlbldpbHJHV29JNjYzMTViR0NaRmxmNHdtWFBTMWdia0dyNGZqbkQ5ZjFvUWwwUTR4ZzBiaXllMXpPYVh3THVkMlFSQ2NKeGZId1U2WndHTm8wXzhQd2c5OFNfVFg5UjZjUjlVOUgwbmgw?oc=5",
       "published": "2026-10-22T21:51:20Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.DBxZUJMkJq6HvzcHRJkCUg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -231,6 +242,17 @@
       "score": 4
     },
     {
+      "id": "ee9801be500e",
+      "topic": "grok",
+      "title": "Anthropic's Claude Duet joins the race for always-on agents",
+      "source": "R&D World",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZktXSVlYU0o4REc3S09jeXZBZkx3M0NZSElBS05HMTNaZXlVcDFHeWZYR29uck80X3pZYWw5MmtiOEFfbER1RUV6aWhHOEl5eTZZdnZzZ2RfeEM3cTlVMTlxajNzRUE5LXZVcDB3R1RkWmZfQUJDMUNVZndjc2VuYXJxQ2s5U09UenhJVmFpb0Vmc2RFLVRjYzI2d19odGxKMzNDbEZyZXZRYWJianc?oc=5",
+      "published": "2026-10-22T20:21:19Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "00e90d5e0715",
       "topic": "spacex",
       "title": "Exclusive / SpaceX $40 billion debt deal gets pricey as AI fears spread",
@@ -239,6 +261,18 @@
       "published": "2026-10-22T20:09:00Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.dcRm2XusPwLr_rIGFDxg3g&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "e9898c5ebb57",
+      "topic": "grok",
+      "title": "Claude Duet vs Grok Bot vs ChatGPT Work vs Meta Muse: Which AI agent is worth using in India?",
+      "source": "Business Today on MSN",
+      "url": "https://www.msn.com/en-in/technology/artificial-intelligence/claude-duet-vs-grok-bot-vs-chatgpt-work-vs-meta-muse-which-ai-agent-is-worth-using-in-india/ar-AA2fTyh7",
+      "published": "2026-10-22T20:00:05Z",
+      "snippet": "AI agents are moving beyond answering questions to handling tasks independently. But their unique features, access requirements, and availability determine which assistant best fits your needs.",
+      "image": "https://www.bing.com/th?id=ONUT.3gCr2gJopNM73fJd_nz92A&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -288,18 +322,6 @@
       "score": 12
     },
     {
-      "id": "b06bcc2dc079",
-      "topic": "tesla",
-      "title": "Tesla in ‘self-driving’ mode kills pedestrian, 71, on California freeway",
-      "source": "New York Post",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPdXI4aWZfSjhFQlZfemJmRlhocFg1SWx5ejhwQkVaTTN0cHBFRjRZMFctOFNlUHRwMU8wVG1wYXYzV0s1eElTMmNicTZ5aW1JbnpnNGQ3czlObk43ME1ZRlE1TVZDSE5wT25qY1RNWjBSbFV3aGJOd3pTU1lnazRoQjctaTE4enNCNVVuMy1FR0M2SVZC?oc=5",
-      "published": "2026-10-22T18:33:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.MDedx7EVL8zmVt6Dq37TsQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "1c614d0939c4",
       "topic": "tesla",
       "title": "SpaceX and Tesla have high election stakes as Elon Musk pours $366 million into campaigns",
@@ -322,17 +344,6 @@
       "image": "https://www.bing.com/th?id=ONUT.9HBhWGR1xHOekrpmngrpXA&pid=News&w=640",
       "kind": "general",
       "score": 7
-    },
-    {
-      "id": "be80a87af4a8",
-      "topic": "grok",
-      "title": "SpaceXSI launches 130-firm Grok partner network to push agentic coding into enterprises",
-      "source": "Techi",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNT1dKcG5wSHkxRHE3Q1ZNeXVNbTh0ak5RaVhnMWlXdHZzME1YOTZ0X2FhRzhKYVZtUVlmbjRaWW1ERzhkbUJVeHJPQzEtcjNRVE1RYk1zbmxOSm9hNTVkeHVDeXcwOEEwcmtza1VfclV4QVc5RmZybUdnRnBBVkJvV3JBTV84cUpD?oc=5",
-      "published": "2026-10-22T17:43:04Z",
-      "snippet": "",
-      "kind": "launch",
-      "score": 12
     },
     {
       "id": "3ceddef89b4b",
@@ -358,18 +369,6 @@
       "score": -2
     },
     {
-      "id": "66dc48c267f9",
-      "topic": "tesla",
-      "title": "Tesla Cybertruck cancelled! Tesla Australia confirms it won't build the electric pick-up truck for Down Under",
-      "source": "CarsGuide",
-      "url": "https://www.carsguide.com.au/car-news/tesla-cybertruck-cancelled-tesla-australia-confirms-it-wont-build-the-electric-pick-up",
-      "published": "2026-10-22T17:00:00Z",
-      "snippet": "Tesla has officially confirmed the Cybertruck electric pick-up will not be coming to Australia. The US electric vehicle (EV) manufacturer sent out emails earlier this morning to Australians who ...",
-      "image": "https://www.bing.com/th?id=ONUT.8grTgljhXd_8EKNoI9iv9A&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "dacf88755b91",
       "topic": "spacex",
       "title": "Musk’s public endorsement of SpaceX-Tesla deal may throw a wrench in talks",
@@ -380,6 +379,17 @@
       "image": "https://www.bing.com/th?id=ONUT.yiDqIRoZGYRbbER7bPkS0Q&pid=News&w=640",
       "kind": "general",
       "score": 9
+    },
+    {
+      "id": "75a3210cfd9f",
+      "topic": "grok",
+      "title": "\"Digger\" and the Problem of Failed Satire",
+      "source": "Psychology Today",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPY1h6eGVHUmhEM3ZsdTR2ZkFzdVVUTFROdE1VT3BBR0tHUnZFWTdqN1dvTzdoN2VXakFDN21YbnJ0WkN5NmZ0YTVQWUlOU3RvWG9OVVhPXzE0Y0R5TElIQmZqNC1xV2xrTVItLUNjWXc4OG9SbmwyTUNSdVNBMnEwWWZWZk82MzFjRmFycGNvc2lsRXZkUEQ0b2YwdjhLcDV5MmpGcE1WYWYzdlNzVWpkVHUyN3ZDZw?oc=5",
+      "published": "2026-10-22T16:52:54Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "f97653f1f01d",
@@ -582,28 +592,28 @@
       "score": 4
     },
     {
-      "id": "26e904f037c7",
+      "id": "d5dd78571806",
       "topic": "tesla",
-      "title": "Tesla just laid out its transportation mission: World domination",
-      "source": "Insider",
-      "url": "https://www.businessinsider.com/teslas-transportation-mission-world-domination-2026-10",
-      "published": "2026-10-22T11:14:00Z",
-      "snippet": "Tesla CEO Elon Musk has said he thinks the world will travel predominantly by autonomous car. Now, he says most of those cars will be Teslas.",
-      "image": "https://www.bing.com/th?id=ONUT.om-qJIfOMwiFUJR09rIbOg&pid=News&w=640",
+      "title": "Tesla buyers are buying for Full Self-Driving and not for the car, data shows",
+      "source": "TESLARATI",
+      "url": "https://www.teslarati.com/tesla-buyers-buying-full-self-driving-not-for-car-data-shows/",
+      "published": "2026-10-22T10:24:00Z",
+      "snippet": "Tesla Full Self-Driving (Supervised) showed a record attach rate at delivery for new vehicles in the third quarter of 2026. 75 percent of new vehicle deliveries in North America included a ...",
+      "image": "https://www.bing.com/th?id=ONUT.z0RcPk9y9CBEOWIaKfyIxQ&pid=News&w=640",
       "kind": "general",
-      "score": 4
+      "score": 14
     },
     {
-      "id": "ef165e51c956",
-      "topic": "spacex",
-      "title": "American Airlines CEO Robert Isom on use of SpaceX's Starlink for in-flight wifi",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/video/2026/10/22/american-airlines-ceo-robert-isom-on-use-of-spacexs-starlink-for-in-flight-wifi.html",
-      "published": "2026-10-22T10:20:00Z",
-      "snippet": "CNBC’s Phil LeBeau and American Airlines CEO Robert Isom joined \"Squawk Box\" to discuss the use of Starlink for in-flight Wi-Fi on more than 500 planes.",
-      "image": "https://www.bing.com/th?id=ONUT.Xn0m3aGr520DOuIVxsjVhQ&pid=News&w=640",
+      "id": "09951d6d25b8",
+      "topic": "tesla",
+      "title": "Tesla just laid out its transportation mission: world domination",
+      "source": "Insider on MSN",
+      "url": "https://www.msn.com/en-au/motoring/general/tesla-just-laid-out-its-transportation-mission-world-domination/ar-AA2fQN1S",
+      "published": "2026-10-22T10:14:35Z",
+      "snippet": "Tesla CEO Elon Musk has said he thinks the world will travel predominantly by autonomous car. Now, he says most of those cars will be Teslas.",
+      "image": "https://www.bing.com/th?id=ONUT.UrQKv52tpDzOzPBLIu9YCg&pid=News&w=640",
       "kind": "general",
-      "score": 7
+      "score": 4
     },
     {
       "id": "b2e222ba0ce2",
@@ -613,6 +623,7 @@
       "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOaUdtT2dQdHpKamg2eDQzVlkxLW5JYVoyWHg3TjRDTnFsb3M1R3QtdUdRbXdPRDFNSHlqU2MyMWtudGJLR0hjVzFsVjQ4aWpNaU9zNGlOMGRPZGN4ZGhMMXQ5ZGx6UFI1el8tOHV3ejg2QlQyQVFyczQtUmtNTGpUMGF0MDBRc28?oc=5",
       "published": "2026-10-22T09:00:00Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.3GSJSNEpMKF5PiM45ckwvA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -748,17 +759,6 @@
       "score": 8
     },
     {
-      "id": "0fe4c09a1dd8",
-      "topic": "grok",
-      "title": "Elon Musk's ex-girlfriend must face xAI forum countersuit",
-      "source": "Courthouse News",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQejg3aU82N3pFQkNZazFVb3lES0cySTU5c25TOG85dzlRMDdDdVVSaWpEWjU2ckJsellfOWVnZDRsSTgycmUzR2x3eWliUnNtNGl4UC0xSlVqNnBOUTQtbkc4bDVWVkhoTHR3aHRnbnlrb2NzLVFvZmd6d2JWWWtKUUp4SkpVQzNpMDhuMWdnZDY?oc=5",
-      "published": "2026-10-22T03:32:48Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "c70c383f6af1",
       "topic": "tesla",
       "title": "Tesla Plans To Start Selling Cybercabs By The End Of The Year",
@@ -771,16 +771,16 @@
       "score": 4
     },
     {
-      "id": "231241b9cdb5",
+      "id": "1151cecf5029",
       "topic": "spacex",
-      "title": "Transcript: Elon Musk’s $3.6tn gamble to merge SpaceX and Tesla",
-      "source": "Financial Times",
-      "url": "https://www.ft.com/content/d0c54a55-ef0c-4987-b6b8-716c0bd3a163?syn-25a6b1a6=1",
-      "published": "2026-10-21T21:00:00Z",
-      "snippet": "Ryan McMorrow Well, it would do a lot for consolidating his grip on Tesla. At SpaceX he controls about 84 per cent of the votes through these super-voting shares. But at Tesla, which has been a big ...",
-      "image": "https://www.bing.com/th?id=ONUT.oqwOFxrvQ3mEcfxpCscCuQ&pid=News&w=640",
+      "title": "CNBC Daily Open: Ukraine's Starlink whodunit",
+      "source": "CNBC on MSN",
+      "url": "https://www.msn.com/en-us/money/markets/cnbc-daily-open-ukraines-starlink-whodunit/ar-AA2fNVWD",
+      "published": "2026-10-22T01:36:47Z",
+      "snippet": "Washington says it has no plans to renew strikes on Iran before the Nov. 3 midterms, but escalation may not wait long after that.",
+      "image": "https://www.bing.com/th?id=ORMS.ef44c4c28e8bd10159b15ab145aca9e3&pid=News&w=640",
       "kind": "general",
-      "score": 4
+      "score": 7
     },
     {
       "id": "7502a2b38ca0",
@@ -793,6 +793,18 @@
       "image": "https://www.bing.com/th?id=ONUT.oXotFTBcLcZZqsKZ7DKBIQ&pid=News&w=640",
       "kind": "software",
       "score": 14
+    },
+    {
+      "id": "4ef4b4d70103",
+      "topic": "tesla",
+      "title": "Buying FSD With a Car Attached: Tesla's Big Bet is Paying Off",
+      "source": "AutoGuide",
+      "url": "https://www.autoguide.com/auto/buying-fsd-with-a-car-attached-tesla-s-big-bet-is-paying-off-44640778",
+      "published": "2026-10-21T18:01:00Z",
+      "snippet": "There’s no denying one reality from Tesla’s latest earnings call: the financial landscape of the automotive industry is shifting fast under our feet.Tesla dropped its Q3 financial results today, and ...",
+      "image": "https://www.bing.com/th?id=ONUT.pFmY_ht1dlmqLwwoOiuvog&pid=News&w=640",
+      "kind": "software",
+      "score": 11
     }
   ]
 }
