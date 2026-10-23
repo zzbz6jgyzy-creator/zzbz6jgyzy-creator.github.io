@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T02:54:32Z",
+  "updated": "2026-10-23T03:55:23Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3367,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 15,
+      "count": 16,
       "fleet": 3367,
-      "percent": 0.4,
+      "percent": 0.5,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -50,9 +50,9 @@
       ],
       "countries": [
         "GB",
+        "US",
         "DE",
         "FR",
-        "US",
         "SE",
         "IT",
         "BG",
@@ -60,17 +60,17 @@
       ],
       "countryCounts": {
         "GB": 5,
+        "US": 3,
         "DE": 2,
         "FR": 2,
-        "US": 2,
         "SE": 1,
         "IT": 1,
         "BG": 1,
         "TW": 1
       },
-      "pending": 40,
+      "pending": 66,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-23T01:39:27Z"
+      "lastSeen": "2026-10-23T03:43:41Z"
     },
     {
       "id": "2026.38.5.5",
@@ -123,16 +123,16 @@
         "AU": 84,
         "NZ": 5
       },
-      "pending": 51,
+      "pending": 53,
       "firstSeen": "2026-10-21T02:20:52Z",
       "lastSeen": "2026-10-23T02:00:37Z"
     },
     {
       "id": "2026.38.5.10",
       "date": "2026-10-20",
-      "count": 57,
+      "count": 59,
       "fleet": 3367,
-      "percent": 1.7,
+      "percent": 1.8,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -175,12 +175,12 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 56,
+        "US": 58,
         "CA": 1
       },
-      "pending": 40,
+      "pending": 38,
       "firstSeen": "2026-10-20T07:52:55Z",
-      "lastSeen": "2026-10-23T02:48:28Z"
+      "lastSeen": "2026-10-23T03:46:41Z"
     },
     {
       "id": "2026.32.200",
@@ -217,9 +217,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 980,
+      "count": 986,
       "fleet": 3367,
-      "percent": 29.1,
+      "percent": 29.3,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -245,33 +245,35 @@
           "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
         },
         {
+          "title": "Minor Fixes",
+          "text": "This release contains minor fixes and improvements"
+        },
+        {
           "title": "Speed Profiles",
           "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
         },
         {
           "title": "Start Self-Driving from Park",
           "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
-        },
-        {
-          "title": "UI Improvements",
-          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
         }
       ],
       "countries": [
         "US",
         "CA",
         "MX",
-        "PR"
+        "PR",
+        "UA"
       ],
       "countryCounts": {
-        "US": 920,
+        "US": 925,
         "CA": 55,
         "MX": 4,
-        "PR": 1
+        "PR": 1,
+        "UA": 1
       },
-      "pending": 80,
+      "pending": 75,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-23T02:47:20Z"
+      "lastSeen": "2026-10-23T03:31:39Z"
     },
     {
       "id": "2026.38.5",
@@ -335,7 +337,7 @@
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 320,
+      "count": 321,
       "fleet": 3367,
       "percent": 9.5,
       "fsd": null,
@@ -394,28 +396,28 @@
         "BE",
         "UA",
         "HU",
+        "LT",
+        "BG",
         "IS",
         "PT",
-        "LT",
         "AE",
-        "BG",
-        "TR",
+        "NZ",
         "IL",
         "SE",
-        "SK",
-        "JP",
-        "NZ",
-        "CO",
-        "RO",
-        "SI",
-        "MY",
-        "MA",
+        "TR",
+        "HK",
+        "TH",
+        "PH",
         "SG",
         "QA",
         "IE",
-        "PH",
-        "TH",
-        "HK"
+        "SK",
+        "MY",
+        "SI",
+        "MA",
+        "RO",
+        "CO",
+        "JP"
       ],
       "countryCounts": {
         "US": 101,
@@ -436,32 +438,32 @@
         "BE": 4,
         "UA": 3,
         "HU": 3,
+        "LT": 2,
+        "BG": 2,
         "IS": 2,
         "PT": 2,
-        "LT": 2,
         "AE": 2,
-        "BG": 2,
-        "TR": 2,
+        "NZ": 2,
         "IL": 2,
         "SE": 2,
-        "SK": 1,
-        "JP": 1,
-        "NZ": 1,
-        "CO": 1,
-        "RO": 1,
-        "SI": 1,
-        "MY": 1,
-        "MA": 1,
+        "TR": 2,
+        "HK": 1,
+        "TH": 1,
+        "PH": 1,
         "SG": 1,
         "QA": 1,
         "IE": 1,
-        "PH": 1,
-        "TH": 1,
-        "HK": 1
+        "SK": 1,
+        "MY": 1,
+        "SI": 1,
+        "MA": 1,
+        "RO": 1,
+        "CO": 1,
+        "JP": 1
       },
-      "pending": 33,
+      "pending": 31,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-23T01:05:07Z"
+      "lastSeen": "2026-10-23T03:30:52Z"
     },
     {
       "id": "2026.33.5",
