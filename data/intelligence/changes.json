@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-23T07:46:24.873Z",
+  "updated": "2026-10-23T07:54:41.205Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "spacex-launches:event:spcx-q3-lockup-release",
+      "topic": "spacex-launches",
+      "tracker": "launches",
+      "field": "event:spcx-q3-lockup-release",
+      "previous": "2026-10-22T00:00:00.000Z|confirmed",
+      "next": "2026-10-22T00:00:00.000Z|ended",
+      "at": "2026-10-23T08:30:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
+      "sourceUrl": "",
+      "href": "/dispatch/musk-earnings-week-q3-2026.html",
+      "summary": "SpaceX lock-up release · up to 1.3B shares changed from 2026-10-22T00:00:00.000Z|confirmed to 2026-10-22T00:00:00.000Z|ended.",
+      "title": "SpaceX lock-up release · up to 1.3B shares",
+      "id": "changed|spacex-launches:event:spcx-q3-lockup-release|2026-10-23T08:30:00.000Z|2026-10-22T00:00:00.000Z|ended"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-bot-phone-apps.html",
