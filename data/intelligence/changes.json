@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-23T16:13:58.176Z",
+  "updated": "2026-10-23T16:55:44.450Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:most-common",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "most-common",
+      "previous": "2026.38.5.1@29.9",
+      "next": "2026.38.5.1@30",
+      "at": "2026-10-23T16:55:43.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Most common sample build changed from 2026.38.5.1@29.9 to 2026.38.5.1@30.",
+      "title": "Most common sample build",
+      "id": "changed|tesla-software:most-common|2026-10-23T16:55:43.000Z|2026.38.5.1@30"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starlink-mobile-80000-towers.html",
