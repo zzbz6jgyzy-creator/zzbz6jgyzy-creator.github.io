@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T13:58:49Z",
+ "updated": "2026-10-23T14:57:39Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,40 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-23T13:58:49Z",
+  "fetched": "2026-10-23T14:57:39Z",
   "items": [
+   {
+    "t": "2026-10-23T14:48:22Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model Y AWD LR (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-23T14:28:40Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "Singapore"
+   },
+   {
+    "t": "2026-10-23T14:28:07Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 AWD LR (2024)",
+    "hw": "4.0",
+    "country": "Poland"
+   },
+   {
+    "t": "2026-10-23T14:01:28Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-23T13:41:28Z",
     "to": "2026.38.5.10",
@@ -540,38 +572,6 @@
     "model": "Model Y AWD LR (2026)",
     "hw": "4.0",
     "country": "Australia"
-   },
-   {
-    "t": "2026-10-23T12:44:01Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 AWD LR (2019)",
-    "hw": "3.0",
-    "country": "Austria"
-   },
-   {
-    "t": "2026-10-23T12:42:22Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model 3 SR (2025)",
-    "hw": "3.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-23T12:26:41Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model Y AWD LR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-23T12:20:40Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model Y SR (2024)",
-    "hw": "3.0",
-    "country": "United Kingdom"
    }
   ]
  }
