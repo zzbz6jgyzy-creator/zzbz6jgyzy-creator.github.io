@@ -29,6 +29,7 @@ on:
       - scripts/js-bundles.json
       - scripts/rebuild-js.sh
       - scripts/build-seo.py
+      - scripts/editorial-dates.py
       - scripts/build-images.mjs
       - scripts/build-wallpaper-thumbs.mjs
       - '*.js'

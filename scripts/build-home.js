@@ -36,6 +36,9 @@ try {
   }
 } catch (e) { console.warn("pin skip", e.message); }
 const L = cards[0];
+// Optional homepage-only copy never changes the article's title, description or body.
+const homeArticle = (() => { try { return (JSON.parse(rd("data/articles.json")).articles || []).find((a) => L && a.url === L.href); } catch (e) { return null; } })();
+const homeCopy = (key, fallback) => homeArticle && typeof homeArticle[key] === "string" && homeArticle[key].trim() ? homeArticle[key].trim() : fallback;
 // Lead image: <picture> with the AVIF/WebP sets build-images.mjs makes (<name>-<w>w.avif/webp), plus a preload
 const pinAlt = (() => { try { const a = (JSON.parse(rd("data/articles.json")).articles || []).find((x) => L && x.url === L.href); return a && a.imageAlt; } catch (e) { return ""; } })();
 const leadSrc = (L && L.img) || "/assets/dispatch/cybercab-austin-poster.jpg";
@@ -53,7 +56,7 @@ const leadImg = `${sets.avif ? `<source type="image/avif" srcset="${esc(sets.avi
 const preload = sets.avif ? `<link rel="preload" as="image" type="image/avif" imagesrcset="${esc(sets.avif)}" imagesizes="${SZ}" fetchpriority="high" />` : `<link rel="preload" as="image" href="${esc(leadSrc)}" fetchpriority="high" />`;
 const lead = L ? `<a class="hv-lead" href="${esc(L.href)}" data-hv-lead>
             <div class="hv-lead-media"><picture>${leadImg}</picture></div>
-            <div class="hv-lead-copy"><span class="hv-tag" data-hv-tag>${esc(L.tag)}</span><h2 data-hv-h>${esc(L.h)}</h2><p data-hv-p>${esc(L.p)}</p><span class="hv-read">Read the story →</span></div>
+            <div class="hv-lead-copy"><span class="hv-tag" data-hv-tag>${esc(L.tag)}</span><h2 data-hv-h>${esc(homeCopy("homeTitle", L.h))}</h2><p data-hv-p>${esc(homeCopy("homeSummary", L.p))}</p><span class="hv-read">Read the story →</span></div>
           </a>` : null;
 const suppThumb = (src) => {
   const webp = String(src).replace(/\.(jpe?g|png)$/i, "-480w.webp");
@@ -129,6 +132,7 @@ function eventCardFor(page) {
     const dm = /^(\d{4})-(\d\d)-(\d\d)/.exec(e.start || ""), dayD = (e.timeTbc || e.net) && dm ? new Date(Date.UTC(+dm[1], dm[2] - 1, +dm[3], 12)) : new Date(e.start);
     const date = new Intl.DateTimeFormat("en-GB", o).format(dayD) + (e.timeTbc || e.net ? "" : " · " + new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }).format(new Date(e.start)));
     const chip = e.timeTbc ? "Time TBC" : e.net ? "NET" : "UTC";
+    if (page === "home") return '<section class="lv lv-inhero lv-quiet lv-home-next" aria-label="Next livestream" data-prebuilt>' + require('../home-next.js').html(e, {dateText: date, chip, url, now}) + '</section>';
     const src = e.thumb || e.image || "";
     const thumb = /\/assets\/live\/falcon9\.(jpe?g|png|webp)$/i.test(src)
       ? `<div class="lw-thumb" role="img" aria-label="${esc(e.title)}"><picture><source type="image/avif" srcset="/assets/live/falcon9-480w.avif 480w, /assets/live/falcon9-960w.avif 960w, /assets/live/falcon9-1200w.avif 1200w" sizes="(max-width:760px) 92vw, 360px" /><source type="image/webp" srcset="/assets/live/falcon9-480w.webp 480w, /assets/live/falcon9-960w.webp 960w, /assets/live/falcon9-1200w.webp 1200w" sizes="(max-width:760px) 92vw, 360px" /><img src="/assets/live/falcon9.jpg" alt="" width="1200" height="800" fetchpriority="high" decoding="async" /></picture></div>`

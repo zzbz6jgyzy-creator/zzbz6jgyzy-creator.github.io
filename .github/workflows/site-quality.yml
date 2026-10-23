@@ -1,0 +1,52 @@
+name: Editorial dates, homepage and mobile baseline
+on:
+  pull_request:
+    paths: ['home-v2.*', 'home-next.js', 'live.js', 'scripts/build-home.js', 'scripts/build-seo.py', 'scripts/editorial-dates.py', 'scripts/performance-baseline.mjs', 'data/articles.json', 'tests/test_editorial_dates.py', 'tests/homepage-quality-browser.py', '.github/workflows/site-quality.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 tests/test_editorial_dates.py
+      - run: node scripts/test-home-tracker-data.mjs
+      - name: Homepage browser journeys
+        run: |
+          python3 -m pip install playwright==1.62.0
+          CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/homepage-quality-browser.py
+  baseline:
+    name: Mobile baseline (${{ matrix.page }})
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        page: [home, article, updates]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned audit tool
+        run: npm install --prefix "$RUNNER_TEMP/sd-lighthouse" --no-save --no-package-lock lighthouse@13.0.1
+      - name: Measure deployed site (three mobile runs)
+        env:
+          LIGHTHOUSE_BIN: ${{ runner.temp }}/sd-lighthouse/node_modules/.bin/lighthouse
+          CHROME_PATH: /usr/bin/google-chrome
+          LH_PAGES: ${{ matrix.page }}
+          LH_OUT: tmp/baseline-${{ matrix.page }}
+        run: |
+          node scripts/performance-baseline.mjs
+          cat "tmp/baseline-${{ matrix.page }}/summary.md" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-baseline-${{ matrix.page }}
+          path: tmp/baseline-${{ matrix.page }}/
+          if-no-files-found: ignore

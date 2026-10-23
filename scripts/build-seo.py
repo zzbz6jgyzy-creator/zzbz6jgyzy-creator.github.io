@@ -16,11 +16,11 @@
    Supercharged Daily. Replaces only the seo:ld markers, so it is idempotent.
 5. sitemap.xml is rebuilt from every public page (skips noindex pages, 404
    and /preview/). staging.html is the public Hot Staging game — it stays
-   in the sitemap unless it has noindex. lastmod = last git commit date of
-   each file.
+   in the sitemap unless it has noindex. Article lastmod uses supported
+   editorial history; other pages retain their existing git date behavior.
 Idempotent: re-running produces no diff.
 """
-import json, os, re, subprocess, html, glob
+import json, os, re, subprocess, html, glob, runpy, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://superchargeddaily.com"
@@ -30,6 +30,8 @@ NAV_RE = re.compile(r"\n?\s*<!-- seo:nav -->.*?<!-- /seo:nav -->", re.S)
 ABOUT_RE = re.compile(r"\n?\s*<!-- seo:about -->.*?<!-- /seo:about -->", re.S)
 RELATED_CSS_RE = re.compile(r"/related\.css\?v=[^\"\s]+")
 CSS_VER = "202610182245"
+EDITORIAL = runpy.run_path(os.path.join(ROOT, 'scripts', 'editorial-dates.py'))
+ARTICLE_DATES = {}
 
 
 def meta(src, attr, name):
@@ -66,6 +68,19 @@ def ensure_head(src):
     if "</head>" in src:
         return src
     return re.sub(r"(\n[ \t]*)<body\b", r"\n  </head>\1<body", src, count=1)
+
+
+def head_block(src, block):
+    # Keep the shared contents stylesheet immediately before the member block;
+    # both generators rely on that stable order for idempotent builds.
+    for marker in ('<!--sd:wayfinding-style-->', '<!--sd:members-->'):
+        pos = src.find(marker)
+        if pos >= 0:
+            line = src.rfind('\n', 0, pos) + 1
+            if not src[line:pos].strip():
+                pos = line
+            return src[:pos] + block.strip('\n') + '\n' + src[pos:]
+    return src.replace('</head>', block + '\n  </head>', 1)
 
 
 AUTHOR = "Alex R"  # byline name on every Dispatch article (not the X handle)
@@ -146,6 +161,8 @@ def articles():
         short = a.get("title") or title
         desc = meta(src, "name", "description") or a.get("summary", "")
         img = meta(src, "property", "og:image") or (SITE + a["image"] if a.get("image") else None)
+        revised = EDITORIAL['revision_date'](ROOT, os.path.relpath(path, ROOT), a['date'], src)
+        ARTICLE_DATES[a['url'].lstrip('/')] = revised
         news = {
             "@context": "https://schema.org",
             "@type": "NewsArticle",
@@ -153,7 +170,7 @@ def articles():
             "headline": title[:110],
             "description": desc,
             "datePublished": a["date"],
-            "dateModified": max(a["date"], git_date(path) or a["date"]),
+            **({'dateModified': revised} if revised else {}),
             "author": author,
             "publisher": publisher,
             "articleSection": a.get("tag") or a.get("topic", ""),
@@ -178,7 +195,7 @@ def articles():
                 '<meta property="og:type" content="article" />\n    <meta property="article:published_time" content="%s" />' % a["date"],
                 1,
             )
-        new = new.replace("</head>", block + "\n  </head>", 1)
+        new = head_block(new, block)
         new = re.sub(r"(<!-- /seo:ld -->)\n\s*\n?\s*</head>", r"\1\n  </head>", new)
         new = inject_nav(new, short)
         new = inject_about(new)
@@ -207,7 +224,7 @@ def about_page():
     new = LD_RE.sub("", src)
     if "</head>" not in new:
         return
-    new = new.replace("</head>", block + "\n  </head>", 1)
+    new = head_block(new, block)
     new = re.sub(r"(<!-- /seo:ld -->)\n\s*\n?\s*</head>", r"\1\n  </head>", new)
     if new != src:
         open(path, "w", encoding="utf-8").write(new)
@@ -288,7 +305,7 @@ def pages():
         new = LD_RE.sub("", src)
         if "</head>" not in new:
             continue
-        new = new.replace("</head>", block + "\n  </head>", 1)
+        new = head_block(new, block)
         new = re.sub(r"(<!-- /seo:ld -->)\n\s*\n?\s*</head>", r"\1\n  </head>", new)
         if new != src:
             open(path, "w", encoding="utf-8").write(new)
@@ -310,7 +327,13 @@ def sitemap():
         if re.search(r'name="robots"[^>]*noindex', head):
             continue
         loc = SITE + "/" if rel == "index.html" else SITE + "/" + rel
-        d = (git_date(rel) or "")[:10]
+        if rel.startswith('dispatch/'):
+            # Unknown editorial history must not fall back to a template commit.
+            revised = ARTICLE_DATES.get(rel)
+            parsed = EDITORIAL['timestamp'](revised)
+            d = parsed.astimezone(datetime.timezone.utc).date().isoformat() if parsed else ''
+        else:
+            d = (git_date(rel) or "")[:10]
         rows.append("  <url><loc>%s</loc>%s</url>" % (loc, "<lastmod>%s</lastmod>" % d if d else ""))
     rows.sort(key=lambda r: (0 if r.startswith("  <url><loc>%s/</loc>" % SITE) else 1, r))
     xml = (
