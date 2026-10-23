@@ -122,9 +122,9 @@ def load_version(version: str) -> dict | None:
 def snapshot() -> dict:
     listing = fetch(BASE)
     names = listing.get("response") if listing.get("code") == 200 else []
-    if not isinstance(names, list):
-        raise RuntimeError("Teslascope software list was not a list")
-    wanted = [str(name) for name in names if str(name).startswith("2026.")][:24]
+    if not isinstance(names, list) or not names:
+        raise RuntimeError("Teslascope software list was empty or invalid")
+    wanted = [str(name) for name in names if re.fullmatch(r"\d{4}(?:\.\d+)+", str(name))][:24]
     versions = []
     seen = set()
     latest = load_version("latest")
@@ -144,6 +144,13 @@ def snapshot() -> dict:
             break
     versions.sort(key=lambda row: (row.get("date") or "", row.get("id") or ""), reverse=True)
     fleet = next((row["fleet"] for row in versions if row.get("fleet")), 0)
+    if (
+        not versions
+        or fleet <= 0
+        or not any(row["count"] > 0 for row in versions)
+        or any(row["count"] < 0 or row["count"] > fleet for row in versions)
+    ):
+        raise RuntimeError("Software snapshot has no usable observed fleet/counts")
     return {
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": "teslascope",

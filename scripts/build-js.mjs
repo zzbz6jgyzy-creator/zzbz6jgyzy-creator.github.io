@@ -42,7 +42,9 @@ mkdirSync(OUT, { recursive: true });
 const stale = readdirSync(OUT).filter((f) => /\.bundle\.[a-f0-9]+\.js$/.test(f) || f === "manifest.json");
 for (const f of stale) unlinkSync(join(OUT, f));
 
-const manifest = { generated: new Date().toISOString(), bundles: {} };
+// The manifest describes content. A wall-clock timestamp makes identical builds
+// disagree when the homepage and bundle workflows rebase onto each other.
+const manifest = { bundles: {} };
 
 for (const [name, files] of Object.entries(CFG.bundles)) {
   const source = concat(files);
