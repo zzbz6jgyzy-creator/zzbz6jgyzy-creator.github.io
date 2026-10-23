@@ -50,8 +50,8 @@
     "starlink": [
       "starlink-data.js",
       "starlink-live.js",
-      "starlink-tracker.js",
-      "countup.js"
+      "starlink-model.js",
+      "starlink-observatory.js"
     ],
     "starlink-orbit": [
       "cesium-lazy.js",

@@ -1,0 +1,68 @@
+<section class="so-sky sl-id" id="identify" aria-labelledby="sl-id-h">
+          <div class="section-head">
+            <h2 id="sl-id-h">Your sky. Your perspective.</h2>
+            <p>Find geometric Starlink candidates above a location, or near your phone’s pointing direction.</p>
+          </div>
+          <p class="so-kicker">04 / Your sky</p><p class="so-caution">A candidate is not a confirmed sighting. Compass accuracy, old orbital elements, sunlight and weather all affect the result. City search sends your query to Open-Meteo. Location and compass access are optional.</p><noscript><p>Enable JavaScript to use the sky finder. The constellation counts, hardware guide and sources on this page remain available.</p></noscript><p class="sl-id-age" id="sl-id-age">Starlink catalog</p>
+          <p class="sl-id-warn" id="sl-id-stale" hidden>This catalog is more than 24 hours old. Orbits drift — a pointed match can be off.</p>
+          <p class="sl-id-desk" id="sl-id-desk">Point-and-identify needs a phone compass. On this computer you can still see which Starlinks are up from your location.</p>
+          <div class="sl-id-loc">
+            <input id="sl-id-q" type="search" placeholder="City or place" autocomplete="off" aria-label="Search a city" />
+            <button type="button" id="sl-id-geo">Use my location</button>
+            <button type="button" id="sl-id-clear">Clear</button>
+          </div>
+          <ul class="sl-id-suggest" id="sl-id-suggest" hidden></ul>
+          <p class="sl-id-loc-hint" id="sl-id-hint"></p>
+          <p class="sl-id-status" id="sl-id-status">Pick a place, then point your phone at the sky.</p>
+          <div id="sl-id-dash" hidden>
+            <div class="sl-id-grid">
+              <article class="sl-id-panel">
+                <h3>Point at the sky</h3>
+                <p>Lift the top of the phone toward the moving light. White mark is the top.</p>
+                <div class="sl-id-aim">
+                  <div class="sl-id-compass-col">
+                    <div class="sl-id-compass-frame">
+                      <div class="sl-id-compass-well">
+                        <svg class="sl-id-compass" viewBox="0 0 100 100" role="img" aria-label="Phone heading">
+                          <defs>
+                            <radialGradient id="sl-id-face" cx="46%" cy="36%" r="64%">
+                              <stop offset="0%" stop-color="#2a3846"/>
+                              <stop offset="42%" stop-color="#151b22"/>
+                              <stop offset="100%" stop-color="#07090c"/>
+                            </radialGradient>
+                          </defs>
+                          <circle cx="50" cy="50" r="46.5" fill="url(#sl-id-face)" stroke="rgba(232,195,106,.28)" stroke-width=".7"/>
+                          <polygon points="50,2 54.2,10 45.8,10" fill="#f7f8fa"/>
+                          <g data-sl-id-rose>
+                            <text x="50" y="22" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">N</text>
+                            <text x="78" y="53" text-anchor="middle" fill="#d7dde3" font-size="7" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">E</text>
+                            <text x="50" y="84" text-anchor="middle" fill="#d7dde3" font-size="7" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">S</text>
+                            <text x="22" y="53" text-anchor="middle" fill="#d7dde3" font-size="7" font-weight="700" font-family="IBM Plex Mono,ui-monospace,monospace">W</text>
+                            <g data-sl-id-needle>
+                              <polygon points="50,12 55.5,51 50,46 44.5,51" fill="#e31937"/>
+                              <polygon points="50,88 55,51 50,56 45,51" fill="#5f6872"/>
+                            </g>
+                          </g>
+                          <circle cx="50" cy="50" r="3.2" fill="#f4f6f8"/>
+                        </svg>
+                      </div>
+                      <p class="sl-id-cue" data-sl-id-cue>Point your phone at the sky</p>
+                      <button type="button" class="sl-id-arm" id="sl-id-arm">Click here to use live compass</button>
+                      <p class="sl-id-compass-hint" data-sl-id-hint>On a phone, tap live compass and point at the sky.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p id="sl-id-msg">Point your phone at the sky.</p>
+                    <div id="sl-id-hits"></div>
+                  </div>
+                </div>
+              </article>
+              <article class="sl-id-panel">
+                <h3>Up now</h3>
+                <p>Starlinks currently above 15° from here. Not every one is visible to the eye.</p>
+                <ul class="sl-id-up" id="sl-id-up"></ul>
+              </article>
+            </div>
+            <p class="sl-fine">Orbits from the cached CelesTrak GP file on this site, hardware generations from Jonathan McDowell’s GCAT. The browser never talks to CelesTrak.</p>
+          </div>
+        </section>

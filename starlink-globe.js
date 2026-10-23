@@ -15,7 +15,7 @@
   const MAX_MODELS = 36;
   const MAX_WIRES = 8;
   const TRACE_SAMPLES = 72;
-  const GEN_IDS = ["v10", "v15", "v2m", "v2opt", "v2dtc", "v3"];
+  const GEN_IDS = ["v10", "v15", "v2m", "v2opt", "v2dtc", "v3", "unknown"];
   const GEN_COLORS = {
     v10: "#8b909c",
     v15: "#b7bcc6",
@@ -23,6 +23,7 @@
     v2opt: "#e31937",
     v2dtc: "#5ad0ff",
     v3: "#f4f4f0",
+    unknown: "#8293a1",
   };
 
   const api = (window.StarlinkGlobe = window.StarlinkGlobe || {});
@@ -143,7 +144,7 @@
         const rec = sat.twoline2satrec(row[1], row[2]);
         if (!rec || rec.error) return;
         recs.push(rec);
-        gens.push(GEN_IDS[gi] || "v2opt");
+        gens.push((gp.gens?.[gi] || GEN_IDS[gi] || "unknown"));
       } catch {
         /* skip a bad TLE */
       }
@@ -375,7 +376,7 @@
     ensureModels();
     const scored = [];
     recs.forEach((rec, i) => {
-      if (!finite3(rec._pos)) return;
+      if (!finite3(rec._pos) || gens[i] === "unknown") return;
       const d = Cesium.Cartesian3.distance(cam, rec._pos);
       if (d < MODEL_RANGE) scored.push({ i, d, rec });
     });
