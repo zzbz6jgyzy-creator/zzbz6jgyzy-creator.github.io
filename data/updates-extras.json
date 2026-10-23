@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T11:53:51Z",
+ "updated": "2026-10-23T13:04:07Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-23T11:53:51Z",
+  "fetched": "2026-10-23T13:04:07Z",
   "items": [
+   {
+    "t": "2026-10-23T12:44:01Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 AWD LR (2019)",
+    "hw": "3.0",
+    "country": "Austria"
+   },
+   {
+    "t": "2026-10-23T12:42:22Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model 3 SR (2025)",
+    "hw": "3.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-23T12:26:41Z",
+    "to": "2026.38.5.5",
+    "from": "2026.20.10",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-23T12:20:40Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y SR (2024)",
+    "hw": "3.0",
+    "country": "United Kingdom"
+   },
+   {
+    "t": "2026-10-23T11:59:50Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model Y AWD LR (2023)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-23T11:53:08Z",
     "to": "2026.38.5.1",
@@ -530,46 +570,6 @@
     "to": "2026.38.3.2",
     "from": "2026.38.3.1",
     "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-23T11:38:41Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 AWD LR (2019)",
-    "hw": "0.0",
-    "country": "Netherlands"
-   },
-   {
-    "t": "2026-10-23T11:33:51Z",
-    "to": "2026.38.5.10",
-    "from": "2026.38.5.1",
-    "model": "Cybertruck AWD (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-23T11:32:29Z",
-    "to": "2026.38.5.10",
-    "from": "2026.38.5.1",
-    "model": "Model 3 RWD LR (2025)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-23T11:32:18Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 Performance (2019)",
-    "hw": "3.0",
-    "country": "United Kingdom"
-   },
-   {
-    "t": "2026-10-23T11:31:30Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 Performance (2024)",
     "hw": "4.0",
     "country": "United States"
    }
