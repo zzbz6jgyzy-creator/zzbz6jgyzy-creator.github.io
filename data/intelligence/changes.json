@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T22:42:04.028Z",
+  "updated": "2026-10-23T22:50:05.704Z",
   "changes": [
     {
       "type": "logged",
@@ -87,23 +87,6 @@
       "id": "logged|dispatch:/dispatch/space-force-no-bids.html|2026-10-23T01:45:00.000Z|SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left"
     },
     {
-      "type": "changed",
-      "factId": "robotaxi:tx-cybercab",
-      "topic": "robotaxi",
-      "tracker": "robotaxi",
-      "field": "tx-cybercab",
-      "previous": "351",
-      "next": "420",
-      "at": "2026-10-23T00:00:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Texas DMV list via fsddb.com",
-      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
-      "href": "/cybercab.html",
-      "summary": "Texas Cybercab registrations changed from 351 to 420.",
-      "title": "Texas Cybercab registrations",
-      "id": "changed|robotaxi:tx-cybercab|2026-10-23T00:00:00.000Z|420"
-    },
-    {
       "type": "logged",
       "factId": "fsd:availability",
       "topic": "fsd",
@@ -119,6 +102,23 @@
       "summary": "Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.",
       "title": "availability",
       "id": "logged|fsd:availability|2026-10-23T00:00:00.000Z|Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations."
+    },
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "351",
+      "next": "420",
+      "at": "2026-10-23T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html#cc-changes",
+      "summary": "Texas Cybercab registrations moved from 351 to 420. A registered car isn’t necessarily in service yet.",
+      "title": "Texas Cybercab count",
+      "id": "changed|robotaxi:tx-cybercab|2026-10-23T00:00:00.000Z|420"
     },
     {
       "type": "appeared",
