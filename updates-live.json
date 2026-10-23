@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T01:08:42Z",
+  "updated": "2026-10-23T01:54:56Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3367,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 11,
+      "count": 15,
       "fleet": 3367,
-      "percent": 0.3,
+      "percent": 0.4,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -18,6 +18,10 @@
         {
           "title": "Apple Music",
           "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Dynamic Headlight Leveling",
+          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
         },
         {
           "title": "Emergency Drive Away",
@@ -32,42 +36,46 @@
           "text": "This update includes important security fixes and improvements."
         },
         {
+          "title": "Set Arrival Energy",
+          "text": "Set your desired Arrival Energy for any trip from your phone. Open the location tab in the Tesla Mobile App, enter your destination, and tap Set Arrival Energy. Requires Mobile App v4.58.0 or later."
+        },
+        {
           "title": "Supercharger Site Maps",
           "text": "You can now see a detailed view of select Tesla Superchargers by tapping \"View Site Map.\" When navigating to a pilot location, the site layout and live occupancy (Available / Occupied / Down) will be displayed upon arri\u2026"
         },
         {
           "title": "Visual Updates",
           "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
-        },
-        {
-          "title": "Wheel Selection",
-          "text": "Choose from new wheel options to customize the appearance of your Tesla."
         }
       ],
       "countries": [
         "GB",
         "DE",
-        "SE",
         "FR",
+        "US",
+        "SE",
         "IT",
-        "BG"
+        "BG",
+        "TW"
       ],
       "countryCounts": {
         "GB": 5,
         "DE": 2,
+        "FR": 2,
+        "US": 2,
         "SE": 1,
-        "FR": 1,
         "IT": 1,
-        "BG": 1
+        "BG": 1,
+        "TW": 1
       },
-      "pending": 43,
+      "pending": 40,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-22T23:56:29Z"
+      "lastSeen": "2026-10-23T01:39:27Z"
     },
     {
       "id": "2026.38.5.5",
       "date": "2026-10-21",
-      "count": 86,
+      "count": 88,
       "fleet": 3367,
       "percent": 2.6,
       "fsd": null,
@@ -112,19 +120,19 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 82,
+        "AU": 84,
         "NZ": 4
       },
-      "pending": 12,
+      "pending": 52,
       "firstSeen": "2026-10-21T02:20:52Z",
-      "lastSeen": "2026-10-23T00:39:42Z"
+      "lastSeen": "2026-10-23T01:44:28Z"
     },
     {
       "id": "2026.38.5.10",
       "date": "2026-10-20",
-      "count": 34,
+      "count": 48,
       "fleet": 3367,
-      "percent": 1.0,
+      "percent": 1.4,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -163,14 +171,16 @@
         }
       ],
       "countries": [
-        "US"
+        "US",
+        "CA"
       ],
       "countryCounts": {
-        "US": 34
+        "US": 47,
+        "CA": 1
       },
-      "pending": 58,
+      "pending": 48,
       "firstSeen": "2026-10-20T07:52:55Z",
-      "lastSeen": "2026-10-23T01:03:43Z"
+      "lastSeen": "2026-10-23T01:47:41Z"
     },
     {
       "id": "2026.32.200",
@@ -207,9 +217,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 971,
+      "count": 975,
       "fleet": 3367,
-      "percent": 28.8,
+      "percent": 29.0,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -254,14 +264,14 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 912,
+        "US": 916,
         "CA": 54,
         "MX": 4,
         "PR": 1
       },
-      "pending": 89,
+      "pending": 85,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-23T00:35:57Z"
+      "lastSeen": "2026-10-23T01:29:18Z"
     },
     {
       "id": "2026.38.5",
@@ -325,7 +335,7 @@
     {
       "id": "2026.38.3.1",
       "date": "2026-10-08",
-      "count": 319,
+      "count": 320,
       "fleet": 3367,
       "percent": 9.5,
       "fsd": null,
@@ -411,7 +421,7 @@
         "US": 101,
         "GB": 40,
         "DE": 28,
-        "FR": 17,
+        "FR": 18,
         "CH": 12,
         "DK": 12,
         "IT": 11,
@@ -449,9 +459,9 @@
         "TH": 1,
         "HK": 1
       },
-      "pending": 34,
+      "pending": 33,
       "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-22T13:38:56Z"
+      "lastSeen": "2026-10-23T01:05:07Z"
     },
     {
       "id": "2026.33.5",
