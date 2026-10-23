@@ -1,23 +1,6 @@
 {
-  "updated": "2026-10-23T02:54:38.310Z",
+  "updated": "2026-10-23T03:09:17.976Z",
   "changes": [
-    {
-      "type": "changed",
-      "factId": "tesla-software:most-common",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "most-common",
-      "previous": "2026.38.5.1@29",
-      "next": "2026.38.5.1@29.1",
-      "at": "2026-10-23T02:54:32.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Most common sample build changed from 2026.38.5.1@29 to 2026.38.5.1@29.1.",
-      "title": "Most common sample build",
-      "id": "changed|tesla-software:most-common|2026-10-23T02:54:32.000Z|2026.38.5.1@29.1"
-    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-bot-phone-apps.html",
