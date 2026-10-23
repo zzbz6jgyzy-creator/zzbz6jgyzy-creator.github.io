@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T22:34:17.699Z",
+  "generatedAt": "2026-10-23T22:42:04.028Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -188,7 +188,7 @@
       "topic": "robotaxi",
       "tracker": "robotaxi",
       "field": "tx-cybercab",
-      "value": "351",
+      "value": "420",
       "label": "Texas Cybercab registrations",
       "at": "2026-10-23T00:00:00.000Z",
       "evidence": "independently_corroborated",

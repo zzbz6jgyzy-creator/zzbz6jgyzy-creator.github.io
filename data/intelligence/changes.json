@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T22:34:17.699Z",
+  "updated": "2026-10-23T22:42:04.028Z",
   "changes": [
     {
       "type": "logged",
@@ -85,6 +85,23 @@
       "summary": "Politico says SpaceX declined to bid and no rival offered a rocket. Vulcan was grounded this year, New Glenn lost its pad, and the newer rockets haven’t flown yet.",
       "title": "SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left",
       "id": "logged|dispatch:/dispatch/space-force-no-bids.html|2026-10-23T01:45:00.000Z|SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left"
+    },
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "351",
+      "next": "420",
+      "at": "2026-10-23T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html",
+      "summary": "Texas Cybercab registrations changed from 351 to 420.",
+      "title": "Texas Cybercab registrations",
+      "id": "changed|robotaxi:tx-cybercab|2026-10-23T00:00:00.000Z|420"
     },
     {
       "type": "logged",
