@@ -1,7 +1,7 @@
 {
  "_about": "Upcoming SpaceX launches from Launch Library 2 (ll.thespacedevs.com), refreshed by .github/workflows/launches-refresh.yml. Do not hand-edit.",
  "source": "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX",
- "updated": "2026-10-23T12:46:39Z",
+ "updated": "2026-10-23T14:46:00Z",
  "results": [
   {
    "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
@@ -28,9 +28,9 @@
   {
    "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
    "name": "Falcon 9 Block 5 | Starlink Group 15-16",
-   "net": "2026-10-26T05:00:00Z",
-   "window_start": "2026-10-26T05:00:00Z",
-   "window_end": "2026-10-26T09:00:00Z",
+   "net": "2026-10-27T04:45:00Z",
+   "window_start": "2026-10-27T04:45:00Z",
+   "window_end": "2026-10-27T08:45:00Z",
    "url": "https://ll.thespacedevs.com/2.2.0/launch/e2886a96-5ce9-4f45-872f-4e25a00be837/",
    "status": {
     "name": "Go for Launch",
@@ -50,9 +50,9 @@
   {
    "id": "57ce0a39-d035-4f16-a418-bd6108f78199",
    "name": "Falcon 9 Block 5 | Starlink Group 15-18",
-   "net": "2026-10-29T04:17:00Z",
-   "window_start": "2026-10-29T04:17:00Z",
-   "window_end": "2026-10-29T08:17:00Z",
+   "net": "2026-10-30T04:02:00Z",
+   "window_start": "2026-10-30T04:02:00Z",
+   "window_end": "2026-10-30T08:02:00Z",
    "url": "https://ll.thespacedevs.com/2.2.0/launch/57ce0a39-d035-4f16-a418-bd6108f78199/",
    "status": {
     "name": "Go for Launch",
