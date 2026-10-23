@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23T01:44:59.588Z",
+  "generated": "2026-10-23T07:51:48.166Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.5243ad45a9.js",
@@ -26,8 +26,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.e9a669ce11.js",
-      "bytes": 70659,
+      "file": "/assets/js/home.bundle.74cacf704a.js",
+      "bytes": 70662,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -81,8 +81,8 @@
       ]
     },
     "my-tesla": {
-      "file": "/assets/js/my-tesla.bundle.deb67c800e.js",
-      "bytes": 85295,
+      "file": "/assets/js/my-tesla.bundle.51791d0b10.js",
+      "bytes": 86231,
       "sources": [
         "updates-data.js",
         "fsd-data.js",
@@ -101,8 +101,8 @@
       ]
     },
     "spacex": {
-      "file": "/assets/js/spacex.bundle.3409a8bd86.js",
-      "bytes": 42015,
+      "file": "/assets/js/spacex.bundle.562687ea86.js",
+      "bytes": 42037,
       "sources": [
         "starship-data.js",
         "spacex-hub.js",
@@ -119,8 +119,8 @@
       ]
     },
     "calendar": {
-      "file": "/assets/js/calendar.bundle.fc773fe0ea.js",
-      "bytes": 21808,
+      "file": "/assets/js/calendar.bundle.d60a3bda76.js",
+      "bytes": 21830,
       "sources": [
         "calendar-merge.js",
         "calendar.js"
@@ -144,8 +144,8 @@
       ]
     },
     "cybercab": {
-      "file": "/assets/js/cybercab.bundle.a8bab28c73.js",
-      "bytes": 20356,
+      "file": "/assets/js/cybercab.bundle.2882bfb906.js",
+      "bytes": 20359,
       "sources": [
         "cybercab-data.js",
         "cybercab-tracker.js",
@@ -154,8 +154,8 @@
       ]
     },
     "autonomy": {
-      "file": "/assets/js/autonomy.bundle.010f216aba.js",
-      "bytes": 44485,
+      "file": "/assets/js/autonomy.bundle.e889d652b6.js",
+      "bytes": 44488,
       "sources": [
         "fsd-data.js",
         "fsd-europe-data.js",
@@ -192,8 +192,8 @@
       ]
     },
     "tsla": {
-      "file": "/assets/js/tsla.bundle.edd4a2150d.js",
-      "bytes": 25688,
+      "file": "/assets/js/tsla.bundle.96682fa58a.js",
+      "bytes": 25710,
       "sources": [
         "calendar-merge.js",
         "calendar.js",

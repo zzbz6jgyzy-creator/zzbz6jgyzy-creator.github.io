@@ -1,11 +1,11 @@
 // Cybercab Tracker data. Edit this file to update the page.
 // Every item needs a real source link. Change `updated` when you edit.
 window.CYBERCAB = {
-  updated: "2026-10-22",
-  updatedLabel: "22 Oct 2026",
+  updated: "2026-10-23",
+  updatedLabel: "23 Oct 2026",
   stats: [
     { value: "300+", label: "Cybercabs serving Austin (Tesla Robotaxi, 10 Oct 2026)", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
-    { live: "cybercab", value: "351", label: "Cybercabs registered (+2 on 21 Oct; checked 22 Oct 2026). Texas DMV list, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { live: "cybercab", value: "351", label: "Cybercabs registered (+2 since 15 Oct; checked 23 Oct 2026). Texas DMV list, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
     { live: "share", value: "34%", label: "Cybercab share of Tesla’s ~1,040 estimated active robotaxis, all states (approx., Platform Aeronaut, 22 Oct 2026)", src: "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi" },
     { value: "125k+", label: "Listed yearly production capacity at Giga Texas", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
   ],
@@ -15,7 +15,7 @@ window.CYBERCAB = {
     { date: "2026-10-02", label: "2 Oct", value: 169, src: "https://www.cybercab.news/article/production-decaled-cybercabs-leave-giga-texas-oct7" },
     { date: "2026-10-08", label: "8 Oct", value: 319, src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
     { date: "2026-10-15", label: "15 Oct", value: 349, src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
-    { date: "2026-10-21", label: "21 Oct", value: 351, src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" }
+    { date: "2026-10-22", label: "22 Oct", value: 351, src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" }
   ],
   share: {
     cybercab: 351,
