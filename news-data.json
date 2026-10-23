@@ -1,15 +1,27 @@
 {
-  "updated": "2026-10-23T20:02:08Z",
+  "updated": "2026-10-23T20:35:49Z",
   "items": [
+    {
+      "id": "18e32e3dee38",
+      "topic": "grok",
+      "title": "Could Dogecoin Ever Hit $1? We Asked Grok AI What It Would Take",
+      "source": "24/7 Wall St.",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNajhNVVhuU29EWWVvRUYyTnJuTjJ1dlhPSkUzOGdLWHFmM0ZjMjRfcC1vaWluLVhGUXE4cUNLaDFqQ3kxR2JHOUdvQzlwQXB1VmRCbnRwdmVXdGN5MzZ4bURHRFlzNW50dFVud1kzYlBFNnhnTEZoaDlsaGxNa0tVVEktaEpWYk9rVkgzWnZIM2VjWDZjdUN6MjVqZVp6dDNJb2lWRU10Y0tNTkc3dlJPNTRZRW9TZjlxd2lnbw?oc=5",
+      "published": "2026-10-23T20:30:00Z",
+      "snippet": "",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 1
+    },
     {
       "id": "e2827fee8d84",
       "topic": "tesla",
       "title": "SpaceX-Tesla Merger? | Zuckerberg's Deal | The Rundown",
       "source": "Bloomberg.com",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQamw5NTBiZ2Z0NXhaRTVRYUp5Z0pjR1JVVGxEVl8zdkJ0SnVtOElHbVBqclBLbTlaY1ozdVNpVVNZNlE2NUw0Umg3b2RXd2ZyUmoyT1g1OGZ3UXBXekxwNWhPY3hvQnhtT3BuVXZ5Vjk1ZWJEbE5xU2lEdFJ3RDBRaGVOWlE3YTRMbDMzODE3b1VBOFhMemZZMkhqdjNSTmtNenl5RU1ueDN6SnlWdW5NbE01dTZrZU9OcTNsY0ZBMGpYNm8?oc=5",
-      "published": "2026-10-23T19:57:13Z",
+      "published": "2026-10-23T19:57:07Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.GngZ_va-ItSq36AjisQc0A&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.5w51kKWcNA-DmNkKThoERw&pid=News&w=640",
       "kind": "general",
       "score": 8
     },
@@ -24,6 +36,17 @@
       "image": "https://www.bing.com/th?id=ONUT.FJaDvkxw9R189LYwTM1sbw&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "8d3acd186e4e",
+      "topic": "spacex",
+      "title": "Not Starlink. Not Starship. Not Grok. $561 Million of SpaceX's $4.4 Billion Profit Came From an Unexpected Source.",
+      "source": "The Motley Fool",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOemJ6TUsyR0lDWVVPZWh3aWo4c2VXVDBmaGFNalNSOFEzakJFUjdwdjRXWlhOVE9KSU1kMGE3UC01RjM5ekVCVkxYLTZxT0VPS2steWpVcWczMEdtUC1YUVFnaWhZQ0VOREUxb2d3S2REdjNqRHFSdHBGNGw5VXVseHprTUtCbmFkNVdneHdUeW5IUEZZMjRr?oc=5",
+      "published": "2026-10-23T19:33:50Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 6
     },
     {
       "id": "2de63d8b7524",
@@ -62,18 +85,6 @@
       "score": 14
     },
     {
-      "id": "0be468a609e6",
-      "topic": "tesla",
-      "title": "Tesla reveals Optimus Academy, where robots teach themselves",
-      "source": "Teslarati",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNXJEMEJSd2p3N1JRSTVheUxzaTZEZG8wYTU4SkdMRWl1QXlMRTZQN2c2X05jRHFFN1FsaFJMb3hWRmJxVFZzbXJLNTY3ZGhvZEt3bFljaE41ZzdrU3NTV0gxNnVfREhGYi1rT2tTb0pybFg2YTlVV21YblliQnA2RzVEbXFiNWdQdXk5NE11bw?oc=5",
-      "published": "2026-10-23T18:37:34Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.AQVBUYuR-GQgBpWLH7fDew&pid=News&w=640",
-      "kind": "milestone",
-      "score": 21
-    },
-    {
       "id": "e719e522f613",
       "topic": "spacex",
       "title": "SpaceX Burned More Than $9.9 Billion of Free Cash Flow in a Single Quarter. Here's How Long Its $85.7 Billion IPO War Chest Actually Lasts.",
@@ -83,6 +94,17 @@
       "snippet": "",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "9eda136f0c0a",
+      "topic": "spacex",
+      "title": "SpaceX Just Made Cell Towers Cool Again. Verizon, AT&T, and T-Mobile Are Paying the Price",
+      "source": "The Motley Fool",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNaHAxeXhEejVpNklBT2ozSUh2NEl5VVVDT0dKb0ZuNXc1TWlQb0dVaE9GVWU4WXZYSVhzcXVhMUljR09IYWUzWFVMS2xSQmNIeUZzVWR0TE83LTFieVZ2aTNXR2JuemYxcFdKVndGcmRkX3VvMG5JUF9QTGI4Z2F2aEd2U2c3cUFuTXNZYTQ5Um0talRZSWtnYzlGVUVwSFJ4S1hQYXl4a2x6UGhTSTdHSG1nVHA4RWEzRUhHTmc4MklpZ2RydE03bWpXNHV2QQ?oc=5",
+      "published": "2026-10-23T18:33:12Z",
+      "snippet": "",
+      "kind": "general",
+      "score": -2
     },
     {
       "id": "c675f0a87f80",
@@ -96,18 +118,6 @@
       "score": 4
     },
     {
-      "id": "cd373cb7cf08",
-      "topic": "spacex",
-      "title": "SpaceX eyes 400-acre Starship factory town at NASA’s Kennedy Space Center",
-      "source": "WESH",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQVldYa2duajFlSDNENzJ1bHZGemkyclRTbjlPTUZYYWl6TnRaeG9UcjdWdHFwNVRzS2dhWURSNDJlUnk3NjdDNFBiOUEtWmFYaDBzMkFJTnlYTGdrdldmaHVhR1JQWU1TOGVoUGVMLTZPRUgwVGFTQTdJdVBaa2ktbFRzS0NYMkJPbUV1TVFsX0RRUDluYmpF?oc=5",
-      "published": "2026-10-23T18:25:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.rZw3j4gycpW0Pbv1bVr06g&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "405daa0cb69e",
       "topic": "spacex",
       "title": "Dow, S&P 500 fall, tech steadies to end rocky week",
@@ -115,7 +125,7 @@
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQR01KeXBjdXBubVRzTlJfWWJTMHctb2hFS2pVT21ydWtZNzBaMldxd1c2ZUJGNWhIeGV6MUxvQVZvSl9GdFh5QThQbFpuT0IwYi02Y3JGM19YSWJ3LXMtb29RbS1WZUljdGtsS2dockxHVm5SWnBSMzJpM0Y4RFItdW5SMzFsdXg2LWtrYWE1SC1TQlkxOERJZHNtQVREdw?oc=5",
       "published": "2026-10-23T18:00:19Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.A1KcrQ9XNBIfvwf52xHM7g&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.DAHi1oHFVWjY8005bWm8Ng&pid=News&w=640",
       "kind": "general",
       "score": 9
     },
@@ -132,14 +142,13 @@
       "score": 4
     },
     {
-      "id": "285b19a4b4f5",
-      "topic": "tesla",
-      "title": "Tesla Promised To Bring The Cybertruck To Australia And New Zealand. But It's Never Coming",
-      "source": "InsideEVs",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5OMGpPckN5WFB2VWNWZy1rWGU3cWZ1SWVIQ1BfTWRmNTVHTmhZaS1rWXlfakF3RC0wSnFHN0xRUDgxOVF2Ulo3MVIxemMxY1ZjQWtmRExWNmdTbU1nbE04cmxUckxpTGgtWk9rMTBDd0NadUhwN3kwcWNn?oc=5",
-      "published": "2026-10-23T17:13:00Z",
+      "id": "f46229c5f0ab",
+      "topic": "spacex",
+      "title": "Moderna, Meta, SpaceX, Bloom Energy, AT&T, and More Stocks That Explain Today’s Market",
+      "source": "Barron's",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1rLXV3T1ZiM0NSaTBxNEh1Yk95cWZidlhldU5PNENBMlM5RDJ3V3dmTXR5TnQ4Y210MU5wZndISi1aWk05ZjRJTXVvNWFiZGZ1cko5MGNXaWdLZGRnaDJsaWFHQ2c?oc=5",
+      "published": "2026-10-23T17:20:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.vGFu6qxHdYVc-P5ro4FtPw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -168,6 +177,17 @@
       "score": 9
     },
     {
+      "id": "c38091129e08",
+      "topic": "tesla",
+      "title": "$5 million bond set for Upstate man charged in deadly wrong-way crash, troopers say",
+      "source": "WYFF",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQbnRnaThpWGs0UExlYVhiOXJQZmdTVHVxQWhZVDZlbENlb0R5TzlZX2lXVXdLUnVIUVdSV3NKMnVHVy13Ui1USXJEUjBISUo1RHRsSnJRQWFfWjBQTjZhaW9RcXd0VEZPeHNBYnQwN0JiQVM2XzI1YjFEVGpZY0lNUTRDemdSZw?oc=5",
+      "published": "2026-10-23T16:24:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "78f663b236b6",
       "topic": "spacex",
       "title": "SpaceX wants to be America's fourth phone carrier — tower owners are cashing in",
@@ -175,7 +195,7 @@
       "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNSFBqRk1SaHBvbTZGVjNSUmI2TU9LQW9sZmtWVnRQc215aUxKNVBkb2xVYkhvWGk4eHE3TVlET3R5TmhjU3lkMm96a2sySjdJUDdSRUN5c0J2NGFiZmtTRGFwRzFUZmEwMjI3eHBnR1VlN1M0ajRtbEtRVjlQNWwtVkNRSzh3ZmFLYmVlWmwzRGZ2Qy1YU0VNQTFsQUxWVjVOU0N4UHRJOEJITnpVUmx0VVBTZFJ3cmhTVV9MX3RDaTR4LTVJVjYyaXk2ZjhwOVk?oc=5",
       "published": "2026-10-23T16:20:59Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Nk5wjk3c7kWMpqLES7ZhNw&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.zIpeUveei3bJsWSl7OKOQg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -190,6 +210,17 @@
       "image": "https://www.bing.com/th?id=ONUT.U8Aml7qAHHYGHbPjlkAwXQ&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "1dfdb6b3bfbc",
+      "topic": "tesla",
+      "title": "Will The Flying Tesla Roadster Be Street Legal? Nope.",
+      "source": "InsideEVs",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1semRwNzBSZ2FUeVFFeDlSOWRBVEYzbUxpTWxMNU5OMk91aC15eWpTWnZUU2xNcjNpaXBTUWFWOGFfRmNSTjRCenFJNFZLRE1qQW03OWxKbTRiUG1vMVBIUDVKdkJFVnlJQzhLWDlLWWlnZElVZ3l2X212Q3U?oc=5",
+      "published": "2026-10-23T16:14:12Z",
+      "snippet": "",
+      "kind": "milestone",
+      "score": 11
     },
     {
       "id": "d39006ffff4d",
@@ -239,15 +270,15 @@
       "score": 4
     },
     {
-      "id": "c38091129e08",
+      "id": "c8df4335e46b",
       "topic": "tesla",
-      "title": "$5 million bond set for Upstate man charged in deadly wrong-way crash, troopers say",
-      "source": "WYFF",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQbnRnaThpWGs0UExlYVhiOXJQZmdTVHVxQWhZVDZlbENlb0R5TzlZX2lXVXdLUnVIUVdSV3NKMnVHVy13Ui1USXJEUjBISUo1RHRsSnJRQWFfWjBQTjZhaW9RcXd0VEZPeHNBYnQwN0JiQVM2XzI1YjFEVGpZY0lNUTRDemdSZw?oc=5",
-      "published": "2026-10-23T14:17:51Z",
+      "title": "Here Are All Of The Crazy Tricks The Tesla Roadster Just Did",
+      "source": "InsideEVs",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1qTXdRanUyb3pvRGRhd0NCalRYMXZqZ0xKRkdBd0Y5ZnVtTnJ2cFFtRzlqSjd0c1Y4dmRpS2xveXZpc0F3czJyOEw3UEVLSF9VZjR5OFJmTVVjUDNPYkxERUdmd05SLUVQS2tvR01MenRNLWJPXzl3bw?oc=5",
+      "published": "2026-10-23T14:13:47Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
+      "kind": "milestone",
+      "score": 11
     },
     {
       "id": "ee177c6e93ba",
@@ -310,6 +341,18 @@
       "score": 7
     },
     {
+      "id": "8278cd295412",
+      "topic": "spacex",
+      "title": "SpaceX eyes 400-acre Starship factory town at NASA’s Kennedy Space Center",
+      "source": "WESH",
+      "url": "https://www.wesh.com/article/kennedy-space-center-spacex-starship-factory-expansion/74233005",
+      "published": "2026-10-23T11:25:00Z",
+      "snippet": "SpaceX could build a major Starship campus at Kennedy Space Center, with plans for up to 3,300 workers by 2045.",
+      "image": "https://www.bing.com/th?id=ONUT.rZw3j4gycpW0Pbv1bVr06g&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
       "id": "a493849738a9",
       "topic": "spacex",
       "title": "SpaceX Mobile Wireless Ambition Sends Crown Castle Stock Soaring",
@@ -368,6 +411,18 @@
       "score": 4
     },
     {
+      "id": "d29ef03237ba",
+      "topic": "tesla",
+      "title": "Tesla Promised To Bring The Cybertruck To Australia And New Zealand. But It's Never Coming",
+      "source": "YAHOO!",
+      "url": "https://autos.yahoo.com/ev-and-future-tech/articles/tesla-promised-bring-cybertruck-australia-171354016.html",
+      "published": "2026-10-23T10:13:00Z",
+      "snippet": "The company has been taking deposits for seven years. But it just told reservation holders that plans have changed.",
+      "image": "https://www.bing.com/th?id=ONUT.vGFu6qxHdYVc-P5ro4FtPw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "8797af2c4b1a",
       "topic": "tesla",
       "title": "How Elon Musk went from Tesla CEO to the 'most powerful civilian, non-governmental actor in history'",
@@ -402,18 +457,6 @@
       "image": "https://www.bing.com/th?id=ONUT.z0RcPk9y9CBEOWIaKfyIxQ&pid=News&w=640",
       "kind": "general",
       "score": 14
-    },
-    {
-      "id": "2397961aa417",
-      "topic": "spacex",
-      "title": "Americans aren't sold on Musk's proposal to gift SpaceX shares to kids: 'Believe it when I see it'",
-      "source": "Fox News on MSN",
-      "url": "https://www.msn.com/en-us/news/other/americans-arent-sold-on-musks-proposal-to-gift-spacex-shares-to-kids-believe-it-when-i-see-it/vi-AA2fVwgr",
-      "published": "2026-10-23T09:46:00Z",
-      "snippet": "SpaceX CEO Elon Musk announced plans to give every U.S. child one of his SpaceX shares next year, possibly through Trump Accounts, drawing skepticism from Americans that Fox News Digital spoke with. ( ...",
-      "image": "https://www.bing.com/th?id=ONUT.DGr-NlAIpGGrFIT_Imy3Dg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "1b5fbbe45e54",
@@ -598,6 +641,18 @@
       "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxOY3FvOTRwVlpnOTVsRHRNX0ZBOVNWdlB1Q3ppT2x3Y1BNY2NyWUs5bWdUd1dvM2RFLXVweGxfY2pLM3NKM1AyQ1J3NHRybjFfVXBUc0pSc1pEbjlHaHNVNTliNFloZDJGSEw0TGhvUnl6YnZLcHZ4aUNuMUhIbExoaXZlUnRyR1RMc0cyQ0JDZVJ5MW1PSTVnYzJ4UmVpdWV4RDl4WW1PNDljOEVfdE1YSWFyRjlYNFdmLVdkVHhWMmJBS21ZN3ZFU2dmZG9xeDlYN1Q4c050NncwMVlNVzdCUHBjTW50SzQweVlDVmpCTmZCQdIB9wFBVV95cUxPdDVKZWYtQnpqZGktQ0FxVXJ4MVBZV3p3dWNKTFVteFJmdEhlXzRIdWc3MlEwWTduZUtNTXYzOFZraHdCOXo1TVNLVUI4OGZKLV9OUVRvQzY2a2ZCaGI0aUgyN0NsNEZ6VklDa3NTa3p1a0NNMEZkSThYTURHVVM4dWhNWWRCcGF3RnZPWG5FMWdwR19LU1NMaXJZekNKMW9mdzNEcTdQVU5Bc0R2dGJwMUdVQ2pZZU1Eb0xkcF9oOUFpM1p6OU1PU0gtN0d5VUdVcDBoVy16WkktSkJZQ2ZrUTNRdE91Nm5IbU53OHlzTmdkWUQtYjRn?oc=5",
       "published": "2026-10-23T03:00:05Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.3gCr2gJopNM73fJd_nz92A&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "14c046a0fb4f",
+      "topic": "grok",
+      "title": "Aussie AI tool better than Google",
+      "source": "Yahoo Finance Australia",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNZEI2RUdhWGhNdGR5cEtyTWQ0UDZJNGlRdnFTQ2NXX1dBSU1BWld2UVZubUg1UjlCRkctOGJaNUJhTVhsYmVjTWZTLV81NV9RbC1ZX2k1UVlUeVJUb0Uwdm5ETmNUY0NGR1RzalVvWDZqZTU4SlZJQkExVGo3Y2lGWXdtRQ?oc=5",
+      "published": "2026-10-23T02:41:00Z",
+      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -635,16 +690,16 @@
       "score": 12
     },
     {
-      "id": "dbc1b6c5fb65",
+      "id": "9961ae8e911e",
       "topic": "spacex",
-      "title": "SpaceX in Talks to Access 80,000 Cell Sites for New Network",
-      "source": "Bloomberg.com",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNLTNzQVpJRVpWOVZUb3hEMk5Zc2tXRDRUbVktdHVNekE0LWVRRWpia2xFQlJPeE9pWjhEdnBpX0FDY2lJWFFRekhPd01TTmVsemYtYXZtWEl5d1pEYjdvOGJzUkttejNVU2x2aWlzZktWNWVUUTdOcTRTc0ZGQ05Za1c2N1VyMzRKVk1uM2t6WGVVQ3FDQjVpcTY3eGVtQlhNNktHY1R4cnBWM3FEbzZMVHA0TG9Jdw?oc=5",
-      "published": "2026-10-22T21:57:11Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ZLRgVdjE3Fnymp5Og4EdPw&pid=News&w=640",
-      "kind": "general",
-      "score": 8
+      "title": "SpaceX’s next Starship test will try something new with a double rocket catch",
+      "source": "PRIMETIMER",
+      "url": "https://www.primetimer.com/features/spacex-s-next-starship-test-will-try-something-new-with-a-double-rocket-catch",
+      "published": "2026-10-22T22:17:00Z",
+      "snippet": "Elon Musk says SpaceX’s next Starship test could mark a major step forward with an attempt to catch two rockets.",
+      "image": "https://www.bing.com/th?id=ONUT.TNAegNcMctuN_B02Mm-10g&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
     },
     {
       "id": "b69635204c5c",
@@ -653,28 +708,6 @@
       "source": "Mashable",
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1IbU5qZ1VzWHpFQ1lmX3poUnlKZDVJSHJsRUVFUUxnc3FHYlJReXpCVUN2MV9sM1NidUlNa1NsWURENU1mSFJzNlFoNm5VUDY2RXdJcVNUYjBuVzhCNUtHYlZubjFubFQya292eFFBQ1J4UjlzTkVn?oc=5",
       "published": "2026-10-22T21:00:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "3684ed5cb1f4",
-      "topic": "grok",
-      "title": "Lawsuit alleges Northwest Arkansas photographer used Grok to create CSAM of Bentonville student",
-      "source": "KNWA FOX24",
-      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxORFNJU0NLWUFZU3kyLWFJS0NqOGN3bFpjcUg0ZWVGZWg3QVN0QXhyUEgxVWVLZnJza1NfQkhvMWNDUnJXaHdNZnZoaWQyaTFadXB0TXRqYVF0ZFIzSXV1SDlfTE9hWXR6dWIyTUtGSTllNWcxbG1JUnY4TU40RVI0akVCbnVVbGREMURTSkNzSmIxcXdtbUtIN28yc0U2OHp5MzdvM0hCZzE0bl92c1c4NnJyNUU1Szd0N3lmX3NyX0hkZUd4b0ozQnVRLVdNR0NkMERkVVBuV3VkTFZiR0FpS2Jn0gHnAUFVX3lxTFBDVHlZcElRSEVXN0VSSWZ6eVRHM01rbVFXMm5iSmtkSDRsLXkycUQzaFhEQS0xZGNqQlduTTdkYmFyRTEzSWFaZVd5SjBtY1ZYMGRETzNMY3BseG4xZmJwVHg0LVB1bnZSTjFDT3VoNUtGZkhETUhXUVdUazdCVlBHYVBISE5qMVliYVFSQTRSdU1xZ2w2V25ON3QwQkRMekFnOHd3T3VwWU4yOVhfTURSYnBieGh5V1dVNWNrQkVFcmNZbm1JUnFBd1ZZZnRzUUpicTByckItNDRvZU55N21QNHFfdnRkOA?oc=5",
-      "published": "2026-10-22T20:23:44Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "ee9801be500e",
-      "topic": "grok",
-      "title": "Anthropic's Claude Duet joins the race for always-on agents",
-      "source": "R&D World",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZktXSVlYU0o4REc3S09jeXZBZkx3M0NZSElBS05HMTNaZXlVcDFHeWZYR29uck80X3pZYWw5MmtiOEFfbER1RUV6aWhHOEl5eTZZdnZzZ2RfeEM3cTlVMTlxajNzRUE5LXZVcDB3R1RkWmZfQUJDMUNVZndjc2VuYXJxQ2s5U09UenhJVmFpb0Vmc2RFLVRjYzI2d19odGxKMzNDbEZyZXZRYWJianc?oc=5",
-      "published": "2026-10-22T20:21:19Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -714,6 +747,18 @@
       "image": "https://www.bing.com/th?id=ONUT.pubBS7Ut-KRfrK8hHf7Eeg&pid=News&w=640",
       "kind": "launch",
       "score": 22
+    },
+    {
+      "id": "7f3db6858498",
+      "topic": "tesla",
+      "title": "Tesla driver using Full Self-Driving struck and killed a man crossing I-80",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/transportation/1016928/tesla-fsd-pedestrian-fatal-accident-california",
+      "published": "2026-10-22T11:07:00Z",
+      "snippet": "Police report dashcam footage confirmed attempts to brake and steer around the man before he was hit by the right front of the vehicle.﻿ ...",
+      "image": "https://www.bing.com/th?id=ONUT.9HBhWGR1xHOekrpmngrpXA&pid=News&w=640",
+      "kind": "general",
+      "score": 7
     }
   ]
 }
