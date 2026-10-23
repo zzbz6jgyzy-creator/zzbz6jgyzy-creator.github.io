@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-23T07:54:41.205Z",
+  "generatedAt": "2026-10-23T07:57:20.293Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -244,21 +244,21 @@
   ],
   "changes": [
     {
-      "type": "changed",
-      "factId": "spacex-launches:event:spcx-q3-lockup-release",
-      "topic": "spacex-launches",
-      "tracker": "launches",
-      "field": "event:spcx-q3-lockup-release",
-      "previous": "2026-10-22T00:00:00.000Z|confirmed",
-      "next": "2026-10-22T00:00:00.000Z|ended",
-      "at": "2026-10-23T08:30:00.000Z",
-      "evidence": "officially_confirmed",
-      "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
-      "sourceUrl": "",
-      "href": "/dispatch/musk-earnings-week-q3-2026.html",
-      "summary": "SpaceX lock-up release · up to 1.3B shares changed from 2026-10-22T00:00:00.000Z|confirmed to 2026-10-22T00:00:00.000Z|ended.",
-      "title": "SpaceX lock-up release · up to 1.3B shares",
-      "id": "changed|spacex-launches:event:spcx-q3-lockup-release|2026-10-23T08:30:00.000Z|2026-10-22T00:00:00.000Z|ended"
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starship-moon-refuel-22-vs-8.html",
+      "topic": "starship",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers",
+      "at": "2026-10-23T07:56:21.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starship-moon-refuel-22-vs-8.html",
+      "href": "/dispatch/starship-moon-refuel-22-vs-8.html",
+      "summary": "A NASA safety adviser says the latest refueling estimate is “around 22” launches; Musk says 6 to 8. What each number means per tanker, and how long each takes to fly.",
+      "title": "NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers",
+      "id": "logged|dispatch:/dispatch/starship-moon-refuel-22-vs-8.html|2026-10-23T07:56:21.000Z|NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers"
     },
     {
       "type": "logged",
@@ -514,23 +514,6 @@
       "summary": "Revenue of $14.58B beat the $12.72B estimate, with $4.40B in net income. AI brought in more than Starlink for the first time, and capex hit $19.59B.",
       "title": "SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business",
       "id": "logged|dispatch:/dispatch/spacex-q3-2026-results.html|2026-10-20T22:22:32.000Z|SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/canada-starlink-telesat-fact-check.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "No, Canada isn’t cutting off Starlink. Here’s what Carney actually said, and why Telesat still needs SpaceX",
-      "at": "2026-10-20T19:30:55.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/canada-starlink-telesat-fact-check.html",
-      "href": "/dispatch/canada-starlink-telesat-fact-check.html",
-      "summary": "The viral claim stitches an August military contract to a September quote. There’s no ban, and Canada’s rival network launches on SpaceX rockets.",
-      "title": "No, Canada isn’t cutting off Starlink. Here’s what Carney actually said, and why Telesat still needs SpaceX",
-      "id": "logged|dispatch:/dispatch/canada-starlink-telesat-fact-check.html|2026-10-20T19:30:55.000Z|No, Canada isn’t cutting off Starlink. Here’s what Carney actually said, and why Telesat still needs SpaceX"
     },
     {
       "type": "appeared",
@@ -1510,14 +1493,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-23T08:30:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1531,14 +1514,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-23T05:59:59.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1552,35 +1535,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-23T07:54:41.205Z",
+      "lastChecked": "2026-10-23T07:57:20.293Z",
       "lastVerified": "2026-10-23T07:08:36.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1589,87 +1572,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.186Z",
-      "finished": "2026-10-23T07:54:41.192Z"
+      "started": "2026-10-23T07:57:20.276Z",
+      "finished": "2026-10-23T07:57:20.282Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.192Z",
-      "finished": "2026-10-23T07:54:41.193Z"
+      "started": "2026-10-23T07:57:20.282Z",
+      "finished": "2026-10-23T07:57:20.282Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.193Z",
-      "finished": "2026-10-23T07:54:41.193Z"
+      "started": "2026-10-23T07:57:20.282Z",
+      "finished": "2026-10-23T07:57:20.283Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.193Z",
-      "finished": "2026-10-23T07:54:41.198Z"
+      "started": "2026-10-23T07:57:20.283Z",
+      "finished": "2026-10-23T07:57:20.287Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.198Z",
-      "finished": "2026-10-23T07:54:41.201Z"
+      "started": "2026-10-23T07:57:20.287Z",
+      "finished": "2026-10-23T07:57:20.289Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.201Z",
-      "finished": "2026-10-23T07:54:41.201Z"
+      "started": "2026-10-23T07:57:20.289Z",
+      "finished": "2026-10-23T07:57:20.290Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.201Z",
-      "finished": "2026-10-23T07:54:41.203Z"
+      "started": "2026-10-23T07:57:20.290Z",
+      "finished": "2026-10-23T07:57:20.291Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.203Z",
-      "finished": "2026-10-23T07:54:41.203Z"
+      "started": "2026-10-23T07:57:20.291Z",
+      "finished": "2026-10-23T07:57:20.291Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.203Z",
-      "finished": "2026-10-23T07:54:41.203Z"
+      "started": "2026-10-23T07:57:20.291Z",
+      "finished": "2026-10-23T07:57:20.291Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.203Z",
-      "finished": "2026-10-23T07:54:41.205Z"
+      "started": "2026-10-23T07:57:20.291Z",
+      "finished": "2026-10-23T07:57:20.292Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.205Z",
-      "finished": "2026-10-23T07:54:41.205Z"
+      "started": "2026-10-23T07:57:20.292Z",
+      "finished": "2026-10-23T07:57:20.293Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.205Z",
-      "finished": "2026-10-23T07:54:41.205Z"
+      "started": "2026-10-23T07:57:20.293Z",
+      "finished": "2026-10-23T07:57:20.293Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-23T07:54:41.205Z",
-      "finished": "2026-10-23T07:54:41.205Z"
+      "started": "2026-10-23T07:57:20.293Z",
+      "finished": "2026-10-23T07:57:20.293Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-23T07:54:41.205Z",
+    "generatedAt": "2026-10-23T07:57:20.293Z",
     "factCount": 17,
-    "changeCount": 72,
+    "changeCount": 71,
     "conflictCount": 2,
     "issues": [
       {
