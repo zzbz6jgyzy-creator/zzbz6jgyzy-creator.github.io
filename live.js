@@ -75,6 +75,13 @@
     var credit = e.image && e.imageCredit ? '<small class="lw-cr">' + esc(e.imageCredit) + '</small>' : '';
     var head = function (txt) { return '<div class="lw-head"><span class="lw-dot"></span><span>' + txt + '</span><span class="lw-host">' + (canEmbed ? 'Streamed here on Supercharged Daily' : 'Direct link to the official stream') + '</span></div>'; };
     var meta = '<p class="lw-when">' + esc(dateTxt) + ' <span class="lv-tz">' + esc(chip) + '</span></p>';
+    if (!live && page === 'home' && window.SDHomeNext) {
+      slot.classList.add('lv-home-next');
+      slot.innerHTML = window.SDHomeNext.html(e, {dateText: dateTxt, chip: chip, url: streamUrl(e), now: now});
+      var count = slot.querySelector('.lh-next-countdown');
+      if (count) setInterval(function () { count.textContent = window.SDHomeNext.countdown(e, Date.now()); }, 60000);
+      return;
+    }
     if (!live && slim) { // >72h out: slim one-line card (fixed 56px, see live.css .lw-slim)
       var days = function () { var ms = new Date(e.start) - Date.now(), dd = Math.round(ms / 864e5); return ms <= 0 ? 'today' : dd <= 1 ? 'in 1d' : 'in ' + dd + 'd'; };
       slot.innerHTML = '<a class="lw lw-slim" href="' + esc(streamUrl(e)) + '" target="_blank" rel="noopener"><span class="lw-dot"></span><span class="lws-txt"><b class="lws-t">' + esc(e.title) + '</b>' +
@@ -159,7 +166,7 @@
     if (mount) mount.appendChild(slot); else { var main = document.querySelector('main'); main.parentNode.insertBefore(slot, main); }
     var collapsed = !!(mount && mount.hasAttribute('data-collapsed'));
     render(slot, e, !!live, collapsed, slim);
-    var flip = live ? new Date(e.end) - now : slim ? new Date(e.start) - 72 * H - now : (!e.timeTbc && !e.net ? new Date(e.start) - H / 2 - now : 0); // re-check at slim→full (72h), go-live, end
+    var flip = live ? new Date(e.end) - now : slim && page !== 'home' ? new Date(e.start) - 72 * H - now : (!e.timeTbc && !e.net ? new Date(e.start) - H / 2 - now : 0); // home stays compact until go-live
     if (flip > 0 && flip < 864e5 && !q.get('livenow')) setTimeout(run, flip + 1e3);
   }).catch(function () {});
   }

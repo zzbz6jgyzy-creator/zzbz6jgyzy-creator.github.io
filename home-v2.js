@@ -30,7 +30,10 @@
     }
     if (!cards.length) return;
     const L = cards[0], el = $("[data-hv-lead]");
-    el.href = L.href; $("[data-hv-tag]").textContent = L.tag.trim(); $("[data-hv-h]").textContent = L.h.trim(); $("[data-hv-p]").textContent = L.p.trim();
+    // Homepage-only copy is editorially chosen; full story titles stay intact elsewhere.
+    const homeArticle = aj && (aj.articles || []).find((a) => a.url === L.href);
+    const homeCopy = (key, fallback) => homeArticle && typeof homeArticle[key] === "string" && homeArticle[key].trim() ? homeArticle[key].trim() : fallback.trim();
+    el.href = L.href; $("[data-hv-tag]").textContent = L.tag.trim(); $("[data-hv-h]").textContent = homeCopy("homeTitle", L.h); $("[data-hv-p]").textContent = homeCopy("homeSummary", L.p);
     // Lead image: card image, else the article's og:image / first image, else a licensed site image from another card
     const img = $("[data-hv-img]");
     const fallback = (cards.find((c) => c.img) || {}).img || "/assets/dispatch/cybercab-austin-poster.jpg";

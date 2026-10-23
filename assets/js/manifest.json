@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23T08:12:14.732Z",
+  "generated": "2026-10-23T08:48:58.547Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.5243ad45a9.js",
@@ -26,8 +26,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.74cacf704a.js",
-      "bytes": 70662,
+      "file": "/assets/js/home.bundle.5b6ce87633.js",
+      "bytes": 72375,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -37,12 +37,13 @@
         "home-pair.js",
         "home-tracker-data.js",
         "home-v2.js",
+        "home-next.js",
         "live.js"
       ]
     },
     "starship": {
-      "file": "/assets/js/starship.bundle.79801b255e.js",
-      "bytes": 58847,
+      "file": "/assets/js/starship.bundle.3ec916738e.js",
+      "bytes": 59144,
       "sources": [
         "starship-data.js",
         "starship-lab-data.js",
@@ -72,8 +73,8 @@
       ]
     },
     "tesla": {
-      "file": "/assets/js/tesla.bundle.2cc257887d.js",
-      "bytes": 30897,
+      "file": "/assets/js/tesla.bundle.f63adb546e.js",
+      "bytes": 31191,
       "sources": [
         "fsd-europe-data.js",
         "tesla-hub.js",
@@ -81,8 +82,8 @@
       ]
     },
     "my-tesla": {
-      "file": "/assets/js/my-tesla.bundle.51791d0b10.js",
-      "bytes": 86231,
+      "file": "/assets/js/my-tesla.bundle.6723a2cb73.js",
+      "bytes": 86528,
       "sources": [
         "updates-data.js",
         "fsd-data.js",
@@ -101,8 +102,8 @@
       ]
     },
     "spacex": {
-      "file": "/assets/js/spacex.bundle.562687ea86.js",
-      "bytes": 42037,
+      "file": "/assets/js/spacex.bundle.4619da34c0.js",
+      "bytes": 42331,
       "sources": [
         "starship-data.js",
         "spacex-hub.js",
@@ -182,8 +183,8 @@
       ]
     },
     "see-the-launch": {
-      "file": "/assets/js/see-the-launch.bundle.6252342c74.js",
-      "bytes": 48524,
+      "file": "/assets/js/see-the-launch.bundle.0730b0b93f.js",
+      "bytes": 48823,
       "sources": [
         "calendar-merge.js",
         "see-the-launch-data.js",
