@@ -1,7 +1,7 @@
 {
  "_about": "Upcoming SpaceX launches from Launch Library 2 (ll.thespacedevs.com), refreshed by .github/workflows/launches-refresh.yml. Do not hand-edit.",
  "source": "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX",
- "updated": "2026-10-23T21:38:45Z",
+ "updated": "2026-10-23T23:36:05Z",
  "results": [
   {
    "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
@@ -11,8 +11,8 @@
    "window_end": "2026-10-24T01:30:00Z",
    "url": "https://ll.thespacedevs.com/2.2.0/launch/f6af629d-39b5-4f86-bc0c-f8776444a858/",
    "status": {
-    "name": "Go for Launch",
-    "abbrev": "Go"
+    "name": "Launch in Flight",
+    "abbrev": "In Flight"
    },
    "net_precision": {
     "name": "Second",
