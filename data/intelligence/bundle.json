@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-23T18:14:46.750Z",
+  "generatedAt": "2026-10-23T18:27:39.594Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -163,10 +163,10 @@
       "tracker": "fsd",
       "field": "eu-approved",
       "value": "9",
-      "label": "EU states recognising RDW approval",
-      "at": "2026-10-22T00:00:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "FSD Europe tracker (national ministry / RDW sources)",
+      "label": "EU markets listed by Tesla",
+      "at": "2026-10-23T00:00:00.000Z",
+      "evidence": "company_claim",
+      "source": "Tesla market availability, curated in the FSD Europe tracker",
       "sourceUrl": "",
       "href": "/fsd-europe.html",
       "summary": ""
@@ -310,6 +310,23 @@
       "summary": "Politico says SpaceX declined to bid and no rival offered a rocket. Vulcan was grounded this year, New Glenn lost its pad, and the newer rockets haven’t flown yet.",
       "title": "SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left",
       "id": "logged|dispatch:/dispatch/space-force-no-bids.html|2026-10-23T01:45:00.000Z|SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left"
+    },
+    {
+      "type": "logged",
+      "factId": "fsd:availability",
+      "topic": "fsd",
+      "tracker": "fsd",
+      "field": "availability",
+      "previous": "",
+      "next": "Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.",
+      "at": "2026-10-23T00:00:00.000Z",
+      "evidence": "company_claim",
+      "source": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving",
+      "sourceUrl": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving",
+      "href": "/fsd-europe.html",
+      "summary": "Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.",
+      "title": "availability",
+      "id": "logged|fsd:availability|2026-10-23T00:00:00.000Z|Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations."
     },
     {
       "type": "appeared",
@@ -613,7 +630,7 @@
       "source": "https://x.com/teslaeurope/status/2111095942015566145",
       "sourceUrl": "https://x.com/teslaeurope/status/2111095942015566145",
       "href": "/fsd-europe.html",
-      "summary": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given. Company claim. “Soon” has no date yet, and recognition doesn’t mean customers have it.",
+      "summary": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given.",
       "title": "SK · statement",
       "id": "logged|fsd:country:SK|2026-10-16T00:00:00.000Z|Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given."
     },
@@ -622,16 +639,16 @@
       "factId": "fsd:country:SK",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country.",
       "at": "2026-10-16T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou",
       "sourceUrl": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou",
       "href": "/fsd-europe.html",
-      "summary": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country. Recognised, but no owners have been reported getting the software yet.",
-      "title": "SK · approval",
+      "summary": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country.",
+      "title": "SK · recognition",
       "id": "logged|fsd:country:SK|2026-10-16T00:00:00.000Z|Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country."
     },
     {
@@ -694,7 +711,7 @@
       "previous": "",
       "next": "Flemish mobility minister Annick De Ridder tells parliament Belgium will not suspend or change its recognition; adjusting or removing the speed offset is being considered for the EU file.",
       "at": "2026-10-15T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.vlaamsparlement.be/nl/parlementair-werk/commissies/commissievergaderingen/2075354/verslag/2079815",
       "sourceUrl": "https://www.vlaamsparlement.be/nl/parlementair-werk/commissies/commissievergaderingen/2075354/verslag/2079815",
       "href": "/fsd-europe.html",
@@ -959,20 +976,20 @@
     },
     {
       "type": "logged",
-      "factId": "fsd:rename",
+      "factId": "fsd:terminology",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "rename",
+      "field": "terminology",
       "previous": "",
-      "next": "FSD (Supervised) is now called Tesla Assisted Driving in Europe.",
+      "next": "The current Tesla support page uses Tesla Assisted Driving. The precise Europe-wide rename date is not established from a primary source.",
       "at": "2026-10-09T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://tad-tracker.eu/en/",
       "sourceUrl": "https://tad-tracker.eu/en/",
       "href": "/fsd-europe.html",
-      "summary": "FSD (Supervised) is now called Tesla Assisted Driving in Europe.",
-      "title": "rename",
-      "id": "logged|fsd:rename|2026-10-09T00:00:00.000Z|FSD (Supervised) is now called Tesla Assisted Driving in Europe."
+      "summary": "The current Tesla support page uses Tesla Assisted Driving. The precise Europe-wide rename date is not established from a primary source.",
+      "title": "terminology",
+      "id": "logged|fsd:terminology|2026-10-09T00:00:00.000Z|The current Tesla support page uses Tesla Assisted Driving. The precise Europe-wide rename date is not established from a primary source."
     },
     {
       "type": "logged",
@@ -1034,7 +1051,7 @@
       "previous": "",
       "next": "Slovak transport minister says a recognition letter goes to the RDW within days.",
       "at": "2026-10-07T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.pravda.sk/auto/magazin/clanok/2055389-slovensko-onedlho-povoli-autonomne-riadenie-tesla-fsd-vodic-vsak-zodpovednost-neodovzda-autu",
       "sourceUrl": "https://www.pravda.sk/auto/magazin/clanok/2055389-slovensko-onedlho-povoli-autonomne-riadenie-tesla-fsd-vodic-vsak-zodpovednost-neodovzda-autu",
       "href": "/fsd-europe.html",
@@ -1044,20 +1061,20 @@
     },
     {
       "type": "logged",
-      "factId": "fsd:tcmv",
+      "factId": "fsd:committee",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "tcmv",
+      "field": "committee",
       "previous": "",
       "next": "119th TCMV lists only a continuation of discussions on the Dutch Art. 39 request. No vote.",
       "at": "2026-10-06T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.streetinsider.com/Reuters/EU+vote+on+Teslas+supervised+self-driving+system+pushed+back/27104594.html",
       "sourceUrl": "https://www.streetinsider.com/Reuters/EU+vote+on+Teslas+supervised+self-driving+system+pushed+back/27104594.html",
       "href": "/fsd-europe.html",
       "summary": "119th TCMV lists only a continuation of discussions on the Dutch Art. 39 request. No vote.",
-      "title": "tcmv",
-      "id": "logged|fsd:tcmv|2026-10-06T00:00:00.000Z|119th TCMV lists only a continuation of discussions on the Dutch Art. 39 request. No vote."
+      "title": "committee",
+      "id": "logged|fsd:committee|2026-10-06T00:00:00.000Z|119th TCMV lists only a continuation of discussions on the Dutch Art. 39 request. No vote."
     },
     {
       "type": "logged",
@@ -1068,7 +1085,7 @@
       "previous": "",
       "next": "German transport ministry backs EU-wide approval, with a 10% speed tolerance cap.",
       "at": "2026-10-06T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.bmv.de/SharedDocs/DE/Artikel/StV/Digitalisierung-der-Mobilitaet/aktueller-stand-tesla-assistenzsysteme.html",
       "sourceUrl": "https://www.bmv.de/SharedDocs/DE/Artikel/StV/Digitalisierung-der-Mobilitaet/aktueller-stand-tesla-assistenzsysteme.html",
       "href": "/fsd-europe.html",
@@ -1098,16 +1115,16 @@
       "factId": "fsd:country:HR",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "Croatia's DZM recognises the RDW approval, the eighth EU country.",
       "at": "2026-09-29T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://n1info.hr/magazin/auto/teslin-sustav-samostalne-voznje-s-nadzorom-odobren-u-hrvatskoj/",
       "sourceUrl": "https://n1info.hr/magazin/auto/teslin-sustav-samostalne-voznje-s-nadzorom-odobren-u-hrvatskoj/",
       "href": "/fsd-europe.html",
       "summary": "Croatia's DZM recognises the RDW approval, the eighth EU country.",
-      "title": "HR · approval",
+      "title": "HR · recognition",
       "id": "logged|fsd:country:HR|2026-09-29T00:00:00.000Z|Croatia's DZM recognises the RDW approval, the eighth EU country."
     },
     {
@@ -1132,16 +1149,16 @@
       "factId": "fsd:country:CZ",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "Czech Ministry of Transport recognises the RDW approval.",
       "at": "2026-09-21T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system",
       "sourceUrl": "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system",
       "href": "/fsd-europe.html",
       "summary": "Czech Ministry of Transport recognises the RDW approval.",
-      "title": "CZ · approval",
+      "title": "CZ · recognition",
       "id": "logged|fsd:country:CZ|2026-09-21T00:00:00.000Z|Czech Ministry of Transport recognises the RDW approval."
     },
     {
@@ -1166,16 +1183,16 @@
       "factId": "fsd:country:SI",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "Slovenia's AVP recognises the RDW approval (ministry notice 8 Sep).",
       "at": "2026-09-07T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/",
       "sourceUrl": "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/",
       "href": "/fsd-europe.html",
       "summary": "Slovenia's AVP recognises the RDW approval (ministry notice 8 Sep).",
-      "title": "SI · approval",
+      "title": "SI · recognition",
       "id": "logged|fsd:country:SI|2026-09-07T00:00:00.000Z|Slovenia's AVP recognises the RDW approval (ministry notice 8 Sep)."
     },
     {
@@ -1187,7 +1204,7 @@
       "previous": "",
       "next": "France starts road tests of the system with two vehicles.",
       "at": "2026-09-03T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.reuters.com/technology/france-starts-tests-teslas-self-driving-tech-2026-09-03/",
       "sourceUrl": "https://www.reuters.com/technology/france-starts-tests-teslas-self-driving-tech-2026-09-03/",
       "href": "/fsd-europe.html",
@@ -1204,7 +1221,7 @@
       "previous": "",
       "next": "Hungary's transport ministry says it will wait for the EU decision.",
       "at": "2026-07-29T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://totalcar.hu/hirek/2026/07/29/tesla-fsd-onvezetes-magyarorszag-miniszteriumi-dontes-kbm/",
       "sourceUrl": "https://totalcar.hu/hirek/2026/07/29/tesla-fsd-onvezetes-magyarorszag-miniszteriumi-dontes-kbm/",
       "href": "/fsd-europe.html",
@@ -1221,7 +1238,7 @@
       "previous": "",
       "next": "Reuters: Finland may approve before the EU vote; Traficom reviewing.",
       "at": "2026-06-23T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.reuters.com/business/autos-transportation/finland-may-approve-teslas-supervised-self-driving-software-before-eu-vote-2026-06-23/",
       "sourceUrl": "https://www.reuters.com/business/autos-transportation/finland-may-approve-teslas-supervised-self-driving-software-before-eu-vote-2026-06-23/",
       "href": "/fsd-europe.html",
@@ -1238,7 +1255,7 @@
       "previous": "",
       "next": "Sweden's Trafikverket recommends the EU reject the system while it can exceed speed limits.",
       "at": "2026-06-18T00:00:00.000Z",
-      "evidence": "independently_corroborated",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.reuters.com/business/autos-transportation/sweden-may-oppose-teslas-supervised-self-driving-tech-europe-over-speeding-2026-06-18/",
       "sourceUrl": "https://www.reuters.com/business/autos-transportation/sweden-may-oppose-teslas-supervised-self-driving-tech-europe-over-speeding-2026-06-18/",
       "href": "/fsd-europe.html",
@@ -1251,16 +1268,16 @@
       "factId": "fsd:country:BE",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "Belgium recognises the RDW approval.",
       "at": "2026-06-10T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://evxl.co/2026/06/10/tesla-fsd-belgium-denmark-approval/",
       "sourceUrl": "https://evxl.co/2026/06/10/tesla-fsd-belgium-denmark-approval/",
       "href": "/fsd-europe.html",
       "summary": "Belgium recognises the RDW approval.",
-      "title": "BE · approval",
+      "title": "BE · recognition",
       "id": "logged|fsd:country:BE|2026-06-10T00:00:00.000Z|Belgium recognises the RDW approval."
     },
     {
@@ -1268,16 +1285,16 @@
       "factId": "fsd:country:DK",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "Denmark's Færdselsstyrelsen recognises the RDW approval after its own review.",
       "at": "2026-06-09T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark",
       "sourceUrl": "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark",
       "href": "/fsd-europe.html",
       "summary": "Denmark's Færdselsstyrelsen recognises the RDW approval after its own review.",
-      "title": "DK · approval",
+      "title": "DK · recognition",
       "id": "logged|fsd:country:DK|2026-06-09T00:00:00.000Z|Denmark's Færdselsstyrelsen recognises the RDW approval after its own review."
     },
     {
@@ -1285,16 +1302,16 @@
       "factId": "fsd:country:EE",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "Estonia recognises the RDW approval.",
       "at": "2026-05-29T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://estonianworld.com/technology/estonia-approves-teslas-self-driving-system-for-its-roads/",
       "sourceUrl": "https://estonianworld.com/technology/estonia-approves-teslas-self-driving-system-for-its-roads/",
       "href": "/fsd-europe.html",
       "summary": "Estonia recognises the RDW approval.",
-      "title": "EE · approval",
+      "title": "EE · recognition",
       "id": "logged|fsd:country:EE|2026-05-29T00:00:00.000Z|Estonia recognises the RDW approval."
     },
     {
@@ -1302,16 +1319,16 @@
       "factId": "fsd:country:LT",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "Lithuania becomes the first state to recognise the Dutch approval.",
       "at": "2026-05-20T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/",
       "sourceUrl": "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/",
       "href": "/fsd-europe.html",
       "summary": "Lithuania becomes the first state to recognise the Dutch approval.",
-      "title": "LT · approval",
+      "title": "LT · recognition",
       "id": "logged|fsd:country:LT|2026-05-20T00:00:00.000Z|Lithuania becomes the first state to recognise the Dutch approval."
     },
     {
@@ -1336,16 +1353,16 @@
       "factId": "fsd:country:NL",
       "topic": "fsd",
       "tracker": "fsd",
-      "field": "approval",
+      "field": "recognition",
       "previous": "",
       "next": "RDW grants provisional EU type approval (Art. 39, Reg. (EU) 2018/858).",
       "at": "2026-04-10T00:00:00.000Z",
-      "evidence": "officially_confirmed",
+      "evidence": "reported_unconfirmed",
       "source": "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands",
       "sourceUrl": "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands",
       "href": "/fsd-europe.html",
       "summary": "RDW grants provisional EU type approval (Art. 39, Reg. (EU) 2018/858).",
-      "title": "NL · approval",
+      "title": "NL · recognition",
       "id": "logged|fsd:country:NL|2026-04-10T00:00:00.000Z|RDW grants provisional EU type approval (Art. 39, Reg. (EU) 2018/858)."
     },
     {
@@ -1493,14 +1510,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
       "lastVerified": "2026-10-23T08:30:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1514,14 +1531,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
-      "lastVerified": "2026-10-22T00:00:00.000Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
+      "lastVerified": "2026-10-23T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
       "lastVerified": "2026-10-23T17:57:18.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1535,35 +1552,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-23T18:14:46.750Z",
+      "lastChecked": "2026-10-23T18:27:39.594Z",
       "lastVerified": "2026-10-23T18:14:43.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1572,87 +1589,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.739Z",
-      "finished": "2026-10-23T18:14:46.744Z"
+      "started": "2026-10-23T18:27:39.579Z",
+      "finished": "2026-10-23T18:27:39.583Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.744Z",
-      "finished": "2026-10-23T18:14:46.745Z"
+      "started": "2026-10-23T18:27:39.583Z",
+      "finished": "2026-10-23T18:27:39.583Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.745Z",
-      "finished": "2026-10-23T18:14:46.745Z"
+      "started": "2026-10-23T18:27:39.583Z",
+      "finished": "2026-10-23T18:27:39.584Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.745Z",
-      "finished": "2026-10-23T18:14:46.747Z"
+      "started": "2026-10-23T18:27:39.584Z",
+      "finished": "2026-10-23T18:27:39.587Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.747Z",
-      "finished": "2026-10-23T18:14:46.748Z"
+      "started": "2026-10-23T18:27:39.587Z",
+      "finished": "2026-10-23T18:27:39.590Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.748Z",
-      "finished": "2026-10-23T18:14:46.749Z"
+      "started": "2026-10-23T18:27:39.590Z",
+      "finished": "2026-10-23T18:27:39.591Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.749Z",
-      "finished": "2026-10-23T18:14:46.749Z"
+      "started": "2026-10-23T18:27:39.591Z",
+      "finished": "2026-10-23T18:27:39.592Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.749Z",
-      "finished": "2026-10-23T18:14:46.749Z"
+      "started": "2026-10-23T18:27:39.592Z",
+      "finished": "2026-10-23T18:27:39.593Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.749Z",
-      "finished": "2026-10-23T18:14:46.749Z"
+      "started": "2026-10-23T18:27:39.593Z",
+      "finished": "2026-10-23T18:27:39.593Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.749Z",
-      "finished": "2026-10-23T18:14:46.750Z"
+      "started": "2026-10-23T18:27:39.593Z",
+      "finished": "2026-10-23T18:27:39.594Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.750Z",
-      "finished": "2026-10-23T18:14:46.750Z"
+      "started": "2026-10-23T18:27:39.594Z",
+      "finished": "2026-10-23T18:27:39.594Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.750Z",
-      "finished": "2026-10-23T18:14:46.750Z"
+      "started": "2026-10-23T18:27:39.594Z",
+      "finished": "2026-10-23T18:27:39.594Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-23T18:14:46.750Z",
-      "finished": "2026-10-23T18:14:46.750Z"
+      "started": "2026-10-23T18:27:39.594Z",
+      "finished": "2026-10-23T18:27:39.594Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-23T18:14:46.750Z",
+    "generatedAt": "2026-10-23T18:27:39.594Z",
     "factCount": 17,
-    "changeCount": 71,
+    "changeCount": 72,
     "conflictCount": 2,
     "issues": [
       {

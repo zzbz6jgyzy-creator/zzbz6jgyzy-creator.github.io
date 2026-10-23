@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T18:14:46.750Z",
+  "generatedAt": "2026-10-23T18:27:39.594Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -161,10 +161,10 @@
       "tracker": "fsd",
       "field": "eu-approved",
       "value": "9",
-      "label": "EU states recognising RDW approval",
-      "at": "2026-10-22T00:00:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "FSD Europe tracker (national ministry / RDW sources)",
+      "label": "EU markets listed by Tesla",
+      "at": "2026-10-23T00:00:00.000Z",
+      "evidence": "company_claim",
+      "source": "Tesla market availability, curated in the FSD Europe tracker",
       "sourceUrl": "",
       "href": "/fsd-europe.html",
       "summary": ""
