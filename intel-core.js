@@ -38,6 +38,8 @@
     { id: "optimus", label: "Optimus", href: "/optimus.html" },
     { id: "starlink", label: "Starlink", href: "/starlink.html" },
     { id: "promises", label: "Promises", href: "/promise-tracker.html" },
+    { id: "grok", label: "Grok", href: "/grok.html" },
+    { id: "tesla", label: "Tesla", href: "/tesla.html" },
     { id: "production", label: "Production", href: "/production.html" },
   ];
 
@@ -725,7 +727,7 @@
       const c = {
         type: "logged",
         factId: factId("dispatch", a.url),
-        topic: a.topic === "spacex" ? "spacex-launches" : a.topic === "tesla" ? "fsd" : "promises",
+        topic: a.topic === "spacex" ? "spacex-launches" : a.topic === "tesla" ? "tesla" : a.topic === "xai" ? "grok" : "promises",
         tracker: "dispatch",
         field: "dispatch",
         previous: "",
@@ -952,11 +954,9 @@
   function freshnessHtml(row) {
     if (!row) return "";
     const title = CARD_TITLES[row.tracker] || (TRACKERS[row.tracker] && TRACKERS[row.tracker].label) || "";
-    const checked = row.lastChecked ? fmtWhen(row.lastChecked) : "—";
     const verified = row.lastVerified ? fmtWhen(row.lastVerified) : "—";
     return `<p class="intel-fresh" data-intel-fresh="${esc(row.tracker)}">` +
       (title ? `<span class="intel-fresh-note"><strong>${esc(title)}</strong></span>` : "") +
-      `<span>Last checked <time datetime="${esc(row.lastChecked)}">${esc(checked)}</time></span>` +
       `<span>Last verified update <time datetime="${esc(row.lastVerified)}">${esc(verified)}</time></span>` +
       (row.note ? `<span class="intel-fresh-note">${esc(row.note)}</span>` : "") +
       `</p>`;
@@ -965,13 +965,12 @@
   function freshnessTableHtml(rows) {
     if (!rows || !rows.length) return '<p class="intel-empty">No freshness rows in the last bundle.</p>';
     return `<div class="intel-compare"><table>
-      <thead><tr><th>Tracker</th><th>Last checked</th><th>Last verified</th><th>Note</th></tr></thead>
+      <thead><tr><th>Tracker</th><th>Last verified</th><th>Note</th></tr></thead>
       <tbody>${rows.map((row) => {
         const label = (TRACKERS[row.tracker] && TRACKERS[row.tracker].label) || row.tracker;
         const href = row.href || (TRACKERS[row.tracker] && TRACKERS[row.tracker].href) || "";
         const name = href ? `<a href="${esc(href)}">${esc(label)}</a>` : esc(label);
         return `<tr><td>${name}</td>` +
-          `<td><time datetime="${esc(row.lastChecked || "")}">${esc(row.lastChecked ? fmtWhen(row.lastChecked) : "—")}</time></td>` +
           `<td><time datetime="${esc(row.lastVerified || "")}">${esc(row.lastVerified ? fmtWhen(row.lastVerified) : "—")}</time></td>` +
           `<td>${esc(row.note || "")}</td></tr>`;
       }).join("")}</tbody></table></div>

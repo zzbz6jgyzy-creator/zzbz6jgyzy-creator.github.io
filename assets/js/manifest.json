@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23T07:57:25.677Z",
+  "generated": "2026-10-23T08:09:26.473Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.5243ad45a9.js",
@@ -18,8 +18,8 @@
       ]
     },
     "intel": {
-      "file": "/assets/js/intel.bundle.b96a0c019c.js",
-      "bytes": 41061,
+      "file": "/assets/js/intel.bundle.9ee4425468.js",
+      "bytes": 40933,
       "sources": [
         "intel-core.js",
         "intel.js"

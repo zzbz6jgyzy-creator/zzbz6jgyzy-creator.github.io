@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T07:59:10.065Z",
+  "updated": "2026-10-23T08:09:34.614Z",
   "changes": [
     {
       "type": "logged",
@@ -21,7 +21,7 @@
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-bot-phone-apps.html",
-      "topic": "promises",
+      "topic": "grok",
       "tracker": "dispatch",
       "field": "dispatch",
       "previous": "",
@@ -72,7 +72,7 @@
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-10q-spacex-committee.html",
-      "topic": "fsd",
+      "topic": "tesla",
       "tracker": "dispatch",
       "field": "dispatch",
       "previous": "",
@@ -123,7 +123,7 @@
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-q3-2026-results.html",
-      "topic": "fsd",
+      "topic": "tesla",
       "tracker": "dispatch",
       "field": "dispatch",
       "previous": "",

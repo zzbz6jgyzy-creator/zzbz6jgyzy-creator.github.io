@@ -231,11 +231,13 @@ else bad("dispatch tracker not promises", JSON.stringify(dispatchRows.map((c) =>
 const dispHtml = I.changesHtml(dispatchRows);
 if (/Dispatch/.test(dispHtml) && !/Promise Tracker/.test(dispHtml)) ok("dispatch html label");
 else bad("dispatch html label", dispHtml.slice(0, 220));
-if (dispatchRows.some((c) => /compute/.test(c.title) && c.topic === "spacex-launches")) ok("dispatch spacex topic");
-else bad("dispatch spacex topic", JSON.stringify(dispatchRows[0]));
+if (dispatchRows.some((c) => /compute/.test(c.title) && c.topic === "grok")) ok("dispatch xai topic is grok");
+else bad("dispatch xai topic is grok", JSON.stringify(dispatchRows[0]));
+if (!dispatchRows.some((c) => c.topic === "promises")) ok("dispatch never labelled promises");
+else bad("dispatch never labelled promises", JSON.stringify(dispatchRows.filter((c) => c.topic === "promises").map((c) => c.href)));
 
 const freshTable = I.freshnessTableHtml(bundle.freshness);
-if (/Last checked/.test(freshTable) && /Last verified/.test(freshTable) && /not live telemetry/.test(freshTable) && /Starship Mission Control/.test(freshTable)) ok("freshness table");
+if (!/Last checked/.test(freshTable) && /Last verified/.test(freshTable) && /not live telemetry/.test(freshTable) && /Starship Mission Control/.test(freshTable)) ok("freshness table");
 else bad("freshness table", freshTable.slice(0, 240));
 
 if (fail.length) {

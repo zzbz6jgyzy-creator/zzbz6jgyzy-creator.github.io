@@ -61,7 +61,7 @@ await page.goto(BASE + "/starship.html", { waitUntil: "networkidle" });
 if (await page.locator("[data-intel='starship'] .intel-fresh").count()) ok("starship freshness");
 else bad("starship freshness", "missing");
 const fresh = await page.locator("[data-intel='starship']").innerText();
-if (/Last checked/.test(fresh) && /Last verified/.test(fresh)) ok("starship checked vs verified");
+if (!/Last checked/.test(fresh) && /Last verified/.test(fresh)) ok("starship last verified, no last checked");
 else bad("starship checked vs verified", fresh);
 await page.screenshot({ path: SHOT + "/intel-starship.png" });
 

@@ -37,7 +37,7 @@ await page.locator("[data-intel-changed]").screenshot({ path: SHOT + "/hubs-home
 await page.goto(BASE + "/spacex.html", { waitUntil: "domcontentloaded" });
 await page.locator(".intel-desk [data-intel='starship'] .intel-fresh").waitFor({ timeout: 8000 });
 const desk = await page.locator(".intel-desk").innerText();
-if (/Last checked/.test(desk) && /Starship|compiled|telemetry/i.test(desk) && /Starlink|McDowell|CelesTrak/i.test(desk)) ok("spacex intel desk");
+if (/Last verified/.test(desk) && !/Last checked/.test(desk) && /Starship|compiled|telemetry/i.test(desk) && /Starlink|McDowell|CelesTrak/i.test(desk)) ok("spacex intel desk");
 else bad("spacex intel desk", desk.slice(0, 280));
 await page.locator(".intel-desk").screenshot({ path: SHOT + "/hubs-spacex-desk.png" });
 
