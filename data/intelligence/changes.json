@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-23T19:15:04.627Z",
+  "updated": "2026-10-23T19:32:02.192Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starshield-cap-still-on.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Trump says Musk “put it back.” Ukraine’s drone pilots say their tests show the Starshield speed cap is still there",
+      "at": "2026-10-23T19:31:07.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starshield-cap-still-on.html",
+      "href": "/dispatch/starshield-cap-still-on.html",
+      "summary": "Trump said Musk had restored Ukraine’s service. Ukraine’s drone pilots and Zelenskyy say the cap is still in place. What was claimed, what was tested and what’s unanswered.",
+      "title": "Trump says Musk “put it back.” Ukraine’s drone pilots say their tests show the Starshield speed cap is still there",
+      "id": "logged|dispatch:/dispatch/starshield-cap-still-on.html|2026-10-23T19:31:07.000Z|Trump says Musk “put it back.” Ukraine’s drone pilots say their tests show the Starshield speed cap is still there"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starlink-mobile-80000-towers.html",
@@ -255,23 +272,6 @@
       "summary": "A double catch on Flight 15 next month, a reflown ship and orbital refuelling early in 2027, then weekly flights. Each date checked against earlier targets and the FAA launch caps.",
       "title": "SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into",
       "id": "logged|dispatch:/dispatch/starship-flight-15-catch-timeline.html|2026-10-21T07:37:42.000Z|SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed",
-      "at": "2026-10-21T01:36:23.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-ukraine-slowdown-who-ordered.html",
-      "href": "/dispatch/starlink-ukraine-slowdown-who-ordered.html",
-      "summary": "The Wall Street Journal reports Musk ordered the cap. Musk said the US military decides, and Trump says he’d like to find out. What’s confirmed, what’s alleged, and the November 2 deadline.",
-      "title": "Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed",
-      "id": "logged|dispatch:/dispatch/starlink-ukraine-slowdown-who-ordered.html|2026-10-21T01:36:23.000Z|Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed"
     },
     {
       "type": "logged",
