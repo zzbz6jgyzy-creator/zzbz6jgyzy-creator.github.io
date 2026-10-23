@@ -23,3 +23,5 @@ html[data-theme="light"] .so-workspace{--so-bg:#f5f7f8;--so-panel:#fff;--so-ink:
 .so-advanced .sl-orbit{max-width:100%;min-width:0}.so-advanced .sl-orbit-stage{width:100%;max-width:100%}
 @media(max-width:760px){.so-workspace{width:calc(100% - 40px)}}
 @media(max-width:430px){.so-workspace{width:calc(100% - 32px)}}
+/* An aspect-ratio grid item must stay inside its assigned column. */
+.so-canvas-wrap{width:100%;max-width:100%;min-width:0}

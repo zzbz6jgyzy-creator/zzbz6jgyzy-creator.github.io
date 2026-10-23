@@ -32,6 +32,8 @@ async def main():
    assert await page.locator('.so-gen').count()==6
    assert TOTAL in await page.locator('.so-hero-total').inner_text()
    assert await page.locator('#identify').count()==1
+   if width>=1050:
+    assert await page.evaluate("document.querySelector('.so-canvas-wrap').getBoundingClientRect().right<=document.querySelector('.so-console').getBoundingClientRect().left+1"), 'globe overlaps controls'
    await page.screenshot(path=str(OUT/f'{width}-{theme}-{mode}-hero.png'))
    if await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'):
     print(await page.evaluate("[...document.body.querySelectorAll('*')].filter(e=>e.getBoundingClientRect().right>innerWidth+1&&e.getBoundingClientRect().width>0&&!e.closest('.pn-sheet')).slice(0,25).map(e=>[e.tagName,e.className?.baseVal||e.className,e.id,Math.round(e.getBoundingClientRect().right)])"),flush=True)
