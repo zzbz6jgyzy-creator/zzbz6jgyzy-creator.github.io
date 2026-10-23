@@ -9,10 +9,11 @@ import datetime, html, json, pathlib, re, runpy, subprocess, sys
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 SITE='https://superchargeddaily.com'
 ART=runpy.run_path(str(ROOT/'scripts/lesson-graphics.py'))['svg']
+DETAIL=runpy.run_path(str(ROOT/'scripts/lesson-graphics.py'))['detail_svg']
 BUNDLES=runpy.run_path(str(ROOT/'scripts/inject-js-bundles.py'))
 E=lambda value:html.escape(str(value),quote=True)
 J=lambda value:json.dumps(value,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
-VERSION='2026102301'
+VERSION='2026102302'
 
 def catalog():
     data=json.loads((ROOT/'data/explainers.json').read_text())
@@ -28,6 +29,16 @@ def catalog():
             assert source['url'].startswith(('https://','/')) and not source['url'].startswith('//')
         for stage in lesson['stages']+lesson['sections']:
             assert not stage.get('source') or stage['source'] in sources
+        chapter_ids=set()
+        for ch in lesson.get('deepDive',[]):
+            assert re.fullmatch('[a-z0-9-]+',ch['id']) and ch['id'] not in chapter_ids
+            chapter_ids.add(ch['id'])
+            for paragraph in ch['paragraphs']:
+                assert paragraph['text'].strip() and set(paragraph.get('sources',[]))<=sources
+            for key in ['math','table']:
+                if key in ch:assert set(ch[key].get('sources',[]))<=sources
+            if 'table' in ch:assert all(len(row)==len(ch['table']['headers']) for row in ch['table']['rows'])
+        for fact in lesson.get('facts',[]):assert set(fact.get('sources',[]))<=sources
     return data
 
 def tracker():
@@ -42,7 +53,7 @@ def link(item):return f'<a href="{E(item["url"])}">{E(item["title"])} <span aria
 def source_ref(lesson,key):
     if not key:return ''
     source=next(s for s in lesson['sources'] if s['id']==key)
-    return f' <a class="lx-cite" href="#source-{E(key)}" aria-label="Source: {E(source["title"])}">[source]</a>'
+    return f' <a class="lx-cite" href="#source-{E(key)}" aria-label="Source: {E(source["title"])}">[{lesson["sources"].index(source)+1}]</a>'
 
 def card(lesson,prefix=''):
     return f'''<a class="lx-card" id="{E(prefix+lesson['legacy'])}" href="{url(lesson)}">
@@ -78,6 +89,34 @@ def comparison(snapshot):
     body=''.join(f'<tr><th scope="row">{label}</th><td data-compare-cell="a:{key}">{E(value(a,key))}</td><td data-compare-cell="b:{key}">{E(value(b,key))}</td></tr>' for key,label in fields)
     return f'''<section class="lx-compare" aria-labelledby="compare-title"><p class="lx-eyebrow">From the global FSD tracker</p><h2 id="compare-title">Compare the reported branches</h2><p class="lx-fine" data-tracker-stamp>Tracker snapshot · {E(snapshot['updated'])}. Reported versions, not confirmation for your VIN.</p><div class="lx-compare-selects" hidden data-compare-controls><label>Configuration A<select data-compare="a">{options}</select></label><label>Configuration B<select data-compare="b">{options.replace('value="na-hw4"','value="na-hw4" selected')}</select></label></div><div class="lx-table-wrap"><table><caption>Hardware, FSD version, vehicle build and market are separate fields.</caption><thead><tr><th scope="col">Compare</th><th scope="col" data-compare-head="a">{E(a['label'])}</th><th scope="col" data-compare-head="b">{E(b['label'])}</th></tr></thead><tbody>{body}<tr><th scope="row">Active supervision</th><td>Required</td><td>Required</td></tr></tbody></table></div><p>Availability also depends on the vehicle and its enabled features. <a href="/fsd.html#versions">Open the maintained tracker and source notes →</a></p><script type="application/json" data-comparison>{J({'updated':snapshot['updated'],'configs':rows})}</script></section>'''
 
+def refs(lesson,keys):return ''.join(source_ref(lesson,key) for key in keys)
+
+def contents(lesson):
+    return '<details class="lx-contents"><summary>In this guide · six detailed chapters</summary><ol>'+''.join(f'<li><a href="#chapter-{E(ch["id"])}">{E(ch["title"])}</a></li>' for ch in lesson.get('deepDive',[]))+'</ol></details>'
+
+def fact_cards(lesson):
+    return '<section class="lx-facts" aria-label="Facts in context">'+''.join(f'<article><p class="lx-fact-value">{E(f["value"])}</p><h2>{E(f["label"])}</h2><p>{E(f["note"])}{refs(lesson,f.get("sources",[]))}</p></article>' for f in lesson.get('facts',[]))+'</section>'
+
+def deep_dive(lesson):
+    chapters=[]
+    for ch in lesson.get('deepDive',[]):
+        parts=[]
+        for paragraph in ch['paragraphs']:
+            label=paragraph.get('kind','Explanation')
+            parts.append(f'<div class="lx-depth-paragraph"><p class="lx-evidence-label">{E(label)}</p><p>{E(paragraph["text"])}{refs(lesson,paragraph.get("sources",[]))}</p></div>')
+        if ch.get('visual'):
+            description={'forces':'Instantaneous vertical force balance. Force arrows are schematic; the simplified equation omits aerodynamic forces.','cameras':'Eight road-facing cameras in the cited US Model Y chapter: front bumper ×1, windshield ×2, door pillars ×2, front fenders ×2, rear ×1. Cabin camera separate. Schematic positions, not fields of view.','braking':'Chosen inputs: one-second delay, constant 6 m/s² deceleration. Totals: 14.1 m at 30 km/h, 39.8 m at 60 km/h and 77.1 m at 90 km/h. These are model calculations, not Tesla measurements.'}[ch['visual']]
+            parts.append('<figure class="lx-detail-figure">'+DETAIL(ch['visual'],'detail-'+lesson['id']+'-'+ch['id'])+'<figcaption>'+E(description)+'</figcaption></figure>')
+        if ch.get('table'):
+            t=ch['table'];parts.append('<div class="lx-depth-table" role="region" tabindex="0" aria-label="Scrollable comparison"><table><caption>'+E(t['caption'])+'</caption><thead><tr>'+''.join('<th scope="col">'+E(h)+'</th>' for h in t['headers'])+'</tr></thead><tbody>'+''.join('<tr>'+''.join(('<th scope="row">' if i==0 else '<td>')+E(c)+('</th>' if i==0 else '</td>') for i,c in enumerate(row))+'</tr>' for row in t['rows'])+'</tbody></table></div><p class="lx-table-source">'+refs(lesson,t.get('sources',[]))+'</p>')
+        if ch.get('math'):
+            m=ch['math'];parts.append('<aside class="lx-calculation"><h3>'+E(m['title'])+'</h3><p class="lx-formula">'+E(m['formula'])+'</p><ul>'+''.join('<li>'+E(t)+'</li>' for t in m['terms'])+'</ul><p>'+E(m['note'])+refs(lesson,m.get('sources',[]))+'</p></aside>')
+        chapters.append(f'<section class="lx-chapter" id="chapter-{E(ch["id"])}"><h2>{E(ch["title"])}</h2>'+''.join(parts)+'</section>')
+    return '<section class="lx-depth" id="deep-dive" aria-label="The detailed explanation">'+''.join(chapters)+'</section>'
+
+def faq(lesson):
+    return '<section class="lx-misconceptions lx-faq"><p class="lx-eyebrow">The next questions</p><h2>Go a level deeper</h2>'+''.join('<details><summary>'+E(q['title'])+'</summary><p>'+E(q['text'])+'</p></details>' for q in lesson.get('faq',[]))+'</section>'
+
 def lesson_page(lesson,data,snapshot):
     steps=''.join(f'<li class="lx-step"{ " data-active" if i==0 else ""}><h3><span class="lx-step-static">{i+1:02d} · {E(s["title"])}</span><button type="button" data-step-target="{i}" aria-label="Step {i+1}: {E(s["title"])}" hidden><span class="lx-step-number">{i+1:02d}</span><span class="lx-step-name">{E(s["title"])}</span></button></h3><p>{E(s["text"])}{source_ref(lesson,s.get("source"))}</p></li>' for i,s in enumerate(lesson['stages']))
     mode='<div class="lx-mode" role="group" aria-label="Staging method"><button type="button" data-mode="hot" aria-pressed="true">Hot staging</button><button type="button" data-mode="cold" aria-pressed="false">Cold staging</button></div>' if lesson['id']=='hot-staging' else ''
@@ -93,7 +132,7 @@ def lesson_page(lesson,data,snapshot):
     elif lesson['id']=='catch':
         video='''<section class="lx-footage"><p class="lx-eyebrow">See the real event</p><h2>The first Super Heavy catch</h2><video controls playsinline preload="none" poster="/assets/dispatch/starship-catch-poster.jpg" aria-label="Official SpaceX footage of the first Super Heavy catch"><source src="/assets/dispatch/starship-catch.mp4" type="video/mp4"/>Your browser does not support this video. <a href="/assets/dispatch/starship-catch.mp4">Open the footage</a>.</video><p class="lx-fine">Official SpaceX footage · first Super Heavy catch. Video loads when you choose to play.</p><a href="https://www.spacex.com/launches/starship-flight-5" target="_blank" rel="noopener">Open SpaceX’s mission reference ↗</a></section>'''
     note='<p class="lx-responsibility">Driver assistance requires an attentive driver. Consult the instructions for your vehicle and region.</p>' if lesson['topic']=='tesla' else ''
-    return f'''<main id="main" class="lx lx-lesson" data-lesson="{E(lesson['id'])}"><nav class="lx-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/explainers.html">Explainers</a><span aria-hidden="true">/</span><span aria-current="page">{E(lesson['title'])}</span></nav><header class="lx-lesson-head"><p class="lx-eyebrow">{E(lesson['category'])} · About {lesson['minutes']} min</p><h1>{E(lesson['title'])}</h1><p class="lx-answer">{E(lesson['answer'])}</p><p class="lx-lesson-meta">By <a href="/about.html">Alex R</a><span>Reference review <time datetime="{data['reviewed']}">{datetime.date.fromisoformat(data['reviewed']).strftime('%d %b %Y')}</time></span></p></header><nav class="lx-lesson-nav" aria-label="In this guide"><a href="#diagram-title">Explore diagram</a><a href="#key-ideas">Key ideas</a><a href="#sources">Sources</a></nav><p class="lx-intro">{E(lesson['intro'])}</p>{note}{lab}{comparison(snapshot) if lesson['id']=='fsd' else ''}<div class="lx-reading" id="key-ideas">{sections}<section class="lx-misconceptions"><p class="lx-eyebrow">A clearer picture</p><h2>Common misunderstandings</h2>{myths}</section><section class="lx-glossary"><p class="lx-eyebrow">Plain English</p><h2>Key terms</h2><dl>{glossary}</dl></section>{video}<section class="lx-sources" id="sources"><p class="lx-eyebrow">Check the evidence</p><h2>Sources and scope</h2><p>The references below support the stated mechanism and limits. The artwork is an original educational schematic. Version snapshots are separate from the reference-review date.</p><ol>{sources}</ol></section></div><section class="lx-continue" aria-labelledby="continue-title"><p class="lx-eyebrow">Keep exploring</p><h2 id="continue-title">Connect the explanation to the evidence</h2><div>{related}</div><a class="lx-back" href="/explainers.html">← All visual explainers</a></section></main>'''
+    return f'''<main id="main" class="lx lx-lesson" data-lesson="{E(lesson['id'])}"><nav class="lx-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/explainers.html">Explainers</a><span aria-hidden="true">/</span><span aria-current="page">{E(lesson['title'])}</span></nav><header class="lx-lesson-head"><p class="lx-eyebrow">{E(lesson['category'])} · About {lesson['minutes']} min</p><h1>{E(lesson['title'])}</h1><p class="lx-answer">{E(lesson['answer'])}</p><p class="lx-lesson-meta">By <a href="/about.html">Alex R</a><span>Reference review <time datetime="{data['reviewed']}">{datetime.date.fromisoformat(data['reviewed']).strftime('%d %b %Y')}</time></span></p></header><nav class="lx-lesson-nav" aria-label="In this guide"><a href="#diagram-title">Explore diagram</a><a href="#deep-dive">Detailed guide</a><a href="#sources">Sources</a></nav><p class="lx-intro">{E(lesson['intro'])}</p>{note}{contents(lesson)}{lab}{comparison(snapshot) if lesson['id']=='fsd' else ''}{fact_cards(lesson)}<div class="lx-reading" id="key-ideas">{sections}{deep_dive(lesson)}{faq(lesson)}<section class="lx-misconceptions"><p class="lx-eyebrow">A clearer picture</p><h2>Common misunderstandings</h2>{myths}</section><section class="lx-glossary"><p class="lx-eyebrow">Plain English</p><h2>Key terms</h2><dl>{glossary}</dl></section>{video}<section class="lx-sources" id="sources"><p class="lx-eyebrow">Check the evidence</p><h2>Sources and scope</h2><p>The references below support the stated mechanism and limits. The artwork is an original educational schematic. Version snapshots are separate from the reference-review date.</p><ol>{sources}</ol></section></div><section class="lx-continue" aria-labelledby="continue-title"><p class="lx-eyebrow">Keep exploring</p><h2 id="continue-title">Connect the explanation to the evidence</h2><div>{related}</div><a class="lx-back" href="/explainers.html">← All visual explainers</a></section></main>'''
 
 def metadata(shell,title,description,path,image,image_alt,ld):
     shell=re.sub(r'\n?[ \t]*<!--lx:metadata-->.*?<!--/lx:metadata-->\n?','',shell,flags=re.S)

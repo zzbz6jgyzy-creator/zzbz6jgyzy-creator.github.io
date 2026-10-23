@@ -28,6 +28,13 @@ async def main():
      assert await page.locator('.lx-card').count()==4
      assert await page.evaluate('scrollY')==0
     else:
+     assert await page.locator('.lx-chapter').count()==6
+     assert await page.locator('.lx-facts article').count()==3
+     await page.locator('.lx-contents summary').click()
+     assert await page.locator('.lx-contents a:visible').count()==6
+     await page.locator('.lx-contents a').last.click()
+     assert (await page.evaluate('location.hash')).startswith('#chapter-')
+     await page.locator('.lx-contents summary').click()
      await page.locator('[data-next]').click();assert await page.locator('[data-lesson-figure]').get_attribute('data-step')=='1'
      await page.locator('[data-step-target="4"]').click();assert await page.locator('[data-next]').is_disabled()
      await page.locator('[data-restart]').click();assert await page.locator('[data-previous]').is_disabled()
@@ -37,12 +44,18 @@ async def main():
      for b in await page.locator('.lx button:visible').all():assert (await b.bounding_box())['height']>=43
      if slug=='hot-staging':
       await page.locator('button[data-mode="cold"]').click();assert await page.locator('[data-current-title]').inner_text()=='Ignite the upper stage'
+      await page.locator('[data-step-target="2"]').click()
+      assert await page.locator('[data-cold-poses]').first.get_attribute('transform')=='translate(0 16)'
+      assert await page.locator('[data-step-target="2"]').get_attribute('aria-label')=='Step 3: Separate and coast'
+      assert await page.locator('[data-scrub]').get_attribute('aria-valuetext')=='Step 3: Separate and coast'
       await page.locator('button[data-mode="hot"]').click()
+      assert await page.locator('[data-cold-poses]').first.get_attribute('transform')=='translate(0 0)'
      if slug=='fsd':
       assert await page.locator('[data-compare-controls]').is_visible()
       await page.locator('[data-compare="b"]').select_option('europe');assert 'Europe' in await page.locator('[data-compare-head="b"]').inner_text()
      await page.locator('[data-restart]').click()
     if width in [390,1440]:await page.screenshot(path=str(OUT/f'{slug or "hub"}-{width}-{"light" if light else "dark"}.png'),full_page=True)
+    if slug and width==390 and not light and await page.locator('.lx-detail-figure').count():await page.locator('.lx-detail-figure').screenshot(path=str(OUT/f'{slug}-detail.png'))
     checks+=1
    assert not errors,errors
    await c.close()
@@ -50,8 +63,9 @@ async def main():
   for l in LESSONS:
    await page.goto('https://superchargeddaily.com/explainers/'+l['slug']+'.html')
    assert await page.locator('.lx-step>p:visible').count()==5
+   assert await page.locator('.lx-chapter').count()==6
    assert await page.locator('[data-lesson-controls]').is_hidden()
-   if l['id']=='fsd':assert await page.locator('table td:visible').count()==10
+   if l['id']=='fsd':assert await page.locator('.lx-compare table td:visible').count()==10
   await c.close()
   c=await context();page=await c.new_page()
   for l in LESSONS:

@@ -16,6 +16,17 @@ class Explainers(unittest.TestCase):
    for payload in re.findall(r'<script type="application/ld\+json">(.*?)</script>',s,re.S):json.loads(payload)
    svg=(ROOT/('assets/explainers/'+lesson['slug']+'.svg')).read_text();ET.fromstring(svg)
    self.assertNotIn('<iframe',main);self.assertNotIn('autoplay',main)
+ def test_depth_has_substance_citations_and_scoped_models(self):
+  for lesson in BUILD['catalog']()['lessons']:
+   self.assertEqual(len(lesson['deepDive']),6);self.assertEqual(len(lesson['facts']),3)
+   self.assertGreater(sum(len(p['text'].split()) for ch in lesson['deepDive'] for p in ch['paragraphs']),800)
+   self.assertGreaterEqual(len(lesson['sources']),5)
+   for chapter in lesson['deepDive']:
+    if chapter.get('visual'):ET.fromstring(BUILD['DETAIL'](chapter['visual'],'test-detail'))
+  collision=next(l for l in BUILD['catalog']()['lessons'] if l['id']=='evasion')
+  self.assertIn('not a Tesla-specific',collision['facts'][0]['note'])
+  self.assertIn('not Tesla measurements',BUILD['deep_dive'](collision))
+  self.assertIn('39.8',BUILD['DETAIL']('braking','test-braking'))
  def test_comparison_uses_current_tracker_and_retains_static_table(self):
   snapshot=BUILD['tracker']();rows=BUILD['configs'](snapshot);markup=BUILD['comparison'](snapshot)
   self.assertIn(snapshot['updated'],markup)
