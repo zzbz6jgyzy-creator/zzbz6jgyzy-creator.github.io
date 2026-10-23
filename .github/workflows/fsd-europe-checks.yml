@@ -1,0 +1,44 @@
+name: FSD Europe quality checks
+on:
+  pull_request:
+    paths:
+      - 'fsd-europe*'
+      - 'fsd-europe/**'
+      - 'data/fsd-europe*'
+      - 'scripts/*fsd-europe*'
+      - 'scripts/js-bundles.json'
+      - 'tests/fsd-europe*'
+      - 'tests/test_fsd_europe_sources.py'
+      - '.github/workflows/fsd-europe*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm install --no-save --no-package-lock esbuild@0.25.12
+      - run: node --test tests/fsd-europe.test.mjs tests/tracker-snapshots.test.mjs tests/software-workspace.test.mjs
+      - run: python3 -m unittest discover -s tests -p test_fsd_europe_sources.py
+      - run: node scripts/build-fsd-europe.mjs && node scripts/build-js.mjs && python3 scripts/inject-js-bundles.py
+      - run: git diff --exit-code -- fsd-europe.html fsd-europe fsd-europe-data.js fsd-data.js assets/js
+      - run: pip install playwright==1.62.0
+      - run: python3 -m playwright install chromium --with-deps
+      - name: Browser and no-JavaScript checks
+        run: |
+          export CHROMIUM_PATH=$(python3 -c 'from playwright.sync_api import sync_playwright; p=sync_playwright().start(); print(p.chromium.executable_path); p.stop()')
+          python3 tests/fsd-europe-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fsd-europe-responsive-screenshots
+          path: /tmp/fsd-europe-screenshots
+          retention-days: 7

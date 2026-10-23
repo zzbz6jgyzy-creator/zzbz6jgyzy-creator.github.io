@@ -1,66 +1,3002 @@
+// Generated from data/fsd-europe.json by scripts/build-fsd-europe.mjs. Edit the JSON source.
 window.FSD_EUROPE = {
-  updated: "2026-10-22",
-  note:
-    "Based on public reports of national recognition of the Dutch RDW provisional type approval (EU 2018/858 Art. 39). Not affiliated with Tesla. Not official.",
-  thresholds: {
-    statesNeeded: 15,
-    populationNeeded: 65,
-    euPopulationM: 448.4,
+  "schemaVersion": 1,
+  "updated": "2026-10-23",
+  "revision": "2026-10-23.1",
+  "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
+  "thresholds": {
+    "euPopulationM": 448.9,
+    "statesNeeded": 15,
+    "populationNeeded": 65,
+    "populationBasis": "Legacy rounded demographic sum; not legal voting weights. Not used for a vote tally."
   },
-  nextVote: {
-    label: "Next TCMV window",
-    detail: "6 Oct 2026 was discussion only. Earliest vote now expected December 2026.",
-  },
-  // stage: live | recognised | announced | review | testing | none ("" = unconfirmed)
-  countries: [
-    { code: "NL", name: "Netherlands", status: "approved", date: "2026-04-10", pop: 17.9, note: "RDW issued provisional Art. 39 type approval.", regulator: "RDW", stage: "live", position: "Granted the provisional Art. 39 approval", nextStep: "EU-wide TCMV vote", rolloutLive: true, sources: [{ label: "RDW statement", url: "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "LT", name: "Lithuania", status: "approved", date: "2026-05-20", pop: 2.9, note: "First state to recognise the Dutch approval.", regulator: "Lithuanian Transport Safety Administration", stage: "live", position: "Recognised RDW approval", nextStep: "EU-wide TCMV vote", rolloutLive: true, sources: [{ label: "Reuters, 20 May", url: "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/" }, { label: "Lithuanian Transport Ministry", url: "https://sumin.lrv.lt/lt/naujienos/juras-taminskas-lietuva-tarp-pirmuju-europoje-kur-automobiliai-nuo-siol-gali-vairuoti-patys-cRIY/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "EE", name: "Estonia", status: "approved", date: "2026-05-29", pop: 1.4, note: "National recognition of RDW approval.", regulator: "Transpordiamet", stage: "live", position: "Recognised RDW approval", nextStep: "EU-wide TCMV vote", rolloutLive: true, sources: [{ label: "Estonian World", url: "https://estonianworld.com/technology/estonia-approves-teslas-self-driving-system-for-its-roads/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "DK", name: "Denmark", status: "approved", date: "2026-06-09", pop: 6.0, note: "Færdselsstyrelsen after its own file review.", regulator: "Færdselsstyrelsen", stage: "live", position: "Recognised after own review", nextStep: "EU-wide TCMV vote", rolloutLive: true, sources: [{ label: "Færdselsstyrelsen, 9 Jun", url: "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "BE", name: "Belgium", status: "approved", date: "2026-06-10", pop: 11.7, note: "Flemish mobility minister signed national recognition.", regulator: "FOD Mobiliteit / Flemish mobility minister", stage: "live", position: "Recognised RDW approval", nextStep: "EU-wide TCMV vote", rolloutLive: true, sources: [{ label: "EVXL, 10 Jun", url: "https://evxl.co/2026/06/10/tesla-fsd-belgium-denmark-approval/" }, { label: "Vlaams Parlement, 15 Oct", url: "https://www.vlaamsparlement.be/nl/parlementair-werk/commissies/commissievergaderingen/2075354/verslag/2079815" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "SI", name: "Slovenia", status: "approved", date: "2026-09-07", pop: 2.1, note: "AVP recognised the RDW type approval.", regulator: "AVP", stage: "live", position: "Recognised RDW approval", nextStep: "EU-wide TCMV vote", rolloutLive: true, sources: [{ label: "GOV.SI, 8 Sep", url: "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "CZ", name: "Czechia", status: "approved", date: "2026-09-21", pop: 10.9, note: "Transport ministry recognition; customer rollout under way.", regulator: "Ministry of Transport (MDČR)", stage: "live", position: "Recognised RDW approval", nextStep: "EU-wide TCMV vote", rolloutLive: true, sources: [{ label: "ProTeslu, 7 Oct (owners on 2026.33.100)", url: "https://proteslu.cz/novinky/fsd-v-cesku-po-dvou-tydnech-nova-vlna-aktualizaci" }, { label: "Czech Ministry of Transport", url: "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "HR", name: "Croatia", status: "approved", date: "2026-09-29", pop: 3.9, note: "Eighth EU country. DZM confirmed recognition; customer use confirmed by 1 Oct.", regulator: "DZM", stage: "live", position: "Recognised RDW approval", nextStep: "EU-wide TCMV vote", rolloutLive: true, sources: [{ label: "N1 / HINA, 29 Sep", url: "https://n1info.hr/magazin/auto/teslin-sustav-samostalne-voznje-s-nadzorom-odobren-u-hrvatskoj/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "DE", name: "Germany", status: "review", date: null, pop: 83.4, note: "Transport ministry backs prompt EU-wide approval (6 Oct), with up to 10% over the limit. Tesla renamed the system Tesla Assisted Driving in Europe (9 Oct). ~19% of EU population.", regulator: "KBA / BMV", stage: "review", position: "Supports EU-wide approval", nextStep: "TCMV vote", rolloutLive: false, sources: [{ label: "BMV", url: "https://www.bmv.de/SharedDocs/DE/Artikel/StV/Digitalisierung-der-Mobilitaet/aktueller-stand-tesla-assistenzsysteme.html" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "FR", name: "France", status: "review", date: null, pop: 68.3, note: "Under review. Large vote weight for EU-wide path.", regulator: "Ministry of Transport / UTAC", stage: "review", position: "Opposes in current form; wants EU-level decision", nextStep: "Road tests, then TCMV vote", rolloutLive: false, sources: [{ label: "Reuters, 3 Sep", url: "https://www.reuters.com/technology/france-starts-tests-teslas-self-driving-tech-2026-09-03/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "IT", name: "Italy", status: "review", date: null, pop: 59.0, note: "Under review.", regulator: "Ministry of Transport (MIT)", stage: "review", position: "Cautious; application under analysis", nextStep: "National decision or TCMV vote", rolloutLive: false, sources: [{ label: "Not a Tesla App", url: "https://www.notateslaapp.com/news/4430/tesla-fsd-inches-closer-to-regulatory-approval-in-italy" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "ES", name: "Spain", status: "review", date: null, pop: 48.6, note: "Under review.", regulator: "Ministry of Industry / DGT", stage: "review", position: "No unilateral approval; waits for EU", nextStep: "TCMV vote", rolloutLive: false, sources: [{ label: "Minister Hereu via X", url: "https://x.com/mgualdo/status/2080338935620800589" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "SE", name: "Sweden", status: "review", date: null, pop: 10.6, note: "Regulators have raised icy-road and speed concerns.", regulator: "Transportstyrelsen / Trafikverket", stage: "review", position: "Recommends rejection while speed offsets allowed", nextStep: "TCMV vote", rolloutLive: false, sources: [{ label: "Reuters, 18 Jun", url: "https://www.reuters.com/business/autos-transportation/sweden-may-oppose-teslas-supervised-self-driving-tech-europe-over-speeding-2026-06-18/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "GR", name: "Greece", status: "review", date: null, pop: 10.4, note: "Ministry has discussed recognising the Dutch approval.", regulator: "Ministry of Transport (YME)", stage: "review", position: "Intends to fast-track recognition", nextStep: "National recognition", rolloutLive: false, sources: [{ label: "ETSC", url: "https://etsc.eu/lithuania-and-estonia-authorise-tesla-fsd-with-belgium-and-greece-fast-tracking/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "FI", name: "Finland", status: "review", date: null, pop: 5.6, note: "Nordic review; icy roads cited as a concern.", regulator: "Traficom", stage: "review", position: "Reviewing; stance reported positive", nextStep: "National decision or TCMV vote", rolloutLive: false, sources: [{ label: "Reuters, 23 Jun", url: "https://www.reuters.com/business/autos-transportation/finland-may-approve-teslas-supervised-self-driving-software-before-eu-vote-2026-06-23/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "IE", name: "Ireland", status: "review", date: null, pop: 5.4, note: "Not yet approved. Watching national recognition.", regulator: "NSAI / Dept of Transport", stage: "review", position: "", nextStep: "National decision or TCMV vote", rolloutLive: false, sources: [{ label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "PL", name: "Poland", status: "none", date: null, pop: 36.7, note: "No national recognition reported.", regulator: "Transportowy Dozór Techniczny", stage: "none", position: "Requires local testing", nextStep: "", rolloutLive: false, sources: [{ label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "RO", name: "Romania", status: "none", date: null, pop: 19.0, note: "No national recognition reported.", regulator: "RAR", stage: "none", position: "Dutch approval not recognised; dossier under review", nextStep: "", rolloutLive: false, sources: [{ label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "PT", name: "Portugal", status: "none", date: null, pop: 10.6, note: "No national recognition reported.", regulator: "IMT", stage: "none", position: "Following EU developments", nextStep: "TCMV vote", rolloutLive: false, sources: [{ label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "HU", name: "Hungary", status: "none", date: null, pop: 9.6, note: "No national recognition reported.", regulator: "Transport ministry (KBM)", stage: "none", position: "Waits for EU decision", nextStep: "TCMV vote", rolloutLive: false, sources: [{ label: "Totalcar, 29 Jul", url: "https://totalcar.hu/hirek/2026/07/29/tesla-fsd-onvezetes-magyarorszag-miniszteriumi-dontes-kbm/" }, { label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "AT", name: "Austria", status: "none", date: null, pop: 9.1, note: "No national recognition reported.", regulator: "BMIMI", stage: "none", position: "No national recognition; waits for EU", nextStep: "TCMV vote", rolloutLive: false, sources: [{ label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "BG", name: "Bulgaria", status: "none", date: null, pop: 6.4, note: "No national recognition reported.", regulator: "", stage: "none", position: "", nextStep: "", rolloutLive: false, sources: [{ label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "SK", name: "Slovakia", status: "approved", date: "2026-10-16", pop: 5.4, note: "Ninth EU country. Ministry of Transport recognised the RDW approval. Tesla Europe says the rollout begins soon, with no date yet.", regulator: "Ministry of Transport (MDSR)", stage: "recognised", position: "Recognised RDW approval", nextStep: "Customer rollout (Tesla: \"soon\", no date)", rolloutLive: false, sources: [{ label: "TN Live (ministry statement), 16 Oct", url: "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou" }, { label: "Tesla Europe on X, 16 Oct", url: "https://x.com/teslaeurope/status/2111095942015566145" }, { label: "Noviny.sk, 16 Oct", url: "https://www.noviny.sk/slovensko/1273637-asistovane-riadenie-prichadza-na-slovensko-volant-ale-zostava-v-rukach-vodica" }, { label: "Pravda, 7 Oct", url: "https://www.pravda.sk/auto/magazin/clanok/2055389-slovensko-onedlho-povoli-autonomne-riadenie-tesla-fsd-vodic-vsak-zodpovednost-neodovzda-autu" }] },
-    { code: "LV", name: "Latvia", status: "none", date: null, pop: 1.9, note: "No national recognition reported.", regulator: "CSDD", stage: "testing", position: "", nextStep: "", rolloutLive: false, sources: [{ label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "CY", name: "Cyprus", status: "none", date: null, pop: 0.9, note: "No national recognition reported.", regulator: "", stage: "none", position: "", nextStep: "", rolloutLive: false, sources: [{ label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "LU", name: "Luxembourg", status: "none", date: null, pop: 0.7, note: "On 20 Oct 2026 the mobility minister told parliament Luxembourg will rely on the EU-wide procedure. No national recognition planned.", regulator: "SNCH", stage: "testing", position: "Testing authorisation granted", nextStep: "", rolloutLive: false, sources: [{ label: "notanfsdtracker †", url: "https://notanfsdtracker.com/eu-tracker" }, { label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
-    { code: "MT", name: "Malta", status: "none", date: null, pop: 0.5, note: "No national recognition reported.", regulator: "", stage: "none", position: "", nextStep: "", rolloutLive: false, sources: [{ label: "tad-tracker †", url: "https://tad-tracker.eu/en/" }] },
+  "countries": [
+    {
+      "code": "NL",
+      "slug": "netherlands",
+      "name": "Netherlands",
+      "jurisdiction": "EU",
+      "authority": "RDW",
+      "permission": {
+        "status": "recorded",
+        "date": "2026-04-10",
+        "evidence": [
+          "s-27eff0758607"
+        ],
+        "reviewedAt": "2026-10-23"
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Granted the provisional Art. 39 approval",
+        "evidence": [
+          "s-8bd1015b0ba9",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-8bd1015b0ba9",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49",
+        "s-27eff0758607"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-04-10",
+      "pop": 17.9,
+      "regulator": "RDW",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "RDW provisional approval, 10 April 2026",
+          "url": "https://www.rdw.nl/nieuws/2026/toelichting-rdw-op-europese-typegoedkeuring-tesla-met-voorlopige-geldigheid-in-nederland"
+        },
+        {
+          "label": "RDW statement",
+          "url": "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "LT",
+      "slug": "lithuania",
+      "name": "Lithuania",
+      "jurisdiction": "EU",
+      "authority": "Lithuanian Transport Safety Administration",
+      "permission": {
+        "status": "recorded",
+        "date": "2026-05-20",
+        "evidence": [
+          "s-db0bbde0b445"
+        ],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recognised RDW approval",
+        "evidence": [
+          "s-954b301ed9a7",
+          "s-db0bbde0b445",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-954b301ed9a7",
+        "s-db0bbde0b445",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-05-20",
+      "pop": 2.9,
+      "regulator": "Lithuanian Transport Safety Administration",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Lithuanian Transport Ministry",
+          "url": "https://sumin.lrv.lt/lt/naujienos/juras-taminskas-lietuva-tarp-pirmuju-europoje-kur-automobiliai-nuo-siol-gali-vairuoti-patys-cRIY/"
+        },
+        {
+          "label": "Reuters, 20 May",
+          "url": "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "EE",
+      "slug": "estonia",
+      "name": "Estonia",
+      "jurisdiction": "EU",
+      "authority": "Transpordiamet",
+      "permission": {
+        "status": "reported",
+        "date": "2026-05-29",
+        "evidence": [
+          "s-4ec18ab8360c"
+        ],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recognised RDW approval",
+        "evidence": [
+          "s-4ec18ab8360c",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-4ec18ab8360c",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-05-29",
+      "pop": 1.4,
+      "regulator": "Transpordiamet",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Estonian World",
+          "url": "https://estonianworld.com/technology/estonia-approves-teslas-self-driving-system-for-its-roads/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "DK",
+      "slug": "denmark",
+      "name": "Denmark",
+      "jurisdiction": "EU",
+      "authority": "Færdselsstyrelsen",
+      "permission": {
+        "status": "recorded",
+        "date": "2026-06-09",
+        "evidence": [
+          "s-4c89088d4eff"
+        ],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recognised after own review",
+        "evidence": [
+          "s-4c89088d4eff",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-4c89088d4eff",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-06-09",
+      "pop": 6,
+      "regulator": "Færdselsstyrelsen",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Færdselsstyrelsen, 9 Jun",
+          "url": "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "BE",
+      "slug": "belgium",
+      "name": "Belgium",
+      "jurisdiction": "EU",
+      "authority": "FOD Mobiliteit / Flemish mobility minister",
+      "permission": {
+        "status": "recorded",
+        "date": "2026-06-10",
+        "evidence": [
+          "s-809d6f317968"
+        ],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recognised RDW approval",
+        "evidence": [
+          "s-10384cf0f7d3",
+          "s-809d6f317968",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-10384cf0f7d3",
+        "s-809d6f317968",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-06-10",
+      "pop": 11.7,
+      "regulator": "FOD Mobiliteit / Flemish mobility minister",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Vlaams Parlement, 15 Oct",
+          "url": "https://www.vlaamsparlement.be/nl/parlementair-werk/commissies/commissievergaderingen/2075354/verslag/2079815"
+        },
+        {
+          "label": "EVXL, 10 Jun",
+          "url": "https://evxl.co/2026/06/10/tesla-fsd-belgium-denmark-approval/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "SI",
+      "slug": "slovenia",
+      "name": "Slovenia",
+      "jurisdiction": "EU",
+      "authority": "AVP",
+      "permission": {
+        "status": "recorded",
+        "date": "2026-09-07",
+        "evidence": [
+          "s-27dbaf13ccd4"
+        ],
+        "reviewedAt": "2026-10-23"
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recognised RDW approval",
+        "evidence": [
+          "s-27dbaf13ccd4",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-27dbaf13ccd4",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-09-07",
+      "pop": 2.1,
+      "regulator": "AVP",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "GOV.SI, 8 Sep",
+          "url": "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "CZ",
+      "slug": "czechia",
+      "name": "Czechia",
+      "jurisdiction": "EU",
+      "authority": "Ministry of Transport (MDČR)",
+      "permission": {
+        "status": "recorded",
+        "date": "2026-09-21",
+        "evidence": [
+          "s-fdfea0826668"
+        ],
+        "reviewedAt": "2026-10-23"
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "reported",
+        "date": "2026-10-07",
+        "evidence": [
+          "s-c2bbdc3c57b4"
+        ],
+        "note": "A dated owner-report article describes software deliveries. This is a secondary report, not independent fleet telemetry."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recognised RDW approval",
+        "evidence": [
+          "s-c2bbdc3c57b4",
+          "s-fdfea0826668",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-c2bbdc3c57b4",
+        "s-fdfea0826668",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-09-21",
+      "pop": 10.9,
+      "regulator": "Ministry of Transport (MDČR)",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Czech Ministry of Transport",
+          "url": "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system"
+        },
+        {
+          "label": "ProTeslu, 7 Oct (owners on 2026.33.100)",
+          "url": "https://proteslu.cz/novinky/fsd-v-cesku-po-dvou-tydnech-nova-vlna-aktualizaci"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "HR",
+      "slug": "croatia",
+      "name": "Croatia",
+      "jurisdiction": "EU",
+      "authority": "DZM",
+      "permission": {
+        "status": "reported",
+        "date": "2026-09-29",
+        "evidence": [
+          "s-87e4a94f8542"
+        ],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recognised RDW approval",
+        "evidence": [
+          "s-87e4a94f8542",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-87e4a94f8542",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-09-29",
+      "pop": 3.9,
+      "regulator": "DZM",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "N1 / HINA, 29 Sep",
+          "url": "https://n1info.hr/magazin/auto/teslin-sustav-samostalne-voznje-s-nadzorom-odobren-u-hrvatskoj/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "DE",
+      "slug": "germany",
+      "name": "Germany",
+      "jurisdiction": "EU",
+      "authority": "KBA / BMV",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Supports EU-wide approval",
+        "evidence": [
+          "s-b6a3633d96a3",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-b6a3633d96a3",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 83.4,
+      "regulator": "KBA / BMV",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "BMV",
+          "url": "https://www.bmv.de/SharedDocs/DE/Artikel/StV/Digitalisierung-der-Mobilitaet/aktueller-stand-tesla-assistenzsysteme.html"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "FR",
+      "slug": "france",
+      "name": "France",
+      "jurisdiction": "EU",
+      "authority": "Ministry of Transport / UTAC",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Opposes in current form; wants EU-level decision",
+        "evidence": [
+          "s-976ccc18b5b3",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-976ccc18b5b3",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 68.3,
+      "regulator": "Ministry of Transport / UTAC",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Reuters, 3 Sep",
+          "url": "https://www.reuters.com/technology/france-starts-tests-teslas-self-driving-tech-2026-09-03/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "IT",
+      "slug": "italy",
+      "name": "Italy",
+      "jurisdiction": "EU",
+      "authority": "Ministry of Transport (MIT)",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Cautious; application under analysis",
+        "evidence": [
+          "s-a0fab7ffcd45",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-a0fab7ffcd45",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 59,
+      "regulator": "Ministry of Transport (MIT)",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Not a Tesla App",
+          "url": "https://www.notateslaapp.com/news/4430/tesla-fsd-inches-closer-to-regulatory-approval-in-italy"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "ES",
+      "slug": "spain",
+      "name": "Spain",
+      "jurisdiction": "EU",
+      "authority": "Ministry of Industry / DGT",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "No unilateral approval; waits for EU",
+        "evidence": [
+          "s-83c8f2e76c02",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-83c8f2e76c02",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 48.6,
+      "regulator": "Ministry of Industry / DGT",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Minister Hereu via X",
+          "url": "https://x.com/mgualdo/status/2080338935620800589"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "SE",
+      "slug": "sweden",
+      "name": "Sweden",
+      "jurisdiction": "EU",
+      "authority": "Transportstyrelsen / Trafikverket",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recommends rejection while speed offsets allowed",
+        "evidence": [
+          "s-6e10a62f6935",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-6e10a62f6935",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 10.6,
+      "regulator": "Transportstyrelsen / Trafikverket",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Reuters, 18 Jun",
+          "url": "https://www.reuters.com/business/autos-transportation/sweden-may-oppose-teslas-supervised-self-driving-tech-europe-over-speeding-2026-06-18/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "GR",
+      "slug": "greece",
+      "name": "Greece",
+      "jurisdiction": "EU",
+      "authority": "Ministry of Transport (YME)",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Intends to fast-track recognition",
+        "evidence": [
+          "s-3ca28aa0436d",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-3ca28aa0436d",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 10.4,
+      "regulator": "Ministry of Transport (YME)",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "ETSC",
+          "url": "https://etsc.eu/lithuania-and-estonia-authorise-tesla-fsd-with-belgium-and-greece-fast-tracking/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "FI",
+      "slug": "finland",
+      "name": "Finland",
+      "jurisdiction": "EU",
+      "authority": "Traficom",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Reviewing; stance reported positive",
+        "evidence": [
+          "s-07f6e5d3dd29",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-07f6e5d3dd29",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 5.6,
+      "regulator": "Traficom",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Reuters, 23 Jun",
+          "url": "https://www.reuters.com/business/autos-transportation/finland-may-approve-teslas-supervised-self-driving-software-before-eu-vote-2026-06-23/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "IE",
+      "slug": "ireland",
+      "name": "Ireland",
+      "jurisdiction": "EU",
+      "authority": "NSAI / Dept of Transport",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "No verified current position is retained.",
+        "evidence": [
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 5.4,
+      "regulator": "NSAI / Dept of Transport",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "PL",
+      "slug": "poland",
+      "name": "Poland",
+      "jurisdiction": "EU",
+      "authority": "Transportowy Dozór Techniczny",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Requires local testing",
+        "evidence": [
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 36.7,
+      "regulator": "Transportowy Dozór Techniczny",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "RO",
+      "slug": "romania",
+      "name": "Romania",
+      "jurisdiction": "EU",
+      "authority": "RAR",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Dutch approval not recognised; dossier under review",
+        "evidence": [
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 19,
+      "regulator": "RAR",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "PT",
+      "slug": "portugal",
+      "name": "Portugal",
+      "jurisdiction": "EU",
+      "authority": "IMT",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Following EU developments",
+        "evidence": [
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 10.6,
+      "regulator": "IMT",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "HU",
+      "slug": "hungary",
+      "name": "Hungary",
+      "jurisdiction": "EU",
+      "authority": "Transport ministry (KBM)",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Waits for EU decision",
+        "evidence": [
+          "s-2ede2663c5b1",
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-2ede2663c5b1",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 9.6,
+      "regulator": "Transport ministry (KBM)",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Totalcar, 29 Jul",
+          "url": "https://totalcar.hu/hirek/2026/07/29/tesla-fsd-onvezetes-magyarorszag-miniszteriumi-dontes-kbm/"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "AT",
+      "slug": "austria",
+      "name": "Austria",
+      "jurisdiction": "EU",
+      "authority": "BMIMI",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "No national recognition; waits for EU",
+        "evidence": [
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 9.1,
+      "regulator": "BMIMI",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "BG",
+      "slug": "bulgaria",
+      "name": "Bulgaria",
+      "jurisdiction": "EU",
+      "authority": "Authority not verified",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "No verified current position is retained.",
+        "evidence": [
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 6.4,
+      "regulator": "",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "SK",
+      "slug": "slovakia",
+      "name": "Slovakia",
+      "jurisdiction": "EU",
+      "authority": "Ministry of Transport (MDSR)",
+      "permission": {
+        "status": "recorded",
+        "date": "2026-10-16",
+        "evidence": [
+          "s-dcfa56db63ec"
+        ],
+        "reviewedAt": "2026-10-23"
+      },
+      "availability": {
+        "status": "listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Recognised RDW approval",
+        "evidence": [
+          "s-9da61f5e0623",
+          "s-ec307461c898",
+          "s-821a7fb3b2e7",
+          "s-060ebaff33f8"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-9da61f5e0623",
+        "s-ec307461c898",
+        "s-821a7fb3b2e7",
+        "s-060ebaff33f8",
+        "s-dcfa56db63ec"
+      ],
+      "status": "approved",
+      "stage": "live",
+      "rolloutLive": true,
+      "date": "2026-10-16",
+      "pop": 5.4,
+      "regulator": "Ministry of Transport (MDSR)",
+      "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Slovak Ministry of Transport recognition",
+          "url": "https://www.mindop.sk/media/tlacove-spravy/detail/slovensko-umoznilo-ciastocne-autonomne-riadenie-aut"
+        },
+        {
+          "label": "TN Live (ministry statement), 16 Oct",
+          "url": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou"
+        },
+        {
+          "label": "Tesla Europe on X, 16 Oct",
+          "url": "https://x.com/teslaeurope/status/2111095942015566145"
+        },
+        {
+          "label": "Noviny.sk, 16 Oct",
+          "url": "https://www.noviny.sk/slovensko/1273637-asistovane-riadenie-prichadza-na-slovensko-volant-ale-zostava-v-rukach-vodica"
+        },
+        {
+          "label": "Pravda, 7 Oct",
+          "url": "https://www.pravda.sk/auto/magazin/clanok/2055389-slovensko-onedlho-povoli-autonomne-riadenie-tesla-fsd-vodic-vsak-zodpovednost-neodovzda-autu"
+        }
+      ]
+    },
+    {
+      "code": "LV",
+      "slug": "latvia",
+      "name": "Latvia",
+      "jurisdiction": "EU",
+      "authority": "CSDD",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "No verified current position is retained.",
+        "evidence": [
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 1.9,
+      "regulator": "CSDD",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "CY",
+      "slug": "cyprus",
+      "name": "Cyprus",
+      "jurisdiction": "EU",
+      "authority": "Authority not verified",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "No verified current position is retained.",
+        "evidence": [
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 0.9,
+      "regulator": "",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "LU",
+      "slug": "luxembourg",
+      "name": "Luxembourg",
+      "jurisdiction": "EU",
+      "authority": "SNCH",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "Testing authorisation granted",
+        "evidence": [
+          "s-ceb8f4f6d674",
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ceb8f4f6d674",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 0.7,
+      "regulator": "SNCH",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "notanfsdtracker",
+          "url": "https://notanfsdtracker.com/eu-tracker"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "MT",
+      "slug": "malta",
+      "name": "Malta",
+      "jurisdiction": "EU",
+      "authority": "Authority not verified",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained in this dataset."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "evidence": [
+          "s-c55a052f27a6"
+        ]
+      },
+      "context": {
+        "summary": "No verified current position is retained.",
+        "evidence": [
+          "s-ddf43be4eb49"
+        ],
+        "reviewedAt": null,
+        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6",
+        "s-ddf43be4eb49"
+      ],
+      "status": "watch",
+      "stage": "watch",
+      "rolloutLive": false,
+      "date": null,
+      "pop": 0.5,
+      "regulator": "",
+      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "sources": [
+        {
+          "label": "Tesla Assisted Driving availability and conditions",
+          "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "tad-tracker",
+          "url": "https://tad-tracker.eu/en/"
+        }
+      ]
+    },
+    {
+      "code": "GB",
+      "slug": "united-kingdom",
+      "name": "United Kingdom",
+      "jurisdiction": "UK",
+      "authority": "UK authorities",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Absent from the checked Tesla market list; local jurisdiction and vehicle conditions remain separate."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "This is a separate jurisdiction. EU recognition and committee voting rules must not be applied automatically.",
+        "evidence": [
+          "s-2bb11d6c28c7"
+        ]
+      },
+      "context": {
+        "summary": "Separate national route; check the dated authority sources.",
+        "evidence": [
+          "s-2bb11d6c28c7"
+        ],
+        "reviewedAt": null,
+        "note": "An old statement or demonstration does not establish current retail permission."
+      },
+      "sourceIds": [
+        "s-2bb11d6c28c7",
+        "s-c55a052f27a6"
+      ]
+    },
+    {
+      "code": "NO",
+      "slug": "norway",
+      "name": "Norway",
+      "jurisdiction": "EEA",
+      "authority": "Norwegian Public Roads Administration",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Absent from the checked Tesla market list; local jurisdiction and vehicle conditions remain separate."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "This is a separate jurisdiction. EU recognition and committee voting rules must not be applied automatically.",
+        "evidence": [
+          "s-eae2f83674a8"
+        ]
+      },
+      "context": {
+        "summary": "Separate national route; check the dated authority sources.",
+        "evidence": [
+          "s-eae2f83674a8"
+        ],
+        "reviewedAt": null,
+        "note": "An old statement or demonstration does not establish current retail permission."
+      },
+      "sourceIds": [
+        "s-eae2f83674a8",
+        "s-c55a052f27a6"
+      ]
+    },
+    {
+      "code": "CH",
+      "slug": "switzerland",
+      "name": "Switzerland",
+      "jurisdiction": "Swiss",
+      "authority": "ASTRA",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Absent from the checked Tesla market list; local jurisdiction and vehicle conditions remain separate."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "This is a separate jurisdiction. EU recognition and committee voting rules must not be applied automatically.",
+        "evidence": [
+          "s-64b57246c893"
+        ]
+      },
+      "context": {
+        "summary": "Separate national route; check the dated authority sources.",
+        "evidence": [
+          "s-64b57246c893"
+        ],
+        "reviewedAt": null,
+        "note": "An old statement or demonstration does not establish current retail permission."
+      },
+      "sourceIds": [
+        "s-64b57246c893",
+        "s-c55a052f27a6"
+      ]
+    },
+    {
+      "code": "IS",
+      "slug": "iceland",
+      "name": "Iceland",
+      "jurisdiction": "EEA",
+      "authority": "Authority not verified",
+      "permission": {
+        "status": "unknown",
+        "date": null,
+        "evidence": [],
+        "reviewedAt": null
+      },
+      "availability": {
+        "status": "not_listed",
+        "date": null,
+        "evidence": [
+          "s-c55a052f27a6"
+        ],
+        "reviewedAt": "2026-10-23",
+        "note": "Absent from the checked Tesla market list; local jurisdiction and vehicle conditions remain separate."
+      },
+      "observations": {
+        "status": "unverified",
+        "date": null,
+        "evidence": [],
+        "note": "No independently verified first customer installation date is retained."
+      },
+      "conditions": {
+        "hardware": null,
+        "software": null,
+        "model": null,
+        "note": "This is a separate jurisdiction. EU recognition and committee voting rules must not be applied automatically.",
+        "evidence": []
+      },
+      "context": {
+        "summary": "Separate national route; check the dated authority sources.",
+        "evidence": [],
+        "reviewedAt": null,
+        "note": "An old statement or demonstration does not establish current retail permission."
+      },
+      "sourceIds": [
+        "s-c55a052f27a6"
+      ]
+    }
   ],
-  // Newest first. type: approval | statement | tcmv | testing | rename
-  changelog: [
-    { date: "2026-10-15", code: "BE", type: "statement", text: "Flemish mobility minister Annick De Ridder tells parliament Belgium will not suspend or change its recognition; adjusting or removing the speed offset is being considered for the EU file.", source: "https://www.vlaamsparlement.be/nl/parlementair-werk/commissies/commissievergaderingen/2075354/verslag/2079815" },
-    { date: "2026-10-09", code: "", type: "rename", text: "FSD (Supervised) is now called Tesla Assisted Driving in Europe.", source: "https://tad-tracker.eu/en/" },
-    { date: "2026-10-16", code: "SK", type: "statement", text: "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given.", source: "https://x.com/teslaeurope/status/2111095942015566145", evidence: "company_claim", honesty: "Company claim. “Soon” has no date yet, and recognition doesn’t mean customers have it." },
-    { date: "2026-10-16", code: "SK", type: "approval", text: "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country.", source: "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou", honesty: "Recognised, but no owners have been reported getting the software yet." },
-    { date: "2026-10-07", code: "SK", type: "statement", text: "Slovak transport minister says a recognition letter goes to the RDW within days.", source: "https://www.pravda.sk/auto/magazin/clanok/2055389-slovensko-onedlho-povoli-autonomne-riadenie-tesla-fsd-vodic-vsak-zodpovednost-neodovzda-autu" },
-    { date: "2026-10-06", code: "", type: "tcmv", text: "119th TCMV lists only a continuation of discussions on the Dutch Art. 39 request. No vote.", source: "https://www.streetinsider.com/Reuters/EU+vote+on+Teslas+supervised+self-driving+system+pushed+back/27104594.html" },
-    { date: "2026-10-06", code: "DE", type: "statement", text: "German transport ministry backs EU-wide approval, with a 10% speed tolerance cap.", source: "https://www.bmv.de/SharedDocs/DE/Artikel/StV/Digitalisierung-der-Mobilitaet/aktueller-stand-tesla-assistenzsysteme.html" },
-    { date: "2026-09-29", code: "HR", type: "approval", text: "Croatia's DZM recognises the RDW approval, the eighth EU country.", source: "https://n1info.hr/magazin/auto/teslin-sustav-samostalne-voznje-s-nadzorom-odobren-u-hrvatskoj/" },
-    { date: "2026-09-21", code: "CZ", type: "approval", text: "Czech Ministry of Transport recognises the RDW approval.", source: "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system" },
-    { date: "2026-09-07", code: "SI", type: "approval", text: "Slovenia's AVP recognises the RDW approval (ministry notice 8 Sep).", source: "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/" },
-    { date: "2026-09-03", code: "FR", type: "testing", text: "France starts road tests of the system with two vehicles.", source: "https://www.reuters.com/technology/france-starts-tests-teslas-self-driving-tech-2026-09-03/" },
-    { date: "2026-07-29", code: "HU", type: "statement", text: "Hungary's transport ministry says it will wait for the EU decision.", source: "https://totalcar.hu/hirek/2026/07/29/tesla-fsd-onvezetes-magyarorszag-miniszteriumi-dontes-kbm/" },
-    { date: "2026-06-23", code: "FI", type: "statement", text: "Reuters: Finland may approve before the EU vote; Traficom reviewing.", source: "https://www.reuters.com/business/autos-transportation/finland-may-approve-teslas-supervised-self-driving-software-before-eu-vote-2026-06-23/" },
-    { date: "2026-06-18", code: "SE", type: "statement", text: "Sweden's Trafikverket recommends the EU reject the system while it can exceed speed limits.", source: "https://www.reuters.com/business/autos-transportation/sweden-may-oppose-teslas-supervised-self-driving-tech-europe-over-speeding-2026-06-18/" },
-    { date: "2026-06-10", code: "BE", type: "approval", text: "Belgium recognises the RDW approval.", source: "https://evxl.co/2026/06/10/tesla-fsd-belgium-denmark-approval/" },
-    { date: "2026-06-09", code: "DK", type: "approval", text: "Denmark's Færdselsstyrelsen recognises the RDW approval after its own review.", source: "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark" },
-    { date: "2026-05-29", code: "EE", type: "approval", text: "Estonia recognises the RDW approval.", source: "https://estonianworld.com/technology/estonia-approves-teslas-self-driving-system-for-its-roads/" },
-    { date: "2026-05-20", code: "LT", type: "approval", text: "Lithuania becomes the first state to recognise the Dutch approval.", source: "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/" },
-    { date: "2026-04-10", code: "NL", type: "approval", text: "RDW grants provisional EU type approval (Art. 39, Reg. (EU) 2018/858).", source: "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands" },
+  "sources": [
+    {
+      "id": "s-c55a052f27a6",
+      "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving",
+      "label": "Tesla Assisted Driving availability and conditions",
+      "type": "manufacturer",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-27eff0758607",
+      "url": "https://www.rdw.nl/nieuws/2026/toelichting-rdw-op-europese-typegoedkeuring-tesla-met-voorlopige-geldigheid-in-nederland",
+      "label": "RDW provisional approval, 10 April 2026",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": "2026-04-10"
+    },
+    {
+      "id": "s-dcfa56db63ec",
+      "url": "https://www.mindop.sk/media/tlacove-spravy/detail/slovensko-umoznilo-ciastocne-autonomne-riadenie-aut",
+      "label": "Slovak Ministry of Transport recognition",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": "2026-10-16"
+    },
+    {
+      "id": "s-eae2f83674a8",
+      "url": "https://www.vegvesen.no/fag/trafikk/its-portalen/its-i-statens-vegvesen/metr/forerstottesystemer/",
+      "label": "Norwegian Public Roads Administration: driver support systems",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-64b57246c893",
+      "url": "https://blog.astra.admin.ch/automatisiertes-oder-assistiertes-fahren-die-wichtigsten-unterschiede-zwischen-den-stufen-2-und-3/",
+      "label": "ASTRA explanation and dated authority comment",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-a15bc6e10960",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32018R0858",
+      "label": "Regulation (EU) 2018/858, Articles 39 and 83",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-3ff445463a7c",
+      "url": "https://commission.europa.eu/law/law-making-process/adopting-eu-law/implementing-and-delegated-acts/comitology_en",
+      "label": "European Commission: comitology",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-8bd1015b0ba9",
+      "url": "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands",
+      "label": "RDW statement",
+      "type": "authority",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-ceb8f4f6d674",
+      "url": "https://notanfsdtracker.com/eu-tracker",
+      "label": "notanfsdtracker",
+      "type": "tracker",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-ddf43be4eb49",
+      "url": "https://tad-tracker.eu/en/",
+      "label": "tad-tracker",
+      "type": "tracker",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-954b301ed9a7",
+      "url": "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/",
+      "label": "Reuters, 20 May",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-db0bbde0b445",
+      "url": "https://sumin.lrv.lt/lt/naujienos/juras-taminskas-lietuva-tarp-pirmuju-europoje-kur-automobiliai-nuo-siol-gali-vairuoti-patys-cRIY/",
+      "label": "Lithuanian Transport Ministry",
+      "type": "authority",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-4ec18ab8360c",
+      "url": "https://estonianworld.com/technology/estonia-approves-teslas-self-driving-system-for-its-roads/",
+      "label": "Estonian World",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-4c89088d4eff",
+      "url": "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark",
+      "label": "Færdselsstyrelsen, 9 Jun",
+      "type": "authority",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-10384cf0f7d3",
+      "url": "https://evxl.co/2026/06/10/tesla-fsd-belgium-denmark-approval/",
+      "label": "EVXL, 10 Jun",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-809d6f317968",
+      "url": "https://www.vlaamsparlement.be/nl/parlementair-werk/commissies/commissievergaderingen/2075354/verslag/2079815",
+      "label": "Vlaams Parlement, 15 Oct",
+      "type": "authority",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-27dbaf13ccd4",
+      "url": "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/",
+      "label": "GOV.SI, 8 Sep",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-c2bbdc3c57b4",
+      "url": "https://proteslu.cz/novinky/fsd-v-cesku-po-dvou-tydnech-nova-vlna-aktualizaci",
+      "label": "ProTeslu, 7 Oct (owners on 2026.33.100)",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-fdfea0826668",
+      "url": "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system",
+      "label": "Czech Ministry of Transport",
+      "type": "authority",
+      "checkedAt": "2026-10-23",
+      "publishedAt": null
+    },
+    {
+      "id": "s-87e4a94f8542",
+      "url": "https://n1info.hr/magazin/auto/teslin-sustav-samostalne-voznje-s-nadzorom-odobren-u-hrvatskoj/",
+      "label": "N1 / HINA, 29 Sep",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-b6a3633d96a3",
+      "url": "https://www.bmv.de/SharedDocs/DE/Artikel/StV/Digitalisierung-der-Mobilitaet/aktueller-stand-tesla-assistenzsysteme.html",
+      "label": "BMV",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-976ccc18b5b3",
+      "url": "https://www.reuters.com/technology/france-starts-tests-teslas-self-driving-tech-2026-09-03/",
+      "label": "Reuters, 3 Sep",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-a0fab7ffcd45",
+      "url": "https://www.notateslaapp.com/news/4430/tesla-fsd-inches-closer-to-regulatory-approval-in-italy",
+      "label": "Not a Tesla App",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-83c8f2e76c02",
+      "url": "https://x.com/mgualdo/status/2080338935620800589",
+      "label": "Minister Hereu via X",
+      "type": "manufacturer",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-6e10a62f6935",
+      "url": "https://www.reuters.com/business/autos-transportation/sweden-may-oppose-teslas-supervised-self-driving-tech-europe-over-speeding-2026-06-18/",
+      "label": "Reuters, 18 Jun",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-3ca28aa0436d",
+      "url": "https://etsc.eu/lithuania-and-estonia-authorise-tesla-fsd-with-belgium-and-greece-fast-tracking/",
+      "label": "ETSC",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-07f6e5d3dd29",
+      "url": "https://www.reuters.com/business/autos-transportation/finland-may-approve-teslas-supervised-self-driving-software-before-eu-vote-2026-06-23/",
+      "label": "Reuters, 23 Jun",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-2ede2663c5b1",
+      "url": "https://totalcar.hu/hirek/2026/07/29/tesla-fsd-onvezetes-magyarorszag-miniszteriumi-dontes-kbm/",
+      "label": "Totalcar, 29 Jul",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-9da61f5e0623",
+      "url": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou",
+      "label": "TN Live (ministry statement), 16 Oct",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-ec307461c898",
+      "url": "https://x.com/teslaeurope/status/2111095942015566145",
+      "label": "Tesla Europe on X, 16 Oct",
+      "type": "manufacturer",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-821a7fb3b2e7",
+      "url": "https://www.noviny.sk/slovensko/1273637-asistovane-riadenie-prichadza-na-slovensko-volant-ale-zostava-v-rukach-vodica",
+      "label": "Noviny.sk, 16 Oct",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-060ebaff33f8",
+      "url": "https://www.pravda.sk/auto/magazin/clanok/2055389-slovensko-onedlho-povoli-autonomne-riadenie-tesla-fsd-vodic-vsak-zodpovednost-neodovzda-autu",
+      "label": "Pravda, 7 Oct",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-2bb11d6c28c7",
+      "url": "https://www.tesla.com/en_gb/support/full-self-driving-subscriptions",
+      "label": "Tesla UK subscription guidance",
+      "type": "manufacturer",
+      "checkedAt": null,
+      "publishedAt": null
+    },
+    {
+      "id": "s-a0625a99e194",
+      "url": "https://www.streetinsider.com/Reuters/EU+vote+on+Teslas+supervised+self-driving+system+pushed+back/27104594.html",
+      "label": "Source for 2026-10-06",
+      "type": "media",
+      "checkedAt": null,
+      "publishedAt": null
+    }
   ],
+  "events": [
+    {
+      "id": "tesla-availability-2026-10-23",
+      "date": "2026-10-23",
+      "precision": "day",
+      "country": null,
+      "type": "availability",
+      "summary": "Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.",
+      "evidence": [
+        "s-c55a052f27a6"
+      ],
+      "sourceType": "manufacturer",
+      "reviewedAt": "2026-10-23"
+    },
+    {
+      "id": "event-3",
+      "date": "2026-10-16",
+      "precision": "day",
+      "country": "SK",
+      "type": "statement",
+      "summary": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given.",
+      "evidence": [
+        "s-ec307461c898"
+      ],
+      "sourceType": "manufacturer",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-4",
+      "date": "2026-10-16",
+      "precision": "day",
+      "country": "SK",
+      "type": "recognition",
+      "summary": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country.",
+      "evidence": [
+        "s-9da61f5e0623"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-1",
+      "date": "2026-10-15",
+      "precision": "day",
+      "country": "BE",
+      "type": "statement",
+      "summary": "Flemish mobility minister Annick De Ridder tells parliament Belgium will not suspend or change its recognition; adjusting or removing the speed offset is being considered for the EU file.",
+      "evidence": [
+        "s-809d6f317968"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-2",
+      "date": "2026-10-09",
+      "precision": "day",
+      "country": null,
+      "type": "terminology",
+      "summary": "The current Tesla support page uses Tesla Assisted Driving. The precise Europe-wide rename date is not established from a primary source.",
+      "evidence": [
+        "s-ddf43be4eb49"
+      ],
+      "sourceType": "tracker",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-5",
+      "date": "2026-10-07",
+      "precision": "day",
+      "country": "SK",
+      "type": "statement",
+      "summary": "Slovak transport minister says a recognition letter goes to the RDW within days.",
+      "evidence": [
+        "s-060ebaff33f8"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-6",
+      "date": "2026-10-06",
+      "precision": "day",
+      "country": null,
+      "type": "committee",
+      "summary": "119th TCMV lists only a continuation of discussions on the Dutch Art. 39 request. No vote.",
+      "evidence": [
+        "s-a0625a99e194"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-7",
+      "date": "2026-10-06",
+      "precision": "day",
+      "country": "DE",
+      "type": "statement",
+      "summary": "German transport ministry backs EU-wide approval, with a 10% speed tolerance cap.",
+      "evidence": [
+        "s-b6a3633d96a3"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-8",
+      "date": "2026-09-29",
+      "precision": "day",
+      "country": "HR",
+      "type": "recognition",
+      "summary": "Croatia's DZM recognises the RDW approval, the eighth EU country.",
+      "evidence": [
+        "s-87e4a94f8542"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-9",
+      "date": "2026-09-21",
+      "precision": "day",
+      "country": "CZ",
+      "type": "recognition",
+      "summary": "Czech Ministry of Transport recognises the RDW approval.",
+      "evidence": [
+        "s-fdfea0826668"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-10",
+      "date": "2026-09-07",
+      "precision": "day",
+      "country": "SI",
+      "type": "recognition",
+      "summary": "Slovenia's AVP recognises the RDW approval (ministry notice 8 Sep).",
+      "evidence": [
+        "s-27dbaf13ccd4"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-11",
+      "date": "2026-09-03",
+      "precision": "day",
+      "country": "FR",
+      "type": "testing",
+      "summary": "France starts road tests of the system with two vehicles.",
+      "evidence": [
+        "s-976ccc18b5b3"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-12",
+      "date": "2026-07-29",
+      "precision": "day",
+      "country": "HU",
+      "type": "statement",
+      "summary": "Hungary's transport ministry says it will wait for the EU decision.",
+      "evidence": [
+        "s-2ede2663c5b1"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-13",
+      "date": "2026-06-23",
+      "precision": "day",
+      "country": "FI",
+      "type": "statement",
+      "summary": "Reuters: Finland may approve before the EU vote; Traficom reviewing.",
+      "evidence": [
+        "s-07f6e5d3dd29"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-14",
+      "date": "2026-06-18",
+      "precision": "day",
+      "country": "SE",
+      "type": "statement",
+      "summary": "Sweden's Trafikverket recommends the EU reject the system while it can exceed speed limits.",
+      "evidence": [
+        "s-6e10a62f6935"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-15",
+      "date": "2026-06-10",
+      "precision": "day",
+      "country": "BE",
+      "type": "recognition",
+      "summary": "Belgium recognises the RDW approval.",
+      "evidence": [
+        "s-10384cf0f7d3"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-16",
+      "date": "2026-06-09",
+      "precision": "day",
+      "country": "DK",
+      "type": "recognition",
+      "summary": "Denmark's Færdselsstyrelsen recognises the RDW approval after its own review.",
+      "evidence": [
+        "s-4c89088d4eff"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-17",
+      "date": "2026-05-29",
+      "precision": "day",
+      "country": "EE",
+      "type": "recognition",
+      "summary": "Estonia recognises the RDW approval.",
+      "evidence": [
+        "s-4ec18ab8360c"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-18",
+      "date": "2026-05-20",
+      "precision": "day",
+      "country": "LT",
+      "type": "recognition",
+      "summary": "Lithuania becomes the first state to recognise the Dutch approval.",
+      "evidence": [
+        "s-954b301ed9a7"
+      ],
+      "sourceType": "media",
+      "reviewedAt": null
+    },
+    {
+      "id": "event-19",
+      "date": "2026-04-10",
+      "precision": "day",
+      "country": "NL",
+      "type": "recognition",
+      "summary": "RDW grants provisional EU type approval (Art. 39, Reg. (EU) 2018/858).",
+      "evidence": [
+        "s-8bd1015b0ba9"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": null
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2026-10-23",
+      "code": "",
+      "type": "availability",
+      "text": "Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.",
+      "source": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving",
+      "evidence": "company_claim"
+    },
+    {
+      "date": "2026-10-16",
+      "code": "SK",
+      "type": "statement",
+      "text": "Tesla Europe: \"Now approved in Slovakia. Rollout begins soon.\" No date given.",
+      "source": "https://x.com/teslaeurope/status/2111095942015566145",
+      "evidence": "company_claim"
+    },
+    {
+      "date": "2026-10-16",
+      "code": "SK",
+      "type": "recognition",
+      "text": "Slovakia's Ministry of Transport recognises the RDW approval, the ninth EU country.",
+      "source": "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-10-15",
+      "code": "BE",
+      "type": "statement",
+      "text": "Flemish mobility minister Annick De Ridder tells parliament Belgium will not suspend or change its recognition; adjusting or removing the speed offset is being considered for the EU file.",
+      "source": "https://www.vlaamsparlement.be/nl/parlementair-werk/commissies/commissievergaderingen/2075354/verslag/2079815",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-10-09",
+      "code": "",
+      "type": "terminology",
+      "text": "The current Tesla support page uses Tesla Assisted Driving. The precise Europe-wide rename date is not established from a primary source.",
+      "source": "https://tad-tracker.eu/en/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-10-07",
+      "code": "SK",
+      "type": "statement",
+      "text": "Slovak transport minister says a recognition letter goes to the RDW within days.",
+      "source": "https://www.pravda.sk/auto/magazin/clanok/2055389-slovensko-onedlho-povoli-autonomne-riadenie-tesla-fsd-vodic-vsak-zodpovednost-neodovzda-autu",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-10-06",
+      "code": "",
+      "type": "committee",
+      "text": "119th TCMV lists only a continuation of discussions on the Dutch Art. 39 request. No vote.",
+      "source": "https://www.streetinsider.com/Reuters/EU+vote+on+Teslas+supervised+self-driving+system+pushed+back/27104594.html",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-10-06",
+      "code": "DE",
+      "type": "statement",
+      "text": "German transport ministry backs EU-wide approval, with a 10% speed tolerance cap.",
+      "source": "https://www.bmv.de/SharedDocs/DE/Artikel/StV/Digitalisierung-der-Mobilitaet/aktueller-stand-tesla-assistenzsysteme.html",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-09-29",
+      "code": "HR",
+      "type": "recognition",
+      "text": "Croatia's DZM recognises the RDW approval, the eighth EU country.",
+      "source": "https://n1info.hr/magazin/auto/teslin-sustav-samostalne-voznje-s-nadzorom-odobren-u-hrvatskoj/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-09-21",
+      "code": "CZ",
+      "type": "recognition",
+      "text": "Czech Ministry of Transport recognises the RDW approval.",
+      "source": "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-09-07",
+      "code": "SI",
+      "type": "recognition",
+      "text": "Slovenia's AVP recognises the RDW approval (ministry notice 8 Sep).",
+      "source": "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-09-03",
+      "code": "FR",
+      "type": "testing",
+      "text": "France starts road tests of the system with two vehicles.",
+      "source": "https://www.reuters.com/technology/france-starts-tests-teslas-self-driving-tech-2026-09-03/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-07-29",
+      "code": "HU",
+      "type": "statement",
+      "text": "Hungary's transport ministry says it will wait for the EU decision.",
+      "source": "https://totalcar.hu/hirek/2026/07/29/tesla-fsd-onvezetes-magyarorszag-miniszteriumi-dontes-kbm/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-06-23",
+      "code": "FI",
+      "type": "statement",
+      "text": "Reuters: Finland may approve before the EU vote; Traficom reviewing.",
+      "source": "https://www.reuters.com/business/autos-transportation/finland-may-approve-teslas-supervised-self-driving-software-before-eu-vote-2026-06-23/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-06-18",
+      "code": "SE",
+      "type": "statement",
+      "text": "Sweden's Trafikverket recommends the EU reject the system while it can exceed speed limits.",
+      "source": "https://www.reuters.com/business/autos-transportation/sweden-may-oppose-teslas-supervised-self-driving-tech-europe-over-speeding-2026-06-18/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-06-10",
+      "code": "BE",
+      "type": "recognition",
+      "text": "Belgium recognises the RDW approval.",
+      "source": "https://evxl.co/2026/06/10/tesla-fsd-belgium-denmark-approval/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-06-09",
+      "code": "DK",
+      "type": "recognition",
+      "text": "Denmark's Færdselsstyrelsen recognises the RDW approval after its own review.",
+      "source": "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-05-29",
+      "code": "EE",
+      "type": "recognition",
+      "text": "Estonia recognises the RDW approval.",
+      "source": "https://estonianworld.com/technology/estonia-approves-teslas-self-driving-system-for-its-roads/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-05-20",
+      "code": "LT",
+      "type": "recognition",
+      "text": "Lithuania becomes the first state to recognise the Dutch approval.",
+      "source": "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/",
+      "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-04-10",
+      "code": "NL",
+      "type": "recognition",
+      "text": "RDW grants provisional EU type approval (Art. 39, Reg. (EU) 2018/858).",
+      "source": "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands",
+      "evidence": "reported_unconfirmed"
+    }
+  ],
+  "process": {
+    "window": {
+      "value": "2026-12",
+      "precision": "month",
+      "confirmed": false,
+      "evidence": [
+        "s-eae2f83674a8"
+      ]
+    },
+    "summary": "December is a reported opportunity, not an officially confirmed vote date. National recognitions are not committee votes.",
+    "evidence": [
+      "s-a15bc6e10960",
+      "s-3ff445463a7c",
+      "s-eae2f83674a8"
+    ]
+  }
 };

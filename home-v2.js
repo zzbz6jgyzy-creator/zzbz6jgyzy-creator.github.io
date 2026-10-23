@@ -58,9 +58,7 @@
   };
   const st0 = starship(); if (st0) trk.push(st0);
   if (F && F.countries) {
-    const ok = F.countries.filter((c) => c.status === "approved");
-    const pop = ok.reduce((a, c) => a + (c.pop || 0), 0), pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
-    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: ok.length + " approved", s: "EU-wide vote needs " + (F.thresholds ? F.thresholds.statesNeeded : 15) + " states · " + pct + "% of EU pop. (need " + (F.thresholds ? F.thresholds.populationNeeded : 65) + "%)" });
+    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length + " Tesla-listed EU markets", s: "Vehicle eligibility applies · national recognition and committee votes are separate" });
   }
   // Keep the pre-rendered snapshot until a newer JSON response arrives.
   const savedCc = $("[data-hv-trk] a[href='/cybercab.html']");

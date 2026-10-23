@@ -232,16 +232,16 @@
 
     const fsd = src.fsdEurope;
     if (fsd && Array.isArray(fsd.countries)) {
-      const ok = fsd.countries.filter((c) => c.status === "approved");
+      const ok = fsd.countries.filter((c) => (!c.jurisdiction || c.jurisdiction === "EU") && (c.availability ? c.availability.status === "listed" : c.status === "approved"));
       facts.push(makeFact({
         topic: "fsd",
         tracker: "fsd",
         field: "eu-approved",
         value: String(ok.length),
-        label: "EU states recognising RDW approval",
+        label: "EU markets listed by Tesla",
         at: fsd.updated,
-        evidence: "independently_corroborated",
-        source: "FSD Europe tracker (national ministry / RDW sources)",
+        evidence: "company_claim",
+        source: "Tesla market availability, curated in the FSD Europe tracker",
         href: "/fsd-europe.html",
       }));
     }
@@ -528,8 +528,8 @@
       if (f.rolloutLive) {
         return {
           layer: "customer_live",
-          label: "Customer live (supervised)",
-          note: "National recognition plus reported customer use. Still driver-supervised.",
+          label: "Tesla-listed availability (supervised)",
+          note: "Tesla lists market availability; vehicle eligibility still applies. This is separate from verified individual delivery observations.",
         };
       }
       if (f.recognised || f.approved) {

@@ -17,16 +17,16 @@
       ]
     },
     "intel": {
-      "file": "/assets/js/intel.bundle.9ee4425468.js",
-      "bytes": 40933,
+      "file": "/assets/js/intel.bundle.a332ac2ad4.js",
+      "bytes": 41083,
       "sources": [
         "intel-core.js",
         "intel.js"
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.5b6ce87633.js",
-      "bytes": 72375,
+      "file": "/assets/js/home.bundle.0f6cc8115d.js",
+      "bytes": 121324,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -72,8 +72,8 @@
       ]
     },
     "tesla": {
-      "file": "/assets/js/tesla.bundle.f63adb546e.js",
-      "bytes": 31191,
+      "file": "/assets/js/tesla.bundle.fa91a656ff.js",
+      "bytes": 80309,
       "sources": [
         "fsd-europe-data.js",
         "tesla-hub.js",
@@ -81,8 +81,8 @@
       ]
     },
     "my-tesla": {
-      "file": "/assets/js/my-tesla.bundle.6723a2cb73.js",
-      "bytes": 86528,
+      "file": "/assets/js/my-tesla.bundle.df720bdf6e.js",
+      "bytes": 143785,
       "sources": [
         "updates-data.js",
         "fsd-data.js",
@@ -129,17 +129,19 @@
       ]
     },
     "fsd-europe": {
-      "file": "/assets/js/fsd-europe.bundle.7129cbe9bb.js",
-      "bytes": 38355,
+      "file": "/assets/js/fsd-europe.bundle.1393bfca1b.js",
+      "bytes": 105803,
       "sources": [
         "fsd-europe-data.js",
-        "tcmv-data.js",
-        "fsd-europe-v2.js"
+        "fsd-europe-model.js",
+        "fsd-europe-view.js",
+        "fsd-europe-v2.js",
+        "fsd-europe-tools.js"
       ]
     },
     "fsd": {
-      "file": "/assets/js/fsd.bundle.c54df8344c.js",
-      "bytes": 24680,
+      "file": "/assets/js/fsd.bundle.d68c71191b.js",
+      "bytes": 32894,
       "sources": [
         "fsd-data.js",
         "fsd.js"
@@ -156,8 +158,8 @@
       ]
     },
     "autonomy": {
-      "file": "/assets/js/autonomy.bundle.e889d652b6.js",
-      "bytes": 44488,
+      "file": "/assets/js/autonomy.bundle.9ff22236d2.js",
+      "bytes": 101812,
       "sources": [
         "fsd-data.js",
         "fsd-europe-data.js",
@@ -226,8 +228,8 @@
       ]
     },
     "explainers-fsd": {
-      "file": "/assets/js/explainers-fsd.bundle.0ec9131552.js",
-      "bytes": 13601,
+      "file": "/assets/js/explainers-fsd.bundle.e10cf07068.js",
+      "bytes": 21815,
       "sources": [
         "fsd-data.js"
       ]

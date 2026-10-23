@@ -4,6 +4,7 @@
 // the interactive tracker is unchanged. Re-run whenever the data files change.
 import fs from "node:fs";
 import vm from "node:vm";
+import { buildFSDEurope } from "./build-fsd-europe.mjs";
 import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
 const root = new URL("..", import.meta.url).pathname;
 const read = (f) => fs.readFileSync(root + f, "utf8");
@@ -30,14 +31,8 @@ function inject(file, tag, html) {
   const rows = d.promises.map((p) => `<tr>${td(`<b>${esc(p.title)}</b><br><small>${esc(p.person || "")}${p.said_on ? ", " + esc(p.said_on) : ""}</small>`)}${td(esc(p.status))}${td(esc(p.deadline || "—"))}${td(link(p.source))}</tr>`).join("");
   inject("promise-tracker.html", "promises", `<h2>All ${d.promises.length} promises (updated ${esc(d.updated)})</h2><div style="overflow-x:auto"><table ${T}><thead><tr>${th("Promise")}${th("Status")}${th("Deadline")}${th("Source")}</tr></thead><tbody>${rows}</tbody></table></div>`);
 }
-// FSD Europe
-{
-  const d = loadWin("fsd-europe-data.js").FSD_EUROPE;
-  const rows = d.countries.slice().sort((a, b) => (a.status === "approved" ? 0 : 1) - (b.status === "approved" ? 0 : 1) || a.name.localeCompare(b.name))
-    .map((c) => `<tr>${td(`<b>${esc(c.name)}</b>`)}${td(esc(c.status) + (c.rolloutLive ? " · rollout live" : ""))}${td(esc(c.date || "—"))}${td(esc(c.note))}${td((c.sources || []).map(link).join(" · "))}</tr>`).join("");
-  const n = d.countries.filter((c) => c.status === "approved").length;
-  inject("fsd-europe.html", "fsd-europe", `<h2>${n} of 27 EU states approved (updated ${esc(d.updated)})</h2><div style="overflow-x:auto"><table ${T}><thead><tr>${th("Country")}${th("Status")}${th("Date")}${th("Note")}${th("Sources")}</tr></thead><tbody>${rows}</tbody></table></div>`);
-}
+// FSD Europe has complete saved HTML from the same model as the browser.
+buildFSDEurope(root);
 // Starship
 {
   const d = loadWin("starship-data.js").STARSHIP;

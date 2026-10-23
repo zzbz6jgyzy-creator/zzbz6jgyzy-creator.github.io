@@ -14,8 +14,8 @@
   };
   const F = window.FSD_EUROPE;
   if (F && F.countries) {
-    const n = F.countries.filter((c) => c.status === "approved").length;
-    set("[data-tz-eu-n]", n + " of 27 EU countries");
+    const n = F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length;
+    set("[data-tz-eu-n]", n + " Tesla-listed EU markets");
   }
   const stampFrom = (u) => {
     const stamp = [];

@@ -1,0 +1,62 @@
+name: Check FSD Europe primary sources
+
+on:
+  schedule:
+    - cron: '15 5 * * *'
+  workflow_dispatch:
+    inputs:
+      review_source:
+        description: 'Optional source ID to mark reviewed (does not change country status)'
+        required: false
+        type: string
+      review_hash:
+        description: 'Current observedHash from data/fsd-europe-source-checks.json'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fsd-europe-source-checks
+  cancel-in-progress: false
+
+jobs:
+  check:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check public sources or acknowledge a reviewed content change
+        env:
+          FSD_REVIEW_SOURCE: ${{ inputs.review_source }}
+          FSD_REVIEW_HASH: ${{ inputs.review_hash }}
+        run: |
+          if [ -n "$FSD_REVIEW_SOURCE" ]; then
+            python3 scripts/check-fsd-europe-sources.py --ack "$FSD_REVIEW_SOURCE" --hash "$FSD_REVIEW_HASH"
+          else
+            python3 scripts/check-fsd-europe-sources.py
+          fi
+          node scripts/build-fsd-europe.mjs
+      - name: Publish source-check metadata and saved HTML
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/fsd-europe-source-checks.json fsd-europe.html
+          if git diff --cached --quiet; then
+            echo 'No source-check change'
+          else
+            git commit -m 'Check FSD Europe source freshness and review queue.'
+            git pull --rebase
+            git push
+          fi
