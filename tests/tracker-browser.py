@@ -34,7 +34,7 @@ async def main():
                 await page.goto(SITE+'/'+page_name+'.html', wait_until='domcontentloaded')
                 if page_name=='updates':
                     data = json.loads((ROOT/'updates-live.json').read_text())
-                    newest = max((v for v in data['versions'] if v['count']>0), key=lambda v:tuple(map(int,v['id'].split('.'))))
+                    newest = max((v for v in data['versions'] if v['count']>0), key=lambda v:v.get('firstSeen') or v.get('date') or '')
                     assert await page.locator('#t-new').inner_text()==newest['id']
                     assert await page.locator('#waves-list > .sw-wave').count()>0
                     assert await page.locator('#sw-live').get_attribute('data-snapshot-at')==data['updated']
@@ -42,12 +42,12 @@ async def main():
                         await page.locator('#sw-live [data-refresh-status]').wait_for()
                         assert data['updated'] in await page.locator('#sw-live time').get_attribute('datetime')
                     elif mode=='live':
-                        await page.wait_for_function("document.querySelector('#sw-live').textContent.startsWith('Live')")
-                        expected = await page.locator('#t-next').inner_text()
-                        await page.get_by_role('button', name='Europe', exact=True).click()
-                        assert await page.get_by_role('button', name='Europe', exact=True).get_attribute('aria-pressed')=='true'
-                        assert await page.locator('#t-next').inner_text()==expected
+                        await page.wait_for_function("document.querySelector('#sw-live').dataset.refreshState==='success'")
+                        await page.locator('#sw-country').select_option('IE')
+                        assert await page.locator('#sw-country').input_value()=='IE'
+                        await page.locator('[data-view-link="rollouts"]').click()
                     assert await page.locator('#waves-list').count()==1
+                    if mode!='no-js':await page.locator('[data-view-link="rollouts"]').click()
                     await page.locator('#waves-list').screenshot(path=str(ROOT/'dev'/f'tracker-updates-{mode}-{width}.png'))
                 else:
                     tx = json.loads((ROOT/'data/robotaxi-tx.json').read_text())

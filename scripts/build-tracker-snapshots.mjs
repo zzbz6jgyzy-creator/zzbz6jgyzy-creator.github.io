@@ -48,14 +48,30 @@ function id(src, name, value) {
 }
 function signed(n) { return `${n > 0 ? "+" : n < 0 ? "−" : "±"}${num(Math.abs(n))}`; }
 
-export function renderUpdates(src, live, history) {
+const softwareContext = { window: {}, URL };
+for (const file of ["software-data.js", "software-view.js"]) vm.runInNewContext(fs.readFileSync(path.join(defaultRoot,file), "utf8"), softwareContext, { timeout: 1000 });
+const software = softwareContext.window;
+function renderSoftwareWorkspace(src,live,history,extras,fsd) {
+  let previous;
+  try { previous=JSON.parse(src.match(/<script type="application\/json" id="software-snapshot">([\s\S]*?)<\/script>/)?.[1]); } catch { /* first build */ }
+  const next={...(extras||{})};
+  for(const key of ["teslafi","recent"]) {
+    const a=previous?.extras?.[key],b=next[key];
+    if(date(a?.fetched)&&(!date(b?.fetched)||Date.parse(a.fetched)>Date.parse(b.fetched)))next[key]=a;
+  }
+  if(date(previous?.fsd?.updated)&&(!date(fsd?.updated)||Date.parse(previous.fsd.updated)>Date.parse(fsd.updated)))fsd=previous.fsd;
+  return mount(src,"software-workspace",/$^/,software.SDSoftwareView.render(live,history,next,fsd||{}),live.updated);
+}
+
+export function renderUpdates(src, live, history, extras = {}, fsd = {}) {
   requireData(date(live?.updated) && number(live.fleet) && live.fleet > 0 && url(live.sourceUrl), "Invalid software snapshot date, sample or source");
   requireData(Array.isArray(live.versions) && live.versions.length && live.versions.every((v) => typeof v.id === "string" && /^\d+(?:\.\d+)+$/.test(v.id) && number(v.count)), "Invalid software version counts");
   const seen = live.versions.filter((v) => v.count > 0);
   requireData(seen.length > 0, "Software snapshot has no reported builds");
   const priorStamp = src.match(/id="sw-live"[^>]*data-snapshot-at="([^"]+)"/)?.[1];
   if (priorStamp && date(priorStamp) && Date.parse(priorStamp) > Date.parse(live.updated)) return src;
-  const newest = [...seen].sort((a, b) => cmpVersion(b.id, a.id))[0];
+  if(src.includes("<!--snapshot:software-workspace-->")) return renderSoftwareWorkspace(src,live,history,extras,fsd);
+  const newest = [...seen].sort((a,b) => software.SDSoftware.byFirstSeen(a,b))[0];
   const common = [...seen].sort((a, b) => b.count - a.count)[0];
   const percent = (v) => number(v.percent) && v.percent <= 100 ? v.percent : Math.round(v.count / live.fleet * 1000) / 10;
   const snaps = (Array.isArray(history?.snapshots) ? history.snapshots : []).filter((s) => date(s.t) && s.v && Date.parse(s.t) <= Date.parse(live.updated)).sort((a, b) => Date.parse(a.t) - Date.parse(b.t));
@@ -172,7 +188,7 @@ export function buildTrackerSnapshots(root = defaultRoot, { page = "all", warn =
     if (result !== src) fs.writeFileSync(filePath, result);
   };
   if (page !== "cybercab") edit("updates.html", (src) => {
-    try { return renderUpdates(src, readJson(root, "updates-live.json"), (() => { try { return readJson(root, "data/updates-history.json"); } catch { return {}; } })()); }
+    try { return renderUpdates(src, readJson(root, "updates-live.json"), (() => { try { return readJson(root, "data/updates-history.json"); } catch { return {}; } })(), (() => { try { return readJson(root,"data/updates-extras.json"); } catch { return {}; } })(), (() => { try { return readWindow(root,"fsd-data.js","FSD_GLOBAL"); } catch { return {}; } })()); }
     catch (e) {
       warn(`Software HTML snapshot kept: ${e.message}`);
       if (src.includes("<!--snapshot:software-status-->")) return src;
