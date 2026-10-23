@@ -14,14 +14,14 @@
     const slider=lab.querySelector('[data-scrub]'),play=lab.querySelector('[data-play]');let index=0,mode='hot',timer=null;
     const stop=()=>{clearInterval(timer);timer=null;play.textContent='Play steps';play.setAttribute('aria-pressed','false');};
     const render=value=>{
-      index=Math.max(0,Math.min(stages.length-1,Number(value)||0));const stage=stages[index];figure.dataset.step=String(index);figure.dataset.mode=mode;
+      index=Math.max(0,Math.min(stages.length-1,Number(value)||0));const stage=stages[index],stageTitle=mode==='cold'&&stage.coldTitle?stage.coldTitle:stage.title;figure.dataset.step=String(index);figure.dataset.mode=mode;
       for(const group of figure.querySelectorAll('[data-show],[data-mode-only]')){const shown=(!group.dataset.show||group.dataset.show.split(' ').includes(String(index)))&&(!group.dataset.modeOnly||group.dataset.modeOnly===mode);group.setAttribute('opacity',shown?'1':'0');}
-      for(const group of figure.querySelectorAll('[data-poses]')){try{const positions=JSON.parse(group.dataset.poses);group.setAttribute('transform',positions[index]||positions[0]);}catch{/* keep the static drawing */}}
-      steps.forEach((step,i)=>{step.toggleAttribute('data-active',i===index);buttons[i].setAttribute('aria-current',i===index?'step':'false');});
-      slider.value=String(index);slider.setAttribute('aria-valuetext',`Step ${index+1}: ${stage.title}`);
+      for(const group of figure.querySelectorAll('[data-poses]')){try{const positions=JSON.parse(mode==='cold'&&group.dataset.coldPoses?group.dataset.coldPoses:group.dataset.poses);group.setAttribute('transform',positions[index]||positions[0]);}catch{/* keep the static drawing */}}
+      steps.forEach((step,i)=>{step.toggleAttribute('data-active',i===index);buttons[i].setAttribute('aria-current',i===index?'step':'false');const title=mode==='cold'&&stages[i].coldTitle?stages[i].coldTitle:stages[i].title;buttons[i].setAttribute('aria-label',`Step ${i+1}: ${title}`);buttons[i].querySelector('.lx-step-name').textContent=title;});
+      slider.value=String(index);slider.setAttribute('aria-valuetext',`Step ${index+1}: ${stageTitle}`);
       lab.querySelector('[data-step-status]').textContent=`Step ${index+1} of ${stages.length}`;
       lab.querySelector('[data-current-number]').textContent=(mode==='cold'?'Cold staging · ':'')+`Step ${index+1} of ${stages.length}`;
-      lab.querySelector('[data-current-title]').textContent=mode==='cold'&&stage.coldTitle?stage.coldTitle:stage.title;const target=lab.querySelector('[data-current-text]');
+      lab.querySelector('[data-current-title]').textContent=stageTitle;const target=lab.querySelector('[data-current-text]');
       if(mode==='cold'&&stage.cold)target.textContent=stage.cold;else target.replaceChildren(...[...steps[index].querySelector('p').childNodes].map(node=>node.cloneNode(true)));
       lab.querySelector('[data-previous]').disabled=index===0;lab.querySelector('[data-next]').disabled=index===stages.length-1;
     };

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23T10:32:15.144Z",
+  "generated": "2026-10-23T11:28:19.068Z",
   "bundles": {
     "core": {
       "file": "/assets/js/core.bundle.5243ad45a9.js",
@@ -218,8 +218,8 @@
       ]
     },
     "explainers": {
-      "file": "/assets/js/explainers.bundle.90ce42fcb8.js",
-      "bytes": 5074,
+      "file": "/assets/js/explainers.bundle.46bd5f957a.js",
+      "bytes": 5287,
       "sources": [
         "explainers.js"
       ]

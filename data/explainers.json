@@ -2,98 +2,1454 @@
   "reviewed": "2026-10-23",
   "lessons": [
     {
-      "id": "hot-staging", "slug": "hot-staging", "legacy": "hot-staging", "topic": "spacex", "category": "SpaceX · Starship", "minutes": 4,
-      "title": "Why Starship uses hot staging", "card": "Light the engines. Then let go.",
+      "id": "hot-staging",
+      "slug": "hot-staging",
+      "legacy": "hot-staging",
+      "topic": "spacex",
+      "category": "SpaceX · Starship",
+      "minutes": 7,
+      "title": "Why Starship uses hot staging",
+      "card": "Light the engines. Then let go.",
       "summary": "Follow the ignition, venting and separation sequence through an illustrated cutaway of the hot-staging ring.",
       "answer": "Starship ignites its engines before separating from Super Heavy. The vented ring gives the upper stage’s exhaust a route out while the two vehicles are still together.",
-      "intro": "The important detail is the order of events. Follow the five stages below, then switch to cold staging to see where a coast fits into the alternative sequence.",
-      "image": "/assets/staging-poster.jpg", "imageAlt": "SpaceX footage of Starship hot staging",
-      "diagramTitle": "Inside the staging sequence", "diagramNote": "Original schematic · not to scale · stages are illustrative, not a flight clock",
-      "legend": ["Ship: the upper stage", "Vented ring: the exhaust route", "Super Heavy: the booster"],
+      "intro": "Start with the five-stage cutaway, then follow the forces, exhaust flow and vehicle-generation changes below. The drawing represents the earlier vented-ring concept; the article distinguishes that hardware from the integrated V3 hot stage.",
+      "image": "/assets/staging-poster.jpg",
+      "imageAlt": "SpaceX footage of Starship hot staging",
+      "diagramTitle": "Inside the staging sequence",
+      "diagramNote": "Original schematic of the earlier vented-ring concept · not to scale · V3 integrates the hot stage; see the generation comparison below",
+      "legend": [
+        "Ship: the upper stage",
+        "Vented ring: the exhaust route",
+        "Super Heavy: the booster"
+      ],
       "stages": [
-        {"title": "The booster carries the stack", "text": "Super Heavy accelerates the combined vehicle. Starship is still attached above the interstage. The enlarged view follows the joint between them.", "coldTitle": "The booster carries the stack", "cold": "The stages remain attached during ascent. Both approaches begin with the booster doing the work."},
-        {"title": "Prepare for upper-stage ignition", "text": "The booster throttles down for staging. The ring between the stages is vented so that exhaust can escape when Starship’s engines ignite.", "coldTitle": "Shut down the booster", "cold": "In this simplified cold-staging comparison, the booster shuts down before separation and upper-stage ignition."},
-        {"title": "Starship ignites", "text": "The upper-stage engines light while the vehicles are still connected. Exhaust exits through the hot-staging ring. This is the moment the cutaway highlights.", "coldTitle": "Separate and coast", "cold": "The upper stage separates before lighting its engines. The gap in powered flight is shown as a coast; its duration depends on the rocket."},
-        {"title": "Separate under thrust", "text": "Starship departs with its engines already running. The booster and ship now have separate jobs: continue the mission above, and prepare the booster’s return below.", "coldTitle": "Ignite the upper stage", "cold": "After separation and any required settling sequence, the upper-stage engines ignite. The comparison shows a different event order, not a measured performance penalty."},
-        {"title": "Continue on separate paths", "text": "Starship continues accelerating. Super Heavy turns toward its return sequence. The hot-staging operation has ended; boostback is the next phase.", "coldTitle": "Continue the upper-stage burn", "cold": "The upper stage continues its burn. Both methods can work; their hardware, ignition and propellant-management requirements differ."}
+        {
+          "title": "The booster carries the stack",
+          "text": "Super Heavy accelerates the combined vehicle. Starship is still attached above the interstage. The enlarged view follows the joint between them.",
+          "coldTitle": "The booster carries the stack",
+          "cold": "The stages remain attached during ascent. Both approaches begin with the booster doing the work."
+        },
+        {
+          "title": "Prepare for upper-stage ignition",
+          "text": "The booster throttles down for staging. The ring between the stages is vented so that exhaust can escape when Starship’s engines ignite.",
+          "coldTitle": "Shut down the booster",
+          "cold": "In this simplified cold-staging comparison, the booster shuts down before separation and upper-stage ignition."
+        },
+        {
+          "title": "Starship ignites",
+          "text": "The upper-stage engines light while the vehicles are still connected. Exhaust exits through the hot-staging ring. This is the moment the cutaway highlights.",
+          "coldTitle": "Separate and coast",
+          "cold": "The upper stage separates before lighting its engines. The gap in powered flight is shown as a coast; its duration depends on the rocket."
+        },
+        {
+          "title": "Separate under thrust",
+          "text": "Starship departs with its engines already running. The booster and ship now have separate jobs: continue the mission above, and prepare the booster’s return below.",
+          "coldTitle": "Ignite the upper stage",
+          "cold": "After separation and any required settling sequence, the upper-stage engines ignite. The comparison shows a different event order, not a measured performance penalty."
+        },
+        {
+          "title": "Continue on separate paths",
+          "text": "Starship continues accelerating. Super Heavy turns toward its return sequence. The hot-staging operation has ended; boostback is the next phase.",
+          "coldTitle": "Continue the upper-stage burn",
+          "cold": "The upper stage continues its burn. Both methods can work; their hardware, ignition and propellant-management requirements differ."
+        }
       ],
       "sections": [
-        {"title": "Why the sequence matters", "text": "A coast creates a pause between powered phases. Igniting before separation reduces that interruption, but introduces a demanding exhaust and separation problem. The ring is part of the hardware that makes that trade possible."},
-        {"title": "What the flight timeline tells us", "text": "SpaceX’s Flight 14 timeline lists booster MECO at T+2:20 and hot staging at T+2:22. Those are approximate event times for that flight, not universal timings for every Starship vehicle.", "source": "flight14"}
+        {
+          "title": "Why the sequence matters",
+          "text": "A coast creates a pause between powered phases. Igniting before separation reduces that interruption, but introduces a demanding exhaust and separation problem. The ring is part of the hardware that makes that trade possible."
+        },
+        {
+          "title": "What the flight timeline tells us",
+          "text": "SpaceX’s Flight 14 timeline lists booster MECO at T+2:20 and hot staging at T+2:22. Those are approximate event times for that flight, not universal timings for every Starship vehicle.",
+          "source": "flight14"
+        }
       ],
       "misconceptions": [
-        {"title": "The exhaust belongs to the upper stage", "text": "At the hot-staging joint, the key plume comes from Starship’s engines above the booster. The ring vents that exhaust outward."},
-        {"title": "The animation is not a flight simulation", "text": "The five stages explain the mechanism. Distances, plume shapes and playback speed are schematic; they do not predict a flight’s trajectory or payload gain."}
+        {
+          "title": "The exhaust belongs to the upper stage",
+          "text": "At the hot-staging joint, the key plume comes from Starship’s engines above the booster. The ring vents that exhaust outward."
+        },
+        {
+          "title": "The animation is not a flight simulation",
+          "text": "The five stages explain the mechanism. Distances, plume shapes and playback speed are schematic; they do not predict a flight’s trajectory or payload gain."
+        }
       ],
-      "glossary": [{"term":"Interstage","text":"The structure connecting two rocket stages."},{"term":"MECO","text":"Engine-cutoff shorthand. SpaceX’s timeline expands it here as most engines cut off."},{"term":"Ullage","text":"The gas space in a propellant tank; a coast can also create a need to settle liquid before an engine start."}],
-      "sources": [{"id":"flight14","title":"SpaceX · Starship Flight 14 flight timeline","url":"https://www.spacex.com/launches/starship-flight-14","note":"Approximate MECO, hot-staging and boostback event times."},{"id":"flight2","title":"SpaceX · Starship’s Second Flight Test","url":"https://www.youtube.com/watch?v=C3iHAgwIYtI","note":"Official footage of the first Starship hot-staging flight."}],
-      "related": [{"title":"Explore the Starship flight lab","url":"/starship.html#lab","text":"Put the mechanism beside the flight history."},{"title":"How a booster catch works","url":"/explainers/booster-catch.html","text":"Follow the booster’s return to the tower."}]
+      "glossary": [
+        {
+          "term": "Interstage",
+          "text": "The structure connecting two rocket stages."
+        },
+        {
+          "term": "MECO",
+          "text": "Engine-cutoff shorthand. SpaceX’s timeline expands it here as most engines cut off."
+        },
+        {
+          "term": "Ullage",
+          "text": "The gas space in a propellant tank; a coast can also create a need to settle liquid before an engine start."
+        },
+        {
+          "term": "Plume impingement",
+          "text": "Exhaust striking another surface, imposing thermal and pressure loads."
+        },
+        {
+          "term": "CFD",
+          "text": "Computational fluid dynamics: numerical modelling of fluid flow."
+        },
+        {
+          "term": "Mass ratio",
+          "text": "Initial mass divided by final mass for the burn being analysed."
+        }
+      ],
+      "sources": [
+        {
+          "id": "flight14",
+          "title": "SpaceX · Starship Flight 14 flight timeline",
+          "url": "https://www.spacex.com/launches/starship-flight-14",
+          "note": "Approximate MECO, hot-staging and boostback event times."
+        },
+        {
+          "id": "flight2",
+          "title": "SpaceX · Starship’s Second Flight Test",
+          "url": "https://www.youtube.com/watch?v=C3iHAgwIYtI",
+          "note": "Official footage of the first Starship hot-staging flight."
+        },
+        {
+          "id": "v3",
+          "title": "SpaceX · Introducing Starship V3, 12 May 2026",
+          "url": "https://www.spacex.com/updates/reusability",
+          "note": "Vehicle-generation changes: integrated hot stage, grid fins and catch interfaces. Read the dated V3 section of the updates archive."
+        },
+        {
+          "id": "rocket-equation",
+          "title": "NASA Glenn · Ideal rocket equation",
+          "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/ideal-rocket-equation/",
+          "note": "Mass ratio, exhaust velocity and the distinction between ideal performance and gravity losses."
+        },
+        {
+          "id": "thrust",
+          "title": "NASA Glenn · Thrust equation",
+          "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/thrust-force/",
+          "note": "Momentum and pressure contributions to rocket thrust. Supports the explanatory force models, not flight telemetry."
+        },
+        {
+          "id": "nasa-cfd",
+          "title": "NASA Marshall / NAS · Starship hot staging: from concept to flight",
+          "url": "https://www.nas.nasa.gov/SC24/research/project24.php",
+          "note": "November 2024 account of plume interaction, 500-million-cell-class CFD and comparison with IFT-2 flight data."
+        },
+        {
+          "id": "falcon-separation",
+          "title": "NASA · Crew-9 stage separation, 28 September 2024",
+          "url": "https://www.nasa.gov/blogs/spacestation/2024/09/28/falcon-9-max-q-main-engine-cutoff-stage-separation/",
+          "note": "A concrete Falcon 9 example in which first-stage cutoff and separation precede second-stage ignition."
+        },
+        {
+          "id": "force-model",
+          "title": "NASA Trick · Rocket simulation equations",
+          "url": "https://github.com/nasa/trick/blob/master/trick_sims/SIM_rocket/Readme.md",
+          "note": "Primary NASA model: thrust, gravity, drag, changing mass and net-force acceleration. Used for the simplified force explanations."
+        }
+      ],
+      "related": [
+        {
+          "title": "Explore the Starship flight lab",
+          "url": "/starship.html#lab",
+          "text": "Put the mechanism beside the flight history."
+        },
+        {
+          "title": "How a booster catch works",
+          "url": "/explainers/booster-catch.html",
+          "text": "Follow the booster’s return to the tower."
+        }
+      ],
+      "facts": [
+        {
+          "value": "≈500 million",
+          "label": "Cells in NASA’s CFD meshes",
+          "note": "The 2024 NASA account describes meshes at this scale; these are simulation cells, not sensors or flight measurements.",
+          "sources": [
+            "nasa-cfd"
+          ]
+        },
+        {
+          "value": "≈40 million",
+          "label": "CPU-hours reported by NASA",
+          "note": "Compute effort for the hot-staging simulation work. CPU-hours are cumulative work, not elapsed calendar time.",
+          "sources": [
+            "nasa-cfd"
+          ]
+        },
+        {
+          "value": "T+2:22",
+          "label": "Flight 14’s listed hot-staging time",
+          "note": "SpaceX’s approximate timeline for that flight; five seconds before the listed boostback start.",
+          "sources": [
+            "flight14"
+          ]
+        }
+      ],
+      "deepDive": [
+        {
+          "id": "event-order",
+          "title": "1. What “hot” changes: event order",
+          "paragraphs": [
+            {
+              "text": "A conventional separation can shut down the first stage, release the connection, establish a gap and then ignite the next stage. NASA’s Crew-9 report describes that order for Falcon 9. NASA describes Starship’s upper-stage engines starting before the booster engines have completely cut off and before separation. The word hot describes the powered separation, rather than the atmospheric temperature or the temperature of the rocket’s outer skin.",
+              "sources": [
+                "falcon-separation",
+                "nasa-cfd"
+              ],
+              "kind": "Documented mechanism"
+            },
+            {
+              "text": "Three events that look simultaneous in a video remain distinct engineering tasks: starting engines, releasing the structural connection and establishing safe relative motion. Successful ignition alone does not prove separation succeeded. Equally, seeing a gap does not establish that the engines reached their intended operating condition. That is why a useful flight account separates propulsion performance from the separation outcome. This is a way to read the evidence, rather than a claim about SpaceX’s unpublished release logic.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "gravity-mass",
+          "title": "2. The performance argument: time and mass",
+          "paragraphs": [
+            {
+              "text": "The ideal rocket equation relates available velocity change to effective exhaust velocity and the logarithm of the initial-to-final mass ratio: Δv = ve × ln(m0 / mf). It explains why carrying additional structure has a performance cost. It does not, by itself, calculate the payload benefit of changing a staging sequence; a real ascent also has gravity, drag, steering and mission constraints.",
+              "sources": [
+                "rocket-equation"
+              ],
+              "kind": "Physics"
+            },
+            {
+              "text": "During an unpowered interval the rocket still moves, and may still gain altitude. It is not suspended in place. In a simplified vertical coast with constant local gravity and negligible drag, its upward speed changes by −g × Δt. Taking an explicitly assumed g = 9.8 m/s², a two-second interval changes upward speed by approximately −19.6 m/s. This is an illustrative calculation, not a measured Starship loss or a prediction of payload gain.",
+              "sources": [
+                "rocket-equation"
+              ],
+              "kind": "Worked example"
+            },
+            {
+              "text": "Continuing thrust through staging addresses that interruption. It also changes the hardware the vehicle must carry and the loads the separation must withstand. The right comparison is a complete trajectory and mass budget. A claim such as “this adds a fixed number of tonnes” needs that supporting analysis, with the vehicle version and mission held constant; it cannot be read directly from the cutaway.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "plume-pressure",
+          "title": "3. The hard part is the plume",
+          "paragraphs": [
+            {
+              "text": "NASA’s 2024 analysis describes upper-stage exhaust impinging on the booster shield inside a confined interstage. At the low ambient pressure of separation, the plume expands around the vehicle. The problem includes pressure loads as well as heating; a vent does not make those interactions disappear. NASA compared different geometries and engine-start sequences, including moving-body simulations, and reported favourable agreement with second-flight data.",
+              "sources": [
+                "nasa-cfd"
+              ],
+              "kind": "Documented mechanism"
+            },
+            {
+              "text": "Think of three questions when viewing the enlarged joint: where can gas leave, which surfaces can it strike, and how do the two vehicles move while that flow is changing? The red arrows show the intended exhaust route in the schematic. They are not a map of Mach number, heat flux or pressure. Turning an explanation into a credible prediction would require boundary conditions, material properties, mesh resolution and validation against measurements.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "thrust-separation",
+          "title": "4. Thrust does not need something to push against",
+          "paragraphs": [
+            {
+              "text": "A rocket accelerates by expelling mass. The thrust equation includes exhaust momentum and the difference between nozzle-exit and surrounding pressure. Starship’s engines do not need to push on the booster to function. During hot staging, however, exhaust also strikes nearby structure, so the overall interaction contains more than the free-flight thrust of an isolated engine.",
+              "sources": [
+                "thrust"
+              ],
+              "kind": "Physics"
+            },
+            {
+              "text": "This distinction helps explain the drawing: the upper stage’s thrust accelerates that stage, while plume interaction imposes additional loads on the connected system. Once released, relative acceleration opens the gap. The visual model leaves out engine transients, structural vibration and propellant motion. Those omissions are useful for learning the sequence, but they are exactly the details a separation qualification programme has to investigate.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "hardware-generations",
+          "title": "5. The hardware changed: earlier ring versus V3",
+          "paragraphs": [
+            {
+              "text": "SpaceX’s V3 introduction describes an integrated hot stage replacing the previous single-use protective interstage. The forward dome of the booster fuel tank is exposed to the upper-stage exhaust, with internal tank pressure and a non-structural steel layer providing protection. This is a vehicle-generation change, not simply the old ring with a different label.",
+              "sources": [
+                "v3"
+              ],
+              "kind": "Vehicle-generation fact"
+            },
+            {
+              "text": "Read historical images with their flight and vehicle version attached. A detached interstage seen on an earlier flight does not establish that every later booster carries and discards the same part. The cutaway above teaches the earlier vented-ring concept. The table makes its scope explicit rather than silently presenting one geometry as the permanent design.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ],
+          "table": {
+            "caption": "Same separation principle, evolving implementation",
+            "headers": [
+              "Question",
+              "Earlier vented-ring concept",
+              "V3 description"
+            ],
+            "rows": [
+              [
+                "Upper-stage ignition",
+                "Before stage separation",
+                "Hot-stage principle retained"
+              ],
+              [
+                "Protective hardware",
+                "Separate protective interstage",
+                "Integrated hot stage"
+              ],
+              [
+                "Booster protection",
+                "Shield and vented interstage environment",
+                "Pressurised tank dome and steel layer described by SpaceX"
+              ],
+              [
+                "What to verify",
+                "Flight-specific imagery and mission record",
+                "Dated V3 update and flight-specific implementation"
+              ]
+            ],
+            "sources": [
+              "nasa-cfd",
+              "v3"
+            ]
+          }
+        },
+        {
+          "id": "read-flight",
+          "title": "6. How to read the flight timeline",
+          "paragraphs": [
+            {
+              "text": "SpaceX’s Flight 14 timeline places most-engine cutoff at T+2:20, hot staging at T+2:22 and boostback start at T+2:27. The five-second difference between the last two listed events is arithmetic from approximate published times. It does not identify the exact instant a mechanical latch opened, or the duration of every engine transient.",
+              "sources": [
+                "flight14"
+              ],
+              "kind": "Flight-specific evidence"
+            },
+            {
+              "text": "A useful review records the vehicle generation, mission objective, engine-start outcome, separation outcome and booster-return outcome separately. A later failure should not erase an earlier demonstrated event; an earlier success should not certify every later event. When new footage arrives, compare like with like: the same camera angle, a reliable clock, and the mission’s own event descriptions. Keep launch schedules and future catch targets in the maintained tracker, where they can be updated without rewriting this engineering guide.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "title": "Does cold staging mean the rocket stops moving?",
+          "text": "No. It coasts. Its velocity changes under gravity and aerodynamic forces while propulsion is interrupted. The key difference is the order of separation and ignition."
+        },
+        {
+          "title": "Why is there no exact payload gain here?",
+          "text": "A payload comparison needs a specified vehicle, mission trajectory, structural mass and propulsion assumptions. The ideal rocket equation alone cannot supply a defensible Starship-specific number."
+        },
+        {
+          "title": "Is the illustrated ring the current V3 configuration?",
+          "text": "The main drawing represents the earlier vented-ring concept. The V3 comparison explains the integrated hot-stage change using SpaceX’s dated description."
+        }
+      ]
     },
     {
-      "id": "catch", "slug": "booster-catch", "legacy": "catch", "topic": "spacex", "category": "SpaceX · Reusability", "minutes": 4,
-      "title": "How a booster catch works", "card": "A landing pad that reaches out.",
+      "id": "catch",
+      "slug": "booster-catch",
+      "legacy": "catch",
+      "topic": "spacex",
+      "category": "SpaceX · Reusability",
+      "minutes": 8,
+      "title": "How a booster catch works",
+      "card": "A landing pad that reaches out.",
       "summary": "See the return, alignment and transfer of load to the tower, with elevation and overhead views.",
       "answer": "The returning booster slows and aligns with the tower so its catch fittings can meet the arms. Once supported, the booster’s weight is carried by the tower rather than landing legs.",
-      "intro": "A catch is a sequence of positioning, braking and alignment. The two views below focus on those relationships, with an enlarged view of the catch area.",
-      "image": "/assets/dispatch/starship-catch-poster.jpg", "imageAlt": "SpaceX footage of the first Super Heavy catch",
-      "diagramTitle": "From approach to support", "diagramNote": "Original schematic · not to scale · no measured trajectory or control model",
-      "legend": ["Elevation: approach to the tower", "Plan: alignment from above", "Catch area: load transfers to the arms"],
+      "intro": "The catch is the final step in a return-to-launch-site sequence. Start with the elevation and overhead animation, then examine braking, alignment, the structural load path and the distinction between one successful recovery and repeatable reuse.",
+      "image": "/assets/dispatch/starship-catch-poster.jpg",
+      "imageAlt": "SpaceX footage of the first Super Heavy catch",
+      "diagramTitle": "From approach to support",
+      "diagramNote": "Original catch schematic · earlier tower/booster geometry · not to scale · catch interfaces vary by vehicle generation",
+      "legend": [
+        "Elevation: approach to the tower",
+        "Plan: alignment from above",
+        "Catch area: load transfers to the arms"
+      ],
       "stages": [
-        {"title":"Return toward the launch site","text":"After separation, the booster’s return sequence brings it back toward the launch area. This diagram begins with the approach; it does not plot the full boostback trajectory."},
-        {"title":"Control the approach","text":"The booster must reach the catch area with the required position and orientation. Compare the elevation with the overhead view: arriving at the right height alone is not enough."},
-        {"title":"Slow for the catch","text":"The landing burn reduces the booster’s speed as it approaches the arms. The illustrated flame marks that phase, without assigning an engine count or a fixed burn duration."},
-        {"title":"Meet the catch fittings","text":"The booster’s catch fittings and the arms must line up. The red markers identify the relationship being explained, not the tolerances of an actual flight."},
-        {"title":"The tower carries the load","text":"Once supported by the arms, the booster hangs at the tower. The final view highlights the support path and turns off the landing-burn illustration."}
+        {
+          "title": "Return toward the launch site",
+          "text": "After separation, the booster’s return sequence brings it back toward the launch area. This diagram begins with the approach; it does not plot the full boostback trajectory."
+        },
+        {
+          "title": "Control the approach",
+          "text": "The booster must reach the catch area with the required position and orientation. Compare the elevation with the overhead view: arriving at the right height alone is not enough."
+        },
+        {
+          "title": "Slow for the catch",
+          "text": "The landing burn reduces the booster’s speed as it approaches the arms. The illustrated flame marks that phase, without assigning an engine count or a fixed burn duration."
+        },
+        {
+          "title": "Meet the catch fittings",
+          "text": "The booster’s catch fittings and the arms must line up. The red markers identify the relationship being explained, not the tolerances of an actual flight."
+        },
+        {
+          "title": "The tower carries the load",
+          "text": "Once supported by the arms, the booster hangs at the tower. The final view highlights the support path and turns off the landing-burn illustration."
+        }
       ],
-      "sections": [{"title":"Why put the landing hardware on the ground?","text":"A tower catch moves some recovery infrastructure off the flying vehicle. It also makes the return depend on a particular facility and a tightly coordinated approach. That is the central engineering trade."},{"title":"A demonstrated milestone","text":"SpaceX’s fifth Starship flight demonstrated the first Super Heavy tower catch. The official film below is the reference for the broad sequence; the illustration is an explanation of that sequence, not a reconstruction of its telemetry.","source":"flight5"}],
-      "misconceptions": [{"title":"The arms are not a net","text":"The mechanism depends on alignment with the booster’s catch area. A diagram of two arms around a cylinder is not a description of the complete guidance and control system."},{"title":"A booster catch does not prove a ship catch","text":"Starship and Super Heavy are different vehicles. A completed booster catch should not be presented as confirmation of a future ship catch or an unannounced flight plan."}],
-      "glossary": [{"term":"Boostback","text":"The burn that redirects the booster toward its return area."},{"term":"Elevation","text":"A side view that shows height and vertical relationships."},{"term":"Plan view","text":"An overhead view that shows lateral alignment."}],
-      "sources": [{"id":"flight5","title":"SpaceX · Starship’s Fifth Flight Test","url":"https://www.spacex.com/launches/starship-flight-5","note":"Official mission reference and footage of the first Super Heavy catch."},{"id":"starship","title":"SpaceX · Starship programme","url":"https://www.spacex.com/vehicles/starship","note":"Vehicle and reusability context. Detailed control tolerances are not supplied by this illustration."}],
-      "related": [{"title":"Explore the Starship flight lab","url":"/starship.html#lab","text":"Follow demonstrated flight outcomes."},{"title":"Why Starship uses hot staging","url":"/explainers/hot-staging.html","text":"Understand the separation that comes first."}]
+      "sections": [
+        {
+          "title": "Why put the landing hardware on the ground?",
+          "text": "A tower catch moves some recovery infrastructure off the flying vehicle. It also makes the return depend on a particular facility and a tightly coordinated approach. That is the central engineering trade."
+        },
+        {
+          "title": "A demonstrated milestone",
+          "text": "SpaceX’s fifth Starship flight demonstrated the first Super Heavy tower catch. The official film below is the reference for the broad sequence; the illustration is an explanation of that sequence, not a reconstruction of its telemetry.",
+          "source": "flight5"
+        }
+      ],
+      "misconceptions": [
+        {
+          "title": "The arms are not a net",
+          "text": "The mechanism depends on alignment with the booster’s catch area. A diagram of two arms around a cylinder is not a description of the complete guidance and control system."
+        },
+        {
+          "title": "A booster catch does not prove a ship catch",
+          "text": "Starship and Super Heavy are different vehicles. A completed booster catch should not be presented as confirmation of a future ship catch or an unannounced flight plan."
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Boostback",
+          "text": "The burn that redirects the booster toward its return area."
+        },
+        {
+          "term": "Elevation",
+          "text": "A side view that shows height and vertical relationships."
+        },
+        {
+          "term": "Plan view",
+          "text": "An overhead view that shows lateral alignment."
+        },
+        {
+          "term": "Attitude",
+          "text": "The orientation of a vehicle, distinct from its position."
+        },
+        {
+          "term": "Load path",
+          "text": "The route through connected structures by which forces are carried."
+        },
+        {
+          "term": "Impulse",
+          "text": "Force integrated over time; equal to a change in momentum."
+        }
+      ],
+      "sources": [
+        {
+          "id": "flight5",
+          "title": "SpaceX · Starship’s Fifth Flight Test",
+          "url": "https://www.spacex.com/launches/starship-flight-5",
+          "note": "Official mission reference and footage of the first Super Heavy catch."
+        },
+        {
+          "id": "starship",
+          "title": "SpaceX · Starship programme",
+          "url": "https://www.spacex.com/vehicles/starship",
+          "note": "Vehicle and reusability context. Detailed control tolerances are not supplied by this illustration."
+        },
+        {
+          "id": "v3",
+          "title": "SpaceX · Introducing Starship V3, 12 May 2026",
+          "url": "https://www.spacex.com/updates/reusability",
+          "note": "Vehicle-generation changes: integrated hot stage, grid fins and catch interfaces. Read the dated V3 section of the updates archive."
+        },
+        {
+          "id": "rocket-equation",
+          "title": "NASA Glenn · Ideal rocket equation",
+          "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/ideal-rocket-equation/",
+          "note": "Mass ratio, exhaust velocity and the distinction between ideal performance and gravity losses."
+        },
+        {
+          "id": "thrust",
+          "title": "NASA Glenn · Thrust equation",
+          "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/thrust-force/",
+          "note": "Momentum and pressure contributions to rocket thrust. Supports the explanatory force models, not flight telemetry."
+        },
+        {
+          "id": "force-model",
+          "title": "NASA Trick · Rocket simulation equations",
+          "url": "https://github.com/nasa/trick/blob/master/trick_sims/SIM_rocket/Readme.md",
+          "note": "Primary NASA model: thrust, gravity, drag, changing mass and net-force acceleration. Used for the simplified force explanations."
+        }
+      ],
+      "related": [
+        {
+          "title": "Explore the Starship flight lab",
+          "url": "/starship.html#lab",
+          "text": "Follow demonstrated flight outcomes."
+        },
+        {
+          "title": "Why Starship uses hot staging",
+          "url": "/explainers/hot-staging.html",
+          "text": "Understand the separation that comes first."
+        }
+      ],
+      "facts": [
+        {
+          "value": "13 Oct 2024",
+          "label": "First Super Heavy tower catch",
+          "note": "Flight 5 demonstrated the booster catch. The upper stage followed a different flight and recovery sequence.",
+          "sources": [
+            "flight5"
+          ]
+        },
+        {
+          "value": "3 versus 4",
+          "label": "Grid fins in SpaceX’s V3 comparison",
+          "note": "The V3 announcement describes three enlarged fins, replacing four, with revised catch points.",
+          "sources": [
+            "v3"
+          ]
+        },
+        {
+          "value": "≈17.5 cm",
+          "label": "Offset in a hypothetical geometry example",
+          "note": "A point 10 m from a rotation centre moves laterally by about 17.5 cm for 1° of rotation. Not a catch tolerance.",
+          "sources": []
+        }
+      ],
+      "deepDive": [
+        {
+          "id": "return-sequence",
+          "title": "1. Returning is a trajectory problem",
+          "paragraphs": [
+            {
+              "text": "After staging, the booster is both high above Earth and moving away from the launch site. Returning requires changing its trajectory, not simply turning its nose upward. A boostback burn changes velocity so that the later descent can approach the launch area; a landing burn addresses the final approach. Those are different jobs, even though both use rocket propulsion. SpaceX’s Flight 5 sequence includes separation, boostback, coast and the final landing burn before capture.",
+              "sources": [
+                "flight5"
+              ],
+              "kind": "Demonstrated sequence"
+            },
+            {
+              "text": "A useful mental model separates position from velocity. Two boosters can occupy the same point and need completely different control actions if one is descending quickly and the other is nearly stationary. The same applies laterally: being beside the tower is insufficient if sideways motion is still carrying the vehicle away. Our diagram shows positions at five explanatory stages, not the full six-dimensional flight state or its estimated uncertainty.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "braking-forces",
+          "title": "2. Why the landing burn must beat gravity",
+          "paragraphs": [
+            {
+              "text": "Consider a simplified vertical free-body model during a powered descent. Let upward be positive, T be the upward thrust, m the instantaneous vehicle mass and g local gravity. Ignoring aerodynamic force, vertical acceleration is a = T/m − g. To reduce a downward speed, acceleration must point upward: thrust greater than weight is needed during that braking interval. Merely balancing weight would preserve the existing downward velocity in this simplified model.",
+              "sources": [
+                "force-model"
+              ],
+              "kind": "Physics"
+            },
+            {
+              "text": "The formula is an instantaneous relationship. Propellant consumption changes mass, engines have transients and a tilted vehicle directs some thrust sideways. A full return model also includes atmospheric forces. The graphic therefore shows the existence of the braking phase without inventing a throttle curve or a catch-speed specification. It also avoids the misleading picture of a booster simply dropping into waiting arms at high speed.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ],
+          "math": {
+            "title": "A catch is about removing motion before support",
+            "formula": "a = T/m − g",
+            "terms": [
+              "T: upward thrust, in newtons",
+              "m: instantaneous mass, in kilograms",
+              "g: local gravitational acceleration, in m/s²"
+            ],
+            "note": "Simplified vertical force balance; no aerodynamic force. It does not supply Super Heavy’s mass, thrust schedule or catch velocity.",
+            "sources": [
+              "force-model"
+            ]
+          },
+          "visual": "forces"
+        },
+        {
+          "id": "alignment-control",
+          "title": "3. Alignment has several dimensions",
+          "paragraphs": [
+            {
+              "text": "Height is one coordinate. The catch also depends on lateral position, attitude and the orientation of the catch interface relative to the arms. The overhead view exists because a side-on video can hide an offset toward or away from the camera. Likewise, a small angular error at one location can create a larger offset elsewhere on a long structure. This is general rigid-body geometry, not a disclosure of SpaceX’s guidance algorithm.",
+              "sources": [],
+              "kind": "Engineering model"
+            },
+            {
+              "text": "For small angles measured in radians, lateral offset is approximately length × angle. As a purely hypothetical example, a point 10 metres from a rotation centre moves about 0.175 metres sideways for a one-degree rotation: 10 × π/180. Neither input is a published catch tolerance. The calculation explains why orientation and position belong in the same discussion; it must not be repackaged as the accuracy of a real flight.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "load-path",
+          "title": "4. From engine support to structural support",
+          "paragraphs": [
+            {
+              "text": "Before capture, aerodynamic and propulsive forces act on the flying vehicle. After a supported catch, its weight has a structural route through the catch interface, arms and tower to the ground. The engine flame disappearing is only one visible part of that transition. The important mechanical question is where the load is carried and how relative motion is reduced during contact.",
+              "sources": [],
+              "kind": "Engineering model"
+            },
+            {
+              "text": "In a simplified model, changing momentum by Δp over a time Δt requires an average net force Δp/Δt. For the same mass and residual approach speed, a shorter arrest time implies a greater average net decelerating force. The actual contact forces also depend on weight, geometry and compliance. This is why an illustration cannot certify arm loads from the size of a flame or a single video frame.",
+              "sources": [
+                "force-model"
+              ],
+              "kind": "Physics"
+            },
+            {
+              "text": "A tower catch moves recovery hardware and some of its maintenance burden onto the launch site. That may reduce what the booster has to carry, but it adds constraints on the facility, approach corridor and availability of the catch system. The trade is not “free landing mass”; it is a different allocation of mass, infrastructure and operational risk.",
+              "sources": [
+                "rocket-equation"
+              ],
+              "kind": "Engineering interpretation"
+            }
+          ]
+        },
+        {
+          "id": "generation-interface",
+          "title": "5. Catch interfaces evolve with the booster",
+          "paragraphs": [
+            {
+              "text": "SpaceX’s V3 announcement describes three grid fins rather than four, each enlarged by 50%, with revised positioning and new catch points. The same update describes lowering the fins to reduce hot-staging heat exposure. That links ascent separation, aerodynamic control and recovery hardware in a single design change.",
+              "sources": [
+                "v3"
+              ],
+              "kind": "Vehicle-generation fact"
+            },
+            {
+              "text": "Do not treat every protrusion in historical footage as the same permanent catch fitting. Identify the booster generation and the dated source before discussing a specific interface. The animation explains approach and support using earlier geometry. It does not certify the attachment detail, contact surface or actuator arrangement of every later vehicle. A sharper photograph cannot supply a structural specification by itself.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ],
+          "table": {
+            "caption": "What the two views explain",
+            "headers": [
+              "View",
+              "Useful for understanding",
+              "Cannot establish alone"
+            ],
+            "rows": [
+              [
+                "Elevation",
+                "Height, descent and the support transition",
+                "Offset toward or away from the camera"
+              ],
+              [
+                "Overhead plan",
+                "Lateral alignment and arm relationship",
+                "Vertical speed or catch timing"
+              ],
+              [
+                "Close-up of contact",
+                "Which interfaces appear to meet",
+                "Internal stress or a certified load limit"
+              ],
+              [
+                "Flight telemetry",
+                "Time history of measured states",
+                "Unpublished control logic without further documentation"
+              ]
+            ],
+            "sources": []
+          }
+        },
+        {
+          "id": "reuse-evidence",
+          "title": "6. A catch, a recovery and reuse are different milestones",
+          "paragraphs": [
+            {
+              "text": "Flight 5 established that a Super Heavy booster could return to the tower and be caught. A successful catch is evidence for that event. Demonstrating repeatable reuse requires additional evidence: inspection, condition of hardware, work performed between flights and subsequent flight outcomes. The words recovered, reused and rapidly reused should therefore be attached to different observations.",
+              "sources": [
+                "flight5"
+              ],
+              "kind": "Evidence and scope"
+            },
+            {
+              "text": "A mission can also separate upper-stage and booster results. The booster returns early while the ship continues its own mission. Conversely, a booster catch cannot establish that the ship has been caught, or that a later announced objective has already happened. Those distinctions make the tracker more valuable: it records demonstrated outcomes alongside the vehicle and date rather than letting one spectacular image stand in for an entire programme.",
+              "sources": [],
+              "kind": "Explanation"
+            },
+            {
+              "text": "When analysing the next catch, record the mission, booster generation, whether the catch was attempted, whether support was achieved and whether later reuse was demonstrated. If a source gives only an approximate event time, retain that uncertainty. Avoid converting a broadcast clock or a slow-motion replay into an engineering tolerance. The lesson explains the system; the mission record supplies the outcome.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "title": "Do the arms absorb the full energy of a falling booster?",
+          "text": "The landing burn removes most of the motion before support. Residual motion and contact loads still matter, but this is not a free-fall impact into a stationary net."
+        },
+        {
+          "title": "Why does the diagram use two views?",
+          "text": "A side view shows height but can hide lateral offset. A plan view exposes a different part of the alignment problem. Neither view contains the whole flight state."
+        },
+        {
+          "title": "Does a catch mean the booster can immediately fly again?",
+          "text": "No. Recovery, inspection, refurbishment, reflight and rapid turnaround require separate evidence. A catch demonstrates one part of that chain."
+        }
+      ]
     },
     {
-      "id":"fsd", "slug":"fsd", "legacy":"fsd", "topic":"tesla", "category":"Tesla · Driver assistance", "minutes":5,
-      "title":"Why FSD differs between cars", "card":"Hardware, software and region.",
-      "summary":"Untangle the three things that determine a car’s feature set, then compare the tracker’s reported software branches.",
-      "answer":"An FSD label does not describe every Tesla’s capabilities. Hardware, installed software, vehicle configuration and regional availability all matter. Full Self-Driving (Supervised) still requires an attentive driver.",
-      "intro":"Start with the three layers in the illustration. The comparison further down uses the same maintained version data as the global FSD tracker, with its snapshot date shown explicitly.",
-      "image":"/assets/dispatch/fsd-15-billion-miles-poster.jpg", "imageAlt":"Tesla footage of Full Self-Driving Supervised",
-      "diagramTitle":"Three layers, one vehicle", "diagramNote":"Conceptual illustration · camera views are schematic · not Tesla’s software architecture",
-      "legend":["Vehicle hardware", "Installed software", "Regional availability"],
-      "stages":[
-        {"title":"Start with the vehicle","text":"A model name alone does not identify its complete configuration. Build date, equipment and the information shown in the vehicle are better starting points than another owner’s video."},
-        {"title":"Identify the hardware","text":"Hardware generations describe the vehicle’s computing and camera configuration. A newer software announcement should not be read as a promise that every hardware generation receives the same features."},
-        {"title":"Check the installed software","text":"The vehicle software build and the FSD version are different labels. Record both when comparing release notes. A reported build in a sample is not confirmation that your car has received it."},
-        {"title":"Check the region and entitlement","text":"Tesla says availability can depend on configuration, hardware, software, region, model and model year. A release in one market does not establish availability in another.","source":"tesla-fsd"},
-        {"title":"Keep the driver in the loop","text":"Tesla describes these features as supervised driver assistance. They do not replace the driver or make the consumer vehicle autonomous. Review the instructions for your particular car.","source":"tesla-fsd"}
+      "id": "fsd",
+      "slug": "fsd",
+      "legacy": "fsd",
+      "topic": "tesla",
+      "category": "Tesla · Driver assistance",
+      "minutes": 8,
+      "title": "Why FSD differs between cars",
+      "card": "Hardware, software and region.",
+      "summary": "Untangle the three things that determine a car’s feature set, then compare the tracker’s reported software branches.",
+      "answer": "An FSD label does not describe every Tesla’s capabilities. Hardware, installed software, vehicle configuration and regional availability all matter. Full Self-Driving (Supervised) still requires an attentive driver.",
+      "intro": "Start with the three layers in the illustration. The comparison further down uses the same maintained version data as the global FSD tracker, with its snapshot date shown explicitly.",
+      "image": "/assets/dispatch/fsd-15-billion-miles-poster.jpg",
+      "imageAlt": "Tesla footage of Full Self-Driving Supervised",
+      "diagramTitle": "Three layers, one vehicle",
+      "diagramNote": "Conceptual illustration · camera views are schematic · not Tesla’s software architecture",
+      "legend": [
+        "Vehicle hardware",
+        "Installed software",
+        "Regional availability"
       ],
-      "sections":[{"title":"Read a version comparison correctly","text":"The table separates hardware, FSD version and vehicle build. Different values are highlighted so you can see what actually changed. It reports the site tracker’s snapshot; it does not certify eligibility for a particular VIN."},{"title":"Use your car as the final check","text":"The useful question is what is installed, enabled and supported on your vehicle. Use its software screen, release notes and owner’s manual alongside the tracker. The diagram deliberately makes no claim about Tesla’s internal neural-network design."}],
-      "misconceptions":[{"title":"A shared name does not mean a shared release","text":"Two cars can show the FSD brand while running different software branches or having different supported features."},{"title":"Supervised is a meaningful requirement","text":"The driver must remain attentive. A polished route demonstration does not establish that a consumer car can operate without supervision."}],
-      "glossary":[{"term":"HW3 / HW4 (AI4)","text":"Common hardware-generation labels used by the site’s tracker."},{"term":"Vehicle build","text":"The installed vehicle-software identifier, distinct from an FSD version label."},{"term":"Rollout","text":"The process of making a software release available to eligible vehicles over time."}],
-      "sources":[{"id":"tesla-fsd","title":"Tesla Support · Full Self-Driving (Supervised)","url":"https://www.tesla.com/support/fsd","note":"Supervision requirement and the factors that affect feature availability."},{"id":"nhtsa","title":"NHTSA · Driver assistance technologies","url":"https://www.nhtsa.gov/vehicle-safety/driver-assistance-technologies","note":"Independent definitions of driver assistance and driver responsibilities."},{"id":"tracker","title":"Supercharged Daily · Global FSD tracker","url":"/fsd.html#versions","note":"Maintained reported version/build/region snapshot used by this lesson’s comparison. Not Tesla’s official rollout list."}],
-      "related":[{"title":"Open the software update tracker","url":"/updates.html","text":"Check current reported builds and rollout samples."},{"title":"Set up My Tesla","url":"/my-tesla.html","text":"Explore the information relevant to your vehicle."}]
+      "stages": [
+        {
+          "title": "Start with the vehicle",
+          "text": "A model name alone does not identify its complete configuration. Build date, equipment and the information shown in the vehicle are better starting points than another owner’s video."
+        },
+        {
+          "title": "Identify the hardware",
+          "text": "Hardware generations describe the vehicle’s computing and camera configuration. A newer software announcement should not be read as a promise that every hardware generation receives the same features."
+        },
+        {
+          "title": "Check the installed software",
+          "text": "The vehicle software build and the FSD version are different labels. Record both when comparing release notes. A reported build in a sample is not confirmation that your car has received it."
+        },
+        {
+          "title": "Check the region and entitlement",
+          "text": "Tesla says availability can depend on configuration, hardware, software, region, model and model year. A release in one market does not establish availability in another.",
+          "source": "tesla-fsd"
+        },
+        {
+          "title": "Keep the driver in the loop",
+          "text": "Tesla describes these features as supervised driver assistance. They do not replace the driver or make the consumer vehicle autonomous. Review the instructions for your particular car.",
+          "source": "tesla-fsd"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Read a version comparison correctly",
+          "text": "The table separates hardware, FSD version and vehicle build. Different values are highlighted so you can see what actually changed. It reports the site tracker’s snapshot; it does not certify eligibility for a particular VIN."
+        },
+        {
+          "title": "Use your car as the final check",
+          "text": "The useful question is what is installed, enabled and supported on your vehicle. Use its software screen, release notes and owner’s manual alongside the tracker. The diagram deliberately makes no claim about Tesla’s internal neural-network design."
+        }
+      ],
+      "misconceptions": [
+        {
+          "title": "A shared name does not mean a shared release",
+          "text": "Two cars can show the FSD brand while running different software branches or having different supported features."
+        },
+        {
+          "title": "Supervised is a meaningful requirement",
+          "text": "The driver must remain attentive. A polished route demonstration does not establish that a consumer car can operate without supervision."
+        }
+      ],
+      "glossary": [
+        {
+          "term": "HW3 / HW4 (AI4)",
+          "text": "Common hardware-generation labels used by the site’s tracker."
+        },
+        {
+          "term": "Vehicle build",
+          "text": "The installed vehicle-software identifier, distinct from an FSD version label."
+        },
+        {
+          "term": "Rollout",
+          "text": "The process of making a software release available to eligible vehicles over time."
+        },
+        {
+          "term": "Entitlement",
+          "text": "The package, subscription or other access active for a vehicle."
+        },
+        {
+          "term": "Calibration",
+          "text": "Establishing the camera-system geometry needed by relevant functions."
+        },
+        {
+          "term": "Exposure",
+          "text": "The amount of driving or other opportunity over which outcomes are counted."
+        }
+      ],
+      "sources": [
+        {
+          "id": "tesla-fsd",
+          "title": "Tesla Support · Full Self-Driving (Supervised)",
+          "url": "https://www.tesla.com/support/fsd",
+          "note": "Supervision requirement and the factors that affect feature availability."
+        },
+        {
+          "id": "nhtsa",
+          "title": "NHTSA · Driver assistance technologies",
+          "url": "https://www.nhtsa.gov/vehicle-safety/driver-assistance-technologies",
+          "note": "Independent definitions of driver assistance and driver responsibilities."
+        },
+        {
+          "id": "tracker",
+          "title": "Supercharged Daily · Global FSD tracker",
+          "url": "/fsd.html#versions",
+          "note": "Maintained reported version/build/region snapshot used by this lesson’s comparison. Not Tesla’s official rollout list."
+        },
+        {
+          "id": "computer",
+          "title": "Tesla Support · AI computer installations",
+          "url": "https://www.tesla.com/support/ai-computer",
+          "note": "Where to identify installed computer hardware. Upgrade eligibility is specific to the programme described, not a blanket HW3-to-HW4 promise."
+        },
+        {
+          "id": "fsd-manual",
+          "title": "Tesla Model Y · Full Self-Driving (Supervised)",
+          "url": "https://www.tesla.com/ownersmanual/modely/en_us/GUID-2CB60804-9CEA-4F4B-8B04-09B991368DC5.html",
+          "note": "US Model Y chapter: camera input, neural-network processing, driver attentiveness and model/market conditions."
+        },
+        {
+          "id": "cameras",
+          "title": "Tesla Model Y · Cameras",
+          "url": "https://www.tesla.com/ownersmanual/modely/en_us/GUID-682FF4A7-D083-4C95-925A-5EE3752F4865.html",
+          "note": "Camera positions, calibration and visibility limitations for this manual’s vehicle configuration."
+        },
+        {
+          "id": "updates",
+          "title": "Tesla Support · Software updates",
+          "url": "https://www.tesla.com/support/software-updates",
+          "note": "Rolling availability and the effect of Standard/Advanced preferences."
+        },
+        {
+          "id": "update-manual",
+          "title": "Tesla Model Y · Software updates",
+          "url": "https://www.tesla.com/ownersmanual/modely/en_us/GUID-A5A60CB3-7659-4B08-B2FD-AFD12C2D6EE1.html",
+          "note": "Download versus installation, release notes and the limits of the Advanced preference."
+        },
+        {
+          "id": "calibration",
+          "title": "Tesla Model Y DIY · Calibrating cameras",
+          "url": "https://service.tesla.com/docs/Public/diy/modely/en_us/GUID-D6F7D1BC-193D-4A2E-99B0-E3BA3D41BDE2.html",
+          "note": "Typical calibration distance and the conditions that affect it. Follow the instructions for the specific vehicle."
+        }
+      ],
+      "related": [
+        {
+          "title": "Open the software update tracker",
+          "url": "/updates.html",
+          "text": "Check current reported builds and rollout samples."
+        },
+        {
+          "title": "Set up My Tesla",
+          "url": "/my-tesla.html",
+          "text": "Explore the information relevant to your vehicle."
+        }
+      ],
+      "facts": [
+        {
+          "value": "8",
+          "label": "Road-facing cameras in the cited Model Y chapter",
+          "note": "Counted from the listed positions for that configuration; the cabin camera is separate. Other vehicles may differ.",
+          "sources": [
+            "cameras"
+          ]
+        },
+        {
+          "value": "32–40 km",
+          "label": "Typical Model Y camera-calibration distance",
+          "note": "Tesla gives 20–25 miles; conditions can change the distance. This is not a universal maximum.",
+          "sources": [
+            "calibration"
+          ]
+        },
+        {
+          "value": "5 checks",
+          "label": "Before comparing two vehicles",
+          "note": "Hardware, build, FSD version, entitlement and region. Use the car’s own information first.",
+          "sources": [
+            "computer",
+            "tesla-fsd"
+          ]
+        }
+      ],
+      "deepDive": [
+        {
+          "id": "system-pipeline",
+          "title": "1. From camera images to vehicle control",
+          "paragraphs": [
+            {
+              "text": "Tesla’s Model Y manual describes cameras around the vehicle feeding a model of the surrounding area. It says the installed AI computer processes neural networks and makes driving decisions. Those are the documented ingredients. The three-layer diagram above separates hardware, installed software and regional availability; it is not a schematic of the proprietary network layers or a claim about how many networks a given release contains.",
+              "sources": [
+                "fsd-manual"
+              ],
+              "kind": "Documented mechanism"
+            },
+            {
+              "text": "As a general engineering model, an assisted-driving system must connect sensing to a representation of the scene, a choice of motion and commands to the vehicle. Errors can arise at each boundary: an object may be obscured, its motion may be uncertain, or a planned manoeuvre may become unsuitable as traffic changes. This model helps explain limitations without pretending Tesla has published a fixed perception/planning/control architecture for every release.",
+              "sources": [],
+              "kind": "Engineering model"
+            }
+          ]
+        },
+        {
+          "id": "hardware-identity",
+          "title": "2. Hardware is a physical configuration",
+          "paragraphs": [
+            {
+              "text": "Identify the installed computer through the touchscreen rather than relying on model year or the appearance of a camera lens. Tesla’s support instructions point to Controls, Software and Additional Vehicle Information. Its computer-upgrade page describes a particular 2.0/2.5-to-3.0 programme; that is not documentation of universal eligibility for a different retrofit. Hardware labels in the tracker should be read alongside the vehicle’s own configuration.",
+              "sources": [
+                "computer"
+              ],
+              "kind": "Owner check"
+            },
+            {
+              "text": "The engineering reason hardware matters is that running a model has finite memory, computing, thermal and input/output requirements. A software update can change what is computed, but it does not physically add a new camera or replace a processor. That general constraint does not establish which future Tesla release can run on which vehicle. Claims about memory bandwidth, chip performance or upgrade dates need a specific primary specification or dated announcement; a hardware number is not enough to infer them.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "version-labels",
+          "title": "3. Build numbers are not capability scores",
+          "paragraphs": [
+            {
+              "text": "A vehicle build identifies an installed software package. An FSD version identifies a driving-software release. Trackers may report both, along with hardware and market. Treat the values as labels to match with release notes, rather than decimal numbers: a version string is not a measurement of intelligence, and a larger-looking suffix does not prove that every feature is newer or available on every branch.",
+              "sources": [
+                "tracker"
+              ],
+              "kind": "How to read tracker data"
+            },
+            {
+              "text": "A useful comparison keeps five fields together: computer hardware, vehicle build, FSD version, entitlement and region. If one is missing, say so. The table in this lesson shows reported branches from the maintained tracker; it deliberately does not invent a yes/no capability matrix from version names. Its snapshot date records the data, while the reference-review date records when the explanation was checked.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ],
+          "table": {
+            "caption": "Five fields that make a comparison meaningful",
+            "headers": [
+              "Field",
+              "Question it answers",
+              "Mistake to avoid"
+            ],
+            "rows": [
+              [
+                "Hardware",
+                "Which computer/configuration is installed?",
+                "Inferring the computer from model name alone"
+              ],
+              [
+                "Vehicle build",
+                "Which vehicle-software package is installed?",
+                "Treating a build as the FSD feature version"
+              ],
+              [
+                "FSD version",
+                "Which reported driving release is present?",
+                "Reading a version label as a safety score"
+              ],
+              [
+                "Entitlement",
+                "Which package or access is active?",
+                "Equating a software file with permission to use it"
+              ],
+              [
+                "Region",
+                "Which market and local feature conditions apply?",
+                "Assuming another country’s release applies locally"
+              ]
+            ],
+            "sources": [
+              "computer",
+              "tesla-fsd",
+              "tracker"
+            ]
+          }
+        },
+        {
+          "id": "rollout-install",
+          "title": "4. A rollout is a distribution process",
+          "paragraphs": [
+            {
+              "text": "Tesla says updates arrive on a rolling basis. Two apparently similar cars can therefore be on different builds at the same time. Advanced requests updates as they become available for that configuration and region; it is not a promise of immediate access to every new release. A tracker’s first observation establishes that a sample received a build, not that an entire fleet is eligible.",
+              "sources": [
+                "updates"
+              ],
+              "kind": "Documented behaviour"
+            },
+            {
+              "text": "Download and installation are separate states. The Model Y manual says software can download before installation, and the car cannot be driven while installation is taking place. It also says Advanced does not enrol the vehicle in the early-access programme. After installation, read the release notes on the car: they describe that installed package and may contain feature-specific instructions.",
+              "sources": [
+                "update-manual"
+              ],
+              "kind": "Owner check"
+            },
+            {
+              "text": "This explains a common apparent contradiction: a website can correctly report a release while your car correctly reports that it is up to date. Those statements concern different scopes. The useful next step is to identify the installed build and review official availability information, rather than treating a sample count or an enthusiastic owner post as an update guarantee.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "visibility-calibration",
+          "title": "5. Calibration and visibility are part of the system",
+          "paragraphs": [
+            {
+              "kind": "Vehicle-specific fact",
+              "text": "The cited US Model Y chapter lists a front-bumper camera, a rear camera, one in each door pillar, two at the windshield and one on each front fender: eight road-facing cameras in that configuration. The cabin camera is separate. This inventory belongs to that manual, rather than every Tesla carrying an HW4 label.",
+              "sources": [
+                "cameras"
+              ]
+            },
+            {
+              "text": "The US Model Y camera chapter gives a typical calibration distance of 20–25 miles, or 32–40 kilometres, while noting that conditions change the result. It describes calibration as necessary before certain assistance and active-safety functions can first become available, and after some service work. A progress indicator is evidence about calibration status; it is not a general confidence score for every future driving situation.",
+              "sources": [
+                "calibration"
+              ],
+              "kind": "Vehicle-specific fact"
+            },
+            {
+              "text": "Visibility matters after calibration too. The manual identifies obstructions and environmental conditions as performance limits. A clear lens cannot reveal something hidden behind another vehicle, and an illustration of a camera cone is not a certified coverage envelope. Separate a dirty or blocked camera, incomplete calibration and an ambiguous traffic scene when diagnosing a limitation: they describe different causes, even if the driver ultimately has to take over.",
+              "sources": [
+                "cameras"
+              ],
+              "kind": "Explanation"
+            },
+            {
+              "text": "The cabin-facing camera has a different job from road-facing cameras. Tesla’s FSD chapter describes it monitoring driver attentiveness while supervised driving is engaged. Watching the driver does not remove the driver’s responsibility to watch the road. Use the manual for the exact configuration and region; assistance naming and available controls can change with software.",
+              "sources": [
+                "fsd-manual"
+              ],
+              "kind": "Explanation"
+            }
+          ],
+          "visual": "cameras"
+        },
+        {
+          "id": "evidence-quality",
+          "title": "6. What a driving demonstration can prove",
+          "paragraphs": [
+            {
+              "text": "A route video can document one journey under particular conditions. It does not, without a denominator and a test protocol, establish the probability of a safe outcome across weather, road layouts and interventions. To compare two demonstrations, ask whether the route, traffic, driver input, hardware, software and editing are comparable. A montage of smooth turns is different evidence from an independently specified test.",
+              "sources": [],
+              "kind": "Explanation"
+            },
+            {
+              "text": "NHTSA distinguishes momentary warnings/interventions from continuous assistance. A system that performs steering and speed control while the human remains responsible belongs to a different category from a vehicle that can operate without that human role. Tesla’s consumer FSD support material continues to require active supervision. Automation terminology should describe the responsibility and operating conditions, not how impressive a single manoeuvre looks.",
+              "sources": [
+                "nhtsa",
+                "tesla-fsd"
+              ],
+              "kind": "Responsibility and scope"
+            },
+            {
+              "text": "For a feature claim, prefer the car’s release notes and manual, then a dated official announcement with its hardware and region. Owner reports are useful observations when labelled as such. They can establish that a particular owner reported an event; they cannot automatically establish a universal rollout, an internal design detail or a future upgrade commitment. This is why the lesson connects to the live tracker instead of freezing a list of promises into the artwork.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "title": "Does Advanced make the car eligible for every FSD release?",
+          "text": "No. It affects update preference for releases ready for the vehicle. Configuration, region and other eligibility conditions still apply, and Advanced is not Tesla’s early-access programme."
+        },
+        {
+          "title": "Can the same vehicle build contain different available features?",
+          "text": "A build label alone does not describe hardware, entitlement or regional availability. Compare all five fields and the car’s release notes."
+        },
+        {
+          "title": "Why not publish processor-performance ratios here?",
+          "text": "A defensible ratio needs a specified metric, workload, hardware and primary source. Peak compute figures, memory bandwidth and real driving capability are different measurements."
+        }
+      ]
     },
     {
-      "id":"evasion", "slug":"collision-evasion", "legacy":"evasion", "topic":"tesla", "category":"Tesla · Active safety", "minutes":4,
-      "title":"Understanding Collision Evasion", "card":"A warning is not the same as an intervention.",
-      "summary":"An overhead visual guide to a developing hazard, driver warnings and possible braking assistance, with the limits kept clear.",
-      "answer":"Collision-assistance functions can warn or intervene in particular situations. Warning, emergency braking and engaging FSD are different behaviours; the name of one should not be used as evidence for another.",
-      "intro":"This lesson explains the documented safety functions behind a hazard-response sequence. It does not certify a release-specific FSD re-engagement feature for any hardware or region.",
-      "image":"/assets/dispatch/fsd-15-billion-miles-poster.jpg", "imageAlt":"Tesla driver-assistance footage; not a collision test",
-      "diagramTitle":"Read the response, understand the limit", "diagramNote":"Illustrative scenario · not a crash test, stopping-distance model or guaranteed sequence",
-      "legend":["Vehicle and path of travel", "Developing hazard", "Possible warning or braking response"],
-      "stages":[
-        {"title":"A hazard develops","text":"The overhead view shows a vehicle ahead in the path of travel. Positions are illustrative. No distance, speed or time-to-collision should be inferred from this drawing."},
-        {"title":"Detection has limits","text":"Cameras and environmental conditions affect what a system can detect. The shaded area is a visual aid, not a specification of sensor coverage or guaranteed detection."},
-        {"title":"A warning may be issued","text":"Tesla describes Forward Collision Warning as a visual and audible alert. That warning is distinct from a braking command. The driver remains responsible for responding.","source":"manual"},
-        {"title":"Braking assistance may intervene","text":"Automatic Emergency Braking is a separate function that may reduce speed in certain collision situations. Its behaviour has conditions and limitations; the illustration does not show a guaranteed stop.","source":"manual"},
-        {"title":"The driver remains responsible","text":"Do not rely on an assistance system to detect every hazard or prevent a crash. Use the instructions and limitations in your vehicle’s manual, including the requirements for any supervised driving feature.","source":"nhtsa"}
+      "id": "evasion",
+      "slug": "collision-evasion",
+      "legacy": "evasion",
+      "topic": "tesla",
+      "category": "Tesla · Active safety",
+      "minutes": 8,
+      "title": "Understanding Collision Evasion",
+      "card": "A warning is not the same as an intervention.",
+      "summary": "An overhead visual guide to a developing hazard, driver warnings and possible braking assistance, with the limits kept clear.",
+      "answer": "Collision-assistance functions can warn or intervene in particular situations. Warning, emergency braking and engaging FSD are different behaviours; the name of one should not be used as evidence for another.",
+      "intro": "Go beyond the animation: distinguish the functions, work through the physics of delay and braking, and read independent crash research with its scope intact. A release-specific Collision Evasion claim still needs the exact release notes for the vehicle, hardware and region.",
+      "image": "/assets/dispatch/fsd-15-billion-miles-poster.jpg",
+      "imageAlt": "Tesla driver-assistance footage; not a collision test",
+      "diagramTitle": "Read the response, understand the limit",
+      "diagramNote": "Illustrative scenario · not a crash test, stopping-distance model or guaranteed sequence",
+      "legend": [
+        "Vehicle and path of travel",
+        "Developing hazard",
+        "Possible warning or braking response"
       ],
-      "sections":[{"title":"Keep the feature names separate","text":"An emergency-braking feature is not proof that FSD will engage or re-engage. For a release carrying a Collision Evasion label, check its exact notes, supported hardware and region in the current software tracker."},{"title":"Why this diagram has no success score","text":"A successful-looking animation cannot establish real-world avoidance performance. This sequence teaches the distinction between a hazard, a warning and a possible intervention. It is not an instruction to test the system."}],
-      "misconceptions":[{"title":"A warning does not promise braking","text":"Treat the alert and an automatic intervention as separate functions with their own conditions."},{"title":"A demonstration does not establish availability","text":"A clip from another car or market does not confirm a particular feature for your vehicle."}],
-      "glossary":[{"term":"Forward Collision Warning","text":"An alert about a possible collision risk; distinct from automatic braking."},{"term":"Automatic Emergency Braking","text":"A function that may apply braking in defined conditions to reduce impact severity."},{"term":"Active safety","text":"Assistance intended to help avoid or mitigate incidents while the driver remains responsible."}],
-      "sources":[{"id":"manual","title":"Tesla Model Y Owner’s Manual · Collision Avoidance Assist","url":"https://www.tesla.com/ownersmanual/modely/en_us/GUID-8EA7EF10-7D27-42AC-A31A-96BCE5BC0A85.html","note":"Definitions and limitations of warning and braking functions. Consult the manual for your own model and region."},{"id":"nhtsa","title":"NHTSA · Driver assistance technologies","url":"https://www.nhtsa.gov/vehicle-safety/driver-assistance-technologies","note":"Distinction between warnings, braking assistance and driver responsibility."},{"id":"releases","title":"Supercharged Daily · Software update tracker","url":"/updates.html","note":"Check the exact release and its source notes for any release-specific Collision Evasion claim."}],
-      "related":[{"title":"Why FSD differs between cars","url":"/explainers/fsd.html","text":"Separate hardware, software and regional availability."},{"title":"Read the current release notes","url":"/updates.html","text":"Check the source behind a feature claim."}]
+      "stages": [
+        {
+          "title": "A hazard develops",
+          "text": "The overhead view shows a vehicle ahead in the path of travel. Positions are illustrative. No distance, speed or time-to-collision should be inferred from this drawing."
+        },
+        {
+          "title": "Detection has limits",
+          "text": "Cameras and environmental conditions affect what a system can detect. The shaded area is a visual aid, not a specification of sensor coverage or guaranteed detection."
+        },
+        {
+          "title": "A warning may be issued",
+          "text": "Tesla describes Forward Collision Warning as a visual and audible alert. That warning is distinct from a braking command. The driver remains responsible for responding.",
+          "source": "manual"
+        },
+        {
+          "title": "Braking assistance may intervene",
+          "text": "Automatic Emergency Braking is a separate function that may reduce speed in certain collision situations. Its behaviour has conditions and limitations; the illustration does not show a guaranteed stop.",
+          "source": "manual"
+        },
+        {
+          "title": "The driver remains responsible",
+          "text": "Do not rely on an assistance system to detect every hazard or prevent a crash. Use the instructions and limitations in your vehicle’s manual, including the requirements for any supervised driving feature.",
+          "source": "nhtsa"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Keep the feature names separate",
+          "text": "An emergency-braking feature is not proof that FSD will engage or re-engage. For a release carrying a Collision Evasion label, check its exact notes, supported hardware and region in the current software tracker."
+        },
+        {
+          "title": "Why this diagram has no success score",
+          "text": "A successful-looking animation cannot establish real-world avoidance performance. This sequence teaches the distinction between a hazard, a warning and a possible intervention. It is not an instruction to test the system."
+        }
+      ],
+      "misconceptions": [
+        {
+          "title": "A warning does not promise braking",
+          "text": "Treat the alert and an automatic intervention as separate functions with their own conditions."
+        },
+        {
+          "title": "A demonstration does not establish availability",
+          "text": "A clip from another car or market does not confirm a particular feature for your vehicle."
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Forward Collision Warning",
+          "text": "An alert about a possible collision risk; distinct from automatic braking."
+        },
+        {
+          "term": "Automatic Emergency Braking",
+          "text": "A function that may apply braking in defined conditions to reduce impact severity."
+        },
+        {
+          "term": "Active safety",
+          "text": "Assistance intended to help avoid or mitigate incidents while the driver remains responsible."
+        },
+        {
+          "term": "Closing speed",
+          "text": "The rate at which the gap to another object decreases."
+        },
+        {
+          "term": "Time to contact",
+          "text": "A prediction from assumed relative motion, not a guaranteed outcome."
+        },
+        {
+          "term": "Relative reduction",
+          "text": "A change compared with a baseline rate; distinct from an individual success probability."
+        }
+      ],
+      "sources": [
+        {
+          "id": "manual",
+          "title": "Tesla Model Y Owner’s Manual · Collision Avoidance Assist",
+          "url": "https://www.tesla.com/ownersmanual/modely/en_us/GUID-8EA7EF10-7D27-42AC-A31A-96BCE5BC0A85.html",
+          "note": "Definitions and limitations of warning and braking functions. Consult the manual for your own model and region."
+        },
+        {
+          "id": "nhtsa",
+          "title": "NHTSA · Driver assistance technologies",
+          "url": "https://www.nhtsa.gov/vehicle-safety/driver-assistance-technologies",
+          "note": "Distinction between warnings, braking assistance and driver responsibility."
+        },
+        {
+          "id": "releases",
+          "title": "Supercharged Daily · Software update tracker",
+          "url": "/updates.html",
+          "note": "Check the exact release and its source notes for any release-specific Collision Evasion claim."
+        },
+        {
+          "id": "iihs-effectiveness",
+          "title": "IIHS · Cicchino 2017: front-to-rear crash rates",
+          "url": "https://www.iihs.org/research-areas/bibliography/ref/2111",
+          "note": "Primary research abstract: 22 US states, 2010–2014 police-reported crashes; system-specific estimated reductions, not a Tesla FSD evaluation."
+        },
+        {
+          "id": "iihs-limits",
+          "title": "IIHS · Cicchino and Zuby 2019: remaining AEB crashes",
+          "url": "https://www.iihs.org/research-areas/bibliography/ref/2177",
+          "note": "Primary study identifying crash circumstances overrepresented among vehicles equipped with AEB."
+        },
+        {
+          "id": "stopping",
+          "title": "Rhode Island DMV · Stopping your vehicle",
+          "url": "https://dmv.ri.gov/node/1156",
+          "note": "Separates perception/reaction travel from braking distance and explains the role of road traction."
+        },
+        {
+          "id": "cameras",
+          "title": "Tesla Model Y · Cameras",
+          "url": "https://www.tesla.com/ownersmanual/modely/en_us/GUID-682FF4A7-D083-4C95-925A-5EE3752F4865.html",
+          "note": "Visibility and calibration context for the configuration covered by this manual."
+        }
+      ],
+      "related": [
+        {
+          "title": "Why FSD differs between cars",
+          "url": "/explainers/fsd.html",
+          "text": "Separate hardware, software and regional availability."
+        },
+        {
+          "title": "Read the current release notes",
+          "url": "/updates.html",
+          "text": "Check the source behind a feature claim."
+        }
+      ],
+      "facts": [
+        {
+          "value": "27% / 50%",
+          "label": "Estimated rear-end crash reductions",
+          "note": "IIHS’s 2017 study reported 27% for warning alone and 50% for warning plus AEB. Historical study vehicles, not a Tesla-specific result.",
+          "sources": [
+            "iihs-effectiveness"
+          ]
+        },
+        {
+          "value": "16.7 m",
+          "label": "Travel in one second at 60 km/h",
+          "note": "Unit conversion: 60 ÷ 3.6 × 1. This is distance before any change of speed, not a Tesla reaction-time claim.",
+          "sources": []
+        },
+        {
+          "value": "≈5–200 km/h",
+          "label": "Range listed in the US Model Y manual",
+          "note": "The chapter lists this approximate operating range for FCW and AEB. Being within it does not guarantee detection or intervention.",
+          "sources": [
+            "manual"
+          ]
+        }
+      ],
+      "deepDive": [
+        {
+          "id": "functions",
+          "title": "1. Three different kinds of intervention",
+          "paragraphs": [
+            {
+              "text": "A warning informs the driver. Braking assistance changes vehicle speed. Steering assistance changes the path. NHTSA distinguishes these functions even when several appear in the same car. A dashboard message, a brake-pedal movement and a steering input are therefore different evidence. Recording which occurred is more useful than calling every response “self-driving”.",
+              "sources": [
+                "nhtsa"
+              ],
+              "kind": "Documented distinction"
+            },
+            {
+              "text": "Tesla’s Collision Avoidance Assist chapter separately describes Forward Collision Warning, Automatic Emergency Braking and Obstacle-Aware Acceleration. The last can reduce acceleration near a detected obstacle; it is not interchangeable with emergency braking. The same chapter’s approximate 5–200 km/h FCW/AEB operating range belongs to the specified US Model Y manual. It is not a guarantee for every model, direction of travel, software release or road condition.",
+              "sources": [
+                "manual"
+              ],
+              "kind": "Vehicle-specific fact"
+            }
+          ],
+          "table": {
+            "caption": "Ask what the function actually does",
+            "headers": [
+              "Function",
+              "Observable behaviour",
+              "What that alone does not establish"
+            ],
+            "rows": [
+              [
+                "Collision warning",
+                "Visual or audible alert",
+                "That the brakes were applied"
+              ],
+              [
+                "Automatic braking",
+                "System applies or supplements braking",
+                "That FSD became engaged"
+              ],
+              [
+                "Obstacle-aware acceleration",
+                "Reduction in acceleration",
+                "A guaranteed stop"
+              ],
+              [
+                "Supervised driving engagement",
+                "Driving mode indicates engagement",
+                "Universal availability of emergency re-engagement"
+              ]
+            ],
+            "sources": [
+              "manual",
+              "nhtsa"
+            ]
+          }
+        },
+        {
+          "id": "closing-speed",
+          "title": "2. Closing speed is different from road speed",
+          "paragraphs": [
+            {
+              "text": "Suppose two vehicles are travelling in the same direction. In a simplified constant-speed model, closing speed is the following vehicle’s speed minus the lead vehicle’s speed. If a follower is at 60 km/h and the vehicle ahead is at 40 km/h, the gap is shrinking at 20 km/h, or about 5.56 m/s. With a 20-metre gap, the constant-speed time to contact is about 3.6 seconds. These are hypothetical inputs, not a detection or activation threshold.",
+              "sources": [],
+              "kind": "Worked example"
+            },
+            {
+              "text": "Change the lead vehicle to a stationary object and the same follower closes at 16.67 m/s. At a 20-metre gap, the constant-speed time becomes about 1.2 seconds. Neither number predicts what a particular assistance system will do. Braking by either vehicle, a cut-in or a curved path changes the calculation. This is why a single speedometer reading cannot describe the complete collision problem.",
+              "sources": [],
+              "kind": "Explanation"
+            },
+            {
+              "text": "Time to contact is a model, not a certainty. It depends on the assumption that relative motion continues as estimated. A real system must also decide whether an object is in the relevant path, whether its motion estimate is reliable and what intervention is appropriate. That conceptual chain explains why detecting something in an image and deciding to brake are separate tasks.",
+              "sources": [],
+              "kind": "Engineering model"
+            }
+          ]
+        },
+        {
+          "id": "distance-physics",
+          "title": "3. Delay and braking consume different distances",
+          "paragraphs": [
+            {
+              "text": "Stopping distance includes travel before braking begins and travel while speed is being reduced. Rhode Island’s driver guidance separates perception, reaction and braking, and notes that traction changes braking distance. Assistance may change parts of the response, but it does not remove the physical distance required to slow the vehicle.",
+              "sources": [
+                "stopping"
+              ],
+              "kind": "Physics context"
+            },
+            {
+              "text": "For an educational constant-deceleration model, distance = v × t + v²/(2a). Here v is initial speed in m/s, t an assumed delay in seconds and a a positive constant braking deceleration in m/s². The first term grows directly with speed; the second grows with its square. Doubling speed therefore doubles the delay distance and quadruples the braking distance when the assumptions stay the same.",
+              "sources": [],
+              "kind": "Worked example"
+            },
+            {
+              "text": "The chart assumes a one-second delay and 6 m/s² constant deceleration on a straight, level path. It omits tyre variation, grade, brake build-up, changing friction and a moving target. At 60 km/h, delay travel is 16.7 metres and modelled braking travel is 23.1 metres, totalling 39.8 metres. These are arithmetic results from chosen inputs, not measured Tesla stopping distances, safe following gaps or AEB performance specifications.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ],
+          "visual": "braking",
+          "math": {
+            "title": "An assumption-led calculation",
+            "formula": "d = v × t + v²/(2a)",
+            "terms": [
+              "v = speed ÷ 3.6, converting km/h to m/s",
+              "t = 1 second, chosen delay",
+              "a = 6 m/s², chosen constant deceleration"
+            ],
+            "note": "Educational model only. A real collision-assistance system has different, situation-dependent timing and braking. Do not use the result to plan a following distance or test the car.",
+            "sources": [
+              "stopping"
+            ]
+          }
+        },
+        {
+          "id": "research",
+          "title": "4. What independent crash research actually found",
+          "paragraphs": [
+            {
+              "text": "Jessica Cicchino’s 2017 IIHS study compared police-reported crashes in 22 US states during 2010–2014. It estimated rear-end striking-crash reductions of 27% for forward collision warning alone, 43% for low-speed AEB and 50% for warning with AEB. The corresponding injury-crash reductions were 20%, 45% and 56%. These describe the studied systems and populations, not Tesla’s current FSD or a Collision Evasion release.",
+              "sources": [
+                "iihs-effectiveness"
+              ],
+              "kind": "Primary research"
+            },
+            {
+              "text": "Those percentages are relative reductions in crash-involvement rates, not a guarantee that an individual intervention succeeds. The population, exposure measure, comparison group and crash definition matter. A result for rear-end crashes should not be relabelled as a result for all crashes, pedestrian incidents or autonomous driving.",
+              "sources": [],
+              "kind": "Explanation"
+            },
+            {
+              "text": "A 2019 IIHS study examined the rear-end crashes that remained. Turning, lane-changing lead vehicles, unusual vehicle types, snowy/icy roads and higher-speed roads were among the circumstances overrepresented in crashes involving AEB-equipped striking vehicles. The finding motivates broader testing. It does not imply AEB causes every crash in those circumstances or gives an individual Tesla a numerical failure probability.",
+              "sources": [
+                "iihs-limits"
+              ],
+              "kind": "Primary research"
+            }
+          ]
+        },
+        {
+          "id": "uncertainty",
+          "title": "5. Why false alerts and missed hazards both matter",
+          "paragraphs": [
+            {
+              "text": "A system must act on incomplete observations while the scene changes. Triggering too readily can create unwanted interventions; triggering too late can leave less distance to respond. This is a general detection-and-control trade-off, not a claim about Tesla’s internal confidence thresholds. A chart of visible camera coverage would not solve it: seeing an object does not establish its future path or whether an intervention is appropriate.",
+              "sources": [],
+              "kind": "Engineering model"
+            },
+            {
+              "text": "The Model Y camera chapter identifies obstructions and visibility conditions as performance concerns. Clean lenses and calibration address prerequisites, not every ambiguity. Separate sensing from stopping physics: better braking cannot compensate for every missed observation.",
+              "sources": [
+                "cameras"
+              ],
+              "kind": "Explanation"
+            },
+            {
+              "text": "A useful incident record includes the vehicle, installed build, feature settings, conditions, displayed message and available unedited footage. Avoid guessing whether a visible slowing was a driver input or an automated action. Without the relevant evidence, an honest account can describe the observation while leaving the mechanism unresolved.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        },
+        {
+          "id": "release-evidence",
+          "title": "6. Where release-specific Collision Evasion fits",
+          "paragraphs": [
+            {
+              "text": "The label Collision Evasion should be tied to the exact software release and its own description. It must not inherit every property of FCW, AEB or supervised driving merely because those functions share a vehicle. Likewise, the absence of that label in one public manual is not proof that no release contains additional behaviour. The correct question is which documented behaviour applies to which configuration.",
+              "sources": [],
+              "kind": "Explanation"
+            },
+            {
+              "text": "For an automatic-engagement claim, look for the release identifier, supported hardware, market, prerequisites, operating conditions and instructions for driver control. A social clip can be an observation; a complete primary release note is stronger evidence for the intended feature conditions. This review did not establish an accessible exact primary release note covering every re-engagement claim, so the guide does not turn secondary descriptions into operating instructions.",
+              "sources": [],
+              "kind": "Explanation"
+            },
+            {
+              "text": "Use the linked software tracker for current reports, then confirm the installed car’s own release notes and manual. A comprehensive explanation should make uncertainty specific: what is documented, what is calculated and what remains unverified. It should neither promise a rescue manoeuvre nor dismiss a reported feature simply because the name resembles an older safety function.",
+              "sources": [],
+              "kind": "Explanation"
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "title": "Does the IIHS 50% result measure Tesla’s Collision Evasion?",
+          "text": "No. It is a historical estimate for rear-end striking crashes among systems and vehicles in the 2017 study. It is not a Tesla-specific score or a current software evaluation."
+        },
+        {
+          "title": "Does an operating-speed range guarantee intervention?",
+          "text": "No. A listed range is one operating condition. It does not guarantee detection, braking, avoidance or applicability to another model or market."
+        },
+        {
+          "title": "Why use a hypothetical stopping model?",
+          "text": "It isolates how delay and speed affect distance. Its assumptions are shown so readers can understand the arithmetic without mistaking the result for a vehicle test."
+        }
+      ]
     }
   ]
 }

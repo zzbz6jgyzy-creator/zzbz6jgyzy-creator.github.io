@@ -23,16 +23,16 @@ def svg(name, prefix='scene', cover=False):
     def car(x,y,red=False,scale=1):
         return f'''<g transform="translate({x} {y}) scale({scale})"><rect x="-45" y="-86" width="90" height="172" rx="29" fill="url(#{p}-metal)" stroke="#c5cdd4"/><path d="M-31-37Q0-59 31-37L34 31Q0 46-34 31Z" fill="url(#{p}-glass)" stroke="#728390"/><path d="M-35-62L-18-68M18-68L35-62" stroke="#faf7ea" stroke-width="5"/><path d="M-36 65L-20 72M20 72L36 65" stroke="{'#f65063' if red else '#752b35'}" stroke-width="6"/><path d="M0-28V26" stroke="#60717d"/><rect x="-49" y="-47" width="6" height="30" rx="3" fill="#101318"/><rect x="43" y="-47" width="6" height="30" rx="3" fill="#101318"/><rect x="-49" y="40" width="6" height="30" rx="3" fill="#101318"/><rect x="43" y="40" width="6" height="30" rx="3" fill="#101318"/></g>'''
     if name=='hot-staging':
-        ship=f'''<g data-poses="{poses(['translate(0 0)','translate(0 0)','translate(0 0)','translate(0 -36)','translate(0 -60)'])}">
+        ship=f'''<g data-cold-poses="{poses(['translate(0 0)','translate(0 0)','translate(0 -36)','translate(0 -60)','translate(0 -60)'])}" data-poses="{poses(['translate(0 0)','translate(0 0)','translate(0 0)','translate(0 -36)','translate(0 -60)'])}">
           <path d="M165 200V103Q165 52 207 28Q249 52 249 103V200Z" fill="url(#{p}-metal)" stroke="#c6ced4"/><path d="M169 119L147 139V164L168 150M245 119L267 139V164L246 150" fill="#7e8994" stroke="#bac2ca"/><path d="M169 174L143 194V218L171 205M245 174L271 194V218L243 205" fill="#717c88" stroke="#b4bcc5"/>
           <path d="M181 200L176 213H192L188 200M204 200L199 213H215L211 200M227 200L222 213H238L234 200" fill="#565f69"/>
           <g data-show="2 3 4" data-mode-only="hot">{flame(207,211,55,85)}</g>
           <g data-show="3 4" data-mode-only="cold">{flame(207,211,55,85)}</g>
         </g>'''
-        booster=f'''<g data-poses="{poses(['translate(0 0)','translate(0 0)','translate(0 0)','translate(0 16)','translate(0 35)'])}"><rect x="156" y="222" width="102" height="189" rx="9" fill="url(#{p}-metal)" stroke="#bdc5ce"/>
+        booster=f'''<g data-cold-poses="{poses(['translate(0 0)','translate(0 0)','translate(0 16)','translate(0 35)','translate(0 35)'])}" data-poses="{poses(['translate(0 0)','translate(0 0)','translate(0 0)','translate(0 16)','translate(0 35)'])}"><rect x="156" y="222" width="102" height="189" rx="9" fill="url(#{p}-metal)" stroke="#bdc5ce"/>
           {''.join(f'<path d="M157 {y}H257" stroke="#36414c" stroke-opacity=".7"/>' for y in range(240,405,19))}
           <path d="M156 241L138 248V275L156 268M258 241L276 248V275L258 268" fill="#77828d" stroke="#d0d5d8"/><path d="M165 412L160 428H182L177 412M200 412L195 428H217L212 412M235 412L230 428H252L247 412" fill="#454e59"/>
-          <g data-show="0">{flame(207,427,80,65)}</g></g>'''
+          <g data-show="0">{flame(207,427,80,65)}</g><g data-show="1 2" data-mode-only="hot">{flame(207,427,24,42)}</g></g>'''
         body=f'''{booster}{ship}<rect x="151" y="214" width="112" height="27" rx="5" fill="#21171b" stroke="#e84d62" stroke-width="3"/>
           {''.join(f'<path d="M{x} 218V237" stroke="#e84d62" stroke-width="3"/>' for x in range(163,258,13))}
           <path d="M273 227L386 169" fill="none" stroke="#8c98a5" stroke-dasharray="5 5"/>
@@ -94,6 +94,31 @@ def svg(name, prefix='scene', cover=False):
         visible=(not show or str(initial) in show[1].split()) and (not mode or mode[1]=='hot')
         return tag[:-1]+f' opacity="{1 if visible else 0}">'
     body=re.sub(r'<g\b[^>]*(?:data-show|data-mode-only)=[^>]+>',visibility,body)
-    body=re.sub(r'<g data-poses="([^"]+)">',lambda m:'<g data-poses="'+m[1]+'" transform="'+html.escape(json.loads(html.unescape(m[1]))[initial],quote=True)+'">',body)
+    body=re.sub(r'<g\b([^>]*?)data-poses="([^"]+)"([^>]*)>',lambda m:'<g'+m[1]+'data-poses="'+m[2]+'"'+m[3]+' transform="'+html.escape(json.loads(html.unescape(m[2]))[initial],quote=True)+'">',body)
     titles={'hot-staging':'Starship and an enlarged hot-staging joint','catch':'Booster return alignment, shown from the side and above','fsd':'Vehicle hardware, installed software and regional availability','evasion':'A developing road hazard and distinct warning and assistance functions'}
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-labelledby="{p}-title {p}-desc"><title id="{p}-title">{titles[name]}</title><desc id="{p}-desc">Original educational schematic. Explanatory labels and a text description accompany the illustration. Not to scale.</desc>{defs}<rect width="720" height="480" rx="20" fill="#0b1119"/><rect width="720" height="480" rx="20" fill="url(#{p}-grid)"/>{body}</svg>'
+
+def detail_svg(name,prefix):
+    """Static companion figures; the adjacent HTML supplies data and interpretation."""
+    esc=html.escape
+    defs=f'<defs><marker id="{prefix}-arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#ed5368" stroke-width="1.5"/></marker></defs>'
+    def text(x,y,value,size=22,fill='#dce3eb'):return f'<text x="{x}" y="{y}" fill="{fill}" font-size="{size}" font-family="Inter,Arial,sans-serif">{esc(str(value))}</text>'
+    if name=='forces':
+        title='Simplified vertical braking force balance';desc='An upward thrust arrow and downward weight arrow on a descending booster. Upward net acceleration reduces downward velocity. Arrow lengths do not represent measured forces.'
+        body='<rect x="315" y="138" width="90" height="220" rx="20" fill="#9faab5" stroke="#e1e6e9"/><path d="M360 137V48M360 360V443" stroke="#ed5368" stroke-width="4" marker-end="url(#'+prefix+'-arr)"/><path d="M208 165V330" stroke="#a9b7c8" stroke-width="3" stroke-dasharray="8 6"/>'
+        body+=text(392,74,'Thrust T')+text(393,434,'Weight mg')+text(72,145,'Descending',20)+text(63,365,'Velocity downward',18)+text(44,45,'INSTANTANEOUS FORCE MODEL',18)+text(444,205,'Net acceleration',20)+text(444,237,'is upward when',20)+text(444,269,'T > mg',26,'#f67889')
+    elif name=='cameras':
+        title='Camera-position inventory for the cited US Model Y configuration';desc='Eight road-facing cameras: one front bumper, two windshield, two door pillar, two front fender and one rear. Cabin camera separate. Layout schematic, not viewing angles.'
+        body='<rect x="283" y="60" width="154" height="360" rx="60" fill="#9da8b3" stroke="#e4e8eb"/><path d="M306 154Q360 119 414 154L414 296Q360 324 306 296Z" fill="#192b37"/>'
+        points=[(360,67),(346,143),(374,143),(283,221),(437,221),(283,135),(437,135),(360,411)]
+        body+=''.join(f'<circle cx="{x}" cy="{y}" r="7" fill="#f24761" stroke="#ffe1e7"/>' for x,y in points)
+        body+=text(42,57,'US MODEL Y MANUAL',18)+text(465,78,'Front bumper ×1')+text(465,149,'Windshield ×2')+text(38,133,'Front fenders ×2')+text(42,226,'Door pillars ×2')+text(465,414,'Rear ×1')+text(58,467,'Cabin camera is separate · schematic positions',18)
+        body+='<path d="M369 68H456M384 143H456M270 135H244M270 221H228M369 411H456" stroke="#6b7d8d" stroke-width="2"/>'
+    else:
+        title='Hypothetical delay and braking distances';desc='At 30, 60 and 90 kilometres per hour, model totals are 14.1, 39.8 and 77.1 metres. Assumes one-second delay and constant six metres per second squared deceleration. Not measured Tesla performance.'
+        body=text(38,42,'ONE-SECOND DELAY · a = 6 m/s²',20)+text(38,77,'Chosen assumptions, not vehicle test results',18,'#aebac8')
+        for i,kph in enumerate([30,60,90]):
+            v=kph/3.6;delay=v;brake=v*v/12;scale=5.2;y=126+i*103
+            body+=text(38,y+18,str(kph)+' km/h',22)+f'<rect x="166" y="{y}" width="{delay*scale:.2f}" height="30" rx="3" fill="#9aa9b9"/><rect x="{166+delay*scale:.2f}" y="{y}" width="{brake*scale:.2f}" height="30" rx="3" fill="#e31937"/>'+text(166,y+59,f'{delay+brake:.1f} m total',21)
+        body+='<rect x="40" y="442" width="18" height="14" fill="#9aa9b9"/><rect x="340" y="442" width="18" height="14" fill="#e31937"/>'+text(70,455,'Delay travel',19)+text(370,455,'Braking travel',19)
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-labelledby="{prefix}-title {prefix}-desc"><title id="{prefix}-title">{title}</title><desc id="{prefix}-desc">{desc}</desc>{defs}<rect width="720" height="480" rx="16" fill="#0b1119"/>{body}</svg>'

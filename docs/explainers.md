@@ -29,3 +29,20 @@ SpaceX links support mission sequences and demonstrated milestones; the hot-stag
 - `python -m unittest discover -s tests -p test_explainers.py`: generated-file consistency, unique IDs, source anchors, canonical/structured metadata, searchable and sitemap destinations, valid accessible SVG, and maintained tracker comparison.
 - `python tests/explainers-browser.py`: Chromium at 320, 390 and 1440 pixels, dark/light themes; all four lessons; controls and keyboard navigation; hot/cold copy; FSD selection and unavailable data bundle; legacy and topic links; complete no-JavaScript text/table; no page overflow or runtime errors.
 - Browser routing supplies local first-party files and blocks external/video requests. These are functional and visual checks, not live performance measurements. Source images/video are existing production assets.
+
+## October 2026 reference expansion
+
+The four guides now each include six detailed chapters, three contextual fact cards, a chapter contents disclosure, numbered source citations, a comparison table and three further questions. The expansion adds roughly 3,700 words of technical explanation, plus table content, captions and glossary entries; reading-time labels increase accordingly.
+
+- Hot staging: event order, ideal rocket equation versus gravity losses, NASA plume/CFD work, exhaust momentum, earlier interstage versus V3 integration, and flight-specific timing.
+- Booster catch: return trajectory, instantaneous force balance, position/attitude geometry, load transfer, revised V3 interfaces and the distinction between recovery and reuse.
+- FSD: documented camera/computer roles, identifying installed hardware, build/version/entitlement differences, rolling distribution, download versus installation, calibration and evidence quality.
+- Collision assistance: warning/braking/acceleration functions, closing speed, chosen-assumption stopping arithmetic, IIHS 2017 and 2019 research, visibility and release-specific evidence requirements.
+
+Three additional original SVG figures show a simplified booster force balance, the camera inventory in the cited US Model Y manual and an illustrative stopping-distance model. Their complete descriptions and assumptions are also available as HTML. Tables scroll within their own labelled keyboard-focusable regions on small screens.
+
+Primary references include NASA Marshall's November 2024 hot-staging work, NASA Glenn mechanics, the NASA Trick model, NASA's Crew-9 event report, SpaceX mission/update material, distinct Tesla manual/support chapters, Rhode Island DMV stopping guidance and the original IIHS research abstracts. Source dates and vehicle/market applicability are preserved. Historical IIHS percentages are not Tesla-specific performance results. The V3 section is dated; earlier-ring artwork is explicitly scoped to earlier hardware.
+
+The worked geometry and stopping examples are original calculations with hypothetical inputs. They are not flight tolerances, Tesla measurements, operating instructions or performance promises. The collision guide continues to require an exact primary release note before publishing a configuration-specific re-engagement specification; inaccessible social posts or secondary summaries do not settle those conditions.
+
+Expanded validation adds chapter/fact/source integrity and valid companion SVG tests; browser coverage verifies chapter jumps, native disclosures and all new content alongside the existing controls and fallbacks. The added reference content works without JavaScript, external embeds or paid resources. The existing staging enhancement now uses distinct hot/cold positions and shows the small continuing booster plume during hot staging.
