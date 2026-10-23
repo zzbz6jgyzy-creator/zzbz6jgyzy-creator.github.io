@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-23T01:08:43.585Z",
+  "updated": "2026-10-23T01:42:11.528Z",
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:most-common",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "most-common",
-      "previous": "2026.38.5.1@28.7",
-      "next": "2026.38.5.1@28.8",
-      "at": "2026-10-23T01:08:42.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Most common sample build changed from 2026.38.5.1@28.7 to 2026.38.5.1@28.8.",
-      "title": "Most common sample build",
-      "id": "changed|tesla-software:most-common|2026-10-23T01:08:42.000Z|2026.38.5.1@28.8"
+      "type": "logged",
+      "factId": "dispatch:/dispatch/space-force-no-bids.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left",
+      "at": "2026-10-23T01:45:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/space-force-no-bids.html",
+      "href": "/dispatch/space-force-no-bids.html",
+      "summary": "Politico says SpaceX declined to bid and no rival offered a rocket. Vulcan was grounded this year, New Glenn lost its pad, and the newer rockets haven’t flown yet.",
+      "title": "SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left",
+      "id": "logged|dispatch:/dispatch/space-force-no-bids.html|2026-10-23T01:45:00.000Z|SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left"
     },
     {
       "type": "appeared",
@@ -272,23 +272,6 @@
       "summary": "Results land after the US close on Wednesday. Why free cash flow is expected to be negative, the bull and bear cases for the stock, and what has actually been said about a SpaceX merger.",
       "title": "Tesla Q3 preview: the cash burn, what’s at stake for the stock, and the SpaceX merger talk",
       "id": "logged|dispatch:/dispatch/tesla-q3-2026-preview.html|2026-10-20T18:30:00.000Z|Tesla Q3 preview: the cash burn, what’s at stake for the stock, and the SpaceX merger talk"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-q3-2026-preview.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece",
-      "at": "2026-10-20T16:30:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-q3-2026-preview.html",
-      "href": "/dispatch/spacex-q3-2026-preview.html",
-      "summary": "Written before the results. Analysts expected $12.72B in revenue and 13c a share, with AI forecast as the biggest segment.",
-      "title": "SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece",
-      "id": "logged|dispatch:/dispatch/spacex-q3-2026-preview.html|2026-10-20T16:30:00.000Z|SpaceX Q3 preview: Wall Street expects $12.7B in revenue, AI now the biggest piece"
     },
     {
       "type": "appeared",
