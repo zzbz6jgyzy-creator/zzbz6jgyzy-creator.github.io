@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-10-23T09:30:00+01:00",
- "launchChecked": "2026-10-24T22:35:09Z",
+ "launchChecked": "2026-10-24T23:32:25Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -296,29 +296,19 @@
   },
   {
    "id": "starlink-15-15",
-   "title": "Falcon 9 Block 5 | Starlink Group 15-15",
+   "title": "Falcon 9 · Starlink Group 15-15",
    "group": "spacex",
    "category": "Launch",
    "start": "2026-10-23T22:48:44Z",
    "end": "",
    "date": "2026-10-23",
    "precision": "datetime",
-   "status": "Success",
-   "note": "Communications · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/f6af629d-39b5-4f86-bc0c-f8776444a858/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/f6af629d-39b5-4f86-bc0c-f8776444a858/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
-   "origin": "Launch Library 2",
-   "providerId": "f6af629d-39b5-4f86-bc0c-f8776444a858",
-   "windowStart": "2026-10-23T21:30:00Z",
-   "windowEnd": "2026-10-24T01:30:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Launch Successful"
+   "status": "done",
+   "note": "Launched Fri 23 Oct at 23:48 Irish time from Vandenberg. Launch Library 2 lists it as a success.",
+   "where": "Vandenberg · SLC-4E",
+   "href": "",
+   "sources": [],
+   "origin": "Editorial calendar"
   },
   {
    "id": "starlink-15-16",
@@ -1352,6 +1342,32 @@
    ],
    "origin": "Launch Library 2",
    "providerId": "542a51bb-2351-48b9-98c5-9db130fb4c29",
+   "windowStart": "2027-01-31T00:00:00Z",
+   "windowEnd": "2027-01-31T00:00:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "To Be Determined"
+  },
+  {
+   "id": "ll2-5276b922-e440-466b-9b19-5851a2d67e75",
+   "title": "Falcon 9 Block 5 | SDA Tranche 2 Transport Layer F",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2027-01-31T00:00:00Z",
+   "end": "",
+   "date": "2027-01-31",
+   "precision": "month",
+   "status": "TBD",
+   "note": "Government/Top Secret · Polar Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "https://ll.thespacedevs.com/2.3.0/launches/5276b922-e440-466b-9b19-5851a2d67e75/",
+   "sources": [
+    {
+     "href": "https://ll.thespacedevs.com/2.3.0/launches/5276b922-e440-466b-9b19-5851a2d67e75/",
+     "label": "ll.thespacedevs.com"
+    }
+   ],
+   "origin": "Launch Library 2",
+   "providerId": "5276b922-e440-466b-9b19-5851a2d67e75",
    "windowStart": "2027-01-31T00:00:00Z",
    "windowEnd": "2027-01-31T00:00:00Z",
    "vehicle": "Falcon 9 Block 5",

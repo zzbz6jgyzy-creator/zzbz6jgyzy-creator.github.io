@@ -1,41 +1,9 @@
 {
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3. Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
- "updated": "2026-10-24T22:35:09Z",
- "checked": "2026-10-24T22:35:09Z",
+ "updated": "2026-10-24T23:32:25Z",
+ "checked": "2026-10-24T23:32:25Z",
  "results": [
-  {
-   "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
-   "name": "Falcon 9 Block 5 | Starlink Group 15-15",
-   "net": "2026-10-23T22:48:44Z",
-   "window_start": "2026-10-23T21:30:00Z",
-   "window_end": "2026-10-24T01:30:00Z",
-   "url": "https://ll.thespacedevs.com/2.3.0/launches/f6af629d-39b5-4f86-bc0c-f8776444a858/",
-   "status": {
-    "name": "Launch Successful",
-    "abbrev": "Success"
-   },
-   "net_precision": {
-    "name": "Second",
-    "abbrev": "SEC"
-   },
-   "pad": {
-    "name": "Space Launch Complex 4E",
-    "location": {
-     "name": "Vandenberg SFB, CA, USA"
-    }
-   },
-   "last_updated": "2026-10-24T20:04:33Z",
-   "mission": {
-    "name": "Starlink Group 15-15",
-    "type": "Communications",
-    "orbit": {
-     "name": "Low Earth Orbit",
-     "abbrev": "LEO"
-    }
-   },
-   "vehicle": "Falcon 9 Block 5"
-  },
   {
    "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
    "name": "Falcon 9 Block 5 | Starlink Group 15-16",
@@ -1276,6 +1244,38 @@
    "last_updated": "2026-02-24T17:09:27Z",
    "mission": {
     "name": "SDA Tranche 2 Transport Layer C",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
+  },
+  {
+   "id": "5276b922-e440-466b-9b19-5851a2d67e75",
+   "name": "Falcon 9 Block 5 | SDA Tranche 2 Transport Layer F",
+   "net": "2027-01-31T00:00:00Z",
+   "window_start": "2027-01-31T00:00:00Z",
+   "window_end": "2027-01-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/5276b922-e440-466b-9b19-5851a2d67e75/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2025-04-10T05:43:50Z",
+   "mission": {
+    "name": "SDA Tranche 2 Transport Layer F",
     "type": "Government/Top Secret",
     "orbit": {
      "name": "Polar Orbit",
