@@ -234,9 +234,10 @@
       ]
     },
     "optimus": {
-      "file": "/assets/js/optimus.bundle.b361564171.js",
-      "bytes": 4776,
+      "file": "/assets/js/optimus.bundle.66be84616a.js",
+      "bytes": 8297,
       "sources": [
+        "optimus-model.js",
         "optimus.js"
       ]
     },

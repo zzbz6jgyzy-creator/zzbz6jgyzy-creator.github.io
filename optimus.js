@@ -1,103 +1,26 @@
-(() => {
-  const box = document.querySelector("[data-intel-optimus]");
-  const demosBox = document.querySelector("[data-intel-demos]");
-  if (!box && !demosBox) return;
-  const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const stateLabel = {
-    unknown: "Unknown",
-    not_established: "Not established",
-    disclosed_no: "Disclosed: no",
-    disclosed_yes: "Disclosed: yes",
-  };
-  const kindLabel = {
-    announcement: "Announcement",
-    prototype: "Prototype",
-    stage_prop: "Stage appearance",
-    static_display: "Static display",
-  };
-  const list = (items) => {
-    const rows = (items || []).map((x) => `<li>${esc(x)}</li>`).join("");
-    return rows ? `<ul>${rows}</ul>` : "<p>None listed in the source.</p>";
-  };
-  const fmtDate = (iso) => {
-    if (!iso) return "—";
-    const d = new Date(`${iso.slice(0, 10)}T12:00:00Z`);
-    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
-  };
-
-  const renderDemos = (data) => {
-    if (!demosBox) return;
-    const demos = data.demos || [];
-    const shown = demos.filter((d) => (d.shown || []).length).length;
-    demosBox.innerHTML = `
-      <div class="intel-grid">
-        <div class="intel-card"><strong>${demos.length}</strong><span>Sourced demonstrations</span></div>
-        <div class="intel-card"><strong>${shown}</strong><span>With what was shown and what wasn’t</span></div>
-        <div class="intel-card"><strong>0</strong><span>Where autonomy was established</span></div>
-      </div>
-      <p class="intel-note">${esc(data.note || "")}</p>
-      <div class="intel-demos">${demos.map((d) => {
-        const src = d.source || {};
-        const video = d.video;
-        const later = d.laterNote;
-        const related = d.related;
-        const auto = d.autonomy || {};
-        const remote = d.remoteAssistance || {};
-        const claims = d.companyClaims || [];
-        return `<article class="intel-demo" id="${esc(d.id)}">
-          <p class="intel-k">${esc(kindLabel[d.kind] || d.kind)} · <time datetime="${esc(d.date)}">${esc(fmtDate(d.date))}</time></p>
-          <h3>${esc(d.title)}</h3>
-          <p class="intel-s">${esc(d.lede || "")}</p>
-          <p class="intel-m">${esc(d.event || "")}${d.generation ? ` · ${esc(d.generation)}` : ""}</p>
-          <div class="intel-demo-cols">
-            <div><h4>Shown</h4>${list(d.shown)}</div>
-            <div><h4>Not shown</h4>${list(d.notShown)}</div>
-          </div>
-          <p><span class="intel-ev intel-ev-${esc(auto.state || "unknown")}">Autonomy: ${esc(stateLabel[auto.state] || auto.state || "Unknown")}</span> ${esc(auto.note || "")}</p>
-          <p><span class="intel-ev intel-ev-${esc(remote.state || "unknown")}">Remote assistance: ${esc(stateLabel[remote.state] || remote.state || "Unknown")}</span> ${esc(remote.note || "")}</p>
-          ${d.uncertain && d.uncertain.length ? `<h4>Still uncertain</h4>${list(d.uncertain)}` : ""}
-          ${claims.length ? `<h4>Company claims — not verified specs</h4>${list(claims)}` : ""}
-          <p class="intel-m">${src.url ? `<a href="${esc(src.url)}" rel="noopener">${esc(src.outlet || "Source")}</a>` : esc(src.outlet || "")}${src.title ? ` — ${esc(src.title)}` : ""}${video ? ` · <a href="${esc(video.url)}" rel="noopener">${esc(video.label || "Video")}</a>` : ""}${related ? ` · <a href="${esc(related.url)}">${esc(related.label)}</a>` : ""}</p>
-          ${later ? `<p class="intel-note">Later: ${esc(later.text)} ${later.url ? `<a href="${esc(later.url)}" rel="noopener">${esc(later.outlet || "Source")}</a>` : ""}</p>` : ""}
-        </article>`;
-      }).join("")}</div>`;
-  };
-
-  const renderPromises = (d) => {
-    if (!box) return;
-    const rows = (d.promises || []).filter((p) => p.topic === "Optimus");
-    const by = (s) => rows.filter((p) => p.status === s).length;
-    box.innerHTML = `
-      <div class="intel-grid">
-        <div class="intel-card"><strong>${rows.length}</strong><span>Sourced Optimus promises</span></div>
-        <div class="intel-card"><strong>${by("Missed")}</strong><span>Missed</span></div>
-        <div class="intel-card"><strong>${by("In progress")}</strong><span>In progress</span></div>
-        <div class="intel-card"><strong>${by("Delivered")}</strong><span>Delivered</span></div>
-      </div>
-      <p class="intel-note">A demo isn’t a product on sale, and a walking robot doesn’t show it can work on its own. We only mention remote help when a source says so.</p>
-      <div class="intel-compare"><table>
-        <thead><tr><th>Promise</th><th>Said</th><th>Deadline</th><th>Status</th><th>Evidence</th></tr></thead>
-        <tbody>${rows.map((p) => {
-          const ev = (p.evidence && p.evidence[0]) || {};
-          return `<tr id="${esc(p.id)}">
-            <td><b>${esc(p.title)}</b><br><small>${esc(p.quote_type === "exact" ? "Exact quote" : "Paraphrase")}</small></td>
-            <td>${esc(p.said_on)}</td>
-            <td>${esc(p.deadline || "—")}</td>
-            <td>${esc(p.status)}</td>
-            <td>${esc(ev.text || "")}${ev.source && ev.source.url ? ` <a href="${esc(ev.source.url)}" rel="noopener">${esc(ev.source.outlet || "Source")}</a>` : ""}${p.source && p.source.url ? `<br><a href="${esc(p.source.url)}" rel="noopener">Original: ${esc(p.source.outlet)}</a>` : ""}</td>
-          </tr>`;
-        }).join("")}</tbody>
-      </table></div>`;
-  };
-
-  Promise.all([
-    fetch("/data/promises.json", { cache: "no-cache" }).then((r) => r.json()),
-    fetch("/data/optimus-demos.json", { cache: "no-cache" }).then((r) => r.json()),
-  ]).then(([promises, demos]) => {
-    renderDemos(demos);
-    renderPromises(promises);
-  }).catch(() => {
-    if (demosBox) demosBox.innerHTML = '<p class="intel-empty">Could not load the sourced demonstration archive.</p>';
-    if (box) box.innerHTML = '<p class="intel-empty">Could not load sourced Optimus promises.</p>';
-  });
+(function(){'use strict';
+const root=document.querySelector('.os'),M=window.OptimusStudio;if(!root||!M)return;
+let data;try{data=M.validate(JSON.parse(document.getElementById('os-data').textContent));}catch(err){console.warn('Optimus interactions unavailable; saved guide remains readable.',err);return;}
+root.classList.add('os-enhanced');
+const all=s=>[...root.querySelectorAll(s)],one=s=>root.querySelector(s);
+// Reveal controls only after validation; no network fetch can erase saved content.
+all('.os-hotspots,.os-system-tabs,.os-filters,.os-calculator-controls,[data-film],#os-play').forEach(x=>x.hidden=false);
+function selectSystem(id){if(!data.systems.some(x=>x.id===id))return;all('.os-system-panel').forEach(p=>p.hidden=p.id!=='system-'+id);all('[data-system]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.system===id)));}
+selectSystem(data.systems[0].id);
+all('[data-system]').forEach(b=>b.addEventListener('click',()=>selectSystem(b.dataset.system)));
+one('.os-system-tabs').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;const buttons=all('.os-system-tabs button'),i=buttons.indexOf(document.activeElement);if(i<0)return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:(i+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;buttons[next].focus();selectSystem(buttons[next].dataset.system);});
+let film=data.films[0];const stage=one('#os-player'),cover=stage.firstElementChild,status=one('#os-player-status');
+function chooseFilm(id){const next=data.films.find(x=>x.id===id);if(!next)return;film=next;stage.querySelector('iframe')?.remove();stage.classList.remove('os-playing');cover.hidden=false;one('#os-film-title').textContent=film.title;cover.querySelector('.os-kicker').textContent='Official Tesla film / '+film.date;one('#os-film-direct').href=data.sources.find(s=>s.id===film.source).url;all('[data-film]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.film===id)));status.textContent=film.note+' Press play to open YouTube. Cover is a 2025 showroom photograph, not a frame from this film.';}
+all('[data-film]').forEach(b=>b.addEventListener('click',()=>chooseFilm(b.dataset.film)));
+one('#os-play').addEventListener('click',()=>{const frame=document.createElement('iframe');frame.title='Tesla — '+film.title;frame.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';frame.referrerPolicy='strict-origin-when-cross-origin';frame.allowFullscreen=true;frame.src=M.filmURL(film);cover.hidden=true;stage.classList.add('os-playing');stage.append(frame);frame.focus();status.replaceChildren(document.createTextNode('Tesla’s player opened. If it is unavailable, '));const a=document.createElement('a');a.href=data.sources.find(s=>s.id===film.source).url;a.textContent='watch the official film on YouTube ↗';status.append(a,document.createTextNode('. Opening a video may allow YouTube cookies.'));});
+function calculate(){const p=Number(one('#os-probability').value),n=Number(one('#os-steps').value),v=M.sequence(p,n);one('#os-result').textContent=(v*100).toFixed(1)+'%';one('#os-formula').textContent=`Illustration: ${p} to the power ${n} = ${(v*100).toFixed(1)}%. Assumes independent steps with identical success probability. Not Tesla measurements.`;const dots=one('.os-sequence');dots.replaceChildren(...Array.from({length:n},(_,i)=>{const x=document.createElement('i');x.style.setProperty('--strength',M.sequence(p,i+1));return x;}));}
+['#os-probability','#os-steps'].forEach(s=>one(s).addEventListener('change',calculate));
+function filter(){const q=one('#os-search').value.trim().toLocaleLowerCase(),cat=one('#os-category').value;let count=0;all('.os-demo').forEach(card=>{const match=(!q||card.textContent.toLocaleLowerCase().includes(q))&&(cat==='all'||card.dataset.category===cat);card.hidden=!match;if(match)count++;});one('#os-demo-count').textContent=count+' of '+data.demos.length+' records · newest first';one('.os-no-results').hidden=count!==0;}
+one('#os-search').addEventListener('input',filter);one('#os-category').addEventListener('change',filter);one('#os-clear').addEventListener('click',()=>{one('#os-search').value='';one('#os-category').value='all';filter();one('#os-search').focus();});
+const dialog=one('.os-lightbox');let imageIndex=0,lastGallery;
+function gallery(index){imageIndex=(index+data.media.length)%data.media.length;const m=data.media[imageIndex],img=document.createElement('img');img.src='/assets/optimus-studio/'+m.id+'-1600w.webp';img.alt=m.alt;img.width=m.width;img.height=m.height;one('.os-lightbox-image').replaceChildren(img);const caption=one('.os-lightbox-caption');caption.replaceChildren(document.createTextNode(m.title+' — '+m.caption+' '+m.credit+' · '));const src=document.createElement('a');src.href=m.source;src.textContent='Source ↗';caption.append(src);if(m.licenseUrl){const a=document.createElement('a');a.href=m.licenseUrl;a.textContent=m.license;caption.append(document.createTextNode(' · '),a,document.createTextNode(' · Resized and compressed.'));}}
+if(typeof dialog.showModal==='function'){all('[data-gallery]').forEach(a=>a.addEventListener('click',event=>{event.preventDefault();lastGallery=a;gallery(Number(a.dataset.gallery));dialog.showModal();}));one('[data-close]').addEventListener('click',()=>dialog.close());one('[data-prev]').addEventListener('click',()=>gallery(imageIndex-1));one('[data-next]').addEventListener('click',()=>gallery(imageIndex+1));dialog.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();gallery(imageIndex+(event.key==='ArrowRight'?1:-1));}});dialog.addEventListener('close',()=>lastGallery?.focus());dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});}
+function revealHash(){let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const record=data.demos.find(x=>x.id===id);if(record){one('#os-search').value='';one('#os-category').value='all';filter();const card=document.getElementById(id);card.open=true;card.scrollIntoView({block:'start'});}}
+window.addEventListener('hashchange',revealHash);if(location.hash)revealHash();
+if('IntersectionObserver'in window){const nav=all('.os-chapters a');const observer=new IntersectionObserver(entries=>{entries.filter(x=>x.isIntersecting).forEach(x=>{nav.forEach(a=>{if(a.hash==='#'+x.target.id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});});},{rootMargin:'-15% 0px -65% 0px'});nav.forEach(a=>{const section=document.getElementById(a.hash.slice(1));if(section)observer.observe(section);});}
 })();
