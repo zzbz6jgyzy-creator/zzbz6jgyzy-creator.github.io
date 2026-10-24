@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T02:52:28Z",
+ "updated": "2026-10-24T03:54:02Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-24T02:52:28Z",
+  "fetched": "2026-10-24T03:54:02Z",
   "items": [
+   {
+    "t": "2026-10-24T03:31:53Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y SR (2023)",
+    "hw": "3.0",
+    "country": "France"
+   },
+   {
+    "t": "2026-10-24T03:20:44Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 RWD LR (2018)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-24T03:10:40Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 SR (2024)",
+    "hw": "4.0",
+    "country": "Iceland"
+   },
+   {
+    "t": "2026-10-24T03:03:29Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 SR (2023)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-24T02:55:09Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 AWD LR (2021)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-24T02:37:56Z",
     "to": "2026.38.3.2",
@@ -531,46 +571,6 @@
     "from": "2026.38.3.1",
     "model": "Model 3 AWD LR (2020)",
     "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-24T01:32:23Z",
-    "to": "2026.38.5.5",
-    "from": "2026.20.10",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-24T01:28:31Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 AWD LR (2021)",
-    "hw": "3.0",
-    "country": "Czechia"
-   },
-   {
-    "t": "2026-10-24T01:26:39Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model Y AWD LR (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-24T01:17:05Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 SR (2026)",
-    "hw": "4.0",
-    "country": "Italy"
-   },
-   {
-    "t": "2026-10-24T01:14:52Z",
-    "to": "2026.38.5.1",
-    "from": "2026.27.11",
-    "model": "Model S Plaid (2024)",
-    "hw": "4.0",
     "country": "United States"
    }
   ]
