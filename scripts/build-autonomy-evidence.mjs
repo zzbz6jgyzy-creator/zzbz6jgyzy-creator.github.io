@@ -94,13 +94,45 @@ export function buildAutonomyEvidence(root = ROOT) {
   if (fs.existsSync(indexPath)) {
     const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
     const records = [
-      {url: "/autonomy.html", title: "FSD & Robotaxi evidence desk", tag: "Evidence", summary: description},
-      {url: "/autonomy.html#checks", title: "FSD & Robotaxi claim checks", tag: "Evidence", summary: "Twelve sourced questions about supervision, permits, eligibility, fleet records and safety claims."},
-      {url: "/autonomy.html#safety", title: "Autonomy safety lab", tag: "Evidence", summary: "Explore event rates, zero-event uncertainty and the definitions behind Robotaxi safety comparisons."},
-      {url: "/autonomy.html#sources", title: "Autonomy evidence source room", tag: "Evidence", summary: "Primary regulator, manufacturer and standards sources with scope, review dates and limitations."}
+      {
+        url: "/autonomy.html",
+        title: "FSD & Robotaxi evidence desk",
+        tag: "Evidence",
+        summary: description,
+      },
+      {
+        url: "/autonomy.html#checks",
+        title: "FSD & Robotaxi claim checks",
+        tag: "Evidence",
+        summary:
+          "Twelve sourced questions about supervision, permits, eligibility, fleet records and safety claims.",
+      },
+      {
+        url: "/autonomy.html#safety",
+        title: "Autonomy safety lab",
+        tag: "Evidence",
+        summary:
+          "Explore event rates, zero-event uncertainty and the definitions behind Robotaxi safety comparisons.",
+      },
+      {
+        url: "/autonomy.html#sources",
+        title: "Autonomy evidence source room",
+        tag: "Evidence",
+        summary:
+          "Primary regulator, manufacturer and standards sources with scope, review dates and limitations.",
+      },
     ];
-    index.pages = index.pages.filter(p => !records.some(r => r.url === p.url));
-    index.pages.push(...records);
+    const isOurs = (page) => records.some((record) => record.url === page.url);
+    const originalSlot = index.pages.findIndex(
+      (page) => page.url === "/autonomy.html",
+    );
+    const slot =
+      originalSlot < 0
+        ? index.pages.findIndex((page) => page.url.startsWith("/explainers/"))
+        : index.pages.slice(0, originalSlot).filter((page) => !isOurs(page))
+            .length;
+    index.pages = index.pages.filter((page) => !isOurs(page));
+    index.pages.splice(slot < 0 ? index.pages.length : slot, 0, ...records);
     fs.writeFileSync(indexPath, JSON.stringify(index, null, 2) + "\n");
   }
   fs.writeFileSync(path.join(root, "autonomy.html"), html);

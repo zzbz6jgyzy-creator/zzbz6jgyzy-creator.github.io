@@ -75,6 +75,18 @@ test("saved HTML is deterministic, complete without JS and preserves the site sh
       "data/autonomy-evidence.json",
       path.join(dir, "data/autonomy-evidence.json"),
     );
+    fs.writeFileSync(
+      path.join(dir, "data/pages.json"),
+      JSON.stringify({
+        updated: "2026-10-24",
+        pages: [
+          { url: "/first.html" },
+          { url: "/autonomy.html" },
+          { url: "/last.html" },
+          { url: "/explainers/example.html" },
+        ],
+      }),
+    );
     const before = fs.readFileSync(path.join(dir, "autonomy.html"), "utf8");
     buildAutonomyEvidence(dir);
     const a = fs.readFileSync(path.join(dir, "autonomy.html"), "utf8");
@@ -85,6 +97,25 @@ test("saved HTML is deterministic, complete without JS and preserves the site sh
       before.slice(before.indexOf("</main>")),
     );
     assert.equal((a.match(/<h1\b/g) || []).length, 1);
+    const index = JSON.parse(
+      fs.readFileSync(path.join(dir, "data/pages.json")),
+    );
+    assert.equal(index.pages[0].url, "/first.html");
+    assert.equal(index.pages.at(-1).url, "/explainers/example.html");
+    assert.equal(
+      index.pages.filter((page) => page.url.startsWith("/autonomy.html"))
+        .length,
+      4,
+    );
+    const indexOnce = fs.readFileSync(
+      path.join(dir, "data/pages.json"),
+      "utf8",
+    );
+    buildAutonomyEvidence(dir);
+    assert.equal(
+      fs.readFileSync(path.join(dir, "data/pages.json"), "utf8"),
+      indexOnce,
+    );
     for (const c of data.claims)
       assert.ok(a.includes('id="claim-' + c.id + '"'));
     for (const s of data.sources)
