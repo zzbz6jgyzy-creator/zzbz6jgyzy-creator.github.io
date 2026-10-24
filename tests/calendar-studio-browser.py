@@ -43,6 +43,8 @@ async def main():
    await page.keyboard.press('Escape');assert not await page.locator('#cs-dialog').is_visible()
    await page.locator('#cs-zone').select_option('America/Los_Angeles');assert '21:45'in await page.locator('#cs-results .cs-event-time').inner_text()
    await page.locator('[data-view=month]').click();cell=page.locator('.cs-month-grid [tabindex="0"]');await cell.focus();old=await cell.get_attribute('data-date');await page.keyboard.press('ArrowRight');assert await page.locator('.cs-month-grid [tabindex="0"]').get_attribute('data-date')!=old;assert await page.locator('.cs-month-grid [tabindex="0"]').evaluate('(e)=>document.activeElement===e')
+   async with page.expect_download()as info:await page.locator('#cs-export').click()
+   downloaded=await info.value;ics=pathlib.Path(await downloaded.path()).read_text();starts=[line for line in ics.splitlines()if line.startswith('DTSTART')];assert starts and all('202610'in line for line in starts),starts
    await page.locator('[data-month="1"]').click();await expect(page.locator('.cs-month-bar h3')).to_have_text('November 2026');await page.locator('[data-date="2026-11-08"]').click();assert 'NET date'in await page.locator('.cs-day-panel').inner_text();assert 'Time unconfirmed'in await page.locator('.cs-day-panel').inner_text()
    assert not errors,errors;assert not any('ll.thespacedevs.com'in u for u in requests);await c.close()
   for mode in ['light','no-js','blocked-js','bad-prefs','blocked-storage','source-failed','malformed','older']:

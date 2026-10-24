@@ -43,12 +43,13 @@
   }
   function draw() {
     const rows = M.filter(data.events, state, now());
+    const visibleCount = state.view === "month" ? M.exportRows(data.events, state, now()).length : rows.length;
     $("cs-results").innerHTML = state.view === "month" ? V.month(rows, state, now()) : V.list(rows, state, now());
     root.querySelectorAll("[data-view]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.view === state.view));
     $("cs-saved-count").textContent = state.saved.length;
-    $("cs-result-count").textContent = (state.view === "planning" ? "Planning board · " : state.view === "saved" ? "Your shortlist · " : state.view === "month" ? "Dated schedule · " : "Agenda · ") + rows.length + " " + (rows.length === 1 ? "event" : "events") + (state.view === "planning" ? " · no firm day yet" : "");
+    $("cs-result-count").textContent = (state.view === "planning" ? "Planning board · " : state.view === "saved" ? "Your shortlist · " : state.view === "month" ? "Dated schedule · " : "Agenda · ") + visibleCount + " " + (visibleCount === 1 ? "event" : "events") + (state.view === "planning" ? " · no firm day yet" : "");
     $("cs-range-label").hidden = state.view !== "agenda";
-    $("cs-export").disabled = !rows.some(M.dated);
+    $("cs-export").disabled = !M.exportRows(data.events, state, now()).length;
     $("cs-export").textContent = state.view === "planning" ? "Firm dates needed for export" : "Download this view ↓";
     persist();
     fresh();
@@ -185,7 +186,7 @@
     syncControls();
     draw();
   });
-  $("cs-export").addEventListener("click", () => download(M.filter(data.events, state, now())));
+  $("cs-export").addEventListener("click", () => download(M.exportRows(data.events, state, now())));
   $("cs-dialog-close").addEventListener("click", close);
   dialog.addEventListener("cancel", (ev) => {
     ev.preventDefault();

@@ -113,7 +113,7 @@
   }
   function time(e, z = "UTC") {
     if (e.precision === "day") return "Time unconfirmed";
-    if (e.precision !== "datetime") return "No confirmed time";
+    if (e.precision !== "datetime" || !valid(e.start)) return "No confirmed time";
     return new Intl.DateTimeFormat("en-GB", { timeZone: zone(z), hour: "2-digit", minute: "2-digit", timeZoneName: "short" }).format(new Date(e.start));
   }
   function dateLabel(e, z = "UTC") {
@@ -135,7 +135,10 @@
   }
   function filter(events, state, now = /* @__PURE__ */ new Date()) {
     const q = (state.query || "").trim().toLowerCase();
-    return events.filter((e) => (!state.group || state.group === "all" || e.group === state.group) && (!state.category || state.category === "all" || e.category === state.category) && (!q || [e.title, e.note, e.where, e.category].join(" ").toLowerCase().includes(q)) && (state.view === "planning" ? !dated(e) : state.view === "saved" ? (state.saved || []).includes(e.id) : state.view === "month" ? dated(e) : state.range === "past" ? dated(e) && !upcoming(e, now, state.zone) : state.range === "all" ? dated(e) : upcoming(e, now, state.zone) && (state.range === "7" || state.range === "30" ? dayKey(e, state.zone) <= shiftDay(today(now, state.zone), Number(state.range)) : true)));
+    return events.filter((e) => (!state.group || state.group === "all" || e.group === state.group) && (!state.category || state.category === "all" || e.category === state.category) && (!q || [e.title, e.note, e.where, e.category].join(" ").toLowerCase().includes(q)) && (state.view === "planning" ? !dated(e) : state.view === "saved" ? (state.saved || []).includes(e.id) : state.view === "month" ? dated(e) : state.range === "past" ? dated(e) && !upcoming(e, now, state.zone) : state.range === "all" ? dated(e) : upcoming(e, now, state.zone) && (state.range === "7" || state.range === "30" ? dayKey(e, state.zone) <= shiftDay(today(now, state.zone), Number(state.range) - 1) : true)));
+  }
+  function exportRows(events, state, now = new Date()) {
+    return filter(events, state, now).filter(e => dated(e) && (state.view !== "month" || dayKey(e, state.zone).startsWith(state.month)));
   }
   function preferences(raw = {}) {
     return { view: ["agenda", "month", "saved", "planning"].includes(raw.view) ? raw.view : "agenda", zone: zone(raw.zone || "UTC"), group: ["all", ...Object.keys(GROUPS)].includes(raw.group) ? raw.group : "all", range: ["upcoming", "7", "30", "past", "all"].includes(raw.range) ? raw.range : "upcoming", category: "all", query: "", saved: Array.isArray(raw.saved) ? [...new Set(raw.saved.filter((x) => typeof x === "string"))].slice(0, 200) : [] };
@@ -162,5 +165,5 @@
       return out;
     }).join("\r\n") + "\r\n";
   }
-  return { GROUPS, esc, url, identity, normalize, zone, dayKey, today, dated, terminal, upcoming, label, time, dateLabel, shiftDay, monthDays, filter, preferences, calendar };
+  return { GROUPS, esc, url, identity, normalize, zone, dayKey, today, dated, terminal, upcoming, label, time, dateLabel, shiftDay, monthDays, filter, exportRows, preferences, calendar };
 });
