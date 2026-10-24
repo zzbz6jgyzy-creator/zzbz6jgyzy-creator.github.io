@@ -7,6 +7,7 @@ import vm from "node:vm";
 import { buildFSDEurope } from "./build-fsd-europe.mjs";
 import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
 import { buildStarshipStudio } from "./build-starship-studio.mjs";
+import { buildCalendarStudio } from "./build-calendar-studio.mjs";
 const root = new URL("..", import.meta.url).pathname;
 const read = (f) => fs.readFileSync(root + f, "utf8");
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -36,5 +37,6 @@ function inject(file, tag, html) {
 buildFSDEurope(root);
 // Starship now has complete semantic saved HTML, shared with the browser.
 buildStarshipStudio(root);
+buildCalendarStudio(root);
 console.log("noscript blocks written");
 buildTrackerSnapshots(root);

@@ -1,7 +1,8 @@
 {
- "_about": "Upcoming SpaceX launches from Launch Library 2 (ll.thespacedevs.com), refreshed by .github/workflows/launches-refresh.yml. Do not hand-edit.",
- "source": "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX",
- "updated": "2026-10-24T00:55:05Z",
+ "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3. Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
+ "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
+ "updated": "2026-10-24T16:33:54Z",
+ "checked": "2026-10-24T16:33:54Z",
  "results": [
   {
    "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
@@ -9,7 +10,7 @@
    "net": "2026-10-23T22:48:44Z",
    "window_start": "2026-10-23T21:30:00Z",
    "window_end": "2026-10-24T01:30:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/f6af629d-39b5-4f86-bc0c-f8776444a858/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/f6af629d-39b5-4f86-bc0c-f8776444a858/",
    "status": {
     "name": "Launch Successful",
     "abbrev": "Success"
@@ -23,7 +24,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-23T23:55:57Z",
+   "mission": {
+    "name": "Starlink Group 15-15",
+    "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
@@ -31,7 +42,7 @@
    "net": "2026-10-27T04:45:00Z",
    "window_start": "2026-10-27T04:45:00Z",
    "window_end": "2026-10-27T08:45:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/e2886a96-5ce9-4f45-872f-4e25a00be837/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/e2886a96-5ce9-4f45-872f-4e25a00be837/",
    "status": {
     "name": "Go for Launch",
     "abbrev": "Go"
@@ -45,7 +56,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-23T14:05:56Z",
+   "mission": {
+    "name": "Starlink Group 15-16",
+    "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "57ce0a39-d035-4f16-a418-bd6108f78199",
@@ -53,7 +74,7 @@
    "net": "2026-10-30T04:02:00Z",
    "window_start": "2026-10-30T04:02:00Z",
    "window_end": "2026-10-30T08:02:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/57ce0a39-d035-4f16-a418-bd6108f78199/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/57ce0a39-d035-4f16-a418-bd6108f78199/",
    "status": {
     "name": "Go for Launch",
     "abbrev": "Go"
@@ -67,7 +88,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-23T14:05:57Z",
+   "mission": {
+    "name": "Starlink Group 15-18",
+    "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
@@ -75,7 +106,7 @@
    "net": "2026-11-05T05:14:00Z",
    "window_start": "2026-11-05T05:14:00Z",
    "window_end": "2026-11-05T09:14:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
    "status": {
     "name": "Go for Launch",
     "abbrev": "Go"
@@ -89,7 +120,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-22T16:39:24Z",
+   "mission": {
+    "name": "Starlink Group 15-21",
+    "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
@@ -97,7 +138,7 @@
    "net": "2026-11-05T22:34:00Z",
    "window_start": "2026-11-05T22:34:00Z",
    "window_end": "2026-11-06T02:34:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
    "status": {
     "name": "To Be Confirmed",
     "abbrev": "TBC"
@@ -111,7 +152,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-20T12:23:17Z",
+   "mission": {
+    "name": "NROL-195",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
@@ -119,7 +170,7 @@
    "net": "2026-11-30T00:00:00Z",
    "window_start": "2026-11-30T00:00:00Z",
    "window_end": "2026-11-30T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -133,7 +184,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-04T15:15:02Z",
+   "mission": {
+    "name": "Cygnus CRS-2 NG-25",
+    "type": "Resupply",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "71df1dd0-d658-4762-b0bc-0fca6886aea7",
@@ -141,7 +202,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/71df1dd0-d658-4762-b0bc-0fca6886aea7/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/71df1dd0-d658-4762-b0bc-0fca6886aea7/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -155,7 +216,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-17T08:28:07Z",
+   "mission": {
+    "name": "SDA Tranche 2 Transport Layer D",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "71ed4649-8d71-42e8-8548-d42ffa2c5a6e",
@@ -163,7 +234,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/71ed4649-8d71-42e8-8548-d42ffa2c5a6e/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/71ed4649-8d71-42e8-8548-d42ffa2c5a6e/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -177,7 +248,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-17T08:28:47Z",
+   "mission": {
+    "name": "SDA Tranche 2 Transport Layer E",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
@@ -185,7 +266,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/ce1317de-ec94-4479-9b28-38ebf11f13ae/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/ce1317de-ec94-4479-9b28-38ebf11f13ae/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -199,7 +280,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-23T06:27:52Z",
+   "mission": {
+    "name": "Telesat Lightspeed 1",
+    "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
@@ -207,7 +298,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/d3bd7fb2-fac6-49fc-ae52-cee07d2fde67/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/d3bd7fb2-fac6-49fc-ae52-cee07d2fde67/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -221,7 +312,17 @@
     "location": {
      "name": "Kennedy Space Center, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-23T06:32:28Z",
+   "mission": {
+    "name": "Griffin Mission One",
+    "type": "Lunar Exploration",
+    "orbit": {
+     "name": "Lunar Orbit",
+     "abbrev": "LO"
+    }
+   },
+   "vehicle": "Falcon Heavy"
   },
   {
    "id": "11b218b1-5e40-4b9d-854e-50320299239d",
@@ -229,7 +330,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/11b218b1-5e40-4b9d-854e-50320299239d/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/11b218b1-5e40-4b9d-854e-50320299239d/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -243,7 +344,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-10-15T12:12:53Z",
+   "mission": {
+    "name": "BlueBird 14-16 (Block 2 #9-11)",
+    "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "8bf5f61e-a7e1-41e6-aede-7b87e4beebab",
@@ -251,7 +362,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/8bf5f61e-a7e1-41e6-aede-7b87e4beebab/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/8bf5f61e-a7e1-41e6-aede-7b87e4beebab/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -265,7 +376,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2025-11-14T23:31:58Z",
+   "mission": {
+    "name": "CHORUS",
+    "type": "Earth Science",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "01ca3653-126a-4c01-94fb-a9467b39cdac",
@@ -273,7 +394,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/01ca3653-126a-4c01-94fb-a9467b39cdac/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/01ca3653-126a-4c01-94fb-a9467b39cdac/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -287,7 +408,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-02-04T11:37:33Z",
+   "mission": {
+    "name": "Inmarsat-7 F1 (GX-7)",
+    "type": "Communications",
+    "orbit": {
+     "name": "Geostationary Transfer Orbit",
+     "abbrev": "GTO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
@@ -295,7 +426,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/2d0472b9-463d-49c8-afb1-7925e49a3368/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/2d0472b9-463d-49c8-afb1-7925e49a3368/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -309,7 +440,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-08-27T15:58:58Z",
+   "mission": {
+    "name": "SDA Tranche 1 Tracking Layer A",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
@@ -317,7 +458,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/dca8749f-1552-485a-8061-f1ad79055b8d/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/dca8749f-1552-485a-8061-f1ad79055b8d/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -331,7 +472,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-08-27T16:02:56Z",
+   "mission": {
+    "name": "SDA Tranche 1 Tracking Layer C",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
@@ -339,7 +490,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -353,7 +504,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-08-27T16:03:29Z",
+   "mission": {
+    "name": "SDA Tranche 1 Tracking Layer E",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
@@ -361,7 +522,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/4541ce85-0e38-42ac-a9a0-20474bb5f2cd/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/4541ce85-0e38-42ac-a9a0-20474bb5f2cd/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -375,7 +536,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-08-27T16:00:47Z",
+   "mission": {
+    "name": "SDA Tranche 1 Transport Layer D",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "c5783e2b-d458-4b99-9936-4043c236190b",
@@ -383,7 +554,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/c5783e2b-d458-4b99-9936-4043c236190b/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/c5783e2b-d458-4b99-9936-4043c236190b/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -397,7 +568,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-08-27T16:01:25Z",
+   "mission": {
+    "name": "SDA Tranche 1 Transport Layer F",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
@@ -405,7 +586,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/0f867f0c-5422-4d44-93b8-d7faaae7019b/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/0f867f0c-5422-4d44-93b8-d7faaae7019b/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -419,7 +600,17 @@
     "location": {
      "name": "SpaceX Starbase, TX, USA"
     }
-   }
+   },
+   "last_updated": "2026-09-13T06:33:41Z",
+   "mission": {
+    "name": "Flight 15",
+    "type": "Test Flight",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Starship V3"
   },
   {
    "id": "e61d353c-db55-4a57-8184-0fab187231e6",
@@ -427,7 +618,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/e61d353c-db55-4a57-8184-0fab187231e6/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/e61d353c-db55-4a57-8184-0fab187231e6/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -441,7 +632,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-08-16T02:19:39Z",
+   "mission": {
+    "name": "Globalstar 2-R Mission 2 (x 9)",
+    "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
@@ -449,7 +650,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/dfd444f9-ddda-4b35-8f51-cda7cd801809/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/dfd444f9-ddda-4b35-8f51-cda7cd801809/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -463,7 +664,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2025-11-14T13:55:36Z",
+   "mission": {
+    "name": "Rivada 1",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "511a3ef8-799e-4723-9293-b954d9d2eb83",
@@ -471,7 +682,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/511a3ef8-799e-4723-9293-b954d9d2eb83/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/511a3ef8-799e-4723-9293-b954d9d2eb83/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -485,7 +696,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-05-06T23:21:39Z",
+   "mission": {
+    "name": "Rivada 10",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
@@ -493,7 +714,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/d08d8b46-353b-4eee-ab5e-e1385b329008/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/d08d8b46-353b-4eee-ab5e-e1385b329008/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -507,7 +728,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-05-06T23:21:54Z",
+   "mission": {
+    "name": "Rivada 11",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
@@ -515,7 +746,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/bf5c6fa2-3add-49ff-aad6-c6450148cd89/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/bf5c6fa2-3add-49ff-aad6-c6450148cd89/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -529,7 +760,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-05-06T23:22:11Z",
+   "mission": {
+    "name": "Rivada 12",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "20fa8dc4-8cab-41cf-b452-98a2620f7e86",
@@ -537,7 +778,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/20fa8dc4-8cab-41cf-b452-98a2620f7e86/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/20fa8dc4-8cab-41cf-b452-98a2620f7e86/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -551,7 +792,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2025-11-14T13:55:53Z",
+   "mission": {
+    "name": "Rivada 2",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "ab932c60-d808-4825-ab71-b6fe0a745f15",
@@ -559,7 +810,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/ab932c60-d808-4825-ab71-b6fe0a745f15/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/ab932c60-d808-4825-ab71-b6fe0a745f15/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -573,7 +824,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2025-11-14T13:56:06Z",
+   "mission": {
+    "name": "Rivada 3",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "2f31a7f0-968a-448d-b447-333bf0341078",
@@ -581,7 +842,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/2f31a7f0-968a-448d-b447-333bf0341078/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/2f31a7f0-968a-448d-b447-333bf0341078/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -595,7 +856,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2025-11-14T13:56:21Z",
+   "mission": {
+    "name": "Rivada 4",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
@@ -603,7 +874,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/fa895702-687b-4ba3-95fb-9462a2c9844b/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/fa895702-687b-4ba3-95fb-9462a2c9844b/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -617,7 +888,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2025-11-14T13:56:38Z",
+   "mission": {
+    "name": "Rivada 5",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "46d6822b-82aa-452c-aa34-80b6f052de84",
@@ -625,7 +906,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/46d6822b-82aa-452c-aa34-80b6f052de84/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/46d6822b-82aa-452c-aa34-80b6f052de84/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -639,7 +920,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2025-11-14T13:56:53Z",
+   "mission": {
+    "name": "Rivada 6",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "1fa3741c-3339-4954-a026-2cd9d36161c0",
@@ -647,7 +938,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/1fa3741c-3339-4954-a026-2cd9d36161c0/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/1fa3741c-3339-4954-a026-2cd9d36161c0/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -661,7 +952,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-05-06T23:20:50Z",
+   "mission": {
+    "name": "Rivada 7",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "7d77bd89-af23-4a5a-b632-de0034003a64",
@@ -669,7 +970,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/7d77bd89-af23-4a5a-b632-de0034003a64/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/7d77bd89-af23-4a5a-b632-de0034003a64/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -683,7 +984,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-05-06T23:21:05Z",
+   "mission": {
+    "name": "Rivada 8",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
@@ -691,7 +1002,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/5ce7e9b6-b471-4a88-891f-2a6f21cb369f/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/5ce7e9b6-b471-4a88-891f-2a6f21cb369f/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -705,7 +1016,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-05-06T23:21:22Z",
+   "mission": {
+    "name": "Rivada 9",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "0a07a23e-606a-4589-bf3e-c3e41bd4de51",
@@ -713,7 +1034,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/0a07a23e-606a-4589-bf3e-c3e41bd4de51/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/0a07a23e-606a-4589-bf3e-c3e41bd4de51/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -727,7 +1048,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-07-17T13:37:48Z",
+   "mission": {
+    "name": "SDA Tranche 2 Tracking Layer A",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
@@ -735,7 +1066,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/cb1762f0-90f4-4902-a5f6-655a7ade25bf/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/cb1762f0-90f4-4902-a5f6-655a7ade25bf/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -749,7 +1080,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-07-17T13:38:06Z",
+   "mission": {
+    "name": "SDA Tranche 2 Tracking Layer B",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
@@ -757,7 +1098,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/c703fab3-2ce4-4cf1-861d-754da3f3ad42/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/c703fab3-2ce4-4cf1-861d-754da3f3ad42/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -771,7 +1112,17 @@
     "location": {
      "name": "Vandenberg SFB, CA, USA"
     }
-   }
+   },
+   "last_updated": "2026-07-17T13:35:07Z",
+   "mission": {
+    "name": "SDA Tranche 2 Transport Layer A",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "4c78e865-8f03-4f47-a081-b507da270d19",
@@ -779,7 +1130,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/4c78e865-8f03-4f47-a081-b507da270d19/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/4c78e865-8f03-4f47-a081-b507da270d19/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -793,7 +1144,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2025-12-17T00:01:28Z",
+   "mission": {
+    "name": "USSF-31",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Geostationary Orbit",
+     "abbrev": "Direct-GEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "fc1bd321-e502-4d0f-81f4-1926dece81c6",
@@ -801,7 +1162,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/fc1bd321-e502-4d0f-81f4-1926dece81c6/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/fc1bd321-e502-4d0f-81f4-1926dece81c6/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -815,7 +1176,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2024-10-05T03:22:08Z",
+   "mission": {
+    "name": "VICTUS SURGO",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
@@ -823,7 +1194,7 @@
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/c1bd775a-2fff-45bb-9726-765b69817c19/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/c1bd775a-2fff-45bb-9726-765b69817c19/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -837,7 +1208,17 @@
     "location": {
      "name": "Kennedy Space Center, FL, USA"
     }
-   }
+   },
+   "last_updated": "2023-11-01T20:35:10Z",
+   "mission": {
+    "name": "USSF-75",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Geostationary Orbit",
+     "abbrev": "Direct-GEO"
+    }
+   },
+   "vehicle": "Falcon Heavy"
   },
   {
    "id": "de3d5d91-f115-4a86-b923-203a91a08735",
@@ -845,7 +1226,7 @@
    "net": "2027-01-31T00:00:00Z",
    "window_start": "2027-01-31T00:00:00Z",
    "window_end": "2027-01-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/de3d5d91-f115-4a86-b923-203a91a08735/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/de3d5d91-f115-4a86-b923-203a91a08735/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -859,7 +1240,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-01-30T23:49:40Z",
+   "mission": {
+    "name": "Axiom Space Mission 5",
+    "type": "Tourism",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "542a51bb-2351-48b9-98c5-9db130fb4c29",
@@ -867,7 +1258,7 @@
    "net": "2027-01-31T00:00:00Z",
    "window_start": "2027-01-31T00:00:00Z",
    "window_end": "2027-01-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.2.0/launch/542a51bb-2351-48b9-98c5-9db130fb4c29/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/542a51bb-2351-48b9-98c5-9db130fb4c29/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -881,7 +1272,17 @@
     "location": {
      "name": "Cape Canaveral SFS, FL, USA"
     }
-   }
+   },
+   "last_updated": "2026-02-24T17:09:27Z",
+   "mission": {
+    "name": "SDA Tranche 2 Transport Layer C",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   }
  ]
 }

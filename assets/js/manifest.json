@@ -119,11 +119,13 @@
       ]
     },
     "calendar": {
-      "file": "/assets/js/calendar.bundle.b95ef1f67b.js",
-      "bytes": 22137,
+      "file": "/assets/js/calendar.bundle.bf141e1138.js",
+      "bytes": 36033,
       "sources": [
         "calendar-merge.js",
-        "calendar.js"
+        "calendar-studio-model.js",
+        "calendar-studio-view.js",
+        "calendar-studio.js"
       ]
     },
     "fsd-europe": {
