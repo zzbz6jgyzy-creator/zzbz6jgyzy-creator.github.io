@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T12:12:44Z",
+  "updated": "2026-10-24T12:59:47Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3365,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 180,
+      "count": 184,
       "fleet": 3365,
-      "percent": 5.3,
+      "percent": 5.5,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -81,9 +81,9 @@
         "TR"
       ],
       "countryCounts": {
-        "US": 55,
+        "US": 57,
         "GB": 30,
-        "DE": 13,
+        "DE": 14,
         "FR": 12,
         "DK": 8,
         "NL": 7,
@@ -93,7 +93,7 @@
         "CA": 5,
         "TW": 4,
         "ES": 4,
-        "CZ": 3,
+        "CZ": 4,
         "NO": 3,
         "PL": 3,
         "IS": 2,
@@ -112,9 +112,9 @@
         "QA": 1,
         "TR": 1
       },
-      "pending": 108,
+      "pending": 104,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-24T12:05:19Z"
+      "lastSeen": "2026-10-24T12:46:13Z"
     },
     {
       "id": "2026.38.5.5",
@@ -224,7 +224,7 @@
         "MX": 2,
         "CA": 1
       },
-      "pending": 13,
+      "pending": 12,
       "firstSeen": "2026-10-20T07:52:55Z",
       "lastSeen": "2026-10-24T10:08:42Z"
     },
@@ -263,7 +263,7 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 1019,
+      "count": 1020,
       "fleet": 3365,
       "percent": 30.3,
       "fsd": null,
@@ -311,7 +311,7 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 953,
+        "US": 954,
         "CA": 59,
         "MX": 4,
         "UA": 2,
@@ -319,13 +319,13 @@
       },
       "pending": 47,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-24T11:24:11Z"
+      "lastSeen": "2026-10-24T12:12:18Z"
     },
     {
       "id": "2026.38.5",
       "date": "2026-10-10",
       "count": 137,
-      "fleet": 3364,
+      "fleet": 3365,
       "percent": 4.1,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
