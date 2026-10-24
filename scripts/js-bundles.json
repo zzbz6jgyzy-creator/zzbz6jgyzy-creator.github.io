@@ -108,10 +108,9 @@
       "mobility-workspace.js"
     ],
     "autonomy": [
-      "fsd-data.js",
-      "fsd-europe-data.js",
-      "cybercab-data.js",
-      "autonomy.js"
+      "autonomy-evidence-model.js",
+      "autonomy-evidence-view.js",
+      "autonomy-evidence.js"
     ],
     "roadster": [
       "roadster-studio-model.js",
@@ -291,7 +290,6 @@
     "autonomy.html": {
       "bundles": [
         "core",
-        "intel",
         "autonomy"
       ],
       "grow": [

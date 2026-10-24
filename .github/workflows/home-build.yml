@@ -41,6 +41,9 @@ on:
       - personal-home.css
       - personal-model.js
       - personal-home.js
+      - scripts/build-autonomy-evidence.mjs
+      - data/autonomy-evidence.json
+      - autonomy-evidence.css
       - scripts/build-noscript.mjs
       - scripts/build-tracker-snapshots.mjs
       - scripts/build-js.mjs
