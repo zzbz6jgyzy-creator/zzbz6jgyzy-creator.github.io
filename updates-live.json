@@ -1,16 +1,37 @@
 {
-  "updated": "2026-10-24T18:53:13Z",
+  "updated": "2026-10-24T19:43:51Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3360,
-  "latest": "2026.38.3.2",
+  "latest": "2026.38.5.11",
   "versions": [
+    {
+      "id": "2026.38.5.11",
+      "date": "2026-10-24",
+      "count": 0,
+      "fleet": 3360,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": "14.3.13",
+      "features": [
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        }
+      ],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 1,
+      "firstSeen": "2026-10-24T19:43:09Z",
+      "lastSeen": "2026-10-24T19:43:09Z"
+    },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 199,
+      "count": 200,
       "fleet": 3360,
-      "percent": 5.9,
+      "percent": 6.0,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -60,13 +81,13 @@
         "AT",
         "CH",
         "PL",
+        "NO",
         "CZ",
         "ES",
         "TW",
-        "NO",
         "BG",
-        "SE",
         "IS",
+        "SE",
         "UA",
         "IL",
         "HU",
@@ -94,13 +115,13 @@
         "AT": 5,
         "CH": 5,
         "PL": 4,
+        "NO": 4,
         "CZ": 4,
         "ES": 4,
         "TW": 4,
-        "NO": 3,
         "BG": 2,
-        "SE": 2,
         "IS": 2,
+        "SE": 2,
         "UA": 1,
         "IL": 1,
         "HU": 1,
@@ -116,9 +137,9 @@
         "QA": 1,
         "TR": 1
       },
-      "pending": 88,
+      "pending": 87,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-24T18:37:20Z"
+      "lastSeen": "2026-10-24T19:18:51Z"
     },
     {
       "id": "2026.38.5.5",
@@ -950,71 +971,6 @@
       "pending": 0,
       "firstSeen": "2026-09-16T19:37:54Z",
       "lastSeen": "2026-09-29T22:44:10Z"
-    },
-    {
-      "id": "2026.27.300",
-      "date": "2026-09-15",
-      "count": 38,
-      "fleet": 3360,
-      "percent": 1.1,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [
-        {
-          "title": "FSD (Supervised)",
-          "text": "Under your supervision, FSD (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other vehicles and ob\u2026"
-        },
-        {
-          "title": "Minor Fixes",
-          "text": "This release contains minor fixes and improvements"
-        },
-        {
-          "title": "\"Hey Grok\"",
-          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
-        },
-        {
-          "title": "Apple Music",
-          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
-        },
-        {
-          "title": "Automatic Navigation",
-          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
-        },
-        {
-          "title": "Camera Preview",
-          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
-        },
-        {
-          "title": "Caraoke with Scoring",
-          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
-        },
-        {
-          "title": "Custom Wraps",
-          "text": "Use the Mobile App to upload custom wrap designs from images on your phone and send directly to your Tesla. Go to Creations > Wrap > Upload. Requires Mobile App v4.59.0 or later. To access in car, go to App Launcher > T\u2026"
-        }
-      ],
-      "countries": [
-        "NL",
-        "BE",
-        "DK",
-        "LT",
-        "SI",
-        "CZ",
-        "SK"
-      ],
-      "countryCounts": {
-        "NL": 21,
-        "BE": 8,
-        "DK": 4,
-        "LT": 2,
-        "SI": 1,
-        "CZ": 1,
-        "SK": 1
-      },
-      "pending": 1,
-      "firstSeen": "2026-09-15T16:48:19Z",
-      "lastSeen": "2026-10-01T13:29:51Z"
     },
     {
       "id": "2026.32.3",
