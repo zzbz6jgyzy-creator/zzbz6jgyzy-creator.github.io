@@ -1,10 +1,59 @@
 {
-  "updated": "2026-10-24T19:43:51Z",
+  "updated": "2026-10-24T20:05:37Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3360,
-  "latest": "2026.38.5.11",
+  "latest": "2026.38.5.6",
   "versions": [
+    {
+      "id": "2026.38.5.6",
+      "date": "2026-10-24",
+      "count": 0,
+      "fleet": 3360,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Carpark, Indoor Carpark, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted\u2026"
+        },
+        {
+          "title": "Brake Confirm",
+          "text": "Brake Confirm for the Start Self-Driving button is now defaulted off. When disabled, Start Self-Driving will not require you to press and release the brake to confirm engagement. You can enable Brake Confirm in Self-Dri\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.12 Down Under",
+          "text": "Full Self-Driving (Supervised) v14.3.12 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Driver profile now has a stronger impact on behavior. The more assertive the profile, t\u2026"
+        },
+        {
+          "title": "UI Improvements",
+          "text": "- You can now view your Self-Driving stats under Controls > Self-Driving. - Start Self-Driving with a tap of the touchscreen from Park, or any time during your drive. - Adjust settings like the Speed Profile and Arrival\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        }
+      ],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 88,
+      "firstSeen": "2026-10-24T19:52:52Z",
+      "lastSeen": "2026-10-24T19:52:52Z"
+    },
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
@@ -18,11 +67,39 @@
         {
           "title": "Automatic Collision Evasion",
           "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.13",
+          "text": "Full Self-Driving (Supervised) v14.3.13 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Dynamic Headlight Leveling",
+          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
+        },
+        {
+          "title": "Emergency Drive Away",
+          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Powershare with Powerwall",
+          "text": "Powershare Home Backup with Powerwall keeps your home powered longer during an outage. When parked and plugged in, your vehicle now backs up your home alongside your Powerwall, down to the discharge limit you set. Requi\u2026"
         }
       ],
       "countries": [],
       "countryCounts": {},
-      "pending": 1,
+      "pending": 7,
       "firstSeen": "2026-10-24T19:43:09Z",
       "lastSeen": "2026-10-24T19:43:09Z"
     },
@@ -192,7 +269,7 @@
         "AU": 128,
         "NZ": 8
       },
-      "pending": 14,
+      "pending": 11,
       "firstSeen": "2026-10-21T02:20:52Z",
       "lastSeen": "2026-10-24T16:25:06Z"
     },
@@ -918,59 +995,6 @@
       "pending": 11,
       "firstSeen": "2026-09-23T02:08:40Z",
       "lastSeen": "2026-10-23T22:14:05Z"
-    },
-    {
-      "id": "2026.28.5",
-      "date": "2026-09-16",
-      "count": 5,
-      "fleet": 3360,
-      "percent": 0.1,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [
-        {
-          "title": "Arrival Options",
-          "text": "- You can now select an arrival option such as Carpark, Indoor Carpark, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted\u2026"
-        },
-        {
-          "title": "Brake Confirm",
-          "text": "Brake Confirm for the Start Self-Driving button is now defaulted off. When disabled, Start Self-Driving will not require you to press and release the brake to confirm engagement. You can enable Brake Confirm in Self-Dri\u2026"
-        },
-        {
-          "title": "FSD (Supervised) v14.3.9 Down Under",
-          "text": "Full Self-Driving (Supervised) v14.3.9 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neur\u2026"
-        },
-        {
-          "title": "Full Self-Driving (Supervised) Down Under",
-          "text": "Under your supervision, Full Self-Driving (Supervised) Down Under can drive your Tesla almost anywhere. It will make lane changes, select forks to follow your navigation route, navigate around other vehicles and objects\u2026"
-        },
-        {
-          "title": "Minor Fixes",
-          "text": "This release contains minor fixes and improvements"
-        },
-        {
-          "title": "Speed Profiles",
-          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Driver profile now has a stronger impact on behavior. The more assertive the profile, t\u2026"
-        },
-        {
-          "title": "UI Improvements",
-          "text": "- You can now view your Self-Driving stats under Controls > Self-Driving. - Start Self-Driving with a tap of the touchscreen from Park, or any time during your drive. - Adjust settings like the Speed Profile and Arrival\u2026"
-        },
-        {
-          "title": "Apple Music",
-          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
-        }
-      ],
-      "countries": [
-        "AU"
-      ],
-      "countryCounts": {
-        "AU": 5
-      },
-      "pending": 0,
-      "firstSeen": "2026-09-16T19:37:54Z",
-      "lastSeen": "2026-09-29T22:44:10Z"
     },
     {
       "id": "2026.32.3",
