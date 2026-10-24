@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T03:05:57Z",
+  "updated": "2026-10-24T03:34:25Z",
   "items": [
     {
       "id": "d0137257ceff",
@@ -9,6 +9,7 @@
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPZUZlU3hydG1RZmxEcVRFVElhR0E3SUpHeGN6Wlk4SUdGMXMyS2hqYUdBLXNWOGh2ZlplWVlDT05tYm9sNmM2bEx3NWc5NUVpZFVXbk1xSHlRTklZMlBEcVpVZ2FBb09yQVQ5ZTgyTElqd3VJeERkSlZEU1h0QkNhaXV6UWZ3VzNlNXNVZW5UNHRDdnM?oc=5",
       "published": "2026-10-24T02:35:00Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.Q45HUNChC5UEtXMd0rLnXA&pid=News&w=640",
       "kind": "launch",
       "score": 12
     },
@@ -31,6 +32,19 @@
       "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQV1ZWUzRWaGZaaWE3WEhkM3ZwSXpfWUQxZWFWVW9FOUhMR2RPejcxbUsxcmNUNC1pTlZuVDlYYVlJWVZnV1o3TEE5eE15VjJJQVd1RGYySWt3VkpCVnFsajVzcFp2MWh5Y3p2ZkV6RWRlWDFMclRIUWxqVm5jWVdJZkpTcW55c0EwMFFtWUsySQ?oc=5",
       "published": "2026-10-24T02:07:49Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.3RctOcmvCML7z2B8MGSgDw&pid=News&w=640",
+      "kind": "general",
+      "score": 8
+    },
+    {
+      "id": "9197d9e5ccb9",
+      "topic": "spacex",
+      "title": "SpaceX: A Futuristic Berkshire Hathaway, or Just a Mess?",
+      "source": "WSJ",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNb1RMMm9xckt1YnNRZXdCUWFQVUh4aGlIUnBCbGJLbnFWdTBkcTV4ZWlxbkFiTHJuaGJBZWRtMFhTS19EYkdzUDg1ak9idms4S0RjemJLeE16OFBaTnlFb2lyMElKOGFkVWNtUnZLRklOSXhMdnplQl8yUWNObHRDbFJZcjVTSFNHbG1FZEZQN2c?oc=5",
+      "published": "2026-10-24T02:01:17Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.bC3FdKLyR2642xDbNIWoGw&pid=News&w=640",
       "kind": "general",
       "score": 8
     },
@@ -219,17 +233,6 @@
       "score": 8
     },
     {
-      "id": "90e64db7b20c",
-      "topic": "spacex",
-      "title": "The mobile ambitions of SpaceX are hitting telecom stocks again. Here’s what the latest developments mean.",
-      "source": "MarketWatch",
-      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSVU5OHZWNDBTRE40bzRMTnpYS3NrMlRkSWJmNDE3NWQwQk52N3BfLWpSU2xjWUh0cGtOVmphNm85V2hCY3pDNV9wTXk1Sktrc0xVdFhOSm12UGo5b21weElPVWZCUDdLYnEzbTU0QWZlTjRidVFiNVNmNkJoTkZHLTdGaGJlcjUzYVhUbzUxazYxdVhOYTdmeUVibnFWSzZ4VWhtU2pvWlJjd20xMWNhejNRNVl6bnp0LTZkczcxQ3h0OXRKeEZhdDYxZVR4TEV5RUtGLUZ4RQ?oc=5",
-      "published": "2026-10-23T21:11:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "ee177c6e93ba",
       "topic": "spacex",
       "title": "SpaceX Cell Site Report Hits Verizon, AT&T, Lifts These Tower Plays",
@@ -240,6 +243,17 @@
       "image": "https://www.bing.com/th?id=ONUT.XSUAtwz6K-Umd6meeAHxcA&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "4fcb5594998b",
+      "topic": "spacex",
+      "title": "T-Mobile US falls 8% amid SpaceX competition concerns (TMUS:NASDAQ)",
+      "source": "Seeking Alpha",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPRlk3TVB5QTJOWFVsajM0RGlPanBxQVBUMURpQ2FBc2NrUFU4aldPYzNTdXNac0hhUDdLdDBkdnYtY3RydGtqQ2FNb2dadUQxb25DcC1NdlBnNWJac3lBcUI0Vi1vYmZMaG1vbWZ2dUotdTFGS3JmRHM3Rl9DdXIxUV9xWXR3WHN6dVNTWTVrVDZINGZkb3R1U1JxRWRrdDA?oc=5",
+      "published": "2026-10-23T20:48:49Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 0
     },
     {
       "id": "18e32e3dee38",
@@ -259,9 +273,9 @@
       "title": "SpaceX-Tesla Merger? | Zuckerberg's Deal | The Rundown",
       "source": "Bloomberg.com",
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOZFJIbHlKb3g3Ry1fLWlfUlh2STlFTEFBdlZDdTBCRk1vekhULThfMTYyQndYeUV1Q2xlY19QSlRoa0wyYVU4R3Jvb0tmc0NqZFBzNkd0MXYwSURRX3l6MXhJRTBRMjdFYkx3NW12eEdCcHBxbThrcnVqUXdjSVpnREppd19taHFDVHozTHdGOVJaRjN5RHhhd2JRTW5qN1FUMkMxdlJOSV9Kbk8wc2kzTnhCdGFOdlloRklYS2E5NzY?oc=5",
-      "published": "2026-10-23T19:57:13Z",
+      "published": "2026-10-23T19:56:38Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.GngZ_va-ItSq36AjisQc0A&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.6gewdjTLbgKGvUhU3WPQRA&pid=News&w=640",
       "kind": "general",
       "score": 8
     },
@@ -348,6 +362,18 @@
       "score": 4
     },
     {
+      "id": "6239ce5887d2",
+      "topic": "spacex",
+      "title": "SpaceX stock gets $250 target after rare sell-to-buy upgrade",
+      "source": "TheStreet on MSN",
+      "url": "https://www.msn.com/en-us/money/top-stocks/spacex-stock-gets-250-target-after-rare-sell-to-buy-upgrade/ar-AA2fXxZ9",
+      "published": "2026-10-23T17:07:00Z",
+      "snippet": "Phillip Securities' Glenn Thum upgraded SpaceX stock from Sell to Buy, raising his price target from $75 to $250 after strong AI cloud results.",
+      "image": "https://www.bing.com/th?id=ONUT.JAWgy2767EJfPnhm84sBsA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "8d72b93c69bd",
       "topic": "spacex",
       "title": "Musk's SpaceX is still restricting Starlink in Ukraine and the toll is rising",
@@ -355,7 +381,6 @@
       "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQYjB0ajNsNWZfY2NFTjVUZWlxX2R6MkRYdXBPOWppd0FLai1iWEs5QU1VSzJRUnpUZzJfamt1QllWb3YtRVBUUnkwWUZCaTVMSXZ5TFpfTjBQTjI2cG5jb0lqYng5UWpxZm9GS1lsWmVxTE1lenhTQzM3RV9LbDBHVjdsRE1yYXAtQVZtS2piNTZSVG9SSHVIVExDMDFXM1BXbWxkZjRn0gGrAUFVX3lxTFBXclJxa3ZYd2VFcmowXzdJNVZqajM0TXVTM1RtcVZMeEZELTBKZktWTkZRX3NDY2t4R3VyT2NfVG0zTkxNMGdYLTdsNkxsNVY5eEhxdTI4cWwzTUt3eFB2eEtUSmx0X2Uza1kxQURNR2RZRDFtVm5aaG1xaUI1RHE2ZnNvaWdfOHdhUFVJN2VINGlQRlQxUnJjeWlqQzQ0b2VIMjQzSC11Qng2bw?oc=5",
       "published": "2026-10-23T17:04:14Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.b77MBoywpyu0LUxikZi_mw&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -367,7 +392,7 @@
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNRl9aOXcyWXhEc3FKR0VIU0Y4NGg3eTlrYWg0N3VIMVJIejJ5N1V3U3RRQllVV1NOaEJ2a2FNcEExNHQ2ZzlOY1NJWFhNR1hVN2F6anR5MjZsRWRpWHBVVXAwOEZ1LUdzbWJCb2RTX0hIaVVodlFKUDhxX0FQT0hlTHB2SEZzRTl2ak1nLXFtNHJnQ0FlRU1wYkNvdXcyc1NvMi1YcVRpc2VRUUVxYjkwakVEMUZOME1yTjFja2JpRTI?oc=5",
       "published": "2026-10-23T16:36:41Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.5wweyYaPHT7pxR3Y_6f7Ig&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.iPiqk-451uQ6dI70E948WA&pid=News&w=640",
       "kind": "general",
       "score": 9
     },
@@ -442,18 +467,6 @@
       "score": -2
     },
     {
-      "id": "838fee2f71c3",
-      "topic": "spacex",
-      "title": "In Canada, This Carrier Wants to Deepen SpaceX Ties on Cellular, Not Fight It",
-      "source": "PCMag",
-      "url": "https://www.pcmag.com/news/in-canada-this-carrier-wants-to-deepen-spacex-ties-on-cellular-not-fight",
-      "published": "2026-10-23T14:29:00Z",
-      "snippet": "Unlike the big three carriers in the US, Canada's Rogers Communications doesn't expect SpaceX's cellular ambitions to travel north of the border.",
-      "image": "https://www.bing.com/th?id=ONUT.x6nW6ERHJdBrRg52SX2r7Q&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "b4932ed8bb9c",
       "topic": "tesla",
       "title": "Tesla Says It's Weeks Away From Selling Steering Wheel, Pedal-Free Cybercabs to Private Buyers: TDS",
@@ -464,6 +477,19 @@
       "image": "https://www.bing.com/th?id=ONUT.-3SZZz7BaAgTz11VII2RDw&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "9a715f572293",
+      "topic": "tesla",
+      "title": "Fort Bend offers Tesla tax breaks for $10B solar plant that could bring nearly 10,000 jobs",
+      "source": "Houston Chronicle on MSN",
+      "url": "https://www.msn.com/en-us/money/economy/fort-bend-offers-tesla-tax-breaks-for-10b-solar-plant-that-could-bring-nearly-10-000-jobs/ar-AA2fWKYA?ocid=BingNewsVerp",
+      "published": "2026-10-23T14:11:47Z",
+      "snippet": "Fort Bend County is offering Tesla a 30-year tax break as it competes for a $10 billion solar-panel plant and nearly 10,000 jobs.",
+      "image": "https://www.bing.com/th?id=ONUT.8WBOaZFtD4UyGtL1JmgdKw&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 1
     },
     {
       "id": "ba5d5ecacc1d",
@@ -478,18 +504,6 @@
       "score": 1
     },
     {
-      "id": "165ecd28412d",
-      "topic": "spacex",
-      "title": "AT&T, T-Mobile, Verizon Fight FCC Satellite Proposal That Helps SpaceX",
-      "source": "PCMag",
-      "url": "https://www.pcmag.com/news/att-t-mobile-verizon-fight-fcc-satellite-proposal-that-helps-spacex",
-      "published": "2026-10-23T12:35:00Z",
-      "snippet": "Former FCC Chairman Ajit Pai even joined in, urging the Commission to drop a wide swath of radio waves for a spectrum proposal that could help SpaceX's cellular ambitions.",
-      "image": "https://www.bing.com/th?id=ONUT.b20JM09399lTxKrSt0wtSg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "1ce3f11e9aed",
       "topic": "spacex",
       "title": "SpaceX Stock Catches Rare Double Upgrade. How Shares Can Rise 70%.",
@@ -498,17 +512,6 @@
       "published": "2026-10-23T12:06:00Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.kDymZb9yNHU6m7_MmQEVhg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "a493849738a9",
-      "topic": "spacex",
-      "title": "SpaceX Mobile Wireless Ambition Sends Crown Castle Stock Soaring",
-      "source": "Barron's",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQTVhmeTZRakhFeHp5cTAwd1c0TjJnck9tdGZTS1pDUF85dXJvbWhaVE5wQ1VLWVBYWl9RS1ZZaTNYZk5lWE5sZkpQSEd6LXdoWUZrSXdqVXdjLW16blRfY1JkSTlnYmNfeVl0eUVtS2ZEckJBX1p4R181dUk2TjhOMUpKRkhNTkhxNE85bg?oc=5",
-      "published": "2026-10-23T11:24:00Z",
-      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -532,7 +535,6 @@
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQWE1lVmZRVTlpUVdKREIxNnpXN1Z0N1ZNUG93cmdCOFl2Yk5Wcm9xalVNV1ptbTdfTDB0bTZKbjFPYm41VVozYlhyNmdwdGFBWnJWQ1dWZ1VYS3ZzdnZraXVzNGlOWTAxdFkwRXI1cE1NOE5HV0NHMDlPYzhEQWNTcHQ5T0gwMWRxQk9rdnE5N0x0b05ncU5UajZNcmJkejE0WVBPeUFzSDc5c2FIdTBIZGMwdTNabjNkYzJybTNNUVk?oc=5",
       "published": "2026-10-23T11:00:57Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ZBYwMThqFKstaUy4j9odHg&pid=News&w=640",
       "kind": "launch",
       "score": 15
     },
@@ -594,6 +596,18 @@
       "score": 4
     },
     {
+      "id": "dd9ac24f481b",
+      "topic": "spacex",
+      "title": "Explainer - What is going on with SpaceX's Starlink and Starshield in Ukraine?",
+      "source": "Reuters on MSN",
+      "url": "https://www.msn.com/en-us/news/other/explainer-what-is-going-on-with-spacexs-starlink-and-starshield-in-ukraine/ar-AA2fVHWb?ocid=BingNewsVerp",
+      "published": "2026-10-23T08:59:48Z",
+      "snippet": "WASHINGTON/KYIV, Oct 23 (Reuters) - Ukraine's military has been hit this month by restrictions on Starshield, the military version of SpaceX's Starlink satellite communications system. Its receivers stopped functioning w",
+      "image": "https://www.bing.com/th?id=ONUT.M7e-zbLvVNH2EU3gjq_Y5g&pid=News&w=640",
+      "kind": "general",
+      "score": 9
+    },
+    {
       "id": "c639ffcd0a80",
       "topic": "spacex",
       "title": "Despite Trump Outreach to Musk, Starlink Speeds Still Restricted in Ukraine",
@@ -627,19 +641,6 @@
       "snippet": "",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "dd2ba33f6bee",
-      "topic": "spacex",
-      "title": "AT&T, Verizon, T-Mobile Shares Slip As SpaceX Reportedly Holds Cell Tower Talks For Starlink Mobile",
-      "source": "Forbes on MSN",
-      "url": "https://www.msn.com/en-us/news/other/at-t-verizon-t-mobile-shares-slip-as-spacex-reportedly-holds-cell-tower-talks-for-starlink-mobile/ar-AA2fUmNK",
-      "published": "2026-10-23T08:12:00Z",
-      "snippet": "The report of SpaceX’s talks with key cell tower companies comes just weeks after Musk’s company secured a deal to acquire nationwide low-band wireless spectrum.",
-      "image": "https://www.bing.com/th?id=ORMS.a239e02656fe4cfce49c520eb73c8b69&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
     },
     {
       "id": "8bb38ccf0516",
@@ -676,18 +677,6 @@
       "score": 4
     },
     {
-      "id": "51dd5e115e55",
-      "topic": "tesla",
-      "title": "A Startup Spent 11 Years Building Flying Cars. Now Tesla Is Paying Attention",
-      "source": "Inc.com",
-      "url": "https://www.inc.com/jennifer-knowles/a-startup-spent-11-years-building-flying-cars-now-tesla-is-paying-attention/91423302",
-      "published": "2026-10-23T06:00:00Z",
-      "snippet": "When a major competitor like Tesla enters your market, protect your advantage by focusing on your unique expertise and experience.",
-      "image": "https://www.bing.com/th?id=ONUT.vhukTyR0ZsyakcsMPnHsEA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "36c660bee734",
       "topic": "grok",
       "title": "Hackers Used Claude and Grok to Automate Cyberattacks on Over 400 Banks and Financial Firms",
@@ -695,6 +684,18 @@
       "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9KVmpwSVRYNXhDMTRzU2dmdlBLNkdsdlVpeWpDZXBMVVFrUXdNQXlUQ3d1RV9oTkFRVmJvbkM0M3k4b1JFOGhVcTZBaWdWMzc4Znc1OVNZZWRkVTZ2cThfbmJNdVNraEY5Vk000gH8AUFVX3lxTE51alFzY3ZGcGlPUUhaLUdZV2JiOEJMeEE5R2RDYmU2cFZHeUQ1c1BwVWhaY1oyUHRTMzJjTnp3U2VsOHVFQ1ZNcUMzazkycjFlNmQtSTZmaFFQZ19EaDJIbTB4akEzajQyOV9EVF83OHJBemhfQTBxOE4tUmtvbUtMaEJWUmtfaHJ0SjZ2WnNtQ0E3VWx3MUZXYlg5NnZSTE51OHNfNHgzc19vakhvNW9aZEd6YnRMczh6YUN6eE1tV0NvOTNZYjE5Tl9LQjhZZnVCak1oNVl4aFRNYzJ2cEVoOU94ZnRWSXdVdWtUb2xxLTFJS3FFdmhWUmVNTQ?oc=5",
       "published": "2026-10-23T05:21:17Z",
       "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "c9285af100ea",
+      "topic": "tesla",
+      "title": "Tesla gives up on Cybertruck in Australia. Company says it will refund all deposits it has collected since 2019 for the troubled truck",
+      "source": "24/7 Wall St. on MSN",
+      "url": "https://www.msn.com/en-us/news/other/tesla-gives-up-on-cybertruck-in-australia-company-says-it-will-refund-all-deposits-it-has-collected-since-2019-for-the-troubled-truck/ar-AA2fUX4y",
+      "published": "2026-10-23T04:40:46Z",
+      "snippet": "Quick ReadTesla canceled Cybertruck plans for Australia and New Zealand, ending a nearly seven-year wait for tens of thousands of deposit holders who paid $150 each.Tesla will refund deposits within ...",
+      "image": "https://www.bing.com/th?id=ONUT.su-ZJiDcYoGegGD6HxqcXQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -710,18 +711,6 @@
       "score": 4
     },
     {
-      "id": "f482f03cd26f",
-      "topic": "tesla",
-      "title": "Tesla officially cans the Cybertruck for Australia as plans for right-hand drive version are axed completely",
-      "source": "WhichCar",
-      "url": "https://www.whichcar.com.au/news/tesla-cybertruck-cancelled-australia-new-zealand-official-ute",
-      "published": "2026-10-23T04:32:00Z",
-      "snippet": "You won't be seeing the Tesla Cybertruck down under after Tesla notified Aussies who reserved one of the models to let them know there will be no right-hand drive version.",
-      "image": "https://www.bing.com/th?id=ONUT.p6N6_QE6sR8gufBbOjQiOw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "22e332652d54",
       "topic": "tesla",
       "title": "Tesla says it will no longer release the Cybertruck in Australia and New Zealand",
@@ -730,6 +719,18 @@
       "published": "2026-10-23T04:26:04Z",
       "snippet": "People who reserved the Cybertruck in Australia and New Zealand will soon get a refund, because Tesla now won't release it there.",
       "image": "https://www.bing.com/th?id=ONUT.3SfDtr-bwlfsfOwkvqxtsA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "b418d47b759e",
+      "topic": "spacex",
+      "title": "Trump Says He May Call Musk as Zelensky Says Starlink Limits Remain",
+      "source": "Newsweek",
+      "url": "https://www.newsweek.com/trump-says-musk-restored-starlink-as-ukraine-blame-game-deepens-12609254",
+      "published": "2026-10-23T03:40:00Z",
+      "snippet": "Ukraine leans heavily on Starlink and Starshield for mid-range strikes and for intercepting incoming Russian attacks.",
+      "image": "https://www.bing.com/th?id=ONUT.kJ86M8-o5dfmnlFw_ubg3w&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -754,18 +755,6 @@
       "published": "2026-10-23T02:18:00Z",
       "snippet": "Ukraine reports ongoing issues with slow transmission speeds over SpaceX's satellite communications system after Trump insists restrictions are lifted.",
       "image": "https://www.bing.com/th?id=ONUT.Uw23xUg2EkApSxADB9s5kA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "a5e9d3d19678",
-      "topic": "tesla",
-      "title": "Tesla Cybertruck cancelled for Australia, deposits to be refunded",
-      "source": "CarExpert on MSN",
-      "url": "https://www.msn.com/en-au/news/other/tesla-cybertruck-cancelled-for-australia-deposits-to-be-refunded/ar-AA2fT2vP",
-      "published": "2026-10-22T22:54:00Z",
-      "snippet": "Hopes for the Cybertruck’s official local launch have been dashed, with the automaker returning deposits and offering a complimentary FSD subscription with purchases of other models instead.",
-      "image": "https://www.bing.com/th?id=ONUT.0kz_kW7jWxEhCL_nu64mrA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -804,30 +793,6 @@
       "image": "https://www.bing.com/th?id=ONUT.ByiNRwD0CpecQgUhHJmHxQ&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "b5e9286399c1",
-      "topic": "spacex",
-      "title": "Elon Musk's Starlink and Starshield, and what they mean to Ukraine",
-      "source": "CBS News on MSN",
-      "url": "https://www.msn.com/en-us/news/other/elon-musks-starlink-and-starshield-and-what-they-mean-to-ukraine/ar-AA2fMEDy",
-      "published": "2026-10-22T16:21:00Z",
-      "snippet": "Here's what to know about Starlink and Starshield, the technologies Ukraine is relying on in the war against Russia.",
-      "image": "https://www.bing.com/th?id=ORMS.a77d49b6456596055e566d29fc7877f1&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "65210dd8788a",
-      "topic": "tesla",
-      "title": "Tesla's Flying Roadster Still Hasn't Landed With Traders",
-      "source": "TIME",
-      "url": "https://time.com/partner-content/prediction-markets/tesla-flying-roadster-hasnt-landed-with-traders/",
-      "published": "2026-10-22T15:20:00Z",
-      "snippet": "Tesla unveiled a flying version of its Roadster. Elon Musk says Tesla Roadster production will begin in 2028, but prediction-market traders remain skeptical after years of delays and cautious language ...",
-      "image": "https://www.bing.com/th?id=ONUT.R9CjmWP8zaQRzxoKM6zPgg&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
     }
   ]
 }
