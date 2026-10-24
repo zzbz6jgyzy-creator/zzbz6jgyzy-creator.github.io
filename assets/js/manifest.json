@@ -307,6 +307,15 @@
       "sources": [
         "guides/buy-calc.js"
       ]
+    },
+    "personal-home": {
+      "file": "/assets/js/personal-home.bundle.20b667fcf5.js",
+      "bytes": 37852,
+      "sources": [
+        "personal-model.js",
+        "personal-sync.js",
+        "personal-home.js"
+      ]
     }
   }
 }

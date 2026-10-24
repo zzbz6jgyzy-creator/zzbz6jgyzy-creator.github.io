@@ -208,15 +208,16 @@ async function moderation(root){
 }
 function renderAccount(root,saved=false){
   const target=el('p',{class:'sdm-status',role:'status','aria-live':'polite'}),ret=safeReturn(new URLSearchParams(location.search).get('return') || sessionStorage.getItem('sd-member-return') || '/');
-  const back=el('a',{href:ret,class:'sdm-text-button'},ret==='/'?'Back to the homepage →':ARTICLE.test(ret.split('#')[0])?'Return to the article →':'Return to the page →');root.replaceChildren();
+  const back=el('a',{href:ret,class:'sdm-text-button'},ret==='/daily.html'?'Open your personal home →':ret==='/'?'Back to the homepage →':ARTICLE.test(ret.split('#')[0])?'Return to the article →':'Return to the page →');root.replaceChildren();
   if(!user){
     const google=el('button',{type:'button',class:'sdm-button sdm-google'},'Continue with Google');google.addEventListener('click',()=>signIn(target,google));
-    root.append(el('h2',{},'A place for your perspective'),el('p',{},'Create your free member account or sign in to comment, reply and give a thumbs-up.'),google,
+    root.append(el('h2',{},ret==='/daily.html'?'Your Daily, wherever you are.':'A place for your perspective'),el('p',{},ret==='/daily.html'?'Sign in with your existing member account to connect your private personal home. Newsletter signup stays separate.':'Create your free member account or sign in to comment, reply and give a thumbs-up.'),google,
       el('p',{class:'sdm-fine'},'Google handles sign-in. Your email stays private; you choose the name shown with comments. ',el('a',{href:'/community.html'},'Community rules & privacy')),
       el('p',{class:'sdm-fine'},'Membership doesn’t subscribe you to the newsletter.'),target,back);return;
   }
   const signout=el('button',{type:'button',class:'sdm-button sdm-secondary'},'Sign out');signout.addEventListener('click',()=>busy(signout,async()=>{const {error}=await client.auth.signOut({scope:'local'});if(error)throw error;sessionStorage.removeItem('sd-member-return');},target));
-  if(profile?.blocked){root.append(el('p',{},messages.account_blocked),el('a',{href:'mailto:superchargeddaily@gmail.com'},'Contact the editor'),signout,target);return;}
+  if(profile?.blocked){root.append(el('p',{},messages.account_blocked),el('a',{href:'mailto:superchargeddaily@gmail.com'},'Contact the editor'),signout,ret==='/daily.html'?back:null,target);return;}
+  const personal=ret==='/daily.html'?el('div',{class:'sdm-profile-success'},el('strong',{},'Your personal home is ready to connect'),el('p',{},'You can continue without setting up a public comment name. The profile below is for discussions.'),el('a',{href:'/daily.html',class:'sdm-button',onclick:()=>{try{sessionStorage.setItem('sd-personal-connect','1');}catch{}}},'Continue to your personal home →')):null;
   const confirmation=saved?el('div',{class:'sdm-profile-success',role:'status','aria-live':'polite',tabindex:'-1'},
     el('span',{class:'sdm-success-mark','aria-hidden':true},'✓'),el('div',{},el('strong',{},'Your profile is saved'),el('p',{},'You can now comment and give thumbs-up.'))):null;
   const name=el('input',{id:'sd-member-name',name:'display_name',type:'text',required:true,minlength:2,maxlength:40,autocomplete:'nickname',value:profile?.display_name||''});
@@ -232,6 +233,7 @@ function renderAccount(root,saved=false){
     try{profile=await rpc('sd_set_profile',{p_name:name.value,p_accept:accept.checked});renderAccount(root,true);}
     finally{save.textContent='Save profile';}
   },target);});
+  if(personal)root.append(personal);
   if(confirmation)root.append(confirmation);
   root.append(el('h2',{},profile?.display_name?'Your member profile':'Choose how you appear'),form,el('div',{class:'sdm-actions'},signout,back));
   if(confirmation)requestAnimationFrame(()=>{if(confirmation.isConnected){confirmation.focus({preventScroll:true});confirmation.scrollIntoView({block:'center'});}});

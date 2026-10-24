@@ -1,0 +1,48 @@
+name: Personal home checks
+on:
+  pull_request:
+    paths:
+      - 'daily.html'
+      - 'personal-*'
+      - 'theme-boot.js'
+      - 'members.js'
+      - 'community.html'
+      - 'supabase/migrations/202610240001_personal_home.sql'
+      - 'scripts/build-personal-home.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/personal-home*'
+      - '.github/workflows/personal-home-checks.yml'
+      - '.github/workflows/home-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  personal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test tools
+        run: |
+          npm install --no-save --no-package-lock --ignore-scripts esbuild@0.25.12 @electric-sql/pglite@0.5.11
+          python -m pip install playwright==1.62.0
+      - name: Preference, sync and private database checks
+        run: |
+          node --test tests/personal-home.test.mjs
+          node tests/personal-home-db.mjs
+          node scripts/build-personal-home.mjs --saved
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- assets/js daily.html
+      - name: Responsive, returning-reader and mocked account journeys
+        run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/personal-home-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: personal-home-previews
+          path: /tmp/personal-home
