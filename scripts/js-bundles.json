@@ -124,9 +124,11 @@
     ],
     "see-the-launch": [
       "calendar-merge.js",
-      "see-the-launch-data.js",
-      "see-the-launch.js",
-      "live.js"
+      "calendar-studio-model.js",
+      "vendor/launch-geo.js",
+      "launch-viewing-model.js",
+      "launch-viewing-view.js",
+      "launch-viewing.js"
     ],
     "tsla": [
       "calendar-merge.js",
@@ -335,12 +337,7 @@
     "see-the-launch.html": {
       "bundles": [
         "core",
-        "intel",
         "see-the-launch"
-      ],
-      "livePage": "spacex",
-      "grow": [
-        "data-band"
       ]
     },
     "tsla.html": {

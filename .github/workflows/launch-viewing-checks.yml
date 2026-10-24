@@ -1,0 +1,57 @@
+name: Launch viewing observatory checks
+on:
+  pull_request:
+    paths:
+      - 'see-the-launch*'
+      - 'launch-viewing*'
+      - 'data/launch-viewing.json'
+      - 'data/viewing/**'
+      - 'data/calendar-studio.json'
+      - 'calendar-studio-model.js'
+      - 'vendor/launch-geo*'
+      - 'scripts/build-launch-viewing.mjs'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/launch-viewing*'
+      - 'tests/fixtures/launch-viewing.json'
+      - '.github/workflows/launch-viewing-checks.yml'
+      - '.github/workflows/home-build.yml'
+      - '.github/workflows/launches-refresh.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  launch-viewing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned build and browser tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Geometry, UTC light, date precision, forecast intervals and saved output
+        run: |
+          node --test tests/launch-viewing.test.mjs
+          node scripts/test-calendar-dedup.mjs
+          node scripts/test-launch-consistency.mjs
+      - name: Verify generated launch source, saved page and frontend bundle
+        run: |
+          node scripts/build-launch-viewing.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- see-the-launch.html data/launch-viewing.json assets/js/manifest.json 'assets/js/see-the-launch.bundle.*.js'
+      - name: Responsive views, search, field mode, sharing and forecast fallbacks
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/launch-viewing-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: launch-viewing-previews
+          path: /tmp/launch-viewing

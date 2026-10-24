@@ -31,11 +31,10 @@ jobs:
       - run: node scripts/build-fsd-europe.mjs && node scripts/build-js.mjs && python3 scripts/inject-js-bundles.py
       - run: git diff --exit-code -- fsd-europe.html fsd-europe fsd-europe-data.js fsd-data.js assets/js
       - run: pip install playwright==1.62.0
-      - run: python3 -m playwright install chromium --with-deps
       - name: Browser and no-JavaScript checks
-        run: |
-          export CHROMIUM_PATH=$(python3 -c 'from playwright.sync_api import sync_playwright; p=sync_playwright().start(); print(p.chromium.executable_path); p.stop()')
-          python3 tests/fsd-europe-browser.py
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python3 tests/fsd-europe-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
