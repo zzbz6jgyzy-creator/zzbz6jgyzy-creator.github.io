@@ -230,10 +230,34 @@
       "summary": "Explore the robot, six engineering systems, official films, generations and dated evidence on autonomy and production."
     },
     {
+      "url": "/optimus.html#engineering",
+      "title": "Optimus engineering: six connected systems",
+      "tag": "Optimus",
+      "summary": "Vision, hands, actuators, balance, learning and power, with interactive anatomy."
+    },
+    {
+      "url": "/optimus.html#films",
+      "title": "Optimus official Tesla films",
+      "tag": "Optimus",
+      "summary": "Gen 2, Sort & Stretch and We Robot: watch official material with context."
+    },
+    {
+      "url": "/optimus.html#evolution",
+      "title": "Optimus evolution timeline",
+      "tag": "Optimus",
+      "summary": "From the 2021 concept through prototypes and Gen 2 to Tesla-reported early ramp."
+    },
+    {
       "url": "/optimus.html#demos",
       "title": "Optimus demonstration archive",
       "tag": "Optimus",
       "summary": "Nine dated records with attributed control modes, what was shown and what remains unestablished."
+    },
+    {
+      "url": "/optimus.html#questions",
+      "title": "Optimus questions: buying, autonomy and specifications",
+      "tag": "Optimus",
+      "summary": "Sourced answers on availability, price, human assistance and development generations."
     },
     {
       "url": "/optimus.html#ai-day-2021",
@@ -248,16 +272,46 @@
       "summary": "2022-09-30 — A development platform moved on stage, alongside more integrated hardware. Control mode not established. The stand-mounted unit was not shown walking; task autonomy was not established by the stage sequence."
     },
     {
-      "url": "/optimus.html#roadster-reveal-2026",
-      "title": "Optimus: In the seat, not established as the driver",
+      "url": "/optimus.html#sort-stretch-2023",
+      "title": "Optimus: Sorting, with a task-level autonomy claim",
       "tag": "Optimus",
-      "summary": "2026-10-15 — Optimus was shown seated in the Roadster after the car’s demonstration. Control mode not established. The car’s programmed path is not evidence that the robot drove, steered or controlled it."
+      "summary": "2023-09-24 — Object sorting and coordinated body poses in Tesla’s edited footage. Autonomy claimed by Tesla. Tesla calls the sorting autonomous. No independently measured success rate or general task capability follows from the clip."
+    },
+    {
+      "url": "/optimus.html#gen2-2023",
+      "title": "Optimus: Gen 2: revised hardware in motion",
+      "tag": "Optimus",
+      "summary": "2023-12-13 — Tesla presents new actuators and sensors, revised hands and more capable motion. Control mode not established. Edited demonstrations and relative improvement claims are not a final retail specification or a durability test."
+    },
+    {
+      "url": "/optimus.html#shirt-2024",
+      "title": "Optimus: Shirt folding—and an explicit clarification",
+      "tag": "Optimus",
+      "summary": "2024-01-15 — A robot folds a shirt in a prepared setup. Not autonomous: disclosed. Musk explicitly said the task was not autonomous at that time. The exact control method is not independently established here."
+    },
+    {
+      "url": "/optimus.html#cells-2024",
+      "title": "Optimus: Battery cells on a real workstation",
+      "tag": "Optimus",
+      "summary": "2024-05-05 — Cell handling and walking in manufacturer footage; later featured in Tesla’s Q2 update. Autonomy claimed by Tesla. Tesla describes autonomous handling. A continuous shift, standardized intervention rate and independent task-success study are not supplied."
+    },
+    {
+      "url": "/optimus.html#we-robot-2024",
+      "title": "Optimus: An event with mixed control modes",
+      "tag": "Optimus",
+      "summary": "2024-10-10 — Robots appear among guests, interacting and performing. Mixed control: reported. Bloomberg reported human assistance for some interactions and unassisted walking. Do not label the entire event either fully autonomous or entirely remote-controlled."
     },
     {
       "url": "/optimus.html#paris-motor-show-2026",
       "title": "Optimus: A showroom moment, not a capability test",
       "tag": "Optimus",
       "summary": "2026-10-12 — An Optimus displayed on Tesla’s stand. Control mode not established. A static exhibit does not establish walking, factory deployment or autonomy."
+    },
+    {
+      "url": "/optimus.html#roadster-reveal-2026",
+      "title": "Optimus: In the seat, not established as the driver",
+      "tag": "Optimus",
+      "summary": "2026-10-15 — Optimus was shown seated in the Roadster after the car’s demonstration. Control mode not established. The car’s programmed path is not evidence that the robot drove, steered or controlled it."
     },
     {
       "url": "/production.html",
@@ -372,60 +426,6 @@
       "title": "Understanding Collision Evasion",
       "tag": "Explainers",
       "summary": "An overhead visual guide to a developing hazard, driver warnings and possible braking assistance, with the limits kept clear."
-    },
-    {
-      "url": "/optimus.html#engineering",
-      "title": "Optimus engineering: six connected systems",
-      "tag": "Optimus",
-      "summary": "Vision, hands, actuators, balance, learning and power, with interactive anatomy."
-    },
-    {
-      "url": "/optimus.html#films",
-      "title": "Optimus official Tesla films",
-      "tag": "Optimus",
-      "summary": "Gen 2, Sort & Stretch and We Robot: watch official material with context."
-    },
-    {
-      "url": "/optimus.html#evolution",
-      "title": "Optimus evolution timeline",
-      "tag": "Optimus",
-      "summary": "From the 2021 concept through prototypes and Gen 2 to Tesla-reported early ramp."
-    },
-    {
-      "url": "/optimus.html#questions",
-      "title": "Optimus questions: buying, autonomy and specifications",
-      "tag": "Optimus",
-      "summary": "Sourced answers on availability, price, human assistance and development generations."
-    },
-    {
-      "url": "/optimus.html#sort-stretch-2023",
-      "title": "Optimus: Sorting, with a task-level autonomy claim",
-      "tag": "Optimus",
-      "summary": "2023-09-24 — Object sorting and coordinated body poses in Tesla’s edited footage. Autonomy claimed by Tesla. Tesla calls the sorting autonomous. No independently measured success rate or general task capability follows from the clip."
-    },
-    {
-      "url": "/optimus.html#gen2-2023",
-      "title": "Optimus: Gen 2: revised hardware in motion",
-      "tag": "Optimus",
-      "summary": "2023-12-13 — Tesla presents new actuators and sensors, revised hands and more capable motion. Control mode not established. Edited demonstrations and relative improvement claims are not a final retail specification or a durability test."
-    },
-    {
-      "url": "/optimus.html#shirt-2024",
-      "title": "Optimus: Shirt folding—and an explicit clarification",
-      "tag": "Optimus",
-      "summary": "2024-01-15 — A robot folds a shirt in a prepared setup. Not autonomous: disclosed. Musk explicitly said the task was not autonomous at that time. The exact control method is not independently established here."
-    },
-    {
-      "url": "/optimus.html#cells-2024",
-      "title": "Optimus: Battery cells on a real workstation",
-      "tag": "Optimus",
-      "summary": "2024-05-05 — Cell handling and walking in manufacturer footage; later featured in Tesla’s Q2 update. Autonomy claimed by Tesla. Tesla describes autonomous handling. A continuous shift, standardized intervention rate and independent task-success study are not supplied."
-    },
-    {
-      "url": "/optimus.html#we-robot-2024",
-      "title": "Optimus: An event with mixed control modes",
-      "tag": "Optimus",
-      "summary": "2024-10-10 — Robots appear among guests, interacting and performing. Mixed control: reported. Bloomberg reported human assistance for some interactions and unassisted walking. Do not label the entire event either fully autonomous or entirely remote-controlled."
     }
   ]
 }
