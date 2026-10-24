@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-24T20:31:24.164Z",
+  "updated": "2026-10-24T20:46:08.727Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:newest-reporting",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "newest-reporting",
+      "previous": "2026.38.3.2",
+      "next": "2026.38.5.11",
+      "at": "2026-10-24T20:46:07.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample (3360 cars)",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Newest reporting build changed from 2026.38.3.2 to 2026.38.5.11.",
+      "title": "Newest reporting build",
+      "id": "changed|tesla-software:newest-reporting|2026-10-24T20:46:07.000Z|2026.38.5.11"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-imagine-odyssey-episode-1.html",

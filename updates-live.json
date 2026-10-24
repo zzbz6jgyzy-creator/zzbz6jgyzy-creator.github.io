@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T20:05:37Z",
+  "updated": "2026-10-24T20:46:07Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3360,
@@ -50,14 +50,14 @@
       ],
       "countries": [],
       "countryCounts": {},
-      "pending": 88,
+      "pending": 90,
       "firstSeen": "2026-10-24T19:52:52Z",
       "lastSeen": "2026-10-24T19:52:52Z"
     },
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 0,
+      "count": 1,
       "fleet": 3360,
       "percent": 0.0,
       "fsd": null,
@@ -97,11 +97,15 @@
           "text": "Powershare Home Backup with Powerwall keeps your home powered longer during an outage. When parked and plugged in, your vehicle now backs up your home alongside your Powerwall, down to the discharge limit you set. Requi\u2026"
         }
       ],
-      "countries": [],
-      "countryCounts": {},
-      "pending": 7,
+      "countries": [
+        "US"
+      ],
+      "countryCounts": {
+        "US": 1
+      },
+      "pending": 6,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-24T19:43:09Z"
+      "lastSeen": "2026-10-24T20:38:09Z"
     },
     {
       "id": "2026.38.3.2",
