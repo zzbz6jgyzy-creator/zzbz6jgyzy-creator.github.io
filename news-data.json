@@ -1,6 +1,40 @@
 {
-  "updated": "2026-10-23T23:59:22Z",
+  "updated": "2026-10-24T00:50:34Z",
   "items": [
+    {
+      "id": "405daa0cb69e",
+      "topic": "spacex",
+      "title": "Wall Street closes lower to end rocky week",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQR01KeXBjdXBubVRzTlJfWWJTMHctb2hFS2pVT21ydWtZNzBaMldxd1c2ZUJGNWhIeGV6MUxvQVZvSl9GdFh5QThQbFpuT0IwYi02Y3JGM19YSWJ3LXMtb29RbS1WZUljdGtsS2dockxHVm5SWnBSMzJpM0Y4RFItdW5SMzFsdXg2LWtrYWE1SC1TQlkxOERJZHNtQVREdw?oc=5",
+      "published": "2026-10-23T23:46:35Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 9
+    },
+    {
+      "id": "c74e4d189a00",
+      "topic": "tesla",
+      "title": "Tesla plows into Troy home, alleged drunk driver narrowly misses couple",
+      "source": "WXYZ 7 News Detroit",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPdU9kZ01VUEdtZ0ktcU5MVlJGQ0swWUp6eUU0LUFxczVvSGh3VGZETDVoRVRLWExKVTl5dDR0eGxjVWNzeFREZW5fRGE0MTFjMVhfUDRhaXhnSFN1a2JGdldraGMtQjNaai05UE02aTNQcEhxcUxjemY2ZUd4U055SXVTR2EtajZLNDYwTS05VEtROFV1U1g4OXVQUFk?oc=5",
+      "published": "2026-10-23T23:45:34Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.t8jIbZ1m1rh4edrYwoli0A&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "e34f0d984233",
+      "topic": "grok",
+      "title": "How Much Does AI Cost in 2026? The Complete Pricing Comparison",
+      "source": "Fello AI",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1OMVVYdjlTQWNCRFM0elFCdWNIOU5pTm5KQUNOWGc4RjlqbUlHU2J3NjhiQk96UTNZYTJWSVFYUEU4bDhNU1ZRSnc0VnlTQjVQVXVKdA?oc=5",
+      "published": "2026-10-23T23:35:17Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
     {
       "id": "04f6dfd64f59",
       "topic": "spacex",
@@ -13,6 +47,29 @@
       "score": 12
     },
     {
+      "id": "8f5b1176ce2d",
+      "topic": "tesla",
+      "title": "Tesla wanted $10,000 to fix his Model S — its $8,500 trade-in value told a different story",
+      "source": "Yahoo Autos",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTldQWFZIS2w2ei1DQTY2YTNpWWFaSWtXU3NpYWt4bTliZWhTTzI5bkU0aGxiTmdzQ21hbHo1X0o3Z0QtX2h6R01EU1B6N3VIQ1U2RC1kc01kV0VrY282VFpfZVg5bXdqQjFhRW4ybEtPVmdaRXh2eTBjb0RTUUJ2UVpkeUJlWjNv?oc=5",
+      "published": "2026-10-23T23:19:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.JLeWgc-geyz2kGaY_N0bnA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "6c2a9a41b4a7",
+      "topic": "tesla",
+      "title": "Tesla Roadster: Engineering genius or PR stunt?",
+      "source": "KTVU",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBLWDQtMlhiU3RGRDcxUWVSVlluREJNQzlVbmRpMGtFdndlTmpDQVExUDJmeXdncTZmNEJZTmEwSUU0SnhNU1M2d3E3cmtPWmZhdjloRlNDWnB1ZXfSAWBBVV95cUxPYjF0Nk45ZE9YQkJQcXlyUDQyNlpkZEJJamtIeFRuQUxkbVBIMlIzeVBjR0hrTGVkMmxjd3NGR3k2bjJjMUg3dnE5dnpmWDRKR1JISGkyQzE4SXBoaHRhaXE?oc=5",
+      "published": "2026-10-23T22:41:05Z",
+      "snippet": "",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
       "id": "83ee4bbb9ce9",
       "topic": "grok",
       "title": "4 firms tapped to lead Grok sexualized image litigation",
@@ -20,6 +77,30 @@
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQWU43b080STRJdml4Qi1DTjk4alRncmZ0ODJCUS02RXJNTllIeWFab2J6RTdiSVR1bGR6YkozOVVaM3ZJQnVMdFFRRzVpNEd1ZndwcmN1UW9CM3gzRk5Oc1libEN2WTJkaXBoaDEtSWh4SXEzMDNGVml2ek5IOENQVTFFdC1GSGZOZXRQNVBacTNmdkYtLVg1bTcyM29IR2NV?oc=5",
       "published": "2026-10-23T22:36:49Z",
       "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "9197d9e5ccb9",
+      "topic": "spacex",
+      "title": "SpaceX: A Futuristic Berkshire Hathaway, or Just a Mess?",
+      "source": "WSJ",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNb1RMMm9xckt1YnNRZXdCUWFQVUh4aGlIUnBCbGJLbnFWdTBkcTV4ZWlxbkFiTHJuaGJBZWRtMFhTS19EYkdzUDg1ak9idms4S0RjemJLeE16OFBaTnlFb2lyMElKOGFkVWNtUnZLRklOSXhMdnplQl8yUWNObHRDbFJZcjVTSFNHbG1FZEZQN2c?oc=5",
+      "published": "2026-10-23T22:14:16Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.bC3FdKLyR2642xDbNIWoGw&pid=News&w=640",
+      "kind": "general",
+      "score": 8
+    },
+    {
+      "id": "b7c7eb438915",
+      "topic": "spacex",
+      "title": "Report: SpaceX Wants 80,000 Cell Sites for Starlink Mobile",
+      "source": "PCMag",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOTzNCbWwyTWhRUnA5MVktaGliNjhnbkctLWtXUVpJSWNCeVllWHYzUDRfNG1KTmJvLXdnbjkyS1QtZTVmZkh5U1JlX1lZVlhqUktNV0tnai14dnJDWmVzWVMyYkVUMGdRRklpbzRaQ0lRYkc4aERiMF91STlQcDBlZ21iQ3RZdlRaRkc4?oc=5",
+      "published": "2026-10-23T22:10:35Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.SmTl1VyevbLyVaIPkoGleg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -112,21 +193,8 @@
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOTk5rLVFMR3BRUmZhUWE2LUQ4N1F3THVtNGNtanU2LXRSU0pmeElzNmNGVWZoY19ha0Q5ek14ZnRhOTM3RjdVNk1GQmVFVk8tOERRN0tXNUxnNUswN2JTc3RuSU1hc2stVmdJbTF4U1RvS3BJbUs3ZzlYQ0lwOGh6QkxCVDZfX2JYS1BCRmdMVVNLcUE2LVI5YThzbDVsTG1SLVpZSFJvLWxzSmJ5cEl1OEVGMA?oc=5",
       "published": "2026-10-23T21:12:14Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.EW4AicHY-N5NGov5EcU3RQ&pid=News&w=640",
       "kind": "general",
       "score": 8
-    },
-    {
-      "id": "4a111ce40808",
-      "topic": "tesla",
-      "title": "Tesla Stock Lags Apple Because Of ‘Communications Problem,’ Says Investor Gary Black",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxONUN1VkpydjZiekdSLV9jT1ZHTUtGRzdDbUxlQXZiNEUyNjlmSXEtc042YTl4VGFYSDFWU0xaR1VCUXRtbmRIamFSbWNZSGJNMnRhQnRsdnNldWFmcndjUy1iYzBFZy1UY2dOWEtyMEdZUWZBSTRzLVBEa1c4bzByOGY4dGpTenhHUDJHOVowbTBfemg2RDdjZzBBZw?oc=5",
-      "published": "2026-10-23T21:11:56Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.YT6veFJv4J4hFPBjWQQ9tw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "90e64db7b20c",
@@ -136,7 +204,6 @@
       "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSVU5OHZWNDBTRE40bzRMTnpYS3NrMlRkSWJmNDE3NWQwQk52N3BfLWpSU2xjWUh0cGtOVmphNm85V2hCY3pDNV9wTXk1Sktrc0xVdFhOSm12UGo5b21weElPVWZCUDdLYnEzbTU0QWZlTjRidVFiNVNmNkJoTkZHLTdGaGJlcjUzYVhUbzUxazYxdVhOYTdmeUVibnFWSzZ4VWhtU2pvWlJjd20xMWNhejNRNVl6bnp0LTZkczcxQ3h0OXRKeEZhdDYxZVR4TEV5RUtGLUZ4RQ?oc=5",
       "published": "2026-10-23T21:11:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.b0r18pPmJ_7LWcPiTa_ZiA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -153,18 +220,6 @@
       "score": 4
     },
     {
-      "id": "4fcb5594998b",
-      "topic": "spacex",
-      "title": "T-Mobile US falls 8% amid SpaceX competition concerns (TMUS:NASDAQ)",
-      "source": "Seeking Alpha",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPRlk3TVB5QTJOWFVsajM0RGlPanBxQVBUMURpQ2FBc2NrUFU4aldPYzNTdXNac0hhUDdLdDBkdnYtY3RydGtqQ2FNb2dadUQxb25DcC1NdlBnNWJac3lBcUI0Vi1vYmZMaG1vbWZ2dUotdTFGS3JmRHM3Rl9DdXIxUV9xWXR3WHN6dVNTWTVrVDZINGZkb3R1U1JxRWRrdDA?oc=5",
-      "published": "2026-10-23T20:48:49Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.3LgWvtpGM5Q2D97oXs3lqw&pid=News&w=640",
-      "kind": "general",
-      "score": 0
-    },
-    {
       "id": "78f663b236b6",
       "topic": "spacex",
       "title": "SpaceX wants to be America's fourth phone carrier — tower owners are cashing in",
@@ -172,7 +227,7 @@
       "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNSFBqRk1SaHBvbTZGVjNSUmI2TU9LQW9sZmtWVnRQc215aUxKNVBkb2xVYkhvWGk4eHE3TVlET3R5TmhjU3lkMm96a2sySjdJUDdSRUN5c0J2NGFiZmtTRGFwRzFUZmEwMjI3eHBnR1VlN1M0ajRtbEtRVjlQNWwtVkNRSzh3ZmFLYmVlWmwzRGZ2Qy1YU0VNQTFsQUxWVjVOU0N4UHRJOEJITnpVUmx0VVBTZFJ3cmhTVV9MX3RDaTR4LTVJVjYyaXk2ZjhwOVk?oc=5",
       "published": "2026-10-23T20:45:42Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.zIpeUveei3bJsWSl7OKOQg&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.Nk5wjk3c7kWMpqLES7ZhNw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -188,27 +243,15 @@
       "score": 4
     },
     {
-      "id": "405daa0cb69e",
-      "topic": "spacex",
-      "title": "Wall Street closes lower to end rocky week",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQR01KeXBjdXBubVRzTlJfWWJTMHctb2hFS2pVT21ydWtZNzBaMldxd1c2ZUJGNWhIeGV6MUxvQVZvSl9GdFh5QThQbFpuT0IwYi02Y3JGM19YSWJ3LXMtb29RbS1WZUljdGtsS2dockxHVm5SWnBSMzJpM0Y4RFItdW5SMzFsdXg2LWtrYWE1SC1TQlkxOERJZHNtQVREdw?oc=5",
-      "published": "2026-10-23T20:31:14Z",
+      "id": "1f28010ad8ed",
+      "topic": "grok",
+      "title": "7 Best AI Chatbots for Aussie Small Business [2026]",
+      "source": "tech-insider.org",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBUbnpEcUU2bUNXcDdMaEIzVUpNT2NNY2JxYngzU0hoVDlBNUVoM01RQTJKWXAzMDFQSkZtM3dVcTJjUEFSSXozbkZiUGkyeGRpaThCSnNZSTBLY0tkRzN2RDgtMEpsMEd4ZHU2WlhNclZXejN0NWZGSWk2TEcwY0U?oc=5",
+      "published": "2026-10-23T19:51:49Z",
       "snippet": "",
       "kind": "general",
-      "score": 9
-    },
-    {
-      "id": "0cdf320e2291",
-      "topic": "tesla",
-      "title": "Watch SpaceX-Tesla Merger? | Zuckerberg's Deal | The Rundown",
-      "source": "Bloomberg",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOZFJIbHlKb3g3Ry1fLWlfUlh2STlFTEFBdlZDdTBCRk1vekhULThfMTYyQndYeUV1Q2xlY19QSlRoa0wyYVU4R3Jvb0tmc0NqZFBzNkd0MXYwSURRX3l6MXhJRTBRMjdFYkx3NW12eEdCcHBxbThrcnVqUXdjSVpnREppd19taHFDVHozTHdGOVJaRjN5RHhhd2JRTW5qN1FUMkMxdlJOSV9Kbk8wc2kzTnhCdGFOdlloRklYS2E5NzY?oc=5",
-      "published": "2026-10-23T19:57:13Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.6gewdjTLbgKGvUhU3WPQRA&pid=News&w=640",
-      "kind": "general",
-      "score": 8
+      "score": 4
     },
     {
       "id": "00b0deee9830",
@@ -229,7 +272,6 @@
       "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNaHAxeXhEejVpNklBT2ozSUh2NEl5VVVDT0dKb0ZuNXc1TWlQb0dVaE9GVWU4WXZYSVhzcXVhMUljR09IYWUzWFVMS2xSQmNIeUZzVWR0TE83LTFieVZ2aTNXR2JuemYxcFdKVndGcmRkX3VvMG5JUF9QTGI4Z2F2aEd2U2c3cUFuTXNZYTQ5Um0talRZSWtnYzlGVUVwSFJ4S1hQYXl4a2x6UGhTSTdHSG1nVHA4RWEzRUhHTmc4MklpZ2RydE03bWpXNHV2QQ?oc=5",
       "published": "2026-10-23T19:31:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.LbnVkFmrykJA_L20YV8BbA&pid=News&w=640",
       "kind": "general",
       "score": -2
     },
@@ -251,7 +293,7 @@
       "title": "Tesla Lobbies on Autonomous Vehicle Rules as Senate Debates Oversight",
       "source": "Legis1",
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1GYkpQcXFEZzhZSkZJWV9aVVJVUHJQWjUwOGNtdHpzbWctSDVIODZpNmljSjBGN3pST3g5WGVDdHI1dTFlMV9vSXRtUE03eVBibWVHVTNScHI0cHFuX0hicGxDd1c0NkkxM0Z5RkxCRWVQVXFOWUpZ?oc=5",
-      "published": "2026-10-23T18:26:05Z",
+      "published": "2026-10-23T18:35:35Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -269,18 +311,6 @@
       "score": 4
     },
     {
-      "id": "8d72b93c69bd",
-      "topic": "spacex",
-      "title": "Musk's SpaceX is still restricting Starlink in Ukraine and the toll is rising",
-      "source": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQYjB0ajNsNWZfY2NFTjVUZWlxX2R6MkRYdXBPOWppd0FLai1iWEs5QU1VSzJRUnpUZzJfamt1QllWb3YtRVBUUnkwWUZCaTVMSXZ5TFpfTjBQTjI2cG5jb0lqYng5UWpxZm9GS1lsWmVxTE1lenhTQzM3RV9LbDBHVjdsRE1yYXAtQVZtS2piNTZSVG9SSHVIVExDMDFXM1BXbWxkZjRn0gGrAUFVX3lxTFBXclJxa3ZYd2VFcmowXzdJNVZqajM0TXVTM1RtcVZMeEZELTBKZktWTkZRX3NDY2t4R3VyT2NfVG0zTkxNMGdYLTdsNkxsNVY5eEhxdTI4cWwzTUt3eFB2eEtUSmx0X2Uza1kxQURNR2RZRDFtVm5aaG1xaUI1RHE2ZnNvaWdfOHdhUFVJN2VINGlQRlQxUnJjeWlqQzQ0b2VIMjQzSC11Qng2bw?oc=5",
-      "published": "2026-10-23T17:04:14Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.b77MBoywpyu0LUxikZi_mw&pid=News&w=640",
-      "kind": "general",
-      "score": 7
-    },
-    {
       "id": "662571b26b68",
       "topic": "spacex",
       "title": "US telecom operators wobble after report SpaceX in talks for cell sites",
@@ -288,20 +318,9 @@
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNRl9aOXcyWXhEc3FKR0VIU0Y4NGg3eTlrYWg0N3VIMVJIejJ5N1V3U3RRQllVV1NOaEJ2a2FNcEExNHQ2ZzlOY1NJWFhNR1hVN2F6anR5MjZsRWRpWHBVVXAwOEZ1LUdzbWJCb2RTX0hIaVVodlFKUDhxX0FQT0hlTHB2SEZzRTl2ak1nLXFtNHJnQ0FlRU1wYkNvdXcyc1NvMi1YcVRpc2VRUUVxYjkwakVEMUZOME1yTjFja2JpRTI?oc=5",
       "published": "2026-10-23T16:36:41Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.5wweyYaPHT7pxR3Y_6f7Ig&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.iPiqk-451uQ6dI70E948WA&pid=News&w=640",
       "kind": "general",
       "score": 9
-    },
-    {
-      "id": "ae560ae74a37",
-      "topic": "spacex",
-      "title": "SpaceX earnings, tech sell-off lead to rocky week for investors",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNWk02NVNWSWNRZlJCSnRqOU0xcTdrSTNrRkNkVDFJSTlXbkI1ZzNOQmkyVWpsS2c5dWh2d2oxRGhrMWxLczlBVElZaFYzempLMWMtbXlIYUVXNk81OWRKT3pHVVplTlFyTW9Ic2s2a01PSnZVcDllbDJaSC1qdENQMGJrUmNTaXdjS1dFSUkwdWIyNHBmTEJtbjBfQ3BEeTlISFV0NmdUOGp1NXh1R0dlUlZGLUctQWtaSnVaYVFHLWdqU1N4?oc=5",
-      "published": "2026-10-23T16:15:56Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "1dfdb6b3bfbc",
@@ -350,16 +369,16 @@
       "score": 7
     },
     {
-      "id": "fdce18f01ec0",
+      "id": "4b5571a56e4d",
       "topic": "spacex",
-      "title": "It's launch time! SpaceX Starship is ready including FTS!",
-      "source": "YouTube on MSN",
-      "url": "https://www.msn.com/en-us/news/other/its-launch-time-spacex-starship-is-ready-including-fts/vi-AA2fWo5C",
-      "published": "2026-10-23T14:45:00Z",
-      "snippet": "SpaceX Starship is preparing for liftoff, with the Flight Termination System (FTS) among the key launch preparations. Explore the latest readiness updates and what needs to happen before the next ...",
-      "image": "https://www.bing.com/th?id=ONUT.pRy6clc67-PPeGXzENbBWw&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
+      "title": "Top Ukrainian diplomat says SpaceX satellite access is still restricted",
+      "source": "CBS News on MSN",
+      "url": "https://www.msn.com/en-us/news/other/top-ukrainian-diplomat-says-spacex-satellite-access-is-still-restricted/vi-AA2fWSrF",
+      "published": "2026-10-23T15:23:00Z",
+      "snippet": "Ukrainian officials say their access to the SpaceX satellite service remains restricted, despite President Trump's claim that Elon Musk has fully restored access. Denys Sienik, Chargé d'Affaires at ...",
+      "image": "https://www.bing.com/th?id=ONUT.sZIpStljK73_wYKaEEQDSg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "54010dbbc1a4",
@@ -369,6 +388,7 @@
       "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPdkJDTF8zWDlMVU1VZzJkZ1NCSHZ6aEwzWU80RzNzS2FpdmpPZkFSd1VHMzNqLTA1bGRNU3ZRbU9hMGRnN04zUHlFV2dtZ3lBaHZhZFlCeXlLeHhjcHUxNFpzSlZUNHQwUTV4RzliVko0dDBlWmpQV294clFhRmYxN0FDZTZsZ2VWNHFwcg?oc=5",
       "published": "2026-10-23T14:31:00Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.xc_9K1qoJ-tLS7rx-t5jHQ&pid=News&w=640",
       "kind": "general",
       "score": -2
     },
@@ -385,18 +405,6 @@
       "score": 4
     },
     {
-      "id": "1c80d1620352",
-      "topic": "tesla",
-      "title": "Tesla’s Mysterious Profit Beat Is Solved. A Tariff Refund Boosted Margins.",
-      "source": "Barron's",
-      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQaWhsX2lURkUxVjB6VDRnbkhGSG9PVGUxbDkwZHhrZVljS1U3Um9SWDV3T0VIbUxRbXpudzFNRzBwSi1tNXQ1TEx1czFaTEVPS0IyTk9WdGliaHFWNVR6UkNTNmVHWWozWTBFVDZSQ2RCc2JaanBhVTk5aUgtNWc4UDRZUEJyd3k3QmZTSlFNb0NXUQ?oc=5",
-      "published": "2026-10-23T14:25:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ztfF0e4dLgkZtaIAbyJzfw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "b4932ed8bb9c",
       "topic": "tesla",
       "title": "Tesla Says It's Weeks Away From Selling Steering Wheel, Pedal-Free Cybercabs to Private Buyers: TDS",
@@ -407,6 +415,30 @@
       "image": "https://www.bing.com/th?id=ONUT.-3SZZz7BaAgTz11VII2RDw&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "2c00d5978291",
+      "topic": "tesla",
+      "title": "Tesla Stock Lags Apple Because Of ‘Communications Problem,’ Says Investor Gary Black",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/tesla-stock-lags-apple-because-of-communications-problem-says-investor-gary-black/cZxytEHRBUE",
+      "published": "2026-10-23T14:11:00Z",
+      "snippet": "Tesla stock has not moved in five years because of a lack of credibility stemming from “overpromise and hyped-up expectations,” Black said.",
+      "image": "https://www.bing.com/th?id=ONUT.YT6veFJv4J4hFPBjWQQ9tw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "8278cd295412",
+      "topic": "spacex",
+      "title": "SpaceX eyes 400-acre Starship factory town at NASA’s Kennedy Space Center",
+      "source": "WESH",
+      "url": "https://www.wesh.com/article/kennedy-space-center-spacex-starship-factory-expansion/74233005",
+      "published": "2026-10-23T12:49:00Z",
+      "snippet": "SpaceX could build a major Starship campus at Kennedy Space Center, with plans for up to 3,300 workers by 2045.",
+      "image": "https://www.bing.com/th?id=ONUT.rZw3j4gycpW0Pbv1bVr06g&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
     },
     {
       "id": "165ecd28412d",
@@ -431,18 +463,6 @@
       "image": "https://www.bing.com/th?id=ONUT.kDymZb9yNHU6m7_MmQEVhg&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "8278cd295412",
-      "topic": "spacex",
-      "title": "SpaceX eyes 400-acre Starship factory town at NASA’s Kennedy Space Center",
-      "source": "WESH",
-      "url": "https://www.wesh.com/article/kennedy-space-center-spacex-starship-factory-expansion/74233005",
-      "published": "2026-10-23T11:25:00Z",
-      "snippet": "SpaceX could build a major Starship campus at Kennedy Space Center, with plans for up to 3,300 workers by 2045.",
-      "image": "https://www.bing.com/th?id=ONUT.rZw3j4gycpW0Pbv1bVr06g&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
     },
     {
       "id": "7cac5f648388",
@@ -492,17 +512,6 @@
       "score": 4
     },
     {
-      "id": "e34f0d984233",
-      "topic": "grok",
-      "title": "How Much Does AI Cost in 2026? The Complete Pricing Comparison",
-      "source": "Fello AI",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1OMVVYdjlTQWNCRFM0elFCdWNIOU5pTm5KQUNOWGc4RjlqbUlHU2J3NjhiQk96UTNZYTJWSVFYUEU4bDhNU1ZRSnc0VnlTQjVQVXVKdA?oc=5",
-      "published": "2026-10-23T10:26:01Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "d29ef03237ba",
       "topic": "tesla",
       "title": "Tesla Promised To Bring The Cybertruck To Australia And New Zealand. But It's Never Coming",
@@ -513,6 +522,18 @@
       "image": "https://www.bing.com/th?id=ONUT.vGFu6qxHdYVc-P5ro4FtPw&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "465a45614f93",
+      "topic": "spacex",
+      "title": "Musk's SpaceX is still restricting Starlink in Ukraine and the toll is rising",
+      "source": "CNBC on MSN",
+      "url": "https://www.msn.com/en-us/money/markets/musks-spacex-is-still-restricting-starlink-in-ukraine-and-the-toll-is-rising/ar-AA2fWwQS",
+      "published": "2026-10-23T10:04:14Z",
+      "snippet": "Since last week, Ukraine has reported restrictions on a version of Starshield, a version of SpaceX's Starlink, hampering its military operations against Russia.",
+      "image": "https://www.bing.com/th?id=ONUT.b77MBoywpyu0LUxikZi_mw&pid=News&w=640",
+      "kind": "general",
+      "score": 7
     },
     {
       "id": "0acc55c2dc2e",
@@ -538,28 +559,15 @@
       "score": 14
     },
     {
-      "id": "0e69bc8a0c5b",
-      "topic": "tesla",
-      "title": "Tesla Continues to Falter and Lose Value: This Renowned Analyst Predicts 60% Returns Soon",
-      "source": "AOL",
-      "url": "https://www.aol.com/articles/tesla-continues-falter-lose-value-164538000.html",
-      "published": "2026-10-23T09:45:00Z",
-      "snippet": "A top Wall Street analyst sees Tesla soaring while the rest of the Street keeps slashing estimates and the stock drifts further below its highs. The case for and against that bullish call comes down ...",
-      "image": "https://www.bing.com/th?id=ONUT.4etpfJS_BHgLi-nnjLtmMw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "6369fc771f14",
+      "id": "1b5fbbe45e54",
       "topic": "spacex",
-      "title": "NASDAQ ticks up as tech stocks steady; SpaceX worries hit telecoms",
-      "source": "Reuters on MSN",
-      "url": "https://www.msn.com/en-us/money/top-stocks/nasdaq-ticks-up-as-tech-stocks-steady-spacex-worries-hit-telecoms/ar-AA2fVQ7r",
-      "published": "2026-10-23T09:28:36Z",
-      "snippet": "By Tharuniyaa Lakshmi and Ragini Mathur Oct 23 (Reuters) - The tech-heavy Nasdaq edged higher on Friday, helped by signs of stabilization in some tech stocks, while telecom shares tumbled on concerns ...",
-      "image": "https://www.bing.com/th?id=ONUT.DAHi1oHFVWjY8005bWm8Ng&pid=News&w=640",
-      "kind": "general",
-      "score": 9
+      "title": "First commercial nuclear satellite launched on SpaceX mission -- ANS / Nuclear Newswire",
+      "source": "American Nuclear Society",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQS3JjQVFaeVRGWmJxVnJIVGhVd1hIQm5kRGxzOE0wd2RxWWhWdy15bDdHVWg1NFBWWFBzWVhyckV1dTVTUEExcHd6WTMwZFZ6dmVwdjh1Nlo3WENOVG1DSHJ2RkxfOTY4RE1xcDhzRXNQa1hMNHJvZTljbzlzcGpUQ3JTTkVkam52RFJjM3ZvZ3dwNVo0Y0ZFS1Z0MWkzVHhHWkE?oc=5",
+      "published": "2026-10-23T09:44:08Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 12
     },
     {
       "id": "ea7497f328bd",
@@ -595,18 +603,6 @@
       "image": "https://www.bing.com/th?id=ONUT.oZ_OUBj7fpMiO-_vE0kokA&pid=News&w=640",
       "kind": "software",
       "score": 11
-    },
-    {
-      "id": "ba19b1e8e0a1",
-      "topic": "spacex",
-      "title": "President Trump: Don’t know who ordered the Starlink slowdown in Ukraine",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/video/2026/10/23/president-trump-dont-know-who-ordered-starlink-slowdown-in-ukraine.html",
-      "published": "2026-10-23T08:26:00Z",
-      "snippet": "CNBC's Eamon Javers reports on President Trump's latest remarks about Starlink. Got a confidential news tip? We want to hear from you. Sign up for free newsletters and get more CNBC delivered to your ...",
-      "image": "https://www.bing.com/th?id=ONUT.Kq3_It-IAwi2ko-JHxURDA&pid=News&w=640",
-      "kind": "general",
-      "score": 7
     },
     {
       "id": "7e7657c77073",
@@ -675,6 +671,18 @@
       "published": "2026-10-23T06:00:00Z",
       "snippet": "When a major competitor like Tesla enters your market, protect your advantage by focusing on your unique expertise and experience.",
       "image": "https://www.bing.com/th?id=ONUT.vhukTyR0ZsyakcsMPnHsEA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "52b2ca0b2a9a",
+      "topic": "grok",
+      "title": "AI Article: How Personal Agents Differ from Chat AIs—The Launch of Muse in Japan and a Comparison with Grok Bot and ChatGPT dots",
+      "source": "note",
+      "url": "https://note.com/suzumaro/n/n2759106b7a65?hl=en",
+      "published": "2026-10-23T05:40:00Z",
+      "snippet": "The Launch of Muse in Japan and a Comparison with Grok Bot and ChatGPT dotsProduction Note: The draft for this article was created by Muse itself. Pricing and terms of service were verified as of ...",
+      "image": "https://www.bing.com/th?id=ONUT.eATH3qxs4kF7s9SvHKqeMg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -794,17 +802,6 @@
       "score": 4
     },
     {
-      "id": "5a33c328c7c1",
-      "topic": "grok",
-      "title": "SpaceXAI launched Grok for Startups, giving founders months of FREE CREDITS across its entire stack. Approved startups get shared credits for Grok, Grok Build, Grok Bot, and the API, plus hands-on support. Investors and startup accelerators can join too an",
-      "source": "X",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5vWm5KendpamhsTmJnTTNOd1gzY0FnUGpVbDloZko3WHRzd2tPMHpGWVBhSEVZZVV3TlRxMUFkTFZHVjRFUTJPaURxWmVCRmxwX1JXemZOSkI3dTl4NnlLX0tINzFWM3YtMmd4RQ?oc=5",
-      "published": "2026-10-23T00:45:00Z",
-      "snippet": "",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "9961ae8e911e",
       "topic": "spacex",
       "title": "SpaceX’s next Starship test will try something new with a double rocket catch",
@@ -829,6 +826,18 @@
       "score": 4
     },
     {
+      "id": "9a051458d488",
+      "topic": "grok",
+      "title": "[Claude Duet Arrives] What makes the \"proactive Claude\" so special? A gentle comparison with Dots, Muse, and Grok Bot [Includes reaction summary]",
+      "source": "note",
+      "url": "https://note.com/ravivit_ai/n/n8cbdace17c6a?hl=en",
+      "published": "2026-10-22T20:26:00Z",
+      "snippet": "Hello, I'm Rabibit.Claude Duet is an AI assistant that monitors your emails and schedule to notify you of necessary tasks in advance. It works in the cloud, but it is not a finished product that you ...",
+      "image": "https://www.bing.com/th?id=ONUT.lzuZwQ_pw3eJiSnVLVxcpA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "a4a35aa51571",
       "topic": "spacex",
       "title": "World in Brief: Stock markets stumble; Trump says Starlink restored for Ukraine",
@@ -837,6 +846,18 @@
       "published": "2026-10-22T17:00:00Z",
       "snippet": "Donald Trump said that Elon Musk had restored Ukraine’s access to Starlink, the billionaire’s satellite-internet service, hours after Volodymyr Zelensky said connectivity had not fully returned. Mr ...",
       "image": "https://www.bing.com/th?id=ONUT.ByiNRwD0CpecQgUhHJmHxQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "b5e9286399c1",
+      "topic": "spacex",
+      "title": "Elon Musk's Starlink and Starshield, and what they mean to Ukraine",
+      "source": "CBS News on MSN",
+      "url": "https://www.msn.com/en-us/news/other/elon-musks-starlink-and-starshield-and-what-they-mean-to-ukraine/ar-AA2fMEDy",
+      "published": "2026-10-22T16:21:00Z",
+      "snippet": "Here's what to know about Starlink and Starshield, the technologies Ukraine is relying on in the war against Russia.",
+      "image": "https://www.bing.com/th?id=ORMS.a77d49b6456596055e566d29fc7877f1&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -851,6 +872,18 @@
       "image": "https://www.bing.com/th?id=ONUT.R9CjmWP8zaQRzxoKM6zPgg&pid=News&w=640",
       "kind": "milestone",
       "score": 11
+    },
+    {
+      "id": "77cad1a72dbf",
+      "topic": "spacex",
+      "title": "The Starship moon landing number NASA and Elon Musk can’t agree on",
+      "source": "TESLARATI",
+      "url": "https://www.teslarati.com/elon-musk-nasa-starship-moon-landing/",
+      "published": "2026-10-22T13:51:00Z",
+      "snippet": "Elon Musk is disputing a new NASA safety panel estimate of how many Starship launches it will take to put astronauts on the Moon, saying the real number will be less than half the panel’s figure. On ...",
+      "image": "https://www.bing.com/th?id=ONUT.pubBS7Ut-KRfrK8hHf7Eeg&pid=News&w=640",
+      "kind": "launch",
+      "score": 22
     }
   ]
 }
