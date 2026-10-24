@@ -25,9 +25,10 @@ for i in range(len(scenes)):f.append(f'[{i}:v]settb=1/24,setpts=N,fps=24[v{i}]')
 prev='v0';offset=0
 for i in range(1,len(scenes)):
  offset+=scenes[i-1][2]-.6;name=f'x{i}';f.append(f'[{prev}][v{i}]xfade=transition=fade:duration=0.6:offset={offset:.1f},settb=1/24,fps=24[{name}]');prev=name
-f+=["sine=frequency=55:duration=50.4,volume=0.12[bass]","sine=frequency=110:duration=50.4,volume=0.055[tone]","anoisesrc=color=pink:amplitude=0.035:duration=50.4,lowpass=f=700,volume=0.2[air]","[bass][tone][air]amix=inputs=3:normalize=0,afade=t=in:st=0:d=3,afade=t=out:st=46:d=4.4,loudnorm=I=-23:TP=-2:LRA=8[audio]"]
-cmd+=['-filter_complex_threads','1','-filter_complex',';'.join(f),'-map',f'[{prev}]','-map','[audio]','-c:v','libx264','-preset','fast','-crf','25','-threads','2','-c:a','aac','-b:a','128k','-pix_fmt','yuv420p','-movflags','+faststart',str(O/'roadster-film-1080.mp4')]
+cmd+=['-filter_complex_threads','1','-filter_complex',';'.join(f),'-map',f'[{prev}]','-an','-c:v','libx264','-preset','fast','-crf','25','-threads','2','-pix_fmt','yuv420p','-movflags','+faststart',str(W/'picture-1080.mp4')]
 subprocess.run(cmd,check=True);print('Main film encoded',flush=True)
-subprocess.run(['ffmpeg','-y','-v','error','-i',str(O/'roadster-film-1080.mp4'),'-vf','scale=1280:720','-c:v','libx264','-preset','fast','-crf','26','-threads','2','-c:a','aac','-b:a','96k','-movflags','+faststart',str(O/'roadster-film-720.mp4')],check=True)
+subprocess.run(['ffmpeg','-y','-v','error','-i',str(W/'picture-1080.mp4'),'-vf','scale=1280:720','-c:v','libx264','-preset','fast','-crf','26','-threads','2','-an','-movflags','+faststart',str(W/'picture-720.mp4')],check=True)
+import sys
+subprocess.run([sys.executable,str(Path(__file__).with_name('score-roadster-film.py')),'--music',str(R/'Legacy.mp3'),'--input-1080',str(W/'picture-1080.mp4'),'--input-720',str(W/'picture-720.mp4')],check=True)
 probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration:stream=width,height,codec_name','-of','json',str(O/'roadster-film-1080.mp4')]))
 (R/'film-probe.json').write_text(json.dumps(probe,indent=2));print('Film ready',[(p.name,p.stat().st_size)for p in O.glob('*.mp4')],flush=True)

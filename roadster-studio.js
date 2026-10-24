@@ -9,18 +9,18 @@
  let requestedTime=0,loadPending=false,playAfterLoad=true,activeFile='';
  function loadFilm(time=0,play=true){
   requestedTime=time;playAfterLoad=play;
-  const src='/assets/roadster-studio/roadster-film-'+quality.value+'.mp4';
+  const src='/assets/roadster-studio/roadster-film-'+quality.value+'.mp4?v='+encodeURIComponent(data.film.mediaVersion);
   if(activeFile===src&&film.readyState>=1){film.currentTime=Math.min(time,Math.max(0,film.duration-.2));if(play)film.play().catch(()=>{filmStatus.textContent='Press the video’s play control to begin. The direct film link is available below.';});return;}
   if(activeFile===src&&loadPending)return;
   activeFile=src;loadPending=true;filmStatus.textContent='Loading the film…';cover.querySelector('span:last-child').firstChild.textContent='LOADING THE FILM';film.src=src;film.load();
  }
  film.addEventListener('loadedmetadata',()=>{loadPending=false;film.currentTime=Math.min(requestedTime,Math.max(0,film.duration-.2));root.dataset.filmLoaded='true';if(playAfterLoad)film.play().catch(()=>{filmStatus.textContent='The film is ready. Press the native play control.';cover.hidden=true;});});
- film.addEventListener('playing',()=>{cover.hidden=true;filmStatus.textContent='Playing A New Dimension. Tesla imagery, Supercharged Daily edit and original ambient score.';});
+ film.addEventListener('playing',()=>{cover.hidden=true;filmStatus.textContent='Playing A New Dimension. Tesla imagery. Music: Legacy by Scott Buckley. Edit and additional sound design: Supercharged Daily.';});
  film.addEventListener('pause',()=>{if(film.readyState>0)filmStatus.textContent='Film paused. Use the controls or choose a chapter.';});
  film.addEventListener('error',()=>{loadPending=false;activeFile='';cover.hidden=false;cover.querySelector('span:last-child').firstChild.textContent='RETRY THE FILM';filmStatus.textContent='The film could not load. Retry, choose 720p, or use “Save the film” to open the file directly.';});
  film.addEventListener('ended',()=>{filmStatus.textContent='Film complete. Replay a chapter or explore the design below.';});
  film.addEventListener('timeupdate',()=>{let current=0;data.film.chapters.forEach((c,i)=>{if(film.currentTime>=c.start)current=i;});document.querySelectorAll('[data-rs-chapter]').forEach((b,i)=>{if(i===current)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});});
- film.addEventListener('volumechange',()=>{const enabled=!film.muted&&film.volume>0;sound.textContent='Ambient sound: '+(enabled?'on':'off');sound.setAttribute('aria-pressed',String(enabled));});
+ film.addEventListener('volumechange',()=>{const enabled=!film.muted&&film.volume>0;sound.textContent='Soundtrack: '+(enabled?'on':'off');sound.setAttribute('aria-pressed',String(enabled));});
  cover.onclick=()=>loadFilm(film.readyState?film.currentTime:0);
  document.querySelectorAll('[data-rs-play]').forEach(a=>a.onclick=ev=>{ev.preventDefault();$('video').scrollIntoView({behavior:reduce.matches?'auto':'smooth',block:'start'});loadFilm(0);});
  quality.onchange=()=>{if(activeFile)loadFilm(film.currentTime||0,!film.paused);};
