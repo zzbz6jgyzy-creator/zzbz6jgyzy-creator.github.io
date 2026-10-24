@@ -63,7 +63,7 @@ async def main():
       bounds=await link.bounding_box();assert bounds['height']>=44,bounds
      if width<=390 and registry and LEAD.get('homeTitle'):
       rect=await card.bounding_box();assert rect['height']<=210,rect
-      tracker=await page.locator('#hv-trk-h').bounding_box();assert tracker['y']<(1150 if width==320 else 1050),tracker
+      signup=await page.locator('#newsletter button[type=submit]').bounding_box();assert signup['y']+signup['height']<844,signup
      assert await card.get_by_role('link',name='All events →').get_attribute('href')=='/calendar.html'
     if os.environ.get('QUALITY_SHOTS') and mode=='upcoming' and registry:
      shots=pathlib.Path(os.environ['QUALITY_SHOTS']);shots.mkdir(parents=True,exist_ok=True)

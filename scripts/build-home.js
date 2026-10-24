@@ -52,11 +52,11 @@ if (/^\/assets\/.+\.(jpe?g|png)$/i.test(leadSrc)) {
 }
 const SZ = "(max-width: 760px) 100vw, 640px";
 const leadAlt = pinAlt || (L ? L.h : "");
-const leadImg = `${sets.avif ? `<source type="image/avif" srcset="${esc(sets.avif)}" sizes="${SZ}" />` : ""}${sets.webp ? `<source type="image/webp" srcset="${esc(sets.webp)}" sizes="${SZ}" />` : ""}<img src="${esc(leadSrc)}" alt="${esc(leadAlt)}" fetchpriority="high" decoding="async" data-hv-img />`;
-const preload = sets.avif ? `<link rel="preload" as="image" type="image/avif" imagesrcset="${esc(sets.avif)}" imagesizes="${SZ}" fetchpriority="high" />` : `<link rel="preload" as="image" href="${esc(leadSrc)}" fetchpriority="high" />`;
+const leadImg = `${sets.avif ? `<source type="image/avif" srcset="${esc(sets.avif)}" sizes="${SZ}" />` : ""}${sets.webp ? `<source type="image/webp" srcset="${esc(sets.webp)}" sizes="${SZ}" />` : ""}<img src="${esc(leadSrc)}" alt="${esc(leadAlt)}" width="1280" height="800" loading="lazy" decoding="async" data-hv-img />`;
+const preload = `<link rel="preload" as="image" type="image/avif" href="/assets/roadster-studio/finale-640w.avif" imagesrcset="/assets/roadster-studio/finale-640w.avif 640w, /assets/roadster-studio/finale-1280w.avif 1280w, /assets/roadster-studio/finale-1920w.avif 1920w" imagesizes="(max-width:760px) 100vw,560px" fetchpriority="high" />`;
 const lead = L ? `<a class="hv-lead" href="${esc(L.href)}" data-hv-lead>
             <div class="hv-lead-media"><picture>${leadImg}</picture></div>
-            <div class="hv-lead-copy"><span class="hv-tag" data-hv-tag>${esc(L.tag)}</span><h2 data-hv-h>${esc(homeCopy("homeTitle", L.h))}</h2><p data-hv-p>${esc(homeCopy("homeSummary", L.p))}</p><span class="hv-read">Read the story →</span></div>
+            <div class="hv-lead-copy"><span class="hv-tag" data-hv-tag>${esc(L.tag)}</span><h3 data-hv-h>${esc(homeCopy("homeTitle", L.h))}</h3><p data-hv-p>${esc(homeCopy("homeSummary", L.p))}</p><span class="hv-read">Read the story →</span></div>
           </a>` : null;
 const suppThumb = (src) => {
   const webp = String(src).replace(/\.(jpe?g|png)$/i, "-480w.webp");
@@ -206,12 +206,7 @@ try {
 } catch (e) { console.warn("grok strip skip", e.message); }
 
 // Newsletter band (same markup as grow.js data-band; grow.js skips building it when it's already here)
-const band = `<section class="sd-band" id="newsletter" data-newsletter="band" data-band-topic="website" aria-label="Newsletter signup"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX and Grok stories and tracker changes. One free Sunday briefing.</p></div>
-      <div><form class="sd-form" data-newsletter-form>
-      <label class="visually-hidden" for="sd-band-email">Email address</label>
-      <input id="sd-band-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
-      <input type="text" name="website" hidden tabindex="-1" autocomplete="off" />
-      <button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/roadster-just-flew?utm_source=website&amp;utm_medium=site-band&amp;utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status role="status"></p></div></section>`;
+const band = `<section class="hs-newsletter" id="newsletter-bottom" data-newsletter="band" data-band-topic="website" data-newsletter-placement="footer" aria-labelledby="hs-newsletter-h"><div class="hs-newsletter-copy"><p class="hs-eyebrow">The free Sunday briefing</p><h2 id="hs-newsletter-h">Your week.<br/><span>Supercharged.</span></h2><p class="hs-newsletter-intro">The stories that mattered. The tracker changes worth following. The context behind it all.</p><ul class="hs-newsletter-benefits"><li>Original reporting and analysis</li><li>Tesla, SpaceX and xAI in one place</li><li>Direct links for your next deep dive</li></ul><form class="sd-form hs-form" data-newsletter-form action="https://alexs-newsletter-84b17e.beehiiv.com/" method="get"><label class="visually-hidden" for="hs-bottom-email">Email address</label><input id="hs-bottom-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="Your email address" required aria-describedby="hs-bottom-email-note hs-bottom-email-status"/><input type="text" name="website" hidden tabindex="-1" autocomplete="off" aria-hidden="true"/><input type="hidden" name="utm_source" value="website"/><input type="hidden" name="utm_medium" value="site-band"/><input type="hidden" name="utm_campaign" value="/"/><input type="hidden" name="utm_content" value="website"/><button class="sd-btn" type="submit">Get the free briefing <span aria-hidden="true">↗</span></button></form><p class="hs-form-note" id="hs-bottom-email-note">Free, every Sunday. Unsubscribe anytime.</p><p class="newsletter-status" id="hs-bottom-email-status" data-newsletter-status role="status"></p></div><div class="hs-newsletter-preview" id="newsletter-preview"><div class="hs-paper"><div class="hs-paper-brand"><img src="/assets/brand/icon-1b-mark.svg" width="28" height="28" alt=""/><span>SUPERCHARGED<br/><b>DAILY</b></span><small>SUNDAY<br/>BRIEFING</small></div><p class="hs-paper-kicker">Your briefing, at a glance</p><h3>A clearer picture.<br/>In one email.</h3><div class="hs-paper-row"><span>01</span><div><strong>The stories that matter</strong><p>What happened. Why it matters.</p></div></div><div class="hs-paper-row"><span>02</span><div><strong>What changed this week</strong><p>The developments worth following.</p></div></div><div class="hs-paper-row"><span>03</span><div><strong>Your next deep dive</strong><p>Go further with the site’s tools.</p></div></div><a class="hs-paper-link sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/roadster-just-flew?utm_source=website&amp;utm_medium=site-band&amp;utm_campaign=latest-issue" target="_blank" rel="noopener">Read a real issue <span aria-hidden="true">↗</span></a></div></div></section>`;
 
 let html = rd("index.html"); const before = html;
 const put = (name, inner) => {
@@ -228,5 +223,6 @@ try {
   const bundle = JSON.parse(rd("data/intelligence/bundle.json"));
   put("changed", intel.homeSection(bundle));
 } catch (e) { console.warn("intel changed skip", e.message); }
+if (html.includes('class="hv hs-home"')) html = html.replace(/↗/g, '<svg class="hs-arrow" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13L13 3M3 3H13V13"/></svg>');
 if (html !== before) { fs.writeFileSync(path.join(R, "index.html"), html); console.log("index.html updated"); } else console.log("index.html unchanged");
 

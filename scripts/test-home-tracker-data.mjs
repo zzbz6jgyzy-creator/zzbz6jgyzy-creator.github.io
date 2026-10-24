@@ -27,6 +27,6 @@ try{
  writeFileSync(join(temp,'data/robotaxi-tx.json'),'<html>upstream unavailable</html>');
  execFileSync(process.execPath,[join(temp,'scripts/build-home.js'),'--trackers-only']);
  assert.equal(readFileSync(join(temp,'index.html'),'utf8'),after);
- assert.match(after,/Free Sunday email/);
+ assert.match(after,/Get the free briefing/);
  console.log('PASS tracker-only rebuild preserves every other homepage region and keeps the last good count on bad JSON');
 }finally{rmSync(temp,{recursive:true,force:true});}

@@ -1,0 +1,45 @@
+name: Homepage studio checks
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'home-studio.*'
+      - 'assets/home/**'
+      - 'scripts/build-home.js'
+      - 'scripts/js-bundles.json'
+      - 'tests/*home_studio*'
+      - 'tests/home-studio*'
+      - '.github/workflows/home-studio-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Validate saved markup and refresh ownership
+        run: |
+          python tests/test_home_studio.py
+          node scripts/test-home-tracker-data.mjs
+          python scripts/build-wayfinding.py --check
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- assets/js
+      - name: Responsive, navigation and mocked newsletter journeys
+        run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/home-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homepage-studio-previews
+          path: /tmp/home-studio
