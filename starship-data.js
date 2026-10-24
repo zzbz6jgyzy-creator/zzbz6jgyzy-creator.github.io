@@ -1,5 +1,5 @@
 window.STARSHIP = {
-  updated: "2026-10-22",
+  updated: "2026-10-24",
   note:
     "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
@@ -28,6 +28,14 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-10-23",
+      mission: 15,
+      confirmed: false,
+      change:
+        "At NASA’s Artemis update, Artemis program manager Jeremy Parsons said Flight 15 is expected in November and will fly Raptor engine improvements, and that the first Starship flight from Florida is expected “in the coming months”. Still no SpaceX mission page or launch time.",
+      source: { outlet: "Spaceflight Now live coverage of NASA’s 23 Oct briefing", url: "https://x.com/SpaceflightNow/status/2113706070581670222" },
+    },
     {
       date: "2026-10-20",
       mission: 15,
