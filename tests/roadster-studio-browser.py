@@ -6,7 +6,7 @@ from playwright.async_api import async_playwright
 ROOT=Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=Path('/tmp/roadster-studio');OUT.mkdir(exist_ok=True)
 async def main():
  async with async_playwright()as p:
-  browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE')or shutil.which('chromium'),headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
+  browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE')or shutil.which('google-chrome')or shutil.which('chromium'),headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
   for width,theme,mode in [(320,'dark','normal'),(390,'dark','normal'),(768,'dark','normal'),(1440,'dark','normal'),(390,'light','normal'),(1440,'light','normal'),(390,'dark','nojs'),(390,'dark','blocked-film')]:
    context=await browser.new_context(viewport={'width':width,'height':950},java_script_enabled=mode!='nojs',reduced_motion='reduce',service_workers='block');await context.add_init_script("localStorage.setItem('sd-theme',"+json.dumps(theme)+")")
    page=await context.new_page();errors=[];requests=[]
@@ -46,7 +46,11 @@ async def main():
     assert 'Not approved for public road use' in await page.locator('#rs-compare').inner_text()
     await page.locator('[data-rs-unit="metric"]').click();assert '370 km/h' in await page.locator('[data-rs-speed]').inner_text()
     await page.locator('#cockpit').screenshot(path=str(OUT/'cockpit-desktop.png'));await page.locator('#tech').screenshot(path=str(OUT/'engineering-desktop.png'))
-    await page.locator('#rs-film-quality').select_option('720');await page.locator('#rs-film-cover').click();await page.wait_for_function("document.querySelector('#rs-film').currentTime>0",timeout=30000)
+    await page.locator('#rs-film-quality').select_option('720');await page.locator('#rs-film-cover').click()
+    try:await page.wait_for_function("document.querySelector('#rs-film').currentTime>0",timeout=30000)
+    except Exception:
+     print('Media diagnostics:',await page.locator('#rs-film').evaluate("(v)=>({ready:v.readyState,error:v.error?.message,paused:v.paused,codec:v.canPlayType('video/mp4')})"),flush=True)
+     raise
     assert await page.locator('#rs-film').evaluate('(v)=>v.muted')
     await page.locator('[data-rs-chapter="23.6"]').click();await page.wait_for_function("document.querySelector('#rs-film').currentTime>=23.4")
     await page.locator('#rs-film').evaluate('(v)=>v.pause()');await page.locator('#rs-film-quality').select_option('1080');await page.wait_for_function("document.querySelector('#rs-film').readyState>=1&&document.querySelector('#rs-film').currentTime>=23.4")
