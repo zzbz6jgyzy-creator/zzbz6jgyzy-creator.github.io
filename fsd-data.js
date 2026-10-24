@@ -1,5 +1,5 @@
 window.FSD_GLOBAL = {
-  updated: "2026-10-23",
+  updated: "2026-10-24",
   note:
     "Live describes sourced market availability, subject to vehicle eligibility. National recognition, manufacturer availability and individual delivery observations are separate. Driver supervision remains required.",
   teslaList: "https://www.tesla.com/support/full-self-driving",
@@ -11,7 +11,7 @@ window.FSD_GLOBAL = {
       hardware: "HW4 / AI4",
       build: "2026.38.5.10",
       status: "live",
-      note: "Newest US build, on top of 2026.38.5.1. Early wave: 15 US cars on Teslascope by 22 Oct. HW3 stays on v14.3 Lite. Source: Teslascope.",
+      note: "Newest US build, on top of 2026.38.5.1. 86 cars on Teslascope by 24 Oct, almost all in the US, with the first in Mexico and Canada. HW3 stays on v14.3 Lite. Source: Teslascope.",
     },
     {
       id: "v14.3.12 Down Under",
@@ -20,7 +20,7 @@ window.FSD_GLOBAL = {
       hardware: "HW4 / AI4",
       build: "2026.38.5.5",
       status: "live",
-      note: "The 2026.38 FSD stack reaches Oceania. 14 cars in Australia on Teslascope by 22 Oct, with cars in New Zealand waiting to install. Adds Arrival Options and Speed Profiles. Source: Teslascope.",
+      note: "The 2026.38 FSD stack reaches Oceania. 131 cars on Teslascope by 24 Oct, about 94% in Australia and the rest in New Zealand. Adds Arrival Options and Speed Profiles. Source: Teslascope.",
     },
     {
       id: "v14.3.12",

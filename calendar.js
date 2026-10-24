@@ -154,6 +154,18 @@
       source: "curated",
     },
     {
+      id: "ll-starlink-15-15",
+      title: "Falcon 9 · Starlink Group 15-15",
+      start: "2026-10-23T22:48:44Z",
+      group: "spacex",
+      where: "Vandenberg · SLC-4E",
+      note: "Launched Fri 23 Oct at 23:48 Irish time from Vandenberg. Launch Library 2 lists it as a success.",
+      href: "",
+      status: "done",
+      precision: "datetime",
+      source: "curated",
+    },
+    {
       id: "starship-f14",
       title: "Starship Flight 14",
       start: "2026-09-28T12:00:00Z",

@@ -1,5 +1,5 @@
 window.SEE_LAUNCH = {
-  updated: "2026-10-23",
+  updated: "2026-10-24",
   note:
     "Our estimate, not a full FlightClub trajectory. We use the pad, a typical azimuth for that mission type, distance, night vs day, and Open-Meteo cloud cover. A feature in the notes can still be hidden by haze, a late slip, or a dogleg. Not SpaceX’s official viewing guide.",
   pads: {
@@ -59,9 +59,21 @@ window.SEE_LAUNCH = {
       note: "NET Tue 20 Oct (moved from Mon for recovery weather). Window opens 6:30 a.m. ET from SLC-40.",
     },
     {
-      id: "ll-starlink-15-15",
-      title: "Falcon 9 · Starlink Group 15-15",
-      start: "2026-10-23T21:30:00Z",
+      id: "ll-starlink-15-16",
+      title: "Falcon 9 · Starlink Group 15-16",
+      start: "2026-10-27T04:45:00Z",
+      pad: "slc4e",
+      vehicle: "falcon",
+      orbit: "sso",
+      status: "go",
+      precision: "datetime",
+      href: "https://www.spacex.com/launches",
+      note: "Vandenberg polar Starlink. Moved from 26 Oct to Tue 27 Oct (Launch Library 2).",
+    },
+    {
+      id: "ll-starlink-15-18",
+      title: "Falcon 9 · Starlink Group 15-18",
+      start: "2026-10-30T04:02:00Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "sso",
@@ -71,9 +83,9 @@ window.SEE_LAUNCH = {
       note: "Vandenberg polar Starlink.",
     },
     {
-      id: "ll-starlink-15-16",
-      title: "Falcon 9 · Starlink Group 15-16",
-      start: "2026-10-26T05:00:00Z",
+      id: "ll-starlink-15-21",
+      title: "Falcon 9 · Starlink Group 15-21",
+      start: "2026-11-05T05:14:00Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "sso",
