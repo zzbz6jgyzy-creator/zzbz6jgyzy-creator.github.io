@@ -764,7 +764,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-10-24T05:57:33Z",
+    "checked": "2026-10-24T17:52:47Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -886,11 +886,19 @@
         "modelY": 507,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-10-24T17:52:47Z",
+        "date": "2026-10-24",
+        "cybercab": 420,
+        "modelY": 507,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-10-24T05:57:33Z",
+    "checked": "2026-10-24T17:52:47Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
@@ -1080,7 +1088,7 @@
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "revision": "3857624ca629688cbfbedde1b75d2ece7c2af0f6"
     },
-    "checked": "2026-10-24T05:57:33Z",
+    "checked": "2026-10-24T17:52:47Z",
     "features": [
       {
         "type": "Feature",
@@ -2024,7 +2032,7 @@
         "statusSrc": "https://robotracker.app/updates"
       }
     },
-    "checked": "2026-10-24T05:57:33Z"
+    "checked": "2026-10-24T17:52:47Z"
   },
   "checks": {
     "schemaVersion": 1,
