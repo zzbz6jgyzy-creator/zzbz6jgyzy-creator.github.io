@@ -1,7 +1,7 @@
 """Owner journeys against local first-party resources; no Tesla/Supabase writes."""
 import asyncio,json,mimetypes,os,pathlib,shutil
 from urllib.parse import urlparse
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=pathlib.Path(os.environ.get('GARAGE_SCREENSHOTS','/tmp/my-tesla-studio'));OUT.mkdir(parents=True,exist_ok=True)
 KEY='sd-my-tesla-garage-v2'
 async def main():
@@ -68,7 +68,7 @@ async def main():
   download=await dl.value;path=OUT/'garage-backup.json';await download.save_as(path);backup=json.loads(path.read_text());assert len(backup['cars'])==2
   malicious=json.loads(json.dumps(backup));malicious['cars'][0]['name']='<img src=x onerror=alert(1)>';await page.locator('#mg-import').set_input_files({'name':'garage.json','mimeType':'application/json','buffer':json.dumps(malicious).encode()});await page.locator('#mg-confirm-no').click();assert 'My Highland'in await page.locator('#mg-title').inner_text()
   await page.locator('#mg-import').set_input_files({'name':'garage.json','mimeType':'application/json','buffer':json.dumps(malicious).encode()});await page.locator('#mg-confirm-yes').click();assert '<img src=x' in await page.locator('#mg-title').inner_text();assert await page.locator('#mg-title img').count()==0
-  await page.locator('#mg-import').set_input_files({'name':'invalid.json','mimeType':'application/json','buffer':b'{broken'});assert 'not a valid'in await page.locator('#mg-alert').inner_text();assert await page.evaluate("JSON.parse(localStorage.getItem('"+KEY+"')).cars.length")==2
+  await page.locator('#mg-import').set_input_files({'name':'invalid.json','mimeType':'application/json','buffer':b'{broken'});await expect(page.locator('#mg-alert')).to_contain_text('not a valid');assert await page.evaluate("JSON.parse(localStorage.getItem('"+KEY+"')).cars.length")==2
   await page.locator('#mg-delete-car').click();await page.locator('#mg-confirm-no').click();assert await page.evaluate("JSON.parse(localStorage.getItem('"+KEY+"')).cars.length")==2
   assert not errors,errors;await c.close();print('PASS: calculators, care completion/reopen, two-car isolation, compatible legacy pointer, backup roundtrip/cancel, malformed import and HTML injection safety',flush=True)
   for mode in ['blocked','storage-blocked','legacy','corrupt','no-js','blocked-js']:
