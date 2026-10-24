@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "production": {
+    "updated": "2026-10-19",
+    "quarters": [
+      {
+        "id": "Q1 2025",
+        "periodEnd": "2025-03-31",
+        "published": "2025-04-02",
+        "production": 362615,
+        "deliveries": 336681,
+        "model3yProduction": 345454,
+        "model3yDeliveries": 323800,
+        "otherProduction": 17161,
+        "otherDeliveries": 12881,
+        "energyGwh": 10.4,
+        "sourceUrl": "https://ir.tesla.com/press-release/tesla-first-quarter-2025-production-deliveries-and-deployments",
+        "sourceTitle": "Tesla First Quarter 2025 Production, Deliveries & Deployments"
+      },
+      {
+        "id": "Q2 2025",
+        "periodEnd": "2025-06-30",
+        "published": "2025-07-02",
+        "production": 410244,
+        "deliveries": 384122,
+        "model3yProduction": 396835,
+        "model3yDeliveries": 373728,
+        "otherProduction": 13409,
+        "otherDeliveries": 10394,
+        "energyGwh": 9.6,
+        "sourceUrl": "https://ir.tesla.com/press-release/tesla-second-quarter-2025-production-deliveries-deployments",
+        "sourceTitle": "Tesla Second Quarter 2025 Production, Deliveries & Deployments"
+      },
+      {
+        "id": "Q3 2025",
+        "periodEnd": "2025-09-30",
+        "published": "2025-10-02",
+        "production": 447450,
+        "deliveries": 497099,
+        "model3yProduction": 435826,
+        "model3yDeliveries": 481166,
+        "otherProduction": 11624,
+        "otherDeliveries": 15933,
+        "energyGwh": 12.5,
+        "sourceUrl": "https://ir.tesla.com/press-release/tesla-third-quarter-2025-production-deliveries-deployments",
+        "sourceTitle": "Tesla Third Quarter 2025 Production, Deliveries & Deployments"
+      },
+      {
+        "id": "Q4 2025",
+        "periodEnd": "2025-12-31",
+        "published": "2026-01-02",
+        "production": 434358,
+        "deliveries": 418227,
+        "model3yProduction": 422652,
+        "model3yDeliveries": 406585,
+        "otherProduction": 11706,
+        "otherDeliveries": 11642,
+        "energyGwh": 14.2,
+        "sourceUrl": "https://ir.tesla.com/press-release/tesla-fourth-quarter-2025-production-deliveries-deployments",
+        "sourceTitle": "Tesla Fourth Quarter 2025 Production, Deliveries & Deployments"
+      },
+      {
+        "id": "Q1 2026",
+        "periodEnd": "2026-03-31",
+        "published": "2026-04-02",
+        "production": 408386,
+        "deliveries": 358023,
+        "model3yProduction": 394611,
+        "model3yDeliveries": 341893,
+        "otherProduction": 13775,
+        "otherDeliveries": 16130,
+        "energyGwh": 8.8,
+        "sourceUrl": "https://ir.tesla.com/press-release/tesla-first-quarter-2026-production-deliveries-and-deployments",
+        "sourceTitle": "Tesla First Quarter 2026 Production, Deliveries & Deployments"
+      },
+      {
+        "id": "Q2 2026",
+        "periodEnd": "2026-06-30",
+        "published": "2026-07-02",
+        "production": 451758,
+        "deliveries": 480126,
+        "model3yProduction": 442936,
+        "model3yDeliveries": 467762,
+        "otherProduction": 8822,
+        "otherDeliveries": 12364,
+        "energyGwh": 13.5,
+        "sourceUrl": "https://ir.tesla.com/press-release/tesla-second-quarter-2026-production-deliveries-and-deployments",
+        "sourceTitle": "Tesla Second Quarter 2026 Production, Deliveries & Deployments"
+      },
+      {
+        "id": "Q3 2026",
+        "periodEnd": "2026-09-30",
+        "published": "2026-10-02",
+        "production": 464391,
+        "deliveries": 486532,
+        "model3yProduction": 457387,
+        "model3yDeliveries": 478237,
+        "otherProduction": 7004,
+        "otherDeliveries": 8295,
+        "energyGwh": 13.7,
+        "sourceUrl": "https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments",
+        "sourceTitle": "Tesla Third Quarter 2026 Production, Deliveries & Deployments"
+      }
+    ]
+  },
+  "software": {
+    "updated": "2026-10-24T18:53:13Z",
+    "id": "2026.38.3.2",
+    "firstSeen": "2026-10-22T20:10:42Z",
+    "source": "https://teslascope.com/software",
+    "count": 199
+  },
+  "europe": {
+    "updated": "2026-10-23",
+    "listed": 9
+  },
+  "stories": [
+    {
+      "url": "/dispatch/tesla-10q-spacex-committee.html",
+      "image": "/assets/dispatch/giga-texas-hero.jpg",
+      "title": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
+      "summary": "Tesla’s Q3 10-Q makes the SpaceX special committee official. Tesla’s $2.0B SpaceX stake was worth $2.87B on 30 Sep, and SpaceX bought $626M of Megapacks this year.",
+      "tag": "Markets",
+      "date": "2026-10-22T19:40:00Z",
+      "thumb": "/assets/dispatch/giga-texas-hero-480w.webp"
+    },
+    {
+      "url": "/dispatch/tesla-ai-maps-v15.html",
+      "image": "/assets/dispatch/tesla-nav-screen-hero.jpg",
+      "title": "Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet",
+      "summary": "Tesla’s AI chief says FSD will stop relying on other companies’ maps, starting with V15. I put 15.8 billion FSD miles next to Street View, Waymo and every US road.",
+      "tag": "FSD",
+      "date": "2026-10-22T07:41:03Z",
+      "thumb": "/assets/dispatch/tesla-nav-screen-hero-480w.webp"
+    },
+    {
+      "url": "/dispatch/tesla-q3-2026-results.html",
+      "image": "/assets/dispatch/tesla-q3-results-hero.jpg",
+      "title": "Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock",
+      "summary": "Revenue flat at $28.05B, GAAP net income down 43% as R&D jumped 69%, and free cash flow back at $1.53B. I took apart the cash, the capex math and every new date from the call.",
+      "tag": "Earnings",
+      "date": "2026-10-22T01:38:03Z",
+      "thumb": "/assets/dispatch/tesla-q3-results-hero-480w.webp"
+    },
+    {
+      "url": "/dispatch/tesla-robotaxi-safety-report-zeros.html",
+      "image": "/assets/dispatch/robotaxi-safety-hero.jpg",
+      "title": "Tesla’s first Robotaxi safety report: 3.1 million miles, zero injuries. What the zeros prove, and what they don’t",
+      "summary": "No injuries, airbag deployments or pedestrians hit in 3.1 million driverless miles. I ran the odds on each zero and put it next to Waymo’s 271 million miles.",
+      "tag": "Robotaxi",
+      "date": "2026-10-21T19:40:28Z",
+      "thumb": "/assets/dispatch/robotaxi-safety-hero-480w.webp"
+    },
+    {
+      "url": "/dispatch/tesla-q3-2026-preview.html",
+      "image": "/assets/dispatch/tesla-q3-preview-poster.jpg",
+      "title": "Tesla Q3 preview: the cash burn, what’s at stake for the stock, and the SpaceX merger talk",
+      "summary": "Results land after the US close on Wednesday. Why free cash flow is expected to be negative, the bull and bear cases for the stock, and what has actually been said about a SpaceX merger.",
+      "tag": "Tesla",
+      "date": "2026-10-20T18:30:00Z",
+      "thumb": "/assets/dispatch/tesla-q3-preview-poster-480w.webp"
+    },
+    {
+      "url": "/dispatch/hagerty-roadster-moravy-interview.html",
+      "image": "/assets/dispatch/hagerty-roadster-moravy-interview-poster.jpg",
+      "title": "Fans, thrusters and Optimus legs: Tesla’s Roadster engineer takes Hagerty under the skin",
+      "summary": "Lars Moravy on the 1 MW rear-drive powertrain, the fan “sucker” system, an Optimus-actuated wing and SpaceX cold-gas thrusters, and what’s still a target.",
+      "tag": "Roadster",
+      "date": "2026-10-20T09:39:28Z",
+      "thumb": "/assets/dispatch/hagerty-roadster-moravy-interview-poster-480w.webp"
+    }
+  ],
+  "articlesUpdated": "2026-10-24T13:30:13Z"
+}

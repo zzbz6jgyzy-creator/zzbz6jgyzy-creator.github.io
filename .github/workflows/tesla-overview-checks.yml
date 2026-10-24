@@ -1,0 +1,36 @@
+name: Tesla overview checks
+on:
+  pull_request:
+    paths:
+      - 'tesla.html'
+      - 'tesla-overview*'
+      - 'data/tesla-overview.json'
+      - 'scripts/build-tesla-overview.mjs'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/tesla-overview*'
+      - '.github/workflows/tesla-overview-checks.yml'
+      - '.github/workflows/home-build.yml'
+      - '.github/workflows/news-snapshot.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tesla-overview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Model, saved HTML and source rules
+        run: node --test tests/tesla-overview.test.mjs
+      - name: Install browser driver
+        run: pip install playwright==1.62.0
+      - name: Responsive interactions and failure recovery
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/tesla-overview-browser.py

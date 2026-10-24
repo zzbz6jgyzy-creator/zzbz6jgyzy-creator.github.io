@@ -57,9 +57,9 @@
       "starlink-globe.js"
     ],
     "tesla": [
-      "fsd-europe-data.js",
-      "tesla-hub.js",
-      "live.js"
+      "tesla-overview-model.js",
+      "tesla-overview-view.js",
+      "tesla-overview.js"
     ],
     "my-tesla": [
       "updates-data.js",
@@ -244,14 +244,12 @@
     "tesla.html": {
       "bundles": [
         "core",
-        "intel",
         "tesla"
       ],
       "grow": [
         "data-band",
         "data-pop"
-      ],
-      "livePage": "tesla"
+      ]
     },
     "spacex.html": {
       "bundles": [
