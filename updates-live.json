@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T21:08:43Z",
+  "updated": "2026-10-24T21:48:13Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3360,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
-      "count": 15,
+      "count": 34,
       "fleet": 3360,
-      "percent": 0.4,
+      "percent": 1.0,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -53,19 +53,19 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 13,
-        "NZ": 2
+        "AU": 30,
+        "NZ": 4
       },
-      "pending": 77,
+      "pending": 98,
       "firstSeen": "2026-10-24T19:52:52Z",
-      "lastSeen": "2026-10-24T21:04:12Z"
+      "lastSeen": "2026-10-24T21:44:30Z"
     },
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 1,
+      "count": 4,
       "fleet": 3360,
-      "percent": 0.0,
+      "percent": 0.1,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -107,11 +107,11 @@
         "US"
       ],
       "countryCounts": {
-        "US": 1
+        "US": 4
       },
-      "pending": 6,
+      "pending": 3,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-24T20:38:09Z"
+      "lastSeen": "2026-10-24T21:33:24Z"
     },
     {
       "id": "2026.38.3.2",
@@ -279,7 +279,7 @@
         "AU": 128,
         "NZ": 8
       },
-      "pending": 11,
+      "pending": 1,
       "firstSeen": "2026-10-21T02:20:52Z",
       "lastSeen": "2026-10-24T16:25:06Z"
     },
@@ -375,7 +375,7 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 1021,
+      "count": 1022,
       "fleet": 3360,
       "percent": 30.4,
       "fsd": null,
@@ -423,15 +423,15 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 955,
+        "US": 956,
         "CA": 59,
         "MX": 4,
         "UA": 2,
         "PR": 1
       },
-      "pending": 45,
+      "pending": 44,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-24T13:22:27Z"
+      "lastSeen": "2026-10-24T21:05:22Z"
     },
     {
       "id": "2026.38.5",
@@ -619,7 +619,7 @@
         "CO": 1,
         "IE": 1
       },
-      "pending": 21,
+      "pending": 22,
       "firstSeen": "2026-10-08T01:27:55Z",
       "lastSeen": "2026-10-24T10:46:32Z"
     },
