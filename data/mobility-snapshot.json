@@ -764,7 +764,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-10-23T20:57:50Z",
+    "checked": "2026-10-24T05:57:33Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -853,6 +853,13 @@
         "modelY": 507,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "date": "2026-10-24",
+        "cybercab": 420,
+        "modelY": 507,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ],
     "observations": [
@@ -871,11 +878,19 @@
         "modelY": 507,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-10-24T05:57:33Z",
+        "date": "2026-10-24",
+        "cybercab": 420,
+        "modelY": 507,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-10-23T17:57:19Z",
+    "checked": "2026-10-24T05:57:33Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
@@ -884,7 +899,7 @@
       "Texas": {
         "count": 507,
         "kind": "registered",
-        "asOf": "2026-10-23",
+        "asOf": "2026-10-24",
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
         "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."
       },
@@ -1038,6 +1053,21 @@
           "count": 18,
           "asOf": "2026-07-22"
         }
+      },
+      {
+        "date": "2026-10-24",
+        "Texas": {
+          "count": 507,
+          "asOf": "2026-10-24"
+        },
+        "California": {
+          "count": 164,
+          "asOf": "2026-08-26"
+        },
+        "Florida": {
+          "count": 18,
+          "asOf": "2026-07-22"
+        }
       }
     ]
   },
@@ -1047,9 +1077,10 @@
       "name": "Robotaxi Tracker service areas",
       "url": "https://github.com/Robotaxi-Tracker/robotaxi-service-areas",
       "licence": "CC BY 4.0",
-      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "revision": "3857624ca629688cbfbedde1b75d2ece7c2af0f6"
     },
-    "checked": "2026-10-23T17:57:19Z",
+    "checked": "2026-10-24T05:57:33Z",
     "features": [
       {
         "type": "Feature",
@@ -1993,7 +2024,7 @@
         "statusSrc": "https://robotracker.app/updates"
       }
     },
-    "checked": "2026-10-23T17:57:19Z"
+    "checked": "2026-10-24T05:57:33Z"
   },
   "checks": {
     "schemaVersion": 1,
