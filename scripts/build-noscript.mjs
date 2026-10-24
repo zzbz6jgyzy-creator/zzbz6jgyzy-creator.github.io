@@ -6,6 +6,7 @@ import fs from "node:fs";
 import vm from "node:vm";
 import { buildFSDEurope } from "./build-fsd-europe.mjs";
 import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
+import { buildStarshipStudio } from "./build-starship-studio.mjs";
 const root = new URL("..", import.meta.url).pathname;
 const read = (f) => fs.readFileSync(root + f, "utf8");
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -33,12 +34,7 @@ function inject(file, tag, html) {
 }
 // FSD Europe has complete saved HTML from the same model as the browser.
 buildFSDEurope(root);
-// Starship
-{
-  const d = loadWin("starship-data.js").STARSHIP;
-  const rows = d.flights.slice().reverse().map((f) => `<tr>${td(`<b>Flight ${esc(f.flight)}</b>`)}${td(esc(f.date))}${td(esc([f.booster, f.ship].filter(Boolean).join(" / ")))}${td(esc(f.outcome))}${td(esc(f.headline))}</tr>`).join("");
-  const nx = d.next ? `<p><b>Next: Flight ${esc(d.next.flight)}</b>, NET ${esc(String(d.next.start).slice(0, 10))} (${esc(d.next.headline)}).</p>` : "";
-  inject("starship.html", "starship", `<h2>Starship flights (updated ${esc(d.updated)})</h2>${nx}<div style="overflow-x:auto"><table ${T}><thead><tr>${th("Flight")}${th("Date")}${th("Booster / Ship")}${th("Outcome")}${th("Story")}</tr></thead><tbody>${rows}</tbody></table></div>`);
-}
+// Starship now has complete semantic saved HTML, shared with the browser.
+buildStarshipStudio(root);
 console.log("noscript blocks written");
 buildTrackerSnapshots(root);

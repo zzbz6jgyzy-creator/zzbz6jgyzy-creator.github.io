@@ -42,15 +42,12 @@
       ]
     },
     "starship": {
-      "file": "/assets/js/starship.bundle.37db341a8e.js",
-      "bytes": 59627,
+      "file": "/assets/js/starship.bundle.51ed569a4e.js",
+      "bytes": 46356,
       "sources": [
-        "starship-data.js",
-        "starship-lab-data.js",
-        "starship.js",
-        "starship-lab.js",
-        "countup.js",
-        "live.js"
+        "starship-studio-model.js",
+        "starship-studio-view.js",
+        "starship-studio.js"
       ]
     },
     "starlink": {
