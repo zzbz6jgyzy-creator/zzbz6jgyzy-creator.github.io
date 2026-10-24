@@ -302,10 +302,12 @@
       ]
     },
     "buy-guide": {
-      "file": "/assets/js/buy-guide.bundle.7b4d28e4b3.js",
-      "bytes": 3486,
+      "file": "/assets/js/buy-guide.bundle.d4a20d5aee.js",
+      "bytes": 20263,
       "sources": [
-        "guides/buy-calc.js"
+        "buying-studio-model.js",
+        "buying-studio-view.js",
+        "buying-studio.js"
       ]
     },
     "personal-home": {

@@ -1,0 +1,285 @@
+{
+  "version": 1,
+  "reviewed": "2026-10-24",
+  "referenceDate": "2026-10-14",
+  "models": [
+    {
+      "id": "m3",
+      "name": "Model 3",
+      "body": "Sedan",
+      "tag": "The focused daily driver",
+      "image": "/assets/reviews/model-3-960w.webp",
+      "alt": "Grey Tesla Model 3 viewed from the front quarter",
+      "best": "A strong starting point if a lower seating position and a conventional sedan footprint suit your day.",
+      "tradeoff": "Try rear-seat access, the boot opening and your usual luggage. A spec-sheet volume does not describe the shape of the opening.",
+      "test": "Bring the actual child seat or suitcase. Test visibility, controls, ride comfort and parking on familiar roads.",
+      "review": "/reviews/model-3.html",
+      "official": "https://www.tesla.com/model3",
+      "explorer": "/model3-explorer.html",
+      "priorities": [
+        "commute",
+        "performance"
+      ],
+      "reference": {
+        "trim": "Rear-Wheel Drive",
+        "market": "US",
+        "asOf": "2026-10-14",
+        "price": 36990,
+        "fees": 1640,
+        "rangeMiles": 321,
+        "rangeStandard": "Tesla EPA estimate",
+        "accel": 5.8,
+        "accelTest": "0–60 mph",
+        "status": "Archived guide snapshot",
+        "source": "https://www.tesla.com/model3/design"
+      }
+    },
+    {
+      "id": "my",
+      "name": "Model Y",
+      "body": "Crossover",
+      "tag": "The everyday all-rounder",
+      "image": "/assets/reviews/model-y-960w.webp",
+      "alt": "Grey Tesla Model Y parked outside, viewed from the front quarter",
+      "best": "Start here for a higher seating position and a liftback that makes bulky everyday loads easier to trial.",
+      "tradeoff": "Seat count and packaging vary by version. A seven-seat or long-wheelbase claim must match the exact local configuration.",
+      "test": "Check the rear seat with the front seat in your driving position, loading height and the space you actually park in.",
+      "review": "/reviews/model-y.html",
+      "official": "https://www.tesla.com/modely",
+      "explorer": null,
+      "priorities": [
+        "family",
+        "commute"
+      ],
+      "reference": {
+        "trim": "Rear-Wheel Drive",
+        "market": "US",
+        "asOf": "2026-10-14",
+        "price": 39990,
+        "fees": 1640,
+        "rangeMiles": 321,
+        "rangeStandard": "Tesla EPA estimate",
+        "accel": 6.8,
+        "accelTest": "0–60 mph",
+        "status": "Archived guide snapshot",
+        "source": "https://www.tesla.com/modely/design"
+      }
+    },
+    {
+      "id": "ct",
+      "name": "Cybertruck",
+      "body": "Pickup",
+      "tag": "A job first. A statement second.",
+      "image": "/assets/reviews/cybertruck-960w.webp",
+      "alt": "Stainless-steel Tesla Cybertruck parked at dusk",
+      "best": "A candidate when the pickup bed and truck-specific requirements are central to the purchase.",
+      "tradeoff": "Measure garage and parking clearances, check local availability and verify payload and towing against the actual vehicle and trailer.",
+      "test": "Test access, visibility, load handling and the route you would tow. Budget for the extra energy demand of the real job.",
+      "review": "/reviews/cybertruck.html",
+      "official": "https://www.tesla.com/cybertruck",
+      "explorer": "/cybertruck-explorer.html",
+      "priorities": [
+        "utility"
+      ],
+      "reference": {
+        "trim": "Dual Motor All-Wheel Drive",
+        "market": "US",
+        "asOf": "2026-10-14",
+        "price": 74990,
+        "fees": 2245,
+        "rangeMiles": 325,
+        "rangeStandard": "Tesla EPA estimate",
+        "accel": 4.1,
+        "accelTest": "0–60 mph",
+        "status": "Archived guide snapshot",
+        "source": "https://www.tesla.com/cybertruck/design"
+      }
+    },
+    {
+      "id": "ms",
+      "name": "Model S",
+      "body": "Large liftback",
+      "tag": "The used flagship route",
+      "image": "/assets/reviews/model-s-960w.webp",
+      "alt": "Blue Tesla Model S parked beside trees",
+      "best": "An alternative to explore in the used market if you want a larger low-slung liftback.",
+      "tradeoff": "Large differences exist between generations. Identify the exact year, battery, drive unit, suspension, infotainment and driver-assistance hardware.",
+      "test": "Inspect the underbody and service history, test every powered function and obtain repair and insurance quotes for that specific car.",
+      "review": "/reviews/model-s.html",
+      "official": "https://www.tesla.com/inventory/used/ms",
+      "explorer": null,
+      "priorities": [
+        "touring"
+      ],
+      "reference": null
+    },
+    {
+      "id": "mx",
+      "name": "Model X",
+      "body": "Large SUV",
+      "tag": "The used large-cabin route",
+      "image": "/assets/reviews/model-x-960w.webp",
+      "alt": "Grey Tesla Model X viewed from the front quarter",
+      "best": "A used-market alternative when a larger cabin and an appropriate seating layout are priorities.",
+      "tradeoff": "Seating configurations, door systems, warranty and hardware depend on the individual car. Do not treat every Model X as the same product.",
+      "test": "Operate the falcon-wing doors in a suitable space, check seat mechanisms and verify all fitted equipment before agreeing a price.",
+      "review": "/reviews/model-x.html",
+      "official": "https://www.tesla.com/inventory/used/mx",
+      "explorer": null,
+      "priorities": [
+        "family",
+        "touring"
+      ],
+      "reference": null
+    }
+  ],
+  "sources": [
+    {
+      "id": "catalogue",
+      "name": "Tesla model comparison",
+      "url": "https://www.tesla.com/compare",
+      "reviewed": "2026-10-24",
+      "note": "Current comparison and local configurators are the price and equipment check. Numeric references here retain their original 14 October date."
+    },
+    {
+      "id": "warranty",
+      "name": "Tesla US vehicle warranty",
+      "url": "https://www.tesla.com/support/vehicle-warranty",
+      "reviewed": "2026-10-24",
+      "note": "US reference only. The warranty supplied with the individual vehicle is authoritative."
+    },
+    {
+      "id": "charging",
+      "name": "Tesla home charging guidance",
+      "url": "https://www.tesla.com/support/charging/home-charging",
+      "reviewed": "2026-10-24",
+      "note": "Compare charging options with a qualified installer and a local tariff. US hardware and plug descriptions do not apply everywhere."
+    },
+    {
+      "id": "fsd",
+      "name": "Tesla FSD (Supervised) guidance",
+      "url": "https://www.tesla.com/support/fsd",
+      "reviewed": "2026-10-24",
+      "note": "Active supervision remains required. Check configuration, region and purchase or subscription status."
+    },
+    {
+      "id": "transfer",
+      "name": "Tesla app and ownership transfer",
+      "url": "https://www.tesla.com/support/how-add-or-remove-vehicles-tesla-app",
+      "reviewed": "2026-10-24",
+      "note": "A third-party purchase needs an ownership transfer. Some subscriptions, upgrades and benefits may not transfer."
+    },
+    {
+      "id": "irs",
+      "name": "IRS clean-vehicle tax credits",
+      "url": "https://www.irs.gov/clean-vehicle-tax-credits",
+      "reviewed": "2026-10-24",
+      "note": "US federal credits are unavailable for vehicles acquired after 30 September 2025. Earlier qualifying acquisitions have separate conditions."
+    },
+    {
+      "id": "range",
+      "name": "EPA/DOE fuel economy ratings",
+      "url": "https://www.fueleconomy.gov/feg/Find.do?action=sbsSelect",
+      "reviewed": "2026-10-24",
+      "note": "Use the exact certified model and configuration. EPA, WLTP and real-world journey range are different measures."
+    }
+  ],
+  "checklist": [
+    {
+      "stage": "needs",
+      "id": "parking",
+      "title": "Measure parking",
+      "text": "Check vehicle dimensions, access, door clearance and the place you will charge."
+    },
+    {
+      "stage": "needs",
+      "id": "seats",
+      "title": "Try real passengers",
+      "text": "Fit child seats and test entry, headroom and the actual seating configuration."
+    },
+    {
+      "stage": "needs",
+      "id": "journey",
+      "title": "Test the difficult trip",
+      "text": "Map a winter or motorway journey with realistic charging stops and a reserve."
+    },
+    {
+      "stage": "needs",
+      "id": "charging",
+      "title": "Confirm a charging plan",
+      "text": "Obtain a home/workplace solution or price the public charging routine you would really use."
+    },
+    {
+      "stage": "quote",
+      "id": "configuration",
+      "title": "Capture the exact configuration",
+      "text": "Keep year, trim, drive, wheels, paint, options and VIN where assigned."
+    },
+    {
+      "stage": "quote",
+      "id": "price",
+      "title": "Get an itemised quote",
+      "text": "Include taxes, fees, accessories, delivery charges and only confirmed incentives."
+    },
+    {
+      "stage": "quote",
+      "id": "finance",
+      "title": "Read the finance contract",
+      "text": "Compare rate, total payable, deposit, term, any balloon and early-settlement terms."
+    },
+    {
+      "stage": "quote",
+      "id": "insurance",
+      "title": "Price insurance before ordering",
+      "text": "Use the exact model and your circumstances, not an average online example."
+    },
+    {
+      "stage": "used",
+      "id": "history",
+      "title": "Check title and history",
+      "text": "Follow your local ownership, finance, damage, recall and mileage checks."
+    },
+    {
+      "stage": "used",
+      "id": "battery",
+      "title": "Ask about battery evidence",
+      "text": "A displayed range or charge percentage alone is not a battery-health certificate."
+    },
+    {
+      "stage": "used",
+      "id": "inspection",
+      "title": "Inspect condition independently",
+      "text": "Check tyres, brakes, suspension, glass, underbody, charge port and both AC/DC charging where practicable."
+    },
+    {
+      "stage": "used",
+      "id": "coverage",
+      "title": "Confirm warranty and equipment",
+      "text": "Verify the actual warranty, software entitlements, hardware and service records."
+    },
+    {
+      "stage": "delivery",
+      "id": "walkaround",
+      "title": "Inspect the car before acceptance",
+      "text": "Record damage, gaps, glass, wheels, lights and included equipment through the seller’s process."
+    },
+    {
+      "stage": "delivery",
+      "id": "controls",
+      "title": "Test the essentials",
+      "text": "Check locks, keys, windows, seats, heating, cooling, cameras and charging."
+    },
+    {
+      "stage": "delivery",
+      "id": "account",
+      "title": "Complete account handover",
+      "text": "Check app ownership, access, payment setup and the transfer status for a third-party purchase."
+    },
+    {
+      "stage": "delivery",
+      "id": "records",
+      "title": "Keep the documents",
+      "text": "Save the contract, warranty, inspection findings, issue references and insurance confirmation."
+    }
+  ]
+}
