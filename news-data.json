@@ -1,6 +1,40 @@
 {
-  "updated": "2026-10-24T04:33:25Z",
+  "updated": "2026-10-24T05:05:28Z",
   "items": [
+    {
+      "id": "a56b031c50f9",
+      "topic": "tesla",
+      "title": "Tesla Model 3 Hits 250,000 Miles, 1 Part Replaced [2026]",
+      "source": "https://tech-insider.org/",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPTmtFaGZhZTFCUGllcEVxcG1pSG9BOENaWW1mU0d2ODZtMG1PMmFLTWpsMnhleUsyRjJTbVBjT1ZmWXBEOVpfU3ppX2EyTmJpMUd4ZTZCNHFrSlA2aVVfYjFhZmpBOTFfWGotY044VjUzZjlXTzkwNHhlbE43SlZyNw?oc=5",
+      "published": "2026-10-24T04:50:33Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "d4cf6404bb1e",
+      "topic": "tesla",
+      "title": "Tesla's flying Roadster gets fighter jet graphics, thruster data",
+      "source": "Interesting Engineering",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPeHFsYUVsQjJ0SEJyXzVNMGlQSldnRDNBMVVwMnFiRlJ6V1JIaUk0Q1RIcTJsZmo5YnJ3d1pBa2Fua3N5YlJiV3hBdmgxS1F1TFQzbUlHRmhoOE51RGVzajRrOHNWQ3VVdk5kT2poTWF1Mk5LbTBYYi1jYVFNcExycU5rMUdCUThFOVowS0xNYlM3X0RuOGxJSkc5WWhRVTg?oc=5",
+      "published": "2026-10-24T03:39:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.yrNigwJi5pOpLEjC8FQL8w&pid=News&w=640",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
+      "id": "a226167abbc9",
+      "topic": "spacex",
+      "title": "Residents voice concerns over SpaceX spaceport plans in Vermilion Parish",
+      "source": "KATC.com",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPR1QyeWdEZkQtZUxYQ1hpLVBjTTdKZUtua1NQQzFWc1ZjQ0JpdUgxVVRpNF85UXUzWjJnV2dkVXk3WnVubVN5NjhZbmozUWZ3WWFBZkpMYmJieWQwYTJ1LTMtVzNhWmd6RHZzZG8tcE5GOXZyUW5RMmNjNTQ2dkpPMU95bkhuT0FwX1hDOTlCVXNBR2poajNMbE9fM3NEaFhfaFp4dW8tZVMwbHkxNHg1N1RKWjRnd9IBygFBVV95cUxPelNhSW40b1lpT0pHN09KYlhua1JXNlR1a2Zxc3ZhV3BiY1lpQnZLVEJJX3dWbTZ3U0VwcWc3b1VBcTZRcFZsQU0xUWo1Z0hMX2V4Yk5OYy1xcGw5WFBPX0ktQ056cGx3UGhmdDU4Wnl1d1lFTXduNV9UWGtpaWlNVGlVT2FLeWwxZXdGc2hYTHZpRDBibVUxZ2x3YzJOM1RVSlNDZnBtVjFTVTNpWkxvcl9CZWgzaWVJSE9WQVR4M2VSVHhnMHJnQlhR?oc=5",
+      "published": "2026-10-24T03:20:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
     {
       "id": "d0137257ceff",
       "topic": "spacex",
@@ -71,17 +105,6 @@
       "kind": "speculation",
       "flag": "speculation",
       "score": 6
-    },
-    {
-      "id": "ab8b05f1c036",
-      "topic": "tesla",
-      "title": "‘It Feels Like It Can Do Another 250,000 Miles’: High-Mileage Tesla Model 3 Needed Only One Minor Part Replacement",
-      "source": "InsideEVs",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNZ3h2ODRYNzJVcVVxcTl4N0I4bGtnTTEwQnZVTHhUcTBSZzZFLXhvX293bTRSY0V6dzlBSVowU2c1dDByTGJ1NW5pc0VzVW1DaWlCVkdvbk0yTDVUbmYzakVKVk5YNlE5UWVWY1otYV9jOGl1aVE0Z3R3bVd1djBGWEVKZmYxWkU3ZkZSSTh0MGRsN3l3bXVR?oc=5",
-      "published": "2026-10-24T00:36:50Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "1dfdb6b3bfbc",
@@ -234,29 +257,6 @@
       "score": 4
     },
     {
-      "id": "070b426ea502",
-      "topic": "tesla",
-      "title": "BMW iX5 First Drive, GM's Big Tech Plans, And Tesla Cybercab Deliveries Are Coming Soon",
-      "source": "InsideEVs",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFB3RkRKTzR6WmFCRUtQcUZGY1hkNWs5cVgyTm5Xcmplc2lLa1lXalJDUTlRYlpPaG9pT3RRdDB6bjJ0ZnZyc2ZYN0ZRZ3dTQko1SFI3SjkxYnlXS1RmM1JTOGU4Sng5WmMzWDJ5S1lyRTg5b1FJUzBHem1ZZUZPZw?oc=5",
-      "published": "2026-10-23T21:39:00Z",
-      "snippet": "",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
-      "id": "602a036895fc",
-      "topic": "tesla",
-      "title": "Fort Bend wants Tesla's $10B solar plant. Here are the tax breaks it's offering.",
-      "source": "Houston Chronicle",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOczc0YkcycXVHNk5HcmQySWgwUXdBQ2FkalRFVkliYU9PYWtjQ1E3cDJ5eUJKZ19RaVV3TEJFZG5Fd0xqNkswVjJRdnhkZUxLNjRzRzl6V0R0b3ItYm5zLThQVGhhU3ZWSEFuVkRXMWk1NGttWnMxRUM5ZE9UX01IalQzcXFsVkJJMTFSMHJiWUN5MENCTjY4VUxoLUg?oc=5",
-      "published": "2026-10-23T21:23:16Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.8WBOaZFtD4UyGtL1JmgdKw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "4762c2f465c9",
       "topic": "spacex",
       "title": "SpaceX $40 Billion Off-Balance Sheet Debt Snarled by AI Turmoil",
@@ -370,6 +370,7 @@
       "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQYjB0ajNsNWZfY2NFTjVUZWlxX2R6MkRYdXBPOWppd0FLai1iWEs5QU1VSzJRUnpUZzJfamt1QllWb3YtRVBUUnkwWUZCaTVMSXZ5TFpfTjBQTjI2cG5jb0lqYng5UWpxZm9GS1lsWmVxTE1lenhTQzM3RV9LbDBHVjdsRE1yYXAtQVZtS2piNTZSVG9SSHVIVExDMDFXM1BXbWxkZjRn0gGrAUFVX3lxTFBXclJxa3ZYd2VFcmowXzdJNVZqajM0TXVTM1RtcVZMeEZELTBKZktWTkZRX3NDY2t4R3VyT2NfVG0zTkxNMGdYLTdsNkxsNVY5eEhxdTI4cWwzTUt3eFB2eEtUSmx0X2Uza1kxQURNR2RZRDFtVm5aaG1xaUI1RHE2ZnNvaWdfOHdhUFVJN2VINGlQRlQxUnJjeWlqQzQ0b2VIMjQzSC11Qng2bw?oc=5",
       "published": "2026-10-23T17:04:14Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.b77MBoywpyu0LUxikZi_mw&pid=News&w=640",
       "kind": "general",
       "score": 7
     },
@@ -493,6 +494,18 @@
       "score": 4
     },
     {
+      "id": "281d9f08b8a0",
+      "topic": "tesla",
+      "title": "Tesla begins production of 'Optimus' humanoid robot",
+      "source": "ABC7 Bay Area",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPVzNtMXRzSndJNFpnZm1pa0pBODBObmlJVmhUZmV5VXJGQktkWUhSMFdtNUN2NlFHaWpNTEViN2VHbjV3aDU0azcwUkN2TTNXQk9Wdlk2ejFrTml6cE1GTl9FbzA2eEZodm92R0tRb0k2Y3pVUFQ3Rk4tVU9JQ1hzU25FbWpBR3o1M3fSAY8BQVVfeXFMT09ubEVNa2ctRWxwWmtCdTRPSjctVFZkclkxVnduTW83cy1SSFRrRHdUVWNmV2ZNZW11U1lDMk5PY2dxNHhqVTBseC1ELXg3QWZ1N0RxX05iSXVBdmFNM0U5UmtydDRoWHlMbS11ZjRuU19ZYm0yMzlFdl9tUU16ZTFVRkc0dV9PdHFoT1ZZOWs?oc=5",
+      "published": "2026-10-23T13:35:41Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.YUXJRNVHMso_0-XEICo_VQ&pid=News&w=640",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
       "id": "165ecd28412d",
       "topic": "spacex",
       "title": "AT&T, T-Mobile, Verizon Fight FCC Satellite Proposal That Helps SpaceX",
@@ -511,18 +524,6 @@
       "source": "Barron's",
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5rX2lzZ2F2Qnl6Vm5weTJtZVJ0NDVwLTZwNGQyUEtvUEZNYWoxSGFPSDFGQ2JZNkx0SnkwbUgwTEdzeHlnLWZ4eWQ0OWttSXNzMjNNdGFtQmwtQkJLMlVRenlNZDFyMnlaZVVxRmd1dXF1cndSR2lB?oc=5",
       "published": "2026-10-23T12:06:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.kDymZb9yNHU6m7_MmQEVhg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "a493849738a9",
-      "topic": "spacex",
-      "title": "SpaceX Mobile Wireless Ambition Sends Crown Castle Stock Soaring",
-      "source": "Barron's",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQTVhmeTZRakhFeHp5cTAwd1c0TjJnck9tdGZTS1pDUF85dXJvbWhaVE5wQ1VLWVBYWl9RS1ZZaTNYZk5lWE5sZkpQSEd6LXdoWUZrSXdqVXdjLW16blRfY1JkSTlnYmNfeVl0eUVtS2ZEckJBX1p4R181dUk2TjhOMUpKRkhNTkhxNE85bg?oc=5",
-      "published": "2026-10-23T11:24:00Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -547,7 +548,6 @@
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQWE1lVmZRVTlpUVdKREIxNnpXN1Z0N1ZNUG93cmdCOFl2Yk5Wcm9xalVNV1ptbTdfTDB0bTZKbjFPYm41VVozYlhyNmdwdGFBWnJWQ1dWZ1VYS3ZzdnZraXVzNGlOWTAxdFkwRXI1cE1NOE5HV0NHMDlPYzhEQWNTcHQ5T0gwMWRxQk9rdnE5N0x0b05ncU5UajZNcmJkejE0WVBPeUFzSDc5c2FIdTBIZGMwdTNabjNkYzJybTNNUVk?oc=5",
       "published": "2026-10-23T11:00:57Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ZBYwMThqFKstaUy4j9odHg&pid=News&w=640",
       "kind": "launch",
       "score": 15
     },
@@ -631,6 +631,17 @@
       "image": "https://www.bing.com/th?id=ONUT.oZ_OUBj7fpMiO-_vE0kokA&pid=News&w=640",
       "kind": "software",
       "score": 11
+    },
+    {
+      "id": "1113f011dc41",
+      "topic": "grok",
+      "title": "What Tesla and SpaceX are waiting for in Elon Musk's deal of over 3,500 billion USD",
+      "source": "Laodong.vn",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQkFsTHo2VzV1b0JNZTRtTktfaWVjbGQySGFwY0VOSmt0ZGVPcnpnMmZXOUJZZE1IVlNvWlBieUUzNlZVVHAzaENIdVhObjFIQVNmdG1NLVp2ZEVoWjNUa0tjREVpSUZSUWU4RXcyMHFrdm9QR2xwUUF3a2hnam52c3JZNmJxUW1lbUdDSUFyczNhUlo0aDFuemg3czdGV21sclJ4Q1BfUWtxSzBWZ0NrZHdIdFlQSUhMdENF?oc=5",
+      "published": "2026-10-23T08:24:52Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "7e7657c77073",
@@ -726,17 +737,6 @@
       "score": 4
     },
     {
-      "id": "9e26b1b60f76",
-      "topic": "grok",
-      "title": "Grok Bot can now add events, set reminders, and even turn off your lights for you",
-      "source": "Digital Trends",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPcVdlTFp5Nmg5bFRubWctOFdRZ3VTUk5Ld1YtWS1zYzRueTZwaTVsR2RIdncwYV85YlkyWGdmZWtzRjMzSTFFbnhTMEdicmJjTVlORjdqWnpfcGF3RWlhQ05hSVpUbVdxOFpFNnlMaHc2WFJJU0VwWWxvT0R4X2ItNE1KRU5Ob3FPN25uYlVXSTZhV1BFQlAyck93?oc=5",
-      "published": "2026-10-23T04:38:13Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "22e332652d54",
       "topic": "tesla",
       "title": "Tesla says it will no longer release the Cybertruck in Australia and New Zealand",
@@ -805,18 +805,6 @@
       "published": "2026-10-22T21:05:00Z",
       "snippet": "There are isolated instances where Starlink may travel slightly faster than the speed limit, but this is likely due to the SpaceX algorithm or specific usage conditions,” he said. Ukraine’s general ...",
       "image": "https://www.bing.com/th?id=ONUT.1_Nr_UCcUMZbznBIc3FVTw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "a4a35aa51571",
-      "topic": "spacex",
-      "title": "World in Brief: Stock markets stumble; Trump says Starlink restored for Ukraine",
-      "source": "The Economist",
-      "url": "https://www.economist.com/the-world-in-brief/2026/10/23/452de1cf-bb4b-468d-8998-d84cdc9de3e6",
-      "published": "2026-10-22T17:00:00Z",
-      "snippet": "Donald Trump said that Elon Musk had restored Ukraine’s access to Starlink, the billionaire’s satellite-internet service, hours after Volodymyr Zelensky said connectivity had not fully returned. Mr ...",
-      "image": "https://www.bing.com/th?id=ONUT.ByiNRwD0CpecQgUhHJmHxQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     }
