@@ -1,6 +1,6 @@
 {
   "reviewed": "2026-10-24",
-  "credit": "Tesla imagery; Supercharged Daily editorial film and original ambient score",
+  "credit": "Tesla imagery; music: Legacy by Scott Buckley, CC BY 4.0; Supercharged Daily editorial film and additional sound design",
   "images": [
     {
       "id": "hero",
@@ -197,8 +197,8 @@
     },
     {
       "path": "assets/roadster-studio/film-captions.vtt",
-      "bytes": 875,
-      "sha256": "5434205ad450501181eff6b9fa45a90a36e54ff79dfe2e3fe8adca3f448fefa7"
+      "bytes": 1062,
+      "sha256": "7332e59911a6f9eb56a3db52a0c6872eeee963877a6823af32ad83422ef2bfd7"
     },
     {
       "path": "assets/roadster-studio/film-chapters.vtt",
@@ -357,13 +357,13 @@
     },
     {
       "path": "assets/roadster-studio/roadster-film-1080.mp4",
-      "bytes": 9576506,
-      "sha256": "24fed8514b1258b859471bf204154b4815689cc03d4b4de703b528615a9ab7a1"
+      "bytes": 9935076,
+      "sha256": "18f1b66a1e1e4216ebd25f408e5a9b0239c19b3cd2e9d080d6540397f024536a"
     },
     {
       "path": "assets/roadster-studio/roadster-film-720.mp4",
-      "bytes": 4366340,
-      "sha256": "b735e0d8b629618a0dd4df50345d6ac7d740adef48dd934499d694ee454d7db6"
+      "bytes": 4955428,
+      "sha256": "766bbf93c929da266149ce993e4e9b2958eada1a6bbd9cb2360cdc5a7df2c58b"
     },
     {
       "path": "assets/roadster-studio/thrusters-1280w.avif",
@@ -425,5 +425,53 @@
       "bytes": 17750,
       "sha256": "05224ce15f72ab12ffd6a740a67764356e0aa8b53521efbece6088bb393cbf2e"
     }
-  ]
+  ],
+  "music": {
+    "title": "Legacy",
+    "composer": "Scott Buckley",
+    "source": "https://www.scottbuckley.com.au/library/legacy/",
+    "download": "https://www.scottbuckley.com.au/library/wp-content/uploads/2022/12/Legacy.mp3",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Excerpted, faded, level-adjusted and mixed with editorial transition effects by Supercharged Daily.",
+    "credit": "'Legacy' by Scott Buckley — released under CC-BY 4.0. www.scottbuckley.com.au",
+    "sourceSha256": "6cf8094c7277b33190cfd9ccedd04dacc487bd96c7214f26a8d5b7d0e848db07",
+    "sourceStart": 312,
+    "duration": 50.416667,
+    "mixVersion": "legacy-20261024",
+    "mastering": {
+      "targetLUFS": -17,
+      "targetTruePeakDbTP": -2,
+      "outputs": [
+        {
+          "quality": "1080",
+          "duration": 50.416667,
+          "codec": "aac",
+          "channels": 2,
+          "sampleRate": 48000,
+          "bitrate": 192368,
+          "integratedLUFS": -17.07,
+          "truePeakDbTP": -5.03,
+          "loudnessRangeLU": 11.2,
+          "stereoCorrelation": 0.1968,
+          "videoSha256": "0e05cd5d5082e98727188ecc3087ee23f53588324a29775e884a701985fc83be",
+          "sha256": "18f1b66a1e1e4216ebd25f408e5a9b0239c19b3cd2e9d080d6540397f024536a"
+        },
+        {
+          "quality": "720",
+          "duration": 50.416667,
+          "codec": "aac",
+          "channels": 2,
+          "sampleRate": 48000,
+          "bitrate": 192368,
+          "integratedLUFS": -17.07,
+          "truePeakDbTP": -5.03,
+          "loudnessRangeLU": 11.2,
+          "stereoCorrelation": 0.1968,
+          "videoSha256": "48ec19f47eca8a7b07430645d6992a9dac969fb29240bd26e13b553b626f7cc6",
+          "sha256": "766bbf93c929da266149ce993e4e9b2958eada1a6bbd9cb2360cdc5a7df2c58b"
+        }
+      ]
+    }
+  }
 }

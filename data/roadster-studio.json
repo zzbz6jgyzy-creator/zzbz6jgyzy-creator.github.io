@@ -5,7 +5,7 @@
   "reveal": "2026-10-16T00:55:00Z",
   "status": "Revealed; production is a future target",
   "productionTarget": 2028,
-  "productionLabel": "Musk\u2019s announced target, not a delivery date",
+  "productionLabel": "Musk’s announced target, not a delivery date",
   "price": "Not announced",
   "demonstration": {
     "mph": 60,
@@ -42,11 +42,11 @@
     },
     {
       "id": "run",
-      "label": "Tesla\u2019s timed reveal run",
+      "label": "Tesla’s timed reveal run",
       "url": "https://x.com/Tesla/status/2110963770763649487",
       "kind": "Manufacturer demonstration",
       "checked": "2026-10-24",
-      "note": "0\u201360 mph reported in 0.81 seconds. Configuration is not established here. Rollout-adjusted and unadjusted figures must not be mixed."
+      "note": "0–60 mph reported in 0.81 seconds. Configuration is not established here. Rollout-adjusted and unadjusted figures must not be mixed."
     },
     {
       "id": "aviation",
@@ -66,7 +66,7 @@
     },
     {
       "id": "production",
-      "label": "CNBC: Musk\u2019s production target",
+      "label": "CNBC: Musk’s production target",
       "url": "https://www.cnbc.com/2026/10/15/tesla-roadster-reveal-what-to-know-about-the-delayed-ev.html",
       "kind": "Reported company target",
       "checked": "2026-10-24",
@@ -122,7 +122,7 @@
     {
       "id": "cockpit",
       "group": "interior",
-      "title": "The pilot\u2019s seat",
+      "title": "The pilot’s seat",
       "description": "A steer-by-wire yoke, three displays and an intentionally pared-back cabin.",
       "alt": "Roadster cockpit with a yoke, central touchscreen and two forward displays",
       "source": "tesla",
@@ -132,7 +132,7 @@
       "id": "chassis",
       "group": "engineering",
       "title": "The mechanical view",
-      "description": "Tesla\u2019s published mechanical imagery; an invitation to look beneath the body.",
+      "description": "Tesla’s published mechanical imagery; an invitation to look beneath the body.",
       "alt": "Tesla Roadster mechanical close-up showing suspension and internal structure",
       "source": "tesla",
       "credit": "Tesla studio imagery"
@@ -159,7 +159,7 @@
       "id": "world",
       "group": "reveal",
       "title": "A different dimension",
-      "description": "Doors open in Tesla\u2019s published promotional imagery.",
+      "description": "Doors open in Tesla’s published promotional imagery.",
       "alt": "Tesla Roadster with doors open in dramatic studio lighting",
       "source": "tesla",
       "credit": "Tesla studio imagery"
@@ -178,8 +178,8 @@
       "id": "interior",
       "group": "interior",
       "title": "The reveal cockpit",
-      "description": "A cockpit still from Tesla\u2019s October reveal, distinct from the studio imagery.",
-      "alt": "Roadster cockpit as shown during Tesla\u2019s reveal",
+      "description": "A cockpit still from Tesla’s October reveal, distinct from the studio imagery.",
+      "alt": "Roadster cockpit as shown during Tesla’s reveal",
       "source": "replay",
       "credit": "Tesla reveal imagery",
       "legacy": true
@@ -259,7 +259,7 @@
       "image": "chassis",
       "summary": "A composite pressure vessel is a structural system, not a battery specification.",
       "how": "Composite-overwrapped pressure vessels use an overwrap around a liner to contain high-pressure gas. The relevant design questions include usable gas mass, pressure, temperature, fatigue and how the vessels are supported and protected.",
-      "why": "More stored gas can extend a thruster system\u2019s operating time, but packaging, vehicle mass and repeated-cycle performance matter. A published tank volume alone cannot determine flight time.",
+      "why": "More stored gas can extend a thruster system’s operating time, but packaging, vehicle mass and repeated-cycle performance matter. A published tank volume alone cannot determine flight time.",
       "boundary": "No tank pressure, certified life, refill time or system energy budget is verified here. A pressure-vessel layout is not a substitute for production safety documentation.",
       "source": "tesla",
       "diagram": "pressure"
@@ -303,7 +303,7 @@
         "Multi-mode suction",
         "Two-seat configuration"
       ],
-      "note": "Tesla\u2019s current page describes the road-focused configuration. \u201cRoad ready\u201d is Tesla\u2019s positioning; approval still depends on market and final production certification."
+      "note": "Tesla’s current page describes the road-focused configuration. “Road ready” is Tesla’s positioning; approval still depends on market and final production certification."
     },
     {
       "id": "thrust",
@@ -318,7 +318,7 @@
         "Rear cold-gas thrusters",
         "Two-seat configuration"
       ],
-      "note": "The October announcement gave an under-0.9-second target. Tesla\u2019s current page describes acceleration in under one second. Neither wording establishes a verified production-car result."
+      "note": "The October announcement gave an under-0.9-second target. Tesla’s current page describes acceleration in under one second. Neither wording establishes a verified production-car result."
     },
     {
       "id": "rocket",
@@ -337,7 +337,7 @@
     }
   ],
   "film": {
-    "title": "Roadster \u2014 A New Dimension",
+    "title": "Roadster — A New Dimension",
     "duration": 50.4,
     "chapters": [
       {
@@ -361,6 +361,17 @@
         "title": "A new dimension"
       }
     ],
-    "description": "An editorial film combining Tesla studio imagery and original reveal footage, with an original ambient score. Stills are animated; this edit is not a continuous test record."
+    "description": "An editorial film combining Tesla studio imagery and reveal footage, scored with “Legacy” by Scott Buckley (CC BY 4.0), edited and mixed with additional sound design by Supercharged Daily. Stills are animated; this edit is not a continuous test record.",
+    "mediaVersion": "legacy-20261024",
+    "music": {
+      "title": "Legacy",
+      "composer": "Scott Buckley",
+      "source": "https://www.scottbuckley.com.au/library/legacy/",
+      "download": "https://www.scottbuckley.com.au/library/wp-content/uploads/2022/12/Legacy.mp3",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Excerpted, faded, level-adjusted and mixed with editorial transition effects by Supercharged Daily.",
+      "credit": "'Legacy' by Scott Buckley — released under CC-BY 4.0. www.scottbuckley.com.au"
+    }
   }
 }
