@@ -35,7 +35,7 @@ The source is an upcoming-launch sample (up to 40 requested records) plus an edi
 
 ## Validation and previews
 
-- 13 model/export/build checks: day precision, UTC/DST, elapsed-target honesty, coarse planning, leap-month geometry, seven-day boundaries, current-month exports, mission identity, manual rescheduling versus broadcast clocks, company classification, ICS escaping/folding/stable IDs, all-day boundaries, malformed preferences and reproducible saved output.
+- 14 model/export/build checks: day precision, UTC/DST, elapsed-target honesty, coarse planning, leap-month geometry, seven-day boundaries, current-month exports, mission identity, manual rescheduling versus broadcast clocks, dated events graduating from the watchlist, company classification, ICS escaping/folding/stable IDs, all-day boundaries, malformed preferences and reproducible saved output.
 - 3 importer checks: actual compact v2.3 fixture compatibility, bad-payload retention and mixed-provider rejection.
 - Shared calendar deduplication and launch-consistency regressions pass. Bundle build/publisher regressions pass.
 - Browser journeys at 320, 390, 768 and 1440 pixels cover all four views, stars/reload, details, link copying, real ICS downloads, time zone changes, arrow-key month navigation, day-only targets and no horizontal overflow. Additional light theme, no-JS, blocked-bundle, malformed preferences, blocked storage, failed/malformed/older source cases are covered. Third-party browser traffic is blocked in tests.

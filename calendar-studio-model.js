@@ -12,7 +12,7 @@
   function identity(e) {
     const t = e.title || "";
     if (Merge.isDocking(t)) return "crs-" + (Merge.crsNum(t) || slug(t)) + "-docking";
-    for (const [prefix, fn] of [["starlink", Merge.starlinkGroup], ["starship", Merge.starshipFlight], ["bandwagon", Merge.bandwagonNum], ["ussf", (t2) => t2.match(/ussf[-\s]*(\d+)/i)?.[1]], ["crs", (t2) => /cygnus/i.test(t2) ? "" : Merge.crsNum(t2)]]) {
+    for (const [prefix, fn] of [["starship", Merge.starshipFlight], ["starlink", Merge.starlinkGroup], ["bandwagon", Merge.bandwagonNum], ["ussf", (t2) => t2.match(/ussf[-\s]*(\d+)/i)?.[1]], ["crs", (t2) => /cygnus/i.test(t2) ? "" : Merge.crsNum(t2)]]) {
       const n = fn(t);
       if (n) return prefix + "-" + n;
     }
@@ -72,7 +72,11 @@
         e.coverage = { url: url(coverage.fallbackUrl), article: url(coverage.articleUrl), status: coverage.status };
       }
     }
-    for (const e of seed.watching || []) put(item({ ...e, id: "watch-" + slug(e.title), precision: "unknown", status: "expected" }));
+    // A roadmap entry must never rewind a later dated editorial/provider record.
+    for (const source of seed.watching || []) {
+      const watch = item({ ...source, id: "watch-" + slug(source.title), precision: "unknown", status: "expected" });
+      if (!rows.some(e => equal(e, watch))) put(watch);
+    }
     rows.sort((a, b) => (a.start || "9999").localeCompare(b.start || "9999") || a.title.localeCompare(b.title));
     return { version: 1, updated: manual.updated || "", launchChecked: launches.checked || launches.updated || "", launchSource: url(launches.source) || "https://ll.thespacedevs.com/", events: rows };
   }
