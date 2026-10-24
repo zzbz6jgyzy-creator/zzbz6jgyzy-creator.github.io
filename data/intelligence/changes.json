@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T21:48:15.190Z",
+  "updated": "2026-10-24T22:00:38.979Z",
   "changes": [
     {
       "type": "appeared",
@@ -8,15 +8,15 @@
       "tracker": "software",
       "field": "wave:2026.38.5.6",
       "previous": "0",
-      "next": "15",
-      "at": "2026-10-24T21:08:43.000Z",
+      "next": "34",
+      "at": "2026-10-24T21:48:13.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.6 first appeared in the Teslascope sample with 15 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "summary": "2026.38.5.6 first appeared in the Teslascope sample with 34 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.5.6",
-      "id": "appeared|tesla-software:wave:2026.38.5.6|2026-10-24T21:08:43.000Z|15"
+      "id": "appeared|tesla-software:wave:2026.38.5.6|2026-10-24T21:48:13.000Z|34"
     },
     {
       "type": "appeared",
