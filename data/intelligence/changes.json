@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-24T01:12:20.480Z",
+  "updated": "2026-10-24T01:39:51.895Z",
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:most-common",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "most-common",
-      "previous": "2026.38.5.1@30.1",
-      "next": "2026.38.5.1@30.2",
-      "at": "2026-10-24T01:12:18.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Most common sample build changed from 2026.38.5.1@30.1 to 2026.38.5.1@30.2.",
-      "title": "Most common sample build",
-      "id": "changed|tesla-software:most-common|2026-10-24T01:12:18.000Z|2026.38.5.1@30.2"
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-10q-customer-b.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "One customer paid a third of SpaceX’s bills last quarter. Here’s what the 10-Q adds to that $4.4 billion profit",
+      "at": "2026-10-24T01:38:04.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-10q-customer-b.html",
+      "href": "/dispatch/spacex-10q-customer-b.html",
+      "summary": "SpaceX’s 10-Q shows one unnamed customer was 34.5% of Q3 revenue, and about $1 billion of the profit came from one-off items.",
+      "title": "One customer paid a third of SpaceX’s bills last quarter. Here’s what the 10-Q adds to that $4.4 billion profit",
+      "id": "logged|dispatch:/dispatch/spacex-10q-customer-b.html|2026-10-24T01:38:04.000Z|One customer paid a third of SpaceX’s bills last quarter. Here’s what the 10-Q adds to that $4.4 billion profit"
     },
     {
       "type": "logged",
@@ -289,23 +289,6 @@
       "summary": "That’s about $1.14 trillion a year: roughly 69% of the 2026 world chip market and six times TSMC’s pace. What’s on file, what’s reported, and what the math requires.",
       "title": "Musk says Terafab’s output will rank in the top 20 of world GDP. I checked the math",
       "id": "logged|dispatch:/dispatch/terafab-top-20-gdp-math.html|2026-10-21T13:38:07.000Z|Musk says Terafab’s output will rank in the top 20 of world GDP. I checked the math"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starship-flight-15-catch-timeline.html",
-      "topic": "starship",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into",
-      "at": "2026-10-21T07:37:42.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starship-flight-15-catch-timeline.html",
-      "href": "/dispatch/starship-flight-15-catch-timeline.html",
-      "summary": "A double catch on Flight 15 next month, a reflown ship and orbital refuelling early in 2027, then weekly flights. Each date checked against earlier targets and the FAA launch caps.",
-      "title": "SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into",
-      "id": "logged|dispatch:/dispatch/starship-flight-15-catch-timeline.html|2026-10-21T07:37:42.000Z|SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into"
     },
     {
       "type": "logged",
