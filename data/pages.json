@@ -321,9 +321,27 @@
     },
     {
       "url": "/autonomy.html",
-      "title": "FSD & Robotaxi evidence",
-      "tag": "Trackers",
-      "summary": "Supervised FSD, permits and paid robotaxi rides, tracked separately. Texas Cybercab registrations are not serving cars."
+      "title": "FSD & Robotaxi evidence desk",
+      "tag": "Evidence",
+      "summary": "Understand Tesla FSD and Robotaxi claims: supervision, permits, fleet evidence and safety methods. Explore sourced claim checks and an interactive safety lab."
+    },
+    {
+      "url": "/autonomy.html#checks",
+      "title": "FSD & Robotaxi claim checks",
+      "tag": "Evidence",
+      "summary": "Twelve sourced questions about supervision, permits, eligibility, fleet records and safety claims."
+    },
+    {
+      "url": "/autonomy.html#safety",
+      "title": "Autonomy safety lab",
+      "tag": "Evidence",
+      "summary": "Explore event rates, zero-event uncertainty and the definitions behind Robotaxi safety comparisons."
+    },
+    {
+      "url": "/autonomy.html#sources",
+      "title": "Autonomy evidence source room",
+      "tag": "Evidence",
+      "summary": "Primary regulator, manufacturer and standards sources with scope, review dates and limitations."
     },
     {
       "url": "/daily.html",

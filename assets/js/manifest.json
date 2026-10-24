@@ -157,13 +157,12 @@
       ]
     },
     "autonomy": {
-      "file": "/assets/js/autonomy.bundle.925fe79175.js",
-      "bytes": 102241,
+      "file": "/assets/js/autonomy.bundle.ab26eb6fec.js",
+      "bytes": 12814,
       "sources": [
-        "fsd-data.js",
-        "fsd-europe-data.js",
-        "cybercab-data.js",
-        "autonomy.js"
+        "autonomy-evidence-model.js",
+        "autonomy-evidence-view.js",
+        "autonomy-evidence.js"
       ]
     },
     "roadster": {
