@@ -63,3 +63,9 @@
 
 /* Keep the compact desktop pill within its existing width; Explore retains access. */
 @media(max-width:1199px){.pn-items>.sdm-nav-primary{display:none!important}}
+
+/* The personal-home return card has three content blocks, each on its own row. */
+.sdm-profile-success:has(> .sdm-button){display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.sdm-profile-success:has(> .sdm-button)>p{margin:0}
+.sdm-profile-success>.sdm-button{justify-self:start;min-width:0;text-align:center;overflow-wrap:normal;word-break:normal}
+@media(max-width:600px){.sdm-profile-success>.sdm-button{width:100%;padding-inline:12px;border-radius:12px}}

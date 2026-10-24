@@ -184,6 +184,18 @@ async def main():
        assert await page.locator('.sdm-profile-success').count()==0
        await page.get_by_role('button',name='Save profile',exact=True).click()
        await page.get_by_text('Your profile is saved',exact=True).wait_for()
+      if name.startswith('personal-home-return'):
+       banner=page.locator('.sdm-profile-success').filter(has=page.locator('a.sdm-button[href="/daily.html"]'))
+       await banner.wait_for();await banner.scroll_into_view_if_needed()
+       heading=banner.locator(':scope > strong');description=banner.locator(':scope > p');cta=banner.locator(':scope > .sdm-button')
+       card=await banner.bounding_box();title=await heading.bounding_box();text=await description.bounding_box();button=await cta.bounding_box()
+       assert card and title and text and button
+       assert title['width']>card['width']*.75 and text['width']>card['width']*.75,'callout text is squeezed into columns'
+       assert title['y']+title['height']<=text['y']+1 and text['y']+text['height']<=button['y']+1,'heading, description and action must stack'
+       assert button['height']<=95,'continue button must not become a tall narrow pill'
+       if width<=600:assert button['width']>card['width']*.75,'phone action needs the available row width'
+       assert await cta.get_attribute('href')=='/daily.html'
+       await banner.screenshot(path=str(OUT/(name+'-callout.png')))
       if moderator:
        await page.get_by_role('heading',name='Editor moderation',exact=True).wait_for();assert await page.get_by_role('button',name='Approve',exact=True).count()==0
        await page.locator('#sd-mod-mode').select_option('reported');await page.get_by_text('spam: Please review.').wait_for()
@@ -209,6 +221,7 @@ async def main():
   cases=[('anonymous-mobile',('/dispatch/tesla-ai-maps-v15.html',390),{}),('member-mobile',('/dispatch/tesla-ai-maps-v15.html',390,True),{}),('new-account-light',('/members.html',320,True),{'new':True,'theme':'light'}),('moderator-desktop',('/members.html',1440,True,True),{}),('google-pkce',('/members.html?return=%2F%2Fevil.example',390),{}),('inactive',('/members.html',390),{'enabled':False}),('nav-900',('/',900),{}),('nav-1024',('/',1024),{}),('nav-1440',('/',1440),{})]
   cases.append(('new-account-mobile',('/members.html',390,True),{'new':True}))
   cases.extend([('reply-visibility-mobile',('/dispatch/test-article.html',390,True),{'synthetic':True}),('nav-dispatch-return',('/dispatch.html',1440),{'synthetic':True,'navigation':True}),('nav-starship-return',('/starship.html#lab',390),{'synthetic':True,'navigation':True})])
+  cases.extend([('personal-home-return-320',('/members.html?return=%2Fdaily.html',320,True),{}),('personal-home-return-390',('/members.html?return=%2Fdaily.html',390,True),{}),('personal-home-return-light',('/members.html?return=%2Fdaily.html',390,True),{'theme':'light'}),('personal-home-return-desktop',('/members.html?return=%2Fdaily.html',1440,True),{})])
   selected=set(sys.argv[1:]);await asyncio.gather(*[scenario(name,*args,**kwargs) for name,args,kwargs in cases if not selected or name in selected])
   (OUT/'results.json').write_text(json.dumps(results,indent=2));await browser.close()
   if not all(x['passed'] for x in results):raise SystemExit(1)
