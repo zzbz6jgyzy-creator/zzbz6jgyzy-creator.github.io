@@ -5,6 +5,7 @@
 import fs from "node:fs";
 import vm from "node:vm";
 import { buildFSDEurope } from "./build-fsd-europe.mjs";
+import { buildAutonomyEvidence } from "./build-autonomy-evidence.mjs";
 import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
 import { buildStarshipStudio } from "./build-starship-studio.mjs";
 import { buildCalendarStudio } from "./build-calendar-studio.mjs";
@@ -37,6 +38,7 @@ function inject(file, tag, html) {
 }
 // FSD Europe has complete saved HTML from the same model as the browser.
 buildFSDEurope(root);
+buildAutonomyEvidence(root);
 // Starship now has complete semantic saved HTML, shared with the browser.
 buildStarshipStudio(root);
 buildCalendarStudio(root);

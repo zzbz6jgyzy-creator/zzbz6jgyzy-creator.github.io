@@ -1,0 +1,35 @@
+name: Autonomy evidence desk checks
+on:
+  pull_request:
+    paths:
+      - 'autonomy.html'
+      - 'autonomy-evidence*'
+      - 'data/autonomy-evidence.json'
+      - 'scripts/build-autonomy-evidence.mjs'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/autonomy-evidence*'
+      - '.github/workflows/autonomy-evidence-checks.yml'
+      - '.github/workflows/home-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-desk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source validation, saved HTML and statistical arithmetic
+        run: node --test tests/autonomy-evidence.test.mjs
+      - name: Install browser driver
+        run: pip install playwright==1.62.0
+      - name: Mobile navigation, source filters and calculator checks
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/autonomy-evidence-browser.py
