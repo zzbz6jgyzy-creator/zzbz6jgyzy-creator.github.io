@@ -1,0 +1,429 @@
+{
+  "reviewed": "2026-10-24",
+  "credit": "Tesla imagery; Supercharged Daily editorial film and original ambient score",
+  "images": [
+    {
+      "id": "hero",
+      "file": "Roadster-01-Hero-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-01-Hero-Desktop.jpg"
+    },
+    {
+      "id": "profile",
+      "file": "Roadster-02-Pilot-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-02-Pilot-Desktop.jpg"
+    },
+    {
+      "id": "front",
+      "file": "Roadster-03-Carousel-Slide-1-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-03-Carousel-Slide-1-Desktop.jpg"
+    },
+    {
+      "id": "aero",
+      "file": "Roadster-03-Carousel-Slide-2-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-03-Carousel-Slide-2-Desktop.jpg"
+    },
+    {
+      "id": "canopy",
+      "file": "Roadster-03-Carousel-Slide-3-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-03-Carousel-Slide-3-Desktop.jpg"
+    },
+    {
+      "id": "cockpit",
+      "file": "Roadster-03-Carousel-Slide-4-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-03-Carousel-Slide-4-Desktop.jpg"
+    },
+    {
+      "id": "chassis",
+      "file": "Roadster-03-Carousel-Slide-5-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-03-Carousel-Slide-5-Desktop.jpg"
+    },
+    {
+      "id": "world",
+      "file": "Roadster-04-World-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-04-World-Desktop.jpg"
+    },
+    {
+      "id": "gravity",
+      "file": "Roadster-06-Gravity-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-06-Gravity-Desktop.jpg"
+    },
+    {
+      "id": "thrusters",
+      "file": "Roadster-07-Augments-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-07-Augments-Desktop.jpg"
+    },
+    {
+      "id": "finale",
+      "file": "Roadster-08-End-Desktop.jpg",
+      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Roadster-08-End-Desktop.jpg"
+    }
+  ],
+  "sourceVideo": {
+    "url": "https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto/Roadster-Event-Livestream.mp4",
+    "segments": [
+      {
+        "start": 441,
+        "duration": 8,
+        "description": "Programmed ramp demonstration"
+      },
+      {
+        "start": 1334,
+        "duration": 12,
+        "description": "Reveal flight demonstration"
+      }
+    ]
+  },
+  "duration": 50.416667,
+  "outputs": [
+    {
+      "path": "assets/roadster-studio/aero-1280w.avif",
+      "bytes": 10975,
+      "sha256": "be6394765fc848991a5237908e2fcb2a6f7f5e259540fd126bfe556f4e3ab335"
+    },
+    {
+      "path": "assets/roadster-studio/aero-1280w.webp",
+      "bytes": 17870,
+      "sha256": "681fd0d96f3641d5b5b7dcf37e65bb70d8ccd202eaf0c043440c90b608da6b1d"
+    },
+    {
+      "path": "assets/roadster-studio/aero-1920w.avif",
+      "bytes": 20751,
+      "sha256": "48206fee84dc624363d77b903e0920f6b586594f94bf23d2e92b740d0daf6406"
+    },
+    {
+      "path": "assets/roadster-studio/aero-1920w.webp",
+      "bytes": 34058,
+      "sha256": "a93473c9b98127fb7a299c52029963616c7e0541992bf2c19c6f8d062d61b795"
+    },
+    {
+      "path": "assets/roadster-studio/aero-640w.avif",
+      "bytes": 4500,
+      "sha256": "fef6b49bf776528b9b6423ea25078ae6ebd598bfaf9689287b4374d628c23300"
+    },
+    {
+      "path": "assets/roadster-studio/aero-640w.webp",
+      "bytes": 6756,
+      "sha256": "ff47b984ec1312d6c49ce11580c491b175c07423da979e8b3e8066782cb0ade3"
+    },
+    {
+      "path": "assets/roadster-studio/canopy-1280w.avif",
+      "bytes": 8233,
+      "sha256": "04731a7edb95551cdb032d8d8d5bf26b76b5e555c80c3db007de121196f87bc4"
+    },
+    {
+      "path": "assets/roadster-studio/canopy-1280w.webp",
+      "bytes": 14198,
+      "sha256": "1fd40a0ce605aef0cfed47eff0089648cc36ce1c27817bfcfcd7bcda2f63c72b"
+    },
+    {
+      "path": "assets/roadster-studio/canopy-1920w.avif",
+      "bytes": 17194,
+      "sha256": "67371d96e23186be213de0dbb49455e2efbfd3a4662b1c6850eb0d959bf44923"
+    },
+    {
+      "path": "assets/roadster-studio/canopy-1920w.webp",
+      "bytes": 31788,
+      "sha256": "384fbc0be92d2f6984a71049ea940c3ee30d686db453e2af27b76baa4b76138c"
+    },
+    {
+      "path": "assets/roadster-studio/canopy-640w.avif",
+      "bytes": 3398,
+      "sha256": "e70bd67265dc6bf51c0039529cb50fbbcae115ad1b2f8ebab8e5cdab91541cd8"
+    },
+    {
+      "path": "assets/roadster-studio/canopy-640w.webp",
+      "bytes": 4940,
+      "sha256": "71c63159466543b687a04725ccc33a719e95845c81eeea0cfefda9632518eab0"
+    },
+    {
+      "path": "assets/roadster-studio/chassis-1280w.avif",
+      "bytes": 26454,
+      "sha256": "34f3debf747ad57d1c4fd5056829c1f8688fab05463d42a9a937a141b10208ed"
+    },
+    {
+      "path": "assets/roadster-studio/chassis-1280w.webp",
+      "bytes": 46364,
+      "sha256": "2705150885628358dd572199dea3626052eaf091c1dbf0f247c1dccf08a9ce03"
+    },
+    {
+      "path": "assets/roadster-studio/chassis-1920w.avif",
+      "bytes": 44528,
+      "sha256": "3853099a122c68c190cee9e3e43d4687c3a05653ff255c58ed5d93fdb7a39e1f"
+    },
+    {
+      "path": "assets/roadster-studio/chassis-1920w.webp",
+      "bytes": 76868,
+      "sha256": "6fc8c25a6923d4f5f3caa139477eb9d9b56274f127013631fad2eea1f6f5a73f"
+    },
+    {
+      "path": "assets/roadster-studio/chassis-640w.avif",
+      "bytes": 11136,
+      "sha256": "2e44855679dceb661dd86f77f3e454b4cbc466ec5da6739522a61b4e5c767443"
+    },
+    {
+      "path": "assets/roadster-studio/chassis-640w.webp",
+      "bytes": 19202,
+      "sha256": "1cff9da114abafb000981cde97a92f8ddb035e7800f1492e4ac2c4d4abf8a649"
+    },
+    {
+      "path": "assets/roadster-studio/cockpit-1280w.avif",
+      "bytes": 24347,
+      "sha256": "fa74849f603e346bcf6cabc08d3dda0ca307873fd86058ce0510af9ed0999c48"
+    },
+    {
+      "path": "assets/roadster-studio/cockpit-1280w.webp",
+      "bytes": 38422,
+      "sha256": "df456db505fddb4108f437dc5dcd2a50d96e05fa6400e2bddeeedce3e194f721"
+    },
+    {
+      "path": "assets/roadster-studio/cockpit-1920w.avif",
+      "bytes": 44259,
+      "sha256": "9ee6308733094720b4c3ce06d2286fab66a8e3e23127175df38af62c0b8d35a7"
+    },
+    {
+      "path": "assets/roadster-studio/cockpit-1920w.webp",
+      "bytes": 73398,
+      "sha256": "0266055ad9c8d3d4680ef619f4749cf50e9d79702384b76ee18762178fb18f96"
+    },
+    {
+      "path": "assets/roadster-studio/cockpit-640w.avif",
+      "bytes": 9202,
+      "sha256": "dc6e78c92fc41a6c4491141b3f73c57fcf9e60e787448d9d1d1347da9656c1dc"
+    },
+    {
+      "path": "assets/roadster-studio/cockpit-640w.webp",
+      "bytes": 14318,
+      "sha256": "bfd59bdb82980a59e283f8867d5f6a0331b78e7d2a4911a3c377bd9d8ae6a44f"
+    },
+    {
+      "path": "assets/roadster-studio/film-captions.vtt",
+      "bytes": 875,
+      "sha256": "5434205ad450501181eff6b9fa45a90a36e54ff79dfe2e3fe8adca3f448fefa7"
+    },
+    {
+      "path": "assets/roadster-studio/film-chapters.vtt",
+      "bytes": 202,
+      "sha256": "0b81d4db2460fcb549f5558678c7e1f3c3d0a2c893bc414fa207aa888fbb20ca"
+    },
+    {
+      "path": "assets/roadster-studio/finale-1280w.avif",
+      "bytes": 9946,
+      "sha256": "db68c2307f38066d1a007b179e1cdff8e29a80951d6ca2880d77230696db6341"
+    },
+    {
+      "path": "assets/roadster-studio/finale-1280w.webp",
+      "bytes": 16540,
+      "sha256": "03144ac75d715f13350c681968063758cd7ece899fa8c68f298f09d251ef4440"
+    },
+    {
+      "path": "assets/roadster-studio/finale-1920w.avif",
+      "bytes": 17049,
+      "sha256": "c75913f6edf250953f76d374682815a304a8e1acd3e9a550e209680b064ae09c"
+    },
+    {
+      "path": "assets/roadster-studio/finale-1920w.webp",
+      "bytes": 30128,
+      "sha256": "9c928fd2a5de08fe75900f6414b591186b5f64782ea2ee1565b9eb073f9c9c1d"
+    },
+    {
+      "path": "assets/roadster-studio/finale-640w.avif",
+      "bytes": 4049,
+      "sha256": "2374c0a972558d4dc2649e7fc1ec016a6b30871bc6138a7a3532912d40855410"
+    },
+    {
+      "path": "assets/roadster-studio/finale-640w.webp",
+      "bytes": 6124,
+      "sha256": "9b772a601f09f3dd4ec649fd4e288ee18d1ff7e9ac33947791c2aeab005f625b"
+    },
+    {
+      "path": "assets/roadster-studio/front-1280w.avif",
+      "bytes": 6170,
+      "sha256": "676df5d176de15b88d6eaba341a8b60c66487dea10cb7f64c17ec200e092d6b8"
+    },
+    {
+      "path": "assets/roadster-studio/front-1280w.webp",
+      "bytes": 10094,
+      "sha256": "6fba044c183406a9e56336231df0c095e7aa49661c80d6484f2d3cb0f1cdbd57"
+    },
+    {
+      "path": "assets/roadster-studio/front-1920w.avif",
+      "bytes": 10650,
+      "sha256": "384c2c6548a3e422d09883c2ec095d3f79b75cb68dd56dce2c7dc28cc755bd69"
+    },
+    {
+      "path": "assets/roadster-studio/front-1920w.webp",
+      "bytes": 18574,
+      "sha256": "cc1e8d92f7c4e48690d47f70c3dc4e6bfa7319dcec1641b2af62daaefd98c5d6"
+    },
+    {
+      "path": "assets/roadster-studio/front-640w.avif",
+      "bytes": 2580,
+      "sha256": "d812086fdf2ed29080a3fe4ca3289d20b7739f937d364a7624762d70d449f10b"
+    },
+    {
+      "path": "assets/roadster-studio/front-640w.webp",
+      "bytes": 3746,
+      "sha256": "adc1918beef8d191c68c4b08215898a94158f0e347e0b63e65eaf560fa45b844"
+    },
+    {
+      "path": "assets/roadster-studio/gravity-1280w.avif",
+      "bytes": 22041,
+      "sha256": "cfed16fe0dc1f21e99172a183032219e0f281f273cc73b99c7a39d1b9c623406"
+    },
+    {
+      "path": "assets/roadster-studio/gravity-1280w.webp",
+      "bytes": 37876,
+      "sha256": "44e1d8a8d0e047c4410bd41deb500c140dcda70b247f8b0d8f07c8b178ab4ee5"
+    },
+    {
+      "path": "assets/roadster-studio/gravity-1920w.avif",
+      "bytes": 38199,
+      "sha256": "aa7edf0efce8aaf085d02361c92d866ab78c1b9b1bb0c48adf34a19b48139c19"
+    },
+    {
+      "path": "assets/roadster-studio/gravity-1920w.webp",
+      "bytes": 65834,
+      "sha256": "decfaa286b05c165b44ae00195eed788639ba65e82f0a3d39ab5ad824c8c6ebf"
+    },
+    {
+      "path": "assets/roadster-studio/gravity-640w.avif",
+      "bytes": 9064,
+      "sha256": "f3b47bb26b59cd3e6203db9adc0d8643e9701835845f81de9d4d857f816c1c4a"
+    },
+    {
+      "path": "assets/roadster-studio/gravity-640w.webp",
+      "bytes": 14742,
+      "sha256": "8b7082f1392f2e02fa4e77cff009a16cd6ec23538327bdb70484db3dadadcff4"
+    },
+    {
+      "path": "assets/roadster-studio/hero-1280w.avif",
+      "bytes": 4221,
+      "sha256": "94b89885b3d2396772aabe6c01b31baef02a8beda4cbf155c182266b994f0c68"
+    },
+    {
+      "path": "assets/roadster-studio/hero-1280w.webp",
+      "bytes": 8204,
+      "sha256": "304eca3ea89a722e46cba93f29cce642235b3f5e494ac75be546f9969be90ace"
+    },
+    {
+      "path": "assets/roadster-studio/hero-1920w.avif",
+      "bytes": 7460,
+      "sha256": "ff69c8e77bc5a33e617f0db848f53ff003016e3af4da507dd9c866fe9d65e8cc"
+    },
+    {
+      "path": "assets/roadster-studio/hero-1920w.webp",
+      "bytes": 15198,
+      "sha256": "e519270843998f8d25d067ab994c4d4549f08c2853eec18a0685bfee4236c8aa"
+    },
+    {
+      "path": "assets/roadster-studio/hero-640w.avif",
+      "bytes": 1883,
+      "sha256": "c3eaef87d6ec8421ba232db3f7440a5082b7c408cc3eb0de689087334ecad03f"
+    },
+    {
+      "path": "assets/roadster-studio/hero-640w.webp",
+      "bytes": 2964,
+      "sha256": "42070ce36d80eed9c2c0bb08fee8403c4664374592002f94e1a082d32de84a4c"
+    },
+    {
+      "path": "assets/roadster-studio/profile-1280w.avif",
+      "bytes": 7198,
+      "sha256": "4d66ddf575deb9c745adf109b5fd55c5d27901e3a6864361cea8ec180bc7b9a9"
+    },
+    {
+      "path": "assets/roadster-studio/profile-1280w.webp",
+      "bytes": 11950,
+      "sha256": "c8f4696806f96a1ae03bcd9f1294962ab9d0f88d8b4f0581b723498ffcdc69a9"
+    },
+    {
+      "path": "assets/roadster-studio/profile-1920w.avif",
+      "bytes": 12562,
+      "sha256": "04e4ddfb23a48c4658ed28a75d4354378e6aaf73f48e7269eaadd7fa20aefd60"
+    },
+    {
+      "path": "assets/roadster-studio/profile-1920w.webp",
+      "bytes": 21712,
+      "sha256": "bda2965f7ac296508b41586484c502c7a564f8da68f3e75c0c99cd952f746c3e"
+    },
+    {
+      "path": "assets/roadster-studio/profile-640w.avif",
+      "bytes": 2929,
+      "sha256": "2101a6463d4eb1ca68f8e3b249e73b0d207a96eb3e8b8dc2e1c4e6ac84d98584"
+    },
+    {
+      "path": "assets/roadster-studio/profile-640w.webp",
+      "bytes": 4638,
+      "sha256": "fc45db610f429bec7359a02876eb7ea0ce99883e2359d97a603d854ba2339b1d"
+    },
+    {
+      "path": "assets/roadster-studio/roadster-film-1080.mp4",
+      "bytes": 9576506,
+      "sha256": "24fed8514b1258b859471bf204154b4815689cc03d4b4de703b528615a9ab7a1"
+    },
+    {
+      "path": "assets/roadster-studio/roadster-film-720.mp4",
+      "bytes": 4366340,
+      "sha256": "b735e0d8b629618a0dd4df50345d6ac7d740adef48dd934499d694ee454d7db6"
+    },
+    {
+      "path": "assets/roadster-studio/thrusters-1280w.avif",
+      "bytes": 18459,
+      "sha256": "536e4090e557507314c41ed4497c2ac1da8034733c3fbe7920e3ba1b89573f15"
+    },
+    {
+      "path": "assets/roadster-studio/thrusters-1280w.webp",
+      "bytes": 30632,
+      "sha256": "3de002bbf6166ea3bcb7bf0ed6bcc573036a44468dcd10bdb0b5dab6cd6703ec"
+    },
+    {
+      "path": "assets/roadster-studio/thrusters-1920w.avif",
+      "bytes": 32158,
+      "sha256": "9f6c6b4fd47cea4b8f2bac6bc9b04e4186d84d05d6df3d43655a0b624aac00d0"
+    },
+    {
+      "path": "assets/roadster-studio/thrusters-1920w.webp",
+      "bytes": 53454,
+      "sha256": "a9a2a895c24f6adae8bfdaa8e2a77e78e72f5de775ff69de4789bb00a5c23592"
+    },
+    {
+      "path": "assets/roadster-studio/thrusters-640w.avif",
+      "bytes": 7286,
+      "sha256": "efbd05e328d21247e3c0ce480d19b63f4bee1b6b5b5b79fbe7e78b48e68e44b5"
+    },
+    {
+      "path": "assets/roadster-studio/thrusters-640w.webp",
+      "bytes": 11508,
+      "sha256": "5c6f55fd85d7f2ba2fbb095bc3f81849cd16d409fe26f7c6d76c639a40e00d8e"
+    },
+    {
+      "path": "assets/roadster-studio/world-1280w.avif",
+      "bytes": 56632,
+      "sha256": "a9bb3b6cd6a9e7321ccdf7feb3fa45f11a0e850172754d40a580758c40638d62"
+    },
+    {
+      "path": "assets/roadster-studio/world-1280w.webp",
+      "bytes": 76042,
+      "sha256": "1da228457bdf69f14dfa3c10767ef61c279e5718c2a62132b98c95d29ea21c2a"
+    },
+    {
+      "path": "assets/roadster-studio/world-1920w.avif",
+      "bytes": 120461,
+      "sha256": "d83acf8085fbb141253e358e81206a0952a714126b85e5a1a3e884260195dce7"
+    },
+    {
+      "path": "assets/roadster-studio/world-1920w.webp",
+      "bytes": 153326,
+      "sha256": "3c33b3833478baa5fcd4e8c7786f4d56ebb2a19e86eefad1dcf00f471060576d"
+    },
+    {
+      "path": "assets/roadster-studio/world-640w.avif",
+      "bytes": 13373,
+      "sha256": "56da024bda075ab745d2efa8f0a07f5301a5c574c1bc6b62c5390750583acfb5"
+    },
+    {
+      "path": "assets/roadster-studio/world-640w.webp",
+      "bytes": 17750,
+      "sha256": "05224ce15f72ab12ffd6a740a67764356e0aa8b53521efbece6088bb393cbf2e"
+    }
+  ]
+}

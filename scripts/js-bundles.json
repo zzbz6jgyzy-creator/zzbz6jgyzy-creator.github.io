@@ -114,9 +114,8 @@
       "autonomy.js"
     ],
     "roadster": [
-      "roadster.js",
-      "wallpapers.js",
-      "rd-carousel.js"
+      "roadster-studio-model.js",
+      "roadster-studio.js"
     ],
     "news": [
       "news-keep.js",
