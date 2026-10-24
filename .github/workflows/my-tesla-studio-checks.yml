@@ -1,0 +1,44 @@
+name: My Tesla owner studio checks
+on:
+  pull_request:
+    paths:
+      - 'my-tesla*'
+      - 'data/my-tesla-epa.json'
+      - 'scripts/refresh-my-tesla-epa.py'
+      - 'scripts/js-bundles.json'
+      - 'tests/my-tesla*'
+      - '.github/workflows/my-tesla*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  owner-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned build and browser tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Validate calculations, model matching and private backups
+        run: node --test tests/my-tesla.test.mjs
+      - name: Check deterministic frontend build
+        run: |
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- my-tesla.html assets/js/manifest.json 'assets/js/my-tesla.bundle.*.js'
+      - name: Responsive owner journeys and failure cases
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/my-tesla-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: my-tesla-owner-studio-previews
+          path: /tmp/my-tesla-studio
