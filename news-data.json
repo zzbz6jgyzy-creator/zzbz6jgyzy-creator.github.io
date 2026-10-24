@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T05:33:40Z",
+  "updated": "2026-10-24T06:03:12Z",
   "items": [
     {
       "id": "c5ba714ae6a9",
@@ -48,6 +48,17 @@
       "score": 11
     },
     {
+      "id": "a226167abbc9",
+      "topic": "spacex",
+      "title": "Residents voice concerns over SpaceX spaceport plans in Vermilion Parish",
+      "source": "KATC.com",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPR1QyeWdEZkQtZUxYQ1hpLVBjTTdKZUtua1NQQzFWc1ZjQ0JpdUgxVVRpNF85UXUzWjJnV2dkVXk3WnVubVN5NjhZbmozUWZ3WWFBZkpMYmJieWQwYTJ1LTMtVzNhWmd6RHZzZG8tcE5GOXZyUW5RMmNjNTQ2dkpPMU95bkhuT0FwX1hDOTlCVXNBR2poajNMbE9fM3NEaFhfaFp4dW8tZVMwbHkxNHg1N1RKWjRnd9IBygFBVV95cUxPelNhSW40b1lpT0pHN09KYlhua1JXNlR1a2Zxc3ZhV3BiY1lpQnZLVEJJX3dWbTZ3U0VwcWc3b1VBcTZRcFZsQU0xUWo1Z0hMX2V4Yk5OYy1xcGw5WFBPX0ktQ056cGx3UGhmdDU4Wnl1d1lFTXduNV9UWGtpaWlNVGlVT2FLeWwxZXdGc2hYTHZpRDBibVUxZ2x3YzJOM1RVSlNDZnBtVjFTVTNpWkxvcl9CZWgzaWVJSE9WQVR4M2VSVHhnMHJnQlhR?oc=5",
+      "published": "2026-10-24T03:20:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "d0137257ceff",
       "topic": "spacex",
       "title": "SpaceX Q3 Sales Rose 161% in Q3. Here's What Starlink, Starship, and AI Results Reveal About the Stock.",
@@ -69,6 +80,17 @@
       "snippet": "",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "6b0ffff447f7",
+      "topic": "tesla",
+      "title": "Elon Musk Says Tesla Cars' Value Lies in FSD Service: 'People Are Buying FSD With a Car Attached, Not the Other Way Around'",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPT2pPQjVyNzBvbFk4OEFMTFdLaHRfU09PMzBtQnNHN0ZwOGdRTG1NdTRob05vQU1pSzhhelVLUmZKU2l6T2E2VWVLWkpuaWxoakRIVmJUeGo4TmNMRDh0TWFNSHNJNGNZZ0VIendReHZFRllZN3V3bktRVEs5YVdwVDJob0tLMkRCOXZlYldrcw?oc=5",
+      "published": "2026-10-24T01:30:00Z",
+      "snippet": "",
+      "kind": "software",
+      "score": 11
     },
     {
       "id": "836745f7ef43",
@@ -106,17 +128,6 @@
       "score": 11
     },
     {
-      "id": "405daa0cb69e",
-      "topic": "spacex",
-      "title": "Wall Street closes lower to end rocky week",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQR01KeXBjdXBubVRzTlJfWWJTMHctb2hFS2pVT21ydWtZNzBaMldxd1c2ZUJGNWhIeGV6MUxvQVZvSl9GdFh5QThQbFpuT0IwYi02Y3JGM19YSWJ3LXMtb29RbS1WZUljdGtsS2dockxHVm5SWnBSMzJpM0Y4RFItdW5SMzFsdXg2LWtrYWE1SC1TQlkxOERJZHNtQVREdw?oc=5",
-      "published": "2026-10-23T23:46:35Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 9
-    },
-    {
       "id": "e34f0d984233",
       "topic": "grok",
       "title": "How Much Does AI Cost in 2026? The Complete Pricing Comparison",
@@ -140,18 +151,6 @@
       "score": 12
     },
     {
-      "id": "8f5b1176ce2d",
-      "topic": "tesla",
-      "title": "Tesla wanted $10,000 to fix his Model S — its $8,500 trade-in value told a different story",
-      "source": "Yahoo Autos",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTldQWFZIS2w2ei1DQTY2YTNpWWFaSWtXU3NpYWt4bTliZWhTTzI5bkU0aGxiTmdzQ21hbHo1X0o3Z0QtX2h6R01EU1B6N3VIQ1U2RC1kc01kV0VrY282VFpfZVg5bXdqQjFhRW4ybEtPVmdaRXh2eTBjb0RTUUJ2UVpkeUJlWjNv?oc=5",
-      "published": "2026-10-23T23:19:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.JLeWgc-geyz2kGaY_N0bnA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "6c2a9a41b4a7",
       "topic": "tesla",
       "title": "Tesla Roadster: Engineering genius or PR stunt?",
@@ -159,6 +158,7 @@
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBLWDQtMlhiU3RGRDcxUWVSVlluREJNQzlVbmRpMGtFdndlTmpDQVExUDJmeXdncTZmNEJZTmEwSUU0SnhNU1M2d3E3cmtPWmZhdjloRlNDWnB1ZXfSAWBBVV95cUxPYjF0Nk45ZE9YQkJQcXlyUDQyNlpkZEJJamtIeFRuQUxkbVBIMlIzeVBjR0hrTGVkMmxjd3NGR3k2bjJjMUg3dnE5dnpmWDRKR1JISGkyQzE4SXBoaHRhaXE?oc=5",
       "published": "2026-10-23T22:41:05Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.wnAKdvWvu2jiXyipRKxRAw&pid=News&w=640",
       "kind": "milestone",
       "score": 11
     },
@@ -244,17 +244,6 @@
       "score": 4
     },
     {
-      "id": "65480e9091e2",
-      "topic": "grok",
-      "title": "ChatGPT vs Claude vs Gemini: 12 AI Models Ranked [2026]",
-      "source": "tech-insider.org",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPTFFZa3FsYW9RTVhwZkFwc0hnZTc3NkJISUxaS3d1M0hza0FWSWFSY2UwaTlUZElEcGZkZzYybE42Mjl1SUkyZC1oM0RfRE1lRzJwYnkyR1YzMWRDTGxvYVJUY0N3S3dLeHJYNGFiazJOSUlvVHAwYUlsRUJZRDBRYg?oc=5",
-      "published": "2026-10-23T21:32:20Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "4762c2f465c9",
       "topic": "spacex",
       "title": "SpaceX $40 Billion Off-Balance Sheet Debt Snarled by AI Turmoil",
@@ -325,18 +314,6 @@
       "score": 4
     },
     {
-      "id": "44c16bafe734",
-      "topic": "spacex",
-      "title": "Trump says he will get Ukraine’s access to Starlink ‘straightened out’ after Ukrainian officials say restrictions remain",
-      "source": "CNN",
-      "url": "https://www.cnn.com/2026/10/23/world/video/ac360-trump-says-he-will-get-ukraines-access-to-starlink-straightened-out-after-ukrainian-officials-say-restrictions-remain",
-      "published": "2026-10-23T18:25:00Z",
-      "snippet": "President Trump says he will get Ukraine’s access to Starlink “straightened out” after officials in the country said restrictions remain in place. “They’re trying to subtly undermine Ukraine,” says ...",
-      "image": "https://www.bing.com/th?id=ONUT.JR1OSGNIw1XFQ9MQHKt10A&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "90e78bdae0db",
       "topic": "grok",
       "title": "Is Ethereum a Buy Under $2,400? We Asked Grok AI",
@@ -371,17 +348,6 @@
       "image": "https://www.bing.com/th?id=ONUT.b77MBoywpyu0LUxikZi_mw&pid=News&w=640",
       "kind": "general",
       "score": 7
-    },
-    {
-      "id": "4b78958692b2",
-      "topic": "grok",
-      "title": "Leftist AI Models Refuse to Endorse Free Speech Week for Americans",
-      "source": "Newsbusters",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQTC1HSDZEcFZOS1VEd2dCQ0NFdE5SMllQc0RqcVlrM2UzaEdRU2F1cW01czNFaUtiV0xpY1hUSnRBc3NueDBNbjBwWWxld21GSC1uWWR5Z0Q5QUVOMnhEcDhSR2QyclVLeXZQYk5iczlLMVVHZ0JSVjNYOGJHTjdaTWc5R3ZtOEJGZTdoeFN6U1VOcy1FdURMUlBrS2c2SmgxdUQ5azFVQzhjUFRQM0ctbW4xNE1JVzF0dlE?oc=5",
-      "published": "2026-10-23T16:47:55Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "662571b26b68",
@@ -462,21 +428,21 @@
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNS2RPNVNMdEd2SmN5RVEzN2stVFdrQUF5MW12aFdMYTdWcGl5LXV4WVNlU0h0d2hGSmxwcVFrcXd1SGRFTmtFUlVWTXZOcTFIOVMxYTM4cXI4MUFNanFWeGVYeGoyNGFnWm9TRndnRVpyamFLS0hfdU9yN2hRN0lJNDF1UlBHRElhVDQ2VE0tcnNHbmhxdFRJVHpNY3o2VDRLUHRmN2JlZUFDTWxqSWFQUmwwMmt6TVRqQWtzN29SN1BVcFNH?oc=5",
       "published": "2026-10-23T14:12:02Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.9HCsdVXZw9i9T06nqxBNyg&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.-3SZZz7BaAgTz11VII2RDw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "b03290c4cf74",
-      "topic": "spacex",
-      "title": "British PM pushes Trump on Ukraine’s Starlink access",
-      "source": "Politico",
-      "url": "https://www.politico.com/news/2026/10/23/burnham-trump-ukraine-starlink-access-01134191",
-      "published": "2026-10-23T14:00:00Z",
-      "snippet": "British Prime Minister Andy Burnham raised Ukraine having full access to Starlink in a phone call with President Donald Trump on Friday, amid uproar from the Ukrainians and their supporters over the ...",
-      "image": "https://www.bing.com/th?id=ONUT.4T9rkVgoR4PeozWLlxjnoA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
+      "id": "ba5d5ecacc1d",
+      "topic": "grok",
+      "title": "Grok Bot Can Reportedly Access Calendars and Reminders Without Permission To Read or Send Messages",
+      "source": "www.techtimes.co.uk",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPSjFFN1NqcVl5ODJLVEhBUm5lSGlTMzI3NHcwSkZWeHEwdFFEU0t4WlFoM01RakV0U3ozT2J5SzRoWmZEMkk3VkpYVGlCSURlVmI0M3AtdlpnNEZ5LWd6RGVZeEFSemtBYU9oYXJjT2t0NG9yUm5JdE9KTUE0ajZhdW5WRlk4eWRMTENFckIwUVhJdFhvUWtpdmkzeVJZV2VpdVlWSlZYX2RsUzFI?oc=5",
+      "published": "2026-10-23T14:06:37Z",
+      "snippet": "",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 1
     },
     {
       "id": "281d9f08b8a0",
@@ -486,9 +452,19 @@
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPVzNtMXRzSndJNFpnZm1pa0pBODBObmlJVmhUZmV5VXJGQktkWUhSMFdtNUN2NlFHaWpNTEViN2VHbjV3aDU0azcwUkN2TTNXQk9Wdlk2ejFrTml6cE1GTl9FbzA2eEZodm92R0tRb0k2Y3pVUFQ3Rk4tVU9JQ1hzU25FbWpBR3o1M3fSAY8BQVVfeXFMT09ubEVNa2ctRWxwWmtCdTRPSjctVFZkclkxVnduTW83cy1SSFRrRHdUVWNmV2ZNZW11U1lDMk5PY2dxNHhqVTBseC1ELXg3QWZ1N0RxX05iSXVBdmFNM0U5UmtydDRoWHlMbS11ZjRuU19ZYm0yMzlFdl9tUU16ZTFVRkc0dV9PdHFoT1ZZOWs?oc=5",
       "published": "2026-10-23T13:35:41Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.YUXJRNVHMso_0-XEICo_VQ&pid=News&w=640",
       "kind": "milestone",
       "score": 11
+    },
+    {
+      "id": "62db173eaf9c",
+      "topic": "grok",
+      "title": "Kling 4.0 vs Grok Imagine Video: Votes vs a Ceiling",
+      "source": "OrcaRouter",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1ycmVhb3JGaG1KNWNIOVpjdGUzUl9mTnFVcGxmUlN5MmZKOUZUeTJFSERKdDlPYWlwZnBsQ0J3Ujd3bVk1dDd2c19iUWRpTXIwbUdpVUs4T1Z0RWpicmpiTUw2QVB2aGZZZk1Sd0RoMA?oc=5",
+      "published": "2026-10-23T12:44:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "165ecd28412d",
@@ -515,6 +491,18 @@
       "score": 4
     },
     {
+      "id": "80506042868e",
+      "topic": "spacex",
+      "title": "In hunt for Starlink alternative, Ukraine partners with Nokia and satellite maker ICEYE",
+      "source": "CNBC on MSN",
+      "url": "https://www.msn.com/en-us/news/other/in-hunt-for-starlink-alternative-ukraine-partners-with-nokia-and-satellite-maker-iceye/ar-AA2fWiFD?ocid=BingNewsVerp",
+      "published": "2026-10-23T11:37:05Z",
+      "snippet": "With SpaceX imposing speed limits on Starlink in Ukraine and hampering military operations, Kyiv is looking for alternatives.",
+      "image": "https://www.bing.com/th?id=ONUT.3kPU-fCP5ZoqwSwZ83CVVQ&pid=News&w=640",
+      "kind": "general",
+      "score": 7
+    },
+    {
       "id": "a493849738a9",
       "topic": "spacex",
       "title": "SpaceX Mobile Wireless Ambition Sends Crown Castle Stock Soaring",
@@ -522,18 +510,6 @@
       "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQTVhmeTZRakhFeHp5cTAwd1c0TjJnck9tdGZTS1pDUF85dXJvbWhaVE5wQ1VLWVBYWl9RS1ZZaTNYZk5lWE5sZkpQSEd6LXdoWUZrSXdqVXdjLW16blRfY1JkSTlnYmNfeVl0eUVtS2ZEckJBX1p4R181dUk2TjhOMUpKRkhNTkhxNE85bg?oc=5",
       "published": "2026-10-23T11:24:00Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "7cac5f648388",
-      "topic": "spacex",
-      "title": "Zelenskyy Says Starlink Is Still Limited After Trump Claimed Musk Restored Connection",
-      "source": "Forbes on MSN",
-      "url": "https://www.msn.com/en-us/news/other/zelenskyy-says-starlink-is-still-limited-after-trump-claimed-musk-restored-connection/ar-AA2fW4UI",
-      "published": "2026-10-23T11:13:19Z",
-      "snippet": "Trump reportedly asked Musk to lift restrictions on military-grade Starlink assets in Ukraine that impacted the country’s drone capabilities.",
-      "image": "https://www.bing.com/th?id=ORMS.1b8730c7e603b72b185e6f66ed0b80ad&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -548,18 +524,6 @@
       "image": "https://www.bing.com/th?id=ONUT.ZBYwMThqFKstaUy4j9odHg&pid=News&w=640",
       "kind": "launch",
       "score": 15
-    },
-    {
-      "id": "fce0878dbede",
-      "topic": "grok",
-      "title": "Grok Bot now adds app controls: reminders, messaging and smart home commands",
-      "source": "Softonic",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxORl9CM01VcUpDOWZ5TUU5OXllYWpiWEY5RzZpcXNvdDdFYVZyS25PQ2RnS1BVVkhZRU1TOXJZc3hlaDdwTmdvT09BRWNNNW1yNVFyejFBS19JZ190cGs4c0FzQnpvNnZQUV9aR0h3Mi1KcVZ2N2FKZFRlY3VKbmRWakNZb1c1Zk1hU2QtQmdaRGRiV19iZzJsUldBVnRUT09hcU5uR1UwQ3FwaE0?oc=5",
-      "published": "2026-10-23T10:58:05Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.CUV-wFG7jEbBuSOp-OFDuw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "b60db80cfd65",
@@ -585,18 +549,6 @@
       "score": 4
     },
     {
-      "id": "0acc55c2dc2e",
-      "topic": "spacex",
-      "title": "Trump Called Musk and Asked Him to Lift Ukraine Starlink Restrictions",
-      "source": "The Wall Street Journal on MSN",
-      "url": "https://www.msn.com/en-us/news/other/trump-called-musk-and-asked-him-to-lift-ukraine-starlink-restrictions/ar-AA2fRFyW",
-      "published": "2026-10-23T09:48:00Z",
-      "snippet": "The military-grade system appeared to be working more normally on Thursday, soon after the call.",
-      "image": "https://www.bing.com/th?id=ORMS.b98234a2b0f08fb0b5a56f36b58fe9c9&pid=News&w=640",
-      "kind": "general",
-      "score": 8
-    },
-    {
       "id": "6cb0587163d1",
       "topic": "tesla",
       "title": "Tesla buyers are buying for Full Self-Driving and not for the car, data shows",
@@ -619,18 +571,6 @@
       "score": 4
     },
     {
-      "id": "8d305d49c6ee",
-      "topic": "spacex",
-      "title": "Despite Trump Outreach to Musk, Starlink Speeds Still Restricted in Ukraine",
-      "source": "PCMag on MSN",
-      "url": "https://www.msn.com/en-us/news/other/despite-trump-outreach-to-musk-starlink-speeds-still-restricted-in-ukraine/ar-AA2fWTKY",
-      "published": "2026-10-23T08:42:26Z",
-      "snippet": "President Trump says he told SpaceX CEO Elon Musk to lift the restriction, but Ukraine reports that the miles-per-hour cap for military-grade Starshield remains in place.",
-      "image": "https://www.bing.com/th?id=ONUT.IIzwWafvR5JTTLTpGbEfCA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "4bc23afa9857",
       "topic": "tesla",
       "title": "Tesla: More Than 75% of New North American Deliveries Now Include FSD",
@@ -641,6 +581,17 @@
       "image": "https://www.bing.com/th?id=ONUT.oZ_OUBj7fpMiO-_vE0kokA&pid=News&w=640",
       "kind": "software",
       "score": 11
+    },
+    {
+      "id": "1113f011dc41",
+      "topic": "grok",
+      "title": "What Tesla and SpaceX are waiting for in Elon Musk's deal of over 3,500 billion USD",
+      "source": "Laodong.vn",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQkFsTHo2VzV1b0JNZTRtTktfaWVjbGQySGFwY0VOSmt0ZGVPcnpnMmZXOUJZZE1IVlNvWlBieUUzNlZVVHAzaENIdVhObjFIQVNmdG1NLVp2ZEVoWjNUa0tjREVpSUZSUWU4RXcyMHFrdm9QR2xwUUF3a2hnam52c3JZNmJxUW1lbUdDSUFyczNhUlo0aDFuemg3czdGV21sclJ4Q1BfUWtxSzBWZ0NrZHdIdFlQSUhMdENF?oc=5",
+      "published": "2026-10-23T08:24:52Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "7e7657c77073",
@@ -701,18 +652,6 @@
       "score": 4
     },
     {
-      "id": "51dd5e115e55",
-      "topic": "tesla",
-      "title": "A Startup Spent 11 Years Building Flying Cars. Now Tesla Is Paying Attention",
-      "source": "Inc.com",
-      "url": "https://www.inc.com/jennifer-knowles/a-startup-spent-11-years-building-flying-cars-now-tesla-is-paying-attention/91423302",
-      "published": "2026-10-23T06:00:00Z",
-      "snippet": "When a major competitor like Tesla enters your market, protect your advantage by focusing on your unique expertise and experience.",
-      "image": "https://www.bing.com/th?id=ONUT.vhukTyR0ZsyakcsMPnHsEA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "c9285af100ea",
       "topic": "tesla",
       "title": "Tesla gives up on Cybertruck in Australia. Company says it will refund all deposits it has collected since 2019 for the troubled truck",
@@ -737,28 +676,28 @@
       "score": 4
     },
     {
-      "id": "b418d47b759e",
-      "topic": "spacex",
-      "title": "Trump Says He May Call Musk as Zelensky Says Starlink Limits Remain",
-      "source": "Newsweek",
-      "url": "https://www.newsweek.com/trump-says-musk-restored-starlink-as-ukraine-blame-game-deepens-12609254",
-      "published": "2026-10-23T03:40:00Z",
-      "snippet": "Ukraine leans heavily on Starlink and Starshield for mid-range strikes and for intercepting incoming Russian attacks.",
-      "image": "https://www.bing.com/th?id=ONUT.kJ86M8-o5dfmnlFw_ubg3w&pid=News&w=640",
+      "id": "2b5e6368f298",
+      "topic": "grok",
+      "title": "Grok Bot now adds app controls: reminders, messaging and smart home commands",
+      "source": "Softonic",
+      "url": "https://en.softonic.com/articles/grok-bot-now-adds-app-controls-reminders-messaging-and-smart-home-commands",
+      "published": "2026-10-23T03:16:00Z",
+      "snippet": "AI has updated Grok Bot on iPhone and Android, adding on-device connections for Calendar, Reminders, Contacts, Messages, location-based search, and H ...",
+      "image": "https://www.bing.com/th?id=ONUT.CUV-wFG7jEbBuSOp-OFDuw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "5fee6dff1677",
-      "topic": "spacex",
-      "title": "Ukraine says Starlink connection speeds still being throttled",
-      "source": "UPI",
-      "url": "https://www.upi.com/Top_News/World-News/2026/10/23/Ukraine-Starlink-connectivity-speed-issues-persist/5771792756345/",
-      "published": "2026-10-23T02:18:00Z",
-      "snippet": "Ukraine reports ongoing issues with slow transmission speeds over SpaceX's satellite communications system after Trump insists restrictions are lifted.",
-      "image": "https://www.bing.com/th?id=ONUT.Uw23xUg2EkApSxADB9s5kA&pid=News&w=640",
+      "id": "232e58125117",
+      "topic": "tesla",
+      "title": "Tesla's Automotive Revenue Fell 3%, and Energy Generation and Storage Tumbled 16%. Should Investors Still View Tesla as a Car Company?",
+      "source": "The Motley Fool on MSN",
+      "url": "https://www.msn.com/en-us/technology/tech-companies/tesla-s-automotive-revenue-fell-3-and-energy-generation-and-storage-tumbled-16-should-investors-still-view-tesla-as-a-car-company/ar-AA2fTeQV?ocid=BingNewsVerp",
+      "published": "2026-10-23T00:45:00Z",
+      "snippet": "Tesla's third-quarter show the company is still struggling to grow.",
+      "image": "https://www.bing.com/th?id=ONUT.vs_faZHixQFMrc1hKHqF2g&pid=News&w=640",
       "kind": "general",
-      "score": 4
+      "score": -2
     },
     {
       "id": "9961ae8e911e",
@@ -771,18 +710,6 @@
       "image": "https://www.bing.com/th?id=ONUT.TNAegNcMctuN_B02Mm-10g&pid=News&w=640",
       "kind": "launch",
       "score": 12
-    },
-    {
-      "id": "db8ec6976d87",
-      "topic": "spacex",
-      "title": "Ukraine says Starlink speeds still throttled",
-      "source": "Financial Times",
-      "url": "https://www.ft.com/content/e67a3d0e-5893-45a5-b098-64a68a4ef032",
-      "published": "2026-10-22T21:05:00Z",
-      "snippet": "There are isolated instances where Starlink may travel slightly faster than the speed limit, but this is likely due to the SpaceX algorithm or specific usage conditions,” he said. Ukraine’s general ...",
-      "image": "https://www.bing.com/th?id=ONUT.1_Nr_UCcUMZbznBIc3FVTw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     }
   ]
 }
