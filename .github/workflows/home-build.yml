@@ -32,6 +32,9 @@ on:
       - 'data/robotaxi-*'
       - 'data/updates-*.json'
       - live-data.json
+      - data/production.json
+      - tesla-overview.css
+      - scripts/build-tesla-overview.mjs
       - data/articles.json
       - scripts/build-home.js
       - scripts/build-personal-home.mjs
@@ -97,7 +100,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/launch-viewing.json data/calendar-studio.json data/calendar.ics data/starship-studio.json data/mobility-snapshot.json cybercab-cities fsd-europe-data.js fsd-data.js data/fsd-europe.json fsd-europe grow.js grow.css newsletter.js newsletter-cta.js nav-pill.js scripts/build-home.js scripts/inject_newsletter.py scripts/newsletter-latest.js index.html tesla.html spacex.html data/articles.json data/pages.json data/newsletter-latest.json data/intelligence dispatch/*.html sitemap.xml *.html guides reviews assets explainers
+          git add data/tesla-overview.json data/launch-viewing.json data/calendar-studio.json data/calendar.ics data/starship-studio.json data/mobility-snapshot.json cybercab-cities fsd-europe-data.js fsd-data.js data/fsd-europe.json fsd-europe grow.js grow.css newsletter.js newsletter-cta.js nav-pill.js scripts/build-home.js scripts/inject_newsletter.py scripts/newsletter-latest.js index.html tesla.html spacex.html data/articles.json data/pages.json data/newsletter-latest.json data/intelligence dispatch/*.html sitemap.xml *.html guides reviews assets explainers
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Pre-render homepage headlines, Dispatch and tracker numbers."
             git pull --rebase && git push

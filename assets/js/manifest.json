@@ -70,12 +70,12 @@
       ]
     },
     "tesla": {
-      "file": "/assets/js/tesla.bundle.fa91a656ff.js",
-      "bytes": 80309,
+      "file": "/assets/js/tesla.bundle.179f3bf847.js",
+      "bytes": 20778,
       "sources": [
-        "fsd-europe-data.js",
-        "tesla-hub.js",
-        "live.js"
+        "tesla-overview-model.js",
+        "tesla-overview-view.js",
+        "tesla-overview.js"
       ]
     },
     "my-tesla": {
