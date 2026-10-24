@@ -30,7 +30,10 @@ const data={schema:1,countsAt:live.updated,source:live.source,totals:live.totals
 ctx.SDStarlink.validate(data);
 const out=JSON.stringify(data,null,1)+'\n';fs.writeFileSync(path.join(ROOT,'data/starlink-observatory.json'),out);
 const target=path.join(ROOT,'starlink.html');let html=fs.readFileSync(target,'utf8');
-const block=ctx.SDStarlinkView.render(data).replace('<section class="so-section" id="evidence"',read('templates/starlink-sky.html')+'<section class="so-section" id="evidence"');
+// The standalone template is noindex; only its marked content belongs in the tracker.
+const sky=read('templates/starlink-sky.html').match(/<!--sl:sky-fragment-->([\s\S]*?)<!--\/sl:sky-fragment-->/);
+if(!sky)throw Error('Missing sky finder template markers');
+const block=ctx.SDStarlinkView.render(data).replace('<section class="so-section" id="evidence"',sky[1].trim()+'\n<section class="so-section" id="evidence"');
 if(!html.includes('<!--sl:observatory-->'))throw Error('Missing observatory build marker');
 html=html.replace(/<!--sl:observatory-->[\s\S]*?<!--\/sl:observatory-->/,'<!--sl:observatory-->\n'+block+'\n<!--/sl:observatory-->');
 const safe=JSON.stringify(data).replace(/</g,'\\u003c');
