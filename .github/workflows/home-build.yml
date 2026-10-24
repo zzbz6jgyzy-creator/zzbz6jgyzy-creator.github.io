@@ -24,6 +24,10 @@ on:
       - live-data.json
       - data/articles.json
       - scripts/build-home.js
+      - scripts/build-personal-home.mjs
+      - personal-home.css
+      - personal-model.js
+      - personal-home.js
       - scripts/build-noscript.mjs
       - scripts/build-tracker-snapshots.mjs
       - scripts/build-js.mjs
@@ -75,6 +79,8 @@ jobs:
         run: |
           python3 scripts/build-explainers.py
           python3 scripts/inject-js-bundles.py
+      - name: Rebuild saved personal-home preview
+        run: node scripts/build-personal-home.mjs
       - name: NewsArticle structured data + sitemap
         run: python3 scripts/build-seo.py
       - name: Commit if changed

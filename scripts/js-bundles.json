@@ -182,6 +182,11 @@
     ],
     "buy-guide": [
       "guides/buy-calc.js"
+    ],
+    "personal-home": [
+      "personal-model.js",
+      "personal-sync.js",
+      "personal-home.js"
     ]
   },
   "pages": {
@@ -479,7 +484,7 @@
     "daily.html": {
       "bundles": [
         "core",
-        "intel"
+        "personal-home"
       ],
       "grow": [
         "data-band"
