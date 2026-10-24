@@ -1,22 +1,22 @@
 {
-  "updated": "2026-10-24T21:08:44.355Z",
+  "updated": "2026-10-24T21:31:50.813Z",
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:newest-reporting",
+      "type": "appeared",
+      "factId": "tesla-software:wave:2026.38.5.6",
       "topic": "tesla-software",
       "tracker": "software",
-      "field": "newest-reporting",
-      "previous": "2026.38.5.11",
-      "next": "2026.38.5.6",
+      "field": "wave:2026.38.5.6",
+      "previous": "0",
+      "next": "15",
       "at": "2026-10-24T21:08:43.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3360 cars)",
+      "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Newest reporting build changed from 2026.38.5.11 to 2026.38.5.6.",
-      "title": "Newest reporting build",
-      "id": "changed|tesla-software:newest-reporting|2026-10-24T21:08:43.000Z|2026.38.5.6"
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.6 first appeared in the Teslascope sample with 15 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "title": "2026.38.5.6",
+      "id": "appeared|tesla-software:wave:2026.38.5.6|2026-10-24T21:08:43.000Z|15"
     },
     {
       "type": "appeared",
@@ -765,23 +765,6 @@
       "summary": "2026.27.6.5 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.27.6.5",
       "id": "appeared|tesla-software:wave:2026.27.6.5|2026-10-10T08:48:07.000Z|1"
-    },
-    {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.32.7",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.32.7",
-      "previous": "0",
-      "next": "355",
-      "at": "2026-10-10T08:48:07.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.32.7 first appeared in the Teslascope sample with 355 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
-      "title": "2026.32.7",
-      "id": "appeared|tesla-software:wave:2026.32.7|2026-10-10T08:48:07.000Z|355"
     },
     {
       "type": "logged",
