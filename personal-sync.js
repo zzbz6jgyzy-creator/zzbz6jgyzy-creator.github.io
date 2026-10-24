@@ -12,7 +12,7 @@ class PersonalSync{
    const remote=await this.rpc('sd_personal_home',{}),local=this.getState();if(!local||this.stopped)throw Error('sync_stopped');
    if(!Number.isSafeInteger(remote.revision)||remote.revision<0||remote.document!==null&&!this.model.valid(remote.document))throw Error('invalid_cloud_document');
    const combined=remote.document?this.model.merge(local.doc,remote.document):local.doc;
-   if(remote.document&&JSON.stringify(combined)===JSON.stringify(remote.document)){
+   if(remote.document&&this.model.equal(combined,remote.document)){
     this.accept(combined,remote.revision,false);this.status('synced');return;
    }
    await this.owner();
@@ -20,7 +20,7 @@ class PersonalSync{
     const result=await this.rpc('sd_save_personal_home',{p_document:combined,p_revision:remote.revision});
     if(!this.model.valid(result.document)||!Number.isSafeInteger(result.revision)||result.revision<=remote.revision)throw Error('invalid_cloud_document');
     // Preserve changes made while the write was in flight; retry them rather than clearing their dirty flag.
-    const latest=this.getState(),merged=this.model.merge(latest.doc,result.document),dirty=JSON.stringify(merged)!==JSON.stringify(result.document);
+    const latest=this.getState(),merged=this.model.merge(latest.doc,result.document),dirty=!this.model.equal(merged,result.document);
     this.accept(merged,result.revision,dirty);if(dirty)continue;this.status('synced');return;
    }catch(e){if(e.message==='revision_conflict')continue;throw e;}
   }

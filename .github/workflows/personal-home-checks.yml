@@ -35,6 +35,7 @@ jobs:
         run: |
           node --test tests/personal-home.test.mjs
           node tests/personal-home-db.mjs
+          node tests/personal-home-jsonb.mjs
           node scripts/build-personal-home.mjs --saved
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py

@@ -60,3 +60,7 @@ Bundle source: `personal-model.js`, `personal-sync.js`, `personal-home.js`. The 
 The PR workflow publishes screenshots. After merging and running SQL, live account sync still needs the owner's signed-in two-device check; connector access does not provide their private session or database administration rights.
 
 Later opportunities: optional richer preference controls, syncing the separate My Tesla profile with explicit consent, and article-level reading progress. This version prioritizes choices readers can understand and control rather than inferring private interests from browsing.
+
+## JSONB sync comparison correction
+
+PostgreSQL returns JSONB object keys in its own order. Preference documents now use structural equality that ignores object-key order while preserving array order and actual field changes. This prevents a successful save from being marked dirty again and repeatedly retried. `tests/personal-home-jsonb.mjs` runs the sync adapter against actual PGlite/PostgreSQL JSONB RPC responses; browser account mocks also return sorted keys. This is a frontend fix and requires no additional migration.
