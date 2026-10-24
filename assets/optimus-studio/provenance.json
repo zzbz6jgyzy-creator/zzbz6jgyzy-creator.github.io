@@ -1,0 +1,228 @@
+{
+  "reviewed": "2026-10-24",
+  "transformations": "Resized without enlargement; AVIF/WebP compression. Original compositions retained. CSS may crop display previews; full images available in gallery.",
+  "rights": "Tesla imagery is attributed editorial use, not an open licence. Sikander image derivatives remain CC BY-SA 4.0; this does not license Tesla material or the whole site.",
+  "media": [
+    {
+      "id": "portrait",
+      "title": "The published design",
+      "group": "studio",
+      "alt": "Tesla’s published full-body Optimus portrait against a dark background",
+      "caption": "Manufacturer portrait on Tesla’s AI page. The source does not state a hardware revision; not presented as a final Gen 3 specification.",
+      "credit": "Tesla",
+      "source": "https://www.tesla.com/ai",
+      "original": "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Tesla-Bot-AI.jpg",
+      "license": "Tesla editorial imagery",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "id": "factory",
+      "title": "A task, at a workstation",
+      "group": "factory",
+      "alt": "Tesla shareholder slide showing Optimus handling cylindrical battery cells at a factory workstation",
+      "caption": "Tesla Q2 2024 update, printed slide 19 (PDF page 21). The autonomy label is Tesla’s claim, not an independent result.",
+      "credit": "Tesla, Q2 2024 shareholder update",
+      "source": "https://ir.tesla.com/_flysystem/s3/sec/000162828024032603/tsla-20240723-gen.pdf#page=21",
+      "license": "Tesla editorial imagery",
+      "width": 1365,
+      "height": 768
+    },
+    {
+      "id": "showroom_front",
+      "title": "The human-scale silhouette",
+      "group": "display",
+      "alt": "Optimus on a display platform at a Tesla showroom, viewed from the front",
+      "caption": "Photographed on 18 November 2025. A showroom display is not a capability demonstration.",
+      "credit": "Sikander Iqbal",
+      "source": "https://commons.wikimedia.org/wiki/File:Optimus_bot_at_Tesla_showroom_-_20251118_-_01.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "width": 2268,
+      "height": 4032
+    },
+    {
+      "id": "showroom_angle",
+      "title": "Another angle on the machine",
+      "group": "display",
+      "alt": "Three-quarter view of Optimus displayed behind a barrier at a Tesla showroom",
+      "caption": "Photographed on 18 November 2025. The image does not verify the final production configuration.",
+      "credit": "Sikander Iqbal",
+      "source": "https://commons.wikimedia.org/wiki/File:Optimus_bot_at_Tesla_showroom_-_20251118_-_02.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "width": 2268,
+      "height": 4032
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/optimus-studio/factory-1600w.avif",
+      "bytes": 47200,
+      "sha256": "7af27898b871834df80e3e04d6da6e652e8de12e7078505c04a2fa435d4edb90",
+      "width": 1365,
+      "height": 768
+    },
+    {
+      "path": "assets/optimus-studio/factory-1600w.webp",
+      "bytes": 73316,
+      "sha256": "8e4214a6ff5e62b3443a612ee95df5715387e012fa4d93d2ebcb389a4d2e07d5",
+      "width": 1365,
+      "height": 768
+    },
+    {
+      "path": "assets/optimus-studio/factory-480w.avif",
+      "bytes": 9855,
+      "sha256": "c3c99c7de5f83147e399c6d54fe1479ce4acc123b6b7fa2b5f49f77e31d3804f",
+      "width": 480,
+      "height": 270
+    },
+    {
+      "path": "assets/optimus-studio/factory-480w.webp",
+      "bytes": 17228,
+      "sha256": "76bd65124774d835a9c36d8cde4d25e9998ccb43100929c068a789ae193b719c",
+      "width": 480,
+      "height": 270
+    },
+    {
+      "path": "assets/optimus-studio/factory-960w.avif",
+      "bytes": 27251,
+      "sha256": "9372c5af125cd4c5e96f2f2bf4a90937cb20aece13f76b3788d6144c7e84ab9f",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "assets/optimus-studio/factory-960w.webp",
+      "bytes": 45958,
+      "sha256": "a15cb2509929b092a6a8e21ea083f0b83dfcc05ff00a2ee32e89dec0a717116f",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "assets/optimus-studio/portrait-1600w.avif",
+      "bytes": 15739,
+      "sha256": "2009af1b44eaabefd90c63e19bd5435af8082e2ddaabcf88d0894b100ef735f4",
+      "width": 1600,
+      "height": 1200
+    },
+    {
+      "path": "assets/optimus-studio/portrait-1600w.webp",
+      "bytes": 27522,
+      "sha256": "23480b987234cfe4759fc69e29399dae17de09f68bf67fb124e812831c0f933b",
+      "width": 1600,
+      "height": 1200
+    },
+    {
+      "path": "assets/optimus-studio/portrait-480w.avif",
+      "bytes": 3407,
+      "sha256": "b7e4437d2c630f35913dc22cc5b4a09fdddc61e68d374bad2a2d8935f9b61905",
+      "width": 480,
+      "height": 360
+    },
+    {
+      "path": "assets/optimus-studio/portrait-480w.webp",
+      "bytes": 5404,
+      "sha256": "5e897f891297fe6b62e42235e6e8761040e5189ab58a419b676e6bf617cbdd51",
+      "width": 480,
+      "height": 360
+    },
+    {
+      "path": "assets/optimus-studio/portrait-960w.avif",
+      "bytes": 8481,
+      "sha256": "170080f8d0493112991f2d4ec8fe072ecd9e7e5f9972026f8e568c977617572d",
+      "width": 960,
+      "height": 720
+    },
+    {
+      "path": "assets/optimus-studio/portrait-960w.webp",
+      "bytes": 14226,
+      "sha256": "faf1f86987cc61001289f430d0f546872ab3f9cbb359ef64789e4c54cfa98c23",
+      "width": 960,
+      "height": 720
+    },
+    {
+      "path": "assets/optimus-studio/showroom_angle-1600w.avif",
+      "bytes": 251428,
+      "sha256": "59caa0434fec5bf90459224895e9144198d0f2e85ee556fb55e427c82125b9fe",
+      "width": 1600,
+      "height": 2844
+    },
+    {
+      "path": "assets/optimus-studio/showroom_angle-1600w.webp",
+      "bytes": 433850,
+      "sha256": "01787f7ccc92697f08f8d2fb2722240f7f89d5743f4fc748e44b4eda64c9b8e4",
+      "width": 1600,
+      "height": 2844
+    },
+    {
+      "path": "assets/optimus-studio/showroom_angle-480w.avif",
+      "bytes": 29048,
+      "sha256": "671d82038ca35e1b040e9dded3800d8f3e682b3b0853b9471666763124c24505",
+      "width": 480,
+      "height": 853
+    },
+    {
+      "path": "assets/optimus-studio/showroom_angle-480w.webp",
+      "bytes": 49816,
+      "sha256": "f4ec97aa97f9b54a017c024ab3768f2602215d1eed1acee622d920698465c5f7",
+      "width": 480,
+      "height": 853
+    },
+    {
+      "path": "assets/optimus-studio/showroom_angle-960w.avif",
+      "bytes": 93073,
+      "sha256": "5d20ba07c3aee563552f09a08a42630cc48612e2f79f72ecdb9aa55cd5ddcbff",
+      "width": 960,
+      "height": 1707
+    },
+    {
+      "path": "assets/optimus-studio/showroom_angle-960w.webp",
+      "bytes": 157974,
+      "sha256": "adf11547b0747303bc1972bd952fa655d115c4f910242c703d4d1869e1586351",
+      "width": 960,
+      "height": 1707
+    },
+    {
+      "path": "assets/optimus-studio/showroom_front-1600w.avif",
+      "bytes": 242185,
+      "sha256": "bcaaba9bf311ca8e359e589124966eced7b103b215681f278b98b49d504530f7",
+      "width": 1600,
+      "height": 2844
+    },
+    {
+      "path": "assets/optimus-studio/showroom_front-1600w.webp",
+      "bytes": 411388,
+      "sha256": "674e124dea865f22040cf961433cd9b8227dad729312bd717a78b3c90f98ae9d",
+      "width": 1600,
+      "height": 2844
+    },
+    {
+      "path": "assets/optimus-studio/showroom_front-480w.avif",
+      "bytes": 26491,
+      "sha256": "abe090e0b638f4e5d070e384ebb5ed8dcf3a1bf288dcdb20ec7bc10bb06bbf65",
+      "width": 480,
+      "height": 853
+    },
+    {
+      "path": "assets/optimus-studio/showroom_front-480w.webp",
+      "bytes": 45108,
+      "sha256": "89c739f798b4dc0cf8afc51829d5f16e1cfad96a177eba51c8a8a6a34631f099",
+      "width": 480,
+      "height": 853
+    },
+    {
+      "path": "assets/optimus-studio/showroom_front-960w.avif",
+      "bytes": 93913,
+      "sha256": "df1f14ff62fc31a0706d8b66fddbfecd5a0183d0f2f54b85f5fa876029087f7d",
+      "width": 960,
+      "height": 1707
+    },
+    {
+      "path": "assets/optimus-studio/showroom_front-960w.webp",
+      "bytes": 162360,
+      "sha256": "74361d9f9d78f6a1bc2f2ead4cc9345bfafee686e945b46b59f7629602db30bd",
+      "width": 960,
+      "height": 1707
+    }
+  ]
+}

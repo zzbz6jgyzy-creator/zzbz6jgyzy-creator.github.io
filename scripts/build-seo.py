@@ -235,13 +235,13 @@ def about_page():
 #   WebApplication  games, 3D explorers, search, personal follow tool
 #   CollectionPage  hubs (none of this set)
 #   WebPage         fallback
+# Optimus owns its WebPage/FAQ/film graph in build-optimus-studio.mjs.
 PAGE_TYPES = {
     "autonomy.html": "Dataset",
     "catch.html": "WebApplication",
     "cybertruck-explorer.html": "WebApplication",
     "daily.html": "WebApplication",
     "model3-explorer.html": "WebApplication",
-    "optimus.html": "Dataset",
     "production.html": "Dataset",
     "robotaxi.html": "WebApplication",
     "search.html": "WebApplication",

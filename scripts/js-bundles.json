@@ -149,6 +149,7 @@
       "fsd-data.js"
     ],
     "optimus": [
+      "optimus-model.js",
       "optimus.js"
     ],
     "production": [
