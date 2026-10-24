@@ -12,6 +12,11 @@ const require = createRequire(import.meta.url),
 test("every claim resolves real source records and dates remain precise", () => {
   assert.equal(M.validate(data), data);
   assert.equal(data.claims.length, 12);
+  for (const source of data.sources.filter(s => s.url.startsWith("/"))) {
+    const [file, anchor] = source.url.slice(1).split("#");
+    assert.ok(fs.existsSync(file));
+    if(anchor) assert.ok(fs.readFileSync(file,"utf8").includes('id="'+anchor+'"'),source.url);
+  }
   assert.equal(M.validDate("2026-02-30"), false);
   assert.equal(M.validDate("2024-02-29"), true);
   for (const mutation of [
