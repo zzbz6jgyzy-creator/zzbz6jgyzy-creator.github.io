@@ -1,0 +1,57 @@
+name: Calendar studio checks
+on:
+  pull_request:
+    paths:
+      - 'calendar*'
+      - 'data/calendar*'
+      - 'data/events.json'
+      - 'data/launches.json'
+      - 'live-data.json'
+      - 'scripts/build-calendar-studio.mjs'
+      - 'scripts/fetch-launches.py'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/calendar*'
+      - 'tests/fixtures/ll2-calendar-v23.json'
+      - '.github/workflows/calendar-studio-checks.yml'
+      - '.github/workflows/launches-refresh.yml'
+      - '.github/workflows/home-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  calendar-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned build and browser tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Date precision, identity, ICS and importer failure retention
+        run: |
+          node --test tests/calendar-studio.test.mjs
+          python tests/calendar-launch-import.py
+          node scripts/test-calendar-dedup.mjs
+          node scripts/test-launch-consistency.mjs
+      - name: Verify reproducible saved page, feed and bundle
+        run: |
+          node scripts/build-calendar-studio.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- calendar.html data/calendar-studio.json data/calendar.ics assets/js/manifest.json 'assets/js/calendar.bundle.*.js'
+      - name: Responsive views, keyboard, preferences, downloads and fallbacks
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/calendar-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: calendar-studio-previews
+          path: /tmp/calendar-studio

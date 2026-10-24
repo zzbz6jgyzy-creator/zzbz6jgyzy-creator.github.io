@@ -1,70 +1,64 @@
 #!/usr/bin/env python3
-"""Pull every upcoming SpaceX launch from Launch Library 2 into data/launches.json.
+"""One cached SpaceX request per refresh; keep the last file on bad upstream data.
 
-The site's countdowns (home page + calendar) read this file first, so every
-launch shows up without a hand-curated list. LL2 is free but rate-limited
-(15 req/hour), so only this job calls it; on failure the last file is kept.
+The v2.3 adapter preserves the existing compact shape used by other site pages.
+No browser needs to call the rate-limited provider for the new calendar.
 """
-import json, sys, urllib.request, datetime, os
+import argparse, datetime, json, os, pathlib, sys, urllib.request
+URL='https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal'
+OUT=pathlib.Path(__file__).resolve().parents[1]/'data/launches.json'
+KEEP=('id','name','net','window_start','window_end','url')
 
-URL = "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX&limit=40&mode=normal"
-OUT = os.path.join(os.path.dirname(__file__), "..", "data", "launches.json")
-KEEP = ("id", "name", "net", "window_start", "window_end", "url")
-
-# Drop launches that are scrubbed/on hold, or whose timed NET passed >30 min ago
-# without lifting off (LL2 still lists them until it sets a new date). They come
-# back on their own once LL2 gives a new NET with a Go/TBC status.
-def skip_launch(x, now):
-    st = (x.get("status") or {}).get("abbrev") or ""
-    prec = (x.get("net_precision") or {}).get("abbrev") or ""
-    timed = prec in ("SEC", "MIN", "")
-    if st == "Hold" or (st == "TBD" and timed):
-        return True
+def parse(value):
     try:
-        t = datetime.datetime.fromisoformat(str(x.get("net")).replace("Z", "+00:00"))
-    except Exception:
-        return False
-    return timed and st not in ("In Flight", "Success") and now - t > datetime.timedelta(minutes=30)
+        date=datetime.datetime.fromisoformat(str(value).replace('Z','+00:00'))
+        return date if date.tzinfo else None
+    except (ValueError,TypeError): return None
+
+def skip_launch(row, now):
+    status=(row.get('status')or{}).get('abbrev')or''
+    precision=(row.get('net_precision')or{}).get('abbrev')or''
+    timed=precision in ('SEC','MIN','')
+    if status=='Hold' or status=='TBD' and timed:return True
+    date=parse(row.get('net'))
+    return bool(date and timed and status not in ('In Flight','Success') and now-date>datetime.timedelta(minutes=30))
+
+def normalize(data, now):
+    if not isinstance(data,dict) or not isinstance(data.get('results'),list) or not data['results']:raise ValueError('Missing launch results')
+    rows=[];seen=set()
+    for item in data['results']:
+        if not isinstance(item,dict) or not item.get('id') or item['id'] in seen or not isinstance(item.get('name'),str) or not parse(item.get('net')):raise ValueError('Invalid or duplicate launch record')
+        provider=item.get('launch_service_provider')or{}
+        if provider.get('name') and provider['name']!='SpaceX':raise ValueError('Unexpected provider in SpaceX feed')
+        if not isinstance(item.get('status'),dict) or not item['status'].get('abbrev'):raise ValueError('Missing launch status')
+        seen.add(item['id'])
+        if skip_launch(item,now):continue
+        row={key:item.get(key)for key in KEEP}
+        row['status']={key:item['status'].get(key)for key in ('name','abbrev')}
+        precision=item.get('net_precision')or{}
+        row['net_precision']={key:precision.get(key)for key in ('name','abbrev')}
+        pad=item.get('pad')or{}
+        row['pad']={'name':pad.get('name'),'location':{'name':(pad.get('location')or{}).get('name')}}
+        if item.get('last_updated'):row['last_updated']=item['last_updated']
+        mission=item.get('mission')or{}
+        if mission:row['mission']={'name':mission.get('name'),'type':mission.get('type'),'orbit':{'name':(mission.get('orbit')or{}).get('name'),'abbrev':(mission.get('orbit')or{}).get('abbrev')}}
+        configuration=(item.get('rocket')or{}).get('configuration')or{}
+        if configuration.get('full_name'):row['vehicle']=configuration['full_name']
+        rows.append(row)
+    if not rows:raise ValueError('No usable launches; previous snapshot retained')
+    return rows
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--input');parser.add_argument('--output',default=str(OUT));args=parser.parse_args()
     try:
-        req = urllib.request.Request(URL, headers={"User-Agent": "superchargeddaily.com launch refresh"})
-        with urllib.request.urlopen(req, timeout=30) as r:
-            data = json.load(r)
-    except Exception as e:
-        print("LL2 fetch failed, keeping previous file:", e)
-        return 0
-    rows = []
-    now = datetime.datetime.now(datetime.timezone.utc)
-    for x in data.get("results") or []:
-        if skip_launch(x, now):
-            continue
-        row = {k: x.get(k) for k in KEEP}
-        row["status"] = {k: (x.get("status") or {}).get(k) for k in ("name", "abbrev")}
-        np = x.get("net_precision") or {}
-        row["net_precision"] = {"name": np.get("name"), "abbrev": np.get("abbrev")}
-        pad = x.get("pad") or {}
-        row["pad"] = {"name": pad.get("name"), "location": {"name": (pad.get("location") or {}).get("name")}}
-        rows.append(row)
-    if not rows:
-        print("LL2 returned no rows, keeping previous file"); return 0
-    out = {
-        "_about": "Upcoming SpaceX launches from Launch Library 2 (ll.thespacedevs.com), refreshed by .github/workflows/launches-refresh.yml. Do not hand-edit.",
-        "source": "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?lsp__name=SpaceX",
-        "updated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "results": rows,
-    }
-    old = None
-    try:
-        old = json.load(open(OUT))
-    except Exception:
-        pass
-    if old and old.get("results") == rows:
-        print("No launch change"); return 0
-    with open(OUT, "w") as f:
-        json.dump(out, f, indent=1, ensure_ascii=False); f.write("\n")
-    print(f"Wrote {len(rows)} launches")
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+        if args.input:data=json.loads(pathlib.Path(args.input).read_text())
+        else:
+            request=urllib.request.Request(URL,headers={'User-Agent':'superchargeddaily.com launch refresh'})
+            with urllib.request.urlopen(request,timeout=30)as response:data=json.load(response)
+        now=datetime.datetime.now(datetime.timezone.utc);rows=normalize(data,now);stamp=now.strftime('%Y-%m-%dT%H:%M:%SZ')
+        out={'_about':'SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3. Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.','source':URL,'updated':stamp,'checked':stamp,'results':rows}
+        target=pathlib.Path(args.output);temp=target.with_suffix('.tmp');temp.write_text(json.dumps(out,indent=1,ensure_ascii=False)+'\n');temp.replace(target)
+        print(f'Validated {len(rows)} launches; source checked {stamp}');return 0
+    except Exception as error:
+        print('Launch refresh failed; previous file retained:',error,file=sys.stderr);return 1
+if __name__=='__main__':sys.exit(main())

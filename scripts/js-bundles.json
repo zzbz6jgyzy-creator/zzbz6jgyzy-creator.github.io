@@ -87,7 +87,9 @@
     ],
     "calendar": [
       "calendar-merge.js",
-      "calendar.js"
+      "calendar-studio-model.js",
+      "calendar-studio-view.js",
+      "calendar-studio.js"
     ],
     "fsd-europe": [
       "fsd-europe-data.js",
@@ -299,11 +301,7 @@
     "calendar.html": {
       "bundles": [
         "core",
-        "intel",
         "calendar"
-      ],
-      "grow": [
-        "data-band"
       ]
     },
     "dispatch.html": {
