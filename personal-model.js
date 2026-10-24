@@ -9,6 +9,8 @@ const route=s=>typeof s==='string'&&s.length<=180&&/^\/dispatch\/[a-z0-9]+(?:-[a
 const safeLink=s=>typeof s==='string'&&/^\/(?:[a-z0-9-]+\.html|dispatch\/[a-z0-9-]+\.html)(?:#[A-Za-z][A-Za-z0-9_-]*)?$/.test(s)?s:null;
 const image=s=>typeof s==='string'&&/^\/assets\/[A-Za-z0-9_./-]+\.(?:avif|webp|jpe?g|png)$/.test(s)&&!s.includes('..')?s:null;
 const clone=x=>JSON.parse(JSON.stringify(x));
+// PostgreSQL JSONB reorders object keys. Arrays retain meaningful reader-selected order.
+function equal(a,b){if(a===b)return true;if(!a||!b||typeof a!=='object'||typeof b!=='object'||Array.isArray(a)!==Array.isArray(b))return false;if(Array.isArray(a))return a.length===b.length&&a.every((v,i)=>equal(v,b[i]));const keys=Object.keys(a);return keys.length===Object.keys(b).length&&keys.every(k=>Object.prototype.hasOwnProperty.call(b,k)&&equal(a[k],b[k]));}
 function list(value,allowed,max){return Array.isArray(value)&&value.length<=max&&new Set(value).size===value.length&&value.every(x=>allowed.includes(x));}
 function setting(k,v){return k==='name'?typeof v==='string'&&v.length<=40&&!/[<>\u0000-\u001f\u007f]/.test(v):k==='topics'?list(v,TOPICS.map(x=>x.id),15):k==='tools'?list(v,TOOLS.map(x=>x.id),8):k==='sections'?list(v,SECTIONS,4)&&v.length===4:k==='density'?['comfortable','compact'].includes(v):k==='focus'?['latest','unread'].includes(v):false;}
 function time(n,now){return Number.isSafeInteger(n)&&n>=0&&n<=now+86400000;}
@@ -35,5 +37,5 @@ function feed(rows,d,{tab='for-you',query='',now=Date.now()}={}){const s=setting
 const key=id=>id&&/^[a-f0-9-]{36}$/.test(id)?'sd-personal-user-'+id+'-v1':'sd-personal-guest-v1';
 function read(store,id,now=Date.now()){try{const x=JSON.parse(store.getItem(key(id))||'null');return x&&valid(x.doc,now)&&Number.isSafeInteger(x.revision)&&x.revision>=0?x:null;}catch{return null;}}
 function write(store,id,state){try{if(!valid(state.doc))throw Error();store.setItem(key(id),JSON.stringify(state));return true;}catch{return false;}}
-const api={TOPICS,TOOLS,SECTIONS,DEFAULTS,PRESETS,esc,route,safeLink,image,blank,valid,merge,change,mark,settings,topicsFor,articles,feed,key,read,write};root.SDPersonal=api;if(typeof module==='object')module.exports=api;
+const api={TOPICS,TOOLS,SECTIONS,DEFAULTS,PRESETS,esc,route,safeLink,image,equal,blank,valid,merge,change,mark,settings,topicsFor,articles,feed,key,read,write};root.SDPersonal=api;if(typeof module==='object')module.exports=api;
 })(typeof window==='object'?window:globalThis);

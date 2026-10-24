@@ -30,7 +30,7 @@ async def main():
      elif q['args']['p_revision']!=current['revision']:reply={'error':{'message':'revision_conflict'}}
      else:
       current={'document':q['args']['p_document'],'revision':current['revision']+1};cloud[uid]=current;writes.append(uid);reply={'data':current}
-     return await r.fulfill(body=json.dumps(reply),content_type='application/json')
+     return await r.fulfill(body=json.dumps(reply,sort_keys=True),content_type='application/json')
     if mode=='source-failed' and u.path in ['/data/articles.json','/data/intelligence/bundle.json']:return await r.abort()
     if mode=='blocked-js' and 'personal-home.bundle.'in u.path:return await r.abort()
     f=ROOT/(u.path.lstrip('/')or'index.html')
@@ -78,6 +78,7 @@ async def main():
   assert not errors;await ctx.close();print('start-page routing, compact view, imports and reset passed',flush=True)
   ctx,page,errors=await context(user=A);await setup(page,'Cloud Alex');await page.locator('#ph-connect').click();await page.wait_for_function("document.querySelector('#ph-storage').textContent==='Saved to your account'");assert cloud[A]['document']['fields']['name']['value']=='Cloud Alex'
   await page.locator('.ph-story [data-mark="saved"]').first.click();await page.wait_for_function("document.querySelector('#ph-storage').textContent==='Saved to your account'");await page.locator('.ph-preferences summary').click();await page.locator('#ph-sync-now').click();await page.wait_for_timeout(150);assert len([x for x in cloud[A]['document']['saved'].values()if x['value']])==1
+  await page.locator('#ph-sync-now').click();await page.wait_for_timeout(150);assert len(writes)==2,'unchanged database ordering must not cause redundant saves'
   await ctx.close()
   ctx,page,errors=await context(user=A,auto=True);await page.wait_for_function("document.querySelector('#ph-title').textContent.includes('Cloud Alex')");assert await page.locator('#ph-saved-count').inner_text()=='1';assert not errors;await ctx.close();print('cross-device account restore passed',flush=True)
   ctx,page,errors=await context(user=B);await page.locator('#ph-connect').click();await page.wait_for_function("document.querySelector('#ph-storage').textContent==='Saved to your account'");assert 'Cloud Alex'not in await page.locator('#ph-title').inner_text();assert await page.locator('#ph-saved-count').inner_text()=='0';await page.evaluate("window.__mockUser=null;window.__mockAuth('SIGNED_OUT',null)");assert 'Cloud Alex'not in await page.locator('#ph-title').inner_text();assert not errors;await ctx.close();print('account isolation and sign-out passed',flush=True)
