@@ -167,12 +167,11 @@
       ]
     },
     "roadster": {
-      "file": "/assets/js/roadster.bundle.d5ed9fc672.js",
-      "bytes": 10567,
+      "file": "/assets/js/roadster.bundle.a6f74b3f8d.js",
+      "bytes": 10013,
       "sources": [
-        "roadster.js",
-        "wallpapers.js",
-        "rd-carousel.js"
+        "roadster-studio-model.js",
+        "roadster-studio.js"
       ]
     },
     "news": {

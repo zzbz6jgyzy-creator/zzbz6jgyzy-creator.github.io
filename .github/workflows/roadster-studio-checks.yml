@@ -1,0 +1,43 @@
+name: Roadster studio checks
+on:
+  pull_request:
+    paths:
+      - 'roadster*'
+      - 'data/roadster*'
+      - 'assets/roadster-studio/**'
+      - 'scripts/*roadster*'
+      - 'scripts/js-bundles.json'
+      - 'tests/*roadster*'
+      - '.github/workflows/roadster-studio-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Validate evidence, media and saved render
+        run: |
+          node --test tests/roadster-studio.test.mjs
+          node scripts/build-roadster-studio.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- roadster.html assets/js
+      - name: Responsive and interactive browser checks
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/roadster-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: roadster-studio-previews
+          path: /tmp/roadster-studio
