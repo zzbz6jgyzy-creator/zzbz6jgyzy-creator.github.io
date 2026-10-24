@@ -1,6 +1,28 @@
 {
-  "updated": "2026-10-24T15:02:09Z",
+  "updated": "2026-10-24T15:32:46Z",
   "items": [
+    {
+      "id": "4efe2e869b70",
+      "topic": "tesla",
+      "title": "Musk and Tesla Target a Big 2030 Milestone",
+      "source": "IndustryWeek",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNYmZXTXdqbVBDWnJrVUlWa2MyYW05c2tkYzVJOUYyTnk4YTdxNDFLMXVpNGZEV0NFQWdzdUtOdDE1S25kVWNLSVJvYWF2Qzl5V2tKUW4xZ2JYOHhqWlNaZktJTmlHeG8xZDY2bXllOGdGTjEwTFU2eGplbmlsVEw1WmRtU3FxUEtfdEJNRzJTaS1qZ2U0al9rUjlnRGUxVVFIS19NZzRGQTRwZUNwWkNES3NmX0hsbmRuSDgwbQ?oc=5",
+      "published": "2026-10-24T15:08:40Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "cc46531757b6",
+      "topic": "grok",
+      "title": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+      "source": "TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOaEZiX0YxaWdzSkFoZjVyMDFnZk9XVDlPZzNRSXpFZFM1LThYekZ3YW5EOHExSGdGZm1YbUdfdHNFRFJjbXJaVmo2MFJtclp0WVdQTkNfYTR3X3hrQzdZcEZkU3hBUUJXZXVrZkJkbEFjeFo2eTlsa2dPckR5cWNaLUdGUklMOTcyTk5UY2ZFSVBYY2k1N2hUODNkZlkwaHppOEF3UVprOHZ0aGtY?oc=5",
+      "published": "2026-10-24T15:00:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
     {
       "id": "0c30d8114251",
       "topic": "tesla",
@@ -13,11 +35,11 @@
       "score": 4
     },
     {
-      "id": "9973c5e44836",
+      "id": "8915068094f1",
       "topic": "spacex",
       "title": "Elon Musk's SpaceX and Jeff Bezos' Blue Origin will face off in orbit next year, NASA confirms",
       "source": "Fortune",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQSUotNnZwMkM1LWlSa3J2bHo2WWo3UWliYjQtN2ZqQkp3ZEo0d3FHVk9YNFpPUmFlQ0NSdFppR3pHQ1RtUUJnUkFOQ2Z2Nk41dEtaamNDbTB0ZHp1TUpzSFFCWk5kQ2xGQ1hxajFuc3FuS05EVm51OTlLUFVGWF81cHY0T1RrNDdxZmZ6UC1leXpwTVhQeGR5YjBQU2ZqbXpVV05kbWhlcVR6RTdtRE40TGhqeE5fMGZCTURwNlhTWlRkajVXYmxKbw?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPajNHRGwyekQ3YWE2RUxreXR3MWRxZ0hFbHotS3lsejRuZ2c5dVNQb2tkY0xhSEEwY1NGTHBURkVJSjlueUEtTno2b20zNUtPTnBKWVh0SkFTaEIzcktTa0FWUF8wUTlNSFcxdkpvLTFKOEl2b2YwXzZ2X01pTWFhY0R3bXRKZmFsZ2FzTnJPakF5S2NHOHVRY05IY0lzSnZaZm9ONXdiZnhhTG9UOHJWMjVNMFRqWk1kSGRBb2NuTE9wMWRrUk9lXzdB?oc=5",
       "published": "2026-10-24T14:55:00Z",
       "snippet": "",
       "kind": "general",
@@ -27,7 +49,7 @@
       "id": "9a6aac9970bd",
       "topic": "grok",
       "title": "Grok Bot Will Route Your Tasks to Claude. The Moat Just Moved to the Switchboard.",
-      "source": "forkast.news",
+      "source": "Forkast News",
       "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQUXVnUHMtSllmR05NWHBYYURqWGF6MmtzaXpZVmppTXRmYUFxbUlKT0tYTWozZUJoNE1HbXp5U2dRRjVjTWozZmQ1UVJEd2FhNTY3ZDl2LWJmTkZtTTJWRjNZdjFIMmJoR2Z5aXFYTkhCdVBibXJUZHByZUthM3p4WDlKWXBlYU5KZTYwWmI2UEdHMmppTndYQmlnYXRtVTNVR2ZB?oc=5",
       "published": "2026-10-24T14:53:07Z",
       "snippet": "",
@@ -133,7 +155,6 @@
       "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOVUVKM0pkM2RpWW15c0ExQmlzUHd5U0IxWVhOUkV4OTh5UGlOYlphbnItckRvUUlaYXFmSGVaZlpadmpGcE0xQlZTWTBTZjgxTGxlY0J5TXVEaWUyT0VyNWZpcWRGWkNhMlkyTzQ3SF9nVDVqRHJWaGc2bEFwa3ZXeDBhSDh5RHY2SE41VWRnZVV2Z0xJMUI3cUwxdF9VSjRwTDNsQ2pmQ2Q2b1V5UVFTLThoOWEyV0xjMmtGYkRnQ0ZuV3RiZlE?oc=5",
       "published": "2026-10-24T12:00:01Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ANV9dl06Z0esf13Hd_KScg&pid=News&w=640",
       "kind": "general",
       "score": 8
     },
@@ -189,7 +210,6 @@
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcTBTNDljSEVOdDc1Qzk0a2w3cWowV215Zkh4ZDVLcm5KMk05aDBmb0Z0cGJpZzFtak9ERWtmYTV6U0VVRFlEWHk1TFdlTXd3dEhJbVlmV3FTMFZzb2g0a09GSE04ZHZfQkRzeXEtRE9kaUx0U0xtcno3ZnZZLXdRTzdYTWJZWXlaRWN4d016dWdkUGJtV3pOT1FZZ3Qwd29Eb2c?oc=5",
       "published": "2026-10-24T09:36:02Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.9UDujRx8IPZ2P1voSlfKaw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -234,7 +254,7 @@
       "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQX3N6dHNybGJDUTZ1V1lJc0kyNTJiVE1NRUlDclhDb2I1cHRVcGZndmJKZVdJNWFFSXJBMmpVNnM0R1ZBdjQ5ZVFvd0RGdFM5REh6OG9RZGo1eDNuVGFWZkE1MjFiWjl1azUtdzNXVjdBLTctMXJDSkw0ZmY0eWdmVERFb253OVNWNVY3eE4weW53M2dFTVFjd0t3enczWEViR09WNW9jeFZTaEdLdkJKWWhQRGFmU1MxOWt0b3gyVmN2SGV5NWh4Rk05SkY3QQ?oc=5",
       "published": "2026-10-24T08:26:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.BirBxTL-2PKN44pJggCANA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.MLOjBtdEP1_V-adc_OPsfQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -262,6 +282,17 @@
       "score": 4
     },
     {
+      "id": "636b88e4ceb2",
+      "topic": "tesla",
+      "title": "See How Tesla Tore Down The Model S Factory To Build Robots Instead",
+      "source": "InsideEVs",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9xTkhlWGc5ZzJDSG9WR3QwS3RNN3pGSkR3UVlpM0Z5UFFVUGRhWVBBam96UzVkRGtLNE8zM3NJU20wb1QycWIwTXhKVWdpS3hFN1cwUU9pTTNETThtX0VOWWNpRlMwYU43c0xSdVkyVXBYakhhRVFSOUNjOE9SUQ?oc=5",
+      "published": "2026-10-24T06:32:43Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "e5b930f37475",
       "topic": "spacex",
       "title": "Is It Too Late to Buy SpaceX Stock After Its Monster Third-Quarter Earnings Report? Here's the Answer.",
@@ -280,7 +311,7 @@
       "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE95MnNJWFpXX1hyREt5REx2UDVxVXVJR0NvelZONlNlQWVMdXBmazVqUkRkSUNnOWw5b2pMYXQ4bWdhbW5nYldHN2JWWC04bjhlRU5iQTVBTVRZLU1wYXk0LWgtalRpVkx4OGpmNVc1dw?oc=5",
       "published": "2026-10-24T05:52:26Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.yrNigwJi5pOpLEjC8FQL8w&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ORMS.5d9bd9630e5b4a6a10beacc27838556e&pid=News&w=640",
       "kind": "milestone",
       "score": 21
     },
@@ -342,17 +373,6 @@
       "score": 11
     },
     {
-      "id": "1dfdb6b3bfbc",
-      "topic": "tesla",
-      "title": "Will The Flying Tesla Roadster Be Street Legal? Nope.",
-      "source": "InsideEVs",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1semRwNzBSZ2FUeVFFeDlSOWRBVEYzbUxpTWxMNU5OMk91aC15eWpTWnZUU2xNcjNpaXBTUWFWOGFfRmNSTjRCenFJNFZLRE1qQW03OWxKbTRiUG1vMVBIUDVKdkJFVnlJQzhLWDlLWWlnZElVZ3l2X212Q3U?oc=5",
-      "published": "2026-10-24T02:06:53Z",
-      "snippet": "",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
       "id": "8d1cbcdcfe70",
       "topic": "tesla",
       "title": "Tesla Cybertruck Owner Coal-Rolled, Mocked for Driving With Plastic Wrap Window. He Adds, “The Window Stopped Working & Tesla Service Can’t Get Replacement Parts For 3 Weeks”",
@@ -399,17 +419,6 @@
       "score": 12
     },
     {
-      "id": "c74e4d189a00",
-      "topic": "tesla",
-      "title": "Tesla plows into Troy home, alleged drunk driver narrowly misses couple",
-      "source": "WXYZ 7 News Detroit",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPdU9kZ01VUEdtZ0ktcU5MVlJGQ0swWUp6eUU0LUFxczVvSGh3VGZETDVoRVRLWExKVTl5dDR0eGxjVWNzeFREZW5fRGE0MTFjMVhfUDRhaXhnSFN1a2JGdldraGMtQjNaai05UE02aTNQcEhxcUxjemY2ZUd4U055SXVTR2EtajZLNDYwTS05VEtROFV1U1g4OXVQUFk?oc=5",
-      "published": "2026-10-23T23:19:33Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "6c2a9a41b4a7",
       "topic": "tesla",
       "title": "Tesla Roadster: Engineering genius or PR stunt?",
@@ -427,17 +436,6 @@
       "source": "MLex",
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPSGhIeVZYRjFKVTk4WTVtczgyTHE0OWFqQkloNTF2R29pMEZpSTd5dURBMW5HNy1vNzFJQXM2dzIwRGd6Y2tNTXA0eGw3U0wwb0dBWmE3ZW5qVkdIdFZnNU5XczJWM1BlUTdmQXN4SHotZkFiZzJYajMwcGxCckpLc21DclpjVnhrRllBQU03UnpROGRfU2dxWmFZMC1BSExMWkl1ZGZGdGxCYnM4U3k3Y1ZjZXRhSEU4b3l3SNIBWkFVX3lxTFBESWZnS0MxVVNIT0RxYmV0TFlTMFRJSnptd3FheTNZZi1tUkxSZlh5VFJaa1gwS0xjMDh1NkRHc1JWdEpoSU42SUQzem5Ha19ka3FadnJpbzk5UQ?oc=5",
       "published": "2026-10-23T21:54:37Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "65480e9091e2",
-      "topic": "grok",
-      "title": "ChatGPT vs Claude vs Gemini: 12 AI Models Ranked [2026]",
-      "source": "tech-insider.org",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPTFFZa3FsYW9RTVhwZkFwc0hnZTc3NkJISUxaS3d1M0hza0FWSWFSY2UwaTlUZElEcGZkZzYybE42Mjl1SUkyZC1oM0RfRE1lRzJwYnkyR1YzMWRDTGxvYVJUY0N3S3dLeHJYNGFiazJOSUlvVHAwYUlsRUJZRDBRYg?oc=5",
-      "published": "2026-10-23T21:32:20Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -543,7 +541,6 @@
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOZkpudDFXcnVvNjBPVUVOVnNsaFJ5SWZTRm9zemp5RzdpckxtZ3hFYU1EMnYyc3R6blViZUF0SjlXa3JIWFlEbEEwUWhHVEZiTldCTFM5SU03alVqeGM1UGtZUkhteEk4S2F5c2dXNTlVSUUzZ19NZ05WQ3lZRXNESUpMMWtWWW0xTXA2cmFEYzlzMDhjM2tPN3VCUVFGTjRnNmpkeUw3bw?oc=5",
       "published": "2026-10-23T17:30:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.-pDyzarHGjfF8vPl0aJ2HA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -566,19 +563,9 @@
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNRl9aOXcyWXhEc3FKR0VIU0Y4NGg3eTlrYWg0N3VIMVJIejJ5N1V3U3RRQllVV1NOaEJ2a2FNcEExNHQ2ZzlOY1NJWFhNR1hVN2F6anR5MjZsRWRpWHBVVXAwOEZ1LUdzbWJCb2RTX0hIaVVodlFKUDhxX0FQT0hlTHB2SEZzRTl2ak1nLXFtNHJnQ0FlRU1wYkNvdXcyc1NvMi1YcVRpc2VRUUVxYjkwakVEMUZOME1yTjFja2JpRTI?oc=5",
       "published": "2026-10-23T16:36:41Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.5wweyYaPHT7pxR3Y_6f7Ig&pid=News&w=640",
       "kind": "general",
       "score": 9
-    },
-    {
-      "id": "d39006ffff4d",
-      "topic": "grok",
-      "title": "Musk spends 'night and day' in Memphis as 'SI' fuels SpaceX growth",
-      "source": "The Commercial Appeal",
-      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOcGk5Mk5KVGdNd2F1TVRhUlI1bFRSSDZpUkMzOGRSZEMwR3pQay1kMlpjaF94azRVbGhlcEpkT2FwaG4zZExyZnFmUlZRUTRuajQ1SFA1SFhaUXlQSlhkLWhRdFMxME1TcEFCVEk2LUZvSmc3SDdDaDlGVmRDM2Y1c2FLZ20zc2szdzAyNFZyMXM5MW1RaS1pYlZTOEpJLUR6WTdadHpsZmZFajFjNGh5aDNaNUI1bDVUdlFVZF9RanZ0Z2x5Zko3eVo0QUpzak1DSzRCNVJobTMwZlRYN3hSaW45bTlFUXc?oc=5",
-      "published": "2026-10-23T15:28:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "7695d6fce38c",
@@ -591,6 +578,42 @@
       "image": "https://www.bing.com/th?id=ONUT.wgVhmLVay4AvYmV18AiEJA&pid=News&w=640",
       "kind": "general",
       "score": 7
+    },
+    {
+      "id": "3ee79aa173b0",
+      "topic": "spacex",
+      "title": "In Canada, This Carrier Wants to Deepen SpaceX Ties on Cellular, Not Fight It",
+      "source": "PCMag on MSN",
+      "url": "https://www.msn.com/en-us/news/other/in-canada-this-carrier-wants-to-deepen-spacex-ties-on-cellular-not-fight-it/ar-AA2fY1Hg",
+      "published": "2026-10-23T14:29:52Z",
+      "snippet": "Unlike the big three carriers in the US, Canada's Rogers Communications doesn't expect SpaceX's cellular ambitions to travel north of the border.",
+      "image": "https://www.bing.com/th?id=ONUT.LBoZS2_6WDWvg9YuF1gEOw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "559e3cd5d09a",
+      "topic": "spacex",
+      "title": "British PM pushes Trump on Ukraine’s Starlink access",
+      "source": "Politico on MSN",
+      "url": "https://www.msn.com/en-us/news/other/british-pm-pushes-trump-on-ukraine-s-starlink-access/ar-AA2fWtRU",
+      "published": "2026-10-23T14:00:02Z",
+      "snippet": "The Friday call between the leaders came as Ukrainian President Volodymyr Zelenskyy said that the service had not been fully restored.",
+      "image": "https://www.bing.com/th?id=ONUT.Lfe8qSL-3RuZFbH6myCT8g&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "165ecd28412d",
+      "topic": "spacex",
+      "title": "AT&T, T-Mobile, Verizon Fight FCC Satellite Proposal That Helps SpaceX",
+      "source": "PCMag",
+      "url": "https://www.pcmag.com/news/att-t-mobile-verizon-fight-fcc-satellite-proposal-that-helps-spacex",
+      "published": "2026-10-23T12:35:00Z",
+      "snippet": "Former FCC Chairman Ajit Pai even joined in, urging the Commission to drop a wide swath of radio waves for a spectrum proposal that could help SpaceX's cellular ambitions.",
+      "image": "https://www.bing.com/th?id=ONUT.b20JM09399lTxKrSt0wtSg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "7cac5f648388",
@@ -673,18 +696,6 @@
       "published": "2026-10-23T03:40:00Z",
       "snippet": "Ukraine leans heavily on Starlink and Starshield for mid-range strikes and for intercepting incoming Russian attacks.",
       "image": "https://www.bing.com/th?id=ONUT.kJ86M8-o5dfmnlFw_ubg3w&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "2b5e6368f298",
-      "topic": "grok",
-      "title": "Grok Bot now adds app controls: reminders, messaging and smart home commands",
-      "source": "Softonic",
-      "url": "https://en.softonic.com/articles/grok-bot-now-adds-app-controls-reminders-messaging-and-smart-home-commands",
-      "published": "2026-10-23T03:16:00Z",
-      "snippet": "AI has updated Grok Bot on iPhone and Android, adding on-device connections for Calendar, Reminders, Contacts, Messages, location-based search, and H ...",
-      "image": "https://www.bing.com/th?id=ONUT.CUV-wFG7jEbBuSOp-OFDuw&pid=News&w=640",
       "kind": "general",
       "score": 4
     }
