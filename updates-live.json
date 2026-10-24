@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T20:46:07Z",
+  "updated": "2026-10-24T21:08:43Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3360,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
-      "count": 0,
+      "count": 15,
       "fleet": 3360,
-      "percent": 0.0,
+      "percent": 0.4,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -48,11 +48,17 @@
           "text": "This update includes important security fixes and improvements."
         }
       ],
-      "countries": [],
-      "countryCounts": {},
-      "pending": 90,
+      "countries": [
+        "AU",
+        "NZ"
+      ],
+      "countryCounts": {
+        "AU": 13,
+        "NZ": 2
+      },
+      "pending": 77,
       "firstSeen": "2026-10-24T19:52:52Z",
-      "lastSeen": "2026-10-24T19:52:52Z"
+      "lastSeen": "2026-10-24T21:04:12Z"
     },
     {
       "id": "2026.38.5.11",
