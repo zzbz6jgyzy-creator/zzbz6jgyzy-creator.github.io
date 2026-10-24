@@ -81,7 +81,7 @@
   function controls() {
     const e = selected();
     if (e) state.launchId = e.id;
-    $("lv-launch").innerHTML = rows().map((e2) => '<option value="' + M.esc(e2.id) + '">' + M.esc(e2.title) + "</option>").join("");
+    $("lv-launch").innerHTML = rows().map((e2) => '<option value="' + M.esc(e2.id) + '">' + M.esc(M.shortTitle(e2)) + "</option>").join("");
     $("lv-launch").value = state.launchId;
     for (const key of ["units", "horizon", "altitude", "downrange"]) $("lv-" + key).value = state[key];
   }

@@ -117,8 +117,11 @@
   function readPreferences(raw = {}) {
     return { place: location(raw.place) || location(raw), launchId: typeof raw.launchId === "string" ? raw.launchId : "", view: ["sky", "launches", "guide", "method"].includes(raw.view) ? raw.view : "sky", ...options(raw) };
   }
+  function shortTitle(e) {
+    return String(e.title || '').replace(/^Falcon (?:9(?: Block 5)?|Heavy)\s*[·|]\s*/i, '').replace(/\bStarlink\s+Group\s+/i, 'Starlink ');
+  }
   function brief(e, p, s) {
     return [e.title, when(e, p.zone), cityLabel(p), s ? "Pad direction: " + Math.round(s.bearing) + "° true (" + compass(s.bearing) + "). " + km(s.padDistance, s.units) + " from the pad." : "Pad not identified.", s ? s.label + ". Illustration: " + s.altitude + " km altitude, " + s.downrange + " km downrange." : "No geometry available.", "An estimate, not a trajectory or visibility guarantee. Check the launch source and local conditions.", "https://superchargeddaily.com/see-the-launch.html?launch=" + encodeURIComponent(e.id)].join("\n");
   }
-  return { R, esc, url, clamp, wrap, location, coordinates, distance, bearing, destination, elevation, horizonRange, compass, solar, normalize, upcoming, options, scenario, when, km, cityLabel, searchCities, duration, intervalValue, weather, readPreferences, brief };
+  return { R, esc, url, clamp, wrap, location, coordinates, distance, bearing, destination, elevation, horizonRange, compass, solar, normalize, upcoming, options, scenario, when, km, cityLabel, searchCities, duration, intervalValue, weather, readPreferences, shortTitle, brief };
 });
