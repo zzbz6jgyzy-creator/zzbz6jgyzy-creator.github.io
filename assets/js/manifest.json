@@ -82,15 +82,15 @@
       ]
     },
     "my-tesla": {
-      "file": "/assets/js/my-tesla.bundle.62d780bc92.js",
-      "bytes": 143806,
+      "file": "/assets/js/my-tesla.bundle.41d6d63cd6.js",
+      "bytes": 169014,
       "sources": [
         "updates-data.js",
         "fsd-data.js",
         "fsd-europe-data.js",
-        "my-tesla-data.js",
-        "my-tesla.js",
-        "live.js"
+        "my-tesla-garage-data.js",
+        "my-tesla-model.js",
+        "my-tesla.js"
       ]
     },
     "updates": {

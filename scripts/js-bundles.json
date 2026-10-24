@@ -68,9 +68,9 @@
       "updates-data.js",
       "fsd-data.js",
       "fsd-europe-data.js",
-      "my-tesla-data.js",
-      "my-tesla.js",
-      "live.js"
+      "my-tesla-garage-data.js",
+      "my-tesla-model.js",
+      "my-tesla.js"
     ],
     "updates": [
       "cesium-lazy.js",
@@ -226,14 +226,12 @@
     "my-tesla.html": {
       "bundles": [
         "core",
-        "intel",
         "my-tesla"
       ],
       "grow": [
         "data-band",
         "data-pop"
-      ],
-      "livePage": "my-tesla"
+      ]
     },
     "updates.html": {
       "bundles": [

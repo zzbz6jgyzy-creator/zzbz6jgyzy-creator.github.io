@@ -1,587 +1,199 @@
 (() => {
-  "use strict";
-  const DATA = window.MY_TESLA;
-  const UPD = window.TESLA_UPDATES;
-  const FSD = window.FSD_GLOBAL;
-  const EU = window.FSD_EUROPE;
-  if (!DATA) return;
-
-  const $ = (id) => document.getElementById(id);
-  const esc = (s) =>
-    String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const KEY = "sd-my-tesla-v1";
-  const NA = ["US", "CA", "MX", "PR"];
-  const EUC = (EU?.countries || []).map((c) => c.code);
-  const AP = ["AU", "NZ", "JP", "KR", "TW", "HK", "SG", "MY", "TH", "PH", "CN"];
-  const regionOf = (cc) => (NA.includes(cc) ? "NA" : EUC.includes(cc) ? "EU" : AP.includes(cc) ? "AP" : cc ? "OT" : "");
-  const RNAME = { NA: "North America", EU: "Europe", AP: "Asia-Pacific", OT: "this market" };
-
-  const cmpVer = (a, b) => {
-    const x = String(a || "").split(".").map(Number);
-    const y = String(b || "").split(".").map(Number);
-    for (let i = 0; i < 4; i++) {
-      const d = (x[i] || 0) - (y[i] || 0);
-      if (d) return d;
-    }
-    return 0;
-  };
-
-  const pickRange = (ranges, year) => {
-    if (!year || !ranges) return null;
-    return (
-      ranges.find((r) => (r.from == null || year >= r.from) && (r.to == null || year <= r.to)) || null
-    );
-  };
-
-  const countries = () => {
-    const map = new Map();
-    (FSD?.countries || []).forEach((c) => map.set(c.code, { code: c.code, name: c.name }));
-    (UPD?.countries || []).forEach((c) => {
-      if (!map.has(c.code)) map.set(c.code, { code: c.code, name: c.name });
-    });
-    (DATA.extraCountries || []).forEach((c) => {
-      if (!map.has(c.code)) map.set(c.code, c);
-    });
-    return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
-  };
-
-  const state = { model: "", year: "", hw: "", sw: "", cc: "" };
-  let live = null;
-  let deskStories = [];
-  let hwSource = ""; // "user" | "guess" — year→computer is an estimate until the owner confirms
-
-  const readStore = () => {
-    try {
-      return JSON.parse(localStorage.getItem(KEY) || "null");
-    } catch {
-      return null;
-    }
-  };
-
-  const writeStore = () => {
-    try {
-      localStorage.setItem(KEY, JSON.stringify(state));
-    } catch {}
-  };
-
-  const fromQuery = () => {
-    const q = new URLSearchParams(location.search);
-    const next = {};
-    ["model", "year", "hw", "sw", "cc"].forEach((k) => {
-      if (q.get(k)) next[k] = k === "year" ? Number(q.get(k)) : q.get(k);
-    });
-    return next;
-  };
-
-  const writeQuery = () => {
-    const q = new URLSearchParams();
-    if (state.model) q.set("model", state.model);
-    if (state.year) q.set("year", String(state.year));
-    if (state.hw) q.set("hw", state.hw);
-    if (state.sw) q.set("sw", state.sw);
-    if (state.cc) q.set("cc", state.cc);
-    const qs = q.toString();
-    const next = location.pathname + (qs ? "?" + qs : "") + location.hash;
-    if (location.search !== (qs ? "?" + qs : "")) history.replaceState(null, "", next);
-  };
-
-  const modelOf = () => DATA.models.find((m) => m.id === state.model);
-  const countryName = () => countries().find((c) => c.code === state.cc)?.name || state.cc;
-  const hwName = () => DATA.hardware.find((h) => h.id === state.hw)?.name || "unknown computer";
-
-  const fsdRow = () => (FSD?.countries || []).find((c) => c.code === state.cc);
-  const euRow = () => (EU?.countries || []).find((c) => c.code === state.cc);
-
-  const fillYears = () => {
-    const sel = $("mt-year");
-    const m = modelOf();
-    sel.replaceChildren();
-    sel.append(new Option("Year", ""));
-    if (!m) return;
-    for (let y = m.years[1]; y >= m.years[0]; y--) sel.append(new Option(String(y), String(y)));
-    if (state.year) sel.value = String(state.year);
-  };
-
-  const fillHw = () => {
-    const sel = $("mt-hw");
-    sel.replaceChildren();
-    sel.append(new Option("Hardware", ""));
-    DATA.hardware.forEach((h) => sel.append(new Option(h.name, h.id)));
-    if (state.hw) sel.value = state.hw;
-  };
-
-  const fillSw = () => {
-    const sel = $("mt-sw");
-    const ids = new Set();
-    (live?.versions || []).forEach((v) => {
-      if (v.id && (v.count > 0 || v.percent > 0)) ids.add(v.id);
-    });
-    (UPD?.versions || []).forEach((v) => ids.add(v.id));
-    const list = [...ids].sort(cmpVer).reverse();
-    sel.replaceChildren();
-    sel.append(new Option("Not sure / skip", ""));
-    list.forEach((id) => sel.append(new Option(id, id)));
-    if (state.sw) sel.value = state.sw;
-  };
-
-  const fillCountries = () => {
-    const sel = $("mt-cc");
-    sel.replaceChildren();
-    sel.append(new Option("Country", ""));
-    countries().forEach((c) => sel.append(new Option(c.name, c.code)));
-    if (state.cc) sel.value = state.cc;
-  };
-
-  const hintHw = () => {
-    const m = modelOf();
-    const hint = $("mt-hint");
-    if (!m || !state.year) {
-      hint.textContent = "";
-      return;
-    }
-    const row = pickRange(m.hw, state.year);
-    const gen = pickRange(m.gen, state.year);
-    const bits = [];
-    if (gen) bits.push(gen.label);
-    if (row) bits.push(row.label);
-    hint.innerHTML = bits.length
-      ? `For a ${esc(state.year)} ${esc(m.name)} we <em>estimate</em> <b>${esc(bits.join(" · "))}</b>. Override hardware if the computer was swapped later.`
-      : "";
-    if (row && !state.hw) {
-      state.hw = row.id;
-      hwSource = "guess";
-      if ($("mt-hw")) $("mt-hw").value = row.id;
-    }
-  };
-
-  const liveForCountry = () => {
-    const rows = (live?.versions || []).map((v) => {
-      const n = (v.countryCounts || {})[state.cc] || 0;
-      return { v, n };
-    }).filter((x) => x.n > 0);
-    const total = rows.reduce((s, x) => s + x.n, 0);
-    const newest = [...rows].sort((a, b) => cmpVer(b.v.id, a.v.id))[0];
-    const common = [...rows].sort((a, b) => b.n - a.n)[0];
-    return { rows, total, newest, common };
-  };
-
-  const fsdOnBuild = (v) => {
-    if (!v) return null;
-    if (state.hw === "hw3") return v.fsdHw3 || null;
-    if (state.hw === "hw4") return v.fsdHw4 || v.fsd || null;
-    return v.fsdHw4 || v.fsdHw3 || v.fsd || null;
-  };
-
-  const featureState = (feat) => {
-    if (feat.models && state.model && !feat.models.includes(state.model)) {
-      return { key: "no", label: "Not this model", detail: "This car never got it.", trust: "desk", trustLabel: "Our read" };
-    }
-    if (feat.except && state.model && state.year) {
-      const hit = feat.except.find((e) => e.model === state.model && state.year <= (e.to || 9999) && state.year >= (e.from || 0));
-      if (hit) return { key: "no", label: "Not this body", detail: "The refresh cabin is what this refers to.", trust: "desk", trustLabel: "Our read" };
-    }
-    if (feat.yearFrom && state.year && state.year < feat.yearFrom) {
-      return { key: "no", label: "Older body", detail: `Starts on ${feat.yearFrom}+ cars.`, trust: "desk", trustLabel: "Our read" };
-    }
-    if (feat.hw && state.hw && !feat.hw.includes(state.hw)) {
-      return { key: "no", label: "Wrong computer", detail: feat.whyNoHw || `Needs ${feat.hw.map((h) => DATA.hardware.find((x) => x.id === h)?.short || h).join(" or ")}.`, trust: "desk", trustLabel: "Our read" };
-    }
-    if (feat.kind === "fsd") {
-      const row = fsdRow();
-      if (!row) return { key: "locked", label: "Unlisted", detail: "Tesla has not listed Supervised FSD for this country in our tracker.", trust: "tracker", trustLabel: "From our FSD tracker" };
-      if (row.status === "live") {
-        const name = state.cc && EUC.includes(state.cc) ? "Assisted Driving Basic" : "FSD (Supervised)";
-        return { key: "yes", label: "Live", detail: `${name} is listed here${row.version ? ` · ${row.version}` : ""}. Driver still supervises.`, trust: "tracker", trustLabel: "From our FSD tracker" };
-      }
-      if (row.status === "limited") return { key: "soon", label: "Limited", detail: row.note, trust: "tracker", trustLabel: "From our FSD tracker" };
-      if (row.status === "review" || row.status === "watch") return { key: "locked", label: row.status === "review" ? "In review" : "Watching", detail: row.note, trust: "tracker", trustLabel: "From our FSD tracker" };
-      return { key: "locked", label: "Not approved", detail: row.note || "No national yes yet.", trust: "tracker", trustLabel: "From our FSD tracker" };
-    }
-    const rg = regionOf(state.cc);
-    if (feat.regions && rg && !feat.regions.includes(rg) && !(feat.countries || []).includes(state.cc)) {
-      return { key: "locked", label: "Region lock", detail: feat.whyNoRegion || `Listed for ${feat.regions.map((r) => RNAME[r] || r).join(", ")}, not ${countryName()}.`, trust: "desk", trustLabel: "Our read of Tesla listings" };
-    }
-    if (feat.minSw && state.sw && cmpVer(state.sw, feat.minSw) < 0) {
-      return { key: "soon", label: "Needs a newer build", detail: `On your car after ${feat.minSw}. You are on ${state.sw}.`, trust: "desk", trustLabel: "From the notes we track" };
-    }
-    if (feat.minSw && !state.sw) {
-      return { key: "soon", label: "Build-dependent", detail: `In the notes from ${feat.minSw}. Add your software version to be sure.`, trust: "estimate", trustLabel: "Estimate — add your software" };
-    }
-    if (feat.minSw || feat.regions) {
-      return { key: "yes", label: "Listed here", detail: feat.summary, trust: "desk", trustLabel: "Our read of Tesla listings" };
-    }
-    return { key: "yes", label: "This body", detail: feat.summary, trust: "desk", trustLabel: "Our read of the product" };
-  };
-
-  const relevantNotes = () => {
-    const notes = UPD?.versions || [];
-    return notes
-      .filter((v) => {
-        if (state.model && v.models && v.models.length) {
-          const aliases = { CT: "Cybertruck", "3": "3", Y: "Y", S: "S", X: "X" };
-          const want = aliases[state.model] || state.model;
-          if (!v.models.includes(want) && !v.models.includes(state.model)) return false;
-        }
-        if (state.hw) {
-          const want = state.hw === "hw4" ? "HW4" : state.hw === "hw3" ? "HW3" : "HW2";
-          if (v.hardware && !v.hardware.some((h) => h.startsWith(want))) return false;
-        }
-        if (state.cc && v.countries && v.countries.length && !v.countries.includes(state.cc)) return false;
-        return true;
-      })
-      .slice(0, 3);
-  };
-
-  const liveFeatureNotes = () => {
-    if (!state.cc || !live?.versions?.length) return [];
-    const local = liveForCountry();
-    const v = local.newest?.v;
-    if (!v || !(v.features || []).length) return [];
-    return v.features
-      .filter((f) => {
-        const t = `${f.title} ${f.text}`.toLowerCase();
-        if (state.hw === "hw3" && /collision evasion/.test(t)) return false;
-        if (state.hw === "hw3" && /v14\.3\.12/.test(t) && !/lite|hw3/.test(t)) return false;
-        if (state.hw === "hw4" && /v14\.3 lite/.test(t)) return false;
-        if (state.model && state.model !== "CT" && /powershare/.test(t)) return false;
-        return true;
-      })
-      .slice(0, 3)
-      .map((f) => ({ v, f }));
-  };
-
-  const guides = () => {
-    const rg = regionOf(state.cc);
-    return (DATA.guides || []).filter((g) => {
-      if (g.models && state.model && !g.models.includes(state.model)) return false;
-      if (g.yearFrom && state.year && state.year < g.yearFrom) return false;
-      if (g.regions && rg && !g.regions.includes(rg)) return false;
-      return true;
-    });
-  };
-
-  const renderTiles = () => {
-    const box = $("mt-now");
-    if (!state.model && !state.cc) {
-      box.innerHTML = "";
-      $("mt-dash").hidden = true;
-      $("mt-empty").hidden = false;
-      return;
-    }
-    $("mt-dash").hidden = false;
-    $("mt-empty").hidden = true;
-
-    const m = modelOf();
-    const rg = regionOf(state.cc);
-    const fsd = fsdRow();
-    const local = state.cc ? liveForCountry() : { newest: null, common: null, total: 0 };
-    const newest = local.newest?.v;
-    const you = state.sw;
-    let swKey = "soon";
-    let swBig = "Pick a build";
-    let swSmall = "Add the version from Controls → Software.";
-    if (you && newest) {
-      const d = cmpVer(you, newest.id);
-      if (d >= 0) {
-        swKey = "ok";
-        swBig = you;
-        swSmall = d === 0 ? `You match the newest reporting in ${countryName()}.` : `Newer than the sample’s newest in ${countryName()} (${newest.id}).`;
-      } else {
-        swKey = "soon";
-        swBig = you;
-        swSmall = `Newest seen in ${countryName()} is ${newest.id}. You are in the queue, not forgotten.`;
-      }
-    } else if (newest) {
-      swKey = "ok";
-      swBig = newest.id;
-      swSmall = `Newest reporting Teslascope has seen in ${countryName()} (${local.newest.n} cars).`;
-    }
-
-    const fsdKey = !fsd ? "lock" : fsd.status === "live" ? "ok" : fsd.status === "limited" ? "soon" : "lock";
-    const fsdBig = !state.cc ? "Pick a country" : fsd?.status === "live" ? (EUC.includes(state.cc) ? "Assisted Driving" : "FSD live") : fsd?.status === "review" ? "In review" : fsd?.status === "watch" ? "Watching" : fsd?.status === "limited" ? "Limited" : "Not live";
-    const fsdSmall = fsd?.note || (state.cc ? "No FSD listing for this country in the tracker." : "Country decides whether Supervised FSD is even legal.");
-
-    const gen = pickRange(m?.gen, state.year)?.label || "";
-    const hwSmall = state.hw
-      ? hwSource === "guess"
-        ? `Estimate from a ${state.year || ""} ${m?.name || "Tesla"} — we guessed ${hwName()}. Override if it was swapped.`
-        : `${hwName()} on a ${state.year || ""} ${m?.name || "Tesla"} (you set this). ${gen}`.trim()
-      : "Hardware decides Collision Evasion, Lite parking and camera features.";
-
-    const lockCount = (DATA.features || [])
-      .map(featureState)
-      .filter((s) => s.key === "locked" || (s.key === "no" && s.label !== "Not this model")).length;
-
-    box.innerHTML = `
-      <div class="mt-tile mt-tile-${swKey}"><span>Your software</span><b>${esc(swBig)}</b><small>${esc(swSmall)}</small></div>
-      <div class="mt-tile mt-tile-${fsdKey}"><span>Driver assistance</span><b>${esc(fsdBig)}</b><small>${esc(fsdSmall)}</small></div>
-      <div class="mt-tile"><span>This car</span><b>${esc(m ? `${state.year || ""} ${m.name}`.trim() : "Pick a model")}</b><small>${esc(hwSmall)}</small></div>
-      <div class="mt-tile ${lockCount ? "mt-tile-lock" : ""}"><span>Limits on this profile</span><b>${lockCount || "—"}</b><small>${lockCount ? "Features locked by hardware, body or country — listed below." : "Add model and country to count locks."}</small></div>`;
-  };
-
-  const renderUpdates = () => {
-    const ul = $("mt-updates");
-    const notes = relevantNotes();
-    const local = state.cc ? liveForCountry() : null;
-    if (!notes.length && !local?.newest) {
-      ul.innerHTML = `<li><b>No matching builds yet</b><p>The software tracker still has the fleet-wide view.</p></li>`;
-      return;
-    }
-    const items = [];
-    if (local?.newest) {
-      const fsd = fsdOnBuild(local.newest.v);
-      items.push(`<li><b>${esc(local.newest.v.id)} is the newest sample in ${esc(countryName())}</b>
-        <p>${fsd ? `FSD on that build for ${esc(hwName())}: v${esc(fsd)}.` : "No FSD version listed on that build in the snapshot."}
-        ${local.common && local.common.v.id !== local.newest.v.id ? ` Most cars here are still on ${esc(local.common.v.id)}.` : ""}</p>
-        <span class="mt-meta">${local.newest.n} of ${local.total} tracked cars in ${esc(state.cc)}</span></li>`);
-    }
-    notes.forEach((v) => {
-      items.push(`<li><b>${esc(v.id)} — ${esc(v.headline)}</b><p>${esc(v.reached || v.summary)}</p>
-        <span class="mt-meta">Our notes · ${esc(v.date)} · ${esc((v.countries || []).join(", ") || "countries vary")}</span></li>`);
-    });
-    const blob = notes.map((v) => `${v.headline} ${v.summary}`.toLowerCase()).join(" ");
-    liveFeatureNotes()
-      .filter(({ f }) => !blob.includes((f.title || "").toLowerCase()))
-      .forEach(({ v, f }) => {
-        items.push(`<li><b>${esc(f.title)} — ${esc(v.id)}</b><p>${esc(f.text)}</p>
-          <span class="mt-meta">Teslascope sample · ${live.sourceUrl ? `<a href="${esc(live.sourceUrl)}" target="_blank" rel="noopener noreferrer">Teslascope</a> · ` : ""}${esc(v.date)} · not Tesla’s official owner notes</span></li>`);
-      });
-    ul.innerHTML = items.slice(0, 5).join("");
-  };
-
-  const renderFeatures = () => {
-    const box = $("mt-feats");
-    if (!state.model) {
-      box.innerHTML = `<p class="mt-empty">Pick a model to filter features.</p>`;
-      return;
-    }
-    box.innerHTML = DATA.features
-      .map((feat) => ({ feat, s: featureState(feat) }))
-      .filter(({ s }) => !(s.key === "no" && s.label === "Not this model"))
-      .map(
-        ({ feat, s }) => `<article class="mt-feat"><span class="mt-pill ${s.key}">${esc(s.label)}</span>
-          <div><h3>${esc(feat.name)}</h3><p>${esc(s.detail)}</p>
-          <span class="mt-trust mt-trust-${esc(s.trust)}">${esc(s.trustLabel)}</span></div></article>`
-      )
-      .join("");
-  };
-
-  const renderLimits = () => {
-    const ul = $("mt-limits");
-    const bits = [];
-    if (!state.cc) {
-      ul.innerHTML = `<li><b>Country first</b><p>Regional locks are the whole point of this page. Pick a country so we only show what applies there.</p></li>`;
-      return;
-    }
-    const fsd = fsdRow();
-    const eu = euRow();
-    if (fsd) {
-      bits.push(`<li><b>FSD in ${esc(countryName())}: ${esc(fsd.status)}</b><p>${esc(fsd.note)}</p>
-        <span class="mt-meta">${fsd.source?.url ? `<a href="${esc(fsd.source.url)}">${esc(fsd.source.label || "Source")}</a>` : ""}</span></li>`);
-    } else {
-      bits.push(`<li><b>No FSD listing for ${esc(countryName())}</b><p>Treat Supervised FSD as unavailable until Tesla or a regulator says otherwise.</p></li>`);
-    }
-    if (eu) {
-      bits.push(`<li><b>EU file: ${esc(eu.stage || eu.status)}</b><p>${esc(eu.note)} ${eu.regulator ? `Regulator: ${esc(eu.regulator)}.` : ""}</p></li>`);
-    }
-    if (regionOf(state.cc) === "EU") {
-      bits.push(`<li><b>Europe is not the US stack</b><p>US cars can be on FSD 14.3.x with Collision Evasion. EU cars that are live are on Assisted Driving Basic (14.2.x). Same brand, different permission.</p></li>`);
-      bits.push(`<li><b>Lighting and speed rules still apply</b><p>Intelligent Speed Assistance and automatic headlight leveling are EU car rules, not Tesla extras. Grey imports get caught on this.</p></li>`);
-    }
-    if (state.hw === "hw25") {
-      bits.push(`<li><b>HW2.5 is a dead end for modern FSD</b><p>Tesla stopped selling FSD for HW2.5. Autopilot still works. Do not expect 14.x city driving.</p></li>`);
-    }
-    if (state.hw === "hw3" && regionOf(state.cc) === "NA") {
-      bits.push(`<li><b>HW3 is on FSD Lite</b><p>Parking and start-from-park, not Collision Evasion. Tesla is not promising HW3 the full HW4 stack.</p></li>`);
-    }
-    ul.innerHTML = bits.join("");
-  };
-
-  const renderWhatsNew = () => {
-    const ul = $("mt-whats-new");
-    if (!ul) return;
-    if (!state.model && !state.cc) {
-      ul.innerHTML = "";
-      return;
-    }
-    const items = [];
-    const local = state.cc ? liveForCountry() : null;
-    if (local?.newest) {
-      items.push(`<li><span class="mt-pill yes">For this car</span><b>${esc(local.newest.v.id)} is the newest sample in ${esc(countryName())}</b>
-        <p>${state.sw && cmpVer(state.sw, local.newest.v.id) < 0 ? `You are on ${esc(state.sw)}. This is a fleet sample, not Tesla’s owner email.` : "From the Teslascope sample for this country — not Tesla’s official owner notes."}</p>
-        <span class="mt-meta">Vehicle-specific · Software Update Tracker</span></li>`);
-    }
-    const fsd = fsdRow();
-    if (state.cc) {
-      items.push(`<li><span class="mt-pill ${fsd && fsd.status === "live" ? "yes" : "locked"}">For this car</span><b>Driver assistance in ${esc(countryName())}</b>
-        <p>${esc(fsd?.note || "No FSD listing for this country in the tracker. Treat Supervised FSD as unavailable until Tesla or a regulator says otherwise.")}</p>
-        <span class="mt-meta">Vehicle-specific · FSD tracker</span></li>`);
-    }
-    items.push(`<li><span class="mt-pill no">Official lookup</span><b>Recalls for this VIN</b>
-      <p>We do not invent recall lists from model and year. Tesla’s VIN recall search and NHTSA’s VIN lookup are official; this site is not.</p>
-      <p><a href="https://www.tesla.com/vin-recall-search" rel="noopener">Tesla VIN recall search</a> · <a href="https://www.nhtsa.gov/recalls" rel="noopener">NHTSA recall lookup</a></p>
-      <span class="mt-meta">Check your own car on the official sites</span></li>`);
-    const modelName = (modelOf()?.name || "").toLowerCase();
-    const general = deskStories.filter((a) => {
-      const hay = `${a.title} ${a.summary} ${a.tag} ${a.topic}`.toLowerCase();
-      if (!/tesla|fsd|software|recall|optimus|roadster|cyber/.test(hay)) return false;
-      if (state.model === "CT") return /cybertruck|tesla/.test(hay);
-      if (modelName && hay.includes(modelName.replace("model ", ""))) return true;
-      return /tesla|fsd|software|owner/.test(hay);
-    }).slice(0, 3);
-    general.forEach((a) => {
-      items.push(`<li><span class="mt-pill soon">General Tesla news</span><b><a href="${esc(a.url)}">${esc(a.title)}</a></b>
-        <p>${esc(a.summary || "")}</p>
-        <span class="mt-meta">Not specific to this car · Dispatch</span></li>`);
-    });
-    ul.innerHTML = items.join("");
-    fetch("/data/intelligence/bundle.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((b) => {
-      if (!b || !window.SDIntel) return;
-      const topics = ["tesla-software", "fsd"];
-      if (state.model === "RD") topics.push("roadster");
-      const extra = window.SDIntel.filterChanges(b.changes, { topics, limit: 3 });
-      if (!extra.length) return;
-      ul.insertAdjacentHTML("beforeend", extra.map((c) =>
-        `<li><span class="mt-pill soon">Tracker change</span><b><a href="${esc(c.href)}">${esc(c.title || c.field)}</a></b>
-        <p>${esc(c.summary)}</p>
-        <span class="mt-meta">${esc((window.SDIntel.EVIDENCE_LABEL && window.SDIntel.EVIDENCE_LABEL[c.evidence]) || c.evidence)} · general news, not specific to your car</span></li>`
-      ).join(""));
-    }).catch(() => {});
-  };
-
-  let swHistory = null;
-
-  const renderWaves = () => {
-    const ul = $("mt-waves");
-    if (!ul) return;
-    if (!state.cc) {
-      ul.innerHTML = `<li><b>Pick a country</b><p>We’ll show which builds Teslascope owners in that country are getting. It doesn’t mean your car is due one.</p></li>`;
-      return;
-    }
-    const fn = window.SDIntel && window.SDIntel.softwareWavesForCountry;
-    if (!swHistory || !fn) {
-      ul.innerHTML = `<li><b>Loading sample history</b><p>Teslascope snapshots for ${esc(countryName())} will appear here. Seeing a new build here doesn’t mean your car will get it yet.</p></li>`;
-      return;
-    }
-    const waves = fn(swHistory, state.cc);
-    if (!waves.length) {
-      ul.innerHTML = `<li><b>No sample waves for ${esc(countryName())} yet</b><p>Teslascope hasn’t spotted any new builds spreading in this country yet. That doesn’t tell us anything about your car.</p></li>`;
-      return;
-    }
-    ul.innerHTML = waves.slice(0, 6).map((w) =>
-      `<li><span class="mt-pill soon">Sample only</span><b>${esc(w.version)} — ${w.type === "appeared" ? "first seen in this country sample" : "sample count jump"}</b>
-        <p>${esc(w.summary)}</p>
-        <span class="mt-meta">Teslascope sample · ${esc((w.at || "").slice(0, 10))} · seen on other cars, not necessarily yours yet</span></li>`
-    ).join("");
-  };
-
-  const renderGuides = () => {
-    const box = $("mt-guides");
-    box.innerHTML = guides()
-      .slice(0, 8)
-      .map((g) => `<a class="mt-guide" href="${esc(g.href)}"><strong>${esc(g.title)}</strong><span>${esc(g.why)}</span></a>`)
-      .join("");
-  };
-
-  const render = () => {
-    hintHw();
-    renderTiles();
-    renderWhatsNew();
-    renderUpdates();
-    renderWaves();
-    renderFeatures();
-    renderLimits();
-    renderGuides();
-    writeStore();
-    writeQuery();
-    const stamp = $("mt-live");
-    if (stamp) {
-      const when = live?.updated || DATA.updated;
-      stamp.textContent = `Saved on this device · never uploaded · fleet sample ${when}`;
-    }
-  };
-
-  const bind = () => {
-    $("mt-model").addEventListener("change", () => {
-      state.model = $("mt-model").value;
-      state.year = "";
-      state.hw = "";
-      hwSource = "";
-      fillYears();
-      fillHw();
-      hintHw();
-      render();
-    });
-    $("mt-year").addEventListener("change", () => {
-      state.year = Number($("mt-year").value) || "";
-      state.hw = "";
-      hwSource = "";
-      hintHw();
-      render();
-    });
-    $("mt-hw").addEventListener("change", () => {
-      state.hw = $("mt-hw").value;
-      hwSource = state.hw ? "user" : "";
-      render();
-    });
-    $("mt-sw").addEventListener("change", () => {
-      state.sw = $("mt-sw").value;
-      render();
-    });
-    $("mt-cc").addEventListener("change", () => {
-      state.cc = $("mt-cc").value;
-      render();
-    });
-    $("mt-clear").addEventListener("click", () => {
-      state.model = state.year = state.hw = state.sw = state.cc = "";
-      hwSource = "";
-      $("mt-model").value = "";
-      fillYears();
-      fillHw();
-      fillSw();
-      fillCountries();
-      render();
-    });
-  };
-
-  const boot = () => {
-    const saved = readStore() || {};
-    const q = fromQuery();
-    Object.assign(state, saved, q);
-    if (state.hw) hwSource = "user";
-    DATA.models.forEach((m) => $("mt-model").append(new Option(m.name, m.id)));
-    $("mt-model").value = state.model;
-    fillYears();
-    fillHw();
-    fillCountries();
-    fillSw();
-    const note = $("mt-note");
-    if (note && DATA.note) note.textContent = DATA.note;
-    bind();
-    render();
-    fetch("/updates-live.json", { cache: "no-cache" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => {
-        live = j;
-        fillSw();
-        render();
-      })
-      .catch(() => {});
-    fetch("/data/updates-history.json", { cache: "no-cache" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => {
-        swHistory = j;
-        renderWaves();
-      })
-      .catch(() => {});
-    fetch("/data/articles.json", { cache: "no-cache" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => {
-        deskStories = (j && j.articles) || [];
-        renderWhatsNew();
-      })
-      .catch(() => {});
-  };
-
-  boot();
+ 'use strict';
+ const M=window.SDGarage,D=window.MY_TESLA_GARAGE;if(!M||!D||!document.querySelector('.mg'))return;
+ const $=id=>document.getElementById(id),e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const fmt=(n,d=0)=>typeof n==='number'&&Number.isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:d}):'—';
+ const money=(n,c=car())=>n===null||n===undefined?'—':c?.currency==='OTHER'?fmt(n,2)+' units':new Intl.NumberFormat(undefined,{style:'currency',currency:c?.currency||'EUR',maximumFractionDigits:2}).format(n);
+ const model=c=>D.models.find(m=>m.id===c?.model),title=c=>c?.name||[c?.year,model(c)?.name,c?.trim].filter(Boolean).join(' '),car=()=>M.active(doc),dist=(n,c=car(),digits=0)=>n===null||n===undefined?'—':fmt(M.distance(n,c.unit),digits)+' '+c.unit;
+ const state={view:'overview',days:30,epa:null,epaState:'loading',live:null,liveState:'loading',articles:[],demo:false,step:0,editing:null,plannerCar:null};
+ let parkedDoc=null,doc=M.empty(),lastRaw=null,corruptRaw=null,storageOK=true,saveConflict=false,confirmAction=null,returnFocus=null;
+ const read=key=>{try{return localStorage.getItem(key);}catch{storageOK=false;return null;}};
+ function notice(message){$('mg-alert').textContent=message;$('mg-alert').hidden=!message;}
+ function status(message,warning=false){$('mg-storage').textContent=message;$('mg-storage').dataset.state=warning?'warning':'saved';}
+ function load(){
+  lastRaw=read(M.KEY);try{if(lastRaw)doc=M.parse(lastRaw);else{let old;try{old=JSON.parse(read(M.LEGACY)||'null');}catch{}doc=M.migrate(old);if(doc.cars.length)notice('Your previous car is here. Add its exact trim and confirm its computer to complete the new passport.');}}catch{corruptRaw=lastRaw;notice('Your saved garage could not be read. Export the original data before replacing it.');}
+  if(!storageOK)status('Browser storage is unavailable · changes last for this visit only. Export a backup before leaving.',true);
+ }
+ function persist(message='Garage saved on this device · no account sync'){
+  if(state.demo){status('Demo changes are temporary · no personal garage data has been replaced');return true;}
+  if(corruptRaw){notice('Your previous garage is unreadable. Export the original from Car Passport before starting a new garage.');return false;}
+  if(saveConflict){notice('Another tab changed this garage. Export your current work, then reload to use the latest saved version.');return false;}
+  try{const current=localStorage.getItem(M.KEY);if(current!==lastRaw){saveConflict=true;notice('Another tab changed this garage. Export your current work before reloading.');return false;}const next=JSON.stringify(M.document(doc));localStorage.setItem(M.KEY,next);lastRaw=next;const c=car();if(c)localStorage.setItem(M.LEGACY,JSON.stringify({model:c.model,year:c.year,cc:c.cc,hw:c.hw,sw:c.sw}));else localStorage.removeItem(M.LEGACY);storageOK=true;status(message);return true;}catch{storageOK=false;status('Changes kept for this visit only · export a backup before leaving',true);return false;}
+ }
+ const field=(name,label,{type='text',value='',min,max,step,required=false,help='',wide=false,maxlength=80,list=''}={})=>`<label${wide?' class="mg-wide"':''}>${label}<input name="${name}" type="${type}" value="${e(value??'')}"${min!==undefined?' min="'+min+'"':''}${max!==undefined?' max="'+max+'"':''}${step?' step="'+step+'"':''}${required?' required':''} maxlength="${maxlength}"${list?' list="'+list+'"':''}${help?' aria-describedby="mg-help-'+name+'"':''} />${help?'<small id="mg-help-'+name+'">'+help+'</small>':''}</label>`;
+ const select=(name,label,options,value='',help='',wide=false)=>`<label${wide?' class="mg-wide"':''}>${label}<select name="${name}">${options.map(([v,t])=>`<option value="${e(v)}"${String(v)===String(value)?' selected':''}>${e(t)}</option>`).join('')}</select>${help?'<small>'+help+'</small>':''}</label>`;
+ const optionalNumber=v=>v===''||v===null||v===undefined?null:Number(v);
+ const sourceLink=(url,label)=>`<a href="${e(url)}"${url.startsWith('https:')?' target="_blank" rel="noopener"':''}>${e(label)} <svg class="mg-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></a>`;
+ const stat=(label,value,detail,unit='')=>`<article class="mg-stat"><span class="mg-label">${label}</span><strong>${value}${unit?'<small>'+unit+'</small>':''}</strong><p>${detail}</p></article>`;
+ const empty=(heading,text,button='')=>`<div class="mg-empty"><h3>${heading}</h3><p>${text}</p>${button?'<div class="mg-actions">'+button+'</div>':''}</div>`;
+ const nvalue=(form,name)=>optionalNumber(form.elements[name]?.value);
+ const countryCodes=[...new Set(['US','GB','IE','CA','AU','NZ','AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','NO','CH','IS','CN','HK','TW','JP','KR','SG','MY','TH','PH','AE','IL','TR','SA','QA','IN','BR','CL','MX','ZA',...(window.FSD_GLOBAL?.countries||[]).map(c=>c.code),...(window.FSD_EUROPE?.countries||[]).map(c=>c.code)])];
+ const countryName=code=>{try{return new Intl.DisplayNames(['en'],{type:'region'}).of(code);}catch{return code;}};
+ const countries=()=>countryCodes.map(code=>[code,countryName(code)]).sort((a,b)=>a[1].localeCompare(b[1]));
+ function openDialog(id){returnFocus=document.activeElement;$(id).showModal();}
+ function closeDialog(dialog){dialog.close();const target=returnFocus;if(target?.isConnected)target.focus();}
+ document.querySelectorAll('.mg-dialog').forEach(dialog=>{dialog.addEventListener('cancel',()=>setTimeout(()=>{if(returnFocus?.isConnected)returnFocus.focus();},0));dialog.addEventListener('click',event=>{if(event.target.closest('[data-close]'))closeDialog(dialog);});});
+ function confirmChange(heading,copy,action){$('mg-confirm-title').textContent=heading;$('mg-confirm-copy').textContent=copy;confirmAction=action;openDialog('mg-confirm-dialog');$('mg-confirm-no').focus();}
+ $('mg-confirm-no').addEventListener('click',()=>closeDialog($('mg-confirm-dialog')));
+ $('mg-confirm-yes').addEventListener('click',()=>{closeDialog($('mg-confirm-dialog'));const fn=confirmAction;confirmAction=null;fn?.();});
+ function referenceOptions(c){return(state.epa?.vehicles||[]).filter(r=>r.model===c.model&&r.year===Number(c.year));}
+ function profileCar(kind){
+  if(corruptRaw){download(corruptRaw,'my-tesla-unreadable-backup.json');confirmChange('Start a new garage?','An original backup has been downloaded. Continuing replaces the unreadable garage on this browser. Keep the backup if you want to recover its records.',()=>{corruptRaw=null;doc=M.empty();lastRaw=read(M.KEY);openProfile('new');});return;}
+  if(kind==='new'&&!state.demo&&doc.cars.length>=5){notice('This garage holds five cars. Export a backup before removing one to make room.');return;}
+  openProfile(kind);
+ }
+ function openProfile(kind){
+  const current=kind==='active'&&!state.demo?car():null;state.editing=current?.id||null;state.step=0;
+  state.draft=current?structuredClone(current):{model:'3',year:new Date().getFullYear(),trim:'',cc:'',unit:'km',currency:'EUR',hw:'',battery:'',drive:'',rating:'WLTP',acEfficiency:90};
+  $('mg-profile-title').textContent=current?'A passport for your exact car.':'Let’s get to know your Tesla.';renderProfile();openDialog('mg-profile-dialog');
+ }
+ function captureProfile(){
+  const form=$('mg-profile-form');if(!form)return;const d=state.draft,f=new FormData(form);
+  const numbers=new Set(['year','odo','usableKwh','soc','ratedRange','homeRate','acKw','acEfficiency','accelerationSec','topSpeed','powerKw']);
+  for(const [key,value]of f){if(numbers.has(key))d[key]=optionalNumber(value);else if(key!=='epaConfirm')d[key]=String(value);}
+  if(form.elements.odo)d.odoKm=d.odo===null?null:M.fromDistance(d.odo,d.unit);
+  if(form.elements.topSpeed)d.topSpeedKmh=d.topSpeed===null?null:M.fromDistance(d.topSpeed,d.unit);
+  if(form.elements.ratedRange)d.ratedRangeKm=d.ratedRange===null?null:M.fromDistance(d.ratedRange,d.unit);
+ }
+ function renderProfile(){
+  const d=state.draft,editing=state.editing,s=state.step;let fields='';
+  if(s===0){
+   const years=Array.from({length:new Date().getFullYear()+2-M.models[d.model]},(_,i)=>[new Date().getFullYear()+1-i,String(new Date().getFullYear()+1-i)]);
+   fields=`<h3 class="mg-step-title">The exact car comes first.</h3><p class="mg-step-desc">Use the original model year and trim from your vehicle documents. Registration year and delivery year can differ.</p><div class="mg-form">${select('model','Model',D.models.map(m=>[m.id,m.name]),d.model)}${select('year','Original model year',years,d.year)}${field('trim','Exact trim / variant',{value:d.trim,required:true,list:'mg-trims',help:'Pick a suggestion or type the exact name, including a special edition.'})}<datalist id="mg-trims">${(model(d)?.trims||[]).map(t=>'<option value="'+e(t)+'"></option>').join('')}</datalist>${select('cc','Market / country',[['','Choose your country'],...countries()],d.cc)}${field('name','Car nickname (optional)',{value:d.name,maxlength:40})}${field('wheels','Wheels / tyres (optional)',{value:d.wheels,maxlength:40,help:'For example: 18-inch Aero. A wheel option can change the rated range.'})}${select('unit','Distance display',[['km','Kilometres'],['mi','Miles']],d.unit)}${select('currency','Currency (all costs for this car)',['EUR','GBP','USD','CAD','AUD','NZD','CHF','NOK','SEK','DKK','CNY','JPY','KRW','AED','SGD','INR','OTHER'].map(v=>[v,v==='OTHER'?'Other / units':v]),d.currency,editing&&(d.charges?.length)?'Changing this relabels existing costs; it does not convert currencies.':'')}${field('odo','Current odometer ('+d.unit+')',{type:'number',value:d.odoKm!==null&&d.odoKm!==undefined?+M.distance(d.odoKm,d.unit).toFixed(1):'',min:0,max:2000000,step:'0.1'})}${field('delivery','Delivery date (optional)',{type:'date',value:d.delivery})}</div>`;
+  }else if(s===1){
+   const refs=referenceOptions(d),hasEPA=d.cc==='US';
+   fields=`<h3 class="mg-step-title">Confirm what the car actually has.</h3><p class="mg-step-desc">Controls → Software → Additional Vehicle Information is a useful place to start. Hardware and battery chemistry are never guessed from the year.</p><div class="mg-form">${select('hw','Autopilot computer',[['','Not confirmed'],['none','No Autopilot computer'],['hw1','HW1 / Mobileye'],['hw2','HW2'],['hw25','HW2.5'],['hw3','HW3'],['hw4','HW4 / AI4']],d.hw)}${field('sw','Installed software (optional)',{value:d.sw,help:'For example: 2026.38.5. Read this from Controls → Software.'})}${select('battery','Battery chemistry',[['','Not confirmed'],['LFP','LFP — confirmed on my car'],['NCA/NCM','NCA / NCM — confirmed'],['other','Other — confirmed']],d.battery)}${select('drive','Drive',[['','Not confirmed'],['RWD','Rear-wheel drive'],['AWD','All-wheel drive']],d.drive)}${field('usableKwh','Usable battery capacity (kWh)',{type:'number',value:d.usableKwh,min:1,max:250,step:'0.1',help:'Optional. Use usable capacity, not gross pack size. Needed for energy-budget calculators.'})}${field('soc','Current battery charge (%)',{type:'number',value:d.soc,min:0,max:100,help:'An owner-entered snapshot, not a live reading.'})}${hasEPA?select('epaId','Optional matching US EPA record',[['','No record selected'],...refs.map(r=>[r.id,r.label+' · #'+r.id])],d.epaId,state.epaState==='loading'?'EPA reference is loading; you can add it later.':refs.length?'Match the model year, variant and wheels. Different suffixes are separate certification records.':'No matching record in the saved EPA snapshot. Add your rating below.',true):'<p class="mg-caption mg-wide">US EPA records are not applied outside the US. You can enter your vehicle’s local rating below.</p>'}${hasEPA&&d.epaId?'<p class="mg-wide mg-caption">'+e(refs.find(r=>r.id===d.epaId)?.label||'')+' · '+e(refs.find(r=>r.id===d.epaId)?.rangeMiles||'')+' miles EPA. Reference only; confirm it matches your paperwork.</p>':''}${field('ratedRange','Your documented rated range ('+d.unit+')',{type:'number',value:d.ratedRangeKm?+M.distance(d.ratedRangeKm,d.unit).toFixed(1):'',min:1,max:2000,step:'0.1',help:'Optional override, from your original order/specification. Not today’s dashboard range.'})}${select('rating','Rating cycle',[['WLTP','WLTP'],['EPA','EPA'],['CLTC','CLTC'],['OTHER','Other / documented']],d.rating)}${field('rangeSource','Rating reference / document',{value:d.rangeSource,maxlength:160,wide:true,help:'For example: original order agreement, 19-inch wheels. Do not enter a VIN.'})}<details class="mg-wide mg-detail"><summary>Performance specifications (optional)</summary><div class="mg-form">${field('accelerationSec','Documented acceleration (seconds)',{type:'number',value:d.accelerationSec,min:.1,max:60,step:'0.01'})}${select('accelTest','Acceleration test',[['0-60 mph','0–60 mph'],['0-100 km/h','0–100 km/h']],d.accelTest||'0-100 km/h','The tests are different; values are never converted.')}${field('topSpeed','Documented top speed ('+(d.unit==='mi'?'mph':'km/h')+')',{type:'number',value:d.topSpeedKmh?+M.distance(d.topSpeedKmh,d.unit).toFixed(1):'',min:1,max:d.unit==='mi'?310:500,step:'0.1'})}${field('powerKw','Documented peak power (kW)',{type:'number',value:d.powerKw,min:1,max:2000,step:'0.1',help:'Do not add motor ratings to infer a combined output.'})}${field('specReference','Performance specification reference',{value:d.specReference,maxlength:160,wide:true,help:'Document, configuration and test convention, including rollout if used.'})}</div></details></div>`;
+  }else{
+   fields=`<h3 class="mg-step-title">Set up your everyday tools.</h3><p class="mg-step-desc">Optional assumptions for the planners. You can change them at any time. No Tesla login, vehicle commands or automatic tracking.</p><div class="mg-form">${field('homeRate','Home electricity price / kWh',{type:'number',value:d.homeRate,min:0,max:100,step:'0.001',help:'In '+d.currency+'. Enter 0 for a genuinely free tariff.'})}${field('acKw','Actual AC charge power (kW)',{type:'number',value:d.acKw,min:.1,max:50,step:'0.1',help:'Use power delivered to your car, not the charger’s maximum label.'})}${field('acEfficiency','AC efficiency assumption (%)',{type:'number',value:d.acEfficiency??90,min:50,max:100,step:'0.1',help:'90% is a starting assumption, not a measurement of your car.'})}${field('note','A note for your future self',{value:d.note,maxlength:400,wide:true,help:'Optional. Your notes are included in private backups.'})}<div class="mg-result mg-wide"><strong>${e(d.year)} ${e(model(d)?.name)} · ${e(d.trim)}</strong><p>${e(countryName(d.cc))} · ${d.unit} · ${e(d.currency)} · ${e(d.hw?d.hw.toUpperCase():'Computer not confirmed')}</p><p>Saved in this browser. Export a backup to take it to another device.</p></div></div>`;
+  }
+  $('mg-profile-content').innerHTML=`<ol class="mg-stepper">${['Your car','The details','Your routine'].map((t,i)=>'<li'+(s===i?' aria-current="step"':'')+'>'+(i+1)+' / '+t+'</li>').join('')}</ol><form id="mg-profile-form">${fields}<p class="mg-form-error" id="mg-profile-error" role="status"></p><div class="mg-profile-footer"><button type="button" class="mg-btn mg-quiet" id="mg-profile-back">${s?'Back':'Cancel'}</button><button type="submit" class="mg-btn mg-primary">${s===2?'Save car passport':'Continue →'}</button></div></form>`;
+  const f=$('mg-profile-form');
+  ['model','year','cc','unit'].forEach(key=>f.elements[key]?.addEventListener('change',()=>{const prev={...d};captureProfile();if(key==='model'){d.year=Math.max(M.models[d.model],Math.min(d.year,new Date().getFullYear()+1));d.trim='';d.epaId='';d.hw='';d.drive='';d.ratedRangeKm=null;d.usableKwh=null;d.battery='';}if(key==='year'||key==='cc')d.epaId='';if(key==='cc'&&!editing){d.currency=({US:'USD',GB:'GBP',CA:'CAD',AU:'AUD',NZ:'NZD',CH:'CHF',NO:'NOK',SE:'SEK',DK:'DKK',CN:'CNY',JP:'JPY',KR:'KRW',AE:'AED',SG:'SGD',IN:'INR'})[d.cc]||'EUR';d.unit=['US','GB'].includes(d.cc)?'mi':'km';}if(key==='unit'&&prev.unit!==d.unit){if(f.elements.odo){d.odoKm=prev.odoKm??(d.odo===null?null:M.fromDistance(d.odo,prev.unit));}}renderProfile();$('mg-profile-form').elements[key]?.focus();}));
+  f.elements.epaId?.addEventListener('change',()=>{captureProfile();renderProfile();$('mg-profile-form').elements.epaId.focus();});
+  $('mg-profile-back').addEventListener('click',()=>{if(!state.step){closeDialog($('mg-profile-dialog'));return;}captureProfile();state.step--;renderProfile();$('mg-profile-title').focus();});
+  f.addEventListener('submit',event=>{event.preventDefault();captureProfile();if(s===0&&(!d.trim||!d.cc)){$('mg-profile-error').textContent='Add your exact trim and choose your country.';return;}if(s===1&&d.sw&&!/^\d{4}\.\d{1,3}(?:\.\d{1,4}){0,2}$/.test(d.sw)){$('mg-profile-error').textContent='Use a software version such as 2026.38.5, or leave it empty.';return;}if(state.step<2){state.step++;renderProfile();$('mg-profile-dialog').scrollTop=0;$('mg-profile-title').focus();return;}try{const previous=state.editing?doc.cars.find(c=>c.id===state.editing):null;const changedSnapshot=!previous||previous.odoKm!==d.odoKm||previous.soc!==d.soc;const next=M.car({...d,updatedAt:M.today(),snapshotAt:changedSnapshot?M.today():previous.snapshotAt});if(state.demo){state.demo=false;doc=parkedDoc||loadSavedForExit();parkedDoc=null;}if(editing){const old=doc.cars.find(c=>c.id===editing);if(old?.charges.length&&old.currency!==next.currency){$('mg-profile-error').textContent='Keep the existing currency while this car has charge costs. Export or remove those records before changing it; no exchange-rate conversion is applied.';return;}doc.cars=doc.cars.map(c=>c.id===editing?next:c);}else{if(doc.cars.length>=5)throw Error('The garage already has five cars.');doc.cars.push(next);}doc.activeId=next.id;if(!editing)state.view='overview';persist('Car passport saved · ready every time you return on this device');closeDialog($('mg-profile-dialog'));state.plannerCar=null;renderAll();$('mg-title').focus();}catch(err){$('mg-profile-error').textContent=err.message;}});
+ }
+ function loadSavedForExit(){try{return lastRaw?M.parse(lastRaw):M.empty();}catch{return M.empty();}}
+ function activeStats(){return M.stats(car(),state.days);}
+ function profileCompleteness(c){return[c.trim,c.cc,c.wheels,c.hw,c.battery,c.odoKm!==null,M.spec(c,state.epa)].filter(Boolean).length;}
+ function renderHero(){
+  const c=car(),has=!!c;$('mg-workspace').hidden=!has;$('mg-welcome').hidden=has;$('mg-car-select').hidden=doc.cars.length<2;$('mg-demo-banner').hidden=!state.demo;
+  $('mg-car-select').innerHTML=doc.cars.map(c=>'<option value="'+e(c.id)+'"'+(c.id===doc.activeId?' selected':'')+'>'+e(title(c))+'</option>').join('');
+  $('mg-hero-kicker').textContent=has?(state.demo?'DEMO / YOUR GARAGE, REIMAGINED':'YOUR TESLA. YOUR DAILY ADVANTAGE.'):'LESS GUESSWORK. MORE OWNERSHIP.';
+  $('mg-title').innerHTML=has?e(c.name||model(c).name)+(c.name?'':'<br><span>'+e(c.trim||'Your owner studio')+'</span>'):'Your car.<br>Your advantage.';
+  $('mg-title').tabIndex=-1;
+  $('mg-hero-desc').textContent=has?`${c.year} ${model(c).name}${c.name&&c.trim?' · '+c.trim:''}. Your energy, your care plan and your software context. Pick up where you left off.`:'One beautiful home for your Tesla. Know your exact car, understand what it costs and make every charge count.';
+  $('mg-hero-actions').innerHTML=has?'<button class="mg-btn mg-primary" data-log="charge">Log a charge <span aria-hidden="true"><svg class="mg-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></span></button><button class="mg-btn mg-quiet" data-edit="active">Edit car passport</button>':'<button class="mg-btn mg-primary" data-edit="new">Build your garage <span aria-hidden="true"><svg class="mg-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></span></button><button class="mg-btn mg-quiet" id="mg-demo">Explore the demo</button>';
+  $('mg-hero-meta').textContent=has?[countryName(c.cc),c.wheels||'Wheels not set',c.hw?c.hw.toUpperCase():'Computer not confirmed'].join(' · '):'Free owner tools · Private on this device · Built around your car';
+  const photo=has?model(c).photo:'/assets/3d/model3-2024-poster.webp';if($('mg-car-photo').getAttribute('src')!==photo)$('mg-car-photo').src=photo;
+  $('mg-car-photo').alt=has?model(c).name+' reference image; year, trim, wheels and colour may differ from your car':'Illustrative Model 3 render; your exact configuration may differ';
+  $('mg-stage-name').textContent=has?`${c.year} / ${model(c).name}`:'The personal garage';
+  const rating=has?M.spec(c,state.epa):null;
+  $('mg-hero-glass').innerHTML=has?`<span class="mg-label">${rating?e(rating.label)+' RATED RANGE':'YOUR VEHICLE PASSPORT'}</span><strong>${rating?dist(rating.km,c):profileCompleteness(c)+' / 7'}</strong><span>${rating?'Reference, not real-world range':'Useful details recorded'} · ${state.demo?'demo':'owner selected'}</span>`:'<span class="mg-label">A SMARTER DAILY HABIT</span><strong>Your Tesla.<br>Understood.</strong><span>Energy. Software. Care.</span>';
+ }
+ function softwareSnapshot(){const c=car(),rows=(state.live?.versions||[]).map(v=>({v,count:Number(v.countryCounts?.[c.cc]||0)})).filter(r=>r.count>0).sort((a,b)=>M.version(b.v.id,a.v.id));const country=(window.FSD_GLOBAL?.countries||[]).find(r=>r.code===c.cc);return{rows,newest:rows[0],total:rows.reduce((n,r)=>n+r.count,0),country};}
+ function renderOverview(){
+  const c=car(),s=activeStats(),r=M.spec(c,state.epa),soft=softwareSnapshot();
+  $('mg-stats').innerHTML=stat('DISTANCE YOU LOGGED',s.drives.length?fmt(M.distance(s.km,c.unit)):'—',s.drives.length?s.drives.length+' drive records':'Start with a trip-counter reading',c.unit)+stat('DRIVING CONSUMPTION',fmt(s.wh),s.wh===null?'Add distance and trip energy':'Distance-weighted · driving energy only','Wh/'+c.unit)+stat('RECORDED CHARGING SPEND',s.priced?money(s.cost,c):'—',s.unpriced?s.unpriced+' unpriced sessions excluded':s.charges.length?'From priced charge records':'No charge costs recorded')+stat('YOUR ODOMETER',c.odoKm!==null?fmt(M.distance(c.odoKm,c.unit)):'—',c.odoKm===null?'Add it in your car passport':'Owner entered · '+c.snapshotAt,c.unit);
+  const due=c.care.filter(r=>M.due(r,c)!=='completed').sort((a,b)=>({due:0,soon:1,planned:2}[M.due(a,c)]-({due:0,soon:1,planned:2}[M.due(b,c)]))||(a.dueDate||'9999').localeCompare(b.dueDate||'9999'));
+  const tasks=[];if(!c.trim||!c.hw||!c.wheels)tasks.push(['Complete your car’s identity','Confirm the trim, wheels and computer. Nothing is inferred from the year.','Edit passport','edit']);if(due.length)tasks.push([due[0].title,'Your reminder · '+(due[0].dueDate||'odometer milestone')+' · '+M.due(due[0],c),'Open care plan','care']);if(!s.charges.length)tasks.push(['Give your energy story a starting point','Add a charge receipt: delivered kWh, location type and optional total cost.','Log a charge','charge']);if(!s.drives.length)tasks.push(['Meet your real driving consumption','Record distance and kWh from the same trip-counter interval.','Log a drive','drive']);if(!tasks.length)tasks.push(['Keep your car’s story current','A new charge, trip or odometer reading makes the garage more useful.','Log a charge','charge']);
+  $('mg-next').innerHTML='<p class="mg-kicker">THE NEXT USEFUL THING</p><h3>A little attention goes a long way.</h3>'+tasks.slice(0,3).map(([h,p,b,action],i)=>'<div class="mg-task"><span>0'+(i+1)+'</span><div><h4>'+e(h)+'</h4><p>'+e(p)+'</p><button '+(action==='edit'?'data-edit="active"':action==='care'?'data-jump="care"':'data-log="'+action+'"')+'>'+e(b)+' →</button></div></div>').join('');
+  $('mg-software-brief').innerHTML='<p class="mg-kicker">YOUR SOFTWARE BRIEFING</p><span class="mg-chip">Owner-entered build</span><p class="mg-big-number">'+e(c.sw||'Not recorded')+'</p><p>'+e(c.sw?soft.newest?'Newest seen in the '+countryName(c.cc)+' sample: '+soft.newest.v.id+'. This is not an update offer for your vehicle.':'No usable country sample is available. Your saved software detail remains here.':'Add the installed version from Controls → Software, then compare it with reporting cars in your market.')+'</p><div class="mg-actions"><button class="mg-btn" data-jump="software">Open your software desk <svg class="mg-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></button></div><p class="mg-caption">'+e(state.live?.updated?'Sample snapshot: '+state.live.updated:'Fleet snapshot '+state.liveState+' · official in-car notes remain authoritative')+'</p>';
+  renderTrend();renderMix();renderReading();
+ }
+ function renderTrend(){
+  const c=car(),now=new Date(),months=Array.from({length:6},(_,i)=>{const d=new Date(now.getFullYear(),now.getMonth()-5+i,1);const key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');const rows=c.drives.filter(r=>r.date.startsWith(key)&&r.date<=M.today());return{label:d.toLocaleDateString(undefined,{month:'short'}),key,km:rows.reduce((n,r)=>n+r.km,0),count:rows.length};}),max=Math.max(1,...months.map(r=>r.km));
+  $('mg-trend').innerHTML='<p class="mg-kicker">SIX MONTHS / YOUR DRIVING JOURNAL</p><h3>Your story, in motion.</h3><div class="mg-months" role="img" aria-label="Logged distance by month. Exact figures are in the table below.">'+months.map(r=>'<div class="mg-month"><div class="mg-month-bar"><i style="height:'+r.km/max*100+'%"></i></div><span>'+e(r.label)+'</span></div>').join('')+'</div><div class="mg-chart-note"><span>Logged distance · '+c.unit+'</span><span>No entry means no recorded data</span></div><details class="mg-detail"><summary>View the chart’s figures</summary><div class="mg-table-wrap"><table><thead><tr><th>Month</th><th>Logged distance</th><th>Records</th></tr></thead><tbody>'+months.map(r=>'<tr><td>'+r.key+'</td><td>'+dist(r.km,c)+'</td><td>'+r.count+'</td></tr>').join('')+'</tbody></table></div></details>';
+ }
+ function renderMix(){const c=car(),s=activeStats(),percent=s.energy?s.homeEnergy/s.energy*100:0;$('mg-charge-mix').innerHTML='<p class="mg-kicker">CHARGING / YOUR SELECTED PERIOD</p><h3>Where your energy comes from.</h3>'+(s.charges.length?'<div class="mg-donut-wrap"><div class="mg-donut" style="--mg-share:'+percent+'%" role="img" aria-label="'+fmt(percent)+' percent of logged charging energy was at home"><div><strong>'+fmt(percent)+'%</strong><span>home charging</span></div></div><ul class="mg-legend"><li>Home · '+fmt(s.homeEnergy,1)+' kWh</li><li>Elsewhere · '+fmt(s.energy-s.homeEnergy,1)+' kWh</li></ul></div><p class="mg-caption">Share of logged delivered energy, not session count. '+s.charges.length+' records. '+(s.unpriced?s.unpriced+' sessions have no cost.':'All sessions have a cost.')+'</p>':empty('A blank canvas, for now.','Your home-versus-away mix appears after the first charge.','<button class="mg-btn" data-log="charge">Log your first charge</button>'));}
+ function renderReading(){const c=car(),m=model(c);const cards=[{title:'Your '+m.name+' guide',url:m.review,tag:'FOR YOUR MODEL',text:'An independent look at the car, its strengths and the details worth knowing.'},...(m.explore?[{title:'Explore the engineering',url:m.explore,tag:'LOOK CLOSER',text:'An interactive breakdown of the design and systems behind your model.'}]:[]),...D.guides].slice(0,3);$('mg-reading').innerHTML=cards.map(g=>'<a class="mg-read" href="'+e(g.url)+'"><span class="mg-label">'+e(g.tag)+'</span><h3>'+e(g.title)+'</h3><p>'+e(g.text)+'</p><span aria-hidden="true"><svg class="mg-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></span></a>').join('');}
+ function renderEnergy(){
+  const c=car(),s=activeStats(),rate=s.averageRate;
+  $('mg-energy-stats').innerHTML=stat('DELIVERED CHARGE ENERGY',s.charges.length?fmt(s.energy,1):'—','From charge receipts · '+s.charges.length+' sessions','kWh')+stat('DRIVING ENERGY',s.drives.length?fmt(s.kwh,1):'—','From trip counters · '+s.drives.length+' records','kWh')+stat('PRICED-SESSION RATE',rate===null?'—':money(rate,c),'Energy-weighted · priced sessions only','/kWh')+stat('DRIVING CONSUMPTION',fmt(s.wh),'Weighted by distance, not an average of averages','Wh/'+c.unit);
+  $('mg-energy-insight').innerHTML='<p class="mg-kicker">COMPARE THE RIGHT THINGS</p><h3>What the numbers actually mean.</h3><p><strong>Trip energy</strong> is what your car says it used over a driving interval. <strong>Delivered charge energy</strong> comes from a charger or receipt and can include charging losses. They do not measure the same boundary.</p><p>'+e(rate===null?'Add a total price to a charge record to see the energy-weighted rate. A blank price stays unknown; zero means genuinely free.':`Your priced sessions average ${money(rate,c)}/kWh. ${s.unpriced?`${s.unpriced} unpriced sessions are excluded from that rate.`:'All selected charge records are priced.'}`)+'</p><p class="mg-caption">We do not divide charging spend by unrelated trip distance or infer battery degradation from dashboard range.</p>';
+  const spec=M.spec(c,state.epa),est=s.whKm&&c.usableKwh?c.usableKwh/(s.whKm/1000):null;
+  $('mg-range-insight').innerHTML='<p class="mg-kicker">RANGE / TWO DIFFERENT QUESTIONS</p><h3>'+e(est?dist(est,c):'The conditions matter.')+'</h3><p>'+e(est?'Full-usable-pack energy estimate at your logged consumption. Not a measured full-charge range or a battery-health test.':'Add usable battery capacity and a driving log to estimate the distance supported by that energy at your observed consumption.')+'</p><dl class="mg-definition"><dt>Documented rating</dt><dd>'+(spec?dist(spec.km,c)+' <small>'+e(spec.label+' · '+spec.source)+'</small>':'Not recorded')+'</dd><dt>Your recorded consumption</dt><dd>'+fmt(s.wh)+' Wh/'+c.unit+'</dd><dt>Usable capacity input</dt><dd>'+fmt(c.usableKwh,1)+' kWh</dd></dl><p class="mg-caption">EPA and WLTP are separate test cycles. Temperature, speed, elevation, tyres and reserve change what is practical today.</p>';
+  renderJournal();
+ }
+ function renderJournal(){const c=car(),s=activeStats(),kind=$('mg-journal-filter').value;const rows=[...s.drives.map(r=>({...r,type:'drive'})),...s.charges.map(r=>({...r,type:'charge'}))].filter(r=>kind==='all'||r.type===kind).sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id));$('mg-journal').innerHTML=rows.length?'<div class="mg-table-wrap"><table><caption>All records are owner-entered. A blank cost is unknown. Edits and deletions affect only this car.</caption><thead><tr><th>Date / record</th><th>Distance / type</th><th>Energy</th><th>Cost</th><th>Manage</th></tr></thead><tbody>'+rows.map(r=>'<tr><td>'+e(r.date)+'<br><span class="mg-label">'+r.type+'</span></td><td>'+e(r.type==='drive'?dist(r.km,c,1):r.kind)+'</td><td>'+fmt(r.type==='drive'?r.kwh:r.energy,2)+' kWh</td><td>'+e(r.type==='drive'?'—':r.cost===null?'Not entered':money(r.cost,c))+'</td><td><button class="mg-btn mg-quiet" data-edit-record="'+e(r.id)+'" data-kind="'+r.type+'">Edit</button></td></tr>').join('')+'</tbody></table></div>':empty('Your journal starts here.','Use non-overlapping trip intervals and charge receipts. A little regular logging makes the trends useful.');}
+ function renderSoftware(){
+  const c=car(),s=softwareSnapshot(),when=state.live?.updated||'',hasHW=c.hw==='hw3'||c.hw==='hw4';
+  const noteRows=(window.TESLA_UPDATES?.versions||[]).filter(v=>{const aliases={3:'3',Y:'Y',S:'S',X:'X',CT:'Cybertruck'};if(v.models?.length&&!v.models.includes(aliases[c.model])&&!v.models.includes(c.model))return false;if(c.cc&&v.countries?.length&&!v.countries.includes(c.cc))return false;if(v.hardware?.length&&(!hasHW||!v.hardware.some(h=>h.startsWith(c.hw==='hw3'?'HW3':'HW4'))))return false;return true;}).slice(0,3);
+  $('mg-software-content').innerHTML='<div class="mg-stats">'+stat('YOUR INSTALLED BUILD',e(c.sw||'Not set'),'Owner entered · confirm in Controls → Software')+stat('YOUR COMPUTER',e(c.hw?c.hw.toUpperCase():'Not confirmed'),'No inference from model year')+stat('NEWEST COUNTRY SAMPLE',e(s.newest?.v.id||'Unavailable'),s.newest?s.newest.count+' reporting cars · sample only':'No usable country sample')+stat('SAMPLE COVERAGE',s.total?fmt(s.total):'—','Reporting cars in '+e(countryName(c.cc))+' · not matched to your exact trim')+'</div><div class="mg-split"><article class="mg-card"><p class="mg-kicker">MARKET SAMPLE / NOT AN UPDATE OFFER</p><h3>'+e(s.newest?c.sw?M.version(c.sw,s.newest.v.id)>=0?'Your build meets or exceeds this sample.':'There are newer builds in the sample.':'See the context. Then check your car.':'Your car profile is still useful offline.')+'</h3><p>'+e(s.newest?'A newer build on another Tesla does not establish eligibility or an update date for your car. The country sample mixes models, trims and computers.':'The public fleet sample could not provide a usable result. No claim is made about your car’s update status.')+'</p><p class="mg-caption">'+e(when?'Public snapshot: '+when:'Snapshot unavailable')+'</p><ul class="mg-soft-list">'+s.rows.slice(0,4).map(r=>'<li><strong>'+e(r.v.id)+'</strong><p>'+r.count+' reporting cars in this country</p></li>').join('')+'</ul><div class="mg-actions">'+sourceLink('/updates.html','Full software tracker')+'</div></article><article class="mg-card"><p class="mg-kicker">DRIVER ASSISTANCE / YOUR MARKET</p><h3>'+e(s.country?.status==='live'?'Market availability is only one layer.':'Check the evidence for your country.')+'</h3><p>'+e(s.country?.note||'No market listing is established by the saved global dataset for this country.')+'</p><p>Your software package, computer, vehicle eligibility and national conditions are separate. This page does not verify that a feature is installed or entitled on your Tesla.</p><p>Driver assistance requires supervision. Read the official conditions and your in-car instructions.</p><div class="mg-actions">'+sourceLink('/autonomy.html','Driver-assistance evidence')+sourceLink('/fsd-europe.html','Europe tracker')+'</div><p class="mg-caption">Market tracker snapshot: '+e(window.FSD_GLOBAL?.updated||'unavailable')+'</p></article></div><div class="mg-section-head"><div><p class="mg-kicker">EDITORIAL RELEASE NOTES</p><h3>Read with your configuration in mind.</h3><p>Filtered by available model, country and computer tags. These are contextual notes, not a feature entitlement check.</p></div></div><div class="mg-note-grid">'+(noteRows.length?noteRows.map(v=>'<article class="mg-card"><span class="mg-chip">Editorial notes</span><h3 style="margin-top:16px">'+e(v.id)+'</h3><p>'+e(v.summary||v.title||'Open the tracker to read this release and its sources.')+'</p>'+sourceLink('/updates.html?release='+encodeURIComponent(v.id)+'#releases','Read the release')+'</article>').join(''):empty('No tagged notes match this profile.','Try the complete tracker for a broader view.'))+'</div>';
+ }
+ function renderCare(){const c=car();const rows=[...c.care].sort((a,b)=>(!!a.doneAt)-(!!b.doneAt)||(a.dueDate||'9999').localeCompare(b.dueDate||'9999'));$('mg-care-list').innerHTML=rows.length?rows.map(r=>{const due=M.due(r,c);return'<article class="mg-care-item" data-due="'+due+'"><span class="mg-chip '+(due==='due'?'mg-chip-amber':due==='completed'?'mg-chip-green':'')+'">'+e({due:'Due · your reminder',soon:'Coming up',completed:'Completed',planned:'Planned'}[due])+'</span><h3>'+e(r.title)+'</h3><p>'+e(r.doneAt?'Completed '+r.doneAt:[r.dueDate?'Date: '+r.dueDate:'',r.dueKm!==null?'Odometer: '+dist(r.dueKm,c):''].filter(Boolean).join(' · '))+'</p><div class="mg-actions">'+(!r.doneAt?'<button class="mg-btn" data-complete="'+e(r.id)+'">Mark complete</button>':'<button class="mg-btn" data-reopen="'+e(r.id)+'">Reopen</button>')+'<button class="mg-btn mg-quiet" data-edit-record="'+e(r.id)+'" data-kind="care">Edit</button></div></article>';}).join(''):empty('Build a care plan that fits your car.','Choose a date, an odometer milestone or both. No interval is guessed from your model.','<button class="mg-btn" data-log="care">Add your first reminder</button>');}
+ function renderPassport(){
+  const c=car(),m=model(c),r=M.epa(c,state.epa),s=M.spec(c,state.epa),pct=profileCompleteness(c)/7*100;
+  const row=(a,b,n='')=>'<dt>'+a+'</dt><dd>'+e(b||'Not confirmed')+(n?'<small>'+e(n)+'</small>':'')+'</dd>';
+  $('mg-passport-content').innerHTML='<div class="mg-passport-grid"><article class="mg-card"><p class="mg-kicker">YOUR CAR / THE IDENTITY</p><img class="mg-passport-photo" src="'+e(m.photo)+'" alt="'+e(m.name)+' reference photograph; configuration may differ" width="960" height="540" loading="lazy" /><p class="mg-caption">Model reference image. This does not depict your exact trim, wheels, year or colour.</p><h3 style="margin-top:20px">'+e(title(c))+'</h3><dl class="mg-definition">'+row('Model year',String(c.year),'Original model year, not registration date')+row('Exact trim',c.trim,'Owner entered')+row('Market',countryName(c.cc))+row('Wheels / tyres',c.wheels)+row('Drive',c.drive)+row('Computer',c.hw?.toUpperCase())+row('Battery chemistry',c.battery)+row('Usable capacity',c.usableKwh?fmt(c.usableKwh,1)+' kWh':'','Owner entered; not a health measurement')+row('Acceleration',c.accelerationSec?fmt(c.accelerationSec,2)+' s · '+c.accelTest:'','Owner-entered documented figure')+row('Top speed',c.topSpeedKmh?fmt(M.distance(c.topSpeedKmh,c.unit))+' '+(c.unit==='mi'?'mph':'km/h'):'')+row('Peak power',c.powerKw?fmt(c.powerKw)+' kW':'')+row('Performance reference',c.specReference)+row('Software',c.sw)+row('Delivery date',c.delivery)+row('Odometer',c.odoKm===null?'':dist(c.odoKm,c))+'</dl></article><div><article class="mg-card"><p class="mg-kicker">THE REFERENCE / THE RIGHT TEST CYCLE</p><h3>'+e(s?dist(s.km,c):'Match your exact specification.')+'</h3><p>'+e(s?s.label+' · '+s.source:'Choose a matching EPA record for a US-market car, or add your documented local rating. No nearest-model substitution is made.')+'</p>'+(s?.url?sourceLink(s.url,'View this EPA record'):'')+'<dl class="mg-definition">'+row('EPA selected record',r?r.label+' · #'+r.id:'')+row('US EPA energy rating',r?fmt(r.kwh100Miles,1)+' kWh / 100 miles':'','Includes charging losses; not comparable directly to trip energy')+row('Rated city / highway',r?dist(r.cityRangeMiles*M.MI,c)+' / '+dist(r.highwayRangeMiles*M.MI,c):'')+row('Owner rating reference',c.rangeSource)+row('EPA snapshot checked',state.epa?.checkedAt||'Unavailable')+'</dl><p class="mg-caption">Neither a rated range nor a dashboard full-charge estimate measures battery degradation. An EPA selection is your match to a certification record, not a VIN-verified identity.</p></article><article class="mg-card"><p class="mg-kicker">THE DETAILS MAKE IT PERSONAL</p><h3>'+profileCompleteness(c)+' of 7 useful details.</h3><div class="mg-progress"><i style="width:'+pct+'%"></i></div><p>Trim, country, wheels, computer, battery chemistry, odometer and a documented range rating.</p>'+(c.soc!==null?'<p class="mg-big-number">'+fmt(c.soc)+'%</p><div class="mg-battery" aria-hidden="true">'+Array.from({length:10},(_,i)=>'<i'+(i<c.soc/10?' class="on"':'')+'></i>').join('')+'</div><p class="mg-caption">Owner-entered battery snapshot · '+e(c.snapshotAt)+'. Not a live connection.</p>':'')+(c.note?'<p style="margin-top:20px">'+e(c.note)+'</p>':'')+'<div class="mg-actions" style="margin-top:20px"><button class="mg-btn" data-edit="active">Add a little more detail</button></div></article></div></div>';
+ }
+ function initPlanners(force=false){
+  const c=car();if(!force&&state.plannerCar===c.id)return;state.plannerCar=c.id;
+  const f=$('mg-charge-plan');f.elements.capacity.value=c.usableKwh??'';f.elements.power.value=c.acKw??'';f.elements.rate.value=c.homeRate??'';f.elements.efficiency.value=c.acEfficiency??90;f.elements.from.value=c.soc??20;
+  const j=$('mg-journey-plan'),s=M.stats(c,30);j.elements.consumption.value=s.wh?+s.wh.toFixed(1):'';j.elements.rate.value=c.homeRate??'';j.elements.efficiency.value=c.acEfficiency??90;j.elements.distance.value='';
+  $('mg-charge-result').innerHTML='<p>Add your battery capacity and charge power to begin.</p>';$('mg-journey-result').innerHTML='<p>Choose a distance and consumption to see the estimate.</p>';document.querySelectorAll('[data-distance-unit]').forEach(el=>el.textContent=c.unit);
+ }
+ function setView(view,updateHash=true){
+  if(!['overview','energy','planner','software','care','passport'].includes(view))view='overview';state.view=view;
+  document.querySelectorAll('[data-panel]').forEach(p=>p.hidden=p.dataset.panel!==view);document.querySelectorAll('[data-view]').forEach(a=>{if(a.dataset.view===view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+  $('mg-section-caption').textContent=({overview:'YOUR OWNERSHIP AT A GLANCE',energy:'YOUR ENERGY, PROPERLY UNDERSTOOD',planner:'BETTER ASSUMPTIONS. CLEARER COSTS.',software:'YOUR SOFTWARE DESK',care:'LOOK AFTER THE LONG RUN',passport:'THE EXACT CAR. THE RIGHT DETAILS.'})[view];
+  $('mg-period').closest('label').hidden=!['overview','energy'].includes(view);
+  if(updateHash&&location.hash!=='#'+view)history.replaceState(null,'','#'+view);
+ }
+ function renderAll(){renderHero();if(car()){renderOverview();renderEnergy();renderSoftware();renderCare();renderPassport();initPlanners();setView(state.view,false);}document.querySelector('.mg').classList.add('mg-enhanced');}
+ function openSnapshot(){
+  const c=car();if(!c)return;$('mg-record-title').textContent='Keep your car current.';
+  $('mg-record-content').innerHTML='<form id="mg-snapshot-form" class="mg-form">'+field('odo','Odometer ('+c.unit+')',{type:'number',value:c.odoKm===null?'':+M.distance(c.odoKm,c.unit).toFixed(1),min:0,max:2000000,step:'0.1'})+field('soc','Battery charge (%)',{type:'number',value:c.soc,min:0,max:100})+field('sw','Installed software',{value:c.sw,wide:true,help:'Optional, as shown in Controls → Software.'})+'<p class="mg-caption mg-wide">Manual readings for today, not live telemetry. This updates the car passport without adding a drive or charge record.</p><p id="mg-snapshot-error" class="mg-form-error mg-wide" role="status"></p><button class="mg-btn mg-primary" type="submit">Save current readings</button></form>';
+  $('mg-snapshot-form').addEventListener('submit',event=>{event.preventDefault();const f=event.target,sw=f.elements.sw.value.trim();if(sw&&!/^\d{4}\.\d{1,3}(?:\.\d{1,4}){0,2}$/.test(sw)){$('mg-snapshot-error').textContent='Use a version such as 2026.38.5, or leave software empty.';return;}c.odoKm=nvalue(f,'odo')===null?null:M.fromDistance(nvalue(f,'odo'),c.unit);c.soc=nvalue(f,'soc');c.sw=sw;c.snapshotAt=M.today();c.updatedAt=M.today();persist('Current readings saved · '+c.snapshotAt);closeDialog($('mg-record-dialog'));state.plannerCar=null;renderAll();});openDialog('mg-record-dialog');
+ }
+ function openRecord(kind,recordId=null){
+  const c=car();if(!c)return;const key={charge:'charges',drive:'drives',care:'care'}[kind],r=recordId?c[key].find(r=>r.id===recordId):null;if(!key||recordId&&!r)return;
+  if(!r&&c[key].length>=(kind==='care'?100:500)){notice('This journal has reached its record limit. Export a backup before removing old entries.');return;}
+  $('mg-record-title').textContent=(r?'Edit ':'Log a ')+({charge:'charge',drive:'drive',care:'care reminder'})[kind];
+  let fields='';
+  if(kind==='charge')fields=field('date','Charge date',{type:'date',value:r?.date||M.today(),max:M.today(),required:true})+select('kind','Charge type',[['home','Home'],['supercharger','Tesla Supercharger'],['public','Other public charger'],['other','Other']],r?.kind||'home')+field('energy','Delivered energy (kWh)',{type:'number',value:r?.energy,min:.01,max:500,step:'0.01',required:true,help:'From the same charge receipt or charger reading.'})+field('cost','Total cost ('+c.currency+')',{type:'number',value:r?.cost,min:0,max:100000,step:'0.01',help:'Leave blank if unknown. Enter 0 only when it was free.'});
+  if(kind==='drive')fields=field('date','Trip-counter end date',{type:'date',value:r?.date||M.today(),max:M.today(),required:true})+field('distance','Distance ('+c.unit+')',{type:'number',value:r?+M.distance(r.km,c.unit).toFixed(3):'',min:.01,max:c.unit==='mi'?6213:10000,step:'0.001',required:true})+field('kwh','Driving energy used (kWh)',{type:'number',value:r?.kwh,min:.01,max:1000,step:'0.01',required:true,wide:true,help:'Use distance and kWh from the same non-overlapping interval. Do not enter a charging receipt here.'});
+  if(kind==='care')fields=field('title','What would you like to remember?',{value:r?.title,required:true,maxlength:100,wide:true})+field('dueDate','Due date (optional)',{type:'date',value:r?.dueDate})+field('dueDistance','Due at odometer ('+c.unit+')',{type:'number',value:r?.dueKm!==undefined&&r.dueKm!==null?+M.distance(r.dueKm,c.unit).toFixed(1):'',min:0,max:2000000,step:'0.1',help:'Optional. Due when either the date or odometer is reached.'})+'<p class="mg-caption mg-wide">Choose your own interval from the vehicle’s maintenance guidance. Completion stays in your history; it does not automatically create a new service interval.</p>';
+  $('mg-record-content').innerHTML='<form id="mg-record-form" class="mg-form">'+fields+'<p class="mg-form-error mg-wide" id="mg-record-error" role="status"></p><div class="mg-actions mg-wide">'+(r?'<button type="button" class="mg-btn mg-danger" id="mg-remove-record">Delete record</button>':'')+'<button type="submit" class="mg-btn mg-primary">Save '+(kind==='care'?'reminder':kind)+'</button></div></form>';
+  $('mg-record-form').addEventListener('submit',event=>{event.preventDefault();const f=event.target;let row={id:r?.id||M.id()};
+   if(kind==='charge')row={...row,date:f.elements.date.value,energy:nvalue(f,'energy'),cost:nvalue(f,'cost'),kind:f.elements.kind.value};
+   if(kind==='drive')row={...row,date:f.elements.date.value,km:M.fromDistance(nvalue(f,'distance'),c.unit),kwh:nvalue(f,'kwh')};
+   if(kind==='care'){row={...row,title:f.elements.title.value,dueDate:f.elements.dueDate.value,dueKm:nvalue(f,'dueDistance')===null?null:M.fromDistance(nvalue(f,'dueDistance'),c.unit),doneAt:r?.doneAt||''};if(!row.dueDate&&row.dueKm===null){$('mg-record-error').textContent='Choose a due date, an odometer milestone or both.';return;}}
+   if(kind!=='care'&&row.date>M.today()){$('mg-record-error').textContent='Use today or an earlier date for a recorded event.';return;}
+   c[key]=r?c[key].map(old=>old.id===r.id?row:old):[...c[key],row];c.updatedAt=M.today();persist((kind==='care'?'Care reminder':kind==='drive'?'Drive':'Charge')+' saved · your garage is up to date');closeDialog($('mg-record-dialog'));renderAll();
+  });
+  $('mg-remove-record')?.addEventListener('click',()=>{closeDialog($('mg-record-dialog'));confirmChange('Delete this record?','This removes only the selected entry from this car. Export a backup first if you may need it later.',()=>{c[key]=c[key].filter(old=>old.id!==r.id);persist('Record deleted');renderAll();});});
+  openDialog('mg-record-dialog');
+ }
+ function download(content,name){const blob=new Blob([content],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+ function demo(){
+  if(state.demo)return;parkedDoc=structuredClone(doc);state.demo=true;const now=new Date(),day=n=>{const d=new Date(now);d.setDate(d.getDate()-n);return M.today(d);};
+  const c=M.car({id:'demo-tesla',model:'3',year:2024,trim:'Long Range AWD',name:'The daily driver',cc:'US',unit:'mi',currency:'USD',hw:'hw4',sw:'2026.32.7',battery:'NCA/NCM',wheels:'18-inch',drive:'AWD',epaId:'47908',odoKm:28163.52,soc:68,usableKwh:75,homeRate:.16,acKw:7.2,acEfficiency:90,charges:Array.from({length:9},(_,i)=>({id:'demo-charge-'+i,date:day(i*3+1),energy:28+i*2,cost:(28+i*2)*(i%3===0?.39:.16),kind:i%3===0?'supercharger':'home'})),drives:Array.from({length:18},(_,i)=>({id:'demo-drive-'+i,date:day(i*9+1),km:80+i*7,kwh:(80+i*7)*(.145+(i%4)*.006)})),care:[{id:'demo-care',title:'Check tyres and rotation guidance',dueDate:day(-20),dueKm:30000}]});doc={schema:2,activeId:c.id,cars:[c]};state.plannerCar=null;state.view='overview';renderAll();status('Demo garage · illustrative records · your saved garage is untouched');
+ }
+ document.querySelector('.mg').addEventListener('click',event=>{
+  const edit=event.target.closest('[data-edit]');if(edit){profileCar(edit.dataset.edit);return;}
+  const log=event.target.closest('[data-log]');if(log){if(log.dataset.log==='snapshot')openSnapshot();else openRecord(log.dataset.log);return;}
+  if(event.target.closest('#mg-demo')){demo();return;}
+  const jump=event.target.closest('[data-jump]');if(jump){setView(jump.dataset.jump);$('mg-'+jump.dataset.jump+'-h')?.focus();document.querySelector('.mg-nav').scrollIntoView({block:'start',behavior:'instant'});return;}
+  const view=event.target.closest('[data-view]');if(view){event.preventDefault();setView(view.dataset.view);return;}
+  const editRecord=event.target.closest('[data-edit-record]');if(editRecord){openRecord(editRecord.dataset.kind,editRecord.dataset.editRecord);return;}
+  const complete=event.target.closest('[data-complete]'),reopen=event.target.closest('[data-reopen]');if(complete||reopen){const r=car().care.find(r=>r.id===(complete?.dataset.complete||reopen?.dataset.reopen));if(r){r.doneAt=complete?M.today():'';persist(complete?'Care task marked complete':'Care task reopened');renderAll();}}
+ });
+ $('mg-exit-demo').addEventListener('click',()=>{state.demo=false;doc=parkedDoc||loadSavedForExit();parkedDoc=null;state.plannerCar=null;renderAll();status(storageOK?'Your saved garage · on this device':'Storage unavailable · session only',!storageOK);});
+ $('mg-car-select').addEventListener('change',event=>{doc.activeId=event.target.value;state.plannerCar=null;persist('Active car changed · journal and planners now use this car');renderAll();});
+ $('mg-period').addEventListener('change',event=>{state.days=Number(event.target.value);renderOverview();renderEnergy();});$('mg-journal-filter').addEventListener('change',renderJournal);
+ $('mg-charge-plan').addEventListener('submit',event=>{event.preventDefault();const f=event.target,r=M.chargePlan({capacity:nvalue(f,'capacity'),from:nvalue(f,'from'),to:nvalue(f,'to'),power:nvalue(f,'power'),efficiency:nvalue(f,'efficiency'),rate:nvalue(f,'rate')});$('mg-charge-result').innerHTML=r?'<dl><dt>Into the battery</dt><dd>'+fmt(r.battery,1)+' kWh</dd><dt>From the wall</dt><dd>'+fmt(r.wall,1)+' kWh</dd><dt>Constant-power estimate</dt><dd>'+fmt(r.hours,1)+' hours</dd><dt>Energy cost</dt><dd>'+e(money(r.cost))+'</dd></dl>':'<p>Target charge must exceed start charge. Check battery capacity, power and the efficiency assumption.</p>';});
+ $('mg-journey-plan').addEventListener('submit',event=>{event.preventDefault();const f=event.target,c=car(),start=nvalue(f,'start'),reserve=nvalue(f,'reserve');if(start!==null&&reserve!==null&&reserve>start){$('mg-journey-result').textContent='Arrival reserve must not exceed start charge.';return;}const r=M.journey({km:M.fromDistance(nvalue(f,'distance'),c.unit),whKm:c.unit==='mi'?nvalue(f,'consumption')/M.MI:nvalue(f,'consumption'),capacity:c.usableKwh,start,reserve,rate:nvalue(f,'rate'),efficiency:nvalue(f,'efficiency'),petrolLitres:nvalue(f,'petrolLitres'),petrolPrice:nvalue(f,'petrolPrice')});$('mg-journey-result').innerHTML=r?'<dl><dt>Driving energy estimate</dt><dd>'+fmt(r.energy,1)+' kWh</dd><dt>Wall energy to replenish</dt><dd>'+fmt(r.wall,1)+' kWh</dd><dt>Electricity cost</dt><dd>'+e(money(r.cost))+'</dd>'+(r.petrol!==null?'<dt>Petrol comparison</dt><dd>'+e(money(r.petrol))+'</dd><dt>'+(r.difference>=0?'Electricity costs less by':'Electricity costs more by')+'</dt><dd>'+e(money(Math.abs(r.difference)))+'</dd>':'')+'</dl><p style="margin-top:15px">'+e(r.remaining===null?'Add usable battery capacity to your passport to explore the energy available above your chosen reserve.':r.remaining>=0?fmt(r.remaining,1)+' kWh remains above your chosen reserve under these assumptions.':fmt(-r.remaining,1)+' kWh short of your chosen reserve. A charging stop or different plan is needed under these assumptions.')+'</p>':'<p>Check the distance and consumption inputs.</p>';});
+ $('mg-export').addEventListener('click',()=>download(corruptRaw||JSON.stringify(M.document(doc),null,2),'my-tesla-garage-'+M.today()+'.json'));
+ $('mg-import').addEventListener('change',async event=>{const file=event.target.files?.[0];event.target.value='';if(!file)return;if(file.size>2097152){notice('That backup is too large. Choose a My Tesla JSON backup under 2 MB.');return;}try{const imported=M.parse(await file.text());confirmChange('Replace this browser’s garage?',`The backup contains ${imported.cars.length} cars. Importing replaces this browser’s garage; export it first if you want to keep it. No account data is changed.`,()=>{state.demo=false;doc=imported;corruptRaw=null;saveConflict=false;lastRaw=read(M.KEY);state.plannerCar=null;persist('Garage backup restored on this device');renderAll();});}catch{notice('That file is not a valid My Tesla garage backup. Your saved garage was kept.');}});
+ $('mg-delete-car').addEventListener('click',()=>{const c=car();if(!c)return;confirmChange('Delete '+title(c)+'?',`This removes this car and all its journal entries and reminders from this browser. Export a backup first if needed.`,()=>{doc.cars=doc.cars.filter(r=>r.id!==c.id);doc.activeId=doc.cars[0]?.id||'';persist('Car deleted from this device');state.plannerCar=null;renderAll();});});
+ window.addEventListener('hashchange',()=>{if(car())setView(location.hash.slice(1),false);});
+ window.addEventListener('storage',event=>{if(event.key!==M.KEY||state.demo)return;if(document.querySelector('.mg-dialog[open]')){saveConflict=true;notice('Another tab updated this garage while you were editing. Export your work before reloading.');return;}try{doc=event.newValue?M.parse(event.newValue):M.empty();lastRaw=event.newValue;state.plannerCar=null;renderAll();status('Garage refreshed from another tab');}catch{notice('Another tab saved an unreadable garage. Export your current garage before reloading.');saveConflict=true;}});
+ async function getJSON(url,timeout=10000){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeout);try{const r=await fetch(url,{cache:'no-cache',signal:controller.signal});if(!r.ok)throw Error('Source unavailable');return await r.json();}finally{clearTimeout(timer);}}
+ load();state.view=location.hash.slice(1)||'overview';renderAll();
+ if(corruptRaw){$('mg-alert').innerHTML='Your saved garage could not be read. <button class="mg-btn" id="mg-export-original">Export original data</button> before starting a new garage.';$('mg-export-original').addEventListener('click',()=>download(corruptRaw,'my-tesla-original-backup.json'));}
+ const legacyQuery=new URLSearchParams(location.search);if(['model','year','hw','cc','sw'].some(k=>legacyQuery.has(k))){const link=M.migrate(Object.fromEntries(legacyQuery));for(const k of ['model','year','hw','cc','sw'])legacyQuery.delete(k);history.replaceState(null,'',location.pathname+(legacyQuery.size?'?'+legacyQuery:'')+location.hash);if(link.cars.length){notice('This older link describes a car. Choose Add car to save it; your existing garage has not been replaced.');state.linkCar=link.cars[0];const btn=document.createElement('button');btn.className='mg-btn';btn.textContent='Review linked car';btn.addEventListener('click',()=>{openProfile('new');state.draft={...state.linkCar};renderProfile();});$('mg-alert').append(' ',btn);}}
+ getJSON('/data/my-tesla-epa.json').then(data=>{if(data?.schema!==1||!Array.isArray(data.vehicles)||data.vehicles.length<100)throw Error('Invalid EPA snapshot');state.epa=data;state.epaState='ready';if(car()){renderHero();renderEnergy();renderPassport();}if($('mg-profile-dialog').open&&state.step===1){captureProfile();renderProfile();}}).catch(()=>{state.epaState='unavailable';if(car())renderPassport();});
+ getJSON('/updates-live.json').then(data=>{if(!Array.isArray(data?.versions)||!data.versions.length)throw Error('Invalid fleet snapshot');state.live=data;state.liveState='ready';if(car()){renderOverview();renderSoftware();}}).catch(()=>{state.liveState='unavailable';if(car()){renderOverview();renderSoftware();}});
+ $('mg-source-list').innerHTML=D.sources.map(s=>'<p>'+sourceLink(s.url,s.name)+'<br><span class="mg-caption">'+e(s.detail)+'</span></p>').join('')+'<p class="mg-caption">Guidance checked '+D.updated+'. Reference images reused from this site’s model reviews; illustrative only.</p>';
 })();
