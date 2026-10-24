@@ -8,6 +8,7 @@ import { buildFSDEurope } from "./build-fsd-europe.mjs";
 import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
 import { buildStarshipStudio } from "./build-starship-studio.mjs";
 import { buildCalendarStudio } from "./build-calendar-studio.mjs";
+import { buildLaunchViewing } from "./build-launch-viewing.mjs";
 const root = new URL("..", import.meta.url).pathname;
 const read = (f) => fs.readFileSync(root + f, "utf8");
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -38,5 +39,6 @@ buildFSDEurope(root);
 // Starship now has complete semantic saved HTML, shared with the browser.
 buildStarshipStudio(root);
 buildCalendarStudio(root);
+buildLaunchViewing(root);
 console.log("noscript blocks written");
 buildTrackerSnapshots(root);

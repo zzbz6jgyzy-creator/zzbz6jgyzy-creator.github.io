@@ -184,13 +184,15 @@
       ]
     },
     "see-the-launch": {
-      "file": "/assets/js/see-the-launch.bundle.8c3d9ffd41.js",
-      "bytes": 49363,
+      "file": "/assets/js/see-the-launch.bundle.a3d1dcbc35.js",
+      "bytes": 91325,
       "sources": [
         "calendar-merge.js",
-        "see-the-launch-data.js",
-        "see-the-launch.js",
-        "live.js"
+        "calendar-studio-model.js",
+        "vendor/launch-geo.js",
+        "launch-viewing-model.js",
+        "launch-viewing-view.js",
+        "launch-viewing.js"
       ]
     },
     "tsla": {
