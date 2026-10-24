@@ -1,95 +1,95 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-23T22:08:47Z",
+  "updated": "2026-10-24T06:44:53Z",
   "sources": {
     "s-ccaaee3c9c8d": {
       "id": "s-ccaaee3c9c8d",
       "url": "https://www.tesla.com/support/robotaxi",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
-      "state": "ok",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
+      "state": "unavailable",
       "baselineHash": "d6a72df59611a08feff1b9ece7225093c2270c75e728dac8c18120c80bcccde2",
       "observedHash": "d6a72df59611a08feff1b9ece7225093c2270c75e728dac8c18120c80bcccde2",
       "lastSuccessAt": "2026-10-23T22:08:47Z",
       "pendingReview": false,
-      "error": null
+      "error": "HTTP Error 403: Forbidden"
     },
     "s-0cffd265d479": {
       "id": "s-0cffd265d479",
       "url": "https://www.tesla.com/support/robotaxi/cybercab",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
-      "state": "ok",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
+      "state": "unavailable",
       "baselineHash": "6bd1acd72bec8647377ba85d8c73185649ab9dc4e90ed35b02911168d8959ffd",
       "observedHash": "6bd1acd72bec8647377ba85d8c73185649ab9dc4e90ed35b02911168d8959ffd",
       "lastSuccessAt": "2026-10-23T22:08:47Z",
       "pendingReview": false,
-      "error": null
+      "error": "HTTP Error 403: Forbidden"
     },
     "s-ff84ae0cf870": {
       "id": "s-ff84ae0cf870",
       "url": "https://www.tesla.com/robotaxi",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
       "state": "unavailable",
-      "error": "Source text unavailable or a challenge page"
+      "error": "HTTP Error 403: Forbidden"
     },
     "s-c9f84c001b2c": {
       "id": "s-c9f84c001b2c",
       "url": "https://www.tesla.com/robotaxi/safety",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
-      "state": "ok",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
+      "state": "unavailable",
       "baselineHash": "d078b8bb854a5d32d737da67ed092bc3983ed83349143f25f29784ad1be18184",
       "observedHash": "d078b8bb854a5d32d737da67ed092bc3983ed83349143f25f29784ad1be18184",
       "lastSuccessAt": "2026-10-23T22:08:47Z",
       "pendingReview": false,
-      "error": null
+      "error": "HTTP Error 403: Forbidden"
     },
     "s-1c8cd934cb0d": {
       "id": "s-1c8cd934cb0d",
       "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828026066738/tsla-20261021-gen.pdf",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
       "state": "ok",
       "error": null,
       "baselineHash": "aa54399a30a20b7685f9a5369cf4b601d5b2919c45f5d524eb7528b21be097af",
       "observedHash": "aa54399a30a20b7685f9a5369cf4b601d5b2919c45f5d524eb7528b21be097af",
-      "lastSuccessAt": "2026-10-23T22:08:47Z",
+      "lastSuccessAt": "2026-10-24T06:44:53Z",
       "pendingReview": false
     },
     "s-b58b31837c2f": {
       "id": "s-b58b31837c2f",
       "url": "https://www.txdmv.gov/AVprogram",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
       "state": "ok",
       "baselineHash": "b7cb44268c1d78c7d2ca778459f6db3c131c0630f69a29a8c3d56c7f76768b13",
       "observedHash": "b7cb44268c1d78c7d2ca778459f6db3c131c0630f69a29a8c3d56c7f76768b13",
-      "lastSuccessAt": "2026-10-23T22:08:47Z",
+      "lastSuccessAt": "2026-10-24T06:44:53Z",
       "pendingReview": false,
       "error": null
     },
     "s-37faae23b50d": {
       "id": "s-37faae23b50d",
       "url": "https://txmccs.txdmv.gov/automated-vehicles/operators/AV8313426653583",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
       "state": "unavailable",
       "error": "Source text unavailable or a challenge page"
     },
     "s-7bb593b2c07d": {
       "id": "s-7bb593b2c07d",
       "url": "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
-      "state": "ok",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
+      "state": "unavailable",
       "baselineHash": "e99f906adb36a8836a36f23a29d2666ae52a64c2506572eaff7381d1f664196e",
       "observedHash": "e99f906adb36a8836a36f23a29d2666ae52a64c2506572eaff7381d1f664196e",
       "lastSuccessAt": "2026-10-23T22:08:47Z",
       "pendingReview": false,
-      "error": null
+      "error": "HTTP Error 403: Forbidden"
     },
     "s-b3eb5460565a": {
       "id": "s-b3eb5460565a",
       "url": "https://www.cpuc.ca.gov/regulatory-services/licensing/transportation-licensing-and-analysis-branch/autonomous-vehicle-programs",
-      "lastAttemptAt": "2026-10-23T22:08:47Z",
+      "lastAttemptAt": "2026-10-24T06:44:53Z",
       "state": "ok",
       "baselineHash": "1958a643f17954c18db893a8711d8c0a990bff56e027dad6cf33379990cca458",
       "observedHash": "1958a643f17954c18db893a8711d8c0a990bff56e027dad6cf33379990cca458",
-      "lastSuccessAt": "2026-10-23T22:08:47Z",
+      "lastSuccessAt": "2026-10-24T06:44:53Z",
       "pendingReview": false,
       "error": null
     }
