@@ -1,0 +1,47 @@
+name: Starship observatory checks
+on:
+  pull_request:
+    paths:
+      - 'starship*'
+      - 'data/starship-studio.json'
+      - 'scripts/build-starship-studio.mjs'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/starship-studio*'
+      - '.github/workflows/starship-studio-checks.yml'
+      - '.github/workflows/home-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  starship-observatory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned build and browser tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Verify schedule precision, records, sources, filters and saved HTML
+        run: node --test tests/starship-studio.test.mjs
+      - name: Verify reproducible saved page and frontend bundle
+        run: |
+          node scripts/build-starship-studio.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- starship.html data/starship-studio.json assets/js/manifest.json 'assets/js/starship.bundle.*.js'
+      - name: Responsive explorer and accessibility journeys
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/starship-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: starship-observatory-previews
+          path: /tmp/starship-observatory

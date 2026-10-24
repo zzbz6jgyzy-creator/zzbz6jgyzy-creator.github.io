@@ -41,12 +41,9 @@
       "live.js"
     ],
     "starship": [
-      "starship-data.js",
-      "starship-lab-data.js",
-      "starship.js",
-      "starship-lab.js",
-      "countup.js",
-      "live.js"
+      "starship-studio-model.js",
+      "starship-studio-view.js",
+      "starship-studio.js"
     ],
     "starlink": [
       "starlink-data.js",
@@ -205,10 +202,8 @@
     "starship.html": {
       "bundles": [
         "core",
-        "intel",
         "starship"
-      ],
-      "livePage": "starship"
+      ]
     },
     "starlink.html": {
       "bundles": [
