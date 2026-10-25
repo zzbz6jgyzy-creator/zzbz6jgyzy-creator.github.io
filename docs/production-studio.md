@@ -42,7 +42,7 @@ The page uses no paid service or API and doesn't scrape third-party estimates au
 - Builder: `scripts/build-production-studio.mjs`; writes the page, `data/production.csv` and five search entries while preserving unrelated search order.
 - The production bundle replaces the old bundle and removes this page's unused intelligence bundle/CSS.
 - Production owns its dated Dataset JSON-LD and CSV distribution. `scripts/build-seo.py` leaves it intact.
-- The Tesla overview page/snapshot is regenerated because it consumes the shared production dataset. Its design is unchanged.
+- The existing homepage build refreshes the Tesla overview from the shared production data after merge. Its design is unchanged.
 
 Storage key: `sd-production-desk-v1`. Only known quarter/metric/group/range/region choices are accepted. Choices are local to the browser, not account-synced. Shared comparison URLs include two quarter IDs only. Clipboard denial reveals a selectable link; storage denial keeps interactions working for the current visit.
 
