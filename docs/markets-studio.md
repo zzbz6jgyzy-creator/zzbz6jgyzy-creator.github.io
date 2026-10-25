@@ -40,3 +40,5 @@ The existing homepage pre-render workflow now invokes the Markets builder and st
 - A licensed real-time feed, market-cap/valuation engine or portfolio/brokerage connection would require a separate data and product decision. None is needed for this release; no paid service or API key was introduced.
 - More historical quarters can be added after checking original filings. Keep missing periods honest until that review happens.
 - A custom social-sharing image could replace the site's existing brand image later.
+
+The wider PR checks also found two pre-existing generated-page mismatches: the SpaceX hub retained an older shared-calendar snapshot, and Starship's saved media markup had been transformed after its source build. Their existing builders were rerun from unchanged main-branch source data. Only `spacex.html` and `starship.html` generated outputs accompany that maintenance; no financial/launch source records or unrelated page designs were changed. SpaceX's 10 and Starship's 13 model/build tests passed after regeneration.
