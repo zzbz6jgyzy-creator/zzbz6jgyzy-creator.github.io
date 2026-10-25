@@ -1,17 +1,58 @@
 {
-  "updated": "2026-10-25T20:30:42Z",
+  "updated": "2026-10-25T21:01:03Z",
   "items": [
     {
-      "id": "ed9f0c982d52",
+      "id": "48eef377ab66",
       "topic": "spacex",
-      "title": "Musk says SpaceX raised $40 billion in debt for GPUs",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNUXFtN2R4aGlycUhma055anhqaWRzSVFqRHg3NDJHQXpJb1ZXZGtqZF8wSENhc2xNTjlBNmJyMWdzaWdQZmU2d0NvWDJ1VzI4RlVCUG1ERDFnWlJpUmlEdTJDZUt2ckM1bjBleS11a3ZQaDF1QjByVzNYV1Y4YV9CWEFOYWFVaHhhM1l3d29kQm55MjFUUTlZWm9mVnlnamJBUWg3NWVR?oc=5",
-      "published": "2026-10-25T20:05:48Z",
+      "title": "Elon Musk says SpaceX was behind restrictions to Ukraine’s Starlink access",
+      "source": "The Washington Post",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPWl82WHg4VTJVUThiR0d5ejZaZ0lRaXhBTWZma3dMUXVkQkY5SGstT3BWNnBGY0RCdjVMX2Q4OVFlWFZoLWJZQW9pa3JXdnFZREEzTjdKeTEzLWJtU3U5Z1NuT1llelFqLTFLMkZxYmF2V2VYbFUtLVB2RktGX25nU2lpaHhLNjRTeUZ1Q0lDeDZGUUtBQV9CTndkU1VrS3JSb0xJbTdRZUJ0Smx5R0o1YjF4cDh2NkI2UlJv?oc=5",
+      "published": "2026-10-25T20:36:09Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "6ec7a75e065d",
+      "topic": "tesla",
+      "title": "Tesla Roadster’s Flying Stunts Get a Reality Check From an Engineer",
+      "source": "Autoblog",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZ0c5RENaRGtsVlpKRHJLOUpwQUkzdllKcUdUbHl4czBSNWhHRldEYW90TXdGZmZxRjVDZTZIWXE1VjJRZGMyRUw4STdQZHZIblNPbmhyY2dyWlJHVDJObnZldThnWGE2UjZVMG1Icjc3U1NOemZsd1kzM0pKQmcxQTJtVEhzdmhlbjNXRHJUcG0yTVM2TTF3RXBVVmM?oc=5",
+      "published": "2026-10-25T20:30:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.wT5tdymcYaHsZsTjPMKylQ&pid=News&w=640",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
+      "id": "b58c3f3aec4c",
+      "topic": "spacex",
+      "title": "Musk says SpaceX raised $40 billion in debt for GPUs By Reuters",
+      "source": "Investing.com",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNZFNXbWx0LXFmNjZSa3BjY1RPYmY5c2pKMHpTSUNjZHhwSzF1WDdZUmFyc0tRamtHaEE2Wk90OG9Fdk9rbXYyMFJrNy0xUUlvRjc4SU9vblRIYTZyY3hZMzh6a1pjY3FzaWFiaVhQQkc3cFVYYXk0MXRoVkN3WkVMbHN0bEw3LWh4clNnMGUxNV8zYkxQU1VRdktNMFAybl9KdVlPM1ZpaXBUeWw1?oc=5",
+      "published": "2026-10-25T20:26:15Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.zOBqJEqohylMpLbE-Ya9OA&pid=News&w=640",
       "kind": "general",
-      "score": 9
+      "score": 4,
+      "related": [
+        {
+          "source": "Reuters",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNUXFtN2R4aGlycUhma055anhqaWRzSVFqRHg3NDJHQXpJb1ZXZGtqZF8wSENhc2xNTjlBNmJyMWdzaWdQZmU2d0NvWDJ1VzI4RlVCUG1ERDFnWlJpUmlEdTJDZUt2ckM1bjBleS11a3ZQaDF1QjByVzNYV1Y4YV9CWEFOYWFVaHhhM1l3d29kQm55MjFUUTlZWm9mVnlnamJBUWg3NWVR?oc=5"
+        }
+      ]
+    },
+    {
+      "id": "ca721679b01a",
+      "topic": "spacex",
+      "title": "U.S. Allies Race to Escape SpaceX’s Orbit",
+      "source": "WSJ",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOR1ptb0tfN29VQjZGNXFnQ3BfSTZRd3hzVkY3R004ODR4THI3a1ljUG1tYTlZaHZOT1ZtY3R2RUJmWndBWUNlVkZDRlQyQlBfVFJ6UGFfNlhkLXpRN0IxVDZZU0l3NTF0U3JPcXBTQ1dpZnRMeTZZZXRvVXJ4d0NiNkFBTzI2clp2?oc=5",
+      "published": "2026-10-25T20:13:41Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.GT07sYzPC7h8Cay4Q5GezA&pid=News&w=640",
+      "kind": "general",
+      "score": 8
     },
     {
       "id": "57fe953f2c88",
@@ -36,48 +77,26 @@
       "score": 4
     },
     {
-      "id": "ca721679b01a",
-      "topic": "spacex",
-      "title": "U.S. Allies Race to Escape SpaceX’s Orbit",
-      "source": "WSJ",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOR1ptb0tfN29VQjZGNXFnQ3BfSTZRd3hzVkY3R004ODR4THI3a1ljUG1tYTlZaHZOT1ZtY3R2RUJmWndBWUNlVkZDRlQyQlBfVFJ6UGFfNlhkLXpRN0IxVDZZU0l3NTF0U3JPcXBTQ1dpZnRMeTZZZXRvVXJ4d0NiNkFBTzI2clp2?oc=5",
-      "published": "2026-10-25T19:36:47Z",
+      "id": "cec232037a95",
+      "topic": "tesla",
+      "title": "Tesla makes good on its Cybercab promise in just two weeks",
+      "source": "Teslarati",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9pb3V1OUROYk53OE4tTk8yaFp3SDExNEYwZXhuaDNRcUI5dWhLRktlQmNnRVBHVm9fdmUyU1pkd1NZQk9qMlJnWG5QOTRycmwzOGdZWlVGM3NJejBDelFxXzkwLTNhcEpaRmc?oc=5",
+      "published": "2026-10-25T19:40:33Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.GT07sYzPC7h8Cay4Q5GezA&pid=News&w=640",
-      "kind": "general",
-      "score": 8
+      "image": "https://www.bing.com/th?id=ONUT.XnMFZ7_XyUdKZP8_zRh7qQ&pid=News&w=640",
+      "kind": "milestone",
+      "score": 21
     },
     {
-      "id": "48eef377ab66",
-      "topic": "spacex",
-      "title": "Elon Musk says SpaceX was behind restrictions to Ukraine’s Starlink access",
-      "source": "The Washington Post",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPWl82WHg4VTJVUThiR0d5ejZaZ0lRaXhBTWZma3dMUXVkQkY5SGstT3BWNnBGY0RCdjVMX2Q4OVFlWFZoLWJZQW9pa3JXdnFZREEzTjdKeTEzLWJtU3U5Z1NuT1llelFqLTFLMkZxYmF2V2VYbFUtLVB2RktGX25nU2lpaHhLNjRTeUZ1Q0lDeDZGUUtBQV9CTndkU1VrS3JSb0xJbTdRZUJ0Smx5R0o1YjF4cDh2NkI2UlJv?oc=5",
-      "published": "2026-10-25T19:26:19Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "d5f70aea2627",
-      "topic": "spacex",
+      "id": "f34929c537d6",
+      "topic": "tesla",
       "title": "3 AI Infrastructure Stocks Riding The Tesla And SpaceX Compute Buildout",
       "source": "Yahoo Finance",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOZnIzTl95VmlzWS1jLWpfeHRaWHVTMUhUa1I3TDJuM3JzNGNFNHhaNDMySHhYNm15RlRoc1hwd3hOLXY5OXJrMXJlcXVKRWFaOUlqbkRITEYyUllRcU1MbTJxNTZqRHpkZzRWUFZ4RXhjWWY0ZnlzNWVrMjFyUmw3dG5kOGJYRWFlSVI3cmtNVURXR21WUjBWSW15V3RTZw?oc=5",
       "published": "2026-10-25T19:07:13Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "54e710bde426",
-      "topic": "tesla",
-      "title": "Based on Tesla's Latest Decision, the Cybertruck Is on Its Way Out; Will There Be a Replacement?",
-      "source": "autoevolution",
-      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxORE9ELTRVbHlEbWRydWlRaUVGUUR3X25LckJVY1IzYVU4cjdQMGFWemdEVDhMeHYwVmlVTDVIOC1uTU5wMlM0M1lhVVNYZDRwSU5jU0ZWWDhMZklzeWNiSXEyc0JaelNpSWRWd2c2UVJ5bnRfdnJieFZnby1NUzE2d3djSzU2M1hHQ1dPb2thQjNfb0U0anRIU25EUzgwanFlLXpLZlYyVFVIZm1DX29JaWFNNzl1MXlleG9VemxtNFJZclFING1wRFpfOEo4RTh6Q0h6ZVFmWQ?oc=5",
-      "published": "2026-10-25T18:59:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.QZ245GYklYTpmjdJJ8k6QA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.A2smQc_Id4UxfvkFY56ILg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -114,20 +133,20 @@
       "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPM2FvMEk4MFF5d0d3cDBiOTcxLW81U2IxdDY2SWt1R0NLUTR4eWRrWjltR2hwNktSVTZudXgyUC1waDJXUFdNMjlFcktuVVprWTJZOFlIUjNZZHFWVzdWRE5RZFBqaVJCWmZCS09EMFM5NEM5YTA2WGhkNVdDOEVkWW1lOVNkN0hEamlUaW94UndEZGhwY0Z3SzlJaDZnaUUzdi1Ibm80VDNuMjVBQXlKaEFTRWhqUWVyYnJOQ0Y2X0JoZjJyOTREN2p4UV9rZjZfanRzeWM4aE5yX1ZIOEZ0LW1DNDdZZmc?oc=5",
       "published": "2026-10-25T17:39:49Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.dH0IHfZtWci9viLF_MbyGw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "cec232037a95",
+      "id": "9a45175a6feb",
       "topic": "tesla",
-      "title": "Tesla makes good on its Cybercab promise in just two weeks",
-      "source": "Teslarati",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9pb3V1OUROYk53OE4tTk8yaFp3SDExNEYwZXhuaDNRcUI5dWhLRktlQmNnRVBHVm9fdmUyU1pkd1NZQk9qMlJnWG5QOTRycmwzOGdZWlVGM3NJejBDelFxXzkwLTNhcEpaRmc?oc=5",
-      "published": "2026-10-25T17:12:08Z",
+      "title": "LG to Supply Tesla With US$4.3 Billion of Batteries - Energy News, Top Headlines, Commentaries, Features & Events",
+      "source": "EnergyNow.com",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOV1BjNER0TEE5c2kzcGZHUXc5VzNYaVNMX1hmVTJScGdHWnN3Z0p5a3QxckhjVkJLQWZSXzZQc2UyYlZ2dnFLX2tsSE5jTlp0NkhuR0pzYlRjcmhVTjVKdTJvNlNjNHp0OEVheHBidUhBaDlWb2VHd0I5VmcyZmxMaFV5cFR1U0gy?oc=5",
+      "published": "2026-10-25T16:21:13Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.XnMFZ7_XyUdKZP8_zRh7qQ&pid=News&w=640",
-      "kind": "milestone",
-      "score": 21
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "cdf370e766b9",
@@ -136,17 +155,6 @@
       "source": "Mashable",
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1pcmdod25lTDRmVlpaR0dGWnBfVWtLNEdPWlhHQmlvQUlMcm4wclhpR1JOcy1iWFFBMTZEZDFCZ1ZocTVZZjdYbzZVMDdvUWNQMkhNeHBEYVZPOF9uMk13c05rUGN3S0hjejRRZWJwNGFiMVU?oc=5",
       "published": "2026-10-25T16:08:57Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "b1337c4fbdcd",
-      "topic": "tesla",
-      "title": "Tesla Stock Is Down 17% Over the Past Year. Buy Now or Wait for Merger Terms?",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQYWc1aFFlb1ZzbVozX2ZDNnk2WUl4QkhmdGVBOUx6azhEam5XbklzT3NFZ3VDOGxfR3JtWTM2NkdoM2ZfSm15amF0QUZzQi10enFITVRRaFVSVThoamFrckZvMkFILTNudDByVHlTdkFuaUFmUjBpM2lWLUlJNzJUU25GaHZIRHhnb09iMVFsQW5ZdTA?oc=5",
-      "published": "2026-10-25T15:56:20Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -162,6 +170,17 @@
       "kind": "speculation",
       "flag": "speculation",
       "score": -5
+    },
+    {
+      "id": "46eecfbd6ad4",
+      "topic": "spacex",
+      "title": "Prediction: This Will Be SpaceX's Stock Price by the End of 2030",
+      "source": "The Motley Fool",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPV0kzNU9pM2lFWHJXSGxqMU16eDRKV05lME8yaEctMC1GbFM5UjBwOFFZajg4Wlh1bXZyTUI1NXE1ZVJNRldVdm03TkdHaUdEbnJrck1lckhYX1dWdGpqeDNEQnVpb28wdUUyd09NaThGb0pKYlRVdWxYaHJWVzFseE1hSWFmdnNvMm1UdVhxUlVwTUtq?oc=5",
+      "published": "2026-10-25T15:47:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": -2
     },
     {
       "id": "52a0b952d742",
@@ -182,7 +201,6 @@
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPOXBvdGNZdU9CMWpZMWZsSUhGekE3Wkg2M1JVSDlYRTlQM1BTVjRqNGVfbl9vbThtRnh0TXA1eUxOdWhoRDNicXRmVkJ6aVlRdkRaM2tESVg5R1gyRFFzWlZFMXpmcXNmTjlrdmd0Z0JmVDZDTnk2VEdvN3R4WktndktYdG03SmNReDJaN1R5UzNZdTk2LTRGb2lUaDZTQUtmSmlHRGNQQjdJZXJoR0NBdEpWd0VnQQ?oc=5",
       "published": "2026-10-25T15:31:51Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.mBfT4DHr3int-POpIIncaQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -216,29 +234,7 @@
       "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOUHl6RGNSRGVXYVVDaURSSG1qTjctVFVmTHRtSHlZdVVTS09IQ25jcGdVQnQwWTBkSlRCLXlicFRhSmtwbTNFUHNWT05qRjB3blM3aVdBN01hSFRTS19KMklGaXY4QnRvYkNGY3hJWHM0RmVIU0xiZFkwRFE3b1hMeXkwc19fNl95UGN3Y1VNVW9YN0o2Y29ZUTVQSlNLX1ZWRy1NdUhn?oc=5",
       "published": "2026-10-25T15:30:00Z",
       "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "3049c03b4a18",
-      "topic": "tesla",
-      "title": "Woman Buys Brand-New Tesla, Notices A Crack In The Windshield. Then She Tries To Get Tesla To Fix It",
-      "source": "Motor1.com",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9nZEp4WW50b3Y5ZFNuQlFlOWRGeUdiOVBfUnlxQ0JGVl8xX2plVFBVeXRBY0JPcVg4c2RJNFN2WnBoUXEwc2NvNTV5dWdFTVJERUJDU2FoWjdGLU43ZTVvME14NTl0MEUyQks5bmFiZ29ZUQ?oc=5",
-      "published": "2026-10-25T15:08:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "bed8310a2f44",
-      "topic": "spacex",
-      "title": "Prediction: This Will Be SpaceX's Stock Price by the End of 2030",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcV9Ra2l3bXdSeWRyblBXdlZxTklMZjhQdkJGYlZqa2U5T1R6ZzhoWDNHYzdPVXN2YVRsbEhYRTF3blBsZWJsUzVxT284SHhqanBEODhuTF9uZ2FDV05EOW5vSmZQc09wLWJET1B1ampVOERkTERidjlFbUNsckVpUW9sOFFPMzJHOWZHTmQzdW9FUkZyS1RKS2I0c0twcUsz?oc=5",
-      "published": "2026-10-25T15:07:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.s2zgsgMhcSxXqcgFlt9t8w&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.0hH7GwV8rtBMed86dDkIMw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -262,6 +258,17 @@
       "published": "2026-10-25T14:56:47Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.msXfFi3CbMayTfKyEL8f_Q&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "609066ec2aba",
+      "topic": "grok",
+      "title": "Study Finds Grok and GPT Models Show Opposing Partisan Leans on U.S. Midterm Races",
+      "source": "AI Insider",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOT2gwaWpteW45UXNHN2FDMVN3dTZfTERCS0VhWEtkWlg4ZW9CWFFoRkd6SDdtcUFDdXZHSWE5elU3dWxwUGlJVHBpRVVpRHNyM0IwdWxRWU5heUthU3FYQ0JyT3pYS1JHRDhtV2syN2NSYldIS3ZyQjZzZjNtaDlYc2EzSGxCREQ0cEpiLUpCRmFJWWF0RW1XUjJMdDBTbUJ6NkdUVWhXTmZkYmhhZEpaZjNKY25Xbl80ejFj?oc=5",
+      "published": "2026-10-25T14:28:46Z",
+      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -299,6 +306,18 @@
       "score": 4
     },
     {
+      "id": "bc2504878b7d",
+      "topic": "tesla",
+      "title": "A Tesla Crashed Into a Liquor Store—Its Driver Said She Was Using Self-Driving",
+      "source": "Yahoo",
+      "url": "https://www.yahoo.com/news/us/articles/tesla-crashed-liquor-store-driver-194450645.html",
+      "published": "2026-10-25T12:44:00Z",
+      "snippet": "A Tesla smashed through the glass doors of a liquor store in Doral, Florida, and its driver told police she had been trying to use the car's self-driving mode when it suddenly accelerated.",
+      "image": "https://www.bing.com/th?id=ONUT.UEcJFMu3bQNYBVp7beydfQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "dd9726a81061",
       "topic": "spacex",
       "title": "US military gives Elon Musk’s SpaceX access to sensitive tracking data",
@@ -306,6 +325,18 @@
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQa1dzVjhxa0VTU2tZZ3MxbjVHM2std2Z3MkVNOGxvRlE5WVdXem02eWs5amhZdHNPXzg0d1EtbVl6WlBXNGFTem9ydWVobkJPMmpMVVNvdy1YQW9nRGZuR0JHaElvS094RERfZVZ5OXJvdVB4b0hCdHVRZnFUOWUyYTN0QVlpTVlWU0Zhd1B3?oc=5",
       "published": "2026-10-25T12:01:00Z",
       "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "8123a63faf63",
+      "topic": "tesla",
+      "title": "Based on Tesla's Latest Decision, the Cybertruck Is on Its Way Out; Will There Be a Replacement?",
+      "source": "autoevolution",
+      "url": "https://www.autoevolution.com/news/based-on-tesla-s-latest-decision-the-cybertruck-is-on-its-way-out-will-there-be-a-replacement-277529.html",
+      "published": "2026-10-25T11:58:00Z",
+      "snippet": "Tesla quietly canceled the right-hand-drive Cybertruck in Australia and New Zealand, a move that may pave the way for scrapping the entire Cybertruck program ...",
+      "image": "https://www.bing.com/th?id=ONUT.QZ245GYklYTpmjdJJ8k6QA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -356,6 +387,17 @@
       "score": 4
     },
     {
+      "id": "d1b18c7003ad",
+      "topic": "grok",
+      "title": "The Office of the President of Ukraine responds to Elon Musk",
+      "source": "frontnews.eu",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9iQllTZE9RblphOEZNSVFXVGNkeEJ4VHJmcVpVa0NjOGNoRzVSMndvaWNXTDBKSU1wU2JjcXZoNGdfRnpmOWZ0akFtLXd1Y3JCTEJEdw?oc=5",
+      "published": "2026-10-25T10:56:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "b4be4d4b3c60",
       "topic": "tesla",
       "title": "2026 Tesla Model Y: Driven, Tested, Rated",
@@ -372,17 +414,6 @@
       "title": "14 coolest Tesla features that put your regular car to shame",
       "source": "Mashable",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBEMXJKaDdnY0ZtT21VSWpwRzlscGEyRjFQMVFjNXU5Y0VGenozWkFzMHU5RjBMN0V4WW9IellTQTNZMFpIeFlrQTdKR0RiRVpuMS1feWgzY3kzZHU3TWVHNw?oc=5",
-      "published": "2026-10-25T10:00:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "bd8d7fc0d64f",
-      "topic": "spacex",
-      "title": "SpaceX, Meta, and other hyperscalers are dropping clues you should not ignore",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQLVUxNndKdElBX2hKblgxY1o4bzFmb2lsY3hEUzJEdGJpLTNvQ05iR0NrVUJsQS14MnI0WnVqRHUyRERiSXlRYXZzbzQxZm5qTUxwSWVKVnIwOXVlR01RYjRzVHZ2bktCX08zdzBzcXN0a25tcUFzdTdEUjlXSjlaWDJnc3ZQZGlReWNtVGFrdVdWRG1zTFV5SGhpV19TOHVuZVJjaFREcWZ0RGxlSlNlUlZDSFM0THgwSG42S295SVprOFBYN2ZQNEhXNGc?oc=5",
       "published": "2026-10-25T10:00:00Z",
       "snippet": "",
       "kind": "general",
@@ -411,18 +442,6 @@
       "image": "https://www.bing.com/th?id=ONUT.nhtBhXxPZQG4urPI1MuDdQ&pid=News&w=640",
       "kind": "launch",
       "score": 12
-    },
-    {
-      "id": "b1a612c838d1",
-      "topic": "spacex",
-      "title": "Schiff: Hegseth should testify over Starlink in Ukraine—\"Somebody is lying\"",
-      "source": "Newsweek on MSN",
-      "url": "https://www.msn.com/en-us/news/other/schiff-hegseth-should-testify-over-starlink-in-ukraine-somebody-is-lying/ar-AA2g2fZA",
-      "published": "2026-10-25T09:23:00Z",
-      "snippet": "Ukraine said access to the service had been restricted in the country without advance warning, disrupting battlefield operations.",
-      "image": "https://www.bing.com/th?id=ORMS.9175672568ab3b3ed8425e952da71538&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "6208dab2f451",
@@ -459,17 +478,6 @@
       "score": 4
     },
     {
-      "id": "1751648dfac3",
-      "topic": "grok",
-      "title": "OpenAI, Meta And SpaceX Execs Are Trading Barbs Over Their Respective AI Agents on X",
-      "source": "OfficeChai",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOVzllSGg5OTNSanZnSWZNVkR1ZlhHRFFVZ1llcG40R1VYaXVQYzF3UmFaOUVzTVNCVkZXLWNKN01sUkZEaWZESE9NTFhFbFZ1RU1ianlLQzd6dk1CdTdPZzVXWVUxSDhKcUlmUWs5U2xEOHRGMHlpUEFLZjQ3NnFJSFRtT3BtVWVtVTNrQUZTZFh0aWdZSnZBT0JRcFUyWUxQeWRXVzlMQmpsOWd6b0Zj?oc=5",
-      "published": "2026-10-25T07:48:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "78f370fc467c",
       "topic": "spacex",
       "title": "Musk accuses Ukraine of violating Starlink’s terms of service following dispute over coverage",
@@ -490,6 +498,18 @@
       "published": "2026-10-25T05:47:00Z",
       "snippet": "Tesla said it will refund customers the money they put down as a deposit, roughly $105 in Australia (A150), in an email to customers first spotted by Electrek.",
       "image": "https://www.bing.com/th?id=ONUT.ojB8BfSfcegg-cxdZvQBOg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "e839e5ad2523",
+      "topic": "tesla",
+      "title": "Why would Musk merge SpaceX and Tesla?",
+      "source": "St. Louis Post-Dispatch",
+      "url": "https://www.stltoday.com/news/nation-world/business/article_f6077dc2-2159-5ccc-8a63-939a030c71cf.html",
+      "published": "2026-10-25T05:30:00Z",
+      "snippet": "Elon Musk believes a merger between Tesla and SpaceX is a good idea, publicly backing an idea that would create a company worth about $3.5 trillion.",
+      "image": "https://www.bing.com/th?id=ONUT.2qrCKEqeeZ0FWedQE3xy4A&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -539,13 +559,13 @@
       "score": 4
     },
     {
-      "id": "62abebe66b39",
+      "id": "b5ffad7f6579",
       "topic": "tesla",
       "title": "Tesla will let you add your Model Y to its robotaxi fleet with the FSD V15 update",
       "source": "Digital Trends on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-will-let-you-add-your-model-y-to-its-robotaxi-fleet-with-the-fsd-v15-update/ar-AA2g1I4o?ocid=BingNewsVerp",
+      "url": "https://www.msn.com/en-us/autos/general/tesla-will-let-you-add-your-model-y-to-its-robotaxi-fleet-with-the-fsd-v15-update/ar-AA2g1I4o",
       "published": "2026-10-25T01:44:36Z",
-      "snippet": "Tesla is targeting Q2 2027 for the first customer-owned Model Y vehicles to join its robotaxi fleet through FSD V15, though earnings and insurance details are still missing.The Latest Tech News, Deliv",
+      "snippet": "Tesla is targeting Q2 2027 for the first customer-owned Model Y vehicles to join its robotaxi fleet through FSD V15, though earnings and insurance details are still missing.The Latest Tech News, Deliv ...",
       "image": "https://www.bing.com/th?id=ONUT.8Vswx6pcGATPqQ4GgZf9KQ&pid=News&w=640",
       "kind": "software",
       "score": 11
@@ -652,17 +672,6 @@
       "score": 4
     },
     {
-      "id": "f94e03e11c23",
-      "topic": "grok",
-      "title": "Grok and OpenAI’s GPT Split on Midterm Races: 92% vs 97%",
-      "source": "FourWeekMBA",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPOXFuRVRjcTlaSEh5RjFFbndtalBOUGZFNGRmeVJ6VjJ1RFdHbE1WZU85LVVGWEJLeWYtN3ZMOWhsSDdhVnlZYlVYLUgzY0FLSV9mYWdBUjdGZGNXWFg3dXpiTVE5Q1N0b0JQUkFjUjlHZERqMUljS3pHLU5oUFcyS1kzbGdtbVU?oc=5",
-      "published": "2026-10-24T20:49:01Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "8928ff9779a8",
       "topic": "spacex",
       "title": "Elon Musk says Ukraine broke Starlink rules with drone strikes",
@@ -671,6 +680,18 @@
       "published": "2026-10-24T14:30:01Z",
       "snippet": "The dispute highlights Ukraine’s reliance on satellite communications for military operations as the war with Russia continues.",
       "image": "https://www.bing.com/th?id=ORMS.bca27724022f367d3411df55a9f35593&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "6193ce354af1",
+      "topic": "spacex",
+      "title": "Starlink seems to be working normally again in Ukraine",
+      "source": "TechCrunch on MSN",
+      "url": "https://www.msn.com/en-us/news/other/starlink-seems-to-be-working-normally-again-in-ukraine/ar-AA2fZRN9",
+      "published": "2026-10-24T13:46:34Z",
+      "snippet": "Elon Musk reportedly ordered SpaceX to throttle Ukraine's Starlink access.",
+      "image": "https://www.bing.com/th?id=ORMS.d66f4575c45e4e2e4ee3abda7976fa0f&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -697,18 +718,6 @@
       "image": "https://www.bing.com/th?id=ONUT.HpBMeHlzcgOu8qV3Ztbz1Q&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "377d3ddb225c",
-      "topic": "tesla",
-      "title": "Tesla (TSLA) Q3 2026 Earnings: Growth Accelerates with 67% Increase in FSD Subscriptions and Rapid Robotaxi Expansion! Meanwhile, Operating Profit Drops 56% Due to Heavy ...",
-      "source": "note",
-      "url": "https://note.com/nyankorobo/n/n5e0690524309?hl=en",
-      "published": "2026-10-24T08:53:00Z",
-      "snippet": "Core business momentum is recovering, but profits are significantly squeezed by 'investments in the future'Tesla's Q3 2026 earnings report was 'a report where growth potential is strong, but caution ...",
-      "image": "https://www.bing.com/th?id=ONUT.uJp12qdgY29MM2kyKCvGcg&pid=News&w=640",
-      "kind": "software",
-      "score": 11
     }
   ]
 }
