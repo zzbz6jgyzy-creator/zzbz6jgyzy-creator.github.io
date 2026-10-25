@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T08:51:52Z",
+  "updated": "2026-10-25T09:50:52Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3363,
@@ -8,7 +8,7 @@
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
-      "count": 104,
+      "count": 105,
       "fleet": 3363,
       "percent": 3.1,
       "fsd": null,
@@ -53,19 +53,19 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 99,
+        "AU": 100,
         "NZ": 5
       },
-      "pending": 36,
+      "pending": 35,
       "firstSeen": "2026-10-24T19:52:52Z",
-      "lastSeen": "2026-10-25T08:00:15Z"
+      "lastSeen": "2026-10-25T09:34:44Z"
     },
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 35,
+      "count": 37,
       "fleet": 3363,
-      "percent": 1.0,
+      "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -108,17 +108,17 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 33,
-        "CA": 2
+        "US": 34,
+        "CA": 3
       },
-      "pending": 90,
+      "pending": 89,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-25T08:15:18Z"
+      "lastSeen": "2026-10-25T09:35:38Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 225,
+      "count": 226,
       "fleet": 3363,
       "percent": 6.7,
       "fsd": null,
@@ -164,8 +164,8 @@
         "DE",
         "FR",
         "IT",
-        "DK",
         "CA",
+        "DK",
         "NL",
         "ES",
         "AT",
@@ -198,8 +198,8 @@
         "DE": 18,
         "FR": 13,
         "IT": 8,
+        "CA": 8,
         "DK": 8,
-        "CA": 7,
         "NL": 7,
         "ES": 6,
         "AT": 5,
@@ -226,9 +226,9 @@
         "MY": 1,
         "QA": 1
       },
-      "pending": 93,
+      "pending": 91,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-25T08:47:44Z"
+      "lastSeen": "2026-10-25T09:33:20Z"
     },
     {
       "id": "2026.38.5.5",
@@ -377,9 +377,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 1027,
+      "count": 1028,
       "fleet": 3363,
-      "percent": 30.5,
+      "percent": 30.6,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -425,7 +425,7 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 961,
+        "US": 962,
         "CA": 59,
         "MX": 4,
         "UA": 2,
@@ -433,7 +433,7 @@
       },
       "pending": 39,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-25T05:45:24Z"
+      "lastSeen": "2026-10-25T09:44:44Z"
     },
     {
       "id": "2026.38.5",
