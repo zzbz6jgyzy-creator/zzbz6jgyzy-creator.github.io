@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T16:51:01Z",
+  "updated": "2026-10-25T17:46:37Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3365,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
-      "count": 119,
+      "count": 120,
       "fleet": 3365,
-      "percent": 3.5,
+      "percent": 3.6,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -53,19 +53,19 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 112,
+        "AU": 113,
         "NZ": 7
       },
-      "pending": 24,
+      "pending": 22,
       "firstSeen": "2026-10-24T19:52:52Z",
-      "lastSeen": "2026-10-25T16:49:09Z"
+      "lastSeen": "2026-10-25T17:17:43Z"
     },
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 71,
+      "count": 74,
       "fleet": 3365,
-      "percent": 2.1,
+      "percent": 2.2,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -108,17 +108,17 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 68,
+        "US": 71,
         "CA": 3
       },
-      "pending": 60,
+      "pending": 57,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-25T16:08:31Z"
+      "lastSeen": "2026-10-25T17:18:09Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 234,
+      "count": 237,
       "fleet": 3365,
       "percent": 7.0,
       "fsd": null,
@@ -193,9 +193,9 @@
         "TR"
       ],
       "countryCounts": {
-        "US": 75,
-        "GB": 35,
-        "DE": 18,
+        "US": 76,
+        "GB": 36,
+        "DE": 19,
         "FR": 14,
         "DK": 9,
         "IT": 8,
@@ -226,9 +226,9 @@
         "MY": 1,
         "TR": 1
       },
-      "pending": 83,
+      "pending": 89,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-25T15:23:53Z"
+      "lastSeen": "2026-10-25T17:13:20Z"
     },
     {
       "id": "2026.38.5.5",
@@ -621,7 +621,7 @@
         "CO": 1,
         "IE": 1
       },
-      "pending": 10,
+      "pending": 5,
       "firstSeen": "2026-10-08T01:27:55Z",
       "lastSeen": "2026-10-25T14:19:30Z"
     },
@@ -1006,7 +1006,7 @@
         "MA": 1,
         "TR": 1
       },
-      "pending": 11,
+      "pending": 9,
       "firstSeen": "2026-09-23T02:08:40Z",
       "lastSeen": "2026-10-25T13:56:42Z"
     },
