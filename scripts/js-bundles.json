@@ -151,7 +151,9 @@
       "optimus.js"
     ],
     "production": [
-      "production.js"
+      "production-studio-model.js",
+      "production-studio-view.js",
+      "production-studio.js"
     ],
     "promise-tracker": [
       "promise-tracker.js"
@@ -394,7 +396,6 @@
     "production.html": {
       "bundles": [
         "core",
-        "intel",
         "production"
       ],
       "grow": [

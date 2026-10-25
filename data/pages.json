@@ -357,9 +357,33 @@
     },
     {
       "url": "/production.html",
-      "title": "Tesla production & deliveries",
-      "tag": "Trackers",
-      "summary": "Official Tesla IR quarterly production, deliveries and energy GWh. Year-over-year only when both quarters were opened."
+      "title": "Tesla Production & Deliveries",
+      "tag": "Tesla",
+      "summary": "Explore Tesla production, deliveries and energy storage with official quarterly data, interactive charts, quarter comparisons, a factory explorer and CSV downloads."
+    },
+    {
+      "url": "/production.html#trends",
+      "title": "Tesla production and delivery charts",
+      "tag": "Tesla",
+      "summary": "Quarterly vehicles, energy storage and annual or year-to-date comparisons from Tesla IR."
+    },
+    {
+      "url": "/production.html#compare",
+      "title": "Compare Tesla quarters",
+      "tag": "Tesla",
+      "summary": "Choose any two quarters and compare deliveries, production and energy deployments."
+    },
+    {
+      "url": "/production.html#factories",
+      "title": "Tesla factory explorer",
+      "tag": "Tesla",
+      "summary": "Regional manufacturing programmes and installed annual capacity from Tesla’s shareholder deck."
+    },
+    {
+      "url": "/production.html#data",
+      "title": "Tesla production source data",
+      "tag": "Tesla",
+      "summary": "Official quarterly figures, primary source links and a complete CSV download."
     },
     {
       "url": "/autonomy.html",

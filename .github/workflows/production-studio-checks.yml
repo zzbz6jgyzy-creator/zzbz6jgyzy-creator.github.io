@@ -1,0 +1,45 @@
+name: Tesla production desk checks
+on:
+  pull_request:
+    paths:
+      - 'production.html'
+      - 'production-studio*'
+      - 'data/production*'
+      - 'data/pages.json'
+      - 'scripts/build-production-studio.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/production-studio*'
+      - '.github/workflows/production-studio-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  production-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned verification tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Verify official data, comparisons and deterministic build
+        run: |
+          node --test tests/production-studio.test.mjs tests/tesla-overview.test.mjs
+          node scripts/build-production-studio.mjs
+          node scripts/build-tesla-overview.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- production.html data/production.csv data/pages.json data/tesla-overview.json tesla.html assets/js
+      - name: Responsive and interaction checks
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/production-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-studio-previews
+          path: /tmp/production-studio

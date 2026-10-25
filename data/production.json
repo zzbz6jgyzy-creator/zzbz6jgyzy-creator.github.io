@@ -1,8 +1,64 @@
 {
-  "updated": "2026-10-19",
-  "note": "All figures come from Tesla’s investor relations production, delivery and energy tables. “Other Models” is Tesla’s own category. Energy GWh is storage deployed, not vehicles. Year-over-year figures for deliveries, production and energy appear only when both quarters were copied from opened IR pages. Q4 2025 has no opened year-ago table.",
+  "updated": "2026-10-25",
+  "note": "Tesla Investor Relations quarterly production, delivery and energy-storage deployment figures. Model 3/Y and Other Models retain Tesla’s reported groupings. Q1 2024 energy was reported as 4,053 MWh, converted exactly to 4.053 GWh. Published annual energy totals can differ from sums of individually rounded quarters.",
   "source": "Tesla Investor Relations",
   "quarters": [
+    {
+      "id": "Q1 2024",
+      "periodEnd": "2024-03-31",
+      "published": "2024-04-02",
+      "production": 433371,
+      "deliveries": 386810,
+      "model3yProduction": 412376,
+      "model3yDeliveries": 369783,
+      "otherProduction": 20995,
+      "otherDeliveries": 17027,
+      "energyGwh": 4.053,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-vehicle-production-deliveries-and-date-financial-results-webcast-first-quarter-2024",
+      "sourceTitle": "Tesla Q1 2024 Production, Deliveries & Deployments"
+    },
+    {
+      "id": "Q2 2024",
+      "periodEnd": "2024-06-30",
+      "published": "2024-07-02",
+      "production": 410831,
+      "deliveries": 443956,
+      "model3yProduction": 386576,
+      "model3yDeliveries": 422405,
+      "otherProduction": 24255,
+      "otherDeliveries": 21551,
+      "energyGwh": 9.4,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-vehicle-production-deliveries-and-date-financial-results-webcast-second-quarter-2024",
+      "sourceTitle": "Tesla Q2 2024 Production, Deliveries & Deployments"
+    },
+    {
+      "id": "Q3 2024",
+      "periodEnd": "2024-09-30",
+      "published": "2024-10-02",
+      "production": 469796,
+      "deliveries": 462890,
+      "model3yProduction": 443668,
+      "model3yDeliveries": 439975,
+      "otherProduction": 26128,
+      "otherDeliveries": 22915,
+      "energyGwh": 6.9,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-third-quarter-2024-production-deliveries-and-deployments",
+      "sourceTitle": "Tesla Q3 2024 Production, Deliveries & Deployments"
+    },
+    {
+      "id": "Q4 2024",
+      "periodEnd": "2024-12-31",
+      "published": "2025-01-02",
+      "production": 459445,
+      "deliveries": 495570,
+      "model3yProduction": 436718,
+      "model3yDeliveries": 471930,
+      "otherProduction": 22727,
+      "otherDeliveries": 23640,
+      "energyGwh": 11.0,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-fourth-quarter-2024-production-deliveries-and-deployments",
+      "sourceTitle": "Tesla Q4 2024 Production, Deliveries & Deployments"
+    },
     {
       "id": "Q1 2025",
       "periodEnd": "2025-03-31",
@@ -100,6 +156,22 @@
       "energyGwh": 13.7,
       "sourceUrl": "https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments",
       "sourceTitle": "Tesla Third Quarter 2026 Production, Deliveries & Deployments"
+    }
+  ],
+  "annualTotals": [
+    {
+      "year": 2024,
+      "production": 1773443,
+      "deliveries": 1789226,
+      "energyGwh": 31.4,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-fourth-quarter-2024-production-deliveries-and-deployments"
+    },
+    {
+      "year": 2025,
+      "production": 1654667,
+      "deliveries": 1636129,
+      "energyGwh": 46.7,
+      "sourceUrl": "https://ir.tesla.com/press-release/tesla-fourth-quarter-2025-production-deliveries-deployments"
     }
   ]
 }
