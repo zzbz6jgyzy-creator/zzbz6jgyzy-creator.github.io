@@ -35,7 +35,7 @@
     const base=a.image.replace(/\.(jpg|jpeg|png|webp)$/i,''),fallback=a.image;
     // The data builder selects existing derivatives; do not invent image variants.
     const image=a.picture?picture(a.picture.base,a.title,{widths:a.picture.widths,ratio:a.picture.ratio}):`<picture><img src="${e(fallback)}" alt="${e(a.title)}" width="1200" height="675" loading="lazy" decoding="async"/></picture>`;
-    return `<article class="sx-story" data-sx-story="${M.topic(a)}"><a class="sx-story-photo" href="${e(a.url)}">${image}</a><div><p class="sx-kicker">${e(a.tag||'SpaceX')} / <time datetime="${e(a.date)}">${e(a.date.slice(0,10))}</time></p><h3><a href="${e(a.url)}">${e(a.title)}</a></h3><p>${e(a.summary)}</p><a class="sx-text-link" href="${e(a.url)}">Read the story ${arrow}</a></div></article>`;
+    return `<article class="sx-story" data-sx-story="${M.topic(a)}"><a class="sx-story-photo" href="${e(a.url)}">${image}</a><div><p class="sx-kicker">${e(a.tag||'SpaceX')} / <time datetime="${e(a.date)}">${e((v=>/^\d{4}-\d{2}-\d{2}/.test(String(v||''))?new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(String(v).slice(0,10)+'T12:00:00Z')):String(v||''))(a.date))}</time></p><h3><a href="${e(a.url)}">${e(a.title)}</a></h3><p>${e(a.summary)}</p><a class="sx-text-link" href="${e(a.url)}">Read the story ${arrow}</a></div></article>`;
   }
   return {arrow,picture,reference,launches,next,program,craft,story};
 });

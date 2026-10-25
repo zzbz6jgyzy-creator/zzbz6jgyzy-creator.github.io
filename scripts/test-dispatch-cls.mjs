@@ -6,7 +6,7 @@ const ok = (name) => console.log("PASS", name);
 const bad = (name, msg) => { fail.push(name + ": " + msg); console.log("FAIL", name, msg); };
 
 const disp = await (await fetch(BASE + "/dispatch.html")).text();
-if (/page-hero[\s\S]*?<h1>Original reporting<\/h1>/.test(disp) && !/page-hero[\s\S]*reveal delay-2/.test(disp)) ok("dispatch hero no reveal");
+if (/page-hero[\s\S]*?<h1>[^<]+<\/h1>/.test(disp) && !/page-hero[\s\S]*reveal delay-2/.test(disp)) ok("dispatch hero no reveal");
 else bad("dispatch hero no reveal", "reveal still on hero");
 if (disp.includes('data-disp-topic="all"') && disp.includes('data-disp-topic="tesla"')) ok("static chips");
 else bad("static chips", "chips missing from HTML");

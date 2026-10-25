@@ -44,7 +44,7 @@
     const update=()=>{
       for(const select of document.querySelectorAll('[data-compare]')){const key=select.dataset.compare,config=data.configs.find(c=>c.id===select.value);if(!config)continue;document.querySelector(`[data-compare-head="${key}"]`).textContent=config.label;for(const cell of document.querySelectorAll(`[data-compare-cell^="${key}:"]`)){const field=cell.dataset.compareCell.split(':')[1];cell.textContent=field==='hardware'?config.hardware:config.version[field]||'Not reported';}}
       for(const row of document.querySelectorAll('.lx-compare tbody tr')){const cells=row.querySelectorAll('td');row.classList.toggle('is-different',cells.length===2&&cells[0].textContent!==cells[1].textContent);}
-      document.querySelector('[data-tracker-stamp]').textContent=`Tracker snapshot · ${data.updated}. Reported versions, not confirmation for your VIN.`;
+      document.querySelector('[data-tracker-stamp]').textContent=`Tracker as of ${(v=>/^\d{4}-\d{2}-\d{2}/.test(String(v||''))?new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(String(v).slice(0,10)+'T12:00:00Z')):String(v||''))(data.updated)}. Reported versions, not confirmation for your VIN.`;
     };
     document.querySelectorAll('[data-compare]').forEach(select=>select.addEventListener('change',update));update();
   }catch{/* retain the complete dated table */}}

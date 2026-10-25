@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "editorial": {
     "schemaVersion": 1,
-    "updated": "2026-10-23",
-    "revision": "2026-10-23.1",
+    "updated": "2026-10-25",
+    "revision": "2026-10-25.1",
     "scope": "Tesla Cybercab and Model Y Robotaxi",
     "sources": [
       {
@@ -95,12 +95,12 @@
         "publishedAt": null
       },
       {
-        "id": "s-b35c094ac663",
-        "url": "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/",
-        "label": "Tesla Q3 call reporting: Dallas Cybercab expansion",
-        "type": "media",
-        "checkedAt": null,
-        "publishedAt": "2026-10-21"
+        "id": "s-6e3ef17542df",
+        "label": "Tesla Q3 2026 earnings call: Dallas Cybercab rides next month (transcript, The Motley Fool)",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/10/22/tesla-tsla-q3-2026-earnings-call-transcript/",
+        "type": "manufacturer",
+        "publishedAt": "2026-10-22",
+        "checkedAt": "2026-10-25"
       },
       {
         "id": "s-9b046acf944b",
@@ -111,20 +111,20 @@
         "publishedAt": null
       },
       {
-        "id": "s-286feb973f19",
-        "url": "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/",
-        "label": "Reporting of Tesla’s Austin Cybercab fleet statement",
-        "type": "media",
-        "checkedAt": null,
-        "publishedAt": "2026-10-10"
+        "id": "s-ea5d5c90d766",
+        "label": "Tesla Robotaxi on X: 300+ Cybercabs serving Austin",
+        "url": "https://x.com/robotaxi/status/2108981691436224816",
+        "type": "manufacturer",
+        "publishedAt": "2026-10-10",
+        "checkedAt": "2026-10-25"
       },
       {
-        "id": "s-4af35a2b22f3",
-        "url": "https://www.notateslaapp.com/news/4004/tesla-launches-unsupervised-robotaxi-service-in-dallas-and-houston",
-        "label": "Dallas and Houston launch reporting, with Tesla announcement",
-        "type": "media",
-        "checkedAt": null,
-        "publishedAt": "2026-04-18"
+        "id": "s-5c0f1eaa7aec",
+        "label": "Tesla Robotaxi on X: service rolling out in Dallas and Houston",
+        "url": "https://x.com/robotaxi/status/2045564609504116771",
+        "type": "manufacturer",
+        "publishedAt": "2026-04-18",
+        "checkedAt": "2026-10-25"
       },
       {
         "id": "s-6b4af7121484",
@@ -231,10 +231,10 @@
           "status": "announced",
           "evidence": [
             "s-0cffd265d479",
-            "s-b35c094ac663"
+            "s-6e3ef17542df"
           ],
           "date": null,
-          "note": "Tesla lists only Austin for current Cybercab rides. Dallas was reported as a November target; an exact launch day is not established."
+          "note": "Tesla lists only Austin for current Cybercab rides. Tesla said on its Q3 call that Dallas is next, in November; an exact launch day is not established."
         },
         "supervision": {
           "status": "manufacturer_no_onboard_monitor",
@@ -624,13 +624,13 @@
         "city": null,
         "vehicle": "model_y",
         "kind": "service",
-        "title": "Dallas and Houston Robotaxi launch reported",
-        "summary": "Reporting linked Tesla’s rollout announcement and videos; current availability is separately listed by Tesla.",
+        "title": "Tesla announces Dallas and Houston Robotaxi rollout",
+        "summary": "Tesla announced the rollout on X. Current availability is listed separately by Tesla.",
         "evidence": [
-          "s-4af35a2b22f3",
+          "s-5c0f1eaa7aec",
           "s-ccaaee3c9c8d"
         ],
-        "type": "media",
+        "type": "manufacturer",
         "cities": [
           "dallas",
           "houston"
@@ -662,12 +662,12 @@
         "city": "austin",
         "vehicle": "cybercab",
         "kind": "company_claim",
-        "title": "300+ Austin Cybercabs reported in Tesla statement",
-        "summary": "A manufacturer statement reported by a secondary source. It is not independent live fleet telemetry.",
+        "title": "Tesla says 300+ Cybercabs are serving Austin",
+        "summary": "Tesla’s own statement on X. It is a company figure, not independent live fleet data.",
         "evidence": [
-          "s-286feb973f19"
+          "s-ea5d5c90d766"
         ],
-        "type": "media"
+        "type": "manufacturer"
       },
       {
         "id": "q3-austin",
@@ -691,11 +691,11 @@
         "vehicle": "cybercab",
         "kind": "announcement",
         "title": "Dallas Cybercab expansion target",
-        "summary": "Reported November target from the Q3 call. No exact launch day is verified.",
+        "summary": "Tesla said on its Q3 call, on 21 Oct, that Cybercab rides launch in Dallas next month. No exact launch day was given.",
         "evidence": [
-          "s-b35c094ac663"
+          "s-6e3ef17542df"
         ],
-        "type": "media"
+        "type": "manufacturer"
       }
     ],
     "companyClaims": [
@@ -704,11 +704,11 @@
         "label": "Cybercabs serving Austin",
         "value": "300+",
         "date": "2026-10-10",
-        "scope": "Austin; Tesla statement reported by media",
+        "scope": "Austin; Tesla statement on X",
         "evidence": [
-          "s-286feb973f19"
+          "s-ea5d5c90d766"
         ],
-        "note": "Company-reported statement; no independent live active-fleet total is established."
+        "note": "Company figure; no independent live active-fleet total is established."
       },
       {
         "id": "capacity",
@@ -745,20 +745,10 @@
         "id": "live-fleet-unknown",
         "city": null,
         "title": "No verified live Cybercab fleet total",
-        "summary": "Registration counts and the reported 300+ Austin statement are different measures. Neither is a live operating counter.",
+        "summary": "Registration counts and Tesla’s 300+ Austin statement are different measures. Neither is a live operating counter.",
         "evidence": [
           "s-fef316c7def7",
-          "s-286feb973f19"
-        ]
-      },
-      {
-        "id": "legacy-city-labels",
-        "city": null,
-        "title": "Earlier testing labels were outdated",
-        "summary": "The previous tracker marked several cities as testing. Current Tesla pages list six driverless service markets; those new company listings are displayed with their source type.",
-        "evidence": [
-          "s-ccaaee3c9c8d",
-          "s-ff84ae0cf870"
+          "s-ea5d5c90d766"
         ]
       }
     ]

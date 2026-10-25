@@ -12,6 +12,27 @@
   function dayLabel(day) {
     return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(day + "T00:00:00Z"));
   }
+  // "25 Oct 2026, 14:11 Irish time" for a full timestamp; "25 Oct 2026" for a day.
+  function irishTime(stamp) {
+    if (typeof stamp !== "string" || !Number.isFinite(Date.parse(stamp))) return "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(stamp)) return validDay(stamp) ? dayLabel(stamp) : "";
+    const d = new Date(stamp);
+    const day = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "Europe/Dublin" }).format(d);
+    const time = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Dublin" }).format(d);
+    return day + ", " + time + " Irish time";
+  }
+  function software(live) {
+    const vs = ((live && live.versions) || []).filter((x) => x && x.count > 0);
+    const top = [...vs].sort((a, b) => b.count - a.count)[0];
+    const newest = [...vs].sort((a, b) => (b.firstSeen || "").localeCompare(a.firstSeen || ""))[0];
+    if (!newest) return null;
+    const fleet = Number(live.fleet || (top && top.fleet));
+    const when = irishTime(live.updated);
+    return {
+      value: newest.id,
+      label: "newest build reporting · most common: " + (top ? top.id + " (" + top.percent + "% of " + (Number.isFinite(fleet) && fleet > 0 ? fleet.toLocaleString("en-US") + " cars" : "tracked cars") + ")" : "—") + " · Teslascope" + (when ? " · as of " + when : "")
+    };
+  }
   function cybercab(snapshot, fallback) {
     const checked = snapshot && snapshot.checked;
     const checkedDay = typeof checked === "string" ? checked.slice(0, 10) : "";
@@ -22,11 +43,11 @@
     if (!last) return fallback || null;
     return {
       value: last.cybercab.toLocaleString("en-US"),
-      label: "Cybercabs registered in Texas · as of " + dayLabel(last.date) + " · checked " + dayLabel(checkedDay) + ". Registrations are not cars in service.",
+      label: "Cybercabs registered in Texas · as of " + (last.date === checkedDay ? irishTime(checked) : dayLabel(last.date)) + ". Registrations are not cars in service.",
       src,
       asOf: last.date,
       checked
     };
   }
-  return { cybercab };
+  return { cybercab, software, irishTime };
 });

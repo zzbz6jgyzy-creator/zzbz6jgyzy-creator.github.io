@@ -38,7 +38,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -123,7 +123,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -209,7 +209,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -289,7 +289,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -369,7 +369,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -455,7 +455,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -623,7 +623,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -701,7 +701,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -779,7 +779,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -857,7 +857,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -935,7 +935,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1013,7 +1013,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1091,7 +1091,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1169,7 +1169,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1247,7 +1247,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1319,7 +1319,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1391,7 +1391,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1463,7 +1463,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1535,7 +1535,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1613,7 +1613,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1685,7 +1685,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1753,7 +1753,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1842,7 +1842,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1914,7 +1914,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -1980,7 +1980,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -2052,7 +2052,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "No independently verified first customer installation date is retained in this dataset."
+        "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
         "hardware": null,
@@ -2553,7 +2553,7 @@ window.FSD_EUROPE = {
     {
       "id": "s-a0625a99e194",
       "url": "https://www.streetinsider.com/Reuters/EU+vote+on+Teslas+supervised+self-driving+system+pushed+back/27104594.html",
-      "label": "Source for 2026-10-06",
+      "label": "Source for 6 Oct 2026",
       "type": "media",
       "checkedAt": null,
       "publishedAt": null

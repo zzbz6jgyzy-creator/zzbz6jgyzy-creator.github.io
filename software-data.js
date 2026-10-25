@@ -15,7 +15,7 @@
   const regionName=c=>({NA:'North America',EU:'Europe',AP:'Asia-Pacific',OT:'Other regions'})[region(c)];
   const countryName=c=>{try{return new Intl.DisplayNames(['en'],{type:'region'}).of(c)||c;}catch{return c;}};
   const day=s=>validDate(s)?new Date(s).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}):'Date not reported';
-  const time=s=>validDate(s)?new Date(s).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'UTC'})+' UTC':'Date not reported';
+  const time=s=>validDate(s)?new Date(s).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Dublin'})+' Irish time':'Date not reported';
   const number=n=>Number.isFinite(n)?n.toLocaleString('en-US'):'Unknown';
   function validate(live){if(!validDate(live?.updated)||!count(live.fleet)||live.fleet===0||!safeUrl(live.sourceUrl)||!Array.isArray(live.versions)||!live.versions.length)throw Error('Invalid software snapshot');const ids=new Set();for(const v of live.versions){if(!version(v.id)||ids.has(v.id)||(!count(v.count)||v.count>live.fleet))throw Error('Invalid software version/count');ids.add(v.id);if(v.countryCounts&&Object.entries(v.countryCounts).some(([c,n])=>!(/^[A-Z]{2}$/.test(c))||!count(n)))throw Error('Invalid country count');}if(!live.versions.some(v=>v.count>0))throw Error('No observed builds');return live;}
   const catalog=live=>live.versions.slice().sort(byFirstSeen);

@@ -116,7 +116,7 @@ def about_html():
         "\n          <!-- seo:about -->\n"
         '          <aside class="sd-about" aria-label="About Supercharged Daily">\n'
         '            <p class="sd-about-kicker">About</p>\n'
-        "            <p>Supercharged Daily is an independent Tesla, SpaceX and Grok news site from "
+        "            <p>Supercharged Daily is an independent fan site covering Tesla, SpaceX and xAI (including Grok), from "
         f'<a href="{X_URL}">{AUTHOR}</a>. '
         "Not affiliated with Tesla, SpaceX or xAI.</p>\n"
         '            <p><a href="/about.html">About this site</a></p>\n'
@@ -213,7 +213,7 @@ def about_page():
     ld["url"] = SITE + "/"
     ld["email"] = "superchargeddaily@gmail.com"
     ld["description"] = (
-        "Independent Tesla, SpaceX and Grok news site from Alex R. "
+        "Independent fan site covering Tesla, SpaceX and xAI (including Grok), from Alex R. "
         "Not affiliated with Tesla, SpaceX or xAI."
     )
     block = (
