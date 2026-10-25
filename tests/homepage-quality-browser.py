@@ -73,11 +73,19 @@ async def main():
      await page.get_by_role('link',name='Explore trackers',exact=True).click();await page.wait_for_url(SITE+'/#hv-trk-h')
      await page.goto(SITE+LEAD['url'],wait_until='domcontentloaded')
      original=(ROOT/LEAD['url'].lstrip('/')).read_text()
-     heading=html.unescape(re.sub('<[^>]+>',' ',re.search(r'<h1\b[^>]*>(.*?)</h1>',original,re.S)[1]))
+     heading=html.unescape(re.sub('<[^>]+>',' ',re.search(r'<h1[^>]*>(.*?)</h1>',original,re.S)[1]))
      assert ' '.join((await page.locator('h1').inner_text()).split())==' '.join(heading.split()), 'Homepage copy leaked into article H1'
    else:
-    await page.locator('.lw-title').filter(has_text=event['title']).wait_for()
-    assert await page.locator('.lv-home-next').count()==0,'Non-home cards changed'
+    if page_path=='/spacex.html':
+     # The SpaceX hub owns its launch board; homepage card CSS must not leak into it.
+     await page.locator('.sx-studio[data-enhanced="true"]').wait_for()
+     original=(ROOT/'spacex.html').read_text()
+     heading=html.unescape(re.sub('<[^>]+>',' ',re.search(r'<h1[^>]*>(.*?)</h1>',original,re.S)[1]))
+     assert ' '.join((await page.locator('h1').inner_text()).split())==' '.join(heading.split())
+     assert await page.locator('#sx-launch-list').count()==1
+    else:
+     await page.locator('.lw-title').filter(has_text=event['title']).wait_for()
+    assert await page.locator('.lv-home-next').count()==0,'Homepage launch card leaked into another page'
    assert not errors,errors
    print(json.dumps({'width':width,'theme':theme,'scripts':scripts,'mode':mode,'registry':registry,'page':page_path,'passed':True}),flush=True)
    await context.close()
