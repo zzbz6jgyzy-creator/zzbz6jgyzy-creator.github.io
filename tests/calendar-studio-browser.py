@@ -52,7 +52,7 @@ async def main():
    if mode in ['no-js','blocked-js']:
     assert await page.locator('.cs-static-only').is_visible();assert await page.locator('.cs-static-detail').count()>40;assert not await page.locator('.cs-toolbar').is_visible()
    elif mode=='blocked-storage':await expect(page.locator('#cs-storage')).to_contain_text('unavailable')
-   elif mode in ['source-failed','malformed','older']:await expect(page.locator('#cs-freshness')).to_contain_text('Using the saved page');assert await page.locator('#cs-results .cs-event').count()>0
+   elif mode in ['source-failed','malformed','older']:await expect(page.locator('#cs-freshness')).to_contain_text('Launch times may be out of date');assert await page.locator('#cs-results .cs-event').count()>0
    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),mode;assert not errors,errors;await c.close();checks.append(mode)
   await browser.close();(OUT/'results.json').write_text(json.dumps({'passed':checks},indent=2));print('Passed calendar responsive journeys, exports, time zones, keyboard and fallback cases:',len(checks))
 asyncio.run(main())
