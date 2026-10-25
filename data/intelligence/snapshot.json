@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T02:34:30.269Z",
+  "generatedAt": "2026-10-25T02:39:15.731Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -188,9 +188,9 @@
       "topic": "robotaxi",
       "tracker": "robotaxi",
       "field": "tx-cybercab",
-      "value": "420",
+      "value": "431",
       "label": "Texas Cybercab registrations",
-      "at": "2026-10-24T00:00:00.000Z",
+      "at": "2026-10-25T00:00:00.000Z",
       "evidence": "independently_corroborated",
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",

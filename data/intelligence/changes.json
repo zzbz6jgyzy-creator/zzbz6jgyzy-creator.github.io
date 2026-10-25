@@ -1,6 +1,40 @@
 {
-  "updated": "2026-10-25T02:34:30.269Z",
+  "updated": "2026-10-25T02:39:15.731Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/robotaxi-938-f1-cota.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am",
+      "at": "2026-10-25T02:38:05.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/robotaxi-938-f1-cota.html",
+      "href": "/dispatch/robotaxi-938-f1-cota.html",
+      "summary": "135 cars added to the Texas registry in eight days, most of them Cybercabs, and Austin’s map now reaches the F1 track, with rides until 1am.",
+      "title": "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am",
+      "id": "logged|dispatch:/dispatch/robotaxi-938-f1-cota.html|2026-10-25T02:38:05.000Z|Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am"
+    },
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "420",
+      "next": "431",
+      "at": "2026-10-25T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html",
+      "summary": "Texas Cybercab registrations changed from 420 to 431.",
+      "title": "Texas Cybercab registrations",
+      "id": "changed|robotaxi:tx-cybercab|2026-10-25T00:00:00.000Z|431"
+    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.38.5.6",
@@ -289,23 +323,6 @@
       "summary": "Tesla’s AI chief says FSD will stop relying on other companies’ maps, starting with V15. I put 15.8 billion FSD miles next to Street View, Waymo and every US road.",
       "title": "Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet",
       "id": "logged|dispatch:/dispatch/tesla-ai-maps-v15.html|2026-10-22T07:41:03.000Z|Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-q3-2026-results.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock",
-      "at": "2026-10-22T01:38:03.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-q3-2026-results.html",
-      "href": "/dispatch/tesla-q3-2026-results.html",
-      "summary": "Revenue flat at $28.05B, GAAP net income down 43% as R&D jumped 69%, and free cash flow back at $1.53B. I took apart the cash, the capex math and every new date from the call.",
-      "title": "Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock",
-      "id": "logged|dispatch:/dispatch/tesla-q3-2026-results.html|2026-10-22T01:38:03.000Z|Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock"
     },
     {
       "type": "changed",
