@@ -1,5 +1,5 @@
 window.STARSHIP = {
-  updated: "2026-10-24",
+  updated: "2026-10-25",
   note:
     "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
@@ -12,7 +12,7 @@ window.STARSHIP = {
     block: "Block 3",
     headline: "First serious Ship catch",
     tested:
-      "Working window is now NET 8 November on FAA air-traffic planning slides — not a SpaceX T-0. Ship 42’s Raptors were pulled in early October. The story is still the first real attempt to catch a Ship.",
+      "Working window is now NET 8 November on FAA air-traffic planning slides — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX; SpaceX hasn’t announced a Ship 42 static fire yet. The story is still the first real attempt to catch a Ship.",
     objectives: [
       "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, which Musk confirmed on the 20 Oct earnings call",
       "Fly and recover Super Heavy B22 (catch or controlled splashdown)",
@@ -28,6 +28,14 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-10-25",
+      mission: 15,
+      confirmed: false,
+      change:
+        "SpaceX confirmed a full-duration 33-engine static fire of the Super Heavy booster for Flight 15 (Booster 22, on Pad 2, at 8:22am CDT per Spaceflight Now). SpaceX hasn’t announced a Ship 42 static fire, a launch date or a mission page.",
+      source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2114444137067844004" },
+    },
     {
       date: "2026-10-23",
       mission: 15,

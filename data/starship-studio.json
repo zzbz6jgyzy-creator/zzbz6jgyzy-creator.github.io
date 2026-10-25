@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-10-24",
+ "updated": "2026-10-25",
  "reviewed": "2026-10-24",
  "phaseOrder": [
   "liftoff",
@@ -1726,6 +1726,13 @@
   ]
  },
  "schedule": [
+  {
+   "date": "2026-10-25",
+   "text": "SpaceX confirmed a full-duration 33-engine static fire of the Super Heavy booster for Flight 15 (Booster 22, on Pad 2, at 8:22am CDT per Spaceflight Now). SpaceX hasn’t announced a Ship 42 static fire, a launch date or a mission page.",
+   "url": "https://x.com/SpaceX/status/2114444137067844004",
+   "outlet": "SpaceX on X",
+   "kind": "reported"
+  },
   {
    "date": "2026-10-23",
    "text": "At NASA’s Artemis update, Artemis program manager Jeremy Parsons said Flight 15 is expected in November and will fly Raptor engine improvements, and that the first Starship flight from Florida is expected “in the coming months”. Still no SpaceX mission page or launch time.",

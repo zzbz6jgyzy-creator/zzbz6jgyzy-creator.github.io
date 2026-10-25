@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-10-23T09:30:00+01:00",
+  "updated": "2026-10-25T20:50:00+00:00",
   "events": {
     "starship-flight-15": {
       "title": "Starship Flight 15",
@@ -8,12 +8,13 @@
       "precision": "day",
       "status": "net",
       "tz": "-06:00",
-      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Ship 42 needs extra cryo testing; Booster 22 has not static-fired.",
+      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX; SpaceX hasn’t announced a Ship 42 static fire.",
       "sources": [
         "FAA CADENA / air-traffic planning slides (NET 8 Nov)",
         "Elon Musk, SpaceX Q3 2026 earnings call, 20 Oct 2026: Flight 15 'next month' (https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/)",
         "Elon Musk, 10 Oct 2026: '4 to 6 weeks'",
-        "NASASpaceflight: Ship 42 cryo campaign, B22 static fire pending"
+        "NASASpaceflight: Ship 42 cryo campaign (Oct 2026)",
+        "SpaceX on X, 25 Oct 2026: full-duration 33-engine static fire of the Flight 15 booster (https://x.com/SpaceX/status/2114444137067844004)"
       ],
       "major": true
     },
