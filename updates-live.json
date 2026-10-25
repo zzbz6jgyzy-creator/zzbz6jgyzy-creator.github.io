@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T00:04:20Z",
+  "updated": "2026-10-25T01:01:00Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3358,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
-      "count": 67,
+      "count": 76,
       "fleet": 3358,
-      "percent": 2.0,
+      "percent": 2.3,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -53,26 +53,34 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 63,
-        "NZ": 4
+        "AU": 71,
+        "NZ": 5
       },
-      "pending": 73,
+      "pending": 66,
       "firstSeen": "2026-10-24T19:52:52Z",
-      "lastSeen": "2026-10-24T23:59:53Z"
+      "lastSeen": "2026-10-25T00:59:42Z"
     },
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 5,
+      "count": 6,
       "fleet": 3358,
-      "percent": 0.1,
+      "percent": 0.2,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
       "features": [
         {
+          "title": "Arrival Options",
+          "text": "- You can now select an arrival option such as Parking Lot, Street, Driveway, and Pull Over for Robotaxi-style drop offs. - Your preferences for arrival options and preferred parking positions are persisted for each des\u2026"
+        },
+        {
           "title": "Automatic Collision Evasion",
           "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3 Lite",
+          "text": "FSD (Supervised) v14.3 Lite includes: - Distilled the intelligence from HW4 V14 into HW3. This allows HW3 to directly learn how to handle scenarios using HW4 V14 as a guide. This process unlocks the improvements that ha\u2026"
         },
         {
           "title": "FSD (Supervised) v14.3.13",
@@ -83,40 +91,32 @@
           "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
         },
         {
-          "title": "Apple Music",
-          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+          "title": "Speed Profiles",
+          "text": "FSD (Supervised) will now determine the appropriate speed based on a mix of driver profile, speed limit, and surrounding traffic. - Introduced new Speed Profile SLOTH, which comes with lower speeds & more conservative l\u2026"
         },
         {
-          "title": "Dynamic Headlight Leveling",
-          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
+          "title": "Start Self-Driving from Park",
+          "text": "A button will appear on the screen when driver requirements are met. Driver requirements include (but are not limited to): - Driver is seated in driver's seat - Driver is buckled - Cabin Camera is unobstructed Brake Con\u2026"
         },
         {
-          "title": "Emergency Drive Away",
-          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
-        },
-        {
-          "title": "Halloween Mode",
-          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
-        },
-        {
-          "title": "Powershare with Powerwall",
-          "text": "Powershare Home Backup with Powerwall keeps your home powered longer during an outage. When parked and plugged in, your vehicle now backs up your home alongside your Powerwall, down to the discharge limit you set. Requi\u2026"
+          "title": "UI Improvements",
+          "text": "Adjust settings like the Speed Profile and Arrival Options directly from the Self-Driving visualization on the center display."
         }
       ],
       "countries": [
         "US"
       ],
       "countryCounts": {
-        "US": 5
+        "US": 6
       },
-      "pending": 2,
+      "pending": 1,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-24T22:08:29Z"
+      "lastSeen": "2026-10-25T00:18:06Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 204,
+      "count": 206,
       "fleet": 3358,
       "percent": 6.1,
       "fsd": null,
@@ -167,18 +167,19 @@
         "CA",
         "AT",
         "CH",
+        "ES",
         "PL",
         "NO",
         "CZ",
-        "ES",
         "TW",
         "BE",
+        "HU",
         "BG",
         "IS",
         "SE",
         "UA",
+        "TR",
         "IL",
-        "HU",
         "LT",
         "SI",
         "AE",
@@ -187,8 +188,7 @@
         "SG",
         "IE",
         "MY",
-        "QA",
-        "TR"
+        "QA"
       ],
       "countryCounts": {
         "US": 63,
@@ -201,18 +201,19 @@
         "CA": 5,
         "AT": 5,
         "CH": 5,
+        "ES": 5,
         "PL": 4,
         "NO": 4,
         "CZ": 4,
-        "ES": 4,
         "TW": 4,
         "BE": 3,
+        "HU": 2,
         "BG": 2,
         "IS": 2,
         "SE": 2,
         "UA": 1,
+        "TR": 1,
         "IL": 1,
-        "HU": 1,
         "LT": 1,
         "SI": 1,
         "AE": 1,
@@ -221,12 +222,11 @@
         "SG": 1,
         "IE": 1,
         "MY": 1,
-        "QA": 1,
-        "TR": 1
+        "QA": 1
       },
-      "pending": 83,
+      "pending": 82,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-24T23:24:53Z"
+      "lastSeen": "2026-10-25T00:53:42Z"
     },
     {
       "id": "2026.38.5.5",
@@ -375,9 +375,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 1022,
+      "count": 1023,
       "fleet": 3358,
-      "percent": 30.4,
+      "percent": 30.5,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -423,15 +423,15 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 956,
+        "US": 957,
         "CA": 59,
         "MX": 4,
         "UA": 2,
         "PR": 1
       },
-      "pending": 45,
+      "pending": 44,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-24T21:05:22Z"
+      "lastSeen": "2026-10-25T00:26:09Z"
     },
     {
       "id": "2026.38.5",
