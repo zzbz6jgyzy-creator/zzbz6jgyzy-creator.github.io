@@ -1,8 +1,8 @@
 {
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3. Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
- "updated": "2026-10-25T04:37:41Z",
- "checked": "2026-10-25T04:37:41Z",
+ "updated": "2026-10-25T05:36:58Z",
+ "checked": "2026-10-25T05:36:58Z",
  "results": [
   {
    "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
@@ -453,12 +453,12 @@
    "vehicle": "Falcon 9 Block 5"
   },
   {
-   "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
-   "name": "Falcon 9 Block 5 | SDA Tranche 1 Tracking Layer E",
+   "id": "a9ee8337-127d-4f17-9e3a-a07999f80099",
+   "name": "Falcon 9 Block 5 | SDA Tranche 1 Tracking Layer D",
    "net": "2026-12-31T00:00:00Z",
    "window_start": "2026-12-31T00:00:00Z",
    "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.3.0/launches/fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5/",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/a9ee8337-127d-4f17-9e3a-a07999f80099/",
    "status": {
     "name": "To Be Determined",
     "abbrev": "TBD"
@@ -473,9 +473,9 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-08-27T16:03:29Z",
+   "last_updated": "2026-10-25T04:56:36Z",
    "mission": {
-    "name": "SDA Tranche 1 Tracking Layer E",
+    "name": "SDA Tranche 1 Tracking Layer D",
     "type": "Government/Top Secret",
     "orbit": {
      "name": "Polar Orbit",
