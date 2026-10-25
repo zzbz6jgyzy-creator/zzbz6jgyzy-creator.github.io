@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-25T08:34:31.791Z",
+  "updated": "2026-10-25T08:51:54.533Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starlink-passes-att-fiber.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Starlink now has more subscribers than AT&T Fiber. Here’s what that does and doesn’t mean",
+      "at": "2026-10-25T08:35:18.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starlink-passes-att-fiber.html",
+      "href": "/dispatch/starlink-passes-att-fiber.html",
+      "summary": "SpaceX’s 10-Q shows 13.6M Starlink consumer subscribers; AT&T reported 13.31M fiber connections. Starlink added 6.4M in a year to AT&T’s 2.5M, with caveats.",
+      "title": "Starlink now has more subscribers than AT&T Fiber. Here’s what that does and doesn’t mean",
+      "id": "logged|dispatch:/dispatch/starlink-passes-att-fiber.html|2026-10-25T08:35:18.000Z|Starlink now has more subscribers than AT&T Fiber. Here’s what that does and doesn’t mean"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/robotaxi-938-f1-cota.html",
@@ -306,23 +323,6 @@
       "summary": "The 30% rule covers a local licensee, not “the company.” And Starlink has never applied for a licence.",
       "title": "The US ambassador says Musk offered Starlink to 500 South African schools. Starlink’s own letter says 5,000",
       "id": "logged|dispatch:/dispatch/starlink-south-africa-schools.html|2026-10-22T13:42:02.000Z|The US ambassador says Musk offered Starlink to 500 South African schools. Starlink’s own letter says 5,000"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-ai-maps-v15.html",
-      "topic": "fsd",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet",
-      "at": "2026-10-22T07:41:03.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-ai-maps-v15.html",
-      "href": "/dispatch/tesla-ai-maps-v15.html",
-      "summary": "Tesla’s AI chief says FSD will stop relying on other companies’ maps, starting with V15. I put 15.8 billion FSD miles next to Street View, Waymo and every US road.",
-      "title": "Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet",
-      "id": "logged|dispatch:/dispatch/tesla-ai-maps-v15.html|2026-10-22T07:41:03.000Z|Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet"
     },
     {
       "type": "changed",
