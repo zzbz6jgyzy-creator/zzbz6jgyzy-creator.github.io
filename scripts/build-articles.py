@@ -100,7 +100,7 @@ def desk_labels(s):
 def bylines():
     """Byline rule: article bylines and sign-offs name the author as AUTHOR, never the X handle.
     Only the <p class="meta"> "From ..." span and <p class="signoff"> text are touched; links to
-    x.com/AlJR86, embedded posts, citations and Follow-on-X links are left alone."""
+    x.com/ALJR86, embedded posts, citations and Follow-on-X links are left alone."""
     import glob, re
     sign = re.compile(r'(<p class="signoff">— (?:<a href="https://x\.com/A[Ll]JR86">)?)@A[Ll]JR86(</a>)?(</p>)')
     meta = re.compile(r'(<p class="meta">\s*<span>)From @A[Ll]JR86(</span>)')

@@ -5,7 +5,7 @@ const dayOK=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&Number.isFini
 const stampOK=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))?$/.test(s)&&dayOK(s.slice(0,10))&&Number.isFinite(Date.parse(s));
 const href=s=>{try{const u=new URL(s,'https://superchargeddaily.com');return u.protocol==='https:'?u.href:null;}catch{return null;}};
 const day=s=>dayOK(s)?new Date(s+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}):/^\d{4}-(0[1-9]|1[0-2])$/.test(s||'')?new Date(s+'-15T12:00:00Z').toLocaleDateString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'}):'Date not established';
-const stamp=s=>stampOK(s)?new Date(s).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'UTC'})+' UTC':'Check not recorded';
+const stamp=s=>stampOK(s)?new Date(s).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Dublin'})+' Irish time':'Date not available';
 const num=n=>Number.isFinite(n)?n.toLocaleString('en-US'):'Not established';
 const labels={available:'Cybercab rides listed',listed:'Robotaxi service listed',announced:'Announced target',reported_staging:'Staging reported',not_listed:'Not on checked Cybercab list',not_established:'Not established',reported_supervised:'Safety-driver service reported',manufacturer_no_onboard_monitor:'No onboard monitor · Tesla report',safety_driver_reported:'Safety driver · reported',unknown:'Not independently established'};
 const finite=n=>Number.isFinite(n)&&n>=0;const refs=(x,ids)=>Array.isArray(x)&&x.length>0&&x.every(id=>ids.has(id));

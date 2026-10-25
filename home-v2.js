@@ -58,7 +58,7 @@
   };
   const st0 = starship(); if (st0) trk.push(st0);
   if (F && F.countries) {
-    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length + " Tesla-listed EU markets", s: "Vehicle eligibility applies · national recognition and committee votes are separate" });
+    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length + " Tesla-listed EU markets", s: (F.updated ? "As of " + window.SDHomeTrackers.irishTime(F.updated) + " · " : "") + "Vehicle eligibility applies · national recognition and committee votes are separate" });
   }
   // Keep the pre-rendered snapshot until a newer JSON response arrives.
   const savedCc = $("[data-hv-trk] a[href='/cybercab.html']");
@@ -86,10 +86,11 @@
     }
   }).catch(() => {});
   fetch("/updates-live.json", { cache: "no-cache" }).then((r) => r.json()).then((u) => {
-    const v = (u.versions || []).filter((x) => x.count > 0).sort((a, b) => b.count - a.count);
-    const newest = (u.versions || []).filter((x) => x.count > 0).sort((a, b) => (b.firstSeen || "").localeCompare(a.firstSeen || ""))[0];
-    if (!newest) return;
-    trk.push({ href: "/updates.html", k: "Software updates", v: newest.id, s: "newest build reporting · most common: " + (v[0] ? v[0].id + " (" + v[0].percent + "%)" : "—") + " · Teslascope" });
+    const sw = window.SDHomeTrackers.software(u);
+    if (!sw) return;
+    const i = trk.findIndex((x) => x.k === "Software updates");
+    const card = { href: "/updates.html", k: "Software updates", v: sw.value, s: sw.label };
+    if (i >= 0) trk[i] = card; else trk.push(card);
     paint();
   }).catch(() => {});
 

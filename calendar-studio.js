@@ -34,7 +34,7 @@
   function fresh(failed = sourceFailed) {
     const age = Date.now() - Date.parse(data.launchChecked), stale = !Number.isFinite(age) || age > 3 * 36e5;
     const text = Number.isFinite(age) ? new Intl.DateTimeFormat("en-GB", { timeZone: state.zone, day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZoneName: "short" }).format(new Date(data.launchChecked)) : "unknown";
-    $("cs-freshness").textContent = (failed ? "Using the saved page · " : stale ? "Older launch snapshot · " : "Launch source checked · ") + text + ". Hourly refresh; targets may change.";
+    $("cs-freshness").textContent = (failed || stale ? "Launch times may be out of date · as of " : "Launch times as of ") + text + ". Hourly refresh; targets may change.";
     $("cs-freshness").classList.toggle("cs-stale", stale || failed);
   }
   function syncControls() {

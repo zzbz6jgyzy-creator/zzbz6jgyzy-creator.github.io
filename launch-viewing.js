@@ -52,7 +52,7 @@
   }
   function fresh() {
     const age = Date.now() - Date.parse(data.checked), stale = !Number.isFinite(age) || age > 3 * 36e5;
-    $("lv-freshness").textContent = (sourceFailed ? "Saved page · " : stale ? "Older launch cache · " : "Launch cache checked · ") + data.checked.replace("T", " ").replace("Z", " UTC") + ". Targets may change.";
+    $("lv-freshness").textContent = (sourceFailed || stale ? "Launch times may be out of date · as of " : "Launch times as of ") + (v=>Number.isFinite(Date.parse(v))?new Date(v).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Dublin'})+' Irish time':String(v||''))(data.checked) + ". Targets may change.";
     $("lv-freshness").classList.toggle("lv-stale", stale || sourceFailed);
   }
   function resetWeather() {

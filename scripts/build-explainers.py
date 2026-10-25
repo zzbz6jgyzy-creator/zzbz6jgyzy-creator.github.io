@@ -15,6 +15,10 @@ E=lambda value:html.escape(str(value),quote=True)
 J=lambda value:json.dumps(value,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
 VERSION='2026102302'
 
+def _sd_day(v):
+  try:return datetime.date.fromisoformat(str(v)[:10]).strftime('%d %b %Y').lstrip('0')
+  except Exception:return str(v)
+
 def catalog():
     data=json.loads((ROOT/'data/explainers.json').read_text())
     datetime.date.fromisoformat(data['reviewed'])
@@ -87,7 +91,7 @@ def comparison(snapshot):
     def value(c,key):return c['hardware'] if key=='hardware' else c['version'].get(key) or 'Not reported'
     fields=[('hardware','Hardware'),('id','Reported FSD version'),('build','Vehicle software build'),('region','Reported market')]
     body=''.join(f'<tr><th scope="row">{label}</th><td data-compare-cell="a:{key}">{E(value(a,key))}</td><td data-compare-cell="b:{key}">{E(value(b,key))}</td></tr>' for key,label in fields)
-    return f'''<section class="lx-compare" aria-labelledby="compare-title"><p class="lx-eyebrow">From the global FSD tracker</p><h2 id="compare-title">Compare the reported branches</h2><p class="lx-fine" data-tracker-stamp>Tracker snapshot · {E(snapshot['updated'])}. Reported versions, not confirmation for your VIN.</p><div class="lx-compare-selects" hidden data-compare-controls><label>Configuration A<select data-compare="a">{options}</select></label><label>Configuration B<select data-compare="b">{options.replace('value="na-hw4"','value="na-hw4" selected')}</select></label></div><div class="lx-table-wrap"><table><caption>Hardware, FSD version, vehicle build and market are separate fields.</caption><thead><tr><th scope="col">Compare</th><th scope="col" data-compare-head="a">{E(a['label'])}</th><th scope="col" data-compare-head="b">{E(b['label'])}</th></tr></thead><tbody>{body}<tr><th scope="row">Active supervision</th><td>Required</td><td>Required</td></tr></tbody></table></div><p>Availability also depends on the vehicle and its enabled features. <a href="/fsd.html#versions">Open the maintained tracker and source notes →</a></p><script type="application/json" data-comparison>{J({'updated':snapshot['updated'],'configs':rows})}</script></section>'''
+    return f'''<section class="lx-compare" aria-labelledby="compare-title"><p class="lx-eyebrow">From the global FSD tracker</p><h2 id="compare-title">Compare the reported branches</h2><p class="lx-fine" data-tracker-stamp>Tracker as of {E(_sd_day(snapshot['updated']))}. Reported versions, not confirmation for your VIN.</p><div class="lx-compare-selects" hidden data-compare-controls><label>Configuration A<select data-compare="a">{options}</select></label><label>Configuration B<select data-compare="b">{options.replace('value="na-hw4"','value="na-hw4" selected')}</select></label></div><div class="lx-table-wrap"><table><caption>Hardware, FSD version, vehicle build and market are separate fields.</caption><thead><tr><th scope="col">Compare</th><th scope="col" data-compare-head="a">{E(a['label'])}</th><th scope="col" data-compare-head="b">{E(b['label'])}</th></tr></thead><tbody>{body}<tr><th scope="row">Active supervision</th><td>Required</td><td>Required</td></tr></tbody></table></div><p>Availability also depends on the vehicle and its enabled features. <a href="/fsd.html#versions">Open the maintained tracker and source notes →</a></p><script type="application/json" data-comparison>{J({'updated':snapshot['updated'],'configs':rows})}</script></section>'''
 
 def refs(lesson,keys):return ''.join(source_ref(lesson,key) for key in keys)
 

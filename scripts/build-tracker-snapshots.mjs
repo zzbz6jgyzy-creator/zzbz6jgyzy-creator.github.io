@@ -13,7 +13,7 @@ const number = (n) => Number.isFinite(n) && n >= 0;
 const date = (s) => typeof s === "string" && /^\d{4}-\d{2}-\d{2}(?:T.*)?$/.test(s) && Number.isFinite(Date.parse(s));
 const num = (n) => n.toLocaleString("en-US");
 const day = (s) => new Date(s).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
-const time = (s) => `<time datetime="${esc(s)}">${esc(new Date(s).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "UTC" }))} UTC</time>`;
+const time = (s) => `<time datetime="${esc(s)}">${esc(new Date(s).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Dublin" }))} Irish time</time>`;
 const url = (s) => { try { const u = new URL(s); return ["http:", "https:"].includes(u.protocol) ? u.href : null; } catch { return null; } };
 const link = (s, label = "Source") => url(s) ? `<a href="${esc(url(s))}" rel="noopener">${esc(label)}</a>` : esc(label);
 const cmpVersion = (a, b) => {
@@ -104,7 +104,7 @@ export function renderUpdates(src, live, history, extras = {}, fsd = {}) {
   src = id(src, "t-new", newest.id);
   src = id(src, "t-new-s", `${date(newest.firstSeen || newest.date) ? "first seen " + day(newest.firstSeen || newest.date) + " · " : ""}${percent(newest)}% of tracked cars`);
   src = id(src, "t-common", common.id);
-  src = id(src, "t-common-s", `${percent(common)}% of ${num(live.fleet)} tracked cars`);
+  src = id(src, "t-common-s", `${percent(common)}% of ${num(live.fleet)} tracked cars · as of ${new Date(live.updated).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Dublin" })} Irish time`);
   src = id(src, "t-fast", fast?.v.id || "Not available");
   src = id(src, "t-fast-s", fast ? `${signed(fast.r.change)} cars ${period}` : "Not enough comparable saved history");
   const dates = [...new Set(live.versions.map((v) => v.date).filter(date))].sort();
