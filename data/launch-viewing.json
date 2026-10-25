@@ -1,7 +1,7 @@
 {
  "version": 1,
  "checked": "2026-10-25T20:34:41Z",
- "editorialUpdated": "2026-10-23T09:30:00+01:00",
+ "editorialUpdated": "2026-10-25T20:50:00+00:00",
  "presets": [
   {
    "name": "Brownsville",
@@ -544,13 +544,17 @@
    "date": "2026-11-08",
    "precision": "day",
    "status": "net",
-   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Ship 42 needs extra cryo testing; Booster 22 has not static-fired.",
+   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX; SpaceX hasn’t announced a Ship 42 static fire.",
    "where": "Starbase · Pad 2",
    "href": "",
    "sources": [
     {
      "href": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
      "label": "fool.com"
+    },
+    {
+     "href": "https://x.com/SpaceX/status/2114444137067844004",
+     "label": "x.com"
     }
    ],
    "origin": "Editorial calendar",
