@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-25T20:30:50.267Z",
+  "generatedAt": "2026-10-25T20:44:33.030Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -10,12 +10,12 @@
       "field": "event:starship-flight-15",
       "value": "2026-11-08T06:00:00.000Z|net",
       "label": "Starship Flight 15",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "estimated",
       "source": "FAA CADENA / air-traffic planning slides (NET 8 Nov)",
       "sourceUrl": "",
       "href": "/calendar.html",
-      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Ship 42 needs extra cryo testing; Booster 22 has not static-fired."
+      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX; SpaceX hasn’t announced a Ship 42 static fire."
     },
     {
       "id": "spacex-launches:event:crs35-docking",
@@ -24,7 +24,7 @@
       "field": "event:crs35-docking",
       "value": "2026-10-15T14:27:00.000Z|done",
       "label": "Dragon · CRS-35 docked with the ISS",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "independently_corroborated",
       "source": "NASA space station blog, 15 Oct 2026: docked at 10:27 a.m. EDT",
       "sourceUrl": "",
@@ -38,7 +38,7 @@
       "field": "event:tesla-roadster-demo",
       "value": "2026-10-16T00:55:00.000Z|ended",
       "label": "Tesla Roadster reveal",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "independently_corroborated",
       "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
       "sourceUrl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
@@ -52,7 +52,7 @@
       "field": "event:spacex-q3-2026-earnings",
       "value": "2026-10-20T20:30:00.000Z|ended",
       "label": "SpaceX Q3 2026 earnings call",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
       "sourceUrl": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
@@ -66,7 +66,7 @@
       "field": "event:tesla-q3-2026-earnings",
       "value": "2026-10-21T21:30:00.000Z|ended",
       "label": "Tesla Q3 2026 earnings call",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
       "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
@@ -80,7 +80,7 @@
       "field": "event:ussf-481",
       "value": "2026-10-16T00:02:07.000Z|done",
       "label": "Falcon 9 · USSF-481",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://x.com/SpaceX/status/2110883955004035154",
       "sourceUrl": "",
@@ -94,7 +94,7 @@
       "field": "event:bandwagon-5",
       "value": "2026-10-20T11:04:00.000Z|done",
       "label": "Falcon 9 · Bandwagon-5 rideshare",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.spacex.com/launches/bandwagon5",
       "sourceUrl": "",
@@ -108,7 +108,7 @@
       "field": "event:spcx-q3-lockup-release",
       "value": "2026-10-22T00:00:00.000Z|ended",
       "label": "SpaceX lock-up release · up to 1.3B shares",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
       "sourceUrl": "",
@@ -206,7 +206,7 @@
       "field": "next-flight",
       "value": "15|2026-11-08|day",
       "label": "Next Starship flight",
-      "at": "2026-10-23T08:30:00.000Z",
+      "at": "2026-10-25T20:50:00.000Z",
       "evidence": "estimated",
       "source": "FAA planning slides",
       "sourceUrl": "",
@@ -245,6 +245,23 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/booster-22-static-fire.html",
+      "topic": "starship",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first double catch",
+      "at": "2026-10-25T20:50:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/booster-22-static-fire.html",
+      "href": "/dispatch/booster-22-static-fire.html",
+      "summary": "SpaceX confirmed a full-duration 33-engine static fire for Flight 15’s booster on 25 Oct. Ship 42, the FAA licence and a launch date are still open.",
+      "title": "Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first double catch",
+      "id": "logged|dispatch:/dispatch/booster-22-static-fire.html|2026-10-25T20:50:00.000Z|Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first double catch"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/starlink-passes-att-fiber.html",
       "topic": "starlink",
       "tracker": "dispatch",
@@ -276,6 +293,23 @@
       "summary": "135 cars added to the Texas registry in eight days, most of them Cybercabs, and Austin’s map now reaches the F1 track, with rides until 1am.",
       "title": "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am",
       "id": "logged|dispatch:/dispatch/robotaxi-938-f1-cota.html|2026-10-25T02:38:05.000Z|Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX confirmed a full-duration 33-engine static fire of the Super Heavy booster for Flight 15 (Booster 22, on Pad 2, at 8:22am CDT per Spaceflight Now). SpaceX hasn’t announced a Ship 42 static fire, a launch date or a mission page.",
+      "at": "2026-10-25T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "SpaceX on X",
+      "sourceUrl": "https://x.com/SpaceX/status/2114444137067844004",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX confirmed a full-duration 33-engine static fire of the Super Heavy booster for Flight 15 (Booster 22, on Pad 2, at 8:22am CDT per Spaceflight Now). SpaceX hasn’t announced a Ship 42 static fire, a launch date or a mission page.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-10-25T00:00:00.000Z|SpaceX confirmed a full-duration 33-engine static fire of the Super Heavy booster for Flight 15 (Booster 22, on Pad 2, at 8:22am CDT per Spaceflight Now). SpaceX hasn’t announced a Ship 42 static fire, a launch date or a mission page."
     },
     {
       "type": "changed",
@@ -548,23 +582,6 @@
       "summary": "Tesla’s Q3 10-Q makes the SpaceX special committee official. Tesla’s $2.0B SpaceX stake was worth $2.87B on 30 Sep, and SpaceX bought $626M of Megapacks this year.",
       "title": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
       "id": "logged|dispatch:/dispatch/tesla-10q-spacex-committee.html|2026-10-22T19:40:00.000Z|Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-south-africa-schools.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "The US ambassador says Musk offered Starlink to 500 South African schools. Starlink’s own letter says 5,000",
-      "at": "2026-10-22T13:42:02.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-south-africa-schools.html",
-      "href": "/dispatch/starlink-south-africa-schools.html",
-      "summary": "The 30% rule covers a local licensee, not “the company.” And Starlink has never applied for a licence.",
-      "title": "The US ambassador says Musk offered Starlink to 500 South African schools. Starlink’s own letter says 5,000",
-      "id": "logged|dispatch:/dispatch/starlink-south-africa-schools.html|2026-10-22T13:42:02.000Z|The US ambassador says Musk offered Starlink to 500 South African schools. Starlink’s own letter says 5,000"
     },
     {
       "type": "changed",
@@ -1561,15 +1578,15 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
-      "lastVerified": "2026-10-24T00:00:00.000Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
+      "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
-      "lastVerified": "2026-10-23T08:30:00.000Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
+      "lastVerified": "2026-10-25T20:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
     {
@@ -1582,14 +1599,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
       "lastVerified": "2026-10-23T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
       "lastVerified": "2026-10-25T17:53:31.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1603,35 +1620,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-25T20:30:50.267Z",
+      "lastChecked": "2026-10-25T20:44:33.030Z",
       "lastVerified": "2026-10-25T20:05:02.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1640,87 +1657,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.247Z",
-      "finished": "2026-10-25T20:30:50.251Z"
+      "started": "2026-10-25T20:44:33.012Z",
+      "finished": "2026-10-25T20:44:33.018Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.251Z",
-      "finished": "2026-10-25T20:30:50.251Z"
+      "started": "2026-10-25T20:44:33.018Z",
+      "finished": "2026-10-25T20:44:33.018Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.251Z",
-      "finished": "2026-10-25T20:30:50.252Z"
+      "started": "2026-10-25T20:44:33.018Z",
+      "finished": "2026-10-25T20:44:33.018Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.252Z",
-      "finished": "2026-10-25T20:30:50.260Z"
+      "started": "2026-10-25T20:44:33.018Z",
+      "finished": "2026-10-25T20:44:33.023Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.260Z",
-      "finished": "2026-10-25T20:30:50.263Z"
+      "started": "2026-10-25T20:44:33.023Z",
+      "finished": "2026-10-25T20:44:33.026Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.263Z",
-      "finished": "2026-10-25T20:30:50.264Z"
+      "started": "2026-10-25T20:44:33.026Z",
+      "finished": "2026-10-25T20:44:33.028Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.264Z",
-      "finished": "2026-10-25T20:30:50.265Z"
+      "started": "2026-10-25T20:44:33.028Z",
+      "finished": "2026-10-25T20:44:33.028Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.265Z",
-      "finished": "2026-10-25T20:30:50.265Z"
+      "started": "2026-10-25T20:44:33.028Z",
+      "finished": "2026-10-25T20:44:33.029Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.265Z",
-      "finished": "2026-10-25T20:30:50.265Z"
+      "started": "2026-10-25T20:44:33.029Z",
+      "finished": "2026-10-25T20:44:33.029Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.265Z",
-      "finished": "2026-10-25T20:30:50.267Z"
+      "started": "2026-10-25T20:44:33.029Z",
+      "finished": "2026-10-25T20:44:33.030Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.267Z",
-      "finished": "2026-10-25T20:30:50.267Z"
+      "started": "2026-10-25T20:44:33.030Z",
+      "finished": "2026-10-25T20:44:33.030Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.267Z",
-      "finished": "2026-10-25T20:30:50.267Z"
+      "started": "2026-10-25T20:44:33.030Z",
+      "finished": "2026-10-25T20:44:33.030Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-25T20:30:50.267Z",
-      "finished": "2026-10-25T20:30:50.267Z"
+      "started": "2026-10-25T20:44:33.030Z",
+      "finished": "2026-10-25T20:44:33.030Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-25T20:30:50.267Z",
+    "generatedAt": "2026-10-25T20:44:33.030Z",
     "factCount": 17,
-    "changeCount": 75,
+    "changeCount": 76,
     "conflictCount": 2,
     "issues": [
       {
