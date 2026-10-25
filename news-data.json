@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T03:34:54Z",
+  "updated": "2026-10-25T04:09:59Z",
   "items": [
     {
       "id": "ad7d57072d07",
@@ -10,6 +10,18 @@
       "published": "2026-10-25T03:19:23Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ORMS.69f05d51f8ffb36d98446894ffcb7550&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "423cd9a88e13",
+      "topic": "tesla",
+      "title": "Elon Musk Says Tesla’s Megapacks Are Nearly Sold Out Through 2027 as Energy Demand Surges: 'Ramping Production as Quickly as Possible'",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQT3phSVFkUTI3Qm1nMlVSb0tNa0ludGJXQzFRS0JRcFVoNzhOaEJ3b3N4VlNZdkZGRTYwNTl2QUI4Y3h5SWM2WDBqWEp2WEJNc3ZyNDkyUGJ6S3lxR2UybldrN004Z1UtU01EcU1iclJUV1V6S05DQWlLWTMwQkQtSm1ReTdTeFNMR2dDY25sb2U?oc=5",
+      "published": "2026-10-25T02:30:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.w9JoVlmT6eA1m8KyvnXxnw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -100,7 +112,6 @@
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPd3hfZm44eWVKTnNGUlNKZFl2VkdnVVhFVWFqQkdCZmtsNXJFaHUxdnk5Z3pESjlGZnNvTHJvd2NVNVdyQ09MbHFEU2lrUktFelRsOHQ3ZW0tbjZjSnR1dzNZQnRFbElaSk1uYVA3UkVvak9sWWhFZGxWRk1FbzZIZFJkenhwQ25QalJLamkwUy1PSnlqT0txeVVPYnA4YXBCbWc?oc=5",
       "published": "2026-10-25T00:05:45Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.SKe9qBjxuNPy8IJBCT8Hnw&pid=News&w=640",
       "kind": "general",
       "score": -2
     },
@@ -111,17 +122,6 @@
       "source": "Startup Fortune",
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNNWpac0ZnWnJzZEFod2ZHYXBheWdBX2lVeGx0b2d2QUVPQ0NfTGFteUlOalNvT3lJek9neWFiQ2Z1ZTZkVVlEQzJieW9wQ0NSTzdBNmtncXEyOU5Ja3NUMENVYjNnaXRHelJ0N3lFWXZkOUk4YjBmRWNGaWprLU5LQVpfN2NxVGJlMWVzczQ2OEhuN1BVQlRYOUJ2U3ZKUHRjdjdzdlpMZw?oc=5",
       "published": "2026-10-24T23:49:57Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "8c782f10e8c0",
-      "topic": "tesla",
-      "title": "Chevy Bolt owner shocked by Tesla Supercharger prices after charging for just 6 minutes",
-      "source": "Yahoo Autos",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPSzFOZ1ZUVFRjUGlpTjBXUkJ3RGR0TEd2bEZVQ3AzcVR2ZUVheDQ5SGoxVS1ZRERicG94ZVBCM2txeU5BNHNudUZ5M2tqR1g3Z2pVZlB4emE5RXdIRldxcTFaLTBzdi1FNWhQc2JXWDhjQlItUXFCc0FvM2t2N3N6UjdLaTAtOEloMWdpWEh0SUdubUFxU2pjUC05TFpTZw?oc=5",
-      "published": "2026-10-24T23:35:00Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -156,7 +156,7 @@
       "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNR0pMY3cwREJXRVRHbkJuZHNpZmkxYndVSnNHamdUZ3Jsdi1RUVF3MF9JOWk5Zkdldy11R1poN3VWU29Nc2VQNVF0dXRINWI4LTZvY1BzZEVDNDdTdmZyNWtLVUI5NGY1Z2hoTF8xcUZ1d3lodm5SdkV3R3NNUmVCdm5zMjRUS2ZQWlg2Z0NZdFpCdDJWNG1vemlfeWp5ZUs1NVZyWQ?oc=5",
       "published": "2026-10-24T22:03:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.9VTw-2W2xfAwGbRkqoT_zQ&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.VSY0XXD6HLz7vAZgUJSzmA&pid=News&w=640",
       "kind": "milestone",
       "score": 11
     },
@@ -171,6 +171,17 @@
       "image": "https://www.bing.com/th?id=ONUT.sybzhcPxoHpoA_y7jstn_w&pid=News&w=640",
       "kind": "general",
       "score": 9
+    },
+    {
+      "id": "aa4249f1f1e4",
+      "topic": "spacex",
+      "title": "NVDA Stock Bucks Selloff Premarket On SpaceX Boost, Foxconn’s Sales Update",
+      "source": "Stocktwits",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNZ1BhVk5SS2pwdGRmM1l6aHBRMUtKTnZCemdjT1BqTzhTVThPQVpYTk1JbFhkeWxVTUJkZzJtZF96S0JFMDkwRXJhNVpNUkswV1pnWklfaUZnVzhWTWFqLUlYMGU1V2t1RzFSbXFrYlpjYmRoSFJqSHBlU251N3g2MzZudEdvMFVOWGV2cF96RFVhZW50Tk5hTDhUcHpJd3dUVkNPUWkxZnQ0YzJyNTdtRU14YlBzZnVRSXdjajN4eXhneVVOWnNDY0ZFallEQ1dFc0l2Xw?oc=5",
+      "published": "2026-10-24T20:26:15Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "a5df8d1c0ddc",
@@ -240,26 +251,13 @@
       "score": 4
     },
     {
-      "id": "8c58d1ce3793",
-      "topic": "spacex",
-      "title": "Tesla Plus SpaceX: 5 Reasons This Merger Is A Terrible Idea (NASDAQ:SPCX)",
-      "source": "Seeking Alpha",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPN3QwSjVqWjMtekJHZGhUNjdSWXVXRFA4WXRhS1pCM0NLR3AtQ29kSWNuM2oyOTlxRXp5SFJsM3NzV28tNUNMQVFlSTNhei1DMFlhUlQxTF80REV6Mi1Ma3BoY2hsQjU5elZGcEdwM1JSdVJxRHBDQWhEb1NJYXkyaFVuZFAwbEpOOE9qb3ZUOHdjVGxGZjNsVmxHWEdPcVRD?oc=5",
-      "published": "2026-10-24T19:19:02Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.eaRETCRz8-CdOCDg4-y0ZA&pid=News&w=640",
-      "kind": "general",
-      "score": 0
-    },
-    {
-      "id": "7bb5686c618c",
+      "id": "b20b09acc440",
       "topic": "tesla",
-      "title": "Tesla vehicles involved in self-driving accidents",
-      "source": "NBC News",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQODRnUUxTVXhZclA1YUpWWDlHYm1RSGJ4X3BQbDZqMnk1TTZ5R0I4UV9wNEM1Nm9ncThsN1BxMDJOYU92Z2tmblU5cDhfN0FhU3dGYUVTVGZ3cmVabUpHWFlGMjhDMnJVc1g2dDhxRzVqR2JHUFNvVHVXMFNNaDhERTFqSFdCblNkcUNWMHBrbVdDT2NHWFFOSTdyeTFadlUz?oc=5",
-      "published": "2026-10-24T19:06:18Z",
+      "title": "Tesla Thought It Owned EV Charging Forever, But Ionna, Rivian And Mercedes Showed Up to Take The Throne",
+      "source": "CarBuzz",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNRWFTMHpQZ2JvNUJ5cF9fUDE4UGpzSHk3U3RNM2IyYnBhTDN5UDBGZ2owc1NBdkp3VThYRExSOEZGelBXMWQ3cXZ6SWZILXk1VU1mdFlYQkhiaWNmcF9TQmhFcjR5b3JUWVM4YTJpWmpKVEdCY3h5Q0pIV2ozcVpTRUZCRU5JSk9jRm5xNVA1VEFCTWY2aFBzVA?oc=5",
+      "published": "2026-10-24T19:03:14Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.C5razINYVskTXSHLNaTjCg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -396,6 +394,7 @@
       "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQNi1tOHRnV1dsY3BIRUNTRHlaYzJhTXV4NkkySWlLOWJGaTZDSkd3bEtqeU8tc2Y3UjNFbDB6WEd5MmtFbFlLRV81WVBUOVl3RVdZd3pRRHM5a3dPenZuX0Z3Ujd2ZDdKR0JfSloySlkxY3Atamlib0VneXBxdHlPLWxsQXJvX1FPMVlXWENrXzVxUGE1RXpSQ0dRbDRORUdTcTJISG5wbktjYWpoX2JVY0FHNTVCT0pxYW5LcVVB?oc=5",
       "published": "2026-10-24T17:07:11Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.BirBxTL-2PKN44pJggCANA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -515,6 +514,18 @@
       "score": 4
     },
     {
+      "id": "d2b760632604",
+      "topic": "spacex",
+      "title": "Ukraine's Starlink satellite speeds restored after a week of front-line disruption",
+      "source": "Los Angeles Times on MSN",
+      "url": "https://www.msn.com/en-us/news/other/ukraines-starlink-satellite-speeds-restored-after-a-week-of-front-line-disruption/ar-AA2fZTLC",
+      "published": "2026-10-24T13:37:00Z",
+      "snippet": "Ukraine's access to Starlink and Starshield satellite links has been restored to previous speeds, according to President Volodymyr Zelensky ...",
+      "image": "https://www.bing.com/th?id=ORMS.ec5156e0bedc0ee876f06353bcd7b840&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "c7ca20706c25",
       "topic": "spacex",
       "title": "Zelenskyy says Starlink is working again in Ukraine and thanks Americans who 'took this seriously'",
@@ -575,18 +586,6 @@
       "score": 11
     },
     {
-      "id": "c574c651d09d",
-      "topic": "spacex",
-      "title": "Europe's Satellite Internet Alternative Aims To Compete With Starlink",
-      "source": "BGR",
-      "url": "https://www.bgr.com/2291432/europe-satellite-internet-alternative-eats-starlink-lunch/",
-      "published": "2026-10-24T12:18:00Z",
-      "snippet": "An EU-backed satellite network will extend connectivity to areas that are poorly served by broadband internet, just as Starlink does.",
-      "image": "https://www.bing.com/th?id=ONUT.8oyzmKVZ4re6mQCfNFyXNw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "777d1e88110b",
       "topic": "tesla",
       "title": "Throwback to Tesla FSD 14.1.7 update",
@@ -644,6 +643,17 @@
       "score": 4
     },
     {
+      "id": "91895984076d",
+      "topic": "spacex",
+      "title": "Prediction: Here’s Where SpaceX Stock Will Trade on Its 1-Year IPO Anniversary",
+      "source": "Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcTBTNDljSEVOdDc1Qzk0a2w3cWowV215Zkh4ZDVLcm5KMk05aDBmb0Z0cGJpZzFtak9ERWtmYTV6U0VVRFlEWHk1TFdlTXd3dEhJbVlmV3FTMFZzb2g0a09GSE04ZHZfQkRzeXEtRE9kaUx0U0xtcno3ZnZZLXdRTzdYTWJZWXlaRWN4d016dWdkUGJtV3pOT1FZZ3Qwd29Eb2c?oc=5",
+      "published": "2026-10-24T09:36:02Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "3aeb77d7a522",
       "topic": "spacex",
       "title": "Ukraine Says Starlink Is Back to Full Power",
@@ -678,18 +688,6 @@
       "score": 4
     },
     {
-      "id": "6e75bb84bdb0",
-      "topic": "tesla",
-      "title": "We Already Know Tesla Is Failing One Key Metric Before It Reports Earnings",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/already-know-tesla-failing-one-150816385.html",
-      "published": "2026-10-24T08:09:00Z",
-      "snippet": "Tesla deployed 13.7 GWh of energy storage in the third quarter, about 2.2 GWh short of the 15.9 GWh analysts expected, even as vehicle deliveries beat estimates. Storage matters more than its share of revenue suggests,",
-      "image": "https://www.bing.com/th?id=ONUT.peMnsrv02Q6HcgZ2DrCTMg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "4612b1a82b7e",
       "topic": "grok",
       "title": "8 Best ChatGPT Alternatives for Mac: Multi-Model Apps Ranked",
@@ -720,17 +718,6 @@
       "published": "2026-10-24T06:49:00Z",
       "snippet": "SpaceX's military-grade version of the Starlink internet service has become the backbone of Ukraine's drone operations.",
       "image": "https://www.bing.com/th?id=ONUT.CcFRcKoMgVWLbMuPr9XvqA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "e5b930f37475",
-      "topic": "spacex",
-      "title": "Is It Too Late to Buy SpaceX Stock After Its Monster Third-Quarter Earnings Report? Here's the Answer.",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQQURyczlkV3VMeGg1LXozekhfTE9kMEo4RWlaaDdWdmRkN3NPYllPQnNXYVBXNjhabFU5RkdqTHE4MU4tTmJjSG5GbkhZaC10QVBWYWpMLUxIY2psMExlUzU2NzhDSjhaQXhRUmVmMmdCalEtUlBlbFNNQWtLZjhuVTRfZzdZbFNnR2dqVW9WTG81VkxTRlNhXw?oc=5",
-      "published": "2026-10-24T06:31:00Z",
-      "snippet": "",
       "kind": "general",
       "score": 4
     },
