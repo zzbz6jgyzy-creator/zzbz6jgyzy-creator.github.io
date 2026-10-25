@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T02:39:15.731Z",
+  "updated": "2026-10-25T02:53:03.329Z",
   "changes": [
     {
       "type": "logged",
@@ -30,9 +30,9 @@
       "evidence": "independently_corroborated",
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
-      "href": "/cybercab.html",
-      "summary": "Texas Cybercab registrations changed from 420 to 431.",
-      "title": "Texas Cybercab registrations",
+      "href": "/cybercab.html#cc-changes",
+      "summary": "Texas Cybercab registrations moved from 420 to 431. A registered car isn’t necessarily in service yet.",
+      "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-25T00:00:00.000Z|431"
     },
     {
