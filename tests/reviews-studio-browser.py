@@ -54,6 +54,7 @@ async def main():
       await page.reload(wait_until='domcontentloaded');await page.wait_for_timeout(200);assert await page.locator('[data-rv-save="model-y"]').get_attribute('aria-pressed')=='true';assert '3 / 3' in await page.locator('#rv-compare-count').inner_text()
      await page.locator('#rv-compare-clear').click();assert '0 / 3' in await page.locator('#rv-compare-count').inner_text()
     else:
+     assert await page.locator('.rv-reading').evaluate('(e)=>getComputedStyle(e).position')=='sticky'
      box=page.locator('[data-rv-check="0"]');await box.check();assert '1 / 5' in await page.locator('#rv-check-count').inner_text()
      await page.reload(wait_until='domcontentloaded');await page.wait_for_timeout(200);assert await page.locator('[data-rv-check="0"]').is_checked()
      async with page.expect_download() as download:await page.locator('#rv-download').click()
