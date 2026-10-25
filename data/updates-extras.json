@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T23:42:11Z",
+ "updated": "2026-10-25T00:04:20Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,40 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-24T23:42:11Z",
+  "fetched": "2026-10-25T00:04:20Z",
   "items": [
+   {
+    "t": "2026-10-24T23:59:53Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-24T23:52:37Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model 3 Performance (2025)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-24T23:51:59Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model 3 RWD LR (2026)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-24T23:48:53Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model 3 SR (2025)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
    {
     "t": "2026-10-24T23:42:06Z",
     "to": "2026.38.5.6",
@@ -538,38 +570,6 @@
     "to": "2026.38.5.6",
     "from": "2026.38.5.5",
     "model": "Model Y AWD LR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-24T23:24:53Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 AWD LR (2023)",
-    "hw": "4.0",
-    "country": "Belgium"
-   },
-   {
-    "t": "2026-10-24T23:22:53Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model Y SR (2024)",
-    "hw": "4.0",
-    "country": "Germany"
-   },
-   {
-    "t": "2026-10-24T23:17:42Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-24T23:16:08Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y AWD LR (2026)",
     "hw": "4.0",
     "country": "Australia"
    }
