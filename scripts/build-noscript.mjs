@@ -4,6 +4,7 @@
 // the interactive tracker is unchanged. Re-run whenever the data files change.
 import fs from "node:fs";
 import vm from "node:vm";
+import { buildBuyingStudio } from "./build-buying-studio.mjs";
 import { buildFSDEurope } from "./build-fsd-europe.mjs";
 import { buildAutonomyEvidence } from "./build-autonomy-evidence.mjs";
 import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
@@ -37,6 +38,7 @@ function inject(file, tag, html) {
   inject("promise-tracker.html", "promises", `<h2>All ${d.promises.length} promises (updated ${esc(d.updated)})</h2><div style="overflow-x:auto"><table ${T}><thead><tr>${th("Promise")}${th("Status")}${th("Deadline")}${th("Source")}</tr></thead><tbody>${rows}</tbody></table></div>`);
 }
 // FSD Europe has complete saved HTML from the same model as the browser.
+buildBuyingStudio(root);
 buildFSDEurope(root);
 buildAutonomyEvidence(root);
 // Starship now has complete semantic saved HTML, shared with the browser.

@@ -181,7 +181,9 @@
       "board.js"
     ],
     "buy-guide": [
-      "guides/buy-calc.js"
+      "buying-studio-model.js",
+      "buying-studio-view.js",
+      "buying-studio.js"
     ],
     "personal-home": [
       "personal-model.js",

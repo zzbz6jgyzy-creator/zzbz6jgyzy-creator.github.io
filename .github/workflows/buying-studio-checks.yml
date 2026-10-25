@@ -1,0 +1,35 @@
+name: Tesla buying studio checks
+on:
+  pull_request:
+    paths:
+      - 'guides/tesla-buying-guide.html'
+      - 'buying-studio*'
+      - 'data/buying-studio.json'
+      - 'scripts/build-buying-studio.mjs'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/buying-studio*'
+      - '.github/workflows/buying-studio-checks.yml'
+      - '.github/workflows/home-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  buying-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Financial arithmetic, references and saved HTML
+        run: node --test tests/buying-studio.test.mjs
+      - name: Install browser driver
+        run: pip install playwright==1.62.0
+      - name: Mobile, persistence, planning and no-JavaScript checks
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/buying-studio-browser.py
