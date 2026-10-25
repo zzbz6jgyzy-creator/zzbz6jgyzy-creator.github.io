@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T16:12:59Z",
+ "updated": "2026-10-25T16:51:01Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-25T16:12:59Z",
+  "fetched": "2026-10-25T16:51:01Z",
   "items": [
+   {
+    "t": "2026-10-25T16:19:29Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
    {
     "t": "2026-10-25T16:08:31Z",
     "to": "2026.38.5.11",
@@ -564,14 +572,6 @@
     "model": "Model Y SR (2024)",
     "hw": "4.0",
     "country": "Australia"
-   },
-   {
-    "t": "2026-10-25T15:23:53Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model S 75D (2016)",
-    "hw": "0.0",
-    "country": "United Kingdom"
    }
   ]
  }
