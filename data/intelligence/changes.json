@@ -1,23 +1,6 @@
 {
-  "updated": "2026-10-25T23:07:53.230Z",
+  "updated": "2026-10-25T23:28:41.581Z",
   "changes": [
-    {
-      "type": "changed",
-      "factId": "tesla-software:most-common",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "most-common",
-      "previous": "2026.38.5.1@30.6",
-      "next": "2026.38.5.1@30.5",
-      "at": "2026-10-25T23:07:49.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Most common sample build changed from 2026.38.5.1@30.6 to 2026.38.5.1@30.5.",
-      "title": "Most common sample build",
-      "id": "changed|tesla-software:most-common|2026-10-25T23:07:49.000Z|2026.38.5.1@30.5"
-    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/booster-22-static-fire.html",
