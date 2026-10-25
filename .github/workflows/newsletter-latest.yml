@@ -22,12 +22,15 @@ jobs:
         run: node scripts/newsletter-latest.js
       - name: Refresh signup blocks with the new slug and issue count
         run: python3 scripts/inject_newsletter.py
+      - name: Rebuild JS bundles if grow.js or another bundled source changed
+        run: sh scripts/ci-rebuild-bundles.sh
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A -- '*.html' grow.js scripts/build-home.js data/newsletter-latest.json dispatch/*.html
+          git checkout -- templates/starlink-sky.html 2>/dev/null || true
+          git add -A -- '*.html' grow.js scripts/build-home.js data/newsletter-latest.json dispatch/*.html assets/js
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Point Read the latest issue at the newest newsletter issue."
-            git pull --rebase && git push
+            sh scripts/ci-push-retry.sh
           fi
