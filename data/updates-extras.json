@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T23:07:50Z",
+ "updated": "2026-10-25T23:43:01Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-25T23:07:50Z",
+  "fetched": "2026-10-25T23:43:01Z",
   "items": [
+   {
+    "t": "2026-10-25T23:33:30Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model S 75D (2016)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-25T23:22:08Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y Performance (2026)",
+    "hw": "4.0",
+    "country": "Poland"
+   },
+   {
+    "t": "2026-10-25T23:19:05Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 RWD LR (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-25T23:07:06Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "Thailand"
+   },
+   {
+    "t": "2026-10-25T23:02:53Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model 3 AWD LR (2024)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
    {
     "t": "2026-10-25T22:50:42Z",
     "to": "2026.38.5.10",
@@ -530,46 +570,6 @@
     "to": "2026.38.5.11",
     "from": "2026.38.5.1",
     "model": "Model Y Performance (2020)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-25T21:48:09Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y SR (2026)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-25T21:45:08Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 RWD LR (2025)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-25T21:22:09Z",
-    "to": "2026.38.3.2",
-    "from": "2026.32.7",
-    "model": "Model Y AWD LR (2023)",
-    "hw": "4.0",
-    "country": "Belgium"
-   },
-   {
-    "t": "2026-10-25T21:07:59Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 SR (2026)",
-    "hw": "4.0",
-    "country": "Colombia"
-   },
-   {
-    "t": "2026-10-25T21:07:54Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model Y AWD LR (2021)",
     "hw": "3.0",
     "country": "United States"
    }
