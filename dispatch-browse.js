@@ -104,7 +104,11 @@
       if (sort === "newest" && topic === "all" && !query.trim() && i === 0) c.el.classList.add("disp-featured");
     });
     if (empty) empty.hidden = rows.length > 0;
-    if (more) more.hidden = rows.length <= shown;
+    if (more) {
+      const left = rows.length - shown;
+      more.hidden = left <= 0;
+      if (left > 0) more.textContent = `Show ${Math.min(PAGE, left)} more · ${Math.min(shown, rows.length)} of ${rows.length} shown`;
+    }
     if (status) {
       const label = chips.find((c) => c.id === topic);
       const order = sort === "oldest" ? "oldest first" : "newest first";

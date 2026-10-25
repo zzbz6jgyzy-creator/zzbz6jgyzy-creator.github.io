@@ -1,0 +1,21 @@
+{
+  "identity": "Supercharged Daily · @ALJR86. Independent fan site covering Tesla, SpaceX and xAI (including Grok).",
+  "notAffiliated": "Not affiliated with Tesla, SpaceX or xAI.",
+  "notAffiliatedOverrides": {
+    "grok.html": "Not affiliated with Tesla, SpaceX, xAI or Cursor."
+  },
+  "links": [
+    ["Tesla", "/tesla.html"],
+    ["SpaceX", "/spacex.html"],
+    ["Grok", "/grok.html"],
+    ["Dispatch", "/dispatch.html"],
+    ["News", "/news.html"],
+    ["Reviews", "/reviews/index.html"],
+    ["Games", "/games.html"],
+    ["Tesla referral", "https://ts.la/alex474841", "referral"],
+    ["X", "https://x.com/ALJR86"],
+    ["Corrections", "/corrections.html"],
+    ["About", "/about.html"],
+    ["Contact me", "mailto:superchargeddaily@gmail.com"]
+  ]
+}
