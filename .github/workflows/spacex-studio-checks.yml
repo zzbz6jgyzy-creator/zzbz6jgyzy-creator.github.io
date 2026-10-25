@@ -1,0 +1,47 @@
+name: SpaceX mission hub checks
+on:
+  pull_request:
+    paths:
+      - 'spacex.html'
+      - 'spacex-studio*'
+      - 'data/spacex-studio.json'
+      - 'data/calendar-studio.json'
+      - 'data/articles.json'
+      - 'data/pages.json'
+      - 'assets/spacex-studio/**'
+      - 'scripts/build-spacex-studio.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/spacex-studio*'
+      - '.github/workflows/spacex-studio-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  spacex-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned verification tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Verify editorial data, date precision and saved build
+        run: |
+          node --test tests/spacex-studio.test.mjs
+          node scripts/build-spacex-studio.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- spacex.html assets/js data/pages.json
+      - name: Responsive and interaction checks
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/spacex-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: spacex-studio-previews
+          path: /tmp/spacex-studio

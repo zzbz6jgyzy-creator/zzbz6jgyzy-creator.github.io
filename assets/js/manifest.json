@@ -101,14 +101,12 @@
       ]
     },
     "spacex": {
-      "file": "/assets/js/spacex.bundle.35f3313407.js",
-      "bytes": 43121,
+      "file": "/assets/js/spacex.bundle.4980e93c1e.js",
+      "bytes": 15306,
       "sources": [
-        "starship-data.js",
-        "spacex-hub.js",
-        "calendar-merge.js",
-        "calendar.js",
-        "live.js"
+        "spacex-studio-model.js",
+        "spacex-studio-view.js",
+        "spacex-studio.js"
       ]
     },
     "dispatch": {
