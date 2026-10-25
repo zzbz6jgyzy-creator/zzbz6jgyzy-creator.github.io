@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T00:04:20Z",
+ "updated": "2026-10-25T01:01:00Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,66 +491,42 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-25T00:04:20Z",
+  "fetched": "2026-10-25T01:01:00Z",
   "items": [
    {
-    "t": "2026-10-24T23:59:53Z",
+    "t": "2026-10-25T00:53:42Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 AWD LR (2021)",
+    "hw": "3.0",
+    "country": "Hungary"
+   },
+   {
+    "t": "2026-10-25T00:41:53Z",
     "to": "2026.38.5.6",
     "from": "2026.38.5.5",
     "model": "Model Y AWD LR (2025)",
     "hw": "4.0",
-    "country": "Australia"
+    "country": "New Zealand"
    },
    {
-    "t": "2026-10-24T23:52:37Z",
+    "t": "2026-10-25T00:31:52Z",
     "to": "2026.38.5.6",
     "from": "2026.38.5.5",
-    "model": "Model 3 Performance (2025)",
+    "model": "Model 3 AWD LR (2025)",
     "hw": "4.0",
     "country": "Australia"
    },
    {
-    "t": "2026-10-24T23:51:59Z",
+    "t": "2026-10-25T00:29:47Z",
     "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model 3 RWD LR (2026)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-24T23:48:53Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model 3 SR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-24T23:42:06Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y AWD LR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-24T23:38:19Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-24T23:35:21Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y AWD LR (2026)",
+    "from": "2026.20.10",
+    "model": "Model 3 AWD LR (2024)",
     "hw": "3.0",
     "country": "Australia"
    },
    {
-    "t": "2026-10-24T23:32:06Z",
+    "t": "2026-10-25T00:28:54Z",
     "to": "2026.38.5.6",
     "from": "2026.38.5.5",
     "model": "Model 3 SR (2025)",
@@ -558,19 +534,43 @@
     "country": "Australia"
    },
    {
-    "t": "2026-10-24T23:31:42Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
+    "t": "2026-10-25T00:26:09Z",
+    "to": "2026.38.5.1",
+    "from": "2026.26.6.5",
+    "model": "Model 3 Performance (2020)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-25T00:22:55Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
     "model": "Model Y SR (2026)",
-    "hw": "3.0",
+    "hw": "4.0",
+    "country": "Spain"
+   },
+   {
+    "t": "2026-10-25T00:20:10Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
     "country": "Australia"
    },
    {
-    "t": "2026-10-24T23:24:53Z",
+    "t": "2026-10-25T00:18:06Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.10",
+    "model": "Model 3 Performance (2019)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-25T00:17:51Z",
     "to": "2026.38.5.6",
     "from": "2026.38.5.5",
-    "model": "Model Y AWD LR (2025)",
-    "hw": "4.0",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "3.0",
     "country": "Australia"
    }
   ]
