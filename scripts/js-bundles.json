@@ -189,6 +189,10 @@
       "personal-model.js",
       "personal-sync.js",
       "personal-home.js"
+    ],
+    "reviews": [
+      "reviews-studio-model.js",
+      "reviews-studio.js"
     ]
   },
   "pages": {
@@ -588,6 +592,16 @@
       "bundles": [
         "core"
       ]
+    },
+    "reviews/index.html": {
+      "bundles": [
+        "core",
+        "reviews"
+      ],
+      "grow": [
+        "data-band",
+        "data-pop"
+      ]
     }
   },
   "pageGlobs": {
@@ -611,7 +625,8 @@
     },
     "reviews/*.html": {
       "bundles": [
-        "core"
+        "core",
+        "reviews"
       ],
       "grow": [
         "data-band",
