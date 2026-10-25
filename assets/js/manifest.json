@@ -240,10 +240,12 @@
       ]
     },
     "production": {
-      "file": "/assets/js/production.bundle.bae24c1028.js",
-      "bytes": 3251,
+      "file": "/assets/js/production.bundle.4d3b308ba3.js",
+      "bytes": 20184,
       "sources": [
-        "production.js"
+        "production-studio-model.js",
+        "production-studio-view.js",
+        "production-studio.js"
       ]
     },
     "promise-tracker": {

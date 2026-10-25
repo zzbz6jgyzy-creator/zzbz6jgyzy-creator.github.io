@@ -58,7 +58,7 @@ async def main():
     assert await page.locator('#lv-guide').is_visible();assert await page.locator('#lv-map svg').count()==1;assert await page.locator('.lv-launch-card').count()>0;assert not await page.locator('#lv-location').is_visible()
    elif mode=='blocked-storage':await expect(page.locator('#lv-storage')).to_contain_text('unavailable')
    elif mode=='legacy':await expect(page.locator('#lv-location-status')).to_contain_text('Santa Barbara')
-   elif mode in ['source-failed','malformed','older']:await expect(page.locator('#lv-freshness')).to_contain_text('Saved page')
+   elif mode in ['source-failed','malformed','older']:await expect(page.locator('#lv-freshness')).to_contain_text('Launch times may be out of date')
    elif mode in ['weather-failed','no-forecast']:
     await page.locator('[data-place="Santa Barbara"]').click();await page.locator('#lv-weather').click();await expect(page.locator('#lv-weather-result')).to_contain_text('unavailable'if mode=='weather-failed'else'Outside');assert '0%'not in await page.locator('#lv-weather-result').inner_text()
    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),mode;assert not errors,errors;await c.close();cases.append(mode)
