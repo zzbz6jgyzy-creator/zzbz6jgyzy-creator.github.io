@@ -76,11 +76,9 @@
       "updates-v3.js"
     ],
     "spacex": [
-      "starship-data.js",
-      "spacex-hub.js",
-      "calendar-merge.js",
-      "calendar.js",
-      "live.js"
+      "spacex-studio-model.js",
+      "spacex-studio-view.js",
+      "spacex-studio.js"
     ],
     "dispatch": [
       "dispatch-browse.js"
@@ -259,14 +257,12 @@
     "spacex.html": {
       "bundles": [
         "core",
-        "intel",
         "spacex"
       ],
       "grow": [
         "data-band",
         "data-pop"
-      ],
-      "livePage": "spacex"
+      ]
     },
     "fsd-europe.html": {
       "bundles": [

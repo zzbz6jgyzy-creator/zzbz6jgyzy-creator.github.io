@@ -34,6 +34,9 @@ on:
       - live-data.json
       - data/production.json
       - tesla-overview.css
+      - scripts/build-spacex-studio.mjs
+      - data/spacex-studio.json
+      - spacex-studio.css
       - scripts/build-tesla-overview.mjs
       - data/articles.json
       - scripts/build-home.js
@@ -97,6 +100,8 @@ jobs:
           npm i --no-save --no-package-lock sharp@0.33 >/dev/null 2>&1 || true
           node scripts/build-images.mjs || echo "image build skipped"
           node scripts/build-wallpaper-thumbs.mjs || echo "wallpaper thumbs skipped"
+      - name: Refresh SpaceX hub after responsive image generation
+        run: node scripts/build-spacex-studio.mjs
       - name: Bundle first-party JS
         run: sh scripts/rebuild-js.sh
       - name: Rebuild visual explainer hub and lessons

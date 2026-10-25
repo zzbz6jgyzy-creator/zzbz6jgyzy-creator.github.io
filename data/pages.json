@@ -189,9 +189,33 @@
     },
     {
       "url": "/spacex.html",
-      "title": "SpaceX",
+      "title": "SpaceX mission hub",
       "tag": "SpaceX",
-      "summary": "News & missions"
+      "summary": "Explore SpaceX: upcoming launch windows, Falcon 9, Falcon Heavy, Dragon, Starship and Starlink. A visual mission hub with saved launches, engineering guides and original reporting."
+    },
+    {
+      "url": "/spacex.html#launches",
+      "title": "SpaceX launch board",
+      "tag": "SpaceX",
+      "summary": "Upcoming launch windows, planning targets, timezone choices and saved launches."
+    },
+    {
+      "url": "/spacex.html#fleet",
+      "title": "SpaceX fleet explorer",
+      "tag": "SpaceX",
+      "summary": "Falcon 9, Falcon Heavy, Dragon, Starship and Starlink: roles, architecture and sources."
+    },
+    {
+      "url": "/spacex.html#engineering",
+      "title": "How reusable SpaceX flight works",
+      "tag": "SpaceX",
+      "summary": "A visual guide to the upper-stage mission and separate booster recovery path."
+    },
+    {
+      "url": "/spacex.html#stories",
+      "title": "SpaceX original reporting",
+      "tag": "SpaceX",
+      "summary": "Latest SpaceX, Starship, Starlink and crew stories from Supercharged Daily."
     },
     {
       "url": "/starship.html",

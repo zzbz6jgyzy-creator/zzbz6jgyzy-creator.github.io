@@ -1,0 +1,263 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-25",
+  "sources": [
+    {
+      "id": "falcon",
+      "name": "SpaceX · Falcon 9",
+      "url": "https://new.spacex.com/vehicles/falcon-9",
+      "note": "Published vehicle architecture and reference dimensions; mission capabilities depend on configuration."
+    },
+    {
+      "id": "heavy",
+      "name": "SpaceX · Falcon Heavy",
+      "url": "https://new.spacex.com/vehicles/falcon-heavy",
+      "note": "Three-core first stage and 27 Merlin engines; recovery is mission-dependent."
+    },
+    {
+      "id": "dragon",
+      "name": "NASA · Commercial crew spacecraft",
+      "url": "https://www.nasa.gov/humans-in-space/spaceships-and-rockets/commercial-crew-spacecraft/",
+      "note": "Crew Dragon role, NASA crew complement and water recovery."
+    },
+    {
+      "id": "starship",
+      "name": "SpaceX · Starship",
+      "url": "https://new.spacex.com/vehicles/starship",
+      "note": "Programme design goals are distinct from demonstrated flight results; use the flight log for outcomes."
+    },
+    {
+      "id": "starlink",
+      "name": "Starlink · Technology",
+      "url": "https://www.starlink.com/technology",
+      "note": "Constellation architecture; service and performance depend on location, equipment and local availability."
+    },
+    {
+      "id": "history",
+      "name": "SpaceX · Mission milestones",
+      "url": "https://www.spacex.com/mission/",
+      "note": "Selected historic milestones; not a full launch history."
+    },
+    {
+      "id": "demo2",
+      "name": "NASA · Demo-2 launch",
+      "url": "https://www.nasa.gov/news-release/nasa-astronauts-launch-from-america-in-historic-test-flight-of-spacex-crew-dragon/",
+      "note": "First crewed Dragon launch, 30 May 2020."
+    },
+    {
+      "id": "catch",
+      "name": "NASA APOD · First Super Heavy catch",
+      "url": "https://apod.nasa.gov/apod/ap241023.html",
+      "note": "The first tower catch occurred on Flight 5, 13 October 2024."
+    }
+  ],
+  "programs": [
+    {
+      "id": "falcon9",
+      "name": "Falcon 9",
+      "tag": "The orbital workhorse.",
+      "role": "Launch vehicle",
+      "architecture": "Two-stage rocket",
+      "headline": "9 Merlin engines / first stage",
+      "system": "RP-1 + liquid oxygen",
+      "reuse": "First stage / mission-dependent",
+      "source": "falcon",
+      "href": "/calendar.html",
+      "paragraphs": [
+        "Falcon 9 is a two-stage launcher for satellites, Dragon and other payloads. Its architecture separates the job of lifting away from Earth from the upper stage’s job of delivering a mission to its selected orbit.",
+        "The first stage has nine Merlin engines. The second stage has a vacuum-optimised Merlin. SpaceX lists a reference height of 70 metres; published payload maxima should not be mistaken for what every recoverable flight can carry.",
+        "The useful distinction is between the primary mission and recovery. Payload deployment, first-stage landing and a later reflight are separate events. The launch board gives you the next schedule entries; the engineering sequence explains the two paths."
+      ]
+    },
+    {
+      "id": "heavy",
+      "name": "Falcon Heavy",
+      "tag": "Three cores. A different mission envelope.",
+      "role": "Heavy-lift launch vehicle",
+      "architecture": "Two-stage / three-core first stage",
+      "headline": "27 Merlin engines / liftoff",
+      "system": "RP-1 + liquid oxygen",
+      "reuse": "Side cores and centre core / mission-dependent",
+      "source": "heavy",
+      "href": "/calendar.html",
+      "paragraphs": [
+        "Falcon Heavy combines three Falcon-derived cores in its first stage. Their 27 Merlin engines provide the initial lift, with an upper stage handling the onward mission.",
+        "Its configuration addresses missions that need more performance than the single-core vehicle. Recovery plans depend on mission energy and hardware choices; a photo of two side boosters returning is not proof that all three cores were recovered.",
+        "Use the mission’s own payload, orbit and recovery plan when comparing flights. A maximum payload table describes an envelope with assumptions, not the payload of the next launch."
+      ]
+    },
+    {
+      "id": "dragon",
+      "name": "Dragon",
+      "tag": "A spacecraft with people at the centre.",
+      "role": "Crew & cargo spacecraft",
+      "architecture": "Capsule + trunk",
+      "headline": "Up to 4 crew / NASA missions",
+      "system": "Draco manoeuvring / heat shield & parachutes",
+      "reuse": "Capsule water recovery / trunk expended",
+      "source": "dragon",
+      "href": "/dispatch.html",
+      "paragraphs": [
+        "Dragon is a spacecraft, not the rocket below it. Falcon 9 supplies the launch, while Dragon performs the rendezvous, on-orbit and return portions appropriate to its mission.",
+        "NASA describes crew capacity of up to four on its missions, within a design capable of more passengers. Crew and cargo variants have different jobs. The capsule and trunk are distinct parts; returning the capsule does not mean the entire spacecraft assembly is reused.",
+        "For a crew flight, launch is the start of a larger sequence: spacecraft activation, rendezvous, docking, time on station, undocking and recovery. The schedule can change independently at each stage."
+      ]
+    },
+    {
+      "id": "starship",
+      "name": "Starship",
+      "tag": "Build. Fly. Learn. Repeat.",
+      "role": "Development programme",
+      "architecture": "Starship + Super Heavy",
+      "headline": "Raptor engine family",
+      "system": "Liquid methane + liquid oxygen",
+      "reuse": "Full-system reuse / programme goal",
+      "source": "starship",
+      "href": "/starship.html",
+      "paragraphs": [
+        "Starship pairs the spacecraft and upper stage with the Super Heavy booster. The programme is designed around recovering and reusing the whole system, rather than only a first stage.",
+        "The development record should be read flight by flight. A booster catch, a ship reentry, an orbital flight and a later reflight are different achievements. Hardware revisions also change the vehicle, so a single old specification should not become an eternal description of the programme.",
+        "Our flight lab follows objectives and observed outcomes alongside future targets. It is the place to compare missions and inspect the evidence without turning a planning date into a guaranteed launch."
+      ]
+    },
+    {
+      "id": "starlink",
+      "name": "Starlink",
+      "tag": "An orbital network, not one satellite.",
+      "role": "Connectivity constellation",
+      "architecture": "Satellites + gateways + user terminals",
+      "headline": "Low Earth orbit",
+      "system": "Radio links / optical links on equipped generations",
+      "reuse": "Deployment, operation and retirement are distinct",
+      "source": "starlink",
+      "href": "/starlink.html",
+      "paragraphs": [
+        "Starlink combines spacecraft, ground infrastructure and user equipment into a communications network. The satellite fleet contains different hardware generations, so one generic spacecraft drawing cannot describe every vehicle in orbit.",
+        "Launch totals, satellites in orbit, working spacecraft and orbital-shell placement answer different questions. None alone proves service quality at an address. Local approvals, equipment and network conditions still matter.",
+        "Our observatory keeps count categories separate and gives orbital source dates. Its sky finder offers geometric candidates, not guaranteed naked-eye sightings or direct operator telemetry."
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "starship",
+      "name": "Starship flight lab",
+      "tag": "Flight by flight",
+      "text": "Follow objectives, outcomes and the next planning target. Compare what flew with what was announced.",
+      "href": "/starship.html",
+      "kind": "starship"
+    },
+    {
+      "id": "starlink",
+      "name": "Starlink Observatory",
+      "tag": "A world in orbit",
+      "text": "Explore satellite generations, orbital snapshots and the sky above your own location.",
+      "href": "/starlink.html",
+      "kind": "starlink"
+    },
+    {
+      "id": "viewing",
+      "name": "Can I see the launch?",
+      "tag": "Your place. Your sky.",
+      "text": "Check the viewing geometry, direction and available weather guidance for a launch near your horizon.",
+      "href": "/see-the-launch.html",
+      "kind": "viewing"
+    },
+    {
+      "id": "calendar",
+      "name": "The launch calendar",
+      "tag": "Keep your place in the schedule",
+      "text": "Browse upcoming windows, save events and export them to your own calendar.",
+      "href": "/calendar.html",
+      "kind": "calendar"
+    },
+    {
+      "id": "explainers",
+      "name": "Inside the engineering",
+      "tag": "Understand the sequence",
+      "text": "Visual guides to hot staging and booster catches, with the mechanics and limits explained.",
+      "href": "/explainers.html#spacex",
+      "kind": "learn"
+    }
+  ],
+  "steps": [
+    {
+      "id": "launch",
+      "name": "Leave the pad",
+      "title": "Two stages. One climb.",
+      "text": "A Falcon 9 mission begins with the first stage providing the initial climb. Its nine Merlin engines burn RP-1 and liquid oxygen. The payload and second stage ride above it.",
+      "detail": "This is a conceptual sequence, not a mission clock. Timing, trajectory and recovery plans vary.",
+      "source": "falcon"
+    },
+    {
+      "id": "separate",
+      "name": "Separate",
+      "title": "The mission splits into two journeys.",
+      "text": "After first-stage engine shutdown, the stages separate. The second stage continues accelerating the payload; the booster follows its own flight plan.",
+      "detail": "Stage separation is not payload deployment. The upper stage still has work to do.",
+      "source": "falcon"
+    },
+    {
+      "id": "orbit",
+      "name": "Continue to orbit",
+      "title": "Altitude is only part of the job.",
+      "text": "The upper stage adds the velocity needed for the selected mission. Orbit insertion and payload deployment depend on the destination and mission plan.",
+      "detail": "Reaching a high altitude alone does not establish orbit. The path here is an illustration, not a calculated trajectory.",
+      "source": "falcon"
+    },
+    {
+      "id": "return",
+      "name": "Recover the booster",
+      "title": "A separate path back.",
+      "text": "On recovery missions, the booster manages its return and landing while the upper stage continues its task. Recovery may use a droneship or a land-based site; some missions expend the stage.",
+      "detail": "Booster recovery and payload success are separate outcomes. Do not assume every mission attempts a landing.",
+      "source": "history"
+    },
+    {
+      "id": "repeat",
+      "name": "Inspect and refly",
+      "title": "Landing makes reuse possible.",
+      "text": "Recovery is followed by inspection, preparation and a later flight. A successful landing is a milestone in that process, rather than proof that the hardware is immediately ready to launch again.",
+      "detail": "Falcon first-stage reuse is distinct from Starship’s goal of recovering and reusing both stages.",
+      "source": "history"
+    }
+  ],
+  "milestones": [
+    {
+      "year": "2008",
+      "name": "A privately developed rocket reaches orbit",
+      "text": "Falcon 1 reaches Earth orbit, establishing a foundation for the larger launch systems that follow.",
+      "source": "history"
+    },
+    {
+      "year": "2012",
+      "name": "Dragon reaches the space station",
+      "text": "The first Dragon visit to the ISS extends commercial cargo access to the orbiting laboratory.",
+      "source": "history"
+    },
+    {
+      "year": "2015",
+      "name": "The first Falcon land landing",
+      "text": "The Orbcomm mission brings a Falcon 9 first stage back to Landing Zone 1 on 21 December.",
+      "source": "history"
+    },
+    {
+      "year": "2017",
+      "name": "An orbital-class booster flies again",
+      "text": "The 30 March Falcon 9 mission demonstrates first-stage reflight, followed by another recovery.",
+      "source": "history"
+    },
+    {
+      "year": "2020",
+      "name": "Crew Dragon carries astronauts",
+      "text": "Demo-2 launches on 30 May with Bob Behnken and Doug Hurley, beginning the crewed Dragon flight era.",
+      "source": "demo2"
+    },
+    {
+      "year": "2024",
+      "name": "Super Heavy meets the tower",
+      "text": "On 13 October, Flight 5 achieves the first tower catch of a Super Heavy booster.",
+      "source": "catch"
+    }
+  ]
+}
