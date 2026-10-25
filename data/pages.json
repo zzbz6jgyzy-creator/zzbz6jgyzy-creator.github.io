@@ -99,9 +99,39 @@
     },
     {
       "url": "/tsla.html",
-      "title": "Markets",
-      "tag": "Tesla",
-      "summary": "TSLA stock"
+      "title": "TSLA & SPCX Markets",
+      "tag": "Markets",
+      "summary": "Explore Tesla and SpaceX markets with stock charts, sourced financial results, revenue mix, cash-flow bridges, reporting dates and a price-return calculator."
+    },
+    {
+      "url": "/tsla.html#price",
+      "title": "Tesla and SpaceX market charts",
+      "tag": "Markets",
+      "summary": "TSLA and SPCX interactive market charts, with provider timestamps and source links."
+    },
+    {
+      "url": "/tsla.html#results",
+      "title": "Tesla and SpaceX financial results",
+      "tag": "Markets",
+      "summary": "Reported quarterly revenue, operating income, net income, capital spending and revenue mix."
+    },
+    {
+      "url": "/tsla.html#cash-flow",
+      "title": "Tesla and SpaceX cash-flow bridges",
+      "tag": "Markets",
+      "summary": "Clearly labelled reporting periods, operating cash flow and capital expenditure."
+    },
+    {
+      "url": "/tsla.html#tools",
+      "title": "Share-price return calculator",
+      "tag": "Markets",
+      "summary": "Calculate price returns and gross position values from manually entered USD prices."
+    },
+    {
+      "url": "/tsla.html#reporting",
+      "title": "Markets original reporting",
+      "tag": "Markets",
+      "summary": "Original financial reporting, company results and filing analysis."
     },
     {
       "url": "/reviews/index.html",
