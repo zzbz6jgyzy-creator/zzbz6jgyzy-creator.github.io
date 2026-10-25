@@ -89,7 +89,7 @@
     for (const key of ["units", "horizon", "altitude", "downrange"]) $("lv-" + key).value = state[key];
   }
   function showView(view, scroll = false) {
-    if (view !== "sky" && compassAttached) stopCompass();
+    if (view !== "sky" && (compassAttached || compassMode === "requesting")) stopCompass();
     state.view = view;
     root.querySelectorAll("[data-panel]").forEach((e) => e.hidden = e.dataset.panel !== view);
     root.querySelectorAll("[data-view]").forEach((e) => {
