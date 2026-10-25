@@ -86,6 +86,25 @@ def main():
               open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(f"wrote {len(arts)} articles")
 
+def card_dates():
+    """Static date on every Dispatch index card (works without JS; dispatch-browse.js adds read time)."""
+    import re as _re, zoneinfo
+    path = os.path.join(ROOT, "dispatch.html"); s = open(path, encoding="utf-8").read()
+    dates = {a["url"]: a["date"] for a in json.load(open(OUT, encoding="utf-8")).get("articles", [])}
+    tz = zoneinfo.ZoneInfo("Europe/Dublin")
+    def card(m):
+        block, href = m.group(0), m.group(1)
+        iso = dates.get(href)
+        block = _re.sub(r'\n?[ \t]*<p class="sd-disp-meta">.*?</p>', "", block, flags=_re.S)
+        if not iso: return block
+        d = datetime.datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(tz)
+        label = f"{d.day} {d.strftime('%b %Y')}"
+        return _re.sub(r'(\n([ \t]*)<p>[\s\S]*?</p>)(\s*</div>\s*</a>)$',
+                       lambda k: f'{k.group(1)}\n{k.group(2)}<p class="sd-disp-meta"><time datetime="{iso}">{label}</time></p>{k.group(3)}',
+                       block, count=1)
+    t = _re.sub(r'<a class="story-card" href="(/dispatch/[^"]+)">[\s\S]*?</a>', card, s)
+    if t != s: open(path, "w", encoding="utf-8").write(t); print("dispatch card dates updated")
+
 AUTHOR = "Alex R"  # article byline / sign-off name (not the X handle)
 
 DESK_TOPIC = {"Launch footage": "SpaceX"}  # byline labels show the plain topic, never "<topic> desk"
@@ -172,12 +191,17 @@ import glob
 bylines()
 sleek_signup()
 try:
+    import runpy as _rp; _rp.run_path(os.path.join(ROOT, "scripts", "sync-footer.py"))["run"]()
+except Exception as e:
+    print("footer sync skip:", e)
+try:
     import importlib.util as _u
     _sp = _u.spec_from_file_location("footer_contact", os.path.join(ROOT, "scripts", "footer_contact.py")); _m = _u.module_from_spec(_sp); _sp.loader.exec_module(_m); _m.run()
 except Exception as e:
     print("footer contact skip:", e)
 main()
 related_stories()
+card_dates()
 try:
     import importlib.util as _nlu
     _nlp = _nlu.spec_from_file_location("inject_newsletter", os.path.join(ROOT, "scripts", "inject_newsletter.py"))
