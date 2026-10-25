@@ -134,14 +134,16 @@ def article_topic(html, relpath):
 
 
 def ensure_assets(html, need_newsletter_js):
-    if f'href="/grow.css?v={GROW_CSS_V}"' not in html:
-        html = re.sub(r'<link rel="stylesheet" href="/grow\.css\?v=\d+"\s*/?>\n?', "", html)
-        if "</head>" in html:
-            html = html.replace(
-                "</head>",
-                f'    <link rel="stylesheet" href="/grow.css?v={GROW_CSS_V}" />\n  </head>',
-                1,
-            )
+    # Add grow.css only when the page has none. Pages carry it as one async link with a
+    # <noscript> fallback; bump_cache_tags() keeps the ?v= current. (Replacing a plain
+    # <link> on version mismatch used to empty the <noscript> and add a second, blocking link.)
+    if not re.search(r'href="/grow\.css\?v=\d+"', html) and "</head>" in html:
+        html = html.replace(
+            "</head>",
+            f'    <link rel="stylesheet" href="/grow.css?v={GROW_CSS_V}" media="print" onload="this.media=\'all\'" />'
+            f'<noscript><link rel="stylesheet" href="/grow.css?v={GROW_CSS_V}" /></noscript>\n  </head>',
+            1,
+        )
     if need_newsletter_js and "/newsletter.js" not in html and "/grow.js" not in html and "sd:bundles" not in html and "/assets/js/core.bundle." not in html:
         html = html.replace(
             "</body>",

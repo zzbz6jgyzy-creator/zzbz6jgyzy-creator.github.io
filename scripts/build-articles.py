@@ -119,7 +119,9 @@ def sleek_signup():
     box = re.compile(r'\n[ \t]*<section class="newsletter sd-nl".*?</section>', re.S)
     for path in glob.glob(os.path.join(ROOT, "dispatch", "*.html")) + glob.glob(os.path.join(ROOT, "guides", "*.html")):
         s = open(path, encoding="utf-8").read(); t = box.sub("", s)
-        if "/grow.js" not in t and "<main" in t and "</body>" in t:
+        # grow.js ships inside the core bundle (<!--sd:bundles-->); only add the standalone tag to
+        # pages that have neither, or it runs twice and inject-js-bundles.py strips it again.
+        if "/grow.js" not in t and "sd:bundles" not in t and "/assets/js/core.bundle." not in t and "<main" in t and "</body>" in t:
             t = t.replace("</body>", '    <script src="/grow.js?v=202610210800" data-band data-pop defer></script>\n  </body>', 1)
         if t != s: open(path, "w", encoding="utf-8").write(t); print("sleek signup:", os.path.relpath(path, ROOT))
 
