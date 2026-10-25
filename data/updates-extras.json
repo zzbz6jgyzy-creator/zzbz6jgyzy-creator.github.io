@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T04:53:41Z",
+ "updated": "2026-10-25T05:49:42Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-25T04:53:41Z",
+  "fetched": "2026-10-25T05:49:42Z",
   "items": [
+   {
+    "t": "2026-10-25T05:37:05Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model S Performance (2017)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-25T05:36:18Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.10",
+    "model": "Cybertruck AWD (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-25T05:27:29Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model X Plaid (2022)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-25T05:23:08Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model S AWD (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-25T04:58:19Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model Y AWD LR (2025)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
    {
     "t": "2026-10-25T04:43:05Z",
     "to": "2026.38.5.6",
@@ -530,46 +570,6 @@
     "to": "2026.38.5.6",
     "from": "2026.38.5.5",
     "model": "Model 3 AWD LR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-25T03:59:54Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y AWD LR (2024)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-25T03:58:43Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y SR (2025)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-25T03:55:21Z",
-    "to": "2026.38.5.6",
-    "from": "2026.28.5",
-    "model": "Model 3 Performance (2026)",
-    "hw": "4.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-10-25T03:41:07Z",
-    "to": "2026.38.5.1",
-    "from": "2026.26.6.5",
-    "model": "Model 3 SR (2021)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-25T03:20:33Z",
-    "to": "2026.38.5.6",
-    "from": "2026.38.5.5",
-    "model": "Model Y AWD LR (2024)",
     "hw": "4.0",
     "country": "Australia"
    }
