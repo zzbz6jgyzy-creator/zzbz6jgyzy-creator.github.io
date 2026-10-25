@@ -28,6 +28,17 @@ async def main():
    await page.screenshot(path=str(OUT/f'{width}-{theme}-{mode}-hero.png'))
    assert await page.locator('h1').count()==1
    assert await page.locator('.rs-config').count()==3
+   assert await page.locator('.rs-trim-details[open]').count()==0
+   for trim in ['performance','thrust','rocket']:
+    detail=page.locator(f'[data-config="{trim}"] .rs-trim-details')
+    summary=detail.locator('summary')
+    await summary.focus();await page.keyboard.press('Enter')
+    assert await detail.get_attribute('open')is not None
+    assert await detail.locator('dl').is_visible()
+    assert await detail.locator('a').get_attribute('href')=='https://x.com/sawyermerritt/status/2114223853303959785'
+    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),(width,theme,trim,'expanded overflow')
+    await page.keyboard.press('Enter')
+    assert await detail.get_attribute('open')is None
    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),(width,theme,'overflow')
    assert not any(u.endswith('.mp4') for u in requests),'film loaded before request'
    assert await page.locator('.rs-hero-image img').evaluate('(i)=>i.complete&&i.naturalWidth>0')

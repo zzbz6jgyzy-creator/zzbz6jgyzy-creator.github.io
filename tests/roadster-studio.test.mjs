@@ -6,3 +6,24 @@ test('invalid sources, duplicate IDs and unordered chapters fail',()=>{for(const
 test('saved render is reproducible and content is available without JS',()=>{const before=read('roadster.html');execFileSync(process.execPath,['scripts/build-roadster-studio.mjs']);assert.equal(read('roadster.html'),before);assert.equal((before.match(/<h1\b/g)||[]).length,1);assert.equal((before.match(/class="rs-tech-panel"/g)||[]).length,6);assert.match(before,/<noscript><video/);assert.match(before,/Reservation deposits are not the price/);assert.match(before,/not measured acceleration telemetry/);const ids=[...before.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate element IDs');const json=JSON.parse(before.match(/id="rs-studio-data">([\s\S]*?)<\/script>/)[1]);assert.deepEqual(json,d);});
 test('media has complete alternatives, captions and verified provenance',()=>{for(const g of d.gallery){assert.ok(g.alt.length>15);assert.ok(fs.existsSync(`assets/${g.legacy?'roadster':'roadster-studio'}/${g.id}-1920w.webp`));}const p=JSON.parse(read('data/roadster-media.json'));for(const media of p.outputs){const bytes=fs.readFileSync(media.path);assert.equal(createHash('sha256').update(bytes).digest('hex'),media.sha256);assert.equal(bytes.length,media.bytes);}for(const f of ['captions','chapters'])assert.ok(read(`assets/roadster-studio/film-${f}.vtt`).startsWith('WEBVTT'));assert.equal(p.sourceVideo.segments.length,2);assert.ok(p.sourceVideo.segments.every(s=>s.start>=0&&s.duration>0));});
 test('soundtrack attribution and cached playback identify the licensed replacement',()=>{const html=read('roadster.html');assert.equal(d.film.music.composer,'Scott Buckley');assert.equal(d.film.music.license,'CC BY 4.0');assert.match(html,/href="https:\/\/www.scottbuckley.com.au\/library\/legacy\/"/);assert.match(html,/href="https:\/\/creativecommons.org\/licenses\/by\/4.0\/"/);assert.match(html,/roadster-film-720\.mp4\?v=legacy-20261024/);assert.doesNotMatch(html,/original ambient score/);assert.match(read('assets/roadster-studio/film-captions.vtt'),/Scott Buckley/);const p=JSON.parse(read('data/roadster-media.json'));assert.equal(p.music.sourceSha256,'6cf8094c7277b33190cfd9ccedd04dacc487bd96c7214f26a8d5b7d0e848db07');for(const mix of p.music.mastering.outputs){assert.equal(mix.channels,2);assert.equal(mix.sampleRate,48000);assert.ok(mix.integratedLUFS>-18&&mix.integratedLUFS<-16);assert.ok(mix.truePeakDbTP< -1.5);assert.ok(mix.stereoCorrelation>.1);assert.ok(Math.abs(mix.duration-d.film.duration)<.1);}});
+
+test('reported trim packages stay distinct and detailed equipment is disclosed on request',()=>{
+ const byId=Object.fromEntries(d.configs.map(c=>[c.id,c]));
+ assert.match(byId.performance.exclusions.join(' '),/No thrusters, COPVs/);
+ assert.match(byId.thrust.equipment.join(' '),/one carbon-overwrapped/);
+ assert.match(byId.thrust.exclusions.join(' '),/No second COPV/);
+ assert.match(byId.rocket.equipment.join(' '),/Two COPVs; ten total thrusters/);
+ assert.equal(byId.rocket.seats,1);
+ assert.equal(byId.thrust.reportedSpecs.some(([label])=>label==='Peak acceleration'),false);
+ for(const c of d.configs){
+  assert.equal(c.features.length,3);
+  assert.equal(c.equipmentSource,'trim-report');
+  assert.match(c.reportedSpecs.find(([label])=>label==='Range claim')[1],/not a certified result/);
+ }
+ const html=read('roadster.html');
+ assert.equal((html.match(/<details class="rs-trim-details">/g)||[]).length,3);
+ assert.doesNotMatch(html,/<details class="rs-trim-details"[^>]*\bopen/);
+ assert.match(html,/Reported specifications · subject to change/);
+ assert.match(html,/Peak acceleration is a reported instantaneous claim/);
+ assert.match(d.sources.find(s=>s.id==='trim-report').url,/2114223853303959785$/);
+});
