@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewed": "2026-10-24",
+  "reviewed": "2026-10-25",
   "title": "Tesla Roadster",
   "reveal": "2026-10-16T00:55:00Z",
   "status": "Revealed; production is a future target",
@@ -71,6 +71,14 @@
       "kind": "Reported company target",
       "checked": "2026-10-24",
       "note": "2028 is the announced production target, not a delivery guarantee. Final vehicle pricing was not announced at the reveal."
+    },
+    {
+      "id": "trim-report",
+      "label": "Sawyer Merritt: trim equipment breakdown",
+      "url": "https://x.com/sawyermerritt/status/2114223853303959785",
+      "kind": "Reported specifications",
+      "checked": "2026-10-25",
+      "note": "Trim breakdown reviewed from reader-supplied screenshots of this post. Equipment, performance and range figures are reported claims, subject to change before production; this is not independent testing or EPA certification. The linked Ryan interview was not supplied or independently reviewed."
     }
   ],
   "gallery": [
@@ -96,7 +104,7 @@
       "id": "canopy",
       "group": "exterior",
       "title": "The canopy",
-      "description": "Gold-tinted glazing and a continuous cockpit silhouette.",
+      "description": "Gold-tinted glazing, reported for Thrust and Rocket, and a continuous cockpit silhouette.",
       "alt": "Overhead front view of the Roadster canopy",
       "source": "tesla",
       "credit": "Tesla studio imagery"
@@ -123,7 +131,7 @@
       "id": "cockpit",
       "group": "interior",
       "title": "The pilot’s seat",
-      "description": "A steer-by-wire yoke, three displays and an intentionally pared-back cabin.",
+      "description": "A steer-by-wire yoke and display study. The Supersonic package is reported for Thrust and Rocket.",
       "alt": "Roadster cockpit with a yoke, central touchscreen and two forward displays",
       "source": "tesla",
       "credit": "Tesla studio imagery"
@@ -299,11 +307,49 @@
       "target": "<1.6 s",
       "availability": "By reservation",
       "features": [
-        "Active aerodynamics",
-        "Multi-mode suction",
-        "Two-seat configuration"
+        "Two seats · fan suction & active aero",
+        "Carbon-ceramic brakes · adaptive dampers",
+        "No thrusters or pressure vessels"
       ],
-      "note": "Tesla’s current page describes the road-focused configuration. “Road ready” is Tesla’s positioning; approval still depends on market and final production certification."
+      "note": "Reported equipment is subject to change. “Road ready” is Tesla’s positioning; final certification depends on market.",
+      "equipment": [
+        "Dihedral doors with removable roof panels",
+        "Active Track Mode; active wings and barge boards; hidden aero",
+        "Powered fan-and-skirt system with multi-mode suction and ground sealing",
+        "Individually controlled brake-corner actuation; carbon-ceramic brakes",
+        "Spool-valve adaptive dampers; reported track stiffness more than triples and ride height drops up to 40 mm",
+        "Lightweight wheels; rear wing",
+        "Fixed seat base with adjustable recline; adjustable pedal bay; selected manual controls",
+        "Yoke steering; steer-by-wire and brake-by-wire"
+      ],
+      "exclusions": [
+        "No thrusters, COPVs or rocket-assisted acceleration",
+        "No gold-tinted glass or Supersonic interior package",
+        "No Ano White exterior paint"
+      ],
+      "equipmentSource": "trim-report",
+      "reportedSpecs": [
+        [
+          "Top speed",
+          "Over 210 mph"
+        ],
+        [
+          "Peak acceleration",
+          "Over 1.5 g"
+        ],
+        [
+          "Peak power",
+          "Over 1 MW"
+        ],
+        [
+          "Peak motor torque",
+          "Over 1,400 Nm"
+        ],
+        [
+          "Range claim",
+          "Over 300 miles; described as EPA range in the report, not a certified result here"
+        ]
+      ]
     },
     {
       "id": "thrust",
@@ -314,11 +360,40 @@
       "target": "<0.9 s",
       "availability": "Limited release",
       "features": [
-        "Suction system",
-        "Rear cold-gas thrusters",
-        "Two-seat configuration"
+        "Two seats · Performance equipment",
+        "One pressure vessel · four rear thrusters",
+        "Gold-tinted glass · Supersonic interior"
       ],
-      "note": "The October announcement gave an under-0.9-second target. Tesla’s current page describes acceleration in under one second. Neither wording establishes a verified production-car result."
+      "note": "October target: under 0.9 seconds; Tesla’s product-page wording is under one second. Neither is an independently verified production-car result.",
+      "equipment": [
+        "Performance equipment, plus one carbon-overwrapped pressure vessel (COPV)",
+        "Four rear thrusters for acceleration; electric Optimus actuators",
+        "Rocket-assisted acceleration; gold-tinted glass",
+        "Supersonic interior: Ultrawhite surfaces, grey microsuede detailing and seat bolsters, plus a yoke with two smaller forward displays"
+      ],
+      "exclusions": [
+        "No second COPV, downward lift-control thrusters or side yaw-control thrusters",
+        "No Ano White exterior paint"
+      ],
+      "equipmentSource": "trim-report",
+      "reportedSpecs": [
+        [
+          "Top speed",
+          "Over 230 mph"
+        ],
+        [
+          "Peak power",
+          "Over 1 MW"
+        ],
+        [
+          "Peak motor torque",
+          "Over 1,400 Nm"
+        ],
+        [
+          "Range claim",
+          "Over 300 miles; described as EPA range in the report, not a certified result here"
+        ]
+      ]
     },
     {
       "id": "rocket",
@@ -329,11 +404,45 @@
       "target": "<0.59 s",
       "availability": "Invite only",
       "features": [
-        "Perimeter cold-gas thrusters",
-        "Forward, upward and rotational control",
-        "Single-seat configuration"
+        "One seat · two pressure vessels",
+        "Ten thrusters · acceleration, lift & yaw",
+        "Supersonic interior · Ano White paint"
       ],
-      "note": "Tesla says Rocket is not approved for public road use and is not offered in every region. The October acceleration figure is a manufacturer target."
+      "note": "Reported equipment is subject to change. Tesla says Rocket is not approved for public road use; availability is regional.",
+      "equipment": [
+        "Applicable Performance and Thrust features, with a single-seat layout",
+        "Two COPVs; ten total thrusters: four rear for acceleration, four downward perimeter for lift control and two side for yaw control",
+        "All-electric Optimus actuators; gold-tinted glass; Supersonic interior",
+        "Ano White exterior paint with reported UV and cryogenic protection, electrostatic dissipation and corrosion resistance"
+      ],
+      "exclusions": [],
+      "equipmentSource": "trim-report",
+      "reportedSpecs": [
+        [
+          "Top speed",
+          "Over 230 mph"
+        ],
+        [
+          "Peak acceleration",
+          "Over 5 g"
+        ],
+        [
+          "Peak thrust",
+          "Over 80 kN"
+        ],
+        [
+          "Peak power",
+          "Over 1 MW"
+        ],
+        [
+          "Peak motor torque",
+          "Over 1,400 Nm"
+        ],
+        [
+          "Range claim",
+          "Over 300 miles; described as EPA range in the report, not a certified result here"
+        ]
+      ]
     }
   ],
   "film": {
