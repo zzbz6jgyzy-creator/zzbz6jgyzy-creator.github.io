@@ -1,0 +1,407 @@
+{
+  "version": 1,
+  "designReviewed": "2026-10-25",
+  "directorySource": "tesla-clubs-data.js",
+  "countries": [
+    {
+      "name": "Australia",
+      "code": "AU",
+      "area": "Oceania",
+      "lat": -25.27,
+      "lon": 133.78
+    },
+    {
+      "name": "Austria",
+      "code": "AT",
+      "area": "Europe",
+      "lat": 47.52,
+      "lon": 14.55
+    },
+    {
+      "name": "Belgium",
+      "code": "BE",
+      "area": "Europe",
+      "lat": 50.5,
+      "lon": 4.47
+    },
+    {
+      "name": "Brazil",
+      "code": "BR",
+      "area": "Latin America",
+      "lat": -14.24,
+      "lon": -51.93
+    },
+    {
+      "name": "Bulgaria",
+      "code": "BG",
+      "area": "Europe",
+      "lat": 42.73,
+      "lon": 25.49
+    },
+    {
+      "name": "Canada",
+      "code": "CA",
+      "area": "North America",
+      "lat": 56.13,
+      "lon": -106.35
+    },
+    {
+      "name": "Chile",
+      "code": "CL",
+      "area": "Latin America",
+      "lat": -35.68,
+      "lon": -71.54
+    },
+    {
+      "name": "Colombia",
+      "code": "CO",
+      "area": "Latin America",
+      "lat": 4.57,
+      "lon": -74.3
+    },
+    {
+      "name": "Czechia",
+      "code": "CZ",
+      "area": "Europe",
+      "lat": 49.82,
+      "lon": 15.47
+    },
+    {
+      "name": "Denmark",
+      "code": "DK",
+      "area": "Europe",
+      "lat": 56.26,
+      "lon": 9.5
+    },
+    {
+      "name": "France",
+      "code": "FR",
+      "area": "Europe",
+      "lat": 46.23,
+      "lon": 2.21
+    },
+    {
+      "name": "Germany",
+      "code": "DE",
+      "area": "Europe",
+      "lat": 51.17,
+      "lon": 10.45
+    },
+    {
+      "name": "Hong Kong & Macau",
+      "code": "HK",
+      "area": "Asia & Middle East",
+      "lat": 22.32,
+      "lon": 114.17
+    },
+    {
+      "name": "Hungary",
+      "code": "HU",
+      "area": "Europe",
+      "lat": 47.16,
+      "lon": 19.5
+    },
+    {
+      "name": "India",
+      "code": "IN",
+      "area": "Asia & Middle East",
+      "lat": 20.59,
+      "lon": 78.96
+    },
+    {
+      "name": "Ireland",
+      "code": "IE",
+      "area": "Europe",
+      "lat": 53.14,
+      "lon": -7.69
+    },
+    {
+      "name": "Israel",
+      "code": "IL",
+      "area": "Asia & Middle East",
+      "lat": 31.05,
+      "lon": 34.85
+    },
+    {
+      "name": "Italy",
+      "code": "IT",
+      "area": "Europe",
+      "lat": 41.87,
+      "lon": 12.57
+    },
+    {
+      "name": "Japan",
+      "code": "JP",
+      "area": "Asia & Middle East",
+      "lat": 36.2,
+      "lon": 138.25
+    },
+    {
+      "name": "Malaysia",
+      "code": "MY",
+      "area": "Asia & Middle East",
+      "lat": 4.21,
+      "lon": 101.98
+    },
+    {
+      "name": "Mexico",
+      "code": "MX",
+      "area": "North America",
+      "lat": 23.63,
+      "lon": -102.55
+    },
+    {
+      "name": "Netherlands",
+      "code": "NL",
+      "area": "Europe",
+      "lat": 52.13,
+      "lon": 5.29
+    },
+    {
+      "name": "New Zealand",
+      "code": "NZ",
+      "area": "Oceania",
+      "lat": -40.9,
+      "lon": 174.89
+    },
+    {
+      "name": "Norway",
+      "code": "NO",
+      "area": "Europe",
+      "lat": 60.47,
+      "lon": 8.47
+    },
+    {
+      "name": "Philippines",
+      "code": "PH",
+      "area": "Asia & Middle East",
+      "lat": 12.88,
+      "lon": 121.77
+    },
+    {
+      "name": "Poland",
+      "code": "PL",
+      "area": "Europe",
+      "lat": 51.92,
+      "lon": 19.15
+    },
+    {
+      "name": "Portugal",
+      "code": "PT",
+      "area": "Europe",
+      "lat": 39.4,
+      "lon": -8.22
+    },
+    {
+      "name": "Romania",
+      "code": "RO",
+      "area": "Europe",
+      "lat": 45.94,
+      "lon": 24.97
+    },
+    {
+      "name": "Serbia",
+      "code": "RS",
+      "area": "Europe",
+      "lat": 44.02,
+      "lon": 21.01
+    },
+    {
+      "name": "Singapore",
+      "code": "SG",
+      "area": "Asia & Middle East",
+      "lat": 1.35,
+      "lon": 103.82
+    },
+    {
+      "name": "Slovakia",
+      "code": "SK",
+      "area": "Europe",
+      "lat": 48.67,
+      "lon": 19.7
+    },
+    {
+      "name": "Slovenia",
+      "code": "SI",
+      "area": "Europe",
+      "lat": 46.15,
+      "lon": 14.99
+    },
+    {
+      "name": "South Korea",
+      "code": "KR",
+      "area": "Asia & Middle East",
+      "lat": 35.91,
+      "lon": 127.77
+    },
+    {
+      "name": "Spain",
+      "code": "ES",
+      "area": "Europe",
+      "lat": 40.46,
+      "lon": -3.75
+    },
+    {
+      "name": "Sweden",
+      "code": "SE",
+      "area": "Europe",
+      "lat": 60.13,
+      "lon": 18.64
+    },
+    {
+      "name": "Switzerland",
+      "code": "CH",
+      "area": "Europe",
+      "lat": 46.82,
+      "lon": 8.23
+    },
+    {
+      "name": "Taiwan",
+      "code": "TW",
+      "area": "Asia & Middle East",
+      "lat": 23.7,
+      "lon": 121.0
+    },
+    {
+      "name": "Thailand",
+      "code": "TH",
+      "area": "Asia & Middle East",
+      "lat": 15.87,
+      "lon": 100.99
+    },
+    {
+      "name": "Türkiye",
+      "code": "TR",
+      "area": "Europe",
+      "lat": 38.96,
+      "lon": 35.24
+    },
+    {
+      "name": "United Arab Emirates",
+      "code": "AE",
+      "area": "Asia & Middle East",
+      "lat": 23.42,
+      "lon": 53.85
+    },
+    {
+      "name": "United Kingdom",
+      "code": "GB",
+      "area": "Europe",
+      "lat": 54.0,
+      "lon": -2.55
+    },
+    {
+      "name": "United States",
+      "code": "US",
+      "area": "North America",
+      "lat": 39.83,
+      "lon": -98.58
+    }
+  ],
+  "regionalReferences": [
+    "Australia|Australian Capital Territory",
+    "Australia|New South Wales",
+    "Australia|Northern Territory",
+    "Australia|Queensland",
+    "Australia|South Australia",
+    "Australia|Tasmania",
+    "Australia|Victoria",
+    "Australia|Western Australia",
+    "Canada|Alberta",
+    "Canada|Atlantic Canada",
+    "Canada|British Columbia",
+    "Canada|Greater Toronto Area, Ontario",
+    "Canada|Ontario",
+    "Canada|Quebec",
+    "Canada|Saskatchewan",
+    "Chile|National",
+    "France|Alsace",
+    "France|Antilles",
+    "France|Auvergne-Rhône-Alpes",
+    "France|Bourgogne-Franche-Comté",
+    "France|Bretagne",
+    "France|Centre-Val de Loire",
+    "France|Champagne-Ardenne",
+    "France|Hauts-de-France",
+    "France|Languedoc-Roussillon",
+    "France|Lorraine / Grand Est",
+    "France|Midi-Pyrénées",
+    "France|Normandie",
+    "France|Nouvelle-Aquitaine",
+    "France|PACA",
+    "France|Pays de la Loire",
+    "France|Réunion",
+    "France|Île-de-France",
+    "Italy|Abruzzo",
+    "Italy|Basilicata",
+    "Italy|Calabria",
+    "Italy|Campania",
+    "Italy|Emilia Romagna",
+    "Italy|Friuli Venezia Giulia",
+    "Italy|Lazio",
+    "Italy|Liguria",
+    "Italy|Lombardia",
+    "Italy|Marche",
+    "Italy|Molise",
+    "Italy|Piemonte",
+    "Italy|Puglia",
+    "Italy|Sardegna",
+    "Italy|Sicilia",
+    "Italy|Toscana",
+    "Italy|Trentino Alto Adige",
+    "Italy|Umbria",
+    "Italy|Valle d’Aosta",
+    "Italy|Veneto",
+    "Serbia|Western Balkans",
+    "Spain|Aragón",
+    "Spain|Baleares",
+    "Spain|Barcelona",
+    "Spain|Canarias",
+    "Spain|Castilla y León",
+    "Spain|Galicia",
+    "Spain|Madrid",
+    "Spain|Málaga",
+    "Spain|Navarra",
+    "Spain|País Vasco",
+    "Spain|Sevilla",
+    "Spain|Valencia",
+    "United Kingdom|East Anglia",
+    "United Kingdom|East Midlands",
+    "United Kingdom|London",
+    "United Kingdom|North East",
+    "United Kingdom|North Wales",
+    "United Kingdom|North West",
+    "United Kingdom|Northern Ireland",
+    "United Kingdom|Scotland",
+    "United Kingdom|South East England",
+    "United Kingdom|South England",
+    "United Kingdom|South Wales",
+    "United Kingdom|South West England",
+    "United Kingdom|Three Counties (Bucks, Beds and Herts)",
+    "United Kingdom|West Midlands",
+    "United Kingdom|Yorkshire",
+    "United States|California",
+    "United States|Chicago, Illinois",
+    "United States|Florida",
+    "United States|Idaho",
+    "United States|New England",
+    "United States|North Carolina Triangle",
+    "United States|St. Louis, Missouri",
+    "United States|Texas",
+    "United States|Washington"
+  ],
+  "sources": [
+    {
+      "name": "Tesla Owners Club programme",
+      "url": "https://www.tesla.com/ownersclub"
+    },
+    {
+      "name": "Tesla Owners UK regions",
+      "url": "https://teslaowners.uk/regions/"
+    },
+    {
+      "name": "Tesla Owners Club of Australia",
+      "url": "https://www.teslaowners.org.au/"
+    }
+  ]
+}

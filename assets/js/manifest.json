@@ -212,11 +212,13 @@
       ]
     },
     "tesla-clubs": {
-      "file": "/assets/js/tesla-clubs.bundle.40abe59381.js",
-      "bytes": 59897,
+      "file": "/assets/js/tesla-clubs.bundle.85237a8db2.js",
+      "bytes": 70819,
       "sources": [
         "tesla-clubs-data.js",
-        "tesla-clubs.js"
+        "owners-club-model.js",
+        "owners-club-view.js",
+        "owners-club.js"
       ]
     },
     "explainers": {

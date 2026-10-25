@@ -32,6 +32,9 @@ on:
       - 'data/robotaxi-*'
       - 'data/updates-*.json'
       - live-data.json
+      - data/owners-club-guide.json
+      - owners-club.css
+      - scripts/build-owners-club.mjs
       - data/markets-studio.json
       - markets-studio.css
       - scripts/build-markets-studio.mjs
