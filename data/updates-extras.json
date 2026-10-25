@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T21:09:59Z",
+ "updated": "2026-10-25T21:47:44Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,32 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-25T21:09:59Z",
+  "fetched": "2026-10-25T21:47:44Z",
   "items": [
+   {
+    "t": "2026-10-25T21:22:09Z",
+    "to": "2026.38.3.2",
+    "from": "2026.32.7",
+    "model": "Model Y AWD LR (2023)",
+    "hw": "4.0",
+    "country": "Belgium"
+   },
+   {
+    "t": "2026-10-25T21:07:59Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model 3 SR (2026)",
+    "hw": "4.0",
+    "country": "Colombia"
+   },
+   {
+    "t": "2026-10-25T21:07:54Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model Y AWD LR (2021)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-25T20:54:41Z",
     "to": "2026.38.5.11",
@@ -546,30 +570,6 @@
     "to": "2026.38.5.11",
     "from": "2026.38.5.1",
     "model": "Model X AWD (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-25T19:13:19Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model S AWD (2023)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-25T18:58:20Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Cybertruck Cyberbeast (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-25T18:52:52Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model Y RWD LR (2026)",
     "hw": "4.0",
     "country": "United States"
    }
