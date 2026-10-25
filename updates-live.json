@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T17:46:37Z",
+  "updated": "2026-10-25T18:08:51Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3365,
@@ -63,9 +63,9 @@
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 74,
+      "count": 77,
       "fleet": 3365,
-      "percent": 2.2,
+      "percent": 2.3,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -108,12 +108,12 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 71,
+        "US": 74,
         "CA": 3
       },
-      "pending": 57,
+      "pending": 56,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-25T17:18:09Z"
+      "lastSeen": "2026-10-25T18:02:30Z"
     },
     {
       "id": "2026.38.3.2",
@@ -226,7 +226,7 @@
         "MY": 1,
         "TR": 1
       },
-      "pending": 89,
+      "pending": 93,
       "firstSeen": "2026-10-22T20:10:42Z",
       "lastSeen": "2026-10-25T17:13:20Z"
     },
@@ -621,7 +621,7 @@
         "CO": 1,
         "IE": 1
       },
-      "pending": 5,
+      "pending": 4,
       "firstSeen": "2026-10-08T01:27:55Z",
       "lastSeen": "2026-10-25T14:19:30Z"
     },
