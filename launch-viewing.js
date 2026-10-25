@@ -30,6 +30,7 @@
   if (params.get("launch")) state.launchId = params.get("launch");
   const hash = location.hash.replace("#lv-", "");
   if (["sky", "launches", "guide", "method"].includes(hash)) state.view = hash;
+  if (hash === "compass-card") state.view = "sky";
   const rows = () => M.upcoming(data), selected = () => rows().find((e) => e.id === state.launchId) || rows().find((e) => e.pad) || rows()[0];
   function observer() {
     if (state.place) return state.place;
@@ -71,6 +72,8 @@
     const valid = M.location(place);
     if (!valid) return;
     state.place = valid;
+    compassNote = "";
+    fieldHeading = null;
     geoSequence++;
     resetWeather();
     $("lv-location").value = M.cityLabel(valid);
@@ -86,6 +89,7 @@
     for (const key of ["units", "horizon", "altitude", "downrange"]) $("lv-" + key).value = state[key];
   }
   function showView(view, scroll = false) {
+    if (view !== "sky" && (compassAttached || compassMode === "requesting")) stopCompass();
     state.view = view;
     root.querySelectorAll("[data-panel]").forEach((e) => e.hidden = e.dataset.panel !== view);
     root.querySelectorAll("[data-view]").forEach((e) => {
@@ -150,6 +154,7 @@
     weatherPanel();
     fresh();
     persist();
+    compassPaint();
     if ($("lv-field").open) fieldDraw();
   }
   function paintSuggestions(items) {
@@ -236,12 +241,13 @@
     }
     const seq = ++geoSequence;
     $("lv-location-status").textContent = "Finding your location…";
+    $("lv-compass-status").textContent = "Finding your observing spot…";
     navigator.geolocation.getCurrentPosition((pos) => {
       if (seq !== geoSequence) return;
       setPlace({ name: "Your location", lat: pos.coords.latitude, lon: pos.coords.longitude, zone: Intl.DateTimeFormat().resolvedOptions().timeZone });
     }, (err) => {
       if (seq !== geoSequence) return;
-      $("lv-location-status").textContent = /Twitter|FBAN|Instagram|LinkedInApp/i.test(navigator.userAgent) ? "This in-app browser may block location. Open in Safari or Chrome, or search a city." : err.code === 1 ? "Location access is blocked. Search a city or enter coordinates." : "Location could not be found. Search a city or enter coordinates.";
+      $("lv-compass-status").textContent = $("lv-location-status").textContent = /Twitter|FBAN|Instagram|LinkedInApp/i.test(navigator.userAgent) ? "This in-app browser may block location. Open in Safari or Chrome, or search a city." : err.code === 1 ? "Location access is blocked. Search a city or enter coordinates." : "Location could not be found. Search a city or enter coordinates.";
     }, { enableHighAccuracy: false, timeout: 12e3, maximumAge: 6e4 });
   });
   $("lv-forget").addEventListener("click", () => {
@@ -393,72 +399,129 @@
   $("lv-share-location").addEventListener("change", () => $("lv-share-text").value = shareLink());
   $("lv-share-copy").addEventListener("click", () => copy($("lv-share-text").value, (text) => $("lv-share-status").textContent = text));
   $("lv-share-close").addEventListener("click", () => $("lv-share").close());
+  // One explicit sensor session drives both the visible card and the full-screen field view.
+  const Compass = window.SDLaunchCompass;
+  let compassMode = 'off', compassNote = '', lastRaw = null, lastValid = 0, sensorWatch = null, permissionSequence = 0, northCorrection = null;
+  function geometry() { return M.scenario(selected(), observer(), state); }
+  function sensorAngle() { return Number.isFinite(screen.orientation?.angle) ? screen.orientation.angle : Number.isFinite(window.orientation) ? window.orientation : 0; }
+  function compassPaint() {
+    const s = geometry(), hasPlace = !!state.place, live = compassMode === 'live' && fieldHeading !== null && hasPlace && !!s;
+    const messages = {
+      off: hasPlace ? 'Ready. Hold the device nearly flat and tap Start live compass.' : 'Choose your observing spot first. The example location is not your position.',
+      requesting: 'Allow Motion & Orientation access when your browser asks.',
+      waiting: 'Waiting for a compass reading. Hold the device nearly flat and gently turn it.',
+      live: 'Live device heading · corrected to approximate true north with WMM2025.',
+      blocked: 'Compass access was denied or blocked. Allow Motion & Orientation in your browser’s site settings, then try again. In an in-app browser, open this page in Safari or Chrome.',
+      unsupported: 'This browser or device has no usable compass API. Try a sensor-equipped phone or tablet in Safari or Chrome. The north-up pad bearing still works.',
+      insecure: 'Live compass requires HTTPS. Open https://superchargeddaily.com/see-the-launch.html in Safari or Chrome.',
+      timeout: 'No absolute compass reading arrived. Try gently turning the device, check motion-sensor permission, or open in Safari or Chrome. Some tablets have no compass hardware.',
+      level: 'Hold the screen flatter, face up. An upright screen cannot give a reliable top-edge direction.',
+      calibrating: 'Compass accuracy is low. Move away from magnets, metal cases and vehicles; gently move the device in a figure eight, then hold it flat.',
+      stale: 'The heading has stopped updating. Gently turn the device to get a fresh reading; the arrow is not currently live.',
+      model: 'True-north correction is unavailable for this location or date. Use the static true-north bearing with a separate compass.',
+      paused: 'Compass paused while this page was hidden. Tap Start live compass to resume.'
+    };
+    const labels = { off:'North-up view',requesting:'Permission needed',waiting:'Finding heading',live:'Live compass',blocked:'Access blocked',unsupported:'Sensor unavailable',insecure:'HTTPS required',timeout:'No heading received',level:'Hold flatter',calibrating:'Check accuracy',stale:'Reading paused',model:'Static bearing',paused:'Paused' };
+    const cue = !hasPlace ? 'Set your location to get your own pad direction.' : !s ? 'Choose a launch with a known pad.' : live ? Compass.turn(s.bearing,fieldHeading).text : compassMode === 'level' ? 'Hold the device flatter to continue.' : compassMode === 'calibrating' ? 'Calibrate before following the arrow.' : compassMode === 'stale' ? 'Move the device to refresh the heading.' : 'North-up reference · start the compass to turn toward the pad.';
+    const headingText = live ? Math.round(fieldHeading)+'° true · your screen’s top edge'+(northCorrection?.accuracy!==null&&northCorrection?.accuracy!==undefined?' · sensor ±'+Math.round(northCorrection.accuracy)+'°':'') : 'Device heading is not currently live.';
+    const text = compassNote || messages[compassMode] || messages.off;
+    $('lv-compass-state').textContent = labels[compassMode] || labels.off;
+    root.querySelector('.lv-compass-top').textContent = live ? 'TOP OF YOUR SCREEN' : 'NORTH-UP / NOT LIVE';
+    $('lv-compass-card').dataset.live = String(live);
+    $('lv-compass-card').dataset.aligned = String(live && Compass.turn(s.bearing,fieldHeading).aligned);
+    $('lv-field').dataset.live = String(live);
+    $('lv-compass-cue').textContent = cue;
+    $('lv-device-heading').textContent = headingText;
+    $('lv-compass-status').textContent = text;
+    $('lv-field-cue').textContent = cue;
+    $('lv-field-heading').textContent = headingText;
+    $('lv-field-sensor').textContent = text;
+    for (const id of ['lv-compass-start','lv-sensor']) {
+      const button=$(id);button.textContent=compassMode==='requesting'?'Allow compass access…':compassAttached?'Stop live compass':['blocked','timeout','unsupported'].includes(compassMode)?'Try compass again':'Start live compass';
+      button.setAttribute('aria-pressed',String(compassAttached));button.disabled=compassMode==='requesting';
+    }
+    for (const id of ['lv-compass','lv-field-compass']) {
+      const svg=$(id).querySelector('svg'),dial=svg?.querySelector('[data-lv-compass-dial]');
+      dial?.setAttribute('transform','rotate('+(live?-fieldHeading:0)+' 110 110)');
+      if(svg&&s)svg.setAttribute('aria-label','Pad bearing '+Math.round(s.bearing)+' degrees true. '+(live?headingText+'. '+cue:'North-up reference. '+cue));
+    }
+  }
   function fieldDraw() {
-    const e = selected(), p = observer(), s = M.scenario(e, p, state);
-    if (!s) return;
-    $("lv-field-title").textContent = e.title;
-    $("lv-field-bearing").textContent = Math.round(s.bearing) + "°";
-    $("lv-field-direction").textContent = M.compass(s.bearing) + " · pad bearing · true north";
-    $("lv-field-compass").innerHTML = V.compass(s, "field", fieldHeading);
-    $("lv-field-time").textContent = M.when(e, p.zone);
-    $("lv-field-place").textContent = M.cityLabel(p) + " · " + M.km(s.padDistance, state.units) + " from pad";
-    $("lv-field-cue").textContent = fieldHeading === null ? "North-up. Match the bearing on a compass set to true north." : Math.abs((s.bearing - fieldHeading + 540) % 360 - 180) <= 12 ? "Approximately aligned · phone heading cue" : (s.bearing - fieldHeading + 540) % 360 - 180 > 0 ? "Turn right approximately " + Math.round(Math.abs((s.bearing - fieldHeading + 540) % 360 - 180)) + "°" : "Turn left approximately " + Math.round(Math.abs((s.bearing - fieldHeading + 540) % 360 - 180)) + "°";
+    const e=selected(),p=observer(),s=geometry();if(!e||!s)return;
+    $('lv-field-title').textContent=e.title;$('lv-field-bearing').textContent=Math.round(s.bearing)+'°';
+    $('lv-field-direction').textContent=M.compass(s.bearing)+' · pad bearing · true north';
+    $('lv-field-compass').innerHTML=V.compass(s,'field');
+    $('lv-field-time').textContent=M.when(e,p.zone);$('lv-field-place').textContent=M.cityLabel(p)+' · '+M.km(s.padDistance,state.units)+' from pad';
+    compassPaint();
+  }
+  function processHeading(ev,rotation=false) {
+    if(!compassAttached||!Compass)return;
+    const reading=Compass.sample(ev,sensorAngle());
+    if(!reading){if(typeof ev.webkitCompassAccuracy==='number'&&ev.webkitCompassAccuracy<0){compassMode='calibrating';fieldHeading=null;compassPaint();}return;}
+    if(!rotation)lastRaw=ev;
+    if(reading.tilted){compassMode='level';fieldHeading=null;compassPaint();return;}
+    if(reading.accuracy!==null&&reading.accuracy>25){compassMode='calibrating';fieldHeading=null;compassPaint();return;}
+    const corrected=Compass.corrected(reading,state.place);
+    if(!corrected){compassMode='model';fieldHeading=null;compassPaint();return;}
+    clearTimeout(compassTimer);northCorrection=corrected;
+    fieldHeading=Compass.smooth(rotation?null:fieldHeading,corrected.heading);
+    if(!rotation)lastValid=Date.now();compassMode='live';compassNote='';compassPaint();
   }
   function orientation(ev) {
-    let h = typeof ev.webkitCompassHeading === "number" && Number.isFinite(ev.webkitCompassHeading) && ev.webkitCompassAccuracy !== -1 ? ev.webkitCompassHeading : ev.absolute === true && Number.isFinite(ev.alpha) ? 360 - ev.alpha : null;
-    if (h === null) return;
-    const angle = screen.orientation?.angle || 0;
-    fieldHeading = M.wrap(h + angle);
-    fieldDraw();
-    $("lv-field-sensor").textContent = "Phone heading is an approximate cue. Magnetic declination and sensor errors can shift it.";
+    if(!compassAttached)return;
+    if(typeof ev.webkitCompassHeading!=='number'&&ev.absolute!==true)return;
+    // Update immediately: a device may emit only one reading for a small movement.
+    // The SVG dial transform changes in place; its tick marks are not rebuilt.
+    lastRaw=ev;
+    processHeading(ev);
   }
-  function stopCompass() {
-    window.removeEventListener("deviceorientationabsolute", orientation, true);
-    window.removeEventListener("deviceorientation", orientation, true);
-    compassAttached = false;
-    fieldHeading = null;
-    clearTimeout(compassTimer);
+  function screenChanged(){fieldHeading=null;if(lastRaw)processHeading(lastRaw,true);}
+  function stopCompass(mode='off',note='') {
+    permissionSequence++;
+    window.removeEventListener('deviceorientationabsolute',orientation,true);window.removeEventListener('deviceorientation',orientation,true);
+    screen.orientation?.removeEventListener?.('change',screenChanged);window.removeEventListener('orientationchange',screenChanged);
+    compassAttached=false;fieldHeading=null;lastRaw=null;northCorrection=null;
+    clearTimeout(compassTimer);clearInterval(sensorWatch);
+    compassMode=mode;compassNote=note;compassPaint();
   }
-  $("lv-field-open").addEventListener("click", () => {
-    $("lv-field").classList.remove("lv-night");
-    $("lv-night").setAttribute("aria-pressed", "false");
-    $("lv-field-sensor").textContent = "Phone compass is off. Enable it only if you want a heading cue.";
-    fieldDraw();
-    $("lv-field").showModal();
-  });
-  $("lv-field-close").addEventListener("click", () => $("lv-field").close());
-  $("lv-field").addEventListener("close", stopCompass);
-  $("lv-night").addEventListener("click", () => {
-    const on = $("lv-field").classList.toggle("lv-night");
-    $("lv-night").setAttribute("aria-pressed", on);
-  });
-  $("lv-sensor").addEventListener("click", async () => {
-    if (compassAttached) {
-      stopCompass();
-      fieldDraw();
-      $("lv-field-sensor").textContent = "Phone compass is off.";
-      return;
-    }
-    if (typeof DeviceOrientationEvent === "undefined") {
-      $("lv-field-sensor").textContent = "No phone compass is available. The north-up bearing still works.";
-      return;
-    }
+  async function toggleCompass() {
+    if(compassAttached){stopCompass();return;}
+    if(!state.place){compassNote='Choose your actual observing spot before starting. Search a city, enter coordinates, or tap Use my location.';compassPaint();showView('sky');$('lv-location').scrollIntoView({block:'center'});$('lv-location').focus({preventScroll:true});return;}
+    if(!geometry()){compassNote='Choose a launch with a known pad before starting.';compassPaint();return;}
+    if(!window.isSecureContext){stopCompass('insecure');return;}
+    if(typeof window.DeviceOrientationEvent==='undefined'||!Compass){stopCompass('unsupported');return;}
+    const seq=++permissionSequence;compassMode='requesting';compassNote='';compassPaint();
     try {
-      if (typeof DeviceOrientationEvent.requestPermission === "function" && await DeviceOrientationEvent.requestPermission() !== "granted") throw Error("blocked");
-      window.addEventListener("deviceorientationabsolute", orientation, true);
-      window.addEventListener("deviceorientation", orientation, true);
-      compassAttached = true;
-      $("lv-field-sensor").textContent = "Waiting for an absolute heading…";
-      compassTimer = setTimeout(() => {
-        if (fieldHeading === null) {
-          stopCompass();
-          $("lv-field-sensor").textContent = "No absolute heading received. Use the static true-north bearing.";
-        }
-      }, 4e3);
-    } catch {
-      $("lv-field-sensor").textContent = "Compass access is blocked. The static true-north bearing still works.";
-    }
-  });
+      // This call stays directly in the click handler, before any unrelated await.
+      if(typeof window.DeviceOrientationEvent.requestPermission==='function'){
+        const result=await window.DeviceOrientationEvent.requestPermission(true);
+        if(seq!==permissionSequence)return;if(result!=='granted'){stopCompass('blocked');return;}
+      }
+      if(seq!==permissionSequence)return;
+      window.addEventListener('deviceorientationabsolute',orientation,true);window.addEventListener('deviceorientation',orientation,true);
+      screen.orientation?.addEventListener?.('change',screenChanged);window.addEventListener('orientationchange',screenChanged);
+      compassAttached=true;compassMode='waiting';compassPaint();
+      compassTimer=setTimeout(()=>{if(fieldHeading===null&&!['calibrating','level','model'].includes(compassMode))stopCompass('timeout');},10000);
+      sensorWatch=setInterval(()=>{if(compassMode==='live'&&Date.now()-lastValid>20000){compassMode='stale';fieldHeading=null;compassPaint();}},1000);
+    }catch{if(seq===permissionSequence)stopCompass('blocked');}
+  }
+  function openCompass() {
+    showView('sky');$('lv-compass-card').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});$('lv-compass-card').focus({preventScroll:true});
+    history.replaceState(null,'',location.pathname+location.search+'#lv-compass-card');
+  }
+  root.querySelectorAll('[data-compass-jump]').forEach(a=>a.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();openCompass();}));
+  $('lv-compass-start').addEventListener('click',toggleCompass);$('lv-sensor').addEventListener('click',toggleCompass);
+  $('lv-compass-location').addEventListener('click',()=>{compassNote='';$('lv-geo').click();});
+  function openField() {
+    if(!state.place){openCompass();compassNote='Set your observing location first to open your own full-screen compass.';compassPaint();return;}
+    $('lv-field').classList.remove('lv-night');$('lv-night').setAttribute('aria-pressed','false');fieldDraw();$('lv-field').showModal();
+  }
+  $('lv-field-open').addEventListener('click',openField);$('lv-compass-expand').addEventListener('click',openField);
+  $('lv-field-close').addEventListener('click',()=>$('lv-field').close());
+  $('lv-field').addEventListener('close',()=>stopCompass());
+  $('lv-night').addEventListener('click',()=>{const on=$('lv-field').classList.toggle('lv-night');$('lv-night').setAttribute('aria-pressed',on);});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&(compassAttached||compassMode==='requesting'))stopCompass('paused');});
+  window.addEventListener('pagehide',()=>stopCompass());
   for (const id of ["lv-share", "lv-field"]) $(id).addEventListener("click", (ev) => {
     if (ev.target === $(id)) $(id).close();
   });
@@ -467,6 +530,7 @@
   if (state.place) $("lv-location").value = M.cityLabel(state.place);
   draw();
   showView(state.view);
+  if (hash === "compass-card") openCompass();
   const query = new URL(location.href);
   query.searchParams.delete("lat");
   query.searchParams.delete("lon");

@@ -9,6 +9,7 @@ on:
       - 'data/calendar-studio.json'
       - 'calendar-studio-model.js'
       - 'vendor/launch-geo*'
+      - 'vendor/launch-wmm2025*'
       - 'scripts/build-launch-viewing.mjs'
       - 'scripts/build-noscript.mjs'
       - 'scripts/js-bundles.json'
@@ -37,7 +38,7 @@ jobs:
           python -m pip install playwright==1.62.0
       - name: Geometry, UTC light, date precision, forecast intervals and saved output
         run: |
-          node --test tests/launch-viewing.test.mjs
+          node --test tests/launch-viewing.test.mjs tests/launch-viewing-compass.test.mjs
           node scripts/test-calendar-dedup.mjs
           node scripts/test-launch-consistency.mjs
       - name: Verify generated launch source, saved page and frontend bundle
@@ -49,7 +50,9 @@ jobs:
       - name: Responsive views, search, field mode, sharing and forecast fallbacks
         env:
           CHROMIUM_PATH: /usr/bin/google-chrome
-        run: python tests/launch-viewing-browser.py
+        run: |
+          python tests/launch-viewing-browser.py
+          python tests/launch-viewing-compass-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

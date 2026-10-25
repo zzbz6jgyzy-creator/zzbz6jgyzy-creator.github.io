@@ -181,12 +181,14 @@
       ]
     },
     "see-the-launch": {
-      "file": "/assets/js/see-the-launch.bundle.6283d324ed.js",
-      "bytes": 91881,
+      "file": "/assets/js/see-the-launch.bundle.fa30aa67ec.js",
+      "bytes": 107933,
       "sources": [
         "calendar-merge.js",
         "calendar-studio-model.js",
         "vendor/launch-geo.js",
+        "vendor/launch-wmm2025.js",
+        "launch-viewing-compass.js",
         "launch-viewing-model.js",
         "launch-viewing-view.js",
         "launch-viewing.js"
