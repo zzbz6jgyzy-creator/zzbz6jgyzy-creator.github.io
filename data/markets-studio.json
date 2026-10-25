@@ -1,0 +1,302 @@
+{
+  "version": 1,
+  "reviewed": "2026-10-25",
+  "currency": "USD",
+  "financialUnit": "USD millions",
+  "companies": [
+    {
+      "id": "tsla",
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "legalName": "Tesla, Inc.",
+      "instrument": "Common stock",
+      "symbol": "NASDAQ:TSLA",
+      "ir": "https://ir.tesla.com/",
+      "exchange": "https://www.nasdaq.com/market-activity/stocks/tsla",
+      "chart": "https://www.tradingview.com/symbols/NASDAQ-TSLA/",
+      "color": "#f04465",
+      "summary": "The car. The energy system. The software opportunity. Read the operating business behind the share price.",
+      "quarters": [
+        {
+          "id": "Q3 2025",
+          "periodEnd": "2025-09-30",
+          "revenue": 28095,
+          "operatingIncome": 1624,
+          "netIncome": 1373,
+          "operatingCash": 6238,
+          "capex": 2248,
+          "freeCash": 3990,
+          "cashInvestments": 41647,
+          "source": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+          "published": "2026-10-21"
+        },
+        {
+          "id": "Q4 2025",
+          "periodEnd": "2025-12-31",
+          "revenue": 24901,
+          "operatingIncome": 1409,
+          "netIncome": 840,
+          "operatingCash": 3813,
+          "capex": 2393,
+          "freeCash": 1420,
+          "cashInvestments": 44059,
+          "source": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+          "published": "2026-10-21"
+        },
+        {
+          "id": "Q1 2026",
+          "periodEnd": "2026-03-31",
+          "revenue": 22387,
+          "operatingIncome": 941,
+          "netIncome": 477,
+          "operatingCash": 3937,
+          "capex": 2493,
+          "freeCash": 1444,
+          "cashInvestments": 44743,
+          "source": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+          "published": "2026-10-21"
+        },
+        {
+          "id": "Q2 2026",
+          "periodEnd": "2026-06-30",
+          "revenue": 28236,
+          "operatingIncome": 398,
+          "netIncome": 1114,
+          "operatingCash": 4697,
+          "capex": 5789,
+          "freeCash": -1092,
+          "cashInvestments": 43524,
+          "source": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+          "published": "2026-10-21"
+        },
+        {
+          "id": "Q3 2026",
+          "periodEnd": "2026-09-30",
+          "revenue": 28046,
+          "operatingIncome": 718,
+          "netIncome": 787,
+          "operatingCash": 6263,
+          "capex": 4732,
+          "freeCash": 1531,
+          "cashInvestments": 45447,
+          "source": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+          "published": "2026-10-21"
+        }
+      ],
+      "segments": [
+        {
+          "name": "Automotive",
+          "value": 20560,
+          "color": "#f04465"
+        },
+        {
+          "name": "Energy generation & storage",
+          "value": 2881,
+          "color": "#96d4df"
+        },
+        {
+          "name": "Services & other",
+          "value": 4605,
+          "color": "#b6a4d5"
+        }
+      ],
+      "cashFlow": {
+        "period": "Q3 2026",
+        "periodLabel": "Three months ended 30 September 2026",
+        "operating": 6263,
+        "capex": 4732,
+        "result": 1531,
+        "reported": true,
+        "resultLabel": "Free cash flow",
+        "note": "Tesla defines free cash flow as operating cash flow less capital expenditure. This is the company-reported quarterly measure.",
+        "source": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf"
+      },
+      "context": [
+        {
+          "title": "Revenue is the starting point.",
+          "text": "The latest quarter combines automotive, energy, and services revenue. Product mix and selling prices can change revenue independently of vehicle deliveries."
+        },
+        {
+          "title": "Watch cash alongside profit.",
+          "text": "Capital expenditure changes the amount of cash retained after operations. The cash bridge below makes the timing and reporting period visible."
+        },
+        {
+          "title": "Connect the operating picture.",
+          "text": "Deliveries and storage deployments help explain activity. They are separate measures from revenue, earnings and cash flow."
+        }
+      ],
+      "routes": [
+        {
+          "title": "Production & deliveries",
+          "text": "Quarterly vehicle and energy deployment figures.",
+          "href": "/production.html"
+        },
+        {
+          "title": "Tesla overview",
+          "text": "Vehicles, software and the wider business.",
+          "href": "/tesla.html"
+        }
+      ],
+      "nextResults": {
+        "period": "Q4 2026",
+        "date": null,
+        "source": "https://ir.tesla.com/"
+      }
+    },
+    {
+      "id": "spcx",
+      "ticker": "SPCX",
+      "name": "SpaceX",
+      "legalName": "Space Exploration Technologies Corp.",
+      "instrument": "Class A common stock",
+      "symbol": "NASDAQ:SPCX",
+      "ir": "https://ir.spacex.com/",
+      "exchange": "https://www.nasdaq.com/market-activity/stocks/spcx",
+      "chart": "https://www.tradingview.com/symbols/NASDAQ-SPCX/",
+      "color": "#96d4df",
+      "summary": "Launch. Connectivity. Super Intelligence. Follow the three businesses behind one listed company.",
+      "quarters": [
+        {
+          "id": "Q3 2025",
+          "periodEnd": "2025-09-30",
+          "revenue": 5576,
+          "operatingIncome": -273,
+          "netIncome": -1054,
+          "capex": 6880,
+          "operatingCash": null,
+          "freeCash": null,
+          "cashInvestments": null,
+          "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm",
+          "published": "2026-10-20"
+        },
+        {
+          "id": "Q2 2026",
+          "periodEnd": "2026-06-30",
+          "revenue": 7814,
+          "operatingIncome": -143,
+          "netIncome": null,
+          "capex": 18369,
+          "operatingCash": null,
+          "freeCash": null,
+          "cashInvestments": null,
+          "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm",
+          "published": "2026-10-20"
+        },
+        {
+          "id": "Q3 2026",
+          "periodEnd": "2026-09-30",
+          "revenue": 14575,
+          "operatingIncome": 2791,
+          "netIncome": 4404,
+          "capex": 19593,
+          "operatingCash": null,
+          "freeCash": null,
+          "cashInvestments": null,
+          "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm",
+          "published": "2026-10-20"
+        }
+      ],
+      "segments": [
+        {
+          "name": "Super Intelligence",
+          "value": 7560,
+          "color": "#96d4df"
+        },
+        {
+          "name": "Connectivity",
+          "value": 5248,
+          "color": "#b6a4d5"
+        },
+        {
+          "name": "Space",
+          "value": 1767,
+          "color": "#f04465"
+        }
+      ],
+      "cashFlow": {
+        "period": "9M 2026",
+        "periodLabel": "Nine months ended 30 September 2026",
+        "operating": 13097,
+        "capex": 48069,
+        "result": -34972,
+        "reported": false,
+        "resultLabel": "Operating cash less reported capex",
+        "note": "An editorial subtraction for the same nine-month period, not a company-reported free-cash-flow measure. Reported capex excludes separately listed capitalized interest and product rebates. It is not the quarterly profit figure.",
+        "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm"
+      },
+      "context": [
+        {
+          "title": "Three segments, different drivers.",
+          "text": "Space, Connectivity and Super Intelligence contribute different revenue streams. The segment mix below uses the same quarterly reporting period."
+        },
+        {
+          "title": "Read the operating line.",
+          "text": "Operating income and net income answer different questions. Interest, other income and taxes sit below operating income; adjusted EBITDA is another separate measure."
+        },
+        {
+          "title": "Keep the cash period in view.",
+          "text": "This release gives nine-month consolidated cash flows. The cash bridge uses nine-month capex as well; quarterly capex is shown separately in the results cards."
+        }
+      ],
+      "routes": [
+        {
+          "title": "SpaceX mission hub",
+          "text": "The fleet, engineering and original reporting.",
+          "href": "/spacex.html"
+        },
+        {
+          "title": "Starlink observatory",
+          "text": "Explore the connectivity system in orbit.",
+          "href": "/starlink.html"
+        }
+      ],
+      "nextResults": {
+        "period": "Q4 2026",
+        "date": null,
+        "source": "https://ir.spacex.com/"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "revenue",
+      "name": "Revenue",
+      "text": "Sales recognised during the reporting period. It is not the same as cash received, profit or a company’s stock-market value."
+    },
+    {
+      "id": "operating",
+      "name": "Operating income & margin",
+      "text": "Operating income is revenue after operating costs and expenses, before items such as interest and taxes. Operating margin divides operating income by revenue."
+    },
+    {
+      "id": "net",
+      "name": "GAAP net income",
+      "text": "Profit or loss under generally accepted accounting principles, after non-operating items and taxes. Tesla’s figures here are attributable to common stockholders; SpaceX uses its reported consolidated net income."
+    },
+    {
+      "id": "cash",
+      "name": "Operating cash flow",
+      "text": "Cash generated or used by operating activities during the stated period. Working-capital timing means it can differ substantially from net income."
+    },
+    {
+      "id": "capex",
+      "name": "Capital expenditure",
+      "text": "Spending on long-lived assets, using each issuer’s stated definition. It is a cash-use measure rather than a deduction from revenue in the same period."
+    },
+    {
+      "id": "fcf",
+      "name": "Free cash flow",
+      "text": "Often calculated as operating cash flow less capital expenditure. Definitions can differ. The Tesla bridge uses Tesla’s reported measure; the SpaceX bridge labels an editorial subtraction and its nine-month period."
+    },
+    {
+      "id": "ebitda",
+      "name": "Adjusted EBITDA",
+      "text": "A non-GAAP measure with issuer-specific adjustments. It does not equal net income or free cash flow. Read the issuer’s reconciliation before comparing companies."
+    },
+    {
+      "id": "valuation",
+      "name": "Share price & market capitalisation",
+      "text": "A share price is the price of one share. Market capitalisation uses a relevant share count as well. Comparing two share prices alone does not compare the size or value of the businesses."
+    }
+  ]
+}

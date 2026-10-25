@@ -195,12 +195,12 @@
       ]
     },
     "tsla": {
-      "file": "/assets/js/tsla.bundle.defc0a32c0.js",
-      "bytes": 26017,
+      "file": "/assets/js/tsla.bundle.d6acedf0cb.js",
+      "bytes": 20192,
       "sources": [
-        "calendar-merge.js",
-        "calendar.js",
-        "markets.js"
+        "markets-studio-model.js",
+        "markets-studio-view.js",
+        "markets-studio.js"
       ]
     },
     "tcmv": {

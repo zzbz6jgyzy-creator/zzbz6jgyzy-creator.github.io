@@ -130,9 +130,9 @@
       "launch-viewing.js"
     ],
     "tsla": [
-      "calendar-merge.js",
-      "calendar.js",
-      "markets.js"
+      "markets-studio-model.js",
+      "markets-studio-view.js",
+      "markets-studio.js"
     ],
     "tcmv": [
       "tcmv-data.js",
