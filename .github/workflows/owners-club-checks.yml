@@ -1,0 +1,46 @@
+name: Owners club checks
+on:
+  pull_request:
+    paths:
+      - 'tesla-clubs.html'
+      - 'tesla-clubs-data.js'
+      - 'owners-club*'
+      - 'data/owners-club-guide.json'
+      - 'data/pages.json'
+      - 'data/viewing/cities.json'
+      - 'scripts/build-owners-club.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/owners-club*'
+      - '.github/workflows/owners-club-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  owners-club:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned verification tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Verify the directory, search and generated output
+        run: |
+          node --test tests/owners-club.test.mjs
+          node scripts/build-owners-club.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- tesla-clubs.html data/pages.json assets/js
+      - name: Responsive and interaction checks
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/owners-club-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: owners-club-previews
+          path: /tmp/owners-club

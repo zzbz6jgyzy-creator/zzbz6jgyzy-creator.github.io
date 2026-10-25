@@ -140,7 +140,9 @@
     ],
     "tesla-clubs": [
       "tesla-clubs-data.js",
-      "tesla-clubs.js"
+      "owners-club-model.js",
+      "owners-club-view.js",
+      "owners-club.js"
     ],
     "explainers": [
       "explainers.js"
