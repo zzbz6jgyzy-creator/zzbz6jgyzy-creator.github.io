@@ -67,7 +67,11 @@ async def main():
    errors=[];requests=[];city_requests=[]
    page.on('pageerror',lambda err:errors.append(str(err)))
    async def route(r):
-    u=urlparse(r.request.url);requests.append(r.request.url)
+    u=urlparse(r.request.url)
+    # A legacy URL has already reached the site before enhancement can strip it.
+    # Check all subsequent requests; new city/device searches must never send coordinates.
+    if not(mode=='legacy'and r.request.is_navigation_request()and u.path=='/tesla-clubs.html'):
+     requests.append(r.request.url)
     if u.hostname!='superchargeddaily.com':return await r.abort()
     if u.path=='/data/viewing/cities.json':
      city_requests.append(r.request.url)

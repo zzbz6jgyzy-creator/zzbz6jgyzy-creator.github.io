@@ -46,3 +46,5 @@ No paid service, key, new backend or external map is required. Account-synced bo
 ## Verification
 
 Model/build tests cover source counts, filters, Unicode/aliases, country-versus-region scope, parent networks, missing contacts, safe links/escaping, city matching, privacy, bounded saved state and deterministic generation. Browser checks cover responsive layouts, both themes, no JavaScript, storage restrictions, filters, pagination, dialogs, bookmarks, share fallbacks, city-index failure and location permission behavior. The location/city fixtures test integration rather than asserting real meetup proximity. Preview images are in `docs/previews/owners-club-*` and CI artifacts.
+
+The repository-wide checks also exposed two existing generated-page mismatches outside this redesign: the SpaceX hub's saved calendar snapshot and Starship's saved media markup. Their existing builders were rerun against unchanged main-branch source records; only the generated `spacex.html` and `starship.html` outputs accompany this maintenance. No launch records or unrelated designs were edited.
