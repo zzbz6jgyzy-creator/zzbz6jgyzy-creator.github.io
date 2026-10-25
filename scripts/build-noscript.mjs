@@ -4,6 +4,7 @@
 // the interactive tracker is unchanged. Re-run whenever the data files change.
 import fs from "node:fs";
 import vm from "node:vm";
+import { buildReviewsStudio } from "./build-reviews-studio.mjs";
 import { buildBuyingStudio } from "./build-buying-studio.mjs";
 import { buildFSDEurope } from "./build-fsd-europe.mjs";
 import { buildAutonomyEvidence } from "./build-autonomy-evidence.mjs";
@@ -39,6 +40,7 @@ function inject(file, tag, html) {
 }
 // FSD Europe has complete saved HTML from the same model as the browser.
 buildBuyingStudio(root);
+buildReviewsStudio(root);
 buildFSDEurope(root);
 buildAutonomyEvidence(root);
 // Starship now has complete semantic saved HTML, shared with the browser.

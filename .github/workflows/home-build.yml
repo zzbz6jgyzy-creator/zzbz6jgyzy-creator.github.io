@@ -44,6 +44,10 @@ on:
       - scripts/build-autonomy-evidence.mjs
       - data/autonomy-evidence.json
       - autonomy-evidence.css
+      - scripts/build-reviews-studio.mjs
+      - data/reviews-studio.json
+      - reviews-studio.css
+      - 'reviews/**'
       - scripts/build-buying-studio.mjs
       - data/buying-studio.json
       - buying-studio.css

@@ -1,0 +1,44 @@
+name: Reviews studio checks
+on:
+  pull_request:
+    paths:
+      - 'reviews/**'
+      - 'reviews-studio*'
+      - 'data/reviews-studio.json'
+      - 'data/pages.json'
+      - 'scripts/build-reviews-studio.mjs'
+      - 'scripts/js-bundles.json'
+      - 'tests/reviews-studio*'
+      - '.github/workflows/reviews-studio-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  review-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned verification tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Evidence, arithmetic and saved HTML
+        run: |
+          node --test tests/reviews-studio.test.mjs
+          node scripts/build-reviews-studio.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- reviews assets/js data/pages.json
+      - name: Responsive, persistence and interaction checks
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/reviews-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reviews-studio-previews
+          path: /tmp/reviews-studio

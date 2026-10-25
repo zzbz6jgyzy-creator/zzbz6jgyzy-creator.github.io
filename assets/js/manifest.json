@@ -318,6 +318,14 @@
         "personal-sync.js",
         "personal-home.js"
       ]
+    },
+    "reviews": {
+      "file": "/assets/js/reviews.bundle.5991524e15.js",
+      "bytes": 9670,
+      "sources": [
+        "reviews-studio-model.js",
+        "reviews-studio.js"
+      ]
     }
   }
 }
