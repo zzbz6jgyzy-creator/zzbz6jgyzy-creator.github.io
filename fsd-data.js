@@ -1,5 +1,5 @@
 window.FSD_GLOBAL = {
-  updated: "2026-10-24",
+  updated: "2026-10-25",
   note:
     "Live describes sourced market availability, subject to vehicle eligibility. National recognition, manufacturer availability and individual delivery observations are separate. Driver supervision remains required.",
   teslaList: "https://www.tesla.com/support/full-self-driving",
@@ -9,18 +9,18 @@ window.FSD_GLOBAL = {
       date: "2026-10-20",
       region: "United States",
       hardware: "HW4 / AI4",
-      build: "2026.38.5.10",
+      build: "2026.38.5.10 / 2026.38.5.11",
       status: "live",
-      note: "Newest US build, on top of 2026.38.5.1. 86 cars on Teslascope by 24 Oct, almost all in the US, with the first in Mexico and Canada. HW3 stays on v14.3 Lite. Source: Teslascope.",
+      note: "Newest US build, on top of 2026.38.5.1. 92 cars on 2026.38.5.10 and 43 on the 2026.38.5.11 point release (first seen 24 Oct, US and Canada) on Teslascope by 25 Oct. HW3 stays on v14.3 Lite. Source: Teslascope.",
     },
     {
       id: "v14.3.12 Down Under",
       date: "2026-10-20",
       region: "Australia / New Zealand",
       hardware: "HW4 / AI4",
-      build: "2026.38.5.5",
+      build: "2026.38.5.5 / 2026.38.5.6",
       status: "live",
-      note: "The 2026.38 FSD stack reaches Oceania. 131 cars on Teslascope by 24 Oct, about 94% in Australia and the rest in New Zealand. Adds Arrival Options and Speed Profiles. Source: Teslascope.",
+      note: "The 2026.38 FSD stack reaches Oceania. 136 cars on 2026.38.5.5, and most have moved on to the 2026.38.5.6 point release (106 cars by 25 Oct, about 95% in Australia and the rest in New Zealand). Adds Arrival Options and Speed Profiles. Source: Teslascope.",
     },
     {
       id: "v14.3.12",
@@ -122,14 +122,14 @@ window.FSD_GLOBAL = {
     },
   ],
   countries: [
-    { code: "US", name: "United States", region: "Americas", status: "live", date: "2022-11", version: "v14.3.13", hardware: "HW4 · HW3 Lite", lon: -98, lat: 39.5, note: "Home market. 14.3.13 (2026.38.5.10) is in an early US wave since 20 Oct; 14.3.12 on 2026.38.5.1 is the most common 2026.38 build. HW3 is on 14.3 Lite.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
-    { code: "CA", name: "Canada", region: "Americas", status: "live", date: "2023-11", version: "v14.3.11", hardware: "HW4 · HW3 Lite", lon: -106, lat: 56, note: "Same North America branch as the US.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
+    { code: "US", name: "United States", region: "Americas", status: "live", date: "2022-11", version: "v14.3.13", hardware: "HW4 · HW3 Lite", lon: -98, lat: 39.5, note: "Home market. 14.3.13 (2026.38.5.10, now also 2026.38.5.11) is in an early US and Canada wave since 20 Oct; 14.3.12 on 2026.38.5.1 is the most common 2026.38 build. HW3 is on 14.3 Lite.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
+    { code: "CA", name: "Canada", region: "Americas", status: "live", date: "2023-11", version: "v14.3.13", hardware: "HW4 · HW3 Lite", lon: -106, lat: 56, note: "Same North America branch as the US. The first Canadian cars are on v14.3.13 (2026.38.5.11), per Teslascope; v14.3.11 is still the widest build.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "MX", name: "Mexico", region: "Americas", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: -102.5, lat: 23.6, note: "Tesla lists Mexico. Not on the US 14.3.11 build map.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "PR", name: "Puerto Rico", region: "Americas", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: -66.5, lat: 18.2, note: "Tesla lists Puerto Rico as its own market.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "CN", name: "China", region: "Asia-Pacific", status: "limited", date: "2026-05", version: "Limited", hardware: "HW4", lon: 104, lat: 35, note: "Listed, then dropped from some regional pages. Data-compliance limits. Not a full open.", source: { label: "Tesla China", url: "https://www.tesla.cn" } },
     { code: "KR", name: "South Korea", region: "Asia-Pacific", status: "live", date: "2026", version: "Supervised", hardware: "HW4", lon: 127.8, lat: 36.4, note: "Tesla lists South Korea as available.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
-    { code: "AU", name: "Australia", region: "Asia-Pacific", status: "live", date: "2025", version: "v14.3.12", hardware: "HW4", lon: 134.5, lat: -25.3, note: "Live. v14.3.12 Down Under on 2026.38.5.5 started reaching HW4 cars on 20 Oct (early wave, Teslascope).", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
-    { code: "NZ", name: "New Zealand", region: "Asia-Pacific", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: 172.6, lat: -41.3, note: "Live, usually paired with Australia. Cars are waiting to install 2026.38.5.5 (v14.3.12 Down Under), per Teslascope.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
+    { code: "AU", name: "Australia", region: "Asia-Pacific", status: "live", date: "2025", version: "v14.3.12", hardware: "HW4", lon: 134.5, lat: -25.3, note: "Live. v14.3.12 Down Under on 2026.38.5.5 started reaching HW4 cars on 20 Oct, followed by the 2026.38.5.6 point release on 24 Oct (Teslascope).", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
+    { code: "NZ", name: "New Zealand", region: "Asia-Pacific", status: "live", date: "2025", version: "Supervised", hardware: "HW4", lon: 172.6, lat: -41.3, note: "Live, usually paired with Australia. About 5% of 2026.38.5.6 installs (v14.3.12 Down Under) are in New Zealand, per Teslascope.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     { code: "JP", name: "Japan", region: "Asia-Pacific", status: "watch", date: null, version: "—", hardware: "—", lon: 138, lat: 36.2, note: "Not approved. Own regulator path.", source: { label: "Tesla FSD support", url: "https://www.tesla.com/support/full-self-driving" } },
     // fsd-europe:begin
     {"code":"NL","name":"Netherlands","region":"Europe","status":"live","date":"2026-10-23","version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":5.3,"lat":52.1,"note":"Tesla’s current availability list includes this market; vehicle eligibility still applies. Recognition recorded. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
