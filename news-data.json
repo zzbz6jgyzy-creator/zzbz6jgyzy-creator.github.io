@@ -1,16 +1,16 @@
 {
-  "updated": "2026-10-25T08:34:23Z",
+  "updated": "2026-10-25T09:04:44Z",
   "items": [
     {
-      "id": "f2a92e53f2be",
+      "id": "d92b26b2c6f8",
       "topic": "spacex",
-      "title": "Musk says SpaceX restricted Ukraine's Starlink connection as service restored",
-      "source": "BBC",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4wYU9INjVIeDlBUGVueHEwZlhEMlU0Xzl0bmdpS3MtdXF4aV9CbzVQWENkSVRrR3RDLU4ycVZqdlUzMFdUckc5anRFWmlhb3lnQmhfMjhMeFZtUjA?oc=5",
-      "published": "2026-10-25T08:15:24Z",
+      "title": "NASA Changes Moon Missions Profile Again, SpaceX and Blue Origin Fight to Land Astronauts There",
+      "source": "autoevolution",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPdm1zamgya2lnZWhjTXozdXpUTDlva1NaaVZ3eEJKd2Z3eUM4dEJlRmpMdHZaRVlhOWswOVdIRnZuX0NqemlkWkFObFpYZUdrOXIwSThOSUpyT0M3VEtVYllNT1dFdXcxOE1rb2REVjIwQ212b0c4azJRMHhaN3N3SFRHLWVrMUpJazBpckxtRmt4WWF2Y1hVYmVFQlJSSk16Y19mQVNBVV9KSk42TEo3T0JGdU93cF9uaE5yZ1Q2NzBSWjZNSFg5SUxHYW5PSUJLcC16eWFvZ0Y?oc=5",
+      "published": "2026-10-25T08:55:20Z",
       "snippet": "",
       "kind": "general",
-      "score": 7
+      "score": 4
     },
     {
       "id": "6ee5a448536d",
@@ -104,6 +104,17 @@
       "score": 4
     },
     {
+      "id": "79b820cd64b2",
+      "topic": "tesla",
+      "title": "Ferrari's CEO Praises The Tesla Roadster: 'We Have To Keep Dreaming'",
+      "source": "Motor1.com",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBFT3g4S000QzVuMER3alVGTndpOTd5N0RnbjNURVpHa3VYWkVqcWpEdUxLSUthdWctX1hBOTdCRm1PUlhKZGtxQU1LbzJfbzEzeGl6eWtLUUpqVFJTb1UwUzAyYUJ2LTNweTdrRWVUQkFJTjN0TThpbUNscHA?oc=5",
+      "published": "2026-10-25T05:18:54Z",
+      "snippet": "",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
       "id": "1a055a268720",
       "topic": "spacex",
       "title": "Rocket Lab vs SpaceX: $30B vs $2.2T Cap [2026]",
@@ -149,15 +160,27 @@
       "score": 4
     },
     {
-      "id": "18b4f959f7bb",
+      "id": "44b1dc8e36cd",
       "topic": "grok",
-      "title": "Grok Sued Over Face Scans Under Illinois BIPA",
-      "source": "openclassactions.com",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPSEtna0gxM0xULU1xclRwOTk2QXBwaWlHSktoSXgyTl9BMkNSZGZOQUJVdzVCMzZEeFNfWDdOTUZueFE0ZGR5Z2Iwb3RqOGR6WHg5MUl5bjluTFgxdkt4NmFEd19QT3AtYXZJMTJsUkNwTUE3SmhHdWZvMnZnX3Fjd2ZvYlJpRWpLUEt0bTRxTHo1ak1P?oc=5",
-      "published": "2026-10-25T02:05:00Z",
+      "title": "Tell Me Lies: Grok, GPT and Claude Voice Modes Guess Bitcoin's Price",
+      "source": "Cryptonews.net",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9jMXZoU1FBaWhLeEhkWDNreUpRLXREdTYtNGtTRGdLeC13UUNmTUlHbF9VRXNuTUVWNlVmZUpodWc0aE5ONDJBSmNyVHBRZmFsb2s5QzZ3VUdoZ2c?oc=5",
+      "published": "2026-10-25T01:15:45Z",
       "snippet": "",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "7df6f5060cb3",
+      "topic": "spacex",
+      "title": "Musk says SpaceX restricted Ukraine's Starlink connection as service restored",
+      "source": "BBC",
+      "url": "https://www.bbc.com/news/articles/cvx28ljp8n4xo",
+      "published": "2026-10-25T01:15:00Z",
+      "snippet": "The tech billionaire accuses Ukraine of violating its terms of service by using the network for military activity.",
+      "image": "https://www.bing.com/th?id=ONUT.KVil16cEGF0QCtrLKd6zzw&pid=News&w=640",
+      "kind": "general",
+      "score": 7
     },
     {
       "id": "5580477853a6",
@@ -169,6 +192,17 @@
       "snippet": "",
       "kind": "general",
       "score": 9
+    },
+    {
+      "id": "a483adf67fe0",
+      "topic": "grok",
+      "title": "AI models predict Bitcoin's 2026 year-end price between $78K and $85K with no clear forecasting method.",
+      "source": "Pluang",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPYTB2aEF0Mk1lcmh2bFAxUHFwc25vSWEwT3E3dVBhSWFTOXYzekxOVjJoT0RnakJITVRCU1lFeXlhdEtSUW9DX3U5WkVVY0JRaEFWTVNIMnNtdHBUSVJKek9MM0F4VnJ6dTJENUFLSFRzZHZEcjhpQnM5OFY2QVE1TWV4Z1d6NkxSS2VQc2VlZXkwaHl5QUJ4cy16WHduNjR5ZUwwLU9tVm1aV2Ewbnc?oc=5",
+      "published": "2026-10-25T01:07:30Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "243548a05dc9",
@@ -194,6 +228,17 @@
       "score": -2
     },
     {
+      "id": "c8c46a809679",
+      "topic": "grok",
+      "title": "AI Sessions Put Year-End Bitcoin Price Near $80,000 But Show No Reproducible Calculation",
+      "source": "TOKENPOST",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFAyekptbURKN0VqREgwbEpSYXpxSXA2dlk1ZmZUa1QzT05jUTB3ZGM0b01wOFphc3dOdDVTVm5UMEh3OVl6cGhneU1ZdTZPank0VGExYkJZYnd3TG8?oc=5",
+      "published": "2026-10-25T00:40:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "3e3d9e12f171",
       "topic": "spacex",
       "title": "SpaceX satellite system back up to full speed in Ukraine, officials say",
@@ -206,12 +251,34 @@
       "score": 4
     },
     {
+      "id": "b3a9b68e42db",
+      "topic": "spacex",
+      "title": "Elon Musk's xAI Rebrands As SpaceXAI, Drops New Logo As It Fully Merges Into SpaceX",
+      "source": "Stocktwits",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQN2FQMndjT043NXJpWTNUUFJaanNsQXNmSGg3cmUzbTVITDROQzBvRldCSjF0OWNQeTUweUJCNTdfRmRsdzNaalF6VWp2LWVfc0FCUWZWdzFHWTJyaUlHQVV0OG9UeHAzci0wb1VlRS00MWtIOUMzN01JcFFsMEUwU09FVkE3b3IwMG5BNUJ0MWtzZUhoSmwwcVpWTVhPVTBxSDdzM3dzMkt5SkhjLWE4S1RnNVpIajg?oc=5",
+      "published": "2026-10-25T00:29:06Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "20079e75eac2",
       "topic": "grok",
       "title": "Traders Are Letting xAI's Grok Bot Run Unsupervised, and It Already Lost Money",
       "source": "Startup Fortune",
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNNWpac0ZnWnJzZEFod2ZHYXBheWdBX2lVeGx0b2d2QUVPQ0NfTGFteUlOalNvT3lJek9neWFiQ2Z1ZTZkVVlEQzJieW9wQ0NSTzdBNmtncXEyOU5Ja3NUMENVYjNnaXRHelJ0N3lFWXZkOUk4YjBmRWNGaWprLU5LQVpfN2NxVGJlMWVzczQ2OEhuN1BVQlRYOUJ2U3ZKUHRjdjdzdlpMZw?oc=5",
       "published": "2026-10-24T23:49:57Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "7180b15d30a0",
+      "topic": "tesla",
+      "title": "Tesla Cars Facing More Demand Than Stock? Buyers Face Extended Waits For Base Model 3, Model Y And Cybertruck",
+      "source": "Stocktwits",
+      "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxPMDJiWTU5akl3NkFzMnRIekQ5RHBXRldXLVV4MGhleGZmblhiV3VKX2YxbkQxYWd5amRzUjd2U05SZ21LUEFDUGRhU0xwZXpDWU82UjllNE80WTNZQ19zc0d0clRBd21Jb1ZSNjFtdGo4bnFGZnhySFc2WkUzQS05Q2Vnb09xdlFUcW51VWxJMG1IUWQ1amRTdWtpY3JsUGE0QzFmZW5wNnpWNTJCbzh5Ync2WG5kY0NPOHhuclF6N2F0OHZOV1VKaEdVYVJBU3h0ZTdHV1JrdFIyZkxWbU9pclEzZjhLd2Vmemx3SDZTLXZKeXJOUUppQS1ZbmFBRWRZ?oc=5",
+      "published": "2026-10-24T23:16:32Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -283,17 +350,6 @@
       "score": 19
     },
     {
-      "id": "06e94d2c2947",
-      "topic": "tesla",
-      "title": "2026.38.5.11 Official Tesla Release Notes - Software Updates",
-      "source": "Not a Tesla App",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPT0ZFb1NzRXNLbXNVbWJrZy1NZUY2TGJNTDQxUHJnNExPVGRQYVRaNG9leG90M2pKVjZVQllyV1JPZ0F4MDhIVm0wVWJnbnRGRXpobXFjQmlVWEV2aG91cS13Sk1MR1U4VVhUS1ZXclB0bFhvUWlwMFVIY3hLcE9HbUVFMTI4ZDg?oc=5",
-      "published": "2026-10-24T20:05:23Z",
-      "snippet": "",
-      "kind": "software",
-      "score": 21
-    },
-    {
       "id": "6d9744fb0cdf",
       "topic": "spacex",
       "title": "SpaceX’s First Lockup Passed Without a Crash — Is the Supply Overhang Behind SPCX?",
@@ -316,6 +372,17 @@
       "score": 4
     },
     {
+      "id": "15581b0373e9",
+      "topic": "grok",
+      "title": "Best AI Chatbot Australia: US$0 to US$500/Mo [2026]",
+      "source": "tech-insider.org",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQQkJYcTdHSVYtb0dXUDdCVlN5dk94MnFsY1pZMVE1SFlIMDlJN1lxc0U0TGxST2M5bF84UVNzNnlhbGFleHd1d21jUUhDZEllQmpsQk5JY2dqUWFRYUpSM3NoY2dvdGQzdFY5XzVEVzZiZGZ1RHlqZ1pMTnlwclB2ZUhhblUya01hTDlqNDFFRQ?oc=5",
+      "published": "2026-10-24T19:48:47Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "8068ba972998",
       "topic": "grok",
       "title": "Elon Musk actually follows through on Grok AI adaptation of 'The Odyssey'",
@@ -328,18 +395,6 @@
       "score": 4
     },
     {
-      "id": "87b1e003e55b",
-      "topic": "spacex",
-      "title": "SPCX Stock In Focus: SpaceX Reportedly Pulls Rocket Executives Into Data Centers After Tennessee, Mississippi Problems",
-      "source": "Stocktwits",
-      "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxOV3VvVm1hVzZuek9CTWlaUk1XM3hHXy1ibk8ySklYNFFkUnozTFcxWm0zdmVjUDZYdWx5X0ZrLWRLVGdITHdYb2xrakIxSUNyUmE1aGVtWmRFeS1qRWdQSnd3TkVwRE1jRmVSZURTMXcyX0V0NjVtbU5KU18yMzNIWE5HWFZiYi0za2RSanh0UGhNbFdIcm95MmV6cVgzZFA1anR4WGVsUW9Uem0tejM4bmVDS3hONGxKLUxRYk01Y0VIRGMyaGVtTGFpbzlBVm84Rl9SQXJYRWNCeGVTSzZ6LTZpTkhtcHZDY3BFWWphMjFDX0wzWllyc1ZJLTdfRlhNLXZVREwyNzdfdm5tVVE?oc=5",
-      "published": "2026-10-24T19:05:17Z",
-      "snippet": "",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
-    },
-    {
       "id": "b20b09acc440",
       "topic": "tesla",
       "title": "Tesla Thought It Owned EV Charging Forever, But Ionna, Rivian And Mercedes Showed Up to Take The Throne",
@@ -347,6 +402,7 @@
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNRWFTMHpQZ2JvNUJ5cF9fUDE4UGpzSHk3U3RNM2IyYnBhTDN5UDBGZ2owc1NBdkp3VThYRExSOEZGelBXMWQ3cXZ6SWZILXk1VU1mdFlYQkhiaWNmcF9TQmhFcjR5b3JUWVM4YTJpWmpKVEdCY3h5Q0pIV2ozcVpTRUZCRU5JSk9jRm5xNVA1VEFCTWY2aFBzVA?oc=5",
       "published": "2026-10-24T19:03:14Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.HD26JG49N5nEeg3TUV_ghw&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -429,12 +485,12 @@
       "score": 4
     },
     {
-      "id": "9af06c620715",
-      "topic": "tesla",
-      "title": "Tesla’s U.S. Sales Tanked In Q1. It Still Gained Market Share",
-      "source": "InsideEVs",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5qaUZ1ZVpCRTAxRkZCZ3BiNG1pRFN3UFAwOGhPZEh1N1M3d1R2U21FRlpfemlHazFsMzJUQUlIODMwblhWT3h6RDRNbFlabkc5S25iTGxReGhxRXdmVjlBNUE3b1QxenJwZFpmUg?oc=5",
-      "published": "2026-10-24T17:24:26Z",
+      "id": "776c50a1db96",
+      "topic": "grok",
+      "title": "Best AI Chatbots: Score 5 in 12 Steps, 90 Min [2026]",
+      "source": "shattered.io",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE02LWN1bEo4UzBHbk1xTncyQkFOVWFibWZnYzNOMWs5ZDZpRGNsNEpMazZtcVd5cUw0TlBhaG0xdjVIV2ptOTlzbEE0THNxWVVyeThtSGtMM2I1UlNTVFIwV1NfNXZnUzRDNFdqSE9IZHVkeUJWcFhR?oc=5",
+      "published": "2026-10-24T17:40:16Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -450,29 +506,6 @@
       "image": "https://www.bing.com/th?id=ONUT.MGrr2HND_TqExw3GcASmxQ&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "58ae73e3f9c2",
-      "topic": "grok",
-      "title": "Grok AI favors Republican candidates while OpenAI’s GPT leans Democratic, study finds",
-      "source": "Crypto Briefing",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE4tcHhLQUpsMVhGNzU2SlNraDQwcXpSN0JRT2M0R0VtdlVvQVl4WDl6dnlMdlQtQkNndXpWdEZ3TXVjUThMQWRBNm9WWG1BcEgxeXd3Q0RhQlJRSFlHUXp1WnVNQ2ZBVXBrd3JYRFJZdlhWcUdOdDJocl9QaF8?oc=5",
-      "published": "2026-10-24T15:04:19Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "710b65ca5b04",
-      "topic": "tesla",
-      "title": "Bank of America resets Tesla forecast as robotaxi miles double",
-      "source": "TheStreet on MSN",
-      "url": "https://www.msn.com/en-us/technology/tech-companies/bank-of-america-resets-tesla-forecast-as-robotaxi-miles-double/ar-AA2g02bw",
-      "published": "2026-10-24T15:03:00Z",
-      "snippet": "Tesla's driverless miles are finally piling up fast, but the bank's own model shows the cash bill coming due first.",
-      "image": "https://www.bing.com/th?id=ONUT.VSY0XXD6HLz7vAZgUJSzmA&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
     },
     {
       "id": "cc46531757b6",
@@ -593,6 +626,17 @@
       "score": 4
     },
     {
+      "id": "83ee4bbb9ce9",
+      "topic": "grok",
+      "title": "4 firms tapped to lead Grok sexualized image litigation",
+      "source": "Daily Journal",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQWU43b080STRJdml4Qi1DTjk4alRncmZ0ODJCUS02RXJNTllIeWFab2J6RTdiSVR1bGR6YkozOVVaM3ZJQnVMdFFRRzVpNEd1ZndwcmN1UW9CM3gzRk5Oc1libEN2WTJkaXBoaDEtSWh4SXEzMDNGVml2ek5IOENQVTFFdC1GSGZOZXRQNVBacTNmdkYtLVg1bTcyM29IR2NV?oc=5",
+      "published": "2026-10-24T10:36:50Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "3aeb77d7a522",
       "topic": "spacex",
       "title": "Ukraine Says Starlink Is Back to Full Power",
@@ -601,17 +645,6 @@
       "published": "2026-10-24T09:30:00Z",
       "snippet": "In recent months, Ukraine has been able to generate hopeful stories about its war effort thanks in part to its use of Starlink’s Starshield, the military-grade, satellite intern ...",
       "image": "https://www.bing.com/th?id=ONUT.gPxHLI7YSeVre2UD4kvq1A&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "1c86efd96564",
-      "topic": "grok",
-      "title": "Elon Musk’s AI ‘Grok’ Officially Arrives on iPhone CarPlay",
-      "source": "آي-فون إسلام",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOaURsZWl5cHZETElmRVBZams2dlpFNEZ4SjlWMm1BR1A4VktqZVVYS0ZVU01xRWQxengzQzNUV1diMlNIRlZPTGFIeHZjUzhIaUZtRWh1cTNTWmhsdWpIUVZob2x4aHB3UDRDUTVURUstY0NRdG96LXBudmNHWkVlTmhrWWI4S29rRkY0UGhzV1d0eFhoMGVaRUpQNUF2d1lLMkpvODJPOXNDQQ?oc=5",
-      "published": "2026-10-24T08:53:53Z",
-      "snippet": "",
       "kind": "general",
       "score": 4
     },
