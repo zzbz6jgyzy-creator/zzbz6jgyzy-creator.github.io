@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-25T13:00:09.917Z",
+  "generatedAt": "2026-10-25T13:13:45.797Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -1561,14 +1561,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-24T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-23T08:30:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1582,14 +1582,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-23T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-25T05:57:45.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1603,35 +1603,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-25T13:00:09.917Z",
+      "lastChecked": "2026-10-25T13:13:45.797Z",
       "lastVerified": "2026-10-25T13:00:08.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1640,85 +1640,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.897Z",
-      "finished": "2026-10-25T13:00:09.904Z"
+      "started": "2026-10-25T13:13:45.780Z",
+      "finished": "2026-10-25T13:13:45.785Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.904Z",
-      "finished": "2026-10-25T13:00:09.904Z"
+      "started": "2026-10-25T13:13:45.785Z",
+      "finished": "2026-10-25T13:13:45.785Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.904Z",
-      "finished": "2026-10-25T13:00:09.904Z"
+      "started": "2026-10-25T13:13:45.785Z",
+      "finished": "2026-10-25T13:13:45.785Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.904Z",
-      "finished": "2026-10-25T13:00:09.909Z"
+      "started": "2026-10-25T13:13:45.785Z",
+      "finished": "2026-10-25T13:13:45.790Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.909Z",
-      "finished": "2026-10-25T13:00:09.913Z"
+      "started": "2026-10-25T13:13:45.790Z",
+      "finished": "2026-10-25T13:13:45.793Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.913Z",
-      "finished": "2026-10-25T13:00:09.914Z"
+      "started": "2026-10-25T13:13:45.793Z",
+      "finished": "2026-10-25T13:13:45.794Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.914Z",
-      "finished": "2026-10-25T13:00:09.915Z"
+      "started": "2026-10-25T13:13:45.794Z",
+      "finished": "2026-10-25T13:13:45.795Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.915Z",
-      "finished": "2026-10-25T13:00:09.915Z"
+      "started": "2026-10-25T13:13:45.795Z",
+      "finished": "2026-10-25T13:13:45.795Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.915Z",
-      "finished": "2026-10-25T13:00:09.915Z"
+      "started": "2026-10-25T13:13:45.795Z",
+      "finished": "2026-10-25T13:13:45.795Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.915Z",
-      "finished": "2026-10-25T13:00:09.916Z"
+      "started": "2026-10-25T13:13:45.795Z",
+      "finished": "2026-10-25T13:13:45.796Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.916Z",
-      "finished": "2026-10-25T13:00:09.917Z"
+      "started": "2026-10-25T13:13:45.797Z",
+      "finished": "2026-10-25T13:13:45.797Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.917Z",
-      "finished": "2026-10-25T13:00:09.917Z"
+      "started": "2026-10-25T13:13:45.797Z",
+      "finished": "2026-10-25T13:13:45.797Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-25T13:00:09.917Z",
-      "finished": "2026-10-25T13:00:09.917Z"
+      "started": "2026-10-25T13:13:45.797Z",
+      "finished": "2026-10-25T13:13:45.797Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-25T13:00:09.917Z",
+    "generatedAt": "2026-10-25T13:13:45.797Z",
     "factCount": 17,
     "changeCount": 75,
     "conflictCount": 2,
