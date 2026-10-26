@@ -1,0 +1,394 @@
+{
+  "version": 1,
+  "reviewed": "2026-10-26",
+  "targets": {
+    "fsd-90-percent-2013": {
+      "label": "2016 · three-year target",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The existing paraphrase says within three years of September 2013. The audit stores only 2016, not an exact promised day."
+    },
+    "summon-across-country-2018": {
+      "label": "2018 · within two years",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote says within two years of January 2016. The audit stores a year-level cutoff; no exact day was promised."
+    },
+    "la-to-nyc-demo-2017": {
+      "label": "By end of 2017",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The quote says by the end of next year from October 2016; 31 December is the audit’s end-of-year cutoff."
+    },
+    "fsd-feature-complete-2019": {
+      "label": "During 2019",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The quote says this year on a February 2019 statement. The stored year-end date is a cutoff, not a 31 December launch appointment."
+    },
+    "million-robotaxis-2020": {
+      "label": "During 2020",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The April 2019 quote says next year. Regulatory approval was a condition; the audit uses the end of 2020."
+    },
+    "level-five-basic-2020": {
+      "label": "During 2020",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The July 2020 quote says this year. Preserve the year-level target rather than displaying an exact year-end day."
+    },
+    "better-than-human-2021": {
+      "label": "During 2021",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The January 2021 quote says this year. The stored date represents the end of that target year."
+    },
+    "robotaxi-volume-2024": {
+      "label": "During 2024 · aspiration",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The April 2022 quote says aspire to reach volume production in 2024. This is a year-level aspiration."
+    },
+    "starship-orbit-2022": {
+      "label": "Ideally before end of 2022",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The August 2022 quote says trying to ideally get done before the end of the year. Keep the aspirational wording."
+    },
+    "full-autonomy-2023": {
+      "label": "During 2023 · personal prediction",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The May 2023 quote says this year; the existing note identifies it as Musk’s opinion rather than a confirmed launch date."
+    },
+    "unsupervised-fsd-tx-ca-2025": {
+      "label": "During 2025",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The October 2024 quote says next year for Texas and California. The audit stores a year-end cutoff, not a precise activation day."
+    },
+    "cybercab-production-before-2027": {
+      "label": "During 2026 / before 2027",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote explicitly says probably in 2026 and before 2027. The cutoff is the end of 2026."
+    },
+    "austin-unsupervised-june-2025": {
+      "label": "June 2025",
+      "precision": "month",
+      "approximate": false,
+      "basis": "The statement explicitly says in June. The audit uses the final day of June as its month-level scoring cutoff."
+    },
+    "sleep-in-car-2025": {
+      "label": "By end of 2025",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The April 2025 quote says by the end of this year. The target is a year-end window, not a confirmed launch timestamp."
+    },
+    "factory-to-customer-june-28": {
+      "label": "28 June 2025",
+      "precision": "day",
+      "approximate": false,
+      "basis": "The statement explicitly gives June 28; the existing title and statement year identify the date as 28 June 2025."
+    },
+    "ride-hailing-half-us-2025": {
+      "label": "By end of 2025 · conditional goal",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The July 2025 quote says probably by the end of the year, subject to regulatory approvals."
+    },
+    "unsupervised-personal-2025": {
+      "label": "By end of 2025 · certain geographies",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote says I think by the end of this year in certain geographies. Preserve that scope and uncertainty."
+    },
+    "no-safety-driver-end-2025": {
+      "label": "By end of 2025",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The September 2025 quote says should be no safety driver by end of year. The audit uses the year-end cutoff."
+    },
+    "cybercab-production-april-2026": {
+      "label": "April 2026",
+      "precision": "month",
+      "approximate": false,
+      "basis": "The January 2026 quote explicitly says start production in April; the audit stores the end of that month."
+    },
+    "autonomy-quarter-half-us-2026": {
+      "label": "By end of 2026 · approval dependent",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The January 2026 quote says by the end of the year, pending regulatory approval. The target covers only the stated geographic ambition."
+    },
+    "optimus-factories-2025": {
+      "label": "During 2025",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The existing title identifies the 2025 target. The quoted excerpt states a robot count; the audit supplies the year-level cutoff."
+    },
+    "optimus-10000-2025": {
+      "label": "By end of 2025 · several thousand",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote discusses roughly 10,000 and explicitly doubts reaching exactly that count by the end of December. Keep the uncertainty and the narrower several-thousand claim visible."
+    },
+    "optimus-3-unveil-2026": {
+      "label": "A few months · mid-2026 interpretation",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The original phrase is probably in a few months. The audit interprets this as mid-2026, supported by a later revision; June 30 is an editorial cutoff, not an exact promised day."
+    },
+    "roadster-production-2020": {
+      "label": "During 2020",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The reported speech says production was scheduled for 2020. Later revisions do not erase this original year-level target."
+    },
+    "roadster-ship-2025": {
+      "label": "Shipping during 2025",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The reported statement distinguishes unveiling by the end of 2024 from shipping in 2025. This record’s stored cutoff scores the shipping target."
+    },
+    "semi-production-2019": {
+      "label": "During 2019",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The reported unveiling target is production in 2019. The audit stores an end-of-year cutoff rather than a specific production day."
+    },
+    "cybertruck-production-2021": {
+      "label": "During 2021",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The existing paraphrase explicitly says production begins in 2021. The stored final day of the year is the audit’s cutoff."
+    },
+    "cybertruck-price-39900": {
+      "label": "No deadline attached to the price",
+      "precision": "undated",
+      "approximate": false,
+      "basis": "The existing note explicitly says no deadline was attached to the price. The stored 2023 delivery-date reference must not be presented as a promised deadline."
+    },
+    "mars-cargo-2022": {
+      "label": "2022 Mars rendezvous · aspirational",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote names the 2022 Mars rendezvous and calls it a goal. The note says the date was aspirational; no exact departure or landing day was given."
+    },
+    "mars-crew-2024": {
+      "label": "During 2024 · attempted crewed flights",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote says in 2024 we want to try. The audit uses the end of the target year; it is not a confirmed launch date."
+    },
+    "mars-uncrewed-2026": {
+      "label": "As soon as late 2026",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The existing reported summary says as soon as late 2026. Preserve the earliest-case wording; the audit’s year-end cutoff is not an exact mission date."
+    },
+    "grok-3-open-source": {
+      "label": "About six months · February 2026 cutoff",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The August 2025 statement says about six months. The audit interprets the window as ending in February 2026; February 28 was not an explicit promise."
+    },
+    "grok-5-end-2025": {
+      "label": "By end of 2025 · original reported target",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The record reports an original end-2025 target through a later article that also describes a Q1 2026 revision. Keep the original target separate from that revision."
+    },
+    "25k-car-3-years": {
+      "label": "About three years · September 2023",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The September 2020 quote says about three years. The audit uses the end of September 2023 as an interpreted cutoff, not an exact promised day."
+    },
+    "affordable-model-h1-2025": {
+      "label": "First half of 2025",
+      "precision": "half-year",
+      "approximate": false,
+      "basis": "The quote explicitly says the first half of 2025. June 30 is the end of that half-year window."
+    },
+    "megafactory-shanghai-q1-2025": {
+      "label": "Q1 2025",
+      "precision": "quarter",
+      "approximate": false,
+      "basis": "The January 2025 quote says this quarter onwards. The title identifies Q1; March 31 is the quarter-end cutoff."
+    },
+    "solar-roof-1000-week-2019": {
+      "label": "By end of 2019 · hoped-for rate",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote says hoping to manufacture about 1,000 roofs per week by the end of this year. Keep the target as a hoped-for year-end production rate."
+    },
+    "dojo2-at-scale-2026": {
+      "label": "Sometime during 2026",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The reported summary explicitly says sometime in 2026. The stored year-end date is the audit’s cutoff."
+    },
+    "fsd-hardware-2016": {
+      "label": "No deadline given",
+      "precision": "undated",
+      "approximate": false,
+      "basis": "The record has a blank deadline and explicitly classifies this hardware claim as Revised rather than Missed because no deadline was set."
+    },
+    "fsd-europe-china-q1-2025": {
+      "label": "Q1 2025 · pending regulatory approval",
+      "precision": "quarter",
+      "approximate": true,
+      "basis": "The reported statement explicitly names the first quarter of 2025 and conditions it on regulatory approval. The outcome note is a separate editorial judgment about Dutch approval."
+    },
+    "robotaxi-8-10-metros-2025": {
+      "label": "By end of 2025 · around 8–10 metros",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote says expect about 8 to 10 metro areas by the end of the year. This is a year-end target, not individual launch dates."
+    },
+    "austin-no-safety-drivers-few-months": {
+      "label": "A few months · January 2026 cutoff",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The existing note explicitly interprets a few months from October 2025 as by the end of January 2026. January 31 is an editorial cutoff."
+    },
+    "tesla-network-add-your-car-2026": {
+      "label": "During 2026",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The July 2025 statement says confidently next year. The audit therefore records a 2026 year-level target."
+    },
+    "unsupervised-fsd-customers-q4-2026": {
+      "label": "Probably Q4 2026",
+      "precision": "quarter",
+      "approximate": true,
+      "basis": "The quote explicitly says probably the fourth quarter and calls it a guess. The audit uses the end of Q4 2026; revisions remain separate."
+    },
+    "optimus-volume-end-2026": {
+      "label": "Probably toward end of 2026",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The January 2026 quote says probably the end of this year for significant production volume. No exact production day is promised."
+    },
+    "optimus-prototype-2022": {
+      "label": "Sometime during 2022",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The August 2021 reported wording says sometime next year. The audit uses an end-2022 cutoff for that year-level target."
+    },
+    "starship-orbit-six-months-2019": {
+      "label": "Within six months · March 2020",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The September 2019 quote says try to reach orbit in less than six months. March 28 is the audit’s arithmetic cutoff, not an explicitly named flight day."
+    },
+    "starship-crew-2020": {
+      "label": "As early as 2020",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The September 2019 reported statement says the first crewed mission could be as early as next year. Preserve the earliest-case wording."
+    },
+    "shotwell-starship-orbit-july-2021": {
+      "label": "July 2021 · hoping to make it",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The reported statement explicitly names July; the note quotes Shotwell hoping to make it and acknowledging difficulty. July 31 is the audit’s monthly cutoff."
+    },
+    "shotwell-mars-this-decade": {
+      "label": "This decade · by end of 2029",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The 2022 statement says this decade. The audit interprets this as a cutoff at the end of the 2020s, not a dated Mars mission."
+    },
+    "grok-3-end-2024": {
+      "label": "By end of 2024",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The July 2024 quote says end of year. The audit uses the end of that target year."
+    },
+    "grok-2-open-source": {
+      "label": "A few months · May 2025 cutoff",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The statement conditions release on Grok 3 being mature and stable and says probably within a few months. The existing note interprets this as by the end of May 2025."
+    },
+    "roadster-production-2022": {
+      "label": "During 2022",
+      "precision": "year",
+      "approximate": false,
+      "basis": "The January 2021 reported statement says production is due next year. The audit records the end of the 2022 target year."
+    },
+    "spacex-arr-500b-1t-2027": {
+      "label": "By end of 2027 · personal aspiration",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote names the end of 2027; the existing note identifies the revenue figure as Musk’s aspiration rather than company guidance."
+    },
+    "terafab-test-chip-mid-2027": {
+      "label": "Around May or June 2027",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The reported statement explicitly says roughly May or June of next year. The audit stores June 30; the broader two-month wording and big-error-bars caveat remain visible.",
+      "window_start": "2027-05-01",
+      "window_end": "2027-07-01"
+    },
+    "terafab-volume-q3-2028": {
+      "label": "Q3 or Q4 2028 · Q3 cutoff recorded",
+      "precision": "quarter",
+      "approximate": true,
+      "basis": "The quote allows Q3 or Q4 2028. The existing audit chooses the end of Q3 as its scoring cutoff, so that cutoff must not erase the broader quoted window or uncertainty.",
+      "window_start": "2028-07-01",
+      "window_end": "2029-01-01"
+    },
+    "compute-13gw-end-2027": {
+      "label": "By end of 2027",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The October 2026 quote says by the end of next year and frames the number as what would be surprising to fall below. Keep it as a projected year-end capacity target."
+    },
+    "training-cluster-q2-2027": {
+      "label": "By end of Q2 2027 · interpreted year",
+      "precision": "quarter",
+      "approximate": true,
+      "basis": "The quote explicitly says end of Q2. The existing note interprets the year as 2027 from the October 2026 call’s surrounding next-year discussion."
+    },
+    "grok-bot-enterprise-few-weeks": {
+      "label": "A few weeks · November 2026 cutoff",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The quote says within a few weeks. The existing note interprets that as by the end of November 2026; no exact deployment day was promised."
+    },
+    "starship-flight15-next-month": {
+      "label": "November 2026 · expected",
+      "precision": "month",
+      "approximate": true,
+      "basis": "The October 2026 quote explicitly says next month and describes an attempted catch. The separate FAA planning date in the note is not a confirmed flight time."
+    },
+    "starship-weekly-h1-2027": {
+      "label": "First half of 2027",
+      "precision": "half-year",
+      "approximate": false,
+      "basis": "The quote explicitly says weekly flights at some point in the first half next year. The audit scores that H1 2027 target, not the later twice-weekly aspiration."
+    },
+    "optimus-external-end-2027": {
+      "label": "Around end of 2027",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The October 2026 quote says around the end of next year; the note also says likely towards the end of next year. This is a window, not a specific delivery date."
+    },
+    "fsd-eu-approval-q1-2027": {
+      "label": "No later than Q1 2027 · uncertain approval",
+      "precision": "quarter",
+      "approximate": true,
+      "basis": "The quote explicitly names Q1 but gives no year in that excerpt. The existing note interprets it as Q1 2027 and says approval timing is not controlled by Tesla."
+    },
+    "tesla-5m-vehicles-2030": {
+      "label": "Around 2030",
+      "precision": "year",
+      "approximate": true,
+      "basis": "The quote explicitly says approximately 2030. The audit stores year-end 2030 as its scoring cutoff, not a promise to reach the production rate on a particular day."
+    }
+  }
+}

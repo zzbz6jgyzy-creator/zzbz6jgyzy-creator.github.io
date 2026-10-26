@@ -1,0 +1,48 @@
+name: Promise Tracker checks
+on:
+  pull_request:
+    paths:
+      - 'promise-tracker.html'
+      - 'promise-studio*'
+      - 'data/promises.json'
+      - 'data/promise-studio-guide.json'
+      - 'data/pages.json'
+      - 'scripts/build-promise-studio.mjs'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/build-js.mjs'
+      - 'scripts/inject-js-bundles.py'
+      - 'scripts/js-bundles.json'
+      - 'tests/promise-studio*'
+      - '.github/workflows/promise-studio-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  promise-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned verification tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Verify source handling, date precision and generated output
+        run: |
+          node --test tests/promise-studio.test.mjs
+          node scripts/build-promise-studio.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- promise-tracker.html data/pages.json assets/js
+      - name: Responsive and interaction checks
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/promise-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: promise-studio-previews
+          path: /tmp/promise-studio

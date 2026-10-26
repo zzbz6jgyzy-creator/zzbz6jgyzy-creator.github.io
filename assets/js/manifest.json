@@ -253,10 +253,12 @@
       ]
     },
     "promise-tracker": {
-      "file": "/assets/js/promise-tracker.bundle.79d0470704.js",
-      "bytes": 11953,
+      "file": "/assets/js/promise-tracker.bundle.0422f5057e.js",
+      "bytes": 29237,
       "sources": [
-        "promise-tracker.js"
+        "promise-studio-model.js",
+        "promise-studio-view.js",
+        "promise-studio.js"
       ]
     },
     "counts": {

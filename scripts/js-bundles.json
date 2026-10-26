@@ -160,7 +160,9 @@
       "production-studio.js"
     ],
     "promise-tracker": [
-      "promise-tracker.js"
+      "promise-studio-model.js",
+      "promise-studio-view.js",
+      "promise-studio.js"
     ],
     "counts": [
       "counts.js"
@@ -409,7 +411,6 @@
     "promise-tracker.html": {
       "bundles": [
         "core",
-        "intel",
         "promise-tracker"
       ],
       "grow": [
