@@ -15,7 +15,7 @@
 
   function openersIn(from) {
     var root = from && from.closest("[data-wp-gallery]");
-    return [].slice.call((root || document).querySelectorAll("[data-wp-open]"));
+    return [].slice.call((root || document).querySelectorAll("[data-wp-open]")).filter(function (el) { return !el.closest("[hidden]"); });
   }
 
   function isPreview(el) {
@@ -87,6 +87,8 @@
     idx = ((i % list.length) + list.length) % list.length;
     cur = list[idx];
     isPhone = !(window.matchMedia && matchMedia("(min-width: 900px) and (pointer: fine)").matches);
+    var studio = cur.closest(".ws-studio");
+    if (studio) isPhone = studio.dataset.format !== "desktop";
     if (cur.hasAttribute("data-no-phone")) isPhone = false;
     if (cur.hasAttribute("data-no-desktop")) isPhone = true;
     show();
