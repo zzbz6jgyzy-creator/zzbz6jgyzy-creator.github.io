@@ -731,6 +731,7 @@ def sitemap():
         + glob.glob(os.path.join(ROOT, "explainers", "*.html"))
         + glob.glob(os.path.join(ROOT, "fsd-europe", "*.html"))
         + glob.glob(os.path.join(ROOT, "cybercab-cities", "*.html"))
+        + glob.glob(os.path.join(ROOT, "orbital-command", "index.html"))
     )
     rows = []
     for p in pages:

@@ -1,0 +1,72 @@
+{
+  "id": "crs-35",
+  "name": "CRS-35 · Cargo Dragon to the ISS",
+  "vehicle": "Falcon 9 · Cargo Dragon",
+  "launchDate": "2026-10-13",
+  "launchSite": "Cape Canaveral Space Force Station, SLC-40",
+  "missionType": "ISS resupply",
+  "verified": true,
+  "summary": "SpaceX’s 35th commercial resupply mission launched from SLC-40 on 13 October 2026 and docked to Harmony’s space-facing port at 10:27 a.m. EDT on 15 October — about 30 minutes early — with more than 6,300 lb of cargo and the station’s final pair of roll-out solar arrays.",
+  "articles": [
+    {
+      "title": "Cargo Dragon docks with the station’s last new solar arrays",
+      "url": "/dispatch/crs35-dragon-docks.html"
+    },
+    {
+      "title": "Dragon flies the last of the station’s 8 new solar wings",
+      "url": "/dispatch/crs35-final-solar-arrays.html"
+    },
+    {
+      "title": "SpaceX mission hub",
+      "url": "/spacex.html"
+    }
+  ],
+  "replayFidelity": "illustrative-reconstruction",
+  "fidelityNote": "Event times are verified. Dragon’s approach path is an illustrative reconstruction. The ISS orbit shown during replay is a calculated segment from current CelesTrak elements, not October 2026 ephemeris. Historical orbital replay needs historical elements; those are not in this snapshot.",
+  "followNorad": 25544,
+  "events": [
+    {
+      "id": "liftoff",
+      "label": "Liftoff",
+      "at": "2026-10-13T10:33:00.000Z",
+      "kind": "liftoff",
+      "fidelity": "observed",
+      "source": "Supercharged Daily CRS-35 launch dispatch, citing SpaceX: 6:33 a.m. ET (3:33 a.m. PT) on 13 Oct 2026. https://superchargeddaily.com/dispatch/crs35-final-solar-arrays.html"
+    },
+    {
+      "id": "coast",
+      "label": "Orbit raising (about 52 hours)",
+      "at": null,
+      "dateOnly": "2026-10-13",
+      "kind": "coast",
+      "fidelity": "illustrative-reconstruction",
+      "source": "SpaceX CRS-35 mission page, via Supercharged Daily: trip put at about 52 hours.",
+      "note": "No public burn-by-burn ephemeris is included. The globe shows the ISS calculated orbit, not Dragon’s phasing burns."
+    },
+    {
+      "id": "10m",
+      "label": "Dragon 10 metres from the station",
+      "at": "2026-10-15T14:24:00.000Z",
+      "kind": "approach",
+      "fidelity": "observed",
+      "source": "SpaceX on X, 10:24 a.m. ET, 15 Oct 2026, cited in https://superchargeddaily.com/dispatch/crs35-dragon-docks.html"
+    },
+    {
+      "id": "dock",
+      "label": "Docking confirmed · Harmony zenith",
+      "at": "2026-10-15T14:27:00.000Z",
+      "kind": "docking",
+      "fidelity": "observed",
+      "source": "NASA space station blog, 15 Oct 2026: docked 10:27 a.m. EDT. https://blogs.nasa.gov/spacestation/2026/10/15/spacex-dragon-docks-with-science-supplies-and-roll-out-solar-arrays/"
+    },
+    {
+      "id": "stay",
+      "label": "Attached until mid-November (planned)",
+      "at": null,
+      "dateOnly": "2026-11-15",
+      "kind": "attached",
+      "fidelity": "observed",
+      "source": "NASA, via Supercharged Daily docking dispatch. Exact undock time was not published in that article — no clock time is invented here."
+    }
+  ]
+}
