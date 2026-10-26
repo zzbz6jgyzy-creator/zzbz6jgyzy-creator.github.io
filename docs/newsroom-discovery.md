@@ -45,7 +45,7 @@ The renderer preserves existing responsive picture markup through the shared ima
 
 ## Verification
 
-Seventeen unit/model/integration checks cover safe source URLs, deduplication, future/invalid publication records, overlapping topics, source/search/saved filtering, chronology, reading-time derivation, editorial pins, related-story exclusion, URL state, escaping, readable HTML, deterministic output, and the existing reading-list contract. Reading-list fixtures cover device-state preservation, blocked storage, capacity limits, verified account scope, account mismatch, unavailable account reads and cross-tab saves/removals.
+Eighteen unit/model/integration checks cover safe source URLs, deduplication, future/invalid publication records, overlapping topics, source/search/saved filtering, chronology, reading-time derivation, editorial pins, related-story exclusion, URL state, escaping, readable HTML, deterministic output, and the existing reading-list contract. Reading-list fixtures cover device-state preservation, blocked storage, capacity limits, verified account scope, account mismatch, unavailable account reads, sign-out during an in-flight account read, and cross-tab saves/removals.
 
 Eighteen browser scenarios cover 320, 390, 768 and 1440px in both themes; no JavaScript; malformed embedded data; blocked/corrupted storage; filter links; legacy links; failed refreshes; older feeds; and newly published stories with unknown reading time. They exercise pagination, token search, empty states, topic/source filters, compact mode, save/remove, related paths and refresh. External services are blocked, and an unconnected guest is verified to make no Supabase request. Dedicated CI rebuilds the saved page and bundles before running the browser suite.
 
