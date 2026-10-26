@@ -44,6 +44,17 @@ class Clip(unittest.TestCase):
         self.assertIn("max-image-preview:large", out)
         self.assertIn("feed.xml", out)
 
+    def test_hygiene_drops_broken_modified_time_fallout(self):
+        src = (
+            "<html><head><title>t</title>\n"
+            '    <meta property="article:modified_time" content="2026-10-20T01:40:00Z" />\n'
+            '    P26-10-20T01:40:00Z" />\n'
+            "</head><body></body></html>"
+        )
+        out = seo_lib.hygiene(src)
+        self.assertNotIn("P26-10-", out)
+        self.assertIn('article:modified_time" content="2026-10-20T01:40:00Z"', out)
+
 
 class Site(unittest.TestCase):
     def test_prerender_promise_and_news(self):

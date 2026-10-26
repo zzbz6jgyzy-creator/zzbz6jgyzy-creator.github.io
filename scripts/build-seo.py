@@ -240,9 +240,11 @@ def articles():
             )
         if revised:
             if "article:modified_time" in new:
+                # Lambda, not r"\1%s\2" % date: a date starting with 20 would
+                # become group-ref \12 and emit junk lines like P26-10-20T….
                 new = re.sub(
                     r'(<meta property="article:modified_time" content=")[^"]*(")',
-                    r"\1%s\2" % revised,
+                    lambda m, v=revised: m.group(1) + v + m.group(2),
                     new,
                     count=1,
                 )

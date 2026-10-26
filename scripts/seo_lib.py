@@ -30,6 +30,9 @@ STANDFIRST_RX = re.compile(
     r"@media\(max-width:760px\)\{\.standfirst\{min-height:380px\}\}",
     re.I,
 )
+# Fallout from replacing article:modified_time with r"\1%s\2" % "2026-…":
+# Python treats \12 as group 12 and leaves orphan "P26-10-…" lines.
+BROKEN_MODIFIED_RX = re.compile(r"^[ \t]*P\d{2}-\d{2}-\d{2}T[^\n]*\n", re.M)
 DUP_CSS = ("grow.css", "related.css", "intel.css")
 
 
@@ -316,6 +319,7 @@ def hygiene(src: str) -> str:
     src = ensure_feed_link(src)
     src = strip_google_fonts(src)
     src = drop_standfirst_reserve(src)
+    src = BROKEN_MODIFIED_RX.sub("", src)
     for name in DUP_CSS:
         src = dedupe_stylesheet(src, name)
     src = ensure_twitter_image(src)
