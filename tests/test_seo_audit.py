@@ -154,6 +154,13 @@ class Clip(unittest.TestCase):
         self.assertIn('property="og:description"', out)
         self.assertIn('name="twitter:description"', out)
 
+    def test_heading_rewrite_preserves_component_ids_and_accessibility(self):
+        src = '<nav><h3>Explore</h3></nav><main><h1 id="mg-title" class="hero-title" tabindex="-1">Old copy</h1><p>Intro</p></main>'
+        out = seo_lib.replace_first_h1(src, "Your Tesla:<br>software and costs.")
+        self.assertIn('<h1 id="mg-title" class="hero-title" tabindex="-1">Your Tesla:<br>software and costs.</h1>', out)
+        self.assertIn('<nav><h3>Explore</h3></nav>', out)
+        self.assertEqual(seo_lib.replace_first_h1(out, "Your Tesla:<br>software and costs."), out)
+
     def test_close_unclosed_h1_before_lede(self):
         src = (
             "<main><h1 id=\"so-title\">How many Starlink satellites are in orbit? "
