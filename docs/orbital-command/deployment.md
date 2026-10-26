@@ -2,16 +2,16 @@
 
 ## How it ships
 
-GitHub Pages serves the repo root. The built app is the committed directory `orbital-command/` (`base: /orbital-command/`).
+GitHub Pages serves the repo root. The built app is the unlisted directory `lab/oc-1e1ef40d/` (`base: /lab/oc-1e1ef40d/`). The old `/orbital-command/` path is not served.
 
 ```bash
 cd apps/orbital-command
 npm ci
 npm test
-npm run build    # writes ../../orbital-command
+npm run build    # writes ../../lab/oc-1e1ef40d
 ```
 
-Preview the whole site: `python3 -m http.server 4173` from the repo root, then open `/orbital-command/`.
+Preview the whole site: `python3 -m http.server 4173` from the repo root, then open `/lab/oc-1e1ef40d/`.
 
 No production deploy is performed by this agent. The owner merges to `main`.
 
@@ -26,9 +26,9 @@ Starlink GP remains the existing `starlink-refresh.yml`. Do not add a second Sta
 
 ## Rollback
 
-1. Revert the merge commit on `main` (or revert the `orbital-command/` and `data/orbital-command/` trees).
-2. Homepage promo, `nav.json`, sitemap glob and `track.js` names are the only shared touchpoints — revert those files if needed. Pill-menu HTML on other pages is unchanged until someone runs `sync-nav.py` / `nav-sync.yml` after merge.
-3. Last-good GP snapshots stay in git history.
+1. Delete `lab/oc-1e1ef40d/` (or revert this hide/move PR). Snapshot files in `data/orbital-command/` can stay.
+2. Do not add `/lab/` to `robots.txt` — that would advertise the path.
+3. Re-launch steps live in `PROGRESS.md`.
 
 ## Cloudflare Worker (optional, not deployed)
 

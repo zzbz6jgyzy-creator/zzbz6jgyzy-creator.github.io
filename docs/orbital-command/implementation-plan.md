@@ -1,6 +1,6 @@
 # Orbital Command — implementation plan
 
-Work the brief’s eight phases. Source lives in `apps/orbital-command/`. Built files are committed to `orbital-command/` so Pages serves them without an app server.
+Work the brief’s eight phases. Source lives in `apps/orbital-command/`. Built files are committed to `lab/oc-1e1ef40d/` (unlisted) so Pages serves them without an app server.
 
 ## Decisions (no approval needed)
 

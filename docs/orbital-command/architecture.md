@@ -1,6 +1,6 @@
 # Orbital Command — architecture
 
-Orbital Command is a **bundled static sub-app** at `/orbital-command/`. It does not change Supercharged Daily’s static-HTML / GitHub Pages architecture.
+Orbital Command is a **bundled static sub-app**. It is unlisted at `/lab/oc-1e1ef40d/` until the owner re-launches it. It does not change Supercharged Daily’s static-HTML / GitHub Pages architecture.
 
 ## Repository audit (26 Oct 2026)
 
@@ -29,25 +29,23 @@ Reuse, do not duplicate:
 
 Keep shared-file edits small so they merge beside the concurrent SEO-fixes PR:
 
-- `scripts/nav.json` only (do **not** run `sync-nav.py` on every page in this PR).
-- One sitemap glob line in `build-seo.py`.
-- `data/pages.json` entries.
-- Homepage static promo **outside** `<!--hv:*-->` markers.
+- Public nav, sitemap, pages.json and homepage promo stay **off** while the app is unlisted.
+- `js-bundles.json` skip for the hidden build.
+- SEO / nav / newsletter walkers skip `/lab/` so the 30-minute job cannot re-list it.
 - A few `track.js` allowlist names.
-- `js-bundles.json` skip for the built page.
 
 ## Runtime shape
 
 ```
 apps/orbital-command/     source (Vite + TypeScript + Three.js)
-orbital-command/          committed build output (GitHub Pages)
-data/orbital-command/     GP snapshots (CI)
+lab/oc-1e1ef40d/          unlisted committed build (noindex, not in nav/sitemap)
+data/orbital-command/     GP snapshots (CI) — still the live data path
 docs/orbital-command/     this folder
 ```
 
 **Vanilla Three.js**, not React Three Fiber. The rest of the site is not React; car explorers already use Three r170. R3F would add a second UI runtime and a larger mobile bundle without a matching component library.
 
-The 3D canvas is a client enhancement. The built `index.html` is crawlable: title, description, OG, JSON-LD, explanatory copy, and a no-JS satellite list / 2D fallback.
+The 3D canvas is a client enhancement. While unlisted the built page is `noindex, nofollow` with no public canonical or OG card.
 
 ## Coordinate pipeline
 

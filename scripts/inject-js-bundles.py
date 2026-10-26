@@ -188,7 +188,7 @@ def main() -> None:
         raise SystemExit("assets/js/manifest.json missing — run node scripts/build-js.mjs first")
     changed = []
     for path in sorted(ROOT.rglob("*.html")):
-        if any(p in path.parts for p in (".git", "node_modules", "vendor", "assets")):
+        if any(p in path.parts for p in (".git", "node_modules", "vendor", "assets", "lab", "apps")):
             continue
         rel = str(path.relative_to(ROOT)).replace("\\", "/")
         spec = page_spec(rel)
