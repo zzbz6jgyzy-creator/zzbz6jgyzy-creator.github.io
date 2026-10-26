@@ -113,7 +113,7 @@
     },
     "spacex.html": {
       "title": "SpaceX launches & fleet | Supercharged Daily",
-      "description": "SpaceX launches, Falcon, Dragon, Starship and Starlink — sourced, independently compiled."
+      "description": "SpaceX launches, Falcon, Dragon, Starship and Starlink \u2014 sourced, independently compiled."
     },
     "grok.html": {
       "title": "Grok & xAI field guide | Supercharged Daily",
@@ -150,6 +150,10 @@
     "reviews/cybertruck.html": {
       "title": "Cybertruck review | Supercharged Daily",
       "description": "Cybertruck review: driving character, cabin, charging references, software and ownership, with a charging lab and test-drive checklist."
+    },
+    "cybertruck-explorer.html": {
+      "title": "Cybertruck: 3D, specs & ownership tools | Supercharged Daily",
+      "description": "Explore Cybertruck in touch-ready 3D, compare current US trims, and use sourced engineering, charging, payload and power-budget tools."
     }
   },
   "templates": {

@@ -355,6 +355,15 @@
         "model3-studio-view.js",
         "model3-studio.js"
       ]
+    },
+    "cybertruck": {
+      "file": "/assets/js/cybertruck.bundle.9e0f9e0c6b.js",
+      "bytes": 40452,
+      "sources": [
+        "cybertruck-studio-model.js",
+        "cybertruck-studio-view.js",
+        "cybertruck-studio.js"
+      ]
     }
   }
 }

@@ -6,7 +6,7 @@ import { OrbitControls } from '/vendor/three/addons/OrbitControls.js';
 import { GLTFLoader } from '/vendor/three/addons/GLTFLoader.js';
 import { DRACOLoader } from '/vendor/three/addons/DRACOLoader.js';
 import { RoomEnvironment } from '/vendor/three/addons/RoomEnvironment.js';
-import { PARTS, ORDER, PHOTOS } from './cybertruck-parts.js?v=1';
+import { PARTS, ORDER, PHOTOS } from './cybertruck-parts.js?v=20261026studio';
 
 const EXTERIOR = {
   url: '/assets/3d/cybertruck.glb?v=4',
@@ -29,7 +29,8 @@ const app = document.querySelector('[data-m3x]');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarse = matchMedia('(pointer: coarse)').matches;
 const $ = (s) => app.querySelector(s);
-const fail = (msg) => { app.classList.add('m3x-failed'); $('.m3x-status').textContent = msg; };
+const notify = (type, extra = {}) => { if (parent !== window) parent.postMessage({ type, ...extra }, location.origin); };
+const fail = (msg) => { app.classList.add('m3x-failed'); $('.m3x-status').textContent = msg; notify('sd-cybertruck-failed'); };
 const portrait = () => innerWidth < innerHeight;
 
 let renderer;
@@ -41,6 +42,7 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 $('.m3x-canvas').appendChild(renderer.domElement);
+renderer.domElement.tabIndex = 0; renderer.domElement.setAttribute('aria-label', 'Interactive Cybertruck. Arrow keys orbit, plus and minus zoom, Home resets. Escape returns to photos.');
 
 const scene = new THREE.Scene(); scene.background = new THREE.Color(0x050506); scene.fog = new THREE.Fog(0x050506, 14, 34);
 const pmrem = new THREE.PMREMGenerator(renderer);
@@ -287,7 +289,7 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
     const parent = p.sides && o.parent && o.parent !== p.group ? o.parent : p.group; parent.attach ? parent.attach(h) : p.group.add(h); p.hits.push(h); }); });
   Object.values(parts).forEach((p) => car.add(p.group));
   HIDDEN_UNTIL_EXPLODE.forEach((id) => { const p = parts[id]; if (p) p.group.visible = false; });
-  buildList(); app.classList.add('m3x-ready'); status.textContent = ''; bar && (bar.style.opacity = 0); kick();
+  buildList(); app.classList.add('m3x-ready'); notify('sd-cybertruck-ready'); status.textContent = ''; bar && (bar.style.opacity = 0); kick();
 }, (e) => { if (bar && e.total) bar.style.transform = 'scaleX(' + (e.loaded / e.total) + ')'; }, () => fail('Couldn’t load the 3D model, so this is a still image.'));
 
 let ex = 0, exT = 0, exAnim = null; const slider = $('.m3x-slider'), exBtn = $('.m3x-explode');
@@ -457,7 +459,21 @@ function endFly() {
   controls.enabled = true;
 }
 $('.m3x-reset').addEventListener('click', () => { restoreView = null; select(null, { snapBack: false }); setExplode(0); startFly(homePos(), HOME.t.clone()); });
-addEventListener('keydown', (e) => { if (e.key === 'Escape' && selected) select(null); });
+addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); if (selected) select(null); notify('sd-cybertruck-exit'); } });
+renderer.domElement.addEventListener('keydown', (e) => {
+ if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home'].includes(e.key)) return;
+ e.preventDefault(); idle(); fly = null;
+ if (e.key === 'Home') { select(null, {fly:false,snapBack:false}); camera.position.copy(homePos()); controls.target.copy(HOME.t); }
+ else { const offset = camera.position.clone().sub(controls.target), sphere = new THREE.Spherical().setFromVector3(offset);
+ if (e.key === 'ArrowLeft') sphere.theta -= .12; if (e.key === 'ArrowRight') sphere.theta += .12;
+ if (e.key === 'ArrowUp') sphere.phi -= .10; if (e.key === 'ArrowDown') sphere.phi += .10;
+ if (e.key === '+' || e.key === '=') sphere.radius *= .88; if (e.key === '-') sphere.radius *= 1.12;
+ sphere.radius = THREE.MathUtils.clamp(sphere.radius, controls.minDistance, controls.maxDistance); sphere.phi = THREE.MathUtils.clamp(sphere.phi,controls.minPolarAngle,controls.maxPolarAngle);
+ camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(sphere)); }
+ controls.update(); kick();
+});
+
+
 
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
 function pick(e) { const r = renderer.domElement.getBoundingClientRect(); ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1); ray.setFromCamera(ptr, camera);
@@ -488,11 +504,11 @@ const closeList = () => { app.classList.remove('m3x-list-open'); $('.m3x-parts')
 $('.m3x-parts').addEventListener('click', () => { app.classList.toggle('m3x-list-open'); $('.m3x-parts').setAttribute('aria-expanded', app.classList.contains('m3x-list-open')); });
 $('.m3x-close').addEventListener('click', closeList);
 
-let paused = reduce, last = performance.now(); const pauseBtn = $('.m3x-pause');
-function idle() { last = performance.now(); }
-function syncPause() { pauseBtn.textContent = paused ? 'Play' : 'Pause'; pauseBtn.setAttribute('aria-pressed', paused); }
+let paused = true, last = performance.now(); const pauseBtn = $('.m3x-pause');
+function idle() { last = performance.now(); paused = true; syncPause(); }
+function syncPause() { pauseBtn.textContent = paused ? 'Rotate' : 'Stop'; pauseBtn.setAttribute('aria-pressed', String(!paused)); }
 pauseBtn.addEventListener('click', () => { paused = !paused; syncPause(); kick(); }); syncPause();
-controls.addEventListener('start', () => { idle(); }); controls.addEventListener('change', () => kick());
+controls.addEventListener('start', () => { idle(); if (!fly) return; /* keep a scripted snap/zoom */ }); controls.addEventListener('change', () => kick());
 
 const label = $('.m3x-label');
 function placeLabel() { if (!selected) return; const c = partBox(selected).getCenter(new THREE.Vector3()).project(camera); label.style.transform = 'translate(' + ((c.x + 1) / 2 * innerWidth) + 'px,' + ((1 - c.y) / 2 * app.clientHeight) + 'px)'; label.style.opacity = c.z < 1 ? 1 : 0; }
@@ -500,14 +516,22 @@ function placeLabel() { if (!selected) return; const c = partBox(selected).getCe
 function resize() { const w = innerWidth, h = app.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w < h ? 50 : 34; frame(); kick(); }
 addEventListener('resize', resize); resize(); HOME.p.copy(homePos()); camera.position.copy(HOME.p); controls.target.copy(HOME.t);
 var zoomUI = initZoom({ app, camera, controls, kick, cancelFly: () => { fly = null; } });
-document.addEventListener('visibilitychange', () => { visible = !document.hidden; kick(); });
+let parentVisible = true;
+const syncVisibility = () => { visible = parentVisible && !document.hidden; if (visible) kick(); else { cancelAnimationFrame(raf); raf = 0; clearTimeout(kickTimer); kickTimer = 0; } };
+document.addEventListener('visibilitychange', syncVisibility);
+addEventListener('message', (event) => {
+ if (event.origin !== location.origin || event.source !== parent) return;
+ const msg = event.data;
+ if (msg?.type === 'sd-cybertruck-visible') { parentVisible = Boolean(msg.visible); syncVisibility(); }
+ if (msg?.type === 'sd-cybertruck-select' && Object.hasOwn(PARTS, msg.part) && parts[msg.part]) select(msg.part);
+});
 function kick() {
+  if (!visible) return;
   if (!raf) raf = requestAnimationFrame(tick);
-  // Wall-clock explode/fly still need a pump if rAF is throttled (SwiftShader / background).
   if ((exAnim || fly) && !kickTimer) kickTimer = setTimeout(() => { kickTimer = 0; if (exAnim || fly) { raf = 0; tick(); } }, 50);
 }
 function tick() {
-  raf = 0; const now = performance.now(); let busy = false;
+  raf = 0; if (!visible) return; const now = performance.now(); let busy = false;
   if (exAnim) {
     const k = Math.min(1, (now - exAnim.start) / exAnim.dur);
     ex = exAnim.from + (exAnim.to - exAnim.from) * k;
@@ -522,7 +546,7 @@ function tick() {
     busy = true;
   }
   else {
-    controls.autoRotate = !paused && !selected && now - last > 6500; controls.autoRotateSpeed = 0.45;
+    controls.autoRotate = !paused && !selected; controls.autoRotateSpeed = 0.45;
     if (controls.update() || controls.autoRotate) busy = true;
   }
   renderer.render(scene, camera); placeLabel(); zoomUI && zoomUI.sync();
@@ -543,6 +567,6 @@ globalThis.__ctx = {
     radius: camera.position.distanceTo(controls.target),
     theta: Math.atan2(camera.position.x - controls.target.x, camera.position.z - controls.target.z),
     flying: Boolean(fly),
-    ex, exT,
+    ex, exT, visible,
   }),
 };

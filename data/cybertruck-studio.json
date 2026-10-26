@@ -1,0 +1,601 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-26",
+  "market": "US",
+  "period": "Current US manufacturer reference · checked 26 Oct 2026",
+  "trims": [
+    {
+      "id": "dual-motor",
+      "name": "Dual Motor AWD",
+      "range": 325,
+      "cycle": "EPA est.",
+      "zero60": 4.1,
+      "dcPeak": 325,
+      "added15": 132,
+      "tow": 7500,
+      "tongue": 750,
+      "clearance": "10 in",
+      "equipment": "18- or 20-inch wheels; front display; verify installed suspension and outlet equipment.",
+      "rollout": false,
+      "source": "tesla"
+    },
+    {
+      "id": "premium",
+      "name": "Premium AWD",
+      "range": 325,
+      "cycle": "EPA est.",
+      "zero60": 4.1,
+      "dcPeak": 325,
+      "added15": 137,
+      "tow": 11000,
+      "tongue": 1100,
+      "clearance": "16 in · Extract Mode",
+      "equipment": "20-inch wheels; adaptive air suspension, rear display and onboard outlet equipment are configuration-dependent references.",
+      "rollout": false,
+      "source": "tesla"
+    },
+    {
+      "id": "cyberbeast",
+      "name": "Cyberbeast",
+      "range": 320,
+      "cycle": "Tesla est.",
+      "zero60": 2.6,
+      "dcPeak": 325,
+      "added15": 135,
+      "tow": 11000,
+      "tongue": 1100,
+      "clearance": "16 in · Extract Mode",
+      "equipment": "Performance reference on 20-inch wheels. Acceleration subtracts rollout. Check current equipment and tyres.",
+      "rollout": true,
+      "source": "tesla"
+    }
+  ],
+  "sources": [
+    {
+      "id": "tesla",
+      "label": "Tesla US Cybertruck specifications",
+      "url": "https://www.tesla.com/cybertruck",
+      "type": "manufacturer",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tow",
+      "label": "Tesla manual: towing a trailer",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-B698C17B-0CCC-4376-9257-2E9118AE1E1C.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "loading",
+      "label": "Tesla manual: vehicle loading",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-286CEC23-D2D6-4B79-8402-DBD9972083A9.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "suspension",
+      "label": "Tesla manual: suspension",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-52FD0453-C200-4757-AC74-8D9BC4F00937.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "subsystems",
+      "label": "Tesla manual: vehicle subsystems",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-32CD64C8-5661-45A8-BFB6-35603858F7FB.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "electrical",
+      "label": "Tesla manual: electric vehicle components",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-2233D4D1-D4E5-4897-9A41-DE8593381CAA.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "charge",
+      "label": "Tesla manual: charging instructions",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-06CC33AC-2D99-4E39-8E8A-B4248FA1FD9C.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "clean",
+      "label": "Tesla manual: stainless-steel care",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-65384C1F-86F2-44E8-A8BC-8A12E7E00A40.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "bed",
+      "label": "Tesla manual: cargo bed and tonneau",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-F46A4E66-35C3-4F4E-B587-4D11A164A734.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "outlets",
+      "label": "Tesla manual: cargo-bed outlets",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-DA020526-B42E-4C0E-AE1E-BB22072D48B6.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "adapter",
+      "label": "Tesla manual: charge-port power adapter",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-B76759EE-C3EA-436E-886C-C89476898254.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "backup",
+      "label": "Tesla manual: Powershare home backup",
+      "url": "https://www.tesla.com/ownersmanual/cybertruck/en_us/GUID-E2615021-AB6F-4843-8747-C90D85D94DEA.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "service",
+      "label": "Tesla Cybertruck service documentation",
+      "url": "https://service.tesla.com/docs/Cybertruck/ServiceManual/en-us/",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "architecture",
+      "label": "Tesla Q4 2024 update: vehicle architecture",
+      "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828025002993/tsla-20250129-gen.pdf",
+      "type": "manufacturer",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "mv",
+      "label": "Tesla service manual: 48V architecture",
+      "url": "https://service.tesla.com/docs/Cybertruck/ServiceManual/en-us/GUID-F90C7408-43DA-4855-842C-C9534CDC61F2.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "curve",
+      "label": "EVKX Cybertruck AWD published charging profile",
+      "url": "https://evkx.net/models/tesla/cybertruck/cybertruck_awd/chargingcurve/",
+      "type": "reference",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "model",
+      "label": "Sketcher: Tesla Cybertruck model",
+      "url": "https://sketchfab.com/3d-models/tesla-cybertruck-587a0833e60f465090145b139f6c1bfc",
+      "type": "media",
+      "checked": "2026-10-26"
+    }
+  ],
+  "parts": [
+    {
+      "id": "body",
+      "name": "Stainless body",
+      "group": "Design",
+      "kicker": "The shape is the signature.",
+      "desc": "Flat stainless exterior panels create the truck’s distinctive planes and edges. The visible skin is only one part of the vehicle structure; the illustration should not be read as a crash-load or repair diagram.",
+      "how": "Stainless needs its own cleaning routine. Follow the manual for removing deposits and choosing products; paint-care advice does not automatically transfer.",
+      "facts": [
+        "Stainless is not maintenance-free",
+        "Illustration is not a structural repair guide"
+      ],
+      "evidence": [
+        "clean",
+        "service"
+      ]
+    },
+    {
+      "id": "glass",
+      "name": "Glass & visibility",
+      "group": "Design",
+      "kicker": "An expansive view.",
+      "desc": "The glass roof and large windshield define the cabin. Laminated glass uses bonded layers to change how a pane behaves under impact and to reduce sound transmission.",
+      "how": "The view from the driver’s seat depends on mirrors, pillars, seating position and cameras together. Inspect the actual truck when judging sightlines; a 3D model cannot represent optical distortion or every blind spot.",
+      "facts": [
+        "Glass remains breakable",
+        "Use actual sightlines when manoeuvring"
+      ],
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "lights",
+      "name": "Light bar & lighting",
+      "group": "Design",
+      "kicker": "A line you recognise instantly.",
+      "desc": "The slim front light bar is a visual signature, while road lighting serves the practical job of making the route and the truck visible. Aesthetic light strips and headlamp functions are different things.",
+      "how": "Off-road lighting accessories have separate fitment and usage requirements. The model depicts a simplified lighting arrangement, not beam patterns or illumination distances.",
+      "facts": [
+        "Model lighting is illustrative",
+        "Accessory availability varies"
+      ],
+      "evidence": [
+        "service"
+      ]
+    },
+    {
+      "id": "wheels",
+      "name": "Wheels & tyres",
+      "group": "Chassis",
+      "kicker": "The only contact with the road.",
+      "desc": "Tyres connect acceleration, braking and steering to the ground. Their size, construction, pressure and tread affect ride, noise, efficiency and load capacity.",
+      "how": "Use the pressures and fitments specified for the actual vehicle and task. Towing requirements can differ from ordinary loading instructions; changing tyres can change which limits apply.",
+      "facts": [
+        "Wheel choice affects efficiency",
+        "Verify towing tyre guidance separately"
+      ],
+      "evidence": [
+        "loading",
+        "tow"
+      ]
+    },
+    {
+      "id": "brakes",
+      "name": "Braking & regeneration",
+      "group": "Chassis",
+      "kicker": "Two ways to slow down.",
+      "desc": "The motors can turn motion back into electrical energy during deceleration. Friction brakes provide stopping force through pads and discs. They complement each other.",
+      "how": "Regenerative braking can be limited by battery conditions. Trailer braking and calibration add another system when towing; do not treat an energy-recovery graphic as a brake-capability test.",
+      "facts": [
+        "Regeneration is not always fully available",
+        "Trailer braking requires its own setup"
+      ],
+      "evidence": [
+        "subsystems",
+        "tow"
+      ]
+    },
+    {
+      "id": "cabin",
+      "name": "Cabin & seating",
+      "group": "Cabin",
+      "kicker": "Utility outside. Space inside.",
+      "desc": "A wide cabin and flat surfaces create a deliberately simple interior. Seat and trim equipment varies with the build and configuration.",
+      "how": "Look beyond screen size: seating position, rear-seat access, storage and visibility matter in daily use. Historical photos here show a particular truck, not a promise of current standard equipment.",
+      "facts": [
+        "Photos retain their original vehicle context",
+        "Check equipment in the local configurator"
+      ],
+      "evidence": [
+        "service"
+      ]
+    },
+    {
+      "id": "display",
+      "name": "Screens & software",
+      "group": "Cabin",
+      "kicker": "The control centre.",
+      "desc": "The central display brings vehicle settings, navigation, charging information and entertainment together. The availability of a rear display depends on the configuration.",
+      "how": "Software can change menus and features over time. Use the truck’s own settings and release notes when identifying what is installed; a photographed screen is a moment in time.",
+      "facts": [
+        "Front and rear equipment can differ by trim",
+        "Software eligibility is vehicle-specific"
+      ],
+      "evidence": [
+        "service"
+      ]
+    },
+    {
+      "id": "battery",
+      "name": "High-voltage battery",
+      "group": "Energy",
+      "kicker": "The energy store under the cabin.",
+      "desc": "The traction battery stores energy for driving and other high-power functions. Cells, cooling, electronics and protective structure work as one managed system.",
+      "how": "An architecture class is not a universal nominal voltage, and an advertised pack size is not automatically usable energy. Our tools ask for assumptions instead of deriving a precise pack capacity from a trim badge.",
+      "facts": [
+        "Energy is measured in kWh; power in kW",
+        "Temperature and charge level affect performance"
+      ],
+      "evidence": [
+        "electrical",
+        "charge"
+      ]
+    },
+    {
+      "id": "rearMotor",
+      "name": "Rear drive unit",
+      "group": "Powertrain",
+      "kicker": "Torque at the rear axle.",
+      "desc": "A drive unit combines electric motor hardware with reduction gearing and control electronics. Cybertruck configurations use different motor arrangements.",
+      "how": "The hidden components shown here explain packaging and energy flow. Their count, shape and location are simplified and do not identify a specific production drive-unit assembly.",
+      "facts": [
+        "Current comparison trims use all-wheel drive",
+        "Illustrative geometry is not a parts catalogue"
+      ],
+      "evidence": [
+        "service"
+      ]
+    },
+    {
+      "id": "frontMotor",
+      "name": "Front drive unit",
+      "group": "Powertrain",
+      "kicker": "A second driven axle.",
+      "desc": "An electric drive at the front axle lets an all-wheel-drive system distribute propulsion between front and rear. Control software coordinates the available torque.",
+      "how": "The illustration shows the idea of an additional driven axle; it does not reveal the exact motor topology, output or calibration fitted to every Cybertruck.",
+      "facts": [
+        "AWD describes driven axles, not identical motors",
+        "Output and equipment depend on configuration"
+      ],
+      "evidence": [
+        "service"
+      ]
+    },
+    {
+      "id": "inverter",
+      "name": "Power electronics",
+      "group": "Powertrain",
+      "kicker": "The bridge between battery and motor.",
+      "desc": "Power electronics control the electrical supply to a traction motor. By changing current and frequency, the system controls torque and speed.",
+      "how": "During regeneration, electrical energy flows back toward the battery. Electronics, cooling and the battery’s charge-acceptance limits shape how much can be recovered.",
+      "facts": [
+        "Electrical control changes motor behaviour",
+        "Power electronics need thermal management"
+      ],
+      "evidence": [
+        "service"
+      ]
+    },
+    {
+      "id": "lv",
+      "name": "48V architecture",
+      "group": "Energy",
+      "kicker": "A different electrical backbone.",
+      "desc": "Cybertruck uses a 48V lithium-ion low-voltage system for functions beyond propulsion. It is separate from the high-voltage traction battery.",
+      "how": "For a given electrical power, higher voltage permits lower current. That can reduce conductor requirements, but it does not make vehicle circuits safe to handle. Use the correct documentation and service equipment.",
+      "facts": [
+        "48V is not the traction-pack voltage",
+        "Do not assume conventional 12V accessories are compatible"
+      ],
+      "evidence": [
+        "mv"
+      ]
+    },
+    {
+      "id": "steer",
+      "name": "Steer-by-wire & rear steering",
+      "group": "Chassis",
+      "kicker": "A big truck that changes direction differently.",
+      "desc": "Electronic steering control replaces the conventional mechanical steering-shaft connection described in Tesla’s architecture material. Rear-wheel steering contributes to manoeuvrability.",
+      "how": "The controller can vary steering response with conditions rather than use one fixed relationship between steering-wheel movement and road-wheel angle. The simplified model is not a simulation of that control system.",
+      "facts": [
+        "Steering response changes with operating conditions",
+        "Rear steering does not remove the need to check clearance"
+      ],
+      "evidence": [
+        "architecture",
+        "subsystems"
+      ]
+    },
+    {
+      "id": "vault",
+      "name": "Cargo bed & tonneau",
+      "group": "Utility",
+      "kicker": "An open workspace. A covered vault.",
+      "desc": "The bed can carry bulky gear, while a tonneau cover, where fitted, provides enclosed storage. Not every build includes the same cover, rails or under-bed compartment.",
+      "how": "Check actual dimensions, equipment and loading instructions. Space and carrying weight are different limits; an item fitting inside does not mean the vehicle can carry its mass.",
+      "facts": [
+        "Cover and storage equipment vary",
+        "Cargo must remain within the actual load limits"
+      ],
+      "evidence": [
+        "bed"
+      ]
+    },
+    {
+      "id": "frunk",
+      "name": "Front storage",
+      "group": "Utility",
+      "kicker": "Storage ahead of the cabin.",
+      "desc": "The front storage compartment adds another place to keep items separate from the passenger space and truck bed. The powered closure and its controls are part of the vehicle’s operating system.",
+      "how": "Use the manual when opening, loading or closing it, and follow the actual compartment limits. The model only shows approximate packaging.",
+      "facts": [
+        "Use compartment-specific loading guidance",
+        "Keep closure areas clear"
+      ],
+      "evidence": [
+        "service"
+      ]
+    },
+    {
+      "id": "susp",
+      "name": "Suspension & ride height",
+      "group": "Chassis",
+      "kicker": "The setup changes the experience.",
+      "desc": "Cybertruck builds can use coil springs or adaptive air suspension. Adjustable ride height should not be assumed from the name alone.",
+      "how": "The manual explains how to identify the fitted system: ride-height controls indicate adaptive air suspension. Air-equipped trucks can change height for access or terrain, subject to operating limits.",
+      "facts": [
+        "Check the installed suspension type",
+        "Extract Mode clearance is not a normal driving setting"
+      ],
+      "evidence": [
+        "suspension"
+      ]
+    },
+    {
+      "id": "chargePort",
+      "name": "Charging hardware",
+      "group": "Energy",
+      "kicker": "One port. Several jobs.",
+      "desc": "The charge port sits above the driver-side rear wheel. AC charging and DC fast charging use different electrical paths and power limits.",
+      "how": "A published DC peak is a maximum under suitable conditions, not a full-session average. Starting charge, battery temperature and charging hardware affect the session. See the named reference curve below.",
+      "facts": [
+        "Prepare the vehicle for the intended charging stop",
+        "Charging hardware and conditions matter"
+      ],
+      "evidence": [
+        "charge"
+      ]
+    },
+    {
+      "id": "cameras",
+      "name": "Cameras & assistance",
+      "group": "Software",
+      "kicker": "More context around the truck.",
+      "desc": "Cameras support the view around the vehicle and eligible driver-assistance functions. A camera’s presence does not prove that every software feature is enabled.",
+      "how": "Features depend on configuration, software and region. Full Self-Driving (Supervised) requires an attentive driver; the equipment shown here is not evidence of unsupervised driving capability.",
+      "facts": [
+        "Check actual feature eligibility",
+        "Driver assistance requires supervision"
+      ],
+      "evidence": [
+        "service"
+      ]
+    },
+    {
+      "id": "hvac",
+      "name": "Climate & thermal management",
+      "group": "Energy",
+      "kicker": "Comfort and battery conditions are connected.",
+      "desc": "Cabin heating, cooling and the battery’s thermal needs all draw on vehicle energy. Thermal management moves heat where it is needed or removes it.",
+      "how": "Preconditioning can change what happens at a charging stop, but weather and starting conditions still matter. A fixed charging-time claim cannot capture all of those differences.",
+      "facts": [
+        "Climate use consumes energy",
+        "The charging curve depends on battery conditions"
+      ],
+      "evidence": [
+        "charge"
+      ]
+    }
+  ],
+  "photos": {
+    "body": {
+      "src": "/assets/ctx-media/body.webp",
+      "alt": "Foundation Series Cybertruck, front left, Greenwich",
+      "by": "Mr.choppers",
+      "lic": "CC BY-SA 3.0",
+      "licUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:2024_Tesla_Cybertruck_Foundation_Series,_front_left_(Greenwich).jpg"
+    },
+    "lights": {
+      "src": "/assets/ctx-media/lights.webp",
+      "alt": "Cybertruck at night in Moab with the front light bar lit",
+      "by": "A1C6",
+      "lic": "CC0",
+      "licUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:2024_Tesla_Cybertruck,_Moab_02.jpg"
+    },
+    "wheels": {
+      "src": "/assets/ctx-media/wheels.webp",
+      "alt": "Side view of a wrapped Cybertruck showing the 20-inch Cyber wheels",
+      "by": "Kidfly182",
+      "lic": "CC BY 4.0",
+      "licUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Cybertruck_003.jpg"
+    },
+    "cabin": {
+      "src": "/assets/ctx-media/cabin.webp",
+      "alt": "Cybertruck cabin and steering wheel, photographed from the driver’s seat in 2024",
+      "by": "Mpelas199",
+      "lic": "CC0",
+      "licUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Cybertruck_-_Interior_-_Tesla_Store_Athens_2024.jpg"
+    },
+    "display": {
+      "src": "/assets/ctx-media/display.webp",
+      "alt": "Cybertruck 18.5-inch centre touchscreen",
+      "by": "Mpelas199",
+      "lic": "CC0",
+      "licUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Cybertruck_-_Interior_3_-_Tesla_Store_Athens_2024.jpg"
+    },
+    "vault": {
+      "src": "/assets/ctx-media/vault.webp",
+      "alt": "Foundation Series Cybertruck rear three-quarter showing the vault bed",
+      "by": "Mr.choppers",
+      "lic": "CC BY-SA 3.0",
+      "licUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:2024_Tesla_Cybertruck_Foundation_Series,_rear_left_(Greenwich).jpg"
+    },
+    "chargePort": {
+      "src": "/assets/ctx-media/chargePort.webp",
+      "alt": "Cybertruck charging at a downtown Keene, NH station, cable in the left-rear port",
+      "by": "Artaxerxes",
+      "lic": "CC BY 4.0",
+      "licUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Charging_Tesla_Cybertruck_downtown_Keene_NH_July_2024.jpg"
+    }
+  },
+  "gallery": [
+    "body",
+    "cabin",
+    "vault",
+    "lights",
+    "chargePort"
+  ],
+  "model": {
+    "url": "/assets/3d/cybertruck.glb",
+    "poster": "/assets/3d/cybertruck-poster.webp",
+    "source": "model",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "note": "Licensed exterior illustration with simplified cabin and hidden components. Not an exact current-trim configurator. Historical photographs do not identify every build’s equipment."
+  },
+  "curve": {
+    "source": "curve",
+    "vehicle": "Cybertruck AWD · EVKX MY2024–2026 reference",
+    "modified": "2026-10-25",
+    "points": [
+      [
+        10,
+        269
+      ],
+      [
+        20,
+        249
+      ],
+      [
+        30,
+        210
+      ],
+      [
+        40,
+        168
+      ],
+      [
+        50,
+        137
+      ],
+      [
+        60,
+        105
+      ],
+      [
+        70,
+        88
+      ],
+      [
+        80,
+        86
+      ]
+    ],
+    "averageKw": 132.3,
+    "minutes10to80": 38.86666666666667,
+    "note": "Published third-party reference, not a Supercharged Daily test or a promise for your truck. Lines join eight source samples. The source groups MY2024–2026; this is not a separate test for each year or current trim."
+  },
+  "powerModes": [
+    {
+      "id": "single",
+      "name": "120V source · 20A reference",
+      "limit": 2.4,
+      "note": "Confirm the specific outlet or approved adapter and its shared circuit limit."
+    },
+    {
+      "id": "bed",
+      "name": "240V bed outlet · equipped vehicles",
+      "limit": 9.6,
+      "note": "Requires the appropriate equipped truck. Combined outlet loads and circuit limits still apply."
+    },
+    {
+      "id": "home",
+      "name": "Powershare home backup · installed system",
+      "limit": 11.5,
+      "note": "Requires compatible installed home equipment, vehicle eligibility and configured reserve."
+    }
+  ]
+}

@@ -442,7 +442,13 @@ def replace_first_h1(src: str, inner_html: str) -> str:
     if not m:
         return src
     head, tail = src[: m.start()], src[m.start() :]
-    return head + re.sub(r"<h1\b[^>]*>[\s\S]*?</h1>", "<h1>" + inner_html + "</h1>", tail, count=1, flags=re.I)
+    return head + re.sub(
+        r"(<h1\b[^>]*>)[\s\S]*?(</h1>)",
+        lambda match: match.group(1) + inner_html + match.group(2),
+        tail,
+        count=1,
+        flags=re.I,
+    )
 
 
 def inject_json_ld(src: str, objects: list, marker="seo:ld") -> str:
