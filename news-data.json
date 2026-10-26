@@ -1,50 +1,61 @@
 {
-  "updated": "2026-10-26T03:12:03Z",
+  "updated": "2026-10-26T03:43:08Z",
   "items": [
+    {
+      "id": "5bf4bdf3f891",
+      "topic": "tesla",
+      "title": "Tesla China FSD: $8,900 (RMB 64,000), Worth It? [2026]",
+      "source": "https://tech-insider.org/",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOemNyVTRCVV9LN1hjTFFfajlUelZfYzVlVGRhSFZnVWdzN0VvQWRadUlYaGE5d2pHeEhWdG5wQWtvMjhudkxUanRLY3pXNEM0Z2daWkpOQlhabGV6OVRWV05fZnpqYzVhU3BIUDdYSm9LYUpwNmN0ZVN0cGpjbmtxR3hJbUFUVXRmZmtOX0gzelBqeDQ?oc=5",
+      "published": "2026-10-26T03:36:03Z",
+      "snippet": "",
+      "kind": "software",
+      "score": 11
+    },
+    {
+      "id": "d103e7e71592",
+      "topic": "tesla",
+      "title": "Tesla FSD China: CFO Flags 1 Big Hurdle [2026]",
+      "source": "shattered.io",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1YamEtRzcxdVVzNEY5X2V1akhiUGxyUnBUSElRUjBINXpMME5MSktQUlJuUlFPNE9IUTVhZkgyeml4ZG5qNURxUmdaRTlnd1BtRi1CeXgxbVRCVVdNZ3VFYk1HYjNBeWFtdjZ6RmVPQ3MySW1aQm1IMHRB?oc=5",
+      "published": "2026-10-26T03:30:17Z",
+      "snippet": "",
+      "kind": "software",
+      "score": 11
+    },
+    {
+      "id": "7c6f6814a938",
+      "topic": "spacex",
+      "title": "Elon Musk confirms $40 billion SpaceX debt deal for AI chips, warns of neocloud shakeout",
+      "source": "CoinDesk",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNYVdDb2plSXlmd08yZmZKeFp3UnlJRHd5TFdWZ2VVcHRkNUFXLXlXaWFmUnNBX0ZicXFNMUxDaHdFVVRvc2dJd2Y3MlFGM1VqcS10bnJpWkRpS1BCeXExckNBSE1FbXNLeXRBeTNjeTE1QjFlemZjOWg0WW9YXzFpNW5abk9veUhScmRobXlUdHBHVEotWF8xZWZJT2JKQWduT2dNb29acXBxQmpnVWpNLUc0ZkVJSUVZTi1qSklGRGNXWUxTSHFVR3ZZQk9Tdw?oc=5",
+      "published": "2026-10-26T03:11:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
     {
       "id": "37fa6d938b08",
       "topic": "spacex",
       "title": "Musk says SpaceX landed a $40 billion debt deal — and forecasts doom for some AI rivals",
       "source": "MarketWatch",
       "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPZDNxMmp1ajNLdXJnOGRDbVlpamxIUUNnU29YUEZaNnFoVmxRUzRqTFVZcVVUSDhuMGxnN08wcXhzNVg3ekFRbXZxMERjaHNlX1F2Z3RhSWVBclFadmt4a1FEc0dNZFBqZG5JQ2JHd0o4MExXN252VDdtdkdpYUw2ZVRwbk9pU3c1eWNKRk5UdThyeWlneEdiNU5OakxwXzB3Qlg3SWQzLUdJYVBsZkUtYXd0TW1mb1ZaMmljWXNYU0VyTDBzU3c?oc=5",
-      "published": "2026-10-26T02:04:20Z",
+      "published": "2026-10-26T02:50:00Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.nweQVk2jgwyz48xfO9CAnQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "ca464c1d5bc0",
-      "topic": "tesla",
-      "title": "Tesla Cybercab Adds 2 Features: Rear Cam, Dimming [2026]",
-      "source": "shattered.io",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQcHRhNFNIZzdjYWFPSGhZTDlMVDlLRVVJeTlWUkRuemE2TURZN3JWcnM0UFFZc3ZrM2YzMXAyYmdiOFlfME1oeENZMEpuS2tEVW43RzRZbS16RHFXeXVpcXo3OUQwMkRSVkpVdWtPazV3UnFjV3Z6LWN5MUNkOWNOdw?oc=5",
-      "published": "2026-10-26T01:59:47Z",
-      "snippet": "",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
-      "id": "84b145040ef4",
-      "topic": "tesla",
-      "title": "Tesla Cybercab Adds 2 Features: Rear Cam, Quiet Mode [2026]",
-      "source": "https://tech-insider.org/",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQRzhJaGVfZ3FpUE1oaFlnOEItREJMZ1ZJeXhUMU1jbHFjWkRsWkZCLTdTTXM3SXNIUm1LdGxUanZWY3BpcGZMTUlLeFhrZlVQWWw3ck9vZC1tMm9Vdk1SUVp5eVlQcGpmVWlVN000OGFncmVZTmU3aWktRmVMWVZ3WVRuRXM?oc=5",
-      "published": "2026-10-26T01:50:23Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.XnMFZ7_XyUdKZP8_zRh7qQ&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
-      "id": "4ff449f5428b",
+      "id": "d1727e90140f",
       "topic": "spacex",
-      "title": "SpaceX Needs Huge Amounts of Power. Here's the Energy Stock to Buy to Play It.",
-      "source": "The Motley Fool",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQZFB3RkM2SHZCUTFxdUV0cVlDdHVoV2hZNHhwUjRweFdvVEIxcDAxUTJSRmk3VXB6SEpQSHBYOUF4eUJvalc0a3hDRThldGoyVGhwQkw0aFFfeDdxaEp2eFFTRW5TOEZINjdCV25VRFhpRDByWm9KM29tSUNvdUtCLWpTc0lrcUpDcVlWaWFQa1g2a3VHN2RqXw?oc=5",
-      "published": "2026-10-26T01:28:10Z",
+      "title": "Musk says SpaceX raised $40 bln in debt, warns of neocloud collapse",
+      "source": "Investing.com",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOc09aVHd3Rm02SV9fc2ZRTnhOODBWTmxMb2I0cmF5UWE5anA2TzlUcTA2N25mNUY1c2R5N0RINWRrZkdhSkhBVUFGeC1nQXlDbkZMNFVyM1o0amhaOU1JU0EteFV6Vk9EbGpFQUFZdnJHbkNpODMyWVVQNGlBeEUyTm9GTzhkY3dJY2dIUThhOHlMZnZ3YkRuaG1HTjdDV1hrMWo2ZDB5LUc5aWhmNV9MTXA5b1M5TVdhZnZHX2tPaw?oc=5",
+      "published": "2026-10-26T01:34:51Z",
       "snippet": "",
       "kind": "general",
-      "score": -2
+      "score": 4
     },
     {
       "id": "d259a5a7fba2",
@@ -80,17 +91,6 @@
       "snippet": "",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "6518c9644910",
-      "topic": "spacex",
-      "title": "SpaceX: Ramping Up CapEx Risk (NASDAQ:SPCX)",
-      "source": "Seeking Alpha",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9MOWFDWnhSMTRWb19VUDFTTHVsbW1uaFYxT09qU09JcEROTXFjTkE5NHdUc1ZRVkJubkNEbzBxN3kwY2wxbDFNNVlZNndRajBodnQ2aDBwRTh5SXVOR1dVWEs0LTcwTjVOaUthN0FEbUZYVVJIMFR5RQ?oc=5",
-      "published": "2026-10-26T00:00:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 0
     },
     {
       "id": "48eef377ab66",
@@ -156,7 +156,6 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5Wa1ZxVXN5Wl9qeUpIeGxTRTI3anloZ0dlYkJmTXBEam54TmNzeTREaTZQaG1QLXd1YkF0VGY4OG9mUjNUZ3hHSkI5UU1NTVh5QWtJV2swdkoza2lQZWVaaXNFeEp0Y2RIZjBrbzYtbURrZw?oc=5",
       "published": "2026-10-25T22:11:21Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.vkgjGiZcwOf52urFUvUzyA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -217,6 +216,18 @@
       "score": 4
     },
     {
+      "id": "932af3a9a32c",
+      "topic": "grok",
+      "title": "What happened this week with the top 5 generative AI companies? | A weekly summary of OpenAI, Google, Anthropic, xAI, and Qwen [10/13-10/19]",
+      "source": "note",
+      "url": "https://note.com/zetton1983/n/n3193b8179e69?hl=en",
+      "published": "2026-10-25T20:43:00Z",
+      "snippet": "Generative AI news is emerging one after another, and it is quite difficult to keep up with everything in between work. In this 11th issue, we summarize the developments from October 13th to 19th, ...",
+      "image": "https://www.bing.com/th?id=ONUT.SlAPjwbfT9mjef-TVvZmHw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "6ec7a75e065d",
       "topic": "tesla",
       "title": "Tesla Roadster’s Flying Stunts Get a Reality Check From an Engineer",
@@ -227,18 +238,6 @@
       "image": "https://www.bing.com/th?id=ONUT.wT5tdymcYaHsZsTjPMKylQ&pid=News&w=640",
       "kind": "milestone",
       "score": 11
-    },
-    {
-      "id": "932af3a9a32c",
-      "topic": "grok",
-      "title": "What happened this week with the top 5 generative AI companies? | A weekly summary of OpenAI, Google, Anthropic, xAI, and Qwen [10/13-10/19]",
-      "source": "note",
-      "url": "https://note.com/zetton1983/n/n3193b8179e69?hl=en",
-      "published": "2026-10-25T20:12:00Z",
-      "snippet": "Generative AI news is emerging one after another, and it is quite difficult to keep up with everything in between work. In this 11th issue, we summarize the developments from October 13th to 19th, ...",
-      "image": "https://www.bing.com/th?id=ONUT.SlAPjwbfT9mjef-TVvZmHw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "ed9f0c982d52",
@@ -287,6 +286,18 @@
       "score": 4
     },
     {
+      "id": "cec232037a95",
+      "topic": "tesla",
+      "title": "Tesla makes good on its Cybercab promise in just two weeks",
+      "source": "Teslarati",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9pb3V1OUROYk53OE4tTk8yaFp3SDExNEYwZXhuaDNRcUI5dWhLRktlQmNnRVBHVm9fdmUyU1pkd1NZQk9qMlJnWG5QOTRycmwzOGdZWlVGM3NJejBDelFxXzkwLTNhcEpaRmc?oc=5",
+      "published": "2026-10-25T18:12:54Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.XnMFZ7_XyUdKZP8_zRh7qQ&pid=News&w=640",
+      "kind": "milestone",
+      "score": 21
+    },
+    {
       "id": "1dc0cd657466",
       "topic": "tesla",
       "title": "Tesla (TSLA) Stock Gets Fair Value Bump As Analysts Split On AI And SpaceX",
@@ -299,18 +310,6 @@
       "score": 4
     },
     {
-      "id": "cec232037a95",
-      "topic": "tesla",
-      "title": "Tesla makes good on its Cybercab promise in just two weeks",
-      "source": "Teslarati",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9pb3V1OUROYk53OE4tTk8yaFp3SDExNEYwZXhuaDNRcUI5dWhLRktlQmNnRVBHVm9fdmUyU1pkd1NZQk9qMlJnWG5QOTRycmwzOGdZWlVGM3NJejBDelFxXzkwLTNhcEpaRmc?oc=5",
-      "published": "2026-10-25T17:40:33Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.XnMFZ7_XyUdKZP8_zRh7qQ&pid=News&w=640",
-      "kind": "milestone",
-      "score": 21
-    },
-    {
       "id": "6b5802b6c1e5",
       "topic": "tesla",
       "title": "'The world's super company': Wall Street weighs SpaceX earnings, company's likely Tesla tie-up",
@@ -318,6 +317,19 @@
       "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPM2FvMEk4MFF5d0d3cDBiOTcxLW81U2IxdDY2SWt1R0NLUTR4eWRrWjltR2hwNktSVTZudXgyUC1waDJXUFdNMjlFcktuVVprWTJZOFlIUjNZZHFWVzdWRE5RZFBqaVJCWmZCS09EMFM5NEM5YTA2WGhkNVdDOEVkWW1lOVNkN0hEamlUaW94UndEZGhwY0Z3SzlJaDZnaUUzdi1Ibm80VDNuMjVBQXlKaEFTRWhqUWVyYnJOQ0Y2X0JoZjJyOTREN2p4UV9rZjZfanRzeWM4aE5yX1ZIOEZ0LW1DNDdZZmc?oc=5",
       "published": "2026-10-25T17:39:49Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.dH0IHfZtWci9viLF_MbyGw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "d787fdbb627d",
+      "topic": "tesla",
+      "title": "Tesla cancels Cybertruck in Australia, New Zealand",
+      "source": "Information Age",
+      "url": "https://ia.acs.org.au/article/2026/tesla-cancels-cybertruck-in-australia--new-zealand.html",
+      "published": "2026-10-25T17:00:00Z",
+      "snippet": "Tesla has cancelled plans to sell its polarising Cybertruck in Australia and New Zealand, after hopeful locals who paid deposits to secure the electric ute spent years waiting for news of its arrival.",
+      "image": "https://www.bing.com/th?id=ONUT.90mUR29sBoblul06uSUGng&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -362,6 +374,7 @@
       "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPV0kzNU9pM2lFWHJXSGxqMU16eDRKV05lME8yaEctMC1GbFM5UjBwOFFZajg4Wlh1bXZyTUI1NXE1ZVJNRldVdm03TkdHaUdEbnJrck1lckhYX1dWdGpqeDNEQnVpb28wdUUyd09NaThGb0pKYlRVdWxYaHJWVzFseE1hSWFmdnNvMm1UdVhxUlVwTUtq?oc=5",
       "published": "2026-10-25T15:47:00Z",
       "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.s2zgsgMhcSxXqcgFlt9t8w&pid=News&w=640",
       "kind": "general",
       "score": -2
     },
@@ -405,7 +418,7 @@
       "title": "U.S. Allies Race to Escape SpaceX’s Orbit",
       "source": "WSJ",
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOR1ptb0tfN29VQjZGNXFnQ3BfSTZRd3hzVkY3R004ODR4THI3a1ljUG1tYTlZaHZOT1ZtY3R2RUJmWndBWUNlVkZDRlQyQlBfVFJ6UGFfNlhkLXpRN0IxVDZZU0l3NTF0U3JPcXBTQ1dpZnRMeTZZZXRvVXJ4d0NiNkFBTzI2clp2?oc=5",
-      "published": "2026-10-25T14:39:34Z",
+      "published": "2026-10-25T14:30:47Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.GT07sYzPC7h8Cay4Q5GezA&pid=News&w=640",
       "kind": "general",
@@ -434,16 +447,15 @@
       "score": 9
     },
     {
-      "id": "a7e5318330b7",
-      "topic": "tesla",
-      "title": "Tesla traveling at 112 km/h hits pedestrian on highway... “Full Self-Driving mode was engaged”",
-      "source": "Sports Chosun",
-      "url": "https://www.sportschosun.com/en/culture/2026-10-26/202610260100159500010379",
-      "published": "2026-10-25T12:12:00Z",
-      "snippet": "A Tesla traveling at about 112 km/h on a U.S. highway hit a 71-year-old pedestrian. The driver stated that Tesla’s driver-assistance system, the “Full ...",
-      "image": "https://www.bing.com/th?id=ONUT.w1CdsLEvSS7bpzAFMTkxwQ&pid=News&w=640",
+      "id": "89786f6860c5",
+      "topic": "spacex",
+      "title": "Elon Musk Just Delivered Spectacular News for SpaceX Stock Investors",
+      "source": "The Motley Fool",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSnhtMGNMNTRxRjVVT3NkSWF1YjhCTmhnOGJiVUVnWVpzTHBXSDNpNTBmVkI4ZllsbktJMVVMem1pc0dBX2xaX3BTVXk2WTZ1MzlIYzMwOVNteXpqZ2dwam5qMGJSNmpIMWJZSFdVb2pGUFhWLVJCaGR2LVdLTGN6Z2VMZHJzUng5RVE2dXNmbEpHNktIallz?oc=5",
+      "published": "2026-10-25T12:10:00Z",
+      "snippet": "",
       "kind": "general",
-      "score": 4
+      "score": -2
     },
     {
       "id": "dd9726a81061",
@@ -490,17 +502,6 @@
       "score": 4
     },
     {
-      "id": "37e02245bb54",
-      "topic": "spacex",
-      "title": "Elon Musk Just Delivered Spectacular News for SpaceX Stock Investors",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNdlhHb3NWaGFUMktfN1RDNk11ZnYxSTRVSm4xR0F1RU5qdGVCNGRqN3dDMjBTWTFaT3NBMkJjVGhrX2IzcTUzYVhYTzkwWGs5UTBveVZteDg2LVlTMjVmTWhxMmF0ZmhuV0tLeVRVa1gwdF9yQzg5eWFLdTFuWl9iZTB5SWJXcUlZNEQ4T0JreWRTblY2VWhlMlBpR1BtZWVRdG9v?oc=5",
-      "published": "2026-10-25T11:30:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "d1b18c7003ad",
       "topic": "grok",
       "title": "The Office of the President of Ukraine responds to Elon Musk",
@@ -535,29 +536,16 @@
       "score": 12
     },
     {
-      "id": "03eedcf0df9c",
+      "id": "22ad905f78c6",
       "topic": "spacex",
-      "title": "SpaceX Could Weather a Recession. But Its Stock Might Not. Here's Why.",
-      "source": "The Motley Fool",
-      "url": "https://www.fool.com/investing/2026/10/25/spacex-could-weather-a-recession-but-its-stock-mig/",
-      "published": "2026-10-25T09:45:00Z",
-      "snippet": "Before buying Space Exploration Technologies' stock, investors should understand why even a company built for the future could struggle to protect shareholders during a market downturn.",
-      "image": "https://www.bing.com/th?id=ONUT.KKcDbXav9IwI8COBRn14hw&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": -5
-    },
-    {
-      "id": "a12685b2a9ec",
-      "topic": "spacex",
-      "title": "Schiff: Hegseth should testify over Starlink in Ukraine—\"Somebody is lying\"",
-      "source": "Newsweek on MSN",
-      "url": "https://www.msn.com/en-us/news/other/schiff-hegseth-should-testify-over-starlink-in-ukraine-somebody-is-lying/ar-AA2g2fZA?ocid=BingNewsVerp",
-      "published": "2026-10-25T09:23:00Z",
-      "snippet": "Ukraine said access to the service had been restricted in the country without advance warning, disrupting battlefield operations.",
-      "image": "https://www.bing.com/th?id=ORMS.9175672568ab3b3ed8425e952da71538&pid=News&w=640",
+      "title": "Musk’s Starlink Explanation Challenged by Texas GOP Lawmaker",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-10-25/musk-s-starlink-explanation-challenged-by-texas-gop-lawmaker",
+      "published": "2026-10-25T09:58:00Z",
+      "snippet": "A Republican lawmaker questioned Elon Musk’s argument for throttling Ukraine’s access to SpaceX’s Starlink satellite terminals, arguing that Ukrainian forces use the system defensively in the war with ...",
+      "image": "https://www.bing.com/th?id=ONUT.SBJ755t0V6eML6p81_yNvg&pid=News&w=640",
       "kind": "general",
-      "score": 4
+      "score": 8
     },
     {
       "id": "6208dab2f451",
@@ -594,11 +582,35 @@
       "score": 4
     },
     {
-      "id": "225c78ad7619",
+      "id": "78f370fc467c",
+      "topic": "spacex",
+      "title": "Musk accuses Ukraine of violating Starlink’s terms of service following dispute over coverage",
+      "source": "CNN on MSN",
+      "url": "https://www.msn.com/en-us/news/other/musk-accuses-ukraine-of-violating-starlink-s-terms-of-service-following-dispute-over-coverage/ar-AA2g24Ze",
+      "published": "2026-10-25T06:47:36Z",
+      "snippet": "SpaceX CEO Elon Musk has accused Ukraine’s military of violating Starlink’s terms of service, after Kyiv said that access to the service had been restored.",
+      "image": "https://www.bing.com/th?id=ONUT.Aef28iOaZmnoyP6Qj75HMQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "7c1bffab7eb4",
+      "topic": "spacex",
+      "title": "Ukraine disputes Elon Musk's claim that its military violated Starlink's terms of service",
+      "source": "Associated Press News on MSN",
+      "url": "https://www.msn.com/en-us/news/other/ukraine-disputes-elon-musk-s-claim-that-its-military-violated-starlink-s-terms-of-service/ar-AA2g2mAE",
+      "published": "2026-10-25T06:40:01Z",
+      "snippet": "Ukrainian officials have disputed claims by SpaceX CEO Elon Musk that the country’s military violated Starlink’s terms of service by using the civilian satellite internet network for offensive drone ...",
+      "image": "https://www.bing.com/th?id=ONUT.MfvsJY2nLjiJq07yDv-rxA&pid=News&w=640",
+      "kind": "general",
+      "score": 9
+    },
+    {
+      "id": "f3309c095462",
       "topic": "tesla",
       "title": "Tesla cancels plans to launch the Cybertruck in these 2 countries",
       "source": "PCMag on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-cancels-plans-to-launch-the-cybertruck-in-these-2-countries/ar-AA2g36df",
+      "url": "https://www.msn.com/en-us/autos/general/tesla-cancels-plans-to-launch-the-cybertruck-in-these-2-countries/ar-AA2g36df",
       "published": "2026-10-25T05:48:43Z",
       "snippet": "Tesla said it will refund customers the money they put down as a deposit, roughly $105 in Australia (A150), in an email to customers first spotted by Electrek.",
       "image": "https://www.bing.com/th?id=ONUT.1XzdCDnQMJ5olQ0Jhhxzzw&pid=News&w=640",
@@ -618,16 +630,40 @@
       "score": 4
     },
     {
-      "id": "b5ffad7f6579",
+      "id": "294aa884ee7a",
       "topic": "tesla",
       "title": "Tesla will let you add your Model Y to its robotaxi fleet with the FSD V15 update",
       "source": "Digital Trends on MSN",
-      "url": "https://www.msn.com/en-us/autos/general/tesla-will-let-you-add-your-model-y-to-its-robotaxi-fleet-with-the-fsd-v15-update/ar-AA2g1I4o",
+      "url": "https://www.msn.com/en-us/autos/general/tesla-will-let-you-add-your-model-y-to-its-robotaxi-fleet-with-the-fsd-v15-update/ar-AA2g1I4o?ocid=BingNewsVerp",
       "published": "2026-10-25T01:44:36Z",
       "snippet": "Tesla is targeting Q2 2027 for the first customer-owned Model Y vehicles to join its robotaxi fleet through FSD V15, though earnings and insurance details are still missing.The Latest Tech News, Deliv",
       "image": "https://www.bing.com/th?id=ONUT.8Vswx6pcGATPqQ4GgZf9KQ&pid=News&w=640",
       "kind": "software",
       "score": 11
+    },
+    {
+      "id": "6ef7dfb39fe4",
+      "topic": "spacex",
+      "title": "Ukraine denies violating Starlink terms as satellite services return",
+      "source": "Fox News",
+      "url": "https://www.foxnews.com/video/6407386824112",
+      "published": "2026-10-25T01:44:00Z",
+      "snippet": "Fox & Friends' co-host Brian Kilmeade discusses the restoration of Starlink services in Ukraine, questions surrounding Elon Musk's role and his new book, 'Uniting the States.' ...",
+      "image": "https://www.bing.com/th?id=ONUT.r6t6Af685uzmoZrMRkt3EA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "5217732e55ea",
+      "topic": "spacex",
+      "title": "Elon Musk details why Ukraine’s Starlink service was disrupted",
+      "source": "Fox News",
+      "url": "https://www.foxnews.com/video/6407391545112",
+      "published": "2026-10-25T01:16:00Z",
+      "snippet": "Fox News chief foreign correspondent Trey Yingst reports on the latest Russia attacks on Ukraine and breaks down concerns about Starlink access. The ‘Fox News Sunday’ panel provides analysis.",
+      "image": "https://www.bing.com/th?id=ONUT.6D-hrL97yQDDdZKtlWxyWQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "84e9c5ec5b8e",
