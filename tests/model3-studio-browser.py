@@ -62,6 +62,7 @@ async def main():
     if mode=='normal'and theme=='dark'and width in [390,1440]:
      await tap(page,'[data-start-3d]');await page.wait_for_function("document.querySelector('[data-studio-status]').textContent.startsWith('3D ready')",timeout=30000)
      f=page.frames[-1];await f.wait_for_function('Boolean(window.__m3x)');canvas=f.locator('canvas').first
+     exit_box=await page.locator('[data-leave-3d]').bounding_box();assert exit_box and exit_box['y']>=0 and exit_box['y']+exit_box['height']<1000,'3D exit must remain in view'
      await f.locator('.m3x-pause').click();assert await f.locator('.m3x-pause').get_attribute('aria-pressed')=='true';await f.locator('.m3x-pause').click()
      before=await f.evaluate('__m3x.view()');await f.locator('.m3x-zoom-in').click();after=await f.evaluate('__m3x.view()');assert after['radius']<before['radius']
      if width==390:

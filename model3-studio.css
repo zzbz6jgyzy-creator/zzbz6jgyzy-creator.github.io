@@ -8,3 +8,5 @@ html[data-theme=light] .m3s{--ms-bg:#f7f7f9;--ms-panel:#fff;--ms-line:#d6d8df;--
 @media(max-width:600px){.m3s-hero .m3s-kicker{font-size:9px;letter-spacing:.11em}.m3s-hero-index{font-size:9px;gap:12px}}
 .m3s-hero-image img{mask-image:radial-gradient(ellipse 72% 65% at 55% 53%,#000 48%,transparent 100%)}.m3s-curve text{font-size:16px}
 @media(max-width:600px){.m3s-curve text{font-size:24px}}
+.m3s-stage{position:relative;scroll-margin-top:155px}.m3s .m3s-exit{position:absolute;top:12px;right:12px;z-index:11;background:#111318ee;color:#fff;border-color:#7a3647;font-size:12px;min-height:44px;box-shadow:0 5px 20px #0005}.m3s .m3s-exit:hover{background:#b40e2c}
+@media(max-width:600px){.m3s iframe{height:clamp(420px,calc(100svh - 180px),600px)}.m3s .m3s-exit{font-size:11px;top:10px;right:10px;padding-inline:12px}}
