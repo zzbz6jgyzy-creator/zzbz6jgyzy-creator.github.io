@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-26T18:05:55.359Z",
+  "generatedAt": "2026-10-26T18:16:56.273Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -374,9 +374,9 @@
       "evidence": "independently_corroborated",
       "source": "Jonathan McDowell Starlink statistics",
       "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
-      "href": "/starlink.html",
-      "summary": "Starlink in orbit changed from 11154 to 11166.",
-      "title": "Starlink in orbit",
+      "href": "/starlink.html#counts-changed",
+      "summary": "McDowell snapshot: inOrbit 11,154 → 11,166; working 11,140 → 11,151; operational 9,726 → 10,022; launched 13,015 → 13,042. This is a published table snapshot, not a live operator feed.",
+      "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-10-26T00:51:30.000Z|11166"
     },
     {
@@ -1646,14 +1646,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-25T20:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1667,14 +1667,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-26T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-26T18:05:52.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1688,35 +1688,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-26T18:05:55.359Z",
+      "lastChecked": "2026-10-26T18:16:56.273Z",
       "lastVerified": "2026-10-26T17:27:14.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1725,85 +1725,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.341Z",
-      "finished": "2026-10-26T18:05:55.347Z"
+      "started": "2026-10-26T18:16:56.127Z",
+      "finished": "2026-10-26T18:16:56.260Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.347Z",
-      "finished": "2026-10-26T18:05:55.347Z"
+      "started": "2026-10-26T18:16:56.260Z",
+      "finished": "2026-10-26T18:16:56.260Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.347Z",
-      "finished": "2026-10-26T18:05:55.347Z"
+      "started": "2026-10-26T18:16:56.260Z",
+      "finished": "2026-10-26T18:16:56.260Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.347Z",
-      "finished": "2026-10-26T18:05:55.352Z"
+      "started": "2026-10-26T18:16:56.260Z",
+      "finished": "2026-10-26T18:16:56.265Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.352Z",
-      "finished": "2026-10-26T18:05:55.355Z"
+      "started": "2026-10-26T18:16:56.265Z",
+      "finished": "2026-10-26T18:16:56.269Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.355Z",
-      "finished": "2026-10-26T18:05:55.356Z"
+      "started": "2026-10-26T18:16:56.269Z",
+      "finished": "2026-10-26T18:16:56.270Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.356Z",
-      "finished": "2026-10-26T18:05:55.357Z"
+      "started": "2026-10-26T18:16:56.270Z",
+      "finished": "2026-10-26T18:16:56.271Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.357Z",
-      "finished": "2026-10-26T18:05:55.357Z"
+      "started": "2026-10-26T18:16:56.271Z",
+      "finished": "2026-10-26T18:16:56.271Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.357Z",
-      "finished": "2026-10-26T18:05:55.357Z"
+      "started": "2026-10-26T18:16:56.271Z",
+      "finished": "2026-10-26T18:16:56.271Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.357Z",
-      "finished": "2026-10-26T18:05:55.358Z"
+      "started": "2026-10-26T18:16:56.271Z",
+      "finished": "2026-10-26T18:16:56.272Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.358Z",
-      "finished": "2026-10-26T18:05:55.358Z"
+      "started": "2026-10-26T18:16:56.272Z",
+      "finished": "2026-10-26T18:16:56.273Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.358Z",
-      "finished": "2026-10-26T18:05:55.359Z"
+      "started": "2026-10-26T18:16:56.273Z",
+      "finished": "2026-10-26T18:16:56.273Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-26T18:05:55.359Z",
-      "finished": "2026-10-26T18:05:55.359Z"
+      "started": "2026-10-26T18:16:56.273Z",
+      "finished": "2026-10-26T18:16:56.273Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-26T18:05:55.359Z",
+    "generatedAt": "2026-10-26T18:16:56.273Z",
     "factCount": 17,
     "changeCount": 80,
     "conflictCount": 2,
