@@ -35,7 +35,7 @@ async def main():
     links=page.locator('.hv-start a');assert await links.count()==3
     for i in range(3):
      rect=await links.nth(i).bounding_box();assert rect['height']>=44
-    await page.locator('.hs-hero-copy').screenshot(path=str(ROOT/'dev'/f'wayfinding-home-{width}-{theme}-{scripts}.png'))
+    (await page.locator('.hs-hero-copy').screenshot(path=str(ROOT/'dev'/f'wayfinding-home-{width}-{theme}-{scripts}.png'))) if width>600 else (await page.screenshot(path=str(ROOT/'dev'/f'wayfinding-home-{width}-{theme}-{scripts}.png')))  # phones: .hs-hero-copy is display:contents (reordered), so shoot the viewport
     await page.get_by_role('link',name='Explore trackers',exact=True).click();await page.wait_for_url(SITE+'/#hv-trk-h')
     await page.wait_for_function("document.getElementById('hv-trk-h').getBoundingClientRect().top>=0&&document.getElementById('hv-trk-h').getBoundingClientRect().top<innerHeight")
     await page.goto(SITE+'/',wait_until='domcontentloaded')

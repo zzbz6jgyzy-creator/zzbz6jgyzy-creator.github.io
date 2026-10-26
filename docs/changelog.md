@@ -1,10 +1,34 @@
 # Changelog
 
+## 27 Oct 2026 — Write articles in Markdown
+
+- New articles can be one file: `content/dispatch/<slug>.md`. `scripts/render-article.py` renders it to the same markup as a hand-written
+  page and CI (`home-build.yml`) then runs the usual generators. Refuses DRAFT markers, raw HTML, missing sources or alt text. Guide:
+  `docs/writing-articles.md`; tests: `tests/test_render_article.py`. Existing articles are untouched.
+- Fixed: `new-article.py` pages inherited the old live X widgets script from the template; it is now stripped.
+
 ## 26 Oct 2026 — Migration step 0 and 1 (no live change)
 
 - New `astro/` project: Astro 7 static build that packages the current site for Cloudflare Workers, plus `astro/scripts/parity.mjs`
   (1,868 files byte-identical, 152 sitemap URLs resolve). Headers, 301s for the old stubs and a styled 404 verified with `wrangler dev`.
 - GitHub Pages still serves the site. Nothing deleted. See `docs/migration.md`; rollback is deleting `astro/`.
+
+## 26 Oct 2026 — Phone homepage leads with the news
+
+- At 600 px and below the homepage now shows: headline, newsletter sign-up, then the top story (image and headline) in the first
+  screen (measured at 390, 430 and 600 px; at 360 and 320 px the headline starts at the fold). Before, the hero copy and the Roadster
+  showcase pushed the top story below the second screen. CSS only (`home-studio.css`): visual order changes with `display: contents` and
+  `order`, DOM order and the desktop layout are untouched. Lighthouse mobile unchanged (LCP 4.1 s locally, CLS 0).
+- Trade-off: the pitch line, the three start links and the Roadster showcase now sit below the stories on phones. To undo, delete the
+  `@media (max-width: 600px)` block at the end of `home-studio.css`.
+
+## 26 Oct 2026 — X posts load on request
+
+- All 40 articles with embedded X posts now show the post as readable text (the standard embed blockquote) with a "Load post from X"
+  button. `platform.twitter.com` is no longer requested on page load. Adds `x-embed.js` and `x-embed.css`; `tests/x-embed-browser.py`
+  and `tests/test_x_embeds.py` guard it. Expected effect on articles: Best Practices up from 58 (third-party cookies, console issues,
+  31 KB and 12+ requests gone) and no embed-related layout shift.
+- Light-theme contrast sweep over all 82 articles in both themes: captions on dark screenshot panels and inline-dimmed source notes fixed.
 
 ## 26 Oct 2026 — Phase 2: Claude Code setup
 

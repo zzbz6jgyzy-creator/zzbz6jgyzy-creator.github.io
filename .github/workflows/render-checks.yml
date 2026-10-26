@@ -1,0 +1,14 @@
+name: render-checks
+
+# Markdown articles in content/dispatch/ must validate and the renderer's tests must pass. home-build.yml does the rendering on main.
+on:
+  pull_request:
+    paths: ['content/dispatch/**', 'scripts/render-article.py', 'scripts/new-article.py', 'tests/test_render_article.py', '.github/workflows/render-checks.yml']
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest tests/test_render_article.py tests/test_claude_setup.py
+      - run: python3 scripts/render-article.py --check

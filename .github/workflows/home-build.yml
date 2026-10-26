@@ -6,6 +6,9 @@ on:
     paths:
       - dispatch.html
       - 'dispatch/**'
+      - 'content/dispatch/**'
+      - scripts/render-article.py
+      - scripts/new-article.py
       - scripts/build-articles.py
       - scripts/build-wayfinding.py
       - wayfinding.css
@@ -122,6 +125,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Render Markdown articles (content/dispatch) to dispatch/*.html
+        run: python3 scripts/render-article.py
       - name: Articles index + related stories
         run: python3 scripts/build-articles.py
       - name: Intelligence engine snapshot

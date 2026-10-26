@@ -35,6 +35,10 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 - **Decision:** `astro/` builds the existing root into `dist/` for Cloudflare Workers static assets, with a parity test. Pages move into Astro one at a time via `astro/ported.json`.
 - **Why:** the root can't be restructured while ~80 builders and 12 bots rewrite it in place. This gives real cache and security headers and a preview URL now, with zero live change and a one-folder rollback. Details in `docs/migration.md`.
 
+## 2026-10-27 · Markdown authoring on the existing pipeline, not an Astro-emitted article
+- **Decision:** `content/dispatch/*.md` renders to `dispatch/*.html` in the repo (`scripts/render-article.py`); the seven generators keep running over it.
+- **Why:** an Astro-built article would skip related stories, contents, SEO graph, feed and sitemap until all seven generators are rewritten (P6). This gives phone publishing now with no change to existing pages.
+
 ## Open: review ratings
 Reviews deliberately replaced unexplained numeric scores with recommendations (`docs/reviews-studio.md`). Google's review rich
 results require a rating. Adding one is an editorial decision for the owner, not a technical one; until then no `Review` schema.
