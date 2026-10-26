@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
+import { preserveResponsiveImages } from './preserve-responsive-images.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -14,7 +15,8 @@ export function buildGrokStudio(root = ROOT) {
   const articles = JSON.parse(read('data/articles.json'));
   const title = 'Grok & xAI — Field Guide, Tutorials, Models & Prompts | Supercharged Daily';
   const description = 'Explore Grok chat, voice, Imagine, Build and Bot. Follow 12 practical lessons, create useful prompts, compare sourced models and plans, and save your progress.';
-  let html = read('grok.html').replace(/<main\b[\s\S]*?<\/main>/, () => V.build(d, articles));
+  const previous = read('grok.html');
+  let html = previous.replace(/<main\b[\s\S]*?<\/main>/, () => preserveResponsiveImages(previous, V.build(d, articles)));
   html = html.replace(/<title>[\s\S]*?<\/title>/, () => '<title>' + M.esc(title) + '</title>');
   html = html.replace(/(<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content=")[^"]*/g, (_, start) => start + M.esc(description));
   html = html.replace(/(<meta\s+(?:name|property)="(?:og:title|twitter:title)"\s+content=")[^"]*/g, (_, start) => start + M.esc(title));

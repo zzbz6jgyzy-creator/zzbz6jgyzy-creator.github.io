@@ -138,11 +138,12 @@
       ]
     },
     "fsd": {
-      "file": "/assets/js/fsd.bundle.3d6ec97264.js",
-      "bytes": 33259,
+      "file": "/assets/js/fsd.bundle.a7be3d9784.js",
+      "bytes": 36839,
       "sources": [
-        "fsd-data.js",
-        "fsd.js"
+        "fsd-global-model.js",
+        "fsd-global-view.js",
+        "fsd-global.js"
       ]
     },
     "cybercab": {

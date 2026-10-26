@@ -97,8 +97,9 @@
       "fsd-europe-tools.js"
     ],
     "fsd": [
-      "fsd-data.js",
-      "fsd.js"
+      "fsd-global-model.js",
+      "fsd-global-view.js",
+      "fsd-global.js"
     ],
     "cybercab": [
       "mobility-model.js",
@@ -293,7 +294,8 @@
       "bundles": [
         "core",
         "fsd"
-      ]
+      ],
+      "grow": []
     },
     "cybercab.html": {
       "bundles": [

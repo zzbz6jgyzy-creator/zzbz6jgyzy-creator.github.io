@@ -1,0 +1,615 @@
+{
+  "schemaVersion": 1,
+  "reviewed": "2026-10-26",
+  "revision": "2026-10-26-global-1",
+  "listed": [
+    "US",
+    "CA",
+    "MX",
+    "PR",
+    "AU",
+    "NZ",
+    "KR",
+    "NL",
+    "LT",
+    "EE",
+    "DK",
+    "BE",
+    "SI",
+    "CZ",
+    "HR",
+    "SK"
+  ],
+  "countries": [
+    {
+      "code": "US",
+      "name": "United States",
+      "region": "Americas",
+      "lon": -98,
+      "lat": 39.5
+    },
+    {
+      "code": "CA",
+      "name": "Canada",
+      "region": "Americas",
+      "lon": -106,
+      "lat": 56
+    },
+    {
+      "code": "MX",
+      "name": "Mexico",
+      "region": "Americas",
+      "lon": -102.5,
+      "lat": 23.6
+    },
+    {
+      "code": "PR",
+      "name": "Puerto Rico",
+      "region": "Americas",
+      "lon": -66.5,
+      "lat": 18.2
+    },
+    {
+      "code": "CN",
+      "name": "China",
+      "region": "Asia-Pacific",
+      "lon": 104,
+      "lat": 35
+    },
+    {
+      "code": "KR",
+      "name": "South Korea",
+      "region": "Asia-Pacific",
+      "lon": 127.8,
+      "lat": 36.4
+    },
+    {
+      "code": "AU",
+      "name": "Australia",
+      "region": "Asia-Pacific",
+      "lon": 134.5,
+      "lat": -25.3
+    },
+    {
+      "code": "NZ",
+      "name": "New Zealand",
+      "region": "Asia-Pacific",
+      "lon": 172.6,
+      "lat": -41.3
+    },
+    {
+      "code": "JP",
+      "name": "Japan",
+      "region": "Asia-Pacific",
+      "lon": 138,
+      "lat": 36.2
+    },
+    {
+      "code": "NL",
+      "name": "Netherlands",
+      "region": "Europe",
+      "lon": 5.3,
+      "lat": 52.1
+    },
+    {
+      "code": "LT",
+      "name": "Lithuania",
+      "region": "Europe",
+      "lon": 23.9,
+      "lat": 55.2
+    },
+    {
+      "code": "EE",
+      "name": "Estonia",
+      "region": "Europe",
+      "lon": 25.5,
+      "lat": 58.6
+    },
+    {
+      "code": "DK",
+      "name": "Denmark",
+      "region": "Europe",
+      "lon": 9.5,
+      "lat": 56
+    },
+    {
+      "code": "BE",
+      "name": "Belgium",
+      "region": "Europe",
+      "lon": 4.5,
+      "lat": 50.5
+    },
+    {
+      "code": "SI",
+      "name": "Slovenia",
+      "region": "Europe",
+      "lon": 14.8,
+      "lat": 46.1
+    },
+    {
+      "code": "CZ",
+      "name": "Czechia",
+      "region": "Europe",
+      "lon": 15.5,
+      "lat": 49.8
+    },
+    {
+      "code": "HR",
+      "name": "Croatia",
+      "region": "Europe",
+      "lon": 15.2,
+      "lat": 45.1
+    },
+    {
+      "code": "DE",
+      "name": "Germany",
+      "region": "Europe",
+      "lon": 10.4,
+      "lat": 51.2
+    },
+    {
+      "code": "FR",
+      "name": "France",
+      "region": "Europe",
+      "lon": 2.3,
+      "lat": 46.6
+    },
+    {
+      "code": "IT",
+      "name": "Italy",
+      "region": "Europe",
+      "lon": 12.6,
+      "lat": 42.8
+    },
+    {
+      "code": "ES",
+      "name": "Spain",
+      "region": "Europe",
+      "lon": -3.7,
+      "lat": 40.4
+    },
+    {
+      "code": "SE",
+      "name": "Sweden",
+      "region": "Europe",
+      "lon": 15.2,
+      "lat": 62.2
+    },
+    {
+      "code": "GR",
+      "name": "Greece",
+      "region": "Europe",
+      "lon": 22,
+      "lat": 39.2
+    },
+    {
+      "code": "FI",
+      "name": "Finland",
+      "region": "Europe",
+      "lon": 26,
+      "lat": 64
+    },
+    {
+      "code": "IE",
+      "name": "Ireland",
+      "region": "Europe",
+      "lon": -7.8,
+      "lat": 53.2
+    },
+    {
+      "code": "PL",
+      "name": "Poland",
+      "region": "Europe",
+      "lon": 19.4,
+      "lat": 52
+    },
+    {
+      "code": "RO",
+      "name": "Romania",
+      "region": "Europe",
+      "lon": 25,
+      "lat": 45.9
+    },
+    {
+      "code": "PT",
+      "name": "Portugal",
+      "region": "Europe",
+      "lon": -8.2,
+      "lat": 39.6
+    },
+    {
+      "code": "HU",
+      "name": "Hungary",
+      "region": "Europe",
+      "lon": 19.5,
+      "lat": 47.2
+    },
+    {
+      "code": "AT",
+      "name": "Austria",
+      "region": "Europe",
+      "lon": 14.6,
+      "lat": 47.5
+    },
+    {
+      "code": "BG",
+      "name": "Bulgaria",
+      "region": "Europe",
+      "lon": 25.5,
+      "lat": 42.7
+    },
+    {
+      "code": "SK",
+      "name": "Slovakia",
+      "region": "Europe",
+      "lon": 19.7,
+      "lat": 48.7
+    },
+    {
+      "code": "LV",
+      "name": "Latvia",
+      "region": "Europe",
+      "lon": 24.6,
+      "lat": 56.9
+    },
+    {
+      "code": "CY",
+      "name": "Cyprus",
+      "region": "Europe",
+      "lon": 33.4,
+      "lat": 35.1
+    },
+    {
+      "code": "LU",
+      "name": "Luxembourg",
+      "region": "Europe",
+      "lon": 6.1,
+      "lat": 49.75
+    },
+    {
+      "code": "MT",
+      "name": "Malta",
+      "region": "Europe",
+      "lon": 14.4,
+      "lat": 35.9
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom",
+      "region": "Europe",
+      "lon": -2.2,
+      "lat": 53.8
+    },
+    {
+      "code": "NO",
+      "name": "Norway",
+      "region": "Europe",
+      "lon": 8.8,
+      "lat": 60.5
+    },
+    {
+      "code": "CH",
+      "name": "Switzerland",
+      "region": "Europe",
+      "lon": 8.2,
+      "lat": 46.8
+    },
+    {
+      "code": "IS",
+      "name": "Iceland",
+      "region": "Europe",
+      "lon": -19,
+      "lat": 65
+    },
+    {
+      "code": "AE",
+      "name": "United Arab Emirates",
+      "region": "Middle East & Africa",
+      "lon": 54,
+      "lat": 24
+    },
+    {
+      "code": "SA",
+      "name": "Saudi Arabia",
+      "region": "Middle East & Africa",
+      "lon": 45,
+      "lat": 24
+    },
+    {
+      "code": "ZA",
+      "name": "South Africa",
+      "region": "Middle East & Africa",
+      "lon": 25,
+      "lat": -29
+    },
+    {
+      "code": "IL",
+      "name": "Israel",
+      "region": "Middle East & Africa",
+      "lon": 35,
+      "lat": 31
+    },
+    {
+      "code": "TR",
+      "name": "Türkiye",
+      "region": "Middle East & Africa",
+      "lon": 35,
+      "lat": 39
+    },
+    {
+      "code": "IN",
+      "name": "India",
+      "region": "Asia-Pacific",
+      "lon": 79,
+      "lat": 22
+    },
+    {
+      "code": "SG",
+      "name": "Singapore",
+      "region": "Asia-Pacific",
+      "lon": 103.8,
+      "lat": 1.3
+    },
+    {
+      "code": "TW",
+      "name": "Taiwan",
+      "region": "Asia-Pacific",
+      "lon": 121,
+      "lat": 24
+    },
+    {
+      "code": "HK",
+      "name": "Hong Kong",
+      "region": "Asia-Pacific",
+      "lon": 114.2,
+      "lat": 22.3
+    },
+    {
+      "code": "TH",
+      "name": "Thailand",
+      "region": "Asia-Pacific",
+      "lon": 101,
+      "lat": 15
+    },
+    {
+      "code": "MY",
+      "name": "Malaysia",
+      "region": "Asia-Pacific",
+      "lon": 102,
+      "lat": 4
+    },
+    {
+      "code": "BR",
+      "name": "Brazil",
+      "region": "Americas",
+      "lon": -52,
+      "lat": -12
+    },
+    {
+      "code": "CL",
+      "name": "Chile",
+      "region": "Americas",
+      "lon": -71,
+      "lat": -33
+    }
+  ],
+  "sources": [
+    {
+      "id": "tesla-world",
+      "label": "Tesla worldwide rollout list",
+      "url": "https://www.tesla.com/fsd/safety",
+      "type": "manufacturer",
+      "note": "Current market list in the availability FAQ. A market listing is not a VIN-level eligibility decision.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tesla-us",
+      "label": "Tesla FSD support",
+      "url": "https://www.tesla.com/support/fsd",
+      "type": "manufacturer",
+      "note": "Features, vehicle checks and active supervision. US guidance; other markets can differ.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tesla-sub",
+      "label": "Tesla subscription eligibility",
+      "url": "https://www.tesla.com/support/full-self-driving-subscriptions",
+      "type": "manufacturer",
+      "note": "General computer and subscription prerequisites; the Tesla app confirms eligibility for a particular vehicle.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tesla-au",
+      "label": "Tesla Australia feature conditions",
+      "url": "https://www.tesla.com/en_au/support/fsd",
+      "type": "manufacturer",
+      "note": "Australian feature scope and usage conditions.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tesla-au-sub",
+      "label": "Tesla Australia subscription eligibility",
+      "url": "https://www.tesla.com/en_au/support/full-self-driving-subscriptions",
+      "type": "manufacturer",
+      "note": "Computer 3.0 or 4.0 and package prerequisites; feature availability remains configuration dependent.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tesla-nz",
+      "label": "Tesla New Zealand feature conditions",
+      "url": "https://www.tesla.com/en_nz/support/fsd",
+      "type": "manufacturer",
+      "note": "New Zealand feature scope and usage conditions.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "scope-11",
+      "label": "Teslascope 2026.38.5.11",
+      "url": "https://teslascope.com/software/2026.38.5.11",
+      "type": "tracker",
+      "note": "Sampled installations. Firmware appearing on HW3 and HW4 does not mean both receive the same FSD model.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "scope-10",
+      "label": "Teslascope 2026.38.5.10",
+      "url": "https://teslascope.com/software/2026.38.5.10",
+      "type": "tracker",
+      "note": "Names HW3 v14.3 Lite and AI4 v14.3.13 separately.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "scope-au",
+      "label": "Teslascope 2026.38.5.5",
+      "url": "https://teslascope.com/software/2026.38.5.5",
+      "type": "tracker",
+      "note": "Observed v14.3.12 on AI4 in Australia and New Zealand.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "scope-au-6",
+      "label": "Teslascope 2026.38.5.6",
+      "url": "https://teslascope.com/software/2026.38.5.6",
+      "type": "tracker",
+      "note": "Later firmware sample in Australia and New Zealand. FSD model not independently mapped here.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "scope-eu",
+      "label": "Teslascope 2026.33.100",
+      "url": "https://teslascope.com/software/2026.33.100",
+      "type": "tracker",
+      "note": "European sampled firmware; this record alone does not establish an FSD model version.",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "china-report",
+      "label": "CarNewsChina, 21 May 2026",
+      "url": "https://carnewschina.com/2026/05/21/tesla-officially-confirms-fsd-supervised-support-for-china-market/",
+      "type": "media",
+      "note": "Historical announcement reporting. It does not resolve current nationwide customer access.",
+      "checked": "2026-10-26"
+    }
+  ],
+  "versions": [
+    {
+      "id": "na-ai4",
+      "label": "v14.3.13",
+      "build": "2026.38.5.11",
+      "hardware": "AI4 / HW4",
+      "region": "North America sample",
+      "countries": [
+        "US"
+      ],
+      "date": "2026-10-24",
+      "source": "scope-11",
+      "note": "The page labels AI4 v14.3.13. A newer firmware branch is not a promise of an update for every car."
+    },
+    {
+      "id": "na-lite",
+      "label": "v14.3 Lite",
+      "build": "2026.38.5.10",
+      "hardware": "AI3 / HW3",
+      "region": "North America sample",
+      "countries": [
+        "US"
+      ],
+      "date": "2026-10-20",
+      "source": "scope-10",
+      "note": "The same firmware page names a separate HW3 Lite model. Do not infer parity with the AI4 stack."
+    },
+    {
+      "id": "oceania",
+      "label": "v14.3.12",
+      "build": "2026.38.5.5",
+      "hardware": "AI4 / HW4",
+      "region": "Australia & New Zealand sample",
+      "countries": [
+        "AU",
+        "NZ"
+      ],
+      "date": "2026-10-20",
+      "source": "scope-au",
+      "note": "Observed on this build. A later 2026.38.5.6 firmware sample exists; its FSD label is not mapped here."
+    },
+    {
+      "id": "eu-firmware",
+      "label": "FSD version not established",
+      "build": "2026.33.100",
+      "hardware": "AI4 in this sample",
+      "region": "European sample",
+      "countries": [
+        "NL",
+        "BE",
+        "DK",
+        "CZ"
+      ],
+      "date": "2026-10-06",
+      "source": "scope-eu",
+      "note": "This is a firmware observation, not proof of a particular FSD version, national approval or eligibility."
+    }
+  ],
+  "events": [
+    {
+      "id": "world-review",
+      "date": "2026-10-26",
+      "precision": "day",
+      "type": "review",
+      "title": "Worldwide availability checked",
+      "summary": "Tesla’s global FAQ lists 16 markets, including Puerto Rico. This is an editorial source check, not a shared launch date.",
+      "countries": [],
+      "sources": [
+        "tesla-world"
+      ]
+    },
+    {
+      "id": "na-11",
+      "date": "2026-10-24",
+      "precision": "day",
+      "type": "software",
+      "title": "North America firmware reference",
+      "summary": "Teslascope dates 2026.38.5.11 to 24 October and labels the AI4 stack v14.3.13. The sample is not Tesla’s complete fleet.",
+      "countries": [
+        "US"
+      ],
+      "sources": [
+        "scope-11"
+      ]
+    },
+    {
+      "id": "au-6",
+      "date": "2026-10-24",
+      "precision": "day",
+      "type": "software",
+      "title": "Later Oceania firmware sample",
+      "summary": "2026.38.5.6 appears in Australia and New Zealand samples. Its FSD model label is not independently mapped in this guide.",
+      "countries": [
+        "AU",
+        "NZ"
+      ],
+      "sources": [
+        "scope-au-6"
+      ]
+    },
+    {
+      "id": "au-5",
+      "date": "2026-10-20",
+      "precision": "day",
+      "type": "software",
+      "title": "Oceania v14.3.12 reference",
+      "summary": "Teslascope labels 2026.38.5.5 as AI4 v14.3.12, with sampled installations in Australia and New Zealand.",
+      "countries": [
+        "AU",
+        "NZ"
+      ],
+      "sources": [
+        "scope-au"
+      ]
+    }
+  ],
+  "notes": {
+    "CN": "Historical launch reporting conflicts with the current global list, which omits China. Current scope is unresolved here; check Tesla China and your vehicle before relying on access.",
+    "KR": "Tesla lists South Korea. Imported vehicles, local builds and model years may differ; this tracker does not establish a hardware or import-origin entitlement.",
+    "PR": "Puerto Rico is counted as a separate Tesla market, not as an additional sovereign country."
+  }
+}
