@@ -75,6 +75,10 @@ The dedicated Grok field guide checks workflow uses Node 22, Python 3.12, esbuil
 
 Local validation passed all **18 model tests** and all **17 browser cases**. Seven committed WebP previews in docs/previews/grok-* cover phone/desktop, dark/light themes, the capability explorer, a lesson and the API planner.
 
+## Generated maintenance found by CI
+
+Site-wide checks also detected two existing saved-output mismatches. The existing SpaceX builder synchronizes its saved schedule timestamp with the current shared calendar, and the existing Starship builder restores its canonical media markup. Only those two generated HTML outputs are included as maintenance; their source catalogs and recorded facts are unchanged. All 23 SpaceX/Starship model tests passed after rebuilding.
+
 ## Later decisions
 
 Account-synced learning progress, server-side prompt libraries and a real model integration would need separate implementation and a clear privacy/billing decision. They are not required for this guide. Keeping model references and prices current remains editorial work; the page makes that responsibility visible instead of claiming a live feed.
