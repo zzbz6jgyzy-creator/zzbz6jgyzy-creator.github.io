@@ -240,7 +240,7 @@ def inject_trackers(slug):
 def bump_cache_tags():
     n = 0
     for path in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
-        if "/node_modules/" in path or "/vendor/" in path:
+        if "/node_modules/" in path or "/vendor/" in path or "/lab/" in path or "/apps/" in path:
             continue
         html = open(path, encoding="utf-8").read()
         updated = re.sub(r"grow\.js\?v=\d+", f"grow.js?v={GROW_JS_V}", html)

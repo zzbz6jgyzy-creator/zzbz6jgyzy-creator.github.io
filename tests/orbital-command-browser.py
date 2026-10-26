@@ -6,6 +6,7 @@ from playwright.async_api import async_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://superchargeddaily.com"
+HIDDEN = "/lab/oc-1e1ef40d/"
 OUT = Path("/tmp/orbital-command")
 OUT.mkdir(exist_ok=True)
 
@@ -29,8 +30,8 @@ async def main():
                 if u.hostname != "superchargeddaily.com":
                     return await r.abort()
                 rel = u.path.lstrip("/")
-                if u.path in ("/orbital-command", "/orbital-command/"):
-                    rel = "orbital-command/index.html"
+                if u.path in (HIDDEN.rstrip("/"), HIDDEN):
+                    rel = "lab/oc-1e1ef40d/index.html"
                 f = ROOT / rel
                 if f.is_file() and ROOT in f.resolve().parents:
                     return await r.fulfill(
@@ -43,10 +44,11 @@ async def main():
             page = await context.new_page()
             errors = []
             page.on("pageerror", lambda err: errors.append(str(err)))
-            await page.goto(SITE + "/orbital-command/", wait_until="domcontentloaded")
+            await page.goto(SITE + HIDDEN, wait_until="domcontentloaded")
             await page.wait_for_timeout(1200)
             html = await page.content()
             assert "Orbital Command" in html
+            assert "noindex" in html
             assert "CelesTrak" in html or "orbital" in html.lower()
             if js:
                 await page.wait_for_selector("[data-act='landing-explore']", timeout=20000)

@@ -18,7 +18,7 @@ def inject(src):
 def run(check=False):
  changed=[]
  for p in sorted(ROOT.rglob('*.html')):
-  if any(x in p.parts for x in ('.git','node_modules','dev','tests','preview')):continue
+  if any(x in p.parts for x in ('.git','node_modules','dev','tests','preview','lab','apps')):continue
   src=p.read_text();new=inject(src)
   if new!=src:
    changed.append(str(p.relative_to(ROOT)))

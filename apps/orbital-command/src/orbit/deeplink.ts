@@ -46,5 +46,5 @@ export function buildDeepLink(link: Partial<DeepLink>): string {
   if (link.time) q.set("t", link.time);
   if (link.mission) q.set("mission", link.mission);
   const s = q.toString();
-  return s ? `/orbital-command/?${s}` : "/orbital-command/";
+  return s ? `/lab/oc-1e1ef40d/?${s}` : "/lab/oc-1e1ef40d/";
 }

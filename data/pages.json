@@ -314,12 +314,6 @@
       "summary": "Satellites by version"
     },
     {
-      "url": "/orbital-command/",
-      "title": "Orbital Command",
-      "tag": "SpaceX",
-      "summary": "3D Earth, calculated satellite positions, Starlink explorer, ISS passes and CRS-35 mission replay. SGP4 from dated CelesTrak elements stored on this site — not live telemetry."
-    },
-    {
       "url": "/starlink.html#identify",
       "title": "Point & identify",
       "tag": "Starlink",

@@ -23,7 +23,7 @@ describe("deep links", () => {
 
   it("builds a shareable path", () => {
     expect(buildDeepLink({ mode: "above", satellite: 25544, lat: 52.0599, lon: -9.5044 })).toBe(
-      "/orbital-command/?mode=above&satellite=25544&lat=52.0599&lon=-9.5044",
+      "/lab/oc-1e1ef40d/?mode=above&satellite=25544&lat=52.0599&lon=-9.5044",
     );
   });
 });
