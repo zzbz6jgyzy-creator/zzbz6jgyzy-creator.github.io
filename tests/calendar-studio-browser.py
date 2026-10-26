@@ -1,8 +1,11 @@
 """Local routed page, no external writes. Real built scripts, downloads and responsive journeys."""
-import asyncio,json,mimetypes,os,pathlib,shutil
+import asyncio,datetime,json,mimetypes,os,pathlib,shutil
+from zoneinfo import ZoneInfo
 from urllib.parse import urlparse
 from playwright.async_api import async_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=pathlib.Path(os.environ.get('CALENDAR_SCREENSHOTS','/tmp/calendar-studio'));OUT.mkdir(parents=True,exist_ok=True);DATA=json.loads((ROOT/'data/calendar-studio.json').read_text());KEY='sd-calendar-studio-v1'
+# Launch Library moves this NET; read it from the snapshot instead of pinning a time.
+START=datetime.datetime.fromisoformat(next(e for e in DATA['events'] if e['id']=='starlink-15-16')['start'].replace('Z','+00:00'))
 async def main():
  async with async_playwright()as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH')or shutil.which('google-chrome')or shutil.which('chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
@@ -39,9 +42,9 @@ async def main():
    await page.locator('[data-view=saved]').click();await expect(page.locator('#cs-results .cs-event')).to_have_count(1)
    await page.locator('#cs-results [data-open]').click();assert await page.locator('#cs-dialog').is_visible();await page.locator('#cs-dialog-copy').click();assert 'event=starlink-15-16'in await page.evaluate('window.__copied')
    async with page.expect_download()as info:await page.locator('#cs-dialog-export').click()
-   download=await info.value;text=pathlib.Path(await download.path()).read_text();assert 'UID:starlink-15-16@superchargeddaily.com'in text;assert 'DTSTART:20261027T044500Z'in text
+   download=await info.value;text=pathlib.Path(await download.path()).read_text();assert 'UID:starlink-15-16@superchargeddaily.com'in text;assert 'DTSTART:'+START.strftime('%Y%m%dT%H%M%SZ')in text
    await page.keyboard.press('Escape');assert not await page.locator('#cs-dialog').is_visible()
-   await page.locator('#cs-zone').select_option('America/Los_Angeles');assert '21:45'in await page.locator('#cs-results .cs-event-time').inner_text()
+   await page.locator('#cs-zone').select_option('America/Los_Angeles');assert START.astimezone(ZoneInfo('America/Los_Angeles')).strftime('%H:%M')in await page.locator('#cs-results .cs-event-time').inner_text()
    await page.locator('[data-view=month]').click();cell=page.locator('.cs-month-grid [tabindex="0"]');await cell.focus();old=await cell.get_attribute('data-date');await page.keyboard.press('ArrowRight');assert await page.locator('.cs-month-grid [tabindex="0"]').get_attribute('data-date')!=old;assert await page.locator('.cs-month-grid [tabindex="0"]').evaluate('(e)=>document.activeElement===e')
    async with page.expect_download()as info:await page.locator('#cs-export').click()
    downloaded=await info.value;ics=pathlib.Path(await downloaded.path()).read_text();starts=[line for line in ics.splitlines()if line.startswith('DTSTART')];assert starts and all('202610'in line for line in starts),starts
