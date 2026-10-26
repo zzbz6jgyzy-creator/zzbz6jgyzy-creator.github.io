@@ -779,3 +779,6 @@ if __name__ == "__main__":
     # their Beehiiv block on the next home-build.
     runpy.run_path(os.path.join(ROOT, "scripts", "inject_newsletter.py"))["run"]()
     runpy.run_path(os.path.join(ROOT, "scripts", "inject-members.py"))["run"]()
+    # Contents stylesheet must sit immediately before <!--sd:members-->.
+    # sitewide hygiene inserts robots/feed nearby and would fail --check otherwise.
+    runpy.run_path(os.path.join(ROOT, "scripts", "build-wayfinding.py"))["run"]()
