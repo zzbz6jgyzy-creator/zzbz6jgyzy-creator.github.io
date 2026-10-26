@@ -23,6 +23,15 @@
 .sd-about a:hover{text-decoration:underline}
 @media (prefers-reduced-motion:reduce){.sd-crumbs a,.sd-about a{text-decoration:underline}}
 
+.sd-updated{margin:.35rem 0 0;font-size:.9rem;color:var(--ink-soft,#c8c8cc)}
+.sd-disclosure{margin:1.1rem 0 0;padding:.7rem .9rem;border-left:3px solid var(--red-text,#f23a52);background:rgba(242,58,82,.08);font-size:.88rem;line-height:1.5;color:var(--ink-soft,#c8c8cc)}
+.rel-places{margin:.75rem 0 0;font-size:.88rem}.rel-places a{color:#f23a52;text-underline-offset:.15em}
+.sd-topic-stories{max-width:860px;margin:2rem auto 1rem;padding:1.2rem 1.1rem;border-top:3px solid #E31937;border-radius:12px;background:#0b0b0c}
+.sd-topic-stories h2{font-size:1rem;margin:0 0 .7rem;letter-spacing:.04em;text-transform:uppercase}
+.sd-topic-list{margin:0;padding-left:1.1rem}.sd-topic-list li{margin:.35rem 0}
+.sd-topic-list a{color:#f23a52;text-underline-offset:.15em}
+.sd-topic-kicker{margin:1rem 0 .4rem;font:700 .68rem/1.2 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#f23a52}
+
 
 /* The H1 names the current story; keep the visual breadcrumb concise. */
 .sd-crumbs [aria-current="page"] { display: none; }

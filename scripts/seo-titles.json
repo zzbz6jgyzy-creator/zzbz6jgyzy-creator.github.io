@@ -1,0 +1,169 @@
+{
+  "suffix": " | Supercharged Daily",
+  "pages": {
+    "index.html": {
+      "title": "Tesla, SpaceX & xAI news | Supercharged Daily",
+      "description": "Independent Tesla, SpaceX and xAI reporting, plus live trackers for Starship, FSD, Starlink and software updates. Free Sunday briefing.",
+      "h1": "Tesla, SpaceX<br/><span>and xAI news.</span>"
+    },
+    "starship.html": {
+      "title": "Next Starship launch & every flight | Supercharged Daily",
+      "description": "Next Starship launch window, every test flight so far, and official footage. Independent flight log with sources.",
+      "h1": "Starship<br>flights<span>Next launch<br>and every flight.</span>"
+    },
+    "starlink.html": {
+      "title": "Starlink satellites in orbit | Supercharged Daily",
+      "description": "How many Starlink satellites are in orbit, by generation, with a sky finder and sourced catalogue counts.",
+      "h1_prefix": "How many Starlink satellites are in orbit? "
+    },
+    "fsd-europe.html": {
+      "title": "FSD in Europe: country approvals | Supercharged Daily",
+      "description": "Which EU countries approve Tesla Assisted Driving (FSD Supervised), with dates, Tesla listings and original sources.",
+      "h1": "FSD in Europe:<br>country by country."
+    },
+    "cybercab.html": {
+      "title": "Cybercab & Robotaxi fleet tracker | Supercharged Daily",
+      "description": "How many Cybercabs Tesla has registered, which cities have Robotaxi service, and the evidence behind each figure.",
+      "h1": "Cybercab fleet.<br><span>Cities and evidence.</span>"
+    },
+    "updates.html": {
+      "title": "Tesla software update tracker | Supercharged Daily",
+      "description": "Latest Tesla software version, release notes and rollout observations by country, with dated sources.",
+      "h1": "Tesla software<br>updates."
+    },
+    "see-the-launch.html": {
+      "title": "Can I see the SpaceX launch? | Supercharged Daily",
+      "description": "Can you see the next SpaceX launch from where you are? Pad bearing, sky geometry and a live compass.",
+      "h1": "Can I see<br>the <em>launch?</em>"
+    },
+    "calendar.html": {
+      "title": "SpaceX launch & Tesla calendar | Supercharged Daily",
+      "description": "Upcoming SpaceX launches, Tesla events and earnings dates, with sources and an iCal feed.",
+      "h1": "Launch schedule<br>and Tesla <em>dates.</em>"
+    },
+    "dispatch.html": {
+      "title": "Original Tesla & SpaceX stories | Supercharged Daily",
+      "description": "Original Supercharged Daily reporting on Tesla, SpaceX, Starlink, FSD and xAI, each with sources.",
+      "h1": "Original stories,<br>with sources"
+    },
+    "news.html": {
+      "title": "Tesla, SpaceX & Grok news | Supercharged Daily",
+      "description": "Original Tesla, SpaceX and Grok reporting, plus sourced headlines and the trackers behind the stories.",
+      "h1": "Tesla, SpaceX<br><span>and Grok news.</span>"
+    },
+    "games.html": {
+      "title": "Tesla & SpaceX games | Supercharged Daily",
+      "description": "Free browser games: catch a Super Heavy booster, hot-stage Starship, and a Robotaxi run.",
+      "h1": "Tesla and SpaceX games"
+    },
+    "model3-explorer.html": {
+      "title": "Model 3 studio & 3D explorer | Supercharged Daily",
+      "description": "Explore Tesla Model 3 in 3D, compare UK and US trim references, and run the charging lab. Independent, not a spec sheet."
+    },
+    "my-tesla.html": {
+      "title": "My Tesla: software for your car | Supercharged Daily",
+      "description": "Software, range and charging notes for your Tesla, using the public update tracker and EPA figures.",
+      "h1": "Your Tesla:<br>software and costs."
+    },
+    "tsla.html": {
+      "title": "Tesla & SpaceX markets | Supercharged Daily",
+      "description": "Tesla and SpaceX reported results, side by side, from company releases. Not financial advice.",
+      "h1": "Tesla and SpaceX<br/><span>results.</span>"
+    },
+    "fsd.html": {
+      "title": "Tesla FSD worldwide tracker | Supercharged Daily",
+      "description": "Where Tesla lists Full Self-Driving, country by country, with software observations and vehicle caveats.",
+      "h1": "FSD worldwide.<br><span>Country by country.</span>"
+    },
+    "promise-tracker.html": {
+      "title": "Musk promise tracker | Supercharged Daily",
+      "description": "Sourced Tesla, SpaceX and xAI claims, target windows and outcomes. An editorial ledger, not a score."
+    },
+    "tesla.html": {
+      "title": "Tesla news, models & data | Supercharged Daily",
+      "description": "Tesla news, model reviews, production figures and autonomy trackers, independently compiled."
+    },
+    "tesla-clubs.html": {
+      "title": "Tesla owners clubs directory | Supercharged Daily",
+      "description": "Find a Tesla owners club or chapter near you. A publication audit, not a live membership feed."
+    },
+    "roadster.html": {
+      "title": "Tesla Roadster specs & reveal | Supercharged Daily",
+      "description": "Tesla Roadster trims, claimed figures, thrusters and the 2026 reveal, with sources next to each claim."
+    },
+    "optimus.html": {
+      "title": "Tesla Optimus robot tracker | Supercharged Daily",
+      "description": "What Tesla has shown of Optimus, what it has promised, and what remains a target. Sourced."
+    },
+    "about.html": {
+      "title": "About Alex R | Supercharged Daily",
+      "description": "Alex R runs Supercharged Daily from Ireland. Independent Tesla and SpaceX coverage. Not financial advice."
+    },
+    "author.html": {
+      "title": "Alex R, author | Supercharged Daily",
+      "description": "Alex R writes Supercharged Daily. Tesla and SpaceX shareholder. Independent, not affiliated, not financial advice."
+    },
+    "editorial.html": {
+      "title": "Editorial & corrections | Supercharged Daily",
+      "description": "How Supercharged Daily sources stories, dates tracker figures, and corrects mistakes."
+    },
+    "contact.html": {
+      "title": "Contact | Supercharged Daily",
+      "description": "Contact Supercharged Daily by email or on X. Club listings, corrections and story tips."
+    },
+    "spacex.html": {
+      "title": "SpaceX launches & fleet | Supercharged Daily",
+      "description": "SpaceX launches, Falcon, Dragon, Starship and Starlink — sourced, independently compiled."
+    },
+    "grok.html": {
+      "title": "Grok & xAI field guide | Supercharged Daily",
+      "description": "Grok models, voice, Imagine and xAI notes, with sources. Independent coverage."
+    },
+    "production.html": {
+      "title": "Tesla production tracker | Supercharged Daily",
+      "description": "Tesla production and delivery figures from company reports, kept with sources."
+    },
+    "guides/tesla-buying-guide.html": {
+      "title": "Tesla buying guide | Supercharged Daily",
+      "description": "Find the Tesla that fits your life. Compare exact model references, plan cash or finance costs, test a charging routine and save a practical buying checklist."
+    },
+    "reviews/index.html": {
+      "title": "Tesla reviews & charging lab | Supercharged Daily",
+      "description": "Model 3, Y, S, X and Cybertruck reviews: cabin, charging and ownership, plus a charging lab you can run in the browser."
+    },
+    "reviews/model-3.html": {
+      "title": "Model 3 review | Supercharged Daily",
+      "description": "Model 3 review: driving character, cabin, charging references, software and ownership, with a charging lab and test-drive checklist."
+    },
+    "reviews/model-y.html": {
+      "title": "Model Y review | Supercharged Daily",
+      "description": "Model Y review: driving character, cabin, charging references, software and ownership, with a charging lab and test-drive checklist."
+    },
+    "reviews/model-s.html": {
+      "title": "Model S review | Supercharged Daily",
+      "description": "Model S review: driving character, cabin, charging references, software and ownership, with a charging lab and test-drive checklist."
+    },
+    "reviews/model-x.html": {
+      "title": "Model X review | Supercharged Daily",
+      "description": "Model X review: driving character, cabin, charging references, software and ownership, with a charging lab and test-drive checklist."
+    },
+    "reviews/cybertruck.html": {
+      "title": "Cybertruck review | Supercharged Daily",
+      "description": "Cybertruck review: driving character, cabin, charging references, software and ownership, with a charging lab and test-drive checklist."
+    },
+    "cybertruck-explorer.html": {
+      "title": "Cybertruck: 3D, specs & ownership tools | Supercharged Daily",
+      "description": "Explore Cybertruck in touch-ready 3D, compare current US trims, and use sourced engineering, charging, payload and power-budget tools."
+    }
+  },
+  "templates": {
+    "fsd-europe": {
+      "title": "FSD in {name} | Supercharged Daily",
+      "description": "Tesla Assisted Driving / FSD (Supervised) in {name}: national permission, Tesla listings and dated sources."
+    },
+    "cybercab-city": {
+      "title": "{name} Cybercab tracker | Supercharged Daily",
+      "description": "Tesla Robotaxi and Cybercab in {name}: vehicle access, hours, dated sources and app-boundary context."
+    }
+  }
+}

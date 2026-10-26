@@ -10,7 +10,9 @@
     "videos/index.html",
     "dispatch/grok-crew.html",
     "model3-viewer.html",
-    "cybertruck-viewer.html"
+    "orbital-command/index.html",
+    "cybertruck-viewer.html",
+    "apps/orbital-command/index.html"
   ],
   "bundles": {
     "core": [
