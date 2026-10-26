@@ -483,7 +483,10 @@ def replace_first_h1(src: str, inner_html: str) -> str:
     if not m:
         return src
     head, tail = src[: m.start()], src[m.start() :]
-    return head + re.sub(r"<h1\b[^>]*>[\s\S]*?</h1>", "<h1>" + inner_html + "</h1>", tail, count=1, flags=re.I)
+    # Keep the H1's own attributes: page scripts look it up by id (My Tesla's #mg-title).
+    return head + re.sub(
+        r"(<h1\b[^>]*>)[\s\S]*?</h1>", lambda m: m.group(1) + inner_html + "</h1>", tail, count=1, flags=re.I
+    )
 
 
 def inject_json_ld(src: str, objects: list, marker="seo:ld") -> str:

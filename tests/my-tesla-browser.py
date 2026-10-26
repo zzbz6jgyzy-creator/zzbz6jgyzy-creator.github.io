@@ -74,7 +74,8 @@ async def main():
   for mode in ['blocked','storage-blocked','legacy','corrupt','no-js','blocked-js']:
    c,page,errors=await context(mode=mode)
    if mode in ['no-js','blocked-js']:
-    assert 'Your car.'in await page.locator('h1').inner_text();assert await page.locator('#mg-method').is_visible();assert not await page.locator('[data-edit=new]').first.is_visible()
+    # Static H1 is the SEO headline from scripts/seo-titles.json (JS swaps in the studio title).
+    assert 'Your Tesla:'in await page.locator('#mg-title').inner_text();assert await page.locator('#mg-method').is_visible();assert not await page.locator('[data-edit=new]').first.is_visible()
    elif mode=='legacy':
     assert 'Model Y'in await page.locator('#mg-title').inner_text();await page.locator('[data-view=passport]').click();assert 'Not confirmed'in await page.locator('#mg-passport-content').inner_text();assert await page.evaluate("JSON.parse(localStorage.getItem('sd-my-tesla-v1')).hw")=='hw3'
    elif mode=='corrupt':assert await page.locator('#mg-export-original').is_visible();assert await page.evaluate("localStorage.getItem('"+KEY+"')")=='{broken'

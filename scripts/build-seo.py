@@ -303,12 +303,12 @@ def about_page():
 #   WebPage         fallback
 # Optimus owns its WebPage/FAQ/film graph in build-optimus-studio.mjs.
 # Production owns its dated Dataset/CSV schema in build-production-studio.mjs.
+# Model 3 Studio owns its WebApplication graph in build-model3-studio.mjs.
 PAGE_TYPES = {
     "autonomy.html": "Dataset",
     "catch.html": "WebApplication",
     "cybertruck-explorer.html": "WebApplication",
     "daily.html": "WebApplication",
-    "model3-explorer.html": "WebApplication",
     "robotaxi.html": "WebApplication",
     "search.html": "WebApplication",
     "staging.html": "WebApplication",

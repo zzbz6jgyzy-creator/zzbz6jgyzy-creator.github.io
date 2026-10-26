@@ -45,6 +45,13 @@ class Clip(unittest.TestCase):
         self.assertTrue(seo_lib.social_headline(long, 110).endswith("…"))
         self.assertLessEqual(len(seo_lib.social_headline(long, 110)), 110)
 
+    def test_replace_first_h1_keeps_attributes(self):
+        # My Tesla's script reads #mg-title; dropping the id broke the whole studio.
+        src = '<nav><h1>Menu</h1></nav><main><h1 id="mg-title" class="x">Old</h1></main>'
+        out = seo_lib.replace_first_h1(src, "New \\1 <span>two</span>")
+        self.assertIn('<h1 id="mg-title" class="x">New \\1 <span>two</span></h1>', out)
+        self.assertIn("<nav><h1>Menu</h1></nav>", out)
+
     def test_hygiene_strips_google_fonts_and_cls_reserve(self):
         src = (
             "<html><head><title>t</title>\n"
