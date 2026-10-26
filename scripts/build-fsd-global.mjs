@@ -29,7 +29,8 @@ export function buildFSDGlobal(root=ROOT){
  if(topic&&!html.includes('seo:topic-stories')){
   const mark=html.search(/<script type="application\/json" id="fg-data">/);
   const nl=html.search(/\n?[ \t]*<!--nl:start-->/);
-  const at=mark>=0?mark:nl;
+  // Same slot as build-seo.py (just above the newsletter), so the two generators agree.
+  const at=nl>=0?nl:mark;
   html=at>=0?html.slice(0,at)+'\n        '+topic+html.slice(at):html.replace('</main>','\n        '+topic+'\n</main>');
  }
  fs.writeFileSync(path.join(root,'fsd.html'),html);
