@@ -77,7 +77,7 @@ Local validation passed all **18 model tests** and all **17 browser cases**. Sev
 
 ## Generated maintenance found by CI
 
-Site-wide checks also detected two existing saved-output mismatches. The existing SpaceX builder synchronizes its saved schedule timestamp with the current shared calendar, and the existing Starship builder restores its canonical media markup. Only those two generated HTML outputs are included as maintenance; their source catalogs and recorded facts are unchanged. All 23 SpaceX/Starship model tests passed after rebuilding.
+Site-wide checks also detected two existing saved-output mismatches. The existing SpaceX builder synchronizes its saved schedule timestamp with the current shared calendar, and the existing Starship builder restores its canonical media markup. The launch refresh workflow now also rebuilds and commits the SpaceX page and its search entries after the shared calendar, preventing the recurring timestamp mismatch. Source catalogs and recorded facts are unchanged relative to the current main branch. All 23 SpaceX/Starship model tests passed after rebuilding.
 
 A later Promise Tracker browser check exposed a dialog-close/hash-change race when immediately opening another shared claim. The closing claim now clears its own URL synchronously, and a delayed close event cannot erase the new claim URL or steal focus from a reopened dialog. A deterministic regression reproduces the old failure and passes with the fix. All 21 Promise model tests and all 16 browser cases passed locally, including the new regression. Promise claim data, evidence and visual content are unchanged.
 
