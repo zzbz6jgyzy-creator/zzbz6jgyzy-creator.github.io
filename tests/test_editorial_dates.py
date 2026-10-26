@@ -21,9 +21,9 @@ class Dates(unittest.TestCase):
     def git(self,*args,**kwargs):
         return subprocess.run(['git',*args],cwd=self.root,check=True,capture_output=True,**kwargs)
 
-    def commit(self,source,date):
+    def commit(self,source,date,message='Revision'):
         self.path.write_text(source); self.git('add','story.html')
-        self.git('commit','-qm','Revision',env={**os.environ,'GIT_AUTHOR_DATE':date,'GIT_COMMITTER_DATE':date})
+        self.git('commit','-qm',message,env={**os.environ,'GIT_AUTHOR_DATE':date,'GIT_COMMITTER_DATE':date})
 
     def date(self):
         return API['revision_date'](str(self.root),'story.html',PUBLISHED,self.path.read_text())
@@ -62,6 +62,17 @@ class Dates(unittest.TestCase):
         self.commit(ARTICLE,PUBLISHED)
         (self.root/'.git/shallow').write_bytes(self.git('rev-parse','HEAD').stdout)
         self.assertIsNone(self.date())
+
+    def test_furniture_commits_do_not_move_tracker_dates(self):
+        self.assertTrue(API['BOT_SUBJECT'].search('Audit fixes: remove internal notes from HTML'))
+        self.assertTrue(API['BOT_SUBJECT'].search('Pre-render homepage headlines, Dispatch and tracker numbers.'))
+        self.assertIsNone(API['BOT_SUBJECT'].search('Latvia approves Tesla FSD'))
+
+    def test_audit_fix_commit_does_not_steal_the_revision_date(self):
+        self.commit(ARTICLE, PUBLISHED)
+        self.commit(ARTICLE.replace('Verified reporting','Corrected reporting'), '2026-10-10T10:00:00Z')
+        self.commit(ARTICLE.replace('Verified reporting','Corrected reporting').replace('Menu','Nav'), '2026-10-25T14:44:29Z', 'Audit fixes: remove internal notes')
+        self.assertEqual(self.date().replace('+00:00', 'Z'), '2026-10-10T10:00:00Z')
 
     def test_seo_and_contents_styles_keep_a_stable_order(self):
         root=pathlib.Path(__file__).resolve().parents[1]
