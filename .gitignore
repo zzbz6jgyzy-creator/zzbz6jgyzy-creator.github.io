@@ -3,3 +3,7 @@ node_modules/
 dev/
 __pycache__/
 *.pyc
+astro/.legacy/
+astro/dist/
+astro/node_modules/
+astro/.astro/

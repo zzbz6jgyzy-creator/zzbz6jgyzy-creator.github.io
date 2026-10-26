@@ -1,0 +1,29 @@
+name: astro-checks
+
+# Builds the Astro packaging layer and proves it serves what the repo root serves. Does not deploy anything.
+on:
+  pull_request:
+    paths: ['astro/**', 'tests/test_astro_scaffold.py', '.github/workflows/astro-checks.yml']
+  push:
+    branches: [main]
+    paths: ['astro/**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: astro/package-lock.json
+      - run: python3 tests/test_astro_scaffold.py
+      - run: npm ci
+        working-directory: astro
+      - run: npm run build
+        working-directory: astro
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+      - run: npm run parity
+        working-directory: astro

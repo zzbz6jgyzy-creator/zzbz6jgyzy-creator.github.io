@@ -1,0 +1,16 @@
+{
+  // Static assets plus a few-line Worker for "/". No routes and no custom domain yet, so this only exists on a *.workers.dev
+  // preview URL. Cutover (attaching superchargeddaily.com) is a separate, approved step: see ../docs/migration.md.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "superchargeddaily",
+  "main": "./worker/index.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Keep today's URLs. The default would redirect /tesla.html to /tesla.
+    "html_handling": "none",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/"]
+  }
+}

@@ -24,3 +24,6 @@
   is public by design; the service-role key and Google client secret are not and never belong here.
 - **Dark is the brand default**, light is supported; the site follows the device setting until the reader toggles
   (`theme-boot.js`, `theme.js`, key `sd-theme`). Test both.
+- **`astro/` only packages the site.** The repo root is still the source of truth; `cd astro && npm run build && npm run parity`
+  copies it to `dist/` for Cloudflare (needs Node 22.23.4+). Don't edit `astro/.legacy/` or `dist/`. Keep `html_handling: "none"`.
+  Details in `docs/migration.md`.

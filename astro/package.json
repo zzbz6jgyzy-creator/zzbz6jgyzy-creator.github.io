@@ -1,0 +1,23 @@
+{
+  "name": "superchargeddaily-astro",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Packages the existing static site for Cloudflare Workers and hosts pages as they are ported to Astro. See ../docs/migration.md.",
+  "engines": { "node": ">=22.23.4" },
+  "scripts": {
+    "prepare:legacy": "node scripts/prepare-legacy.mjs",
+    "build": "node scripts/prepare-legacy.mjs && astro build",
+    "check": "astro check",
+    "parity": "node scripts/parity.mjs",
+    "preview": "wrangler dev"
+  },
+  "dependencies": {
+    "astro": "7.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "typescript": "5.9.3",
+    "wrangler": "4.153.0"
+  }
+}
