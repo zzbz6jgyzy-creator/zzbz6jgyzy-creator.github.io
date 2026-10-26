@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T11:59:27.943Z",
+  "generatedAt": "2026-10-26T12:33:43.937Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -162,7 +162,7 @@
       "field": "eu-approved",
       "value": "9",
       "label": "EU markets listed by Tesla",
-      "at": "2026-10-23T00:00:00.000Z",
+      "at": "2026-10-26T00:00:00.000Z",
       "evidence": "company_claim",
       "source": "Tesla market availability, curated in the FSD Europe tracker",
       "sourceUrl": "",
