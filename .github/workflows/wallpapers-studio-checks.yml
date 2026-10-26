@@ -1,0 +1,31 @@
+name: Wallpaper studio checks
+on:
+  pull_request:
+    paths: ['wallpapers*', 'data/wallpapers-studio.json', 'scripts/build-wallpapers-studio.py', 'tests/wallpapers-studio-browser.py', '.github/workflows/wallpapers-studio-checks.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.62.0
+      - name: Verify generated gallery and preview journeys
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: |
+          python scripts/build-wallpapers-studio.py
+          git diff --exit-code -- wallpapers.html
+          python tests/wallpapers-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wallpaper-studio-previews
+          path: /tmp/wallpapers-studio
