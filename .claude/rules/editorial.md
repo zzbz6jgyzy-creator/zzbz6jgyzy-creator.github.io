@@ -25,3 +25,7 @@ The brand is that it can be trusted on contested, fast-moving subjects. Hold the
 8. **Images** are ours, official/press-use, or credited with licence; alt text describes the image. No fake or implied-real
    renders without saying they are illustrations.
 9. **Tone**: plain, specific, confident without hype. The headline states the news. No clickbait, no numbered filler.
+10. **X posts**: paste the standard embed `<blockquote class="twitter-tweet">` (it holds the text, author, date and link) inside
+    `<figure class="figure-embed">`, add `<link rel="stylesheet" href="/x-embed.css?v=...">` in the head and
+    `<script defer src="/x-embed.js?v=..."></script>` before `</body>`, and never `platform.twitter.com/widgets.js`. The post then
+    reads as text and the live embed loads only when the reader presses "Load post from X" (`tests/test_x_embeds.py`).
