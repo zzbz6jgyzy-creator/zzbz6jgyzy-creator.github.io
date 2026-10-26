@@ -139,7 +139,7 @@ html[data-theme="light"] .lv-quiet .lw:not(.lw-live) .lw-tile {
 }
 html[data-theme="light"] .lv-quiet .lw:not(.lw-live) .lw-tile b { color: var(--ink, #16171b); }
 html[data-theme="light"] .lv-quiet .lw:not(.lw-live) .lw-cal { color: var(--ink-soft, #5a5d64); }
-html[data-theme="light"] .lv-quiet .lw:not(.lw-live) .lw-cr { color: #6d7077; }
+html[data-theme="light"] .lv-quiet .lw:not(.lw-live) .lw-cr { color: #5c6067; }
 html[data-theme="light"] .lv-quiet .lw-slim:not(.lw-live) {
   background: #fff;
   color: var(--ink, #16171b);

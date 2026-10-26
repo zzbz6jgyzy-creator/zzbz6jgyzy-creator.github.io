@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.84cbc5ceba.js",
-      "bytes": 43381,
+      "file": "/assets/js/core.bundle.b97bc462b0.js",
+      "bytes": 43625,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -117,8 +117,8 @@
       ]
     },
     "calendar": {
-      "file": "/assets/js/calendar.bundle.9f4488f779.js",
-      "bytes": 36692,
+      "file": "/assets/js/calendar.bundle.625204da70.js",
+      "bytes": 36717,
       "sources": [
         "calendar-merge.js",
         "calendar-studio-model.js",
@@ -173,8 +173,8 @@
       ]
     },
     "news": {
-      "file": "/assets/js/news.bundle.2ff6c1c647.js",
-      "bytes": 45500,
+      "file": "/assets/js/news.bundle.53445abacc.js",
+      "bytes": 45496,
       "sources": [
         "personal-model.js",
         "personal-sync.js",

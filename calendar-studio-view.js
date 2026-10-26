@@ -39,7 +39,8 @@
     const first = M.today(now, state.zone);
     return Array.from({ length: 7 }, (_, i) => {
       const key = M.shiftDay(first, i), d = /* @__PURE__ */ new Date(key + "T12:00Z"), rows = data.events.filter((e) => M.dayKey(e, state.zone) === key);
-      return '<button type="button" data-day="' + key + '" aria-label="' + E(d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" })) + ", " + rows.length + ' events"><span>' + (["TODAY", "TOMORROW"][i] || d.toLocaleString("en-GB", { weekday: "short", timeZone: "UTC" })) + "</span><b>" + d.getUTCDate() + '</b><span class="cs-week-dots">' + (rows.length ? rows.slice(0, 4).map((e) => '<i class="cs-dot-' + e.group + '"></i>').join("") : "<small>—</small>") + "</span></button>";
+      // Visible text stays first in the accessible name (WCAG 2.5.3); the full date and count follow, visually hidden.
+      return '<button type="button" data-day="' + key + '"><span>' + (["TODAY", "TOMORROW"][i] || d.toLocaleString("en-GB", { weekday: "short", timeZone: "UTC" })) + "</span><b>" + d.getUTCDate() + '</b><span class="visually-hidden">, ' + E(d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" })) + ", " + rows.length + ' events</span><span class="cs-week-dots">' + (rows.length ? rows.slice(0, 4).map((e) => '<i class="cs-dot-' + e.group + '"></i>').join("") : "<small>—</small>") + "</span></button>";
     }).join("");
   }
   function month(rows, state, now) {

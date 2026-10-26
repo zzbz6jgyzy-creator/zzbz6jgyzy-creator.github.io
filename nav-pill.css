@@ -109,5 +109,5 @@ html[data-theme="light"] .pn-nest-t{color:#2a2c31}
 html[data-theme="light"] .pn-nest-t:hover,
 html[data-theme="light"] .pn-nest.open>.pn-nest-t,
 html[data-theme="light"] .pn-nest-t[aria-current]{color:var(--ink,#16171b);background:rgba(227,25,55,.12)}
-html[data-theme="light"] .pn-sheet h4{color:#6d7077}
+html[data-theme="light"] .pn-sheet h4{color:#5c6067}
 html[data-theme="light"] .pn-slab h4{border-top-color:rgba(22,23,27,.1)}

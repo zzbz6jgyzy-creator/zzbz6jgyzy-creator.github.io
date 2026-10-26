@@ -5,8 +5,10 @@
       location.replace("/daily.html");
       return;
     }
-    if (localStorage.getItem("sd-theme") === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
-    }
   } catch (e) {}
+  // A saved choice wins; otherwise follow the device. Dark stays the fallback where the media query is unsupported.
+  let saved = null;
+  try { saved = localStorage.getItem("sd-theme"); } catch (e) {}
+  const light = saved ? saved === "light" : typeof matchMedia === "function" && matchMedia("(prefers-color-scheme: light)").matches;
+  if (light) document.documentElement.setAttribute("data-theme", "light");
 })();

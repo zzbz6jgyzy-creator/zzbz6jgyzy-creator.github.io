@@ -23,10 +23,11 @@
     btn.title = light ? "Dark theme" : "Light theme";
   };
 
-  const apply = (theme) => {
+  // Only a reader's own toggle is saved; until then the page follows the device setting.
+  const apply = (theme, save = true) => {
     if (theme === "light") root.setAttribute("data-theme", "light");
     else root.removeAttribute("data-theme");
-    try { localStorage.setItem(KEY, theme); } catch (e) {}
+    if (save) try { localStorage.setItem(KEY, theme); } catch (e) {}
     wordmarks(theme);
     tweets(theme);
     document.querySelectorAll(".pn-theme").forEach(syncBtn);
@@ -62,7 +63,10 @@
     requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
   }
 
-  apply(get());
+  apply(get(), false);
+  const saved = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+  const mq = window.matchMedia && matchMedia("(prefers-color-scheme: light)");
+  if (mq && mq.addEventListener) mq.addEventListener("change", (e) => { if (!saved()) apply(e.matches ? "light" : "dark", false); });
   const pinTheme = () => {
     const link = document.querySelector('link[href*="/theme.css"]');
     if (link && link !== document.head.lastElementChild) document.head.appendChild(link);

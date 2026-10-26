@@ -1,9 +1,9 @@
-/* Light theme. Dark stays default. html[data-theme=light] is explicit — not prefers-color-scheme. */
+/* Light theme. Dark is the default look; theme-boot.js sets html[data-theme=light] from the saved toggle, else prefers-color-scheme. */
 html[data-theme="light"] {
   --bg: #f3f1ec;
   --ink: #16171b;
   --ink-soft: #5a5d64;
-  --mute: #6d7077;
+  --mute: #5c6067;
   --red-text: #b01028;
   --line: rgba(22, 23, 27, 0.1);
   --line-strong: rgba(22, 23, 27, 0.16);
@@ -57,7 +57,7 @@ html[data-theme="light"] .pn-panel {
 html[data-theme="light"] .pn-panel a { color: #2a2c31; }
 html[data-theme="light"] .pn-panel a:hover,
 html[data-theme="light"] .pn-panel a:focus-visible { color: var(--ink); }
-html[data-theme="light"] .pn-panel a small { color: #6d7077; }
+html[data-theme="light"] .pn-panel a small { color: #5c6067; }
 html[data-theme="light"] .pn-icon { color: var(--ink); }
 html[data-theme="light"] .pn-menu { background: rgba(22, 23, 27, 0.06); color: var(--ink); }
 html[data-theme="light"] .pn-overlay { background: var(--overlay); }
@@ -395,7 +395,7 @@ html[data-theme="light"] a.cal-title:hover { color: var(--ink); }
 
 html[data-theme="light"] .sw {
   --line: rgba(22, 23, 27, 0.1);
-  --mute: #6d7077;
+  --mute: #5c6067;
   --card: #fff;
 }
 html[data-theme="light"] .sw-lede,
@@ -618,3 +618,22 @@ html[data-theme="light"] .sd-nl input[type="email"] {
   color: var(--ink);
   border-color: var(--line);
 }
+
+/* Contrast (WCAG 1.4.3) for the light theme, now the default on light-mode devices.
+   Red text on light surfaces uses the deeper --red-text; evidence labels get darker hues. */
+html[data-theme="light"] .sd-topic-stories {
+  background: var(--card);
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="light"] :is(.rel-tag, .rel-more a, .rel-places a, .sd-about a, .sd-about-kicker, .sd-latest, .sd-topic-list a, .sd-topic-kicker, .sd-disp-site a) {
+  color: var(--red-text);
+}
+html[data-theme="light"] .intel-ev-officially_confirmed { color: #1d6b3a; }
+html[data-theme="light"] .intel-ev-independently_corroborated { color: #1f4f99; }
+html[data-theme="light"] .intel-ev-company_claim { color: #7a5400; }
+html[data-theme="light"] :is(.intel-ev-reported_unconfirmed, .intel-ev-estimated, .intel-ev-unknown, .intel-ev-not_established) { color: #7a5a1e; }
+html[data-theme="light"] .intel-ev-historical { color: var(--mute); }
+html[data-theme="light"] :is(.intel-ev-superseded, .intel-ev-disputed) { color: #a3172e; }
+html[data-theme="light"] :is(.gs-go, .gs-k, .gs-cta, .sd-find-sec) { color: var(--red-text); }
+html[data-theme="light"] .fe { --red: #c4132e; }
