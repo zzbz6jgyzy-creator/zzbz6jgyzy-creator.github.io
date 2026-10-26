@@ -1,0 +1,50 @@
+name: FSD global atlas checks
+on:
+  pull_request:
+    paths:
+      - 'fsd.html'
+      - 'fsd-global*'
+      - 'data/fsd-global.json'
+      - 'data/fsd-europe.json'
+      - 'assets/world-countries.svg'
+      - 'data/pages.json'
+      - 'scripts/build-fsd-global.mjs'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/build-js.mjs'
+      - 'scripts/inject-js-bundles.py'
+      - 'scripts/js-bundles.json'
+      - 'tests/fsd-global*'
+      - '.github/workflows/fsd-global-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fsd-global:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned verification tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Validate evidence, saved preferences and deterministic output
+        run: |
+          node --test tests/fsd-global.test.mjs
+          node scripts/build-fsd-global.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- fsd.html data/pages.json assets/js
+      - name: Check phone, tablet, desktop and fallback interactions
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/fsd-global-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fsd-global-atlas-previews
+          path: /tmp/fsd-global

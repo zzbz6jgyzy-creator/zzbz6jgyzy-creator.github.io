@@ -513,9 +513,45 @@
     },
     {
       "url": "/fsd.html",
-      "title": "FSD Global Tracker",
-      "tag": "Trackers",
-      "summary": "Tesla FSD Supervised country by country: live markets, versions, expected milestones and source links."
+      "title": "FSD Global Tracker — Worldwide country atlas",
+      "tag": "Tesla",
+      "summary": "Explore Tesla FSD worldwide with an interactive country atlas, sourced market availability, software observations, country comparisons and vehicle eligibility guidance."
+    },
+    {
+      "url": "/fsd.html#map",
+      "title": "FSD worldwide availability map",
+      "tag": "Tesla",
+      "summary": "Explore dated Tesla market listings on an interactive world map with a searchable country directory."
+    },
+    {
+      "url": "/fsd.html#versions",
+      "title": "FSD software by region and hardware",
+      "tag": "Tesla",
+      "summary": "Understand FSD model names and firmware builds through dated independent software observations."
+    },
+    {
+      "url": "/fsd.html#compare",
+      "title": "Compare FSD availability between countries",
+      "tag": "Tesla",
+      "summary": "Compare market listings, permission evidence and software observations for two countries."
+    },
+    {
+      "url": "/fsd.html#milestones",
+      "title": "FSD global rollout evidence trail",
+      "tag": "Tesla",
+      "summary": "Read dated manufacturer statements, recognition records and software observations with sources."
+    },
+    {
+      "url": "/fsd.html#guide",
+      "title": "FSD eligibility — What does my Tesla need?",
+      "tag": "Tesla",
+      "summary": "Check the market, your installed driving computer, local package and delivered software."
+    },
+    {
+      "url": "/fsd.html#sources",
+      "title": "FSD global tracker sources and methodology",
+      "tag": "Tesla",
+      "summary": "Understand the difference between manufacturer listings, authority records and independent fleet samples."
     },
     {
       "url": "/tcmv.html",

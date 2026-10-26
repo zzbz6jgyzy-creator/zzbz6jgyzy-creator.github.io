@@ -6,6 +6,7 @@ import fs from "node:fs";
 import vm from "node:vm";
 import { buildReviewsStudio } from "./build-reviews-studio.mjs";
 import { buildBuyingStudio } from "./build-buying-studio.mjs";
+import { buildFSDGlobal } from "./build-fsd-global.mjs";
 import { buildFSDEurope } from "./build-fsd-europe.mjs";
 import { buildAutonomyEvidence } from "./build-autonomy-evidence.mjs";
 import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
@@ -43,6 +44,7 @@ function inject(file, tag, html) {
 buildBuyingStudio(root);
 buildReviewsStudio(root);
 buildFSDEurope(root);
+buildFSDGlobal(root);
 buildAutonomyEvidence(root);
 // Starship now has complete semantic saved HTML, shared with the browser.
 buildStarshipStudio(root);
