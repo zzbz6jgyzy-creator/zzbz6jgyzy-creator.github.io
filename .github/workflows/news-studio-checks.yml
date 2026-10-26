@@ -1,0 +1,57 @@
+name: Newsroom and reading discovery checks
+on:
+  pull_request:
+    paths:
+      - 'news.html'
+      - 'news-studio*'
+      - 'news-reading-list.js'
+      - 'news-keep.js'
+      - 'personal-model.js'
+      - 'personal-sync.js'
+      - 'data/articles.json'
+      - 'news-data.json'
+      - 'data/news-hold.json'
+      - 'data/news-studio-guide.json'
+      - 'data/pages.json'
+      - 'dispatch/**'
+      - 'scripts/build-news-studio.mjs'
+      - 'scripts/preserve-responsive-images.mjs'
+      - 'scripts/build-noscript.mjs'
+      - 'scripts/js-bundles.json'
+      - 'scripts/build-js.mjs'
+      - 'scripts/inject-js-bundles.py'
+      - 'tests/news-studio*'
+      - '.github/workflows/news-studio-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  newsroom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned verification tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Check story evidence, reading lists and deterministic output
+        run: |
+          node --test tests/news-studio.test.mjs
+          node scripts/build-news-studio.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- news.html data/pages.json assets/js
+      - name: Check responsive browsing and fallback states
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/news-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: newsroom-design-previews
+          path: /tmp/news-studio

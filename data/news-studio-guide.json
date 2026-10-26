@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "topics": [
+    {"id":"all","label":"All stories","links":[["Tracker","FSD around the world","/fsd.html","Country availability and the evidence behind it"],["Tracker","Starship flight lab","/starship.html","The missions, hardware and next flight"],["Guide","Visual explainers","/explainers.html","Understand the engineering behind the headlines"]]},
+    {"id":"tesla","label":"Tesla","links":[["Hub","Tesla overview","/tesla.html","The company, cars and current picture"],["Tracker","Software updates","/updates.html","Follow the software on the car"],["Guide","Tesla buying guide","/guides/tesla-buying-guide.html","Choose the model and trim for you"]]},
+    {"id":"spacex","label":"SpaceX","links":[["Hub","SpaceX mission desk","/spacex.html","The business, vehicles and missions"],["Tracker","Launch calendar","/calendar.html","Plan what to watch next"],["Guide","SpaceX explainers","/explainers.html#spacex","Explore the engineering"]]},
+    {"id":"starship","label":"Starship","links":[["Tracker","Starship flight lab","/starship.html","Compare missions and follow the next flight"],["Tool","Can I see the launch?","/see-the-launch.html","Explore your view of the launch"],["Guide","SpaceX explainers","/explainers.html#spacex","Hot staging, recovery and more"]]},
+    {"id":"starlink","label":"Starlink","links":[["Tracker","Starlink observatory","/starlink.html","Explore satellites, generations and your sky"],["Hub","SpaceX mission desk","/spacex.html","Put the constellation in context"],["Guide","SpaceX explainers","/explainers.html#spacex","Go deeper into the systems"]]},
+    {"id":"optimus","label":"Optimus","links":[["Guide","Optimus evolution lab","/optimus.html","Hardware, capabilities and demonstrations"],["Tracker","Promise tracker","/promise-tracker.html","Follow claims against the public record"],["Hub","Tesla overview","/tesla.html","The wider company picture"]]},
+    {"id":"grok","label":"Grok & xAI","links":[["Guide","Grok field guide","/grok.html","Learn the products and build better prompts"],["Tutorial","Practical Grok lessons","/grok.html#tutorial","Twelve guided lessons"],["Tool","API cost planner","/grok.html#models","Explore sourced model rates"]]},
+    {"id":"fsd","label":"FSD & Robotaxi","links":[["Tracker","FSD global atlas","/fsd.html","Availability by country and market"],["Tracker","Robotaxi reality map","/cybercab.html","Services, fleets and evidence"],["Guide","Autonomy evidence desk","/autonomy.html","Understand what each record establishes"]]},
+    {"id":"roadster","label":"Roadster","links":[["Guide","The Roadster studio","/roadster.html","The design, engineering and reported trims"],["Tracker","Promise tracker","/promise-tracker.html","Track statements and delivery targets"],["Hub","Tesla overview","/tesla.html","Explore the wider model range"]]},
+    {"id":"x","label":"X","links":[["Guide","Grok field guide","/grok.html","Understand the connected AI products"],["Personal","Your Daily","/daily.html","Bring your interests into one place"],["Archive","Dispatch archive","/dispatch.html?topic=xai","Browse original coverage"]]}
+  ]
+}

@@ -116,9 +116,13 @@
       "roadster-studio.js"
     ],
     "news": [
+      "personal-model.js",
+      "personal-sync.js",
       "news-keep.js",
-      "news-articles.js",
-      "news.js"
+      "news-studio-model.js",
+      "news-studio-view.js",
+      "news-reading-list.js",
+      "news-studio.js"
     ],
     "see-the-launch": [
       "calendar-merge.js",
@@ -343,9 +347,7 @@
         "core",
         "news"
       ],
-      "grow": [
-        "data-band"
-      ]
+      "grow": []
     },
     "see-the-launch.html": {
       "bundles": [
