@@ -731,12 +731,11 @@ def sitemap():
         + glob.glob(os.path.join(ROOT, "explainers", "*.html"))
         + glob.glob(os.path.join(ROOT, "fsd-europe", "*.html"))
         + glob.glob(os.path.join(ROOT, "cybercab-cities", "*.html"))
-        + glob.glob(os.path.join(ROOT, "orbital-command", "index.html"))
     )
     rows = []
     for p in pages:
         rel = os.path.relpath(p, ROOT).replace(os.sep, "/")
-        if rel in ("404.html",) or rel.startswith("preview/"):
+        if rel in ("404.html",) or rel.startswith(("preview/", "lab/")):
             continue
         src = open(p, encoding="utf-8").read()
         if re.search(r'name="robots"[^>]*noindex', src[:8000]):

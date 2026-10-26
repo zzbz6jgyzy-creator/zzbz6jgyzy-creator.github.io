@@ -27,7 +27,7 @@ Do not mark a test passed unless it was executed.
 
 Desktop 1280 and iPhone-ish 390×844: launch, landing actions, select ISS, Starlink filter, time scrub, deny geolocation + manual Killarney, mission CRS-35 fidelity labels, search, no-WebGL fallback, keyboard focus, reduced motion.
 
-These tests run against the **built** `orbital-command/index.html` via a local static server. They are not a substitute for a physical iPhone.
+These tests run against the **built** `lab/oc-1e1ef40d/index.html` via a local static server. They are not a substitute for a physical iPhone.
 
 ## Performance
 

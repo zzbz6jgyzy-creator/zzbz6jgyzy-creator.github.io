@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - "apps/orbital-command/**"
-      - "orbital-command/**"
+      - "lab/oc-1e1ef40d/**"
       - "data/orbital-command/**"
       - "scripts/build-orbital-command-gp.py"
       - "tests/orbital-command*"

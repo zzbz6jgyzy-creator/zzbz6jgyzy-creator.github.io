@@ -31,7 +31,6 @@
       ["SpaceX","/spacex.html","News &amp; missions",""],
       ["Starship flights","/starship.html","Flight lab",""],
       ["Starlink tracker","/starlink.html","Satellites by version",""],
-      ["Orbital Command","/orbital-command/","3D Earth &amp; satellites","3D"],
       {"label":"Launches","items":[
         ["Calendar","/calendar.html","Launches &amp; livestreams",""],
         ["Can I see it?","/see-the-launch.html","Visible from here?",""]]},
@@ -65,7 +64,6 @@
       {"label":"SpaceX","items":[
         ["Starship flights","/starship.html","Flight lab",""],
         ["Starlink tracker","/starlink.html","Satellites by version",""],
-        ["Orbital Command","/orbital-command/","3D Earth &amp; satellites","3D"],
         ["Calendar","/calendar.html","Launches &amp; livestreams",""]]},
       {"label":"More","items":[
         ["Explainers","/explainers.html","FSD stacks, hot staging",""],

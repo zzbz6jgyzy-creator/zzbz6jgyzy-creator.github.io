@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 26 Oct 2026 12:40:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 14:50:00 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-40b-gpu-lease.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-40b-gpu-lease.html</guid>
+      <pubDate>Mon, 26 Oct 2026 14:50:00 +0000</pubDate>
+      <category>SpaceX AI</category>
+      <description>SpaceX’s 8-K, filed 26 Oct, shows a binding commitment for a ~$40B Apollo-managed GPU lease. The rate isn’t set and closing is expected before year-end.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/nvidia-gb200-rack.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Latvia approves Tesla’s supervised FSD, making it 10 EU countries. Here’s what drivers there are getting</title>
       <link>https://superchargeddaily.com/dispatch/latvia-fsd-tenth-eu.html</link>
@@ -717,15 +726,6 @@
       <category>SpaceX</category>
       <description>FCC approval for a constellation that talks to ordinary phones.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-direct-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>FSD through Swiss snow</title>
-      <link>https://superchargeddaily.com/dispatch/fsd-snow.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/fsd-snow.html</guid>
-      <pubDate>Wed, 07 Oct 2026 22:38:21 +0000</pubDate>
-      <category>Tesla</category>
-      <description>Mountain passes, village lanes, and the European argument.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/fsd-snow-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>
