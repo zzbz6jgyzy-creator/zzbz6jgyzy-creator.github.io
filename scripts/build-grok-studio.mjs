@@ -13,8 +13,8 @@ export function buildGrokStudio(root = ROOT) {
   const read = p => fs.readFileSync(path.join(root, p), 'utf8');
   const d = M.validate(JSON.parse(read('data/grok-studio.json')));
   const articles = JSON.parse(read('data/articles.json'));
-  const title = 'Grok & xAI — Field Guide, Tutorials, Models & Prompts | Supercharged Daily';
-  const description = 'Explore Grok chat, voice, Imagine, Build and Bot. Follow 12 practical lessons, create useful prompts, compare sourced models and plans, and save your progress.';
+  const title = 'Grok & xAI field guide | Supercharged Daily';
+  const description = 'Grok models, voice, Imagine and xAI notes, with sources. Independent coverage.';
   const previous = read('grok.html');
   let html = previous.replace(/<main\b[\s\S]*?<\/main>/, () => preserveResponsiveImages(previous, V.build(d, articles)));
   html = html.replace(/<title>[\s\S]*?<\/title>/, () => '<title>' + M.esc(title) + '</title>');

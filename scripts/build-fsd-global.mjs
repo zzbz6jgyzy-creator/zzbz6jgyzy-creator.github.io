@@ -12,15 +12,26 @@ export function buildFSDGlobal(root=ROOT){
  const prior=html.match(/<script type="application\/json" id="fg-data">([\s\S]*?)<\/script>/)?.[1];
  if(prior&&JSON.parse(prior).reviewed>d.reviewed)throw Error('Refusing to roll back global market review');
  const newsletter=html.match(/<!--nl:start-->[\s\S]*?<!--nl:end-->/)?.[0];if(!newsletter)throw Error('Missing existing newsletter block');
+ const topic=html.match(/<!-- seo:topic-stories -->[\s\S]*?<!-- \/seo:topic-stories -->/)?.[0];
+ const ld=html.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/)?.[0];
  html=html.replace(/<main\b[\s\S]*?<\/main>/,()=>V.build(d,read('assets/world-countries.svg'),newsletter));
- const title='FSD Global Tracker — Country Availability, Software & Evidence | Supercharged Daily';
- const description='Explore Tesla FSD worldwide with an interactive country atlas, sourced market availability, software observations, country comparisons and vehicle eligibility guidance.';
+ const title='Tesla FSD worldwide tracker | Supercharged Daily';
+ const description='Where Tesla lists Full Self-Driving, country by country, with software observations and vehicle caveats.';
  html=html.replace(/<title>[\s\S]*?<\/title>/,()=>'<title>'+M.esc(title)+'</title>');
  html=html.replace(/(<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content=")[^"]*/g,(_,a)=>a+M.esc(description));
  html=html.replace(/(<meta\s+(?:name|property)="(?:og:title|twitter:title)"\s+content=")[^"]*/g,(_,a)=>a+M.esc(title));
  if(!html.includes('href="/fsd-global.css'))html=html.replace('    <!--sd:members-->','    <link rel="stylesheet" href="/fsd-global.css?v=20261026" />\n    <!--sd:members-->');
- const schema={'@context':'https://schema.org','@type':'CollectionPage','@id':'https://superchargeddaily.com/fsd.html#page',name:title,description,url:'https://superchargeddaily.com/fsd.html',dateModified:d.reviewed,isPartOf:{'@type':'WebSite',name:'Supercharged Daily',url:'https://superchargeddaily.com/'},hasPart:d.countries.map(c=>({'@type':'WebPageElement',name:'FSD in '+c.name,url:'https://superchargeddaily.com'+M.countryURL(c.code),description:M.labels[c.availability.status]+'. Vehicle eligibility remains configuration dependent.'}))};
- html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>'<script type="application/ld+json">'+JSON.stringify(schema).replace(/</g,'\\u003c')+'</script>');
+ if(ld)html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>ld);
+ else{
+  const schema={'@context':'https://schema.org','@type':'CollectionPage','@id':'https://superchargeddaily.com/fsd.html#page',name:title,description,url:'https://superchargeddaily.com/fsd.html',dateModified:d.reviewed,isPartOf:{'@type':'WebSite',name:'Supercharged Daily',url:'https://superchargeddaily.com/'},hasPart:d.countries.map(c=>({'@type':'WebPageElement',name:'FSD in '+c.name,url:'https://superchargeddaily.com'+M.countryURL(c.code),description:M.labels[c.availability.status]+'. Vehicle eligibility remains configuration dependent.'}))};
+  html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>'<script type="application/ld+json">'+JSON.stringify(schema).replace(/</g,'\\u003c')+'</script>');
+ }
+ if(topic&&!html.includes('seo:topic-stories')){
+  const mark=html.search(/<script type="application\/json" id="fg-data">/);
+  const nl=html.search(/\n?[ \t]*<!--nl:start-->/);
+  const at=mark>=0?mark:nl;
+  html=at>=0?html.slice(0,at)+'\n        '+topic+html.slice(at):html.replace('</main>','\n        '+topic+'\n</main>');
+ }
  fs.writeFileSync(path.join(root,'fsd.html'),html);
  const pages=JSON.parse(read('data/pages.json')),own=p=>/^\/fsd\.html(?:#(?:map|countries|versions|compare|milestones|guide|sources))?$/.test(p.url),slot=pages.pages.findIndex(p=>p.url==='/fsd.html');
  pages.pages=pages.pages.filter(p=>!own(p));
