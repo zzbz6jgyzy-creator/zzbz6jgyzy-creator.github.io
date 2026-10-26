@@ -11,8 +11,8 @@ DATA=json.loads((ROOT/'data/starlink-observatory.json').read_text());TOTAL=forma
 async def main():
  async with async_playwright() as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE') or shutil.which('chromium'),headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
-  for width,theme,mode in [(320,'dark','normal'),(390,'dark','normal'),(768,'dark','normal'),(1440,'dark','normal'),(390,'light','normal'),(1440,'light','normal'),(390,'dark','nojs'),(390,'dark','blocked'),(390,'dark','malformed'),(390,'dark','older')]:
-   context=await browser.new_context(viewport={'width':width,'height':920},java_script_enabled=mode!='nojs',reduced_motion='reduce',service_workers='block')
+  for width,theme,mode in [(320,'dark','normal'),(390,'dark','normal'),(768,'dark','normal'),(1440,'dark','normal'),(390,'light','normal'),(1440,'light','normal'),(390,'dark','nojs'),(390,'dark','blocked'),(390,'dark','malformed'),(390,'dark','older'),(390,'dark','headline-tracking')]:
+   context=await browser.new_context(viewport={'width':width,'height':920},is_mobile=width<=430,has_touch=width<=768,java_script_enabled=mode!='nojs',reduced_motion='reduce',service_workers='block')
    await context.add_init_script("localStorage.setItem('sd-theme',"+json.dumps(theme)+")")
    errors=[];requests=[]
    async def route(r):
@@ -32,6 +32,21 @@ async def main():
    assert await page.locator('.so-gen').count()==6
    assert TOTAL in await page.locator('.so-hero-total').inner_text()
    assert await page.locator('#identify').count()==1
+   # A leaked display-heading style must not crush small text, even on cached pages.
+   if mode=='headline-tracking':await page.locator('.so-hero-copy').evaluate("e=>e.style.letterSpacing='-3px'")
+   hero=await page.evaluate("""() => {
+    const root=document.querySelector('.so-hero-copy'), heading=root.querySelector('h1');
+    const blocks=[heading,...['.so-lede','.so-hero-total','.so-actions','.so-caption'].map(s=>root.querySelector(s))];
+    const small=[...root.querySelectorAll('.so-lede,.so-hero-total>div,.so-hero-total small,.so-btn,.so-text-link,.so-caption')];
+    const rect=e=>{const r=e.getBoundingClientRect();return {top:r.top,bottom:r.bottom,left:r.left,right:r.right}};
+    return {nested:!!heading.querySelector('p,div,a'),blocks:blocks.map(rect),
+     small:small.map(e=>({text:e.textContent.trim(),spacing:getComputedStyle(e).letterSpacing})),
+     label:rect(document.querySelector('.so-orbit-label')),art:rect(document.querySelector('#so-orbital-art'))};
+   }""")
+   assert not hero['nested'],(width,theme,mode,'intro content was swallowed by the heading')
+   assert all(a['bottom']<=b['top']+1 for a,b in zip(hero['blocks'],hero['blocks'][1:])),(width,theme,mode,'hero text blocks overlap',hero)
+   assert all(item['spacing']=='normal' or float(item['spacing'].removesuffix('px'))>=0 for item in hero['small']),(width,theme,mode,'small text inherited negative heading tracking',hero['small'])
+   assert hero['label']['bottom']<=hero['art']['top']+1,(width,theme,mode,'orbital snapshot label overlaps the illustration')
    if width>=1050:
     assert await page.evaluate("document.querySelector('.so-canvas-wrap').getBoundingClientRect().right<=document.querySelector('.so-console').getBoundingClientRect().left+1"), 'globe overlaps controls'
    await page.screenshot(path=str(OUT/f'{width}-{theme}-{mode}-hero.png'))

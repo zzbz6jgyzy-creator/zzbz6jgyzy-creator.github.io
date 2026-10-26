@@ -25,3 +25,8 @@ html[data-theme="light"] .so-workspace{--so-bg:#f5f7f8;--so-panel:#fff;--so-ink:
 @media(max-width:430px){.so-workspace{width:calc(100% - 32px)}}
 /* An aspect-ratio grid item must stay inside its assigned column. */
 .so-canvas-wrap{width:100%;max-width:100%;min-width:0}
+/* Keep display-heading tracking out of the intro, count labels and actions. */
+.so-hero-copy{min-width:0}
+.so-hero-copy :is(.so-lede,.so-hero-total>div,.so-actions,.so-caption){letter-spacing:normal;word-spacing:normal}
+/* Give the snapshot label its own row above the SVG's embedded Earth label. */
+.so-earth .so-orbit-label{position:static;flex-wrap:wrap;min-height:24px;margin:0 24px;padding-top:16px}
