@@ -253,8 +253,8 @@
       ]
     },
     "promise-tracker": {
-      "file": "/assets/js/promise-tracker.bundle.0422f5057e.js",
-      "bytes": 29237,
+      "file": "/assets/js/promise-tracker.bundle.9a91333621.js",
+      "bytes": 29335,
       "sources": [
         "promise-studio-model.js",
         "promise-studio-view.js",
@@ -331,6 +331,15 @@
       "sources": [
         "reviews-studio-model.js",
         "reviews-studio.js"
+      ]
+    },
+    "grok": {
+      "file": "/assets/js/grok.bundle.45f85d2c06.js",
+      "bytes": 40149,
+      "sources": [
+        "grok-studio-model.js",
+        "grok-studio-view.js",
+        "grok-studio.js"
       ]
     }
   }

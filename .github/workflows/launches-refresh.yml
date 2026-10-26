@@ -24,13 +24,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Refresh saved Calendar and launch-viewing pages
-        run: node scripts/build-calendar-studio.mjs && node scripts/build-launch-viewing.mjs
+      - name: Refresh saved Calendar, launch-viewing and SpaceX pages
+        run: node scripts/build-calendar-studio.mjs && node scripts/build-launch-viewing.mjs && node scripts/build-spacex-studio.mjs
       - name: Commit if launches changed
         run: |
-          if git diff --quiet -- data/launches.json data/calendar-studio.json data/calendar.ics calendar.html data/launch-viewing.json see-the-launch.html; then echo "No change"; exit 0; fi
+          if git diff --quiet -- data/launches.json data/calendar-studio.json data/calendar.ics calendar.html data/launch-viewing.json see-the-launch.html spacex.html data/pages.json; then echo "No change"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/launches.json data/calendar-studio.json data/calendar.ics calendar.html data/launch-viewing.json see-the-launch.html
+          git add data/launches.json data/calendar-studio.json data/calendar.ics calendar.html data/launch-viewing.json see-the-launch.html spacex.html data/pages.json
           git commit -m "Refresh upcoming launches from Launch Library 2."
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
