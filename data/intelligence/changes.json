@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-26T14:48:19.224Z",
+  "updated": "2026-10-26T14:58:27.070Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-40b-gpu-lease.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet",
+      "at": "2026-10-26T14:50:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-40b-gpu-lease.html",
+      "href": "/dispatch/spacex-40b-gpu-lease.html",
+      "summary": "SpaceX’s 8-K, filed 26 Oct, shows a binding commitment for a ~$40B Apollo-managed GPU lease. The rate isn’t set and closing is expected before year-end.",
+      "title": "SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet",
+      "id": "logged|dispatch:/dispatch/spacex-40b-gpu-lease.html|2026-10-26T14:50:00.000Z|SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet"
+    },
     {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.11",
@@ -340,23 +357,6 @@
       "summary": "A NASA safety adviser says the latest refueling estimate is “around 22” launches; Musk says 6 to 8. What each number means per tanker, and how long each takes to fly.",
       "title": "NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers",
       "id": "logged|dispatch:/dispatch/starship-moon-refuel-22-vs-8.html|2026-10-23T07:56:21.000Z|NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-bot-phone-apps.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok Bot can now use your phone’s Calendar, Messages, Contacts and Home apps. Here’s what each permission unlocks",
-      "at": "2026-10-23T01:55:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-bot-phone-apps.html",
-      "href": "/dispatch/grok-bot-phone-apps.html",
-      "summary": "Rolling out on iOS and Android: the six phone permissions in @bot’s screen, from Calendar to door locks, and what hasn’t been said yet.",
-      "title": "Grok Bot can now use your phone’s Calendar, Messages, Contacts and Home apps. Here’s what each permission unlocks",
-      "id": "logged|dispatch:/dispatch/grok-bot-phone-apps.html|2026-10-23T01:55:00.000Z|Grok Bot can now use your phone’s Calendar, Messages, Contacts and Home apps. Here’s what each permission unlocks"
     },
     {
       "type": "logged",

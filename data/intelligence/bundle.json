@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-26T14:48:19.224Z",
+  "generatedAt": "2026-10-26T14:58:27.070Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -243,6 +243,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-40b-gpu-lease.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet",
+      "at": "2026-10-26T14:50:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-40b-gpu-lease.html",
+      "href": "/dispatch/spacex-40b-gpu-lease.html",
+      "summary": "SpaceX’s 8-K, filed 26 Oct, shows a binding commitment for a ~$40B Apollo-managed GPU lease. The rate isn’t set and closing is expected before year-end.",
+      "title": "SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet",
+      "id": "logged|dispatch:/dispatch/spacex-40b-gpu-lease.html|2026-10-26T14:50:00.000Z|SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet"
+    },
     {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.11",
@@ -582,23 +599,6 @@
       "summary": "A NASA safety adviser says the latest refueling estimate is “around 22” launches; Musk says 6 to 8. What each number means per tanker, and how long each takes to fly.",
       "title": "NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers",
       "id": "logged|dispatch:/dispatch/starship-moon-refuel-22-vs-8.html|2026-10-23T07:56:21.000Z|NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-bot-phone-apps.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok Bot can now use your phone’s Calendar, Messages, Contacts and Home apps. Here’s what each permission unlocks",
-      "at": "2026-10-23T01:55:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-bot-phone-apps.html",
-      "href": "/dispatch/grok-bot-phone-apps.html",
-      "summary": "Rolling out on iOS and Android: the six phone permissions in @bot’s screen, from Calendar to door locks, and what hasn’t been said yet.",
-      "title": "Grok Bot can now use your phone’s Calendar, Messages, Contacts and Home apps. Here’s what each permission unlocks",
-      "id": "logged|dispatch:/dispatch/grok-bot-phone-apps.html|2026-10-23T01:55:00.000Z|Grok Bot can now use your phone’s Calendar, Messages, Contacts and Home apps. Here’s what each permission unlocks"
     },
     {
       "type": "logged",
@@ -1629,14 +1629,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-25T20:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1650,14 +1650,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-26T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-26T10:32:58.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1671,35 +1671,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-26T14:48:19.224Z",
+      "lastChecked": "2026-10-26T14:58:27.070Z",
       "lastVerified": "2026-10-26T13:38:13.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1708,85 +1708,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.204Z",
-      "finished": "2026-10-26T14:48:19.210Z"
+      "started": "2026-10-26T14:58:27.048Z",
+      "finished": "2026-10-26T14:58:27.056Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.210Z",
-      "finished": "2026-10-26T14:48:19.211Z"
+      "started": "2026-10-26T14:58:27.056Z",
+      "finished": "2026-10-26T14:58:27.056Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.211Z",
-      "finished": "2026-10-26T14:48:19.211Z"
+      "started": "2026-10-26T14:58:27.056Z",
+      "finished": "2026-10-26T14:58:27.057Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.211Z",
-      "finished": "2026-10-26T14:48:19.217Z"
+      "started": "2026-10-26T14:58:27.057Z",
+      "finished": "2026-10-26T14:58:27.062Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.217Z",
-      "finished": "2026-10-26T14:48:19.220Z"
+      "started": "2026-10-26T14:58:27.062Z",
+      "finished": "2026-10-26T14:58:27.066Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.220Z",
-      "finished": "2026-10-26T14:48:19.221Z"
+      "started": "2026-10-26T14:58:27.066Z",
+      "finished": "2026-10-26T14:58:27.067Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.221Z",
-      "finished": "2026-10-26T14:48:19.222Z"
+      "started": "2026-10-26T14:58:27.067Z",
+      "finished": "2026-10-26T14:58:27.068Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.222Z",
-      "finished": "2026-10-26T14:48:19.222Z"
+      "started": "2026-10-26T14:58:27.068Z",
+      "finished": "2026-10-26T14:58:27.068Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.222Z",
-      "finished": "2026-10-26T14:48:19.222Z"
+      "started": "2026-10-26T14:58:27.068Z",
+      "finished": "2026-10-26T14:58:27.068Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.222Z",
-      "finished": "2026-10-26T14:48:19.223Z"
+      "started": "2026-10-26T14:58:27.068Z",
+      "finished": "2026-10-26T14:58:27.069Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.223Z",
-      "finished": "2026-10-26T14:48:19.223Z"
+      "started": "2026-10-26T14:58:27.069Z",
+      "finished": "2026-10-26T14:58:27.069Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.223Z",
-      "finished": "2026-10-26T14:48:19.223Z"
+      "started": "2026-10-26T14:58:27.069Z",
+      "finished": "2026-10-26T14:58:27.070Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-26T14:48:19.223Z",
-      "finished": "2026-10-26T14:48:19.224Z"
+      "started": "2026-10-26T14:58:27.070Z",
+      "finished": "2026-10-26T14:58:27.070Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-26T14:48:19.224Z",
+    "generatedAt": "2026-10-26T14:58:27.070Z",
     "factCount": 17,
     "changeCount": 79,
     "conflictCount": 2,
