@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="/members.css?v=20261022" />
     <script type="module" src="/members.js?v=20261022"></script>
     <!--/sd:members-->
+      <link rel="stylesheet" href="/page-studios.css?v=20261027"/>
   </head>
   <body class="sd-search-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -226,7 +227,7 @@
       </aside>
       <div class="pn-spacer" aria-hidden="true"></div>
 
-      <main id="main" data-sd-page>
+      <main id="main" data-sd-page class="ps-page ps-search">
         <section class="page-hero">
           <nav class="sd-crumbs" aria-label="Breadcrumb">
             <ol>
@@ -235,8 +236,8 @@
             </ol>
           </nav>
           <p class="eyebrow">Find</p>
-          <h1>Search</h1>
-          <p>Stories, trackers and pages on this site.</p>
+          <h1>Find your next<br>deep dive.</h1>
+          <p>Search original reporting, explore a tracker or pick up a subject you want to understand.</p>
           <form class="sd-search-form" action="/search.html" method="get" role="search" data-sd-track="search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
             <label class="visually-hidden" for="sd-search-q">Search Supercharged Daily</label>
@@ -250,7 +251,7 @@
             <button type="button" class="sd-disp-chip" data-sd-kind="wire">Headlines</button>
           </div>
         </section>
-        <section class="sd-search-panel" aria-live="polite">
+        <nav class="ps-search-shortcuts" aria-label="Suggested searches"><a href="/search.html?q=FSD"><small>TESLA / AUTONOMY</small>FSD &amp; Robotaxi ↗</a><a href="/search.html?q=Starship"><small>SPACEX / FLIGHT</small>Starship missions ↗</a><a href="/search.html?q=Starlink"><small>SPACEX / ORBIT</small>Starlink constellation ↗</a><a href="/search.html?q=Roadster"><small>TESLA / DESIGN</small>The next Roadster ↗</a><a href="/search.html?q=charging"><small>OWNERSHIP / ENERGY</small>Charging &amp; ownership ↗</a><a href="/search.html?q=Grok"><small>XAI / TOOLS</small>Grok &amp; AI ↗</a></nav><section class="sd-search-panel" aria-live="polite">
           <p class="sd-find-status" data-sd-status>Loading…</p>
           <div class="sd-find-hits" data-sd-hits></div>
           <noscript><p class="sd-find-empty">Turn on JavaScript to search this site. You can still browse <a href="/news.html">News</a> and <a href="/dispatch.html">Dispatch</a>.</p></noscript>
