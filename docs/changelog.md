@@ -1,5 +1,12 @@
 # Changelog
 
+## 27 Oct 2026 — Write articles in Markdown
+
+- New articles can be one file: `content/dispatch/<slug>.md`. `scripts/render-article.py` renders it to the same markup as a hand-written
+  page and CI (`home-build.yml`) then runs the usual generators. Refuses DRAFT markers, raw HTML, missing sources or alt text. Guide:
+  `docs/writing-articles.md`; tests: `tests/test_render_article.py`. Existing articles are untouched.
+- Fixed: `new-article.py` pages inherited the old live X widgets script from the template; it is now stripped.
+
 ## 26 Oct 2026 — Migration step 0 and 1 (no live change)
 
 - New `astro/` project: Astro 7 static build that packages the current site for Cloudflare Workers, plus `astro/scripts/parity.mjs`

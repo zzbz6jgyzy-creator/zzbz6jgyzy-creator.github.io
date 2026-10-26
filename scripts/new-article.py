@@ -58,7 +58,7 @@ def build(args):
     data = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
     articles = data["articles"]
     url = f"/dispatch/{args.slug}.html"
-    if any(a["url"] == url for a in articles) or (ROOT / url.lstrip("/")).exists():
+    if not getattr(args, "update", False) and (any(a["url"] == url for a in articles) or (ROOT / url.lstrip("/")).exists()):
         sys.exit(f"{url} already exists")
     if args.topic not in TOPICS:
         sys.exit("--topic must be one of " + ", ".join(TOPICS))
@@ -128,7 +128,11 @@ def build(args):
         '          <ul><li><a href="https://example.com/DRAFT" rel="noopener">DRAFT: primary source, with date</a></li></ul>\n'
         '          <p><a class="x-link" href="https://x.com/ALJR86">Follow @ALJR86 on X →</a></p>\n          '
     )
+    # render-article.py passes a finished body (eyebrow, h1, meta and content) instead of the DRAFT scaffold
+    body = getattr(args, "body_html", None) or body
     page = page[:start] + body + page[end:]
+    # the template may still carry the live widgets script; X posts load on request now (x-embed.js)
+    page = re.sub(r'\s*<script async src="https://platform\.twitter\.com/widgets\.js"[^>]*></script>', "", page)
     # these are rebuilt by CI from the new entry
     page = re.sub(r"<!--related:start-->[\s\S]*?<!--related:end-->", "", page)
     page = re.sub(r"<!--sd:article-wayfinding-->[\s\S]*?<!--/sd:article-wayfinding-->", "", page)

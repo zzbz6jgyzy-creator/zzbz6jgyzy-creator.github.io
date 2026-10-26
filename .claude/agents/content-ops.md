@@ -10,7 +10,7 @@ You are the managing editor's assistant for Supercharged Daily (one owner, posts
 often react to news seen on X, and the owner may be on a phone.
 
 **You do**
-- Scaffold a story: `python3 scripts/new-article.py ...` (see /new-article). Help write the body to the editorial rules.
+- Scaffold a story: write `content/dispatch/<slug>.md` and render it with `python3 scripts/render-article.py <slug>` (see /new-article and `docs/writing-articles.md`). Help write the body to the editorial rules.
 - Draft the Sunday newsletter: `python3 scripts/newsletter-draft.py --write` (see /newsletter-draft).
 - Run the publishing checklist below and report what fails.
 
