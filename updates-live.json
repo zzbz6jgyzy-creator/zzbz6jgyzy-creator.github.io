@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T05:55:11Z",
+  "updated": "2026-10-26T07:15:52Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3365,
@@ -63,9 +63,9 @@
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 104,
+      "count": 131,
       "fleet": 3365,
-      "percent": 3.1,
+      "percent": 3.9,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -108,17 +108,17 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 100,
+        "US": 127,
         "CA": 4
       },
-      "pending": 424,
+      "pending": 407,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-26T05:49:17Z"
+      "lastSeen": "2026-10-26T07:14:52Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 255,
+      "count": 257,
       "fleet": 3365,
       "percent": 7.6,
       "fsd": null,
@@ -195,7 +195,7 @@
         "TR"
       ],
       "countryCounts": {
-        "US": 80,
+        "US": 82,
         "GB": 37,
         "DE": 20,
         "FR": 18,
@@ -230,9 +230,9 @@
         "QA": 1,
         "TR": 1
       },
-      "pending": 96,
+      "pending": 93,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-26T04:44:04Z"
+      "lastSeen": "2026-10-26T06:52:05Z"
     },
     {
       "id": "2026.38.5.5",
@@ -381,9 +381,9 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 1028,
+      "count": 1029,
       "fleet": 3365,
-      "percent": 30.5,
+      "percent": 30.6,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -429,7 +429,7 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 962,
+        "US": 963,
         "CA": 59,
         "MX": 4,
         "UA": 2,
@@ -437,7 +437,7 @@
       },
       "pending": 32,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-10-25T09:44:44Z"
+      "lastSeen": "2026-10-26T06:57:59Z"
     },
     {
       "id": "2026.38.5",
