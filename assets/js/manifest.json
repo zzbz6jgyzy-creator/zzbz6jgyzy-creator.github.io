@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.84cbc5ceba.js",
-      "bytes": 43381,
+      "file": "/assets/js/core.bundle.c79618537b.js",
+      "bytes": 43598,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -91,8 +91,8 @@
       ]
     },
     "updates": {
-      "file": "/assets/js/updates.bundle.5243445a5d.js",
-      "bytes": 39134,
+      "file": "/assets/js/updates.bundle.a10d1b4d01.js",
+      "bytes": 39123,
       "sources": [
         "cesium-lazy.js",
         "software-data.js",
@@ -117,8 +117,8 @@
       ]
     },
     "calendar": {
-      "file": "/assets/js/calendar.bundle.29c0870761.js",
-      "bytes": 36690,
+      "file": "/assets/js/calendar.bundle.9f4488f779.js",
+      "bytes": 36692,
       "sources": [
         "calendar-merge.js",
         "calendar-studio-model.js",
@@ -127,8 +127,8 @@
       ]
     },
     "fsd-europe": {
-      "file": "/assets/js/fsd-europe.bundle.d3c3a6eb28.js",
-      "bytes": 107911,
+      "file": "/assets/js/fsd-europe.bundle.538b0b2a10.js",
+      "bytes": 107912,
       "sources": [
         "fsd-europe-data.js",
         "fsd-europe-model.js",
@@ -138,8 +138,8 @@
       ]
     },
     "fsd": {
-      "file": "/assets/js/fsd.bundle.a7be3d9784.js",
-      "bytes": 36839,
+      "file": "/assets/js/fsd.bundle.3eb39a834e.js",
+      "bytes": 36850,
       "sources": [
         "fsd-global-model.js",
         "fsd-global-view.js",
@@ -147,8 +147,8 @@
       ]
     },
     "cybercab": {
-      "file": "/assets/js/cybercab.bundle.e74666b7f5.js",
-      "bytes": 51546,
+      "file": "/assets/js/cybercab.bundle.777107729b.js",
+      "bytes": 51535,
       "sources": [
         "mobility-model.js",
         "mobility-view.js",
@@ -173,8 +173,8 @@
       ]
     },
     "news": {
-      "file": "/assets/js/news.bundle.cc5d510efa.js",
-      "bytes": 45504,
+      "file": "/assets/js/news.bundle.2ff6c1c647.js",
+      "bytes": 45500,
       "sources": [
         "personal-model.js",
         "personal-sync.js",

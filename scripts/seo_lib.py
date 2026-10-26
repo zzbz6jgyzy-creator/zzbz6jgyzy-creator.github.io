@@ -147,6 +147,23 @@ def set_description(src: str, desc: str) -> str:
     return src
 
 
+def _insert_in_head(src: str, snippet: str) -> str:
+    """Park robots/feed/twitter tags before page CSS that sits next to members.
+
+    Studio builders re-insert their stylesheet immediately before
+    ``<!--sd:members-->``. Putting Discover/RSS tags on ``</head>`` lands them
+    between that CSS and the members block, so the next studio --check fails.
+    Prefer ``<!-- /seo:ld -->``, then ``</title>``, then ``</head>``.
+    """
+    snippet = snippet if snippet.endswith("\n") else snippet + "\n"
+    for marker in ("    <!-- /seo:ld -->", "<!-- /seo:ld -->", "</title>"):
+        pos = src.find(marker)
+        if pos >= 0:
+            at = pos + len(marker)
+            return src[:at] + "\n" + snippet.rstrip("\n") + src[at:]
+    return src.replace("</head>", snippet + "  </head>", 1)
+
+
 def ensure_robots(src: str) -> str:
     """Site-wide Discover opt-in. Promise tracker already had this; others did not."""
     wanted = "index, follow, max-image-preview:large"
@@ -160,10 +177,8 @@ def ensure_robots(src: str) -> str:
         return src[: m.start(1)] + wanted + src[m.end(1) :]
     if re.search(r'<meta\s+content="[^"]*"\s+name="robots"', src, re.I):
         return src
-    return src.replace(
-        "</head>",
-        '    <meta name="robots" content="%s" />\n  </head>' % wanted,
-        1,
+    return _insert_in_head(
+        src, '    <meta name="robots" content="%s" />' % wanted
     )
 
 
@@ -172,9 +187,9 @@ def ensure_feed_link(src: str) -> str:
         return src
     block = (
         '    <link rel="alternate" type="application/rss+xml" '
-        'title="Supercharged Daily" href="https://superchargeddaily.com/feed.xml" />\n'
+        'title="Supercharged Daily" href="https://superchargeddaily.com/feed.xml" />'
     )
-    return src.replace("</head>", block + "  </head>", 1)
+    return _insert_in_head(src, block)
 
 
 def strip_google_fonts(src: str) -> str:
@@ -214,7 +229,7 @@ def ensure_twitter_image(src: str) -> str:
         tag += '    <meta name="twitter:image:alt" content="%s" />\n' % alt.group(1)
     if "</head>" not in src:
         return src
-    return src.replace("</head>", tag + "  </head>", 1)
+    return _insert_in_head(src, tag.rstrip("\n"))
 
 
 def ensure_twitter_creator(src: str) -> str:
@@ -335,11 +350,11 @@ def set_og_image(src: str, url: str, alt: str, width="1200", height="630") -> st
     src = set_attr(src, "name", "twitter:image", url)
     src = set_attr(src, "name", "twitter:image:alt", alt)
     if not re.search(r'<meta\s+name="twitter:image"', src) and "</head>" in src:
-        src = src.replace(
-            "</head>",
+        src = _insert_in_head(
+            src,
             '    <meta name="twitter:image" content="%s" />\n'
-            '    <meta name="twitter:image:alt" content="%s" />\n  </head>' % (html.escape(url, True), html.escape(alt, True)),
-            1,
+            '    <meta name="twitter:image:alt" content="%s" />'
+            % (html.escape(url, True), html.escape(alt, True)),
         )
     return src
 
