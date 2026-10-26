@@ -3,6 +3,14 @@
 Audited 26 Oct 2026 against `main` at `d926e4c` and the live site at https://superchargeddaily.com.
 No code was changed for this audit.
 
+> **Status, 26 Oct 2026 (later the same day).**
+> - **Fixed:** the P0 items (SEO tags, headline truncation, device theme, contrast) and the article CLS.
+> - **Corrected by follow-up measurement** (struck through below, with notes):
+>   - The "duplicate stylesheets" finding was a grep false positive.
+>   - The Starship 2 s render delay is a Lighthouse modelling artefact.
+>   - The real article CLS cause was the breadcrumb styles in async `related.css`, not a font swap.
+> - Progress is tracked in `docs/changelog.md`.
+
 ## 1. What the site is today
 
 | Layer | Finding |
@@ -40,10 +48,13 @@ INP cannot be measured in a lab; TBT is the stand-in. Real INP needs field data 
 
 **Overall:** better than expected. Articles and most trackers are already near the 90+ bar. The problems are specific:
 
-- **Starship tracker LCP 3.5–3.8 s on mobile (fails "good" ≤ 2.5 s).** The LCP element is `img.ss-hero-photo`; it downloads in ~150 ms but has a **~2 s element render delay**, so something (render-blocking CSS chain or a JS/CSS reveal) holds it back.
+- *Correction:* in a real throttled Chrome trace (4× CPU, 1.6 Mbps, 150 ms RTT), the Starship hero paints about 0.2 s after first paint. The 2 s render delay below comes from Lighthouse's simulated throttling. The real lever is first paint: blocking CSS plus page size.
+- ~~**Starship tracker LCP 3.5–3.8 s on mobile (fails "good" ≤ 2.5 s).** The LCP element is `img.ss-hero-photo`; it downloads in ~150 ms but has a **~2 s element render delay**, so something (render-blocking CSS chain or a JS/CSS reveal) holds it back.~~
 - **Homepage main-thread spikes.** One run had 570 ms TBT and 3.4 s main-thread work. Run-to-run variance this large usually means heavy hydration JS (`home.bundle`, `intel.bundle`, `core.bundle`) competing with rendering.
-- **Article CLS 0.15 in one of two runs** (threshold 0.1). The shifting node is `p.standfirst`, the LCP text block — most likely a web-font swap whose fallback metrics don't match.
-- **Render-blocking CSS: 6–11 stylesheets per page.** 26 pages load the same stylesheet twice: once with the `media="print" onload` async trick and again as a normal blocking `<link>`, which cancels the async benefit.
+- **Article CLS 0.15 in one of two runs** (threshold 0.1). *Root cause, found later:* the breadcrumb styles lived in the async `related.css`. Until it loaded, the breadcrumb wrapped the full title (~150 px), then collapsed to 44 px. This gave CLS 0.104–0.115 on every live run. **Fixed** by moving those rules to `styles.css`.
+- **Render-blocking CSS: 6–11 stylesheets per page.** ~~26 pages load the same stylesheet twice~~
+  - *Correction:* the second copy is the `<noscript>` fallback, which is the correct pattern.
+  - A test that concatenated the blocking CSS into one file made first paint *slower* (one large file versus parallel downloads), so merging isn't a clear win on the current stack.
 - **Cache lifetimes.** Lighthouse estimates 140–265 KB of repeat-visit savings per page; hashed bundles get only 4 h.
 - **Best Practices 58 on articles.** It's caused by the X/Twitter embed (`widgets.js`): third-party cookies, Issues-panel warnings, plus 31 KB and 12+ requests. Every page also loses points to deprecated-API warnings from **Cloudflare's injected bot-challenge script** (`/cdn-cgi/challenge-platform/.../main.js`, ~10 KB on every page). That script comes from Bot Fight Mode / JS detections in the Cloudflare dashboard.
 - **Very large HTML documents.** 8 pages exceed 200 KB because tracker data is pre-rendered inline: promise-tracker 520 KB, see-the-launch 356 KB, news 329 KB, fsd-europe 329 KB, fsd 301 KB, tesla-clubs 291 KB, starlink 233 KB, calendar 205 KB.
@@ -67,7 +78,7 @@ INP cannot be measured in a lab; TBT is the stand-in. Real INP needs field data 
 | S2 | **Headlines truncated mid-sentence** in `og:title`, `twitter:title` and the JSON-LD `headline`, e.g. "SpaceX's $40 billion GPU deal is four". 11 articles end on a dangling word. This is what X shows on every share. | `scripts/build-seo.py` / `seo_lib.py` truncation |
 | S3 | **Reviews have no `Review` schema.** They use `Article` + `Car`, so they can't earn review rich results (rating, pros/cons). | `reviews/*.html` |
 | S4 | `dateModified` always equals `datePublished`. 21 articles lack `article:modified_time`. Updates to stories aren't signalled. | Dispatch |
-| S5 | The news sitemap holds 10 items, some older than 48 h. Google News only uses articles from the last 2 days, so older entries are ignored (harmless, but the window should be enforced). | `sitemap-news.xml` |
+| S5 | The news sitemap holds 10 items, some older than 48 h. Google ignores entries older than 2 days. *Update:* #205 on `main` narrowed the window to 48 h. | `sitemap-news.xml` |
 | S6 | Small gaps: 3 duplicate titles; `model3-viewer.html` has no canonical, description, viewport or `h1`; `dispatch/grok-crew.html` has no description, OG image or `h1`. | various |
 | S7 | Homepage on mobile shows **no headline above the fold**. It shows tagline → buttons → newsletter → Roadster showcase. Readers arriving from X see marketing, not news. | `index.html` |
 
@@ -114,13 +125,13 @@ Impact: H/M/L. Effort: S (< 1 h), M (half-day), L (multi-day). Everything in P0/
 | P0 | Respect `prefers-color-scheme` as the default, keep the toggle as an override, and add `color-scheme` meta (A5). | H | S |
 | P0 | Fix the contrast failures (A1) and the label/name mismatch (A2). | H | S |
 | P0 | Turn off Cloudflare Bot Fight Mode / JS detections for the site, or scope them to `/members*`. This removes the injected challenge script from every page. *(Dashboard change — needs your OK.)* | M | S |
-| P1 | Starship hero: find and remove the 2 s render delay; preload the hero image with `fetchpriority="high"` (LCP 3.8 s → < 2.5 s). | H | S–M |
-| P1 | Remove duplicated stylesheet `<link>`s on 26 pages; merge the always-on CSS (styles + theme + nav-pill + members + wayfinding) into one file. | M | M |
-| P1 | Add metric-matched fallback for the standfirst font to stop article CLS. | M | S |
+| ~~P1~~ | ~~Starship hero render delay~~: a lab artefact (see §2). The real gains are page size and fewer blocking files. | — | — |
+| ~~P1~~ | ~~Remove duplicated stylesheet links~~: not a real issue (noscript fallbacks). Merging CSS measured slower. Revisit within the migration. | — | — |
+| ✅ P1 | Article CLS: moved the above-the-fold breadcrumb, updated and disclosure styles to render-blocking `styles.css` (0.11 → 0). | M | S |
 | P1 | Replace live X embeds with a static, pre-rendered post card (text, author, date, link; optional click-to-load). Fixes Best Practices 58 → ~100, A3, and 31 KB + 12 requests per article. | H | M |
 | P1 | Put the top story above the fold on mobile homepage (S7). | H | M |
 | P1 | Add `Review` schema (rating, pros/cons, author) to the review template (S3). Set real `dateModified` on updates (S4). Enforce the 48 h news-sitemap window (S5). | M | S–M |
-| P1 | Fix the failing "Pre-render homepage" job (E2). | M | S–M |
+| ✅ P1 | "Pre-render homepage" job (E2): fixed on `main` by #201/#205; the last 5 runs are green. | M | — |
 | P2 | Move MP4s out of git to Cloudflare R2/Stream (E3). *(History rewrite to actually shrink the repo needs separate approval.)* | M | M |
 | P2 | Stop committing data to `main` every 30 min: write tracker JSON to KV/R2 (or a `data` branch) and rebuild only on content changes (E1). | M | M–L |
 | P2 | Long-cache hashed assets (1 year, immutable) — needs a host that allows headers (Cloudflare). | M | S after move |

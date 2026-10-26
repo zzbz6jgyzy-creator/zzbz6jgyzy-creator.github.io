@@ -1,5 +1,15 @@
 # Changelog
 
+## 26 Oct 2026 — P1 round
+
+- **Article CLS 0.11 → 0.** Breadcrumb, "Updated" and disclosure styles moved from the async `related.css` to render-blocking `styles.css`; `styles.css` version bumped. Verified on live with throttled Chrome (before) and locally with `related.css` delayed by 1.5 s (after).
+- **Investigated and not changed:**
+  - Starship LCP: real paint is about 0.2 s after first paint; Lighthouse's 2 s figure is simulation.
+  - Merging blocking CSS: measured slower.
+  - The "duplicate" stylesheet links are `<noscript>` fallbacks.
+  - The news sitemap window: narrowed on `main` by #205.
+- **Merged `main`:** kept #205's robotaxi description repair and homepage red, and reapplied the light-theme contrast fixes on top.
+
 ## 26 Oct 2026 — P0 fixes from the audit
 
 - **SEO:** repaired the broken description, `og:description` and `twitter:description` tags on `dispatch/robotaxi-938-f1-cota.html`.
