@@ -1,5 +1,13 @@
 # Changelog
 
+## 26 Oct 2026 — Phase 2: Claude Code setup
+
+- Added `CLAUDE.md` (the project brief) and `.claude/`: five subagents, six slash commands, two skills, two rules files, three
+  hooks. Details in `docs/claude-code-setup.md`; reasons in `docs/decisions.md`.
+- New helpers: `scripts/audit/` (SEO check, axe, Lighthouse, screenshots), `scripts/new-article.py`,
+  `scripts/newsletter-draft.py`, `scripts/install-git-hooks.sh`. Tests in `tests/test_claude_setup.py`.
+- **Not active yet:** hooks and permission rules are in `.claude/settings.proposed.json` until you rename it to `settings.json`.
+
 ## 26 Oct 2026 — P1 round
 
 - **Article CLS 0.11 → 0.** Breadcrumb, "Updated" and disclosure styles moved from the async `related.css` to render-blocking `styles.css`; `styles.css` version bumped. Verified on live with throttled Chrome (before) and locally with `related.css` delayed by 1.5 s (after).
