@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T01:15:56Z",
+ "updated": "2026-10-26T02:00:32Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,24 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-26T01:15:56Z",
+  "fetched": "2026-10-26T02:00:32Z",
   "items": [
+   {
+    "t": "2026-10-26T01:40:08Z",
+    "to": "2026.38.5.6",
+    "from": "2026.20.10",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-26T01:15:32Z",
+    "to": "2026.38.5.6",
+    "from": "2026.38.5.5",
+    "model": "Model Y SR (2025)",
+    "hw": "4.0",
+    "country": "Australia"
+   },
    {
     "t": "2026-10-26T01:00:34Z",
     "to": "2026.38.3.2",
@@ -556,22 +572,6 @@
     "model": "Model S AWD (2024)",
     "hw": "4.0",
     "country": "United States"
-   },
-   {
-    "t": "2026-10-25T23:33:30Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model S 75D (2016)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-25T23:22:08Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model Y Performance (2026)",
-    "hw": "4.0",
-    "country": "Poland"
    }
   ]
  }
