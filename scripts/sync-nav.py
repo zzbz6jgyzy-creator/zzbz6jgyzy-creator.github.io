@@ -87,7 +87,7 @@ def block(navtag):
 RX = re.compile(r'<div class="pn-wrap">\s*(<nav class="pn"[^>]*>).*?</aside>', re.S)
 check = "--check" in sys.argv; bad = []
 for p in sorted(root.rglob("*.html")):
-    if any(x in p.parts for x in (".git", "node_modules", "vendor", "lab", "apps")): continue
+    if ".git" in p.parts: continue
     s = p.read_text()
     n = RX.sub(lambda mo: block(mo.group(1)), s, count=1)
     if RX.search(s):

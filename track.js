@@ -12,18 +12,6 @@
     "theme_toggle",
     "dispatch_filter",
     "tesmag_click",
-    "orbital_globe_load",
-    "orbital_globe_fail",
-    "orbital_sat_select",
-    "orbital_starlink",
-    "orbital_search",
-    "orbital_time",
-    "orbital_above",
-    "orbital_pass",
-    "orbital_mission",
-    "orbital_challenge",
-    "orbital_share",
-    "orbital_quality",
   ]);
   const send = (n) => {
     if (!ALLOW.has(n)) return;
