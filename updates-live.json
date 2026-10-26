@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T07:15:52Z",
+  "updated": "2026-10-26T08:08:39Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3365,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
-      "count": 129,
+      "count": 130,
       "fleet": 3365,
-      "percent": 3.8,
+      "percent": 3.9,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -53,19 +53,19 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 122,
+        "AU": 123,
         "NZ": 7
       },
-      "pending": 22,
+      "pending": 21,
       "firstSeen": "2026-10-24T19:52:52Z",
-      "lastSeen": "2026-10-26T03:47:00Z"
+      "lastSeen": "2026-10-26T07:53:08Z"
     },
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 131,
+      "count": 147,
       "fleet": 3365,
-      "percent": 3.9,
+      "percent": 4.4,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -108,19 +108,19 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 127,
+        "US": 143,
         "CA": 4
       },
-      "pending": 407,
+      "pending": 388,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-26T07:14:52Z"
+      "lastSeen": "2026-10-26T08:04:08Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 257,
+      "count": 261,
       "fleet": 3365,
-      "percent": 7.6,
+      "percent": 7.8,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -170,9 +170,9 @@
         "AT",
         "CH",
         "ES",
+        "PL",
         "NO",
         "BE",
-        "PL",
         "CZ",
         "TW",
         "HU",
@@ -195,7 +195,7 @@
         "TR"
       ],
       "countryCounts": {
-        "US": 82,
+        "US": 85,
         "GB": 37,
         "DE": 20,
         "FR": 18,
@@ -206,9 +206,9 @@
         "AT": 6,
         "CH": 6,
         "ES": 6,
+        "PL": 6,
         "NO": 5,
         "BE": 5,
-        "PL": 5,
         "CZ": 4,
         "TW": 4,
         "HU": 3,
@@ -230,9 +230,9 @@
         "QA": 1,
         "TR": 1
       },
-      "pending": 93,
+      "pending": 91,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-26T06:52:05Z"
+      "lastSeen": "2026-10-26T07:53:41Z"
     },
     {
       "id": "2026.38.5.5",
