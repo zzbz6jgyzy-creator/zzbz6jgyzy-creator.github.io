@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T09:04:28Z",
+  "updated": "2026-10-26T10:04:26Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3364,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
-      "count": 132,
+      "count": 133,
       "fleet": 3364,
-      "percent": 3.9,
+      "percent": 4.0,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -53,19 +53,19 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 125,
+        "AU": 126,
         "NZ": 7
       },
-      "pending": 20,
+      "pending": 18,
       "firstSeen": "2026-10-24T19:52:52Z",
-      "lastSeen": "2026-10-26T08:59:44Z"
+      "lastSeen": "2026-10-26T09:42:24Z"
     },
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 165,
+      "count": 181,
       "fleet": 3364,
-      "percent": 4.9,
+      "percent": 5.4,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -108,17 +108,17 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 161,
+        "US": 177,
         "CA": 4
       },
-      "pending": 370,
+      "pending": 357,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-26T08:49:07Z"
+      "lastSeen": "2026-10-26T09:56:05Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 262,
+      "count": 263,
       "fleet": 3364,
       "percent": 7.8,
       "fsd": null,
@@ -163,9 +163,9 @@
         "GB",
         "DE",
         "FR",
+        "CA",
         "DK",
         "IT",
-        "CA",
         "NL",
         "CH",
         "ES",
@@ -200,9 +200,9 @@
         "GB": 37,
         "DE": 20,
         "FR": 18,
+        "CA": 9,
         "DK": 9,
         "IT": 8,
-        "CA": 8,
         "NL": 8,
         "CH": 6,
         "ES": 6,
@@ -232,9 +232,9 @@
         "QA": 1,
         "TR": 1
       },
-      "pending": 91,
+      "pending": 90,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-26T08:57:11Z"
+      "lastSeen": "2026-10-26T09:25:35Z"
     },
     {
       "id": "2026.38.5.5",
