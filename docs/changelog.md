@@ -1,5 +1,11 @@
 # Changelog
 
+## 26 Oct 2026 — Migration step 0 and 1 (no live change)
+
+- New `astro/` project: Astro 7 static build that packages the current site for Cloudflare Workers, plus `astro/scripts/parity.mjs`
+  (1,868 files byte-identical, 152 sitemap URLs resolve). Headers, 301s for the old stubs and a styled 404 verified with `wrangler dev`.
+- GitHub Pages still serves the site. Nothing deleted. See `docs/migration.md`; rollback is deleting `astro/`.
+
 ## 26 Oct 2026 — Phase 2: Claude Code setup
 
 - Added `CLAUDE.md` (the project brief) and `.claude/`: five subagents, six slash commands, two skills, two rules files, three

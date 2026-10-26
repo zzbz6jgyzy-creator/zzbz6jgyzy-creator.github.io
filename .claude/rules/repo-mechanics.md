@@ -1,8 +1,8 @@
 # How this repo behaves (read before editing generated pages)
 
 - **Static site, no server.** GitHub Pages behind Cloudflare. HTML, CSS and vanilla JS at the repo root. No package.json, no
-  framework. Preview with `python3 -m http.server 4173`. Migration to Astro on Cloudflare is recommended in
-  `docs/audit.md` and `docs/research.md` but is NOT approved; don't start it.
+  framework. Preview with `python3 -m http.server 4173`. Migration to Astro on Cloudflare was approved on
+  26 Oct 2026 for steps 0 and 1 only (see below and `docs/migration.md`); later phases need their own approval.
 - **Many pages are generated.** `scripts/build-*.mjs|py` write them (studios, articles index, SEO, feeds, bundles). Change the
   generator and its data, rebuild, commit both. Never hand-edit generated HTML to fix something a builder would undo.
 - **Two builders must not write the same tag.** build-seo.py, build-articles.py and each studio builder all rewrite parts of a
@@ -24,3 +24,6 @@
   is public by design; the service-role key and Google client secret are not and never belong here.
 - **Dark is the brand default**, light is supported; the site follows the device setting until the reader toggles
   (`theme-boot.js`, `theme.js`, key `sd-theme`). Test both.
+- **`astro/` only packages the site.** The repo root is still the source of truth; `cd astro && npm run build && npm run parity`
+  copies it to `dist/` for Cloudflare (needs Node 22.23.4+). Don't edit `astro/.legacy/` or `dist/`. Keep `html_handling: "none"`.
+  Details in `docs/migration.md`.

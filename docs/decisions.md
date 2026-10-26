@@ -31,6 +31,10 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
   `headline` carry the full headline (`seo_lib.headline_title`, `seo_lib.social_headline`).
 - **Why:** share cards and search results read "SpaceX's $40 billion GPU deal is four".
 
+## 2026-10-26 · Migration starts as a packaging layer, not a move
+- **Decision:** `astro/` builds the existing root into `dist/` for Cloudflare Workers static assets, with a parity test. Pages move into Astro one at a time via `astro/ported.json`.
+- **Why:** the root can't be restructured while ~80 builders and 12 bots rewrite it in place. This gives real cache and security headers and a preview URL now, with zero live change and a one-folder rollback. Details in `docs/migration.md`.
+
 ## Open: review ratings
 Reviews deliberately replaced unexplained numeric scores with recommendations (`docs/reviews-studio.md`). Google's review rich
 results require a rating. Adding one is an editorial decision for the owner, not a technical one; until then no `Review` schema.
