@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-26T02:00:35.656Z",
+  "generatedAt": "2026-10-26T02:36:15.210Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -243,6 +243,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-phone-calls.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t",
+      "at": "2026-10-26T02:50:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-phone-calls.html",
+      "href": "/dispatch/grok-bot-phone-calls.html",
+      "summary": "Musk says the Bot can call a person or business and send you a summary. Prerelease builds show a Calls panel; the official changelog doesn’t mention calling yet.",
+      "title": "Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t",
+      "id": "logged|dispatch:/dispatch/grok-bot-phone-calls.html|2026-10-26T02:50:00.000Z|Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/booster-22-static-fire.html",
@@ -565,23 +582,6 @@
       "summary": "2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.3.2",
       "id": "appeared|tesla-software:wave:2026.38.3.2|2026-10-22T20:53:15.000Z|3"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-10q-spacex-committee.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
-      "at": "2026-10-22T19:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-10q-spacex-committee.html",
-      "href": "/dispatch/tesla-10q-spacex-committee.html",
-      "summary": "Tesla’s Q3 10-Q makes the SpaceX special committee official. Tesla’s $2.0B SpaceX stake was worth $2.87B on 30 Sep, and SpaceX bought $626M of Megapacks this year.",
-      "title": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
-      "id": "logged|dispatch:/dispatch/tesla-10q-spacex-committee.html|2026-10-22T19:40:00.000Z|Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million"
     },
     {
       "type": "changed",
@@ -1578,14 +1578,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-25T20:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1599,14 +1599,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-23T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-25T17:53:31.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1620,35 +1620,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-26T02:00:35.656Z",
+      "lastChecked": "2026-10-26T02:36:15.210Z",
       "lastVerified": "2026-10-26T02:00:32.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1657,85 +1657,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.640Z",
-      "finished": "2026-10-26T02:00:35.644Z"
+      "started": "2026-10-26T02:36:15.143Z",
+      "finished": "2026-10-26T02:36:15.201Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.644Z",
-      "finished": "2026-10-26T02:00:35.644Z"
+      "started": "2026-10-26T02:36:15.201Z",
+      "finished": "2026-10-26T02:36:15.201Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.644Z",
-      "finished": "2026-10-26T02:00:35.645Z"
+      "started": "2026-10-26T02:36:15.201Z",
+      "finished": "2026-10-26T02:36:15.201Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.645Z",
-      "finished": "2026-10-26T02:00:35.649Z"
+      "started": "2026-10-26T02:36:15.201Z",
+      "finished": "2026-10-26T02:36:15.205Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.649Z",
-      "finished": "2026-10-26T02:00:35.651Z"
+      "started": "2026-10-26T02:36:15.205Z",
+      "finished": "2026-10-26T02:36:15.207Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.651Z",
-      "finished": "2026-10-26T02:00:35.653Z"
+      "started": "2026-10-26T02:36:15.207Z",
+      "finished": "2026-10-26T02:36:15.208Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.653Z",
-      "finished": "2026-10-26T02:00:35.654Z"
+      "started": "2026-10-26T02:36:15.208Z",
+      "finished": "2026-10-26T02:36:15.209Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.654Z",
-      "finished": "2026-10-26T02:00:35.654Z"
+      "started": "2026-10-26T02:36:15.209Z",
+      "finished": "2026-10-26T02:36:15.209Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.654Z",
-      "finished": "2026-10-26T02:00:35.654Z"
+      "started": "2026-10-26T02:36:15.209Z",
+      "finished": "2026-10-26T02:36:15.209Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.654Z",
-      "finished": "2026-10-26T02:00:35.655Z"
+      "started": "2026-10-26T02:36:15.209Z",
+      "finished": "2026-10-26T02:36:15.210Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.655Z",
-      "finished": "2026-10-26T02:00:35.656Z"
+      "started": "2026-10-26T02:36:15.210Z",
+      "finished": "2026-10-26T02:36:15.210Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.656Z",
-      "finished": "2026-10-26T02:00:35.656Z"
+      "started": "2026-10-26T02:36:15.210Z",
+      "finished": "2026-10-26T02:36:15.210Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-26T02:00:35.656Z",
-      "finished": "2026-10-26T02:00:35.656Z"
+      "started": "2026-10-26T02:36:15.210Z",
+      "finished": "2026-10-26T02:36:15.210Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-26T02:00:35.656Z",
+    "generatedAt": "2026-10-26T02:36:15.210Z",
     "factCount": 17,
     "changeCount": 76,
     "conflictCount": 2,

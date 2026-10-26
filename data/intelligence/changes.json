@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-26T02:00:35.656Z",
+  "updated": "2026-10-26T02:36:15.210Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-phone-calls.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t",
+      "at": "2026-10-26T02:50:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-phone-calls.html",
+      "href": "/dispatch/grok-bot-phone-calls.html",
+      "summary": "Musk says the Bot can call a person or business and send you a summary. Prerelease builds show a Calls panel; the official changelog doesn’t mention calling yet.",
+      "title": "Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t",
+      "id": "logged|dispatch:/dispatch/grok-bot-phone-calls.html|2026-10-26T02:50:00.000Z|Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/booster-22-static-fire.html",
@@ -323,23 +340,6 @@
       "summary": "2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.3.2",
       "id": "appeared|tesla-software:wave:2026.38.3.2|2026-10-22T20:53:15.000Z|3"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-10q-spacex-committee.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
-      "at": "2026-10-22T19:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-10q-spacex-committee.html",
-      "href": "/dispatch/tesla-10q-spacex-committee.html",
-      "summary": "Tesla’s Q3 10-Q makes the SpaceX special committee official. Tesla’s $2.0B SpaceX stake was worth $2.87B on 30 Sep, and SpaceX bought $626M of Megapacks this year.",
-      "title": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
-      "id": "logged|dispatch:/dispatch/tesla-10q-spacex-committee.html|2026-10-22T19:40:00.000Z|Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million"
     },
     {
       "type": "changed",
