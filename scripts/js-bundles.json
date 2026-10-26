@@ -199,6 +199,11 @@
     "reviews": [
       "reviews-studio-model.js",
       "reviews-studio.js"
+    ],
+    "grok": [
+      "grok-studio-model.js",
+      "grok-studio-view.js",
+      "grok-studio.js"
     ]
   },
   "pages": {
@@ -604,6 +609,13 @@
         "data-band",
         "data-pop"
       ]
+    },
+    "grok.html": {
+      "bundles": [
+        "core",
+        "grok"
+      ],
+      "grow": []
     }
   },
   "pageGlobs": {

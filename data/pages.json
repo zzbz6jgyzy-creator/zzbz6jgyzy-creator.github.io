@@ -525,9 +525,51 @@
     },
     {
       "url": "/grok.html",
-      "title": "Grok",
-      "tag": "More",
-      "summary": "What Grok Bot is, then a four-level tutorial: introduction, beginner, intermediate and advanced."
+      "title": "Grok & xAI — Practical field guide",
+      "tag": "Grok",
+      "summary": "Explore Grok chat, voice, Imagine, Build and Bot. Follow 12 practical lessons, create useful prompts, compare sourced models and plans, and save your progress."
+    },
+    {
+      "url": "/grok.html#capabilities",
+      "title": "Explore Grok capabilities",
+      "tag": "Grok",
+      "summary": "Understand chat and research, voice, Imagine, Build, Bot and the API with guided starting points."
+    },
+    {
+      "url": "/grok.html#tutorial",
+      "title": "Learn Grok — Twelve practical lessons",
+      "tag": "Grok",
+      "summary": "Follow four levels from your first useful request to code reviews, API workflows and reliable Bot routines."
+    },
+    {
+      "url": "/grok.html#prompt-studio",
+      "title": "Grok prompt studio",
+      "tag": "Grok",
+      "summary": "Create a clear brief from eight original examples, then copy it into your chosen Grok product."
+    },
+    {
+      "url": "/grok.html#models",
+      "title": "Compare Grok models and API costs",
+      "tag": "Grok",
+      "summary": "Explore sourced context windows and token rates with an uncached API cost planner."
+    },
+    {
+      "url": "/grok.html#plans",
+      "title": "Grok plans and subscription reference",
+      "tag": "Grok",
+      "summary": "Compare dated individual subscription prices, annual totals and Grok Bot eligibility."
+    },
+    {
+      "url": "/grok.html#latest",
+      "title": "Grok releases and original reporting",
+      "tag": "Grok",
+      "summary": "Read dated official product releases and Supercharged Daily Grok reporting."
+    },
+    {
+      "url": "/grok.html#sources",
+      "title": "Grok guide sources and boundaries",
+      "tag": "Grok",
+      "summary": "Find official documentation, snapshot dates and explanations of local saved progress."
     },
     {
       "url": "/gear.html",

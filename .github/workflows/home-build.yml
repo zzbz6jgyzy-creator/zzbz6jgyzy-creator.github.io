@@ -32,6 +32,9 @@ on:
       - 'data/robotaxi-*'
       - 'data/updates-*.json'
       - live-data.json
+      - data/grok-studio.json
+      - grok-studio.css
+      - scripts/build-grok-studio.mjs
       - data/promises.json
       - data/promise-studio-guide.json
       - promise-studio.css
