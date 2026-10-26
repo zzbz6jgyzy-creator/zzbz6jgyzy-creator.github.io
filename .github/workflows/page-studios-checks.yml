@@ -1,0 +1,25 @@
+name: Editorial page studio checks
+on:
+  pull_request:
+    paths: ['dispatch.html', 'dispatch-browse.js', 'gear.html', 'search.html', 'games.html', 'about.html', 'author.html', 'members.html', 'tcmv.html', 'page-studios.*', 'tests/page-studios-browser.py', '.github/workflows/page-studios-checks.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visitor-journeys:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.62.0
+      - name: Responsive layouts and real page journeys
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/page-studios-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: editorial-studio-previews
+          path: /tmp/page-studios
