@@ -25,6 +25,9 @@ on:
       - updates-live.json
       - news-data.json
       - data/news-studio-guide.json
+      - data/model3-studio.json
+      - model3-studio.css
+      - scripts/build-model3-studio.mjs
       - news-studio.css
       - scripts/build-news-studio.mjs
       - data/events.json

@@ -123,9 +123,27 @@
     },
     {
       "url": "/model3-explorer.html",
-      "title": "Model 3 Explorer",
+      "title": "Model 3 Studio — Explore every layer",
       "tag": "Tesla",
-      "summary": "Take the car apart"
+      "summary": "Explore Tesla Model 3 in touch-ready 3D, understand 19 vehicle systems, compare UK and US trim references and try the transparent charging and journey energy lab."
+    },
+    {
+      "url": "/model3-explorer.html#engineering",
+      "title": "Inside Model 3 — 19 systems explained",
+      "tag": "Tesla",
+      "summary": "Understand the battery, motors, heat pump, cabin, cameras and charging hardware with sourced explanations."
+    },
+    {
+      "url": "/model3-explorer.html#compare",
+      "title": "Compare Model 3 trims — UK WLTP and US EPA references",
+      "tag": "Tesla",
+      "summary": "Compare market-specific range, acceleration and DC charging peaks without mixing test cycles."
+    },
+    {
+      "url": "/model3-explorer.html#charging",
+      "title": "Model 3 Charging Lab — Curves, energy and cost",
+      "tag": "Tesla",
+      "summary": "Explore a published charging reference and calculate journey energy, charging losses and energy cost from your own assumptions."
     },
     {
       "url": "/cybertruck-explorer.html",
