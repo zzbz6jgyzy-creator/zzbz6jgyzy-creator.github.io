@@ -83,7 +83,12 @@ def write_live_orbit_stamp(tle_as_of: str) -> None:
     if re.search(r'"orbitsUpdated"\s*:', text):
         text = re.sub(r'"orbitsUpdated"\s*:\s*"[^"]*"', f'"orbitsUpdated": "{tle_as_of}"', text, count=1)
     else:
-        text = re.sub(r'("updated"\s*:\s*"[^"]*")', rf'\1,\n "orbitsUpdated": "{tle_as_of}"', text, count=1)
+        text = re.sub(
+            r'("updated"\s*:\s*"[^"]*")',
+            lambda m, stamp=tle_as_of: m.group(1) + ',\n "orbitsUpdated": "%s"' % stamp,
+            text,
+            count=1,
+        )
     LIVE.write_text(text, encoding="utf-8")
     print(f"wrote orbitsUpdated {tle_as_of} into {LIVE.name}")
 

@@ -295,7 +295,7 @@ def disclosures():
         if m:
             t = t[: m.end()] + DISCLOSURE + t[m.end() :]
         elif rel_url == "/tsla.html":
-            t = re.sub(r"(</h1>)", r"\1" + DISCLOSURE, t, count=1)
+            t = re.sub(r"(</h1>)", lambda m: m.group(1) + DISCLOSURE, t, count=1)
         else:
             continue
         if t != s:

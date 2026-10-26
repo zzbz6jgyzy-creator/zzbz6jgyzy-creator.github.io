@@ -9,6 +9,7 @@ from __future__ import annotations
 import datetime
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -32,8 +33,18 @@ def load_articles():
     return rows, data.get("updated")
 
 
+def _frag(text: str) -> str:
+    slug = re.sub(r"[^a-zA-Z0-9._:-]+", "-", (text or "").strip()).strip("-")
+    return slug[:80] or "item"
+
+
 def load_tracker_changes(limit=12):
-    """Recent non-dispatch tracker deltas, if the intelligence snapshot has them."""
+    """Recent non-dispatch tracker deltas, if the intelligence snapshot has them.
+
+    Identical (page, title) rows collapse to the newest. Each remaining item
+    gets a stable unique guid fragment so several updates from one tracker
+    page do not share the page URL.
+    """
     if not os.path.exists(CHANGES):
         return []
     try:
@@ -41,6 +52,7 @@ def load_tracker_changes(limit=12):
     except (OSError, ValueError):
         return []
     out = []
+    seen = set()
     for c in data.get("changes") or []:
         href = c.get("href") or c.get("sourceUrl") or ""
         if not href.startswith("/"):
@@ -50,13 +62,21 @@ def load_tracker_changes(limit=12):
         title = (c.get("title") or c.get("summary") or "").strip()
         if not title:
             continue
+        url = href.split("#")[0]
+        key = (url, "Tracker: " + title)
+        if key in seen:
+            continue
+        seen.add(key)
+        ident = c.get("id") or c.get("at") or title
         out.append(
             {
-                "url": href.split("#")[0],
-                "title": "Tracker: " + title,
+                "url": url,
+                "title": key[1],
                 "date": c.get("at") or data.get("updated"),
                 "summary": c.get("summary") or title,
                 "tag": c.get("tracker") or "Tracker",
+                "guid": url + "#" + _frag(ident),
+                "permalink": False,
             }
         )
         if len(out) >= limit:
@@ -75,17 +95,23 @@ def rss_item(a):
     if img:
         src = img if img.startswith("http") else SITE + img
         enclosure = '\n      <enclosure url="%s" type="image/jpeg" />' % xml_esc(src)
+    if a.get("guid"):
+        guid = SITE + a["guid"] if a["guid"].startswith("/") else a["guid"]
+        permalink = "true" if a.get("permalink", False) else "false"
+    else:
+        guid = loc
+        permalink = "true"
     return (
         "    <item>\n"
         "      <title>%s</title>\n"
         "      <link>%s</link>\n"
-        "      <guid isPermaLink=\"true\">%s</guid>\n"
+        "      <guid isPermaLink=\"%s\">%s</guid>\n"
         "      <pubDate>%s</pubDate>\n"
         "      <category>%s</category>\n"
         "      <description>%s</description>"
         "%s\n"
         "    </item>"
-        % (title, xml_esc(loc), xml_esc(loc), xml_esc(rfc2822(date)), tag, summary, enclosure)
+        % (title, xml_esc(loc), permalink, xml_esc(guid), xml_esc(rfc2822(date)), tag, summary, enclosure)
     )
 
 
@@ -110,9 +136,10 @@ def write_feed(articles, changes, built):
     open(FEED, "w", encoding="utf-8").write(body)
 
 
-def write_news_sitemap(articles):
-    """Google News sitemap: dispatches from the last two days (plus a small buffer)."""
-    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=3)
+def write_news_sitemap(articles, now=None, dest=None):
+    """Google News sitemap: dispatches published in the last 48 hours."""
+    now = now or datetime.datetime.now(datetime.timezone.utc)
+    cutoff = now - datetime.timedelta(hours=48)
     rows = []
     for a in articles:
         try:
@@ -146,7 +173,7 @@ def write_news_sitemap(articles):
         + "\n".join(rows)
         + "\n</urlset>\n"
     )
-    open(NEWS_MAP, "w", encoding="utf-8").write(xml)
+    open(dest or NEWS_MAP, "w", encoding="utf-8").write(xml)
     return len(rows)
 
 
