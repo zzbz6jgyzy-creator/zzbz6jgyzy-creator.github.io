@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-10-26T14:50:26Z",
+ "checked": "2026-10-26T19:46:34Z",
  "editorialUpdated": "2026-10-25T20:50:00+00:00",
  "presets": [
   {
@@ -399,7 +399,7 @@
    "title": "Falcon 9 Block 5 | Starlink Group 15-16",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-10-27T04:45:00Z",
+   "start": "2026-10-27T05:46:37Z",
    "end": "",
    "date": "2026-10-27",
    "precision": "datetime",
@@ -465,6 +465,41 @@
    }
   },
   {
+   "id": "ussf-432",
+   "title": "Falcon 9 Block 5 | USSF-432",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-02T01:56:00Z",
+   "end": "",
+   "date": "2026-11-02",
+   "precision": "datetime",
+   "status": "Go",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "https://ll.thespacedevs.com/2.3.0/launches/54d471e8-695c-4fa7-a3cf-dbd8b389e8ae/",
+   "sources": [
+    {
+     "href": "https://ll.thespacedevs.com/2.3.0/launches/54d471e8-695c-4fa7-a3cf-dbd8b389e8ae/",
+     "label": "ll.thespacedevs.com"
+    }
+   ],
+   "origin": "Launch Library 2",
+   "providerId": "54d471e8-695c-4fa7-a3cf-dbd8b389e8ae",
+   "windowStart": "2026-11-02T01:56:00Z",
+   "windowEnd": "2026-11-02T05:56:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "Go for Launch",
+   "pad": {
+    "id": "slc4e",
+    "name": "Vandenberg · SLC-4E",
+    "short": "Vandenberg",
+    "lat": 34.632,
+    "lon": -120.611,
+    "az": 186,
+    "coast": "west"
+   }
+  },
+  {
    "id": "starlink-15-21",
    "title": "Falcon 9 Block 5 | Starlink Group 15-21",
    "group": "spacex",
@@ -489,41 +524,6 @@
    "windowEnd": "2026-11-05T09:14:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
-   "pad": {
-    "id": "slc4e",
-    "name": "Vandenberg · SLC-4E",
-    "short": "Vandenberg",
-    "lat": 34.632,
-    "lon": -120.611,
-    "az": 186,
-    "coast": "west"
-   }
-  },
-  {
-   "id": "ll2-56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
-   "title": "Falcon 9 Block 5 | NROL-195",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-11-05T22:34:00Z",
-   "end": "",
-   "date": "2026-11-05",
-   "precision": "datetime",
-   "status": "TBC",
-   "note": "Government/Top Secret · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
-   "origin": "Launch Library 2",
-   "providerId": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
-   "windowStart": "2026-11-05T22:34:00Z",
-   "windowEnd": "2026-11-06T02:34:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "To Be Confirmed",
    "pad": {
     "id": "slc4e",
     "name": "Vandenberg · SLC-4E",

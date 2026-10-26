@@ -153,7 +153,7 @@ def strip_google_fonts(html: str) -> str:
 def main() -> None:
     changed = []
     for path in sorted(ROOT.rglob("*.html")):
-        if any(p in path.parts for p in (".git", "node_modules", "vendor", "lab", "apps")):
+        if any(p in path.parts for p in (".git", "node_modules", "vendor")):
             continue
         rel = str(path.relative_to(ROOT))
         old = path.read_text(encoding="utf-8")

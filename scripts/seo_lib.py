@@ -33,7 +33,13 @@ STANDFIRST_RX = re.compile(
 # Fallout from replacing article:modified_time with r"\1%s\2" % "2026-…":
 # Python treats \12 as group 12 and leaves orphan "P26-10-…" lines.
 BROKEN_MODIFIED_RX = re.compile(r"^[ \t]*P\d{2}-\d{2}-\d{2}T[^\n]*\n", re.M)
+# Fallout from r"\1%s\2" % value when value starts with a digit: \1319 → "Y9…".
+# The opening <meta … content=" is eaten; leftover text (and a lone />) leaks.
 DUP_CSS = ("grow.css", "related.css", "intel.css")
+NEXT_BLOCK_RX = re.compile(
+    r"<(?:p|div|section|figure|header|footer|nav|ul|ol|article|aside|h[1-6])\b",
+    re.I,
+)
 
 
 def clip(text: str, limit: int, ellipsis: bool = False) -> str:
@@ -108,7 +114,12 @@ def load_titles():
 
 
 def set_attr(src: str, attr: str, name: str, value: str) -> str:
-    """Replace an existing meta content=, or no-op if the tag is missing."""
+    """Replace an existing meta content=, or insert the tag if it is missing.
+
+    Always use a function replacement. ``r"\\1%s\\2" % value`` treats a
+    value that starts with digits as an octal/group escape (``\\1`` +
+    ``319`` → ``\\131`` = ``Y``) and destroys the opening tag.
+    """
     value = html.escape(value, quote=True)
     rx = re.compile(
         r'(<meta\s+(?:%s="%s"|%s=\'%s\')[^>]*\scontent=")[^"]*(")'
@@ -123,10 +134,14 @@ def set_attr(src: str, attr: str, name: str, value: str) -> str:
     )
     if rx2.search(src):
         return rx2.sub(lambda m: m.group(1) + value + m.group(2), src, count=1)
-    return src
+    tag = '    <meta %s="%s" content="%s" />' % (attr, name, value)
+    if "</title>" in src:
+        return src.replace("</title>", "</title>\n" + tag, 1)
+    return _insert_in_head(src, tag)
 
 
 def set_title(src: str, title: str) -> str:
+    src = strip_leaked_head_text(src)
     esc = html.escape(title, quote=False)
     src = re.sub(r"<title>[\s\S]*?</title>", "<title>%s</title>" % esc, src, count=1)
     for attr, name in (
@@ -138,6 +153,7 @@ def set_title(src: str, title: str) -> str:
 
 
 def set_description(src: str, desc: str) -> str:
+    src = strip_leaked_head_text(src)
     for attr, name in (
         ("name", "description"),
         ("property", "og:description"),
@@ -301,7 +317,7 @@ def html_files(root=ROOT):
     """Public HTML pages, skipping templates and vendor trees."""
     import glob
 
-    skip = ("preview/", "node_modules/", "vendor/", "templates/", "tests/", "lab/", "apps/")
+    skip = ("preview/", "node_modules/", "vendor/", "templates/", "tests/")
     for path in glob.glob(os.path.join(root, "**", "*.html"), recursive=True):
         rel = os.path.relpath(path, root).replace(os.sep, "/")
         if rel.startswith(skip):
@@ -328,8 +344,68 @@ def dublin_label(iso: str) -> str:
     return f"{dt.day} {dt.strftime('%b %Y')}"
 
 
+def strip_leaked_head_text(src: str) -> str:
+    """Remove orphan meta leftovers left in <head> by digit-unsafe re.sub.
+
+    Do not touch real multiline tags (``<meta\\n name=\\n content=\\n />``).
+    Those attribute lines look similar to a leaked two-liner.
+    """
+    def clean(m):
+        lines = m.group(2).splitlines(keepends=True)
+        out = []
+        i = 0
+        while i < len(lines):
+            raw = lines[i]
+            s = raw.strip()
+            is_markup = s.startswith("<") or s.startswith("<!--")
+            is_attr = s.startswith(("content=", "name=", "property=", "href=", "rel="))
+            leaked_one = (
+                (not is_markup)
+                and (not is_attr)
+                and (s.endswith('" />') or s.endswith('"/>') or s.endswith('" />'))
+            )
+            nxt = lines[i + 1].strip() if i + 1 < len(lines) else ""
+            leaked_two = (
+                (not is_markup)
+                and (not is_attr)
+                and len(s) > 20
+                and s.endswith('"')
+                and nxt in (">", "/>")
+            )
+            if leaked_one:
+                i += 1
+                continue
+            if leaked_two:
+                i += 2
+                continue
+            out.append(raw)
+            i += 1
+        return m.group(1) + "".join(out) + m.group(3)
+
+    return re.sub(r"(<head\b[^>]*>)([\s\S]*?)(</head>)", clean, src, count=1, flags=re.I)
+
+
+def close_unclosed_h1(src: str) -> str:
+    """Restore a missing </h1> before the next block (Starlink SEO rewrite)."""
+    m = re.search(r"<main\b", src, re.I)
+    start = m.start() if m else 0
+    tail = src[start:]
+    if re.search(r"<h1\b[^>]*>[\s\S]*?</h1>", tail, re.I):
+        return src
+    open_m = re.search(r"<h1\b[^>]*>", tail, re.I)
+    if not open_m:
+        return src
+    nxt = NEXT_BLOCK_RX.search(tail, open_m.end())
+    if not nxt:
+        return src
+    at = start + nxt.start()
+    return src[:at] + "</h1>" + src[at:]
+
+
 def hygiene(src: str) -> str:
     """Site-wide head fixes: Discover opt-in, RSS link, self-hosted fonts, CLS, CSS dupes."""
+    src = strip_leaked_head_text(src)
+    src = close_unclosed_h1(src)
     src = ensure_robots(src)
     src = ensure_feed_link(src)
     src = strip_google_fonts(src)
@@ -361,11 +437,18 @@ def set_og_image(src: str, url: str, alt: str, width="1200", height="630") -> st
 
 def replace_first_h1(src: str, inner_html: str) -> str:
     """Replace the first H1 inside <main>, leaving the mobile-nav H3s alone."""
+    src = close_unclosed_h1(src)
     m = re.search(r"<main\b", src, re.I)
     if not m:
         return src
     head, tail = src[: m.start()], src[m.start() :]
-    return head + re.sub(r"<h1\b[^>]*>[\s\S]*?</h1>", "<h1>" + inner_html + "</h1>", tail, count=1, flags=re.I)
+    return head + re.sub(
+        r"(<h1\b[^>]*>)[\s\S]*?(</h1>)",
+        lambda match: match.group(1) + inner_html + match.group(2),
+        tail,
+        count=1,
+        flags=re.I,
+    )
 
 
 def inject_json_ld(src: str, objects: list, marker="seo:ld") -> str:

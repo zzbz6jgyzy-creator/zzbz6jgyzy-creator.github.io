@@ -67,6 +67,20 @@ class Clip(unittest.TestCase):
         )
         self.assertEqual(rebuilt, out)
 
+    def test_hygiene_keeps_multiline_description(self):
+        src = (
+            "<html><head><title>t</title>\n"
+            "    <meta\n"
+            '      name="description"\n'
+            '      content="Join Supercharged Daily to comment, reply and give a thumbs-up."\n'
+            "    />\n"
+            "</head><body></body></html>"
+        )
+        out = seo_lib.hygiene(src)
+        self.assertIn('content="Join Supercharged Daily to comment, reply and give a thumbs-up."', out)
+        self.assertIn('name="description"', out)
+        self.assertRegex(out, r"<meta[\s\S]*?/>")
+
     def test_hygiene_drops_broken_modified_time_fallout(self):
         src = (
             "<html><head><title>t</title>\n"
@@ -77,6 +91,95 @@ class Clip(unittest.TestCase):
         out = seo_lib.hygiene(src)
         self.assertNotIn("P26-10-", out)
         self.assertIn('article:modified_time" content="2026-10-20T01:40:00Z"', out)
+
+    def test_set_attr_digit_title_does_not_eat_tag(self):
+        src = (
+            "<html><head><title>t</title>\n"
+            '    <meta property="og:title" content="old" />\n'
+            "</head></html>"
+        )
+        out = seo_lib.set_attr(src, "property", "og:title", "319 Cybercabs, six weeks")
+        self.assertIn('property="og:title" content="319 Cybercabs, six weeks"', out)
+        self.assertNotIn("Y9 Cybercabs", out)
+
+    def test_set_title_rebuilds_destroyed_og_and_description(self):
+        src = (
+            "<html><head>\n"
+            "<title>319 Cybercabs, six weeks: what the | Supercharged Daily</title>\n"
+            '    Y9 Cybercabs, six weeks: what the | Supercharged Daily" />\n'
+            '    <meta property="og:description" content="ok" />\n'
+            '    Y9 Cybercabs, six weeks: what the | Supercharged Daily" />\n'
+            "</head><body></body></html>"
+        )
+        out = seo_lib.set_title(src, "319 Cybercabs, six weeks: what the | Supercharged Daily")
+        self.assertNotIn("Y9 Cybercabs", out)
+        self.assertIn('property="og:title" content="319 Cybercabs, six weeks: what the | Supercharged Daily"', out)
+        self.assertIn('name="twitter:title"', out)
+
+    def test_set_description_rebuilds_leaked_robotaxi_lines(self):
+        src = (
+            "<html><head>\n"
+            "<title>Tesla’s Texas Robotaxi fleet hits 938 | Supercharged Daily</title>\n"
+            '    K5 robotaxis added to the Texas registry in eight days, Cybercabs back to leading the additions, and Austin&#x27;s map stretched to Circuit of the Americas for"\n'
+            "    />\n"
+            '    <meta property="og:title" content="Tesla’s Texas Robotaxi fleet hits 938 | Supercharged Daily" />\n'
+            '    K5 robotaxis added to the Texas registry in eight days, Cybercabs back to leading the additions, and Austin&#x27;s map stretched to Circuit of the Americas for" />\n'
+            "</head><body></body></html>"
+        )
+        desc = "135 robotaxis added to the Texas registry in eight days."
+        out = seo_lib.set_description(src, desc)
+        self.assertNotIn("K5 robotaxis", out)
+        self.assertIn('name="description" content="%s"' % desc, out)
+        self.assertIn('property="og:description"', out)
+        self.assertIn('name="twitter:description"', out)
+
+    def test_heading_rewrite_preserves_component_ids_and_accessibility(self):
+        src = '<nav><h3>Explore</h3></nav><main><h1 id="mg-title" class="hero-title" tabindex="-1">Old copy</h1><p>Intro</p></main>'
+        out = seo_lib.replace_first_h1(src, "Your Tesla:<br>software and costs.")
+        self.assertIn('<h1 id="mg-title" class="hero-title" tabindex="-1">Your Tesla:<br>software and costs.</h1>', out)
+        self.assertIn('<nav><h3>Explore</h3></nav>', out)
+        self.assertEqual(seo_lib.replace_first_h1(out, "Your Tesla:<br>software and costs."), out)
+
+    def test_close_unclosed_h1_before_lede(self):
+        src = (
+            "<main><h1 id=\"so-title\">How many Starlink satellites are in orbit? "
+            "A network<br>above <em>everything.</em>"
+            "<p class=\"so-lede\">Explore Starlink’s constellation.</p></main>"
+        )
+        out = seo_lib.close_unclosed_h1(src)
+        self.assertIn("</h1><p class=\"so-lede\">", out)
+        self.assertEqual(out.count("<h1"), 1)
+        self.assertEqual(out.count("</h1>"), 1)
+
+
+class Feed(unittest.TestCase):
+    def test_tracker_guids_unique_and_deduped(self):
+        feed = runpy.run_path(str(ROOT / "scripts" / "build-feed.py"))
+        rows = feed["load_tracker_changes"]()
+        keys = [(r["url"], r["title"]) for r in rows]
+        self.assertEqual(len(keys), len(set(keys)))
+        guids = [r["guid"] for r in rows]
+        self.assertEqual(len(guids), len(set(guids)))
+        self.assertTrue(all(g.startswith("/") and "#" in g for g in guids))
+        self.assertTrue(rows, "expected tracker rows from changes.json")
+        item = feed["rss_item"](rows[0])
+        self.assertIn('isPermaLink="false"', item)
+        self.assertIn("<guid", item)
+
+    def test_news_sitemap_48_hours(self):
+        feed = runpy.run_path(str(ROOT / "scripts" / "build-feed.py"))
+        now = __import__("datetime").datetime(2026, 10, 26, 15, 23, tzinfo=__import__("datetime").timezone.utc)
+        articles = [
+            {"url": "/dispatch/new.html", "title": "New", "date": "2026-10-26T14:50:00Z"},
+            {"url": "/dispatch/old.html", "title": "Old", "date": "2026-10-24T13:30:13Z"},
+        ]
+        dest = pathlib.Path(__import__("tempfile").mkstemp(suffix=".xml")[1])
+        n = feed["write_news_sitemap"](articles, now=now, dest=str(dest))
+        self.assertEqual(n, 1)
+        xml = dest.read_text(encoding="utf-8")
+        dest.unlink()
+        self.assertIn("/dispatch/new.html", xml)
+        self.assertNotIn("/dispatch/old.html", xml)
 
 
 class Site(unittest.TestCase):

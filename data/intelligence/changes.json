@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-26T15:16:14.229Z",
+  "updated": "2026-10-26T20:15:59.057Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:wave:2026.38.5.11",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.11",
+      "previous": "283",
+      "next": "364",
+      "at": "2026-10-26T17:27:14.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.11 moved from 283 to 364 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "title": "2026.38.5.11",
+      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T17:27:14.000Z|364"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-40b-gpu-lease.html",
@@ -102,6 +119,23 @@
       "summary": "Musk says the Bot can call a person or business and send you a summary. Prerelease builds show a Calls panel; the official changelog doesn’t mention calling yet.",
       "title": "Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t",
       "id": "logged|dispatch:/dispatch/grok-bot-phone-calls.html|2026-10-26T02:50:00.000Z|Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t"
+    },
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11154",
+      "next": "11166",
+      "at": "2026-10-26T00:51:30.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html#counts-changed",
+      "summary": "McDowell snapshot: inOrbit 11,154 → 11,166; working 11,140 → 11,151; operational 9,726 → 10,022; launched 13,015 → 13,042. This is a published table snapshot, not a live operator feed.",
+      "title": "Starlink McDowell snapshot",
+      "id": "changed|starlink:in-orbit|2026-10-26T00:51:30.000Z|11166"
     },
     {
       "type": "logged",
@@ -816,23 +850,6 @@
       "summary": "2026.38.3 first appeared in the Teslascope sample with 7 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.3",
       "id": "appeared|tesla-software:wave:2026.38.3|2026-10-10T08:48:07.000Z|7"
-    },
-    {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.33.100",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.33.100",
-      "previous": "0",
-      "next": "36",
-      "at": "2026-10-10T08:48:07.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.33.100 first appeared in the Teslascope sample with 36 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
-      "title": "2026.33.100",
-      "id": "appeared|tesla-software:wave:2026.33.100|2026-10-10T08:48:07.000Z|36"
     },
     {
       "type": "logged",

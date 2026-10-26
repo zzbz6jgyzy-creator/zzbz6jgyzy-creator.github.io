@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.c79618537b.js",
-      "bytes": 43598,
+      "file": "/assets/js/core.bundle.84cbc5ceba.js",
+      "bytes": 43381,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -51,8 +51,8 @@
       ]
     },
     "starlink": {
-      "file": "/assets/js/starlink.bundle.a50713cbae.js",
-      "bytes": 22115,
+      "file": "/assets/js/starlink.bundle.955c2dd4ca.js",
+      "bytes": 22111,
       "sources": [
         "starlink-data.js",
         "starlink-live.js",
@@ -61,7 +61,7 @@
       ]
     },
     "starlink-orbit": {
-      "file": "/assets/js/starlink-orbit.bundle.43e657f2fa.js",
+      "file": "/assets/js/starlink-orbit.bundle.fc00484907.js",
       "bytes": 32230,
       "sources": [
         "cesium-lazy.js",
@@ -138,7 +138,7 @@
       ]
     },
     "fsd": {
-      "file": "/assets/js/fsd.bundle.3eb39a834e.js",
+      "file": "/assets/js/fsd.bundle.2cc2b2b90f.js",
       "bytes": 36850,
       "sources": [
         "fsd-global-model.js",
