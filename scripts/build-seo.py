@@ -492,12 +492,16 @@ def apply_titles():
         if spec.get("h1"):
             new = seo_lib.replace_first_h1(new, spec["h1"])
         if spec.get("h1_prefix"):
+            new = seo_lib.close_unclosed_h1(new)
             m = re.search(r"<main\b", new, re.I)
             if m:
                 head, tail = new[: m.start()], new[m.start() :]
+                prefix = spec["h1_prefix"]
+                # Keep group 3 (</h1>). Dropping it swallows the lede, count and
+                # buttons into the heading — that is what happened on starlink.html.
                 tail = re.sub(
                     r"(<h1\b[^>]*>)([\s\S]*?)(</h1>)",
-                    lambda k: k.group(1) + spec["h1_prefix"] + k.group(2) if spec["h1_prefix"] not in k.group(2) else k.group(0),
+                    lambda k, p=prefix: k.group(0) if p in k.group(2) else k.group(1) + p + k.group(2) + k.group(3),
                     tail,
                     count=1,
                     flags=re.I,

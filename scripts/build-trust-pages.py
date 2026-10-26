@@ -116,13 +116,13 @@ def fill(template: str, spec: dict) -> str:
     html = set_description(html, spec["description"])
     html = re.sub(
         r'(<link rel="canonical" href=")[^"]+(")',
-        r"\1%s\2" % spec["canonical"],
+        lambda m, v=spec["canonical"]: m.group(1) + v + m.group(2),
         html,
         count=1,
     )
     html = re.sub(
         r'(<meta property="og:url" content=")[^"]+(")',
-        r"\1%s\2" % spec["canonical"],
+        lambda m, v=spec["canonical"]: m.group(1) + v + m.group(2),
         html,
         count=1,
     )
