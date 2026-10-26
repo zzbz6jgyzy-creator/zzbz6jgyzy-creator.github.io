@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T17:40:53.387Z",
+  "generatedAt": "2026-10-26T18:05:55.359Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -174,9 +174,9 @@
       "topic": "starlink",
       "tracker": "starlink",
       "field": "in-orbit",
-      "value": "11154",
+      "value": "11166",
       "label": "Starlink in orbit",
-      "at": "2026-10-15T19:00:26.000Z",
+      "at": "2026-10-26T00:51:30.000Z",
       "evidence": "independently_corroborated",
       "source": "Jonathan McDowell Starlink statistics",
       "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
