@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T17:27:15.244Z",
+  "updated": "2026-10-26T17:40:53.387Z",
   "changes": [
     {
       "type": "changed",
@@ -8,15 +8,15 @@
       "tracker": "software",
       "field": "wave:2026.38.5.11",
       "previous": "283",
-      "next": "352",
-      "at": "2026-10-26T16:35:04.000Z",
+      "next": "364",
+      "at": "2026-10-26T17:27:14.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.11 moved from 283 to 352 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "summary": "2026.38.5.11 moved from 283 to 364 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.11",
-      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T16:35:04.000Z|352"
+      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T17:27:14.000Z|364"
     },
     {
       "type": "logged",
