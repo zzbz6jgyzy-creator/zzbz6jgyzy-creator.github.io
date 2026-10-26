@@ -90,6 +90,12 @@ on:
       - scripts/rebuild-js.sh
       - scripts/ci-push-retry.sh
       - scripts/build-seo.py
+      - scripts/build-feed.py
+      - scripts/seo_lib.py
+      - scripts/seo-titles.json
+      - scripts/editorial-dates.py
+      - scripts/generate-og.py
+      - scripts/build-trust-pages.py
       - scripts/build-explainers.py
       - scripts/lesson-graphics.py
       - data/explainers.json
@@ -138,14 +144,17 @@ jobs:
           python3 scripts/inject-js-bundles.py
       - name: Rebuild saved personal-home preview
         run: node scripts/build-personal-home.mjs
-      - name: NewsArticle structured data + sitemap
-        run: python3 scripts/build-seo.py
+      - name: Trust pages, OG cards, NewsArticle structured data, sitemap and RSS
+        run: |
+          python3 scripts/build-trust-pages.py
+          python3 scripts/generate-og.py
+          python3 scripts/build-seo.py
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -- templates/starlink-sky.html 2>/dev/null || true
-          git add data/starlink-observatory.json data/markets-financials.csv data/production.csv data/tesla-overview.json data/launch-viewing.json data/calendar-studio.json data/calendar.ics data/starship-studio.json data/mobility-snapshot.json cybercab-cities fsd-europe-data.js fsd-data.js data/fsd-europe.json fsd-europe grow.js grow.css newsletter.js newsletter-cta.js nav-pill.js scripts/build-home.js scripts/inject_newsletter.py scripts/newsletter-latest.js index.html tesla.html spacex.html data/articles.json data/pages.json data/newsletter-latest.json data/intelligence dispatch/*.html sitemap.xml *.html guides reviews assets explainers
+          git add data/starlink-observatory.json data/markets-financials.csv data/production.csv data/tesla-overview.json data/launch-viewing.json data/calendar-studio.json data/calendar.ics data/starship-studio.json data/mobility-snapshot.json cybercab-cities fsd-europe-data.js fsd-data.js data/fsd-europe.json fsd-europe grow.js grow.css newsletter.js newsletter-cta.js nav-pill.js scripts/build-home.js scripts/inject_newsletter.py scripts/newsletter-latest.js index.html tesla.html spacex.html data/articles.json data/pages.json data/newsletter-latest.json data/intelligence dispatch/*.html sitemap.xml sitemap-news.xml feed.xml robots.txt *.html guides reviews assets explainers
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Pre-render homepage headlines, Dispatch and tracker numbers."
             sh scripts/ci-push-retry.sh

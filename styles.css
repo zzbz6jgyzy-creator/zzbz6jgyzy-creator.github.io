@@ -793,6 +793,7 @@ a.stat:hover {
 
 .desk h3,
 .lead-card h3,
+.story-card h2,
 .story-card h3 {
   margin: 0 0 0.4rem;
   font-size: 1.15rem;
@@ -4811,6 +4812,8 @@ picture > source { display: none !important; }
 
 /* Editorial hierarchy: keep summaries and credits distinct from the story. */
 .article .standfirst { min-height: 0; font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); }
+.sd-updated{margin:.35rem 0 0;font-size:.9rem;color:var(--ink-soft)}
+.sd-disclosure{margin:1.1rem 0 0;padding:.7rem .9rem;border-left:3px solid var(--red-text,#f23a52);font-size:.88rem;line-height:1.5;color:var(--ink-soft)}
 .article .standfirst > strong { font-weight: 500; }
 .article > figure figcaption { padding: .65rem .85rem; font-size: .85rem; line-height: 1.55; color: var(--mute); overflow-wrap: anywhere; }
 .article > figure figcaption a { color: inherit; text-underline-offset: .18em; }
