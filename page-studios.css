@@ -9,3 +9,6 @@
 .ps-tcmv .tcmv-card{position:relative;background:var(--ps-card);border:1px solid var(--ps-line);border-radius:13px;padding:26px}
 .ps-tcmv .tcmv-card::before{content:"";position:absolute;left:-31px;top:30px;width:12px;height:12px;border-radius:50%;background:var(--ps-accent);border:3px solid var(--ps-card)}
 @media(max-width:650px){.ps-tcmv .tcmv-list{padding-left:17px;margin-left:5px}.ps-tcmv .tcmv-card{padding:20px}.ps-tcmv .tcmv-card::before{left:-24px}}
+.ps-search .sd-search-form{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:12px;align-items:center}
+.ps-about .ps-hero>picture{display:block}
+@media(max-width:650px){.ps-search .sd-search-form{grid-template-columns:minmax(0,1fr) auto}.ps-search .sd-search-form>svg{display:none}}

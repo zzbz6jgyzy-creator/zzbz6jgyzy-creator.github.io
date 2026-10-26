@@ -30,6 +30,7 @@ async def main():
     elif path=='gear.html':
      check=page.locator('[data-ps-checklist] input').first;await check.check();await page.reload();assert await page.locator('[data-ps-checklist] input').first.is_checked()
     elif path=='search.html':
+     assert (await page.locator('.sd-search-form').bounding_box())['height']<100,'search entry should keep the field and submit action together'
      await page.locator('#sd-search-q').fill('Starlink');await page.wait_for_selector('[data-sd-hits] .sd-find-hit',timeout=15000);await page.locator('.sd-search-go').click();assert 'q=Starlink' in page.url
     elif path=='games.html':assert await page.locator('.ps-game-art').count()==3
     elif path=='members.html':assert await page.locator('[data-members-account]').count()==1
