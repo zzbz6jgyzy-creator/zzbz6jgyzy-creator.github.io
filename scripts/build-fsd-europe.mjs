@@ -31,6 +31,14 @@ export function buildFSDEurope(root=ROOT){
     let leaf=html.replace(/<main\b[\s\S]*?<\/main>/,()=>body).replace(/<title>[\s\S]*?<\/title>/,()=>'<title>'+M.esc(title)+'</title>');
     leaf=leaf.replace(/(<link\b[^>]*rel="canonical"[^>]*href=")[^"]*(")/,(_,a,b)=>a+canonical+b);
     leaf=leaf.replace(/(<meta\b[^>]*(?:name|property)="(?:description|og:description|twitter:description)"[^>]*content=")[^"]*(")/g,(_,a,b)=>a+M.esc(description)+b).replace(/(<meta\b[^>]*(?:name|property)="(?:og:title|twitter:title)"[^>]*content=")[^"]*(")/g,(_,a,b)=>a+M.esc(title)+b).replace(/(<meta\b[^>]*property="og:url"[^>]*content=")[^"]*(")/,(_,a,b)=>a+canonical+b);
+    const ogSlug='assets/og/fsd-'+c.slug+'.jpg';
+    if(fs.existsSync(path.join(root,ogSlug))){
+      const ogUrl='https://superchargeddaily.com/'+ogSlug,ogAlt='FSD in '+c.name+' — Supercharged Daily';
+      leaf=leaf.replace(/(<meta\b[^>]*(?:name|property)="(?:og:image|twitter:image)"[^>]*content=")[^"]*(")/g,(_,a,b)=>a+ogUrl+b);
+      leaf=leaf.replace(/(<meta\b[^>]*(?:name|property)="(?:og:image:alt|twitter:image:alt)"[^>]*content=")[^"]*(")/g,(_,a,b)=>a+M.esc(ogAlt)+b);
+      leaf=leaf.replace(/(<meta\b[^>]*property="og:image:width"[^>]*content=")[^"]*(")/g,(_,a,b)=>a+'1200'+b);
+      leaf=leaf.replace(/(<meta\b[^>]*property="og:image:height"[^>]*content=")[^"]*(")/g,(_,a,b)=>a+'630'+b);
+    }
     leaf=leaf.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g,'').replace('</head>',()=>'<script type="application/ld+json">'+JSON.stringify(metadata).replace(/</g,'\\u003c')+'</script>\n</head>');
     // Leaf pages need site navigation only, not a second copy of the atlas application.
     let core='/assets/js/core.bundle.5243ad45a9.js';try{core=JSON.parse(fs.readFileSync(path.join(root,'assets/js/manifest.json'),'utf8')).bundles.core.file;}catch{}

@@ -44,7 +44,7 @@ const html=`<main id="main" class="os">
 <!--/os:studio-->
 </main>`;
 let page=fs.readFileSync('optimus.html','utf8').replace(/<main\b[\s\S]*?<\/main>/,html);
-const title='Tesla Optimus — Engineering, Films & Evidence | Supercharged Daily',description='Explore Tesla Optimus with interactive engineering guides, official films, a generation timeline and sourced evidence on autonomy, production and availability.';
+const title='Tesla Optimus robot tracker | Supercharged Daily',description='What Tesla has shown of Optimus, what it has promised, and what remains a target. Sourced.';
 page=page.replace(/<title>[\s\S]*?<\/title>/,`<title>${e(title)}</title>`).replace(/(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*/g,`$1${description}`).replace(/(<meta (?:name|property)="(?:og:title|twitter:title)" content=")[^"]*/g,`$1${e(title)}`).replaceAll('https://superchargeddaily.com/assets/tesla/optimus.webp','https://superchargeddaily.com/assets/optimus-studio/factory-1600w.webp').replace('Two Tesla Optimus robots on display stands','Tesla’s 2024 investor presentation showing Optimus at a battery-cell workstation');
 const socialImage='https://superchargeddaily.com/assets/optimus-studio/factory-1600w.webp',socialAlt='Tesla’s 2024 investor presentation showing Optimus at a battery-cell workstation';
 page=page.replace(/(<meta (?:name|property)="(?:og:image|twitter:image)" content=")[^"]*/g,`$1${socialImage}`).replace(/(<meta property="og:image:alt" content=")[^"]*/g,`$1${socialAlt}`);
