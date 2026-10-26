@@ -1,0 +1,23 @@
+/* X posts are shown as text first; x-embed.js loads the live embed on request (keeps third-party code off the page). */
+blockquote.twitter-tweet {
+  margin: 1.4rem 0 .6rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--tesla);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+blockquote.twitter-tweet p { margin: 0 0 .7rem; font-size: 1.08rem; color: var(--ink); }
+blockquote.twitter-tweet a { color: var(--ink-soft, inherit); text-underline-offset: .18em; }
+.x-embed-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; margin: .2rem 0 1.2rem; font-size: .9rem; }
+.x-embed-load {
+  min-height: 44px; padding: .55rem 1.1rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line-strong); background: transparent; color: var(--ink); font: inherit; font-weight: 600;
+}
+.x-embed-load:hover:not(:disabled) { border-color: var(--tesla); }
+.x-embed-load:focus-visible { outline: 3px solid var(--red-text); outline-offset: 3px; }
+.x-embed-load:disabled { opacity: .65; cursor: progress; }
+.x-embed-note { color: var(--ink-soft, inherit); }

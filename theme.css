@@ -637,3 +637,7 @@ html[data-theme="light"] .intel-ev-historical { color: var(--mute); }
 html[data-theme="light"] :is(.intel-ev-superseded, .intel-ev-disputed) { color: #a3172e; }
 html[data-theme="light"] :is(.gs-go, .gs-k, .gs-cta, .sd-find-sec) { color: var(--red-text); }
 html[data-theme="light"] .fe { --red: #c4132e; }
+
+/* Captions on the permanently dark screenshot panel need light text in the light theme too (video captions use the card colour). */
+html[data-theme="light"] .figure.figure-shot figcaption { color: #b9bcc3; }
+html[data-theme="light"] .sd-note { color: var(--ink-soft); opacity: 1; } /* some articles set opacity:.75 inline */

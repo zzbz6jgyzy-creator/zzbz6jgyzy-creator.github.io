@@ -6,6 +6,14 @@
   (1,868 files byte-identical, 152 sitemap URLs resolve). Headers, 301s for the old stubs and a styled 404 verified with `wrangler dev`.
 - GitHub Pages still serves the site. Nothing deleted. See `docs/migration.md`; rollback is deleting `astro/`.
 
+## 26 Oct 2026 — X posts load on request
+
+- All 40 articles with embedded X posts now show the post as readable text (the standard embed blockquote) with a "Load post from X"
+  button. `platform.twitter.com` is no longer requested on page load. Adds `x-embed.js` and `x-embed.css`; `tests/x-embed-browser.py`
+  and `tests/test_x_embeds.py` guard it. Expected effect on articles: Best Practices up from 58 (third-party cookies, console issues,
+  31 KB and 12+ requests gone) and no embed-related layout shift.
+- Light-theme contrast sweep over all 82 articles in both themes: captions on dark screenshot panels and inline-dimmed source notes fixed.
+
 ## 26 Oct 2026 — Phase 2: Claude Code setup
 
 - Added `CLAUDE.md` (the project brief) and `.claude/`: five subagents, six slash commands, two skills, two rules files, three
