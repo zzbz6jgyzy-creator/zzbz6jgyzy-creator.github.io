@@ -1,0 +1,30 @@
+name: Article reading experience checks
+on:
+  pull_request:
+    paths: ['article-reader.*', 'dispatch/*.html', 'scripts/build-article-reader.py', 'scripts/build-wayfinding.py', 'tests/*article_reader*', 'tests/article-reader-browser.py', '.github/workflows/article-reader-checks.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reading:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.62.0
+      - name: Preserve reporting and reproducible reader markup
+        run: |
+          python tests/test_article_reader.py
+          python tests/test_wayfinding.py
+          python scripts/build-article-reader.py --check
+      - name: Responsive reading and preference journeys
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/article-reader-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: article-reading-previews
+          path: /tmp/article-reader
