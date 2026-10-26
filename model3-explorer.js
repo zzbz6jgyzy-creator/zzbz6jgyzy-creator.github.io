@@ -7,7 +7,7 @@ import { GLTFLoader } from '/vendor/three/addons/GLTFLoader.js';
 import { DRACOLoader } from '/vendor/three/addons/DRACOLoader.js';
 import { RoomEnvironment } from '/vendor/three/addons/RoomEnvironment.js';
 import { mergeGeometries } from '/vendor/three/utils/BufferGeometryUtils.js';
-import { PARTS, ORDER, PHOTOS } from './model3-parts.js?v=5';
+import { PARTS, ORDER, PHOTOS } from './model3-parts.js?v=20261026studio';
 
 // ---- Exterior config: swap this block to use another GLB ----
 const NUM = (o) => +((o.name.match(/Object_(\d+)/) || [])[1] || -1);
@@ -23,7 +23,8 @@ const app = document.querySelector('[data-m3x]');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarse = matchMedia('(pointer: coarse)').matches;
 const $ = (s) => app.querySelector(s);
-const fail = (msg) => { app.classList.add('m3x-failed'); $('.m3x-status').textContent = msg; };
+const notify = (type, extra = {}) => { if (parent !== window) parent.postMessage({ type, ...extra }, location.origin); };
+const fail = (msg) => { app.classList.add('m3x-failed'); $('.m3x-status').textContent = msg; notify('sd-model3-failed'); };
 const portrait = () => innerWidth < innerHeight;
 
 let renderer;
@@ -35,6 +36,7 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 $('.m3x-canvas').appendChild(renderer.domElement);
+renderer.domElement.tabIndex = 0; renderer.domElement.setAttribute('aria-label', 'Interactive Model 3. Arrow keys orbit, plus and minus zoom, Home resets. Escape returns to images.');
 
 const scene = new THREE.Scene(); scene.background = new THREE.Color(0x050506); scene.fog = new THREE.Fog(0x050506, 12, 28);
 const pmrem = new THREE.PMREMGenerator(renderer);
@@ -257,7 +259,7 @@ new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath('/vendor/three/
     if (Math.max(sz.x, sz.y, sz.z) > 1.2) return; const h = new THREE.Mesh(new THREE.BoxGeometry(Math.max(sz.x, .2), Math.max(sz.y, .2), Math.max(sz.z, .2)), new THREE.MeshBasicMaterial({ visible: false })); h.position.copy(cc); h.userData = { part: id, hit: true, side: o.userData.side };
     const parent = p.sides && o.parent && o.parent !== p.group ? o.parent : p.group; parent.attach ? parent.attach(h) : p.group.add(h); p.hits.push(h); }); });
   Object.values(parts).forEach((p) => car.add(p.group));
-  buildList(); app.classList.add('m3x-ready'); status.textContent = ''; bar && (bar.style.opacity = 0); kick();
+  buildList(); app.classList.add('m3x-ready'); notify('sd-model3-ready'); status.textContent = ''; bar && (bar.style.opacity = 0); kick();
 }, (e) => { if (bar && e.total) bar.style.transform = 'scaleX(' + (e.loaded / e.total) + ')'; }, () => fail('Couldn’t load the 3D model, so this is a still image.'));
 
 // ---------- explode ----------
@@ -408,7 +410,19 @@ function endFly() {
   controls.enabled = true;
 }
 $('.m3x-reset').addEventListener('click', () => { restoreView = null; select(null, { snapBack: false }); setExplode(0); startFly(homePos(), HOME.t.clone()); });
-addEventListener('keydown', (e) => { if (e.key === 'Escape' && selected) select(null); });
+addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); if (selected) select(null); notify('sd-model3-exit'); } });
+renderer.domElement.addEventListener('keydown', (e) => {
+ if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home'].includes(e.key)) return;
+ e.preventDefault(); idle(); fly = null;
+ if (e.key === 'Home') { select(null, {fly:false,snapBack:false}); camera.position.copy(homePos()); controls.target.copy(HOME.t); }
+ else { const offset = camera.position.clone().sub(controls.target), sphere = new THREE.Spherical().setFromVector3(offset);
+ if (e.key === 'ArrowLeft') sphere.theta -= .12; if (e.key === 'ArrowRight') sphere.theta += .12;
+ if (e.key === 'ArrowUp') sphere.phi -= .10; if (e.key === 'ArrowDown') sphere.phi += .10;
+ if (e.key === '+' || e.key === '=') sphere.radius *= .88; if (e.key === '-') sphere.radius *= 1.12;
+ sphere.radius = THREE.MathUtils.clamp(sphere.radius, controls.minDistance, controls.maxDistance); sphere.phi = THREE.MathUtils.clamp(sphere.phi,controls.minPolarAngle,controls.maxPolarAngle);
+ camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(sphere)); }
+ controls.update(); kick();
+});
 
 // picking (ghosted surfaces ignored; enlarged hit volumes for small parts)
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
@@ -440,9 +454,9 @@ const closeList = () => { app.classList.remove('m3x-list-open'); $('.m3x-parts')
 $('.m3x-parts').addEventListener('click', () => { app.classList.toggle('m3x-list-open'); $('.m3x-parts').setAttribute('aria-expanded', app.classList.contains('m3x-list-open')); });
 $('.m3x-close').addEventListener('click', closeList);
 
-let paused = reduce, last = performance.now(); const pauseBtn = $('.m3x-pause');
-function idle() { last = performance.now(); }
-function syncPause() { pauseBtn.textContent = paused ? 'Play' : 'Pause'; pauseBtn.setAttribute('aria-pressed', paused); }
+let paused = true, last = performance.now(); const pauseBtn = $('.m3x-pause');
+function idle() { last = performance.now(); paused = true; syncPause(); }
+function syncPause() { pauseBtn.textContent = paused ? 'Rotate' : 'Stop'; pauseBtn.setAttribute('aria-pressed', String(!paused)); }
 pauseBtn.addEventListener('click', () => { paused = !paused; syncPause(); kick(); }); syncPause();
 controls.addEventListener('start', () => { idle(); if (!fly) return; /* keep a scripted snap/zoom */ }); controls.addEventListener('change', () => kick());
 
@@ -452,13 +466,22 @@ function placeLabel() { if (!selected) return; const c = partBox(selected).getCe
 function resize() { const w = innerWidth, h = app.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w < h ? 50 : 34; frame(); kick(); }
 addEventListener('resize', resize); resize(); HOME.p.copy(homePos()); camera.position.copy(HOME.p); controls.target.copy(HOME.t);
 var zoomUI = initZoom({ app, camera, controls, kick, cancelFly: () => { fly = null; } });
-document.addEventListener('visibilitychange', () => { visible = !document.hidden; kick(); });
+let parentVisible = true;
+const syncVisibility = () => { visible = parentVisible && !document.hidden; if (visible) kick(); else { cancelAnimationFrame(raf); raf = 0; clearTimeout(kickTimer); kickTimer = 0; } };
+document.addEventListener('visibilitychange', syncVisibility);
+addEventListener('message', (event) => {
+ if (event.origin !== location.origin || event.source !== parent) return;
+ const msg = event.data;
+ if (msg?.type === 'sd-model3-visible') { parentVisible = Boolean(msg.visible); syncVisibility(); }
+ if (msg?.type === 'sd-model3-select' && Object.hasOwn(PARTS, msg.part) && parts[msg.part]) select(msg.part);
+});
 function kick() {
+  if (!visible) return;
   if (!raf) raf = requestAnimationFrame(tick);
   if ((exAnim || fly) && !kickTimer) kickTimer = setTimeout(() => { kickTimer = 0; if (exAnim || fly) { raf = 0; tick(); } }, 50);
 }
 function tick() {
-  raf = 0; const now = performance.now(); let busy = false;
+  raf = 0; if (!visible) return; const now = performance.now(); let busy = false;
   if (exAnim) {
     const k = Math.min(1, (now - exAnim.start) / exAnim.dur);
     ex = exAnim.from + (exAnim.to - exAnim.from) * k;
@@ -473,7 +496,7 @@ function tick() {
     busy = true;
   }
   else {
-    controls.autoRotate = !paused && !selected && now - last > 6500; controls.autoRotateSpeed = 0.45;
+    controls.autoRotate = !paused && !selected; controls.autoRotateSpeed = 0.45;
     if (controls.update() || controls.autoRotate) busy = true;
   }
   renderer.render(scene, camera); placeLabel(); zoomUI && zoomUI.sync();

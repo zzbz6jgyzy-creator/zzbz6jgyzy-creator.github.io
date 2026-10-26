@@ -346,6 +346,15 @@
         "grok-studio-view.js",
         "grok-studio.js"
       ]
+    },
+    "model3": {
+      "file": "/assets/js/model3.bundle.2e1853718e.js",
+      "bytes": 27679,
+      "sources": [
+        "model3-studio-model.js",
+        "model3-studio-view.js",
+        "model3-studio.js"
+      ]
     }
   }
 }

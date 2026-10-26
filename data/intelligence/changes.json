@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-26T13:08:12.421Z",
+  "updated": "2026-10-26T13:53:47.373Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:wave:2026.38.5.11",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.11",
+      "previous": "198",
+      "next": "283",
+      "at": "2026-10-26T13:38:13.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.11 moved from 198 to 283 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "title": "2026.38.5.11",
+      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T13:38:13.000Z|283"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/latvia-fsd-tenth-eu.html",
@@ -816,23 +833,6 @@
       "summary": "2026.33.100 first appeared in the Teslascope sample with 36 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.33.100",
       "id": "appeared|tesla-software:wave:2026.33.100|2026-10-10T08:48:07.000Z|36"
-    },
-    {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.27.6.15",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.27.6.15",
-      "previous": "0",
-      "next": "3",
-      "at": "2026-10-10T08:48:07.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.27.6.15 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
-      "title": "2026.27.6.15",
-      "id": "appeared|tesla-software:wave:2026.27.6.15|2026-10-10T08:48:07.000Z|3"
     },
     {
       "type": "logged",
