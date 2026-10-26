@@ -147,6 +147,7 @@ jobs:
       - name: Trust pages, OG cards, NewsArticle structured data, sitemap and RSS
         run: |
           python3 scripts/build-trust-pages.py
+          python3 -c "import PIL" 2>/dev/null || pip install --quiet pillow
           python3 scripts/generate-og.py
           python3 scripts/build-seo.py
       - name: Commit if changed

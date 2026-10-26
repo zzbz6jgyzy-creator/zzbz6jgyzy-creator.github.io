@@ -44,6 +44,29 @@ class Clip(unittest.TestCase):
         self.assertIn("max-image-preview:large", out)
         self.assertIn("feed.xml", out)
 
+    def test_hygiene_keeps_page_css_next_to_members(self):
+        src = (
+            "<html><head><title>t</title>\n"
+            "    <!-- seo:ld -->\n    <script></script>\n    <!-- /seo:ld -->\n"
+            '    <link rel="stylesheet" href="/personal-home.css?v=1" />\n'
+            "    <!--sd:members-->\n    <!--/sd:members-->\n"
+            "</head><body></body></html>"
+        )
+        out = seo_lib.hygiene(src)
+        css_at = out.find("personal-home.css")
+        members_at = out.find("<!--sd:members-->")
+        robots_at = out.find('name="robots"')
+        self.assertGreater(members_at, css_at)
+        self.assertLess(robots_at, css_at)
+        rebuilt = out.replace(
+            '    <link rel="stylesheet" href="/personal-home.css?v=1" />\n', ""
+        ).replace(
+            "    <!--sd:members-->",
+            '    <link rel="stylesheet" href="/personal-home.css?v=1" />\n    <!--sd:members-->',
+            1,
+        )
+        self.assertEqual(rebuilt, out)
+
     def test_hygiene_drops_broken_modified_time_fallout(self):
         src = (
             "<html><head><title>t</title>\n"

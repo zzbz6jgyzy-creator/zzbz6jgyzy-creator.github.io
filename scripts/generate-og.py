@@ -9,8 +9,6 @@ from __future__ import annotations
 import os
 import sys
 
-from PIL import Image, ImageDraw, ImageFont
-
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "og")
 W, H = 1200, 630
@@ -39,6 +37,8 @@ CARDS = [
 
 
 def font(name, size):
+    from PIL import ImageFont
+
     path = os.path.join(FONT_DIR, name)
     if os.path.exists(path):
         return ImageFont.truetype(path, size)
@@ -46,6 +46,8 @@ def font(name, size):
 
 
 def draw_card(kicker, title):
+    from PIL import Image, ImageDraw
+
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
     d.rectangle((0, 0, 12, H), fill=RED)
@@ -64,6 +66,12 @@ def draw_card(kicker, title):
 
 
 def run(force=False):
+    try:
+        import PIL  # noqa: F401
+    except ImportError:
+        # Images are committed; GitHub-hosted runners do not ship Pillow.
+        print("og images: skipped (Pillow not installed)")
+        return
     os.makedirs(OUT, exist_ok=True)
     n = 0
     for slug, kicker, title in CARDS:
