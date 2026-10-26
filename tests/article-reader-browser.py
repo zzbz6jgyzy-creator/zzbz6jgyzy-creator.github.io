@@ -25,7 +25,7 @@ async def main():
     await page.locator('[data-rs-share]').click();assert '/dispatch/'+path in await page.evaluate('window.__copied')
     assert paragraphs==await page.locator('.rs-article>p').all_text_contents();assert sources==await page.locator('.rs-article a').evaluate_all('(els)=>els.map(e=>e.href)')
     await page.reload();assert await page.locator('.rs-article').get_attribute('data-text-size')=='1'
-    await page.locator('.rs-article>h2').first.scroll_into_view_if_needed();assert await page.locator('.rs-progress span').evaluate('e=>getComputedStyle(e).transform')!='matrix(0, 0, 0, 1, 0, 0)'
+    await page.evaluate('const a=document.querySelector(".rs-article");scrollTo(0,scrollY+a.getBoundingClientRect().top+a.offsetHeight*.3)');await page.wait_for_function('new DOMMatrixReadOnly(getComputedStyle(document.querySelector(".rs-progress span")).transform).a>0')
     if await page.locator('.sd-contents').count():
      await page.locator('.sd-contents summary').click();link=page.locator('.sd-contents a').first;target=await link.get_attribute('href');await link.click();assert (await page.locator(target).bounding_box())['y']>=(await page.locator('.rs-tools').bounding_box())['y']+(await page.locator('.rs-tools').bounding_box())['height']-1,'contents target hidden by reader controls'
     print('PASS',path,width,theme,flush=True);await c.close()
