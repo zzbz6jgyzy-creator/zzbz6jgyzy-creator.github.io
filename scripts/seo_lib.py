@@ -107,6 +107,46 @@ def dumps(obj) -> str:
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
+CLAUSE_END_RE = re.compile(r"[.?!;:][”’\"']?(?=\s)|\s[—–]\s")
+
+
+def clause_cut(text: str, limit: int, floor: int = 35) -> str:
+    """Longest leading clause (ends at . ? ! ; : or a dash) that fits in limit, else ''."""
+    text = re.sub(r"\s+", " ", (text or "").strip())
+    if len(text) <= limit:
+        return text
+    best = ""
+    for m in CLAUSE_END_RE.finditer(text):
+        end = m.end() if m.group().strip() not in "—–" else m.start()
+        cut = text[:end].rstrip(" ,;:—–-")
+        if len(cut) > limit:
+            break
+        if len(cut) >= floor:
+            best = cut
+    return best
+
+
+def headline_title(headline: str, limit: int = 60) -> str:
+    """<title> for an article without cutting a sentence in half.
+
+    Full headline + suffix if it fits; else the leading clauses + suffix; else the
+    leading clauses alone (up to 70); else the full headline unbranded (search
+    engines truncate long titles themselves, at a word, with an ellipsis)."""
+    headline = re.sub(r"\s+", " ", headline or "").strip()
+    headline = re.sub(r"\s+[—|]\s+Supercharged Daily\s*$", "", headline, flags=re.I)
+    room = limit - len(SUFFIX)
+    cut = clause_cut(headline, room)
+    if cut:
+        return cut + SUFFIX
+    return clause_cut(headline, 70) or headline
+
+
+def social_headline(headline: str, limit: int = 110) -> str:
+    """og/X/JSON-LD headline: full text, or a whole clause, or a word clip with an ellipsis."""
+    headline = re.sub(r"\s+", " ", headline or "").strip()
+    return clause_cut(headline, limit) or clip(headline, limit - 1, ellipsis=True)
+
+
 def load_titles():
     path = os.path.join(ROOT, "scripts", "seo-titles.json")
     with open(path, encoding="utf-8") as fh:
@@ -140,15 +180,16 @@ def set_attr(src: str, attr: str, name: str, value: str) -> str:
     return _insert_in_head(src, tag)
 
 
-def set_title(src: str, title: str) -> str:
+def set_title(src: str, title: str, social: str | None = None) -> str:
+    """<title> plus og:title/twitter:title (social overrides the share-card text)."""
     src = strip_leaked_head_text(src)
     esc = html.escape(title, quote=False)
-    src = re.sub(r"<title>[\s\S]*?</title>", "<title>%s</title>" % esc, src, count=1)
+    src = re.sub(r"<title>[\s\S]*?</title>", lambda m: "<title>%s</title>" % esc, src, count=1)
     for attr, name in (
         ("property", "og:title"),
         ("name", "twitter:title"),
     ):
-        src = set_attr(src, attr, name, title)
+        src = set_attr(src, attr, name, social or title)
     return src
 
 
@@ -442,12 +483,9 @@ def replace_first_h1(src: str, inner_html: str) -> str:
     if not m:
         return src
     head, tail = src[: m.start()], src[m.start() :]
+    # Keep the H1's own attributes: page scripts look it up by id (My Tesla's #mg-title).
     return head + re.sub(
-        r"(<h1\b[^>]*>)[\s\S]*?(</h1>)",
-        lambda match: match.group(1) + inner_html + match.group(2),
-        tail,
-        count=1,
-        flags=re.I,
+        r"(<h1\b[^>]*>)[\s\S]*?</h1>", lambda m: m.group(1) + inner_html + "</h1>", tail, count=1, flags=re.I
     )
 
 

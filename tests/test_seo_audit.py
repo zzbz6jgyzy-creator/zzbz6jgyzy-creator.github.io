@@ -31,6 +31,27 @@ class Clip(unittest.TestCase):
         self.assertLessEqual(len(t), 60)
         self.assertNotIn("— Supercharged Daily", t)
 
+    def test_headline_never_cut_mid_sentence(self):
+        h = "SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet"
+        self.assertEqual(seo_lib.headline_title(h, 60), "SpaceX’s $40 billion GPU deal is four times the old record.")
+        self.assertEqual(seo_lib.social_headline(h, 110), h)
+        short = "Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first catch"
+        self.assertEqual(seo_lib.headline_title(short, 60), "Booster 22 just fired all 33 engines. | Supercharged Daily")
+        quoted = "Trump says Musk “put it back.” Ukraine’s drone pilots say their tests show the speed cap is still there"
+        self.assertEqual(seo_lib.headline_title(quoted, 60), quoted)
+        no_clause = "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am"
+        self.assertEqual(seo_lib.headline_title(no_clause, 60), no_clause)
+        long = "word " * 40
+        self.assertTrue(seo_lib.social_headline(long, 110).endswith("…"))
+        self.assertLessEqual(len(seo_lib.social_headline(long, 110)), 110)
+
+    def test_replace_first_h1_keeps_attributes(self):
+        # My Tesla's script reads #mg-title; dropping the id broke the whole studio.
+        src = '<nav><h1>Menu</h1></nav><main><h1 id="mg-title" class="x">Old</h1></main>'
+        out = seo_lib.replace_first_h1(src, "New \\1 <span>two</span>")
+        self.assertIn('<h1 id="mg-title" class="x">New \\1 <span>two</span></h1>', out)
+        self.assertIn("<nav><h1>Menu</h1></nav>", out)
+
     def test_hygiene_strips_google_fonts_and_cls_reserve(self):
         src = (
             "<html><head><title>t</title>\n"

@@ -4819,3 +4819,23 @@ picture > source { display: none !important; }
 .article > figure figcaption a { color: inherit; text-underline-offset: .18em; }
 .site-footer { line-height: 1.6; }
 .site-footer small { font-size: .8rem; }
+
+/* Breadcrumbs, "Updated" line and disclosure sit above the fold on articles and hubs.
+   They live here (render-blocking) rather than in related.css (loaded async), which made
+   the headline jump ~114px when related.css arrived (CLS ~0.11 on mobile). */
+.sd-crumbs{margin:0 0 1rem;font-size:.78rem;color:#8a8a8e}
+.sd-crumbs ol{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .4rem;margin:0;padding:0;list-style:none}
+.sd-crumbs li{display:inline-flex;align-items:center;gap:.4rem;min-width:0}
+.sd-crumbs li:not(:last-child)::after{content:"/";color:rgba(255,255,255,.28)}
+.sd-crumbs a{color:#c4c4c8;text-decoration:none}
+.sd-crumbs a:hover{color:#fff;text-decoration:underline}
+.sd-crumbs [aria-current="page"]{color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:min(100%,28rem)}
+.sd-updated{margin:.35rem 0 0;font-size:.9rem;color:var(--ink-soft,#c8c8cc)}
+.sd-disclosure{margin:1.1rem 0 0;padding:.7rem .9rem;border-left:3px solid var(--red-text,#f23a52);background:rgba(242,58,82,.08);font-size:.88rem;line-height:1.5;color:var(--ink-soft,#c8c8cc)}
+/* The H1 names the current story; keep the visual breadcrumb concise. */
+.sd-crumbs [aria-current="page"] { display: none; }
+.sd-crumbs li:nth-last-child(2)::after { content: none; }
+.sd-crumbs { font-size: .85rem; }
+.sd-crumbs a { display: inline-flex; align-items: center; min-height: 36px; }
+@media (max-width: 760px) { .sd-crumbs a { min-height: 44px; } }
+@media (prefers-reduced-motion:reduce){.sd-crumbs a{text-decoration:underline}}

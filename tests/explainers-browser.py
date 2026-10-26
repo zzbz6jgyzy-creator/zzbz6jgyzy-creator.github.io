@@ -10,7 +10,7 @@ async def main():
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROME_BIN','/usr/bin/chromium'),args=['--no-sandbox'])
   async def context(width=390,js=True,light=False,blocked=False):
    c=await browser.new_context(viewport={'width':width,'height':900},java_script_enabled=js,reduced_motion='reduce')
-   if light:await c.add_init_script("localStorage.setItem('sd-theme','light')")
+   await c.add_init_script("localStorage.setItem('sd-theme','"+('light' if light else 'dark')+"')")
    async def route(r):
     parsed=urlparse(r.request.url);path=unquote(parsed.path).lstrip('/') or 'index.html';f=ROOT/path
     if parsed.hostname!='superchargeddaily.com' or not f.is_file() or f.suffix=='.mp4' or (blocked and 'explainers-fsd.bundle.' in path):await r.abort();return

@@ -11,7 +11,7 @@ async def main():
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
   async def context(width=390,theme='dark',mode='live',profile=False):
    c=await browser.new_context(viewport={'width':width,'height':900},java_script_enabled=mode!='no-js',reduced_motion='reduce')
-   if theme=='light':await c.add_init_script("localStorage.setItem('sd-theme','light')")
+   await c.add_init_script("localStorage.setItem('sd-theme',"+repr(theme)+")")
    if profile:await c.add_init_script("localStorage.setItem('sd-my-tesla-v1',JSON.stringify({cc:'IE',hw:'hw4',model:'my',sw:'2026.32.7'}))")
    await c.add_init_script("Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window._softwareCopied=value}}})")
    async def route(r):
