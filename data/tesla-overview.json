@@ -167,10 +167,19 @@
     "count": 134
   },
   "europe": {
-    "updated": "2026-10-23",
+    "updated": "2026-10-26",
     "listed": 9
   },
   "stories": [
+    {
+      "url": "/dispatch/latvia-fsd-tenth-eu.html",
+      "image": "/assets/og-v2.jpg",
+      "title": "Latvia approves Tesla’s supervised FSD, making it 10 EU countries. Here’s what drivers there are getting",
+      "summary": "Latvia’s CSDD accepted the Dutch approval on 26 Oct, with tighter speed and driver-monitoring rules. Tesla says rollout begins soon; no date or Latvian price yet.",
+      "tag": "Tesla",
+      "date": "2026-10-26T12:40:00Z",
+      "thumb": "/assets/og-v2-480w.webp"
+    },
     {
       "url": "/dispatch/robotaxi-938-f1-cota.html",
       "image": "/assets/og-v2.jpg",
@@ -215,16 +224,7 @@
       "tag": "Robotaxi",
       "date": "2026-10-21T19:40:28Z",
       "thumb": "/assets/dispatch/robotaxi-safety-hero-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-q3-2026-preview.html",
-      "image": "/assets/dispatch/tesla-q3-preview-poster.jpg",
-      "title": "Tesla Q3 preview: the cash burn, what’s at stake for the stock, and the SpaceX merger talk",
-      "summary": "Results land after the US close on Wednesday. Why free cash flow is expected to be negative, the bull and bear cases for the stock, and what has actually been said about a SpaceX merger.",
-      "tag": "Tesla",
-      "date": "2026-10-20T18:30:00Z",
-      "thumb": "/assets/dispatch/tesla-q3-preview-poster-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-10-26T02:50:00Z"
+  "articlesUpdated": "2026-10-26T12:40:00Z"
 }

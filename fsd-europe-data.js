@@ -1,8 +1,8 @@
 // Generated from data/fsd-europe.json by scripts/build-fsd-europe.mjs. Edit the JSON source.
 window.FSD_EUROPE = {
   "schemaVersion": 1,
-  "updated": "2026-10-23",
-  "revision": "2026-10-23.1",
+  "updated": "2026-10-26",
+  "revision": "2026-10-26.1",
   "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
   "thresholds": {
     "euPopulationM": 448.9,
@@ -31,7 +31,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -116,7 +116,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -202,7 +202,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -282,7 +282,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -362,7 +362,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -448,7 +448,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -528,7 +528,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -616,7 +616,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -1746,7 +1746,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
+        "reviewedAt": "2026-10-26",
         "note": "Tesla’s current availability list includes this market; vehicle eligibility still applies."
       },
       "observations": {
@@ -1824,10 +1824,13 @@ window.FSD_EUROPE = {
       "jurisdiction": "EU",
       "authority": "CSDD",
       "permission": {
-        "status": "unknown",
-        "date": null,
-        "evidence": [],
-        "reviewedAt": null
+        "status": "reported",
+        "date": "2026-10-26",
+        "evidence": [
+          "s-595e74d0188f",
+          "s-e3bbda0052e9"
+        ],
+        "reviewedAt": "2026-10-26"
       },
       "availability": {
         "status": "not_listed",
@@ -1835,8 +1838,8 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-c55a052f27a6"
         ],
-        "reviewedAt": "2026-10-23",
-        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+        "reviewedAt": "2026-10-26",
+        "note": "Tesla says rollout begins soon. Latvia is not yet on the checked Tesla availability list."
       },
       "observations": {
         "status": "unverified",
@@ -1854,38 +1857,56 @@ window.FSD_EUROPE = {
         ]
       },
       "context": {
-        "summary": "No verified current position is retained.",
+        "summary": "Recognised RDW approval (CSDD statement, 26 Oct 2026); Tesla says rollout begins soon",
         "evidence": [
-          "s-ceb8f4f6d674",
-          "s-ddf43be4eb49"
+          "s-d8a3f32f6ac7",
+          "s-3da5d41d22de",
+          "s-aac9fa5753fb"
         ],
-        "reviewedAt": null,
-        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+        "reviewedAt": "2026-10-26",
+        "note": "Tesla asked Latvia to start recognition on 13 Apr 2026, according to the Ministry of Economics report."
       },
       "sourceIds": [
         "s-c55a052f27a6",
+        "s-595e74d0188f",
+        "s-e3bbda0052e9",
+        "s-d8a3f32f6ac7",
+        "s-3da5d41d22de",
+        "s-aac9fa5753fb",
         "s-ceb8f4f6d674",
         "s-ddf43be4eb49"
       ],
-      "status": "watch",
-      "stage": "watch",
+      "status": "approved",
+      "stage": "recognised",
       "rolloutLive": false,
-      "date": null,
+      "date": "2026-10-26",
       "pop": 1.9,
       "regulator": "CSDD",
-      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "note": "National recognition reported on 26 Oct 2026. Tesla says rollout begins soon and does not yet list customer availability here.",
       "sources": [
         {
           "label": "Tesla Assisted Driving availability and conditions",
           "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
         },
         {
-          "label": "notanfsdtracker",
-          "url": "https://notanfsdtracker.com/eu-tracker"
+          "label": "Apollo.lv (CSDD statement), 26 Oct",
+          "url": "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai"
         },
         {
-          "label": "tad-tracker",
-          "url": "https://tad-tracker.eu/en/"
+          "label": "BB.LV (CSDD statement), 26 Oct",
+          "url": "https://lat.bb.lv/raksts/musu-latvija/2026/10/26/latvija-atzist-tesla-vaditaja-paligsistemu-117934"
+        },
+        {
+          "label": "Tesla Europe on X, 26 Oct",
+          "url": "https://x.com/teslaeurope/status/2114667445223149619"
+        },
+        {
+          "label": "Latvian Ministry of Economics report",
+          "url": "https://tapportals.mk.gov.lv/legal_acts/59bac950-a57d-4a56-884a-285ef95b6d83"
+        },
+        {
+          "label": "Reuters via Devdiscourse, 26 Oct",
+          "url": "https://www.devdiscourse.com/article/international/3997318-tesla-says-latvia-approved-its-self-driving-system-fsd"
         }
       ]
     },
@@ -2291,7 +2312,7 @@ window.FSD_EUROPE = {
       "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving",
       "label": "Tesla Assisted Driving availability and conditions",
       "type": "manufacturer",
-      "checkedAt": "2026-10-23",
+      "checkedAt": "2026-10-26",
       "publishedAt": null
     },
     {
@@ -2557,9 +2578,76 @@ window.FSD_EUROPE = {
       "type": "media",
       "checkedAt": null,
       "publishedAt": null
+    },
+    {
+      "id": "s-d8a3f32f6ac7",
+      "url": "https://x.com/teslaeurope/status/2114667445223149619",
+      "label": "Tesla Europe on X, 26 Oct",
+      "type": "manufacturer",
+      "checkedAt": "2026-10-26",
+      "publishedAt": "2026-10-26"
+    },
+    {
+      "id": "s-595e74d0188f",
+      "url": "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
+      "label": "Apollo.lv (CSDD statement), 26 Oct",
+      "type": "media",
+      "checkedAt": "2026-10-26",
+      "publishedAt": "2026-10-26"
+    },
+    {
+      "id": "s-e3bbda0052e9",
+      "url": "https://lat.bb.lv/raksts/musu-latvija/2026/10/26/latvija-atzist-tesla-vaditaja-paligsistemu-117934",
+      "label": "BB.LV (CSDD statement), 26 Oct",
+      "type": "media",
+      "checkedAt": "2026-10-26",
+      "publishedAt": "2026-10-26"
+    },
+    {
+      "id": "s-3da5d41d22de",
+      "url": "https://tapportals.mk.gov.lv/legal_acts/59bac950-a57d-4a56-884a-285ef95b6d83",
+      "label": "Latvian Ministry of Economics report on recognising the RDW approval",
+      "type": "authority",
+      "checkedAt": "2026-10-26",
+      "publishedAt": null
+    },
+    {
+      "id": "s-aac9fa5753fb",
+      "url": "https://www.devdiscourse.com/article/international/3997318-tesla-says-latvia-approved-its-self-driving-system-fsd",
+      "label": "Reuters via Devdiscourse, 26 Oct",
+      "type": "media",
+      "checkedAt": "2026-10-26",
+      "publishedAt": "2026-10-26"
     }
   ],
   "events": [
+    {
+      "id": "event-20",
+      "date": "2026-10-26",
+      "precision": "day",
+      "country": "LV",
+      "type": "statement",
+      "summary": "Tesla Europe: \"Now approved in Latvia. Rollout begins soon.\" No date given.",
+      "evidence": [
+        "s-d8a3f32f6ac7"
+      ],
+      "sourceType": "manufacturer",
+      "reviewedAt": "2026-10-26"
+    },
+    {
+      "id": "event-21",
+      "date": "2026-10-26",
+      "precision": "day",
+      "country": "LV",
+      "type": "recognition",
+      "summary": "Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country.",
+      "evidence": [
+        "s-595e74d0188f",
+        "s-e3bbda0052e9"
+      ],
+      "sourceType": "media",
+      "reviewedAt": "2026-10-26"
+    },
     {
       "id": "tesla-availability-2026-10-23",
       "date": "2026-10-23",
@@ -2808,6 +2896,19 @@ window.FSD_EUROPE = {
       "reviewedAt": null
     },
     {
+      "id": "event-22",
+      "date": "2026-04-13",
+      "precision": "day",
+      "country": "LV",
+      "type": "statement",
+      "summary": "Tesla asks Latvia to start recognising the RDW approval, according to a Ministry of Economics report.",
+      "evidence": [
+        "s-3da5d41d22de"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": "2026-10-26"
+    },
+    {
       "id": "event-19",
       "date": "2026-04-10",
       "precision": "day",
@@ -2822,6 +2923,22 @@ window.FSD_EUROPE = {
     }
   ],
   "changelog": [
+    {
+      "date": "2026-10-26",
+      "code": "LV",
+      "type": "statement",
+      "text": "Tesla Europe: \"Now approved in Latvia. Rollout begins soon.\" No date given.",
+      "source": "https://x.com/teslaeurope/status/2114667445223149619",
+      "evidence": "company_claim"
+    },
+    {
+      "date": "2026-10-26",
+      "code": "LV",
+      "type": "recognition",
+      "text": "Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country.",
+      "source": "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
+      "evidence": "reported_unconfirmed"
+    },
     {
       "date": "2026-10-23",
       "code": "",
@@ -2973,6 +3090,14 @@ window.FSD_EUROPE = {
       "text": "Lithuania becomes the first state to recognise the Dutch approval.",
       "source": "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/",
       "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-04-13",
+      "code": "LV",
+      "type": "statement",
+      "text": "Tesla asks Latvia to start recognising the RDW approval, according to a Ministry of Economics report.",
+      "source": "https://tapportals.mk.gov.lv/legal_acts/59bac950-a57d-4a56-884a-285ef95b6d83",
+      "evidence": "officially_confirmed"
     },
     {
       "date": "2026-04-10",
