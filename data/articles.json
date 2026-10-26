@@ -1,6 +1,19 @@
 {
-  "updated": "2026-10-26T12:40:00Z",
+  "updated": "2026-10-26T14:50:00Z",
   "articles": [
+    {
+      "url": "/dispatch/spacex-40b-gpu-lease.html",
+      "title": "SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet",
+      "date": "2026-10-26T14:50:00Z",
+      "topic": "xai",
+      "tag": "SpaceX AI",
+      "image": "/assets/dispatch/nvidia-gb200-rack.jpg",
+      "summary": "SpaceX’s 8-K, filed 26 Oct, shows a binding commitment for a ~$40B Apollo-managed GPU lease. The rate isn’t set and closing is expected before year-end.",
+      "pinned": false,
+      "imageAlt": "An Nvidia GB200 rack, shown for illustration; not SpaceX hardware (photo: Pokiiri, CC BY-SA 4.0)",
+      "author": "Alex R",
+      "minutes": 8
+    },
     {
       "url": "/dispatch/latvia-fsd-tenth-eu.html",
       "title": "Latvia approves Tesla’s supervised FSD, making it 10 EU countries. Here’s what drivers there are getting",
