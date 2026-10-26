@@ -27,6 +27,7 @@ async def main():
  async with async_playwright()as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE')or shutil.which('google-chrome')or shutil.which('chromium'),headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
   cases=[(w,t,'normal')for w in [320,390,768,1440]for t in ['dark','light']]+[(390,'dark','nojs'),(1440,'dark','nojs'),(390,'dark','blocked-storage'),(390,'dark','stale'),(390,'dark','legacy'),(390,'dark','shared'),(390,'dark','malformed'),(390,'dark','bad-shared')]
+  if os.environ.get('PROMISE_BROWSER_MODE'):cases=[c for c in cases if c[2]==os.environ['PROMISE_BROWSER_MODE']]
   for width,theme,mode in cases:
    context=await browser.new_context(viewport={'width':width,'height':1000},java_script_enabled=mode!='nojs',reduced_motion='reduce',service_workers='block')
    await context.add_init_script("try{localStorage.setItem('sd-theme',"+json.dumps(theme)+");}catch{}Date.now=()=>Date.parse('"+('2028-01-01T12:00:00Z'if mode=='stale'else'2026-10-26T12:00:00Z')+"');Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(new Error('fixture: unavailable'))}})")
@@ -121,6 +122,10 @@ async def main():
      await tap(page,'#pr-close');assert await page.locator('#pr-dialog').is_hidden()
      await page.goto(SITE+'/promise-tracker.html#roadster-ship-2025',wait_until='domcontentloaded');await page.wait_for_function("document.getElementById('pr-dialog').open")
      assert await page.locator('#pr-dialog a[href="https://superchargeddaily.com/dispatch/roadster-reveal-2026.html"]').count()>0
+     # A new anchor can arrive before the native close event is delivered.
+     await page.evaluate("document.getElementById('pr-close').click();location.hash='#fsd-90-percent-2013'")
+     await page.wait_for_function("document.getElementById('pr-dialog').open && document.getElementById('pr-dialog-title').textContent.includes('90%')")
+     assert await page.evaluate("location.hash")=="#fsd-90-percent-2013"
     elif mode=='shared':
      await count(page,1);assert await page.locator('#pr-company').input_value()=='SpaceX';assert await page.locator('#pr-topic').input_value()=='Grok / xAI';assert await page.locator('.pr-timeline-row').count()==1
      await tap(page,'[data-pr-view="cards"]');assert await page.locator('#pr-results [data-pr-record]').get_attribute('data-pr-record')=='grok-bot-enterprise-few-weeks'
