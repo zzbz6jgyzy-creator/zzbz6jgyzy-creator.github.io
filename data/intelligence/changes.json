@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-26T16:35:05.171Z",
+  "updated": "2026-10-26T16:48:12.547Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:wave:2026.38.5.11",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.11",
+      "previous": "283",
+      "next": "352",
+      "at": "2026-10-26T16:35:04.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.11 moved from 283 to 352 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "title": "2026.38.5.11",
+      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T16:35:04.000Z|352"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-40b-gpu-lease.html",
@@ -816,23 +833,6 @@
       "summary": "2026.38.3 first appeared in the Teslascope sample with 7 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.3",
       "id": "appeared|tesla-software:wave:2026.38.3|2026-10-10T08:48:07.000Z|7"
-    },
-    {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.33.100",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.33.100",
-      "previous": "0",
-      "next": "36",
-      "at": "2026-10-10T08:48:07.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.33.100 first appeared in the Teslascope sample with 36 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
-      "title": "2026.33.100",
-      "id": "appeared|tesla-software:wave:2026.33.100|2026-10-10T08:48:07.000Z|36"
     },
     {
       "type": "logged",
