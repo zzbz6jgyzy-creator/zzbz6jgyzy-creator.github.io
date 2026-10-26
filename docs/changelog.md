@@ -6,6 +6,15 @@
   (1,868 files byte-identical, 152 sitemap URLs resolve). Headers, 301s for the old stubs and a styled 404 verified with `wrangler dev`.
 - GitHub Pages still serves the site. Nothing deleted. See `docs/migration.md`; rollback is deleting `astro/`.
 
+## 26 Oct 2026 — Phone homepage leads with the news
+
+- At 600 px and below the homepage now shows: headline, newsletter sign-up, then the top story (image and headline) in the first
+  screen (measured at 390, 430 and 600 px; at 360 and 320 px the headline starts at the fold). Before, the hero copy and the Roadster
+  showcase pushed the top story below the second screen. CSS only (`home-studio.css`): visual order changes with `display: contents` and
+  `order`, DOM order and the desktop layout are untouched. Lighthouse mobile unchanged (LCP 4.1 s locally, CLS 0).
+- Trade-off: the pitch line, the three start links and the Roadster showcase now sit below the stories on phones. To undo, delete the
+  `@media (max-width: 600px)` block at the end of `home-studio.css`.
+
 ## 26 Oct 2026 — X posts load on request
 
 - All 40 articles with embedded X posts now show the post as readable text (the standard embed blockquote) with a "Load post from X"
