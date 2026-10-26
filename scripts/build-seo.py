@@ -191,14 +191,16 @@ def articles():
         original = src
         src = ensure_head(src)
         src = RELATED_CSS_RE.sub("/related.css?v=" + CSS_VER, src)
-        title = meta(src, "property", "og:title") or a["title"]
+        # articles.json holds the full headline; og:title may already be a shortened copy.
+        title = a.get("title") or meta(src, "property", "og:title")
         title = re.sub(r"\s+[—|]\s+Supercharged Daily\s*$", "", title)
-        short = a.get("title") or title
+        short = title
         desc = meta(src, "name", "description") or a.get("summary", "")
-        # <title>/og stay ~60 chars with a consistent " | Supercharged Daily" suffix.
-        # H1 keeps the full headline. JSON-LD headline is clipped at a word boundary.
-        page_title = seo_lib.branded(short, 60)
-        src = seo_lib.set_title(src, page_title)
+        # <title> keeps the " | Supercharged Daily" suffix only when a whole clause fits ~60 chars.
+        # Share cards and JSON-LD get the full headline (or a whole clause), never half a sentence.
+        page_title = seo_lib.headline_title(title, 60)
+        social_title = seo_lib.social_headline(title, 110)
+        src = seo_lib.set_title(src, page_title, social_title)
         if desc:
             src = seo_lib.set_description(src, seo_lib.clip(desc, 160))
         img = meta(src, "property", "og:image") or (SITE + a["image"] if a.get("image") else None)
@@ -210,7 +212,7 @@ def articles():
             "@context": "https://schema.org",
             "@type": "NewsArticle",
             "mainEntityOfPage": {"@type": "WebPage", "@id": SITE + a["url"]},
-            "headline": seo_lib.clip(title, 110),
+            "headline": social_title,
             "description": seo_lib.clip(desc, 200),
             "datePublished": a["date"],
             **({'dateModified': revised} if revised else {}),

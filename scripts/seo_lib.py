@@ -101,6 +101,46 @@ def dumps(obj) -> str:
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
+CLAUSE_END_RE = re.compile(r"[.?!;:][”’\"']?(?=\s)|\s[—–]\s")
+
+
+def clause_cut(text: str, limit: int, floor: int = 35) -> str:
+    """Longest leading clause (ends at . ? ! ; : or a dash) that fits in limit, else ''."""
+    text = re.sub(r"\s+", " ", (text or "").strip())
+    if len(text) <= limit:
+        return text
+    best = ""
+    for m in CLAUSE_END_RE.finditer(text):
+        end = m.end() if m.group().strip() not in "—–" else m.start()
+        cut = text[:end].rstrip(" ,;:—–-")
+        if len(cut) > limit:
+            break
+        if len(cut) >= floor:
+            best = cut
+    return best
+
+
+def headline_title(headline: str, limit: int = 60) -> str:
+    """<title> for an article without cutting a sentence in half.
+
+    Full headline + suffix if it fits; else the leading clauses + suffix; else the
+    leading clauses alone (up to 70); else the full headline unbranded (search
+    engines truncate long titles themselves, at a word, with an ellipsis)."""
+    headline = re.sub(r"\s+", " ", headline or "").strip()
+    headline = re.sub(r"\s+[—|]\s+Supercharged Daily\s*$", "", headline, flags=re.I)
+    room = limit - len(SUFFIX)
+    cut = clause_cut(headline, room)
+    if cut:
+        return cut + SUFFIX
+    return clause_cut(headline, 70) or headline
+
+
+def social_headline(headline: str, limit: int = 110) -> str:
+    """og/X/JSON-LD headline: full text, or a whole clause, or a word clip with an ellipsis."""
+    headline = re.sub(r"\s+", " ", headline or "").strip()
+    return clause_cut(headline, limit) or clip(headline, limit - 1, ellipsis=True)
+
+
 def load_titles():
     path = os.path.join(ROOT, "scripts", "seo-titles.json")
     with open(path, encoding="utf-8") as fh:
@@ -126,14 +166,15 @@ def set_attr(src: str, attr: str, name: str, value: str) -> str:
     return src
 
 
-def set_title(src: str, title: str) -> str:
+def set_title(src: str, title: str, social: str | None = None) -> str:
+    """<title> plus og:title/twitter:title (social overrides the share-card text)."""
     esc = html.escape(title, quote=False)
-    src = re.sub(r"<title>[\s\S]*?</title>", "<title>%s</title>" % esc, src, count=1)
+    src = re.sub(r"<title>[\s\S]*?</title>", lambda m: "<title>%s</title>" % esc, src, count=1)
     for attr, name in (
         ("property", "og:title"),
         ("name", "twitter:title"),
     ):
-        src = set_attr(src, attr, name, title)
+        src = set_attr(src, attr, name, social or title)
     return src
 
 
