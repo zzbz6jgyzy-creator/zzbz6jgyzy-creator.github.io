@@ -156,6 +156,7 @@ def ensure_assets(html, need_newsletter_js):
 
 
 def insert_block(html, block, after_article=True):
+    original = html
     html = NL_RX.sub("", html)
     if after_article:
         art = list(re.finditer(r"</article>", html))
@@ -168,7 +169,12 @@ def insert_block(html, block, after_article=True):
     main = re.search(r"(\n[ \t]*)</main>", html)
     if main:
         return html[: main.start()] + "\n        " + block + main.group(1) + "</main>" + html[main.end() :]
-    return html
+    # Minified studio pages (e.g. fsd.html) close </main> on the same line.
+    main = re.search(r"</main>", html)
+    if main:
+        return html[: main.start()] + block + html[main.start() :]
+    # Never drop an existing signup block when there is nowhere to put it back.
+    return original
 
 
 def write_if_changed(path, original, updated):
