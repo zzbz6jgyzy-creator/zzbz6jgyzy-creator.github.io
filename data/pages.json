@@ -15,9 +15,21 @@
     },
     {
       "url": "/news.html",
-      "title": "News",
+      "title": "Newsroom — Original reporting and the bigger picture",
       "tag": "News",
-      "summary": "Today’s headlines"
+      "summary": "Find original Tesla, SpaceX, Starlink, Optimus and Grok reporting, explore sourced headlines, save stories to Your Daily and follow the trackers behind the news."
+    },
+    {
+      "url": "/news.html#browse",
+      "title": "Find Tesla, SpaceX and Grok stories",
+      "tag": "News",
+      "summary": "Search and filter original reporting and publisher headlines, or browse your saved reading list."
+    },
+    {
+      "url": "/news.html#next-read",
+      "title": "Related reporting, explainers and trackers",
+      "tag": "News",
+      "summary": "Follow a news story into deeper reporting and the tools that put it in context."
     },
     {
       "url": "/dispatch.html",

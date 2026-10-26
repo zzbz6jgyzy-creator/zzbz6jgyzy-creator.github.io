@@ -173,12 +173,16 @@
       ]
     },
     "news": {
-      "file": "/assets/js/news.bundle.9c5dca4436.js",
-      "bytes": 19018,
+      "file": "/assets/js/news.bundle.cc5d510efa.js",
+      "bytes": 45504,
       "sources": [
+        "personal-model.js",
+        "personal-sync.js",
         "news-keep.js",
-        "news-articles.js",
-        "news.js"
+        "news-studio-model.js",
+        "news-studio-view.js",
+        "news-reading-list.js",
+        "news-studio.js"
       ]
     },
     "see-the-launch": {

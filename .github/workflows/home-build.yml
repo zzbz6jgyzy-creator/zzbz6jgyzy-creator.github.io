@@ -24,6 +24,9 @@ on:
       - scripts/build-starlink-observatory.mjs
       - updates-live.json
       - news-data.json
+      - data/news-studio-guide.json
+      - news-studio.css
+      - scripts/build-news-studio.mjs
       - data/events.json
       - data/launches.json
       - scripts/build-calendar-studio.mjs
