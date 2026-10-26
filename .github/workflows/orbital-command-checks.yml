@@ -1,0 +1,47 @@
+name: Orbital Command checks
+
+on:
+  pull_request:
+    paths:
+      - "apps/orbital-command/**"
+      - "orbital-command/**"
+      - "data/orbital-command/**"
+      - "scripts/build-orbital-command-gp.py"
+      - "tests/orbital-command*"
+      - ".github/workflows/orbital-command*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests and production build
+        working-directory: apps/orbital-command
+        run: |
+          npm ci
+          npm test
+          npm run build
+      - name: Ingestion fallback keeps last-good snapshot
+        run: node --test tests/orbital-command-ingest.test.mjs
+      - name: Install Playwright
+        run: |
+          python -m pip install playwright==1.62.0
+          python -m playwright install --with-deps chromium
+      - name: Browser smokes against built files
+        run: python tests/orbital-command-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: orbital-command-previews
+          path: /tmp/orbital-command
+          if-no-files-found: ignore
