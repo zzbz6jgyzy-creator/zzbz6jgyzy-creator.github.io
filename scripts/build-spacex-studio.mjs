@@ -42,8 +42,8 @@ export function buildSpaceXStudio(root=ROOT){
   if(!/<main\b/.test(html))throw Error('SpaceX page is missing its main landmark');
   html=html.replace(/<!--hv:event-->[\s\S]*?<!--\/hv:event-->/g,'');
   html=html.replace(/<main\b[\s\S]*?<\/main>/,()=>main);
-  const title='SpaceX — Launches, Fleet & Exploration | Supercharged Daily';
-  const description='Explore SpaceX: upcoming launch windows, Falcon 9, Falcon Heavy, Dragon, Starship and Starlink. A visual mission hub with saved launches, engineering guides and original reporting.';
+  const title='SpaceX launches & fleet | Supercharged Daily';
+  const description='SpaceX launches, Falcon, Dragon, Starship and Starlink — sourced, independently compiled.';
   html=html.replace(/<title>[\s\S]*?<\/title>/,()=>`<title>${e(title)}</title>`)
     .replace(/(<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content=")[^"]*/g,(_,p)=>p+e(description))
     .replace(/(<meta\s+(?:name|property)="(?:og:title|twitter:title)"\s+content=")[^"]*/g,(_,p)=>p+e(title))
