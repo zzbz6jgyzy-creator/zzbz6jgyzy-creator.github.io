@@ -25,6 +25,9 @@ on:
       - updates-live.json
       - news-data.json
       - data/news-studio-guide.json
+      - data/cybertruck-studio.json
+      - cybertruck-studio.css
+      - scripts/build-cybertruck-studio.mjs
       - data/model3-studio.json
       - model3-studio.css
       - scripts/build-model3-studio.mjs

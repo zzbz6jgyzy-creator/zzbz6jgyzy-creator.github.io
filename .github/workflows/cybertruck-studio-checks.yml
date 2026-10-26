@@ -1,0 +1,45 @@
+name: Cybertruck studio checks
+on:
+  pull_request:
+    paths:
+      - 'cybertruck-*'
+      - 'data/cybertruck-studio.json'
+      - 'data/pages.json'
+      - 'scripts/build-cybertruck-studio.mjs'
+      - 'scripts/js-bundles.json'
+      - 'scripts/build-noscript.mjs'
+      - 'tests/cybertruck-studio*'
+      - '.github/workflows/cybertruck-studio-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cybertruck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned verification tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Verify references, calculations and generated output
+        run: |
+          node --test tests/cybertruck-studio.test.mjs
+          node scripts/build-cybertruck-studio.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          git diff --exit-code -- cybertruck-explorer.html cybertruck-parts.js data/pages.json assets/js
+      - name: Verify responsive controls, real WebGL and fallback states
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/cybertruck-studio-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cybertruck-studio-previews
+          path: /tmp/cybertruck-studio

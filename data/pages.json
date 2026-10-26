@@ -147,9 +147,33 @@
     },
     {
       "url": "/cybertruck-explorer.html",
-      "title": "Cybertruck Explorer",
+      "title": "Cybertruck Studio — Explore the truck behind the silhouette",
       "tag": "Tesla",
-      "summary": "Take the truck apart"
+      "summary": "Explore Cybertruck in touch-ready 3D, understand 19 systems, compare current US trims and use the charging, journey energy, payload and power-budget tools."
+    },
+    {
+      "url": "/cybertruck-explorer.html#engineering",
+      "title": "Cybertruck engineering — 48V, steering and 19 systems",
+      "tag": "Tesla",
+      "summary": "Explore steer-by-wire, rear steering, stainless body, thermal management, charging and the cargo bed."
+    },
+    {
+      "url": "/cybertruck-explorer.html#compare",
+      "title": "Compare Cybertruck trims — current US references",
+      "tag": "Tesla",
+      "summary": "Compare Dual Motor AWD, Premium AWD and Cyberbeast while keeping historical builds and range bases distinct."
+    },
+    {
+      "url": "/cybertruck-explorer.html#charging",
+      "title": "Cybertruck charging lab — published AWD reference",
+      "tag": "Tesla",
+      "summary": "Inspect eight published charging samples, session averages and the conditions behind a DC peak."
+    },
+    {
+      "url": "/cybertruck-explorer.html#workbench",
+      "title": "Cybertruck ownership workbench — energy, payload and power",
+      "tag": "Tesla",
+      "summary": "Calculate journey energy and cost, work through actual labelled payload and explore a defined power budget."
     },
     {
       "url": "/tsla.html",

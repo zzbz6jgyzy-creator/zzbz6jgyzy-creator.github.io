@@ -9,7 +9,8 @@
     "videos.html",
     "videos/index.html",
     "dispatch/grok-crew.html",
-    "model3-viewer.html"
+    "model3-viewer.html",
+    "cybertruck-viewer.html"
   ],
   "bundles": {
     "core": [
@@ -215,6 +216,11 @@
       "model3-studio-model.js",
       "model3-studio-view.js",
       "model3-studio.js"
+    ],
+    "cybertruck": [
+      "cybertruck-studio-model.js",
+      "cybertruck-studio-view.js",
+      "cybertruck-studio.js"
     ]
   },
   "pages": {
@@ -523,7 +529,8 @@
     },
     "cybertruck-explorer.html": {
       "bundles": [
-        "core"
+        "core",
+        "cybertruck"
       ]
     },
     "404.html": {
