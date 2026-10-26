@@ -26,7 +26,7 @@ def fix(foot):
 def run():
     n = 0
     for path in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
-        if "/node_modules/" in path or "/vendor/" in path or "/lab/" in path or "/apps/" in path: continue
+        if "/node_modules/" in path or "/vendor/" in path: continue
         s = open(path, encoding="utf-8").read()
         t = FOOT.sub(lambda m: fix(m.group(0)), s)
         if t != s: open(path, "w", encoding="utf-8").write(t); n += 1

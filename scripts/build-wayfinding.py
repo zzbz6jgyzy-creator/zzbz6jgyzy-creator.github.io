@@ -85,7 +85,7 @@ def run(check=False):
  changed=[];eligible=0
  files=[ROOT/'index.html']+sorted((ROOT/'dispatch').glob('*.html'))
  for path in files:
-  if not path.exists() or 'lab' in path.parts:continue
+  if not path.exists():continue
   src=path.read_text();new=homepage(src) if path.name=='index.html' and path.parent==ROOT else article(src)
   if '<!--sd:article-wayfinding-->' in new:eligible+=1
   if new!=src:

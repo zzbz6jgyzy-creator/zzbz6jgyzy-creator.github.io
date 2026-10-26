@@ -301,7 +301,7 @@ def html_files(root=ROOT):
     """Public HTML pages, skipping templates and vendor trees."""
     import glob
 
-    skip = ("preview/", "node_modules/", "vendor/", "templates/", "tests/", "lab/", "apps/")
+    skip = ("preview/", "node_modules/", "vendor/", "templates/", "tests/")
     for path in glob.glob(os.path.join(root, "**", "*.html"), recursive=True):
         rel = os.path.relpath(path, root).replace(os.sep, "/")
         if rel.startswith(skip):

@@ -22,7 +22,6 @@ Respect robots, ToS, copyright, and rate limits. Do not scrape X, Tesla owner ac
 | TeslaFi firmware page | `data/updates-extras.json` | `scripts/snapshot-extras.py` every ~2h | Public page; polite | CI |
 | Jonathan McDowell Starlink stats | `starlink-live.js`, `data/starlink-history.json` | `scripts/build-starlink-stats.py` (appends history only when the published table moved) | Cite McDowell | 8h CI |
 | CelesTrak GP | `starlink-gp.js`, `data/starlink.json` | CI only; browser never calls CelesTrak | CelesTrak terms | 8h CI |
-| CelesTrak GP | `/data/orbital-command/snapshot.json` (stations, visual, weather) | `scripts/build-orbital-command-gp.py`; last-good kept on failure. Starlink group is not re-fetched. | CelesTrak terms | 8h CI, offset from Starlink job |
 | Texas DMV via fsddb.com | `data/robotaxi-tx.json` | `scripts/build-robotaxi-tx.py` | Public mirror | 2× daily |
 | Google News RSS | `news-data.json` | `scripts/snapshot-news.py` | Headlines only, not rewritten | ~30 min CI |
 | Beehiiv subscribe endpoint | Newsletter forms | Browser POST, no API key in JS | Beehiiv | On signup |
