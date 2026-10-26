@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T04:56:29Z",
+ "updated": "2026-10-26T05:55:11Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,40 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-26T04:56:29Z",
+  "fetched": "2026-10-26T05:55:11Z",
   "items": [
+   {
+    "t": "2026-10-26T05:49:17Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model S 75D (2017)",
+    "hw": "0.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-26T05:45:52Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model S 100D (2017)",
+    "hw": "0.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-26T05:45:19Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.10",
+    "model": "Cybertruck AWD (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-26T05:42:06Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model 3 SR (2023)",
+    "hw": "4.0",
+    "country": "Canada"
+   },
    {
     "t": "2026-10-26T04:44:04Z",
     "to": "2026.38.3.2",
@@ -539,38 +571,6 @@
     "from": "2026.38.5.1",
     "model": "Model 3 Performance (2020)",
     "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-26T02:59:08Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model S AWD (2022)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-26T02:32:03Z",
-    "to": "2026.38.3.2",
-    "from": "2026.32.7",
-    "model": "Model Y AWD LR (2023)",
-    "hw": "3.0",
-    "country": "Ireland"
-   },
-   {
-    "t": "2026-10-26T02:26:57Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model X AWD (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-26T02:20:38Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model 3 AWD LR (2019)",
-    "hw": "0.0",
     "country": "United States"
    }
   ]
