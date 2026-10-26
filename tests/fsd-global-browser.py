@@ -63,7 +63,10 @@ async def main():
     box=await page.locator('#fg-map').get_attribute('viewBox');await tap(page,'[data-fg-zoom="in"]');assert box!=await page.locator('#fg-map').get_attribute('viewBox')
     await tap(page,'[data-fg-zoom="reset"]');await tap(page,'#fg-map-pins [data-fg-country="AU"]');assert await page.locator('#fg-dossier h3').inner_text()=='Australia'
     await no_overflow(page,(width,theme,mode,'country'))
-    if mode=='normal'and width==390 and theme=='dark':await page.locator('#fg-country').screenshot(path=str(OUT/'country-phone-dark.png'),style='.pn-wrap,.fg-nav{visibility:hidden!important}')
+    if mode=='normal'and width==390 and theme=='dark':
+     await page.set_viewport_size({'width':390,'height':1800})
+     await page.locator('#fg-country').screenshot(path=str(OUT/'country-phone-dark.png'),style='.pn-wrap,.fg-nav{visibility:hidden!important}')
+     await page.set_viewport_size({'width':390,'height':1000})
     await page.locator('#fg-compare-a').select_option('AU');await page.locator('#fg-compare-b').select_option('CN');assert await page.locator('#fg-comparison h3').all_inner_texts()==['Australia','China']
     if mode=='normal'and width==1440 and theme=='light':await page.locator('#compare').screenshot(path=str(OUT/'compare-desktop-light.png'))
     await page.locator('#fg-change-country').select_option('AU');assert await page.locator('#fg-changes>li').count()==2

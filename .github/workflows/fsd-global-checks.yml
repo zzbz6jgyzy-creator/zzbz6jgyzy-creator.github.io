@@ -9,6 +9,7 @@ on:
       - 'assets/world-countries.svg'
       - 'data/pages.json'
       - 'scripts/build-fsd-global.mjs'
+      - 'scripts/preserve-responsive-images.mjs'
       - 'scripts/build-noscript.mjs'
       - 'scripts/build-js.mjs'
       - 'scripts/inject-js-bundles.py'

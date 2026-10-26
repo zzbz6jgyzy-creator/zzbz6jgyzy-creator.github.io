@@ -58,3 +58,9 @@ The dedicated GitHub workflow rebuilds saved output and bundles and checks for d
 - Country alerts, account-synced preferences and newsletter targeting are separate product decisions; “My country” is deliberately a local preference today.
 - Current selected coverage is not every jurisdiction. Add substantive sourced records rather than generating thin country SEO pages.
 - No paid resources are required for the implemented feature.
+
+## Build consistency fixes found by site-wide checks
+
+The shared member injector places its block last in the head. The FSD stylesheet is saved before that block so the complete build is stable.
+
+Grok and Starship renderers previously removed responsive `<picture>` wrappers created by the later image build, causing recurring saved-output failures. A small shared helper now preserves an existing wrapper only when the rendered fallback `<img>` is exactly identical. Changed sources, alt text or dimensions render anew; existing picture markup is not nested. The fix changes two builders and adds a regression test, without changing either page’s content, image files or source datasets. Their 31 existing model tests pass alongside the 16 global atlas tests.

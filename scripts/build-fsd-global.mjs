@@ -18,7 +18,7 @@ export function buildFSDGlobal(root=ROOT){
  html=html.replace(/<title>[\s\S]*?<\/title>/,()=>'<title>'+M.esc(title)+'</title>');
  html=html.replace(/(<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content=")[^"]*/g,(_,a)=>a+M.esc(description));
  html=html.replace(/(<meta\s+(?:name|property)="(?:og:title|twitter:title)"\s+content=")[^"]*/g,(_,a)=>a+M.esc(title));
- if(!html.includes('href="/fsd-global.css'))html=html.replace('</head>','  <link rel="stylesheet" href="/fsd-global.css?v=20261026" />\n  </head>');
+ if(!html.includes('href="/fsd-global.css'))html=html.replace('    <!--sd:members-->','    <link rel="stylesheet" href="/fsd-global.css?v=20261026" />\n    <!--sd:members-->');
  const schema={'@context':'https://schema.org','@type':'CollectionPage','@id':'https://superchargeddaily.com/fsd.html#page',name:title,description,url:'https://superchargeddaily.com/fsd.html',dateModified:d.reviewed,isPartOf:{'@type':'WebSite',name:'Supercharged Daily',url:'https://superchargeddaily.com/'},hasPart:d.countries.map(c=>({'@type':'WebPageElement',name:'FSD in '+c.name,url:'https://superchargeddaily.com'+M.countryURL(c.code),description:M.labels[c.availability.status]+'. Vehicle eligibility remains configuration dependent.'}))};
  html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>'<script type="application/ld+json">'+JSON.stringify(schema).replace(/</g,'\\u003c')+'</script>');
  fs.writeFileSync(path.join(root,'fsd.html'),html);
