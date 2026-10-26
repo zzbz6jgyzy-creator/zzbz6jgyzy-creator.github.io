@@ -5,7 +5,7 @@
 .wp-thumb{display:block;padding:0;border:0;background:#000;cursor:zoom-in;aspect-ratio:480/1040;width:100%}
 .wp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .wp-card figcaption{padding:.9rem 1rem 1rem}
-.wp-card h3{margin:0 0 .25rem;font-size:1.05rem}
+.wp-card h2,.wp-card h3{margin:0 0 .25rem;font-size:1.05rem}
 .wp-card p{margin:0 0 .8rem;color:var(--mute,#9a9a9a);font-size:.88rem;line-height:1.4}
 .wp-dl{display:flex;gap:.5rem;flex-wrap:wrap}
 .wp-btn{display:inline-flex;flex-direction:column;align-items:center;gap:.1rem;padding:.5rem .8rem;border-radius:999px;background:#E31937;color:#fff!important;font-weight:600;font-size:.88rem;text-decoration:none;border:1px solid #E31937;cursor:pointer;font-family:inherit}

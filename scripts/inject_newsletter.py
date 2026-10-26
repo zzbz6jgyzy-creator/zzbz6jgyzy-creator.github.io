@@ -62,6 +62,9 @@ TRACKERS = {
     "updates.html": ("tesla-software", "Tesla software builds and the week in Tesla — one free Sunday email."),
     "my-tesla.html": ("tesla-software", "Software for your car and the week in Tesla — one free Sunday email."),
     "fsd.html": ("tesla-software", "FSD miles, Europe and Tesla software — one free Sunday email."),
+    "see-the-launch.html": ("spacex", "Next launch windows and whether you can see them — one free Sunday email."),
+    "roadster.html": ("roadster", "Roadster specs, the reveal and the week in Tesla — one free Sunday email."),
+    "promise-tracker.html": ("website", "Sourced Tesla, SpaceX and xAI claims, plus the week’s stories — one free Sunday email."),
 }
 TRACKER_HEADING = "Get the weekly tracker digest"
 
