@@ -1,0 +1,27 @@
+/* Shared Model 3 references and scenario arithmetic. A reference is not a VIN entitlement. */
+((root)=>{'use strict';
+ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const date=s=>typeof s==='string'&&/^\d{4}-\d\d-\d\d$/.test(s)&&Number.isFinite(Date.parse(s))&&new Date(s).toISOString().slice(0,10)===s;
+ const day=s=>date(s)?new Date(s+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}):'Date not established';
+ const url=s=>{try{const u=new URL(s);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null;}catch{return null;}};
+ const image=s=>typeof s==='string'&&/^\/assets\/[a-zA-Z0-9_./-]+\.(webp|avif|jpg|png)$/.test(s)&&!s.includes('..');
+ function validate(d){if(d?.schema!==1||!date(d.reviewed)||!Array.isArray(d.markets)||!d.markets.length||!Array.isArray(d.parts)||!Array.isArray(d.sources))throw Error('Invalid Model 3 dataset');const src=new Map(),ids=new Set();for(const s of d.sources){if(!s.id||src.has(s.id)||!url(s.url)||!s.label||!date(s.checked)||!['manufacturer','manual','reference','media'].includes(s.type))throw Error('Invalid source');src.set(s.id,s);}
+ for(const m of d.markets){if(ids.has(m.id)||!['UK','US'].includes(m.id)||m.cycle!==(m.id==='UK'?'WLTP':'EPA est.')||m.unit!=='mi'||!Array.isArray(m.trims)||m.trims.length!==4)throw Error('Invalid market or test cycle');ids.add(m.id);const trims=new Set();for(const t of m.trims){if(!/^[a-z]+(?:-[a-z]+)*$/.test(t.id)||trims.has(t.id)||!t.name||!['RWD','AWD'].includes(t.drive)||![t.range,t.zero60,t.dcPeak,t.added15].every(n=>Number.isFinite(n)&&n>0)||src.get(t.source)?.type!=='manufacturer'||typeof t.rollout!=='boolean')throw Error('Invalid manufacturer trim reference');trims.add(t.id);}}
+ if(!ids.has(d.defaultMarket))throw Error('Default market not available');
+ const parts=new Set();for(const p of d.parts){if(!/^[a-z][a-zA-Z0-9]*$/.test(p.id)||parts.has(p.id)||!p.name||!p.group||!p.desc||!p.how||!Array.isArray(p.facts)||!Array.isArray(p.evidence)||!p.evidence.length||p.evidence.some(id=>!src.has(id)))throw Error('Invalid system explanation');parts.add(p.id);}
+ for(const p of Object.values(d.photos))if(!image(p.src)||!p.alt||!p.by||!p.lic||!url(p.licUrl)||!url(p.url))throw Error('Invalid photo provenance');if(d.gallery.some(id=>!d.photos[id])||!image(d.model.poster)||d.model.url!=='/assets/3d/model3-2024.glb'||!url(d.model.licenseUrl)||d.model.year!==2024)throw Error('Invalid media reference');
+ if(src.get(d.curve?.source)?.type!=='reference'||d.curve.points.length<3||!date(d.curve.modified)||!d.curve.vehicle||!d.curve.note||!Number.isFinite(d.curve.averageKw)||!Number.isFinite(d.curve.minutes10to80))throw Error('Invalid charging reference');let prior=-1;for(const [soc,power]of d.curve.points){if(!Number.isFinite(soc)||soc<=prior||soc<0||soc>100||!Number.isFinite(power)||power<0)throw Error('Invalid charging sample');prior=soc;}return d;}
+ const market=(d,id)=>d.markets.find(m=>m.id===id)||d.markets.find(m=>m.id===d.defaultMarket)||d.markets[0];
+ const trim=(d,m,id)=>market(d,m).trims.find(t=>t.id===id)||market(d,m).trims[0];
+ const part=(d,id)=>d.parts.find(p=>p.id===id);
+ const sources=(d,ids)=>[...new Set(ids)].map(id=>d.sources.find(s=>s.id===id)).filter(Boolean);
+ function state(d,o={}){const m=market(d,o.market);return {market:m.id,trim:trim(d,m.id,o.trim).id,compare:trim(d,m.id,o.compare||'premium-awd').id,part:part(d,o.part)?.id||'battery',unit:o.unit==='km'?'km':'mi'};}
+ function fromURL(d,href){try{const u=new URL(href,'https://superchargeddaily.com');const s=Object.fromEntries(u.searchParams);if(part(d,u.hash.slice(1)))s.part=u.hash.slice(1);return state(d,s);}catch{return state(d);}}
+ const stateURL=s=>'/model3-explorer.html?'+new URLSearchParams({market:s.market,trim:s.trim,compare:s.compare,part:s.part,unit:s.unit}).toString()+'#compare';
+ function preferences(d,input){try{const o=typeof input==='string'?JSON.parse(input):input;const s=state(d,o||{});return {market:s.market,trim:s.trim,compare:s.compare,unit:s.unit};}catch{return preferences(d,{});}}
+ const number=(s,min,max)=>{if(typeof s==='string'&&!s.trim()||s===null||s===undefined)throw Error('Enter all scenario values.');const n=Number(s);if(!Number.isFinite(n)||n<min||n>max)throw Error('Enter values within the shown ranges.');return n;};
+ function scenario(input,peak=250){const distance=number(input.distance,.1,5000),consumption=number(input.consumption,1,1500),rate=number(input.rate,0,10),loss=number(input.loss,0,40),average=number(input.average,1,500);if(average>peak)throw Error('Average charging power cannot exceed this trim’s published peak.');const drive=distance*consumption/1000,drawn=drive/(1-loss/100);return {drive,drawn,cost:drawn*rate,minutes:drawn/average*60};}
+ function convert(input,from,to){if(!['mi','km'].includes(from)||!['mi','km'].includes(to))throw Error('Invalid distance units');const distance=number(input.distance,.1,5000),consumption=number(input.consumption,1,1500),factor=from===to?1:from==='mi'?1.609344:1/1.609344;return {...input,distance:distance*factor,consumption:consumption/factor};}
+ const sample=(d,soc)=>d.curve.points.reduce((a,b)=>Math.abs(b[0]-soc)<Math.abs(a[0]-soc)?b:a);
+ const api={esc,date,day,url,image,validate,market,trim,part,sources,state,fromURL,stateURL,preferences,scenario,convert,sample};if(typeof module==='object'&&module.exports)module.exports=api;else root.SDModel3=api;
+})(typeof window==='object'?window:globalThis);

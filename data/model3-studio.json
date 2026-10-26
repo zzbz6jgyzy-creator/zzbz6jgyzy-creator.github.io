@@ -1,0 +1,629 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-26",
+  "defaultMarket": "UK",
+  "markets": [
+    {
+      "id": "UK",
+      "name": "United Kingdom",
+      "cycle": "WLTP",
+      "unit": "mi",
+      "source": "tesla-uk",
+      "trims": [
+        {
+          "id": "standard",
+          "name": "Model 3",
+          "drive": "RWD",
+          "range": 332,
+          "zero60": 6.2,
+          "dcPeak": 175,
+          "added15": 168,
+          "wheelNote": "18-inch reference",
+          "source": "tesla-uk",
+          "rollout": false
+        },
+        {
+          "id": "premium-rwd",
+          "name": "Premium Long Range RWD",
+          "drive": "RWD",
+          "range": 466,
+          "zero60": 4.9,
+          "dcPeak": 250,
+          "added15": 174,
+          "wheelNote": "18-inch: 466 mi; 19-inch: 429 mi",
+          "source": "tesla-uk",
+          "rollout": false
+        },
+        {
+          "id": "premium-awd",
+          "name": "Premium Long Range AWD",
+          "drive": "AWD",
+          "range": 410,
+          "zero60": 3.8,
+          "dcPeak": 250,
+          "added15": 175,
+          "wheelNote": "Published AWD reference",
+          "source": "tesla-uk",
+          "rollout": false
+        },
+        {
+          "id": "performance",
+          "name": "Performance",
+          "drive": "AWD",
+          "range": 372,
+          "zero60": 2.9,
+          "dcPeak": 250,
+          "added15": 151,
+          "wheelNote": "20-inch Warp reference",
+          "source": "tesla-uk",
+          "rollout": true
+        }
+      ]
+    },
+    {
+      "id": "US",
+      "name": "United States",
+      "cycle": "EPA est.",
+      "unit": "mi",
+      "source": "tesla-us",
+      "trims": [
+        {
+          "id": "standard",
+          "name": "Model 3",
+          "drive": "RWD",
+          "range": 321,
+          "zero60": 5.8,
+          "dcPeak": 225,
+          "added15": 170,
+          "wheelNote": "Published US reference",
+          "source": "tesla-us-standard",
+          "rollout": false
+        },
+        {
+          "id": "premium-rwd",
+          "name": "Premium Long Range RWD",
+          "drive": "RWD",
+          "range": 363,
+          "zero60": 4.9,
+          "dcPeak": 250,
+          "added15": 195,
+          "wheelNote": "Published US reference",
+          "source": "tesla-us-premium",
+          "rollout": false
+        },
+        {
+          "id": "premium-awd",
+          "name": "Premium Long Range AWD",
+          "drive": "AWD",
+          "range": 346,
+          "zero60": 4.2,
+          "dcPeak": 250,
+          "added15": 185,
+          "wheelNote": "Published US reference",
+          "source": "tesla-us-premium",
+          "rollout": false
+        },
+        {
+          "id": "performance",
+          "name": "Performance",
+          "drive": "AWD",
+          "range": 309,
+          "zero60": 2.9,
+          "dcPeak": 250,
+          "added15": 162,
+          "wheelNote": "20-inch Warp reference",
+          "source": "tesla-us-premium",
+          "rollout": true
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "tesla-uk",
+      "label": "Tesla UK Model 3 specifications",
+      "url": "https://www.tesla.com/en_gb/model3",
+      "type": "manufacturer",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tesla-us",
+      "label": "Tesla US Model 3 specifications",
+      "url": "https://www.tesla.com/model3",
+      "type": "manufacturer",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tesla-us-standard",
+      "label": "Tesla US Model 3 comparison reference",
+      "url": "https://www.tesla.com/model3-choose",
+      "type": "manufacturer",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tesla-us-premium",
+      "label": "Tesla US Premium and Performance reference",
+      "url": "https://www.tesla.com/model3-performance",
+      "type": "manufacturer",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "manual-charge",
+      "label": "Tesla Model 3 charging instructions",
+      "url": "https://www.tesla.com/ownersmanual/model3/en_us/GUID-BEE08D47-0CE0-4BDD-83F2-9854FB3D578F.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "manual-hot",
+      "label": "Tesla charging preparation guidance",
+      "url": "https://www.tesla.com/ownersmanual/model3/en_us/GUID-6F5B7B3F-F020-471D-9D46-D1F990A6237A.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "manual-systems",
+      "label": "Tesla service manual: Model 3 systems",
+      "url": "https://service.tesla.com/docs/Model3/ServiceManual/en-us/",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "manual-camera",
+      "label": "Tesla Model 3 camera guidance",
+      "url": "https://www.tesla.com/ownersmanual/model3/en_is/GUID-682FF4A7-D083-4C95-925A-5EE3752F4865.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "manual-thermal",
+      "label": "Tesla heat-pump service reference",
+      "url": "https://service.tesla.com/docs/Model3/ServiceManual/en-us/GUID-20919F82-A219-4B79-B6E6-132F297D8817.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "manual-lv",
+      "label": "Tesla low-voltage battery service guidance",
+      "url": "https://service.tesla.com/docs/Public/diy/model3/en_us/GUID-2588F809-41E3-43F1-84E5-6745C7C18DBE.html",
+      "type": "manual",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "curve",
+      "label": "EVKX Model 3 Long Range MY2024–25 charging profile",
+      "url": "https://evkx.net/models/tesla/model_3/model_3_long_range_my2024/chargingcurve/",
+      "type": "reference",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "model",
+      "label": "2024 Tesla Model 3 + Interior — tonielpro520",
+      "url": "https://sketchfab.com/3d-models/2024-tesla-model-3-interior-61ddcbdbd3854c239e0c95bf60b00022",
+      "type": "media",
+      "checked": "2026-10-26"
+    }
+  ],
+  "parts": [
+    {
+      "id": "body",
+      "name": "Body shell",
+      "group": "Structure",
+      "kicker": "A low, purposeful shape.",
+      "desc": "The body provides the passenger compartment and attachment points for the vehicle’s systems. Its exterior surfaces also manage airflow, packaging and visibility.",
+      "how": "The floor-mounted battery and the body are different assemblies. The simplified model here is an explainer, not a structural repair drawing. Do not infer a structural-battery design or repair method from its shape.",
+      "facts": [
+        "Body structure and battery casing are distinct references",
+        "Dimensions and equipment vary by build",
+        "Use repair documentation for actual construction"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "glass",
+      "name": "Glass and glazing",
+      "group": "Exterior",
+      "kicker": "An open cabin, with layers of engineering.",
+      "desc": "Glazing brings light into the cabin while seals, coatings and laminated constructions influence noise and thermal comfort.",
+      "how": "Acoustic glazing and solar control address different physical effects. The appearance of a glass roof does not establish the specification of every pane or every trim.",
+      "facts": [
+        "Equipment depends on the vehicle and market",
+        "Sunlight and cabin temperature are separate issues",
+        "The 3D glass is an illustrative material"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "lights",
+      "name": "Lighting",
+      "group": "Exterior",
+      "kicker": "See the road. Be seen.",
+      "desc": "Headlights and rear lamps combine road illumination with signals that communicate braking and manoeuvres to other road users.",
+      "how": "Beam behaviour depends on fitted hardware, software and local regulations. A visible lamp shape in this 2024 model does not prove a newer lighting feature is enabled.",
+      "facts": [
+        "Check the controls and manual for your vehicle",
+        "Local rules affect available lighting functions",
+        "The gallery photograph identifies its model year"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "mirrors",
+      "name": "Mirrors",
+      "group": "Exterior",
+      "kicker": "A useful view beyond the body.",
+      "desc": "Exterior mirrors help the driver monitor surrounding traffic and the area alongside the car. Cameras provide additional views with different limitations.",
+      "how": "A camera image, mirror and direct observation do not offer the same field of view. Adjust the mirrors for the driver and check visibility rather than assuming a displayed image removes blind spots.",
+      "facts": [
+        "Adjustment is driver-specific",
+        "Keep mirrors and cameras clean",
+        "Illustrative geometry is not a visibility measurement"
+      ],
+      "evidence": [
+        "manual-camera"
+      ]
+    },
+    {
+      "id": "wheels",
+      "name": "Wheels and tyres",
+      "group": "Chassis",
+      "kicker": "The final connection to the road.",
+      "desc": "Tyres determine how steering, drive torque and braking forces reach the road. Wheel size and tyre specification can change efficiency and ride comfort.",
+      "how": "Pressure, load, temperature and tyre condition affect behaviour. Larger wheels do not automatically improve every aspect of grip or comfort. Choose approved sizes and maintain the specified pressures.",
+      "facts": [
+        "Use the vehicle’s tyre-pressure label",
+        "Range figures can depend on wheel choice",
+        "The model is not a fitment or tyre-size guide"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "brakes",
+      "name": "Friction brakes",
+      "group": "Chassis",
+      "kicker": "Control beyond the acceleration figure.",
+      "desc": "Disc brakes use friction to slow the wheels. Regenerative braking instead uses the drive system to recover some vehicle energy.",
+      "how": "Energy recovery can be limited by conditions such as battery temperature and state of charge. The driver must remain prepared to use the brake pedal; a familiar lift-off response is not guaranteed in every condition.",
+      "facts": [
+        "Disc hardware in the model is illustrative",
+        "Regeneration and friction braking are different processes",
+        "Observe the vehicle’s warnings and service requirements"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "cabin",
+      "name": "Cabin and seating",
+      "group": "Interior",
+      "kicker": "A space built around the drive.",
+      "desc": "Seat position, climate control, glazing and storage shape the everyday experience as much as a headline range figure.",
+      "how": "Inspect the actual vehicle for seat, trim and rear-screen equipment. This licensed 2024 interior model does not reproduce every Standard, Premium or Performance configuration.",
+      "facts": [
+        "Try the driving position and rear-seat access",
+        "Check equipment on the ordered vehicle",
+        "Photographs retain their original model-year captions"
+      ],
+      "evidence": [
+        "tesla-uk"
+      ]
+    },
+    {
+      "id": "display",
+      "name": "Touchscreens and controls",
+      "group": "Interior",
+      "kicker": "Software meets physical controls.",
+      "desc": "The touchscreen presents navigation, charging information and many vehicle settings. Other functions use steering-wheel or dedicated physical controls.",
+      "how": "Menus and hardware can change with software and production updates. Check the vehicle itself rather than using this 2024 render as a menu or screen-size reference.",
+      "facts": [
+        "The model illustrates an earlier cabin",
+        "Current trim specifications are a separate reference",
+        "Use your vehicle’s manual for operating instructions"
+      ],
+      "evidence": [
+        "tesla-us"
+      ]
+    },
+    {
+      "id": "battery",
+      "name": "High-voltage battery",
+      "group": "Energy",
+      "kicker": "Energy stored low in the car.",
+      "desc": "The traction battery stores energy for propulsion and other high-voltage loads. Its management system monitors operation while thermal management helps maintain suitable conditions.",
+      "how": "Nominal capacity, usable energy, cell chemistry and supplier are different attributes. A published number for one pack is not a universal Model 3 specification; this explorer does not assign one battery capacity to the whole range.",
+      "facts": [
+        "Battery capacity is not inferred from advertised range",
+        "State of charge is different from charging power",
+        "The pack shape and internal layout are illustrative"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "rearMotor",
+      "name": "Rear drive unit",
+      "group": "Powertrain",
+      "kicker": "Electrical energy into motion.",
+      "desc": "The rear drive unit combines an electric motor with reduction gearing to drive the rear wheels. Power electronics control the electrical supply.",
+      "how": "Torque at the motor and torque at the wheel are different quantities. Acceleration also depends on tyres, vehicle mass, traction, available battery power and conditions.",
+      "facts": [
+        "RWD and AWD references are kept separate",
+        "No motor output is inferred from the 3D shape",
+        "The internal geometry is educational"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "frontMotor",
+      "name": "Front drive unit",
+      "group": "Powertrain",
+      "kicker": "An additional driven axle on AWD cars.",
+      "desc": "Dual-motor versions use a front drive unit as well as a rear unit. A rear-wheel-drive vehicle does not acquire a front motor because it appears in this generic exploded model.",
+      "how": "The vehicle manages torque between driven axles according to operating conditions. This model shows an illustrative AWD architecture rather than identifying the hardware of a specific vehicle.",
+      "facts": [
+        "Shown for the AWD architecture",
+        "Not fitted to a RWD configuration merely because it is visible here",
+        "Exact hardware requires vehicle-specific documentation"
+      ],
+      "evidence": [
+        "tesla-uk"
+      ]
+    },
+    {
+      "id": "inverter",
+      "name": "Power electronics",
+      "group": "Powertrain",
+      "kicker": "Control the motor, not just the current.",
+      "desc": "An inverter controls the electrical power delivered to an electric motor. The traction battery supplies DC while the motor drive requires controlled electrical waveforms.",
+      "how": "During energy recovery, the system also manages electrical energy returning from the drive units. Physical arrangement and component specification depend on the installed drive system.",
+      "facts": [
+        "This is a functional illustration",
+        "DC and controlled motor power are different stages",
+        "High-voltage components are not owner-serviceable"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "heatpump",
+      "name": "Heat pump and thermal system",
+      "group": "Energy",
+      "kicker": "Move heat where it is useful.",
+      "desc": "A heat pump transfers heat between parts of the thermal system. Vehicle thermal management also manages the needs of the cabin, battery and powertrain.",
+      "how": "Moving heat can reduce the electrical energy required for cabin warming compared with creating all that heat resistively. Actual efficiency depends on conditions, temperature and operating mode.",
+      "facts": [
+        "A diagram is not a refrigerant routing plan",
+        "Battery preparation can use energy before a stop",
+        "No fixed winter efficiency benefit is promised"
+      ],
+      "evidence": [
+        "manual-thermal"
+      ]
+    },
+    {
+      "id": "lv",
+      "name": "Low-voltage system",
+      "group": "Energy",
+      "kicker": "The supporting electrical network.",
+      "desc": "A separate low-voltage system powers control electronics and other vehicle functions. It works alongside the high-voltage traction system.",
+      "how": "Low-voltage battery type and service procedures can differ across vehicles. Use the instructions for the installed system instead of assuming every Model 3 has the same nominal voltage or chemistry.",
+      "facts": [
+        "Low voltage does not mean every task is safe to perform",
+        "Follow the vehicle-specific service instructions",
+        "No universal replacement specification is stated here"
+      ],
+      "evidence": [
+        "manual-lv"
+      ]
+    },
+    {
+      "id": "suspFront",
+      "name": "Front suspension",
+      "group": "Chassis",
+      "kicker": "Manage the contact patch.",
+      "desc": "The front suspension supports the car and controls wheel motion while the steering system sets wheel direction. Springs, dampers and links have different jobs.",
+      "how": "Springs support load and store energy; dampers control motion. Geometry, alignment, tyres and settings affect how the complete system responds. The simplified components are not dimensional engineering data.",
+      "facts": [
+        "Alignment is a service setting, not a styling feature",
+        "Wheel travel is not shown to scale",
+        "Performance equipment varies by trim"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "suspRear",
+      "name": "Rear suspension",
+      "group": "Chassis",
+      "kicker": "Stability through controlled movement.",
+      "desc": "The rear suspension supports the body while allowing the wheels to move with the road. Links locate the wheels and dampers manage their motion.",
+      "how": "Changes in load or tyre specification can affect the way a car rides and responds. A visually similar assembly is not proof of identical damping, geometry or parts across trims.",
+      "facts": [
+        "The assembly is illustrative",
+        "Do not infer interchangeable parts",
+        "Use the correct service and alignment information"
+      ],
+      "evidence": [
+        "manual-systems"
+      ]
+    },
+    {
+      "id": "chargePort",
+      "name": "Charging inlet",
+      "group": "Energy",
+      "kicker": "One connection, two charging paths.",
+      "desc": "The inlet connects the vehicle to compatible charging equipment. AC charging and DC fast charging feed the vehicle through different electrical paths.",
+      "how": "For AC, an onboard charger converts supplied AC into DC. A compatible DC fast charger supplies DC through the vehicle’s managed charging system. Plug shape, adapters and capabilities depend on the market and vehicle.",
+      "facts": [
+        "AC input is not the same as DC peak power",
+        "The gallery shows an older European inlet",
+        "Check cable and adapter compatibility for your car"
+      ],
+      "evidence": [
+        "manual-charge"
+      ]
+    },
+    {
+      "id": "cameras",
+      "name": "Cameras",
+      "group": "Driver assistance",
+      "kicker": "Inputs, not a promise of autonomy.",
+      "desc": "Cameras provide views used by vehicle features and driver-assistance systems. Dirt, obstruction, weather and visibility can affect the information available.",
+      "how": "A camera shown in the model does not establish software entitlement or regulatory availability. The consumer supervised system still requires an attentive driver; use the FSD tracker for country evidence.",
+      "facts": [
+        "Keep the relevant camera areas unobstructed",
+        "Feature availability is vehicle- and market-specific",
+        "No autonomous capability is inferred from this model"
+      ],
+      "evidence": [
+        "manual-camera"
+      ]
+    },
+    {
+      "id": "hvac",
+      "name": "Cabin climate system",
+      "group": "Interior",
+      "kicker": "Comfort is an energy system too.",
+      "desc": "Fans, ducts, filters and thermal equipment move and condition air for the cabin. Demisting and passenger comfort place different demands on the system.",
+      "how": "Preconditioning while connected to power can prepare the vehicle before a journey. The energy used by climate control is part of overall vehicle consumption, not a separate free resource.",
+      "facts": [
+        "Set conditions for passengers and visibility",
+        "Filters and airflow need maintenance",
+        "No fixed climate-energy penalty is assumed"
+      ],
+      "evidence": [
+        "manual-hot"
+      ]
+    }
+  ],
+  "photos": {
+    "body": {
+      "src": "/assets/m3x-media/body.webp",
+      "alt": "Ultra Red 2024 Tesla Model 3 Dual Motor",
+      "by": "Ethan Llamas",
+      "lic": "CC BY-SA 4.0",
+      "licUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Highland_Dual_Motor_AWD_Ultra_Red_01.jpg"
+    },
+    "lights": {
+      "src": "/assets/m3x-media/lights.webp",
+      "alt": "Front of a white 2024 Tesla Model 3 Performance showing the headlights",
+      "by": "Chanokchon",
+      "lic": "CC BY-SA 4.0",
+      "licUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:2024_Tesla_Model_3_Highland_Performance_AWD.jpg"
+    },
+    "wheels": {
+      "src": "/assets/m3x-media/wheels.webp",
+      "alt": "19-inch wheel on a 2023 Tesla Model 3",
+      "by": "Kazyakuruma",
+      "lic": "CC0",
+      "licUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_(2023),_Japan,_19-inch_wheel.jpg"
+    },
+    "chargePort": {
+      "src": "/assets/m3x-media/chargePort.webp",
+      "alt": "Open charge port in a Tesla Model 3 tail light (European plug)",
+      "by": "CarlJohanSveningsson",
+      "lic": "CC BY-SA 4.0",
+      "licUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:European_Tesla_Model_3_charge_port.jpg"
+    },
+    "cameras": {
+      "src": "/assets/m3x-media/cameras.webp",
+      "alt": "Tesla Model 3 side camera in the front fender",
+      "by": "CarlJohanSveningsson",
+      "lic": "CC BY-SA 4.0",
+      "licUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_rear-facing_side_camera.jpg"
+    },
+    "display": {
+      "src": "/assets/m3x-media/interior.webp",
+      "alt": "2024 Tesla Model 3 Performance interior with centre touchscreen",
+      "by": "Ethan Llamas",
+      "lic": "CC BY-SA 4.0",
+      "licUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Highland_Performance_White_%2B_Black.jpg"
+    },
+    "cabin": {
+      "src": "/assets/m3x-media/interior.webp",
+      "alt": "2024 Tesla Model 3 Performance interior with seats",
+      "by": "Ethan Llamas",
+      "lic": "CC BY-SA 4.0",
+      "licUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Highland_Performance_White_%2B_Black.jpg"
+    }
+  },
+  "gallery": [
+    "body",
+    "display",
+    "lights",
+    "chargePort"
+  ],
+  "curve": {
+    "source": "curve",
+    "vehicle": "Model 3 Long Range MY2024–25 · LG 5L reference",
+    "type": "Published third-party reference profile",
+    "modified": "2026-08-05",
+    "points": [
+      [
+        10,
+        249
+      ],
+      [
+        20,
+        228
+      ],
+      [
+        30,
+        184
+      ],
+      [
+        40,
+        140
+      ],
+      [
+        50,
+        96
+      ],
+      [
+        60,
+        78
+      ],
+      [
+        70,
+        62
+      ],
+      [
+        80,
+        45
+      ]
+    ],
+    "averageKw": 97,
+    "minutes10to80": 32.46666666666667,
+    "note": "Published reference samples, not a test performed by Supercharged Daily. Not assigned to current UK or US trims. Lines join the selected source samples."
+  },
+  "model": {
+    "year": 2024,
+    "url": "/assets/3d/model3-2024.glb",
+    "poster": "/assets/3d/model3-2024-poster.webp",
+    "source": "model",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "note": "2024 Highland exterior and cabin. Hidden components are simplified illustrations. The model is not an exact current-trim configurator."
+  }
+}
