@@ -32,6 +32,10 @@ on:
       - 'data/robotaxi-*'
       - 'data/updates-*.json'
       - live-data.json
+      - data/promises.json
+      - data/promise-studio-guide.json
+      - promise-studio.css
+      - scripts/build-promise-studio.mjs
       - data/owners-club-guide.json
       - owners-club.css
       - scripts/build-owners-club.mjs

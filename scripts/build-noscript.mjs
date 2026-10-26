@@ -12,6 +12,7 @@ import { buildTrackerSnapshots } from "./build-tracker-snapshots.mjs";
 import { buildStarshipStudio } from "./build-starship-studio.mjs";
 import { buildCalendarStudio } from "./build-calendar-studio.mjs";
 import { buildLaunchViewing } from "./build-launch-viewing.mjs";
+import { buildPromiseStudio } from "./build-promise-studio.mjs";
 import { buildOwnersClub } from "./build-owners-club.mjs";
 import { buildMarketsStudio } from "./build-markets-studio.mjs";
 import { buildProductionStudio } from "./build-production-studio.mjs";
@@ -36,12 +37,7 @@ function inject(file, tag, html) {
   fs.writeFileSync(root + file, s);
 }
 
-// Promise Tracker
-{
-  const d = JSON.parse(read("data/promises.json"));
-  const rows = d.promises.map((p) => `<tr>${td(`<b>${esc(p.title)}</b><br><small>${esc(p.person || "")}${p.said_on ? ", " + esc(p.said_on) : ""}</small>`)}${td(esc(p.status))}${td(esc(p.deadline || "—"))}${td(link(p.source))}</tr>`).join("");
-  inject("promise-tracker.html", "promises", `<h2>All ${d.promises.length} promises (updated ${esc(d.updated)})</h2><div style="overflow-x:auto"><table ${T}><thead><tr>${th("Promise")}${th("Status")}${th("Deadline")}${th("Source")}</tr></thead><tbody>${rows}</tbody></table></div>`);
-}
+// The Promise ledger has complete source-linked saved HTML.
 // FSD Europe has complete saved HTML from the same model as the browser.
 buildBuyingStudio(root);
 buildReviewsStudio(root);
@@ -56,5 +52,6 @@ buildSpaceXStudio(root);
 buildProductionStudio(root);
 buildMarketsStudio(root);
 buildOwnersClub(root);
+buildPromiseStudio(root);
 console.log("noscript blocks written");
 buildTrackerSnapshots(root);
