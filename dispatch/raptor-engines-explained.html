@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script src="/theme-boot.js"></script>
+    <style>html,body{background:#0c0d10;color:#ecece8}html[data-theme=light],html[data-theme=light] body{background:#f3f1ec;color:#16171b}.article>figure>picture{display:block;width:100%;aspect-ratio:16/9}.article>figure.sd-hero-portrait{max-width:560px;margin-left:auto;margin-right:auto}.article>figure.sd-hero-portrait>picture{aspect-ratio:1400/1519}</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-mono-500-latin.woff2" crossorigin />
+    <title>SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300</title>
+    <meta
+      name="description"
+      content="Raptor 4 targets 300 t of thrust, Musk said on 26 Oct 2026. How full-flow staged combustion works, Raptor 1–3 specs, the deleted heat shield and the Saturn V"
+    />
+    <link rel="canonical" href="https://superchargeddaily.com/dispatch/raptor-engines-explained.html" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2026-10-27T20:52:00Z" />
+    <meta property="article:modified_time" content="2026-10-27T20:52:00Z" />
+    <meta property="og:site_name" content="Supercharged Daily" />
+    <meta property="og:title" content="SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300" />
+    <meta property="og:description" content="Raptor 4 targets 300 t of thrust, Musk said on 26 Oct 2026. How full-flow staged combustion works, Raptor 1–3 specs, the deleted heat shield and the Saturn V" />
+    <meta property="og:url" content="https://superchargeddaily.com/dispatch/raptor-engines-explained.html" />
+    <meta property="og:image" content="https://superchargeddaily.com/assets/dispatch/raptor-engines-r1-r2-r3.jpg" />
+    <meta property="og:image:alt" content="Raptor 1, Raptor 2 and Raptor 3 engines side by side (photo: SpaceX, used editorially)" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="788" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ALJR86" />
+    <meta name="twitter:creator" content="@ALJR86" />
+    <meta name="twitter:title" content="SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300" />
+    <meta name="twitter:description" content="Raptor 4 targets 300 t of thrust, Musk said on 26 Oct 2026. How full-flow staged combustion works, Raptor 1–3 specs, the deleted heat shield and the Saturn V" />
+    <meta name="twitter:image" content="https://superchargeddaily.com/assets/dispatch/raptor-engines-r1-r2-r3.jpg" />
+    <meta name="twitter:image:alt" content="Raptor 1, Raptor 2 and Raptor 3 engines side by side (photo: SpaceX, used editorially)" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96" />
+    <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+<link rel="stylesheet" href="/styles.css?v=202610261800" />
+      <link rel="stylesheet" href="/nav-pill.css?v=202610271600" />
+      <link rel="stylesheet" href="/related.css?v=202610182245" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="/related.css?v=202610182245" /></noscript>
+    <style>
+      .sd-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;margin:1.25rem 0 .5rem;border:1px solid var(--line);border-top:2px solid var(--tesla);border-radius:var(--radius);background:var(--card)}
+      .sd-table-wrap:focus-visible{outline:2px solid var(--red-text);outline-offset:2px}
+      .sd-table{width:100%;min-width:640px;border-collapse:collapse;font-size:.92rem;line-height:1.45}
+      .sd-table th,.sd-table td{padding:.75rem .85rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+      .sd-table thead th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:500;background:rgba(12,13,16,.45)}
+      .sd-table tbody th{color:var(--ink);font-weight:600;white-space:nowrap}
+      .sd-table tbody td:nth-child(2){color:var(--ink)}
+      .sd-table td{color:var(--ink-soft)}
+      .sd-table tr:last-child th,.sd-table tr:last-child td{border-bottom:0}
+      .sd-table a{color:var(--red-text)}
+      .sd-table-note{font-size:.85rem;color:var(--mute)}
+      .sd-film video{aspect-ratio:16/9;object-fit:contain}
+      @media (max-width:560px){.sd-table.sd-fit{min-width:0;font-size:.82rem}.sd-table.sd-fit th,.sd-table.sd-fit td{padding:.6rem .45rem}.sd-table.sd-fit tbody th{white-space:normal}.sd-table-wrap.sd-fit-wrap + .sd-table-note::before{content:none}}
+      @media (max-width:700px){.sd-table-wrap + .sd-table-note::before{content:"Swipe the table sideways to see every column. ";}}
+    </style>
+    <link rel="stylesheet" href="/theme.css?v=202610211030" />
+      <link rel="stylesheet" href="/grow.css?v=202610210800" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="/grow.css?v=202610210800" /></noscript>
+      <meta name="robots" content="index, follow, max-image-preview:large" />
+      <link rel="alternate" type="application/rss+xml" title="Supercharged Daily" href="https://superchargeddaily.com/feed.xml" />
+    <link rel="stylesheet" href="/x-embed.css?v=202610262130" />
+    <!-- seo:ld -->
+    <meta name="author" content="Alex R" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":"https://superchargeddaily.com/dispatch/raptor-engines-explained.html"},"headline":"SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300","description":"Raptor 4 targets 300 t of thrust, Musk said on 26 Oct 2026. How full-flow staged combustion works, Raptor 1–3 specs, the deleted heat shield and the Saturn V","datePublished":"2026-10-27T20:52:00Z","author":{"@type":"Person","name":"Alex R","url":"https://superchargeddaily.com/author.html","sameAs":["https://x.com/ALJR86"]},"publisher":{"@type":"Organization","name":"Supercharged Daily","url":"https://superchargeddaily.com/","sameAs":["https://x.com/ALJR86"],"logo":{"@type":"ImageObject","url":"https://superchargeddaily.com/favicon-512.png","width":512,"height":512}},"articleSection":"Starship","image":["https://superchargeddaily.com/assets/dispatch/raptor-engines-r1-r2-r3.jpg"]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://superchargeddaily.com/"},{"@type":"ListItem","position":2,"name":"Dispatch","item":"https://superchargeddaily.com/dispatch.html"},{"@type":"ListItem","position":3,"name":"SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300","item":"https://superchargeddaily.com/dispatch/raptor-engines-explained.html"}]}</script>
+    <!-- /seo:ld -->
+    <!--sd:wayfinding-style--><link rel="stylesheet" href="/wayfinding.css?v=2026102301" /><!--/sd:wayfinding-style-->
+    <!--rs:assets--><link rel="stylesheet" href="/article-reader.css?v=202610271"/><script defer src="/article-reader.js?v=202610271"></script><!--/rs:assets-->
+    <!--sd:members-->
+    <link rel="stylesheet" href="/members.css?v=20261022" />
+    <script type="module" src="/members.js?v=20261022"></script>
+    <!--/sd:members-->
+  </head>
+  <body class="rs-story">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <div class="pn-wrap">
+        <nav class="pn" aria-label="Primary" tabindex="-1">
+          <a class="pn-logo" href="/" aria-label="Supercharged Daily home"><img src="/assets/brand/icon-1b-mark.svg" alt="" width="26" height="26" /><img class="pn-word" src="/assets/brand/wordmark.svg" alt="" width="114" height="18" /></a>
+          <div class="pn-items">
+            <a class="pn-link" href="/">Home</a>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla">Tesla<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-tesla">
+                <a href="/tesla.html">Tesla overview<small>News, models &amp; data</small></a>
+                <a href="/my-tesla.html">My Tesla<small>Your car, personalised</small></a>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla-software-autonomy">Software & autonomy<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-tesla-software-autonomy" hidden>
+                  <a href="/updates.html">Software Update Tracker<small>Latest Tesla releases</small></a>
+                  <a href="/fsd-europe.html">FSD Europe tracker<small>Approval tracker</small></a>
+                  <a href="/cybercab.html">Cybercab tracker<small>Reality map &amp; fleet</small></a>
+                  <a href="/autonomy.html">FSD & Robotaxi evidence<small>Supervised vs commercial layers</small></a>
+                  <a href="/explainers.html#tesla">Explainers<small>FSD stacks, Collision Evasion</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla-cars-owners">Cars & owners<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-tesla-cars-owners" hidden>
+                  <a href="/guides/tesla-buying-guide.html">Buying guide<small>Which Tesla to buy in 2026</small></a>
+                  <a href="/reviews/index.html">Reviews<small>Every model reviewed</small></a>
+                  <a href="/model3-explorer.html">Model 3 Explorer<span class="pn-badge">3D</span><small>Take the car apart</small></a>
+                  <a href="/cybertruck-explorer.html">Cybertruck Explorer<span class="pn-badge">3D</span><small>Take the truck apart</small></a>
+                  <a href="/tesla-clubs.html">Owners clubs<span class="pn-badge">New</span><small>Find a club near you</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-tesla-company">Company<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-tesla-company" hidden>
+                  <a href="/production.html">Production & deliveries<small>Official Tesla IR tables</small></a>
+                  <a href="/optimus.html">Optimus Evolution Lab<small>Promises versus demonstrations</small></a>
+                  <a href="/tsla.html">Markets<small>TSLA stock</small></a>
+                  </div>
+                </div>
+              </div></div>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-spacex">SpaceX<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-spacex">
+                <a href="/spacex.html">SpaceX<small>News &amp; missions</small></a>
+                <a href="/starship.html">Starship flights<small>Flight lab</small></a>
+                <a href="/starlink.html">Starlink tracker<small>Satellites by version</small></a>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-spacex-launches">Launches<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-spacex-launches" hidden>
+                  <a href="/calendar.html">Calendar<small>Launches &amp; livestreams</small></a>
+                  <a href="/see-the-launch.html">Can I see it?<small>Visible from here?</small></a>
+                  </div>
+                </div>
+                <a href="/explainers.html#spacex">Explainers<small>Hot staging, catch</small></a>
+              </div></div>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster">Roadster<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-roadster">
+                <a href="/roadster.html#top">Overview<span class="pn-badge">New</span><small>The hero and key numbers</small></a>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster-look">Look<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-roadster-look" hidden>
+                  <a href="/roadster.html#gallery">Gallery<small>22 angles</small></a>
+                  <a href="/roadster.html#video">Videos<small>Clips, incl. Interior video</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster-the-car">The car<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-roadster-the-car" hidden>
+                  <a href="/roadster.html#trims">Trims &amp; Specs<small>Performance, Thrust, Rocket</small></a>
+                  <a href="/roadster.html#tech">How it works<small>Thrusters, suction, aero</small></a>
+                  <a href="/roadster.html#money">Price &amp; Reservations<small>Deposits and 2028 production</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-roadster-the-story">The story<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-roadster-the-story" hidden>
+                  <a href="/roadster.html#timeline">Timeline<small>2017 promise to 2026 reveal</small></a>
+                  <a href="/roadster.html#promise">Promise vs Reality<small>2017 claims vs 2026 figures</small></a>
+                  <a href="/dispatch/roadster-reveal-2026.html">Reveal article<small>The night it flew</small></a>
+                  </div>
+                </div>
+              </div></div>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-ex">Explore<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-ex">
+                <a href="/daily.html">Your Supercharged Daily<small>Followed changes in this browser</small></a>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-ex-tesla">Tesla<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-ex-tesla" hidden>
+                  <a href="/my-tesla.html">My Tesla<small>Your car, personalised</small></a>
+                  <a href="/updates.html">Software Update Tracker<small>Latest Tesla releases</small></a>
+                  <a href="/fsd-europe.html">FSD Europe tracker<small>Approval tracker</small></a>
+                  <a href="/cybercab.html">Cybercab tracker<small>Reality map &amp; fleet</small></a>
+                  <a href="/autonomy.html">FSD & Robotaxi evidence<small>Supervised vs commercial layers</small></a>
+                  <a href="/production.html">Production & deliveries<small>Official Tesla IR tables</small></a>
+                  <a href="/optimus.html">Optimus Evolution Lab<small>Promises versus demonstrations</small></a>
+                  <a href="/promise-tracker.html">Promise tracker<span class="pn-badge">New</span><small>Musk deadlines vs reality</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-ex-spacex">SpaceX<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-ex-spacex" hidden>
+                  <a href="/starship.html">Starship flights<small>Flight lab</small></a>
+                  <a href="/starlink.html">Starlink tracker<small>Satellites by version</small></a>
+                  <a href="/calendar.html">Calendar<small>Launches &amp; livestreams</small></a>
+                  </div>
+                </div>
+                <div class="pn-nest">
+                  <button type="button" class="pn-nest-t" aria-expanded="false" aria-haspopup="true" aria-controls="pn-ex-more">More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                  <div class="pn-nest-panel" id="pn-ex-more" hidden>
+                  <a href="/explainers.html">Explainers<small>FSD stacks, hot staging</small></a>
+                  <a href="/grok.html">Grok<small>Tutorial</small></a>
+                  <a href="/gear.html">Gear<small>Owner kit</small></a>
+                  <a href="/games.html">Games<small>Starbase games</small></a>
+                  <a href="/wallpapers.html">Wallpapers<small>Desktop &amp; phone</small></a>
+                  </div>
+                </div>
+              </div></div>
+            <div class="pn-dd"><button type="button" aria-expanded="false" aria-haspopup="true" aria-controls="pn-news">News<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="pn-panel" id="pn-news">
+                <a href="/news.html">Latest headlines<small>Today’s headlines from across the web</small></a>
+                <a href="/dispatch.html">Original stories · Dispatch<small>Our reporting &amp; analysis</small></a>
+                <a href="/about.html">About me<small>Who runs the site</small></a>
+              </div></div>
+            <a class="pn-cta" href="https://x.com/ALJR86">Follow on X</a>
+          </div>
+          <button class="pn-menu" type="button" aria-expanded="false" aria-controls="pn-sheet" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+          <span class="pn-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
+        </nav>
+      </div>
+      <div class="pn-overlay" aria-hidden="true"></div>
+      <aside class="pn-sheet" id="pn-sheet" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert>
+        <div class="pn-sheet-head"><img src="/assets/brand/wordmark.svg" alt="Supercharged Daily" width="140" height="22" /><button class="pn-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+        <a href="/">Home</a>
+        <nav class="pn-shortcuts" aria-label="Quick links"><p class="pn-shortcuts-label">Quick links</p><div class="pn-shortcuts-grid"><a href="/dispatch.html">Original stories</a><a href="/updates.html">Software updates</a><a href="/cybercab.html">Cybercab</a><a href="/starship.html">Starship</a></div></nav>
+        <h3>Tesla</h3>
+        <a href="/tesla.html">Tesla overview</a>
+        <a href="/my-tesla.html">My Tesla</a>
+        <h4>Software & autonomy</h4>
+        <a href="/updates.html">Software Update Tracker</a><a href="/fsd-europe.html">FSD Europe tracker</a><a href="/cybercab.html">Cybercab tracker</a><a href="/autonomy.html">FSD & Robotaxi evidence</a><a href="/explainers.html#tesla">Explainers</a>
+        <h4>Cars & owners</h4>
+        <a href="/guides/tesla-buying-guide.html">Buying guide</a><a href="/reviews/index.html">Reviews</a><a href="/model3-explorer.html">Model 3 Explorer</a><a href="/cybertruck-explorer.html">Cybertruck Explorer</a><a href="/tesla-clubs.html">Owners clubs</a>
+        <h4>Company</h4>
+        <a href="/production.html">Production & deliveries</a><a href="/optimus.html">Optimus Evolution Lab</a><a href="/tsla.html">Markets</a>
+        <h3>SpaceX</h3>
+        <a href="/spacex.html">SpaceX</a>
+        <a href="/starship.html">Starship flights</a>
+        <a href="/starlink.html">Starlink tracker</a>
+        <h4>Launches</h4>
+        <a href="/calendar.html">Calendar</a><a href="/see-the-launch.html">Can I see it?</a>
+        <a href="/explainers.html#spacex">Explainers</a>
+        <h3>Roadster</h3>
+        <a href="/roadster.html#top">Overview</a>
+        <h4>Look</h4>
+        <a href="/roadster.html#gallery">Gallery</a><a href="/roadster.html#video">Videos</a>
+        <h4>The car</h4>
+        <a href="/roadster.html#trims">Trims &amp; Specs</a><a href="/roadster.html#tech">How it works</a><a href="/roadster.html#money">Price &amp; Reservations</a>
+        <h4>The story</h4>
+        <a href="/roadster.html#timeline">Timeline</a><a href="/roadster.html#promise">Promise vs Reality</a><a href="/dispatch/roadster-reveal-2026.html">Reveal article</a>
+        <h3>Explore</h3>
+        <a href="/daily.html">Your Supercharged Daily</a>
+        <h4>Tesla</h4>
+        <a href="/my-tesla.html">My Tesla</a><a href="/updates.html">Software Update Tracker</a><a href="/fsd-europe.html">FSD Europe tracker</a><a href="/cybercab.html">Cybercab tracker</a><a href="/autonomy.html">FSD & Robotaxi evidence</a><a href="/production.html">Production & deliveries</a><a href="/optimus.html">Optimus Evolution Lab</a><a href="/promise-tracker.html">Promise tracker</a>
+        <h4>SpaceX</h4>
+        <a href="/starship.html">Starship flights</a><a href="/starlink.html">Starlink tracker</a><a href="/calendar.html">Calendar</a>
+        <h4>More</h4>
+        <a href="/explainers.html">Explainers</a><a href="/grok.html">Grok</a><a href="/gear.html">Gear</a><a href="/games.html">Games</a><a href="/wallpapers.html">Wallpapers</a>
+        <h3>News</h3>
+        <a href="/news.html">Latest headlines</a>
+        <a href="/dispatch.html">Original stories · Dispatch</a>
+        <a href="/about.html">About me</a>
+        <a class="pn-cta" href="https://x.com/ALJR86">Follow on X</a>
+        <!-- Menu inspired by 21st.dev -->
+      </aside>
+      <div class="pn-spacer" aria-hidden="true"></div>
+
+      <main id="main">
+<article class="article rs-article">
+  <p class="eyebrow">SpaceX · Starship · 27 Oct 2026</p>
+  <h1>SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300</h1>
+  <p class="standfirst"><strong>Raptor 4 will make 300 metric tons of thrust at sea level at roughly the same mass as Raptor 3, Elon Musk said on 26 Oct 2026. That’s 62% more than the first Raptor, from an engine that weighs about as much as a family car. Here’s how SpaceX got from Raptor 1 to Raptor 3, what Musk says Raptor 4 will add, and why it all matters for Mars (figures as of 27 Oct 2026).</strong></p>
+<!--rs:tools--><div class="rs-tools" aria-label="Reading tools"><span class="rs-time">DISPATCH <span aria-hidden="true">/</span> About 8 min read</span><div class="rs-controls" hidden><div class="rs-size" role="group" aria-label="Article text size"><button type="button" data-rs-size="-1" aria-label="A−, smaller article text">A−</button><button type="button" data-rs-size="1" aria-label="A+, larger article text">A+</button></div><button type="button" data-rs-focus aria-pressed="false">Focus</button><button type="button" data-rs-share>Share</button><button type="button" data-rs-print>Print</button></div><span class="rs-status" role="status" aria-live="polite"></span></div><!--/rs:tools-->
+
+  <p class="meta"><span>From <a href="/author.html">Alex R</a></span><span>SpaceX · Explainer</span></p>
+<!--sd:article-wayfinding--><div class="sd-article-tools"><details class="sd-contents"><summary>On this page</summary><nav aria-label="Article sections"><ol><li><a href="#section-the-film">The film</a></li><li><a href="#section-the-cycle-nobody-had-flown">The cycle nobody had flown</a></li><li><a href="#section-squeezing-the-chamber">Squeezing the chamber</a></li><li><a href="#section-three-generations-side-by-side">Three generations, side by side</a></li><li><a href="#section-how-spacex-deleted-the-heat-shield">How SpaceX deleted the heat shield</a></li><li><a href="#section-paper-versus-reality">Paper versus reality</a></li><li><a href="#section-raptor-4-300-tons">Raptor 4: 300 tons</a></li><li><a href="#section-why-methane-matters-for-mars">Why methane matters for Mars</a></li><li><a href="#section-the-saturn-v-comparison">The Saturn V comparison</a></li></ol></nav></details><a class="sd-discussion-jump" href="#comments" data-discussion-jump hidden>Jump to discussion <span aria-hidden="true">→</span></a></div><!--/sd:article-wayfinding-->
+
+  <figure>
+    <picture><source type="image/avif" srcset="/assets/dispatch/raptor-engines-r1-r2-r3-480w.avif 480w, /assets/dispatch/raptor-engines-r1-r2-r3-960w.avif 960w, /assets/dispatch/raptor-engines-r1-r2-r3-1400w.avif 1400w" sizes="(max-width: 760px) 100vw, 1040px" /><source type="image/webp" srcset="/assets/dispatch/raptor-engines-r1-r2-r3-480w.webp 480w, /assets/dispatch/raptor-engines-r1-r2-r3-960w.webp 960w, /assets/dispatch/raptor-engines-r1-r2-r3-1400w.webp 1400w" sizes="(max-width: 760px) 100vw, 1040px" /><img src="/assets/dispatch/raptor-engines-r1-r2-r3.jpg" alt="Raptor 1, Raptor 2 and Raptor 3 engines standing side by side, each simpler-looking than the last" width="1400" height="788" fetchpriority="high" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover" /></picture>
+    <figcaption>Raptor 1, 2 and 3, left to right. Photo: <a href="https://x.com/SpaceX/status/1819772716339339664">SpaceX (@SpaceX)</a>, Aug 2024, as shown in our film; used editorially.</figcaption>
+  </figure>
+
+  <p>On 26 Oct 2026, at 9:58am ET (6:58am PT; <time class="lt" datetime="2026-10-26T13:58:00Z">13:58 UTC</time>), Musk replied to a post on X with the next number for SpaceX’s engine: <a href="https://x.com/elonmusk/status/2114718275238277610">“Raptor 4 will be 300 tons of thrust at sea level and hopefully about the same mass.”</a> Raptor 4 exists only in that sentence for now. SpaceX hasn’t shown the engine, and there is no Raptor 4 footage.</p>
+  <p>Three hours later he added a caveat about the engine that flies today. Raptor 3 is rated at 280 tons, but <a href="https://x.com/elonmusk/status/2114767355045871828">“We can only reliably get to around 230 t-F with Raptor 3,”</a> he wrote at 1:13pm ET (10:13am PT; <time class="lt" datetime="2026-10-26T17:13:00Z">17:13 UTC</time>). Both numbers matter, and the gap between them is part of this story.</p>
+
+  <h2 id="section-the-film">The film</h2>
+  <p>We cut a three-minute film from SpaceX’s and Musk’s own footage: the first Raptor firings in 2019, the Starhopper flight, Raptor 2 on the test stand, Raptor 3’s debut, and 33 engines lifting Super Heavy. It ends with Raptor 4 as Musk’s words on screen, because that’s all there is of it.</p>
+  <figure class="figure-video sd-film">
+    <video controls playsinline preload="none" poster="/assets/dispatch/raptor-film-poster.webp" width="1280" height="720" aria-label="Raptor: a three-minute film of SpaceX’s Raptor engines, from 2019 test firings to Raptor 3">
+      <source src="/assets/dispatch/raptor-film-720p.mp4" type="video/mp4" />
+      <a href="/assets/dispatch/raptor-film-720p.mp4">Watch the Raptor film (MP4, 28 MB)</a>
+    </video>
+    <figcaption>Video: SpaceX (@SpaceX) and Elon Musk (@elonmusk); footage used editorially. Edited by Supercharged Daily. 3 min, sound on. Raptor 4 appears only as Musk’s quote; no footage of it exists.</figcaption>
+  </figure>
+
+  <h2 id="section-the-cycle-nobody-had-flown">The cycle nobody had flown</h2>
+  <p>Raptor runs a <strong>full-flow staged combustion</strong> cycle. In plain terms, every drop of propellant passes through a turbine before it burns.</p>
+  <ul>
+    <li><strong>Two preburners.</strong> An oxygen-rich preburner spins the oxygen pump. A methane-rich preburner spins the fuel pump.</li>
+    <li><strong>Nothing wasted.</strong> Both hot gas streams then meet and burn completely in the main chamber.</li>
+    <li><strong>The payoff.</strong> More gas through the turbines means higher chamber pressure and cooler turbines. And because each turbine runs on gas that matches its own pump, there’s no shared seal between fuel and oxidizer to fail. The <a href="https://www.wpafb.af.mil/News/Article-Display/Article/401448/new-rocket-engine-combustion-cycle-technology-testing-reaches-100-power-level/">U.S. Air Force Research Laboratory</a> set out the same advantages when it tested the cycle.</li>
+  </ul>
+  <p>Before Raptor, two programs had tried it. The Soviet RD-270 was built and test-fired in the 1960s, and the U.S. <a href="https://www.wpafb.af.mil/News/Article-Display/Article/401448/new-rocket-engine-combustion-cycle-technology-testing-reaches-100-power-level/">Integrated Powerhead Demonstrator</a> ran on a NASA test stand in the 2000s. <a href="https://hackaday.com/2019/02/13/the-impossible-tech-behind-spacexs-new-engine/">Neither ever left the ground.</a> Raptor first flew on SpaceX’s <a href="https://x.com/SpaceX/status/1166822634874490880">Starhopper</a> in 2019, and it’s still the only full-flow engine to have flown (as of 27 Oct 2026).</p>
+
+  <h2 id="section-squeezing-the-chamber">Squeezing the chamber</h2>
+  <p>Chamber pressure is the cleanest way to track Raptor’s progress. Higher pressure lets a smaller engine push harder. Here are the milestones Musk has announced:</p>
+  <ul>
+    <li><strong>February 2019: 268.9 bar.</strong> Musk said Raptor <a href="https://phys.org/news/2019-02-spacex-raptor-chamber-pressure-russia.html">“reached 268.9 bar”</a>, beating the record held for decades by Russia’s RD-180 (<a href="https://www.aerospacetestinginternational.com/news/engine-testing/spacex-test-fires-raptor-engine-for-first-time.html">Aerospace Testing International</a>).</li>
+    <li><strong>By January 2022: 300 bar.</strong> <a href="https://x.com/elonmusk/status/1478125263233990657">“Raptor 2 now operates routinely at 300 bar,”</a> Musk said.</li>
+    <li><strong>May 2023: 350 bar.</strong> A Raptor 3 test engine <a href="https://x.com/elonmusk/status/1657249739925258240">“just achieved 350 bar chamber pressure (269 tons of thrust).”</a> Musk said the team did not expect the engine to survive a full-duration run at that pressure, and that the chamber wall might have “the highest heat flux of anything ever made.”</li>
+  </ul>
+  <p>Heat flux is the problem that comes with the pressure. Raptor survives it with regenerative cooling: cold methane flows through channels in the chamber and nozzle walls before it’s burned, so the fuel carries the heat away and the engine doesn’t melt itself.</p>
+
+  <h2 id="section-three-generations-side-by-side">Three generations, side by side</h2>
+  <p>In August 2024, SpaceX published data cards for all three engines (<a href="https://x.com/SpaceX/status/1819795288116330594">Raptor 1 and 2</a>; <a href="https://x.com/SpaceX/status/1819772716339339664">Raptor 3</a>). “Installed” mass adds the vehicle-side hardware each engine needs on the rocket. These are SpaceX’s ratings (as of 27 Oct 2026):</p>
+  <div class="sd-table-wrap sd-fit-wrap" tabindex="0" role="region" aria-label="Raptor 1, 2 and 3 specifications">
+    <table class="sd-table sd-fit">
+      <caption class="visually-hidden">Raptor engine specifications by generation, from SpaceX’s August 2024 figures</caption>
+      <thead><tr><th scope="col">Engine</th><th scope="col">Rated thrust</th><th scope="col">Engine mass</th><th scope="col">Installed mass</th><th scope="col">Thrust to weight*</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Raptor 1</th><td>185 t</td><td>2,080 kg</td><td>3,630 kg</td><td>~89</td></tr>
+        <tr><th scope="row">Raptor 2</th><td>230 t</td><td>1,630 kg</td><td>2,875 kg</td><td>~141</td></tr>
+        <tr><th scope="row">Raptor 3</th><td>280 t</td><td>1,525 kg</td><td>1,720 kg</td><td>~184</td></tr>
+        <tr><th scope="row">Raptor 4 (target)</th><td>300 t</td><td>About Raptor 3’s†</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sd-table-note">*Rated thrust divided by engine mass, our arithmetic; it’s a paper figure, not a flight measurement. Thrust is metric tons-force at sea level. †Raptor 4 row: <a href="https://x.com/elonmusk/status/2114718275238277610">Musk, 26 Oct 2026</a>, “hopefully about the same mass”; SpaceX hasn’t published its other figures.</p>
+  <p>Read the rows top to bottom and two lines cross. From Raptor 1 to Raptor 3, installed mass fell 53% while rated thrust rose 51%. Thrust-to-weight roughly doubled, from about 89 to 184 on paper.</p>
+
+  <h2 id="section-how-spacex-deleted-the-heat-shield">How SpaceX deleted the heat shield</h2>
+  <p>Raptor 2 was a tangle of pipes and wiring on the outside. On Super Heavy, that meant each engine needed a heat shield and a fire-suppression system around it.</p>
+  <p>For Raptor 3, SpaceX moved the plumbing inside. It pulled pipes, wiring and secondary flow paths into the engine body and added regenerative cooling to the surfaces left exposed (<a href="https://aviationweek.com/space/commercial-space/algorithm-spacexs-five-step-process-better-engineering">Aviation Week</a>). <a href="https://www.nasaspaceflight.com/2024/08/flight-5-6-preparations-raptor-3/">NASASpaceflight</a> noted that the high-pressure side of the engine lost its bolted flanges and seals in favor of integrated parts.</p>
+  <p>Much of that internal plumbing only exists because of 3D metal printing. Musk says SpaceX has “the most advanced 3D metal printing technology in the world” (<a href="https://www.metal-am.com/spacex-debuts-raptor-3-engine-further-enhanced-with-metal-additive-manufacturing/">Metal AM</a>). He called the work “staggering”: <a href="https://aviationweek.com/space/commercial-space/algorithm-spacexs-five-step-process-better-engineering">“The amount of work required to simplify the Raptor engine, internalize secondary flow paths and add regenerative cooling for exposed components was staggering.”</a> As a result, he said, Raptor 3 needs no heat shield and no fire-suppression system (<a href="https://www.teslaoracle.com/2024/08/08/raptor-3-starship-engine-is-lighter-less-complicated-but-more-powerful-and-reusable/">Tesla Oracle</a>).</p>
+  <p>The scale shows up in the table. Installed mass fell by about 1.15 tons per engine from Raptor 2 to Raptor 3. Across a 33-engine Super Heavy booster that’s roughly 38 tons, our arithmetic from SpaceX’s figures.</p>
+
+  <h2 id="section-paper-versus-reality">Paper versus reality</h2>
+  <p>The 280-ton figure is SpaceX’s rating. Musk’s 26 Oct reply gives the working number for today: <a href="https://x.com/elonmusk/status/2114767355045871828">“We can only reliably get to around 230 t-F with Raptor 3.”</a></p>
+  <ul>
+    <li>At 230 tons, 33 engines give Super Heavy about <strong>7,600 tons of liftoff thrust</strong> (as of 26 Oct 2026, our arithmetic).</li>
+    <li>That means reliable Raptor 3 output today roughly matches Raptor 2’s <em>rating</em>.</li>
+    <li>But it does so with about 1.15 tons less installed mass per engine and no heat shield. The weight savings are real even before the thrust catches up.</li>
+  </ul>
+
+  <h2 id="section-raptor-4-300-tons">Raptor 4: 300 tons</h2>
+  <figure class="figure-embed">
+    <blockquote class="twitter-tweet" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">Raptor 4 will be 300 tons of thrust at sea level and hopefully about the same mass</p>&mdash; Elon Musk (@elonmusk) <a href="https://x.com/elonmusk/status/2114718275238277610">October 26, 2026</a></blockquote>
+    <figcaption>Post: <a href="https://x.com/elonmusk/status/2114718275238277610">@elonmusk on X</a>, 26 Oct 2026.</figcaption>
+  </figure>
+  <p>Musk’s target is <strong>300 tons at sea level</strong>, “and hopefully about the same mass” as Raptor 3 (as of 26 Oct 2026). Against SpaceX’s own ratings, that’s:</p>
+  <ul>
+    <li><strong>62% more</strong> than Raptor 1’s 185 tons</li>
+    <li><strong>30% more</strong> than Raptor 2’s 230 tons</li>
+    <li><strong>7% more</strong> than Raptor 3’s 280-ton rating</li>
+  </ul>
+  <p>Those percentages match a <a href="https://x.com/niccruzpatane/status/2114751910930522228">comparison posted by @niccruzpatane</a>, and we re-checked the math. The bigger jump is over what Raptor 3 reliably does today: 300 tons would be about 30% above Musk’s 230.</p>
+  <p>Cost is the other half of the pitch. In November 2025, Musk said <a href="https://x.com/elonmusk/status/1985187793556111427">Raptor 3 should be 2 to 4 times better than Merlin, the Falcon 9 engine, on cost per ton of thrust, and that Raptor 4 should beat Merlin by more than 10 times</a>. He also expects further gains in thrust-to-weight and efficiency. SpaceX hasn’t given a date for Raptor 4 or published a spec sheet.</p>
+
+  <h2 id="section-why-methane-matters-for-mars">Why methane matters for Mars</h2>
+  <p>Raptor burns liquid methane and liquid oxygen, and that choice is about the trip home. Methane can be made on Mars from carbon dioxide in the air and hydrogen from water ice, using the Sabatier reaction. A Starship that lands there could refuel for the return without hauling all of that propellant from Earth.</p>
+  <p>Size matters too. Small, dense engines are what let Super Heavy fit 33 of them under a 9-meter (about 30-foot) base.</p>
+
+  <h2 id="section-the-saturn-v-comparison">The Saturn V comparison</h2>
+  <p>The Saturn V’s five F-1 engines made about <a href="https://www.nasa.gov/image-article/this-week-nasa-history-first-test-firing-of-saturn-v-first-stage-april-16-1965/">7.5 million pounds of thrust</a>, roughly 3,400 metric tons, at liftoff (NASA).</p>
+  <p>If Super Heavy flew 33 Raptor 4s at 300 tons each, it would make about <strong>9,900 tons</strong>. That’s nearly three times the Moon rocket that defined Apollo. It’s a target, not a test result (as of 27 Oct 2026): today’s reliable figure is about 7,600 tons, which is already more than twice Saturn V.</p>
+
+  <p class="sd-note">Sources: <a href="https://x.com/elonmusk/status/2114718275238277610">Elon Musk on X (26 Oct 2026, Raptor 4)</a>; <a href="https://x.com/elonmusk/status/2114767355045871828">Elon Musk on X (26 Oct 2026, “reliably ~230 t”)</a>; <a href="https://x.com/niccruzpatane/status/2114751910930522228">@niccruzpatane on X (26 Oct 2026)</a>; <a href="https://x.com/elonmusk/status/1985187793556111427">Elon Musk on X (3 Nov 2025, Merlin cost)</a>; <a href="https://x.com/SpaceX/status/1819795288116330594">SpaceX on X (Raptor 1 and 2 data card, Aug 2024)</a>; <a href="https://x.com/SpaceX/status/1819772716339339664">SpaceX on X (Raptor 3 data card, Aug 2024)</a>; <a href="https://x.com/elonmusk/status/1657249739925258240">Elon Musk on X (13 May 2023)</a>; <a href="https://x.com/elonmusk/status/1478125263233990657">Elon Musk on X (Jan 2022)</a>; <a href="https://phys.org/news/2019-02-spacex-raptor-chamber-pressure-russia.html">Phys.org (12 Feb 2019)</a>; <a href="https://www.aerospacetestinginternational.com/news/engine-testing/spacex-test-fires-raptor-engine-for-first-time.html">Aerospace Testing International (Feb 2019)</a>; <a href="https://www.nasaspaceflight.com/2024/08/flight-5-6-preparations-raptor-3/">NASASpaceflight (9 Aug 2024)</a>; <a href="https://aviationweek.com/space/commercial-space/algorithm-spacexs-five-step-process-better-engineering">Aviation Week</a>; <a href="https://www.metal-am.com/spacex-debuts-raptor-3-engine-further-enhanced-with-metal-additive-manufacturing/">Metal AM (Aug 2024)</a>; <a href="https://www.teslaoracle.com/2024/08/08/raptor-3-starship-engine-is-lighter-less-complicated-but-more-powerful-and-reusable/">Tesla Oracle (8 Aug 2024)</a>; <a href="https://www.wpafb.af.mil/News/Article-Display/Article/401448/new-rocket-engine-combustion-cycle-technology-testing-reaches-100-power-level/">Air Force Research Laboratory</a>; <a href="https://hackaday.com/2019/02/13/the-impossible-tech-behind-spacexs-new-engine/">Hackaday (13 Feb 2019)</a>; <a href="https://x.com/SpaceX/status/1166822634874490880">SpaceX on X (Starhopper, Aug 2019)</a>; <a href="https://www.nasa.gov/image-article/this-week-nasa-history-first-test-firing-of-saturn-v-first-stage-april-16-1965/">NASA</a>. Thrust-to-weight, percentage changes and 33-engine totals are Supercharged Daily’s own arithmetic from these figures. Film and hero photo: SpaceX (@SpaceX) and Elon Musk (@elonmusk); footage used editorially.</p>
+  <p class="signoff">— <a href="https://x.com/ALJR86">Alex R</a></p>
+          <!-- seo:about -->
+          <aside class="sd-about" aria-label="About Supercharged Daily">
+            <p class="sd-about-kicker">About</p>
+            <p>Supercharged Daily is an independent fan site covering Tesla, SpaceX and xAI (including Grok), from <a href="/author.html">Alex R</a>. Not affiliated with Tesla, SpaceX or xAI.</p>
+            <p><a href="/about.html">About this site</a> · <a href="/editorial.html">Editorial policy</a></p>
+          </aside>
+          <!-- /seo:about -->
+</article>
+        <!--nl:start--><section class="sd-band sd-band-article" id="newsletter" data-newsletter="article" data-band-topic="spacex" aria-label="Newsletter signup"><div><h2>SpaceX on Supercharged Daily</h2><p>Starship flights, Starlink and Falcon dates — the week in one Sunday email.</p></div><div><form class="sd-form" data-newsletter-form><label class="visually-hidden" for="sd-nl-email">Email address</label><input id="sd-nl-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="sd-nl-email-status" /><input type="text" name="website" hidden tabindex="-1" autocomplete="off" aria-hidden="true" /><button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-musk-s-big-earnings-week?utm_source=website&amp;utm_medium=site-article&amp;utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status id="sd-nl-email-status" role="status" aria-live="polite"></p></div></section><!--nl:end-->
+        <!--related:start--><section class="related-stories" aria-labelledby="rel-h"><h2 id="rel-h">Related stories</h2><div class="rel-grid"><a class="rel-card" href="/dispatch/booster-22-static-fire.html"><img src="/assets/dispatch/sn20-static-fire-mars-embassy.jpg" alt="" loading="lazy" width="320" height="180" /><span class="rel-tag">SpaceX</span><span class="rel-h">Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first double catch</span></a><a class="rel-card" href="/dispatch/starship-pushes-orion-to-moon.html"><img src="/assets/dispatch/artemis-iv-starship-conops.jpg" alt="" loading="lazy" width="320" height="180" /><span class="rel-tag">Starship</span><span class="rel-h">Starship will now push Orion to the Moon. What NASA’s new Artemis IV plan changes, and a first look inside Cabin 1</span></a><a class="rel-card" href="/dispatch/starship-moon-refuel-22-vs-8.html"><img src="/assets/dispatch/starship-ift5-jurvetson.jpg" alt="" loading="lazy" width="320" height="180" /><span class="rel-tag">Starship</span><span class="rel-h">NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers</span></a></div><p class="rel-more"><a href="/starship.html">More on Starship →</a></p></section><!--related:end-->
+        
+
+      </main>
+
+      <footer class="site-footer">
+        <a class="footer-lockup" href="/"><img src="/assets/brand/lockup-1b-trim.svg" alt="Supercharged Daily" width="220" height="45" /></a>
+        <p>© <span data-year>2026</span> Supercharged Daily · @ALJR86. Independent fan site covering Tesla, SpaceX and xAI (including Grok). Not affiliated with Tesla, SpaceX or xAI.</p>
+        <p class="footer-links">
+          <a href="/tesla.html">Tesla</a>
+          ·
+          <a href="/spacex.html">SpaceX</a>
+          ·
+          <a href="/grok.html">Grok</a>
+          ·
+          <a href="/dispatch.html">Dispatch</a>
+          ·
+          <a href="/news.html">News</a>
+          ·
+          <a href="/reviews/index.html">Reviews</a>
+          ·
+          <a href="/games.html">Games</a>
+          ·
+          <a href="https://x.com/ALJR86">X</a>
+          ·
+          <a href="/about.html">About</a>
+          ·
+          <a href="/editorial.html">Editorial</a>
+          ·
+          <a href="/contact.html">Contact</a>
+          ·
+          <a href="mailto:superchargeddaily@gmail.com">Contact me</a>
+        </p>
+        <p class="footer-ref"><a href="https://ts.la/alex474841" target="_blank" rel="noopener noreferrer">Tesla referral</a> <span class="ref-note">Referral link: we may earn a reward</span></p>
+        <p class="footer-support"><a class="support-button" href="https://buymeacoffee.com/Superchargeddaily" target="_blank" rel="noopener">Support Supercharged Daily ☕</a></p>
+        <p class="footer-disclosure">Some links are affiliate links; I may earn a commission at no extra cost to you.</p>
+      </footer>
+    </div>
+    <script>document.querySelectorAll('time.lt').forEach(function(e){try{var d=new Date(e.getAttribute('datetime'));e.textContent=d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});e.title='Shown in your time zone'}catch(x){}});</script>
+    <script defer src="/x-embed.js?v=202610262130"></script>
+      <!-- Cloudflare Web Analytics -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
+    <!--sd:bundles-->
+    <script defer src="/assets/js/core.bundle.8a94daea63.js" data-band data-pop></script>
+    <!--/sd:bundles-->
+  </body>
+</html>
+
