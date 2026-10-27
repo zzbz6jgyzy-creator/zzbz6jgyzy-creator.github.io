@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-27T08:19:45.401Z",
+  "updated": "2026-10-27T08:40:36.074Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/easyjet-starlink-u-turn.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet",
+      "at": "2026-10-27T08:45:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/easyjet-starlink-u-turn.html",
+      "href": "/dispatch/easyjet-starlink-u-turn.html",
+      "summary": "In January easyJet’s CEO said Starlink’s economics weren’t working. On 26 Oct it said Starlink goes on 277 A320-family jets from 2027. What changed, and the Apollo link.",
+      "title": "easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet",
+      "id": "logged|dispatch:/dispatch/easyjet-starlink-u-turn.html|2026-10-27T08:45:00.000Z|easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/verizon-vs-musk-starlink-mobile.html",
@@ -374,23 +391,6 @@
       "summary": "Trump said Musk had restored Ukraine’s service. Ukraine’s drone pilots and Zelenskyy say the cap is still in place. What was claimed, what was tested and what’s unanswered.",
       "title": "Trump says Musk “put it back.” Ukraine’s drone pilots say their tests show the Starshield speed cap is still there",
       "id": "logged|dispatch:/dispatch/starshield-cap-still-on.html|2026-10-23T19:31:07.000Z|Trump says Musk “put it back.” Ukraine’s drone pilots say their tests show the Starshield speed cap is still there"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-mobile-80000-towers.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers",
-      "at": "2026-10-23T13:36:27.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-mobile-80000-towers.html",
-      "href": "/dispatch/starlink-mobile-80000-towers.html",
-      "summary": "Bloomberg says SpaceX is in talks for at least 80,000 US cell sites, including with Crown Castle. What’s signed, what’s only talks, and the numbers behind it.",
-      "title": "SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers",
-      "id": "logged|dispatch:/dispatch/starlink-mobile-80000-towers.html|2026-10-23T13:36:27.000Z|SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers"
     },
     {
       "type": "logged",

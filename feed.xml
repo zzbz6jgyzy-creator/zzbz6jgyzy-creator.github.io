@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 27 Oct 2026 02:36:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 08:45:00 +0000</lastBuildDate>
+    <item>
+      <title>easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet</title>
+      <link>https://superchargeddaily.com/dispatch/easyjet-starlink-u-turn.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/easyjet-starlink-u-turn.html</guid>
+      <pubDate>Tue, 27 Oct 2026 08:45:00 +0000</pubDate>
+      <category>Starlink</category>
+      <description>In January easyJet’s CEO said Starlink’s economics weren’t working. On 26 Oct it said Starlink goes on 277 A320-family jets from 2027. What changed, and the Apollo link.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/easyjet-a320neo-g-uzhm.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3</title>
       <link>https://superchargeddaily.com/dispatch/verizon-vs-musk-starlink-mobile.html</link>
@@ -717,15 +726,6 @@
       <category>SpaceX</category>
       <description>Stargaze, a silent burn, and the miss that almost was not a miss.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/stargaze-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Dragon Freedom, 237 days</title>
-      <link>https://superchargeddaily.com/dispatch/dragon-freedom.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/dragon-freedom.html</guid>
-      <pubDate>Wed, 07 Oct 2026 22:38:21 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>Four astronauts, two extra months, 262 miles over Cuba.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/dragon-freedom-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>
