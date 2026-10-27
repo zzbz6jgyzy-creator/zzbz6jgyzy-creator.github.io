@@ -41,6 +41,9 @@ class Clip(unittest.TestCase):
         self.assertEqual(seo_lib.headline_title(quoted, 60), quoted)
         no_clause = "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am"
         self.assertEqual(seo_lib.headline_title(no_clause, 60), no_clause)
+        preview = "Roadster day preview: Musk promised a “BANGER”"
+        self.assertEqual(seo_lib.headline_title(preview, 60), preview + " | Supercharged Daily")
+        self.assertEqual(seo_lib.social_headline(preview, 110), preview)
         long = "word " * 40
         self.assertTrue(seo_lib.social_headline(long, 110).endswith("…"))
         self.assertLessEqual(len(seo_lib.social_headline(long, 110)), 110)

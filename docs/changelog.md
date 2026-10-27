@@ -1,5 +1,10 @@
 # Changelog
 
+## 27 Oct 2026 — Live leftover titles and launch Record line
+
+- Roadster story-list titles now match the renamed previews (`Roadster day preview: Musk promised a “BANGER”`, `Roadster reveal set for 15 Oct (preview)`). The banger `<title>` keeps ` | Supercharged Daily`; og/twitter stay unsuffixed.
+- A stale Launch Library 2 “In Flight” label becomes Success once NET has passed, so flown launches no longer show `Editorial calendar · Launch in Flight` on the Record line.
+
 ## 27 Oct 2026 — Date and freshness fixes
 
 - Tesla 2026 Annual Meeting (3 Dec, 3pm CT / 21:00 Irish) is now on the calendar, TSLA page and homepage major-event countdown, with the 6 Nov in-person drawing deadline. Sources: SEC annual report and votetesla.com.

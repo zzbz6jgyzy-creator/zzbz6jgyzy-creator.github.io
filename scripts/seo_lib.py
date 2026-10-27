@@ -138,6 +138,10 @@ def headline_title(headline: str, limit: int = 60) -> str:
     cut = clause_cut(headline, room)
     if cut:
         return cut + SUFFIX
+    # Headlines that miss a clause in the ~60-char room still get the brand
+    # when the full title + suffix stays inside the 70-char overflow band.
+    if len(headline) + len(SUFFIX) <= 70:
+        return headline + SUFFIX
     return clause_cut(headline, 70) or headline
 
 
