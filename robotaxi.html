@@ -7,13 +7,13 @@
     <title>Robotaxi Boss — Supercharged Daily</title>
     <meta
       name="description"
-      content="Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from Alex R."
+      content="Build a seven-day fleet business. Read demand, choose fares, invest in upgrades and keep the city moving."
     />
     <link rel="canonical" href="https://superchargeddaily.com/robotaxi.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="Robotaxi Boss — Supercharged Daily" />
-    <meta property="og:description" content="Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from Alex R." />
+    <meta property="og:description" content="Build a seven-day fleet business. Read demand, choose fares, invest in upgrades and keep the city moving." />
     <meta property="og:url" content="https://superchargeddaily.com/robotaxi.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/robotaxi/cybercab-real-og.jpg" />
     <meta property="og:image:alt" content="Tesla Cybercab on display in a Tesla showroom with its butterfly door raised" />
@@ -23,7 +23,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Robotaxi Boss — Supercharged Daily" />
-    <meta name="twitter:description" content="Run a fleet of robotaxis for one week: deploy, charge, buy more cabs. A fan-made Tesla game from Alex R." />
+    <meta name="twitter:description" content="Build a seven-day fleet business. Read demand, choose fares, invest in upgrades and keep the city moving." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/robotaxi/cybercab-real-og.jpg" />
     <meta name="twitter:image:alt" content="Tesla Cybercab on display in a Tesla showroom with its butterfly door raised" />
 
@@ -49,8 +49,9 @@
     <link rel="stylesheet" href="/members.css?v=20261022" />
     <script type="module" src="/members.js?v=20261022"></script>
     <!--/sd:members-->
+    <link rel="stylesheet" href="/arcade.css?v=20261027"/>
   </head>
-  <body>
+  <body data-arcade-page>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <div class="pn-wrap">
@@ -225,28 +226,10 @@
       </aside>
       <div class="pn-spacer" aria-hidden="true"></div>
 
-      <main id="main" class="taxi-page" data-taxi>
-        <section class="taxi-intro">
-          <p class="eyebrow"><a href="/games.html">Games</a> · Robotaxi Boss</p>
-          <div class="taxi-intro-row">
-            <div>
-              <h1>Robotaxi Boss</h1>
-              <p>
-                Five gold Cybercabs. One city. Seven days. Send them, charge them,
-                buy more when the cash is real. Rain, rush hour, a concert, and
-                the odd breakdown do the rest.
-              </p>
-            </div>
-            <div class="taxi-intro-side">
-              <p class="taxi-best" data-taxi-best>Best 0</p>
-              <button type="button" class="button button-primary" data-taxi-hero-play>Play</button>
-            </div>
-          </div>
-        </section>
-
-        <div class="taxi-play">
-          <div class="taxi-stage-wrap">
-            <div class="taxi-stage">
+      <main id="main" class="ac-page taxi-page" data-arcade="robotaxi" data-taxi>
+ <header class="ac-game-intro"><a class="ac-back" href="/games.html">← All games</a><div><p class="ac-kicker">City operations / Arcade edition 02</p><h1>Robotaxi Boss<span>Small fleet. Big decisions.</span></h1><p>Build a seven-day fleet business. Read demand, choose fares, invest in upgrades and keep the city moving.</p></div></header>
+ <div class="ac-modebar"><label>Choose your mission<select data-ac-mode><option value="training">Training / Learn the city</option><option value="campaign">Seven-day campaign</option><option value="daily">Daily challenge</option></select></label><div><strong data-ac-day>Choose a mode to begin.</strong><span data-ac-save>Progress stays on this browser.</span></div><button type="button" data-ac-help>How to play ↗</button></div>
+ <div class="ac-workspace"><div class="ac-playframe"><div class="ac-play-head"><span class="ac-live-label">City operations</span><div><button type="button" data-ac-restart>Restart</button><button type="button" data-ac-sound>Sound off</button><button type="button" data-ac-focus aria-pressed="false">Focus view</button></div></div><div class="taxi-stage">
               <div class="taxi-hud" data-taxi-hud>
                 <span data-hud-day>Day 1 · Mon</span>
                 <span data-hud-cash>$4,800</span>
@@ -256,16 +239,16 @@
               <ol class="taxi-week" data-taxi-week aria-label="Week"></ol>
               <p class="taxi-forecast" data-taxi-forecast>Open the garage to start the week.</p>
 
-              <div class="taxi-map" data-taxi-map role="list"></div>
+              <nav class="ac-taxi-nav" aria-label="City operations sections"><a href="#taxi-city">City</a><a href="#taxi-fleet">Fleet</a><a href="#taxi-upgrades">Upgrades</a><a href="#taxi-income">Income</a></nav><div data-taxi-city id="taxi-city" class="ac-city"></div><div class="ac-taxi-policy"><label>Fare strategy<select data-taxi-pricing><option value="balanced">Balanced fares</option><option value="value">Value · more demand, lower fares</option><option value="premium">Premium · fewer rides, higher fares</option></select></label><p data-taxi-contract></p></div><h2 class="visually-hidden">City deployment</h2><div class="taxi-map" data-taxi-map role="list"></div>
 
               <div class="taxi-fleet-head">
                 <p class="eyebrow">Fleet</p>
                 <p data-taxi-idle>5 idle</p>
               </div>
-              <div class="taxi-fleet" data-taxi-fleet></div>
+              <div class="taxi-fleet" id="taxi-fleet" data-taxi-fleet></div>
 
-              <div class="taxi-actions" data-taxi-actions></div>
-              <ol class="taxi-log" data-taxi-log aria-live="polite"></ol>
+              <section class="ac-upgrades" id="taxi-upgrades"><h2>Build your advantage</h2><div data-taxi-upgrades></div></section><div data-taxi-planner class="ac-planner"></div><div class="taxi-actions" data-taxi-actions></div>
+              <div data-taxi-chart id="taxi-income" class="ac-chart"></div><ol class="taxi-log" data-taxi-log aria-live="polite"></ol>
 
               <div class="taxi-overlay" data-taxi-overlay>
                 <img class="taxi-overlay-cab" src="/assets/robotaxi/cybercab-real-side.webp" width="1280" height="720" alt="Tesla Cybercab, side view with its butterfly door raised" />
@@ -277,51 +260,15 @@
                 </p>
                 <p class="taxi-overlay-actions">
                   <button type="button" class="button button-primary" data-taxi-play>Play</button>
-                  <a class="button button-ghost" data-taxi-share hidden href="#" target="_blank" rel="noopener noreferrer">Share on X</a>
+                  <button type="button" class="button button-ghost" data-taxi-report hidden>Review the week</button><a class="button button-ghost" data-taxi-share hidden href="#" target="_blank" rel="noopener noreferrer">Share on X</a>
                 </p>
                 <p class="taxi-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Tesla_Cybercab_at_Santana_Row_side_view_dllu.jpg" rel="noopener" target="_blank">Dllu</a>, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener" target="_blank">CC BY-SA 4.0</a></p>
               </div>
-            </div>
-          </div>
-
-          <aside class="taxi-board" aria-label="Robotaxi leaderboard">
-            <div class="taxi-board-head">
-              <div>
-                <p class="eyebrow">Board</p>
-                <p class="game-board-status" data-board-status="robotaxi">World · connecting</p>
-              </div>
-              <button type="button" class="taxi-mute" data-taxi-mute>Sound on</button>
-            </div>
-            <label class="taxi-callsign">
-              <span>Callsign</span>
-              <input
-                id="taxi-callsign"
-                name="callsign"
-                type="text"
-                inputmode="text"
-                enterkeyhint="done"
-                autocapitalize="characters"
-                autocorrect="off"
-                data-taxi-name
-                maxlength="12"
-                spellcheck="false"
-                autocomplete="off"
-                value="Boss"
-              />
-            </label>
-            <p class="taxi-board-now" data-board-now>This week · on the pad</p>
-            <ol class="taxi-board-list" data-board-list></ol>
-            <p class="taxi-board-note">
-              World board. Locked weeks from every pad. Score is cash, fleet,
-              rides and reputation. Share the number on X.
-            </p>
-          </aside>
-        </div>
-        <p class="taxi-fineprint">
-          Fan-made. Not affiliated with Tesla. Not a simulator, not a market, not advice.
-        </p>
-        <!--nl:start--><section class="sd-band sd-band-compact" id="newsletter" data-newsletter="tracker" data-band-topic="tesla-software" aria-label="Newsletter signup"><div><h2>Get the weekly tracker digest</h2><p>Robotaxi cities, Cybercab and Tesla software — one free Sunday email.</p></div><div><form class="sd-form" data-newsletter-form><label class="visually-hidden" for="sd-nl-email">Email address</label><input id="sd-nl-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="sd-nl-email-status" /><input type="text" name="website" hidden tabindex="-1" autocomplete="off" aria-hidden="true" /><button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-musk-s-big-earnings-week?utm_source=website&amp;utm_medium=site-tracker&amp;utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status id="sd-nl-email-status" role="status" aria-live="polite"></p></div></section><!--nl:end-->
-      </main>
+            </div><p class="ac-status" role="status" aria-live="polite" data-ac-status>Ready when you are. Sound starts muted.</p></div>
+ <aside class="ac-rail" aria-label="Your mission progress"><p class="ac-kicker">Your personal best</p><strong class="ac-personal" data-ac-best>Your first run awaits</strong><p>Separate records for training, campaign and each daily challenge.</p><h2>The long game</h2><ol class="ac-missions" data-ac-missions aria-label="Mission progress"></ol><p>Seven days. A growing fleet. Contracts, capacity and charging all count. Your week saves between turns.</p><section class="ac-debrief" data-ac-debrief hidden><span data-ac-medal>Flight notes</span><h3>Mission debrief</h3><p></p></section><button type="button" class="ac-share" data-ac-share>Share this challenge ↗</button><p class="ac-small">New edition, fresh records. Previous world-board scores are kept separately on the games hub.</p></aside></div>
+ <details class="ac-manual" data-ac-manual><summary>Mission manual <span>Controls, tactics & scoring</span></summary><div class="ac-manual-grid"><article><span>01</span><h3>Read the city</h3><p>Each zone shows demand, fare and assigned cabs. Select cabs, then choose a zone, or use its + button to send the next idle cab.</p></article><article><span>02</span><h3>Make the trade-off</h3><p>Fares change demand. Contracts pay a bonus for service in one zone. Upgrades improve capacity, charging costs or reliability.</p></article><article><span>03</span><h3>Plan the night</h3><p>After each day, choose which cabs to charge. Overnight power is cheaper than a fast charge. Your planning and night phases save automatically.</p></article></div><p class="ac-key-guide">Select fleet vehicles, then a zone · 1–4: assign to zones · No planning timer. All controls also work by touch. Scores and progress are saved on this device.</p></details>
+ <p class="ac-small">Fan-made arcade fiction. Flight timings, vehicle economics and physics are game rules, not real-world performance or engineering guidance. Independent of Tesla and SpaceX.</p><noscript><p class="ac-status">These interactive games need JavaScript. Your browser can still open the <a href="/games.html">games guide</a> and <a href="/explainers.html">explainers</a>.</p></noscript>
+ <!--nl:start--><section class="sd-band sd-band-compact" id="newsletter" data-newsletter="tracker" data-band-topic="tesla-software" aria-label="Newsletter signup"><div><h2>Get the weekly tracker digest</h2><p>Robotaxi cities, Cybercab and Tesla software — one free Sunday email.</p></div><div><form class="sd-form" data-newsletter-form><label class="visually-hidden" for="sd-nl-email">Email address</label><input id="sd-nl-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="sd-nl-email-status" /><input type="text" name="website" hidden tabindex="-1" autocomplete="off" aria-hidden="true" /><button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-musk-s-big-earnings-week?utm_source=website&amp;utm_medium=site-tracker&amp;utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status id="sd-nl-email-status" role="status" aria-live="polite"></p></div></section><!--nl:end--></main>
 
       <footer class="site-footer">
         <a class="footer-lockup" href="/"><img src="/assets/brand/lockup-1b-trim.svg" alt="Supercharged Daily" width="220" height="45" /></a>
@@ -359,8 +306,9 @@
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <!--sd:bundles-->
-    <script defer src="/assets/js/core.bundle.b97bc462b0.js" data-band></script>
-    <script defer src="/assets/js/robotaxi.bundle.98035cbd69.js"></script>
+    <script defer src="/assets/js/arcade-core.bundle.57adf1df8f.js"></script>
+    <script defer src="/assets/js/robotaxi.bundle.8ab1dac05c.js"></script>
     <!--/sd:bundles-->
   </body>
 </html>
+

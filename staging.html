@@ -7,13 +7,13 @@
     <title>Hot Staging — Supercharged Daily</title>
     <meta
       name="description"
-      content="Hot Staging: keep the Starship stack pointed, then light Ship inside Super Heavy’s fire. A fan-made SpaceX game from Alex R."
+      content="Balance the climb, read the staging window and light the ship at the perfect moment."
     />
     <link rel="canonical" href="https://superchargeddaily.com/staging.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Supercharged Daily" />
     <meta property="og:title" content="Hot Staging — Supercharged Daily" />
-    <meta property="og:description" content="Keep the stack pointed. When the ring lights, stage. Fan-made SpaceX game from Alex R." />
+    <meta property="og:description" content="Balance the climb, read the staging window and light the ship at the perfect moment." />
     <meta property="og:url" content="https://superchargeddaily.com/staging.html" />
     <meta property="og:image" content="https://superchargeddaily.com/assets/staging-poster.jpg" />
     <meta property="og:image:alt" content="Starship hot staging: Ship lighting in Super Heavy’s exhaust" />
@@ -23,7 +23,7 @@
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="Hot Staging — Supercharged Daily" />
-    <meta name="twitter:description" content="Keep the stack pointed. When the ring lights, stage." />
+    <meta name="twitter:description" content="Balance the climb, read the staging window and light the ship at the perfect moment." />
     <meta name="twitter:image" content="https://superchargeddaily.com/assets/staging-poster.jpg" />
     <meta name="twitter:image:alt" content="Starship hot staging: Ship lighting in Super Heavy’s exhaust" />
 
@@ -48,8 +48,10 @@
     <link rel="stylesheet" href="/members.css?v=20261022" />
     <script type="module" src="/members.js?v=20261022"></script>
     <!--/sd:members-->
+    <link rel="stylesheet" href="/arcade.css?v=20261027"/>
+    <link rel="stylesheet" href="/grow.css?v=202610210800"/>
   </head>
-  <body>
+  <body data-arcade-page>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <div class="pn-wrap">
@@ -224,26 +226,11 @@
       </aside>
       <div class="pn-spacer" aria-hidden="true"></div>
 
-      <main id="main" class="staging-page">
-        <section class="staging-intro">
-          <p class="eyebrow"><a href="/games.html">Games</a> · Hot Staging</p>
-          <div class="staging-intro-row">
-            <div>
-              <h1>Hot Staging</h1>
-              <p>
-                Count, keep Super Heavy pointed through the climb, then Stage
-                when the clock hits — Ship’s Raptors fire inside the booster’s
-                exhaust.
-              </p>
-            </div>
-            <p class="staging-best" data-staging-best>Best 0</p>
-          </div>
-        </section>
-
-        <div class="staging-play">
-          <div class="staging-stage-wrap">
-            <div class="staging-stage" data-staging-stage>
-              <canvas data-staging-canvas aria-label="Starship hot staging game"></canvas>
+      <main id="main" class="ac-page staging-page" data-arcade="staging">
+ <header class="ac-game-intro"><a class="ac-back" href="/games.html">← All games</a><div><p class="ac-kicker">Launch control / Arcade edition 02</p><h1>Hot Staging<span>One stack. One ignition window.</span></h1><p>Balance the climb, read the staging window and light the ship at the perfect moment.</p></div></header>
+ <div class="ac-modebar"><label>Choose your mission<select data-ac-mode><option value="training">Flight school / Training</option><option value="campaign">Mission campaign</option><option value="daily">Daily challenge</option></select></label><div><strong data-ac-day>Choose a mode to begin.</strong><span data-ac-save>Progress stays on this browser.</span></div><button type="button" data-ac-help>How to play ↗</button></div>
+ <div class="ac-workspace"><div class="ac-playframe"><div class="ac-play-head"><span class="ac-live-label">Launch control</span><div><button type="button" data-ac-pause>Pause</button><button type="button" data-ac-restart>Restart</button><button type="button" data-ac-sound>Sound off</button><button type="button" data-ac-focus aria-pressed="false">Focus view</button></div></div><div class="staging-stage" data-staging-stage>
+              <canvas data-staging-canvas tabindex="0" aria-label="Hot staging game. Left and right steer. Space stages. Open the mission manual for tactics."></canvas>
               <div class="staging-hud" data-staging-hud hidden>
                 <span data-hud-flight>Flight 7</span>
                 <span data-hud-clock>T+ 0.0</span>
@@ -266,62 +253,15 @@
                   <button type="button" class="button button-primary" data-staging-play>Play</button>
                 </p>
               </div>
-            </div>
-
-            <div class="staging-pad" data-staging-pad>
+            </div><div class="staging-pad" data-staging-pad>
               <button type="button" data-hold="left" aria-label="Gimbal left">◀</button>
               <button type="button" class="staging-stage-btn" data-hold="stage" aria-label="Stage">Stage</button>
               <button type="button" data-hold="right" aria-label="Gimbal right">▶</button>
-            </div>
-
-            <p class="staging-keys">
-              <kbd>A</kbd><kbd>D</kbd> gimbal
-              ·
-              <kbd>Space</kbd> stage
-              ·
-              <kbd>P</kbd> pause
-              ·
-              <kbd>M</kbd> mute
-            </p>
-          </div>
-
-          <aside class="staging-board" aria-label="Hot Staging leaderboard">
-            <div class="staging-board-head">
-              <div>
-                <p class="eyebrow">Board</p>
-                <p class="game-board-status" data-board-status="staging">World · connecting</p>
-              </div>
-              <button type="button" class="staging-mute" data-staging-mute>Sound on</button>
-            </div>
-            <label class="staging-callsign">
-              <span>Callsign</span>
-              <input
-                id="staging-callsign"
-                name="callsign"
-                type="text"
-                inputmode="text"
-                enterkeyhint="done"
-                autocapitalize="characters"
-                autocorrect="off"
-                data-staging-name
-                maxlength="12"
-                spellcheck="false"
-                autocomplete="off"
-                value="Pilot"
-              />
-            </label>
-            <p class="staging-board-now" data-board-now>This run · on the pad</p>
-            <ol class="staging-board-list" data-board-list></ol>
-            <p class="staging-board-note">
-              World board. Locked runs from every pad. A clean staging locks
-              the flight. A walk, an early light, or a late punch ends the run.
-            </p>
-          </aside>
-        </div>
-        <p class="staging-fineprint">
-          Fan-made. Not affiliated with SpaceX. Nothing here is a simulator.
-        </p>
-      </main>
+            </div><div class="ac-instruments"><div><span>Ignition window</span><strong data-ac-primary>—</strong></div><div><span>Stack attitude</span><strong data-ac-secondary>—</strong></div><div><span>Mission state</span><strong data-ac-state>Ready</strong></div></div><p class="ac-guidance" data-ac-guidance>One stack. One ignition window.</p><p class="ac-status" role="status" aria-live="polite" data-ac-status>Ready when you are. Sound starts muted.</p></div>
+ <aside class="ac-rail" aria-label="Your mission progress"><p class="ac-kicker">Your personal best</p><strong class="ac-personal" data-ac-best>Your first run awaits</strong><p>Separate records for training, campaign and each daily challenge.</p><h2>Mission route</h2><ol class="ac-missions" data-ac-missions aria-label="Mission progress"></ol><p>Campaign checkpoints let you retry your current mission. Daily runs are three missions with one life.</p><section class="ac-debrief" data-ac-debrief hidden><span data-ac-medal>Flight notes</span><h3>Mission debrief</h3><p></p></section><button type="button" class="ac-share" data-ac-demo>Watch training demo</button><button type="button" class="ac-share" data-ac-share>Share this challenge ↗</button><p class="ac-small">New edition, fresh records. Previous world-board scores are kept separately on the games hub.</p></aside></div>
+ <details class="ac-manual" data-ac-manual><summary>Mission manual <span>Controls, tactics & scoring</span></summary><div class="ac-manual-grid"><article><span>01</span><h3>Keep it upright</h3><p>Tap left or right to counter drift. The attitude instrument shows how close you are to the allowable tilt.</p></article><article><span>02</span><h3>Read the window</h3><p>The countdown is the time remaining to the ignition window. When it opens, the Stage button and cue illuminate.</p></article><article><span>03</span><h3>Light the ship</h3><p>Press Stage, or Space, while the window is open. The best scores come from the centre of the window with a level stack.</p></article></div><p class="ac-key-guide">A / D or arrow keys: steer · Space: stage · P: pause · M: sound. All controls also work by touch. Scores and progress are saved on this device.</p></details>
+ <p class="ac-small">Fan-made arcade fiction. Flight timings, vehicle economics and physics are game rules, not real-world performance or engineering guidance. Independent of Tesla and SpaceX.</p><noscript><p class="ac-status">These interactive games need JavaScript. Your browser can still open the <a href="/games.html">games guide</a> and <a href="/explainers.html">explainers</a>.</p></noscript>
+ <section class="sd-band sd-band-compact" id="newsletter" data-newsletter="band" data-band-topic="website" data-newsletter-placement="arcade-footer" aria-label="Free Sunday newsletter"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories. Free, every Sunday.</p></div><div><form class="sd-form" data-newsletter-form><label class="visually-hidden" for="ac-nl-email">Email address</label><input id="ac-nl-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="ac-nl-status"/><input type="text" name="website" hidden tabindex="-1" autocomplete="off" aria-hidden="true"/><button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/" target="_blank" rel="noopener">Read the latest issue →</a></p><p id="ac-nl-status" class="newsletter-status" data-newsletter-status role="status" aria-live="polite"></p></div></section></main>
 
       <footer class="site-footer">
         <a class="footer-lockup" href="/"><img src="/assets/brand/lockup-1b-trim.svg" alt="Supercharged Daily" width="220" height="45" /></a>
@@ -358,8 +298,9 @@
     </div>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <!--sd:bundles-->
-    <script defer src="/assets/js/core.bundle.b97bc462b0.js"></script>
-    <script defer src="/assets/js/staging.bundle.b1d937f7f2.js"></script>
+    <script defer src="/assets/js/arcade-core.bundle.57adf1df8f.js"></script>
+    <script defer src="/assets/js/staging.bundle.4039234ecf.js"></script>
     <!--/sd:bundles-->
   </body>
 </html>
+

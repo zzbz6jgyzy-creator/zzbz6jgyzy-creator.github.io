@@ -55,8 +55,10 @@
     <link rel="stylesheet" href="/members.css?v=20261022" />
     <script type="module" src="/members.js?v=20261022"></script>
     <!--/sd:members-->
+    <link rel="stylesheet" href="/arcade.css?v=20261027"/>
+    <link rel="stylesheet" href="/grow.css?v=202610210800"/>
   </head>
-  <body>
+  <body data-arcade-page>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <div class="pn-wrap">
@@ -231,71 +233,11 @@
       </aside>
       <div class="pn-spacer" aria-hidden="true"></div>
 
-      <main id="main" class="ps-page ps-games">
-        <header class="ps-hero"><div><p class="ps-kicker">THE SUPERCHARGED ARCADE</p><h1>Small games.<br>Big missions.</h1><p class="ps-lede">Stage a rocket. Catch a ship. Run a robotaxi fleet. Three fan-made challenges, built for a different kind of break.</p><a class="ps-btn" href="#titles-heading">Choose your mission ↗</a></div><aside class="ps-edition"><span>SUPERCHARGED DAILY</span><h2>Play. Learn. Try again.</h2><p>These are games, not engineering simulators. Explore the real principles in our illustrated explainers.</p><a href="/explainers.html">Go behind the game →</a></aside></header>
-
-        <section class="section" aria-labelledby="titles-heading">
-          <div class="section-head">
-            <h2 id="titles-heading" class="reveal">Titles</h2>
-            <p class="reveal delay-1">Hot Staging, Catch, and Robotaxi Boss.</p>
-          </div>
-          <div class="desks">
-            <a class="desk desk-staging reveal delay-1" href="/staging.html"><svg class="ps-game-art" viewBox="0 0 400 300" role="img" aria-label="Illustration for staging"><g fill="none" stroke="#b4d7e9" stroke-width="2" stroke-linejoin="round"><circle cx="200" cy="150" r="115" opacity=".12"/><circle cx="200" cy="150" r="85" opacity=".1"/><path d="M182 218V92L200 58 218 92V218ZM180 162H220M185 173H215"/><path d="M189 226L200 273 211 226M188 145L168 188M212 145L232 188" stroke="#ff506d"/></g><text x="24" y="280" fill="#9db7c9" font-family="monospace" font-size="9" letter-spacing="2">SUPERCHARGED / PLAY LAB</text></svg>
-              <p class="eyebrow">SpaceX · Hot Staging</p>
-              <h3>Hot Staging</h3>
-              <p>
-                Keep the stack pointed. When the ring lights, stage — Ship’s
-                Raptors fire inside Super Heavy’s exhaust.
-              </p>
-            <span class="ps-play">Enter the game <span>↗</span></span></a>
-            <a class="desk desk-catch reveal delay-2" href="/catch.html"><svg class="ps-game-art" viewBox="0 0 400 300" role="img" aria-label="Illustration for catch"><g fill="none" stroke="#b4d7e9" stroke-width="2" stroke-linejoin="round"><circle cx="200" cy="150" r="115" opacity=".12"/><circle cx="200" cy="150" r="85" opacity=".1"/><path d="M260 255V60H275V255M235 105H292M220 135H287M255 160H300M255 185H300M255 210H300M255 235H300M164 155V65L179 35 194 65V155ZM146 134H167M190 134H228"/><path d="M168 165L179 200 190 165" stroke="#ff506d"/></g><text x="24" y="280" fill="#9db7c9" font-family="monospace" font-size="9" letter-spacing="2">SUPERCHARGED / PLAY LAB</text></svg>
-              <p class="eyebrow">SpaceX · Catch</p>
-              <h3>Catch</h3>
-              <p>
-                Fly Starship into the chopsticks. Upright, slow, pins on the arms.
-              </p>
-            <span class="ps-play">Enter the game <span>↗</span></span></a>
-            <a class="desk desk-robotaxi reveal delay-3" href="/robotaxi.html"><svg class="ps-game-art" viewBox="0 0 400 300" role="img" aria-label="Illustration for robotaxi"><g fill="none" stroke="#b4d7e9" stroke-width="2" stroke-linejoin="round"><circle cx="200" cy="150" r="115" opacity=".12"/><circle cx="200" cy="150" r="85" opacity=".1"/><path d="M50 260L150 60M200 275L300 75M70 120L345 210M30 195L305 285" opacity=".3"/><g transform="translate(165 135)"><path d="M-48 29L-30-6H20L49 29V51H-48ZM-30-6L-17-28H12L20-6M-35 52V62H-20V52M25 52V62H40V52" fill="#e9b548" fill-opacity=".2" stroke="#e9b548"/><path d="M-36 28H35" stroke="#ff506d"/></g></g><text x="24" y="280" fill="#9db7c9" font-family="monospace" font-size="9" letter-spacing="2">SUPERCHARGED / PLAY LAB</text></svg>
-              <p class="eyebrow">Tesla · 5–10 min</p>
-              <h3>Robotaxi Boss</h3>
-              <p>
-                Five gold Cybercabs, one city, seven days. Deploy, charge overnight
-                or fast-charge, buy more when you can.
-              </p>
-            <span class="ps-play">Enter the game <span>↗</span></span></a>
-          </div>
-        </section>
-
-        <section class="section" aria-labelledby="world-board-heading">
-          <div class="section-head">
-            <h2 id="world-board-heading" class="reveal">World board</h2>
-            <p class="reveal delay-1">
-              Locked runs from every pad. Live while the API is up; this pad
-              keeps a copy if the line drops.
-            </p>
-          </div>
-          <div class="world-boards">
-            <article class="world-board reveal delay-1">
-              <p class="eyebrow">SpaceX · Hot Staging</p>
-              <h3><a href="/staging.html">Hot Staging</a></h3>
-              <p class="game-board-status" data-board-status="staging">World · connecting</p>
-              <ol data-world-board="staging"></ol>
-            </article>
-            <article class="world-board reveal delay-2">
-              <p class="eyebrow">SpaceX · Catch</p>
-              <h3><a href="/catch.html">Catch</a></h3>
-              <p class="game-board-status" data-board-status="catch">World · connecting</p>
-              <ol data-world-board="catch"></ol>
-            </article>
-            <article class="world-board reveal delay-3">
-              <p class="eyebrow">Tesla · Robotaxi Boss</p>
-              <h3><a href="/robotaxi.html">Robotaxi Boss</a></h3>
-              <p class="game-board-status" data-board-status="robotaxi">World · connecting</p>
-              <ol data-world-board="robotaxi"></ol>
-            </article>
-          </div>
-        </section>
-      </main>
+      <main id="main" class="ac-page ac-hub" data-arcade-hub><header class="ac-hub-hero"><div><p class="ac-kicker">Supercharged Daily / The arcade</p><h1>One more<br><em>try.</em></h1><p class="ac-lead">Big missions. Small margins. Three original games built for the thrill of getting it just right.</p><div class="ac-hero-actions"><a class="ac-primary" href="#play">Find your game ↓</a><a href="/staging.html?mode=training">Start with flight school ↗</a></div><a class="ac-continue" data-continue href="/games.html" hidden>Return to your game →</a><div class="ac-hub-facts"><span><b>03</b> original games</span><span><b>Daily</b> fresh challenges</span><span><b>Free</b> no account needed</span></div></div><a class="ac-feature-art" href="/staging.html" aria-label="Play Hot Staging"><img src="/assets/arcade/staging.svg" alt="Starship separating above Earth with a bright engine plume" width="800" height="500" fetchpriority="high"/><div><span>Featured mission / Hot Staging</span><strong>Light the ship.</strong><span>Take the controls ↗</span></div></a></header>
+<section class="ac-daily-section" aria-labelledby="ac-daily-heading"><div class="ac-section-head"><div><p class="ac-kicker">A reason to return</p><h2 id="ac-daily-heading">Today’s mission board.</h2></div><p data-daily-date>Daily challenges use UTC.</p></div><p class="ac-section-copy">Same starting conditions for everyone. Retry, improve, and send a dated challenge link to a friend. Personal scores stay on your device.</p><div class="ac-daily-grid"><a href="/staging.html?mode=daily" data-daily="staging"><p>Flight / Timing</p><h3>Hot Staging</h3><span>Play today’s challenge →</span></a><a href="/catch.html?mode=daily" data-daily="catch"><p>Flight / Precision</p><h3>Catch</h3><span>Play today’s challenge →</span></a><a href="/robotaxi.html?mode=daily" data-daily="robotaxi"><p>Strategy / Fleet management</p><h3>Robotaxi Boss</h3><span>Play today’s challenge →</span></a></div></section>
+<section id="play" aria-labelledby="ac-play-heading"><div class="ac-section-head"><div><p class="ac-kicker">Choose your obsession</p><h2 id="ac-play-heading">Take the controls.</h2></div><div class="ac-filters" role="group" aria-label="Game type"><button type="button" data-game-filter="all" aria-pressed="true">All games</button><button type="button" data-game-filter="flight" aria-pressed="false">Flight</button><button type="button" data-game-filter="strategy" aria-pressed="false">Strategy</button></div></div><div class="ac-game-grid"><article class="ac-game-card ac-card-staging" data-game-kind="flight"><a class="ac-art-link" href="/staging.html" tabindex="-1" aria-hidden="true"><img src="/assets/arcade/staging.svg" alt="" width="800" height="500" loading="lazy"/></a><div class="ac-card-copy"><p class="ac-kicker">01 / Flight / Timing</p><h2><a href="/staging.html">Hot Staging</a></h2><p>A whole launch comes down to one moment. Balance the climb and hit the ignition window.</p><p class="ac-personal-line" data-personal="staging">Your first mission starts here</p><a class="ac-primary" href="/staging.html">Play Hot Staging <span>↗</span></a></div></article><article class="ac-game-card ac-card-catch" data-game-kind="flight"><a class="ac-art-link" href="/catch.html" tabindex="-1" aria-hidden="true"><img src="/assets/arcade/catch.svg" alt="" width="800" height="500" loading="lazy"/></a><div class="ac-card-copy"><p class="ac-kicker">02 / Flight / Precision</p><h2><a href="/catch.html">Catch</a></h2><p>Bring Starship home. Read your instruments, control the drift and settle onto the arms.</p><p class="ac-personal-line" data-personal="catch">Your first mission starts here</p><a class="ac-primary" href="/catch.html">Play Catch <span>↗</span></a></div></article><article class="ac-game-card ac-card-robotaxi" data-game-kind="strategy"><a class="ac-art-link" href="/robotaxi.html" tabindex="-1" aria-hidden="true"><img src="/assets/arcade/robotaxi.svg" alt="" width="800" height="500" loading="lazy"/></a><div class="ac-card-copy"><p class="ac-kicker">03 / Strategy / Fleet management</p><h2><a href="/robotaxi.html">Robotaxi Boss</a></h2><p>Your city, your calls. Forecast demand, win contracts and build a smarter fleet.</p><p class="ac-personal-line" data-personal="robotaxi">Your first mission starts here</p><a class="ac-primary" href="/robotaxi.html">Play Robotaxi Boss <span>↗</span></a></div></article></div></section>
+<section class="ac-loop"><p class="ac-kicker">Designed for the next attempt</p><h2>Learn the move.<br>Then make it yours.</h2><div><article><b>01 / Find your feet</b><p>Start in training with forgiving conditions and a visible mission manual.</p></article><article><b>02 / Chase a clean run</b><p>Work through a flight campaign or build a seven-day fleet business. Checkpoints and weeks save on your browser.</p></article><article><b>03 / Come back tomorrow</b><p>Try the daily seed. Collect personal medals, improve your score and share the challenge.</p></article></div></section>
+<details class="ac-legacy"><summary>Previous edition world records <span>Preserved separately</span></summary><p>These are player-submitted scores from the original rules. New-edition personal records and daily challenges use different scoring and are not mixed into this board. This public board does not verify gameplay.</p><div class="ac-legacy-grid"><article class="ac-legacy-board"><h3>Hot Staging</h3><p data-board-status="staging">Previous edition · connecting</p><ol data-world-board="staging"></ol></article><article class="ac-legacy-board"><h3>Catch</h3><p data-board-status="catch">Previous edition · connecting</p><ol data-world-board="catch"></ol></article><article class="ac-legacy-board"><h3>Robotaxi Boss</h3><p data-board-status="robotaxi">Previous edition · connecting</p><ol data-world-board="robotaxi"></ol></article></div></details><p class="ac-small">Fan-made games, independent of Tesla and SpaceX. Scores, progress and saved weeks stay on this browser. Play remains available if storage is blocked; progress then lasts for the visit.</p><section class="sd-band sd-band-compact" id="newsletter" data-newsletter="band" data-band-topic="website" data-newsletter-placement="arcade-footer" aria-label="Free Sunday newsletter"><div><h2>Get Supercharged Daily</h2><p>The week’s Tesla, SpaceX, xAI and X stories. Free, every Sunday.</p></div><div><form class="sd-form" data-newsletter-form><label class="visually-hidden" for="ac-nl-email">Email address</label><input id="ac-nl-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="ac-nl-status"/><input type="text" name="website" hidden tabindex="-1" autocomplete="off" aria-hidden="true"/><button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/" target="_blank" rel="noopener">Read the latest issue →</a></p><p id="ac-nl-status" class="newsletter-status" data-newsletter-status role="status" aria-live="polite"></p></div></section></main>
 
       <footer class="site-footer">
         <a class="footer-lockup" href="/"><img src="/assets/brand/lockup-1b-trim.svg" alt="Supercharged Daily" width="220" height="45" /></a>
@@ -333,8 +275,9 @@
       <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <!--sd:bundles-->
-    <script defer src="/assets/js/core.bundle.b97bc462b0.js" data-band></script>
-    <script defer src="/assets/js/games.bundle.92010b2bbd.js"></script>
+    <script defer src="/assets/js/arcade-core.bundle.57adf1df8f.js"></script>
+    <script defer src="/assets/js/games.bundle.f3fe0c84c4.js"></script>
     <!--/sd:bundles-->
   </body>
 </html>
+
