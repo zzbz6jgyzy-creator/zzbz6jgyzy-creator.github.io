@@ -71,6 +71,7 @@
     let play = null;
     let cashShown = 0;
     let plane = null;
+    let holdHour = null;
 
     /* ---------- geometry ---------- */
     function px(f) {
@@ -505,7 +506,7 @@
     }
 
     /* ---------- day playback ---------- */
-    function playDay(report, { duration = 10000, onDone, onProgress } = {}) {
+    function playDay(report, { duration = 10000, hourFrom = 6, hourTo = 22, onDone, onProgress } = {}) {
       const rnd = prng(hashSeed(`${opts.seed}|day|${report.day}`));
       const events = [];
       const curve = (p) => 0.5 + 0.5 * Math.sin(p * Math.PI * 2 - 1.2) + 0.25 * Math.sin(p * Math.PI * 4);
@@ -532,7 +533,8 @@
       report.breakdowns.forEach((b, i) => events.push({ p: 0.3 + 0.12 * i + rnd() * 0.1, kind: "break", carId: b.carId, zone: b.zone }));
       if (report.bonus) events.push({ p: 0.97, kind: "bonus", amount: report.bonus });
       events.sort((a, b) => a.p - b.p);
-      play = { t: 0, duration, events, i: 0, report, onDone, onProgress, served: {}, cash: report.cashBefore, done: false };
+      play = { t: 0, duration, events, i: 0, report, onDone, onProgress, served: {}, cash: report.cashBefore, done: false, hourFrom, hourTo };
+      holdHour = null;
       cashShown = report.cashBefore;
     }
 
@@ -615,7 +617,8 @@
 
     function hourNow() {
       if (!data) return 7;
-      if (play) return 6 + 16 * clamp(play.t / play.duration, 0, 1);
+      if (play) return play.hourFrom + (play.hourTo - play.hourFrom) * clamp(play.t / play.duration, 0, 1);
+      if (holdHour != null) return holdHour;
       if (data.mode === "night") return 22.5;
       if (data.mode === "deploy") return 7.2;
       return 20.5;
@@ -634,6 +637,7 @@
           play.done = true;
           const done = play.onDone;
           cashShown = play.report.cashAfter;
+          holdHour = play.hourTo;
           play = null;
           if (done) done();
         }
@@ -977,7 +981,7 @@
 
       const ct = data.contract;
       if (ct) {
-        const served = play ? play.served[ct.zone] || 0 : ct.served || 0;
+        const served = (ct.served || 0) + (play ? play.served[ct.zone] || 0 : 0);
         const k = clamp(served / Math.max(1, ct.rides), 0, 1);
         const r = 15 * ui;
         const cx = 8 * ui + r + 4;
@@ -1013,7 +1017,7 @@
     }
 
     resize();
-    return { resize, set, update, draw, playDay, skip, zoneRect, get playing() { return !!play; }, get cashShown() { return cashShown; } };
+    return { resize, set, update, draw, playDay, skip, zoneRect, hold(h) { holdHour = h; }, get playing() { return !!play; }, get cashShown() { return cashShown; } };
   }
 
   window.SDTaxiFX = { create, prng, nodes: NODES };

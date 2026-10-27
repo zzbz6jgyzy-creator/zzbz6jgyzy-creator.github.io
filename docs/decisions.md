@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · Robotaxi Boss: windows, tokens and a real way to lose
+- **Decision:** campaign and daily resolve each day in four windows with a short dispatch pause; interventions cost dispatch tokens; the week can end early on low reputation (under 15) or negative cash. Training stays on the original single-shot day and never fails.
+- **Why:** the old game had no lose state, one dominant strategy and a campaign identical on every replay. Windows give timing decisions (rush hours, concert let-out, airport delay), tokens limit them, contracts and the shop add trade-offs, and weeks escalate.
+- **Tuning:** a scripted bot with no interventions: doing nothing is suspended by day 3, a fixed sensible plan nearly finishes the daily week and completes campaign week 1, and a plan that buys routing, care and ops completes the week. Real play with surge and rebalance should do better than the bot. All numbers (token count, surge effect, permit floor 15, repair costs) are single constants in `robotaxi.js`.
+- **Test safety:** `runDay` stays synchronous under reduced motion (windows resolve in a loop), resume snapshots are unchanged, and week 1 uses the same seed as before.
+
 ## 2026-10-27 · Hot Staging gets Max-Q, gusts and Raptor-outs in campaign and daily only
 - **Decision:** the new mechanics (seeded gust schedule, one mid-flight engine failure from flight 2 / in daily, Max-Q load with a throttle-down control) apply to campaign and daily. Training keeps its exact timings, no wind and no Max-Q. Gusts and the engine event are generated at reset from the seeded rng, after the existing draws, so daily seeds stay fair and the old determinism test still holds.
 - **Why:** the browser tests pin training timings, and the first minute should stay simple. The throttle trade-off (65% steering, 0.6x clock) gives a real decision instead of a button to hold.

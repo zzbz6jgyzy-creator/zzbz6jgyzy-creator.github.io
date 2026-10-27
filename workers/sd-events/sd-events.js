@@ -22,6 +22,7 @@ const EVENTS = [
   "game_fail_early",
   "game_fail_late",
   "game_fail_maxq",
+  "game_fail_bankrupt",
   "game_return_d1",
 ];
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Cache-Control": "no-store" };
