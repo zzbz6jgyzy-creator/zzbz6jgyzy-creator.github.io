@@ -1,6 +1,39 @@
 {
-  "updated": "2026-10-27T08:19:38Z",
+  "updated": "2026-10-27T09:17:22Z",
   "items": [
+    {
+      "id": "972a5124b8d0",
+      "topic": "grok",
+      "title": "Analysis | How to get started using AI agents even if you never imagined it",
+      "source": "The Washington Post",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNcFgxVlFtWFVRU2JQUW9mT1FqWkRvanBIay10ZkxRWjZoOUF0M2Vna2JtMk5rNngyZjU0WG4wMi1rQlhCOHdMT01va1RBYXE3RTBBeXQ0emZfTXo1bnhlMGdhcXB5WUNhNEk3WHNHeEVzMzJ0TFZlTlRBbWhxUE11dlk1bkhVdVctM1BEeUc1OElUQkZoc0FFTGxMbHBHUlpqNG1Obi1QT01YZDh3Mkh5aWtDNk8zZw?oc=5",
+      "published": "2026-10-27T09:06:02Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "3e391f1efafc",
+      "topic": "tesla",
+      "title": "The 2027 Tesla Model Y L: The new 3-row version of the popular EV is tops in tech",
+      "source": "MarketWatch",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNSWdVeFlFWlp2Ym5kTVppclZxdzhpb3h6LXRZMDd1cEgtQXZhZnhzaUdoVS10SUlkV1pfZHlibjd0MHdKUHRma0tiRGNXSHV1d3N3Und6MWc0WVMxa2YybXU4UWdwOGdsWWo5dFk4UmNTR0hMeV9veVptRWQ3U2NEQTdHa1d3aW9mYTNFZ0tsVVozR0ppUTNNUnJiZ3I3VVMxTXpKSW9ET2xNSlpPWFh0eE9GUkVqZW5OeU1XaDdQUjA?oc=5",
+      "published": "2026-10-27T09:01:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "03b6e01751fc",
+      "topic": "grok",
+      "title": "At SpaceX’s earnings announcement on October 20, Elon Musk gave his first official answer to a quest..",
+      "source": "매일경제",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1TZVJNclZ1YUl0alF3T0xiZ1R3NjhsUF9uNl9RYk1ZME5jM0x6TGZPWl81WVJrVlFHNE5ybWtCLVRVMUdxLWNWdWFLcm01QVk?oc=5",
+      "published": "2026-10-27T08:30:07Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
     {
       "id": "f65d66ecced5",
       "topic": "tesla",
@@ -20,9 +53,21 @@
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQcXJqWFp0bHRpbTIwUEN4REpROThtcUZBOHdHZ052VmU3V0pRajZPNTBuQ2UyaGVsUTJiUVhPUE5MT1B6elMtcWltTWd1OFdkMTJ0NGZfTzFNRWNFUExmd2szcTRTaEh1SXk2TjVQT0JYZFBKb1gxYVhIbndWQ0I5bW9tQ0NzWHkzTXc?oc=5",
       "published": "2026-10-27T08:00:33Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.I8MCB70uLr_3dVNKDMrbYw&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.RwdwFJ7xqDBUFGJ6ZWINpQ&pid=News&w=640",
       "kind": "general",
       "score": 4
+    },
+    {
+      "id": "080cbb96e7e2",
+      "topic": "tesla",
+      "title": "Tesla has a Cybercab problem nobody saw coming",
+      "source": "Teslarati",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1lendZcGdwdlRyN21JTjBNT0Z4ajZHaHR5ZGNZR2RZakYwMUtyOXdxLXBua19VQTZfeEc3TUFYeGMzVDlNMmU4Wl9wMkpEcEVWYXg2LXJBdGJoQnhnbV9WQW41eThPblRfQnk5MG0xY3pnY09mRmdObnI5Q1JQdw?oc=5",
+      "published": "2026-10-27T06:49:53Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.Q7UFlML3EOPrw2fCthDh5A&pid=News&w=640",
+      "kind": "milestone",
+      "score": 21
     },
     {
       "id": "3fe045acb6c3",
@@ -48,18 +93,6 @@
       "score": 4
     },
     {
-      "id": "080cbb96e7e2",
-      "topic": "tesla",
-      "title": "Tesla has a Cybercab problem nobody saw coming",
-      "source": "Teslarati",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1lendZcGdwdlRyN21JTjBNT0Z4ajZHaHR5ZGNZR2RZakYwMUtyOXdxLXBua19VQTZfeEc3TUFYeGMzVDlNMmU4Wl9wMkpEcEVWYXg2LXJBdGJoQnhnbV9WQW41eThPblRfQnk5MG0xY3pnY09mRmdObnI5Q1JQdw?oc=5",
-      "published": "2026-10-27T05:09:30Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Q7UFlML3EOPrw2fCthDh5A&pid=News&w=640",
-      "kind": "milestone",
-      "score": 21
-    },
-    {
       "id": "05b7e28669f4",
       "topic": "spacex",
       "title": "Elon Musk Predicts a Wave of Failures Among AI Cloud Companies. Is SpaceX Stock a Sell?",
@@ -67,7 +100,6 @@
       "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOZzhmTG93VUpDM2l1eF8zRW81RFhaX213MENhdDRFU21oTDlGM25HY05RTmw4OWlXMUt1R2dzRml2Q3k3eHp6Y3NhdHQ1OURFRll2SVRNV2VCOUN5cVV1RGdENnZEdnRmMVBrTmtkcVRSWkhZbHc4bXF4X1NCZ2M0andvRTRhd19kUUtpYlFaNDRlYjUyZzB4NXhXcE1abHZyLUhNWTA2eEtNQUU2QUVDcHFSQTdNZDZSTkJCYTBXSHZtbHBIYVVJ?oc=5",
       "published": "2026-10-27T04:39:35Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.IkZG1Ztk5Ffu0WEz84sV8g&pid=News&w=640",
       "kind": "general",
       "score": -2
     },
@@ -79,7 +111,6 @@
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNTXJkVnhiZlJTUlRLeEFDU1lPdE8zNnM3NXZka0dMUHZNWWxvaFhLT05VMUFMNUpzNmx2elV2VnZOdDNoRlBnN2tZMTh5bzQwRUcyYm5IZlQ3UG5WamV1N0hETFJkR2FDZWlJbFVPVkxSdGVSQWJXSXJORC02R2ptX09VZlUzT0liLWxpWU1R?oc=5",
       "published": "2026-10-27T04:39:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Nnn-9zD7SYcCFIEGFb8zlQ&pid=News&w=640",
       "kind": "general",
       "score": -2
     },
@@ -130,6 +161,30 @@
       "score": -2
     },
     {
+      "id": "8f7c3030b3db",
+      "topic": "grok",
+      "title": "3 Conditions to Check Before Subscribing If Grok Isn't Working on X | Don't Pay First",
+      "source": "note",
+      "url": "https://note.com/nya_ko_blog/n/n424a1caa64a0?hl=en",
+      "published": "2026-10-27T02:17:00Z",
+      "snippet": "Where to look first when Grok isn't working on XIf you feel like you can't use Grok on X, it's dangerous to proceed to a subscription first.The cause isn't just \"because you aren't a paid ...",
+      "image": "https://www.bing.com/th?id=ONUT.O0Q27HJfjWus-NYBa_Hf7g&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "273bcb62c376",
+      "topic": "spacex",
+      "title": "SpaceX: Sub-One-Year Compute Payback Changes The Thesis",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/article/4957798-spacex-sub-one-year-compute-payback-changes-the-thesis",
+      "published": "2026-10-27T02:02:00Z",
+      "snippet": "SpaceX ended Q3 with 1.7 GW of compute capacity, while SI revenue reached $7.6 billion and deployments accelerated. Read why SPCX stock is a buy.",
+      "image": "https://www.bing.com/th?id=ONUT.oYOiTSe4C83dbVfX4vd84A&pid=News&w=640",
+      "kind": "general",
+      "score": 0
+    },
+    {
       "id": "b6184e73f30f",
       "topic": "tesla",
       "title": "Tesla Is Investing Aggressively in its Next Generation Technology",
@@ -142,58 +197,12 @@
       "score": -2
     },
     {
-      "id": "83abaee8ec38",
-      "topic": "tesla",
-      "title": "Why Tesla (TSLA) stock is trading up today",
-      "source": "Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOYzZ6RWRKYWpmb2FpdnJRSkpkZ2hPaDBpUFFxWGFtMHpEZHhSWHZZR2NoMTNHMjZRVXdfTmFBLWFzZ1lqVmdaeURnbVpLd0NEMVJCa2xGa2ZWWUhQRllJLVBzN1lmcGlWSVNOd3Y3NDB4bjZ0dXgxX0I3aDNqSEdYRy1Bdk5hOHNvVkc3VmY2cUw5d1lPUFhKcw?oc=5",
-      "published": "2026-10-27T01:34:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.aM_SvFjLVnGUuUj2mcz7SQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "8f7c3030b3db",
-      "topic": "grok",
-      "title": "3 Conditions to Check Before Subscribing If Grok Isn't Working on X | Don't Pay First",
-      "source": "note",
-      "url": "https://note.com/nya_ko_blog/n/n424a1caa64a0?hl=en",
-      "published": "2026-10-27T01:18:00Z",
-      "snippet": "Where to look first when Grok isn't working on XIf you feel like you can't use Grok on X, it's dangerous to proceed to a subscription first.The cause isn't just \"because you aren't a paid ...",
-      "image": "https://www.bing.com/th?id=ONUT.O0Q27HJfjWus-NYBa_Hf7g&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "636b88e4ceb2",
-      "topic": "tesla",
-      "title": "See How Tesla Tore Down The Model S Factory To Build Robots Instead",
-      "source": "InsideEVs",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9xTkhlWGc5ZzJDSG9WR3QwS3RNN3pGSkR3UVlpM0Z5UFFVUGRhWVBBam96UzVkRGtLNE8zM3NJU20wb1QycWIwTXhKVWdpS3hFN1cwUU9pTTNETThtX0VOWWNpRlMwYU43c0xSdVkyVXBYakhhRVFSOUNjOE9SUQ?oc=5",
-      "published": "2026-10-26T22:51:53Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "92ab36a9152d",
       "topic": "grok",
       "title": "Grok Says Its AI-Generated Version of ‘The Odyssey’ Is ‘Not Historically Accurate’",
       "source": "WIRED",
       "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNSE9tQzJpUFg1WGx4RlNNd1JnMnBzaXdiY2Y4U0xTNmgwcGZhRnR2NVcyemp2YmRHTEJ3SDAxVTY5NnJYMjc5WkZ2MEJ5LW1ldzUtM0N4YVA4Z1hQTC1GTTkwTVVHRHd0MzRpVjJCdlAtZnJ5Z1d3VU5iSXZDSGxoUEJqNDh2X2ZBQkRXdjRRSE9xY3ZXajEwNXAtWHBUbzRRR1pkY3RaUlBVNWs?oc=5",
       "published": "2026-10-26T22:40:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "6687099e086c",
-      "topic": "grok",
-      "title": "Traveling Route 66 in the Age of Data Centers",
-      "source": "Home ❧ Current Affairs",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOblZ4Zy13ZzgtcW1sUmtvd2R6Zm16QXhGcXp6NnY5aFRaaWFSeHE2Z3p2NldrOE1qNi0wRmZvZENoWDJ5elVzSTMzVGtHbHZrSHV1TjFVRV9NdU5lcUZtWGJJTXRtelhtZEJVanBFQUdEM3ZLZ1VJQ2loN3Q2enpzS2I4a1ZkUzRfQUl4Y3dwV3pRSV9uanc?oc=5",
-      "published": "2026-10-26T22:34:34Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -264,7 +273,6 @@
       "url": "https://news.google.com/rss/articles/CBMitAJBVV95cUxONlFFeHE0WmVNOUxWd1dheHJmblJ0X0dpQWpWS1d1Z3RSY3ZjRVBFLUpWNC1aLWc1QzREWkM2aFF1TFFNNGNiM3hwaW1XemptMGxWSmdIZVZWRWd6Y0Y2QXAxaUpmeUg0RXBtNkVTV19WTlBGLVRrcDVWelk0NFpCRjA0V3VuM1h6MWxValJzTlBtS1VpVGt1d2xMN2tidkxNdWkzQTF6V0wtQWFkaU1na2JPTHBSMTJUeklhZmdWUzhPWS14QTF6aDZkWXBpVk5Ua0h6dDB0Y2lQaHpKZzhYWTVlSlN5VzdjdHdmYVBRMjZ2YmlCVVo2d3diT1JWU1A4ME96OE9xN0hqelFqMlVlenA5YVpleTUwT0JMUXlocWUyMm53dy04T190a0JTN082R0o2Tg?oc=5",
       "published": "2026-10-26T19:39:55Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.tH4wYN6kHtSfMOp79QDodg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -325,18 +333,6 @@
       "score": 4
     },
     {
-      "id": "c92bb962f6b4",
-      "topic": "grok",
-      "title": "Elon Musk’s AI odyssey debuts at seven minutes, and viewers have a blunt verdict",
-      "source": "Idaho Public Press on MSN",
-      "url": "https://www.msn.com/en-us/entertainment/general/elon-musk-s-ai-odyssey-debuts-at-seven-minutes-and-viewers-have-a-blunt-verdict/ar-AA2g80mh",
-      "published": "2026-10-26T18:23:48Z",
-      "snippet": "Grok Imagine's first seven-minute AI-generated episode of The Odyssey has arrived on X, three months after Musk promised a full-length 'historically accurate' f ...",
-      "image": "https://www.bing.com/th?id=ONUT.g_znGaVAW2O7YPe8JtqF7Q&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "09b461304107",
       "topic": "spacex",
       "title": "USSF-432 Mission",
@@ -344,7 +340,6 @@
       "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFAyd0FuR3ZqRVhrMVptSnhncnZ1Um5SdWFoMmZwbEF3RHY4Rlg1blFRWUhCZDBmdnM2aXVzd0dCc2VPMEhVXzdYWTJDYTc3X2tZ?oc=5",
       "published": "2026-10-26T17:58:20Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.reoRezKqlqlYvtJfT8CugA&pid=News&w=640",
       "kind": "general",
       "score": 12
     },
@@ -357,6 +352,17 @@
       "published": "2026-10-26T17:23:56Z",
       "snippet": "",
       "image": "https://www.bing.com/th?id=ONUT.CjnrdGA3FYtZzy5HHnQ1rQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "075e04fd4310",
+      "topic": "grok",
+      "title": "The AGI Race Is NOT Slowing Down? Dp World Tour (TAqDbaKBbQ)",
+      "source": "Unisba Media",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBxXzQ3U0FWYVo0MlVidF9hNWFkTTRFLUswby10RFJVMTROQlRXOGZTQ29kcDgxS2MzUGlVNjBTNHBZalNjakZ0cG5GM0pXY3h3WjN6UGl5U0NjbzVJWTJyeS1mWjJrMzlFcjBtNw?oc=5",
+      "published": "2026-10-26T17:14:48Z",
+      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -392,30 +398,6 @@
       "published": "2026-10-26T17:00:00Z",
       "snippet": "Early Uber Technologies, Inc. investor Jason Calacanis is betting on both Tesla and Uber, but his price targets favor the ride-hailing company. He disclosed purchases of $1 million in each stock, with ...",
       "image": "https://www.bing.com/th?id=ONUT.5K9LqKhBeac0lPOCJloMJw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "ebbd9021b9a3",
-      "topic": "spacex",
-      "title": "Cathie Wood Says Tesla, SpaceX Could Drive Up To 9% GDP Growth: ARK Sees Merger As Win For Both Shareholder Bases",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/economy/articles/cathie-wood-says-tesla-spacex-014951274.html",
-      "published": "2026-10-26T17:00:00Z",
-      "snippet": "ARK models a 3.8-fold boost to Tesla investor returns and a 7.2-fold boost to SpaceX investors’ incremental returns.",
-      "image": "https://www.bing.com/th?id=ONUT.D0rtYsVzuDPpqy3mTIGZIQ&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
-    },
-    {
-      "id": "3d92e08c2fc5",
-      "topic": "grok",
-      "title": "The 7 most-used AI chatbots ranked by share of web traffic in 2026",
-      "source": "qz.com",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1wSEo4QmpQcVhlQzE5UWZWQ25hRTgtc1RmLTU0SzNROG5relI3ZzU2X0MxSEtTampHd0pna2pfZW5PYkNuSGllMDZSUk9iZFFqVUtSMmVRYS1sRHdiSW9jWkVEM2x5cUVabDhiclEwY1VWOTd5ZVhVZ0lsOA?oc=5",
-      "published": "2026-10-26T16:55:22Z",
-      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -477,18 +459,6 @@
       "score": 12
     },
     {
-      "id": "54b8b7c81c04",
-      "topic": "spacex",
-      "title": "SpaceX Falcon 9 rocket to launch on record-setter. Track liftoff",
-      "source": "USA TODAY",
-      "url": "https://www.usatoday.com/story/news/local/california/2026/10/26/vandenberg-rocket-launch-record-time-liftoff-scrubs/92376906007/",
-      "published": "2026-10-26T15:59:00Z",
-      "snippet": "SpaceX is about to conduct a record-setting rocket launch in California, and you may not want to miss it. Here's how to track liftoff at Vandenberg.",
-      "image": "https://www.bing.com/th?id=ONUT.8L0Jch16UlYNgW8_i6VPrA&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "8fbf23fb1724",
       "topic": "grok",
       "title": "Kimi K3.1 Pro vs Grok 4.7: Same Accuracy, 72% More Cost",
@@ -524,6 +494,18 @@
       "score": 4
     },
     {
+      "id": "c61d1b571ae8",
+      "topic": "tesla",
+      "title": "Tesla isn’t a hyperscaler. Why the AI bears are misreading its $5 billion capex cut.",
+      "source": "The Motley Fool on MSN",
+      "url": "https://www.msn.com/en-us/news/other/tesla-isn-t-a-hyperscaler-why-the-ai-bears-are-misreading-its-5-billion-capex-cut/ar-AA2g7TTR",
+      "published": "2026-10-26T14:33:02Z",
+      "snippet": "Management says spending will rise in the coming years, which suggests this year’s cut is about timing rather than ambition.",
+      "image": "https://www.bing.com/th?id=ONUT.O0BgOPKwomjwSHEMUBMwfQ&pid=News&w=640",
+      "kind": "general",
+      "score": -2
+    },
+    {
       "id": "1a2916196bb6",
       "topic": "tesla",
       "title": "Tesla Stock Jumps on Buy Upgrade. Why It Can Surge 20%.",
@@ -543,7 +525,6 @@
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNSks5c2JjZm1mbUFZV3ZHYW9pWWQzWDF6ay00Rk0zQm9lc05HM3dXUTdkWFJxZFh1Mnc4eDJmTjEtMEQ4WXgyY0lCa3BDcUpkTDBQZGJKSzdLZUN4cFcxOEJZbm1yWnVLdmNzS2ZBWFdWcmxHMnB2LTNnRmRYOEx2QnFCc3VpRjNhbEdjM0JtZGhBQXNWd0owWmdQQzdFU0NrQ0VwZ1NQZkU4T3ppR1E?oc=5",
       "published": "2026-10-26T14:02:10Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.JsLqtlr1lKubtAh7bidM4w&pid=News&w=640",
       "kind": "launch",
       "score": 12
     },
@@ -558,18 +539,6 @@
       "image": "https://www.bing.com/th?id=ONUT.Vp5wTVSf-nqHVh5PPC556w&pid=News&w=640",
       "kind": "general",
       "score": 9
-    },
-    {
-      "id": "628b29929678",
-      "topic": "tesla",
-      "title": "Tesla Stock Surges After Barclays Upgrade on Hopes of a SpaceX Merger",
-      "source": "Investopedia",
-      "url": "https://www.investopedia.com/market-update-tesla-gets-an-upgrade-from-barclays-on-hopes-for-a-spacex-merger-the-stock-is-surging-tsla-12195438",
-      "published": "2026-10-26T13:37:00Z",
-      "snippet": "Tesla shares are rallying to start the week as optimism around a potential tie-up with SpaceX grows. Shares of Tesla ( TSLA) rose about 5% to $391 Monday, in the wake of an upgrade to “overweight” by ...",
-      "image": "https://www.bing.com/th?id=ONUT.K-rKsfvJl5kKp-Br9Z2s-g&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "ab37e417d3e8",
@@ -607,18 +576,6 @@
       "score": 4
     },
     {
-      "id": "273bcb62c376",
-      "topic": "spacex",
-      "title": "SpaceX: Sub-One-Year Compute Payback Changes The Thesis",
-      "source": "Seeking Alpha",
-      "url": "https://seekingalpha.com/article/4957798-spacex-sub-one-year-compute-payback-changes-the-thesis",
-      "published": "2026-10-26T12:03:00Z",
-      "snippet": "SpaceX ended Q3 with 1.7 GW of compute capacity, while SI revenue reached $7.6 billion and deployments accelerated. Read why SPCX stock is a buy.",
-      "image": "https://www.bing.com/th?id=ONUT.oYOiTSe4C83dbVfX4vd84A&pid=News&w=640",
-      "kind": "general",
-      "score": 0
-    },
-    {
       "id": "8704aa5943f8",
       "topic": "grok",
       "title": "Elon Musk’s AI Odyssey Gets Roasted After First Episode Is Released",
@@ -642,24 +599,12 @@
       "score": 4
     },
     {
-      "id": "68300521ca67",
-      "topic": "tesla",
-      "title": "Buy Tesla ahead of potential SpaceX merger, says Barclays",
-      "source": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE84RWIxU2dTNVlEVmZORVpmNUxtcWtJOGFwSUFNZjNSRHdIbGk3VkN2YklyN2dtSWFrQkl2YXpKSm5rcFdXNGdxVy1DcDRick5PempXQ1VwcjVFN3JPWG9hdDRMdkxXVEwzUGh0MVdYdWwySmc?oc=5",
-      "published": "2026-10-26T10:49:48Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.L0qjvaYUtemT8ALph13V_Q&pid=News&w=640",
-      "kind": "general",
-      "score": 7
-    },
-    {
-      "id": "6e06698f425a",
+      "id": "629dfa0f53bd",
       "topic": "grok",
-      "title": "Grok’s AI-Made ‘Odyssey’ Is Here, But the First Reviews Aren’t Looking Good",
-      "source": "Innovation Village",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB1Wk1QUldMRTE0V2hrdmVaQTdCRWVoUHlBYlFEcDVUT0w3MXBzZ29nTWJjS3k2anJHTGE2UDlLWTdkODJzeEROekxIc1hWOFlyOUw5Um1wVlJuZ1VEZXRYY2x6QUNBNlZE?oc=5",
-      "published": "2026-10-26T10:20:21Z",
+      "title": "Grok Bot Handles Online Tasks Like Train Tickets and Subscriptions With Ease",
+      "source": "www.journaldunet.com",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNZWhTWkI0Y1d6NWdEX0VfWUhTdkxhUjRnWnZoVkJVT0wwamF5aWZ3bWFPZlp5a1NnUlNFWDVKbkJzQVJ5MFNNMzBoQ0JvSGhrbUNHdi12S1hhTlh0bFctU0w5QnhrX2pJTlIyMEJENldlZTRkdEhlU2VGRlozS0dielNtWnhFc19taDdWVVppNFBFNktQbTRKLTlXdFVwTWFnQUtVNDBnVE4zZEJybjEwYTR5TFpCZlR1?oc=5",
+      "published": "2026-10-26T10:47:37Z",
       "snippet": "",
       "kind": "general",
       "score": 4
@@ -688,18 +633,6 @@
       "score": 12
     },
     {
-      "id": "991f7cbadd4c",
-      "topic": "spacex",
-      "title": "Verizon says SpaceX needs up to 8 years and a half trillion dollars to compete in wireless",
-      "source": "Insider on MSN",
-      "url": "https://www.msn.com/en-au/money/general/verizon-says-spacex-needs-up-to-8-years-and-a-half-trillion-dollars-to-compete-in-wireless/ar-AA2g6WBN",
-      "published": "2026-10-26T09:31:26Z",
-      "snippet": "Verizon's CEO said he's assuming SpaceX will flawlessly execute its US ambitions, but those goals will require massive capital commitments.",
-      "image": "https://www.bing.com/th?id=ONUT.NzYaMXJufF4fc4pgfg8zcA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "fe09e7a14aa3",
       "topic": "spacex",
       "title": "EasyJet joins the ranks of budget airlines installing Starlink — and puts pressure on its rival Ryanair",
@@ -708,17 +641,6 @@
       "published": "2026-10-26T09:30:30Z",
       "snippet": "EasyJet's Starlink announcement means two of Europe's three biggest budget airlines have signed up, putting pressure on the top dog, Ryanair.",
       "image": "https://www.bing.com/th?id=ORMS.709a3490aa46e8f271861c0fae461ba4&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "f271695b948a",
-      "topic": "grok",
-      "title": "Grok 4.7 Release Date: September 21, 2026, and the Window It Shipped Into",
-      "source": "FindArticles",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWE1kY01sQXFJVFNJaXBlNl96N1hzYUJpalFvby1XcVhLNWUtNW9wWDFUN1NobjlCRnBIYm9wRTd5Z1F2TV9sMzRSSXpuNWVYNTBmZTNkZE8wOG03clNvLUVsTHM3eV90OTJLdFNwbUUtNnQ5OHR4MlVjcWVlaDdBQXlaWmJXV1o3ellmUjdQS1lKY1FuM040NlpfM0tmMGxfT1HSAaoBQVVfeXFMTzBYcDNLVFZKVlN1SzBNNk9lb0pObnpKa2VZeklVWHFycmduaUpoeEF0al9TdF9vTnNha1h1M3hvVExicl95czhJbW9UTWpMdFJyQUs5ZFdydkRJMWRQOWxfVER2X3MwdDZYbm9pbWt4VnBKVVVpNG9nYlZxaC1TZUkxcUhWU2FqbkNNMjR3UlZyeUVmV1puS2tCMzc2eUFLQ1E0Y0lEeHJnZnc?oc=5",
-      "published": "2026-10-26T08:21:24Z",
-      "snippet": "",
       "kind": "general",
       "score": 4
     },
@@ -759,6 +681,18 @@
       "score": 4
     },
     {
+      "id": "ddc552ee2cf9",
+      "topic": "tesla",
+      "title": "Tesla’s FSD reaches 10th EU country with Latvia approval. Here’s the road ahead for Tesla",
+      "source": "Benzinga on MSN",
+      "url": "https://www.msn.com/en-us/news/other/tesla-s-fsd-reaches-10th-eu-country-with-latvia-approval-here-s-the-road-ahead-for-tesla/ar-AA2g5PIS",
+      "published": "2026-10-26T06:34:33Z",
+      "snippet": "Tesla Inc. TSLA shares are trading higher Monday possibly due to the company’s announcement that Latvia has authorized its Full Self-Driving system, making it the tenth European Union country to ...",
+      "image": "https://www.bing.com/th?id=ONUT.IHjZD8g_Braair0vU1KG5Q&pid=News&w=640",
+      "kind": "software",
+      "score": 8
+    },
+    {
       "id": "149dc0af9e05",
       "topic": "grok",
       "title": "The Era of Building Phone Voice Agents in 2 Minutes with Grok Voice Agent Builder Has Arrived",
@@ -767,18 +701,6 @@
       "published": "2026-10-26T06:29:00Z",
       "snippet": "Hello! I'm Uniko🦄.📅 Join Uniko's free AI seminar (online), which has been attended by over 160,000 people in total. I will demonstrate the steps to delegate work to ClaudeCode live in front of you.",
       "image": "https://www.bing.com/th?id=ONUT.8HrFh-MwJtXtzB8kgDsscw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "6c4b8f56f351",
-      "topic": "spacex",
-      "title": "Meta and SpaceX to Raise Billions More to Fund A.I. Ambitions",
-      "source": "The New York Times",
-      "url": "https://www.nytimes.com/2026/10/26/business/meta-spacex-artificial-intelligence.html",
-      "published": "2026-10-26T06:21:00Z",
-      "snippet": "The race to build artificial intelligence infrastructure is consuming increasingly enormous amounts of cash at the biggest tech companies.",
-      "image": "https://www.bing.com/th?id=ONUT.7GFmfe0x-qnF5CNb3e6xpA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -795,18 +717,6 @@
       "score": 4
     },
     {
-      "id": "cee9099eaca8",
-      "topic": "spacex",
-      "title": "SpaceX closes $40 billion debt deal for AI chips, Elon Musk says",
-      "source": "CNBC on MSN",
-      "url": "https://www.msn.com/en-us/money/markets/spacex-closes-40-billion-debt-deal-for-ai-chips-elon-musk-says/ar-AA2g2TET",
-      "published": "2026-10-26T06:06:00Z",
-      "snippet": "Elon Musk said in an X post that SpaceX has closed $40 billion in debt financing to purchase GPUs.",
-      "image": "https://www.bing.com/th?id=ORMS.9d5e1b80f2ed33fabfc37d6c5c17876e&pid=News&w=640",
-      "kind": "general",
-      "score": 7
-    },
-    {
       "id": "0c23dd4108ec",
       "topic": "tesla",
       "title": "Cybertruck stopped on A99 - driver lacks truck license",
@@ -817,18 +727,6 @@
       "image": "https://www.bing.com/th?id=ONUT.JvnHmfD-u9QSxejW0mO3Kg&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "a9c3dd3e05e5",
-      "topic": "spacex",
-      "title": "Musk says SpaceX raised $40 billion in debt deal, predicts neocloud shakeout",
-      "source": "Reuters on MSN",
-      "url": "https://www.msn.com/en-us/money/economy/musk-says-spacex-raised-40-billion-in-debt-deal-predicts-neocloud-shakeout/ar-AA2g5wCH",
-      "published": "2026-10-26T04:49:59Z",
-      "snippet": "Oct 25 (Reuters) - Elon Musk said on Sunday that SpaceX had closed $40 billion in debt financing for graphics processing units, underscoring the soaring cost of building AI computing capacity. Musk, ...",
-      "image": "https://www.bing.com/th?id=ONUT.qVHNL137YHinXDekygq1Gw&pid=News&w=640",
-      "kind": "general",
-      "score": 9
     },
     {
       "id": "41cd59f116e8",
@@ -851,18 +749,6 @@
       "published": "2026-10-26T00:40:00Z",
       "snippet": "Grok Imagine, an xAI project, has launched the first seven-minute episode of its AI-generated 'Odyssey' series on X (formerly Twitter) on October 23, 2026. This initial release showcases Grok Imagine ...",
       "image": "https://www.bing.com/th?id=ONUT.OeFVg8HMUMvMHa-1mUe59A&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "517a8b275df5",
-      "topic": "spacex",
-      "title": "SpaceX secures $40B in financing for GPUs as Elon Musk warns of AI cloud industry consolidation",
-      "source": "Fox Business on MSN",
-      "url": "https://www.msn.com/en-us/news/other/spacex-secures-40b-in-financing-for-gpus-as-elon-musk-warns-of-ai-cloud-industry-consolidation/ar-AA2g3H2A",
-      "published": "2026-10-25T22:09:45Z",
-      "snippet": "SpaceX closed $40 billion in debt financing for GPU purchases as Elon Musk warns AI debt markets have shut off access for most companies.",
-      "image": "https://www.bing.com/th?id=ONUT.I3r12I9luNg9OHNe-WESEA&pid=News&w=640",
       "kind": "general",
       "score": 4
     }
