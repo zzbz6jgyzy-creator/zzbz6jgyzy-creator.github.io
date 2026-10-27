@@ -704,6 +704,12 @@
       "summary": "Clips from Alex R now live on the Tesla, SpaceX and Grok pages."
     },
     {
+      "url": "/newsletter.html",
+      "title": "The free Sunday newsletter",
+      "tag": "Newsletter",
+      "summary": "Tesla, SpaceX and Grok in one free Sunday email. Preview the edition, read a real issue and subscribe."
+    },
+    {
       "url": "/explainers/hot-staging.html",
       "title": "Why Starship uses hot staging",
       "tag": "Explainers",
@@ -726,12 +732,6 @@
       "title": "Understanding Collision Evasion",
       "tag": "Explainers",
       "summary": "An overhead visual guide to a developing hazard, driver warnings and possible braking assistance, with the limits kept clear."
-    },
-    {
-      "url": "/newsletter.html",
-      "title": "The free Sunday newsletter",
-      "tag": "Newsletter",
-      "summary": "Tesla, SpaceX and Grok in one free Sunday email. Preview the edition, read a real issue and subscribe."
     }
   ]
 }
