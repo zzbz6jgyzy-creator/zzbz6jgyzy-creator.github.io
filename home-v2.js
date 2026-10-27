@@ -18,7 +18,7 @@
         href: a.getAttribute("href"),
         img: (v && (v.getAttribute("poster") || v.getAttribute("data-poster"))) || (i && i.getAttribute("src")) || "",
         tag: (a.querySelector(".tag") || {}).textContent || "Dispatch",
-        h: (a.querySelector("h3") || {}).textContent || "",
+        h: (a.querySelector("h2, h3") || {}).textContent || "",
         p: (a.querySelector(".story-copy p") || {}).textContent || "",
       };
     }).filter((c, k, arr) => c.h && arr.findIndex((x) => x.href === c.href) === k);

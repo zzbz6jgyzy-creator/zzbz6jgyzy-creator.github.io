@@ -98,13 +98,7 @@ def heading_levels():
     if t != s:
         open(path, "w", encoding="utf-8").write(t)
         print("dispatch heading level: h3 → h2")
-    wp = os.path.join(ROOT, "wallpapers.html")
-    if os.path.exists(wp):
-        s = open(wp, encoding="utf-8").read()
-        t = re.sub(r"(<figcaption>[\s\S]*?)<h3>([\s\S]*?)</h3>", r"\1<h2>\2</h2>", s)
-        if t != s:
-            open(wp, "w", encoding="utf-8").write(t)
-            print("wallpapers heading level: h3 → h2")
+    # wallpapers.html: build-wallpapers-studio.py emits its own heading levels (cards at h2); nothing to fix up here
 
 
 def card_dates():
