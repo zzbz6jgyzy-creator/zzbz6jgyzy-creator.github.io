@@ -1,5 +1,10 @@
 # Changelog
 
+## 27 Oct 2026 — Games: Catch upgrade and Hot Staging visual overhaul
+
+- Catch: anonymous play counters (`game_start`, `game_retry`, `game_complete`, `game_fail_*`, `game_return_d1`; page path only, no IDs), phone-first layout (compact header, focus view on Play, landscape pad), sound on after Play with a remembered mute, callouts, plume glow, final-approach slow motion, haptics, `R` to retry.
+- Hot Staging (PR 1 of 3): new renderer in `staging-fx.js` + `staging.js`. Perspective planet with parallax surface, cloud deck, city lights, limb glow and aurora; speed streaks and exhaust trail; Max-Q vapour collar; cinematic stage (starburst, booster flip and fall, Ship acceleration, camera tracking); four breakup cinematics (debris, fireball, shards; the debrief now appears after 1.2 s); canvas instruments (altitude tape, attitude gauge with safe/fail zones, staging-window meter). Simulation, scoring and test timings are unchanged. Frame time in a software-rendered headless browser went from about 11.8 ms to 15.8 ms at 1440 px (planet surface cached at half resolution).
+
 ## 27 Oct 2026 — Live leftover titles and launch Record line
 
 - Roadster story-list titles now match the renamed previews (`Roadster day preview: Musk promised a “BANGER”`, `Roadster reveal set for 15 Oct (preview)`). The banger `<title>` keeps ` | Supercharged Daily`; og/twitter stay unsuffixed.

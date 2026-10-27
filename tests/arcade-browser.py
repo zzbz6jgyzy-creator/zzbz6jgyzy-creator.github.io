@@ -55,7 +55,7 @@ async def main():
    await q.goto('https://superchargeddaily.com/'+name+'.html?mode=daily&day=2026-10-27',wait_until='networkidle')
    expression=f'(()=>{{{api}.restart();const x={api}.ship();return [x.x,x.y,x.vx,x.vy,x.angle,x.fuel]}})()'if name=='catch'else f'(()=>{{{api}.restart();const x={api}.stack();return [x.x,x.vx,x.angle,x.alt,x.outBias]}})()'
    a=await q.evaluate(expression);b=await q.evaluate(expression);assert a==b,(name,'daily reset mismatch',a,b)
-   await q.goto('https://superchargeddaily.com/'+name+'.html?mode=training',wait_until='networkidle');await q.clock.install();await q.locator('[data-ac-demo]').click();await q.clock.run_for(45000 if name=='catch'else 18000)
+   await q.goto('https://superchargeddaily.com/'+name+'.html?mode=training',wait_until='networkidle');await q.evaluate("localStorage.removeItem('sd-arcade-profile-v2')");await q.clock.install();await q.locator('[data-ac-demo]').click();await q.clock.run_for(45000 if name=='catch'else 18000)
    assert await q.evaluate(f'{api}.state()')=='complete',(name,'demonstration did not finish',await q.evaluate(f'{api}.state()'))
    assert not await q.evaluate('Object.keys(SDArcade.read().records).length'),'demonstration must not save a score'
    if name=='staging':

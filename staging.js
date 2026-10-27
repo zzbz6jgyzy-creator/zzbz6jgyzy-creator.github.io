@@ -29,6 +29,8 @@
   const BOARD_MAX = 8;
   const T0 = 148;
   const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  const fx = window.SDStagingFX;
+  const MONO = '"IBM Plex Mono", ui-monospace, monospace';
 
   const FLIGHTS = [
     { name: "Flight 7", climb: 8.8, window: 1.2, wind: 0.006, engineOut: 0, failAngle: 0.44, stageAngle: 0.2 },
@@ -80,6 +82,9 @@
   const stars = [];
   const flakes = [];
   const particles = [];
+  const debris = [];
+  const booms = [];
+  const streaks = [];
 
   let dpr = 1;
   let cssW = 800;
@@ -116,6 +121,10 @@
   let shock = 0;
   let warnMark = 4;
   let pausedFrom = "";
+  let scrollX = 0;
+  let starDrift = 0;
+  let burstT = 99;
+  let failT = 0;
 
   const rand = (a, b) => a + Math.random() * (b - a);
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
@@ -131,8 +140,13 @@
       y: Math.random(),
       r: Math.random() * 1.35 + 0.15,
       a: Math.random() * 0.75 + 0.12,
+      z: 0.25 + Math.random() * 1.1,
       tw: rand(0.004, 0.02),
     });
+  }
+
+  for (let i = 0; i < 30; i += 1) {
+    streaks.push({ x: Math.random(), y: Math.random(), len: rand(26, 90), sp: rand(0.7, 1.7), a: rand(0.03, 0.11) });
   }
 
   function baseSpec() {
@@ -195,7 +209,13 @@
       outBias: dead.bias,
       shipOff: 0,
       boostOff: 0,
+      broken: false,
+      flipDir: 1,
     };
+    debris.length = 0;
+    booms.length = 0;
+    failT = 0;
+    burstT = 99;
   }
 
   function setHeld(key, on) {
@@ -649,6 +669,19 @@
   }
 
   function emitClimbFx() {
+    if (stack.alive && Math.random() < 0.85) {
+      particles.push({
+        x: stack.x + rand(-7, 7),
+        y: 96,
+        vx: rand(-0.25, 0.25) + stack.vx * 0.15,
+        vy: rand(2.4, 4),
+        life: rand(36, 66),
+        max: 66,
+        size: rand(5, 9),
+        color: "#cdd7e6",
+        kind: "trail",
+      });
+    }
     if (Math.random() < 0.35) {
       flakes.push({
         x: stack.x + rand(-18, 18),
@@ -737,6 +770,10 @@
   function fail(kind) {
     if (state !== "boost" && state !== "window" && state !== "attract") return;
     stack.alive = false;
+    stack.flipDir = stack.angle >= 0 ? 1 : -1;
+    stack.broken = kind !== "late";
+    spawnBreakup(kind);
+    failT = 0;
     setEngine(0);
     shake = 16;
     flash = 1;
@@ -766,7 +803,11 @@
       late: "The window closed. One vehicle, too long, still stacked.",
       rud: "Tilted in the fire. The bells ate each other.",
     };
-    showOverlay("No stage", titles[kind] || "RUD", lines[kind] || lines.rud, "Try again");
+    const showDebrief = () => {
+      if (state === "fail") showOverlay("No stage", titles[kind] || "RUD", lines[kind] || lines.rud, "Try again");
+    };
+    if (reduced || !stack.broken) showDebrief();
+    else window.setTimeout(showDebrief, 1200);
     if (cue) cue.hidden = true;
   }
 
@@ -775,6 +816,8 @@
     state = state === "attract" ? "attract-sep" : "sep";
     sepT = 0;
     shock = 0.02;
+    burstT = 0;
+    stack.flipDir = stack.angle >= 0 ? 1 : -1;
     stack.shipLit = true;
     shake = 18;
     flash = 1;
@@ -1016,8 +1059,9 @@
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
-      p.vy += p.kind === "smoke" ? 0.012 : 0.04;
-      p.vx *= p.kind === "smoke" ? 0.985 : 0.995;
+      const soft = p.kind === "smoke" || p.kind === "trail";
+      p.vy += soft ? 0.012 : 0.04;
+      p.vx *= soft ? 0.985 : 0.995;
       p.life -= 1;
       if (p.life <= 0) particles.splice(i, 1);
     }
@@ -1028,7 +1072,7 @@
       f.life -= 1;
       if (f.life <= 0) flakes.splice(i, 1);
     }
-    if (particles.length > 240) particles.splice(0, particles.length - 240);
+    if (particles.length > 320) particles.splice(0, particles.length - 320);
     if (flakes.length > 70) flakes.splice(0, flakes.length - 70);
   }
 
@@ -1352,6 +1396,163 @@
     ctx.restore();
   }
 
+  function viewScale() {
+    const portrait = cssH > cssW * 1.05;
+    const base = Math.min(cssW / 340, cssH / (portrait ? 430 : 400));
+    return base * cam.zoom * (portrait ? 0.8 : 0.88);
+  }
+
+  function uiScale() {
+    return clamp(Math.min(cssW, cssH) / 520, 1, 1.55);
+  }
+
+  function fxSpeed() {
+    if (state === "count") return 0.12 + ignite * 0.3;
+    if (state === "sep" || state === "attract-sep") return 1.1 + ease(sepT) * 1.6;
+    if (state === "fail" || state === "attract-hold") return 0.25;
+    if (state === "success" || state === "complete") return 1.6;
+    return 1;
+  }
+
+  function stepFx(dt) {
+    const sp = fxSpeed();
+    scrollX += dt * 0.03 * sp;
+    starDrift += dt * 0.012 * sp;
+    burstT += dt / 1000;
+    if (stack && (state === "fail" || state === "attract-hold") && !stack.alive) failT += dt / 1000;
+    for (let i = booms.length - 1; i >= 0; i -= 1) {
+      booms[i].t += dt / 1000;
+      if (booms[i].t > 1.8) booms.splice(i, 1);
+    }
+    debris.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.012;
+      p.vx *= 0.995;
+      p.rot += p.vr;
+      p.hot = Math.max(0, p.hot - 0.004);
+      if (p.smoke && Math.random() < 0.55) {
+        particles.push({ x: p.x + rand(-6, 6), y: p.y + rand(-6, 6), vx: rand(-0.3, 0.3), vy: rand(-0.2, 0.3), life: rand(30, 60), max: 60, size: rand(3, 8), color: p.hot > 0.1 ? "#3a2a22" : "#8a8f98", kind: "smoke" });
+      }
+    });
+  }
+
+  function spawnBreakup(kind) {
+    debris.length = 0;
+    booms.length = 0;
+    if (!stack) return;
+    const a = stack.angle;
+    const ca = Math.cos(a);
+    const sa = Math.sin(a);
+    const dir = a >= 0 ? 1 : -1;
+    const add = (type, lx, ly, vx, vy, vr, hot, smoke) => {
+      debris.push({ type, x: lx * ca - ly * sa, y: lx * sa + ly * ca, vx, vy, rot: a, vr, hot, smoke, size: 3 });
+    };
+    if (kind === "late") return;
+    if (kind === "early") {
+      add("ship", 0, -138, dir * 0.7, -1.6, dir * 0.035, 1, true);
+      add("boostTop", 0, -45, -dir * 0.5, 0.2, -dir * 0.045, 0.9, true);
+      add("boostBot", 0, 40, -dir * 0.9, 1.3, -dir * 0.07, 1, true);
+      booms.push({ x: 0, y: -80, t: 0, s: 1.2 });
+    } else if (kind === "rud") {
+      add("ship", 0, -138, dir * 0.4, -2.3, dir * 0.02, 0.4, false);
+      add("boostTop", 0, -45, -dir * 0.3, -0.6, -dir * 0.03, 0.8, true);
+      add("boostBot", 0, 40, dir * 0.9, 1.7, dir * 0.08, 1, true);
+      booms.push({ x: 0, y: 60, t: 0, s: 1.35 });
+    } else {
+      add("ship", 0, -138, dir * 1.7, -1.1, dir * 0.06, 0.5, true);
+      add("boost", 0, 0, -dir * 0.4, 0.7, -dir * 0.03, 0.4, true);
+      booms.push({ x: 0, y: -80, t: 0, s: 0.9 });
+    }
+    for (let i = 0; i < 18; i += 1) {
+      const ang = rand(0, Math.PI * 2);
+      const v = rand(0.8, 3.6);
+      debris.push({
+        type: "shard",
+        x: rand(-16, 16),
+        y: rand(-140, 50),
+        vx: Math.cos(ang) * v,
+        vy: Math.sin(ang) * v - 0.4,
+        rot: rand(0, 6),
+        vr: rand(-0.16, 0.16),
+        hot: rand(0.4, 1),
+        smoke: i % 3 === 0,
+        size: rand(3, 8),
+      });
+    }
+  }
+
+  function drawDebris(ctx, originX, originY, scale) {
+    const night = spaceT();
+    const lod = clamp(scale, 0, 1.4);
+    debris.forEach((p) => {
+      if (p.type === "shard") {
+        ctx.save();
+        ctx.translate(originX, originY);
+        fx.drawShard(ctx, p, scale);
+        ctx.restore();
+        return;
+      }
+      ctx.save();
+      ctx.translate(originX + p.x * scale, originY + p.y * scale);
+      ctx.scale(scale, scale);
+      ctx.rotate(p.rot);
+      if (p.type === "ship") {
+        drawShipBody(ctx, lod, night, 0, false);
+      } else if (p.type === "boost") {
+        drawBooster(ctx, lod, night, 0);
+      } else {
+        const top = p.type === "boostTop";
+        const cy = top ? -45 : 40;
+        ctx.translate(0, -cy);
+        ctx.beginPath();
+        ctx.rect(-40, top ? -100 : -4, 80, top ? 96 : 100);
+        ctx.clip();
+        drawBooster(ctx, lod, night, 0);
+        ctx.translate(0, cy);
+      }
+      if (p.hot > 0.05) {
+        ctx.globalCompositeOperation = "lighter";
+        const g = ctx.createRadialGradient(0, 0, 4, 0, 0, 46);
+        g.addColorStop(0, `rgba(255,160,70,${0.5 * p.hot})`);
+        g.addColorStop(1, "rgba(255,80,20,0)");
+        ctx.fillStyle = g;
+        ctx.fillRect(-50, -50, 100, 100);
+      }
+      ctx.restore();
+    });
+  }
+
+  function drawCollar(ctx) {
+    if (state !== "boost" || !stack.alive) return;
+    const q = tPlay / Math.max(1, spec().climb);
+    const k = Math.max(0, 1 - Math.abs(q - 0.46) / 0.16);
+    if (k <= 0.02) return;
+    ctx.save();
+    ctx.globalCompositeOperation = "lighter";
+    const pulse = 0.85 + Math.sin(clock * 0.05) * 0.15;
+    const g = ctx.createRadialGradient(0, -122, 4, 0, -122, 56);
+    g.addColorStop(0, `rgba(235,246,255,${0.34 * k * pulse})`);
+    g.addColorStop(0.6, `rgba(170,214,255,${0.14 * k})`);
+    g.addColorStop(1, "rgba(150,200,255,0)");
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.ellipse(0, -118, 58, 26, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = `rgba(235,246,255,${0.55 * k})`;
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    ctx.ellipse(0, -118, 30 + k * 10, 8, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(-4, -184);
+    ctx.lineTo(-44 - k * 12, -118 + 30);
+    ctx.moveTo(4, -184);
+    ctx.lineTo(44 + k * 12, -118 + 30);
+    ctx.stroke();
+    ctx.restore();
+  }
+
   function drawStack(ctx, originX, originY, scale) {
     const night = spaceT();
     const lod = clamp(scale, 0, 1.4);
@@ -1362,79 +1563,115 @@
     ctx.scale(scale, scale);
     ctx.rotate(stack.angle);
 
-    if (!sep || sepT < 0.98) {
+    if (sep) {
+      const e = ease(sepT);
+      const shipY = -138 - e * 250;
+      const boostY = e * e * 230 + e * 24;
+      const flip = stack.flipDir || 1;
+      ctx.save();
+      ctx.translate(0, boostY);
+      ctx.rotate(e * Math.PI * 0.92 * flip);
+      const shrink = 1 - 0.22 * e * e;
+      ctx.scale(shrink, shrink);
+      if (sepT > 0.45 && sepT < 0.98) {
+        ctx.save();
+        ctx.scale(0.5, 0.5);
+        drawBoosterPlume(ctx, 0.5 + Math.sin(clock * 0.12) * 0.15);
+        ctx.restore();
+      } else if (sepT <= 0.45) {
+        drawBoosterPlume(ctx, flicker * (1 - sepT / 0.45));
+      }
+      drawBooster(ctx, lod, night, 0);
+      ctx.restore();
+      drawHotRing(ctx, Math.max(0, 1 - sepT * 1.6), -80 - e * 40);
+      if (burstT < 0.6) fx.drawStarburst(ctx, 0, -80, burstT, 1);
+      if (stack.shipLit) {
+        ctx.save();
+        ctx.translate(0, shipY);
+        ctx.scale(1, 1 + e * 1.1);
+        drawShipPlume(ctx, flicker);
+        ctx.restore();
+      }
+      drawShipBody(ctx, lod, night, shipY, stack.shipLit);
+    } else if (!stack.broken) {
+      let fallY = 0;
+      if (!stack.alive && failT > 0) {
+        fallY = failT * failT * 38;
+        ctx.translate(0, fallY);
+        ctx.rotate((stack.flipDir || 1) * failT * 0.16);
+      }
       const spool = state === "count" ? ignite : 1;
       if (stack.alive && (!stack.shipLit || sepT < 0.35) && spool > 0.04) {
         drawBoosterPlume(ctx, flicker * spool);
       }
-      drawBooster(ctx, lod, night, sep ? stack.boostOff : 0);
-    }
-    if (sep) {
-      drawHotRing(ctx, 1, -80 + sepT * 10);
-      if (stack.shipLit) {
-        ctx.save();
-        ctx.translate(0, -138 - stack.shipOff);
-        drawShipPlume(ctx, flicker);
-        ctx.restore();
-      }
-      drawShipBody(ctx, lod, night, -138 - stack.shipOff, stack.shipLit);
-    } else {
+      drawBooster(ctx, lod, night, 0);
       drawHotRing(ctx, heatAmt(), -80);
+      drawCollar(ctx);
       if (state === "window" && stack.alive) drawWindowTimer(ctx, -80);
       drawShipBody(ctx, lod, night, -138, false);
+      flakes.forEach((f) => {
+        ctx.globalAlpha = clamp(f.life / f.max, 0, 1);
+        ctx.fillStyle = "#e8e4dc";
+        ctx.fillRect(f.x - stack.x, f.y, f.size, f.size);
+      });
+      ctx.globalAlpha = 1;
     }
-
-    flakes.forEach((f) => {
-      ctx.globalAlpha = clamp(f.life / f.max, 0, 1);
-      ctx.fillStyle = "#e8e4dc";
-      ctx.fillRect(f.x - stack.x, f.y, f.size, f.size);
-    });
-    ctx.globalAlpha = 1;
     ctx.restore();
   }
 
-  function drawEarth(ctx) {
-    const space = spaceT();
-    const r = Math.max(cssW, cssH) * 1.55;
-    const cx = cssW * 0.5 + (stack?.x || 0) * 0.08;
-    const cy = cssH + r * 0.72 - space * cssH * 0.18;
+  function drawStreaks(ctx, intensity) {
+    if (intensity <= 0.02) return;
     ctx.save();
-    const ocean = ctx.createRadialGradient(cx - r * 0.2, cy - r * 0.55, r * 0.1, cx, cy, r);
-    ocean.addColorStop(0, rgb(mix(96, 36, space), mix(140, 64, space), mix(190, 110, space)));
-    ocean.addColorStop(0.4, rgb(mix(36, 14, space), mix(72, 32, space), mix(120, 70, space)));
-    ocean.addColorStop(1, "#081018");
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.fillStyle = ocean;
-    ctx.fill();
-
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.clip();
-    ctx.fillStyle = `rgba(40,70,42,${0.28 - space * 0.08})`;
-    ctx.beginPath();
-    ctx.ellipse(cx - r * 0.28, cy - r * 0.62, r * 0.22, r * 0.08, -0.3, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.ellipse(cx + r * 0.18, cy - r * 0.55, r * 0.16, r * 0.05, 0.4, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = `rgba(230,230,236,${0.16 + space * 0.04})`;
-    for (let i = 0; i < 6; i += 1) {
+    ctx.globalCompositeOperation = "lighter";
+    ctx.lineWidth = 1.3;
+    ctx.strokeStyle = "#cfe2ff";
+    const span = cssH + 160;
+    for (let i = 0; i < streaks.length; i += 1) {
+      const s = streaks[i];
+      const len = s.len * (0.5 + intensity * 0.9);
+      const y = ((s.y * span + starDrift * 38 * s.sp) % span) - 120;
+      ctx.globalAlpha = s.a * intensity;
       ctx.beginPath();
-      ctx.ellipse(cx + Math.sin(i * 1.7) * r * 0.35, cy - r * 0.58 + i * 10, r * 0.18, 7, i * 0.3, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.moveTo(s.x * cssW, y);
+      ctx.lineTo(s.x * cssW, y + len);
+      ctx.stroke();
     }
     ctx.restore();
+  }
 
-    const halo = ctx.createRadialGradient(cx, cy, r * 0.96, cx, cy, r * 1.08);
-    halo.addColorStop(0, "rgba(140,190,255,0)");
-    halo.addColorStop(0.45, `rgba(140,200,255,${0.42 + space * 0.18})`);
-    halo.addColorStop(1, "rgba(80,140,255,0)");
-    ctx.fillStyle = halo;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r * 1.08, 0, Math.PI * 2);
-    ctx.fill();
+  function drawHud(ctx) {
+    if (!stack || !fx) return;
+    if (!(state === "count" || state === "boost" || state === "window" || state === "sep" || state === "pause")) return;
+    const ui = uiScale();
+    const s = spec();
+    const tapeH = clamp(cssH * 0.42, 120, 300);
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    fx.drawAltTape(ctx, { x: 12 * ui, y: cssH * 0.2, hgt: tapeH, alt: stack.alt, ui });
+    const r = 54 * ui;
+    fx.drawAttitude(ctx, { cx: cssW - r - 20 * ui, cy: cssH - 50 * ui, r, angle: stack.angle, stage: s.stageAngle, fail: s.failAngle, ui });
+    const sepNow = state === "sep";
+    const kmh = Math.round(5120 + tPlay * 41 + (sepNow ? ease(sepT) * 1400 : 0));
+    ctx.textAlign = "right";
+    ctx.font = `600 ${12 * ui}px ${MONO}`;
+    ctx.fillStyle = "#ffe8c8";
+    ctx.fillText(`${kmh.toLocaleString()} KM/H`, cssW - 14 * ui, cssH * 0.2 + 4 * ui);
+    ctx.font = `500 ${8.5 * ui}px ${MONO}`;
+    ctx.fillStyle = "rgba(220,232,246,0.6)";
+    ctx.fillText("VELOCITY", cssW - 14 * ui, cssH * 0.2 - 8 * ui);
+    if ((state === "boost" || state === "window") && stack.alive) {
+      fx.drawWindowMeter(ctx, {
+        cx: cssW * 0.5,
+        y: Math.max(48 * ui, cssH * 0.1),
+        wd: Math.min(cssW * 0.6, 560),
+        t: tPlay,
+        climb: s.climb,
+        win: s.window,
+        ui,
+        clock,
+        open: state === "window",
+      });
+    }
     ctx.restore();
   }
 
@@ -1450,36 +1687,58 @@
     ctx.fillRect(0, 0, cssW, cssH);
 
     const sunX = cssW * 0.78;
-    const sunY = cssH * 0.18;
+    const sunY = cssH * (0.2 - space * 0.05);
     const sun = ctx.createRadialGradient(sunX, sunY, 1, sunX, sunY, cssW * 0.7);
     sun.addColorStop(0, `rgba(255,228,190,${0.55 - space * 0.15})`);
-    sun.addColorStop(0.08, `rgba(255,170,80,${0.16})`);
-    sun.addColorStop(0.4, `rgba(255,90,40,${0.05})`);
+    sun.addColorStop(0.08, "rgba(255,170,80,0.16)");
+    sun.addColorStop(0.4, "rgba(255,90,40,0.05)");
     sun.addColorStop(1, "rgba(0,0,0,0)");
     ctx.fillStyle = sun;
     ctx.fillRect(0, 0, cssW, cssH);
-    ctx.fillStyle = `rgba(255,240,210,${0.85})`;
-    ctx.beginPath();
-    ctx.arc(sunX, sunY, 3.2, 0, Math.PI * 2);
-    ctx.fill();
 
+    const sky72 = cssH * 0.72;
     stars.forEach((st) => {
       const tw = 0.7 + Math.sin(clock * st.tw) * 0.3;
       ctx.globalAlpha = st.a * (0.08 + space * 0.85) * tw;
       ctx.fillStyle = st.r > 1.1 ? "#fff4d4" : "#d8e4ff";
       ctx.beginPath();
-      ctx.arc(st.x * cssW, st.y * cssH * 0.72, st.r, 0, Math.PI * 2);
+      ctx.arc(st.x * cssW, (st.y * sky72 + starDrift * st.z * 6) % sky72, st.r, 0, Math.PI * 2);
       ctx.fill();
     });
     ctx.globalAlpha = 1;
 
-    drawEarth(ctx);
+    const plan = fx.drawPlanet(ctx, { w: cssW, h: cssH, space, scroll: scrollX, px: stack?.x || 0 });
+    fx.drawAurora(ctx, { w: cssW, top: plan.top + cssH * 0.04, space, clock, reduced: reduceMotion });
 
-    const ox = (shake ? rand(-shake, shake) : 0) + cam.x;
-    const oy = (shake ? rand(-shake, shake) : 0) + cam.y;
-    const portrait = cssH > cssW * 1.05;
-    const base = Math.min(cssW / 340, cssH / (portrait ? 430 : 400));
-    const scale = base * cam.zoom * (portrait ? 0.94 : 1);
+    ctx.save();
+    ctx.globalCompositeOperation = "lighter";
+    const flare = ctx.createLinearGradient(0, 0, cssW, 0);
+    flare.addColorStop(0, "rgba(255,190,120,0)");
+    flare.addColorStop(0.5, `rgba(255,214,160,${0.1 + flash * 0.2})`);
+    flare.addColorStop(1, "rgba(255,190,120,0)");
+    ctx.fillStyle = flare;
+    ctx.fillRect(0, sunY - 1.5, cssW, 3);
+    [[0.62, 14, 0.05], [0.42, 26, 0.04], [0.2, 40, 0.03]].forEach(([k, rad, a]) => {
+      const gx = sunX + (cssW * 0.5 - sunX) * (1 - k) * 1.6;
+      const gy = sunY + (cssH * 0.5 - sunY) * (1 - k) * 1.6;
+      ctx.fillStyle = `rgba(190,220,255,${a})`;
+      ctx.beginPath();
+      ctx.arc(gx, gy, rad, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.restore();
+    ctx.fillStyle = "rgba(255,240,210,0.85)";
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, 3.2, 0, Math.PI * 2);
+    ctx.fill();
+
+    const climbing = state === "boost" || state === "window" || state === "attract" || state === "sep" || state === "attract-sep" || state === "success" || state === "complete";
+    drawStreaks(ctx, climbing ? (state === "sep" || state === "attract-sep" ? 0.6 + ease(sepT) * 0.9 : 0.55) : state === "count" ? ignite * 0.15 : 0);
+
+    const rumble = state === "boost" || state === "window" ? 0.5 : 0;
+    const ox = (shake ? rand(-shake, shake) : 0) + (reduceMotion ? 0 : rand(-rumble, rumble)) + cam.x;
+    const oy = (shake ? rand(-shake, shake) : 0) + (reduceMotion ? 0 : rand(-rumble, rumble)) + cam.y;
+    const scale = viewScale();
     const lookY =
       state === "sep" || state === "attract-sep" || (state === "success" && sepT > 0)
         ? -96 + sepT * 6
@@ -1487,8 +1746,18 @@
           ? -30
           : -52;
     const originX = cssW * 0.5 + (stack?.x || 0) * 0.45 + ox;
-    const originY = cssH * 0.5 - lookY * scale + oy + Math.sin(clock * 0.012) * 1.2;
+    const originY = cssH * 0.53 - lookY * scale + oy + Math.sin(clock * 0.012) * 1.2;
 
+    particles.forEach((p) => {
+      if (p.kind !== "trail") return;
+      const k = clamp(p.life / p.max, 0, 1);
+      ctx.globalAlpha = k * 0.3;
+      ctx.fillStyle = k > 0.75 ? "#ffe2b8" : "#cdd7e6";
+      ctx.beginPath();
+      ctx.arc(originX + p.x * scale, originY + p.y * scale, p.size * scale * (1 + (1 - k) * 1.8), 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
     particles.forEach((p) => {
       if (p.kind !== "spark") return;
       ctx.globalAlpha = clamp(p.life / p.max, 0, 1);
@@ -1499,7 +1768,11 @@
     });
     ctx.globalAlpha = 1;
 
-    if (stack) drawStack(ctx, originX, originY, scale);
+    if (stack) {
+      drawStack(ctx, originX, originY, scale);
+      if (debris.length) drawDebris(ctx, originX, originY, scale);
+      booms.forEach((b) => fx.drawFireball(ctx, originX + b.x * scale, originY + b.y * scale, b.t, scale * b.s, true));
+    }
 
     if (shock > 0 && shock < 1.25 && stack) {
       ctx.save();
@@ -1520,11 +1793,12 @@
     }
 
     particles.forEach((p) => {
-      if (p.kind === "spark") return;
-      ctx.globalAlpha = clamp(p.life / p.max, 0, 1) * 0.5;
-      ctx.fillStyle = p.color;
+      if (p.kind === "spark" || p.kind === "trail") return;
+      const k = clamp(p.life / p.max, 0, 1);
+      ctx.globalAlpha = k * (p.kind === "smoke" ? 0.24 : 0.5);
+      ctx.fillStyle = p.kind === "smoke" ? "#5d626c" : p.color;
       ctx.beginPath();
-      ctx.arc(originX + p.x * scale, originY + p.y * scale, p.size * scale, 0, Math.PI * 2);
+      ctx.arc(originX + p.x * scale, originY + p.y * scale, p.size * scale * (p.kind === "smoke" ? 1 + (1 - k) * 1.6 : 1), 0, Math.PI * 2);
       ctx.fill();
     });
     ctx.globalAlpha = 1;
@@ -1557,6 +1831,7 @@
       ctx.fillRect(0, 0, cssW, cssH);
     }
 
+    drawHud(ctx);
     drawCallouts(ctx);
   }
 
@@ -1583,42 +1858,6 @@
       ctx.fillText(spec().name.toUpperCase(), cssW * 0.5, cssH * 0.17 + (ignition ? 28 : 46));
     }
 
-    if (state === "boost" && stack.alive) {
-      const left = spec().climb - tPlay;
-      if (left <= 3.2 && left > 0) {
-        ctx.shadowColor = "rgba(255,90,20,0.7)";
-        ctx.shadowBlur = reduceMotion ? 0 : 16;
-        ctx.fillStyle = "rgba(255,214,150,0.95)";
-        ctx.font = `600 ${Math.round(cssW * 0.048)}px ${mono}`;
-        ctx.fillText(`STAGE IN ${left.toFixed(1)}`, cssW * 0.5, cssH * 0.155);
-        ctx.shadowBlur = 0;
-      }
-    }
-
-    if (state === "window" && stack.alive) {
-      const s = spec();
-      const left = Math.max(0, s.climb + s.window - tPlay);
-      const frac = clamp(left / s.window, 0, 1);
-      const cx = cssW * 0.5;
-      const cy = Math.max(36, cssH * 0.08);
-      const r = Math.max(28, cssW * 0.038);
-      ctx.strokeStyle = "rgba(255,180,80,0.22)";
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.strokeStyle = "rgba(255,210,130,0.95)";
-      ctx.lineWidth = 5;
-      ctx.beginPath();
-      ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * frac);
-      ctx.stroke();
-      ctx.fillStyle = "#ffe7c2";
-      ctx.font = `600 ${Math.round(cssW * 0.032)}px ${mono}`;
-      ctx.fillText("STAGE", cx, cy - 1);
-      ctx.font = `500 ${Math.round(cssW * 0.02)}px ${mono}`;
-      ctx.fillStyle = "rgba(255,230,190,0.86)";
-      ctx.fillText(left.toFixed(1), cx, cy + r * 0.42);
-    }
     ctx.restore();
   }
 
@@ -1653,18 +1892,20 @@
     const sep = state === "sep" || state === "attract-sep" || (state === "success" && sepT > 0);
     let wantZoom = 1;
     if (state === "count") wantZoom = 1.14;
-    else if (state === "window") wantZoom = 1.1;
-    else if (sep) wantZoom = 1.02 + sepT * 0.1;
+    else if (state === "window") wantZoom = 1.12;
+    else if (sep) wantZoom = 1.04 + ease(sepT) * 0.08;
+    else if ((state === "fail" || state === "attract-hold") && stack && !stack.alive) wantZoom = stack.broken ? 0.9 : 1.04;
     cam.zoom = lerp(cam.zoom + cam.punch, wantZoom, 0.08);
     cam.punch *= 0.84;
     cam.x = lerp(cam.x, -(stack?.x || 0) * 0.18, 0.06);
-    const wantY = state === "count" ? 16 : sep ? -(stack?.shipOff || 0) * 0.2 : 0;
+    const e = sep ? ease(sepT) : 0;
+    const wantY = state === "count" ? 16 : sep ? e * 250 * viewScale() * 0.86 : 0;
     cam.y = lerp(cam.y, wantY, 0.08);
   }
 
   function frame(now) {
     if(!last)last=now;const elapsed=Math.max(0,Math.min(100,now-last));last=now;
-    if(state!=="pause" && !document.hidden){accumulator+=elapsed;while(accumulator>=1000/60){const dt=1000/60;clock+=dt;step(dt);stepParticles();followCam();shake*=.86;flash*=.9;accumulator-=dt;}}
+    if(state!=="pause" && !document.hidden){accumulator+=elapsed;while(accumulator>=1000/60){const dt=1000/60;clock+=dt;step(dt);stepParticles();stepFx(dt);followCam();shake*=.86;flash*=.9;accumulator-=dt;}}
     else accumulator=0;
     if(reduced){shake=0;flash=0;}
     drawWorld(canvas.getContext("2d"));updateHud();requestAnimationFrame(frame);
