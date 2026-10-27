@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · Optimus guide: label every number, never fill gaps
+
+- **Choice:** every figure on `/optimus.html` carries one of three labels (Disclosed by Tesla, Target, Reported) plus a source opened on the review date. The generations table shows "Not published" instead of combining figures from different years into a made-up current spec.
+- **Why:** Optimus coverage elsewhere mixes 2021 concept targets, 2022 prototype figures, patents and leaks into one "spec sheet". Our edge is being the page people trust, per the editorial rules.
+- **Kept the stack:** the existing data → validator → builder pattern (`data/optimus-studio.json`, `optimus-model.js`, `scripts/build-optimus-studio.mjs`), no framework or new dependency. The page stays readable with JavaScript off.
+- **Trade-off:** the page shows fewer numbers than rival sites. Rivals' figures are their makers' own, labelled as such.
+
 ## 2026-10-27 · Robotaxi Boss: windows, tokens and a real way to lose
 - **Decision:** campaign and daily resolve each day in four windows with a short dispatch pause; interventions cost dispatch tokens; the week can end early on low reputation (under 15) or negative cash. Training stays on the original single-shot day and never fails.
 - **Why:** the old game had no lose state, one dominant strategy and a campaign identical on every replay. Windows give timing decisions (rush hours, concert let-out, airport delay), tokens limit them, contracts and the shop add trade-offs, and weeks escalate.

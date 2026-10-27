@@ -1,5 +1,14 @@
 # Changelog
 
+## 27 Oct 2026 — Optimus guide: research backbone (Optimus PR 1 of 3)
+
+- **State of play:** eight sourced numbers (production started, 1M/yr Fremont design, 10M/yr Texas design, 20,000/week goal, late-2027 deliveries, AI5 in April 2027, 22-DoF Gen 3 hand, the 1M-robot pay milestone), each labelled Disclosed, Target or Reported, with an as-of date.
+- **Generations compared:** concept, AI Day prototype, Gen 2, Version 2.5 and Gen 3 side by side; blank cells say "Not published" rather than guessing. On phones, a switcher shows one generation beside the labels.
+- **Timeline:** 19 dated moments from 2021 to the 2027 targets, filterable by kind.
+- **Promises vs reality:** seven dated commitments checked: 2 kept, 1 missed, 1 not shown, 3 open.
+- **The field:** Atlas, Figure 03, Digit, NEO and Unitree G1 in their makers' own words, next to Optimus.
+- Three more evidence records (Tesla Diner, kung fu, running), 14 FAQs, 38 sources (all opened on 27 Oct 2026), BreadcrumbList, and a fix for the literal `${reviewDate}` in the sources header.
+
 ## 27 Oct 2026 — Robotaxi Boss: sound, phone and results (PR 3 of 3)
 
 - **Sound:** on after you start (a muted choice is remembered, same as the other games), through a compressor with city hum, a rain bed when it rains, traffic during the day replay, a rising cash tick on fares, a sting and haptic when a cab breaks, an arpeggio and haptic for contract wins, and a toast over the map for events and status. Haptics respect mute and reduced motion.
