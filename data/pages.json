@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24",
+  "updated": "2026-10-27",
   "pages": [
     {
       "url": "/",
@@ -407,7 +407,7 @@
       "url": "/optimus.html",
       "title": "Tesla Optimus — visual field guide",
       "tag": "Optimus",
-      "summary": "Explore the robot, six engineering systems, official films, generations and dated evidence on autonomy and production."
+      "summary": "Where Tesla’s humanoid stands: early production in Fremont, generations compared, promises checked, rivals and dated evidence on autonomy."
     },
     {
       "url": "/optimus.html#engineering",
@@ -416,22 +416,52 @@
       "summary": "Vision, hands, actuators, balance, learning and power, with interactive anatomy."
     },
     {
+      "url": "/optimus.html#status",
+      "title": "Optimus state of play",
+      "tag": "Optimus",
+      "summary": "Production status, Fremont and Texas line capacity, ramp and delivery targets, labelled by source."
+    },
+    {
+      "url": "/optimus.html#generations",
+      "title": "Optimus generations compared",
+      "tag": "Optimus",
+      "summary": "Height, weight, hands, actuators, battery and price talk for each version, with gaps shown."
+    },
+    {
+      "url": "/optimus.html#timeline",
+      "title": "Optimus timeline 2021 to 2027",
+      "tag": "Optimus",
+      "summary": "Every dated milestone from the 2021 concept to Fremont production and the targets ahead."
+    },
+    {
+      "url": "/optimus.html#promises",
+      "title": "Optimus promises vs reality",
+      "tag": "Optimus",
+      "summary": "Dated Tesla and Musk commitments, checked: kept, missed, open."
+    },
+    {
+      "url": "/optimus.html#ramp",
+      "title": "Optimus production ramp explorer",
+      "tag": "Optimus",
+      "summary": "What 20,000 a week means: drag through an illustrative ramp toward the 1M-a-year Fremont design."
+    },
+    {
+      "url": "/optimus.html#field",
+      "title": "Optimus vs other humanoids",
+      "tag": "Optimus",
+      "summary": "Atlas, Figure 03, Digit, NEO and Unitree G1 in their makers’ own words."
+    },
+    {
       "url": "/optimus.html#films",
       "title": "Optimus official Tesla films",
       "tag": "Optimus",
       "summary": "Gen 2, Sort & Stretch and We Robot: watch official material with context."
     },
     {
-      "url": "/optimus.html#evolution",
-      "title": "Optimus evolution timeline",
-      "tag": "Optimus",
-      "summary": "From the 2021 concept through prototypes and Gen 2 to Tesla-reported early ramp."
-    },
-    {
       "url": "/optimus.html#demos",
       "title": "Optimus demonstration archive",
       "tag": "Optimus",
-      "summary": "Nine dated records with attributed control modes, what was shown and what remains unestablished."
+      "summary": "12 dated records with attributed control modes, what was shown and what remains unestablished."
     },
     {
       "url": "/optimus.html#questions",
@@ -492,6 +522,24 @@
       "title": "Optimus: In the seat, not established as the driver",
       "tag": "Optimus",
       "summary": "2026-10-15 — Optimus was shown seated in the Roadster after the car’s demonstration. Control mode not established. The car’s programmed path is not evidence that the robot drove, steered or controlled it."
+    },
+    {
+      "url": "/optimus.html#tesla-diner-2025",
+      "title": "Optimus: Popcorn at the Tesla Diner",
+      "tag": "Optimus",
+      "summary": "2025-07-21 — Optimus scooped popcorn into guests’ bags and posed for photos. Control mode not established. Reporting does not establish whether it acted on its own or with an operator."
+    },
+    {
+      "url": "/optimus.html#kung-fu-2025",
+      "title": "Optimus: Sparring with a trainer",
+      "tag": "Optimus",
+      "summary": "2025-10-04 — Optimus trades strikes and blocks and recovers its balance when pushed. Autonomy claimed by Tesla. Musk says AI, not teleoperation; this is unverified, and the hands are not used."
+    },
+    {
+      "url": "/optimus.html#running-2025",
+      "title": "Optimus: A new running record in the lab",
+      "tag": "Optimus",
+      "summary": "2025-12-02 — A short clip of Optimus running on the lab floor. Control mode not established. No speed, distance or control mode was published."
     },
     {
       "url": "/production.html",

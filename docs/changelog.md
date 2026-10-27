@@ -7,6 +7,50 @@
 - Kept news/tracker refresh ownership, SEO metadata, source context and existing imagery. Added no runtime JavaScript or dependency.
 - Responsive browser checks cover phones, tablet, desktop, both themes, no JavaScript, unavailable data and 200% text. Before/after previews come from the actual PR base and head; no test emails are sent.
 
+
+## 27 Oct 2026 — Optimus guide: interactive showpieces (Optimus PR 2 of 3)
+
+- **X-ray body:** the cropped portrait in "Inside the machine" is replaced by a detailed X-ray illustration: translucent shell, frame, all 28 body actuators in the 2022 layout (14 rotary, 14 linear, from Tesla's AI Day description), the 2-DoF neck, battery cells and pack board, central computer, cameras, cable runs, six hand motors with tendons, and foot force sensors. Choosing a system lights it up and shows its labels.
+- **Hand lab:** switch between Gen 2 (11 DoF, published) and Gen 3 (22 DoF, reported) to see which motions are driven and how tendons run to forearm actuators; a grip slider shows why touch sensing matters (slip, hold, crack).
+- **Ramp explorer:** an illustrative S-curve toward 20,000 a week ("at least a year", per Musk), rounded figures marked "Illustration, not a forecast", with a slider, pointer cursor, two paces, weekly/yearly/cumulative readouts, a delivery-target band and a table view. Labelled as illustration; Tesla has published no volumes.
+- **Promise strip:** each commitment drawn from when it was said to when it was due, with its outcome and a Today line.
+- New tests for the ramp model and every new control; illustrations live in `scripts/optimus-art.mjs`.
+
+## 27 Oct 2026 — Optimus guide: research backbone (Optimus PR 1 of 3)
+
+- **State of play:** eight sourced numbers (production started, 1M/yr Fremont design, 10M/yr Texas design, 20,000/week goal, late-2027 deliveries, AI5 in April 2027, 22-DoF Gen 3 hand, the 1M-robot pay milestone), each labelled Disclosed, Target or Reported, with an as-of date.
+- **Generations compared:** concept, AI Day prototype, Gen 2, Version 2.5 and Gen 3 side by side; blank cells say "Not published" rather than guessing. On phones, a switcher shows one generation beside the labels.
+- **Timeline:** 19 dated moments from 2021 to the 2027 targets, filterable by kind.
+- **Promises vs reality:** seven dated commitments checked: 2 kept, 1 missed, 1 not shown, 3 open.
+- **The field:** Atlas, Figure 03, Digit, NEO and Unitree G1 in their makers' own words, next to Optimus.
+- Three more evidence records (Tesla Diner, kung fu, running), 14 FAQs, 38 sources (22 new or rechecked on 27 Oct 2026), BreadcrumbList, and a fix for the literal `${reviewDate}` in the sources header.
+
+## 27 Oct 2026 — Robotaxi Boss: sound, phone and results (PR 3 of 3)
+
+- **Sound:** on after you start (a muted choice is remembered, same as the other games), through a compressor with city hum, a rain bed when it rains, traffic during the day replay, a rising cash tick on fares, a sting and haptic when a cab breaks, an arpeggio and haptic for contract wins, and a toast over the map for events and status. Haptics respect mute and reduced motion.
+- **Phone:** Play enters focus view, the action bar ("Run the day", "Sleep ·" and the rest) is fixed to the bottom of the screen, the fleet is a swipeable tray, dispatch opens as a bottom sheet, the header and mode bar are compact, and landscape gives the map the full height. The map scrolls into view after each night instead of jumping to the forecast.
+- **Results screen:** animated medal, points counting up, rows (cash, cabs, rides, missed, reputation, contracts won), personal-best delta, and a Share result button that sends a generated 1200x630 card through the share sheet (text and link fallback, then clipboard). Failed weeks ("Permits suspended", "Chapter 11") get their own card.
+- Shared helpers `SDArcade.share` and `SDArcade.medalSvg` added to `arcade.js` for new games to reuse.
+- Cleanup: removed the dead leaderboard, callsign and hero-button code from `robotaxi.js` and 23 dead CSS rules from `robotaxi.css`; the manual and intro describe windows, tokens, contracts and the new ways to lose.
+- Tests: Robotaxi sound default and remembered mute, phone focus view with the fixed action bar at 390 px, results card after the week.
+
+## 27 Oct 2026 — Robotaxi Boss: decisions that matter (PR 2 of 3)
+
+- Campaign and daily days now run in **four dispatch windows** (morning rush, midday, evening rush, night out). Between windows the day pauses for about 7 seconds: spend **dispatch tokens** (2 a day, 3 with the Ops centre) to **surge** a zone (+25% fare, -20% demand), **rebalance the fleet** toward the zones that are short, or pay for a **roadside fix** after a breakdown. Under reduced motion and in tests the windows run straight through with no interventions, so `Run the day` is still synchronous. Training keeps the single-shot day.
+- **Two contracts a day:** pick the safe one or the bold one (35% more rides for 70% more bonus).
+- **Six upgrades:** Ops centre (+1 token), Surge AI (surge +40% fares, only 15% demand lost) and Brand campaign (+10 reputation, +5% demand) join the original three.
+- **Stakes:** reputation under 15, or cash below zero, at the end of a day ends the week early ("Permits suspended" / "Chapter 11", recorded as an incomplete run). Reputation rules are gentler than before for ordinary coverage gaps and harsher for total neglect.
+- **Campaign progression:** "Run another week" starts week 2, 3 and so on (more rain, +6% demand per week, more breakdowns). Week 1 is unchanged and deterministic; Restart goes back to week 1.
+- Anonymous counters for Robotaxi starts, retries, completions and `game_fail_bankrupt` (Worker allowlist extended, redeploy needed).
+- Map and run improvements: the map scrolls into view when you run the day; playback keeps running when the map is off screen.
+
+## 27 Oct 2026 — Robotaxi Boss: the living city (PR 1 of 3)
+
+- The static SVG diagram is replaced by a live Canvas 2D city (`robotaxi-fx.js`): a seeded procedural map with downtown towers, an airport with a runway and passing planes, a stadium with floodlights and a concert glow, hills with houses and contours, a river, arterial roads and a depot with charging bays.
+- Time of day runs from 6:00 to 22:00 (ambient light, dusk glow, lit windows, road lamps, headlight cones); rain adds streaks, ripples and wet roads.
+- Cabs drive their routes to their zones; demand shows as pulsing passenger dots and a coverage ring around each zone; rides produce floating fares and a cash ticker; missed demand and breakdowns (with smoke) are shown on the map; the contract has a progress ring. The day now plays as a 10-second replay of the existing deterministic result (skippable; instant under reduced motion). Rules, scores and saved weeks are unchanged.
+- Zone hit areas stay real buttons ("Assign selected cabs to ..."); the cards, steppers and fleet grid are untouched. The canvas reserves its space (layout shift 0.0035 on desktop, 0 on phone) and costs about 3.6 ms per frame in a software-rendered browser.
+
 ## 27 Oct 2026 — Hot Staging phone layout, results screen and cleanup (PR 3 of 3)
 
 - Phone: compact header and mode bar, Play enters focus view automatically (exit is remembered for the session), bigger thumb pad with safe-area padding and a Throttle button in campaign and daily, and a landscape layout where the stage fills the screen and the pad floats over the lower corners.

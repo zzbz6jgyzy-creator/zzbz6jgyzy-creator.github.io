@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T14:25:20.149Z",
+  "updated": "2026-10-27T18:17:58.310Z",
   "changes": [
     {
       "type": "changed",
@@ -68,6 +68,23 @@
       "summary": "Verizon’s CEO put a $300B–$500B, four-to-six-year price on a SpaceX phone network on 26 Oct. Musk replied “2 or 3 years.” What each side said, and the math.",
       "title": "Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3",
       "id": "logged|dispatch:/dispatch/verizon-vs-musk-starlink-mobile.html|2026-10-27T02:36:00.000Z|Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3"
+    },
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "463",
+      "next": "544",
+      "at": "2026-10-27T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html#cc-changes",
+      "summary": "Texas Cybercab registrations moved from 463 to 544. A registered car isn’t necessarily in service yet.",
+      "title": "Texas Cybercab count",
+      "id": "changed|robotaxi:tx-cybercab|2026-10-27T00:00:00.000Z|544"
     },
     {
       "type": "changed",

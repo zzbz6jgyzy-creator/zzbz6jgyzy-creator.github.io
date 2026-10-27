@@ -192,6 +192,7 @@
     "robotaxi": [
       "arcade-model.js",
       "arcade.js",
+      "robotaxi-fx.js",
       "robotaxi.js"
     ],
     "games": [

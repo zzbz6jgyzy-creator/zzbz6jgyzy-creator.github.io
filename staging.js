@@ -49,13 +49,13 @@
 
   const HOLD_RISE = 0.0036;
   const HOLD_FALL = 0.006;
-  const GIMBAL = 0.00028;
-  const GUST_AV = 0.0000052 * 3;
+  const GIMBAL = 0.00034;
+  const GUST_AV = 0.0000052 * 2;
   const MAXQ_FROM = 0.34;
   const MAXQ_TO = 0.62;
-  const WIND_AV = 0.000055;
-  const ENGINE_AV = 0.0000052;
-  const RESTORE_IDLE = 0.000048;
+  const WIND_AV = 0.00004;
+  const ENGINE_AV = 0.0000038;
+  const RESTORE_IDLE = 0.00006;
   const RESTORE_STEER = 0.000024;
   const AV_DAMP = 0.86;
 
@@ -260,14 +260,14 @@
     pingTick = 0;
     autoThr = false;
     if (dyn) {
-      const n = 1 + Math.floor(flight / 2) + (arcade.mode === "daily" ? 1 : 0);
+      const n = 1 + Math.floor(flight / 3) + (arcade.mode === "daily" ? 1 : 0);
       for (let i = 0; i < n; i += 1) {
         gusts.push({ t: 1.6 + simRandom() * Math.max(1, s.climb - 3.4), dir: simRandom() > 0.5 ? 1 : -1, str: 0.9 + simRandom() * 0.8, dur: 1.3, said: false });
       }
       if (flight >= 1) {
         gusts.push({ t: s.climb * 0.47, dir: simRandom() > 0.5 ? 1 : -1, str: 1 + simRandom() * 0.6, dur: 1.3, said: false });
       }
-      if (flight >= 2) {
+      if (flight >= 3) {
         gusts.push({ t: s.climb - 0.9, dir: simRandom() > 0.5 ? 1 : -1, str: 1 + simRandom() * 0.6, dur: 1.3, said: false });
       }
       gusts.sort((a, b) => a.t - b.t);
@@ -1431,7 +1431,7 @@
       const q = tPlay / s.climb;
       const band = state === "boost" && q >= MAXQ_FROM && q <= MAXQ_TO;
       const thr = thrOn();
-      load = clamp(load + (band ? (thr ? 0.05 : 0.46) : -0.14) * (dt / 1000), 0, 1.2);
+      load = clamp(load + (band ? (thr ? 0.04 : 0.3) : -0.14) * (dt / 1000), 0, 1.2);
       if (thr) thrTime += dt / 1000;
       if (!maxqSaid && q >= MAXQ_FROM - 0.06) {
         maxqSaid = true;

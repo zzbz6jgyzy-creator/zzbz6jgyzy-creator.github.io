@@ -4,19 +4,6 @@
   padding: 1.8rem 0 2.4rem;
 }
 
-.taxi-intro h1 {
-  margin: 0.15rem 0 0.55rem;
-  font-size: clamp(2rem, 5vw, 3.1rem);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-}
-
-.taxi-intro p {
-  margin: 0;
-  max-width: 38rem;
-  color: var(--ink-soft);
-}
-
 .taxi-intro .eyebrow a {
   color: inherit;
   text-decoration: none;
@@ -26,40 +13,8 @@
   color: #fff;
 }
 
-.taxi-intro-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.taxi-intro-side {
-  display: grid;
-  justify-items: end;
-  align-content: end;
-  gap: 0.55rem;
-}
-
-.taxi-best {
-  margin: 0;
-  color: var(--mute);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .taxi-intro-side .button[hidden] {
   display: none !important;
-}
-
-.taxi-play {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 16.8rem;
-  gap: 1.15rem 1.3rem;
-  align-items: start;
-  margin: 1.25rem 0 0.85rem;
 }
 
 /* The stage is a dark game panel in both themes: pin the dark tokens locally. */
@@ -513,136 +468,8 @@
   margin-top: 0.9rem !important;
 }
 
-.taxi-board {
-  padding: 0.95rem 1rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--card);
-}
-
-.taxi-board-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.6rem;
-}
-
 .taxi-board-head .eyebrow {
   margin: 0;
-}
-
-.taxi-board-head .game-board-status {
-  margin: 0.2rem 0 0;
-}
-
-.taxi-mute {
-  appearance: none;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--mute);
-  border-radius: 6px;
-  padding: 0.2rem 0.45rem;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.taxi-mute.is-off {
-  color: var(--tesla);
-}
-
-.taxi-callsign {
-  display: grid;
-  gap: 0.25rem;
-  margin: 0.85rem 0 0.7rem;
-  color: var(--mute);
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.taxi-callsign input {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--input-bg);
-  color: var(--ink);
-  font: inherit;
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 0.45rem 0.55rem;
-  touch-action: manipulation;
-}
-
-.taxi-callsign input:focus {
-  outline: 1px solid var(--ink-soft);
-  border-color: var(--ink-soft);
-}
-
-.taxi-board-now {
-  margin: 0 0 0.65rem;
-  color: var(--ink-soft);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-}
-
-.taxi-board-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.28rem;
-}
-
-.taxi-board-list li {
-  display: grid;
-  grid-template-columns: 1.2rem 1fr auto;
-  gap: 0.45rem;
-  align-items: baseline;
-  padding: 0.32rem 0.2rem;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-}
-
-.taxi-board-list li.is-empty {
-  display: block;
-  color: var(--mute);
-  border-bottom: 0;
-}
-
-.taxi-board-list li.is-fresh {
-  color: #fff;
-  background: rgba(200, 16, 46, 0.12);
-}
-
-.taxi-board-rank {
-  color: var(--mute);
-}
-
-.taxi-board-who {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.taxi-board-note,
-.taxi-fineprint {
-  margin: 0.75rem 0 0;
-  color: var(--mute);
-  font-size: 0.78rem;
-  line-height: 1.45;
-}
-
-.taxi-fineprint {
-  margin-top: 0.35rem;
-  font-size: 0.84rem;
 }
 
 @media (max-width: 880px) {
@@ -737,4 +564,408 @@
 .taxi-credit a {
   color: inherit;
   text-decoration: underline;
+}
+
+
+/* Live city canvas. The container reserves its space so nothing shifts when the canvas mounts. */
+.taxi-page .ac-city {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: none;
+  margin: 15px 0;
+  background: #0d1824;
+}
+
+.taxi-city-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.taxi-page .ac-city .taxi-city-hit {
+  position: absolute;
+  width: 5.2rem;
+  height: 5.2rem;
+  min-height: 0;
+  margin: -2.6rem 0 0 -2.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  color: transparent;
+  cursor: pointer;
+}
+
+.taxi-city-hit:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -4px;
+}
+
+@media (max-width: 760px) {
+  .taxi-page .ac-city {
+    aspect-ratio: 4 / 3.4;
+  }
+}
+
+/* Dispatch pause between the four windows of a day (campaign and daily). */
+.taxi-dispatch {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+  z-index: 5;
+  display: grid;
+  gap: 0.5rem;
+  max-height: calc(100% - 16px);
+  padding: 0.6rem 0.7rem;
+  overflow: auto;
+  border: 1px solid rgba(255, 215, 120, 0.4);
+  border-radius: 10px;
+  background: rgba(6, 12, 22, 0.92);
+}
+
+.taxi-dispatch[hidden] {
+  display: none;
+}
+
+.taxi-dispatch-head {
+  margin: 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+}
+
+.taxi-dispatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.taxi-page .taxi-dispatch-btn {
+  min-height: 2.6rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.74rem;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.taxi-dispatch-btn small {
+  display: block;
+  opacity: 0.7;
+  font-size: 0.64rem;
+}
+
+.taxi-dispatch-btn[aria-pressed="true"] {
+  border-color: #7dffc4;
+  color: #7dffc4;
+}
+
+.taxi-dispatch-go {
+  justify-self: end;
+}
+
+.taxi-contract-opt {
+  display: block;
+  width: 100%;
+  margin: 0.3rem 0;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(255, 215, 120, 0.3);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.taxi-contract-opt b {
+  margin-right: 0.4rem;
+  color: #ffd77a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+}
+
+.taxi-contract-opt[aria-pressed="true"] {
+  border-color: #ffd77a;
+  background: rgba(255, 215, 120, 0.12);
+}
+
+/* Toast over the city for events and status. */
+.taxi-toast {
+  position: absolute;
+  top: 3.6rem;
+  left: 50%;
+  z-index: 6;
+  max-width: 90%;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(255, 215, 120, 0.45);
+  border-radius: 999px;
+  background: rgba(6, 12, 22, 0.92);
+  color: #f1f6fb;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  transform: translate(-50%, -6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.taxi-toast.is-on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Results card inside the overlay. */
+.taxi-results {
+  width: min(28rem, 100%);
+  margin: 0.2rem 0 0.4rem;
+  text-align: left;
+}
+
+.taxi-overlay.has-results .taxi-overlay-cab,
+.taxi-overlay.has-results .taxi-credit {
+  display: none;
+}
+
+.taxi-results[hidden] {
+  display: none;
+}
+
+.taxi-medal {
+  width: 4.2rem;
+  height: 4.2rem;
+  margin-bottom: 0.4rem;
+  animation: taxi-medal 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+.taxi-medal svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 14px rgba(255, 200, 90, 0.4));
+}
+
+.ac-page .taxi-overlay .taxi-score {
+  margin: 0.1rem 0 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.taxi-score span {
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 600;
+}
+
+.taxi-score small {
+  color: var(--mute);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.taxi-rows {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.28rem 1.2rem;
+  margin: 0 0 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.taxi-rows dt {
+  color: var(--mute);
+  text-align: left;
+}
+
+.taxi-rows dd {
+  margin: 0;
+  text-align: right;
+}
+
+.ac-page .taxi-pb {
+  margin: 0 0 0.6rem;
+  color: #7dffc4;
+  font-size: 0.8rem;
+}
+
+.ac-page .taxi-pb[hidden] {
+  display: none;
+}
+
+@keyframes taxi-medal {
+  from {
+    opacity: 0;
+    transform: scale(0.4) rotate(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .taxi-medal {
+    animation: none;
+  }
+
+  .taxi-toast {
+    transition: none;
+  }
+}
+
+/* Phone-first: compact header, fixed action bar, swipeable fleet tray, bottom-sheet dispatch. */
+@media (max-width: 760px) {
+  .taxi-page .ac-game-intro > div > p,
+  .taxi-page .ac-game-intro .ac-kicker,
+  .taxi-page .ac-game-intro h1 span {
+    display: none;
+  }
+
+  .taxi-page .ac-game-intro h1 {
+    font-size: 1.9rem;
+    line-height: 1.05;
+  }
+
+  .taxi-page .ac-game-intro {
+    padding: 0 0 0.5rem;
+  }
+
+  .taxi-page .ac-back {
+    margin-bottom: 0;
+  }
+
+  .taxi-page .ac-modebar {
+    gap: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .taxi-page .ac-modebar label {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .taxi-page .ac-modebar [data-ac-save] {
+    display: none;
+  }
+
+  .taxi-page .taxi-fleet {
+    flex-wrap: nowrap;
+    padding-bottom: 0.4rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .taxi-page .taxi-cab {
+    flex: 0 0 7.2rem;
+    scroll-snap-align: start;
+  }
+
+  .taxi-page .taxi-actions:empty {
+    display: none;
+  }
+
+  .ac-focus .taxi-page .ac-playframe {
+    padding-bottom: 5.4rem;
+  }
+
+  .ac-focus .taxi-page .taxi-actions {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 30;
+    margin: 0;
+    padding: 0.6rem 0.8rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(8, 12, 20, 0.96);
+  }
+
+  .ac-focus .taxi-page .taxi-actions .button {
+    flex: 1 1 auto;
+    min-height: 3rem;
+  }
+
+  .ac-focus .taxi-page .taxi-dispatch {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    max-height: 60dvh;
+    padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
+    border-radius: 12px 12px 0 0;
+  }
+}
+
+/* Landscape phones: the map fills the screen height, controls sit in the fixed bar. */
+@media (max-height: 500px) and (orientation: landscape) and (pointer: coarse) {
+  .ac-focus .taxi-page .ac-city {
+    aspect-ratio: auto;
+    height: calc(100dvh - 128px);
+  }
+
+  .ac-focus .taxi-page :is(.ac-taxi-nav, .taxi-week, .taxi-forecast) {
+    display: none;
+  }
+
+  .ac-focus .taxi-page .ac-playframe {
+    padding-bottom: 4.6rem;
+  }
+
+  .ac-focus .taxi-page .taxi-actions {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 30;
+    margin: 0;
+    padding: 0.4rem 0.8rem calc(0.4rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(8, 12, 20, 0.96);
+  }
+
+  .ac-focus .taxi-page .taxi-dispatch {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+    max-height: calc(100% - 16px);
+    border-radius: 10px;
+  }
+
+  .taxi-page .taxi-overlay {
+    padding: 0.6rem 1rem;
+    overflow: auto;
+  }
+
+  .taxi-page .taxi-overlay-cab,
+  .taxi-page .taxi-credit {
+    display: none;
+  }
+
+  .taxi-page .taxi-results {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.8rem;
+    margin: 0;
+  }
+
+  .taxi-page .taxi-medal {
+    grid-row: 1 / 3;
+    width: 2.8rem;
+    height: 2.8rem;
+    margin: 0;
+  }
+
+  .taxi-page .taxi-rows {
+    grid-column: 1 / -1;
+    margin: 0.2rem 0 0.3rem;
+    gap: 0.12rem 1.2rem;
+    font-size: 0.7rem;
+  }
 }

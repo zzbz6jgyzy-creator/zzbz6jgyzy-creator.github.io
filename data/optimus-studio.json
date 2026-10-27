@@ -1,15 +1,15 @@
 {
   "schema": 1,
-  "reviewed": "2026-10-24",
+  "reviewed": "2026-10-27",
   "title": "Optimus — A Closer Look",
   "status": {
     "stage": "Early ramp",
     "source": "q3",
     "deliveries": "Late 2027 target",
     "deliverySource": "call",
-    "price": "No retail offer established",
+    "price": "No price published",
     "priceSource": "call",
-    "description": "Tesla reports early production at Fremont. Broader usefulness, durability and delivery targets remain separate milestones."
+    "description": "Tesla said on 21 October 2026 that production had begun on its high-volume Fremont line. It has not said how many robots it has built, has not unveiled Gen 3 and has not published a price. Deliveries to other companies are a late-2027 target."
   },
   "sources": [
     {
@@ -25,16 +25,16 @@
       "title": "Tesla Q3 2026 update",
       "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828026066738/tsla-20261021-gen.pdf",
       "kind": "Primary filing · 21 Oct 2026",
-      "note": "Reports early Optimus production at Fremont. California is listed as Early Ramp and Texas as Construction; the table does not give an Optimus annual capacity number.",
-      "checked": "2026-10-24"
+      "note": "States “Optimus production began in Fremont on our high-volume lines” and calls the output “the first production-quality bots” Tesla has made. The capacity table lists California Optimus as Early Ramp and Texas as Construction, with no unit figure.",
+      "checked": "2026-10-27"
     },
     {
       "id": "call",
       "title": "Q3 2026 earnings-call transcript",
       "url": "https://www.fool.com/earnings/call-transcripts/2026/10/22/tesla-tsla-q3-2026-earnings-call-transcript/",
       "kind": "Transcript · 21 Oct 2026 call",
-      "note": "Musk discusses an early, uneven production ramp and targets outside-company deliveries toward late 2027. Hands, AI and durability remain development priorities. Targets can change.",
-      "checked": "2026-10-24"
+      "note": "Musk: early production on a high-volume Fremont line; at least a year to an annualised 20,000 a week; outside deliveries toward the end of 2027; AI5 in Optimus around April 2027. Targets can change.",
+      "checked": "2026-10-27"
     },
     {
       "id": "gen2",
@@ -161,8 +161,176 @@
       "title": "Tesla Q4 2025 update",
       "url": "https://ir.tesla.com/_flysystem/s3/sec/000162828026003837/tsla-20260128-gen.pdf",
       "kind": "Primary filing · 28 Jan 2026",
-      "note": "Tesla described Gen 3 as its first design intended for mass production and targeted a reveal in Q1 2026. That dated intention is separate from a verified public reveal or final specification.",
-      "checked": "2026-10-24"
+      "note": "Plans a Q1 2026 unveil of Gen 3, “our first design meant for mass production”, with major upgrades from version 2.5, start of production before the end of 2026 and eventual planned capacity of 1 million robots a year.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "q1_26",
+      "title": "Tesla Q1 2026 update",
+      "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q1-2026-Update.pdf",
+      "kind": "Primary filing · 22 Apr 2026",
+      "note": "The first-generation line, “designed for 1 million robots a year”, will replace the Model S and Model X lines in Fremont; Gigafactory Texas is being prepared for a second-generation line designed for long-term capacity of 10 million a year. Design capacity is not output.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "q2_26",
+      "title": "Tesla Q2 2026 update",
+      "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf",
+      "kind": "Primary filing · 22 Jul 2026",
+      "note": "Model S and X lines decommissioned; first-generation Optimus lines being installed. Initial builds go to the Optimus Academy for training-data collection and further development.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "nata_prod",
+      "title": "Not a Tesla App: Optimus production begins",
+      "url": "https://www.notateslaapp.com/news/4866/tesla-officially-begins-optimus-robot-production",
+      "kind": "Reporting · 22 Oct 2026",
+      "note": "Summarises the Q3 call: launch production uses the Gen 3 design, Gen 4 is planned for the Texas line, the S/X teardown took 46 days, and the production design’s hand has 22 degrees of freedom. Secondary reporting.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "nata_gen2",
+      "title": "Not a Tesla App: Gen 2 improvements",
+      "url": "https://www.notateslaapp.com/news/1821/tesla-unveils-optimus-robot-gen-2-tesla-designed-fingertip-sensors-actuators-and-ten-other-improvements-video",
+      "kind": "Reporting of Tesla’s film · 13 Dec 2023",
+      "note": "Lists the improvements Tesla captioned in its Gen 2 film: 10 kg lighter, 30% faster walking, 2-DoF neck, 11-DoF hands with tactile sensing on all fingers, foot force/torque sensing.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "nata_ref",
+      "title": "Not a Tesla App: AI Day 2022 hardware",
+      "url": "https://www.notateslaapp.com/news/1000/everything-we-know-about-optimus-the-tesla-robot",
+      "kind": "Reporting · 3 Oct 2022",
+      "note": "Records the AI Day 2022 disclosures: 28 actuators, a 2.3 kWh chest battery projected to last a working day, six actuators and 11 degrees of freedom per hand, and a central torso computer.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "engadget22",
+      "title": "Engadget: AI Day 2022",
+      "url": "https://www.engadget.com/tesla-debuts-optimus-humanoid-service-robot-ai-day-2022-012054385",
+      "kind": "Contemporaneous reporting · 30 Sep 2022",
+      "note": "Reports Musk’s estimate that Optimus could cost under $20,000 at high volume, and that the 2021 reveal used a person in a suit.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "tc21",
+      "title": "TechCrunch: the Tesla Bot is coming",
+      "url": "https://techcrunch.com/2021/08/19/musk-the-tesla-bot-is-coming/",
+      "kind": "Contemporaneous reporting · 19 Aug 2021",
+      "note": "Reports the concept specification (5 ft 8 in, 125 lb, a 5 mph walking gait) and that a prototype was expected “sometime next year”.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "kovac",
+      "title": "Bloomberg via Gulf News: Optimus leader leaves",
+      "url": "https://gulfnews.com/technology/tesla-s-leader-of-optimus-humanoid-robot-program-leaves-company-1.500155188",
+      "kind": "Independent reporting · 7 Jun 2025",
+      "note": "Milan Kovac left on 6 June 2025; Ashok Elluswamy, who leads the Autopilot teams, took responsibility for Optimus. Also reports Musk expected thousands of units in Tesla facilities by the end of 2025.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "price24",
+      "title": "Digital Trends: We, Robot",
+      "url": "https://digitaltrends.com/?p=3734125",
+      "kind": "Reporting · 12 Oct 2024",
+      "note": "Paraphrases Musk: at scale Optimus should cost between $20,000 and $30,000. Robots served drinks, talked with guests and danced.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "diner",
+      "title": "ABC7: Tesla Diner opens",
+      "url": "https://abc7.com/17235885",
+      "kind": "Local reporting · 22 Jul 2025",
+      "note": "Optimus scooped popcorn for guests and posed for photos on opening day, 21 July 2025. The report does not establish how it was controlled.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "kungfu",
+      "title": "Interesting Engineering: Optimus kung fu",
+      "url": "https://interestingengineering.com/innovation/optimus-robot-performs-kung-fu-moves",
+      "kind": "Reporting · 4 Oct 2025",
+      "note": "A 36-second lab clip of Optimus sparring with a trainer. Musk said the movements were AI-driven, not teleoperated; the article notes this is unverified.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "running",
+      "title": "Optimus running in the lab",
+      "url": "https://lifeboat.com/blog/2025/12/tesla-optimus-running-test-sets-new-lab-record",
+      "kind": "Write-up embedding the official post · 2 Dec 2025",
+      "note": "Reproduces Tesla Optimus’s post “Just set a new PR in the lab”: a short clip of the robot running. No speed was published.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "pay",
+      "title": "ACS Information Age: Musk pay package",
+      "url": "https://ia.acs.org.au/article/2025/tesla-investors-approve-musks-1-trillion-pay-package.html",
+      "kind": "Reporting · 10 Nov 2025",
+      "note": "Over 75% of voting shareholders approved the 2025 award; its milestones include delivering 1 million humanoid robots over the next decade.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "leak",
+      "title": "Not a Tesla App: Gen 3 app leak",
+      "url": "https://www.notateslaapp.com/news/4725/tesla-app-leaks-new-optimus-gen-3-robot-design",
+      "kind": "Reporting · 23 Sep 2026",
+      "note": "Renders labelled Gen 3 found in Tesla’s Android app: sealed joint covers and matte black fairings. Tesla has not confirmed them; app art may differ from the production robot.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "atlas",
+      "title": "Engadget: Atlas at CES 2026",
+      "url": "https://www.engadget.com/big-tech/boston-dynamics-unveils-production-ready-version-of-atlas-robot-at-ces-2026-234047882.html",
+      "kind": "Reporting · 8 Jan 2026",
+      "note": "Production version of Atlas: lifts 110 lb, reaches 7.5 ft; first deployments to Hyundai and Google DeepMind; Hyundai plans plant use in 2028.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "figure",
+      "title": "Figure: Introducing Figure 03",
+      "url": "https://www.figure.ai/news/introducing-figure-03",
+      "kind": "Company announcement · 9 Oct 2025",
+      "note": "Fingertip sensors that detect about three grams; 2 kW wireless charging through the feet; a first BotQ line able to build up to 12,000 robots a year.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "neo",
+      "title": "1X: NEO",
+      "url": "https://www.1x.tech/neo",
+      "kind": "Company product page",
+      "note": "Home humanoid taking $200 deposits: 5 ft 6 in, 66 lb, 22-DoF hands. Remote 1X Experts can guide chores it does not know.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "agility",
+      "title": "Agility Robotics: Digit",
+      "url": "https://www.agilityrobotics.com/",
+      "kind": "Company site",
+      "note": "Customers shown include GXO, Schaeffler and Toyota Motor Manufacturing Canada; claims 65,000 hours of production experience; Digit 5 is in development.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "unitree",
+      "title": "Unitree: G1",
+      "url": "https://www.unitree.com/g1",
+      "kind": "Company product page",
+      "note": "From US$13.5K excluding tax and shipping; 1.32 m tall, about 35 kg; 23 to 43 joint motors.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "ai2022_talk",
+      "title": "AI Day 2022 transcript",
+      "url": "https://gist.github.com/L0rdCha0s/de22ae0c7e7a7a70b37ac9c1262e27e1",
+      "kind": "Community transcript of Tesla’s presentation · 30 Sep 2022",
+      "note": "Machine transcript of the event. Tesla engineers describe 28 actuators built from three rotary and three linear designs, the battery “in the middle of our torso”, the central computer in the torso, and hands with six actuators, 11 degrees of freedom and metallic tendons.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "layout",
+      "title": "Reeman: humanoid robot industry chain",
+      "url": "https://www.reemanrobot.com/news/humanoid-robot-industry-chain-and-prospect-ana-75674717.html",
+      "kind": "Industry analysis · 8 Mar 2024",
+      "note": "Gives the per-joint split behind Tesla’s 28 actuators: rotary at the shoulders (6), wrists (2), hips (4) and trunk (2); linear at the elbows (2), wrists (4), hips (2), knees (2) and ankles (4). Secondary; Tesla has not published a Gen 3 layout.",
+      "checked": "2026-10-27"
     }
   ],
   "systems": [
@@ -175,13 +343,13 @@
       "how": "Cameras provide information about objects, surfaces and motion. Joint-position sensing supplies proprioception: an estimate of where the limbs are. Contact and force feedback add information that an image can miss, such as whether a grasp is slipping.",
       "why": "Recognizing a cup is only a first step. The robot also needs an actionable estimate of where it is, how it can be reached and what may change during contact. Occlusion, reflections, lighting and moving people complicate that estimate.",
       "tesla": "Tesla’s stated engineering scope includes perception and physical interaction. Its published material does not provide a complete, final production sensor bill of materials here.",
-      "boundary": "This overview explains the roles of sensing. The annotation marks a topic, not the verified location of a particular production camera.",
+      "boundary": "This overview explains the roles of sensing. The diagram marks a topic, not the verified location of a particular production camera.",
       "sources": [
         "tesla",
         "cellfilm"
       ],
-      "x": 51,
-      "y": 14
+      "x": 58.8,
+      "y": 5.4
     },
     {
       "id": "hands",
@@ -196,8 +364,8 @@
       "sources": [
         "hands"
       ],
-      "x": 59,
-      "y": 51
+      "x": 74.4,
+      "y": 54.8
     },
     {
       "id": "actuation",
@@ -213,8 +381,8 @@
         "motors",
         "gen2"
       ],
-      "x": 40,
-      "y": 36
+      "x": 31.7,
+      "y": 17.5
     },
     {
       "id": "balance",
@@ -230,8 +398,8 @@
         "balance",
         "tesla"
       ],
-      "x": 53,
-      "y": 79
+      "x": 63.4,
+      "y": 99.2
     },
     {
       "id": "learning",
@@ -247,8 +415,8 @@
         "sort",
         "training"
       ],
-      "x": 51,
-      "y": 28
+      "x": 56.3,
+      "y": 19.3
     },
     {
       "id": "power",
@@ -264,8 +432,8 @@
         "call",
         "ai2022"
       ],
-      "x": 50,
-      "y": 45
+      "x": 40.5,
+      "y": 38.5
     }
   ],
   "demos": [
@@ -387,6 +555,45 @@
       "sources": [
         "roadster"
       ]
+    },
+    {
+      "id": "tesla-diner-2025",
+      "date": "2025-07-21",
+      "title": "Popcorn at the Tesla Diner",
+      "category": "event",
+      "control": "unspecified",
+      "context": "Hollywood diner opening",
+      "shown": "Optimus scooped popcorn into guests’ bags and posed for photos.",
+      "boundary": "Reporting does not establish whether it acted on its own or with an operator.",
+      "sources": [
+        "diner"
+      ]
+    },
+    {
+      "id": "kung-fu-2025",
+      "date": "2025-10-04",
+      "title": "Sparring with a trainer",
+      "category": "movement",
+      "control": "company_autonomy",
+      "context": "Tesla lab clip, posted by Musk",
+      "shown": "Optimus trades strikes and blocks and recovers its balance when pushed.",
+      "boundary": "Musk says AI, not teleoperation; this is unverified, and the hands are not used.",
+      "sources": [
+        "kungfu"
+      ]
+    },
+    {
+      "id": "running-2025",
+      "date": "2025-12-02",
+      "title": "A new running record in the lab",
+      "category": "movement",
+      "control": "unspecified",
+      "context": "Tesla Optimus post",
+      "shown": "A short clip of Optimus running on the lab floor.",
+      "boundary": "No speed, distance or control mode was published.",
+      "sources": [
+        "running"
+      ]
     }
   ],
   "films": [
@@ -421,109 +628,123 @@
       "note": "Guest interactions included reported human assistance. The evidence record below explains the distinction."
     }
   ],
-  "generations": [
-    {
-      "id": "concept",
-      "year": "2021",
-      "title": "An ambition takes shape.",
-      "label": "Concept",
-      "body": "Tesla proposes a humanoid form for a world built around people. A concept and a stage performance do not establish functioning hardware.",
-      "source": "ai2021"
-    },
-    {
-      "id": "prototype",
-      "year": "2022",
-      "title": "A machine, on its feet.",
-      "label": "Development prototypes",
-      "body": "Bumble C walks on stage; another, more integrated prototype is shown on a stand. The early battery disclosure belongs to this period.",
-      "source": "ai2022"
-    },
-    {
-      "id": "gen2",
-      "year": "2023",
-      "title": "The hardware gets a new iteration.",
-      "label": "Gen 2 reveal",
-      "body": "Tesla’s December film highlights revised actuators, sensors, hands and motion. These are dated manufacturer demonstrations, not current production specifications.",
-      "source": "gen2"
-    },
-    {
-      "id": "tasks",
-      "year": "2024",
-      "title": "Manipulation enters the foreground.",
-      "label": "Task demonstrations",
-      "body": "Sorting and cell-handling claims sit alongside the shirt-folding clarification and a public event with mixed reported control modes. Each needs its own evidence label.",
-      "source": "cells"
-    },
-    {
-      "id": "ramp",
-      "year": "2026",
-      "title": "From development to early manufacturing.",
-      "label": "Tesla-reported early ramp",
-      "body": "The Q3 update reports production at Fremont. Read that separately from output volume, outside-customer deliveries and finalized capability.",
-      "source": "q3"
-    }
-  ],
   "faqs": [
     {
       "question": "What is Optimus?",
-      "answer": "Tesla’s humanoid robotics program. The stated goal is a general-purpose machine for tasks people may find repetitive, dangerous or undesirable. A goal describes the intended destination; individual capabilities still need to be demonstrated and evaluated.",
+      "answer": "Tesla’s humanoid robot. Tesla’s stated goal is a general-purpose machine for work that is repetitive, dangerous or unwanted. It is now in early production in Fremont, California, but Tesla has not shown it doing a full working day for a customer.",
       "sources": [
-        "tesla"
+        "tesla",
+        "q3"
       ]
     },
     {
-      "question": "Can I buy one, and what does it cost?",
-      "answer": "No finalized retail offer is established by the reviewed sources. Earlier price comments were ambitions, not an orderable product price. The latest reviewed call targets deliveries to companies outside Tesla toward late 2027; it does not promise a consumer-home launch on that date.",
+      "question": "Is Optimus in production?",
+      "answer": "Tesla says yes: its Q3 2026 update reports that production began on its high-volume Fremont line and calls the output “the first production-quality bots” it has made. It has not said how many. In July, Tesla said early builds would go to its Optimus Academy to collect training data.",
+      "sources": [
+        "q3",
+        "q2_26"
+      ]
+    },
+    {
+      "question": "When can I buy one?",
+      "answer": "Not yet. On the Q3 2026 call, Musk said he expects deliveries to companies outside Tesla around the end of 2027, with industrial users first. Home robots come later as production grows. These are targets, not dates.",
       "sources": [
         "call",
-        "ai2022"
+        "nata_prod"
+      ]
+    },
+    {
+      "question": "How much will Optimus cost?",
+      "answer": "Tesla has not published a price. Musk has given aspirations: under $20,000 at high volume (2022) and $20,000 to $30,000 at scale (2024). In October 2026, Tesla’s finance chief said cost was trending toward where Tesla expects Cybercab costs to land, adding it was too early to say it was there.",
+      "sources": [
+        "engadget22",
+        "price24",
+        "call"
+      ]
+    },
+    {
+      "question": "What is Gen 3?",
+      "answer": "Tesla’s January 2026 update called Gen 3 “our first design meant for mass production”, with a new hand. Not a Tesla App reports that the Fremont line builds that design; Tesla has not formally unveiled it. Renders leaked from Tesla’s app in September 2026 and are unconfirmed.",
+      "sources": [
+        "ir2025",
+        "nata_prod",
+        "leak"
+      ]
+    },
+    {
+      "question": "How dexterous are the hands?",
+      "answer": "Tesla described 11 degrees of freedom per hand in 2022 and for Gen 2 in 2023, with touch sensing on every finger. The production Gen 3 hand is reported at 22. Musk said in October 2026 that the hand is still being refined, and Tesla engineer Konstantinos Laskaris called it “one of the most challenging hardware areas”.",
+      "sources": [
+        "nata_ref",
+        "nata_gen2",
+        "nata_prod",
+        "call"
+      ]
+    },
+    {
+      "question": "How tall and heavy is it?",
+      "answer": "The only published height is from the 2021 concept: 5 ft 8 in (173 cm) and 125 lb (57 kg). Gen 2 was said to be 10 kg lighter than its predecessor. Tesla has not published Gen 3 dimensions.",
+      "sources": [
+        "tc21",
+        "nata_gen2"
       ]
     },
     {
       "question": "Is it autonomous or remotely controlled?",
-      "answer": "Ask about the particular task and demonstration. Tesla has described some sorting and cell-handling tasks as autonomous. Musk said the 2024 folding task was not autonomous, while event reporting described human assistance for some We, Robot interactions. These cases should not be collapsed into one universal answer.",
+      "answer": "It depends on the demonstration. Tesla described sorting and cell handling as autonomous, and Musk said the 2025 kung-fu clip was AI, not teleoperation. Musk said the 2024 shirt folding was not autonomous, and Bloomberg reported human help for some We, Robot interactions. The archive below labels each case.",
       "sources": [
         "sort",
         "cells",
+        "kungfu",
         "shirt",
         "assistance"
       ]
     },
     {
-      "question": "What does Gen 3 mean?",
-      "answer": "Tesla’s January 2026 update described Gen 3 as its first design intended for mass production. The public images on this page are individually dated or identified by source; none is presented as verification of a final 2026 production specification.",
+      "question": "How does Optimus learn?",
+      "answer": "Ashok Elluswamy, who leads Tesla’s AI software, said in October 2026 that Optimus has to learn by watching people do a task and then practising it, because, unlike the car fleet, there is no exoskeleton for people to get into and puppet the robot. Tesla also hires operators to record motion-capture data.",
       "sources": [
-        "ir2025"
+        "call",
+        "training"
       ]
     },
     {
-      "question": "Does it just run the car’s FSD software?",
-      "answer": "Tesla brings experience in vision, computing and manufacturing to robotics, but a humanoid must control contact, balance, manipulation and many joints. The material reviewed here does not establish that a robot runs an unchanged car-driving software stack.",
+      "question": "Does it run the car’s FSD software?",
+      "answer": "It shares Tesla’s vision and computer work, but a humanoid also has to control balance, contact and dozens of joints. Musk says the next computer, AI5, is needed because Optimus has far more degrees of freedom than a car, and expects it in Optimus around April 2027.",
       "sources": [
-        "tesla",
-        "motors",
-        "balance"
+        "nata_ref",
+        "call"
       ]
     },
     {
-      "question": "Why a humanoid rather than a conventional robot arm?",
-      "answer": "A human-like body can potentially use spaces and tools already designed for people. That flexibility comes with more joints, balance and contact problems. A fixed industrial arm may be a better choice for a tightly defined station; no single body shape is best for every job.",
+      "question": "Who runs the program?",
+      "answer": "Ashok Elluswamy, who also leads Tesla’s Autopilot software, took responsibility for Optimus when Milan Kovac left in June 2025.",
+      "sources": [
+        "kovac"
+      ]
+    },
+    {
+      "question": "How does it compare with other humanoids?",
+      "answer": "Others are further along in some ways. Agility’s Digit works at named customers, 1X takes deposits for a home robot, Unitree lists a robot from $13.5K, and Boston Dynamics showed a production Atlas bound for Hyundai. Tesla’s distinctive bet is scale: a line designed for a million robots a year.",
+      "sources": [
+        "agility",
+        "neo",
+        "unitree",
+        "atlas",
+        "q1_26"
+      ]
+    },
+    {
+      "question": "Why a humanoid rather than a robot arm?",
+      "answer": "A human-shaped robot can in principle use spaces and tools built for people. That flexibility costs more joints, balance and contact problems. A fixed arm is often better for one well-defined station.",
       "sources": [
         "balance",
         "motors"
       ]
     },
     {
-      "question": "Can the spec numbers from 2022 or 2023 describe today’s robot?",
-      "answer": "Not automatically. Weight changes, hand designs, battery disclosures and other figures belong to a dated hardware revision and a stated test context. This guide keeps the 2022 battery disclosure historical and avoids assembling a fictional final specification from several generations.",
-      "sources": [
-        "ai2022",
-        "gen2"
-      ]
-    },
-    {
       "question": "How is this guide updated?",
-      "answer": "This is a reviewed editorial guide, not live factory telemetry. The review date records when its source ledger was checked. Major new films, filings and technical disclosures need an editorial review before they change the capability and manufacturing descriptions.",
+      "answer": "It is an edited guide, not live factory data. The review date shows when every source was last checked. New filings, films and disclosures are added after review, and corrections are noted on the page.",
       "sources": [
         "q3"
       ]
@@ -580,6 +801,666 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 2268,
       "height": 4032
+    }
+  ],
+  "metrics": [
+    {
+      "id": "production",
+      "value": "Started",
+      "unit": "",
+      "label": "Production",
+      "detail": "“Optimus production began in Fremont on our high-volume lines.” No unit count was given.",
+      "status": "disclosed",
+      "source": "q3",
+      "asOf": "2026-10-21"
+    },
+    {
+      "id": "fremont",
+      "value": "1M",
+      "unit": "robots / year",
+      "label": "Fremont line, design",
+      "detail": "First-generation line in the space the Model S and X lines left. Design capacity, not output.",
+      "status": "disclosed",
+      "source": "q1_26",
+      "asOf": "2026-04-22"
+    },
+    {
+      "id": "texas",
+      "value": "10M",
+      "unit": "robots / year",
+      "label": "Texas line, design",
+      "detail": "Second-generation line being designed for long-term capacity. Listed as Construction.",
+      "status": "target",
+      "source": "q1_26",
+      "asOf": "2026-04-22"
+    },
+    {
+      "id": "ramp",
+      "value": "20,000",
+      "unit": "a week",
+      "label": "Ramp goal",
+      "detail": "Musk: “at least a year, maybe a little longer” to reach that annualised rate.",
+      "status": "target",
+      "source": "call",
+      "asOf": "2026-10-21"
+    },
+    {
+      "id": "deliveries",
+      "value": "Late 2027",
+      "unit": "",
+      "label": "Outside customers",
+      "detail": "Musk expects deliveries to companies outside Tesla around the end of 2027, with industrial users first.",
+      "status": "target",
+      "source": "call",
+      "asOf": "2026-10-21"
+    },
+    {
+      "id": "ai5",
+      "value": "Apr 2027",
+      "unit": "",
+      "label": "AI5 computer",
+      "detail": "Musk put AI5 in Optimus at “approximately April of next year”.",
+      "status": "target",
+      "source": "call",
+      "asOf": "2026-10-21"
+    },
+    {
+      "id": "hand",
+      "value": "22",
+      "unit": "DoF per hand",
+      "label": "Gen 3 hand",
+      "detail": "Reported for the production design; Gen 2’s hand had 11. Tesla has not published a Gen 3 spec sheet.",
+      "status": "reported",
+      "source": "nata_prod",
+      "asOf": "2026-10-22"
+    },
+    {
+      "id": "award",
+      "value": "1M",
+      "unit": "robots delivered",
+      "label": "Pay-award milestone",
+      "detail": "One of the goals in Musk’s 2025 performance award, over about a decade.",
+      "status": "target",
+      "source": "pay",
+      "asOf": "2025-11-10"
+    }
+  ],
+  "specGens": [
+    {
+      "id": "concept",
+      "label": "Tesla Bot concept",
+      "year": "2021"
+    },
+    {
+      "id": "proto",
+      "label": "AI Day prototype",
+      "year": "2022"
+    },
+    {
+      "id": "gen2",
+      "label": "Gen 2",
+      "year": "2023"
+    },
+    {
+      "id": "v25",
+      "label": "Version 2.5",
+      "year": "2025"
+    },
+    {
+      "id": "gen3",
+      "label": "Gen 3",
+      "year": "2026"
+    }
+  ],
+  "specs": [
+    {
+      "id": "form",
+      "label": "What it was",
+      "cells": {
+        "concept": {
+          "value": "A concept; a person in a suit on stage",
+          "status": "disclosed",
+          "source": "engadget22"
+        },
+        "proto": {
+          "value": "Two prototypes; one walked on stage",
+          "status": "disclosed",
+          "source": "ai2022"
+        },
+        "gen2": {
+          "value": "Development robot, shown in an edited film",
+          "status": "disclosed",
+          "source": "gen2"
+        },
+        "v25": {
+          "value": "The version Gen 3 upgrades, per Tesla",
+          "status": "disclosed",
+          "source": "ir2025"
+        },
+        "gen3": {
+          "value": "Tesla’s “first design meant for mass production”",
+          "status": "disclosed",
+          "source": "ir2025"
+        }
+      }
+    },
+    {
+      "id": "production",
+      "label": "In production",
+      "cells": {
+        "gen3": {
+          "value": "Reported as the design on the Fremont line",
+          "status": "reported",
+          "source": "nata_prod"
+        }
+      }
+    },
+    {
+      "id": "height",
+      "label": "Height",
+      "cells": {
+        "concept": {
+          "value": "5 ft 8 in (173 cm)",
+          "status": "target",
+          "source": "tc21"
+        }
+      }
+    },
+    {
+      "id": "weight",
+      "label": "Weight",
+      "cells": {
+        "concept": {
+          "value": "125 lb (57 kg)",
+          "status": "target",
+          "source": "tc21"
+        },
+        "gen2": {
+          "value": "10 kg lighter than before",
+          "status": "disclosed",
+          "source": "nata_gen2"
+        }
+      }
+    },
+    {
+      "id": "speed",
+      "label": "Walking speed",
+      "cells": {
+        "concept": {
+          "value": "5 mph (8 km/h)",
+          "status": "target",
+          "source": "tc21"
+        },
+        "gen2": {
+          "value": "30% faster walking",
+          "status": "disclosed",
+          "source": "nata_gen2"
+        }
+      }
+    },
+    {
+      "id": "hands",
+      "label": "Hands",
+      "cells": {
+        "proto": {
+          "value": "11 DoF, 6 actuators per hand",
+          "status": "disclosed",
+          "source": "nata_ref"
+        },
+        "gen2": {
+          "value": "11 DoF, touch sensing on every finger",
+          "status": "disclosed",
+          "source": "nata_gen2"
+        },
+        "gen3": {
+          "value": "22 DoF per hand",
+          "status": "reported",
+          "source": "nata_prod"
+        }
+      }
+    },
+    {
+      "id": "actuators",
+      "label": "Actuators",
+      "cells": {
+        "proto": {
+          "value": "28 Tesla-designed actuators",
+          "status": "disclosed",
+          "source": "nata_ref"
+        },
+        "gen2": {
+          "value": "Tesla-designed actuators and sensors, integrated electronics",
+          "status": "disclosed",
+          "source": "nata_gen2"
+        }
+      }
+    },
+    {
+      "id": "body",
+      "label": "Neck and feet",
+      "cells": {
+        "gen2": {
+          "value": "2-DoF neck; foot force and torque sensing; articulated toes",
+          "status": "disclosed",
+          "source": "nata_gen2"
+        }
+      }
+    },
+    {
+      "id": "battery",
+      "label": "Battery",
+      "cells": {
+        "proto": {
+          "value": "2.3 kWh, projected to last a working day",
+          "status": "disclosed",
+          "source": "nata_ref"
+        }
+      }
+    },
+    {
+      "id": "compute",
+      "label": "Computer",
+      "cells": {
+        "proto": {
+          "value": "Central torso computer; Autopilot-derived vision",
+          "status": "disclosed",
+          "source": "nata_ref"
+        },
+        "gen3": {
+          "value": "AI5 planned from about April 2027",
+          "status": "target",
+          "source": "call"
+        }
+      }
+    },
+    {
+      "id": "price",
+      "label": "Price talk",
+      "cells": {
+        "proto": {
+          "value": "Under $20,000 at high volume",
+          "status": "target",
+          "source": "engadget22"
+        },
+        "gen2": {
+          "value": "$20,000 to $30,000 at scale",
+          "status": "target",
+          "source": "price24"
+        },
+        "gen3": {
+          "value": "No price published",
+          "status": "disclosed",
+          "source": "call"
+        }
+      }
+    }
+  ],
+  "timeline": [
+    {
+      "id": "t-2021-concept",
+      "date": "2021-08-19",
+      "type": "concept",
+      "title": "Tesla Bot announced",
+      "body": "At AI Day, Musk presents a 5 ft 8 in humanoid concept; a person in a suit stands in for the robot.",
+      "sources": [
+        "tc21",
+        "engadget22"
+      ]
+    },
+    {
+      "id": "t-2022-prototypes",
+      "date": "2022-09-30",
+      "type": "hardware",
+      "title": "First prototypes",
+      "body": "Bumble C walks untethered on stage; a more integrated prototype is shown on a stand. Tesla describes 28 actuators and a 2.3 kWh pack.",
+      "sources": [
+        "ai2022",
+        "nata_ref"
+      ]
+    },
+    {
+      "id": "t-2023-sort",
+      "date": "2023-09-24",
+      "type": "demo",
+      "title": "Sort & Stretch",
+      "body": "Tesla’s film shows block sorting it describes as end-to-end learned and autonomous.",
+      "sources": [
+        "sort"
+      ]
+    },
+    {
+      "id": "t-2023-gen2",
+      "date": "2023-12-13",
+      "type": "hardware",
+      "title": "Gen 2 revealed",
+      "body": "10 kg lighter, 30% faster walking, 11-DoF hands with touch on every finger.",
+      "sources": [
+        "gen2",
+        "nata_gen2"
+      ]
+    },
+    {
+      "id": "t-2024-shirt",
+      "date": "2024-01-15",
+      "type": "demo",
+      "title": "The shirt-folding clip",
+      "body": "Musk clarifies that the folding was not autonomous.",
+      "sources": [
+        "shirt"
+      ]
+    },
+    {
+      "id": "t-2024-cells",
+      "date": "2024-05-05",
+      "type": "demo",
+      "title": "Battery cells at a workstation",
+      "body": "Factory footage of cell sorting, later in Tesla’s Q2 2024 update as autonomous handling.",
+      "sources": [
+        "cellfilm",
+        "cells"
+      ]
+    },
+    {
+      "id": "t-2024-werobot",
+      "date": "2024-10-10",
+      "type": "event",
+      "title": "We, Robot",
+      "body": "Robots serve drinks and dance among guests. Bloomberg later reports human assistance for some interactions. Musk puts the eventual price at $20,000 to $30,000.",
+      "sources": [
+        "we_robot",
+        "assistance",
+        "price24"
+      ]
+    },
+    {
+      "id": "t-2025-kovac",
+      "date": "2025-06-06",
+      "type": "people",
+      "title": "A change of leader",
+      "body": "Program head Milan Kovac leaves; Autopilot chief Ashok Elluswamy takes responsibility for Optimus.",
+      "sources": [
+        "kovac"
+      ]
+    },
+    {
+      "id": "t-2025-diner",
+      "date": "2025-07-21",
+      "type": "event",
+      "title": "The Tesla Diner",
+      "body": "Optimus serves popcorn at the Hollywood diner’s opening.",
+      "sources": [
+        "diner"
+      ]
+    },
+    {
+      "id": "t-2025-kungfu",
+      "date": "2025-10-04",
+      "type": "demo",
+      "title": "Kung fu in the lab",
+      "body": "A sparring clip from Tesla’s lab. Musk says the movement is AI-driven, not teleoperated; that is unverified.",
+      "sources": [
+        "kungfu"
+      ]
+    },
+    {
+      "id": "t-2025-award",
+      "date": "2025-11-06",
+      "type": "business",
+      "title": "A 1M-robot milestone",
+      "body": "Shareholders approve Musk’s 2025 award, which includes delivering 1 million humanoid robots.",
+      "sources": [
+        "pay"
+      ]
+    },
+    {
+      "id": "t-2025-running",
+      "date": "2025-12-02",
+      "type": "demo",
+      "title": "Running",
+      "body": "Tesla Optimus posts “Just set a new PR in the lab”: a short running clip.",
+      "sources": [
+        "running"
+      ]
+    },
+    {
+      "id": "t-2026-plan",
+      "date": "2026-01-28",
+      "type": "production",
+      "title": "Gen 3 plan",
+      "body": "Tesla plans a Q1 Gen 3 unveil, production before the end of 2026 and an eventual 1 million a year.",
+      "sources": [
+        "ir2025"
+      ]
+    },
+    {
+      "id": "t-2026-lines",
+      "date": "2026-04-22",
+      "type": "production",
+      "title": "A factory decision",
+      "body": "The 1M-a-year line will replace the Model S and X lines in Fremont; Texas is prepared for a 10M-a-year line.",
+      "sources": [
+        "q1_26"
+      ]
+    },
+    {
+      "id": "t-2026-academy",
+      "date": "2026-07-22",
+      "type": "production",
+      "title": "S and X lines removed",
+      "body": "First-generation Optimus lines are being installed; early builds go to the Optimus Academy for training data.",
+      "sources": [
+        "q2_26"
+      ]
+    },
+    {
+      "id": "t-2026-leak",
+      "date": "2026-09-23",
+      "type": "hardware",
+      "title": "Gen 3 renders leak",
+      "body": "Tesla’s Android app carries Gen 3 artwork with sealed joints. Unconfirmed by Tesla.",
+      "sources": [
+        "leak"
+      ]
+    },
+    {
+      "id": "t-2026-production",
+      "date": "2026-10-21",
+      "type": "production",
+      "title": "Production begins",
+      "body": "Tesla reports production on its high-volume Fremont line: “the first production-quality bots”.",
+      "sources": [
+        "q3",
+        "call"
+      ]
+    },
+    {
+      "id": "t-2027-ai5",
+      "date": "2027-04-30",
+      "type": "target",
+      "title": "AI5 in Optimus",
+      "body": "Musk’s target for the next computer: “approximately April of next year”.",
+      "sources": [
+        "call"
+      ],
+      "display": "About Apr 2027"
+    },
+    {
+      "id": "t-2027-deliveries",
+      "date": "2027-12-31",
+      "type": "target",
+      "title": "First outside customers",
+      "body": "Musk’s target: deliveries to companies outside Tesla around the end of 2027.",
+      "sources": [
+        "call"
+      ],
+      "display": "Late 2027"
+    }
+  ],
+  "promises": [
+    {
+      "id": "p-prototype",
+      "said": "2021-08-19",
+      "claim": "A prototype “sometime next year”",
+      "due": "2022",
+      "outcome": "kept",
+      "result": "Two prototypes appeared at AI Day on 30 September 2022.",
+      "sources": [
+        "tc21",
+        "ai2022"
+      ],
+      "quote": false,
+      "dueDate": "2022-12-31",
+      "short": "Prototype"
+    },
+    {
+      "id": "p-price-2022",
+      "said": "2022-09-30",
+      "claim": "Under $20,000 at high volume",
+      "due": "At volume",
+      "outcome": "open",
+      "result": "No price has been published.",
+      "sources": [
+        "engadget22"
+      ],
+      "quote": false,
+      "dueDate": null,
+      "short": "Under $20K"
+    },
+    {
+      "id": "p-thousands",
+      "said": "2025-06-07",
+      "claim": "Thousands of robots working in Tesla facilities by the end of 2025",
+      "due": "End of 2025",
+      "outcome": "unverified",
+      "result": "Tesla has not published a count of robots at work.",
+      "sources": [
+        "kovac",
+        "ir2025"
+      ],
+      "quote": false,
+      "reported": true,
+      "dueDate": "2025-12-31",
+      "short": "Thousands at work"
+    },
+    {
+      "id": "p-gen3",
+      "said": "2026-01-28",
+      "claim": "Unveil Gen 3 in Q1 2026",
+      "due": "Q1 2026",
+      "outcome": "missed",
+      "result": "Not unveiled as of 27 October 2026. App renders leaked in September.",
+      "sources": [
+        "ir2025",
+        "leak"
+      ],
+      "quote": false,
+      "dueDate": "2026-03-31",
+      "short": "Gen 3 unveil"
+    },
+    {
+      "id": "p-sop",
+      "said": "2026-01-28",
+      "claim": "Start production before the end of 2026",
+      "due": "End of 2026",
+      "outcome": "kept",
+      "result": "Tesla reported production on the Fremont line in its Q3 update.",
+      "sources": [
+        "ir2025",
+        "q3"
+      ],
+      "quote": false,
+      "dueDate": "2026-12-31",
+      "short": "Start production"
+    },
+    {
+      "id": "p-ramp",
+      "said": "2026-10-21",
+      "claim": "20,000 a week in “at least a year, maybe a little longer”",
+      "due": "Late 2027 or later",
+      "outcome": "open",
+      "result": "Early ramp; no volume disclosed.",
+      "sources": [
+        "call"
+      ],
+      "quote": false,
+      "dueDate": "2027-12-31",
+      "short": "20,000 a week"
+    },
+    {
+      "id": "p-customers",
+      "said": "2026-10-21",
+      "claim": "Deliveries to other companies",
+      "due": "Late 2027",
+      "outcome": "open",
+      "result": "Not yet due.",
+      "sources": [
+        "call"
+      ],
+      "quote": false,
+      "dueDate": "2027-12-31",
+      "short": "Outside customers"
+    }
+  ],
+  "field": [
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "maker": "Boston Dynamics",
+      "status": "Production version shown at CES 2026",
+      "facts": [
+        "Lifts 110 lb; reaches up to 7.5 ft",
+        "First deployments: Hyundai and Google DeepMind",
+        "Hyundai plans plant use from 2028"
+      ],
+      "source": "atlas"
+    },
+    {
+      "id": "figure",
+      "name": "Figure 03",
+      "maker": "Figure AI",
+      "status": "Unveiled 9 October 2025",
+      "facts": [
+        "Fingertip sensors detect about 3 grams",
+        "2 kW wireless charging through the feet",
+        "First BotQ line: up to 12,000 a year, per Figure"
+      ],
+      "source": "figure"
+    },
+    {
+      "id": "digit",
+      "name": "Digit",
+      "maker": "Agility Robotics",
+      "status": "In use at named customers",
+      "facts": [
+        "Customers shown include GXO, Schaeffler and Toyota Canada",
+        "Claims 65,000 hours of production experience",
+        "Digit 5 in development"
+      ],
+      "source": "agility"
+    },
+    {
+      "id": "neo",
+      "name": "NEO",
+      "maker": "1X",
+      "status": "Home robot taking $200 deposits",
+      "facts": [
+        "5 ft 6 in, 66 lb; 22-DoF hands",
+        "Remote 1X Experts can guide unfamiliar chores",
+        "Built for homes, not factories"
+      ],
+      "source": "neo"
+    },
+    {
+      "id": "g1",
+      "name": "G1",
+      "maker": "Unitree",
+      "status": "Lists a price",
+      "facts": [
+        "From US$13.5K before tax and shipping",
+        "1.32 m tall, about 35 kg",
+        "23 to 43 joint motors"
+      ],
+      "source": "unitree"
     }
   ]
 }

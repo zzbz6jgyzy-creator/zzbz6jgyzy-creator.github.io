@@ -79,6 +79,7 @@ async def main():
    if day<6:
     assert await q.evaluate('RobotaxiGame.state()')=='night';await q.get_by_role('button',name='Sleep ·',exact=False).click()
    else:assert await q.evaluate('RobotaxiGame.state()')=='end'
+  assert await q.locator('[data-taxi-results]').is_visible(),'week results card shows';assert await q.locator('[data-results-rows] dt').count()>=5;assert await q.locator('[data-taxi-share-card]').is_visible()
   await q.get_by_role('button',name='Review the week',exact=True).click();assert await q.locator('[data-taxi-chart]>div').count()==7;assert await q.locator('[data-taxi-chart]').is_visible()
   assert await q.evaluate('SDArcade.read().records["robotaxi:campaign"].complete');assert not await q.evaluate('localStorage.getItem("sd-arcade-taxi-resume-v2:campaign")');assert not errors,errors
   print('PASS seven-day fleet, upgrades, saving and debrief',flush=True);await c.close()
@@ -136,6 +137,44 @@ async def main():
     box=await q.locator('[data-staging-stage]').bounding_box();assert box['y']+box['height']<=1000,'staging stage fits the phone screen'
     await q.locator('[data-ac-focus]').click();assert not await q.evaluate("document.body.classList.contains('ac-focus')")
    print('PASS staging phone focus view',width,flush=True);await c.close()
+  c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/robotaxi.html?mode=campaign',wait_until='networkidle')
+  await q.locator('[data-taxi-play]').click();assert await q.locator('.taxi-contract-opt').count()==2,'campaign offers a safe and a bold contract'
+  assert await q.evaluate('RobotaxiGame.snapshot().contractPick')==0
+  await q.locator('.taxi-contract-opt').nth(1).click();assert await q.evaluate('RobotaxiGame.snapshot().contractPick')==1
+  assert await q.locator('.taxi-contract-opt').nth(1).get_attribute('aria-pressed')=='true'
+  await q.get_by_role('button',name='Send a cab to Downtown',exact=True).click();await q.get_by_role('button',name='Run the day',exact=True).click()
+  log=await q.evaluate('RobotaxiGame.snapshot().log.map(l=>l.text).join("|")');assert 'Morning rush' in log and 'Night out' in log,'campaign days resolve in four windows'
+  print('PASS robotaxi contract choice and dispatch windows',flush=True);await c.close()
+  c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/robotaxi.html?mode=training',wait_until='networkidle')
+  await q.locator('[data-taxi-play]').click();assert await q.locator('.taxi-contract-opt').count()==0
+  await q.get_by_role('button',name='Run the day',exact=True).click();assert 'Morning rush' not in await q.evaluate('RobotaxiGame.snapshot().log.map(l=>l.text).join("|")'),'training keeps the single-shot day'
+  assert await q.locator('[data-upgrade="ops"]').count()==0,'training has no dispatch upgrades'
+  print('PASS robotaxi training stays simple',flush=True);await c.close()
+  c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/robotaxi.html?mode=campaign',wait_until='networkidle')
+  await q.locator('[data-taxi-play]').click()
+  await q.evaluate("(()=>{Object.defineProperty(document,'hidden',{get:()=>false});const k='sd-arcade-taxi-resume-v2:campaign',v=JSON.parse(localStorage.getItem(k));v.game.reputation=12;localStorage.setItem(k,JSON.stringify(v))})()")
+  await q.reload(wait_until='networkidle');await q.locator('[data-taxi-play]').click()
+  assert round(await q.evaluate('RobotaxiGame.snapshot().reputation'))==12
+  await q.get_by_role('button',name='Run the day',exact=True).click()
+  assert await q.evaluate('RobotaxiGame.state()')=='end','low reputation ends the week early'
+  assert (await q.locator('[data-overlay-title]').inner_text()).lower()=='permits suspended'
+  assert not await q.evaluate('SDArcade.read().records["robotaxi:campaign"].complete')
+  print('PASS robotaxi permits suspended ends the week',flush=True);await c.close()
+  c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/robotaxi.html?mode=campaign',wait_until='networkidle')
+  assert await q.evaluate('RobotaxiGame.muted()'),'robotaxi is silent before the first Play press'
+  await q.locator('[data-taxi-play]').click();assert not await q.evaluate('RobotaxiGame.muted()'),'Play turns sound on'
+  await q.locator('[data-ac-sound]').click();assert await q.evaluate("localStorage.getItem('sd.arcade.muted')")=='1'
+  await q.reload(wait_until='networkidle');await q.locator('[data-taxi-play]').click();assert await q.evaluate('RobotaxiGame.muted()'),'mute choice survives a reload'
+  print('PASS robotaxi sound default and remembered mute',flush=True);await c.close()
+  for width,expect in [(390,True),(1440,False)]:
+   c=await context(width);q=await c.new_page();await q.goto('https://superchargeddaily.com/robotaxi.html?mode=campaign',wait_until='networkidle')
+   assert not await q.evaluate("document.body.classList.contains('ac-focus')")
+   await q.locator('[data-taxi-play]').click()
+   assert await q.evaluate("document.body.classList.contains('ac-focus')")==expect,('robotaxi auto focus view',width)
+   if expect:
+    box=await q.locator('[data-taxi-actions]').bounding_box();assert box['y']+box['height']>=999,'action bar is fixed to the bottom of the phone screen'
+    await q.locator('[data-ac-focus]').click();assert not await q.evaluate("document.body.classList.contains('ac-focus')")
+   print('PASS robotaxi phone focus view',width,flush=True);await c.close()
   # Small inline previews let reviewers inspect CI screenshots through the connected log reader.
   await browser.close()
 asyncio.run(main())

@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
 <link rel="stylesheet" href="/styles.css?v=202610261800" />
-    <link rel="stylesheet" href="/robotaxi.css" />
+    <link rel="stylesheet" href="/robotaxi.css?v=202610277" />
       <link rel="stylesheet" href="/nav-pill.css?v=202610271600" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
       <link rel="stylesheet" href="/grow.css?v=202610210800" />
@@ -226,7 +226,7 @@
       <div class="pn-spacer" aria-hidden="true"></div>
 
       <main id="main" class="ac-page taxi-page" data-arcade="robotaxi" data-taxi>
- <header class="ac-game-intro"><a class="ac-back" href="/games.html">← All games</a><div><p class="ac-kicker">City operations / Arcade edition 02</p><h1>Robotaxi Boss<span>Small fleet. Big decisions.</span></h1><p>Build a seven-day fleet business. Read demand, choose fares, invest in upgrades and keep the city moving.</p></div></header>
+ <header class="ac-game-intro"><a class="ac-back" href="/games.html">← All games</a><div><p class="ac-kicker">City operations / Arcade edition 02</p><h1>Robotaxi Boss<span>Small fleet. Big decisions.</span></h1><p>Run a seven-day fleet business in a living city. Read demand, dispatch through the rush hours, pick your contracts, invest in upgrades and keep your permits.</p></div></header>
  <div class="ac-modebar"><label>Choose your mission<select data-ac-mode><option value="training">Training / Learn the city</option><option value="campaign">Seven-day campaign</option><option value="daily">Daily challenge</option></select></label><div><strong data-ac-day>Choose a mode to begin.</strong><span data-ac-save>Progress stays on this browser.</span></div><button type="button" data-ac-help>How to play ↗</button></div>
  <div class="ac-workspace"><div class="ac-playframe"><div class="ac-play-head"><span class="ac-live-label">City operations</span><div><button type="button" data-ac-restart>Restart</button><button type="button" data-ac-sound>Sound off</button><button type="button" data-ac-focus aria-pressed="false">Focus view</button></div></div><div class="taxi-stage">
               <div class="taxi-hud" data-taxi-hud>
@@ -257,15 +257,21 @@
                   Gold Cybercabs on a night city. Assign them on the map. Overnight
                   charging is cheap. Fast-charging fills a cab now, at a price.
                 </p>
+                <div class="taxi-results" data-taxi-results hidden>
+                  <div class="taxi-medal" data-results-medal></div>
+                  <p class="taxi-score"><span data-results-score>0</span> <small>points</small></p>
+                  <dl class="taxi-rows" data-results-rows></dl>
+                  <p class="taxi-pb" data-results-pb hidden></p>
+                </div>
                 <p class="taxi-overlay-actions">
                   <button type="button" class="button button-primary" data-taxi-play>Play</button>
-                  <button type="button" class="button button-ghost" data-taxi-report hidden>Review the week</button><a class="button button-ghost" data-taxi-share hidden href="#" target="_blank" rel="noopener noreferrer">Share on X</a>
+                  <button type="button" class="button button-ghost" data-taxi-share-card hidden>Share result</button><button type="button" class="button button-ghost" data-taxi-report hidden>Review the week</button><a class="button button-ghost" data-taxi-share hidden href="#" target="_blank" rel="noopener noreferrer">Share on X</a>
                 </p>
                 <p class="taxi-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Tesla_Cybercab_at_Santana_Row_side_view_dllu.jpg" rel="noopener" target="_blank">Dllu</a>, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener" target="_blank">CC BY-SA 4.0</a></p>
               </div>
-            </div><p class="ac-status" role="status" aria-live="polite" data-ac-status>Ready when you are. Sound starts muted.</p></div>
+            </div><p class="ac-status" role="status" aria-live="polite" data-ac-status>Ready when you are. Sound turns on when you start; press M to mute.</p></div>
  <aside class="ac-rail" aria-label="Your mission progress"><p class="ac-kicker">Your personal best</p><strong class="ac-personal" data-ac-best>Your first run awaits</strong><p>Separate records for training, campaign and each daily challenge.</p><h2>The long game</h2><ol class="ac-missions" data-ac-missions aria-label="Mission progress"></ol><p>Seven days. A growing fleet. Contracts, capacity and charging all count. Your week saves between turns.</p><section class="ac-debrief" data-ac-debrief hidden><span data-ac-medal>Flight notes</span><h3>Mission debrief</h3><p></p></section><button type="button" class="ac-share" data-ac-share>Share this challenge ↗</button><p class="ac-small">New edition, fresh records. Previous world-board scores are kept separately on the games hub.</p></aside></div>
- <details class="ac-manual" data-ac-manual><summary>Mission manual <span>Controls, tactics & scoring</span></summary><div class="ac-manual-grid"><article><span>01</span><h3>Read the city</h3><p>Each zone shows demand, fare and assigned cabs. Select cabs, then choose a zone, or use its + button to send the next idle cab.</p></article><article><span>02</span><h3>Make the trade-off</h3><p>Fares change demand. Contracts pay a bonus for service in one zone. Upgrades improve capacity, charging costs or reliability.</p></article><article><span>03</span><h3>Plan the night</h3><p>After each day, choose which cabs to charge. Overnight power is cheaper than a fast charge. Your planning and night phases save automatically.</p></article></div><p class="ac-key-guide">Select fleet vehicles, then a zone · 1–4: assign to zones · No planning timer. All controls also work by touch. Scores and progress are saved on this device.</p></details>
+ <details class="ac-manual" data-ac-manual><summary>Mission manual <span>Controls, tactics & scoring</span></summary><div class="ac-manual-grid"><article><span>01</span><h3>Read the city</h3><p>The map shows demand as pulsing dots and your coverage as a ring around each zone: green is covered, red is short. Select cabs, then tap a zone, or use a card’s + button to send the next idle cab. Charge matters: a cab under 18% cannot work.</p></article><article><span>02</span><h3>Run the day in windows</h3><p>In campaign and daily, each day runs in four windows: morning rush, midday, evening rush and night out. Between windows you get a few seconds and a few dispatch tokens: surge a short zone, rebalance the fleet toward demand, or pay for a roadside fix after a breakdown. Pick the safe or the bold contract each morning.</p></article><article><span>03</span><h3>Stay in business</h3><p>Buy upgrades and cabs, charge only the cabs you need at night, and keep reputation up by covering busy zones. Cash below zero or reputation under 15 ends your week early. Finish the week and the next campaign week gets harder.</p></article></div><p class="ac-key-guide">Select fleet vehicles, then a zone · 1–4: assign to zones · M: sound · No planning timer. All controls also work by touch. Scores and progress are saved on this device.</p></details>
  <p class="ac-small">Fan-made arcade fiction. Flight timings, vehicle economics and physics are game rules, not real-world performance or engineering guidance. Independent of Tesla and SpaceX.</p><noscript><p class="ac-status">These interactive games need JavaScript. Your browser can still open the <a href="/games.html">games guide</a> and <a href="/explainers.html">explainers</a>.</p></noscript><!--nl:start--><section class="sd-band sd-band-compact" id="newsletter" data-newsletter="tracker" data-band-topic="tesla-software" aria-label="Newsletter signup"><div><h2>Get the weekly tracker digest</h2><p>Robotaxi cities, Cybercab and Tesla software — one free Sunday email.</p></div><div><form class="sd-form" data-newsletter-form><label class="visually-hidden" for="sd-nl-email">Email address</label><input id="sd-nl-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="sd-nl-email-status" /><input type="text" name="website" hidden tabindex="-1" autocomplete="off" aria-hidden="true" /><button class="sd-btn" type="submit">Subscribe</button></form><p class="sd-fine">Free. No spam. Unsubscribe anytime. <a class="sd-latest" href="https://alexs-newsletter-84b17e.beehiiv.com/p/supercharged-daily-musk-s-big-earnings-week?utm_source=website&amp;utm_medium=site-tracker&amp;utm_campaign=latest-issue" target="_blank" rel="noopener">Read the latest issue →</a></p><p class="newsletter-status" data-newsletter-status id="sd-nl-email-status" role="status" aria-live="polite"></p></div></section><!--nl:end--></main>
 
       <footer class="site-footer">
@@ -305,7 +311,7 @@
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <!--sd:bundles-->
     <script defer src="/assets/js/arcade-core.bundle.607b99273e.js"></script>
-    <script defer src="/assets/js/robotaxi.bundle.a7f607cf90.js"></script>
+    <script defer src="/assets/js/robotaxi.bundle.7f9583dd86.js"></script>
     <!--/sd:bundles-->
   </body>
 </html>

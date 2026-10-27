@@ -241,8 +241,8 @@
       ]
     },
     "optimus": {
-      "file": "/assets/js/optimus.bundle.d0d0dc5b7f.js",
-      "bytes": 8504,
+      "file": "/assets/js/optimus.bundle.a3a2d96583.js",
+      "bytes": 13526,
       "sources": [
         "optimus-model.js",
         "optimus.js"
@@ -282,8 +282,8 @@
       ]
     },
     "catch": {
-      "file": "/assets/js/catch.bundle.cbe3eaaf8f.js",
-      "bytes": 46512,
+      "file": "/assets/js/catch.bundle.342dc7af65.js",
+      "bytes": 48164,
       "sources": [
         "arcade-model.js",
         "arcade.js",
@@ -291,8 +291,8 @@
       ]
     },
     "staging": {
-      "file": "/assets/js/staging.bundle.bacbc16477.js",
-      "bytes": 77602,
+      "file": "/assets/js/staging.bundle.24be628c4a.js",
+      "bytes": 79252,
       "sources": [
         "arcade-model.js",
         "arcade.js",
@@ -301,17 +301,18 @@
       ]
     },
     "robotaxi": {
-      "file": "/assets/js/robotaxi.bundle.a7f607cf90.js",
-      "bytes": 35933,
+      "file": "/assets/js/robotaxi.bundle.7f9583dd86.js",
+      "bytes": 73562,
       "sources": [
         "arcade-model.js",
         "arcade.js",
+        "robotaxi-fx.js",
         "robotaxi.js"
       ]
     },
     "games": {
-      "file": "/assets/js/games.bundle.7edca1526f.js",
-      "bytes": 16414,
+      "file": "/assets/js/games.bundle.07e6cbfac8.js",
+      "bytes": 18080,
       "sources": [
         "board.js",
         "arcade-model.js",
