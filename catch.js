@@ -527,7 +527,9 @@
 
   function startPlay() {
     ensureAudio(); if (audio && audio.state === "suspended") audio.resume();
+    const retry = state === "fail";
     demo = false; clearAllHolds(); accumulator = 0; last = 0;
+    window.SDArcade.event(retry ? "game_retry" : "game_start"); window.SDArcade.visit();
     if (state === "caught") flight += 1;
     else if (arcade.mode === "campaign") { const c=arcade.loadCheckpoint();flight=c.flight;score=c.score; }
     else { flight=0;score=0; }
@@ -564,6 +566,7 @@
     }
     result = kind;
     state = "fail";
+    if (!demo) window.SDArcade.event("game_fail_" + kind);
     if(!demo)arcade.record({score,missions:flight,complete:false,medal:flight>=2?'silver':'bronze',title:'Approach review',copy:kind==='tower'?'You reached the tower before cancelling sideways motion. Bank away to brake earlier.':kind==='splash'?'The ship never reached the arms. Bank toward the tower and thrust while tilted to build horizontal motion.':'You ran out of altitude or arrived too fast. Start your braking burn higher. Campaign retries keep your current checkpoint.'});
     arcade.live(demo?'Demo ended. Try the controls yourself.':'Approach ended. Read your debrief and try again.');
     submitRun();
@@ -597,6 +600,7 @@
     const complete=flight+1>=limit;
     if(demo){state='complete';score=0;showOverlay('Training demonstration','Now it’s your turn.','Watch the bank, braking burn and final alignment. Demonstration scores are not saved.','Take the controls');return;}
     state=complete?'complete':'caught';
+    window.SDArcade.event('game_complete');
     arcade.checkpoint(complete?0:flight+1,complete?0:score);
     arcade.record({score,missions:flight+1,complete,medal:precision>.8&&soft>.6?'gold':precision>.45?'silver':'bronze',title:complete?'Mission set complete':'A clean catch',copy:'Precision '+Math.round(precision*100)+'% · soft landing '+Math.round(soft*100)+'% · fuel remaining '+Math.round(ship.fuel)+'. '+(complete?'Try another mode or today’s challenge.':'Your next campaign checkpoint is saved.')});
     arcade.live(complete?'Mission set complete. Your score is saved.':'Caught. Advance to the next mission.');

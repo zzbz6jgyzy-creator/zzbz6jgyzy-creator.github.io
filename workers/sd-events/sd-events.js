@@ -12,6 +12,13 @@ const EVENTS = [
   "theme_toggle",
   "dispatch_filter",
   "tesmag_click",
+  "game_start",
+  "game_retry",
+  "game_complete",
+  "game_fail_tower",
+  "game_fail_splash",
+  "game_fail_rud",
+  "game_return_d1",
 ];
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Cache-Control": "no-store" };
 const json = (d, s = 200) => new Response(JSON.stringify(d, null, 1), { status: s, headers: { ...cors, "Content-Type": "application/json" } });
