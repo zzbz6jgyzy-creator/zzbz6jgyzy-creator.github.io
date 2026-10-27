@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 27 Oct 2026 20:40:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 20:52:00 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300</title>
+      <link>https://superchargeddaily.com/dispatch/raptor-engines-explained.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/raptor-engines-explained.html</guid>
+      <pubDate>Tue, 27 Oct 2026 20:52:00 +0000</pubDate>
+      <category>Starship</category>
+      <description>Musk says Raptor 4 will make 300 t of thrust. How full-flow staged combustion works, Raptor 1–3 side by side, the deleted heat shield, and the Saturn V math. With our film.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/raptor-engines-r1-r2-r3.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Vandenberg just broke its launch record with two months to spare</title>
       <link>https://superchargeddaily.com/dispatch/vandenberg-72-launch-record.html</link>
@@ -717,15 +726,6 @@
       <category>Tesla</category>
       <description>FSD Supervised renamed in Europe. Same stack, a name for the forms.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/assisted-driving-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Ship 40 is home: inside the first Starship returned to Starbase</title>
-      <link>https://superchargeddaily.com/dispatch/ship-40.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/ship-40.html</guid>
-      <pubDate>Wed, 07 Oct 2026 22:38:21 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>Flight 13, an intact splashdown, a 75-day trip home and a Megabay at Starbase.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/ship-40-megabay-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>

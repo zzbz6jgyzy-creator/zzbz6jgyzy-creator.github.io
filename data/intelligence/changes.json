@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-27T20:50:35.872Z",
+  "updated": "2026-10-27T20:53:39.832Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/raptor-engines-explained.html",
+      "topic": "starship",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300",
+      "at": "2026-10-27T20:52:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/raptor-engines-explained.html",
+      "href": "/dispatch/raptor-engines-explained.html",
+      "summary": "Musk says Raptor 4 will make 300 t of thrust. How full-flow staged combustion works, Raptor 1–3 side by side, the deleted heat shield, and the Saturn V math. With our film.",
+      "title": "SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300",
+      "id": "logged|dispatch:/dispatch/raptor-engines-explained.html|2026-10-27T20:52:00.000Z|SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/vandenberg-72-launch-record.html",
@@ -442,23 +459,6 @@
       "summary": "NASA dropped the halo-orbit meetup. Starship will dock with Orion near Earth and fly both to low lunar orbit. Plus Cabin 1, the tanker count and SpaceX’s milestone chart.",
       "title": "Starship will now push Orion to the Moon. What NASA’s new Artemis IV plan changes, and a first look inside Cabin 1",
       "id": "logged|dispatch:/dispatch/starship-pushes-orion-to-moon.html|2026-10-24T07:38:42.000Z|Starship will now push Orion to the Moon. What NASA’s new Artemis IV plan changes, and a first look inside Cabin 1"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-10q-customer-b.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "One customer paid a third of SpaceX’s bills last quarter. Here’s what the 10-Q adds to that $4.4 billion profit",
-      "at": "2026-10-24T01:38:04.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-10q-customer-b.html",
-      "href": "/dispatch/spacex-10q-customer-b.html",
-      "summary": "SpaceX’s 10-Q shows one unnamed customer was 34.5% of Q3 revenue, and about $1 billion of the profit came from one-off items.",
-      "title": "One customer paid a third of SpaceX’s bills last quarter. Here’s what the 10-Q adds to that $4.4 billion profit",
-      "id": "logged|dispatch:/dispatch/spacex-10q-customer-b.html|2026-10-24T01:38:04.000Z|One customer paid a third of SpaceX’s bills last quarter. Here’s what the 10-Q adds to that $4.4 billion profit"
     },
     {
       "type": "logged",
