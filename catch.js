@@ -56,7 +56,16 @@
   let flight = 0;
   let score = 0;
   let best = Number(window.SDArcade.storage.getItem(STORE) || 0);
-  let muted = true;
+  let muted = true; // stays true until the first Play press (browsers need a gesture before audio)
+  let muteChoice = null; // "1" = player muted, "0" = player unmuted, null = never chosen
+  try { muteChoice = window.SDArcade.storage.getItem("sd.arcade.muted"); } catch { muteChoice = null; }
+  let slowTarget = 1;
+  let timeScale = 1;
+  let freezeUntil = 0;
+  let callout = { text: "", t: 0 };
+  let calloutAt = 0;
+  let lowFuelWarned = false;
+  let pingTick = 0;
   let audio;
   let engine = null;
   let wasBurning = false;
@@ -314,12 +323,6 @@
     const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
     const data = buffer.getChannelData(0);
     let last = 0;
-  let accumulator = 0;
-  let keysLocked = false;
-  let demo = false;
-  let simRandom = () => 0.5;
-  const M = window.SDArcadeModel;
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     for (let i = 0; i < length; i += 1) {
       const white = Math.random() * 2 - 1;
       if (color === "brown") {
@@ -330,6 +333,26 @@
       }
     }
     return buffer;
+  }
+
+  function setMuted(v) {
+    muted = v;
+    muteChoice = v ? "1" : "0";
+    try { window.SDArcade.storage.setItem("sd.arcade.muted", muteChoice); } catch { /* storage is best-effort */ }
+    applyMute();
+  }
+
+  function buzz(pattern) {
+    if (muted || reduced || !navigator.vibrate) return;
+    try { navigator.vibrate(pattern); } catch { /* unsupported */ }
+  }
+
+  function say(text, ms = 2200, force = false) {
+    const now = performance.now();
+    if (!force && now - calloutAt < 1400) return;
+    calloutAt = now;
+    callout = { text, t: ms };
+    arcade.live(text);
   }
 
   function applyMute() {
@@ -351,7 +374,13 @@
     audio = new Ctx();
     const master = audio.createGain();
     master.gain.value = muted ? 0 : 0.82;
-    master.connect(audio.destination);
+    const comp = audio.createDynamicsCompressor();
+    comp.threshold.value = -16;
+    comp.ratio.value = 4;
+    comp.attack.value = 0.004;
+    comp.release.value = 0.2;
+    master.connect(comp);
+    comp.connect(audio.destination);
     audio.master = master;
 
     const brown = audio.createBufferSource();
@@ -476,6 +505,18 @@
     tone(90, 48, 0.05, 0.16, "sine");
   }
 
+  function sfxWarn() {
+    if (!audio || muted) return;
+    tone(880, 880, 0.035, 0.09, "square");
+    window.setTimeout(() => tone(880, 880, 0.035, 0.09, "square"), 140);
+  }
+
+  function sfxPing(closeness) {
+    if (!audio || muted) return;
+    const f = 520 + clamp(closeness, 0, 1) * 520;
+    tone(f, f, 0.028, 0.06, "sine");
+  }
+
   function sfxCatch() {
     if (!audio || muted) return;
     tone(62, 34, 0.16, 0.32, "sine");
@@ -526,7 +567,9 @@
   }
 
   function startPlay() {
+    if (muted && muteChoice !== "1") muted = false;
     ensureAudio(); if (audio && audio.state === "suspended") audio.resume();
+    applyMute(); lowFuelWarned = false; pingTick = 0; slowTarget = 1; timeScale = 1;
     const retry = state === "fail";
     demo = false; clearAllHolds(); accumulator = 0; last = 0;
     window.SDArcade.event(retry ? "game_retry" : "game_start"); window.SDArcade.visit();
@@ -535,6 +578,14 @@
     else { flight=0;score=0; }
     resetShip(false); state="fly";result="";hideOverlay();if(hud)hud.hidden=false;
     wasBurning=false;arcade.markPlayed();arcade.focus();renderBoard();
+    if (arcade.mode === "training" && flight === 0) {
+      let seen = 0;
+      try { seen = Number(window.SDArcade.storage.getItem("sd.arcade.catch.hints")) || 0; } catch { seen = 0; }
+      if (seen < 3) {
+        say("Bank toward the tower. Hold Throttle to slow your fall.", 5000, true);
+        try { window.SDArcade.storage.setItem("sd.arcade.catch.hints", String(seen + 1)); } catch { /* best-effort */ }
+      }
+    }
   }
 
   function beginAttract() {
@@ -555,6 +606,8 @@
     if (state !== "fly" && state !== "attract") return;
     ship.alive = false;
     setRumble(false);
+    if (!reduced) freezeUntil = performance.now() + 110;
+    if (state === "fly" && !demo) buzz([120, 40, 160]);
     shake = 14;
     flash = 1;
     burst(ship.x, ship.y + ship.h * 0.3, 42, "#ff7a2a", 4.2);
@@ -572,9 +625,9 @@
     submitRun();
     blip(kind);
     const lines = {
-      splash: "The ocean again. The holy grail is still a catch.",
-      rud: "Too fast, too tilted, or the pad. Rapid unscheduled disassembly.",
-      tower: "The tower does not move. The Ship does.",
+      splash: "The ocean again. The holy grail is still a catch. Tip: bank toward the tower and thrust early.",
+      rud: "Too fast, too tilted, or the pad. Rapid unscheduled disassembly. Tip: start the braking burn higher.",
+      tower: "The tower does not move. The Ship does. Tip: bank the other way to brake before the arms.",
     };
     showOverlay("No catch", kind === "splash" ? "Splashdown" : kind === "tower" ? "Tower strike" : "RUD", lines[kind], "Try again");
   }
@@ -586,6 +639,8 @@
     const precision = clamp(1 - Math.abs(ship.x - CATCH_X) / 40, 0, 1);
     const soft = clamp(1 - Math.abs(ship.vy) / s.catchVy, 0, 1);
     const gained = Math.round(900 + ship.fuel * 7 + precision * 280 + soft * 220);
+    if (!reduced) freezeUntil = performance.now() + 110;
+    if (state === "fly" && !demo) buzz([40, 30, 90]);
     shake = 7;
     flash = 0.45;
     burst(ship.x, ARM_Y, 28, "#f4d27a", 2.8);
@@ -701,6 +756,26 @@
     if (burning && !wasBurning && state === "fly") sfxIgnite();
     wasBurning = Boolean(burning && state === "fly");
     setRumble(burning && state === "fly");
+
+    if (state === "fly") {
+      const altNow = ARM_Y - (ship.y - 4);
+      const dist = Math.hypot(ship.x - CATCH_X, altNow);
+      if (!lowFuelWarned && ship.fuel < s.fuel * 0.2) {
+        lowFuelWarned = true;
+        sfxWarn();
+        say("Fuel low", 2400, true);
+      }
+      if (dist < 170) {
+        pingTick += 1;
+        if (pingTick >= Math.round(8 + dist / 4)) {
+          pingTick = 0;
+          sfxPing(1 - dist / 170);
+        }
+      } else pingTick = 0;
+      if (altNow < 130 && altNow > -10 && ship.vy > s.catchVy + 0.6 && dist < 200) say("Too fast. Burn now.");
+      else if (dist < 200 && dist > 90 && Math.abs(ship.x - CATCH_X) < 30) say("In the corridor. Line it up.");
+      slowTarget = !reduced && !demo && dist < 64 ? 0.55 : 1;
+    } else slowTarget = 1;
 
     ship.vy += 0.00185 * dt;
     ship.vx += wind * dt * 0.06;
@@ -837,6 +912,13 @@
   function drawPlume(ctx, h, flicker) {
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
+    const power = Math.max(hold.thrust, held.thrust ? 0.7 : 0.35);
+    const glow = ctx.createRadialGradient(0, h * 0.56, 2, 0, h * 0.56, 70 + power * 40);
+    glow.addColorStop(0, `rgba(255,190,110,${0.34 * flicker * power})`);
+    glow.addColorStop(0.5, `rgba(255,110,40,${0.12 * flicker * power})`);
+    glow.addColorStop(1, "rgba(255,80,20,0)");
+    ctx.fillStyle = glow;
+    ctx.fillRect(-120, h * 0.56 - 120, 240, 240);
     const outer = ctx.createLinearGradient(0, h * 0.42, 0, h * 0.42 + 92);
     outer.addColorStop(0, `rgba(255,168,64,${0.42 * flicker})`);
     outer.addColorStop(0.4, `rgba(255,72,18,${0.22 * flicker})`);
@@ -1257,6 +1339,30 @@
       ctx.fillStyle = `rgba(255,236,210,${flash * 0.2})`;
       ctx.fillRect(0, 0, cssW, cssH);
     }
+    if (callout.t > 0 && callout.text) {
+      ctx.save();
+      ctx.globalAlpha = Math.min(1, callout.t / 400);
+      ctx.font = '600 14px "IBM Plex Mono", ui-monospace, monospace';
+      ctx.textAlign = "center";
+      const maxW = cssW - 40;
+      const lines = [];
+      let cur = "";
+      callout.text.split(" ").forEach((word) => {
+        const next = cur ? cur + " " + word : word;
+        if (cur && ctx.measureText(next).width > maxW) {
+          lines.push(cur);
+          cur = word;
+        } else cur = next;
+      });
+      if (cur) lines.push(cur);
+      const w = Math.min(cssW - 16, Math.max(...lines.map((l) => ctx.measureText(l).width)) + 28);
+      const h = 14 + lines.length * 20;
+      ctx.fillStyle = "rgba(8,14,24,0.72)";
+      ctx.fillRect(cssW / 2 - w / 2, 54, w, h);
+      ctx.fillStyle = "#e9f6fa";
+      lines.forEach((l, i) => ctx.fillText(l, cssW / 2, 76 + i * 20));
+      ctx.restore();
+    }
   }
 
   function updateHud() {
@@ -1294,7 +1400,8 @@
 
   function frame(now) {
     if(!last)last=now;const elapsed=Math.max(0,Math.min(100,now-last));last=now;
-    if(state!=="pause" && !document.hidden){accumulator+=elapsed;while(accumulator>=1000/60){const dt=1000/60;clock+=dt;step(dt);stepParticles();followCam();shake*=.86;flash*=.9;accumulator-=dt;}}
+    timeScale+=(slowTarget-timeScale)*0.15;if(callout.t>0)callout.t-=elapsed;
+    if(state!=="pause" && !document.hidden){accumulator+=performance.now()<freezeUntil?0:elapsed*timeScale;while(accumulator>=1000/60){const dt=1000/60;clock+=dt;step(dt);stepParticles();followCam();shake*=.86;flash*=.9;accumulator-=dt;}}
     else accumulator=0;
     if(reduced){shake=0;flash=0;}
     drawWorld(canvas.getContext("2d"));updateHud();requestAnimationFrame(frame);
@@ -1399,9 +1506,13 @@
       } else if (state === "pause") startPlayResume();
       return;
     }
+    if ((e.key === "r" || e.key === "R") && (state === "fail" || state === "caught" || state === "complete")) {
+      startPlay();
+      return;
+    }
     if (e.key === "m" || e.key === "M") {
-      muted = !muted;
-      applyMute();
+      ensureAudio();
+      setMuted(!muted);
       return;
     }
     const mapped = keyMap[e.key];
@@ -1419,8 +1530,7 @@
 
   muteBtn?.addEventListener("click", () => {
     ensureAudio();
-    muted = !muted;
-    applyMute();
+    setMuted(!muted);
   });
 
   playBtn?.addEventListener("click", () => {
@@ -1445,7 +1555,7 @@
   });
 
   function arcadePause(){if(state==='pause')startPlayResume();else if(state==='fly'){clearAllHolds();state='pause';setRumble(false);showOverlay('Paused','Take a breath.','Your approach is held exactly where you left it.','Resume');}}
-  const arcade=window.SDArcade.mount('catch',{autoFocus:true,reset(){demo=false;clearAllHolds();setRumble(false);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();muted=!muted;applyMute();return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the approach; no score will be saved.');}});
+  const arcade=window.SDArcade.mount('catch',{autoFocus:true,reset(){demo=false;clearAllHolds();setRumble(false);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();setMuted(!muted);return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the approach; no score will be saved.');}});
   window.addEventListener("resize", resize);
   resize();
   beginAttract();
