@@ -25,7 +25,7 @@
     return e.group && GROUPS[e.group] ? e.group : /spacex|starship|falcon|dragon|starlink|spcx|ussf/i.test(e.title) ? "spacex" : /grok|xai/i.test(e.title) ? "xai" : "tesla";
   }
   function category(e) {
-    return /dock(ed|ing)/i.test(e.title) ? "Docking" : /earnings/i.test(e.title) ? "Earnings" : /lock.up/i.test(e.title) ? "Markets" : /deliveries/i.test(e.title) ? "Deliveries" : /starship|falcon|starlink|ussf|bandwagon|crs/i.test(e.title) ? "Launch" : /grok/i.test(e.title) ? "Release" : "Reveal";
+    return /dock(ed|ing)/i.test(e.title) ? "Docking" : /earnings/i.test(e.title) ? "Earnings" : /lock.up/i.test(e.title) ? "Markets" : /deliveries/i.test(e.title) ? "Deliveries" : /shareholder|annual meeting|\bagm\b|drawing deadline/i.test(e.title) ? "Meeting" : /starship|falcon|starlink|ussf|bandwagon|crs|transporter|nrol/i.test(e.title) ? "Launch" : /grok/i.test(e.title) ? "Release" : "Reveal";
   }
   function sources(e) {
     const list = [...Array.isArray(e.sources) ? e.sources : [], e.source, e.href].filter((x) => typeof x === "string");
@@ -38,7 +38,15 @@
     const date = e.date || start.slice(0, 10);
     return { id: identity(e), title: String(e.title || ""), group: group(e), category: category(e), start, end: valid(e.end) ? e.end : "", date, precision, status: String(e.status || "expected"), note: String(e.summary || e.note || ""), where: String(e.where || ""), href: link(e.href), sources: sources(e), origin: e.origin || "Editorial calendar", ...e.coverage ? { coverage: e.coverage } : {} };
   }
-  function normalize(seed, manual, launches, live) {
+  function launchStatus(abbrev) {
+    const s = String(abbrev || "");
+    if (/^success$/i.test(s)) return "done";
+    if (/partial/i.test(s)) return "partial";
+    if (/^failure$/i.test(s)) return "failed";
+    if (/in.?flight/i.test(s)) return "done";
+    return s;
+  }
+  function normalize(seed, manual, launches, live, now = Date.now()) {
     const rows = (seed.curated || []).map((e) => item(e));
     function equal(a, b) {
       return a.id === b.id || a.category === b.category && Merge.launchKey(a.title) === Merge.launchKey(b.title);
@@ -54,7 +62,8 @@
     }
     for (const l of launches.results || []) {
       const p = String(l.net_precision?.abbrev || "").toUpperCase(), precision = { SEC: "datetime", MIN: "datetime", HR: "hour", H: "hour", DAY: "day", D: "day", M: "month", MTH: "month", MON: "month", Q1: "quarter", Q2: "quarter", Q3: "quarter", Q4: "quarter", QTR: "quarter", H1: "half", H2: "half", Y: "year", YR: "year" }[p] || "unknown";
-      const e = item({ id: "ll2-" + l.id, title: l.name, start: l.net, precision, status: l.status?.abbrev || "TBD", group: "spacex", where: [l.pad?.name, l.pad?.location?.name].filter(Boolean).join(" · "), note: l.mission?.type ? [l.mission.type, l.mission.orbit?.name].filter(Boolean).join(" · ") : "Launch Library 2 schedule. Launch targets can change.", origin: "Launch Library 2" });
+      const rawStatus = l.status?.abbrev || "TBD";
+      const e = item({ id: "ll2-" + l.id, title: l.name, start: l.net, precision, status: launchStatus(rawStatus), group: "spacex", where: [l.pad?.name, l.pad?.location?.name].filter(Boolean).join(" · "), note: l.mission?.type ? [l.mission.type, l.mission.orbit?.name].filter(Boolean).join(" · ") : "Launch Library 2 schedule. Launch targets can change.", origin: "Launch Library 2" });
       if (!e.start) continue;
       e.providerId = l.id;
       e.windowStart = valid(l.window_start) ? l.window_start : "";
@@ -62,12 +71,12 @@
       e.vehicle = l.vehicle || "";
       e.providerStatus = l.status?.name || e.status;
       const old = rows.find((x) => equal(x, e));
-      if (old && old.origin === "Editorial calendar" && !/success|failure|partial|in.?flight/i.test(e.status)) {
+      if (old && old.origin === "Editorial calendar" && !/success|failure|partial/i.test(rawStatus)) {
         old.providerId = l.id;
         old.providerStatus = e.providerStatus;
         continue;
       }
-      put({ ...old, ...e, sources: [...old?.sources || [], ...e.sources] });
+      put({ ...old, ...e, note: old && old.origin === "Editorial calendar" ? old.note : e.note, sources: [...old?.sources || [], ...e.sources] });
     }
     for (const e of rows) {
       const coverage = (live.events || []).find((l) => identity(l) === e.id || Merge.sameLaunch(l, e));
@@ -80,6 +89,10 @@
       const watch = item({ ...source, id: "watch-" + slug(source.title), precision: "unknown", status: "expected" });
       if (!rows.some(e => equal(e, watch))) put(watch);
     }
+    const cutoff = +new Date(now) - 45 * DAY;
+    const kept = rows.filter((e) => e.origin !== "Launch Library 2" || !valid(e.start) || !terminal(e) || Date.parse(e.start) >= cutoff);
+    rows.length = 0;
+    rows.push(...kept);
     rows.sort((a, b) => (a.start || "9999").localeCompare(b.start || "9999") || a.title.localeCompare(b.title));
     return { version: 1, updated: manual.updated || "", launchChecked: launches.checked || launches.updated || "", launchSource: url(launches.source) || "https://ll.thespacedevs.com/", events: rows };
   }
@@ -100,14 +113,15 @@
   const today = (now = /* @__PURE__ */ new Date(), z = "UTC") => dayKey({ start: new Date(now).toISOString(), precision: "datetime" }, z);
   const dated = (e) => ["datetime", "day"].includes(e.precision) && valid(e.start);
   function terminal(e) {
-    return /^(done|ended|success|failure|partial failure|cancelled)$/i.test(e.status);
+    return /^(done|ended|success|failure|failed|partial|partial failure|cancelled)$/i.test(e.status);
   }
   function upcoming(e, now = /* @__PURE__ */ new Date(), z = "UTC") {
     return dated(e) && !terminal(e) && (e.precision === "day" ? dayKey(e, z) >= today(now, z) : Date.parse(e.start) >= +new Date(now));
   }
   function label(e, now = /* @__PURE__ */ new Date(), z = "UTC") {
     if (/success/i.test(e.status)) return "Launch successful";
-    if (/failure/i.test(e.status)) return "Reported failure";
+    if (/partial/i.test(e.status)) return "Partial outcome";
+    if (/fail/i.test(e.status)) return "Reported failure";
     if (/cancelled/i.test(e.status)) return "Cancelled";
     if (terminal(e)) return "Completed";
     if (/in.?flight|^live$/i.test(e.status)) return "In progress · source reported";
@@ -172,5 +186,5 @@
       return out;
     }).join("\r\n") + "\r\n";
   }
-  return { GROUPS, esc, url, identity, normalize, zone, dayKey, today, dated, terminal, upcoming, label, time, dateLabel, shiftDay, monthDays, filter, exportRows, preferences, calendar };
+  return { GROUPS, esc, url, identity, launchStatus, normalize, zone, dayKey, today, dated, terminal, upcoming, label, time, dateLabel, shiftDay, monthDays, filter, exportRows, preferences, calendar };
 });

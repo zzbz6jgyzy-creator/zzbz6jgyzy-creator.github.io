@@ -2,6 +2,10 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · Newest software build is highest version on the newest first-seen day
+- **Decision:** homepage and Tesla overview pick the newest Teslascope build by UTC first-seen *day*, then numeric version. 2026.38.5.11 beats 2026.38.5.6 when both were first seen on 24 Oct, even if `.6` has a later timestamp.
+- **Why:** “newest build reporting” means the later point release, not whichever row Teslascope logged a few minutes later. The software tracker already compared versions this way.
+
 ## 2026-10-26 · Claude Code project setup (agents, commands, hooks, skills)
 - **Decision:** five subagents (`designer`, `frontend`, `seo`, `reviewer`, `content-ops`), six slash commands, three hooks, two skills and
   two rules files live in `.claude/`; helper scripts in `scripts/audit/`, `scripts/new-article.py`, `scripts/newsletter-draft.py`.

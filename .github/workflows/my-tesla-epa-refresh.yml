@@ -6,7 +6,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: my-tesla-epa-refresh
+  group: data-push-main
   cancel-in-progress: false
 jobs:
   refresh:
@@ -30,6 +30,5 @@ jobs:
           git add data/my-tesla-epa.json
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh Tesla EPA certification references.'
-            git pull --rebase
-            git push
+            sh scripts/ci-push-retry.sh
           fi

@@ -18,7 +18,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: fsd-europe-source-checks
+  group: data-push-main
   cancel-in-progress: false
 
 jobs:
@@ -57,6 +57,5 @@ jobs:
             echo 'No source-check change'
           else
             git commit -m 'Check FSD Europe source freshness and review queue.'
-            git pull --rebase
-            git push
+            sh scripts/ci-push-retry.sh
           fi

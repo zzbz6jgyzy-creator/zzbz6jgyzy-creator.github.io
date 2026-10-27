@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-concurrency: { group: nav-sync, cancel-in-progress: false }
+concurrency: { group: data-push-main, cancel-in-progress: false }
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -18,4 +18,4 @@ jobs:
           git diff --quiet && exit 0
           git config user.name "zzbz6jgyzy-creator"; git config user.email "alexrickard86@gmail.com"
           git commit -am "Sync pill menu from scripts/nav.json"
-          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done; exit 1
+          sh scripts/ci-push-retry.sh

@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: data-push-main
+  cancel-in-progress: false
+
 jobs:
   snapshot:
     if: github.ref == 'refs/heads/main'
