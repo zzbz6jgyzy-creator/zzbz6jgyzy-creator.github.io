@@ -300,8 +300,8 @@
       ]
     },
     "robotaxi": {
-      "file": "/assets/js/robotaxi.bundle.03c0d48249.js",
-      "bytes": 34684,
+      "file": "/assets/js/robotaxi.bundle.8ab1dac05c.js",
+      "bytes": 34900,
       "sources": [
         "arcade-model.js",
         "arcade.js",
@@ -368,6 +368,21 @@
         "cybertruck-studio-model.js",
         "cybertruck-studio-view.js",
         "cybertruck-studio.js"
+      ]
+    },
+    "arcade-core": {
+      "file": "/assets/js/arcade-core.bundle.0a71bb1a8c.js",
+      "bytes": 37991,
+      "sources": [
+        "track.js",
+        "newsletter.js",
+        "newsletter-cta.js",
+        "theme.js",
+        "live-now.js",
+        "search.js",
+        "design-21st.js",
+        "script.js",
+        "nav-pill.js"
       ]
     }
   }

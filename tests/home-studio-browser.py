@@ -30,6 +30,10 @@ async def main():
    email_box=await page.locator('#newsletter input[type=email]').bounding_box();assert email_box['width']>=130,(width,'email field too narrow',email_box)
    button=await page.locator('#newsletter button[type=submit]').bounding_box();assert button['y']>=0 and button['y']+button['height']<844,(width,button)
    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),(width,theme,'overflow')
+   if mode!='nojs'and await page.evaluate('window.__homeCLS')>=.1:
+    import base64
+    print('HOME_LAYOUT_DIAGNOSTIC',await page.evaluate("['.hs-hero h1','.hv-pitch','.hv-start','.hs-hero-copy'].map(s=>{const e=document.querySelector(s),r=e.getBoundingClientRect();return {s,y:r.y,height:r.height,width:r.width,font:getComputedStyle(e).font,fontReady:document.fonts.status,text:e.textContent.slice(0,160)}})"),flush=True)
+    jpg=await page.screenshot(type='jpeg',quality=65);print('ARCADE_PREVIEW home-diagnostic.jpg '+base64.b64encode(jpg).decode(),flush=True)
    if mode!='nojs':assert await page.evaluate('window.__homeCLS')<.1,(width,theme,'layout shift',await page.evaluate('window.__homeCLS'),await page.evaluate('window.__homeShifts'))
    assert not any('.mp4'in u for u in requested),'No autoplay video or film downloads on the homepage'
    assert await page.locator('iframe').count()==0

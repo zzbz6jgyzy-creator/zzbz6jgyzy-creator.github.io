@@ -268,6 +268,7 @@
   }
 
   function showOverlay(kicker, title, copy, playLabel, shareHref) {
+    const report=root.querySelector('[data-taxi-report]');if(report)report.hidden=state!=='end';
     if (overlayKicker) overlayKicker.textContent = kicker;
     if (overlayTitle) overlayTitle.textContent = title;
     if (overlayCopy) overlayCopy.textContent = copy;
@@ -790,6 +791,7 @@
     arcade.telemetry({state:state==='deploy'?'Planning':state==='night'?'Charging':state==='resolve'?'City running':state==='end'?'Week complete':'Ready',sound:muted?'Sound off':'Sound on'});
   }
   const arcade=window.SDArcade.mount('robotaxi',{reset(){clearTimeout(tickTimer);state='attract';game=null;showOverlay('New mission','Open the garage','Choose your fleet strategy. Saved weeks restore when you press Play.','Play');},restart(){forceNew=true;startWeek();},pause(){},sound(){ensureAudio();muted=!muted;applyMute();return muted;}});
+  root.querySelector('[data-taxi-report]').onclick=()=>{hideOverlay();root.querySelector('[data-taxi-chart]').scrollIntoView({block:'center',behavior:'instant'});};
   root.querySelector('[data-taxi-pricing]').onchange=e=>{if(state==='deploy'){game.pricing=e.target.value;paint();}};
   document.addEventListener('visibilitychange',()=>{if(document.hidden){saveResume();clearTimeout(tickTimer);}else if(state==='resolve')playQueue();});
   window.addEventListener('keydown',e=>{if(state!=='deploy'||e.target?.closest?.('input,select,textarea,button,a'))return;const i=Number(e.key)-1;if(i>=0&&i<4){e.preventDefault();sendSelected(ZONES[i].id);}});

@@ -8,6 +8,7 @@ The games hub and all three games keep the existing site shell, fonts, red ident
 - Catch and Hot Staging gain forgiving training, six-mission campaigns with saved checkpoints, three-mission daily runs, fixed-step simulation, readable instruments, tactical failure debriefs, medals and non-scoring demonstrations.
 - Phone controls support simultaneous pointers, cancellation, keyboard activation, pause/resume and a focus view. Sound begins muted and is opt-in. Decorative flashes and camera shake stop for reduced motion.
 - Robotaxi Boss gains visible city deployment, fare policies, daily contracts, three permanent weekly upgrades, a two-day forecast, income history and saved planning/night phases. Battery levels are visible, zone controls have named accessible actions, and saved state is validated before restoration.
+- Game pages load the normal site controls without the interruption/popup script; inline newsletter forms and the Subscribe link retain their existing controllers.
 - Browser-storage errors fall back to visit-only play with an explicit message. New-edition scores use versioned local records and never post to the original public board. Demonstrations never save a score.
 
 ## Rules and persistence

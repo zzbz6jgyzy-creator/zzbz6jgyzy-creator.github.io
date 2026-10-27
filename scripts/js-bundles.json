@@ -226,6 +226,17 @@
       "cybertruck-studio-model.js",
       "cybertruck-studio-view.js",
       "cybertruck-studio.js"
+    ],
+    "arcade-core": [
+      "track.js",
+      "newsletter.js",
+      "newsletter-cta.js",
+      "theme.js",
+      "live-now.js",
+      "search.js",
+      "design-21st.js",
+      "script.js",
+      "nav-pill.js"
     ]
   },
   "pages": {
@@ -460,36 +471,31 @@
     },
     "catch.html": {
       "bundles": [
-        "core",
+        "arcade-core",
         "catch"
       ],
-      "grow": [
-        "data-band"
-      ]
+      "grow": []
     },
     "staging.html": {
       "bundles": [
-        "core",
+        "arcade-core",
         "staging"
-      ]
+      ],
+      "grow": []
     },
     "robotaxi.html": {
       "bundles": [
-        "core",
+        "arcade-core",
         "robotaxi"
       ],
-      "grow": [
-        "data-band"
-      ]
+      "grow": []
     },
     "games.html": {
       "bundles": [
-        "core",
+        "arcade-core",
         "games"
       ],
-      "grow": [
-        "data-band"
-      ]
+      "grow": []
     },
     "search.html": {
       "bundles": [
