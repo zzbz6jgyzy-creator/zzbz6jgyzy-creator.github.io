@@ -1,0 +1,36 @@
+name: Arcade gameplay and design checks
+on:
+  pull_request:
+    paths: ['games.html','catch*','staging*','robotaxi*','arcade*','assets/arcade/**','assets/js/games.bundle.*','assets/js/catch.bundle.*','assets/js/staging.bundle.*','assets/js/robotaxi.bundle.*','scripts/build-arcade.mjs','scripts/js-bundles.json','tests/arcade*','.github/workflows/arcade-checks.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  arcade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify deterministic missions and saved data
+        run: |
+          node tests/arcade-model.test.cjs
+          node --check catch.js
+          node --check staging.js
+          node --check robotaxi.js
+      - name: Install browser verification
+        run: pip install playwright==1.62.0
+      - name: Play games and check responsive interfaces
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/arcade-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arcade-gameplay-previews
+          path: /tmp/arcade-previews

@@ -282,34 +282,39 @@
       ]
     },
     "catch": {
-      "file": "/assets/js/catch.bundle.5cbc780909.js",
-      "bytes": 29902,
+      "file": "/assets/js/catch.bundle.b10ab110e6.js",
+      "bytes": 42755,
       "sources": [
-        "board.js",
+        "arcade-model.js",
+        "arcade.js",
         "catch.js"
       ]
     },
     "staging": {
-      "file": "/assets/js/staging.bundle.b1d937f7f2.js",
-      "bytes": 37209,
+      "file": "/assets/js/staging.bundle.4039234ecf.js",
+      "bytes": 49584,
       "sources": [
-        "board.js",
+        "arcade-model.js",
+        "arcade.js",
         "staging.js"
       ]
     },
     "robotaxi": {
-      "file": "/assets/js/robotaxi.bundle.98035cbd69.js",
-      "bytes": 18493,
+      "file": "/assets/js/robotaxi.bundle.8ab1dac05c.js",
+      "bytes": 34900,
       "sources": [
-        "board.js",
+        "arcade-model.js",
+        "arcade.js",
         "robotaxi.js"
       ]
     },
     "games": {
-      "file": "/assets/js/games.bundle.92010b2bbd.js",
-      "bytes": 3092,
+      "file": "/assets/js/games.bundle.f3fe0c84c4.js",
+      "bytes": 15381,
       "sources": [
-        "board.js"
+        "board.js",
+        "arcade-model.js",
+        "arcade.js"
       ]
     },
     "buy-guide": {
@@ -363,6 +368,21 @@
         "cybertruck-studio-model.js",
         "cybertruck-studio-view.js",
         "cybertruck-studio.js"
+      ]
+    },
+    "arcade-core": {
+      "file": "/assets/js/arcade-core.bundle.d6c8ea94d8.js",
+      "bytes": 38256,
+      "sources": [
+        "track.js",
+        "newsletter.js",
+        "newsletter-cta.js",
+        "theme.js",
+        "live-now.js",
+        "search.js",
+        "design-21st.js",
+        "script.js",
+        "nav-pill.js"
       ]
     }
   }
