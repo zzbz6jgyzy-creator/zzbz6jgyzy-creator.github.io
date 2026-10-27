@@ -27,10 +27,10 @@
 .hs-home .hs-hero h1 { font:600 clamp(56px,6.2vw,86px)/.99 Inter,sans-serif;letter-spacing:-.065em;margin:28px 0 24px;color:var(--hs-ink); }
 .hs-home .hs-hero h1>span { color:var(--hs-red); }
 .hs-home .hv-pitch { max-width:450px;font-size:16px;line-height:1.75;color:var(--hs-muted); }
-.hs-home .hv-start { display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 26px; }
-.hs-home .hv-start a { display:inline-flex;align-items:center;justify-content:space-between;gap:23px;min-height:46px;padding:10px 15px;border:1px solid var(--hs-line);border-radius:6px;font-size:12px;font-weight:600;color:var(--hs-ink);transition:background .2s,border-color .2s; }
-.hs-home .hv-start a:first-child { background:var(--hs-ink);border-color:var(--hs-ink);color:var(--hs-bg); }
-.hs-home .hv-start a:hover { border-color:var(--hs-red); }
+.hs-home .hs-hero .hv-start { display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 26px; }
+.hs-home .hs-hero .hv-start a { display:inline-flex;align-items:center;justify-content:space-between;gap:23px;min-height:46px;padding:10px 15px;border:1px solid var(--hs-line);border-radius:6px;font-size:12px;font-weight:600;color:var(--hs-ink);transition:background .2s,border-color .2s; }
+.hs-home .hs-hero .hv-start a:first-child { background:var(--hs-ink);border-color:var(--hs-ink);color:var(--hs-bg); }
+.hs-home .hs-hero .hv-start a:hover { border-color:var(--hs-red); }
 .hs-home .hs-hero-signup { padding-top:21px;border-top:1px solid var(--hs-line);scroll-margin-top:120px; }
 .hs-home .hs-signup-label { font-size:13px;font-weight:600;line-height:1.6;margin-bottom:12px; }
 .hs-home .hs-form { display:flex!important;flex-wrap:wrap;align-items:stretch;gap:8px;min-width:0; }
@@ -203,7 +203,7 @@
 .hs-home .hs-newsletter-benefits li:before { content:'✓';color:#fb6077; }
 .hs-home .hs-newsletter .hs-form input[type=email] { color:#fff;background:#ffffff04;border-color:#ffffff40; }
 .hs-home .hs-newsletter .hs-form input::placeholder { color:#a9afba; }
-.hs-home .hs-newsletter .hs-form-note { color:#b5b8c1; }
+.hs-home .hs-newsletter .hs-form-note,.hs-home .hs-newsletter .newsletter-status { color:#b5b8c1; }
 .hs-home .hs-newsletter-preview { min-width:0;scroll-margin-top:110px; }
 .hs-home .hs-paper { padding:30px;background:#f1eee8;border:1px solid #fff5;border-radius:3px;box-shadow:10px 12px 0 #ffffff08,0 25px 55px #0005;color:#1b2028;transform:rotate(2deg); }
 .hs-home .hs-paper-brand { display:flex;align-items:center;gap:12px;padding-bottom:21px;border-bottom:1px solid #1a202a2e; }
@@ -294,8 +294,8 @@ html[data-theme=light] .hs-home .hs-newsletter .hs-form input::placeholder { col
   .hs-home .hs-hero h1 { font-size:54px;margin:23px 0; }
   .hs-home .hs-hero-copy>.hs-eyebrow { font-size:8px!important; }
   .hs-home .hv-pitch { font-size:14px;line-height:1.7; }
-  .hs-home .hv-start { gap:7px;margin:18px 0 22px; }
-  .hs-home .hv-start a { gap:12px;padding-inline:12px;font-size:11px; }
+  .hs-home .hs-hero .hv-start { gap:7px;margin:18px 0 22px; }
+  .hs-home .hs-hero .hv-start a { gap:12px;padding-inline:12px;font-size:11px; }
   .hs-home .hs-form { flex-direction:column; }
   .hs-home .hs-form input[type=email] { width:100%; }
   .hs-home .hs-form .sd-btn { justify-content:space-between;font-size:12px; }
@@ -351,12 +351,12 @@ html[data-theme=light] .hs-home .hs-newsletter .hs-form input::placeholder { col
   .hs-home .hs-hero-copy>.hs-eyebrow { font-size:8px!important;letter-spacing:.02em;gap:7px; }
   .hs-home .hs-hero h1 { font-size:clamp(48px,14.5vw,76px);line-height:1;letter-spacing:-.065em;margin:23px 0 19px; }
   .hs-home .hv-pitch { font-size:14px;line-height:1.75;max-width:450px; }
-  .hs-home .hv-start { gap:8px;margin:19px 0 23px; }
-  .hs-home .hv-start a { min-height:46px;font-size:12px;gap:22px;padding:10px 14px; }
+  .hs-home .hs-hero .hv-start { gap:8px;margin:19px 0 23px; }
+  .hs-home .hs-hero .hv-start a { min-height:46px;font-size:12px;gap:22px;padding:10px 14px; }
   .hs-home .hs-hero-signup { padding-top:18px; }
   .hs-home .hs-signup-label { font-size:12px;margin-bottom:12px; }
   .hs-home .hs-hero-signup .hs-form { flex-direction:row; }
-  .hs-home .hs-hero-signup .hs-form .sd-btn { font-size:11px;padding-inline:12px;gap:8px;max-width:100%; }
+  .hs-home .hs-hero-signup .hs-form .sd-btn { width:auto;font-size:11px;padding-inline:12px;gap:8px;max-width:100%; }
   .hs-home .hs-hero-signup .hs-form input { min-width:130px;font-size:16px;padding:12px; }
   .hs-home .hs-form-note { font-size:10px;line-height:1.8;margin-top:9px; }
   .hs-home .hs-sample-link { font-size:11px;min-height:36px; }
