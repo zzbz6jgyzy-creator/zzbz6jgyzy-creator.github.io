@@ -92,6 +92,16 @@ async def main():
   assert await q.evaluate("SDArcade.storage.getItem('quota-fixture')")=='new','quota failure must retain the latest visit state'
   await q.evaluate("SDArcade.storage.removeItem('quota-fixture')");assert await q.evaluate("SDArcade.storage.getItem('quota-fixture')") is None
   print('PASS quota fallback with existing storage',flush=True);await c.close()
+  for width,expect in [(390,True),(1440,False)]:
+   c=await context(width);q=await c.new_page();await q.goto('https://superchargeddaily.com/catch.html',wait_until='networkidle')
+   assert not await q.evaluate("document.body.classList.contains('ac-focus')")
+   await q.locator('[data-catch-play]').click()
+   assert await q.evaluate("document.body.classList.contains('ac-focus')")==expect,('auto focus view',width)
+   if expect:
+    box=await q.locator('[data-catch-stage]').bounding_box();assert box['y']+box['height']<=1000,'stage fits the phone screen'
+    await q.locator('[data-ac-focus]').click();assert not await q.evaluate("document.body.classList.contains('ac-focus')")
+    await q.evaluate("CatchGame.restart()");assert not await q.evaluate("document.body.classList.contains('ac-focus')"),'exit is remembered for the session'
+   print('PASS phone focus view',width,flush=True);await c.close()
   # Small inline previews let reviewers inspect CI screenshots through the connected log reader.
   await browser.close()
 asyncio.run(main())

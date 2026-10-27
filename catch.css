@@ -350,3 +350,116 @@
     min-height: 400px;
   }
 }
+
+/* Phone-first: compact header, big thumb pad, game fills the screen once a run starts. */
+@media (max-width: 760px) {
+  .catch-page .ac-game-intro > div > p,
+  .catch-page .ac-game-intro .ac-kicker {
+    display: none;
+  }
+
+  .catch-page .ac-game-intro h1 {
+    font-size: 1.9rem;
+    line-height: 1.05;
+  }
+
+  .catch-page .ac-game-intro h1 span {
+    display: none;
+  }
+
+  .catch-page .ac-game-intro {
+    padding: 0 0 0.5rem;
+  }
+
+  .catch-page .ac-back {
+    margin-bottom: 0;
+  }
+
+  .catch-page .ac-modebar {
+    gap: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .catch-page .ac-modebar label {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .catch-page .ac-modebar [data-ac-save] {
+    display: none;
+  }
+
+  .catch-pad {
+    grid-template-columns: 1fr 1.6fr 1fr;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .catch-pad button {
+    min-height: 4.6rem;
+    font-size: 1.3rem;
+  }
+
+  .catch-throttle {
+    font-size: 0.85rem;
+  }
+
+  .ac-focus .catch-stage {
+    height: calc(100dvh - 200px);
+    min-height: 300px;
+    margin-bottom: 0.5rem;
+  }
+
+  .ac-focus .catch-page :is(.ac-instruments, .ac-guidance) {
+    display: none;
+  }
+
+  .ac-focus .catch-page .ac-status {
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape phones: stage takes the screen, thumbs sit over the lower corners. */
+@media (max-height: 500px) and (orientation: landscape) and (pointer: coarse) {
+  .ac-focus .catch-page .catch-stage {
+    height: calc(100dvh - 76px);
+    min-height: 0;
+    margin: 0;
+  }
+
+  .ac-focus .catch-page .catch-pad {
+    position: fixed;
+    left: calc(8px + env(safe-area-inset-left, 0));
+    right: calc(8px + env(safe-area-inset-right, 0));
+    bottom: calc(8px + env(safe-area-inset-bottom, 0));
+    display: grid;
+    grid-template-columns: 5rem 5rem 1fr 9rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .ac-focus .catch-page .catch-pad button {
+    pointer-events: auto;
+    min-height: 4rem;
+    opacity: 0.72;
+  }
+
+  .ac-focus .catch-page .catch-pad .catch-throttle {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .ac-focus .catch-page .ac-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+}

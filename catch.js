@@ -1445,7 +1445,7 @@
   });
 
   function arcadePause(){if(state==='pause')startPlayResume();else if(state==='fly'){clearAllHolds();state='pause';setRumble(false);showOverlay('Paused','Take a breath.','Your approach is held exactly where you left it.','Resume');}}
-  const arcade=window.SDArcade.mount('catch',{reset(){demo=false;clearAllHolds();setRumble(false);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();muted=!muted;applyMute();return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the approach; no score will be saved.');}});
+  const arcade=window.SDArcade.mount('catch',{autoFocus:true,reset(){demo=false;clearAllHolds();setRumble(false);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();muted=!muted;applyMute();return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the approach; no score will be saved.');}});
   window.addEventListener("resize", resize);
   resize();
   beginAttract();
