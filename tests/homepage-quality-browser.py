@@ -53,18 +53,24 @@ async def main():
      await page.wait_for_function('!document.querySelector("[data-prebuilt]")')
      assert await page.locator('.hv-event .lv').count()==0
     else:
-     card=page.locator('.lv-home-next');await card.wait_for()
-     if scripts:await card.get_by_role('heading',name=event['title'],exact=True).wait_for()
-     assert await card.locator('img,iframe,.lw-tile').count()==0
-     if scripts and mode in ['net','tbc']:
-      assert await card.locator('.lh-next-countdown').count()==0
-      assert ('net' if mode=='net' else 'time tbc') in (await card.inner_text()).lower()
-     for link in await card.locator('a').all():
-      bounds=await link.bounding_box();assert bounds['height']>=44,bounds
-     if width<=390 and registry and LEAD.get('homeTitle'):
-      rect=await card.bounding_box();assert rect['height']<=210,rect
-      signup=await page.locator('#newsletter button[type=submit]').bounding_box();assert signup['y']+signup['height']<844,signup
-     assert await card.get_by_role('link',name='All events →').get_attribute('href')=='/calendar.html'
+     card=page.locator('.lv-home-next')
+     if not scripts and not await card.count():
+      # The static fallback is empty on purpose while a launch is live or imminent (live-home-pick.pickNextEvent returns null and live.js mounts that card itself), so the real next launch decides whether a card exists here.
+      assert await page.locator('.hv-event[data-live-slot]').count()==1
+      assert await page.locator('.hv-event .lv').count()==0
+     else:
+      await card.wait_for()
+      if scripts:await card.get_by_role('heading',name=event['title'],exact=True).wait_for()
+      assert await card.locator('img,iframe,.lw-tile').count()==0
+      if scripts and mode in ['net','tbc']:
+       assert await card.locator('.lh-next-countdown').count()==0
+       assert ('net' if mode=='net' else 'time tbc') in (await card.inner_text()).lower()
+      for link in await card.locator('a').all():
+       bounds=await link.bounding_box();assert bounds['height']>=44,bounds
+      if width<=390 and registry and LEAD.get('homeTitle'):
+       rect=await card.bounding_box();assert rect['height']<=210,rect
+       signup=await page.locator('#newsletter button[type=submit]').bounding_box();assert signup['y']+signup['height']<844,signup
+      assert await card.get_by_role('link',name='All events →').get_attribute('href')=='/calendar.html'
     if os.environ.get('QUALITY_SHOTS') and mode=='upcoming' and registry:
      shots=pathlib.Path(os.environ['QUALITY_SHOTS']);shots.mkdir(parents=True,exist_ok=True)
      await page.screenshot(path=str(shots/f'home-{width}-{theme}-{scripts}.png'))
