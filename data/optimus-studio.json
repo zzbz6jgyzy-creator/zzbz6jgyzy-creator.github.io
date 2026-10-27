@@ -315,6 +315,22 @@
       "kind": "Company product page",
       "note": "From US$13.5K excluding tax and shipping; 1.32 m tall, about 35 kg; 23 to 43 joint motors.",
       "checked": "2026-10-27"
+    },
+    {
+      "id": "ai2022_talk",
+      "title": "AI Day 2022 transcript",
+      "url": "https://gist.github.com/L0rdCha0s/de22ae0c7e7a7a70b37ac9c1262e27e1",
+      "kind": "Community transcript of Tesla’s presentation · 30 Sep 2022",
+      "note": "Machine transcript of the event. Tesla engineers describe 28 actuators built from three rotary and three linear designs, the battery “in the middle of our torso”, the central computer in the torso, and hands with six actuators, 11 degrees of freedom and metallic tendons.",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "layout",
+      "title": "Reeman: humanoid robot industry chain",
+      "url": "https://www.reemanrobot.com/news/humanoid-robot-industry-chain-and-prospect-ana-75674717.html",
+      "kind": "Industry analysis · 8 Mar 2024",
+      "note": "Gives the per-joint split behind Tesla’s 28 actuators: rotary at the shoulders (6), wrists (2), hips (4) and trunk (2); linear at the elbows (2), wrists (4), hips (2), knees (2) and ankles (4). Secondary; Tesla has not published a Gen 3 layout.",
+      "checked": "2026-10-27"
     }
   ],
   "systems": [
@@ -327,13 +343,13 @@
       "how": "Cameras provide information about objects, surfaces and motion. Joint-position sensing supplies proprioception: an estimate of where the limbs are. Contact and force feedback add information that an image can miss, such as whether a grasp is slipping.",
       "why": "Recognizing a cup is only a first step. The robot also needs an actionable estimate of where it is, how it can be reached and what may change during contact. Occlusion, reflections, lighting and moving people complicate that estimate.",
       "tesla": "Tesla’s stated engineering scope includes perception and physical interaction. Its published material does not provide a complete, final production sensor bill of materials here.",
-      "boundary": "This overview explains the roles of sensing. The annotation marks a topic, not the verified location of a particular production camera.",
+      "boundary": "This overview explains the roles of sensing. The diagram marks a topic, not the verified location of a particular production camera.",
       "sources": [
         "tesla",
         "cellfilm"
       ],
-      "x": 51,
-      "y": 14
+      "x": 58.8,
+      "y": 5.4
     },
     {
       "id": "hands",
@@ -348,8 +364,8 @@
       "sources": [
         "hands"
       ],
-      "x": 59,
-      "y": 51
+      "x": 74.4,
+      "y": 54.8
     },
     {
       "id": "actuation",
@@ -365,8 +381,8 @@
         "motors",
         "gen2"
       ],
-      "x": 40,
-      "y": 36
+      "x": 31.7,
+      "y": 17.5
     },
     {
       "id": "balance",
@@ -382,8 +398,8 @@
         "balance",
         "tesla"
       ],
-      "x": 53,
-      "y": 79
+      "x": 63.4,
+      "y": 99.2
     },
     {
       "id": "learning",
@@ -399,8 +415,8 @@
         "sort",
         "training"
       ],
-      "x": 51,
-      "y": 28
+      "x": 56.3,
+      "y": 19.3
     },
     {
       "id": "power",
@@ -416,8 +432,8 @@
         "call",
         "ai2022"
       ],
-      "x": 50,
-      "y": 45
+      "x": 40.5,
+      "y": 38.5
     }
   ],
   "demos": [
@@ -1292,7 +1308,9 @@
         "tc21",
         "ai2022"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2022-12-31",
+      "short": "Prototype"
     },
     {
       "id": "p-price-2022",
@@ -1304,7 +1322,9 @@
       "sources": [
         "engadget22"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": null,
+      "short": "Under $20K"
     },
     {
       "id": "p-thousands",
@@ -1318,7 +1338,9 @@
         "ir2025"
       ],
       "quote": false,
-      "reported": true
+      "reported": true,
+      "dueDate": "2025-12-31",
+      "short": "Thousands at work"
     },
     {
       "id": "p-gen3",
@@ -1331,7 +1353,9 @@
         "ir2025",
         "leak"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2026-03-31",
+      "short": "Gen 3 unveil"
     },
     {
       "id": "p-sop",
@@ -1344,7 +1368,9 @@
         "ir2025",
         "q3"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2026-12-31",
+      "short": "Start production"
     },
     {
       "id": "p-ramp",
@@ -1356,7 +1382,9 @@
       "sources": [
         "call"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2027-12-31",
+      "short": "20,000 a week"
     },
     {
       "id": "p-customers",
@@ -1368,7 +1396,9 @@
       "sources": [
         "call"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2027-12-31",
+      "short": "Outside customers"
     }
   ],
   "field": [

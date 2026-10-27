@@ -8,6 +8,7 @@ on:
       - 'data/optimus-studio.json'
       - 'assets/optimus-studio/**'
       - 'scripts/build-optimus-studio.mjs'
+      - 'scripts/optimus-art.mjs'
       - 'scripts/js-bundles.json'
       - 'scripts/build-seo.py'
       - 'tests/test_optimus_refresh.py'

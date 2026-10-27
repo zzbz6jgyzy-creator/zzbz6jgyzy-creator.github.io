@@ -4,7 +4,7 @@ let data;try{data=M.validate(JSON.parse(document.getElementById('os-data').textC
 root.classList.add('os-enhanced');
 const all=s=>[...root.querySelectorAll(s)],one=s=>root.querySelector(s);
 // Reveal controls only after validation; no network fetch can erase saved content.
-all('.os-hotspots,.os-system-tabs,.os-filters,.os-calculator-controls,.os-timeline-filters,.os-gen-switch,[data-film],#os-play').forEach(x=>x.hidden=false);
+all('.os-hotspots,.os-system-tabs,.os-filters,.os-calculator-controls,.os-timeline-filters,.os-gen-switch,.os-hand-controls,.os-grip,.os-ramp-controls,[data-film],#os-play').forEach(x=>x.hidden=false);
 // Timeline: filter by kind of moment; a year with nothing to show folds away.
 const timelineButtons=all('.os-timeline-filters [data-type]');
 function filterTimeline(type){timelineButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.type===type)));all('.os-event').forEach(x=>x.hidden=type!=='all'&&x.dataset.type!==type);all('.os-timeline-year').forEach(y=>y.hidden=!y.querySelector('.os-event:not([hidden])'));}
@@ -12,7 +12,28 @@ timelineButtons.forEach(b=>b.addEventListener('click',()=>filterTimeline(b.datas
 // Generations: on phones one version sits beside the labels; the switcher picks which.
 const specs=one('.os-specs'),genButtons=all('.os-gen-switch [data-gen]');
 genButtons.forEach(b=>b.addEventListener('click',()=>{specs.dataset.show=b.dataset.gen;genButtons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));}));
-function selectSystem(id){if(!data.systems.some(x=>x.id===id))return;all('.os-system-panel').forEach(p=>p.hidden=p.id!=='system-'+id);all('[data-system]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.system===id)));}
+// Hand lab: compare which motions each hand drives, then feel why touch matters.
+const lab=one('.os-hand-lab'),handButtons=all('[data-hand]');
+handButtons.forEach(b=>b.addEventListener('click',()=>{const gen=b.dataset.hand;lab.dataset.gen=gen;handButtons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));one('[data-dof-count]').textContent=gen==='gen2'?'11':'22';one('[data-dof-note]').textContent=gen==='gen2'?'(Gen 2, published by Tesla)':'(Gen 3, reported)';}));
+const grip=one('#os-grip'),eggStage=one('.os-grip-stage'),gripState=one('#os-grip-state');
+const GRIP={slip:'Slipping. Too little force to hold its weight.',held:'Held. Enough force to lift, not enough to crack.',crack:'Cracked. Too much force for a shell.'};
+function setGrip(){const v=Number(grip.value),state=v<30?'slip':v>70?'crack':'held';eggStage.dataset.state=state;gripState.textContent=GRIP[state];grip.setAttribute('aria-valuetext',v+'% force: '+state);}
+grip.addEventListener('input',setGrip);setGrip();
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+one('#os-grip-auto').addEventListener('click',()=>{const from=Number(grip.value),to=50;if(still){grip.value=to;setGrip();return;}const t0=performance.now();(function step(t){const k=Math.min(1,(t-t0)/600),e=1-Math.pow(1-k,3);grip.value=Math.round(from+(to-from)*e);setGrip();if(k<1)requestAnimationFrame(step);})(t0);});
+// Ramp explorer: a cursor on the illustrative curves, driven by the slider or the pointer.
+const G={W:760,H:330,L:56,R:120,T:20,B:44,max:22000,months:24}; // mirrors rampChart() in scripts/optimus-art.mjs
+const monthInput=one('#os-ramp-month'),chart=one('.os-ramp-chart'),cursor=chart.querySelector('.os-cursor'),rampButtons=all('[data-ramp]');
+let pace='stated';
+const when=m=>new Intl.DateTimeFormat('en-GB',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(2026,9+m,15)));
+function setRamp(){const m=Number(monthInput.value),v=M.ramp(m,pace),x=G.L+m/G.months*(G.W-G.L-G.R),y=G.T+(1-v.weekly/G.max)*(G.H-G.T-G.B);
+ one('#os-ramp-week').textContent=M.approx(v.weekly);one('#os-ramp-year').textContent=M.approx(Math.min(v.yearly,1e6));one('#os-ramp-total').textContent=M.approx(v.total);one('#os-ramp-when').textContent=when(m);monthInput.setAttribute('aria-valuetext',when(m));
+ cursor.removeAttribute('hidden');cursor.setAttribute('transform',`translate(${x.toFixed(1)} 0)`);cursor.querySelector('circle').setAttribute('cy',y.toFixed(1));chart.dataset.pace=pace;}
+monthInput.addEventListener('input',setRamp);
+rampButtons.forEach(b=>b.addEventListener('click',()=>{pace=b.dataset.ramp;rampButtons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));setRamp();}));
+chart.querySelector('.os-hit').addEventListener('pointermove',event=>{const r=chart.getBoundingClientRect(),vx=(event.clientX-r.left)/r.width*G.W,m=Math.round((vx-G.L)/(G.W-G.L-G.R)*G.months);monthInput.value=Math.max(0,Math.min(G.months,m));setRamp();});
+setRamp();
+function selectSystem(id){if(!data.systems.some(x=>x.id===id))return;one('.os-anatomy').dataset.active=id;all('.os-system-panel').forEach(p=>p.hidden=p.id!=='system-'+id);all('[data-system]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.system===id)));}
 selectSystem(data.systems[0].id);
 all('[data-system]').forEach(b=>b.addEventListener('click',()=>selectSystem(b.dataset.system)));
 one('.os-system-tabs').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;const buttons=all('.os-system-tabs button'),i=buttons.indexOf(document.activeElement);if(i<0)return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:(i+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;buttons[next].focus();selectSystem(buttons[next].dataset.system);});
