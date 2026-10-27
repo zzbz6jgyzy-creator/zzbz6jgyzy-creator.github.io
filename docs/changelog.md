@@ -1,5 +1,14 @@
 # Changelog
 
+## 27 Oct 2026 — Hot Staging phone layout, results screen and cleanup (PR 3 of 3)
+
+- Phone: compact header and mode bar, Play enters focus view automatically (exit is remembered for the session), bigger thumb pad with safe-area padding and a Throttle button in campaign and daily, and a landscape layout where the stage fills the screen and the pad floats over the lower corners.
+- Fixed for both Hot Staging and Catch: starting focus view now scrolls to the top (landscape phones used to show the stage cut off), and the instrument panel is hidden in landscape focus view.
+- Results screen: animated medal, points counting up, timing/attitude/bonus rows, personal-best delta, and a Share result button that sends a generated 1200x630 card through the share sheet (text and link fallback, then clipboard). Failures show a matching card with the reason and run score.
+- The instrument panel no longer says "Stage now" after the flight has ended.
+- Page copy and the mission manual describe Max-Q, gusts, Raptor-outs and the streak bonus. 19 rules of dead legacy CSS removed from `staging.css` (about 200 lines).
+- Tests: Hot Staging focus view at 390 and 1440 px, results card after a stage.
+
 ## 27 Oct 2026 — Hot Staging interaction and feel (PR 2 of 3)
 
 - Campaign and daily flights now have telegraphed **gusts** (arrows and tint about 1.25 s ahead, callout says which way to steer), a mid-flight **Raptor-out** (engine goes dark, pulls the stack to one side), and **Max-Q load management**: hold Throttle (S / Down, or the new pad button) through the Max-Q band to keep the structural load bar down. Throttling costs steering authority (65%) and slows the clock to the window (0.6x). Unattended load past 1.0 is a new "Max-Q breakup" failure. Training is unchanged: no gusts, no Max-Q, same timings.
