@@ -33,13 +33,49 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:ll-crew-13@superchargeddaily.com
+DTSTAMP:20261027T094607Z
+DTSTART:20261001T151006Z
+SUMMARY:Falcon 9 · Crew-13
+DESCRIPTION:Completed\nLaunched 1 Oct at 15:10 UTC. Launch Library 2 lists 
+ it as a success.\nhttps://www.spacex.com/launches/
+LOCATION:Cape Canaveral · SLC-40
+URL:https://superchargeddaily.com/calendar.html?event=ll-crew-13
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ll-transporter-18@superchargeddaily.com
+DTSTAMP:20261027T094607Z
+DTSTART:20261001T183200Z
+SUMMARY:Falcon 9 · Transporter-18
+DESCRIPTION:Completed\nLaunched 1 Oct at 18:32 UTC. Launch Library 2 lists 
+ it as a success.\nhttps://www.spacex.com/launches/
+LOCATION:Vandenberg · SLC-4E
+URL:https://superchargeddaily.com/calendar.html?event=ll-transporter-18
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ll-nrol-97@superchargeddaily.com
+DTSTAMP:20261027T094607Z
+DTSTART:20261002T035400Z
+SUMMARY:Falcon Heavy · NROL-97
+DESCRIPTION:Completed\nLaunched 2 Oct at 03:54 UTC. Launch Library 2 lists 
+ it as a success.\nhttps://www.spacex.com/launches/
+LOCATION:Kennedy Space Center · LC-39A
+URL:https://superchargeddaily.com/calendar.html?event=ll-nrol-97
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:ll-sda-t1a@superchargeddaily.com
 DTSTAMP:20261027T094607Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:[Date only] Falcon 9 · SDA Tranche 1 Transport Layer A
-DESCRIPTION:Completed\nLaunched 10 Oct — SpaceX confirmed the fourth SDA 
- Tranche 1 transport launch on X.\n
+DESCRIPTION:Completed\nLaunched 10 Oct at 07:39 UTC — SpaceX confirmed th
+ e fourth SDA Tranche 1 transport launch on X.\n
 LOCATION:Vandenberg · SLC-4E
 URL:https://superchargeddaily.com/calendar.html?event=ll-sda-t1a
 STATUS:CONFIRMED
@@ -51,8 +87,8 @@ DTSTAMP:20261027T094607Z
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
 SUMMARY:[Date only] Falcon 9 · Starlink Group 15-25
-DESCRIPTION:Completed\nLaunched 13 Oct (UTC) — SpaceX confirmed 27 Starli
- nk satellites from California on X.\n
+DESCRIPTION:Completed\nLaunched 13 Oct at 00:28 UTC — SpaceX confirmed 27
+  Starlink satellites from California on X.\n
 LOCATION:Vandenberg · SLC-4E
 URL:https://superchargeddaily.com/calendar.html?event=starlink-15-25
 STATUS:CONFIRMED
@@ -64,8 +100,8 @@ DTSTAMP:20261027T094607Z
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
 SUMMARY:[Date only] Falcon 9 · Dragon CRS-2 SpX-35
-DESCRIPTION:Completed\nLaunched 13 Oct — SpaceX confirmed the CRS-35 laun
- ch on X\; Dragon docked on 15 Oct.\n
+DESCRIPTION:Completed\nLaunched 13 Oct at 10:33 UTC — SpaceX confirmed th
+ e CRS-35 launch on X\; Dragon docked on 15 Oct.\n
 LOCATION:Cape Canaveral · SLC-40
 URL:https://superchargeddaily.com/calendar.html?event=crs-35
 STATUS:CONFIRMED
@@ -205,12 +241,13 @@ BEGIN:VEVENT
 UID:starlink-15-16@superchargeddaily.com
 DTSTAMP:20261027T094607Z
 DTSTART:20261027T072551Z
-SUMMARY:[Target] Falcon 9 Block 5 | Starlink Group 15-16
-DESCRIPTION:In progress · source reported\nCommunications · Low Earth Orb
- it\n
-LOCATION:Space Launch Complex 4E · Vandenberg SFB\, CA\, USA
+SUMMARY:Falcon 9 · Starlink Group 15-16
+DESCRIPTION:Completed\nLaunched 27 Oct at 07:25 UTC (07:25 Irish time) from
+  Vandenberg. Launch Library 2 recorded lift-off\; this is the flown time\,
+  not a live countdown.\nhttps://www.spacex.com/launches/
+LOCATION:Vandenberg · SLC-4E
 URL:https://superchargeddaily.com/calendar.html?event=starlink-15-16
-STATUS:TENTATIVE
+STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -247,6 +284,20 @@ STATUS:TENTATIVE
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:tesla-2026-asm-draw@superchargeddaily.com
+DTSTAMP:20261027T094607Z
+DTSTART:20261107T055900Z
+SUMMARY:[Target] Tesla 2026 Annual Meeting in-person drawing deadline
+DESCRIPTION:Scheduled target\nDeadline to enter Tesla’s random drawing fo
+ r limited in-person seats at the 3 Dec 2026 Annual Meeting: Fri 6 Nov 2026
+ \, 11:59 p.m. CT. Selections are communicated the week of 16 Nov.\nhttps:/
+ /www.votetesla.com/annual-meeting-details/
+LOCATION:
+URL:https://superchargeddaily.com/calendar.html?event=tesla-2026-asm-draw
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:starship-15@superchargeddaily.com
 DTSTAMP:20261027T094607Z
 DTSTART;VALUE=DATE:20261108
@@ -264,6 +315,23 @@ DESCRIPTION:NET date · time unconfirmed\nNET 8 November on FAA air-traffic
  37067844004
 LOCATION:Starbase · Pad 2
 URL:https://superchargeddaily.com/calendar.html?event=starship-15
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:tesla-2026-asm@superchargeddaily.com
+DTSTAMP:20261027T094607Z
+DTSTART:20261203T210000Z
+SUMMARY:[Target] Tesla 2026 Annual Meeting of Shareholders
+DESCRIPTION:Scheduled target\nThu 3 Dec 2026\, 3:00 p.m. CT (21:00 Irish ti
+ me). Virtual at virtualshareholdermeeting.com/TSLA2026\, webcast at tesla.
+ com/2026shareholdermeeting\, limited in-person at Giga Texas. Record date 
+ 13 Oct 2026. In-person drawing deadline Fri 6 Nov 2026\, 11:59 p.m. CT\; s
+ elections go out the week of 16 Nov.\nhttps://www.sec.gov/Archives/edgar/d
+ ata/1318605/000110465926116718/tm2626016d2_ars.pdf\nhttps://www.votetesla.
+ com/annual-meeting-details/
+LOCATION:
+URL:https://superchargeddaily.com/calendar.html?event=tesla-2026-asm
 STATUS:TENTATIVE
 TRANSP:TRANSPARENT
 END:VEVENT

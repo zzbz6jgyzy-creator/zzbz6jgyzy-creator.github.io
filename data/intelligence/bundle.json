@@ -1,8 +1,50 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-27T11:19:34.135Z",
+  "generatedAt": "2026-10-27T11:25:59.979Z",
   "facts": [
+    {
+      "id": "production:event:tesla-2026-asm",
+      "topic": "production",
+      "tracker": "launches",
+      "field": "event:tesla-2026-asm",
+      "value": "2026-12-03T21:00:00.000Z|scheduled",
+      "label": "Tesla 2026 Annual Meeting of Shareholders",
+      "at": "2026-10-27T10:45:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
+      "sourceUrl": "",
+      "href": "https://www.votetesla.com/annual-meeting-details/",
+      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 Irish time). Virtual at virtualshareholdermeeting.com/TSLA2026, webcast at tesla.com/2026shareholdermeeting, limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov."
+    },
+    {
+      "id": "production:event:tesla-2026-asm-draw",
+      "topic": "production",
+      "tracker": "launches",
+      "field": "event:tesla-2026-asm-draw",
+      "value": "2026-11-07T05:59:00.000Z|scheduled",
+      "label": "Tesla 2026 Annual Meeting in-person drawing deadline",
+      "at": "2026-10-27T10:45:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://www.votetesla.com/annual-meeting-details/",
+      "sourceUrl": "",
+      "href": "https://www.votetesla.com/annual-meeting-details/",
+      "summary": "Deadline to enter Tesla’s random drawing for limited in-person seats at the 3 Dec 2026 Annual Meeting: Fri 6 Nov 2026, 11:59 p.m. CT. Selections are communicated the week of 16 Nov."
+    },
+    {
+      "id": "starship:event:starship-flight-16",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "event:starship-flight-16",
+      "value": "2026-12-01T00:00:00.000Z|expected",
+      "label": "Starship Flight 16",
+      "at": "2026-10-27T10:45:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
+      "sourceUrl": "",
+      "href": "/calendar.html",
+      "summary": "NASASpaceflight reports a December 2026 target, likely Booster 23 / Ship 43, possibly the first launch from LC-39A. Depends on Flight 15 and 39A readiness. This is reporting, not a SpaceX date."
+    },
     {
       "id": "starship:event:starship-flight-15",
       "topic": "starship",
@@ -243,6 +285,57 @@
     }
   ],
   "changes": [
+    {
+      "type": "appeared",
+      "factId": "production:event:tesla-2026-asm",
+      "topic": "production",
+      "tracker": "launches",
+      "field": "event:tesla-2026-asm",
+      "previous": "",
+      "next": "2026-12-03T21:00:00.000Z|scheduled",
+      "at": "2026-10-27T10:45:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
+      "sourceUrl": "",
+      "href": "https://www.votetesla.com/annual-meeting-details/",
+      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 Irish time). Virtual at virtualshareholdermeeting.com/TSLA2026, webcast at tesla.com/2026shareholdermeeting, limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov.",
+      "title": "Tesla 2026 Annual Meeting of Shareholders",
+      "id": "appeared|production:event:tesla-2026-asm|2026-10-27T10:45:00.000Z|2026-12-03T21:00:00.000Z|scheduled"
+    },
+    {
+      "type": "appeared",
+      "factId": "production:event:tesla-2026-asm-draw",
+      "topic": "production",
+      "tracker": "launches",
+      "field": "event:tesla-2026-asm-draw",
+      "previous": "",
+      "next": "2026-11-07T05:59:00.000Z|scheduled",
+      "at": "2026-10-27T10:45:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://www.votetesla.com/annual-meeting-details/",
+      "sourceUrl": "",
+      "href": "https://www.votetesla.com/annual-meeting-details/",
+      "summary": "Deadline to enter Tesla’s random drawing for limited in-person seats at the 3 Dec 2026 Annual Meeting: Fri 6 Nov 2026, 11:59 p.m. CT. Selections are communicated the week of 16 Nov.",
+      "title": "Tesla 2026 Annual Meeting in-person drawing deadline",
+      "id": "appeared|production:event:tesla-2026-asm-draw|2026-10-27T10:45:00.000Z|2026-11-07T05:59:00.000Z|scheduled"
+    },
+    {
+      "type": "appeared",
+      "factId": "starship:event:starship-flight-16",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "event:starship-flight-16",
+      "previous": "",
+      "next": "2026-12-01T00:00:00.000Z|expected",
+      "at": "2026-10-27T10:45:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
+      "sourceUrl": "",
+      "href": "/calendar.html",
+      "summary": "NASASpaceflight reports a December 2026 target, likely Booster 23 / Ship 43, possibly the first launch from LC-39A. Depends on Flight 15 and 39A readiness. This is reporting, not a SpaceX date.",
+      "title": "Starship Flight 16",
+      "id": "appeared|starship:event:starship-flight-16|2026-10-27T10:45:00.000Z|2026-12-01T00:00:00.000Z|expected"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/easyjet-starlink-u-turn.html",
@@ -1663,14 +1756,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-27T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-27T10:45:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1684,14 +1777,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-26T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-27T10:27:42.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1705,35 +1798,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-27T11:19:34.135Z",
+      "lastChecked": "2026-10-27T11:25:59.979Z",
       "lastVerified": "2026-10-27T10:58:05.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1742,87 +1835,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.122Z",
-      "finished": "2026-10-27T11:19:34.126Z"
+      "started": "2026-10-27T11:25:59.885Z",
+      "finished": "2026-10-27T11:25:59.970Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.126Z",
-      "finished": "2026-10-27T11:19:34.126Z"
+      "started": "2026-10-27T11:25:59.970Z",
+      "finished": "2026-10-27T11:25:59.970Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.126Z",
-      "finished": "2026-10-27T11:19:34.126Z"
+      "started": "2026-10-27T11:25:59.970Z",
+      "finished": "2026-10-27T11:25:59.970Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.126Z",
-      "finished": "2026-10-27T11:19:34.130Z"
+      "started": "2026-10-27T11:25:59.970Z",
+      "finished": "2026-10-27T11:25:59.974Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.130Z",
-      "finished": "2026-10-27T11:19:34.132Z"
+      "started": "2026-10-27T11:25:59.974Z",
+      "finished": "2026-10-27T11:25:59.977Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.132Z",
-      "finished": "2026-10-27T11:19:34.133Z"
+      "started": "2026-10-27T11:25:59.977Z",
+      "finished": "2026-10-27T11:25:59.977Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.133Z",
-      "finished": "2026-10-27T11:19:34.134Z"
+      "started": "2026-10-27T11:25:59.977Z",
+      "finished": "2026-10-27T11:25:59.977Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.134Z",
-      "finished": "2026-10-27T11:19:34.134Z"
+      "started": "2026-10-27T11:25:59.977Z",
+      "finished": "2026-10-27T11:25:59.978Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.134Z",
-      "finished": "2026-10-27T11:19:34.134Z"
+      "started": "2026-10-27T11:25:59.978Z",
+      "finished": "2026-10-27T11:25:59.978Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.134Z",
-      "finished": "2026-10-27T11:19:34.135Z"
+      "started": "2026-10-27T11:25:59.978Z",
+      "finished": "2026-10-27T11:25:59.979Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.135Z",
-      "finished": "2026-10-27T11:19:34.135Z"
+      "started": "2026-10-27T11:25:59.979Z",
+      "finished": "2026-10-27T11:25:59.979Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.135Z",
-      "finished": "2026-10-27T11:19:34.135Z"
+      "started": "2026-10-27T11:25:59.979Z",
+      "finished": "2026-10-27T11:25:59.979Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-27T11:19:34.135Z",
-      "finished": "2026-10-27T11:19:34.135Z"
+      "started": "2026-10-27T11:25:59.979Z",
+      "finished": "2026-10-27T11:25:59.979Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-27T11:19:34.135Z",
-    "factCount": 17,
-    "changeCount": 81,
+    "generatedAt": "2026-10-27T11:25:59.979Z",
+    "factCount": 20,
+    "changeCount": 84,
     "conflictCount": 2,
     "issues": [
       {

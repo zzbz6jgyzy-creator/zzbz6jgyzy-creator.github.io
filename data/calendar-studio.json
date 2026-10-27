@@ -37,16 +37,79 @@
    "origin": "Editorial calendar"
   },
   {
+   "id": "ll-crew-13",
+   "title": "Falcon 9 · Crew-13",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-10-01T15:10:06Z",
+   "end": "",
+   "date": "2026-10-01",
+   "precision": "datetime",
+   "status": "done",
+   "note": "Launched 1 Oct at 15:10 UTC. Launch Library 2 lists it as a success.",
+   "where": "Cape Canaveral · SLC-40",
+   "href": "https://www.spacex.com/launches/",
+   "sources": [
+    {
+     "href": "https://www.spacex.com/launches/",
+     "label": "spacex.com"
+    }
+   ],
+   "origin": "Editorial calendar"
+  },
+  {
+   "id": "ll-transporter-18",
+   "title": "Falcon 9 · Transporter-18",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-10-01T18:32:00Z",
+   "end": "",
+   "date": "2026-10-01",
+   "precision": "datetime",
+   "status": "done",
+   "note": "Launched 1 Oct at 18:32 UTC. Launch Library 2 lists it as a success.",
+   "where": "Vandenberg · SLC-4E",
+   "href": "https://www.spacex.com/launches/",
+   "sources": [
+    {
+     "href": "https://www.spacex.com/launches/",
+     "label": "spacex.com"
+    }
+   ],
+   "origin": "Editorial calendar"
+  },
+  {
+   "id": "ll-nrol-97",
+   "title": "Falcon Heavy · NROL-97",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-10-02T03:54:00Z",
+   "end": "",
+   "date": "2026-10-02",
+   "precision": "datetime",
+   "status": "done",
+   "note": "Launched 2 Oct at 03:54 UTC. Launch Library 2 lists it as a success.",
+   "where": "Kennedy Space Center · LC-39A",
+   "href": "https://www.spacex.com/launches/",
+   "sources": [
+    {
+     "href": "https://www.spacex.com/launches/",
+     "label": "spacex.com"
+    }
+   ],
+   "origin": "Editorial calendar"
+  },
+  {
    "id": "ll-sda-t1a",
    "title": "Falcon 9 · SDA Tranche 1 Transport Layer A",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-10-10T10:31:25Z",
+   "start": "2026-10-10T07:39:44Z",
    "end": "",
    "date": "2026-10-10",
    "precision": "day",
    "status": "done",
-   "note": "Launched 10 Oct — SpaceX confirmed the fourth SDA Tranche 1 transport launch on X.",
+   "note": "Launched 10 Oct at 07:39 UTC — SpaceX confirmed the fourth SDA Tranche 1 transport launch on X.",
    "where": "Vandenberg · SLC-4E",
    "href": "",
    "sources": [],
@@ -57,12 +120,12 @@
    "title": "Falcon 9 · Starlink Group 15-25",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-10-13T02:31:16Z",
+   "start": "2026-10-13T00:28:11Z",
    "end": "",
    "date": "2026-10-13",
    "precision": "day",
    "status": "done",
-   "note": "Launched 13 Oct (UTC) — SpaceX confirmed 27 Starlink satellites from California on X.",
+   "note": "Launched 13 Oct at 00:28 UTC — SpaceX confirmed 27 Starlink satellites from California on X.",
    "where": "Vandenberg · SLC-4E",
    "href": "",
    "sources": [],
@@ -73,12 +136,12 @@
    "title": "Falcon 9 · Dragon CRS-2 SpX-35",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-10-13T12:56:56Z",
+   "start": "2026-10-13T10:33:44Z",
    "end": "",
    "date": "2026-10-13",
    "precision": "day",
    "status": "done",
-   "note": "Launched 13 Oct — SpaceX confirmed the CRS-35 launch on X; Dragon docked on 15 Oct.",
+   "note": "Launched 13 Oct at 10:33 UTC — SpaceX confirmed the CRS-35 launch on X; Dragon docked on 15 Oct.",
    "where": "Cape Canaveral · SLC-40",
    "href": "",
    "sources": [],
@@ -312,23 +375,25 @@
   },
   {
    "id": "starlink-15-16",
-   "title": "Falcon 9 Block 5 | Starlink Group 15-16",
+   "title": "Falcon 9 · Starlink Group 15-16",
    "group": "spacex",
    "category": "Launch",
    "start": "2026-10-27T07:25:51Z",
    "end": "",
    "date": "2026-10-27",
    "precision": "datetime",
-   "status": "In Flight",
-   "note": "Communications · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
+   "status": "done",
+   "note": "Launched 27 Oct at 07:25 UTC (07:25 Irish time) from Vandenberg. Launch Library 2 recorded lift-off; this is the flown time, not a live countdown.",
+   "where": "Vandenberg · SLC-4E",
+   "href": "https://www.spacex.com/launches/",
+   "sources": [
+    {
+     "href": "https://www.spacex.com/launches/",
+     "label": "spacex.com"
+    }
+   ],
+   "origin": "Editorial calendar",
    "providerId": "e2886a96-5ce9-4f45-872f-4e25a00be837",
-   "windowStart": "2026-10-27T04:45:00Z",
-   "windowEnd": "2026-10-27T08:45:00Z",
-   "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Launch in Flight"
   },
   {
@@ -393,6 +458,27 @@
    "windowEnd": "2026-11-05T09:14:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch"
+  },
+  {
+   "id": "tesla-2026-asm-draw",
+   "title": "Tesla 2026 Annual Meeting in-person drawing deadline",
+   "group": "tesla",
+   "category": "Meeting",
+   "start": "2026-11-06T23:59:00-06:00",
+   "end": "",
+   "date": "2026-11-06",
+   "precision": "datetime",
+   "status": "scheduled",
+   "note": "Deadline to enter Tesla’s random drawing for limited in-person seats at the 3 Dec 2026 Annual Meeting: Fri 6 Nov 2026, 11:59 p.m. CT. Selections are communicated the week of 16 Nov.",
+   "where": "",
+   "href": "https://www.votetesla.com/annual-meeting-details/",
+   "sources": [
+    {
+     "href": "https://www.votetesla.com/annual-meeting-details/",
+     "label": "votetesla.com"
+    }
+   ],
+   "origin": "Editorial calendar"
   },
   {
    "id": "starship-15",
@@ -467,6 +553,56 @@
    "windowEnd": "2026-11-30T00:00:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "To Be Determined"
+  },
+  {
+   "id": "starship-16",
+   "title": "Starship Flight 16",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-12-01T12:00:00Z",
+   "end": "",
+   "date": "2026-12-01",
+   "precision": "month",
+   "status": "expected",
+   "note": "NASASpaceflight reports a December 2026 target, likely Booster 23 / Ship 43, possibly the first launch from LC-39A. Depends on Flight 15 and 39A readiness. This is reporting, not a SpaceX date.",
+   "where": "",
+   "href": "",
+   "sources": [
+    {
+     "href": "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
+     "label": "nasaspaceflight.com"
+    },
+    {
+     "href": "https://www.advanced-television.com/2026/10/20/starship-15-scheduled-for-november-with-dual-catch/",
+     "label": "advanced-television.com"
+    }
+   ],
+   "origin": "Editorial calendar"
+  },
+  {
+   "id": "tesla-2026-asm",
+   "title": "Tesla 2026 Annual Meeting of Shareholders",
+   "group": "tesla",
+   "category": "Meeting",
+   "start": "2026-12-03T15:00:00-06:00",
+   "end": "",
+   "date": "2026-12-03",
+   "precision": "datetime",
+   "status": "scheduled",
+   "note": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 Irish time). Virtual at virtualshareholdermeeting.com/TSLA2026, webcast at tesla.com/2026shareholdermeeting, limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov.",
+   "where": "",
+   "href": "https://www.votetesla.com/annual-meeting-details/",
+   "sources": [
+    {
+     "href": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
+     "label": "sec.gov"
+    },
+    {
+     "href": "https://www.votetesla.com/annual-meeting-details/",
+     "label": "votetesla.com"
+    }
+   ],
+   "origin": "Editorial calendar"
   },
   {
    "id": "ll2-11b218b1-5e40-4b9d-854e-50320299239d",
@@ -1225,22 +1361,6 @@
    "precision": "unknown",
    "status": "expected",
    "note": "xAI says it is in training. Musk has aimed at “within 2026”. Not a date.",
-   "where": "",
-   "href": "",
-   "sources": [],
-   "origin": "Editorial calendar"
-  },
-  {
-   "id": "starship-16",
-   "title": "Starship Flight 16 / Starlink 30-1",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "",
-   "end": "",
-   "date": "",
-   "precision": "unknown",
-   "status": "expected",
-   "note": "Provisional KSC 39A planning target after Flight 15. Pad licensing is still the limiter.",
    "where": "",
    "href": "",
    "sources": [],
