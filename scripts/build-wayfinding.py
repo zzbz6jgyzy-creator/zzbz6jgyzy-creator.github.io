@@ -7,8 +7,8 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 READER=runpy.run_path(str(pathlib.Path(__file__).with_name('build-article-reader.py')))['decorate']
 STYLE='    <!--sd:wayfinding-style--><link rel="stylesheet" href="/wayfinding.css?v=2026102301" /><!--/sd:wayfinding-style-->'
 STYLE_RX=re.compile(r'[ \t]*<!--sd:wayfinding-style-->.*?<!--/sd:wayfinding-style-->\n?',re.S)
-ARTICLE_RX=re.compile(r'\n<!--sd:article-wayfinding-->.*?<!--/sd:article-wayfinding-->\n',re.S)
-HOME_RX=re.compile(r'\n<!--sd:home-wayfinding-->.*?<!--/sd:home-wayfinding-->\n',re.S)
+ARTICLE_RX=re.compile(r'\n?<!--sd:article-wayfinding-->.*?<!--/sd:article-wayfinding-->\n?',re.S)
+HOME_RX=re.compile(r'\n?<!--sd:home-wayfinding-->.*?<!--/sd:home-wayfinding-->\n?',re.S)
 VOID={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
 class Sections(HTMLParser):
