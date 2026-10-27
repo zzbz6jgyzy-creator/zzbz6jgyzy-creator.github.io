@@ -68,3 +68,19 @@ test('charts are plain SVG with titles and a table fallback',()=>{
   assert.equal((page.match(/class="ft-bar/g)||[]).length,d.adoption.points.length);
   assert.ok(!/<script[^>]*src="[^"]*(chart|d3|plotly|echarts)/i.test(page),'no chart library');
 });
+
+test('the global tracker builder and this builder leave data/pages.json stable in either order',()=>{
+  const run=f=>execFileSync(process.execPath,[f]);
+  const saved=fs.readFileSync('data/pages.json','utf8');
+  try{
+    run('scripts/build-fsd-global.mjs');run('scripts/build-fsd-tracker.mjs');const a=fs.readFileSync('data/pages.json','utf8');
+    run('scripts/build-fsd-tracker.mjs');run('scripts/build-fsd-global.mjs');const b=fs.readFileSync('data/pages.json','utf8');
+    assert.equal(a,b);
+  }finally{fs.writeFileSync('data/pages.json',saved);}
+});
+
+test('axis grows with the data and the phone chart lists every quarter',()=>{
+  const page=fs.readFileSync('fsd-tracker.html','utf8');
+  assert.equal((page.match(/<li( class="ft-hot")?><span class="ft-hb-q">/g)||[]).length,d.adoption.points.length);
+  assert.ok(!/ratio [\d.]+% of/.test(page),'ratio never phrased as a share of cars');
+});

@@ -50,7 +50,13 @@ async def main():
             # The table view is a native <details>, so it works with no script.
             await page.locator('.ft-table-view summary').click()
             assert await page.locator('.ft-table').is_visible(), tag
-            if mode in ('normal',):
+            if width <= 700:
+                assert not await page.locator('.ft-desk').is_visible(), tag
+                assert await page.locator('.ft-hbars li').count() == 7, tag
+                assert await page.locator('.ft-hbars').is_visible(), tag
+            else:
+                assert await page.locator('.ft-desk').is_visible() and not await page.locator('.ft-phone').is_visible(), tag
+            if mode in ('normal',) and width > 700:
                 await page.locator('.ft-bar').nth(6).focus()
                 tip = page.locator('.ft-tip')
                 assert await tip.is_visible(), tag

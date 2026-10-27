@@ -1,5 +1,5 @@
 (function(root){'use strict';
-// Shared by the builder (Node) and the page script (browser): one validator, one set of labels.
+// Used by the builder (Node) and available to page scripts: one validator, one set of labels.
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // disclosed: Tesla or a regulator, in a document we opened. estimate: our own arithmetic. approx: read off a published chart.
 const status={disclosed:'Disclosed',reported:'Reported',estimate:'Our estimate',approx:'Approx. from chart',target:'Target'};
