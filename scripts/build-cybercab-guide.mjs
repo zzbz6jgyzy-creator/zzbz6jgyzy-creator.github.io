@@ -2,12 +2,14 @@
 // The shell (nav, footer, bundle tags) lives in the page itself; bots never rewrite this page.
 import fs from 'node:fs';
 import {createRequire} from 'node:module';
+import {car} from './cybercab-art.mjs';
 const require=createRequire(import.meta.url), M=require('../cybercab-guide-model.js'), e=M.esc;
 const promises=JSON.parse(fs.readFileSync('data/promises.json','utf8')).promises;
 const d=M.validate(JSON.parse(fs.readFileSync('data/cybercab-guide.json','utf8')),promises.map(p=>p.id));
 const URL_='https://superchargeddaily.com/cybercab-guide.html',TITLE='Cybercab guide: specs and promises | Supercharged Daily';
 const DESC='What Tesla has disclosed about the Cybercab, what is only reported, and what remains a target. Every number sourced and dated.';
-const OG='https://superchargeddaily.com/assets/og-v2.jpg';
+const OG='https://superchargeddaily.com/assets/og-cybercab-guide.jpg';
+const OG_ALT='Share card: Cybercab, checked. Rides in Austin since 3 Sep 2026 and more than 125,000 a year installed capacity are disclosed by Tesla; customer cars by end of 2026 is a target. Our own illustration, not Tesla CAD.';
 const fmt=(v,o={day:'numeric',month:'short',year:'numeric'})=>new Intl.DateTimeFormat('en-GB',{...o,timeZone:'UTC'}).format(new Date(v+'T12:00:00Z')).replace('Sept','Sep');
 const src=id=>d.sources.find(s=>s.id===id);
 const cites=x=>[x.source,...(x.also||[])].map(cite).join(' · ');
@@ -38,16 +40,30 @@ const faq=`<div class="cg-faq">${d.faqs.map(f=>`<details><summary>${e(f.q)}</sum
 const changes=`<ol class="cg-changes">${d.changes.map(c=>`<li><time datetime="${c.date}">${fmt(c.date)}</time> <span class="cg-kind cg-kind-${c.kind}">${c.kind==='correction'?'Correction':'Update'}</span> ${e(c.text)}</li>`).join('')}</ol>`;
 const ledger=`<ul class="cg-ledger">${d.sources.map(s=>`<li><a href="${e(s.url)}" rel="noopener">${e(s.title)}</a> <span>${e(s.outlet)} · ${fmt(s.date)} · opened ${fmt(s.checked)}</span></li>`).join('')}</ul>`;
 
+
+const anatomy=`<div class="cg-anatomy"><figure class="cg-figure">${car(d.parts)}<figcaption>Our illustration, drawn from public descriptions. It is not Tesla CAD or a photograph, and proportions are approximate. Numbers match the list.</figcaption></figure><ol class="cg-parts">${d.parts.map((x,i)=>`<li data-part="${x.id}"><span class="cg-pn" aria-hidden="true">${i+1}</span><div><h3>${e(x.label)} ${chip(x.status)}</h3><p>${e(x.text)}</p><p class="cg-event-foot">${cites(x)}</p></div></li>`).join('')}</ol></div><h3 class="cg-sub">Known, but not placed</h3><ul class="cg-unplaced">${d.partsUnplaced.map(x=>`<li><h4>${e(x.label)} ${chip(x.status)}</h4><p>${e(x.text)}</p><p class="cg-event-foot">${cite(x.source)}</p></li>`).join('')}</ul>`;
+
+const cap=d.capacity,nf=n=>n.toLocaleString('en-GB');
+const capacity=`<div class="cg-cap" data-cap data-yearly="${cap.yearly}" data-target="${cap.target}"><p class="cg-cap-fact"><strong>More than ${nf(cap.yearly)} a year</strong> is what Tesla says Giga Texas is <em>set up</em> to build ${chip('disclosed')} ${cite(cap.source)}. Tesla says that is not the current production rate, and has published no Cybercab-specific output. The <strong>${cap.fleet.value}+</strong> cars serving Austin are a fleet count ${chip('disclosed')} ${cite(cap.fleet.source)}, not output.</p>
+<div class="cg-cap-control" data-cap-control hidden><label for="cg-weekly">Cars built per week: <output id="cg-out" for="cg-weekly">500</output></label><input id="cg-weekly" type="range" min="50" max="2500" step="50" value="500"><p class="cg-cap-read" aria-live="polite" data-cap-read></p></div>
+<div class="cg-table-wrap" tabindex="0" role="region" aria-label="What a weekly build rate adds up to"><table class="cg-captable"><thead><tr><th scope="col">If Tesla built</th><th scope="col">That is per year</th><th scope="col">Share of ${nf(cap.yearly)}</th><th scope="col">Weeks to ${nf(cap.target)} cars</th></tr></thead><tbody>${cap.steps.map(w=>{const r=M.plan(w,cap);return `<tr><th scope="row">${nf(r.weekly)} a week</th><td>${nf(r.yearly)}</td><td>${r.pct}%</td><td>${nf(r.weeks)}</td></tr>`;}).join('')}</tbody></table></div>
+<p class="cg-note">An illustration of arithmetic, not a forecast: no one outside Tesla knows its weekly output. ${nf(cap.yearly)} a year is about ${nf(Math.round(cap.yearly/52))} a week, and Tesla’s figure is a floor. ${e(cap.note)}</p></div>`;
+
+const rv=d.rivals,rivals=`<div class="cg-table-wrap" tabindex="0" role="region" aria-label="Robotaxi operators compared, scrolls sideways on small screens"><table class="cg-versions cg-rivals"><thead><tr><th scope="col"><span class="cg-sr">Measure</span></th>${rv.columns.map(c=>`<th scope="col">${e(c.name)}</th>`).join('')}</tr></thead><tbody>${rv.rows.map(r=>`<tr><th scope="row">${e(r.label)}</th>${rv.columns.map(c=>{const x=r.cells[c.id];return x?`<td><span class="cg-val">${e(x.value)}</span><span class="cg-meta">${chip(x.status)} ${cites(x)}</span></td>`:`<td class="cg-none">Not covered in this table</td>`;}).join('')}</tr>`).join('')}</tbody></table></div><p class="cg-note">${e(rv.note)} “Unsupervised” (Tesla) and “fully autonomous” (Waymo) are each company’s own wording; the miles are not like for like.</p>`;
+
 const sec=[
- ['status','01','State of play','Six numbers that matter, each with its label, date and source.',metrics,'cg-status-s'],
- ['versions','02','Versions compared','The 2024 reveal against the car in Austin today, with a blank column for the version customers might get.',table],
- ['timeline','03','Timeline','From the reveal to the open regulator question, newest last.',timeline],
- ['promises','04','Promises versus reality','What Tesla and Musk said about robotaxis and the Cybercab, and what happened.',promisesHtml],
- ['evidence','05','Watch and read','Primary material and walkthroughs, shown as text first. The video loads only when you ask.',evidence],
- ['questions','06','Questions','Buying, price, range, charging and legality, answered from the sources.',faq],
- ['changes','07','What changed','Corrections are shown here, never silently rewritten.',changes],
- ['sources','08','Sources','Everything cited above, with the date we opened it.',ledger]
-].map(s=>section(...s)).join('\n');
+ ['status','State of play','Six numbers that matter, each with its label, date and source.',metrics,'cg-status-s'],
+ ['anatomy','The car, as far as it is known','Only features whose position is public are drawn. Everything else is listed below the picture.',anatomy],
+ ['versions','Versions compared','The 2024 reveal against the car in Austin today, with a blank column for the version customers might get.',table],
+ ['capacity','What “more than 125,000 a year” means','Installed capacity is not output. This table is arithmetic you can move, not a forecast.',capacity],
+ ['timeline','Timeline','From the reveal to the open regulator question, newest last.',timeline],
+ ['promises','Promises versus reality','What Tesla and Musk said about robotaxis and the Cybercab, and what happened.',promisesHtml],
+ ['rivals','Against the other operators','Tesla, Waymo and Zoox in their own published figures.',rivals],
+ ['evidence','Watch and read','Primary material and walkthroughs, shown as text first. The video loads only when you ask.',evidence],
+ ['questions','Questions','Buying, price, range, charging and legality, answered from the sources.',faq],
+ ['changes','What changed','Corrections are shown here, never silently rewritten.',changes],
+ ['sources','Sources','Everything cited above, with the date we opened it.',ledger]
+].map(([id,title,text,body,cls],i)=>section(id,String(i+1).padStart(2,'0'),title,text,body,cls)).join('\n');
 
 const reviewed=fmt(d.reviewed);
 const main=`<main id="main" class="cg">
@@ -70,12 +86,16 @@ const meta=`<title>${e(TITLE)}</title>
     <meta property="og:description" content="${e(DESC)}" />
     <meta property="og:url" content="${URL_}" />
     <meta property="og:image" content="${OG}" />
+    <meta property="og:image:alt" content="${e(OG_ALT)}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
     <meta name="twitter:title" content="${e(TITLE)}" />
     <meta name="twitter:description" content="${e(DESC)}" />
     <meta name="twitter:image" content="${OG}" />
+    <meta name="twitter:image:alt" content="${e(OG_ALT)}" />
     `;
 html=html.replace(/<title>[\s\S]*?(?=<link rel="icon" href="\/favicon\.ico")/,meta)
  .replace(/<!-- seo:ld -->[\s\S]*?<!-- \/seo:ld -->/,`<!-- seo:ld -->\n    <script type="application/ld+json">${JSON.stringify(ld)}</script>\n    <!-- /seo:ld -->`)
@@ -85,7 +105,7 @@ fs.writeFileSync('cybercab-guide.html',html);
 // Search records, added without touching unrelated entries.
 const indexPath='data/pages.json',index=JSON.parse(fs.readFileSync(indexPath,'utf8'));
 const recs=[{url:'/cybercab-guide.html',title:'Tesla Cybercab guide',tag:'Cybercab',summary:'What Tesla has disclosed about the Cybercab, what is only reported and what is a target: specs, timeline, promises and regulator questions.'},
- ...[['status','Cybercab state of play','Production, capacity, Austin fleet, NHTSA audit and delivery aim, each labelled by source.'],['versions','Cybercab versions compared','The 2024 reveal against the production car: controls, charging, battery, range and cost.'],['timeline','Cybercab timeline','From the October 2024 reveal to the NHTSA deadline and planned Dallas launch.'],['promises','Cybercab promises vs reality','Tesla and Musk robotaxi and Cybercab commitments, checked.'],['questions','Cybercab questions','Price, range, charging, legality and when customers can buy one.']].map(([id,title,summary])=>({url:'/cybercab-guide.html#'+id,title,tag:'Cybercab',summary}))];
+ ...[['status','Cybercab state of play','Production, capacity, Austin fleet, NHTSA audit and delivery aim, each labelled by source.'],['versions','Cybercab versions compared','The 2024 reveal against the production car: controls, charging, battery, range and cost.'],['timeline','Cybercab timeline','From the October 2024 reveal to the NHTSA deadline and planned Dallas launch.'],['anatomy','Cybercab anatomy','Illustrated side view with doors, seats, controls, light bar and motor, each labelled by source.'],['capacity','Cybercab capacity arithmetic','What more than 125,000 a year of installed capacity adds up to at different weekly build rates.'],['promises','Cybercab promises vs reality','Tesla and Musk robotaxi and Cybercab commitments, checked.'],['rivals','Tesla Robotaxi vs Waymo and Zoox','Driverless miles, places and vehicle type in each company’s own figures.'],['questions','Cybercab questions','Price, range, charging, legality and when customers can buy one.']].map(([id,title,summary])=>({url:'/cybercab-guide.html#'+id,title,tag:'Cybercab',summary}))];
 const first=index.pages.findIndex(x=>x.url==='/cybercab.html');
 index.pages=index.pages.filter(x=>!x.url.startsWith('/cybercab-guide.html'));
 const at=first<0?index.pages.length:first+1;
