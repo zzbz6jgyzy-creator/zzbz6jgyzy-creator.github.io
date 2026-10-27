@@ -1,5 +1,12 @@
 # Changelog
 
+## 27 Oct 2026 — FSD tracker, part 1 (foundation)
+
+- **New page `/fsd-tracker.html` ("FSD by the numbers")**, separate from `/fsd.html` so you can compare the two and keep either. This first part has the headline strip (active FSD subscriptions, North America attach rate, Europe customers, Tesla-listed markets), the adoption chart with a table view, a label legend, a change log and sources.
+- **Numbers:** seven quarters of active subscriptions and cumulative deliveries from Tesla's Q1, Q2 and Q3 2026 decks. Subscriptions per delivered car is our own ratio and is labelled as an estimate.
+- **Wiring:** own builder, data file, validator, bundle, build-time SVG charts (no chart library), tests, CI workflow and `docs/fsd-tracker-refresh.md`. The markets figure is read from `data/fsd-global.json`, so it cannot disagree with `/fsd.html`.
+- The planning documents are in `docs/fsd-tracker-plan.md` and `docs/fsd-tracker-concept.html`.
+
 ## 27 Oct 2026 — Cybercab guide in the navigation
 
 - **Menu:** "Cybercab guide" (badge "New", "Specs, timeline & promises") now sits next to "Cybercab tracker" under Tesla › Software & autonomy, in both the Tesla and Explore menus and the mobile quick links. Edited once in `scripts/nav.json` and synced to every page with `scripts/sync-nav.py`.

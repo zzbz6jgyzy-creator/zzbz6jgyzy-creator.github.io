@@ -124,7 +124,15 @@ New files, following the Optimus and Cybercab pattern: `data/fsd-metrics.json` (
 
 Each PR gets screenshots at 390, 768 and 1440 px in light and dark, axe, a gzip-served Lighthouse run, and a cold review before it opens, as on the Cybercab guide.
 
-## 9. Decisions I need from you
+## Owner decisions (27 Oct 2026)
+
+1. Build as a **separate page** (`/fsd-tracker.html`) so it can be compared with `/fsd.html` and either kept or deleted.
+2. **Email only** for alerts.
+3. The **FSD Community Tracker is out of scope**: no independent-reliability block.
+4. **Manual quarterly snapshot** of Tesla's safety page is fine.
+5. **All five PRs.**
+
+## 9. Decisions that were needed (answered above)
 
 1. **Rebuild `/fsd.html` or create a new page?** I recommend rebuilding, because the URL already has the links and search ranking, with the old atlas kept inside the new page.
 2. **Independent reliability data**: may I contact the FSD Community Tracker owner for permission to chart their data? Without it we show only attributed headline figures.

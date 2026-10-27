@@ -5,6 +5,7 @@
   ],
   "skipPages": [
     "goldcab.html",
+    "docs/fsd-tracker-concept.html",
     "grok-bot.html",
     "videos.html",
     "videos/index.html",
@@ -161,6 +162,10 @@
     "optimus": [
       "optimus-model.js",
       "optimus.js"
+    ],
+    "fsd-tracker": [
+      "fsd-tracker-model.js",
+      "fsd-tracker.js"
     ],
     "cybercab-guide": [
       "cybercab-guide-model.js",
@@ -441,6 +446,16 @@
         "core",
         "intel",
         "optimus"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "fsd-tracker.html": {
+      "bundles": [
+        "core",
+        "intel",
+        "fsd-tracker"
       ],
       "grow": [
         "data-band"

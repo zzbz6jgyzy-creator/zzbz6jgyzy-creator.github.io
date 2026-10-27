@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · FSD tracker: a separate page, charts without a library
+
+- **Choice:** build `/fsd-tracker.html` beside `/fsd.html` instead of rewriting it.
+- **Why:** the owner wants to compare the two and delete whichever loses. A separate page, builder and data file make that a one-file removal.
+- **Charts:** plain SVG drawn at build time, with a table view and about 1 KB of script for tooltips. It matches the Optimus and Cybercab pages and keeps phones free of a chart library. Revisit if a chart needs dense time-series interaction.
+- **Scope:** the independent "miles per critical disengagement" block from the plan is dropped at the owner's request.
+
 ## 2026-10-27 · Cybercab guide: draw only what is known
 
 - **Choice:** an original illustration with markers only on features whose position is public; the charge port and battery are listed under "Known, but not placed".
