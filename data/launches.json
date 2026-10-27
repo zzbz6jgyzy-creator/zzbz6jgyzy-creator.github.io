@@ -1,9 +1,332 @@
 {
- "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3. Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
+ "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
- "updated": "2026-10-27T09:46:07Z",
- "checked": "2026-10-27T09:46:07Z",
+ "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
+ "updated": "2026-10-27T11:42:30Z",
+ "checked": "2026-10-27T11:42:30Z",
  "results": [
+  {
+   "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+   "name": "Falcon 9 Block 5 | O3b mPower 11-13",
+   "net": "2026-09-13T18:49:00Z",
+   "window_start": "2026-09-13T18:49:00Z",
+   "window_end": "2026-09-13T20:16:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/ad358a4d-c541-409b-9366-9c2f2da4aeb9/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-09-14T00:37:56Z"
+  },
+  {
+   "id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
+   "name": "Falcon 9 Block 5 | USSF-259",
+   "net": "2026-09-17T01:07:56Z",
+   "window_start": "2026-09-17T01:00:00Z",
+   "window_end": "2026-09-17T05:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/17c71937-dd80-406f-bb47-0c9ee9a24276/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-09-18T00:33:50Z"
+  },
+  {
+   "id": "d1471f9d-e9d0-4146-8e97-90863e48bfc8",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-27",
+   "net": "2026-09-20T01:47:00Z",
+   "window_start": "2026-09-20T01:47:00Z",
+   "window_end": "2026-09-20T05:47:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/d1471f9d-e9d0-4146-8e97-90863e48bfc8/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-09-20T23:59:42Z"
+  },
+  {
+   "id": "7330d83b-c478-426c-8859-f9e3a335876d",
+   "name": "Falcon 9 Block 5 | USSF-385",
+   "net": "2026-09-26T14:00:54Z",
+   "window_start": "2026-09-26T11:56:00Z",
+   "window_end": "2026-09-26T14:56:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/7330d83b-c478-426c-8859-f9e3a335876d/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-09-28T23:50:09Z"
+  },
+  {
+   "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
+   "name": "Starship | Starlink Group 31-1 (Starship Flight 14)",
+   "net": "2026-09-28T12:48:59Z",
+   "window_start": "2026-09-28T12:15:00Z",
+   "window_end": "2026-09-28T13:30:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/7d1afb26-6f9c-429b-9ccf-29012fd1e519/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-09-29T15:33:32Z"
+  },
+  {
+   "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
+   "name": "Falcon 9 Block 5 | Crew-13",
+   "net": "2026-10-01T15:10:06Z",
+   "window_start": "2026-10-01T15:10:06Z",
+   "window_end": "2026-10-01T15:10:06Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/18441371-8b2e-457c-afb5-1ec1b11ab630/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-27T01:13:58Z"
+  },
+  {
+   "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
+   "name": "Falcon 9 Block 5 | Transporter 18 (Dedicated SSO Rideshare)",
+   "net": "2026-10-01T18:32:00Z",
+   "window_start": "2026-10-01T18:18:00Z",
+   "window_end": "2026-10-01T19:16:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/67213393-7983-4c06-8b44-b8c785a5ed79/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-16T12:02:28Z"
+  },
+  {
+   "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
+   "name": "Falcon Heavy | NROL-97",
+   "net": "2026-10-02T03:54:00Z",
+   "window_start": "2026-10-02T03:53:00Z",
+   "window_end": "2026-10-02T04:42:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/4651fd8a-43de-4166-bf8f-c168b3bd1d2c/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-02T14:51:48Z"
+  },
+  {
+   "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
+   "name": "Falcon 9 Block 5 | SDA Tranche 1 Transport Layer A",
+   "net": "2026-10-10T07:39:44Z",
+   "window_start": "2026-10-10T07:39:44Z",
+   "window_end": "2026-10-10T07:39:44Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-11T14:37:18Z"
+  },
+  {
+   "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-25",
+   "net": "2026-10-13T00:28:11Z",
+   "window_start": "2026-10-12T23:00:00Z",
+   "window_end": "2026-10-13T03:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/97c6f5e1-299e-4652-b72d-9618ac047076/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-13T10:10:50Z"
+  },
+  {
+   "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
+   "name": "Falcon 9 Block 5 | Dragon CRS-2 SpX-35",
+   "net": "2026-10-13T10:33:44Z",
+   "window_start": "2026-10-13T10:33:44Z",
+   "window_end": "2026-10-13T10:33:44Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/bf2c3027-a314-403e-a416-2bfd5d165ad1/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-27T01:13:53Z"
+  },
+  {
+   "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
+   "name": "Falcon 9 Block 5 | USSF-481",
+   "net": "2026-10-16T00:01:05Z",
+   "window_start": "2026-10-15T23:44:00Z",
+   "window_end": "2026-10-16T03:44:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/df88cfbf-f504-4e11-8370-e33dd6280b5b/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-16T23:19:59Z"
+  },
+  {
+   "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
+   "name": "Falcon 9 Block 5 | Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
+   "net": "2026-10-20T11:04:00Z",
+   "window_start": "2026-10-20T10:30:00Z",
+   "window_end": "2026-10-20T11:30:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/3b430f81-0ff1-4d85-8a1a-cef0de326198/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-24T02:22:27Z"
+  },
+  {
+   "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
+   "name": "Falcon 9 Block 5 | Starlink Group 15-15",
+   "net": "2026-10-23T22:48:44Z",
+   "window_start": "2026-10-23T21:30:00Z",
+   "window_end": "2026-10-24T01:30:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/f6af629d-39b5-4f86-bc0c-f8776444a858/",
+   "status": {
+    "name": "Launch Successful",
+    "abbrev": "Success"
+   },
+   "net_precision": {
+    "name": "Second",
+    "abbrev": "SEC"
+   },
+   "pad": {
+    "name": null,
+    "location": {
+     "name": null
+    }
+   },
+   "last_updated": "2026-10-24T20:04:33Z"
+  },
   {
    "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
    "name": "Falcon 9 Block 5 | Starlink Group 15-16",
@@ -12,29 +335,20 @@
    "window_end": "2026-10-27T08:45:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/e2886a96-5ce9-4f45-872f-4e25a00be837/",
    "status": {
-    "name": "Launch in Flight",
-    "abbrev": "In Flight"
+    "name": "Launch Successful",
+    "abbrev": "Success"
    },
    "net_precision": {
     "name": "Second",
     "abbrev": "SEC"
    },
    "pad": {
-    "name": "Space Launch Complex 4E",
+    "name": null,
     "location": {
-     "name": "Vandenberg SFB, CA, USA"
+     "name": null
     }
    },
-   "last_updated": "2026-10-27T07:50:29Z",
-   "mission": {
-    "name": "Starlink Group 15-16",
-    "type": "Communications",
-    "orbit": {
-     "name": "Low Earth Orbit",
-     "abbrev": "LEO"
-    }
-   },
-   "vehicle": "Falcon 9 Block 5"
+   "last_updated": "2026-10-27T11:19:33Z"
   },
   {
    "id": "57ce0a39-d035-4f16-a418-bd6108f78199",
