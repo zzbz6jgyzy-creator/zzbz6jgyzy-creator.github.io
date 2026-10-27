@@ -23,12 +23,12 @@
 
   const cards = [...grid.querySelectorAll("a.story-card")].map((el, i) => {
     const tag = ((el.querySelector(".tag") || {}).textContent || "").trim();
-    const title = ((el.querySelector("h3") || {}).textContent || "").trim();
+    const title = ((el.querySelector("h2, h3") || {}).textContent || "").trim();
     const summary = ((el.querySelector(".story-copy p") || {}).textContent || "").trim();
     const href = el.getAttribute("href") || "";
     const hay = `${tag} ${title} ${summary} ${href}`;
     const topics = CHIPS.filter((c) => c.id !== "all" && c.re.test(hay)).map((c) => c.id);
-    return { el, tag, title, summary, href, topics, i, date: "" };
+    return { el, tag, title, summary, href, topics, i, date: el.querySelector("time")?.getAttribute("datetime") || "" };
   });
 
   const present = new Set(cards.flatMap((c) => c.topics));
@@ -88,7 +88,7 @@
       const da = a.date || "";
       const db = b.date || "";
       if (da && db && da !== db) return sort === "oldest" ? da.localeCompare(db) : db.localeCompare(da);
-      return sort === "oldest" ? a.i - b.i : b.i - a.i;
+      return sort === "oldest" ? b.i - a.i : a.i - b.i;
     });
     return rows;
   };
@@ -99,6 +99,7 @@
       c.el.hidden = true;
       c.el.classList.remove("disp-featured");
     });
+    rows.forEach((c) => grid.append(c.el));
     rows.slice(0, shown).forEach((c, i) => {
       c.el.hidden = false;
       if (sort === "newest" && topic === "all" && !query.trim() && i === 0) c.el.classList.add("disp-featured");
