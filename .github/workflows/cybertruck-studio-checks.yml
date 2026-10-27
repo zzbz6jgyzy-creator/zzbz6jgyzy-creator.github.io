@@ -35,7 +35,7 @@ jobs:
           node scripts/build-cybertruck-studio.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- cybertruck-explorer.html cybertruck-parts.js data/pages.json assets/js
+          sh scripts/ci-generated-ownership.sh -- cybertruck-explorer.html cybertruck-parts.js data/pages.json assets/js
       - name: Verify responsive controls, real WebGL and fallback states
         run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/cybertruck-studio-browser.py
       - uses: actions/upload-artifact@v4

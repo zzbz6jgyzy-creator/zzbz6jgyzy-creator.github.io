@@ -38,7 +38,7 @@ jobs:
           node scripts/build-grok-studio.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- grok.html data/pages.json assets/js
+          sh scripts/ci-generated-ownership.sh -- grok.html data/pages.json assets/js
       - name: Check responsive layouts, learning progress and interactive tools
         run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/grok-studio-browser.py
       - uses: actions/upload-artifact@v4

@@ -32,7 +32,7 @@ jobs:
         run: |
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- my-tesla.html assets/js/manifest.json 'assets/js/my-tesla.bundle.*.js'
+          sh scripts/ci-generated-ownership.sh -- my-tesla.html assets/js/manifest.json 'assets/js/my-tesla.bundle.*.js'
       - name: Responsive owner journeys and failure cases
         env:
           CHROMIUM_PATH: /usr/bin/google-chrome

@@ -46,7 +46,7 @@ jobs:
           node scripts/build-launch-viewing.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- see-the-launch.html data/launch-viewing.json assets/js/manifest.json 'assets/js/see-the-launch.bundle.*.js'
+          sh scripts/ci-generated-ownership.sh -- see-the-launch.html data/launch-viewing.json assets/js/manifest.json 'assets/js/see-the-launch.bundle.*.js'
       - name: Responsive views, search, field mode, sharing and forecast fallbacks
         env:
           CHROMIUM_PATH: /usr/bin/google-chrome

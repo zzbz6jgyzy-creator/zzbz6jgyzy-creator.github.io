@@ -8,7 +8,11 @@
 - Starship Flight 16 is a December 2026 reported target (NASASpaceflight), labelled as reporting rather than a SpaceX date.
 - Roadster “Latest stories” card titles are past-tense. Data-push workflows share a `data-push-main` concurrency group and use `scripts/ci-push-retry.sh`.
 - Calendar studio tests pick the next upcoming Starlink instead of flown 15-16. Homepage live.js never remounts the prerendered next-stream card unless something is actually live, and LL2 rows that have already reached NET are dropped so they cannot appear as a “Live now” card.
+- Rebased onto main after the headlines refresh. Tesla overview and news studio were rebuilt from that snapshot so 2026.38.5.11 and the updated story titles sit on the latest generated pages.
 - Homepage live.js never treats an LL2 launch as the top “Live now” card, so a Go / In Flight Falcon cannot remount into `.hv-live-top` and shift the 320px first screen.
+- Rebased onto the 27 Oct daily-refresh prerender. Homepage trackers were rebuilt so 2026.38.5.11 stays on the latest snapshot; a next-stream remount into `.hv-live-top` is hidden on phones unless the card is actually live.
+- Rebased onto the later calendar-copy and homepage prerender commits. Calendar studio, its hashed bundle, SpaceX, markets and launch-viewing were rebuilt from main’s data so LL2 Success/In Flight stay `done` and the launch-schedule leftover copy is preserved.
+- Stopped the merge-conflict race with hourly data jobs: this PR no longer carries bot-generated HTML/JSON/bundles. Studio ownership `git diff` is PR-skipped; `home-build` / `js-bundle` write those files after merge. News/Starlink/newsletter jobs no longer `git add *.html`.
 
 ## 27 Oct 2026 — Write articles in Markdown
 

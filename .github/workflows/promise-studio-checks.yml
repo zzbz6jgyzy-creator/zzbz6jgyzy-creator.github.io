@@ -38,7 +38,7 @@ jobs:
           node scripts/build-promise-studio.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- promise-tracker.html data/pages.json assets/js
+          sh scripts/ci-generated-ownership.sh -- promise-tracker.html data/pages.json assets/js
       - name: Responsive and interaction checks
         run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/promise-studio-browser.py
       - uses: actions/upload-artifact@v4

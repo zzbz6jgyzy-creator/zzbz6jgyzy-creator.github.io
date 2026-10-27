@@ -36,7 +36,7 @@ jobs:
           node scripts/build-starlink-observatory.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- starlink.html data/starlink-observatory.json assets/js
+          sh scripts/ci-generated-ownership.sh -- starlink.html data/starlink-observatory.json assets/js
       - name: Responsive, accessibility, worker and fallback checks
         run: python tests/starlink-observatory-browser.py
       - uses: actions/upload-artifact@v4
