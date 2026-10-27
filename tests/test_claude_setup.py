@@ -116,6 +116,8 @@ class Helpers(unittest.TestCase):
         problems = seo_check.check(bad, "dispatch/x.html")["problems"]
         self.assertTrue(any("loose in <head>" in p for p in problems), problems)
         self.assertTrue(any("DRAFT" in p for p in seo_check.check("<html><head></head><body><!-- DRAFT: x --></body></html>")["problems"]))
+        # An inline SVG <title> is not the page title.
+        self.assertEqual(seo_check.check("<html><head><title>Real</title></head><body><svg><title>Icon</title></svg><h1>a</h1></body></html>")["title"], "Real")
 
 
 @unittest.skipUnless(shutil.which("git"), "git required")
