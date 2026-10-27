@@ -1641,12 +1641,12 @@
     {
       "date": "2026-10-27",
       "kind": "update",
-      "text": "Rebuilt the guide around sourced numbers: a state-of-play dashboard, the five versions compared, a dated timeline, promises checked against what happened, rivals, an illustrative production ramp, and an interactive X-ray and 3D explorer. Every figure now carries a Disclosed, Target or Reported label and a source opened on this date."
+      "text": "Rebuilt the guide around sourced numbers: a state-of-play dashboard, the five versions compared, a dated timeline, promises checked against what happened, rivals, an illustrative production ramp, and an interactive X-ray and 3D explorer. Every figure now carries a Disclosed, Target or Reported label and a named source, each rechecked between 24 and 27 October 2026."
     },
     {
       "date": "2026-10-27",
       "kind": "correction",
-      "text": "The sources section showed unfilled template text instead of the review date. It now shows the date."
+      "text": "The sources section showed unfilled template text instead of the review date. It was visible from 24 October and is fixed as of 27 October."
     }
   ]
 }

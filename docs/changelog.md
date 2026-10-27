@@ -1,8 +1,8 @@
 # Changelog
 
-## 28 Oct 2026 — Viewer fixes and an Optimus change log
+## 27 Oct 2026 — Viewer fixes and an Optimus change log
 
-- **3D viewers (Cybertruck, Model 3, Optimus):** the explode slider now has a 24 px touch target (WCAG 2.5.8) instead of 4 px, fixed once in the shared `model3-explorer.css`. axe is clean on all three viewer pages.
+- **3D viewers (Cybertruck, Model 3, Optimus):** the explode slider has a 24 px touch target (WCAG 2.5.8) on all three viewers, now defined once in the shared `model3-explorer.css`. Cybertruck and Model 3 gain it (it was 4 px); Optimus already had it as its own rule. axe is clean on all three viewer pages.
 - **Cybertruck viewer:** hidden internal parts (battery, motors and so on) were flagged `null` instead of `false` while assembled, which three.js still draws. They are now skipped properly. (The body hides them, so nothing visibly changes; it removes wasted rendering and a possible see-through at the glass.) Model 3 does not use that part system and is unaffected.
 - **Optimus page:** a visible "What changed" section lists dated updates and corrections, newest first (editorial rule 6), and the first correction is on it (the sources header had shown unfilled template text instead of the review date).
 - **`docs/optimus-refresh.md`:** a step-by-step checklist for when Tesla unveils Gen 3 or publishes a new quarterly update.

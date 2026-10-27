@@ -16,7 +16,7 @@ Work through these in order, in `data/optimus-studio.json` unless noted. Quote T
 honest: only Tesla's published statements are `disclosed`; everything else stays `reported` or `target`.
 
 1. **Sources:** add the unveil source (film, post, deck, transcript), open it, set `checked` to the date, and recheck the sources it replaces.
-2. **Generations table (`specs`, `specGens`):** fill the Gen 3 column with what Tesla published (height, weight, hands, actuators, battery, speed, compute). Upgrade cells from `reported` to `disclosed` only where Tesla itself said it. Leave `Not published` blank cells blank.
+2. **Generations table (`specs`, `specGens`):** fill the Gen 3 column with what Tesla published (height, weight, hands, actuators, battery, speed, compute). Upgrade cells from `reported` to `disclosed` only where Tesla itself said it. Leave a cell out unless a source gives a value; a missing cell renders as "Not published".
 3. **Metrics and status:** update `status`, `metrics` (hand DoF, production, capacity) and `asOf` dates.
 4. **Timeline:** add the unveil as a `hardware` event; move the "target" events that have happened into dated ones.
 5. **Promises:** `p-gen3` (unveil promised for Q1 2026) gets its outcome and result text, with the date it happened. Check `p-sop`, `p-ramp`, `p-customers`.
@@ -29,10 +29,14 @@ honest: only Tesla's published statements are `disclosed`; everything else stays
 
 ```
 node scripts/build-optimus-studio.mjs
-node scripts/build-js.mjs && python3 scripts/inject-js-bundles.py
+sh scripts/rebuild-js.sh
 node --test tests/optimus-studio.test.mjs
-CHROMIUM_PATH=... python3 tests/optimus-studio-browser.py && python3 tests/optimus-3d-browser.py
+python3 tests/test_optimus_refresh.py
+export CHROMIUM_PATH=...   # a Chrome or Chromium binary
+python3 tests/optimus-studio-browser.py
+python3 tests/optimus-3d-browser.py
 node scripts/audit/axe.mjs optimus.html
+node scripts/audit/axe.mjs optimus-viewer.html
 ```
 
 `tests/optimus-studio-browser.py` pins record counts (timeline events, evidence records, table cells, actuator counts);

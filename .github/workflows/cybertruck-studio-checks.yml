@@ -2,6 +2,9 @@ name: Cybertruck studio checks
 on:
   pull_request:
     paths:
+      - 'model3-explorer.css'
+      - 'm3x-zoom.js'
+      - 'vendor/three/**'
       - 'cybertruck-*'
       - 'data/cybertruck-studio.json'
       - 'data/pages.json'

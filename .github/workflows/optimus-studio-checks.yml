@@ -17,6 +17,7 @@ on:
       - 'data/optimus-studio.json'
       - 'assets/optimus-studio/**'
       - 'scripts/build-optimus-studio.mjs'
+      - 'docs/optimus-refresh.md'
       - 'scripts/optimus-art.mjs'
       - 'scripts/js-bundles.json'
       - 'scripts/build-seo.py'
