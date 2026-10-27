@@ -102,18 +102,24 @@ async def main():
   other,q,other_errors,_=await context(query='?'+urlparse(link).query+'#'+urlparse(link).fragment)
   for key,value in {'horizon':'20','altitude':'120','downrange':'250','units':'mi'}.items():assert await q.locator('#lv-'+key).input_value()==value
   assert await q.locator('[data-map=region]').get_attribute('aria-pressed')=='true'
-  await expect(q.locator('#lv-location-status')).to_contain_text('Santa Barbara');assert 'lat='not in q.url
+  await expect(q.locator('#lv-location-status')).to_contain_text('Shared approximate location');await expect(q.locator('#lv-location-status')).to_contain_text('34.42°');assert 'lat='not in q.url
   assert not errors and not other_errors,(errors,other_errors);await other.close();await c.close();cases.append('shared scenario round trip')
   # A refresh must not leave the previous target's instruments on screen.
   for mode in ['elapsed-refresh','unknown-pad-refresh']:
    gate=asyncio.Event();c,page,errors,_=await context(mode=mode,refresh_gate=gate)
    await page.locator('[data-place="Santa Barbara"]').click();await expect(page.locator('#lv-direction-text b')).to_have_text('286° true')
-   assert await page.locator('#lv-compass svg').count()==1;gate.set()
+   assert await page.locator('#lv-compass svg').count()==1
+   if mode=='unknown-pad-refresh':
+    await page.locator('#lv-field-open').click();await expect(page.locator('#lv-field')).to_be_visible()
+    await expect(page.locator('#lv-field-bearing')).to_have_text('286°');assert await page.locator('#lv-field-compass svg').count()==1
+   gate.set()
    if mode=='elapsed-refresh':
     await expect(page.locator('#lv-brief')).to_contain_text('No dated upcoming launches')
     await expect(page.locator('#lv-direction-text')).to_contain_text('No target selected')
     assert await page.locator('#lv-metrics').inner_text()=='';assert await page.locator('#lv-share-open').is_disabled()
-   else:await expect(page.locator('#lv-launch-info')).to_contain_text('Unmatched pad test launch')
+   else:
+    await expect(page.locator('#lv-launch-info')).to_contain_text('Unmatched pad test launch')
+    await expect(page.locator('#lv-field')).not_to_be_visible();assert await page.locator('#lv-field-compass svg').count()==0
    assert await page.locator('#lv-compass svg').count()==0;assert await page.locator('#lv-sky-visual svg').count()==0
    assert await page.locator('#lv-field-open').is_disabled();assert await page.locator('#lv-compass-expand').is_disabled()
    await page.locator('#lv-compass-expand').dispatch_event('click');assert not await page.locator('#lv-field').is_visible()
