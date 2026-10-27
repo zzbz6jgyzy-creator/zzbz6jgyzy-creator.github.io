@@ -56,8 +56,10 @@
   const KEY = "sd-pop-seen";
   const SUBKEY = "sd-nl-sub";
   const store = { get(k){try{return localStorage.getItem(k)}catch(e){return "1"}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}} };
-  const views = Number(sessionStorage.getItem("sd-views") || 0) + 1;
-  try { sessionStorage.setItem("sd-views", views); } catch (e) {}
+  try {
+    const views = Number(sessionStorage.getItem("sd-views") || 0) + 1;
+    sessionStorage.setItem("sd-views", views);
+  } catch (e) { /* Signup and navigation still work when storage is unavailable. */ }
   // One nag per visit: skip the scroll popup when an inline signup is already on
   // the page, the reader already subscribed in this browser, or grow.js was asked
   // not to pop (data-pop omitted). There is no Beehiiv subscriber cookie on this

@@ -237,6 +237,9 @@
       "design-21st.js",
       "script.js",
       "nav-pill.js"
+    ],
+    "newsletter": [
+      "newsletter-studio.js"
     ]
   },
   "pages": {
@@ -643,6 +646,13 @@
       "bundles": [
         "core",
         "grok"
+      ],
+      "grow": []
+    },
+    "newsletter.html": {
+      "bundles": [
+        "core",
+        "newsletter"
       ],
       "grow": []
     }

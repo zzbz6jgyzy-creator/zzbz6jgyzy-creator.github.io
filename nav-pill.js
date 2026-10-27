@@ -193,8 +193,9 @@
   sheet.querySelector(".pn-close").addEventListener("click", () => sheetOpen(false));
   document.addEventListener("keydown", e => { if (e.key === "Escape") { closeAll(); if (sheet.classList.contains("open")) sheetOpen(false); } });
   window.__pn = { setExpanded, sheetOpen };
-  if (!window.__sdNewsletterCta) {
-    const nl = document.createElement("script"); nl.src = "/newsletter-cta.js?v=202610210800"; document.body.append(nl);
+  if (window.sdWireNewsletterCTA) window.sdWireNewsletterCTA();
+  else if (!window.__sdNewsletterCta) {
+    const nl = document.createElement("script"); nl.src = "/newsletter-cta.js?v=202610271100"; document.body.append(nl);
   }
 })();
 // Site-wide LIVE NOW alert (reads /live-data.json; shows nothing unless a stream is live)
