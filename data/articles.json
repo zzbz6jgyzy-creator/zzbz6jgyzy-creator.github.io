@@ -1,6 +1,19 @@
 {
-  "updated": "2026-10-27T08:45:00Z",
+  "updated": "2026-10-27T20:40:00Z",
   "articles": [
+    {
+      "url": "/dispatch/vandenberg-72-launch-record.html",
+      "title": "Vandenberg just broke its launch record with two months to spare",
+      "date": "2026-10-27T20:40:00Z",
+      "topic": "spacex",
+      "tag": "Falcon 9",
+      "image": "/assets/dispatch/vandenberg-72nd-launch-sld30.jpg",
+      "summary": "Vandenberg says a Falcon 9 Starlink launch on 27 Oct was its 72nd of 2026, beating 2025’s 71. The pace math, the 26-flight booster, and the 100-a-year goal.",
+      "pinned": false,
+      "imageAlt": "A Falcon 9 lifts off at night from Vandenberg on the Starlink 15-16 mission (photo: U.S. Space Force, public domain)",
+      "author": "Alex R",
+      "minutes": 4
+    },
     {
       "url": "/dispatch/easyjet-starlink-u-turn.html",
       "title": "easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet",

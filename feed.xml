@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 27 Oct 2026 08:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 21:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Vandenberg just broke its launch record with two months to spare</title>
+      <link>https://superchargeddaily.com/dispatch/vandenberg-72-launch-record.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/vandenberg-72-launch-record.html</guid>
+      <pubDate>Tue, 27 Oct 2026 21:00:00 +0000</pubDate>
+      <category>Falcon 9</category>
+      <description>Vandenberg says a Falcon 9 Starlink launch on 27 Oct was its 72nd of 2026, beating 2025’s 71. The pace math, the 26-flight booster, and the 100-a-year goal.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/vandenberg-72nd-launch-sld30.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet</title>
       <link>https://superchargeddaily.com/dispatch/easyjet-starlink-u-turn.html</link>
@@ -717,15 +726,6 @@
       <category>SpaceX</category>
       <description>Flight 13, an intact splashdown, a 75-day trip home and a Megabay at Starbase.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/ship-40-megabay-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>9,000 meters became 60</title>
-      <link>https://superchargeddaily.com/dispatch/stargaze.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/stargaze.html</guid>
-      <pubDate>Wed, 07 Oct 2026 22:38:21 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>Stargaze, a silent burn, and the miss that almost was not a miss.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/stargaze-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>
