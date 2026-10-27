@@ -29,9 +29,15 @@ export function buildPromiseStudio(root=ROOT){
   let html=old.replace(/\s*<link[^>]+href="\/intel\.css[^"]*"[^>]*>/g,'').replace(/<main\b[\s\S]*?<\/main>/,()=>main).replace(/href="\/promise-tracker.css[^\"]*"/,'href="/promise-studio.css?v=20261026"');
   const title='Musk promise tracker | Supercharged Daily',description='Sourced Tesla, SpaceX and xAI claims, target windows and outcomes. An editorial ledger, not a score.';
   html=html.replace(/<title>[\s\S]*?<\/title>/,()=>`<title>${e(title)}</title>`).replace(/(<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content=")[^"]*/g,(_,p)=>p+e(description)).replace(/(<meta\s+(?:name|property)="(?:og:title|twitter:title)"\s+content=")[^"]*/g,(_,p)=>p+e(title));
-  if(ld)html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>ld);
+  if(ld){
+    // The saved page schema is kept across rebuilds; make sure its Dataset carries the creator and license Google asks for
+    let kept=ld;
+    try{const j=JSON.parse(ld.replace(/^<script[^>]*>/,'').replace(/<\/script>$/,'')),m=j.mainEntity;
+      if(m&&m['@type']==='Dataset'){m.creator=m.creator||{'@type':'Person',name:'Alex R',url:'https://superchargeddaily.com/author.html',sameAs:['https://x.com/ALJR86']};m.license=m.license||'https://superchargeddaily.com/editorial.html#data';kept='<script type="application/ld+json">'+JSON.stringify(j)+'</script>';}}catch(_){}
+    html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>kept);
+  }
   else{
-    const schema={'@context':'https://schema.org','@type':'CollectionPage','@id':'https://superchargeddaily.com/promise-tracker.html#page',url:'https://superchargeddaily.com/promise-tracker.html',name:title,description,isPartOf:{'@type':'WebSite',name:'Supercharged Daily',url:'https://superchargeddaily.com/'},mainEntity:{'@type':'Dataset',name:'Public statements, target windows and evidence records',description:'An editorial collection of claim records; statuses and dates reflect the saved source review, not a representative company success rate.',dateModified:d.updated,distribution:{'@type':'DataDownload',encodingFormat:'application/json',contentUrl:'https://superchargeddaily.com/data/promises.json'}}};
+    const schema={'@context':'https://schema.org','@type':'CollectionPage','@id':'https://superchargeddaily.com/promise-tracker.html#page',url:'https://superchargeddaily.com/promise-tracker.html',name:title,description,isPartOf:{'@type':'WebSite',name:'Supercharged Daily',url:'https://superchargeddaily.com/'},mainEntity:{'@type':'Dataset',name:'Public statements, target windows and evidence records',creator:{'@type':'Person',name:'Alex R',url:'https://superchargeddaily.com/author.html',sameAs:['https://x.com/ALJR86']},license:'https://superchargeddaily.com/editorial.html#data',description:'An editorial collection of claim records; statuses and dates reflect the saved source review, not a representative company success rate.',dateModified:d.updated,distribution:{'@type':'DataDownload',encodingFormat:'application/json',contentUrl:'https://superchargeddaily.com/data/promises.json'}}};
     html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>`<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
   }
   if(topic&&!html.includes('seo:topic-stories')){

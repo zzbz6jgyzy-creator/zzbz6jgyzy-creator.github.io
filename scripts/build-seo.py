@@ -447,6 +447,10 @@ def pages():
             "description": desc,
             "publisher": publisher,
         }
+        if typ == "Dataset":
+            # Google's Dataset rich result wants creator and license (same values as seo_lib.dataset)
+            ld["creator"] = seo_lib.person()
+            ld["license"] = seo_lib.LICENSE_URL
         found = re.search(r"<!-- seo:ld -->.*?<!-- /seo:ld -->", src, re.S)
         if found:
             sm = re.search(r'<script type="application/ld\+json">(.*?)</script>', found.group(0), re.S)
