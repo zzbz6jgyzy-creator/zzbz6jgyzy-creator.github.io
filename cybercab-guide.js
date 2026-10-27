@@ -21,11 +21,11 @@ if(cap&&M){
  const draw=()=>{const r=M.plan(+input.value,c);out.textContent=nf(r.weekly);read.textContent=`${nf(r.weekly)} a week is ${nf(r.yearly)} a year, ${r.pct}% of the installed capacity, and ${nf(r.weeks)} weeks to build ${nf(c.target)} cars.`;};
  input.addEventListener('input',draw);draw();box.hidden=false;
 }
-// Anatomy: hovering or focusing a listed part lights its marker on the drawing.
+// Anatomy: hovering a listed part lights its marker on the drawing.
 const parts=[...root.querySelectorAll('.cg-parts li')];
 parts.forEach(li=>{
  const mark=root.querySelector(`.cg-mark[data-part="${li.dataset.part}"]`);if(!mark)return;
  const on=v=>()=>mark.classList.toggle('is-on',v);
- li.tabIndex=0;li.addEventListener('mouseenter',on(true));li.addEventListener('mouseleave',on(false));li.addEventListener('focus',on(true));li.addEventListener('blur',on(false));
+ li.addEventListener('mouseenter',on(true));li.addEventListener('mouseleave',on(false));
 });
 })();

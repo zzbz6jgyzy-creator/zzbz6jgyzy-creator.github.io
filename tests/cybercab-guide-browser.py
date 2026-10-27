@@ -50,7 +50,7 @@ async def main():
             assert await page.locator('.cg-faq details').count() == 10, tag
             assert await page.locator('.cg-mark').count() == 5, tag
             assert await page.locator('.cg-captable tbody tr').count() == 5, tag
-            assert await page.locator('.cg-rivals tbody tr').count() == 3, tag
+            assert await page.locator('.cg-rivals tbody tr').count() == 4, tag
             # Saved content reads without JS: every event visible, filter bar hidden.
             assert await page.locator('.cg-event:visible').count() == 15, tag
             assert 'platform.twitter.com' not in ' '.join(hosts), tag

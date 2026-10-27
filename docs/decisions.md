@@ -2,7 +2,7 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
-## 2026-10-28 · Cybercab guide: draw only what is known
+## 2026-10-27 · Cybercab guide: draw only what is known
 
 - **Choice:** an original illustration with markers only on features whose position is public; the charge port and battery are listed under "Known, but not placed".
 - **Why:** a convincing X-ray would invent internals Tesla has not published. The Optimus guide's X-ray follows Tesla's own 2022 description; there is no equivalent for Cybercab.

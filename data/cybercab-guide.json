@@ -667,19 +667,22 @@
       "id": "doors",
       "label": "Butterfly doors",
       "x": 53,
-      "y": 59,
+      "y": 60,
       "status": "reported",
       "source": "drive-2024",
-      "text": "The Drive described a two-door coupe with butterfly doors at the 2024 reveal."
+      "text": "The Drive described a two-door coupe with butterfly doors at the 2024 reveal. The door outline is schematic."
     },
     {
       "id": "seats",
       "label": "Two seats",
-      "x": 49,
-      "y": 38,
+      "x": 50,
+      "y": 36,
       "status": "reported",
       "source": "cad-epa",
-      "text": "Car and Driver calls it a two-seat coupe; Not a Tesla App calls it a two-seater."
+      "text": "Car and Driver calls it a two-seat coupe; Not a Tesla App calls it a two-seater. Seat positions are not published, so none are drawn.",
+      "also": [
+        "nata-launch"
+      ]
     },
     {
       "id": "controls",
@@ -741,10 +744,11 @@
       1000,
       2400
     ],
-    "target": 10000
+    "target": 10000,
+    "note": "Shares are measured against exactly 125,000, so they run high if Tesla's real capacity is above it. The 10,000-car target is a round number we chose, not a Tesla target."
   },
   "rivals": {
-    "note": "Company-published figures only, each in the company's own definition. Baidu Apollo Go is left out because we could not open a figure from Baidu itself.",
+    "note": "Company-published figures, except cells marked Reported. Baidu Apollo Go is left out because we could not open a figure from Baidu itself.",
     "columns": [
       {
         "id": "tesla",
@@ -771,7 +775,7 @@
             "asOf": "2026-10-21"
           },
           "waymo": {
-            "value": "270 million miles of fully autonomous operation, through the end of June 2026",
+            "value": "Over 270 million miles of fully autonomous operation, through the end of June 2026",
             "status": "disclosed",
             "source": "waymo-safety",
             "asOf": "2026-09-24"
@@ -784,13 +788,11 @@
         "label": "Where",
         "cells": {
           "tesla": {
-            "value": "Cybercab deployed in Austin; Tesla's Q3 call says it plans other cities before the end of 2026",
+            "value": "Cybercab deployed in Austin",
             "status": "disclosed",
             "source": "q3-update",
             "asOf": "2026-10-21",
-            "also": [
-              "q3-call"
-            ]
+            "also": []
           },
           "waymo": {
             "value": "Service in its fifteenth U.S. city as of September; scaling in five cities from 27 Oct",
@@ -810,14 +812,31 @@
         }
       },
       {
+        "id": "plans",
+        "label": "Stated plans",
+        "cells": {
+          "tesla": {
+            "value": "Other cities for Cybercab before the end of 2026",
+            "status": "target",
+            "source": "q3-call",
+            "asOf": "2026-10-21"
+          },
+          "waymo": null,
+          "zoox": null
+        }
+      },
+      {
         "id": "vehicle",
         "label": "Vehicle",
         "cells": {
           "tesla": {
-            "value": "Purpose-built Cybercab with no permanently attached manual controls, plus Model Y",
+            "value": "Purpose-built Cybercab with no permanently attached manual controls (NHTSA), alongside Model Y Robotaxis (Q3 call)",
             "status": "disclosed",
             "source": "nhtsa-resume",
-            "asOf": "2026-09-03"
+            "asOf": "2026-09-03",
+            "also": [
+              "q3-call"
+            ]
           },
           "waymo": null,
           "zoox": {

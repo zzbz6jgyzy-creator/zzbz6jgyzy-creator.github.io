@@ -1,6 +1,6 @@
 # Changelog
 
-## 28 Oct 2026 — Cybercab guide, part 2 (showpieces)
+## 27 Oct 2026 — Cybercab guide, part 2 (showpieces)
 
 - **Illustrated anatomy:** our own side-view drawing of the Cybercab with five numbered features (butterfly doors, two seats, no manual controls, front light bar, front motor), each with its label and source. It is marked as our illustration, not Tesla CAD. The charge port and battery pack are listed but not drawn because their positions are unpublished.
 - **Capacity arithmetic:** "125,000 a year" is installed capacity, not output. A table and a slider show what a weekly build rate adds up to (per year, share of capacity, weeks to 10,000 cars). It is arithmetic, not a forecast, and says so.
