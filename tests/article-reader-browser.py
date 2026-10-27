@@ -29,6 +29,7 @@ async def main():
     if await page.locator('.sd-contents').count():
      await page.locator('.sd-contents summary').click();link=page.locator('.sd-contents a').first;target=await link.get_attribute('href');await link.click();assert (await page.locator(target).bounding_box())['y']>=(await page.locator('.rs-tools').bounding_box())['y']+(await page.locator('.rs-tools').bounding_box())['height']-1,'contents target hidden by reader controls'
     if width in [390,1440]:await page.screenshot(path=str(OUT/f'{path[:-5]}-{width}-{theme}-reading.png'))
+    await page.locator('[data-rs-size="1"]').click();assert await page.locator('.rs-article').get_attribute('data-text-size')=='2';assert await page.locator('[data-rs-size="1"]').is_disabled();assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),(path,width,'largest text overflow')
     print('PASS',path,width,theme,flush=True);await c.close()
   for mode in ['no-js','blocked-storage']:
    c=await browser.new_context(viewport={'width':390,'height':900},java_script_enabled=mode!='no-js',service_workers='block')
