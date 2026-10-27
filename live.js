@@ -160,15 +160,15 @@
     var next = feat || future.filter(function (e) { return !e.timeTbc && !e.net; })[0] || future[0]; // TBC/NET only if nothing timed
     var e = live || next;
     var pre = document.querySelector('section.lv[data-prebuilt]');
-    // Never tear down the prerendered next-stream card for a quiet update.
-    // Removing it is a layout shift on the 320px first screen after the mobile reorder.
-    if (!live && pre) {
+    // Timed next-stream cards keep the prerendered node. Remounting one is a
+    // layout shift on the 320px first screen. NET/TBC/empty still rebuild.
+    if (!live && pre && e && !e.net && !e.timeTbc) {
       var titleEl = pre.querySelector('.lw-title');
-      if (e && titleEl) titleEl.textContent = e.title;
+      if (titleEl) titleEl.textContent = e.title;
       var count = pre.querySelector('.lh-next-countdown');
-      if (e && count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
+      if (count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
       var leftover = document.querySelector('section.lv:not([data-prebuilt])'); if (leftover) leftover.remove();
-      var stay = e && !e.timeTbc && !e.net ? new Date(e.start) - H / 2 - now : 0;
+      var stay = new Date(e.start) - H / 2 - now;
       if (stay > 0 && stay < 864e5 && !q.get('livenow')) setTimeout(run, stay + 1e3);
       return;
     }
