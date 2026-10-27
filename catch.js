@@ -1261,7 +1261,7 @@
     const spd = Math.hypot(ship.vx, ship.vy);
     const dx=CATCH_X-ship.x,alt=ARM_Y-(ship.y-4);
     const tip=state==='fly'?(alt<120&&ship.vy>1.2?'Burn now: slow the descent before the arms.':Math.abs(dx)>55?'Bank '+(dx>0?'right':'left')+' and thrust to travel toward the corridor.':Math.abs(ship.vx)>.7?'Bank '+(ship.vx>0?'left':'right')+' and burn to brake sideways drift.':'Keep the ship upright. Pulse throttle for a soft arrival.'):'Training is a forgiving place to learn the approach.';
-    arcade.telemetry({primary:Math.abs(dx).toFixed(0)+' units '+(dx>0?'right':'left'),secondary:ship.vy.toFixed(1)+' units/s',state:state==='pause'?'Paused':state==='fly'?(demo?'Demo':'Flying'):state==='caught'?'Caught':state==='complete'?'Complete':'Debrief',guidance:tip,sound:muted?'Sound off':'Sound on'});
+    arcade.telemetry({primary:Math.abs(dx).toFixed(0)+' units '+(dx>0?'right':'left'),secondary:ship.vy.toFixed(1)+' units/s',state:state==='pause'?'Paused':state==='fly'?(demo?'Demo':'Flying'):state==='caught'?'Caught':state==='complete'?'Complete':'Debrief',fuel:'Fuel '+Math.round(ship.fuel)+' / '+Math.round(s.fuel),guidance:tip,sound:muted?'Sound off':'Sound on'});
     if (hudFlight) hudFlight.textContent = s.name;
     if (hudFuel) hudFuel.textContent = `Fuel ${Math.round(ship.fuel)}`;
     if (hudSpeed) hudSpeed.textContent = `${spd.toFixed(1)} m/s`;
