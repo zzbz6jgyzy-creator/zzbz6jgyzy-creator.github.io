@@ -5,6 +5,12 @@
 - Catch: anonymous play counters (`game_start`, `game_retry`, `game_complete`, `game_fail_*`, `game_return_d1`; page path only, no IDs), phone-first layout (compact header, focus view on Play, landscape pad), sound on after Play with a remembered mute, callouts, plume glow, final-approach slow motion, haptics, `R` to retry.
 - Hot Staging (PR 1 of 3): new renderer in `staging-fx.js` + `staging.js`. Perspective planet with parallax surface, cloud deck, city lights, limb glow and aurora; speed streaks and exhaust trail; Max-Q vapour collar; cinematic stage (starburst, booster flip and fall, Ship acceleration, camera tracking); four breakup cinematics (debris, fireball, shards; the debrief now appears after 1.2 s); canvas instruments (altitude tape, attitude gauge with safe/fail zones, staging-window meter). Simulation, scoring and test timings are unchanged. Frame time in a software-rendered headless browser went from about 11.8 ms to 15.8 ms at 1440 px (planet surface cached at half resolution).
 
+## 27 Oct 2026 — Live leftover titles and launch Record line
+
+- Roadster story-list titles now match the renamed previews (`Roadster day preview: Musk promised a “BANGER”`, `Roadster reveal set for 15 Oct (preview)`). The banger `<title>` keeps ` | Supercharged Daily`; og/twitter stay unsuffixed.
+- A stale Launch Library 2 “In Flight” label becomes Success once NET has passed, so flown launches no longer show `Editorial calendar · Launch in Flight` on the Record line.
+- News studio’s rebuild check keeps pictures, newsletter and a deterministic second pass, and no longer requires the committed `news.html` snapshot. Source-only title updates can land without a generated-page commit.
+
 ## 27 Oct 2026 — Date and freshness fixes
 
 - Tesla 2026 Annual Meeting (3 Dec, 3pm CT / 21:00 Irish) is now on the calendar, TSLA page and homepage major-event countdown, with the 6 Nov in-person drawing deadline. Sources: SEC annual report and votetesla.com.
