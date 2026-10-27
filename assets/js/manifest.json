@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.f8527de282.js",
-      "bytes": 43646,
+      "file": "/assets/js/core.bundle.8a94daea63.js",
+      "bytes": 44303,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -267,8 +267,8 @@
       ]
     },
     "counts": {
-      "file": "/assets/js/counts.bundle.3db30bcda4.js",
-      "bytes": 2981,
+      "file": "/assets/js/counts.bundle.3eac3171c1.js",
+      "bytes": 3006,
       "sources": [
         "counts.js"
       ]
@@ -371,8 +371,8 @@
       ]
     },
     "arcade-core": {
-      "file": "/assets/js/arcade-core.bundle.d6c8ea94d8.js",
-      "bytes": 38256,
+      "file": "/assets/js/arcade-core.bundle.607b99273e.js",
+      "bytes": 38907,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -383,6 +383,13 @@
         "design-21st.js",
         "script.js",
         "nav-pill.js"
+      ]
+    },
+    "newsletter": {
+      "file": "/assets/js/newsletter.bundle.5e68cff0f3.js",
+      "bytes": 436,
+      "sources": [
+        "newsletter-studio.js"
       ]
     }
   }

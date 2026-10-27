@@ -23,7 +23,8 @@
   document.addEventListener("submit", (e) => {
     const f = e.target;
     if (!f || !f.matches) return;
-    if (f.matches("[data-newsletter-form]") && f.querySelector("input[type=email]") && f.querySelector("input[type=email]").value.trim()) send("signup_submit");
+    // newsletter.js counts a handoff only after email and honeypot validation.
+    // A handoff is not a confirmed Beehiiv subscription.
     if (f.getAttribute("data-sd-track") === "search") send("search_go");
   }, true);
   document.addEventListener("click", (e) => {

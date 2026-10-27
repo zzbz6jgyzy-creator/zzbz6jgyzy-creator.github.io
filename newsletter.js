@@ -1,4 +1,5 @@
 (() => {
+  if (window.__sdNewsletter) return;
   window.__sdNewsletter = 1;
   // Signups go to Beehiiv (Supercharged Daily). No API key or email address in public code.
   // utm_content is an allowlisted topic so Beehiiv can tag / segment the signup.
@@ -27,6 +28,8 @@
   };
   const mediumOf = (form) => {
     const place = (form.closest("[data-newsletter]")?.getAttribute("data-newsletter") || "").toLowerCase();
+    if (place === "landing-hero") return "site-newsletter-hero";
+    if (place === "landing-footer") return "site-newsletter-footer";
     if (place === "article") return "site-article";
     if (place === "tracker") return "site-tracker";
     if (place === "pop" || form.closest(".sd-pop")) return "site-pop";
@@ -53,8 +56,8 @@
       const honey = form.querySelector("input[name='website']");
       if (honey && honey.value) return;
       const email = String(new FormData(form).get("email") || "").trim().toLowerCase();
-      if (!email) {
-        setStatus(status, input, "Add an email address.", false);
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setStatus(status, input, email ? "Enter a valid email address." : "Add an email address.", false);
         if (input) input.focus();
         return;
       }
@@ -65,9 +68,20 @@
         "&utm_content=" + encodeURIComponent(topic);
       // Beehiiv confirms signup after this redirect. Keep the form available if
       // the visitor returns without completing it; old browser flags prove nothing.
-      setStatus(status, input, "Taking you to Supercharged Daily…", true);
+      setStatus(status, input, "Continue on Beehiiv to finish subscribing…", true);
+      if (typeof window.sdTrack === "function") window.sdTrack("signup_submit");
       location.href = url;
     });
   };
   document.querySelectorAll("[data-newsletter]").forEach(bind);
+  // Bind forms added later by the optional scroll prompt without double binding.
+  if (typeof MutationObserver !== "undefined") {
+    new MutationObserver((changes) => changes.forEach((change) => change.addedNodes.forEach((node) => {
+      if (node.nodeType !== 1) return;
+      if (node.matches("[data-newsletter]")) bind(node);
+      node.querySelectorAll("[data-newsletter]").forEach(bind);
+      if (node.matches("[data-newsletter-form]")) { const root = node.closest("[data-newsletter]"); if (root) bind(root); }
+    })))
+      .observe(document.body, { childList: true, subtree: true });
+  }
 })();

@@ -1,27 +1,33 @@
 (() => {
+  if (window.__sdNewsletterCta) return;
   window.__sdNewsletterCta = 1;
-  // Wire the nav Subscribe control to the page's signup block.
-  // Inline article/tracker blocks are injected at build time (<!--nl:start-->).
-  // grow.js still adds a footer band only when no inline block exists.
-  const SUB = "https://alexs-newsletter-84b17e.beehiiv.com/";
-  let block = document.getElementById("newsletter") || document.querySelector("[data-newsletter]:not(.sd-pop)");
-  if (block && block.classList.contains("sd-pop")) block = document.querySelector("[data-newsletter]:not(.sd-pop)");
-  // Root-cause guard: if the page already has its own signup block, drop any extra sitewide band.
-  if (block) document.querySelectorAll(".sd-band").forEach((b) => { if (b !== block) b.remove(); });
-  else { const bands = document.querySelectorAll(".sd-band"); bands.forEach((b, i) => { if (i) b.remove(); }); }
-  if (!block) block = document.querySelector(".sd-band");
-  if (block && !document.getElementById("newsletter")) block.id = "newsletter";
-  if (block && !window.__sdNewsletter && !document.querySelector('script[src^="/newsletter.js"]')) {
-    const js = document.createElement("script"); js.src = "/newsletter.js?v=202610210800"; document.body.append(js);
-  }
-  document.querySelectorAll("a.pn-sub").forEach((a) => {
-    if (block) a.href = "#newsletter";
-    else { a.href = SUB + "?utm_source=website&utm_medium=nav"; a.rel = "noopener"; }
-    if (block) a.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (window.__pn) window.__pn.sheetOpen(false);
-      block.scrollIntoView({ behavior: "smooth", block: "center" });
-      const i = block.querySelector("input[type=email]"); if (i) setTimeout(() => i.focus({ preventScroll: true }), 500);
-    });
+  const SUB = "/newsletter.html";
+  const signupBlock = () => document.getElementById("newsletter") || document.querySelector("[data-newsletter]:not(.sd-pop)");
+  const wire = () => {
+    let block = signupBlock();
+    if (block && block.classList.contains("sd-pop")) block = document.querySelector("[data-newsletter]:not(.sd-pop)");
+    if (block) document.querySelectorAll(".sd-band").forEach((b) => { if (b !== block) b.remove(); });
+    if (block && !document.getElementById("newsletter")) block.id = "newsletter";
+    document.querySelectorAll("a.pn-sub").forEach((a) => { a.href = block ? "#newsletter" : SUB + "?utm_source=website&utm_medium=nav"; });
+    const links = document.querySelector(".footer-links");
+    if (links && !links.querySelector('a[href="/newsletter.html"]')) {
+      const link = document.createElement("a"); link.href = SUB; link.textContent = "Newsletter";
+      links.append(document.createTextNode(" · "), link);
+    }
+  };
+  // Navigation creates its buttons after this bundle source runs.
+  window.sdWireNewsletterCTA = wire;
+  wire();
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest("a.pn-sub");
+    if (!a) return;
+    const block = signupBlock();
+    if (!block) return;
+    e.preventDefault();
+    if (window.__pn) window.__pn.sheetOpen(false);
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    block.scrollIntoView({ behavior: reduce ? "instant" : "smooth", block: "center" });
+    const input = block.querySelector("input[type=email]");
+    if (input) setTimeout(() => input.focus({ preventScroll: true }), reduce ? 0 : 500);
   });
 })();

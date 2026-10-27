@@ -2,7 +2,7 @@
   // Paint live sd-events totals. No invented numbers. Zeros stay zeros.
   const LIVE = "https://sd-events.superchargeddaily.workers.dev/stats?days=30";
   const EVENTS = [
-    ["signup_submit", "Newsletter signups", "Forms submitted with an email"],
+    ["signup_submit", "Newsletter handoffs", "Forms continued to Beehiiv, not confirmed subscribers"],
     ["latest_issue_click", "Latest issue", "Clicks on Read the latest issue"],
     ["referral_click", "Tesla referral", "ts.la referral clicks"],
     ["tesmag_click", "TESMAG", "TESMAG affiliate clicks"],
