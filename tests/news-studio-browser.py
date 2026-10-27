@@ -50,7 +50,8 @@ async def main():
     if mode=='link':assert await page.locator('[data-ns-topic="starlink"]').get_attribute('aria-pressed')=='true';assert await page.locator('#ns-results').get_attribute('data-layout')=='compact'
     if mode=='legacy':assert await page.locator('[data-ns-source="external"]').get_attribute('aria-pressed')=='true'
     if mode in ['offline','older-feed']:assert 'saved content remains available'in await page.locator('#ns-refresh-status').inner_text()
-    if mode=='fresh-story':assert 'Starship fixture fresh story'in await page.locator('#ns-results').inner_text();assert 'min read'not in await page.locator('#ns-results .ns-card').first.locator('.ns-meta').inner_text()
+    if mode=='fresh-story':
+     await page.wait_for_function("document.querySelector('#ns-results').textContent.includes('Starship fixture fresh story')");assert 'Starship fixture fresh story'in await page.locator('#ns-results').inner_text();assert 'min read'not in await page.locator('#ns-results .ns-card').first.locator('.ns-meta').inner_text()
     if mode=='normal'and width in [390,1440]:await page.screenshot(path=str(OUT/f'hero-{width}-{theme}.png'))
     await tap(page,'.ns-toolbar [data-ns-reset]');assert await page.locator('#ns-results .ns-card').count()==12
     await tap(page,'#ns-more');assert await page.locator('#ns-results .ns-card').count()==24
@@ -82,3 +83,4 @@ async def main():
    print('PASS',width,theme,mode,flush=True);await ctx.close()
   await browser.close()
 asyncio.run(main())
+

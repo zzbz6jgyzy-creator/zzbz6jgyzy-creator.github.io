@@ -8,7 +8,7 @@ async def main():
  async with async_playwright()as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH')or shutil.which('google-chrome')or shutil.which('chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
   for width,theme,mode in [(320,'dark','normal'),(390,'dark','normal'),(768,'dark','normal'),(1440,'dark','normal'),(390,'light','normal'),(1440,'light','normal'),(390,'dark','nojs'),(390,'dark','offline')]:
-   context=await browser.new_context(viewport={'width':width,'height':844},java_script_enabled=mode!='nojs',reduced_motion='reduce',service_workers='block');await context.add_init_script('localStorage.setItem("sd-theme",'+json.dumps(theme)+')');await context.add_init_script("window.__homeCLS=0;new PerformanceObserver(l=>l.getEntries().forEach(e=>{if(!e.hadRecentInput)window.__homeCLS+=e.value})).observe({type:'layout-shift',buffered:true})");page=await context.new_page();errors=[];requested=[];signups=[];analytics=[]
+   context=await browser.new_context(viewport={'width':width,'height':844},java_script_enabled=mode!='nojs',reduced_motion='reduce',service_workers='block');await context.add_init_script('localStorage.setItem("sd-theme",'+json.dumps(theme)+')');await context.add_init_script("window.__homeCLS=0;window.__homeShifts=[];new PerformanceObserver(l=>l.getEntries().forEach(e=>{if(!e.hadRecentInput){window.__homeCLS+=e.value;window.__homeShifts.push({value:e.value,nodes:e.sources.map(s=>({tag:s.node?.tagName,id:s.node?.id,class:s.node?.className,before:s.previousRect.y,after:s.currentRect.y}))});}})).observe({type:'layout-shift',buffered:true})");page=await context.new_page();errors=[];requested=[];signups=[];analytics=[]
    page.on('pageerror',lambda e:errors.append(str(e)))
    async def route(r):
     u=urlparse(r.request.url);requested.append(r.request.url)
@@ -30,7 +30,7 @@ async def main():
    email_box=await page.locator('#newsletter input[type=email]').bounding_box();assert email_box['width']>=130,(width,'email field too narrow',email_box)
    button=await page.locator('#newsletter button[type=submit]').bounding_box();assert button['y']>=0 and button['y']+button['height']<844,(width,button)
    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),(width,theme,'overflow')
-   if mode!='nojs':assert await page.evaluate('window.__homeCLS')<.1,(width,theme,'layout shift',await page.evaluate('window.__homeCLS'))
+   if mode!='nojs':assert await page.evaluate('window.__homeCLS')<.1,(width,theme,'layout shift',await page.evaluate('window.__homeCLS'),await page.evaluate('window.__homeShifts'))
    assert not any('.mp4'in u for u in requested),'No autoplay video or film downloads on the homepage'
    assert await page.locator('iframe').count()==0
    assert await page.locator('.hs-hero-roadster img').evaluate('(i)=>i.complete&&i.naturalWidth>0')
@@ -64,3 +64,4 @@ async def main():
    print(width,theme,mode,'passed',flush=True);await context.close()
   await browser.close()
 asyncio.run(main())
+
