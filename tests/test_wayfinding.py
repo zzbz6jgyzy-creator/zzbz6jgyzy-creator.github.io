@@ -23,6 +23,14 @@ class Wayfinding(unittest.TestCase):
   self.assertNotIn('About the author',contents);self.assertNotIn('Related stories',contents)
   self.assertIn('data-discussion-jump hidden',contents)
   self.assertEqual(build.article(new),new)
+ def test_minified_repeated_contents_are_collapsed(self):
+  built=build.article(page(''.join('<h2>Section '+str(i)+'</h2>' for i in range(4))))
+  block=build.ARTICLE_RX.search(built)[0].strip()
+  broken=built.replace(build.ARTICLE_RX.search(built)[0],block*3)
+  repaired=build.article(broken)
+  self.assertEqual(repaired.count('<!--sd:article-wayfinding-->'),1)
+  self.assertEqual(build.article(repaired),repaired)
+  self.assertIn('<h1>Story</h1>',repaired)
  def test_short_articles_and_unrelated_pages_stay_unchanged(self):
   src=page('<h2>First</h2><h2>Second</h2><h2>Third</h2>')
   self.assertEqual(build.article(src),src)

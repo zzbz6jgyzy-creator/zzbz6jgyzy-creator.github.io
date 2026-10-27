@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Build compact homepage shortcuts and native contents links for long Dispatch articles."""
-import html,pathlib,re,sys,unicodedata
+import html,pathlib,re,sys,unicodedata,runpy
 from html.parser import HTMLParser
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
+READER=runpy.run_path(str(pathlib.Path(__file__).with_name('build-article-reader.py')))['decorate']
 STYLE='    <!--sd:wayfinding-style--><link rel="stylesheet" href="/wayfinding.css?v=2026102301" /><!--/sd:wayfinding-style-->'
 STYLE_RX=re.compile(r'[ \t]*<!--sd:wayfinding-style-->.*?<!--/sd:wayfinding-style-->\n?',re.S)
-ARTICLE_RX=re.compile(r'\n<!--sd:article-wayfinding-->.*?<!--/sd:article-wayfinding-->\n',re.S)
-HOME_RX=re.compile(r'\n<!--sd:home-wayfinding-->.*?<!--/sd:home-wayfinding-->\n',re.S)
+ARTICLE_RX=re.compile(r'\n?<!--sd:article-wayfinding-->.*?<!--/sd:article-wayfinding-->\n?',re.S)
+HOME_RX=re.compile(r'\n?<!--sd:home-wayfinding-->.*?<!--/sd:home-wayfinding-->\n?',re.S)
 VOID={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
 class Sections(HTMLParser):
@@ -87,6 +88,7 @@ def run(check=False):
  for path in files:
   if not path.exists():continue
   src=path.read_text();new=homepage(src) if path.name=='index.html' and path.parent==ROOT else article(src)
+  if path.parent==ROOT/'dispatch':new=READER(new)
   if '<!--sd:article-wayfinding-->' in new:eligible+=1
   if new!=src:
    changed.append(str(path.relative_to(ROOT)))
