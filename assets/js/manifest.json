@@ -291,11 +291,12 @@
       ]
     },
     "staging": {
-      "file": "/assets/js/staging.bundle.a8088df29a.js",
-      "bytes": 50520,
+      "file": "/assets/js/staging.bundle.1ac8f35ce4.js",
+      "bytes": 65246,
       "sources": [
         "arcade-model.js",
         "arcade.js",
+        "staging-fx.js",
         "staging.js"
       ]
     },

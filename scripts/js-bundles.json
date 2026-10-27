@@ -186,6 +186,7 @@
     "staging": [
       "arcade-model.js",
       "arcade.js",
+      "staging-fx.js",
       "staging.js"
     ],
     "robotaxi": [

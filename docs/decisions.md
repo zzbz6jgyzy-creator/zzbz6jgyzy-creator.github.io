@@ -2,6 +2,11 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · Hot Staging stays on Canvas 2D (no PixiJS/WebGL)
+- **Decision:** the overhaul keeps Canvas 2D and adds `staging-fx.js` (pure drawing helpers). The planet surface is rendered at half resolution into a cache canvas and blitted; heavy static parts are cached rather than redrawn.
+- **Why:** a WebGL engine would add a large dependency to a page that must keep Core Web Vitals green, and WebGL is riskier in the headless CI browser. Measured cost of the new scene is about +4 ms per frame in software rasterisation (much less on a GPU).
+- **Rejected:** PixiJS v8 / Phaser 4 for now. Revisit if a later phase needs thousands of particles or shaders.
+
 ## 2026-10-27 · PRs do not carry bot-generated studio output
 - **Decision:** Feature PRs change source only (builders, models, hand-edited `data/events.json`, article HTML, tests). Saved pages, `data/*-studio.json`, hashed `assets/js` bundles, `index.html` prerender and `data/launches.json` stay as main last wrote them. Studio CI still *runs* the builder on the PR (so browser tests see the new logic) but skips the `git diff` ownership check. That check still runs on push/schedule/`workflow_dispatch`. After merge, `home-build.yml` and `js-bundle.yml` (triggered by `*.js`, `data/events.json`, the tesla/calendar models) commit the rebuilt output. News/Starlink/newsletter jobs no longer `git add *.html`.
 - **Why:** news-snapshot (`:12/:42`), updates-snapshot (`:20/:50`) and launches-refresh (`:17`) rewrite the same HTML/JSON every half hour. A PR that committed a snapshot of those files became unmergeable before it could be reviewed. Rebasing just restarted the race.
