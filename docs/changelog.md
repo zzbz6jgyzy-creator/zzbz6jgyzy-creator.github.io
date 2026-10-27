@@ -1,5 +1,9 @@
 # Changelog
 
+## 27 Oct 2026 — Cybercab guide in the navigation
+
+- **Menu:** "Cybercab guide" (badge "New", "Specs, timeline & promises") now sits next to "Cybercab tracker" under Tesla › Software & autonomy, in both the Tesla and Explore menus and the mobile quick links. Edited once in `scripts/nav.json` and synced to every page with `scripts/sync-nav.py`.
+
 ## 27 Oct 2026 — Cybercab guide, part 3 (links and polish)
 
 - **Link from the live tracker:** `cybercab.html` (rebuilt from `mobility-view.js`) now points to the guide from the "Read the measures correctly" strip. The only generated-page change is that link and the bundle hash.
