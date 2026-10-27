@@ -42,7 +42,7 @@ async def main():
    c=await context();q=await c.new_page();errors=[];q.on('pageerror',lambda e:errors.append(e.stack));await q.goto('https://superchargeddaily.com/'+name+'.html',wait_until='networkidle');await q.clock.install()
    await q.locator('[data-ac-focus]').click();await q.locator('[data-'+name+'-play]').click();await q.clock.run_for(3500 if name=='staging' else 200)
    if name=='catch':assert 'Fuel ' in await q.locator('[data-ac-fuel]').inner_text()
-   assert await q.evaluate(f'{api}.state()') in ['fly','boost'];assert await q.evaluate(f'{api}.muted()')
+   assert await q.evaluate(f'{api}.state()') in ['fly','boost'];assert (await q.evaluate(f'{api}.muted()'))==(name!='catch'),'catch unmutes on Play; staging stays muted'
    await q.locator('[data-hold="right"]').dispatch_event('pointerdown',{'pointerId':11,'pointerType':'touch','button':0})
    if name=='catch':await q.locator('[data-hold="thrust"]').dispatch_event('pointerdown',{'pointerId':12,'pointerType':'touch','button':0})
    await q.clock.run_for(120 if name=='staging'else 300);assert await q.evaluate(f'{api}.held().right');assert await q.evaluate(f'{api}.hold().right')>0
@@ -102,6 +102,12 @@ async def main():
     await q.locator('[data-ac-focus]').click();assert not await q.evaluate("document.body.classList.contains('ac-focus')")
     await q.evaluate("CatchGame.restart()");assert not await q.evaluate("document.body.classList.contains('ac-focus')"),'exit is remembered for the session'
    print('PASS phone focus view',width,flush=True);await c.close()
+  c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/catch.html',wait_until='networkidle')
+  assert await q.evaluate('CatchGame.muted()'),'silent before the first Play press'
+  await q.locator('[data-catch-play]').click();assert not await q.evaluate('CatchGame.muted()'),'Play turns sound on'
+  await q.locator('[data-ac-sound]').click();assert await q.evaluate('CatchGame.muted()');assert await q.evaluate("localStorage.getItem('sd.arcade.muted')")=='1'
+  await q.reload(wait_until='networkidle');await q.locator('[data-catch-play]').click();assert await q.evaluate('CatchGame.muted()'),'mute choice survives a reload'
+  print('PASS sound default and remembered mute',flush=True);await c.close()
   # Small inline previews let reviewers inspect CI screenshots through the connected log reader.
   await browser.close()
 asyncio.run(main())
