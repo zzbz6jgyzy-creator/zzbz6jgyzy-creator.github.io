@@ -35,7 +35,7 @@ jobs:
           python scripts/build-wayfinding.py --check
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- assets/js
+          sh scripts/ci-generated-ownership.sh -- assets/js
       - name: Responsive, navigation and mocked newsletter journeys
         run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/home-studio-browser.py
       - uses: actions/upload-artifact@v4
