@@ -33,6 +33,8 @@ async def main():
     c,signups,events=await context(width,theme);q=await c.new_page();errors=[];q.on('pageerror',lambda e:errors.append(str(e)))
     await q.goto(SITE+'/newsletter.html',wait_until='networkidle');await q.evaluate('document.fonts.ready')
     assert await q.locator('h1').count()==1
+    assert await q.locator('link[rel=canonical]').get_attribute('href')==SITE+'/newsletter.html'
+    assert await q.locator('meta[property="og:image"]').get_attribute('content')==SITE+'/assets/brand/og-1b.png'
     assert await q.locator('[data-newsletter-form]').count()==2
     assert await q.locator('.ns-faq details').count()==6
     assert not await q.evaluate('document.documentElement.scrollWidth>innerWidth+1'),(width,theme,'horizontal overflow')
