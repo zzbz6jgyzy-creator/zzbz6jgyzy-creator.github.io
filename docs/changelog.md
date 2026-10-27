@@ -1,5 +1,13 @@
 # Changelog
 
+## 28 Oct 2026 — Cybercab guide, part 2 (showpieces)
+
+- **Illustrated anatomy:** our own side-view drawing of the Cybercab with five numbered features (butterfly doors, two seats, no manual controls, front light bar, front motor), each with its label and source. It is marked as our illustration, not Tesla CAD. The charge port and battery pack are listed but not drawn because their positions are unpublished.
+- **Capacity arithmetic:** "125,000 a year" is installed capacity, not output. A table and a slider show what a weekly build rate adds up to (per year, share of capacity, weeks to 10,000 cars). It is arithmetic, not a forecast, and says so.
+- **Against the other operators:** Tesla, Waymo and Zoox in their own published figures (Waymo's 270 million miles through June and fifteenth U.S. city from its blog; Tesla's Q3 deck). Baidu Apollo Go is left out because we could not open a figure from Baidu.
+- **Share card:** a 1200x630 card for X and other previews replaces the default image; the template is `scripts/cybercab-og-card.html`.
+- **Test:** every Disclosed item in the new sections must cite a Tesla, regulator or company document.
+
 ## 27 Oct 2026 — Cybercab guide, part 1 (content backbone)
 
 - **New page `/cybercab-guide.html`:** what Tesla has disclosed about the Cybercab versus what is only reported or a target. Six sourced numbers, a versions table (2024 reveal, production car, a blank customer column), a 15-event timeline with a filter, seven robotaxi promises checked, ten sourced questions, a "What changed" log and a source ledger with the date each source was opened.

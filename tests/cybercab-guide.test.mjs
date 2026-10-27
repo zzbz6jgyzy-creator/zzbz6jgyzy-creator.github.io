@@ -28,6 +28,8 @@ test('Disclosed only ever cites a Tesla or regulator document, never a news repo
   const cites=x=>[x.source,...(x.also||[])];
   const ok=x=>x.status!=='disclosed'||kind[x.source]==='primary'||kind[x.source]==='regulator';
   for(const m of d.metrics)assert.ok(ok(m),m.id);
+  for(const r of d.rivals.rows)for(const x of Object.values(r.cells))if(x)assert.ok(ok(x),'rival '+r.id);
+  for(const x of [...d.parts,...d.partsUnplaced])assert.ok(ok(x),x.id);
   for(const r of d.versions.rows)for(const x of Object.values(r.cells))if(x)assert.ok(ok(x),r.id);
   assert.ok(cites({source:'a',also:['b']}).length===2);
 });
@@ -76,4 +78,33 @@ test('change log is ordered and shown on the page; untrusted text is escaped',()
   const page=fs.readFileSync('cybercab-guide.html','utf8');
   assert.equal((page.match(/<li><time datetime="[^"]+">[^<]+<\/time> <span class="cg-kind /g)||[]).length,d.changes.length);
   assert.equal(M.esc('<script>"&\''),'&lt;script&gt;&quot;&amp;&#39;');
+});
+
+test('capacity arithmetic is plain multiplication and rejects bad input',()=>{
+  const c=d.capacity;
+  assert.deepEqual(M.plan(500,c),{weekly:500,yearly:26000,pct:21,weeks:20});
+  assert.equal(M.plan(2400,c).pct,Math.round(2400*52/c.yearly*100));
+  for(const w of [0,-5,1.5,NaN,20000])assert.throws(()=>M.plan(w,c));
+  const page=fs.readFileSync('cybercab-guide.html','utf8');
+  for(const w of c.steps)assert.ok(page.includes((w*52).toLocaleString('en-GB')),String(w));
+  assert.ok(page.includes('not a forecast'));
+});
+
+test('illustration is labelled as ours and only places features with a known position',()=>{
+  const page=fs.readFileSync('cybercab-guide.html','utf8');
+  assert.ok(page.includes('Our illustration'));assert.ok(page.includes('not Tesla CAD'));
+  assert.equal((page.match(/class="cg-mark"/g)||[]).length,d.parts.length);
+  assert.ok(d.partsUnplaced.length>=2&&d.partsUnplaced.every(p=>/not published/.test(p.text)));
+  const bad=structuredClone(d);bad.parts[0].x=140;assert.throws(()=>M.validate(bad,ids));
+});
+
+test('share card is 1200x630, wired to og and twitter tags, and the template exists',()=>{
+  const page=fs.readFileSync('cybercab-guide.html','utf8');
+  assert.ok(page.includes('content="https://superchargeddaily.com/assets/og-cybercab-guide.jpg"'));
+  assert.ok(page.includes('property="og:image:width" content="1200"')&&page.includes('property="og:image:height" content="630"'));
+  assert.ok(page.includes('twitter:image:alt'));
+  assert.ok(fs.existsSync('scripts/cybercab-og-card.html'));
+  const jpg=fs.readFileSync('assets/og-cybercab-guide.jpg');let i=2,w=0,h=0;
+  while(i<jpg.length){if(jpg[i]!==0xFF){i++;continue;}const m=jpg[i+1];if(m>=0xC0&&m<=0xC3){h=jpg.readUInt16BE(i+5);w=jpg.readUInt16BE(i+7);break;}i+=2+jpg.readUInt16BE(i+2);}
+  assert.deepEqual([w,h],[1200,630]);
 });

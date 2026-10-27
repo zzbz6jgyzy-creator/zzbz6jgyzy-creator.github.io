@@ -44,10 +44,13 @@ async def main():
             assert await page.locator('h1').count() == 1, tag
             assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'), (tag, 'overflow')
             assert await page.locator('.cg-metric').count() == 6, tag
-            assert await page.locator('.cg-versions tbody tr').count() == 10, tag
+            assert await page.locator('.cg-versions:not(.cg-rivals) tbody tr').count() == 10, tag
             assert await page.locator('.cg-event').count() == 15, tag
             assert await page.locator('.cg-promise').count() == 7, tag
             assert await page.locator('.cg-faq details').count() == 10, tag
+            assert await page.locator('.cg-mark').count() == 5, tag
+            assert await page.locator('.cg-captable tbody tr').count() == 5, tag
+            assert await page.locator('.cg-rivals tbody tr').count() == 3, tag
             # Saved content reads without JS: every event visible, filter bar hidden.
             assert await page.locator('.cg-event:visible').count() == 15, tag
             assert 'platform.twitter.com' not in ' '.join(hosts), tag
@@ -60,6 +63,9 @@ async def main():
                 assert await page.locator('.cg-year:visible').count() == 1, tag
                 await page.locator('[data-filters] [data-type=all]').click()
                 assert await page.locator('.cg-event:visible').count() == 15, tag
+                assert await page.locator('[data-cap-control]').is_visible(), tag
+                await page.locator('#cg-weekly').fill('1000')
+                assert '52,000 a year' in await page.locator('[data-cap-read]').inner_text(), tag
                 assert await page.locator('.x-embed-load').count() == 1, tag
                 for btn in await page.locator('.cg button, .cg summary, .cg-jump a').all():
                     box = await btn.bounding_box()
@@ -67,6 +73,7 @@ async def main():
                         assert box['height'] >= 24, (tag, 'target size')
             else:
                 assert not await page.locator('[data-filters]').is_visible(), tag
+                assert not await page.locator('[data-cap-control]').is_visible(), tag
             if width in (390, 1440) and mode == 'normal':
                 await page.screenshot(path=str(OUT / f'{tag}.png'), full_page=True)
             await ctx.close()

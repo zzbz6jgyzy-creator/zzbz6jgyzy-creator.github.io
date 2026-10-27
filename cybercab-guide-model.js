@@ -22,10 +22,21 @@ function validate(d,promiseIds){
  for(const r of d.versions.rows){for(const c of cols){const cell=r.cells[c];if(cell===undefined)fail('missing cell '+r.id+'/'+c);if(cell){if(!status[cell.status]||!day(cell.asOf)||!cell.value)fail('cell '+r.id+'/'+c);ref(cell.source);(cell.also||[]).forEach(ref);}}}
  for(const f of d.faqs){if(!f.q||!f.a||!f.sources?.length)fail('faq');f.sources.forEach(ref);}
  for(const e of d.evidence){ref(e.source);if(!e.embed||!/^\d+$/.test(e.embed.id)||!/^\w+$/.test(e.embed.user))fail('embed');}
+ const cell2=(x,tag)=>{if(x){if(!status[x.status]||!day(x.asOf)||!x.value)fail(tag);ref(x.source);(x.also||[]).forEach(ref);}};
+ for(const r of d.rivals.rows)for(const c of d.rivals.columns)cell2(r.cells[c.id],'rival '+r.id+'/'+c.id);
+ for(const p of [...d.parts,...d.partsUnplaced]){if(!status[p.status]||!p.label||!p.text)fail('part '+p.id);ref(p.source);}
+ for(const p of d.parts)if(!(p.x>=0&&p.x<=100&&p.y>=0&&p.y<=100))fail('part position '+p.id);
+ if(d.capacity.yearly<1||!d.capacity.steps.every(n=>Number.isInteger(n)&&n>0))fail('capacity');ref(d.capacity.source);ref(d.capacity.fleet.source);
  if(promiseIds)for(const p of d.promises)if(!promiseIds.includes(p.id))fail('promise not in ledger: '+p.id);
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }
-const api={validate,esc,status,types,day};
+// Plain arithmetic for the capacity table: no forecast, only what a weekly output would add up to.
+function plan(weekly,cap){
+ if(!Number.isInteger(weekly)||weekly<1||weekly>10000)throw Error('weekly output must be a whole number from 1 to 10,000');
+ const yearly=weekly*52;
+ return {weekly,yearly,pct:Math.round(yearly/cap.yearly*100),weeks:Math.ceil(cap.target/weekly)};
+}
+const api={validate,esc,status,types,day,plan};
 if(typeof module==='object'&&module.exports)module.exports=api;else root.CybercabGuide=api;
 })(typeof window!=='undefined'?window:globalThis);

@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-28 · Cybercab guide: draw only what is known
+
+- **Choice:** an original illustration with markers only on features whose position is public; the charge port and battery are listed under "Known, but not placed".
+- **Why:** a convincing X-ray would invent internals Tesla has not published. The Optimus guide's X-ray follows Tesla's own 2022 description; there is no equivalent for Cybercab.
+- **Rivals:** only figures opened from the company (Waymo's blog, Tesla's deck, Zoox's site). Third-party weekly ride counts conflict, and Baidu's site refused access, so they stay out.
+- **Capacity:** shown as arithmetic with a visible "not a forecast", because Tesla has published no output and "installed capacity" is routinely misread as production.
+
 ## 2026-10-27 · Cybercab guide: a new page, not a rebuild of the tracker
 
 - **Choice:** a separate guide page with its own data file, builder and workflow; `cybercab.html` stays the live tracker.

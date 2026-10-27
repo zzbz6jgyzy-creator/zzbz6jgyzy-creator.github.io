@@ -118,6 +118,42 @@
       "url": "https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript/",
       "date": "2026-01-28",
       "checked": "2026-10-15"
+    },
+    {
+      "id": "waymo-safety",
+      "outlet": "Waymo",
+      "kind": "primary",
+      "title": "From the road: safety data through June 2026 (270 million autonomous miles)",
+      "url": "https://waymo.com/blog/shorts/safetydata-september26/",
+      "date": "2026-09-24",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "waymo-debt",
+      "outlet": "Waymo",
+      "kind": "primary",
+      "title": "Waymo closes $5 billion debt financing (fifteenth U.S. city)",
+      "url": "https://waymo.com/blog/2026/10/waymo-closes-5-billion-debt-financing",
+      "date": "2026-10-08",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "waymo-places",
+      "outlet": "Waymo",
+      "kind": "primary",
+      "title": "From the road: scaling in five cities",
+      "url": "https://waymo.com/blog/shorts/more-places/",
+      "date": "2026-10-27",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "zoox-where",
+      "outlet": "Zoox",
+      "kind": "primary",
+      "title": "Where to ride with Zoox",
+      "url": "https://zoox.com/where-to-ride",
+      "date": "2026-10-27",
+      "checked": "2026-10-27"
     }
   ],
   "metrics": [
@@ -625,5 +661,173 @@
       "kind": "update",
       "text": "Guide published. Facts were rechecked against Tesla's Q1, Q2 and Q3 2026 decks, the NHTSA AQ26002 resume and the sources listed below."
     }
-  ]
+  ],
+  "parts": [
+    {
+      "id": "doors",
+      "label": "Butterfly doors",
+      "x": 53,
+      "y": 59,
+      "status": "reported",
+      "source": "drive-2024",
+      "text": "The Drive described a two-door coupe with butterfly doors at the 2024 reveal."
+    },
+    {
+      "id": "seats",
+      "label": "Two seats",
+      "x": 49,
+      "y": 38,
+      "status": "reported",
+      "source": "cad-epa",
+      "text": "Car and Driver calls it a two-seat coupe; Not a Tesla App calls it a two-seater."
+    },
+    {
+      "id": "controls",
+      "label": "No steering wheel or pedals",
+      "x": 36,
+      "y": 41,
+      "status": "disclosed",
+      "source": "nhtsa-resume",
+      "text": "NHTSA: the vehicles lack permanently attached, conventional manual controls such as a brake pedal, gas pedal, steering wheel and mirrors."
+    },
+    {
+      "id": "lightbar",
+      "label": "Front light bar",
+      "x": 11,
+      "y": 62,
+      "status": "reported",
+      "source": "nata-launch",
+      "text": "Not a Tesla App: the app update added a pickup experience in which the car's front light bar glows a colour to show which Cybercab is yours."
+    },
+    {
+      "id": "motor",
+      "label": "Front motor",
+      "x": 28,
+      "y": 50,
+      "status": "reported",
+      "source": "cad-epa",
+      "text": "Car and Driver: documents Tesla submitted to the EPA list a front-mounted electric motor of 219 hp."
+    }
+  ],
+  "partsUnplaced": [
+    {
+      "id": "port",
+      "label": "Charge port",
+      "status": "reported",
+      "source": "nata-charging",
+      "text": "A hidden NACS port for DC fast charging, per Not a Tesla App. Its location is not published, so it is not drawn."
+    },
+    {
+      "id": "pack",
+      "label": "Battery pack",
+      "status": "reported",
+      "source": "cad-epa",
+      "text": "Roughly 50 kWh per Car and Driver. Where the pack sits is not published, so it is not drawn."
+    }
+  ],
+  "capacity": {
+    "yearly": 125000,
+    "source": "q3-update",
+    "asOf": "2026-10-21",
+    "fleet": {
+      "value": 300,
+      "asOf": "2026-10-10",
+      "source": "x-robotaxi-300"
+    },
+    "steps": [
+      100,
+      250,
+      500,
+      1000,
+      2400
+    ],
+    "target": 10000
+  },
+  "rivals": {
+    "note": "Company-published figures only, each in the company's own definition. Baidu Apollo Go is left out because we could not open a figure from Baidu itself.",
+    "columns": [
+      {
+        "id": "tesla",
+        "name": "Tesla"
+      },
+      {
+        "id": "waymo",
+        "name": "Waymo"
+      },
+      {
+        "id": "zoox",
+        "name": "Zoox"
+      }
+    ],
+    "rows": [
+      {
+        "id": "miles",
+        "label": "Driverless miles",
+        "cells": {
+          "tesla": {
+            "value": "Nearly 2 million cumulative unsupervised Robotaxi miles, end of Q3 2026",
+            "status": "disclosed",
+            "source": "q3-update",
+            "asOf": "2026-10-21"
+          },
+          "waymo": {
+            "value": "270 million miles of fully autonomous operation, through the end of June 2026",
+            "status": "disclosed",
+            "source": "waymo-safety",
+            "asOf": "2026-09-24"
+          },
+          "zoox": null
+        }
+      },
+      {
+        "id": "places",
+        "label": "Where",
+        "cells": {
+          "tesla": {
+            "value": "Cybercab deployed in Austin; Tesla's Q3 call says it plans other cities before the end of 2026",
+            "status": "disclosed",
+            "source": "q3-update",
+            "asOf": "2026-10-21",
+            "also": [
+              "q3-call"
+            ]
+          },
+          "waymo": {
+            "value": "Service in its fifteenth U.S. city as of September; scaling in five cities from 27 Oct",
+            "status": "disclosed",
+            "source": "waymo-debt",
+            "also": [
+              "waymo-places"
+            ],
+            "asOf": "2026-10-27"
+          },
+          "zoox": {
+            "value": "Its site lists Las Vegas, San Francisco, Austin, Miami, Atlanta and Los Angeles under Where to Ride (a listing, not a service status)",
+            "status": "disclosed",
+            "source": "zoox-where",
+            "asOf": "2026-10-27"
+          }
+        }
+      },
+      {
+        "id": "vehicle",
+        "label": "Vehicle",
+        "cells": {
+          "tesla": {
+            "value": "Purpose-built Cybercab with no permanently attached manual controls, plus Model Y",
+            "status": "disclosed",
+            "source": "nhtsa-resume",
+            "asOf": "2026-09-03"
+          },
+          "waymo": null,
+          "zoox": {
+            "value": "Purpose-built, no manual controls; it petitioned NHTSA for an exemption, which Tesla did not",
+            "status": "reported",
+            "source": "nata-deadline",
+            "asOf": "2026-10-08"
+          }
+        }
+      }
+    ]
+  }
 }

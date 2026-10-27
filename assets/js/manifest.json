@@ -249,9 +249,10 @@
       ]
     },
     "cybercab-guide": {
-      "file": "/assets/js/cybercab-guide.bundle.e5ca59e229.js",
-      "bytes": 541,
+      "file": "/assets/js/cybercab-guide.bundle.5a29eec60b.js",
+      "bytes": 4653,
       "sources": [
+        "cybercab-guide-model.js",
         "cybercab-guide.js"
       ]
     },
