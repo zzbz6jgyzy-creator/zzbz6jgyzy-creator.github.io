@@ -79,7 +79,7 @@ def homepage(src):
  clean=HOME_RX.sub('',src)
  pitch=re.search(r'<p\b[^>]*class="hv-pitch"[^>]*>.*?</p>',clean,re.S)
  if not pitch or 'id="hv-trk-h"' not in clean:return src
- block='\n<!--sd:home-wayfinding--><nav class="hv-start" aria-label="Start exploring"><a href="/dispatch.html">Latest stories</a><a href="#hv-trk-h">Explore trackers</a><a href="/guides/tesla-buying-guide.html">Find your Tesla</a></nav><!--/sd:home-wayfinding-->\n'
+ block='\n<!--sd:home-wayfinding--><nav class="hv-start" aria-label="Start exploring"><a href="#latest-stories">Latest stories <span aria-hidden="true">↓</span></a><a href="#hv-trk-h">Explore trackers <svg class="hs-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13L13 3M3 3H13V13"/></svg></a></nav><!--/sd:home-wayfinding-->\n'
  return stylesheet(clean[:pitch.end()]+block+clean[pitch.end():],True)
 
 def run(check=False):

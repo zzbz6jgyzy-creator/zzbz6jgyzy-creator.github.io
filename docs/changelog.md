@@ -8,6 +8,14 @@
 - **11 sourced part cards**, generated from `data/optimus-studio.json` into `optimus-parts.js`. The X-ray's selected system opens the matching part in 3D.
 - Tests: `tests/optimus-3d-browser.py` (software WebGL: load, 28 actuators, explode, card, reset, keyboard orbit, guide launch and exit, missing-model fallback) and new node checks for cards, generation and model hashes.
 
+## 27 Oct 2026 — Homepage editorial experience
+
+- New “Go beyond the headline” opening with a larger, aligned Roadster/Starship/Starlink showcase and clearer original reporting, toolkit and personal Daily routes.
+- More readable typography, visible My Tesla/live compass links, and a clearer free Sunday briefing offer with native signup and a real issue preview.
+- Kept news/tracker refresh ownership, SEO metadata, source context and existing imagery. Added no runtime JavaScript or dependency.
+- Responsive browser checks cover phones, tablet, desktop, both themes, no JavaScript, unavailable data and 200% text. Before/after previews come from the actual PR base and head; no test emails are sent.
+
+
 ## 27 Oct 2026 — Optimus guide: interactive showpieces (Optimus PR 2 of 3)
 
 - **X-ray body:** the cropped portrait in "Inside the machine" is replaced by a detailed X-ray illustration: translucent shell, frame, all 28 body actuators in the 2022 layout (14 rotary, 14 linear, from Tesla's AI Day description), the 2-DoF neck, battery cells and pack board, central computer, cameras, cable runs, six hand motors with tendons, and foot force sensors. Choosing a system lights it up and shows its labels.
