@@ -46,6 +46,9 @@
     if (/in.?flight/i.test(s)) return "done";
     return s;
   }
+  function staleInFlight(raw, start, now) {
+    return /in.?flight/i.test(String(raw || "")) && valid(start) && Date.parse(start) < +new Date(now);
+  }
   function normalize(seed, manual, launches, live, now = Date.now()) {
     const rows = (seed.curated || []).map((e) => item(e));
     function equal(a, b) {
@@ -69,11 +72,16 @@
       e.windowStart = valid(l.window_start) ? l.window_start : "";
       e.windowEnd = valid(l.window_end) ? l.window_end : "";
       e.vehicle = l.vehicle || "";
-      e.providerStatus = l.status?.name || e.status;
+      e.providerStatus = staleInFlight(rawStatus, e.start, now) ? "Success" : (l.status?.name || e.status);
       const old = rows.find((x) => equal(x, e));
       if (old && old.origin === "Editorial calendar" && !/success|failure|partial/i.test(rawStatus)) {
         old.providerId = l.id;
-        old.providerStatus = e.providerStatus;
+        if (staleInFlight(rawStatus, old.start, now)) {
+          old.status = "done";
+          old.providerStatus = "Success";
+        } else {
+          old.providerStatus = e.providerStatus;
+        }
         continue;
       }
       put({ ...old, ...e, note: old && old.origin === "Editorial calendar" ? old.note : e.note, sources: [...old?.sources || [], ...e.sources] });
