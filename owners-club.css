@@ -8,3 +8,8 @@
 @media(prefers-reduced-motion:reduce){.oc-studio *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 /* Enhancement controls stay absent for readers using the saved directory. */
 .oc-studio:not([data-enhanced=true]) .oc-js{display:none!important}
+.oc-studio .oc-country-code{color:#ff6585}
+.oc-studio .oc-guide-number{color:#5f6e84}
+.oc-studio .oc-card-links a{min-height:24px}
+[data-theme=light] .oc-studio .oc-country-code{color:var(--oc-red)}
+[data-theme=light] .oc-studio .oc-guide-number{color:#778499}

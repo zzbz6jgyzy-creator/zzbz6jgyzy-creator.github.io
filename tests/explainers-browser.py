@@ -46,7 +46,7 @@ async def main():
       await page.locator('button[data-mode="cold"]').click();assert await page.locator('[data-current-title]').inner_text()=='Ignite the upper stage'
       await page.locator('[data-step-target="2"]').click()
       assert await page.locator('[data-cold-poses]').first.get_attribute('transform')=='translate(0 16)'
-      assert await page.locator('[data-step-target="2"]').get_attribute('aria-label')=='Step 3: Separate and coast'
+      assert await page.locator('[data-step-target="2"]').text_content()=='03Separate and coast'
       assert await page.locator('[data-scrub]').get_attribute('aria-valuetext')=='Step 3: Separate and coast'
       await page.locator('button[data-mode="hot"]').click()
       assert await page.locator('[data-cold-poses]').first.get_attribute('transform')=='translate(0 0)'

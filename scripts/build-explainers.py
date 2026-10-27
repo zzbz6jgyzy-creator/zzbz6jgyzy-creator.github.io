@@ -13,7 +13,7 @@ DETAIL=runpy.run_path(str(ROOT/'scripts/lesson-graphics.py'))['detail_svg']
 BUNDLES=runpy.run_path(str(ROOT/'scripts/inject-js-bundles.py'))
 E=lambda value:html.escape(str(value),quote=True)
 J=lambda value:json.dumps(value,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
-VERSION='2026102302'
+VERSION='2026102702'
 
 def _sd_day(v):
   try:return datetime.date.fromisoformat(str(v)[:10]).strftime('%d %b %Y').lstrip('0')
@@ -57,7 +57,7 @@ def link(item):return f'<a href="{E(item["url"])}">{E(item["title"])} <span aria
 def source_ref(lesson,key):
     if not key:return ''
     source=next(s for s in lesson['sources'] if s['id']==key)
-    return f' <a class="lx-cite" href="#source-{E(key)}" aria-label="Source: {E(source["title"])}">[{lesson["sources"].index(source)+1}]</a>'
+    return f' <a class="lx-cite" href="#source-{E(key)}" aria-label="[{lesson["sources"].index(source)+1}] Source: {E(source["title"])}">[{lesson["sources"].index(source)+1}]</a>'
 
 def card(lesson,prefix=''):
     return f'''<a class="lx-card" id="{E(prefix+lesson['legacy'])}" href="{url(lesson)}">
@@ -122,7 +122,7 @@ def faq(lesson):
     return '<section class="lx-misconceptions lx-faq"><p class="lx-eyebrow">The next questions</p><h2>Go a level deeper</h2>'+''.join('<details><summary>'+E(q['title'])+'</summary><p>'+E(q['text'])+'</p></details>' for q in lesson.get('faq',[]))+'</section>'
 
 def lesson_page(lesson,data,snapshot):
-    steps=''.join(f'<li class="lx-step"{ " data-active" if i==0 else ""}><h3><span class="lx-step-static">{i+1:02d} · {E(s["title"])}</span><button type="button" data-step-target="{i}" aria-label="Step {i+1}: {E(s["title"])}" hidden><span class="lx-step-number">{i+1:02d}</span><span class="lx-step-name">{E(s["title"])}</span></button></h3><p>{E(s["text"])}{source_ref(lesson,s.get("source"))}</p></li>' for i,s in enumerate(lesson['stages']))
+    steps=''.join(f'<li class="lx-step"{ " data-active" if i==0 else ""}><h3><span class="lx-step-static">{i+1:02d} · {E(s["title"])}</span><button type="button" data-step-target="{i}" hidden><span class="lx-step-number">{i+1:02d}</span><span class="lx-step-name">{E(s["title"])}</span></button></h3><p>{E(s["text"])}{source_ref(lesson,s.get("source"))}</p></li>' for i,s in enumerate(lesson['stages']))
     mode='<div class="lx-mode" role="group" aria-label="Staging method"><button type="button" data-mode="hot" aria-pressed="true">Hot staging</button><button type="button" data-mode="cold" aria-pressed="false">Cold staging</button></div>' if lesson['id']=='hot-staging' else ''
     lab=f'''<section class="lx-lab" aria-labelledby="diagram-title" data-lesson-lab><header class="lx-lab-head"><div><p class="lx-eyebrow">Explore the sequence</p><h2 id="diagram-title">{E(lesson['diagramTitle'])}</h2></div><span class="lx-step-status" data-step-status role="status" aria-live="polite">Five stages</span></header><div class="lx-lab-grid"><div><figure class="lx-figure" data-lesson-figure data-step="0" data-mode="hot">{ART(lesson['id'],'lesson-'+lesson['id'])}<figcaption>{E(lesson['diagramNote'])}</figcaption></figure><ol class="lx-legend">{''.join(f'<li><span>{i+1}</span>{E(label)}</li>' for i,label in enumerate(lesson['legend']))}</ol><div class="lx-controls" data-lesson-controls hidden>{mode}<div class="lx-playback"><button type="button" data-play aria-pressed="false">Play steps</button><button type="button" data-previous aria-label="Previous step">←</button><input type="range" data-scrub min="0" max="4" value="0" step="1" aria-label="Lesson stage"/><button type="button" data-next aria-label="Next step">→</button><button type="button" data-restart>Restart</button></div></div></div><div class="lx-step-column"><ol class="lx-steps">{steps}</ol><div class="lx-current" data-current hidden><p class="lx-eyebrow" data-current-number></p><h3 data-current-title></h3><p data-current-text></p></div></div></div><script type="application/json" data-lesson-stages>{J(lesson['stages'])}</script></section>'''
     sections=''.join(f'<section class="lx-explanation"><h2>{E(s["title"])}</h2><p>{E(s["text"])}{source_ref(lesson,s.get("source"))}</p></section>' for s in lesson['sections'])

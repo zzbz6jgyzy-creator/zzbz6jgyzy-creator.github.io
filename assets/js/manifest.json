@@ -147,8 +147,8 @@
       ]
     },
     "cybercab": {
-      "file": "/assets/js/cybercab.bundle.777107729b.js",
-      "bytes": 51535,
+      "file": "/assets/js/cybercab.bundle.b48ab5f31c.js",
+      "bytes": 51537,
       "sources": [
         "mobility-model.js",
         "mobility-view.js",
@@ -227,8 +227,8 @@
       ]
     },
     "explainers": {
-      "file": "/assets/js/explainers.bundle.cb080ba77d.js",
-      "bytes": 5486,
+      "file": "/assets/js/explainers.bundle.8f848408c9.js",
+      "bytes": 5469,
       "sources": [
         "explainers.js"
       ]
@@ -298,7 +298,7 @@
       ]
     },
     "robotaxi": {
-      "file": "/assets/js/robotaxi.bundle.4111b41f00.js",
+      "file": "/assets/js/robotaxi.bundle.98035cbd69.js",
       "bytes": 18493,
       "sources": [
         "board.js",

@@ -3390,6 +3390,29 @@ button.fsd-kpi[aria-pressed="true"] {
   background: rgba(159, 212, 176, 0.08);
 }
 
+html[data-theme="light"] .tcmv-status-briefing {
+  color: #1d4a9e;
+  border-color: rgba(29, 74, 158, 0.4);
+  background: rgba(29, 74, 158, 0.08);
+}
+
+html[data-theme="light"] .tcmv-status-discussion {
+  color: #7a4a00;
+  border-color: rgba(122, 74, 0, 0.4);
+  background: rgba(122, 74, 0, 0.08);
+}
+
+html[data-theme="light"] .tcmv-status-upcoming {
+  color: #4a4d55;
+  border-color: rgba(74, 77, 85, 0.4);
+}
+
+html[data-theme="light"] .tcmv-status-vote {
+  color: #1b6b3a;
+  border-color: rgba(27, 107, 58, 0.4);
+  background: rgba(27, 107, 58, 0.08);
+}
+
 .tcmv-summary {
   margin: 0 0 1rem;
   color: var(--ink-soft);

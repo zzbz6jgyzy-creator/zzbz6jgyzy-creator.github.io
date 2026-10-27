@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 26 Oct 2026 14:50:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 02:36:00 +0000</lastBuildDate>
+    <item>
+      <title>Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3</title>
+      <link>https://superchargeddaily.com/dispatch/verizon-vs-musk-starlink-mobile.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/verizon-vs-musk-starlink-mobile.html</guid>
+      <pubDate>Tue, 27 Oct 2026 02:36:00 +0000</pubDate>
+      <category>Starlink</category>
+      <description>Verizon’s CEO put a $300B–$500B, four-to-six-year price on a SpaceX phone network on 26 Oct. Musk replied “2 or 3 years.” What each side said, and the math.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/verizon-tower-ann-arbor-wide.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet</title>
       <link>https://superchargeddaily.com/dispatch/spacex-40b-gpu-lease.html</link>
@@ -717,15 +726,6 @@
       <category>SpaceX</category>
       <description>Four astronauts, two extra months, 262 miles over Cuba.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/dragon-freedom-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>15,000 satellites, no dish</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-direct.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-direct.html</guid>
-      <pubDate>Wed, 07 Oct 2026 22:38:21 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>FCC approval for a constellation that talks to ordinary phones.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-direct-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>
