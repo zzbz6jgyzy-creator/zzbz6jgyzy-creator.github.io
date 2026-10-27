@@ -7,3 +7,6 @@
 .rs-story .rs-article h2[id]{scroll-margin-top:210px}
 @media(max-width:650px){.rs-story .rs-article h2[id]{scroll-margin-top:240px}}
 .rs-focus .rs-article h2[id]{scroll-margin-top:150px}
+/* light theme: the dark-panel accent and caption colours fail contrast on the light page (axe 2.95:1 and 1.6:1) */
+html[data-theme=light] .rs-story{--rs-accent:#b30f2a}
+html[data-theme=light] .rs-story .rs-article figure figcaption,html[data-theme=light] .rs-story .rs-article figure figcaption a{color:var(--rs-soft)}

@@ -13,3 +13,4 @@
 .ps-about .ps-hero>picture{display:block}
 .ps-gear .gs-hero h1{color:#fff}
 @media(max-width:650px){.ps-search .sd-search-form{grid-template-columns:minmax(0,1fr) auto}.ps-search .sd-search-form>svg{display:none}}
+.ps-page a.button-primary,.ps-page a.button-primary:hover{color:#fff}
