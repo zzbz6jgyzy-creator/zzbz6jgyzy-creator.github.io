@@ -18,6 +18,10 @@ const EVENTS = [
   "game_fail_tower",
   "game_fail_splash",
   "game_fail_rud",
+  "game_fail_walk",
+  "game_fail_early",
+  "game_fail_late",
+  "game_fail_maxq",
   "game_return_d1",
 ];
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Cache-Control": "no-store" };

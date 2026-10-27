@@ -42,7 +42,7 @@ async def main():
    c=await context();q=await c.new_page();errors=[];q.on('pageerror',lambda e:errors.append(e.stack));await q.goto('https://superchargeddaily.com/'+name+'.html',wait_until='networkidle');await q.clock.install()
    await q.locator('[data-ac-focus]').click();await q.locator('[data-'+name+'-play]').click();await q.clock.run_for(3500 if name=='staging' else 200)
    if name=='catch':assert 'Fuel ' in await q.locator('[data-ac-fuel]').inner_text()
-   assert await q.evaluate(f'{api}.state()') in ['fly','boost'];assert (await q.evaluate(f'{api}.muted()'))==(name!='catch'),'catch unmutes on Play; staging stays muted'
+   assert await q.evaluate(f'{api}.state()') in ['fly','boost'];assert not await q.evaluate(f'{api}.muted()'),'Play turns sound on for both games'
    await q.locator('[data-hold="right"]').dispatch_event('pointerdown',{'pointerId':11,'pointerType':'touch','button':0})
    if name=='catch':await q.locator('[data-hold="thrust"]').dispatch_event('pointerdown',{'pointerId':12,'pointerType':'touch','button':0})
    await q.clock.run_for(120 if name=='staging'else 300);assert await q.evaluate(f'{api}.held().right');assert await q.evaluate(f'{api}.hold().right')>0
@@ -108,6 +108,25 @@ async def main():
   await q.locator('[data-ac-sound]').click();assert await q.evaluate('CatchGame.muted()');assert await q.evaluate("localStorage.getItem('sd.arcade.muted')")=='1'
   await q.reload(wait_until='networkidle');await q.locator('[data-catch-play]').click();assert await q.evaluate('CatchGame.muted()'),'mute choice survives a reload'
   print('PASS sound default and remembered mute',flush=True);await c.close()
+  c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/staging.html?mode=campaign',wait_until='networkidle')
+  assert await q.evaluate('StagingGame.muted()'),'staging is silent before the first Play press'
+  assert not await q.locator('[data-hold="throttle"]').is_visible(),'throttle hidden until a flight starts'
+  await q.locator('[data-staging-play]').click()
+  assert not await q.evaluate('StagingGame.muted()'),'Play turns sound on'
+  assert await q.locator('[data-hold="throttle"]').count()==1
+  g1=await q.evaluate('JSON.stringify(StagingGame.gusts())');ev1=await q.evaluate('JSON.stringify(StagingGame.event())')
+  await q.evaluate('StagingGame.restart()');assert g1==await q.evaluate('JSON.stringify(StagingGame.gusts())'),'gust schedule is seeded and repeatable'
+  assert len(__import__('json').loads(g1))>=1,'campaign has gusts'
+  await q.locator('[data-ac-sound]').click();assert await q.evaluate("localStorage.getItem('sd.arcade.muted')")=='1'
+  await q.reload(wait_until='networkidle');await q.locator('[data-staging-play]').click();assert await q.evaluate('StagingGame.muted()'),'mute choice survives a reload'
+  print('PASS staging sound, campaign gusts and remembered mute',flush=True);await c.close()
+  c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/staging.html?mode=training',wait_until='networkidle');await q.clock.install()
+  await q.locator('[data-staging-play]').click();assert await q.evaluate('StagingGame.gusts().length')==0 and not await q.locator('[data-hold="throttle"]').is_visible(),'training has no gusts or Max-Q'
+  print('PASS training stays simple',flush=True);await c.close()
+  c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/staging.html?mode=campaign',wait_until='networkidle');await q.clock.install()
+  await q.locator('[data-staging-play]').click();await q.clock.run_for(40000)
+  assert await q.evaluate('StagingGame.state()')=='fail','an unattended campaign flight ends in a failure (gusts, load or walk)'
+  print('PASS unattended campaign flight fails',flush=True);await c.close()
   # Small inline previews let reviewers inspect CI screenshots through the connected log reader.
   await browser.close()
 asyncio.run(main())

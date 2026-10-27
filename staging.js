@@ -21,6 +21,8 @@
   const boardNow = document.querySelector("[data-board-now]");
   const nameInput = document.querySelector("[data-staging-name]");
   const muteBtn = document.querySelector("[data-staging-mute]");
+  const padEl = document.querySelector("[data-staging-pad]");
+  const thrBtn = document.querySelector('[data-hold="throttle"]');
 
   const GAME = "staging";
   const STORE = "sd.arcade.staging.best.v2";
@@ -42,6 +44,9 @@
   const HOLD_RISE = 0.0036;
   const HOLD_FALL = 0.006;
   const GIMBAL = 0.00028;
+  const GUST_AV = 0.0000052 * 3;
+  const MAXQ_FROM = 0.34;
+  const MAXQ_TO = 0.62;
   const WIND_AV = 0.000055;
   const ENGINE_AV = 0.0000052;
   const RESTORE_IDLE = 0.000048;
@@ -74,8 +79,8 @@
     { x: 9.2, y: 1.2, s: 0.78 },
   ];
 
-  const held = { left: false, right: false, stage: false };
-  const hold = { left: 0, right: 0, stage: 0 };
+  const held = { left: false, right: false, stage: false, throttle: false };
+  const hold = { left: 0, right: 0, stage: 0, throttle: 0 };
   const padPointers = new Map();
   const padButtons = {};
   const cam = { x: 0, y: 0, zoom: 1, punch: 0 };
@@ -93,7 +98,27 @@
   let flight = 0;
   let score = 0;
   let best = Number(window.SDArcade.storage.getItem(STORE) || 0);
-  let muted = true;
+  let muted = true; // stays true until the first Play press (browsers need a gesture before audio)
+  let muteChoice = null; // "1" = player muted, "0" = player unmuted, null = never chosen
+  try { muteChoice = window.SDArcade.storage.getItem("sd.arcade.muted"); } catch { muteChoice = null; }
+  let slowTarget = 1;
+  let timeScale = 1;
+  let freezeUntil = 0;
+  let callout = { text: "", t: 0 };
+  let calloutAt = 0;
+  let gusts = [];
+  let evt = null;
+  let load = 0;
+  let thrTime = 0;
+  let streak = 0;
+  let loadWarnTick = 0;
+  let pingTick = 0;
+  let gustSaid = -1;
+  let maxqSaid = false;
+  let hintStep = 0;
+  let dyn = false;
+  let autoThr = false;
+  const thrOn = () => dyn && (auto ? autoThr : held.throttle);
   let audio;
   let engine = null;
   let freshId = "";
@@ -211,11 +236,43 @@
       boostOff: 0,
       broken: false,
       flipDir: 1,
+      evOn: false,
+      evBias: 0,
     };
     debris.length = 0;
     booms.length = 0;
     failT = 0;
     burstT = 99;
+    dyn = arcade.mode !== "training" && !autopilot;
+    gusts = [];
+    evt = null;
+    load = 0;
+    thrTime = 0;
+    gustSaid = -1;
+    maxqSaid = false;
+    loadWarnTick = 0;
+    pingTick = 0;
+    autoThr = false;
+    if (dyn) {
+      const n = 1 + Math.floor(flight / 2) + (arcade.mode === "daily" ? 1 : 0);
+      for (let i = 0; i < n; i += 1) {
+        gusts.push({ t: 1.6 + simRandom() * Math.max(1, s.climb - 3.4), dir: simRandom() > 0.5 ? 1 : -1, str: 0.9 + simRandom() * 0.8, dur: 1.3, said: false });
+      }
+      if (flight >= 1) {
+        gusts.push({ t: s.climb * 0.47, dir: simRandom() > 0.5 ? 1 : -1, str: 1 + simRandom() * 0.6, dur: 1.3, said: false });
+      }
+      if (flight >= 2) {
+        gusts.push({ t: s.climb - 0.9, dir: simRandom() > 0.5 ? 1 : -1, str: 1 + simRandom() * 0.6, dur: 1.3, said: false });
+      }
+      gusts.sort((a, b) => a.t - b.t);
+      if (flight >= 1 || arcade.mode === "daily") {
+        let idx = 13 + Math.floor(simRandom() * 20);
+        for (let k = 0; k < 40 && stack.out.has(idx); k += 1) idx = 13 + ((idx - 12) % 20);
+        evt = { t: s.climb * (0.62 + simRandom() * 0.18), idx, done: false };
+      }
+    }
+    if (thrBtn) thrBtn.hidden = !dyn;
+    if (padEl) padEl.classList.toggle("has-throttle", dyn);
   }
 
   function setHeld(key, on) {
@@ -244,6 +301,7 @@
     setHeld("left", false);
     setHeld("right", false);
     setHeld("stage", false);
+    setHeld("throttle", false);
     hold.left = 0;
     hold.right = 0;
     hold.stage = 0;
@@ -413,6 +471,26 @@
     return buffer;
   }
 
+  function setMuted(v) {
+    muted = v;
+    muteChoice = v ? "1" : "0";
+    try { window.SDArcade.storage.setItem("sd.arcade.muted", muteChoice); } catch { /* storage is best-effort */ }
+    applyMute();
+  }
+
+  function buzz(pattern) {
+    if (muted || reduced || !navigator.vibrate) return;
+    try { navigator.vibrate(pattern); } catch { /* unsupported */ }
+  }
+
+  function say(text, ms = 2400, force = false) {
+    const now = performance.now();
+    if (!force && now - calloutAt < 1400) return;
+    calloutAt = now;
+    callout = { text, t: ms };
+    arcade.live(text);
+  }
+
   function applyMute() {
     if (!audio?.master) return;
     audio.master.gain.setTargetAtTime(muted ? 0 : 0.78, audio.currentTime, 0.04);
@@ -432,7 +510,13 @@
     audio = new Ctx();
     const master = audio.createGain();
     master.gain.value = muted ? 0 : 0.78;
-    master.connect(audio.destination);
+    const comp = audio.createDynamicsCompressor();
+    comp.threshold.value = -16;
+    comp.ratio.value = 4;
+    comp.attack.value = 0.004;
+    comp.release.value = 0.2;
+    master.connect(comp);
+    comp.connect(audio.destination);
     audio.master = master;
 
     const brown = audio.createBufferSource();
@@ -623,6 +707,27 @@
     toneAt(t + 0.08, 1480, 1100, 0.022, 0.12, "sine");
   }
 
+  function sfxGust() {
+    if (!audio || muted) return;
+    const t = audio.currentTime;
+    noiseAt(t, 0.9, 900, 0.07, 0.5, "pink");
+    toneAt(t, 300, 180, 0.02, 0.7, "sine");
+  }
+
+  function sfxEngineOut() {
+    if (!audio || muted) return;
+    const t = audio.currentTime;
+    noiseAt(t, 0.5, 500, 0.2, 0.5, "brown");
+    toneAt(t, 160, 40, 0.14, 0.6, "sawtooth");
+    toneAt(t + 0.05, 880, 880, 0.04, 0.12, "square");
+  }
+
+  function sfxPing(closeness) {
+    if (!audio || muted) return;
+    const f = 520 + clamp(closeness, 0, 1) * 700;
+    toneAt(audio.currentTime, f, f, 0.028, 0.06, "sine");
+  }
+
   function sfxStage() {
     if (!audio || muted) return;
     const t = audio.currentTime;
@@ -741,16 +846,39 @@
   }
 
   function startPlay() {
+    const retry = state === "fail";
+    if (muted && muteChoice !== "1") muted = false;
     ensureAudio();
     if (audio && audio.state === "suspended") audio.resume();
+    applyMute();
+    window.SDArcade.event(retry ? "game_retry" : "game_start");
+    window.SDArcade.visit();
+    slowTarget = 1;
+    timeScale = 1;
     demo=false;clearAllHolds();accumulator=0;last=0;
     const fromSuccess = state === "success";
     if (!fromSuccess) {
-      const c=arcade.loadCheckpoint();score=c.score;flight=c.flight;
+      const c=arcade.loadCheckpoint();score=c.score;flight=c.flight;streak=0;
     } else {
       flight += 1;
     }
     resetStack(false);
+    hintStep = -1;
+    if (dyn) {
+      const bits = [];
+      if (gusts.length) bits.push(`${gusts.length} gust${gusts.length > 1 ? "s" : ""}`);
+      if (evt) bits.push("a Raptor-out risk");
+      bits.push("Max-Q");
+      say(`Ahead: ${bits.join(", ")}.`, 4200, true);
+    } else if (flight === 0) {
+      let seen = 0;
+      try { seen = Number(window.SDArcade.storage.getItem("sd.arcade.staging.hints")) || 0; } catch { seen = 0; }
+      if (seen < 3) {
+        hintStep = 1;
+        say("Tap A or D to keep the stack level. Short taps are enough.", 5000, true);
+        try { window.SDArcade.storage.setItem("sd.arcade.staging.hints", String(seen + 1)); } catch { /* best-effort */ }
+      }
+    }
     result = "";
     countT = fromSuccess ? 2 : 3;
     countMark = Math.ceil(countT) + 1;
@@ -769,6 +897,13 @@
 
   function fail(kind) {
     if (state !== "boost" && state !== "window" && state !== "attract") return;
+    if (state !== "attract" && !demo) {
+      window.SDArcade.event(`game_fail_${kind}`);
+      buzz([120, 40, 160]);
+    }
+    if (!reduced) freezeUntil = performance.now() + 110;
+    slowTarget = 1;
+    timeScale = 1;
     stack.alive = false;
     stack.flipDir = stack.angle >= 0 ? 1 : -1;
     stack.broken = kind !== "late";
@@ -787,7 +922,7 @@
     }
     result = kind;
     state = "fail";
-    if(!demo)arcade.record({score,missions:flight,complete:false,medal:flight>=2?'silver':'bronze',title:'Launch review',copy:kind==='early'?'You fired before the ignition window opened. Wait for the Stage cue.':kind==='late'?'The ignition window expired. Stage as soon as the cue appears; aim for its midpoint.':kind==='walk'?'The stack leaned too far. Use shorter counter-steering taps and monitor the attitude instrument.':'The stack was too tilted at ignition. Level it before staging. Campaign retries preserve your checkpoint.'});
+    if(!demo)arcade.record({score,missions:flight,complete:false,medal:flight>=2?'silver':'bronze',title:'Launch review',copy:kind==='maxq'?'The structure passed its load limit in Max-Q. Hold Throttle through the band, then release.':kind==='early'?'You fired before the ignition window opened. Wait for the Stage cue.':kind==='late'?'The ignition window expired. Stage as soon as the cue appears; aim for its midpoint.':kind==='walk'?'The stack leaned too far. Use shorter counter-steering taps and monitor the attitude instrument.':'The stack was too tilted at ignition. Level it before staging. Campaign retries preserve your checkpoint.'});
     arcade.live('Launch ended. Read the debrief, then retry your mission.');
     submitRun();
     sfxFail(kind);
@@ -796,12 +931,14 @@
       early: "Early light",
       late: "Window closed",
       rud: "RUD",
+      maxq: "Max-Q breakup",
     };
     const lines = {
-      walk: "The stack leaned past recover. Super Heavy does not forgive a walk.",
-      early: "Ship lit in the dark. The booster bells were still in the way.",
-      late: "The window closed. One vehicle, too long, still stacked.",
-      rud: "Tilted in the fire. The bells ate each other.",
+      walk: "The stack leaned past recover. Super Heavy does not forgive a walk. Tip: short taps, steer against gusts.",
+      early: "Ship lit in the dark. The booster bells were still in the way. Tip: wait for STAGE NOW.",
+      late: "The window closed. One vehicle, too long, still stacked. Tip: stage as the needle enters the green.",
+      rud: "Tilted in the fire. The bells ate each other. Tip: level the stack before you stage.",
+      maxq: "The load passed the limit. Tip: hold Throttle (S) through Max-Q, then let go.",
     };
     const showDebrief = () => {
       if (state === "fail") showOverlay("No stage", titles[kind] || "RUD", lines[kind] || lines.rud, "Try again");
@@ -813,6 +950,12 @@
 
   function beginSep() {
     if (state !== "boost" && state !== "window" && state !== "attract") return;
+    if (!demo && state !== "attract") {
+      buzz([40, 30, 90]);
+    }
+    slowTarget = 1;
+    timeScale = 1;
+    if (!reduced) freezeUntil = performance.now() + 110;
     state = state === "attract" ? "attract-sep" : "sep";
     sepT = 0;
     shock = 0.02;
@@ -836,20 +979,38 @@
     const timing = clamp(1 - Math.abs(lastStageAt - center) / (s.window * 0.55), 0, 1);
     const upright = clamp(1 - Math.abs(stack.angle) / s.stageAngle, 0, 1);
     const perfect = timing > 0.82 && upright > 0.78;
-    const gained = Math.round(1000 + timing * 420 + upright * 300 + flight * 130 + (perfect ? 260 : 0));
+    streak = perfect ? streak + 1 : 0;
+    const bonuses = [];
+    let bonus = 0;
+    if (perfect && streak > 1) {
+      const b = Math.min(streak - 1, 4) * 100;
+      bonus += b;
+      bonuses.push(`streak x${streak} +${b}`);
+    }
+    if (dyn && thrTime > 0 && load < 0.9) {
+      bonus += 150;
+      bonuses.push("Max-Q managed +150");
+    }
+    if (evt && evt.done) {
+      bonus += 120;
+      bonuses.push("Raptor-out saved +120");
+    }
+    const bonusText = bonuses.length ? ` ${bonuses.join(" · ")}.` : "";
+    const gained = Math.round(1000 + timing * 420 + upright * 300 + flight * 130 + (perfect ? 260 : 0)) + bonus;
     score += gained;
     if (!demo && score > best) setBest(score);
     const limit=arcade.mode==='daily'?3:arcade.mode==='training'?1:6,complete=flight+1>=limit;
     if(demo){state='complete';score=0;showOverlay('Training demonstration','Now you try.','Counter the drift, watch for the cue, then stage near the middle of the window. Demonstrations do not save scores.','Take the controls');return;}
     state=complete?'complete':'success';
+    window.SDArcade.event('game_complete');
     arcade.checkpoint(complete?0:flight+1,complete?0:score);
-    arcade.record({score,missions:flight+1,complete,medal:perfect?'gold':timing>.45?'silver':'bronze',title:complete?'Mission set complete':'Separation confirmed',copy:'Timing '+Math.round(timing*100)+'% · attitude '+Math.round(upright*100)+'%. '+(complete?'Bring that precision to another mode.':'Your next campaign checkpoint is saved.')});
+    arcade.record({score,missions:flight+1,complete,medal:perfect?'gold':timing>.45?'silver':'bronze',title:complete?'Mission set complete':'Separation confirmed',copy:'Timing '+Math.round(timing*100)+'% · attitude '+Math.round(upright*100)+'%.'+bonusText+' '+(complete?'Bring that precision to another mode.':'Your next campaign checkpoint is saved.')});
     arcade.live(complete?'Mission set complete. Your score is saved.':'Separation confirmed. Advance to your next mission.');
     renderBoard();
     showOverlay(
       s.name,
       complete ? "Mission complete" : perfect ? "Clean light" : "Hot stage",
-      `Ship is flying. +${gained.toLocaleString()}  ·  Run ${score.toLocaleString()}`,
+      `Ship is flying. +${gained.toLocaleString()}  ·  Run ${score.toLocaleString()}${bonusText}`,
       complete ? "Fly again" : "Next mission"
     );
   }
@@ -888,9 +1049,10 @@
   function applyAttitude(dt, { wind = true, gimbal = GIMBAL, angleCap = 0.7 } = {}) {
     const s = spec();
     const steer = tiltCurve(hold.right) - tiltCurve(hold.left);
-    stack.av += steer * gimbal * dt;
+    stack.av += steer * gimbal * (thrOn() ? 0.65 : 1) * dt;
     if (wind) {
       stack.av += (s.wind * windGust * WIND_AV + stack.outBias * s.engineOut * ENGINE_AV) * dt;
+      if (stack.evOn) stack.av += stack.evBias * ENGINE_AV * 1.1 * dt;
     }
     const restore = Math.abs(steer) < 0.06 ? RESTORE_IDLE : RESTORE_STEER;
     stack.av -= stack.angle * restore * dt;
@@ -904,6 +1066,8 @@
     hold.left = want < -0.04 ? clamp((-want - 0.02) / 0.55, 0, 1) : 0;
     hold.right = want > 0.04 ? clamp((want - 0.02) / 0.55, 0, 1) : 0;
     const s = spec();
+    const q = tPlay / s.climb;
+    autoThr = dyn && q >= MAXQ_FROM && q <= MAXQ_TO && load > 0.3;
     if ((state === "window" || state === "attract") && tPlay >= s.climb + s.window * 0.46 && tPlay <= s.climb + s.window) {
       tryStage();
     }
@@ -1008,6 +1172,12 @@
     else tickHold(dt);
 
     windGust = lerp(windGust, (-1 + simRandom()*2), 0.018);
+    if (dyn && (state === "boost" || state === "window")) {
+      gusts.forEach((g) => {
+        const u = tPlay - g.t;
+        if (u >= 0 && u <= g.dur) stack.av += g.dir * g.str * Math.sin((Math.PI * u) / g.dur) * GUST_AV * dt;
+      });
+    }
     applyAttitude(dt);
 
     stack.vx += Math.sin(stack.angle) * 0.0034 * dt + s.wind * windGust * 0.0011 * dt;
@@ -1015,7 +1185,8 @@
     stack.x += stack.vx * dt * 0.06;
     stack.x = clamp(stack.x, -86, 86);
     stack.alt += stack.vy * dt * 0.00105;
-    tPlay += dt / 1000;
+    tPlay += (dt / 1000) * (thrOn() ? 0.6 : 1);
+    if (stepEvents(dt)) return;
 
     emitClimbFx();
     tickAudio();
@@ -1035,6 +1206,7 @@
       if (!windowChimed && state === "window") {
         windowChimed = true;
         sfxWindow();
+        buzz(18);
         cam.punch = 0.16;
         flash = Math.max(flash, 0.45);
         shake = Math.max(shake, 6);
@@ -1052,6 +1224,69 @@
     if ((state === "window" || state === "attract") && tPlay > s.climb + s.window + 0.02) {
       fail("late");
     }
+  }
+
+  /* Gust telegraphs, Raptor-out, Max-Q load, proximity pings and coaching hints.
+     Returns true if the run ended this tick. */
+  function stepEvents(dt) {
+    if (state !== "boost" && state !== "window") return false;
+    const s = spec();
+    if (dyn) {
+      gusts.forEach((g) => {
+        const lead = g.t - tPlay;
+        if (!g.said && lead <= 1.25 && lead > 0) {
+          g.said = true;
+          sfxGust();
+          say(`Gust pushing ${g.dir > 0 ? "right" : "left"}. Steer ${g.dir > 0 ? "left" : "right"}.`, 2600, true);
+        }
+      });
+      if (evt && !evt.done && tPlay >= evt.t) {
+        evt.done = true;
+        stack.out.add(evt.idx);
+        stack.evOn = true;
+        stack.evBias = ENGINES[evt.idx].x >= 0 ? 1 : -1;
+        shake = Math.max(shake, 8);
+        flash = Math.max(flash, 0.5);
+        sfxEngineOut();
+        buzz([40, 30, 40]);
+        say(`Raptor out. It pulls the stack ${stack.evBias > 0 ? "right" : "left"}. Counter-steer.`, 3600, true);
+      }
+      const q = tPlay / s.climb;
+      const band = state === "boost" && q >= MAXQ_FROM && q <= MAXQ_TO;
+      const thr = thrOn();
+      load = clamp(load + (band ? (thr ? 0.05 : 0.46) : -0.14) * (dt / 1000), 0, 1.2);
+      if (thr) thrTime += dt / 1000;
+      if (!maxqSaid && q >= MAXQ_FROM - 0.06) {
+        maxqSaid = true;
+        say("Max-Q ahead. Hold Throttle (S) to cut the load.", 4200, true);
+      }
+      if (band && load > 0.72) {
+        loadWarnTick += 1;
+        if (loadWarnTick >= 16) {
+          loadWarnTick = 0;
+          sfxWarn();
+          buzz(12);
+        }
+        say("Load high. Throttle down!", 1800);
+      }
+      if (load >= 1) {
+        fail("maxq");
+        return true;
+      }
+    }
+    if (hintStep === 1 && state === "boost" && tPlay >= 2.5) {
+      hintStep = 2;
+      say("Watch the meter at the top. Stage inside the green zone.", 5000, true);
+    }
+    if (state === "window" && !demo && audio && !muted) {
+      const c = clamp(1 - Math.abs(tPlay - (s.climb + s.window * 0.5)) / (s.window * 0.5), 0, 1);
+      pingTick += 1;
+      if (pingTick >= Math.round(16 - 11 * c)) {
+        pingTick = 0;
+        sfxPing(c);
+      }
+    }
+    return false;
   }
 
   function stepParticles() {
@@ -1602,7 +1837,7 @@
       }
       const spool = state === "count" ? ignite : 1;
       if (stack.alive && (!stack.shipLit || sepT < 0.35) && spool > 0.04) {
-        drawBoosterPlume(ctx, flicker * spool);
+        drawBoosterPlume(ctx, flicker * spool * (thrOn() ? 0.62 : 1));
       }
       drawBooster(ctx, lod, night, 0);
       drawHotRing(ctx, heatAmt(), -80);
@@ -1639,6 +1874,86 @@
     ctx.restore();
   }
 
+  function drawGust(ctx) {
+    if (!dyn || !stack || (state !== "boost" && state !== "window")) return;
+    let best = null;
+    for (const g of gusts) {
+      const lead = g.t - tPlay;
+      if (lead > -g.dur && lead <= 1.25) {
+        const k = lead > 0 ? 1 - lead / 1.25 : 1;
+        if (!best || k > best.k) best = { g, k, active: lead <= 0 };
+      }
+    }
+    if (!best) return;
+    const { g, k, active } = best;
+    const dir = g.dir;
+    const ui = uiScale();
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const x0 = dir > 0 ? 0 : cssW;
+    const x1 = dir > 0 ? cssW * 0.34 : cssW * 0.66;
+    const tint = ctx.createLinearGradient(x0, 0, x1, 0);
+    tint.addColorStop(0, `rgba(255,200,120,${0.3 * k})`);
+    tint.addColorStop(1, "rgba(255,200,120,0)");
+    ctx.fillStyle = tint;
+    ctx.fillRect(Math.min(x0, x1), 0, Math.abs(x1 - x0), cssH);
+    ctx.globalCompositeOperation = "lighter";
+    ctx.strokeStyle = active ? "#ffffff" : "#ffd9a0";
+    ctx.lineWidth = 2 * ui;
+    ctx.lineCap = "round";
+    for (let i = 0; i < 7; i += 1) {
+      const y = cssH * (0.24 + 0.5 * ((i * 0.618) % 1));
+      const ph = (clock * 0.0016 * (active ? 1.7 : 1) + i * 0.37) % 1;
+      const x = dir > 0 ? ph * cssW : (1 - ph) * cssW;
+      const len = (26 + (i % 3) * 14) * ui;
+      ctx.globalAlpha = Math.min(1, k) * (0.2 + 0.5 * Math.sin(ph * Math.PI));
+      ctx.beginPath();
+      ctx.moveTo(x - dir * len, y);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x - dir * 6 * ui, y - 5 * ui);
+      ctx.lineTo(x, y);
+      ctx.lineTo(x - dir * 6 * ui, y + 5 * ui);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = "source-over";
+    ctx.restore();
+  }
+
+  function drawCalloutPill(ctx) {
+    if (callout.t <= 0 || !callout.text) return;
+    const ui = uiScale();
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalAlpha = Math.min(1, callout.t / 400);
+    ctx.font = `600 ${12.5 * ui}px ${MONO}`;
+    ctx.textAlign = "left";
+    const maxW = Math.min(cssW * (cssW < 600 ? 0.36 : 0.46), 330 * ui);
+    const lines = [];
+    let cur = "";
+    callout.text.split(" ").forEach((word) => {
+      const next = cur ? `${cur} ${word}` : word;
+      if (cur && ctx.measureText(next).width > maxW) {
+        lines.push(cur);
+        cur = word;
+      } else cur = next;
+    });
+    if (cur) lines.push(cur);
+    const w = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 24 * ui;
+    const h = 12 * ui + lines.length * 18 * ui;
+    const x = 12 * ui;
+    const y = cssH * 0.7 + 8 * ui;
+    ctx.fillStyle = "rgba(8,14,24,0.74)";
+    ctx.fillRect(x, y, w, h);
+    ctx.fillStyle = "#ffb454";
+    ctx.fillRect(x, y, 3 * ui, h);
+    ctx.fillStyle = "#e9f6fa";
+    lines.forEach((l, i) => ctx.fillText(l, x + 12 * ui, y + 8 * ui + (i + 1) * 17 * ui - 4 * ui));
+    ctx.restore();
+  }
+
   function drawHud(ctx) {
     if (!stack || !fx) return;
     if (!(state === "count" || state === "boost" || state === "window" || state === "sep" || state === "pause")) return;
@@ -1659,6 +1974,12 @@
     ctx.font = `500 ${8.5 * ui}px ${MONO}`;
     ctx.fillStyle = "rgba(220,232,246,0.6)";
     ctx.fillText("VELOCITY", cssW - 14 * ui, cssH * 0.2 - 8 * ui);
+    if (dyn && (state === "boost" || state === "window") && stack.alive) {
+      const q = tPlay / s.climb;
+      if (load > 0.02 || (q > MAXQ_FROM - 0.16 && q < MAXQ_TO + 0.12)) {
+        fx.drawLoadBar(ctx, { x: cssW - 14 * ui - 118 * ui, y: cssH * 0.2 + 34 * ui, wd: 118 * ui, load, ui, thr: thrOn(), band: q >= MAXQ_FROM && q <= MAXQ_TO });
+      }
+    }
     if ((state === "boost" || state === "window") && stack.alive) {
       fx.drawWindowMeter(ctx, {
         cx: cssW * 0.5,
@@ -1831,8 +2152,10 @@
       ctx.fillRect(0, 0, cssW, cssH);
     }
 
+    drawGust(ctx);
     drawHud(ctx);
     drawCallouts(ctx);
+    drawCalloutPill(ctx);
   }
 
   function drawCallouts(ctx) {
@@ -1905,7 +2228,8 @@
 
   function frame(now) {
     if(!last)last=now;const elapsed=Math.max(0,Math.min(100,now-last));last=now;
-    if(state!=="pause" && !document.hidden){accumulator+=elapsed;while(accumulator>=1000/60){const dt=1000/60;clock+=dt;step(dt);stepParticles();stepFx(dt);followCam();shake*=.86;flash*=.9;accumulator-=dt;}}
+    timeScale+=(slowTarget-timeScale)*0.15;if(callout.t>0)callout.t-=elapsed;
+    if(state!=="pause" && !document.hidden){accumulator+=performance.now()<freezeUntil?0:elapsed*timeScale;while(accumulator>=1000/60){const dt=1000/60;clock+=dt;step(dt);slowTarget=(!reduced&&!demo&&state==="window")?0.62:1;stepParticles();stepFx(dt);followCam();shake*=.86;flash*=.9;accumulator-=dt;}}
     else accumulator=0;
     if(reduced){shake=0;flash=0;}
     drawWorld(canvas.getContext("2d"));updateHud();requestAnimationFrame(frame);
@@ -1969,6 +2293,9 @@
     A: "left",
     D: "right",
     " ": "stage",
+    ArrowDown: "throttle",
+    s: "throttle",
+    S: "throttle",
   };
 
   function startPlayResume() {
@@ -2011,12 +2338,17 @@
       return;
     }
     if (e.key === "m" || e.key === "M") {
-      muted = !muted;
-      applyMute();
+      ensureAudio();
+      setMuted(!muted);
+      return;
+    }
+    if ((e.key === "r" || e.key === "R") && (state === "fail" || state === "success" || state === "complete")) {
+      startPlay();
       return;
     }
     const mapped = keyMap[e.key];
     if (!mapped) return;
+    if (mapped === "throttle" && !(dyn && (state === "count" || state === "boost" || state === "window"))) return;
     e.preventDefault();
     setHeld(mapped, true);
     if (mapped === "stage") {
@@ -2040,8 +2372,7 @@
 
   muteBtn?.addEventListener("click", () => {
     ensureAudio();
-    muted = !muted;
-    applyMute();
+    setMuted(!muted);
   });
 
   playBtn?.addEventListener("click", () => {
@@ -2068,7 +2399,7 @@
 
   window.addEventListener("blur", ()=>{clearAllHolds();if(["count","boost","window","sep"].includes(state))arcadePause();});
   function arcadePause(){if(state==='pause')startPlayResume();else if(['count','boost','window','sep'].includes(state)){pausedFrom=state;clearAllHolds();state='pause';setEngine(0);showOverlay('Paused','Mission on hold.','Your launch is paused. Resume when you are ready.','Resume');}}
-  const arcade=window.SDArcade.mount('staging',{reset(){demo=false;clearAllHolds();setEngine(0);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();muted=!muted;applyMute();return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the timing and attitude; no score will be saved.');}});
+  const arcade=window.SDArcade.mount('staging',{reset(){demo=false;clearAllHolds();setEngine(0);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();setMuted(!muted);return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the timing and attitude; no score will be saved.');}});
   window.addEventListener("resize", resize);
   resize();
   beginAttract();
@@ -2099,6 +2430,9 @@
     submitRun,
     renderBoard,
     muted: () => muted,
+    load: () => load,
+    gusts: () => gusts.map((g) => ({ t: g.t, dir: g.dir })),
+    event: () => (evt ? { t: evt.t, done: evt.done } : null),
     keysLocked: () => keysLocked,
     typing: () => typingNow({}),
     spec,

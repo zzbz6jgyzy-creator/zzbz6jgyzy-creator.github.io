@@ -1,6 +1,6 @@
 (function(){'use strict';const M=window.SDArcadeModel,KEY='sd-arcade-profile-v2',memory=new Map(),failed=new Set();let persistent=true;
 const storage={getItem(k){if(failed.has(k))return memory.get(k)??null;try{return localStorage.getItem(k)??memory.get(k)??null;}catch{persistent=false;return memory.get(k)??null;}},setItem(k,v){memory.set(k,String(v));try{localStorage.setItem(k,String(v));failed.delete(k);}catch{persistent=false;failed.add(k);}},removeItem(k){memory.delete(k);try{localStorage.removeItem(k);failed.delete(k);}catch{persistent=false;failed.add(k);}}};
-const EVT=new Set(['game_start','game_retry','game_complete','game_fail_tower','game_fail_splash','game_fail_rud','game_return_d1']);
+const EVT=new Set(['game_start','game_retry','game_complete','game_fail_tower','game_fail_splash','game_fail_rud','game_fail_walk','game_fail_early','game_fail_late','game_fail_maxq','game_return_d1']);
 /* Anonymous counters only: event name + page path, no IDs. Day-1 return uses a local date, never sent. */
 function event(n){if(!EVT.has(n))return;try{const u='https://sd-events.superchargeddaily.workers.dev/e?n='+n+'&p='+encodeURIComponent(location.pathname);if(!(navigator.sendBeacon&&navigator.sendBeacon(u)))fetch(u,{method:'POST',mode:'no-cors',keepalive:true});}catch{}}
 function visit(){const day=d=>d.toISOString().slice(0,10),now=new Date(),t=day(now),y=day(new Date(now-864e5)),p=storage.getItem('sd.arcade.lastplay');if(p===t)return;storage.setItem('sd.arcade.lastplay',t);if(p===y)event('game_return_d1');}
