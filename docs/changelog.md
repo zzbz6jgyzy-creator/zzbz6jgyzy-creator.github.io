@@ -7,7 +7,7 @@
 - Launch calendar keeps the last ~45 days from Launch Library 2’s previous-launches feed (one extra hourly call). Backfilled Crew-13, Transporter-18 and Falcon Heavy NROL-97; Starlink 15-16 shows as launched; CRS-35 / Starlink 15-25 / SDA T1TL-A stored times match LL2.
 - Starship Flight 16 is a December 2026 reported target (NASASpaceflight), labelled as reporting rather than a SpaceX date.
 - Roadster “Latest stories” card titles are past-tense. Data-push workflows share a `data-push-main` concurrency group and use `scripts/ci-push-retry.sh`.
-- Calendar studio tests pick the next upcoming Starlink instead of flown 15-16. Homepage live.js keeps the prerendered next-stream card when the title matches, so the 320px CLS check stays under 0.1.
+- Calendar studio tests pick the next upcoming Starlink instead of flown 15-16. Homepage live.js never remounts the prerendered next-stream card unless something is actually live, and LL2 rows that have already reached NET are dropped so they cannot appear as a “Live now” card.
 
 ## 27 Oct 2026 — Write articles in Markdown
 

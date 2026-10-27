@@ -22,7 +22,7 @@ async def main():
     f=ROOT/rel
     if f.is_file()and ROOT in f.resolve().parents:return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0]or'application/octet-stream')
     return await r.abort()
-   await context.route('**/*',route);await page.goto(SITE+'/',wait_until='domcontentloaded');await page.wait_for_timeout(500);await page.evaluate('document.fonts.ready')
+   await context.route('**/*',route);await page.clock.set_fixed_time('2026-10-28T12:00:00Z');await page.goto(SITE+'/',wait_until='domcontentloaded');await page.wait_for_timeout(500);await page.evaluate('document.fonts.ready')
    assert await page.locator('h1').count()==1
    if width<=600:
     boxes=[await page.locator(s).bounding_box() for s in ['.hs-hero h1','.hv-pitch','.hv-start','#newsletter','.hs-hero-visual','.hs-stories']]

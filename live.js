@@ -28,7 +28,8 @@
       if (!r.net || /starship/i.test(r.name) || !/^(SEC|MIN|HR|HOUR|DAY)?$/.test(p) || /^(Success|Failure|Partial Failure)$/.test(s)) return null;
       var t = new Date(r.net).getTime();
       // scrubbed / on hold / TBD, already lifted off, or timed NET passed 30+ min without lift-off
-      if (/^(Hold|TBD)$/.test(s) || (s === 'In Flight' && now - t >= 0) || (/^(SEC|MIN)?$/.test(p) && s !== 'In Flight' && now - t > H / 2)) return null;
+      // Past NET or already lifting off is not a homepage live card.
+      if (/^(Hold|TBD)$/.test(s) || now - t >= 0 || (/^(SEC|MIN)?$/.test(p) && now - t > H / 2)) return null;
       if (have.some(function (e) { return e.page === 'starship' && Math.abs(new Date(e.start) - t) < 6 * H; })) return null;
       var day = p === 'DAY';
       return { id: 'll2-' + r.id, page: 'starship', title: rocket + ' \u00b7 ' + mission.replace(/^Starlink Group /, 'Starlink '),
@@ -159,14 +160,15 @@
     var next = feat || future.filter(function (e) { return !e.timeTbc && !e.net; })[0] || future[0]; // TBC/NET only if nothing timed
     var e = live || next;
     var pre = document.querySelector('section.lv[data-prebuilt]');
-    var preTitle = pre && pre.querySelector('.lw-title');
-    // Keep the prerendered homepage card when it is already the same next event.
-    // Removing and remounting it is a layout shift on the 320px first screen.
-    if (!live && pre && e && preTitle && preTitle.textContent === e.title) {
+    // Never tear down the prerendered next-stream card for a quiet update.
+    // Removing it is a layout shift on the 320px first screen after the mobile reorder.
+    if (!live && pre) {
+      var titleEl = pre.querySelector('.lw-title');
+      if (e && titleEl) titleEl.textContent = e.title;
       var count = pre.querySelector('.lh-next-countdown');
-      if (count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
+      if (e && count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
       var leftover = document.querySelector('section.lv:not([data-prebuilt])'); if (leftover) leftover.remove();
-      var stay = !e.timeTbc && !e.net ? new Date(e.start) - H / 2 - now : 0;
+      var stay = e && !e.timeTbc && !e.net ? new Date(e.start) - H / 2 - now : 0;
       if (stay > 0 && stay < 864e5 && !q.get('livenow')) setTimeout(run, stay + 1e3);
       return;
     }
