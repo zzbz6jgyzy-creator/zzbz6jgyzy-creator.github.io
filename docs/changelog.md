@@ -7,7 +7,7 @@
 - **Timeline:** 19 dated moments from 2021 to the 2027 targets, filterable by kind.
 - **Promises vs reality:** seven dated commitments checked: 2 kept, 1 missed, 1 not shown, 3 open.
 - **The field:** Atlas, Figure 03, Digit, NEO and Unitree G1 in their makers' own words, next to Optimus.
-- Three more evidence records (Tesla Diner, kung fu, running), 14 FAQs, 38 sources (all opened on 27 Oct 2026), BreadcrumbList, and a fix for the literal `${reviewDate}` in the sources header.
+- Three more evidence records (Tesla Diner, kung fu, running), 14 FAQs, 38 sources (22 new or rechecked on 27 Oct 2026), BreadcrumbList, and a fix for the literal `${reviewDate}` in the sources header.
 
 ## 27 Oct 2026 — Robotaxi Boss: sound, phone and results (PR 3 of 3)
 

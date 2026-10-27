@@ -9,7 +9,7 @@
     "deliverySource": "call",
     "price": "No price published",
     "priceSource": "call",
-    "description": "Tesla says production began on its high-volume Fremont line in the third quarter. It has not said how many robots it has built, has not unveiled Gen 3 and has not published a price. Deliveries to other companies are a late-2027 target."
+    "description": "Tesla said on 21 October 2026 that production had begun on its high-volume Fremont line. It has not said how many robots it has built, has not unveiled Gen 3 and has not published a price. Deliveries to other companies are a late-2027 target."
   },
   "sources": [
     {
@@ -631,7 +631,7 @@
     },
     {
       "question": "When can I buy one?",
-      "answer": "Not yet. On the Q3 2026 call, Musk said deliveries to other companies should start toward the end of 2027, with industrial users first. Home robots come later as production grows. These are targets, not dates.",
+      "answer": "Not yet. On the Q3 2026 call, Musk said he expects deliveries to companies outside Tesla around the end of 2027, with industrial users first. Home robots come later as production grows. These are targets, not dates.",
       "sources": [
         "call",
         "nata_prod"
@@ -648,7 +648,7 @@
     },
     {
       "question": "What is Gen 3?",
-      "answer": "Tesla’s January 2026 update called Gen 3 “our first design meant for mass production”, with a new hand. Production began on that design, but Tesla has not formally unveiled it. Renders leaked from Tesla’s app in September 2026 and are unconfirmed.",
+      "answer": "Tesla’s January 2026 update called Gen 3 “our first design meant for mass production”, with a new hand. Not a Tesla App reports that the Fremont line builds that design; Tesla has not formally unveiled it. Renders leaked from Tesla’s app in September 2026 and are unconfirmed.",
       "sources": [
         "ir2025",
         "nata_prod",
@@ -686,7 +686,7 @@
     },
     {
       "question": "How does Optimus learn?",
-      "answer": "Ashok Elluswamy, who leads Tesla’s AI software, said in October 2026 that Optimus first learns by watching people do a task, then practises it, and that Tesla does not use exoskeletons to puppet the robot. Tesla also hires operators to record motion-capture data.",
+      "answer": "Ashok Elluswamy, who leads Tesla’s AI software, said in October 2026 that Optimus has to learn by watching people do a task and then practising it, because, unlike the car fleet, there is no exoskeleton for people to get into and puppet the robot. Tesla also hires operators to record motion-capture data.",
       "sources": [
         "call",
         "training"
@@ -833,7 +833,7 @@
       "value": "Late 2027",
       "unit": "",
       "label": "Outside customers",
-      "detail": "Deliveries to other companies “towards the end of next year”, industrial users first.",
+      "detail": "Musk expects deliveries to companies outside Tesla around the end of 2027, with industrial users first.",
       "status": "target",
       "source": "call",
       "asOf": "2026-10-21"
@@ -922,9 +922,20 @@
           "source": "ir2025"
         },
         "gen3": {
-          "value": "First design meant for mass production; in early production",
+          "value": "Tesla’s “first design meant for mass production”",
           "status": "disclosed",
-          "source": "q3"
+          "source": "ir2025"
+        }
+      }
+    },
+    {
+      "id": "production",
+      "label": "In production",
+      "cells": {
+        "gen3": {
+          "value": "Reported as the design on the Fremont line",
+          "status": "reported",
+          "source": "nata_prod"
         }
       }
     },
@@ -1170,7 +1181,7 @@
       "date": "2025-10-04",
       "type": "demo",
       "title": "Kung fu in the lab",
-      "body": "A real-time sparring clip. Musk says the movement is AI-driven, not teleoperated.",
+      "body": "A sparring clip from Tesla’s lab. Musk says the movement is AI-driven, not teleoperated; that is unverified.",
       "sources": [
         "kungfu"
       ]
@@ -1254,17 +1265,19 @@
       "body": "Musk’s target for the next computer: “approximately April of next year”.",
       "sources": [
         "call"
-      ]
+      ],
+      "display": "About Apr 2027"
     },
     {
       "id": "t-2027-deliveries",
       "date": "2027-12-31",
       "type": "target",
       "title": "First outside customers",
-      "body": "Musk’s target: deliveries to other companies toward the end of 2027.",
+      "body": "Musk’s target: deliveries to companies outside Tesla around the end of 2027.",
       "sources": [
         "call"
-      ]
+      ],
+      "display": "Late 2027"
     }
   ],
   "promises": [
@@ -1278,7 +1291,8 @@
       "sources": [
         "tc21",
         "ai2022"
-      ]
+      ],
+      "quote": false
     },
     {
       "id": "p-price-2022",
@@ -1289,19 +1303,22 @@
       "result": "No price has been published.",
       "sources": [
         "engadget22"
-      ]
+      ],
+      "quote": false
     },
     {
       "id": "p-thousands",
       "said": "2025-06-07",
-      "claim": "Thousands of robots in Tesla facilities by the end of 2025",
+      "claim": "Thousands of robots working in Tesla facilities by the end of 2025",
       "due": "End of 2025",
       "outcome": "unverified",
       "result": "Tesla has not published a count of robots at work.",
       "sources": [
         "kovac",
         "ir2025"
-      ]
+      ],
+      "quote": false,
+      "reported": true
     },
     {
       "id": "p-gen3",
@@ -1313,7 +1330,8 @@
       "sources": [
         "ir2025",
         "leak"
-      ]
+      ],
+      "quote": false
     },
     {
       "id": "p-sop",
@@ -1325,7 +1343,8 @@
       "sources": [
         "ir2025",
         "q3"
-      ]
+      ],
+      "quote": false
     },
     {
       "id": "p-ramp",
@@ -1336,7 +1355,8 @@
       "result": "Early ramp; no volume disclosed.",
       "sources": [
         "call"
-      ]
+      ],
+      "quote": false
     },
     {
       "id": "p-customers",
@@ -1347,7 +1367,8 @@
       "result": "Not yet due.",
       "sources": [
         "call"
-      ]
+      ],
+      "quote": false
     }
   ],
   "field": [
@@ -1403,7 +1424,7 @@
       "id": "g1",
       "name": "G1",
       "maker": "Unitree",
-      "status": "The lowest listed price",
+      "status": "Lists a price",
       "facts": [
         "From US$13.5K before tax and shipping",
         "1.32 m tall, about 35 kg",
