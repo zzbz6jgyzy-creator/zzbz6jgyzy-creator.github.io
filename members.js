@@ -87,11 +87,13 @@ function installNav() {
 }
 
 function voteButton(article, id, data, target) {
-  const count=el('span',{},data.likes||0), button=el('button',{type:'button',class:'sdm-vote','aria-pressed':String(!!data.liked),'aria-label':id?'Thumbs up this comment':'Thumbs up this article'},thumb(),count);
+  const count=el('span',{},data.likes||0), button=el('button',{type:'button',class:'sdm-vote','aria-pressed':String(!!data.liked),},thumb(),count);
+  const noun=id?'comment':'article', label=()=>`${count.textContent} Thumbs up this ${noun}`;
+  button.setAttribute('aria-label',label());
   button.addEventListener('click',()=>{
     if(!canParticipate(target))return;
     const active=button.getAttribute('aria-pressed')!=='true';
-    busy(button,async()=>{const r=await rpc('sd_vote',{p_article:article,p_active:active,p_comment:id});button.setAttribute('aria-pressed',String(r.liked));count.textContent=r.likes;status(target,r.liked?'Thumbs-up added.':'Thumbs-up removed.');},target);
+    busy(button,async()=>{const r=await rpc('sd_vote',{p_article:article,p_active:active,p_comment:id});button.setAttribute('aria-pressed',String(r.liked));count.textContent=r.likes;button.setAttribute('aria-label',label());status(target,r.liked?'Thumbs-up added.':'Thumbs-up removed.');},target);
   });return button;
 }
 function composer(article, parent, afterSave) {

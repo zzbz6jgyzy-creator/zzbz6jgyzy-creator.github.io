@@ -171,6 +171,8 @@ async def main():
        await page.get_by_role('button',name='Save profile',exact=True).click()
        await page.get_by_text('Your profile is saved',exact=True).wait_for()
        await page.wait_for_function("document.activeElement.classList.contains('sdm-profile-success')")
+       # focus scrolls the message into view; wait for the scroll to settle before measuring (this raced and flaked)
+       await page.wait_for_function("(()=>{const r=document.querySelector('.sdm-profile-success').getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight})()",timeout=3000)
        box=await page.locator('.sdm-profile-success').bounding_box();height=await page.evaluate('innerHeight')
        assert box and box['y']>=0 and box['y']+box['height']<=height
        await page.get_by_role('heading',name='Your member profile').wait_for();assert any(m=='sd_set_profile' for m,a in calls)

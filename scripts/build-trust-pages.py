@@ -140,6 +140,9 @@ def run():
     src = open(os.path.join(ROOT, "about.html"), encoding="utf-8").read()
     for rel, spec in PAGES.items():
         path = os.path.join(ROOT, rel)
+        # Hand-built pages on the ps-page template (the Author profile) are not regenerated from the shared clone
+        if os.path.exists(path) and 'class="ps-page' in open(path, encoding="utf-8").read():
+            continue
         html = fill(src, spec)
         if not os.path.exists(path) or open(path, encoding="utf-8").read() != html:
             open(path, "w", encoding="utf-8").write(html)

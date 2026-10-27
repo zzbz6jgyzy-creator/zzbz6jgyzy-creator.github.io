@@ -62,7 +62,17 @@
   margin: 1.25rem 0 0.85rem;
 }
 
+/* The stage is a dark game panel in both themes: pin the dark tokens locally. */
 .taxi-stage {
+  --ink: #ecece8;
+  --ink-soft: #a7a9ae;
+  --mute: #a1a3aa;
+  --red-text: #f23a52;
+  --line: rgba(236, 236, 232, 0.1);
+  --line-strong: rgba(236, 236, 232, 0.16);
+  --card: #14151a;
+  --hover-ink: #fff;
+  color: var(--ink);
   position: relative;
   border: 1px solid rgba(230, 195, 106, 0.22);
   border-radius: var(--radius);
@@ -224,7 +234,7 @@
   gap: 0.28rem;
 }
 
-.taxi-zone h3 {
+.taxi-zone h2 {
   margin: 0;
   font-size: 1rem;
   letter-spacing: -0.02em;
@@ -558,7 +568,7 @@
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: #0e0f13;
+  background: var(--input-bg);
   color: var(--ink);
   font: inherit;
   font-size: 0.82rem;
