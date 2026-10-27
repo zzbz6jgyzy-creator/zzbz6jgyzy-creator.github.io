@@ -112,7 +112,10 @@ async def main():
             assert email_box['width'] >= 130, (width, 'Email field too narrow', email_box)
             button = await page.locator('#newsletter button[type=submit]').bounding_box()
             assert button['y'] >= 0 and button['y'] + button['height'] < 844, (width, 'First-screen signup', button)
-            assert not await page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), (width, theme, mode, 'Horizontal overflow')
+            if await page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'):
+                await preview(page, f'overflow-{width}-{theme}')
+                print('HOME_OVERFLOW',await page.evaluate('''() => [...document.querySelectorAll('body *')].map(e=>({tag:e.tagName,cls:e.className?.baseVal??e.className,x:e.getBoundingClientRect().x,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})).filter(e=>e.width&& (e.x < -1 || e.right > innerWidth + 1)).slice(0,30)'''),flush=True)
+                raise AssertionError((width,theme,mode,'Horizontal overflow'))
             if mode != 'nojs':
                 assert await page.evaluate('window.__homeCLS') < .1, (width, theme, 'Layout shift', await page.evaluate('[window.__homeCLS, window.__homeShifts]'))
             assert not any('.mp4' in u for u in requested), 'Homepage must not download autoplay films'
