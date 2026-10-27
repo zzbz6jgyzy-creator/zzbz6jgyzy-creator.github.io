@@ -54,6 +54,7 @@ async def main():
   cases=[]
   for width in [320,390,768,1024,1440]:
    c,page,errors,requests=await context(width);assert await page.locator('h1').count()==1;assert await page.evaluate('window.__geoCalls')==0;assert not any('api.weather.gov'in r or'open-meteo'in r or'll.thespacedevs.com'in r for r in requests)
+   await page.wait_for_function("document.querySelector('.lv-cinematic img').complete && document.querySelector('.lv-cinematic img').naturalWidth>0")
    await expect(page.locator('#lv-mission-bar')).not_to_be_empty()
    await expect(page.locator('#lv-readiness')).not_to_be_empty()
    await expect(page.locator('#lv-prep-clock')).not_to_be_empty()
