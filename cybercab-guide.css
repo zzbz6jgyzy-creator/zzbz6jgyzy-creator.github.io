@@ -88,5 +88,5 @@ html[data-theme=light] .cg{color-scheme:dark}
 .cg-ledger li{break-inside:avoid;padding:0 0 14px}.cg-ledger li span{display:block;font-size:.72rem;color:var(--cg-muted)}.cg-ledger a{color:#e3e8ef;text-underline-offset:3px}
 @media(max-width:1000px){.cg-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.cg-promises{grid-template-columns:1fr}}
 @media(max-width:700px){.cg{margin-top:12px;border-radius:16px}.cg-hero{padding:48px 6% 30px}.cg-section{padding:56px 6%}.cg-metrics{grid-template-columns:1fr}.cg-year{grid-template-columns:1fr;gap:6px}.cg-year>h3{position:static}.cg-ledger{columns:1}.cg-versions thead th{min-width:240px}}
-@media print{.cg{border:0;background:#fff;color:#000}.cg-filters,.cg-jump{display:none}}
+@media print{.cg,.cg *{background:#fff!important;color:#000!important;border-color:#999!important}.cg a{text-decoration:underline}.cg-filters,.cg-jump{display:none}}
 @media(prefers-reduced-motion:reduce){.cg *{scroll-behavior:auto!important;transition:none!important}}

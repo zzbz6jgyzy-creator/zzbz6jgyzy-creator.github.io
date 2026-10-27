@@ -23,6 +23,15 @@ test('status labels follow who said it: spec figures from outlets are never Disc
   assert.ok(d.versions.rows.filter(r=>r.id!=='status').every(r=>r.cells.customer===null),'customer column stays blank except the stated aim');
 });
 
+test('Disclosed only ever cites a Tesla or regulator document, never a news report',()=>{
+  const kind=Object.fromEntries(d.sources.map(s=>[s.id,s.kind]));
+  const cites=x=>[x.source,...(x.also||[])];
+  const ok=x=>x.status!=='disclosed'||kind[x.source]==='primary'||kind[x.source]==='regulator';
+  for(const m of d.metrics)assert.ok(ok(m),m.id);
+  for(const r of d.versions.rows)for(const x of Object.values(r.cells))if(x)assert.ok(ok(x),r.id);
+  assert.ok(cites({source:'a',also:['b']}).length===2);
+});
+
 test('validator rejects bad data',()=>{
   const bad=()=>structuredClone(d);
   let x=bad();x.metrics[0].source='nope';assert.throws(()=>M.validate(x,ids));

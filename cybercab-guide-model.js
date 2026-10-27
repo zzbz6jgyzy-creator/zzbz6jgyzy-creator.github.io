@@ -15,11 +15,11 @@ function validate(d,promiseIds){
  const ref=id=>ids.includes(id)||fail('unknown source '+id);
  const unique=(list,name)=>{if(new Set(list.map(x=>x.id)).size!==list.length)fail('duplicate '+name+' id');};
  for(const g of ['metrics','timeline','promises','evidence'])unique(d[g],g);
- for(const m of d.metrics){if(!status[m.status]||!day(m.asOf)||m.asOf>d.reviewed||!m.value||!m.label||!m.detail)fail('metric '+m.id);ref(m.source);}
+ for(const m of d.metrics){if(!status[m.status]||!day(m.asOf)||m.asOf>d.reviewed||!m.value||!m.label||!m.detail)fail('metric '+m.id);ref(m.source);(m.also||[]).forEach(ref);}
  for(const t of d.timeline){if(!day(t.date)||!types[t.type]||!t.title||!t.text)fail('event '+t.id);if(t.date>d.reviewed&&t.type!=='target')fail('future event '+t.id);if(t.type==='target'&&t.date>d.reviewed&&!t.display&&!t.date)fail('target date');ref(t.source);}
  const sorted=d.timeline.every((t,i)=>!i||d.timeline[i-1].date<=t.date);if(!sorted)fail('timeline order');
  const cols=d.versions.columns.map(c=>c.id);
- for(const r of d.versions.rows){for(const c of cols){const cell=r.cells[c];if(cell===undefined)fail('missing cell '+r.id+'/'+c);if(cell){if(!status[cell.status]||!day(cell.asOf)||!cell.value)fail('cell '+r.id+'/'+c);ref(cell.source);}}}
+ for(const r of d.versions.rows){for(const c of cols){const cell=r.cells[c];if(cell===undefined)fail('missing cell '+r.id+'/'+c);if(cell){if(!status[cell.status]||!day(cell.asOf)||!cell.value)fail('cell '+r.id+'/'+c);ref(cell.source);(cell.also||[]).forEach(ref);}}}
  for(const f of d.faqs){if(!f.q||!f.a||!f.sources?.length)fail('faq');f.sources.forEach(ref);}
  for(const e of d.evidence){ref(e.source);if(!e.embed||!/^\d+$/.test(e.embed.id)||!/^\w+$/.test(e.embed.user))fail('embed');}
  if(promiseIds)for(const p of d.promises)if(!promiseIds.includes(p.id))fail('promise not in ledger: '+p.id);
