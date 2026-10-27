@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-27",
+  "sources": [
+    {
+      "id": "q1-update",
+      "outlet": "Tesla",
+      "kind": "primary",
+      "title": "Tesla Q1 2026 Update (shareholder deck)",
+      "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q1-2026-Update.pdf",
+      "date": "2026-04-22",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "q2-update",
+      "outlet": "Tesla",
+      "kind": "primary",
+      "title": "Tesla Q2 2026 Update (shareholder deck)",
+      "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf",
+      "date": "2026-07-22",
+      "checked": "2026-10-27"
+    },
+    {
+      "id": "q3-update",
+      "outlet": "Tesla",
+      "kind": "primary",
+      "title": "Tesla Q3 2026 Update (shareholder deck)",
+      "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
+      "date": "2026-10-21",
+      "checked": "2026-10-27"
+    }
+  ],
+  "kpis": [
+    {
+      "id": "subs",
+      "label": "Active FSD subscriptions",
+      "value": "1.74M",
+      "unit": "Q3 2026",
+      "detail": "Up 67% on a year earlier (1.04M in Q3 2025). Tesla's footnote: the count includes upfront payments and monthly subscriptions and excludes free trials.",
+      "status": "disclosed",
+      "asOf": "2026-09-30",
+      "source": "q3-update"
+    },
+    {
+      "id": "attach",
+      "label": "North America attach rate",
+      "value": ">75%",
+      "unit": "of new deliveries",
+      "detail": "Share of new vehicle deliveries in North America that include FSD (Supervised), Q3 2026. Tesla calls it a nearly twenty percentage point rise on the quarter before.",
+      "status": "disclosed",
+      "asOf": "2026-09-30",
+      "source": "q3-update"
+    },
+    {
+      "id": "europe",
+      "label": "Europe: customers using FSD",
+      "value": ">100,000",
+      "unit": "since approval",
+      "detail": "Tesla says over 100,000 customers in nine EU countries have logged more than 160 million kilometres since initial approval.",
+      "status": "disclosed",
+      "asOf": "2026-10-21",
+      "source": "q3-update"
+    },
+    {
+      "id": "markets",
+      "computed": "markets",
+      "label": "Markets where Tesla lists FSD",
+      "unit": "supervised, not unsupervised"
+    }
+  ],
+  "adoption": {
+    "title": "Active FSD subscriptions by quarter",
+    "points": [
+      {
+        "id": "q1-25",
+        "label": "Q1 25",
+        "end": "2025-03-31",
+        "subs": 0.85,
+        "deliveries": 7.6,
+        "source": "q1-update"
+      },
+      {
+        "id": "q2-25",
+        "label": "Q2 25",
+        "end": "2025-06-30",
+        "subs": 0.95,
+        "deliveries": 8.0,
+        "source": "q2-update"
+      },
+      {
+        "id": "q3-25",
+        "label": "Q3 25",
+        "end": "2025-09-30",
+        "subs": 1.04,
+        "deliveries": 8.5,
+        "source": "q3-update"
+      },
+      {
+        "id": "q4-25",
+        "label": "Q4 25",
+        "end": "2025-12-31",
+        "subs": 1.1,
+        "deliveries": 8.9,
+        "source": "q3-update"
+      },
+      {
+        "id": "q1-26",
+        "label": "Q1 26",
+        "end": "2026-03-31",
+        "subs": 1.28,
+        "deliveries": 9.2,
+        "source": "q3-update"
+      },
+      {
+        "id": "q2-26",
+        "label": "Q2 26",
+        "end": "2026-06-30",
+        "subs": 1.48,
+        "deliveries": 9.7,
+        "source": "q3-update"
+      },
+      {
+        "id": "q3-26",
+        "label": "Q3 26",
+        "end": "2026-09-30",
+        "subs": 1.74,
+        "deliveries": 10.2,
+        "source": "q3-update"
+      }
+    ],
+    "attach": [
+      {
+        "id": "na-q2",
+        "label": "Q2 26",
+        "value": 55,
+        "bound": "over",
+        "source": "q2-update"
+      },
+      {
+        "id": "na-q3",
+        "label": "Q3 26",
+        "value": 75,
+        "bound": "over",
+        "source": "q3-update"
+      }
+    ],
+    "caveat": "The ratio is our own calculation: active subscriptions divided by cumulative deliveries, which Tesla defines as all new vehicles delivered to customers plus any unsupervised Robotaxis placed into commercial operation. Older cars leave the fleet and some owners use FSD on a car they bought secondhand, so it is a proxy for take rate, not a figure Tesla reports."
+  },
+  "changes": [
+    {
+      "date": "2026-10-27",
+      "kind": "update",
+      "text": "Page created. Adoption figures are taken from Tesla's Q1, Q2 and Q3 2026 shareholder decks; countries come from our global FSD tracker data."
+    }
+  ]
+}

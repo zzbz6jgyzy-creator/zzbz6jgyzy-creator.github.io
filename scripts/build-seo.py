@@ -303,6 +303,7 @@ def about_page():
 #   WebPage         fallback
 # Optimus owns its WebPage/FAQ/film graph in build-optimus-studio.mjs.
 # The Cybercab guide owns its WebPage/FAQ/breadcrumb graph in build-cybercab-guide.mjs.
+# The FSD tracker (fsd-tracker.html) owns its WebPage/breadcrumb graph in build-fsd-tracker.mjs.
 # Production owns its dated Dataset/CSV schema in build-production-studio.mjs.
 # Model 3 Studio owns its WebApplication graph in build-model3-studio.mjs.
 PAGE_TYPES = {

@@ -1,0 +1,50 @@
+name: FSD tracker checks
+on:
+  pull_request:
+    paths:
+      - 'fsd-tracker.html'
+      - 'fsd-tracker*.js'
+      - 'fsd-tracker.css'
+      - 'data/fsd-tracker.json'
+      - 'data/fsd-global.json'
+      - 'scripts/build-fsd-tracker.mjs'
+      - 'scripts/fsd-tracker-charts.mjs'
+      - 'scripts/js-bundles.json'
+      - 'scripts/build-seo.py'
+      - 'docs/fsd-tracker-refresh.md'
+      - 'tests/fsd-tracker*'
+      - 'tests/test_fsd_tracker_ownership.py'
+      - '.github/workflows/fsd-tracker-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tracker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Validate data, rebuild and check nothing drifts
+        run: |
+          node --test tests/fsd-tracker.test.mjs
+          python tests/test_fsd_tracker_ownership.py
+          node scripts/build-fsd-tracker.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          sh scripts/ci-generated-ownership.sh -- assets/js fsd-tracker.html data/pages.json
+      - name: Responsive, no-JS and tooltip journeys
+        run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/fsd-tracker-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fsd-tracker-previews
+          path: /tmp/fsd-tracker
