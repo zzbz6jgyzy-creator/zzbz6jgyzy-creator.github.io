@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27T19:55:53Z",
+ "updated": "2026-10-27T20:56:39Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,48 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-27T19:55:53Z",
+  "fetched": "2026-10-27T20:56:39Z",
   "items": [
+   {
+    "t": "2026-10-27T20:47:31Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model 3 Performance (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-27T20:23:11Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-27T20:20:17Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-27T20:14:45Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model 3 AWD LR (2022)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-27T20:02:22Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model Y Performance (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-27T19:52:10Z",
     "to": "2026.38.5.11",
@@ -531,46 +571,6 @@
     "from": "2026.38.5.1",
     "model": "Model 3 SR (2021)",
     "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-27T19:22:57Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-27T19:22:47Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-27T18:56:12Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model X AWD (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-27T18:47:27Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model Y RWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-27T18:42:51Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model Y RWD LR (2026)",
-    "hw": "4.0",
     "country": "United States"
    }
   ]
