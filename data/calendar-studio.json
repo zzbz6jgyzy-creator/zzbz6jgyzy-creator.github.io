@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-10-25T20:50:00+00:00",
+ "updated": "2026-10-27T10:45:00+00:00",
  "launchChecked": "2026-10-27T09:46:07Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
@@ -322,13 +322,8 @@
    "status": "In Flight",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/e2886a96-5ce9-4f45-872f-4e25a00be837/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/e2886a96-5ce9-4f45-872f-4e25a00be837/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "e2886a96-5ce9-4f45-872f-4e25a00be837",
    "windowStart": "2026-10-27T04:45:00Z",
@@ -348,13 +343,8 @@
    "status": "Go",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/57ce0a39-d035-4f16-a418-bd6108f78199/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/57ce0a39-d035-4f16-a418-bd6108f78199/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "57ce0a39-d035-4f16-a418-bd6108f78199",
    "windowStart": "2026-10-30T04:02:00Z",
@@ -374,13 +364,8 @@
    "status": "Go",
    "note": "Government/Top Secret · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/54d471e8-695c-4fa7-a3cf-dbd8b389e8ae/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/54d471e8-695c-4fa7-a3cf-dbd8b389e8ae/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "54d471e8-695c-4fa7-a3cf-dbd8b389e8ae",
    "windowStart": "2026-11-02T01:56:00Z",
@@ -400,13 +385,8 @@
    "status": "Go",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
    "windowStart": "2026-11-05T05:14:00Z",
@@ -424,7 +404,7 @@
    "date": "2026-11-08",
    "precision": "day",
    "status": "net",
-   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX; SpaceX hasn’t announced a Ship 42 static fire.",
+   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT); SpaceX hadn’t confirmed it as of 27 Oct 2026, 6:45am ET.",
    "where": "Starbase · Pad 2",
    "href": "",
    "sources": [
@@ -458,13 +438,8 @@
    "status": "TBD",
    "note": "Resupply · Low Earth Orbit",
    "where": "Space Launch Complex 40 · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
    "windowStart": "2026-11-30T00:00:00Z",
@@ -484,13 +459,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
    "windowStart": "2026-11-30T00:00:00Z",
@@ -510,13 +480,8 @@
    "status": "TBD",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 40 · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/11b218b1-5e40-4b9d-854e-50320299239d/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/11b218b1-5e40-4b9d-854e-50320299239d/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "11b218b1-5e40-4b9d-854e-50320299239d",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -536,13 +501,8 @@
    "status": "TBD",
    "note": "Earth Science · Low Earth Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/8bf5f61e-a7e1-41e6-aede-7b87e4beebab/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/8bf5f61e-a7e1-41e6-aede-7b87e4beebab/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "8bf5f61e-a7e1-41e6-aede-7b87e4beebab",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -562,13 +522,8 @@
    "status": "TBD",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 40 · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/e61d353c-db55-4a57-8184-0fab187231e6/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/e61d353c-db55-4a57-8184-0fab187231e6/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "e61d353c-db55-4a57-8184-0fab187231e6",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -588,13 +543,8 @@
    "status": "TBD",
    "note": "Communications · Geostationary Transfer Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/01ca3653-126a-4c01-94fb-a9467b39cdac/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/01ca3653-126a-4c01-94fb-a9467b39cdac/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "01ca3653-126a-4c01-94fb-a9467b39cdac",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -614,13 +564,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/dfd444f9-ddda-4b35-8f51-cda7cd801809/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/dfd444f9-ddda-4b35-8f51-cda7cd801809/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -640,13 +585,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/511a3ef8-799e-4723-9293-b954d9d2eb83/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/511a3ef8-799e-4723-9293-b954d9d2eb83/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "511a3ef8-799e-4723-9293-b954d9d2eb83",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -666,13 +606,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/d08d8b46-353b-4eee-ab5e-e1385b329008/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/d08d8b46-353b-4eee-ab5e-e1385b329008/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "d08d8b46-353b-4eee-ab5e-e1385b329008",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -692,13 +627,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/bf5c6fa2-3add-49ff-aad6-c6450148cd89/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/bf5c6fa2-3add-49ff-aad6-c6450148cd89/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -718,13 +648,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/20fa8dc4-8cab-41cf-b452-98a2620f7e86/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/20fa8dc4-8cab-41cf-b452-98a2620f7e86/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "20fa8dc4-8cab-41cf-b452-98a2620f7e86",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -744,13 +669,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/ab932c60-d808-4825-ab71-b6fe0a745f15/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/ab932c60-d808-4825-ab71-b6fe0a745f15/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "ab932c60-d808-4825-ab71-b6fe0a745f15",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -770,13 +690,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/2f31a7f0-968a-448d-b447-333bf0341078/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/2f31a7f0-968a-448d-b447-333bf0341078/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "2f31a7f0-968a-448d-b447-333bf0341078",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -796,13 +711,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/fa895702-687b-4ba3-95fb-9462a2c9844b/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/fa895702-687b-4ba3-95fb-9462a2c9844b/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "fa895702-687b-4ba3-95fb-9462a2c9844b",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -822,13 +732,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/46d6822b-82aa-452c-aa34-80b6f052de84/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/46d6822b-82aa-452c-aa34-80b6f052de84/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "46d6822b-82aa-452c-aa34-80b6f052de84",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -848,13 +753,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/1fa3741c-3339-4954-a026-2cd9d36161c0/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/1fa3741c-3339-4954-a026-2cd9d36161c0/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "1fa3741c-3339-4954-a026-2cd9d36161c0",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -874,13 +774,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/7d77bd89-af23-4a5a-b632-de0034003a64/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/7d77bd89-af23-4a5a-b632-de0034003a64/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "7d77bd89-af23-4a5a-b632-de0034003a64",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -900,13 +795,8 @@
    "status": "TBD",
    "note": "Communications · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/5ce7e9b6-b471-4a88-891f-2a6f21cb369f/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/5ce7e9b6-b471-4a88-891f-2a6f21cb369f/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -926,13 +816,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/2d0472b9-463d-49c8-afb1-7925e49a3368/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/2d0472b9-463d-49c8-afb1-7925e49a3368/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "2d0472b9-463d-49c8-afb1-7925e49a3368",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -952,13 +837,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/dca8749f-1552-485a-8061-f1ad79055b8d/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/dca8749f-1552-485a-8061-f1ad79055b8d/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "dca8749f-1552-485a-8061-f1ad79055b8d",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -978,13 +858,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/a9ee8337-127d-4f17-9e3a-a07999f80099/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/a9ee8337-127d-4f17-9e3a-a07999f80099/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "a9ee8337-127d-4f17-9e3a-a07999f80099",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1004,13 +879,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/4541ce85-0e38-42ac-a9a0-20474bb5f2cd/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/4541ce85-0e38-42ac-a9a0-20474bb5f2cd/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1030,13 +900,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/c5783e2b-d458-4b99-9936-4043c236190b/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/c5783e2b-d458-4b99-9936-4043c236190b/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "c5783e2b-d458-4b99-9936-4043c236190b",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1056,13 +921,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/0a07a23e-606a-4589-bf3e-c3e41bd4de51/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/0a07a23e-606a-4589-bf3e-c3e41bd4de51/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "0a07a23e-606a-4589-bf3e-c3e41bd4de51",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1082,13 +942,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/cb1762f0-90f4-4902-a5f6-655a7ade25bf/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/cb1762f0-90f4-4902-a5f6-655a7ade25bf/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1108,13 +963,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/c703fab3-2ce4-4cf1-861d-754da3f3ad42/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/c703fab3-2ce4-4cf1-861d-754da3f3ad42/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1134,13 +984,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/71df1dd0-d658-4762-b0bc-0fca6886aea7/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/71df1dd0-d658-4762-b0bc-0fca6886aea7/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "71df1dd0-d658-4762-b0bc-0fca6886aea7",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1160,13 +1005,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/71ed4649-8d71-42e8-8548-d42ffa2c5a6e/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/71ed4649-8d71-42e8-8548-d42ffa2c5a6e/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "71ed4649-8d71-42e8-8548-d42ffa2c5a6e",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1186,13 +1026,8 @@
    "status": "TBD",
    "note": "Communications · Low Earth Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/ce1317de-ec94-4479-9b28-38ebf11f13ae/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/ce1317de-ec94-4479-9b28-38ebf11f13ae/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1212,13 +1047,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Geostationary Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/4c78e865-8f03-4f47-a081-b507da270d19/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/4c78e865-8f03-4f47-a081-b507da270d19/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "4c78e865-8f03-4f47-a081-b507da270d19",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1238,13 +1068,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Low Earth Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/fc1bd321-e502-4d0f-81f4-1926dece81c6/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/fc1bd321-e502-4d0f-81f4-1926dece81c6/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "fc1bd321-e502-4d0f-81f4-1926dece81c6",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1264,13 +1089,8 @@
    "status": "TBD",
    "note": "Lunar Exploration · Lunar Orbit",
    "where": "Launch Complex 39A · Kennedy Space Center, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/d3bd7fb2-fac6-49fc-ae52-cee07d2fde67/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/d3bd7fb2-fac6-49fc-ae52-cee07d2fde67/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1290,13 +1110,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Geostationary Orbit",
    "where": "Launch Complex 39A · Kennedy Space Center, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/c1bd775a-2fff-45bb-9726-765b69817c19/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/c1bd775a-2fff-45bb-9726-765b69817c19/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "c1bd775a-2fff-45bb-9726-765b69817c19",
    "windowStart": "2026-12-31T00:00:00Z",
@@ -1337,13 +1152,8 @@
    "status": "TBD",
    "note": "Tourism · Low Earth Orbit",
    "where": "Space Launch Complex 40 · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/de3d5d91-f115-4a86-b923-203a91a08735/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/de3d5d91-f115-4a86-b923-203a91a08735/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "de3d5d91-f115-4a86-b923-203a91a08735",
    "windowStart": "2027-01-31T00:00:00Z",
@@ -1363,13 +1173,8 @@
    "status": "TBD",
    "note": "Government/Top Secret · Polar Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/542a51bb-2351-48b9-98c5-9db130fb4c29/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/542a51bb-2351-48b9-98c5-9db130fb4c29/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "542a51bb-2351-48b9-98c5-9db130fb4c29",
    "windowStart": "2027-01-31T00:00:00Z",

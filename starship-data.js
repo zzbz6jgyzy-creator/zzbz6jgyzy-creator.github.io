@@ -1,5 +1,5 @@
 window.STARSHIP = {
-  updated: "2026-10-25",
+  updated: "2026-10-27",
   note:
     "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
@@ -12,7 +12,7 @@ window.STARSHIP = {
     block: "Block 3",
     headline: "First serious Ship catch",
     tested:
-      "Working window is now NET 8 November on FAA air-traffic planning slides — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX; SpaceX hasn’t announced a Ship 42 static fire yet. The story is still the first real attempt to catch a Ship.",
+      "Working window is now NET 8 November on FAA air-traffic planning slides — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), as reported by NASASpaceflight and Next Spaceflight; SpaceX hadn’t confirmed it as of 27 Oct 2026, 6:45am ET. The story is still the first real attempt to catch a Ship.",
     objectives: [
       "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, which Musk confirmed on the 20 Oct earnings call",
       "Fly and recover Super Heavy B22 (catch or controlled splashdown)",
@@ -28,6 +28,14 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-10-26",
+      mission: 15,
+      confirmed: false,
+      change:
+        "Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page.",
+      source: { outlet: "NASASpaceflight on X (also logged by Next Spaceflight)", url: "https://x.com/NASASpaceflight/status/2114904512217694216" },
+    },
     {
       date: "2026-10-25",
       mission: 15,
