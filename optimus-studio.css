@@ -9,7 +9,7 @@ html[data-theme=light] .os{color-scheme:dark}
 /* Override the shared article-figure rule without changing other pages. */
 .os .os-hero-robot.os-hero-robot img{height:100%;object-fit:cover;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
 @media(max-width:700px){.os-hero-copy{padding-top:420px}.os-hero-robot figcaption{bottom:-17px;left:0;right:0;max-width:none;text-align:center;font-size:.53rem}}
-@media(prefers-reduced-motion:no-preference){.os-hand-art .os-tendons{stroke-dasharray:14 5;animation:os-tendon-flow 6s linear infinite}@keyframes os-tendon-flow{to{stroke-dashoffset:-76}}.os-hotspots button[aria-pressed=true]{animation:os-marker 4s ease-in-out infinite}@keyframes os-marker{50%{box-shadow:0 0 0 12px #f82b4d11}}}
+@media(prefers-reduced-motion:no-preference){@keyframes os-tendon-flow{to{stroke-dashoffset:-76}}.os-hotspots button[aria-pressed=true]{animation:os-marker 4s ease-in-out infinite}@keyframes os-marker{50%{box-shadow:0 0 0 12px #f82b4d11}}}
 .os-sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 
 /* ---- Research sections (state of play, generations, timeline, promises, the field) ---- */
@@ -144,24 +144,65 @@ html[data-theme=light] .os{color-scheme:dark}
  .os-enhanced .os-specs[data-show=gen3] [data-gen=gen3]{display:table-cell}
 }
 
-/* ---- PR 2: body diagram, hand lab, grip, promise strip, ramp explorer ---- */
-.os-anatomy-visual{display:grid;place-items:center;padding:30px 20px 60px;background:radial-gradient(60% 50% at 50% 40%,#18202d,transparent)}
-.os-body{width:100%;max-width:420px;height:auto;overflow:visible}
-.os-body-shell path{fill:#121822;stroke:#3a4352;stroke-width:1.5}
-.os-body-links{stroke:#5d6878;stroke-width:3;stroke-linecap:round}
-.os-sys{fill:#141b26;stroke:#8b95a5;stroke-width:2;transition:opacity .4s,stroke .4s,fill .4s}
-.os-sys .os-cone{fill:#ff3e60;fill-opacity:0;stroke:none;transition:fill-opacity .4s}
-.os-sys .os-visor{fill:#07090d}
-.os-sys .os-wire,.os-sys .os-plumb,.os-sys .os-support{fill:none;stroke-dasharray:4 5}
-.os-sys .os-pins,.os-sys .os-cells{fill:none}
-.os-sys .os-bolt{fill:none;stroke-width:2.5}
-.os-sys .os-com{fill:#8b95a5;stroke:none}
-.os-sys[data-sys=hands] path{fill:none;stroke-linecap:round}
-.os-anatomy[data-active=perception] .os-sys:not([data-sys=perception]),.os-anatomy[data-active=hands] .os-sys:not([data-sys=hands]),.os-anatomy[data-active=actuation] .os-sys:not([data-sys=actuation]),.os-anatomy[data-active=balance] .os-sys:not([data-sys=balance]),.os-anatomy[data-active=learning] .os-sys:not([data-sys=learning]),.os-anatomy[data-active=power] .os-sys:not([data-sys=power]){opacity:.35}
-.os-anatomy[data-active=perception] [data-sys=perception],.os-anatomy[data-active=hands] [data-sys=hands],.os-anatomy[data-active=actuation] [data-sys=actuation],.os-anatomy[data-active=balance] [data-sys=balance],.os-anatomy[data-active=learning] [data-sys=learning],.os-anatomy[data-active=power] [data-sys=power]{stroke:#ff5a77;fill:#2a1520}
-.os-anatomy[data-active=perception] .os-cone{fill-opacity:.12}
-.os-anatomy[data-active=balance] .os-com{fill:#ff5a77}
-.os-anatomy-visual>.os-caption{bottom:14px}
+/* ---- X-ray body, hand lab, grip, promise strip, ramp explorer ---- */
+.os-anatomy-visual{display:grid;place-items:center;padding:24px 8px 26px;background:radial-gradient(60% 50% at 50% 40%,#122033,transparent)}
+.os-body-wrap{position:relative;width:100%;max-width:560px;aspect-ratio:820/1220}
+.os-body-wrap .os-hotspots{inset:0}
+.os-body-wrap .os-hotspots button{width:34px;height:34px;font-size:.66rem;background:#0b1520cc;backdrop-filter:blur(4px)}
+.os-body{display:block;width:100%;height:auto}
+.os-shell path,.os-shell ellipse,.os-shell rect{fill:url(#os-shell-fill);stroke:#a9c6e3;stroke-opacity:.55;stroke-width:1.6}
+.os-shell .os-visor{fill:#04070b;fill-opacity:.85;stroke-opacity:.8}
+.os-shell .os-waist{fill:#02050a;fill-opacity:.55}
+.os-shell .os-waist-ribs,.os-shell .os-seam{fill:none;stroke-opacity:.25;stroke-width:1}
+.os-sys{fill:#0d1824;stroke:#8fb0cf;stroke-width:1.4;transition:opacity .4s,stroke .4s,fill .4s}
+.os-rot .os-rot-ring{fill:none;stroke-opacity:.6}
+.os-rot .os-rot-hub{fill:currentColor;stroke:none}
+.os-rot .os-bolt-dot{fill:#8fb0cf;stroke:none}
+.os-lin .os-lin-fins,.os-lin .os-lin-thread{fill:none;stroke-width:.9;stroke-opacity:.7}
+.os-lin .os-lin-rod{fill:#8fb0cf;fill-opacity:.25}
+.os-cells circle{fill:none;stroke-width:1;stroke-opacity:.8}
+.os-pcb{fill:#173025}
+.os-chip-x{fill:#08111a}
+.os-harness,.os-bus{fill:none;stroke-dasharray:5 4;stroke-width:1.6}
+.os-fov{fill:#ff3e60;fill-opacity:0;stroke:none;transition:fill-opacity .4s}
+.os-lens{fill:#04070b}
+.os-finger-x{fill:none;stroke-width:5;stroke-linecap:round;stroke-opacity:.55}
+.os-knuckle{fill:#0d1824}
+.os-tendon-x{fill:none;stroke-width:.9;stroke-dasharray:2 2}
+.os-ft-gauge,.os-toe{fill:none}
+.os-plumb,.os-support{fill:none;stroke-dasharray:4 5}
+.os-com{fill:#8fb0cf;stroke:none}
+.os-com-ring{fill:#0d1824}
+.os-xlabel{opacity:0;transition:opacity .35s;pointer-events:none}
+.os-xlabel path{fill:none;stroke:#ff8aa0;stroke-width:1.2}
+.os-xlabel circle{fill:#ff8aa0;stroke:none}
+.os-xlabel text{fill:#f3f4f7;stroke:none;font-family:var(--os-mono);font-size:15px;letter-spacing:.02em}
+.os-enhanced .os-anatomy[data-active=perception] .os-sys:not([data-sys=perception]),.os-enhanced .os-anatomy[data-active=hands] .os-sys:not([data-sys=hands]),.os-enhanced .os-anatomy[data-active=actuation] .os-sys:not([data-sys=actuation]),.os-enhanced .os-anatomy[data-active=balance] .os-sys:not([data-sys=balance]),.os-enhanced .os-anatomy[data-active=learning] .os-sys:not([data-sys=learning]),.os-enhanced .os-anatomy[data-active=power] .os-sys:not([data-sys=power]){opacity:.42}
+.os-anatomy[data-active=perception] [data-sys=perception],.os-anatomy[data-active=hands] [data-sys=hands],.os-anatomy[data-active=actuation] [data-sys=actuation],.os-anatomy[data-active=balance] [data-sys=balance],.os-anatomy[data-active=learning] [data-sys=learning],.os-anatomy[data-active=power] [data-sys=power]{stroke:#ff6d88;fill:#2a1220;color:#ff6d88}
+.os-anatomy[data-active=perception] [data-sys=perception] .os-xlabel,.os-anatomy[data-active=hands] [data-sys=hands] .os-xlabel,.os-anatomy[data-active=actuation] [data-sys=actuation] .os-xlabel,.os-anatomy[data-active=balance] [data-sys=balance] .os-xlabel,.os-anatomy[data-active=learning] [data-sys=learning] .os-xlabel,.os-anatomy[data-active=power] [data-sys=power] .os-xlabel{opacity:1}
+.os-anatomy[data-active=perception] .os-fov{fill-opacity:.07}
+.os-anatomy[data-active=balance] .os-com{fill:#ff6d88}
+.os-anatomy-visual>.os-caption{position:static;margin:14px 18px 0;max-width:560px;justify-self:center}
+.os-shell .os-dark{fill:#02050a;fill-opacity:.6;stroke-opacity:.5}
+.os-shell .os-phalanx{fill:#cfe4f7;fill-opacity:.1;stroke-width:1.1}
+.os-shell .os-fastener{fill:none;stroke-opacity:.45;stroke-width:1}
+.os-frame{fill:none;stroke:#3f5a74;stroke-width:1.3;opacity:.75}
+.os-frame rect{fill:#0b1622}
+.os-fins,.os-busbar,.os-coil,.os-pcb-parts{fill:none;stroke-width:.9;stroke-opacity:.7}
+.os-busbar{stroke-width:1.6;stroke-opacity:.35}
+.os-die{fill:currentColor;fill-opacity:.35;stroke:none}
+.os-sole{fill:none;stroke-width:3;stroke-opacity:.45}
+.os-xray .os-sys{color:#8fb0cf}
+.os-rot .os-bearing{fill:none;stroke-dasharray:2 2.4;stroke-width:1;stroke-opacity:.7}
+.os-rot .os-tab{fill:#0d1824}
+.os-frame .os-hinge{fill:none;stroke:#5d7c99;stroke-width:1.2}
+.os-frame .os-hinge-in{stroke-dasharray:2 2}
+.os-dim path{fill:none;stroke:#4f6b86;stroke-width:1}
+.os-dim text,.os-titleblock text{fill:#7f98b2;font-family:var(--os-mono);font-size:12px;letter-spacing:.12em}
+.os-titleblock rect,.os-titleblock path{fill:none;stroke:#3f5a74;stroke-width:1}
+.os-anatomy[data-active=perception] [data-sys=perception],.os-anatomy[data-active=hands] [data-sys=hands],.os-anatomy[data-active=actuation] [data-sys=actuation],.os-anatomy[data-active=balance] [data-sys=balance],.os-anatomy[data-active=learning] [data-sys=learning],.os-anatomy[data-active=power] [data-sys=power]{filter:url(#os-glow)}
+@media(max-width:700px){.os-dim,.os-titleblock{display:none}}
+@media(prefers-reduced-motion:no-preference){.os-anatomy .os-sys .os-rot-ring{transform-box:fill-box;transform-origin:center}.os-anatomy[data-active=actuation] .os-rot-ring{animation:os-spin 6s linear infinite;stroke-dasharray:4 3}@keyframes os-spin{to{transform:rotate(1turn)}}}
 
 .os-hand-lab{display:grid;gap:14px}
 .os-hand-controls{display:flex;flex-wrap:wrap;gap:8px}
@@ -192,7 +233,6 @@ html[data-theme=light] .os{color-scheme:dark}
 .os-key-coupled{border:2px dashed #8b95a5}
 
 .os-grip{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:center;padding:22px 0;border-top:1px solid var(--os-line)}
-.os-grip:not([hidden]){display:grid}
 .os-grip-stage{height:120px;display:grid;place-items:center}
 .os-egg{width:84px;height:auto;transition:transform .45s cubic-bezier(.3,.7,.3,1)}
 .os-egg-shell{fill:#f1e6d4;stroke:#c9b79b;stroke-width:2}
@@ -277,3 +317,4 @@ html[data-theme=light] .os{color-scheme:dark}
  .os-ramp-chart .os-axis:nth-of-type(n){letter-spacing:-.02em}
  .os-ramp-figure{padding:10px 6px 4px}
 }
+@media(max-width:700px){.os-xlabel{display:none}.os-body-wrap{max-width:330px}}

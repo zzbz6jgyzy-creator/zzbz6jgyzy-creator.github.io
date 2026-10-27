@@ -22,12 +22,12 @@ grip.addEventListener('input',setGrip);setGrip();
 const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
 one('#os-grip-auto').addEventListener('click',()=>{const from=Number(grip.value),to=50;if(still){grip.value=to;setGrip();return;}const t0=performance.now();(function step(t){const k=Math.min(1,(t-t0)/600),e=1-Math.pow(1-k,3);grip.value=Math.round(from+(to-from)*e);setGrip();if(k<1)requestAnimationFrame(step);})(t0);});
 // Ramp explorer: a cursor on the illustrative curves, driven by the slider or the pointer.
-const G={W:760,H:330,L:56,R:120,T:20,B:44,max:22000,months:24};
+const G={W:760,H:330,L:56,R:120,T:20,B:44,max:22000,months:24}; // mirrors rampChart() in scripts/optimus-art.mjs
 const monthInput=one('#os-ramp-month'),chart=one('.os-ramp-chart'),cursor=chart.querySelector('.os-cursor'),rampButtons=all('[data-ramp]');
 let pace='stated';
-const nf=new Intl.NumberFormat('en-GB'),when=m=>new Intl.DateTimeFormat('en-GB',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(2026,9+m,15)));
+const when=m=>new Intl.DateTimeFormat('en-GB',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(2026,9+m,15)));
 function setRamp(){const m=Number(monthInput.value),v=M.ramp(m,pace),x=G.L+m/G.months*(G.W-G.L-G.R),y=G.T+(1-v.weekly/G.max)*(G.H-G.T-G.B);
- one('#os-ramp-week').textContent=nf.format(v.weekly);one('#os-ramp-year').textContent=nf.format(v.yearly);one('#os-ramp-total').textContent=nf.format(v.total);one('#os-ramp-when').textContent=when(m);monthInput.setAttribute('aria-valuetext',when(m));
+ one('#os-ramp-week').textContent=M.approx(v.weekly);one('#os-ramp-year').textContent=M.approx(Math.min(v.yearly,1e6));one('#os-ramp-total').textContent=M.approx(v.total);one('#os-ramp-when').textContent=when(m);monthInput.setAttribute('aria-valuetext',when(m));
  cursor.removeAttribute('hidden');cursor.setAttribute('transform',`translate(${x.toFixed(1)} 0)`);cursor.querySelector('circle').setAttribute('cy',y.toFixed(1));chart.dataset.pace=pace;}
 monthInput.addEventListener('input',setRamp);
 rampButtons.forEach(b=>b.addEventListener('click',()=>{pace=b.dataset.ramp;rampButtons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));setRamp();}));

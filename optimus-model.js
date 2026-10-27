@@ -11,7 +11,9 @@ const control={company_autonomy:'Autonomy claimed by Tesla',human_assistance:'No
 function filmURL(f){if(!/^[A-Za-z0-9_-]{11}$/.test(f.youtube)||!Number.isSafeInteger(f.start)||f.start<0)throw Error('Invalid film');return 'https://www.youtube-nocookie.com/embed/'+f.youtube+'?autoplay=1&rel=0&playsinline=1&start='+f.start;}
 // Illustrative ramp: a logistic weekly rate that reaches 95% of the 20,000-a-week goal at `reach` months.
 // Tesla has published no volumes; this draws the shape of the stated goal, not a forecast.
-const RAMP={goal:20000,scenarios:{stated:{label:'About a year (Musk’s stated pace)',reach:13,k:.6},slower:{label:'Two years (a slower ramp)',reach:24,k:.4}}};
+const RAMP={goal:20000,scenarios:{stated:{label:'At least a year (Musk’s estimate)',reach:13,k:.6},slower:{label:'Two years (a slower ramp)',reach:24,k:.4}}};
 function ramp(month,scenario='stated'){const s=RAMP.scenarios[scenario];if(!s||!Number.isFinite(month)||month<0||month>36)throw Error('Invalid ramp input');const t0=s.reach-Math.log(19)/s.k,rate=m=>RAMP.goal/(1+Math.exp(-s.k*(m-t0)));let total=0;for(let m=0;m<month;m+=.25)total+=rate(m+.125)*(52/12)*.25;return{weekly:Math.round(rate(month)),yearly:Math.round(rate(month)*52),total:Math.round(total)};}
-const api={esc,href,day,validate,sequence,control,filmURL,status,types,outcome,ramp,RAMP};root.OptimusStudio=api;if(typeof module==='object')module.exports=api;
+// Round illustrative figures so they never read as measurements.
+function approx(v){if(!Number.isFinite(v)||v<0)throw Error('Invalid figure');if(v>=995000)return '≈'+(Math.round(v/1e5)/10)+'M';const step=v>=100000?10000:v>=10000?1000:v>=1000?100:10;return '≈'+(Math.round(v/step)*step).toLocaleString('en-GB');}
+const api={esc,href,day,validate,sequence,control,filmURL,status,types,outcome,ramp,RAMP,approx};root.OptimusStudio=api;if(typeof module==='object')module.exports=api;
 })(typeof window==='object'?window:globalThis);

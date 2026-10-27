@@ -53,9 +53,10 @@ async def main():
     await page.locator('[data-hand="gen3"]').click();assert await page.locator('[data-dof-count]').inner_text()=='22'
     await page.locator('#os-grip').fill('90');assert await page.locator('.os-grip-stage').get_attribute('data-state')=='crack'
     await page.locator('#os-grip-auto').click();await page.wait_for_timeout(50);assert await page.locator('.os-grip-stage').get_attribute('data-state')=='held'
-    await page.locator('#os-ramp-month').fill('0');assert await page.locator('#os-ramp-week').inner_text()=='154';assert await page.locator('#os-ramp-total').inner_text()=='0'
-    await page.locator('[data-ramp="slower"]').click();await page.locator('#os-ramp-month').fill('24');assert await page.locator('#os-ramp-week').inner_text()=='19,000'
-    assert await page.locator('.os-ramp-chart .os-cursor').is_visible()
+    await page.locator('#os-ramp-month').fill('0');assert await page.locator('#os-ramp-week').inner_text()=='≈150';assert await page.locator('#os-ramp-total').inner_text()=='≈0'
+    await page.locator('[data-ramp="slower"]').click();await page.locator('#os-ramp-month').fill('24');assert await page.locator('#os-ramp-week').inner_text()=='≈19,000'
+    assert await page.locator('.os-ramp-chart .os-cursor').is_visible();assert await page.locator('.os-ramp-flag').is_visible()
+    assert await page.locator('.os-xray .os-rot').count()==16 and await page.locator('.os-xray .os-lin').count()==14
     await page.locator('#os-clear').click();await page.locator('[data-gallery="2"]').click();assert await page.locator('.os-lightbox').is_visible();await page.keyboard.press('ArrowRight');assert 'angle' in await page.locator('.os-lightbox-image img').get_attribute('src');await page.keyboard.press('Escape');assert not await page.locator('.os-lightbox').is_visible();assert await page.locator('[data-gallery="2"]').evaluate('(x)=>x===document.activeElement')
     await page.locator('[data-film="event"]').click();await page.locator('#os-play').click();frame=page.locator('#os-player iframe');assert 'start=1189' in await frame.get_attribute('src');assert '6v6dbxPlsXs' in await frame.get_attribute('src');assert 'watch the official film' in await page.locator('#os-player-status').inner_text()
     await page.locator('[data-film="gen2"]').click();assert await page.locator('#os-player iframe').count()==0

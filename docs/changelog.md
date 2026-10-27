@@ -2,9 +2,9 @@
 
 ## 27 Oct 2026 — Optimus guide: interactive showpieces (Optimus PR 2 of 3)
 
-- **Body diagram:** the cropped portrait in "Inside the machine" is replaced by an original kinematic sketch; choosing a system lights up its parts (cameras, computer, battery, joints, hands, feet and balance).
+- **X-ray body:** the cropped portrait in "Inside the machine" is replaced by a detailed X-ray illustration: translucent shell, frame, all 28 body actuators in the 2022 layout (14 rotary, 14 linear, from Tesla's AI Day description), the 2-DoF neck, battery cells and pack board, central computer, cameras, cable runs, six hand motors with tendons, and foot force sensors. Choosing a system lights it up and shows its labels.
 - **Hand lab:** switch between Gen 2 (11 DoF, published) and Gen 3 (22 DoF, reported) to see which motions are driven and how tendons run to forearm actuators; a grip slider shows why touch sensing matters (slip, hold, crack).
-- **Ramp explorer:** an illustrative S-curve toward 20,000 a week, with a slider, pointer cursor, two paces, weekly/yearly/cumulative readouts, a delivery-target band and a table view. Labelled as illustration; Tesla has published no volumes.
+- **Ramp explorer:** an illustrative S-curve toward 20,000 a week ("at least a year", per Musk), rounded figures marked "Illustration, not a forecast", with a slider, pointer cursor, two paces, weekly/yearly/cumulative readouts, a delivery-target band and a table view. Labelled as illustration; Tesla has published no volumes.
 - **Promise strip:** each commitment drawn from when it was said to when it was due, with its outcome and a Today line.
 - New tests for the ramp model and every new control; illustrations live in `scripts/optimus-art.mjs`.
 
