@@ -18,7 +18,7 @@
         href: a.getAttribute("href"),
         img: (v && (v.getAttribute("poster") || v.getAttribute("data-poster"))) || (i && i.getAttribute("src")) || "",
         tag: (a.querySelector(".tag") || {}).textContent || "Dispatch",
-        h: (a.querySelector("h3") || {}).textContent || "",
+        h: (a.querySelector("h2, h3") || {}).textContent || "",
         p: (a.querySelector(".story-copy p") || {}).textContent || "",
       };
     }).filter((c, k, arr) => c.h && arr.findIndex((x) => x.href === c.href) === k);
@@ -33,18 +33,23 @@
     // Homepage-only copy is editorially chosen; full story titles stay intact elsewhere.
     const homeArticle = aj && (aj.articles || []).find((a) => a.url === L.href);
     const homeCopy = (key, fallback) => homeArticle && typeof homeArticle[key] === "string" && homeArticle[key].trim() ? homeArticle[key].trim() : fallback.trim();
-    el.href = L.href; $("[data-hv-tag]").textContent = L.tag.trim(); $("[data-hv-h]").textContent = homeCopy("homeTitle", L.h); $("[data-hv-p]").textContent = homeCopy("homeSummary", L.p);
+    const leadH = homeCopy("homeTitle", L.h), leadP = homeCopy("homeSummary", L.p);
+    // The page is pre-rendered from the same data every ~30 minutes; only touch the DOM when the stories actually changed, so the swap never causes layout shift.
+    const sameLead = el.getAttribute("href") === L.href && ($("[data-hv-h]").textContent || "").trim() === leadH && ($("[data-hv-p]").textContent || "").trim() === leadP;
+    if (!sameLead) { el.href = L.href; $("[data-hv-tag]").textContent = L.tag.trim(); $("[data-hv-h]").textContent = leadH; $("[data-hv-p]").textContent = leadP; }
     // Lead image: card image, else the article's og:image / first image, else a licensed site image from another card
     const img = $("[data-hv-img]");
     const fallback = (cards.find((c) => c.img) || {}).img || "/assets/dispatch/cybercab-austin-poster.jpg";
     const setImg = (src) => { if (img.getAttribute("src") === src) return; if (img.parentNode && img.parentNode.tagName === "PICTURE") img.parentNode.querySelectorAll("source").forEach((x) => x.remove()); img.alt = L.h.trim(); img.src = src; img.onerror = () => { img.onerror = null; img.src = fallback; }; };
-    if (L.img) setImg(L.img);
+    if (sameLead) { /* lead image already rendered */ } else if (L.img) setImg(L.img);
     else fetch(L.href, { cache: "no-cache" }).then((r) => r.text()).then((h) => {
       const d = new DOMParser().parseFromString(h, "text/html");
       const og = d.querySelector('meta[property="og:image"]'), fi = d.querySelector("main img[src], article img[src]");
       setImg((og && og.getAttribute("content")) || (fi && fi.getAttribute("src")) || fallback);
     }).catch(() => setImg(fallback));
-    $("[data-hv-supp]").innerHTML = cards.slice(1, 4).map((c) =>
+    const suppEl = $("[data-hv-supp]"), supp = cards.slice(1, 4);
+    const suppSame = [...suppEl.querySelectorAll("a.hv-s")].map((a) => a.getAttribute("href") + "|" + (a.querySelector("h3") || {}).textContent.trim()).join("\n") === supp.map((c) => c.href + "|" + c.h.trim()).join("\n");
+    if (!suppSame) suppEl.innerHTML = supp.map((c) =>
       `<a class="hv-s" href="${esc(c.href)}">${c.img ? suppThumb(c.img) : ""}<div><span class="hv-tag">${esc(c.tag.trim())}</span><h3>${esc(c.h.trim())}</h3></div></a>`).join("");
   }).catch(() => {});
 
