@@ -549,6 +549,7 @@
         if (!play.accT) play.accT = {};
         if ((play.accT[key] || 0) <= clock) {
           floats.push({ x: nx + (Math.random() - 0.5) * 26 * u, y: ny - 34 * u, text: `+$${Math.round(play.acc[key])}`, t: 0, life: 1.1, color: "#ffd77a" });
+          if (opts.onEvent) opts.onEvent("cash", { amount: play.acc[key] });
           play.acc[key] = 0;
           play.accT[key] = clock + 0.35;
         }

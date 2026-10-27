@@ -12,10 +12,7 @@
   const MAX_CARS = 12;
   const REPAIR = 320;
   const GAME = "robotaxi";
-  const BOARD_MAX = 8;
   const STORE = "sd.arcade.robotaxi.best.v2";
-  const BOARD_STORE = "sd.arcade.robotaxi.runs.v2";
-  const NAME_STORE = "aljr.taxi.name";
   const SHARE_URL = "https://superchargeddaily.com/robotaxi.html";
   const WEEK_STORE = "sd.arcade.robotaxi.week";
   const ROADSIDE = 150;
@@ -50,13 +47,13 @@
   const overlayTitle = root.querySelector("[data-overlay-title]");
   const overlayCopy = root.querySelector("[data-overlay-copy]");
   const playBtn = root.querySelector("[data-taxi-play]");
-  const heroPlay = root.querySelector("[data-taxi-hero-play]");
+  const resultsEl = root.querySelector("[data-taxi-results]");
+  const medalEl = root.querySelector("[data-results-medal]");
+  const scoreEl = root.querySelector("[data-results-score]");
+  const rowsEl = root.querySelector("[data-results-rows]");
+  const pbEl = root.querySelector("[data-results-pb]");
+  const shareCardBtn = root.querySelector("[data-taxi-share-card]");
   const shareBtn = root.querySelector("[data-taxi-share]");
-  const bestEl = root.querySelector("[data-taxi-best]");
-  const boardList = root.querySelector("[data-board-list]");
-  const boardNow = root.querySelector("[data-board-now]");
-  const nameInput = root.querySelector("[data-taxi-name]");
-  const muteBtn = root.querySelector("[data-taxi-mute]");
 
   const money = (n) =>
     `${n < 0 ? "-" : ""}$${Math.abs(Math.round(n)).toLocaleString()}`;
@@ -74,7 +71,6 @@
   let weekNo = 0;
   try { weekNo = Number(window.SDArcade.storage.getItem(WEEK_STORE)) || 0; } catch { weekNo = 0; }
   let lastEndFailed = false;
-  let freshId = "";
   const M=window.SDArcadeModel;
   let weekRandom=()=>.5;
   let forceNew=false;
@@ -84,63 +80,6 @@
   function getResume(){try{return M.taxiResume(JSON.parse(window.SDArcade.storage.getItem(resumeKey())||'null'));}catch{return null;}}
   function saveResume(){if(!game||!['deploy','night'].includes(state))return;window.SDArcade.storage.setItem(resumeKey(),JSON.stringify({state,mode:arcade.mode,day:arcade.day,game}));}
 
-
-  function callsign() {
-    const raw = (nameInput?.value || window.SDArcade.storage.getItem(NAME_STORE) || "Boss").trim();
-    return (raw || "Boss").slice(0, 12).toUpperCase();
-  }
-
-  function loadBoard() {
-    try {
-      const rows = JSON.parse(window.SDArcade.storage.getItem(BOARD_STORE) || "[]");
-      return Array.isArray(rows) ? rows : [];
-    } catch {
-      return [];
-    }
-  }
-
-  function saveBoard(rows) {
-    window.SDArcade.storage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
-  }
-
-  function storedRows() {
-    const local = loadBoard();
-    const world = window.AljrBoard?.rows?.(GAME) || [];
-    if (!world.length) return local;
-    const seen = new Set(world.map((row) => `${String(row.name || "").toUpperCase()}|${row.score}`));
-    const extra = local.filter((row) => !seen.has(`${String(row.name || "").toUpperCase()}|${row.score}`));
-    return [...world, ...extra]
-      .sort((a, b) => b.score - a.score || (a.at || 0) - (b.at || 0))
-      .slice(0, BOARD_MAX);
-  }
-
-  function renderBoard(highlight) {
-    const rows = storedRows();
-    if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
-    if (!boardList) return;
-    boardList.replaceChildren();
-    if (!rows.length) {
-      const empty = document.createElement("li");
-      empty.className = "is-empty";
-      empty.textContent = "No weeks locked yet.";
-      boardList.append(empty);
-      return;
-    }
-    rows.forEach((row, i) => {
-      const li = document.createElement("li");
-      if (row.id === highlight) li.classList.add("is-fresh");
-      const rank = document.createElement("span");
-      rank.className = "taxi-board-rank";
-      rank.textContent = String(i + 1);
-      const who = document.createElement("span");
-      who.className = "taxi-board-who";
-      who.textContent = row.name;
-      const pts = document.createElement("span");
-      pts.textContent = Number(row.score || 0).toLocaleString();
-      li.append(rank, who, pts);
-      boardList.append(li);
-    });
-  }
 
   function makeCar(id, charge = 100) {
     return { id, charge, zone: null, fast: false, night: false, broken: false };
@@ -270,6 +209,26 @@
     return text.charAt(0).toUpperCase() + text.slice(1) + ".";
   }
 
+  let muteChoice = null; // "1" = player muted, "0" = player unmuted, null = never chosen
+  try { muteChoice = window.SDArcade.storage.getItem("sd.arcade.muted"); } catch { muteChoice = null; }
+  let toastTimer = 0;
+  let lastTick = 0;
+
+  function noiseBuffer(ctx, seconds, brown) {
+    const length = Math.max(1, Math.floor(ctx.sampleRate * seconds));
+    const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    let last = 0;
+    for (let n = 0; n < length; n += 1) {
+      const white = Math.random() * 2 - 1;
+      if (brown) {
+        last = (last + 0.02 * white) / 1.02;
+        data[n] = last * 3.2;
+      } else data[n] = white;
+    }
+    return buffer;
+  }
+
   function beep(freq, dur, type = "square", gain = 0.04) {
     if (muted || !audio) return;
     const osc = audio.createOscillator();
@@ -284,6 +243,43 @@
     osc.stop(audio.currentTime + dur);
   }
 
+  function chime(freq, delay = 0, dur = 0.2, gain = 0.045) {
+    if (muted || !audio) return;
+    const t = audio.currentTime + delay;
+    const osc = audio.createOscillator();
+    const g = audio.createGain();
+    osc.type = "triangle";
+    osc.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(gain, t + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    osc.connect(g);
+    g.connect(audio.master);
+    osc.start(t);
+    osc.stop(t + dur + 0.02);
+  }
+
+  function sting() {
+    beep(150, 0.28, "sawtooth", 0.06);
+    beep(104, 0.4, "square", 0.04);
+  }
+
+  function arpeggio() {
+    [523, 659, 784, 1047].forEach((f, k) => chime(f, k * 0.08, 0.28, 0.05));
+  }
+
+  function cashTick() {
+    const now = performance.now();
+    if (now - lastTick < 180) return;
+    lastTick = now;
+    chime(780 + Math.random() * 220, 0, 0.08, 0.028);
+  }
+
+  function buzz(pattern) {
+    if (muted || reducedMotion || !navigator.vibrate) return;
+    try { navigator.vibrate(pattern); } catch { /* unsupported */ }
+  }
+
   function ensureAudio() {
     if (audio) {
       if (audio.state === "suspended") audio.resume();
@@ -294,20 +290,80 @@
     audio = new Ctx();
     const master = audio.createGain();
     master.gain.value = muted ? 0 : 0.7;
-    master.connect(audio.destination);
+    const comp = audio.createDynamicsCompressor();
+    comp.threshold.value = -16;
+    comp.ratio.value = 4;
+    comp.attack.value = 0.004;
+    comp.release.value = 0.2;
+    master.connect(comp);
+    comp.connect(audio.destination);
     audio.master = master;
+    const bed = (buffer, type, freq, q) => {
+      const src = audio.createBufferSource();
+      src.buffer = buffer;
+      src.loop = true;
+      const filter = audio.createBiquadFilter();
+      filter.type = type;
+      filter.frequency.value = freq;
+      filter.Q.value = q;
+      const gain = audio.createGain();
+      gain.gain.value = 0;
+      src.connect(filter);
+      filter.connect(gain);
+      gain.connect(master);
+      src.start();
+      return gain;
+    };
+    const brown = noiseBuffer(audio, 2.4, true);
+    audio.amb = {
+      hum: bed(brown, "lowpass", 240, 0.7),
+      traffic: bed(brown, "bandpass", 620, 0.8),
+      rain: bed(noiseBuffer(audio, 1.8, false), "bandpass", 3200, 0.6),
+    };
+    applyMute();
+  }
+
+  function updateAmbience() {
+    if (!audio?.amb) return;
+    const t = audio.currentTime;
+    const live = !!game && state !== "attract" && state !== "end";
+    const rain = live && !!game.days && !!today()?.rain;
+    audio.amb.hum.gain.setTargetAtTime(muted || !live ? 0 : 0.05, t, 0.4);
+    audio.amb.rain.gain.setTargetAtTime(muted || !rain ? 0 : 0.04, t, 0.5);
+    audio.amb.traffic.gain.setTargetAtTime(muted || state !== "resolve" ? 0 : 0.05, t, 0.3);
   }
 
   function applyMute() {
     if (audio?.master) audio.master.gain.setTargetAtTime(muted ? 0 : 0.7, audio.currentTime, 0.04);
-    if (muteBtn) {
-      muteBtn.textContent = muted ? "Sound off" : "Sound on";
-      muteBtn.classList.toggle("is-off", muted);
+    updateAmbience();
+  }
+
+  function setMuted(v) {
+    muted = v;
+    muteChoice = v ? "1" : "0";
+    try { window.SDArcade.storage.setItem("sd.arcade.muted", muteChoice); } catch { /* storage is best-effort */ }
+    applyMute();
+  }
+
+  function toast(text, ms = 3200) {
+    const host = root.querySelector("[data-taxi-city]");
+    if (!host || !text) return;
+    let t = host.querySelector(".taxi-toast");
+    if (!t) {
+      t = document.createElement("div");
+      t.className = "taxi-toast";
+      t.setAttribute("aria-hidden", "true");
+      host.append(t);
     }
+    t.textContent = text;
+    t.classList.add("is-on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("is-on"), ms);
+    if (arcade) arcade.live(text);
   }
 
   function setNow(text) {
-    if (boardNow) boardNow.textContent = text;
+    toast(text);
   }
 
   function showOverlay(kicker, title, copy, playLabel, shareHref) {
@@ -316,10 +372,6 @@
     if (overlayTitle) overlayTitle.textContent = title;
     if (overlayCopy) overlayCopy.textContent = copy;
     if (playBtn) playBtn.textContent = playLabel || "Play";
-    if (heroPlay) {
-      heroPlay.hidden = false;
-      heroPlay.textContent = playLabel || "Play";
-    }
     if (shareBtn) {
       if (shareHref) {
         shareBtn.hidden = false;
@@ -329,13 +381,133 @@
       }
     }
     overlay.hidden = false;
+    hideResults();
   }
 
   function hideOverlay() {
     overlay.hidden = true;
+    hideResults();
     if (shareBtn) shareBtn.hidden = true;
-    if (heroPlay) heroPlay.hidden = true;
   }
+
+  let lastResult = null;
+
+  function hideResults() {
+    if (resultsEl) resultsEl.hidden = true;
+    overlay.classList.remove("has-results");
+    if (shareCardBtn) shareCardBtn.hidden = true;
+    if (overlayCopy) overlayCopy.hidden = false;
+  }
+
+  /* r: { medal, title, total, rows: [[label, value]], pb, share } */
+  function showResults(r) {
+    lastResult = r;
+    if (!resultsEl) return;
+    resultsEl.hidden = false;
+    overlay.classList.add("has-results");
+    if (overlayCopy) overlayCopy.hidden = true;
+    if (medalEl) medalEl.innerHTML = window.SDArcade.medalSvg(r.medal);
+    if (rowsEl) {
+      rowsEl.textContent = "";
+      r.rows.forEach(([k, v]) => {
+        const dt = document.createElement("dt");
+        const dd = document.createElement("dd");
+        dt.textContent = k;
+        dd.textContent = v;
+        rowsEl.append(dt, dd);
+      });
+    }
+    if (pbEl) {
+      pbEl.textContent = r.pb || "";
+      pbEl.hidden = !r.pb;
+    }
+    if (shareCardBtn) {
+      shareCardBtn.hidden = !r.share;
+      shareCardBtn.textContent = "Share result";
+    }
+    if (scoreEl) {
+      if (reducedMotion) scoreEl.textContent = r.total.toLocaleString();
+      else {
+        const t0 = performance.now();
+        const tick = (now) => {
+          const k = Math.min(1, (now - t0) / 1000);
+          scoreEl.textContent = Math.round(r.total * (1 - Math.pow(1 - k, 3))).toLocaleString();
+          if (k < 1 && resultsEl && !resultsEl.hidden) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    }
+  }
+
+  function buildShareCard(r) {
+    const c = document.createElement("canvas");
+    c.width = 1200;
+    c.height = 630;
+    const g = c.getContext("2d");
+    const bg = g.createLinearGradient(0, 0, 0, 630);
+    bg.addColorStop(0, "#050914");
+    bg.addColorStop(1, "#13294a");
+    g.fillStyle = bg;
+    g.fillRect(0, 0, 1200, 630);
+    const rnd = FX ? FX.prng(r.total + 17) : Math.random;
+    for (let x = 0; x < 1200; x += 38) {
+      const h = 60 + rnd() * 150;
+      g.fillStyle = "#16233a";
+      g.fillRect(x, 560 - h, 34, h);
+      g.fillStyle = "rgba(255,214,140,0.7)";
+      for (let wy = 560 - h + 10; wy < 548; wy += 18) if (rnd() > 0.45) g.fillRect(x + 6 + (rnd() > 0.5 ? 14 : 0), wy, 7, 8);
+    }
+    g.fillStyle = "#0b111b";
+    g.fillRect(0, 560, 1200, 70);
+    g.strokeStyle = "rgba(255,215,120,0.7)";
+    g.lineWidth = 3;
+    g.setLineDash([26, 22]);
+    g.beginPath();
+    g.moveTo(0, 596);
+    g.lineTo(1200, 596);
+    g.stroke();
+    g.setLineDash([]);
+    g.fillStyle = "#9fe8ff";
+    g.fillRect(820, 582, 64, 26);
+    g.fillStyle = "#ffd16a";
+    g.fillRect(852, 586, 24, 18);
+    const mc = window.SDArcade.MEDALS[r.medal] || window.SDArcade.MEDALS.bronze;
+    g.fillStyle = mc;
+    g.beginPath();
+    g.arc(1040, 190, 84, 0, Math.PI * 2);
+    g.fill();
+    g.fillStyle = "#18202c";
+    g.font = '700 100px "IBM Plex Mono", ui-monospace, monospace';
+    g.textAlign = "center";
+    g.fillText(r.medal === "gold" ? "1" : r.medal === "silver" ? "2" : r.medal === "fail" ? "!" : "3", 1040, 224);
+    g.textAlign = "left";
+    g.fillStyle = "#ffb454";
+    g.font = '600 26px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillText("ROBOTAXI BOSS  /  SUPERCHARGED DAILY ARCADE", 70, 92);
+    g.fillStyle = "#f4f7fb";
+    g.font = '700 80px Inter, system-ui, sans-serif';
+    g.fillText(r.title, 70, 200);
+    g.font = '600 140px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillText(r.total.toLocaleString(), 70, 360);
+    g.fillStyle = "rgba(220,232,246,0.82)";
+    g.font = '500 30px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillText(r.sub, 70, 420);
+    g.fillStyle = "#ffffff";
+    g.font = '600 28px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillText("superchargeddaily.com/robotaxi.html", 70, 520);
+    return new Promise((resolve) => c.toBlob(resolve, "image/png"));
+  }
+
+  shareCardBtn?.addEventListener("click", () => {
+    if (!lastResult) return;
+    const modeName = arcade.mode === "daily" ? `daily ${arcade.day}` : arcade.mode;
+    window.SDArcade.share(() => buildShareCard(lastResult), {
+      text: `I scored ${lastResult.total.toLocaleString()} running Robotaxi Boss (${modeName}). Can you beat it?`,
+      url: `${location.origin}/robotaxi.html${arcade.mode === "daily" ? `?mode=daily&day=${arcade.day}` : ""}`,
+      button: shareCardBtn,
+      fileName: "robotaxi-boss.png",
+    });
+  });
 
   function el(tag, className, text) {
     const node = document.createElement(tag);
@@ -541,7 +713,7 @@
     renderFleet();
     renderActions();
     if (state !== "resolve") renderLog();
-    renderStrategy();saveResume();
+    renderStrategy();saveResume();updateAmbience();
   }
 
   function tapCab(id) {
@@ -1042,6 +1214,9 @@
     const bonus = dayRun.contractServed >= c.rides ? c.bonus : 0;
     const lines = dayRun.lines.slice();
     if (bonus) {
+      arpeggio();
+      buzz([30, 40, 80]);
+      toast(`Contract won: +${money(bonus)}`, 3000);
       game.cash += bonus;
       game.reputation += 3;
       lines.unshift({ text: `${c.label} won · ${money(bonus)} contract bonus.`, kind: "good" });
@@ -1142,7 +1317,7 @@
     game.log = [];
     setNow(`${today().name} · ${forecastCopy(today())}`);
     beep(360, 0.08);
-    paint();root.querySelector('[data-taxi-forecast]').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    paint();focusCity();
   }
 
   function shareHref(score, g) {
@@ -1154,6 +1329,7 @@
     state = "end";
     lastEndFailed = !!failReason;
     const score = Math.max(0, Math.round(scoreOf(game)));
+    const prevBest = best;
     if (score > best) {
       best = score;
       window.SDArcade.storage.setItem(STORE, String(best));
@@ -1166,9 +1342,11 @@
       arcade.record({score,missions:game.day+1,complete:false,medal,title:failReason==='bankrupt'?'Chapter 11':'Permits suspended',copy:why+' You reached day '+(game.day+1)+' with '+game.rides+' rides.'});
       arcade.live((failReason==='bankrupt'?'Bankrupt. ':'Permits suspended. ')+score.toLocaleString()+' points.');
       setNow(failReason==='bankrupt'?'Chapter 11':'Permits suspended');
-      showOverlay(failReason==='bankrupt'?'Chapter 11':'Permits suspended',score.toLocaleString(),why+' Day '+(game.day+1)+', '+game.rides+' rides, reputation '+Math.round(game.reputation)+'.','Run another week');
+      showOverlay('Week over',failReason==='bankrupt'?'Chapter 11':'Permits suspended',why+' Day '+(game.day+1)+', '+game.rides+' rides, reputation '+Math.round(game.reputation)+'.','Run another week');
+      showResults({ medal: 'fail', title: failReason === 'bankrupt' ? 'Chapter 11' : 'Permits suspended', total: score, sub: 'Day ' + (game.day + 1) + ' of 7 \u00b7 ' + arcade.mode, rows: [['Reached', 'Day ' + (game.day + 1)], ['Rides', String(game.rides)], ['Reputation', String(Math.round(game.reputation))], ['Cash', money(game.cash)]], pb: best ? 'Personal best ' + best.toLocaleString() : '', share: false });
       paint();
-      beep(200, 0.2, 'sawtooth', 0.06);
+      sting();
+      buzz([120, 40, 160]);
       return;
     }
     window.SDArcade.event('game_complete');
@@ -1181,23 +1359,34 @@
     setNow(`Week locked · ${score.toLocaleString()} pts`);
     showOverlay(
       "Week over",
-      score.toLocaleString(),
+      "Week complete",
       `${money(game.cash)} in the till. ${game.cars.length} cabs, ${game.rides} rides, ${game.missed} missed, reputation ${Math.round(game.reputation)}.`,
       "Run another week",
       shareHref(score, game)
     );
+    const won = game.history.filter((h) => h.bonus).length;
+    showResults({
+      medal,
+      title: 'Week complete',
+      total: score,
+      sub: `${game.cars.length} cabs \u00b7 ${game.rides} rides \u00b7 ${arcade.mode}${game.week ? ` \u00b7 week ${game.week + 1}` : ''}`,
+      rows: [['Cash', money(game.cash)], ['Cabs', String(game.cars.length)], ['Rides', String(game.rides)], ['Missed', String(game.missed)], ['Reputation', String(Math.round(game.reputation))], ['Contracts won', `${won} of 7`]],
+      pb: score > prevBest ? `New personal best: ${score.toLocaleString()}${prevBest ? ` (+${(score - prevBest).toLocaleString()})` : ''}` : `Personal best ${best.toLocaleString()}`,
+      share: true,
+    });
     paint();
-    beep(520, 0.12, "triangle", 0.07);
+    arpeggio();
+    buzz([40, 30, 90]);
   }
 
   function startWeek() {
-    ensureAudio();clearTimeout(tickTimer);selected.clear();
+    if(muted&&muteChoice!=='1')muted=false;ensureAudio();applyMute();clearTimeout(tickTimer);selected.clear();
     const saved=!forceNew&&getResume();forceNew=false;
-    if(saved&&saved.mode===arcade.mode&&(arcade.mode!=='daily'||saved.day===arcade.day)){game=saved.game;state=saved.state;dayRun=null;window.SDArcade.event('game_start');window.SDArcade.visit();hideOverlay();setNow('Week restored · '+today().name);arcade.markPlayed();paint();return;}
+    if(saved&&saved.mode===arcade.mode&&(arcade.mode!=='daily'||saved.day===arcade.day)){game=saved.game;state=saved.state;dayRun=null;window.SDArcade.event('game_start');window.SDArcade.visit();hideOverlay();setNow('Week restored · '+today().name);arcade.markPlayed();paint();arcade.focus();return;}
     const week=arcade.mode==='campaign'?weekNo:0;
     weekRandom=M.random(arcade.seed()+':week'+(week?':'+week:''));
     game={day:0,week,contractPick:0,cash:START_CASH,reputation:START_REP,rides:0,missed:0,bought:0,cars:Array.from({length:START_CARS},(_,i)=>makeCar(i)),days:planWeek(week),log:[],pending:null,queueIndex:0,pricing:'balanced',upgrades:{depot:false,routing:false,care:false,ops:false,surgeai:false,brand:false},history:[]};
-    state='deploy';dayRun=null;hideOverlay();setNow('Day 1 · garage open'+(week?' · week '+(week+1):''));arcade.markPlayed();paint();beep(480,.09,'triangle',.05);
+    state='deploy';dayRun=null;hideOverlay();setNow('Day 1 · garage open'+(week?' · week '+(week+1):''));arcade.markPlayed();paint();arcade.focus();beep(480,.09,'triangle',.05);
     window.SDArcade.event(lastEndFailed?'game_retry':'game_start');window.SDArcade.visit();lastEndFailed=false;
   }
   function buyUpgrade(id){if(state!=='deploy')return;const u=M.UPGRADES.find(x=>x.id===id);if(!u||game.upgrades[id]||game.cash<u.cost)return;game.cash-=u.cost;game.upgrades[id]=true;if(id==='brand')game.reputation=Math.min(100,game.reputation+10);setNow(u.title+' installed');paint();}
@@ -1230,7 +1419,22 @@
       b.addEventListener("click", () => sendSelected(z.id));
       node.append(b);
     });
-    city = FX.create(canvas, { seed: arcade.seed(), reduced: reducedMotion });
+    city = FX.create(canvas, {
+      seed: arcade.seed(),
+      reduced: reducedMotion,
+      onEvent: (kind, ev) => {
+        if (kind === "cash") cashTick();
+        else if (kind === "break") {
+          sting();
+          buzz([40, 30, 40]);
+          toast(`Cab ${ev.carId + 1} broke down in ${zoneName(ev.zone)}`, 2600);
+        } else if (kind === "bonus") {
+          arpeggio();
+          buzz([30, 40, 80]);
+          toast(`Contract won: +${money(ev.amount)}`, 3000);
+        }
+      },
+    });
     if (window.ResizeObserver) new ResizeObserver(() => { city.resize(); if (game) { city.set(cityData()); city.draw(); } }).observe(node);
     if (window.IntersectionObserver) {
       new IntersectionObserver((entries) => {
@@ -1323,41 +1527,22 @@
     const chart=root.querySelector('[data-taxi-chart]');chart.replaceChildren();if(game.history.length){const max=Math.max(1,...game.history.map(d=>d.revenue));game.history.forEach(d=>{const bar=el('div','');const fill=el('i','');fill.style.height=(d.revenue/max*65)+'px';bar.append(el('span','',money(d.revenue)),fill,el('span','',d.name));chart.append(bar);});chart.setAttribute('role','img');chart.setAttribute('aria-label',game.history.map(d=>d.name+' revenue '+money(d.revenue)).join('; '));}
     arcade.telemetry({state:state==='deploy'?'Planning':state==='night'?'Charging':state==='resolve'?'City running':state==='end'?'Week complete':'Ready',sound:muted?'Sound off':'Sound on'});
   }
-  const arcade=window.SDArcade.mount('robotaxi',{reset(){clearTimeout(tickTimer);if(dayRun)clearInterval(dayRun.timer);dayRun=null;state='attract';game=null;showOverlay('New mission','Open the garage','Choose your fleet strategy. Saved weeks restore when you press Play.','Play');},restart(){forceNew=true;weekNo=0;try{window.SDArcade.storage.setItem(WEEK_STORE,'0');}catch{}startWeek();},pause(){},sound(){ensureAudio();muted=!muted;applyMute();return muted;}});
+  const arcade=window.SDArcade.mount('robotaxi',{autoFocus:true,reset(){clearTimeout(tickTimer);if(dayRun)clearInterval(dayRun.timer);dayRun=null;state='attract';game=null;showOverlay('New mission','Open the garage','Choose your fleet strategy. Saved weeks restore when you press Play.','Play');},restart(){forceNew=true;weekNo=0;try{window.SDArcade.storage.setItem(WEEK_STORE,'0');}catch{}startWeek();},pause(){},sound(){ensureAudio();setMuted(!muted);return muted;}});
   root.querySelector('[data-taxi-report]').onclick=()=>{hideOverlay();root.querySelector('[data-taxi-chart]').scrollIntoView({block:'center',behavior:'instant'});};
   root.querySelector('[data-taxi-pricing]').onchange=e=>{if(state==='deploy'){game.pricing=e.target.value;paint();}};
   document.addEventListener('visibilitychange',()=>{if(document.hidden){saveResume();clearTimeout(tickTimer);}else if(state==='resolve'&&!city)playQueue();else startLoop();});
   window.addEventListener('keydown',e=>{if(state!=='deploy'||e.target?.closest?.('input,select,textarea,button,a'))return;const i=Number(e.key)-1;if(i>=0&&i<4){e.preventDefault();sendSelected(ZONES[i].id);}});
 
-  if (nameInput) {
-    const saved = window.SDArcade.storage.getItem(NAME_STORE);
-    if (saved) nameInput.value = saved.slice(0, 12);
-    nameInput.addEventListener("input", () => {
-      window.SDArcade.storage.setItem(NAME_STORE, callsign());
-    });
-  }
-
-  muteBtn?.addEventListener("click", () => {
-    ensureAudio();
-    muted = !muted;
-    applyMute();
-  });
-
   playBtn?.addEventListener("click", () => {
-    startWeek();
-  });
-  heroPlay?.addEventListener("click", () => {
     startWeek();
   });
 
   window.addEventListener("keydown", (e) => {
-    if (nameInput && document.activeElement === nameInput) return;
     const tag = document.activeElement?.tagName;
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || tag === "BUTTON" || tag === "A") return;
     if (e.key === "m" || e.key === "M") {
       ensureAudio();
-      muted = !muted;
-      applyMute();
+      setMuted(!muted);
     }
     if (e.key === "Enter" && (state === "attract" || state === "end")) startWeek();
   });
@@ -1377,17 +1562,9 @@
     pending: null,
     queueIndex: 0,
   };
-  if (window.AljrBoard) {
-    window.AljrBoard.onChange((id) => {
-      if (id === GAME) renderBoard(freshId);
-    });
-    window.AljrBoard.load(GAME);
-  }
   const savedWeek=getResume();if(savedWeek)showOverlay('Saved week','Your city is waiting.','Continue your saved week, or use Restart to begin a new one.','Continue week');
-  window.RobotaxiGame={dbg:()=>({playing:city&&city.playing,raf:cityRaf,vis:cityVisible,dayRun:!!dayRun,resolved:dayRun&&dayRun.resolved}),state:()=>state,snapshot:()=>JSON.parse(JSON.stringify(game)),start:startWeek,assign:sendToZone,runDay,finishResolve,finishNight,buyUpgrade,mode:()=>arcade.mode};
-  renderBoard();
+  window.RobotaxiGame={muted:()=>muted,dbg:()=>({playing:city&&city.playing,raf:cityRaf,vis:cityVisible,dayRun:!!dayRun,resolved:dayRun&&dayRun.resolved}),state:()=>state,snapshot:()=>JSON.parse(JSON.stringify(game)),start:startWeek,assign:sendToZone,runDay,finishResolve,finishNight,buyUpgrade,mode:()=>arcade.mode};
   applyMute();
   paint();
-  if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
 })();
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 27 Oct 2026 — Robotaxi Boss: sound, phone and results (PR 3 of 3)
+
+- **Sound:** on after you start (a muted choice is remembered, same as the other games), through a compressor with city hum, a rain bed when it rains, traffic during the day replay, a rising cash tick on fares, a sting and haptic when a cab breaks, an arpeggio and haptic for contract wins, and a toast over the map for events and status. Haptics respect mute and reduced motion.
+- **Phone:** Play enters focus view, the action bar ("Run the day", "Sleep ·" and the rest) is fixed to the bottom of the screen, the fleet is a swipeable tray, dispatch opens as a bottom sheet, the header and mode bar are compact, and landscape gives the map the full height. The map scrolls into view after each night instead of jumping to the forecast.
+- **Results screen:** animated medal, points counting up, rows (cash, cabs, rides, missed, reputation, contracts won), personal-best delta, and a Share result button that sends a generated 1200x630 card through the share sheet (text and link fallback, then clipboard). Failed weeks ("Permits suspended", "Chapter 11") get their own card.
+- Shared helpers `SDArcade.share` and `SDArcade.medalSvg` added to `arcade.js` for new games to reuse.
+- Cleanup: removed the dead leaderboard, callsign and hero-button code from `robotaxi.js` and 23 dead CSS rules from `robotaxi.css`; the manual and intro describe windows, tokens, contracts and the new ways to lose.
+- Tests: Robotaxi sound default and remembered mute, phone focus view with the fixed action bar at 390 px, results card after the week.
+
 ## 27 Oct 2026 — Robotaxi Boss: decisions that matter (PR 2 of 3)
 
 - Campaign and daily days now run in **four dispatch windows** (morning rush, midday, evening rush, night out). Between windows the day pauses for about 7 seconds: spend **dispatch tokens** (2 a day, 3 with the Ops centre) to **surge** a zone (+25% fare, -20% demand), **rebalance the fleet** toward the zones that are short, or pay for a **roadside fix** after a breakdown. Under reduced motion and in tests the windows run straight through with no interventions, so `Run the day` is still synchronous. Training keeps the single-shot day.
