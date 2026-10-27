@@ -1,5 +1,5 @@
 """Homepage conversion and discovery journeys. All signup requests are mocked."""
-import asyncio,json,mimetypes,os,shutil
+import asyncio,base64,json,mimetypes,os,shutil
 from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 from playwright.async_api import async_playwright
@@ -24,6 +24,10 @@ async def main():
     return await r.abort()
    await context.route('**/*',route);await page.goto(SITE+'/',wait_until='domcontentloaded');await page.wait_for_timeout(500);await page.evaluate('document.fonts.ready')
    assert await page.locator('h1').count()==1
+   if width<=600:
+    boxes=[await page.locator(s).bounding_box() for s in ['.hs-hero h1','.hv-pitch','.hv-start','#newsletter','.hs-hero-visual','.hs-stories']]
+    assert all(b and b['height']>0 for b in boxes),'Hero sections must have real, visible layout boxes'
+    assert all(boxes[i]['y']+boxes[i]['height']<=boxes[i+1]['y']+2 for i in range(len(boxes)-1)),(width,'hero reading order',boxes)
    assert await page.locator('[data-newsletter-form]').count()==2,'One deliberate hero form and one lower-page form'
    assert 'Tesla, SpaceX and xAI' in await page.locator('.hv-pitch').inner_text()
    if width<=600:assert await page.locator('#newsletter input[type=email]').evaluate('(i)=>parseFloat(getComputedStyle(i).fontSize)')>=16,'Prevent iOS input zoom'
@@ -37,6 +41,8 @@ async def main():
    assert await page.locator('.hs-tool').count()==5
    for link in await page.locator('.hv-start a').all():assert (await link.bounding_box())['height']>=44
    await page.screenshot(path=str(OUT/f'home-{width}-{theme}-{mode}.png'))
+   if mode=='normal' and (width,theme) in [(320,'dark'),(390,'dark'),(390,'light'),(1440,'dark')]:
+    jpg=OUT/f'home-restored-{width}-{theme}.jpg';await page.screenshot(path=str(jpg),type='jpeg',quality=65);print('HOME_RESTORE_PREVIEW '+jpg.name+' '+base64.b64encode(jpg.read_bytes()).decode(),flush=True)
    if mode=='normal'and width==1440 and theme=='dark':
     await page.get_by_role('link',name='Explore trackers',exact=True).click();assert page.url.endswith('#hv-trk-h')
     await page.locator('[data-hs-filter="tesla"]').click()

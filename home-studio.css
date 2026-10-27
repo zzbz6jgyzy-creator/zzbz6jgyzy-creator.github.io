@@ -28,24 +28,3 @@ html[data-theme=light] .hs-home{--hs-bg:#f3f1ec;--hs-surface:#fffdf9;--hs-surfac
 @media(min-width:370px) and (max-width:600px){.hs-home .hs-hero-signup .hs-form .sd-btn{width:auto;flex:none;max-width:57%}.hs-home .hs-hero-signup .hs-form input[type=email]{min-width:130px}}
 
 @media(max-width:600px){.hs-home .hs-hero-signup .hs-form input[type=email],.hs-home .hs-newsletter .hs-form input[type=email]{font-size:16px}}
-
-/* Phones: lead with the news. The hero copy and the Roadster showcase used to fill the first two screens, so the top story
-   sat below the fold for readers arriving from X. Sign-up stays above the fold, the lead story follows straight away.
-   Visual order only; the DOM order (and the desktop layout) is unchanged. */
-@media (max-width: 600px) {
-  .hs-home { display: flex; flex-direction: column; }
-  .hs-home > * { order: 20; }
-  .hs-home > .pn-spacer, .hs-home > .hv-live-top { order: 0; }
-  .hs-home > .hs-hero, .hs-home > .hs-hero > .hs-hero-copy { display: contents; }
-  .hs-hero-copy > .hs-eyebrow { order: 1; margin-top: 12px; }
-  .hs-hero-copy > h1 { order: 2; font-size: clamp(34px, 10vw, 42px) !important; margin: 10px 0 14px !important; }
-  .hs-hero-copy > .hs-hero-signup { order: 3; padding-top: 14px; }
-  .hs-hero-copy .hs-signup-label { margin-bottom: 8px; }
-  .hs-home > .hs-stories { order: 4; margin-top: 18px; }
-  .hs-stories .hs-section-head { margin-bottom: 12px; }
-  .hs-stories .hs-section-head h2 { font-size: 26px !important; line-height: 1.1; }
-  .hs-hero-copy > .hv-pitch { order: 5; margin-top: 28px; }
-  .hs-hero-copy > .hv-start { order: 6; }
-  .hs-hero-copy > :not(.hs-eyebrow, h1, .hv-pitch, .hv-start, .hs-hero-signup) { order: 7; }
-  .hs-home > .hs-hero > .hs-hero-visual { order: 8; margin-top: 28px; }
-}
