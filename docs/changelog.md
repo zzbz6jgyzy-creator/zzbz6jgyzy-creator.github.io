@@ -1,5 +1,15 @@
 # Changelog
 
+## 27 Oct 2026 — Robotaxi Boss: decisions that matter (PR 2 of 3)
+
+- Campaign and daily days now run in **four dispatch windows** (morning rush, midday, evening rush, night out). Between windows the day pauses for about 7 seconds: spend **dispatch tokens** (2 a day, 3 with the Ops centre) to **surge** a zone (+25% fare, -20% demand), **rebalance the fleet** toward the zones that are short, or pay for a **roadside fix** after a breakdown. Under reduced motion and in tests the windows run straight through with no interventions, so `Run the day` is still synchronous. Training keeps the single-shot day.
+- **Two contracts a day:** pick the safe one or the bold one (35% more rides for 70% more bonus).
+- **Six upgrades:** Ops centre (+1 token), Surge AI (surge +40% fares, only 15% demand lost) and Brand campaign (+10 reputation, +5% demand) join the original three.
+- **Stakes:** reputation under 15, or cash below zero, at the end of a day ends the week early ("Permits suspended" / "Chapter 11", recorded as an incomplete run). Reputation rules are gentler than before for ordinary coverage gaps and harsher for total neglect.
+- **Campaign progression:** "Run another week" starts week 2, 3 and so on (more rain, +6% demand per week, more breakdowns). Week 1 is unchanged and deterministic; Restart goes back to week 1.
+- Anonymous counters for Robotaxi starts, retries, completions and `game_fail_bankrupt` (Worker allowlist extended, redeploy needed).
+- Map and run improvements: the map scrolls into view when you run the day; playback keeps running when the map is off screen.
+
 ## 27 Oct 2026 — Robotaxi Boss: the living city (PR 1 of 3)
 
 - The static SVG diagram is replaced by a live Canvas 2D city (`robotaxi-fx.js`): a seeded procedural map with downtown towers, an airport with a runway and passing planes, a stadium with floodlights and a concert glow, hills with houses and contours, a river, arterial roads and a depot with charging bays.

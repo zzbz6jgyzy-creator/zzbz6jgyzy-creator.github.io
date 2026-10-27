@@ -17,6 +17,15 @@
   const BOARD_STORE = "sd.arcade.robotaxi.runs.v2";
   const NAME_STORE = "aljr.taxi.name";
   const SHARE_URL = "https://superchargeddaily.com/robotaxi.html";
+  const WEEK_STORE = "sd.arcade.robotaxi.week";
+  const ROADSIDE = 150;
+  const PERMIT_MIN = 15;
+  const WINDOWS = [
+    { name: "Morning rush", from: 6, to: 10 },
+    { name: "Midday", from: 10, to: 15 },
+    { name: "Evening rush", from: 15, to: 20 },
+    { name: "Night out", from: 20, to: 22 },
+  ];
 
   const ZONES = [
     { id: "downtown", name: "Downtown", fare: 16, base: 22, art: [18, 28, 22, 32, 16] },
@@ -61,6 +70,10 @@
   let muted = true;
   let audio = null;
   let tickTimer = 0;
+  let dayRun = null;
+  let weekNo = 0;
+  try { weekNo = Number(window.SDArcade.storage.getItem(WEEK_STORE)) || 0; } catch { weekNo = 0; }
+  let lastEndFailed = false;
   let freshId = "";
   const M=window.SDArcadeModel;
   let weekRandom=()=>.5;
@@ -133,11 +146,11 @@
     return { id, charge, zone: null, fast: false, night: false, broken: false };
   }
 
-  function planWeek() {
+  function planWeek(week = 0) {
     const days = DAY_NAMES.map((name, i) => ({
       name,
       weekday: i < 5,
-      rain: weekRandom() < (i === 3 ? 0.48 : 0.2),
+      rain: weekRandom() < (i === 3 ? 0.48 : 0.2) + 0.03 * week,
       concert: false,
       airportDelay: false,
     }));
@@ -156,6 +169,34 @@
     return game.days[game.day];
   }
 
+  function dynMode() {
+    return arcade.mode !== "training";
+  }
+
+  function zoneName(id) {
+    return ZONES.find((z) => z.id === id)?.name || "the depot";
+  }
+
+  function pickedContract() {
+    const pair = M.contractPair(arcade.seed(), game.day, today());
+    return pair[game.contractPick === 1 ? 1 : 0];
+  }
+
+  function zoneWeights(zone, day) {
+    if (zone.id === "downtown" && day.weekday) return [0.36, 0.14, 0.38, 0.12];
+    if (zone.id === "stadium" && day.concert) return [0.05, 0.1, 0.3, 0.55];
+    if (zone.id === "airport") return day.airportDelay ? [0.2, 0.4, 0.28, 0.12] : [0.28, 0.24, 0.28, 0.2];
+    return [0.3, 0.22, 0.33, 0.15];
+  }
+
+  function surgeFactors() {
+    return game.upgrades.surgeai ? { fare: 1.4, demand: 0.85 } : { fare: 1.25, demand: 0.8 };
+  }
+
+  function tokensPerDay() {
+    return 2 + (game.upgrades.ops ? 1 : 0);
+  }
+
   function demandFor(zone, day) {
     let d = zone.base;
     if (day.weekday && zone.id === "downtown") d += 18;
@@ -167,6 +208,8 @@
     if (day.airportDelay && zone.id === "airport") d += 12;
     if (day.rain) d = Math.round(d * 1.22);
     if(arcade.mode==='training')d*=.72;
+    d*=1+0.06*(game.week||0);
+    if(game.upgrades?.brand)d*=1.05;
     d*=game.pricing==='value'?1.2:game.pricing==='premium'?.8:1;
     return Math.max(5, Math.round(d));
   }
@@ -478,7 +521,7 @@
     if (state === "resolve") {
       const skip = el("button", "button button-ghost", "Skip");
       skip.type = "button";
-      skip.addEventListener("click", finishResolve);
+      skip.addEventListener("click", () => (dayRun ? skipDay() : finishResolve()));
       actionsEl.append(skip);
     }
   }
@@ -595,14 +638,13 @@
     renderLog();
   }
 
-  function runDay() {
-    if (state !== "deploy") return;
+  function runDayClassic() {
     state = "resolve";
     game.log = [];
     selected.clear();
     const day = today();
     const queue = [];
-    const contract=M.contract(arcade.seed(),game.day,today());let contractServed=0;
+    const contract=pickedContract();let contractServed=0;
     const cashBefore = game.cash;
     report = { day: game.day, weekday: day.weekday, concert: day.concert, rain: day.rain, repair: REPAIR, cashBefore, cashAfter: cashBefore, zones: [], breakdowns: [], bonus: 0 };
     let dayCash = 0;
@@ -677,6 +719,347 @@
     if(reducedMotion||!FX)finishResolve();else startPlayback();
   }
 
+  /* ---------- dispatch windows (campaign and daily) ---------- */
+  function runDay() {
+    if (state !== "deploy") return;
+    if (!dynMode()) {
+      runDayClassic();
+      return;
+    }
+    state = "resolve";
+    game.log = [];
+    selected.clear();
+    const day = today();
+    dayRun = {
+      resolved: 0,
+      tokens: tokensPerDay(),
+      surge: {},
+      contract: pickedContract(),
+      contractServed: 0,
+      contractBefore: 0,
+      breakAt: {},
+      carWork: {},
+      assigned: new Set(),
+      zoneTot: Object.fromEntries(ZONES.map((z) => [z.id, { demand: 0, served: 0, missed: 0 }])),
+      lines: [],
+      dayCash: 0,
+      dayRides: 0,
+      dayMissed: 0,
+      lastBreaks: [],
+      timer: 0,
+    };
+    game.cars.forEach((car) => {
+      if (car.zone && !car.broken && capacity(car, day.rain) > 0) {
+        dayRun.assigned.add(car.id);
+        const p = (car.charge < 30 ? 0.1 : day.rain ? 0.045 : 0.025) * (game.upgrades.care ? 0.25 : 1) * (1 + 0.15 * (game.week || 0));
+        if (M.random(`${arcade.seed()}:break:${game.day}:${car.id}`)() < p) {
+          dayRun.breakAt[car.id] = Math.floor(M.random(`${arcade.seed()}:breakwin:${game.day}:${car.id}`)() * 3) + 1;
+        }
+      }
+    });
+    if (reducedMotion || !FX) {
+      for (let i = 0; i < WINDOWS.length; i += 1) resolveWindow(i);
+      finishDayRun();
+      return;
+    }
+    paint();
+    focusCity();
+    runWindow(0);
+  }
+
+  function resolveWindow(i) {
+    const day = today();
+    const sf = surgeFactors();
+    const cashBefore = game.cash;
+    const zones = [];
+    const breakdowns = [];
+    dayRun.lastBreaks = [];
+    game.cars.forEach((car) => {
+      if (dayRun.breakAt[car.id] === i && !car.broken) {
+        car.broken = true;
+        game.cash -= REPAIR;
+        breakdowns.push({ carId: car.id, zone: car.zone });
+        dayRun.lastBreaks.push(car.id);
+        dayRun.lines.push({ text: `${WINDOWS[i].name}: Cab ${car.id + 1} broke down in ${zoneName(car.zone)}. Repair ${money(REPAIR)}.`, kind: "bad" });
+      }
+    });
+    let winRides = 0;
+    let winMissed = 0;
+    let winCash = 0;
+    dayRun.contractBefore = dayRun.contractServed;
+    ZONES.forEach((zone) => {
+      const surge = !!dayRun.surge[zone.id];
+      const demand = Math.max(0, Math.round(demandFor(zone, day) * zoneWeights(zone, day)[i] * (surge ? sf.demand : 1)));
+      const cars = zoneCars(zone.id).filter((c) => capacity(c, day.rain) > 0);
+      const rawCap = cars.reduce((sum, c) => sum + capacity(c, day.rain), 0);
+      const cap = Math.round(rawCap / WINDOWS.length);
+      const served = Math.min(demand, cap);
+      const missed = demand - served;
+      const fare = Math.round(fareFor(zone, day, game.reputation) * (surge ? sf.fare : 1));
+      const revenue = served * fare;
+      const tot = dayRun.zoneTot[zone.id];
+      tot.demand += demand;
+      tot.served += served;
+      tot.missed += missed;
+      if (zone.id === dayRun.contract.zone) dayRun.contractServed += served;
+      cars.forEach((c) => {
+        dayRun.assigned.add(c.id);
+        dayRun.carWork[c.id] = (dayRun.carWork[c.id] || 0) + (rawCap ? (served * capacity(c, day.rain)) / rawCap : 0);
+      });
+      winRides += served;
+      winMissed += missed;
+      winCash += revenue;
+      zones.push({ id: zone.id, n: cars.length, cap, demand, served, missed, fare, revenue });
+    });
+    game.cash += winCash;
+    dayRun.dayCash += winCash;
+    dayRun.dayRides += winRides;
+    dayRun.dayMissed += winMissed;
+    const surged = ZONES.filter((z) => dayRun.surge[z.id]).map((z) => z.name);
+    dayRun.lines.push({
+      text: `${WINDOWS[i].name}: ${winRides} rides, ${money(winCash)}${winMissed ? ` · ${winMissed} missed` : ""}${surged.length ? ` · surge ${surged.join(", ")}` : ""}`,
+      kind: winMissed > 8 ? "bad" : winRides ? "good" : "",
+    });
+    dayRun.surge = {};
+    dayRun.resolved = i + 1;
+    return {
+      day: game.day,
+      weekday: day.weekday,
+      concert: day.concert,
+      rain: day.rain,
+      repair: REPAIR,
+      cashBefore,
+      cashAfter: game.cash,
+      zones,
+      breakdowns,
+      bonus: 0,
+      hourFrom: WINDOWS[i].from,
+      hourTo: WINDOWS[i].to,
+    };
+  }
+
+  function runWindow(i) {
+    ensureCity();
+    closeDispatch(true);
+    const win = resolveWindow(i);
+    report = win;
+    setNow(`${today().name} · ${WINDOWS[i].name}`);
+    if (forecastEl) forecastEl.textContent = `${WINDOWS[i].name}. The city is moving.`;
+    city.set(cityData());
+    city.playDay(win, {
+      duration: 2600,
+      hourFrom: win.hourFrom,
+      hourTo: win.hourTo,
+      onDone: () => {
+        renderHud();
+        const latest = dayRun.lines[dayRun.lines.length - 1];
+        game.log = dayRun.lines.slice();
+        renderLog();
+        if (latest) beep(latest.kind === "bad" ? 180 : 440, 0.05);
+        if (i < WINDOWS.length - 1) openDispatch(i + 1);
+        else tickTimer = setTimeout(finishDayRun, 400);
+      },
+    });
+    startLoop();
+  }
+
+  function projection(next) {
+    const day = today();
+    return ZONES.map((zone) => {
+      const cars = zoneCars(zone.id).filter((c) => capacity(c, day.rain) > 0);
+      const surge = !!dayRun.surge[zone.id];
+      return {
+        id: zone.id,
+        n: cars.length,
+        cap: Math.round(cars.reduce((sum, c) => sum + capacity(c, day.rain), 0) / WINDOWS.length),
+        demand: Math.max(0, Math.round(demandFor(zone, day) * zoneWeights(zone, day)[next] * (surge ? surgeFactors().demand : 1))),
+      };
+    });
+  }
+
+  function rebalance(next) {
+    const day = today();
+    let moved = 0;
+    for (let pass = 0; pass < 2; pass += 1) {
+      const proj = projection(next);
+      const need = [...proj].sort((a, b) => b.demand - b.cap - (a.demand - a.cap))[0];
+      const give = [...proj].filter((z) => z.id !== need.id && z.cap - z.demand > 0).sort((a, b) => b.cap - b.demand - (a.cap - a.demand))[0];
+      if (!need || !give || need.demand - need.cap <= 0) break;
+      const car = zoneCars(give.id).filter((c) => capacity(c, day.rain) > 0).sort((a, b) => capacity(a, day.rain) - capacity(b, day.rain))[0];
+      if (!car || give.cap - Math.round(capacity(car, day.rain) / WINDOWS.length) < give.demand * 0.9) break;
+      car.zone = need.id;
+      moved += 1;
+    }
+    return moved;
+  }
+
+  function dispatchPanel() {
+    let panel = root.querySelector("[data-taxi-dispatch]");
+    if (panel) return panel;
+    const host = root.querySelector("[data-taxi-city]");
+    if (!host) return null;
+    panel = el("div", "taxi-dispatch");
+    panel.dataset.taxiDispatch = "";
+    panel.hidden = true;
+    panel.setAttribute("role", "group");
+    panel.setAttribute("aria-label", "Dispatch");
+    host.append(panel);
+    return panel;
+  }
+
+  function openDispatch(next) {
+    const panel = dispatchPanel();
+    if (!panel || !dayRun) {
+      runWindow(next);
+      return;
+    }
+    dayRun.next = next;
+    report = { ...report, zones: projection(next) };
+    city.hold(WINDOWS[next].from);
+    city.set(cityData());
+    renderDispatch();
+    panel.hidden = false;
+    clearTimeout(dayRun.timer);
+    dayRun.countdown = 7;
+    dayRun.timer = setInterval(() => {
+      dayRun.countdown -= 1;
+      const go = panel.querySelector("[data-dispatch-go]");
+      if (go) go.textContent = `Go · ${Math.max(0, dayRun.countdown)}`;
+      if (dayRun.countdown <= 0) closeDispatch(false);
+    }, 1000);
+  }
+
+  function closeDispatch(quiet) {
+    const panel = root.querySelector("[data-taxi-dispatch]");
+    if (!dayRun) return;
+    clearInterval(dayRun.timer);
+    if (panel) panel.hidden = true;
+    if (!quiet && state === "resolve" && dayRun.next != null && dayRun.resolved === dayRun.next) runWindow(dayRun.next);
+  }
+
+  function renderDispatch() {
+    const panel = dispatchPanel();
+    if (!panel || !dayRun) return;
+    const next = dayRun.next;
+    const proj = projection(next);
+    panel.replaceChildren();
+    const head = el("p", "taxi-dispatch-head");
+    head.append(el("b", "", `Next: ${WINDOWS[next].name}`), document.createTextNode(` · ${dayRun.tokens} dispatch token${dayRun.tokens === 1 ? "" : "s"}`));
+    panel.append(head);
+    const row = el("div", "taxi-dispatch-row");
+    proj.forEach((z) => {
+      const gap = z.demand - z.cap;
+      const zone = ZONES.find((q) => q.id === z.id);
+      const b = el("button", "taxi-dispatch-btn", `Surge ${zone.name}`);
+      b.type = "button";
+      b.append(el("small", "", gap > 0 ? `short ${gap}` : `spare ${-gap}`));
+      b.disabled = dayRun.tokens < 1 || !!dayRun.surge[z.id];
+      b.setAttribute("aria-pressed", String(!!dayRun.surge[z.id]));
+      b.addEventListener("click", () => {
+        dayRun.tokens -= 1;
+        dayRun.surge[z.id] = true;
+        beep(660, 0.05, "triangle", 0.05);
+        refreshDispatch();
+      });
+      row.append(b);
+    });
+    const re = el("button", "taxi-dispatch-btn", "Rebalance fleet");
+    re.type = "button";
+    re.append(el("small", "", "1 token"));
+    re.disabled = dayRun.tokens < 1;
+    re.addEventListener("click", () => {
+      if (rebalance(next)) {
+        dayRun.tokens -= 1;
+        beep(520, 0.05);
+      }
+      refreshDispatch();
+    });
+    row.append(re);
+    dayRun.lastBreaks.forEach((id) => {
+      const car = game.cars[id];
+      if (!car || !car.broken) return;
+      const fix = el("button", "taxi-dispatch-btn", `Roadside fix · Cab ${id + 1}`);
+      fix.type = "button";
+      fix.append(el("small", "", `1 token · ${money(ROADSIDE)}`));
+      fix.disabled = dayRun.tokens < 1 || game.cash < ROADSIDE;
+      fix.addEventListener("click", () => {
+        dayRun.tokens -= 1;
+        game.cash -= ROADSIDE;
+        car.broken = false;
+        beep(780, 0.08, "triangle", 0.05);
+        dayRun.lastBreaks = dayRun.lastBreaks.filter((x) => x !== id);
+        renderHud();
+        refreshDispatch();
+      });
+      row.append(fix);
+    });
+    panel.append(row);
+    const go = el("button", "button button-primary taxi-dispatch-go", "Go · 7");
+    go.type = "button";
+    go.dataset.dispatchGo = "";
+    go.addEventListener("click", () => closeDispatch(false));
+    panel.append(go);
+  }
+
+  function refreshDispatch() {
+    if (!dayRun) return;
+    report = { ...report, zones: projection(dayRun.next) };
+    city.set(cityData());
+    renderDispatch();
+  }
+
+  function skipDay() {
+    if (!dayRun) return;
+    clearTimeout(tickTimer);
+    closeDispatch(true);
+    if (city) city.skip();
+    while (dayRun.resolved < WINDOWS.length) resolveWindow(dayRun.resolved);
+    finishDayRun();
+  }
+
+  function finishDayRun() {
+    if (!dayRun) return;
+    clearTimeout(tickTimer);
+    closeDispatch(true);
+    const day = today();
+    ZONES.forEach((zone) => {
+      const t = dayRun.zoneTot[zone.id];
+      const cover = t.demand ? t.served / t.demand : 1;
+      if (t.demand >= 15 && cover < 0.2) game.reputation -= 9;
+      else if (t.demand >= 20 && cover < 0.4) game.reputation -= 5;
+      if (day.concert && zone.id === "stadium" && cover >= 0.6) game.reputation += 6;
+      if (cover >= 0.7 && t.demand >= 15) game.reputation += 3;
+      if (cover < 0.35 && day.concert && zone.id === "stadium") game.reputation -= 8;
+    });
+    game.cars.forEach((car) => {
+      if (dayRun.assigned.has(car.id)) {
+        const worked = (dayRun.carWork[car.id] || 0) > 0;
+        car.charge = clamp(car.charge - (worked ? (day.rain ? 64 : 52) : 18), 0, 100);
+      }
+      car.fast = false;
+    });
+    const c = dayRun.contract;
+    const bonus = dayRun.contractServed >= c.rides ? c.bonus : 0;
+    const lines = dayRun.lines.slice();
+    if (bonus) {
+      game.cash += bonus;
+      game.reputation += 3;
+      lines.unshift({ text: `${c.label} won · ${money(bonus)} contract bonus.`, kind: "good" });
+    } else lines.push({ text: `${c.label}: ${dayRun.contractServed}/${c.rides} rides. No contract bonus today.` });
+    if (day.concert) lines.unshift({ text: "Concert at the Stadium.", kind: "good" });
+    if (day.rain) lines.unshift({ text: "Rain. Slower trips, fatter fares." });
+    const revenue = dayRun.dayCash + bonus;
+    lines.unshift({ text: `${day.name}: ${dayRun.dayRides} rides, ${money(revenue)}. Cash ${money(game.cash)}.`, kind: revenue > 0 ? "good" : "" });
+    game.history.push({ name: day.name, revenue, rides: dayRun.dayRides, bonus, missed: dayRun.dayMissed });
+    game.rides += dayRun.dayRides;
+    game.missed += dayRun.dayMissed;
+    game.reputation = clamp(game.reputation, 0, 100);
+    game.pending = lines;
+    game.queueIndex = lines.length;
+    dayRun = null;
+    finishResolve();
+  }
+
   function playQueue() {
     clearTimeout(tickTimer);
     const queue = game.pending || [];
@@ -693,6 +1076,10 @@
   }
 
   function finishResolve() {
+    if (dayRun) {
+      skipDay();
+      return;
+    }
     clearTimeout(tickTimer);
     if (city) city.skip();
     if (game.pending) {
@@ -707,6 +1094,11 @@
         car.charge = Math.max(car.charge, 35);
       }
     });
+    if (city) city.hold(null);
+    if (dynMode() && (game.cash < 0 || game.reputation < PERMIT_MIN)) {
+      endWeek(game.cash < 0 ? "bankrupt" : "permits");
+      return;
+    }
     if (game.day >= 6) {
       endWeek();
       return;
@@ -758,15 +1150,32 @@
     return `https://x.com/intent/post?text=${encodeURIComponent(text)}`;
   }
 
-  function endWeek() {
+  function endWeek(failReason) {
     state = "end";
+    lastEndFailed = !!failReason;
     const score = Math.max(0, Math.round(scoreOf(game)));
     if (score > best) {
       best = score;
       window.SDArcade.storage.setItem(STORE, String(best));
     }
     window.SDArcade.storage.removeItem(resumeKey());
-    const medal=game.reputation>=65&&game.rides>=250?'gold':game.reputation>=35&&game.rides>=160?'silver':'bronze';
+    const medal=failReason?'bronze':game.reputation>=65&&game.rides>=250?'gold':game.reputation>=35&&game.rides>=160?'silver':'bronze';
+    if (failReason) {
+      window.SDArcade.event('game_fail_bankrupt');
+      const why = failReason === 'bankrupt' ? 'The fleet ran out of cash. Keep a repair buffer and charge only what you need.' : 'Your permits were suspended after reputation fell below ' + PERMIT_MIN + '. Cover the busy zones.';
+      arcade.record({score,missions:game.day+1,complete:false,medal,title:failReason==='bankrupt'?'Chapter 11':'Permits suspended',copy:why+' You reached day '+(game.day+1)+' with '+game.rides+' rides.'});
+      arcade.live((failReason==='bankrupt'?'Bankrupt. ':'Permits suspended. ')+score.toLocaleString()+' points.');
+      setNow(failReason==='bankrupt'?'Chapter 11':'Permits suspended');
+      showOverlay(failReason==='bankrupt'?'Chapter 11':'Permits suspended',score.toLocaleString(),why+' Day '+(game.day+1)+', '+game.rides+' rides, reputation '+Math.round(game.reputation)+'.','Run another week');
+      paint();
+      beep(200, 0.2, 'sawtooth', 0.06);
+      return;
+    }
+    window.SDArcade.event('game_complete');
+    if (arcade.mode === 'campaign') {
+      weekNo += 1;
+      try { window.SDArcade.storage.setItem(WEEK_STORE, String(weekNo)); } catch { /* best-effort */ }
+    }
     arcade.record({score,missions:7,complete:true,medal,title:'Your city, in review',copy:game.rides+' rides completed · '+game.missed+' missed · '+Math.round(game.reputation)+' reputation. '+game.history.filter(h=>h.bonus).length+' contracts won. Cash '+money(game.cash)+'. Try a different fare and investment strategy on the same daily seed.'});
     arcade.live('Week complete. '+score.toLocaleString()+' points. Your personal record has been saved.');
     setNow(`Week locked · ${score.toLocaleString()} pts`);
@@ -784,12 +1193,14 @@
   function startWeek() {
     ensureAudio();clearTimeout(tickTimer);selected.clear();
     const saved=!forceNew&&getResume();forceNew=false;
-    if(saved&&saved.mode===arcade.mode&&(arcade.mode!=='daily'||saved.day===arcade.day)){game=saved.game;state=saved.state;hideOverlay();setNow('Week restored · '+today().name);arcade.markPlayed();paint();return;}
-    weekRandom=M.random(arcade.seed()+':week');
-    game={day:0,cash:START_CASH,reputation:START_REP,rides:0,missed:0,bought:0,cars:Array.from({length:START_CARS},(_,i)=>makeCar(i)),days:planWeek(),log:[],pending:null,queueIndex:0,pricing:'balanced',upgrades:{depot:false,routing:false,care:false},history:[]};
-    state='deploy';hideOverlay();setNow('Day 1 · garage open');arcade.markPlayed();paint();beep(480,.09,'triangle',.05);
+    if(saved&&saved.mode===arcade.mode&&(arcade.mode!=='daily'||saved.day===arcade.day)){game=saved.game;state=saved.state;dayRun=null;window.SDArcade.event('game_start');window.SDArcade.visit();hideOverlay();setNow('Week restored · '+today().name);arcade.markPlayed();paint();return;}
+    const week=arcade.mode==='campaign'?weekNo:0;
+    weekRandom=M.random(arcade.seed()+':week'+(week?':'+week:''));
+    game={day:0,week,contractPick:0,cash:START_CASH,reputation:START_REP,rides:0,missed:0,bought:0,cars:Array.from({length:START_CARS},(_,i)=>makeCar(i)),days:planWeek(week),log:[],pending:null,queueIndex:0,pricing:'balanced',upgrades:{depot:false,routing:false,care:false,ops:false,surgeai:false,brand:false},history:[]};
+    state='deploy';dayRun=null;hideOverlay();setNow('Day 1 · garage open'+(week?' · week '+(week+1):''));arcade.markPlayed();paint();beep(480,.09,'triangle',.05);
+    window.SDArcade.event(lastEndFailed?'game_retry':'game_start');window.SDArcade.visit();lastEndFailed=false;
   }
-  function buyUpgrade(id){if(state!=='deploy')return;const u=M.UPGRADES.find(x=>x.id===id);if(!u||game.upgrades[id]||game.cash<u.cost)return;game.cash-=u.cost;game.upgrades[id]=true;setNow(u.title+' installed');paint();}
+  function buyUpgrade(id){if(state!=='deploy')return;const u=M.UPGRADES.find(x=>x.id===id);if(!u||game.upgrades[id]||game.cash<u.cost)return;game.cash-=u.cost;game.upgrades[id]=true;if(id==='brand')game.reputation=Math.min(100,game.reputation+10);setNow(u.title+' installed');paint();}
   const FX = window.SDTaxiFX;
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let city = null;
@@ -832,9 +1243,9 @@
 
   function cityData() {
     const day = today();
-    const contract = M.contract(arcade.seed(), game.day, day);
+    const contract = pickedContract();
     const live = state === "resolve" && report;
-    const served = live ? (report.zones.find((z) => z.id === contract.zone)?.served ?? 0) : 0;
+    const served = dayRun ? dayRun.contractBefore : 0;
     return {
       mode: state,
       rain: day.rain,
@@ -856,11 +1267,11 @@
 
   function cityLoop(now) {
     cityRaf = 0;
-    if (document.hidden || !city || !cityVisible) return;
+    if (document.hidden || !city) return;
     const dt = lastFrame ? now - lastFrame : 16;
     lastFrame = now;
     city.update(dt);
-    city.draw();
+    if (cityVisible) city.draw();
     if (state === "resolve" && city.playing && hudCash) hudCash.textContent = money(city.cashShown);
     cityRaf = requestAnimationFrame(cityLoop);
   }
@@ -878,8 +1289,14 @@
     else startLoop();
   }
 
+  function focusCity() {
+    const node = root.querySelector("[data-taxi-city]");
+    if (node && !reducedMotion) node.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+
   function startPlayback() {
     ensureCity();
+    focusCity();
     const queue = game.pending || [];
     city.set(cityData());
     city.playDay(report, {
@@ -900,13 +1317,13 @@
     });
     startLoop();
   }
-  function renderStrategy(){if(!game)return;cityView();const contract=M.contract(arcade.seed(),game.day,today()),pricing=root.querySelector('[data-taxi-pricing]');pricing.value=game.pricing;pricing.disabled=state!=='deploy';root.querySelector('[data-taxi-contract]').textContent=contract.label+': serve '+contract.rides+' rides in '+ZONES.find(z=>z.id===contract.zone).name+' for a '+money(contract.bonus)+' bonus.';
-    const upgrades=root.querySelector('[data-taxi-upgrades]');upgrades.replaceChildren();M.UPGRADES.forEach(u=>{const b=el('button','');b.type='button';b.dataset.upgrade=u.id;b.disabled=state!=='deploy'||game.upgrades[u.id]||game.cash<u.cost;b.append(el('strong','',u.title),el('b','',game.upgrades[u.id]?'Installed':money(u.cost)),el('span','',u.copy));b.onclick=()=>buyUpgrade(u.id);upgrades.append(b);});
+  function renderStrategy(){if(!game)return;cityView();const contract=pickedContract(),pricing=root.querySelector('[data-taxi-pricing]');pricing.value=game.pricing;pricing.disabled=state!=='deploy';const ctEl=root.querySelector('[data-taxi-contract]');if(dynMode()&&state==='deploy'){ctEl.replaceChildren();M.contractPair(arcade.seed(),game.day,today()).forEach((c,idx)=>{const b=el('button','taxi-contract-opt');b.type='button';b.setAttribute('aria-pressed',String((game.contractPick===1?1:0)===idx));b.append(el('b','',idx?'Bold':'Safe'),document.createTextNode(' '+c.label.replace(' (bold)','')+': '+c.rides+' rides in '+zoneName(c.zone)+' for '+money(c.bonus)));b.onclick=()=>{game.contractPick=idx;paint();};ctEl.append(b);});}else ctEl.textContent=contract.label+': serve '+contract.rides+' rides in '+zoneName(contract.zone)+' for a '+money(contract.bonus)+' bonus.';
+    const upgrades=root.querySelector('[data-taxi-upgrades]');upgrades.replaceChildren();M.UPGRADES.filter(u=>dynMode()||!['ops','surgeai'].includes(u.id)).forEach(u=>{const b=el('button','');b.type='button';b.dataset.upgrade=u.id;b.disabled=state!=='deploy'||game.upgrades[u.id]||game.cash<u.cost;b.append(el('strong','',u.title),el('b','',game.upgrades[u.id]?'Installed':money(u.cost)),el('span','',u.copy));b.onclick=()=>buyUpgrade(u.id);upgrades.append(b);});
     const planner=root.querySelector('[data-taxi-planner]');planner.replaceChildren();game.days.slice(game.day+1,game.day+3).forEach(d=>{const p=el('p','');p.append(el('b','','Next · '+d.name),document.createTextNode(forecastCopy(d)));planner.append(p);});if(!planner.childNodes.length)planner.append(el('p','','Final day. Finish strong.'));
     const chart=root.querySelector('[data-taxi-chart]');chart.replaceChildren();if(game.history.length){const max=Math.max(1,...game.history.map(d=>d.revenue));game.history.forEach(d=>{const bar=el('div','');const fill=el('i','');fill.style.height=(d.revenue/max*65)+'px';bar.append(el('span','',money(d.revenue)),fill,el('span','',d.name));chart.append(bar);});chart.setAttribute('role','img');chart.setAttribute('aria-label',game.history.map(d=>d.name+' revenue '+money(d.revenue)).join('; '));}
     arcade.telemetry({state:state==='deploy'?'Planning':state==='night'?'Charging':state==='resolve'?'City running':state==='end'?'Week complete':'Ready',sound:muted?'Sound off':'Sound on'});
   }
-  const arcade=window.SDArcade.mount('robotaxi',{reset(){clearTimeout(tickTimer);state='attract';game=null;showOverlay('New mission','Open the garage','Choose your fleet strategy. Saved weeks restore when you press Play.','Play');},restart(){forceNew=true;startWeek();},pause(){},sound(){ensureAudio();muted=!muted;applyMute();return muted;}});
+  const arcade=window.SDArcade.mount('robotaxi',{reset(){clearTimeout(tickTimer);if(dayRun)clearInterval(dayRun.timer);dayRun=null;state='attract';game=null;showOverlay('New mission','Open the garage','Choose your fleet strategy. Saved weeks restore when you press Play.','Play');},restart(){forceNew=true;weekNo=0;try{window.SDArcade.storage.setItem(WEEK_STORE,'0');}catch{}startWeek();},pause(){},sound(){ensureAudio();muted=!muted;applyMute();return muted;}});
   root.querySelector('[data-taxi-report]').onclick=()=>{hideOverlay();root.querySelector('[data-taxi-chart]').scrollIntoView({block:'center',behavior:'instant'});};
   root.querySelector('[data-taxi-pricing]').onchange=e=>{if(state==='deploy'){game.pricing=e.target.value;paint();}};
   document.addEventListener('visibilitychange',()=>{if(document.hidden){saveResume();clearTimeout(tickTimer);}else if(state==='resolve'&&!city)playQueue();else startLoop();});
@@ -967,7 +1384,7 @@
     window.AljrBoard.load(GAME);
   }
   const savedWeek=getResume();if(savedWeek)showOverlay('Saved week','Your city is waiting.','Continue your saved week, or use Restart to begin a new one.','Continue week');
-  window.RobotaxiGame={state:()=>state,snapshot:()=>JSON.parse(JSON.stringify(game)),start:startWeek,assign:sendToZone,runDay,finishResolve,finishNight,buyUpgrade,mode:()=>arcade.mode};
+  window.RobotaxiGame={dbg:()=>({playing:city&&city.playing,raf:cityRaf,vis:cityVisible,dayRun:!!dayRun,resolved:dayRun&&dayRun.resolved}),state:()=>state,snapshot:()=>JSON.parse(JSON.stringify(game)),start:startWeek,assign:sendToZone,runDay,finishResolve,finishNight,buyUpgrade,mode:()=>arcade.mode};
   renderBoard();
   applyMute();
   paint();
