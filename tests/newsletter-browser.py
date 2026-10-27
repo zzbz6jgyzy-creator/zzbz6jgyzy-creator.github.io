@@ -46,6 +46,7 @@ async def main():
     if width==390 and theme=='dark':
      await q.locator('.pn .pn-menu').click();await q.locator('.pn-sheet .pn-sub-sheet').click();await q.wait_for_function('document.activeElement.id==="nl-hero-email"');assert not await q.locator('body').evaluate('(b)=>b.classList.contains("pn-lock")')
     if width==1440 and theme=='dark':
+     await q.evaluate("scrollTo({top:0,behavior:'instant'})");await q.wait_for_function("!document.querySelector('.pn').classList.contains('collapsed')")
      await q.locator('.pn .pn-sub').click();await q.wait_for_function('document.activeElement.id==="nl-hero-email"')
     await q.evaluate("scrollTo({top:0,behavior:'instant'})")
     await q.screenshot(path=str(OUT/f'newsletter-{width}-{theme}.png'),full_page=True)
