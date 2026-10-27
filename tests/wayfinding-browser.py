@@ -39,7 +39,7 @@ async def main():
     await page.get_by_role('link',name='Explore trackers',exact=True).click();await page.wait_for_url(SITE+'/#hv-trk-h')
     await page.wait_for_function("document.getElementById('hv-trk-h').getBoundingClientRect().top>=0&&document.getElementById('hv-trk-h').getBoundingClientRect().top<innerHeight")
     await page.goto(SITE+'/',wait_until='domcontentloaded')
-    await page.get_by_role('link',name='Latest stories',exact=True).click();await page.wait_for_url(SITE+'/dispatch.html')
+    await page.get_by_role('link',name='Latest stories',exact=True).click();await page.wait_for_url(SITE+'/#latest-stories')
     await page.goto(SITE+'/',wait_until='domcontentloaded')
     await page.locator('.hs-wayfinder a[href="/daily.html"]').click();await page.wait_for_url(SITE+'/daily.html')
     await page.goto(SITE+'/dispatch/tesla-ai-maps-v15.html',wait_until='domcontentloaded');await page.evaluate('document.documentElement.dataset.theme='+json.dumps(theme))

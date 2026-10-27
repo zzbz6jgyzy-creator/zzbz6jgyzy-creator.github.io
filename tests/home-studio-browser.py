@@ -114,7 +114,7 @@ async def main():
             assert button['y'] >= 0 and button['y'] + button['height'] < 844, (width, 'First-screen signup', button)
             if await page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'):
                 await preview(page, f'overflow-{width}-{theme}')
-                print('HOME_OVERFLOW',await page.evaluate('''() => [...document.querySelectorAll('body *')].map(e=>({tag:e.tagName,cls:e.className?.baseVal??e.className,x:e.getBoundingClientRect().x,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})).filter(e=>e.width&& (e.x < -1 || e.right > innerWidth + 1)).slice(0,30)'''),flush=True)
+                print('HOME_OVERFLOW',await page.evaluate('''() => [...document.querySelectorAll('main *')].map(e=>({tag:e.tagName,cls:e.className?.baseVal??e.className,x:e.getBoundingClientRect().x,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})).filter(e=>e.width&& (e.x < -1 || e.right > innerWidth + 1)).slice(0,45)'''),flush=True)
                 raise AssertionError((width,theme,mode,'Horizontal overflow'))
             if mode != 'nojs':
                 assert await page.evaluate('window.__homeCLS') < .1, (width, theme, 'Layout shift', await page.evaluate('[window.__homeCLS, window.__homeShifts]'))
@@ -129,6 +129,9 @@ async def main():
             await page.screenshot(path=str(OUT / f'home-{width}-{theme}-{mode}.png'))
             if mode == 'normal' and (width, theme) in [(390, 'dark'), (390, 'light'), (768, 'dark'), (1440, 'dark')]:
                 await preview(page, f'after-{width}-{theme}')
+                if width in [390,1440] and theme=='dark':
+                    await preview(page,f'after-showcase-{width}',page.locator('.hs-hero-visual'))
+                    await preview(page,f'after-personal-{width}',page.locator('.hs-personal'))
             if mode == 'normal' and width == 1440 and theme == 'dark':
                 await page.get_by_role('link', name='Explore trackers', exact=True).click()
                 assert page.url.endswith('#hv-trk-h')
@@ -190,6 +193,8 @@ async def main():
                 for selector in ['#hs-hero-email', '#newsletter button[type=submit]', '.hs-wayfinder a:first-child']:
                     box = await page.locator(selector).bounding_box()
                     assert box and box['width'] > 0 and box['x'] >= -1 and box['x'] + box['width'] <= width + 1, ('Enlarged control clipped', selector, box)
+                for selector in ['.hs-visual-label','.hs-hero-roadster-copy','.hs-image-credit']:
+                    assert await page.locator(selector).evaluate('''e=>{const r=e.getBoundingClientRect(),p=e.closest('.hs-hero-roadster').getBoundingClientRect();return r.top>=p.top && r.bottom<=p.bottom+1 && r.left>=p.left && r.right<=p.right+1}'''),('Showcase text clipped at 200%',selector)
                 await preview(page, 'after-390-large-text')
             assert not errors, (width, theme, mode, errors)
             print(width, theme, mode, 'passed', flush=True)
