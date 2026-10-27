@@ -17,7 +17,7 @@ async def main():
      if u.hostname!='superchargeddaily.com' or not f.is_file():return await r.abort()
      return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0] or 'application/octet-stream')
     await c.route('**/*',route);page=await c.new_page();await page.goto('https://superchargeddaily.com/'+path,wait_until='networkidle');await page.evaluate('document.fonts.ready')
-    assert await page.locator('main.ps-page').count()==1
+    assert await page.locator('main.ac-page' if path=='games.html' else 'main.ps-page').count()==1
     assert await page.locator('main h1').count()==1
     overflow=await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
     if overflow:
