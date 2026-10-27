@@ -20,8 +20,8 @@
   const muteBtn = document.querySelector("[data-catch-mute]");
 
   const GAME = "catch";
-  const STORE = "aljr.catch.best";
-  const BOARD_STORE = "aljr.catch.board";
+  const STORE = "sd.arcade.catch.best.v2";
+  const BOARD_STORE = "sd.arcade.catch.runs.v2";
   const NAME_STORE = "aljr.catch.name";
   const BOARD_MAX = 8;
   const WORLD_W = 1000;
@@ -55,13 +55,19 @@
   let state = "attract";
   let flight = 0;
   let score = 0;
-  let best = Number(localStorage.getItem(STORE) || 0);
-  let muted = false;
+  let best = Number(window.SDArcade.storage.getItem(STORE) || 0);
+  let muted = true;
   let audio;
   let engine = null;
   let wasBurning = false;
   let freshId = "";
   let last = 0;
+  let accumulator = 0;
+  let keysLocked = false;
+  let demo = false;
+  let simRandom = () => 0.5;
+  const M = window.SDArcadeModel;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let shake = 0;
   let flash = 0;
   let result = "";
@@ -93,7 +99,7 @@
     });
   }
 
-  function spec() {
+  function baseSpec() {
     const base = FLIGHTS[Math.min(flight, FLIGHTS.length - 1)];
     if (flight < FLIGHTS.length) return { ...base };
     const extra = flight - FLIGHTS.length + 1;
@@ -107,16 +113,20 @@
     };
   }
 
+  function spec() { return M.flightSpec("catch", arcade.mode, flight, baseSpec(), arcade.day); }
+
   function resetShip(autopilot) {
+    simRandom = arcade.rng(flight);
+    const sim = (a,b) => a + simRandom()*(b-a);
     const s = spec();
     auto = autopilot;
     windGust = 0;
     ship = {
-      x: 390 + rand(-28, 36),
-      y: 210 + rand(-10, 14),
-      vx: rand(-0.18, 0.24),
+      x: (arcade.mode === "training" ? CATCH_X - 105 : 410) + sim(-16, 20),
+      y: 230 + sim(-10, 14),
+      vx: sim(-0.18, 0.24),
       vy: 0.2,
-      angle: rand(-0.08, 0.08),
+      angle: sim(-0.08, 0.08),
       av: 0,
       fuel: s.fuel,
       w: 24,
@@ -173,20 +183,20 @@
 
   function setBest(n) {
     best = n;
-    localStorage.setItem(STORE, String(n));
+    window.SDArcade.storage.setItem(STORE, String(n));
     if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
   }
 
   if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
 
   function callsign() {
-    const raw = (nameInput?.value || localStorage.getItem(NAME_STORE) || "Pilot").trim();
+    const raw = (nameInput?.value || window.SDArcade.storage.getItem(NAME_STORE) || "Pilot").trim();
     return (raw || "Pilot").slice(0, 12);
   }
 
   function loadBoard() {
     try {
-      const raw = JSON.parse(localStorage.getItem(BOARD_STORE) || "[]");
+      const raw = JSON.parse(window.SDArcade.storage.getItem(BOARD_STORE) || "[]");
       return Array.isArray(raw) ? raw.filter((row) => row && typeof row.score === "number") : [];
     } catch {
       return [];
@@ -194,7 +204,7 @@
   }
 
   function saveBoard(rows) {
-    localStorage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
+    window.SDArcade.storage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
   }
 
   function storedRows() {
@@ -261,34 +271,9 @@
   }
 
   function submitRun() {
-    if (score <= 0) {
-      renderBoard();
-      return;
-    }
-    const rows = loadBoard();
-    const entry = {
-      id: `${Date.now()}-${score}`,
-      name: callsign(),
-      score,
-      flights: flight + 1,
-      at: Date.now(),
-    };
-    rows.push(entry);
-    rows.sort((a, b) => b.score - a.score || a.at - b.at);
-    saveBoard(rows);
-    freshId = entry.id;
-    if (score > best) setBest(score);
-    renderBoard();
-    const remote = window.AljrBoard;
-    if (!remote) return;
-    remote.submit(GAME, { name: entry.name, score: entry.score, flights: entry.flights }).then((res) => {
-      if (res?.rows) saveBoard(res.rows);
-      if (res?.id) freshId = res.id;
-      renderBoard();
-    });
+    // Edition 02 records are local and versioned; legacy public boards keep their original rules.
+    return;
   }
-
-  let keysLocked = false;
 
   function lockGameKeys() {
     keysLocked = true;
@@ -300,10 +285,10 @@
   }
 
   if (nameInput) {
-    const savedName = localStorage.getItem(NAME_STORE);
+    const savedName = window.SDArcade.storage.getItem(NAME_STORE);
     if (savedName) nameInput.value = savedName.slice(0, 12);
     nameInput.addEventListener("input", () => {
-      localStorage.setItem(NAME_STORE, callsign());
+      window.SDArcade.storage.setItem(NAME_STORE, callsign());
       renderBoard();
     });
     nameInput.addEventListener("focus", lockGameKeys);
@@ -329,6 +314,12 @@
     const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
     const data = buffer.getChannelData(0);
     let last = 0;
+  let accumulator = 0;
+  let keysLocked = false;
+  let demo = false;
+  let simRandom = () => 0.5;
+  const M = window.SDArcadeModel;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     for (let i = 0; i < length; i += 1) {
       const white = Math.random() * 2 - 1;
       if (color === "brown") {
@@ -535,18 +526,13 @@
   }
 
   function startPlay() {
-    ensureAudio();
-    if (audio && audio.state === "suspended") audio.resume();
-    score = state === "caught" ? score : 0;
-    if (state !== "caught") flight = 0;
-    else flight += 1;
-    resetShip(false);
-    state = "fly";
-    result = "";
-    hideOverlay();
-    if (hud) hud.hidden = false;
-    wasBurning = false;
-    renderBoard();
+    ensureAudio(); if (audio && audio.state === "suspended") audio.resume();
+    demo = false; clearAllHolds(); accumulator = 0; last = 0;
+    if (state === "caught") flight += 1;
+    else if (arcade.mode === "campaign") { const c=arcade.loadCheckpoint();flight=c.flight;score=c.score; }
+    else { flight=0;score=0; }
+    resetShip(false); state="fly";result="";hideOverlay();if(hud)hud.hidden=false;
+    wasBurning=false;arcade.markPlayed();arcade.focus();renderBoard();
   }
 
   function beginAttract() {
@@ -556,9 +542,9 @@
     if (hud) hud.hidden = true;
     showOverlay(
       "Starbase",
-      "Catch the Ship",
-      "Tap to nudge, hold to bank. Hold throttle to kill speed. Get the pins onto the arms — not the ocean, not the tower.",
-      "Play"
+      "Bring it home.",
+      "Bank toward the cyan corridor, brake your drift, then settle onto the arms. Start with training to learn the approach.",
+      arcade.mode === "campaign" && arcade.loadCheckpoint().flight ? "Continue campaign" : "Take the controls"
     );
     renderBoard();
   }
@@ -572,12 +558,14 @@
     burst(ship.x, ship.y + ship.h * 0.3, 42, "#ff7a2a", 4.2);
     burst(ship.x, ship.y, 18, "#e8e4dc", 2.4);
     if (state === "attract") {
-      window.setTimeout(beginAttract, 1400);
+      window.setTimeout(()=>{if(state==='attract-hold')beginAttract();}, 1400);
       state = "attract-hold";
       return;
     }
     result = kind;
     state = "fail";
+    if(!demo)arcade.record({score,missions:flight,complete:false,medal:flight>=2?'silver':'bronze',title:'Approach review',copy:kind==='tower'?'You reached the tower before cancelling sideways motion. Bank away to brake earlier.':kind==='splash'?'The ship never reached the arms. Bank toward the tower and thrust while tilted to build horizontal motion.':'You ran out of altitude or arrived too fast. Start your braking burn higher. Campaign retries keep your current checkpoint.'});
+    arcade.live(demo?'Demo ended. Try the controls yourself.':'Approach ended. Read your debrief and try again.');
     submitRun();
     blip(kind);
     const lines = {
@@ -599,20 +587,26 @@
     flash = 0.45;
     burst(ship.x, ARM_Y, 28, "#f4d27a", 2.8);
     if (state === "attract") {
-      window.setTimeout(beginAttract, 1600);
+      window.setTimeout(()=>{if(state==='attract-hold')beginAttract();}, 1600);
       state = "attract-hold";
       return;
     }
     score += gained;
-    if (score > best) setBest(score);
-    state = "caught";
+    if (!demo && score > best) setBest(score);
+    const limit=arcade.mode==='daily'?3:arcade.mode==='training'?1:6;
+    const complete=flight+1>=limit;
+    if(demo){state='complete';score=0;showOverlay('Training demonstration','Now it’s your turn.','Watch the bank, braking burn and final alignment. Demonstration scores are not saved.','Take the controls');return;}
+    state=complete?'complete':'caught';
+    arcade.checkpoint(complete?0:flight+1,complete?0:score);
+    arcade.record({score,missions:flight+1,complete,medal:precision>.8&&soft>.6?'gold':precision>.45?'silver':'bronze',title:complete?'Mission set complete':'A clean catch',copy:'Precision '+Math.round(precision*100)+'% · soft landing '+Math.round(soft*100)+'% · fuel remaining '+Math.round(ship.fuel)+'. '+(complete?'Try another mode or today’s challenge.':'Your next campaign checkpoint is saved.')});
+    arcade.live(complete?'Mission set complete. Your score is saved.':'Caught. Advance to the next mission.');
     renderBoard();
     blip("catch");
     showOverlay(
       s.name,
-      "Caught",
+      complete ? "Mission complete" : "Caught",
       `Pins on the arms. +${gained.toLocaleString()}  ·  Run ${score.toLocaleString()}`,
-      "Next flight"
+      complete ? "Fly again" : "Next mission"
     );
   }
 
@@ -674,7 +668,7 @@
       return;
     }
 
-    windGust = lerp(windGust, rand(-s.wind, s.wind) * 28, 0.02);
+    windGust = lerp(windGust, (-s.wind + simRandom()*s.wind*2) * 28, 0.02);
     const wind = s.wind * 0.55 + windGust * 0.012;
 
     if (!(auto && (state === "attract" || state === "fly"))) {
@@ -1235,6 +1229,11 @@
     });
     ctx.globalAlpha = 1;
 
+    if (ship && (state==='fly' || state==='attract')) {
+      ctx.save();ctx.strokeStyle='rgba(151,228,235,.65)';ctx.lineWidth=1.5;ctx.setLineDash([6,8]);
+      ctx.beginPath();ctx.moveTo(CATCH_X-36,ARM_Y-235);ctx.lineTo(CATCH_X-20,ARM_Y);ctx.lineTo(CATCH_X+20,ARM_Y);ctx.lineTo(CATCH_X+36,ARM_Y-235);ctx.stroke();ctx.setLineDash([]);
+      ctx.strokeStyle='rgba(151,228,235,.8)';ctx.beginPath();ctx.arc(CATCH_X,ARM_Y,14,0,Math.PI*2);ctx.stroke();ctx.restore();
+    }
     if (ship) drawShip(ctx, clamp((560 - viewW) / 220, 0, 1));
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -1260,6 +1259,9 @@
     if (!ship || !hud || hud.hidden) return;
     const s = spec();
     const spd = Math.hypot(ship.vx, ship.vy);
+    const dx=CATCH_X-ship.x,alt=ARM_Y-(ship.y-4);
+    const tip=state==='fly'?(alt<120&&ship.vy>1.2?'Burn now: slow the descent before the arms.':Math.abs(dx)>55?'Bank '+(dx>0?'right':'left')+' and thrust to travel toward the corridor.':Math.abs(ship.vx)>.7?'Bank '+(ship.vx>0?'left':'right')+' and burn to brake sideways drift.':'Keep the ship upright. Pulse throttle for a soft arrival.'):'Training is a forgiving place to learn the approach.';
+    arcade.telemetry({primary:Math.abs(dx).toFixed(0)+' units '+(dx>0?'right':'left'),secondary:ship.vy.toFixed(1)+' units/s',state:state==='pause'?'Paused':state==='fly'?(demo?'Demo':'Flying'):state==='caught'?'Caught':state==='complete'?'Complete':'Debrief',guidance:tip,sound:muted?'Sound off':'Sound on'});
     if (hudFlight) hudFlight.textContent = s.name;
     if (hudFuel) hudFuel.textContent = `Fuel ${Math.round(ship.fuel)}`;
     if (hudSpeed) hudSpeed.textContent = `${spd.toFixed(1)} m/s`;
@@ -1287,21 +1289,11 @@
   }
 
   function frame(now) {
-    if (!last) last = now;
-    const dt = clamp(now - last, 8, 34);
-    last = now;
-    if (state !== "pause") {
-      clock += dt;
-      step(dt);
-      stepParticles();
-      followCam();
-      shake *= 0.86;
-      flash *= 0.9;
-    }
-    const ctx = canvas.getContext("2d");
-    drawWorld(ctx);
-    updateHud();
-    requestAnimationFrame(frame);
+    if(!last)last=now;const elapsed=Math.max(0,Math.min(100,now-last));last=now;
+    if(state!=="pause" && !document.hidden){accumulator+=elapsed;while(accumulator>=1000/60){const dt=1000/60;clock+=dt;step(dt);stepParticles();followCam();shake*=.86;flash*=.9;accumulator-=dt;}}
+    else accumulator=0;
+    if(reduced){shake=0;flash=0;}
+    drawWorld(canvas.getContext("2d"));updateHud();requestAnimationFrame(frame);
   }
 
   function bindHold(el, key) {
@@ -1327,6 +1319,7 @@
     el.addEventListener("pointerup", up);
     el.addEventListener("pointercancel", up);
     el.addEventListener("lostpointercapture", up);
+    el.addEventListener('click', e=>{if(e.detail!==0)return;setHeld(key,true);setTimeout(()=>setHeld(key,false),180);});
   }
 
   document.querySelectorAll("[data-hold]").forEach((el) => {
@@ -1338,7 +1331,7 @@
 
   window.addEventListener("pointerup", (e) => releasePointer(e.pointerId));
   window.addEventListener("pointercancel", (e) => releasePointer(e.pointerId));
-  window.addEventListener("blur", clearAllHolds);
+  window.addEventListener("blur", ()=>{clearAllHolds();if(state==="fly")arcadePause();});
   window.addEventListener(
     "touchend",
     (e) => {
@@ -1370,6 +1363,7 @@
       hideOverlay();
       state = "fly";
       if (hud) hud.hidden = false;
+      accumulator=0;last=0;arcade.focus();
       return;
     }
     startPlay();
@@ -1392,10 +1386,10 @@
   }
 
   window.addEventListener("keydown", (e) => {
-    if (typingNow(e)) return;
+    if (typingNow(e) || e.target?.closest?.("button,a,summary")) return;
     if (e.key === "p" || e.key === "P") {
       if (state === "fly") {
-        state = "pause";
+        clearAllHolds();state = "pause";
         setRumble(false);
         showOverlay("Paused", "Hold", "Ship is waiting on the chopsticks.", "Resume");
       } else if (state === "pause") startPlayResume();
@@ -1439,13 +1433,15 @@
     if (document.hidden) {
       clearAllHolds();
       if (state === "fly") {
-        state = "pause";
+        clearAllHolds();state = "pause";
         setRumble(false);
         showOverlay("Paused", "Hold", "Ship is waiting on the chopsticks.", "Resume");
       }
     }
   });
 
+  function arcadePause(){if(state==='pause')startPlayResume();else if(state==='fly'){clearAllHolds();state='pause';setRumble(false);showOverlay('Paused','Take a breath.','Your approach is held exactly where you left it.','Resume');}}
+  const arcade=window.SDArcade.mount('catch',{reset(){demo=false;clearAllHolds();setRumble(false);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();muted=!muted;applyMute();return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the approach; no score will be saved.');}});
   window.addEventListener("resize", resize);
   resize();
   beginAttract();
@@ -1460,6 +1456,11 @@
 
   window.CatchGame = {
     play: startPlay,
+    mode: () => arcade.mode,
+    restart: () => {state="ready";startPlay();},
+    pause: arcadePause,
+    demo: () => demo,
+    currentSpec: spec,
     state: () => state,
     ship: () => ship,
     score: () => score,
@@ -1482,3 +1483,4 @@
     },
   };
 })();
+

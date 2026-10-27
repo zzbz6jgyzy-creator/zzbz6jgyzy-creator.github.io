@@ -32,9 +32,10 @@ async def main():
     elif path=='search.html':
      assert (await page.locator('.sd-search-form').bounding_box())['height']<100,'search entry should keep the field and submit action together'
      await page.locator('#sd-search-q').fill('Starlink');await page.wait_for_selector('[data-sd-hits] .sd-find-hit',timeout=15000);await page.locator('.sd-search-go').click();assert 'q=Starlink' in page.url
-    elif path=='games.html':assert await page.locator('.ps-game-art').count()==3
+    elif path=='games.html':assert await page.locator('.ac-game-card').count()==3;assert await page.locator('.ac-art-link img').count()==3
     elif path=='members.html':assert await page.locator('[data-members-account]').count()==1
     elif path=='tcmv.html':assert await page.locator('.ps-process article').count()==3
     print('PASS',path,width,theme,flush=True);await c.close()
   await browser.close()
 asyncio.run(main())
+
