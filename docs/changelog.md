@@ -1,5 +1,13 @@
 # Changelog
 
+## 27 Oct 2026 — Cybercab guide, part 3 (links and polish)
+
+- **Link from the live tracker:** `cybercab.html` (rebuilt from `mobility-view.js`) now points to the guide from the "Read the measures correctly" strip. The only generated-page change is that link and the bundle hash.
+- **What changed:** the guide's own log records the added sections.
+- **SEO audit tool:** `scripts/audit/seo_check.py` read an inline SVG `<title>` as the page title; it now ignores titles inside SVG.
+- **Speed:** guide mobile Lighthouse 97 (Accessibility 100, SEO 100, CLS 0), served gzip like Cloudflare.
+- Not done, proposed: a "Cybercab guide" entry in the shared navigation (it would regenerate nearly every page).
+
 ## 27 Oct 2026 — Cybercab guide, part 2 (showpieces)
 
 - **Illustrated anatomy:** our own side-view drawing of the Cybercab with five numbered features (butterfly doors, two seats, no manual controls, front light bar, front motor), each with its label and source. It is marked as our illustration, not Tesla CAD. The charge port and battery pack are listed but not drawn because their positions are unpublished.

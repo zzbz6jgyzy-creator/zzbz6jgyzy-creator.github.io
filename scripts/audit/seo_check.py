@@ -29,7 +29,7 @@ class Page(HTMLParser):
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         self._in.append(tag)
-        if tag == "title":
+        if tag == "title" and "svg" not in self._in:
             self.title = ""
         elif tag == "meta" and (a.get("name") or a.get("property")):
             self.meta.setdefault((a.get("name") or a.get("property")).lower(), a.get("content") or "")
@@ -58,7 +58,7 @@ class Page(HTMLParser):
 
     def handle_data(self, data):
         cur = self._in[-1] if self._in else ""
-        if cur == "title" and self.title is not None:
+        if cur == "title" and "svg" not in self._in and self.title is not None:
             self.title += data
         elif cur == "script":
             self._buf += data
