@@ -1,0 +1,49 @@
+name: Cybercab guide checks
+on:
+  pull_request:
+    paths:
+      - 'cybercab-guide.html'
+      - 'cybercab-guide*.js'
+      - 'cybercab-guide.css'
+      - 'data/cybercab-guide.json'
+      - 'data/promises.json'
+      - 'scripts/build-cybercab-guide.mjs'
+      - 'scripts/js-bundles.json'
+      - 'scripts/build-seo.py'
+      - 'docs/cybercab-guide-refresh.md'
+      - 'tests/cybercab-guide*'
+      - 'tests/test_cybercab_guide_ownership.py'
+      - '.github/workflows/cybercab-guide-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  guide:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Validate data, rebuild and check nothing drifts
+        run: |
+          node --test tests/cybercab-guide.test.mjs
+          python tests/test_cybercab_guide_ownership.py
+          node scripts/build-cybercab-guide.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          sh scripts/ci-generated-ownership.sh -- assets/js cybercab-guide.html data/pages.json
+      - name: Responsive, no-JS and filter journeys
+        run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/cybercab-guide-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cybercab-guide-previews
+          path: /tmp/cybercab-guide

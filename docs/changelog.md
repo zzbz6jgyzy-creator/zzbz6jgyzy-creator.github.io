@@ -1,5 +1,13 @@
 # Changelog
 
+## 27 Oct 2026 — Cybercab guide, part 1 (content backbone)
+
+- **New page `/cybercab-guide.html`:** what Tesla has disclosed about the Cybercab versus what is only reported or a target. Six sourced numbers, a versions table (2024 reveal, production car, a blank customer column), a 15-event timeline with a filter, seven robotaxi promises checked, ten sourced questions, a "What changed" log and a source ledger with the date each source was opened.
+- **Labels:** every figure is Disclosed (Tesla or a regulator, in a document we opened), Target or Reported. Battery, range, motor and weight come from a Car and Driver report of an EPA filing, so they are Reported; Tesla has published no spec sheet. The Dallas line says the call named the Robotaxi service, not Cybercabs specifically.
+- **Promises are single-sourced:** the guide holds only ids from `data/promises.json`; wording, status and evidence come from the ledger and the build fails if an id disappears.
+- **Evidence:** Munro Live's walkthrough post (with Tesla's Lars Moravy and @EricETesla) is embedded with the site's click-to-load X embed. We did not watch the video, so the page quotes only the post.
+- **Wiring:** own builder, data file, validator, bundle, CI workflow and refresh checklist (`docs/cybercab-guide-refresh.md`). It does not touch the bot-rebuilt `cybercab.html`; links from there come in a later, separate change.
+
 ## 27 Oct 2026 — Viewer fixes and an Optimus change log
 
 - **3D viewers (Cybertruck, Model 3, Optimus):** the explode slider has a 24 px touch target (WCAG 2.5.8) on all three viewers, now defined once in the shared `model3-explorer.css`. Cybertruck and Model 3 gain it (it was 4 px); Optimus already had it as its own rule. axe is clean on all three viewer pages.

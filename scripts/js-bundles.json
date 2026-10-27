@@ -162,6 +162,9 @@
       "optimus-model.js",
       "optimus.js"
     ],
+    "cybercab-guide": [
+      "cybercab-guide.js"
+    ],
     "production": [
       "production-studio-model.js",
       "production-studio-view.js",
@@ -437,6 +440,16 @@
         "core",
         "intel",
         "optimus"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "cybercab-guide.html": {
+      "bundles": [
+        "core",
+        "intel",
+        "cybercab-guide"
       ],
       "grow": [
         "data-band"

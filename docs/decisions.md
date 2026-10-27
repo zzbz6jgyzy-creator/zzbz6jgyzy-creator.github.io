@@ -2,6 +2,14 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · Cybercab guide: a new page, not a rebuild of the tracker
+
+- **Choice:** a separate guide page with its own data file, builder and workflow; `cybercab.html` stays the live tracker.
+- **Why:** bots rewrite `cybercab.html`, `cybercab-cities/` and the mobility snapshot twice a day. A rebuild there would collide with them and risk the live counters. A new page has no overlap.
+- **Promises:** referenced by id from `data/promises.json` instead of copied, so the ledger stays the one place wording and status change.
+- **No 3D model:** the only free scan was poor and the good one is paid. Part 2 uses an original illustration, labelled as ours.
+- **Labels:** Disclosed means Tesla or a regulator said it in a document we opened. Spec numbers from news reports are Reported even when the outlet read an official filing.
+
 ## 2026-10-27 · Optimus 3D: a fan model, cut at the joints
 
 - **Choice:** use Michael's CC BY 4.0 Sketchfab model (the most detailed downloadable Optimus) and cut its single fused mesh into 17 parts ourselves, rather than wait for an official model (none exists) or hand-build a low-detail one.
