@@ -2,6 +2,41 @@
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
   "updated": "2026-10-27T10:45:00+00:00",
   "events": {
+    "tesla-2026-asm": {
+      "title": "Tesla 2026 Annual Meeting of Shareholders",
+      "start": "2026-12-03T15:00:00-06:00",
+      "precision": "datetime",
+      "status": "scheduled",
+      "major": true,
+      "href": "https://www.votetesla.com/annual-meeting-details/",
+      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 Irish time). Virtual at virtualshareholdermeeting.com/TSLA2026, webcast at tesla.com/2026shareholdermeeting, limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
+        "https://www.votetesla.com/annual-meeting-details/"
+      ]
+    },
+    "tesla-2026-asm-draw": {
+      "title": "Tesla 2026 Annual Meeting in-person drawing deadline",
+      "start": "2026-11-06T23:59:00-06:00",
+      "precision": "datetime",
+      "status": "scheduled",
+      "href": "https://www.votetesla.com/annual-meeting-details/",
+      "summary": "Deadline to enter Tesla’s random drawing for limited in-person seats at the 3 Dec 2026 Annual Meeting: Fri 6 Nov 2026, 11:59 p.m. CT. Selections are communicated the week of 16 Nov.",
+      "sources": [
+        "https://www.votetesla.com/annual-meeting-details/"
+      ]
+    },
+    "starship-flight-16": {
+      "title": "Starship Flight 16",
+      "date": "2026-12-01",
+      "precision": "month",
+      "status": "expected",
+      "summary": "NASASpaceflight reports a December 2026 target, likely Booster 23 / Ship 43, possibly the first launch from LC-39A. Depends on Flight 15 and 39A readiness. This is reporting, not a SpaceX date.",
+      "sources": [
+        "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
+        "https://www.advanced-television.com/2026/10/20/starship-15-scheduled-for-november-with-dual-catch/"
+      ]
+    },
     "starship-flight-15": {
       "title": "Starship Flight 15",
       "date": "2026-11-08",

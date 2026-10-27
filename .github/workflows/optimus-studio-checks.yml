@@ -37,7 +37,7 @@ jobs:
           python tests/test_optimus_refresh.py
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- assets/js optimus.html
+          sh scripts/ci-generated-ownership.sh -- assets/js optimus.html
       - name: Responsive, accessible and fallback journeys
         run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/optimus-studio-browser.py
       - uses: actions/upload-artifact@v4

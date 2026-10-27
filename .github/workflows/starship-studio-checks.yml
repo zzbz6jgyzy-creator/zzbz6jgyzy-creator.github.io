@@ -35,7 +35,7 @@ jobs:
           node scripts/build-starship-studio.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- starship.html data/starship-studio.json assets/js/manifest.json 'assets/js/starship.bundle.*.js'
+          sh scripts/ci-generated-ownership.sh -- starship.html data/starship-studio.json assets/js/manifest.json 'assets/js/starship.bundle.*.js'
       - name: Responsive explorer and accessibility journeys
         env:
           CHROMIUM_PATH: /usr/bin/google-chrome

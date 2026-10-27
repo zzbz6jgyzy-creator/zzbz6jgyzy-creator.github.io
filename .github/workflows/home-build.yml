@@ -68,6 +68,14 @@ on:
       - scripts/build-production-studio.mjs
       - data/production.json
       - tesla-overview.css
+      - tesla-overview-model.js
+      - tesla-overview-view.js
+      - calendar-studio-model.js
+      - calendar-studio-view.js
+      - calendar.js
+      - home-studio.css
+      - home-v2.js
+      - live.js
       - scripts/build-spacex-studio.mjs
       - data/spacex-studio.json
       - spacex-studio.css
@@ -117,6 +125,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: data-push-main
+  cancel-in-progress: false
 
 jobs:
   build:

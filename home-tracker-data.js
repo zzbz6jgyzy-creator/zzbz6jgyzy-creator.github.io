@@ -21,10 +21,21 @@
     const time = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Dublin" }).format(d);
     return day + ", " + time + " Irish time";
   }
+  function cmpVersion(a, b) {
+    const x = String(a || "").split(".").map(Number), y = String(b || "").split(".").map(Number);
+    for (let i = 0; i < Math.max(x.length, y.length); i++) {
+      const d = (x[i] || 0) - (y[i] || 0);
+      if (d) return d;
+    }
+    return 0;
+  }
+  function seenDay(v) {
+    return String((v && v.firstSeen) || "").slice(0, 10);
+  }
   function software(live) {
     const vs = ((live && live.versions) || []).filter((x) => x && x.count > 0);
     const top = [...vs].sort((a, b) => b.count - a.count)[0];
-    const newest = [...vs].sort((a, b) => (b.firstSeen || "").localeCompare(a.firstSeen || ""))[0];
+    const newest = [...vs].sort((a, b) => seenDay(b).localeCompare(seenDay(a)) || cmpVersion(b.id, a.id))[0];
     if (!newest) return null;
     const fleet = Number(live.fleet || (top && top.fleet));
     const when = irishTime(live.updated);
@@ -49,5 +60,5 @@
       checked
     };
   }
-  return { cybercab, software, irishTime };
+  return { cybercab, software, irishTime, cmpVersion };
 });

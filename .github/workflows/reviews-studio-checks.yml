@@ -34,7 +34,7 @@ jobs:
           node scripts/build-reviews-studio.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- reviews assets/js data/pages.json
+          sh scripts/ci-generated-ownership.sh -- reviews assets/js data/pages.json
       - name: Responsive, persistence and interaction checks
         run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/reviews-studio-browser.py
       - uses: actions/upload-artifact@v4

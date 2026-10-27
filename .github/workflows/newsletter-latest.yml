@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: newsletter-latest
+  group: data-push-main
   cancel-in-progress: false
 
 jobs:
@@ -29,7 +29,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -- templates/starlink-sky.html 2>/dev/null || true
-          git add -A -- '*.html' grow.js scripts/build-home.js data/newsletter-latest.json dispatch/*.html assets/js
+          git add data/newsletter-latest.json index.html tesla.html news.html grow.js
+          git add -u -- assets/js '*.html'
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Point Read the latest issue at the newest newsletter issue."
             sh scripts/ci-push-retry.sh

@@ -29,7 +29,7 @@ jobs:
       - run: node --test tests/fsd-europe.test.mjs tests/tracker-snapshots.test.mjs tests/software-workspace.test.mjs
       - run: python3 -m unittest discover -s tests -p test_fsd_europe_sources.py
       - run: node scripts/build-fsd-europe.mjs && node scripts/build-js.mjs && python3 scripts/inject-js-bundles.py
-      - run: git diff --exit-code -- fsd-europe.html fsd-europe fsd-europe-data.js fsd-data.js assets/js
+      - run: sh scripts/ci-generated-ownership.sh -- fsd-europe.html fsd-europe fsd-europe-data.js fsd-data.js assets/js
       - run: pip install playwright==1.62.0
       - name: Browser and no-JavaScript checks
         env:

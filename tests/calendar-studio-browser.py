@@ -5,8 +5,10 @@ from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 from playwright.async_api import async_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=pathlib.Path(os.environ.get('CALENDAR_SCREENSHOTS','/tmp/calendar-studio'));OUT.mkdir(parents=True,exist_ok=True);DATA=json.loads((ROOT/'data/calendar-studio.json').read_text());KEY='sd-calendar-studio-v1'
-LAUNCH=next(event for event in DATA['events'] if event['id']=='starlink-15-16')
+DONE={'done','ended','success','failure','failed','partial','partial failure','cancelled','canceled'}
+LAUNCH=next(event for event in DATA['events'] if event['id'].startswith('starlink-') and event.get('precision')=='datetime' and event.get('status','').lower() not in DONE)
 assert LAUNCH['precision']=='datetime'
+SEARCH=LAUNCH['id'].removeprefix('starlink-')
 LAUNCH_START=datetime.fromisoformat(LAUNCH['start'].replace('Z','+00:00'))
 EXPECTED_ICS_START=LAUNCH_START.astimezone(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
 EXPECTED_LA_TIME=LAUNCH_START.astimezone(ZoneInfo('America/Los_Angeles')).strftime('%H:%M')
@@ -41,12 +43,12 @@ async def main():
     if width in [390,1440]:
      await page.evaluate('scrollTo(0,0)');await page.screenshot(path=str(OUT/f'{view}-{width}.png'),full_page=True)
     checks.append([width,view])
-   await page.locator('[data-view=agenda]').click();await page.locator('#cs-search').fill('15-16');await expect(page.locator('#cs-results .cs-event')).to_have_count(1)
+   await page.locator('[data-view=agenda]').click();await page.locator('#cs-search').fill(SEARCH);await expect(page.locator('#cs-results .cs-event')).to_have_count(1)
    await page.locator('#cs-results [data-save]').click();await expect(page.locator('#cs-saved-count')).to_have_text('1');await page.reload();await page.wait_for_selector('.cs-enhanced');await page.wait_for_function("document.getElementById('cs-result-count').textContent.length>0");await expect(page.locator('#cs-saved-count')).to_have_text('1')
    await page.locator('[data-view=saved]').click();await expect(page.locator('#cs-results .cs-event')).to_have_count(1)
-   await page.locator('#cs-results [data-open]').click();assert await page.locator('#cs-dialog').is_visible();await page.locator('#cs-dialog-copy').click();assert 'event=starlink-15-16'in await page.evaluate('window.__copied')
+   await page.locator('#cs-results [data-open]').click();assert await page.locator('#cs-dialog').is_visible();await page.locator('#cs-dialog-copy').click();assert 'event='+LAUNCH['id'] in await page.evaluate('window.__copied')
    async with page.expect_download()as info:await page.locator('#cs-dialog-export').click()
-   download=await info.value;text=pathlib.Path(await download.path()).read_text();assert 'UID:starlink-15-16@superchargeddaily.com'in text;assert 'DTSTART:'+EXPECTED_ICS_START in text
+   download=await info.value;text=pathlib.Path(await download.path()).read_text();assert 'UID:'+LAUNCH['id']+'@superchargeddaily.com'in text;assert 'DTSTART:'+EXPECTED_ICS_START in text
    await page.keyboard.press('Escape');assert not await page.locator('#cs-dialog').is_visible()
    await page.locator('#cs-zone').select_option('America/Los_Angeles');assert EXPECTED_LA_TIME in await page.locator('#cs-results .cs-event-time').inner_text()
    await page.locator('[data-view=month]').click();cell=page.locator('.cs-month-grid [tabindex="0"]');await cell.focus();old=await cell.get_attribute('data-date');await page.keyboard.press('ArrowRight');assert await page.locator('.cs-month-grid [tabindex="0"]').get_attribute('data-date')!=old;assert await page.locator('.cs-month-grid [tabindex="0"]').evaluate('(e)=>document.activeElement===e')

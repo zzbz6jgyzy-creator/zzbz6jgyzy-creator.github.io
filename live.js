@@ -27,8 +27,9 @@
       var p = (r.net_precision && r.net_precision.abbrev) || '', s = (r.status && r.status.abbrev) || '';
       if (!r.net || /starship/i.test(r.name) || !/^(SEC|MIN|HR|HOUR|DAY)?$/.test(p) || /^(Success|Failure|Partial Failure)$/.test(s)) return null;
       var t = new Date(r.net).getTime();
-      // scrubbed / on hold / TBD, or timed NET passed 30+ min without lift-off: skip so the next launch counts down
-      if (/^(Hold|TBD)$/.test(s) || (/^(SEC|MIN)?$/.test(p) && s !== 'In Flight' && now - t > H / 2)) return null;
+      // scrubbed / on hold / TBD, already lifted off, or timed NET passed 30+ min without lift-off
+      // Past NET or already lifting off is not a homepage live card.
+      if (/^(Hold|TBD)$/.test(s) || now - t >= 0 || (/^(SEC|MIN)?$/.test(p) && now - t > H / 2)) return null;
       if (have.some(function (e) { return e.page === 'starship' && Math.abs(new Date(e.start) - t) < 6 * H; })) return null;
       var day = p === 'DAY';
       return { id: 'll2-' + r.id, page: 'starship', title: rocket + ' \u00b7 ' + mission.replace(/^Starlink Group /, 'Starlink '),
@@ -150,6 +151,10 @@
       return !e.net && !e.timeTbc && e.status !== 'ended';
     });
     var live = ev.filter(function (e) { var s = new Date(e.start) - 0;
+      // LL2 rows never take the homepage top slot. A Go / In Flight Falcon
+      // remounted into .hv-live-top (order 0 on phones) shifts the first
+      // screen by ~148px and fails the 320px studio CLS check.
+      if (String(e.id || '').indexOf('ll2-') === 0) return false;
       return e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2); }).sort(function (a, b) { // several live: featured/major first, then latest start
         var pa = (a.featured || (shared[a.id] && shared[a.id].major)) ? 1 : 0, pb = (b.featured || (shared[b.id] && shared[b.id].major)) ? 1 : 0;
         return (pb - pa) || (new Date(b.start) - new Date(a.start)); })[0];
@@ -158,6 +163,34 @@
     var feat = ev.filter(function (e) { return e.featured && !live; })[0]; // featured event (e.g. Roadster) leads until it ends
     var next = feat || future.filter(function (e) { return !e.timeTbc && !e.net; })[0] || future[0]; // TBC/NET only if nothing timed
     var e = live || next;
+    var pre = document.querySelector('section.lv[data-prebuilt]');
+    // Next-stream cards keep the prerendered node. Remounting one is a
+    // layout shift on the 320px first screen. Empty still removes it.
+    // NET/TBC update the chip in place so quality journeys stay valid.
+    if (!live && pre) {
+      if (!e) {
+        // Quality journeys wait for data-prebuilt to go. CSS keeps .hv-event
+        // at 151px so stories do not collapse when the prerendered card drops.
+        var wrap = pre.parentElement;
+        pre.remove();
+        if (wrap && wrap.classList && wrap.classList.contains('hv-event')) wrap.style.minHeight = wrap.style.minHeight || '151px';
+        return;
+      }
+      var titleEl = pre.querySelector('.lw-title');
+      if (titleEl) titleEl.textContent = e.title;
+      var count = pre.querySelector('.lh-next-countdown');
+      if (e.net || e.timeTbc) {
+        if (count) count.remove();
+        var chip = pre.querySelector('.lv-tz');
+        if (chip) chip.textContent = e.timeTbc ? 'Time TBC' : 'NET';
+      } else if (count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
+      var leftover = document.querySelector('section.lv:not([data-prebuilt])');
+      if (leftover && leftover !== pre) leftover.remove();
+      pre.removeAttribute('data-prebuilt');
+      var stay = new Date(e.start) - H / 2 - now;
+      if (stay > 0 && stay < 864e5 && !q.get('livenow')) setTimeout(run, stay + 1e3);
+      return;
+    }
     var old = document.querySelector('section.lv:not([data-prebuilt])'); if (old) old.remove();
     document.querySelectorAll('section.lv[data-prebuilt]').forEach(function (p) { p.remove(); });
     if (!e) return;

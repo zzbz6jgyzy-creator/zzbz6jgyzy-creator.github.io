@@ -38,6 +38,7 @@ function eligible(events, page, now) {
 }
 
 function isLive(e, now, H) {
+  if (!e || String(e.id || "").indexOf("ll2-") === 0) return false;
   return e.status === "live" || (!e.timeTbc && !e.net && now >= new Date(e.start) - H / 2);
 }
 
@@ -63,7 +64,7 @@ function ll2Events(L, have, H, now) {
     const p = (r.net_precision && r.net_precision.abbrev) || "", s = (r.status && r.status.abbrev) || "";
     if (!r.net || /starship/i.test(r.name) || !/^(SEC|MIN|HR|HOUR|DAY)?$/.test(p) || /^(Success|Failure|Partial Failure)$/.test(s)) return null;
     const t = new Date(r.net).getTime();
-    if (/^(Hold|TBD)$/.test(s) || (/^(SEC|MIN)?$/.test(p) && s !== "In Flight" && now - t > H / 2)) return null;
+    if (/^(Hold|TBD)$/.test(s) || now - t >= 0 || (/^(SEC|MIN)?$/.test(p) && now - t > H / 2)) return null;
     if ((have || []).some((e) => e.page === "starship" && Math.abs(new Date(e.start) - t) < 6 * H)) return null;
     const day = p === "DAY", falcon = /falcon/i.test(rocket);
     return { id: "ll2-" + r.id, page: "starship", title: rocket + " \u00b7 " + mission.replace(/^Starlink Group /, "Starlink "),

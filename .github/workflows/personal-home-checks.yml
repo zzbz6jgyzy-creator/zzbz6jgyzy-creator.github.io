@@ -39,7 +39,7 @@ jobs:
           node scripts/build-personal-home.mjs --saved
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- assets/js daily.html
+          sh scripts/ci-generated-ownership.sh -- assets/js daily.html
       - name: Responsive, returning-reader and mocked account journeys
         run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/personal-home-browser.py
       - uses: actions/upload-artifact@v4

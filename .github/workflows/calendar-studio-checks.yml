@@ -45,7 +45,7 @@ jobs:
           node scripts/build-calendar-studio.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- calendar.html data/calendar-studio.json data/calendar.ics assets/js/manifest.json 'assets/js/calendar.bundle.*.js'
+          sh scripts/ci-generated-ownership.sh -- calendar.html data/calendar-studio.json data/calendar.ics assets/js/manifest.json 'assets/js/calendar.bundle.*.js'
       - name: Responsive views, keyboard, preferences, downloads and fallbacks
         env:
           CHROMIUM_PATH: /usr/bin/google-chrome

@@ -28,3 +28,9 @@ html[data-theme=light] .hs-home{--hs-bg:#f3f1ec;--hs-surface:#fffdf9;--hs-surfac
 @media(min-width:370px) and (max-width:600px){.hs-home .hs-hero-signup .hs-form .sd-btn{width:auto;flex:none;max-width:57%}.hs-home .hs-hero-signup .hs-form input[type=email]{min-width:130px}}
 
 @media(max-width:600px){.hs-home .hs-hero-signup .hs-form input[type=email],.hs-home .hs-newsletter .hs-form input[type=email]{font-size:16px}}
+
+/* Phone hero stays in document order (nav in the hero). Reserve the next-event
+   box so live.js can drop [data-prebuilt] without collapsing stories. */
+@media (max-width: 600px) {
+  .hs-home .hv-event { min-height: 151px; }
+}

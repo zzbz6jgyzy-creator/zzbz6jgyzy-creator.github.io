@@ -4,7 +4,7 @@ import { readFileSync,writeFileSync,mkdtempSync,mkdirSync,cpSync,rmSync } from '
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join,dirname } from 'node:path';
-const require=createRequire(import.meta.url), {cybercab}=require('../home-tracker-data.js');
+const require=createRequire(import.meta.url), {cybercab,software}=require('../home-tracker-data.js');
 const fallback={value:'349',label:'Previously verified registry count'};
 const snapshot={checked:'2026-10-22T06:00:23Z',source:{url:'https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc'},history:[{date:'2026-10-22',cybercab:351},{date:'2026-10-20',cybercab:349}]};
 const card=cybercab(snapshot,fallback);
@@ -13,6 +13,7 @@ assert.equal(cybercab({...snapshot,history:[{date:'2026-10-22',cybercab:0}]},fal
 assert.equal(cybercab({...snapshot,history:[{date:'2026-10-22',cybercab:1234}]},fallback).value,'1,234');
 for(const bad of [null,{}, {...snapshot,checked:'invalid'}, {...snapshot,source:{url:'http://unverified.example'}}, {...snapshot,history:[]}, ...[-1,1.5,null,'351'].map(cybercab=>({...snapshot,history:[{date:'2026-10-22',cybercab}]})),{...snapshot,history:[{date:'2026-02-30',cybercab:400}]},{...snapshot,history:[{date:'2026-10-23',cybercab:400}]}]) assert.deepEqual(cybercab(bad,fallback),fallback);
 assert.equal(cybercab(null),null);
+assert.equal(software({updated:'2026-10-27T09:01:15Z',fleet:3368,versions:[{id:'2026.38.5.6',count:143,percent:4.2,firstSeen:'2026-10-24T19:52:52Z',fleet:3368},{id:'2026.38.5.11',count:470,percent:14,firstSeen:'2026-10-24T19:43:09Z',fleet:3368}]}).value,'2026.38.5.11');
 console.log('PASS snapshot validation, sorting, zero counts, dates, source and last-good fallback');
 const temp=mkdtempSync(join(tmpdir(),'sd-home-trackers-'));
 try{

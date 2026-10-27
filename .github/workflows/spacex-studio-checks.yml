@@ -37,7 +37,7 @@ jobs:
           node scripts/build-spacex-studio.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          git diff --exit-code -- spacex.html assets/js data/pages.json
+          sh scripts/ci-generated-ownership.sh -- spacex.html assets/js data/pages.json
       - name: Responsive and interaction checks
         run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" python tests/spacex-studio-browser.py
       - uses: actions/upload-artifact@v4

@@ -2,6 +2,15 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · PRs do not carry bot-generated studio output
+- **Decision:** Feature PRs change source only (builders, models, hand-edited `data/events.json`, article HTML, tests). Saved pages, `data/*-studio.json`, hashed `assets/js` bundles, `index.html` prerender and `data/launches.json` stay as main last wrote them. Studio CI still *runs* the builder on the PR (so browser tests see the new logic) but skips the `git diff` ownership check. That check still runs on push/schedule/`workflow_dispatch`. After merge, `home-build.yml` and `js-bundle.yml` (triggered by `*.js`, `data/events.json`, the tesla/calendar models) commit the rebuilt output. News/Starlink/newsletter jobs no longer `git add *.html`.
+- **Why:** news-snapshot (`:12/:42`), updates-snapshot (`:20/:50`) and launches-refresh (`:17`) rewrite the same HTML/JSON every half hour. A PR that committed a snapshot of those files became unmergeable before it could be reviewed. Rebasing just restarted the race.
+- **Rejected:** keep committing generated files and hope a rebase lands in a quiet window. The jobs are too frequent. Also rejected: `merge=ours` on generated files — GitHub’s mergeable check does not honour a custom merge driver.
+
+## 2026-10-27 · Newest software build is highest version on the newest first-seen day
+- **Decision:** homepage and Tesla overview pick the newest Teslascope build by UTC first-seen *day*, then numeric version. 2026.38.5.11 beats 2026.38.5.6 when both were first seen on 24 Oct, even if `.6` has a later timestamp.
+- **Why:** “newest build reporting” means the later point release, not whichever row Teslascope logged a few minutes later. The software tracker already compared versions this way.
+
 ## 2026-10-26 · Claude Code project setup (agents, commands, hooks, skills)
 - **Decision:** five subagents (`designer`, `frontend`, `seo`, `reviewer`, `content-ops`), six slash commands, three hooks, two skills and
   two rules files live in `.claude/`; helper scripts in `scripts/audit/`, `scripts/new-article.py`, `scripts/newsletter-draft.py`.

@@ -1,5 +1,20 @@
 # Changelog
 
+## 27 Oct 2026 — Date and freshness fixes
+
+- Tesla 2026 Annual Meeting (3 Dec, 3pm CT / 21:00 Irish) is now on the calendar, TSLA page and homepage major-event countdown, with the 6 Nov in-person drawing deadline. Sources: SEC annual report and votetesla.com.
+- Homepage / Tesla overview “newest build” now tie-breaks same-day first-seen dates by numeric version, so 2026.38.5.11 beats 2026.38.5.6.
+- Launch calendar keeps the last ~45 days from Launch Library 2’s previous-launches feed (one extra hourly call). Backfilled Crew-13, Transporter-18 and Falcon Heavy NROL-97; Starlink 15-16 shows as launched; CRS-35 / Starlink 15-25 / SDA T1TL-A stored times match LL2.
+- Starship Flight 16 is a December 2026 reported target (NASASpaceflight), labelled as reporting rather than a SpaceX date.
+- Roadster “Latest stories” card titles are past-tense. Data-push workflows share a `data-push-main` concurrency group and use `scripts/ci-push-retry.sh`.
+- Calendar studio tests pick the next upcoming Starlink instead of flown 15-16. Homepage live.js never remounts the prerendered next-stream card unless something is actually live, and LL2 rows that have already reached NET are dropped so they cannot appear as a “Live now” card.
+- Rebased onto main after the headlines refresh. Tesla overview and news studio were rebuilt from that snapshot so 2026.38.5.11 and the updated story titles sit on the latest generated pages.
+- Homepage live.js never treats an LL2 launch as the top “Live now” card, so a Go / In Flight Falcon cannot remount into `.hv-live-top` and shift the 320px first screen.
+- Rebased onto the 27 Oct daily-refresh prerender. Homepage trackers were rebuilt so 2026.38.5.11 stays on the latest snapshot; a next-stream remount into `.hv-live-top` is hidden on phones unless the card is actually live.
+- Rebased onto the later calendar-copy and homepage prerender commits. Calendar studio, its hashed bundle, SpaceX, markets and launch-viewing were rebuilt from main’s data so LL2 Success/In Flight stay `done` and the launch-schedule leftover copy is preserved.
+- Stopped the merge-conflict race with hourly data jobs: this PR no longer carries bot-generated HTML/JSON/bundles. Studio ownership `git diff` is PR-skipped; `home-build` / `js-bundle` write those files after merge. News/Starlink/newsletter jobs no longer `git add *.html`.
+- Homepage 320px CLS: phone hero stays in document order so `.hv-start` cannot jump from the hero. `.hv-event` keeps a 151px box while live.js drops `data-prebuilt` after hydration. Threshold stays `< 0.1`.
+
 ## 27 Oct 2026 — Write articles in Markdown
 
 - New articles can be one file: `content/dispatch/<slug>.md`. `scripts/render-article.py` renders it to the same markup as a hand-written

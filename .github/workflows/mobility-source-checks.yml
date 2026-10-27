@@ -15,7 +15,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: mobility-source-checks
+  group: data-push-main
   cancel-in-progress: false
 jobs:
   check:
@@ -53,6 +53,5 @@ jobs:
             echo 'No source-check change'
           else
             git commit -m 'Check Robotaxi sources and retain editorial review flags.'
-            git pull --rebase
-            git push
+            sh scripts/ci-push-retry.sh
           fi

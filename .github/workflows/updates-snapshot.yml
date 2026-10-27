@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: data-push-main
+  cancel-in-progress: false
+
 jobs:
   snapshot:
     if: github.ref == 'refs/heads/main'
@@ -46,6 +50,5 @@ jobs:
             echo "No firmware change"
           else
             git diff --cached --quiet || git commit -m "Refresh Tesla software extras (TeslaFi, Teslascope feed)."
-            git pull --rebase
-            git push
+            sh scripts/ci-push-retry.sh
           fi

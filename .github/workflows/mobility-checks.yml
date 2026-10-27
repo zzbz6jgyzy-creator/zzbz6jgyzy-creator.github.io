@@ -33,7 +33,7 @@ jobs:
       - run: node --test tests/mobility-workspace.test.mjs tests/tracker-snapshots.test.mjs tests/software-workspace.test.mjs
       - run: python3 -m unittest discover -s tests -p test_mobility_sources.py
       - run: node scripts/build-mobility.mjs && node scripts/build-js.mjs && python3 scripts/inject-js-bundles.py
-      - run: git diff --exit-code -- cybercab.html cybercab-cities data/mobility-snapshot.json assets/js
+      - run: sh scripts/ci-generated-ownership.sh -- cybercab.html cybercab-cities data/mobility-snapshot.json assets/js
       - run: pip install playwright==1.62.0
       - name: Responsive, functional and no-JavaScript checks
         run: CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/mobility-workspace-browser.py
