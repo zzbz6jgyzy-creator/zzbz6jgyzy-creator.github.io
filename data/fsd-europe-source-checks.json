@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-26T05:40:00Z",
+  "updated": "2026-10-27T05:37:55Z",
   "sources": {
     "s-c55a052f27a6": {
       "id": "s-c55a052f27a6",
       "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "unavailable",
       "baselineHash": "b0ccbcf6a2954280baf3d980ecd39203cf405f427447489b19f450055c9a1887",
       "observedHash": "b0ccbcf6a2954280baf3d980ecd39203cf405f427447489b19f450055c9a1887",
@@ -16,44 +16,44 @@
     "s-27eff0758607": {
       "id": "s-27eff0758607",
       "url": "https://www.rdw.nl/nieuws/2026/toelichting-rdw-op-europese-typegoedkeuring-tesla-met-voorlopige-geldigheid-in-nederland",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "0e2d281e3497b41e3e20f8cfacf869306e961747b6844b9ffa38d2d14a55c253",
       "observedHash": "0e2d281e3497b41e3e20f8cfacf869306e961747b6844b9ffa38d2d14a55c253",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": false,
       "error": null
     },
     "s-dcfa56db63ec": {
       "id": "s-dcfa56db63ec",
       "url": "https://www.mindop.sk/media/tlacove-spravy/detail/slovensko-umoznilo-ciastocne-autonomne-riadenie-aut",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "a6fee119bf977696b2c36df20f68a87ec321438d91e67ec74e2774ff329b30a9",
       "observedHash": "a6fee119bf977696b2c36df20f68a87ec321438d91e67ec74e2774ff329b30a9",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": false,
       "error": null
     },
     "s-eae2f83674a8": {
       "id": "s-eae2f83674a8",
       "url": "https://www.vegvesen.no/fag/trafikk/its-portalen/its-i-statens-vegvesen/metr/forerstottesystemer/",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "c96336695c83f1ee1b9f3ba3dfbc6893d7b1fbff9e9501a030a01d9152c51a27",
       "observedHash": "c96336695c83f1ee1b9f3ba3dfbc6893d7b1fbff9e9501a030a01d9152c51a27",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": false,
       "error": null
     },
     "s-64b57246c893": {
       "id": "s-64b57246c893",
       "url": "https://blog.astra.admin.ch/automatisiertes-oder-assistiertes-fahren-die-wichtigsten-unterschiede-zwischen-den-stufen-2-und-3/",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "526ebcfa6c98d9755b679373b7f075ba130a4e20a325608b4e16c636eb8da6dd",
-      "observedHash": "3939b7c39adc1950c5da8202f45ffb18288c5ed300309e1fe017e2c839543cc1",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "observedHash": "e0cff04f21ba439c1fd2a1c87023d6d4737a08f94a7e23eecbc5ff0378abb119",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": true,
       "error": null,
       "firstChangedAt": "2026-10-24T05:35:41Z"
@@ -61,36 +61,36 @@
     "s-a15bc6e10960": {
       "id": "s-a15bc6e10960",
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32018R0858",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "unavailable",
       "error": "HTTP 202"
     },
     "s-3ff445463a7c": {
       "id": "s-3ff445463a7c",
       "url": "https://commission.europa.eu/law/law-making-process/adopting-eu-law/implementing-and-delegated-acts/comitology_en",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "83207184239cc1b11cbcea899a969c6063f4b996636cfe23c8d09e9611e75c27",
       "observedHash": "83207184239cc1b11cbcea899a969c6063f4b996636cfe23c8d09e9611e75c27",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": false,
       "error": null
     },
     "s-8bd1015b0ba9": {
       "id": "s-8bd1015b0ba9",
       "url": "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "0239c370cc939ac169ea958baa15158496e4bf5ea977d6cff4c116042ef8d208",
       "observedHash": "0239c370cc939ac169ea958baa15158496e4bf5ea977d6cff4c116042ef8d208",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": false,
       "error": null
     },
     "s-db0bbde0b445": {
       "id": "s-db0bbde0b445",
       "url": "https://sumin.lrv.lt/lt/naujienos/juras-taminskas-lietuva-tarp-pirmuju-europoje-kur-automobiliai-nuo-siol-gali-vairuoti-patys-cRIY/",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "unavailable",
       "baselineHash": "a035a00307428c2bacf450273564d5e8c2def4fb11ac9b771f51a3159b3fb4f8",
       "observedHash": "a035a00307428c2bacf450273564d5e8c2def4fb11ac9b771f51a3159b3fb4f8",
@@ -101,18 +101,18 @@
     "s-4c89088d4eff": {
       "id": "s-4c89088d4eff",
       "url": "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "d2add6f6d69e24171a88f9c26f230267afde4040523320603b7c4b46d2a39da2",
       "observedHash": "d2add6f6d69e24171a88f9c26f230267afde4040523320603b7c4b46d2a39da2",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": false,
       "error": null
     },
     "s-809d6f317968": {
       "id": "s-809d6f317968",
       "url": "https://www.vlaamsparlement.be/nl/parlementair-werk/commissies/commissievergaderingen/2075354/verslag/2079815",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "unavailable",
       "baselineHash": "fbc37e71f897f960c67b3d872c94f23f20ac614ed5902e4d453c31eb9e23fb87",
       "observedHash": "fbc37e71f897f960c67b3d872c94f23f20ac614ed5902e4d453c31eb9e23fb87",
@@ -123,33 +123,33 @@
     "s-27dbaf13ccd4": {
       "id": "s-27dbaf13ccd4",
       "url": "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "5b14a9699c289cad3a37b831888ad1b2449477113dd6bef0898b85cfd6fbd9df",
       "observedHash": "5b14a9699c289cad3a37b831888ad1b2449477113dd6bef0898b85cfd6fbd9df",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": false,
       "error": null
     },
     "s-fdfea0826668": {
       "id": "s-fdfea0826668",
       "url": "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "error": null,
       "baselineHash": "675ed674a23009bbf750433fcd2cfaeb88fa647784700873d090d8574ebf2f1d",
       "observedHash": "675ed674a23009bbf750433fcd2cfaeb88fa647784700873d090d8574ebf2f1d",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": false
     },
     "s-83c8f2e76c02": {
       "id": "s-83c8f2e76c02",
       "url": "https://x.com/mgualdo/status/2080338935620800589",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "4ae84e1f318d741a8d5820d31b02673dcb11fda597df78151ebd7320e197c3e1",
       "observedHash": "0e7e19ef90bc04df26ddbcca47454d06437bd026e6e5595844d249be260bc5a3",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": true,
       "error": null,
       "firstChangedAt": "2026-10-24T05:35:41Z"
@@ -157,11 +157,11 @@
     "s-ec307461c898": {
       "id": "s-ec307461c898",
       "url": "https://x.com/teslaeurope/status/2111095942015566145",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "ok",
       "baselineHash": "1713a52156c533196d63f9414f442d7134bc4f01115f19f1e531c446e086e607",
-      "observedHash": "7cc8f80622ec3dfd8c41914bfbd7608deb56272b5bab96a50fe484215998b5fb",
-      "lastSuccessAt": "2026-10-26T05:40:00Z",
+      "observedHash": "009d37493bd32642a8d4ca5ab337f0836b25a83cab4eba49af60ba50ebf5fd40",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
       "pendingReview": true,
       "error": null,
       "firstChangedAt": "2026-10-24T05:35:41Z"
@@ -169,13 +169,35 @@
     "s-2bb11d6c28c7": {
       "id": "s-2bb11d6c28c7",
       "url": "https://www.tesla.com/en_gb/support/full-self-driving-subscriptions",
-      "lastAttemptAt": "2026-10-26T05:40:00Z",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
       "state": "unavailable",
       "baselineHash": "aa146ae47e107a7b2606634a42a7394032a66194859ad34cdda9983dd9ba15e5",
       "observedHash": "aa146ae47e107a7b2606634a42a7394032a66194859ad34cdda9983dd9ba15e5",
       "lastSuccessAt": "2026-10-23T18:10:25Z",
       "pendingReview": false,
       "error": "HTTP Error 403: Forbidden"
+    },
+    "s-d8a3f32f6ac7": {
+      "id": "s-d8a3f32f6ac7",
+      "url": "https://x.com/teslaeurope/status/2114667445223149619",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
+      "state": "ok",
+      "baselineHash": "221a1954b1f0f5e76e167ad4802016d621a5b27aaf2e15fbb6693208c9668c43",
+      "observedHash": "221a1954b1f0f5e76e167ad4802016d621a5b27aaf2e15fbb6693208c9668c43",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
+      "pendingReview": false,
+      "error": null
+    },
+    "s-3da5d41d22de": {
+      "id": "s-3da5d41d22de",
+      "url": "https://tapportals.mk.gov.lv/legal_acts/59bac950-a57d-4a56-884a-285ef95b6d83",
+      "lastAttemptAt": "2026-10-27T05:37:55Z",
+      "state": "ok",
+      "baselineHash": "af48dea618b7ad7f828994b599399c27e32cd550468674c00f1651495fc1dc49",
+      "observedHash": "af48dea618b7ad7f828994b599399c27e32cd550468674c00f1651495fc1dc49",
+      "lastSuccessAt": "2026-10-27T05:37:55Z",
+      "pendingReview": false,
+      "error": null
     }
   }
 }
