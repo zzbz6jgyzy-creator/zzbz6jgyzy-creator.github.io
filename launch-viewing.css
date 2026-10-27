@@ -2047,3 +2047,6 @@ html[data-theme=light] .lv-page{--lv-ink:#192838;--lv-muted:#506276;--lv-edge:#1
 @media print{.lv-cinematic,.lv-mission-clock .lv-text-link{display:none!important}.lv-primary-board,.lv-result-deck,.lv-atlas-grid{display:block}.lv-page .lv-hero-v3{min-height:0;padding-top:10px}.lv-page .lv-hero-v3 h1{font-size:40px}.lv-page .lv-hero-v3 .lv-lede{color:#333}.lv-mission-bar{display:block}.lv-mission-clock{border:0;padding:12px 0}}
 
 @media print{.lv-page .lv-js{display:none!important}}
+/* Give the phone artwork its own readable space rather than hiding it behind copy. */
+@media(max-width:650px){.lv-page .lv-hero-v3{min-height:0;gap:10px;padding-bottom:20px}.lv-cinematic{position:relative;inset:auto;width:100%;height:210px;margin-top:4px;border-radius:10px;opacity:1}.lv-cinematic>img{object-fit:cover;object-position:50% 64%}.lv-cinematic:after{background:linear-gradient(0deg,#090f18,transparent 25%)}.lv-page .lv-nav>a{min-width:90px;flex:1 0 auto}.lv-page .lv-nav{gap:4px}}
+.lv-page button:disabled{cursor:not-allowed;opacity:.55}

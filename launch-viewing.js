@@ -119,6 +119,15 @@
     wxLoading = false;
     wxError = "";
   }
+  function clearField() {
+    if ($("lv-field").open) $("lv-field").close();
+    $("lv-field-compass").innerHTML = "";
+    text("lv-field-title", "No pad direction available");
+    text("lv-field-bearing", "—");
+    text("lv-field-direction", "Choose a launch with a known pad.");
+    text("lv-field-time", "");
+    text("lv-field-place", "");
+  }
   function closeSuggestions() {
     $("lv-suggestions").hidden = true;
     $("lv-location").setAttribute("aria-expanded", "false");
@@ -196,7 +205,7 @@
       state.launchId = "";
       resetWeather();
       stopCompass();
-      if ($("lv-field").open) $("lv-field").close();
+      clearField();
       $("lv-map").innerHTML = '<div class="lv-empty"><h3>No upcoming launch geometry.</h3><p>Check the Calendar for new targets.</p></div>';
       for (const id of ["lv-metrics", "lv-sky-visual", "lv-compass", "lv-field-compass"]) $(id).innerHTML = "";
       $("lv-direction-text").textContent = "No target selected";
@@ -211,6 +220,12 @@
     }
     state.launchId = e.id;
     const a = V.analysis(data, e, p, state, !state.place, world);
+    if (!a.scenario) {
+      // A refreshed record can lose its matched pad while a sensor or field view
+      // is open. Stop that session before rendering the new, unknown geometry.
+      stopCompass();
+      clearField();
+    }
     $("lv-map").innerHTML = a.map;
     $("lv-metrics").innerHTML = a.metrics;
     $("lv-brief").innerHTML = a.copy;
@@ -486,7 +501,7 @@
   function compassPaint() {
     const s = geometry(), hasPlace = !!state.place, live = compassMode === 'live' && fieldHeading !== null && hasPlace && !!s;
     const messages = {
-      off: hasPlace ? 'Ready. Hold the device nearly flat and tap Start live compass.' : 'Choose your observing spot first. The example location is not your position.',
+      off: !hasPlace ? 'Choose your observing spot first. The example location is not your position.' : !s ? 'Choose a launch with a known pad before starting the compass.' : 'Ready. Hold the device nearly flat and tap Start live compass.',
       requesting: 'Allow Motion & Orientation access when your browser asks.',
       waiting: 'Waiting for a compass reading. Hold the device nearly flat and gently turn it.',
       live: 'Live device heading · corrected to approximate true north with WMM2025.',
@@ -503,9 +518,9 @@
     const labels = { off:'North-up view',requesting:'Permission needed',waiting:'Finding heading',live:'Live compass',blocked:'Access blocked',unsupported:'Sensor unavailable',insecure:'HTTPS required',timeout:'No heading received',level:'Hold flatter',calibrating:'Check accuracy',stale:'Reading paused',model:'Static bearing',paused:'Paused' };
     const cue = !hasPlace ? 'Set your location to get your own pad direction.' : !s ? 'Choose a launch with a known pad.' : live ? Compass.turn(s.bearing,fieldHeading).text : compassMode === 'level' ? 'Hold the device flatter to continue.' : compassMode === 'calibrating' ? 'Calibrate before following the arrow.' : compassMode === 'stale' ? 'Move the device to refresh the heading.' : 'North-up reference · start the compass to turn toward the pad.';
     const headingText = live ? Math.round(fieldHeading)+'° true · your screen’s top edge'+(northCorrection?.accuracy!==null&&northCorrection?.accuracy!==undefined?' · sensor ±'+Math.round(northCorrection.accuracy)+'°':'') : 'Device heading is not currently live.';
-    const statusText = compassNote || messages[compassMode] || messages.off;
+    const statusText = compassNote || (compassMode === 'live' && !live ? messages.waiting : messages[compassMode]) || messages.off;
     // Repeated sensor samples must not repeatedly announce identical live-region text.
-    text('lv-compass-state', labels[compassMode] || labels.off);
+    text('lv-compass-state', !s ? 'Pad unavailable' : compassMode === 'live' && !live ? 'Finding heading' : labels[compassMode] || labels.off);
     const top = root.querySelector('.lv-compass-top'), topText = live ? 'TOP OF YOUR SCREEN' : 'NORTH-UP / NOT LIVE';
     if (top.textContent !== topText) top.textContent = topText;
     $('lv-compass-card').dataset.live = String(live);
@@ -638,5 +653,6 @@
   }).catch(() => {
     sourceFailed = true;
     fresh();
+    missionPaint();
   });
 })();
