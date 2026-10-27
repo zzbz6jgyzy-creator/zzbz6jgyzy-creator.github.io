@@ -25,11 +25,12 @@ async def main():
    await page.locator('.m3x-explode').click();await page.wait_for_function('__ctx.vis().battery',timeout=30000)
    vis=await page.evaluate('__ctx.vis()');assert all(vis[k] for k in ['battery','rotary','linear','hands','computer','feet']),vis
    await page.locator('.m3x-parts').click();await page.locator('.m3x-list button[data-part="linear"]').click();await page.wait_for_selector('.m3x-card:not([hidden]) h2')
-   assert await page.locator('.m3x-card h2').inner_text()=='Linear actuators';assert 'tightly packaged in the knee' in await page.locator('.m3x-card').inner_text()
+   assert await page.locator('.m3x-card h2').inner_text()=='Linear actuators';assert 'very tightly packaged' in await page.locator('.m3x-card').inner_text()
    await page.locator('.m3x-card .m3x-x').click();await page.locator('.m3x-reset').click();await page.wait_for_function('__ctx.exT()===0&&__ctx.selected()===null',timeout=30000)
    assert await page.evaluate('__ctx.exT()')==0 and await page.evaluate('__ctx.selected()') is None
    await page.locator('.m3x-canvas canvas').focus();before=await page.evaluate('__ctx.view().theta');await page.keyboard.press('ArrowLeft');assert await page.evaluate('__ctx.view().theta')!=before
    assert await page.locator('.m3x-list button').count()==11
+   assert await page.evaluate("!document.querySelector('#newsletter,.sd-band,.scroll-beam')"),'site bundle leaked into the frame'
    assert not errors,errors;print('viewer',w,'passed',flush=True);await ctx.close()
   # Guide launch, part hand-off from the X-ray, exit with focus return.
   ctx=await browser.new_context(viewport={'width':1440,'height':900},reduced_motion='reduce');await site(ctx);page=await ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))

@@ -21,11 +21,11 @@ export const PARTS = {
   "head": {
     "name": "Head and face plate",
     "variant": "Fan-made exterior",
-    "desc": "A smooth helmet with a dark face plate. The cameras sit behind the plate rather than in visible eyes.",
+    "desc": "A smooth helmet with a dark face plate. The cameras are shown behind the plate here; Tesla has not published their placement.",
     "how": "Gen 2 added a neck with two degrees of freedom, so the head can turn and nod to look at the task.",
     "facts": [
       "2-DoF neck from Gen 2",
-      "Cameras behind the face plate"
+      "Camera placement not published"
     ],
     "src": {
       "url": "https://www.notateslaapp.com/news/1821/tesla-unveils-optimus-robot-gen-2-tesla-designed-fingertip-sensors-actuators-and-ten-other-improvements-video",
@@ -126,7 +126,7 @@ export const PARTS = {
     "name": "Linear actuators",
     "variant": "Illustrative · 2022 layout described by Tesla",
     "desc": "Fourteen push-pull units: two at the elbows, four at the wrists, two at the hips, two at the knees and four at the ankles.",
-    "how": "Each uses planetary rollers and an inverted planetary screw, which Tesla said gives efficiency, compactness and durability. The strongest is “very tightly packaged in the knee”.",
+    "how": "Each uses planetary rollers and an inverted planetary screw, which Tesla said gives efficiency, compactness and durability. At the knee, Tesla said the actuator is “very tightly packaged”.",
     "facts": [
       "14 of the 28 body actuators",
       "Planetary roller screws"

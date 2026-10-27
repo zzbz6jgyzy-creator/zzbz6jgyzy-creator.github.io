@@ -388,7 +388,7 @@ function endFly() {
   controls.enabled = true;
 }
 $('.m3x-reset').addEventListener('click', () => { restoreView = null; select(null, { snapBack: false }); setExplode(0); startFly(homePos(), HOME.t.clone()); });
-addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); if (selected) select(null); notify('sd-optimus-exit'); } });
+addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); if (selected) { select(null); return; } notify('sd-optimus-exit'); } });
 renderer.domElement.addEventListener('keydown', (e) => {
  if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home'].includes(e.key)) return;
  e.preventDefault(); idle(); fly = null;
