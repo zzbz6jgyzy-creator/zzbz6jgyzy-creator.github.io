@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T09:25:43.357Z",
+  "updated": "2026-10-27T10:38:27.303Z",
   "changes": [
     {
       "type": "logged",
@@ -204,6 +204,23 @@
       "summary": "Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country.",
       "title": "LV · recognition",
       "id": "logged|fsd:country:LV|2026-10-26T00:00:00.000Z|Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country."
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page.",
+      "at": "2026-10-26T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "NASASpaceflight on X (also logged by Next Spaceflight)",
+      "sourceUrl": "https://x.com/NASASpaceflight/status/2114904512217694216",
+      "href": "/starship.html#schedule",
+      "summary": "Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-10-26T00:00:00.000Z|Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page."
     },
     {
       "type": "logged",

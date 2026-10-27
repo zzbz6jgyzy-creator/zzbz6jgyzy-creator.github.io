@@ -1,5 +1,5 @@
 window.SEE_LAUNCH = {
-  updated: "2026-10-24",
+  updated: "2026-10-27",
   note:
     "Our estimate, not a full FlightClub trajectory. We use the pad, a typical azimuth for that mission type, distance, night vs day, and Open-Meteo cloud cover. A feature in the notes can still be hidden by haze, a late slip, or a dogleg. Not SpaceX’s official viewing guide.",
   pads: {
@@ -61,14 +61,14 @@ window.SEE_LAUNCH = {
     {
       id: "ll-starlink-15-16",
       title: "Falcon 9 · Starlink Group 15-16",
-      start: "2026-10-27T04:45:00Z",
+      start: "2026-10-27T07:25:51Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "sso",
-      status: "go",
+      status: "done",
       precision: "datetime",
       href: "https://www.spacex.com/launches",
-      note: "Vandenberg polar Starlink. Moved from 26 Oct to Tue 27 Oct (Launch Library 2).",
+      note: "Launched Tue 27 Oct at 07:25 UTC from Vandenberg SLC-4E (Launch Library 2); SpaceX confirmed deployment of 27 Starlink satellites.",
     },
     {
       id: "ll-starlink-15-18",
@@ -83,6 +83,18 @@ window.SEE_LAUNCH = {
       note: "Vandenberg polar Starlink.",
     },
     {
+      id: "ll-ussf-432",
+      title: "Falcon 9 · USSF-432",
+      start: "2026-11-02T01:56:00Z",
+      pad: "slc4e",
+      vehicle: "falcon",
+      orbit: "leo",
+      status: "go",
+      precision: "datetime",
+      href: "https://www.spacex.com/launches",
+      note: "Classified US Space Force mission from Vandenberg (Launch Library 2).",
+    },
+    {
       id: "ll-starlink-15-21",
       title: "Falcon 9 · Starlink Group 15-21",
       start: "2026-11-05T05:14:00Z",
@@ -93,18 +105,6 @@ window.SEE_LAUNCH = {
       precision: "datetime",
       href: "https://www.spacex.com/launches",
       note: "Vandenberg polar Starlink.",
-    },
-    {
-      id: "ll-nrol-195",
-      title: "Falcon 9 · NROL-195",
-      start: "2026-11-05T22:34:00Z",
-      pad: "slc4e",
-      vehicle: "falcon",
-      orbit: "leo",
-      status: "net",
-      precision: "datetime",
-      href: "https://www.spacex.com/launches",
-      note: "National Reconnaissance Office mission from Vandenberg. Time still to be confirmed (Launch Library 2).",
     },
   ],
 };

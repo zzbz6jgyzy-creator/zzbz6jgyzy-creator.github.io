@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-10-25",
+ "updated": "2026-10-27",
  "reviewed": "2026-10-24",
  "phaseOrder": [
   "liftoff",
@@ -1726,6 +1726,13 @@
   ]
  },
  "schedule": [
+  {
+   "date": "2026-10-26",
+   "text": "Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page.",
+   "url": "https://x.com/NASASpaceflight/status/2114904512217694216",
+   "outlet": "NASASpaceflight on X (also logged by Next Spaceflight)",
+   "kind": "reported"
+  },
   {
    "date": "2026-10-25",
    "text": "SpaceX confirmed a full-duration 33-engine static fire of the Super Heavy booster for Flight 15 (Booster 22, on Pad 2, at 8:22am CDT per Spaceflight Now). SpaceX hasn’t announced a Ship 42 static fire, a launch date or a mission page.",

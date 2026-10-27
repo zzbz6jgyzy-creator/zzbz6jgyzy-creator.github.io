@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.f4bd4d7a26.js",
-      "bytes": 44282,
+      "file": "/assets/js/core.bundle.8a94daea63.js",
+      "bytes": 44303,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -25,8 +25,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.306aa61cf9.js",
-      "bytes": 129088,
+      "file": "/assets/js/home.bundle.56317a3e46.js",
+      "bytes": 130161,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -51,7 +51,7 @@
       ]
     },
     "starlink": {
-      "file": "/assets/js/starlink.bundle.955c2dd4ca.js",
+      "file": "/assets/js/starlink.bundle.09ff619268.js",
       "bytes": 22111,
       "sources": [
         "starlink-data.js",
@@ -117,8 +117,8 @@
       ]
     },
     "calendar": {
-      "file": "/assets/js/calendar.bundle.625204da70.js",
-      "bytes": 36717,
+      "file": "/assets/js/calendar.bundle.4106c28086.js",
+      "bytes": 36915,
       "sources": [
         "calendar-merge.js",
         "calendar-studio-model.js",
@@ -186,8 +186,8 @@
       ]
     },
     "see-the-launch": {
-      "file": "/assets/js/see-the-launch.bundle.fa30aa67ec.js",
-      "bytes": 107933,
+      "file": "/assets/js/see-the-launch.bundle.f4881b1fa5.js",
+      "bytes": 107971,
       "sources": [
         "calendar-merge.js",
         "calendar-studio-model.js",
@@ -371,8 +371,8 @@
       ]
     },
     "arcade-core": {
-      "file": "/assets/js/arcade-core.bundle.5ece72c3cb.js",
-      "bytes": 38886,
+      "file": "/assets/js/arcade-core.bundle.607b99273e.js",
+      "bytes": 38907,
       "sources": [
         "track.js",
         "newsletter.js",
