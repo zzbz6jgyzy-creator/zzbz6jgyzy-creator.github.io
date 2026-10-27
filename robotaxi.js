@@ -13,8 +13,8 @@
   const REPAIR = 320;
   const GAME = "robotaxi";
   const BOARD_MAX = 8;
-  const STORE = "aljr.taxi.best";
-  const BOARD_STORE = "aljr.taxi.board";
+  const STORE = "sd.arcade.robotaxi.best.v2";
+  const BOARD_STORE = "sd.arcade.robotaxi.runs.v2";
   const NAME_STORE = "aljr.taxi.name";
   const SHARE_URL = "https://superchargeddaily.com/robotaxi.html";
 
@@ -57,20 +57,29 @@
   let state = "attract";
   let game = null;
   let selected = new Set();
-  let best = Number(localStorage.getItem(STORE) || 0);
-  let muted = false;
+  let best = Number(window.SDArcade.storage.getItem(STORE) || 0);
+  let muted = true;
   let audio = null;
   let tickTimer = 0;
   let freshId = "";
+  const M=window.SDArcadeModel;
+  let weekRandom=()=>.5;
+  let forceNew=false;
+  const RESUME='sd-arcade-taxi-resume-v2';
+  function powerCost(){return game?.upgrades?.depot?32:OVERNIGHT;}
+  function resumeKey(){return RESUME+':'+arcade.mode+(arcade.mode==='daily'?':'+arcade.day:'');}
+  function getResume(){try{return M.taxiResume(JSON.parse(window.SDArcade.storage.getItem(resumeKey())||'null'));}catch{return null;}}
+  function saveResume(){if(!game||!['deploy','night'].includes(state))return;window.SDArcade.storage.setItem(resumeKey(),JSON.stringify({state,mode:arcade.mode,day:arcade.day,game}));}
+
 
   function callsign() {
-    const raw = (nameInput?.value || localStorage.getItem(NAME_STORE) || "Boss").trim();
+    const raw = (nameInput?.value || window.SDArcade.storage.getItem(NAME_STORE) || "Boss").trim();
     return (raw || "Boss").slice(0, 12).toUpperCase();
   }
 
   function loadBoard() {
     try {
-      const rows = JSON.parse(localStorage.getItem(BOARD_STORE) || "[]");
+      const rows = JSON.parse(window.SDArcade.storage.getItem(BOARD_STORE) || "[]");
       return Array.isArray(rows) ? rows : [];
     } catch {
       return [];
@@ -78,7 +87,7 @@
   }
 
   function saveBoard(rows) {
-    localStorage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
+    window.SDArcade.storage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
   }
 
   function storedRows() {
@@ -128,17 +137,18 @@
     const days = DAY_NAMES.map((name, i) => ({
       name,
       weekday: i < 5,
-      rain: Math.random() < (i === 3 ? 0.48 : 0.2),
+      rain: weekRandom() < (i === 3 ? 0.48 : 0.2),
       concert: false,
       airportDelay: false,
     }));
-    if (Math.random() < 0.78) days[2].concert = true;
-    if (Math.random() < 0.52) days[5].concert = true;
-    if (Math.random() < 0.22) days[4].concert = true;
+    if (weekRandom() < 0.78) days[2].concert = true;
+    if (weekRandom() < 0.52) days[5].concert = true;
+    if (weekRandom() < 0.22) days[4].concert = true;
     if (!days.some((d) => d.concert)) days[5].concert = true;
     days.forEach((d) => {
-      if (d.rain && Math.random() < 0.55) d.airportDelay = true;
+      if (d.rain && weekRandom() < 0.55) d.airportDelay = true;
     });
+    if(arcade.mode==='training')days.forEach(d=>{d.rain=false;d.airportDelay=false;});
     return days;
   }
 
@@ -156,7 +166,9 @@
     if (day.concert && zone.id === "stadium") d += 42;
     if (day.airportDelay && zone.id === "airport") d += 12;
     if (day.rain) d = Math.round(d * 1.22);
-    return Math.max(5, d);
+    if(arcade.mode==='training')d*=.72;
+    d*=game.pricing==='value'?1.2:game.pricing==='premium'?.8:1;
+    return Math.max(5, Math.round(d));
   }
 
   function heatLabel(demand) {
@@ -172,14 +184,14 @@
     if (day.concert && zone.id === "stadium") p += 3;
     if (rep >= 82) p = Math.round(p * 1.08);
     if (rep < 42) p = Math.round(p * 0.9);
-    return p;
+    return Math.round(p*(game.pricing==='value'?.85:game.pricing==='premium'?1.25:1));
   }
 
   function capacity(car, rain) {
     if (car.broken || car.charge < 18) return 0;
     let n = car.charge >= 70 ? 9 : car.charge >= 40 ? 6 : 4;
     if (rain) n = Math.max(3, Math.round(n * 0.72));
-    return n;
+    return n+(game?.upgrades?.routing?2:0);
   }
 
   function workingCars() {
@@ -256,6 +268,7 @@
   }
 
   function showOverlay(kicker, title, copy, playLabel, shareHref) {
+    const report=root.querySelector('[data-taxi-report]');if(report)report.hidden=state!=='end';
     if (overlayKicker) overlayKicker.textContent = kicker;
     if (overlayTitle) overlayTitle.textContent = title;
     if (overlayCopy) overlayCopy.textContent = copy;
@@ -348,7 +361,7 @@
       card.append(media);
 
       const body = el("div", "taxi-zone-body");
-      body.append(el("h2", "", zone.name));
+      body.append(el("h3", "", zone.name));
       body.append(
         el("p", "", `${heatLabel(demand)} · ${demand} rides · ${money(fareFor(zone, day, game.reputation))}`)
       );
@@ -356,14 +369,14 @@
       meta.append(el("span", "", `${assigned.length} cab${assigned.length === 1 ? "" : "s"}`));
       const stepper = el("div", "taxi-stepper");
       const minus = el("button", "", "−");
-      minus.type = "button";
+      minus.type = "button";minus.setAttribute("aria-label","Remove a cab from "+zone.name);
       minus.disabled = !canAssign || assigned.length === 0;
       minus.addEventListener("click", (e) => {
         e.stopPropagation();
         pullFromZone(zone.id);
       });
       const plus = el("button", "", "+");
-      plus.type = "button";
+      plus.type = "button";plus.setAttribute("aria-label","Send a cab to "+zone.name);
       plus.disabled = !canAssign || idleCars().length === 0;
       plus.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -403,7 +416,7 @@
     if (idleEl) idleEl.textContent = `${idle} idle`;
     game.cars.forEach((car) => {
       const btn = el("button", "taxi-cab");
-      btn.type = "button";
+      btn.type = "button";btn.setAttribute("aria-pressed",String(state==='night'?car.night:selected.has(car.id)));btn.setAttribute("aria-label",`Cab ${car.id+1}, battery ${Math.round(car.charge)} percent, ${cabStatus(car)}`);
       if (selected.has(car.id)) btn.classList.add("is-on");
       if (car.broken || (state === "deploy" && car.charge < 18)) btn.classList.add("is-out");
       if (car.broken) btn.classList.add("is-broke");
@@ -422,7 +435,7 @@
       fill.style.width = `${clamp(car.charge, 0, 100)}%`;
       batt.append(fill);
       btn.append(batt);
-      btn.append(el("span", "", cabStatus(car)));
+      btn.append(el("span", "", Math.round(car.charge)+"% · "+cabStatus(car)));
       btn.addEventListener("click", () => tapCab(car.id));
       fleetEl.append(btn);
     });
@@ -455,7 +468,7 @@
       const all = el("button", "button button-ghost", "Charge empties");
       all.type = "button";
       all.addEventListener("click", markEmpties);
-      const cost = game.cars.filter((c) => c.night).length * OVERNIGHT;
+      const cost = game.cars.filter((c) => c.night).length * powerCost();
       const sleep = el("button", "button button-primary", `Sleep · ${money(cost)}`);
       sleep.type = "button";
       sleep.addEventListener("click", finishNight);
@@ -485,6 +498,7 @@
     renderFleet();
     renderActions();
     if (state !== "resolve") renderLog();
+    renderStrategy();saveResume();
   }
 
   function tapCab(id) {
@@ -569,9 +583,9 @@
       .filter((c) => c.charge < 70)
       .sort((a, b) => a.charge - b.charge)
       .forEach((car) => {
-        if (budget < OVERNIGHT) return;
+        if (budget < powerCost()) return;
         car.night = true;
-        budget -= OVERNIGHT;
+        budget -= powerCost();
       });
     paint();
   }
@@ -588,6 +602,7 @@
     selected.clear();
     const day = today();
     const queue = [];
+    const contract=M.contract(arcade.seed(),game.day,today());let contractServed=0;
     let dayCash = 0;
     let dayRides = 0;
     let dayMissed = 0;
@@ -598,6 +613,7 @@
       const cap = cars.reduce((sum, c) => sum + capacity(c, day.rain), 0);
       const served = Math.min(demand, cap);
       const missed = demand - served;
+      if(zone.id===contract.zone)contractServed=served;
       const fare = fareFor(zone, day, game.reputation);
       const revenue = served * fare;
       dayCash += revenue;
@@ -610,7 +626,7 @@
         left -= worked;
         const drain = worked > 0 ? (day.rain ? 64 : 52) : 18;
         car.charge = clamp(car.charge - drain, 0, 100);
-        if (worked > 0 && Math.random() < (car.charge < 30 ? 0.1 : day.rain ? 0.045 : 0.025)) {
+        if (worked > 0 && M.random(arcade.seed()+":break:"+game.day+":"+car.id)() < (car.charge < 30 ? 0.1 : day.rain ? 0.045 : 0.025)*(game.upgrades.care?.25:1)) {
           car.broken = true;
           game.cash -= REPAIR;
           queue.push({
@@ -634,6 +650,10 @@
       car.fast = false;
     });
 
+    const bonus=contractServed>=contract.rides?contract.bonus:0;
+    if(bonus){dayCash+=bonus;game.reputation+=3;queue.unshift({text:contract.label+' won · '+money(bonus)+' contract bonus.',kind:'good'});}
+    else queue.push({text:contract.label+': '+contractServed+'/'+contract.rides+' rides. No contract bonus today.'});
+    game.history.push({name:day.name,revenue:dayCash,rides:dayRides,bonus,missed:dayMissed});
     game.cash += dayCash;
     game.rides += dayRides;
     game.missed += dayMissed;
@@ -648,7 +668,7 @@
     game.pending = queue;
     game.queueIndex = 0;
     paint();
-    playQueue();
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches)finishResolve();else playQueue();
   }
 
   function playQueue() {
@@ -688,7 +708,7 @@
     game.cars.forEach((car) => {
       car.night = car.charge < 70;
     });
-    let cost = game.cars.filter((c) => c.night).length * OVERNIGHT;
+    let cost = game.cars.filter((c) => c.night).length * powerCost();
     if (cost > game.cash) {
       game.cars.forEach((c) => {
         c.night = false;
@@ -697,7 +717,7 @@
         .filter((c) => c.charge < 40)
         .sort((a, b) => a.charge - b.charge)
         .forEach((car) => {
-          if (game.cash < (game.cars.filter((c) => c.night).length + 1) * OVERNIGHT) return;
+          if (game.cash < (game.cars.filter((c) => c.night).length + 1) * powerCost()) return;
           car.night = true;
         });
     }
@@ -707,7 +727,7 @@
 
   function finishNight() {
     const marked = game.cars.filter((c) => c.night);
-    const cost = marked.length * OVERNIGHT;
+    const cost = marked.length * powerCost();
     if (cost > game.cash) {
       pushLog(`Not enough cash to garage ${marked.length} cabs.`, "bad");
       return;
@@ -723,11 +743,11 @@
     game.log = [];
     setNow(`${today().name} · ${forecastCopy(today())}`);
     beep(360, 0.08);
-    paint();
+    paint();root.querySelector('[data-taxi-forecast]').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
   }
 
   function shareHref(score, g) {
-    const text = `Robotaxi Boss · ${score.toLocaleString()} pts · ${money(g.cash)} · ${g.cars.length} cabs · ${g.rides} rides. Beat me: ${SHARE_URL}`;
+    const text = `Robotaxi Boss · ${score.toLocaleString()} pts · ${money(g.cash)} · ${g.cars.length} cabs · ${g.rides} rides. Beat me: ${SHARE_URL}?mode=${arcade.mode}${arcade.mode==='daily'?'&day='+arcade.day:''}`;
     return `https://x.com/intent/post?text=${encodeURIComponent(text)}`;
   }
 
@@ -736,28 +756,12 @@
     const score = Math.max(0, Math.round(scoreOf(game)));
     if (score > best) {
       best = score;
-      localStorage.setItem(STORE, String(best));
+      window.SDArcade.storage.setItem(STORE, String(best));
     }
-    freshId = `w-${Date.now()}`;
-    const rows = loadBoard();
-    rows.push({
-      id: freshId,
-      name: callsign(),
-      score,
-      rides: game.rides,
-      at: Date.now(),
-    });
-    rows.sort((a, b) => b.score - a.score);
-    saveBoard(rows);
-    renderBoard(freshId);
-    const remote = window.AljrBoard;
-    if (remote) {
-      remote.submit(GAME, { name: callsign(), score, flights: game.rides }).then((res) => {
-        if (res?.rows) saveBoard(res.rows);
-        if (res?.id) freshId = res.id;
-        renderBoard(freshId);
-      });
-    }
+    window.SDArcade.storage.removeItem(resumeKey());
+    const medal=game.reputation>=65&&game.rides>=250?'gold':game.reputation>=35&&game.rides>=160?'silver':'bronze';
+    arcade.record({score,missions:7,complete:true,medal,title:'Your city, in review',copy:game.rides+' rides completed · '+game.missed+' missed · '+Math.round(game.reputation)+' reputation. '+game.history.filter(h=>h.bonus).length+' contracts won. Cash '+money(game.cash)+'. Try a different fare and investment strategy on the same daily seed.'});
+    arcade.live('Week complete. '+score.toLocaleString()+' points. Your personal record has been saved.');
     setNow(`Week locked · ${score.toLocaleString()} pts`);
     showOverlay(
       "Week over",
@@ -771,34 +775,32 @@
   }
 
   function startWeek() {
-    ensureAudio();
-    clearTimeout(tickTimer);
-    selected.clear();
-    game = {
-      day: 0,
-      cash: START_CASH,
-      reputation: START_REP,
-      rides: 0,
-      missed: 0,
-      bought: 0,
-      cars: Array.from({ length: START_CARS }, (_, i) => makeCar(i)),
-      days: planWeek(),
-      log: [],
-      pending: null,
-      queueIndex: 0,
-    };
-    state = "deploy";
-    hideOverlay();
-    setNow("Day 1 · garage open");
-    paint();
-    beep(480, 0.09, "triangle", 0.05);
+    ensureAudio();clearTimeout(tickTimer);selected.clear();
+    const saved=!forceNew&&getResume();forceNew=false;
+    if(saved&&saved.mode===arcade.mode&&(arcade.mode!=='daily'||saved.day===arcade.day)){game=saved.game;state=saved.state;hideOverlay();setNow('Week restored · '+today().name);arcade.markPlayed();paint();return;}
+    weekRandom=M.random(arcade.seed()+':week');
+    game={day:0,cash:START_CASH,reputation:START_REP,rides:0,missed:0,bought:0,cars:Array.from({length:START_CARS},(_,i)=>makeCar(i)),days:planWeek(),log:[],pending:null,queueIndex:0,pricing:'balanced',upgrades:{depot:false,routing:false,care:false},history:[]};
+    state='deploy';hideOverlay();setNow('Day 1 · garage open');arcade.markPlayed();paint();beep(480,.09,'triangle',.05);
   }
+  function buyUpgrade(id){if(state!=='deploy')return;const u=M.UPGRADES.find(x=>x.id===id);if(!u||game.upgrades[id]||game.cash<u.cost)return;game.cash-=u.cost;game.upgrades[id]=true;setNow(u.title+' installed');paint();}
+  function cityView(){const node=root.querySelector('[data-taxi-city]');if(!node||!game)return;const pos=[[155,95],[460,75],[485,245],[180,260]];const busy=state==='resolve';node.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" role="group" aria-label="City deployment map. Use the named zone buttons below to assign cabs."><defs><pattern id="city-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#466079" stroke-opacity=".17"/></pattern></defs><path fill="url(#city-grid)" d="M0 0H640V350H0Z"/><path d="M0 310Q110 180 70 0M600 350Q500 150 640 80" fill="none" stroke="#194658" stroke-width="35"/><g fill="#182c39" stroke="#5e7785" stroke-opacity=".4">'+Array.from({length:21},(_,i)=>'<rect x="'+(85+(i%7)*75)+'" y="'+(60+Math.floor(i/7)*80)+'" width="'+(20+i%3*9)+'" height="'+(25+i%4*9)+'" rx="3"/>').join('')+'</g><path class="ac-route '+(busy?'':'ac-route-idle')+'" d="M155 95H460V245H180V95M180 245L460 95" fill="none" stroke="#e6c36a" stroke-width="3"/>'+ZONES.map((z,i)=>{const[x,y]=pos[i],n=zoneCars(z.id).length;return'<g role="button" tabindex="0" data-city-zone="'+z.id+'" aria-label="Assign selected cabs to '+z.name+'"><circle cx="'+x+'" cy="'+y+'" r="28" fill="#101d27" stroke="'+(n?'#e6c36a':'#6d879a')+'" stroke-width="2"/><text x="'+x+'" y="'+(y+4)+'" text-anchor="middle">'+n+' cabs</text><text x="'+x+'" y="'+(y+51)+'" text-anchor="middle">'+z.name+'</text></g>';}).join('')+'<text x="22" y="330" style="font-size:10px;letter-spacing:2px">BAY VIEW / OPERATIONS '+(busy?'LIVE':'PLAN')+'</text></svg>';node.querySelectorAll('[data-city-zone]').forEach(g=>{g.onclick=()=>sendSelected(g.dataset.cityZone);g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();sendSelected(g.dataset.cityZone);}};});}
+  function renderStrategy(){if(!game)return;cityView();const contract=M.contract(arcade.seed(),game.day,today()),pricing=root.querySelector('[data-taxi-pricing]');pricing.value=game.pricing;pricing.disabled=state!=='deploy';root.querySelector('[data-taxi-contract]').textContent=contract.label+': serve '+contract.rides+' rides in '+ZONES.find(z=>z.id===contract.zone).name+' for a '+money(contract.bonus)+' bonus.';
+    const upgrades=root.querySelector('[data-taxi-upgrades]');upgrades.replaceChildren();M.UPGRADES.forEach(u=>{const b=el('button','');b.type='button';b.dataset.upgrade=u.id;b.disabled=state!=='deploy'||game.upgrades[u.id]||game.cash<u.cost;b.append(el('strong','',u.title),el('b','',game.upgrades[u.id]?'Installed':money(u.cost)),el('span','',u.copy));b.onclick=()=>buyUpgrade(u.id);upgrades.append(b);});
+    const planner=root.querySelector('[data-taxi-planner]');planner.replaceChildren();game.days.slice(game.day+1,game.day+3).forEach(d=>{const p=el('p','');p.append(el('b','','Next · '+d.name),document.createTextNode(forecastCopy(d)));planner.append(p);});if(!planner.childNodes.length)planner.append(el('p','','Final day. Finish strong.'));
+    const chart=root.querySelector('[data-taxi-chart]');chart.replaceChildren();if(game.history.length){const max=Math.max(1,...game.history.map(d=>d.revenue));game.history.forEach(d=>{const bar=el('div','');const fill=el('i','');fill.style.height=(d.revenue/max*65)+'px';bar.append(el('span','',money(d.revenue)),fill,el('span','',d.name));chart.append(bar);});chart.setAttribute('role','img');chart.setAttribute('aria-label',game.history.map(d=>d.name+' revenue '+money(d.revenue)).join('; '));}
+    arcade.telemetry({state:state==='deploy'?'Planning':state==='night'?'Charging':state==='resolve'?'City running':state==='end'?'Week complete':'Ready',sound:muted?'Sound off':'Sound on'});
+  }
+  const arcade=window.SDArcade.mount('robotaxi',{reset(){clearTimeout(tickTimer);state='attract';game=null;showOverlay('New mission','Open the garage','Choose your fleet strategy. Saved weeks restore when you press Play.','Play');},restart(){forceNew=true;startWeek();},pause(){},sound(){ensureAudio();muted=!muted;applyMute();return muted;}});
+  root.querySelector('[data-taxi-report]').onclick=()=>{hideOverlay();root.querySelector('[data-taxi-chart]').scrollIntoView({block:'center',behavior:'instant'});};
+  root.querySelector('[data-taxi-pricing]').onchange=e=>{if(state==='deploy'){game.pricing=e.target.value;paint();}};
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){saveResume();clearTimeout(tickTimer);}else if(state==='resolve')playQueue();});
+  window.addEventListener('keydown',e=>{if(state!=='deploy'||e.target?.closest?.('input,select,textarea,button,a'))return;const i=Number(e.key)-1;if(i>=0&&i<4){e.preventDefault();sendSelected(ZONES[i].id);}});
 
   if (nameInput) {
-    const saved = localStorage.getItem(NAME_STORE);
+    const saved = window.SDArcade.storage.getItem(NAME_STORE);
     if (saved) nameInput.value = saved.slice(0, 12);
     nameInput.addEventListener("input", () => {
-      localStorage.setItem(NAME_STORE, callsign());
+      window.SDArcade.storage.setItem(NAME_STORE, callsign());
     });
   }
 
@@ -818,7 +820,7 @@
   window.addEventListener("keydown", (e) => {
     if (nameInput && document.activeElement === nameInput) return;
     const tag = document.activeElement?.tagName;
-    if (tag === "INPUT" || tag === "TEXTAREA") return;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || tag === "BUTTON" || tag === "A") return;
     if (e.key === "m" || e.key === "M") {
       ensureAudio();
       muted = !muted;
@@ -827,7 +829,9 @@
     if (e.key === "Enter" && (state === "attract" || state === "end")) startWeek();
   });
 
+  weekRandom=M.random(arcade.seed()+':week');
   game = {
+    pricing:"balanced",upgrades:{depot:false,routing:false,care:false},history:[],
     day: 0,
     cash: START_CASH,
     reputation: START_REP,
@@ -846,8 +850,11 @@
     });
     window.AljrBoard.load(GAME);
   }
+  const savedWeek=getResume();if(savedWeek)showOverlay('Saved week','Your city is waiting.','Continue your saved week, or use Restart to begin a new one.','Continue week');
+  window.RobotaxiGame={state:()=>state,snapshot:()=>JSON.parse(JSON.stringify(game)),start:startWeek,assign:sendToZone,runDay,finishResolve,finishNight,buyUpgrade,mode:()=>arcade.mode};
   renderBoard();
   applyMute();
   paint();
   if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
 })();
+

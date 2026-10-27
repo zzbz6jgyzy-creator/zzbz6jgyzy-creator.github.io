@@ -23,8 +23,8 @@
   const muteBtn = document.querySelector("[data-staging-mute]");
 
   const GAME = "staging";
-  const STORE = "aljr.staging.best";
-  const BOARD_STORE = "aljr.staging.board";
+  const STORE = "sd.arcade.staging.best.v2";
+  const BOARD_STORE = "sd.arcade.staging.runs.v2";
   const NAME_STORE = "aljr.staging.name";
   const BOARD_MAX = 8;
   const T0 = 148;
@@ -87,12 +87,17 @@
   let state = "attract";
   let flight = 0;
   let score = 0;
-  let best = Number(localStorage.getItem(STORE) || 0);
-  let muted = false;
+  let best = Number(window.SDArcade.storage.getItem(STORE) || 0);
+  let muted = true;
   let audio;
   let engine = null;
   let freshId = "";
   let last = 0;
+  let accumulator = 0;
+  let demo = false;
+  let simRandom = () => 0.5;
+  const M = window.SDArcadeModel;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let shake = 0;
   let flash = 0;
   let result = "";
@@ -130,7 +135,7 @@
     });
   }
 
-  function spec() {
+  function baseSpec() {
     const base = FLIGHTS[Math.min(flight, FLIGHTS.length - 1)];
     if (flight < FLIGHTS.length) return { ...base };
     const extra = flight - FLIGHTS.length + 1;
@@ -145,10 +150,12 @@
     };
   }
 
+  function spec() { return M.flightSpec("staging", arcade.mode, flight, baseSpec(), arcade.day); }
+
   function pickOut(n) {
     const idxs = ENGINES.map((_, i) => i);
     for (let i = idxs.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(simRandom() * (i + 1));
       const tmp = idxs[i];
       idxs[i] = idxs[j];
       idxs[j] = tmp;
@@ -158,10 +165,12 @@
     out.forEach((i) => {
       bias += ENGINES[i].x;
     });
-    return { out, bias: bias === 0 ? (Math.random() > 0.5 ? 1 : -1) : Math.sign(bias) };
+    return { out, bias: bias === 0 ? (simRandom() > 0.5 ? 1 : -1) : Math.sign(bias) };
   }
 
   function resetStack(autopilot) {
+    simRandom = arcade.rng(flight);
+    const sim = (a,b) => a + simRandom()*(b-a);
     const s = spec();
     auto = autopilot;
     windGust = 0;
@@ -174,11 +183,11 @@
     warnMark = 4;
     const dead = pickOut(s.engineOut);
     stack = {
-      x: rand(-10, 10),
-      vx: rand(-0.04, 0.04),
-      angle: rand(-0.05, 0.05),
+      x: sim(-10, 10),
+      vx: sim(-0.04, 0.04),
+      angle: sim(-0.05, 0.05),
       av: 0,
-      alt: 61.4 + rand(-0.4, 0.5),
+      alt: 61.4 + sim(-0.4, 0.5),
       vy: 1.08,
       alive: true,
       shipLit: false,
@@ -236,20 +245,20 @@
 
   function setBest(n) {
     best = n;
-    localStorage.setItem(STORE, String(n));
+    window.SDArcade.storage.setItem(STORE, String(n));
     if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
   }
 
   if (bestEl) bestEl.textContent = `Best ${best.toLocaleString()}`;
 
   function callsign() {
-    const raw = (nameInput?.value || localStorage.getItem(NAME_STORE) || "Pilot").trim();
+    const raw = (nameInput?.value || window.SDArcade.storage.getItem(NAME_STORE) || "Pilot").trim();
     return (raw || "Pilot").slice(0, 12);
   }
 
   function loadBoard() {
     try {
-      const raw = JSON.parse(localStorage.getItem(BOARD_STORE) || "[]");
+      const raw = JSON.parse(window.SDArcade.storage.getItem(BOARD_STORE) || "[]");
       return Array.isArray(raw) ? raw.filter((row) => row && typeof row.score === "number") : [];
     } catch {
       return [];
@@ -257,7 +266,7 @@
   }
 
   function saveBoard(rows) {
-    localStorage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
+    window.SDArcade.storage.setItem(BOARD_STORE, JSON.stringify(rows.slice(0, BOARD_MAX)));
   }
 
   function storedRows() {
@@ -325,31 +334,8 @@
   }
 
   function submitRun() {
-    if (score <= 0) {
-      renderBoard();
-      return;
-    }
-    const rows = loadBoard();
-    const entry = {
-      id: `${Date.now()}-${score}`,
-      name: callsign(),
-      score,
-      flights: flight + 1,
-      at: Date.now(),
-    };
-    rows.push(entry);
-    rows.sort((a, b) => b.score - a.score || a.at - b.at);
-    saveBoard(rows);
-    freshId = entry.id;
-    if (score > best) setBest(score);
-    renderBoard();
-    const remote = window.AljrBoard;
-    if (!remote) return;
-    remote.submit(GAME, { name: entry.name, score: entry.score, flights: entry.flights }).then((res) => {
-      if (res?.rows) saveBoard(res.rows);
-      if (res?.id) freshId = res.id;
-      renderBoard();
-    });
+    // Edition 02 records are local and versioned; legacy public boards keep their original rules.
+    return;
   }
 
   function lockGameKeys() {
@@ -362,10 +348,10 @@
   }
 
   if (nameInput) {
-    const savedName = localStorage.getItem(NAME_STORE);
+    const savedName = window.SDArcade.storage.getItem(NAME_STORE);
     if (savedName) nameInput.value = savedName.slice(0, 12);
     nameInput.addEventListener("input", () => {
-      localStorage.setItem(NAME_STORE, callsign());
+      window.SDArcade.storage.setItem(NAME_STORE, callsign());
       renderBoard();
     });
     nameInput.addEventListener("focus", lockGameKeys);
@@ -724,10 +710,10 @@
   function startPlay() {
     ensureAudio();
     if (audio && audio.state === "suspended") audio.resume();
+    demo=false;clearAllHolds();accumulator=0;last=0;
     const fromSuccess = state === "success";
     if (!fromSuccess) {
-      score = 0;
-      flight = 0;
+      const c=arcade.loadCheckpoint();score=c.score;flight=c.flight;
     } else {
       flight += 1;
     }
@@ -745,7 +731,7 @@
     if (cue) cue.hidden = true;
     sfxCount(Math.ceil(countT));
     countMark = Math.ceil(countT);
-    renderBoard();
+    arcade.markPlayed();arcade.focus();renderBoard();
   }
 
   function fail(kind) {
@@ -758,12 +744,14 @@
     burst(stack.x, -80, 22, "#e8e4dc", 2.8);
     burst(stack.x, 20, 18, "#3a2a22", 1.6, "smoke");
     if (state === "attract") {
-      window.setTimeout(beginAttract, 1400);
+      window.setTimeout(()=>{if(state==='attract-hold')beginAttract();}, 1400);
       state = "attract-hold";
       return;
     }
     result = kind;
     state = "fail";
+    if(!demo)arcade.record({score,missions:flight,complete:false,medal:flight>=2?'silver':'bronze',title:'Launch review',copy:kind==='early'?'You fired before the ignition window opened. Wait for the Stage cue.':kind==='late'?'The ignition window expired. Stage as soon as the cue appears; aim for its midpoint.':kind==='walk'?'The stack leaned too far. Use shorter counter-steering taps and monitor the attitude instrument.':'The stack was too tilted at ignition. Level it before staging. Campaign retries preserve your checkpoint.'});
+    arcade.live('Launch ended. Read the debrief, then retry your mission.');
     submitRun();
     sfxFail(kind);
     const titles = {
@@ -807,14 +795,19 @@
     const perfect = timing > 0.82 && upright > 0.78;
     const gained = Math.round(1000 + timing * 420 + upright * 300 + flight * 130 + (perfect ? 260 : 0));
     score += gained;
-    if (score > best) setBest(score);
-    state = "success";
+    if (!demo && score > best) setBest(score);
+    const limit=arcade.mode==='daily'?3:arcade.mode==='training'?1:6,complete=flight+1>=limit;
+    if(demo){state='complete';score=0;showOverlay('Training demonstration','Now you try.','Counter the drift, watch for the cue, then stage near the middle of the window. Demonstrations do not save scores.','Take the controls');return;}
+    state=complete?'complete':'success';
+    arcade.checkpoint(complete?0:flight+1,complete?0:score);
+    arcade.record({score,missions:flight+1,complete,medal:perfect?'gold':timing>.45?'silver':'bronze',title:complete?'Mission set complete':'Separation confirmed',copy:'Timing '+Math.round(timing*100)+'% · attitude '+Math.round(upright*100)+'%. '+(complete?'Bring that precision to another mode.':'Your next campaign checkpoint is saved.')});
+    arcade.live(complete?'Mission set complete. Your score is saved.':'Separation confirmed. Advance to your next mission.');
     renderBoard();
     showOverlay(
       s.name,
-      perfect ? "Clean light" : "Hot stage",
+      complete ? "Mission complete" : perfect ? "Clean light" : "Hot stage",
       `Ship is flying. +${gained.toLocaleString()}  ·  Run ${score.toLocaleString()}`,
-      "Next flight"
+      complete ? "Fly again" : "Next mission"
     );
   }
 
@@ -948,7 +941,7 @@
         if (state === "attract-sep") {
           state = "attract-hold";
           setEngine(0);
-          window.setTimeout(beginAttract, 1500);
+          window.setTimeout(()=>{if(state==='attract-hold')beginAttract();}, 1500);
         } else {
           setEngine(0);
           succeed();
@@ -971,7 +964,7 @@
     if (auto) steerAuto();
     else tickHold(dt);
 
-    windGust = lerp(windGust, rand(-1, 1), 0.018);
+    windGust = lerp(windGust, (-1 + simRandom()*2), 0.018);
     applyAttitude(dt);
 
     stack.vx += Math.sin(stack.angle) * 0.0034 * dt + s.wind * windGust * 0.0011 * dt;
@@ -1638,9 +1631,12 @@
   }
 
   function updateHud() {
+    if(stack){const s=spec(),remaining=s.climb-tPlay,open=tPlay>=s.climb&&tPlay<=s.climb+s.window;
+    arcade.telemetry({primary:open?'OPEN · '+Math.max(0,s.climb+s.window-tPlay).toFixed(1)+'s':remaining>0?'In '+remaining.toFixed(1)+'s':'Closed',secondary:(stack.angle*180/Math.PI).toFixed(1)+'° / '+(s.stageAngle*180/Math.PI).toFixed(0)+'° limit',state:state==='pause'?'Paused':state==='count'?'Countdown':state==='boost'?'Climbing':state==='window'?'STAGE NOW':state==='sep'?'Separation':state==='success'||state==='complete'?'Complete':'Ready',guidance:open?'Stage now. The midpoint gives the best timing score.':Math.abs(stack.angle)>s.stageAngle*.75?'Counter the lean before ignition. Short taps are enough.':'Keep the stack level, then watch for the ignition window.',sound:muted?'Sound off':'Sound on'});}
+
     if (!stack) return;
     const s = spec();
-    const showCue = state === "attract" && windowOpen() && stack.alive;
+    const showCue = (state === "window" || state === "attract") && windowOpen() && stack.alive;
     if (cue) cue.hidden = !showCue;
     if (cueLabel) cueLabel.textContent = "Stage";
     if (cueClock) cueClock.textContent = "";
@@ -1667,29 +1663,11 @@
   }
 
   function frame(now) {
-    if (!last) last = now;
-    const dt = clamp(now - last, 8, 34);
-    last = now;
-    if (state !== "pause") {
-      clock += dt;
-      step(dt);
-      stepParticles();
-      followCam();
-      shake *= 0.86;
-      flash *= 0.9;
-      if (
-        state === "boost" ||
-        state === "window" ||
-        state === "attract" ||
-        (state === "count" && ignite > 0.45)
-      ) {
-        shake = Math.max(shake, reduceMotion ? 0 : 0.55);
-      }
-    }
-    const ctx = canvas.getContext("2d");
-    drawWorld(ctx);
-    updateHud();
-    requestAnimationFrame(frame);
+    if(!last)last=now;const elapsed=Math.max(0,Math.min(100,now-last));last=now;
+    if(state!=="pause" && !document.hidden){accumulator+=elapsed;while(accumulator>=1000/60){const dt=1000/60;clock+=dt;step(dt);stepParticles();followCam();shake*=.86;flash*=.9;accumulator-=dt;}}
+    else accumulator=0;
+    if(reduced){shake=0;flash=0;}
+    drawWorld(canvas.getContext("2d"));updateHud();requestAnimationFrame(frame);
   }
 
   function bindHold(el, key) {
@@ -1716,6 +1694,7 @@
     el.addEventListener("pointerup", up);
     el.addEventListener("pointercancel", up);
     el.addEventListener("lostpointercapture", up);
+    el.addEventListener('click', e=>{if(e.detail!==0)return;if(key==='stage'){tryStage();return;}setHeld(key,true);setTimeout(()=>setHeld(key,false),180);});
   }
 
   document.querySelectorAll("[data-hold]").forEach((el) => {
@@ -1754,9 +1733,10 @@
   function startPlayResume() {
     if (state === "pause") {
       hideOverlay();
-      if (pausedFrom === "count") state = "count";
+      if (["count","sep"].includes(pausedFrom)) state = pausedFrom;
       else state = tPlay >= spec().climb ? "window" : "boost";
       if (hud) hud.hidden = false;
+      accumulator=0;last=0;arcade.focus();
       return;
     }
     startPlay();
@@ -1779,7 +1759,7 @@
   }
 
   window.addEventListener("keydown", (e) => {
-    if (typingNow(e)) return;
+    if (typingNow(e) || e.target?.closest?.("button,a,summary")) return;
     if (e.key === "p" || e.key === "P") {
       if (state === "boost" || state === "window" || state === "count") {
         pausedFrom = state;
@@ -1845,6 +1825,9 @@
     }
   });
 
+  window.addEventListener("blur", ()=>{clearAllHolds();if(["count","boost","window","sep"].includes(state))arcadePause();});
+  function arcadePause(){if(state==='pause')startPlayResume();else if(['count','boost','window','sep'].includes(state)){pausedFrom=state;clearAllHolds();state='pause';setEngine(0);showOverlay('Paused','Mission on hold.','Your launch is paused. Resume when you are ready.','Resume');}}
+  const arcade=window.SDArcade.mount('staging',{reset(){demo=false;clearAllHolds();setEngine(0);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();muted=!muted;applyMute();return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the timing and attitude; no score will be saved.');}});
   window.addEventListener("resize", resize);
   resize();
   beginAttract();
@@ -1859,6 +1842,11 @@
 
   window.StagingGame = {
     play: startPlay,
+    mode: () => arcade.mode,
+    restart: () => {state="ready";startPlay();},
+    pause: arcadePause,
+    demo: () => demo,
+    currentSpec: spec,
     state: () => state,
     stack: () => stack,
     score: () => score,
