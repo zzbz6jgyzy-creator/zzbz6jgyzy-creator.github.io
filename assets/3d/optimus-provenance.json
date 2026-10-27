@@ -10,7 +10,7 @@
     "archive": "GitHub release optimus-model-source / tesla-optimus-gen-3.zip (100,143,934 bytes)",
     "note": "Fan-made model titled Gen 3 by its author; it resembles Gen 2 and is not Tesla CAD."
   },
-  "changes": "Node rotation baked; single mesh cut into 17 parts at the joints; each part simplified with meshoptimizer (about 407k triangles total); textures re-encoded as WebP (2048 base colour, 1024 normal and metal/rough); geometry Draco-compressed. Pipeline: scripts/optimus-model-pipeline.mjs. The poster is a render of the processed model.",
+  "changes": "Node rotation baked; single mesh cut into 17 parts at the joints; each part simplified with meshoptimizer (about 407k triangles total); textures re-encoded as WebP (2048 base colour, 1024 normal and metal/rough); geometry Draco-compressed. Pipeline: scripts/optimus-model-pipeline.mjs. The poster is a render of the processed model. The 1200x630 share card (assets/og-optimus.jpg) is made from scripts/optimus-og-card.html and a render of the processed model, and carries the credit line.",
   "files": [
     {
       "path": "assets/3d/optimus.glb",
@@ -21,6 +21,11 @@
       "path": "assets/3d/optimus-poster.webp",
       "bytes": 16438,
       "sha256": "96ba05642d9f6ae1bfadd3a530a5a7321ba204e5e76e60299afd4c47487c3c1f"
+    },
+    {
+      "path": "assets/og-optimus.jpg",
+      "bytes": 93426,
+      "sha256": "a888c0ed7c68f9b73fc9fc4f4a04286c5d074f83dff389084abbac4d1eba432f"
     }
   ]
 }
