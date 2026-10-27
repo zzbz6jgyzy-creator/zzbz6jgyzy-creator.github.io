@@ -21,3 +21,4 @@ jobs:
         run: |
           python3 -m pip install playwright==1.62.0
           CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/nav-browser.py
+          CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/nav-dropdown-browser.py

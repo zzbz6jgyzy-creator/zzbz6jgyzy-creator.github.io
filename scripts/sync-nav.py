@@ -6,7 +6,7 @@ Use --check to fail (exit 1) if any page is out of sync."""
 import json, pathlib, re, sys
 root = pathlib.Path(__file__).resolve().parent.parent
 cfg = json.loads((root / "scripts/nav.json").read_text())
-CSS_VERSION = "202610222255"
+CSS_VERSION = "202610271600"
 CH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
 BURGER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>'
 

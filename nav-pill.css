@@ -16,7 +16,9 @@
 .pn-cta:hover{background:#ff2a4a;box-shadow:0 0 26px rgba(227,25,55,.7)}
 .pn-dd{position:relative}
 .pn-panel{position:absolute;top:calc(100% + 12px);left:50%;min-width:220px;transform:translate(-50%,-6px);opacity:0;visibility:hidden;background:rgba(12,12,12,.96);border:1px solid rgba(255,255,255,.1);border-top:2px solid #e31937;border-radius:14px;padding:6px;box-shadow:0 18px 50px rgba(0,0,0,.6);transition:opacity .2s,transform .25s var(--pn-spring),visibility .2s}
-.pn-panel::before{content:"";position:absolute;inset:-14px 0 auto;height:14px}
+/* The panel scrolls when expanded groups make it taller than the window. overflow clips ::before, so the hover bridge over the 12px gap lives on the dropdown itself. */
+.pn-panel{max-height:calc(100vh - 96px);overflow-y:auto;overscroll-behavior:contain}
+.pn-dd.open::after{content:"";position:absolute;top:100%;left:50%;width:max(100%,300px);height:14px;transform:translateX(-50%)}
 .pn-dd.open .pn-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
 @media (min-width:900px){.pn-panel.pn-wide{min-width:440px;display:grid;grid-template-columns:1fr 1fr;gap:0 4px}}
 .pn-nest{margin:0}

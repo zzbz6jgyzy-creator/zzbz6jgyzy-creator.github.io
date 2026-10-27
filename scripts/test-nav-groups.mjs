@@ -39,7 +39,7 @@ if (/pn-tesla-software-autonomy/.test(html) && /pn-tesla-cars-owners/.test(html)
 else bad("tesla nests", "missing tesla submenu ids");
 if (/pn-spacex-launches/.test(html) && /pn-roadster-the-car/.test(html) && /pn-ex-tesla/.test(html)) ok("other nests");
 else bad("other nests", "missing spacex/roadster/explore groups");
-if (/nav-pill\.css\?v=202610222255/.test(index) && /nav-pill\.js\?v=202610202200/.test(index)) ok("nav pins");
+if (/nav-pill\.css\?v=202610271600/.test(index) && /nav-pill\.js\?v=202610202200/.test(index)) ok("nav pins");
 else bad("nav pins", "index still on old nav-pill");
 if (/theme\.css\?v=202610191800/.test(index)) ok("home theme pin");
 else bad("home theme pin", "index.html theme.css pin changed");
