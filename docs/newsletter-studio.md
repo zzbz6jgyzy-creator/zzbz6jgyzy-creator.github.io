@@ -33,3 +33,7 @@ Use Beehiiv's required footer, unsubscribe link and actual sender settings. The 
 ## Verification
 
 Node tests cover validation, abandoned-signup retries, placement attribution, honeypots and handoff counts. Browser tests intercept all external navigation and counter requests, exercise both forms with/without JavaScript, blocked storage, late-added forms, safe issue fallbacks, mobile/desktop Subscribe focus, keyboard FAQ use, and ten width/theme combinations. Test runs create no subscribers or live analytics events.
+
+## Provider handoff troubleshooting
+
+If a visitor returns without completing signup, both forms remain available. They can try again or open the public Beehiiv publication directly. A site handoff counter cannot determine why a provider signup was abandoned; review actual Beehiiv subscriber records before drawing a conversion conclusion.
