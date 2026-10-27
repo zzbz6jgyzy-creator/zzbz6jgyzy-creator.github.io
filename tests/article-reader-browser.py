@@ -6,7 +6,7 @@ ROOT=pathlib.Path(__file__).resolve().parents[1];OUT=pathlib.Path('/tmp/article-
 async def main():
  async with async_playwright() as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH')or shutil.which('chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
-  for path in ['booster-22-static-fire.html','latvia-fsd-tenth-eu.html','spacex-40b-gpu-lease.html','spacex-q3-2026-preview.html']:
+  for path in ['booster-22-static-fire.html','latvia-fsd-tenth-eu.html','spacex-40b-gpu-lease.html','spacex-q3-2026-preview.html','verizon-vs-musk-starlink-mobile.html']:
    for width,theme in [(320,'dark'),(390,'dark'),(768,'dark'),(1440,'dark'),(390,'light'),(1440,'light')]:
     c=await browser.new_context(viewport={'width':width,'height':1100},reduced_motion='reduce',service_workers='block',is_mobile=width<=430,has_touch=width<=768)
     await c.add_init_script('localStorage.setItem("sd-theme",'+json.dumps(theme)+');Object.defineProperty(navigator,"share",{value:undefined});Object.defineProperty(navigator,"clipboard",{value:{writeText:async text=>window.__copied=text}})')
