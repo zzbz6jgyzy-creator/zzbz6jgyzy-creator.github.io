@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-27",
+  "sources": [
+    {"id": "drive-2024", "outlet": "The Drive", "kind": "reporting", "title": "Here's Everything Tesla Claimed It Will Make Last Night: A Taxi, a Bus, and a Robot", "url": "https://www.thedrive.com/news/heres-everything-tesla-claimed-it-will-make-last-night-a-taxi-a-bus-and-a-robot", "date": "2024-10-11", "checked": "2026-10-27"},
+    {"id": "q1-update", "outlet": "Tesla", "kind": "primary", "title": "Tesla Q1 2026 Update (shareholder deck)", "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q1-2026-Update.pdf", "date": "2026-04-22", "checked": "2026-10-27"},
+    {"id": "q2-update", "outlet": "Tesla", "kind": "primary", "title": "Tesla Q2 2026 Update (shareholder deck)", "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf", "date": "2026-07-22", "checked": "2026-10-27"},
+    {"id": "q3-update", "outlet": "Tesla", "kind": "primary", "title": "Tesla Q3 2026 Update (shareholder deck)", "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf", "date": "2026-10-21", "checked": "2026-10-27"},
+    {"id": "q3-call", "outlet": "The Motley Fool", "kind": "reporting", "title": "Tesla Q3 2026 earnings call transcript (machine-assisted)", "url": "https://www.fool.com/earnings/call-transcripts/2026/10/22/tesla-tsla-q3-2026-earnings-call-transcript/", "date": "2026-10-22", "checked": "2026-10-27"},
+    {"id": "nhtsa-resume", "outlet": "NHTSA", "kind": "regulator", "title": "Audit Query AQ26002 resume: Tesla Cybercab FMVSS certification", "url": "https://static.nhtsa.gov/odi/inv/2026/INOA-AQ26002-17078.pdf", "date": "2026-09-03", "checked": "2026-10-27"},
+    {"id": "nata-deadline", "outlet": "Not a Tesla App", "kind": "reporting", "title": "Tesla Gets Extension to Respond to NHTSA's Cybercab Probe", "url": "https://www.notateslaapp.com/news/4793/tesla-gets-extension-to-respond-to-nhtsas-cybercab-probe", "date": "2026-10-08", "checked": "2026-10-27"},
+    {"id": "nata-launch", "outlet": "Not a Tesla App", "kind": "reporting", "title": "Cybercab Joins Tesla's Robotaxi Fleet With Cheaper Fares", "url": "https://www.notateslaapp.com/news/4651/cybercab-joins-teslas-robotaxi-fleet-with-cheaper-fares", "date": "2026-09-04", "checked": "2026-10-27"},
+    {"id": "nata-charging", "outlet": "Not a Tesla App", "kind": "reporting", "title": "Tesla Cybercab Doesn't Support AC Charging; No Home Charging Without New Equipment", "url": "https://www.notateslaapp.com/news/4653/tesla-cybercab-doesnt-support-ac-charging", "date": "2026-09-05", "checked": "2026-10-27"},
+    {"id": "cad-epa", "outlet": "Car and Driver", "kind": "reporting", "title": "New Tesla Cybercab Specs Have Been Revealed in EPA Documents", "url": "https://www.caranddriver.com/news/a71590701/tesla-cybercab-specs-epa-documents-revealed/", "date": "2026-06-15", "checked": "2026-10-27"},
+    {"id": "x-robotaxi-300", "outlet": "Tesla Robotaxi on X", "kind": "primary", "title": "Post: \"One month after launch, we've scaled to 300+ Cybercabs serving Austin\"", "url": "https://x.com/robotaxi/status/2108981691436224816", "date": "2026-10-10", "checked": "2026-10-27"},
+    {"id": "x-munro", "outlet": "Munro Live on X", "kind": "reporting", "title": "Post: full Cybercab walkthrough video with Tesla's Lars Moravy and @EricETesla", "url": "https://x.com/live_munro/status/2114739987271073944", "date": "2026-10-26", "checked": "2026-10-27"},
+    {"id": "q4-call", "outlet": "The Motley Fool", "kind": "reporting", "title": "Tesla Q4 2025 earnings call transcript (via our promise ledger)", "url": "https://www.fool.com/earnings/call-transcripts/2026/01/28/tesla-tsla-q4-2025-earnings-call-transcript/", "date": "2026-01-28", "checked": "2026-10-15"}
+  ],
+  "metrics": [
+    {"id": "in-service", "label": "Cybercab rides in Austin", "value": "3 Sep 2026", "unit": "start date", "detail": "Tesla's Q3 deck: \"We started providing Robotaxi rides using Cybercabs on September 3 in Austin.\" Public booking opened the next day, per Not a Tesla App.", "status": "disclosed", "asOf": "2026-10-21", "source": "q3-update"},
+    {"id": "capacity", "label": "Installed capacity, Giga Texas", "value": ">125,000", "unit": "vehicles a year", "detail": "Tesla's own footnote: \"Installed capacity ≠ current production rate.\" Tesla has not published how many Cybercabs it has built.", "status": "disclosed", "asOf": "2026-10-21", "source": "q3-update"},
+    {"id": "austin-fleet", "label": "Cybercabs serving Austin", "value": "300+", "unit": "company claim", "detail": "Tesla's Robotaxi account posted \"300+ Cybercabs serving Austin – an 8x increase in 30 days\". It is a count of vehicles in service, not of deliveries, and Tesla gave no breakdown.", "status": "disclosed", "asOf": "2026-10-10", "source": "x-robotaxi-300"},
+    {"id": "nhtsa", "label": "NHTSA audit of the certification", "value": "AQ26002", "unit": "open since 3 Sep", "detail": "NHTSA opened an audit query into the process Tesla relied on to certify a car with no manual controls. Not a Tesla App reports 21 requests, due 30 Oct after a 30-day extension.", "status": "disclosed", "asOf": "2026-10-08", "source": "nhtsa-resume"},
+    {"id": "customers", "label": "Cybercabs for customers", "value": "By end of 2026", "unit": "stated aim", "detail": "On the Q3 call a Tesla speaker said: \"we're trying to get Cybercabs to customers by the end of this year, 2026\". Today every Cybercab built goes to Tesla's own fleet.", "status": "target", "asOf": "2026-10-21", "source": "q3-call"},
+    {"id": "price", "label": "Purchase price target", "value": "<$30,000", "unit": "set in Oct 2024", "detail": "At the 2024 reveal Musk said he \"expects the cost to be below $30,000\". Tesla has published no price since.", "status": "target", "asOf": "2024-10-10", "source": "drive-2024"}
+  ],
+  "versions": {
+    "columns": [
+      {"id": "prototype", "name": "2024 reveal", "when": "10 Oct 2024"},
+      {"id": "production", "name": "Production car", "when": "2026, in Austin service"},
+      {"id": "customer", "name": "Customer version", "when": "Not shown"}
+    ],
+    "rows": [
+      {"id": "body", "label": "Body and seats", "cells": {
+        "prototype": {"value": "Two-door coupe with butterfly doors", "status": "reported", "source": "drive-2024", "asOf": "2024-10-11"},
+        "production": {"value": "Two seats", "status": "reported", "source": "nata-launch", "asOf": "2026-09-04"},
+        "customer": null}},
+      {"id": "controls", "label": "Driver controls", "cells": {
+        "prototype": {"value": "No steering wheel or pedals", "status": "disclosed", "source": "drive-2024", "asOf": "2024-10-11"},
+        "production": {"value": "No permanently attached brake pedal, gas pedal, steering wheel or mirrors", "status": "disclosed", "source": "nhtsa-resume", "asOf": "2026-09-03"},
+        "customer": null}},
+      {"id": "charging", "label": "Charging", "cells": {
+        "prototype": {"value": "Wireless (inductive), no charge port", "status": "disclosed", "source": "drive-2024", "asOf": "2024-10-11"},
+        "production": {"value": "DC fast charging through a hidden NACS port; no onboard AC charger", "status": "reported", "source": "nata-charging", "asOf": "2026-09-05"},
+        "customer": null}},
+      {"id": "battery", "label": "Battery", "cells": {
+        "prototype": null,
+        "production": {"value": "Roughly 50 kWh, a very rough figure per the outlet", "status": "reported", "source": "cad-epa", "asOf": "2026-06-15"},
+        "customer": null}},
+      {"id": "range", "label": "Range", "cells": {
+        "prototype": null,
+        "production": {"value": "Just under 280 miles, from lab figures in an EPA filing; not a measured real-world range", "status": "reported", "source": "cad-epa", "asOf": "2026-06-15"},
+        "customer": null}},
+      {"id": "motor", "label": "Motor and weight", "cells": {
+        "prototype": null,
+        "production": {"value": "One front motor, 219 hp; 3,113 lb curb weight", "status": "reported", "source": "cad-epa", "asOf": "2026-06-15"},
+        "customer": null}},
+      {"id": "cost", "label": "Cost", "cells": {
+        "prototype": {"value": "Purchase below $30,000; running cost about 20¢ a mile at scale", "status": "target", "source": "drive-2024", "asOf": "2024-10-11"},
+        "production": null,
+        "customer": null}},
+      {"id": "fare", "label": "Ride fare", "cells": {
+        "prototype": null,
+        "production": {"value": "One community member's same-route quote on 4 Sep: $7.77 Cybercab against $12.10 Model Y. A single trip, not a price list", "status": "reported", "source": "nata-launch", "asOf": "2026-09-04"},
+        "customer": null}},
+      {"id": "capacity", "label": "Factory capacity", "cells": {
+        "prototype": null,
+        "production": {"value": "More than 125,000 a year installed at Giga Texas", "status": "disclosed", "source": "q3-update", "asOf": "2026-10-21"},
+        "customer": null}},
+      {"id": "status", "label": "Where it stands", "cells": {
+        "prototype": {"value": "Shown at the We Robot event", "status": "disclosed", "source": "drive-2024", "asOf": "2024-10-11"},
+        "production": {"value": "In Tesla's own Robotaxi fleet in Austin", "status": "disclosed", "source": "q3-update", "asOf": "2026-10-21"},
+        "customer": {"value": "Stated aim: customers by end of 2026", "status": "target", "source": "q3-call", "asOf": "2026-10-21"}}}
+    ]
+  },
+  "timeline": [
+    {"id": "reveal", "date": "2024-10-10", "type": "milestone", "title": "Cybercab shown at We Robot", "text": "Tesla shows a two-seat coupe with no steering wheel or pedals. Musk says he expects the cost to be below $30,000 and production \"before 2027\".", "source": "drive-2024"},
+    {"id": "april-target", "date": "2026-01-28", "type": "target", "title": "Production start set for April", "text": "On the Q4 2025 call Musk says: \"We expect to start production in April.\"", "source": "q4-call"},
+    {"id": "q1-pilot", "date": "2026-04-22", "type": "filing", "title": "Q1 deck: Cybercab in pilot production", "text": "Tesla's Q1 deck lists Cybercab at \"Pilot Production\" and says Cybercab is \"on schedule for volume production starting in 2026\".", "source": "q1-update"},
+    {"id": "epa-docs", "date": "2026-06-15", "type": "report", "title": "EPA documents reveal basic specs", "text": "Car and Driver reports a 219 hp front motor, 3,113 lb curb weight and a battery of roughly 50 kWh, from documents Tesla submitted to the EPA.", "source": "cad-epa"},
+    {"id": "q2-production", "date": "2026-07-22", "type": "filing", "title": "Q2 deck: production started", "text": "Tesla says it started production of Cybercab, began engineering test drives of production cars on public roads, and began employee rides on its Giga Texas campus in July.", "source": "q2-update"},
+    {"id": "austin-launch", "date": "2026-09-03", "type": "milestone", "title": "Cybercab rides start in Austin", "text": "Tesla's Q3 deck gives 3 September as the day it started providing Robotaxi rides in Cybercabs in Austin.", "source": "q3-update"},
+    {"id": "nhtsa-open", "date": "2026-09-03", "type": "regulator", "title": "NHTSA opens an audit of the certification", "text": "NHTSA opens Audit Query AQ26002. It notes Tesla certified the Cybercab as compliant with all applicable federal standards, and that the car lacks conventional manual controls.", "source": "nhtsa-resume"},
+    {"id": "public-booking", "date": "2026-09-04", "type": "milestone", "title": "Public booking opens", "text": "Not a Tesla App reports Tesla opened Cybercab bookings to the general public in Austin at 5 p.m. local time.", "source": "nata-launch"},
+    {"id": "charging-report", "date": "2026-09-05", "type": "report", "title": "No AC charging, reviewer says", "text": "Not a Tesla App quotes Out of Spec Reviews' Kyle Conner after hands-on time in Austin: \"It does not support AC charging.\" The 2024 reveal had promised wireless charging.", "source": "nata-charging"},
+    {"id": "deadline-extended", "date": "2026-10-08", "type": "regulator", "title": "NHTSA extends Tesla's deadline", "text": "Not a Tesla App reports Tesla asked for eight more weeks to answer 21 requests; NHTSA granted 30 days, moving the deadline from 30 September to 30 October.", "source": "nata-deadline"},
+    {"id": "austin-300", "date": "2026-10-10", "type": "milestone", "title": "Tesla says 300+ Cybercabs serve Austin", "text": "Tesla's Robotaxi account says the fleet is \"300+\", up eightfold in 30 days.", "source": "x-robotaxi-300"},
+    {"id": "q3-deck", "date": "2026-10-21", "type": "filing", "title": "Q3 deck: capacity above 125,000 a year", "text": "Tesla lists Cybercab installed capacity above 125,000 a year at Giga Texas, with the footnote that installed capacity is not the current production rate.", "source": "q3-update"},
+    {"id": "q3-call-customers", "date": "2026-10-21", "type": "target", "title": "Q3 call: customers by year end, Dallas next", "text": "A Tesla speaker says it is trying to get Cybercabs to customers by the end of 2026, and that \"next month, we'll be launching in Dallas\" for the Robotaxi service. The transcript does not say Cybercabs specifically will serve Dallas.", "source": "q3-call"},
+    {"id": "munro-video", "date": "2026-10-26", "type": "report", "title": "Full Cybercab walkthrough video published", "text": "Munro Live posts a video in which Tesla's Lars Moravy and @EricETesla walk through the Cybercab's engineering, design and technology.", "source": "x-munro"},
+    {"id": "nhtsa-deadline", "date": "2026-10-30", "type": "target", "display": "30 Oct 2026", "title": "Tesla's NHTSA response due", "text": "The extended deadline, per Not a Tesla App, for Tesla's answers to the special order. NHTSA's findings, if any, will be added here.", "source": "nata-deadline"}
+  ],
+  "promises": [
+    {"id": "cybercab-production-before-2027", "note": "Met inside the year; how many cars exist is still unpublished."},
+    {"id": "cybercab-production-april-2026", "note": "The ledger counts CNET's 24 April report; Tesla's own Q1 deck still said pilot production on 22 April."},
+    {"id": "robotaxi-volume-2024", "note": "The earlier dedicated-robotaxi deadline that passed without a car."},
+    {"id": "million-robotaxis-2020", "note": "The oldest robotaxi promise on the ledger."},
+    {"id": "robotaxi-8-10-metros-2025", "note": "Context for how fast the service has really spread."},
+    {"id": "no-safety-driver-end-2025", "note": "Context for unsupervised service."},
+    {"id": "autonomy-quarter-half-us-2026", "note": "Still open, due 31 Dec 2026."}
+  ],
+  "evidence": [
+    {"id": "munro-walkthrough", "title": "Tesla engineers walk through the Cybercab", "text": "Munro Live's post says the full video is live on YouTube and thanks Lars Moravy, @EricETesla and the Tesla team \"for taking the time to walk us through the Cybercab and share the engineering, design, and technology behind it.\" We have not summarised the video here: read the post and watch it for the details.", "source": "x-munro",
+     "embed": {"user": "live_munro", "name": "Munro Live", "date": "October 26, 2026", "id": "2114739987271073944", "text": "The full video is now live on @YouTube!\n\nA big thank you to @larsmoravy, @EricETesla, and the rest of the Tesla team for taking the time to walk us through the Cybercab and share the engineering, design, and technology behind it."}}
+  ],
+  "faqs": [
+    {"q": "Can I buy a Cybercab?", "a": "Not yet. On the Q3 call a Tesla speaker said Tesla is trying to get Cybercabs to customers by the end of 2026, and that today all of them go to Tesla's own Robotaxi fleet. Tesla has published no order page, price or delivery terms.", "sources": ["q3-call"]},
+    {"q": "How much will a Cybercab cost?", "a": "Tesla has not published a price. At the 2024 reveal Musk said he expected the cost to be below $30,000. That is a target from two years ago, not a quote.", "sources": ["drive-2024"]},
+    {"q": "Does the Cybercab have a steering wheel or pedals?", "a": "No. NHTSA's audit notes the vehicles lack permanently attached, conventional manual controls such as a brake pedal, gas pedal, steering wheel and mirrors.", "sources": ["nhtsa-resume"]},
+    {"q": "When did Cybercab rides start?", "a": "Tesla's Q3 deck says it started providing Robotaxi rides using Cybercabs on 3 September 2026 in Austin. Not a Tesla App reports public booking opened the next day.", "sources": ["q3-update", "nata-launch"]},
+    {"q": "How many Cybercabs are there?", "a": "Tesla says 300+ serve Austin (10 October). It has not published a production total. The >125,000 a year figure is installed capacity, which Tesla itself says is not the current production rate. For registrations and live counts use the live tracker.", "sources": ["x-robotaxi-300", "q3-update"]},
+    {"q": "What is the Cybercab's range and battery size?", "a": "Tesla has not published either. Car and Driver reports a battery of roughly 50 kWh and just under 280 miles from lab figures in an EPA filing, and calls them very rough estimates. Other outlets quote different numbers from the same filing.", "sources": ["cad-epa"]},
+    {"q": "How does the Cybercab charge?", "a": "The 2024 reveal promised wireless charging. Not a Tesla App reports, citing a reviewer with hands-on time, that the cars in Austin use DC fast charging through a hidden NACS port and have no onboard AC charger. Tesla has not published a charging spec.", "sources": ["drive-2024", "nata-charging"]},
+    {"q": "Is the Cybercab legal on US roads?", "a": "Tesla told NHTSA it certified the cars as compliant with all applicable federal safety standards. NHTSA opened an audit query on 3 September to examine that certification, including where Tesla decided a standard did not apply. Not a Tesla App reports Tesla's answers to 21 requests are due 30 October. An audit query is a fact-finding step, not a finding of non-compliance.", "sources": ["nhtsa-resume", "nata-deadline"]},
+    {"q": "Where can I ride one?", "a": "Austin, per Tesla. On the Q3 call Tesla said its Robotaxi service launches in Dallas next month; the transcript does not say whether Cybercabs will serve Dallas.", "sources": ["q3-update", "q3-call"]},
+    {"q": "Why does this guide say \"Reported\" so often?", "a": "Tesla has published no Cybercab spec sheet. Anything that comes from a news report, a filing read by a journalist or a reviewer's remark is marked Reported, never Disclosed.", "sources": ["cad-epa"]}
+  ],
+  "changes": [
+    {"date": "2026-10-27", "kind": "update", "text": "Guide published. Facts were rechecked against Tesla's Q1, Q2 and Q3 2026 decks, the NHTSA AQ26002 resume and the sources listed below."}
+  ]
+}
