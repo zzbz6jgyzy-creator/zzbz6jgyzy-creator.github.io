@@ -12,6 +12,22 @@ timelineButtons.forEach(b=>b.addEventListener('click',()=>filterTimeline(b.datas
 // Generations: on phones one version sits beside the labels; the switcher picks which.
 const specs=one('.os-specs'),genButtons=all('.os-gen-switch [data-gen]');
 genButtons.forEach(b=>b.addEventListener('click',()=>{specs.dataset.show=b.dataset.gen;genButtons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));}));
+// 3D explorer: loads the isolated viewer on demand, as the Cybertruck guide does. The X-ray's active system picks the part.
+const SYSTEM_PART={perception:'cameras',hands:'hands',actuation:'rotary',balance:'feet',learning:'computer',power:'battery'};
+const box3d=one('[data-os3d]');let frame3d=null,ready3d=false,timer3d=0,observer3d=null,frameSeen=true,chose3d=false;
+if(box3d){one('[data-os3d-start]').hidden=false;one('[data-os3d-link]').hidden=true;
+ const tell3d=data=>frame3d?.contentWindow?.postMessage(data,location.origin);
+ const status3d=one('[data-os3d-status]'),credit3d=status3d.innerHTML;
+ const leave3d=(message,focus=false)=>{clearTimeout(timer3d);observer3d?.disconnect();observer3d=null;frame3d?.remove();frame3d=null;ready3d=false;one('[data-os3d-frame]').hidden=true;one('[data-os3d-stage]').hidden=false;one('[data-os3d-exit]').hidden=true;one('[data-os3d-start]').hidden=false;if(message)status3d.textContent=message;else status3d.innerHTML=credit3d;if(focus)one('[data-os3d-start]').focus({preventScroll:true});};
+ all('.os-system-tabs [data-system],.os-hotspots [data-system]').forEach(b=>b.addEventListener('click',()=>{chose3d=true;}));
+ const part3d=()=>SYSTEM_PART[one('.os-anatomy')?.dataset.active]||null;
+ one('[data-os3d-start]').addEventListener('click',()=>{if(frame3d)return;frame3d=document.createElement('iframe');frame3d.title='Interactive Optimus: rotate, zoom, explode and inspect illustrative components';frame3d.src='/optimus-viewer.html';frame3d.setAttribute('allow','fullscreen');one('[data-os3d-frame]').replaceChildren(frame3d);one('[data-os3d-frame]').hidden=false;one('[data-os3d-stage]').hidden=true;one('[data-os3d-exit]').hidden=false;one('[data-os3d-start]').hidden=true;one('[data-os3d-exit]').focus({preventScroll:true});status3d.textContent='Loading the 3D model. Exit 3D stays available.';timer3d=setTimeout(()=>leave3d('3D took too long to load. The X-ray above shows the same parts.'),30000);if('IntersectionObserver'in window){observer3d=new IntersectionObserver(entries=>{frameSeen=entries[0].isIntersecting;tell3d({type:'sd-optimus-visible',visible:frameSeen});},{rootMargin:'120px'});observer3d.observe(frame3d);}});
+ one('[data-os3d-exit]').addEventListener('click',()=>leave3d(null,true));
+ addEventListener('message',event=>{if(!frame3d||event.origin!==location.origin||event.source!==frame3d.contentWindow)return;const msg=event.data;
+  if(msg?.type==='sd-optimus-ready'){ready3d=true;clearTimeout(timer3d);status3d.textContent='3D ready. Drag to orbit; pinch or use + and − to zoom. Explode or choose Parts to look inside.';tell3d({type:'sd-optimus-visible',visible:frameSeen});const part=part3d();if(part&&(part!=='cameras'||chose3d))tell3d({type:'sd-optimus-select',part});}
+  if(msg?.type==='sd-optimus-failed')leave3d('This browser could not load 3D. The X-ray above shows the same parts.',document.activeElement===frame3d);
+  if(msg?.type==='sd-optimus-exit')leave3d(null,true);});
+}
 // Hand lab: compare which motions each hand drives, then feel why touch matters.
 const lab=one('.os-hand-lab'),handButtons=all('[data-hand]');
 handButtons.forEach(b=>b.addEventListener('click',()=>{const gen=b.dataset.hand;lab.dataset.gen=gen;handButtons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));one('[data-dof-count]').textContent=gen==='gen2'?'11':'22';one('[data-dof-note]').textContent=gen==='gen2'?'(Gen 2, published by Tesla)':'(Gen 3, reported)';}));

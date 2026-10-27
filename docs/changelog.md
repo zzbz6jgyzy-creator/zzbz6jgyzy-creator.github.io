@@ -1,5 +1,13 @@
 # Changelog
 
+## 27 Oct 2026 — Optimus in 3D
+
+- **New 3D explorer** on `/optimus.html` ("Take Optimus apart."), built the same way as the Cybertruck and Model 3 explorers: it loads only when a reader presses Explore in 3D, in an isolated viewer with Explode, Parts, Reset, Rotate, pinch/keyboard zoom and an Exit button that returns focus.
+- **Model:** "Tesla Optimus Gen 3" by Michael (Sketchfab), CC BY 4.0. The author's 78 MB single mesh was cut into 17 parts at the joints, simplified and compressed to 2.1 MB (`scripts/optimus-model-pipeline.mjs`, provenance and hashes in `assets/3d/optimus-provenance.json`). Labelled fan-made, not Tesla CAD; it resembles Gen 2.
+- **Inside:** 14 rotary and 14 linear actuators, the 2-DoF neck, battery cells and board, central computer, cameras, hand motors and tendons, foot sensors and the harness, modelled in code from Tesla's 2022 description. Exploding slides each cover off its joint and turns the torso covers into a translucent ghost.
+- **11 sourced part cards**, generated from `data/optimus-studio.json` into `optimus-parts.js`. The X-ray's selected system opens the matching part in 3D.
+- Tests: `tests/optimus-3d-browser.py` (software WebGL: load, 28 actuators, explode, card, reset, keyboard orbit, guide launch and exit, missing-model fallback) and new node checks for cards, generation and model hashes.
+
 ## 27 Oct 2026 — Homepage editorial experience
 
 - New “Go beyond the headline” opening with a larger, aligned Roadster/Starship/Starlink showcase and clearer original reporting, toolkit and personal Daily routes.

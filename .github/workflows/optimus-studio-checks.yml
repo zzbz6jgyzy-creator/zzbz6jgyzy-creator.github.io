@@ -5,6 +5,15 @@ on:
       - 'optimus.html'
       - 'optimus*.js'
       - 'optimus-studio.css'
+      - 'optimus-viewer.html'
+      - 'optimus-viewer.css'
+      - 'optimus-explorer.js'
+      - 'model3-explorer.css'
+      - 'm3x-zoom.js'
+      - 'vendor/three/**'
+      - 'optimus-parts.js'
+      - 'assets/3d/optimus*'
+      - 'tests/optimus-3d-browser.py'
       - 'data/optimus-studio.json'
       - 'assets/optimus-studio/**'
       - 'scripts/build-optimus-studio.mjs'
@@ -38,9 +47,11 @@ jobs:
           python tests/test_optimus_refresh.py
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          sh scripts/ci-generated-ownership.sh -- assets/js optimus.html
+          sh scripts/ci-generated-ownership.sh -- assets/js optimus.html optimus-parts.js
       - name: Responsive, accessible and fallback journeys
         run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/optimus-studio-browser.py
+      - name: 3D viewer with software WebGL
+        run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/optimus-3d-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

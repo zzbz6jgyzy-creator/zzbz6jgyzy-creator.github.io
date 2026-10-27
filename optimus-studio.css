@@ -318,3 +318,16 @@ html[data-theme=light] .os{color-scheme:dark}
  .os-ramp-figure{padding:10px 6px 4px}
 }
 @media(max-width:700px){.os-xlabel{display:none}.os-body-wrap{max-width:330px}}
+
+/* ---- 3D explorer launcher (viewer loads in an iframe on demand) ---- */
+.os-3d{position:relative;margin-top:28px;border:1px solid var(--os-line);border-radius:18px;overflow:hidden;background:#050506}
+.os-3d-stage{position:relative;display:grid}
+.os-3d-stage>img{grid-area:1/1;width:100%;height:520px;object-fit:cover;object-position:50% 45%}
+.os-3d-copy{grid-area:1/1;align-self:end;padding:30px;max-width:520px;background:linear-gradient(90deg,#050506e6,#05050600);position:relative}
+.os-3d-copy h3{font-size:clamp(1.8rem,3vw,2.6rem);margin:6px 0 12px}
+.os-3d-copy>p{font-size:.88rem}
+.os-3d-copy .os-actions{margin:18px 0 0}
+.os-3d-frame iframe{display:block;width:100%;height:min(720px,calc(100svh - 120px));border:0;background:#050506}
+.os-3d-exit{position:absolute;top:12px;right:12px;z-index:2}
+.os-3d>.os-caption{padding:12px 20px;margin:0;border-top:1px solid var(--os-line)}
+@media(max-width:700px){.os-3d-stage>img{height:300px;object-position:50% 38%;object-fit:cover}.os-3d-copy{grid-area:2/1;padding:4px 20px 22px;background:none}.os-3d-frame iframe{height:clamp(440px,calc(100svh - 150px),640px)}}

@@ -1,0 +1,26 @@
+{
+  "reviewed": "2026-10-27",
+  "source": {
+    "title": "Tesla Optimus Gen 3",
+    "author": "Michael",
+    "profile": "https://sketchfab.com/gmmichaelonearth",
+    "url": "https://sketchfab.com/3d-models/tesla-optimus-gen-3-0c8f83683b094ee4851c30ca1e8cf1c1",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "archive": "GitHub release optimus-model-source / tesla-optimus-gen-3.zip (100,143,934 bytes)",
+    "note": "Fan-made model titled Gen 3 by its author; it resembles Gen 2 and is not Tesla CAD."
+  },
+  "changes": "Node rotation baked; single mesh cut into 17 parts at the joints; each part simplified with meshoptimizer (about 407k triangles total); textures re-encoded as WebP (2048 base colour, 1024 normal and metal/rough); geometry Draco-compressed. Pipeline: scripts/optimus-model-pipeline.mjs. The poster is a render of the processed model.",
+  "files": [
+    {
+      "path": "assets/3d/optimus.glb",
+      "bytes": 2145256,
+      "sha256": "5f1a274412aac88d21aed1b37bc6f3088c6d28b80968beb8591b7633eb181096"
+    },
+    {
+      "path": "assets/3d/optimus-poster.webp",
+      "bytes": 16438,
+      "sha256": "96ba05642d9f6ae1bfadd3a530a5a7321ba204e5e76e60299afd4c47487c3c1f"
+    }
+  ]
+}
