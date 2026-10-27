@@ -282,8 +282,8 @@
       ]
     },
     "catch": {
-      "file": "/assets/js/catch.bundle.dd7102c3fa.js",
-      "bytes": 46488,
+      "file": "/assets/js/catch.bundle.cbe3eaaf8f.js",
+      "bytes": 46512,
       "sources": [
         "arcade-model.js",
         "arcade.js",
@@ -291,8 +291,8 @@
       ]
     },
     "staging": {
-      "file": "/assets/js/staging.bundle.18ef9a09c5.js",
-      "bytes": 72716,
+      "file": "/assets/js/staging.bundle.bacbc16477.js",
+      "bytes": 77602,
       "sources": [
         "arcade-model.js",
         "arcade.js",
@@ -301,8 +301,8 @@
       ]
     },
     "robotaxi": {
-      "file": "/assets/js/robotaxi.bundle.3c7f06b0a4.js",
-      "bytes": 35909,
+      "file": "/assets/js/robotaxi.bundle.a7f607cf90.js",
+      "bytes": 35933,
       "sources": [
         "arcade-model.js",
         "arcade.js",
@@ -310,8 +310,8 @@
       ]
     },
     "games": {
-      "file": "/assets/js/games.bundle.d63a8bfe03.js",
-      "bytes": 16390,
+      "file": "/assets/js/games.bundle.7edca1526f.js",
+      "bytes": 16414,
       "sources": [
         "board.js",
         "arcade-model.js",

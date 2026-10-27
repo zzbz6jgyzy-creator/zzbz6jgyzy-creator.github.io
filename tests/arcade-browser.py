@@ -60,7 +60,7 @@ async def main():
    assert not await q.evaluate('Object.keys(SDArcade.read().records).length'),'demonstration must not save a score'
    if name=='staging':
     await q.locator('[data-ac-restart]').click();await q.clock.run_for(12000);assert await q.evaluate('StagingGame.state()')=='window';assert await q.locator('[data-staging-cue]').is_visible()
-    await q.keyboard.press('Space');await q.clock.run_for(3000);assert await q.evaluate('StagingGame.state()')=='complete';assert await q.evaluate('Object.values(SDArcade.read().records)[0].complete')
+    await q.keyboard.press('Space');await q.clock.run_for(3000);assert await q.evaluate('StagingGame.state()')=='complete';assert await q.evaluate('Object.values(SDArcade.read().records)[0].complete');assert await q.locator('[data-staging-results]').is_visible(),'results card shows after a stage';assert await q.locator('[data-results-rows] dt').count()>=3;assert await q.locator('[data-staging-share]').is_visible()
    assert not errors,(name,errors);print('PASS playthrough',name,flush=True);await c.close()
   # Play a complete seven-day city through real assignment, upgrade and turn controls.
   c=await context();q=await c.new_page();errors=[];q.on('pageerror',lambda e:errors.append(e.stack));await q.goto('https://superchargeddaily.com/robotaxi.html?mode=campaign',wait_until='networkidle');await q.locator('[data-taxi-play]').click();assert await q.evaluate('RobotaxiGame.state()')=='deploy'
@@ -127,6 +127,15 @@ async def main():
   await q.locator('[data-staging-play]').click();await q.clock.run_for(40000)
   assert await q.evaluate('StagingGame.state()')=='fail','an unattended campaign flight ends in a failure (gusts, load or walk)'
   print('PASS unattended campaign flight fails',flush=True);await c.close()
+  for width,expect in [(390,True),(1440,False)]:
+   c=await context(width);q=await c.new_page();await q.goto('https://superchargeddaily.com/staging.html',wait_until='networkidle')
+   assert not await q.evaluate("document.body.classList.contains('ac-focus')")
+   await q.locator('[data-staging-play]').click()
+   assert await q.evaluate("document.body.classList.contains('ac-focus')")==expect,('staging auto focus view',width)
+   if expect:
+    box=await q.locator('[data-staging-stage]').bounding_box();assert box['y']+box['height']<=1000,'staging stage fits the phone screen'
+    await q.locator('[data-ac-focus]').click();assert not await q.evaluate("document.body.classList.contains('ac-focus')")
+   print('PASS staging phone focus view',width,flush=True);await c.close()
   # Small inline previews let reviewers inspect CI screenshots through the connected log reader.
   await browser.close()
 asyncio.run(main())

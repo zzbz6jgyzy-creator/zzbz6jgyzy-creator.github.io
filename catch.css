@@ -455,6 +455,10 @@
     grid-row: 1;
   }
 
+  .ac-focus .catch-page :is(.ac-instruments, .ac-guidance) {
+    display: none;
+  }
+
   .ac-focus .catch-page .ac-status {
     position: absolute;
     width: 1px;
