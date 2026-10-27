@@ -13,7 +13,7 @@ export function buildLaunchViewing(root = ROOT) {
   if (!html.includes("<!--lv:studio-->")) throw Error("Missing launch viewing marker");
   const inline = (d) => JSON.stringify(d).replace(/</g, "\\u003c");
   html = html.replace(/<!--lv:studio-->[\s\S]*?<!--\/lv:studio-->/, "<!--lv:studio-->\n" + V.render(data, world) + "\n<!--/lv:studio-->").replace(/<script type="application\/json" id="lv-data">[\s\S]*?<\/script>/, '<script type="application/json" id="lv-data">' + inline(data) + "<\/script>").replace(/<script type="application\/json" id="lv-world">[\s\S]*?<\/script>/, '<script type="application/json" id="lv-world">' + inline(world) + "<\/script>");
-  html = html.replace(/(href="\/launch-viewing\.css)(?:\?[^" ]*)?"/, '$1?v=20261025-compass"');
+  html = html.replace(/(href="\/launch-viewing\.css)(?:\?[^" ]*)?"/, '$1?v=20261027-observatory"');
   const compassTitle = "Can I see the SpaceX launch? | Supercharged Daily", compassDescription = "Can you see the next SpaceX launch from where you are? Pad bearing, sky geometry and a live compass.";
   html = html.replace(/<title>[\s\S]*?<\/title>/, "<title>" + compassTitle + "</title>").replace(/(<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content=")[^"]*/g, (_, prefix) => prefix + compassDescription).replace(/(<meta\s+(?:name|property)="(?:og:title|twitter:title)"\s+content=")[^"]*/g, (_, prefix) => prefix + compassTitle);
   fs.writeFileSync(file, html);
