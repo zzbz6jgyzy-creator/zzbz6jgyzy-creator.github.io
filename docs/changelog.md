@@ -1,5 +1,12 @@
 # Changelog
 
+## 27 Oct 2026 — Homepage editorial experience
+
+- New “Go beyond the headline” opening with a larger, aligned Roadster/Starship/Starlink showcase and clearer original reporting, toolkit and personal Daily routes.
+- More readable typography, visible My Tesla/live compass links, and a clearer free Sunday briefing offer with native signup and a real issue preview.
+- Kept news/tracker refresh ownership, SEO metadata, source context and existing imagery. Added no runtime JavaScript or dependency.
+- Responsive browser checks cover phones, tablet, desktop, both themes, no JavaScript, unavailable data and 200% text. Before/after previews come from the actual PR base and head; no test emails are sent.
+
 ## 27 Oct 2026 — Hot Staging phone layout, results screen and cleanup (PR 3 of 3)
 
 - Phone: compact header and mode bar, Play enters focus view automatically (exit is remembered for the session), bigger thumb pad with safe-area padding and a Throttle button in campaign and daily, and a landscape layout where the stage fills the screen and the pad floats over the lower corners.
