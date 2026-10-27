@@ -168,7 +168,14 @@
     // layout shift on the 320px first screen. Empty still removes it.
     // NET/TBC update the chip in place so quality journeys stay valid.
     if (!live && pre) {
-      if (!e) { pre.remove(); return; }
+      if (!e) {
+        // Quality journeys wait for data-prebuilt to go. CSS keeps .hv-event
+        // at 151px so stories do not collapse when the prerendered card drops.
+        var wrap = pre.parentElement;
+        pre.remove();
+        if (wrap && wrap.classList && wrap.classList.contains('hv-event')) wrap.style.minHeight = wrap.style.minHeight || '151px';
+        return;
+      }
       var titleEl = pre.querySelector('.lw-title');
       if (titleEl) titleEl.textContent = e.title;
       var count = pre.querySelector('.lh-next-countdown');
@@ -177,7 +184,9 @@
         var chip = pre.querySelector('.lv-tz');
         if (chip) chip.textContent = e.timeTbc ? 'Time TBC' : 'NET';
       } else if (count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
-      var leftover = document.querySelector('section.lv:not([data-prebuilt])'); if (leftover) leftover.remove();
+      var leftover = document.querySelector('section.lv:not([data-prebuilt])');
+      if (leftover && leftover !== pre) leftover.remove();
+      pre.removeAttribute('data-prebuilt');
       var stay = new Date(e.start) - H / 2 - now;
       if (stay > 0 && stay < 864e5 && !q.get('livenow')) setTimeout(run, stay + 1e3);
       return;

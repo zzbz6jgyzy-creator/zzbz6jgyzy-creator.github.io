@@ -13,6 +13,7 @@
 - Rebased onto the 27 Oct daily-refresh prerender. Homepage trackers were rebuilt so 2026.38.5.11 stays on the latest snapshot; a next-stream remount into `.hv-live-top` is hidden on phones unless the card is actually live.
 - Rebased onto the later calendar-copy and homepage prerender commits. Calendar studio, its hashed bundle, SpaceX, markets and launch-viewing were rebuilt from main’s data so LL2 Success/In Flight stay `done` and the launch-schedule leftover copy is preserved.
 - Stopped the merge-conflict race with hourly data jobs: this PR no longer carries bot-generated HTML/JSON/bundles. Studio ownership `git diff` is PR-skipped; `home-build` / `js-bundle` write those files after merge. News/Starlink/newsletter jobs no longer `git add *.html`.
+- Homepage 320px CLS: phone hero stays in document order so `.hv-start` cannot jump from the hero. `.hv-event` keeps a 151px box while live.js drops `data-prebuilt` after hydration. Threshold stays `< 0.1`.
 
 ## 27 Oct 2026 — Write articles in Markdown
 
