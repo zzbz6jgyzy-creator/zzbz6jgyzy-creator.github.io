@@ -28,7 +28,8 @@ async def main():
    await page.screenshot(path=str(OUT/f'{width}-{theme}-{mode}-hero.png'))
    if mode in ['nojs','blocked-js']:
     assert await page.locator('.os-system-panel:visible').count()==6
-    assert await page.locator('.os-demo').count()==9
+    assert await page.locator('.os-demo').count()==12
+    assert await page.locator('.os-event:visible').count()==19
     assert await page.locator('#os-film-direct').is_visible()
    if mode in ['normal','blocked-player']:
     assert await page.locator('.os').evaluate('(e)=>e.classList.contains("os-enhanced")')
@@ -39,6 +40,12 @@ async def main():
     await page.locator('#os-search').fill('shirt');assert await page.locator('.os-demo:not([hidden])').count()==1
     await page.locator('#os-search').fill('no match qqq');assert await page.locator('.os-no-results').is_visible()
     await page.locator('#os-clear').click();await page.locator('#os-category').select_option('learning');assert await page.locator('.os-demo:not([hidden])').count()==3
+    await page.locator('.os-timeline-filters [data-type="target"]').click();assert await page.locator('.os-event:visible').count()==2;assert await page.locator('.os-timeline-year:visible').count()==1
+    await page.locator('.os-timeline-filters [data-type="all"]').click();assert await page.locator('.os-event:visible').count()==19
+    if width<=700:
+     assert await page.locator('.os-specs td[data-gen="gen3"]:visible').count()==11 and await page.locator('.os-specs td[data-gen="gen2"]:visible').count()==0
+     await page.locator('.os-gen-switch [data-gen="gen2"]').click();assert await page.locator('.os-specs td[data-gen="gen2"]:visible').count()==11
+    else:assert await page.locator('.os-specs td:visible').count()==55
     await page.locator('#os-clear').click();await page.locator('[data-gallery="2"]').click();assert await page.locator('.os-lightbox').is_visible();await page.keyboard.press('ArrowRight');assert 'angle' in await page.locator('.os-lightbox-image img').get_attribute('src');await page.keyboard.press('Escape');assert not await page.locator('.os-lightbox').is_visible();assert await page.locator('[data-gallery="2"]').evaluate('(x)=>x===document.activeElement')
     await page.locator('[data-film="event"]').click();await page.locator('#os-play').click();frame=page.locator('#os-player iframe');assert 'start=1189' in await frame.get_attribute('src');assert '6v6dbxPlsXs' in await frame.get_attribute('src');assert 'watch the official film' in await page.locator('#os-player-status').inner_text()
     await page.locator('[data-film="gen2"]').click();assert await page.locator('#os-player iframe').count()==0

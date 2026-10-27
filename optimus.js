@@ -4,7 +4,14 @@ let data;try{data=M.validate(JSON.parse(document.getElementById('os-data').textC
 root.classList.add('os-enhanced');
 const all=s=>[...root.querySelectorAll(s)],one=s=>root.querySelector(s);
 // Reveal controls only after validation; no network fetch can erase saved content.
-all('.os-hotspots,.os-system-tabs,.os-filters,.os-calculator-controls,[data-film],#os-play').forEach(x=>x.hidden=false);
+all('.os-hotspots,.os-system-tabs,.os-filters,.os-calculator-controls,.os-timeline-filters,.os-gen-switch,[data-film],#os-play').forEach(x=>x.hidden=false);
+// Timeline: filter by kind of moment; a year with nothing to show folds away.
+const timelineButtons=all('.os-timeline-filters [data-type]');
+function filterTimeline(type){timelineButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.type===type)));all('.os-event').forEach(x=>x.hidden=type!=='all'&&x.dataset.type!==type);all('.os-timeline-year').forEach(y=>y.hidden=!y.querySelector('.os-event:not([hidden])'));}
+timelineButtons.forEach(b=>b.addEventListener('click',()=>filterTimeline(b.dataset.type)));
+// Generations: on phones one version sits beside the labels; the switcher picks which.
+const specs=one('.os-specs'),genButtons=all('.os-gen-switch [data-gen]');
+genButtons.forEach(b=>b.addEventListener('click',()=>{specs.dataset.show=b.dataset.gen;genButtons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));}));
 function selectSystem(id){if(!data.systems.some(x=>x.id===id))return;all('.os-system-panel').forEach(p=>p.hidden=p.id!=='system-'+id);all('[data-system]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.system===id)));}
 selectSystem(data.systems[0].id);
 all('[data-system]').forEach(b=>b.addEventListener('click',()=>selectSystem(b.dataset.system)));
