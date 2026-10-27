@@ -22,6 +22,12 @@
   const nameInput = document.querySelector("[data-staging-name]");
   const muteBtn = document.querySelector("[data-staging-mute]");
   const padEl = document.querySelector("[data-staging-pad]");
+  const resultsEl = document.querySelector("[data-staging-results]");
+  const medalEl = document.querySelector("[data-results-medal]");
+  const scoreEl = document.querySelector("[data-results-score]");
+  const rowsEl = document.querySelector("[data-results-rows]");
+  const pbEl = document.querySelector("[data-results-pb]");
+  const shareBtn = document.querySelector("[data-staging-share]");
   const thrBtn = document.querySelector('[data-hold="throttle"]');
 
   const GAME = "staging";
@@ -310,6 +316,7 @@
   function showOverlay(kicker, title, copy, action) {
     if (!overlay) return;
     overlay.hidden = false;
+    if (padEl) padEl.classList.add("is-idle");
     clearAllHolds();
     if (overlayKicker) overlayKicker.textContent = kicker;
     if (overlayTitle) overlayTitle.textContent = title;
@@ -319,7 +326,152 @@
 
   function hideOverlay() {
     if (overlay) overlay.hidden = true;
+    if (padEl) padEl.classList.remove("is-idle");
+    hideResults();
   }
+
+  const MEDAL = { gold: "#ffcf5a", silver: "#cfd6e2", bronze: "#d49066", fail: "#ff6a5a" };
+  let lastResult = null;
+
+  function medalSvg(kind) {
+    const c = MEDAL[kind] || MEDAL.bronze;
+    const mark = kind === "fail"
+      ? '<path d="M-14 -14 L14 14 M14 -14 L-14 14" stroke="#1b0b0b" stroke-width="7" stroke-linecap="round"/>'
+      : '<polygon points="0,-22 6.5,-7 22,-6 10,5 13.5,21 0,12.5 -13.5,21 -10,5 -22,-6 -6.5,-7" fill="#18202c"/>';
+    return `<svg viewBox="-40 -40 80 80" aria-hidden="true"><circle r="34" fill="${c}" opacity="0.18"/><circle r="30" fill="none" stroke="${c}" stroke-width="3"/><circle r="24" fill="${c}"/>${mark}</svg>`;
+  }
+
+  function hideResults() {
+    if (resultsEl) resultsEl.hidden = true;
+    if (shareBtn) shareBtn.hidden = true;
+    if (overlayCopy) overlayCopy.hidden = false;
+  }
+
+  /* r: { medal, gained, total, rows: [[label, value]], pb, share } */
+  function showResults(r) {
+    lastResult = r;
+    if (!resultsEl) return;
+    resultsEl.hidden = false;
+    if (overlayCopy) overlayCopy.hidden = true;
+    if (medalEl) medalEl.innerHTML = medalSvg(r.medal);
+    if (rowsEl) {
+      rowsEl.textContent = "";
+      r.rows.forEach(([k, v]) => {
+        const dt = document.createElement("dt");
+        const dd = document.createElement("dd");
+        dt.textContent = k;
+        dd.textContent = v;
+        rowsEl.append(dt, dd);
+      });
+    }
+    if (pbEl) {
+      pbEl.textContent = r.pb || "";
+      pbEl.hidden = !r.pb;
+    }
+    if (shareBtn) {
+      shareBtn.hidden = !r.share;
+      shareBtn.textContent = "Share result";
+    }
+    if (scoreEl) {
+      scoreEl.parentElement.hidden = r.gained == null;
+      const target = r.gained || 0;
+      if (reduced || !target) scoreEl.textContent = `+${target.toLocaleString()}`;
+      else {
+        const t0 = performance.now();
+        const tick = (now) => {
+          const k = Math.min(1, (now - t0) / 900);
+          scoreEl.textContent = `+${Math.round(target * (1 - Math.pow(1 - k, 3))).toLocaleString()}`;
+          if (k < 1 && resultsEl && !resultsEl.hidden) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    }
+  }
+
+  function buildShareCard(r) {
+    const c = document.createElement("canvas");
+    c.width = 1200;
+    c.height = 630;
+    const g = c.getContext("2d");
+    const bg = g.createLinearGradient(0, 0, 0, 630);
+    bg.addColorStop(0, "#04070d");
+    bg.addColorStop(1, "#0d2142");
+    g.fillStyle = bg;
+    g.fillRect(0, 0, 1200, 630);
+    const rnd = fx ? fx.prng(4242) : Math.random;
+    for (let i = 0; i < 120; i += 1) {
+      g.fillStyle = `rgba(220,232,255,${0.2 + rnd() * 0.6})`;
+      g.fillRect(rnd() * 1200, rnd() * 420, 1 + rnd() * 1.6, 1 + rnd() * 1.6);
+    }
+    const earth = g.createRadialGradient(840, 1270, 380, 840, 1270, 760);
+    earth.addColorStop(0, "#1d4f8c");
+    earth.addColorStop(0.9, "#2f6aa8");
+    earth.addColorStop(1, "rgba(140,200,255,0.9)");
+    g.fillStyle = earth;
+    g.beginPath();
+    g.arc(840, 1270, 760, 0, Math.PI * 2);
+    g.fill();
+    const mc = MEDAL[r.medal] || MEDAL.bronze;
+    g.fillStyle = mc;
+    g.beginPath();
+    g.arc(1010, 215, 92, 0, Math.PI * 2);
+    g.fill();
+    g.fillStyle = "#18202c";
+    g.font = '700 110px "IBM Plex Mono", ui-monospace, monospace';
+    g.textAlign = "center";
+    g.fillText(r.medal === "gold" ? "1" : r.medal === "silver" ? "2" : "3", 1010, 252);
+    g.textAlign = "left";
+    g.fillStyle = "#ffb454";
+    g.font = '600 26px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillText("HOT STAGING  /  SUPERCHARGED DAILY ARCADE", 70, 96);
+    g.fillStyle = "#f4f7fb";
+    g.font = '700 84px Inter, system-ui, sans-serif';
+    g.fillText(r.title, 70, 210);
+    g.font = '600 150px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillText(r.total.toLocaleString(), 70, 380);
+    g.fillStyle = "rgba(220,232,246,0.78)";
+    g.font = '500 30px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillText(r.sub, 70, 440);
+    g.fillStyle = "#ffffff";
+    g.font = '600 30px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillText("superchargeddaily.com/staging.html", 70, 570);
+    return new Promise((resolve) => c.toBlob(resolve, "image/png"));
+  }
+
+  async function shareResult() {
+    if (!lastResult || !shareBtn) return;
+    const modeName = arcade.mode === "daily" ? `daily ${arcade.day}` : arcade.mode;
+    const text = `I scored ${lastResult.total.toLocaleString()} in Hot Staging (${modeName}). Can you beat it?`;
+    const url = `${location.origin}/staging.html${arcade.mode === "daily" ? `?mode=daily&day=${arcade.day}` : ""}`;
+    const copied = async () => {
+      try {
+        await navigator.clipboard.writeText(`${text} ${url}`);
+        shareBtn.textContent = "Copied";
+        arcade.live("Result copied to the clipboard.");
+      } catch {
+        shareBtn.textContent = "Copy failed";
+      }
+      window.setTimeout(() => { shareBtn.textContent = "Share result"; }, 2000);
+    };
+    try {
+      const blob = await buildShareCard(lastResult);
+      const file = blob && new File([blob], "hot-staging.png", { type: "image/png" });
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], text, url });
+        return;
+      }
+      if (navigator.share) {
+        await navigator.share({ text, url });
+        return;
+      }
+      await copied();
+    } catch (err) {
+      if (err && err.name === "AbortError") return;
+      await copied();
+    }
+  }
+
+  shareBtn?.addEventListener("click", shareResult);
 
   function setBest(n) {
     best = n;
@@ -941,7 +1093,19 @@
       maxq: "The load passed the limit. Tip: hold Throttle (S) through Max-Q, then let go.",
     };
     const showDebrief = () => {
-      if (state === "fail") showOverlay("No stage", titles[kind] || "RUD", lines[kind] || lines.rud, "Try again");
+      if (state !== "fail") return;
+      showOverlay("No stage", titles[kind] || "RUD", lines[kind] || lines.rud, "Try again");
+      showResults({
+        medal: "fail",
+        gained: null,
+        total: score,
+        title: titles[kind] || "RUD",
+        sub: `${spec().name} · ${arcade.mode}`,
+        rows: [["Result", titles[kind] || "RUD"], ["Mission", spec().name], ["Run score", score.toLocaleString()]],
+        pb: best ? `Personal best ${best.toLocaleString()}` : "",
+        share: false,
+      });
+      if (overlayCopy) overlayCopy.hidden = false;
     };
     if (reduced || !stack.broken) showDebrief();
     else window.setTimeout(showDebrief, 1200);
@@ -979,6 +1143,7 @@
     const timing = clamp(1 - Math.abs(lastStageAt - center) / (s.window * 0.55), 0, 1);
     const upright = clamp(1 - Math.abs(stack.angle) / s.stageAngle, 0, 1);
     const perfect = timing > 0.82 && upright > 0.78;
+    const prevBest = best;
     streak = perfect ? streak + 1 : 0;
     const bonuses = [];
     let bonus = 0;
@@ -1007,12 +1172,24 @@
     arcade.record({score,missions:flight+1,complete,medal:perfect?'gold':timing>.45?'silver':'bronze',title:complete?'Mission set complete':'Separation confirmed',copy:'Timing '+Math.round(timing*100)+'% · attitude '+Math.round(upright*100)+'%.'+bonusText+' '+(complete?'Bring that precision to another mode.':'Your next campaign checkpoint is saved.')});
     arcade.live(complete?'Mission set complete. Your score is saved.':'Separation confirmed. Advance to your next mission.');
     renderBoard();
-    showOverlay(
-      s.name,
-      complete ? "Mission complete" : perfect ? "Clean light" : "Hot stage",
-      `Ship is flying. +${gained.toLocaleString()}  ·  Run ${score.toLocaleString()}${bonusText}`,
-      complete ? "Fly again" : "Next mission"
-    );
+    const title = complete ? "Mission complete" : perfect ? "Clean light" : "Hot stage";
+    showOverlay(s.name, title, `Ship is flying. +${gained.toLocaleString()}  ·  Run ${score.toLocaleString()}${bonusText}`, complete ? "Fly again" : "Next mission");
+    const rows = [["Timing", `${Math.round(timing * 100)}%`], ["Attitude", `${Math.round(upright * 100)}%`]];
+    bonuses.forEach((b) => {
+      const m = b.match(/^(.*?) \+?(\d+)$/);
+      rows.push(m ? [m[1], `+${m[2]}`] : [b, ""]);
+    });
+    rows.push(["Run total", score.toLocaleString()]);
+    showResults({
+      medal: perfect ? "gold" : timing > 0.45 ? "silver" : "bronze",
+      gained,
+      total: score,
+      title,
+      sub: `${s.name} · ${arcade.mode}`,
+      rows,
+      pb: score > prevBest ? `New personal best: ${score.toLocaleString()}${prevBest ? ` (+${(score - prevBest).toLocaleString()})` : ""}` : `Personal best ${best.toLocaleString()}`,
+      share: true,
+    });
   }
 
   function tryStage() {
@@ -2193,7 +2370,7 @@
   }
 
   function updateHud() {
-    if(stack){const s=spec(),remaining=s.climb-tPlay,open=tPlay>=s.climb&&tPlay<=s.climb+s.window;
+    if(stack){const s=spec(),remaining=s.climb-tPlay,open=(state==='boost'||state==='window')&&tPlay>=s.climb&&tPlay<=s.climb+s.window;
     arcade.telemetry({primary:open?'OPEN · '+Math.max(0,s.climb+s.window-tPlay).toFixed(1)+'s':remaining>0?'In '+remaining.toFixed(1)+'s':'Closed',secondary:(stack.angle*180/Math.PI).toFixed(1)+'° / '+(s.stageAngle*180/Math.PI).toFixed(0)+'° limit',state:state==='pause'?'Paused':state==='count'?'Countdown':state==='boost'?'Climbing':state==='window'?'STAGE NOW':state==='sep'?'Separation':state==='success'||state==='complete'?'Complete':'Ready',guidance:open?'Stage now. The midpoint gives the best timing score.':Math.abs(stack.angle)>s.stageAngle*.75?'Counter the lean before ignition. Short taps are enough.':'Keep the stack level, then watch for the ignition window.',sound:muted?'Sound off':'Sound on'});}
 
     if (!stack) return;
@@ -2399,7 +2576,7 @@
 
   window.addEventListener("blur", ()=>{clearAllHolds();if(["count","boost","window","sep"].includes(state))arcadePause();});
   function arcadePause(){if(state==='pause')startPlayResume();else if(['count','boost','window','sep'].includes(state)){pausedFrom=state;clearAllHolds();state='pause';setEngine(0);showOverlay('Paused','Mission on hold.','Your launch is paused. Resume when you are ready.','Resume');}}
-  const arcade=window.SDArcade.mount('staging',{reset(){demo=false;clearAllHolds();setEngine(0);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();setMuted(!muted);return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the timing and attitude; no score will be saved.');}});
+  const arcade=window.SDArcade.mount('staging',{autoFocus:true,reset(){demo=false;clearAllHolds();setEngine(0);beginAttract();},restart(){state='ready';startPlay();},pause:arcadePause,sound(){ensureAudio();setMuted(!muted);return muted;},demo(){startPlay();demo=true;auto=true;arcade.live('Autopilot demonstration. Watch the timing and attitude; no score will be saved.');}});
   window.addEventListener("resize", resize);
   resize();
   beginAttract();
