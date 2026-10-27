@@ -157,7 +157,7 @@ async def main():
   assert round(await q.evaluate('RobotaxiGame.snapshot().reputation'))==12
   await q.get_by_role('button',name='Run the day',exact=True).click()
   assert await q.evaluate('RobotaxiGame.state()')=='end','low reputation ends the week early'
-  assert (await q.locator('[data-overlay-kicker]').inner_text()).lower()=='permits suspended'
+  assert (await q.locator('[data-overlay-title]').inner_text()).lower()=='permits suspended'
   assert not await q.evaluate('SDArcade.read().records["robotaxi:campaign"].complete')
   print('PASS robotaxi permits suspended ends the week',flush=True);await c.close()
   c=await context(1440);q=await c.new_page();await q.goto('https://superchargeddaily.com/robotaxi.html?mode=campaign',wait_until='networkidle')
