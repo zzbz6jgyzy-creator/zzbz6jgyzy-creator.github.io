@@ -6,6 +6,7 @@ on:
       - 'launch-viewing*'
       - 'data/launch-viewing.json'
       - 'data/viewing/**'
+      - 'assets/viewing/**'
       - 'data/calendar-studio.json'
       - 'calendar-studio-model.js'
       - 'vendor/launch-geo*'
@@ -24,6 +25,7 @@ permissions:
 jobs:
   launch-viewing:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -56,5 +58,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: launch-viewing-previews
-          path: /tmp/launch-viewing
+          name: launch-experience-previews
+          path: |
+            /tmp/launch-viewing
+            /tmp/launch-compass

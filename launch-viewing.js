@@ -2,11 +2,20 @@
   "use strict";
   const M = window.SDLaunchViewing, V = window.SDLaunchViewingView, C = window.SDCalendarStudio, $ = (id) => document.getElementById(id), root = $("lv-app");
   if (!root || !M || !V) return;
+  const text = (id, value) => { const node = $(id); if (node && node.textContent !== value) node.textContent = value; };
+  function validSnapshot(next) {
+    if (!next || next.version !== 1 || !Number.isFinite(Date.parse(next.checked)) || !Array.isArray(next.launches) || !Array.isArray(next.presets) || !next.presets.length || next.presets.some((p) => !M.location(p))) return false;
+    const ids = new Set();
+    return next.launches.every((e) => {
+      if (!e || typeof e.id !== "string" || !e.id || ids.has(e.id) || typeof e.title !== "string" || !C.dated(e) || !Array.isArray(e.sources) || e.sources.some((s) => !s || typeof s.href !== "string" || typeof s.label !== "string") || e.pad && !M.location(e.pad)) return false;
+      ids.add(e.id); return true;
+    });
+  }
   let data, world;
   try {
     data = JSON.parse($("lv-data").textContent);
     world = JSON.parse($("lv-world").textContent);
-    if (data.version !== 1 || !data.launches.length) return;
+    if (!validSnapshot(data)) return;
   } catch {
     return;
   }
@@ -19,6 +28,13 @@
   }
   let state = { ...M.readPreferences(raw), map: "globe", site: "all", sort: "time" }, sourceFailed = false, cityRows = null, cityPromise = null, suggestions = [], active = 0, wx = null, wxLoading = false, wxError = "", wxAbort = null, geoSequence = 0, fieldHeading = null, compassAttached = false, compassTimer = null, searchSeq = 0;
   const params = new URLSearchParams(location.search);
+  // Shared scenarios only restore values represented by the real controls.
+  // Invalid query text never clears a valid saved preference or invents an option.
+  for (const key of ["units", "horizon", "altitude", "downrange"]) {
+    const value = params.get(key), control = $("lv-" + key);
+    if (params.has(key) && control && [...control.options].some((o) => o.value === value)) state[key] = key === "units" ? value : Number(value);
+  }
+  if (["globe", "region"].includes(params.get("map"))) state.map = params.get("map");
   if (params.get("mode") === "identify" || location.hash === "#identify") {
     location.replace("/starlink.html#identify");
     return;
@@ -55,6 +71,46 @@
     const age = Date.now() - Date.parse(data.checked), stale = !Number.isFinite(age) || age > 3 * 36e5;
     $("lv-freshness").textContent = (sourceFailed || stale ? "Launch times may be out of date · as of " : "Launch times as of ") + (v=>Number.isFinite(Date.parse(v))?new Date(v).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Dublin'})+' Irish time':String(v||''))(data.checked) + ". Targets may change.";
     $("lv-freshness").classList.toggle("lv-stale", stale || sourceFailed);
+  }
+  let missionMetaKey = "";
+  function missionPaint() {
+    const bar = $("lv-mission-bar"), readiness = $("lv-readiness"), clock = $("lv-prep-clock");
+    if (!bar && !readiness && !clock) return;
+    const e = selected(), p = observer(), now = Date.now(), age = now - Date.parse(data.checked);
+    const stale = sourceFailed || !Number.isFinite(age) || age > 3 * 36e5;
+    const timed = !!e && e.precision === "datetime" && Number.isFinite(Date.parse(e.start));
+    const held = !!e && /hold/i.test(e.status || "");
+    const provisional = !!e && /net|tbc|tbd/i.test(e.status || "");
+    const write = (el, text) => { if (el && el.textContent !== text) el.textContent = text; };
+    const metaKey = JSON.stringify([e?.id,e?.title,e?.start,e?.precision,e?.status,p?.name,p?.region,p?.country,p?.zone,state.place?.lat,state.place?.lon,data.checked,stale]);
+    if (bar && missionMetaKey !== metaKey) {
+      missionMetaKey = metaKey;
+      write(bar.querySelector("[data-mission-title]"), e?.title || "Choose your next launch");
+      write(bar.querySelector("[data-mission-context]"), (state.place ? M.cityLabel(p) : "Example · " + (p?.name || "No observing spot")) + (e ? " · " + M.when(e, p?.zone || "UTC") : " · No dated upcoming target"));
+      write(bar.querySelector("[data-mission-source]"), stale ? "Cached schedule · recheck the launch source" : held ? "Launch on hold · recheck the source" : e ? (provisional ? "Provisional target · schedule can change" : "Published target · schedule can change") : "Check the Calendar for new targets");
+      bar.dataset.example = String(!state.place);
+      bar.dataset.stale = String(stale);
+    }
+    let countdown = !e ? "No timed target" : held ? "On hold" : !timed ? "Time unconfirmed" : stale ? "Recheck source" : "Target time passed";
+    const remaining = timed ? Date.parse(e.start) - now : 0;
+    if (timed && !held && !stale && remaining > 0) {
+      const seconds = Math.floor(remaining / 1000), days = Math.floor(seconds / 86400), hours = Math.floor(seconds % 86400 / 3600), minutes = Math.floor(seconds % 3600 / 60);
+      countdown = "T−" + (days ? days + "d " : "") + String(hours).padStart(2, "0") + "h " + String(minutes).padStart(2, "0") + "m " + String(seconds % 60).padStart(2, "0") + "s";
+    }
+    write(clock, countdown);
+    if (clock) clock.dataset.counting = String(timed && !held && !stale && remaining > 0);
+    if (!readiness) return;
+    const live = compassMode === "live" && fieldHeading !== null && !!state.place && !!e?.pad;
+    const checks = [
+      ["location", "Your location", state.place ? "Selected" : "Choose your spot", !!state.place],
+      ["pad", "Launch pad", e?.pad ? "Known" : "Unconfirmed", !!e?.pad],
+      ["time", "Launch time", !e ? "No target" : held ? "On hold" : !timed ? "Time unconfirmed" : stale ? "Recheck source" : provisional ? "Provisional time" : "Timed target", timed && !held && !stale],
+      ["forecast", "Cloud forecast", wxLoading ? "Checking" : wx?.available ? (wx.stale ? "Older forecast" : "Checked") : wxError || wx && !wx.available ? "Unavailable" : "Not checked", !!wx?.available && !wx.stale],
+      ["compass", "Live compass", live ? "Live" : "Not live", live]
+    ];
+    const html = checks.map(([key,label,status,ready]) => '<li data-check="' + key + '" data-ready="' + ready + '"><span class="lv-readiness-dot" aria-hidden="true"></span><div><b>' + M.esc(label) + '</b><small>' + M.esc(status) + '</small></div></li>').join("");
+    // Sensor events can be frequent. Only write when a readiness state changes.
+    if (readiness.dataset.signature !== html) { readiness.innerHTML = html; readiness.dataset.signature = html; }
   }
   function resetWeather() {
     wxAbort?.abort();
@@ -97,6 +153,12 @@
       else e.removeAttribute("aria-current");
     });
     persist();
+    if (scroll) {
+      const target = new URL(location.href);
+      for (const key of ["lat", "lon", "place"]) target.searchParams.delete(key);
+      target.hash = "lv-" + view;
+      history.replaceState(null, "", target);
+    }
     if (scroll) $("lv-" + view).scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }
   function launchList() {
@@ -106,6 +168,7 @@
     $("lv-launch-list").innerHTML = list.length ? list.map((e) => V.launchCard(e, p, state, !state.place)).join("") : '<div class="lv-empty"><h3>No dated targets in this filter.</h3><p>Try another launch site or explore the Calendar for unconfirmed plans.</p></div>';
   }
   function weatherPanel() {
+    missionPaint();
     const e = selected(), p = observer(), button = $("lv-weather");
     button.disabled = !state.place || e?.precision !== "datetime" || wxLoading;
     button.textContent = wxLoading ? "Checking NWS…" : !state.place ? "Set your location to check weather" : e?.precision !== "datetime" ? "Wait for a timed target" : "Check NWS cloud forecast ↗";
@@ -130,8 +193,20 @@
   function draw() {
     const e = selected(), p = observer();
     if (!e) {
+      state.launchId = "";
+      resetWeather();
+      stopCompass();
+      if ($("lv-field").open) $("lv-field").close();
+      $("lv-map").innerHTML = '<div class="lv-empty"><h3>No upcoming launch geometry.</h3><p>Check the Calendar for new targets.</p></div>';
+      for (const id of ["lv-metrics", "lv-sky-visual", "lv-compass", "lv-field-compass"]) $(id).innerHTML = "";
+      $("lv-direction-text").textContent = "No target selected";
+      $("lv-launch-info").textContent = "No dated upcoming launch target.";
+      $("lv-source-content").innerHTML = '<p><a href="/calendar.html">Check the launch calendar →</a></p>';
       $("lv-brief").innerHTML = "<h2>No dated upcoming launches in the cache.</h2><p>Check the Calendar for planning targets and source updates.</p>";
       $("lv-launch-list").innerHTML = "<p>No dated upcoming targets.</p>";
+      for (const id of ["lv-field-open", "lv-compass-expand", "lv-copy-brief", "lv-share-open"]) $(id).disabled = true;
+      weatherPanel(); fresh(); persist();
+      missionPaint();
       return;
     }
     state.launchId = e.id;
@@ -148,6 +223,7 @@
     root.querySelectorAll("[data-map]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.map === state.map));
     $("lv-source-content").innerHTML = "<p>" + M.esc(e.note) + "</p>" + V.sources(e);
     $("lv-field-open").disabled = !state.place || !a.scenario;
+    $("lv-compass-expand").disabled = !state.place || !a.scenario;
     $("lv-copy-brief").disabled = !state.place;
     $("lv-share-open").disabled = !e;
     launchList();
@@ -370,6 +446,7 @@
   }
   $("lv-copy-brief").addEventListener("click", () => {
     const p = observer(), e = selected();
+    if (!e || !state.place) return;
     copy(M.brief(e, p, M.scenario(e, p, state)), (text) => {
       message(text);
       if (text !== "Copied.") {
@@ -382,6 +459,8 @@
   function shareLink() {
     const u = new URL("/see-the-launch.html", location.origin);
     u.searchParams.set("launch", selected()?.id || "");
+    for (const key of ["units", "horizon", "altitude", "downrange", "map"]) u.searchParams.set(key, state[key]);
+    u.hash = "lv-" + state.view;
     if ($("lv-share-location").checked && state.place) {
       u.searchParams.set("lat", state.place.lat.toFixed(2));
       u.searchParams.set("lon", state.place.lon.toFixed(2));
@@ -424,18 +503,20 @@
     const labels = { off:'North-up view',requesting:'Permission needed',waiting:'Finding heading',live:'Live compass',blocked:'Access blocked',unsupported:'Sensor unavailable',insecure:'HTTPS required',timeout:'No heading received',level:'Hold flatter',calibrating:'Check accuracy',stale:'Reading paused',model:'Static bearing',paused:'Paused' };
     const cue = !hasPlace ? 'Set your location to get your own pad direction.' : !s ? 'Choose a launch with a known pad.' : live ? Compass.turn(s.bearing,fieldHeading).text : compassMode === 'level' ? 'Hold the device flatter to continue.' : compassMode === 'calibrating' ? 'Calibrate before following the arrow.' : compassMode === 'stale' ? 'Move the device to refresh the heading.' : 'North-up reference · start the compass to turn toward the pad.';
     const headingText = live ? Math.round(fieldHeading)+'° true · your screen’s top edge'+(northCorrection?.accuracy!==null&&northCorrection?.accuracy!==undefined?' · sensor ±'+Math.round(northCorrection.accuracy)+'°':'') : 'Device heading is not currently live.';
-    const text = compassNote || messages[compassMode] || messages.off;
-    $('lv-compass-state').textContent = labels[compassMode] || labels.off;
-    root.querySelector('.lv-compass-top').textContent = live ? 'TOP OF YOUR SCREEN' : 'NORTH-UP / NOT LIVE';
+    const statusText = compassNote || messages[compassMode] || messages.off;
+    // Repeated sensor samples must not repeatedly announce identical live-region text.
+    text('lv-compass-state', labels[compassMode] || labels.off);
+    const top = root.querySelector('.lv-compass-top'), topText = live ? 'TOP OF YOUR SCREEN' : 'NORTH-UP / NOT LIVE';
+    if (top.textContent !== topText) top.textContent = topText;
     $('lv-compass-card').dataset.live = String(live);
     $('lv-compass-card').dataset.aligned = String(live && Compass.turn(s.bearing,fieldHeading).aligned);
     $('lv-field').dataset.live = String(live);
-    $('lv-compass-cue').textContent = cue;
-    $('lv-device-heading').textContent = headingText;
-    $('lv-compass-status').textContent = text;
-    $('lv-field-cue').textContent = cue;
-    $('lv-field-heading').textContent = headingText;
-    $('lv-field-sensor').textContent = text;
+    text('lv-compass-cue', cue);
+    text('lv-device-heading', headingText);
+    text('lv-compass-status', statusText);
+    text('lv-field-cue', cue);
+    text('lv-field-heading', headingText);
+    text('lv-field-sensor', statusText);
     for (const id of ['lv-compass-start','lv-sensor']) {
       const button=$(id);button.textContent=compassMode==='requesting'?'Allow compass access…':compassAttached?'Stop live compass':['blocked','timeout','unsupported'].includes(compassMode)?'Try compass again':'Start live compass';
       button.setAttribute('aria-pressed',String(compassAttached));button.disabled=compassMode==='requesting';
@@ -445,6 +526,7 @@
       dial?.setAttribute('transform','rotate('+(live?-fieldHeading:0)+' 110 110)');
       if(svg&&s)svg.setAttribute('aria-label','Pad bearing '+Math.round(s.bearing)+' degrees true. '+(live?headingText+'. '+cue:'North-up reference. '+cue));
     }
+    missionPaint();
   }
   function fieldDraw() {
     const e=selected(),p=observer(),s=geometry();if(!e||!s)return;
@@ -514,6 +596,7 @@
   $('lv-compass-location').addEventListener('click',()=>{compassNote='';$('lv-geo').click();});
   function openField() {
     if(!state.place){openCompass();compassNote='Set your observing location first to open your own full-screen compass.';compassPaint();return;}
+    if(!geometry()){openCompass();compassNote='Choose a launch with a known pad before opening field view.';compassPaint();return;}
     $('lv-field').classList.remove('lv-night');$('lv-night').setAttribute('aria-pressed','false');fieldDraw();$('lv-field').showModal();
   }
   $('lv-field-open').addEventListener('click',openField);$('lv-compass-expand').addEventListener('click',openField);
@@ -530,6 +613,12 @@
   if (state.place) $("lv-location").value = M.cityLabel(state.place);
   draw();
   showView(state.view);
+  // Keep the selected target and all instruments consistent when a timed target elapses.
+  setInterval(() => {
+    if (document.hidden) return;
+    if ((selected()?.id || "") !== state.launchId) { resetWeather(); controls(); draw(); }
+    else missionPaint();
+  }, 1000);
   if (hash === "compass-card") openCompass();
   const query = new URL(location.href);
   query.searchParams.delete("lat");
@@ -540,7 +629,7 @@
     if (!r.ok) throw Error("No fresh snapshot");
     return r.json();
   }).then((next) => {
-    if (next.version !== 1 || !Array.isArray(next.launches) || !next.launches.length || !Array.isArray(next.presets) || next.launches.some((e) => !e || typeof e.id !== "string" || typeof e.title !== "string" || !Array.isArray(e.sources) || e.pad && !M.location(e.pad)) || Date.parse(next.checked) < Date.parse(data.checked)) throw Error("Invalid or older snapshot");
+    if (!validSnapshot(next) || Date.parse(next.checked) < Date.parse(data.checked)) throw Error("Invalid or older snapshot");
     const previous = selected();
     data = next;
     if (previous?.start !== selected()?.start || previous?.id !== selected()?.id) resetWeather();
