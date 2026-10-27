@@ -1,5 +1,13 @@
 # Changelog
 
+## 27 Oct 2026 — Optimus guide: craft and speed (Optimus PR 3 of 3)
+
+- **Layout shift:** a metric-matched fallback font (Arial scaled to Inter) stops the headline re-wrapping when the web font loads. Mobile CLS 0.021 → 0.001.
+- **Share image:** a 1200x630 card for X and other previews ("Optimus: built in Fremont", the robot, three key facts) replaces a cropped investor-slide image.
+- **Motion:** a reading-progress line under the chapter bar and a gentle rise on section heads and cards, both CSS scroll-driven, only where supported, and off under reduced motion.
+- **Tablet:** below 900 px the X-ray stacks above its panel at full width, and the 3D launcher shows its text under the poster.
+- Measured (Lighthouse, mobile, served gzip-compressed as Cloudflare does): Performance 95, Accessibility 100, Best Practices 96, SEO 100, LCP 2.4 s, CLS 0.001, TBT 0. The Best Practices point is the Cloudflare analytics beacon failing on localhost. Desktop: 100 / 100 / 96 / 100.
+
 ## 27 Oct 2026 — Optimus in 3D
 
 - **New 3D explorer** on `/optimus.html` ("Take Optimus apart."), built the same way as the Cybertruck and Model 3 explorers: it loads only when a reader presses Explore in 3D, in an isolated viewer with Explode, Parts, Reset, Rotate, pinch/keyboard zoom and an Exit button that returns focus.
