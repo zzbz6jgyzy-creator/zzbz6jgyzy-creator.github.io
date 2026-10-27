@@ -39,6 +39,10 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 - **Decision:** `content/dispatch/*.md` renders to `dispatch/*.html` in the repo (`scripts/render-article.py`); the seven generators keep running over it.
 - **Why:** an Astro-built article would skip related stories, contents, SEO graph, feed and sitemap until all seven generators are rewritten (P6). This gives phone publishing now with no change to existing pages.
 
+## 2026-10-27 · Homepage client refresh kept, but only swaps when stories changed
+- **Decision:** `home-v2.js` reads Dispatch card titles from `h2, h3` and compares the fetched lead and supporting stories with what is already rendered. If hrefs and titles match, it leaves the DOM alone.
+- **Why:** the pre-render (`scripts/build-home.js`, ~30 min) normally already holds the newest stories, so the refresh is a no-op and cannot shift layout. It only swaps when a story landed since the last build, which is the case the refresh exists for. Removing it would delay new or pinned leads by up to 30 minutes.
+
 ## Open: review ratings
 Reviews deliberately replaced unexplained numeric scores with recommendations (`docs/reviews-studio.md`). Google's review rich
 results require a rating. Adding one is an editorial decision for the owner, not a technical one; until then no `Review` schema.
