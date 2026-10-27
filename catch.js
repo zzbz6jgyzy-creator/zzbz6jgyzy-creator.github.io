@@ -1344,11 +1344,23 @@
       ctx.globalAlpha = Math.min(1, callout.t / 400);
       ctx.font = '600 14px "IBM Plex Mono", ui-monospace, monospace';
       ctx.textAlign = "center";
-      const w = ctx.measureText(callout.text).width + 28;
+      const maxW = cssW - 40;
+      const lines = [];
+      let cur = "";
+      callout.text.split(" ").forEach((word) => {
+        const next = cur ? cur + " " + word : word;
+        if (cur && ctx.measureText(next).width > maxW) {
+          lines.push(cur);
+          cur = word;
+        } else cur = next;
+      });
+      if (cur) lines.push(cur);
+      const w = Math.min(cssW - 16, Math.max(...lines.map((l) => ctx.measureText(l).width)) + 28);
+      const h = 14 + lines.length * 20;
       ctx.fillStyle = "rgba(8,14,24,0.72)";
-      ctx.fillRect(cssW / 2 - w / 2, 54, w, 30);
+      ctx.fillRect(cssW / 2 - w / 2, 54, w, h);
       ctx.fillStyle = "#e9f6fa";
-      ctx.fillText(callout.text, cssW / 2, 74);
+      lines.forEach((l, i) => ctx.fillText(l, cssW / 2, 76 + i * 20));
       ctx.restore();
     }
   }
