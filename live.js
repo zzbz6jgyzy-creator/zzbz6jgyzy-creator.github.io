@@ -151,6 +151,10 @@
       return !e.net && !e.timeTbc && e.status !== 'ended';
     });
     var live = ev.filter(function (e) { var s = new Date(e.start) - 0;
+      // LL2 rows never take the homepage top slot. A Go / In Flight Falcon
+      // remounted into .hv-live-top (order 0 on phones) shifts the first
+      // screen by ~148px and fails the 320px studio CLS check.
+      if (String(e.id || '').indexOf('ll2-') === 0) return false;
       return e.status === 'live' || (!e.timeTbc && !e.net && now >= s - H / 2); }).sort(function (a, b) { // several live: featured/major first, then latest start
         var pa = (a.featured || (shared[a.id] && shared[a.id].major)) ? 1 : 0, pb = (b.featured || (shared[b.id] && shared[b.id].major)) ? 1 : 0;
         return (pb - pa) || (new Date(b.start) - new Date(a.start)); })[0];
@@ -160,13 +164,19 @@
     var next = feat || future.filter(function (e) { return !e.timeTbc && !e.net; })[0] || future[0]; // TBC/NET only if nothing timed
     var e = live || next;
     var pre = document.querySelector('section.lv[data-prebuilt]');
-    // Timed next-stream cards keep the prerendered node. Remounting one is a
-    // layout shift on the 320px first screen. NET/TBC/empty still rebuild.
-    if (!live && pre && e && !e.net && !e.timeTbc) {
+    // Next-stream cards keep the prerendered node. Remounting one is a
+    // layout shift on the 320px first screen. Empty still removes it.
+    // NET/TBC update the chip in place so quality journeys stay valid.
+    if (!live && pre) {
+      if (!e) { pre.remove(); return; }
       var titleEl = pre.querySelector('.lw-title');
       if (titleEl) titleEl.textContent = e.title;
       var count = pre.querySelector('.lh-next-countdown');
-      if (count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
+      if (e.net || e.timeTbc) {
+        if (count) count.remove();
+        var chip = pre.querySelector('.lv-tz');
+        if (chip) chip.textContent = e.timeTbc ? 'Time TBC' : 'NET';
+      } else if (count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
       var leftover = document.querySelector('section.lv:not([data-prebuilt])'); if (leftover) leftover.remove();
       var stay = new Date(e.start) - H / 2 - now;
       if (stay > 0 && stay < 864e5 && !q.get('livenow')) setTimeout(run, stay + 1e3);

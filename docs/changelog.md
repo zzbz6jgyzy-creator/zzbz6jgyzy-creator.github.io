@@ -8,6 +8,7 @@
 - Starship Flight 16 is a December 2026 reported target (NASASpaceflight), labelled as reporting rather than a SpaceX date.
 - Roadster “Latest stories” card titles are past-tense. Data-push workflows share a `data-push-main` concurrency group and use `scripts/ci-push-retry.sh`.
 - Calendar studio tests pick the next upcoming Starlink instead of flown 15-16. Homepage live.js never remounts the prerendered next-stream card unless something is actually live, and LL2 rows that have already reached NET are dropped so they cannot appear as a “Live now” card.
+- Homepage live.js never treats an LL2 launch as the top “Live now” card, so a Go / In Flight Falcon cannot remount into `.hv-live-top` and shift the 320px first screen.
 
 ## 27 Oct 2026 — Write articles in Markdown
 

@@ -38,6 +38,7 @@ function eligible(events, page, now) {
 }
 
 function isLive(e, now, H) {
+  if (!e || String(e.id || "").indexOf("ll2-") === 0) return false;
   return e.status === "live" || (!e.timeTbc && !e.net && now >= new Date(e.start) - H / 2);
 }
 
