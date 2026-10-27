@@ -27,6 +27,8 @@ async def main():
    assert not any('youtube' in u for u in requests),'third-party film requested before consent'
    await page.screenshot(path=str(OUT/f'{width}-{theme}-{mode}-hero.png'))
    if mode in ['nojs','blocked-js']:
+    assert await page.locator('.os-ramp-chart .os-curve').count()==2 and await page.locator('.os-ramp-table tbody tr').count()==9
+    assert await page.locator('.os-hand-svg .os-dof').count()==22
     assert await page.locator('.os-system-panel:visible').count()==6
     assert await page.locator('.os-demo').count()==12
     assert await page.locator('.os-event:visible').count()==19
@@ -46,6 +48,14 @@ async def main():
      assert await page.locator('.os-specs td[data-gen="gen3"]:visible').count()==11 and await page.locator('.os-specs td[data-gen="gen2"]:visible').count()==0
      await page.locator('.os-gen-switch [data-gen="gen2"]').click();assert await page.locator('.os-specs td[data-gen="gen2"]:visible').count()==11
     else:assert await page.locator('.os-specs td:visible').count()==55
+    await page.locator('.os-system-tabs [data-system="power"]').click();assert await page.locator('.os-anatomy').get_attribute('data-active')=='power'
+    await page.locator('[data-hand="gen2"]').click();assert await page.locator('[data-dof-count]').inner_text()=='11';assert await page.locator('.os-hand-lab').get_attribute('data-gen')=='gen2'
+    await page.locator('[data-hand="gen3"]').click();assert await page.locator('[data-dof-count]').inner_text()=='22'
+    await page.locator('#os-grip').fill('90');assert await page.locator('.os-grip-stage').get_attribute('data-state')=='crack'
+    await page.locator('#os-grip-auto').click();await page.wait_for_timeout(50);assert await page.locator('.os-grip-stage').get_attribute('data-state')=='held'
+    await page.locator('#os-ramp-month').fill('0');assert await page.locator('#os-ramp-week').inner_text()=='154';assert await page.locator('#os-ramp-total').inner_text()=='0'
+    await page.locator('[data-ramp="slower"]').click();await page.locator('#os-ramp-month').fill('24');assert await page.locator('#os-ramp-week').inner_text()=='19,000'
+    assert await page.locator('.os-ramp-chart .os-cursor').is_visible()
     await page.locator('#os-clear').click();await page.locator('[data-gallery="2"]').click();assert await page.locator('.os-lightbox').is_visible();await page.keyboard.press('ArrowRight');assert 'angle' in await page.locator('.os-lightbox-image img').get_attribute('src');await page.keyboard.press('Escape');assert not await page.locator('.os-lightbox').is_visible();assert await page.locator('[data-gallery="2"]').evaluate('(x)=>x===document.activeElement')
     await page.locator('[data-film="event"]').click();await page.locator('#os-play').click();frame=page.locator('#os-player iframe');assert 'start=1189' in await frame.get_attribute('src');assert '6v6dbxPlsXs' in await frame.get_attribute('src');assert 'watch the official film' in await page.locator('#os-player-status').inner_text()
     await page.locator('[data-film="gen2"]').click();assert await page.locator('#os-player iframe').count()==0

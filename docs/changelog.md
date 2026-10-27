@@ -1,5 +1,13 @@
 # Changelog
 
+## 27 Oct 2026 — Optimus guide: interactive showpieces (Optimus PR 2 of 3)
+
+- **Body diagram:** the cropped portrait in "Inside the machine" is replaced by an original kinematic sketch; choosing a system lights up its parts (cameras, computer, battery, joints, hands, feet and balance).
+- **Hand lab:** switch between Gen 2 (11 DoF, published) and Gen 3 (22 DoF, reported) to see which motions are driven and how tendons run to forearm actuators; a grip slider shows why touch sensing matters (slip, hold, crack).
+- **Ramp explorer:** an illustrative S-curve toward 20,000 a week, with a slider, pointer cursor, two paces, weekly/yearly/cumulative readouts, a delivery-target band and a table view. Labelled as illustration; Tesla has published no volumes.
+- **Promise strip:** each commitment drawn from when it was said to when it was due, with its outcome and a Today line.
+- New tests for the ramp model and every new control; illustrations live in `scripts/optimus-art.mjs`.
+
 ## 27 Oct 2026 — Optimus guide: research backbone (Optimus PR 1 of 3)
 
 - **State of play:** eight sourced numbers (production started, 1M/yr Fremont design, 10M/yr Texas design, 20,000/week goal, late-2027 deliveries, AI5 in April 2027, 22-DoF Gen 3 hand, the 1M-robot pay milestone), each labelled Disclosed, Target or Reported, with an as-of date.

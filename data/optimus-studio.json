@@ -327,13 +327,13 @@
       "how": "Cameras provide information about objects, surfaces and motion. Joint-position sensing supplies proprioception: an estimate of where the limbs are. Contact and force feedback add information that an image can miss, such as whether a grasp is slipping.",
       "why": "Recognizing a cup is only a first step. The robot also needs an actionable estimate of where it is, how it can be reached and what may change during contact. Occlusion, reflections, lighting and moving people complicate that estimate.",
       "tesla": "Tesla’s stated engineering scope includes perception and physical interaction. Its published material does not provide a complete, final production sensor bill of materials here.",
-      "boundary": "This overview explains the roles of sensing. The annotation marks a topic, not the verified location of a particular production camera.",
+      "boundary": "This overview explains the roles of sensing. The diagram marks a topic, not the verified location of a particular production camera.",
       "sources": [
         "tesla",
         "cellfilm"
       ],
-      "x": 51,
-      "y": 14
+      "x": 74,
+      "y": 7
     },
     {
       "id": "hands",
@@ -348,8 +348,8 @@
       "sources": [
         "hands"
       ],
-      "x": 59,
-      "y": 51
+      "x": 84,
+      "y": 50.6
     },
     {
       "id": "actuation",
@@ -365,8 +365,8 @@
         "motors",
         "gen2"
       ],
-      "x": 40,
-      "y": 36
+      "x": 80,
+      "y": 33.6
     },
     {
       "id": "balance",
@@ -382,8 +382,8 @@
         "balance",
         "tesla"
       ],
-      "x": 53,
-      "y": 79
+      "x": 76,
+      "y": 90
     },
     {
       "id": "learning",
@@ -399,8 +399,8 @@
         "sort",
         "training"
       ],
-      "x": 51,
-      "y": 28
+      "x": 27,
+      "y": 21.4
     },
     {
       "id": "power",
@@ -416,8 +416,8 @@
         "call",
         "ai2022"
       ],
-      "x": 50,
-      "y": 45
+      "x": 27,
+      "y": 31.5
     }
   ],
   "demos": [
@@ -1292,7 +1292,9 @@
         "tc21",
         "ai2022"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2022-12-31",
+      "short": "Prototype"
     },
     {
       "id": "p-price-2022",
@@ -1304,7 +1306,9 @@
       "sources": [
         "engadget22"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": null,
+      "short": "Under $20K"
     },
     {
       "id": "p-thousands",
@@ -1318,7 +1322,9 @@
         "ir2025"
       ],
       "quote": false,
-      "reported": true
+      "reported": true,
+      "dueDate": "2025-12-31",
+      "short": "Thousands at work"
     },
     {
       "id": "p-gen3",
@@ -1331,7 +1337,9 @@
         "ir2025",
         "leak"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2026-03-31",
+      "short": "Gen 3 unveil"
     },
     {
       "id": "p-sop",
@@ -1344,7 +1352,9 @@
         "ir2025",
         "q3"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2026-12-31",
+      "short": "Start production"
     },
     {
       "id": "p-ramp",
@@ -1356,7 +1366,9 @@
       "sources": [
         "call"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2027-12-31",
+      "short": "20,000 a week"
     },
     {
       "id": "p-customers",
@@ -1368,7 +1380,9 @@
       "sources": [
         "call"
       ],
-      "quote": false
+      "quote": false,
+      "dueDate": "2027-12-31",
+      "short": "Outside customers"
     }
   ],
   "field": [
