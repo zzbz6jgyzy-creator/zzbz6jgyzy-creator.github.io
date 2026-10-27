@@ -60,6 +60,7 @@ async def main():
      group=page.get_by_role('button',name='Software & autonomy',exact=True)
      await group.hover()
      panel=page.locator('#pn-tesla-software-autonomy')
+     await panel.wait_for(state='visible',timeout=2000)  # hover opens a group after a short pause so passing over it does not expand it
      assert await panel.is_visible()
      for path in ['/updates.html','/fsd-europe.html','/cybercab.html']:assert await panel.locator('a[href="'+path+'"]').is_visible()
      await page.screenshot(path=str(ROOT/'dev'/f'nav-desktop-{width}-{theme}.png'))

@@ -13,7 +13,7 @@ class NavigationGeneration(unittest.TestCase):
    built=page.read_text()
    self.assertIn('<nav class="pn" data-start-collapsed aria-label="Primary">',built)
    self.assertEqual(source.split('<main>')[1],built.split('<main>')[1])
-   self.assertIn('nav-pill.css?v=202610222255',built)
+   self.assertIn('nav-pill.css?v=202610271600',built)
    self.assertEqual(built.count('class="pn-shortcuts"'),1)
    self.assertLess(built.index('class="pn-shortcuts"'),built.index('<h3>Tesla</h3>'))
    subprocess.run(['python3',str(root/'scripts/sync-nav.py'),'--check'],check=True,capture_output=True)

@@ -41,7 +41,9 @@
   };
   const setNest = (nest, open) => {
     const panel = nest.closest(".pn-panel");
-    if (open && panel) panel.querySelectorAll(".pn-nest.open").forEach((n) => { if (n !== nest) setNest(n, false); });
+    // Close only the groups below this one. Closing one above shifts this group (and the pointer on it) up, out from under
+    // the cursor, which used to collapse the whole menu before "Company" could be clicked.
+    if (open && panel) { let below = false; panel.querySelectorAll(".pn-nest").forEach((n) => { if (n === nest) below = true; else if (below && n.classList.contains("open")) setNest(n, false); }); }
     nest.classList.toggle("open", open);
     const b = nest.querySelector(".pn-nest-t");
     const p = nest.querySelector(".pn-nest-panel");
@@ -101,7 +103,7 @@
 
   nav.querySelectorAll(".pn-dd").forEach(dd => {
     const btn = dd.querySelector("button");
-    const open = v => { if (v) closeAll(); dd.classList.toggle("open", v); btn.setAttribute("aria-expanded", String(v)); };
+    const open = v => { if (v) closeAll(); dd.classList.toggle("open", v); btn.setAttribute("aria-expanded", String(v)); if (!v) closeNests(dd); };
     let t, hov = 0;
     btn.addEventListener("click", () => { if (matchMedia("(hover:hover)").matches && Date.now() - hov < 600) { open(true); return; } open(!dd.classList.contains("open")); });
     dd.addEventListener("mouseenter", () => { if (matchMedia("(hover:hover)").matches) { clearTimeout(t); if (!dd.classList.contains("open")) hov = Date.now(); open(true); } });
@@ -128,12 +130,12 @@
       e.stopPropagation();
       setNest(nest, !nest.classList.contains("open"));
     });
+    // Hover opens a group only after the pointer rests on it, so moving past it to reach a lower item does not expand it and
+    // push that item away. Leaving never collapses it (that shrank the panel under the pointer); the dropdown closing does.
     nest.addEventListener("mouseenter", () => {
-      if (matchMedia("(hover:hover)").matches) { clearTimeout(nestTimer); setNest(nest, true); }
+      if (matchMedia("(hover:hover)").matches) { clearTimeout(nestTimer); nestTimer = setTimeout(() => setNest(nest, true), 220); }
     });
-    nest.addEventListener("mouseleave", () => {
-      if (matchMedia("(hover:hover)").matches) nestTimer = setTimeout(() => setNest(nest, false), 180);
-    });
+    nest.addEventListener("mouseleave", () => { clearTimeout(nestTimer); });
     if (nest.querySelector("a[aria-current=page]")) {
       setNest(nest, true);
       nestBtn.setAttribute("aria-current", "true");
