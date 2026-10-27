@@ -1,5 +1,12 @@
 # Changelog
 
+## 27 Oct 2026 — Robotaxi Boss: the living city (PR 1 of 3)
+
+- The static SVG diagram is replaced by a live Canvas 2D city (`robotaxi-fx.js`): a seeded procedural map with downtown towers, an airport with a runway and passing planes, a stadium with floodlights and a concert glow, hills with houses and contours, a river, arterial roads and a depot with charging bays.
+- Time of day runs from 6:00 to 22:00 (ambient light, dusk glow, lit windows, road lamps, headlight cones); rain adds streaks, ripples and wet roads.
+- Cabs drive their routes to their zones; demand shows as pulsing passenger dots and a coverage ring around each zone; rides produce floating fares and a cash ticker; missed demand and breakdowns (with smoke) are shown on the map; the contract has a progress ring. The day now plays as a 10-second replay of the existing deterministic result (skippable; instant under reduced motion). Rules, scores and saved weeks are unchanged.
+- Zone hit areas stay real buttons ("Assign selected cabs to ..."); the cards, steppers and fleet grid are untouched. The canvas reserves its space (layout shift 0.0035 on desktop, 0 on phone) and costs about 3.6 ms per frame in a software-rendered browser.
+
 ## 27 Oct 2026 — Hot Staging phone layout, results screen and cleanup (PR 3 of 3)
 
 - Phone: compact header and mode bar, Play enters focus view automatically (exit is remembered for the session), bigger thumb pad with safe-area padding and a Throttle button in campaign and daily, and a landscape layout where the stage fills the screen and the pad floats over the lower corners.

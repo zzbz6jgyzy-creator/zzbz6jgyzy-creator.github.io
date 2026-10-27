@@ -738,3 +738,45 @@
   color: inherit;
   text-decoration: underline;
 }
+
+
+/* Live city canvas. The container reserves its space so nothing shifts when the canvas mounts. */
+.taxi-page .ac-city {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: none;
+  margin: 15px 0;
+  background: #0d1824;
+}
+
+.taxi-city-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.taxi-page .ac-city .taxi-city-hit {
+  position: absolute;
+  width: 5.2rem;
+  height: 5.2rem;
+  min-height: 0;
+  margin: -2.6rem 0 0 -2.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  color: transparent;
+  cursor: pointer;
+}
+
+.taxi-city-hit:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -4px;
+}
+
+@media (max-width: 760px) {
+  .taxi-page .ac-city {
+    aspect-ratio: 4 / 3.4;
+  }
+}

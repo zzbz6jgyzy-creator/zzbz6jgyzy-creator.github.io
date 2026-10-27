@@ -301,11 +301,12 @@
       ]
     },
     "robotaxi": {
-      "file": "/assets/js/robotaxi.bundle.a7f607cf90.js",
-      "bytes": 35933,
+      "file": "/assets/js/robotaxi.bundle.31196b1965.js",
+      "bytes": 57696,
       "sources": [
         "arcade-model.js",
         "arcade.js",
+        "robotaxi-fx.js",
         "robotaxi.js"
       ]
     },
