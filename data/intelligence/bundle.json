@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-27T02:35:55.516Z",
+  "generatedAt": "2026-10-27T02:42:07.256Z",
   "facts": [
     {
       "id": "starship:event:starship-flight-15",
@@ -243,6 +243,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/verizon-vs-musk-starlink-mobile.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3",
+      "at": "2026-10-27T02:36:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/verizon-vs-musk-starlink-mobile.html",
+      "href": "/dispatch/verizon-vs-musk-starlink-mobile.html",
+      "summary": "Verizon’s CEO put a $300B–$500B, four-to-six-year price on a SpaceX phone network on 26 Oct. Musk replied “2 or 3 years.” What each side said, and the math.",
+      "title": "Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3",
+      "id": "logged|dispatch:/dispatch/verizon-vs-musk-starlink-mobile.html|2026-10-27T02:36:00.000Z|Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3"
+    },
     {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.11",
@@ -616,23 +633,6 @@
       "summary": "Bloomberg says SpaceX is in talks for at least 80,000 US cell sites, including with Crown Castle. What’s signed, what’s only talks, and the numbers behind it.",
       "title": "SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers",
       "id": "logged|dispatch:/dispatch/starlink-mobile-80000-towers.html|2026-10-23T13:36:27.000Z|SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starship-moon-refuel-22-vs-8.html",
-      "topic": "starship",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers",
-      "at": "2026-10-23T07:56:21.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starship-moon-refuel-22-vs-8.html",
-      "href": "/dispatch/starship-moon-refuel-22-vs-8.html",
-      "summary": "A NASA safety adviser says the latest refueling estimate is “around 22” launches; Musk says 6 to 8. What each number means per tanker, and how long each takes to fly.",
-      "title": "NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers",
-      "id": "logged|dispatch:/dispatch/starship-moon-refuel-22-vs-8.html|2026-10-23T07:56:21.000Z|NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers"
     },
     {
       "type": "logged",
@@ -1646,14 +1646,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-25T20:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1667,14 +1667,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-26T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-26T18:05:52.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1688,35 +1688,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-22T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-27T02:35:55.516Z",
+      "lastChecked": "2026-10-27T02:42:07.256Z",
       "lastVerified": "2026-10-27T01:58:47.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1725,85 +1725,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.499Z",
-      "finished": "2026-10-27T02:35:55.503Z"
+      "started": "2026-10-27T02:42:07.237Z",
+      "finished": "2026-10-27T02:42:07.242Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.503Z",
-      "finished": "2026-10-27T02:35:55.503Z"
+      "started": "2026-10-27T02:42:07.242Z",
+      "finished": "2026-10-27T02:42:07.242Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.503Z",
-      "finished": "2026-10-27T02:35:55.504Z"
+      "started": "2026-10-27T02:42:07.242Z",
+      "finished": "2026-10-27T02:42:07.242Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.504Z",
-      "finished": "2026-10-27T02:35:55.509Z"
+      "started": "2026-10-27T02:42:07.242Z",
+      "finished": "2026-10-27T02:42:07.250Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.509Z",
-      "finished": "2026-10-27T02:35:55.512Z"
+      "started": "2026-10-27T02:42:07.250Z",
+      "finished": "2026-10-27T02:42:07.253Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.512Z",
-      "finished": "2026-10-27T02:35:55.513Z"
+      "started": "2026-10-27T02:42:07.253Z",
+      "finished": "2026-10-27T02:42:07.254Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.513Z",
-      "finished": "2026-10-27T02:35:55.514Z"
+      "started": "2026-10-27T02:42:07.254Z",
+      "finished": "2026-10-27T02:42:07.255Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.514Z",
-      "finished": "2026-10-27T02:35:55.514Z"
+      "started": "2026-10-27T02:42:07.255Z",
+      "finished": "2026-10-27T02:42:07.255Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.514Z",
-      "finished": "2026-10-27T02:35:55.514Z"
+      "started": "2026-10-27T02:42:07.255Z",
+      "finished": "2026-10-27T02:42:07.255Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.514Z",
-      "finished": "2026-10-27T02:35:55.515Z"
+      "started": "2026-10-27T02:42:07.255Z",
+      "finished": "2026-10-27T02:42:07.256Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.515Z",
-      "finished": "2026-10-27T02:35:55.516Z"
+      "started": "2026-10-27T02:42:07.256Z",
+      "finished": "2026-10-27T02:42:07.256Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.516Z",
-      "finished": "2026-10-27T02:35:55.516Z"
+      "started": "2026-10-27T02:42:07.256Z",
+      "finished": "2026-10-27T02:42:07.256Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-27T02:35:55.516Z",
-      "finished": "2026-10-27T02:35:55.516Z"
+      "started": "2026-10-27T02:42:07.256Z",
+      "finished": "2026-10-27T02:42:07.256Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-27T02:35:55.516Z",
+    "generatedAt": "2026-10-27T02:42:07.256Z",
     "factCount": 17,
     "changeCount": 80,
     "conflictCount": 2,
