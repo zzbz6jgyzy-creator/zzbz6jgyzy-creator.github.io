@@ -28,6 +28,17 @@ async def main():
     await page.evaluate('const a=document.querySelector(".rs-article");scrollTo(0,scrollY+a.getBoundingClientRect().top+a.offsetHeight*.3)');await page.wait_for_function('new DOMMatrixReadOnly(getComputedStyle(document.querySelector(".rs-progress span")).transform).a>0')
     if await page.locator('.sd-contents').count():
      await page.locator('.sd-contents summary').click();link=page.locator('.sd-contents a').first;target=await link.get_attribute('href');await link.click();assert (await page.locator(target).bounding_box())['y']>=(await page.locator('.rs-tools').bounding_box())['y']+(await page.locator('.rs-tools').bounding_box())['height']-1,'contents target hidden by reader controls'
+    if width in [390,1440]:await page.screenshot(path=str(OUT/f'{path[:-5]}-{width}-{theme}-reading.png'))
     print('PASS',path,width,theme,flush=True);await c.close()
+  for mode in ['no-js','blocked-storage']:
+   c=await browser.new_context(viewport={'width':390,'height':900},java_script_enabled=mode!='no-js',service_workers='block')
+   if mode=='blocked-storage':await c.add_init_script("Storage.prototype.getItem=function(){throw Error('blocked')};Storage.prototype.setItem=function(){throw Error('blocked')}")
+   await c.route('**/*',route);page=await c.new_page();await page.goto('https://superchargeddaily.com/dispatch/booster-22-static-fire.html',wait_until='networkidle')
+   assert await page.locator('.rs-time').is_visible();assert await page.locator('.rs-article>p').count()>4
+   if mode=='no-js':assert not await page.locator('.rs-controls').is_visible()
+   else:
+    await page.locator('[data-rs-size="1"]').click();assert 'this visit' in await page.locator('.rs-status').inner_text()
+    await page.evaluate('window.print=()=>window.__printed=true');await page.locator('[data-rs-print]').click();assert await page.evaluate('window.__printed')
+   print('PASS',mode,flush=True);await c.close()
   await browser.close()
 asyncio.run(main())
