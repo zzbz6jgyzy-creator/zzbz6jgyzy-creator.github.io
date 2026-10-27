@@ -19,6 +19,11 @@ class Home(unittest.TestCase):
   for a in inputs:self.assertIn('required',a);self.assertEqual(a['autocomplete'],'email');self.assertEqual(a['inputmode'],'email');self.assertIn(a['id']+'-status',a['aria-describedby'])
   self.assertIn('Free, every Sunday. Unsubscribe anytime.',self.source);self.assertIn('Read a real issue',self.source)
   self.assertNotRegex(self.source,r'Join [\d,]+ (?:readers|subscribers)')
+ def test_first_visit_routes_are_native_links(self):
+  section=re.search(r'<(section|nav)\b[^>]*class="[^"]*\bhs-wayfinder\b[^"]*"[^>]*>(.*?)</\1>',self.source,re.S)
+  self.assertIsNotNone(section,'First-time readers need a labelled route into the site')
+  doc=Document(section.group(2));links=[a.get('href')for t,a in doc.tags if t=='a']
+  self.assertCountEqual(links,['#latest-stories','#hv-trk-h','/daily.html'])
  def test_images_are_described_and_layout_dimensions_reserved(self):
   main=self.source.split('<main id="main"',1)[1].split('</main>',1)[0];doc=Document(main)
   for t,a in doc.tags:
