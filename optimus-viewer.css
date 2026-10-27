@@ -10,8 +10,3 @@
 @media(max-width:900px),(pointer:coarse){.m3x-panel{height:auto;top:90px;bottom:135px;left:10px;right:10px;border-radius:14px}.m3x-card{bottom:135px;max-height:42svh}.m3x-list{grid-template-columns:1fr 1fr}.m3x-bar .m3x-range{flex-basis:100%;justify-content:center;order:5}.m3x-slider{width:160px}.m3x-bar{width:calc(100vw - 30px);padding:6px}.m3x-has-card .m3x-bar{opacity:1;pointer-events:auto}}
 .m3x-bar button,.m3x-list button,.m3x-close,.m3x-x,.m3x-zoom button{font-family:Inter,system-ui,sans-serif}.m3x-x{width:44px!important;height:44px!important}
 
-/* WCAG 2.5.8: give the explode slider a 24px touch target without changing the 4px track. */
-.m3x-slider{height:24px;background:none;position:relative}
-.m3x-slider::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(90deg,#e11d2e var(--p,0%),#333 var(--p,0%))}
-.m3x-slider::-moz-range-track{height:4px;border-radius:4px;background:linear-gradient(90deg,#e11d2e var(--p,0%),#333 var(--p,0%))}
-.m3x-slider::-webkit-slider-thumb{margin-top:-7px}

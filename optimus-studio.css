@@ -347,3 +347,13 @@ html[data-theme=light] .os{color-scheme:dark}
  .os-body-wrap{max-width:420px}
 }
 @media(max-width:900px){.os-3d-stage>img{height:360px;object-position:50% 40%}.os-3d-copy{grid-area:2/1;padding:6px 24px 24px;background:none;max-width:none}}
+
+/* ---- What changed ---- */
+.os-changes{background:#0a0d12}
+.os-changelog{list-style:none;margin:0 0 20px;padding:0;border-top:1px solid var(--os-line)}
+.os-change{display:grid;grid-template-columns:120px 100px 1fr;gap:6px 24px;padding:20px 0;border-bottom:1px solid var(--os-line);align-items:baseline}
+.os-change time{font-family:var(--os-mono);font-size:.68rem;color:#aab5c6}
+.os-change-kind{font-family:var(--os-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px 4px;border:1px solid #4b5668;border-radius:5px;justify-self:start;color:#c3cad6}
+.os-change-correction .os-change-kind{color:var(--os-amber);border-color:#655239}
+.os-change p{margin:0;font-size:.9rem;color:#d5dbe4;max-width:760px}
+@media(max-width:700px){.os-change{grid-template-columns:1fr;gap:8px}}

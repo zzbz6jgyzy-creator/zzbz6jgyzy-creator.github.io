@@ -313,7 +313,7 @@ function applyExplode() {
   const e = ease(ex);
   Object.values(parts).forEach((p) => { p.group.position.copy(p.off).multiplyScalar(e); if (p.sides) { p.sides[0].position.x = -p.split * e; p.sides[1].position.x = p.split * e; } });
   (parts.body ? parts.body.meshes : []).forEach((o) => { if (o.userData.eo) o.position.copy(o.userData.base).addScaledVector(o.userData.eo, e); });
-  const showInside = e > 0.05 || (selected && HIDDEN_UNTIL_EXPLODE.has(selected));
+  const showInside = e > 0.05 || Boolean(selected && HIDDEN_UNTIL_EXPLODE.has(selected)); // three.js only skips visible === false, and false || null is null
   HIDDEN_UNTIL_EXPLODE.forEach((id) => {
     const p = parts[id];
     if (!p) return;
