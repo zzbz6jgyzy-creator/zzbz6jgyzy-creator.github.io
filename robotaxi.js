@@ -348,7 +348,7 @@
       card.append(media);
 
       const body = el("div", "taxi-zone-body");
-      body.append(el("h3", "", zone.name));
+      body.append(el("h2", "", zone.name));
       body.append(
         el("p", "", `${heatLabel(demand)} · ${demand} rides · ${money(fareFor(zone, day, game.reputation))}`)
       );

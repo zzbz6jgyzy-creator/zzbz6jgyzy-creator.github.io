@@ -20,3 +20,5 @@ html[data-theme=light] .cts{--ct-bg:#f5f6f8;--ct-panel:#fff;--ct-line:#cdd2db;--
 .cts-hero-image img{height:520px;object-fit:cover;object-position:55% 64%;mask-image:radial-gradient(ellipse 76% 68% at 54% 55%,#000 43%,transparent 100%)}
 @media(max-width:900px){.cts-hero-image img{height:420px}}
 @media(max-width:600px){.cts-hero-image{margin-top:0}.cts-hero-image img{height:300px;object-position:58% 62%}}
+html[data-theme=light] .cts-stage figcaption,html[data-theme=light] .cts-stage figcaption a{color:#c7c9cf}
+html[data-theme=light] .cts-system-icon,html[data-theme=light] .cts-charge-notes span,html[data-theme=light] .cts-charge-context article>span{color:#b91431}
