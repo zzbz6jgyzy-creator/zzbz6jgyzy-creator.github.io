@@ -1,0 +1,37 @@
+name: Newsletter conversion checks
+on:
+  pull_request:
+    paths: ['newsletter*','grow.js','track.js','nav-pill.js','counts*','scripts/js-bundles.json','assets/js/core.bundle.*','assets/js/arcade-core.bundle.*','tests/newsletter*','scripts/test-newsletter-retry.mjs','.github/workflows/newsletter-checks.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  newsletter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify validation, attribution and retry behavior
+        run: |
+          node scripts/test-newsletter-retry.mjs
+          node --check newsletter.js
+          node --check newsletter-cta.js
+          node --check newsletter-studio.js
+          node --check grow.js
+          node --check track.js
+      - run: pip install playwright==1.62.0
+      - name: Check responsive layouts and mocked signup journeys
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: python tests/newsletter-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: newsletter-design-previews
+          path: /tmp/newsletter-previews

@@ -58,13 +58,13 @@ const tiles = await page.$$eval("[data-sd-ev]", (els) =>
 if (tiles.signup_submit === "4" && tiles.referral_click === "2" && tiles.latest_issue_click === "0") ok("fixture totals");
 else bad("fixture totals", JSON.stringify(tiles));
 const labels = await page.$eval('[data-sd-ev="signup_submit"]', (el) => el.textContent);
-if (/Newsletter signups/.test(labels)) ok("tile labels kept");
+if (/Newsletter handoffs/.test(labels)) ok("tile labels kept");
 else bad("tile labels kept", String(labels));
 const gridH = await page.$eval("[data-counts-grid]", (el) => el.getBoundingClientRect().height);
 if (gridH >= 180) ok("grid height");
 else bad("grid height", String(gridH));
 const days = await page.textContent("#sd-counts-days");
-if (/Newsletter signups/.test(days) && /Tesla referral/.test(days)) ok("by day");
+if (/Newsletter handoffs/.test(days) && /Tesla referral/.test(days)) ok("by day");
 else bad("by day", String(days));
 const pages = await page.textContent("#sd-counts-pages");
 if (pages.includes("/gear.html") && pages.includes("/")) ok("top pages");

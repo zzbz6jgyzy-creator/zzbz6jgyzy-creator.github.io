@@ -18,14 +18,15 @@ function signup({ legacyFlag = null, path = '/', topic = 'website', place = 'ban
   const root = { querySelector: (selector) => selector === '[data-newsletter-form]' ? form : selector === '[data-newsletter-status]' ? status : null };
   const storage = new Map(legacyFlag ? [['sd-nl-sub', legacyFlag]] : []);
   const location = { pathname: path, href: '' };
+  const events = [];
   vm.runInNewContext(source, {
-    window: {}, location,
+    window: { sdTrack: (name) => events.push(name) }, location,
     localStorage: { getItem: (key) => storage.get(key), setItem: (key, value) => storage.set(key, value) },
     document: { querySelectorAll: () => [root], querySelector: () => null },
     FormData: class { get() { return email; } },
     URL, encodeURIComponent
   });
-  return { form, status, storage, location, submit: () => callbacks.submit({ preventDefault() {} }) };
+  return { form, status, storage, location, events, submit: () => callbacks.submit({ preventDefault() {} }) };
 }
 
 for (const legacyFlag of [null, '1']) {
@@ -73,4 +74,22 @@ test('empty email remains a validation error', () => {
   assert.equal(page.location.href, '');
   assert.equal(page.status.textContent, 'Add an email address.');
   assert.equal(page.storage.size, 0);
+  assert.equal(page.events.length, 0);
+});
+
+test('invalid addresses and honeypots never count as newsletter handoffs', () => {
+  for (const options of [{ email: 'bad@email' }, { email: 'a b@example.com' }, { honey: 'spam' }]) {
+    const page = signup(options); page.submit();
+    assert.equal(page.location.href, ''); assert.equal(page.events.length, 0);
+  }
+});
+
+test('landing placements retain attribution and count a handoff, never a confirmation', () => {
+  for (const place of ['landing-hero', 'landing-footer']) {
+    const page = signup({ path: '/newsletter.html', place }); page.submit();
+    assert.equal(new URL(page.location.href).searchParams.get('utm_medium'), place.replace('landing-', 'site-newsletter-'));
+    assert.deepEqual(page.events, ['signup_submit']);
+    assert.match(page.status.textContent, /finish subscribing/);
+    assert.equal(page.storage.size, 0);
+  }
 });
