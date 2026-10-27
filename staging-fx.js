@@ -403,6 +403,25 @@
     ctx.restore();
   }
 
+  /* Structural load during Max-Q. o: { x, y, wd, load, ui, thr, band } */
+  function drawLoadBar(ctx, o) {
+    const { x, y, wd, load, ui, thr, band } = o;
+    const hh = 9 * ui;
+    ctx.save();
+    ctx.fillStyle = "rgba(6,12,22,0.55)";
+    ctx.fillRect(x - 6, y - 17 * ui, wd + 12, hh + 36 * ui);
+    ctx.fillStyle = "rgba(255,255,255,0.12)";
+    ctx.fillRect(x, y, wd, hh);
+    const k = clamp(load, 0, 1);
+    ctx.fillStyle = k < 0.6 ? "#7dffc4" : k < 0.85 ? "#ffd27a" : "#ff6a5a";
+    ctx.fillRect(x, y, wd * k, hh);
+    ctx.fillStyle = "rgba(255,255,255,0.55)";
+    ctx.fillRect(x + wd * 0.72, y - 3, 1.5, hh + 6);
+    text(ctx, "STRUCTURAL LOAD", x, y - 6 * ui, 8.5 * ui, "rgba(220,232,246,0.65)");
+    text(ctx, thr ? "THROTTLE DOWN" : band ? "MAX-Q" : "NOMINAL", x, y + hh + 14 * ui, 10 * ui, thr ? "#7dffc4" : band ? "#ffd27a" : "rgba(220,232,246,0.6)", "left", 600);
+    ctx.restore();
+  }
+
   /* ---------- explosions and debris ---------- */
   function drawFireball(ctx, x, y, t, scale, tint) {
     const life = clamp(t / 1.7, 0, 1);
@@ -469,5 +488,5 @@
     ctx.restore();
   }
 
-  window.SDStagingFX = { prng, drawPlanet, drawAurora, drawAttitude, drawAltTape, drawWindowMeter, drawFireball, drawStarburst, drawShard, textures };
+  window.SDStagingFX = { prng, drawPlanet, drawAurora, drawAttitude, drawAltTape, drawWindowMeter, drawLoadBar, drawFireball, drawStarburst, drawShard, textures };
 })();

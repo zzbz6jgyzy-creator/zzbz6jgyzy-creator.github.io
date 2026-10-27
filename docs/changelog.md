@@ -1,5 +1,13 @@
 # Changelog
 
+## 27 Oct 2026 — Hot Staging interaction and feel (PR 2 of 3)
+
+- Campaign and daily flights now have telegraphed **gusts** (arrows and tint about 1.25 s ahead, callout says which way to steer), a mid-flight **Raptor-out** (engine goes dark, pulls the stack to one side), and **Max-Q load management**: hold Throttle (S / Down, or the new pad button) through the Max-Q band to keep the structural load bar down. Throttling costs steering authority (65%) and slows the clock to the window (0.6x). Unattended load past 1.0 is a new "Max-Q breakup" failure. Training is unchanged: no gusts, no Max-Q, same timings.
+- Scoring: streak bonus for consecutive clean stages, +150 Max-Q managed, +120 Raptor-out saved; shown in the debrief.
+- Feel (from Catch): sound on after Play with a remembered mute, compressor, proximity ping that rises as the needle nears the sweet spot, warning beeps, haptics on window/stage/fail/engine-out, slow motion (0.62x) while the window is open and a 110 ms hit-stop on stage and fail (both off for reduced motion and demo), `R` to retry, tips on every failure, first-run coaching callouts, mission briefing callout.
+- Anonymous counters for Hot Staging starts, retries, completions and each failure kind (`game_fail_walk|early|late|rud|maxq`); Worker allowlist extended (deploy needed).
+- Tests: Play now unmutes Staging like Catch; new checks for gust schedule determinism, remembered mute, training staying simple, and an unattended campaign flight failing.
+
 ## 27 Oct 2026 — Games: Catch upgrade and Hot Staging visual overhaul
 
 - Catch: anonymous play counters (`game_start`, `game_retry`, `game_complete`, `game_fail_*`, `game_return_d1`; page path only, no IDs), phone-first layout (compact header, focus view on Play, landscape pad), sound on after Play with a remembered mute, callouts, plume glow, final-approach slow motion, haptics, `R` to retry.

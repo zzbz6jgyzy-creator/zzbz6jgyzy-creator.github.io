@@ -2,6 +2,11 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · Hot Staging gets Max-Q, gusts and Raptor-outs in campaign and daily only
+- **Decision:** the new mechanics (seeded gust schedule, one mid-flight engine failure from flight 2 / in daily, Max-Q load with a throttle-down control) apply to campaign and daily. Training keeps its exact timings, no wind and no Max-Q. Gusts and the engine event are generated at reset from the seeded rng, after the existing draws, so daily seeds stay fair and the old determinism test still holds.
+- **Why:** the browser tests pin training timings, and the first minute should stay simple. The throttle trade-off (65% steering, 0.6x clock) gives a real decision instead of a button to hold.
+- **Tuning:** a crude tap-bot with 150 ms reaction clears 2 to 5 campaign flights and full daily sets, so the ramp is playable. All values (`GUST_AV`, load rates 0.46 and 0.05 per second, Max-Q band 0.34 to 0.62) are single constants in `staging.js`; tune from player feedback.
+
 ## 2026-10-27 · Hot Staging stays on Canvas 2D (no PixiJS/WebGL)
 - **Decision:** the overhaul keeps Canvas 2D and adds `staging-fx.js` (pure drawing helpers). The planet surface is rendered at half resolution into a cache canvas and blitted; heavy static parts are cached rather than redrawn.
 - **Why:** a WebGL engine would add a large dependency to a page that must keep Core Web Vitals green, and WebGL is riskier in the headless CI browser. Measured cost of the new scene is about +4 ms per frame in software rasterisation (much less on a GPU).
