@@ -1,7 +1,7 @@
 {
  "version": 1,
  "checked": "2026-10-27T09:46:07Z",
- "editorialUpdated": "2026-10-25T20:50:00+00:00",
+ "editorialUpdated": "2026-10-27T10:45:00+00:00",
  "presets": [
   {
    "name": "Brownsville",
@@ -406,13 +406,8 @@
    "status": "In Flight",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/e2886a96-5ce9-4f45-872f-4e25a00be837/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/e2886a96-5ce9-4f45-872f-4e25a00be837/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "e2886a96-5ce9-4f45-872f-4e25a00be837",
    "windowStart": "2026-10-27T04:45:00Z",
@@ -441,13 +436,8 @@
    "status": "Go",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/57ce0a39-d035-4f16-a418-bd6108f78199/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/57ce0a39-d035-4f16-a418-bd6108f78199/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "57ce0a39-d035-4f16-a418-bd6108f78199",
    "windowStart": "2026-10-30T04:02:00Z",
@@ -476,13 +466,8 @@
    "status": "Go",
    "note": "Government/Top Secret · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/54d471e8-695c-4fa7-a3cf-dbd8b389e8ae/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/54d471e8-695c-4fa7-a3cf-dbd8b389e8ae/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "54d471e8-695c-4fa7-a3cf-dbd8b389e8ae",
    "windowStart": "2026-11-02T01:56:00Z",
@@ -511,13 +496,8 @@
    "status": "Go",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "https://ll.thespacedevs.com/2.3.0/launches/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
-   "sources": [
-    {
-     "href": "https://ll.thespacedevs.com/2.3.0/launches/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
-     "label": "ll.thespacedevs.com"
-    }
-   ],
+   "href": "",
+   "sources": [],
    "origin": "Launch Library 2",
    "providerId": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
    "windowStart": "2026-11-05T05:14:00Z",
@@ -544,7 +524,7 @@
    "date": "2026-11-08",
    "precision": "day",
    "status": "net",
-   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX; SpaceX hasn’t announced a Ship 42 static fire.",
+   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT); SpaceX hadn’t confirmed it as of 27 Oct 2026, 6:45am ET.",
    "where": "Starbase · Pad 2",
    "href": "",
    "sources": [

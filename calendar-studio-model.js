@@ -7,6 +7,9 @@
   const GROUPS = { tesla: "Tesla", spacex: "SpaceX", xai: "xAI" }, DAY = 864e5;
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   const url = (s) => /^https?:\/\//i.test(s || "") || /^\/(?!\/)/.test(s || "") ? s : "";
+  // Launch Library 2 only powers countdowns in the background; never link readers to its feed or API.
+  const feed = (s) => /(^|\.)thespacedevs\.com(\/|$)/i.test(String(s || "").replace(/^https?:\/\//i, "").split(/[/?#]/)[0] + "/");
+  const link = (s) => feed(s) ? "" : url(s);
   const slug = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   const valid = (s) => typeof s === "string" && Number.isFinite(Date.parse(s));
   function identity(e) {
@@ -26,14 +29,14 @@
   }
   function sources(e) {
     const list = [...Array.isArray(e.sources) ? e.sources : [], e.source, e.href].filter((x) => typeof x === "string");
-    return [...new Set(list.flatMap((s) => s.match(/https?:\/\/[^\s)"<>]+/g) || []))].filter(url).map((href) => ({ href, label: new URL(href).hostname.replace(/^www\./, "") }));
+    return [...new Set(list.flatMap((s) => s.match(/https?:\/\/[^\s)"<>]+/g) || []))].filter(link).map((href) => ({ href, label: new URL(href).hostname.replace(/^www\./, "") }));
   }
   function item(e) {
     const precision = e.precision || (e.start ? "datetime" : "unknown");
     let start = e.precision === "day" && e.date ? e.date + "T12:00:00Z" : e.date && e.time ? e.date + "T" + e.time + (e.time.length === 5 ? ":00" : "") + (e.tz || "Z") : e.start || (e.date ? e.date + "T12:00:00Z" : "");
     if (start && !valid(start)) start = "";
     const date = e.date || start.slice(0, 10);
-    return { id: identity(e), title: String(e.title || ""), group: group(e), category: category(e), start, end: valid(e.end) ? e.end : "", date, precision, status: String(e.status || "expected"), note: String(e.summary || e.note || ""), where: String(e.where || ""), href: url(e.href), sources: sources(e), origin: e.origin || "Editorial calendar", ...e.coverage ? { coverage: e.coverage } : {} };
+    return { id: identity(e), title: String(e.title || ""), group: group(e), category: category(e), start, end: valid(e.end) ? e.end : "", date, precision, status: String(e.status || "expected"), note: String(e.summary || e.note || ""), where: String(e.where || ""), href: link(e.href), sources: sources(e), origin: e.origin || "Editorial calendar", ...e.coverage ? { coverage: e.coverage } : {} };
   }
   function normalize(seed, manual, launches, live) {
     const rows = (seed.curated || []).map((e) => item(e));
@@ -51,7 +54,7 @@
     }
     for (const l of launches.results || []) {
       const p = String(l.net_precision?.abbrev || "").toUpperCase(), precision = { SEC: "datetime", MIN: "datetime", HR: "hour", H: "hour", DAY: "day", D: "day", M: "month", MTH: "month", MON: "month", Q1: "quarter", Q2: "quarter", Q3: "quarter", Q4: "quarter", QTR: "quarter", H1: "half", H2: "half", Y: "year", YR: "year" }[p] || "unknown";
-      const e = item({ id: "ll2-" + l.id, title: l.name, start: l.net, precision, status: l.status?.abbrev || "TBD", group: "spacex", where: [l.pad?.name, l.pad?.location?.name].filter(Boolean).join(" · "), href: l.url, source: l.url, note: l.mission?.type ? [l.mission.type, l.mission.orbit?.name].filter(Boolean).join(" · ") : "Launch Library 2 schedule. Launch targets can change.", origin: "Launch Library 2" });
+      const e = item({ id: "ll2-" + l.id, title: l.name, start: l.net, precision, status: l.status?.abbrev || "TBD", group: "spacex", where: [l.pad?.name, l.pad?.location?.name].filter(Boolean).join(" · "), note: l.mission?.type ? [l.mission.type, l.mission.orbit?.name].filter(Boolean).join(" · ") : "Launch Library 2 schedule. Launch targets can change.", origin: "Launch Library 2" });
       if (!e.start) continue;
       e.providerId = l.id;
       e.windowStart = valid(l.window_start) ? l.window_start : "";
@@ -69,7 +72,7 @@
     for (const e of rows) {
       const coverage = (live.events || []).find((l) => identity(l) === e.id || Merge.sameLaunch(l, e));
       if (coverage) {
-        e.coverage = { url: url(coverage.fallbackUrl), article: url(coverage.articleUrl), status: coverage.status };
+        e.coverage = { url: link(coverage.fallbackUrl), article: link(coverage.articleUrl), status: coverage.status };
       }
     }
     // A roadmap entry must never rewind a later dated editorial/provider record.
