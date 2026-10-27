@@ -36,9 +36,9 @@ class Wayfinding(unittest.TestCase):
   self.assertEqual(build.article(src),src)
   self.assertEqual(build.article('<html><head></head><main><h2>A</h2></main></html>'),'<html><head></head><main><h2>A</h2></main></html>')
  def test_homepage_links_existing_destinations_without_rewriting_stories(self):
-  src='<html><head></head><main><header><p class="hv-pitch">Original reporting.</p></header><h2 id="hv-trk-h">Trackers</h2><p>Lead story unchanged.</p></main></html>'
+  src='<html><head></head><main><header><p class="hv-pitch">Original reporting.</p></header><h2 id="hv-trk-h">Trackers</h2><section id="latest-stories"><p>Lead story unchanged.</p></section></main></html>'
   new=build.homepage(src)
-  for path in ['/dispatch.html','#hv-trk-h','/guides/tesla-buying-guide.html']:self.assertIn('href="'+path+'"',new)
+  for path in ['#latest-stories','#hv-trk-h']:self.assertIn('href="'+path+'"',new)
   self.assertIn('<p>Lead story unchanged.</p>',new)
   self.assertEqual(build.homepage(new),new)
  def test_future_articles_and_stale_contents_are_regenerated(self):
