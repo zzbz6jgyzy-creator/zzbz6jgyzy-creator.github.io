@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-27 · Optimus 3D: a fan model, cut at the joints
+
+- **Choice:** use Michael's CC BY 4.0 Sketchfab model (the most detailed downloadable Optimus) and cut its single fused mesh into 17 parts ourselves, rather than wait for an official model (none exists) or hand-build a low-detail one.
+- **Why:** the Cybertruck and Model 3 explorers set the pattern: a licensed exterior plus illustrative internals in code. A fused mesh cannot explode, so the cuts sit where the real robot has joints.
+- **Honesty:** the author titles it Gen 3, but it resembles Gen 2, so the page calls it fan-made, not Tesla CAD. Internals follow Tesla's 2022 description; Gen 3's are unpublished.
+- **Cost:** 2.1 MB, loaded only on request. The 100 MB source zip stays on the `optimus-model-source` GitHub release and is not served.
+
 ## 2026-10-27 · Optimus guide: label every number, never fill gaps
 
 - **Choice:** every figure on `/optimus.html` carries one of three labels (Disclosed by Tesla, Target, Reported) plus a source opened on the review date. The generations table shows "Not published" instead of combining figures from different years into a made-up current spec.
