@@ -2,8 +2,8 @@
 
 ## 28 Oct 2026 — FSD tracker, part 2 (miles and software)
 
-- **Cumulative miles:** an area chart of FSD miles (V11 and before, V12 and beyond), measured from the chart in Tesla's Q3 deck. The deck gives no exact total, so every value is marked approximate (about 15 billion at the end of Q3, likely within half a billion). A fifth headline card shows it. Europe callout: over 100,000 customers and more than 160 million km.
-- **Software:** share of the Teslascope sample on the six most common builds over time (from our 138 stored snapshots), a day-by-day change table (net change in sampled cars, explicitly not installs), and a timeline of the eight latest FSD releases from our own release records.
+- **Cumulative miles:** an area chart of FSD miles (V11 and before, V12 and beyond), measured from the chart in Tesla's Q3 deck. The deck gives no exact total, so every value is marked approximate (about 15 billion at the end of Q3, likely within half a billion; checked against the same chart in the Q1 deck). A fifth headline card shows it. Europe callout: over 100,000 customers and more than 160 million km.
+- **Software:** running totals of cars Teslascope has seen on each of the six builds with the most cars (one line per build, not stacked, because a car can appear under more than one build), a table of new cars seen per day, and a timeline of the eight latest FSD builds with first-seen dates. The data is a dated slice pinned in `data/fsd-tracker.json` by `scripts/refresh-fsd-software.mjs`, so the page does not change every hour.
 - **Phones:** every chart has a larger-text phone version, so labels stay readable at 390 px.
 
 ## 27 Oct 2026 — FSD tracker, part 1 (foundation)

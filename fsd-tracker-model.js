@@ -23,7 +23,11 @@ function validate(d){
  const m=d.miles;ref(m.source);ref(m.europe.source);
  if(!(m.tolerance>0)||m.points.length<5)fail('miles');
  m.points.forEach((p,i)=>{if(!day(p.end)||!p.label||!(p.total>=0)||!(p.v11>=0)||p.v11>p.total)fail('miles point '+p.label);if(i&&(p.end<=m.points[i-1].end||p.total<m.points[i-1].total||p.v11<m.points[i-1].v11))fail('miles not cumulative at '+p.label);});
- ref(d.software.source);if(!(d.software.top>=2&&d.software.top<=8&&d.software.days>=3&&d.software.timeline>=3))fail('software settings');
+ const sw=d.software;ref(sw.source);
+ if(!(sw.top>=2&&sw.top<=8&&sw.timeline>=3&&sw.heatDays>=3&&sw.days.length>=5&&sw.builds.length===sw.top&&sw.releases.length===sw.timeline&&sw.latestCount>0&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(sw.asOf)))fail('software settings');
+ sw.days.forEach((x,i)=>{if(!day(x)||(i&&x<=sw.days[i-1]))fail('software days');});
+ for(const b of sw.builds)if(!b.id||b.counts.length!==sw.days.length||b.counts.some(v=>!Number.isInteger(v)||v<0))fail('software build '+b.id);
+ for(const r of sw.releases)if(!r.id||!day(r.date)||!r.status)fail('release '+r.id);
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }

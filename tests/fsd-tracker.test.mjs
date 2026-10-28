@@ -96,15 +96,30 @@ test('miles chart is cumulative, marked approximate, and never presented as an e
   const bad2=structuredClone(d);bad2.miles.points[3].v11=99;assert.throws(()=>M.validate(bad2));
 });
 
-test('software section: build share, day-by-day table and release timeline come from the stored snapshots',()=>{
-  const page=fs.readFileSync('fsd-tracker.html','utf8');
-  const hist=JSON.parse(fs.readFileSync('data/updates-history.json','utf8')).snapshots;
-  assert.ok(page.includes(`${hist.at(-1).fleet.toLocaleString('en-GB')} cars in the latest snapshot`));
-  assert.equal((page.match(/<li><span class="ft-k-b">/g)||[]).length,0);
-  assert.equal((page.match(/<li><i style="background:/g)||[]).length,d.software.top);
-  assert.equal((page.match(/<ol class="ft-rel">/g)||[]).length,1);
-  assert.equal((page.match(/<li><p class="ft-date">/g)||[]).length,d.software.timeline);
-  assert.ok(page.includes('they are not install counts'));
-  assert.ok(page.includes('a sample of the fleet, not the fleet'));
+test('software section is pinned data, described as running totals of cars seen, and not a share of the fleet',()=>{
+  const page=fs.readFileSync('fsd-tracker.html','utf8'),sw=d.software;
+  assert.equal(sw.builds.length,sw.top);assert.equal(sw.releases.length,sw.timeline);
+  assert.ok(sw.builds.every(b=>b.counts.length===sw.days.length));
+  assert.equal((page.match(/<li><i style="background:/g)||[]).length,sw.top);
+  assert.equal((page.match(/<li><p class="ft-date">/g)||[]).length,sw.timeline);
+  assert.ok(page.includes('A car can appear under more than one build, so the lines are not stacked'));
+  assert.ok(page.includes('running total of cars seen on that build, not a share of cars on it today'));
+  assert.ok(page.includes('it is not Tesla\'s rollout count'));
+  assert.ok(!/cover \d+% of/.test(page)&&!page.includes('share of the sampled cars'),'no share-of-fleet claims');
+  assert.ok(page.includes(`to ${sw.asOf.slice(11,16)} UTC`),'last column labelled as a part day');
+  assert.ok(page.includes('First seen'));
   const ids=[...page.matchAll(/ id="([^"]+)"/g)].map(x=>x[1]);assert.equal(new Set(ids).size,ids.length,'ids are unique (desktop and phone charts)');
+});
+
+test('the page does not depend on the bot-updated software history',()=>{
+  const src=fs.readFileSync('scripts/build-fsd-tracker.mjs','utf8');
+  assert.ok(!src.includes('updates-history')&&!src.includes('updates-data'),'build reads only reviewed files');
+  assert.ok(fs.existsSync('scripts/refresh-fsd-software.mjs'));
+});
+
+test('the refresh script pins software data deterministically',()=>{
+  const before=fs.readFileSync('data/fsd-tracker.json','utf8');
+  try{execFileSync(process.execPath,['scripts/refresh-fsd-software.mjs']);
+    const a=JSON.parse(fs.readFileSync('data/fsd-tracker.json','utf8'));assert.equal(M.validate(a),a);assert.equal(a.software.builds.length,a.software.top);
+  }finally{fs.writeFileSync('data/fsd-tracker.json',before);}
 });

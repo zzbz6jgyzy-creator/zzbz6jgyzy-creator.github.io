@@ -3,8 +3,7 @@
 // the owner can compare the two and keep either.
 import fs from 'node:fs';
 import {createRequire} from 'node:module';
-import vm from 'node:vm';
-import {adoptionBars,adoptionList,attachSteps,milesArea,buildShare,dailyChange,dailyTable} from './fsd-tracker-charts.mjs';
+import {adoptionBars,adoptionList,attachSteps,milesArea,buildLines,dailyTable} from './fsd-tracker-charts.mjs';
 const require=createRequire(import.meta.url),M=require('../fsd-tracker-model.js'),e=M.esc;
 const d=M.validate(JSON.parse(fs.readFileSync('data/fsd-tracker.json','utf8')));
 const global=JSON.parse(fs.readFileSync('data/fsd-global.json','utf8'));
@@ -32,24 +31,19 @@ const adoption=`<div class="ft-split"><figure class="ft-card ft-fig"><div class=
 <details class="ft-table-view"><summary>View the numbers as a table</summary><div class="ft-table-wrap" tabindex="0" role="region" aria-label="Adoption table"><table class="ft-table"><thead><tr><th scope="col">Quarter end</th><th scope="col">Active subscriptions (M)</th><th scope="col">Cars delivered, all time (M)</th><th scope="col">Subscriptions per car (our ratio)</th><th scope="col">Source</th></tr></thead><tbody>${pts.map(p=>`<tr><th scope="row">${e(p.label)} <small>${fmt(p.end)}</small></th><td>${nf(p.subs)}</td><td>${nf(p.deliveries,1)}</td><td>${nf(M.ratio(p),1)}% ${chip('estimate')}</td><td>${cite(p.source)}</td></tr>`).join('')}</tbody></table></div></details>
 <p class="ft-note">${e(d.adoption.caveat)}</p>`;
 
-// Software: snapshots of which builds a sample of connected cars runs, and our curated release records.
-const hist=JSON.parse(fs.readFileSync('data/updates-history.json','utf8')).snapshots;
-const ctx={window:{}};vm.createContext(ctx);vm.runInContext(fs.readFileSync('updates-data.js','utf8'),ctx);
-const releases=ctx.window.TESLA_UPDATES.versions;
-const short=f=>{const p=f.split(' · ');if(p.length>1&&!/\(/.test(p.at(-1)))p.pop();return p.join(' · ');};
-const labels=Object.fromEntries(releases.filter(r=>r.fsd).map(r=>[r.id,short(r.fsd)]));
-const sw=d.software,share=buildShare(hist,labels,sw.top),shareC=buildShare(hist,labels,sw.top,true),heat=dailyChange(hist,share.builds,sw.days);
+// Software: a dated slice pinned in data/fsd-tracker.json by scripts/refresh-fsd-software.mjs, so this page does not change with every snapshot.
+const sw=d.software,lines=buildLines(sw),linesC=buildLines(sw,true),total=sw.latestCount;
 const stText={early:'Early wave',rolling:'Rolling out',wide:'Wide',limited:'Limited'};
-const fsdRel=releases.filter(r=>r.kind==='fsd').sort((a,b)=>b.date.localeCompare(a.date)).slice(0,sw.timeline);
+const fsdRel=sw.releases;
 const miles=d.miles,mlast=miles.points.at(-1),eu=miles.europe;
 const milesHtml=`<div class="ft-split"><figure class="ft-card ft-fig"><div class="ft-desk">${milesArea(miles.points)}</div><div class="ft-phone">${milesArea(miles.points,true)}</div><figcaption>Billions of miles, measured from Tesla's chart. ${chip('approx')} ${cite(miles.source)}</figcaption></figure>
 <aside class="ft-card"><h3>Europe so far</h3><p class="ft-muted">Tesla's Q3 deck, nine EU countries.</p><p class="ft-big">${e(eu.customers)}<small>customers</small></p><p class="ft-big">${e(eu.km)}<small>since initial approval</small></p><p class="ft-event-foot">${chip('disclosed')} ${cite(eu.source)}</p></aside></div>
-<p class="ft-takeaway">Tesla's chart ends at roughly <strong>${mlast.total} billion</strong> cumulative miles in ${e(mlast.label)}, about <strong>${(mlast.total-miles.points.find(p=>p.label==='Sep 2025').total).toFixed(1)} billion</strong> of them in the last year by our reading. Nearly all are on V12 and later, which is why the red band dominates.</p>
+<p class="ft-takeaway">Tesla's chart ends at roughly <strong>${Math.round(mlast.total)} billion</strong> cumulative miles in ${e(mlast.label)}, close to <strong>10 billion</strong> of them in the last year by our reading. Nearly all are on V12 and later, which is why the red band dominates.</p>
 <p class="ft-note">${e(miles.note)}</p>
 <details class="ft-table-view"><summary>View the measured values as a table</summary><div class="ft-table-wrap" tabindex="0" role="region" aria-label="Measured cumulative miles"><table class="ft-table"><thead><tr><th scope="col">Quarter end</th><th scope="col">Total (B miles, approx.)</th><th scope="col">V11 and before</th><th scope="col">V12 and beyond</th></tr></thead><tbody>${miles.points.map(p=>`<tr><th scope="row">${e(p.label)}</th><td>${nf(p.total,1)} ${chip('approx')}</td><td>${nf(p.v11,1)}</td><td>${nf(p.total-p.v11,1)}</td></tr>`).join('')}</tbody></table></div></details>`;
-const softwareHtml=`<div class="ft-card ft-fig"><h3>Share of the sample, by build</h3><p class="ft-muted">Share of the sampled cars on each of the ${sw.top} most common builds, ${fmt(hist[0].t.slice(0,10))} to ${fmt(hist.at(-1).t.slice(0,10))}. These ${sw.top} builds cover ${share.total.toFixed(0)}% of the ${hist.at(-1).fleet.toLocaleString('en-GB')} cars in the latest snapshot.</p><div class="ft-desk">${share.svg}</div><div class="ft-phone">${shareC.svg}</div>${share.key}<p class="ft-event-foot">${chip('reported')} ${cite(sw.source)}</p></div>
-<div class="ft-card ft-fig"><h3>Day by day</h3><p class="ft-muted">Net change in the number of sampled cars on each build. Green is more cars than the day before, red is fewer. Cars joining or leaving the sample also move these numbers, so they are not install counts.</p>${dailyTable(heat,labels)}<p class="ft-event-foot">${chip('reported')} ${cite(sw.source)}</p></div>
-<div class="ft-card ft-fig"><h3>Recent FSD releases</h3><p class="ft-muted">Our own records from Tesla's release notes and what the sample shows. Newest first. <a href="/updates.html">Full software tracker →</a></p><ol class="ft-rel">${fsdRel.map(r=>`<li><p class="ft-date"><time datetime="${r.date}">${fmt(r.date)}</time> <span class="ft-type">${e(stText[r.status]||r.status)}</span></p><h4>${e(r.id)}</h4><p>${e(r.fsd||'')}. ${e((r.countries||[]).length?'Seen in: '+r.countries.join(', ')+'.':'')}</p></li>`).join('')}</ol><p class="ft-event-foot">${chip('reported')} ${cite(sw.source)}</p></div>
+const softwareHtml=`<div class="ft-card ft-fig"><h3>Cars seen on each build</h3><p class="ft-muted">Running total of cars Teslascope has seen on each of the ${sw.top} builds with the most cars, ${fmt(sw.days[0])} to ${fmt(sw.days.at(-1))}. Teslascope's latest count is about ${(Math.round(total/100)*100).toLocaleString('en-GB')} cars. A car can appear under more than one build, so the lines are not stacked.</p><div class="ft-desk">${lines.svg}</div><div class="ft-phone">${linesC.svg}</div>${lines.key}<p class="ft-event-foot">${chip('reported')} ${cite(sw.source)}</p></div>
+<div class="ft-card ft-fig"><h3>New cars seen, day by day</h3><p class="ft-muted">Cars Teslascope saw on each build for the first time that day (UTC). The last column is a part day. This shows how fast a build is spreading in the sample; it is not Tesla's rollout count.</p>${dailyTable(sw)}<p class="ft-event-foot">${chip('reported')} ${cite(sw.source)}</p></div>
+<div class="ft-card ft-fig"><h3>Recent FSD builds</h3><p class="ft-muted">When each build was first seen, newest first, from our own software records. <a href="/updates.html">Full software tracker →</a></p><ol class="ft-rel">${fsdRel.map(r=>`<li><p class="ft-date"><time datetime="${r.date}">First seen ${fmt(r.date)}</time> <span class="ft-type">${e(stText[r.status]||r.status)}</span></p><h4>${e(r.id)}</h4><p>${e(r.fsd)}. ${e(r.countries.length?'Seen in: '+r.countries.join(', ')+'.':'')}</p></li>`).join('')}</ol><p class="ft-event-foot">${chip('reported')} ${cite(sw.source)}</p></div>
 <p class="ft-note">${e(sw.caveat)}</p>`;
 const legend=`<ul class="ft-legend">${[['disclosed','Tesla or a regulator said it in a document we opened.'],['reported','A journalist, analyst or tracker found it. Tesla has not confirmed it.'],['estimate','Our own arithmetic on disclosed numbers. Shown dashed or marked.'],['approx','Read off a chart Tesla published without exact labels.'],['target','A stated aim or date. Not a result.']].map(([k,t])=>`<li>${chip(k)} <span>${t}</span></li>`).join('')}</ul>`;
 const changes=`<ol class="ft-changes">${d.changes.map(c=>`<li><time datetime="${c.date}">${fmt(c.date)}</time> <span class="ft-kind ft-kind-${c.kind}">${c.kind==='correction'?'Correction':'Update'}</span> ${e(c.text)}</li>`).join('')}</ol>`;
@@ -58,7 +52,7 @@ const ledger=`<ul class="ft-ledger">${d.sources.map(s=>`<li><a href="${e(s.url)}
 const sec=[
  ['adoption','How big, and growing','Subscriptions per quarter and how many new cars come with FSD. Tesla publishes these in its shareholder decks.',adoption],
  ['miles','How much it has driven','Cumulative miles on FSD (Supervised), as drawn in Tesla\'s own deck.',milesHtml],
- ['software','What cars are running','Which builds a sample of connected cars reports, and how fast new ones spread.',softwareHtml],
+ ['software','Which builds are spreading','Cars a connected-car service has seen on each FSD build, and how fast new builds appear in its sample.',softwareHtml],
  ['labels','How to read the numbers','Every figure on this page carries one of these labels, a date and a source.',legend],
  ['changes','What changed','Corrections are shown here, never silently rewritten.',changes],
  ['sources','Sources','Everything cited above, with the date we opened it.',ledger]
@@ -99,7 +93,7 @@ const indexPath='data/pages.json',index=JSON.parse(fs.readFileSync(indexPath,'ut
 const recs=[{url:'/fsd-tracker.html',title:'FSD by the numbers',tag:'FSD',summary:'How big Tesla FSD is and how fast it is growing: subscriptions, attach rate, markets and software, each number sourced and dated.'},
  {url:'/fsd-tracker.html#adoption',title:'FSD adoption: subscriptions and attach rate',tag:'FSD',summary:'Active FSD subscriptions per quarter from Tesla’s decks and the North America attach rate on new deliveries.'},
  {url:'/fsd-tracker.html#miles',title:'FSD cumulative miles',tag:'FSD',summary:'Cumulative miles driven with FSD (Supervised), measured from Tesla’s deck chart and marked approximate, plus the European totals.'},
- {url:'/fsd-tracker.html#software',title:'FSD software: what cars are running',tag:'FSD',summary:'Share of connected cars on each build over time, day-by-day change and recent FSD releases.'}];
+ {url:'/fsd-tracker.html#software',title:'FSD software: which builds are spreading',tag:'FSD',summary:'Cars Teslascope has seen on each FSD build, new cars per day and the latest FSD builds.'}];
 index.pages=index.pages.filter(x=>!x.url.startsWith('/fsd-tracker.html'));
 // After the last /fsd.html entry, so the global tracker's builder (which keeps its own records in one block) never reorders ours.
 const at=index.pages.reduce((k,x,i)=>/^\/fsd\.html(#|$)/.test(x.url)?i:k,-1);

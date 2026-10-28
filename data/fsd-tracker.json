@@ -103,7 +103,7 @@
         "label": "Q2 25",
         "end": "2025-06-30",
         "subs": 0.95,
-        "deliveries": 8.0,
+        "deliveries": 8,
         "source": "q2-update"
       },
       {
@@ -169,7 +169,7 @@
     {
       "date": "2026-10-28",
       "kind": "update",
-      "text": "Added the cumulative FSD miles chart (read from Tesla's deck chart, marked approximate), the software build-share chart, the daily change table and the FSD release timeline."
+      "text": "Added the cumulative FSD miles chart (read from Tesla's deck chart, marked approximate), the Teslascope build charts (running totals of cars seen on each build, and new cars per day) and the FSD release timeline."
     },
     {
       "date": "2026-10-27",
@@ -185,8 +185,8 @@
       {
         "label": "Sep 2022",
         "end": "2022-09-30",
-        "total": 0.0,
-        "v11": 0.0
+        "total": 0,
+        "v11": 0
       },
       {
         "label": "Dec 2022",
@@ -203,8 +203,8 @@
       {
         "label": "Jun 2023",
         "end": "2023-06-30",
-        "total": 0.2,
-        "v11": 0.2
+        "total": 0.3,
+        "v11": 0.3
       },
       {
         "label": "Sep 2023",
@@ -215,67 +215,67 @@
       {
         "label": "Dec 2023",
         "end": "2023-12-31",
-        "total": 0.7,
-        "v11": 0.7
+        "total": 0.8,
+        "v11": 0.8
       },
       {
         "label": "Mar 2024",
         "end": "2024-03-31",
-        "total": 0.9,
+        "total": 1,
         "v11": 0.9
       },
       {
         "label": "Jun 2024",
         "end": "2024-06-30",
-        "total": 1.5,
+        "total": 1.6,
         "v11": 0.9
       },
       {
         "label": "Sep 2024",
         "end": "2024-09-30",
-        "total": 2.0,
+        "total": 2.1,
         "v11": 0.9
       },
       {
         "label": "Dec 2024",
         "end": "2024-12-31",
-        "total": 2.8,
+        "total": 3,
         "v11": 0.9
       },
       {
         "label": "Mar 2025",
         "end": "2025-03-31",
-        "total": 3.5,
+        "total": 3.7,
         "v11": 0.9
       },
       {
         "label": "Jun 2025",
         "end": "2025-06-30",
-        "total": 4.4,
+        "total": 4.6,
         "v11": 0.9
       },
       {
         "label": "Sep 2025",
         "end": "2025-09-30",
-        "total": 5.6,
+        "total": 5.8,
         "v11": 0.9
       },
       {
         "label": "Dec 2025",
         "end": "2025-12-31",
-        "total": 7.1,
+        "total": 7.3,
         "v11": 0.9
       },
       {
         "label": "Mar 2026",
         "end": "2026-03-31",
-        "total": 9.0,
+        "total": 9.2,
         "v11": 0.9
       },
       {
         "label": "Jun 2026",
         "end": "2026-06-30",
-        "total": 11.7,
+        "total": 11.8,
         "v11": 0.9
       },
       {
@@ -285,7 +285,7 @@
         "v11": 0.9
       }
     ],
-    "note": "Tesla's Q3 2026 deck draws this chart (axis to 16 billion) with no data labels, and the text gives no exact total. We measured the chart at each quarter tick, so every value here is approximate, likely within about 0.5 billion. The blue band is FSD miles on V11 and before; the red band is miles on V12 and beyond.",
+    "note": "Tesla's Q3 2026 deck draws this chart (axis to 16 billion) with no data labels, and the text gives no exact total. We measured the chart at each quarter tick, and checked the readings against the same chart in the Q1 deck: they agree to about 0.1 billion. Every value here is still approximate, likely within about 0.5 billion. The blue band is FSD miles on V11 and before; the red band is miles on V12 and beyond.",
     "europe": {
       "customers": "over 100,000",
       "km": "more than 160 million kilometres",
@@ -295,8 +295,263 @@
   "software": {
     "source": "teslascope-software",
     "top": 6,
-    "days": 8,
+    "days": [
+      "2026-10-10",
+      "2026-10-11",
+      "2026-10-12",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-17",
+      "2026-10-18",
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-24",
+      "2026-10-25",
+      "2026-10-26",
+      "2026-10-27"
+    ],
     "timeline": 8,
-    "caveat": "Teslascope reports the builds of cars connected to its service: tens of thousands of owners, skewed to enthusiasts and to North America and Europe. It is a sample of the fleet, not the fleet, and Teslascope and TeslaFi show different shares for the same build because they count different cars."
+    "caveat": "These are cars Teslascope has seen on each build: owners who connect their car to Teslascope, a self-selected sample that leans to enthusiasts and to North America and Europe. In our stored snapshots a build's count almost never falls, so we treat it as a running total of cars seen on that build, not a share of cars on it today. Teslascope and TeslaFi show different shares for the same build because they track different cars.",
+    "asOf": "2026-10-27T23:50:00Z",
+    "latestCount": 3363,
+    "builds": [
+      {
+        "id": "2026.38.5.1",
+        "fsd": "v14.3.12 (HW4) · v14.3 Lite (HW3)",
+        "counts": [
+          0,
+          0,
+          0,
+          5,
+          28,
+          230,
+          573,
+          658,
+          822,
+          883,
+          928,
+          957,
+          969,
+          1012,
+          1022,
+          1028,
+          1029,
+          1029
+        ]
+      },
+      {
+        "id": "2026.38.5.11",
+        "fsd": "v14.3.13 (HW4) · v14.3 Lite (HW3)",
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          88,
+          412,
+          639
+        ]
+      },
+      {
+        "id": "2026.32.7",
+        "fsd": "",
+        "counts": [
+          357,
+          359,
+          361,
+          368,
+          369,
+          369,
+          370,
+          370,
+          373,
+          373,
+          374,
+          374,
+          375,
+          376,
+          376,
+          377,
+          377,
+          377
+        ]
+      },
+      {
+        "id": "2026.38.3.1",
+        "fsd": "",
+        "counts": [
+          67,
+          91,
+          103,
+          167,
+          207,
+          255,
+          285,
+          294,
+          301,
+          305,
+          310,
+          314,
+          319,
+          323,
+          324,
+          326,
+          326,
+          326
+        ]
+      },
+      {
+        "id": "2026.38.3.2",
+        "fsd": "",
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          93,
+          204,
+          249,
+          280,
+          300
+        ]
+      },
+      {
+        "id": "2026.38.5.6",
+        "fsd": "v14.3.12 (HW4)",
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          62,
+          125,
+          139,
+          146
+        ]
+      }
+    ],
+    "releases": [
+      {
+        "id": "2026.38.5.11",
+        "date": "2026-10-24",
+        "status": "early",
+        "fsd": "v14.3.13 (HW4) · v14.3 Lite (HW3) · North America",
+        "countries": [
+          "US",
+          "CA"
+        ]
+      },
+      {
+        "id": "2026.38.5.6",
+        "date": "2026-10-24",
+        "status": "early",
+        "fsd": "v14.3.12 (HW4) · Australia and New Zealand",
+        "countries": [
+          "AU",
+          "NZ"
+        ]
+      },
+      {
+        "id": "2026.38.5.5",
+        "date": "2026-10-20",
+        "status": "early",
+        "fsd": "v14.3.12 (HW4) · Australia and New Zealand",
+        "countries": [
+          "AU",
+          "NZ"
+        ]
+      },
+      {
+        "id": "2026.38.5.10",
+        "date": "2026-10-20",
+        "status": "early",
+        "fsd": "v14.3.13 (HW4) · v14.3 Lite (HW3) · United States",
+        "countries": [
+          "US"
+        ]
+      },
+      {
+        "id": "2026.38.5.1",
+        "date": "2026-10-13",
+        "status": "early",
+        "fsd": "v14.3.12 (HW4) · v14.3 Lite (HW3) · United States",
+        "countries": [
+          "US"
+        ]
+      },
+      {
+        "id": "2026.38.5",
+        "date": "2026-10-10",
+        "status": "early",
+        "fsd": "v14.3.12 (HW4) · v14.3 Lite (HW3) · North America",
+        "countries": [
+          "US",
+          "MX",
+          "CA"
+        ]
+      },
+      {
+        "id": "2026.33.5",
+        "date": "2026-10-06",
+        "status": "rolling",
+        "fsd": "v14.3.11 (HW4) · v14.3 Lite (HW3) · North America",
+        "countries": [
+          "US",
+          "CA"
+        ]
+      },
+      {
+        "id": "2026.33.100",
+        "date": "2026-10-06",
+        "status": "rolling",
+        "fsd": "v14.2.2.6 · Europe",
+        "countries": [
+          "NL",
+          "BE",
+          "CZ",
+          "DK",
+          "EE",
+          "LT",
+          "SK",
+          "SI"
+        ]
+      }
+    ],
+    "heatDays": 8
   }
 }
