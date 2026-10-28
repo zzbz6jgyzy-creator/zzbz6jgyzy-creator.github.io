@@ -27,8 +27,8 @@ async def main():
   assert await page.locator('#mw-city-select').input_value()=='dallas';assert 'Announced target' in await page.locator('#mw-city-detail').inner_text()
   await page.locator('#mw-city-detail [data-follow-city]').click();assert await page.locator('#mw-city-detail [data-follow-city]').get_attribute('aria-pressed')=='true'
   await page.locator('[data-vehicle="model_y"]').click();assert 'Robotaxi service listed' in await page.locator('#mw-city-detail').inner_text()
-  await page.locator('#mw-city-search').fill('Florida');assert await page.locator('.mw-city-card').count()==3
-  await page.locator('#mw-city-reset').click();assert await page.locator('.mw-city-card').count()==7
+  await page.locator('#mw-city-search').fill('Florida');assert await page.locator('.mw-city-card').count()==4
+  await page.locator('#mw-city-reset').click();assert await page.locator('.mw-city-card').count()==11
   await page.locator('[data-compare-city="1"]').select_option('miami');assert 'miami' in (await page.locator('#mw-comparison').inner_text()).lower()
   await page.locator('[data-share-comparison]').click();assert 'compare=' in await page.evaluate('window._copied')
   await page.locator('[data-export="card"]').click();await page.locator('summary').filter(has_text='Replay dated service evidence').click();await page.locator('#mw-replay').fill('0')
@@ -45,9 +45,9 @@ async def main():
   item=await down.value;assert pathlib.Path(await item.path()).read_text().startswith('<svg')
   await page.reload();await page.locator('#mw-app[data-enhanced="true"]').wait_for();assert await page.locator('#mw-city-detail [data-follow-city]').get_attribute('aria-pressed')=='true';assert await page.locator('[data-compare-city="1"]').input_value()=='miami'
   await ctx.close()
-  ctx=await browser.new_context(java_script_enabled=False,viewport={'width':390,'height':980});page=await ctx.new_page();await page.route('**/*',route);await page.goto(SITE+'/cybercab.html');assert await page.locator('.mw-city-card').count()==7
+  ctx=await browser.new_context(java_script_enabled=False,viewport={'width':390,'height':980});page=await ctx.new_page();await page.route('**/*',route);await page.goto(SITE+'/cybercab.html');assert await page.locator('.mw-city-card').count()==11
   await page.locator('[data-city-pick="dallas"]').click();assert await page.locator('.mw-city-card[open]').count()==1
-  for slug in ['austin','dallas','houston','miami','orlando','tampa','bay-area']:
+  for slug in ['austin','dallas','houston','miami','orlando','tampa','bay-area','las-vegas','jacksonville','phoenix','san-antonio']:
    await page.goto(SITE+'/cybercab-cities/'+slug+'.html');assert await page.locator('h1').count()==1;assert await page.locator('link[rel="canonical"]').get_attribute('href')==SITE+'/cybercab-cities/'+slug+'.html';assert 'Current city evidence' in await page.locator('main').inner_text();assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
-  await ctx.close();print('Interactions, follows, history, downloads, no-JavaScript and seven city profiles passed.');await browser.close()
+  await ctx.close();print('Interactions, follows, history, downloads, no-JavaScript and eleven city profiles passed.');await browser.close()
 asyncio.run(main())

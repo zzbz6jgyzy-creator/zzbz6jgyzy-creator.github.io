@@ -2,7 +2,7 @@
 (function(root){'use strict';const M=root.SDMobility,E=M.esc;
 const link=(url,label)=>M.href(url)?`<a href="${E(url)}" rel="noopener">${E(label)}</a>`:E(label);
 const badge=(text,tone='neutral')=>`<span class="mw-badge ${tone}">${E(text)}</span>`;
-const accessTone=status=>['available','listed'].includes(status)?'mint':['announced','reported_staging'].includes(status)?'gold':status==='reported_supervised'?'blue':'neutral';
+const accessTone=status=>['available','listed'].includes(status)?'mint':['announced','coming_soon','reported_staging'].includes(status)?'gold':status==='reported_supervised'?'blue':'neutral';
 const citeMode=()=>typeof document!=='undefined'&&!!document.getElementById('mw-sources');let CITE=false;
 function cite(d,ids,label){const list=M.sources(d,ids);if(!list.length)return '';return `<p class="mw-cite"><span>${E(label)}:</span> ${list.map(s=>({s,n:d.sources.findIndex(x=>x.id===s.id)+1})).sort((a,b)=>a.n-b.n).map(({s,n})=>`<a href="#src-${E(s.id)}" title="${E(s.label)}">[${n}]</a>`).join(' ')} <a class="mw-cite-all" href="#mw-sources-head">All sources</a></p>`;}
 function evidence(d,ids,label='Sources and dates'){if(CITE||citeMode())return cite(d,ids,label);return `<details class="mw-evidence"><summary>${E(label)}</summary><ul>${M.sources(d,ids).map(s=>`<li>${link(s.url,s.label)}<small>${[E(s.type),s.publishedAt?'published '+E(M.day(s.publishedAt)):'',s.checkedAt?'reviewed '+E(M.day(s.checkedAt)):''].filter(Boolean).join(' · ')}</small></li>`).join('')}</ul></details>`;}

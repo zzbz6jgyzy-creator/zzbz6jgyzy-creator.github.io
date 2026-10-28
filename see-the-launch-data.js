@@ -97,7 +97,7 @@ window.SEE_LAUNCH = {
     {
       id: "ll-starlink-15-21",
       title: "Falcon 9 · Starlink Group 15-21",
-      start: "2026-11-05T05:14:00Z",
+      start: "2026-11-05T02:35:00Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "sso",
