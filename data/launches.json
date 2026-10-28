@@ -2,32 +2,9 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-10-28T17:53:22Z",
- "checked": "2026-10-28T17:53:22Z",
+ "updated": "2026-10-28T22:31:43Z",
+ "checked": "2026-10-28T22:31:43Z",
  "results": [
-  {
-   "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
-   "name": "Falcon 9 Block 5 | O3b mPower 11-13",
-   "net": "2026-09-13T18:49:00Z",
-   "window_start": "2026-09-13T18:49:00Z",
-   "window_end": "2026-09-13T20:16:00Z",
-   "url": "https://ll.thespacedevs.com/2.3.0/launches/ad358a4d-c541-409b-9366-9c2f2da4aeb9/",
-   "status": {
-    "name": "Launch Successful",
-    "abbrev": "Success"
-   },
-   "net_precision": {
-    "name": "Minute",
-    "abbrev": "MIN"
-   },
-   "pad": {
-    "name": null,
-    "location": {
-     "name": null
-    }
-   },
-   "last_updated": "2026-09-14T00:37:56Z"
-  },
   {
    "id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
    "name": "Falcon 9 Block 5 | USSF-259",
@@ -353,9 +330,9 @@
   {
    "id": "57ce0a39-d035-4f16-a418-bd6108f78199",
    "name": "Falcon 9 Block 5 | Starlink Group 15-18",
-   "net": "2026-10-30T04:02:00Z",
-   "window_start": "2026-10-30T04:02:00Z",
-   "window_end": "2026-10-30T08:02:00Z",
+   "net": "2026-10-31T03:48:00Z",
+   "window_start": "2026-10-31T03:48:00Z",
+   "window_end": "2026-10-31T07:48:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/57ce0a39-d035-4f16-a418-bd6108f78199/",
    "status": {
     "name": "Go for Launch",
@@ -371,7 +348,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-27T18:09:36Z",
+   "last_updated": "2026-10-28T19:32:47Z",
    "mission": {
     "name": "Starlink Group 15-18",
     "type": "Communications",
@@ -385,9 +362,9 @@
   {
    "id": "54d471e8-695c-4fa7-a3cf-dbd8b389e8ae",
    "name": "Falcon 9 Block 5 | USSF-432",
-   "net": "2026-11-02T01:56:00Z",
-   "window_start": "2026-11-02T01:56:00Z",
-   "window_end": "2026-11-02T05:56:00Z",
+   "net": "2026-11-03T01:42:00Z",
+   "window_start": "2026-11-03T01:42:00Z",
+   "window_end": "2026-11-03T05:42:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/54d471e8-695c-4fa7-a3cf-dbd8b389e8ae/",
    "status": {
     "name": "Go for Launch",
@@ -403,7 +380,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-26T18:04:08Z",
+   "last_updated": "2026-10-28T19:26:10Z",
    "mission": {
     "name": "USSF-432",
     "type": "Government/Top Secret",
@@ -417,9 +394,9 @@
   {
    "id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
    "name": "Falcon 9 Block 5 | Starlink Group 15-21",
-   "net": "2026-11-05T02:35:00Z",
-   "window_start": "2026-11-05T02:35:00Z",
-   "window_end": "2026-11-05T06:35:00Z",
+   "net": "2026-11-06T02:21:00Z",
+   "window_start": "2026-11-06T02:21:00Z",
+   "window_end": "2026-11-06T06:21:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
    "status": {
     "name": "Go for Launch",
@@ -435,10 +412,42 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-27T19:38:47Z",
+   "last_updated": "2026-10-28T19:26:40Z",
    "mission": {
     "name": "Starlink Group 15-21",
     "type": "Communications",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
+  },
+  {
+   "id": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
+   "name": "Falcon 9 Block 5 | USSF-xxx (\"R-5\")",
+   "net": "2026-11-10T03:03:00Z",
+   "window_start": "2026-11-10T03:03:00Z",
+   "window_end": "2026-11-10T07:03:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/6aa7b90b-e5ed-45d8-a52e-04fbf399d178/",
+   "status": {
+    "name": "To Be Confirmed",
+    "abbrev": "TBC"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2026-10-28T18:57:38Z",
+   "mission": {
+    "name": "USSF-xxx (\"R-5\")",
+    "type": "Government/Top Secret",
     "orbit": {
      "name": "Low Earth Orbit",
      "abbrev": "LEO"
@@ -509,6 +518,38 @@
     }
    },
    "vehicle": "Falcon 9 Block 5"
+  },
+  {
+   "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
+   "name": "Starship | Flight 15",
+   "net": "2026-11-30T00:00:00Z",
+   "window_start": "2026-11-30T00:00:00Z",
+   "window_end": "2026-11-30T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/0f867f0c-5422-4d44-93b8-d7faaae7019b/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Orbital Launch Pad 2",
+    "location": {
+     "name": "SpaceX Starbase, TX, USA"
+    }
+   },
+   "last_updated": "2026-10-28T19:46:06Z",
+   "mission": {
+    "name": "Flight 15",
+    "type": "Test Flight",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Starship V3"
   },
   {
    "id": "71df1dd0-d658-4762-b0bc-0fca6886aea7",
@@ -893,38 +934,6 @@
     }
    },
    "vehicle": "Falcon 9 Block 5"
-  },
-  {
-   "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
-   "name": "Starship | Flight 15",
-   "net": "2026-12-31T00:00:00Z",
-   "window_start": "2026-12-31T00:00:00Z",
-   "window_end": "2026-12-31T00:00:00Z",
-   "url": "https://ll.thespacedevs.com/2.3.0/launches/0f867f0c-5422-4d44-93b8-d7faaae7019b/",
-   "status": {
-    "name": "To Be Determined",
-    "abbrev": "TBD"
-   },
-   "net_precision": {
-    "name": "Quarter 4",
-    "abbrev": "Q4"
-   },
-   "pad": {
-    "name": "Orbital Launch Pad 2",
-    "location": {
-     "name": "SpaceX Starbase, TX, USA"
-    }
-   },
-   "last_updated": "2026-09-13T06:33:41Z",
-   "mission": {
-    "name": "Flight 15",
-    "type": "Test Flight",
-    "orbit": {
-     "name": "Low Earth Orbit",
-     "abbrev": "LEO"
-    }
-   },
-   "vehicle": "Starship V3"
   },
   {
    "id": "e61d353c-db55-4a57-8184-0fab187231e6",

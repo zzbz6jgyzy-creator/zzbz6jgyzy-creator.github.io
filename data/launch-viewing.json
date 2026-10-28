@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-10-28T17:53:22Z",
+ "checked": "2026-10-28T22:31:43Z",
  "editorialUpdated": "2026-10-28T09:15:00+00:00",
  "presets": [
   {
@@ -640,9 +640,9 @@
    "title": "Falcon 9 Block 5 | Starlink Group 15-18",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-10-30T04:02:00Z",
+   "start": "2026-10-31T03:48:00Z",
    "end": "",
-   "date": "2026-10-30",
+   "date": "2026-10-31",
    "precision": "datetime",
    "status": "Go",
    "note": "Communications · Low Earth Orbit",
@@ -651,8 +651,8 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "57ce0a39-d035-4f16-a418-bd6108f78199",
-   "windowStart": "2026-10-30T04:02:00Z",
-   "windowEnd": "2026-10-30T08:02:00Z",
+   "windowStart": "2026-10-31T03:48:00Z",
+   "windowEnd": "2026-10-31T07:48:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
    "pad": {
@@ -670,9 +670,9 @@
    "title": "Falcon 9 Block 5 | USSF-432",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-02T01:56:00Z",
+   "start": "2026-11-03T01:42:00Z",
    "end": "",
-   "date": "2026-11-02",
+   "date": "2026-11-03",
    "precision": "datetime",
    "status": "Go",
    "note": "Government/Top Secret · Low Earth Orbit",
@@ -681,8 +681,8 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "54d471e8-695c-4fa7-a3cf-dbd8b389e8ae",
-   "windowStart": "2026-11-02T01:56:00Z",
-   "windowEnd": "2026-11-02T05:56:00Z",
+   "windowStart": "2026-11-03T01:42:00Z",
+   "windowEnd": "2026-11-03T05:42:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
    "pad": {
@@ -700,9 +700,9 @@
    "title": "Falcon 9 Block 5 | Starlink Group 15-21",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-05T02:35:00Z",
+   "start": "2026-11-06T02:21:00Z",
    "end": "",
-   "date": "2026-11-05",
+   "date": "2026-11-06",
    "precision": "datetime",
    "status": "Go",
    "note": "Communications · Low Earth Orbit",
@@ -711,8 +711,8 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
-   "windowStart": "2026-11-05T02:35:00Z",
-   "windowEnd": "2026-11-05T06:35:00Z",
+   "windowStart": "2026-11-06T02:21:00Z",
+   "windowEnd": "2026-11-06T06:21:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
    "pad": {
@@ -772,6 +772,36 @@
     "lon": -97.147,
     "az": 97,
     "coast": "east"
+   }
+  },
+  {
+   "id": "ll2-6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
+   "title": "Falcon 9 Block 5 | USSF-xxx (\"R-5\")",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-10T03:03:00Z",
+   "end": "",
+   "date": "2026-11-10",
+   "precision": "datetime",
+   "status": "TBC",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
+   "windowStart": "2026-11-10T03:03:00Z",
+   "windowEnd": "2026-11-10T07:03:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "To Be Confirmed",
+   "pad": {
+    "id": "slc4e",
+    "name": "Vandenberg · SLC-4E",
+    "short": "Vandenberg",
+    "lat": 34.632,
+    "lon": -120.611,
+    "az": 186,
+    "coast": "west"
    }
   }
  ]
