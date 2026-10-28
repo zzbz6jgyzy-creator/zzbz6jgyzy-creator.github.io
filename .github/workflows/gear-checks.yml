@@ -1,0 +1,29 @@
+name: Gear page checks
+on:
+  pull_request:
+    paths:
+      - 'gear.html'
+      - 'gear-shop.css'
+      - 'gear-studio.js'
+      - 'data/gear.json'
+      - 'assets/gear/**'
+      - 'scripts/build-gear-studio.mjs'
+      - 'tests/gear-studio.test.mjs'
+      - '.github/workflows/gear-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gear:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rebuild is deterministic
+        run: |
+          node scripts/build-gear-studio.mjs
+          git diff --exit-code gear.html
+      - name: Markup, links, anchors and images
+        run: node --test tests/gear-studio.test.mjs
