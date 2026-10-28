@@ -6,7 +6,6 @@ on:
       - 'gear-shop.css'
       - 'gear-studio.js'
       - 'data/gear.json'
-      - 'assets/gear/**'
       - 'scripts/build-gear-studio.mjs'
       - 'tests/gear-studio.test.mjs'
       - '.github/workflows/gear-checks.yml'

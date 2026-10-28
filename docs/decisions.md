@@ -2,6 +2,15 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-29 · Gear second pass: a need-based list, CSS-only filters, two disclosures, no photographs in the list
+
+- **Choice:** replace the shop-by-shop banners and photo grids with one list of equal cards grouped by what people want (interior, screen and glass, wheels, exterior and performance), with radio-button chips as the filter and a plain sticky three-link nav.
+- **Why:** readers shop by need ("floor mats", "screen protection"), not by retailer; the first redesign was image-heavy and repeated the same Cybertruck photos. Icons instead of photos remove the duplicates and about half the page weight, and keep the cards the same size.
+- **Filters without JS:** radio inputs plus `:has()` (supported in current Chrome, Safari and Firefox). Older browsers simply show every card. JavaScript only adds a count and deep links.
+- **Editorial rule 7 ("a visible note next to" affiliate links):** the note sits immediately beside the first affiliate links (the two shop-all buttons, directly above the model picker) and again directly after the list; every card also carries its source label, an external arrow and a screen-reader "affiliate link" name. Repeating the full sentence on every section was judged noise rather than extra disclosure.
+- **Categories:** assigned in `data/gear.json` (a card may belong to more than one, e.g. Sunshades are Screen and glass and Interior). No new products, prices or claims; descriptions are the existing ones.
+- **Trade-off:** icons are generic line drawings, not product photos; if photos return they should be product-accurate and credited.
+
 ## 2026-10-28 · Gear: a builder and data file, a picker instead of a card wall, no new fonts or libraries
 
 - **Choice:** give `gear.html` its own builder (`scripts/build-gear-studio.mjs`) and data file (`data/gear.json`), restyle it as a dark car-led hero with a "Choose your Tesla" picker, and keep every product, price-free description, partner link and credit as published.

@@ -27,81 +27,118 @@ test("gear.html contains exactly the block the builder generates (determinism)",
 
 test("one h1, one main, titles and schema stay as published", () => {
   assert.equal((main.match(/<h1\b/g) || []).length, 1);
+  assert.equal((html.match(/<main\b/g) || []).length, 1);
   assert.match(html, /<title>Gear for your Tesla — Supercharged Daily<\/title>/);
   assert.ok(html.includes('"@type": "WebPage"') && html.includes("https://x.com/ALJR86"));
-  assert.equal((html.match(/<main\b/g) || []).length, 1);
+  assert.ok(!/<!--nl:start-->|ps-newsletter/.test(main), "no newsletter band on this page");
 });
 
-test("every anchor id the site and nav rely on still exists, and quick-nav links resolve", () => {
-  for (const id of ["gear-h", "models", "gs-models-h", "gs-stores-h", "daily", "gs-daily-h", "upgrades", "evb-h", "evbandit", "ps-fitment-title", "fitment"]) {
+test("anchor ids the site relies on exist and the sticky nav targets resolve", () => {
+  for (const id of ["gear-h", "models", "gs-models-h", "gear", "gs-gear-h", "daily", "upgrades", "evbandit", "ps-fitment-title", "fitment"]) {
     assert.ok(new RegExp(`\\sid="${id}"`).test(main), "missing id " + id);
   }
   const nav = main.slice(main.indexOf('<nav class="gx-subnav"'), main.indexOf("</nav>"));
   const hrefs = [...nav.matchAll(/href="#([^"]+)"/g)].map((m) => m[1]);
-  assert.equal(hrefs.length, 4);
-  for (const h of hrefs) assert.ok(new RegExp(`\\sid="${h}"`).test(main), "quick-nav target missing: " + h);
+  assert.deepEqual(hrefs, ["models", "gear", "fitment"]);
+  for (const h of hrefs) assert.ok(new RegExp(`\\sid="${h}"`).test(main), "nav target missing: " + h);
 });
 
-test("picker: five model tiles, each an https TESMAG collection link marked sponsored", () => {
-  const picker = main.slice(main.indexOf('id="models"'), main.indexOf('</ul>', main.indexOf('id="models"')));
+test("model picker: five TESMAG collection links, https, sponsored, named for the model", () => {
+  const picker = main.slice(main.indexOf('id="models"'), main.indexOf('id="gear"'));
   const links = tags(picker, "a").filter((t) => /gx-model-link/.test(t));
   assert.equal(links.length, 5);
-  for (const [i, m] of data.models.entries()) {
+  const slugs = ["model-3", "model-y", "model-s", "model-x", "cybertruck"];
+  data.models.forEach((m, i) => {
     const href = decode(attr(links[i], "href"));
     assert.match(href, /^https:\/\/www\.teslaacessories\.com\/collections\/[a-z0-9-]+\?referral_code=J72E6FRRQ7QK/);
-    assert.ok(href.includes("/collections/" + m.id.replace("m3", "model-3").replace("my", "model-y").replace("ms", "model-s").replace("mx", "model-x").replace("ct", "cybertruck")));
-    assert.match(attr(links[i], "rel"), /\bsponsored\b/);
-    assert.match(attr(links[i], "rel"), /\bnoopener\b/);
+    assert.ok(href.includes("/collections/" + slugs[i] + "?"), href);
+    assert.match(attr(links[i], "rel"), /\bsponsored\b.*\bnoopener\b|\bnoopener\b.*\bsponsored\b/);
     assert.match(attr(links[i], "aria-label"), new RegExp(m.name));
-  }
-  assert.equal((picker.match(/class="gx-model-up" href="#upgrades"/g) || []).length, 5);
+  });
+  assert.ok(!/evbandit/.test(picker), "no per-model EV Bandit links in the picker");
 });
 
-test("every partner or referral link is https, sponsored and has a visible disclosure in its section", () => {
-  const external = tags(main, "a").filter((t) => /href="https?:/.test(t) && /teslaacessories|evbandit|ts\.la/.test(t));
-  assert.equal(external.filter((t) => /teslaacessories/.test(t)).length, 14, "TESMAG links changed");
-  assert.equal(external.filter((t) => /evbandit\.com/.test(t)).length, 8, "EV Bandit links changed");
-  assert.equal(external.filter((t) => /ts\.la/.test(t)).length, 1);
+test("catalogue: 15 cards from both shops, every one a sponsored https link with an accessible source name", () => {
+  const cards = [...main.matchAll(/<li class="gx-card[^"]*" data-cat="([^"]*)">([\s\S]*?)<\/li>\n(?=<li class="gx-card|<\/ul>)/g)];
+  assert.equal(cards.length, 15);
+  assert.equal(cards.filter((c) => /\btesmag\b/.test(c[1])).length, 8);
+  assert.equal(cards.filter((c) => /\bevbandit\b/.test(c[1])).length, 7);
+  for (const [, cats, body] of cards) {
+    const a = tags(body, "a")[0];
+    assert.match(attr(a, "href"), /^https:\/\/(www\.teslaacessories\.com|evbandit\.com)\//);
+    assert.match(attr(a, "rel"), /\bsponsored\b/);
+    assert.match(attr(a, "rel"), /\bnoopener\b/);
+    assert.match(body, /affiliate link, opens in a new tab/);
+    assert.ok(cats.split(" ").length >= 2, "each card has a category and a shop");
+  }
+  assert.match(cards[0][2], /Fitted floor mats/);
+  assert.match(cards[1][2], /Screen protection/);
+  assert.match(cards[0][2], /Start here/);
+  assert.match(cards[1][2], /id="evbandit"/);
+});
+
+test("filters: radio chips (work without JS), CSS rule exists for each, every card matches its filter", () => {
+  const css = fs.readFileSync("gear-shop.css", "utf8");
+  const radios = tags(main, "input").filter((t) => /type="radio"/.test(t));
+  assert.equal(radios.length, data.catalog.filters.length);
+  assert.equal(radios.filter((t) => /\schecked/.test(t)).length, 1);
+  for (const r of radios) {
+    const id = attr(r, "id"), v = attr(r, "value");
+    assert.ok(main.includes(`<label for="${id}">`), "label for " + id);
+    if (id !== "gx-f-all") {
+      assert.ok(css.includes(`#${id}:checked`) && css.includes(`[data-cat~="${v}"]`), "no CSS rule for " + id);
+      assert.ok(new RegExp(`data-cat="[^"]*\\b${v}\\b`).test(main), "no card for filter " + v);
+    }
+  }
+});
+
+test("disclosure: one note at the top next to the shop-all links, one after the grid; referral note kept", () => {
+  const notes = main.match(/class="gx-disclosure[^"]*"><strong>Affiliate links\.<\/strong>/g) || [];
+  assert.equal(notes.length, 2);
+  const top = main.indexOf('class="gx-disclosure"'), firstLink = main.indexOf('class="gx-btn"');
+  assert.ok(firstLink > 0 && firstLink < top && top < main.indexOf('class="gx-subnav"'), "note sits right after the shop-all buttons");
+  assert.ok(main.indexOf("gx-disclosure-end") > main.indexOf("</ul>\n<p class=\"gx-disclosure gx-disclosure-end"), "note follows the grid");
+  assert.match(main, /may earn a commission if you buy through them, at no extra cost to you\. Prices and stock are set by TESMAG and EV Bandit/);
+  assert.match(main, /Referral link: we may earn a reward/);
+});
+
+test("all partner and referral links are https and sponsored; the link set is unchanged", () => {
+  const external = tags(main, "a").filter((t) => /teslaacessories|evbandit|ts\.la/.test(t));
+  const hrefs = external.map((t) => decode(attr(t, "href")));
+  assert.equal(hrefs.filter((h) => /teslaacessories/.test(h)).length, 5 + 8 + 1, "5 models + 7 collections + floor mats + shop all");
+  assert.equal(hrefs.filter((h) => /evbandit\.com/.test(h)).length, 8);
+  assert.equal(hrefs.filter((h) => /ts\.la/.test(h)).length, 1);
   for (const t of external) {
     assert.match(attr(t, "href"), /^https:\/\//);
     assert.match(attr(t, "rel"), /\bsponsored\b/, t);
     assert.match(attr(t, "rel"), /\bnoopener\b/, t);
   }
-  const disclosures = main.match(/class="gx-disclosure[^"]*"><span class="gx-chip">Affiliate<\/span>/g) || [];
-  assert.equal(disclosures.length, 5, "picker + 2 section heads + 2 section feet");
-  assert.match(main, /Referral link: we may earn a reward/);
 });
 
-test("every image has alt text, intrinsic size and sensible loading; sources exist on disk", () => {
+test("images: only the five credited model photos; alt, size and lazy loading on each; files exist", () => {
   const imgs = tags(main, "img");
-  assert.equal(imgs.length, 23);
-  imgs.forEach((t, i) => {
+  assert.equal(imgs.length, 5);
+  for (const t of imgs) {
     assert.ok((attr(t, "alt") || "").length > 8, "alt: " + t);
     assert.match(attr(t, "width") || "", /^\d+$/);
     assert.match(attr(t, "height") || "", /^\d+$/);
-    if (i === 0) { assert.match(t, /fetchpriority="high"/); assert.ok(!/loading="lazy"/.test(t)); }
-    else assert.match(t, /loading="lazy"/);
-  });
+    assert.match(t, /loading="lazy"/);
+  }
   const files = new Set([...main.matchAll(/(?:srcset|src)="([^"]+)"/g)].flatMap((m) => m[1].split(",").map((s) => s.trim().split(/\s+/)[0])));
   for (const f of files) assert.ok(fs.existsSync("." + f), "missing file " + f);
-  assert.ok(!/<img[^>]*src="\/assets\/ctx-media/.test(main), "uses the heavy single-size originals");
-});
-
-test("head: hero preload matches the hero image, stylesheet and script tokens are file hashes", () => {
-  const hero = data.images[data.hero.image];
-  assert.ok(html.includes(`imagesrcset="${hero.widths.map((w) => `${hero.base}-${w}w.avif ${w}w`).join(", ")}"`));
-  for (const f of ["gear-shop.css", "gear-studio.js"]) {
-    const m = html.match(new RegExp(`/${f.replace(".", "\\.")}\\?v=([0-9a-f]{10})`));
-    assert.ok(m, f + " token");
-  }
-  assert.ok(!html.includes("tesla-page.css") && !html.includes("page-studios.css"), "removed render-blocking stylesheets are back");
-});
-
-test("content kept: credits, checklist, newsletter and the Wikimedia licences", () => {
-  assert.equal(data.credits.length, 10);
-  for (const c of data.credits) assert.ok(main.includes(`href="${c.url.replace(/&/g, "&amp;")}"`) || main.includes(c.url), c.subject);
+  assert.equal(new Set(imgs.map((t) => attr(t, "src"))).size, 5, "no duplicate photos");
+  assert.equal(data.credits.length, 5, "one credit per photo shown");
+  for (const c of data.credits) assert.ok(main.includes(c.url) || main.includes(c.url.replace(/&/g, "&amp;")), c.subject);
   assert.match(main, /CC BY-SA 4\.0/);
+});
+
+test("head: version tokens are file hashes and the heavy stylesheets stay out", () => {
+  for (const f of ["gear-shop.css", "gear-studio.js"]) assert.ok(new RegExp(`/${f.replace(".", "\\.")}\\?v=[0-9a-f]{10}`).test(html), f);
+  assert.ok(!html.includes("tesla-page.css") && !html.includes("page-studios.css"));
+});
+
+test("checklist is kept with four checks and a status line", () => {
   assert.equal((main.match(/<input type="checkbox"/g) || []).length, 4);
   assert.match(main, /data-ps-checklist/);
-  assert.match(main, /Get the free weekly edition/);
+  assert.match(main, /role="status">Your preparation checklist stays on this device\./);
 });

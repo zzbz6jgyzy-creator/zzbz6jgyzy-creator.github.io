@@ -1,18 +1,10 @@
 {
-  "version": 1,
+  "version": 2,
   "reviewed": "2026-10-28",
   "hero": {
     "kicker": "Gear",
     "title": "Fit the Tesla you actually drive.",
-    "lede": "Model-specific mats, screen glass, storage and the upgrades I’d actually buy.",
-    "image": "m3",
-    "alt": "Highland Tesla Model 3 Performance in Quicksilver, showroom three-quarter view",
-    "credit": {
-      "author": "Ethan Llamas",
-      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Highland_Performance_Quicksilver_01.jpg",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
+    "lede": "Model-specific mats, screen glass, storage and the upgrades I’d actually buy."
   },
   "picker": {
     "title": "Choose your Tesla",
@@ -23,226 +15,260 @@
   "nav": [
     {
       "id": "models",
-      "label": "Models"
+      "label": "Your Tesla"
     },
     {
-      "id": "daily",
-      "label": "TESMAG"
-    },
-    {
-      "id": "upgrades",
-      "label": "EV Bandit"
+      "id": "gear",
+      "label": "Browse gear"
     },
     {
       "id": "fitment",
       "label": "Before you order"
     }
   ],
-  "stores": {
-    "title": "Two shops, different jobs",
+  "shops": {
+    "tesmag": {
+      "name": "TESMAG",
+      "shopAll": {
+        "href": "https://www.teslaacessories.com/?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
+        "label": "Shop all TESMAG"
+      },
+      "legend": "Daily living · ships worldwide"
+    },
+    "evbandit": {
+      "name": "EV Bandit",
+      "shopAll": {
+        "href": "https://evbandit.com/?sca_ref=12531326.pISwHMUOX3",
+        "label": "Shop all EV Bandit"
+      },
+      "legend": "Upgrades & styling"
+    }
+  },
+  "catalog": {
+    "title": "Shop by what you need",
     "text": "TESMAG is daily living that ships worldwide. EV Bandit is the upgrade counter — glass, 3D MAXpider, carbon, Unplugged.",
-    "items": [
+    "filters": [
       {
-        "target": "daily",
-        "badge": "Daily living",
-        "name": "TESMAG",
-        "text": "Fitted mats, shades, organisers and covers, cut for each Tesla. Open a collection below, or jump to the TESMAG shelf.",
-        "image": "white",
-        "alt": "Pearl White Model 3 Highland glass roof from above",
-        "position": "center 55%",
-        "cta": "Jump to the TESMAG shelf"
+        "id": "all",
+        "label": "All"
       },
       {
-        "target": "upgrades",
-        "badge": "Upgrades",
-        "name": "EV Bandit",
-        "text": "Tempered glass, 3D MAXpider liners, carbon trim, forged wheels and Unplugged Performance kits.",
-        "image": "ct",
-        "alt": "Foundation Series Cybertruck at dusk",
-        "position": "60% 55%",
-        "cta": "Jump to the EV Bandit shelf"
+        "id": "interior",
+        "label": "Interior"
+      },
+      {
+        "id": "screen",
+        "label": "Screen & glass"
+      },
+      {
+        "id": "wheels",
+        "label": "Wheels"
+      },
+      {
+        "id": "exterior",
+        "label": "Exterior & performance"
+      },
+      {
+        "id": "daily",
+        "key": "tesmag",
+        "label": "TESMAG"
+      },
+      {
+        "id": "upgrades",
+        "key": "evbandit",
+        "label": "EV Bandit"
+      }
+    ],
+    "items": [
+      {
+        "id": "floor-mats-tesmag",
+        "shop": "tesmag",
+        "cats": [
+          "interior"
+        ],
+        "icon": "mat",
+        "title": "Fitted floor mats",
+        "text": "The first thing worth buying. TPE and 3D all-weather sets cut for Model 3, Y, S, X and Cybertruck — including Juniper and Highland.",
+        "bullets": [
+          "Full cabin sets plus trunk, frunk and seat-back liners",
+          "Left-hand drive fitments TESMAG actually stocks",
+          "Ships worldwide from teslaacessories.com"
+        ],
+        "href": "https://www.teslaacessories.com/collections/floor-mats?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
+        "featured": true
+      },
+      {
+        "id": "evbandit",
+        "shop": "evbandit",
+        "cats": [
+          "screen"
+        ],
+        "icon": "screen",
+        "title": "Screen protection",
+        "text": "EV Bandit’s own storefront leads with tempered glass. Matte and clear film for Model 3/Y 15-inch, Highland/Juniper 15.4-inch, refreshed S/X and Cybertruck 18.5-inch.",
+        "bullets": [
+          "9H glass plus washable anti-glare covers",
+          "Front and rear sets where the car has both screens",
+          "Highland, Juniper, refreshed S/X and Cybertruck sizes"
+        ],
+        "href": "https://evbandit.com/collections/screen-protection?sca_ref=12531326.pISwHMUOX3",
+        "featured": true
+      },
+      {
+        "id": "dashboard-screen",
+        "shop": "tesmag",
+        "cats": [
+          "screen",
+          "interior"
+        ],
+        "icon": "dash",
+        "title": "Dashboard & screen",
+        "text": "Protectors, trims and mounts that sit on the glass",
+        "href": "https://www.teslaacessories.com/collections/dashboard?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af"
+      },
+      {
+        "id": "floor-mats-liners",
+        "shop": "evbandit",
+        "cats": [
+          "interior"
+        ],
+        "icon": "mat",
+        "title": "Floor mats & liners",
+        "text": "Kagu all-weather sets and cargo liners for 3, Y, S, X and Cybertruck, including Juniper.",
+        "kicker": "3D MAXpider",
+        "href": "https://evbandit.com/collections/floor-mats?sca_ref=12531326.pISwHMUOX3"
+      },
+      {
+        "id": "storage",
+        "shop": "tesmag",
+        "cats": [
+          "interior"
+        ],
+        "icon": "storage",
+        "title": "Storage",
+        "text": "Console trays, trunk boxes, organisers",
+        "href": "https://www.teslaacessories.com/collections/storage-boxes?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af"
+      },
+      {
+        "id": "seat-covers",
+        "shop": "tesmag",
+        "cats": [
+          "interior"
+        ],
+        "icon": "seat",
+        "title": "Seat covers",
+        "text": "Kids, pets, spills",
+        "href": "https://www.teslaacessories.com/collections/seat-covers?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af"
+      },
+      {
+        "id": "sunshades",
+        "shop": "tesmag",
+        "cats": [
+          "screen",
+          "interior"
+        ],
+        "icon": "sun",
+        "title": "Sunshades",
+        "text": "Cool the glass roof",
+        "href": "https://www.teslaacessories.com/collections/sunshade-kit?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af"
+      },
+      {
+        "id": "phone-holders",
+        "shop": "tesmag",
+        "cats": [
+          "interior"
+        ],
+        "icon": "phone",
+        "title": "Phone holders",
+        "text": "Mounts beside the screen",
+        "href": "https://www.teslaacessories.com/collections/phone-holder?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af"
+      },
+      {
+        "id": "pet-accessories",
+        "shop": "tesmag",
+        "cats": [
+          "interior"
+        ],
+        "icon": "paw",
+        "title": "Pet accessories",
+        "text": "Seat hammocks and trunk protection for dogs",
+        "href": "https://www.teslaacessories.com/collections/pet-accessories?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af"
+      },
+      {
+        "id": "wheel-covers",
+        "shop": "tesmag",
+        "cats": [
+          "wheels"
+        ],
+        "icon": "wheel",
+        "title": "Wheel covers",
+        "text": "Aero caps and rim protection",
+        "href": "https://www.teslaacessories.com/collections/wheel-covers?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af"
+      },
+      {
+        "id": "forged-wheels",
+        "shop": "evbandit",
+        "cats": [
+          "wheels"
+        ],
+        "icon": "wheel",
+        "title": "Forged wheels",
+        "text": "Fully forged wheels for 3, Y, S and X, priced per wheel. Set of four at checkout.",
+        "kicker": "Taybi / EVB forged",
+        "href": "https://evbandit.com/collections/taybi-rims?sca_ref=12531326.pISwHMUOX3"
+      },
+      {
+        "id": "carbon-fibre",
+        "shop": "evbandit",
+        "cats": [
+          "exterior",
+          "interior"
+        ],
+        "icon": "carbon",
+        "title": "Carbon fibre",
+        "text": "Dash covers, console wraps, door-handle protectors and carbon aero pieces.",
+        "kicker": "Interior & aero",
+        "href": "https://evbandit.com/collections/carbon-fiber?sca_ref=12531326.pISwHMUOX3"
+      },
+      {
+        "id": "unplugged-performance",
+        "shop": "evbandit",
+        "cats": [
+          "exterior"
+        ],
+        "icon": "bolt",
+        "title": "Unplugged Performance",
+        "text": "Carbon front aero for Highland Performance, Cybertruck beadlock wheels, suspension.",
+        "kicker": "Authorised dealer",
+        "href": "https://evbandit.com/collections/unplugged-performance?sca_ref=12531326.pISwHMUOX3"
+      },
+      {
+        "id": "body-kits",
+        "shop": "evbandit",
+        "cats": [
+          "exterior"
+        ],
+        "icon": "car",
+        "title": "Body kits",
+        "text": "Hacker, Crypton and Hidrogai kits for Model 3 — carbon or FRP, narrow and widebody.",
+        "kicker": "Robot Craftsman",
+        "href": "https://evbandit.com/collections/robot-craftsman?sca_ref=12531326.pISwHMUOX3"
+      },
+      {
+        "id": "cybertruck-widebody",
+        "shop": "evbandit",
+        "cats": [
+          "exterior"
+        ],
+        "icon": "car",
+        "title": "Cybertruck widebody",
+        "text": "Waido aero kits including the Cybertruck widebody. Other Waido lines sit in the same collection.",
+        "kicker": "Waido",
+        "href": "https://evbandit.com/collections/waido?sca_ref=12531326.pISwHMUOX3"
       }
     ]
   },
-  "daily": {
-    "id": "daily",
-    "headingId": "gs-daily-h",
-    "title": "Daily living",
-    "sub": "Partner store · TESMAG · ships worldwide",
-    "partner": "TESMAG",
-    "feature": {
-      "href": "https://www.teslaacessories.com/collections/floor-mats?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-      "kicker": "Start here · TESMAG",
-      "title": "Fitted floor mats",
-      "text": "The first thing worth buying. TPE and 3D all-weather sets cut for Model 3, Y, S, X and Cybertruck — including Juniper and Highland.",
-      "bullets": [
-        "Full cabin sets plus trunk, frunk and seat-back liners",
-        "Left-hand drive fitments TESMAG actually stocks",
-        "Ships worldwide from teslaacessories.com"
-      ],
-      "cta": "Open floor mats",
-      "image": "cabin",
-      "alt": "Cybertruck cabin floor and centre console from the driver’s seat",
-      "position": "center 85%"
-    },
-    "tiles": [
-      {
-        "href": "https://www.teslaacessories.com/collections/dashboard?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-        "title": "Dashboard & screen",
-        "text": "Protectors, trims and mounts that sit on the glass",
-        "image": "display",
-        "alt": "Tesla centre touchscreen and dashboard",
-        "cta": "Shop collection"
-      },
-      {
-        "href": "https://www.teslaacessories.com/collections/storage-boxes?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-        "title": "Storage",
-        "text": "Console trays, trunk boxes, organisers",
-        "image": "vault",
-        "alt": "Cybertruck vault bed, rear three-quarter",
-        "cta": "Shop"
-      },
-      {
-        "href": "https://www.teslaacessories.com/collections/wheel-covers?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-        "title": "Wheel covers",
-        "text": "Aero caps and rim protection",
-        "image": "wheels",
-        "alt": "Tesla Model 3 19-inch aero wheel",
-        "cta": "Shop"
-      },
-      {
-        "href": "https://www.teslaacessories.com/collections/seat-covers?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-        "title": "Seat covers",
-        "text": "Kids, pets, spills",
-        "image": "interior",
-        "alt": "Model 3 Performance interior with white seats",
-        "cta": "Shop"
-      },
-      {
-        "href": "https://www.teslaacessories.com/collections/sunshade-kit?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-        "title": "Sunshades",
-        "text": "Cool the glass roof",
-        "image": "white",
-        "alt": "Pearl White Model 3 Highland glass roof from above",
-        "cta": "Shop"
-      },
-      {
-        "href": "https://www.teslaacessories.com/collections/phone-holder?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-        "title": "Phone holders",
-        "text": "Mounts beside the screen",
-        "image": "interior",
-        "alt": "Model 3 centre console and cup holders",
-        "position": "78% 70%",
-        "cta": "Shop collection"
-      },
-      {
-        "href": "https://www.teslaacessories.com/collections/pet-accessories?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-        "title": "Pet accessories",
-        "text": "Seat hammocks and trunk protection for dogs",
-        "image": "cabin",
-        "alt": "Cybertruck yoke and front footwell",
-        "position": "center 80%",
-        "cta": "Shop collection"
-      }
-    ],
-    "shopAll": {
-      "href": "https://www.teslaacessories.com/?referral_code=J72E6FRRQ7QK&source_type=sales_plugin_af&slt=sales_plugin_af",
-      "label": "Shop all TESMAG"
-    },
-    "disclosure": "Affiliate links: I may earn a commission if you buy through them, at no extra cost to you. Prices and stock are set by TESMAG."
-  },
-  "upgrades": {
-    "id": "upgrades",
-    "headingId": "evb-h",
-    "title": "Upgrades & styling",
-    "sub": "Partner store · EV Bandit",
-    "partner": "EV Bandit",
-    "feature": {
-      "id": "evbandit",
-      "href": "https://evbandit.com/collections/screen-protection?sca_ref=12531326.pISwHMUOX3",
-      "kicker": "Start here · EV Bandit",
-      "title": "Screen protection",
-      "text": "EV Bandit’s own storefront leads with tempered glass. Matte and clear film for Model 3/Y 15-inch, Highland/Juniper 15.4-inch, refreshed S/X and Cybertruck 18.5-inch.",
-      "bullets": [
-        "9H glass plus washable anti-glare covers",
-        "Front and rear sets where the car has both screens",
-        "Highland, Juniper, refreshed S/X and Cybertruck sizes"
-      ],
-      "cta": "Open screen protection",
-      "image": "display",
-      "alt": "Tesla touchscreen in a Cybertruck cabin"
-    },
-    "products": [
-      {
-        "href": "https://evbandit.com/collections/floor-mats?sca_ref=12531326.pISwHMUOX3",
-        "kicker": "3D MAXpider",
-        "title": "Floor mats & liners",
-        "text": "Kagu all-weather sets and cargo liners for 3, Y, S, X and Cybertruck, including Juniper.",
-        "image": "cabin",
-        "alt": "Cabin floor from the driver’s seat",
-        "position": "center 85%",
-        "cta": "Shop collection"
-      },
-      {
-        "href": "https://evbandit.com/collections/carbon-fiber?sca_ref=12531326.pISwHMUOX3",
-        "kicker": "Interior & aero",
-        "title": "Carbon fibre",
-        "text": "Dash covers, console wraps, door-handle protectors and carbon aero pieces.",
-        "image": "body",
-        "alt": "Ultra Red Tesla Model 3 Highland",
-        "cta": "Shop collection"
-      },
-      {
-        "href": "https://evbandit.com/collections/taybi-rims?sca_ref=12531326.pISwHMUOX3",
-        "kicker": "Taybi / EVB forged",
-        "title": "Forged wheels",
-        "text": "Fully forged wheels for 3, Y, S and X, priced per wheel. Set of four at checkout.",
-        "image": "wheels",
-        "alt": "Close-up of a Tesla Model 3 wheel",
-        "cta": "Shop collection"
-      },
-      {
-        "href": "https://evbandit.com/collections/unplugged-performance?sca_ref=12531326.pISwHMUOX3",
-        "kicker": "Authorised dealer",
-        "title": "Unplugged Performance",
-        "text": "Carbon front aero for Highland Performance, Cybertruck beadlock wheels, suspension.",
-        "image": "m3",
-        "alt": "Model 3 Performance in Quicksilver",
-        "cta": "Shop collection"
-      },
-      {
-        "href": "https://evbandit.com/collections/robot-craftsman?sca_ref=12531326.pISwHMUOX3",
-        "kicker": "Robot Craftsman",
-        "title": "Body kits",
-        "text": "Hacker, Crypton and Hidrogai kits for Model 3 — carbon or FRP, narrow and widebody.",
-        "image": "body",
-        "alt": "Ultra Red Model 3 body",
-        "position": "20% 50%",
-        "cta": "Shop collection"
-      },
-      {
-        "href": "https://evbandit.com/collections/waido?sca_ref=12531326.pISwHMUOX3",
-        "kicker": "Waido",
-        "title": "Cybertruck widebody",
-        "text": "Waido aero kits including the Cybertruck widebody. Other Waido lines sit in the same collection.",
-        "image": "ct",
-        "alt": "Foundation Series Cybertruck at dusk",
-        "cta": "Shop collection"
-      }
-    ],
-    "shopAll": {
-      "href": "https://evbandit.com/?sca_ref=12531326.pISwHMUOX3",
-      "label": "Shop all EV Bandit"
-    },
-    "disclosure": "Affiliate links: I may earn a commission if you buy through them, at no extra cost to you. Prices and stock are set by EV Bandit."
-  },
-  "referral": {
-    "href": "https://ts.la/alex474841",
-    "kicker": "Buying a Tesla?",
-    "title": "Order with my referral",
-    "text": "Credits for both of us if Tesla’s programme applies in your market. Use ts.la/alex474841 at order.",
-    "note": "Referral link: we may earn a reward"
-  },
+  "disclosure": "Affiliate links: I may earn a commission if you buy through them, at no extra cost to you. Prices and stock are set by TESMAG and EV Bandit.",
   "checklist": {
     "kicker": "BEFORE YOU ORDER",
     "title": "A better fit starts with the right details.",
@@ -255,12 +281,12 @@
     ],
     "status": "Your preparation checklist stays on this device."
   },
-  "newsletter": {
-    "kicker": "YOUR SUNDAY ADVANTAGE",
-    "title": "The week. Worth your time.",
-    "text": "Tesla, SpaceX and Grok, with the stories and tracker changes that matter. One free Sunday email.",
-    "cta": "Get the free weekly edition",
-    "href": "/news.html#newsletter"
+  "referral": {
+    "href": "https://ts.la/alex474841",
+    "kicker": "Buying a Tesla?",
+    "title": "Order with my referral",
+    "text": "Credits for both of us if Tesla’s programme applies in your market. Use ts.la/alex474841 at order.",
+    "note": "Referral link: we may earn a reward"
   },
   "sources": "Collections match TESMAG’s “choose your model” shelves and EV Bandit’s live collection URLs (screen protection, floor mats, carbon fibre, Taybi rims, Unplugged Performance, Robot Craftsman, Waido).",
   "credits": [
@@ -296,41 +322,6 @@
       "subject": "Cybertruck",
       "url": "https://commons.wikimedia.org/wiki/File:Foundation_series_Cybertruck_at_dusk_in_San_Jose_dllu_(cropped).jpg",
       "author": "Dllu",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    },
-    {
-      "subject": "cabin/display",
-      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Cybertruck_-_Interior_-_Tesla_Store_Athens_2024.jpg",
-      "author": "Mpelas199",
-      "license": "CC0",
-      "licenseUrl": null
-    },
-    {
-      "subject": "vault",
-      "url": "https://commons.wikimedia.org/wiki/File:2024_Tesla_Cybertruck_Foundation_Series,_rear_left_(Greenwich).jpg",
-      "author": "Mr.choppers",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    },
-    {
-      "subject": "wheels",
-      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_(2023),_Japan,_19-inch_wheel.jpg",
-      "author": "Kazyakuruma",
-      "license": "CC0",
-      "licenseUrl": null
-    },
-    {
-      "subject": "Ultra Red body",
-      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Highland_Dual_Motor_AWD_Ultra_Red_01.jpg",
-      "author": "Ethan Llamas",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    },
-    {
-      "subject": "glass roof",
-      "url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Highland_Pearl_White_Multi-Coat_(3).jpg",
-      "author": "Damian B Oh",
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
@@ -391,80 +382,6 @@
       "src": "/assets/reviews/cybertruck.jpg",
       "w": 1600,
       "h": 959
-    },
-    "cabin": {
-      "base": "/assets/gear/cabin",
-      "widths": [
-        480,
-        960,
-        1280
-      ],
-      "src": "/assets/gear/cabin-960w.webp",
-      "w": 1280,
-      "h": 960
-    },
-    "display": {
-      "base": "/assets/gear/display",
-      "widths": [
-        480,
-        960,
-        1280
-      ],
-      "src": "/assets/gear/display-960w.webp",
-      "w": 1280,
-      "h": 960
-    },
-    "vault": {
-      "base": "/assets/gear/vault",
-      "widths": [
-        480,
-        960,
-        1280
-      ],
-      "src": "/assets/gear/vault-960w.webp",
-      "w": 1280,
-      "h": 760
-    },
-    "interior": {
-      "base": "/assets/gear/interior",
-      "widths": [
-        480,
-        720
-      ],
-      "src": "/assets/gear/interior-720w.webp",
-      "w": 720,
-      "h": 480
-    },
-    "body": {
-      "base": "/assets/gear/body",
-      "widths": [
-        480,
-        720
-      ],
-      "src": "/assets/gear/body-720w.webp",
-      "w": 720,
-      "h": 463
-    },
-    "wheels": {
-      "base": "/assets/gear/wheels",
-      "widths": [
-        480,
-        720
-      ],
-      "src": "/assets/gear/wheels-720w.webp",
-      "w": 720,
-      "h": 720
-    },
-    "white": {
-      "base": "/assets/guides/model3-highland-white",
-      "widths": [
-        480,
-        960,
-        1280
-      ],
-      "src": "/assets/guides/model3-highland-white.jpg",
-      "w": 1280,
-      "h": 960
     }
   },
   "models": [

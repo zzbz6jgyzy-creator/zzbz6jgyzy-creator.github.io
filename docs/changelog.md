@@ -11,6 +11,16 @@
 
 # Changelog
 
+## 29 Oct 2026 — Gear page, second pass: calmer and organised by what you want
+
+- **Organised by need, not by shop:** one "Shop by what you need" list of 15 equal cards (TESMAG and EV Bandit merged), ordered by usefulness with the two "Start here" items (floor mats, screen protection) first. Each card has an icon, a small neutral source label (TESMAG or EV Bandit, plus the existing line name such as 3D MAXpider), one description and a single link. The two long photo grids and the big shop banners are gone.
+- **Filter chips that work without JavaScript:** All, Interior, Screen & glass, Wheels, Exterior & performance, TESMAG, EV Bandit are radio buttons styled in CSS (`:has()`); a 20-line script only adds "Showing N of 15" and makes `#daily` / `#upgrades` links pick the matching chip.
+- **Compact hero, no photograph:** headline, one sentence, "Shop all TESMAG" and "Shop all EV Bandit" at the top, then the "Choose your Tesla" picker (five TESMAG model cards; a compact list on phones). Same Wikimedia photos and credits for those five; credits for photos no longer shown were removed.
+- **Simple sticky nav:** Your Tesla, Browse gear, Before you order, with the current section highlighted. The dark-glass header treatment is removed; the header is the normal site header again.
+- **Disclosure:** the affiliate note appears twice (beside the two shop-all links at the top, and after the list) instead of about eight times; every link still has `rel="sponsored noopener"`, an external-link arrow, and "affiliate link, opens in a new tab" in its accessible name. The referral band keeps its own "Referral link: we may earn a reward" note.
+- **Quieter ending:** the checklist and the referral band follow the list, without banners. The extra "The week. Worth your time." newsletter block was removed from this page.
+- **Size:** page height 10,267 / 8,469 / 6,689 px (390 / 768 / 1440) before, 6,034 / 4,658 / 3,776 px after. Mobile transfer 504 KiB to 270 KiB. Lighthouse mobile (gzip server, 3 runs each): Performance 91-94 before, 98-99 after; LCP 2.8-3.1 s before, 1.9-2.3 s after; CLS 0, TBT 0-70 ms before and 0 after. Lab numbers vary by a few points between runs.
+
 ## 28 Oct 2026 — Gear page redesign
 
 - **Car-led hero with a "Choose your Tesla" picker:** a full-bleed dark stage with the existing Model 3 photo, a short headline and five model tiles. Each tile opens that model's TESMAG collection in one tap; a small "Upgrades" chip jumps to the EV Bandit shelf on the same page. On phones the tiles are a swipeable snap carousel with the next card peeking.
