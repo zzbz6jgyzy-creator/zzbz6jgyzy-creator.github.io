@@ -44,6 +44,7 @@ function validate(d,promiseIds){
  if(Math.abs((cl.eu.manualCollisions/cl.eu.manualKm)/(cl.eu.fsdCollisions/cl.eu.fsdKm)-cl.eu.multiple)>0.05)fail('EU multiple does not match the collision counts');
  for(const c of cl.caveats){if(!c.text||(c.status!==null&&!status[c.status]))fail('caveat');for(const x of c.sources)ref(x);}
  if(!d.promises.topic)fail('promise topic');
+ if(!d.refresh.length||d.refresh.some(r=>!r.id||!r.what||!r.last||!r.next||!['expected','manual','event'].includes(r.kind)))fail('refresh');
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }

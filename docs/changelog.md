@@ -1,5 +1,14 @@
 # Changelog
 
+## 28 Oct 2026 — FSD tracker, part 5a (return visits)
+
+- **When it updates next:** a table of what refreshes from which source and when we expect the next change (our expectations, marked as such, not Tesla's schedule).
+- **Follow by email:** the site's usual weekly tracker digest box on the page (Beehiiv, topic tesla-software). We have no per-country alerts: the newsletter tool does not segment by country, so the box is the whole offer.
+- **RSS:** `/fsd-tracker-feed.xml` carries this page's change log.
+- **Your country:** a picker in the markets section that remembers the country on the device only and shows Tesla-list and EU recognition status from the page's own data.
+- **Share image:** a 1200x630 card with the four headline numbers (`scripts/fsd-tracker-og-card.mjs`).
+- **Tests:** two library-ban tests matched bundle hashes (a hash containing "d3" failed them); they now match library file names.
+
 ## 28 Oct 2026 — FSD tracker, part 4 (safety claims and promises)
 
 - **What Tesla says about safety:** Tesla's published miles per major collision (FSD 5.30M, manual with Active Safety 2.18M, manual without 0.86M, U.S. average 0.66M) as bars, with each group's collisions and miles, the collision definition, last year's figures, the EU dashboard claim and four caveats. The figures are labelled Reported, with their February 2026 date, because we have not compared them with Tesla's own report: they come from Not a Tesla App, EVwire, Drive Tesla Canada and Automotive World (headline only), which we opened. Two caveats are our own reading and carry no label or outlet. The 8.0x and 2.4x multiples are our own division and marked as estimates. The validator checks each row (miles driven / collisions = miles per collision, within 1%).

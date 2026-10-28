@@ -11,3 +11,12 @@ bars.forEach(b=>{
 });
 addEventListener('keydown',ev=>{if(ev.key==='Escape')hide();});
 })();
+
+// "Your country": remembered on this device only. Text comes from the page, so the wording is the same as the build.
+(function(){
+const box=document.getElementById('ft-pick'),sel=document.getElementById('ft-pick-sel'),out=document.getElementById('ft-pick-out');if(!box||!sel||!out)return;
+const KEY='sd-fsd-country';let saved='';try{saved=localStorage.getItem(KEY)||'';}catch(e){}
+const apply=v=>{const o=sel.querySelector('option[value="'+v+'"]');out.textContent=o&&v?o.getAttribute('data-text'):'';};
+box.hidden=false;if(saved&&sel.querySelector('option[value="'+saved+'"]')){sel.value=saved;apply(saved);}
+sel.addEventListener('change',()=>{apply(sel.value);try{sel.value?localStorage.setItem(KEY,sel.value):localStorage.removeItem(KEY);}catch(e){}});
+})();

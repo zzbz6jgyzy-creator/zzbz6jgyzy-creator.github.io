@@ -232,6 +232,11 @@
     {
       "date": "2026-10-28",
       "kind": "update",
+      "text": "Added a 'When it updates next' table, a follow-by-email box, an RSS feed of this change log, a share image and a country picker in the markets section."
+    },
+    {
+      "date": "2026-10-28",
+      "kind": "update",
       "text": "Added the safety claims section (Tesla's published crash-rate comparisons, with what each is compared against) and the promises strip (all 15 FSD / autonomy entries in the ledger), which reads the same ledger as the promise tracker."
     },
     {
@@ -1508,5 +1513,42 @@
   },
   "promises": {
     "topic": "FSD / autonomy"
-  }
+  },
+  "refresh": [
+    {
+      "id": "deck",
+      "what": "Subscriptions, deliveries and cumulative miles",
+      "last": "Tesla Q3 2026 update, 21 Oct 2026",
+      "next": "Tesla's Q4 2026 update, expected around January 2027. Tesla has not announced the date.",
+      "kind": "expected"
+    },
+    {
+      "id": "attach",
+      "what": "North America attach rate",
+      "last": "Tesla Q3 2026 update, 21 Oct 2026",
+      "next": "With the next quarterly update, if Tesla repeats the figure.",
+      "kind": "expected"
+    },
+    {
+      "id": "software",
+      "what": "Cars seen on each FSD build",
+      "last": "Snapshot pinned 28 Oct 2026",
+      "next": "Re-pinned by hand each quarter (see the refresh checklist); the live software tracker updates more often.",
+      "kind": "manual"
+    },
+    {
+      "id": "markets",
+      "what": "Markets and Europe",
+      "last": "Checked 26 Oct 2026",
+      "next": "When a country is added or a national authority recognises the approval; we re-check at least each quarter.",
+      "kind": "event"
+    },
+    {
+      "id": "safety",
+      "what": "Safety claims",
+      "last": "Reported 19 Feb 2026 (U.S.) and 2 Sep 2026 (EU)",
+      "next": "Tesla has not published a schedule. We update when an outlet reports a new report or dashboard.",
+      "kind": "event"
+    }
+  ]
 }
