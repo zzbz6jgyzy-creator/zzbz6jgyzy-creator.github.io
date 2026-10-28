@@ -1,5 +1,11 @@
 # Changelog
 
+## 28 Oct 2026 — FSD tracker, part 4 (safety claims and promises)
+
+- **What Tesla says about safety:** Tesla's published miles per major collision (FSD 5.30M, manual with Active Safety 2.18M, manual without 0.86M, U.S. average 0.66M) as bars, with each group's collisions and miles, the collision definition, last year's figures, the EU dashboard claim and four caveats. The figures are labelled Reported, with their February 2026 date, because we have not compared them with Tesla's own report: they come from Not a Tesla App, EVwire, Drive Tesla Canada and Automotive World (headline only), which we opened. Two caveats are our own reading and carry no label or outlet. The 8.0x and 2.4x multiples are our own division and marked as estimates. The validator checks each row (miles driven / collisions = miles per collision, within 1%).
+- **What was promised:** all 15 FSD / autonomy promises read from `data/promises.json` (tally, said and due dates, status, source), so a correction in the promise tracker shows here.
+- **Tools used:** Scrapling fetched the three source articles.
+
 ## 28 Oct 2026 — FSD tracker, part 3 (atlas and Europe)
 
 - **Where it works:** a dark world map of Tesla-listed FSD markets with a Europe close-up, region bars and a pointer to the country-by-country finder. Drawn at build time from public-domain Natural Earth geometry; no map library.

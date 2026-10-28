@@ -55,6 +55,11 @@ async def main():
             assert await page.locator('.ft-rel li').count() == 8, tag
             assert await page.locator('.ft-bar').count() == 7, tag
             assert await page.locator('#adoption .ft-table tbody tr').count() == 7, tag
+            assert await page.locator('#safety .ft-claims li').count() == 4 and await page.locator('#safety .ft-caveats li').count() == 4, tag
+            assert await page.locator('#promises .ft-promise').count() == 15, tag
+            for li in await page.locator('#promises .ft-promise').all():
+                t, st = await li.locator('h3').bounding_box(), await li.locator('.ft-pstatus').bounding_box()
+                assert t['x'] + t['width'] <= st['x'] + 0.5 or st['x'] + st['width'] <= t['x'] + 0.5 or t['y'] + t['height'] <= st['y'] or st['y'] + st['height'] <= t['y'], (tag, 'promise title and status overlap')
             assert not errors, (tag, errors)
             # The table view is a native <details>, so it works with no script.
             await page.locator('#adoption .ft-table-view summary').click()

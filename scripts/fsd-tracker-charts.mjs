@@ -128,3 +128,9 @@ export function recognitionSteps(rec){
   ['2026-04-01','2026-06-01','2026-08-01','2026-10-01'].forEach(d=>s+=`<text x="${x(d)}" y="${H-22}" class="ft-ax" text-anchor="middle">${new Date(d+'T12:00:00Z').toLocaleDateString('en-GB',{month:'short',timeZone:'UTC'})}</text>`);
   return s+'</svg>';
 }
+
+// Miles between major collisions as Tesla publishes them, drawn as CSS bars (readable on a phone). The multiple of the U.S. average is our own division.
+export function claimsBars(rows){
+  const us=rows.find(r=>r.id==='us'),max=Math.max(...rows.map(r=>r.miles))*1.04;
+  return `<ol class="ft-hbars ft-claims" aria-label="Miles driven per major collision, as Tesla reports it">${rows.map(r=>`<li class="${r.id==='fsd'?'ft-hot':''}"><span class="ft-hb-q">${e(r.label)}</span><span class="ft-hb-track"><i style="width:${(r.miles/max*100).toFixed(1)}%"></i></span><span class="ft-hb-v">${nf(r.miles/1e6)}M</span><span class="ft-hb-r">${nf(r.collisions,0)} major collisions in ${r.drivenMiles>=1e12?nf(r.drivenMiles/1e12)+' trillion':r.drivenMiles>=1e9?nf(r.drivenMiles/1e9)+' billion':nf(r.drivenMiles/1e6)+' million'} miles${r.id==='us'?'':`. ${nf(r.miles/us.miles,1)}× the U.S. average (our division)`}</span></li>`).join('')}</ol>`;
+}
