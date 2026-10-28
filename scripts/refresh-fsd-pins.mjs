@@ -39,7 +39,12 @@ d.europe={asOf:euRaw.updated,popSource:'eurostat',popAsOf:'2025-01-01',populatio
  recognitions:recog.map(e=>({date:e.date,code:e.country,name:eu.find(c=>c.code===e.country).name,kind:e.sourceType,links:e.evidence.map(id=>srcById[id]?.url).filter(Boolean).slice(0,2)}))};
 // Keep the cited source dates in step with what was pinned, then validate before writing anything.
 const sref=id=>d.sources.find(x=>x.id===id);
-sref('eurostat').date=eurostat.updated;sref('eurostat').checked=new Date().toISOString().slice(0,10);
+// Only record an 'opened' date when we actually fetched. Offline runs leave every stored date untouched.
+if(!process.env.FSD_PINS_OFFLINE){
+  const today=new Date().toISOString().slice(0,10);
+  sref('eurostat').date=eurostat.updated;sref('eurostat').checked=today;
+  if(d.reviewed<today){d.reviewed=today;console.log('reviewed moved to',today,'(add a changes entry for what you re-checked)');}
+}
 sref('tesla-markets').checked=tm.checked;sref('tesla-markets').date=tm.checked;
 if(d.europe.states.some(s=>!Number.isInteger(s.population)))throw Error('Eurostat is missing a country; nothing was written');
 d.sourcesPinned={eurostatUpdated:eurostat.updated,teslaMarketsChecked:tm.checked};

@@ -15,7 +15,7 @@ async def main():
         browser = await p.chromium.launch(
             executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome') or shutil.which('chromium'),
             args=['--no-sandbox', '--disable-dev-shm-usage'])
-        cases = [(320, 'dark', 'normal'), (390, 'dark', 'normal'), (768, 'dark', 'normal'), (1440, 'dark', 'normal'),
+        cases = [(320, 'dark', 'normal'), (360, 'dark', 'normal'), (390, 'dark', 'normal'), (768, 'dark', 'normal'), (1440, 'dark', 'normal'),
                  (390, 'light', 'normal'), (1440, 'light', 'normal'), (390, 'dark', 'nojs'), (390, 'dark', 'blocked-js')]
         for width, theme, mode in cases:
             ctx = await browser.new_context(viewport={'width': width, 'height': 1000}, java_script_enabled=mode != 'nojs',

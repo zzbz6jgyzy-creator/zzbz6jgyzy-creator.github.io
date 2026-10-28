@@ -3,7 +3,7 @@
 ## 28 Oct 2026 — FSD tracker, part 3 (atlas and Europe)
 
 - **Where it works:** a dark world map of Tesla-listed FSD markets with a Europe close-up, region bars and a pointer to the country-by-country finder. Drawn at build time from public-domain Natural Earth geometry; no map library.
-- **Europe and the road to a decision:** one tile per EU state (recognised and listed, recognised only, nothing recorded, with a dot where customer use is reported), the two thresholds other trackers draw (15 of 27 states and 65% of EU population) and a step chart and dated list of the ten recognitions. The population share is our own arithmetic on Eurostat's 1 January 2025 figures (14.3% for the ten recognising states, which also matches FSD·EU's figure). The page says a national recognition is not a committee vote and that we do not forecast one.
+- **Europe and the road to a decision:** one tile per EU state (recognised and listed, recognised only, nothing recorded, with a dot where customer use is reported), the two thresholds FSD·EU draws (15 of 27 states and 65% of EU population) and a step chart and dated list of the ten recognitions. The population share is our own arithmetic on Eurostat's 1 January 2025 figures (14.3% for the ten recognising states, which also matches FSD·EU's figure). The page says a national recognition is not a committee vote and that we do not forecast one.
 - **Pinned data:** the markets and Europe slices are now pinned into `data/fsd-tracker.json` by `scripts/refresh-fsd-pins.mjs` (renamed from `refresh-fsd-software.mjs`), so the page no longer reads other trackers' data files at build time.
 - **Also in this change:** `docs/tooling.md` and `.claude/rules/tools.md` (the installed extra tools and the rule to use them).
 

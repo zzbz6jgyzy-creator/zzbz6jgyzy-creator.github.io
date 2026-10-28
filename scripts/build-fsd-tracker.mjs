@@ -62,7 +62,7 @@ const sec=[
  ['miles','How much it has driven','Cumulative miles on FSD (Supervised), as drawn in Tesla\'s own deck.',milesHtml],
  ['software','Which builds are spreading','Cars a connected-car service has seen on each FSD build, and how fast new builds appear in its sample.',softwareHtml],
  ['atlas','Where it works','Which markets Tesla lists for FSD (Supervised), shown on a map and by region.',atlasHtml],
- ['europe','Europe and the road to a decision','Which EU states have recognised the Dutch approval, and the two thresholds other trackers measure against.',europeHtml],
+ ['europe','Europe and the road to a decision','Which EU states have recognised the Dutch approval, and the two thresholds FSD·EU measures against.',europeHtml],
  ['labels','How to read the numbers','Every figure on this page carries one of these labels, a date and a source.',legend],
  ['changes','What changed','Corrections are shown here, never silently rewritten.',changes],
  ['sources','Sources','The sources behind the numbers above, with the date we opened each. Individual recognition links in the Europe section come from our Europe tracker\'s evidence records.',ledger]
@@ -104,7 +104,7 @@ const recs=[{url:'/fsd-tracker.html',title:'FSD by the numbers',tag:'FSD',summar
  {url:'/fsd-tracker.html#adoption',title:'FSD adoption: subscriptions and attach rate',tag:'FSD',summary:'Active FSD subscriptions per quarter from Tesla’s decks and the North America attach rate on new deliveries.'},
  {url:'/fsd-tracker.html#miles',title:'FSD cumulative miles',tag:'FSD',summary:'Cumulative miles driven with FSD (Supervised), measured from Tesla’s deck chart and marked approximate, plus the European totals.'},
  {url:'/fsd-tracker.html#atlas',title:'FSD markets map',tag:'FSD',summary:'World map of Tesla-listed FSD (Supervised) markets with regional counts and a Europe close-up.'},
- {url:'/fsd-tracker.html#europe',title:'FSD in Europe: the road to an EU-wide decision',tag:'FSD',summary:'Which EU states recognise the Dutch approval, recognitions over time and the two thresholds other trackers show.'},
+ {url:'/fsd-tracker.html#europe',title:'FSD in Europe: the road to an EU-wide decision',tag:'FSD',summary:'Which EU states recognise the Dutch approval, recognitions over time and the two thresholds FSD·EU shows.'},
  {url:'/fsd-tracker.html#software',title:'FSD software: which builds are spreading',tag:'FSD',summary:'Cars Teslascope has seen on each FSD build, new cars per day and the latest FSD builds.'}];
 index.pages=index.pages.filter(x=>!x.url.startsWith('/fsd-tracker.html'));
 // After the last /fsd.html entry, so the global tracker's builder (which keeps its own records in one block) never reorders ours.

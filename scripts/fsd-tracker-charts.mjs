@@ -99,7 +99,7 @@ export function regionBars(atlas){
   const regions=['Americas','Europe','Asia-Pacific','Middle East & Africa'];
   const rows=regions.map(r=>({r,n:atlas.countries.filter(c=>c.region===r&&c.status==='listed').length,u:atlas.countries.filter(c=>c.region===r&&c.status==='uncertain').length,t:atlas.countries.filter(c=>c.region===r).length}));
   const max=Math.max(1,...rows.map(r=>r.n));
-  return `<ol class="ft-hbars ft-regions" aria-label="Tesla-listed markets by region">${rows.map(r=>`<li><span class="ft-hb-q">${e(r.r)}</span><span class="ft-hb-track"><i style="width:${(r.n/max*100).toFixed(1)}%"></i></span><span class="ft-hb-v">${r.n}</span><span class="ft-hb-r">of ${r.t} tracked${r.u?`, ${r.u} unresolved`:''}${r.n?': '+e(atlas.countries.filter(c=>c.region===r.r&&c.status==="listed").map(c=>c.name).join(', ')):''}</span></li>`).join('')}</ol>`;
+  return `<ol class="ft-hbars ft-regions" aria-label="Tesla-listed markets by region">${rows.map(r=>`<li><span class="ft-hb-q">${e(r.r)}</span><span class="ft-hb-track"><i style="width:${(r.n/max*100).toFixed(1)}%"></i></span><span class="ft-hb-v">${r.n}</span><span class="ft-hb-r">of ${r.t} tracked${r.u?`, ${r.u} unresolved`:''}${r.n?'. Listed: '+e(atlas.countries.filter(c=>c.region===r.r&&c.status==="listed").map(c=>c.name).join(', ')):''}</span></li>`).join('')}</ol>`;
 }
 // One tile per EU state: recognised and listed, recognised only, or neither. A dot marks reported customer use.
 export function euTiles(eu){
