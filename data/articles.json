@@ -1,6 +1,19 @@
 {
-  "updated": "2026-10-28T02:36:00Z",
+  "updated": "2026-10-28T08:40:00Z",
   "articles": [
+    {
+      "url": "/dispatch/spacex-faa-10000-launches.html",
+      "title": "SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours",
+      "date": "2026-10-28T08:40:00Z",
+      "topic": "spacex",
+      "tag": "Launch policy",
+      "image": "/assets/dispatch/crs35-launch-iss-streak-nasa.jpg",
+      "summary": "SpaceX’s FAA filing says it expects 10,000 launches a year and that air traffic rules are now the limit. Airlines for America wants launches at low-traffic times.",
+      "pinned": false,
+      "imageAlt": "A long-exposure photo of a Falcon 9 launch and returning booster with the space station streaking past (photo: NASA/John Kraus, public domain)",
+      "author": "Alex R",
+      "minutes": 7
+    },
     {
       "url": "/dispatch/tesla-powershare-120v-outlet.html",
       "title": "Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you",
