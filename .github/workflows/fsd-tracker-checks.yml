@@ -14,6 +14,7 @@ on:
       - 'assets/world-countries.svg'
       - 'scripts/build-fsd-tracker.mjs'
       - 'scripts/fsd-tracker-charts.mjs'
+      - 'scripts/fsd-tracker-og-card.mjs'
       - 'scripts/inject_newsletter.py'
       - 'fsd-tracker-feed.xml'
       - 'scripts/refresh-fsd-pins.mjs'
@@ -48,7 +49,7 @@ jobs:
           node scripts/build-fsd-tracker.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
-          sh scripts/ci-generated-ownership.sh -- assets/js fsd-tracker.html data/pages.json
+          sh scripts/ci-generated-ownership.sh -- assets/js fsd-tracker.html fsd-tracker-feed.xml data/pages.json
       - name: Responsive, no-JS and tooltip journeys
         run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/fsd-tracker-browser.py
       - uses: actions/upload-artifact@v4

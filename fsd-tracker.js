@@ -16,7 +16,8 @@ addEventListener('keydown',ev=>{if(ev.key==='Escape')hide();});
 (function(){
 const box=document.getElementById('ft-pick'),sel=document.getElementById('ft-pick-sel'),out=document.getElementById('ft-pick-out');if(!box||!sel||!out)return;
 const KEY='sd-fsd-country';let saved='';try{saved=localStorage.getItem(KEY)||'';}catch(e){}
-const apply=v=>{const o=sel.querySelector('option[value="'+v+'"]');out.textContent=o&&v?o.getAttribute('data-text'):'';};
-box.hidden=false;if(saved&&sel.querySelector('option[value="'+saved+'"]')){sel.value=saved;apply(saved);}
+const find=v=>[...sel.options].find(o=>o.value===v&&v);
+const apply=v=>{const o=find(v);out.textContent=o&&v?o.getAttribute('data-text'):'';};
+box.hidden=false;if(saved&&find(saved)){sel.value=saved;apply(saved);}
 sel.addEventListener('change',()=>{apply(sel.value);try{sel.value?localStorage.setItem(KEY,sel.value):localStorage.removeItem(KEY);}catch(e){}});
 })();

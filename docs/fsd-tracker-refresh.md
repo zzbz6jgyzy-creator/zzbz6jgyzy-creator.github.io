@@ -10,6 +10,13 @@
 - **Our estimate**: our own arithmetic on disclosed numbers (for example subscriptions per delivered car). Shown dashed.
 - **Approx. from chart**: read off a published chart with no exact labels.
 - **Target**: a stated aim or date.
+- **Our expectation**: our guess at when a number next changes (the "When it updates next" table). Never a Tesla schedule.
+
+## Each quarter, also
+
+- Re-read the "When it updates next" rows in `data/fsd-tracker.json` (`refresh`): the dates in the "Last updated from" column are built from the sources, but the "Next update" wording is ours.
+- Regenerate the share image: `node scripts/fsd-tracker-og-card.mjs`, serve the repo, screenshot `scripts/fsd-tracker-og-card.html` at 1200x630 to `assets/og-fsd-tracker.jpg`. A test fails if the card HTML is stale.
+- The RSS feed (`fsd-tracker-feed.xml`) is rebuilt with the page; add a `changes` entry for anything a reader should know.
 
 Every figure needs a source with a `checked` date no later than `reviewed`.
 

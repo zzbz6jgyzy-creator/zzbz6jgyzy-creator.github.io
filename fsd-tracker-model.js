@@ -2,7 +2,7 @@
 // Used by the builder (Node) and available to page scripts: one validator, one set of labels.
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // disclosed: Tesla or a regulator, in a document we opened. estimate: our own arithmetic. approx: read off a published chart.
-const status={disclosed:'Disclosed',reported:'Reported',estimate:'Our estimate',approx:'Approx. from chart',target:'Target'};
+const status={disclosed:'Disclosed',reported:'Reported',estimate:'Our estimate',approx:'Approx. from chart',target:'Target',expected:'Our expectation'};
 const day=x=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(x||''))return false;const d=new Date(x+'T12:00:00Z');return Number.isFinite(+d)&&d.toISOString().slice(0,10)===x;};
 const https=x=>{try{return new URL(x).protocol==='https:';}catch{return false;}};
 const fail=m=>{throw Error('Invalid FSD tracker record: '+m);};
@@ -44,7 +44,7 @@ function validate(d,promiseIds){
  if(Math.abs((cl.eu.manualCollisions/cl.eu.manualKm)/(cl.eu.fsdCollisions/cl.eu.fsdKm)-cl.eu.multiple)>0.05)fail('EU multiple does not match the collision counts');
  for(const c of cl.caveats){if(!c.text||(c.status!==null&&!status[c.status]))fail('caveat');for(const x of c.sources)ref(x);}
  if(!d.promises.topic)fail('promise topic');
- if(!d.refresh.length||d.refresh.some(r=>!r.id||!r.what||!r.last||!r.next||!['expected','manual','event'].includes(r.kind)))fail('refresh');
+ if(!d.refresh.length||d.refresh.some(r=>!r.id||!r.what||!r.next||!['deck','software','markets','safety'].includes(r.from)))fail('refresh');
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }
