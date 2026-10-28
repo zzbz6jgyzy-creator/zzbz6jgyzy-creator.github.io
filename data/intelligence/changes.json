@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-28T22:53:51.284Z",
+  "updated": "2026-10-28T23:04:32.963Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:wave:2026.38.5.11",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.11",
+      "previous": "718",
+      "next": "792",
+      "at": "2026-10-28T22:53:49.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.11 moved from 718 to 792 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "title": "2026.38.5.11",
+      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-28T22:53:49.000Z|792"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/cybercab-outnumbers-model-y.html",
@@ -195,15 +212,15 @@
       "tracker": "starship",
       "field": "schedule",
       "previous": "",
-      "next": "Reported, not confirmed by SpaceX: Ship 42 completed a six-engine, roughly 60-second full-duration static fire at Massey’s on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time), as reported by NASASpaceflight and logged by Next Spaceflight. It follows the 26 Oct single-engine deorbit-burn demo. SpaceX hasn’t posted about it. Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
+      "next": "SpaceX confirmed on 28 Oct 2026 (12:10pm ET, 9:10am PT) that Ship 42’s static fires are complete: the Flight 15 Starship performed a full-duration, six-engine static fire and fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight and Next Spaceflight put the six-engine fire, roughly 60 seconds long, at Massey’s on 27 Oct 2026, about 5:46pm ET (2:46pm PT). Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
       "at": "2026-10-27T00:00:00.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Next Spaceflight (also reported by NASASpaceflight)",
-      "sourceUrl": "https://www.nextspaceflight.com/starship/hardware/80/",
+      "source": "SpaceX on X (timing per NASASpaceflight and Next Spaceflight)",
+      "sourceUrl": "https://x.com/SpaceX/status/2115476295169814978",
       "href": "/starship.html#schedule",
-      "summary": "Reported, not confirmed by SpaceX: Ship 42 completed a six-engine, roughly 60-second full-duration static fire at Massey’s on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time), as reported by NASASpaceflight and logged by Next Spaceflight. It follows the 26 Oct single-engine deorbit-burn demo. SpaceX hasn’t posted about it. Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
+      "summary": "SpaceX confirmed on 28 Oct 2026 (12:10pm ET, 9:10am PT) that Ship 42’s static fires are complete: the Flight 15 Starship performed a full-duration, six-engine static fire and fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight and Next Spaceflight put the six-engine fire, roughly 60 seconds long, at Massey’s on 27 Oct 2026, about 5:46pm ET (2:46pm PT). Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
       "title": "Flight 15 change",
-      "id": "logged|starship:schedule|2026-10-27T00:00:00.000Z|Reported, not confirmed by SpaceX: Ship 42 completed a six-engine, roughly 60-second full-duration static fire at Massey’s on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time), as reported by NASASpaceflight and logged by Next Spaceflight. It follows the 26 Oct single-engine deorbit-burn demo. SpaceX hasn’t posted about it. Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker)."
+      "id": "logged|starship:schedule|2026-10-27T00:00:00.000Z|SpaceX confirmed on 28 Oct 2026 (12:10pm ET, 9:10am PT) that Ship 42’s static fires are complete: the Flight 15 Starship performed a full-duration, six-engine static fire and fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight and Next Spaceflight put the six-engine fire, roughly 60 seconds long, at Massey’s on 27 Oct 2026, about 5:46pm ET (2:46pm PT). Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker)."
     },
     {
       "type": "changed",
@@ -382,15 +399,15 @@
       "tracker": "starship",
       "field": "schedule",
       "previous": "",
-      "next": "Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page.",
+      "next": "SpaceX confirmed on 28 Oct 2026 that Ship 42 fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight’s live coverage and Next Spaceflight’s test log put that single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT). Still no SpaceX launch date or mission page.",
       "at": "2026-10-26T00:00:00.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "NASASpaceflight on X (also logged by Next Spaceflight)",
-      "sourceUrl": "https://x.com/NASASpaceflight/status/2114904512217694216",
+      "source": "SpaceX on X (timing per NASASpaceflight and Next Spaceflight)",
+      "sourceUrl": "https://x.com/SpaceX/status/2115476295169814978",
       "href": "/starship.html#schedule",
-      "summary": "Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page.",
+      "summary": "SpaceX confirmed on 28 Oct 2026 that Ship 42 fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight’s live coverage and Next Spaceflight’s test log put that single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT). Still no SpaceX launch date or mission page.",
       "title": "Flight 15 change",
-      "id": "logged|starship:schedule|2026-10-26T00:00:00.000Z|Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page."
+      "id": "logged|starship:schedule|2026-10-26T00:00:00.000Z|SpaceX confirmed on 28 Oct 2026 that Ship 42 fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight’s live coverage and Next Spaceflight’s test log put that single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT). Still no SpaceX launch date or mission page."
     },
     {
       "type": "logged",
@@ -901,23 +918,6 @@
       "summary": "Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page.",
       "title": "Flight 15 change",
       "id": "logged|starship:schedule|2026-10-11T00:00:00.000Z|Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page."
-    },
-    {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.38.3.1",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.3.1",
-      "previous": "0",
-      "next": "43",
-      "at": "2026-10-10T08:48:07.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.3.1 first appeared in the Teslascope sample with 43 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
-      "title": "2026.38.3.1",
-      "id": "appeared|tesla-software:wave:2026.38.3.1|2026-10-10T08:48:07.000Z|43"
     },
     {
       "type": "logged",
