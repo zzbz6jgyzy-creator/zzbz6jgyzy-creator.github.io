@@ -1,6 +1,6 @@
 ## 2026-10-28 — Referral link wording
 
-- The Tesla referral link now reads "Order a Tesla" in the site footer, the Gear page band and the referral banner (grow.js). The "Referral link: we may earn a reward" note stays beside every one of them.
+- The Tesla referral link now reads "Order with my Tesla link" in the site footer, the Gear page band and the referral banner (grow.js). The "Referral link: we may earn a reward" note stays beside every one of them.
 - The footer referral link now carries `rel="sponsored"` (editorial rule 7). The analytics label "Tesla referral" is unchanged.
 
 ## 2026-10-28 — Navigation studio

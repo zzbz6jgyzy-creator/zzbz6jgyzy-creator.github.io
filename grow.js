@@ -20,7 +20,7 @@
     r.className = "sd-ref"; r.setAttribute("aria-label", "Tesla referral link");
     r.innerHTML = `<div><p class="sd-ref-eb">Referral link</p><h2>Buying a Tesla?</h2>
       <p class="sd-ref-sub">Use my referral link when you order for any perks Tesla offers in your market. I may get credits too.</p></div>
-      <a class="sd-btn" href="${REF}" target="_blank" rel="noopener noreferrer sponsored">Order a Tesla ↗</a><span class="ref-note">Referral link: we may earn a reward</span>`;
+      <a class="sd-btn" href="${REF}" target="_blank" rel="noopener noreferrer sponsored">Order with my Tesla link ↗</a><span class="ref-note">Referral link: we may earn a reward</span>`;
     place(r);
   }
   const bandCopy = () => {
