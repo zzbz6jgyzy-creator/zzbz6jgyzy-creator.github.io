@@ -16,7 +16,7 @@ const studio=S.validate(JSON.parse(read('data/roadster-studio.json')));
 const clips=JSON.parse(read('data/roadster-clips.json')),clipById=Object.fromEntries(clips.clips.map(c=>[c.id,c]));
 const d=M.validate(JSON.parse(read('data/roadster-experience.json')),studio.sources,clips.clips.map(c=>c.id));
 const tint=JSON.parse(read('data/roadster-colors.json'));
-const URL_='https://superchargeddaily.com/roadster-preview.html',OG='https://superchargeddaily.com/assets/roadster-studio/finale-1920w.webp';
+const URL_='https://superchargeddaily.com/roadster-preview.html',OG='https://superchargeddaily.com/assets/og-roadster.jpg';
 
 const fmt=(v,o={day:'numeric',month:'short',year:'numeric'})=>new Intl.DateTimeFormat('en-GB',{...o,timeZone:'UTC'}).format(new Date(String(v).slice(0,10)+'T12:00:00Z')).replace('Sept','Sep');
 const all=new Map([...studio.sources.map(s=>[s.id,{id:s.id,label:s.label,outlet:s.label,url:s.url,kind:/^manufacturer/i.test(s.kind)?'manufacturer':'reporting',kindLabel:s.kind,note:s.note,checked:s.checked,date:null,studio:true}]),...d.sources.map(s=>[s.id,s])]);
@@ -85,6 +85,7 @@ ${changes}<p class="rx-note">Reviewed ${fmt(d.reviewed)}. Corrections are shown 
 const groupName={exterior:'Exterior',interior:'Interior',engineering:'Engineering',reveal:'The reveal'};
 const photo=(g,i)=>picture(g.id,g.alt,{folder:g.legacy?'roadster':'roadster-studio',eager:i<2,sizes:'(max-width: 700px) 88vw, 70vw'});
 const shots=studio.gallery.map((g,i)=>`<li class="rx-shot" data-rx-group="${g.group}"><a class="rx-shot-link" href="/assets/${g.legacy?'roadster':'roadster-studio'}/${g.id}-1920w.webp" data-rx-photo="${i}" style="--c:${tint[g.id]||'#202226'}" aria-label="Open ${e(g.title)} full screen">${photo(g,i)}<span class="rx-shot-open" aria-hidden="true">Open</span></a><div class="rx-shot-cap"><p class="rx-kicker">${e(groupName[g.group])} / ${String(i+1).padStart(2,'0')}</p><h3>${e(g.title)}</h3><p>${e(g.description)}</p><small>${e(g.credit)} · ${cite(g.source)}</small></div></li>`).join('');
+const social=d.social,xHtml=`<section class="rx-social" id="on-x" aria-labelledby="on-x-h"><div class="rx-wrap">${head(e(social.kicker),social.title,e(social.lead)).replace('<h2>','<h2 id="on-x-h">')}<div class="rx-social-grid">${social.posts.map(q=>`<figure class="figure-embed"><blockquote class="twitter-tweet" data-media-max-width="720" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">${e(q.text)}</p>— ${e(q.author)} (@${e(q.handle)}) <a href="${e(q.url)}">View the post on X</a></blockquote><figcaption>${e(q.caption)}</figcaption></figure>`).join('')}</div></div></section>`;
 const galleryHtml=`<section class="rx-gallery" id="gallery" data-rx-chapter="gallery" aria-labelledby="gallery-h"><div class="rx-wrap">${head(e(d.gallery.kicker),d.gallery.title,e(d.gallery.lead)).replace('<h2>','<h2 id="gallery-h">')}
 <div class="rx-gallery-bar"><div class="rx-filters" role="group" aria-label="Picture collections">${[['all','All'],['exterior','Exterior'],['interior','Interior'],['engineering','Engineering'],['reveal','The reveal']].map(([id,name])=>`<button type="button" data-rx-filter="${id}" aria-pressed="${id==='all'}">${name}</button>`).join('')}</div><p class="rx-count" id="rx-gallery-count" role="status" aria-live="polite">${studio.gallery.length} pictures</p><div class="rx-arrows" role="group" aria-label="Scroll the pictures"><button type="button" data-rx-reel="-1" aria-label="Previous pictures">←</button><button type="button" data-rx-reel="1" aria-label="Next pictures">→</button></div></div></div>
 <div class="rx-reel" tabindex="0" role="region" aria-label="Roadster pictures"><ol class="rx-reel-list">${shots}</ol></div></section>
@@ -130,7 +131,7 @@ const timelineHtml=`<section class="rx-read rx-timeline" id="timeline" data-rx-c
 // ---- Chapter tabs. Below 900 px the script shows one panel at a time; wide screens and no-script readers get every panel in order.
 // Each anchor id the site links to lives in exactly one panel (a test checks it). Labels are short so seven fit a scrolling bar.
 const tabDefs=[
- {id:'pictures',label:'Pictures',primary:'gallery',html:galleryHtml},
+ {id:'pictures',label:'Pictures',primary:'gallery',html:galleryHtml+xHtml},
  {id:'inside',label:'Inside',primary:'cockpit',html:cockpitHtml},
  {id:'engineering',label:'Engineering',primary:'tech',html:techHtml},
  {id:'numbers',label:'Numbers',primary:'performance',html:numbersHtml},
@@ -172,7 +173,7 @@ const meta=`<title>${e(d.page.title)}</title>
     <meta property="og:description" content="${e(d.page.description)}" />
     <meta property="og:url" content="${URL_}" />
     <meta property="og:image" content="${OG}" />
-    <meta property="og:image:alt" content="Silver Tesla Roadster in a dark studio, front three-quarter view. Tesla imagery." />
+    <meta property="og:image:alt" content="The Tesla Roadster at night with its doors raised under a starry sky, with the words Roadster: it flew, here is what is real. Image: Tesla." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
@@ -186,5 +187,7 @@ html=html.replace(/<title>[\s\S]*?(?=<link rel="icon" href="\/favicon\.ico")/,me
 // The stylesheet token follows the file's content, so a CSS change can never ship under a stale cache key.
 const cssV=crypto.createHash('sha1').update(read('roadster-experience.css')).digest('hex').slice(0,8);
 html=html.replace(/roadster-experience\.css\?v=[\w-]+/,'roadster-experience.css?v='+cssV);
+if(!html.includes('/x-embed.css'))html=html.replace('<link rel="stylesheet" href="/roadster-experience.css','<link rel="stylesheet" href="/x-embed.css?v=202610262130" />\n    <link rel="stylesheet" href="/roadster-experience.css');
+if(!html.includes('/x-embed.js'))html=html.replace('  </body>','    <script defer src="/x-embed.js?v=202610262130"></script>\n  </body>');
 fs.writeFileSync(path.join(ROOT,'roadster-preview.html'),html);
 console.log(`Roadster preview: ${d.facts.length} facts, ${d.reveal.steps.length} reveal steps, ${d.faq.length} questions, ${all.size} sources; reviewed ${d.reviewed}`);

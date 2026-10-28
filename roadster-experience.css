@@ -473,3 +473,8 @@ html[data-theme="light"] .rx-page .pn-credit{color:#a0a0a6}
 .rx-sources h3{font:500 .72rem var(--rx-mono);letter-spacing:.13em;text-transform:uppercase;color:var(--rx-read-accent);margin-bottom:16px}
 @media(min-width:901px){.rx-ledger{columns:2;column-gap:clamp(32px,5vw,72px)}.rx-ledger li{break-inside:avoid}}
 .rx-closing .rx-changes{max-width:78ch}.rx-closing .rx-note{max-width:78ch}
+
+.rx-social{padding-block:72px;background:var(--rx-bg)}.rx-social-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px;margin-top:32px}.rx-social .figure-embed{margin:0}.rx-social figcaption{color:var(--rx-mute);font-size:.8rem;margin-top:10px}
+.rx-social .x-embed-load{background:#fff;color:#0b0c0e;border:1px solid transparent;border-radius:999px;padding:10px 18px;font:500 .78rem var(--rx-mono);letter-spacing:.06em;text-transform:uppercase;min-height:44px}
+.rx-social .x-embed-load:hover:not(:disabled){border-color:var(--rx-accent,#e8c27a)}.rx-social .x-embed-load:focus-visible{outline:3px solid var(--rx-accent,#e8c27a)}
+.rx-social .x-embed-note,.rx-social blockquote,.rx-social blockquote a{color:var(--rx-dim)}.rx-social blockquote{margin:0 0 16px;padding:18px 20px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.03)}.rx-social blockquote p{color:#fff;font-size:1.2rem;margin:0 0 8px}
