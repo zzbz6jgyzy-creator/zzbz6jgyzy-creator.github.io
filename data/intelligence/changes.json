@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-28T01:57:18.828Z",
+  "updated": "2026-10-28T02:29:23.142Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11166",
+      "next": "11190",
+      "at": "2026-10-28T00:31:45.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html",
+      "summary": "Starlink in orbit changed from 11166 to 11190.",
+      "title": "Starlink in orbit",
+      "id": "changed|starlink:in-orbit|2026-10-28T00:31:45.000Z|11190"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/raptor-engines-explained.html",
