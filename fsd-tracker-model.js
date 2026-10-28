@@ -28,6 +28,12 @@ function validate(d){
  sw.days.forEach((x,i)=>{if(!day(x)||(i&&x<=sw.days[i-1]))fail('software days');});
  for(const b of sw.builds)if(!b.id||b.counts.length!==sw.days.length||b.counts.some(v=>!Number.isInteger(v)||v<0))fail('software build '+b.id);
  for(const r of sw.releases)if(!r.id||!day(r.date)||!r.status)fail('release '+r.id);
+ const at=d.atlas;ref(at.source);if(!day(at.asOf)||at.countries.length<20||at.countries.some(c=>!/^[A-Z]{2}$/.test(c.code)||!['listed','uncertain','not_listed'].includes(c.status)||!c.region||!(Math.abs(c.lon)<=180&&Math.abs(c.lat)<=90)))fail('atlas');
+ const eu=d.europe;ref(eu.popSource);ref(eu.thresholds.source);
+ if(!day(eu.asOf)||eu.states.length!==27||!(eu.populationTotal>4e8)||eu.states.some(s=>!/^[A-Z]{2}$/.test(s.code)||!(s.population>0)||typeof s.recognised!=='boolean'))fail('europe states');
+ if(eu.states.filter(s=>s.recognised).length!==eu.recognitions.length)fail('recognitions do not match recognised states');
+ eu.recognitions.forEach((r,i)=>{if(!day(r.date)||r.date>d.reviewed||(i&&r.date<eu.recognitions[i-1].date)||!eu.states.some(s=>s.code===r.code&&s.recognised)||!r.links.length)fail('recognition '+r.code);});
+ if(Math.abs(eu.states.reduce((a,s)=>a+s.population,0)-eu.populationTotal)>1)fail('EU population does not add up');
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }

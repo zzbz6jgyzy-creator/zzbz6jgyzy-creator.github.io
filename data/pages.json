@@ -728,6 +728,18 @@
       "summary": "Cumulative miles driven with FSD (Supervised), measured from Tesla’s deck chart and marked approximate, plus the European totals."
     },
     {
+      "url": "/fsd-tracker.html#atlas",
+      "title": "FSD markets map",
+      "tag": "FSD",
+      "summary": "World map of Tesla-listed FSD (Supervised) markets with regional counts and a Europe close-up."
+    },
+    {
+      "url": "/fsd-tracker.html#europe",
+      "title": "FSD in Europe: the road to an EU-wide decision",
+      "tag": "FSD",
+      "summary": "Which EU states recognise the Dutch approval, recognitions over time and the two thresholds other trackers show."
+    },
+    {
       "url": "/fsd-tracker.html#software",
       "title": "FSD software: which builds are spreading",
       "tag": "FSD",

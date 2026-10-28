@@ -80,3 +80,48 @@ export function dailyTable(sw){
   const body=rows.map(r=>`<tr><th scope="row"><span class="ft-k-b">${e(r.b.id)}</span>${r.b.fsd?`<small>${e(r.b.fsd)}</small>`:''}</th>${r.cells.map(v=>`<td style="--i:${(Math.abs(v)/mx).toFixed(2)}" class="${v>0?'ft-up':v<0?'ft-dn':'ft-0'}">${v>0?'+':''}${v}</td>`).join('')}</tr>`).join('');
   return `<div class="ft-table-wrap" tabindex="0" role="region" aria-label="New cars seen on each build per day, scrolls sideways on small screens"><table class="ft-table ft-heat"><thead><tr><th scope="col">Build</th>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
 }
+
+// ---------- Atlas and Europe ----------
+const STATUS={listed:'Tesla-listed',uncertain:'Scope unresolved',not_listed:'Not on checked list'};
+const proj=(lon,lat)=>[(lon+180)*1000/360,(90-lat)*500/180];
+// Build-time world map: public-domain Natural Earth land with each tracked market coloured by status. No script needed.
+export function atlasMap(atlas,geo,europe=false){
+  const byCode=new Map(atlas.countries.map(c=>[c.code,c]));
+  const paths=atlas.countries.filter(c=>geo.countries[c.code]).map(c=>`<path d="${geo.countries[c.code]}" class="ft-m-${c.status}"><title>${e(c.name)}: ${STATUS[c.status]}</title></path>`).join('');
+  const vb=europe?'462 50 152 106':'0 20 1000 400';
+  const labels=europe?atlas.countries.filter(c=>c.status==='listed'&&c.region==='Europe').map(c=>{const [x,y]=proj(c.lon,c.lat);return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" class="ft-m-lab" text-anchor="middle">${e(c.code)}</text>`;}).join(''):'';
+  const id=europe?'e':'w';
+  return `<svg class="ft-chart ft-map${europe?' ft-map-eu':''}" viewBox="${vb}" role="img" aria-labelledby="ft-mp-t${id} ft-mp-d${id}" focusable="false"><title id="ft-mp-t${id}">${europe?'Europe':'World'} map of Tesla-listed FSD markets</title><desc id="ft-mp-d${id}">${atlas.countries.filter(c=>c.status==='listed').length} markets are on Tesla's list. Colour marks listing status only. The country table has the same information.</desc><rect x="-100" y="-100" width="1300" height="800" class="ft-m-sea"/>${europe?'':`<defs><g id="ft-geo"><path d="${geo.land}" class="ft-m-land" fill-rule="evenodd"/>${paths}</g></defs>`}<use href="#ft-geo"/>${labels}</svg>`;
+}
+export function regionBars(atlas){
+  const regions=['Americas','Europe','Asia-Pacific','Middle East & Africa'];
+  const rows=regions.map(r=>({r,n:atlas.countries.filter(c=>c.region===r&&c.status==='listed').length,u:atlas.countries.filter(c=>c.region===r&&c.status==='uncertain').length,t:atlas.countries.filter(c=>c.region===r).length}));
+  const max=Math.max(1,...rows.map(r=>r.n));
+  return `<ol class="ft-hbars ft-regions" aria-label="Tesla-listed markets by region">${rows.map(r=>`<li><span class="ft-hb-q">${e(r.r)}</span><span class="ft-hb-track"><i style="width:${(r.n/max*100).toFixed(1)}%"></i></span><span class="ft-hb-v">${r.n}</span><span class="ft-hb-r">of ${r.t} tracked${r.u?`, ${r.u} unresolved`:''}</span></li>`).join('')}</ol>`;
+}
+// One tile per EU state: recognised and listed, recognised only, or neither. A dot marks reported customer use.
+export function euTiles(eu){
+  const order=[...eu.states].sort((a,b)=>(b.recognised-a.recognised)||(b.population-a.population));
+  const cls=s=>s.recognised&&s.listed?'ft-t-both':s.recognised?'ft-t-rec':s.listed?'ft-t-list':'ft-t-none';
+  const txt=s=>`${s.name}: ${s.recognised?'recognised by its authority':'no recognition recorded'}; ${s.listed?'listed by Tesla':'not on Tesla\'s list'}${s.observed?'; customer use reported':''}`;
+  return `<ul class="ft-tiles" aria-label="The 27 EU states">${order.map(s=>`<li class="${cls(s)}" title="${e(txt(s))}"><b aria-hidden="true">${e(s.code)}</b><span class="ft-sr">${e(txt(s))}</span>${s.observed?'<i aria-hidden="true"></i>':''}</li>`).join('')}</ul>`;
+}
+export function euMeters(eu){
+  const rec=eu.states.filter(s=>s.recognised),n=eu.states.length,pop=rec.reduce((a,s)=>a+s.population,0)/eu.populationTotal*100,th=eu.thresholds;
+  const meter=(w,mark,label,left,right,aria)=>`<div class="ft-meter-row"><div class="ft-meter" role="img" aria-label="${e(aria)}"><i style="width:${w.toFixed(1)}%"></i><u style="left:${mark}%"></u></div><p class="ft-ml"><span>${left}</span><span>${right}</span></p></div>`;
+  return {pop,html:meter(rec.length/n*100,th.states/n*100,'',`<b>${rec.length}</b> of ${n} states recognised`,`${th.states} needed`,`${rec.length} of ${n} EU states recognised; ${th.states} needed`)
+   +meter(pop,th.populationPct,'',`<b>${pop.toFixed(1)}%</b> of EU population`,`${th.populationPct}% needed`,`${pop.toFixed(1)} percent of EU population; ${th.populationPct} percent needed`)};
+}
+// Count of recognising states over time, as a step line with each recognition labelled.
+export function recognitionSteps(rec){
+  const W=720,H=320,L=44,R=24,T=28,B=52,pw=W-L-R,ph=H-T-B,n=rec.length;
+  const t0=Date.parse('2026-04-01T00:00:00Z'),t1=Date.parse(rec.at(-1).date+'T00:00:00Z')+9*864e5,t=d=>Date.parse(d+'T00:00:00Z');
+  const x=d=>L+pw*(t(d)-t0)/(t1-t0),y=v=>T+ph-ph*v/Math.max(10,n);
+  let s=`<svg class="ft-chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="ft-r-t ft-r-d" focusable="false"><title id="ft-r-t">Number of EU states recognising Tesla's FSD approval, by date</title><desc id="ft-r-d">The count steps from 0 to ${n} between ${dayLabel(rec[0].date)} and ${dayLabel(rec.at(-1).date)} 2026, one step per country. The list below the chart gives each date.</desc>`;
+  for(let v=0;v<=10;v+=5)s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" class="ft-grid"/><text x="${L-10}" y="${y(v)+4}" class="ft-ax" text-anchor="end">${v}</text>`;
+  const pts=[[t0,0]];rec.forEach((r,i)=>{pts.push([t(r.date),i]);pts.push([t(r.date),i+1]);});pts.push([t1,n]);
+  s+=`<polyline points="${pts.map(([tt,v])=>`${(L+pw*(tt-t0)/(t1-t0)).toFixed(1)},${y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="#ff3e60" stroke-width="3" stroke-linejoin="round"/>`;
+  rec.forEach((r,i)=>{const cx=x(r.date),cy=y(i+1);s+=`<circle cx="${cx}" cy="${cy}" r="4.5" class="ft-dot"/><text x="${cx+(i%2?8:-8)}" y="${cy+(i%2?18:-10)}" class="ft-val" text-anchor="${i%2?'start':'end'}">${e(r.code)}</text>`;});
+  ['2026-04-01','2026-06-01','2026-08-01','2026-10-01'].forEach(d=>s+=`<text x="${x(d)}" y="${H-22}" class="ft-ax" text-anchor="middle">${new Date(d+'T12:00:00Z').toLocaleDateString('en-GB',{month:'short',timeZone:'UTC'})}</text>`);
+  return s+'</svg>';
+}

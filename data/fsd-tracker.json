@@ -37,6 +37,33 @@
       "url": "https://www.teslascope.com/software",
       "date": "2026-10-27",
       "checked": "2026-10-27"
+    },
+    {
+      "id": "tesla-markets",
+      "outlet": "Tesla",
+      "kind": "primary",
+      "title": "Tesla's worldwide FSD (Supervised) market list, as recorded in our global tracker",
+      "url": "https://www.tesla.com/fsd/safety",
+      "date": "2026-10-26",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "eurostat",
+      "outlet": "Eurostat",
+      "kind": "primary",
+      "title": "Population on 1 January by age and sex (demo_pjan), data of 1 January 2025",
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/demo_pjan/default/table",
+      "date": "2026-09-25",
+      "checked": "2026-10-28"
+    },
+    {
+      "id": "fsd-eu",
+      "outlet": "FSD·EU",
+      "kind": "reporting",
+      "title": "FSD in the EU: path to EU-wide approval (15 of 27 states and 65% of EU population)",
+      "url": "https://fsd-eu-tracker.de/en/",
+      "date": "2026-10-27",
+      "checked": "2026-10-27"
     }
   ],
   "kpis": [
@@ -313,12 +340,13 @@
       "2026-10-24",
       "2026-10-25",
       "2026-10-26",
-      "2026-10-27"
+      "2026-10-27",
+      "2026-10-28"
     ],
     "timeline": 8,
     "caveat": "These are cars Teslascope has seen on each build: owners who connect their car to Teslascope, a self-selected sample that leans to enthusiasts and to North America and Europe. In our stored snapshots a build's count almost never falls, so we treat it as a running total of cars seen on that build, not a share of cars on it today. Other trackers follow different cars and can give different counts.",
-    "asOf": "2026-10-27T23:50:00Z",
-    "latestCount": 3363,
+    "asOf": "2026-10-28T00:17:58Z",
+    "latestCount": 3362,
     "builds": [
       {
         "id": "2026.38.5.1",
@@ -340,6 +368,7 @@
           1012,
           1022,
           1028,
+          1029,
           1029,
           1029
         ]
@@ -365,7 +394,8 @@
           5,
           88,
           412,
-          639
+          639,
+          642
         ]
       },
       {
@@ -387,6 +417,7 @@
           375,
           376,
           376,
+          377,
           377,
           377,
           377
@@ -413,6 +444,7 @@
           324,
           326,
           326,
+          326,
           326
         ]
       },
@@ -437,6 +469,7 @@
           204,
           249,
           280,
+          300,
           300
         ]
       },
@@ -461,6 +494,7 @@
           62,
           125,
           139,
+          146,
           146
         ]
       }
@@ -553,5 +587,761 @@
       }
     ],
     "heatDays": 8
+  },
+  "atlas": {
+    "asOf": "2026-10-26",
+    "source": "tesla-markets",
+    "countries": [
+      {
+        "code": "US",
+        "name": "United States",
+        "region": "Americas",
+        "lon": -98,
+        "lat": 39.5,
+        "status": "listed"
+      },
+      {
+        "code": "CA",
+        "name": "Canada",
+        "region": "Americas",
+        "lon": -106,
+        "lat": 56,
+        "status": "listed"
+      },
+      {
+        "code": "MX",
+        "name": "Mexico",
+        "region": "Americas",
+        "lon": -102.5,
+        "lat": 23.6,
+        "status": "listed"
+      },
+      {
+        "code": "PR",
+        "name": "Puerto Rico",
+        "region": "Americas",
+        "lon": -66.5,
+        "lat": 18.2,
+        "status": "listed"
+      },
+      {
+        "code": "CN",
+        "name": "China",
+        "region": "Asia-Pacific",
+        "lon": 104,
+        "lat": 35,
+        "status": "uncertain"
+      },
+      {
+        "code": "KR",
+        "name": "South Korea",
+        "region": "Asia-Pacific",
+        "lon": 127.8,
+        "lat": 36.4,
+        "status": "listed"
+      },
+      {
+        "code": "AU",
+        "name": "Australia",
+        "region": "Asia-Pacific",
+        "lon": 134.5,
+        "lat": -25.3,
+        "status": "listed"
+      },
+      {
+        "code": "NZ",
+        "name": "New Zealand",
+        "region": "Asia-Pacific",
+        "lon": 172.6,
+        "lat": -41.3,
+        "status": "listed"
+      },
+      {
+        "code": "JP",
+        "name": "Japan",
+        "region": "Asia-Pacific",
+        "lon": 138,
+        "lat": 36.2,
+        "status": "not_listed"
+      },
+      {
+        "code": "NL",
+        "name": "Netherlands",
+        "region": "Europe",
+        "lon": 5.3,
+        "lat": 52.1,
+        "status": "listed"
+      },
+      {
+        "code": "LT",
+        "name": "Lithuania",
+        "region": "Europe",
+        "lon": 23.9,
+        "lat": 55.2,
+        "status": "listed"
+      },
+      {
+        "code": "EE",
+        "name": "Estonia",
+        "region": "Europe",
+        "lon": 25.5,
+        "lat": 58.6,
+        "status": "listed"
+      },
+      {
+        "code": "DK",
+        "name": "Denmark",
+        "region": "Europe",
+        "lon": 9.5,
+        "lat": 56,
+        "status": "listed"
+      },
+      {
+        "code": "BE",
+        "name": "Belgium",
+        "region": "Europe",
+        "lon": 4.5,
+        "lat": 50.5,
+        "status": "listed"
+      },
+      {
+        "code": "SI",
+        "name": "Slovenia",
+        "region": "Europe",
+        "lon": 14.8,
+        "lat": 46.1,
+        "status": "listed"
+      },
+      {
+        "code": "CZ",
+        "name": "Czechia",
+        "region": "Europe",
+        "lon": 15.5,
+        "lat": 49.8,
+        "status": "listed"
+      },
+      {
+        "code": "HR",
+        "name": "Croatia",
+        "region": "Europe",
+        "lon": 15.2,
+        "lat": 45.1,
+        "status": "listed"
+      },
+      {
+        "code": "DE",
+        "name": "Germany",
+        "region": "Europe",
+        "lon": 10.4,
+        "lat": 51.2,
+        "status": "not_listed"
+      },
+      {
+        "code": "FR",
+        "name": "France",
+        "region": "Europe",
+        "lon": 2.3,
+        "lat": 46.6,
+        "status": "not_listed"
+      },
+      {
+        "code": "IT",
+        "name": "Italy",
+        "region": "Europe",
+        "lon": 12.6,
+        "lat": 42.8,
+        "status": "not_listed"
+      },
+      {
+        "code": "ES",
+        "name": "Spain",
+        "region": "Europe",
+        "lon": -3.7,
+        "lat": 40.4,
+        "status": "not_listed"
+      },
+      {
+        "code": "SE",
+        "name": "Sweden",
+        "region": "Europe",
+        "lon": 15.2,
+        "lat": 62.2,
+        "status": "not_listed"
+      },
+      {
+        "code": "GR",
+        "name": "Greece",
+        "region": "Europe",
+        "lon": 22,
+        "lat": 39.2,
+        "status": "not_listed"
+      },
+      {
+        "code": "FI",
+        "name": "Finland",
+        "region": "Europe",
+        "lon": 26,
+        "lat": 64,
+        "status": "not_listed"
+      },
+      {
+        "code": "IE",
+        "name": "Ireland",
+        "region": "Europe",
+        "lon": -7.8,
+        "lat": 53.2,
+        "status": "not_listed"
+      },
+      {
+        "code": "PL",
+        "name": "Poland",
+        "region": "Europe",
+        "lon": 19.4,
+        "lat": 52,
+        "status": "not_listed"
+      },
+      {
+        "code": "RO",
+        "name": "Romania",
+        "region": "Europe",
+        "lon": 25,
+        "lat": 45.9,
+        "status": "not_listed"
+      },
+      {
+        "code": "PT",
+        "name": "Portugal",
+        "region": "Europe",
+        "lon": -8.2,
+        "lat": 39.6,
+        "status": "not_listed"
+      },
+      {
+        "code": "HU",
+        "name": "Hungary",
+        "region": "Europe",
+        "lon": 19.5,
+        "lat": 47.2,
+        "status": "not_listed"
+      },
+      {
+        "code": "AT",
+        "name": "Austria",
+        "region": "Europe",
+        "lon": 14.6,
+        "lat": 47.5,
+        "status": "not_listed"
+      },
+      {
+        "code": "BG",
+        "name": "Bulgaria",
+        "region": "Europe",
+        "lon": 25.5,
+        "lat": 42.7,
+        "status": "not_listed"
+      },
+      {
+        "code": "SK",
+        "name": "Slovakia",
+        "region": "Europe",
+        "lon": 19.7,
+        "lat": 48.7,
+        "status": "listed"
+      },
+      {
+        "code": "LV",
+        "name": "Latvia",
+        "region": "Europe",
+        "lon": 24.6,
+        "lat": 56.9,
+        "status": "not_listed"
+      },
+      {
+        "code": "CY",
+        "name": "Cyprus",
+        "region": "Europe",
+        "lon": 33.4,
+        "lat": 35.1,
+        "status": "not_listed"
+      },
+      {
+        "code": "LU",
+        "name": "Luxembourg",
+        "region": "Europe",
+        "lon": 6.1,
+        "lat": 49.75,
+        "status": "not_listed"
+      },
+      {
+        "code": "MT",
+        "name": "Malta",
+        "region": "Europe",
+        "lon": 14.4,
+        "lat": 35.9,
+        "status": "not_listed"
+      },
+      {
+        "code": "GB",
+        "name": "United Kingdom",
+        "region": "Europe",
+        "lon": -2.2,
+        "lat": 53.8,
+        "status": "not_listed"
+      },
+      {
+        "code": "NO",
+        "name": "Norway",
+        "region": "Europe",
+        "lon": 8.8,
+        "lat": 60.5,
+        "status": "not_listed"
+      },
+      {
+        "code": "CH",
+        "name": "Switzerland",
+        "region": "Europe",
+        "lon": 8.2,
+        "lat": 46.8,
+        "status": "not_listed"
+      },
+      {
+        "code": "IS",
+        "name": "Iceland",
+        "region": "Europe",
+        "lon": -19,
+        "lat": 65,
+        "status": "not_listed"
+      },
+      {
+        "code": "AE",
+        "name": "United Arab Emirates",
+        "region": "Middle East & Africa",
+        "lon": 54,
+        "lat": 24,
+        "status": "not_listed"
+      },
+      {
+        "code": "SA",
+        "name": "Saudi Arabia",
+        "region": "Middle East & Africa",
+        "lon": 45,
+        "lat": 24,
+        "status": "not_listed"
+      },
+      {
+        "code": "ZA",
+        "name": "South Africa",
+        "region": "Middle East & Africa",
+        "lon": 25,
+        "lat": -29,
+        "status": "not_listed"
+      },
+      {
+        "code": "IL",
+        "name": "Israel",
+        "region": "Middle East & Africa",
+        "lon": 35,
+        "lat": 31,
+        "status": "not_listed"
+      },
+      {
+        "code": "TR",
+        "name": "Türkiye",
+        "region": "Middle East & Africa",
+        "lon": 35,
+        "lat": 39,
+        "status": "not_listed"
+      },
+      {
+        "code": "IN",
+        "name": "India",
+        "region": "Asia-Pacific",
+        "lon": 79,
+        "lat": 22,
+        "status": "not_listed"
+      },
+      {
+        "code": "SG",
+        "name": "Singapore",
+        "region": "Asia-Pacific",
+        "lon": 103.8,
+        "lat": 1.3,
+        "status": "not_listed"
+      },
+      {
+        "code": "TW",
+        "name": "Taiwan",
+        "region": "Asia-Pacific",
+        "lon": 121,
+        "lat": 24,
+        "status": "not_listed"
+      },
+      {
+        "code": "HK",
+        "name": "Hong Kong",
+        "region": "Asia-Pacific",
+        "lon": 114.2,
+        "lat": 22.3,
+        "status": "not_listed"
+      },
+      {
+        "code": "TH",
+        "name": "Thailand",
+        "region": "Asia-Pacific",
+        "lon": 101,
+        "lat": 15,
+        "status": "not_listed"
+      },
+      {
+        "code": "MY",
+        "name": "Malaysia",
+        "region": "Asia-Pacific",
+        "lon": 102,
+        "lat": 4,
+        "status": "not_listed"
+      },
+      {
+        "code": "BR",
+        "name": "Brazil",
+        "region": "Americas",
+        "lon": -52,
+        "lat": -12,
+        "status": "not_listed"
+      },
+      {
+        "code": "CL",
+        "name": "Chile",
+        "region": "Americas",
+        "lon": -71,
+        "lat": -33,
+        "status": "not_listed"
+      }
+    ]
+  },
+  "europe": {
+    "asOf": "2026-10-26",
+    "popSource": "eurostat",
+    "popAsOf": "2025-01-01",
+    "populationTotal": 450646971,
+    "thresholds": {
+      "states": 15,
+      "populationPct": 65,
+      "source": "fsd-eu"
+    },
+    "states": [
+      {
+        "code": "NL",
+        "name": "Netherlands",
+        "recognised": true,
+        "listed": true,
+        "observed": false,
+        "population": 18044027
+      },
+      {
+        "code": "LT",
+        "name": "Lithuania",
+        "recognised": true,
+        "listed": true,
+        "observed": false,
+        "population": 2890664
+      },
+      {
+        "code": "EE",
+        "name": "Estonia",
+        "recognised": true,
+        "listed": true,
+        "observed": false,
+        "population": 1369995
+      },
+      {
+        "code": "DK",
+        "name": "Denmark",
+        "recognised": true,
+        "listed": true,
+        "observed": false,
+        "population": 5992734
+      },
+      {
+        "code": "BE",
+        "name": "Belgium",
+        "recognised": true,
+        "listed": true,
+        "observed": false,
+        "population": 11883495
+      },
+      {
+        "code": "SI",
+        "name": "Slovenia",
+        "recognised": true,
+        "listed": true,
+        "observed": false,
+        "population": 2130850
+      },
+      {
+        "code": "CZ",
+        "name": "Czechia",
+        "recognised": true,
+        "listed": true,
+        "observed": true,
+        "population": 10909500
+      },
+      {
+        "code": "HR",
+        "name": "Croatia",
+        "recognised": true,
+        "listed": true,
+        "observed": false,
+        "population": 3874350
+      },
+      {
+        "code": "DE",
+        "name": "Germany",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 83577140
+      },
+      {
+        "code": "FR",
+        "name": "France",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 68882600
+      },
+      {
+        "code": "IT",
+        "name": "Italy",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 58943464
+      },
+      {
+        "code": "ES",
+        "name": "Spain",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 49128297
+      },
+      {
+        "code": "SE",
+        "name": "Sweden",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 10587710
+      },
+      {
+        "code": "GR",
+        "name": "Greece",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 10372335
+      },
+      {
+        "code": "FI",
+        "name": "Finland",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 5635971
+      },
+      {
+        "code": "IE",
+        "name": "Ireland",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 5440278
+      },
+      {
+        "code": "PL",
+        "name": "Poland",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 36497495
+      },
+      {
+        "code": "RO",
+        "name": "Romania",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 19043151
+      },
+      {
+        "code": "PT",
+        "name": "Portugal",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 10749635
+      },
+      {
+        "code": "HU",
+        "name": "Hungary",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 9539502
+      },
+      {
+        "code": "AT",
+        "name": "Austria",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 9197213
+      },
+      {
+        "code": "BG",
+        "name": "Bulgaria",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 6437360
+      },
+      {
+        "code": "SK",
+        "name": "Slovakia",
+        "recognised": true,
+        "listed": true,
+        "observed": false,
+        "population": 5419451
+      },
+      {
+        "code": "LV",
+        "name": "Latvia",
+        "recognised": true,
+        "listed": false,
+        "observed": false,
+        "population": 1860565
+      },
+      {
+        "code": "CY",
+        "name": "Cyprus",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 982966
+      },
+      {
+        "code": "LU",
+        "name": "Luxembourg",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 681973
+      },
+      {
+        "code": "MT",
+        "name": "Malta",
+        "recognised": false,
+        "listed": false,
+        "observed": false,
+        "population": 574250
+      }
+    ],
+    "recognitions": [
+      {
+        "date": "2026-04-10",
+        "code": "NL",
+        "name": "Netherlands",
+        "kind": "authority",
+        "links": [
+          "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands"
+        ]
+      },
+      {
+        "date": "2026-05-20",
+        "code": "LT",
+        "name": "Lithuania",
+        "kind": "media",
+        "links": [
+          "https://www.reuters.com/world/europe/tesla-launches-full-self-driving-lithuania-2026-05-20/"
+        ]
+      },
+      {
+        "date": "2026-05-29",
+        "code": "EE",
+        "name": "Estonia",
+        "kind": "media",
+        "links": [
+          "https://estonianworld.com/technology/estonia-approves-teslas-self-driving-system-for-its-roads/"
+        ]
+      },
+      {
+        "date": "2026-06-09",
+        "code": "DK",
+        "name": "Denmark",
+        "kind": "authority",
+        "links": [
+          "https://www.fstyr.dk/nyheder/2026/jun/teslas-foererassistentsystem-fsd-supervised-er-foreloebigt-godkendt-i-danmark"
+        ]
+      },
+      {
+        "date": "2026-06-10",
+        "code": "BE",
+        "name": "Belgium",
+        "kind": "media",
+        "links": [
+          "https://evxl.co/2026/06/10/tesla-fsd-belgium-denmark-approval/"
+        ]
+      },
+      {
+        "date": "2026-09-07",
+        "code": "SI",
+        "name": "Slovenia",
+        "kind": "authority",
+        "links": [
+          "https://www.gov.si/novice/2026-09-08-slovenija-odpira-vrata-naprednim-tehnologijam-avtomatizirane-voznje/"
+        ]
+      },
+      {
+        "date": "2026-09-21",
+        "code": "CZ",
+        "name": "Czechia",
+        "kind": "authority",
+        "links": [
+          "https://md.gov.cz/Media/Media-a-tiskove-zpravy/Ceska-republika-uznala-prozatimni-schvaleni-system"
+        ]
+      },
+      {
+        "date": "2026-09-29",
+        "code": "HR",
+        "name": "Croatia",
+        "kind": "media",
+        "links": [
+          "https://n1info.hr/magazin/auto/teslin-sustav-samostalne-voznje-s-nadzorom-odobren-u-hrvatskoj/"
+        ]
+      },
+      {
+        "date": "2026-10-16",
+        "code": "SK",
+        "name": "Slovakia",
+        "kind": "media",
+        "links": [
+          "https://tnlive.sk/domace/clanok/1057565-slovensko-povolilo-revolucnu-technologiu-od-tesly-auta-mozu-samostatne-zatacat-ci-prejst-krizovatkou"
+        ]
+      },
+      {
+        "date": "2026-10-26",
+        "code": "LV",
+        "name": "Latvia",
+        "kind": "media",
+        "links": [
+          "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
+          "https://lat.bb.lv/raksts/musu-latvija/2026/10/26/latvija-atzist-tesla-vaditaja-paligsistemu-117934"
+        ]
+      }
+    ]
+  },
+  "sourcesPinned": {
+    "eurostatUpdated": "2026-09-25",
+    "teslaMarketsChecked": "2026-10-26"
   }
 }
