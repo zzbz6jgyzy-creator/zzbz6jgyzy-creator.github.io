@@ -11,7 +11,8 @@ const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),read=
 const load=f=>{const c={};vm.createContext(c);vm.runInContext(read(f),c);return c;};
 const S=load('roadster-studio-model.js').RoadsterStudio,M=createRequire(import.meta.url)('../roadster-experience-model.js'),e=M.esc;
 const studio=S.validate(JSON.parse(read('data/roadster-studio.json')));
-const d=M.validate(JSON.parse(read('data/roadster-experience.json')),studio.sources);
+const clips=JSON.parse(read('data/roadster-clips.json')),clipById=Object.fromEntries(clips.clips.map(c=>[c.id,c]));
+const d=M.validate(JSON.parse(read('data/roadster-experience.json')),studio.sources,clips.clips.map(c=>c.id));
 const URL_='https://superchargeddaily.com/roadster-preview.html',OG='https://superchargeddaily.com/assets/roadster-studio/finale-1920w.webp';
 
 const fmt=(v,o={day:'numeric',month:'short',year:'numeric'})=>new Intl.DateTimeFormat('en-GB',{...o,timeZone:'UTC'}).format(new Date(String(v).slice(0,10)+'T12:00:00Z')).replace('Sept','Sep');
@@ -39,13 +40,17 @@ const hero=`<header class="rx-hero" data-rx-chapter="top">
 <div class="rx-strip" id="facts"><div class="rx-wrap rx-strip-grid">${strip}</div></div>`;
 
 // ---- The reveal: a pinned stage whose picture changes with each step
-const layers=d.reveal.steps.map((s,i)=>`<div class="rx-layer${i===0?' is-active':''}" data-rx-layer="${s.id}">${picture(s.image,s.alt)}</div>`).join('');
+// A loop for a layer: WebM first (smaller), MP4 as the fallback, 720 px for phones. preload=none: nothing downloads until the layer is near.
+const clipVideo=id=>{const u=(w,x)=>{const f=`/assets/roadster-clips/${id}-${w}.${x}`;if(!fs.existsSync(path.join(ROOT,f.slice(1))))throw Error('Missing clip '+f);return f;};
+ return `<video class="rx-clip" data-rx-clip muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true"><source media="(max-width: 700px)" src="${u(720,'webm')}" type="video/webm"/><source media="(max-width: 700px)" src="${u(720,'mp4')}" type="video/mp4"/><source src="${u(1280,'webm')}" type="video/webm"/><source src="${u(1280,'mp4')}" type="video/mp4"/></video>`;};
+const layers=d.reveal.steps.map((s,i)=>`<div class="rx-layer${i===0?' is-active':''}" data-rx-layer="${s.id}">${picture(s.image,s.alt)}${s.clip?clipVideo(s.clip):''}</div>`).join('');
 const steps=d.reveal.steps.map(s=>`<article class="rx-step" data-rx-step="${s.id}"><div class="rx-step-card"><p class="rx-kicker">${s.number} / ${e(s.id==='run'?'The run':s.id==='gap'?'The gap':s.id==='hop'?'The hop':s.id==='flip'?'The flip':'The ramp')}</p><h3>${e(s.title)}</h3><p>${e(s.text)}</p>${foot(s)}</div></article>`).join('');
 const film=studio.film;
 const chaptersFilm=film.chapters.map(c=>`<button type="button" data-rx-chapter-time="${c.start}"><span>${S.stamp(c.start)}</span>${e(c.title)}</button>`).join('');
 const reveal=`<section class="rx-stage" id="video" data-rx-chapter="video" aria-labelledby="video-h">
 <div class="rx-stage-media" aria-hidden="true">${layers}<div class="rx-stage-scrim"></div></div>
 <div class="rx-steps"><div class="rx-step rx-step-intro"><div class="rx-step-card"><p class="rx-kicker">${d.reveal.kicker}</p><h2 id="video-h">${d.reveal.title}</h2><p class="rx-lead">${e(d.reveal.lead)}</p></div></div>${steps}</div></section>
+<p class="rx-stage-credit rx-wrap">Stage footage: silent excerpts of Tesla's Roadster Event livestream, faded in and out and credited to Tesla. <a href="${e(clips.source.original)}" target="_blank" rel="noopener">Watch the original ↗</a></p>
 <section class="rx-film rx-wrap" aria-labelledby="film-h"><header class="rx-head"><p class="rx-kicker">The film</p><h2 id="film-h">The Roadster,<br>in motion.</h2><p class="rx-lead">${e(film.description)}</p></header>
 <div class="rx-film-frame"><video id="rx-film" data-version="${e(film.mediaVersion)}" playsinline preload="none" poster="/assets/roadster-studio/world-1280w.webp" aria-label="Roadster, A New Dimension: an editorial film"><track kind="captions" src="/assets/roadster-studio/film-captions.vtt" srclang="en" label="English descriptions"/><track kind="chapters" src="/assets/roadster-studio/film-chapters.vtt" srclang="en" label="Chapters"/></video><button type="button" id="rx-film-cover" class="rx-film-cover"><span class="rx-play" aria-hidden="true"></span><span class="rx-film-cover-text">Play the film<small>00:50 / Tesla imagery / Supercharged Daily edit</small></span></button></div>
 <div class="rx-film-bar"><p id="rx-film-status" role="status">The film loads when you press play. Sound is optional.</p><label for="rx-film-quality">Quality <select id="rx-film-quality"><option value="720">720p</option><option value="1080">1080p</option></select></label><button type="button" class="rx-link-button" id="rx-film-sound" aria-pressed="false">Soundtrack: off</button><a href="/assets/roadster-studio/roadster-film-720.mp4?v=${e(film.mediaVersion)}" download>Save the film ↓</a></div>

@@ -10,6 +10,40 @@ const studio=JSON.parse(fs.readFileSync('data/roadster-studio.json','utf8'));
 const page=()=>fs.readFileSync('roadster-preview.html','utf8');
 const own=Object.fromEntries(d.sources.map(s=>[s.id,s]));
 
+const clips=JSON.parse(fs.readFileSync('data/roadster-clips.json','utf8'));
+import crypto from 'node:crypto';
+
+test('clips: committed outputs match their checksums and stay inside the budget',()=>{
+  const lim=clips.limits;
+  assert.equal(clips.source.sha256.length,64);
+  for(const c of clips.clips)assert.ok(c.duration<=lim.maxClipSeconds,c.id+' is short enough');
+  for(const o of clips.outputs){
+    const b=fs.readFileSync(o.path);
+    assert.equal(b.length,o.bytes,o.path);assert.equal(crypto.createHash('sha256').update(b).digest('hex'),o.sha256,o.path);
+  }
+  // A visitor fetches one format at one size per clip, so the budget is per set.
+  for(const w of ['1280','720'])for(const ext of ['mp4','webm']){
+    const set=clips.outputs.filter(o=>o.path.endsWith('-'+w+'.'+ext));
+    assert.equal(set.length,clips.clips.length,w+' '+ext+' exists for every clip');
+    assert.ok(set.reduce((n,o)=>n+o.bytes,0)<=lim.maxSetBytes,w+' '+ext+' set within budget');
+    for(const o of set)assert.ok(o.bytes<=lim.maxBytesPerClip,o.path);
+  }
+  for(const c of clips.clips)for(const w of [1280,720])for(const e of ['avif','webp'])assert.ok(fs.existsSync('assets/roadster-clips/'+c.id+'-poster-'+w+'.'+e),c.id+' poster');
+});
+
+test('stage: every step has a loop that is silent, lazy and inline, with WebM first and phone sizes',()=>{
+  const html=page();
+  for(const s of d.reveal.steps){
+    assert.ok(clips.clips.some(c=>c.id===s.clip),s.id+' has a known clip');
+    const layer=html.match(new RegExp('data-rx-layer="'+s.id+'"[\\s\\S]*?</video>'))[0];
+    assert.ok(/ muted loop playsinline preload="none"/.test(layer),s.id+' is muted, looped, inline and lazy');
+    assert.ok(layer.indexOf('-720.webm')<layer.indexOf('-720.mp4')&&layer.indexOf('(max-width: 700px)')>-1&&layer.indexOf('-1280.webm')>layer.indexOf('-720.mp4'),s.id+' source order');
+  }
+  assert.ok(html.includes('rx-stage-credit')&&html.includes(clips.source.original),'footage is credited and linked to the original');
+  assert.ok(!/autoplay/.test(html.replace(/<noscript>[\s\S]*?<\/noscript>/g,'')),'nothing autoplays from markup; the script starts loops when allowed');
+  let x=structuredClone(d);x.reveal.steps[0].clip='nope';assert.throws(()=>M.validate(x,studio.sources,clips.clips.map(c=>c.id)),/unknown clip/);
+});
+
 test('record validates; every figure carries a status, a source and a date',()=>{
   assert.equal(M.validate(d,studio.sources),d);
   for(const s of d.sources)assert.ok(s.checked<=d.reviewed,s.id);

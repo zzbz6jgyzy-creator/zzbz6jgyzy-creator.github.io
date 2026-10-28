@@ -89,6 +89,19 @@ async def main():
                 assert (await page.locator('.rx').get_attribute('data-motion')) == 'on', tag
                 await page.evaluate("localStorage.removeItem('sd-rx-motion')")
 
+            # Stage loops: only the active layer's loop plays, phones get the 720 px file, and no loop plays when motion is off.
+            if js and mode in ('normal', 'reduced', 'savedata') and theme == 'dark' and width in (390, 1440):
+                await page.evaluate("document.querySelector('[data-rx-step=hop]').scrollIntoView({block:'center',behavior:'instant'})")
+                await page.wait_for_timeout(2500)
+                state = await page.evaluate("[...document.querySelectorAll('[data-rx-layer]')].map(l=>{const v=l.querySelector('video');return {id:l.dataset.rxLayer,active:l.classList.contains('is-active'),playing:!!v&&!v.paused,src:v?v.currentSrc:''}})")
+                if mode == 'normal':
+                    assert [s['id'] for s in state if s['playing']] == ['hop'], (tag, 'only the active layer plays', state)
+                    hop = [s for s in state if s['id'] == 'hop'][0]
+                    assert ('-720.' if width <= 700 else '-1280.') in hop['src'], (tag, 'right size for the screen', hop)
+                else:
+                    assert not any(s['playing'] for s in state), (tag, 'no stage loop in this mode', state)
+                    assert not any('/assets/roadster-clips/' in u and u.endswith(('.webm', '.mp4')) for u in requested), (tag, 'no loop is downloaded when motion is off', [u for u in requested if 'roadster-clips' in u])
+
             # The pinned stage: the picture follows the step in the middle of the screen.
             if js:
                 await page.locator('[data-rx-step=run]').scroll_into_view_if_needed()

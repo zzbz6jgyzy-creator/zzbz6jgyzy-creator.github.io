@@ -84,6 +84,8 @@ html[data-theme="light"] .rx-read{--rx-chip-demo:#00608f;--rx-chip-claim:#7a5400
 .rx-layer{position:absolute;inset:0;opacity:0;transition:opacity 1s var(--rx-ease)}
 .rx-layer.is-active{opacity:1}
 .rx-layer picture,.rx-layer img,.rx-layer video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rx-layer video{opacity:0;transition:opacity .9s var(--rx-ease)}
+.rx-layer video.is-playing{opacity:1}
 .rx-layer img{transform:scale(1.07);transition:transform 9s linear}
 .rx-layer.is-active img{transform:scale(1)}
 .rx-stage-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.28) 48%,rgba(0,0,0,.05) 100%),linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 40%)}
@@ -98,6 +100,8 @@ html[data-theme="light"] .rx-read{--rx-chip-demo:#00608f;--rx-chip-claim:#7a5400
 @media(max-width:700px){.rx-step{align-items:flex-end;padding:60px 0 28px}.rx-step-intro{align-items:center}.rx-stage-scrim{background:linear-gradient(0deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.25) 52%,rgba(0,0,0,.35) 100%)}.rx-step-card{max-width:none}}
 
 /* ---- The film and the replay */
+.rx-stage-credit{background:var(--rx-bg);margin:0 auto;padding:14px 0 0;font-size:.74rem;color:var(--rx-mute);max-width:none}
+.rx-stage-credit a{color:var(--rx-dim);text-underline-offset:3px}
 .rx-film{padding:clamp(72px,10vw,140px) 0;background:var(--rx-bg)}
 .rx-head{display:grid;gap:0;margin-bottom:clamp(28px,4vw,52px)}
 .rx-head .rx-kicker{margin-bottom:2px}
@@ -165,5 +169,6 @@ html[data-theme="light"] .rx-read{--rx-chip-demo:#00608f;--rx-chip-claim:#7a5400
 
 /* ---- Reduced motion and paused motion: stills only, no transitions */
 .rx[data-motion=off] .rx-layer img,.rx[data-motion=off] .rx-hero-media video{transition:none;transform:none}
+.rx[data-motion=off] .rx-layer video{display:none}
 .rx[data-motion=off] .rx-hero-media video{display:none}
-@media(prefers-reduced-motion:reduce){.rx *,.rx *::before,.rx *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rx-layer img{transform:none}.rx-hero-media video{display:none}}
+@media(prefers-reduced-motion:reduce){.rx-layer video{display:none}.rx *,.rx *::before,.rx *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rx-layer img{transform:none}.rx-hero-media video{display:none}}

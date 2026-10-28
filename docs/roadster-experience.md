@@ -12,6 +12,12 @@ A dark, cinematic scroll page that will replace `/roadster.html`. While it is be
 - `roadster-experience.css` (scoped to `.rx`) and `roadster-experience.js` (own bundle `roadster-x`). Bump the `?v=` on the stylesheet link in the page when the CSS changes, and run `sh scripts/rebuild-js.sh` after changing the JS.
 - Tests: `tests/roadster-experience.test.mjs` and `tests/roadster-experience-browser.py`; CI: `.github/workflows/roadster-experience-checks.yml`.
 
+## Video loops
+
+The stage loops are silent, 12 seconds or less, faded in and out, and cut from Tesla's official event video on Tesla's public video CDN (`data/roadster-clips.json` pins the source by SHA-256 and lists every segment and output checksum). The 101 MB source is never committed.
+`python3 scripts/make-roadster-clips.py --source /tmp/roadster-clips/event.mp4` rebuilds them (ffmpeg; Pillow for the posters); `--check` verifies the committed files. Each clip is written as WebM (VP9) and MP4 (H.264) at 1280 px and 720 px. A visitor downloads one format at one size, so the budget is per set: 5 MB for a whole set, 1 MB per file. The source is 720p, so there is no 1080p version: we do not upscale.
+Each step's loop plays only while its step is the active one, and the next loop is fetched one step ahead. The footage is credited on the page and linked to the original.
+
 ## Labels (keep them honest)
 
 - **Shown at the reveal**: Tesla showed it happen at the event.

@@ -27,8 +27,10 @@
 
  // ---- Clips: start when near the viewport, pause when away, never more than two at once.
  const visible=new Set();
+ // A loop inside a pinned-stage layer plays only while its layer is the active one.
+ const wanted=v=>{const l=v.closest('[data-rx-layer]');return !l||l.classList.contains('is-active');};
  function start(v){
-  if(!motion||document.hidden)return;
+  if(!motion||document.hidden||!wanted(v))return;
   while(playing.size>=2){const oldest=playing.values().next().value;oldest.pause();oldest.classList.remove('is-playing');playing.delete(oldest);}
   v.muted=true;const p=v.play();
   if(p&&p.then)p.then(()=>{if(visible.has(v)&&motion){v.classList.add('is-playing');playing.add(v);}else v.pause();}).catch(()=>{});
@@ -61,6 +63,10 @@
   const sio=new IntersectionObserver(items=>items.forEach(i=>{
    if(!i.isIntersecting)return;const id=i.target.dataset.rxStep;if(!id||!layers.has(id))return;
    layers.forEach((l,k)=>l.classList.toggle('is-active',k===id));
+   $$('[data-rx-clip]',stage).forEach(v=>{if(wanted(v)&&visible.has(v))start(v);else stop(v);});
+   // Fetch the next layer's loop a step ahead so it is ready when its step arrives.
+   const keys=[...layers.keys()],next=layers.get(keys[keys.indexOf(id)+1]),nv=next&&next.querySelector('video');
+   if(nv&&motion&&!nv.dataset.warm){nv.dataset.warm='1';nv.preload='auto';nv.load();}
   }),{rootMargin:'-45% 0px -45% 0px'});
   $$('[data-rx-step]',stage).forEach(s=>sio.observe(s));
  }

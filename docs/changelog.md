@@ -4,6 +4,12 @@
 
 # Changelog
 
+## 28 Oct 2026 — Roadster experience, part 2 (video loops)
+
+- **Five stage loops** (ramp, flip, hop over a line of Teslas, the timed run, under the lights) now play behind the reveal steps, cut from Tesla's official event video. Three more are ready for later chapters (doors up, the rear wing, the finale). Silent, 12 seconds or less, faded in and out, credited and linked to the original.
+- **Light on data:** one format at one size per clip (a whole desktop set is about 4 MB, a phone set about 1.4 MB), `preload="none"`, only the active step's loop plays, the next is fetched one step ahead, and nothing downloads with reduced motion, Save-Data or the Pause button.
+- **Pipeline:** `scripts/make-roadster-clips.py` (ffmpeg) with the source pinned by checksum; a test checks every output's checksum and the budget.
+
 ## 28 Oct 2026 — Roadster experience, part 1 (hidden preview)
 
 - **A new Roadster page is being built at `/roadster-preview.html`** (hidden: `noindex`, not in the menu, sitemap or search). It is a dark, cinematic scroll page; the live `/roadster.html` is unchanged until you approve the preview and it is swapped in.

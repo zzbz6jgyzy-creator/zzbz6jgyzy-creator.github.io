@@ -1,0 +1,414 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-28",
+  "source": {
+    "url": "https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto/Roadster-Event-Livestream.mp4",
+    "sha256": "7b98eacdec8efa189179507c2fcc5a0c7368228a1bab5cd953fe5c2b2c3fd3c4",
+    "width": 1280,
+    "height": 720,
+    "seconds": 1359.528,
+    "credit": "Tesla, Roadster Event livestream (Tesla's public video CDN). Short silent excerpts, faded in and out, for editorial use with a link to the original.",
+    "original": "https://www.youtube.com/watch?v=qt5p-_tE8d0"
+  },
+  "limits": {
+    "maxClipSeconds": 12,
+    "maxBytesPerClip": 1000000,
+    "maxSetBytes": 5000000
+  },
+  "clips": [
+    {
+      "id": "ramp",
+      "start": 371,
+      "duration": 8,
+      "poster": 3.2,
+      "title": "The inverted ramp",
+      "alt": "Overhead view of the Roadster on the tall ramp during the reveal",
+      "description": "The Roadster on the C-shaped ramp, seen from above."
+    },
+    {
+      "id": "flip",
+      "start": 441,
+      "duration": 8,
+      "poster": 3.5,
+      "title": "The flip",
+      "alt": "The Roadster flipping off the top of the ramp under the event lights",
+      "description": "The programmed flip off the top of the ramp, slowed by the thrusters."
+    },
+    {
+      "id": "hop",
+      "start": 662.5,
+      "duration": 8.5,
+      "poster": 3,
+      "title": "Over a line of Teslas",
+      "alt": "The Roadster lifting over a line of Tesla vehicles on thruster plumes",
+      "description": "The car rising over a line of Tesla vehicles on its thrusters."
+    },
+    {
+      "id": "run",
+      "start": 950,
+      "duration": 11,
+      "poster": 5,
+      "title": "The timed run",
+      "alt": "The Roadster on the lit drag strip with a running timer and smoke",
+      "description": "The timed run on the drag strip, with the on-screen timer."
+    },
+    {
+      "id": "drive",
+      "start": 1001,
+      "duration": 7,
+      "poster": 3,
+      "title": "Under the lights",
+      "alt": "The white Roadster driving toward the camera under the stage lights",
+      "description": "The car driving toward the crowd under the stage lights."
+    },
+    {
+      "id": "doors",
+      "start": 558,
+      "duration": 10,
+      "poster": 7,
+      "title": "Doors up",
+      "alt": "Side view of the white Roadster with its doors raised against a red light",
+      "description": "The doors rising on the stage car."
+    },
+    {
+      "id": "wing",
+      "start": 866,
+      "duration": 9,
+      "poster": 4,
+      "title": "The rear wing",
+      "alt": "Rear three-quarter view of the Roadster with its high-downforce wing raised",
+      "description": "The rear wing in its high-downforce position."
+    },
+    {
+      "id": "finale",
+      "start": 1288,
+      "duration": 10,
+      "poster": 5,
+      "title": "Into the dark",
+      "alt": "The Roadster driving into the dark past showers of sparks",
+      "description": "The closing sequence, with sparks and smoke."
+    }
+  ],
+  "outputs": [
+    {
+      "path": "assets/roadster-clips/doors-1280.mp4",
+      "bytes": 206089,
+      "sha256": "29d0094f7a8c931cddab3a82779cf63292a62ad3187add4dfd9811ead8d0579d"
+    },
+    {
+      "path": "assets/roadster-clips/doors-1280.webm",
+      "bytes": 225806,
+      "sha256": "e8a84c881087fc8c18c1011ef4b384e731a8720bbfd60d81a3a6de140e92b55d"
+    },
+    {
+      "path": "assets/roadster-clips/doors-720.mp4",
+      "bytes": 71067,
+      "sha256": "13311b2b20f97b58e9d269be2c650db2a72c04ebce0220a8ec4803ef74d1a2f3"
+    },
+    {
+      "path": "assets/roadster-clips/doors-720.webm",
+      "bytes": 93250,
+      "sha256": "af1fcead1b95bc591d91d9cc696e4f39716da161ef29324c2e7d6e1bd83490f4"
+    },
+    {
+      "path": "assets/roadster-clips/doors-poster-1280.avif",
+      "bytes": 9834,
+      "sha256": "cc1daed8142bba200aef623d5c73bde1694c8520687f9774da081e503830bac5"
+    },
+    {
+      "path": "assets/roadster-clips/doors-poster-1280.webp",
+      "bytes": 15308,
+      "sha256": "64188f8b7df1513ac4efbda5f9e72ee4074793e2ace9a8c018954a1c228fb109"
+    },
+    {
+      "path": "assets/roadster-clips/doors-poster-720.avif",
+      "bytes": 4709,
+      "sha256": "40b91aac4e6e74b51f9f116f7b95a23c2d9095ffa43c43ff4f9e302a8787369a"
+    },
+    {
+      "path": "assets/roadster-clips/doors-poster-720.webp",
+      "bytes": 7228,
+      "sha256": "bc18c627f3eb46d30de77e375fef8160b8e8e3b38d05bdc36648b2efa708efdb"
+    },
+    {
+      "path": "assets/roadster-clips/drive-1280.mp4",
+      "bytes": 507101,
+      "sha256": "70c3e2dbb7c17dec142d6c0385e65622dbd1ccefedc866a590050d8e24725794"
+    },
+    {
+      "path": "assets/roadster-clips/drive-1280.webm",
+      "bytes": 393662,
+      "sha256": "a0b78556abb509578d1488eb00e72802b45ce42badd10739700d3bfd8acecac3"
+    },
+    {
+      "path": "assets/roadster-clips/drive-720.mp4",
+      "bytes": 142132,
+      "sha256": "b0b0738834f7c119f67547f091cb49266c0e0ca34aea91c8a49d2e585cfd667a"
+    },
+    {
+      "path": "assets/roadster-clips/drive-720.webm",
+      "bytes": 165480,
+      "sha256": "d085152206afa787e49855c0eb2e72fe541da824f716b8429d263b5b13ca374c"
+    },
+    {
+      "path": "assets/roadster-clips/drive-poster-1280.avif",
+      "bytes": 11770,
+      "sha256": "60b98ba237782cc77ab68f00e2e6bc5e97cc0bd11fc8db48c5d40e6e9bda0493"
+    },
+    {
+      "path": "assets/roadster-clips/drive-poster-1280.webp",
+      "bytes": 17952,
+      "sha256": "17cc012612fac101f5780ccdc6e20c8fb6a0866cf2b1a617ea14d6961a5c54db"
+    },
+    {
+      "path": "assets/roadster-clips/drive-poster-720.avif",
+      "bytes": 6164,
+      "sha256": "8ab3df70537a21f030c75144b3320636518e97442228e49340241f7d3864e6d4"
+    },
+    {
+      "path": "assets/roadster-clips/drive-poster-720.webp",
+      "bytes": 8902,
+      "sha256": "b4f255c6ec4ebd0470f7e12c9c32d231f6ba57c3bc2bccfa974d4e4415268aa1"
+    },
+    {
+      "path": "assets/roadster-clips/finale-1280.mp4",
+      "bytes": 583914,
+      "sha256": "3009f4faad6e3546afd20a1c2e7544f33573b5086c436dd0eacce3c21a07bcbf"
+    },
+    {
+      "path": "assets/roadster-clips/finale-1280.webm",
+      "bytes": 539232,
+      "sha256": "184ffd157a5b6e649106cd65efefa08a624a89abbd293fbf181a6b4cef5ac645"
+    },
+    {
+      "path": "assets/roadster-clips/finale-720.mp4",
+      "bytes": 195969,
+      "sha256": "8a1b6aa251935e93a9f5d6f2734651da9585f0bc5c20ae99f6cb9e7bf27c9f00"
+    },
+    {
+      "path": "assets/roadster-clips/finale-720.webm",
+      "bytes": 254643,
+      "sha256": "141414e5b8eb42c70dc9fed11f9124070c7db6c718118f3941e46476b71225a7"
+    },
+    {
+      "path": "assets/roadster-clips/finale-poster-1280.avif",
+      "bytes": 6778,
+      "sha256": "e56a8420bbe8a20373928d4dc8a106ebf6285089cfddfe0025c1b9b62e5e20c0"
+    },
+    {
+      "path": "assets/roadster-clips/finale-poster-1280.webp",
+      "bytes": 10210,
+      "sha256": "5c6532c645cf0b400fbb29ef974efe2fda324fdce36ea697852756289035e741"
+    },
+    {
+      "path": "assets/roadster-clips/finale-poster-720.avif",
+      "bytes": 3860,
+      "sha256": "c0d1818fb675bb314b8918ebba723f7628ada1b075de15e01dd2515fd6fbb9e4"
+    },
+    {
+      "path": "assets/roadster-clips/finale-poster-720.webp",
+      "bytes": 5364,
+      "sha256": "31ceee748019a95ca5166d6dc6807956dc61b63125d3bf3aa5ecc0eccef00ed4"
+    },
+    {
+      "path": "assets/roadster-clips/flip-1280.mp4",
+      "bytes": 739521,
+      "sha256": "5f1f2f8cce2b3dfcd9d5da04cc8dfb4eb454040fbdb771987783bfe390033016"
+    },
+    {
+      "path": "assets/roadster-clips/flip-1280.webm",
+      "bytes": 622297,
+      "sha256": "c6f64ef2795da775b23d0cb1d8376192a6fd01e8b4bf637210b9b647703841c8"
+    },
+    {
+      "path": "assets/roadster-clips/flip-720.mp4",
+      "bytes": 237513,
+      "sha256": "44553508eb3688fdde9f513ae9f695fa7752d8026f7e30bb5ec16c36787648f4"
+    },
+    {
+      "path": "assets/roadster-clips/flip-720.webm",
+      "bytes": 283718,
+      "sha256": "f7317a347889c1631c797f0e9c1baa83402cb10253becf811e2f982b050dd67b"
+    },
+    {
+      "path": "assets/roadster-clips/flip-poster-1280.avif",
+      "bytes": 14954,
+      "sha256": "27830c05371fe514200cccc426e4c66de7ab3fc1ae076aea2b0b9402b4820a04"
+    },
+    {
+      "path": "assets/roadster-clips/flip-poster-1280.webp",
+      "bytes": 20796,
+      "sha256": "9dcb157f836f06297a3478475a5cbb6b84ad8424e772893aedfe3873175f5518"
+    },
+    {
+      "path": "assets/roadster-clips/flip-poster-720.avif",
+      "bytes": 7552,
+      "sha256": "07494b3ee33826ab40e8cac804b5d0d4f8c7848ceb9cad6676914990c0911548"
+    },
+    {
+      "path": "assets/roadster-clips/flip-poster-720.webp",
+      "bytes": 11150,
+      "sha256": "f421748140b16e0a74ea80772ae492e1e8fa372d7f1ef517603bf7099064dc6e"
+    },
+    {
+      "path": "assets/roadster-clips/hop-1280.mp4",
+      "bytes": 597167,
+      "sha256": "6d265f8fc9d486de0969a56bc2fa3928153eced1cc6253c315e3cd42965b7658"
+    },
+    {
+      "path": "assets/roadster-clips/hop-1280.webm",
+      "bytes": 535569,
+      "sha256": "ca12ca8d3742eba897693d896a32835b0d5cd41e60a51914cc8ddb5ac5abae9d"
+    },
+    {
+      "path": "assets/roadster-clips/hop-720.mp4",
+      "bytes": 215580,
+      "sha256": "a51e513065ef1eb1c8c4e7d2fcf8f1fc16fd474c8420804784d6baf3c3d70cf6"
+    },
+    {
+      "path": "assets/roadster-clips/hop-720.webm",
+      "bytes": 256091,
+      "sha256": "1394ba28f07bec4dd265678e0b9bf3de3a334b93c0eac09484d9d490a65bdf5a"
+    },
+    {
+      "path": "assets/roadster-clips/hop-poster-1280.avif",
+      "bytes": 5336,
+      "sha256": "3cf48f4914dba41fae2dac2e7df85fb765dbf6f169ed34f45189b3deaf79cb83"
+    },
+    {
+      "path": "assets/roadster-clips/hop-poster-1280.webp",
+      "bytes": 7772,
+      "sha256": "fcc75852e5cdad6351ff0c67a96cd4f68a6afbdf6e2de74fc12585c95619ea12"
+    },
+    {
+      "path": "assets/roadster-clips/hop-poster-720.avif",
+      "bytes": 3127,
+      "sha256": "54d3813fb3dd7680c155bea09b9fd8a78d8e4f28ba9d4a9a81c8fb3234ed4075"
+    },
+    {
+      "path": "assets/roadster-clips/hop-poster-720.webp",
+      "bytes": 3876,
+      "sha256": "995edb8784904f7d399f891284a063ca69424c35de0af5dff4f059fedb6b5613"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-1280.mp4",
+      "bytes": 178615,
+      "sha256": "e34df6c82497c1624d4d53c9b50e6e59ba8bd8118b529669ccead00d3dcbd7a3"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-1280.webm",
+      "bytes": 262498,
+      "sha256": "545e05cb0004c6b2dd4a034c524dcf8dae962c961df05904a6ca491d9604a527"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-720.mp4",
+      "bytes": 73448,
+      "sha256": "16c5c43ee055f1970ed6b5526c78576279b09aebe1d2a6b4e8d224230a1f260b"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-720.webm",
+      "bytes": 112619,
+      "sha256": "3985d36f7c782e153eced49a62f281ff811d09130d82f45ab38e76dc7f4519fe"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-poster-1280.avif",
+      "bytes": 10411,
+      "sha256": "a8582a97aef2891049e77c58cbbe0a10cee6f9d674c06618f8abd6d2000c7b0b"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-poster-1280.webp",
+      "bytes": 15042,
+      "sha256": "3c966ac6acd945e5c0c00d30abb295d7775a51c146539a52447dd4dd3c0e77c4"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-poster-720.avif",
+      "bytes": 5065,
+      "sha256": "925d62a441e191f376f5d72d374967c54f486dc7353f485a9644974d210252d9"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-poster-720.webp",
+      "bytes": 7522,
+      "sha256": "c66d222c942b00a030d0139b909e5878e177bf471d084ac39dce5e7b6f71aeee"
+    },
+    {
+      "path": "assets/roadster-clips/run-1280.mp4",
+      "bytes": 896905,
+      "sha256": "583510bd9b3f37dd3e232b00c07cbdd5ea2638c24c07c7cdab7287fbcdc344d2"
+    },
+    {
+      "path": "assets/roadster-clips/run-1280.webm",
+      "bytes": 877672,
+      "sha256": "d40cf7b65176494ec3340c36401e047c631c7bb6fb9d3456c76075d9cd05924b"
+    },
+    {
+      "path": "assets/roadster-clips/run-720.mp4",
+      "bytes": 290571,
+      "sha256": "33802a07c9552d10bf2eea46834b5154e99add4acbc521cc875b1c512979305f"
+    },
+    {
+      "path": "assets/roadster-clips/run-720.webm",
+      "bytes": 375935,
+      "sha256": "41e00b287071125374bbf50361897aad68568cc1d8f311a7b56994bb1494afaa"
+    },
+    {
+      "path": "assets/roadster-clips/run-poster-1280.avif",
+      "bytes": 25055,
+      "sha256": "1ff069ade66368234bff109ac2380e058b67af355946107b901709106cf6acfd"
+    },
+    {
+      "path": "assets/roadster-clips/run-poster-1280.webp",
+      "bytes": 37108,
+      "sha256": "cc135cb1989e93418123a7784701e8826643af07bba4287a859e869ab4872903"
+    },
+    {
+      "path": "assets/roadster-clips/run-poster-720.avif",
+      "bytes": 12005,
+      "sha256": "89d66f6093798eb16d38557c9b8940b1cf2d96dd2db968d6e8396ed500d1fb42"
+    },
+    {
+      "path": "assets/roadster-clips/run-poster-720.webp",
+      "bytes": 18502,
+      "sha256": "14f64923ae9bba27f87b4b29f6957f0dbca33e7bd202048a8e1ff5a7592895f3"
+    },
+    {
+      "path": "assets/roadster-clips/wing-1280.mp4",
+      "bytes": 520263,
+      "sha256": "67373e75072e9320db93bb4db56de85942f72a9ef518ad5e3fc1c1269ff49f89"
+    },
+    {
+      "path": "assets/roadster-clips/wing-1280.webm",
+      "bytes": 563462,
+      "sha256": "84296d467c36d49660b5d01d961217691f6e2d26a086f460fab83f5e4091bad1"
+    },
+    {
+      "path": "assets/roadster-clips/wing-720.mp4",
+      "bytes": 173278,
+      "sha256": "ce7cb3220251e2ef49157f462992ab0df93f9004b19183c1e2f8f816ea236ce4"
+    },
+    {
+      "path": "assets/roadster-clips/wing-720.webm",
+      "bytes": 252077,
+      "sha256": "2ba3ee96285655bc7c28105a9caa968c95e37caa54285796862646749605c092"
+    },
+    {
+      "path": "assets/roadster-clips/wing-poster-1280.avif",
+      "bytes": 19384,
+      "sha256": "a751d7000ee4dfa71e99e85224101f960c351169caaaad29518ae0bfe384a88f"
+    },
+    {
+      "path": "assets/roadster-clips/wing-poster-1280.webp",
+      "bytes": 30034,
+      "sha256": "942a917bc4cb32732dfa58be161d9f4a2f7ddc936c64f851a3526f8e614e3660"
+    },
+    {
+      "path": "assets/roadster-clips/wing-poster-720.avif",
+      "bytes": 9689,
+      "sha256": "4feeb48d52c9c329ed5c377d2f27799e16e6fc646014f850af267487edf6a95c"
+    },
+    {
+      "path": "assets/roadster-clips/wing-poster-720.webp",
+      "bytes": 15640,
+      "sha256": "407d78a41e9f0d3bcfe2004eb805be9853f2b8d67c0d0b356569bceb93893605"
+    }
+  ]
+}
