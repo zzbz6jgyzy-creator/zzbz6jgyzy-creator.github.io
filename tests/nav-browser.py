@@ -127,7 +127,8 @@ async def main():
                 await page.evaluate('window.scrollTo(0, 700)')
                 await page.wait_for_function('window.scrollY >= 600')
                 # Old collapse behavior was scheduled on a scroll animation frame.
-                await page.evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+                if scripts:
+                    await page.evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
                 scrolled = await assert_header(page, width)
                 for key in ['x', 'y', 'width', 'height']:
                     assert abs(top[key] - scrolled[key]) <= 1, ('header moved after scroll', key, top, scrolled)
