@@ -1,7 +1,7 @@
 {
  "version": 1,
  "checked": "2026-10-28T09:54:03Z",
- "editorialUpdated": "2026-10-27T10:45:00+00:00",
+ "editorialUpdated": "2026-10-28T09:15:00+00:00",
  "presets": [
   {
    "name": "Brownsville",
@@ -757,7 +757,7 @@
    "date": "2026-11-08",
    "precision": "day",
    "status": "net",
-   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT); SpaceX hadn’t confirmed it as of 27 Oct 2026, 6:45am ET.",
+   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date.",
    "where": "Starbase · Pad 2",
    "href": "",
    "sources": [
@@ -768,6 +768,14 @@
     {
      "href": "https://x.com/SpaceX/status/2114444137067844004",
      "label": "x.com"
+    },
+    {
+     "href": "https://www.nextspaceflight.com/starship/hardware/80/",
+     "label": "nextspaceflight.com"
+    },
+    {
+     "href": "https://thespaceroad.com/articles/when-is-starship-flight-15/",
+     "label": "thespaceroad.com"
     }
    ],
    "origin": "Editorial calendar",
