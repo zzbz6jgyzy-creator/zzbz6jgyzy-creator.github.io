@@ -12,7 +12,7 @@ window.STARSHIP = {
     block: "Block 3",
     headline: "First serious Ship catch",
     tested:
-      "Working window is now NET 8 November on FAA air-traffic planning slides — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. Ship 42 did a single-engine deorbit-burn demo at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration static fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time), as reported by NASASpaceflight and logged by Next Spaceflight. SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date. The story is still the first real attempt to catch a Ship.",
+      "Working window is now NET 8 November on FAA air-traffic planning slides — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. Ship 42 did a single-engine deorbit-burn demo at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration static fire on 27 Oct 2026, about 5:46pm ET (2:46pm PT), as reported by NASASpaceflight and logged by Next Spaceflight. SpaceX confirmed on 28 Oct 2026 that Ship 42’s static fires are complete. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date. The story is still the first real attempt to catch a Ship.",
     objectives: [
       "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, which Musk confirmed on the 20 Oct earnings call",
       "Fly and recover Super Heavy B22 (catch or controlled splashdown)",
@@ -33,16 +33,16 @@ window.STARSHIP = {
       mission: 15,
       confirmed: false,
       change:
-        "Reported, not confirmed by SpaceX: Ship 42 completed a six-engine, roughly 60-second full-duration static fire at Massey’s on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time), as reported by NASASpaceflight and logged by Next Spaceflight. It follows the 26 Oct single-engine deorbit-burn demo. SpaceX hasn’t posted about it. Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
-      source: { outlet: "Next Spaceflight (also reported by NASASpaceflight)", url: "https://www.nextspaceflight.com/starship/hardware/80/" },
+        "SpaceX confirmed on 28 Oct 2026 (12:10pm ET, 9:10am PT) that Ship 42’s static fires are complete: the Flight 15 Starship performed a full-duration, six-engine static fire and fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight and Next Spaceflight put the six-engine fire, roughly 60 seconds long, at Massey’s on 27 Oct 2026, about 5:46pm ET (2:46pm PT). Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
+      source: { outlet: "SpaceX on X (timing per NASASpaceflight and Next Spaceflight)", url: "https://x.com/SpaceX/status/2115476295169814978" },
     },
     {
       date: "2026-10-26",
       mission: 15,
       confirmed: false,
       change:
-        "Reported, not confirmed by SpaceX: Ship 42 did a single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT), per NASASpaceflight’s live coverage and Next Spaceflight’s test log, which describes it as a deorbit-burn demonstration. SpaceX hadn’t posted about it as of 27 Oct 2026, 6:45am ET. Still no SpaceX launch date or mission page.",
-      source: { outlet: "NASASpaceflight on X (also logged by Next Spaceflight)", url: "https://x.com/NASASpaceflight/status/2114904512217694216" },
+        "SpaceX confirmed on 28 Oct 2026 that Ship 42 fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight’s live coverage and Next Spaceflight’s test log put that single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT). Still no SpaceX launch date or mission page.",
+      source: { outlet: "SpaceX on X (timing per NASASpaceflight and Next Spaceflight)", url: "https://x.com/SpaceX/status/2115476295169814978" },
     },
     {
       date: "2026-10-25",
