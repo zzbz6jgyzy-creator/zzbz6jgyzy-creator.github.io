@@ -18,7 +18,7 @@ async def main():
         cases = [(320, 'dark', 'normal'), (360, 'dark', 'normal'), (390, 'dark', 'normal'), (768, 'dark', 'normal'), (1440, 'dark', 'normal'),
                  (390, 'light', 'normal'), (1440, 'light', 'normal'), (390, 'dark', 'nojs'), (390, 'dark', 'blocked-js')]
         for width, theme, mode in cases:
-            ctx = await browser.new_context(viewport={'width': width, 'height': 1000}, java_script_enabled=mode != 'nojs',
+            ctx = await browser.new_context(viewport={'width': width, 'height': 1000}, java_script_enabled=mode != 'nojs', accept_downloads=True,
                                             reduced_motion='reduce', service_workers='block')
             await ctx.add_init_script(f"try{{localStorage.setItem('sd-theme','{theme}')}}catch(e){{}}")
             page = await ctx.new_page()
@@ -62,7 +62,19 @@ async def main():
                 assert t['x'] + t['width'] <= st['x'] + 0.5 or st['x'] + st['width'] <= t['x'] + 0.5 or t['y'] + t['height'] <= st['y'] or st['y'] + st['height'] <= t['y'], (tag, 'promise title and status overlap')
             assert await page.locator('#next .ft-refresh tbody tr').count() == 5 and await page.locator('.sd-band').count() == 1, tag
             assert (await page.locator('#ft-pick').is_visible()) == (mode != 'nojs' and mode != 'blocked-js'), (tag, 'picker needs script')
+            # One Save image button per drawn chart, only with script.
+            assert await page.locator('.ft-save').count() == (5 if mode == 'normal' else 0), tag
+            if mode == 'normal' and width == 1440 and theme == 'dark':
+                async with page.expect_download() as dl:
+                    await page.locator('#adoption .ft-save').click()
+                png = Path(await (await dl.value).path()).read_bytes()
+                assert png[:8] == b'\x89PNG\r\n\x1a\n' and int.from_bytes(png[16:20], 'big') == 1200 and int.from_bytes(png[20:24], 'big') == 630, (tag, 'share image is a 1200x630 PNG')
             if mode == 'normal' and width == 390 and theme == 'dark':
+                await page.evaluate('''localStorage.setItem('sd-my-tesla-garage-v2', JSON.stringify({schema:2,activeId:'a',cars:[{id:'a',model:'Y',year:2024,cc:'NL'}]}));localStorage.removeItem('sd-fsd-country')''')
+                await page.reload(wait_until='domcontentloaded')
+                await page.wait_for_timeout(300)
+                assert await page.locator('#ft-pick-sel').input_value() == 'NL', (tag, 'country comes from the saved car')
+                assert 'HW4' in await page.locator('#ft-car-out').inner_text(), tag
                 await page.select_option('#ft-pick-sel', 'DE')
                 assert 'Germany' in await page.locator('#ft-pick-out').inner_text(), tag
                 await page.reload(wait_until='domcontentloaded')

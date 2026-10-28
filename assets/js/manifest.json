@@ -127,8 +127,8 @@
       ]
     },
     "fsd-europe": {
-      "file": "/assets/js/fsd-europe.bundle.538b0b2a10.js",
-      "bytes": 107912,
+      "file": "/assets/js/fsd-europe.bundle.c027de7983.js",
+      "bytes": 107969,
       "sources": [
         "fsd-europe-data.js",
         "fsd-europe-model.js",
@@ -138,8 +138,8 @@
       ]
     },
     "fsd": {
-      "file": "/assets/js/fsd.bundle.2cc2b2b90f.js",
-      "bytes": 36850,
+      "file": "/assets/js/fsd.bundle.ef3db55160.js",
+      "bytes": 36960,
       "sources": [
         "fsd-global-model.js",
         "fsd-global-view.js",
@@ -249,8 +249,8 @@
       ]
     },
     "fsd-tracker": {
-      "file": "/assets/js/fsd-tracker.bundle.b971581480.js",
-      "bytes": 1324,
+      "file": "/assets/js/fsd-tracker.bundle.64e0d4c0e1.js",
+      "bytes": 6292,
       "sources": [
         "fsd-tracker.js"
       ]
