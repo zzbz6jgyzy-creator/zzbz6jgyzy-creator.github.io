@@ -1,0 +1,434 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-28",
+  "page": {
+    "title": "Tesla Roadster: the reveal and what is real | Supercharged Daily",
+    "description": "The 2026 Tesla Roadster explained: what the reveal showed, the claimed numbers, reservation terms and 2028 target, each labelled by who said it and sourced."
+  },
+  "sources": [
+    {
+      "id": "engadget",
+      "label": "Engadget: the stunts and the reservation prices",
+      "outlet": "Engadget",
+      "title": "Tesla's redesigned Roadster has a cold-gas thruster option, but you'll need $250,000 just to reserve it",
+      "url": "https://www.engadget.com/2288437/teslas-redesigned-roadster-cold-gas-thruster-option-reservation/",
+      "date": "2026-10-15",
+      "checked": "2026-10-28",
+      "kind": "reporting",
+      "note": "Reports the event at the SpaceX test site in McGregor, Texas, the programmed stunts, and the $5,000 plus $45,000 reservation for the base car, with Thrust and Rocket costing more."
+    },
+    {
+      "id": "techcrunch",
+      "label": "TechCrunch: the reveal report",
+      "outlet": "TechCrunch",
+      "title": "Tesla reveals SpaceX-powered Roadster that flies and falls with style",
+      "url": "https://techcrunch.com/2026/10/15/tesla-reveals-spacex-powered-roadster-that-flies-and-falls-with-style/",
+      "date": "2026-10-15",
+      "checked": "2026-10-28",
+      "kind": "reporting",
+      "note": "Reports the demonstration over five Tesla vehicles, Lars Moravy's 10 thrusters and 600 litres of compressed air, the three trims, and Musk's 2028 production statement."
+    },
+    {
+      "id": "verge",
+      "label": "The Verge: the event and the 0.81-second claim",
+      "outlet": "The Verge",
+      "title": "The Tesla Roadster flew, drove upside down, and hit 60mph in under a second",
+      "url": "https://www.theverge.com/transportation/1012552/tesla-roadster-next-gen-reveal-elon-musk",
+      "date": "2026-10-16",
+      "checked": "2026-10-28",
+      "kind": "reporting",
+      "note": "Reports that the event ran under 30 minutes with no price or release date, Tesla's claimed 0.81-second run, the 2017 specifications and Musk's 2028 production statement."
+    },
+    {
+      "id": "hagerty",
+      "label": "Hagerty: the engineer walk-around",
+      "outlet": "Hagerty",
+      "title": "The Flying Tesla Roadster Explained by the Man Who Engineered It",
+      "url": "https://www.hagerty.com/media/videos/the-flying-tesla-roadster-explained-by-the-man-who-engineered-it/",
+      "date": "2026-10-16",
+      "checked": "2026-10-28",
+      "kind": "reporting",
+      "note": "Henry Catchpole's video with Tesla VP of Vehicle Engineering Lars Moravy. The page reports over a megawatt (1,341 hp), 1,400 Nm, rear-wheel drive, a 200-litre tank on Thrust and 400 litres more on Rocket."
+    },
+    {
+      "id": "autoblog",
+      "label": "Autoblog: reservation terms",
+      "outlet": "Autoblog",
+      "title": "Tesla Wants Up to $250,000 Down for a Roadster It May Never Deliver",
+      "url": "https://www.autoblog.com/news/tesla-wants-up-to-250000-down-for-a-roadster-it-may-never-deliver",
+      "date": "2026-10-18",
+      "checked": "2026-10-28",
+      "kind": "reporting",
+      "note": "Reports that the deposit counts toward the final price, is refundable until the final purchase agreement is signed, cannot be transferred, and that the agreement says delivery is not guaranteed."
+    },
+    {
+      "id": "hotcars",
+      "label": "HotCars: the reservation agreement, clause 4",
+      "outlet": "HotCars",
+      "title": "Tesla's $250,000 Roadster Deposit Fine Print Doesn't Guarantee You'll Ever Get The Car",
+      "url": "https://www.hotcars.com/tesla-roadster-2-reservation-terms-2026/",
+      "date": "2026-10-19",
+      "checked": "2026-10-28",
+      "kind": "reporting",
+      "note": "Quotes clause 4 of Tesla's Roadster Reservation Agreement on delivery, and reports that a deposit gives an approximate place in line, not a build slot."
+    },
+    {
+      "id": "dispatch-reveal",
+      "label": "Our reveal report",
+      "outlet": "Supercharged Daily",
+      "title": "Tesla's new Roadster flew. Here is what Tesla revealed, what it costs to reserve, and what it means",
+      "url": "https://superchargeddaily.com/dispatch/roadster-reveal-2026.html",
+      "date": "2026-10-16",
+      "checked": "2026-10-28",
+      "kind": "own",
+      "note": "Our own report on the event, with the trims, the design language and the 2017 promise against the 2026 reveal."
+    },
+    {
+      "id": "dispatch-hagerty",
+      "label": "Our report on the Hagerty interview",
+      "outlet": "Supercharged Daily",
+      "title": "Fans, thrusters and Optimus legs: Tesla's Roadster engineer takes Hagerty under the skin",
+      "url": "https://superchargeddaily.com/dispatch/hagerty-roadster-moravy-interview.html",
+      "date": "2026-10-20",
+      "checked": "2026-10-28",
+      "kind": "own",
+      "note": "Our write-up of what Lars Moravy said in the Hagerty video, with each figure marked as a claim or a target."
+    }
+  ],
+  "chapters": [
+    {
+      "id": "top",
+      "label": "Intro"
+    },
+    {
+      "id": "video",
+      "label": "The reveal"
+    },
+    {
+      "id": "money",
+      "label": "The money"
+    },
+    {
+      "id": "faq",
+      "label": "Questions"
+    },
+    {
+      "id": "evidence",
+      "label": "Evidence"
+    }
+  ],
+  "facts": [
+    {
+      "id": "revealed",
+      "label": "Revealed",
+      "value": "15 Oct 2026",
+      "detail": "Shown at SpaceX's McGregor test site (Engadget), outside Waco, Texas (TechCrunch). The event ran under 30 minutes and gave no price (The Verge).",
+      "status": "reported",
+      "sources": [
+        "engadget",
+        "techcrunch",
+        "verge"
+      ],
+      "strip": true
+    },
+    {
+      "id": "run",
+      "label": "0 to 60 mph on stage",
+      "value": "0.81 s",
+      "detail": "Tesla's claimed time during the event. We have found no independent timing (as of 28 Oct 2026).",
+      "status": "claim",
+      "sources": [
+        "verge",
+        "techcrunch"
+      ],
+      "strip": true
+    },
+    {
+      "id": "production",
+      "label": "Production",
+      "value": "2028",
+      "detail": "Musk's stated target. No delivery date has been announced.",
+      "status": "target",
+      "sources": [
+        "verge",
+        "techcrunch",
+        "engadget"
+      ],
+      "strip": true
+    },
+    {
+      "id": "deposit",
+      "label": "Reservation deposit",
+      "value": "$50,000+",
+      "detail": "$50,000 for Performance and $250,000 for Thrust; Rocket is invite only. A deposit is not the price, which Tesla has not announced.",
+      "status": "reported",
+      "sources": [
+        "engadget",
+        "autoblog",
+        "techcrunch"
+      ],
+      "strip": true
+    }
+  ],
+  "reveal": {
+    "kicker": "The reveal, 15 October 2026",
+    "title": "The night<br>it flew.",
+    "lead": "Tesla's event ran under half an hour and felt, as The Verge put it, more like a stunt show than a product reveal. These are the moments, and who said what about each one.",
+    "steps": [
+      {
+        "id": "ramp",
+        "number": "01",
+        "title": "Upside down, on purpose.",
+        "text": "The Roadster drove up a tall, C-shaped ramp and stopped on the inverted section, hanging upside down. Tesla says a fan and ground-sealing system pulls air out from under the car, giving enough suction to hold it there even when stationary.",
+        "status": "demo",
+        "sources": [
+          "engadget",
+          "verge"
+        ],
+        "image": "upside-down-ramp",
+        "alt": "The Roadster on the inverted section of the ramp during the reveal",
+        "kicker": "The ramp"
+      },
+      {
+        "id": "flip",
+        "number": "02",
+        "title": "Off the top. A flip. A landing.",
+        "text": "On a second run it left the top of the ramp and flipped, and its cold-gas thrusters eased it down to the ground. When the door opened, an Optimus robot was in the driver's seat. Engadget notes the stunts were programmed into the car, so nobody was driving.",
+        "status": "demo",
+        "sources": [
+          "engadget",
+          "techcrunch"
+        ],
+        "image": "ramp-flip",
+        "alt": "The Roadster flipping off the top of the ramp, lit by the event lights",
+        "kicker": "The flip"
+      },
+      {
+        "id": "hop",
+        "number": "03",
+        "title": "Over a line of Teslas.",
+        "text": "TechCrunch reports the car also used its thrusters to lift itself over a Cybercab, a Cybertruck, a Semi, a Model Y and a Model 3 while moving. The Verge says Tesla's engineering VP Lars Moravy called one of the manoeuvres \"a kick flip\".",
+        "status": "demo",
+        "sources": [
+          "techcrunch",
+          "verge"
+        ],
+        "image": "flight-over-cars",
+        "alt": "The Roadster, seen from below, lifting over a line of Tesla vehicles on thruster plumes",
+        "kicker": "The hop"
+      },
+      {
+        "id": "run",
+        "number": "04",
+        "title": "0.81 seconds.",
+        "text": "During the event Tesla claimed a 0 to 60 mph run of 0.81 seconds, which TechCrunch reports as one second. Musk said the production car should improve on it. We have found no independent timing (as of 28 Oct 2026), and the start rules, rollout and surface all change what a time means.",
+        "status": "claim",
+        "sources": [
+          "verge",
+          "techcrunch"
+        ],
+        "image": "drag-strip",
+        "alt": "The Roadster on the lit drag strip with a running timer on the track",
+        "kicker": "The run"
+      },
+      {
+        "id": "gap",
+        "number": "05",
+        "title": "And then no price.",
+        "text": "There was no mention of price or release date. Musk said production begins in 2028 and, as The Verge quotes him, \"This will be an actual car that's on the roads\", though The Verge adds that the company later admitted it would not be road legal. Tesla says the Rocket trim is \"not approved for public road use\".",
+        "status": "target",
+        "sources": [
+          "verge",
+          "techcrunch"
+        ],
+        "image": "stage-team",
+        "alt": "Tesla engineers and Elon Musk beside the white Roadster on stage",
+        "kicker": "The gap"
+      }
+    ]
+  },
+  "reservation": {
+    "kicker": "The money and the wait",
+    "title": "A reservation<br>is not a price.",
+    "lead": "Tesla has not announced what the Roadster will cost. What it has published is what it costs to join the queue, and the terms of that queue.",
+    "cards": [
+      {
+        "id": "performance",
+        "label": "Performance",
+        "value": "$50,000",
+        "detail": "$5,000 at reservation, then $45,000 within 10 days.",
+        "status": "reported",
+        "sources": [
+          "engadget",
+          "autoblog",
+          "techcrunch"
+        ]
+      },
+      {
+        "id": "thrust",
+        "label": "Thrust",
+        "value": "$250,000",
+        "detail": "Engadget reports the extra $245,000 is due within 10 days of reserving.",
+        "status": "reported",
+        "sources": [
+          "engadget",
+          "autoblog",
+          "techcrunch"
+        ]
+      },
+      {
+        "id": "rocket",
+        "label": "Rocket",
+        "value": "Invite only",
+        "detail": "The flight-capable trim is invite only, and Tesla says it is not approved for public road use.",
+        "status": "reported",
+        "sources": [
+          "engadget",
+          "verge"
+        ]
+      }
+    ],
+    "terms": [
+      {
+        "text": "The deposit counts toward the final price and stays refundable until you sign the final purchase agreement. It cannot be transferred.",
+        "status": "reported",
+        "sources": [
+          "autoblog"
+        ]
+      },
+      {
+        "text": "Clause 4 of Tesla's Roadster Reservation Agreement, as HotCars quotes it: \"we cannot guarantee when your vehicle will actually be delivered or if it will be delivered.\"",
+        "status": "reported",
+        "sources": [
+          "hotcars"
+        ]
+      },
+      {
+        "text": "A deposit buys an approximate place in line if production starts, not a confirmed build slot, and Tesla reserves the right to change the price, features and hardware.",
+        "status": "reported",
+        "sources": [
+          "hotcars",
+          "autoblog"
+        ]
+      }
+    ],
+    "note": "We have not opened Tesla's own reservation page (it blocks our fetcher), so these terms are as the outlets above report them. Check Tesla's current terms before paying a deposit."
+  },
+  "faq": [
+    {
+      "id": "price",
+      "q": "How much does the Roadster cost?",
+      "a": "Tesla has not announced a price. The $50,000 (Performance) and $250,000 (Thrust) figures are reservation deposits, which count toward the final price but are not it. Rocket is invite only.",
+      "sources": [
+        "engadget",
+        "autoblog",
+        "techcrunch",
+        "verge"
+      ]
+    },
+    {
+      "id": "when",
+      "q": "When can I get one?",
+      "a": "Musk said production starts in 2028. Tesla has given no delivery date, and its reservation agreement says it cannot guarantee when, or whether, a car will be delivered.",
+      "sources": [
+        "verge",
+        "techcrunch",
+        "hotcars"
+      ]
+    },
+    {
+      "id": "refund",
+      "q": "Can I get my deposit back?",
+      "a": "Autoblog reports the deposit stays refundable until you sign the final purchase agreement, and that it cannot be transferred to someone else.",
+      "sources": [
+        "autoblog"
+      ]
+    },
+    {
+      "id": "fly",
+      "q": "Does it really fly?",
+      "a": "In a controlled, programmed stunt it lifted over a line of Teslas and landed from a flip on cold-gas thrusters. Only the invite-only Rocket trim has the full thruster set, and Tesla's site says it is not approved for public road use.",
+      "sources": [
+        "engadget",
+        "techcrunch",
+        "verge"
+      ]
+    },
+    {
+      "id": "fast",
+      "q": "How fast is it?",
+      "a": "Tesla claims 0 to 60 mph in under 1.6 seconds for Performance, under 0.9 for Thrust and under 0.59 for the Rocket, and claimed 0.81 seconds on stage. Hagerty quotes 0.85 seconds for Thrust and a 0.55-second rollout figure for the Rocket. We have found no independent test of any of these (as of 28 Oct 2026).",
+      "sources": [
+        "verge",
+        "hagerty",
+        "dispatch-reveal"
+      ]
+    },
+    {
+      "id": "power",
+      "q": "How much power does it make?",
+      "a": "Hagerty reports over a megawatt (1,341 hp) and 1,400 Nm from two motors driving the rear wheels only, which Lars Moravy described as more than the three motors in a Model S Plaid.",
+      "sources": [
+        "hagerty",
+        "dispatch-hagerty"
+      ]
+    },
+    {
+      "id": "range",
+      "q": "What about range and charging?",
+      "a": "Tesla's published target is more than 300 miles. Moravy told Hagerty the charging target is about 10 minutes from 15 to 80 percent. The battery size and the final range are not published, and we know of no certified range (as of 28 Oct 2026).",
+      "sources": [
+        "techcrunch",
+        "verge",
+        "dispatch-hagerty",
+        "hagerty"
+      ]
+    },
+    {
+      "id": "legal",
+      "q": "Is it road legal?",
+      "a": "Tesla calls Performance \"road ready\", which is its positioning, not a certification. The Rocket carries the line \"Not approved for public road use\" on Tesla's site. Approvals depend on the market and the final configuration.",
+      "sources": [
+        "techcrunch",
+        "verge"
+      ]
+    },
+    {
+      "id": "2017",
+      "q": "How is it different from the 2017 Roadster?",
+      "a": "In 2017 Tesla promised 0 to 60 mph in 1.9 seconds, over 250 mph, up to 620 miles from a 200 kWh battery, a $200,000 starting price and 2020 deliveries. It is now a two-seater (the Rocket seats one), quoted at more than 300 miles, with production targeted for 2028.",
+      "sources": [
+        "verge",
+        "techcrunch",
+        "hagerty"
+      ]
+    },
+    {
+      "id": "spacex",
+      "q": "What did SpaceX build and what did Tesla build?",
+      "a": "Moravy told Hagerty the battery, powertrain, chassis, body, doors, seats and suction system are Tesla's, and that the thrust and flight packages were joint development with SpaceX. The Verge reported the suction system as supplied by SpaceX, which does not match his account.",
+      "sources": [
+        "dispatch-hagerty",
+        "hagerty",
+        "verge"
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "date": "2026-10-28",
+      "kind": "update",
+      "text": "Added the reservation terms and the reservation agreement's delivery clause, the event location, the engineer's figures from the Hagerty interview, a questions section and this change log."
+    },
+    {
+      "date": "2026-10-25",
+      "kind": "update",
+      "text": "Added the reported equipment lists for each trim, with the original post linked."
+    },
+    {
+      "date": "2026-10-24",
+      "kind": "update",
+      "text": "Published the Roadster showcase: the film, the gallery, the engineering diagrams and the sourced claims."
+    }
+  ]
+}

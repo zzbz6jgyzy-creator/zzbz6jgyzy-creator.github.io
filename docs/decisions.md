@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-28 · Roadster: a hidden preview first, new data file, no animation library
+
+- **Choice:** build the rebuilt Roadster page at `/roadster-preview.html` (noindex) from a new data file and builder, and swap it into `/roadster.html` only after the owner approves it.
+- **Why:** the Roadster page is one of the busiest. A preview lets the owner judge it on a phone, and a separate builder and data file leave the live page and its tests untouched. Official sources only, as chosen: Tesla's CDN, the official YouTube replay and outlets we opened.
+- **Motion:** native CSS scroll-driven animations with an IntersectionObserver fallback rather than GSAP or Lenis. GSAP ScrollTrigger is now free but adds weight we do not need, and Lenis hijacks native scrolling. Firefox lacks scroll-driven animations by default, so it gets the fallback.
+- **Trade-off:** until the swap there are two Roadster pages; the preview is hidden, so readers only see the live one.
+
 ## 2026-10-28 · Teslascope 689 vs 94 stays all-hardware, not HW3-only
 
 - **Choice:** keep the audit’s 689 vs 94 figures as Teslascope’s all-hardware snapshot of 2026.38.5.11 vs 2026.38.5.10, the two builds that carry v14.3.13 (HW4) and HW3 v14.3 Lite.
