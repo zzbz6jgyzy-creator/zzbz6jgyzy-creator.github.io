@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-10-28T06:58:26Z",
- "checked": "2026-10-28T06:58:26Z",
+ "updated": "2026-10-28T08:02:04Z",
+ "checked": "2026-10-28T08:02:04Z",
  "results": [
   {
    "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
@@ -1590,6 +1590,38 @@
    "last_updated": "2026-02-24T17:09:27Z",
    "mission": {
     "name": "SDA Tranche 2 Transport Layer C",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
+  },
+  {
+   "id": "5276b922-e440-466b-9b19-5851a2d67e75",
+   "name": "Falcon 9 Block 5 | SDA Tranche 2 Transport Layer F",
+   "net": "2027-01-31T00:00:00Z",
+   "window_start": "2027-01-31T00:00:00Z",
+   "window_end": "2027-01-31T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/5276b922-e440-466b-9b19-5851a2d67e75/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2025-04-10T05:43:50Z",
+   "mission": {
+    "name": "SDA Tranche 2 Transport Layer F",
     "type": "Government/Top Secret",
     "orbit": {
      "name": "Polar Orbit",
