@@ -1,5 +1,9 @@
 # Changelog
 
+## 28 Oct 2026 — FSD tracker, part 5b (menu)
+
+- **Menu:** "FSD by the numbers" (badge New) added under Tesla, Software & autonomy, in the desktop and phone menus, from `scripts/nav.json` via `scripts/sync-nav.py`. Every page's menu block is regenerated, so the diff is the same block on about 160 pages.
+
 ## 28 Oct 2026 — FSD tracker, part 5a (return visits)
 
 - **When it updates next:** a table of what refreshes from which source and when we expect the next change (our expectations, marked as such, not Tesla's schedule).
