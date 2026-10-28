@@ -20,8 +20,8 @@
 .hs-home .hs-text-link:hover { color:var(--hs-red); }
 
 /* The first screen: one editorial promise and one clear visual composition. */
-.hs-home .hs-hero { display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.1fr);gap:64px;align-items:center;padding:44px 0 48px; }
-.hs-home .hs-hero-copy { min-width:0; }
+.hs-home .hs-hero { display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.1fr);grid-template-areas:'intro visual' 'signup visual';column-gap:64px;align-items:center;padding:44px 0 48px; }
+.hs-home .hs-hero-copy { grid-area:intro;align-self:end;min-width:0; }
 .hs-home .hs-hero-copy>.hs-eyebrow { display:flex;align-items:center;gap:9px;font-size:9px!important;letter-spacing:.055em; }
 .hs-home .hs-hero-copy>.hs-eyebrow>span { width:6px;height:6px;flex:none;border-radius:50%;background:var(--hs-red);box-shadow:0 0 16px #f23a5250; }
 .hs-home .hs-hero h1 { font:600 clamp(56px,6.2vw,86px)/.99 Inter,sans-serif;letter-spacing:-.065em;margin:28px 0 24px;color:var(--hs-ink); }
@@ -31,7 +31,7 @@
 .hs-home .hs-hero .hv-start a { display:inline-flex;align-items:center;justify-content:space-between;gap:23px;min-height:46px;padding:10px 15px;border:1px solid var(--hs-line);border-radius:6px;font-size:12px;font-weight:600;color:var(--hs-ink);transition:background .2s,border-color .2s; }
 .hs-home .hs-hero .hv-start a:first-child { background:var(--hs-ink);border-color:var(--hs-ink);color:var(--hs-bg); }
 .hs-home .hs-hero .hv-start a:hover { border-color:var(--hs-red); }
-.hs-home .hs-hero-signup { padding-top:21px;border-top:1px solid var(--hs-line);scroll-margin-top:120px; }
+.hs-home .hs-hero-signup { grid-area:signup;align-self:start;min-width:0;padding-top:21px;border-top:1px solid var(--hs-line);scroll-margin-top:120px; }
 .hs-home .hs-signup-label { font-size:13px;font-weight:600;line-height:1.6;margin-bottom:12px; }
 .hs-home .hs-form { display:flex!important;flex-wrap:wrap;align-items:stretch;gap:8px;min-width:0; }
 .hs-home .hs-form input[type=email] { flex:1;width:0;min-width:0;min-height:52px;padding:14px;background:#ffffff04;border:1px solid #ffffff36;border-radius:6px;font-size:16px;line-height:1.4;color:var(--hs-ink);box-shadow:none; }
@@ -47,7 +47,7 @@
 .hs-home .hs-author a { display:inline-flex;align-items:center;gap:9px;min-height:32px;color:var(--hs-ink); }
 .hs-home .hs-author .hs-arrow { width:11px;height:11px; }
 
-.hs-home .hs-hero-visual { display:grid;grid-template-columns:minmax(0,1fr);gap:12px;position:relative;min-width:0; }
+.hs-home .hs-hero-visual { grid-area:visual;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;position:relative;min-width:0; }
 .hs-home .hs-showcase-index { display:flex;justify-content:space-between;gap:12px;font:500 9px/1.6 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--hs-muted);padding-bottom:2px; }
 .hs-home .hs-hero-roadster { position:relative;display:flex;flex-direction:column;gap:20px;padding:20px 23px 13px;min-width:0;width:100%;min-height:390px;border-radius:12px;overflow:hidden;background:#111216;border:1px solid #ffffff25;color:#fff;isolation:isolate; }
 .hs-home .hs-hero-roadster>picture { display:block;position:absolute;inset:0;z-index:-2; }
@@ -265,7 +265,7 @@ html[data-theme=light] .hs-home .hs-newsletter .hs-form input::placeholder { col
 @media(min-width:2400px) { .hs-home { zoom:1!important; } }
 @media(max-width:1200px) {
   .hs-home { padding-inline:28px!important; }
-  .hs-home .hs-hero { gap:32px;grid-template-columns:minmax(0,.95fr) minmax(0,1fr); }
+  .hs-home .hs-hero { column-gap:32px;grid-template-columns:minmax(0,.95fr) minmax(0,1fr); }
   .hs-home .hs-hero h1 { font-size:clamp(56px,6.3vw,76px); }
   .hs-home .hs-hero-roadster { min-height:350px; }
   .hs-home .hs-hero-launch,.hs-home .hs-hero-orbit { min-height:176px; }
@@ -290,7 +290,8 @@ html[data-theme=light] .hs-home .hs-newsletter .hs-form input::placeholder { col
   .hs-home .hs-paper { padding:25px; }
 }
 @media(min-width:601px) and (max-width:960px) {
-  .hs-home .hs-hero { gap:24px;align-items:start;padding-top:32px; }
+  .hs-home .hs-hero { column-gap:24px;align-items:start;padding-top:32px; }
+  .hs-home .hs-hero-copy { align-self:start; }
   .hs-home .hs-hero h1 { font-size:54px;margin:23px 0; }
   .hs-home .hs-hero-copy>.hs-eyebrow { font-size:8px!important; }
   .hs-home .hv-pitch { font-size:14px;line-height:1.7; }
@@ -347,19 +348,19 @@ html[data-theme=light] .hs-home .hs-newsletter .hs-form input::placeholder { col
 }
 @media(max-width:600px) {
   .hs-home { padding:0 22px 30px!important; }
-  .hs-home .hs-hero { grid-template-columns:1fr;gap:27px;padding:28px 0 30px; }
+  .hs-home .hs-hero { grid-template-columns:1fr;grid-template-areas:'intro' 'visual' 'signup';gap:24px;padding:24px 0 30px; }
   .hs-home .hs-hero-copy>.hs-eyebrow { font-size:8px!important;letter-spacing:.02em;gap:7px; }
-  .hs-home .hs-hero h1 { font-size:clamp(48px,14.5vw,76px);line-height:1;letter-spacing:-.065em;margin:23px 0 19px; }
-  .hs-home .hv-pitch { font-size:14px;line-height:1.75;max-width:450px; }
-  .hs-home .hs-hero .hv-start { gap:8px;margin:19px 0 23px; }
-  .hs-home .hs-hero .hv-start a { min-height:46px;font-size:12px;gap:22px;padding:10px 14px; }
-  .hs-home .hs-hero-signup { padding-top:18px; }
+  .hs-home .hs-hero h1 { font-size:clamp(48px,14.5vw,76px);line-height:1;letter-spacing:-.065em;margin:20px 0 16px; }
+  .hs-home .hv-pitch { font-size:14px;line-height:1.65;max-width:450px; }
+  .hs-home .hs-hero .hv-start { gap:8px;margin:18px 0 0; }
+  .hs-home .hs-hero .hv-start a { flex:1 1 130px;min-height:46px;font-size:12px;gap:10px;padding:10px 12px; }
+  .hs-home .hs-hero-signup { padding-top:22px; }
   .hs-home .hs-signup-label { font-size:12px;margin-bottom:12px; }
   .hs-home .hs-hero-signup .hs-form { flex-direction:row; }
   .hs-home .hs-hero-signup .hs-form .sd-btn { width:auto;font-size:11px;padding-inline:12px;gap:8px;max-width:100%; }
   .hs-home .hs-hero-signup .hs-form input { min-width:130px;font-size:16px;padding:12px; }
   .hs-home .hs-form-note { font-size:10px;line-height:1.8;margin-top:9px; }
-  .hs-home .hs-sample-link { font-size:11px;min-height:36px; }
+  .hs-home .hs-sample-link { font-size:11px;min-height:44px; }
   .hs-home .hs-author { display:none; }
   .hs-home .hs-hero-visual { gap:10px; }
   .hs-home .hs-showcase-index { font-size:8px;letter-spacing:.035em; }

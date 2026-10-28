@@ -19,6 +19,13 @@ class Home(unittest.TestCase):
   for a in inputs:self.assertIn('required',a);self.assertEqual(a['autocomplete'],'email');self.assertEqual(a['inputmode'],'email');self.assertIn(a['id']+'-status',a['aria-describedby'])
   self.assertIn('Free, every Sunday. Unsubscribe anytime.',self.source);self.assertIn('Read a real issue',self.source)
   self.assertNotRegex(self.source,r'Join [\d,]+ (?:readers|subscribers)')
+ def test_intro_showcase_signup_follow_native_reading_order(self):
+  hero=self.source.split('<header class="hs-hero">',1)[1].split('</header>',1)[0]
+  tags=Document(hero).tags
+  blocks=[i for i,(t,a) in enumerate(tags) if a.get('class') in ['hs-hero-copy','hs-hero-visual','hs-hero-signup']]
+  self.assertEqual([tags[i][1]['class']for i in blocks],['hs-hero-copy','hs-hero-visual','hs-hero-signup'])
+  signup=next(a for t,a in tags if a.get('class')=='hs-hero-signup')
+  self.assertEqual(signup['id'],'newsletter')
  def test_first_visit_routes_are_native_links(self):
   section=re.search(r'<(section|nav)\b[^>]*class="[^"]*\bhs-wayfinder\b[^"]*"[^>]*>(.*?)</\1>',self.source,re.S)
   self.assertIsNotNone(section,'First-time readers need a labelled route into the site')

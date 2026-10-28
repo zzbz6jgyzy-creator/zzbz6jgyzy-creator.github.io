@@ -1,34 +1,57 @@
 (() => {
   const nav = document.querySelector(".pn");
-  if (!nav) return;
+  if (!nav || nav.dataset.pnReady) return;
+  nav.dataset.pnReady = "1";
   const items = nav.querySelector(".pn-items");
-  // Subscribe entry (desktop pill + phone sheet); newsletter-cta.js points it at the page's signup block
-  if (!nav.querySelector(".pn-sub")) {
-    const mk = (cls) => { const a = document.createElement("a"); a.className = cls; a.href = "/#newsletter"; a.textContent = "Subscribe"; return a; };
-    const cta = items.querySelector(".pn-cta"); items.insertBefore(mk("pn-link pn-sub"), cta);
-    const sh = document.querySelector(".pn-sheet"), shCta = sh && sh.querySelector(".pn-cta");
-    if (shCta) sh.insertBefore(mk("pn-sub pn-sub-sheet"), shCta);
+  const sheet = document.querySelector(".pn-sheet");
+  const ov = document.querySelector(".pn-overlay");
+  const mb = nav.querySelector(".pn-menu");
+  const mobile = () => window.matchMedia("(max-width: 899px)").matches;
+
+  // Utilities are generated as real links. Normalize older cached markup once, without duplicates.
+  let utilities = nav.querySelector(".pn-utilities");
+  if (!utilities) {
+    utilities = document.createElement("div");
+    utilities.className = "pn-utilities";
+    nav.insertBefore(utilities, mb || null);
   }
-  // Search — same inject pattern as Subscribe; search.js opens the overlay (or /search.html)
-  if (!nav.querySelector(".pn-search")) {
-    const icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
-    const mk = (cls) => { const a = document.createElement("a"); a.className = cls; a.href = "/search.html"; a.innerHTML = icon + "<span>Search</span>"; return a; };
-    const sub = items.querySelector(".pn-sub");
-    const cta = items.querySelector(".pn-cta");
-    items.insertBefore(mk("pn-link pn-search"), sub || cta);
-    const sh = document.querySelector(".pn-sheet");
-    const shHome = sh && [...sh.querySelectorAll('a[href="/"]')].find((a) => a.textContent.trim() === "Home");
-    const shSub = sh && sh.querySelector(".pn-sub-sheet");
-    const shCta = sh && sh.querySelector(".pn-cta");
-    if (shHome) shHome.after(mk("pn-search pn-search-sheet"));
-    else if (shSub || shCta) (shSub || shCta).before(mk("pn-search pn-search-sheet"));
+  const searchIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+  const dailyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>';
+  const ensureLink = (root, selector, cls, href, label, icon = "") => {
+    const matches = [...root.querySelectorAll(selector)];
+    const link = matches.shift() || document.createElement("a");
+    matches.forEach((extra) => extra.remove());
+    link.className = cls;
+    link.href = href;
+    link.innerHTML = icon + "<span>" + label + "</span>";
+    return link;
+  };
+  utilities.append(
+    ensureLink(nav, ".pn-search", "pn-link pn-search", "/search.html", "Search", searchIcon),
+    ensureLink(nav, '.pn-daily, a[href="/daily.html"]', "pn-link pn-daily", "/daily.html", "Your Daily", dailyIcon),
+    ensureLink(nav, ".pn-sub", "pn-sub pn-cta", "/#newsletter", "Free briefing")
+  );
+  if (sheet) {
+    const home = [...sheet.querySelectorAll('a[href="/"]')].find((a) => a.textContent.trim() === "Home");
+    const search = ensureLink(sheet, ".pn-search-sheet, .pn-search", "pn-search pn-search-sheet", "/search.html", "Search", searchIcon);
+    const daily = ensureLink(sheet, '.pn-daily-sheet, a[href="/daily.html"]', "pn-daily pn-daily-sheet", "/daily.html", "Your Daily", dailyIcon);
+    const subscribe = ensureLink(sheet, ".pn-sub-sheet", "pn-sub pn-sub-sheet", "/#newsletter", "Free briefing");
+    (home || sheet.querySelector(".pn-sheet-head"))?.after(search, daily);
+    if (!subscribe.parentNode) sheet.append(subscribe);
   }
-  const kids = [...items.children];
-  kids.forEach((el, i) => { el.style.setProperty("--i", i); el.style.setProperty("--n", kids.length); });
-  let sheet, ov, mb, sheetOpen;
-  const app = nav.hasAttribute("data-start-collapsed");
-  let expanded = true, last = window.scrollY, collapseAt = 0;
-  const setW = () => { if (!expanded) return; nav.style.setProperty("--pn-w", "auto"); const w = nav.scrollWidth; nav.style.setProperty("--pn-w", w + "px"); };
+  if (mb && !mb.querySelector("span")) {
+    const label = document.createElement("span");
+    label.textContent = "Menu";
+    mb.append(label);
+  }
+  // Retain the public hook used by older pages, while every state now stays expanded.
+  const setExpanded = () => {
+    nav.classList.remove("collapsed");
+    nav.removeAttribute("data-start-collapsed");
+    nav.style.removeProperty("--pn-w");
+    nav.setAttribute("aria-label", "Primary");
+  };
+  setExpanded();
   const closeNests = (root) => {
     (root || nav).querySelectorAll(".pn-nest.open").forEach((n) => {
       if (n.querySelector("a[aria-current=page]")) return;
@@ -51,12 +74,6 @@
     if (p) p.hidden = !open;
   };
   const closeAll = () => nav.querySelectorAll(".pn-dd.open").forEach(d => { d.classList.remove("open"); d.querySelector("button").setAttribute("aria-expanded", "false"); closeNests(d); });
-  const setExpanded = v => {
-    expanded = v; nav.classList.toggle("collapsed", !v); nav.setAttribute("aria-label", v ? "Primary" : "Open navigation");
-    if (v) setW(); else closeAll();
-  };
-  requestAnimationFrame(setW); window.addEventListener("resize", setW);
-  document.fonts && document.fonts.ready.then(setW);
   const here = location.pathname.replace(/index\.html$/, "") || "/";
   const hash = location.hash || "";
   document.querySelectorAll(".pn a[href], .pn-sheet a[href]").forEach(a => {
@@ -73,34 +90,6 @@
       if (btn) btn.setAttribute("aria-current", "true");
     }
   });
-  if (app) { setExpanded(false); document.addEventListener("click", e => { if (expanded && !nav.contains(e.target)) setExpanded(false); }); }
-  const mobile = () => window.matchMedia("(max-width: 899px)").matches;
-  let ticking = false;
-  const onScroll = () => {
-    ticking = false;
-    if (app) return;
-    const y = Math.max(0, window.scrollY);
-    if (mobile()) {
-      // phones: circle while scrolled, full pill only near the top (ignores rubber-band / momentum bounces)
-      if (expanded && y > 150) setExpanded(false);
-      else if (!expanded && y < 150) setExpanded(true);
-    } else {
-      if (expanded && y > last && y > 150) { setExpanded(false); collapseAt = y; }
-      else if (!expanded && (y < 150 || (y < last && collapseAt - y > 80))) setExpanded(true);
-    }
-    last = y;
-  };
-  window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-  window.addEventListener("resize", () => requestAnimationFrame(onScroll));
-  let lock = 0;
-  nav.addEventListener("click", e => {
-    if (expanded) return;
-    e.preventDefault(); e.stopPropagation();
-    const now = Date.now(); if (now - lock < 450) return; lock = now;
-    if (mobile()) sheetOpen(true); else setExpanded(true);
-  }, true);
-  nav.addEventListener("keydown", e => { if (!expanded && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); setExpanded(true); } });
-
   nav.querySelectorAll(".pn-dd").forEach(dd => {
     const btn = dd.querySelector("button");
     const open = v => { if (v) closeAll(); dd.classList.toggle("open", v); btn.setAttribute("aria-expanded", String(v)); if (!v) closeNests(dd); };
@@ -149,7 +138,7 @@
     const sh = document.querySelector(".pn-sheet");
     if (!sh || sh.dataset.grouped) return;
     sh.dataset.grouped = "1";
-    const stop = (n) => !n || n.tagName === "H3" || n.classList.contains("pn-cta") || n.classList.contains("pn-sub-sheet") || n.classList.contains("pn-search-sheet") || n.classList.contains("pn-theme-sheet");
+    const stop = (n) => !n || n.tagName === "H3" || n.matches(".pn-cta, .pn-sub-sheet, .pn-search-sheet, .pn-daily-sheet, .pn-theme-sheet");
     const onPage = (el) => {
       if (el.matches?.("[aria-current]")) return true;
       return [...(el.querySelectorAll ? el.querySelectorAll("a") : []), el.tagName === "A" ? el : null].filter(Boolean).some((l) => {
@@ -183,17 +172,52 @@
       });
     });
   })();
-  sheet = document.querySelector(".pn-sheet"), ov = document.querySelector(".pn-overlay"), mb = nav.querySelector(".pn-menu");
-  sheetOpen = v => {
-    if (v === sheet.classList.contains("open")) return;
-    sheet.classList.toggle("open", v); ov.classList.toggle("open", v); document.body.classList.toggle("pn-lock", v);
-    sheet.setAttribute("aria-hidden", String(!v)); sheet.inert = !v; mb.setAttribute("aria-expanded", String(v));
-    if (v) sheet.querySelector(".pn-close").focus({ preventScroll: true }); else (expanded ? mb : nav).focus({ preventScroll: true });
+  const visibleFocusable = (root) => [...root.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+    .filter((el) => !el.closest("[hidden], [inert]") && el.getClientRects().length && getComputedStyle(el).visibility !== "hidden");
+  let previousFocus;
+  const sheetOpen = (open, restoreFocus = true) => {
+    if (!sheet || !ov || !mb || open === sheet.classList.contains("open")) return;
+    if (open) { previousFocus = document.activeElement; closeAll(); }
+    sheet.classList.toggle("open", open);
+    ov.classList.toggle("open", open);
+    document.body.classList.toggle("pn-lock", open);
+    sheet.setAttribute("aria-hidden", String(!open));
+    sheet.inert = !open;
+    mb.setAttribute("aria-expanded", String(open));
+    if (open) sheet.querySelector(".pn-close")?.focus({ preventScroll: true });
+    else if (restoreFocus) {
+      const target = previousFocus?.isConnected && previousFocus.getClientRects().length ? previousFocus : (mobile() ? mb : nav.querySelector(".pn-logo"));
+      target?.focus({ preventScroll: true });
+    }
   };
-  mb.addEventListener("click", () => { if (Date.now() - lock < 450) return; lock = Date.now(); sheetOpen(true); });
-  ov.addEventListener("click", () => sheetOpen(false));
-  sheet.querySelector(".pn-close").addEventListener("click", () => sheetOpen(false));
-  document.addEventListener("keydown", e => { if (e.key === "Escape") { closeAll(); if (sheet.classList.contains("open")) sheetOpen(false); } });
+  mb?.addEventListener("click", (e) => { e.preventDefault(); sheetOpen(true); });
+  ov?.addEventListener("click", () => sheetOpen(false));
+  sheet?.querySelector(".pn-close")?.addEventListener("click", () => sheetOpen(false));
+  sheet?.addEventListener("click", (e) => {
+    // Let search and newsletter handlers move focus to their own destination.
+    const link = e.target.closest("a[href]");
+    if (link && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) sheetOpen(false, false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeAll();
+      if (sheet?.classList.contains("open")) { e.preventDefault(); sheetOpen(false); }
+    }
+    if (e.key === "Tab" && sheet?.classList.contains("open")) {
+      const controls = visibleFocusable(sheet);
+      const first = controls[0], last = controls[controls.length - 1];
+      if (!first) return;
+      if (e.shiftKey && (document.activeElement === first || !sheet.contains(document.activeElement))) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !sheet.contains(document.activeElement))) {
+        e.preventDefault(); first.focus();
+      }
+    }
+  });
+  window.addEventListener("resize", () => {
+    closeAll();
+    if (!mobile()) sheetOpen(false);
+  });
   window.__pn = { setExpanded, sheetOpen };
   if (window.sdWireNewsletterCTA) window.sdWireNewsletterCTA();
   else if (!window.__sdNewsletterCta) {
