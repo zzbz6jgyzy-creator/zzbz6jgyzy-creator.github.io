@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 28 Oct 2026 02:36:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 08:40:00 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-faa-10000-launches.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-faa-10000-launches.html</guid>
+      <pubDate>Wed, 28 Oct 2026 08:40:00 +0000</pubDate>
+      <category>Launch policy</category>
+      <description>SpaceX’s FAA filing says it expects 10,000 launches a year and that air traffic rules are now the limit. Airlines for America wants launches at low-traffic times.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/crs35-launch-iss-streak-nasa.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you</title>
       <link>https://superchargeddaily.com/dispatch/tesla-powershare-120v-outlet.html</link>
@@ -717,15 +726,6 @@
       <category>SpaceX</category>
       <description>Nationwide licence, 15+15 MHz to phones, plus the 800 MHz buy.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-latam-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>LA to NY, 45 hours 37 minutes</title>
-      <link>https://superchargeddaily.com/dispatch/fsd-cannonball.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/fsd-cannonball.html</guid>
-      <pubDate>Sat, 10 Oct 2026 22:50:41 +0000</pubDate>
-      <category>Tesla</category>
-      <description>FSD v14.3.7, zero interventions, the team says. Self-reported.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/fsd-cannonball-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
