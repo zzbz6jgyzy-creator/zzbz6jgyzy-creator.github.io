@@ -1,9 +1,12 @@
 ## 2026-10-28 — Mobile opening and persistent navigation
 
-- Bring homepage imagery before signup on phones.
-- Keep Search and Your Daily visible; simplify shared menus and highlight the free briefing.
+- Bring imagery before signup on phones and keep Search and Your Daily visible.
 
 # Changelog
+
+## 28 Oct 2026 — FSD tracker, part 5b (menu)
+
+- **Menu:** "FSD by the numbers" (badge New) added under Tesla, Software & autonomy, in the desktop and phone menus, from `scripts/nav.json` via `scripts/sync-nav.py`. Every page's menu block is regenerated, so the diff is the same block on about 160 pages.
 
 ## 28 Oct 2026 — FSD tracker, part 5a (return visits)
 

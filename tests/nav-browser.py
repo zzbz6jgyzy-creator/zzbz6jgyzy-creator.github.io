@@ -4,6 +4,7 @@ External requests and all network writes are blocked. Requires Python Playwright
 and Chromium. Screenshots are written to dev/ for visual review.
 """
 import asyncio
+import base64
 import json
 import mimetypes
 import os
@@ -164,6 +165,9 @@ async def main():
                             box = await link.bounding_box()
                             assert box['height'] >= 44 and box['y'] + box['height'] <= 844, box
                         await page.locator('.pn-sheet').screenshot(path=str(ROOT / 'dev' / f'nav-mobile-{width}-{theme}.png'))
+                        if width == 390 and theme == 'dark':
+                            shot = await page.locator('.pn-sheet').screenshot(type='jpeg', quality=65)
+                            print('NAV_PREVIEW ' + base64.b64encode(shot).decode(), flush=True)
                         # Four navigation journeys without opening a menu category.
                         for name, path in SHORTCUTS.items():
                             await page.locator('.pn-shortcuts').get_by_role('link', name=name, exact=True).click()
