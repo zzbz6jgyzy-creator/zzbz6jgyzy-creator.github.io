@@ -2,7 +2,8 @@
 
 - Add grouped desktop mega menus and a dedicated Trackers directory.
 - Introduce a full-width mobile menu with inline search and quieter utility controls.
-- Preserve native menu fallbacks, keyboard focus, account return paths, existing destinations and current reporting.
+- Preserve native menu fallbacks, keyboard focus, account return paths, current reporting and existing destinations.
+- Keep follow controls available for the current visit when browser storage is blocked.
 
 ## 2026-10-28 — Mobile opening and persistent navigation
 

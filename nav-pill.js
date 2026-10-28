@@ -30,7 +30,7 @@
   function sheetOpen(open, restore = true) {
     if (open === openState) return;
     openState = open;
-    if (open) { lastFocus = document.activeElement; closeAll(); sheet.inert = false; }
+    if (open) { lastFocus = nav.contains(document.activeElement) ? document.activeElement : menu; closeAll(); sheet.inert = false; }
     sheet.classList.toggle("open", open);
     overlay?.classList.toggle("open", open);
     sheet.setAttribute("aria-hidden", String(!open));

@@ -65,9 +65,9 @@ async def main():
       await sheet.evaluate('e=>'+controls+'.at(-1).focus()')
       await page.keyboard.press('Tab');assert await sheet.evaluate('e=>'+controls+'[0]===document.activeElement')
       await page.keyboard.press('Shift+Tab');assert await sheet.evaluate('e=>'+controls+'.at(-1)===document.activeElement')
-     if width==390 and mode=='normal':await preview(page,'mobile-menu-'+theme,sheet)
+     if width in [390,768] and mode=='normal':await preview(page,('mobile-menu-' if width==390 else 'tablet-menu-')+theme,sheet)
      await sheet.locator('.ns-mobile-section>summary').filter(has_text='Trackers').click()
-     if width==390 and theme=='dark' and mode=='normal':await preview(page,'mobile-trackers',sheet)
+     if width in [390,768] and theme=='dark' and mode=='normal':await preview(page,'mobile-trackers' if width==390 else 'tablet-trackers',sheet)
      await sheet.locator('.ns-mobile-categories a[href="/updates.html"]').click()
      await page.wait_for_url(SITE+'/updates.html')
      if scripts:await page.wait_for_function('window.__pn && window.__sdFind')
@@ -123,7 +123,7 @@ async def main():
     assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
     print('PASS',width,theme,mode,flush=True)
    finally:await context.close()
-  for args in [(320,'dark','normal'),(390,'dark','normal'),(390,'light','normal'),(768,'dark','normal'),(1024,'dark','normal'),(1080,'dark','normal'),(1440,'dark','normal'),(1440,'light','normal'),(390,'dark','nojs'),(1440,'dark','nojs'),(390,'dark','offline'),(390,'dark','storage'),(390,'dark','large')]:
+  for args in [(320,'dark','normal'),(390,'dark','normal'),(390,'light','normal'),(768,'dark','normal'),(768,'light','normal'),(1024,'dark','normal'),(1080,'dark','normal'),(1440,'dark','normal'),(1440,'light','normal'),(390,'dark','nojs'),(1440,'dark','nojs'),(390,'dark','offline'),(390,'dark','storage'),(390,'dark','large')]:
    await asyncio.wait_for(scenario(*args),timeout=90)
   await browser.close()
 asyncio.run(main())

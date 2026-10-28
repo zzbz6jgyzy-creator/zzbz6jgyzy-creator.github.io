@@ -196,3 +196,12 @@ test('chapter tabs: a tablist, one panel per tab, every anchor in exactly one pa
   assert.ok(/\.rx-tabs-intro,\.rx-tabbar-wrap,\.rx-panel-next\{display:none\}/.test(css),'tab chrome is off until the script switches it on');
   assert.ok(/\[data-rx-mode=tabs\] \.rx-tabbar-wrap\{display:block;position:sticky/.test(css));
 });
+
+test('share image and official X posts',()=>{
+  const html=page();
+  assert.ok(html.includes('og:image" content="https://superchargeddaily.com/assets/og-roadster.jpg"')&&fs.existsSync('assets/og-roadster.jpg'));
+  assert.equal((html.match(/<blockquote class="twitter-tweet"/g)||[]).length,d.social.posts.length);
+  for(const q of d.social.posts)assert.ok(html.includes(`href="${q.url}">View the post on X`),q.id);
+  assert.ok(!html.includes('platform.twitter.com'),'no widgets.js until the reader asks');
+  const x=structuredClone(d);x.social.posts[0].url='https://x.com/someone/status/1';assert.throws(()=>M.validate(x,studio.sources),/official @Tesla/);
+});

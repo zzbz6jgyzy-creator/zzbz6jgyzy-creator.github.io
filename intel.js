@@ -1,6 +1,16 @@
 (() => {
   const I = window.SDIntel;
   if (!I) return;
+  // Follow controls still work for this visit when browser storage is unavailable.
+  let persisted;
+  try { persisted = window.localStorage; } catch (e) {}
+  const memory = new Map();
+  const storage = {
+    getItem(key) { if (memory.has(key)) return memory.get(key); try { return persisted.getItem(key); } catch (e) { return null; } },
+    setItem(key, value) { memory.set(key, String(value)); try { persisted.setItem(key, String(value)); } catch (e) {} },
+    removeItem(key) { memory.set(key, null); try { persisted.removeItem(key); } catch (e) {} },
+  };
+
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
 
@@ -22,9 +32,9 @@
       const btn = e.target.closest("[data-follow]");
       if (!btn) return;
       const id = btn.getAttribute("data-follow");
-      const cur = I.followRead(localStorage);
+      const cur = I.followRead(storage);
       const next = cur.indexOf(id) >= 0 ? cur.filter((x) => x !== id) : cur.concat(id);
-      I.followWrite(localStorage, next);
+      I.followWrite(storage, next);
       paintFollow(root, next);
       onChange(next);
     });
@@ -34,7 +44,7 @@
     if (!box || !bundle) return;
     const since = topics.length ? I.followRead && null : null;
     const visit = (() => {
-      try { return localStorage.getItem(I.VISIT_KEY); } catch (e) { return ""; }
+      try { return storage.getItem(I.VISIT_KEY); } catch (e) { return ""; }
     })();
     const filtered = I.filterChanges(bundle.changes, {
       topics: topics.length ? topics : null,
@@ -71,7 +81,7 @@
 
   load.then((bundle) => {
     if (!bundle) return;
-    const topics = I.followRead(localStorage);
+    const topics = I.followRead(storage);
     const followRoot = $("[data-intel-follow]");
     if (followRoot && !followRoot.querySelector("[data-follow]")) {
       followRoot.innerHTML = I.TOPICS.map((t) =>
@@ -88,9 +98,9 @@
       if (!row) return;
       el.innerHTML = I.freshnessHtml(row) +
         `<button type="button" class="intel-chip" data-follow="${I.esc(row.tracker === "launches" ? "spacex-launches" : row.tracker === "software" || row.tracker === "mytesla" ? "tesla-software" : (I.TRACKERS[id] && I.TRACKERS[id].topic) || id)}" aria-pressed="false">Follow</button>`;
-      const t = I.followRead(localStorage);
+      const t = I.followRead(storage);
       paintFollow(el, t);
-      bindFollow(el, () => paintFollow(el, I.followRead(localStorage)));
+      bindFollow(el, () => paintFollow(el, I.followRead(storage)));
     });
 
     const health = $("[data-intel-health]");
@@ -173,8 +183,8 @@
 
     const dailyBox = $("[data-intel-daily]");
     if (dailyBox) {
-      const visit = (() => { try { return localStorage.getItem(I.VISIT_KEY); } catch (e) { return ""; } })();
-      const followed = I.followRead(localStorage);
+      const visit = (() => { try { return storage.getItem(I.VISIT_KEY); } catch (e) { return ""; } })();
+      const followed = I.followRead(storage);
       const sinceRows = I.filterChanges(bundle.changes, { since: visit || null, limit: 8 });
       const followRows = I.filterChanges(bundle.changes, { topics: followed.length ? followed : null, limit: 8 });
       dailyBox.innerHTML =
@@ -182,6 +192,7 @@
         `<h2>Followed topics</h2>${followed.length ? I.changesHtml(followRows) : '<p class="intel-empty">Follow topics above. Anonymous browsing still works.</p>'}`;
     }
 
-    try { localStorage.setItem(I.VISIT_KEY, bundle.generatedAt); } catch (e) {}
+    try { storage.setItem(I.VISIT_KEY, bundle.generatedAt); } catch (e) {}
   });
 })();
+

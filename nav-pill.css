@@ -133,3 +133,5 @@ html[data-theme=light] .pn-sheet[data-nav-studio] .pn-sheet-head img{content:url
 .ns-mobile-section>summary[aria-current]{color:var(--sdn-red)}
 
 .pn[data-nav-studio] .pn-logo[aria-current]{box-shadow:none;background:transparent}
+
+.pn-sheet[data-nav-studio] .pn-sheet-head>a[aria-current]{box-shadow:none;background:transparent}
