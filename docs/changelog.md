@@ -1,5 +1,10 @@
 # Changelog
 
+## 28 Oct 2026 — Teslascope counts and coming-soon fares
+
+- **FSD global:** the 28 Oct Teslascope 689 vs 94 sample on 2026.38.5.11 is labelled as an all-hardware snapshot that carries HW3 v14.3 Lite, not as an HW3-only census.
+- **Robotaxi:** Las Vegas, Jacksonville, Phoenix and San Antonio no longer reuse the live-city fare note. They now say there are no fares until Tesla launches service.
+
 ## 28 Oct 2026 — Freshness audit: dates, launch merge, Robotaxi cities
 
 - **Launches:** the hourly refresh no longer lets the cached file overwrite a later Launch Library 2 NET when status is unchanged (Starlink 15-21 → 02:35 UTC). Regression test in `tests/calendar-launch-import.py`.

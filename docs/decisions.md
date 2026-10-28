@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-28 · Teslascope 689 vs 94 stays all-hardware, not HW3-only
+
+- **Choice:** keep the audit’s 689 vs 94 figures on the 2026.38.5.11 source note, and say they are Teslascope’s all-hardware snapshot of the build that carries HW3 v14.3 Lite.
+- **Why:** those counts were sampled across hardware. Relabelling them as HW3-only would understate HW3 (later Teslascope HW3 figures were 267 vs 16) and overstate how many HW3 cars are on that build.
+- **Rejected:** swapping in 267 vs 16 on this note. That is a different sample and was not the 28 Oct audit figure we published.
+
 ## 2026-10-28 · Promise ledger: Flight 15 and add-your-car stay In progress
 
 - **Choice:** add the 25 Oct B22 fire and 26–27 Oct Ship 42 fires, plus Elluswamy’s Q3 “Q2 next year” line, as evidence. Leave both statuses In progress.
