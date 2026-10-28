@@ -28,3 +28,7 @@ test('builder is deterministic, retains newsletter/site shell and unrelated sear
 test('newer Europe availability evidence supersedes an older global list without changing its original review date',()=>{const updated=copy(eu);const c=updated.countries.find(c=>c.code==='DE');c.availability.status='listed';c.availability.reviewedAt='2026-10-29';const merged=M.compose(raw,updated);assert.equal(M.byCode(merged,'DE').availability.status,'listed');assert.equal(M.byCode(merged,'DE').availability.checked,'2026-10-29');assert.equal(merged.reviewed,raw.reviewed);});
 
 test('saved-page rendering retains responsive image optimization only for identical fallback markup',()=>{const tag='<img src="/assets/photo.jpg" alt="Current description" width="640" height="360" loading="lazy"/>';const picture='<picture><source type="image/webp" srcset="/assets/photo-480w.webp 480w"/>'+tag+'</picture>';assert.equal(preserveResponsiveImages(picture,'<div>'+tag+'</div>'),'<div>'+picture+'</div>');assert.equal(preserveResponsiveImages(picture,picture),picture);const changed=tag.replace('Current description','New description');assert.equal(preserveResponsiveImages(picture,changed),changed);assert.equal(preserveResponsiveImages(picture,tag.replace('photo.jpg','new.jpg')),tag.replace('photo.jpg','new.jpg'));});
+
+test('links to the FSD by the numbers page',()=>{
+  assert.ok(fs.readFileSync('fsd.html','utf8').includes('href="/fsd-tracker.html">'),'fsd.html links to /fsd-tracker.html');
+});

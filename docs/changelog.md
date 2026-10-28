@@ -20,6 +20,12 @@
 - **Promises:** Flight 15 ledger gets the 25 Oct B22 33-engine fire and the 26–27 Oct Ship 42 static fires; “add your car to the fleet in 2026” gets Elluswamy’s Q3 “somewhere around Q2 next year” line (TeslaNorth). Status left In progress. The Promise Tracker builder now stamps JSON-LD `dateModified` from the ledger.
 - **CI:** push-triggered Rebuild JS bundles uses its own concurrency group so `data-push-main` cannot cancel it.
 
+## 28 Oct 2026 — FSD tracker, part 5c (finishing step 5)
+
+- **Save image:** each drawn chart (adoption, miles, software lines, map with the Europe inset, EU recognitions) gets a "Save image" button that makes a 1200x630 PNG: title, the card's own description (units, sample, dates), the chart, key and source line. A card only gets the button if it has a source line. The map image is titled "Where Tesla lists FSD (Supervised)" with the "a listing is not a legal approval" note. No library; the button keeps keyboard focus and announces the result.
+- **My car:** the country picker reads the car saved in My Tesla on the same device (read only). It fills the country and echoes the model, year and the computer the owner confirmed in My Tesla (or says it is not confirmed). It never infers hardware from the model year and makes no claim about FSD eligibility, matching My Tesla.
+- **Cross-links:** the global FSD tracker and FSD Europe now link to FSD by the numbers (through their own view files and builders; their tests assert the link).
+
 ## 28 Oct 2026 — FSD tracker, part 5b (menu)
 
 - **Menu:** "FSD by the numbers" (badge New) added under Tesla, Software & autonomy, in the desktop and phone menus, from `scripts/nav.json` via `scripts/sync-nav.py`. Every page's menu block is regenerated, so the diff is the same block on about 160 pages.

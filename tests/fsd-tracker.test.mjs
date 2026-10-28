@@ -70,6 +70,17 @@ test('RSS feed, share image, refresh table, country picker and newsletter band a
   assert.ok(/fsd-tracker-2026-10-28-[0-9a-f]{8}/.test(fs.readFileSync('fsd-tracker-feed.xml','utf8')));
 });
 
+test('my car shows only what the owner entered in My Tesla: no embedded hardware table, hidden until script finds a car',()=>{
+  const page=fs.readFileSync('fsd-tracker.html','utf8');
+  assert.ok(!page.includes('id="ft-hw"'),'no year-to-hardware table: My Tesla never guesses hardware from the year');
+  assert.ok(page.includes('id="ft-car" hidden')&&page.includes('We do not guess hardware from the model year'));
+  const js=fs.readFileSync('fsd-tracker.js','utf8');
+  assert.ok(js.includes('Object.hasOwn(NAMES,car.model)')&&!js.includes('my-tesla-data'),'reads the live garage record only');
+  assert.ok(/data-share-title="Where Tesla lists FSD \(Supervised\)"/.test(page),'the map image is titled as a Tesla list, not as availability');
+  const rec=page.match(/<p class="ft-event-foot">What is counted:[\s\S]*?<\/p>/)[0];
+  assert.ok(rec.includes('The Netherlands granted the approval')&&rec.includes(d.europe.recognitions.filter(r=>r.kind==='authority').length+' of the '+d.europe.recognitions.length+' dates come from an authority')&&rec.includes(d.europe.recognitions.filter(r=>r.kind!=='authority').length+' from press reports')&&rec.includes('(Disclosed)')&&rec.includes('(Reported)'),'the recognitions image keeps who granted it and the Disclosed/Reported mix');
+});
+
 test('validator rejects bad data',()=>{
   const bad=()=>structuredClone(d);
   let x=bad();x.kpis[0].source='nope';assert.throws(()=>M.validate(x));

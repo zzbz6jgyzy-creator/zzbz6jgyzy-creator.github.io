@@ -16,6 +16,7 @@
 
 - Re-read the "When it updates next" rows in `data/fsd-tracker.json` (`refresh`): the dates in the "Last updated from" column are built from the sources, but the "Next update" wording is ours.
 - Regenerate the share image: `node scripts/fsd-tracker-og-card.mjs`, serve the repo, screenshot `scripts/fsd-tracker-og-card.html` at 1200x630 to `assets/og-fsd-tracker.jpg`. A test fails if the card HTML is stale.
+- "My car" reads only the owner-entered fields of the live My Tesla garage (`sd-my-tesla-garage-v2`: model, year, `hw`, `cc`). If My Tesla changes that record, update `fsd-tracker.js` and the browser test.
 - The RSS feed (`fsd-tracker-feed.xml`) is rebuilt with the page; add a `changes` entry for anything a reader should know.
 
 Every figure needs a source with a `checked` date no later than `reviewed`.
