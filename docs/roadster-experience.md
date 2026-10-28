@@ -18,6 +18,29 @@ Chapters, in page order: hero and fact strip (`#top`), the pinned reveal (`#vide
 `roadster-experience-model.js` fails the build when: a source id is duplicated or unknown, a source is not https or is checked after the review date; an item has no label or no source; a Reported item cites no reporting or own report; the hero strip does not have exactly four facts; a reveal step names an unknown clip; hotspots and cockpit cards differ in number; numbers, timeline events or promise rows lack ids, labels or a status; the change log is out of order, dated after the review or not an update or correction.
 `data/roadster-colors.json` holds one average colour per gallery and reveal picture (made once with Pillow from the 480 px files); it is the placeholder tint shown until a lazy picture arrives.
 
+## Chapter tabs (phones and small tablets)
+
+The page was one ~31,000 px scroll at 390 px. The opening (hero, fact strip, reveal, film and replay: `#top`, `#facts`, `#video`) stays one continuous cinematic scroll at every width. Below it, at 900 px and narrower, a sticky dark-glass tab bar (under the site header, scrolls sideways, amber hairline under the active tab, active tab centred) shows one chapter at a time:
+
+| Tab | Primary id | Also holds |
+|---|---|---|
+| 01 Pictures | `#gallery` | |
+| 02 Inside | `#cockpit` | |
+| 03 Engineering | `#tech` | |
+| 04 Numbers | `#performance` | own tab: it is the longest chapter, so folding it into Engineering would make a 8,000 px panel |
+| 05 Models | `#trims` | `#money` |
+| 06 Timeline | `#timeline` | `#promise` |
+| 07 Questions | `#faq` | `#evidence` (sources ledger) |
+
+The changes log (`#changes`, with the credit line) and the newsletter band close the page outside the tabs, so a correction is never hidden behind a tab. The changes log used to be the right-hand column of `#evidence`; it is now its own section after the tabs, and the ledger is two columns on desktop.
+
+- **Markup** (`tabsHtml` in the builder): tablist, seven `role="tab"` buttons (roving `tabindex`, `aria-selected`, `aria-controls`), seven `role="tabpanel"` panels, a "Next: <name>" button at the end of each panel and "Back to the top" on the last. No `hidden` attributes: without script, and on wide screens, every panel is visible in order and the tab chrome is `display:none`.
+- **Script** (end of `roadster-experience.js`): a `matchMedia('(max-width: 900px)')` listener hides inactive panels only when it matches and restores all of them (and removes the tabpanel roles) when it stops matching, so rotating a tablet works. Left/Right/Home/End move and activate tabs. Scrolling is always `behavior: 'instant'` (the site sets `scroll-behavior: smooth` on `html`, so `auto` would animate).
+- **Deep links:** every anchor id inside a panel opens its tab and scrolls below the sticky bars, on load with a hash, on `hashchange`, and for in-page link clicks (hero buttons, rail, "next"). The offset comes from the CSS `scroll-margin-top` on the target (`--rx-offset`), so script and native jumps agree. Choosing a tab writes its primary id with `history.replaceState`; link clicks also use `replaceState`, so Back never walks through tab changes.
+- **Media:** inactive panels are `display:none`, so their lazy pictures are not fetched and the existing clip IntersectionObserver sees the loops leave the screen and pauses them. The first two gallery pictures are `loading="eager"` (they belong to the default tab) and are fetched even when a deep link opens another tab.
+- **Colour:** tab labels are `--rx-dim` (#bdb8ad) on the dark glass bar, active `#fff`, numerals `--rx-dim`; the bar stays dark in the light theme (like the header), and the worst case (bar over the light reading sections) still has more than 6:1 for the labels.
+- **Tests:** `tests/roadster-experience.test.mjs` (markup: tablist, every anchor id in exactly one panel, nothing hidden) and the `tab_checks` block of `tests/roadster-experience-browser.py` (one panel at 390 and 768, click, arrows, Home/End, deep links, Next, rotation to 1440, no-JS, heights).
+
 ## Look and feel (the cinematic pass)
 
 The hero is the studio still `world` (night, doors up, rear wing) full bleed with a vignette and film grain (a small inline SVG noise tile, no image request); the flight loop is blended in softly at the bottom only. Scroll drift, the hero fade and the reveal-on-scroll use CSS scroll-driven animations (`animation-timeline`), with small IntersectionObserver fallbacks in the JS. The site header on this page is dark glass in both themes (rules under `.rx-page`, so no other page changes). Hero numbers count up once when motion is on. The stage shows a quiet progress mark (CSS `:has()` on the active layer).

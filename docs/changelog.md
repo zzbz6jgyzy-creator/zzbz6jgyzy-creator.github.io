@@ -4,6 +4,12 @@
 
 # Changelog
 
+## 28 Oct 2026 — Roadster preview: chapter tabs on phones
+
+- **Tabbed chapters:** at 900 px and narrower the Roadster preview keeps the hero and the reveal as one continuous scroll, then shows the rest in seven tabs (Pictures, Inside, Engineering, Numbers, Models, Timeline, Questions) on a sticky dark-glass bar, one panel at a time, each ending in a "Next" button. At 390 px the page is 11,700 to 14,900 px depending on the tab (it was 31,200 px). Desktop is unchanged.
+- **Deep links and keyboard:** every existing anchor opens its tab and lands below the sticky bars; tabs use the WAI-ARIA tabs pattern (arrows, Home, End); scrolling is instant and Back is never trapped. Without script, or on a wide screen, every panel is visible in order.
+- **Moved:** the changes log and credit line now close the page outside the tabs (it was the right-hand column of the evidence chapter); the sources ledger is two columns on desktop.
+
 ## 28 Oct 2026 — Roadster experience, part 3 and the cinematic pass
 
 - **Chapters:** every angle (reel with collections and a full-screen viewer), inside (numbered hotspots), engineering (six systems and a mechanism diagram), the numbers (with a simplified g-force illustration), three trims (side-by-side comparison, miles or kilometres), the money, the wait (2017 against 2026) and the evidence ledger. The model validator rejects unsourced items, unknown sources and Reported items that cite no reporting.
