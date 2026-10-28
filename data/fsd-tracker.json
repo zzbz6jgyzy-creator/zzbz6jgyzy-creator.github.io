@@ -91,6 +91,15 @@
       "date": "2026-09-02",
       "checked": "2026-10-28",
       "kind": "reporting"
+    },
+    {
+      "id": "evwire-eu-safety",
+      "url": "https://evwire.com/p/tesla-fsd-supervised-evidence-dashboard-full-data",
+      "title": "Tesla opens its FSD Supervised evidence dashboard: 4.1× fewer crashes across 102 million km in Europe",
+      "outlet": "EVwire",
+      "date": "2026-09-02",
+      "checked": "2026-10-28",
+      "kind": "reporting"
     }
   ],
   "kpis": [
@@ -223,7 +232,7 @@
     {
       "date": "2026-10-28",
       "kind": "update",
-      "text": "Added the safety claims section (Tesla's published crash-rate comparisons, with what each is compared against) and the promises strip, which reads the same ledger as the promise tracker."
+      "text": "Added the safety claims section (Tesla's published crash-rate comparisons, with what each is compared against) and the promises strip (all 15 FSD / autonomy entries in the ledger), which reads the same ledger as the promise tracker."
     },
     {
       "date": "2026-10-28",
@@ -1450,51 +1459,52 @@
       "definition": "A major collision is one severe enough to deploy an airbag or seatbelt pretensioner, or to fire the high-voltage battery pyro fuse. Tesla counts a crash as an FSD crash if FSD was active at any point in the five seconds before impact."
     },
     "eu": {
-      "windowNote": "Tesla's EU dashboard: about 102 million km in five countries, 4.1 times less likely to crash than manual Tesla driving; the July update said 5.2 times after 65 million km.",
-      "source": "drive-tesla-eu-safety",
+      "source": "evwire-eu-safety",
       "critic": "automotiveworld-safety",
       "multiple": 4.1,
       "km": 102,
       "july": {
         "multiple": 5.2,
         "km": 65
-      }
+      },
+      "also": "drive-tesla-eu-safety",
+      "window": "10 April to 24 August 2026",
+      "fsdCollisions": 12,
+      "fsdKm": 102.1,
+      "manualCollisions": 627,
+      "manualKm": 1295.7
     },
     "caveats": [
       {
-        "text": "Every figure comes from Tesla's own report. We could not open Tesla's safety page (tesla.com returns an error to our fetcher), so the numbers are as reported by Not a Tesla App, which quotes the report.",
-        "source": "nata-safety",
+        "text": "Every figure comes from Tesla's own report as an outlet describes it. We did not open Tesla's safety report or dashboard ourselves, so we cannot check them, and Tesla may have published newer figures since.",
+        "sources": [
+          "nata-safety",
+          "evwire-eu-safety"
+        ],
         "status": "reported"
       },
       {
-        "text": "The groups are not like for like. The U.S. average covers every vehicle, driver and age of car; the FSD figure counts only miles with FSD engaged, and the manual group with no active safety is pre-2014 cars. Tesla's table does not adjust for any of that.",
-        "source": "nata-safety",
+        "text": "Our reading: nothing in the figures as they are reported adjusts for road type, driver or vehicle age, and the groups differ. The U.S. average is every vehicle on the road, the manual group with no active safety is pre-2014 Teslas, and the EU comparison is against Teslas with Active Safety on, not average drivers.",
+        "sources": [],
         "status": null
       },
       {
-        "text": "Drive Tesla Canada reports that every dated measurement window in the EU dashboard closes in 2025; Automotive World's headline calls the data nine months out of date. We could not open the dashboard itself.",
-        "source": "drive-tesla-eu-safety",
+        "text": "The reports disagree about dates. EVwire says the 4.1× covers customer driving from 10 April to 24 August 2026. Drive Tesla Canada says every dated window in the dashboard shared with EU states in April closes in 2025, and Automotive World's headline calls the newly published data nine months out of date. We could not open the dashboard to settle it.",
+        "sources": [
+          "evwire-eu-safety",
+          "drive-tesla-eu-safety",
+          "automotiveworld-safety"
+        ],
         "status": "reported"
       },
       {
-        "text": "These are Tesla's rates. They are not a regulator's finding and we draw no safety conclusion from them. FSD (Supervised) always needs an attentive driver.",
-        "source": "nata-safety",
+        "text": "These are Tesla's rates, as reported. They are not a regulator's finding and we draw no safety conclusion from them. FSD (Supervised) always needs an attentive driver.",
+        "sources": [],
         "status": null
       }
     ]
   },
   "promises": {
-    "ids": [
-      "la-to-nyc-demo-2017",
-      "fsd-feature-complete-2019",
-      "level-five-basic-2020",
-      "full-autonomy-2023",
-      "fsd-europe-china-q1-2025",
-      "unsupervised-fsd-tx-ca-2025",
-      "sleep-in-car-2025",
-      "unsupervised-personal-2025",
-      "unsupervised-fsd-customers-q4-2026",
-      "fsd-eu-approval-q1-2027"
-    ]
+    "topic": "FSD / autonomy"
   }
 }

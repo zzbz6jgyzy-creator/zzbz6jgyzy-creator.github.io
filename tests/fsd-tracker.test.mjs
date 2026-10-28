@@ -27,20 +27,22 @@ test('adoption series matches Tesla\'s decks and the ratio is plain arithmetic',
   assert.ok(Math.round((q3.subs/d.adoption.points.find(p=>p.id==='q3-25').subs-1)*100)===67,'67% year on year, as Tesla says');
 });
 
-test('safety claims: figures add up, are labelled Reported, and the promises exist in the ledger',()=>{
-  const ids=JSON.parse(fs.readFileSync('data/promises.json','utf8')).promises.map(p=>p.id);
-  assert.equal(M.validate(d,ids),d);
+test('safety claims: figures add up, are labelled Reported, and promises come from the ledger',()=>{
+  assert.equal(M.validate(d),d);
+  const ledger=JSON.parse(fs.readFileSync('data/promises.json','utf8')).promises.filter(p=>p.topic===d.promises.topic);
   const fsdRow=d.claims.us.rows.find(r=>r.id==='fsd'),us=d.claims.us.rows.find(r=>r.id==='us');
   assert.equal(fsdRow.miles,5300676);assert.equal(us.miles,660164);
   assert.equal(Math.round(fsdRow.miles/us.miles*10)/10,8);
-  for(const c of d.claims.caveats)assert.ok(src[c.source],c.text);
-  // Tesla's own pages are not reachable by our fetcher, so nothing here may be labelled Disclosed.
-  assert.ok(!JSON.stringify(d.claims).includes('"disclosed"'));
-  for(const id of [d.claims.us.source,d.claims.eu.source,d.claims.eu.critic])assert.equal(src[id].kind,'reporting');
+  for(const c of d.claims.caveats)for(const s of c.sources)assert.ok(src[s],c.text);
+  for(const id of [d.claims.us.source,d.claims.eu.source,d.claims.eu.also,d.claims.eu.critic])assert.equal(src[id].kind,'reporting');
   let x=structuredClone(d);x.claims.us.rows[0].miles=9e6;assert.throws(()=>M.validate(x),/add up/);
-  x=structuredClone(d);x.promises.ids[0]='not-a-promise';assert.throws(()=>M.validate(x,ids),/ledger/);
+  x=structuredClone(d);x.claims.eu.multiple=9;assert.throws(()=>M.validate(x),/EU multiple/);
+  x=structuredClone(d);x.claims.us.rows=x.claims.us.rows.filter(r=>r.id!=='us');assert.throws(()=>M.validate(x));
   const page=fs.readFileSync('fsd-tracker.html','utf8');
-  assert.equal((page.match(/class="ft-promise /g)||[]).length,d.promises.ids.length);
+  const safety=page.slice(page.indexOf('id="safety"'),page.indexOf('id="promises"'));
+  assert.ok(!safety.includes('ft-chip-disclosed'),'nothing in the safety section is Disclosed');
+  assert.ok(safety.includes('As of 19 Feb 2026')&&safety.includes('In February Tesla reported'),'US figures carry their date');
+  assert.equal((page.match(/class="ft-promise /g)||[]).length,ledger.length,'every ledger entry for the topic is shown');
   assert.ok(page.includes('id="safety"')&&page.includes('id="promises"'));
 });
 

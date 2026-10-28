@@ -34,15 +34,16 @@ function validate(d,promiseIds){
  if(eu.states.filter(s=>s.recognised).length!==eu.recognitions.length)fail('recognitions do not match recognised states');
  eu.recognitions.forEach((r,i)=>{if(!day(r.date)||r.date>d.reviewed||(i&&r.date<eu.recognitions[i-1].date)||!eu.states.some(s=>s.code===r.code&&s.recognised)||!r.links.length||r.links.some(u=>!https(u))||!['authority','media'].includes(r.kind))fail('recognition '+r.code);});
  if(Math.abs(eu.states.reduce((a,s)=>a+s.population,0)-eu.populationTotal)>1)fail('EU population does not add up');
- const cl=d.claims;ref(cl.us.source);ref(cl.eu.source);ref(cl.eu.critic);
+ const cl=d.claims;ref(cl.us.source);ref(cl.eu.source);ref(cl.eu.also);ref(cl.eu.critic);if(!['fsd','manual-as','us'].every(i=>cl.us.rows.some(r=>r.id===i)))fail('claims rows');
  if(!day(cl.asOf)||cl.asOf>d.reviewed||cl.us.rows.length<3)fail('claims');
  for(const r of cl.us.rows){if(!r.id||!r.label||!(r.miles>0)||!(r.collisions>0)||!(r.drivenMiles>0)||(r.prior!==null&&!(r.prior>0)))fail('claims row '+r.id);
   // Tesla's published miles per collision must equal miles driven divided by collisions, to 1%, or a figure was mistyped.
   if(Math.abs(r.drivenMiles/r.collisions/r.miles-1)>0.01)fail('claims row does not add up: '+r.id);}
- if(!(cl.eu.multiple>1&&cl.eu.km>0&&cl.eu.july.multiple>1&&cl.eu.july.km>0))fail('claims eu');
- for(const c of cl.caveats){if(!c.text||(c.status!==null&&!status[c.status]))fail('caveat');ref(c.source);}
- if(!(d.promises.ids.length>=3&&new Set(d.promises.ids).size===d.promises.ids.length))fail('promise ids');
- if(promiseIds)for(const id of d.promises.ids)if(!promiseIds.includes(id))fail('promise not in ledger: '+id);
+ if(!(cl.eu.multiple>1&&cl.eu.km>0&&cl.eu.july.multiple>1&&cl.eu.july.km>0&&cl.eu.fsdCollisions>0&&cl.eu.manualCollisions>0&&cl.eu.fsdKm>0&&cl.eu.manualKm>0&&cl.eu.window))fail('claims eu');
+ // 4.1x is the ratio of the two collision rates; check it from the counts.
+ if(Math.abs((cl.eu.manualCollisions/cl.eu.manualKm)/(cl.eu.fsdCollisions/cl.eu.fsdKm)-cl.eu.multiple)>0.05)fail('EU multiple does not match the collision counts');
+ for(const c of cl.caveats){if(!c.text||(c.status!==null&&!status[c.status]))fail('caveat');for(const x of c.sources)ref(x);}
+ if(!d.promises.topic)fail('promise topic');
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }
