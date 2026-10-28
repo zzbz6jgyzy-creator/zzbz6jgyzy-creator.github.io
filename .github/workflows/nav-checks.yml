@@ -1,15 +1,16 @@
 name: Navigation checks
 on:
   pull_request:
-    paths: ['scripts/nav.json', 'scripts/sync-nav.py', 'nav-pill*', 'tests/*nav*', '.github/workflows/nav-checks.yml']
+    paths: ['scripts/nav.json', 'scripts/sync-nav.py', 'nav-pill*', 'search.js', 'tests/*nav*', '.github/workflows/nav-checks.yml']
   push:
     branches: [main]
-    paths: ['scripts/nav.json', 'scripts/sync-nav.py', 'nav-pill*', 'tests/*nav*', '.github/workflows/nav-checks.yml']
+    paths: ['scripts/nav.json', 'scripts/sync-nav.py', 'nav-pill*', 'search.js', 'tests/*nav*', '.github/workflows/nav-checks.yml']
 permissions:
   contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -20,5 +21,11 @@ jobs:
       - name: Browser navigation journeys (local pages, no external requests)
         run: |
           python3 -m pip install playwright==1.62.0
-          CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/nav-browser.py
-          CHROMIUM_PATH="$(command -v google-chrome)" python3 tests/nav-dropdown-browser.py
+          CHROMIUM_PATH="$(command -v google-chrome)" timeout 240s python3 -u tests/nav-browser.py
+          CHROMIUM_PATH="$(command -v google-chrome)" timeout 120s python3 -u tests/nav-dropdown-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: navigation-studio-previews
+          path: /tmp/navigation-studio
+

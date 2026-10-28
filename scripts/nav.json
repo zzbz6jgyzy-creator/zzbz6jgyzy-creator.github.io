@@ -2,326 +2,402 @@
   "top": [],
   "mobileShortcuts": [
     [
-      "Original stories",
-      "/dispatch.html"
-    ],
-    [
       "Software updates",
       "/updates.html"
     ],
     [
-      "Cybercab",
-      "/cybercab.html"
+      "Launches",
+      "/calendar.html"
     ],
     [
-      "Starship",
-      "/starship.html"
+      "Roadster",
+      "/roadster.html"
     ]
   ],
   "dropdowns": [
     {
       "id": "pn-news",
       "label": "News",
-      "items": [
-        [
-          "Newsroom",
-          "/news.html",
-          "Original stories and headlines",
-          ""
-        ],
-        [
-          "Original stories · Dispatch",
-          "/dispatch.html",
-          "Our reporting &amp; analysis",
-          ""
-        ],
-        [
-          "From around the web",
-          "/news.html?source=external#browse",
-          "External reporting",
-          ""
-        ],
-        [
-          "About me",
-          "/about.html",
-          "Who runs the site",
-          ""
-        ]
-      ]
+      "intro": "The story. And the bigger picture.",
+      "landing": [
+        "Open the newsroom",
+        "/news.html"
+      ],
+      "groups": [
+        {
+          "label": "Read",
+          "items": [
+            [
+              "Newsroom",
+              "/news.html",
+              "The latest original stories and headlines",
+              "news"
+            ],
+            [
+              "Original stories",
+              "/dispatch.html",
+              "Our reporting and analysis",
+              "article"
+            ],
+            [
+              "Around the web",
+              "/news.html?source=external#browse",
+              "External reporting, clearly labelled",
+              "globe"
+            ]
+          ]
+        },
+        {
+          "label": "Stay connected",
+          "items": [
+            [
+              "Sunday briefing",
+              "/#newsletter",
+              "Your free weekly catch-up",
+              "mail"
+            ],
+            [
+              "About the editor",
+              "/about.html",
+              "Meet Alex and the story behind the site",
+              "person"
+            ],
+            [
+              "Editorial standards",
+              "/editorial.html",
+              "How we report and use sources",
+              "check"
+            ]
+          ]
+        }
+      ],
+      "feature": {
+        "title": "Your Sunday, supercharged.",
+        "text": "The week’s Tesla, SpaceX and xAI stories. Free in your inbox.",
+        "label": "Preview the briefing",
+        "href": "/newsletter.html",
+        "art": "briefing"
+      }
     },
     {
       "id": "pn-tesla",
       "label": "Tesla",
-      "items": [
-        [
-          "Tesla overview",
-          "/tesla.html",
-          "News, models &amp; data",
-          ""
-        ],
-        [
-          "My Tesla",
-          "/my-tesla.html",
-          "Your car, personalised",
-          ""
-        ],
+      "intro": "Find your car. Explore what comes next.",
+      "landing": [
+        "Tesla overview",
+        "/tesla.html"
+      ],
+      "groups": [
         {
-          "label": "Software & autonomy",
-          "items": [
-            [
-              "Software Update Tracker",
-              "/updates.html",
-              "Latest Tesla releases",
-              ""
-            ],
-            [
-              "FSD by the numbers",
-              "/fsd-tracker.html",
-              "Adoption, safety &amp; promises",
-              "New"
-            ],
-            [
-              "FSD Europe tracker",
-              "/fsd-europe.html",
-              "Approval tracker",
-              ""
-            ],
-            [
-              "Cybercab tracker",
-              "/cybercab.html",
-              "Reality map &amp; fleet",
-              ""
-            ],
-            [
-              "Cybercab guide",
-              "/cybercab-guide.html",
-              "Specs, timeline &amp; promises",
-              "New"
-            ],
-            [
-              "FSD & Robotaxi evidence",
-              "/autonomy.html",
-              "Supervised vs commercial layers",
-              ""
-            ],
-            [
-              "Explainers",
-              "/explainers.html#tesla",
-              "FSD stacks, Collision Evasion",
-              ""
-            ]
-          ]
-        },
-        {
-          "label": "Cars & owners",
+          "label": "Choose your Tesla",
           "items": [
             [
               "Buying guide",
               "/guides/tesla-buying-guide.html",
-              "Which Tesla to buy in 2026",
-              ""
+              "Find the model that fits your life",
+              "car"
             ],
             [
-              "Reviews",
+              "Model reviews",
               "/reviews/index.html",
-              "Every model reviewed",
-              ""
+              "Range, charging and everyday detail",
+              "article"
             ],
             [
-              "Model 3 Explorer",
-              "/model3-explorer.html",
-              "Take the car apart",
-              "3D"
-            ],
+              "Cybercab vehicle guide",
+              "/cybercab-guide.html",
+              "The purpose-built vehicle, explained",
+              "car"
+            ]
+          ]
+        },
+        {
+          "label": "Owners",
+          "items": [
             [
-              "Cybertruck Explorer",
-              "/cybertruck-explorer.html",
-              "Take the truck apart",
-              "3D"
+              "My Tesla",
+              "/my-tesla.html",
+              "Your exact model and trim, personalised",
+              "car"
             ],
             [
               "Owners clubs",
               "/tesla-clubs.html",
-              "Find a club near you",
-              "New"
+              "Find your local community",
+              "people"
+            ],
+            [
+              "Owner gear",
+              "/gear.html",
+              "Useful kit for life with your Tesla",
+              "bag"
             ]
           ]
         },
         {
-          "label": "Company",
+          "label": "Explore the technology",
           "items": [
             [
-              "Production & deliveries",
-              "/production.html",
-              "Official Tesla IR tables",
-              ""
-            ],
-            [
-              "Optimus Evolution Lab",
+              "Optimus",
               "/optimus.html",
-              "Promises versus demonstrations",
-              ""
+              "The humanoid, demonstrations and progress",
+              "robot"
             ],
             [
-              "Markets",
-              "/tsla.html",
-              "TSLA stock",
-              ""
+              "Model 3 explorer",
+              "/model3-explorer.html",
+              "Explore the car in 3D",
+              "cube"
             ],
             [
-              "Promise tracker",
-              "/promise-tracker.html",
-              "Milestones and evidence",
-              ""
-            ]
-          ]
-        },
-        {
-          "label": "Roadster",
-          "items": [
-            [
-              "Overview",
-              "/roadster.html#top",
-              "The hero and key numbers",
-              "New"
+              "Cybertruck explorer",
+              "/cybertruck-explorer.html",
+              "Explore the truck in 3D",
+              "cube"
             ],
             [
-              "Gallery",
-              "/roadster.html#gallery",
-              "22 angles",
-              ""
-            ],
-            [
-              "Videos",
-              "/roadster.html#video",
-              "Clips, incl. Interior video",
-              ""
-            ],
-            [
-              "Trims &amp; Specs",
-              "/roadster.html#trims",
-              "Performance, Thrust, Rocket",
-              ""
-            ],
-            [
-              "How it works",
-              "/roadster.html#tech",
-              "Thrusters, suction, aero",
-              ""
-            ],
-            [
-              "Price &amp; Reservations",
-              "/roadster.html#money",
-              "Deposits and 2028 production",
-              ""
-            ],
-            [
-              "Timeline",
-              "/roadster.html#timeline",
-              "2017 promise to 2026 reveal",
-              ""
-            ],
-            [
-              "Promise vs Reality",
-              "/roadster.html#promise",
-              "2017 claims vs 2026 figures",
-              ""
-            ],
-            [
-              "Reveal article",
-              "/dispatch/roadster-reveal-2026.html",
-              "The night it flew",
-              ""
+              "Tesla explainers",
+              "/explainers.html#tesla",
+              "Understand the engineering",
+              "book"
             ]
           ]
         }
-      ]
+      ],
+      "feature": {
+        "title": "The next Roadster.",
+        "text": "The design. The engineering. The complete showcase.",
+        "label": "Explore Roadster",
+        "href": "/roadster.html",
+        "art": "roadster"
+      }
     },
     {
       "id": "pn-spacex",
       "label": "SpaceX",
-      "items": [
-        [
-          "SpaceX",
-          "/spacex.html",
-          "News &amp; missions",
-          ""
-        ],
-        [
-          "Starship flights",
-          "/starship.html",
-          "Flight lab",
-          ""
-        ],
-        [
-          "Starlink tracker",
-          "/starlink.html",
-          "Satellites by version",
-          ""
-        ],
+      "intro": "From the launch pad to a world in orbit.",
+      "landing": [
+        "SpaceX overview",
+        "/spacex.html"
+      ],
+      "groups": [
         {
-          "label": "Launches",
+          "label": "Missions & orbit",
           "items": [
             [
-              "Calendar",
-              "/calendar.html",
-              "Launches &amp; livestreams",
-              ""
+              "Starship flights",
+              "/starship.html",
+              "Flights, vehicles and the next milestones",
+              "rocket"
             ],
             [
-              "Can I see it?",
-              "/see-the-launch.html",
-              "Visible from here?",
-              ""
+              "Starlink observatory",
+              "/starlink.html",
+              "Explore the constellation and your sky",
+              "orbit"
+            ],
+            [
+              "SpaceX explainers",
+              "/explainers.html#spacex",
+              "Hot staging, booster catches and more",
+              "book"
             ]
           ]
         },
-        [
-          "Explainers",
-          "/explainers.html#spacex",
-          "Hot staging, catch",
-          ""
-        ]
-      ]
+        {
+          "label": "Watch & experience",
+          "items": [
+            [
+              "Launch calendar",
+              "/calendar.html",
+              "Upcoming launches and livestreams",
+              "calendar"
+            ],
+            [
+              "Can I see the launch?",
+              "/see-the-launch.html",
+              "Plan your view and use the live compass",
+              "compass"
+            ],
+            [
+              "Identify a satellite",
+              "/starlink.html#identify",
+              "Discover what is moving above you",
+              "orbit"
+            ]
+          ]
+        }
+      ],
+      "feature": {
+        "title": "Your place. Your sky.",
+        "text": "Find the direction. Check your horizon. Plan your next launch view.",
+        "label": "Plan your launch view",
+        "href": "/see-the-launch.html",
+        "art": "compass"
+      }
+    },
+    {
+      "id": "pn-trackers",
+      "label": "Trackers",
+      "intro": "Follow the changes that matter to you.",
+      "groups": [
+        {
+          "label": "Tesla & autonomy",
+          "items": [
+            [
+              "Tesla software updates",
+              "/updates.html",
+              "Releases, features and reported rollouts",
+              "code"
+            ],
+            [
+              "FSD adoption & safety",
+              "/fsd-tracker.html",
+              "Usage figures and published evidence",
+              "chart"
+            ],
+            [
+              "FSD in Europe",
+              "/fsd-europe.html",
+              "Availability, approvals and eligibility",
+              "map"
+            ],
+            [
+              "Robotaxi locations & fleet",
+              "/cybercab.html",
+              "Operating areas and vehicle counts",
+              "map"
+            ],
+            [
+              "FSD & Robotaxi evidence",
+              "/autonomy.html",
+              "Claims, demonstrations and commercial use",
+              "check"
+            ]
+          ]
+        },
+        {
+          "label": "Space & launches",
+          "items": [
+            [
+              "Starship flights",
+              "/starship.html",
+              "Flight history and upcoming milestones",
+              "rocket"
+            ],
+            [
+              "Starlink constellation",
+              "/starlink.html",
+              "The fleet, versions and orbital picture",
+              "orbit"
+            ],
+            [
+              "Launch calendar",
+              "/calendar.html",
+              "Launches, livestreams and reminders",
+              "calendar"
+            ]
+          ]
+        },
+        {
+          "label": "Company data",
+          "items": [
+            [
+              "Production & deliveries",
+              "/production.html",
+              "Tesla’s reported quarterly numbers",
+              "chart"
+            ],
+            [
+              "Markets",
+              "/tsla.html",
+              "Company snapshots and market context",
+              "chart"
+            ],
+            [
+              "Promise tracker",
+              "/promise-tracker.html",
+              "Milestones, deadlines and evidence",
+              "clock"
+            ]
+          ]
+        }
+      ],
+      "feature": {
+        "title": "Make them your Daily.",
+        "text": "Pin the tools you follow and keep your interests in one place.",
+        "label": "Open Your Daily",
+        "href": "/daily.html",
+        "art": "daily"
+      }
     },
     {
       "id": "pn-ex",
       "label": "Explore",
-      "items": [
-        [
-          "Explainers",
-          "/explainers.html",
-          "Understand the technology",
-          ""
-        ],
-        [
-          "Grok",
-          "/grok.html",
-          "Guides and tutorials",
-          ""
-        ],
-        [
-          "Gear",
-          "/gear.html",
-          "Owner kit",
-          ""
-        ],
-        [
-          "Games",
-          "/games.html",
-          "Starbase games",
-          ""
-        ],
-        [
-          "Wallpapers",
-          "/wallpapers.html",
-          "Desktop &amp; phone",
-          ""
-        ]
-      ]
+      "intro": "Stay curious. Go a little further.",
+      "groups": [
+        {
+          "label": "Learn & understand",
+          "items": [
+            [
+              "Visual explainers",
+              "/explainers.html",
+              "Big ideas and the engineering behind them",
+              "book"
+            ],
+            [
+              "Grok guides",
+              "/grok.html",
+              "Practical guides to Grok and its features",
+              "spark"
+            ],
+            [
+              "Model 3 in 3D",
+              "/model3-explorer.html",
+              "Explore the car from every angle",
+              "cube"
+            ],
+            [
+              "Cybertruck in 3D",
+              "/cybertruck-explorer.html",
+              "Get closer to the design",
+              "cube"
+            ]
+          ]
+        },
+        {
+          "label": "Make it yours",
+          "items": [
+            [
+              "Wallpapers",
+              "/wallpapers.html",
+              "Your next phone or desktop background",
+              "image"
+            ],
+            [
+              "Games",
+              "/games.html",
+              "A little time at Starbase",
+              "game"
+            ],
+            [
+              "Gear",
+              "/gear.html",
+              "Owner kit and useful accessories",
+              "bag"
+            ]
+          ]
+        }
+      ],
+      "feature": {
+        "title": "A fresh perspective.",
+        "text": "Find a new deep dive, a favourite tool or a wallpaper worth keeping.",
+        "label": "Explore the explainers",
+        "href": "/explainers.html",
+        "art": "explore"
+      }
     }
   ],
-  "mid": [],
   "cta": [
     "Free briefing",
     "/#newsletter"
