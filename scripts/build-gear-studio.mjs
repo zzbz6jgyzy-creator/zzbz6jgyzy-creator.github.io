@@ -29,34 +29,34 @@ export function buildGear(root = ROOT) {
   const I = d.images;
   const picture = (key, alt, { sizes, eager = false, position = "", cls = "" } = {}) => {
     const i = I[key];
-    const set = (ext) => i.widths.map((w) => `${i.base}-${w}w.${ext} ${w}w`).join(", ");
+    const set = (ext) => i.widths.map((w) => `${esc(i.base)}-${w}w.${ext} ${w}w`).join(", ");
     const style = position ? ` style="object-position:${esc(position)}"` : "";
     const load = eager ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"';
-    return `<picture><source type="image/avif" srcset="${set("avif")}" sizes="${sizes}"/><source type="image/webp" srcset="${set("webp")}" sizes="${sizes}"/><img${cls ? ` class="${cls}"` : ""} src="${i.src}" width="${i.w}" height="${i.h}" alt="${esc(alt)}" ${load}${style}/></picture>`;
+    return `<picture><source type="image/avif" srcset="${set("avif")}" sizes="${sizes}"/><source type="image/webp" srcset="${set("webp")}" sizes="${sizes}"/><img${cls ? ` class="${cls}"` : ""} src="${esc(i.src)}" width="${i.w}" height="${i.h}" alt="${esc(alt)}" ${load}${style}/></picture>`;
   };
   const ext = (h) => `href="${esc(h)}" target="_blank" rel="sponsored noopener"`;
   const chip = (t) => `<span class="gx-chip">${esc(t)}</span>`;
 
   const hero = d.hero;
-  const models = d.models.map((m) => `<li class="gx-model" data-model="${m.id}">
-<div class="gx-model-media">${picture(m.image, m.alt, { sizes: "(min-width:900px) 230px, 72vw" })}</div>
+  const models = d.models.map((m) => `<li class="gx-model" data-model="${esc(m.id)}">
+<div class="gx-model-media">${picture(m.image, m.alt, { sizes: "(min-width:900px) 230px, clamp(224px, 62vw, 300px)" })}</div>
 <div class="gx-model-body"><h3>${esc(m.name)}</h3><p>${esc(m.line)}</p>
 <a class="gx-model-link" ${ext(m.href)} aria-label="${esc(d.picker.cta)} ${esc(m.name)} collection (affiliate link, opens in a new tab)">${esc(d.picker.cta)} ${ARROW}</a></div>
 <a class="gx-model-up" href="#upgrades" aria-label="${esc(d.picker.upgrades)} for ${esc(m.name)}: jump to the EV Bandit shelf">${esc(d.picker.upgrades)} ${DOWN}</a>
 </li>`).join("\n");
 
-  const nav = d.nav.map((n) => `<a href="#${n.id}">${esc(n.label)}</a>`).join("");
+  const nav = d.nav.map((n) => `<a href="#${esc(n.id)}">${esc(n.label)}</a>`).join("");
 
-  const stores = d.stores.items.map((s) => `<a class="gx-store gx-reveal" href="#${s.target}">
+  const stores = d.stores.items.map((s) => `<a class="gx-store gx-reveal" href="#${esc(s.target)}">
 <div class="gx-store-media">${picture(s.image, s.alt, { sizes: "(min-width:900px) 600px, 100vw", position: s.position })}</div>
 <div class="gx-store-copy">${chip(s.badge)}<h3>${esc(s.name)}</h3><p>${esc(s.text)}</p><span class="gx-cta">${esc(s.cta)} ${DOWN}</span></div></a>`).join("\n");
 
-  const feature = (f, extra = "") => `<a class="gx-feature gx-reveal"${f.id ? ` id="${f.id}"` : ""} ${ext(f.href)}>
+  const feature = (f, extra = "") => `<a class="gx-feature gx-reveal"${f.id ? ` id="${esc(f.id)}"` : ""} ${ext(f.href)}>
 <div class="gx-feature-media">${picture(f.image, f.alt, { sizes: "(min-width:900px) 620px, 100vw", position: f.position || "" })}</div>
 <div class="gx-feature-copy"><p class="gx-kicker">${esc(f.kicker)}</p><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p>
 <ul>${f.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul><span class="gx-cta">${esc(f.cta)} ${ARROW}</span></div></a>`;
 
-  const head = (s, kicker) => `<header class="gx-section-head"><div><p class="gx-kicker">${esc(kicker)}</p><h2 id="${s.headingId}">${esc(s.title)}</h2><p class="gx-sub">${esc(s.sub)}</p></div>
+  const head = (s, kicker) => `<header class="gx-section-head"><div><p class="gx-kicker">${esc(kicker)}</p><h2 id="${esc(s.headingId)}">${esc(s.title)}</h2><p class="gx-sub">${esc(s.sub)}</p></div>
 <p class="gx-disclosure">${chip("Affiliate")} ${esc(s.disclosure.replace(/^Affiliate links: /, ""))}</p></header>`;
 
   const tiles = d.daily.tiles.map((t, i) => `<a class="gx-tile gx-reveal${i === 0 ? " gx-tile-lg" : ""}${i >= d.daily.tiles.length - 2 ? " gx-tile-wide" : ""}" ${ext(t.href)}>
@@ -64,7 +64,7 @@ ${picture(t.image, t.alt, { sizes: i === 0 || i >= d.daily.tiles.length - 2 ? "(
 <span class="gx-tile-shade" aria-hidden="true"></span><span class="gx-tile-copy"><strong>${esc(t.title)}</strong><em>${esc(t.text)}</em><span class="gx-tile-cta">${esc(t.cta)} ${ARROW}</span></span></a>`).join("\n");
 
   const products = d.upgrades.products.map((p) => `<a class="gx-product gx-reveal" ${ext(p.href)}>
-<div class="gx-product-media">${picture(p.image, p.alt, { sizes: "(min-width:900px) 380px, 100vw", position: p.position || "" })}</div>
+<div class="gx-product-media">${picture(p.image, p.alt, { sizes: "(min-width:900px) 380px, (min-width:600px) 50vw, 100vw", position: p.position || "" })}</div>
 <div class="gx-product-copy"><p class="gx-kicker">${esc(p.kicker)}</p><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p><span class="gx-cta">${esc(p.cta)} ${ARROW}</span></div></a>`).join("\n");
 
   const foot = (s) => `<div class="gx-foot"><a class="gx-btn" ${ext(s.shopAll.href)}>${esc(s.shopAll.label)} ${ARROW}</a><p class="gx-disclosure">${chip("Affiliate")} ${esc(s.disclosure.replace(/^Affiliate links: /, ""))}</p></div>`;
@@ -96,7 +96,7 @@ ${models}
 ${stores}
 </div>
 </section>
-<section class="gx-section gx-wrap" id="${d.daily.id}" aria-labelledby="${d.daily.headingId}">
+<section class="gx-section gx-wrap" id="${esc(d.daily.id)}" aria-labelledby="${esc(d.daily.headingId)}">
 ${head(d.daily, d.daily.partner)}
 ${feature(d.daily.feature)}
 <div class="gx-bento">
@@ -104,7 +104,7 @@ ${tiles}
 </div>
 ${foot(d.daily)}
 </section>
-<section class="gx-section gx-wrap" id="${d.upgrades.id}" aria-labelledby="${d.upgrades.headingId}">
+<section class="gx-section gx-wrap" id="${esc(d.upgrades.id)}" aria-labelledby="${esc(d.upgrades.headingId)}">
 ${head(d.upgrades, d.upgrades.partner)}
 ${feature(d.upgrades.feature)}
 <div class="gx-products">
@@ -114,7 +114,7 @@ ${foot(d.upgrades)}
 </section>
 <section class="gx-section gx-wrap gx-checklist" id="fitment" data-ps-checklist aria-labelledby="ps-fitment-title"><div><p class="gx-kicker">${esc(ck.kicker)}</p><h2 id="ps-fitment-title">${esc(ck.title)}</h2><p class="gx-sub">${esc(ck.lede)}</p></div><div class="gx-checks">${ck.items.map((i) => `<label><input type="checkbox"/><span>${esc(i)}</span></label>`).join("")}<p class="gx-note" role="status">${esc(ck.status)}</p></div></section>
 <section class="gx-section gx-wrap gx-band-row" aria-label="${esc(rf.kicker)}"><a class="gx-band" href="${esc(rf.href)}" target="_blank" rel="sponsored noopener"><div><p class="gx-kicker">${esc(rf.kicker)}</p><h2>${esc(rf.title)}</h2><p>${esc(rf.text)}</p></div><span class="gx-cta">ts.la/alex474841 ${ARROW}</span></a><p class="ref-note gx-ref-note">${esc(rf.note)}</p></section>
-<section class="gx-section gx-wrap ps-newsletter gx-news" aria-labelledby="gx-news-h"><div><p class="gx-kicker">${esc(nl.kicker)}</p><h2 id="gx-news-h">${esc(nl.title)}</h2><p>${esc(nl.text)}</p></div><a class="gx-btn" href="${esc(nl.href)}">${esc(nl.cta)} ${ARROW}</a></section>
+<section class="gx-section gx-wrap gx-news" aria-labelledby="gx-news-h"><div><p class="gx-kicker">${esc(nl.kicker)}</p><h2 id="gx-news-h">${esc(nl.title)}</h2><p>${esc(nl.text)}</p></div><a class="gx-btn" href="${esc(nl.href)}">${esc(nl.cta)} ${ARROW}</a></section>
 <section class="gx-credits gx-wrap" aria-label="Sources and image credits">
 <p>${esc(d.sources)}</p>
 <p><strong>Image credits</strong> (Wikimedia Commons): ${credits}. ${esc(d.creditsNote)}</p>
