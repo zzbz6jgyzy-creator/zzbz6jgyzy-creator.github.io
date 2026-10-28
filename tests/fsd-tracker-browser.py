@@ -60,6 +60,14 @@ async def main():
             for li in await page.locator('#promises .ft-promise').all():
                 t, st = await li.locator('h3').bounding_box(), await li.locator('.ft-pstatus').bounding_box()
                 assert t['x'] + t['width'] <= st['x'] + 0.5 or st['x'] + st['width'] <= t['x'] + 0.5 or t['y'] + t['height'] <= st['y'] or st['y'] + st['height'] <= t['y'], (tag, 'promise title and status overlap')
+            assert await page.locator('#next .ft-refresh tbody tr').count() == 5 and await page.locator('.sd-band').count() == 1, tag
+            assert (await page.locator('#ft-pick').is_visible()) == (mode != 'nojs' and mode != 'blocked-js'), (tag, 'picker needs script')
+            if mode == 'normal' and width == 390 and theme == 'dark':
+                await page.select_option('#ft-pick-sel', 'DE')
+                assert 'Germany' in await page.locator('#ft-pick-out').inner_text(), tag
+                await page.reload(wait_until='domcontentloaded')
+                await page.wait_for_timeout(300)
+                assert await page.locator('#ft-pick-sel').input_value() == 'DE', (tag, 'country is remembered')
             assert not errors, (tag, errors)
             # The table view is a native <details>, so it works with no script.
             await page.locator('#adoption .ft-table-view summary').click()

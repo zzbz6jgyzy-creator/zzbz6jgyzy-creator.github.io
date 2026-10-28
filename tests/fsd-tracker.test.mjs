@@ -46,6 +46,30 @@ test('safety claims: figures add up, are labelled Reported, and promises come fr
   assert.ok(page.includes('id="safety"')&&page.includes('id="promises"'));
 });
 
+test('RSS feed, share image, refresh table, country picker and newsletter band are wired',()=>{
+  const page=fs.readFileSync('fsd-tracker.html','utf8'),feed=fs.readFileSync('fsd-tracker-feed.xml','utf8');
+  assert.equal((feed.match(/<item>/g)||[]).length,d.changes.length);
+  assert.equal(new Set(feed.match(/<guid[^>]*>[^<]*<\/guid>/g)).size,d.changes.length,'guids are unique');
+  assert.ok(feed.includes('<atom:link href="https://superchargeddaily.com/fsd-tracker-feed.xml"'));
+  assert.ok(page.includes('rel="alternate" type="application/rss+xml"'));
+  assert.ok(page.includes('https://superchargeddaily.com/assets/og-fsd-tracker.jpg')&&fs.existsSync('assets/og-fsd-tracker.jpg'));
+  const next=page.match(/<section[^>]* id="next"[\s\S]*?<\/section>/)[0];
+  assert.equal((next.match(/<tr><th scope="row">/g)||[]).length,d.refresh.length);
+  assert.ok(page.includes('id="ft-pick"')&&(page.match(/<option value="[A-Z]{2}"/g)||[]).length===d.atlas.countries.length);
+  assert.equal((page.match(/<!--nl:start-->/g)||[]).length,1,'the newsletter band survives a rebuild');
+  assert.ok(!/ft-chip-(target|estimate)/.test(next),'expectations are labelled as ours, not as a stated target or arithmetic');
+  assert.ok(next.includes('ft-chip-expected')&&next.includes('Tesla Q3 2026 update, 21 Oct 2026'),'last-updated cells are built from the data');
+  assert.ok(page.includes('og:image:alt'));
+  assert.ok(page.includes('granted the Dutch approval that other EU states recognise'),'the approving state is not told it recognised its own approval');
+  const x=structuredClone(d);x.refresh[0].from='nowhere';assert.throws(()=>M.validate(x),/refresh/);
+  // The share card is generated from the data; a data change without regenerating it fails here.
+  const card=fs.readFileSync('scripts/fsd-tracker-og-card.html','utf8');
+  execFileSync(process.execPath,['scripts/fsd-tracker-og-card.mjs']);
+  assert.equal(fs.readFileSync('scripts/fsd-tracker-og-card.html','utf8'),card,'run node scripts/fsd-tracker-og-card.mjs and re-shoot assets/og-fsd-tracker.jpg');
+  // Feed GUIDs follow the text of each change, so a back-dated entry does not renumber the others.
+  assert.ok(/fsd-tracker-2026-10-28-[0-9a-f]{8}/.test(fs.readFileSync('fsd-tracker-feed.xml','utf8')));
+});
+
 test('validator rejects bad data',()=>{
   const bad=()=>structuredClone(d);
   let x=bad();x.kpis[0].source='nope';assert.throws(()=>M.validate(x));
@@ -89,7 +113,8 @@ test('charts are plain SVG with titles and a table fallback',()=>{
   const page=fs.readFileSync('fsd-tracker.html','utf8');
   assert.ok(page.includes('<title id="ft-a-t">'));assert.ok(page.includes('<details class="ft-table-view">'));
   assert.equal((page.match(/class="ft-bar/g)||[]).length,d.adoption.points.length);
-  assert.ok(!/<script[^>]*src="[^"]*(chart|d3|plotly|echarts)/i.test(page),'no chart library');
+  const own=page.replace(/\/assets\/js\/[\w-]+\.bundle\.[0-9a-f]+\.js/g,'');
+  assert.ok(!/<script[^>]*src="[^"]*(chart|d3|plotly|echarts)/i.test(own),'no chart library');
 });
 
 test('the global tracker builder and this builder leave data/pages.json stable in either order',()=>{
@@ -175,5 +200,5 @@ test('map is a build-time SVG that shares its geometry, and the page stays light
   assert.equal((page.match(/<g id="ft-geo">/g)||[]).length,1,'geometry defined once');
   assert.equal((page.match(/<use href="#ft-geo"\/>/g)||[]).length,2);
   assert.ok(Buffer.byteLength(page)<260*1024,'page HTML under 260 KB');
-  assert.ok(!/<script[^>]*src="[^"]*(leaflet|mapbox|d3|topojson)/i.test(page));
+  assert.ok(!/<script[^>]*src="[^"]*(leaflet|mapbox|d3|topojson)/i.test(page.replace(/\/assets\/js\/[\w-]+\.bundle\.[0-9a-f]+\.js/g,'')),'no map library (our own hashed bundles removed first)');
 });

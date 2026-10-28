@@ -2,6 +2,7 @@
 // The shell (nav, footer, bundle tags) lives in the page itself. This page is separate from fsd.html on purpose:
 // the owner can compare the two and keep either.
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import {createRequire} from 'node:module';
 import {adoptionBars,adoptionList,attachSteps,milesArea,buildLines,dailyTable,atlasMap,regionBars,euTiles,euMeters,recognitionSteps,claimsBars} from './fsd-tracker-charts.mjs';
 const require=createRequire(import.meta.url),M=require('../fsd-tracker-model.js'),e=M.esc;
@@ -9,7 +10,7 @@ const ledger_=JSON.parse(fs.readFileSync('data/promises.json','utf8')).promises;
 const d=M.validate(JSON.parse(fs.readFileSync('data/fsd-tracker.json','utf8')));
 const URL_='https://superchargeddaily.com/fsd-tracker.html',TITLE='FSD by the numbers: adoption and rollout | Supercharged Daily';
 const DESC='How big Tesla FSD is and how fast it is growing: subscriptions, attach rate, markets and software, each number sourced and dated.';
-const OG='https://superchargeddaily.com/assets/og-v2.jpg';
+const OG='https://superchargeddaily.com/assets/og-fsd-tracker.jpg';
 const fmt=(v,o={day:'numeric',month:'short',year:'numeric'})=>new Intl.DateTimeFormat('en-GB',{...o,timeZone:'UTC'}).format(new Date(v+'T12:00:00Z')).replace('Sept','Sep');
 const nf=(n,x=2)=>n.toLocaleString('en-GB',{minimumFractionDigits:x,maximumFractionDigits:x});
 const src=id=>d.sources.find(s=>s.id===id);
@@ -47,8 +48,18 @@ const softwareHtml=`<div class="ft-card ft-fig"><h3>Cars seen on each build</h3>
 <p class="ft-note">${e(sw.caveat)}</p>`;
 const landSvg=fs.readFileSync('assets/world-land.svg','utf8'),cSvg=fs.readFileSync('assets/world-countries.svg','utf8');
 const geo={land:landSvg.match(/<path[^>]* d="([^"]+)"/)[1],countries:Object.fromEntries([...cSvg.matchAll(/<path data-code="([A-Z]{2})" d="([^"]+)"/g)].map(m=>[m[1],m[2]]))};
+const stateByCode=Object.fromEntries(d.europe.states.map(x=>[x.code,x]));
+const approver=d.europe.recognitions[0].code; // the first state to act is the one that granted the approval the others recognise
+const the=n=>/^(United|Netherlands)/.test(n)?'the '+n:n;
+const cap=n=>/^(United|Netherlands)/.test(n)?'The '+n:n;
+const pickText=c=>{const st=stateByCode[c.code];
+ const base=c.status==='listed'?`Tesla's list shows FSD (Supervised) in ${the(c.name)}. A listing is not a legal approval and does not mean every car can use it.`:c.status==='uncertain'?`Tesla's list is unclear for ${the(c.name)}. See the country tracker (/fsd.html) for what we found.`:`${cap(c.name)} is not on Tesla's list.`;
+ const eu=st?(c.code===approver?` The national authority granted the Dutch approval that other EU states recognise. As of ${fmt(d.europe.asOf)}.`:st.recognised?` The national authority has recognised the Dutch approval${st.listed?'':', but Tesla does not list it yet'}. As of ${fmt(d.europe.asOf)}.`:` No national recognition is recorded yet (as of ${fmt(d.europe.asOf)}).`):'';
+ return base+` As of ${fmt(d.atlas.asOf)}.`+eu;};
+const picker=`<div class="ft-card ft-pick" id="ft-pick" hidden><h3>Your country</h3><p class="ft-muted">Pick it and we will remember it on this device. Nothing is sent anywhere.</p><label for="ft-pick-sel" class="ft-pick-l">Country</label><select id="ft-pick-sel"><option value="">Choose a country</option>${[...d.atlas.countries].sort((a,b)=>a.name.localeCompare(b.name)).map(c=>`<option value="${c.code}" data-text="${e(pickText(c))}">${e(c.name)}</option>`).join('')}</select><p class="ft-pick-out" id="ft-pick-out" role="status" aria-live="polite"></p></div>`;
 const atlasHtml=`<div class="ft-card ft-fig ft-mapcard"><div class="ft-maps"><div class="ft-map-w">${atlasMap(d.atlas,geo)}</div><div class="ft-map-e"><p class="ft-muted">Europe, enlarged</p>${atlasMap(d.atlas,geo,true)}</div></div><ul class="ft-maplegend"><li><i class="ft-m-listed"></i>Tesla-listed</li><li><i class="ft-m-uncertain"></i>Scope unresolved</li><li><i class="ft-m-not_listed"></i>Tracked, not on the list</li><li><i class="ft-m-none"></i>Outside our coverage</li></ul><p class="ft-event-foot">${chip('disclosed')} ${cite('tesla-markets')}</p></div>
-<div class="ft-split ft-split-even"><div class="ft-card"><h3>By region</h3><p class="ft-muted">Tesla-listed markets out of the ${d.atlas.countries.length} we track.</p>${regionBars(d.atlas)}</div><div class="ft-card"><h3>What a listing means</h3><p class="ft-muted">Tesla's list says where it offers FSD (Supervised). It is separate from a regulator's permission and from a software update reaching your car, and your car still has to qualify. Driver supervision is always required.</p><p><a class="ft-btn" href="/fsd.html#map">Find your country →</a></p></div></div>`;
+<div class="ft-split ft-split-even"><div class="ft-card"><h3>By region</h3><p class="ft-muted">Tesla-listed markets out of the ${d.atlas.countries.length} we track.</p>${regionBars(d.atlas)}</div><div class="ft-card"><h3>What a listing means</h3><p class="ft-muted">Tesla's list says where it offers FSD (Supervised). It is separate from a regulator's permission and from a software update reaching your car, and your car still has to qualify. Driver supervision is always required.</p><p><a class="ft-btn" href="/fsd.html#map">Find your country →</a></p></div></div>
+${picker}`;
 const eur=d.europe,meters=euMeters(eur),recN=eur.states.filter(s=>s.recognised).length,lstN=eur.states.filter(s=>s.listed).length,obsN=eur.states.filter(s=>s.observed).length;
 const europeHtml=`<div class="ft-split"><div class="ft-card"><h3>Where each EU state stands</h3><p class="ft-muted">One tile per EU state. Teal: national authority recognised the Dutch approval and Tesla lists the market. Violet: recognised, not yet listed. A dot: customer use reported.</p>${euTiles(eur)}<ul class="ft-maplegend"><li><i class="ft-t-both"></i>Recognised and listed (${eur.states.filter(s=>s.recognised&&s.listed).length})</li><li><i class="ft-t-rec"></i>Recognised only (${eur.states.filter(s=>s.recognised&&!s.listed).length})</li>${eur.states.some(s=>!s.recognised&&s.listed)?`<li><i class="ft-t-list"></i>Listed, no recognition recorded (${eur.states.filter(s=>!s.recognised&&s.listed).length})</li>`:''}<li><i class="ft-t-none"></i>Nothing recorded (${eur.states.filter(s=>!s.recognised&&!s.listed).length})</li></ul><p class="ft-event-foot">${recN} recognised (the Netherlands granted the approval, the others recognised it), ${lstN} listed by Tesla, ${obsN} with customer use reported, of ${eur.states.length}. Records from <a href="/fsd-europe.html">our Europe tracker</a>, checked ${fmt(eur.asOf)}.</p></div>
 <aside class="ft-card"><h3>The road to an EU-wide decision</h3><p class="ft-muted">The two thresholds FSD·EU measures against. National recognitions are not committee votes.</p>${meters.html}<p class="ft-event-foot">${chip('reported')} Thresholds: ${cite(eur.thresholds.source)} ${chip('estimate')} Population share: the recognising states' population on 1 Jan 2025 as a share of the EU total of ${(eur.populationTotal/1e6).toFixed(1)} million, ${cite(eur.popSource)}</p></aside></div>
@@ -66,7 +77,9 @@ const rowsP=ledgerTopic;
 const ptally=rowsP.reduce((a,p)=>(a[p.status]=(a[p.status]||0)+1,a),{});
 const slug=s=>s.toLowerCase().replace(/[^a-z]+/g,'-');
 const promisesHtml=`<ul class="ft-tally" aria-label="Tally of these promises by outcome">${Object.entries(ptally).map(([k,v])=>`<li class="ft-ps-${slug(k)}"><strong>${v}</strong> ${e(k)}</li>`).join('')}</ul><ol class="ft-promises">${rowsP.map(p=>`<li class="ft-promise ft-ps-${slug(p.status)}"><div><h3>${e(p.title)}</h3><p class="ft-muted">Said <time datetime="${p.said_on}">${e(p.said_on.length===7?p.said_on:fmt(p.said_on))}</time> by ${e(p.person)}. Due ${p.deadline?`<time datetime="${p.deadline}">${e(p.deadline.length<=4?p.deadline:fmt(p.deadline))}</time>`:'no date given'}.</p></div><span class="ft-pstatus">${e(p.status)}</span><a class="ft-cite" href="${e(p.source.url)}" rel="noopener">Said at: ${e(p.source.outlet)} →</a></li>`).join('')}</ol><p class="ft-note">Every entry the <a href="/promise-tracker.html">promise tracker</a> lists under FSD / autonomy, oldest first; wording and status come from that ledger when this page is rebuilt; a pull request that changes the ledger flags a stale page. ${ptally.Delivered===1?'Only one, '+e(rowsP.find(p=>p.status==='Delivered').title)+', was delivered on time.':ptally.Delivered?ptally.Delivered+' were delivered on time.':'None was delivered on time.'} Robotaxi promises are tracked in <a href="/cybercab-guide.html#promises">the Cybercab guide</a>.</p>`;
-const legend=`<ul class="ft-legend">${[['disclosed','Tesla or a regulator said it in a document we opened.'],['reported','A journalist, analyst or tracker found it, or Tesla published it and an outlet describes it; we have not compared it with the original. We quote the outlet.'],['estimate','Our own arithmetic on disclosed numbers. Shown dashed or marked.'],['approx','Read off a chart Tesla published without exact labels.'],['target','A stated aim or date. Not a result.']].map(([k,t])=>`<li>${chip(k)} <span>${t}</span></li>`).join('')}</ul>`;
+const lastFrom={deck:`Tesla Q3 2026 update, ${fmt(src('q3-update').date)}`,software:`Snapshot pinned ${fmt(d.software.asOf.slice(0,10))}`,markets:`Checked ${fmt(d.atlas.asOf)}`,safety:`Reported ${fmt(src(d.claims.us.source).date)} (U.S.) and ${fmt(src(d.claims.eu.source).date)} (EU)`};
+const refreshHtml=`<div class="ft-table-wrap" tabindex="0" role="region" aria-label="When each part of this page updates next"><table class="ft-table ft-refresh"><thead><tr><th scope="col">What</th><th scope="col">Last updated from</th><th scope="col">Next update</th></tr></thead><tbody>${d.refresh.map(r=>`<tr><th scope="row">${e(r.what)}</th><td data-label="Last updated from">${e(lastFrom[r.from])}</td><td data-label="Next update">${e(r.next)} ${chip('expected')}</td></tr>`).join('')}</tbody></table></div><p class="ft-note">These are our expectations, not Tesla's schedule. Reviewed ${fmt(d.reviewed)}. <a href="/fsd-tracker-feed.xml">RSS feed of changes</a>.</p>`;
+const legend=`<ul class="ft-legend">${[['disclosed','Tesla or a regulator said it in a document we opened.'],['reported','A journalist, analyst or tracker found it, or Tesla published it and an outlet describes it; we have not compared it with the original. We quote the outlet.'],['estimate','Our own arithmetic on disclosed numbers. Shown dashed or marked.'],['approx','Read off a chart Tesla published without exact labels.'],['target','A stated aim or date. Not a result.'],['expected','Our guess at when a number will next change. Not a schedule Tesla has given.']].map(([k,t])=>`<li>${chip(k)} <span>${t}</span></li>`).join('')}</ul>`;
 const changes=`<ol class="ft-changes">${d.changes.map(c=>`<li><time datetime="${c.date}">${fmt(c.date)}</time> <span class="ft-kind ft-kind-${c.kind}">${c.kind==='correction'?'Correction':'Update'}</span> ${e(c.text)}</li>`).join('')}</ol>`;
 const ledger=`<ul class="ft-ledger">${d.sources.map(s=>`<li><a href="${e(s.url)}" rel="noopener">${e(s.title)}</a> <span>${e(s.outlet)} · ${fmt(s.date)} · opened ${fmt(s.checked)}</span></li>`).join('')}</ul>`;
 
@@ -78,13 +91,14 @@ const sec=[
  ['europe','Europe and the road to a decision','Which EU states have recognised the Dutch approval, and the two thresholds FSD·EU measures against.',europeHtml],
  ['safety','What Tesla says about safety','Tesla\'s own published crash-rate comparisons, what each is measured against, and what we could not verify.',claimsHtml],
  ['promises','What was promised','Every FSD and autonomy promise in our ledger, and what happened by the date given.',promisesHtml],
+ ['next','When it updates next','What gets refreshed, from which source, and when we expect the next change.',refreshHtml],
  ['labels','How to read the numbers','Every figure on this page carries one of these labels, a date and a source.',legend],
  ['changes','What changed','Corrections are shown here, never silently rewritten.',changes],
  ['sources','Sources','The sources behind the numbers above, with the date we opened each. Individual recognition links in the Europe section come from our Europe tracker\'s evidence records.',ledger]
 ].map(([id,title,text,body,cls],i)=>section(id,String(i+1).padStart(2,'0'),title,text,body,cls)).join('\n');
-const jump=['adoption','miles','software','atlas','europe','safety','promises','labels','changes','sources'].map(id=>`<a href="#${id}">${id[0].toUpperCase()+id.slice(1)}</a>`).join('');
+const jump=['adoption','miles','software','atlas','europe','safety','promises','next','labels','changes','sources'].map(id=>`<a href="#${id}">${id[0].toUpperCase()+id.slice(1)}</a>`).join('');
 const main=`<main id="main" class="ft">
-<header class="ft-hero"><p class="ft-crumb"><a href="/tesla.html">Tesla</a> / FSD by the numbers</p><h1>FSD, by the numbers.<br><span>Sourced, dated, plain.</span></h1><p class="ft-lede">How big Tesla's Full Self-Driving (Supervised) is, how fast it is growing and where it works. Every number says who published it and when, and where Tesla has not published one we say so.</p><p class="ft-hero-meta">Reviewed ${fmt(d.reviewed)} · <a href="/fsd.html">Country-by-country tracker →</a> · <a href="/fsd-europe.html">Europe →</a> · <a href="/updates.html">Software →</a></p><div class="ft-kpis">${kpiHtml}</div><nav class="ft-jump" aria-label="On this page">${jump}</nav></header>
+<header class="ft-hero"><p class="ft-crumb"><a href="/tesla.html">Tesla</a> / FSD by the numbers</p><h1>FSD, by the numbers.<br><span>Sourced, dated, plain.</span></h1><p class="ft-lede">How big Tesla's Full Self-Driving (Supervised) is, how fast it is growing and where it works. Every number says who published it and when, and where Tesla has not published one we say so.</p><p class="ft-hero-meta">Reviewed ${fmt(d.reviewed)} · <a href="/fsd.html">Country-by-country tracker →</a> · <a href="/fsd-europe.html">Europe →</a> · <a href="/updates.html">Software →</a> · <a href="/fsd-tracker-feed.xml">RSS</a></p><div class="ft-kpis">${kpiHtml}</div><nav class="ft-jump" aria-label="On this page">${jump}</nav></header>
 ${sec}
 </main>`;
 
@@ -92,6 +106,8 @@ const ld={"@context":"https://schema.org","@graph":[
  {"@type":"WebPage","name":TITLE,"description":DESC,"url":URL_,"dateModified":d.reviewed,"about":{"@type":"Thing","name":"Tesla Full Self-Driving (Supervised)"},"publisher":{"@type":"Organization","name":"Supercharged Daily","url":"https://superchargeddaily.com/"}},
  {"@type":"BreadcrumbList","itemListElement":[["Home","https://superchargeddaily.com/"],["Tesla","https://superchargeddaily.com/tesla.html"],["FSD by the numbers",URL_]].map(([name,item],i)=>({"@type":"ListItem","position":i+1,name,item}))}]};
 let html=fs.readFileSync('fsd-tracker.html','utf8');
+// scripts/inject_newsletter.py puts its signup band inside <main>; keep it when this builder rewrites <main>.
+const nl=(html.match(/<!--nl:start-->[\s\S]*?<!--nl:end-->/)||[''])[0];
 const meta=`<title>${e(TITLE)}</title>
     <meta name="description" content="${e(DESC)}" />
     <link rel="canonical" href="${URL_}" />
@@ -101,6 +117,10 @@ const meta=`<title>${e(TITLE)}</title>
     <meta property="og:description" content="${e(DESC)}" />
     <meta property="og:url" content="${URL_}" />
     <meta property="og:image" content="${OG}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${e('FSD by the numbers: '+d.kpis.filter(k=>!k.computed).slice(0,3).map(k=>k.value+' '+k.label.toLowerCase()).join(', ')+'.')}" />
+    <link rel="alternate" type="application/rss+xml" title="FSD by the numbers: changes" href="https://superchargeddaily.com/fsd-tracker-feed.xml" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ALJR86" />
     <meta name="twitter:creator" content="@ALJR86" />
@@ -110,8 +130,13 @@ const meta=`<title>${e(TITLE)}</title>
     `;
 html=html.replace(/<title>[\s\S]*?(?=<link rel="icon" href="\/favicon\.ico")/,meta)
  .replace(/<!-- seo:ld -->[\s\S]*?<!-- \/seo:ld -->/,`<!-- seo:ld -->\n    <script type="application/ld+json">${JSON.stringify(ld)}</script>\n    <!-- /seo:ld -->`)
- .replace(/<main\b[\s\S]*?<\/main>/,()=>main);
+ .replace(/<main\b[\s\S]*?<\/main>/,()=>nl?main.replace(/\n<\/main>$/,'\n        '+nl+'\n</main>'):main);
 fs.writeFileSync('fsd-tracker.html',html);
+
+// RSS feed of the change log, from the same data as the page.
+const rfc=x=>new Date(x+'T12:00:00Z').toUTCString();
+const feed=`<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FSD by the numbers: changes</title><link>${URL_}</link><atom:link href="https://superchargeddaily.com/fsd-tracker-feed.xml" rel="self" type="application/rss+xml"/><description>Updates and corrections to Supercharged Daily's FSD by the numbers page.</description><language>en-gb</language><lastBuildDate>${rfc(d.reviewed)}</lastBuildDate>\n${d.changes.map((c,i)=>`<item><title>${c.kind==='correction'?'Correction':'Update'}, ${fmt(c.date)}</title><link>${URL_}#changes</link><guid isPermaLink="false">fsd-tracker-${c.date}-${crypto.createHash('sha1').update(c.text).digest('hex').slice(0,8)}</guid><pubDate>${rfc(c.date)}</pubDate><description>${e(c.text)}</description></item>`).join('\n')}\n</channel></rss>\n`;
+fs.writeFileSync('fsd-tracker-feed.xml',feed);
 
 // Search records, added without touching unrelated entries.
 const indexPath='data/pages.json',index=JSON.parse(fs.readFileSync(indexPath,'utf8'));
@@ -122,6 +147,7 @@ const recs=[{url:'/fsd-tracker.html',title:'FSD by the numbers',tag:'FSD',summar
  {url:'/fsd-tracker.html#europe',title:'FSD in Europe: the road to an EU-wide decision',tag:'FSD',summary:'Which EU states recognise the Dutch approval, recognitions over time and the two thresholds FSD·EU shows.'},
  {url:'/fsd-tracker.html#safety',title:'FSD safety claims: what Tesla says and what it compares against',tag:'FSD',summary:'Tesla’s published miles per major collision with FSD, manual driving and the U.S. average, with the caveats, and the EU dashboard claim.'},
  {url:'/fsd-tracker.html#promises',title:'FSD promises versus reality',tag:'FSD',summary:'Tesla and Musk autonomy promises from 2017 to 2027 and whether each was delivered, from our promise ledger.'},
+ {url:'/fsd-tracker.html#next',title:'FSD tracker: when each number updates next',tag:'FSD',summary:'What on the FSD by the numbers page refreshes from which source, and when the next update is expected.'},
  {url:'/fsd-tracker.html#software',title:'FSD software: which builds are spreading',tag:'FSD',summary:'Cars Teslascope has seen on each FSD build, new cars per day and the latest FSD builds.'}];
 index.pages=index.pages.filter(x=>!x.url.startsWith('/fsd-tracker.html'));
 // After the last /fsd.html entry, so the global tracker's builder (which keeps its own records in one block) never reorders ours.
