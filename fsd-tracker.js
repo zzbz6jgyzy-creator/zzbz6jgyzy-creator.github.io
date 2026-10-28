@@ -26,8 +26,8 @@ try{
  const carBox=document.getElementById('ft-car'),carOut=document.getElementById('ft-car-out');
  const NAMES={'3':'Model 3',Y:'Model Y',S:'Model S',X:'Model X',CT:'Cybertruck'},HW={hw1:'HW1',hw2:'HW2',hw25:'HW2.5',hw3:'HW3',hw4:'HW4 / AI4'};
  if(carBox&&carOut&&car&&Object.hasOwn(NAMES,car.model)&&Number.isInteger(car.year)){
-  const label=Object.hasOwn(HW,car.hw)?HW[car.hw]:'';
-  carOut.textContent=car.year+' '+NAMES[car.model]+(typeof car.name==='string'&&car.name?' ('+car.name.slice(0,40)+')':'')+': '+(label?'computer '+label+', as you confirmed in My Tesla.':'computer not confirmed in My Tesla (Controls → Software → Additional Vehicle Information shows it).')+' Whether FSD (Supervised) runs on a car depends on its hardware, its country and Tesla\'s rollout; the country line above is only Tesla\'s market list.';
+  const hwText=Object.hasOwn(HW,car.hw)?'computer '+HW[car.hw]+', as you confirmed in My Tesla.':car.hw==='none'?'no Autopilot computer, as you entered in My Tesla.':'computer not confirmed in My Tesla (Controls → Software → Additional Vehicle Information shows it).';
+  carOut.textContent=car.year+' '+NAMES[car.model]+(typeof car.name==='string'&&car.name?' ('+car.name.slice(0,40)+')':'')+': '+hwText+' Whether FSD (Supervised) runs on a car depends on its hardware, its country and Tesla\'s rollout; the country line above is about the market, not your car.';
   carBox.hidden=false;
  }
 }catch(e){}
@@ -57,14 +57,14 @@ const clean=t=>(t||'').replace(/\s+/g,' ').replace(/ →/g,'').trim();
 const sourceOf=card=>clean((card.querySelector('figcaption')||card.querySelector('.ft-event-foot')||{}).textContent);
 let busy=false;
 async function save(card,svg,name,btn,msg){
- if(busy)return;busy=true;btn.setAttribute('aria-disabled','true');msg.textContent='';
+ if(busy){msg.textContent='Another image is being made. Try again in a moment.';setTimeout(()=>{msg.textContent='';},3000);return;}busy=true;btn.setAttribute('aria-disabled','true');msg.textContent='';
  try{
   const font=getComputedStyle(document.body).fontFamily,mono="'IBM Plex Mono',ui-monospace,monospace";
   const c=document.createElement('canvas');c.width=1200;c.height=630;const x=c.getContext('2d');
   x.fillStyle='#080a0e';x.fillRect(0,0,1200,630);
   x.fillStyle='#ff3e60';x.font='500 17px '+mono;x.fillText('SUPERCHARGED DAILY · FSD BY THE NUMBERS',56,52);
   const title=card.getAttribute('data-share-title')||(card.querySelector('h3')||card.closest('section').querySelector('h2')).textContent.trim();
-  x.fillStyle='#f3f4f7';x.font='600 36px '+font;x.fillText(title,56,98);
+  x.fillStyle='#f3f4f7';let fs=36;x.font='600 '+fs+'px '+font;while(x.measureText(title).width>880&&fs>22){fs-=2;x.font='600 '+fs+'px '+font;}x.fillText(title,56,98);
   // The card's own description (sample, units, dates) travels with the picture.
   const desc=card.hasAttribute('data-share-note')?card.getAttribute('data-share-note'):clean((card.querySelector('.ft-muted')||{}).textContent);
   x.fillStyle='#a6aeba';x.font='400 15px '+font;const dl=desc?wrap(x,desc,1088).slice(0,3):[];dl.forEach((l,i)=>x.fillText(l,56,128+i*20));
@@ -74,7 +74,7 @@ async function save(card,svg,name,btn,msg){
   key.slice(0,8).forEach((li,i)=>{const sw=li.querySelector('i'),y=top+16+i*38;x.fillStyle=sw?getComputedStyle(sw).backgroundColor:'#fff';x.fillRect(848,y-12,14,14);x.fillStyle='#d5dbe4';x.font='500 14px '+mono;wrap(x,[...li.children].map(n=>n.textContent.trim()).filter(Boolean).join(' · ')||li.textContent.trim(),296).slice(0,2).forEach((l,j)=>x.fillText(l,872,y+j*17));});
   const eu=card.querySelector('svg.ft-map-eu');if(eu){const e2=await load(eu),kk=Math.min(330/e2.w,200/e2.h);x.drawImage(e2.img,848,key.length>=4?top+key.length*38+8:top+170,e2.w*kk,e2.h*kk);x.fillStyle='#a6aeba';x.font='500 12px '+mono;x.fillText('Europe, enlarged',848,(key.length>=4?top+key.length*38+8:top+170)-6);}
   const src=sourceOf(card);
-  x.fillStyle='#a6aeba';x.font='400 15px '+font;wrap(x,src,1088).slice(0,3).forEach((l,i)=>x.fillText(l,56,570+i*19));
+  x.fillStyle='#a6aeba';x.font='400 15px '+font;const sl=wrap(x,src,1088);if(sl.length>3)sl[2]=sl[2].replace(/\s*\S*$/,'')+' …';sl.slice(0,3).forEach((l,i)=>x.fillText(l,56,570+i*19));
   x.fillStyle='#ffffff';x.font='500 15px '+mono;x.textAlign='right';x.fillText('SUPERCHARGEDDAILY.COM/FSD-TRACKER',1144,52);
   const blob=await new Promise(r=>c.toBlob(r,'image/png'));if(!blob)throw Error('no image');
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='supercharged-daily-'+name+'.png';document.body.appendChild(a);a.click();

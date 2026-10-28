@@ -77,7 +77,8 @@ test('my car shows only what the owner entered in My Tesla: no embedded hardware
   const js=fs.readFileSync('fsd-tracker.js','utf8');
   assert.ok(js.includes('Object.hasOwn(NAMES,car.model)')&&!js.includes('my-tesla-data'),'reads the live garage record only');
   assert.ok(/data-share-title="Where Tesla lists FSD \(Supervised\)"/.test(page),'the map image is titled as a Tesla list, not as availability');
-  assert.ok(page.includes('What is counted: EU states whose national authority recognised the Dutch RDW approval'),'the recognitions chart has its own source line');
+  const rec=page.match(/<p class="ft-event-foot">What is counted:[\s\S]*?<\/p>/)[0];
+  assert.ok(rec.includes('The Netherlands granted the approval')&&rec.includes(d.europe.recognitions.filter(r=>r.kind==='authority').length+' of the '+d.europe.recognitions.length+' dates come from an authority')&&rec.includes(d.europe.recognitions.filter(r=>r.kind!=='authority').length+' from press reports')&&rec.includes('(Disclosed)')&&rec.includes('(Reported)'),'the recognitions image keeps who granted it and the Disclosed/Reported mix');
 });
 
 test('validator rejects bad data',()=>{

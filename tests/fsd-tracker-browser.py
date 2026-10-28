@@ -91,6 +91,12 @@ async def main():
                 await page.wait_for_timeout(300)
                 car = await page.locator('#ft-car-out').inner_text()
                 assert 'not confirmed' in car and 'HW3' not in car and 'HW4' not in car, (tag, car)
+                # A confirmed 'no Autopilot computer' is echoed, not reported as unconfirmed.
+                await page.evaluate(garage("{id:'a',model:'Y',year:2017,cc:'DE',hw:'none'}"))
+                await page.reload(wait_until='domcontentloaded')
+                await page.wait_for_timeout(300)
+                car = await page.locator('#ft-car-out').inner_text()
+                assert 'no Autopilot computer' in car and 'not confirmed' not in car, (tag, car)
                 # A hostile garage record must not break the rest of the script.
                 await page.evaluate(garage("{id:'a',model:'constructor',year:2023,cc:'DE',hw:'toString'}"))
                 await page.reload(wait_until='domcontentloaded')
