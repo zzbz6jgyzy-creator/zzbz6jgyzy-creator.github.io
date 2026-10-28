@@ -8,3 +8,6 @@ astro/dist/
 astro/node_modules/
 astro/.astro/
 astro/.wrangler/
+
+# graphify output (see .claude/rules/tools.md)
+graphify-out/

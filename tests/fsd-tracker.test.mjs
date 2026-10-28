@@ -57,10 +57,13 @@ test('page is reproducible, escapes text, labels estimates and keeps search reco
   assert.equal(M.esc('<script>"&\''),'&lt;script&gt;&quot;&amp;&#39;');
 });
 
-test('markets figure comes from the global tracker data, so the two pages cannot disagree',()=>{
-  const g=JSON.parse(fs.readFileSync('data/fsd-global.json','utf8'));
+test('markets figure is the pinned atlas count, so it matches the map and the region bars',()=>{
+  const listed=d.atlas.countries.filter(c=>c.status==='listed').length;
   const page=fs.readFileSync('fsd-tracker.html','utf8');
-  assert.ok(page.includes(`<p class="ft-kpi-value">${g.listed.length}<small>`));
+  assert.ok(page.includes(`<p class="ft-kpi-value">${listed}<small>`));
+  assert.equal((page.match(/class="ft-m-listed"><title>/g)||[]).length,listed,'one listed path per listed market');
+  const src=fs.readFileSync('scripts/build-fsd-tracker.mjs','utf8');
+  assert.ok(!src.includes("data/fsd-global")&&!src.includes("data/fsd-europe"),'build reads only the pinned file');
 });
 
 test('charts are plain SVG with titles and a table fallback',()=>{
@@ -82,7 +85,8 @@ test('the global tracker builder and this builder leave data/pages.json stable i
 
 test('axis grows with the data and the phone chart lists every quarter',()=>{
   const page=fs.readFileSync('fsd-tracker.html','utf8');
-  assert.equal((page.match(/<li( class="ft-hot")?><span class="ft-hb-q">/g)||[]).length,d.adoption.points.length);
+  const sec=page.slice(page.indexOf('id="adoption"'),page.indexOf('id="miles"'));
+  assert.equal((sec.match(/<li( class="ft-hot")?><span class="ft-hb-q">/g)||[]).length,d.adoption.points.length);
   assert.ok(!/ratio [\d.]+% of/.test(page),'ratio never phrased as a share of cars');
 });
 
@@ -115,12 +119,42 @@ test('software section is pinned data, described as running totals of cars seen,
 test('the page does not depend on the bot-updated software history',()=>{
   const src=fs.readFileSync('scripts/build-fsd-tracker.mjs','utf8');
   assert.ok(!src.includes('updates-history')&&!src.includes('updates-data'),'build reads only reviewed files');
-  assert.ok(fs.existsSync('scripts/refresh-fsd-software.mjs'));
+  assert.ok(fs.existsSync('scripts/refresh-fsd-pins.mjs'));
 });
 
 test('the refresh script pins software data deterministically',()=>{
   const before=fs.readFileSync('data/fsd-tracker.json','utf8');
-  try{execFileSync(process.execPath,['scripts/refresh-fsd-software.mjs']);
-    const a=JSON.parse(fs.readFileSync('data/fsd-tracker.json','utf8'));assert.equal(M.validate(a),a);assert.equal(a.software.builds.length,a.software.top);
+  try{execFileSync(process.execPath,['scripts/refresh-fsd-pins.mjs'],{env:{...process.env,FSD_PINS_OFFLINE:'1'}});
+    const a=JSON.parse(fs.readFileSync('data/fsd-tracker.json','utf8')),was=JSON.parse(before);
+    // The software, atlas and Europe slices follow other files that change on main, so they may legitimately differ.
+    // What an offline run must never touch, whatever today's date: the review date, the hand-measured numbers and Eurostat's dates.
+    for(const k of ['reviewed','kpis','adoption','miles'])assert.deepEqual(a[k],was[k],k+' is unchanged by an offline run');
+    assert.deepEqual(a.sources.find(s=>s.id==='eurostat'),was.sources.find(s=>s.id==='eurostat'),'no new opened date for Eurostat offline');
+    assert.equal(M.validate(a),a);assert.equal(a.software.builds.length,a.software.top);
   }finally{fs.writeFileSync('data/fsd-tracker.json',before);}
+});
+
+test('Europe: tiles, meters and the step chart are consistent with the pinned records and Eurostat arithmetic',()=>{
+  const eu=d.europe,page=fs.readFileSync('fsd-tracker.html','utf8');
+  const rec=eu.states.filter(s=>s.recognised),pop=rec.reduce((a,s)=>a+s.population,0)/eu.populationTotal*100;
+  assert.equal(eu.states.length,27);assert.equal(rec.length,eu.recognitions.length);
+  assert.equal(eu.states.reduce((a,s)=>a+s.population,0),eu.populationTotal,'27 states add up to the Eurostat EU total');
+  assert.ok(page.includes(`<b>${pop.toFixed(1)}%</b> of EU population`));
+  assert.ok(page.includes(`<b>${rec.length}</b> of 27 states recognised`));
+  assert.equal((page.match(/<li class="ft-t-(both|rec|list|none)"/g)||[]).length,27);
+  const recList=page.slice(page.indexOf('<ol class="ft-rec">'));assert.equal((recList.slice(0,recList.indexOf('</ol>')).match(/<li><time datetime="2026-/g)||[]).length,eu.recognitions.length);
+  assert.ok(page.includes('it is not a vote of the EU\'s technical committee'));
+  assert.ok(page.includes('we do not forecast it'));
+  const th=eu.thresholds;assert.ok(d.sources.find(s=>s.id===th.source).kind==='reporting','thresholds are labelled Reported, not Disclosed');
+  const bad=structuredClone(d);bad.europe.recognitions.pop();assert.throws(()=>M.validate(bad));
+  const bad2=structuredClone(d);bad2.europe.populationTotal=1e9;assert.throws(()=>M.validate(bad2));
+  const bad3=structuredClone(d);bad3.atlas.countries[0].status='maybe';assert.throws(()=>M.validate(bad3));
+});
+
+test('map is a build-time SVG that shares its geometry, and the page stays light',()=>{
+  const page=fs.readFileSync('fsd-tracker.html','utf8');
+  assert.equal((page.match(/<g id="ft-geo">/g)||[]).length,1,'geometry defined once');
+  assert.equal((page.match(/<use href="#ft-geo"\/>/g)||[]).length,2);
+  assert.ok(Buffer.byteLength(page)<260*1024,'page HTML under 260 KB');
+  assert.ok(!/<script[^>]*src="[^"]*(leaflet|mapbox|d3|topojson)/i.test(page));
 });

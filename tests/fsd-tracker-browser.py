@@ -15,7 +15,7 @@ async def main():
         browser = await p.chromium.launch(
             executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome') or shutil.which('chromium'),
             args=['--no-sandbox', '--disable-dev-shm-usage'])
-        cases = [(320, 'dark', 'normal'), (390, 'dark', 'normal'), (768, 'dark', 'normal'), (1440, 'dark', 'normal'),
+        cases = [(320, 'dark', 'normal'), (360, 'dark', 'normal'), (390, 'dark', 'normal'), (768, 'dark', 'normal'), (1440, 'dark', 'normal'),
                  (390, 'light', 'normal'), (1440, 'light', 'normal'), (390, 'dark', 'nojs'), (390, 'dark', 'blocked-js')]
         for width, theme, mode in cases:
             ctx = await browser.new_context(viewport={'width': width, 'height': 1000}, java_script_enabled=mode != 'nojs',
@@ -46,6 +46,12 @@ async def main():
             assert await page.locator('.ft-kpi').count() == 5, tag
             assert await page.locator('#miles svg').count() == 2 and await page.locator('#software .ft-chart').count() == 2, tag
             assert await page.locator('.ft-heat tbody tr').count() == 6, tag
+            assert await page.locator('#atlas svg.ft-map').count() == 2 and await page.locator('.ft-tiles li').count() == 27 and await page.locator('.ft-rec li').count() == 10, tag
+            assert await page.locator('.ft-meter').count() == 2, tag
+            # No overlapping labels in the recognition list (WCAG 1.4.10 at 320 px): chip and link boxes must not intersect.
+            for li in await page.locator('.ft-rec li').all():
+                chip, link = await li.locator('.ft-chip').bounding_box(), await li.locator('.ft-cite').bounding_box()
+                assert chip['x'] + chip['width'] <= link['x'] + 0.5 or link['x'] + link['width'] <= chip['x'] + 0.5 or chip['y'] + chip['height'] <= link['y'] or link['y'] + link['height'] <= chip['y'], (tag, 'chip and source link overlap')
             assert await page.locator('.ft-rel li').count() == 8, tag
             assert await page.locator('.ft-bar').count() == 7, tag
             assert await page.locator('#adoption .ft-table tbody tr').count() == 7, tag
@@ -55,8 +61,8 @@ async def main():
             assert await page.locator('#adoption .ft-table').is_visible(), tag
             if width <= 700:
                 assert not await page.locator('#adoption .ft-desk').is_visible(), tag
-                assert await page.locator('.ft-hbars li').count() == 7, tag
-                assert await page.locator('.ft-hbars').is_visible(), tag
+                assert await page.locator('#adoption .ft-hbars li').count() == 7, tag
+                assert await page.locator('#adoption .ft-hbars').is_visible(), tag
             else:
                 assert await page.locator('#adoption .ft-desk').is_visible() and not await page.locator('#adoption .ft-phone').is_visible(), tag
             if mode in ('normal',) and width > 700:
@@ -68,6 +74,8 @@ async def main():
                 assert not await tip.is_visible(), tag
             visible_svgs = [await el.is_visible() for el in await page.locator('#miles .ft-chart, #software .ft-chart').all()]
             assert visible_svgs.count(True) == 2, (tag, 'one miles and one software chart visible per width')
+            step = page.locator('#europe .ft-desk svg')
+            assert (await step.is_visible()) == (width > 700), (tag, 'step chart only on wide screens; the dated list is always there')
             for el in await page.locator('.ft a.ft-cite, .ft summary, .ft-jump a').all():
                 box = await el.bounding_box()
                 if box:
