@@ -14,7 +14,8 @@ async def main():
    async def route(r):
     u=urlparse(r.request.url);f=ROOT/u.path.lstrip('/')
     if u.hostname!='superchargeddaily.com' or not f.is_file():return await r.abort()
-    return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0] or 'application/octet-stream')
+    headers={'Content-Disposition':'attachment'} if u.path.startswith('/assets/wallpapers/') and u.path.endswith('.jpg') else {}
+    return await r.fulfill(body=f.read_bytes(),headers=headers,content_type=mimetypes.guess_type(str(f))[0] or 'application/octet-stream')
    await c.route('**/*',route);await page.goto('https://superchargeddaily.com/wallpapers.html',wait_until='networkidle')
    assert await page.locator('h1').count()==1
    assert await page.locator('.ws-card').count()==16
@@ -26,6 +27,9 @@ async def main():
     await page.locator('.ws-card:visible [data-save]').first.click();await page.locator('[data-filter="Saved"]').click();assert await page.locator('.ws-card:visible').count()==1
     await page.locator('[data-format-choice="desktop"]').click();await page.locator('.ws-card:visible [data-wp-open]').click();await page.wait_for_selector('dialog[open]')
     assert 'desktop' in await page.locator('[data-wp-img]').get_attribute('alt');assert await page.locator('[data-wp-next]').is_hidden()
+    # Stabilize the dialog before the pointer click; the preview can resize it as it decodes.
+    await page.locator('[data-wp-img]').evaluate('(img)=>img.decode()')
+    assert (await page.locator('[data-wp-desk]').get_attribute('href')).endswith('-desktop.jpg')
     async with page.expect_download() as d:await page.locator('[data-wp-desk]').click()
     download=await d.value;assert download.suggested_filename.endswith('-desktop.jpg')
     await page.keyboard.press('Escape');assert not await page.locator('dialog').is_visible()
