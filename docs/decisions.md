@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-28 · Teslascope 689 vs 94 stays all-hardware, not HW3-only
+
+- **Choice:** keep the audit’s 689 vs 94 figures as Teslascope’s all-hardware snapshot of 2026.38.5.11 vs 2026.38.5.10, the two builds that carry v14.3.13 (HW4) and HW3 v14.3 Lite.
+- **Why:** those counts mix hardware. Calling them HW3-only would overstate how many HW3 cars are on that build. A separate Teslascope HW3 sample showed 267 vs 16. Calling 2026.38.5.11 the most widespread Lite-carrying build is also false: 2026.38.5.1 had 1,029 cars in the same snapshot.
+- **Rejected:** swapping in 267 vs 16, or ranking 2026.38.5.11 as the most widespread Teslascope build that carries HW3 v14.3 Lite.
+
 ## 2026-10-28 · Promise ledger: Flight 15 and add-your-car stay In progress
 
 - **Choice:** add the 25 Oct B22 fire and 26–27 Oct Ship 42 fires, plus Elluswamy’s Q3 “Q2 next year” line, as evidence. Leave both statuses In progress.
