@@ -1476,7 +1476,7 @@
     },
     "caveats": [
       {
-        "text": "Every figure comes from Tesla's own report as an outlet describes it. We did not open Tesla's safety report or dashboard ourselves, so we cannot check them, and Tesla may have published newer figures since.",
+        "text": "Every figure here is Tesla's own, as an outlet describes it. We have not compared it with Tesla's original report or dashboard (the only thing we recorded from Tesla's safety page is its market list, 26 Oct), so Tesla may have published newer figures since.",
         "sources": [
           "nata-safety",
           "evwire-eu-safety"
@@ -1484,12 +1484,14 @@
         "status": "reported"
       },
       {
-        "text": "Our reading: nothing in the figures as they are reported adjusts for road type, driver or vehicle age, and the groups differ. The U.S. average is every vehicle on the road, the manual group with no active safety is pre-2014 Teslas, and the EU comparison is against Teslas with Active Safety on, not average drivers.",
-        "sources": [],
+        "text": "Our reading: the groups differ and the figures are not adjusted for driver or vehicle age. In the U.S. table the average is every vehicle on the road and the no-active-safety group is pre-2014 Teslas. The EU comparison is against Teslas with Active Safety on, not average drivers, and it mixes road types: EVwire reports 5.1× on highways (3 collisions in 65.5 million km against 137 in 578.1) and 2.7× off them (9 in 36.6 against 490 in 717.6).",
+        "sources": [
+          "evwire-eu-safety"
+        ],
         "status": null
       },
       {
-        "text": "The reports disagree about dates. EVwire says the 4.1× covers customer driving from 10 April to 24 August 2026. Drive Tesla Canada says every dated window in the dashboard shared with EU states in April closes in 2025, and Automotive World's headline calls the newly published data nine months out of date. We could not open the dashboard to settle it.",
+        "text": "The reports disagree about dates. EVwire says the 4.1× covers customer driving from 10 April to 24 August 2026. Drive Tesla Canada says every dated window in the dashboard shared with EU states in April closes in 2025, and Automotive World's headline calls the newly published data nine months out of date. We have not opened the dashboard to settle it.",
         "sources": [
           "evwire-eu-safety",
           "drive-tesla-eu-safety",

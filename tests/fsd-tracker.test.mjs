@@ -41,7 +41,7 @@ test('safety claims: figures add up, are labelled Reported, and promises come fr
   const page=fs.readFileSync('fsd-tracker.html','utf8');
   const safety=page.slice(page.indexOf('id="safety"'),page.indexOf('id="promises"'));
   assert.ok(!safety.includes('ft-chip-disclosed'),'nothing in the safety section is Disclosed');
-  assert.ok(safety.includes('As of 19 Feb 2026')&&safety.includes('In February Tesla reported'),'US figures carry their date');
+  assert.ok(safety.includes('As of 19 Feb 2026')&&safety.includes('By 19 February Tesla had reported'),'US figures carry their date');
   assert.equal((page.match(/class="ft-promise /g)||[]).length,ledger.length,'every ledger entry for the topic is shown');
   assert.ok(page.includes('id="safety"')&&page.includes('id="promises"'));
 });
