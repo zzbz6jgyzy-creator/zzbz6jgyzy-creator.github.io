@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T16:38:23Z",
+ "updated": "2026-10-28T17:30:57Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-28T16:38:23Z",
+  "fetched": "2026-10-28T17:30:57Z",
   "items": [
+   {
+    "t": "2026-10-28T17:06:34Z",
+    "to": "2026.38.3.2",
+    "from": "2026.32.7",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "3.0",
+    "country": "Finland"
+   },
    {
     "t": "2026-10-28T16:07:31Z",
     "to": "2026.38.3.2",
@@ -563,14 +571,6 @@
     "from": "2026.38.5.10",
     "model": "Cybertruck Cyberbeast (2024)",
     "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-28T14:01:37Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model 3 AWD LR (2019)",
-    "hw": "0.0",
     "country": "United States"
    }
   ]
