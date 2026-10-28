@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T12:23:05Z",
+ "updated": "2026-10-28T13:41:49Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
@@ -491,8 +491,40 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-10-28T12:23:05Z",
+  "fetched": "2026-10-28T13:41:49Z",
   "items": [
+   {
+    "t": "2026-10-28T13:13:06Z",
+    "to": "2026.38.3.2",
+    "from": "2026.38.3.1",
+    "model": "Model Y AWD LR (2020)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-28T13:10:54Z",
+    "to": "2026.26.6.3",
+    "from": "2025.44.25.3.1",
+    "model": "Model Y SR (2023)",
+    "hw": "3.0",
+    "country": "Australia"
+   },
+   {
+    "t": "2026-10-28T13:08:54Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model X 100D (2021)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-10-28T12:35:40Z",
+    "to": "2026.38.5.11",
+    "from": "2026.38.5.1",
+    "model": "Model Y Mid-Range (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-10-28T12:19:58Z",
     "to": "2026.38.3.2",
@@ -539,38 +571,6 @@
     "from": "2026.38.5.1",
     "model": "Model S AWD (2026)",
     "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-28T11:30:05Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 SR (2023)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-28T11:17:26Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-10-28T11:08:11Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model 3 SR (2025)",
-    "hw": "4.0",
-    "country": "Japan"
-   },
-   {
-    "t": "2026-10-28T10:56:12Z",
-    "to": "2026.38.3.2",
-    "from": "2026.38.3.1",
-    "model": "Model Y AWD LR (2022)",
-    "hw": "3.0",
     "country": "United States"
    }
   ]
