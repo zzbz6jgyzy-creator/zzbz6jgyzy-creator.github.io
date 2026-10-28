@@ -172,6 +172,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-powershare-120v-outlet.html",
+      "image": "/assets/dispatch/tesla-powershare-charge-port.jpg",
+      "title": "Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you",
+      "summary": "Tesla says every new Model 3, Model Y and Cybertruck can now run tools from the charge port. Which cars qualify, the $80 adapter, and how 2.4 kW compares.",
+      "tag": "Powershare",
+      "date": "2026-10-28T02:36:00Z",
+      "thumb": "/assets/dispatch/tesla-powershare-charge-port-480w.webp"
+    },
+    {
       "url": "/dispatch/latvia-fsd-tenth-eu.html",
       "image": "/assets/og-v2.jpg",
       "title": "Latvia approves Tesla’s supervised FSD, making it 10 EU countries. Here’s what drivers there are getting",
@@ -215,16 +224,7 @@
       "tag": "Earnings",
       "date": "2026-10-22T01:38:03Z",
       "thumb": "/assets/dispatch/tesla-q3-results-hero-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-robotaxi-safety-report-zeros.html",
-      "image": "/assets/dispatch/robotaxi-safety-hero.jpg",
-      "title": "Tesla’s first Robotaxi safety report: 3.1 million miles, zero injuries. What the zeros prove, and what they don’t",
-      "summary": "No injuries, airbag deployments or pedestrians hit in 3.1 million driverless miles. I ran the odds on each zero and put it next to Waymo’s 271 million miles.",
-      "tag": "Robotaxi",
-      "date": "2026-10-21T19:40:28Z",
-      "thumb": "/assets/dispatch/robotaxi-safety-hero-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-10-27T20:52:00Z"
+  "articlesUpdated": "2026-10-28T02:36:00Z"
 }
