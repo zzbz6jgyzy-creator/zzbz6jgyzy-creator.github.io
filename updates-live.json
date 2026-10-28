@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28T09:30:46Z",
+  "updated": "2026-10-28T11:24:52Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3360,
@@ -79,9 +79,9 @@
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 694,
+      "count": 699,
       "fleet": 3360,
-      "percent": 20.7,
+      "percent": 20.8,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -126,21 +126,21 @@
         "MX"
       ],
       "countryCounts": {
-        "US": 657,
+        "US": 662,
         "CA": 33,
         "PR": 2,
         "MX": 2
       },
-      "pending": 107,
+      "pending": 105,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-28T09:26:22Z"
+      "lastSeen": "2026-10-28T11:17:26Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 307,
+      "count": 310,
       "fleet": 3360,
-      "percent": 9.1,
+      "percent": 9.2,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -197,6 +197,7 @@
         "CZ",
         "SE",
         "HU",
+        "JP",
         "IL",
         "AE",
         "PT",
@@ -207,7 +208,6 @@
         "RO",
         "PH",
         "TH",
-        "JP",
         "CO",
         "GR",
         "UA",
@@ -221,7 +221,7 @@
         "TR"
       ],
       "countryCounts": {
-        "US": 99,
+        "US": 100,
         "GB": 39,
         "DE": 21,
         "FR": 18,
@@ -239,6 +239,7 @@
         "CZ": 4,
         "SE": 4,
         "HU": 3,
+        "JP": 3,
         "IL": 2,
         "AE": 2,
         "PT": 2,
@@ -249,7 +250,6 @@
         "RO": 1,
         "PH": 1,
         "TH": 1,
-        "JP": 1,
         "CO": 1,
         "GR": 1,
         "UA": 1,
@@ -262,9 +262,9 @@
         "QA": 1,
         "TR": 1
       },
-      "pending": 68,
+      "pending": 65,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-28T08:52:34Z"
+      "lastSeen": "2026-10-28T11:08:11Z"
     },
     {
       "id": "2026.38.5.5",

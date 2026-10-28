@@ -112,6 +112,36 @@ async def main():
             else:
                 assert await page.locator('.rx-layer.is-active').count() == 1, (tag, 'first picture shows without script')
 
+            # Part 3 chapters: collections, the full-screen viewer, hotspots, systems, physics, comparison, units.
+            if js and mode == 'normal' and theme == 'dark' and width in (390, 1440):
+                await page.evaluate("document.querySelector('#gallery').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-filter=interior]').click()
+                assert await page.locator('.rx-shot:not([hidden])').count() == 2, (tag, 'interior collection')
+                assert '2 pictures in interior' in (await page.locator('#rx-gallery-count').text_content()), tag
+                await page.locator('[data-rx-filter=all]').click()
+                await page.locator('.rx-shot a').first.click()
+                assert await page.locator('#rx-photo-dialog').evaluate('d=>d.open'), (tag, 'viewer opens')
+                await page.keyboard.press('ArrowRight')
+                assert '2 / 15' in (await page.locator('#rx-photo-caption').text_content()), tag
+                await page.keyboard.press('Escape')
+                assert not await page.locator('#rx-photo-dialog').evaluate('d=>d.open'), tag
+                await page.evaluate("document.querySelector('#cockpit').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-hotspot="1"]').click()
+                assert await page.locator('[data-rx-cockpit="1"].is-selected').count() == 1, (tag, 'hotspot selects its card')
+                await page.evaluate("document.querySelector('#tech').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-system=thrust]').click()
+                assert await page.locator('[data-rx-tech-panel=thrust]').is_visible() and not await page.locator('[data-rx-tech-panel=suction]').is_visible(), tag
+                assert (await page.locator('.rx-engineering').get_attribute('data-rx-diagram')) == 'thrust', tag
+                await page.evaluate("document.querySelector('#performance').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-physics="0.59"]').click()
+                assert (await page.locator('#rx-g-value').text_content()).startswith('> 4.6'), (tag, await page.locator('#rx-g-value').text_content())
+                await page.evaluate("document.querySelector('#trims').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-compare=thrust]').click()
+                await page.locator('[data-rx-compare=rocket]').click()
+                assert await page.locator('#rx-compare th[scope=col]').count() == 3, (tag, 'comparison has two trims')
+                await page.locator('[data-rx-unit=metric]').click()
+                assert '483 km' in await page.locator('[data-rx-distance]').text_content(), tag
+
             # Chapter rail: wide screens only, one current chapter.
             if js and width >= 1100:
                 await page.evaluate("document.querySelector('#faq').scrollIntoView({behavior:'instant'})")

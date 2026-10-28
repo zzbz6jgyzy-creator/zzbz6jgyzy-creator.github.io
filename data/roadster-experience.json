@@ -146,10 +146,11 @@
       "id": "revealed",
       "label": "Revealed",
       "value": "15 Oct 2026",
-      "detail": "At SpaceX's McGregor test site near Waco, Texas. The event ran under 30 minutes and gave no price.",
-      "status": "demo",
+      "detail": "Shown at SpaceX's McGregor test site (Engadget), outside Waco, Texas (TechCrunch). The event ran under 30 minutes and gave no price (The Verge).",
+      "status": "reported",
       "sources": [
         "engadget",
+        "techcrunch",
         "verge"
       ],
       "strip": true
@@ -158,11 +159,11 @@
       "id": "run",
       "label": "0 to 60 mph on stage",
       "value": "0.81 s",
-      "detail": "Tesla's claimed time during the event. No independent timing has been published.",
+      "detail": "Tesla's claimed time during the event. We have found no independent timing (as of 28 Oct 2026).",
       "status": "claim",
       "sources": [
         "verge",
-        "run"
+        "techcrunch"
       ],
       "strip": true
     },
@@ -175,7 +176,7 @@
       "sources": [
         "verge",
         "techcrunch",
-        "production"
+        "engadget"
       ],
       "strip": true
     },
@@ -187,7 +188,8 @@
       "status": "reported",
       "sources": [
         "engadget",
-        "autoblog"
+        "autoblog",
+        "techcrunch"
       ],
       "strip": true
     }
@@ -209,6 +211,7 @@
         ],
         "image": "upside-down-ramp",
         "alt": "The Roadster on the inverted section of the ramp during the reveal",
+        "kicker": "The ramp",
         "clip": "ramp"
       },
       {
@@ -223,13 +226,14 @@
         ],
         "image": "ramp-flip",
         "alt": "The Roadster flipping off the top of the ramp, lit by the event lights",
+        "kicker": "The flip",
         "clip": "flip"
       },
       {
         "id": "hop",
         "number": "03",
         "title": "Over a line of Teslas.",
-        "text": "TechCrunch reports the car also used its thrusters to lift itself over a Cybercab, a Cybertruck, a Semi, a Model Y and a Model 3 while moving. Tesla's engineering VP Lars Moravy said the car carries 10 thrusters fed by 600 litres of compressed air, and that the tanks can be recharged.",
+        "text": "TechCrunch reports the car also used its thrusters to lift itself over a Cybercab, a Cybertruck, a Semi, a Model Y and a Model 3 while moving. The Verge says Tesla's engineering VP Lars Moravy called one of the manoeuvres \"a kick flip\".",
         "status": "demo",
         "sources": [
           "techcrunch",
@@ -237,28 +241,29 @@
         ],
         "image": "flight-over-cars",
         "alt": "The Roadster, seen from below, lifting over a line of Tesla vehicles on thruster plumes",
+        "kicker": "The hop",
         "clip": "hop"
       },
       {
         "id": "run",
         "number": "04",
         "title": "0.81 seconds.",
-        "text": "During the event Tesla claimed a 0 to 60 mph run of 0.81 seconds; TechCrunch rounds it to one second. Musk said the production car should improve on it. We have found no independent timing, and the start rules, rollout and surface all change what a time means.",
+        "text": "During the event Tesla claimed a 0 to 60 mph run of 0.81 seconds, which TechCrunch reports as one second. Musk said the production car should improve on it. We have found no independent timing (as of 28 Oct 2026), and the start rules, rollout and surface all change what a time means.",
         "status": "claim",
         "sources": [
           "verge",
-          "techcrunch",
-          "run"
+          "techcrunch"
         ],
         "image": "drag-strip",
         "alt": "The Roadster on the lit drag strip with a running timer on the track",
+        "kicker": "The run",
         "clip": "run"
       },
       {
         "id": "gap",
         "number": "05",
         "title": "And then no price.",
-        "text": "There was no mention of price or release date. Musk said production begins in 2028 and described the demonstrated car as one that will be on the roads. The Verge adds that the company later admitted the flying version would not be road legal.",
+        "text": "There was no mention of price or release date. Musk said production begins in 2028 and, as The Verge quotes him, \"This will be an actual car that's on the roads\", though The Verge adds that the company later admitted it would not be road legal. Tesla says the Rocket trim is \"not approved for public road use\".",
         "status": "target",
         "sources": [
           "verge",
@@ -266,6 +271,7 @@
         ],
         "image": "stage-team",
         "alt": "Tesla engineers and Elon Musk beside the white Roadster on stage",
+        "kicker": "The gap",
         "clip": "drive"
       }
     ]
@@ -283,7 +289,8 @@
         "status": "reported",
         "sources": [
           "engadget",
-          "autoblog"
+          "autoblog",
+          "techcrunch"
         ]
       },
       {
@@ -294,18 +301,19 @@
         "status": "reported",
         "sources": [
           "engadget",
-          "autoblog"
+          "autoblog",
+          "techcrunch"
         ]
       },
       {
         "id": "rocket",
         "label": "Rocket",
         "value": "Invite only",
-        "detail": "The flight-capable trim is invite only, and Tesla's site says it is not approved for public road use.",
+        "detail": "The flight-capable trim is invite only, and Tesla says it is not approved for public road use.",
         "status": "reported",
         "sources": [
           "engadget",
-          "dispatch-reveal"
+          "verge"
         ]
       }
     ],
@@ -343,6 +351,7 @@
       "sources": [
         "engadget",
         "autoblog",
+        "techcrunch",
         "verge"
       ]
     },
@@ -371,13 +380,13 @@
       "sources": [
         "engadget",
         "techcrunch",
-        "dispatch-reveal"
+        "verge"
       ]
     },
     {
       "id": "fast",
       "q": "How fast is it?",
-      "a": "Tesla claims 0 to 60 mph in under 1.6 seconds for Performance, under 0.9 for Thrust and under 0.59 for the Rocket, and claimed 0.81 seconds on stage. Hagerty quotes 0.85 seconds for Thrust and a 0.55-second rollout figure for the Rocket. None of these has been independently tested.",
+      "a": "Tesla claims 0 to 60 mph in under 1.6 seconds for Performance, under 0.9 for Thrust and under 0.59 for the Rocket, and claimed 0.81 seconds on stage. Hagerty quotes 0.85 seconds for Thrust and a 0.55-second rollout figure for the Rocket. We have found no independent test of any of these (as of 28 Oct 2026).",
       "sources": [
         "verge",
         "hagerty",
@@ -396,11 +405,12 @@
     {
       "id": "range",
       "q": "What about range and charging?",
-      "a": "Tesla's published target is more than 300 miles. Hagerty reports a charging target of about 10 minutes from 15 to 80 percent. The battery size and the final range are not published, and no range has been certified.",
+      "a": "Tesla's published target is more than 300 miles. Moravy told Hagerty the charging target is about 10 minutes from 15 to 80 percent. The battery size and the final range are not published, and we know of no certified range (as of 28 Oct 2026).",
       "sources": [
         "techcrunch",
         "verge",
-        "dispatch-hagerty"
+        "dispatch-hagerty",
+        "hagerty"
       ]
     },
     {
@@ -409,14 +419,13 @@
       "a": "Tesla calls Performance \"road ready\", which is its positioning, not a certification. The Rocket carries the line \"Not approved for public road use\" on Tesla's site. Approvals depend on the market and the final configuration.",
       "sources": [
         "techcrunch",
-        "verge",
-        "dispatch-reveal"
+        "verge"
       ]
     },
     {
       "id": "2017",
       "q": "How is it different from the 2017 Roadster?",
-      "a": "In 2017 Tesla promised 0 to 60 mph in 1.9 seconds, over 250 mph, up to 620 miles from a 200 kWh battery, a $200,000 starting price and 2020 deliveries. It is now a two-seater, quoted at more than 300 miles, with production targeted for 2028.",
+      "a": "In 2017 Tesla promised 0 to 60 mph in 1.9 seconds, over 250 mph, up to 620 miles from a 200 kWh battery, a $200,000 starting price and 2020 deliveries. It is now a two-seater (the Rocket seats one), quoted at more than 300 miles, with production targeted for 2028.",
       "sources": [
         "verge",
         "techcrunch",
@@ -426,10 +435,11 @@
     {
       "id": "spacex",
       "q": "What did SpaceX build and what did Tesla build?",
-      "a": "Moravy told Hagerty the battery, powertrain, chassis, body, doors, seats and suction system are Tesla's. The thrust and flight packages were joint development with SpaceX.",
+      "a": "Moravy told Hagerty the battery, powertrain, chassis, body, doors, seats and suction system are Tesla's, and that the thrust and flight packages were joint development with SpaceX. The Verge reported the suction system as supplied by SpaceX, which does not match his account.",
       "sources": [
         "dispatch-hagerty",
-        "hagerty"
+        "hagerty",
+        "verge"
       ]
     }
   ],
@@ -511,7 +521,7 @@
   "engineer": {
     "kicker": "Straight from the engineer",
     "title": "What Lars Moravy<br>told Hagerty.",
-    "lead": "Tesla's VP of Vehicle Engineering walked Hagerty's Henry Catchpole round the car before the reveal. These are his claims, each with its source; none has been tested independently.",
+    "lead": "Tesla's VP of Vehicle Engineering walked Hagerty's Henry Catchpole round the car before the reveal. These are his claims, each with its source. We have found no independent test of any of them (as of 28 Oct 2026).",
     "cards": [
       {
         "id": "drive",
@@ -544,11 +554,12 @@
       {
         "id": "gas",
         "title": "Nitrogen, not fuel",
-        "text": "On Thrust, a 200-litre carbon-wrapped pressure vessel holds nitrogen at up to 10,000 psi and feeds the rear thrusters, which Moravy said produce over 80 kilonewtons. Rocket adds a 400-litre tank and six more thrusters.",
+        "text": "On Thrust, a 200-litre carbon-wrapped pressure vessel holds nitrogen at up to 10,000 psi and feeds the rear thrusters, which Moravy said produce over 80 kilonewtons. Rocket adds a 400-litre tank and six more thrusters. (TechCrunch and The Verge describe the stored gas as compressed air.)",
         "status": "claim",
         "sources": [
           "dispatch-hagerty",
-          "hagerty"
+          "hagerty",
+          "techcrunch"
         ]
       },
       {
@@ -565,7 +576,7 @@
   "performance": {
     "kicker": "The numbers",
     "title": "Every number,<br>and who said it.",
-    "lead": "The claims, targets and reports gathered in one place. A claim is Tesla's word; a target is an aim; a report is an outlet's. None is an independent test, and the one run we saw was a stunt event.",
+    "lead": "The claims, targets and reports gathered in one place. A claim is Tesla's word; a target is an aim; a report is an outlet's. We have found no independent test of any of them (as of 28 Oct 2026), and the one run we saw was a stunt event.",
     "groups": [
       {
         "label": "Speed",
@@ -610,6 +621,7 @@
             "detail": "Tesla's announced target. Hagerty reports a 0.55 s rollout figure, which is not comparable.",
             "status": "target",
             "sources": [
+              "verge",
               "dispatch-reveal",
               "hagerty"
             ]
@@ -618,7 +630,7 @@
             "id": "top",
             "label": "Top speed",
             "value": ">230 mph",
-            "detail": "Tesla's site, as TechCrunch reports it for all three trims. Hagerty gives 210 mph for Performance.",
+            "detail": "Tesla's site, as TechCrunch reports it for all three trims. Our Hagerty report gives 210 mph for Performance.",
             "status": "claim",
             "sources": [
               "techcrunch",
@@ -654,7 +666,7 @@
             "id": "range",
             "label": "Range",
             "value": ">300 mi",
-            "detail": "Tesla's target. The battery size is not published and no range has been certified that we know of.",
+            "detail": "Tesla's target. The battery size is not published, and we know of no certified range (as of 28 Oct 2026).",
             "status": "target",
             "sources": [
               "verge",
@@ -665,7 +677,7 @@
             "id": "charge",
             "label": "Charging",
             "value": "15 to 80%\nin about 10 min",
-            "detail": "A target Hagerty reports, framed around track days.",
+            "detail": "A target Moravy gave Hagerty, framed around track days, as our report relays it.",
             "status": "target",
             "sources": [
               "dispatch-hagerty"
@@ -812,7 +824,7 @@
           "id": "speed",
           "label": "Top speed",
           "then": "Over 250 mph",
-          "now": "Over 230 mph per Tesla's site; Hagerty gives 210 mph for Performance",
+          "now": "Over 230 mph per Tesla's site; our Hagerty report gives 210 mph for Performance",
           "status": "claim",
           "sources": [
             "verge",

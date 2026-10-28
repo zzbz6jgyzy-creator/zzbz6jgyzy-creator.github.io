@@ -44,6 +44,23 @@ test('stage: every step has a loop that is silent, lazy and inline, with WebM fi
   let x=structuredClone(d);x.reveal.steps[0].clip='nope';assert.throws(()=>M.validate(x,studio.sources,clips.clips.map(c=>c.id)),/unknown clip/);
 });
 
+test('part 3 chapters are labelled, sourced and complete',()=>{
+  const html=page();
+  assert.equal((html.match(/class="rx-shot"/g)||[]).length,studio.gallery.length,'every picture is in the reel');
+  assert.equal((html.match(/data-config="/g)||[]).length,3);
+  assert.equal((html.match(/data-rx-system="/g)||[]).length,6);
+  assert.equal((html.match(/class="rx-number"/g)||[]).length,d.performance.groups.flatMap(g=>g.items).length);
+  assert.equal((html.match(/<li><p class="rx-spine-date">/g)||[]).length,d.timeline.events.length);
+  assert.equal((html.match(/<tr><th scope="row">/g)||[]).length,d.timeline.promise.rows.length);
+  // 2028 and every performance time are targets or claims, never results; reported power is Reported.
+  for(const i of d.performance.groups.flatMap(g=>g.items)){assert.ok(!(i.label.includes('0 to 60')&&i.status==='reported'&&i.id!=='thrust'),i.id);}
+  assert.equal(d.performance.groups.flatMap(g=>g.items).find(i=>i.id==='power').status,'reported');
+  assert.equal(d.timeline.events.find(e=>e.id==='2028').status,'target');
+  // The Rocket is never presented as road-ready.
+  assert.ok(html.includes('Not approved for public road use.'));
+  assert.ok(!html.includes('${')&&!html.includes('undefined'));
+});
+
 test('record validates; every figure carries a status, a source and a date',()=>{
   assert.equal(M.validate(d,studio.sources),d);
   for(const s of d.sources)assert.ok(s.checked<=d.reviewed,s.id);
@@ -61,6 +78,9 @@ test('figures match the sources we opened',()=>{
   const all=JSON.stringify(d);
   // Reservation amounts, as Engadget and Autoblog report them.
   assert.ok(all.includes('$5,000 at reservation, then $45,000 within 10 days'));
+  // The Verge's quote of the car-on-the-roads line is exact, and absence claims are dated.
+  assert.ok(all.includes('\\"This will be an actual car that\'s on the roads\\"'));
+  assert.ok(!/No independent timing has been published|None of these has been independently tested|no range has been certified/.test(all),'absence claims are scoped and dated');
   assert.ok(all.includes('$250,000'));
   // The reveal date and the claimed run.
   assert.equal(d.facts.find(f=>f.id==='run').value,'0.81 s');
@@ -108,8 +128,12 @@ test('every chapter in the rail exists on the page, and the existing anchors are
     assert.ok(html.includes(`data-rx-chapter="${c.id}"`),c.id+' chapter marker');
   }
   assert.ok(html.includes('id="top"'),'#top anchor');
-  // These are linked from the menu, the search index and outside pages; PR 3 adds the rest and the swap test checks all of them.
-  for(const id of ['top','video','money'])assert.ok(html.includes(`id="${id}"`),id);
+  // Every Roadster anchor the menu, the search index and outside pages link to must exist, so the swap breaks no link.
+  for(const id of ['top','video','gallery','cockpit','tech','performance','trims','money','timeline','promise','faq','evidence'])assert.ok(html.includes(`id="${id}"`),id);
+  const nav=fs.readFileSync('scripts/nav.json','utf8');
+  for(const m of nav.matchAll(/\/roadster\.html#([a-z]+)/g))assert.ok(html.includes(`id="${m[1]}"`),'menu link #'+m[1]);
+  const pages=JSON.parse(fs.readFileSync('data/pages.json','utf8')).pages;
+  for(const p of pages)if(/^\/roadster\.html#/.test(p.url))assert.ok(html.includes(`id="${p.url.split('#')[1]}"`),'search record '+p.url);
 });
 
 test('the live page and the shared indexes are untouched by the preview',()=>{
@@ -127,4 +151,11 @@ test('images, bundle and styles the preview references exist',()=>{
   const js=fs.readFileSync('roadster-experience.js','utf8');
   assert.ok(js.includes('prefers-reduced-motion')&&js.includes('saveData'),'reduced motion and Save-Data are honoured');
   assert.ok(html.includes('id="rx-motion"'),'a visible control pauses motion (WCAG 2.2.2)');
+  assert.ok(html.indexOf('id="rx-motion"')<html.indexOf('class="rx-hero"'),'the pause control comes first in the tab order');
+  const css=fs.readFileSync('roadster-experience.css','utf8');
+  assert.ok(/html\[data-theme="light"\] \.rx-read :focus-visible\{outline-color:var\(--rx-read-accent\)\}/.test(css),'focus ring keeps contrast on the light reading sections');
+  assert.ok(css.includes('.rx[data-motion=off] .rx-scroll span{animation:none}'),'the pause button stops the scroll cue too');
+  assert.ok(!/<noscript>[^]*<style/.test(html),'no style element inside a body noscript');
+  const ledger=html.match(/class="rx-ledger">[^]*?<\/ul>/)[0];
+  assert.ok(!ledger.includes('tesla.com/roadster')&&!ledger.includes('tesla.com/en_US/roadster'),'the ledger lists only sources the page cites, not Tesla pages we could not open');
 });

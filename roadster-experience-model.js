@@ -25,7 +25,7 @@ function validate(d,studioSources=[],clipIds=null){
  for(const f of d.facts){if(!f.label||!f.value||!f.detail)fail('fact '+f.id);labelled(f,'fact '+f.id);}
  if(d.facts.filter(f=>f.strip).length!==4)fail('the hero strip needs exactly four facts');
  const r=d.reveal;unique(r.steps,'id','reveal steps');if(r.steps.length<3||!r.title||!r.lead)fail('reveal');
- for(const s of r.steps){if(!s.number||!s.title||!s.text||!s.image||!s.alt)fail('reveal step '+s.id);labelled(s,'reveal step '+s.id);if(s.clip&&clipIds&&!clipIds.includes(s.clip))fail('unknown clip '+s.clip+' in reveal step '+s.id);}
+ for(const s of r.steps){if(!s.number||!s.kicker||!s.title||!s.text||!s.image||!s.alt)fail('reveal step '+s.id);labelled(s,'reveal step '+s.id);if(s.clip&&clipIds&&!clipIds.includes(s.clip))fail('unknown clip '+s.clip+' in reveal step '+s.id);}
  const v=d.reservation;unique(v.cards,'id','reservation cards');if(!v.title||!v.lead||!v.note)fail('reservation');
  for(const c of v.cards){if(!c.label||!c.value||!c.detail)fail('reservation card '+c.id);labelled(c,'reservation card '+c.id);}
  v.terms.forEach((t,i)=>{if(!t.text)fail('reservation term '+i);labelled(t,'reservation term '+i);});

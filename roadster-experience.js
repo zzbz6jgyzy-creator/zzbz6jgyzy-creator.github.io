@@ -16,7 +16,7 @@
  const playing=new Set();
  function setMotion(on,persist){
   motion=on;root.dataset.motion=on?'on':'off';
-  if(btn){btn.setAttribute('aria-pressed',String(!on));$('.rx-motion-label',btn).textContent=on?'Pause motion':'Play motion';}
+  if(btn){btn.setAttribute('aria-pressed',String(!on));}
   if(persist)store(on?'on':'off');
   if(!on)$$('[data-rx-clip]').forEach(v=>{v.pause();v.classList.remove('is-playing');playing.delete(v);});
   else visible.forEach(v=>start(v));
@@ -89,7 +89,7 @@
   film.addEventListener('ended',()=>{status.textContent='Film complete. Choose a chapter to replay it.';});
   film.addEventListener('error',()=>{pending=false;active='';cover.hidden=false;status.textContent='The film could not be loaded. Try again, or save it with the link on the right.';});
   film.addEventListener('timeupdate',()=>{let cur=null;$$('[data-rx-chapter-time]').forEach(b=>{if(film.currentTime>=Number(b.dataset.rxChapterTime))cur=b;});$$('[data-rx-chapter-time]').forEach(b=>{if(b===cur)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});});
-  film.addEventListener('volumechange',()=>{const on=!film.muted&&film.volume>0;sound.textContent='Soundtrack: '+(on?'on':'off');sound.setAttribute('aria-pressed',String(on));});
+  film.addEventListener('volumechange',()=>{const on=!film.muted&&film.volume>0;sound.textContent='Soundtrack: '+(on?'on':'off');});
   cover.addEventListener('click',()=>load(film.readyState?film.currentTime:0));
   quality.addEventListener('change',()=>{if(active)load(film.currentTime||0,!film.paused);});
   sound.addEventListener('click',()=>{film.muted=!film.muted;});
