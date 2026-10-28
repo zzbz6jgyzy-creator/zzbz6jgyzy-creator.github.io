@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.3e1d4a0866.js",
-      "bytes": 43597,
+      "file": "/assets/js/core.bundle.62382c256f.js",
+      "bytes": 43614,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -388,8 +388,8 @@
       ]
     },
     "arcade-core": {
-      "file": "/assets/js/arcade-core.bundle.5e5cfe1bf3.js",
-      "bytes": 38199,
+      "file": "/assets/js/arcade-core.bundle.68a4f3a42b.js",
+      "bytes": 38216,
       "sources": [
         "track.js",
         "newsletter.js",

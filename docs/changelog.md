@@ -1,3 +1,9 @@
+## 2026-10-28 — Prominent member navigation
+
+- Added a labelled Members button to the desktop header and moved mobile/tablet account access into a large card directly below search, ahead of Your Daily and the section list.
+- Kept account return links in sync across both entry points and retained the existing Explore shortcut. Compact desktop widths keep Search and Your Daily available as labelled icons so the header fits.
+- Refreshed the shared navigation and affected JavaScript bundles. Verified native links, account return handling and responsive layouts through the navigation and member browser suites.
+
 ## 2026-10-28 — Referral link wording
 
 - The Tesla referral link now reads "Order with my Tesla link" in the site footer, the Gear page band and the referral banner (grow.js). The "Referral link: we may earn a reward" note stays beside every one of them.

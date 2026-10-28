@@ -125,8 +125,9 @@
     if (theme && theme.parentElement !== utilities) utilities.prepend(theme);
     const mobileTheme = sheet.querySelector(".pn-theme-sheet"), mobileUtilities = sheet.querySelector(".ns-mobile-utilities");
     if (mobileTheme && mobileTheme.parentElement !== mobileUtilities) mobileUtilities.append(mobileTheme);
-    const account = sheet.querySelector("[data-ns-account]");
-    if (!account.hasAttribute("data-member-nav")) account.href = "/members.html?return=" + encodeURIComponent(location.pathname + location.search + location.hash);
+    for (const account of document.querySelectorAll("[data-ns-account]")) {
+      if (!account.hasAttribute("data-member-nav")) account.href = "/members.html?return=" + encodeURIComponent(location.pathname + location.search + location.hash);
+    }
   }
   const hint = nav.querySelector("kbd");
   if (hint) hint.textContent = /Mac|iPhone|iPad/.test(navigator.platform) ? "⌘ K" : "Ctrl K";

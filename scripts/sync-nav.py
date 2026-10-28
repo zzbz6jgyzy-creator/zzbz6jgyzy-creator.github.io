@@ -8,7 +8,7 @@ import html, json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CFG = json.loads((ROOT / 'scripts/nav.json').read_text())
-CSS_VERSION = '20261028-studio-1'
+CSS_VERSION = '20261028-members-1'
 CHEVRON = '<svg class="ns-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#ns-icon-chevron"/></svg>'
 ARROW = '<svg class="ns-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#ns-icon-arrow"/></svg>'
 PATHS = {
@@ -83,18 +83,18 @@ def block(navtag):
  {navtag}{symbols}
   <a class="pn-logo" href="/" aria-label="Supercharged Daily home"><img src="/assets/brand/icon-1b-mark.svg" alt="" width="26" height="26"/><img class="pn-word" src="/assets/brand/wordmark.svg" alt="" width="114" height="18"/></a>
   <div class="pn-items">{menus}</div>
-  <div class="pn-utilities"><a class="pn-link pn-search" href="/search.html">{icon('search')}<span>Search</span><kbd aria-hidden="true">⌘ K</kbd></a><a class="pn-link pn-daily" href="/daily.html">{icon('spark')}<span>Your Daily</span></a><a class="pn-sub pn-cta" href="/#newsletter">Free briefing</a></div>
+  <div class="pn-utilities"><a class="pn-link pn-search" href="/search.html" aria-label="Search">{icon('search')}<span>Search</span><kbd aria-hidden="true">⌘ K</kbd></a><a class="pn-link pn-daily" href="/daily.html" aria-label="Your Daily">{icon('spark')}<span>Your Daily</span></a><a class="pn-link pn-members" href="/members.html" data-ns-account>{icon('person')}<span>Members</span></a><a class="pn-sub pn-cta" href="/#newsletter">Free briefing</a></div>
   <a class="pn-menu" href="#pn-sheet" aria-controls="pn-sheet">{icon('menu')}<span>Menu</span></a>
  </nav></div>
  <div class="pn-overlay" data-nav-studio></div>
  <aside class="pn-sheet" id="pn-sheet" data-nav-studio aria-label="Explore Supercharged Daily">
   <div class="pn-sheet-head"><a href="/" aria-label="Supercharged Daily home"><img src="/assets/brand/wordmark.svg" alt="" width="150" height="24"/></a><a class="pn-close" href="#{home}" aria-label="Close menu">{icon('close')}</a></div>
   <form class="ns-mobile-search" action="/search.html" method="get" role="search" aria-label="Search the site"><div class="ns-mobile-search-bar">{icon('search')}<label class="ns-sr" for="ns-mobile-query">Search stories, guides and tools</label><input id="ns-mobile-query" data-ns-query type="search" role="combobox" aria-expanded="false" aria-autocomplete="list" name="q" placeholder="Search stories, guides and tools" autocomplete="off" aria-controls="ns-mobile-results"/><button type="button" class="ns-search-clear" aria-label="Clear search" hidden>{icon('close')}</button><button class="ns-search-submit" type="submit" aria-label="Search">{ARROW}</button></div><p class="ns-search-status" data-sd-status role="status"></p><div id="ns-mobile-results" class="ns-mobile-results" data-sd-hits role="listbox" aria-label="Search results"></div></form>
-  <div class="ns-browse"><a class="pn-daily pn-daily-sheet" href="/daily.html"><span class="ns-daily-mark">{icon('spark')}</span><span><strong>Your Daily</strong><small>Your interests, stories and tools.</small></span>{ARROW}</a>
+  <div class="ns-browse"><a class="ns-mobile-members" href="/members.html" data-ns-account><span class="ns-member-mark">{icon('person')}</span><span><strong>Members</strong><small>Sign in, your profile and discussions.</small></span>{ARROW}</a><a class="pn-daily pn-daily-sheet" href="/daily.html"><span class="ns-daily-mark">{icon('spark')}</span><span><strong>Your Daily</strong><small>Your interests, stories and tools.</small></span>{ARROW}</a>
    <nav class="ns-mobile-categories" aria-label="Explore sections">{mobile_menus}</nav>
    <nav class="pn-shortcuts" aria-label="Quick links"><p>Quick access</p><div>{shortcuts}</div></nav>
   </div>
-  <div class="ns-mobile-utilities"><a href="/members.html" data-ns-account>Member account</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></div>
+  <div class="ns-mobile-utilities"><a href="/about.html">About</a><a href="/contact.html">Contact</a></div>
   <a class="pn-sub pn-sub-sheet pn-cta" href="/#newsletter">Get the free Sunday briefing {ARROW}</a>
  </aside><!--/sd:navigation-->'''
 
@@ -107,7 +107,7 @@ def transform(s):
  if RX.search(s):
   n=re.sub(r'(?<=href="/nav-pill\.css)(?:\?v=[^"]*)?(?=")','?v='+CSS_VERSION,n)
   n=re.sub(r'(?<=src="/nav-pill\.js)(?:\?v=[^"]*)?(?=")','?v='+CSS_VERSION,n)
-  n=re.sub(r'(?<=src="/members\.js)(?:\?v=[^"]*)?(?=")','?v=20261028-navstudio',n)
+  n=re.sub(r'(?<=src="/members\.js)(?:\?v=[^"]*)?(?=")','?v=20261028-membersnav',n)
  return n
 
 if __name__=='__main__':

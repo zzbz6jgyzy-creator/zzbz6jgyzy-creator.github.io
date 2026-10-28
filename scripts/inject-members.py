@@ -8,7 +8,7 @@ ROOT=pathlib.Path(__file__).resolve().parent.parent
 START,END='<!--sd:members-->','<!--/sd:members-->'
 BLOCK='''    <!--sd:members-->
     <link rel="stylesheet" href="/members.css?v=20261022" />
-    <script type="module" src="/members.js?v=20261028-navstudio"></script>
+    <script type="module" src="/members.js?v=20261028-membersnav"></script>
     <!--/sd:members-->'''
 RX=re.compile(r'[ \t]*<!--sd:members-->.*?<!--/sd:members-->\n?',re.S)
 def inject(src):

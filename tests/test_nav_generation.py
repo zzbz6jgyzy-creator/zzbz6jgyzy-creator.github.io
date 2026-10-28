@@ -27,11 +27,13 @@ class NavigationGeneration(unittest.TestCase):
   built=self.build();p=Elements();p.feed(built)
   self.assertEqual(len(p.ids),len(set(p.ids)))
   self.assertEqual(len(p.details),10)
-  for href in ['/updates.html','/fsd-tracker.html','/fsd-europe.html','/cybercab.html','/roadster.html','/daily.html','/see-the-launch.html','/search.html','/guides/tesla-buying-guide.html']:
+  for href in ['/members.html','/updates.html','/fsd-tracker.html','/fsd-europe.html','/cybercab.html','/roadster.html','/daily.html','/see-the-launch.html','/search.html','/guides/tesla-buying-guide.html']:
    self.assertIn(href,p.links)
   self.assertNotIn('role="menu"',built)
   self.assertNotIn(' inert',built)
   self.assertIn('action="/search.html" method="get"',built)
+  self.assertEqual(built.count('data-ns-account'),2)
+  self.assertLess(built.index('class="ns-mobile-members"'),built.index('class="ns-mobile-categories"'))
  def test_five_clear_sections_and_one_mobile_disclosure_level(self):
   cfg=json.loads((ROOT/'scripts/nav.json').read_text())
   self.assertEqual([d['label'] for d in cfg['dropdowns']],['News','Tesla','SpaceX','Trackers','Explore'])
