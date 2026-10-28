@@ -74,7 +74,10 @@ const ledger=[...all.values()].filter(s=>cited.has(s.id)).map(s=>`<li><a href="$
 const changes=`<ol class="rx-changes">${d.changes.map(c=>`<li><time datetime="${c.date}">${fmt(c.date)}</time><span class="rx-kind rx-kind-${c.kind}">${c.kind==='correction'?'Correction':'Update'}</span> ${e(c.text)}</li>`).join('')}</ol>`;
 const legend=`<ul class="rx-legend">${Object.entries({demo:'Tesla showed it happen at the event.',claim:'Tesla said it. Not independently verified.',target:'An aim or a date, not a result.',reported:'An outlet or our own report said it, and we opened the source.',analysis:'Our reading of the facts.'}).map(([k,t])=>`<li>${chip(k)}<span>${t}</span></li>`).join('')}</ul>`;
 const evidence=`<section class="rx-read" id="evidence" data-rx-chapter="evidence" aria-labelledby="evidence-h"><div class="rx-wrap">${head('Evidence','Follow the<br>sources.','Every number on this page carries one of these labels, a source and a date. Tesla\'s own Roadster page blocks our fetcher, so anything we could not open is attributed to the outlet that reported it.').replace('<h2>','<h2 id="evidence-h">')}
-${legend}<div class="rx-split"><div><h3>Sources</h3><ul class="rx-ledger">${ledger}</ul></div><div><h3>What changed on this page</h3>${changes}<p class="rx-note">Reviewed ${fmt(d.reviewed)}. Corrections are shown here, never silently rewritten.</p></div></div>
+${legend}<div class="rx-sources"><h3>Sources</h3><ul class="rx-ledger">${ledger}</ul></div></div></section>`;
+// The changes log and the credit close the page, outside the chapter tabs, so a corrected figure is never hidden in a tab.
+const closing=`<section class="rx-read rx-closing" id="changes" aria-labelledby="changes-h"><div class="rx-wrap"><header class="rx-head rx-head-sub"><p class="rx-kicker">Changes</p><h2 id="changes-h">What changed<br>on this page.</h2></header>
+${changes}<p class="rx-note">Reviewed ${fmt(d.reviewed)}. Corrections are shown here, never silently rewritten.</p>
 <p class="rx-credit">Images and reveal footage © Tesla, credited to the original sources. Film edit and additional sound design: Supercharged Daily. Music: “Legacy” by Scott Buckley (CC BY 4.0). Independent editorial coverage, not affiliated with Tesla or SpaceX. No final vehicle pricing or performance certification is implied.</p></div></section>`;
 
 
@@ -124,6 +127,27 @@ const timelineHtml=`<section class="rx-read rx-timeline" id="timeline" data-rx-c
 <ol class="rx-spine">${tl.events.map(t=>`<li><p class="rx-spine-date">${e(t.label)}</p><div class="rx-spine-card"><h3>${e(t.title)}</h3><p>${e(t.text)}</p>${foot(t)}</div></li>`).join('')}</ol>
 <div class="rx-promise" id="promise">${head(e(pr.kicker),pr.title,e(pr.lead),'rx-head-sub')}<div class="rx-table-wrap" tabindex="0" role="region" aria-label="2017 promises against the 2026 reveal"><table class="rx-table"><thead><tr><th scope="col">What</th><th scope="col">Promised in 2017</th><th scope="col">Said in 2026</th><th scope="col">Label and sources</th></tr></thead><tbody>${pr.rows.map(r=>`<tr><th scope="row">${e(r.label)}</th><td>${e(r.then)}</td><td>${e(r.now)}</td><td>${foot(r)}</td></tr>`).join('')}</tbody></table></div></div></div></section>`;
 
+// ---- Chapter tabs. Below 900 px the script shows one panel at a time; wide screens and no-script readers get every panel in order.
+// Each anchor id the site links to lives in exactly one panel (a test checks it). Labels are short so seven fit a scrolling bar.
+const tabDefs=[
+ {id:'pictures',label:'Pictures',primary:'gallery',html:galleryHtml},
+ {id:'inside',label:'Inside',primary:'cockpit',html:cockpitHtml},
+ {id:'engineering',label:'Engineering',primary:'tech',html:techHtml},
+ {id:'numbers',label:'Numbers',primary:'performance',html:numbersHtml},
+ {id:'models',label:'Models',primary:'trims',html:trimsHtml+'\n'+money},
+ {id:'timeline',label:'Timeline',primary:'timeline',html:timelineHtml},
+ {id:'questions',label:'Questions',primary:'faq',html:faq+'\n'+evidence}];
+const tabBar=tabDefs.map((t,i)=>`<button type="button" role="tab" class="rx-tab" id="rx-tab-${t.id}" aria-controls="rx-panel-${t.id}" aria-selected="${i===0}" tabindex="${i===0?0:-1}" data-rx-tab="${t.id}" data-rx-primary="${t.primary}"><span aria-hidden="true">${String(i+1).padStart(2,'0')}</span>${t.label}</button>`).join('');
+const panelsHtml=tabDefs.map((t,i)=>{const nx=tabDefs[i+1];
+ return `<div class="rx-panel" id="rx-panel-${t.id}" role="tabpanel" aria-labelledby="rx-tab-${t.id}" data-rx-panel="${t.id}">
+${t.html}
+<div class="rx-panel-next"><p class="rx-kicker">Chapter ${i+1} of ${tabDefs.length}</p>${nx?`<button type="button" class="rx-btn rx-btn-next" data-rx-next="${nx.id}">Next: ${nx.label}</button>`:'<a class="rx-btn rx-btn-next rx-btn-up" href="#top">Back to the top</a>'}</div></div>`;}).join('\n');
+const tabsHtml=`<div class="rx-tabs" id="rx-tabs" data-rx-tabs>
+<div class="rx-tabs-intro"><p class="rx-kicker">Keep exploring</p><p class="rx-tabs-title">The rest of the story, one chapter at a time.</p></div>
+<div class="rx-tabbar-wrap"><div class="rx-tabbar" role="tablist" aria-label="Roadster sections">${tabBar}</div></div>
+${panelsHtml}
+</div>`;
+
 const rail=`<nav class="rx-rail" aria-label="Roadster chapters"><ol>${d.chapters.map(c=>`<li><a href="#${c.id}" data-rx-rail="${c.id}"><span>${e(c.label)}</span></a></li>`).join('')}</ol></nav><div class="rx-progress" aria-hidden="true"><i></i></div>`;
 const motion=`<button type="button" class="rx-motion" id="rx-motion" aria-pressed="false"><span class="rx-motion-icon" aria-hidden="true"></span><span class="rx-motion-label">Pause motion</span></button>`;
 
@@ -131,15 +155,8 @@ const nl=(read('roadster-preview.html').match(/<!--nl:start-->[\s\S]*?<!--nl:end
 const main=`<main id="main" class="rx" data-rx>
 ${motion}${rail}${hero}
 ${reveal}
-${galleryHtml}
-${cockpitHtml}
-${techHtml}
-${numbersHtml}
-${trimsHtml}
-${money}
-${timelineHtml}
-${faq}
-${evidence}
+${tabsHtml}
+${closing}
 <script type="application/json" id="rx-data">${JSON.stringify({configs:studio.configs.map(c=>({id:c.id,name:c.name,tag:c.tag,seats:c.seats,target:c.target,availability:c.availability})),tech:studio.tech.map(t=>({id:t.id,name:t.name})),gallery:studio.gallery.map(g=>({id:g.id,group:g.group,title:g.title,description:g.description,alt:g.alt,credit:g.credit,legacy:!!g.legacy}))}).replace(/</g,'\\u003c')}</script>${nl?'\n        '+nl:''}
 </main>`;
 

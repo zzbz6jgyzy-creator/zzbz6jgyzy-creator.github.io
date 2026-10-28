@@ -180,4 +180,70 @@
   f.title='Tesla Roadster Event, full replay (YouTube)';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';
   b.parentElement.appendChild(f);b.hidden=true;f.focus();
  }));
+ // ---- Chapter tabs. At 900 px and below one panel shows at a time; above that, and without script, every panel reads in order.
+ // Panels are hidden only here, after the page has loaded, so nothing is lost if this file does not run. Hidden panels are display:none,
+ // so their pictures stay lazy and the clip observer above sees them leave the screen and stops their loops.
+ const tabsRoot=$('[data-rx-tabs]');
+ if(tabsRoot){
+  const narrow=matchMedia('(max-width: 900px)');
+  const tabs=$$('[role=tab]',tabsRoot),panels=$$('[data-rx-panel]',tabsRoot),bar=$('.rx-tabbar',tabsRoot),intro=$('.rx-tabs-intro',tabsRoot),wrap=$('.rx-tabbar-wrap',tabsRoot);
+  let cur=0;
+  const px=(el,prop)=>parseFloat(getComputedStyle(el)[prop])||0;
+  const jump=y=>window.scrollTo({top:Math.max(0,y),behavior:'instant'});
+  const on=()=>tabsRoot.dataset.rxMode==='tabs';
+  const hashId=()=>{try{return decodeURIComponent(location.hash.slice(1));}catch(e){return '';}};
+  const setHash=h=>{try{history.replaceState(history.state,'',location.pathname+location.search+(h?'#'+h:''));}catch(e){}};
+  const panelOf=el=>panels.findIndex(p=>p.contains(el));
+  // The tab bar's resting place is just under the intro line; scrolling there puts the bar at its stuck position with the panel starting beneath it.
+  const toTabs=()=>jump(intro.getBoundingClientRect().bottom+scrollY-px(wrap,'top'));
+  function select(i,o={}){
+   cur=i;
+   panels.forEach((p,k)=>{p.hidden=k!==i;});
+   tabs.forEach((t,k)=>{t.setAttribute('aria-selected',String(k===i));t.tabIndex=k===i?0:-1;});
+   const t=tabs[i];bar.scrollTo({left:t.offsetLeft-(bar.clientWidth-t.offsetWidth)/2,behavior:'instant'});
+   if(o.write!==false)setHash(t.dataset.rxPrimary);
+   if(o.scroll!==false)toTabs();
+   if(o.focus)t.focus({preventScroll:true});
+  }
+  // Open the tab that holds an id and scroll to it, below the sticky bars. Returns false when the id is not inside a panel.
+  function goTo(id,o={}){
+   const el=id&&document.getElementById(id),i=el?panelOf(el):-1;if(i<0)return false;
+   if(i!==cur)select(i,{scroll:false,write:false});
+   jump(el.getBoundingClientRect().top+scrollY-px(el,'scrollMarginTop'));
+   if(o.focus){if(!el.hasAttribute('tabindex'))el.tabIndex=-1;el.focus({preventScroll:true});}
+   return true;
+  }
+  function apply(){
+   if(narrow.matches){
+    const rect=tabsRoot.getBoundingClientRect(),past=rect.top<0;let i=0;
+    const mid=innerHeight/2,seen=panels.findIndex(p=>{const r=p.getBoundingClientRect();return r.height&&r.top<=mid&&r.bottom>=mid;});
+    tabsRoot.dataset.rxMode='tabs';
+    panels.forEach(p=>{p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby','rx-tab-'+p.dataset.rxPanel);});
+    const id=hashId(),hit=id&&document.getElementById(id);
+    if(hit&&panelOf(hit)>=0)i=panelOf(hit);else if(seen>=0)i=seen;
+    select(i,{scroll:false,write:false});
+    if(hit&&panelOf(hit)>=0)goTo(id);else if(past)toTabs();
+   }else{
+    delete tabsRoot.dataset.rxMode;
+    panels.forEach(p=>{p.hidden=false;p.removeAttribute('role');p.removeAttribute('aria-labelledby');});
+   }
+  }
+  tabs.forEach((t,i)=>t.addEventListener('click',()=>select(i)));
+  bar.addEventListener('keydown',ev=>{
+   const k=ev.key,n=k==='ArrowRight'?(cur+1)%tabs.length:k==='ArrowLeft'?(cur-1+tabs.length)%tabs.length:k==='Home'?0:k==='End'?tabs.length-1:-1;
+   if(n<0||ev.altKey||ev.ctrlKey||ev.metaKey)return;ev.preventDefault();select(n,{focus:true});
+  });
+  $$('[data-rx-next]',tabsRoot).forEach(b=>b.addEventListener('click',()=>select(tabs.findIndex(t=>t.dataset.rxTab===b.dataset.rxNext))));
+  // In-page links (rail, hero buttons, cite and "next" links, search records) open the tab that holds their target. A plain replaceState keeps Back free of traps.
+  document.addEventListener('click',ev=>{
+   if(!on()||ev.defaultPrevented||ev.button||ev.metaKey||ev.ctrlKey||ev.shiftKey||ev.altKey)return;
+   const a=ev.target.closest&&ev.target.closest('a[href*="#"]');if(!a||a.target==='_blank'||a.origin!==location.origin||a.pathname!==location.pathname||!a.hash)return;
+   let id='';try{id=decodeURIComponent(a.hash.slice(1));}catch(e){return;}
+   const el=document.getElementById(id);if(!el||panelOf(el)<0)return;
+   ev.preventDefault();goTo(id,{focus:true});setHash(id);
+  });
+  addEventListener('hashchange',()=>{if(on())requestAnimationFrame(()=>goTo(hashId()));});
+  (narrow.addEventListener?narrow.addEventListener.bind(narrow,'change'):narrow.addListener.bind(narrow))(apply);
+  apply();
+ }
 })();
