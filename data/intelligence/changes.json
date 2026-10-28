@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28T09:39:43.222Z",
+  "updated": "2026-10-28T10:17:50.124Z",
   "changes": [
     {
       "type": "logged",
@@ -170,6 +170,23 @@
       "summary": "Verizon’s CEO put a $300B–$500B, four-to-six-year price on a SpaceX phone network on 26 Oct. Musk replied “2 or 3 years.” What each side said, and the math.",
       "title": "Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3",
       "id": "logged|dispatch:/dispatch/verizon-vs-musk-starlink-mobile.html|2026-10-27T02:36:00.000Z|Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "Reported, not confirmed by SpaceX: Ship 42 completed a six-engine, roughly 60-second full-duration static fire at Massey’s on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time), as reported by NASASpaceflight and logged by Next Spaceflight. It follows the 26 Oct single-engine deorbit-burn demo. SpaceX hasn’t posted about it. Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
+      "at": "2026-10-27T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Next Spaceflight (also reported by NASASpaceflight)",
+      "sourceUrl": "https://www.nextspaceflight.com/starship/hardware/80/",
+      "href": "/starship.html#schedule",
+      "summary": "Reported, not confirmed by SpaceX: Ship 42 completed a six-engine, roughly 60-second full-duration static fire at Massey’s on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time), as reported by NASASpaceflight and logged by Next Spaceflight. It follows the 26 Oct single-engine deorbit-burn demo. SpaceX hasn’t posted about it. Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-10-27T00:00:00.000Z|Reported, not confirmed by SpaceX: Ship 42 completed a six-engine, roughly 60-second full-duration static fire at Massey’s on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time), as reported by NASASpaceflight and logged by Next Spaceflight. It follows the 26 Oct single-engine deorbit-burn demo. SpaceX hasn’t posted about it. Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker)."
     },
     {
       "type": "changed",

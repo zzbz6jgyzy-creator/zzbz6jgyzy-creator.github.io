@@ -33,7 +33,7 @@ export function buildPromiseStudio(root=ROOT){
     // The saved page schema is kept across rebuilds; make sure its Dataset carries the creator and license Google asks for
     let kept=ld;
     try{const j=JSON.parse(ld.replace(/^<script[^>]*>/,'').replace(/<\/script>$/,'')),m=j.mainEntity;
-      if(m&&m['@type']==='Dataset'){m.creator=m.creator||{'@type':'Person',name:'Alex R',url:'https://superchargeddaily.com/author.html',sameAs:['https://x.com/ALJR86']};m.license=m.license||'https://superchargeddaily.com/editorial.html#data';kept='<script type="application/ld+json">'+JSON.stringify(j)+'</script>';}}catch(_){}
+      if(m&&m['@type']==='Dataset'){m.creator=m.creator||{'@type':'Person',name:'Alex R',url:'https://superchargeddaily.com/author.html',sameAs:['https://x.com/ALJR86']};m.license=m.license||'https://superchargeddaily.com/editorial.html#data';m.dateModified=d.updated;kept='<script type="application/ld+json">'+JSON.stringify(j)+'</script>';}}catch(_){}
     html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>kept);
   }
   else{

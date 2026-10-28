@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "editorial": {
     "schemaVersion": 1,
-    "updated": "2026-10-25",
-    "revision": "2026-10-25.1",
+    "updated": "2026-10-28",
+    "revision": "2026-10-28.1",
     "scope": "Tesla Cybercab and Model Y Robotaxi",
     "sources": [
       {
@@ -133,6 +133,14 @@
         "type": "media",
         "checkedAt": null,
         "publishedAt": "2026-07-22"
+      },
+      {
+        "id": "s-771597199b75",
+        "label": "TeslaNorth: Tesla Robotaxi safety report lists four coming-soon cities",
+        "url": "https://teslanorth.com/2026/10/21/tesla-robotaxi-safety-report-four-new-cities/",
+        "type": "media",
+        "publishedAt": "2026-10-21",
+        "checkedAt": "2026-10-28"
       },
       {
         "id": "s-7bb593b2c07d",
@@ -585,6 +593,250 @@
           "s-0cffd265d479",
           "s-ff84ae0cf870"
         ]
+      },
+      {
+        "id": "las_vegas",
+        "name": "Las Vegas",
+        "state": "NV",
+        "stateName": "Nevada",
+        "coordinates": [
+          -115.1398,
+          36.1699
+        ],
+        "robotaxi": {
+          "status": "coming_soon",
+          "evidence": [
+            "s-c9f84c001b2c",
+            "s-771597199b75"
+          ],
+          "date": null,
+          "vehicle": "not_city_specific",
+          "note": "Tesla lists as coming soon on its 21 Oct Robotaxi Safety Report. No launch date."
+        },
+        "cybercab": {
+          "status": "not_listed",
+          "evidence": [
+            "s-0cffd265d479"
+          ],
+          "date": null,
+          "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+        },
+        "supervision": {
+          "status": "unknown",
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "A coming-soon listing is not a supervision configuration."
+        },
+        "hours": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "No operating hours until Tesla lists a launch date. Check Tesla’s app."
+        },
+        "fare": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+        },
+        "airport": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "A coming-soon listing is not confirmation of airport access."
+        },
+        "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-771597199b75"
+        ]
+      },
+      {
+        "id": "jacksonville",
+        "name": "Jacksonville",
+        "state": "FL",
+        "stateName": "Florida",
+        "coordinates": [
+          -81.6557,
+          30.3322
+        ],
+        "robotaxi": {
+          "status": "coming_soon",
+          "evidence": [
+            "s-c9f84c001b2c",
+            "s-771597199b75"
+          ],
+          "date": null,
+          "vehicle": "not_city_specific",
+          "note": "Tesla lists as coming soon on its 21 Oct Robotaxi Safety Report. No launch date."
+        },
+        "cybercab": {
+          "status": "not_listed",
+          "evidence": [
+            "s-0cffd265d479"
+          ],
+          "date": null,
+          "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+        },
+        "supervision": {
+          "status": "unknown",
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "A coming-soon listing is not a supervision configuration."
+        },
+        "hours": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "No operating hours until Tesla lists a launch date. Check Tesla’s app."
+        },
+        "fare": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+        },
+        "airport": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "A coming-soon listing is not confirmation of airport access."
+        },
+        "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-771597199b75"
+        ]
+      },
+      {
+        "id": "phoenix",
+        "name": "Phoenix",
+        "state": "AZ",
+        "stateName": "Arizona",
+        "coordinates": [
+          -112.074,
+          33.4484
+        ],
+        "robotaxi": {
+          "status": "coming_soon",
+          "evidence": [
+            "s-c9f84c001b2c",
+            "s-771597199b75"
+          ],
+          "date": null,
+          "vehicle": "not_city_specific",
+          "note": "Tesla lists as coming soon on its 21 Oct Robotaxi Safety Report. No launch date."
+        },
+        "cybercab": {
+          "status": "not_listed",
+          "evidence": [
+            "s-0cffd265d479"
+          ],
+          "date": null,
+          "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+        },
+        "supervision": {
+          "status": "unknown",
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "A coming-soon listing is not a supervision configuration."
+        },
+        "hours": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "No operating hours until Tesla lists a launch date. Check Tesla’s app."
+        },
+        "fare": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+        },
+        "airport": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "A coming-soon listing is not confirmation of airport access."
+        },
+        "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-771597199b75"
+        ]
+      },
+      {
+        "id": "san_antonio",
+        "name": "San Antonio",
+        "state": "TX",
+        "stateName": "Texas",
+        "coordinates": [
+          -98.4936,
+          29.4241
+        ],
+        "robotaxi": {
+          "status": "coming_soon",
+          "evidence": [
+            "s-c9f84c001b2c",
+            "s-771597199b75"
+          ],
+          "date": null,
+          "vehicle": "not_city_specific",
+          "note": "Tesla lists as coming soon on its 21 Oct Robotaxi Safety Report. No launch date."
+        },
+        "cybercab": {
+          "status": "not_listed",
+          "evidence": [
+            "s-0cffd265d479"
+          ],
+          "date": null,
+          "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+        },
+        "supervision": {
+          "status": "unknown",
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "A coming-soon listing is not a supervision configuration."
+        },
+        "hours": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "No operating hours until Tesla lists a launch date. Check Tesla’s app."
+        },
+        "fare": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
+        },
+        "airport": {
+          "value": null,
+          "evidence": [
+            "s-771597199b75"
+          ],
+          "note": "A coming-soon listing is not confirmation of airport access."
+        },
+        "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-771597199b75"
+        ]
       }
     ],
     "events": [
@@ -696,6 +948,27 @@
           "s-6e3ef17542df"
         ],
         "type": "manufacturer"
+      },
+      {
+        "id": "coming-soon-cities",
+        "date": "2026-10-21",
+        "precision": "day",
+        "city": null,
+        "vehicle": "all",
+        "kind": "announcement",
+        "title": "Tesla lists four cities as coming soon",
+        "summary": "Tesla’s 21 Oct Robotaxi Safety Report lists Las Vegas, Jacksonville, Phoenix and San Antonio as coming soon. No launch dates. TeslaNorth is the opened source; tesla.com/robotaxi/safety returned 403 to our fetcher.",
+        "evidence": [
+          "s-c9f84c001b2c",
+          "s-771597199b75"
+        ],
+        "type": "media",
+        "cities": [
+          "las_vegas",
+          "jacksonville",
+          "phoenix",
+          "san_antonio"
+        ]
       }
     ],
     "companyClaims": [

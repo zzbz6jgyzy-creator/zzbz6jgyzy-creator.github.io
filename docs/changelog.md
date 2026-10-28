@@ -4,6 +4,17 @@
 
 # Changelog
 
+## 28 Oct 2026 — Freshness audit: dates, launch merge, Robotaxi cities
+
+- **Launches:** the hourly refresh no longer lets the cached file overwrite a later Launch Library 2 NET when status is unchanged (Starlink 15-21 → 02:35 UTC). Regression test in `tests/calendar-launch-import.py`.
+- **Starship:** Ship 42 six-engine static fire (27 Oct, about 21:46 Irish time, reported) on the Flight 15 record; Flight 16 keeps December, reported, and adds FAA NET 10 Dec 2026 plus NSF late-January 2027 for the first Florida flight.
+- **Grok Bot:** changelog checked through v0.77.0 (26 Oct).
+- **Dispatch:** dated Update notes on the CRS-35, earnings-week and Roadster-thruster previews; article blurbs no longer read as still upcoming. Lock-up outcome not stated.
+- **Robotaxi:** Las Vegas, Jacksonville, Phoenix and San Antonio listed as Tesla coming soon (21 Oct safety report, via TeslaNorth).
+- **FSD global:** HW3 v14.3 Lite pointed at 2026.38.5.11, the most widespread Teslascope build on 28 Oct.
+- **Promises:** Flight 15 ledger gets the 25 Oct B22 33-engine fire and the 26–27 Oct Ship 42 static fires; “add your car to the fleet in 2026” gets Elluswamy’s Q3 “somewhere around Q2 next year” line (TeslaNorth). Status left In progress. The Promise Tracker builder now stamps JSON-LD `dateModified` from the ledger.
+- **CI:** push-triggered Rebuild JS bundles uses its own concurrency group so `data-push-main` cannot cancel it.
+
 ## 28 Oct 2026 — FSD tracker, part 5b (menu)
 
 - **Menu:** "FSD by the numbers" (badge New) added under Tesla, Software & autonomy, in the desktop and phone menus, from `scripts/nav.json` via `scripts/sync-nav.py`. Every page's menu block is regenerated, so the diff is the same block on about 160 pages.
