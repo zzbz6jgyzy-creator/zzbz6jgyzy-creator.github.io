@@ -111,13 +111,15 @@ async def main():
                 assert await page.locator('.rx-layer.is-active').count() == 1, tag
             else:
                 assert await page.locator('.rx-layer.is-active').count() == 1, (tag, 'first picture shows without script')
+                assert await page.locator('.rx-tech-panel:visible').count() == 6, (tag, 'every engineering panel reads without script')
+                assert await page.locator('.rx-filters:visible,.rx-system-buttons:visible,.rx-hotspots:visible,[data-rx-compare]:visible').count() == 0, (tag, 'script-only controls are hidden without script')
 
             # Part 3 chapters: collections, the full-screen viewer, hotspots, systems, physics, comparison, units.
             if js and mode == 'normal' and theme == 'dark' and width in (390, 1440):
                 await page.evaluate("document.querySelector('#gallery').scrollIntoView({behavior:'instant'})")
                 await page.locator('[data-rx-filter=interior]').click()
                 assert await page.locator('.rx-shot:not([hidden])').count() == 2, (tag, 'interior collection')
-                assert '2 pictures in interior' in (await page.locator('#rx-gallery-count').text_content()), tag
+                assert '2 pictures in Interior' in (await page.locator('#rx-gallery-count').text_content()), tag
                 await page.locator('[data-rx-filter=all]').click()
                 await page.locator('.rx-shot a').first.click()
                 assert await page.locator('#rx-photo-dialog').evaluate('d=>d.open'), (tag, 'viewer opens')

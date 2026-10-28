@@ -51,9 +51,28 @@
   chapters.forEach(c=>cio.observe(c));
  }
  if(!(window.CSS&&CSS.supports&&CSS.supports('animation-timeline: scroll()'))){
-  const bar=$('.rx-progress i');let tick=false;
-  const upd=()=>{tick=false;const h=document.documentElement.scrollHeight-innerHeight;if(bar)bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';};
+  const bar=$('.rx-progress i'),hero=$('.rx-hero');let tick=false;
+  const upd=()=>{tick=false;const h=document.documentElement.scrollHeight-innerHeight;if(bar)bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';
+   if(hero&&motion)hero.style.setProperty('--rx-hp',Math.min(1,Math.max(0,scrollY/innerHeight)).toFixed(3));};
   addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});upd();
+ }
+
+ // ---- Reveal on scroll where CSS view() timelines are missing, and the count-up on the hero numbers. Both are skipped when motion is off.
+ if(motion&&'IntersectionObserver'in window){
+  if(!(window.CSS&&CSS.supports&&CSS.supports('animation-timeline: view()'))){
+   const els=$$('.rx-fact,.rx-card,.rx-number,.rx-config,.rx-cockpit-card,.rx-engineer-card,.rx-spine li,.rx-head,.rx-faq details,.rx-physics');
+   const rio=new IntersectionObserver(items=>items.forEach(i=>{if(i.isIntersecting){i.target.classList.add('rx-in');rio.unobserve(i.target);}}),{rootMargin:'0px 0px -8% 0px'});
+   els.forEach(e=>{if(e.getBoundingClientRect().top>innerHeight*.9){e.classList.add('rx-pre');rio.observe(e);}});root.classList.add('rx-js-in');
+  }
+  const nio=new IntersectionObserver(items=>items.forEach(i=>{
+   if(!i.isIntersecting)return;const el=i.target;nio.unobserve(el);if(!motion)return;
+   const m=el.textContent.match(/^(\D*?)([\d,]+(?:\.\d+)?)(.*)$/);if(!m)return;
+   const end=parseFloat(m[2].replace(/,/g,'')),dec=(m[2].split('.')[1]||'').length,comma=m[2].includes(','),t0=performance.now(),full=el.textContent;
+   const fmt=n=>comma?n.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec}):n.toFixed(dec);
+   const tick=t=>{const k=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-k,3);el.textContent=k<1?m[1]+fmt(end*e)+m[3]:full;if(k<1&&motion)requestAnimationFrame(tick);else el.textContent=full;};
+   requestAnimationFrame(tick);
+  }),{threshold:.6});
+  $$('[data-rx-count]').forEach(el=>nio.observe(el));
  }
 
  // ---- The pinned stage: the picture follows the step that is in the middle of the screen.
@@ -108,7 +127,7 @@
  let group='all';
  const visibleShots=()=>shots.filter(s=>!s.hidden);
  function filter(next){group=next;shots.forEach(s=>{s.hidden=next!=='all'&&s.dataset.rxGroup!==next;});filters.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rxFilter===next)));
-  const n=visibleShots().length;const c=$('#rx-gallery-count');if(c)c.textContent=n+' picture'+(n===1?'':'s')+(next==='all'?'':' in '+next);if(reel)reel.scrollTo({left:0,behavior:'auto'});}
+  const n=visibleShots().length;const c=$('#rx-gallery-count');if(c)c.textContent=n+' picture'+(n===1?'':'s')+(next==='all'?'':' in '+({exterior:'Exterior',interior:'Interior',engineering:'Engineering',reveal:'The reveal'}[next]||next));if(reel)reel.scrollTo({left:0,behavior:'auto'});}
  filters.forEach(b=>b.addEventListener('click',()=>filter(b.dataset.rxFilter)));
  $$('[data-rx-reel]').forEach(b=>b.addEventListener('click',()=>{if(!reel)return;const w=(visibleShots()[0]||{offsetWidth:600}).offsetWidth+24;reel.scrollBy({left:Number(b.dataset.rxReel)*w,behavior:motion?'smooth':'auto'});}));
  const dialog=$('#rx-photo-dialog'),big=$('#rx-photo-image');let opener=null,at=0;
@@ -131,6 +150,7 @@
  const systems=$$('[data-rx-system]'),panels=$$('[data-rx-tech-panel]'),eng=$('.rx-engineering');
  function system(id,focus){panels.forEach(p=>{p.hidden=p.dataset.rxTechPanel!==id;});systems.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rxSystem===id)));if(eng)eng.dataset.rxDiagram=id;
   const t=data.tech.find(x=>x.id===id),n=$('#rx-system-name');if(t&&n)n.textContent=t.name;if(focus)systems.find(b=>b.dataset.rxSystem===id).focus();}
+ if(systems.length)system(systems[0].dataset.rxSystem);
  systems.forEach((b,i)=>{b.addEventListener('click',()=>system(b.dataset.rxSystem));b.addEventListener('keydown',ev=>{let n=i;if(ev.key==='ArrowRight'||ev.key==='ArrowDown')n=(i+1)%systems.length;else if(ev.key==='ArrowLeft'||ev.key==='ArrowUp')n=(i-1+systems.length)%systems.length;else return;ev.preventDefault();system(systems[n].dataset.rxSystem,true);});});
 
  // The physics behind the stage run: average acceleration from elapsed time, plain arithmetic.

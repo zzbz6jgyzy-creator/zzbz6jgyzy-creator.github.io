@@ -9,13 +9,23 @@ A dark, cinematic scroll page that will replace `/roadster.html`. While it is be
 - `data/roadster-experience.json`: the new facts, reveal steps, reservation terms, questions, chapters, change log and the sources opened for them. Validated by `roadster-experience-model.js`.
 - `data/roadster-studio.json` and `data/roadster-media.json`: the shared editorial record and media provenance (gallery, engineering, configurations, film). The experience reads them; it does not change them.
 - `scripts/build-roadster-experience.mjs`: writes only `roadster-preview.html` (title, meta, JSON-LD and `<main>`). The shell (menu, footer, bundles) lives in the page itself.
-- `roadster-experience.css` (scoped to `.rx`) and `roadster-experience.js` (own bundle `roadster-x`). Bump the `?v=` on the stylesheet link in the page when the CSS changes, and run `sh scripts/rebuild-js.sh` after changing the JS.
+- `roadster-experience.css` (scoped to `.rx`) and `roadster-experience.js` (own bundle `roadster-x`). The builder rewrites the `?v=` on the stylesheet link from a hash of the CSS file; run `sh scripts/rebuild-js.sh` after changing the JS.
 - Tests: `tests/roadster-experience.test.mjs` and `tests/roadster-experience-browser.py`; CI: `.github/workflows/roadster-experience-checks.yml`.
+
+## Chapters (part 3) and the validator
+
+Chapters, in page order: hero and fact strip (`#top`), the pinned reveal (`#video`) and the film, every angle (`#gallery`, the reel and full-screen viewer), inside (`#cockpit`, hotspots), engineering (`#tech`, six systems and the diagram from `scripts/roadster-experience-art.mjs`), the numbers (`#performance`, with the g-force illustration), three trims (`#trims`), the money (`#money`), the wait (`#timeline`), questions (`#faq`) and evidence (`#evidence`). Everything reads without script: the engineering panels are all visible, and script-only controls (collections, arrows, hotspots, system buttons, comparison, units) are hidden until the script runs.
+`roadster-experience-model.js` fails the build when: a source id is duplicated or unknown, a source is not https or is checked after the review date; an item has no label or no source; a Reported item cites no reporting or own report; the hero strip does not have exactly four facts; a reveal step names an unknown clip; hotspots and cockpit cards differ in number; numbers, timeline events or promise rows lack ids, labels or a status; the change log is out of order, dated after the review or not an update or correction.
+`data/roadster-colors.json` holds one average colour per gallery and reveal picture (made once with Pillow from the 480 px files); it is the placeholder tint shown until a lazy picture arrives.
+
+## Look and feel (the cinematic pass)
+
+The hero is the studio still `world` (night, doors up, rear wing) full bleed with a vignette and film grain (a small inline SVG noise tile, no image request); the flight loop is blended in softly at the bottom only. Scroll drift, the hero fade and the reveal-on-scroll use CSS scroll-driven animations (`animation-timeline`), with small IntersectionObserver fallbacks in the JS. The site header on this page is dark glass in both themes (rules under `.rx-page`, so no other page changes). Hero numbers count up once when motion is on. The stage shows a quiet progress mark (CSS `:has()` on the active layer).
 
 ## Video loops
 
 The stage loops are silent, 12 seconds or less, faded in and out, and cut from Tesla's official event video on Tesla's public video CDN (`data/roadster-clips.json` pins the source by SHA-256 and lists every segment and output checksum). The 101 MB source is never committed.
-`python3 scripts/make-roadster-clips.py --source /tmp/roadster-clips/event.mp4` rebuilds them (ffmpeg; Pillow for the posters); `--check` verifies the committed files. Each clip is written as WebM (VP9) and MP4 (H.264) at 1280 px and 720 px. A visitor downloads one format at one size, so the budget is per set: 5 MB for a whole set, 1 MB per file. The source is 720p, so there is no 1080p version: we do not upscale.
+`python3 scripts/make-roadster-clips.py --source /tmp/roadster-clips/event.mp4` rebuilds them (ffmpeg); `--check` verifies the committed files. Each clip is written as WebM (VP9) and MP4 (H.264) at 1280 px and 720 px. A visitor downloads one format at one size, so the budget is per set: 5 MB for a whole set, 1 MB per file. The source is 720p, so there is no 1080p version: we do not upscale.
 Each step's loop plays only while its step is the active one, and the next loop is fetched one step ahead. The footage is credited on the page and linked to the original.
 
 ## Labels (keep them honest)
