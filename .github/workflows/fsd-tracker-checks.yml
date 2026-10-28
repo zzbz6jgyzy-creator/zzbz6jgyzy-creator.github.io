@@ -9,7 +9,6 @@ on:
       - 'data/fsd-global.json'
       - 'data/fsd-europe.json'
       - 'data/promises.json'
-      - 'my-tesla-data.js'
       - 'fsd-global-model.js'
       - 'assets/world-land.svg'
       - 'assets/world-countries.svg'

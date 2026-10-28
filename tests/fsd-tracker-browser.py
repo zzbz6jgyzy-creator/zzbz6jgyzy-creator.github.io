@@ -64,22 +64,39 @@ async def main():
             assert (await page.locator('#ft-pick').is_visible()) == (mode != 'nojs' and mode != 'blocked-js'), (tag, 'picker needs script')
             # One Save image button per drawn chart, only with script.
             assert await page.locator('.ft-save').count() == (5 if mode == 'normal' else 0), tag
+            for card in await page.locator('.ft-fig:has(.ft-save)').all():
+                src = (await card.locator('figcaption, .ft-event-foot').first.inner_text()).strip()
+                assert len(src) > 20, (tag, 'every share image has a source line', src)
             if mode == 'normal' and width == 1440 and theme == 'dark':
                 async with page.expect_download() as dl:
-                    await page.locator('#adoption .ft-save').click()
+                    await page.locator('#adoption .ft-save').focus()
+                    await page.keyboard.press('Enter')
+                assert await page.evaluate("document.activeElement.classList.contains('ft-save')"), (tag, 'keyboard focus stays on the button')
+                await page.wait_for_function("document.querySelector('#adoption .ft-save-msg').textContent==='Image saved'")
                 png = Path(await (await dl.value).path()).read_bytes()
                 assert png[:8] == b'\x89PNG\r\n\x1a\n' and int.from_bytes(png[16:20], 'big') == 1200 and int.from_bytes(png[20:24], 'big') == 630, (tag, 'share image is a 1200x630 PNG')
             if mode == 'normal' and width == 390 and theme == 'dark':
-                await page.evaluate('''localStorage.setItem('sd-my-tesla-garage-v2', JSON.stringify({schema:2,activeId:'a',cars:[{id:'a',model:'Y',year:2024,cc:'NL'}]}));localStorage.removeItem('sd-fsd-country')''')
+                def garage(car):
+                    return "localStorage.setItem('sd-my-tesla-garage-v2', JSON.stringify({schema:2,activeId:'a',cars:[" + car + "]}));localStorage.removeItem('sd-fsd-country')"
+                # Owner-confirmed computer is echoed as entered; no FSD eligibility is asserted.
+                await page.evaluate(garage("{id:'a',model:'S',year:2018,cc:'NL',hw:'hw25'}"))
                 await page.reload(wait_until='domcontentloaded')
                 await page.wait_for_timeout(300)
                 assert await page.locator('#ft-pick-sel').input_value() == 'NL', (tag, 'country comes from the saved car')
-                assert 'HW4' in await page.locator('#ft-car-out').inner_text(), tag
-                await page.select_option('#ft-pick-sel', 'DE')
-                assert 'Germany' in await page.locator('#ft-pick-out').inner_text(), tag
+                car = await page.locator('#ft-car-out').inner_text()
+                assert 'HW2.5' in car and 'as you confirmed' in car and 'lists FSD' not in car, (tag, car)
+                # No confirmed computer: say so, never guess from the year.
+                await page.evaluate(garage("{id:'a',model:'Y',year:2023,cc:'DE'}"))
                 await page.reload(wait_until='domcontentloaded')
                 await page.wait_for_timeout(300)
-                assert await page.locator('#ft-pick-sel').input_value() == 'DE', (tag, 'country is remembered')
+                car = await page.locator('#ft-car-out').inner_text()
+                assert 'not confirmed' in car and 'HW3' not in car and 'HW4' not in car, (tag, car)
+                # A hostile garage record must not break the rest of the script.
+                await page.evaluate(garage("{id:'a',model:'constructor',year:2023,cc:'DE',hw:'toString'}"))
+                await page.reload(wait_until='domcontentloaded')
+                await page.wait_for_timeout(300)
+                assert not await page.locator('#ft-car').is_visible() and await page.locator('.ft-save').count() == 5, (tag, 'hostile garage')
+                await page.evaluate("localStorage.removeItem('sd-my-tesla-garage-v2')")
             assert not errors, (tag, errors)
             # The table view is a native <details>, so it works with no script.
             await page.locator('#adoption .ft-table-view summary').click()

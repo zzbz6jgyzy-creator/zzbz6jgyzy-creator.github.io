@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createRequire} from 'node:module';
 import {execFileSync} from 'node:child_process';
-import vm from 'node:vm';
 const require=createRequire(import.meta.url),M=require('../fsd-tracker-model.js');
 const d=JSON.parse(fs.readFileSync('data/fsd-tracker.json','utf8'));
 const src=Object.fromEntries(d.sources.map(s=>[s.id,s]));
@@ -71,16 +70,14 @@ test('RSS feed, share image, refresh table, country picker and newsletter band a
   assert.ok(/fsd-tracker-2026-10-28-[0-9a-f]{8}/.test(fs.readFileSync('fsd-tracker-feed.xml','utf8')));
 });
 
-test('my car and cross-links: hardware table comes from My Tesla, and the FSD pages link here',()=>{
+test('my car shows only what the owner entered in My Tesla: no embedded hardware table, hidden until script finds a car',()=>{
   const page=fs.readFileSync('fsd-tracker.html','utf8');
-  const hw=JSON.parse(page.match(/<script type="application\/json" id="ft-hw">(.*?)<\/script>/)[1]);
-  const ctx={window:{}};vm.runInNewContext(fs.readFileSync('my-tesla-data.js','utf8'),ctx);
-  const MT=JSON.parse(JSON.stringify(ctx.window.MY_TESLA)); // out of the vm realm, so deepEqual compares plain arrays
-  assert.deepEqual(Object.keys(hw.models),MT.models.map(m=>m.id));
-  for(const m of MT.models)assert.deepEqual(hw.models[m.id].hw.map(h=>h.label),m.hw.map(h=>h.label),m.id);
-  assert.deepEqual(hw.fsdHw,MT.features.find(f=>f.id==='fsd').hw);
-  assert.ok(page.includes('id="ft-car" hidden'),'the car line stays hidden until a saved car is found');
-  for(const f of ['fsd.html','fsd-europe.html'])assert.ok(fs.readFileSync(f,'utf8').includes('href="/fsd-tracker.html">'),f+' links to this page');
+  assert.ok(!page.includes('id="ft-hw"'),'no year-to-hardware table: My Tesla never guesses hardware from the year');
+  assert.ok(page.includes('id="ft-car" hidden')&&page.includes('We do not guess hardware from the model year'));
+  const js=fs.readFileSync('fsd-tracker.js','utf8');
+  assert.ok(js.includes('Object.hasOwn(NAMES,car.model)')&&!js.includes('my-tesla-data'),'reads the live garage record only');
+  assert.ok(/data-share-title="Where Tesla lists FSD \(Supervised\)"/.test(page),'the map image is titled as a Tesla list, not as availability');
+  assert.ok(page.includes('What is counted: EU states whose national authority recognised the Dutch RDW approval'),'the recognitions chart has its own source line');
 });
 
 test('validator rejects bad data',()=>{

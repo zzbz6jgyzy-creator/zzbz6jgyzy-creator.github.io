@@ -2,9 +2,9 @@
 
 ## 28 Oct 2026 — FSD tracker, part 5c (finishing step 5)
 
-- **Save image:** each drawn chart (adoption, miles, software lines, map, EU recognitions) gets a "Save image" button that makes a 1200x630 PNG with the title, key and source line, from the chart already on the page. No library.
-- **My car:** the country picker reads the car saved in My Tesla on the same device (read only), fills its country and shows My Tesla's year-to-hardware estimate and FSD note, taken from `my-tesla-data.js` at build time so the two pages agree.
-- **Cross-links:** the global FSD tracker and FSD Europe now link to FSD by the numbers (through their own view files and builders).
+- **Save image:** each drawn chart (adoption, miles, software lines, map with the Europe inset, EU recognitions) gets a "Save image" button that makes a 1200x630 PNG: title, the card's own description (units, sample, dates), the chart, key and source line. A card only gets the button if it has a source line. The map image is titled "Where Tesla lists FSD (Supervised)" with the "a listing is not a legal approval" note. No library; the button keeps keyboard focus and announces the result.
+- **My car:** the country picker reads the car saved in My Tesla on the same device (read only). It fills the country and echoes the model, year and the computer the owner confirmed in My Tesla (or says it is not confirmed). It never infers hardware from the model year and makes no claim about FSD eligibility, matching My Tesla.
+- **Cross-links:** the global FSD tracker and FSD Europe now link to FSD by the numbers (through their own view files and builders; their tests assert the link).
 
 ## 28 Oct 2026 — FSD tracker, part 5b (menu)
 

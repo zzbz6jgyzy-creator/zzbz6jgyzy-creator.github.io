@@ -140,3 +140,4 @@ html .ft .sd-band input[type=email],html[data-theme="light"] .ft .sd-band input[
 html .ft .sd-band .sd-fine,html[data-theme="light"] .ft .sd-band .sd-fine{color:#a6aeba!important}
 .ft-car{margin-top:16px;padding-top:14px;border-top:1px solid var(--ft-line)}.ft-car h4{margin:0 0 6px;font-size:.92rem}.ft-car p{margin:0;font-size:.9rem;color:#d5dbe4}.ft-car .ft-event-foot{margin-top:8px;color:var(--ft-muted)}
 .ft-save{margin-top:14px;min-height:32px;padding:6px 14px;border:1px solid #6b7788;border-radius:999px;background:transparent;color:#e8ecf2;font:500 .72rem var(--ft-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.ft-save:hover{border-color:#e8ecf2}.ft-save:focus-visible{outline:2px solid var(--ft-teal);outline-offset:2px}.ft-save:disabled{opacity:.6;cursor:progress}
+.ft-save-msg{margin-left:12px;font:500 .72rem var(--ft-mono);color:var(--ft-teal)}.ft-save[aria-disabled=true]{opacity:.6;cursor:progress}
