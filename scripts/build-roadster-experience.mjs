@@ -7,6 +7,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
+import {anatomy} from './roadster-experience-art.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
 const load=f=>{const c={};vm.createContext(c);vm.runInContext(read(f),c);return c;};
 const S=load('roadster-studio-model.js').RoadsterStudio,M=createRequire(import.meta.url)('../roadster-experience-model.js'),e=M.esc;
@@ -73,6 +74,53 @@ const evidence=`<section class="rx-read" id="evidence" data-rx-chapter="evidence
 ${legend}<div class="rx-split"><div><h3>Sources</h3><ul class="rx-ledger">${ledger}</ul></div><div><h3>What changed on this page</h3>${changes}<p class="rx-note">Reviewed ${fmt(d.reviewed)}. Corrections are shown here, never silently rewritten.</p></div></div>
 <p class="rx-credit">Images and reveal footage © Tesla, credited to the original sources. Film edit and additional sound design: Supercharged Daily. Music: “Legacy” by Scott Buckley (CC BY 4.0). Independent editorial coverage, not affiliated with Tesla or SpaceX. No final vehicle pricing or performance certification is implied.</p></div></section>`;
 
+
+// ---- Every angle: a horizontal reel of the pictures, with collections and a full-screen viewer
+const groupName={exterior:'Exterior',interior:'Interior',engineering:'Engineering',reveal:'The reveal'};
+const photo=g=>picture(g.id,g.alt,{folder:g.legacy?'roadster':'roadster-studio',sizes:'(max-width: 700px) 84vw, 62vw'});
+const shots=studio.gallery.map((g,i)=>`<li class="rx-shot" data-rx-group="${g.group}"><a class="rx-shot-link" href="/assets/${g.legacy?'roadster':'roadster-studio'}/${g.id}-1920w.webp" data-rx-photo="${i}" aria-label="Open ${e(g.title)} full screen">${photo(g)}<span class="rx-shot-open" aria-hidden="true">Open</span></a><div class="rx-shot-cap"><p class="rx-kicker">${e(groupName[g.group])} / ${String(i+1).padStart(2,'0')}</p><h3>${e(g.title)}</h3><p>${e(g.description)}</p><small>${e(g.credit)} · ${cite(g.source)}</small></div></li>`).join('');
+const galleryHtml=`<section class="rx-gallery" id="gallery" data-rx-chapter="gallery" aria-labelledby="gallery-h"><div class="rx-wrap">${head(e(d.gallery.kicker),d.gallery.title,e(d.gallery.lead)).replace('<h2>','<h2 id="gallery-h">')}
+<div class="rx-gallery-bar"><div class="rx-filters" role="group" aria-label="Picture collections">${[['all','All'],['exterior','Exterior'],['interior','Interior'],['engineering','Engineering'],['reveal','The reveal']].map(([id,name])=>`<button type="button" data-rx-filter="${id}" aria-pressed="${id==='all'}">${name}</button>`).join('')}</div><p class="rx-count" id="rx-gallery-count" role="status" aria-live="polite">${studio.gallery.length} pictures</p><div class="rx-arrows" aria-label="Scroll the pictures"><button type="button" data-rx-reel="-1" aria-label="Previous pictures">←</button><button type="button" data-rx-reel="1" aria-label="Next pictures">→</button></div></div></div>
+<div class="rx-reel" tabindex="0" role="region" aria-label="Roadster pictures"><ol class="rx-reel-list">${shots}</ol></div></section>
+<dialog id="rx-photo-dialog" class="rx-photo-dialog" aria-labelledby="rx-photo-title"><div class="rx-viewer-top"><p id="rx-photo-title">Roadster pictures</p><button type="button" id="rx-photo-close" aria-label="Close the viewer">×</button></div><img id="rx-photo-image" alt=""/><div class="rx-viewer-bottom"><button type="button" id="rx-photo-prev" aria-label="Previous picture">←</button><p id="rx-photo-caption"></p><button type="button" id="rx-photo-next" aria-label="Next picture">→</button></div></dialog>`;
+
+// ---- Inside
+const ck=d.cockpit;
+const cockpitHtml=`<section class="rx-cockpit" id="cockpit" data-rx-chapter="cockpit" aria-labelledby="cockpit-h"><div class="rx-wrap">${head(e(ck.kicker),ck.title,e(ck.lead)).replace('<h2>','<h2 id="cockpit-h">')}</div>
+<figure class="rx-cockpit-scene">${picture('cockpit','Roadster interior with the steer-by-wire yoke, the central touchscreen and two forward displays',{folder:'roadster-studio',sizes:'100vw'})}<div class="rx-hotspots">${ck.hotspots.map((h,i)=>`<button type="button" data-rx-hotspot="${i}" style="--x:${h.x}%;--y:${h.y}%" aria-label="${String(i+1).padStart(2,'0')}: ${e(h.label)}" aria-pressed="${i===0}">${String(i+1).padStart(2,'0')}</button>`).join('')}</div><figcaption>Tesla studio imagery. The numbered labels are our annotations.</figcaption></figure>
+<div class="rx-wrap rx-cockpit-cards">${ck.cards.map((c,i)=>`<article class="rx-cockpit-card${i===0?' is-selected':''}" data-rx-cockpit="${i}"><p class="rx-kicker">${c.number} / Cockpit</p><h3>${e(c.title)}</h3><p>${e(c.text)}</p>${foot(c)}</article>`).join('')}</div></section>`;
+
+// ---- Engineering: a diagram that follows the system you pick, over a loop of the wing, then what the engineer said
+const sysButtons=studio.tech.map((t,i)=>`<button type="button" data-rx-system="${t.id}" aria-controls="rx-tech-${t.id}" aria-pressed="${i===0}"><span>${String(i+1).padStart(2,'0')}</span>${e(t.name)}</button>`).join('');
+const sysPanels=studio.tech.map((t,i)=>`<article class="rx-tech-panel" id="rx-tech-${t.id}" data-rx-tech-panel="${t.id}"${i?' hidden':''}><p class="rx-kicker">System ${String(i+1).padStart(2,'0')}</p><h3>${e(t.short)}</h3><p class="rx-tech-summary">${e(t.summary)}</p><div class="rx-tech-reading"><div><h4>How it works</h4><p>${e(t.how)}</p></div><div><h4>Why it matters</h4><p>${e(t.why)}</p></div></div><details><summary>What this does, and does not, establish</summary><p>${e(t.boundary)}</p></details><p class="rx-foot"><span class="rx-cites">${cite(t.source)}</span></p></article>`).join('');
+const eng=d.engineer;
+const techHtml=`<section class="rx-tech" id="tech" data-rx-chapter="tech" aria-labelledby="tech-h"><div class="rx-tech-band" aria-hidden="true">${picture('wing-high-downforce','',{folder:'roadster'})}${clipVideo('wing')}<div class="rx-tech-scrim"></div></div>
+<div class="rx-wrap rx-tech-body">${head('Beneath the surface','Extraordinary looks.<br>Serious engineering.','Six systems and the principle behind each. The diagram explains mechanisms; it is not Tesla CAD, a measured simulation or a prediction of performance.').replace('<h2>','<h2 id="tech-h">')}
+<div class="rx-system-buttons" role="group" aria-label="Engineering systems">${sysButtons}</div>
+<div class="rx-engineering" data-rx-diagram="suction"><div class="rx-engineering-stage">${anatomy()}<p class="rx-diagram-label"><span class="rx-kicker">Mechanism study</span><span id="rx-system-name">${e(studio.tech[0].name)}</span><small>Illustrated principle, not a measured force model</small></p></div><div class="rx-tech-panels">${sysPanels}</div></div>
+<div class="rx-engineer">${head(e(eng.kicker),eng.title,e(eng.lead),'rx-head-sub')}<div class="rx-engineer-grid">${eng.cards.map(c=>`<article class="rx-engineer-card"><h3>${e(c.title)}</h3><p>${e(c.text)}</p>${foot(c)}</article>`).join('')}</div></div></div></section>`;
+
+// ---- The numbers, and the physics behind the 0.81 seconds
+const pf=d.performance;
+const numberCard=i=>`<article class="rx-number"><p class="rx-number-label">${e(i.label)}</p><p class="rx-number-value">${e(i.value).replace(/\n/g,'<br>')}</p><p class="rx-number-detail">${e(i.detail)}</p>${foot(i)}</article>`;
+const numbersHtml=`<section class="rx-read rx-numbers" id="performance" data-rx-chapter="performance" aria-labelledby="performance-h"><div class="rx-wrap">${head(e(pf.kicker),pf.title,e(pf.lead)).replace('<h2>','<h2 id="performance-h">')}
+${pf.groups.map(g=>`<div class="rx-number-group"><h3>${e(g.label)}</h3><div class="rx-number-grid">${g.items.map(numberCard).join('')}</div></div>`).join('')}
+<div class="rx-physics"><div><p class="rx-kicker">A simplified physics illustration ${chip('analysis')}</p><p class="rx-g"><span id="rx-g-value">3.38</span><small>g, average acceleration, calculated</small></p><p id="rx-physics-caption" class="rx-note">From Tesla's claimed 0.81-second run. This is a calculation from elapsed time, not measured acceleration, and 0 to 60 mph is 0 to 96.6 km/h, not 0 to 100.</p><div class="rx-physics-options" role="group" aria-label="Acceleration illustration">${[[.81,'Stage run, 0.81 s'],[1.6,'Performance target'],[.9,'Thrust target'],[.59,'Rocket target']].map(([v,t],i)=>`<button type="button" data-rx-physics="${v}" aria-pressed="${i===0}">${t}</button>`).join('')}</div></div>
+<figure class="rx-physics-chart"><svg viewBox="0 0 600 350" role="img" aria-labelledby="rx-physics-title"><title id="rx-physics-title">Constant average acceleration from 0 to 60 miles per hour</title><path d="M65 40V285H555" fill="none" stroke="currentColor" opacity=".3"/><path d="M65 90H555M65 155H555M65 220H555" stroke="currentColor" opacity=".1"/><path id="rx-physics-area" d="M65 285L303 55V285Z" fill="currentColor" opacity=".12"/><path id="rx-physics-line" d="M65 285L303 55" stroke="var(--rx-read-accent)" stroke-width="3" fill="none"/><circle id="rx-physics-dot" cx="303" cy="55" r="6" fill="var(--rx-read-accent)"/><text x="20" y="60" fill="currentColor" font-size="12">60</text><text x="29" y="290" fill="currentColor" font-size="12">0</text><text x="65" y="325" fill="currentColor" font-size="12">0 s</text><text x="500" y="325" fill="currentColor" font-size="12">1.6 s</text><text x="65" y="22" fill="currentColor" font-size="10">SPEED, MPH</text></svg><figcaption>A straight line is used for explanation; Tesla has not published an acceleration curve. For an "under" target the line shows a threshold, not a result.</figcaption></figure></div></div></section>`;
+
+// ---- Three trims
+const trimDetails=c=>`<details class="rx-trim-details"><summary>Full ${e(c.name)} details</summary><p class="rx-note">Reported specifications, subject to change and not independently verified.</p><dl>${c.reportedSpecs.map(([l,v])=>`<div><dt>${e(l)}</dt><dd>${e(v)}</dd></div>`).join('')}</dl><h4>Equipment</h4><ul>${c.equipment.map(x=>`<li>${e(x)}</li>`).join('')}</ul>${c.exclusions.length?`<h4>Not included</h4><ul>${c.exclusions.map(x=>`<li>${e(x)}</li>`).join('')}</ul>`:''}<p class="rx-foot"><span class="rx-cites">${cite(c.equipmentSource)}</span></p></details>`;
+const trimsHtml=`<section class="rx-trims" id="trims" data-rx-chapter="trims" aria-labelledby="trims-h"><div class="rx-wrap">${head('Choose the question','Three trims.<br>Three ambitions.','Tesla\'s configuration descriptions, with Sawyer Merritt\'s reported equipment breakdown. Open a trim for the detail. All figures remain subject to change.').replace('<h2>','<h2 id="trims-h">')}
+<div class="rx-configs">${studio.configs.map(c=>`<article class="rx-config" data-config="${c.id}"><p class="rx-kicker">${e(c.tag)}<span>${e(c.availability)}</span></p><h3>${e(c.name)}</h3><p class="rx-config-time">${e(c.target)}<small>0 to 60 mph, announced target ${chip('target')}</small></p><ul>${c.features.map(x=>`<li>${e(x)}</li>`).join('')}</ul><p class="rx-note">${e(c.note)}</p>${trimDetails(c)}${c.id==='rocket'?'<p class="rx-warn">Not approved for public road use.</p>':''}<button type="button" class="rx-btn rx-btn-small" data-rx-compare="${c.id}" aria-pressed="false">Add to comparison +</button></article>`).join('')}</div>
+<div class="rx-compare" id="rx-compare" hidden><header><h3>Your comparison</h3><button type="button" class="rx-link-button" id="rx-compare-clear">Clear</button></header><div id="rx-compare-content"></div></div>
+<div class="rx-spec-note"><p>Range target: over <b data-rx-distance="300">300 miles</b>. Rocket top-speed claim: over <b data-rx-speed="230">230 mph</b>. Targets, not certified results. The trim breakdown reports over 210 mph for Performance and over 230 mph for Thrust and Rocket. Tesla's page describes Thrust as under one second; the October announcement said under 0.9 s, which we keep.</p><div class="rx-unit-buttons" role="group" aria-label="Units"><button type="button" data-rx-unit="imperial" aria-pressed="true">Miles, mph</button><button type="button" data-rx-unit="metric" aria-pressed="false">km, km/h</button></div></div></div></section>`;
+
+// ---- The wait: a timeline, then 2017 against 2026
+const tl=d.timeline,pr=tl.promise;
+const timelineHtml=`<section class="rx-read rx-timeline" id="timeline" data-rx-chapter="timeline" aria-labelledby="timeline-h"><div class="rx-wrap">${head(e(tl.kicker),tl.title,e(tl.lead)).replace('<h2>','<h2 id="timeline-h">')}
+<ol class="rx-spine">${tl.events.map(t=>`<li><p class="rx-spine-date">${e(t.label)}</p><div class="rx-spine-card"><h3>${e(t.title)}</h3><p>${e(t.text)}</p>${foot(t)}</div></li>`).join('')}</ol>
+<div class="rx-promise" id="promise">${head(e(pr.kicker),pr.title,e(pr.lead),'rx-head-sub')}<div class="rx-table-wrap" tabindex="0" role="region" aria-label="2017 promises against the 2026 reveal"><table class="rx-table"><thead><tr><th scope="col">What</th><th scope="col">Promised in 2017</th><th scope="col">Said in 2026</th><th scope="col">Label and sources</th></tr></thead><tbody>${pr.rows.map(r=>`<tr><th scope="row">${e(r.label)}</th><td>${e(r.then)}</td><td>${e(r.now)}</td><td>${foot(r)}</td></tr>`).join('')}</tbody></table></div></div></div></section>`;
+
 const rail=`<nav class="rx-rail" aria-label="Roadster chapters"><ol>${d.chapters.map(c=>`<li><a href="#${c.id}" data-rx-rail="${c.id}"><span>${e(c.label)}</span></a></li>`).join('')}</ol></nav><div class="rx-progress" aria-hidden="true"><i></i></div>`;
 const motion=`<button type="button" class="rx-motion" id="rx-motion" aria-pressed="false"><span class="rx-motion-icon" aria-hidden="true"></span><span class="rx-motion-label">Pause motion</span></button>`;
 
@@ -80,10 +128,16 @@ const nl=(read('roadster-preview.html').match(/<!--nl:start-->[\s\S]*?<!--nl:end
 const main=`<main id="main" class="rx" data-rx>
 ${rail}${hero}
 ${reveal}
+${galleryHtml}
+${cockpitHtml}
+${techHtml}
+${numbersHtml}
+${trimsHtml}
 ${money}
+${timelineHtml}
 ${faq}
 ${evidence}
-${motion}${nl?'\n        '+nl:''}
+${motion}<script type="application/json" id="rx-data">${JSON.stringify({configs:studio.configs.map(c=>({id:c.id,name:c.name,tag:c.tag,seats:c.seats,target:c.target,availability:c.availability})),tech:studio.tech.map(t=>({id:t.id,name:t.name})),gallery:studio.gallery.map(g=>({id:g.id,group:g.group,title:g.title,description:g.description,alt:g.alt,credit:g.credit,legacy:!!g.legacy}))}).replace(/</g,'\\u003c')}</script>${nl?'\n        '+nl:''}
 </main>`;
 
 const ld={'@context':'https://schema.org','@graph':[

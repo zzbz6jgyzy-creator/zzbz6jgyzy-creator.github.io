@@ -9,9 +9,9 @@ const fail=m=>{throw Error('Invalid Roadster experience record: '+m);};
 // studioSources: the sources of data/roadster-studio.json, which this page shares. Their ids may be cited here too.
 function validate(d,studioSources=[],clipIds=null){
  if(d?.schema!==1||!day(d.reviewed))fail('schema or review date');
- const own=d.sources||[],ids=[...own.map(s=>s.id),...studioSources.map(s=>s.id)];
+ const own=[...(d.sources||[]),...studioSources.map(s=>({id:s.id,kind:/^manufacturer/i.test(s.kind||'')?'manufacturer':'reporting'}))],ids=own.map(s=>s.id);
  if(new Set(ids).size!==ids.length)fail('duplicate source id');
- for(const s of own)if(!/^[a-z0-9-]+$/.test(s.id)||!s.label||!s.outlet||!s.title||!https(s.url)||!day(s.date)||!day(s.checked)||s.checked>d.reviewed||!['reporting','manufacturer','own'].includes(s.kind))fail('source '+s.id);
+ for(const s of (d.sources||[]))if(!/^[a-z0-9-]+$/.test(s.id)||!s.label||!s.outlet||!s.title||!https(s.url)||!day(s.date)||!day(s.checked)||s.checked>d.reviewed||!['reporting','manufacturer','own'].includes(s.kind))fail('source '+s.id);
  const ref=(list,where)=>{if(!Array.isArray(list))fail(where+' sources');for(const id of list)ids.includes(id)||fail('unknown source '+id+' in '+where);};
  const labelled=(x,where)=>{if(!status[x.status])fail(where+' status');
   if(x.status==='analysis')return;
@@ -31,6 +31,14 @@ function validate(d,studioSources=[],clipIds=null){
  v.terms.forEach((t,i)=>{if(!t.text)fail('reservation term '+i);labelled(t,'reservation term '+i);});
  unique(d.faq,'id','faq');if(d.faq.length<8)fail('too few questions');
  for(const q of d.faq){if(!q.q||!q.a||!q.sources?.length)fail('question '+q.id);ref(q.sources,'question '+q.id);}
+ // Chapters added in part 3: every labelled item cites a source.
+ for(const c of d.cockpit.cards)labelled(c,'cockpit card '+c.number);
+ if(d.cockpit.hotspots.length!==d.cockpit.cards.length)fail('hotspots and cards');
+ unique(d.engineer.cards,'id','engineer');for(const c of d.engineer.cards){if(!c.title||!c.text)fail('engineer '+c.id);labelled(c,'engineer '+c.id);}
+ const ids2=[];for(const g of d.performance.groups){if(!g.label||!g.items.length)fail('number group');for(const i of g.items){if(!i.label||!i.value||!i.detail)fail('number '+i.id);labelled(i,'number '+i.id);ids2.push(i.id);}}
+ if(new Set(ids2).size!==ids2.length)fail('duplicate number id');
+ unique(d.timeline.events,'id','timeline');for(const t of d.timeline.events){if(!t.label||!t.title||!t.text)fail('timeline '+t.id);labelled(t,'timeline '+t.id);}
+ unique(d.timeline.promise.rows,'id','promise rows');for(const r of d.timeline.promise.rows){if(!r.label||!r.then||!r.now)fail('promise '+r.id);labelled(r,'promise '+r.id);}
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&c.date<=d.reviewed&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }

@@ -105,8 +105,32 @@
       "label": "The reveal"
     },
     {
+      "id": "gallery",
+      "label": "Every angle"
+    },
+    {
+      "id": "cockpit",
+      "label": "Inside"
+    },
+    {
+      "id": "tech",
+      "label": "Engineering"
+    },
+    {
+      "id": "performance",
+      "label": "The numbers"
+    },
+    {
+      "id": "trims",
+      "label": "Three trims"
+    },
+    {
       "id": "money",
       "label": "The money"
+    },
+    {
+      "id": "timeline",
+      "label": "The wait"
     },
     {
       "id": "faq",
@@ -413,7 +437,7 @@
     {
       "date": "2026-10-28",
       "kind": "update",
-      "text": "Added the reservation terms and the reservation agreement's delivery clause, the event location, the engineer's figures from the Hagerty interview, a questions section and this change log."
+      "text": "Added the reservation terms and the reservation agreement's delivery clause, the event location, the engineer's figures from the Hagerty interview, the gallery, cockpit, engineering, numbers, trims and timeline chapters, a questions section and this change log. Every claim, target and report is labelled and sourced."
     },
     {
       "date": "2026-10-25",
@@ -425,5 +449,422 @@
       "kind": "update",
       "text": "Published the Roadster showcase: the film, the gallery, the engineering diagrams and the sourced claims."
     }
-  ]
+  ],
+  "gallery": {
+    "kicker": "Every angle",
+    "title": "Made to be<br>looked at.",
+    "lead": "Tesla's studio images, shots from the reveal and press renders. Choose a collection, drag or use the arrows, and open any picture full screen."
+  },
+  "cockpit": {
+    "kicker": "Inside",
+    "title": "A cockpit.<br>Not a compromise.",
+    "lead": "The yoke, the displays and the seating as Tesla and the first reports describe them. These are published design details, not a production equipment guarantee.",
+    "hotspots": [
+      {
+        "x": 32,
+        "y": 49,
+        "label": "The steer-by-wire yoke"
+      },
+      {
+        "x": 57,
+        "y": 50,
+        "label": "The display layout"
+      },
+      {
+        "x": 56,
+        "y": 79,
+        "label": "Seating and materials"
+      }
+    ],
+    "cards": [
+      {
+        "number": "01",
+        "title": "A different connection",
+        "text": "The Verge reports a two-seater with seats moulded into the chassis, and steering and driving controls that are steer-by-wire, including the yoke, brakes and throttle. The published image does not show the redundancy or the calibration behind that.",
+        "status": "claim",
+        "sources": [
+          "verge"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Information, forward",
+        "text": "Tesla lists a centre touchscreen with two smaller displays in front of the driver. Sawyer Merritt reports those two forward displays as part of the Supersonic interior on Thrust and Rocket, not standard Performance equipment.",
+        "status": "reported",
+        "sources": [
+          "dispatch-reveal",
+          "trim-report"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Purposeful simplicity",
+        "text": "Tesla lists an Ultrawhite cabin with grey microsuede and a fixed seat with manual controls to save weight, with magnesium, titanium and carbon fibre throughout. Hagerty's walk-around adds fixed seat bases with a movable pedal box and reclining backs, and removable roof panels.",
+        "status": "claim",
+        "sources": [
+          "dispatch-reveal",
+          "dispatch-hagerty"
+        ]
+      }
+    ]
+  },
+  "engineer": {
+    "kicker": "Straight from the engineer",
+    "title": "What Lars Moravy<br>told Hagerty.",
+    "lead": "Tesla's VP of Vehicle Engineering walked Hagerty's Henry Catchpole round the car before the reveal. These are his claims, each with its source; none has been tested independently.",
+    "cards": [
+      {
+        "id": "drive",
+        "title": "Rear-wheel drive, and more than a Plaid",
+        "text": "Two rear motors, each with its own inverter, make over 1 MW and 1,400 Nm, which Moravy said is more power and torque than the three motors in a Model S Plaid. Hagerty converts that to 1,341 hp.",
+        "status": "claim",
+        "sources": [
+          "dispatch-hagerty",
+          "hagerty"
+        ]
+      },
+      {
+        "id": "fans",
+        "title": "Four fans seal the car to the road",
+        "text": "Four fans at the rear, based on the heat-pump compressor motor at maybe 20 kW each, and four skirts that drop to seal the car. Moravy said the car can hold over two g in a corner at low speed.",
+        "status": "claim",
+        "sources": [
+          "dispatch-hagerty"
+        ]
+      },
+      {
+        "id": "wing",
+        "title": "A wing moved by Optimus legs",
+        "text": "The rear wing takes thousands of newtons of force, so Tesla used the leg actuators from the Optimus robot, with an added brake so they hold position. It switches between high-downforce and low-drag modes.",
+        "status": "claim",
+        "sources": [
+          "dispatch-hagerty"
+        ]
+      },
+      {
+        "id": "gas",
+        "title": "Nitrogen, not fuel",
+        "text": "On Thrust, a 200-litre carbon-wrapped pressure vessel holds nitrogen at up to 10,000 psi and feeds the rear thrusters, which Moravy said produce over 80 kilonewtons. Rocket adds a 400-litre tank and six more thrusters.",
+        "status": "claim",
+        "sources": [
+          "dispatch-hagerty",
+          "hagerty"
+        ]
+      },
+      {
+        "id": "refill",
+        "title": "Thrust that fades, and slow refills",
+        "text": "The thrust comes from pressure alone, so it fades as the tank empties. Hagerty says a full 600-litre refill takes six to seven hours today; Tesla's aim of about half an hour is a goal, not a result.",
+        "status": "reported",
+        "sources": [
+          "dispatch-hagerty"
+        ]
+      }
+    ]
+  },
+  "performance": {
+    "kicker": "The numbers",
+    "title": "Every number,<br>and who said it.",
+    "lead": "The claims, targets and reports gathered in one place. A claim is Tesla's word; a target is an aim; a report is an outlet's. None is an independent test, and the one run we saw was a stunt event.",
+    "groups": [
+      {
+        "label": "Speed",
+        "items": [
+          {
+            "id": "run",
+            "label": "0 to 60 mph on stage",
+            "value": "0.81 s",
+            "detail": "Tesla's claimed time during the event.",
+            "status": "claim",
+            "sources": [
+              "verge",
+              "techcrunch"
+            ]
+          },
+          {
+            "id": "perf",
+            "label": "Performance, 0 to 60 mph",
+            "value": "<1.6 s",
+            "detail": "Tesla's announced target for the road-ready trim.",
+            "status": "target",
+            "sources": [
+              "verge",
+              "dispatch-reveal"
+            ]
+          },
+          {
+            "id": "thrust",
+            "label": "Thrust, 0 to 60 mph",
+            "value": "<0.9 s",
+            "detail": "Tesla's announced target. Hagerty quotes 0.85 s.",
+            "status": "target",
+            "sources": [
+              "dispatch-reveal",
+              "hagerty"
+            ]
+          },
+          {
+            "id": "rocket",
+            "label": "Rocket, 0 to 60 mph",
+            "value": "<0.59 s",
+            "detail": "Tesla's announced target. Hagerty reports a 0.55 s rollout figure, which is not comparable.",
+            "status": "target",
+            "sources": [
+              "dispatch-reveal",
+              "hagerty"
+            ]
+          },
+          {
+            "id": "top",
+            "label": "Top speed",
+            "value": ">230 mph",
+            "detail": "Tesla's site, as TechCrunch reports it for all three trims. Hagerty gives 210 mph for Performance.",
+            "status": "claim",
+            "sources": [
+              "techcrunch",
+              "dispatch-hagerty"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Power and range",
+        "items": [
+          {
+            "id": "power",
+            "label": "Power",
+            "value": ">1 MW",
+            "detail": "About 1,341 hp from two rear motors.",
+            "status": "reported",
+            "sources": [
+              "hagerty"
+            ]
+          },
+          {
+            "id": "torque",
+            "label": "Torque",
+            "value": "1,400 Nm",
+            "detail": "About 1,033 lb-ft, rear wheels only.",
+            "status": "reported",
+            "sources": [
+              "hagerty"
+            ]
+          },
+          {
+            "id": "range",
+            "label": "Range",
+            "value": ">300 mi",
+            "detail": "Tesla's target. The battery size is not published and no range has been certified that we know of.",
+            "status": "target",
+            "sources": [
+              "verge",
+              "techcrunch"
+            ]
+          },
+          {
+            "id": "charge",
+            "label": "Charging",
+            "value": "15 to 80%\nin about 10 min",
+            "detail": "A target Hagerty reports, framed around track days.",
+            "status": "target",
+            "sources": [
+              "dispatch-hagerty"
+            ]
+          },
+          {
+            "id": "weight",
+            "label": "Weight",
+            "value": "<1,700 kg",
+            "detail": "A ballpark target Moravy gave, not a final figure.",
+            "status": "target",
+            "sources": [
+              "dispatch-hagerty"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Air and thrust",
+        "items": [
+          {
+            "id": "downforce",
+            "label": "Downforce",
+            "value": "~2 g",
+            "detail": "Moravy's claim at over 200 mph. The suction system claims over two g in a low-speed corner.",
+            "status": "claim",
+            "sources": [
+              "dispatch-hagerty",
+              "verge"
+            ]
+          },
+          {
+            "id": "thrusters",
+            "label": "Thrusters",
+            "value": "10",
+            "detail": "On the Rocket, fed by 600 litres of compressed air, per Moravy at the event.",
+            "status": "claim",
+            "sources": [
+              "techcrunch",
+              "verge"
+            ]
+          },
+          {
+            "id": "force",
+            "label": "Thrust force",
+            "value": ">80 kN",
+            "detail": "Moravy's claim for the Thrust trim's rear thrusters, which he compared to a fighter jet engine.",
+            "status": "claim",
+            "sources": [
+              "dispatch-hagerty"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "timeline": {
+    "kicker": "The wait",
+    "title": "Nine years,<br>one reveal.",
+    "lead": "The second-generation Roadster has been promised since 2017. This is what was said, when, and what happened to each date.",
+    "events": [
+      {
+        "id": "2017",
+        "label": "Nov 2017",
+        "title": "The surprise",
+        "text": "Tesla showed the second-generation Roadster at the end of its Semi event, promising 0 to 60 mph in 1.9 seconds, over 250 mph, up to 620 miles from a 200 kWh battery, a $200,000 starting price and deliveries in 2020. Buyers put down $50,000, or $250,000 for one of 1,000 Founders Series cars.",
+        "status": "claim",
+        "sources": [
+          "verge",
+          "techcrunch"
+        ]
+      },
+      {
+        "id": "2018",
+        "label": "2018",
+        "title": "Rocket thrusters, on Twitter",
+        "text": "Musk first floated a SpaceX option package of about 10 small rocket thrusters around the car, writing: “Maybe they will even allow a Tesla to fly …”",
+        "status": "claim",
+        "sources": [
+          "techcrunch"
+        ]
+      },
+      {
+        "id": "delays",
+        "label": "2020 to 2024",
+        "title": "Four delays",
+        "text": "TechCrunch counts delays in 2020, 2021, 2023 and 2024, while Tesla moved on to the Model Y and the Cybertruck.",
+        "status": "reported",
+        "sources": [
+          "techcrunch"
+        ]
+      },
+      {
+        "id": "slip",
+        "label": "1 Oct 2026",
+        "title": "The reveal slips a fortnight",
+        "text": "The event was first set for 1 October and moved to 15 October because of weather.",
+        "status": "reported",
+        "sources": [
+          "dispatch-reveal"
+        ]
+      },
+      {
+        "id": "reveal",
+        "label": "15 Oct 2026",
+        "title": "The Roadster flies",
+        "text": "Tesla drove the car up a ramp, held it upside down, flipped it and lifted it over a line of Teslas, all programmed stunts, and claimed 0.81 seconds to 60 mph.",
+        "status": "demo",
+        "sources": [
+          "engadget",
+          "verge",
+          "techcrunch"
+        ]
+      },
+      {
+        "id": "2028",
+        "label": "2028",
+        "title": "A stated target",
+        "text": "Musk said production begins in 2028. Tesla has given no delivery date and no price, and its reservation agreement says delivery is not guaranteed.",
+        "status": "target",
+        "sources": [
+          "verge",
+          "hotcars"
+        ]
+      }
+    ],
+    "promise": {
+      "kicker": "Promise against reality",
+      "title": "2017 against 2026.",
+      "lead": "The same car, nine years apart. Today's numbers are claims and targets, not results.",
+      "rows": [
+        {
+          "id": "time",
+          "label": "0 to 60 mph",
+          "then": "1.9 s",
+          "now": "Under 1.6 s (Performance), under 0.9 s (Thrust), under 0.59 s (Rocket)",
+          "status": "target",
+          "sources": [
+            "verge",
+            "dispatch-reveal"
+          ]
+        },
+        {
+          "id": "speed",
+          "label": "Top speed",
+          "then": "Over 250 mph",
+          "now": "Over 230 mph per Tesla's site; Hagerty gives 210 mph for Performance",
+          "status": "claim",
+          "sources": [
+            "verge",
+            "techcrunch",
+            "dispatch-hagerty"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range",
+          "then": "Up to 620 miles from 200 kWh",
+          "now": "Target over 300 miles; battery size not published",
+          "status": "target",
+          "sources": [
+            "verge",
+            "techcrunch"
+          ]
+        },
+        {
+          "id": "price",
+          "label": "Price",
+          "then": "$200,000 to start",
+          "now": "Not announced",
+          "status": "target",
+          "sources": [
+            "verge",
+            "techcrunch"
+          ]
+        },
+        {
+          "id": "seats",
+          "label": "Seats",
+          "then": "Four (2+2)",
+          "now": "Two; the Rocket has one",
+          "status": "claim",
+          "sources": [
+            "hagerty",
+            "techcrunch"
+          ]
+        },
+        {
+          "id": "delivery",
+          "label": "First deliveries",
+          "then": "2020",
+          "now": "Production targeted for 2028; no delivery date",
+          "status": "target",
+          "sources": [
+            "verge",
+            "techcrunch"
+          ]
+        }
+      ]
+    }
+  }
 }
