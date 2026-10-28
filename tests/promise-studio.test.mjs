@@ -15,7 +15,7 @@ const record=id=>d.records.find(p=>p.id===id);
 const copy=()=>structuredClone(raw);
 
 test('the dated source retains all 64 claim records with independent company and topic fields',()=>{
-  assert.equal(d.updated,'2026-10-22');
+  assert.equal(d.updated,'2026-10-28');
   assert.equal(d.records.length,64);
   assert.equal(new Set(d.records.map(p=>p.id)).size,64);
   assert.deepEqual(Object.fromEntries(d.companies.map(c=>[c,d.records.filter(p=>p.company===c).length])),{SpaceX:16,Tesla:44,xAI:4});

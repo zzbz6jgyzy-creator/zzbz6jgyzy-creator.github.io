@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-push-main
+  group: js-bundle-main
   cancel-in-progress: false
 
 jobs:

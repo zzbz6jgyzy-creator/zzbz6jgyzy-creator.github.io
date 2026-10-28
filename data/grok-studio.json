@@ -96,7 +96,7 @@
       "id": "bot-changelog",
       "title": "Grok Bot changelog",
       "url": "https://x.ai/changelog/bot",
-      "note": "Versioned feature changes; checked through v0.75.5 on 23 October 2026."
+      "note": "Versioned feature changes; checked through v0.77.0 (26 October 2026)."
     },
     {
       "id": "grok47-launch",
@@ -783,6 +783,14 @@
     }
   ],
   "releases": [
+    {
+      "id": "bot-0770",
+      "date": "2026-10-26",
+      "type": "Bot / v0.77.0",
+      "title": "Permissions, Vault payments, and question cards",
+      "summary": "The official changelog documents v0.77.0 on 26 October 2026, including 0.76.0. Feature requirements remain in the release notes.",
+      "source": "bot-changelog"
+    },
     {
       "id": "bot-0755",
       "date": "2026-10-23",

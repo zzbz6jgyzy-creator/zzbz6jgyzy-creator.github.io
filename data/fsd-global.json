@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewed": "2026-10-26",
-  "revision": "2026-10-26-global-1",
+  "reviewed": "2026-10-28",
+  "revision": "2026-10-28-global-1",
   "listed": [
     "US",
     "CA",
@@ -447,8 +447,8 @@
       "label": "Teslascope 2026.38.5.11",
       "url": "https://teslascope.com/software/2026.38.5.11",
       "type": "tracker",
-      "note": "Sampled installations. Firmware appearing on HW3 and HW4 does not mean both receive the same FSD model.",
-      "checked": "2026-10-26"
+      "note": "Sampled installations. Firmware appearing on HW3 and HW4 does not mean both receive the same FSD model. 28 Oct sample: the most widespread HW3 v14.3 Lite build (689 cars vs 94 on 2026.38.5.10).",
+      "checked": "2026-10-28"
     },
     {
       "id": "scope-10",
@@ -508,15 +508,15 @@
     {
       "id": "na-lite",
       "label": "v14.3 Lite",
-      "build": "2026.38.5.10",
+      "build": "2026.38.5.11",
       "hardware": "AI3 / HW3",
       "region": "North America sample",
       "countries": [
         "US"
       ],
-      "date": "2026-10-20",
-      "source": "scope-10",
-      "note": "The same firmware page names a separate HW3 Lite model. Do not infer parity with the AI4 stack."
+      "date": "2026-10-24",
+      "source": "scope-11",
+      "note": "The same firmware page names a separate HW3 Lite model. Teslascope’s 28 Oct sample shows 2026.38.5.11 as the most widespread HW3 Lite build. Do not infer parity with the AI4 stack."
     },
     {
       "id": "oceania",

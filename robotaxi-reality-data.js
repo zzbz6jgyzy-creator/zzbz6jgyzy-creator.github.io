@@ -2,8 +2,8 @@
 // Every claim needs a real source and a verification status.
 // Do not mark a city live unless a source says public rides are happening.
 window.ROBOTAXI_REALITY = {
-  updated: "2026-10-22",
-  updatedLabel: "22 Oct 2026",
+  updated: "2026-10-28",
+  updatedLabel: "28 Oct 2026",
   kinds: [
     { id: "operational", label: "Operational" },
     { id: "expansion", label: "Expansions" },
@@ -294,6 +294,66 @@ window.ROBOTAXI_REALITY = {
       date: "2026-07-22",
       src: "https://www.basenor.com/blogs/news/tesla-robotaxi-model-ys-spotted-in-florida-with-new-hardware",
       srcLabel: "BaseNor"
+    },
+    {
+      id: "vegas-coming-soon",
+      slug: "las_vegas",
+      lat: 36.1699,
+      lng: -115.1398,
+      kind: "expansion",
+      verification: "announced",
+      supervision: "unknown",
+      vehicle: "Robotaxi",
+      title: "Las Vegas listed as coming soon",
+      text: "Tesla lists Las Vegas as coming soon on its Robotaxi Safety Report (21 Oct 2026). No launch date.",
+      date: "2026-10-21",
+      src: "https://teslanorth.com/2026/10/21/tesla-robotaxi-safety-report-four-new-cities/",
+      srcLabel: "TeslaNorth"
+    },
+    {
+      id: "jacksonville-coming-soon",
+      slug: "jacksonville",
+      lat: 30.3322,
+      lng: -81.6557,
+      kind: "expansion",
+      verification: "announced",
+      supervision: "unknown",
+      vehicle: "Robotaxi",
+      title: "Jacksonville listed as coming soon",
+      text: "Tesla lists Jacksonville as coming soon on its Robotaxi Safety Report (21 Oct 2026). No launch date.",
+      date: "2026-10-21",
+      src: "https://teslanorth.com/2026/10/21/tesla-robotaxi-safety-report-four-new-cities/",
+      srcLabel: "TeslaNorth"
+    },
+    {
+      id: "phoenix-coming-soon",
+      slug: "phoenix",
+      lat: 33.4484,
+      lng: -112.074,
+      kind: "expansion",
+      verification: "announced",
+      supervision: "unknown",
+      vehicle: "Robotaxi",
+      title: "Phoenix listed as coming soon",
+      text: "Tesla lists Phoenix as coming soon on its Robotaxi Safety Report (21 Oct 2026). No launch date.",
+      date: "2026-10-21",
+      src: "https://teslanorth.com/2026/10/21/tesla-robotaxi-safety-report-four-new-cities/",
+      srcLabel: "TeslaNorth"
+    },
+    {
+      id: "san-antonio-coming-soon",
+      slug: "san_antonio",
+      lat: 29.4241,
+      lng: -98.4936,
+      kind: "expansion",
+      verification: "announced",
+      supervision: "unknown",
+      vehicle: "Robotaxi",
+      title: "San Antonio listed as coming soon",
+      text: "Tesla lists San Antonio as coming soon on its Robotaxi Safety Report (21 Oct 2026). No launch date.",
+      date: "2026-10-21",
+      src: "https://teslanorth.com/2026/10/21/tesla-robotaxi-safety-report-four-new-cities/",
+      srcLabel: "TeslaNorth"
     }
   ]
 };
