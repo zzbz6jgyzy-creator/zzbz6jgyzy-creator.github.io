@@ -33,7 +33,7 @@
       "id": "teslascope-software",
       "outlet": "Teslascope",
       "kind": "reporting",
-      "title": "Teslascope software updates (build distribution of connected cars)",
+      "title": "Teslascope software updates (cars seen on each build)",
       "url": "https://www.teslascope.com/software",
       "date": "2026-10-27",
       "checked": "2026-10-27"
@@ -239,7 +239,7 @@
       {
         "label": "Dec 2024",
         "end": "2024-12-31",
-        "total": 3,
+        "total": 2.9,
         "v11": 0.9
       },
       {
@@ -316,7 +316,7 @@
       "2026-10-27"
     ],
     "timeline": 8,
-    "caveat": "These are cars Teslascope has seen on each build: owners who connect their car to Teslascope, a self-selected sample that leans to enthusiasts and to North America and Europe. In our stored snapshots a build's count almost never falls, so we treat it as a running total of cars seen on that build, not a share of cars on it today. Teslascope and TeslaFi show different shares for the same build because they track different cars.",
+    "caveat": "These are cars Teslascope has seen on each build: owners who connect their car to Teslascope, a self-selected sample that leans to enthusiasts and to North America and Europe. In our stored snapshots a build's count almost never falls, so we treat it as a running total of cars seen on that build, not a share of cars on it today. Other trackers follow different cars and can give different counts.",
     "asOf": "2026-10-27T23:50:00Z",
     "latestCount": 3363,
     "builds": [

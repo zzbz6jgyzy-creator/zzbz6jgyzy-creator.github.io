@@ -37,7 +37,7 @@ html[data-theme=light] .ft{color-scheme:dark}
 .ft-split{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:18px;align-items:start}
 .ft-fig figcaption{font-size:.74rem;color:var(--ft-muted);margin-top:10px}
 .ft-chart{display:block;width:100%;height:auto}
-.ft-grid{stroke:#1e2530;stroke-width:1}.ft-ax{fill:#9aa4b3;font:11px var(--ft-mono)}.ft-val{fill:#e8ecf2;font:600 12px var(--ft-mono)}.ft-ratio{fill:var(--ft-amber);font:600 11px var(--ft-mono)}
+.ft-grid{stroke:#1e2530;stroke-width:1}.ft-ax{fill:#9aa4b3;font:12.5px var(--ft-mono)}.ft-val{fill:#e8ecf2;font:600 13.5px var(--ft-mono)}.ft-ratio{fill:var(--ft-amber);font:600 12.5px var(--ft-mono)}
 .ft-bar rect{fill:#3a475d;transition:fill .2s}.ft-hot rect{fill:var(--ft-accent)}.ft-bar:hover rect,.ft-bar:focus rect{fill:#4a5a74}.ft-hot:hover rect,.ft-hot:focus rect{fill:#ff6b85}
 .ft-bar:focus{outline:none}.ft-bar:focus-visible rect{stroke:#fff;stroke-width:2}
 .ft-track{fill:#1a202b}.ft-fill{fill:#4a5870}.ft-fill.ft-hot{fill:var(--ft-accent)}
@@ -67,14 +67,14 @@ html[data-theme=light] .ft{color-scheme:dark}
 .ft-hb-r{grid-area:r;font:500 .74rem var(--ft-mono);color:var(--ft-amber)}.ft-hb-note{font-size:.74rem;color:var(--ft-muted);margin:14px 0 0}
 @media(min-width:1200px){.ft-kpis{grid-template-columns:repeat(5,minmax(0,1fr))}}
 .ft-kpi:last-child:nth-child(odd){grid-column:1/-1}@media(min-width:1200px){.ft-kpi:last-child:nth-child(odd){grid-column:auto}}
-@media(max-width:1000px){.ft-split{grid-template-columns:1fr}}
+@media(max-width:1100px){.ft-split{grid-template-columns:1fr}}
 @media(max-width:700px){.ft-desk{display:none}.ft-phone{display:block}.ft{margin-top:12px;border-radius:16px}.ft-hero{padding:48px 6% 32px}.ft-section{padding:56px 6%}.ft-kpis{grid-template-columns:1fr}.ft-ledger{columns:1}.ft-card{padding:18px}}
 @media print{.ft,.ft *{background:#fff!important;color:#000!important;border-color:#999!important}.ft a{text-decoration:underline}.ft-jump{display:none}}
 @media(prefers-reduced-motion:reduce){.ft *{scroll-behavior:auto!important;transition:none!important}}
 
 /* miles, software */
 .ft-a-new{fill:var(--ft-accent);fill-opacity:.82}.ft-a-old{fill:#4a6fbf;fill-opacity:.9}.ft-a-line{fill:none;stroke:#ff8aa0;stroke-width:2;stroke-dasharray:6 4}
-.ft-c .ft-ax{font-size:12.5px}.ft-c .ft-val{font-size:14px}
+.ft-c .ft-ax{font-size:14px}.ft-c .ft-val{font-size:15px}
 .ft-dot{fill:var(--ft-bg);stroke:#fff;stroke-width:2.5}
 .ft-big{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;letter-spacing:-.04em;line-height:1.1;margin:18px 0 0}.ft-big small{display:block;margin-top:6px;font:400 .66rem var(--ft-mono);letter-spacing:.06em;color:var(--ft-muted);text-transform:uppercase}
 .ft-key{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px 24px;margin:14px 0 0;padding:0;font-size:.82rem}
@@ -84,7 +84,7 @@ html[data-theme=light] .ft{color-scheme:dark}
 .ft-heat{min-width:720px}.ft-heat th small{display:block;font:400 .66rem var(--ft-mono);color:var(--ft-muted);margin-top:2px}
 .ft-heat td{text-align:right;font:500 .8rem var(--ft-mono);white-space:nowrap}
 .ft-heat .ft-up{background:rgba(134,220,203,calc(.08 + var(--i)*.3));color:#fff}
-.ft-heat .ft-dn{background:rgba(255,62,96,calc(.08 + var(--i)*.3));color:#fff}.ft-heat .ft-0{color:#98a2b3}.ft-heat th[scope=row]{position:sticky;left:0;background:var(--ft-card);z-index:1;min-width:150px}.ft-heat thead th small{display:block;font:400 .6rem var(--ft-mono);color:var(--ft-muted)}
+.ft-heat .ft-dn{background:rgba(255,62,96,calc(.08 + var(--i)*.3));color:#fff}.ft-heat .ft-0{color:#98a2b3}.ft-heat thead th:first-child{position:sticky;left:0;z-index:2;background:#121822}.ft-heat th[scope=row]{position:sticky;left:0;background:var(--ft-card);z-index:1;min-width:150px}.ft-heat thead th small{display:block;font:400 .6rem var(--ft-mono);color:var(--ft-muted)}
 .ft-rel{list-style:none;margin:0;padding:0;display:grid;gap:18px}
 .ft-rel li{padding-left:18px;border-left:2px solid var(--ft-line);position:relative}.ft-rel li:first-child{border-color:var(--ft-accent)}
 .ft-rel h4{margin:2px 0 4px;font-size:1.02rem;letter-spacing:-.02em}.ft-rel h4 span{font-weight:400;color:var(--ft-muted);font-size:.86rem;margin-left:6px}.ft-rel p{margin:0;font-size:.86rem;color:#c9d0db}

@@ -108,6 +108,7 @@ test('software section is pinned data, described as running totals of cars seen,
   assert.ok(!/cover \d+% of/.test(page)&&!page.includes('share of the sampled cars'),'no share-of-fleet claims');
   assert.ok(page.includes(`to ${sw.asOf.slice(11,16)} UTC`),'last column labelled as a part day');
   assert.ok(page.includes('First seen'));
+  assert.ok(!/TeslaFi|shares for|share of cars/.test(page.replace('not a share of cars on it today','')),'no share claims or uncited outlets in the software section');
   const ids=[...page.matchAll(/ id="([^"]+)"/g)].map(x=>x[1]);assert.equal(new Set(ids).size,ids.length,'ids are unique (desktop and phone charts)');
 });
 
