@@ -4,6 +4,13 @@
 
 # Changelog
 
+## 28 Oct 2026 — Roadster experience, part 1 (hidden preview)
+
+- **A new Roadster page is being built at `/roadster-preview.html`** (hidden: `noindex`, not in the menu, sitemap or search). It is a dark, cinematic scroll page; the live `/roadster.html` is unchanged until you approve the preview and it is swapped in.
+- **This part:** the hero (flight loop, wordmark, the four key facts), a pinned "reveal" stage whose picture follows five steps (ramp, flip, hop over a line of Teslas, the 0.81-second claim, no price), the 50-second film and a click-to-load replay of Tesla's full event, the reservation terms, ten questions and a change log, each item labelled by who said it and sourced.
+- **New facts, all from pages we opened:** Engadget, TechCrunch, The Verge, Hagerty, Autoblog and HotCars (reservation prices and clause 4 of the reservation agreement, the event location near Waco, the engineer's figures). Tesla's own pages block our fetcher, so they are not cited as opened.
+- **Motion:** muted loops that play only on screen and when allowed; reduced motion, Save-Data and a visible Pause button show stills instead.
+
 ## 28 Oct 2026 — Teslascope counts and coming-soon fares
 
 - **FSD global:** the 28 Oct Teslascope 689 vs 94 sample compares 2026.38.5.11 with 2026.38.5.10, the two builds that carry v14.3.13 and HW3 v14.3 Lite. Those counts are Teslascope’s all-hardware snapshot, not an HW3-only census. 2026.38.5.11 is not described as the most widespread Lite-carrying build (2026.38.5.1 was larger in the same snapshot).

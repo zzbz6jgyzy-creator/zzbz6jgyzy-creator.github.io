@@ -1,0 +1,48 @@
+name: Roadster experience checks
+on:
+  pull_request:
+    paths:
+      - 'roadster-preview.html'
+      - 'roadster-experience*'
+      - 'data/roadster-experience.json'
+      - 'data/roadster-studio.json'
+      - 'data/roadster-media.json'
+      - 'roadster-studio-model.js'
+      - 'scripts/build-roadster-experience.mjs'
+      - 'scripts/make-roadster-clips.py'
+      - 'scripts/js-bundles.json'
+      - 'docs/roadster-experience.md'
+      - 'tests/roadster-experience*'
+      - '.github/workflows/roadster-experience-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  roadster:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test tools
+        run: |
+          npm install --no-save --no-package-lock esbuild@0.25.12
+          python -m pip install playwright==1.62.0
+      - name: Validate data, rebuild and check nothing drifts
+        run: |
+          node --test tests/roadster-experience.test.mjs
+          node scripts/build-roadster-experience.mjs
+          node scripts/build-js.mjs
+          python scripts/inject-js-bundles.py
+          sh scripts/ci-generated-ownership.sh -- assets/js roadster-preview.html
+      - name: Responsive, no-JS, reduced-motion and film journeys
+        run: CHROMIUM_PATH="$(command -v google-chrome)" python tests/roadster-experience-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: roadster-experience-previews
+          path: /tmp/roadster-experience

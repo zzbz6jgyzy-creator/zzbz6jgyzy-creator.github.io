@@ -251,6 +251,9 @@
     ],
     "newsletter": [
       "newsletter-studio.js"
+    ],
+    "roadster-x": [
+      "roadster-experience.js"
     ]
   },
   "pages": {
@@ -686,6 +689,15 @@
         "newsletter"
       ],
       "grow": []
+    },
+    "roadster-preview.html": {
+      "bundles": [
+        "core",
+        "roadster-x"
+      ],
+      "grow": [
+        "data-band"
+      ]
     }
   },
   "pageGlobs": {
