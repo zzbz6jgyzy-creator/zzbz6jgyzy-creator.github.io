@@ -158,3 +158,41 @@ test('images, bundle and styles the preview references exist',()=>{
   const ledger=html.match(/class="rx-ledger">[^]*?<\/ul>/)[0];
   assert.ok(!ledger.includes('tesla.com/roadster')&&!ledger.includes('tesla.com/en_US/roadster'),'the ledger lists only sources the page cites, not Tesla pages we could not open');
 });
+
+test('chapter tabs: a tablist, one panel per tab, every anchor in exactly one panel, nothing hidden in the markup',()=>{
+  const html=page(),main=html.match(/<main\b[\s\S]*?<\/main>/)[0];
+  assert.equal((main.match(/role="tablist"/g)||[]).length,1);
+  const tabs=[...main.matchAll(/<button type="button" role="tab"[^>]*>/g)].map(m=>m[0]);
+  assert.equal(tabs.length,7,'seven tabs');
+  const attr=(tag,n)=>(tag.match(new RegExp('\\s'+n+'="([^"]*)"'))||[])[1];
+  assert.deepEqual(tabs.map(t=>attr(t,'aria-selected')),['true',...Array(6).fill('false')],'the first tab is selected');
+  assert.deepEqual(tabs.map(t=>attr(t,'tabindex')),['0',...Array(6).fill('-1')],'roving tabindex');
+  const panelsAt=[...main.matchAll(/<div class="rx-panel" id="(rx-panel-[a-z]+)" role="tabpanel" aria-labelledby="(rx-tab-[a-z]+)" data-rx-panel="([a-z]+)">/g)];
+  assert.equal(panelsAt.length,7,'seven panels');
+  for(const t of tabs){const c=attr(t,'aria-controls'),id=attr(t,'id');assert.ok(panelsAt.some(p=>p[1]===c&&p[2]===id),id+' controls its panel and is its label');}
+  // No hidden attribute on any tab or panel in the markup: the script hides inactive panels, so without it everything reads in order.
+  assert.ok(!/<(div class="rx-panel"|button[^>]*role="tab")[^>]*\shidden/.test(main),'no hidden panels in the markup');
+  // Cut the main into panels and the rest, then check each anchor id sits in exactly one panel.
+  const starts=panelsAt.map(p=>p.index),end=main.indexOf('<section class="rx-read rx-closing"');
+  const slices=starts.map((s,i)=>main.slice(s,i+1<starts.length?starts[i+1]:end));
+  const holders=id=>slices.map((x,i)=>x.includes(`id="${id}"`)?i:-1).filter(i=>i>=0);
+  const expected={gallery:0,cockpit:1,tech:2,performance:3,trims:4,money:4,timeline:5,promise:5,faq:6,evidence:6};
+  for(const [id,i] of Object.entries(expected))assert.deepEqual(holders(id),[i],'#'+id+' is in panel '+i+' only');
+  // Each tab's primary id is the first anchor of its panel, so the shared link lands at the top of that tab.
+  tabs.forEach((t,i)=>assert.ok(slices[i].indexOf(`id="${attr(t,'data-rx-primary')}"`)>-1&&holders(attr(t,'data-rx-primary')).join()===String(i),'primary id of tab '+i));
+  // The opening, the changes log and the newsletter stay outside the tabs.
+  for(const id of ['top','video','facts','changes','newsletter'])assert.deepEqual(holders(id),[],'#'+id+' is outside every panel');
+  assert.ok(main.indexOf('id="video"')<main.indexOf('role="tablist"')&&main.indexOf('id="changes"')>main.lastIndexOf('data-rx-panel='),'opening above the tabs, changes log below them');
+  // Every panel but the last ends with a Next button naming the next tab; the last offers the way back to the top.
+  const nexts=[...main.matchAll(/data-rx-next="([a-z]+)">Next: ([A-Za-z]+)</g)];
+  assert.equal(nexts.length,6);
+  const ids=['pictures','inside','engineering','numbers','models','timeline','questions'],names=['Pictures','Inside','Engineering','Numbers','Models','Timeline','Questions'];
+  nexts.forEach((m,i)=>{assert.equal(m[1],ids[i+1]);assert.equal(m[2],names[i+1]);assert.ok(slices[i].includes(m[0]),'Next button sits in its own panel '+i);});
+  assert.ok(slices[6].includes('href="#top">Back to the top<'));
+  // Script and style: narrow query, roving keys, instant scroll, replaceState (never pushState), no hidden attribute in the markup.
+  const js=fs.readFileSync('roadster-experience.js','utf8'),css=fs.readFileSync('roadster-experience.css','utf8');
+  assert.ok(js.includes("matchMedia('(max-width: 900px)')")&&/ArrowRight/.test(js)&&js.includes("'Home'")&&js.includes("'End'"));
+  assert.ok(js.includes('behavior:\'instant\'')&&js.includes('history.replaceState')&&!js.includes('pushState'));
+  assert.ok(/\.rx-tabs-intro,\.rx-tabbar-wrap,\.rx-panel-next\{display:none\}/.test(css),'tab chrome is off until the script switches it on');
+  assert.ok(/\[data-rx-mode=tabs\] \.rx-tabbar-wrap\{display:block;position:sticky/.test(css));
+});

@@ -13,6 +13,147 @@ CASES = [(320, 'dark', 'normal'), (390, 'dark', 'normal'), (768, 'dark', 'normal
          (390, 'dark', 'savedata'), (1440, 'dark', 'blocked-video')]
 
 
+# Below 900 px the lower chapters live in tabs. Open the tab that holds a selector, then bring it into view.
+SHOW = """sel=>{const el=document.querySelector(sel),p=el.closest('[data-rx-panel]');
+ if(p&&p.hidden)document.querySelector('#rx-tab-'+p.dataset.rxPanel).click();el.scrollIntoView({block:'start',behavior:'instant'})}"""
+
+
+async def show(page, sel):
+    await page.evaluate(SHOW, sel)
+
+
+VISIBLE_PANELS = "[...document.querySelectorAll('[data-rx-panel]')].filter(p=>!p.hidden&&p.getClientRects().length).map(p=>p.dataset.rxPanel)"
+TABS = ['pictures', 'inside', 'engineering', 'numbers', 'models', 'timeline', 'questions']
+
+
+async def tab_checks(browser, tag_extra=''):
+    """The chapter tabs at 390 and 768, the rotation to desktop, and page heights per tab."""
+    heights = {}
+    for width in (390, 768):
+        ctx = await browser.new_context(viewport={'width': width, 'height': 844}, reduced_motion='no-preference', service_workers='block')
+        await ctx.add_init_script("try{localStorage.setItem('sd-theme','dark')}catch(e){}")
+        await ctx.route('**/*', lambda r: asset_route(r))
+        page = await ctx.new_page()
+        errors = []
+        page.on('pageerror', lambda e: errors.append(str(e)))
+        await page.goto(SITE + '/roadster-preview.html', wait_until='domcontentloaded')
+        await page.wait_for_timeout(500)
+        tag = f'tabs-{width}'
+        # One panel visible, the first; opening chapters always visible.
+        assert await page.evaluate(VISIBLE_PANELS) == ['pictures'], (tag, 'only the first panel shows')
+        assert await page.locator('.rx-tabbar-wrap').is_visible() and await page.locator('#video').is_visible() and await page.locator('.rx-film').is_visible(), tag
+        assert await page.locator('.rx-tab').count() == 7 and await page.locator('.rx-tab[aria-selected=true]').count() == 1, tag
+        assert await page.evaluate("[...document.querySelectorAll('.rx-tab')].map(t=>t.tabIndex)") == [0, -1, -1, -1, -1, -1, -1], (tag, 'roving tabindex')
+        assert await page.evaluate("[...document.querySelectorAll('.rx-panel')].every(p=>p.getAttribute('role')==='tabpanel'&&document.getElementById(p.getAttribute('aria-labelledby')))"), tag
+        assert await page.evaluate("[...document.querySelectorAll('.rx-tab')].every(t=>document.getElementById(t.getAttribute('aria-controls')))"), tag
+        assert not await page.locator('.rx-rail').is_visible(), tag
+        # Tab targets are at least 24 px (we use 44) and the bar scrolls sideways without wrapping.
+        for t in await page.locator('.rx-tab').all():
+            bb = await t.bounding_box()
+            assert bb['height'] >= 24 and bb['width'] >= 24, (tag, bb)
+        # A click opens the panel, scrolls the bar to its stuck place and writes the primary id with replaceState.
+        before = await page.evaluate('history.length')
+        await page.locator('#rx-tab-engineering').click()
+        assert await page.evaluate(VISIBLE_PANELS) == ['engineering'], tag
+        assert (await page.locator('#rx-tab-engineering').get_attribute('aria-selected')) == 'true', tag
+        assert await page.evaluate('location.hash') == '#tech' and await page.evaluate('history.length') == before, (tag, 'replaceState, no new history entry')
+        top = (await page.locator('.rx-tabbar-wrap').bounding_box())['y']
+        assert 60 <= top <= 90, (tag, 'bar sits under the header after a switch', top)
+        assert await page.locator('#tech').is_visible() and await page.locator('#gallery').count() == 1 and not await page.locator('#gallery').is_visible(), tag
+        # The active tab is scrolled into view inside the bar.
+        assert await page.evaluate("(()=>{const b=document.querySelector('.rx-tabbar').getBoundingClientRect(),t=document.querySelector('#rx-tab-engineering').getBoundingClientRect();return t.left>=b.left-1&&t.right<=b.right+1})()"), (tag, 'active tab visible')
+        # Hidden panels play no video and keep lazy pictures lazy: the wing loop is in the Engineering panel only.
+        await page.locator('#rx-tab-pictures').click()
+        await page.wait_for_timeout(300)
+        assert await page.evaluate("[...document.querySelectorAll('.rx-panel[hidden] video')].every(v=>v.paused)"), (tag, 'no loop plays in a hidden panel')
+        # Keyboard: arrows move and activate, Home and End jump, focus stays on the tab.
+        await page.locator('#rx-tab-pictures').focus()
+        await page.keyboard.press('ArrowRight')
+        assert await page.evaluate(VISIBLE_PANELS) == ['inside'] and await page.evaluate('document.activeElement.id') == 'rx-tab-inside', (tag, 'ArrowRight')
+        await page.keyboard.press('End')
+        assert await page.evaluate(VISIBLE_PANELS) == ['questions'], (tag, 'End')
+        await page.keyboard.press('ArrowRight')
+        assert await page.evaluate(VISIBLE_PANELS) == ['pictures'], (tag, 'wraps')
+        await page.keyboard.press('ArrowLeft')
+        assert await page.evaluate(VISIBLE_PANELS) == ['questions'], (tag, 'ArrowLeft wraps')
+        await page.keyboard.press('Home')
+        assert await page.evaluate(VISIBLE_PANELS) == ['pictures'], (tag, 'Home')
+        # Next button: opens the next tab and lands on the bar; the last panel offers the way back to the top.
+        await page.evaluate("document.querySelector('.rx-panel:not([hidden]) .rx-panel-next').scrollIntoView({block:'center',behavior:'instant'})")
+        await page.locator('.rx-panel:not([hidden]) [data-rx-next]').click()
+        assert await page.evaluate(VISIBLE_PANELS) == ['inside'], (tag, 'Next opens the next tab')
+        assert 60 <= (await page.locator('.rx-tabbar-wrap').bounding_box())['y'] <= 90, (tag, 'Next lands on the bar')
+        await page.locator('#rx-tab-questions').click()
+        last = page.locator('.rx-panel:not([hidden]) .rx-panel-next a[href="#top"]')
+        assert await last.count() == 1 and 'Back to the top' in await last.text_content(), tag
+        # Every chapter's page height (and the height of its own panel), for the sanity budget.
+        for t in TABS:
+            await page.locator(f'#rx-tab-{t}').click()
+            heights[(width, t)] = await page.evaluate("[document.documentElement.scrollHeight,Math.round(document.querySelector('.rx-panel:not([hidden])').getBoundingClientRect().height)]")
+        # Deep links on load: #faq and #trims open the right tab and land the heading below the sticky bars.
+        for hash_, tab, sel in (('#faq', 'questions', '#faq-h'), ('#trims', 'models', '#trims-h'), ('#promise', 'timeline', '#promise'), ('#money', 'models', '#money-h'), ('#performance', 'numbers', '#performance-h')):
+            await page.goto(SITE + '/roadster-preview.html' + hash_, wait_until='domcontentloaded')
+            await page.wait_for_timeout(700)
+            assert await page.evaluate(VISIBLE_PANELS) == [tab], (tag, hash_)
+            y = (await page.locator(sel).bounding_box())['y']
+            assert 100 <= y <= 330, (tag, hash_, 'target clears the sticky bars', y)
+            assert await page.evaluate('location.hash') == hash_, (tag, hash_)
+        # hashchange (Back, or an edited URL) opens the tab; an in-page link click does the same without a Back trap.
+        await page.evaluate("location.hash='#cockpit'")
+        await page.wait_for_timeout(300)
+        assert await page.evaluate(VISIBLE_PANELS) == ['inside'], (tag, 'hashchange opens the tab')
+        n = await page.evaluate('history.length')
+        await page.evaluate("document.querySelector('.rx-hero-actions a[href=\"#money\"]').scrollIntoView({behavior:'instant'})")
+        await page.locator('.rx-hero-actions a[href="#money"]').click()
+        assert await page.evaluate(VISIBLE_PANELS) == ['models'] and await page.evaluate('history.length') == n, (tag, 'link click opens its tab and adds no history')
+        assert await page.locator('#money-h').is_visible() and 100 <= (await page.locator('#money-h').bounding_box())['y'] <= 330, tag
+        # Every id the site links to, one by one: its tab opens and the id is on screen.
+        for id_ in ('gallery', 'cockpit', 'tech', 'performance', 'trims', 'money', 'timeline', 'promise', 'faq', 'evidence'):
+            await page.evaluate("id=>{location.hash='#'+id}", id_)
+            await page.wait_for_timeout(250)
+            assert await page.locator('#' + id_).is_visible(), (tag, id_)
+            assert len(await page.evaluate(VISIBLE_PANELS)) == 1, (tag, id_)
+        # The changes log and the newsletter close the page, outside every tab.
+        assert await page.evaluate("!document.querySelector('#changes').closest('[data-rx-panel]')&&!document.querySelector('#newsletter').closest('[data-rx-panel]')"), tag
+        # Axe-friendly state: a non-default tab open and nothing hidden is scrollable.
+        if width == 390:
+            await page.set_viewport_size({'width': 1440, 'height': 900})
+            await page.wait_for_timeout(300)
+            assert len(await page.evaluate(VISIBLE_PANELS)) == 7, (tag, 'rotating to desktop shows every panel')
+            assert not await page.locator('.rx-tabbar-wrap').is_visible() and not await page.locator('.rx-panel-next').first.is_visible(), tag
+            assert await page.evaluate("[...document.querySelectorAll('.rx-panel')].every(p=>!p.hidden&&!p.hasAttribute('role'))"), tag
+            await page.set_viewport_size({'width': 390, 'height': 844})
+            await page.wait_for_timeout(300)
+            assert len(await page.evaluate(VISIBLE_PANELS)) == 1, (tag, 'narrowing again returns to one panel')
+        assert not [e for e in errors if 'cloudflareinsights' not in e], (tag, errors)
+        await ctx.close()
+    # Page-height sanity. The opening (hero, reveal, film) is about 8,500 px at 390 by design; what we cap is the part the tabs own.
+    for (width, t), (page_h, panel_h) in heights.items():
+        if width == 390:
+            assert panel_h < 5200, (t, 'a panel is a few screens, not twenty', panel_h)
+            assert page_h < 15500, (t, 'whole page for this tab', page_h)
+    print('Chapter tabs: panel and page heights at 390 px (page / panel):', {t: heights[(390, t)] for t in TABS})
+
+
+async def asset_route(r):
+    u = urlparse(r.request.url)
+    if u.hostname != 'superchargeddaily.com':
+        return await r.abort()
+    f = ROOT / u.path.lstrip('/')
+    if f.is_file() and ROOT in f.resolve().parents:
+        body = f.read_bytes()
+        mime = mimetypes.guess_type(str(f))[0] or 'application/octet-stream'
+        rng = r.request.headers.get('range')
+        if rng and rng.startswith('bytes='):
+            a, b = rng[6:].split('-', 1)
+            a = int(a or 0)
+            b = min(int(b) if b else len(body) - 1, len(body) - 1)
+            return await r.fulfill(status=206, body=body[a:b + 1], content_type=mime,
+                                   headers={'Content-Range': f'bytes {a}-{b}/{len(body)}', 'Accept-Ranges': 'bytes'})
+        return await r.fulfill(body=body, content_type=mime, headers={'Accept-Ranges': 'bytes'})
+    return await r.abort()
+
+
 async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch(
@@ -116,7 +257,7 @@ async def main():
 
             # Part 3 chapters: collections, the full-screen viewer, hotspots, systems, physics, comparison, units.
             if js and mode == 'normal' and theme == 'dark' and width in (390, 1440):
-                await page.evaluate("document.querySelector('#gallery').scrollIntoView({behavior:'instant'})")
+                await show(page, '#gallery')
                 await page.locator('[data-rx-filter=interior]').click()
                 assert await page.locator('.rx-shot:not([hidden])').count() == 2, (tag, 'interior collection')
                 assert '2 pictures in Interior' in (await page.locator('#rx-gallery-count').text_content()), tag
@@ -127,22 +268,27 @@ async def main():
                 assert '2 / 15' in (await page.locator('#rx-photo-caption').text_content()), tag
                 await page.keyboard.press('Escape')
                 assert not await page.locator('#rx-photo-dialog').evaluate('d=>d.open'), tag
-                await page.evaluate("document.querySelector('#cockpit').scrollIntoView({behavior:'instant'})")
+                await show(page, '#cockpit')
                 await page.locator('[data-rx-hotspot="1"]').click()
                 assert await page.locator('[data-rx-cockpit="1"].is-selected').count() == 1, (tag, 'hotspot selects its card')
-                await page.evaluate("document.querySelector('#tech').scrollIntoView({behavior:'instant'})")
+                await show(page, '#tech')
                 await page.locator('[data-rx-system=thrust]').click()
                 assert await page.locator('[data-rx-tech-panel=thrust]').is_visible() and not await page.locator('[data-rx-tech-panel=suction]').is_visible(), tag
                 assert (await page.locator('.rx-engineering').get_attribute('data-rx-diagram')) == 'thrust', tag
-                await page.evaluate("document.querySelector('#performance').scrollIntoView({behavior:'instant'})")
+                await show(page, '#performance')
                 await page.locator('[data-rx-physics="0.59"]').click()
                 assert (await page.locator('#rx-g-value').text_content()).startswith('> 4.6'), (tag, await page.locator('#rx-g-value').text_content())
-                await page.evaluate("document.querySelector('#trims').scrollIntoView({behavior:'instant'})")
+                await show(page, '#trims')
                 await page.locator('[data-rx-compare=thrust]').click()
                 await page.locator('[data-rx-compare=rocket]').click()
                 assert await page.locator('#rx-compare th[scope=col]').count() == 3, (tag, 'comparison has two trims')
                 await page.locator('[data-rx-unit=metric]').click()
                 assert '483 km' in await page.locator('[data-rx-distance]').text_content(), tag
+
+            if js and width > 900:
+                assert await page.evaluate(VISIBLE_PANELS) == TABS and not await page.locator('.rx-tabbar-wrap').is_visible(), (tag, 'desktop keeps the full scroll')
+            if js and width <= 900:
+                assert len(await page.evaluate(VISIBLE_PANELS)) == 1, (tag, 'narrow screens show one panel')
 
             # Chapter rail: wide screens only, one current chapter.
             if js and width >= 1100:
@@ -177,10 +323,14 @@ async def main():
 
             # No script: everything is still readable, the cover and controls that need script are hidden, a direct film link exists.
             if not js:
+                assert await page.evaluate("[...document.querySelectorAll('[data-rx-panel]')].every(p=>!p.hidden&&p.getClientRects().length>0)"), (tag, 'every panel is visible without script')
+                assert await page.locator('.rx-tabbar-wrap:visible,.rx-tabs-intro:visible,.rx-panel-next:visible').count() == 0, (tag, 'tab chrome is hidden without script')
+                assert await page.locator('#gallery').is_visible() and await page.locator('#faq').is_visible() and await page.locator('#changes').is_visible(), tag
                 assert await page.locator('.rx-film-frame').is_hidden() and await page.locator('a[href*="roadster-film-720.mp4"]').count() >= 1, tag
                 assert not await page.locator('#rx-motion').is_visible(), tag
 
             # FAQ works natively.
+            await show(page, '#faq')
             first = page.locator('.rx-faq details').first
             await first.locator('summary').click()
             assert await first.evaluate('d=>d.open'), tag
@@ -193,6 +343,7 @@ async def main():
             real_errors = [e for e in errors if 'cloudflareinsights' not in e]
             assert not real_errors, (tag, real_errors)
             await ctx.close()
+        await tab_checks(browser)
         await browser.close()
     print('Roadster experience browser checks passed.')
 
