@@ -145,7 +145,9 @@ async def main():
      await page.locator('#pn-ex [data-member-nav]').wait_for(state='attached')
      if await page.locator('.pn[data-nav-studio]').count():
       assert await page.locator('.sdm-nav-primary').count()==0
-      assert await page.locator('.ns-mobile-utilities [data-member-nav]').count()==1
+      assert await page.locator('.pn-utilities .pn-members[data-member-nav]').count()==1
+      assert await page.locator('.ns-browse .ns-mobile-members[data-member-nav]').count()==1
+      assert await page.locator('.ns-mobile-utilities [data-member-nav]').count()==0
      else:assert await page.locator('.sdm-nav-primary').is_visible()==(width>=1200)
      if navigation:
       href=await page.locator('#pn-ex [data-member-nav]').get_attribute('href')

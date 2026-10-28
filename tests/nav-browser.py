@@ -55,6 +55,10 @@ async def main():
      assert await nav.locator('.pn-menu').is_visible()
      await nav.locator('.pn-menu').click();await sheet.wait_for(state='visible')
      assert await sheet.locator('.ns-mobile-section').count()==5
+     members=sheet.locator('.ns-mobile-members')
+     assert await members.is_visible()
+     member_box=await members.bounding_box();categories=await sheet.locator('.ns-mobile-categories').bounding_box()
+     assert member_box['height']>=44 and member_box['y']+member_box['height']<=categories['y']
      for title in ['News','Tesla','SpaceX','Trackers','Explore']:
       summary=sheet.locator('.ns-mobile-section>summary').filter(has_text=re.compile('^'+title+'$'))
       assert await summary.is_visible();b=await summary.bounding_box();assert b['height']>=44
@@ -104,6 +108,9 @@ async def main():
       await page.locator('.pn-close').click();assert not await page.locator('.pn-sheet').is_visible()
     else:
      assert not await nav.locator('.pn-menu').is_visible()
+     assert await nav.get_by_role('link',name='Members',exact=True).is_visible()
+     members=await nav.locator('.pn-members').bounding_box()
+     assert members['height']>=44 and members['x']+members['width']<=width
      for title in ['Tesla','Trackers','SpaceX']:
       summary=nav.locator('.ns-dropdown>summary').filter(has_text=re.compile('^'+title+'$'))
       await summary.click();panel=nav.locator('.ns-dropdown[open] .ns-panel')
