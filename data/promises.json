@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "updated": "2026-10-22",
+ "updated": "2026-10-28",
  "promises": [
   {
    "id": "fsd-90-percent-2013",
@@ -1650,10 +1650,20 @@
       "date": "2026-10-15"
      },
      "date": "2026-10-15"
+    },
+    {
+     "text": "On Tesla's Q3 2026 call, Elluswamy said: \"We suspect somewhere around Q2 next year is when we can turn on some of the first customer vehicles to be part of the robotaxi fleet.\"",
+     "source": {
+      "outlet": "TeslaNorth",
+      "title": "Tesla Q3 2026 Call Takeaways",
+      "url": "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/",
+      "date": "2026-10-21"
+     },
+     "date": "2026-10-21"
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-15",
+   "last_verified": "2026-10-28",
    "note": "Wording as in the Motley Fool transcript summary."
   },
   {
@@ -2192,9 +2202,28 @@
    },
    "deadline": "2026-11-30",
    "status": "In progress",
-   "evidence": [],
+   "evidence": [
+    {
+     "text": "SpaceX posted that the Flight 15 booster completed a full-duration 33-engine static fire on 25 Oct 2026 (Booster 22).",
+     "source": {
+      "outlet": "SpaceX on X",
+      "url": "https://x.com/SpaceX/status/2114444137067844004",
+      "date": "2026-10-25"
+     },
+     "date": "2026-10-25"
+    },
+    {
+     "text": "Ship 42 completed a single-engine static fire on 26 Oct 2026 and a six-engine static fire on 27 Oct 2026, logged by Next Spaceflight.",
+     "source": {
+      "outlet": "Next Spaceflight",
+      "url": "https://www.nextspaceflight.com/starship/hardware/80/",
+      "date": "2026-10-27"
+     },
+     "date": "2026-10-27"
+    }
+   ],
    "revisions": [],
-   "last_verified": "2026-10-21",
+   "last_verified": "2026-10-28",
    "note": "Musk added that success is \"not guaranteed\" but \"more likely than not\". The FAA planning date is NET 8 November."
   },
   {

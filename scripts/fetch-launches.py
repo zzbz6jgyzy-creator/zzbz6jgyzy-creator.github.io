@@ -98,7 +98,7 @@ def main():
         except Exception as error:
             print('Previous-launch refresh failed; upcoming kept:',error,file=sys.stderr)
         target=pathlib.Path(args.output)
-        rows=merge_rows(rows,previous_rows,cached_rows(target,now))
+        rows=merge_rows(cached_rows(target,now),rows,previous_rows)
         if not rows:raise ValueError('No usable launches; previous snapshot retained')
         stamp=now.strftime('%Y-%m-%dT%H:%M:%SZ')
         out={

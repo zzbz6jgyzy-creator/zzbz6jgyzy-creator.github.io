@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-10-27T10:45:00+00:00",
+  "updated": "2026-10-28T09:15:00+00:00",
   "events": {
     "tesla-2026-asm": {
       "title": "Tesla 2026 Annual Meeting of Shareholders",
@@ -31,10 +31,12 @@
       "date": "2026-12-01",
       "precision": "month",
       "status": "expected",
-      "summary": "NASASpaceflight reports a December 2026 target, likely Booster 23 / Ship 43, possibly the first launch from LC-39A. Depends on Flight 15 and 39A readiness. This is reporting, not a SpaceX date.",
+      "summary": "December 2026 target, reported. FAA CADENA air-traffic planning slides (22 Oct) list Flight 16 NET 10 Dec 2026, as the first flight from Florida (LC-39A). NASASpaceflight (25 Oct) estimates the first LC-39A Starship flight could be in late January 2027. This is reporting, not a SpaceX date.",
       "sources": [
         "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
-        "https://www.advanced-television.com/2026/10/20/starship-15-scheduled-for-november-with-dual-catch/"
+        "https://www.advanced-television.com/2026/10/20/starship-15-scheduled-for-november-with-dual-catch/",
+        "https://behindtheblack.com/behind-the-black/points-of-information/faa-provides-tentative-dates-for-two-starship-launches-and-next-new-glenn-launch/",
+        "https://www.nasaspaceflight.com/2026/10/roberts-road-expansion-flight-16/"
       ]
     },
     "starship-flight-15": {
@@ -43,13 +45,15 @@
       "precision": "day",
       "status": "net",
       "tz": "-06:00",
-      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT); SpaceX hadn’t confirmed it as of 27 Oct 2026, 6:45am ET.",
+      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date.",
       "sources": [
         "FAA CADENA / air-traffic planning slides (NET 8 Nov)",
         "Elon Musk, SpaceX Q3 2026 earnings call, 20 Oct 2026: Flight 15 'next month' (https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/)",
         "Elon Musk, 10 Oct 2026: '4 to 6 weeks'",
         "NASASpaceflight: Ship 42 cryo campaign (Oct 2026)",
-        "SpaceX on X, 25 Oct 2026: full-duration 33-engine static fire of the Flight 15 booster (https://x.com/SpaceX/status/2114444137067844004)"
+        "SpaceX on X, 25 Oct 2026: full-duration 33-engine static fire of the Flight 15 booster (https://x.com/SpaceX/status/2114444137067844004)",
+        "Next Spaceflight Ship 42 test log, including the 27 Oct six-engine static fire (https://www.nextspaceflight.com/starship/hardware/80/)",
+        "The Space Road: Flight 15 prep, citing the 27 Oct Massey’s fire (https://thespaceroad.com/articles/when-is-starship-flight-15/)"
       ],
       "major": true
     },

@@ -2,6 +2,24 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-28 · Promise ledger: Flight 15 and add-your-car stay In progress
+
+- **Choice:** add the 25 Oct B22 fire and 26–27 Oct Ship 42 fires, plus Elluswamy’s Q3 “Q2 next year” line, as evidence. Leave both statuses In progress.
+- **Why:** the 28 Oct audit listed the evidence as required and the status change as an editorial call. Q2 2027 is later than “in 2026”, but reclassifying as Revised is a judgment, not a sourced outcome.
+- **Rejected:** rewriting the original 2025 Musk wording, or copying the StockAnalysis transcript onto this record. The audit named TeslaNorth for this quote.
+
+## 2026-10-28 · Launch refresh: cached rows lose ties so a changed NET is kept
+
+- **Choice:** `merge_rows(cached_rows(...), rows, previous_rows)` so a later group wins when ranks tie. Terminal statuses (rank 4) still beat Go.
+- **Why:** PR #220 merged cache last. `merge_rows` keeps the last row on a tie, so any NET change that did not also change status was frozen at the 27 Oct 11:21 GMT snapshot (Starlink 15-21 stayed at 05:14 UTC).
+- **Rejected:** dropping the cache entirely. It still supplies backfill and done rows when LL2 omits them.
+
+## 2026-10-28 · Rebuild JS bundles: own concurrency group
+
+- **Choice:** `js-bundle-main` instead of sharing `data-push-main`. Still `cancel-in-progress: false`, still `ci-push-retry.sh` for push races.
+- **Why:** GitHub keeps one pending run per group, so a newer data-push job cancelled the bundle rebuild after #246–#248.
+- **Rejected:** re-dispatch on cancel. A separate group is simpler and does not wait on another workflow.
+
 ## 2026-10-28 · FSD tracker: safety claims shown as Tesla's claims, never as our conclusion
 
 - **Choice:** show Tesla's crash-rate comparisons with what each group is, the window, and the caveats; label all of it Reported; draw no safety conclusion.

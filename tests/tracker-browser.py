@@ -63,7 +63,7 @@ async def main():
                             assert 'Robotaxi service listed' in await page.locator('#mw-city-detail').inner_text()
                             if mode=='blocked':await page.locator('.mw-refresh-note').wait_for()
                         else:
-                            assert await page.locator('.mw-city-card').count()==7
+                            assert await page.locator('.mw-city-card').count()==11
                         assert await page.locator('#mobility-snapshot').count()==1
                         if mode!='no-js':await page.locator('.mw-tabs [data-mw-route="overview"]').click()
                         await page.locator('.mw-metrics').screenshot(path=str(ROOT/'dev'/f'tracker-cybercab-{mode}-{width}.png'))
