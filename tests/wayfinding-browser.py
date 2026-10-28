@@ -59,7 +59,9 @@ async def main():
     if scripts and enabled:
      await page.locator('[data-discussion-jump]').click();await page.wait_for_url(SITE+'/dispatch/tesla-ai-maps-v15.html#comments')
      await page.locator('#comments').get_by_role('link',name='Sign in to comment',exact=True).wait_for()
-     assert await page.locator('#comments').count()==1 and calls==['sd_comments']
+     # The sign-in prompt renders before startThread's first RPC resolves.
+     await page.locator('#comments').get_by_text('No comments yet. Start the conversation.',exact=True).wait_for()
+     assert await page.locator('#comments').count()==1 and calls==['sd_comments'],calls
     assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth')
     assert not errors,errors
     print(json.dumps({'width':width,'theme':theme,'scripts':scripts,'comments':enabled,'passed':True}),flush=True)
