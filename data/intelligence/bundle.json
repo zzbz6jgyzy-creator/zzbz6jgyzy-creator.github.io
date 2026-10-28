@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-28T14:38:05.556Z",
+  "generatedAt": "2026-10-28T14:45:43.845Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/cybercab-outnumbers-model-y.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
+      "at": "2026-10-28T14:45:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/cybercab-outnumbers-model-y.html",
+      "href": "/dispatch/cybercab-outnumbers-model-y.html",
+      "summary": "Texas DMV records list 573 Cybercabs and 507 Model Ys under Tesla Robotaxi LLC. Tesla’s fleet is now 89% the size of Waymo’s in the state.",
+      "title": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
+      "id": "logged|dispatch:/dispatch/cybercab-outnumbers-model-y.html|2026-10-28T14:45:00.000Z|Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-faa-10000-launches.html",
@@ -692,23 +709,6 @@
       "summary": "SpaceX’s 10-Q shows 13.6M Starlink consumer subscribers; AT&T reported 13.31M fiber connections. Starlink added 6.4M in a year to AT&T’s 2.5M, with caveats.",
       "title": "Starlink now has more subscribers than AT&T Fiber. Here’s what that does and doesn’t mean",
       "id": "logged|dispatch:/dispatch/starlink-passes-att-fiber.html|2026-10-25T08:35:18.000Z|Starlink now has more subscribers than AT&T Fiber. Here’s what that does and doesn’t mean"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/robotaxi-938-f1-cota.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am",
-      "at": "2026-10-25T02:38:05.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/robotaxi-938-f1-cota.html",
-      "href": "/dispatch/robotaxi-938-f1-cota.html",
-      "summary": "135 cars added to the Texas registry in eight days, most of them Cybercabs, and Austin’s map now reaches the F1 track, with rides until 1am.",
-      "title": "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am",
-      "id": "logged|dispatch:/dispatch/robotaxi-938-f1-cota.html|2026-10-25T02:38:05.000Z|Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am"
     },
     {
       "type": "logged",
@@ -1756,14 +1756,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1777,14 +1777,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-28T10:35:51.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1798,35 +1798,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-28T14:38:05.556Z",
+      "lastChecked": "2026-10-28T14:45:43.845Z",
       "lastVerified": "2026-10-28T14:38:04.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1835,85 +1835,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.538Z",
-      "finished": "2026-10-28T14:38:05.543Z"
+      "started": "2026-10-28T14:45:43.732Z",
+      "finished": "2026-10-28T14:45:43.820Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.543Z",
-      "finished": "2026-10-28T14:38:05.544Z"
+      "started": "2026-10-28T14:45:43.820Z",
+      "finished": "2026-10-28T14:45:43.820Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.544Z",
-      "finished": "2026-10-28T14:38:05.544Z"
+      "started": "2026-10-28T14:45:43.820Z",
+      "finished": "2026-10-28T14:45:43.821Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.544Z",
-      "finished": "2026-10-28T14:38:05.549Z"
+      "started": "2026-10-28T14:45:43.821Z",
+      "finished": "2026-10-28T14:45:43.837Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.549Z",
-      "finished": "2026-10-28T14:38:05.553Z"
+      "started": "2026-10-28T14:45:43.837Z",
+      "finished": "2026-10-28T14:45:43.842Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.553Z",
-      "finished": "2026-10-28T14:38:05.554Z"
+      "started": "2026-10-28T14:45:43.842Z",
+      "finished": "2026-10-28T14:45:43.842Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.554Z",
-      "finished": "2026-10-28T14:38:05.554Z"
+      "started": "2026-10-28T14:45:43.842Z",
+      "finished": "2026-10-28T14:45:43.843Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.554Z",
-      "finished": "2026-10-28T14:38:05.554Z"
+      "started": "2026-10-28T14:45:43.843Z",
+      "finished": "2026-10-28T14:45:43.843Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.554Z",
-      "finished": "2026-10-28T14:38:05.554Z"
+      "started": "2026-10-28T14:45:43.843Z",
+      "finished": "2026-10-28T14:45:43.843Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.554Z",
-      "finished": "2026-10-28T14:38:05.556Z"
+      "started": "2026-10-28T14:45:43.843Z",
+      "finished": "2026-10-28T14:45:43.844Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.556Z",
-      "finished": "2026-10-28T14:38:05.556Z"
+      "started": "2026-10-28T14:45:43.844Z",
+      "finished": "2026-10-28T14:45:43.845Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.556Z",
-      "finished": "2026-10-28T14:38:05.556Z"
+      "started": "2026-10-28T14:45:43.845Z",
+      "finished": "2026-10-28T14:45:43.845Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-28T14:38:05.556Z",
-      "finished": "2026-10-28T14:38:05.556Z"
+      "started": "2026-10-28T14:45:43.845Z",
+      "finished": "2026-10-28T14:45:43.845Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-28T14:38:05.556Z",
+    "generatedAt": "2026-10-28T14:45:43.845Z",
     "factCount": 20,
     "changeCount": 84,
     "conflictCount": 2,

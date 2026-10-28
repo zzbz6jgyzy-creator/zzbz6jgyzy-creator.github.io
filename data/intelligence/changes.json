@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-28T14:38:05.556Z",
+  "updated": "2026-10-28T14:45:43.845Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/cybercab-outnumbers-model-y.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
+      "at": "2026-10-28T14:45:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/cybercab-outnumbers-model-y.html",
+      "href": "/dispatch/cybercab-outnumbers-model-y.html",
+      "summary": "Texas DMV records list 573 Cybercabs and 507 Model Ys under Tesla Robotaxi LLC. Tesla’s fleet is now 89% the size of Waymo’s in the state.",
+      "title": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
+      "id": "logged|dispatch:/dispatch/cybercab-outnumbers-model-y.html|2026-10-28T14:45:00.000Z|Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-faa-10000-launches.html",
@@ -408,23 +425,6 @@
       "summary": "SpaceX’s 10-Q shows 13.6M Starlink consumer subscribers; AT&T reported 13.31M fiber connections. Starlink added 6.4M in a year to AT&T’s 2.5M, with caveats.",
       "title": "Starlink now has more subscribers than AT&T Fiber. Here’s what that does and doesn’t mean",
       "id": "logged|dispatch:/dispatch/starlink-passes-att-fiber.html|2026-10-25T08:35:18.000Z|Starlink now has more subscribers than AT&T Fiber. Here’s what that does and doesn’t mean"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/robotaxi-938-f1-cota.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am",
-      "at": "2026-10-25T02:38:05.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/robotaxi-938-f1-cota.html",
-      "href": "/dispatch/robotaxi-938-f1-cota.html",
-      "summary": "135 cars added to the Texas registry in eight days, most of them Cybercabs, and Austin’s map now reaches the F1 track, with rides until 1am.",
-      "title": "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am",
-      "id": "logged|dispatch:/dispatch/robotaxi-938-f1-cota.html|2026-10-25T02:38:05.000Z|Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am"
     },
     {
       "type": "logged",
