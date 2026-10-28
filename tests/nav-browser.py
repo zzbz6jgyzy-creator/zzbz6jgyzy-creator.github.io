@@ -1,226 +1,129 @@
-"""Exercise persistent navigation with local pages and production scripts.
-
-External requests and all network writes are blocked. Requires Python Playwright
-and Chromium. Screenshots are written to dev/ for visual review.
-"""
-import asyncio
-import base64
-import json
-import mimetypes
-import os
-import pathlib
-import re
-import traceback
+"""Real navigation journeys, local assets only; no real subscriptions or writes."""
+import asyncio,base64,json,mimetypes,os,pathlib,re
 from urllib.parse import urlparse
-
 from playwright.async_api import async_playwright
+ROOT=pathlib.Path(__file__).resolve().parents[1]
+SITE='https://superchargeddaily.com'
+OUT=pathlib.Path('/tmp/navigation-studio');OUT.mkdir(exist_ok=True)
+CFG=json.loads((ROOT/'scripts/js-bundles.json').read_text())
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-SITE = 'https://superchargeddaily.com'
-CFG = json.loads((ROOT / 'scripts/js-bundles.json').read_text())
-SHORTCUTS = {
-    'Original stories': '/dispatch.html',
-    'Software updates': '/updates.html',
-    'Cybercab': '/cybercab.html',
-    'Starship': '/starship.html',
-}
-FOCUSABLE = '''(sheet) => [...sheet.querySelectorAll(
-    'a[href], button:not([disabled]), input:not([disabled]), [tabindex="0"]'
-)].filter(el => !el.closest('[hidden], [inert]') && el.getClientRects().length)'''
-
-
-async def ready(page):
-    await page.wait_for_function('window.__pn && window.__sdFind && window.__sdTheme')
-
-
-async def assert_header(page, width):
-    """The same labeled actions stay reachable at the top and down the page."""
-    nav = page.locator('.pn')
-    assert not await nav.evaluate('(el) => el.classList.contains("collapsed")')
-    box = await nav.bounding_box()
-    assert box and 44 <= box['height'] <= 64, box
-    assert box['x'] >= 0 and box['x'] + box['width'] <= width + 1, box
-    assert 0 <= box['y'] <= 28, box
-    for cls, label, href in [('pn-search', 'Search', '/search.html'),
-                             ('pn-daily', 'Your Daily', '/daily.html')]:
-        link = nav.locator('a.' + cls)
-        assert await link.count() == 1, (cls, 'duplicate header utility')
-        assert await link.get_attribute('href') == href
-        assert await link.is_visible()
-        assert await link.locator('span').inner_text() == label
-        text_box = await link.locator('span').bounding_box()
-        assert text_box and text_box['width'] > 20 and text_box['height'] > 8, (label, text_box)
-        target = await link.bounding_box()
-        assert target and target['width'] >= 44 and target['height'] >= 44, (label, target)
-        assert target['x'] >= box['x'] and target['x'] + target['width'] <= box['x'] + box['width'] + 1, target
-    assert await nav.locator('a.pn-sub').count() == 1
-    if width < 900:
-        menu = nav.locator('.pn-menu')
-        assert await menu.is_visible()
-        assert await menu.locator('span').inner_text() == 'Menu'
-        target = await menu.bounding_box()
-        assert target and target['width'] >= 44 and target['height'] >= 44, target
-        assert not await nav.locator('.pn-items').is_visible()
-    else:
-        assert await nav.locator('.pn-word').is_visible()
-        assert await nav.locator('.pn-dd > button').count() == 4
-    return box
-
-
-async def assert_sheet_keyboard(page):
-    sheet = page.locator('.pn-sheet')
-    assert await page.locator('.pn-close').evaluate('(el) => el === document.activeElement')
-    assert await sheet.evaluate('(el) => !el.inert')
-    await sheet.evaluate(f'(sheet) => ({FOCUSABLE})(sheet).at(-1).focus()')
-    await page.keyboard.press('Tab')
-    assert await sheet.evaluate(f'(sheet) => ({FOCUSABLE})(sheet)[0] === document.activeElement'), 'Tab escaped the menu'
-    await page.keyboard.press('Shift+Tab')
-    assert await sheet.evaluate(f'(sheet) => ({FOCUSABLE})(sheet).at(-1) === document.activeElement'), 'Shift+Tab escaped the menu'
-    await page.keyboard.press('Escape')
-    assert not await sheet.evaluate('(el) => el.classList.contains("open")')
-    assert await sheet.get_attribute('aria-hidden') == 'true'
-    assert await sheet.evaluate('(el) => el.inert')
-    assert await page.locator('.pn-menu').get_attribute('aria-expanded') == 'false'
-    assert await page.locator('.pn-menu').evaluate('(el) => el === document.activeElement')
-
+async def preview(page,name,locator=None):
+ data=await (locator or page).screenshot(type='jpeg',quality=60,animations='disabled',timeout=12000)
+ (OUT/(name+'.jpg')).write_bytes(data)
+ print('NAV_STUDIO_PREVIEW '+name+' '+base64.b64encode(data).decode(),flush=True)
 
 async def main():
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            executable_path=os.environ.get('CHROMIUM_PATH', '/usr/bin/chromium'),
-            args=['--no-sandbox', '--disable-dev-shm-usage'])
-
-        async def scenario(width, theme='dark', scripts=True):
-            context = await browser.new_context(
-                viewport={'width': width, 'height': 844}, is_mobile=width < 500,
-                java_script_enabled=scripts, reduced_motion='reduce')
-            await context.add_init_script('localStorage.setItem("sd-theme",' + json.dumps(theme) + ')')
-            context.set_default_timeout(12000)
-            context.set_default_navigation_timeout(15000)
-            print('NAV_START', width, theme, scripts, flush=True)
-            page = await context.new_page()
-            errors = []
-            page.on('pageerror', lambda error: errors.append(str(error)))
-
-            async def route(r):
-                if r.request.method != 'GET' or not r.request.url.startswith(SITE + '/'):
-                    return await r.abort()
-                rel = urlparse(r.request.url).path.lstrip('/') or 'index.html'
-                bundle = re.fullmatch(r'assets/js/([a-z0-9-]+)\.bundle\.[a-f0-9]+\.js', rel)
-                if bundle:
-                    return await r.fulfill(content_type='application/javascript', body='\n;\n'.join(
-                        (ROOT / f).read_text() for f in CFG['bundles'][bundle[1]]))
-                f = ROOT / rel
-                if f.is_file() and ROOT in f.resolve().parents:
-                    return await r.fulfill(content_type=mimetypes.guess_type(str(f))[0] or 'application/octet-stream', body=f.read_bytes())
-                await r.abort()
-
-            await page.route('**/*', route)
-            try:
-                await page.goto(SITE + '/', wait_until='domcontentloaded')
-                if scripts:
-                    await ready(page)
-                await page.evaluate('document.documentElement.dataset.theme=' + json.dumps(theme))
-                print('NAV_READY', width, theme, scripts, flush=True)
-                top = await assert_header(page, width)
-                await page.screenshot(animations='disabled', timeout=12000, path=str(ROOT / 'dev' / f'nav-header-{width}-{theme}{"-nojs" if not scripts else ""}.png'))
-                await page.evaluate('window.scrollTo(0, 700)')
-                await page.wait_for_function('window.scrollY >= 600')
-                # Old collapse behavior was scheduled on a scroll animation frame.
-                if scripts:
-                    await page.evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
-                scrolled = await assert_header(page, width)
-                for key in ['x', 'y', 'width', 'height']:
-                    assert abs(top[key] - scrolled[key]) <= 1, ('header moved after scroll', key, top, scrolled)
-                await page.screenshot(path=str(ROOT / 'dev' / f'nav-scrolled-{width}-{theme}{"-nojs" if not scripts else ""}.png'))
-
-                if not scripts:
-                    # The destinations are useful static anchors before scripts load.
-                    assert await page.locator('.pn-shortcuts a').count() == 4
-                    for name, path in SHORTCUTS.items():
-                        assert (await page.locator('.pn-shortcuts a[href="' + path + '"]').text_content()).strip() == name
-                    await page.locator('.pn a.pn-daily').click()
-                    await page.wait_for_url(SITE + '/daily.html')
-                    await page.locator('.pn a.pn-search').click()
-                    await page.wait_for_url(SITE + '/search.html')
-                else:
-                    await page.locator('.pn a.pn-search').click()
-                    await page.locator('.sd-find-root').wait_for(state='visible')
-                    assert await page.locator('#sd-find-q').evaluate('(el) => el === document.activeElement')
-                    await page.keyboard.press('Escape')
-                    await page.locator('.sd-find-root').wait_for(state='hidden')
-                    await page.locator('.pn a.pn-daily').click()
-                    await page.wait_for_url(SITE + '/daily.html')
-                    await ready(page)
-                    assert await page.locator('.pn a.pn-daily').get_attribute('aria-current') == 'page'
-                    await page.goto(SITE + '/', wait_until='domcontentloaded')
-                    await ready(page)
-
-                    if width < 900:
-                        await page.locator('.pn-menu').click()
-                        await page.locator('.pn-sheet.open').wait_for()
-                        await assert_sheet_keyboard(page)
-                        await page.locator('.pn-menu').click()
-                        assert await page.locator('.pn-grp-t[aria-expanded=true]').count() == 0
-                        for cls in ['pn-search-sheet', 'pn-daily-sheet', 'pn-sub-sheet']:
-                            assert await page.locator('.pn-sheet .' + cls).count() == 1, (cls, 'duplicate sheet utility')
-                        for name in SHORTCUTS:
-                            link = page.locator('.pn-shortcuts').get_by_role('link', name=name, exact=True)
-                            assert await link.is_visible()
-                            box = await link.bounding_box()
-                            assert box['height'] >= 44 and box['y'] + box['height'] <= 844, box
-                        await page.locator('.pn-sheet').screenshot(animations='disabled', timeout=12000, path=str(ROOT / 'dev' / f'nav-mobile-{width}-{theme}.png'))
-                        if width == 390 and theme == 'dark':
-                            shot = await page.locator('.pn-sheet').screenshot(animations='disabled', timeout=12000, type='jpeg', quality=65)
-                            print('NAV_PREVIEW ' + base64.b64encode(shot).decode(), flush=True)
-                        # Four navigation journeys without opening a menu category.
-                        for name, path in SHORTCUTS.items():
-                            await page.locator('.pn-shortcuts').get_by_role('link', name=name, exact=True).click()
-                            await page.wait_for_url(SITE + path)
-                            await ready(page)
-                            await page.locator('.pn-menu').click()
-                            await page.locator('.pn-sheet.open').wait_for()
-                            assert await page.locator('.pn-shortcuts').get_by_role('link', name=name, exact=True).get_attribute('aria-current') == 'page'
-                        await page.locator('.pn-sheet h3 button').filter(has_text='News').click()
-                        assert await page.locator('.pn-grp').get_by_role('link', name='Newsroom', exact=True).is_visible()
-                        assert await page.locator('.pn-grp').get_by_role('link', name='Original stories · Dispatch', exact=True).is_visible()
-                        await page.locator('.pn-search-sheet').click()
-                        await page.locator('.sd-find-root').wait_for(state='visible')
-                        assert await page.locator('.pn-sheet').get_attribute('aria-hidden') == 'true'
-                        await page.keyboard.press('Escape')
-                    else:
-                        await page.locator('.pn-dd > button').filter(has_text='Tesla').hover()
-                        group = page.get_by_role('button', name='Software & autonomy', exact=True)
-                        await group.hover()
-                        panel = page.locator('#pn-tesla-software-autonomy')
-                        await panel.wait_for(state='visible', timeout=2000)
-                        for path in ['/updates.html', '/fsd-europe.html', '/cybercab.html']:
-                            assert await panel.locator('a[href="' + path + '"]').is_visible()
-                        await page.screenshot(path=str(ROOT / 'dev' / f'nav-desktop-{width}-{theme}.png'))
-                        await panel.get_by_role('link', name='Software Update Tracker', exact=False).click()
-                        await page.wait_for_url(SITE + '/updates.html')
-                        await ready(page)
-                        await page.locator('.pn-dd > button').filter(has_text='News').hover()
-                        assert await page.locator('#pn-news').get_by_role('link', name='Newsroom', exact=False).is_visible()
-                        assert await page.locator('#pn-news').get_by_role('link', name='Original stories · Dispatch', exact=False).is_visible()
-                        assert await page.locator('.pn-sheet').get_attribute('aria-hidden') == 'true'
-                        assert await page.locator('.pn-sheet').evaluate('(el) => el.getBoundingClientRect().left >= innerWidth')
-                assert not await page.evaluate('document.documentElement.scrollWidth > innerWidth'), 'Viewport overflows'
-                assert not errors, errors
-                print(json.dumps({'width': width, 'theme': theme, 'scripts': scripts, 'passed': True}), flush=True)
-            except Exception:
-                print(traceback.format_exc(), flush=True)
-                raise
-            finally:
-                await context.close()
-
-        (ROOT / 'dev').mkdir(exist_ok=True)
-        for args in [(320, 'dark'), (375, 'dark'), (390, 'dark'), (390, 'light'),
-                     (768, 'dark'), (768, 'light'), (900, 'dark'),
-                     (1440, 'dark'), (1440, 'light'), (390, 'dark', False),
-                     (1440, 'dark', False)]:
-            await asyncio.wait_for(scenario(*args), timeout=90)
-        await browser.close()
-
-
+ async with async_playwright() as p:
+  browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
+  async def scenario(width,theme='dark',mode='normal'):
+   scripts=mode!='nojs'
+   context=await browser.new_context(viewport={'width':width,'height':844},java_script_enabled=scripts,reduced_motion='reduce',service_workers='block')
+   context.set_default_timeout(12000);context.set_default_navigation_timeout(15000)
+   init='localStorage.setItem("sd-theme",'+json.dumps(theme)+');'
+   if mode=='storage':init+="Object.defineProperty(window,'localStorage',{get(){throw Error('Unavailable')}});"
+   await context.add_init_script(init)
+   page=await context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+   async def route(r):
+    u=urlparse(r.request.url)
+    if r.request.method!='GET' or u.hostname!='superchargeddaily.com':return await r.abort()
+    rel=u.path.lstrip('/') or 'index.html'
+    if rel=='members-config.json':return await r.fulfill(body='{"enabled":false}',content_type='application/json')
+    if mode=='offline' and rel in ['data/pages.json','data/articles.json']:return await r.abort()
+    bundle=re.fullmatch(r'assets/js/([a-z0-9-]+)\.bundle\.[a-f0-9]+\.js',rel)
+    if bundle:return await r.fulfill(body='\n;\n'.join((ROOT/f).read_text() for f in CFG['bundles'][bundle[1]]),content_type='application/javascript')
+    f=ROOT/rel
+    if f.is_file() and ROOT in f.resolve().parents:return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0] or 'application/octet-stream')
+    return await r.abort()
+   await context.route('**/*',route)
+   try:
+    print('NAV_START',width,theme,mode,flush=True)
+    await page.goto(SITE+'/',wait_until='domcontentloaded')
+    if scripts:await page.wait_for_function('window.__pn && window.__sdFind && window.__sdTheme')
+    await page.evaluate('document.fonts.ready')
+    nav=page.locator('.pn');sheet=page.locator('.pn-sheet')
+    assert await nav.locator('.ns-dropdown').count()==5
+    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
+    initial=await nav.bounding_box()
+    for key in ['pn-search','pn-daily']:
+     a=nav.locator('.'+key);assert await a.is_visible();b=await a.bounding_box();assert b['height']>=44 and b['width']>=44
+    await page.evaluate('window.scrollTo(0,700)')
+    await page.wait_for_function('scrollY>=600')
+    if scripts:await page.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))')
+    after=await nav.bounding_box()
+    assert all(abs(initial[k]-after[k])<2 for k in ['x','y','width','height']),('header moved',initial,after)
+    if width<1080:
+     assert await nav.locator('.pn-menu').is_visible()
+     await nav.locator('.pn-menu').click();await sheet.wait_for(state='visible')
+     assert await sheet.locator('.ns-mobile-section').count()==5
+     for title in ['News','Tesla','SpaceX','Trackers','Explore']:
+      summary=sheet.locator('.ns-mobile-section>summary').filter(has_text=re.compile('^'+title+'$'))
+      assert await summary.is_visible();b=await summary.bounding_box();assert b['height']>=44
+     if scripts:
+      assert await page.locator('main').first.evaluate('e=>!!e.closest("[inert]")')
+      assert await sheet.locator('.pn-close').evaluate('e=>e===document.activeElement')
+      controls="[...e.querySelectorAll('a[href],button,input,summary')].filter(a=>a.getClientRects().length&&!a.closest('[hidden],[inert]'))"
+      await sheet.evaluate('e=>'+controls+'.at(-1).focus()')
+      await page.keyboard.press('Tab');assert await sheet.evaluate('e=>'+controls+'[0]===document.activeElement')
+      await page.keyboard.press('Shift+Tab');assert await sheet.evaluate('e=>'+controls+'.at(-1)===document.activeElement')
+     if width in [390,768] and mode=='normal':await preview(page,('mobile-menu-' if width==390 else 'tablet-menu-')+theme,sheet)
+     await sheet.locator('.ns-mobile-section>summary').filter(has_text='Trackers').click()
+     if width in [390,768] and theme=='dark' and mode=='normal':await preview(page,'mobile-trackers' if width==390 else 'tablet-trackers',sheet)
+     await sheet.locator('.ns-mobile-categories a[href="/updates.html"]').click()
+     await page.wait_for_url(SITE+'/updates.html')
+     if scripts:await page.wait_for_function('window.__pn && window.__sdFind')
+     await page.locator('.pn-menu').click();await page.locator('.pn-sheet').wait_for(state='visible')
+     sheet=page.locator('.pn-sheet')
+     if scripts:
+      assert await sheet.locator('.ns-mobile-section>summary').filter(has_text='Trackers').get_attribute('aria-current')=='true'
+      await sheet.locator('[data-ns-query]').fill('Starlink')
+      if mode=='offline':
+       await sheet.locator('.sd-find-empty').wait_for(state='visible');assert (await sheet.locator('[data-sd-status]').inner_text()).strip()
+      else:
+       hit=sheet.locator('.sd-find-hit[href$="/starlink.html"]').first
+       await hit.wait_for(state='visible')
+       assert await page.locator('.sd-find-root:visible').count()==0,'Search must stay inside the phone menu'
+       await sheet.locator('[data-ns-query]').press('ArrowDown')
+       assert await sheet.locator('[data-ns-query]').get_attribute('aria-activedescendant')
+       if width==390 and theme=='dark' and mode=='normal':await preview(page,'mobile-search',sheet)
+      await sheet.locator('.ns-search-clear').click();assert await sheet.locator('.ns-browse').is_visible()
+      if mode=='large':
+       await sheet.evaluate("e=>{let a=[...e.querySelectorAll('summary,.ns-link-title,.ns-link small')];let s=a.map(n=>[n,parseFloat(getComputedStyle(n).fontSize)]);s.forEach(([n,f])=>n.style.fontSize=f*2+'px')}")
+       await sheet.locator('.ns-mobile-section>summary').filter(has_text='Trackers').click()
+       assert await sheet.evaluate('e=>e.scrollWidth<=e.clientWidth+1')
+       await preview(page,'mobile-large-text',sheet)
+      await page.keyboard.press('Escape');assert not await sheet.is_visible()
+      assert await page.locator('.pn-menu').evaluate('e=>e===document.activeElement')
+      assert not await page.locator('main').first.evaluate('e=>!!e.closest("[inert]")')
+      await page.locator('.pn a.pn-search').click();await page.locator('.sd-find-root').wait_for(state='visible')
+      assert await page.locator('#sd-find-q').evaluate('e=>e===document.activeElement')
+      await page.keyboard.press('Escape')
+     else:
+      await sheet.locator('[data-ns-query]').fill('Starlink')
+      await sheet.locator('.ns-search-submit').click();await page.wait_for_url(SITE+'/search.html?q=Starlink')
+      await page.locator('.pn-menu').click();await page.locator('.pn-sheet').wait_for(state='visible')
+      await page.locator('.pn-close').click();assert not await page.locator('.pn-sheet').is_visible()
+    else:
+     assert not await nav.locator('.pn-menu').is_visible()
+     for title in ['Tesla','Trackers','SpaceX']:
+      summary=nav.locator('.ns-dropdown>summary').filter(has_text=re.compile('^'+title+'$'))
+      await summary.click();panel=nav.locator('.ns-dropdown[open] .ns-panel')
+      assert await panel.is_visible();assert await panel.locator('details').count()==0
+      b=await panel.bounding_box();assert b['x']>=0 and b['x']+b['width']<=width+1
+      if width==1440 and mode=='normal':await preview(page,'desktop-'+title.lower()+'-'+theme)
+     await nav.locator('.ns-dropdown>summary').filter(has_text='SpaceX').click()
+     if scripts:
+      tesla=nav.locator('.ns-dropdown>summary').filter(has_text='Tesla')
+      await tesla.focus();await page.keyboard.press('ArrowDown')
+      assert await nav.locator('#pn-tesla').evaluate('e=>e.contains(document.activeElement)')
+      await page.keyboard.press('Escape');assert await tesla.evaluate('e=>e===document.activeElement')
+      await page.keyboard.press('Tab');assert await nav.locator('.ns-dropdown>summary').filter(has_text='SpaceX').evaluate('e=>e===document.activeElement')
+     await nav.locator('.ns-dropdown>summary').filter(has_text='Trackers').click()
+     await nav.locator('#pn-trackers a[href="/fsd-europe.html"]').click();await page.wait_for_url(SITE+'/fsd-europe.html')
+    assert not errors,(width,mode,errors)
+    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
+    print('PASS',width,theme,mode,flush=True)
+   finally:await context.close()
+  for args in [(320,'dark','normal'),(390,'dark','normal'),(390,'light','normal'),(768,'dark','normal'),(768,'light','normal'),(1024,'dark','normal'),(1080,'dark','normal'),(1440,'dark','normal'),(1440,'light','normal'),(390,'dark','nojs'),(1440,'dark','nojs'),(390,'dark','offline'),(390,'dark','storage'),(390,'dark','large')]:
+   await asyncio.wait_for(scenario(*args),timeout=90)
+  await browser.close()
 asyncio.run(main())

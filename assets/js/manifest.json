@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.a2c9563630.js",
-      "bytes": 44755,
+      "file": "/assets/js/core.bundle.2f0f5d154e.js",
+      "bytes": 43595,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -17,8 +17,8 @@
       ]
     },
     "intel": {
-      "file": "/assets/js/intel.bundle.a332ac2ad4.js",
-      "bytes": 41083,
+      "file": "/assets/js/intel.bundle.5799a56929.js",
+      "bytes": 41258,
       "sources": [
         "intel-core.js",
         "intel.js"
@@ -388,8 +388,8 @@
       ]
     },
     "arcade-core": {
-      "file": "/assets/js/arcade-core.bundle.5e7f849774.js",
-      "bytes": 39359,
+      "file": "/assets/js/arcade-core.bundle.5e5cfe1bf3.js",
+      "bytes": 38199,
       "sources": [
         "track.js",
         "newsletter.js",

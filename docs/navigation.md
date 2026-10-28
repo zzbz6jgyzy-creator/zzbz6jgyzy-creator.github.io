@@ -1,9 +1,14 @@
-# Navigation and mobile opening — October 2026
+# Navigation studio
 
-The persistent shared header keeps Search and Your Daily visible while scrolling. Four menus organize News, Tesla, SpaceX and Explore; Roadster lives under Tesla, and Explore contains guides and recreation rather than a duplicate tracker directory. Newsroom and external headlines link to their correct views. The main subscription action leads to the free Sunday briefing.
+The shared menu now has five sections: News, Tesla, SpaceX, Trackers and Explore. Desktop panels expose grouped ordinary links. Tesla is edited around choosing, owning and exploring the cars; the full tool directory lives in Trackers. Roadster’s detailed chapter links belong to its own page navigation. Existing URLs remain unchanged.
 
-On phones the homepage now reads introduction, showcase, then newsletter signup. Desktop retains the split composition. Both signup forms use the existing native provider handoff. Core fonts, imagery, theme support and source information remain intact.
+On phones and tablets below 1080px, the full-width menu puts an inline search form and Your Daily above large section disclosures. Account, appearance and newsletter controls sit below the main destinations. Search results use the existing index and remain inside the open menu. Search, clearing, keyboard selection and fallback links share the existing search implementation. Its standalone overlay remains available from the header and keyboard shortcut.
 
-Edit scripts/nav.json and scripts/sync-nav.py, then regenerate all navigation. The many HTML changes contain the same generated menu and hashed core bundle reference, not individual page redesigns. scripts/build-home.js owns the opening; home-studio.css owns its responsive layout.
+The server-rendered HTML uses native details for section choices and a hash-target menu fallback, so menu links work before JavaScript. Enhancement adds hover intent, mutual exclusion, current-section cues, Escape, focus restoration, focus trapping and inert background content. SVG symbols reuse the site’s own icon paths; the Roadster tile reuses existing Tesla imagery. No runtime library, new font, paid tool, new analytics collection or framework migration is required.
 
-Validation: generator preservation/idempotence, homepage structure, responsive browser journeys, nested menu keyboard/pointer navigation, dark/light, no-JavaScript direct utility links, enlarged text and mocked newsletter handoffs. Browser tests run in CI; no subscriptions are submitted to a real provider. Later batches: content deduplication, shared visual tokens, and article saving integration.
+Sources: [21st.dev Wensity Navigation Menu](https://mcp.21st.dev/@wensity/components/navigation-menu), [NN/g mega-menu guidance](https://www.nngroup.com/articles/mega-menus-work-well/), and [W3C disclosure navigation](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/). These inform the design and interaction model; the implementation uses native HTML, CSS and JavaScript.
+
+Edit scripts/nav.json and scripts/sync-nav.py, then regenerate the shared block. Explicit sd:navigation boundaries make subsequent regeneration safe. Page content, schemas and other bundles remain outside this component. The generator excludes packaged Astro copies and CI comparison checkouts. The many generated HTML changes repeat the same component and core bundle reference.
+
+Validation: python3 tests/test_nav_generation.py; python3 scripts/sync-nav.py --check; Python Playwright tests/nav-browser.py and tests/nav-dropdown-browser.py. Tests use local read-only fixtures, mock unavailable network/storage cases, retain no-JavaScript navigation journeys, exercise large text and keyboard routes, and emit phone/tablet/desktop previews. No email is submitted or message sent by these tests. Conversion and task-finding improvements require observation after release; no uplift is claimed.
+

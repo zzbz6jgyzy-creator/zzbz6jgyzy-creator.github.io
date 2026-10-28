@@ -1,3 +1,10 @@
+## 2026-10-28 — Navigation studio
+
+- Add grouped desktop mega menus and a dedicated Trackers directory.
+- Introduce a full-width mobile menu with inline search and quieter utility controls.
+- Preserve native menu fallbacks, keyboard focus, account return paths, current reporting and existing destinations.
+- Keep follow controls available for the current visit when browser storage is blocked.
+
 ## 2026-10-28 — Mobile opening and persistent navigation
 
 - Bring imagery before signup on phones and keep Search and Your Daily visible.

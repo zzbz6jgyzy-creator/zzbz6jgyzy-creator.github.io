@@ -186,10 +186,10 @@
     const on = document.querySelector("[data-sd-kind].is-on");
     return (on && on.getAttribute("data-sd-kind")) || "all";
   }
-  function queryItems(q) {
+  function queryItems(q, kindOverride) {
     const raw = String(q || "").trim();
     const toks = tokens(raw);
-    const kind = PAGE ? activeKind() : "all";
+    const kind = kindOverride || (PAGE ? activeKind() : "all");
     const all = (catalog || []).filter((i) => kind === "all" || i.kind === kind);
     if (!raw) {
       const stories = all.filter((i) => i.kind === "story").slice(0, LATEST);
@@ -211,13 +211,13 @@
     return { grouped: false, items: ranked, n: ranked.length, toks };
   }
 
-  function hitHtml(item, toks, i) {
+  function hitHtml(item, toks, i, prefix) {
     const img = item.image
       ? `<span class="sd-find-media"><img src="${esc(item.image)}" alt="" width="112" height="70" loading="lazy" onerror="this.parentNode.hidden=true" /></span>`
       : "";
     const when = fmtDate(item.date);
     const kind = item.kind === "story" ? "Story" : item.kind === "wire" ? "Headline" : "Page";
-    return `<a class="sd-find-hit${item.image ? "" : " no-img"}" role="option" id="sd-find-opt-${i}" href="${esc(item.url)}" data-i="${i}">
+    return `<a class="sd-find-hit${item.image ? "" : " no-img"}" role="option" id="${esc(prefix || "sd-find-opt")}-${i}" href="${esc(item.url)}" data-i="${i}">
       ${img}
       <span>
         <span class="sd-find-k"><span class="sd-find-tag">${esc(item.tag || kind)}</span><span>${esc(kind)}</span>${when ? `<span>${esc(when)}</span>` : ""}</span>
@@ -231,6 +231,8 @@
     const status = box.querySelector("[data-sd-status]");
     const hits = box.querySelector("[data-sd-hits]");
     if (!hits) return;
+    const prefix = (hits.id || "sd-find") + "-opt";
+    box.querySelector("input")?.removeAttribute("aria-activedescendant");
     if (loadErr) {
       if (status) status.textContent = loadErr;
       hits.innerHTML = `<p class="sd-find-empty">${esc(loadErr)} Browse <a href="/news.html">News</a> or <a href="/dispatch.html">Dispatch</a>.</p>`;
@@ -241,7 +243,7 @@
       hits.innerHTML = `<p class="sd-find-empty">Loading the index…</p>`;
       return 0;
     }
-    const res = queryItems(q);
+    const res = queryItems(q, box.matches(".ns-mobile-search") ? "all" : undefined);
     const toks = res.toks || [];
     if (status) {
       status.textContent = q.trim()
@@ -254,17 +256,17 @@
     }
     if (res.grouped) {
       const storyBlock = res.stories.length
-        ? `<p class="sd-find-sec">Latest stories</p>` + res.stories.map((item, i) => hitHtml(item, toks, i)).join("")
+        ? `<p class="sd-find-sec">Latest stories</p>` + res.stories.map((item, i) => hitHtml(item, toks, i, prefix)).join("")
         : "";
       const pageBlock = res.pages.length
-        ? `<p class="sd-find-sec">Pages</p>` + res.pages.map((item, i) => hitHtml(item, toks, res.stories.length + i)).join("")
+        ? `<p class="sd-find-sec">Tools & pages</p>` + res.pages.map((item, i) => hitHtml(item, toks, res.stories.length + i, prefix)).join("")
         : "";
       const wireBlock = (res.wires || []).length
-        ? `<p class="sd-find-sec">Headlines</p>` + res.wires.map((item, i) => hitHtml(item, toks, res.stories.length + res.pages.length + i)).join("")
+        ? `<p class="sd-find-sec">Headlines</p>` + res.wires.map((item, i) => hitHtml(item, toks, res.stories.length + res.pages.length + i, prefix)).join("")
         : "";
       hits.innerHTML = storyBlock + pageBlock + wireBlock;
     } else {
-      hits.innerHTML = res.items.map((item, i) => hitHtml(item, toks, i)).join("");
+      hits.innerHTML = res.items.map((item, i) => hitHtml(item, toks, i, prefix)).join("");
     }
     return res.n;
   }
@@ -274,10 +276,12 @@
     const hits = () => [...box.querySelectorAll(".sd-find-hit")];
     const setOn = (i) => {
       const list = hits();
-      list.forEach((el) => el.classList.remove("is-on"));
+      list.forEach((el) => { el.classList.remove("is-on"); el.setAttribute("aria-selected", "false"); });
       if (!list.length) { active = -1; return; }
       active = (i + list.length) % list.length;
       list[active].classList.add("is-on");
+      list[active].setAttribute("aria-selected", "true");
+      box.querySelector("input")?.setAttribute("aria-activedescendant", list[active].id);
       list[active].scrollIntoView({ block: "nearest" });
     };
     box.addEventListener("keydown", (e) => {
@@ -300,7 +304,7 @@
       a.classList.add("is-on");
       active = Number(a.dataset.i);
     });
-    return { reset: () => { active = -1; } };
+    return { reset: () => { active = -1; box.querySelector("input")?.removeAttribute("aria-activedescendant"); } };
   }
 
   /* —— overlay —— */
@@ -314,7 +318,7 @@
       <h2 id="sd-find-title" class="visually-hidden">Search Supercharged Daily</h2>
       <div class="sd-find-bar">
         ${MAG}
-        <input class="sd-find-q" id="sd-find-q" type="search" placeholder="Search stories, trackers and pages" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-controls="sd-find-hits" />
+        <input class="sd-find-q" id="sd-find-q" type="search" role="combobox" aria-expanded="true" placeholder="Search stories, trackers and pages" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-controls="sd-find-hits" />
         <button class="sd-find-x" type="button" aria-label="Close search">✕</button>
       </div>
       <p class="sd-find-status" data-sd-status></p>
@@ -332,9 +336,17 @@
     });
     root.querySelector(".sd-find-x").addEventListener("click", close);
     root.addEventListener("click", (e) => { if (e.target === root) close(); });
+    root.addEventListener("keydown", e => {
+      if (e.key !== "Tab") return;
+      const controls = [...root.querySelectorAll('a[href],input,button')].filter(el => el.getClientRects().length);
+      const first = controls[0], last = controls.at(-1);
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+    });
   }
 
   async function open(seed) {
+    window.__pn?.sheetOpen(false);
     if (PAGE) {
       const input = document.getElementById("sd-search-q");
       if (input) { if (seed != null) input.value = seed; input.focus(); input.select(); paintPage(); }
@@ -342,9 +354,11 @@
     }
     ensureOverlay();
     lastFocus = document.activeElement;
-    await load();
     root.hidden = false;
     document.body.classList.add("sd-find-lock");
+    render(root.querySelector(".sd-find-box"), seed || "");
+    await load();
+    if (root.hidden) return;
     overlayInput.value = seed != null ? seed : "";
     render(root.querySelector(".sd-find-box"), overlayInput.value);
     overlayNav.reset();
@@ -446,6 +460,37 @@
     }
   });
 
-  window.__sdFind = { open, close };
+  function mount(box) {
+    if (!box || box.dataset.sdMounted) return;
+    const input = box.querySelector("[data-ns-query]"), clear = box.querySelector(".ns-search-clear"), drawer = box.closest(".pn-sheet");
+    if (!input) return;
+    box.dataset.sdMounted = "true";
+    const navigation = bindList(box, () => input.value);
+    function reset() {
+      navigation.reset(); input.setAttribute("aria-expanded", "false");
+      drawer?.removeAttribute("data-ns-searching"); box.removeAttribute("data-searching");
+      box.querySelector("[data-sd-hits]").textContent = "";
+      box.querySelector("[data-sd-status]").textContent = "";
+      if (clear) clear.hidden = true;
+    }
+    async function paint() {
+      if (!input.value.trim()) return reset();
+      input.setAttribute("aria-expanded", "true");
+      drawer?.setAttribute("data-ns-searching", ""); box.setAttribute("data-searching", "");
+      if (clear) clear.hidden = false;
+      render(box, input.value);
+      await load();
+      if (!input.value.trim()) return reset();
+      render(box, input.value); navigation.reset();
+    }
+    let timer;
+    input.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(paint, 60); });
+    box.addEventListener("submit", e => { e.preventDefault(); clearTimeout(timer); paint(); });
+    clear?.addEventListener("click", () => { clearTimeout(timer); input.value = ""; reset(); input.focus(); });
+  }
+
+  window.__sdFind = { open, close, mount };
+  mount(document.querySelector(".ns-mobile-search"));
   if (PAGE) bootPage();
 })();
+
