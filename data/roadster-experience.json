@@ -146,7 +146,7 @@
       "id": "revealed",
       "label": "Revealed",
       "value": "15 Oct 2026",
-      "detail": "Shown at SpaceX's McGregor test site (Engadget), outside Waco, Texas (TechCrunch). The event ran under 30 minutes and gave no price (The Verge).",
+      "detail": "Shown at SpaceX's McGregor test site (Engadget), outside Waco, Texas (TechCrunch). The event ran under 30 minutes and gave no price (The Verge). Dates on this page are Texas time.",
       "status": "reported",
       "sources": [
         "engadget",
@@ -491,7 +491,7 @@
         "number": "01",
         "title": "A different connection",
         "text": "The Verge reports a two-seater with seats moulded into the chassis, and steering and driving controls that are steer-by-wire, including the yoke, brakes and throttle. The published image does not show the redundancy or the calibration behind that.",
-        "status": "claim",
+        "status": "reported",
         "sources": [
           "verge"
         ]
@@ -772,9 +772,9 @@
       },
       {
         "id": "slip",
-        "label": "1 Oct 2026",
+        "label": "Oct 2026",
         "title": "The reveal slips a fortnight",
-        "text": "The event was first set for 1 October and moved to 15 October because of weather.",
+        "text": "The event was planned for 1 October and moved to 15 October because of weather.",
         "status": "reported",
         "sources": [
           "dispatch-reveal"
@@ -848,7 +848,7 @@
           "label": "Price",
           "then": "$200,000 to start",
           "now": "Not announced",
-          "status": "target",
+          "status": "claim",
           "sources": [
             "verge",
             "techcrunch"
