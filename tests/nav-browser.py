@@ -95,6 +95,9 @@ async def main():
                 viewport={'width': width, 'height': 844}, is_mobile=width < 500,
                 java_script_enabled=scripts, reduced_motion='reduce')
             await context.add_init_script('localStorage.setItem("sd-theme",' + json.dumps(theme) + ')')
+            context.set_default_timeout(12000)
+            context.set_default_navigation_timeout(15000)
+            print('NAV_START', width, theme, scripts, flush=True)
             page = await context.new_page()
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
@@ -118,8 +121,9 @@ async def main():
                 if scripts:
                     await ready(page)
                 await page.evaluate('document.documentElement.dataset.theme=' + json.dumps(theme))
+                print('NAV_READY', width, theme, scripts, flush=True)
                 top = await assert_header(page, width)
-                await page.screenshot(path=str(ROOT / 'dev' / f'nav-header-{width}-{theme}{"-nojs" if not scripts else ""}.png'))
+                await page.screenshot(animations='disabled', timeout=12000, path=str(ROOT / 'dev' / f'nav-header-{width}-{theme}{"-nojs" if not scripts else ""}.png'))
                 await page.evaluate('window.scrollTo(0, 700)')
                 await page.wait_for_function('window.scrollY >= 600')
                 # Old collapse behavior was scheduled on a scroll animation frame.
@@ -164,9 +168,9 @@ async def main():
                             assert await link.is_visible()
                             box = await link.bounding_box()
                             assert box['height'] >= 44 and box['y'] + box['height'] <= 844, box
-                        await page.locator('.pn-sheet').screenshot(path=str(ROOT / 'dev' / f'nav-mobile-{width}-{theme}.png'))
+                        await page.locator('.pn-sheet').screenshot(animations='disabled', timeout=12000, path=str(ROOT / 'dev' / f'nav-mobile-{width}-{theme}.png'))
                         if width == 390 and theme == 'dark':
-                            shot = await page.locator('.pn-sheet').screenshot(type='jpeg', quality=65)
+                            shot = await page.locator('.pn-sheet').screenshot(animations='disabled', timeout=12000, type='jpeg', quality=65)
                             print('NAV_PREVIEW ' + base64.b64encode(shot).decode(), flush=True)
                         # Four navigation journeys without opening a menu category.
                         for name, path in SHORTCUTS.items():
@@ -214,7 +218,7 @@ async def main():
                      (768, 'dark'), (768, 'light'), (900, 'dark'),
                      (1440, 'dark'), (1440, 'light'), (390, 'dark', False),
                      (1440, 'dark', False)]:
-            await scenario(*args)
+            await asyncio.wait_for(scenario(*args), timeout=90)
         await browser.close()
 
 
