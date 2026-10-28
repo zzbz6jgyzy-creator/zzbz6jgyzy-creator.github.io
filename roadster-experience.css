@@ -304,3 +304,4 @@ html[data-theme="light"] .rx-kind-correction{color:#b3261e;border-color:#b3261e}
 .rx-table thead th{font:500 .7rem var(--rx-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--rx-read-accent)}
 .rx-table tbody tr:last-child th,.rx-table tbody tr:last-child td{border-bottom:0}
 .rx-table tbody th{font-weight:500}.rx-table td .rx-foot{margin-top:0}
+.rx-shot-cap .rx-cite,.rx-note .rx-cite{opacity:1;color:var(--rx-dim)}
