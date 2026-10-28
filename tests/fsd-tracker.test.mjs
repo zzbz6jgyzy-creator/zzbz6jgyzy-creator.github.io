@@ -125,8 +125,12 @@ test('the page does not depend on the bot-updated software history',()=>{
 test('the refresh script pins software data deterministically',()=>{
   const before=fs.readFileSync('data/fsd-tracker.json','utf8');
   try{execFileSync(process.execPath,['scripts/refresh-fsd-pins.mjs'],{env:{...process.env,FSD_PINS_OFFLINE:'1'}});
-    assert.equal(fs.readFileSync('data/fsd-tracker.json','utf8'),before,'an offline run leaves the file byte-identical, whatever today\'s date');
-    const a=JSON.parse(fs.readFileSync('data/fsd-tracker.json','utf8'));assert.equal(M.validate(a),a);assert.equal(a.software.builds.length,a.software.top);
+    const a=JSON.parse(fs.readFileSync('data/fsd-tracker.json','utf8')),was=JSON.parse(before);
+    // The software, atlas and Europe slices follow other files that change on main, so they may legitimately differ.
+    // What an offline run must never touch, whatever today's date: the review date, the hand-measured numbers and Eurostat's dates.
+    for(const k of ['reviewed','kpis','adoption','miles'])assert.deepEqual(a[k],was[k],k+' is unchanged by an offline run');
+    assert.deepEqual(a.sources.find(s=>s.id==='eurostat'),was.sources.find(s=>s.id==='eurostat'),'no new opened date for Eurostat offline');
+    assert.equal(M.validate(a),a);assert.equal(a.software.builds.length,a.software.top);
   }finally{fs.writeFileSync('data/fsd-tracker.json',before);}
 });
 
