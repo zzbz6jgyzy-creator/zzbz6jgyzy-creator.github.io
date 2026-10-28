@@ -14,7 +14,7 @@ def link(item):
     name, href = item[0], item[1]
     kind = item[2] if len(item) > 2 else ""
     if kind == "referral":
-        return (f'<a href="{href}" target="_blank" rel="noopener noreferrer">{html.escape(name)}</a> '
+        return (f'<a href="{href}" target="_blank" rel="noopener noreferrer sponsored">{html.escape(name)}</a> '
                 '<span class="ref-note">Referral link: we may earn a reward</span>')
     tag = f'<a href="{href}">{html.escape(name)}</a>'
     # Cloudflare Email Obfuscation rewrites mailto links, then its decoder
