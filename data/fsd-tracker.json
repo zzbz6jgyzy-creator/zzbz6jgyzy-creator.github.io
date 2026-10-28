@@ -64,6 +64,33 @@
       "url": "https://fsd-eu-tracker.de/en/",
       "date": "2026-10-27",
       "checked": "2026-10-27"
+    },
+    {
+      "id": "nata-safety",
+      "url": "https://www.notateslaapp.com/news/3633/teslas-updated-safety-report-fsd-supervised-is-safer-than-humans",
+      "title": "Tesla's updated safety report: FSD (Supervised) is safer than humans",
+      "outlet": "Not a Tesla App",
+      "date": "2026-02-19",
+      "checked": "2026-10-28",
+      "kind": "reporting"
+    },
+    {
+      "id": "drive-tesla-eu-safety",
+      "url": "https://driveteslacanada.ca/news/tesla-fsd-safety-evidence-october-eu-vote/",
+      "title": "Tesla Publishes FSD Safety Evidence Ahead of October 6 EU Vote",
+      "outlet": "Drive Tesla Canada",
+      "date": "2026-09-01",
+      "checked": "2026-10-28",
+      "kind": "reporting"
+    },
+    {
+      "id": "automotiveworld-safety",
+      "url": "https://www.automotiveworld.com/news/teslas-new-fsd-safety-data-is-nine-months-out-of-date/",
+      "title": "Tesla's new FSD safety data is nine months out of date",
+      "outlet": "Automotive World",
+      "date": "2026-09-02",
+      "checked": "2026-10-28",
+      "kind": "reporting"
     }
   ],
   "kpis": [
@@ -193,6 +220,11 @@
     "caveat": "The ratio is our own calculation: active subscriptions divided by cumulative deliveries, which Tesla defines as all new vehicles delivered to customers plus any unsupervised Robotaxis placed into commercial operation. Older cars leave the fleet and some owners use FSD on a car they bought secondhand, so it is a proxy for take rate, not a figure Tesla reports."
   },
   "changes": [
+    {
+      "date": "2026-10-28",
+      "kind": "update",
+      "text": "Added the safety claims section (Tesla's published crash-rate comparisons, with what each is compared against) and the promises strip, which reads the same ledger as the promise tracker."
+    },
     {
       "date": "2026-10-28",
       "kind": "update",
@@ -1375,5 +1407,94 @@
   "sourcesPinned": {
     "eurostatUpdated": "2026-09-25",
     "teslaMarketsChecked": "2026-10-26"
+  },
+  "claims": {
+    "asOf": "2026-02-19",
+    "us": {
+      "source": "nata-safety",
+      "window": "the latest 12 months, all North American road classes",
+      "rows": [
+        {
+          "id": "fsd",
+          "label": "Tesla with FSD (Supervised)",
+          "miles": 5300676,
+          "collisions": 830,
+          "drivenMiles": 4390000000.0,
+          "prior": 5100000
+        },
+        {
+          "id": "manual-as",
+          "label": "Tesla, driven manually, with Active Safety",
+          "miles": 2175763,
+          "collisions": 16131,
+          "drivenMiles": 35090000000.0,
+          "prior": 2300000
+        },
+        {
+          "id": "manual-no",
+          "label": "Tesla, driven manually, no Active Safety (pre-2014 cars)",
+          "miles": 855132,
+          "collisions": 250,
+          "drivenMiles": 213780000.0,
+          "prior": 927000
+        },
+        {
+          "id": "us",
+          "label": "U.S. average, all vehicles",
+          "miles": 660164,
+          "collisions": 4989713,
+          "drivenMiles": 3290000000000.0,
+          "prior": null
+        }
+      ],
+      "definition": "A major collision is one severe enough to deploy an airbag or seatbelt pretensioner, or to fire the high-voltage battery pyro fuse. Tesla counts a crash as an FSD crash if FSD was active at any point in the five seconds before impact."
+    },
+    "eu": {
+      "windowNote": "Tesla's EU dashboard: about 102 million km in five countries, 4.1 times less likely to crash than manual Tesla driving; the July update said 5.2 times after 65 million km.",
+      "source": "drive-tesla-eu-safety",
+      "critic": "automotiveworld-safety",
+      "multiple": 4.1,
+      "km": 102,
+      "july": {
+        "multiple": 5.2,
+        "km": 65
+      }
+    },
+    "caveats": [
+      {
+        "text": "Every figure comes from Tesla's own report. We could not open Tesla's safety page (tesla.com returns an error to our fetcher), so the numbers are as reported by Not a Tesla App, which quotes the report.",
+        "source": "nata-safety",
+        "status": "reported"
+      },
+      {
+        "text": "The groups are not like for like. The U.S. average covers every vehicle, driver and age of car; the FSD figure counts only miles with FSD engaged, and the manual group with no active safety is pre-2014 cars. Tesla's table does not adjust for any of that.",
+        "source": "nata-safety",
+        "status": null
+      },
+      {
+        "text": "Drive Tesla Canada reports that every dated measurement window in the EU dashboard closes in 2025; Automotive World's headline calls the data nine months out of date. We could not open the dashboard itself.",
+        "source": "drive-tesla-eu-safety",
+        "status": "reported"
+      },
+      {
+        "text": "These are Tesla's rates. They are not a regulator's finding and we draw no safety conclusion from them. FSD (Supervised) always needs an attentive driver.",
+        "source": "nata-safety",
+        "status": null
+      }
+    ]
+  },
+  "promises": {
+    "ids": [
+      "la-to-nyc-demo-2017",
+      "fsd-feature-complete-2019",
+      "level-five-basic-2020",
+      "full-autonomy-2023",
+      "fsd-europe-china-q1-2025",
+      "unsupervised-fsd-tx-ca-2025",
+      "sleep-in-car-2025",
+      "unsupervised-personal-2025",
+      "unsupervised-fsd-customers-q4-2026",
+      "fsd-eu-approval-q1-2027"
+    ]
   }
 }

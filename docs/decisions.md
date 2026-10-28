@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-28 · FSD tracker: safety claims shown as Tesla's claims, never as our conclusion
+
+- **Choice:** show Tesla's crash-rate comparisons with what each group is, the window, and the caveats; label all of it Reported; draw no safety conclusion.
+- **Why:** tesla.com is not reachable by our fetcher, so we cannot call anything Disclosed, and the comparison groups differ. Promises are read from the ledger by id so there is one copy of the wording.
+- **Trade-off:** the numbers depend on secondary reports until someone can open Tesla's page; the next refresh should check it.
+
 ## 2026-10-27 · FSD tracker: a separate page, charts without a library
 
 - **Choice:** build `/fsd-tracker.html` beside `/fsd.html` instead of rewriting it.
