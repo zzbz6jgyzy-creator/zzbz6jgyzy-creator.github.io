@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-28T08:32:41.018Z",
+  "updated": "2026-10-28T08:41:02.530Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-faa-10000-launches.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours",
+      "at": "2026-10-28T08:40:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-faa-10000-launches.html",
+      "href": "/dispatch/spacex-faa-10000-launches.html",
+      "summary": "SpaceX’s FAA filing says it expects 10,000 launches a year and that air traffic rules are now the limit. Airlines for America wants launches at low-traffic times.",
+      "title": "SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours",
+      "id": "logged|dispatch:/dispatch/spacex-faa-10000-launches.html|2026-10-28T08:40:00.000Z|SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-powershare-120v-outlet.html",
@@ -476,23 +493,6 @@
       "summary": "2026.38.5.11 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.5.11",
       "id": "appeared|tesla-software:wave:2026.38.5.11|2026-10-24T20:46:07.000Z|1"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-imagine-odyssey-episode-1.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok Imagine’s Odyssey Episode 1 is out. Can Musk’s full-length movie still land this year?",
-      "at": "2026-10-24T13:30:13.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-imagine-odyssey-episode-1.html",
-      "href": "/dispatch/grok-imagine-odyssey-episode-1.html",
-      "summary": "A 7-minute, 4K first episode is out. Musk’s full-length Odyssey movie is still a pledge with a 31 Dec deadline. The timeline and the math.",
-      "title": "Grok Imagine’s Odyssey Episode 1 is out. Can Musk’s full-length movie still land this year?",
-      "id": "logged|dispatch:/dispatch/grok-imagine-odyssey-episode-1.html|2026-10-24T13:30:13.000Z|Grok Imagine’s Odyssey Episode 1 is out. Can Musk’s full-length movie still land this year?"
     },
     {
       "type": "logged",
