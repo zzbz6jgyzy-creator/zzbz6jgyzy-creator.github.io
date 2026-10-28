@@ -10,6 +10,56 @@ const studio=JSON.parse(fs.readFileSync('data/roadster-studio.json','utf8'));
 const page=()=>fs.readFileSync('roadster-preview.html','utf8');
 const own=Object.fromEntries(d.sources.map(s=>[s.id,s]));
 
+const clips=JSON.parse(fs.readFileSync('data/roadster-clips.json','utf8'));
+import crypto from 'node:crypto';
+
+test('clips: committed outputs match their checksums and stay inside the budget',()=>{
+  const lim=clips.limits;
+  assert.equal(clips.source.sha256.length,64);
+  for(const c of clips.clips)assert.ok(c.duration<=lim.maxClipSeconds,c.id+' is short enough');
+  for(const o of clips.outputs){
+    const b=fs.readFileSync(o.path);
+    assert.equal(b.length,o.bytes,o.path);assert.equal(crypto.createHash('sha256').update(b).digest('hex'),o.sha256,o.path);
+  }
+  // A visitor fetches one format at one size per clip, so the budget is per set.
+  for(const w of ['1280','720'])for(const ext of ['mp4','webm']){
+    const set=clips.outputs.filter(o=>o.path.endsWith('-'+w+'.'+ext));
+    assert.equal(set.length,clips.clips.length,w+' '+ext+' exists for every clip');
+    assert.ok(set.reduce((n,o)=>n+o.bytes,0)<=lim.maxSetBytes,w+' '+ext+' set within budget');
+    for(const o of set)assert.ok(o.bytes<=lim.maxBytesPerClip,o.path);
+  }
+});
+
+test('stage: every step has a loop that is silent, lazy and inline, with WebM first and phone sizes',()=>{
+  const html=page();
+  for(const s of d.reveal.steps){
+    assert.ok(clips.clips.some(c=>c.id===s.clip),s.id+' has a known clip');
+    const layer=html.match(new RegExp('data-rx-layer="'+s.id+'"[\\s\\S]*?</video>'))[0];
+    assert.ok(/ muted loop playsinline preload="none"/.test(layer),s.id+' is muted, looped, inline and lazy');
+    assert.ok(layer.indexOf('-720.webm')<layer.indexOf('-720.mp4')&&layer.indexOf('(max-width: 700px)')>-1&&layer.indexOf('-1280.webm')>layer.indexOf('-720.mp4'),s.id+' source order');
+  }
+  assert.ok(html.includes('rx-stage-credit')&&html.includes(clips.source.original),'footage is credited and linked to the original');
+  assert.ok(!/autoplay/.test(html.replace(/<noscript>[\s\S]*?<\/noscript>/g,'')),'nothing autoplays from markup; the script starts loops when allowed');
+  let x=structuredClone(d);x.reveal.steps[0].clip='nope';assert.throws(()=>M.validate(x,studio.sources,clips.clips.map(c=>c.id)),/unknown clip/);
+});
+
+test('part 3 chapters are labelled, sourced and complete',()=>{
+  const html=page();
+  assert.equal((html.match(/class="rx-shot"/g)||[]).length,studio.gallery.length,'every picture is in the reel');
+  assert.equal((html.match(/data-config="/g)||[]).length,3);
+  assert.equal((html.match(/data-rx-system="/g)||[]).length,6);
+  assert.equal((html.match(/class="rx-number"/g)||[]).length,d.performance.groups.flatMap(g=>g.items).length);
+  assert.equal((html.match(/<li><p class="rx-spine-date">/g)||[]).length,d.timeline.events.length);
+  assert.equal((html.match(/<tr><th scope="row">/g)||[]).length,d.timeline.promise.rows.length);
+  // 2028 and every performance time are targets or claims, never results; reported power is Reported.
+  for(const i of d.performance.groups.flatMap(g=>g.items)){assert.ok(!(i.label.includes('0 to 60')&&i.status==='reported'&&i.id!=='thrust'),i.id);}
+  assert.equal(d.performance.groups.flatMap(g=>g.items).find(i=>i.id==='power').status,'reported');
+  assert.equal(d.timeline.events.find(e=>e.id==='2028').status,'target');
+  // The Rocket is never presented as road-ready.
+  assert.ok(html.includes('Not approved for public road use.'));
+  assert.ok(!html.includes('${')&&!html.includes('undefined'));
+});
+
 test('record validates; every figure carries a status, a source and a date',()=>{
   assert.equal(M.validate(d,studio.sources),d);
   for(const s of d.sources)assert.ok(s.checked<=d.reviewed,s.id);
@@ -77,8 +127,12 @@ test('every chapter in the rail exists on the page, and the existing anchors are
     assert.ok(html.includes(`data-rx-chapter="${c.id}"`),c.id+' chapter marker');
   }
   assert.ok(html.includes('id="top"'),'#top anchor');
-  // These are linked from the menu, the search index and outside pages; PR 3 adds the rest and the swap test checks all of them.
-  for(const id of ['top','video','money'])assert.ok(html.includes(`id="${id}"`),id);
+  // Every Roadster anchor the menu, the search index and outside pages link to must exist, so the swap breaks no link.
+  for(const id of ['top','video','gallery','cockpit','tech','performance','trims','money','timeline','promise','faq','evidence'])assert.ok(html.includes(`id="${id}"`),id);
+  const nav=fs.readFileSync('scripts/nav.json','utf8');
+  for(const m of nav.matchAll(/\/roadster\.html#([a-z]+)/g))assert.ok(html.includes(`id="${m[1]}"`),'menu link #'+m[1]);
+  const pages=JSON.parse(fs.readFileSync('data/pages.json','utf8')).pages;
+  for(const p of pages)if(/^\/roadster\.html#/.test(p.url))assert.ok(html.includes(`id="${p.url.split('#')[1]}"`),'search record '+p.url);
 });
 
 test('the live page and the shared indexes are untouched by the preview',()=>{
@@ -99,7 +153,7 @@ test('images, bundle and styles the preview references exist',()=>{
   assert.ok(html.indexOf('id="rx-motion"')<html.indexOf('class="rx-hero"'),'the pause control comes first in the tab order');
   const css=fs.readFileSync('roadster-experience.css','utf8');
   assert.ok(/html\[data-theme="light"\] \.rx-read :focus-visible\{outline-color:var\(--rx-read-accent\)\}/.test(css),'focus ring keeps contrast on the light reading sections');
-  assert.ok(css.includes('.rx[data-motion=off] .rx-scroll span{animation:none}'),'the pause button stops the scroll cue too');
+  assert.ok(css.includes('.rx[data-motion=off] .rx-scroll span,.rx[data-motion=off] .rx-hotspots button::after{animation:none}'),'the pause button stops the scroll cue and the hotspot pulse');
   assert.ok(!/<noscript>[^]*<style/.test(html),'no style element inside a body noscript');
   const ledger=html.match(/class="rx-ledger">[^]*?<\/ul>/)[0];
   assert.ok(!ledger.includes('tesla.com/roadster')&&!ledger.includes('tesla.com/en_US/roadster'),'the ledger lists only sources the page cites, not Tesla pages we could not open');

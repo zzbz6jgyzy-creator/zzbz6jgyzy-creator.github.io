@@ -1,0 +1,190 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-28",
+  "source": {
+    "url": "https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto/Roadster-Event-Livestream.mp4",
+    "sha256": "7b98eacdec8efa189179507c2fcc5a0c7368228a1bab5cd953fe5c2b2c3fd3c4",
+    "width": 1280,
+    "height": 720,
+    "seconds": 1359.528,
+    "credit": "Tesla, Roadster Event livestream (Tesla's public video CDN). Short silent excerpts, faded in and out, for editorial use with a link to the original.",
+    "original": "https://www.youtube.com/watch?v=qt5p-_tE8d0"
+  },
+  "limits": {
+    "maxClipSeconds": 12,
+    "maxBytesPerClip": 1000000,
+    "maxSetBytes": 5000000
+  },
+  "clips": [
+    {
+      "id": "ramp",
+      "start": 371,
+      "duration": 8,
+      "title": "The inverted ramp",
+      "alt": "Overhead view of the Roadster on the tall ramp during the reveal",
+      "description": "The Roadster on the C-shaped ramp, seen from above."
+    },
+    {
+      "id": "flip",
+      "start": 441,
+      "duration": 8,
+      "title": "The flip",
+      "alt": "The Roadster flipping off the top of the ramp under the event lights",
+      "description": "The programmed flip off the top of the ramp, slowed by the thrusters."
+    },
+    {
+      "id": "hop",
+      "start": 662.5,
+      "duration": 8.5,
+      "title": "Over a line of Teslas",
+      "alt": "The Roadster lifting over a line of Tesla vehicles on thruster plumes",
+      "description": "The car rising over a line of Tesla vehicles on its thrusters."
+    },
+    {
+      "id": "run",
+      "start": 950,
+      "duration": 11,
+      "title": "The timed run",
+      "alt": "The Roadster on the lit drag strip with a running timer and smoke",
+      "description": "The timed run on the drag strip, with the on-screen timer."
+    },
+    {
+      "id": "drive",
+      "start": 1001,
+      "duration": 7,
+      "title": "Under the lights",
+      "alt": "The white Roadster driving toward the camera under the stage lights",
+      "description": "The car driving toward the crowd under the stage lights."
+    },
+    {
+      "id": "wing",
+      "start": 866,
+      "duration": 9,
+      "title": "The rear wing",
+      "alt": "Rear three-quarter view of the Roadster with its high-downforce wing raised",
+      "description": "The rear wing in its high-downforce position."
+    }
+  ],
+  "outputs": [
+    {
+      "path": "assets/roadster-clips/drive-1280.mp4",
+      "bytes": 507101,
+      "sha256": "70c3e2dbb7c17dec142d6c0385e65622dbd1ccefedc866a590050d8e24725794"
+    },
+    {
+      "path": "assets/roadster-clips/drive-1280.webm",
+      "bytes": 393662,
+      "sha256": "a0b78556abb509578d1488eb00e72802b45ce42badd10739700d3bfd8acecac3"
+    },
+    {
+      "path": "assets/roadster-clips/drive-720.mp4",
+      "bytes": 142132,
+      "sha256": "b0b0738834f7c119f67547f091cb49266c0e0ca34aea91c8a49d2e585cfd667a"
+    },
+    {
+      "path": "assets/roadster-clips/drive-720.webm",
+      "bytes": 165480,
+      "sha256": "d085152206afa787e49855c0eb2e72fe541da824f716b8429d263b5b13ca374c"
+    },
+    {
+      "path": "assets/roadster-clips/flip-1280.mp4",
+      "bytes": 739521,
+      "sha256": "5f1f2f8cce2b3dfcd9d5da04cc8dfb4eb454040fbdb771987783bfe390033016"
+    },
+    {
+      "path": "assets/roadster-clips/flip-1280.webm",
+      "bytes": 622297,
+      "sha256": "c6f64ef2795da775b23d0cb1d8376192a6fd01e8b4bf637210b9b647703841c8"
+    },
+    {
+      "path": "assets/roadster-clips/flip-720.mp4",
+      "bytes": 237513,
+      "sha256": "44553508eb3688fdde9f513ae9f695fa7752d8026f7e30bb5ec16c36787648f4"
+    },
+    {
+      "path": "assets/roadster-clips/flip-720.webm",
+      "bytes": 283718,
+      "sha256": "f7317a347889c1631c797f0e9c1baa83402cb10253becf811e2f982b050dd67b"
+    },
+    {
+      "path": "assets/roadster-clips/hop-1280.mp4",
+      "bytes": 597167,
+      "sha256": "6d265f8fc9d486de0969a56bc2fa3928153eced1cc6253c315e3cd42965b7658"
+    },
+    {
+      "path": "assets/roadster-clips/hop-1280.webm",
+      "bytes": 535569,
+      "sha256": "ca12ca8d3742eba897693d896a32835b0d5cd41e60a51914cc8ddb5ac5abae9d"
+    },
+    {
+      "path": "assets/roadster-clips/hop-720.mp4",
+      "bytes": 215580,
+      "sha256": "a51e513065ef1eb1c8c4e7d2fcf8f1fc16fd474c8420804784d6baf3c3d70cf6"
+    },
+    {
+      "path": "assets/roadster-clips/hop-720.webm",
+      "bytes": 256091,
+      "sha256": "1394ba28f07bec4dd265678e0b9bf3de3a334b93c0eac09484d9d490a65bdf5a"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-1280.mp4",
+      "bytes": 178615,
+      "sha256": "e34df6c82497c1624d4d53c9b50e6e59ba8bd8118b529669ccead00d3dcbd7a3"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-1280.webm",
+      "bytes": 262498,
+      "sha256": "545e05cb0004c6b2dd4a034c524dcf8dae962c961df05904a6ca491d9604a527"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-720.mp4",
+      "bytes": 73448,
+      "sha256": "16c5c43ee055f1970ed6b5526c78576279b09aebe1d2a6b4e8d224230a1f260b"
+    },
+    {
+      "path": "assets/roadster-clips/ramp-720.webm",
+      "bytes": 112619,
+      "sha256": "3985d36f7c782e153eced49a62f281ff811d09130d82f45ab38e76dc7f4519fe"
+    },
+    {
+      "path": "assets/roadster-clips/run-1280.mp4",
+      "bytes": 896905,
+      "sha256": "583510bd9b3f37dd3e232b00c07cbdd5ea2638c24c07c7cdab7287fbcdc344d2"
+    },
+    {
+      "path": "assets/roadster-clips/run-1280.webm",
+      "bytes": 877672,
+      "sha256": "d40cf7b65176494ec3340c36401e047c631c7bb6fb9d3456c76075d9cd05924b"
+    },
+    {
+      "path": "assets/roadster-clips/run-720.mp4",
+      "bytes": 290571,
+      "sha256": "33802a07c9552d10bf2eea46834b5154e99add4acbc521cc875b1c512979305f"
+    },
+    {
+      "path": "assets/roadster-clips/run-720.webm",
+      "bytes": 375935,
+      "sha256": "41e00b287071125374bbf50361897aad68568cc1d8f311a7b56994bb1494afaa"
+    },
+    {
+      "path": "assets/roadster-clips/wing-1280.mp4",
+      "bytes": 520263,
+      "sha256": "67373e75072e9320db93bb4db56de85942f72a9ef518ad5e3fc1c1269ff49f89"
+    },
+    {
+      "path": "assets/roadster-clips/wing-1280.webm",
+      "bytes": 563462,
+      "sha256": "84296d467c36d49660b5d01d961217691f6e2d26a086f460fab83f5e4091bad1"
+    },
+    {
+      "path": "assets/roadster-clips/wing-720.mp4",
+      "bytes": 173278,
+      "sha256": "ce7cb3220251e2ef49157f462992ab0df93f9004b19183c1e2f8f816ea236ce4"
+    },
+    {
+      "path": "assets/roadster-clips/wing-720.webm",
+      "bytes": 252077,
+      "sha256": "2ba3ee96285655bc7c28105a9caa968c95e37caa54285796862646749605c092"
+    }
+  ]
+}

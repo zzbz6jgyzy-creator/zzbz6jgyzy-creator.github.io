@@ -4,6 +4,20 @@
 
 # Changelog
 
+## 28 Oct 2026 — Roadster experience, part 3 and the cinematic pass
+
+- **Chapters:** every angle (reel with collections and a full-screen viewer), inside (numbered hotspots), engineering (six systems and a mechanism diagram), the numbers (with a simplified g-force illustration), three trims (side-by-side comparison, miles or kilometres), the money, the wait (2017 against 2026) and the evidence ledger. The model validator rejects unsourced items, unknown sources and Reported items that cite no reporting.
+- **Look:** the hero is now the car (a full-bleed studio still with vignette and grain, headline anchored low), the header is dark glass on this page in both themes, the reveal stage has large numerals, caption overlays and a progress mark, gallery cards are large with overlaid captions and a dominant-colour placeholder, and sections reveal on scroll (CSS only, off with reduced motion).
+- **Without script:** all engineering panels are visible and the script-only controls are hidden. Pause motion also stops the hotspot pulse.
+- **Data fixes:** the 2017 price row is a claim, the slip is dated "Oct 2026", dates are stated as Texas time, cockpit card 01 is Reported, the physics tick sits at 1.6 s.
+- **Housekeeping:** unused clip posters and the doors and finale clips were removed (data/roadster-clips.json and `--check` agree); the stylesheet version is now a hash written by the builder.
+
+## 28 Oct 2026 — Roadster experience, part 2 (video loops)
+
+- **Five stage loops** (ramp, flip, hop over a line of Teslas, the timed run, under the lights) now play behind the reveal steps, cut from Tesla's official event video. A sixth, the rear wing, plays behind the engineering chapter. Silent, 12 seconds or less, faded in and out, credited and linked to the original.
+- **Light on data:** one format at one size per clip (phones are served WebM first: all six clips are 1.45 MB at 720 px; desktop WebM is 3.26 MB at 1280 px), `preload="none"`, only the active step's loop plays, the next is fetched one step ahead, and nothing downloads with reduced motion, Save-Data or the Pause button.
+- **Pipeline:** `scripts/make-roadster-clips.py` (ffmpeg) with the source pinned by checksum; a test checks every output's checksum and the budget.
+
 ## 28 Oct 2026 — Roadster experience, part 1 (hidden preview)
 
 - **A new Roadster page is being built at `/roadster-preview.html`** (hidden: `noindex`, not in the menu, sitemap or search). It is a dark, cinematic scroll page; the live `/roadster.html` is unchanged until you approve the preview and it is swapped in.

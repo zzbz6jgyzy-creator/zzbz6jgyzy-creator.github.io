@@ -89,6 +89,19 @@ async def main():
                 assert (await page.locator('.rx').get_attribute('data-motion')) == 'on', tag
                 await page.evaluate("localStorage.removeItem('sd-rx-motion')")
 
+            # Stage loops: only the active layer's loop plays, phones get the 720 px file, and no loop plays when motion is off.
+            if js and mode in ('normal', 'reduced', 'savedata') and theme == 'dark' and width in (390, 1440):
+                await page.evaluate("document.querySelector('[data-rx-step=hop]').scrollIntoView({block:'center',behavior:'instant'})")
+                await page.wait_for_timeout(2500)
+                state = await page.evaluate("[...document.querySelectorAll('[data-rx-layer]')].map(l=>{const v=l.querySelector('video');return {id:l.dataset.rxLayer,active:l.classList.contains('is-active'),playing:!!v&&!v.paused,src:v?v.currentSrc:''}})")
+                if mode == 'normal':
+                    assert [s['id'] for s in state if s['playing']] == ['hop'], (tag, 'only the active layer plays', state)
+                    hop = [s for s in state if s['id'] == 'hop'][0]
+                    assert ('-720.' if width <= 700 else '-1280.') in hop['src'], (tag, 'right size for the screen', hop)
+                else:
+                    assert not any(s['playing'] for s in state), (tag, 'no stage loop in this mode', state)
+                    assert not any('/assets/roadster-clips/' in u and u.endswith(('.webm', '.mp4')) for u in requested), (tag, 'no loop is downloaded when motion is off', [u for u in requested if 'roadster-clips' in u])
+
             # The pinned stage: the picture follows the step in the middle of the screen.
             if js:
                 await page.locator('[data-rx-step=run]').scroll_into_view_if_needed()
@@ -98,6 +111,38 @@ async def main():
                 assert await page.locator('.rx-layer.is-active').count() == 1, tag
             else:
                 assert await page.locator('.rx-layer.is-active').count() == 1, (tag, 'first picture shows without script')
+                assert await page.locator('.rx-tech-panel:visible').count() == 6, (tag, 'every engineering panel reads without script')
+                assert await page.locator('.rx-filters:visible,.rx-system-buttons:visible,.rx-hotspots:visible,[data-rx-compare]:visible').count() == 0, (tag, 'script-only controls are hidden without script')
+
+            # Part 3 chapters: collections, the full-screen viewer, hotspots, systems, physics, comparison, units.
+            if js and mode == 'normal' and theme == 'dark' and width in (390, 1440):
+                await page.evaluate("document.querySelector('#gallery').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-filter=interior]').click()
+                assert await page.locator('.rx-shot:not([hidden])').count() == 2, (tag, 'interior collection')
+                assert '2 pictures in Interior' in (await page.locator('#rx-gallery-count').text_content()), tag
+                await page.locator('[data-rx-filter=all]').click()
+                await page.locator('.rx-shot a').first.click()
+                assert await page.locator('#rx-photo-dialog').evaluate('d=>d.open'), (tag, 'viewer opens')
+                await page.keyboard.press('ArrowRight')
+                assert '2 / 15' in (await page.locator('#rx-photo-caption').text_content()), tag
+                await page.keyboard.press('Escape')
+                assert not await page.locator('#rx-photo-dialog').evaluate('d=>d.open'), tag
+                await page.evaluate("document.querySelector('#cockpit').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-hotspot="1"]').click()
+                assert await page.locator('[data-rx-cockpit="1"].is-selected').count() == 1, (tag, 'hotspot selects its card')
+                await page.evaluate("document.querySelector('#tech').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-system=thrust]').click()
+                assert await page.locator('[data-rx-tech-panel=thrust]').is_visible() and not await page.locator('[data-rx-tech-panel=suction]').is_visible(), tag
+                assert (await page.locator('.rx-engineering').get_attribute('data-rx-diagram')) == 'thrust', tag
+                await page.evaluate("document.querySelector('#performance').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-physics="0.59"]').click()
+                assert (await page.locator('#rx-g-value').text_content()).startswith('> 4.6'), (tag, await page.locator('#rx-g-value').text_content())
+                await page.evaluate("document.querySelector('#trims').scrollIntoView({behavior:'instant'})")
+                await page.locator('[data-rx-compare=thrust]').click()
+                await page.locator('[data-rx-compare=rocket]').click()
+                assert await page.locator('#rx-compare th[scope=col]').count() == 3, (tag, 'comparison has two trims')
+                await page.locator('[data-rx-unit=metric]').click()
+                assert '483 km' in await page.locator('[data-rx-distance]').text_content(), tag
 
             # Chapter rail: wide screens only, one current chapter.
             if js and width >= 1100:

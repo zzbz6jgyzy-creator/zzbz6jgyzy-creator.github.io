@@ -27,8 +27,10 @@
 
  // ---- Clips: start when near the viewport, pause when away, never more than two at once.
  const visible=new Set();
+ // A loop inside a pinned-stage layer plays only while its layer is the active one.
+ const wanted=v=>{const l=v.closest('[data-rx-layer]');return !l||l.classList.contains('is-active');};
  function start(v){
-  if(!motion||document.hidden)return;
+  if(!motion||document.hidden||!wanted(v))return;
   while(playing.size>=2){const oldest=playing.values().next().value;oldest.pause();oldest.classList.remove('is-playing');playing.delete(oldest);}
   v.muted=true;const p=v.play();
   if(p&&p.then)p.then(()=>{if(visible.has(v)&&motion){v.classList.add('is-playing');playing.add(v);}else v.pause();}).catch(()=>{});
@@ -49,9 +51,28 @@
   chapters.forEach(c=>cio.observe(c));
  }
  if(!(window.CSS&&CSS.supports&&CSS.supports('animation-timeline: scroll()'))){
-  const bar=$('.rx-progress i');let tick=false;
-  const upd=()=>{tick=false;const h=document.documentElement.scrollHeight-innerHeight;if(bar)bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';};
+  const bar=$('.rx-progress i'),hero=$('.rx-hero');let tick=false;
+  const upd=()=>{tick=false;const h=document.documentElement.scrollHeight-innerHeight;if(bar)bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';
+   if(hero&&motion)hero.style.setProperty('--rx-hp',Math.min(1,Math.max(0,scrollY/innerHeight)).toFixed(3));};
   addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});upd();
+ }
+
+ // ---- Reveal on scroll where CSS view() timelines are missing, and the count-up on the hero numbers. Both are skipped when motion is off.
+ if(motion&&'IntersectionObserver'in window){
+  if(!(window.CSS&&CSS.supports&&CSS.supports('animation-timeline: view()'))){
+   const els=$$('.rx-fact,.rx-card,.rx-number,.rx-config,.rx-cockpit-card,.rx-engineer-card,.rx-spine li,.rx-head,.rx-faq details,.rx-physics');
+   const rio=new IntersectionObserver(items=>items.forEach(i=>{if(i.isIntersecting){i.target.classList.add('rx-in');rio.unobserve(i.target);}}),{rootMargin:'0px 0px -8% 0px'});
+   els.forEach(e=>{if(e.getBoundingClientRect().top>innerHeight*.9){e.classList.add('rx-pre');rio.observe(e);}});root.classList.add('rx-js-in');
+  }
+  const nio=new IntersectionObserver(items=>items.forEach(i=>{
+   if(!i.isIntersecting)return;const el=i.target;nio.unobserve(el);if(!motion)return;
+   const m=el.textContent.match(/^(\D*?)([\d,]+(?:\.\d+)?)(.*)$/);if(!m)return;
+   const end=parseFloat(m[2].replace(/,/g,'')),dec=(m[2].split('.')[1]||'').length,comma=m[2].includes(','),t0=performance.now(),full=el.textContent;
+   const fmt=n=>comma?n.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec}):n.toFixed(dec);
+   const tick=t=>{const k=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-k,3);el.textContent=k<1?m[1]+fmt(end*e)+m[3]:full;if(k<1&&motion)requestAnimationFrame(tick);else el.textContent=full;};
+   requestAnimationFrame(tick);
+  }),{threshold:.6});
+  $$('[data-rx-count]').forEach(el=>nio.observe(el));
  }
 
  // ---- The pinned stage: the picture follows the step that is in the middle of the screen.
@@ -61,6 +82,10 @@
   const sio=new IntersectionObserver(items=>items.forEach(i=>{
    if(!i.isIntersecting)return;const id=i.target.dataset.rxStep;if(!id||!layers.has(id))return;
    layers.forEach((l,k)=>l.classList.toggle('is-active',k===id));
+   $$('[data-rx-clip]',stage).forEach(v=>{if(wanted(v)&&visible.has(v))start(v);else stop(v);});
+   // Fetch the next layer's loop a step ahead so it is ready when its step arrives.
+   const keys=[...layers.keys()],next=layers.get(keys[keys.indexOf(id)+1]),nv=next&&next.querySelector('video');
+   if(nv&&motion&&!nv.dataset.warm){nv.dataset.warm='1';nv.preload='auto';nv.load();}
   }),{rootMargin:'-45% 0px -45% 0px'});
   $$('[data-rx-step]',stage).forEach(s=>sio.observe(s));
  }
@@ -91,6 +116,62 @@
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&!film.paused)film.pause();});
   if('IntersectionObserver'in window)new IntersectionObserver(i=>{if(!i[0].isIntersecting&&!film.paused)film.pause();},{threshold:.02}).observe(film);
  }
+
+
+ // ---- Chapters added in part 3. Everything below enhances markup that already reads fine without script.
+ let data={configs:[],tech:[],gallery:[]};try{data=JSON.parse($('#rx-data').textContent);}catch(e){}
+ const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+ // Gallery: collections, the arrows, and the full-screen viewer.
+ const shots=$$('.rx-shot'),filters=$$('[data-rx-filter]'),reel=$('.rx-reel');
+ let group='all';
+ const visibleShots=()=>shots.filter(s=>!s.hidden);
+ function filter(next){group=next;shots.forEach(s=>{s.hidden=next!=='all'&&s.dataset.rxGroup!==next;});filters.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rxFilter===next)));
+  const n=visibleShots().length;const c=$('#rx-gallery-count');if(c)c.textContent=n+' picture'+(n===1?'':'s')+(next==='all'?'':' in '+({exterior:'Exterior',interior:'Interior',engineering:'Engineering',reveal:'The reveal'}[next]||next));if(reel)reel.scrollTo({left:0,behavior:'auto'});}
+ filters.forEach(b=>b.addEventListener('click',()=>filter(b.dataset.rxFilter)));
+ $$('[data-rx-reel]').forEach(b=>b.addEventListener('click',()=>{if(!reel)return;const w=(visibleShots()[0]||{offsetWidth:600}).offsetWidth+24;reel.scrollBy({left:Number(b.dataset.rxReel)*w,behavior:motion?'smooth':'auto'});}));
+ const dialog=$('#rx-photo-dialog'),big=$('#rx-photo-image');let opener=null,at=0;
+ function show(i){at=i;const g=data.gallery[i];if(!g||!big)return;big.src='/assets/'+(g.legacy?'roadster':'roadster-studio')+'/'+g.id+'-1920w.webp';big.alt=g.alt;$('#rx-photo-title').textContent=g.title;
+  const vis=visibleShots().map(s=>Number(s.querySelector('[data-rx-photo]').dataset.rxPhoto)),pos=Math.max(0,vis.indexOf(i));$('#rx-photo-caption').textContent=(pos+1)+' / '+vis.length+' · '+g.description+' · '+g.credit+'.';}
+ const step=d=>{const vis=visibleShots().map(s=>Number(s.querySelector('[data-rx-photo]').dataset.rxPhoto));if(!vis.length)return;show(vis[(Math.max(0,vis.indexOf(at))+d+vis.length)%vis.length]);};
+ if(dialog&&typeof dialog.showModal==='function'){
+  $$('[data-rx-photo]').forEach(a=>a.addEventListener('click',ev=>{ev.preventDefault();opener=a;show(Number(a.dataset.rxPhoto));dialog.showModal();$('#rx-photo-close').focus();}));
+  $('#rx-photo-close').addEventListener('click',()=>dialog.close());$('#rx-photo-prev').addEventListener('click',()=>step(-1));$('#rx-photo-next').addEventListener('click',()=>step(1));
+  dialog.addEventListener('keydown',ev=>{if(ev.key==='ArrowLeft'){ev.preventDefault();step(-1);}if(ev.key==='ArrowRight'){ev.preventDefault();step(1);}});
+  dialog.addEventListener('click',ev=>{if(ev.target===dialog)dialog.close();});
+  dialog.addEventListener('close',()=>{if(opener)opener.focus({preventScroll:true});});
+ }
+
+ // Cockpit: the numbered hotspots select a card.
+ const hotspots=$$('[data-rx-hotspot]'),cards=$$('[data-rx-cockpit]');
+ hotspots.forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.rxHotspot);cards.forEach((c,k)=>c.classList.toggle('is-selected',k===i));hotspots.forEach((h,k)=>h.setAttribute('aria-pressed',String(k===i)));if(innerWidth<760&&cards[i])cards[i].scrollIntoView({behavior:motion?'smooth':'auto',block:'center'});}));
+
+ // Engineering: the diagram and the reading panel follow the system you choose; arrow keys move between systems.
+ const systems=$$('[data-rx-system]'),panels=$$('[data-rx-tech-panel]'),eng=$('.rx-engineering');
+ function system(id,focus){panels.forEach(p=>{p.hidden=p.dataset.rxTechPanel!==id;});systems.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rxSystem===id)));if(eng)eng.dataset.rxDiagram=id;
+  const t=data.tech.find(x=>x.id===id),n=$('#rx-system-name');if(t&&n)n.textContent=t.name;if(focus)systems.find(b=>b.dataset.rxSystem===id).focus();}
+ if(systems.length)system(systems[0].dataset.rxSystem);
+ systems.forEach((b,i)=>{b.addEventListener('click',()=>system(b.dataset.rxSystem));b.addEventListener('keydown',ev=>{let n=i;if(ev.key==='ArrowRight'||ev.key==='ArrowDown')n=(i+1)%systems.length;else if(ev.key==='ArrowLeft'||ev.key==='ArrowUp')n=(i-1+systems.length)%systems.length;else return;ev.preventDefault();system(systems[n].dataset.rxSystem,true);});});
+
+ // The physics behind the stage run: average acceleration from elapsed time, plain arithmetic.
+ $$('[data-rx-physics]').forEach(b=>b.addEventListener('click',()=>{
+  const s=Number(b.dataset.rxPhysics),g=(60*0.44704)/s/9.80665,demo=s===0.81;
+  $('#rx-g-value').textContent=(demo?'≈':'> ')+g.toFixed(2);
+  $('#rx-physics-caption').textContent=demo?'From Tesla’s claimed 0.81-second run. This is a calculation from elapsed time, not measured acceleration, and 0 to 60 mph is 0 to 96.6 km/h, not 0 to 100.':'A threshold calculated from an “under '+s+' s” target, not an achieved or independently verified result.';
+  $$('[data-rx-physics]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+  const x=65+Math.min(s,1.6)/1.6*470;$('#rx-physics-line').setAttribute('d','M65 285L'+x+' 55');$('#rx-physics-area').setAttribute('d','M65 285L'+x+' 55V285Z');$('#rx-physics-dot').setAttribute('cx',x);
+ }));
+
+ // Trims: add up to three to a side-by-side comparison; units switch between miles and kilometres.
+ const chosen=new Set(),box=$('#rx-compare');
+ function compare(){if(!box)return;box.hidden=!chosen.size;
+  $$('[data-rx-compare]').forEach(b=>{const on=chosen.has(b.dataset.rxCompare);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Selected, remove':'Add to comparison +';});
+  const sel=data.configs.filter(c=>chosen.has(c.id));
+  $('#rx-compare-content').innerHTML=sel.length?'<table><caption>Tesla’s descriptions and October targets. '+sel.length+' selected.</caption><thead><tr><th scope="col">What</th>'+sel.map(c=>'<th scope="col">'+esc(c.name)+'</th>').join('')+'</tr></thead><tbody>'+[['Positioning',c=>c.tag],['Seats',c=>c.seats],['0 to 60 mph target',c=>c.target+', unverified'],['Availability',c=>c.availability],['Road use',c=>c.id==='rocket'?'Not approved for public road use':'Check final certification and market terms']].map(([l,f])=>'<tr><th scope="row">'+l+'</th>'+sel.map(c=>'<td>'+esc(f(c))+'</td>').join('')+'</tr>').join('')+'</tbody></table>':'';}
+ $$('[data-rx-compare]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.rxCompare;chosen.has(id)?chosen.delete(id):chosen.add(id);compare();}));
+ const clear=$('#rx-compare-clear');if(clear)clear.addEventListener('click',()=>{chosen.clear();compare();});
+ $$('[data-rx-unit]').forEach(b=>b.addEventListener('click',()=>{const metric=b.dataset.rxUnit==='metric';$$('[data-rx-unit]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+  const d=$('[data-rx-distance]'),sp=$('[data-rx-speed]');if(d)d.textContent=metric?'483 km (converted)':'300 miles';if(sp)sp.textContent=metric?'370 km/h (converted)':'230 mph';}));
 
  // ---- Tesla's full event on YouTube: nothing is requested from YouTube until the reader presses play.
  $$('[data-rx-replay]').forEach(b=>b.addEventListener('click',()=>{

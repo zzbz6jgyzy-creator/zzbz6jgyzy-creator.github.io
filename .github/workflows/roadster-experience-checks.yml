@@ -7,8 +7,13 @@ on:
       - 'data/roadster-experience.json'
       - 'data/roadster-studio.json'
       - 'data/roadster-media.json'
+      - 'data/roadster-clips.json'
+      - 'assets/roadster-clips/**'
       - 'roadster-studio-model.js'
       - 'scripts/build-roadster-experience.mjs'
+      - 'scripts/roadster-experience-art.mjs'
+      - 'scripts/make-roadster-clips.py'
+      - 'data/roadster-colors.json'
       - 'assets/roadster/**'
       - 'assets/roadster-studio/**'
       - 'scripts/js-bundles.json'
@@ -36,6 +41,7 @@ jobs:
       - name: Validate data, rebuild and check nothing drifts
         run: |
           node --test tests/roadster-experience.test.mjs
+          python scripts/make-roadster-clips.py --check
           node scripts/build-roadster-experience.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py
