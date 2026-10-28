@@ -1,17 +1,9 @@
-# Navigation refinements
+# Navigation and mobile opening — October 2026
 
-The mobile menu now shows four direct shortcuts above its expandable sections: Original stories, Software updates, Cybercab and Starship. They are ordinary links in the initial HTML, with 44px minimum touch targets and the existing colours, typography, borders and focus styling.
+The persistent shared header keeps Search and Your Daily visible while scrolling. Four menus organize News, Tesla, SpaceX and Explore; Roadster lives under Tesla, and Explore contains guides and recreation rather than a duplicate tracker directory. Newsroom and external headlines link to their correct views. The main subscription action leads to the free Sunday briefing.
 
-The News menu distinguishes **Latest headlines** (the news feed) from **Original stories · Dispatch** (the site's own reporting). The Tesla menu groups Software Updates, FSD Europe and Cybercab with the existing evidence and explainers under **Software & autonomy**. Existing destinations remain available in Explore.
+On phones the homepage now reads introduction, showcase, then newsletter signup. Desktop retains the split composition. Both signup forms use the existing native provider handoff. Core fonts, imagery, theme support and source information remain intact.
 
-`scripts/nav.json` defines the links, including `mobileShortcuts`. `scripts/sync-nav.py` renders desktop and mobile navigation across existing pages and new pages added later. It preserves each page's navigation attributes and updates the navigation stylesheet version. The generated HTML is committed alongside its sources so all pages get the same navigation when deployed.
+Edit scripts/nav.json and scripts/sync-nav.py, then regenerate all navigation. The many HTML changes contain the same generated menu and hashed core bundle reference, not individual page redesigns. scripts/build-home.js owns the opening; home-studio.css owns its responsive layout.
 
-The new shortcuts reuse the site's existing 21st.dev-inspired menu. They need no library, extra JavaScript, credentials, paid service or framework.
-
-Checks:
-
-- `python3 tests/test_nav_generation.py`: generation preserves page content and per-page navigation attributes, and is repeatable.
-- `python3 scripts/sync-nav.py --check`: all page navigation matches the shared configuration.
-- `python3 tests/nav-browser.py`: journeys through each shortcut, Tesla tracker discovery, news labels, active links, menu closing and viewport fit on phone, tablet and desktop, with light/dark themes and a static HTML case. Requests use local files; external requests and writes are blocked. Set `CHROMIUM_PATH` to select the browser executable.
-
-Homepage starting-point links and article contents links remain possible later batches.
+Validation: generator preservation/idempotence, homepage structure, responsive browser journeys, nested menu keyboard/pointer navigation, dark/light, no-JavaScript direct utility links, enlarged text and mocked newsletter handoffs. Browser tests run in CI; no subscriptions are submitted to a real provider. Later batches: content deduplication, shared visual tokens, and article saving integration.

@@ -17,8 +17,9 @@ SCENARIOS = [
     (320, 'dark', 'normal'), (390, 'dark', 'normal'),
     (768, 'dark', 'normal'), (1440, 'dark', 'normal'),
     (390, 'light', 'normal'), (1440, 'light', 'normal'),
-    (390, 'dark', 'nojs'), (390, 'dark', 'offline'),
-    (390, 'dark', 'large-text'),
+    (320, 'dark', 'nojs'), (390, 'dark', 'nojs'),
+    (390, 'dark', 'offline'),
+    (320, 'dark', 'large-text'), (390, 'dark', 'large-text'),
 ]
 
 
@@ -68,7 +69,7 @@ async def focus_is_visible(page):
     field = await page.locator('#hs-hero-email').bounding_box()
     nav = await page.locator('.pn').bounding_box()
     assert field and field['y'] >= (nav['y'] + nav['height'] if nav else 0) - 1, ('Focused email hidden by navigation', field, nav)
-    assert field['y'] + field['height'] <= 844, ('Focused email below viewport', field)
+    assert field['y'] + field['height'] <= page.viewport_size['height'], ('Focused email below viewport', field)
 
 
 async def capture_before(browser):
@@ -93,7 +94,8 @@ async def main():
         browser = await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome') or shutil.which('chromium'), args=['--no-sandbox', '--disable-dev-shm-usage'])
         await capture_before(browser)
         for width, theme, mode in SCENARIOS:
-            context = await browser.new_context(viewport={'width': width, 'height': 844}, java_script_enabled=mode != 'nojs', reduced_motion='reduce', service_workers='block')
+            height = 667 if width == 320 else 844
+            context = await browser.new_context(viewport={'width': width, 'height': height}, java_script_enabled=mode != 'nojs', reduced_motion='reduce', service_workers='block')
             await context.add_init_script('localStorage.setItem("sd-theme", ' + json.dumps(theme) + ')')
             await context.add_init_script("window.__homeCLS=0;window.__homeShifts=[];new PerformanceObserver(l=>l.getEntries().forEach(e=>{if(!e.hadRecentInput){window.__homeCLS+=e.value;window.__homeShifts.push({value:e.value,start:e.startTime,sources:e.sources.map(s=>({tag:s.node?.tagName,cls:s.node?.className,from:s.previousRect,to:s.currentRect}))})}})).observe({type:'layout-shift',buffered:true})")
             page = await context.new_page()
@@ -105,13 +107,25 @@ async def main():
             assert await page.locator('h1').count() == 1
             assert await page.locator('[data-newsletter-form]').count() == 2, 'One hero form and one lower-page form'
             assert 'Tesla, SpaceX and xAI' in await page.locator('.hv-pitch').inner_text()
+            assert await page.evaluate('''() => {
+                const blocks=['.hs-hero-copy','.hs-hero-visual','#newsletter'].map(s=>document.querySelector(s));
+                return blocks.every((node,i)=>!i || blocks[i-1].compareDocumentPosition(node)&Node.DOCUMENT_POSITION_FOLLOWING);
+            }'''), 'Native reading order must introduce the site, show the experience, then offer signup'
             if width <= 600:
-                await no_overlap(page, ['.hs-hero h1', '.hv-pitch', '.hv-start', '#newsletter', '.hs-hero-visual', '.hs-wayfinder', '.hs-stories'], (width, mode))
+                await no_overlap(page, ['.hs-hero h1', '.hv-pitch', '.hv-start', '.hs-hero-visual', '#newsletter', '.hs-wayfinder', '.hs-stories'], (width, mode))
                 assert await page.locator('#newsletter input[type=email]').evaluate('(i)=>parseFloat(getComputedStyle(i).fontSize)') >= 16, 'Prevent iOS input zoom'
+                roadster = await page.locator('.hs-hero-roadster').bounding_box()
+                visible_art = max(0, min(height, roadster['y'] + roadster['height']) - max(0, roadster['y']))
+                assert visible_art >= min(180, roadster['height'] * .6), (width, mode, 'First screen needs substantial showcase imagery', roadster, visible_art)
+            else:
+                copy = await page.locator('.hs-hero-copy').bounding_box()
+                visual = await page.locator('.hs-hero-visual').bounding_box()
+                assert copy['x'] + copy['width'] < visual['x'], 'Desktop introduction and showcase need separate columns'
+                assert max(copy['y'], visual['y']) < min(copy['y'] + copy['height'], visual['y'] + visual['height']), 'Desktop showcase should sit beside the introduction'
             email_box = await page.locator('#newsletter input[type=email]').bounding_box()
             assert email_box['width'] >= 130, (width, 'Email field too narrow', email_box)
             button = await page.locator('#newsletter button[type=submit]').bounding_box()
-            assert button['y'] >= 0 and button['y'] + button['height'] < 844, (width, 'First-screen signup', button)
+            assert button['height'] >= 44, (width, 'Signup target too small', button)
             if await page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'):
                 await preview(page, f'overflow-{width}-{theme}')
                 print('HOME_OVERFLOW',await page.evaluate('''() => [...document.querySelectorAll('main *')].map(e=>({tag:e.tagName,cls:e.className?.baseVal??e.className,x:e.getBoundingClientRect().x,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})).filter(e=>e.width&& (e.x < -1 || e.right > innerWidth + 1)).slice(0,45)'''),flush=True)
@@ -157,7 +171,7 @@ async def main():
                 await page.locator('.pn-sheet .pn-sub-sheet').click()
                 await focus_is_visible(page)
                 assert not await page.locator('body').evaluate('(e)=>e.classList.contains("pn-lock")')
-            if mode in ['normal', 'nojs'] and width == 390 and theme == 'dark':
+            if mode in ['normal', 'nojs'] and width in [320, 390] and theme == 'dark':
                 form = page.locator('#newsletter form')
                 await form.locator('input[type=email]').fill('invalid')
                 await form.locator('button').click()
@@ -189,13 +203,13 @@ async def main():
                 }''')
                 await page.wait_for_timeout(100)
                 assert not await page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), '200% text needs a single reading column'
-                await no_overlap(page, ['.hs-hero h1', '.hv-pitch', '.hv-start', '#newsletter', '.hs-hero-visual', '.hs-wayfinder', '.hs-stories'], '200% text')
+                await no_overlap(page, ['.hs-hero h1', '.hv-pitch', '.hv-start', '.hs-hero-visual', '#newsletter', '.hs-wayfinder', '.hs-stories'], '200% text')
                 for selector in ['#hs-hero-email', '#newsletter button[type=submit]', '.hs-wayfinder a:first-child']:
                     box = await page.locator(selector).bounding_box()
                     assert box and box['width'] > 0 and box['x'] >= -1 and box['x'] + box['width'] <= width + 1, ('Enlarged control clipped', selector, box)
                 for selector in ['.hs-visual-label','.hs-hero-roadster-copy','.hs-image-credit']:
                     assert await page.locator(selector).evaluate('''e=>{const r=e.getBoundingClientRect(),p=e.closest('.hs-hero-roadster').getBoundingClientRect();return r.top>=p.top && r.bottom<=p.bottom+1 && r.left>=p.left && r.right<=p.right+1}'''),('Showcase text clipped at 200%',selector)
-                await preview(page, 'after-390-large-text')
+                await preview(page, f'after-{width}-large-text')
             assert not errors, (width, theme, mode, errors)
             print(width, theme, mode, 'passed', flush=True)
             await context.close()

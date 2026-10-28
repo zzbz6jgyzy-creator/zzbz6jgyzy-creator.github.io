@@ -1,105 +1,108 @@
-/* Floating pill nav — vanilla port inspired by 21st.dev "AnimatedNavFramer" (reimplemented from scratch) */
-:root{--pn-spring:cubic-bezier(.34,1.56,.64,1);--pn-ease:cubic-bezier(.2,.8,.2,1)}
-.pn-wrap{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:60;max-width:calc(100vw - 24px)}
-.pn{display:flex;align-items:center;height:48px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(10,10,10,.78);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:0 10px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);padding:0 6px 0 4px;width:var(--pn-w,auto);transition:width .55s var(--pn-spring),padding .4s var(--pn-ease),transform .3s var(--pn-spring);animation:pnDrop .8s var(--pn-spring) both;overflow:visible;position:relative}
-@keyframes pnDrop{from{transform:translateY(-80px);opacity:0}to{transform:none;opacity:1}}
-.pn-logo{display:flex;align-items:center;gap:8px;padding:0 10px 0 10px;flex-shrink:0;color:#fff;text-decoration:none;transition:opacity .3s,transform .45s var(--pn-spring)}
-.pn-logo img{width:26px;height:26px;display:block}
-.pn-items{display:flex;align-items:center;gap:2px;white-space:nowrap}
-.pn-items>*{transition:opacity .25s var(--pn-ease),transform .35s var(--pn-spring);transition-delay:calc(.2s + var(--i,0)*.05s)}
-.pn a.pn-link,.pn button.pn-link,.pn-dd>button{font:500 14px/1 Inter,system-ui,sans-serif;color:#d6d6d6;text-decoration:none;padding:9px 11px;border-radius:999px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:color .2s,background .2s}
-.pn a.pn-link:hover,.pn button.pn-link:hover,.pn-dd>button:hover,.pn-dd.open>button,.pn a.pn-link[aria-current],.pn-dd>button[aria-current]{color:#fff;background:rgba(255,255,255,.07)}
-.pn a:focus-visible,.pn button:focus-visible,.pn-sheet a:focus-visible,.pn-sheet button:focus-visible{outline:2px solid #e31937;outline-offset:2px}
-.pn-dd>button svg{width:14px;height:14px;transition:transform .25s}
+/* Shared persistent navigation. The header keeps its shape and utilities while scrolling. */
+:root{--pn-ease:cubic-bezier(.2,.8,.2,1);--pn-header-bottom:70px}
+.pn-wrap{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:60;width:min(1220px,calc(100% - 32px));max-width:calc(100vw - 16px)}
+.pn,.pn *,.pn-sheet,.pn-sheet *{box-sizing:border-box}
+.pn{display:flex;align-items:center;gap:8px;height:60px;width:100%;padding:7px 8px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(10,10,10,.92);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:0 8px 30px rgba(0,0,0,.24);position:relative}
+.pn-logo{display:flex;align-items:center;gap:8px;min-width:44px;min-height:44px;padding:0 8px;flex-shrink:0;margin-right:auto;color:#fff;text-decoration:none;border-radius:10px}
+.pn-logo img{width:26px;height:26px;display:block;flex-shrink:0}
+.pn-logo img.pn-word{width:auto;height:18px}
+.pn-items,.pn-utilities{display:flex;align-items:center;gap:2px;white-space:nowrap;flex-shrink:0}
+.pn a.pn-link,.pn button.pn-link,.pn-dd>button{font:500 14px/1 Inter,system-ui,sans-serif;color:#dedee2;text-decoration:none;min-width:44px;min-height:44px;padding:0 10px;border-radius:10px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;transition:color .2s,background .2s;white-space:nowrap}
+.pn a.pn-link:hover,.pn button.pn-link:hover,.pn-dd>button:hover,.pn-dd.open>button,.pn a.pn-link[aria-current],.pn-dd>button[aria-current]{color:#fff;background:rgba(255,255,255,.08)}
+.pn a:focus-visible,.pn button:focus-visible,.pn-sheet a:focus-visible,.pn-sheet button:focus-visible{outline:2px solid #f0445f;outline-offset:2px}
+.pn-dd>button svg{width:14px;height:14px;transition:transform .2s}
 .pn-dd.open>button svg{transform:rotate(180deg)}
-.pn-cta{font:600 14px/1 Inter,system-ui,sans-serif;color:#fff!important;background:#e31937;padding:10px 16px;border-radius:999px;text-decoration:none;margin-left:6px;box-shadow:0 0 18px rgba(227,25,55,.45);transition:background .2s,box-shadow .2s}
-.pn-cta:hover{background:#ff2a4a;box-shadow:0 0 26px rgba(227,25,55,.7)}
+.pn-cta{font:600 13px/1 Inter,system-ui,sans-serif;color:#fff!important;background:#e31937;padding:0 14px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;text-decoration:none;white-space:nowrap;transition:background .2s}
+.pn-cta:hover{background:#c8102c}
+.pn a.pn-sub{margin-left:4px}
+html[data-theme="light"] .pn a.pn-sub.pn-cta{color:#fff!important;background:#d51632;box-shadow:none}
+.pn a.pn-daily{background:rgba(255,255,255,.07);font-weight:600}
+html[data-theme="light"] .pn a.pn-daily{background:rgba(22,23,27,.06)}
+.pn a.pn-search svg,.pn a.pn-daily svg,.pn button.pn-theme svg{width:16px;height:16px;flex-shrink:0}
 .pn-dd{position:relative}
-.pn-panel{position:absolute;top:calc(100% + 12px);left:50%;min-width:220px;transform:translate(-50%,-6px);opacity:0;visibility:hidden;background:rgba(12,12,12,.96);border:1px solid rgba(255,255,255,.1);border-top:2px solid #e31937;border-radius:14px;padding:6px;box-shadow:0 18px 50px rgba(0,0,0,.6);transition:opacity .2s,transform .25s var(--pn-spring),visibility .2s}
-/* The panel scrolls when expanded groups make it taller than the window. overflow clips ::before, so the hover bridge over the 12px gap lives on the dropdown itself. */
-.pn-panel{max-height:calc(100vh - 96px);overflow-y:auto;overscroll-behavior:contain}
+.pn-panel{position:absolute;top:calc(100% + 12px);left:50%;min-width:220px;max-height:calc(100vh - 96px);max-height:calc(100dvh - 96px);overflow-y:auto;overscroll-behavior:contain;transform:translate(-50%,-6px);opacity:0;visibility:hidden;background:rgba(12,12,12,.98);border:1px solid rgba(255,255,255,.1);border-top:2px solid #e31937;border-radius:14px;padding:6px;box-shadow:0 18px 50px rgba(0,0,0,.45);transition:opacity .2s,transform .2s var(--pn-ease),visibility .2s}
+/* The hover bridge belongs to the dropdown so scrolling the panel does not clip it. */
 .pn-dd.open::after{content:"";position:absolute;top:100%;left:50%;width:max(100%,300px);height:14px;transform:translateX(-50%)}
 .pn-dd.open .pn-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
-@media (min-width:900px){.pn-panel.pn-wide{min-width:440px;display:grid;grid-template-columns:1fr 1fr;gap:0 4px}}
 .pn-nest{margin:0}
-.pn-nest-t{font:500 14px/1.2 Inter,system-ui,sans-serif;color:#ddd;text-decoration:none;padding:10px 12px;border-radius:9px;background:none;border:0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left}
+.pn-nest-t{font:500 14px/1.2 Inter,system-ui,sans-serif;color:#ddd;text-decoration:none;padding:10px 12px;min-height:44px;border-radius:9px;background:none;border:0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left}
 .pn-nest-t:hover,.pn-nest.open>.pn-nest-t,.pn-nest-t[aria-current]{background:rgba(227,25,55,.14);color:#fff}
-.pn-nest-t svg{width:14px;height:14px;flex-shrink:0;transform:rotate(-90deg);transition:transform .25s}
+.pn-nest-t svg{width:14px;height:14px;flex-shrink:0;transform:rotate(-90deg);transition:transform .2s}
 .pn-nest.open>.pn-nest-t svg{transform:rotate(0deg)}
 .pn-nest-panel{padding:0 0 4px 6px}
 .pn-nest-panel[hidden]{display:none}
-.pn-panel a{display:block;padding:10px 12px;border-radius:9px;color:#ddd;text-decoration:none;font:500 14px/1.2 Inter,system-ui,sans-serif}
-.pn-panel a:hover,.pn-panel a:focus-visible{background:rgba(227,25,55,.14);color:#fff;outline:none}
-.pn-panel a small{display:block;color:#888;font-size:12px;margin-top:3px}
-.pn-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.8);pointer-events:none;transition:opacity .2s,transform .3s var(--pn-spring);color:#fff}
-.pn-icon svg{width:20px;height:20px}
-.pn-menu{display:none;margin-left:auto;width:44px;height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.08);color:#fff;align-items:center;justify-content:center;cursor:pointer}
-.pn-menu svg{width:20px;height:20px}
-/* collapsed */
-.pn.collapsed{--pn-w:48px!important;padding:0;cursor:pointer;justify-content:center;overflow:hidden}
-.pn.collapsed:hover{transform:scale(1.1)}
-.pn.collapsed .pn-logo{opacity:0;transform:translateX(-25px) rotate(-180deg);pointer-events:none}
-.pn.collapsed .pn-items>*{opacity:0;transform:translateX(-20px) scale(.95);pointer-events:none;transition-delay:calc(var(--n,10)*.03s - var(--i,0)*.03s)}
-.pn.collapsed .pn-icon{opacity:1;transform:none;transition-delay:.15s}
-.pn.collapsed .pn-menu{opacity:0}
-/* hero ticker clearance */
+.pn-panel a{display:block;min-height:44px;padding:12px;border-radius:9px;color:#ddd;text-decoration:none;font:500 14px/1.3 Inter,system-ui,sans-serif}
+.pn-panel a:hover,.pn-panel a:focus-visible{background:rgba(227,25,55,.14);color:#fff}
+.pn-panel a small{display:block;color:#a0a0a6;font-size:12px;margin-top:3px}
+/* Older generated pages can still carry this icon. It is no longer a navigation state. */
+.pn-icon{display:none}
+.pn-menu{display:none;flex-shrink:0;gap:6px;min-width:44px;height:44px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08);color:#fff;font:600 13px/1 Inter,system-ui,sans-serif;align-items:center;justify-content:center;cursor:pointer;text-decoration:none}
+.pn-menu svg{width:18px;height:18px;flex-shrink:0}
+.pn-spacer{height:84px}
 .home-x .hx-hero-inner{padding-top:110px}
-/* 4K scale */
-@media (min-width:2400px){.pn-wrap{top:28px;zoom:1.45}}
-/* phones */
-@media (max-width:899px){
- .pn-wrap{left:12px;right:12px;transform:none;max-width:none}
- .pn{width:100%}
- .pn-items{display:none}
- .pn-menu{display:inline-flex}
- .pn.collapsed{width:48px;margin-left:auto}
+@media (min-width:900px){.pn-panel.pn-wide{min-width:440px;display:grid;grid-template-columns:1fr 1fr;gap:0 4px}}
+@media (min-width:900px) and (max-width:1199px){
+ .pn{gap:4px;padding-inline:6px}
+ .pn-logo{gap:6px;padding-inline:6px}
+ .pn-logo img.pn-word{height:16px}
+ .pn-items,.pn-utilities{gap:0}
+ .pn a.pn-link,.pn button.pn-link,.pn-dd>button{font-size:13px;padding-inline:8px}
+ .pn-cta{padding-inline:11px}
 }
-/* sheet (port of shadcn Sheet) */
-.pn-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:70;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
-.pn-sheet{position:fixed;top:0;right:0;bottom:0;width:min(86vw,360px);z-index:71;background:#0b0b0b;border-left:1px solid rgba(255,255,255,.1);box-shadow:-20px 0 60px rgba(0,0,0,.6);transform:translateX(100%);transition:transform .45s var(--pn-ease);overflow-y:auto;padding:22px 20px 40px;display:flex;flex-direction:column;gap:4px}
-.pn-sheet.open{transform:none}.pn-overlay.open{opacity:1;visibility:visible}
-.pn-sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+@media (max-width:899px){
+ .pn-wrap{width:calc(100% - 24px)}
+ .pn-items{display:none}
+ .pn-utilities{margin-left:auto}
+ .pn-utilities>.pn-sub{display:none}
+ .pn-menu{display:inline-flex}
+ .pn-logo{margin-right:0}
+}
+@media (max-width:599px){
+ .pn-wrap{top:8px;width:calc(100% - 16px)}
+ .pn{gap:4px;padding-inline:6px;border-radius:15px}
+ .pn-logo{gap:6px;padding-inline:4px}
+ .pn-logo img{width:22px;height:22px}
+ .pn-logo img.pn-word{width:auto;height:14px}
+ .pn a.pn-link{font-size:12px;padding-inline:8px}
+ .pn-utilities{gap:0}
+ .pn-utilities a.pn-search svg,.pn-utilities a.pn-daily svg{display:none}
+ .pn-menu{font-size:12px;padding-inline:9px;gap:5px}
+ .pn-menu svg{width:16px;height:16px}
+}
+@media (max-width:379px){.pn-logo img.pn-word{display:none}.pn-logo{justify-content:center}}
+@media (min-width:2400px){.pn-wrap{top:16px;width:min(1600px,calc(100% - 48px))}.pn-spacer{height:90px}}
+/* Mobile menu sheet. Every destination is also present in generated HTML. */
+.pn-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:70;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.pn-sheet{position:fixed;top:0;right:0;bottom:0;width:min(92vw,380px);z-index:71;background:#0b0b0b;border-left:1px solid rgba(255,255,255,.1);box-shadow:-20px 0 60px rgba(0,0,0,.4);transform:translateX(100%);visibility:hidden;transition:transform .3s var(--pn-ease),visibility .3s;overflow-y:auto;overscroll-behavior:contain;padding:20px 20px max(32px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:4px}
+.pn-sheet.open{transform:none;visibility:visible}.pn-overlay.open{opacity:1;visibility:visible}
+.pn-sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
 .pn-sheet-head img{height:22px}
-.pn-close{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pn-close{width:44px;height:44px;flex-shrink:0;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .pn-close svg{width:18px;height:18px}
-.pn-sheet a{color:#e6e6e6;text-decoration:none;font:500 16px/1 Inter,system-ui,sans-serif;padding:13px 10px;border-radius:10px}
+.pn-sheet a{color:#e6e6e6;text-decoration:none;font:500 16px/1.3 Inter,system-ui,sans-serif;min-height:44px;padding:11px 10px;border-radius:10px;display:flex;align-items:center}
 .pn-sheet a:hover{background:rgba(227,25,55,.12)}
 .pn-shortcuts{margin:4px 0 10px}
 .pn-sheet .pn-shortcuts-label{margin:0 0 9px;font:600 10px/1.4 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text,#f23a52)}
 .pn-shortcuts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.pn-sheet .pn-shortcuts a{display:flex;align-items:center;min-height:44px;padding:10px;border:1px solid rgba(255,255,255,.16);font-size:14px;line-height:1.3;overflow-wrap:anywhere}
+.pn-sheet .pn-shortcuts a{padding:10px;border:1px solid rgba(255,255,255,.16);font-size:14px;line-height:1.3;overflow-wrap:anywhere}
 html[data-theme="light"] .pn-sheet .pn-shortcuts a{border-color:rgba(0,0,0,.16)}
-.pn-sheet h3{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text,#f23a52);margin:16px 10px 4px}
-.pn-sheet h4{font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8b8b;margin:0;padding:0}
-.pn-sheet .pn-cta{text-align:center;margin:20px 0 0;padding:14px}
+.pn-sheet h3{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text,#f23a52);margin:6px 10px 0}
+.pn-sheet h4{font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#a0a0a6;margin:0;padding:0}
+.pn-sheet .pn-cta{text-align:center;margin:16px 0 0;padding:14px;justify-content:center}
 body.pn-lock{overflow:hidden}
-.pn-credit{font-size:11px;color:#666;text-align:center;padding:10px}
-@media (prefers-reduced-motion:reduce){.pn,.pn *,.pn-sheet,.pn-overlay,.pn-panel{animation:none!important;transition:none!important}}
-.pn-spacer{height:84px}
-@media (min-width:2400px){.pn-spacer{height:120px}}
+.pn-credit{font-size:11px;color:#888;text-align:center;padding:10px}
 .pn-panel a[aria-current],.pn-sheet a[aria-current]{color:#fff;box-shadow:inset 2px 0 0 #e31937}
 .pn-badge{display:inline-block;margin-left:6px;font:700 9px/1 Inter,sans-serif;letter-spacing:.06em;color:#fff;background:#e31937;border-radius:4px;padding:3px 4px;vertical-align:1px}
-/* full-screen explorer: pill starts as a circle */
-body.pn-app .pn-wrap{top:14px}
-.pn-logo img.pn-word{width:auto;height:18px}
-@media (max-width:899px){.pn-logo img.pn-word{height:20px}.pn-logo{transition-delay:0s!important;min-height:44px}.pn-sheet a{min-height:44px;display:flex;align-items:center}}
-.pn a.pn-sub{color:#fff;box-shadow:inset 0 0 0 1px rgba(227,25,55,.6);margin-left:4px}
-.pn a.pn-sub:hover{background:rgba(227,25,55,.16)}
-.pn a.pn-search svg,.pn button.pn-theme svg{width:15px;height:15px}
-@media (max-width:1200px) and (min-width:900px){.pn a.pn-search span,.pn button.pn-theme span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}}
-.pn-sheet a.pn-search-sheet{margin:4px 0 10px;text-align:center;border:1px solid rgba(255,255,255,.16);font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}
-.pn-sheet a.pn-search-sheet svg{width:16px;height:16px}
-.pn-sheet a.pn-sub-sheet{margin-top:20px;text-align:center;border:1px solid rgba(227,25,55,.6);font-weight:600}
-.pn-sheet a.pn-search-sheet+.pn-sub-sheet{margin-top:10px}
+.pn-sheet a.pn-search-sheet,.pn-sheet a.pn-daily-sheet{margin:0;text-align:center;border:1px solid rgba(255,255,255,.16);font-weight:600;justify-content:center;gap:8px}
+.pn-sheet a.pn-search-sheet svg,.pn-sheet a.pn-daily-sheet svg{width:16px;height:16px;flex-shrink:0}
+html[data-theme="light"] .pn-sheet a.pn-daily-sheet{border-color:rgba(0,0,0,.16)}
+.pn-sheet a.pn-sub-sheet{margin:10px 0;text-align:center;border:1px solid rgba(227,25,55,.6);font-weight:600;justify-content:center}
 .pn-theme .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-.pn-sheet .pn-theme-sheet{display:flex;align-items:center;margin:4px 0 10px;padding:13px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.16);font:600 16px/1 Inter,system-ui,sans-serif;color:#e6e6e6;justify-content:center;gap:8px;width:auto;height:auto;background:none;cursor:pointer}
-.pn-sheet .pn-search-sheet+.pn-theme-sheet{margin-top:0}
+.pn-sheet .pn-theme-sheet{display:flex;align-items:center;margin:0;padding:11px 10px;min-height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.16);font:600 16px/1.3 Inter,system-ui,sans-serif;color:#e6e6e6;justify-content:center;gap:8px;width:auto;height:auto;background:none;cursor:pointer}
 .pn-sheet .pn-theme-sheet svg{width:16px;height:16px}
-.pn-sheet a.pn-sub-sheet+.pn-cta{margin-top:10px}
 .pn-sheet h3 .pn-grp-t{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;cursor:pointer;padding:10px 0;font:inherit;letter-spacing:inherit;color:inherit}
-.pn-sheet h3{margin-top:6px;margin-bottom:0}
-.pn-sheet h3 .pn-grp-t:focus-visible{outline:2px solid #e31937;outline-offset:4px;border-radius:4px}
-.pn-grp-c{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .25s;margin-right:4px}
+.pn-sheet h3 .pn-grp-t:focus-visible{outline:2px solid #f0445f;outline-offset:4px;border-radius:4px}
+.pn-grp-c{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .2s;margin-right:4px}
 .pn-grp-t[aria-expanded="true"] .pn-grp-c{transform:rotate(-135deg)}
 .pn-grp{display:flex;flex-direction:column}.pn-grp[hidden]{display:none}
 .pn-slab{display:flex;flex-direction:column;margin:6px 0 2px}
@@ -113,3 +116,4 @@ html[data-theme="light"] .pn-nest.open>.pn-nest-t,
 html[data-theme="light"] .pn-nest-t[aria-current]{color:var(--ink,#16171b);background:rgba(227,25,55,.12)}
 html[data-theme="light"] .pn-sheet h4{color:#5c6067}
 html[data-theme="light"] .pn-slab h4{border-top-color:rgba(22,23,27,.1)}
+@media (prefers-reduced-motion:reduce){.pn,.pn *,.pn-sheet,.pn-overlay,.pn-panel{animation:none!important;transition:none!important}}

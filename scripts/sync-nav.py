@@ -6,7 +6,7 @@ Use --check to fail (exit 1) if any page is out of sync."""
 import json, pathlib, re, sys
 root = pathlib.Path(__file__).resolve().parent.parent
 cfg = json.loads((root / "scripts/nav.json").read_text())
-CSS_VERSION = "202610271600"
+CSS_VERSION = "20261028-navigation"
 CH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
 BURGER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>'
 
@@ -57,11 +57,13 @@ def sheet_bits(d):
     return bits
 
 def block(navtag):
+    navtag = re.sub(r"\s+data-start-collapsed(?:=\"[^\"]*\")?", "", navtag)
     t, m, ds = cfg.get("top", []), cfg.get("mid", []), cfg["dropdowns"]
-    items = links(t, "pn-link") + [dd(d) for d in ds] + links(m, "pn-link") + [f'            <a class="pn-cta" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>']
+    items = links(t, "pn-link") + [dd(d) for d in ds] + links(m, "pn-link")
     a = lambda lst: "".join(f'<a href="{h}">{n}</a>' for n, h in lst)
     top_has_home = any((n or "").lower() == "home" or h in ("/", "/index.html") for n, h in t)
     sheet = [a((t if top_has_home else [("Home", "/")] + t) + m)]
+    sheet.append('<a class="pn-search pn-search-sheet" href="/search.html">Search</a><a class="pn-daily pn-daily-sheet" href="/daily.html">Your Daily</a>')
     shortcuts = cfg.get("mobileShortcuts", [])
     if shortcuts:
         sheet.append('<nav class="pn-shortcuts" aria-label="Quick links"><p class="pn-shortcuts-label">Quick links</p><div class="pn-shortcuts-grid">' + a(shortcuts) + '</div></nav>')
@@ -73,7 +75,12 @@ def block(navtag):
           <div class="pn-items">
 {chr(10).join(items)}
           </div>
-          <button class="pn-menu" type="button" aria-expanded="false" aria-controls="pn-sheet" aria-label="Open menu">{BURGER}</button>
+          <div class="pn-utilities">
+            <a class="pn-link pn-search" href="/search.html"><span>Search</span></a>
+            <a class="pn-link pn-daily" href="/daily.html"><span>Your Daily</span></a>
+            <a class="pn-sub pn-cta" href="/#newsletter">Free briefing</a>
+          </div>
+          <button class="pn-menu" type="button" aria-expanded="false" aria-controls="pn-sheet" aria-label="Open menu">{BURGER}<span>Menu</span></button>
           <span class="pn-icon" aria-hidden="true">{BURGER}</span>
         </nav>
       </div>
@@ -81,7 +88,7 @@ def block(navtag):
       <aside class="pn-sheet" id="pn-sheet" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true" inert>
         <div class="pn-sheet-head"><img src="/assets/brand/wordmark.svg" alt="Supercharged Daily" width="140" height="22" /><button class="pn-close" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
 ''' + "\n".join("        " + s for s in sheet) + f'''
-        <a class="pn-cta" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>
+        <a class="pn-cta pn-sub pn-sub-sheet" href="{cfg["cta"][1]}">{cfg["cta"][0]}</a>
         <!-- Menu inspired by 21st.dev -->
       </aside>'''
 RX = re.compile(r'<div class="pn-wrap">\s*(<nav class="pn"[^>]*>).*?</aside>', re.S)

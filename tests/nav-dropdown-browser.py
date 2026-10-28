@@ -26,7 +26,8 @@ async def main():
     if f.is_file() and ROOT in f.resolve().parents:return await r.fulfill(content_type=mimetypes.guess_type(str(f))[0] or 'application/octet-stream',body=f.read_bytes())
     await r.abort()
    await page.route('**/*',route);await page.goto(SITE+'/',wait_until='domcontentloaded')
-   await page.locator('.pn-dd > button').filter(has_text='Tesla').wait_for();await page.wait_for_timeout(600)
+   await page.wait_for_function('window.__pn && window.__sdTheme')
+   await page.locator('.pn-dd > button').filter(has_text='Tesla').wait_for()
    return context,page
   def is_open(page):return page.evaluate("[...document.querySelectorAll('.pn-dd')].find(d=>/Tesla/.test(d.textContent)).classList.contains('open')")
   async def hover_title(page,label,rest=450):
@@ -54,6 +55,28 @@ async def main():
    await page.mouse.move(panel['x']+100,panel['y']+100,steps=3);await page.mouse.wheel(0,900);await page.wait_for_timeout(250)
    await hover_title(page,'Company')
    assert await is_open(page),(width,'menu closed while reaching Company')
+   await context.close()
+   # 3. A scrolled page still exposes the full nav to keyboard users. Arrow keys
+   # enter the dropdown, nested groups open, and Escape restores the trigger.
+   context,page=await open_page(width,height)
+   await page.evaluate('window.scrollTo(0,700)')
+   await page.wait_for_function('window.scrollY>=600')
+   await page.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))')
+   assert not await page.locator('.pn').evaluate('(el)=>el.classList.contains("collapsed")')
+   tesla=page.locator('.pn-dd > button').filter(has_text='Tesla')
+   await tesla.focus();await page.keyboard.press('ArrowDown')
+   assert await tesla.get_attribute('aria-expanded')=='true'
+   assert await page.locator('#pn-tesla').evaluate('(el)=>el.contains(document.activeElement)')
+   group=page.get_by_role('button',name='Software & autonomy',exact=True)
+   await group.focus();await page.keyboard.press('Enter')
+   assert await group.get_attribute('aria-expanded')=='true'
+   await page.keyboard.press('ArrowDown')
+   assert await page.locator('#pn-tesla-software-autonomy').evaluate('(el)=>el.contains(document.activeElement)')
+   await page.keyboard.press('Escape')
+   assert await tesla.get_attribute('aria-expanded')=='false'
+   assert await tesla.evaluate('(el)=>el===document.activeElement')
+   await page.keyboard.press('Tab')
+   assert await page.locator('.pn-dd > button').filter(has_text='SpaceX').evaluate('(el)=>el===document.activeElement')
    await context.close()
    print('PASS',width,height,flush=True)
   await browser.close()

@@ -1,3 +1,7 @@
+## 2026-10-28 — Mobile opening and persistent navigation
+
+- Bring imagery before signup on phones and keep Search and Your Daily visible.
+
 # Changelog
 
 ## 28 Oct 2026 — Teslascope counts and coming-soon fares
