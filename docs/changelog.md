@@ -2,8 +2,8 @@
 
 ## 28 Oct 2026 — Teslascope counts and coming-soon fares
 
-- **FSD global:** the 28 Oct Teslascope 689 vs 94 sample on 2026.38.5.11 is labelled as an all-hardware snapshot that carries HW3 v14.3 Lite, not as an HW3-only census.
-- **Robotaxi:** Las Vegas, Jacksonville, Phoenix and San Antonio no longer reuse the live-city fare note. They now say there are no fares until Tesla launches service.
+- **FSD global:** the 28 Oct Teslascope 689 vs 94 sample compares 2026.38.5.11 with 2026.38.5.10, the two builds that carry v14.3.13 and HW3 v14.3 Lite. Those counts are Teslascope’s all-hardware snapshot, not an HW3-only census. 2026.38.5.11 is not described as the most widespread Lite-carrying build (2026.38.5.1 was larger in the same snapshot).
+- **Robotaxi:** Las Vegas, Jacksonville, Phoenix and San Antonio say there is no fare information until Tesla launches service. The city dossier headline is “Not yet available”, not a live estimate.
 
 ## 28 Oct 2026 — Freshness audit: dates, launch merge, Robotaxi cities
 

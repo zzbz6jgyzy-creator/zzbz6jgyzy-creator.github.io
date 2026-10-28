@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updated": "2026-10-28",
-  "revision": "2026-10-28.2",
+  "revision": "2026-10-28.3",
   "scope": "Tesla Cybercab and Model Y Robotaxi",
   "sources": [
     {
@@ -638,7 +638,7 @@
         "evidence": [
           "s-771597199b75"
         ],
-        "note": "No fares until Tesla launches service in this city."
+        "note": "No fare information until Tesla launches service in this city."
       },
       "airport": {
         "value": null,
@@ -699,7 +699,7 @@
         "evidence": [
           "s-771597199b75"
         ],
-        "note": "No fares until Tesla launches service in this city."
+        "note": "No fare information until Tesla launches service in this city."
       },
       "airport": {
         "value": null,
@@ -760,7 +760,7 @@
         "evidence": [
           "s-771597199b75"
         ],
-        "note": "No fares until Tesla launches service in this city."
+        "note": "No fare information until Tesla launches service in this city."
       },
       "airport": {
         "value": null,
@@ -821,7 +821,7 @@
         "evidence": [
           "s-771597199b75"
         ],
-        "note": "No fares until Tesla launches service in this city."
+        "note": "No fare information until Tesla launches service in this city."
       },
       "airport": {
         "value": null,
