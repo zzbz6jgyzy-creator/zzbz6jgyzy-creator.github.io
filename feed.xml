@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 27 Oct 2026 20:52:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 02:36:00 +0000</lastBuildDate>
+    <item>
+      <title>Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-powershare-120v-outlet.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-powershare-120v-outlet.html</guid>
+      <pubDate>Wed, 28 Oct 2026 02:36:00 +0000</pubDate>
+      <category>Powershare</category>
+      <description>Tesla says every new Model 3, Model Y and Cybertruck can now run tools from the charge port. Which cars qualify, the $80 adapter, and how 2.4 kW compares.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-powershare-charge-port.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300</title>
       <link>https://superchargeddaily.com/dispatch/raptor-engines-explained.html</link>
@@ -719,13 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/fsd-cannonball-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Assisted Driving Basic, €99</title>
-      <link>https://superchargeddaily.com/dispatch/assisted-driving.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/assisted-driving.html</guid>
-      <pubDate>Sat, 10 Oct 2026 22:50:41 +0000</pubDate>
-      <category>Tesla</category>
-      <description>FSD Supervised renamed in Europe. Same stack, a name for the forms.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/assisted-driving-poster.jpg" type="image/jpeg" />
+      <title>Tracker: Starlink McDowell snapshot</title>
+      <link>https://superchargeddaily.com/starlink.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-10-28T00:31:45.000Z-11190</guid>
+      <pubDate>Wed, 28 Oct 2026 00:31:45 +0000</pubDate>
+      <category>starlink</category>
+      <description>McDowell snapshot: inOrbit 11,166 → 11,190; working 11,151 → 11,176; launched 13,042 → 13,069. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>
@@ -742,14 +750,6 @@
       <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
       <category>robotaxi</category>
       <description>Texas Cybercab registrations moved from 463 to 544. A registered car isn’t necessarily in service yet.</description>
-    </item>
-    <item>
-      <title>Tracker: Starlink McDowell snapshot</title>
-      <link>https://superchargeddaily.com/starlink.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-10-26T00:51:30.000Z-11166</guid>
-      <pubDate>Mon, 26 Oct 2026 00:51:30 +0000</pubDate>
-      <category>starlink</category>
-      <description>McDowell snapshot: inOrbit 11,154 → 11,166; working 11,140 → 11,151; operational 9,726 → 10,022; launched 13,015 → 13,042. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: LV · statement</title>

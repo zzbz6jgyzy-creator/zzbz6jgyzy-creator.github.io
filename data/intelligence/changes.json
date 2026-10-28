@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-28T02:29:23.142Z",
+  "updated": "2026-10-28T02:37:28.595Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-powershare-120v-outlet.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you",
+      "at": "2026-10-28T02:36:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-powershare-120v-outlet.html",
+      "href": "/dispatch/tesla-powershare-120v-outlet.html",
+      "summary": "Tesla says every new Model 3, Model Y and Cybertruck can now run tools from the charge port. Which cars qualify, the $80 adapter, and how 2.4 kW compares.",
+      "title": "Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you",
+      "id": "logged|dispatch:/dispatch/tesla-powershare-120v-outlet.html|2026-10-28T02:36:00.000Z|Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you"
+    },
     {
       "type": "changed",
       "factId": "starlink:in-orbit",
@@ -13,9 +30,9 @@
       "evidence": "independently_corroborated",
       "source": "Jonathan McDowell Starlink statistics",
       "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
-      "href": "/starlink.html",
-      "summary": "Starlink in orbit changed from 11166 to 11190.",
-      "title": "Starlink in orbit",
+      "href": "/starlink.html#counts-changed",
+      "summary": "McDowell snapshot: inOrbit 11,166 → 11,190; working 11,151 → 11,176; launched 13,042 → 13,069. This is a published table snapshot, not a live operator feed.",
+      "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-10-28T00:31:45.000Z|11190"
     },
     {
@@ -459,23 +476,6 @@
       "summary": "A 7-minute, 4K first episode is out. Musk’s full-length Odyssey movie is still a pledge with a 31 Dec deadline. The timeline and the math.",
       "title": "Grok Imagine’s Odyssey Episode 1 is out. Can Musk’s full-length movie still land this year?",
       "id": "logged|dispatch:/dispatch/grok-imagine-odyssey-episode-1.html|2026-10-24T13:30:13.000Z|Grok Imagine’s Odyssey Episode 1 is out. Can Musk’s full-length movie still land this year?"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starship-pushes-orion-to-moon.html",
-      "topic": "starship",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Starship will now push Orion to the Moon. What NASA’s new Artemis IV plan changes, and a first look inside Cabin 1",
-      "at": "2026-10-24T07:38:42.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starship-pushes-orion-to-moon.html",
-      "href": "/dispatch/starship-pushes-orion-to-moon.html",
-      "summary": "NASA dropped the halo-orbit meetup. Starship will dock with Orion near Earth and fly both to low lunar orbit. Plus Cabin 1, the tanker count and SpaceX’s milestone chart.",
-      "title": "Starship will now push Orion to the Moon. What NASA’s new Artemis IV plan changes, and a first look inside Cabin 1",
-      "id": "logged|dispatch:/dispatch/starship-pushes-orion-to-moon.html|2026-10-24T07:38:42.000Z|Starship will now push Orion to the Moon. What NASA’s new Artemis IV plan changes, and a first look inside Cabin 1"
     },
     {
       "type": "logged",
