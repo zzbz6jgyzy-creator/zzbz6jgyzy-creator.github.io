@@ -40,6 +40,8 @@ function validate(d,studioSources=[],clipIds=null){
  unique(d.timeline.events,'id','timeline');for(const t of d.timeline.events){if(!t.label||!t.title||!t.text)fail('timeline '+t.id);labelled(t,'timeline '+t.id);}
  unique(d.timeline.promise.rows,'id','promise rows');for(const r of d.timeline.promise.rows){if(!r.label||!r.then||!r.now)fail('promise '+r.id);labelled(r,'promise '+r.id);}
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&c.date<=d.reviewed&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
+ const so=d.social;if(!so?.title||!so.posts?.length)fail('social');unique(so.posts,'id','social posts');
+ for(const q of so.posts)if(!q.text||!q.author||!/^https:\/\/x\.com\/Tesla\/status\/\d+$/.test(q.url)||!q.caption)fail('social post '+q.id+' must be an official @Tesla post');
  return d;
 }
 const api={validate,esc,status,day};
