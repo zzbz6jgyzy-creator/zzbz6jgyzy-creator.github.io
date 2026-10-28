@@ -1,3 +1,8 @@
+## 2026-10-28 — Mobile opening and persistent navigation
+
+- Bring homepage imagery before signup on phones.
+- Keep Search and Your Daily visible; simplify shared menus and highlight the free briefing.
+
 # Changelog
 
 ## 28 Oct 2026 — FSD tracker, part 5a (return visits)
