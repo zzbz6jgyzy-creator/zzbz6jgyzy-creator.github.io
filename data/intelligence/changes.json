@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28T05:45:47.913Z",
+  "updated": "2026-10-28T06:10:49.680Z",
   "changes": [
     {
       "type": "logged",
@@ -34,6 +34,23 @@
       "summary": "McDowell snapshot: inOrbit 11,166 → 11,190; working 11,151 → 11,176; launched 13,042 → 13,069. This is a published table snapshot, not a live operator feed.",
       "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-10-28T00:31:45.000Z|11190"
+    },
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "544",
+      "next": "573",
+      "at": "2026-10-28T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html",
+      "summary": "Texas Cybercab registrations changed from 544 to 573.",
+      "title": "Texas Cybercab registrations",
+      "id": "changed|robotaxi:tx-cybercab|2026-10-28T00:00:00.000Z|573"
     },
     {
       "type": "logged",

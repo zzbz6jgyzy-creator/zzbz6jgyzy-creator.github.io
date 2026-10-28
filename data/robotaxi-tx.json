@@ -111,6 +111,13 @@
    "modelY": 507,
    "other": 0,
    "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+  },
+  {
+   "date": "2026-10-28",
+   "cybercab": 573,
+   "modelY": 507,
+   "other": 0,
+   "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
   }
  ],
  "vins": {
@@ -1164,13 +1171,42 @@
   "5YJAJEEUXTA004277": "2026-10-27",
   "5YJAJEEUXTA004280": "2026-10-27",
   "5YJAJEEUXTA004327": "2026-10-27",
-  "5YJAJEEUXTA004361": "2026-10-27"
+  "5YJAJEEUXTA004361": "2026-10-27",
+  "5YJAJEEU0TA004367": "2026-10-28",
+  "5YJAJEEU0TA004370": "2026-10-28",
+  "5YJAJEEU0TA004384": "2026-10-28",
+  "5YJAJEEU1TA004376": "2026-10-28",
+  "5YJAJEEU2TA004371": "2026-10-28",
+  "5YJAJEEU2TA004385": "2026-10-28",
+  "5YJAJEEU3TA004377": "2026-10-28",
+  "5YJAJEEU3TA004380": "2026-10-28",
+  "5YJAJEEU3TA004394": "2026-10-28",
+  "5YJAJEEU4TA004369": "2026-10-28",
+  "5YJAJEEU4TA004372": "2026-10-28",
+  "5YJAJEEU4TA004386": "2026-10-28",
+  "5YJAJEEU5TA004378": "2026-10-28",
+  "5YJAJEEU5TA004381": "2026-10-28",
+  "5YJAJEEU6TA004373": "2026-10-28",
+  "5YJAJEEU6TA004387": "2026-10-28",
+  "5YJAJEEU6TA004390": "2026-10-28",
+  "5YJAJEEU7TA004222": "2026-10-28",
+  "5YJAJEEU7TA004365": "2026-10-28",
+  "5YJAJEEU7TA004379": "2026-10-28",
+  "5YJAJEEU7TA004382": "2026-10-28",
+  "5YJAJEEU8TA004374": "2026-10-28",
+  "5YJAJEEU8TA004388": "2026-10-28",
+  "5YJAJEEU8TA004391": "2026-10-28",
+  "5YJAJEEU9TA004366": "2026-10-28",
+  "5YJAJEEU9TA004383": "2026-10-28",
+  "5YJAJEEUXTA004375": "2026-10-28",
+  "5YJAJEEUXTA004389": "2026-10-28",
+  "5YJAJEEUXTA004392": "2026-10-28"
  },
  "source": {
   "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
   "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
  },
- "checked": "2026-10-27T18:08:46Z",
+ "checked": "2026-10-28T06:10:46Z",
  "observations": [
   {
    "at": "2026-10-23T17:57:18Z",
@@ -1272,6 +1308,14 @@
    "at": "2026-10-27T18:08:46Z",
    "date": "2026-10-27",
    "cybercab": 544,
+   "modelY": 507,
+   "other": 0,
+   "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+  },
+  {
+   "at": "2026-10-28T06:10:46Z",
+   "date": "2026-10-28",
+   "cybercab": 573,
    "modelY": 507,
    "other": 0,
    "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
