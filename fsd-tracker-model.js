@@ -20,6 +20,14 @@ function validate(d){
  pts.forEach((p,i)=>{if(!/^[a-z0-9-]+$/.test(p.id)||!day(p.end)||p.end>d.reviewed||!p.label)fail('point '+p.id);ratio(p);ref(p.source);
   if(i&&!(p.end>pts[i-1].end))fail('points out of order');if(i&&p.deliveries<pts[i-1].deliveries)fail('cumulative deliveries fell at '+p.id);});
  for(const a of d.adoption.attach){if(!(a.value>0&&a.value<=100)||!['over','about','exact'].includes(a.bound))fail('attach '+a.id);ref(a.source);}
+ const m=d.miles;ref(m.source);ref(m.europe.source);
+ if(!(m.tolerance>0)||m.points.length<5)fail('miles');
+ m.points.forEach((p,i)=>{if(!day(p.end)||!p.label||!(p.total>=0)||!(p.v11>=0)||p.v11>p.total)fail('miles point '+p.label);if(i&&(p.end<=m.points[i-1].end||p.total<m.points[i-1].total||p.v11<m.points[i-1].v11))fail('miles not cumulative at '+p.label);});
+ const sw=d.software;ref(sw.source);
+ if(!(sw.top>=2&&sw.top<=8&&sw.timeline>=3&&sw.heatDays>=3&&sw.days.length>=5&&sw.builds.length===sw.top&&sw.releases.length===sw.timeline&&sw.latestCount>0&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(sw.asOf)))fail('software settings');
+ sw.days.forEach((x,i)=>{if(!day(x)||(i&&x<=sw.days[i-1]))fail('software days');});
+ for(const b of sw.builds)if(!b.id||b.counts.length!==sw.days.length||b.counts.some(v=>!Number.isInteger(v)||v<0))fail('software build '+b.id);
+ for(const r of sw.releases)if(!r.id||!day(r.date)||!r.status)fail('release '+r.id);
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }

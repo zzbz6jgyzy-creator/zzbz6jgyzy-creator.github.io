@@ -20,6 +20,12 @@ Every figure needs a source with a `checked` date no later than `reviewed`.
 3. Update the KPI cards, the attach-rate step (`adoption.attach`) and the Europe callout from the deck text.
 4. Add a `changes` entry (newest first) and set `reviewed`.
 
+Cumulative miles (`miles.points`): re-measure Tesla's chart in the new deck (render the page, read the red and blue band tops at each quarter tick against the axis gridlines) and keep the 'approximate' label. Replace it with Tesla's own number if one is ever published, and log a correction.
+
+Software (`software` block): the build charts use a dated slice pinned from the bot-updated history, so the page does not change with every snapshot. To refresh it run `node scripts/refresh-fsd-software.mjs`, then rebuild. The numbers are running totals of cars Teslascope has seen on each build (the last snapshot of each UTC day), not a share of cars on a build today. Keep the wording that says so, and keep the sample caveat.
+
+When re-measuring Tesla's miles chart in a new deck, match each tick label to its position instead of assuming the axis starts at the same month: the Q1 and Q2 decks start at Sep 2021, the Q3 deck at Sep 2022.
+
 The markets KPI is computed from `data/fsd-global.json`, so refresh that file (it has its own checks) and rebuild.
 
 ```
