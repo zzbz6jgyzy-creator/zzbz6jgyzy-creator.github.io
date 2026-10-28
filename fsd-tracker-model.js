@@ -20,6 +20,10 @@ function validate(d){
  pts.forEach((p,i)=>{if(!/^[a-z0-9-]+$/.test(p.id)||!day(p.end)||p.end>d.reviewed||!p.label)fail('point '+p.id);ratio(p);ref(p.source);
   if(i&&!(p.end>pts[i-1].end))fail('points out of order');if(i&&p.deliveries<pts[i-1].deliveries)fail('cumulative deliveries fell at '+p.id);});
  for(const a of d.adoption.attach){if(!(a.value>0&&a.value<=100)||!['over','about','exact'].includes(a.bound))fail('attach '+a.id);ref(a.source);}
+ const m=d.miles;ref(m.source);ref(m.europe.source);
+ if(!(m.tolerance>0)||m.points.length<5)fail('miles');
+ m.points.forEach((p,i)=>{if(!day(p.end)||!p.label||!(p.total>=0)||!(p.v11>=0)||p.v11>p.total)fail('miles point '+p.label);if(i&&(p.end<=m.points[i-1].end||p.total<m.points[i-1].total||p.v11<m.points[i-1].v11))fail('miles not cumulative at '+p.label);});
+ ref(d.software.source);if(!(d.software.top>=2&&d.software.top<=8&&d.software.days>=3&&d.software.timeline>=3))fail('software settings');
  const ch=d.changes;if(!ch.length||!ch.every((c,i)=>day(c.date)&&['update','correction'].includes(c.kind)&&c.text&&(!i||ch[i-1].date>=c.date)))fail('changes');
  return d;
 }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "pages": [
     {
       "url": "/",
@@ -720,6 +720,18 @@
       "title": "FSD adoption: subscriptions and attach rate",
       "tag": "FSD",
       "summary": "Active FSD subscriptions per quarter from Tesla’s decks and the North America attach rate on new deliveries."
+    },
+    {
+      "url": "/fsd-tracker.html#miles",
+      "title": "FSD cumulative miles",
+      "tag": "FSD",
+      "summary": "Cumulative miles driven with FSD (Supervised), measured from Tesla’s deck chart and marked approximate, plus the European totals."
+    },
+    {
+      "url": "/fsd-tracker.html#software",
+      "title": "FSD software: what cars are running",
+      "tag": "FSD",
+      "summary": "Share of connected cars on each build over time, day-by-day change and recent FSD releases."
     },
     {
       "url": "/tcmv.html",

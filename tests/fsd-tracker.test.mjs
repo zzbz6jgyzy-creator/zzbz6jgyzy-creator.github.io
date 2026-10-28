@@ -48,7 +48,8 @@ test('page is reproducible, escapes text, labels estimates and keeps search reco
   assert.ok(before.includes('rel="canonical" href="https://superchargeddaily.com/fsd-tracker.html"'));
   assert.ok(before.includes('ft-chip-estimate'),'our ratio is labelled as an estimate');
   assert.equal((before.match(/class="ft-kpi"/g)||[]).length,d.kpis.length);
-  assert.equal((before.match(/<tr><th scope="row">/g)||[]).length,d.adoption.points.length,'table view has every quarter');
+  const adoptionSec=before.slice(before.indexOf('id="adoption"'),before.indexOf('id="miles"'));
+  assert.equal((adoptionSec.match(/<tr><th scope="row">/g)||[]).length,d.adoption.points.length,'table view has every quarter');
   const ld=JSON.parse(before.match(/<script type="application\/ld\+json">(.*?)<\/script>/)[1]);
   assert.deepEqual(ld['@graph'].map(g=>g['@type']),['WebPage','BreadcrumbList']);
   const pages=JSON.parse(index).pages;
@@ -83,4 +84,27 @@ test('axis grows with the data and the phone chart lists every quarter',()=>{
   const page=fs.readFileSync('fsd-tracker.html','utf8');
   assert.equal((page.match(/<li( class="ft-hot")?><span class="ft-hb-q">/g)||[]).length,d.adoption.points.length);
   assert.ok(!/ratio [\d.]+% of/.test(page),'ratio never phrased as a share of cars');
+});
+
+test('miles chart is cumulative, marked approximate, and never presented as an exact figure',()=>{
+  const m=d.miles,page=fs.readFileSync('fsd-tracker.html','utf8');
+  for(let i=1;i<m.points.length;i++){assert.ok(m.points[i].total>=m.points[i-1].total);assert.ok(m.points[i].v11<=m.points[i].total);}
+  assert.ok(m.points.at(-1).total>14&&m.points.at(-1).total<16.5,'matches the end of Tesla\'s chart (axis to 16 billion)');
+  assert.ok(page.includes('ft-chip-approx'));assert.ok(page.includes('≈'));
+  assert.ok(d.kpis.find(k=>k.id==='miles').status==='approx');
+  const bad=structuredClone(d);bad.miles.points[5].total=0.01;assert.throws(()=>M.validate(bad));
+  const bad2=structuredClone(d);bad2.miles.points[3].v11=99;assert.throws(()=>M.validate(bad2));
+});
+
+test('software section: build share, day-by-day table and release timeline come from the stored snapshots',()=>{
+  const page=fs.readFileSync('fsd-tracker.html','utf8');
+  const hist=JSON.parse(fs.readFileSync('data/updates-history.json','utf8')).snapshots;
+  assert.ok(page.includes(`${hist.at(-1).fleet.toLocaleString('en-GB')} cars in the latest snapshot`));
+  assert.equal((page.match(/<li><span class="ft-k-b">/g)||[]).length,0);
+  assert.equal((page.match(/<li><i style="background:/g)||[]).length,d.software.top);
+  assert.equal((page.match(/<ol class="ft-rel">/g)||[]).length,1);
+  assert.equal((page.match(/<li><p class="ft-date">/g)||[]).length,d.software.timeline);
+  assert.ok(page.includes('they are not install counts'));
+  assert.ok(page.includes('a sample of the fleet, not the fleet'));
+  const ids=[...page.matchAll(/ id="([^"]+)"/g)].map(x=>x[1]);assert.equal(new Set(ids).size,ids.length,'ids are unique (desktop and phone charts)');
 });

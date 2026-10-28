@@ -20,6 +20,10 @@ Every figure needs a source with a `checked` date no later than `reviewed`.
 3. Update the KPI cards, the attach-rate step (`adoption.attach`) and the Europe callout from the deck text.
 4. Add a `changes` entry (newest first) and set `reviewed`.
 
+Cumulative miles (`miles.points`): re-measure Tesla's chart in the new deck (render the page, read the red and blue band tops at each quarter tick against the axis gridlines) and keep the 'approximate' label. Replace it with Tesla's own number if one is ever published, and log a correction.
+
+Software charts read `data/updates-history.json` and `updates-data.js` at build time and need no manual step beyond the normal software-tracker updates.
+
 The markets KPI is computed from `data/fsd-global.json`, so refresh that file (it has its own checks) and rebuild.
 
 ```

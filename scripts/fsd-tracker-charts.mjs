@@ -35,3 +35,55 @@ export function adoptionList(points){
   const max=Math.max(2,Math.ceil(Math.max(...points.map(p=>p.subs))*1.1*2)/2);
   return `<ol class="ft-hbars" aria-label="Active FSD subscriptions by quarter, millions">${points.map((p,i)=>`<li${i===points.length-1?' class="ft-hot"':''}><span class="ft-hb-q">${e(p.label)}</span><span class="ft-hb-track"><i style="width:${(p.subs/max*100).toFixed(1)}%"></i></span><span class="ft-hb-v">${nf(p.subs)}M</span><span class="ft-hb-r">${nf(M.ratio(p),1)} per 100</span></li>`).join('')}</ol><p class="ft-hb-note">Amber: our ratio, subscriptions per 100 cars ever delivered.</p>`;
 }
+
+const ymd=t=>t.slice(0,10);
+const dayLabel=t=>new Date(t+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'});
+
+// Cumulative miles as two stacked areas (V11 and before, V12 and beyond), drawn from our measurements of Tesla's chart.
+// Dashed outline and an "approx" chip elsewhere mark every value as approximate.
+export function milesArea(points,c=false){
+  const W=c?420:720,H=c?340:380,L=c?42:52,R=c?16:24,T=28,B=52,pw=W-L-R,ph=H-T-B,max=Math.max(4,Math.ceil(Math.max(...points.map(p=>p.total))*1.02/4)*4),n=points.length;
+  const x=i=>L+pw*i/(n-1),y=v=>T+ph-ph*v/max;
+  let s=`<svg class="ft-chart${c?' ft-c':''}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="ft-m-t${c?'c':''} ft-m-d${c?'c':''}" focusable="false"><title id="ft-m-t${c?'c':''}">Cumulative miles driven with FSD (Supervised), approximate</title><desc id="ft-m-d${c?'c':''}">The total rises from almost nothing in ${e(points[0].label)} to about ${points.at(-1).total} billion miles in ${e(points.at(-1).label)}, measured from Tesla's own chart.</desc>`;
+  for(let i=0;i<=4;i++){const v=max*i/4;s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" class="ft-grid"/><text x="${L-10}" y="${y(v)+4}" class="ft-ax" text-anchor="end">${v}B</text>`;}
+  const top=points.map((p,i)=>`${x(i)},${y(p.total)}`),mid=points.map((p,i)=>`${x(i)},${y(p.v11)}`),base=`${x(n-1)},${y(0)} ${x(0)},${y(0)}`;
+  s+=`<polygon points="${top.join(' ')} ${mid.slice().reverse().join(' ')}" class="ft-a-new"/><polygon points="${mid.join(' ')} ${base}" class="ft-a-old"/><polyline points="${top.join(' ')}" class="ft-a-line"/>`;
+  points.forEach((p,i)=>{if((c?i%8===0:i%4===0)||i===n-1)s+=`<text x="${x(i)}" y="${H-24}" class="ft-ax" text-anchor="${i===0?'start':i===n-1?'end':'middle'}">${e(p.label)}</text>`;});
+  const q=points.at(-1);
+  s+=`<circle cx="${x(n-1)}" cy="${y(q.total)}" r="5" class="ft-dot"/><text x="${x(n-1)-10}" y="${y(q.total)-12}" class="ft-val" text-anchor="end">≈${q.total}B</text>`;
+  s+=`<g class="ft-keyrow"><rect x="${L+12}" y="${T+10}" width="12" height="12" rx="3" class="ft-a-new"/><text x="${L+30}" y="${T+20}" class="ft-ax">FSD miles on V12 and beyond</text><rect x="${L+12}" y="${T+30}" width="12" height="12" rx="3" class="ft-a-old"/><text x="${L+30}" y="${T+40}" class="ft-ax">V11 and before</text></g></svg>`;
+  return s;
+}
+
+// Share of the Teslascope sample on the most common builds over time (stacked area), with a key.
+export function buildShare(hist,labels,top,c=false){
+  const last=hist.at(-1),builds=Object.entries(last.v).sort((a,b)=>b[1][0]-a[1][0]).slice(0,top).map(x=>x[0]);
+  const cols=['#ff3e60','#86dccb','#f3c47a','#b4bcff','#7ea6ff','#c98cff','#e3a07a','#9bd37a'];
+  const rows=hist.map(h=>({t:h.t,vals:builds.map(k=>h.v[k]?h.v[k][0]/h.fleet*100:0)}));
+  const W=c?420:720,H=c?320:360,L=c?42:46,R=c?14:18,T=20,B=44,pw=W-L-R,ph=H-T-B,n=rows.length;
+  const x=i=>L+pw*i/(n-1),y=v=>T+ph-ph*v/100;
+  let s=`<svg class="ft-chart${c?' ft-c':''}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="ft-b-t${c?'c':''} ft-b-d${c?'c':''}" focusable="false"><title id="ft-b-t${c?'c':''}">Share of the Teslascope sample on each of the ${builds.length} most common builds</title><desc id="ft-b-d${c?'c':''}">From ${dayLabel(ymd(rows[0].t))} to ${dayLabel(ymd(rows.at(-1).t))}. The newest builds grow as older ones shrink. The table below the chart gives the latest shares.</desc>`;
+  for(let i=0;i<=4;i++){const v=i*25;s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" class="ft-grid"/><text x="${L-10}" y="${y(v)+4}" class="ft-ax" text-anchor="end">${v}%</text>`;}
+  const cum=rows.map(()=>0);
+  builds.forEach((k,j)=>{const lo=cum.slice();rows.forEach((r,i)=>cum[i]+=r.vals[j]);
+    s+=`<polygon points="${rows.map((r,i)=>`${x(i)},${y(cum[i])}`).join(' ')} ${rows.map((r,i)=>`${x(i)},${y(lo[i])}`).reverse().join(' ')}" fill="${cols[j]}" opacity=".85"/>`;});
+  [0,Math.floor((n-1)/2),n-1].forEach(i=>s+=`<text x="${x(i)}" y="${H-16}" class="ft-ax" text-anchor="${i===0?'start':i===n-1?'end':'middle'}">${dayLabel(ymd(rows[i].t))}</text>`);
+  s+='</svg>';
+  const key=builds.map((k,j)=>`<li><i style="background:${cols[j]}"></i><span class="ft-k-b">${e(k)}</span>${labels[k]?`<span class="ft-k-f">${e(labels[k])}</span>`:''}<span class="ft-k-v">${rows.at(-1).vals[j].toFixed(1)}%</span></li>`).join('');
+  return {svg:s,key:`<ul class="ft-key">${key}</ul>`,builds,total:rows.at(-1).vals.reduce((a,b)=>a+b,0)};
+}
+
+// Net change in the number of sampled cars on each build, per day. Not installs: cars can also leave the sample.
+export function dailyChange(hist,builds,days){
+  const byDay=new Map();hist.forEach(h=>byDay.set(ymd(h.t),h));
+  const dates=[...byDay.keys()].sort(),use=dates.slice(-(days+1));
+  const cols=use.slice(1);
+  const rows=builds.map(b=>({b,cells:cols.map((d,i)=>{const cur=byDay.get(d).v[b]?.[0]||0,prev=byDay.get(use[i]).v[b]?.[0]||0;return cur-prev;})}));
+  const mx=Math.max(1,...rows.flatMap(r=>r.cells.map(Math.abs)));
+  return {cols,rows,mx};
+}
+export function dailyTable(t,labels){
+  const head=t.cols.map(c=>`<th scope="col">${dayLabel(c)}</th>`).join('');
+  const body=t.rows.map(r=>`<tr><th scope="row"><span class="ft-k-b">${e(r.b)}</span>${labels[r.b]?`<small>${e(labels[r.b])}</small>`:''}</th>${r.cells.map(v=>`<td style="--i:${(Math.abs(v)/t.mx).toFixed(2)}" class="${v>0?'ft-up':v<0?'ft-dn':'ft-0'}">${v>0?'+':''}${v||'·'}</td>`).join('')}</tr>`).join('');
+  return `<div class="ft-table-wrap" tabindex="0" role="region" aria-label="Daily change in sampled cars per build, scrolls sideways on small screens"><table class="ft-table ft-heat"><thead><tr><th scope="col">Build</th>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewed": "2026-10-27",
+  "reviewed": "2026-10-28",
   "sources": [
     {
       "id": "q1-update",
@@ -28,6 +28,15 @@
       "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf",
       "date": "2026-10-21",
       "checked": "2026-10-27"
+    },
+    {
+      "id": "teslascope-software",
+      "outlet": "Teslascope",
+      "kind": "reporting",
+      "title": "Teslascope software updates (build distribution of connected cars)",
+      "url": "https://www.teslascope.com/software",
+      "date": "2026-10-27",
+      "checked": "2026-10-27"
     }
   ],
   "kpis": [
@@ -48,6 +57,16 @@
       "unit": "of new deliveries",
       "detail": "Share of new vehicle deliveries in North America that include FSD (Supervised), Q3 2026. Tesla calls it a nearly twenty percentage point rise on the quarter before.",
       "status": "disclosed",
+      "asOf": "2026-09-30",
+      "source": "q3-update"
+    },
+    {
+      "id": "miles",
+      "label": "Cumulative FSD miles",
+      "value": "≈15B",
+      "unit": "miles, end of Q3 2026",
+      "detail": "Tesla's chart ends just above 15 billion on an axis to 16 billion. Tesla's text gives no exact figure, so this is read off the chart and could be out by about half a billion.",
+      "status": "approx",
       "asOf": "2026-09-30",
       "source": "q3-update"
     },
@@ -148,9 +167,136 @@
   },
   "changes": [
     {
+      "date": "2026-10-28",
+      "kind": "update",
+      "text": "Added the cumulative FSD miles chart (read from Tesla's deck chart, marked approximate), the software build-share chart, the daily change table and the FSD release timeline."
+    },
+    {
       "date": "2026-10-27",
       "kind": "update",
       "text": "Page created. Adoption figures are taken from Tesla's Q1, Q2 and Q3 2026 shareholder decks; countries come from our global FSD tracker data."
     }
-  ]
+  ],
+  "miles": {
+    "title": "Cumulative miles driven with FSD (Supervised)",
+    "source": "q3-update",
+    "tolerance": 0.5,
+    "points": [
+      {
+        "label": "Sep 2022",
+        "end": "2022-09-30",
+        "total": 0.0,
+        "v11": 0.0
+      },
+      {
+        "label": "Dec 2022",
+        "end": "2022-12-31",
+        "total": 0.1,
+        "v11": 0.1
+      },
+      {
+        "label": "Mar 2023",
+        "end": "2023-03-31",
+        "total": 0.1,
+        "v11": 0.1
+      },
+      {
+        "label": "Jun 2023",
+        "end": "2023-06-30",
+        "total": 0.2,
+        "v11": 0.2
+      },
+      {
+        "label": "Sep 2023",
+        "end": "2023-09-30",
+        "total": 0.5,
+        "v11": 0.5
+      },
+      {
+        "label": "Dec 2023",
+        "end": "2023-12-31",
+        "total": 0.7,
+        "v11": 0.7
+      },
+      {
+        "label": "Mar 2024",
+        "end": "2024-03-31",
+        "total": 0.9,
+        "v11": 0.9
+      },
+      {
+        "label": "Jun 2024",
+        "end": "2024-06-30",
+        "total": 1.5,
+        "v11": 0.9
+      },
+      {
+        "label": "Sep 2024",
+        "end": "2024-09-30",
+        "total": 2.0,
+        "v11": 0.9
+      },
+      {
+        "label": "Dec 2024",
+        "end": "2024-12-31",
+        "total": 2.8,
+        "v11": 0.9
+      },
+      {
+        "label": "Mar 2025",
+        "end": "2025-03-31",
+        "total": 3.5,
+        "v11": 0.9
+      },
+      {
+        "label": "Jun 2025",
+        "end": "2025-06-30",
+        "total": 4.4,
+        "v11": 0.9
+      },
+      {
+        "label": "Sep 2025",
+        "end": "2025-09-30",
+        "total": 5.6,
+        "v11": 0.9
+      },
+      {
+        "label": "Dec 2025",
+        "end": "2025-12-31",
+        "total": 7.1,
+        "v11": 0.9
+      },
+      {
+        "label": "Mar 2026",
+        "end": "2026-03-31",
+        "total": 9.0,
+        "v11": 0.9
+      },
+      {
+        "label": "Jun 2026",
+        "end": "2026-06-30",
+        "total": 11.7,
+        "v11": 0.9
+      },
+      {
+        "label": "Sep 2026",
+        "end": "2026-09-30",
+        "total": 15.4,
+        "v11": 0.9
+      }
+    ],
+    "note": "Tesla's Q3 2026 deck draws this chart (axis to 16 billion) with no data labels, and the text gives no exact total. We measured the chart at each quarter tick, so every value here is approximate, likely within about 0.5 billion. The blue band is FSD miles on V11 and before; the red band is miles on V12 and beyond.",
+    "europe": {
+      "customers": "over 100,000",
+      "km": "more than 160 million kilometres",
+      "source": "q3-update"
+    }
+  },
+  "software": {
+    "source": "teslascope-software",
+    "top": 6,
+    "days": 8,
+    "timeline": 8,
+    "caveat": "Teslascope reports the builds of cars connected to its service: tens of thousands of owners, skewed to enthusiasts and to North America and Europe. It is a sample of the fleet, not the fleet, and Teslascope and TeslaFi show different shares for the same build because they count different cars."
+  }
 }

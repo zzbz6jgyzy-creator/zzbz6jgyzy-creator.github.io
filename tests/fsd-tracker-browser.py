@@ -43,19 +43,22 @@ async def main():
             tag = f'{width}-{theme}-{mode}'
             assert await page.locator('h1').count() == 1, tag
             assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'), (tag, 'overflow')
-            assert await page.locator('.ft-kpi').count() == 4, tag
+            assert await page.locator('.ft-kpi').count() == 5, tag
+            assert await page.locator('#miles svg').count() == 2 and await page.locator('#software .ft-chart').count() == 2, tag
+            assert await page.locator('.ft-heat tbody tr').count() == 6, tag
+            assert await page.locator('.ft-rel li').count() == 8, tag
             assert await page.locator('.ft-bar').count() == 7, tag
-            assert await page.locator('.ft-table tbody tr').count() == 7, tag
+            assert await page.locator('#adoption .ft-table tbody tr').count() == 7, tag
             assert not errors, (tag, errors)
             # The table view is a native <details>, so it works with no script.
-            await page.locator('.ft-table-view summary').click()
-            assert await page.locator('.ft-table').is_visible(), tag
+            await page.locator('#adoption .ft-table-view summary').click()
+            assert await page.locator('#adoption .ft-table').is_visible(), tag
             if width <= 700:
-                assert not await page.locator('.ft-desk').is_visible(), tag
+                assert not await page.locator('#adoption .ft-desk').is_visible(), tag
                 assert await page.locator('.ft-hbars li').count() == 7, tag
                 assert await page.locator('.ft-hbars').is_visible(), tag
             else:
-                assert await page.locator('.ft-desk').is_visible() and not await page.locator('.ft-phone').is_visible(), tag
+                assert await page.locator('#adoption .ft-desk').is_visible() and not await page.locator('#adoption .ft-phone').is_visible(), tag
             if mode in ('normal',) and width > 700:
                 await page.locator('.ft-bar').nth(6).focus()
                 tip = page.locator('.ft-tip')
@@ -63,6 +66,8 @@ async def main():
                 assert '1.74 million' in await tip.inner_text(), tag
                 await page.keyboard.press('Escape')
                 assert not await tip.is_visible(), tag
+            visible_svgs = [await el.is_visible() for el in await page.locator('#miles .ft-chart, #software .ft-chart').all()]
+            assert visible_svgs.count(True) == 2, (tag, 'one miles and one software chart visible per width')
             for el in await page.locator('.ft a.ft-cite, .ft summary, .ft-jump a').all():
                 box = await el.bounding_box()
                 if box:
