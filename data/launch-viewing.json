@@ -183,28 +183,6 @@
    }
   },
   {
-   "id": "ll2-ad358a4d-c541-409b-9366-9c2f2da4aeb9",
-   "title": "Falcon 9 Block 5 | O3b mPower 11-13",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-09-13T18:49:00Z",
-   "end": "",
-   "date": "2026-09-13",
-   "precision": "datetime",
-   "status": "done",
-   "note": "Launch Library 2 schedule. Launch targets can change.",
-   "where": "",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
-   "windowStart": "2026-09-13T18:49:00Z",
-   "windowEnd": "2026-09-13T20:16:00Z",
-   "vehicle": "",
-   "providerStatus": "Launch Successful",
-   "pad": null
-  },
-  {
    "id": "ussf-259",
    "title": "Falcon 9 Block 5 | USSF-259",
    "group": "spacex",
