@@ -143,7 +143,10 @@ async def main():
      await page.locator('#comments').screenshot(path=str(OUT/(name+'.png')))
     elif enabled and (path=='/' or navigation):
      await page.locator('#pn-ex [data-member-nav]').wait_for(state='attached')
-     assert await page.locator('.sdm-nav-primary').is_visible()==(width>=1200)
+     if await page.locator('.pn[data-nav-studio]').count():
+      assert await page.locator('.sdm-nav-primary').count()==0
+      assert await page.locator('.ns-mobile-utilities [data-member-nav]').count()==1
+     else:assert await page.locator('.sdm-nav-primary').is_visible()==(width>=1200)
      if navigation:
       href=await page.locator('#pn-ex [data-member-nav]').get_attribute('href')
       assert parse_qs(urlparse(href).query)['return']==[path]
@@ -228,3 +231,4 @@ async def main():
   (OUT/'results.json').write_text(json.dumps(results,indent=2));await browser.close()
   if not all(x['passed'] for x in results):raise SystemExit(1)
 asyncio.run(main())
+

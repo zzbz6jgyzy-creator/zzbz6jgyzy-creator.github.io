@@ -8,7 +8,7 @@ ROOT=pathlib.Path(__file__).resolve().parent.parent
 START,END='<!--sd:members-->','<!--/sd:members-->'
 BLOCK='''    <!--sd:members-->
     <link rel="stylesheet" href="/members.css?v=20261022" />
-    <script type="module" src="/members.js?v=20261022"></script>
+    <script type="module" src="/members.js?v=20261028-navstudio"></script>
     <!--/sd:members-->'''
 RX=re.compile(r'[ \t]*<!--sd:members-->.*?<!--/sd:members-->\n?',re.S)
 def inject(src):
@@ -26,3 +26,4 @@ def run(check=False):
  print(('Out of sync: ' if check else 'Updated: ')+str(len(changed)))
  return 1 if check and changed else 0
 if __name__=='__main__':sys.exit(run('--check' in sys.argv))
+

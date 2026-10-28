@@ -160,11 +160,11 @@
     ]
   },
   "software": {
-    "updated": "2026-10-28T13:41:49Z",
+    "updated": "2026-10-28T14:38:04Z",
     "id": "2026.38.5.11",
     "firstSeen": "2026-10-24T19:43:09Z",
     "source": "https://teslascope.com/software",
-    "count": 705
+    "count": 710
   },
   "europe": {
     "updated": "2026-10-28",
@@ -172,6 +172,15 @@
     "recognised": 10
   },
   "stories": [
+    {
+      "url": "/dispatch/cybercab-outnumbers-model-y.html",
+      "image": "/assets/dispatch/cybercab-outnumbers-model-y-line.jpg",
+      "title": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
+      "summary": "Texas DMV records list 573 Cybercabs and 507 Model Ys under Tesla Robotaxi LLC. Tesla’s fleet is now 89% the size of Waymo’s in the state.",
+      "tag": "Robotaxi",
+      "date": "2026-10-28T14:45:00Z",
+      "thumb": "/assets/dispatch/cybercab-outnumbers-model-y-line-480w.webp"
+    },
     {
       "url": "/dispatch/tesla-powershare-120v-outlet.html",
       "image": "/assets/dispatch/tesla-powershare-charge-port.jpg",
@@ -216,15 +225,6 @@
       "tag": "FSD",
       "date": "2026-10-22T07:41:03Z",
       "thumb": "/assets/dispatch/tesla-nav-screen-hero-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-q3-2026-results.html",
-      "image": "/assets/dispatch/tesla-q3-results-hero.jpg",
-      "title": "Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock",
-      "summary": "Revenue flat at $28.05B, GAAP net income down 43% as R&D jumped 69%, and free cash flow back at $1.53B. I took apart the cash, the capex math and every new date from the call.",
-      "tag": "Earnings",
-      "date": "2026-10-22T01:38:03Z",
-      "thumb": "/assets/dispatch/tesla-q3-results-hero-480w.webp"
     }
   ],
   "articlesUpdated": "2026-10-28T08:40:00Z"

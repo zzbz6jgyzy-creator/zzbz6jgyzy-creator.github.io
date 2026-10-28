@@ -186,10 +186,10 @@
     const on = document.querySelector("[data-sd-kind].is-on");
     return (on && on.getAttribute("data-sd-kind")) || "all";
   }
-  function queryItems(q) {
+  function queryItems(q, kindOverride) {
     const raw = String(q || "").trim();
     const toks = tokens(raw);
-    const kind = PAGE ? activeKind() : "all";
+    const kind = kindOverride || (PAGE ? activeKind() : "all");
     const all = (catalog || []).filter((i) => kind === "all" || i.kind === kind);
     if (!raw) {
       const stories = all.filter((i) => i.kind === "story").slice(0, LATEST);
@@ -243,7 +243,7 @@
       hits.innerHTML = `<p class="sd-find-empty">Loading the index…</p>`;
       return 0;
     }
-    const res = queryItems(q);
+    const res = queryItems(q, box.matches(".ns-mobile-search") ? "all" : undefined);
     const toks = res.toks || [];
     if (status) {
       status.textContent = q.trim()

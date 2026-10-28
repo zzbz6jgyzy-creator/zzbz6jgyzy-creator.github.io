@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 28 Oct 2026 08:40:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 14:45:00 +0000</lastBuildDate>
+    <item>
+      <title>Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet</title>
+      <link>https://superchargeddaily.com/dispatch/cybercab-outnumbers-model-y.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/cybercab-outnumbers-model-y.html</guid>
+      <pubDate>Wed, 28 Oct 2026 14:45:00 +0000</pubDate>
+      <category>Robotaxi</category>
+      <description>Texas DMV records list 573 Cybercabs and 507 Model Ys under Tesla Robotaxi LLC. Tesla’s fleet is now 89% the size of Waymo’s in the state.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/cybercab-outnumbers-model-y-line.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours</title>
       <link>https://superchargeddaily.com/dispatch/spacex-faa-10000-launches.html</link>
@@ -717,15 +726,6 @@
       <category>Tesla</category>
       <description>Eight times the launch fleet. Texas DMV lists 319 two-seaters.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/cybercab-austin-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Venezuela and Brazil, cleared</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-latam.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-latam.html</guid>
-      <pubDate>Sat, 10 Oct 2026 22:50:41 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>Nationwide licence, 15+15 MHz to phones, plus the 800 MHz buy.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-latam-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>

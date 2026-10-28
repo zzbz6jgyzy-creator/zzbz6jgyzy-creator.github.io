@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/cybercab-outnumbers-model-y.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28T14:45:00Z</news:publication_date>
+      <news:title>Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/spacex-faa-10000-launches.html</loc>
     <news:news>
       <news:publication>
@@ -65,17 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-27T02:36:00Z</news:publication_date>
       <news:title>Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/spacex-40b-gpu-lease.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-26T14:50:00Z</news:publication_date>
-      <news:title>SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet</news:title>
     </news:news>
   </url>
 </urlset>

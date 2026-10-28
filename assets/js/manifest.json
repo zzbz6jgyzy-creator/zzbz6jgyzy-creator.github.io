@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.9de1c99a41.js",
-      "bytes": 43470,
+      "file": "/assets/js/core.bundle.e46a5356cc.js",
+      "bytes": 43558,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -25,8 +25,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.79d2787ad3.js",
-      "bytes": 133994,
+      "file": "/assets/js/home.bundle.1f2ba265cd.js",
+      "bytes": 134683,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -388,8 +388,8 @@
       ]
     },
     "arcade-core": {
-      "file": "/assets/js/arcade-core.bundle.5e7f849774.js",
-      "bytes": 39359,
+      "file": "/assets/js/arcade-core.bundle.5e49c3af86.js",
+      "bytes": 38162,
       "sources": [
         "track.js",
         "newsletter.js",

@@ -94,7 +94,7 @@ def block(navtag):
    <nav class="ns-mobile-categories" aria-label="Explore sections">{mobile_menus}</nav>
    <nav class="pn-shortcuts" aria-label="Quick links"><p>Quick access</p><div>{shortcuts}</div></nav>
   </div>
-  <div class="ns-mobile-utilities"><a href="/members.html" data-ns-account data-member-nav>Sign in / Profile</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></div>
+  <div class="ns-mobile-utilities"><a href="/members.html" data-ns-account>Member account</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></div>
   <a class="pn-sub pn-sub-sheet pn-cta" href="/#newsletter">Get the free Sunday briefing {ARROW}</a>
  </aside><!--/sd:navigation-->'''
 
@@ -107,6 +107,7 @@ def transform(s):
  if RX.search(s):
   n=re.sub(r'(?<=href="/nav-pill\.css)(?:\?v=[^"]*)?(?=")','?v='+CSS_VERSION,n)
   n=re.sub(r'(?<=src="/nav-pill\.js)(?:\?v=[^"]*)?(?=")','?v='+CSS_VERSION,n)
+  n=re.sub(r'(?<=src="/members\.js)(?:\?v=[^"]*)?(?=")','?v=20261028-navstudio',n)
  return n
 
 if __name__=='__main__':

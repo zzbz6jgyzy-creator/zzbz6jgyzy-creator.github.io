@@ -77,6 +77,12 @@ async function signIn(target, button) {
 function installNav() {
   const href='/members.html?return='+encodeURIComponent(safeReturn(location.pathname+(ARTICLE.test(location.pathname)?'#comments':location.hash)));
   const items=document.querySelector('.pn-items'),sheet=document.querySelector('.pn-sheet'),explore=document.querySelector('#pn-ex');
+  if(document.querySelector('.pn[data-nav-studio]')){
+    const account=sheet?.querySelector('[data-ns-account]');
+    if(account){account.href=href;account.setAttribute('data-member-nav','');account.classList.add('sdm-nav');}
+    if(explore&&!explore.querySelector('[data-member-nav]'))explore.append(el('a',{href,class:'sdm-nav','data-member-nav':true},'Member account',el('small',{},'Sign in, profile and discussions')));
+    return;
+  }
   if(items&&!items.querySelector('.sdm-nav-primary')){
     const link=el('a',{href,class:'pn-link sdm-nav sdm-nav-primary','data-member-nav':true},'Members');
     items.insertBefore(link,items.querySelector(':scope > .pn-cta'));
@@ -275,3 +281,4 @@ async function boot(){
   if(root&&!account&&'IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){observer.disconnect();initialize();}},{rootMargin:'600px'});observer.observe(root);}else await initialize();
 }
 boot();
+
