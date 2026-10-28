@@ -48,6 +48,10 @@ async def main():
             assert await page.locator('.ft-heat tbody tr').count() == 6, tag
             assert await page.locator('#atlas svg.ft-map').count() == 2 and await page.locator('.ft-tiles li').count() == 27 and await page.locator('.ft-rec li').count() == 10, tag
             assert await page.locator('.ft-meter').count() == 2, tag
+            # No overlapping labels in the recognition list (WCAG 1.4.10 at 320 px): chip and link boxes must not intersect.
+            for li in await page.locator('.ft-rec li').all():
+                chip, link = await li.locator('.ft-chip').bounding_box(), await li.locator('.ft-cite').bounding_box()
+                assert chip['x'] + chip['width'] <= link['x'] + 0.5 or link['x'] + link['width'] <= chip['x'] + 0.5 or chip['y'] + chip['height'] <= link['y'] or link['y'] + link['height'] <= chip['y'], (tag, 'chip and source link overlap')
             assert await page.locator('.ft-rel li').count() == 8, tag
             assert await page.locator('.ft-bar').count() == 7, tag
             assert await page.locator('#adoption .ft-table tbody tr').count() == 7, tag

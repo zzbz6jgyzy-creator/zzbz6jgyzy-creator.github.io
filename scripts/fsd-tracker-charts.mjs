@@ -89,28 +89,31 @@ export function atlasMap(atlas,geo,europe=false){
   const byCode=new Map(atlas.countries.map(c=>[c.code,c]));
   const paths=atlas.countries.filter(c=>geo.countries[c.code]).map(c=>`<path d="${geo.countries[c.code]}" class="ft-m-${c.status}"><title>${e(c.name)}: ${STATUS[c.status]}</title></path>`).join('');
   const vb=europe?'462 50 152 106':'0 20 1000 400';
-  const labels=europe?atlas.countries.filter(c=>c.status==='listed'&&c.region==='Europe').map(c=>{const [x,y]=proj(c.lon,c.lat);return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" class="ft-m-lab" text-anchor="middle">${e(c.code)}</text>`;}).join(''):'';
+  const off={NL:[-4,-3],BE:[-2,4.5],SI:[-4.5,-3.5],HR:[3.5,4.5],DK:[0,-3],CZ:[0,-1]};
+  const labels=europe?atlas.countries.filter(c=>c.status==='listed'&&c.region==='Europe').map(c=>{const [x,y]=proj(c.lon,c.lat),[dx,dy]=off[c.code]||[0,0];return `<text x="${(x+dx).toFixed(1)}" y="${(y+dy).toFixed(1)}" class="ft-m-lab" text-anchor="middle">${e(c.code)}</text>`;}).join(''):'';
+  const dots=europe?'':atlas.countries.filter(c=>c.status==='listed'&&c.code==='PR').map(c=>{const [x,y]=proj(c.lon,c.lat);return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.2" class="ft-m-dot"/>`;}).join('');
   const id=europe?'e':'w';
-  return `<svg class="ft-chart ft-map${europe?' ft-map-eu':''}" viewBox="${vb}" role="img" aria-labelledby="ft-mp-t${id} ft-mp-d${id}" focusable="false"><title id="ft-mp-t${id}">${europe?'Europe':'World'} map of Tesla-listed FSD markets</title><desc id="ft-mp-d${id}">${atlas.countries.filter(c=>c.status==='listed').length} markets are on Tesla's list. Colour marks listing status only. The country table has the same information.</desc><rect x="-100" y="-100" width="1300" height="800" class="ft-m-sea"/>${europe?'':`<defs><g id="ft-geo"><path d="${geo.land}" class="ft-m-land" fill-rule="evenodd"/>${paths}</g></defs>`}<use href="#ft-geo"/>${labels}</svg>`;
+  return `<svg class="ft-chart ft-map${europe?' ft-map-eu':''}" viewBox="${vb}" role="img" aria-labelledby="ft-mp-t${id} ft-mp-d${id}" focusable="false"><title id="ft-mp-t${id}">${europe?'Europe':'World'} map of Tesla-listed FSD markets</title><desc id="ft-mp-d${id}">${europe?`${atlas.countries.filter(c=>c.status==='listed'&&c.region==='Europe').length} European markets are on Tesla's list: ${atlas.countries.filter(c=>c.status==='listed'&&c.region==='Europe').map(c=>c.name).join(', ')}.`:`${atlas.countries.filter(c=>c.status==='listed').length} markets are on Tesla's list: ${atlas.countries.filter(c=>c.status==='listed').map(c=>c.name).join(', ')}.`} Colour marks listing status only; the region list below names them too.</desc><rect x="-100" y="-100" width="1300" height="800" class="ft-m-sea"/>${europe?'':`<defs><g id="ft-geo"><path d="${geo.land}" class="ft-m-land" fill-rule="evenodd"/>${paths}</g></defs>`}<use href="#ft-geo"/>${dots}${labels}</svg>`;
 }
 export function regionBars(atlas){
   const regions=['Americas','Europe','Asia-Pacific','Middle East & Africa'];
   const rows=regions.map(r=>({r,n:atlas.countries.filter(c=>c.region===r&&c.status==='listed').length,u:atlas.countries.filter(c=>c.region===r&&c.status==='uncertain').length,t:atlas.countries.filter(c=>c.region===r).length}));
   const max=Math.max(1,...rows.map(r=>r.n));
-  return `<ol class="ft-hbars ft-regions" aria-label="Tesla-listed markets by region">${rows.map(r=>`<li><span class="ft-hb-q">${e(r.r)}</span><span class="ft-hb-track"><i style="width:${(r.n/max*100).toFixed(1)}%"></i></span><span class="ft-hb-v">${r.n}</span><span class="ft-hb-r">of ${r.t} tracked${r.u?`, ${r.u} unresolved`:''}</span></li>`).join('')}</ol>`;
+  return `<ol class="ft-hbars ft-regions" aria-label="Tesla-listed markets by region">${rows.map(r=>`<li><span class="ft-hb-q">${e(r.r)}</span><span class="ft-hb-track"><i style="width:${(r.n/max*100).toFixed(1)}%"></i></span><span class="ft-hb-v">${r.n}</span><span class="ft-hb-r">of ${r.t} tracked${r.u?`, ${r.u} unresolved`:''}${r.n?': '+e(atlas.countries.filter(c=>c.region===r.r&&c.status==="listed").map(c=>c.name).join(', ')):''}</span></li>`).join('')}</ol>`;
 }
 // One tile per EU state: recognised and listed, recognised only, or neither. A dot marks reported customer use.
 export function euTiles(eu){
   const order=[...eu.states].sort((a,b)=>(b.recognised-a.recognised)||(b.population-a.population));
   const cls=s=>s.recognised&&s.listed?'ft-t-both':s.recognised?'ft-t-rec':s.listed?'ft-t-list':'ft-t-none';
-  const txt=s=>`${s.name}: ${s.recognised?'recognised by its authority':'no recognition recorded'}; ${s.listed?'listed by Tesla':'not on Tesla\'s list'}${s.observed?'; customer use reported':''}`;
+  const how=s=>s.code==='NL'?'granted the approval (RDW)':s.permission==='recorded'?'recognised by its authority':'recognition reported by media';
+  const txt=s=>`${s.name}: ${s.recognised?how(s):'no recognition recorded'}; ${s.listed?'listed by Tesla':'not on Tesla\'s list'}${s.observed?'; customer use reported':''}`;
   return `<ul class="ft-tiles" aria-label="The 27 EU states">${order.map(s=>`<li class="${cls(s)}" title="${e(txt(s))}"><b aria-hidden="true">${e(s.code)}</b><span class="ft-sr">${e(txt(s))}</span>${s.observed?'<i aria-hidden="true"></i>':''}</li>`).join('')}</ul>`;
 }
 export function euMeters(eu){
   const rec=eu.states.filter(s=>s.recognised),n=eu.states.length,pop=rec.reduce((a,s)=>a+s.population,0)/eu.populationTotal*100,th=eu.thresholds;
   const meter=(w,mark,label,left,right,aria)=>`<div class="ft-meter-row"><div class="ft-meter" role="img" aria-label="${e(aria)}"><i style="width:${w.toFixed(1)}%"></i><u style="left:${mark}%"></u></div><p class="ft-ml"><span>${left}</span><span>${right}</span></p></div>`;
-  return {pop,html:meter(rec.length/n*100,th.states/n*100,'',`<b>${rec.length}</b> of ${n} states recognised`,`${th.states} needed`,`${rec.length} of ${n} EU states recognised; ${th.states} needed`)
-   +meter(pop,th.populationPct,'',`<b>${pop.toFixed(1)}%</b> of EU population`,`${th.populationPct}% needed`,`${pop.toFixed(1)} percent of EU population; ${th.populationPct} percent needed`)};
+  return {pop,html:meter(rec.length/n*100,th.states/n*100,'',`<b>${rec.length}</b> of ${n} states recognised`,`FSD·EU's line: ${th.states}`,`${rec.length} of ${n} EU states recognised; FSD·EU's committee-vote line is ${th.states}`)
+   +meter(pop,th.populationPct,'',`<b>${pop.toFixed(1)}%</b> of EU population`,`FSD·EU's line: ${th.populationPct}%`,`${pop.toFixed(1)} percent of EU population; FSD·EU's committee-vote line is ${th.populationPct} percent`)};
 }
 // Count of recognising states over time, as a step line with each recognition labelled.
 export function recognitionSteps(rec){

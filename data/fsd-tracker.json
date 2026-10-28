@@ -196,6 +196,11 @@
     {
       "date": "2026-10-28",
       "kind": "update",
+      "text": "Added the world map of Tesla-listed markets, the EU state tiles, the two FSD·EU thresholds (reported by FSD·EU, not an EU announcement), the recognition timeline and the population share, which is our own arithmetic on Eurostat's 1 January 2025 figures."
+    },
+    {
+      "date": "2026-10-28",
+      "kind": "update",
       "text": "Added the cumulative FSD miles chart (read from Tesla's deck chart, marked approximate), the Teslascope build charts (running totals of cars seen on each build, and new cars per day) and the FSD release timeline."
     },
     {
@@ -1033,6 +1038,7 @@
         "code": "NL",
         "name": "Netherlands",
         "recognised": true,
+        "permission": "recorded",
         "listed": true,
         "observed": false,
         "population": 18044027
@@ -1041,6 +1047,7 @@
         "code": "LT",
         "name": "Lithuania",
         "recognised": true,
+        "permission": "recorded",
         "listed": true,
         "observed": false,
         "population": 2890664
@@ -1049,6 +1056,7 @@
         "code": "EE",
         "name": "Estonia",
         "recognised": true,
+        "permission": "reported",
         "listed": true,
         "observed": false,
         "population": 1369995
@@ -1057,6 +1065,7 @@
         "code": "DK",
         "name": "Denmark",
         "recognised": true,
+        "permission": "recorded",
         "listed": true,
         "observed": false,
         "population": 5992734
@@ -1065,6 +1074,7 @@
         "code": "BE",
         "name": "Belgium",
         "recognised": true,
+        "permission": "recorded",
         "listed": true,
         "observed": false,
         "population": 11883495
@@ -1073,6 +1083,7 @@
         "code": "SI",
         "name": "Slovenia",
         "recognised": true,
+        "permission": "recorded",
         "listed": true,
         "observed": false,
         "population": 2130850
@@ -1081,6 +1092,7 @@
         "code": "CZ",
         "name": "Czechia",
         "recognised": true,
+        "permission": "recorded",
         "listed": true,
         "observed": true,
         "population": 10909500
@@ -1089,6 +1101,7 @@
         "code": "HR",
         "name": "Croatia",
         "recognised": true,
+        "permission": "reported",
         "listed": true,
         "observed": false,
         "population": 3874350
@@ -1097,6 +1110,7 @@
         "code": "DE",
         "name": "Germany",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 83577140
@@ -1105,6 +1119,7 @@
         "code": "FR",
         "name": "France",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 68882600
@@ -1113,6 +1128,7 @@
         "code": "IT",
         "name": "Italy",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 58943464
@@ -1121,6 +1137,7 @@
         "code": "ES",
         "name": "Spain",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 49128297
@@ -1129,6 +1146,7 @@
         "code": "SE",
         "name": "Sweden",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 10587710
@@ -1137,6 +1155,7 @@
         "code": "GR",
         "name": "Greece",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 10372335
@@ -1145,6 +1164,7 @@
         "code": "FI",
         "name": "Finland",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 5635971
@@ -1153,6 +1173,7 @@
         "code": "IE",
         "name": "Ireland",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 5440278
@@ -1161,6 +1182,7 @@
         "code": "PL",
         "name": "Poland",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 36497495
@@ -1169,6 +1191,7 @@
         "code": "RO",
         "name": "Romania",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 19043151
@@ -1177,6 +1200,7 @@
         "code": "PT",
         "name": "Portugal",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 10749635
@@ -1185,6 +1209,7 @@
         "code": "HU",
         "name": "Hungary",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 9539502
@@ -1193,6 +1218,7 @@
         "code": "AT",
         "name": "Austria",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 9197213
@@ -1201,6 +1227,7 @@
         "code": "BG",
         "name": "Bulgaria",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 6437360
@@ -1209,6 +1236,7 @@
         "code": "SK",
         "name": "Slovakia",
         "recognised": true,
+        "permission": "recorded",
         "listed": true,
         "observed": false,
         "population": 5419451
@@ -1217,6 +1245,7 @@
         "code": "LV",
         "name": "Latvia",
         "recognised": true,
+        "permission": "reported",
         "listed": false,
         "observed": false,
         "population": 1860565
@@ -1225,6 +1254,7 @@
         "code": "CY",
         "name": "Cyprus",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 982966
@@ -1233,6 +1263,7 @@
         "code": "LU",
         "name": "Luxembourg",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 681973
@@ -1241,6 +1272,7 @@
         "code": "MT",
         "name": "Malta",
         "recognised": false,
+        "permission": "unknown",
         "listed": false,
         "observed": false,
         "population": 574250
