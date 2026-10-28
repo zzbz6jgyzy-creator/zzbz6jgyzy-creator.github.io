@@ -11,6 +11,13 @@
 - **New facts, all from pages we opened:** Engadget, TechCrunch, The Verge, Hagerty, Autoblog and HotCars (reservation prices and clause 4 of the reservation agreement, the event location near Waco, the engineer's figures). Tesla's own pages block our fetcher, so they are not cited as opened.
 - **Motion:** muted loops that play only on screen and when allowed; reduced motion, Save-Data and a visible Pause button show stills instead.
 
+## 28 Oct 2026 — Latvia is the 10th EU country to recognise FSD (Supervised)
+
+- **FSD Europe:** Latvia’s 26 Oct recognition of the Dutch RDW approval is now recorded from the [Ministry of Transport / CSDD notice](https://www.sam.gov.lv/lv/jaunums/latvija-atzist-niderlande-izsniegto-provizorisko-tipa-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai). That is 10 of 27 EU states. Tesla still does not list customer availability there; rollout begins soon, so listed EU markets stay at 9.
+- **QMV share:** the ten recognising states are 14.3% of EU population on Eurostat’s 1 January 2025 figures (15 states and 65% remain the thresholds). Tesla’s 21 Oct Q3 deck still says nine EU countries for the 100,000-customer / 160 million km claim.
+- **Footer:** the shared “Contact me” mailto is wrapped in Cloudflare `email_off` comments so Email Obfuscation does not inject `email-decode.min.js` on pages whose SVG maps use `<a href>` (that decoder throws `o.href.indexOf is not a function` on SVGAnimatedString).
+- **Tests:** wallpaper studio download journeys use a local HTTP server. Chromium’s download manager never sent the Desktop `<a download>` click through Playwright `route.fulfill`, so `expect_download` timed out on main as well.
+
 ## 28 Oct 2026 — Teslascope counts and coming-soon fares
 
 - **FSD global:** the 28 Oct Teslascope 689 vs 94 sample compares 2026.38.5.11 with 2026.38.5.10, the two builds that carry v14.3.13 and HW3 v14.3 Lite. Those counts are Teslascope’s all-hardware snapshot, not an HW3-only census. 2026.38.5.11 is not described as the most widespread Lite-carrying build (2026.38.5.1 was larger in the same snapshot).

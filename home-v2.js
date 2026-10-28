@@ -63,7 +63,9 @@
   };
   const st0 = starship(); if (st0) trk.push(st0);
   if (F && F.countries) {
-    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length + " Tesla-listed EU markets", s: (F.updated ? "As of " + window.SDHomeTrackers.irishTime(F.updated) + " · " : "") + "Vehicle eligibility applies · national recognition and committee votes are separate" });
+    const rec = F.countries.filter((c) => c.jurisdiction === "EU" && c.permission?.status !== "unknown" && c.permission?.date);
+    const listed = F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length;
+    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: rec.length + " EU countries recognised", s: (F.updated ? "As of " + window.SDHomeTrackers.irishTime(F.updated) + " · " : "") + listed + " Tesla-listed · Latvia rollout pending · recognition is not a committee vote" });
   }
   // Keep the pre-rendered snapshot until a newer JSON response arrives.
   const savedCc = $("[data-hv-trk] a[href='/cybercab.html']");

@@ -232,6 +232,11 @@
     {
       "date": "2026-10-28",
       "kind": "update",
+      "text": "Latvia's 26 Oct recognition of the Dutch RDW approval is now recorded from the Latvian Ministry of Transport / CSDD notice, the tenth EU country. Tesla has not listed customer availability there yet; rollout begins soon."
+    },
+    {
+      "date": "2026-10-28",
+      "kind": "update",
       "text": "Added a 'When it updates next' table, a follow-by-email box, an RSS feed of this change log, a share image and a country picker in the markets section."
     },
     {
@@ -1070,7 +1075,7 @@
     ]
   },
   "europe": {
-    "asOf": "2026-10-26",
+    "asOf": "2026-10-28",
     "popSource": "eurostat",
     "popAsOf": "2025-01-01",
     "populationTotal": 450646971,
@@ -1291,7 +1296,7 @@
         "code": "LV",
         "name": "Latvia",
         "recognised": true,
-        "permission": "reported",
+        "permission": "recorded",
         "listed": false,
         "observed": false,
         "population": 1860565
@@ -1410,10 +1415,10 @@
         "date": "2026-10-26",
         "code": "LV",
         "name": "Latvia",
-        "kind": "media",
+        "kind": "authority",
         "links": [
-          "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
-          "https://lat.bb.lv/raksts/musu-latvija/2026/10/26/latvija-atzist-tesla-vaditaja-paligsistemu-117934"
+          "https://www.sam.gov.lv/lv/jaunums/latvija-atzist-niderlande-izsniegto-provizorisko-tipa-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
+          "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai"
         ]
       }
     ]

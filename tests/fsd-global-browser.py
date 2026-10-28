@@ -34,6 +34,10 @@ async def main():
    await page.goto('https://superchargeddaily.com/fsd.html'+suffix,wait_until='domcontentloaded');await page.wait_for_timeout(150)
    await no_overflow(page,(width,theme,mode,'initial'))
    assert await page.locator('h1').count()==1
+   contact=page.locator('footer.site-footer a[href="mailto:superchargeddaily@gmail.com"]')
+   assert await contact.count()==1
+   assert (await contact.inner_text()).strip()=='Contact me'
+   assert await contact.is_visible()
    ids=await page.locator('[id]').evaluate_all('(els)=>els.map(e=>e.id)');assert len(ids)==len(set(ids))
    assert await page.locator('.fg-static-grid>details').count()==53
    if mode in ['nojs','malformed']:

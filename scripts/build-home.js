@@ -73,9 +73,9 @@ if (S && S.next) {
   trk.push({ href: "/starship.html", k: "Starship", v: "Flight " + S.next.flight, s: (prec === "day" ? "NET " : "") + day(new Date(start)) + " · " + (S.next.headline || "") });
 }
 if (F && F.countries) {
-  const ok = F.countries.filter((c) => c.status === "approved"), pop = ok.reduce((a, c) => a + (c.pop || 0), 0);
-  const pct = F.thresholds ? Math.round((pop / F.thresholds.euPopulationM) * 100) : 0;
-  trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length + " Tesla-listed EU markets", s: (F.updated ? "As of " + homeTrackers.irishTime(F.updated) + " · " : "") + "Vehicle eligibility applies · national recognition and committee votes are separate" });
+  const rec = F.countries.filter((c) => c.jurisdiction === "EU" && c.permission?.status !== "unknown" && c.permission?.date);
+  const listed = F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length;
+  trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: rec.length + " EU countries recognised", s: (F.updated ? "As of " + homeTrackers.irishTime(F.updated) + " · " : "") + listed + " Tesla-listed · Latvia rollout pending · recognition is not a committee vote" });
 }
 let tx = null; try { tx = JSON.parse(rd("data/robotaxi-tx.json")); } catch (e) {}
 let savedCc = null;
