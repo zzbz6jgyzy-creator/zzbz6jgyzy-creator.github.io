@@ -4,12 +4,12 @@
 The source is Tesla's public video CDN. It is NOT committed (101 MB): download it to a scratch directory, or let this script do it.
 It is pinned by SHA-256 in data/roadster-clips.json; if Tesla re-encodes the file the script stops instead of cutting a different video.
 
-    python3 scripts/make-roadster-clips.py --source /tmp/roadster-clips/event.mp4          # download if missing, cut, write posters and checksums
+    python3 scripts/make-roadster-clips.py --source /tmp/roadster-clips/event.mp4          # download if missing, cut, write checksums
     python3 scripts/make-roadster-clips.py --check                                          # verify committed outputs against the checksums (no ffmpeg)
     python3 scripts/make-roadster-clips.py --only hop                                       # one clip
 
-Each clip is silent, 12 s or less, faded in and out (0.5 s) so a loop restarts through black, and written as H.264 MP4 and VP9 WebM
-at 1280 px (desktop) and 720 px (phones), plus an AVIF and WebP poster. Every clip is credited and linked to the original on the page.
+Each clip is silent, 12 s or less, faded in (0.5 s) and out (0.6 s) so a loop restarts through black, and written as H.264 MP4 and VP9 WebM
+at 1280 px (desktop) and 720 px (phones). Every clip is credited and linked to the original on the page.
 """
 import argparse, hashlib, json, pathlib, subprocess, sys, urllib.request
 
@@ -93,18 +93,6 @@ def main():
             run(base + ['-c:v', 'libvpx-vp9', '-b:v', '0', '-crf', str(q['crf_webm']), '-row-mt', '1', '-deadline', 'good', '-cpu-used', '2', str(webm)])
             for p in (mp4, webm):
                 outputs.append({'path': str(p.relative_to(ROOT)), 'bytes': p.stat().st_size, 'sha256': sha256(p)})
-        # Posters from the same frame, as AVIF and WebP, at both widths.
-        from PIL import Image
-        frame = OUT / f'{c["id"]}-poster.png'
-        run(['ffmpeg', '-v', 'error', '-y', '-ss', str(c['start'] + c['poster']), '-i', str(src), '-frames:v', '1', str(frame)])
-        im = Image.open(frame).convert('RGB')
-        for w in (1280, 720):
-            r = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
-            for ext, kw in (('avif', dict(quality=52, speed=4)), ('webp', dict(quality=80, method=6))):
-                p = OUT / f'{c["id"]}-poster-{w}.{ext}'
-                r.save(p, **kw)
-                outputs.append({'path': str(p.relative_to(ROOT)), 'bytes': p.stat().st_size, 'sha256': sha256(p)})
-        frame.unlink()
         print('cut', c['id'])
     cfg['outputs'] = sorted(outputs, key=lambda o: o['path'])
     CFG.write_text(json.dumps(cfg, indent=2, ensure_ascii=False) + '\n')

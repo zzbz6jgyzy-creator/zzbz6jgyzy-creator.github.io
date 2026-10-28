@@ -28,7 +28,6 @@ test('clips: committed outputs match their checksums and stay inside the budget'
     assert.ok(set.reduce((n,o)=>n+o.bytes,0)<=lim.maxSetBytes,w+' '+ext+' set within budget');
     for(const o of set)assert.ok(o.bytes<=lim.maxBytesPerClip,o.path);
   }
-  for(const c of clips.clips)for(const w of [1280,720])for(const e of ['avif','webp'])assert.ok(fs.existsSync('assets/roadster-clips/'+c.id+'-poster-'+w+'.'+e),c.id+' poster');
 });
 
 test('stage: every step has a loop that is silent, lazy and inline, with WebM first and phone sizes',()=>{
@@ -154,7 +153,7 @@ test('images, bundle and styles the preview references exist',()=>{
   assert.ok(html.indexOf('id="rx-motion"')<html.indexOf('class="rx-hero"'),'the pause control comes first in the tab order');
   const css=fs.readFileSync('roadster-experience.css','utf8');
   assert.ok(/html\[data-theme="light"\] \.rx-read :focus-visible\{outline-color:var\(--rx-read-accent\)\}/.test(css),'focus ring keeps contrast on the light reading sections');
-  assert.ok(css.includes('.rx[data-motion=off] .rx-scroll span{animation:none}'),'the pause button stops the scroll cue too');
+  assert.ok(css.includes('.rx[data-motion=off] .rx-scroll span,.rx[data-motion=off] .rx-hotspots button::after{animation:none}'),'the pause button stops the scroll cue and the hotspot pulse');
   assert.ok(!/<noscript>[^]*<style/.test(html),'no style element inside a body noscript');
   const ledger=html.match(/class="rx-ledger">[^]*?<\/ul>/)[0];
   assert.ok(!ledger.includes('tesla.com/roadster')&&!ledger.includes('tesla.com/en_US/roadster'),'the ledger lists only sources the page cites, not Tesla pages we could not open');
