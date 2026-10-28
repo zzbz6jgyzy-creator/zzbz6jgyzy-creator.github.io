@@ -15,6 +15,7 @@
 
 - **FSD Europe:** Latvia’s 26 Oct recognition of the Dutch RDW approval is now recorded from the [Ministry of Transport / CSDD notice](https://www.sam.gov.lv/lv/jaunums/latvija-atzist-niderlande-izsniegto-provizorisko-tipa-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai). That is 10 of 27 EU states. Tesla still does not list customer availability there; rollout begins soon, so listed EU markets stay at 9.
 - **QMV share:** the ten recognising states are 14.3% of EU population on Eurostat’s 1 January 2025 figures (15 states and 65% remain the thresholds). Tesla’s 21 Oct Q3 deck still says nine EU countries for the 100,000-customer / 160 million km claim.
+- **Footer:** the shared “Contact me” mailto is wrapped in Cloudflare `email_off` comments so Email Obfuscation does not inject `email-decode.min.js` on pages whose SVG maps use `<a href>` (that decoder throws `o.href.indexOf is not a function` on SVGAnimatedString).
 
 ## 28 Oct 2026 — Teslascope counts and coming-soon fares
 

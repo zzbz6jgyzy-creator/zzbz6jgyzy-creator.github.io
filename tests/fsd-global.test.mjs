@@ -32,3 +32,9 @@ test('saved-page rendering retains responsive image optimization only for identi
 test('links to the FSD by the numbers page',()=>{
   assert.ok(fs.readFileSync('fsd.html','utf8').includes('href="/fsd-tracker.html">'),'fsd.html links to /fsd-tracker.html');
 });
+
+test('footer contact mailto is wrapped so Cloudflare Email Obfuscation stays off',()=>{
+  const foot=read('fsd.html').match(/<footer class="site-footer">[\s\S]*?<\/footer>/)[0];
+  assert.match(foot,/<!--email_off--><a href="mailto:superchargeddaily@gmail.com">Contact me<\/a><!--\/email_off-->/);
+  assert.equal([...foot.matchAll(/mailto:superchargeddaily@gmail.com/g)].length,1);
+});
