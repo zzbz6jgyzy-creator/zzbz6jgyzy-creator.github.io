@@ -11,6 +11,18 @@
 
 # Changelog
 
+## 28 Oct 2026 — Gear page redesign
+
+- **Car-led hero with a "Choose your Tesla" picker:** a full-bleed dark stage with the existing Model 3 photo, a short headline and five model tiles. Each tile opens that model's TESMAG collection in one tap; a small "Upgrades" chip jumps to the EV Bandit shelf on the same page. On phones the tiles are a swipeable snap carousel with the next card peeking.
+- **Designed quick-nav:** a sticky pill under the header (Models, TESMAG, EV Bandit, Before you order) that highlights the section in view.
+- **Two shops as bold tiles, then the shelves:** TESMAG (daily living) and EV Bandit (upgrades) each get a larger feature card and a tighter grid. Same products, copy, partner links and Wikimedia credits.
+- **Disclosure next to the links:** an "Affiliate" chip with the existing commission wording sits under the picker, in each shelf header and again under each shelf. Every partner and referral link keeps `rel="sponsored noopener"`.
+- **Built, not hand-edited:** `gear.html` is now generated from `data/gear.json` by `scripts/build-gear-studio.mjs` (between `<!--gx:studio-->` markers); `tests/gear-studio.test.mjs` and `.github/workflows/gear-checks.yml` check determinism, links, anchors and images.
+- **Images and weight:** responsive AVIF/WebP for the six category photos (`assets/gear/`, made by `scripts/build-gear-images.mjs`), correct width/height on every image, the hero image preloaded, `sizes` matched to the real tile widths, and `tesla-page.css` and `page-studios.css` no longer loaded on this page. Measured with Lighthouse mobile, 3 runs each, old vs new page on the same machine: gzip server 87-88 vs 94-95 Performance, LCP 3.5-3.7 s vs 2.7-2.8 s, 801 KiB vs 504-521 KiB; uncompressed server 72-77 vs 77-79, LCP 4.6-5.3 s vs 4.7 s, 1,085 KiB vs about 790 KiB. CLS 0 and TBT about 0 both times. Lab numbers vary by several points between runs, so treat the gain as modest, not a guarantee for readers.
+- **Contrast:** text over photos (shop tiles, collection tiles, hero copy, picker intro) was checked by sampling the rendered pixels behind each line at 390, 768 and 1440 px: all text at or above 4.5:1, large text above 3:1, without relying on text shadows.
+- **Referral link:** the "Order with my referral" band link now carries `rel="sponsored noopener"` (it was `noopener noreferrer` with no `sponsored`).
+- **Removed:** the "Layout. Shop cards follow 21st.dev ..." credit (the cards no longer follow those components), and the unused `.ps-gear` rules in `page-studios.css` (its `?v=` bumped on the pages that load it).
+
 ## 28 Oct 2026 — Roadster preview: chapter tabs on phones
 
 - **Tabbed chapters:** at 900 px and narrower the Roadster preview keeps the hero and the reveal as one continuous scroll, then shows the rest in seven tabs (Pictures, Inside, Engineering, Numbers, Models, Timeline, Questions) on a sticky dark-glass bar, one panel at a time, each ending in a "Next" button. At 390 px the page is 11,700 to 14,900 px depending on the tab (it was 31,200 px). Desktop is unchanged.
