@@ -5,9 +5,12 @@ Idempotent. Run directly or via scripts/build-articles.py (which calls it)."""
 import glob, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HREF = "mailto:superchargeddaily@gmail.com"
-LINK = f'<a href="{HREF}">Contact me</a>'
+BARE = f'<a href="{HREF}">Contact me</a>'
+LINK = f'<!--email_off-->{BARE}<!--/email_off-->'
 FOOT = re.compile(r'<footer class="site-footer">[\s\S]*?</footer>')
 def fix(foot):
+    if LINK in foot: return foot
+    if BARE in foot: return foot.replace(BARE, LINK)
     if HREF in foot: return foot
     for m in re.finditer(r'<p>([\s\S]*?)</p>', foot):
         body = m.group(1)

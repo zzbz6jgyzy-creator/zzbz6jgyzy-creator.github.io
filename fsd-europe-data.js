@@ -1,8 +1,8 @@
 // Generated from data/fsd-europe.json by scripts/build-fsd-europe.mjs. Edit the JSON source.
 window.FSD_EUROPE = {
   "schemaVersion": 1,
-  "updated": "2026-10-26",
-  "revision": "2026-10-26.1",
+  "updated": "2026-10-28",
+  "revision": "2026-10-28.1",
   "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
   "thresholds": {
     "euPopulationM": 448.9,
@@ -1822,15 +1822,14 @@ window.FSD_EUROPE = {
       "slug": "latvia",
       "name": "Latvia",
       "jurisdiction": "EU",
-      "authority": "CSDD",
+      "authority": "Ministry of Transport / CSDD",
       "permission": {
-        "status": "reported",
+        "status": "recorded",
         "date": "2026-10-26",
         "evidence": [
-          "s-595e74d0188f",
-          "s-e3bbda0052e9"
+          "s-b143c16ac1d2"
         ],
-        "reviewedAt": "2026-10-26"
+        "reviewedAt": "2026-10-28"
       },
       "availability": {
         "status": "not_listed",
@@ -1857,13 +1856,17 @@ window.FSD_EUROPE = {
         ]
       },
       "context": {
-        "summary": "Recognised RDW approval (CSDD statement, 26 Oct 2026); Tesla says rollout begins soon",
+        "summary": "Recognised RDW approval (Ministry of Transport / CSDD, 26 Oct 2026); Tesla says rollout begins soon",
         "evidence": [
           "s-d8a3f32f6ac7",
           "s-3da5d41d22de",
-          "s-aac9fa5753fb"
+          "s-aac9fa5753fb",
+          "s-595e74d0188f",
+          "s-e3bbda0052e9",
+          "s-26c6def121b8",
+          "s-1ec6ca08a6fe"
         ],
-        "reviewedAt": "2026-10-26",
+        "reviewedAt": "2026-10-28",
         "note": "Tesla asked Latvia to start recognition on 13 Apr 2026, according to the Ministry of Economics report."
       },
       "sourceIds": [
@@ -1874,19 +1877,26 @@ window.FSD_EUROPE = {
         "s-3da5d41d22de",
         "s-aac9fa5753fb",
         "s-ceb8f4f6d674",
-        "s-ddf43be4eb49"
+        "s-ddf43be4eb49",
+        "s-b143c16ac1d2",
+        "s-26c6def121b8",
+        "s-1ec6ca08a6fe"
       ],
       "status": "approved",
       "stage": "recognised",
       "rolloutLive": false,
       "date": "2026-10-26",
       "pop": 1.9,
-      "regulator": "CSDD",
-      "note": "National recognition reported on 26 Oct 2026. Tesla says rollout begins soon and does not yet list customer availability here.",
+      "regulator": "Ministry of Transport / CSDD",
+      "note": "National recognition recorded on 26 Oct 2026. Tesla says rollout begins soon and does not yet list customer availability here.",
       "sources": [
         {
           "label": "Tesla Assisted Driving availability and conditions",
           "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
+        },
+        {
+          "label": "Latvian Ministry of Transport / CSDD recognition, 26 Oct",
+          "url": "https://www.sam.gov.lv/lv/jaunums/latvija-atzist-niderlande-izsniegto-provizorisko-tipa-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai"
         },
         {
           "label": "Apollo.lv (CSDD statement), 26 Oct",
@@ -1899,6 +1909,14 @@ window.FSD_EUROPE = {
         {
           "label": "Tesla Europe on X, 26 Oct",
           "url": "https://x.com/teslaeurope/status/2114667445223149619"
+        },
+        {
+          "label": "EVwire, Tesla press, 26 Oct",
+          "url": "https://evwire.com/p/latvia-approves-fsd-supervised-tad-tenth-eu-country"
+        },
+        {
+          "label": "Electric Vehicles, 26 Oct",
+          "url": "https://eletric-vehicles.com/tesla/tesla-fsd-approved-in-latvia-the-10th-eu-country-to-back-dutch-ruling/"
         },
         {
           "label": "Latvian Ministry of Economics report",
@@ -2618,6 +2636,30 @@ window.FSD_EUROPE = {
       "type": "media",
       "checkedAt": "2026-10-26",
       "publishedAt": "2026-10-26"
+    },
+    {
+      "id": "s-b143c16ac1d2",
+      "url": "https://www.sam.gov.lv/lv/jaunums/latvija-atzist-niderlande-izsniegto-provizorisko-tipa-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
+      "label": "Latvian Ministry of Transport / CSDD recognition, 26 Oct",
+      "type": "authority",
+      "checkedAt": "2026-10-28",
+      "publishedAt": "2026-10-26"
+    },
+    {
+      "id": "s-26c6def121b8",
+      "url": "https://evwire.com/p/latvia-approves-fsd-supervised-tad-tenth-eu-country",
+      "label": "EVwire (Tesla press), 26 Oct",
+      "type": "media",
+      "checkedAt": "2026-10-28",
+      "publishedAt": "2026-10-26"
+    },
+    {
+      "id": "s-1ec6ca08a6fe",
+      "url": "https://eletric-vehicles.com/tesla/tesla-fsd-approved-in-latvia-the-10th-eu-country-to-back-dutch-ruling/",
+      "label": "Electric Vehicles, 26 Oct",
+      "type": "media",
+      "checkedAt": "2026-10-28",
+      "publishedAt": "2026-10-26"
     }
   ],
   "events": [
@@ -2640,13 +2682,14 @@ window.FSD_EUROPE = {
       "precision": "day",
       "country": "LV",
       "type": "recognition",
-      "summary": "Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country.",
+      "summary": "Latvia's Ministry of Transport / CSDD recognises the RDW approval, the tenth EU country.",
       "evidence": [
+        "s-b143c16ac1d2",
         "s-595e74d0188f",
         "s-e3bbda0052e9"
       ],
-      "sourceType": "media",
-      "reviewedAt": "2026-10-26"
+      "sourceType": "authority",
+      "reviewedAt": "2026-10-28"
     },
     {
       "id": "tesla-availability-2026-10-23",
@@ -2924,6 +2967,14 @@ window.FSD_EUROPE = {
   ],
   "changelog": [
     {
+      "date": "2026-10-28",
+      "code": "LV",
+      "type": "recognition",
+      "text": "Latvia’s 26 Oct recognition is recorded from the Ministry of Transport / CSDD notice. Tesla still does not list customer availability; rollout begins soon.",
+      "source": "https://www.sam.gov.lv/lv/jaunums/latvija-atzist-niderlande-izsniegto-provizorisko-tipa-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
+      "evidence": "authority"
+    },
+    {
       "date": "2026-10-26",
       "code": "LV",
       "type": "statement",
@@ -2935,9 +2986,9 @@ window.FSD_EUROPE = {
       "date": "2026-10-26",
       "code": "LV",
       "type": "recognition",
-      "text": "Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country.",
-      "source": "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
-      "evidence": "reported_unconfirmed"
+      "text": "Latvia's Ministry of Transport / CSDD recognises the RDW approval, the tenth EU country.",
+      "source": "https://www.sam.gov.lv/lv/jaunums/latvija-atzist-niderlande-izsniegto-provizorisko-tipa-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
+      "evidence": "authority"
     },
     {
       "date": "2026-10-23",

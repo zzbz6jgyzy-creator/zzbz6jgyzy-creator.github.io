@@ -16,7 +16,13 @@ def link(item):
     if kind == "referral":
         return (f'<a href="{href}" target="_blank" rel="noopener noreferrer">{html.escape(name)}</a> '
                 '<span class="ref-note">Referral link: we may earn a reward</span>')
-    return f'<a href="{href}">{html.escape(name)}</a>'
+    tag = f'<a href="{href}">{html.escape(name)}</a>'
+    # Cloudflare Email Obfuscation rewrites mailto links, then its decoder
+    # iterates every <a>. SVG map links expose SVGAnimatedString hrefs, so
+    # o.href.indexOf throws. Leave the public contact address in the source.
+    if href.startswith("mailto:"):
+        return f"<!--email_off-->{tag}<!--/email_off-->"
+    return tag
 
 def footer(rel, ind):
     na = CFG["notAffiliatedOverrides"].get(rel, CFG["notAffiliated"])

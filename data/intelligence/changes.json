@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28T11:40:01.582Z",
+  "updated": "2026-10-28T11:58:11.585Z",
   "changes": [
     {
       "type": "logged",
@@ -357,23 +357,6 @@
       "summary": "Tesla Europe: \"Now approved in Latvia. Rollout begins soon.\" No date given.",
       "title": "LV · statement",
       "id": "logged|fsd:country:LV|2026-10-26T00:00:00.000Z|Tesla Europe: \"Now approved in Latvia. Rollout begins soon.\" No date given."
-    },
-    {
-      "type": "logged",
-      "factId": "fsd:country:LV",
-      "topic": "fsd",
-      "tracker": "fsd",
-      "field": "recognition",
-      "previous": "",
-      "next": "Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country.",
-      "at": "2026-10-26T00:00:00.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
-      "sourceUrl": "https://www.apollo.lv/8571479/csdd-atzist-niderlande-izsniegto-provizorisko-apstiprinajumu-tesla-izstradatajai-vaditaja-paligsistemai",
-      "href": "/fsd-europe.html",
-      "summary": "Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country.",
-      "title": "LV · recognition",
-      "id": "logged|fsd:country:LV|2026-10-26T00:00:00.000Z|Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country."
     },
     {
       "type": "logged",

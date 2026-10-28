@@ -768,14 +768,6 @@
       <description>Tesla Europe: &quot;Now approved in Latvia. Rollout begins soon.&quot; No date given.</description>
     </item>
     <item>
-      <title>Tracker: LV · recognition</title>
-      <link>https://superchargeddaily.com/fsd-europe.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/fsd-europe.html#logged-fsd:country:LV-2026-10-26T00:00:00.000Z-Latvia-s-road-safety-agency-CSDD-</guid>
-      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
-      <category>fsd</category>
-      <description>Latvia's road safety agency CSDD recognises the RDW approval, the tenth EU country.</description>
-    </item>
-    <item>
       <title>Tracker: 2026.38.5.6</title>
       <link>https://superchargeddaily.com/updates.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.5.6-2026-10-24T23:42:11.000Z-62</guid>
@@ -822,6 +814,14 @@
       <pubDate>Tue, 20 Oct 2026 08:56:06 +0000</pubDate>
       <category>software</category>
       <description>2026.38.5.10 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
+    </item>
+    <item>
+      <title>Tracker: 2026.38.5.1</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.1-2026-10-18T02:50:02.000Z-727</guid>
+      <pubDate>Sun, 18 Oct 2026 02:50:02 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.5.1 moved from 658 to 727 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
     </item>
   </channel>
 </rss>
