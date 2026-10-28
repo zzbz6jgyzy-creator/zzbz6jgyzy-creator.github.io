@@ -138,7 +138,7 @@ async def main():
                     # The destinations are useful static anchors before scripts load.
                     assert await page.locator('.pn-shortcuts a').count() == 4
                     for name, path in SHORTCUTS.items():
-                        assert await page.locator('.pn-shortcuts a[href="' + path + '"]').inner_text() == name
+                        assert (await page.locator('.pn-shortcuts a[href="' + path + '"]').text_content()).strip() == name
                     await page.locator('.pn a.pn-daily').click()
                     await page.wait_for_url(SITE + '/daily.html')
                     await page.locator('.pn a.pn-search').click()
