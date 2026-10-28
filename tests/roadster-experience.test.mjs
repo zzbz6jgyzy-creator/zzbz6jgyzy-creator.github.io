@@ -27,6 +27,9 @@ test('figures match the sources we opened',()=>{
   const all=JSON.stringify(d);
   // Reservation amounts, as Engadget and Autoblog report them.
   assert.ok(all.includes('$5,000 at reservation, then $45,000 within 10 days'));
+  // The Verge's quote of the car-on-the-roads line is exact, and absence claims are dated.
+  assert.ok(all.includes('\\"This will be an actual car that\'s on the roads\\"'));
+  assert.ok(!/No independent timing has been published|None of these has been independently tested|no range has been certified/.test(all),'absence claims are scoped and dated');
   assert.ok(all.includes('$250,000'));
   // The reveal date and the claimed run.
   assert.equal(d.facts.find(f=>f.id==='run').value,'0.81 s');
@@ -93,4 +96,11 @@ test('images, bundle and styles the preview references exist',()=>{
   const js=fs.readFileSync('roadster-experience.js','utf8');
   assert.ok(js.includes('prefers-reduced-motion')&&js.includes('saveData'),'reduced motion and Save-Data are honoured');
   assert.ok(html.includes('id="rx-motion"'),'a visible control pauses motion (WCAG 2.2.2)');
+  assert.ok(html.indexOf('id="rx-motion"')<html.indexOf('class="rx-hero"'),'the pause control comes first in the tab order');
+  const css=fs.readFileSync('roadster-experience.css','utf8');
+  assert.ok(/html\[data-theme="light"\] \.rx-read :focus-visible\{outline-color:var\(--rx-read-accent\)\}/.test(css),'focus ring keeps contrast on the light reading sections');
+  assert.ok(css.includes('.rx[data-motion=off] .rx-scroll span{animation:none}'),'the pause button stops the scroll cue too');
+  assert.ok(!/<noscript>[^]*<style/.test(html),'no style element inside a body noscript');
+  const ledger=html.match(/class="rx-ledger">[^]*?<\/ul>/)[0];
+  assert.ok(!ledger.includes('tesla.com/roadster')&&!ledger.includes('tesla.com/en_US/roadster'),'the ledger lists only sources the page cites, not Tesla pages we could not open');
 });

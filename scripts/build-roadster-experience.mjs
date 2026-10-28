@@ -40,28 +40,29 @@ const hero=`<header class="rx-hero" data-rx-chapter="top">
 
 // ---- The reveal: a pinned stage whose picture changes with each step
 const layers=d.reveal.steps.map((s,i)=>`<div class="rx-layer${i===0?' is-active':''}" data-rx-layer="${s.id}">${picture(s.image,s.alt)}</div>`).join('');
-const steps=d.reveal.steps.map(s=>`<article class="rx-step" data-rx-step="${s.id}"><div class="rx-step-card"><p class="rx-kicker">${s.number} / ${e(s.id==='run'?'The run':s.id==='gap'?'The gap':s.id==='hop'?'The hop':s.id==='flip'?'The flip':'The ramp')}</p><h3>${e(s.title)}</h3><p>${e(s.text)}</p>${foot(s)}</div></article>`).join('');
+const steps=d.reveal.steps.map(s=>`<article class="rx-step" data-rx-step="${s.id}"><div class="rx-step-card"><p class="rx-kicker">${s.number} / ${e(s.kicker)}</p><h3>${e(s.title)}</h3><p>${e(s.text)}</p>${foot(s)}</div></article>`).join('');
 const film=studio.film;
 const chaptersFilm=film.chapters.map(c=>`<button type="button" data-rx-chapter-time="${c.start}"><span>${S.stamp(c.start)}</span>${e(c.title)}</button>`).join('');
 const reveal=`<section class="rx-stage" id="video" data-rx-chapter="video" aria-labelledby="video-h">
 <div class="rx-stage-media" aria-hidden="true">${layers}<div class="rx-stage-scrim"></div></div>
-<div class="rx-steps"><div class="rx-step rx-step-intro"><div class="rx-step-card"><p class="rx-kicker">${d.reveal.kicker}</p><h2 id="video-h">${d.reveal.title}</h2><p class="rx-lead">${e(d.reveal.lead)}</p></div></div>${steps}</div></section>
+<div class="rx-steps"><div class="rx-step rx-step-intro"><div class="rx-step-card"><p class="rx-kicker">${e(d.reveal.kicker)}</p><h2 id="video-h">${d.reveal.title}</h2><p class="rx-lead">${e(d.reveal.lead)}</p></div></div>${steps}</div></section>
 <section class="rx-film rx-wrap" aria-labelledby="film-h"><header class="rx-head"><p class="rx-kicker">The film</p><h2 id="film-h">The Roadster,<br>in motion.</h2><p class="rx-lead">${e(film.description)}</p></header>
 <div class="rx-film-frame"><video id="rx-film" data-version="${e(film.mediaVersion)}" playsinline preload="none" poster="/assets/roadster-studio/world-1280w.webp" aria-label="Roadster, A New Dimension: an editorial film"><track kind="captions" src="/assets/roadster-studio/film-captions.vtt" srclang="en" label="English descriptions"/><track kind="chapters" src="/assets/roadster-studio/film-chapters.vtt" srclang="en" label="Chapters"/></video><button type="button" id="rx-film-cover" class="rx-film-cover"><span class="rx-play" aria-hidden="true"></span><span class="rx-film-cover-text">Play the film<small>00:50 / Tesla imagery / Supercharged Daily edit</small></span></button></div>
-<div class="rx-film-bar"><p id="rx-film-status" role="status">The film loads when you press play. Sound is optional.</p><label for="rx-film-quality">Quality <select id="rx-film-quality"><option value="720">720p</option><option value="1080">1080p</option></select></label><button type="button" class="rx-link-button" id="rx-film-sound" aria-pressed="false">Soundtrack: off</button><a href="/assets/roadster-studio/roadster-film-720.mp4?v=${e(film.mediaVersion)}" download>Save the film ↓</a></div>
-<div class="rx-film-chapters" aria-label="Film chapters">${chaptersFilm}</div>
+<div class="rx-film-bar"><p id="rx-film-status" role="status">The film loads when you press play. Sound is optional.</p><label for="rx-film-quality">Quality <select id="rx-film-quality"><option value="720">720p</option><option value="1080">1080p</option></select></label><button type="button" class="rx-link-button" id="rx-film-sound">Soundtrack: off</button><a href="/assets/roadster-studio/roadster-film-720.mp4?v=${e(film.mediaVersion)}" download>Save the film ↓</a></div>
+<div class="rx-film-chapters" role="group" aria-label="Film chapters">${chaptersFilm}</div>
 <p class="rx-note"><a href="${e(film.music.source)}" target="_blank" rel="noopener">“${e(film.music.title)}” by ${e(film.music.composer)}</a>, released under <a href="${e(film.music.licenseUrl)}" target="_blank" rel="noopener">${e(film.music.license)}</a>. ${e(film.music.changes)} Effects are editorial sound design, not recorded vehicle audio. Footage is not an independent performance test.</p>
 <div class="rx-replay"><div class="rx-replay-frame" id="rx-replay"><img src="/assets/roadster/stage-side-960w.webp" alt="" width="960" height="540" loading="lazy" decoding="async"/><button type="button" class="rx-replay-btn" data-rx-replay="qt5p-_tE8d0"><span class="rx-play" aria-hidden="true"></span><span>Watch Tesla's full event<small>YouTube, loads only when you press play</small></span></button></div><p class="rx-note">Tesla's own upload of the event. Nothing is requested from YouTube until you press play. ${cite('replay')}</p></div>
-<noscript><video class="rx-nojs-film" controls playsinline preload="none" poster="/assets/roadster-studio/world-1280w.webp" src="/assets/roadster-studio/roadster-film-720.mp4?v=${e(film.mediaVersion)}"><track kind="captions" src="/assets/roadster-studio/film-captions.vtt" srclang="en" label="English descriptions"/></video><p class="rx-note"><a href="/assets/roadster-studio/roadster-film-720.mp4?v=${e(film.mediaVersion)}">Play the film directly</a> · <a href="${e(all.get('replay').url)}">Watch Tesla's full event on YouTube</a></p><style>.rx-film-frame,.rx-film-bar,.rx-film-chapters,.rx-replay-frame{display:none!important}</style></noscript></section>`;
+<noscript><video class="rx-nojs-film" controls playsinline preload="none" poster="/assets/roadster-studio/world-1280w.webp" src="/assets/roadster-studio/roadster-film-720.mp4?v=${e(film.mediaVersion)}"><track kind="captions" src="/assets/roadster-studio/film-captions.vtt" srclang="en" label="English descriptions"/></video><p class="rx-note"><a href="/assets/roadster-studio/roadster-film-720.mp4?v=${e(film.mediaVersion)}">Play the film directly</a> · <a href="${e(all.get('replay').url)}">Watch Tesla's full event on YouTube</a></p></noscript></section>`;
 
 // ---- Money, questions, evidence
 const v=d.reservation;
-const money=`<section class="rx-read" id="money" data-rx-chapter="money" aria-labelledby="money-h"><div class="rx-wrap">${head(e(v.kicker),v.title.replace('<br>','<br>'),e(v.lead)).replace('<h2>','<h2 id="money-h">')}
+const money=`<section class="rx-read" id="money" data-rx-chapter="money" aria-labelledby="money-h"><div class="rx-wrap">${head(e(v.kicker),v.title,e(v.lead)).replace('<h2>','<h2 id="money-h">')}
 <div class="rx-cards">${v.cards.map(c=>`<article class="rx-card"><p class="rx-card-label">${e(c.label)}</p><p class="rx-card-value">${e(c.value)}</p><p>${e(c.detail)}</p>${foot(c)}</article>`).join('')}</div>
 <ul class="rx-terms">${v.terms.map(t=>`<li><p>${e(t.text)}</p>${foot(t)}</li>`).join('')}</ul><p class="rx-note">${e(v.note)}</p></div></section>`;
 const faq=`<section class="rx-read" id="faq" data-rx-chapter="faq" aria-labelledby="faq-h"><div class="rx-wrap">${head('Questions people ask','Straight<br>answers.','Short answers, each with the source behind it. Where a figure is a claim or a target, the answer says so.').replace('<h2>','<h2 id="faq-h">')}
 <div class="rx-faq">${d.faq.map(q=>`<details><summary>${e(q.q)}</summary><p>${e(q.a)}</p><p class="rx-cites">${cites(q.sources)}</p></details>`).join('')}</div></div></section>`;
-const ledger=[...all.values()].map(s=>`<li><a href="${e(s.url)}" target="_blank" rel="noopener">${e(s.label)}</a><span>${e(s.studio?s.kindLabel:s.outlet)}${s.date?' · '+fmt(s.date):''} · checked ${fmt(s.checked)}</span>${s.note?`<small>${e(s.note)}</small>`:''}</li>`).join('');
+const cited=new Set([...JSON.stringify(d).matchAll(/"sources":\s*\[([^\]]*)\]/g)].flatMap(m=>[...m[1].matchAll(/"([a-z0-9-]+)"/g)].map(x=>x[1])));cited.add('replay');
+const ledger=[...all.values()].filter(s=>cited.has(s.id)).map(s=>`<li><a href="${e(s.url)}" target="_blank" rel="noopener">${e(s.label)}</a><span>${e(s.studio?s.kindLabel:s.outlet)}${s.date?' · '+fmt(s.date):''} · checked ${fmt(s.checked)}</span>${s.note?`<small>${e(s.note)}</small>`:''}</li>`).join('');
 const changes=`<ol class="rx-changes">${d.changes.map(c=>`<li><time datetime="${c.date}">${fmt(c.date)}</time><span class="rx-kind rx-kind-${c.kind}">${c.kind==='correction'?'Correction':'Update'}</span> ${e(c.text)}</li>`).join('')}</ol>`;
 const legend=`<ul class="rx-legend">${Object.entries({demo:'Tesla showed it happen at the event.',claim:'Tesla said it. Not independently verified.',target:'An aim or a date, not a result.',reported:'An outlet or our own report said it, and we opened the source.',analysis:'Our reading of the facts.'}).map(([k,t])=>`<li>${chip(k)}<span>${t}</span></li>`).join('')}</ul>`;
 const evidence=`<section class="rx-read" id="evidence" data-rx-chapter="evidence" aria-labelledby="evidence-h"><div class="rx-wrap">${head('Evidence','Follow the<br>sources.','Every number on this page carries one of these labels, a source and a date. Tesla\'s own Roadster page blocks our fetcher, so anything we could not open is attributed to the outlet that reported it.').replace('<h2>','<h2 id="evidence-h">')}
@@ -73,12 +74,12 @@ const motion=`<button type="button" class="rx-motion" id="rx-motion" aria-presse
 
 const nl=(read('roadster-preview.html').match(/<!--nl:start-->[\s\S]*?<!--nl:end-->/)||[''])[0];
 const main=`<main id="main" class="rx" data-rx>
-${rail}${hero}
+${motion}${rail}${hero}
 ${reveal}
 ${money}
 ${faq}
 ${evidence}
-${motion}${nl?'\n        '+nl:''}
+${nl?'\n        '+nl:''}
 </main>`;
 
 const ld={'@context':'https://schema.org','@graph':[
