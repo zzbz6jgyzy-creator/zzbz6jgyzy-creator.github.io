@@ -39,7 +39,10 @@ SOURCES = {
   'credit': 'NASA Earth Observatory / Joshua Stevens, Suomi NPP VIIRS data from Miguel Román, NASA GSFC; Black Marble 2016 composite',
  },
  'clouds': {
-  'urls': ['https://www.solarsystemscope.com/textures/download/8k_earth_clouds.jpg'],
+  'urls': [
+   'https://www.solarsystemscope.com/textures/download/8k_earth_clouds.jpg',
+   'https://raw.githubusercontent.com/Siqister/files/2ed70f6955b88070080e21067568c233a50856ec/8k_earth_clouds.jpg',
+  ],
   'minimum_width': 4096,
   'tiers': [2048, 4096],
   'credit': 'Solar System Scope / INOVE, Earth clouds texture, CC BY 4.0; NASA-derived composite',
@@ -130,11 +133,15 @@ def manifest(generated):
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--export-generated',action='store_true');parser.add_argument('--poster-only',action='store_true');args=parser.parse_args()
  OUT.mkdir(parents=True,exist_ok=True);generated=set()
- if not args.poster_only:
-  for kind,source in SOURCES.items(): texture(kind,source,generated)
- poster(generated);manifest(generated)
- if args.export_generated:
-  for path in sorted(generated):
-   print('EARTH_ASSET '+str(path.relative_to(ROOT))+' '+base64.b64encode(path.read_bytes()).decode(),flush=True)
+ try:
+  if not args.poster_only:
+   for kind,source in SOURCES.items(): texture(kind,source,generated)
+  poster(generated);manifest(generated)
+ finally:
+  # Preserve exact successful derivatives if a later source is temporarily unavailable.
+  # A preparation failure still raises and fails CI; no checks are skipped or relaxed.
+  if args.export_generated:
+   for path in sorted(generated):
+    print('EARTH_ASSET '+str(path.relative_to(ROOT))+' '+base64.b64encode(path.read_bytes()).decode(),flush=True)
 
 if __name__=='__main__':main()
