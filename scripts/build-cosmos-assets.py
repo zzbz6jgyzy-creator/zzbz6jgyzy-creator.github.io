@@ -80,10 +80,29 @@ def weather_probe():
  with urllib.request.urlopen(urllib.request.Request(url,headers={'Origin':'https://superchargeddaily.com','User-Agent':'SuperchargedDaily-SpaceExplorer/1.0'}),timeout=30) as r:
   b=r.read(10_000_000);im=Image.open(io.BytesIO(b));print('WEATHER_AUDIT',json.dumps({'http':r.status,'cors':r.headers.get('Access-Control-Allow-Origin'),'modified':r.headers.get('Last-Modified'),'date':r.headers.get('Date'),'etag':r.headers.get('ETag'),'dimensions':im.size,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'note':'HTTP Date is retrieval time, not observation time.'}),flush=True)
 
+def satellite_probe():
+ import xml.etree.ElementTree as ET,urllib.parse
+ url='https://view.eumetsat.int/geoserver/ows?service=WMS&request=GetCapabilities&version=1.3.0'
+ with urllib.request.urlopen(urllib.request.Request(url,headers={'Origin':'https://superchargeddaily.com','User-Agent':'SuperchargedDaily-SpaceExplorer/1.0'}),timeout=45) as r:
+  data=r.read(10_000_000);print('EUMETSAT_CAPS',r.status,'CORS',r.headers.get('Access-Control-Allow-Origin'),len(data))
+ root=ET.fromstring(data);ns={'w':'http://www.opengis.net/wms'}
+ for layer in root.findall('.//w:Layer',ns):
+  name=layer.findtext('w:Name','',ns)
+  if 'worldcloudmap' not in name:continue
+  dims=[{'name':d.get('name'),'default':d.get('default'),'value':d.text} for d in layer.findall('w:Dimension',ns)]
+  print('EUMETSAT_LAYER',name,json.dumps(dims))
+  if name=='mumi:worldcloudmap_ir108':
+   t=next((d['default'] for d in dims if d['name']=='time'),None)
+   params={'service':'WMS','request':'GetMap','version':'1.3.0','layers':name,'styles':'','format':'image/png','crs':'EPSG:4326','bbox':'-90,-180,90,180','width':'2048','height':'1024'}
+   if t and t!='current':params['time']=t
+   image_url='https://view.eumetsat.int/geoserver/ows?'+urllib.parse.urlencode(params)
+   with urllib.request.urlopen(urllib.request.Request(image_url,headers={'Origin':'https://superchargeddaily.com'}),timeout=45) as r:
+    b=r.read(20_000_000);im=Image.open(io.BytesIO(b));print('EUMETSAT_IMAGE',r.status,'CORS',r.headers.get('Access-Control-Allow-Origin'),'DIMENSIONS',im.size,'URL',image_url,'SHA',hashlib.sha256(b).hexdigest())
+
 if __name__=='__main__':
  ap=argparse.ArgumentParser();ap.add_argument('--check',action='store_true');ap.add_argument('--weather-probe',action='store_true');args=ap.parse_args()
  if args.check:check()
  else:
   with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:list(pool.map(image,SOURCES.items()))
   stars();vendor();manifest();check()
- if args.weather_probe:weather_probe()
+ if args.weather_probe:weather_probe();satellite_probe()
