@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 29 Oct 2026 10:09:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 12:13:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla: The Plan. The complete story, 2003 to today</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-the-plan-complete-story.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-the-plan-complete-story.html</guid>
+      <pubDate>Thu, 29 Oct 2026 12:13:00 +0000</pubDate>
+      <category>Tesla</category>
+      <description>The whole Tesla story, from the 2006 'secret' master plan to robotaxis, Optimus and the new Roadster, with our 12-minute film.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-the-plan-poster.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster</title>
       <link>https://superchargeddaily.com/dispatch/roadster-hawthorne-falcon-9.html</link>
@@ -717,15 +726,6 @@
       <category>FSD</category>
       <description>About 35 million supervised miles a day, per Tesla’s safety report.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/fsd-15-billion-miles-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>SpaceX runs 2 of every 3 working satellites</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-two-thirds.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-two-thirds.html</guid>
-      <pubDate>Mon, 12 Oct 2026 12:36:12 +0000</pubDate>
-      <category>Starlink</category>
-      <description>11,143 Starlinks vs 5,770 for the rest of the world, per McDowell’s catalogue.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-two-thirds-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>

@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-29T11:40:31.274Z",
+  "updated": "2026-10-29T12:14:09.878Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-the-plan-complete-story.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla: The Plan. The complete story, 2003 to today",
+      "at": "2026-10-29T12:13:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-the-plan-complete-story.html",
+      "href": "/dispatch/tesla-the-plan-complete-story.html",
+      "summary": "The whole Tesla story, from the 2006 'secret' master plan to robotaxis, Optimus and the new Roadster, with our 12-minute film.",
+      "title": "Tesla: The Plan. The complete story, 2003 to today",
+      "id": "logged|dispatch:/dispatch/tesla-the-plan-complete-story.html|2026-10-29T12:13:00.000Z|Tesla: The Plan. The complete story, 2003 to today"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/roadster-hawthorne-falcon-9.html",
@@ -289,23 +306,6 @@
       "summary": "In January easyJet’s CEO said Starlink’s economics weren’t working. On 26 Oct it said Starlink goes on 277 A320-family jets from 2027. What changed, and the Apollo link.",
       "title": "easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet",
       "id": "logged|dispatch:/dispatch/easyjet-starlink-u-turn.html|2026-10-27T08:45:00.000Z|easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/verizon-vs-musk-starlink-mobile.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3",
-      "at": "2026-10-27T02:36:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/verizon-vs-musk-starlink-mobile.html",
-      "href": "/dispatch/verizon-vs-musk-starlink-mobile.html",
-      "summary": "Verizon’s CEO put a $300B–$500B, four-to-six-year price on a SpaceX phone network on 26 Oct. Musk replied “2 or 3 years.” What each side said, and the math.",
-      "title": "Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3",
-      "id": "logged|dispatch:/dispatch/verizon-vs-musk-starlink-mobile.html|2026-10-27T02:36:00.000Z|Verizon says Starlink Mobile needs up to $500 billion and 4 to 6 years. Musk says 2 or 3"
     },
     {
       "type": "logged",
