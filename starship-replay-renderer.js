@@ -180,7 +180,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
       const aspectFactor=width/height<1?Math.max(1,(height/width)*.58):1;
       distance*=aspectFactor/zoom;
       const azimuth=.45+yaw;nearCamera.position.set(target.x+Math.sin(azimuth)*distance,target.y+distance*(.13+pitch),target.z+Math.cos(azimuth)*distance);nearCamera.lookAt(target);
-      if(width<700){nearCamera.setViewOffset(width,height,0,-height*(.13+(!s.separated?smooth(0,6,t)*.06:0)),width,height);nearCamera.updateProjectionMatrix();}
+      if(width<700){nearCamera.setViewOffset(width,height,0,-height*(width<height?.13+(!s.separated?smooth(0,6,t)*.06:0):0),width,height);nearCamera.updateProjectionMatrix();}
       nearCamera.updateMatrixWorld();
       if(!s.separated){const tip=ship.localToWorld(new THREE.Vector3(0,53.4,0)).project(nearCamera),tail=booster.localToWorld(new THREE.Vector3(0,-92,0)).project(nearCamera);framing={tipY:tip.y,tailY:tail.y};}else framing=null;
       // Geometry stays original in scale. Tracking camera changes framing only.
