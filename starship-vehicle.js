@@ -1,8 +1,27 @@
 /* Original procedural Starship study. Public external features; not an engineering CAD model. */
 import * as THREE from '/vendor/three/three.module.min.js';
+import { mergeGeometries } from '/vendor/three/utils/BufferGeometryUtils.js';
 
 const TAU = Math.PI * 2;
 const mesh = (g, m, parent, x=0, y=0, z=0) => { const o = new THREE.Mesh(g,m); o.position.set(x,y,z); parent.add(o); return o; };
+
+// Batch fixed hardware by material; retain all of its geometric detail in a few GPU calls.
+export function batchStatic(root, exclusions=[]) {
+  root.updateMatrixWorld(true);const groups=new Map(),old=new Set();
+  root.traverse(o=>{
+    if(!o.isMesh||o.isInstancedMesh||Array.isArray(o.material))return;
+    for(let p=o;p&&p!==root;p=p.parent)if(exclusions.includes(p))return;
+    const g=o.geometry.index?o.geometry.toNonIndexed():o.geometry.clone();g.applyMatrix4(o.matrixWorld);
+    for(const name of Object.keys(g.attributes))if(!['position','normal','uv'].includes(name))g.deleteAttribute(name);
+    const group=groups.get(o.material)||[];group.push({g,o});groups.set(o.material,group);old.add(o.geometry);
+  });
+  for(const [material,items]of groups){
+    const geometry=mergeGeometries(items.map(x=>x.g),false);if(!geometry)continue;
+    for(const {g,o}of items){o.removeFromParent();g.dispose();}
+    mesh(geometry,material,root);
+  }
+  old.forEach(g=>g.dispose());
+}
 
 function texture(width, height, paint, color = true) {
   const c = document.createElement('canvas'); c.width=width; c.height=height;
@@ -75,6 +94,9 @@ export function buildVehicles({mobile=false}={}) {
   const profile=[];
   for(let i=0;i<=40;i++){const a=i/40;profile.push(new THREE.Vector2(4.5*Math.cos(a*Math.PI/2),36.2+17.2*a));}
   mesh(new THREE.LatheGeometry(profile,segments),steel,ship);
+  const backing=new THREE.MeshStandardMaterial({color:0x0b1014,roughness:.96});
+  mesh(new THREE.CylinderGeometry(4.512,4.512,36.2,segments/2,1,true,Math.PI,Math.PI),backing,ship,0,18.1,0);
+  mesh(new THREE.LatheGeometry(profile.map(p=>new THREE.Vector2(p.x+.012,p.y)),segments/2,Math.PI,Math.PI),backing,ship);
   mesh(new THREE.CylinderGeometry(4.5,4.5,68.6,segments),steel,booster,0,34.3,0);
   mesh(new THREE.CylinderGeometry(4.55,4.55,2.4,segments,1,true),materials.dark,booster,0,69.8,0);
   // Weld bands are actual geometry: they catch close-up grazing light.
@@ -135,13 +157,14 @@ export function buildVehicles({mobile=false}={}) {
     const label=mesh(new THREE.PlaneGeometry(4,2),new THREE.MeshStandardMaterial({map,transparent:true,metalness:.4,roughness:.5,depthWrite:false}),parent,0,y,4.53);return label;
   }
   mark(ship,'S41',29);mark(booster,'B21',49);
+  batchStatic(ship,flaps);batchStatic(booster);
   const shipPlume=new THREE.Group(),boosterPlume=new THREE.Group();ship.add(shipPlume);booster.add(boosterPlume);
   const flames={ship:makeFlame(shipPlume,6,48),booster:makeFlame(boosterPlume,9,92)};
-  const plasma=mesh(new THREE.CylinderGeometry(5.2,5.1,38,64,1,true),new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,uniforms:{uPower:{value:0},uTime:{value:0}},
+  const plasma=mesh(new THREE.CylinderGeometry(5.2,5.1,38,64,24,true),new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,uniforms:{uPower:{value:0},uTime:{value:0}},
     vertexShader:'varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vUv=uv;vec4 p=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vV=normalize(-p.xyz);gl_Position=projectionMatrix*p;}',
-    fragmentShader:'varying vec2 vUv;varying vec3 vN;varying vec3 vV;uniform float uPower;uniform float uTime;void main(){float rim=pow(1.-abs(dot(vN,vV)),1.8);float wave=.65+.35*sin(vUv.y*110.+uTime*19.+sin(vUv.x*80.));float a=rim*uPower*wave*.72;vec3 col=mix(vec3(1.9,.13,.03),vec3(.7,.3,1.7),vUv.y);gl_FragColor=vec4(col,a);}'
+    fragmentShader:'varying vec2 vUv;varying vec3 vN;varying vec3 vV;uniform float uPower;uniform float uTime;void main(){float rim=pow(1.-abs(dot(vN,vV)),1.4);float wave=.75+.25*sin(vUv.y*85.+uTime*19.+sin(vUv.x*45.));float edge=sin(vUv.y*3.14159);float a=rim*uPower*wave*edge*.56;vec3 col=mix(vec3(1.7,.28,.035),vec3(.18,.35,1.4),pow(rim,3.));gl_FragColor=vec4(col,a);}'
   }),ship,0,21,0);
-  return {ship,booster,flaps,flames,plasma,tileCount:k,
+  return {ship,booster,flaps,flames,plasma,tileMat,tileCount:k,
     dispose(){const geometries=new Set(),mats=new Set(),maps=new Set();for(const root of [ship,booster])root.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)for(const m of Array.isArray(o.material)?o.material:[o.material]){mats.add(m);for(const v of Object.values(m))if(v?.isTexture)maps.add(v);}});geometries.forEach(g=>g.dispose());mats.forEach(m=>m.dispose());maps.forEach(m=>m.dispose());}
   };
 }

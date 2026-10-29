@@ -1,6 +1,6 @@
 import * as THREE from '/vendor/three/three.module.min.js';
 import { earthShaders } from '/earth-renderer.js';
-import { buildVehicles, vehicleEnvironment } from '/starship-vehicle.js';
+import { buildVehicles, vehicleEnvironment, batchStatic } from '/starship-vehicle.js';
 import { FLIGHT, sampleFlight, clamp, mix, smooth } from '/starship-replay-model.js';
 
 const TAU=Math.PI*2;
@@ -13,6 +13,9 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.autoClear=false;
   const mobile=canvas.clientWidth<700;
   const scene=new THREE.Scene(),nearScene=new THREE.Scene();
+  const skyScene=new THREE.Scene(),skyCamera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+  const skyMaterial=new THREE.ShaderMaterial({transparent:true,depthWrite:false,depthTest:false,uniforms:{uOpacity:{value:1}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}',fragmentShader:'varying vec2 vUv;uniform float uOpacity;void main(){vec3 col=mix(vec3(.38,.48,.57),vec3(.035,.11,.22),pow(vUv.y,.65));float glow=exp(-length((vUv-vec2(.78,.55))*vec2(1.1,2.))*4.);col+=vec3(.24,.15,.06)*glow;gl_FragColor=vec4(col,uOpacity);}' });
+  skyScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),skyMaterial));
   const camera=new THREE.PerspectiveCamera(42,1,.001,150);
   const nearCamera=new THREE.PerspectiveCamera(38,1,.2,10000);
   const environment=vehicleEnvironment(renderer);nearScene.environment=environment.texture;nearScene.environmentIntensity=.85;
@@ -39,7 +42,11 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   const pad=new THREE.Group();nearScene.add(pad);
   const structure=new THREE.MeshStandardMaterial({color:0x46515d,metalness:.8,roughness:.65});
   const dark=new THREE.MeshStandardMaterial({color:0x263440,metalness:.3,roughness:.9});
-  const ground=new THREE.Mesh(new THREE.PlaneGeometry(2500,2500),new THREE.MeshStandardMaterial({color:0x46504c,roughness:.98}));ground.rotation.x=-Math.PI/2;ground.position.y=-8;pad.add(ground);
+  const groundMaterial=new THREE.ShaderMaterial({vertexShader:'varying vec3 vP;varying float vD;void main(){vP=position;vec4 p=modelViewMatrix*vec4(position,1.);vD=length(p.xyz);gl_Position=projectionMatrix*p;}',fragmentShader:`varying vec3 vP;varying float vD;
+    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+    float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+1.),f.x),f.y);}
+    void main(){vec2 p=vP.xy;float n=noise(p*.03)*.5+noise(p*.15)*.3+noise(p*.6)*.2;float shore=p.x-230.-sin(p.y*.002)*120.;float sea=smoothstep(-18.,22.,shore);vec3 land=mix(vec3(.14,.145,.1),vec3(.26,.255,.19),n);float sand=smoothstep(-70.,0.,shore)*(1.-sea);land=mix(land,vec3(.39,.36,.27),sand*.75);float road=1.-smoothstep(4.,7.,abs(p.x+52.));land=mix(land,vec3(.17,.19,.2),road);float apron=1.-smoothstep(34.,39.,length(p));land=mix(land,vec3(.29,.31,.31),apron);vec3 ocean=mix(vec3(.025,.16,.21),vec3(.045,.22,.26),noise(p*.06));vec3 col=mix(land,ocean,sea);float haze=smoothstep(500.,2400.,vD);gl_FragColor=vec4(mix(col,vec3(.22,.32,.42),haze),1.);}`});
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(8000,8000),groundMaterial);ground.rotation.x=-Math.PI/2;ground.position.y=-8;pad.add(ground);
   const mount=new THREE.Mesh(new THREE.CylinderGeometry(8,9,8,24,1,true),structure);mount.position.y=-4;pad.add(mount);
   for(let i=0;i<6;i++){const a=i*TAU/6;const leg=new THREE.Mesh(new THREE.CylinderGeometry(.6,.9,10,8),structure);leg.position.set(Math.sin(a)*6,-4,Math.cos(a)*6);pad.add(leg);}
   // Pad 2 structures are an illustrative set; no claim of surveyed pad geometry.
@@ -47,6 +54,14 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   for(const x of [-6,6])for(const z of [-6,6]){const p=new THREE.Mesh(new THREE.BoxGeometry(.9,148,.9),structure);p.position.set(x,74,z);tower.add(p);}
   for(let y=7;y<148;y+=11){for(const z of [-6,6]){const a=new THREE.Mesh(new THREE.BoxGeometry(12,.5,.5),structure);a.position.set(0,y,z);tower.add(a);const b=new THREE.Mesh(new THREE.BoxGeometry(.4,16,.4),structure);b.position.set(0,y+5.5,z);b.rotation.z=Math.PI/4;tower.add(b);}for(const x of [-6,6]){const a=new THREE.Mesh(new THREE.BoxGeometry(.5,.5,12),structure);a.position.set(x,y,0);tower.add(a);}}
   for(const x of [-4,4]){const arm=new THREE.Mesh(new THREE.BoxGeometry(2,1,24),dark);arm.position.set(x,75,8);tower.add(arm);}
+  // Small service details create scale cues without downloading a large proprietary pad model.
+  for(let i=0;i<6;i++){
+    const tank=new THREE.Mesh(new THREE.CylinderGeometry(3.5,3.5,18+i%2*4,20),structure);tank.position.set(-70+(i%3)*10,2+i%2*2,-58-Math.floor(i/3)*13);pad.add(tank);
+    const cap=new THREE.Mesh(new THREE.SphereGeometry(3.5,16,8,0,TAU,0,Math.PI/2),structure);cap.position.copy(tank.position);cap.position.y+=9+i%2*2;pad.add(cap);
+  }
+  for(let i=0;i<4;i++){const pipe=new THREE.Mesh(new THREE.CylinderGeometry(.25,.25,65,8),structure);pipe.rotation.z=Math.PI/2;pipe.position.set(-33,-5+i*.65,-13);pad.add(pipe);}
+  for(let i=0;i<3;i++){const building=new THREE.Mesh(new THREE.BoxGeometry(12,5,8),dark);building.position.set(-65-i*15,-5,35);pad.add(building);}
+  batchStatic(pad);
   // Ocean near-field replaces the launch set during either stage's terminal approach.
   const ocean=new THREE.Mesh(new THREE.PlaneGeometry(12000,12000,40,40),new THREE.ShaderMaterial({uniforms:{uTime:{value:0}},
     vertexShader:'varying vec3 vP;uniform float uTime;void main(){vec3 p=position;p.z+=sin(p.x*.026+uTime*.8)*.14+sin(p.y*.04-uTime)*.09;vP=p;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}',
@@ -135,6 +150,8 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
     }
     starfield.visible=isEarth||s.shipAltitude>70;
     renderer.setClearColor(0x03070e,1);renderer.clear();renderer.render(scene,camera);
+    const viewAltitude=followBooster?s.boosterAltitude:s.shipAltitude;
+    if(!isEarth&&viewAltitude<60){skyMaterial.uniforms.uOpacity.value=1-smooth(12,60,viewAltitude);renderer.render(skyScene,skyCamera);}
     if(!isEarth){
       const launch=t<140&&!followBooster;
       const staging=t>=140&&t<170&&mode==='cinema';
@@ -173,6 +190,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
       if(spray.visible){const f=followBooster?smooth(418,435,t):smooth(11308,11312,t);spray.scale.setScalar(8+f*65);spray.position.y=.15;}
       vehicles.flames.ship.set(s.shipEngine,t);vehicles.flames.booster.set(s.boosterEngine,t);
       vehicles.plasma.material.uniforms.uPower.value=s.entry;vehicles.plasma.material.uniforms.uTime.value=t;
+      vehicles.tileMat.emissive.setHex(0xc13a12);vehicles.tileMat.emissiveIntensity=s.entry*.28;
       vehicles.plasma.visible=s.entry>.01;
       for(let i=0;i<vehicles.flaps.length;i++)vehicles.flaps[i].rotation.y=(i%2?1:-1)*(s.entry*.5+Math.sin(t*.13+i)*.025*s.entry);
       satellites.visible=t>=2047&&t<8000;

@@ -24,6 +24,7 @@ jobs:
       - name: Pinned browser tooling
         run: |
           python3 -m pip install playwright==1.62.0
+          python3 -m playwright install ffmpeg
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends ffmpeg
       - name: Mission continuity and syntax
