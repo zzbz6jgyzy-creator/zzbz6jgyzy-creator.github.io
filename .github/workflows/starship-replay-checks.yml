@@ -1,0 +1,51 @@
+name: Starship cinematic replay checks
+on:
+  pull_request:
+    paths:
+      - 'starship-replay*'
+      - 'starship-vehicle.js'
+      - 'earth-renderer.js'
+      - 'assets/earth/**'
+      - 'scripts/js-bundles.json'
+      - 'tests/starship-replay*'
+      - '.github/workflows/starship-replay-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pinned browser tooling
+        run: |
+          python3 -m pip install playwright==1.62.0
+          python3 -m playwright install ffmpeg
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Mission continuity and syntax
+        run: |
+          node --test tests/starship-replay.test.mjs
+          node --check starship-replay.js
+          node --check starship-replay-renderer.js
+          node --check starship-vehicle.js
+          python3 -m py_compile tests/starship-replay-browser.py
+          python3 -c 'import json; from pathlib import Path; assert "starship-replay.html" in json.loads(Path("scripts/js-bundles.json").read_text())["skipPages"]'
+      - name: Real WebGL replay, phone/tablet layouts and failure states
+        run: CHROMIUM_PATH="$(command -v google-chrome)" timeout 1050s python3 -u tests/starship-replay-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: starship-replay-screenshots
+          path: |
+            /tmp/starship-replay/*.jpg
+            /tmp/starship-replay/results.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: starship-flight-14-film
+          path: /tmp/starship-replay/starship-flight-14.mp4

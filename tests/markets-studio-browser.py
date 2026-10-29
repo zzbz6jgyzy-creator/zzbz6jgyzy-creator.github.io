@@ -2,7 +2,7 @@
 import asyncio,json,mimetypes,os,shutil
 from pathlib import Path
 from urllib.parse import urlparse
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright,expect
 ROOT=Path(__file__).resolve().parents[1];OUT=Path('/tmp/markets-studio');OUT.mkdir(exist_ok=True);SITE='https://superchargeddaily.com'
 async def main():
  async with async_playwright() as p:
@@ -77,8 +77,11 @@ async def main():
      assert len(charts)==before+1
      await page.evaluate("document.documentElement.dataset.theme='light'");await page.wait_for_function("document.querySelector('#mk-provider iframe')?.dataset.theme==='light'")
      assert await page.locator('#mk-provider iframe').count()==1
-    await page.locator('#sources summary').click();await page.locator('#mk-reset-view').click();assert await page.locator('#mk-company-select').input_value()=='tsla';assert await page.locator('[data-mk-metric=revenue]').get_attribute('aria-pressed')=='true'
+    await page.locator('#sources summary').click();await page.locator('#mk-reset-view').click()
+    await expect(page.locator('#mk-company-select')).to_have_value('tsla')
+    await expect(page.locator('[data-mk-metric=revenue]')).to_have_attribute('aria-pressed','true')
    assert not errors,(width,theme,mode,errors)
    print('PASS',width,theme,mode,flush=True);await context.close()
   await browser.close()
 asyncio.run(main())
+

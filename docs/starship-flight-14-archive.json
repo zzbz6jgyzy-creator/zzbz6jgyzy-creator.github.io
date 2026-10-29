@@ -1,0 +1,21 @@
+{
+  "retrieved": "2026-10-29",
+  "publisher": "StarDash archive of SpaceX public Ship 41 position data",
+  "archive": "https://stardash.live/?replay=14",
+  "sourceSnapshot": "https://stardash.live/assets/index-BDx2asaU-r2.js",
+  "primaryFeed": "https://sxcontent9668.azureedge.us/cms-assets/starship_tracker_public.json",
+  "fields": [
+    "mission_seconds",
+    "reported_altitude_m",
+    "latitude_deg",
+    "longitude_deg"
+  ],
+  "samples": 373,
+  "firstMissionSecond": -45.8,
+  "lastMissionSecond": 11364.4,
+  "maximumGapSeconds": 40.0,
+  "replayEndMissionSecond": 11324.4,
+  "replayEndMeaning": "First archived sample on the water; not a claimed precise touchdown clock.",
+  "processing": "Only reported position facts retained; no smoothing or synthetic points in this snapshot. Linear interpolation at runtime, longitude unwrapped across the dateline. Negative reported altitude clamped at sea level for rendering. Booster, attitude, engine state and effects are modelled.",
+  "sha256": "594209b6997fea140f7625baa16ee8c92ba220902a233a3a9a8c71bf3a897168"
+}

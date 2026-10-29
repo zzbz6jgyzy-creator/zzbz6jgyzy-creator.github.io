@@ -112,6 +112,9 @@ const ATMOSPHERE = `
   }
 `;
 
+// Share the exact Earth lighting with the isolated Starship replay.
+export const earthShaders = Object.freeze({ vertex: VERTEX, surface: SURFACE, clouds: CLOUDS, atmosphere: ATMOSPHERE });
+
 /**
  * @param {{canvas:HTMLCanvasElement, textureBase?:string, quality?:string,
  * onStatus?:(message:string)=>void, onReady?:(viewer:object)=>void,
@@ -387,3 +390,4 @@ export async function initEarth(options = {}) {
     onError(error); dispose(); throw error;
   }
 }
+
