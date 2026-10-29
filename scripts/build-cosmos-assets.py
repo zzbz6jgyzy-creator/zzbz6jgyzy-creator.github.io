@@ -5,7 +5,7 @@ from PIL import Image
 ROOT=pathlib.Path(__file__).resolve().parents[1];OUT=ROOT/'assets/cosmos';OUT.mkdir(parents=True,exist_ok=True)
 Image.MAX_IMAGE_PIXELS=300_000_000
 SOURCES={
- 'earth-day-16k.webp':('https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/july/world.200407.3x21600x10800.jpg',16384,'NASA Earth Observatory / Reto Stöckli, Blue Marble July 2004'),
+ 'earth-day-16k.jpg':('https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/july/world.200407.3x21600x10800.jpg',16384,'NASA Earth Observatory / Reto Stöckli, Blue Marble July 2004'),
  'earth-night-8k.webp':('https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/144000/144898/BlackMarble_2016_3km.jpg',8192,'NASA Earth Observatory / Joshua Stevens; VIIRS / Miguel Román; 2016'),
  'earth-normal-4k.webp':('https://www.solarsystemscope.com/textures/download/8k_earth_normal_map.tif',4096,'Solar System Scope / INOVE, CC BY 4.0; NASA-derived'),
  'earth-specular-4k.webp':('https://www.solarsystemscope.com/textures/download/8k_earth_specular_map.tif',4096,'Solar System Scope / INOVE, CC BY 4.0; NASA-derived'),
@@ -29,7 +29,8 @@ def image(item):
  im=im.convert('RGBA' if 'rings' in name else 'RGB')
  if 'rings' not in name and abs(im.width/im.height-2)>.05:raise ValueError('Not a spherical texture: '+name+str(original))
  height=round(im.height*width/im.width);im=im.resize((width,height),Image.Resampling.LANCZOS)
- im.save(path,'WEBP',quality=93 if 'normal' in name else 92,method=6)
+ if path.suffix=='.jpg':im.save(path,'JPEG',quality=94,optimize=True,subsampling=0)
+ else:im.save(path,'WEBP',quality=93 if 'normal' in name else 92,method=6)
  print('COSMOS_SOURCE',name,original,im.size,len(path.read_bytes()),credit,url,flush=True)
 
 def stars():
@@ -56,9 +57,9 @@ def vendor():
 def manifest():
  rows=[]
  for p in sorted(OUT.iterdir()):
-  if p.name=='manifest.json' or p.suffix not in ['.webp','.json']:continue
+  if p.name=='manifest.json' or p.suffix not in ['.webp','.jpg','.json']:continue
   b=p.read_bytes();entry={'file':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
-  if p.suffix=='.webp':
+  if p.suffix in ['.webp','.jpg']:
    with Image.open(p) as im:entry.update({'width':im.width,'height':im.height})
    source=SOURCES[p.name];entry.update({'source':source[0],'credit':source[2],'processing':'Resized with Lanczos; WebP conversion. No image generation.'})
   rows.append(entry)
@@ -68,8 +69,8 @@ def check():
  data=json.loads((OUT/'manifest.json').read_text());seen=set()
  for r in data['assets']:
   p=OUT/r['file'];b=p.read_bytes();assert len(b)==r['bytes'] and hashlib.sha256(b).hexdigest()==r['sha256'],p.name
-  if p.suffix=='.webp':
-   with Image.open(p) as im:assert im.size==(r['width'],r['height']) and im.format=='WEBP'
+  if p.suffix in ['.webp','.jpg']:
+   with Image.open(p) as im:assert im.size==(r['width'],r['height']) and im.format in ['WEBP','JPEG']
   seen.add(p.name)
  assert set(SOURCES)|{'stars.json'}<=seen
  print('Verified cosmic source dimensions and checksums:',len(seen))
