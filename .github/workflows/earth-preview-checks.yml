@@ -1,0 +1,52 @@
+name: Cinematic Earth preview checks
+on:
+  pull_request:
+    paths:
+      - 'mission-control.html'
+      - 'earth-*.js'
+      - 'earth-*.css'
+      - 'assets/earth/**'
+      - 'vendor/three*'
+      - 'vendor/three*/**'
+      - 'scripts/js-bundles.json'
+      - 'scripts/build-earth-assets.py'
+      - 'tests/earth-browser.py'
+      - '.github/workflows/earth-preview-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  earth-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned browser tooling
+        run: |
+          python3 -m pip install playwright==1.62.0 Pillow==11.3.0
+          python3 -m playwright install ffmpeg
+      - name: Prepare and export reproducible NASA texture derivatives
+        run: python3 scripts/build-earth-assets.py --export-generated
+      - name: Syntax and isolated viewer configuration
+        run: |
+          node --check earth-preview.js
+          node --check earth-renderer.js
+          python3 -m py_compile tests/earth-browser.py
+          python3 -c 'import json; from pathlib import Path; assert "mission-control.html" in json.loads(Path("scripts/js-bundles.json").read_text())["skipPages"]'
+      - name: Real WebGL, responsive controls, high resolution and fallback journeys
+        run: CHROMIUM_PATH="$(command -v google-chrome)" timeout 720s python3 -u tests/earth-browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: earth-preview-screenshots
+          path: |
+            /tmp/earth-preview/*.jpg
+            /tmp/earth-preview/results.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: earth-preview-film
+          path: /tmp/earth-preview/earth-preview.mp4

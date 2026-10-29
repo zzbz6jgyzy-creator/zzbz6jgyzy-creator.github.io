@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "assets": [
+    {
+      "file": "/assets/earth/earth-clouds-2k.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 829668,
+      "sha256": "52a9ff54f8eb6f64e5af844f8c6b94b10121514da1392a63b21e765eeed7bd1b"
+    },
+    {
+      "file": "/assets/earth/earth-day-2k.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 212430,
+      "sha256": "785505c6f070be02a76bc864fe77cc0af3a723c24026aa7d63b33d46f68f0c21"
+    },
+    {
+      "file": "/assets/earth/earth-day-4k.webp",
+      "width": 4096,
+      "height": 2048,
+      "bytes": 673722,
+      "sha256": "9194fb32c855028ba0421e2c4c7c3465d0a1d293fbf27ba9d51fbf8b8e6bde10"
+    },
+    {
+      "file": "/assets/earth/earth-night-2k.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 197168,
+      "sha256": "f9ab74d3d9b5b06526e5d438ac8a505a0069f8e5a6ba5a9811054e5d2deaef5e"
+    },
+    {
+      "file": "/assets/earth/earth-poster.webp",
+      "width": 1100,
+      "height": 1100,
+      "bytes": 139776,
+      "sha256": "c79eecf0ced08814eeb7e011a324c5299ad680ea32fe9ce44c1c70bf98398e2d"
+    },
+    {
+      "file": "/assets/earth/earth-specular-2k.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 126886,
+      "sha256": "ce0281e320940469e71ed2400f96e5a0a323e02c67c7794ed60d9365ebf5f59f"
+    }
+  ]
+}
