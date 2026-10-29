@@ -11,7 +11,7 @@ jobs:
       - name: Inspect public archive references without copying implementation
         run: |
           python3 - <<'PY'
-          import urllib.request,re,json
+          import urllib.request,re,json,ast
           from urllib.parse import urljoin
           origin='https://stardash.live/'
           def get(url):
@@ -41,7 +41,7 @@ jobs:
                   elif src[end]==']':
                     depth-=1
                     if depth==0: break
-                rows=json.loads(src[start:end+1])
+                rows=ast.literal_eval(src[start:end+1].replace('null','None'))
                 print('ARCHIVE_SCHEMA','[mission_seconds,altitude_metres,latitude_degrees,longitude_degrees,sequence,feed_clock]')
                 rows=[r[:4] for r in rows if -65<=r[0]<=11385]
                 print('FLIGHT14_POSITION_FACTS',json.dumps(rows,separators=(',',':')))
