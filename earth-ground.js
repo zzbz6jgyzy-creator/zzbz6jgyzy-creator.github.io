@@ -5,7 +5,7 @@ export function groundStyle(){
   const source='openmaptiles';
   const layer=(id,type,sourceLayer,paint,extra={})=>({id,type,source,'source-layer':sourceLayer,paint,...extra});
   const roads=['match',['get','class'],'motorway',3,'trunk',2.7,'primary',2.4,'secondary',1.8,1];
-  const roadWidth=['interpolate',['linear'],['zoom'],5,.25,12,1.1,16,7,20,34];
+  const roadWidth=(scale=1)=>['interpolate',['linear'],['zoom'],5,['*',.25*scale,roads],12,['*',1.1*scale,roads],16,['*',7*scale,roads],20,['*',34*scale,roads]];
   const labelFont=['Noto Sans Regular'];
   return {
     version:8,name:'Supercharged / Midnight atlas',
@@ -25,8 +25,8 @@ export function groundStyle(){
       {id:'hillshade',type:'hillshade',source:'elevation',paint:{'hillshade-exaggeration':.65,'hillshade-shadow-color':'#071525','hillshade-highlight-color':'#b6d5ca','hillshade-accent-color':'#3b6570'}},
       layer('waterway','line','waterway',{'line-color':'#497d91','line-width':['interpolate',['linear'],['zoom'],9,.5,17,3],'line-opacity':.7}),
       layer('country-boundaries','line','boundary',{'line-color':'#8fa7b1','line-width':.6,'line-opacity':.35,'line-dasharray':[3,3]},{filter:['==',['get','admin_level'],2]}),
-      layer('roads-casing','line','transportation',{'line-color':'#101f2c','line-width':['*',roadWidth,roads,1.25]},{minzoom:6,filter:['!=',['get','class'],'rail'],layout:{'line-cap':'round','line-join':'round'}}),
-      layer('roads','line','transportation',{'line-color':['match',['get','class'],'motorway','#dfb5a1','trunk','#b9c5bd','primary','#98bbc4','secondary','#739ba9','path','#507e85','#536f7b'],'line-width':['*',roadWidth,roads],'line-opacity':.85},{minzoom:6,filter:['!=',['get','class'],'rail'],layout:{'line-cap':'round','line-join':'round'}}),
+      layer('roads-casing','line','transportation',{'line-color':'#101f2c','line-width':roadWidth(1.25)},{minzoom:6,filter:['!=',['get','class'],'rail'],layout:{'line-cap':'round','line-join':'round'}}),
+      layer('roads','line','transportation',{'line-color':['match',['get','class'],'motorway','#dfb5a1','trunk','#b9c5bd','primary','#98bbc4','secondary','#739ba9','path','#507e85','#536f7b'],'line-width':roadWidth(),'line-opacity':.85},{minzoom:6,filter:['!=',['get','class'],'rail'],layout:{'line-cap':'round','line-join':'round'}}),
       layer('rail','line','transportation',{'line-color':'#6c8797','line-width':['interpolate',['linear'],['zoom'],10,.4,18,3],'line-dasharray':[2,2]},{minzoom:10,filter:['==',['get','class'],'rail']}),
       layer('building-footprints','fill','building',{'fill-color':'#7395a5','fill-outline-color':'#9dc3cf','fill-opacity':.45},{minzoom:14}),
       layer('buildings','fill-extrusion','building',{
@@ -51,7 +51,7 @@ export async function createGround({container,place,onChange=()=>{},onStatus=()=
   const controller=new AbortController();let disposed=false,ready=false,terrain=true,buildings=true,failed=0;const diagnostics=[];
   map.addControl(new lib.NavigationControl({visualizePitch:true}),'top-right');
   map.addControl(new lib.ScaleControl({unit:'metric',maxWidth:100}),'bottom-right');
-  map.addControl(new lib.AttributionControl({compact:true}),'bottom-right');
+  map.addControl(new lib.AttributionControl({compact:false}),'bottom-right');
   map.getCanvas().setAttribute('aria-label','Interactive terrain map. Arrow keys pan; plus and minus zoom; shift and arrows tilt or rotate.');
   const notify=()=>{if(disposed)return;const c=map.getCenter();onChange({lat:c.lat,lon:longitude(c.lng),zoom:map.getZoom(),pitch:map.getPitch(),bearing:map.getBearing(),terrain,buildings,elevation:map.queryTerrainElevation(c),ready});};
   const timer=setTimeout(()=>{if(!ready&&!disposed){onError('The map is taking longer than expected. You can retry or open the satellite view.');}},30000);

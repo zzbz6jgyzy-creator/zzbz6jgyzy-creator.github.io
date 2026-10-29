@@ -38,3 +38,5 @@
 /* Keep the invitation and location card in separate, reachable areas. */
 @media(min-width:1001px){[data-mode=earth] .earth-copy{top:13%}[data-mode=earth] .earth-location{top:auto;bottom:200px;padding:16px 20px}[data-mode=earth] .earth-location>.earth-eyebrow,[data-mode=earth] .earth-location .earth-coordinates{display:none}[data-mode=earth] .earth-place-country{margin:7px 0 13px}}
 @media(min-width:1001px) and (max-height:800px){[data-mode=earth] .earth-location{display:none}[data-mode=earth] .earth-copy{top:20%}}
+
+.maplibregl-ctrl-attrib{max-width:min(580px,calc(100vw - 38px));line-height:1.6!important;padding:5px 8px!important}
