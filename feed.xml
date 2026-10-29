@@ -6,7 +6,34 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 29 Oct 2026 08:41:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 10:09:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster</title>
+      <link>https://superchargeddaily.com/dispatch/roadster-hawthorne-falcon-9.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/roadster-hawthorne-falcon-9.html</guid>
+      <pubDate>Thu, 29 Oct 2026 10:09:00 +0000</pubDate>
+      <category>Roadster</category>
+      <description>Tesla brought the next-gen Roadster to SpaceX's Hawthorne headquarters on 28 Oct, parking it under the first Falcon 9 stage to land after an orbital launch.</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&amp;T, Verizon and T-Mobile want their busiest 5G bands kept out</title>
+      <link>https://superchargeddaily.com/dispatch/fcc-d2d-482mhz-vote.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/fcc-d2d-482mhz-vote.html</guid>
+      <pubDate>Thu, 29 Oct 2026 10:09:00 +0000</pubDate>
+      <category>Starlink</category>
+      <description>The FCC votes today on a proposal adding 482 MHz for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. The big carriers want 2.5 and 3.45 GHz out.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/cell-tower-jefferson-wi.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done</title>
+      <link>https://superchargeddaily.com/dispatch/ship-42-first-tower-catch.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/ship-42-first-tower-catch.html</guid>
+      <pubDate>Thu, 29 Oct 2026 10:09:00 +0000</pubDate>
+      <category>Starship</category>
+      <description>SpaceX says Ship 42 finished its static fires for Flight 15, and Musk says it will be the first Starship caught by the tower. No launch date or FAA licence yet.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/starship-booster-catch-approach.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Amazon locked Grok Bot out. Shopify just made it one of three AI agents that can pay almost anywhere with Shop Pay</title>
       <link>https://superchargeddaily.com/dispatch/grok-bot-shop-pay-vs-amazon.html</link>
@@ -699,33 +726,6 @@
       <category>Starlink</category>
       <description>11,143 Starlinks vs 5,770 for the rest of the world, per McDowell’s catalogue.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-two-thirds-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Cybercab lands in Europe for Paris</title>
-      <link>https://superchargeddaily.com/dispatch/paris-cybercab-europe.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/paris-cybercab-europe.html</guid>
-      <pubDate>Mon, 12 Oct 2026 09:33:05 +0000</pubDate>
-      <category>Tesla</category>
-      <description>Production Cybercab on show in Hall 7.1, stand C25. Static display, no rides.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/paris-cybercab-europe-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Headlights that aim themselves</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-headlight-leveling.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-headlight-leveling.html</guid>
-      <pubDate>Sun, 11 Oct 2026 17:54:30 +0000</pubDate>
-      <category>Tesla</category>
-      <description>2026.38 adds Dynamic Headlight Leveling on select Model 3 and Cybertruck.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-headlight-leveling-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>8,240 tonnes of thrust</title>
-      <link>https://superchargeddaily.com/dispatch/super-heavy-thrust.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/super-heavy-thrust.html</guid>
-      <pubDate>Sun, 11 Oct 2026 16:29:54 +0000</pubDate>
-      <category>Starship</category>
-      <description>Super Heavy out-pushes the Saturn V more than twice over.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/super-heavy-thrust-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>

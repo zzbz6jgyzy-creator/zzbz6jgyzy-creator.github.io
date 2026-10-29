@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-29T08:58:23.599Z",
+  "generatedAt": "2026-10-29T10:09:36.830Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,57 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/roadster-hawthorne-falcon-9.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster",
+      "at": "2026-10-29T10:09:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/roadster-hawthorne-falcon-9.html",
+      "href": "/dispatch/roadster-hawthorne-falcon-9.html",
+      "summary": "Tesla brought the next-gen Roadster to SpaceX's Hawthorne headquarters on 28 Oct, parking it under the first Falcon 9 stage to land after an orbital launch.",
+      "title": "Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster",
+      "id": "logged|dispatch:/dispatch/roadster-hawthorne-falcon-9.html|2026-10-29T10:09:00.000Z|Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/fcc-d2d-482mhz-vote.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out",
+      "at": "2026-10-29T10:09:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/fcc-d2d-482mhz-vote.html",
+      "href": "/dispatch/fcc-d2d-482mhz-vote.html",
+      "summary": "The FCC votes today on a proposal adding 482 MHz for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. The big carriers want 2.5 and 3.45 GHz out.",
+      "title": "The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out",
+      "id": "logged|dispatch:/dispatch/fcc-d2d-482mhz-vote.html|2026-10-29T10:09:00.000Z|The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/ship-42-first-tower-catch.html",
+      "topic": "starship",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done",
+      "at": "2026-10-29T10:09:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/ship-42-first-tower-catch.html",
+      "href": "/dispatch/ship-42-first-tower-catch.html",
+      "summary": "SpaceX says Ship 42 finished its static fires for Flight 15, and Musk says it will be the first Starship caught by the tower. No launch date or FAA licence yet.",
+      "title": "Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done",
+      "id": "logged|dispatch:/dispatch/ship-42-first-tower-catch.html|2026-10-29T10:09:00.000Z|Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-bot-shop-pay-vs-amazon.html",
@@ -592,23 +643,6 @@
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T17:27:14.000Z|364"
     },
     {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-40b-gpu-lease.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet",
-      "at": "2026-10-26T14:50:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-40b-gpu-lease.html",
-      "href": "/dispatch/spacex-40b-gpu-lease.html",
-      "summary": "SpaceX’s 8-K, filed 26 Oct, shows a binding commitment for a ~$40B Apollo-managed GPU lease. The rate isn’t set and closing is expected before year-end.",
-      "title": "SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet",
-      "id": "logged|dispatch:/dispatch/spacex-40b-gpu-lease.html|2026-10-26T14:50:00.000Z|SpaceX’s $40 billion GPU deal is four times the old record. Musk called it closed; the filing says not yet"
-    },
-    {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.11",
       "topic": "tesla-software",
@@ -624,23 +658,6 @@
       "summary": "2026.38.5.11 moved from 198 to 283 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.11",
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T13:38:13.000Z|283"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/latvia-fsd-tenth-eu.html",
-      "topic": "fsd",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Latvia approves Tesla’s supervised FSD, making it 10 EU countries. Here’s what drivers there are getting",
-      "at": "2026-10-26T12:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/latvia-fsd-tenth-eu.html",
-      "href": "/dispatch/latvia-fsd-tenth-eu.html",
-      "summary": "Latvia’s CSDD accepted the Dutch approval on 26 Oct, with tighter speed and driver-monitoring rules. Tesla says rollout begins soon; no date or Latvian price yet.",
-      "title": "Latvia approves Tesla’s supervised FSD, making it 10 EU countries. Here’s what drivers there are getting",
-      "id": "logged|dispatch:/dispatch/latvia-fsd-tenth-eu.html|2026-10-26T12:40:00.000Z|Latvia approves Tesla’s supervised FSD, making it 10 EU countries. Here’s what drivers there are getting"
     },
     {
       "type": "changed",
@@ -675,23 +692,6 @@
       "summary": "2026.38.5.11 moved from 104 to 147 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.11",
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T08:08:39.000Z|147"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-bot-phone-calls.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t",
-      "at": "2026-10-26T02:50:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-bot-phone-calls.html",
-      "href": "/dispatch/grok-bot-phone-calls.html",
-      "summary": "Musk says the Bot can call a person or business and send you a summary. Prerelease builds show a Calls panel; the official changelog doesn’t mention calling yet.",
-      "title": "Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t",
-      "id": "logged|dispatch:/dispatch/grok-bot-phone-calls.html|2026-10-26T02:50:00.000Z|Musk says Grok Bot can now phone a business for you. Here’s what’s confirmed and what isn’t"
     },
     {
       "type": "changed",
@@ -1756,14 +1756,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1777,14 +1777,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-28T18:11:26.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1798,35 +1798,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-29T08:58:23.599Z",
+      "lastChecked": "2026-10-29T10:09:36.830Z",
       "lastVerified": "2026-10-29T08:58:21.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1835,85 +1835,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.579Z",
-      "finished": "2026-10-29T08:58:23.584Z"
+      "started": "2026-10-29T10:09:36.817Z",
+      "finished": "2026-10-29T10:09:36.820Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.584Z",
-      "finished": "2026-10-29T08:58:23.584Z"
+      "started": "2026-10-29T10:09:36.820Z",
+      "finished": "2026-10-29T10:09:36.820Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.584Z",
-      "finished": "2026-10-29T08:58:23.584Z"
+      "started": "2026-10-29T10:09:36.820Z",
+      "finished": "2026-10-29T10:09:36.821Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.584Z",
-      "finished": "2026-10-29T08:58:23.590Z"
+      "started": "2026-10-29T10:09:36.821Z",
+      "finished": "2026-10-29T10:09:36.825Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.590Z",
-      "finished": "2026-10-29T08:58:23.594Z"
+      "started": "2026-10-29T10:09:36.825Z",
+      "finished": "2026-10-29T10:09:36.827Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.594Z",
-      "finished": "2026-10-29T08:58:23.595Z"
+      "started": "2026-10-29T10:09:36.827Z",
+      "finished": "2026-10-29T10:09:36.828Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.595Z",
-      "finished": "2026-10-29T08:58:23.595Z"
+      "started": "2026-10-29T10:09:36.828Z",
+      "finished": "2026-10-29T10:09:36.828Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.595Z",
-      "finished": "2026-10-29T08:58:23.596Z"
+      "started": "2026-10-29T10:09:36.828Z",
+      "finished": "2026-10-29T10:09:36.828Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.596Z",
-      "finished": "2026-10-29T08:58:23.596Z"
+      "started": "2026-10-29T10:09:36.828Z",
+      "finished": "2026-10-29T10:09:36.829Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.596Z",
-      "finished": "2026-10-29T08:58:23.598Z"
+      "started": "2026-10-29T10:09:36.829Z",
+      "finished": "2026-10-29T10:09:36.830Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.598Z",
-      "finished": "2026-10-29T08:58:23.598Z"
+      "started": "2026-10-29T10:09:36.830Z",
+      "finished": "2026-10-29T10:09:36.830Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.598Z",
-      "finished": "2026-10-29T08:58:23.598Z"
+      "started": "2026-10-29T10:09:36.830Z",
+      "finished": "2026-10-29T10:09:36.830Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-29T08:58:23.598Z",
-      "finished": "2026-10-29T08:58:23.598Z"
+      "started": "2026-10-29T10:09:36.830Z",
+      "finished": "2026-10-29T10:09:36.830Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-29T08:58:23.599Z",
+    "generatedAt": "2026-10-29T10:09:36.830Z",
     "factCount": 20,
     "changeCount": 84,
     "conflictCount": 2,
