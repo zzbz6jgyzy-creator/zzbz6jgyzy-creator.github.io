@@ -25,8 +25,9 @@ The detailed map still uses free open geometry, rather than Google 3D Tiles.
   traverses all scales; galaxy-scale zoom smoothly shifts the focus towards the
   galactic centre while keeping Earth as its logical home anchor. Zooming back in
   returns naturally through the Solar System to Earth. Zooming into Earth hands
-  off to the existing map. Zooming the
-  map below level 3 returns to the globe at the map centre.
+  off to the existing map. A visitor's zoom gesture below map level 3 returns to
+  the globe at the map centre; automatic map flights and resizes do not. The wide
+  map releases its workers/context on return and is recreated when opened again.
 - Animation stops while hidden. Reduced motion and pause make destination jumps
   immediate. Planet textures load as needed, the map engine only when opened,
   and the 16K surface only when explicitly selected. Failed extra assets preserve

@@ -133,7 +133,13 @@
       if(!document.querySelector('[data-map-css]')){const css=document.createElement('link');css.rel='stylesheet';css.href='/vendor/maplibre/6.16.0/maplibre-gl.css';css.dataset.mapCss='true';document.head.append(css);}
       const {createGround}=await import('/earth-ground.js?v=20261029-cosmos1');
       if(dead||token!==groundAttempt)return;
-      const result=await createGround({container:$('ground-map'),place:destination,onGlobe:point=>{place={...point,id:'point',name:'Your map view',country:model.coordinates(point.lat,point.lon),zoom:14.5,pitch:55};zoneAnchor=null;viewer?.reset();openEarth();},onInteract:()=>{groundTarget=null;},onChange:groundPaint,onStatus:s=>{$('ground-status').textContent=s;},onError:s=>{if(dead||token!==groundAttempt)return;root.dataset.groundState='fallback';$('ground-error').textContent=s;$('ground-fallback').hidden=false;}});
+      const result=await createGround({container:$('ground-map'),place:destination,onGlobe:point=>{
+        place={...point,id:'point',name:'Your map view',country:model.coordinates(point.lat,point.lon),zoom:14.5,pitch:55};zoneAnchor=null;
+        // The wide terrain map can still stream/render after being hidden. Release
+        // its workers and context; a later place opens a fresh, cached map.
+        const previous=ground;ground=null;window.__earthGround=null;groundAttempt++;
+        queueMicrotask(()=>previous?.dispose());viewer?.reset();openEarth();
+      },onInteract:()=>{groundTarget=null;},onChange:groundPaint,onStatus:s=>{$('ground-status').textContent=s;},onError:s=>{if(dead||token!==groundAttempt)return;root.dataset.groundState='fallback';$('ground-error').textContent=s;$('ground-fallback').hidden=false;}});
       if(dead||token!==groundAttempt){result.dispose();return;}
       ground=result;window.__earthGround=ground;
     }catch{if(token===groundAttempt&&!dead){root.dataset.groundState='fallback';$('ground-error').textContent='The ground map could not start. Retry it, or explore this place in satellite imagery.';$('ground-fallback').hidden=false;}}

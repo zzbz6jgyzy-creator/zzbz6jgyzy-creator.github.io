@@ -128,17 +128,22 @@ async def main():
                                 await page.locator('#earth-change-place').click();await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='The Matterhorn')).click()
                                 await page.wait_for_function('window.__earthGround.getState().lat>45&&window.__earthGround.getState().lat<46',timeout=20000)
                                 await page.wait_for_timeout(3500);await snapshot(page,'alpine-terrain')
+                                print('EARTH_HANDOFF_START',flush=True)
                                 centre=await page.evaluate('window.__earthGround.getState()')
                                 await page.evaluate('window.__earthGround.map.jumpTo({zoom:3.2,pitch:0})')
                                 assert await page.evaluate("document.querySelector('[data-earth-preview]').dataset.mode")=='ground','Programmatic map moves must keep the current view'
                                 await page.locator('#ground-map .maplibregl-canvas').focus();await page.keyboard.press('-')
                                 await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.mode==='earth'")
                                 selected=await page.evaluate(STATE+'.selectedPoint');assert selected and abs(selected['lat']-centre['lat'])<.01 and abs((selected['lon']-centre['lon']+180)%360-180)<.01,(centre,selected)
-                            await page.locator('[data-earth-mode=earth]').click();await expect(page.locator('#earth-canvas')).to_be_visible()
+                                assert await page.evaluate('window.__earthGround===null'),'Wide map must release its resources after handoff'
+                                print('EARTH_HANDOFF_RETURNED',flush=True)
+                            if await page.evaluate("document.querySelector('[data-earth-preview]').dataset.mode")!='earth':await page.locator('[data-earth-mode=earth]').click()
+                            await expect(page.locator('#earth-canvas')).to_be_visible()
                             await page.wait_for_function(STATE+'.view==="live"')
                             await page.locator('#earth-explore').click();await page.locator('#earth-locate').click()
-                            await page.wait_for_function('window.__earthGround.getState().lat>53&&window.__earthGround.getState().lat<54&&window.__earthGround.getState().zoom>14',timeout=40000)
+                            await page.wait_for_function('window.__earthGround?.getState().ready&&window.__earthGround.getState().lat>53&&window.__earthGround.getState().lat<54&&window.__earthGround.getState().zoom>14',timeout=60000)
                             assert await page.evaluate("document.querySelector('[data-earth-preview]').dataset.mode")=='ground','Opening a new place after globe return must stay in the map'
+                            print('EARTH_MAP_REOPENED',flush=True)
                             if width==1440:
                                 await page.locator('[data-earth-mode=earth]').click()
                                 await page.mouse.move(940,450);await page.mouse.wheel(0,-1100)
@@ -157,7 +162,7 @@ async def main():
         cases={'desktop':[(1440,900),(1440,900,'normal','light'),(1440,900,'context-loss')],'touch':[(390,844),(768,1024),(390,700,'short'),(844,390,'short'),(390,844,'reduced','light')],'failures':[(390,844,'no-webgl'),(390,844,'module-fail'),(390,844,'texture-fail'),(390,844,'cloud-fail'),(390,844,'map-fail')]}
         selected=cases.get(group,[item for case in cases.values() for item in case])
         for args in selected:
-            await asyncio.wait_for(scenario(*args),timeout=230)
+            await asyncio.wait_for(scenario(*args),timeout=300 if args[0]==1440 else 230)
         (OUT/'results.json').write_text(json.dumps(results,indent=2))
         if group not in ['all','desktop']:
             await browser.close();print('EARTH_COMPLETE '+str(len(results))+' journeys',flush=True);return
