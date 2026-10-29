@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29T16:15:43.691Z",
+  "updated": "2026-10-29T16:25:40.417Z",
   "changes": [
     {
       "type": "logged",
@@ -42,15 +42,15 @@
       "tracker": "dispatch",
       "field": "dispatch",
       "previous": "",
-      "next": "The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out",
+      "next": "The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile",
       "at": "2026-10-29T10:09:00.000Z",
       "evidence": "independently_corroborated",
       "source": "Supercharged Daily Dispatch",
       "sourceUrl": "/dispatch/fcc-d2d-482mhz-vote.html",
       "href": "/dispatch/fcc-d2d-482mhz-vote.html",
-      "summary": "The FCC votes today on a proposal adding 482 MHz for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. The big carriers want 2.5 and 3.45 GHz out.",
-      "title": "The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out",
-      "id": "logged|dispatch:/dispatch/fcc-d2d-482mhz-vote.html|2026-10-29T10:09:00.000Z|The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out"
+      "summary": "The FCC voted 3-0 on 29 Oct 2026 to propose 482 MHz more spectrum for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. Public comment comes next.",
+      "title": "The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile",
+      "id": "logged|dispatch:/dispatch/fcc-d2d-482mhz-vote.html|2026-10-29T10:09:00.000Z|The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile"
     },
     {
       "type": "logged",

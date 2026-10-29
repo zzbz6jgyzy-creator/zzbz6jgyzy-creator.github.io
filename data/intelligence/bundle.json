@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-29T16:15:43.691Z",
+  "generatedAt": "2026-10-29T16:25:40.417Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -326,15 +326,15 @@
       "tracker": "dispatch",
       "field": "dispatch",
       "previous": "",
-      "next": "The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out",
+      "next": "The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile",
       "at": "2026-10-29T10:09:00.000Z",
       "evidence": "independently_corroborated",
       "source": "Supercharged Daily Dispatch",
       "sourceUrl": "/dispatch/fcc-d2d-482mhz-vote.html",
       "href": "/dispatch/fcc-d2d-482mhz-vote.html",
-      "summary": "The FCC votes today on a proposal adding 482 MHz for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. The big carriers want 2.5 and 3.45 GHz out.",
-      "title": "The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out",
-      "id": "logged|dispatch:/dispatch/fcc-d2d-482mhz-vote.html|2026-10-29T10:09:00.000Z|The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out"
+      "summary": "The FCC voted 3-0 on 29 Oct 2026 to propose 482 MHz more spectrum for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. Public comment comes next.",
+      "title": "The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile",
+      "id": "logged|dispatch:/dispatch/fcc-d2d-482mhz-vote.html|2026-10-29T10:09:00.000Z|The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile"
     },
     {
       "type": "logged",
@@ -1756,14 +1756,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1777,14 +1777,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-29T11:40:27.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1798,35 +1798,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-29T16:15:43.691Z",
+      "lastChecked": "2026-10-29T16:25:40.417Z",
       "lastVerified": "2026-10-29T16:15:39.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1835,85 +1835,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.672Z",
-      "finished": "2026-10-29T16:15:43.679Z"
+      "started": "2026-10-29T16:25:40.397Z",
+      "finished": "2026-10-29T16:25:40.403Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.679Z",
-      "finished": "2026-10-29T16:15:43.679Z"
+      "started": "2026-10-29T16:25:40.403Z",
+      "finished": "2026-10-29T16:25:40.403Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.679Z",
-      "finished": "2026-10-29T16:15:43.679Z"
+      "started": "2026-10-29T16:25:40.403Z",
+      "finished": "2026-10-29T16:25:40.403Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.679Z",
-      "finished": "2026-10-29T16:15:43.685Z"
+      "started": "2026-10-29T16:25:40.403Z",
+      "finished": "2026-10-29T16:25:40.410Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.685Z",
-      "finished": "2026-10-29T16:15:43.688Z"
+      "started": "2026-10-29T16:25:40.410Z",
+      "finished": "2026-10-29T16:25:40.413Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.688Z",
-      "finished": "2026-10-29T16:15:43.689Z"
+      "started": "2026-10-29T16:25:40.413Z",
+      "finished": "2026-10-29T16:25:40.414Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.689Z",
-      "finished": "2026-10-29T16:15:43.689Z"
+      "started": "2026-10-29T16:25:40.414Z",
+      "finished": "2026-10-29T16:25:40.414Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.689Z",
-      "finished": "2026-10-29T16:15:43.689Z"
+      "started": "2026-10-29T16:25:40.414Z",
+      "finished": "2026-10-29T16:25:40.415Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.689Z",
-      "finished": "2026-10-29T16:15:43.689Z"
+      "started": "2026-10-29T16:25:40.415Z",
+      "finished": "2026-10-29T16:25:40.415Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.689Z",
-      "finished": "2026-10-29T16:15:43.691Z"
+      "started": "2026-10-29T16:25:40.415Z",
+      "finished": "2026-10-29T16:25:40.416Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.691Z",
-      "finished": "2026-10-29T16:15:43.691Z"
+      "started": "2026-10-29T16:25:40.416Z",
+      "finished": "2026-10-29T16:25:40.416Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.691Z",
-      "finished": "2026-10-29T16:15:43.691Z"
+      "started": "2026-10-29T16:25:40.416Z",
+      "finished": "2026-10-29T16:25:40.416Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-29T16:15:43.691Z",
-      "finished": "2026-10-29T16:15:43.691Z"
+      "started": "2026-10-29T16:25:40.416Z",
+      "finished": "2026-10-29T16:25:40.416Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-29T16:15:43.691Z",
+    "generatedAt": "2026-10-29T16:25:40.417Z",
     "factCount": 20,
     "changeCount": 84,
     "conflictCount": 2,
