@@ -1,5 +1,5 @@
 window.FSD_GLOBAL = {
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   note:
     "Live describes sourced market availability, subject to vehicle eligibility. National recognition, manufacturer availability and individual delivery observations are separate. Driver supervision remains required.",
   teslaList: "https://www.tesla.com/support/full-self-driving",

@@ -1,8 +1,8 @@
 // Generated from data/fsd-europe.json by scripts/build-fsd-europe.mjs. Edit the JSON source.
 window.FSD_EUROPE = {
   "schemaVersion": 1,
-  "updated": "2026-10-28",
-  "revision": "2026-10-28.1",
+  "updated": "2026-10-29",
+  "revision": "2026-10-29.1",
   "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
   "thresholds": {
     "euPopulationM": 448.9,
@@ -869,16 +869,16 @@ window.FSD_EUROPE = {
         ]
       },
       "context": {
-        "summary": "Cautious; application under analysis",
+        "summary": "Supports swift EU-wide approval (minister, 29 Oct 2026)",
         "evidence": [
-          "s-a0fab7ffcd45",
-          "s-ceb8f4f6d674",
-          "s-ddf43be4eb49"
+          "s-it-salvini-20261029",
+          "s-a0fab7ffcd45"
         ],
-        "reviewedAt": null,
-        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+        "reviewedAt": "2026-10-29",
+        "note": "Political statement by the transport minister after a call with Elon Musk. It is not a national recognition or a recorded committee vote."
       },
       "sourceIds": [
+        "s-it-salvini-20261029",
         "s-c55a052f27a6",
         "s-a0fab7ffcd45",
         "s-ceb8f4f6d674",
@@ -892,6 +892,10 @@ window.FSD_EUROPE = {
       "regulator": "Ministry of Transport (MIT)",
       "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
       "sources": [
+        {
+          "label": "Matteo Salvini on X, 29 Oct",
+          "url": "https://x.com/matteosalvinimi/status/2115720560994836862"
+        },
         {
           "label": "Tesla Assisted Driving availability and conditions",
           "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
@@ -2326,6 +2330,14 @@ window.FSD_EUROPE = {
   ],
   "sources": [
     {
+      "id": "s-it-salvini-20261029",
+      "url": "https://x.com/matteosalvinimi/status/2115720560994836862",
+      "label": "Italian transport minister Matteo Salvini on X, 29 Oct",
+      "type": "authority",
+      "checkedAt": "2026-10-29",
+      "publishedAt": "2026-10-29"
+    },
+    {
       "id": "s-c55a052f27a6",
       "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving",
       "label": "Tesla Assisted Driving availability and conditions",
@@ -2664,6 +2676,19 @@ window.FSD_EUROPE = {
   ],
   "events": [
     {
+      "id": "event-23",
+      "date": "2026-10-29",
+      "precision": "day",
+      "country": "IT",
+      "type": "statement",
+      "summary": "Italy's transport minister Matteo Salvini says Italy \"supports a swift EU approval of Tesla Assisted Driving\" after a call with Elon Musk. No national recognition yet.",
+      "evidence": [
+        "s-it-salvini-20261029"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": "2026-10-29"
+    },
+    {
       "id": "event-20",
       "date": "2026-10-26",
       "precision": "day",
@@ -2966,6 +2991,14 @@ window.FSD_EUROPE = {
     }
   ],
   "changelog": [
+    {
+      "date": "2026-10-29",
+      "code": "IT",
+      "type": "statement",
+      "text": "Italy’s transport minister Matteo Salvini says Italy supports a swift EU approval of Tesla Assisted Driving, after a call with Elon Musk. This is a statement of support, not a recognition; Italy’s count status is unchanged.",
+      "source": "https://x.com/matteosalvinimi/status/2115720560994836862",
+      "evidence": "authority"
+    },
     {
       "date": "2026-10-28",
       "code": "LV",
