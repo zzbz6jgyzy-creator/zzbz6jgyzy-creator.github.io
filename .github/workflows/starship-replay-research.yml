@@ -33,12 +33,22 @@ jobs:
             refs=sorted(set(re.findall(r'[./a-zA-Z0-9_-]{3,}\.(?:jsonl?|csv|gz|js)',src)))
             print('PUBLIC_FILE_REFERENCES',path,json.dumps(refs[:160]))
             if 'index-' in path:
-              for word in ['rp=','f9=','d9=','h9=','ip=','jt=']:
-                snippets=[src[max(0,m.start()-100):m.end()+950] for m in list(re.finditer(word,src,re.I))[:5]]
-                print('PUBLIC_ENDPOINT_CONTEXT',word,json.dumps(snippets))
+              m=re.search(r'\brp=(\[)',src)
+              if m:
+                start=m.start(1); depth=0; end=start
+                for end in range(start,len(src)):
+                  if src[end]=='[': depth+=1
+                  elif src[end]==']':
+                    depth-=1
+                    if depth==0: break
+                rows=json.loads(src[start:end+1])
+                print('ARCHIVE_SCHEMA','[mission_seconds,altitude_metres,latitude_degrees,longitude_degrees,sequence,feed_clock]')
+                rows=[r[:4] for r in rows if -65<=r[0]<=11385]
+                print('FLIGHT14_POSITION_FACTS',json.dumps(rows,separators=(',',':')))
+                print('ARCHIVE_COVERAGE',len(rows),rows[0],rows[-1])
           print('PUBLIC_LINKS',json.dumps(sorted(set(re.findall(r'href=[\"\']([^\"\']+)',html)))))
-          for url in ['https://sxcontent9668.azureedge.us/cms-assets/starship_tracker_public.json','https://stardash.live/archive']:
+          for url in ['https://sxcontent9668.azureedge.us/cms-assets/starship_tracker_public.json','https://stardash.live/archive','https://stardash.live/source-docs']:
             src=get(url)
             print('SOURCE_SUMMARY',url,len(src),src[:3000] if len(src)<4000 else '')
-            if url.endswith('/archive'): print('ARCHIVE_LINKS',json.dumps(re.findall(r'href=[\"\']([^\"\']+)',src)))
+            if url.endswith(('/archive','/source-docs')): print('ARCHIVE_LINKS',json.dumps(re.findall(r'href=[\"\']([^\"\']+)',src)))
           PY
