@@ -1,15 +1,138 @@
 {
-  "updated": "2026-10-29T16:15:39Z",
+  "updated": "2026-10-29T21:13:54Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fleet": 3354,
-  "latest": "2026.32.300",
+  "fleet": 3352,
+  "latest": "2026.39.6",
   "versions": [
+    {
+      "id": "2026.39.6",
+      "date": "2026-10-29",
+      "count": 0,
+      "fleet": 3352,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "FSD (Supervised)",
+          "text": "Under your supervision, FSD (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other vehicles and ob\u2026"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        }
+      ],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 1,
+      "firstSeen": "2026-10-29T19:53:31Z",
+      "lastSeen": "2026-10-29T19:53:31Z"
+    },
+    {
+      "id": "2026.38.6.1",
+      "date": "2026-10-29",
+      "count": 0,
+      "fleet": 3352,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Minor Fixes",
+          "text": "This release contains minor fixes and improvements"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        },
+        {
+          "title": "Set Arrival Energy",
+          "text": "Set your desired Arrival Energy for any trip from your phone. Open the location tab in the Tesla Mobile App, enter your destination, and tap Set Arrival Energy. Requires Mobile App v4.58.0 or later."
+        },
+        {
+          "title": "Visual Updates",
+          "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        }
+      ],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 26,
+      "firstSeen": "2026-10-29T19:53:31Z",
+      "lastSeen": "2026-10-29T19:53:31Z"
+    },
+    {
+      "id": "2026.38.6",
+      "date": "2026-10-29",
+      "count": 8,
+      "fleet": 3352,
+      "percent": 0.2,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": null,
+      "features": [
+        {
+          "title": "Security Improvements",
+          "text": "This update includes important security fixes and improvements."
+        },
+        {
+          "title": "Apple Music",
+          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+        },
+        {
+          "title": "Halloween Mode",
+          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+        },
+        {
+          "title": "Visual Updates",
+          "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
+        },
+        {
+          "title": "Wheel Selection",
+          "text": "Choose from new wheel options to customize the appearance of your Tesla."
+        }
+      ],
+      "countries": [
+        "GB",
+        "IT",
+        "CH",
+        "ES",
+        "PL"
+      ],
+      "countryCounts": {
+        "GB": 2,
+        "IT": 2,
+        "CH": 2,
+        "ES": 1,
+        "PL": 1
+      },
+      "pending": 15,
+      "firstSeen": "2026-10-29T19:08:27Z",
+      "lastSeen": "2026-10-29T21:08:20Z"
+    },
     {
       "id": "2026.32.300",
       "date": "2026-10-27",
       "count": 0,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 0.0,
       "fsd": null,
       "fsdHw3": null,
@@ -25,7 +148,7 @@
       "id": "2026.38.5.6",
       "date": "2026-10-24",
       "count": 146,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 4.4,
       "fsd": null,
       "fsdHw3": null,
@@ -79,9 +202,9 @@
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 900,
-      "fleet": 3354,
-      "percent": 26.8,
+      "count": 910,
+      "fleet": 3352,
+      "percent": 27.1,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -126,20 +249,20 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 850,
-        "CA": 44,
+        "US": 857,
+        "CA": 47,
         "MX": 4,
         "PR": 2
       },
-      "pending": 111,
+      "pending": 104,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-10-29T15:41:09Z"
+      "lastSeen": "2026-10-29T21:09:57Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
-      "count": 325,
-      "fleet": 3354,
+      "count": 326,
+      "fleet": 3352,
       "percent": 9.7,
       "fsd": null,
       "fsdHw3": null,
@@ -196,9 +319,9 @@
         "HU",
         "JP",
         "CZ",
+        "PT",
         "SE",
         "TW",
-        "PT",
         "AE",
         "NZ",
         "IL",
@@ -239,9 +362,9 @@
         "HU": 5,
         "JP": 4,
         "CZ": 4,
+        "PT": 4,
         "SE": 4,
         "TW": 4,
-        "PT": 3,
         "AE": 2,
         "NZ": 2,
         "IL": 2,
@@ -264,15 +387,15 @@
         "SI": 1,
         "MA": 1
       },
-      "pending": 49,
+      "pending": 48,
       "firstSeen": "2026-10-22T20:10:42Z",
-      "lastSeen": "2026-10-29T12:39:15Z"
+      "lastSeen": "2026-10-29T19:01:41Z"
     },
     {
       "id": "2026.38.5.5",
       "date": "2026-10-21",
       "count": 136,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 4.1,
       "fsd": null,
       "fsdHw3": null,
@@ -327,7 +450,7 @@
       "id": "2026.38.5.10",
       "date": "2026-10-20",
       "count": 93,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 2.8,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -381,43 +504,11 @@
       "lastSeen": "2026-10-25T23:43:42Z"
     },
     {
-      "id": "2026.32.200",
-      "date": "2026-10-20",
-      "count": 0,
-      "fleet": 3354,
-      "percent": 0.0,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [],
-      "countries": [],
-      "countryCounts": {},
-      "pending": 0,
-      "firstSeen": "2026-10-20T02:38:08Z",
-      "lastSeen": "2026-10-20T02:38:09Z"
-    },
-    {
-      "id": "2026.32.100",
-      "date": "2026-10-14",
-      "count": 0,
-      "fleet": 3354,
-      "percent": 0.0,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [],
-      "countries": [],
-      "countryCounts": {},
-      "pending": 0,
-      "firstSeen": "2026-10-14T04:14:11Z",
-      "lastSeen": "2026-10-14T04:14:11Z"
-    },
-    {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
       "count": 1028,
-      "fleet": 3354,
-      "percent": 30.6,
+      "fleet": 3352,
+      "percent": 30.7,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -477,7 +568,7 @@
       "id": "2026.38.5",
       "date": "2026-10-10",
       "count": 136,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 4.1,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -536,8 +627,8 @@
       "id": "2026.38.3.1",
       "date": "2026-10-08",
       "count": 327,
-      "fleet": 3354,
-      "percent": 9.7,
+      "fleet": 3352,
+      "percent": 9.8,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -667,7 +758,7 @@
       "id": "2026.33.5",
       "date": "2026-10-07",
       "count": 102,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 3.0,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -722,7 +813,7 @@
       "id": "2026.38.3",
       "date": "2026-10-06",
       "count": 7,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": null,
@@ -781,7 +872,7 @@
       "id": "2026.33.100",
       "date": "2026-10-06",
       "count": 41,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 1.2,
       "fsd": null,
       "fsdHw3": null,
@@ -836,7 +927,7 @@
       "id": "2026.38",
       "date": "2026-09-30",
       "count": 69,
-      "fleet": 3354,
+      "fleet": 3352,
       "percent": 2.1,
       "fsd": null,
       "fsdHw3": null,
@@ -914,139 +1005,6 @@
       "pending": 0,
       "firstSeen": "2026-09-30T05:51:14Z",
       "lastSeen": "2026-10-17T15:09:30Z"
-    },
-    {
-      "id": "2026.32.7",
-      "date": "2026-09-23",
-      "count": 377,
-      "fleet": 3354,
-      "percent": 11.2,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [
-        {
-          "title": "Minor Fixes",
-          "text": "This release contains minor fixes and improvements"
-        },
-        {
-          "title": "\"Hey Grok\"",
-          "text": "You can now talk to Grok, an intelligent assistant built by xAI. To launch Grok, go to App Launcher > Grok, long-press the voice button on your steering wheel, or say \"Hey Grok.\" Say \"goodbye\" to dismiss. Choose Grok's\u2026"
-        },
-        {
-          "title": "Alternative Routes",
-          "text": "See alternative routes while driving. Tap the map mode button or tap the next turn to switch to Overview mode and choose a different route."
-        },
-        {
-          "title": "Apple Music",
-          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
-        },
-        {
-          "title": "Automatic Navigation",
-          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
-        },
-        {
-          "title": "Camera Preview",
-          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
-        },
-        {
-          "title": "Caraoke",
-          "text": "Sing along to your favorite songs by going to App Launcher > Caraoke. Requires Premium Connectivity."
-        },
-        {
-          "title": "Caraoke with Scoring",
-          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
-        }
-      ],
-      "countries": [
-        "US",
-        "GB",
-        "DE",
-        "FR",
-        "DK",
-        "CH",
-        "NL",
-        "IT",
-        "CA",
-        "AT",
-        "ES",
-        "PL",
-        "CZ",
-        "NO",
-        "BE",
-        "SE",
-        "PT",
-        "HU",
-        "TW",
-        "UA",
-        "JP",
-        "KR",
-        "IE",
-        "IL",
-        "NZ",
-        "LT",
-        "GR",
-        "BG",
-        "AE",
-        "FI",
-        "RO",
-        "MY",
-        "CO",
-        "HK",
-        "SI",
-        "SG",
-        "IS",
-        "SK",
-        "QA",
-        "MA",
-        "TR"
-      ],
-      "countryCounts": {
-        "US": 142,
-        "GB": 40,
-        "DE": 28,
-        "FR": 19,
-        "DK": 13,
-        "CH": 12,
-        "NL": 11,
-        "IT": 10,
-        "CA": 10,
-        "AT": 9,
-        "ES": 8,
-        "PL": 7,
-        "CZ": 6,
-        "NO": 6,
-        "BE": 5,
-        "SE": 5,
-        "PT": 4,
-        "HU": 4,
-        "TW": 4,
-        "UA": 3,
-        "JP": 3,
-        "KR": 2,
-        "IE": 2,
-        "IL": 2,
-        "NZ": 2,
-        "LT": 2,
-        "GR": 2,
-        "BG": 2,
-        "AE": 2,
-        "FI": 1,
-        "RO": 1,
-        "MY": 1,
-        "CO": 1,
-        "HK": 1,
-        "SI": 1,
-        "SG": 1,
-        "IS": 1,
-        "SK": 1,
-        "QA": 1,
-        "MA": 1,
-        "TR": 1
-      },
-      "pending": 9,
-      "firstSeen": "2026-09-23T02:08:40Z",
-      "lastSeen": "2026-10-25T13:56:42Z"
     }
   ]
 }

@@ -1,6 +1,40 @@
 {
-  "updated": "2026-10-29T21:03:31.569Z",
+  "updated": "2026-10-29T21:13:57.400Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:newest-reporting",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "newest-reporting",
+      "previous": "2026.38.5.6",
+      "next": "2026.38.6",
+      "at": "2026-10-29T21:13:54.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample (3352 cars)",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Newest reporting build changed from 2026.38.5.6 to 2026.38.6.",
+      "title": "Newest reporting build",
+      "id": "changed|tesla-software:newest-reporting|2026-10-29T21:13:54.000Z|2026.38.6"
+    },
+    {
+      "type": "changed",
+      "factId": "tesla-software:most-common",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "most-common",
+      "previous": "2026.38.5.1@30.6",
+      "next": "2026.38.5.1@30.7",
+      "at": "2026-10-29T21:13:54.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Most common sample build changed from 2026.38.5.1@30.6 to 2026.38.5.1@30.7.",
+      "title": "Most common sample build",
+      "id": "changed|tesla-software:most-common|2026-10-29T21:13:54.000Z|2026.38.5.1@30.7"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-dragon-falcon-nasa-retreat.html",
