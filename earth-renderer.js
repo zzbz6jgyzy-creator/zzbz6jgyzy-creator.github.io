@@ -1,5 +1,6 @@
-/* Supercharged Daily Earth preview. Local Three.js r170 (MIT), no external runtime requests. */
+/* Supercharged Daily Earth preview. Local Three.js r170 (MIT); optional dated satellite cloud texture. */
 import * as THREE from '/vendor/three/three.module.min.js';
+import {solarPosition, geoVector, vectorGeo} from '/earth-live-model.js?v=20261029-live1';
 
 const TAU = Math.PI * 2;
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
@@ -182,13 +183,27 @@ export async function initEarth(options = {}) {
   scene.add(new THREE.Points(starGeometry, starMaterial));
 
   const maps = { day: null, night: null, clouds: null };
+  let observedCloud = null, weatherToken = 0, weatherAt = null, selectedPoint = null;
+  const marker = new THREE.Mesh(new THREE.SphereGeometry(.007, 16, 12),new THREE.MeshBasicMaterial({color:0xf34765}));
+  marker.visible = false; marker.renderOrder = 4; globe.add(marker);
+  const raycaster = new THREE.Raycaster();
+  let gestureStart = null, gestureMoved = false;
+  function updateLiveSun() {
+    if (currentView !== 'live') return;
+    const position = solarPosition();
+    const direction = geoVector(position.lat, position.lon);
+    globe.updateMatrixWorld(true);
+    sun.set(direction.x,direction.y,direction.z).applyQuaternion(globe.quaternion).normalize();
+    targetSun.copy(sun);
+  }
+
   const pointers = new Map();
   let width = 1, height = 1, fitDistance = 3.3, zoom = 1, yaw = 0, pitch = 0.10;
   let targetYaw = yaw, targetPitch = pitch, cloudAngle = 0, pinchDistance = 0;
   let paused = motion.matches, visible = true, disposed = false, contextLost = false, ready = false;
   let quality = ['auto', 'high', 'ultra'].includes(options.quality) ? options.quality : 'auto';
   let qualityToken = 0, frames = 0, raf = 0, lastTime = 0, lastRender = 0, interactionUntil = 0;
-  let currentView = 'sunrise', appliedTier = '2k', detailMessage = '';
+  let currentView = options.view === 'live' ? 'live' : 'sunrise', appliedTier = '2k', detailMessage = '';
   const maxTexture = renderer.capabilities.maxTextureSize;
   const cleanups = [];
   const bind = (target, type, handler, opts) => { target.addEventListener(type, handler, opts); cleanups.push(() => target.removeEventListener(type, handler, opts)); };
@@ -196,7 +211,7 @@ export async function initEarth(options = {}) {
   const notify = () => { if (!disposed) onChange(getState()); };
 
   function getState() {
-    return { ready, frames, running: running(), paused, reducedMotion: motion.matches, quality, view: currentView, rotation: globe.rotation.y, zoom, cameraYaw: yaw, cameraPitch: pitch, textureCount: Object.values(maps).filter(Boolean).length, textureWidth: maps.day?.image?.width || 0, textureTier: appliedTier.toUpperCase(), maxTextureSize: maxTexture, contextLost, detailMessage };
+    return { ready, frames, running: running(), paused, reducedMotion: motion.matches, quality, view: currentView, rotation: globe.rotation.y, zoom, cameraYaw: yaw, cameraPitch: pitch, textureCount: Object.values(maps).filter(Boolean).length, textureWidth: maps.day?.image?.width || 0, textureTier: appliedTier.toUpperCase(), maxTextureSize: maxTexture, contextLost, detailMessage, sun:solarPosition(), weatherAt, observedCloud:!!observedCloud, selectedPoint };
   }
   function updateCamera() {
     const distance = fitDistance / zoom;
@@ -207,6 +222,7 @@ export async function initEarth(options = {}) {
   function draw() {
     if (!ready || disposed || contextLost || !visible || document.hidden) return;
     updateCamera();
+    updateLiveSun();
     renderer.render(scene, camera);
     frames++;
   }
@@ -224,7 +240,7 @@ export async function initEarth(options = {}) {
       pitch += (targetPitch - pitch) * ease;
       sun.lerp(targetSun, 1 - Math.exp(-dt * 4)).normalize();
       if (now > interactionUntil && !pointers.size) globe.rotation.y += dt * 0.012;
-      cloudAngle += dt * 0.0024;
+      if (!observedCloud && currentView !== 'live') cloudAngle += dt * 0.0024;
       clouds.rotation.y = cloudAngle;
       uniforms.uCloudOffset.value = -cloudAngle / TAU;
       draw();
@@ -271,7 +287,7 @@ export async function initEarth(options = {}) {
   }
   function applyMap(key, map) {
     const previous = maps[key]; maps[key] = map;
-    uniforms[{ day: 'uDay', night: 'uNight', clouds: 'uCloud' }[key]].value = map;
+    if (key !== 'clouds' || !observedCloud) uniforms[{ day: 'uDay', night: 'uNight', clouds: 'uCloud' }[key]].value = map;
     previous?.dispose();
   }
   function tierFor(requested) {
@@ -297,6 +313,7 @@ export async function initEarth(options = {}) {
         applyMap('day', day); appliedTier = tier; renderDemand();
       }
       for (const key of ['night', 'clouds']) {
+        if (key === 'clouds' && observedCloud) continue;
         if ((maps[key]?.image?.width || 0) !== detailWidth) {
           try {
             const texture = await loadTexture('earth-' + key + '-' + detail + '.webp', key !== 'clouds');
@@ -320,7 +337,8 @@ export async function initEarth(options = {}) {
   function togglePause() { paused ? resume() : pause(); return paused; }
   function setView(view) {
     const views = { sunrise: [-0.92, 0.28, 0.43], daylight: [-0.35, 0.5, 1.0], night: [-1.0, 0.20, -0.58] };
-    if (!views[view] || disposed) return;
+    if (disposed || (!views[view] && view !== 'live')) return;
+    if (view === 'live') {currentView = view; cloudAngle = 0; clouds.rotation.y = 0; uniforms.uCloudOffset.value = 0; updateLiveSun(); renderDemand(); return;}
     currentView = view; targetSun.set(...views[view]).normalize();
     renderDemand();
   }
@@ -329,11 +347,12 @@ export async function initEarth(options = {}) {
   function stepOrbit(dx = 0, dy = 0) { targetYaw += dx; targetPitch = clamp(targetPitch + dy, -0.85, 0.85); interactionUntil = performance.now() + 2500; renderDemand(); }
   function reset() {
     targetYaw = 0; targetPitch = 0.10; zoom = 1; globe.rotation.y = -1.92; cloudAngle = 0; clouds.rotation.y = 0; uniforms.uCloudOffset.value = 0;
-    setView('sunrise'); renderDemand();
+    setView(options.view === 'live' ? 'live' : 'sunrise'); renderDemand();
   }
   function pointerDown(event) {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
     canvas.focus({ preventScroll: true });
+    if (!pointers.size) { gestureStart = {x:event.clientX,y:event.clientY}; gestureMoved = false; } else gestureMoved = true;
     pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
     try { canvas.setPointerCapture(event.pointerId); } catch { /* A cancelled gesture has no capture. */ }
     canvas.style.cursor = 'grabbing'; interactionUntil = performance.now() + 2500;
@@ -341,6 +360,7 @@ export async function initEarth(options = {}) {
   }
   function pointerMove(event) {
     const previous = pointers.get(event.pointerId); if (!previous) return;
+    if (gestureStart && Math.hypot(event.clientX-gestureStart.x,event.clientY-gestureStart.y)>7) gestureMoved = true;
     const next = { x: event.clientX, y: event.clientY }; pointers.set(event.pointerId, next);
     if (pointers.size === 1) stepOrbit(-(next.x - previous.x) * 0.005, (next.y - previous.y) * 0.004);
     else if (pointers.size === 2) {
@@ -348,15 +368,55 @@ export async function initEarth(options = {}) {
       if (pinchDistance > 0) setZoom(zoom * distance / pinchDistance); pinchDistance = distance;
     }
   }
-  function pointerUp(event) { pointers.delete(event.pointerId); pinchDistance = 0; if (!pointers.size) canvas.style.cursor = 'grab'; interactionUntil = performance.now() + 2500; }
+  function pointerUp(event) { if (event.type === 'pointerup' && pointers.size === 1 && gestureStart && !gestureMoved) { const p=pickLocation(event.clientX,event.clientY); if(p) options.onSelect?.(p); } gestureStart=null; pointers.delete(event.pointerId); pinchDistance = 0; if (!pointers.size) canvas.style.cursor = 'grab'; interactionUntil = performance.now() + 2500; }
+  function pickLocation(clientX,clientY) {
+    if (!ready || disposed) return null;
+    updateCamera(); globe.updateMatrixWorld(true);
+    const r=canvas.getBoundingClientRect();
+    raycaster.setFromCamera(new THREE.Vector2((clientX-r.left)/r.width*2-1,-(clientY-r.top)/r.height*2+1),camera);
+    const hit=raycaster.intersectObject(surface)[0];
+    if (!hit) return null;
+    return vectorGeo(globe.worldToLocal(hit.point.clone()));
+  }
+  function focusLocation(lat,lon) {
+    if (!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180||disposed) return;
+    selectedPoint={lat,lon};
+    const p=geoVector(lat,lon), v=new THREE.Vector3(p.x,p.y,p.z);
+    marker.position.copy(v).multiplyScalar(1.014); marker.visible=true;
+    globe.updateMatrixWorld(true); v.applyQuaternion(globe.quaternion);
+    targetYaw=Math.atan2(v.x,v.z); targetPitch=clamp(Math.asin(v.y),-.85,.85);
+    // Use the nearest equivalent angle; crossing the date line must not spin the camera.
+    targetYaw=yaw+Math.atan2(Math.sin(targetYaw-yaw),Math.cos(targetYaw-yaw));
+    interactionUntil=performance.now()+10000;
+    renderDemand();
+  }
+  async function setWeatherTexture(url, at) {
+    const token=++weatherToken;
+    if (!url) {
+      observedCloud?.dispose(); observedCloud=null; weatherAt=null;
+      uniforms.uCloud.value=maps.clouds || black; renderDemand(); return false;
+    }
+    const texture=await new Promise((resolve,reject)=>{
+      let settled=false;
+      const timer=setTimeout(()=>{settled=true;reject(new Error('Cloud image took too long to load.'));},15000);
+      new THREE.TextureLoader().load(url,t=>{if(settled||disposed||token!==weatherToken){t.dispose();clearTimeout(timer);if(!settled)reject(new Error('Cloud request superseded.'));return;}settled=true;clearTimeout(timer);resolve(t);},undefined,()=>{if(!settled){settled=true;clearTimeout(timer);reject(new Error('Cloud image unavailable.'));}});
+    });
+    if (disposed||token!==weatherToken){texture.dispose();return false;}
+    texture.colorSpace=THREE.NoColorSpace; texture.wrapS=THREE.RepeatWrapping;
+    texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
+    observedCloud?.dispose(); observedCloud=texture; weatherAt=at;
+    cloudAngle=0; clouds.rotation.y=0; uniforms.uCloudOffset.value=0;
+    uniforms.uCloud.value=texture; renderDemand(); return true;
+  }
+  function setActive(active) {visible=!!active; schedule(); if(visible) renderDemand();}
   function dispose() {
-    if (disposed) return; disposed = true; qualityToken++; if (raf) cancelAnimationFrame(raf);
+    if (disposed) return; disposed = true; qualityToken++; weatherToken++; observedCloud?.dispose(); if (raf) cancelAnimationFrame(raf);
     resizeObserver.disconnect(); intersectionObserver?.disconnect(); cleanups.forEach(fn => fn());
     for (const map of Object.values(maps)) map?.dispose(); black.dispose();
     scene.traverse(object => { object.geometry?.dispose(); if (object.material) (Array.isArray(object.material) ? object.material : [object.material]).forEach(m => m.dispose()); });
     renderer.dispose(); pointers.clear();
   }
-  const api = { getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, stepOrbit, reset, dispose };
+  const api = { getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive, dispose };
   if (canvas.tabIndex < 0) canvas.tabIndex = 0;
   canvas.style.touchAction = 'none'; canvas.style.cursor = 'grab';
   bind(canvas, 'pointerdown', pointerDown); bind(canvas, 'pointermove', pointerMove);
@@ -367,6 +427,8 @@ export async function initEarth(options = {}) {
     if (actions[event.key]) { event.preventDefault(); actions[event.key](); }
   });
   bind(canvas, 'wheel', event => { if (!event.ctrlKey) { event.preventDefault(); setZoom(zoom * Math.exp(-event.deltaY * 0.001)); } }, { passive: false });
+  const sunTimer = setInterval(()=>{if(currentView==='live'&&!document.hidden&&visible){draw();notify();}},30000);
+  cleanups.push(()=>clearInterval(sunTimer));
   bind(document, 'visibilitychange', () => { schedule(); if (!document.hidden) draw(); notify(); });
   bind(motion, 'change', () => { if (motion.matches) pause(); notify(); });
   bind(canvas, 'webglcontextlost', event => { event.preventDefault(); contextLost = true; schedule(); onError(new Error('The graphics connection was interrupted.')); notify(); });
@@ -390,4 +452,5 @@ export async function initEarth(options = {}) {
     onError(error); dispose(); throw error;
   }
 }
+
 

@@ -6,6 +6,8 @@ on:
       - 'earth-*.js'
       - 'earth-*.css'
       - 'assets/earth/**'
+      - 'vendor/maplibre/**'
+      - 'tests/earth-live-model.test.mjs'
       - 'vendor/three*'
       - 'vendor/three*/**'
       - 'scripts/js-bundles.json'
@@ -18,7 +20,7 @@ permissions:
 jobs:
   earth-preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -35,11 +37,15 @@ jobs:
       - name: Syntax and isolated viewer configuration
         run: |
           node --check earth-preview.js
+          node --check earth-live-model.js
+          node --check earth-ground.js
+          node --check earth-weather.js
+          node tests/earth-live-model.test.mjs
           node --check earth-renderer.js
           python3 -m py_compile tests/earth-browser.py
           python3 -c 'import json; from pathlib import Path; assert "mission-control.html" in json.loads(Path("scripts/js-bundles.json").read_text())["skipPages"]'
       - name: Real WebGL, responsive controls, high resolution and fallback journeys
-        run: CHROMIUM_PATH="$(command -v google-chrome)" timeout 720s python3 -u tests/earth-browser.py
+        run: CHROMIUM_PATH="$(command -v google-chrome)" timeout 1200s python3 -u tests/earth-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -52,3 +58,4 @@ jobs:
         with:
           name: earth-preview-film
           path: /tmp/earth-preview/earth-preview.mp4
+
