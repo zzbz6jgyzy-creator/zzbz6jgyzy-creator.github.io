@@ -1,3 +1,7 @@
+## 2026-10-29 — Starship Flight 14 cinematic replay
+
+Added an isolated replay study with detailed procedural stages, shared NASA Earth shading, chapter cameras, scrubbing, adaptive imagery and rendering fallbacks. Models and trajectories are clearly distinguished from recorded telemetry; the early North Pacific return replaces the abandoned ten-hour plan in this study. The existing Earth preview links to it. No live tracking is added. See `docs/starship-flight-14-replay.md` for provenance, architecture and validation.
+
 ## 2026-10-29 — Cinematic Earth preview
 
 - Added a standalone full-screen Earth study with genuine 8K NASA surface imagery, separate clouds, city lights, ocean reflections and atmospheric lighting.
@@ -360,3 +364,4 @@ Known leftovers:
 - **Roadster / Optimus:** label mismatches on the hotspot and film buttons (2.5.3).
 - **Decorative `aria-hidden` text** (FSD country codes, Optimus hero type). axe flags it; WCAG exempts it.
 - **Pre-existing failure:** `tests/fsd-global.test.mjs` fails the same way on `main` before these changes.
+

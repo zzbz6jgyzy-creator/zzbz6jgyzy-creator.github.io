@@ -30,8 +30,14 @@ jobs:
             src=get(urljoin(origin,path))
             paths=sorted(set(re.findall(r'[\"\'`]([^\"\'`\n]{1,170}\.(?:csv|json|jsonl|ndjson)(?:\.gz)?)[\"\'`]',src)))
             print('PUBLIC_DATA_REFERENCES',path,json.dumps(paths))
+            refs=sorted(set(re.findall(r'[./a-zA-Z0-9_-]{3,}\.(?:jsonl?|csv|gz|js)',src)))
+            print('PUBLIC_FILE_REFERENCES',path,json.dumps(refs[:160]))
+            if 'index-' in path:
+              for word in ['flight14','flight-14','replay','archive']:
+                snippets=[src[max(0,m.start()-90):m.end()+160] for m in list(re.finditer(word,src,re.I))[:5]]
+                print('PUBLIC_ENDPOINT_CONTEXT',word,json.dumps(snippets))
           print('PUBLIC_LINKS',json.dumps(sorted(set(re.findall(r'href=[\"\']([^\"\']+)',html)))))
           for url in ['https://sxcontent9668.azureedge.us/cms-assets/starship_tracker_public.json','https://stardash.live/archives']:
             src=get(url)
-            print('SOURCE_SUMMARY',url,len(src),src[:350] if len(src)<2000 else '')
+            print('SOURCE_SUMMARY',url,len(src),src[:3000] if len(src)<4000 else '')
           PY
