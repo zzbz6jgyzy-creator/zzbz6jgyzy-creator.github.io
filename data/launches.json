@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-10-29T02:24:28Z",
- "checked": "2026-10-29T02:24:28Z",
+ "updated": "2026-10-29T09:53:50Z",
+ "checked": "2026-10-29T09:53:50Z",
  "results": [
   {
    "id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
@@ -348,7 +348,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-28T22:33:03Z",
+   "last_updated": "2026-10-29T06:12:36Z",
    "mission": {
     "name": "Starlink Group 15-18",
     "type": "Communications",
@@ -550,6 +550,38 @@
     }
    },
    "vehicle": "Starship V3"
+  },
+  {
+   "id": "b0dc988c-ea4a-423f-81b6-6b0fbe7cc17c",
+   "name": "Falcon 9 Block 5 | OneWeb 21",
+   "net": "2026-11-30T00:00:00Z",
+   "window_start": "2026-11-30T00:00:00Z",
+   "window_end": "2026-11-30T00:00:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/b0dc988c-ea4a-423f-81b6-6b0fbe7cc17c/",
+   "status": {
+    "name": "To Be Determined",
+    "abbrev": "TBD"
+   },
+   "net_precision": {
+    "name": "Month",
+    "abbrev": "M"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2026-10-29T06:09:06Z",
+   "mission": {
+    "name": "OneWeb 21",
+    "type": "Communications",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "71df1dd0-d658-4762-b0bc-0fca6886aea7",
