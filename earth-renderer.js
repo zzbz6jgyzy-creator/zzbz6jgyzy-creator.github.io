@@ -116,6 +116,18 @@ const ATMOSPHERE = `
 // Share the exact Earth lighting with the isolated Starship replay.
 export const earthShaders = Object.freeze({ vertex: VERTEX, surface: SURFACE, clouds: CLOUDS, atmosphere: ATMOSPHERE });
 
+// Observed cloud masks have a different brightness response from the illustrative
+// texture. Keep the shared replay shaders unchanged. Hide the provider's mirrored
+// polar fill (outside ±67.5°) instead of presenting it as observed cloud coverage.
+const OBSERVED_SURFACE = SURFACE
+  .replace('uniform float uCloudOffset;', 'uniform float uCloudOffset; uniform float uObservedCloud;')
+  .replace('float cloudShadow = smoothstep(0.15, 0.78, clouds) * 0.16;', 'float observedCoverage = 1.0 - smoothstep(0.35, 0.375, abs(vUv.y - 0.5)); float cloudShadow = smoothstep(0.15, 0.78, clouds) * 0.16 * mix(1.0, observedCoverage, uObservedCloud);');
+const OBSERVED_CLOUDS = CLOUDS
+  .replace('uniform sampler2D uCloud;', 'uniform sampler2D uCloud; uniform float uObservedCloud;')
+  .replace('coverage = smoothstep(0.1, 0.76, coverage);', 'float observedCoverage = pow(smoothstep(0.08, 0.98, coverage), 1.65) * (1.0 - smoothstep(0.35, 0.375, abs(vUv.y - 0.5))); coverage = mix(smoothstep(0.1, 0.76, coverage), observedCoverage, uObservedCloud);')
+  .replace('coverage * 0.84', 'coverage * mix(0.84, 0.66, uObservedCloud)');
+
+
 /**
  * @param {{canvas:HTMLCanvasElement, textureBase?:string, quality?:string,
  * onStatus?:(message:string)=>void, onReady?:(viewer:object)=>void,
@@ -148,11 +160,11 @@ export async function initEarth(options = {}) {
   black.needsUpdate = true;
   const sun = new THREE.Vector3(-0.92, 0.28, 0.43).normalize();
   const targetSun = sun.clone();
-  const uniforms = { uDay: { value: black }, uNight: { value: black }, uCloud: { value: black }, uSun: { value: sun }, uCloudOffset: { value: 0 } };
+  const uniforms = { uDay: { value: black }, uNight: { value: black }, uCloud: { value: black }, uSun: { value: sun }, uCloudOffset: { value: 0 }, uObservedCloud: { value: 0 } };
   const sphere = new THREE.SphereGeometry(1, 160, 112);
-  const surface = new THREE.Mesh(sphere, new THREE.ShaderMaterial({ vertexShader: VERTEX, fragmentShader: SURFACE, uniforms }));
+  const surface = new THREE.Mesh(sphere, new THREE.ShaderMaterial({ vertexShader: VERTEX, fragmentShader: OBSERVED_SURFACE, uniforms }));
   globe.add(surface);
-  const cloudMaterial = new THREE.ShaderMaterial({ vertexShader: VERTEX, fragmentShader: CLOUDS, uniforms: { uCloud: uniforms.uCloud, uSun: uniforms.uSun }, transparent: true, depthWrite: false });
+  const cloudMaterial = new THREE.ShaderMaterial({ vertexShader: VERTEX, fragmentShader: OBSERVED_CLOUDS, uniforms: { uCloud: uniforms.uCloud, uSun: uniforms.uSun, uObservedCloud: uniforms.uObservedCloud }, transparent: true, depthWrite: false });
   const clouds = new THREE.Mesh(new THREE.SphereGeometry(1.009, 144, 96), cloudMaterial);
   clouds.renderOrder = 2;
   globe.add(clouds);
@@ -400,7 +412,7 @@ export async function initEarth(options = {}) {
   async function setWeatherTexture(url, at) {
     const token=++weatherToken;
     if (!url) {
-      observedCloud?.dispose(); observedCloud=null; weatherAt=null;
+      observedCloud?.dispose(); observedCloud=null; weatherAt=null; uniforms.uObservedCloud.value=0;
       uniforms.uCloud.value=maps.clouds || black; renderDemand(); return false;
     }
     const texture=await new Promise((resolve,reject)=>{
@@ -411,7 +423,7 @@ export async function initEarth(options = {}) {
     if (disposed||token!==weatherToken){texture.dispose();return false;}
     texture.colorSpace=THREE.NoColorSpace; texture.wrapS=THREE.RepeatWrapping;
     texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
-    observedCloud?.dispose(); observedCloud=texture; weatherAt=at;
+    observedCloud?.dispose(); observedCloud=texture; weatherAt=at; uniforms.uObservedCloud.value=1;
     cloudAngle=0; clouds.rotation.y=0; uniforms.uCloudOffset.value=0;
     uniforms.uCloud.value=texture; renderDemand(); return true;
   }

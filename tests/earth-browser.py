@@ -128,6 +128,10 @@ async def main():
                             await page.wait_for_function(STATE+'.view==="live"')
                             await page.locator('#earth-explore').click();await page.locator('#earth-locate').click()
                             await page.wait_for_function('window.__earthGround.getState().lat>53&&window.__earthGround.getState().lat<54',timeout=30000)
+                            if width==1440:
+                                await page.locator('[data-earth-mode=earth]').click()
+                                await page.mouse.move(940,450);await page.mouse.wheel(0,-1100)
+                                await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.mode==='ground'")
                     if mode not in ['normal','map-fail']:await snapshot(page,name)
                 assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),name
                 assert not errors,(name,errors)
