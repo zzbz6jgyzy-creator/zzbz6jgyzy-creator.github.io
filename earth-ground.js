@@ -1,5 +1,5 @@
 /* Free ground explorer. No API keys or paid imagery endpoints. */
-import {clamp, longitude} from './earth-live-model.js?v=20261029-live1';
+import {clamp, longitude} from './earth-live-model.js?v=20261029-cosmos1';
 
 export function groundStyle(){
   const source='openmaptiles';
@@ -43,7 +43,7 @@ export function groundStyle(){
   };
 }
 
-export async function createGround({container,place,onChange=()=>{},onInteract=()=>{},onStatus=()=>{},onError=()=>{}}){
+export async function createGround({container,place,onChange=()=>{},onInteract=()=>{},onGlobe=()=>{},onStatus=()=>{},onError=()=>{}}){
   const lib=await import('/vendor/maplibre/6.16.0/maplibre-gl.mjs');
   lib.setWorkerUrl('/vendor/maplibre/6.16.0/maplibre-gl-worker.mjs');
   lib.setWorkerCount(2);
@@ -64,7 +64,7 @@ export async function createGround({container,place,onChange=()=>{},onInteract=(
   });
   map.on('movestart',e=>{if(e.originalEvent)onInteract();});
   map.on('dragstart',onInteract);
-  map.on('moveend',notify);map.on('terrain',notify);
+  map.on('moveend',notify);map.on('zoomend',()=>{if(ready&&map.getZoom()<3){const c=map.getCenter();onGlobe({lat:c.lat,lon:longitude(c.lng)});}});map.on('terrain',notify);
   map.on('error',event=>{
     if(disposed)return;
     const e=String(event.error?.message||'');diagnostics.push({source:event.sourceId,message:e});if(diagnostics.length>12)diagnostics.shift();

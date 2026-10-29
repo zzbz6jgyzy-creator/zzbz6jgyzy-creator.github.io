@@ -9,10 +9,15 @@ on:
       - 'vendor/maplibre/**'
       - 'tests/earth-live-model.test.mjs'
       - 'tests/earth-weather.test.mjs'
+      - 'tests/cosmos-browser.py'
+      - 'tests/earth-cosmos.test.mjs'
+      - 'assets/cosmos/**'
+      - 'vendor/astronomy/**'
       - 'vendor/three*'
       - 'vendor/three*/**'
       - 'scripts/js-bundles.json'
       - 'scripts/build-earth-assets.py'
+      - 'scripts/build-cosmos-assets.py'
       - 'tests/earth-browser.py'
       - '.github/workflows/earth-preview-checks.yml'
   workflow_dispatch:
@@ -28,7 +33,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        device: [desktop, touch, failures]
+        device: [desktop, touch, failures, cosmos]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -50,23 +55,34 @@ jobs:
           node --check earth-weather.js
           node tests/earth-live-model.test.mjs
           node tests/earth-weather.test.mjs
+          node tests/earth-cosmos.test.mjs
+          node --check earth-cosmos.js
+          node --check earth-cosmos-model.js
+          python3 scripts/build-cosmos-assets.py --check
           node --check earth-renderer.js
           python3 -m py_compile tests/earth-browser.py
           python3 -c 'import json; from pathlib import Path; assert "mission-control.html" in json.loads(Path("scripts/js-bundles.json").read_text())["skipPages"]'
       - name: Real WebGL, responsive controls, high resolution and fallback journeys
         env:
           EARTH_TEST_GROUP: ${{ matrix.device }}
-        run: CHROMIUM_PATH="$(command -v google-chrome)" timeout 1200s python3 -u tests/earth-browser.py
+        run: |
+          if [ "$EARTH_TEST_GROUP" = cosmos ]; then
+            CHROMIUM_PATH="$(command -v google-chrome)" timeout 1200s python3 -u tests/cosmos-browser.py
+          else
+            CHROMIUM_PATH="$(command -v google-chrome)" timeout 1200s python3 -u tests/earth-browser.py
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: earth-preview-screenshots-${{ matrix.device }}
           path: |
             /tmp/earth-preview/*.jpg
-            /tmp/earth-preview/results.json
+            /tmp/earth-preview/*results.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: earth-preview-film-${{ matrix.device }}
-          path: /tmp/earth-preview/earth-preview.mp4
+          path: |
+            /tmp/earth-preview/earth-preview.mp4
+            /tmp/earth-preview/cosmos-tour.mp4
 
