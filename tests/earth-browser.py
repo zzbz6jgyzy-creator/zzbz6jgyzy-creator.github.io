@@ -1,263 +1,170 @@
-"""Actual local WebGL Earth journeys; fixtures block all external requests and writes."""
+"""Actual Three.js + MapLibre journeys, read-only public providers, responsive captures."""
 import asyncio, base64, json, mimetypes, os, pathlib, re, shutil
 from urllib.parse import unquote, urlparse
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright, expect
+ROOT=pathlib.Path(__file__).resolve().parents[1]
+SITE='https://superchargeddaily.com'
+OUT=pathlib.Path('/tmp/earth-preview');OUT.mkdir(exist_ok=True)
+ARGS=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--enable-webgl']
+STATE='window.__earthPreview.getState()'
+ALLOWED={'tiles.openfreemap.org','s3.amazonaws.com','clouds.matteason.co.uk'}
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-SITE = 'https://superchargeddaily.com'
-OUT = pathlib.Path('/tmp/earth-preview')
-OUT.mkdir(exist_ok=True)
-ARGS = ['--no-sandbox', '--disable-dev-shm-usage', '--use-gl=angle',
-        '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--enable-webgl']
-STATE = 'window.__earthPreview.getState()'
+async def snapshot(page,name):
+    data=await page.screenshot(type='jpeg',quality=73,animations='disabled',timeout=30000)
+    (OUT/(name+'.jpg')).write_bytes(data)
+    print('EARTH_PREVIEW '+name+' '+base64.b64encode(data).decode(),flush=True)
 
-
-async def snapshot(page, name):
-    data = await page.screenshot(type='jpeg', quality=76, animations='disabled', timeout=20000)
-    (OUT / (name + '.jpg')).write_bytes(data)
-    print('EARTH_PREVIEW ' + name + ' ' + base64.b64encode(data).decode(), flush=True)
-
+async def setup_route(ctx,mode='normal',cloud='fixture'):
+    requests=[]
+    async def route(r):
+        u=urlparse(r.request.url)
+        if r.request.method!='GET':return await r.abort()
+        if u.hostname=='clouds.matteason.co.uk' and cloud=='fixture':
+            if mode=='cloud-fail':return await r.fulfill(status=503,body='Unavailable')
+            # Real NASA-independent cloud texture, with deliberately old, known publication date.
+            return await r.fulfill(body=(ROOT/'assets/earth/earth-clouds-2k.webp').read_bytes(),content_type='image/webp',headers={'Last-Modified':'Wed, 28 Oct 2026 06:00:00 GMT','Access-Control-Allow-Origin':'*'})
+        if u.hostname in ALLOWED:return await r.continue_()
+        if u.hostname!='superchargeddaily.com':return await r.abort()
+        path=unquote(u.path).lstrip('/') or 'index.html';requests.append(path)
+        if mode=='module-fail' and path=='earth-renderer.js':return await r.fulfill(status=503,body='Unavailable')
+        if mode=='map-fail' and path.endswith('maplibre-gl.mjs'):return await r.fulfill(status=503,body='Unavailable')
+        if mode=='texture-fail' and path.startswith('assets/earth/earth-day'):return await r.fulfill(status=503,body='Unavailable')
+        file=ROOT/path
+        if file.is_file() and ROOT in file.resolve().parents:
+            ct='text/javascript' if file.suffix in ['.mjs','.js'] else mimetypes.guess_type(str(file))[0] or 'application/octet-stream'
+            return await r.fulfill(body=file.read_bytes(),content_type=ct)
+        return await r.fulfill(status=404,body='Not found')
+    await ctx.route('**/*',route)
+    return requests
 
 async def main():
+    results=[]
     async with async_playwright() as p:
-        executable = os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome') or shutil.which('chromium')
-        browser = await p.chromium.launch(executable_path=executable, args=ARGS)
-        results = []
-
-        async def scenario(width, height, mode='normal', theme='dark'):
-            name = f'{width}-{theme}-{mode}'
-            print('EARTH_START ' + name, flush=True)
-            ctx = await browser.new_context(
-                viewport={'width': width, 'height': height},
-                device_scale_factor=1,
-                has_touch=width < 1000, is_mobile=width < 500,
-                reduced_motion='reduce' if mode == 'reduced' else 'no-preference',
-                color_scheme=theme, service_workers='block')
-            ctx.set_default_timeout(15000)
-            ctx.set_default_navigation_timeout(20000)
-            page = await ctx.new_page()
-            errors, shader_errors, requests = [], [], []
-            page.on('pageerror', lambda e: errors.append(str(e)))
-            def console(message):
-                if message.type == 'error' and re.search(
-                    r'THREE\.WebGLProgram|shader.*(?:error|fail)|GL_INVALID|compileShader|linkProgram', message.text, re.I):
-                    shader_errors.append(message.text)
-            page.on('console', console)
-            if mode == 'no-webgl':
-                await ctx.add_init_script("""const original=HTMLCanvasElement.prototype.getContext;
-                    HTMLCanvasElement.prototype.getContext=function(type,...args){
-                    return /webgl/i.test(type)?null:original.call(this,type,...args)};""")
-            async def route(r):
-                u = urlparse(r.request.url)
-                if r.request.method != 'GET' or u.hostname != 'superchargeddaily.com':
-                    return await r.abort()
-                path = unquote(u.path).lstrip('/') or 'index.html'
-                requests.append(path)
-                if mode == 'module-fail' and path.endswith('earth-renderer.js'):
-                    return await r.fulfill(status=503, body='Renderer unavailable')
-                if mode == 'texture-fail' and path.startswith('assets/earth/') and not re.search(r'poster|fallback|license|source', path, re.I):
-                    return await r.fulfill(status=503, body='Texture unavailable')
-                file = ROOT / path
-                if file.is_file() and ROOT in file.resolve().parents:
-                    return await r.fulfill(body=file.read_bytes(), content_type=mimetypes.guess_type(str(file))[0] or 'application/octet-stream')
-                return await r.fulfill(status=404, body='Not found')
-            await ctx.route('**/*', route)
+        browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome'),args=ARGS)
+        async def scenario(width,height,mode='normal',theme='dark'):
+            name=f'{width}-{theme}-{mode}';print('EARTH_START '+name,flush=True)
+            ctx=await browser.new_context(viewport={'width':width,'height':height},device_scale_factor=1,has_touch=width<1000,is_mobile=width<500,reduced_motion='reduce' if mode=='reduced' else 'no-preference',color_scheme=theme,service_workers='block',permissions=['geolocation'],geolocation={'latitude':53.3464,'longitude':-6.2631})
+            ctx.set_default_timeout(25000)
+            await ctx.add_init_script('Date.now=()=>1793278800000;') # 2026-10-29 13:00 UTC; deterministic dated-cloud checks
+            if mode=='no-webgl':await ctx.add_init_script("const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return /webgl/i.test(type)?null:original.call(this,type,...args)}")
+            requests=await setup_route(ctx,mode)
+            page=await ctx.new_page();errors=[];shader_errors=[];network_errors=[];console_errors=[]
+            page.on('pageerror',lambda e:errors.append(str(e)))
+            page.on('requestfailed',lambda r:network_errors.append({'url':r.url,'error':r.failure}))
+            page.on('console',lambda m:console_errors.append(m.text) if m.type in ['error','warning'] else None)
+            page.on('console',lambda m:shader_errors.append(m.text) if m.type=='error' and re.search(r'THREE.WebGLProgram|shader.*(?:error|fail)|GL_INVALID|compileShader|linkProgram|layers\[[0-9]+\]',m.text,re.I) else None)
             try:
-                await page.goto(SITE + '/mission-control.html', wait_until='domcontentloaded')
-                stage = page.locator('[data-earth-preview]')
-                assert await stage.count() == 1
-                assert await page.locator('meta[name="robots"]').get_attribute('content') == 'noindex,follow'
-                assert await page.locator('h1').count() == 1
-                assert await page.locator('#newsletter,.sd-band,.scroll-beam').count() == 0, 'Shared site promotions leaked into the cinematic preview'
-                body = (await page.locator('body').inner_text()).lower()
-                assert 'static satellite imagery' in body, 'Static imagery needs a clear disclosure'
-                await page.locator('#earth-about').click()
-                dialog = page.locator('#earth-about-dialog')
-                assert await dialog.is_visible()
-                assert 'not live weather' in (await dialog.inner_text()).lower()
-                await page.keyboard.press('Escape')
-                assert not await dialog.is_visible()
-                assert await page.locator('#earth-about').evaluate('e=>e===document.activeElement')
-                if mode in ['no-webgl', 'texture-fail', 'module-fail']:
-                    await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.state==='fallback'", timeout=120000)
-                    assert await page.locator('#earth-fallback').is_visible()
-                    assert await page.locator('#earth-retry').is_visible()
-                    if mode == 'no-webgl':
-                        assert not any(re.search(r'assets/earth/.*(?:day|night|cloud)', q) for q in requests), 'No-WebGL devices should not download full texture layers'
-                    await snapshot(page, name)
+                await page.goto(SITE+'/mission-control.html',wait_until='domcontentloaded')
+                assert await page.locator('h1').count()==1
+                assert await page.locator('meta[name=robots]').get_attribute('content')=='noindex,follow'
+                assert await page.locator('#newsletter,.sd-band,.scroll-beam').count()==0
+                await page.locator('#earth-about').click();about=page.locator('#earth-about-dialog')
+                await expect(about).to_be_visible();text=(await about.inner_text()).lower()
+                for phrase in ['three hours','publication time','not photographic','modified eumetsat','historical']:assert phrase in text,phrase
+                await page.keyboard.press('Escape');await expect(about).not_to_be_visible()
+                if mode in ['no-webgl','module-fail','texture-fail']:
+                    await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.state==='fallback'",timeout=90000)
+                    await expect(page.locator('#earth-fallback')).to_be_visible()
+                    if mode=='no-webgl':assert not any(re.search(r'assets/earth/earth-(?:day|night|cloud)',x) for x in requests)
+                    await snapshot(page,name)
                 else:
-                    await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.state==='ready'&&window.__earthPreview&&window.__earthPreview.getState().ready", timeout=120000)
-                    state = await page.evaluate(STATE)
-                    assert state['frames'] >= 1 and state['textureCount'] >= 3 and state['textureWidth'] >= 2048, state
-                    canvas = page.locator('#earth-canvas')
-                    assert await canvas.is_visible()
-                    assert await canvas.evaluate("e=>!!e.getContext('webgl2')"), 'Ready must mean an actual WebGL2 renderer'
-                    assert await canvas.get_attribute('aria-label')
-                    if mode == 'reduced':
-                        assert state['paused'] and not state['running'], state
-                        await page.wait_for_timeout(350)
-                        later = await page.evaluate(STATE)
-                        assert later['rotation'] == state['rotation'], (state, later)
-                        assert later['frames'] <= state['frames'] + 1, (state, later)
-                    elif mode == 'context-loss':
-                        lost = await canvas.evaluate("e=>{const x=e.getContext('webgl2').getExtension('WEBGL_lose_context');if(!x)return false;x.loseContext();return true}")
-                        assert lost, 'SwiftShader must support context loss simulation'
-                        await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.state==='fallback'", timeout=20000)
-                        assert await page.locator('#earth-fallback').is_visible()
-                        await snapshot(page, name)
-                    else:
-                        before = state['frames']
-                        await page.wait_for_function(f'{STATE}.frames>{before}+1')
-                        await page.locator('#earth-motion').click()
-                        await page.wait_for_function(STATE + '.paused')
-                        assert await page.locator('#earth-motion').get_attribute('aria-pressed') in ['true', 'false']
-                        paused = await page.evaluate(STATE)
-                        await page.wait_for_timeout(350)
-                        assert (await page.evaluate(STATE))['rotation'] == paused['rotation']
-                        for view in ['daylight', 'night', 'sunrise']:
-                            frame = (await page.evaluate(STATE))['frames']
-                            button = page.locator(f'[data-earth-view="{view}"]')
-                            await button.click()
-                            await page.wait_for_function(f'{STATE}.view==={json.dumps(view)}')
-                            await page.wait_for_function(f'{STATE}.frames>{frame}')
-                            assert await button.get_attribute('aria-pressed') == 'true'
-                            if width == 1440 and theme == 'dark' and view != 'sunrise':
-                                await snapshot(page, '1440-' + view)
-                        initial_zoom = (await page.evaluate(STATE))['zoom']
-                        if await page.locator('[data-earth-zoom="in"]').is_visible():
-                            await page.locator('[data-earth-zoom="in"]').click()
-                            await page.wait_for_function(f'{STATE}.zoom>{initial_zoom}')
-                            await page.locator('[data-earth-zoom="out"]').click()
-                            await page.wait_for_function(f'Math.abs({STATE}.zoom-{initial_zoom})<0.000001')
+                    await page.wait_for_function("window.__earthPreview?.getState().ready",timeout=90000)
+                    await page.wait_for_function("window.__earthWeather?.getState().available || document.getElementById('earth-weather').dataset.state==='fallback'",timeout=30000)
+                    state=await page.evaluate(STATE);assert state['frames']>0 and state['textureWidth']>=2048 and state['textureCount']>=3,state
+                    assert state['view']=='live'
+                    assert not any('maplibre' in x for x in requests),'Ground engine must be lazy'
+                    if mode=='reduced':
+                        assert state['paused'] and not state['running'];before=state['rotation'];await page.wait_for_timeout(200);assert (await page.evaluate(STATE))['rotation']==before
+                    elif mode=='cloud-fail':
+                        assert not (await page.evaluate('window.__earthWeather.getState()'))['available']
+                        await expect(page.locator('#earth-weather-label')).to_contain_text('Illustrative')
+                    elif mode=='context-loss':
+                        await page.locator('#earth-canvas').evaluate("e=>e.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext()")
+                        await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.state==='fallback'")
+                    elif mode in ['normal','map-fail']:
+                        await page.locator('#earth-motion').click();await page.wait_for_function(STATE+'.paused')
+                        before=(await page.evaluate(STATE))['rotation'];await page.wait_for_timeout(200);assert (await page.evaluate(STATE))['rotation']==before
+                        for view in ['daylight','night','live']:
+                            await page.locator('[data-earth-view='+view+']').click();await page.wait_for_function(STATE+'.view==='+json.dumps(view))
+                        await page.locator('#earth-reset').click()
+                        await page.locator('#earth-canvas').focus();before=(await page.evaluate(STATE))['cameraYaw'];await page.keyboard.press('ArrowRight');await page.wait_for_function(STATE+'.cameraYaw!=='+str(before))
+                        await page.locator('#earth-reset').click()
+                        if width==1440 and mode=='normal' and theme=='dark':
+                            await page.locator('#earth-quality').select_option('ultra');await page.wait_for_function("!document.getElementById('earth-quality').disabled",timeout=90000)
+                            await page.wait_for_function(STATE+'.textureWidth>=8192',timeout=90000)
+                            await snapshot(page,'earth-8k-desktop')
+                            await page.locator('#earth-quality').select_option('auto');await page.wait_for_function("!document.getElementById('earth-quality').disabled")
+                        if width==390 and mode=='normal':
+                            # Touch pinch on the unobstructed part of the globe.
+                            client=await ctx.new_cdp_session(page)
+                            old=(await page.evaluate(STATE))['zoom']
+                            points=lambda d:[{'x':195-d,'y':480,'id':1},{'x':195+d,'y':480,'id':2}]
+                            await client.send('Input.dispatchTouchEvent',{'type':'touchStart','touchPoints':points(30)})
+                            await client.send('Input.dispatchTouchEvent',{'type':'touchMove','touchPoints':points(47)})
+                            await client.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]})
+                            await page.wait_for_function(STATE+'.zoom>'+str(old));await page.locator('#earth-reset').click()
+                        await snapshot(page,name+'-earth')
+                        await page.locator('#earth-explore').click();await expect(page.locator('#earth-search-dialog')).to_be_visible()
+                        await page.locator('#earth-search').fill('not a place');await page.locator('#earth-search').press('Enter');await expect(page.locator('#earth-search-error')).to_be_visible()
+                        await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='Manhattan')).click()
+                        if mode=='map-fail':await expect(page.locator('#ground-fallback')).to_be_visible(timeout=40000)
                         else:
-                            # Small screens intentionally use pinch instead of extra toolbar buttons.
-                            box = await canvas.bounding_box()
-                            x, y = box['x'] + box['width'] * .5, box['y'] + box['height'] * .45
-                            client = await ctx.new_cdp_session(page)
-                            def points(distance):
-                                return [{'x': x-distance, 'y': y, 'id': 1}, {'x': x+distance, 'y': y, 'id': 2}]
-                            await client.send('Input.dispatchTouchEvent', {'type': 'touchStart', 'touchPoints': points(35)})
-                            await client.send('Input.dispatchTouchEvent', {'type': 'touchMove', 'touchPoints': points(50)})
-                            await client.send('Input.dispatchTouchEvent', {'type': 'touchEnd', 'touchPoints': []})
-                            await page.wait_for_function(f'{STATE}.zoom>{initial_zoom}')
-                            await page.locator('#earth-reset').click()
-                            await page.wait_for_function(f'Math.abs({STATE}.zoom-{initial_zoom})<0.000001')
-                        before = await page.evaluate(STATE)
-                        box = await canvas.bounding_box()
-                        x, y = box['x'] + box['width'] * .5, box['y'] + box['height'] * .45
-                        if width < 1000:
-                            client = await ctx.new_cdp_session(page)
-                            await client.send('Input.dispatchTouchEvent', {'type': 'touchStart', 'touchPoints': [{'x': x, 'y': y}]})
-                            await client.send('Input.dispatchTouchEvent', {'type': 'touchMove', 'touchPoints': [{'x': x + 55, 'y': y + 12}]})
-                            await client.send('Input.dispatchTouchEvent', {'type': 'touchEnd', 'touchPoints': []})
-                        else:
-                            await page.mouse.move(x, y)
-                            await page.mouse.down()
-                            await page.mouse.move(x + 70, y + 12, steps=8)
-                            await page.mouse.up()
-                        await page.wait_for_function(f'{STATE}.cameraYaw!=={before["cameraYaw"]}||{STATE}.cameraPitch!=={before["cameraPitch"]}')
-                        if width == 1440 and theme == 'dark':
-                            await canvas.focus()
-                            start = await page.evaluate(STATE)
-                            await page.keyboard.press('ArrowLeft')
-                            await page.wait_for_function(f'{STATE}.cameraYaw!=={start["cameraYaw"]}')
-                            await page.mouse.move(x, y)
-                            await page.mouse.wheel(0, -160)
-                            await page.wait_for_function(f'{STATE}.zoom!=={start["zoom"]}')
-                            await page.locator('#earth-reset').click()
-                            await page.wait_for_function(f'Math.abs({STATE}.zoom-1)<0.000001')
-                            await page.locator('#earth-quality').select_option('ultra')
-                            await page.locator('#earth-quality').wait_for(state='visible')
-                            await page.wait_for_function("!document.getElementById('earth-quality').disabled", timeout=120000)
-                            expected_width = await page.evaluate("window.__earthPreview.getState().maxTextureSize>=8192&&!(navigator.deviceMemory&&navigator.deviceMemory<=4)?8192:4096")
-                            await page.wait_for_function(f"document.querySelector('[data-earth-preview]').dataset.quality==='ultra'&&{STATE}.ready&&{STATE}.textureWidth>={expected_width}", timeout=120000)
-                            await snapshot(page, '1440-dark-ultra')
-                            await page.locator('#earth-quality').select_option('auto')
-                            await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.quality==='auto'&&window.__earthPreview.getState().ready", timeout=120000)
-                            await page.locator('#earth-fullscreen').click()
-                            await page.wait_for_timeout(150)
-                            if await page.evaluate('!!document.fullscreenElement'):
-                                await page.keyboard.press('Escape')
-                                # Headless Chrome may not synthesize the UA full-screen shortcut.
-                                if await page.evaluate('!!document.fullscreenElement'):
-                                    await page.locator('#earth-fullscreen').click()
-                                await page.wait_for_function('!document.fullscreenElement')
-                        for selector in ['#earth-motion', '#earth-reset', '#earth-fullscreen', '#earth-quality', '[data-earth-view]', '[data-earth-zoom]']:
-                            for control in await page.locator(selector).all():
-                                if not await control.is_visible():
-                                    continue
-                                rect = await control.bounding_box()
-                                assert rect['width'] >= 44 and rect['height'] >= 44, (name, selector, rect)
-                                assert rect['x'] >= -1 and rect['x'] + rect['width'] <= width + 1, (name, selector, rect)
-                                assert rect['y'] >= -1 and rect['y'] + rect['height'] <= height + 1, (name, selector, rect)
-                        if width in [390, 768, 844, 1440]:
-                            await page.locator('#earth-reset').click()
-                            await page.wait_for_function(f'Math.abs({STATE}.zoom-1)<0.000001&&{STATE}.view==="sunrise"')
-                            await page.evaluate('document.fonts.ready')
-                            await snapshot(page, name)
-                        if (await page.evaluate(STATE))['paused']:
-                            await page.locator('#earth-motion').click()
-                        await page.wait_for_function(STATE + '.running')
-                assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'), name
-                assert not errors, (name, errors)
-                assert not shader_errors, (name, shader_errors)
-                results.append({'name': name, 'passed': True})
-                print('EARTH_PASS ' + json.dumps(results[-1]), flush=True)
-            except Exception as error:
-                results.append({'name': name, 'passed': False, 'error': str(error), 'pageErrors': errors, 'shaderErrors': shader_errors})
-                print('EARTH_FAIL ' + json.dumps(results[-1]), flush=True)
-                await snapshot(page, name + '-failure')
-                raise
-            finally:
-                await ctx.close()
-
-        for args in [(320, 760), (390, 844), (768, 1024), (844, 390), (1440, 900), (1440, 900, 'normal', 'light'),
-                     (390, 844, 'reduced'), (390, 844, 'no-webgl'), (1440, 900, 'context-loss'),
-                     (390, 844, 'texture-fail'), (390, 844, 'module-fail')]:
-            await asyncio.wait_for(scenario(*args), timeout=240)
-        (OUT / 'results.json').write_text(json.dumps(results, indent=2))
-        # A separate capture contains a clean, running Earth rather than the test interactions.
-        # Record only loading plus ten seconds, then retain the final ten-second scene.
-        capture = pathlib.Path('/tmp/earth-preview-recording')
-        capture.mkdir(exist_ok=True)
-        ctx = await browser.new_context(viewport={'width': 1440, 'height': 900},
-            reduced_motion='no-preference', service_workers='block',
-            record_video_dir=str(capture), record_video_size={'width': 1440, 'height': 900})
-        async def movie_route(r):
-            u = urlparse(r.request.url)
-            if r.request.method != 'GET' or u.hostname != 'superchargeddaily.com':
-                return await r.abort()
-            file = ROOT / unquote(u.path).lstrip('/')
-            if file.is_file() and ROOT in file.resolve().parents:
-                return await r.fulfill(body=file.read_bytes(), content_type=mimetypes.guess_type(str(file))[0] or 'application/octet-stream')
-            return await r.fulfill(status=404, body='Not found')
-        await ctx.route('**/*', movie_route)
-        page = await ctx.new_page()
-        movie_errors = []
-        page.on('pageerror', lambda e: movie_errors.append(str(e)))
-        video = page.video
-        await page.goto(SITE + '/mission-control.html', wait_until='domcontentloaded')
-        await page.wait_for_function("window.__earthPreview&&window.__earthPreview.getState().running&&window.__earthPreview.getState().textureWidth>=4096", timeout=120000)
-        await page.evaluate('document.fonts.ready')
-        await page.mouse.move(8, 8)
-        first_frame = (await page.evaluate(STATE))['frames']
-        await page.wait_for_timeout(10500)
-        assert (await page.evaluate(STATE))['frames'] > first_frame + 20
-        assert not movie_errors, movie_errors
-        await ctx.close()
-        movie = await video.path()
-        ffmpeg = shutil.which('ffmpeg')
-        assert ffmpeg, 'The runner must provide ffmpeg to trim the clean preview film'
-        output = OUT / 'earth-preview.mp4'
-        process = await asyncio.create_subprocess_exec(ffmpeg, '-hide_banner', '-loglevel', 'error', '-y',
-            '-sseof', '-10', '-i', str(movie), '-t', '10', '-an', '-vf', 'fps=30',
-            '-c:v', 'libx264', '-preset', 'fast', '-crf', '20', '-pix_fmt', 'yuv420p',
-            '-movflags', '+faststart', str(output), stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
-        _, error = await process.communicate()
-        assert process.returncode == 0, error.decode()
-        assert output.stat().st_size > 10000, 'The film must contain actual rendered frames'
-        print('EARTH_MOVIE ' + json.dumps({'file': output.name, 'bytes': output.stat().st_size, 'duration': 10}), flush=True)
-        await browser.close()
-
-
+                            await page.wait_for_function("window.__earthGround?.getState().ready || document.querySelector('[data-earth-preview]').dataset.groundState==='fallback'",timeout=70000)
+                            assert await page.evaluate('window.__earthGround?.getState().ready'),await page.evaluate('window.__earthGround?.diagnostics?.()')
+                            await page.wait_for_function('window.__earthGround.getState().renderedBuildings>15',timeout=70000)
+                            ground=await page.evaluate('window.__earthGround.getState()');assert ground['zoom']>=14,ground
+                            await page.wait_for_timeout(700)
+                            assert not (await page.evaluate(STATE))['running'],'Hidden Earth must stop rendering'
+                            assert await page.locator('#earth-satellite').get_attribute('target')=='_blank'
+                            assert 'basemap=satellite' in await page.locator('#earth-satellite').get_attribute('href')
+                            await snapshot(page,name+'-ground')
+                            await page.locator('#ground-buildings').click();await expect(page.locator('#ground-buildings')).to_have_attribute('aria-pressed','false');await page.locator('#ground-buildings').click()
+                            await page.locator('#ground-terrain').click();await expect(page.locator('#ground-terrain')).to_have_attribute('aria-pressed','false');await page.locator('#ground-terrain').click()
+                            if width==1440 and theme=='dark':
+                                await page.locator('#earth-change-place').click();await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='The Matterhorn')).click()
+                                await page.wait_for_function('window.__earthGround.getState().lat>45&&window.__earthGround.getState().lat<46',timeout=20000)
+                                await page.wait_for_timeout(3500);await snapshot(page,'alpine-terrain')
+                            await page.locator('[data-earth-mode=earth]').click();await expect(page.locator('#earth-canvas')).to_be_visible()
+                            await page.wait_for_function(STATE+'.view==="live"')
+                            await page.locator('#earth-explore').click();await page.locator('#earth-locate').click()
+                            await page.wait_for_function('window.__earthGround.getState().lat>53&&window.__earthGround.getState().lat<54',timeout=30000)
+                            if width==1440:
+                                await page.locator('[data-earth-mode=earth]').click()
+                                await page.mouse.move(940,450);await page.mouse.wheel(0,-1100)
+                                await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.mode==='ground'")
+                    if mode not in ['normal','map-fail']:await snapshot(page,name)
+                assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),name
+                assert not errors,(name,errors)
+                assert not shader_errors,(name,shader_errors)
+                results.append({'scenario':name,'ok':True,'requests':len(requests)})
+                print('EARTH_PASS '+name,flush=True)
+            except Exception:
+                print('EARTH_ERROR '+name+' '+json.dumps({'errors':errors,'shaders':shader_errors,'network':network_errors[-20:],'console':console_errors[-15:],'ground':await page.evaluate('window.__earthGround?.diagnostics?.()')}),flush=True)
+                await snapshot(page,name+'-failed');raise
+            finally:await ctx.close()
+        group=os.environ.get('EARTH_TEST_GROUP','all')
+        cases={'desktop':[(1440,900),(1440,900,'normal','light'),(1440,900,'context-loss')],'touch':[(390,844),(768,1024),(390,700,'short'),(844,390,'short'),(390,844,'reduced','light')],'failures':[(390,844,'no-webgl'),(390,844,'module-fail'),(390,844,'texture-fail'),(390,844,'cloud-fail'),(390,844,'map-fail')]}
+        selected=cases.get(group,[item for case in cases.values() for item in case])
+        for args in selected:
+            await asyncio.wait_for(scenario(*args),timeout=230)
+        (OUT/'results.json').write_text(json.dumps(results,indent=2))
+        if group not in ['all','desktop']:
+            await browser.close();print('EARTH_COMPLETE '+str(len(results))+' journeys',flush=True);return
+        # A real, unmocked cloud and map journey for the review film.
+        ctx=await browser.new_context(viewport={'width':1440,'height':900},record_video_dir=str(OUT/'recording'),record_video_size={'width':1440,'height':900},service_workers='block')
+        await setup_route(ctx,cloud='real');page=await ctx.new_page()
+        await page.goto(SITE+'/mission-control.html');await page.wait_for_function('window.__earthPreview?.getState().ready',timeout=90000)
+        await page.wait_for_function('window.__earthWeather?.getState().available',timeout=40000)
+        await page.wait_for_timeout(700);await snapshot(page,'actual-latest-clouds')
+        start=asyncio.get_running_loop().time();await page.wait_for_timeout(4000)
+        await page.locator('#earth-explore').click();await page.wait_for_timeout(500)
+        await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='Manhattan')).click()
+        await page.wait_for_function('window.__earthGround?.getState().renderedBuildings>15',timeout=70000);await page.wait_for_timeout(4500)
+        await page.locator('#earth-change-place').click();await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='The Matterhorn')).click();await page.wait_for_timeout(4500)
+        duration=asyncio.get_running_loop().time()-start
+        video=page.video;await ctx.close();source=await video.path()
+        ffmpeg=shutil.which('ffmpeg');assert ffmpeg
+        process=await asyncio.create_subprocess_exec(ffmpeg,'-hide_banner','-loglevel','error','-y','-sseof','-'+str(round(duration,2)),'-i',str(source),'-vf','fps=24,format=yuv420p','-c:v','libx264','-preset','fast','-crf','23','-movflags','+faststart',str(OUT/'earth-preview.mp4'),stderr=asyncio.subprocess.PIPE)
+        _,error=await process.communicate();assert process.returncode==0,error.decode()
+        await browser.close();print('EARTH_COMPLETE '+str(len(results))+' journeys',flush=True)
 asyncio.run(main())

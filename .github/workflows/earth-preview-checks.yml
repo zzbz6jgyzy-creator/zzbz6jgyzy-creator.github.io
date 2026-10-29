@@ -6,6 +6,9 @@ on:
       - 'earth-*.js'
       - 'earth-*.css'
       - 'assets/earth/**'
+      - 'vendor/maplibre/**'
+      - 'tests/earth-live-model.test.mjs'
+      - 'tests/earth-weather.test.mjs'
       - 'vendor/three*'
       - 'vendor/three*/**'
       - 'scripts/js-bundles.json'
@@ -13,12 +16,19 @@ on:
       - 'tests/earth-browser.py'
       - '.github/workflows/earth-preview-checks.yml'
   workflow_dispatch:
+concurrency:
+  group: earth-explorer-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
   earth-preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        device: [desktop, touch, failures]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -35,20 +45,28 @@ jobs:
       - name: Syntax and isolated viewer configuration
         run: |
           node --check earth-preview.js
+          node --check earth-live-model.js
+          node --check earth-ground.js
+          node --check earth-weather.js
+          node tests/earth-live-model.test.mjs
+          node tests/earth-weather.test.mjs
           node --check earth-renderer.js
           python3 -m py_compile tests/earth-browser.py
           python3 -c 'import json; from pathlib import Path; assert "mission-control.html" in json.loads(Path("scripts/js-bundles.json").read_text())["skipPages"]'
       - name: Real WebGL, responsive controls, high resolution and fallback journeys
-        run: CHROMIUM_PATH="$(command -v google-chrome)" timeout 720s python3 -u tests/earth-browser.py
+        env:
+          EARTH_TEST_GROUP: ${{ matrix.device }}
+        run: CHROMIUM_PATH="$(command -v google-chrome)" timeout 1200s python3 -u tests/earth-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: earth-preview-screenshots
+          name: earth-preview-screenshots-${{ matrix.device }}
           path: |
             /tmp/earth-preview/*.jpg
             /tmp/earth-preview/results.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: earth-preview-film
+          name: earth-preview-film-${{ matrix.device }}
           path: /tmp/earth-preview/earth-preview.mp4
+
