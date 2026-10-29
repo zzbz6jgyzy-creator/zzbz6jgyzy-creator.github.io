@@ -17,8 +17,8 @@
     motion.setAttribute('aria-pressed', String(!!state.paused));
     motion.setAttribute('aria-label', state.paused ? 'Resume rotation' : 'Pause rotation');
     document.getElementById('earth-motion-label').textContent = state.paused ? 'Play' : 'Pause';
-    document.getElementById('earth-pause-icon').hidden = !!state.paused;
-    document.getElementById('earth-play-icon').hidden = !state.paused;
+    document.getElementById('earth-pause-icon').toggleAttribute('hidden', !!state.paused);
+    document.getElementById('earth-play-icon').toggleAttribute('hidden', !state.paused);
     for (const b of root.querySelectorAll('[data-earth-view]')) b.setAttribute('aria-pressed', String(b.dataset.earthView === (state.view || 'sunrise')));
     document.getElementById('earth-view-label').textContent = viewLabels[state.view] || viewLabels.sunrise;
     if (state.textureWidth) document.getElementById('earth-resolution').textContent = Math.round(state.textureWidth / 1024) + 'K SURFACE DETAIL';

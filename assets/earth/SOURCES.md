@@ -11,7 +11,6 @@ feed or a view from a spacecraft. Cloud motion is an artistic animation.
 - Credit: NASA Earth Observatory; Reto Stöckli, NASA Goddard Space Flight Center.
 - Deliveries: 2048×1024, 4096×2048 and 8192×4096 WebP. The 8K tier is derived from the real 21600-pixel master, with no upscaling.
 - Processing: Lanczos downsampling and WebP compression. The base map has no clouds or directional lighting baked in. The browser adds those separately.
-- Bootstrap 2K/4K files were obtained through the NASA-attributed mirror <https://github.com/MaxwellLee/physics-lab/blob/main/assets/textures/SOURCES.md>, whose genuine 5400×2700 source is the same NASA July composite. The reproducible asset builder replaces all three tiers together from the 21600×10800 master.
 
 ## Night lights — NASA Black Marble 2016
 
@@ -19,17 +18,16 @@ feed or a view from a spacecraft. Cloud motion is an artistic animation.
 - Master (13500×6750): <https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/144000/144898/BlackMarble_2016_3km.jpg>
 - Credit: NASA Earth Observatory images by Joshua Stevens, using Suomi NPP VIIRS data from Miguel Román, NASA Goddard Space Flight Center.
 - Deliveries: 2048×1024 and 4096×2048 WebP, downsampled with Lanczos and compressed. The browser applies the lights on the unlit hemisphere.
-- The builder replaces the temporary 2K NASA city-lights image supplied through three.js examples with both tiers of this documented 2016 composite before the final asset export.
 
 ## Clouds and ocean mask — Solar System Scope / INOVE
 
 - Provider and terms: <https://www.solarsystemscope.com/textures/>
 - License: Creative Commons Attribution 4.0 International, <https://creativecommons.org/licenses/by/4.0/>.
 - Cloud source (8192×4096): <https://www.solarsystemscope.com/textures/download/8k_earth_clouds.jpg>
+- Immutable download mirror: <https://raw.githubusercontent.com/Siqister/files/2ed70f6955b88070080e21067568c233a50856ec/8k_earth_clouds.jpg> (same attributed Solar System Scope texture).
 - Specular/ocean-mask source (2048×1024): <https://www.solarsystemscope.com/textures/download/2k_earth_specular_map.jpg>
 - Credit: Solar System Scope / INOVE. The provider describes its Earth textures as NASA Blue Marble-derived composites with adjusted colours and saturation.
 - Changes: cloud texture converted to grayscale, Lanczos downsampled to 2K/4K and WebP compressed; ocean mask converted to grayscale WebP. White is water, black is land. Cloud animation and lighting are website-created.
-- The initial files were acquired from the byte-preserving mirror <https://github.com/Siqister/files>; source filenames and licensing were checked against the provider's texture page. The asset builder downloads the 8K cloud original from the provider before producing the final cloud tiers.
 
 ## Poster / fallback
 

@@ -130,8 +130,24 @@ def manifest(generated):
  if not path.exists() or path.read_text()!=content:
   path.write_text(content);generated.add(path)
 
+def verify():
+ recorded=json.loads((OUT/'manifest.json').read_text())
+ entries={entry['file']:entry for entry in recorded['assets']}
+ expected={f'earth-{kind}-{width//1024}k.webp':(width,width//2) for kind,source in SOURCES.items() for width in source['tiers']}
+ expected['earth-poster.webp']=(1100,1100)
+ for name,size in expected.items():
+  path=OUT/name;entry=entries['/assets/earth/'+name]
+  with Image.open(path) as image:
+   assert image.size==size and image.format=='WEBP',f'Unexpected image: {name}'
+  data=path.read_bytes()
+  assert (entry['width'],entry['height'])==size and entry['bytes']==len(data),f'Incorrect dimensions/size: {name}'
+  assert entry['sha256']==hashlib.sha256(data).hexdigest(),f'Checksum mismatch: {name}'
+ print(f'Verified {len(expected)} vendored Earth images, including an 8192x4096 surface.',flush=True)
+
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--export-generated',action='store_true');parser.add_argument('--poster-only',action='store_true');args=parser.parse_args()
+ parser=argparse.ArgumentParser();parser.add_argument('--export-generated',action='store_true');parser.add_argument('--poster-only',action='store_true');parser.add_argument('--check',action='store_true');args=parser.parse_args()
+ if args.check:
+  verify();return
  OUT.mkdir(parents=True,exist_ok=True);generated=set()
  try:
   if not args.poster_only:

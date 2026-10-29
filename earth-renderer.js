@@ -39,9 +39,10 @@ const SURFACE = `
     vec3 ambient = vec3(0.003, 0.007, 0.015);
     vec3 sunlight = vec3(1.05, 1.005, 0.94);
     vec3 color = day * (ambient + sunlight * daylight * 1.18 * (1.0 - cloudShadow));
-    float lightStrength = max(night.r, max(night.g, night.b));
+    // Exclude the cool land background in the Black Marble visual composite.
+    float lightStrength = max(0.0, min(night.r, night.g) - night.b * 0.7);
     vec3 cityLights = pow(max(night, vec3(0.0)), vec3(0.88));
-    cityLights *= smoothstep(0.003, 0.055, lightStrength);
+    cityLights *= smoothstep(0.008, 0.12, lightStrength);
     color += cityLights * vec3(1.13, 0.91, 0.68) * nightSide * 1.15;
     float ocean = 1.0 - smoothstep(0.55, 0.92, (day.r + day.g) / max(day.b * 2.0, 0.002));
     float specular = pow(max(dot(reflect(-L, N), V), 0.0), 130.0);

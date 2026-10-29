@@ -165,7 +165,7 @@ async def main():
                             await page.mouse.wheel(0, -160)
                             await page.wait_for_function(f'{STATE}.zoom!=={start["zoom"]}')
                             await page.locator('#earth-reset').click()
-                            await page.wait_for_function(f'{STATE}.zoom==={start["zoom"]}')
+                            await page.wait_for_function(f'Math.abs({STATE}.zoom-1)<0.000001')
                             await page.locator('#earth-quality').select_option('ultra')
                             await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.quality==='ultra'&&window.__earthPreview.getState().ready&&window.__earthPreview.getState().textureWidth>=4096", timeout=120000)
                             await snapshot(page, '1440-dark-ultra')
@@ -188,6 +188,8 @@ async def main():
                                 assert rect['x'] >= -1 and rect['x'] + rect['width'] <= width + 1, (name, selector, rect)
                                 assert rect['y'] >= -1 and rect['y'] + rect['height'] <= height + 1, (name, selector, rect)
                         if width in [390, 768, 844, 1440]:
+                            await page.locator('#earth-reset').click()
+                            await page.wait_for_function(f'Math.abs({STATE}.zoom-1)<0.000001&&{STATE}.view==="sunrise"')
                             await page.evaluate('document.fonts.ready')
                             await snapshot(page, name)
                         if (await page.evaluate(STATE))['paused']:

@@ -1,3 +1,9 @@
+## 2026-10-29 — Cinematic Earth preview
+
+- Added a standalone full-screen Earth study with genuine 8K NASA surface imagery, separate clouds, city lights, ocean reflections and atmospheric lighting.
+- Added touch, mouse and keyboard exploration, lighting presets, pause, zoom, reset, adaptive detail and fullscreen. Static imagery and cinematic lighting are disclosed with source and licence credits.
+- Kept the prototype out of navigation and search indexing while reviewed. Added browser screenshots, a short film capture, failure-state checks and checksums for the vendored image tiers.
+
 ## 2026-10-28 — Prominent member navigation
 
 - Added a labelled Members button to the desktop header and moved mobile/tablet account access into a large card directly below search, ahead of Your Daily and the section list.
