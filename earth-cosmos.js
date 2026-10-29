@@ -140,8 +140,8 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   onLabels(out);
  }
  function setFocus(value){flightFrom=null;flightMix=1;if(value!=='Galaxy'&&!M.BODIES.some(b=>b.id===value))return;focus=value;requestBody(value);}
- function recommendedOrbit(){
-  let normal;if(focus==='Galaxy')normal=world(M.galToEq([0,0,1]));else{const axes=M.earthAxes(),eclipticPole=[0,-.3977771559,.9174820621];normal=world(eclipticPole);}
+ function recommendedOrbit(galactic=false){
+  let normal;if(galactic||focus==='Galaxy')normal=world(M.galToEq([0,0,1]));else{const eclipticPole=[0,-.3977771559,.9174820621];normal=world(eclipticPole);}
   normal.normalize();const side=new THREE.Vector3(1,.2,.4).cross(normal).normalize();const direction=normal.multiplyScalar(.8).addScaledVector(side,.65).normalize();const look=new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),world(M.galToEq([0,0,1])).normalize());return new THREE.Quaternion().setFromRotationMatrix(look);
  }
  function dispose(){if(disposed)return;disposed=true;fetchAbort.abort();root.removeFromParent();sky.removeFromParent();for(const t of textures.values())t.dispose();black.dispose();root.traverse(o=>{if(o.geometry!==plane)o.geometry?.dispose();if(o.material&&o.material!==orbitMaterial)o.material.dispose();});plane.dispose();orbitMaterial.dispose();sky.geometry.dispose();sky.material.dispose();}

@@ -23,7 +23,9 @@ The detailed map still uses free open geometry, rather than Google 3D Tiles.
   labels make unresolved worlds selectable without enlarging their physical disks.
 - A four-stop scale rail and world finder provide direct navigation. Manual zoom
   traverses all scales; galaxy-scale zoom smoothly shifts the focus towards the
-  galactic centre. Zooming into Earth hands off to the existing map. Zooming the
+  galactic centre while keeping Earth as its logical home anchor. Zooming back in
+  returns naturally through the Solar System to Earth. Zooming into Earth hands
+  off to the existing map. Zooming the
   map below level 3 returns to the globe at the map centre.
 - Animation stops while hidden. Reduced motion and pause make destination jumps
   immediate. Planet textures load as needed, the map engine only when opened,

@@ -55,12 +55,16 @@ async def main():
      await page.locator('#earth-reset').click();old=await page.evaluate(STATE+'.zoom')
      await canvas.dispatch_event('wheel',{'deltaY':-8,'ctrlKey':True,'bubbles':True,'cancelable':True});assert await page.evaluate(STATE+'.zoom')>old,'Trackpad pinch must zoom the canvas'
     await page.locator('#earth-reset').click();await page.locator('#cosmos-deep-sky').click();await expect(page.locator('#cosmos-deep-sky')).to_have_attribute('aria-pressed','true');await page.locator('#cosmos-deep-sky').click()
-    for scale,scene,focus in [('moon','moon','Moon'),('solar','solar','Sun'),('galaxy','galaxy','Galaxy')]:
+    for scale,scene,focus in [('moon','moon','Moon'),('solar','solar','Sun'),('galaxy','galaxy','Earth')]:
      await page.locator('[data-earth-scale='+scale+']').click();await page.wait_for_function(STATE+'.scene==='+json.dumps(scene)+'&&'+STATE+'.focus==='+json.dumps(focus),timeout=80000)
      await page.wait_for_timeout(750);await snapshot(page,str(width)+'-'+scene)
      assert await page.locator('[data-earth-scale='+scale+']').get_attribute('aria-pressed')=='true'
      state=await page.evaluate(STATE);assert state['cosmos']['starsCount']>6000,state
-     if scene=='galaxy':assert state['distanceKm']>1e18 and state['cosmos']['galaxyCount']>=40000,state
+     if scene=='galaxy':
+      assert state['distanceKm']>1e18 and state['cosmos']['galaxyCount']>=40000,state
+      await page.evaluate('window.__earthPreview.setZoom(.0001)');await page.wait_for_function(STATE+'.scene==="solar"')
+      await page.evaluate('window.__earthPreview.setZoom(1)');await page.wait_for_function(STATE+'.scene==="earth"&&'+STATE+'.focus==="Earth"')
+      assert await page.evaluate('document.querySelector("[data-earth-preview]").dataset.mode')=='earth','Zooming in from the galaxy must return to Earth, not empty galactic-centre space'
      if scale=='moon':
       for body in ['Saturn','Jupiter']:
        await page.locator('#earth-explore').click();await expect(page.locator('#cosmos-places-dialog')).to_be_visible()

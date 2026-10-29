@@ -264,7 +264,7 @@ export async function initEarth(options = {}) {
     const model=await import('/earth-cosmos-model.js?v=20261029-cosmos1');
     const preset=model.scalePreset(id,fitDistance);const startRange=fitDistance/zoom*EARTH_KM;const separation=world.beginFlight(preset.focus);focusBody=preset.focus;
     const destination=clamp(fitDistance*EARTH_KM/preset.distance,fitDistance*EARTH_KM/MAX_RANGE_KM,fitDistance*EARTH_KM/(preset.focus==='Moon'?1737.4*2.5:EARTH_KM/2));
-    const target=id==='earth'?initialOrbit.clone():world.recommendedOrbit();
+    const target=id==='earth'?initialOrbit.clone():world.recommendedOrbit(id==='galaxy');
     if(motion.matches||paused){world.setFocus(preset.focus);zoom=destination;cameraOrbit.copy(target);fly=null;renderDemand();}
     else {fly={at:performance.now(),duration:id==='galaxy'?4200:2200,from:Math.log(zoom),to:Math.log(destination),peak:Math.log(fitDistance*EARTH_KM/Math.max(startRange,preset.distance,separation*3)),a:cameraOrbit.clone(),b:target};schedule();}
     interactionUntil=performance.now()+10000;setView('live');notify();
