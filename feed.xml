@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 28 Oct 2026 14:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 02:46:00 +0000</lastBuildDate>
+    <item>
+      <title>Anthropic’s IPO filing puts its SpaceX compute bill at $3.1 billion a month, 2.5 times what SpaceX disclosed in June</title>
+      <link>https://superchargeddaily.com/dispatch/anthropic-spacex-compute-3-1b.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/anthropic-spacex-compute-3-1b.html</guid>
+      <pubDate>Thu, 29 Oct 2026 02:46:00 +0000</pubDate>
+      <category>SpaceX AI</category>
+      <description>Anthropic’s S-1 says it agreed to spend up to $120.5 billion with SpaceXAI, about $3.1 billion a month at full capacity. It’s a ceiling, and either side can exit on 90 days’ notice from 2027.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/spacex-hq-hawthorne.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet</title>
       <link>https://superchargeddaily.com/dispatch/cybercab-outnumbers-model-y.html</link>
@@ -719,21 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starship-f15-ship-catch-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>300 Cybercabs in Austin</title>
-      <link>https://superchargeddaily.com/dispatch/cybercab-austin.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/cybercab-austin.html</guid>
-      <pubDate>Sat, 10 Oct 2026 22:50:41 +0000</pubDate>
-      <category>Tesla</category>
-      <description>Eight times the launch fleet. Texas DMV lists 319 two-seaters.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/cybercab-austin-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
       <title>Tracker: 2026.38.5.11</title>
       <link>https://superchargeddaily.com/updates.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.11-2026-10-28T22:53:49.000Z-792</guid>
-      <pubDate>Wed, 28 Oct 2026 22:53:49 +0000</pubDate>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.11-2026-10-29T02:30:58.000Z-850</guid>
+      <pubDate>Thu, 29 Oct 2026 02:30:58 +0000</pubDate>
       <category>software</category>
-      <description>2026.38.5.11 moved from 718 to 792 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
+      <description>2026.38.5.11 moved from 792 to 850 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
