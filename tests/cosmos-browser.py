@@ -61,6 +61,14 @@ async def main():
      assert await page.locator('[data-earth-scale='+scale+']').get_attribute('aria-pressed')=='true'
      state=await page.evaluate(STATE);assert state['cosmos']['starsCount']>6000,state
      if scene=='galaxy':assert state['distanceKm']>1e18 and state['cosmos']['galaxyCount']>=40000,state
+     if scale=='moon':
+      for body in ['Saturn','Jupiter']:
+       await page.locator('#earth-explore').click();await expect(page.locator('#cosmos-places-dialog')).to_be_visible()
+       await page.locator('#cosmos-places-list button').filter(has=page.locator('span',has_text=body)).click()
+       await page.wait_for_function(STATE+'.focus==='+json.dumps(body)+'&&'+STATE+'.cosmos.surfaces.includes('+json.dumps(body)+')',timeout=35000)
+       assert await page.evaluate(STATE+'.distanceKm')>({'Saturn':58232,'Jupiter':69911}[body]*2.5)
+       if body=='Saturn':await page.wait_for_function(STATE+'.cosmos.ringsReady',timeout=35000)
+       await page.wait_for_timeout(500);await snapshot(page,str(width)+'-'+body.lower())
     await page.locator('[data-earth-scale=earth]').click();await page.wait_for_function(STATE+'.scene==="earth"')
     if width==1440:
      state=await page.evaluate(STATE)

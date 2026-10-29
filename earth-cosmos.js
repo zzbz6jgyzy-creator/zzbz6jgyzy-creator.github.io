@@ -38,7 +38,7 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  const root=new THREE.Group();scene.add(root);
  const plane=new THREE.SphereGeometry(1,64,40),black=new THREE.DataTexture(new Uint8Array([180,180,180,255]),1,1);black.needsUpdate=true;
  const groupSolar=new THREE.Group(),groupStars=new THREE.Group(),groupGalaxy=new THREE.Group();root.add(groupSolar,groupStars,groupGalaxy);
- const system=new Map(),textures=new Map(),pending=new Set(),failures=[];
+ const system=new Map(),textures=new Map(),pending=new Set(),failedBodies=new Set(),failures=[];
  const eqFrame=new THREE.Matrix4(),galFrame=new THREE.Matrix4();
  let disposed=false,focus='Earth',level='earth',deepSky=false,physical=M.ephemeris(),lastEpoch=0,lastLabels=0,starsCount=0,galaxyCount=0,renderUnit=M.EARTH_RADIUS,currentRange=25000;
  let galaxy,skyMap,flightFrom=null,flightMix=1;
@@ -73,7 +73,13 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
    new THREE.TextureLoader().load(BASE+name,t=>{clearTimeout(timer);if(ended||disposed){t.dispose();if(!ended)reject(new Error('Explorer closed'));return;}ended=true;t.colorSpace=color?THREE.SRGBColorSpace:THREE.NoColorSpace;t.wrapS=THREE.RepeatWrapping;t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.set(name,t);resolve(t);},undefined,()=>{clearTimeout(timer);if(!ended){ended=true;reject(new Error('Texture unavailable: '+name));}});
   });
  }
- function requestBody(id){const row=system.get(id);if(!row||pending.has(id)||row.uniforms.uHasMap.value)return;pending.add(id);load(row.body.texture).then(t=>{row.uniforms.uMap.value=t;row.uniforms.uHasMap.value=1;onStatus(id+' surface ready.');}).catch(()=>failures.push(id+' surface unavailable')).finally(()=>pending.delete(id));}
+ function requestBody(id){
+  const row=system.get(id);if(!row||pending.has(id)||failedBodies.has(id)||row.uniforms.uHasMap.value)return;
+  pending.add(id);load(row.body.texture).then(t=>{
+   row.uniforms.uMap.value=t;row.uniforms.uHasMap.value=1;onStatus(id+' surface ready.');
+   if(id==='Saturn')load('saturn-rings.webp').then(t=>{ring.material.map=t;ring.material.needsUpdate=true;onStatus('Saturn rings ready.');}).catch(()=>failures.push('Saturn ring map unavailable'));
+  }).catch(()=>{failedBodies.add(id);failures.push(id+' surface unavailable');}).finally(()=>pending.delete(id));
+ }
  load('milky-way-4k.webp').then(t=>{skyMap=t;skyUniforms.uMap.value=t;skyUniforms.uHasMap.value=1;onStatus('Photographic sky ready.');}).catch(()=>failures.push('Sky panorama unavailable'));
  const starGeo=new THREE.BufferGeometry(),starMaterial=new THREE.ShaderMaterial({uniforms:{uRatio:{value:1},uOpacity:{value:0}},vertexShader:POINT_VERTEX,fragmentShader:POINT_FRAGMENT,vertexColors:true,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
  const starPoints=new THREE.Points(starGeo,starMaterial);groupStars.add(starPoints);
@@ -139,5 +145,5 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   normal.normalize();const side=new THREE.Vector3(1,.2,.4).cross(normal).normalize();const direction=normal.multiplyScalar(.8).addScaledVector(side,.65).normalize();const look=new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),world(M.galToEq([0,0,1])).normalize());return new THREE.Quaternion().setFromRotationMatrix(look);
  }
  function dispose(){if(disposed)return;disposed=true;fetchAbort.abort();root.removeFromParent();sky.removeFromParent();for(const t of textures.values())t.dispose();black.dispose();root.traverse(o=>{if(o.geometry!==plane)o.geometry?.dispose();if(o.material&&o.material!==orbitMaterial)o.material.dispose();});plane.dispose();orbitMaterial.dispose();sky.geometry.dispose();sky.material.dispose();}
- return{update,labels,setFocus,beginFlight(id){const p=focusPosition();const end=bodyPosition(id);const separation=M.length(M.sub(p,end));flightFrom=p;flightMix=0;focus=id;requestBody(id);return separation;},setFlightMix(t){flightMix=t;if(t>=1)flightFrom=null;},recommendedOrbit,getFocus:()=>focus,getState:()=>({focus,level,range:currentRange,starsCount,galaxyCount,skyReady:!!skyMap,at:physical.at,failures:[...failures]}),setDeepSky(value){deepSky=!!value;},dispose};
+ return{update,labels,setFocus,beginFlight(id){const p=focusPosition();const end=bodyPosition(id);const separation=M.length(M.sub(p,end));flightFrom=p;flightMix=0;focus=id;requestBody(id);return separation;},setFlightMix(t){flightMix=t;if(t>=1)flightFrom=null;},recommendedOrbit,getFocus:()=>focus,getState:()=>({focus,level,range:currentRange,starsCount,galaxyCount,skyReady:!!skyMap,surfaces:[...system].filter(([,row])=>row.uniforms.uHasMap.value).map(([id])=>id),ringsReady:!!ring.material.map,at:physical.at,failures:[...failures]}),setDeepSky(value){deepSky=!!value;},dispose};
 }
