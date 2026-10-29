@@ -109,7 +109,8 @@ async def main():
                         await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='Manhattan')).click()
                         if mode=='map-fail':await expect(page.locator('#ground-fallback')).to_be_visible(timeout=40000)
                         else:
-                            await page.wait_for_function('window.__earthGround?.getState().ready',timeout=70000)
+                            await page.wait_for_function("window.__earthGround?.getState().ready || document.querySelector('[data-earth-preview]').dataset.groundState==='fallback'",timeout=70000)
+                            assert await page.evaluate('window.__earthGround?.getState().ready'),await page.evaluate('window.__earthGround?.diagnostics?.()')
                             await page.wait_for_function('window.__earthGround.getState().renderedBuildings>15',timeout=70000)
                             ground=await page.evaluate('window.__earthGround.getState()');assert ground['zoom']>=14,ground
                             await page.wait_for_timeout(700)
@@ -137,9 +138,14 @@ async def main():
                 print('EARTH_ERROR '+name+' '+json.dumps({'errors':errors,'shaders':shader_errors,'network':network_errors[-20:],'console':console_errors[-15:],'ground':await page.evaluate('window.__earthGround?.diagnostics?.()')}),flush=True)
                 await snapshot(page,name+'-failed');raise
             finally:await ctx.close()
-        for args in [(1440,900),(390,844),(768,1024),(390,844,'reduced','light'),(1440,900,'normal','light'),(390,844,'no-webgl'),(390,844,'module-fail'),(390,844,'texture-fail'),(390,844,'cloud-fail'),(390,844,'map-fail'),(1440,900,'context-loss')]:
+        group=os.environ.get('EARTH_TEST_GROUP','all')
+        cases={'desktop':[(1440,900),(1440,900,'normal','light'),(1440,900,'context-loss')],'touch':[(390,844),(768,1024),(390,844,'reduced','light')],'failures':[(390,844,'no-webgl'),(390,844,'module-fail'),(390,844,'texture-fail'),(390,844,'cloud-fail'),(390,844,'map-fail')]}
+        selected=cases.get(group,[item for case in cases.values() for item in case])
+        for args in selected:
             await asyncio.wait_for(scenario(*args),timeout=230)
         (OUT/'results.json').write_text(json.dumps(results,indent=2))
+        if group not in ['all','desktop']:
+            await browser.close();print('EARTH_COMPLETE '+str(len(results))+' journeys',flush=True);return
         # A real, unmocked cloud and map journey for the review film.
         ctx=await browser.new_context(viewport={'width':1440,'height':900},record_video_dir=str(OUT/'recording'),record_video_size={'width':1440,'height':900},service_workers='block')
         await setup_route(ctx,cloud='real');page=await ctx.new_page()

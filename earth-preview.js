@@ -4,7 +4,7 @@
   const $=id=>document.getElementById(id), canvas=$('earth-canvas');
   const managed=[...root.querySelectorAll('[data-earth-view],[data-earth-zoom],#earth-motion,#earth-reset,#earth-quality')];
   const dialogs=[$('earth-about-dialog'),$('earth-search-dialog')];
-  let viewer,weather,ground,model,place,zoneAnchor,mode='earth',attempt=0,groundAttempt=0,wasPaused=false,clockTimer,dead=false;
+  let viewer,weather,ground,model,place,zoneAnchor,groundTarget,mode='earth',attempt=0,groundAttempt=0,wasPaused=false,clockTimer,dead=false;
   const viewLabels={live:'ILLUMINATION / RIGHT NOW',daylight:'DAY STUDY / ARTISTIC LIGHT',night:'NIGHT STUDY / ARTISTIC LIGHT'};
   const message=text=>{const n=$('earth-note');n.textContent=text;n.hidden=!text;};
   function paint(state={}){
@@ -54,6 +54,7 @@
       const {initEarth}=await import('/earth-renderer.js?v=20261029-live1');
       const result=await initEarth({canvas,view:'live',textureBase:'/assets/earth/',
         onStatus:s=>{if(token===attempt)$('earth-status').textContent=s;},
+        onGroundRequest:point=>{if(mode!=='earth'||token!==attempt)return;place={...point,id:'point',name:'Your chosen place',country:model.coordinates(point.lat,point.lon),zoom:14.5,pitch:58};zoneAnchor=null;openGround();},
         onSelect:point=>{if(token!==attempt||mode!=='earth')return;place={...point,id:'point',name:'Your chosen place',country:model.coordinates(point.lat,point.lon),zoom:14.5,pitch:58};viewer.focusLocation(point.lat,point.lon);renderPlace();},
         onChange:state=>{if(token!==attempt)return;paint(state);if(viewer&&root.dataset.state==='fallback'&&state.ready&&!state.contextLost){root.dataset.state='ready';$('earth-fallback').hidden=true;managed.forEach(b=>b.disabled=false);}},
         onError:()=>{if(token===attempt)unavailable();},
@@ -72,6 +73,7 @@
     $('ground-terrain').setAttribute('aria-pressed',String(state.terrain));$('ground-buildings').setAttribute('aria-pressed',String(state.buildings));
     if(state.ready){root.dataset.groundState='ready';$('ground-fallback').hidden=true;}
     if(!place||!model)return;
+    if(groundTarget){const distance=Math.hypot(state.lat-groundTarget.lat,model.longitude(state.lon-groundTarget.lon));if(distance>.001)return;place={...groundTarget,lat:state.lat,lon:state.lon};groundTarget=null;renderPlace();}
     const delta=Math.hypot(state.lat-place.lat,model.longitude(state.lon-place.lon)*Math.cos(state.lat*Math.PI/180));
     const moving=delta>.0001;
     if(moving){place={...place,lat:state.lat,lon:state.lon};const distanceFromZone=zoneAnchor?Math.hypot(state.lat-zoneAnchor.lat,model.longitude(state.lon-zoneAnchor.lon)*Math.cos(state.lat*Math.PI/180)):Infinity;if(distanceFromZone>.5){place.name='Your map view';place.country='Follow your curiosity';place.timeZone=null;}renderPlace();}
@@ -79,6 +81,7 @@
   }
   async function openGround(){
     if(!place)return;
+    const destination={...place,lat:model.clamp(place.lat,-85,85)};groundTarget=destination;
     mode='ground';root.dataset.mode=mode;root.dataset.groundState='loading';
     for(const b of root.querySelectorAll('[data-earth-mode]'))b.setAttribute('aria-pressed',String(b.dataset.earthMode===mode));
     $('earth-stage').hidden=true;$('ground-stage').hidden=false;
@@ -86,13 +89,13 @@
     $('earth-loading').hidden=true;$('earth-fallback').hidden=true;
     if(viewer){wasPaused=viewer.getState().paused;viewer.setActive(false);}
     renderPlace();
-    if(ground){ground.resize();ground.flyTo(place);if(ground.getState().ready)root.dataset.groundState='ready';return;}
+    if(ground){ground.resize();place={...destination};renderPlace();ground.flyTo(destination);if(ground.getState().ready)root.dataset.groundState='ready';return;}
     const token=++groundAttempt;$('ground-fallback').hidden=true;$('ground-status').textContent='Preparing the streets below…';
     try{
       if(!document.querySelector('[data-map-css]')){const css=document.createElement('link');css.rel='stylesheet';css.href='/vendor/maplibre/6.16.0/maplibre-gl.css';css.dataset.mapCss='true';document.head.append(css);}
       const {createGround}=await import('/earth-ground.js?v=20261029-live1');
       if(dead||token!==groundAttempt)return;
-      const result=await createGround({container:$('ground-map'),place:{...place,lat:model.clamp(place.lat,-85,85)},onChange:groundPaint,onStatus:s=>{$('ground-status').textContent=s;},onError:s=>{if(dead||token!==groundAttempt)return;root.dataset.groundState='fallback';$('ground-error').textContent=s;$('ground-fallback').hidden=false;}});
+      const result=await createGround({container:$('ground-map'),place:destination,onInteract:()=>{groundTarget=null;},onChange:groundPaint,onStatus:s=>{$('ground-status').textContent=s;},onError:s=>{if(dead||token!==groundAttempt)return;root.dataset.groundState='fallback';$('ground-error').textContent=s;$('ground-fallback').hidden=false;}});
       if(dead||token!==groundAttempt){result.dispose();return;}
       ground=result;window.__earthGround=ground;
     }catch{if(token===groundAttempt&&!dead){root.dataset.groundState='fallback';$('ground-error').textContent='The ground map could not start. Retry it, or explore this place in satellite imagery.';$('ground-fallback').hidden=false;}}

@@ -187,7 +187,7 @@ export async function initEarth(options = {}) {
   const marker = new THREE.Mesh(new THREE.SphereGeometry(.007, 16, 12),new THREE.MeshBasicMaterial({color:0xf34765}));
   marker.visible = false; marker.renderOrder = 4; globe.add(marker);
   const raycaster = new THREE.Raycaster();
-  let gestureStart = null, gestureMoved = false;
+  let gestureStart = null, gestureMoved = false, groundRequested = false;
   function updateLiveSun() {
     if (currentView !== 'live') return;
     const position = solarPosition();
@@ -342,11 +342,18 @@ export async function initEarth(options = {}) {
     currentView = view; targetSun.set(...views[view]).normalize();
     renderDemand();
   }
-  function setZoom(value) { if (!Number.isFinite(value) || disposed) return; zoom = clamp(value, 0.65, 1.65); interactionUntil = performance.now() + 2500; renderDemand(); }
+  function setZoom(value) { if (!Number.isFinite(value) || disposed) return;
+    if(value<1.8)groundRequested=false;
+    if(value>=1.95&&!groundRequested&&typeof options.onGroundRequest==='function'){
+      const r=canvas.getBoundingClientRect(),compact=r.width/r.height<1.1;
+      const point=pickLocation(r.left+r.width*(compact?.53:.64),r.top+r.height*.515);
+      if(point){groundRequested=true;queueMicrotask(()=>{if(!disposed)options.onGroundRequest(point);});}
+    }
+    zoom = clamp(value, 0.65, 1.9); interactionUntil = performance.now() + 2500; renderDemand(); }
   function zoomBy(delta) { setZoom(zoom + delta); }
   function stepOrbit(dx = 0, dy = 0) { targetYaw += dx; targetPitch = clamp(targetPitch + dy, -1.45, 1.45); interactionUntil = performance.now() + 2500; renderDemand(); }
   function reset() {
-    targetYaw = 0; targetPitch = 0.10; zoom = 1; globe.rotation.y = -1.92; cloudAngle = 0; clouds.rotation.y = 0; uniforms.uCloudOffset.value = 0;
+    targetYaw = 0; targetPitch = 0.10; zoom = 1; groundRequested=false; globe.rotation.y = -1.92; cloudAngle = 0; clouds.rotation.y = 0; uniforms.uCloudOffset.value = 0;
     setView(options.view === 'live' ? 'live' : 'sunrise'); renderDemand();
   }
   function pointerDown(event) {

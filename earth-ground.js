@@ -12,6 +12,7 @@ export function groundStyle(){
     glyphs:'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',
     sources:{
       openmaptiles:{type:'vector',url:'https://tiles.openfreemap.org/planet',attribution:'<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> · <a href="https://openmaptiles.org" target="_blank" rel="noopener">OpenMapTiles</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>'},
+      'elevation-shade':{type:'raster-dem',tiles:['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],tileSize:256,minzoom:0,maxzoom:15,encoding:'terrarium',attribution:'Terrain: <a href="https://www.mapzen.com/rights/" target="_blank" rel="noopener">Mapzen / source credits</a>'},
       elevation:{type:'raster-dem',tiles:['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],tileSize:256,minzoom:0,maxzoom:15,encoding:'terrarium',attribution:'Terrain: <a href="https://www.mapzen.com/rights/" target="_blank" rel="noopener">Mapzen / source credits</a>'},
     },
     light:{anchor:'viewport',color:'#ecf7ff',intensity:.55,position:[1.4,210,36]},
@@ -22,7 +23,7 @@ export function groundStyle(){
       layer('parks','fill','park',{'fill-color':'#28514a','fill-opacity':.8}),
       layer('landuse','fill','landuse',{'fill-color':['match',['get','class'],'residential','#253e49','industrial','#31414a','commercial','#334b57','#2c4249'],'fill-opacity':.55}),
       layer('water','fill','water',{'fill-color':'#0b2537','fill-antialias':true}),
-      {id:'hillshade',type:'hillshade',source:'elevation',paint:{'hillshade-exaggeration':.65,'hillshade-shadow-color':'#071525','hillshade-highlight-color':'#b6d5ca','hillshade-accent-color':'#3b6570'}},
+      {id:'hillshade',type:'hillshade',source:'elevation-shade',paint:{'hillshade-exaggeration':.65,'hillshade-shadow-color':'#071525','hillshade-highlight-color':'#b6d5ca','hillshade-accent-color':'#3b6570'}},
       layer('waterway','line','waterway',{'line-color':'#497d91','line-width':['interpolate',['linear'],['zoom'],9,.5,17,3],'line-opacity':.7}),
       layer('country-boundaries','line','boundary',{'line-color':'#8fa7b1','line-width':.6,'line-opacity':.35,'line-dasharray':[3,3]},{filter:['==',['get','admin_level'],2]}),
       layer('roads-casing','line','transportation',{'line-color':'#101f2c','line-width':roadWidth(1.25)},{minzoom:6,filter:['!=',['get','class'],'rail'],layout:{'line-cap':'round','line-join':'round'}}),
@@ -42,7 +43,7 @@ export function groundStyle(){
   };
 }
 
-export async function createGround({container,place,onChange=()=>{},onStatus=()=>{},onError=()=>{}}){
+export async function createGround({container,place,onChange=()=>{},onInteract=()=>{},onStatus=()=>{},onError=()=>{}}){
   const lib=await import('/vendor/maplibre/6.16.0/maplibre-gl.mjs');
   lib.setWorkerUrl('/vendor/maplibre/6.16.0/maplibre-gl-worker.mjs');
   lib.setWorkerCount(2);
@@ -61,6 +62,8 @@ export async function createGround({container,place,onChange=()=>{},onStatus=()=
     map.flyTo({center:[place.lon,place.lat],zoom:place.zoom,pitch:place.pitch,bearing:-24,duration:reduced?0:2500,essential:false});
     onStatus('Roads, terrain and buildings ready.');notify();
   });
+  map.on('movestart',e=>{if(e.originalEvent)onInteract();});
+  map.on('dragstart',onInteract);
   map.on('moveend',notify);map.on('terrain',notify);
   map.on('error',event=>{
     if(disposed)return;
