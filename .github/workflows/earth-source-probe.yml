@@ -1,0 +1,36 @@
+name: Earth source verification
+on:
+  pull_request:
+    paths: ['.github/workflows/earth-source-probe.yml']
+permissions:
+  contents: read
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify public weather and free map sources
+        run: |
+          python3 - <<'PY'
+          import urllib.request,re,json,concurrent.futures
+          def get(url):
+            try:
+              with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'SuperchargedDaily-Earth-research/1.0'}),timeout=22) as r:
+                b=r.read(2500000);ct=r.headers.get('Content-Type','');print('HTTP',url,r.status,ct,'CORS',r.headers.get('Access-Control-Allow-Origin'),'LAST',r.headers.get('Last-Modified'),'BYTES',len(b))
+                if 'json' in ct or url.endswith('styles/liberty'):
+                  d=json.loads(b)
+                  if 'sources' in d: print('MAP_STYLE',json.dumps({'glyphs':d.get('glyphs'),'sources':d['sources'],'fonts':list(set(str(l.get('layout',{}).get('text-font')) for l in d.get('layers',[]) if 'text-font' in l.get('layout',{})))}))
+                  elif 'tag_name' in d: print('MAPLIBRE_RELEASE',d.get('tag_name'))
+                  else: print('JSON',url,json.dumps(d)[:3000])
+                elif 'html' in ct or 'text' in ct:
+                  text=b.decode('utf-8','replace')
+                  links=sorted(set(re.findall(r'(?:href|src)=[\"\']([^\"\']+)',text)))
+                  print('LINKS',url,json.dumps(links)[:16000])
+                  for pattern in ['ftp','cloud','GLOBAL','netcdf']:
+                    if 'sos.noaa.gov/catalog' in url:
+                      print('CONTEXT',pattern,json.dumps([text[max(0,m.start()-80):m.end()+180] for m in list(re.finditer(pattern,text,re.I))[:8]]))
+                return
+            except Exception as e: print('SOURCE_ERROR',url,str(e))
+          urls=['https://sos.noaa.gov/catalog/datasets/clouds-real-time/','https://public.sos.noaa.gov/atmosphere/','https://public.sos.noaa.gov/realtime/','https://ftp.sos.noaa.gov/atmosphere/','https://sos.noaa.gov/ftp_mirror/atmosphere/','https://aviationweather.gov/data/products/satellite/','https://api.github.com/repos/maplibre/maplibre-gl-js/releases/latest','https://tiles.openfreemap.org/styles/liberty','https://tiles.openfreemap.org/planet','https://s3.amazonaws.com/elevation-tiles-prod/terrarium/0/0/0.png']
+          with concurrent.futures.ThreadPoolExecutor(max_workers=5) as p:list(p.map(get,urls))
+          PY
