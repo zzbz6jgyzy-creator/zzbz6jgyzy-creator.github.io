@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-the-plan-complete-story.html",
+      "image": "/assets/dispatch/tesla-the-plan-poster.jpg",
+      "title": "Tesla: The Plan. The complete story, 2003 to today",
+      "summary": "The whole Tesla story, from the 2006 'secret' master plan to robotaxis, Optimus and the new Roadster, with our 12-minute film.",
+      "tag": "Tesla",
+      "date": "2026-10-29T12:13:00Z",
+      "thumb": "/assets/dispatch/tesla-the-plan-poster-480w.webp"
+    },
+    {
       "url": "/dispatch/roadster-hawthorne-falcon-9.html",
       "image": "/assets/og-v2.jpg",
       "title": "Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster",
@@ -216,16 +225,7 @@
       "tag": "Tesla",
       "date": "2026-10-25T02:38:05Z",
       "thumb": "/assets/og-v2-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-10q-spacex-committee.html",
-      "image": "/assets/dispatch/giga-texas-hero.jpg",
-      "title": "Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million",
-      "summary": "Tesla’s Q3 10-Q makes the SpaceX special committee official. Tesla’s $2.0B SpaceX stake was worth $2.87B on 30 Sep, and SpaceX bought $626M of Megapacks this year.",
-      "tag": "Markets",
-      "date": "2026-10-22T19:40:00Z",
-      "thumb": "/assets/dispatch/giga-texas-hero-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-10-29T10:09:00Z"
+  "articlesUpdated": "2026-10-29T12:13:00Z"
 }
