@@ -1,0 +1,37 @@
+name: Starship replay source research
+on:
+  pull_request:
+    paths: ['.github/workflows/starship-replay-research.yml']
+permissions:
+  contents: read
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect public archive references without copying implementation
+        run: |
+          python3 - <<'PY'
+          import urllib.request,re,json
+          from urllib.parse import urljoin
+          origin='https://stardash.live/'
+          def get(url):
+            try:
+              with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'SuperchargedDaily-source-research/1.0'}),timeout=25) as r:
+                text=r.read().decode('utf-8')
+                return text
+            except Exception as e:
+              print('SOURCE_ERROR',url,str(e)); return ''
+          html=get(origin)
+          scripts=re.findall(r'<script[^>]+src=[\"\']([^\"\']+)',html)
+          print('PUBLIC_SCRIPT_URLS',json.dumps(scripts))
+          for path in scripts:
+            if not path.startswith(('https://stardash.live','/','./')): continue
+            if any(x in path for x in ['cesium','chart','analytics','gtag']): continue
+            src=get(urljoin(origin,path))
+            paths=sorted(set(re.findall(r'[\"\'`]([^\"\'`\n]{1,170}\.(?:csv|json|jsonl|ndjson)(?:\.gz)?)[\"\'`]',src)))
+            print('PUBLIC_DATA_REFERENCES',path,json.dumps(paths))
+          print('PUBLIC_LINKS',json.dumps(sorted(set(re.findall(r'href=[\"\']([^\"\']+)',html)))))
+          for url in ['https://sxcontent9668.azureedge.us/cms-assets/starship_tracker_public.json','https://stardash.live/archives']:
+            src=get(url)
+            print('SOURCE_SUMMARY',url,len(src),src[:350] if len(src)<2000 else '')
+          PY
