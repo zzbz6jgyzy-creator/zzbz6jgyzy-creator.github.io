@@ -15,7 +15,7 @@
     $('earth-pause-icon').toggleAttribute('hidden',!!state.paused);$('earth-play-icon').toggleAttribute('hidden',!state.paused);
     for(const b of root.querySelectorAll('[data-earth-view]'))b.setAttribute('aria-pressed',String(b.dataset.earthView===(state.view||'live')));
     $('earth-view-label').textContent=viewLabels[state.view]||viewLabels.live;
-    $('earth-clock-label').textContent=state.view==='live'?'CURRENT SUNLIGHT':'ARTISTIC LIGHT';
+    $('earth-clock-label').textContent=mode==='ground'?'WORLD CLOCK':state.view==='live'?'CURRENT SUNLIGHT':'ARTISTIC LIGHT';
     if(state.textureWidth)$('earth-resolution').textContent=Math.round(state.textureWidth/1024)+'K SURFACE DETAIL';
     if(state.quality)$('earth-quality').value=state.quality;
     if(state.detailMessage)message(state.detailMessage);
@@ -37,6 +37,7 @@
     $('earth-place-eyebrow').textContent=mode==='ground'?'YOUR GROUND VIEW':'A PLACE TO EXPLORE';
     const url=model.satelliteURL(place.lat,place.lon);$('earth-satellite').href=url;$('ground-fallback-link').href=url;
     $('earth-change-place').textContent=mode==='ground'?'Choose somewhere else →':'Explore this place ↗';
+    $('earth-clock-label').textContent=mode==='ground'?'WORLD CLOCK':viewer?.getState().view==='live'?'CURRENT SUNLIGHT':'ARTISTIC LIGHT';
     clocks();
   }
   function unavailable(){root.dataset.state='fallback';$('earth-fallback').hidden=false;managed.forEach(b=>b.disabled=true);}

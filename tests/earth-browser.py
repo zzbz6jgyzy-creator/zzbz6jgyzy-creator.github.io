@@ -98,7 +98,7 @@ async def main():
                             # Touch pinch on the unobstructed part of the globe.
                             client=await ctx.new_cdp_session(page)
                             old=(await page.evaluate(STATE))['zoom']
-                            points=lambda d:[{'x':195-d,'y':435,'id':1},{'x':195+d,'y':435,'id':2}]
+                            points=lambda d:[{'x':195-d,'y':480,'id':1},{'x':195+d,'y':480,'id':2}]
                             await client.send('Input.dispatchTouchEvent',{'type':'touchStart','touchPoints':points(30)})
                             await client.send('Input.dispatchTouchEvent',{'type':'touchMove','touchPoints':points(47)})
                             await client.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]})
@@ -143,7 +143,7 @@ async def main():
                 await snapshot(page,name+'-failed');raise
             finally:await ctx.close()
         group=os.environ.get('EARTH_TEST_GROUP','all')
-        cases={'desktop':[(1440,900),(1440,900,'normal','light'),(1440,900,'context-loss')],'touch':[(390,844),(768,1024),(390,844,'reduced','light')],'failures':[(390,844,'no-webgl'),(390,844,'module-fail'),(390,844,'texture-fail'),(390,844,'cloud-fail'),(390,844,'map-fail')]}
+        cases={'desktop':[(1440,900),(1440,900,'normal','light'),(1440,900,'context-loss')],'touch':[(390,844),(768,1024),(390,700,'short'),(844,390,'short'),(390,844,'reduced','light')],'failures':[(390,844,'no-webgl'),(390,844,'module-fail'),(390,844,'texture-fail'),(390,844,'cloud-fail'),(390,844,'map-fail')]}
         selected=cases.get(group,[item for case in cases.values() for item in case])
         for args in selected:
             await asyncio.wait_for(scenario(*args),timeout=230)

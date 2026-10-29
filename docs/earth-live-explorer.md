@@ -67,7 +67,7 @@ solar noon, antipodal darkness, coordinate round trips/dateline wrapping, invali
 external URL parameters and stale/future cloud dates.
 
 The Earth workflow runs actual Three.js and MapLibre in Chromium/SwiftShader at
-390, 768 and 1440 px, light/dark, touch/pinch and reduced motion. It checks lazy
+390, 768 and 1440 px, shorter phone screens and landscape, light/dark, touch/pinch and reduced motion. It checks lazy
 loading, 8K upload, pause, lighting modes, place search, actual rendered provider
 building features, map layers, coordinates, location permission, feed failures,
 WebGL failures/context loss and module failures. It records screenshots and a real
