@@ -64,7 +64,15 @@ export async function createGround({container,place,onChange=()=>{},onInteract=(
   });
   map.on('movestart',e=>{if(e.originalEvent)onInteract();});
   map.on('dragstart',onInteract);
-  map.on('moveend',notify);map.on('zoomend',()=>{if(ready&&map.getZoom()<3){const c=map.getCenter();onGlobe({lat:c.lat,lon:longitude(c.lng)});}});map.on('terrain',notify);
+  // Resizing or flying to a new destination can also emit zoom events. Only a
+  // visitor's zoom gesture should hand back to Earth, once per crossing.
+  let userZoom=false,returningToGlobe=false;
+  map.on('zoomstart',event=>{userZoom=!!event.originalEvent;});
+  map.on('moveend',notify);map.on('zoomend',event=>{
+    const userGesture=userZoom||!!event.originalEvent;userZoom=false;
+    if(map.getZoom()>=3){returningToGlobe=false;return;}
+    if(ready&&userGesture&&!returningToGlobe){returningToGlobe=true;const c=map.getCenter();onGlobe({lat:c.lat,lon:longitude(c.lng)});}
+  });map.on('terrain',notify);
   map.on('error',event=>{
     if(disposed)return;
     const e=String(event.error?.message||'');diagnostics.push({source:event.sourceId,message:e});if(diagnostics.length>12)diagnostics.shift();

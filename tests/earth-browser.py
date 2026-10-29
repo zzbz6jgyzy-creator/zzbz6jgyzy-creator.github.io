@@ -129,13 +129,16 @@ async def main():
                                 await page.wait_for_function('window.__earthGround.getState().lat>45&&window.__earthGround.getState().lat<46',timeout=20000)
                                 await page.wait_for_timeout(3500);await snapshot(page,'alpine-terrain')
                                 centre=await page.evaluate('window.__earthGround.getState()')
-                                await page.evaluate('window.__earthGround.map.jumpTo({zoom:2.8})')
+                                await page.evaluate('window.__earthGround.map.jumpTo({zoom:3.2,pitch:0})')
+                                assert await page.evaluate("document.querySelector('[data-earth-preview]').dataset.mode")=='ground','Programmatic map moves must keep the current view'
+                                await page.locator('#ground-map .maplibregl-canvas').focus();await page.keyboard.press('-')
                                 await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.mode==='earth'")
                                 selected=await page.evaluate(STATE+'.selectedPoint');assert selected and abs(selected['lat']-centre['lat'])<.01 and abs((selected['lon']-centre['lon']+180)%360-180)<.01,(centre,selected)
                             await page.locator('[data-earth-mode=earth]').click();await expect(page.locator('#earth-canvas')).to_be_visible()
                             await page.wait_for_function(STATE+'.view==="live"')
                             await page.locator('#earth-explore').click();await page.locator('#earth-locate').click()
-                            await page.wait_for_function('window.__earthGround.getState().lat>53&&window.__earthGround.getState().lat<54',timeout=30000)
+                            await page.wait_for_function('window.__earthGround.getState().lat>53&&window.__earthGround.getState().lat<54&&window.__earthGround.getState().zoom>14',timeout=40000)
+                            assert await page.evaluate("document.querySelector('[data-earth-preview]').dataset.mode")=='ground','Opening a new place after globe return must stay in the map'
                             if width==1440:
                                 await page.locator('[data-earth-mode=earth]').click()
                                 await page.mouse.move(940,450);await page.mouse.wheel(0,-1100)
