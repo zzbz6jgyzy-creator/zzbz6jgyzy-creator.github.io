@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "assets": [
+    {
+      "file": "earth-day-16k.jpg",
+      "bytes": 19657330,
+      "sha256": "2b41b6e1e38812ab3fffa0334297be19b0b3e4429d37372b10d9e63579ef8f47",
+      "width": 16384,
+      "height": 8192,
+      "source": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/july/world.200407.3x21600x10800.jpg",
+      "credit": "NASA Earth Observatory / Reto St\u00f6ckli, Blue Marble July 2004",
+      "processing": "Resized with Lanczos; JPEG conversion. No image generation."
+    },
+    {
+      "file": "earth-night-8k.webp",
+      "bytes": 1680026,
+      "sha256": "6db3ffb1fb210d7022b6e2d5504dd858bb2c8240abcd3894b40b67895b61cf08",
+      "width": 8192,
+      "height": 4096,
+      "source": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/144000/144898/BlackMarble_2016_3km.jpg",
+      "credit": "NASA Earth Observatory / Joshua Stevens; VIIRS / Miguel Rom\u00e1n; 2016",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "earth-normal-4k.webp",
+      "bytes": 273032,
+      "sha256": "a55df44dcf6686f4cecb4a874880affc821ab1b2e9e55ff1bbd06e8c402a5226",
+      "width": 4096,
+      "height": 2048,
+      "source": "https://www.solarsystemscope.com/textures/download/8k_earth_normal_map.tif",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "earth-specular-4k.webp",
+      "bytes": 306506,
+      "sha256": "b8e28c178fa680796e27f795dfd6b27b11e1a07971705703a163add81121bf9c",
+      "width": 4096,
+      "height": 2048,
+      "source": "https://www.solarsystemscope.com/textures/download/8k_earth_specular_map.tif",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "jupiter-2k.webp",
+      "bytes": 261684,
+      "sha256": "b706d23f2ace8fcfe1daa4ee27e08292be78938ed3c53abb708f93338b71c44e",
+      "width": 2048,
+      "height": 1024,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_jupiter.jpg",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived; enhanced/filled maps",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "mars-2k.webp",
+      "bytes": 416856,
+      "sha256": "48dff003c80837cbddf177c055d269e9a29247decb9978f6b00ae7451e26ec80",
+      "width": 2048,
+      "height": 1024,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_mars.jpg",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived; enhanced/filled maps",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "mercury-2k.webp",
+      "bytes": 707126,
+      "sha256": "f5218d7bd243c8cbd1e2fa380595360ae64b3cbbecfc01cff0af51c678ab8fc4",
+      "width": 2048,
+      "height": 1024,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_mercury.jpg",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived; enhanced/filled maps",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "milky-way-4k.webp",
+      "bytes": 2735198,
+      "sha256": "d13a80e11759d7d5102a365429cf81fb734fc805fc9aac5fe891a151ffa41249",
+      "width": 4096,
+      "height": 2048,
+      "source": "https://cdn.eso.org/images/large/eso0932a.jpg",
+      "credit": "ESO/S. Brunier, CC BY 4.0; 2009 photographic panorama",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "moon-4k.webp",
+      "bytes": 1957956,
+      "sha256": "4ea5905836687cc83abb09700b571736340e653c854b1f39de637812086b158d",
+      "width": 4096,
+      "height": 2048,
+      "source": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_16bit_srgb_4k.tif",
+      "credit": "NASA's Scientific Visualization Studio / LRO / LROC / ASU; 2025 map",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "neptune-2k.webp",
+      "bytes": 35420,
+      "sha256": "400121dd346cd7d523a369cb0e54bfd35cc768669fda16f41ecee0bd8718de6f",
+      "width": 2048,
+      "height": 1024,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_neptune.jpg",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived; enhanced/filled maps",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "saturn-2k.webp",
+      "bytes": 73286,
+      "sha256": "d53b733099820ffd54d8bbb65f48b26deee90fbe59602de3465d95af5c212084",
+      "width": 2048,
+      "height": 1024,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_saturn.jpg",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived; enhanced/filled maps",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "saturn-rings.webp",
+      "bytes": 6838,
+      "sha256": "8ba31aa96deaf7da38af0df480f23d183826caa9b1ed7bfed5419376f5a67a6f",
+      "width": 2048,
+      "height": 125,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_saturn_ring_alpha.png",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "stars.json",
+      "bytes": 1340356,
+      "sha256": "c3192b892559b891df9a91e51592b2caaa47caadcd33c8548d83732c24ade737"
+    },
+    {
+      "file": "sun-2k.webp",
+      "bytes": 415768,
+      "sha256": "2c293426ca80bf26a146ed4d084c64e44086e497bbd5f3adf579e312175b37da",
+      "width": 2048,
+      "height": 1024,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_sun.jpg",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived; enhanced/filled maps",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "uranus-2k.webp",
+      "bytes": 13292,
+      "sha256": "b4e279cd2a1445c2167bdd8d31523166ed434b6c2f6f10c8be5a553f3a8ffa35",
+      "width": 2048,
+      "height": 1024,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_uranus.jpg",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived; enhanced/filled maps",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    },
+    {
+      "file": "venus-2k.webp",
+      "bytes": 84734,
+      "sha256": "acc4c7559e71b8234f94192cee00f09203ef7b65f27b57e35f3ce14d5b123217",
+      "width": 2048,
+      "height": 1024,
+      "source": "https://www.solarsystemscope.com/textures/download/2k_venus_atmosphere.jpg",
+      "credit": "Solar System Scope / INOVE, CC BY 4.0; NASA-derived; enhanced/filled maps",
+      "processing": "Resized with Lanczos; WebP conversion. No image generation."
+    }
+  ]
+}

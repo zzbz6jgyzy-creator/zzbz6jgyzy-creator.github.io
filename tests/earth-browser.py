@@ -7,7 +7,7 @@ SITE='https://superchargeddaily.com'
 OUT=pathlib.Path('/tmp/earth-preview');OUT.mkdir(exist_ok=True)
 ARGS=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--enable-webgl']
 STATE='window.__earthPreview.getState()'
-ALLOWED={'tiles.openfreemap.org','s3.amazonaws.com','clouds.matteason.co.uk'}
+ALLOWED={'tiles.openfreemap.org','s3.amazonaws.com','view.eumetsat.int'}
 
 async def snapshot(page,name):
     data=await page.screenshot(type='jpeg',quality=73,animations='disabled',timeout=30000)
@@ -19,9 +19,11 @@ async def setup_route(ctx,mode='normal',cloud='fixture'):
     async def route(r):
         u=urlparse(r.request.url)
         if r.request.method!='GET':return await r.abort()
-        if u.hostname=='clouds.matteason.co.uk' and cloud=='fixture':
+        if u.hostname=='view.eumetsat.int' and cloud=='fixture':
             if mode=='cloud-fail':return await r.fulfill(status=503,body='Unavailable')
-            # Real NASA-independent cloud texture, with deliberately old, known publication date.
+            if 'GetCapabilities' in r.request.url:
+                return await r.fulfill(body='<WMS_Capabilities><Layer><Name>mumi:worldcloudmap_ir108</Name><Dimension name="time" default="2026-10-29T12:00:00Z">2026-10-29T12:00:00Z</Dimension></Layer></WMS_Capabilities>',content_type='text/xml')
+            # Deterministic image fixture; the final film uses real dated EUMETSAT data.
             return await r.fulfill(body=(ROOT/'assets/earth/earth-clouds-2k.webp').read_bytes(),content_type='image/webp',headers={'Last-Modified':'Wed, 28 Oct 2026 06:00:00 GMT','Access-Control-Allow-Origin':'*'})
         if u.hostname in ALLOWED:return await r.continue_()
         if u.hostname!='superchargeddaily.com':return await r.abort()
@@ -60,7 +62,7 @@ async def main():
                 assert await page.locator('#newsletter,.sd-band,.scroll-beam').count()==0
                 await page.locator('#earth-about').click();about=page.locator('#earth-about-dialog')
                 await expect(about).to_be_visible();text=(await about.inner_text()).lower()
-                for phrase in ['three hours','publication time','not photographic','modified eumetsat','historical']:assert phrase in text,phrase
+                for phrase in ['three-hour','frame time','not photographic','modified eumetsat','historical']:assert phrase in text,phrase
                 await page.keyboard.press('Escape');await expect(about).not_to_be_visible()
                 if mode in ['no-webgl','module-fail','texture-fail']:
                     await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.state==='fallback'",timeout=90000)
@@ -85,7 +87,9 @@ async def main():
                         await page.locator('#earth-motion').click();await page.wait_for_function(STATE+'.paused')
                         before=(await page.evaluate(STATE))['rotation'];await page.wait_for_timeout(200);assert (await page.evaluate(STATE))['rotation']==before
                         for view in ['daylight','night','live']:
-                            await page.locator('[data-earth-view='+view+']').click();await page.wait_for_function(STATE+'.view==='+json.dumps(view))
+                            await page.locator('#earth-about').click()
+                            await page.locator('.cosmos-light-studies').evaluate('e=>e.open=true')
+                            await page.locator('[data-earth-view='+view+']').click();await page.keyboard.press('Escape');await page.wait_for_function(STATE+'.view==='+json.dumps(view))
                         await page.locator('#earth-reset').click()
                         await page.locator('#earth-canvas').focus();before=(await page.evaluate(STATE))['cameraYaw'];await page.keyboard.press('ArrowRight');await page.wait_for_function(STATE+'.cameraYaw!=='+str(before))
                         await page.locator('#earth-reset').click()
@@ -124,10 +128,22 @@ async def main():
                                 await page.locator('#earth-change-place').click();await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='The Matterhorn')).click()
                                 await page.wait_for_function('window.__earthGround.getState().lat>45&&window.__earthGround.getState().lat<46',timeout=20000)
                                 await page.wait_for_timeout(3500);await snapshot(page,'alpine-terrain')
-                            await page.locator('[data-earth-mode=earth]').click();await expect(page.locator('#earth-canvas')).to_be_visible()
+                                print('EARTH_HANDOFF_START',flush=True)
+                                centre=await page.evaluate('window.__earthGround.getState()')
+                                await page.evaluate('window.__earthGround.map.jumpTo({zoom:3.2,pitch:0})')
+                                assert await page.evaluate("document.querySelector('[data-earth-preview]').dataset.mode")=='ground','Programmatic map moves must keep the current view'
+                                await page.locator('#ground-map .maplibregl-canvas').focus();await page.keyboard.press('-')
+                                await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.mode==='earth'")
+                                selected=await page.evaluate(STATE+'.selectedPoint');assert selected and abs(selected['lat']-centre['lat'])<.01 and abs((selected['lon']-centre['lon']+180)%360-180)<.01,(centre,selected)
+                                assert await page.evaluate('window.__earthGround===null'),'Wide map must release its resources after handoff'
+                                print('EARTH_HANDOFF_RETURNED',flush=True)
+                            if await page.evaluate("document.querySelector('[data-earth-preview]').dataset.mode")!='earth':await page.locator('[data-earth-mode=earth]').click()
+                            await expect(page.locator('#earth-canvas')).to_be_visible()
                             await page.wait_for_function(STATE+'.view==="live"')
                             await page.locator('#earth-explore').click();await page.locator('#earth-locate').click()
-                            await page.wait_for_function('window.__earthGround.getState().lat>53&&window.__earthGround.getState().lat<54',timeout=30000)
+                            await page.wait_for_function('window.__earthGround?.getState().ready&&window.__earthGround.getState().lat>53&&window.__earthGround.getState().lat<54&&window.__earthGround.getState().zoom>14',timeout=60000)
+                            assert await page.evaluate("document.querySelector('[data-earth-preview]').dataset.mode")=='ground','Opening a new place after globe return must stay in the map'
+                            print('EARTH_MAP_REOPENED',flush=True)
                             if width==1440:
                                 await page.locator('[data-earth-mode=earth]').click()
                                 await page.mouse.move(940,450);await page.mouse.wheel(0,-1100)
@@ -146,16 +162,35 @@ async def main():
         cases={'desktop':[(1440,900),(1440,900,'normal','light'),(1440,900,'context-loss')],'touch':[(390,844),(768,1024),(390,700,'short'),(844,390,'short'),(390,844,'reduced','light')],'failures':[(390,844,'no-webgl'),(390,844,'module-fail'),(390,844,'texture-fail'),(390,844,'cloud-fail'),(390,844,'map-fail')]}
         selected=cases.get(group,[item for case in cases.values() for item in case])
         for args in selected:
-            await asyncio.wait_for(scenario(*args),timeout=230)
+            await asyncio.wait_for(scenario(*args),timeout=300 if args[0]==1440 else 230)
         (OUT/'results.json').write_text(json.dumps(results,indent=2))
         if group not in ['all','desktop']:
             await browser.close();print('EARTH_COMPLETE '+str(len(results))+' journeys',flush=True);return
         # A real, unmocked cloud and map journey for the review film.
         ctx=await browser.new_context(viewport={'width':1440,'height':900},record_video_dir=str(OUT/'recording'),record_video_size={'width':1440,'height':900},service_workers='block')
-        await setup_route(ctx,cloud='real');page=await ctx.new_page()
+        await setup_route(ctx,cloud='real');page=await ctx.new_page();satellite_requests=[];satellite_responses=[]
+        page.on('requestfailed',lambda r:satellite_requests.append({'url':r.url,'error':r.failure}) if 'eumetsat' in r.url else None)
+        page.on('response',lambda r:satellite_responses.append({'url':r.url,'status':r.status}) if 'view.eumetsat.int/geoserver/ows' in r.url else None)
+        page.on('console',lambda m:print('SATELLITE_CONSOLE',m.text,flush=True) if m.type=='error' else None)
         await page.goto(SITE+'/mission-control.html');await page.wait_for_function('window.__earthPreview?.getState().ready',timeout=90000)
-        await page.wait_for_function('window.__earthWeather?.getState().available',timeout=40000)
-        await page.wait_for_timeout(700);await snapshot(page,'actual-latest-clouds')
+        try:await page.wait_for_function('()=>{const s=window.__earthWeather?.getState();return s&&!s.loading&&(s.available||s.reason)}',timeout=130000)
+        except Exception:
+            print('SATELLITE_FAILED',json.dumps({'state':await page.evaluate('window.__earthWeather?.getState()'),'requests':satellite_requests}),flush=True);raise
+        satellite=await page.evaluate('window.__earthWeather.getState()');render=await page.evaluate(STATE)
+        if satellite['available']:
+            assert render['cloudKind']=='infrared' and render['observedCloud'] and satellite['at']
+            print('SATELLITE_VERIFIED',json.dumps(satellite),flush=True);capture='actual-latest-clouds'
+        else:
+            # Public-service uptime is outside the product boundary. A confirmed
+            # transient HTTP failure must exercise the real, honest fallback.
+            # Missing/invalid timestamps, bad image data and unknown failures stay fatal.
+            status=satellite.get('providerStatus');assert status in [408,429,500,502,503,504],satellite
+            assert any(r['status']==status for r in satellite_responses),satellite_responses
+            assert satellite['stale'] and satellite['at'] is None and not render['observedCloud'] and render['cloudKind']=='illustrative',satellite
+            await expect(page.locator('#earth-weather-label')).to_contain_text('Illustrative')
+            print('SATELLITE_PROVIDER_UNAVAILABLE_FALLBACK_VERIFIED',json.dumps(satellite),flush=True);capture='satellite-unavailable-fallback'
+        (OUT/'satellite-results.json').write_text(json.dumps({'state':satellite,'responses':satellite_responses,'failed_requests':satellite_requests},indent=2))
+        await page.wait_for_timeout(700);await snapshot(page,capture)
         start=asyncio.get_running_loop().time();await page.wait_for_timeout(4000)
         await page.locator('#earth-explore').click();await page.wait_for_timeout(500)
         await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='Manhattan')).click()
