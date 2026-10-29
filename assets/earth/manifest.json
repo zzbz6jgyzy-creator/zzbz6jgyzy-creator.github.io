@@ -5,29 +5,50 @@
       "file": "/assets/earth/earth-clouds-2k.webp",
       "width": 2048,
       "height": 1024,
-      "bytes": 829668,
-      "sha256": "52a9ff54f8eb6f64e5af844f8c6b94b10121514da1392a63b21e765eeed7bd1b"
+      "bytes": 612194,
+      "sha256": "ca1c6188fb33e47f49d4f8664d2e770cc1aee039795a907afeafc7d1d6e3c56d"
+    },
+    {
+      "file": "/assets/earth/earth-clouds-4k.webp",
+      "width": 4096,
+      "height": 2048,
+      "bytes": 2465214,
+      "sha256": "7819c5e52359bee5b8606cfc082121d1272ca7cbe71edef641692db68a3ce305"
     },
     {
       "file": "/assets/earth/earth-day-2k.webp",
       "width": 2048,
       "height": 1024,
-      "bytes": 212430,
-      "sha256": "785505c6f070be02a76bc864fe77cc0af3a723c24026aa7d63b33d46f68f0c21"
+      "bytes": 213126,
+      "sha256": "96566a558e760b7af4e522109e7705d335ec9de00f6b828f9e1e90b20820325a"
     },
     {
       "file": "/assets/earth/earth-day-4k.webp",
       "width": 4096,
       "height": 2048,
-      "bytes": 673722,
-      "sha256": "9194fb32c855028ba0421e2c4c7c3465d0a1d293fbf27ba9d51fbf8b8e6bde10"
+      "bytes": 761788,
+      "sha256": "42e21ac9302ef389031c4f79b8e77e0b3e0179a6442910e2e7fb4de866cbc72c"
+    },
+    {
+      "file": "/assets/earth/earth-day-8k.webp",
+      "width": 8192,
+      "height": 4096,
+      "bytes": 2650784,
+      "sha256": "93af51e874e82ccd25af3ff1c1b52e829c304e07485e4b037a1289f1020b3834"
     },
     {
       "file": "/assets/earth/earth-night-2k.webp",
       "width": 2048,
       "height": 1024,
-      "bytes": 197168,
-      "sha256": "f9ab74d3d9b5b06526e5d438ac8a505a0069f8e5a6ba5a9811054e5d2deaef5e"
+      "bytes": 124242,
+      "sha256": "fbff7093d73098e142700d1b3734e0399bf87b1b3d34dcf10c01c0a2414a1e24"
+    },
+    {
+      "file": "/assets/earth/earth-night-4k.webp",
+      "width": 4096,
+      "height": 2048,
+      "bytes": 430188,
+      "sha256": "598124c4a15b37f165c058624a45298481849b7beaadcd714331bd3ba903aa6c"
     },
     {
       "file": "/assets/earth/earth-poster.webp",
