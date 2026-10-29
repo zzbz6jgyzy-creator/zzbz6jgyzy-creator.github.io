@@ -34,7 +34,6 @@ jobs:
             except Exception as e: print('SOURCE_ERROR',url,str(e))
           urls=['https://sos.noaa.gov/ftp_mirror/rt/sat/linear/','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist/','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist.sos','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist/playlist.sos','https://sos.noaa.gov/ftp_mirror/rt/sat/','https://tiles.openfreemap.org/styles/liberty','https://s3.amazonaws.com/elevation-tiles-prod/terrarium/0/0/0.png']
           with concurrent.futures.ThreadPoolExecutor(max_workers=5) as p:list(p.map(get,urls))
-          PY
           import base64,hashlib
           for name,url in [('maplibre-gl.js','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.js'),('maplibre-gl.css','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.css'),('LICENSE','https://unpkg.com/maplibre-gl@6.16.0/LICENSE.txt')]:
             try:
@@ -42,3 +41,4 @@ jobs:
               print('VENDOR_META',name,len(data),hashlib.sha256(data).hexdigest())
               print('VENDOR_BASE64',name,base64.b64encode(data).decode())
             except Exception as e:print('VENDOR_ERROR',name,str(e))
+          PY
