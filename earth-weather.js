@@ -32,11 +32,11 @@ export function createWeather({viewer,onChange=()=>{}}){
       state={available:true,at:previous,width,label:previous?weatherAge(previous).label:'Latest clouds · update time unavailable',stale:previous?weatherAge(previous).stale:true};
     }catch(error){
       if(disposed||own!==controller)return;
-      if(state.available){state={...state,stale:true,label:'Cloud refresh unavailable · showing previous image'};}
+      if(state.available){state={...state,stale:true,refreshFailed:true,label:'Cloud refresh unavailable · showing previous image'};}
       else state={available:false,at:null,width:0,stale:true,label:'Illustrative clouds · latest feed unavailable'};
     }finally{clearTimeout(timeout);if(own===controller){busy=false;notify();}}
   }
-  function tick(){if(disposed||document.hidden)return;if(state.available&&previous){const age=weatherAge(previous);state={...state,label:age.label,stale:age.stale};notify();}}
+  function tick(){if(disposed||document.hidden)return;if(state.available&&previous){const age=weatherAge(previous);state={...state,label:age.label,stale:age.stale||state.refreshFailed};notify();}}
   const visibility=()=>{if(!document.hidden){tick();if(!busy)refresh(viewer.getState().quality);}};
   document.addEventListener('visibilitychange',visibility);
   timer=setInterval(()=>{tick();if(!document.hidden)refresh(viewer.getState().quality);},1800000);

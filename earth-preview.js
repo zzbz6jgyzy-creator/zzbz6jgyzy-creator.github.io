@@ -4,7 +4,7 @@
   const $=id=>document.getElementById(id), canvas=$('earth-canvas');
   const managed=[...root.querySelectorAll('[data-earth-view],[data-earth-zoom],#earth-motion,#earth-reset,#earth-quality')];
   const dialogs=[$('earth-about-dialog'),$('earth-search-dialog')];
-  let viewer,weather,ground,model,place,mode='earth',attempt=0,groundAttempt=0,wasPaused=false,clockTimer,dead=false;
+  let viewer,weather,ground,model,place,zoneAnchor,mode='earth',attempt=0,groundAttempt=0,wasPaused=false,clockTimer,dead=false;
   const viewLabels={live:'ILLUMINATION / RIGHT NOW',daylight:'DAY STUDY / ARTISTIC LIGHT',night:'NIGHT STUDY / ARTISTIC LIGHT'};
   const message=text=>{const n=$('earth-note');n.textContent=text;n.hidden=!text;};
   function paint(state={}){
@@ -27,7 +27,7 @@
     if(!place||!model)return;
     const zone=place.timeZone||'UTC';
     $('earth-local').dateTime=now.toISOString();$('earth-local').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:zone,hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
-    $('earth-local-label').textContent=place.timeZone?'LOCAL TIME':'UTC TIME';
+    $('earth-local-label').textContent=place.timeZone?(place.deviceTime?'DEVICE TIME':'LOCAL TIME'):'UTC TIME';
     $('earth-place-sun').textContent=model.sunAt(place.lat,place.lon,now.getTime()).phase;
   }
   function renderPlace(){
@@ -42,7 +42,7 @@
   function unavailable(){root.dataset.state='fallback';$('earth-fallback').hidden=false;managed.forEach(b=>b.disabled=true);}
   function weatherPaint(state){
     $('earth-weather').dataset.state=!state.available?'fallback':state.stale?'older':'available';
-    $('earth-weather-label').textContent=state.available?(state.stale?'Latest clouds · age not confirmed':'Latest satellite clouds'):'Illustrative clouds · latest feed unavailable';
+    $('earth-weather-label').textContent=state.available?(state.refreshFailed?'Cloud refresh unavailable · previous image':state.stale?(state.at?'Older satellite cloud image':'Latest clouds · age not confirmed'):'Latest satellite clouds'):'Illustrative clouds · latest feed unavailable';
     if(state.at){const date=new Intl.DateTimeFormat('en-GB',{timeZone:'UTC',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(state.at));$('earth-weather-date').textContent=(state.stale?'Older image · ':'')+date+' UTC · '+state.label.toLowerCase();}
     else $('earth-weather-date').textContent=state.available?'Update time not supplied · source refreshes about every 3h':'Source refreshes about every 3h · tap ↻ to retry';
   }
@@ -73,7 +73,7 @@
     if(!place||!model)return;
     const delta=Math.hypot(state.lat-place.lat,model.longitude(state.lon-place.lon)*Math.cos(state.lat*Math.PI/180));
     const moving=delta>.0001;
-    if(moving){place={...place,lat:state.lat,lon:state.lon};if(delta>.2){place.name='Your map view';place.country='Follow your curiosity';place.timeZone=null;}renderPlace();}
+    if(moving){place={...place,lat:state.lat,lon:state.lon};const distanceFromZone=zoneAnchor?Math.hypot(state.lat-zoneAnchor.lat,model.longitude(state.lon-zoneAnchor.lon)*Math.cos(state.lat*Math.PI/180)):Infinity;if(distanceFromZone>.5){place.name='Your map view';place.country='Follow your curiosity';place.timeZone=null;}renderPlace();}
     $('ground-detail').textContent='ZOOM '+state.zoom.toFixed(1)+' / '+(Number.isFinite(state.elevation)?Math.round(state.elevation)+' M TERRAIN':'OPEN MAP');
   }
   async function openGround(){
@@ -85,7 +85,7 @@
     $('earth-loading').hidden=true;$('earth-fallback').hidden=true;
     if(viewer){wasPaused=viewer.getState().paused;viewer.setActive(false);}
     renderPlace();
-    if(ground){ground.resize();ground.flyTo(place);return;}
+    if(ground){ground.resize();ground.flyTo(place);if(ground.getState().ready)root.dataset.groundState='ready';return;}
     const token=++groundAttempt;$('ground-fallback').hidden=true;$('ground-status').textContent='Preparing the streets below…';
     try{
       if(!document.querySelector('[data-map-css]')){const css=document.createElement('link');css.rel='stylesheet';css.href='/vendor/maplibre/6.16.0/maplibre-gl.css';css.dataset.mapCss='true';document.head.append(css);}
@@ -105,7 +105,7 @@
     renderPlace();
   }
   function finder(){if(!model)return;$('earth-search-error').hidden=true;$('earth-search-dialog').showModal();}
-  async function choose(next){place={...next};for(const dialog of dialogs)dialog.close();renderPlace();viewer?.focusLocation(place.lat,place.lon);root.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});await openGround();}
+  async function choose(next){place={...next};zoneAnchor=next.timeZone?{lat:next.lat,lon:next.lon}:null;for(const dialog of dialogs)dialog.close();renderPlace();viewer?.focusLocation(place.lat,place.lon);root.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});await openGround();}
   for(const b of root.querySelectorAll('[data-earth-mode]'))b.addEventListener('click',()=>{if(b.dataset.earthMode===mode)return;b.dataset.earthMode==='ground'?openGround():openEarth();});
   $('earth-explore').addEventListener('click',finder);$('earth-change-place').addEventListener('click',()=>mode==='ground'?finder():openGround());$('earth-ground-open').addEventListener('click',openGround);
   $('ground-retry').addEventListener('click',()=>{groundAttempt++;ground?.dispose();ground=null;window.__earthGround=null;openGround();});
@@ -118,7 +118,7 @@
     const button=$('earth-locate'),error=$('earth-search-error');
     if(!navigator.geolocation){error.textContent='Location is unavailable in this browser. Choose a place or enter coordinates.';error.hidden=false;return;}
     button.disabled=true;error.textContent='Waiting for your location permission…';error.hidden=false;
-    navigator.geolocation.getCurrentPosition(p=>{button.disabled=false;if(dead)return;error.hidden=true;choose({id:'location',name:'Your location',country:'Your device location · approximate',lat:model.clamp(p.coords.latitude,-85,85),lon:p.coords.longitude,zoom:16,pitch:55,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone});},e=>{button.disabled=false;error.textContent=e.code===1?'Location permission was declined. You can still choose a place or enter coordinates.':'Your location could not be found. Choose a place or enter coordinates instead.';error.hidden=false;},{enableHighAccuracy:false,timeout:12000,maximumAge:300000});
+    navigator.geolocation.getCurrentPosition(p=>{button.disabled=false;if(dead)return;error.hidden=true;choose({id:'location',name:'Your location',country:'Your device location · approximate',lat:model.clamp(p.coords.latitude,-85,85),lon:p.coords.longitude,zoom:16,pitch:55,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,deviceTime:true});},e=>{button.disabled=false;error.textContent=e.code===1?'Location permission was declined. You can still choose a place or enter coordinates.':'Your location could not be found. Choose a place or enter coordinates instead.';error.hidden=false;},{enableHighAccuracy:false,timeout:12000,maximumAge:300000});
   });
   $('earth-motion').addEventListener('click',()=>viewer?.togglePause());$('earth-reset').addEventListener('click',()=>viewer?.reset());
   for(const b of root.querySelectorAll('[data-earth-view]'))b.addEventListener('click',()=>viewer?.setView(b.dataset.earthView));
@@ -133,7 +133,7 @@
   window.addEventListener('pagehide',()=>{dead=true;attempt++;groundAttempt++;clearInterval(clockTimer);weather?.dispose();viewer?.dispose();ground?.dispose();ground=null;});
   window.addEventListener('pageshow',event=>{if(event.persisted){dead=false;clockTimer=setInterval(clocks,1000);boot();if(mode==='ground')openGround();}});
   async function start(){
-    try{model=await import('/earth-live-model.js?v=20261029-live1');place={...model.PLACES[1]};
+    try{model=await import('/earth-live-model.js?v=20261029-live1');place={...model.PLACES[1]};zoneAnchor={lat:place.lat,lon:place.lon};
       for(const p of model.PLACES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),country=document.createElement('small');name.textContent=p.name;country.textContent=p.country;b.append(name,country);b.addEventListener('click',()=>choose(p));$('earth-place-list').append(b);}
       renderPlace();clocks();clockTimer=setInterval(clocks,1000);
       await boot();

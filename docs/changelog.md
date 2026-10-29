@@ -2,6 +2,13 @@
 
 Added an isolated replay study with detailed procedural stages, shared NASA Earth shading, chapter cameras, scrubbing, adaptive imagery and rendering fallbacks. The Ship follows attributed archived SpaceX position samples; the reconstructed booster, attitudes and effects are clearly distinguished from recorded position data; the early North Pacific return replaces the abandoned ten-hour plan in this study. The existing Earth preview links to it. No live tracking is added. The full regression run also exposed two existing test assumptions: news sorting now tests equal timestamps correctly, and Markets reset checks wait for the rendered state. See `docs/starship-flight-14-replay.md` for provenance, architecture and validation.
 
+## 2026-10-29 — Earth: current light and free ground explorer
+
+- Elevated the cinematic Earth preview with current UTC sunlight, destination clocks, honest latest-cloud status and a designed globe-to-ground journey.
+- Added a free, lazy-loaded terrain/street map with buildings, labels, map controls, coordinate/place finder, optional device location and an external satellite-imagery link. No paid map tiles, API keys, billing setup or weather-image commits.
+- Kept historical NASA surface/night imagery, GPU-adaptive 8K detail and the shared Starship replay shaders. Added astronomy/geography checks and actual Chromium cloud/city/terrain journeys.
+- Documented source credits, three-hour cloud cadence, missing provider publication timestamps, terrain/building limits and failure states in `docs/earth-live-explorer.md`.
+
 ## 2026-10-29 — Cinematic Earth preview
 
 - Added a standalone full-screen Earth study with genuine 8K NASA surface imagery, separate clouds, city lights, ocean reflections and atmospheric lighting.
@@ -364,4 +371,5 @@ Known leftovers:
 - **Roadster / Optimus:** label mismatches on the hotspot and film buttons (2.5.3).
 - **Decorative `aria-hidden` text** (FSD country codes, Optimus hero type). axe flags it; WCAG exempts it.
 - **Pre-existing failure:** `tests/fsd-global.test.mjs` fails the same way on `main` before these changes.
+
 
