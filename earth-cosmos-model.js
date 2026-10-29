@@ -3,7 +3,7 @@
 import * as A from './vendor/astronomy/astronomy.js';
 export const AU=149597870.7,EARTH_RADIUS=6371,LY=9460730472580.8,PC=AU*206264.80624709636,KPC=1000*PC;
 export const SUN_GALACTIC=[-8.2,0,.0208];
-export const MAX_RANGE=240000*LY;
+export const MAX_RANGE=600000*LY;
 export const BODIES=Object.freeze([
  {id:'Sun',radius:695700,texture:'sun-2k.webp',color:'#fff0ca',description:'The star at the centre of our Solar System.'},
  {id:'Mercury',radius:2439.7,period:87.969,texture:'mercury-2k.webp',color:'#bdb5aa',description:'The smallest planet, closest to the Sun.'},
@@ -51,9 +51,9 @@ export function formatDistance(km){if(km<1e6)return new Intl.NumberFormat('en-GB
 export function scalePreset(id,fit=3.4){
  if(id==='earth')return{focus:'Earth',distance:fit*EARTH_RADIUS,level:'earth'};
  if(id==='moon')return{focus:'Moon',distance:6.5*1737.4,level:'moon'};
- if(id==='solar')return{focus:'Sun',distance:AU*95,level:'solar'};
- if(id==='galaxy')return{focus:'Galaxy',distance:KPC*60,level:'galaxy'};
- const b=BODIES.find(b=>b.id===id);if(b)return{focus:id,distance:b.radius*6.5,level:id==='Earth'?'earth':id==='Moon'?'moon':'planet'};
+ if(id==='solar')return{focus:'Sun',distance:AU*95*Math.max(1,fit/3.4),level:'solar'};
+ if(id==='galaxy')return{focus:'Galaxy',distance:KPC*60*Math.max(1,fit/3.4),level:'galaxy'};
+ const b=BODIES.find(b=>b.id===id);if(b)return{focus:id,distance:b.radius*(id==='Saturn'?12:6.5),level:id==='Earth'?'earth':id==='Moon'?'moon':'planet'};
  throw new TypeError('Unknown cosmic destination');
 }
 export function galaxyPopulation(count=120000){

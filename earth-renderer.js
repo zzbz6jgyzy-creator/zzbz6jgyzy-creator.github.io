@@ -4,7 +4,7 @@ import {solarPosition, geoVector, vectorGeo} from '/earth-live-model.js?v=202610
 
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;
-const MAX_RANGE_KM=240000*LY_KM;
+const MAX_RANGE_KM=600000*LY_KM;
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const VERTEX = `
   varying vec2 vUv;

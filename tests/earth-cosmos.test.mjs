@@ -17,4 +17,11 @@ assert.equal(M.levelFor(24000),'earth');assert.equal(M.levelFor(1e6,'Moon'),'lun
 const pop=M.galaxyPopulation(4000);assert.equal(pop.positions.length,12000);assert.equal(pop.model,true);assert.equal(pop.diameterLy,100000);assert.ok(M.length(M.SUN_GALACTIC)>8&&M.length(M.SUN_GALACTIC)<8.4);
 for(const v of pop.positions)assert.ok(Number.isFinite(v));
 assert.equal(M.unitFor(24000),M.EARTH_RADIUS);assert.equal(M.scalePreset('solar').focus,'Sun');assert.throws(()=>M.scalePreset('garbage'));
+// The full galactic disk must fit the narrower field of view of a portrait phone.
+for(const [w,h] of [[1440,900],[390,844],[280,1000]]){
+ const vertical=42*Math.PI/180,horizontal=2*Math.atan(Math.tan(vertical/2)*w/h),fit=1/Math.sin(Math.min(vertical,horizontal)*(w/h<1.1?.98:.8)/2);
+ const distance=M.scalePreset('galaxy',fit).distance;
+ const projectedRadius=15.5*M.KPC/distance*h/(2*Math.tan(vertical/2));
+ assert.ok(projectedRadius<w*.47&&distance<M.MAX_RANGE,[w,h,projectedRadius,distance]);
+}
 console.log('Current ephemerides, lunar orientation, IAU galactic axes, physical scales and bounded galaxy model verified.');
