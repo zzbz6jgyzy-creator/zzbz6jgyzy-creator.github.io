@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 29 Oct 2026 02:46:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 08:41:00 +0000</lastBuildDate>
+    <item>
+      <title>Amazon locked Grok Bot out. Shopify just made it one of three AI agents that can pay almost anywhere with Shop Pay</title>
+      <link>https://superchargeddaily.com/dispatch/grok-bot-shop-pay-vs-amazon.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-bot-shop-pay-vs-amazon.html</guid>
+      <pubDate>Thu, 29 Oct 2026 08:41:00 +0000</pubDate>
+      <category>Grok</category>
+      <description>Grok Bot 0.78.1 adds product cards and Shop Pay in the Vault. Shopify now names it one of three AI agents with Shop Pay for brands off Shopify, two weeks after Amazon users saw a block notice.</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Anthropic’s IPO filing puts its SpaceX compute bill at $3.1 billion a month, 2.5 times what SpaceX disclosed in June</title>
       <link>https://superchargeddaily.com/dispatch/anthropic-spacex-compute-3-1b.html</link>
@@ -717,15 +726,6 @@
       <category>Starship</category>
       <description>Super Heavy out-pushes the Saturn V more than twice over.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/super-heavy-thrust-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Ship catch in 4–6 weeks</title>
-      <link>https://superchargeddaily.com/dispatch/starship-f15-ship-catch.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starship-f15-ship-catch.html</guid>
-      <pubDate>Sun, 11 Oct 2026 12:14:16 +0000</pubDate>
-      <category>Starship</category>
-      <description>Elon says Flight 15 will try to catch the ship itself for the first time.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starship-f15-ship-catch-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>

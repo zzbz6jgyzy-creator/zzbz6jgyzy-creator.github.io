@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-29T02:46:58.351Z",
+  "updated": "2026-10-29T08:42:26.506Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-shop-pay-vs-amazon.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Amazon locked Grok Bot out. Shopify just made it one of three AI agents that can pay almost anywhere with Shop Pay",
+      "at": "2026-10-29T08:41:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-shop-pay-vs-amazon.html",
+      "href": "/dispatch/grok-bot-shop-pay-vs-amazon.html",
+      "summary": "Grok Bot 0.78.1 adds product cards and Shop Pay in the Vault. Shopify now names it one of three AI agents with Shop Pay for brands off Shopify, two weeks after Amazon users saw a block notice.",
+      "title": "Amazon locked Grok Bot out. Shopify just made it one of three AI agents that can pay almost anywhere with Shop Pay",
+      "id": "logged|dispatch:/dispatch/grok-bot-shop-pay-vs-amazon.html|2026-10-29T08:41:00.000Z|Amazon locked Grok Bot out. Shopify just made it one of three AI agents that can pay almost anywhere with Shop Pay"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/anthropic-spacex-compute-3-1b.html",
@@ -442,23 +459,6 @@
       "summary": "SpaceX confirmed on 28 Oct 2026 that Ship 42 fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight’s live coverage and Next Spaceflight’s test log put that single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT). Still no SpaceX launch date or mission page.",
       "title": "Flight 15 change",
       "id": "logged|starship:schedule|2026-10-26T00:00:00.000Z|SpaceX confirmed on 28 Oct 2026 that Ship 42 fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight’s live coverage and Next Spaceflight’s test log put that single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT). Still no SpaceX launch date or mission page."
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/booster-22-static-fire.html",
-      "topic": "starship",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first double catch",
-      "at": "2026-10-25T20:50:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/booster-22-static-fire.html",
-      "href": "/dispatch/booster-22-static-fire.html",
-      "summary": "SpaceX confirmed a full-duration 33-engine static fire for Flight 15’s booster on 25 Oct. Ship 42, the FAA licence and a launch date are still open.",
-      "title": "Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first double catch",
-      "id": "logged|dispatch:/dispatch/booster-22-static-fire.html|2026-10-25T20:50:00.000Z|Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first double catch"
     },
     {
       "type": "logged",
