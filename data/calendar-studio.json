@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-10-28T09:15:00+00:00",
- "launchChecked": "2026-10-29T16:54:10Z",
+ "launchChecked": "2026-10-29T21:47:32Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -662,21 +662,21 @@
    "title": "Falcon 9 Block 5 | Cygnus CRS-2 NG-25",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-30T00:00:00Z",
+   "start": "2026-11-29T16:00:00Z",
    "end": "",
-   "date": "2026-11-30",
-   "precision": "month",
-   "status": "TBD",
+   "date": "2026-11-29",
+   "precision": "hour",
+   "status": "TBC",
    "note": "Resupply · Low Earth Orbit",
    "where": "Space Launch Complex 40 · Cape Canaveral SFS, FL, USA",
    "href": "",
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
-   "windowStart": "2026-11-30T00:00:00Z",
-   "windowEnd": "2026-11-30T00:00:00Z",
+   "windowStart": "2026-11-29T16:00:00Z",
+   "windowEnd": "2026-11-29T16:00:00Z",
    "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "To Be Determined"
+   "providerStatus": "To Be Confirmed"
   },
   {
    "id": "ll2-56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",

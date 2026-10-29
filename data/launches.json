@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-10-29T16:54:10Z",
- "checked": "2026-10-29T16:54:10Z",
+ "updated": "2026-10-29T21:47:32Z",
+ "checked": "2026-10-29T21:47:32Z",
  "results": [
   {
    "id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
@@ -118,7 +118,7 @@
      "name": null
     }
    },
-   "last_updated": "2026-10-28T01:29:01Z"
+   "last_updated": "2026-10-29T17:52:43Z"
   },
   {
    "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
@@ -233,7 +233,7 @@
      "name": null
     }
    },
-   "last_updated": "2026-10-28T01:28:55Z"
+   "last_updated": "2026-10-29T17:52:33Z"
   },
   {
    "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
@@ -348,7 +348,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-29T06:12:36Z",
+   "last_updated": "2026-10-29T18:34:20Z",
    "mission": {
     "name": "Starlink Group 15-18",
     "type": "Communications",
@@ -380,7 +380,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-28T19:26:10Z",
+   "last_updated": "2026-10-29T17:31:04Z",
    "mission": {
     "name": "USSF-432",
     "type": "Government/Top Secret",
@@ -412,7 +412,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-28T19:26:40Z",
+   "last_updated": "2026-10-29T17:31:03Z",
    "mission": {
     "name": "Starlink Group 15-21",
     "type": "Communications",
@@ -458,17 +458,17 @@
   {
    "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
    "name": "Falcon 9 Block 5 | Cygnus CRS-2 NG-25",
-   "net": "2026-11-30T00:00:00Z",
-   "window_start": "2026-11-30T00:00:00Z",
-   "window_end": "2026-11-30T00:00:00Z",
+   "net": "2026-11-29T16:00:00Z",
+   "window_start": "2026-11-29T16:00:00Z",
+   "window_end": "2026-11-29T16:00:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
    "status": {
-    "name": "To Be Determined",
-    "abbrev": "TBD"
+    "name": "To Be Confirmed",
+    "abbrev": "TBC"
    },
    "net_precision": {
-    "name": "Month",
-    "abbrev": "M"
+    "name": "Hour",
+    "abbrev": "HR"
    },
    "pad": {
     "name": "Space Launch Complex 40",
@@ -476,7 +476,7 @@
      "name": "Cape Canaveral SFS, FL, USA"
     }
    },
-   "last_updated": "2026-10-04T15:15:02Z",
+   "last_updated": "2026-10-29T17:44:30Z",
    "mission": {
     "name": "Cygnus CRS-2 NG-25",
     "type": "Resupply",
