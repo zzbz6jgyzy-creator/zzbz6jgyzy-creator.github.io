@@ -18,9 +18,14 @@ permissions:
 jobs:
   earth-preview:
     runs-on: ubuntu-latest
+    # Temporary derivative handoff on this review branch; removed once assets are vendored.
+    permissions:
+      contents: write
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -28,8 +33,20 @@ jobs:
         run: |
           python3 -m pip install playwright==1.62.0 Pillow==11.3.0
           python3 -m playwright install ffmpeg
-      - name: Prepare and export reproducible NASA texture derivatives
-        run: python3 scripts/build-earth-assets.py --export-generated
+      - name: Prepare reproducible NASA texture derivatives
+        run: python3 scripts/build-earth-assets.py
+      - name: Vendor prepared imagery on the review branch
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          EARTH_BRANCH: ${{ github.head_ref }}
+        run: |
+          git add assets/earth/*.webp assets/earth/manifest.json
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m "Vendor verified high-resolution Earth imagery"
+            git push origin "HEAD:$EARTH_BRANCH"
+          fi
       - name: Syntax and isolated viewer configuration
         run: |
           node --check earth-preview.js
