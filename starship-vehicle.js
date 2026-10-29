@@ -100,7 +100,7 @@ export function buildVehicles({mobile=false}={}) {
   mesh(new THREE.CylinderGeometry(4.512,4.512,36.2,segments/2,1,true,Math.PI,Math.PI),backing,ship,0,18.1,0);
   mesh(new THREE.LatheGeometry(profile.map(p=>new THREE.Vector2(p.x+.012,p.y)),segments/2,Math.PI,Math.PI),backing,ship);
   mesh(new THREE.CylinderGeometry(4.5,4.5,68.6,segments),steel,booster,0,34.3,0);
-  mesh(new THREE.CylinderGeometry(4.55,4.55,2.4,segments,1,true),materials.dark,booster,0,69.8,0);
+  mesh(new THREE.SphereGeometry(4.45,segments/2,16,0,TAU,0,Math.PI/2),steel,booster,0,66.3,0);
   // Weld bands are actual geometry: they catch close-up grazing light.
   for(let y=1.8;y<68.5;y+=1.8){const o=mesh(new THREE.TorusGeometry(4.505,.018,4,segments),materials.edge,booster,0,y,0);o.rotation.x=Math.PI/2;}
   for(let y=1.8;y<36;y+=1.8){const o=mesh(new THREE.TorusGeometry(4.505,.015,4,segments),materials.edge,ship,0,y,0);o.rotation.x=Math.PI/2;}
@@ -140,9 +140,9 @@ export function buildVehicles({mobile=false}={}) {
     flaps.push(pivot);return {o,back,hinge};
   }
   flap(-4.1,37,0,true);flap(4.1,37,0,true);flap(-4.2,4,0,false);flap(4.2,4,0,false);
-  // Grid fins: open titanium lattice, rather than a solid rectangle.
-  for(let i=0;i<4;i++){
-    const theta=Math.PI/4+i*Math.PI/2,g=new THREE.Group();g.position.set(Math.sin(theta)*4.3,62.4,Math.cos(theta)*4.3);g.rotation.y=theta;booster.add(g);
+  // V3 uses three lowered, enlarged grid fins (90° / 90° / 180°), not the V2 four-fin layout.
+  for(const angle of [0,Math.PI/2,Math.PI]){
+    const theta=Math.PI/4+angle,g=new THREE.Group();g.position.set(Math.sin(theta)*4.3,62.4,Math.cos(theta)*4.3);g.rotation.y=theta;g.scale.set(1.22,1,1.22);booster.add(g);
     mesh(new THREE.BoxGeometry(3.6,.24,2.6),materials.dark,g,0,0,1.35);
     for(let j=0;j<9;j++)mesh(new THREE.BoxGeometry(.065,.8,2.5),materials.edge,g,-1.7+j*.42,.5,1.35);
     for(let j=0;j<7;j++)mesh(new THREE.BoxGeometry(3.6,.8,.065),materials.edge,g,0,.5,.1+j*.42);
