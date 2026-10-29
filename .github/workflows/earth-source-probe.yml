@@ -32,10 +32,10 @@ jobs:
                       print('CONTEXT',pattern,json.dumps([text[max(0,m.start()-80):m.end()+180] for m in list(re.finditer(pattern,text,re.I))[:8]]))
                 return
             except Exception as e: print('SOURCE_ERROR',url,str(e))
-          urls=['https://sos.noaa.gov/ftp_mirror/rt/sat/linear/','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist/','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist.sos','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist/playlist.sos','https://sos.noaa.gov/ftp_mirror/rt/sat/','https://tiles.openfreemap.org/styles/liberty','https://s3.amazonaws.com/elevation-tiles-prod/terrarium/0/0/0.png']
+          urls=['https://clouds.matteason.co.uk/images/4096x2048/clouds.jpg','https://clouds.matteason.co.uk/images/2048x1024/clouds.jpg','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist/','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist.sos','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist/playlist.sos','https://sos.noaa.gov/ftp_mirror/rt/sat/','https://tiles.openfreemap.org/styles/liberty','https://s3.amazonaws.com/elevation-tiles-prod/terrarium/0/0/0.png']
           with concurrent.futures.ThreadPoolExecutor(max_workers=5) as p:list(p.map(get,urls))
           import base64,hashlib
-          for name,url in [('maplibre-gl.js','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.js'),('maplibre-gl.css','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.css'),('LICENSE','https://unpkg.com/maplibre-gl@6.16.0/LICENSE.txt')]:
+          for name,url in [('maplibre-gl.mjs','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.mjs'),('maplibre-gl-worker.mjs','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl-worker.mjs'),('maplibre-gl.css','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.css'),('LICENSE','https://unpkg.com/maplibre-gl@6.16.0/LICENSE.txt')]:
             try:
               with urllib.request.urlopen(url,timeout=30) as r: data=r.read()
               print('VENDOR_META',name,len(data),hashlib.sha256(data).hexdigest())
