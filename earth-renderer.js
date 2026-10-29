@@ -493,7 +493,7 @@ export async function initEarth(options = {}) {
     const actions = { ArrowLeft: () => stepOrbit(-0.14, 0), ArrowRight: () => stepOrbit(0.14, 0), ArrowUp: () => stepOrbit(0, 0.10), ArrowDown: () => stepOrbit(0, -0.10), '+': () => zoomBy(0.12), '=': () => zoomBy(0.12), '-': () => zoomBy(-0.12), '_': () => zoomBy(-0.12), Home: reset, ' ': togglePause };
     if (actions[event.key]) { event.preventDefault(); actions[event.key](); }
   });
-  bind(canvas, 'wheel', event => { if (!event.ctrlKey) { event.preventDefault(); setZoom(zoom*Math.exp(-event.deltaY*(zoom<.01?.006:zoom<.55?.003:.001))); } }, { passive: false });
+  bind(canvas, 'wheel', event => { event.preventDefault(); setZoom(zoom*Math.exp(-event.deltaY*(event.ctrlKey?.012:zoom<.01?.006:zoom<.55?.003:.001))); }, { passive: false });
   const sunTimer = setInterval(()=>{if(currentView==='live'&&!document.hidden&&visible){draw();notify();}},30000);
   cleanups.push(()=>clearInterval(sunTimer));
   bind(document, 'visibilitychange', () => { schedule(); if (!document.hidden) draw(); notify(); });

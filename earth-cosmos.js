@@ -13,6 +13,26 @@ const POINT_VERTEX=`attribute float aSize;varying vec3 vColor;uniform float uRat
 const POINT_FRAGMENT=`varying vec3 vColor;uniform float uOpacity;void main(){float d=length(gl_PointCoord-.5)*2.;if(d>1.)discard;float core=exp(-d*d*13.);float halo=exp(-d*d*3.)*.16;gl_FragColor=vec4(vColor*(core+halo),uOpacity*(core+halo));
 #include <colorspace_fragment>
 }`;
+// Schematic integrated starlight and dust, in kpc. The photograph is used only near the Sun.
+const GALAXY_DISK=`varying vec2 vUv;uniform float uOpacity;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+1.),f.x),f.y);}
+float fbm(vec2 p){float v=0.,w=.5;for(int i=0;i<4;i++){v+=noise(p)*w;p=mat2(.8,.6,-.6,.8)*p*2.07+13.2;w*=.5;}return v;}
+void main(){
+ vec2 p=(vUv-.5)*32.;float r=length(p),a=atan(p.y,p.x),barAngle=2.67;
+ vec2 q=mat2(cos(barAngle),sin(barAngle),-sin(barAngle),cos(barAngle))*p;
+ float bulge=exp(-r*1.25),bar=exp(-length(q*vec2(.42,1.7))*.85);
+ float wave=a-log(max(r,1.)/3.)/tan(.225)-barAngle;
+ float arms=(pow(.5+.5*cos(wave*2.),4.)*.7+pow(.5+.5*cos(wave*4.),5.)*.3)*smoothstep(2.,3.8,r);
+ float structure=fbm(p*1.9),dust=smoothstep(.35,.7,fbm(p*3.1+4.))*arms;
+ float disk=exp(-r*.19),fade=1.-smoothstep(13.,15.5,r);
+ vec3 c=vec3(.27,.42,.69)*disk*(.025+arms*(.3+structure*.55));
+ c+=vec3(1.,.7,.38)*(bulge*.85+bar*.13);c*=1.-dust*.72;
+ c+=vec3(.25,.44,.7)*pow(max(0.,structure-.42)*2.8,3.)*arms*disk*.24;
+ gl_FragColor=vec4(c*fade*uOpacity,fade*uOpacity);
+ #include <tonemapping_fragment>
+ #include <colorspace_fragment>
+}`;
 
 export async function installCosmos({scene,camera,globe,atmosphere,clouds,renderer,onLabels=()=>{},onStatus=()=>{}}){
  const root=new THREE.Group();scene.add(root);
@@ -41,7 +61,7 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  const galMaterial=new THREE.ShaderMaterial({uniforms:{uRatio:{value:1},uOpacity:{value:0}},vertexShader:POINT_VERTEX,fragmentShader:POINT_FRAGMENT,vertexColors:true,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
  galaxy=new THREE.Points(geometry,galMaterial);groupGalaxy.add(galaxy);
  // Continuous low-frequency light under the stellar population: bar, bulge, dust lanes.
- const disk=new THREE.Mesh(new THREE.PlaneGeometry(32,32),new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,uniforms:{uOpacity:{value:0}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:`varying vec2 vUv;uniform float uOpacity;void main(){vec2 p=(vUv-.5)*32.;float r=length(p),a=atan(p.y,p.x);float barAngle=2.67;vec2 q=mat2(cos(barAngle),sin(barAngle),-sin(barAngle),cos(barAngle))*p;float bulge=exp(-length(p*vec2(.8,1.2))*1.15);float bar=exp(-length(q*vec2(.45,1.7))*.9);float arms=.5+.5*cos(a*4.-log(max(r,1.)/3.)/tan(.225)*4.-barAngle*4.);arms=pow(arms,10.)*smoothstep(2.3,4.,r)*exp(-r*.19);float dust=.65+.35*sin(a*7.+r*.9);float fade=1.-smoothstep(13.,15.5,r);vec3 c=vec3(.45,.56,.72)*arms*.075*dust+vec3(.95,.67,.36)*(bulge*.55+bar*.18);gl_FragColor=vec4(c*fade*uOpacity,fade*uOpacity);}` }));groupGalaxy.add(disk);
+ const disk=new THREE.Mesh(new THREE.PlaneGeometry(32,32),new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,uniforms:{uOpacity:{value:0}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:GALAXY_DISK }));groupGalaxy.add(disk);
  const skyUniforms={uMap:{value:black},uHasMap:{value:0},uWorldToGal:{value:new THREE.Matrix3()},uExposure:{value:.035},uOpacity:{value:1}};
  const sky=new THREE.Mesh(new THREE.SphereGeometry(1,64,40),new THREE.ShaderMaterial({uniforms:skyUniforms,side:THREE.BackSide,depthWrite:false,vertexShader:'varying vec3 vDir;void main(){vDir=mat3(modelMatrix)*position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_Position.z=gl_Position.w*.99999;}',fragmentShader:`uniform sampler2D uMap;uniform mat3 uWorldToGal;uniform float uHasMap;uniform float uExposure;uniform float uOpacity;varying vec3 vDir;void main(){vec3 d=normalize(uWorldToGal*vDir);vec2 uv=vec2(.5-atan(d.y,d.x)/6.28318530718,.5+asin(clamp(d.z,-1.,1.))/3.14159265359);vec3 c=texture2D(uMap,uv).rgb*uExposure*uHasMap;gl_FragColor=vec4(c*uOpacity,1.);
 #include <tonemapping_fragment>
@@ -62,7 +82,7 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   if(disposed||!Array.isArray(data.stars))return;
   const years=(Date.now()-Date.UTC(2000,0,1,12))/31557600000,positions=[],colors=[],sizes=[];
   for(const s of data.stars){positions.push(s[1]+s[4]*years,s[2]+s[5]*years,s[3]+s[6]*years);const bv=s[9];const c=new THREE.Color(bv<.15?'#b3d0ff':bv<.65?'#edf2ff':bv<1.1?'#ffe5c4':'#ffbf8e');colors.push(c.r,c.g,c.b);sizes.push(1.1+Math.max(0,6.5-s[7])*.3);}
-  starsCount=sizes.length;onStatus(starsCount+' catalogue stars ready.');starGeo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));starGeo.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));starGeo.setAttribute('aSize',new THREE.Float32BufferAttribute(sizes,1));starGeo.computeBoundingSphere();
+  starGeo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));starGeo.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));starGeo.setAttribute('aSize',new THREE.Float32BufferAttribute(sizes,1));starGeo.computeBoundingSphere();starsCount=sizes.length;onStatus(starsCount+' catalogue stars ready.');
  }).catch(e=>{if(!disposed&&e.name!=='AbortError')failures.push('Star catalogue unavailable');});
  function frameMatrix(date){
   physical=M.ephemeris(date);const geo=matrixFromAxes(physical.axes),g=new THREE.Matrix4().makeRotationFromQuaternion(globe.quaternion);eqFrame.multiplyMatrices(g,geo);
@@ -94,8 +114,8 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   groupStars.visible=starsCount>0&&distanceKm>M.LY*.025&&distanceKm<M.LY*8000;
   starMaterial.uniforms.uRatio.value=ratio;starMaterial.uniforms.uOpacity.value=smooth(.025,.3,distanceKm/M.LY)*(1-smooth(1000,8000,distanceKm/M.LY));
   const centre=M.galToEq(M.SUN_GALACTIC.map(v=>-v*M.KPC));groupGalaxy.position.copy(world(M.sub(centre,f))).multiplyScalar(1/renderUnit);groupGalaxy.quaternion.setFromRotationMatrix(galFrame);groupGalaxy.scale.setScalar(M.KPC/renderUnit);
-  const galaxyFade=smooth(250,1800,distanceKm/M.LY);groupGalaxy.visible=galaxyFade>0;galMaterial.uniforms.uRatio.value=ratio;galMaterial.uniforms.uOpacity.value=galaxyFade*.75;disk.material.uniforms.uOpacity.value=galaxyFade;
-  sky.position.copy(camera.position);sky.scale.setScalar(Math.max(10,distanceKm/renderUnit*4));skyUniforms.uExposure.value=deepSky?.45:earthNear?.05:.28;skyUniforms.uOpacity.value=1-smooth(.05,.4,distanceKm/M.LY);
+  const galaxyFade=smooth(250,1800,distanceKm/M.LY);groupGalaxy.visible=galaxyFade>0;galMaterial.uniforms.uRatio.value=ratio;galMaterial.uniforms.uOpacity.value=galaxyFade*.28;disk.material.uniforms.uOpacity.value=galaxyFade;
+  sky.position.copy(camera.position);sky.scale.setScalar(Math.max(10,distanceKm/renderUnit*4));skyUniforms.uExposure.value=deepSky?.45:earthNear?.05:.07;skyUniforms.uOpacity.value=1-smooth(.05,.4,distanceKm/M.LY);
   camera.near=Math.max(.00001,distanceKm/renderUnit*.0001);camera.far=Math.max(200,distanceKm/renderUnit*100);camera.updateProjectionMatrix();
   return{distanceWorld:distanceKm/renderUnit,level,focus,unit:renderUnit,range:distanceKm,skyReady:!!skyMap,skyVisible:skyUniforms.uOpacity.value>0,starsCount,galaxyCount,model:level==='galaxy',at:physical.at,focusRadius:M.BODIES.find(b=>b.id===focus)?.radius||M.EARTH_RADIUS,failures:[...failures]};
  }
@@ -108,7 +128,7 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   for(const row of rows){if(level==='earth'&&row.id==='Earth'||level==='moon'&&row.id==='Moon'||level==='planet'&&row.id===focus)continue;const point=world(M.sub(row.p,f)).multiplyScalar(1/renderUnit);const fromCamera=point.clone().sub(camera.position);if(fromCamera.dot(camera.getWorldDirection(new THREE.Vector3()))<=0)continue;
    const p=point.project(camera);if(p.z< -1||p.z>1||Math.abs(p.x)>.96||Math.abs(p.y)>.86)continue;if(level==='earth'&&row.id==='Moon'){const target=world(M.sub(row.p,f)).multiplyScalar(1/renderUnit);const ray=new THREE.Ray(camera.position.clone(),target.clone().sub(camera.position).normalize());const hit=ray.intersectSphere(new THREE.Sphere(globe.position.clone(),globe.scale.x),new THREE.Vector3());if(hit&&hit.distanceTo(camera.position)<target.distanceTo(camera.position))continue;}let x=(p.x+1)*rect.width/2,y=(1-p.y)*rect.height/2;
    if(level==='earth'&&row.id!=='Moon')continue;
-   const width=Math.max(55,row.id.length*7+16);let shift=0;while(occupied.some(o=>Math.abs(x-o.x)<(width+o.w)/2&&Math.abs(y+shift-o.y)<34)&&shift<120)shift+=32;
+   const width=Math.max(55,row.id.length*7+16);x=THREE.MathUtils.clamp(x,12,Math.max(12,rect.width-width-12));let shift=0;while(occupied.some(o=>Math.abs(x-o.x)<(width+o.w)/2&&Math.abs(y+shift-o.y)<34)&&shift<120)shift+=32;
    if(shift>=120)continue;occupied.push({x,y:y+shift,w:width});out.push({id:row.id,x,y:y+shift,anchorY:y,color:row.color});
   }
   onLabels(out);

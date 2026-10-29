@@ -40,9 +40,10 @@ export function createWeather({viewer,onChange=()=>{}}){
    const url=URL.createObjectURL(blob);try{await viewer.setWeatherTexture(url,at,{kind:'infrared'});}finally{URL.revokeObjectURL(url);}
    if(disposed||own!==controller)return;
    state={available:true,at,width,kind:'infrared',checkedAt:new Date().toISOString(),ageKnown:true,label:weatherAge(at).label,stale:weatherAge(at).stale};
-  }catch{
+  }catch(error){
    if(disposed||own!==controller)return;
-   state=state.available?{...state,stale:true,refreshFailed:true,label:'Satellite refresh unavailable · previous dated frame'}:{available:false,at:null,width:0,kind:'infrared',stale:true,label:'Illustrative clouds · satellite feed unavailable'};
+   const reason=String(error?.message||'Satellite request failed');
+   state=state.available?{...state,stale:true,refreshFailed:true,reason,label:'Satellite refresh unavailable · previous dated frame'}:{available:false,at:null,width:0,kind:'infrared',stale:true,reason,label:'Illustrative clouds · satellite feed unavailable'};
   }finally{clearTimeout(timeout);if(own===controller){busy=false;notify();}}
  }
  const visible=()=>{if(!document.hidden)refresh(viewer.getState().quality);};document.addEventListener('visibilitychange',visible);

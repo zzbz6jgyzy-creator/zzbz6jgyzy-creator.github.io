@@ -61,7 +61,7 @@ def manifest():
   b=p.read_bytes();entry={'file':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
   if p.suffix in ['.webp','.jpg']:
    with Image.open(p) as im:entry.update({'width':im.width,'height':im.height})
-   source=SOURCES[p.name];entry.update({'source':source[0],'credit':source[2],'processing':'Resized with Lanczos; WebP conversion. No image generation.'})
+   source=SOURCES[p.name];entry.update({'source':source[0],'credit':source[2],'processing':'Resized with Lanczos; '+('JPEG' if p.suffix=='.jpg' else 'WebP')+' conversion. No image generation.'})
   rows.append(entry)
  (OUT/'manifest.json').write_text(json.dumps({'schema':1,'assets':rows},indent=2)+'\n')
 
