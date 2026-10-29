@@ -17,7 +17,7 @@
     $('earth-pause-icon').toggleAttribute('hidden',!!state.paused);$('earth-play-icon').toggleAttribute('hidden',!state.paused);
     for(const b of root.querySelectorAll('[data-earth-view]'))b.setAttribute('aria-pressed',String(b.dataset.earthView===(state.view||'live')));
     if((state.scene||'earth')==='earth')$('earth-view-label').textContent=viewLabels[state.view]||viewLabels.live;
-    $('earth-clock-label').textContent=mode==='ground'?'WORLD CLOCK':state.view==='live'?'CURRENT SUNLIGHT':'ARTISTIC LIGHT';
+    $('earth-clock-label').textContent=mode==='ground'?'WORLD CLOCK':state.scene&&state.scene!=='earth'?'CURRENT TIME':state.view==='live'?'CURRENT SUNLIGHT':'ARTISTIC LIGHT';
     if(state.textureWidth&&(state.scene||'earth')==='earth')$('earth-resolution').textContent=Math.round(state.textureWidth/1024)+'K SURFACE DETAIL';
     if(state.quality)$('earth-quality').value=state.quality;
     $('earth-quality').querySelector('option[value=studio]').disabled=!state.studioSupported;
@@ -47,7 +47,7 @@
   function weatherPaint(state){
     $('earth-weather-refresh').disabled=!!state.loading;$('earth-weather-refresh').setAttribute('aria-busy',String(!!state.loading));
     $('earth-weather').dataset.state=!state.available?'fallback':state.stale?'older':'available';
-    $('earth-weather-label').textContent=state.loading?'Illustrative clouds · requesting satellite frame…':state.available?(state.refreshFailed?'Cloud refresh unavailable · previous image':state.stale?'Older satellite infrared frame':'Satellite infrared · timestamped'):'Illustrative clouds · latest feed unavailable';
+    $('earth-weather-label').textContent=state.loading?(state.available?'Refreshing satellite frame · previous image':'Illustrative clouds · requesting satellite frame…'):state.available?(state.refreshFailed?'Cloud refresh unavailable · previous image':state.stale?'Older satellite infrared frame':'Satellite infrared · timestamped'):'Illustrative clouds · latest feed unavailable';
     if(state.at){const date=new Intl.DateTimeFormat('en-GB',{timeZone:'UTC',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(state.at));$('earth-weather-date').textContent=(state.stale?'Older image · ':'')+date+' UTC · frame time · ~3h composites';}
     else $('earth-weather-date').textContent=state.available?(state.checkedAt?'Feed checked '+new Intl.DateTimeFormat('en-GB',{timeZone:'UTC',hour:'2-digit',minute:'2-digit'}).format(new Date(state.checkedAt))+' UTC · image time unavailable · ~3h updates':'Image time unavailable · ~3h source updates'):'Source refreshes about every 3h · tap ↻ to retry';
   }

@@ -1,28 +1,45 @@
 # Earth: current light and free ground exploration
 
+The Earth-to-Milky-Way extension is documented in [earth-cosmos.md](earth-cosmos.md).
+
 Review URL: `/mission-control.html`. This isolated preview stays `noindex,follow`.
 The Starship replay is unchanged; it still shares the same exported Earth shader strings.
 
 ## What changes
 
-- Retains the NASA day surface (2K/4K/8K), Black Marble city lights, custom atmospheric scattering, ocean glint and GPU-adaptive rendering.
+- Retains the NASA day surface (2K/4K/8K, with guarded manual 16K Studio selection), Black Marble city lights, custom atmospheric scattering, ocean glint and GPU-adaptive rendering.
 - Adds a current UTC solar direction in Earth-fixed coordinates. Rotating the viewing angle does not move day and night across geographic places. The sun updates even when camera rotation is paused. Artistic Day/Night studies remain explicitly labelled.
 - Adds UTC time, IANA civil clocks for 12 featured destinations (including DST), and a calculated daylight/twilight/night state at the selected coordinates. Other coordinates use labelled UTC. Geolocation uses labelled device time and is requested only on a user gesture.
-- Adds latest EUMETSAT-derived clouds at 2K/4K, or 8K on suitable devices when Ultra is selected. Zooming past the globe hands off to a map at the geographic view centre. Cloud geometry stays registered to geography, with no decorative drift of the observed mask.
+- Adds a dated EUMETSAT infrared cloud proxy at 2K, or up to 4K when a higher surface-quality mode is selected. Zooming past the globe hands off to a map at the geographic view centre. Cloud geometry stays registered to geography, with no decorative drift of the observed mask.
 - Adds a lazy-loaded MapLibre ground view, styled specifically for this site: roads, labels, building outlines/extrusions, hillshade and real elevation. Includes place/coordinate finder, optional location permission, map zoom/tilt/compass/scale, flat view, terrain/building switches, return to globe and four illustrated destination cards.
 - Adds an external Satellite imagery link to Google Maps at the current map centre, using Maps URLs. No Google API, keys, embedding, billing account or paid 3D tiles.
 
 ## Free sources and limits
 
-**Clouds:** <https://clouds.matteason.co.uk/> and
-<https://github.com/matteason/live-cloud-maps>. Provider images and code are CC0;
-required source attribution is **Contains modified EUMETSAT data**.
+**Satellite infrared:** [EUMETSAT EUMETView](https://view.eumetsat.int/), public WMS
+layer `mumi:worldcloudmap_ir108`. Attribution: **Contains modified EUMETSAT data**.
+The viewer reads the published frame time from GetCapabilities, rejects missing,
+future or >3-day-old frames, and requests that exact time through GetMap. The
+source advances in three-hour steps and can be delayed. A composite combines
+satellite observations; its frame time is not one simultaneous capture of Earth.
 
-The provider advertises updates every three hours. CORS was verified on both 2048×1024 and 4096×2048 image endpoints. This is a processed visible/infrared composite, not instantaneous weather. The provider mirrors polar regions and may contain holes. The viewer masks the mirrored pixels beyond ±67.5°, with a soft transition starting at ±63°. Missing polar clouds mean unavailable observations, not clear skies. A separate opacity response preserves detail in the observed cloud mask without altering the shared replay shaders. It must not be used for forecasting or navigation.
+Infrared brightness is converted to a visual cloud-opacity proxy. It can miss low
+cloud and confuse cold surfaces with cloud. It is not a full cloud-classification,
+forecast or instantaneous-weather product. Polar areas beyond ±67.5° are masked,
+with a soft transition from ±63°. Missing coverage does not mean clear skies.
+Observed imagery stays geographically registered with no decorative drift.
 
-The verified production endpoint currently sends **no Last-Modified timestamp**. The UI therefore says **Update time not supplied**, rather than inventing an observation time from request time or a schedule. If the provider supplies Last-Modified later, it is treated as publication time, displayed in UTC and aged; it is never labelled as a single observation timestamp. Images older than 12 hours are marked older; >3 days or >10 minutes in the future are rejected. A failed refresh preserves the last good texture with a failure label. If no latest texture loaded, the original static clouds are clearly labelled illustrative.
+The old Matt Eason feed was removed: it supplied no image timestamp, and three
+recent archived downloads contained identical image digests. An archive download
+time or HTTP request date cannot establish observation freshness. See the audit
+and source links in [earth-cosmos.md](earth-cosmos.md).
 
-Browser fetches use conditional cache revalidation, a bounded timeout, no credentials and no referrer. The page checks at entry, on becoming visible, on manual refresh and every 30 minutes while visible. No weather images are repeatedly committed to Git, and there is no scheduled workflow, API key or deployment to configure.
+Browser fetches have bounded timeouts, no credentials and no referrer. The page
+checks at entry, on becoming visible, on manual refresh and every 30 minutes
+while visible. Frames older than 12 hours are marked older. Failed refreshes keep
+the previous dated frame with an unavailable label; without one, the static cloud
+layer is explicitly illustrative. No weather-image commits, scheduled workflow,
+API key, billing account or backend deployment are required.
 
 **Streets/buildings:** <https://openfreemap.org/> and OpenStreetMap/OpenMapTiles.
 Verified CORS-enabled TileJSON at `https://tiles.openfreemap.org/planet` and
@@ -77,10 +94,10 @@ and restricted to the three documented provider hosts.
 
 ## Later decisions
 
-- Strict observation timestamps require a source that publishes per-frame metadata;
-  do not infer one from an HTTP request date. The current cloud provider is honest
-  about its approximate cadence and limitations.
+- The satellite composite has a source frame time, not per-pixel observation times.
+  Keep the three-hour cadence and infrared-proxy limitations visible.
 - Photogrammetric buildings, household-resolution photographic terrain and Google
   3D Tiles remain outside the no-cost scope. The ground view uses open map geometry.
 - Public services can change availability. Keep fallbacks and attribution; revisit
   hosting only if real traffic makes it necessary.
+

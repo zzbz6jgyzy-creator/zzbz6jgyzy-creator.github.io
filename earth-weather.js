@@ -17,7 +17,7 @@ export function extractCloudFrame(xml,now=Date.now()){
 }
 export function cloudMapURL(at,width=2048){
  if(!Number.isFinite(Date.parse(at))||![1024,2048,4096].includes(width))throw new TypeError('A valid satellite frame and supported resolution are required.');
- const p=new URLSearchParams({service:'WMS',request:'GetMap',version:'1.3.0',layers:CLOUD_LAYER,styles:'',format:'image/png',crs:'EPSG:4326',bbox:'-90,-180,90,180',width:String(width),height:String(width/2),time:new Date(at).toISOString().replace('.000Z','Z')});
+ const p=new URLSearchParams({service:'WMS',request:'GetMap',version:'1.3.0',layers:CLOUD_LAYER,styles:'',format:'image/jpeg',crs:'EPSG:4326',bbox:'-90,-180,90,180',width:String(width),height:String(width/2),time:new Date(at).toISOString().replace('.000Z','Z')});
  return ENDPOINT+'?'+p;
 }
 export function createWeather({viewer,onChange=()=>{}}){
@@ -34,7 +34,7 @@ export function createWeather({viewer,onChange=()=>{}}){
    const metadata=await fetch(ENDPOINT+'?service=WMS&request=GetCapabilities&version=1.3.0',options);if(!metadata.ok)throw new Error('Satellite metadata unavailable');
    const xml=await metadata.text(),at=extractCloudFrame(xml);if(!at)throw new Error('A current dated satellite frame is unavailable');
    if(state.available&&state.at===at&&state.width===width&&!state.refreshFailed){state={...state,checkedAt:new Date().toISOString(),stale:weatherAge(at).stale};return;}
-   const response=await fetch(cloudMapURL(at,width),options);if(!response.ok||!response.headers.get('content-type')?.startsWith('image/'))throw new Error('Invalid satellite frame');
+   const response=await fetch(cloudMapURL(at,width),{...options,cache:'default'});if(!response.ok||!response.headers.get('content-type')?.startsWith('image/'))throw new Error('Invalid satellite frame');
    const blob=await response.blob();if(blob.size>30000000||blob.size<1000)throw new Error('Invalid satellite image size');
    if(disposed||own!==controller)return;
    const url=URL.createObjectURL(blob);try{await viewer.setWeatherTexture(url,at,{kind:'infrared'});}finally{URL.revokeObjectURL(url);}

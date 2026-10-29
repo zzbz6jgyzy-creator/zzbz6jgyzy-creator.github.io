@@ -202,6 +202,13 @@ export async function initEarth(options = {}) {
   const maps = { day: null, night: null, clouds: null, normal:null, ocean:null };
   let cosmos=null,cosmosPromise=null,cosmicState=null,focusBody='Earth',fly=null,deepSky=false;
   const cameraOrbit=new THREE.Quaternion().setFromEuler(new THREE.Euler(-.10,0,0,'YXZ'));
+  // Open on a naturally illuminated three-quarter Earth without changing geographic sunlight.
+  if(options.view==='live'){
+    const p=solarPosition(),point=geoVector(clamp(p.lat*.5,-18,18),p.lon+38);
+    const direction=new THREE.Vector3(point.x,point.y,point.z).applyQuaternion(globe.quaternion);
+    const north=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);
+    cameraOrbit.setFromRotationMatrix(new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),north));
+  }
   const initialOrbit=cameraOrbit.clone();
   let dragOrbit=null,dragVector=null,gestureZoom=1;
   let observedCloud = null, weatherToken = 0, weatherAt = null, selectedPoint = null;

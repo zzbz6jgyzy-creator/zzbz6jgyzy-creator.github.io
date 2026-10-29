@@ -54,7 +54,7 @@ async def main():
      assert upside_down,'Repeated vertical grabs must travel over the pole without a latitude clamp'
      await page.locator('#earth-reset').click();old=await page.evaluate(STATE+'.zoom')
      await canvas.dispatch_event('wheel',{'deltaY':-8,'ctrlKey':True,'bubbles':True,'cancelable':True});assert await page.evaluate(STATE+'.zoom')>old,'Trackpad pinch must zoom the canvas'
-    await page.locator('#earth-reset').click();await page.locator('#cosmos-deep-sky').click();await expect(page.locator('#cosmos-deep-sky')).to_have_attribute('aria-pressed','true')
+    await page.locator('#earth-reset').click();await page.locator('#cosmos-deep-sky').click();await expect(page.locator('#cosmos-deep-sky')).to_have_attribute('aria-pressed','true');await page.locator('#cosmos-deep-sky').click()
     for scale,scene,focus in [('moon','moon','Moon'),('solar','solar','Sun'),('galaxy','galaxy','Galaxy')]:
      await page.locator('[data-earth-scale='+scale+']').click();await page.wait_for_function(STATE+'.scene==='+json.dumps(scene)+'&&'+STATE+'.focus==='+json.dumps(focus),timeout=80000)
      await page.wait_for_timeout(750);await snapshot(page,str(width)+'-'+scene)

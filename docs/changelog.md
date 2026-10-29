@@ -1,3 +1,11 @@
+## 2026-10-29 — Earth to the Milky Way
+
+- Rebuilt globe manipulation around quaternion grab rotation, including pole crossing, pinch handoff, trackpad zoom and stable paused positions. Taps select a place without moving the camera.
+- Added terrain normals, an ocean reflection mask, guarded manual 16K NASA surface detail, 8K night lights and an attributed photographic Milky Way sky.
+- Added one continuous, floating-origin journey through the Moon, planets, nearby catalogue stars and a clearly labelled Milky Way structural model, with current calculated positions, physical radii/distances and the Sun’s galactic location. Includes a world finder and four scale shortcuts.
+- Audited the old cloud source and replaced its undated images with a pinned, timestamped EUMETSAT infrared composite. Labels explain cadence, age, fallback state, missing polar coverage and cloud-proxy limits.
+- Added astronomy and dated-frame tests plus real browser rotation, responsive, high-detail, source-feed and Earth/ground/replay regression checks. See `docs/earth-cosmos.md` for sources, limits and maintenance.
+
 ## 2026-10-29 — Starship Flight 14 cinematic replay
 
 Added an isolated replay study with detailed procedural stages, shared NASA Earth shading, chapter cameras, scrubbing, adaptive imagery and rendering fallbacks. The Ship follows attributed archived SpaceX position samples; the reconstructed booster, attitudes and effects are clearly distinguished from recorded position data; the early North Pacific return replaces the abandoned ten-hour plan in this study. The existing Earth preview links to it. No live tracking is added. The full regression run also exposed two existing test assumptions: news sorting now tests equal timestamps correctly, and Markets reset checks wait for the rendered state. See `docs/starship-flight-14-replay.md` for provenance, architecture and validation.
