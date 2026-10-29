@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "countsAt": "2026-10-28T00:31:45Z",
+ "countsAt": "2026-10-29T01:44:51Z",
  "source": "https://planet4589.org/space/con/star/stats.html",
  "totals": {
   "launched": 13069,
@@ -21759,6 +21759,13 @@
   },
   {
    "updated": "2026-10-28T00:31:45Z",
+   "inOrbit": 11190,
+   "working": 11176,
+   "operational": 10022,
+   "launched": 13069
+  },
+  {
+   "updated": "2026-10-29T01:44:51Z",
    "inOrbit": 11190,
    "working": 11176,
    "operational": 10022,
