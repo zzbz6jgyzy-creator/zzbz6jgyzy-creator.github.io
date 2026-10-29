@@ -1,5 +1,6 @@
 ## 2026-10-29 — Earth to the Milky Way
 
+- Fixed the PR's satellite outage failure: transient provider errors receive bounded retries, and the real-source browser check verifies the honest fallback against the observed HTTP status. Invalid metadata, image data and rendering errors remain failures; the run records its actual provider outcome.
 - Rebuilt globe manipulation around quaternion grab rotation, including pole crossing, pinch handoff, trackpad zoom and stable paused positions. Taps select a place without moving the camera.
 - Added terrain normals, an ocean reflection mask, guarded manual 16K NASA surface detail, 8K night lights and an attributed photographic Milky Way sky.
 - Added one continuous, floating-origin journey through the Moon, planets, nearby catalogue stars and a clearly labelled Milky Way structural model, with current calculated positions, physical radii/distances and the Sun’s galactic location. Includes a world finder and four scale shortcuts.

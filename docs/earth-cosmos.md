@@ -96,6 +96,13 @@ No weather snapshots are repeatedly committed to the repository. Direct public
 requests can be slow or fail; the previous dated frame is preserved and labelled.
 No current frame means illustrative clouds, never an invented “live” label.
 
+Transient HTTP 408, 429, 500, 502, 503 and 504 responses get at most three attempts
+within the existing 100-second overall deadline. A numeric Retry-After is honoured
+up to four seconds; other retries use short bounded delays. Cancellation stops
+the retry, and other HTTP errors are not retried. The exact pinned frame URL is
+retained. Diagnostics expose the final provider status without calling it a
+successful image load.
+
 ## Sources, maintenance and validation
 
 See [all image/data credits](../assets/cosmos/SOURCES.md), the asset manifest and
@@ -118,6 +125,17 @@ its exact URL, dimensions, size and SHA-256 in `assets/cosmos/manifest.json`.
   screens, pinch, map geometry and terrain, missing feeds/modules/textures,
   WebGL context loss and a real provider cloud/city/terrain film. The Starship
   cinematic replay is checked separately; exported shared shaders are unchanged.
+
+The real-provider film checks either a dated infrared texture or the expected
+labelled illustrative fallback after an observed transient provider HTTP error.
+Fallback requires the browser response status to match the weather diagnostic,
+no observed texture, no invented timestamp, and the visible “Illustrative” label.
+Missing/future/invalid metadata, bad image data, unexpected HTTP errors, unknown
+network failures and rendering errors remain failures. `satellite-results.json`
+records which branch ran and the actual responses. Deterministic browser journeys
+continue to require a valid satellite texture using explicitly identified fixtures;
+unit tests cover transient recovery, exhausted retries, cancellation and preserving
+a previously loaded dated frame. No workflow failure is ignored or skipped.
 
 Remaining source limits are visible design decisions, not paid-service setup:
 the ground is mapped geometry, the clouds are dated infrared proxies, maps are

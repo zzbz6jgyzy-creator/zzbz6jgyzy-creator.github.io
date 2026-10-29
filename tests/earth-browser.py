@@ -168,16 +168,29 @@ async def main():
             await browser.close();print('EARTH_COMPLETE '+str(len(results))+' journeys',flush=True);return
         # A real, unmocked cloud and map journey for the review film.
         ctx=await browser.new_context(viewport={'width':1440,'height':900},record_video_dir=str(OUT/'recording'),record_video_size={'width':1440,'height':900},service_workers='block')
-        await setup_route(ctx,cloud='real');page=await ctx.new_page();satellite_requests=[]
+        await setup_route(ctx,cloud='real');page=await ctx.new_page();satellite_requests=[];satellite_responses=[]
         page.on('requestfailed',lambda r:satellite_requests.append({'url':r.url,'error':r.failure}) if 'eumetsat' in r.url else None)
+        page.on('response',lambda r:satellite_responses.append({'url':r.url,'status':r.status}) if 'view.eumetsat.int/geoserver/ows' in r.url else None)
         page.on('console',lambda m:print('SATELLITE_CONSOLE',m.text,flush=True) if m.type=='error' else None)
         await page.goto(SITE+'/mission-control.html');await page.wait_for_function('window.__earthPreview?.getState().ready',timeout=90000)
-        try:await page.wait_for_function('window.__earthWeather?.getState().available',timeout=130000)
+        try:await page.wait_for_function('()=>{const s=window.__earthWeather?.getState();return s&&!s.loading&&(s.available||s.reason)}',timeout=130000)
         except Exception:
             print('SATELLITE_FAILED',json.dumps({'state':await page.evaluate('window.__earthWeather?.getState()'),'requests':satellite_requests}),flush=True);raise
-        print('SATELLITE_VERIFIED',json.dumps(await page.evaluate('window.__earthWeather.getState()')),flush=True)
-        assert (await page.evaluate(STATE))['cloudKind']=='infrared'
-        await page.wait_for_timeout(700);await snapshot(page,'actual-latest-clouds')
+        satellite=await page.evaluate('window.__earthWeather.getState()');render=await page.evaluate(STATE)
+        if satellite['available']:
+            assert render['cloudKind']=='infrared' and render['observedCloud'] and satellite['at']
+            print('SATELLITE_VERIFIED',json.dumps(satellite),flush=True);capture='actual-latest-clouds'
+        else:
+            # Public-service uptime is outside the product boundary. A confirmed
+            # transient HTTP failure must exercise the real, honest fallback.
+            # Missing/invalid timestamps, bad image data and unknown failures stay fatal.
+            status=satellite.get('providerStatus');assert status in [408,429,500,502,503,504],satellite
+            assert any(r['status']==status for r in satellite_responses),satellite_responses
+            assert satellite['stale'] and satellite['at'] is None and not render['observedCloud'] and render['cloudKind']=='illustrative',satellite
+            await expect(page.locator('#earth-weather-label')).to_contain_text('Illustrative')
+            print('SATELLITE_PROVIDER_UNAVAILABLE_FALLBACK_VERIFIED',json.dumps(satellite),flush=True);capture='satellite-unavailable-fallback'
+        (OUT/'satellite-results.json').write_text(json.dumps({'state':satellite,'responses':satellite_responses,'failed_requests':satellite_requests},indent=2))
+        await page.wait_for_timeout(700);await snapshot(page,capture)
         start=asyncio.get_running_loop().time();await page.wait_for_timeout(4000)
         await page.locator('#earth-explore').click();await page.wait_for_timeout(500)
         await page.locator('#earth-place-list button').filter(has=page.locator('span',has_text='Manhattan')).click()

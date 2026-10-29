@@ -35,6 +35,10 @@ time or HTTP request date cannot establish observation freshness. See the audit
 and source links in [earth-cosmos.md](earth-cosmos.md).
 
 Browser fetches have bounded timeouts, no credentials and no referrer. The page
+retries transient provider HTTP failures at most twice within the same deadline;
+other errors are not retried. Confirmed provider outages are verified against the
+visible fallback in the real-source browser check, while invalid data stays fatal.
+The page
 checks at entry, on becoming visible, on manual refresh and every 30 minutes
 while visible. Frames older than 12 hours are marked older. Failed refreshes keep
 the previous dated frame with an unavailable label; without one, the static cloud
