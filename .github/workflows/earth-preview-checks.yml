@@ -8,6 +8,7 @@ on:
       - 'assets/earth/**'
       - 'vendor/maplibre/**'
       - 'tests/earth-live-model.test.mjs'
+      - 'tests/earth-weather.test.mjs'
       - 'vendor/three*'
       - 'vendor/three*/**'
       - 'scripts/js-bundles.json'
@@ -41,6 +42,7 @@ jobs:
           node --check earth-ground.js
           node --check earth-weather.js
           node tests/earth-live-model.test.mjs
+          node tests/earth-weather.test.mjs
           node --check earth-renderer.js
           python3 -m py_compile tests/earth-browser.py
           python3 -c 'import json; from pathlib import Path; assert "mission-control.html" in json.loads(Path("scripts/js-bundles.json").read_text())["skipPages"]'

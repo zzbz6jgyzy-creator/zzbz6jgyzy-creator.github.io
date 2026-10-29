@@ -48,8 +48,10 @@ async def main():
             await ctx.add_init_script('Date.now=()=>1793278800000;') # 2026-10-29 13:00 UTC; deterministic dated-cloud checks
             if mode=='no-webgl':await ctx.add_init_script("const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return /webgl/i.test(type)?null:original.call(this,type,...args)}")
             requests=await setup_route(ctx,mode)
-            page=await ctx.new_page();errors=[];shader_errors=[]
+            page=await ctx.new_page();errors=[];shader_errors=[];network_errors=[];console_errors=[]
             page.on('pageerror',lambda e:errors.append(str(e)))
+            page.on('requestfailed',lambda r:network_errors.append({'url':r.url,'error':r.failure}))
+            page.on('console',lambda m:console_errors.append(m.text) if m.type in ['error','warning'] else None)
             page.on('console',lambda m:shader_errors.append(m.text) if m.type=='error' and re.search(r'THREE.WebGLProgram|shader.*(?:error|fail)|GL_INVALID|compileShader|linkProgram|layers\[[0-9]+\]',m.text,re.I) else None)
             try:
                 await page.goto(SITE+'/mission-control.html',wait_until='domcontentloaded')
@@ -132,7 +134,7 @@ async def main():
                 results.append({'scenario':name,'ok':True,'requests':len(requests)})
                 print('EARTH_PASS '+name,flush=True)
             except Exception:
-                print('EARTH_ERROR '+name+' '+json.dumps({'errors':errors,'shaders':shader_errors}),flush=True)
+                print('EARTH_ERROR '+name+' '+json.dumps({'errors':errors,'shaders':shader_errors,'network':network_errors[-20:],'console':console_errors[-15:],'ground':await page.evaluate('window.__earthGround?.diagnostics?.()')}),flush=True)
                 await snapshot(page,name+'-failed');raise
             finally:await ctx.close()
         for args in [(1440,900),(390,844),(768,1024),(390,844,'reduced','light'),(1440,900,'normal','light'),(390,844,'no-webgl'),(390,844,'module-fail'),(390,844,'texture-fail'),(390,844,'cloud-fail'),(390,844,'map-fail'),(1440,900,'context-loss')]:

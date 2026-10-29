@@ -1,5 +1,5 @@
 /* Free ground explorer. No API keys or paid imagery endpoints. */
-import {clamp, longitude} from '/earth-live-model.js?v=20261029-live1';
+import {clamp, longitude} from './earth-live-model.js?v=20261029-live1';
 
 export function groundStyle(){
   const source='openmaptiles';
@@ -48,7 +48,7 @@ export async function createGround({container,place,onChange=()=>{},onStatus=()=
   lib.setWorkerCount(2);
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const map=new lib.Map({container,style:groundStyle(),center:[place.lon,place.lat],zoom:Math.min(place.zoom,13),pitch:place.pitch,bearing:-24,maxZoom:22,maxPitch:75,attributionControl:false,canvasContextAttributes:{antialias:true},maxTileCacheSize:100,fadeDuration:reduced?0:250});
-  const controller=new AbortController();let disposed=false,ready=false,terrain=true,buildings=true,failed=0;
+  const controller=new AbortController();let disposed=false,ready=false,terrain=true,buildings=true,failed=0;const diagnostics=[];
   map.addControl(new lib.NavigationControl({visualizePitch:true}),'top-right');
   map.addControl(new lib.ScaleControl({unit:'metric',maxWidth:100}),'bottom-right');
   map.addControl(new lib.AttributionControl({compact:true}),'bottom-right');
@@ -64,13 +64,14 @@ export async function createGround({container,place,onChange=()=>{},onStatus=()=
   map.on('moveend',notify);map.on('terrain',notify);
   map.on('error',event=>{
     if(disposed)return;
-    const e=String(event.error?.message||'');
+    const e=String(event.error?.message||'');diagnostics.push({source:event.sourceId,message:e});if(diagnostics.length>12)diagnostics.shift();
     if(event.sourceId==='elevation'||e.includes('elevation-tiles')){if(terrain){terrain=false;map.setTerrain(null);map.setLayoutProperty('hillshade','visibility','none');onStatus('Terrain is unavailable; the street map is still available.');notify();}return;}
     if(++failed>5&&!ready)onError('The map provider is unavailable. Try again or open the satellite view.');
   });
   map.getCanvas().addEventListener('webglcontextlost',()=>onError('The map graphics were interrupted. Retry the ground view.'),{signal:controller.signal});
   return {
     map,
+    diagnostics(){return{errors:diagnostics,loaded:map.isStyleLoaded(),tiles:map.areTilesLoaded(),sources:Object.keys(map.getStyle()?.sources||{})};},
     flyTo(next){if(disposed)return;place=next;const options={center:[next.lon,clamp(next.lat,-85,85)],zoom:next.zoom,pitch:next.pitch,bearing:-24,duration:reduced?0:1800,essential:false};map.flyTo(options);},
     resize(){if(!disposed)map.resize();},
     setTerrain(value){if(disposed||!ready)return;terrain=!!value;map.setTerrain(terrain?{source:'elevation',exaggeration:1.15}:null);map.setLayoutProperty('hillshade','visibility',terrain?'visible':'none');notify();},

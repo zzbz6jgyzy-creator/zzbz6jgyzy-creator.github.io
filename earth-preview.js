@@ -41,8 +41,9 @@
   }
   function unavailable(){root.dataset.state='fallback';$('earth-fallback').hidden=false;managed.forEach(b=>b.disabled=true);}
   function weatherPaint(state){
+    $('earth-weather-refresh').disabled=!!state.loading;$('earth-weather-refresh').setAttribute('aria-busy',String(!!state.loading));
     $('earth-weather').dataset.state=!state.available?'fallback':state.stale?'older':'available';
-    $('earth-weather-label').textContent=state.available?(state.refreshFailed?'Cloud refresh unavailable · previous image':state.stale?(state.at?'Older satellite cloud image':'Latest clouds · age not confirmed'):'Latest satellite clouds'):'Illustrative clouds · latest feed unavailable';
+    $('earth-weather-label').textContent=state.loading?'Checking latest cloud image…':state.available?(state.refreshFailed?'Cloud refresh unavailable · previous image':state.stale?(state.at?'Older satellite cloud image':'Latest clouds · age not confirmed'):'Latest satellite clouds'):'Illustrative clouds · latest feed unavailable';
     if(state.at){const date=new Intl.DateTimeFormat('en-GB',{timeZone:'UTC',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(state.at));$('earth-weather-date').textContent=(state.stale?'Older image · ':'')+date+' UTC · '+state.label.toLowerCase();}
     else $('earth-weather-date').textContent=state.available?'Update time not supplied · source refreshes about every 3h':'Source refreshes about every 3h · tap ↻ to retry';
   }

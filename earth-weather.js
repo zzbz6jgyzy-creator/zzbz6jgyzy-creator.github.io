@@ -1,19 +1,20 @@
 /* Public EUMETSAT-derived cloud maps, served with CORS by Live Cloud Maps (CC0).
  * Last-Modified is publication time, not a single global observation time.
  */
-import {weatherAge} from '/earth-live-model.js?v=20261029-live1';
+import {weatherAge} from './earth-live-model.js?v=20261029-live1';
 const ORIGIN='https://clouds.matteason.co.uk';
 export function createWeather({viewer,onChange=()=>{}}){
   let controller,disposed=false,busy=false,timer,previous=null,currentWidth=0;
   let state={available:false,at:null,label:'Loading latest clouds…',stale:false,width:0};
   const notify=()=>{if(!disposed)onChange({...state});};
-  function widthFor(quality){const max=viewer.getState().maxTextureSize;return Math.min(max,quality==='ultra'&&!navigator.connection?.saveData?8192:quality==='high'||(innerWidth>=800&&!navigator.connection?.saveData)?4096:2048);}
+  function notifyLoading(){if(!disposed)onChange({...state,loading:true});}
+  function widthFor(quality){const max=viewer.getState().maxTextureSize;return Math.min(max,navigator.connection?.saveData?1024:quality==='ultra'&&!navigator.connection?.saveData?8192:quality==='high'||(innerWidth>=800&&!navigator.connection?.saveData)?4096:2048);}
   async function refresh(quality='auto'){
     if(disposed)return;
     const width=widthFor(quality);
     if(busy&&width===currentWidth)return;
     controller?.abort();controller=new AbortController();const own=controller;
-    busy=true;currentWidth=width;
+    busy=true;currentWidth=width;notifyLoading();
     const timeout=setTimeout(()=>own.abort(),18000);
     try{
       const response=await fetch(ORIGIN+'/images/'+width+'x'+(width/2)+'/clouds.jpg',{signal:own.signal,cache:'no-cache',credentials:'omit',referrerPolicy:'no-referrer'});

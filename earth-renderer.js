@@ -344,7 +344,7 @@ export async function initEarth(options = {}) {
   }
   function setZoom(value) { if (!Number.isFinite(value) || disposed) return; zoom = clamp(value, 0.65, 1.65); interactionUntil = performance.now() + 2500; renderDemand(); }
   function zoomBy(delta) { setZoom(zoom + delta); }
-  function stepOrbit(dx = 0, dy = 0) { targetYaw += dx; targetPitch = clamp(targetPitch + dy, -0.85, 0.85); interactionUntil = performance.now() + 2500; renderDemand(); }
+  function stepOrbit(dx = 0, dy = 0) { targetYaw += dx; targetPitch = clamp(targetPitch + dy, -1.45, 1.45); interactionUntil = performance.now() + 2500; renderDemand(); }
   function reset() {
     targetYaw = 0; targetPitch = 0.10; zoom = 1; globe.rotation.y = -1.92; cloudAngle = 0; clouds.rotation.y = 0; uniforms.uCloudOffset.value = 0;
     setView(options.view === 'live' ? 'live' : 'sunrise'); renderDemand();
@@ -384,7 +384,7 @@ export async function initEarth(options = {}) {
     const p=geoVector(lat,lon), v=new THREE.Vector3(p.x,p.y,p.z);
     marker.position.copy(v).multiplyScalar(1.014); marker.visible=true;
     globe.updateMatrixWorld(true); v.applyQuaternion(globe.quaternion);
-    targetYaw=Math.atan2(v.x,v.z); targetPitch=clamp(Math.asin(v.y),-.85,.85);
+    targetYaw=Math.atan2(v.x,v.z); targetPitch=clamp(Math.asin(v.y),-1.48,1.48);
     // Use the nearest equivalent angle; crossing the date line must not spin the camera.
     targetYaw=yaw+Math.atan2(Math.sin(targetYaw-yaw),Math.cos(targetYaw-yaw));
     interactionUntil=performance.now()+10000;
