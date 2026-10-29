@@ -58,8 +58,11 @@ async def main():
           assert not state['playing'],'Replay must begin paused, including reduced motion'
           assert await page.locator('#flight-canvas').evaluate("e=>!!e.getContext('webgl2')")
           await shot(page,name+'-launch')
-          if width==1440 and mode=='normal':
-            await page.evaluate('window.__starshipReplay.seek(7)');await shot(page,'1440-ignition');await page.evaluate('window.__starshipReplay.seek(0)')
+          if mode=='normal':
+            await page.evaluate('window.__starshipReplay.seek(7)')
+            bounds=(await page.evaluate(STATE))['framing']
+            assert -.98<bounds['tipY']<.98 and -.98<bounds['tailY']<.98,('clipped ascent or exhaust',bounds)
+            await shot(page,str(width)+'-ignition');await page.evaluate('window.__starshipReplay.seek(0)')
           if mode=='context-loss':
             await page.locator('#flight-canvas').evaluate("e=>e.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext()")
             await page.wait_for_function("document.querySelector('[data-flight-replay]').dataset.state==='fallback'")

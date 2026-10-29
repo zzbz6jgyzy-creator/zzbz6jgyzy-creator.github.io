@@ -85,7 +85,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   const routeGroup=new THREE.Group();routeGroup.add(future,history,boosterPath);scene.add(routeGroup);
   const shipDot=new THREE.Mesh(new THREE.SphereGeometry(.008,12,8),new THREE.MeshBasicMaterial({color:0xd9f6ff}));const boosterDot=new THREE.Mesh(new THREE.SphereGeometry(.006,12,8),new THREE.MeshBasicMaterial({color:0xffab7d}));routeGroup.add(shipDot,boosterDot);
   const padDot=new THREE.Mesh(new THREE.SphereGeometry(.0045,12,8),new THREE.MeshBasicMaterial({color:0xff607b}));padDot.position.copy(PAD.clone().multiplyScalar(1.003));routeGroup.add(padDot);
-  let t=0,mode='cinema',quality='auto',width=1,height=1,ready=false,disposed=false,frames=0,lost=false,visible=true;
+  let t=0,mode='cinema',quality='auto',width=1,height=1,ready=false,disposed=false,frames=0,lost=false,visible=true,framing=null;
   let yaw=.12,pitch=.04,zoom=1,pinch=0,textureWidth=0,textureToken=0,detail='';
   const textures={},pointers=new Map(),cleanups=[];
   const bind=(obj,name,fn,opts)=>{obj.addEventListener(name,fn,opts);cleanups.push(()=>obj.removeEventListener(name,fn,opts));};
@@ -103,7 +103,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   orbitGeo.setFromPoints(route);future.computeLineDistances();historyGeo.setFromPoints(route);historyGeo.setDrawRange(0,1);
   const returnRoute=[];for(let n=0;n<=100;n++)returnRoute.push(positionAt(421*n/100,'booster'));boosterPathGeo.setFromPoints(returnRoute);
 
-  function state(){return{ready,frames,t,camera:mode,quality,textureWidth,tileCount:vehicles.tileCount,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,contextLost:lost,detail,zoom,yaw,pitch,...sampleFlight(t)};}
+  function state(){return{ready,frames,t,camera:mode,quality,textureWidth,tileCount:vehicles.tileCount,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,contextLost:lost,detail,zoom,yaw,pitch,framing,...sampleFlight(t)};}
   function setTime(value){t=clamp(Number(value)||0,0,FLIGHT.duration);draw();}
   function setCamera(value){if(!['cinema','ship','booster','earth'].includes(value))return;mode=value;yaw=.12;pitch=.04;zoom=1;draw();onChange(state());}
   function resize(){const b=canvas.getBoundingClientRect();width=Math.max(1,b.width);height=Math.max(1,b.height);const budget=width<700?1800000:quality==='ultra'?6200000:3300000;renderer.setPixelRatio(Math.min(devicePixelRatio||1,2,Math.sqrt(budget/(width*height))));renderer.setSize(width,height,false);for(const c of [camera,nearCamera]){c.aspect=width/height;c.setViewOffset(width,height,-width*(width<700?0:.1),-height*(width<700?.13:0),width,height);c.updateProjectionMatrix();}draw();}
@@ -158,7 +158,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
       let target=new THREE.Vector3(0,28,0),distance=155;
       if(!s.separated){
         const rise=Math.max(0,(s.shipAltitude-shipPosition(0).altitude)*1000);boosterRig.position.y=rise;shipRig.position.y=71+rise;
-        target.set(0,65-smooth(0,12,t)*45+rise,0);distance=(width<700?250:220)*(1+smooth(0,22,t)*.5);
+        target.set(0,65-smooth(0,6,t)*49+rise,0);distance=(width<700?250:220)*(1+smooth(0,6,t)*(width<700?.8:.65));
         const tilt=smooth(35,140,t)*.48;shipRig.rotation.z=-tilt;boosterRig.rotation.z=-tilt;
         if(t>20){shipRig.position.set(Math.sin(tilt)*71,71*Math.cos(tilt)+rise,0);}
       }else if(staging){
@@ -180,6 +180,9 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
       const aspectFactor=width/height<1?Math.max(1,(height/width)*.58):1;
       distance*=aspectFactor/zoom;
       const azimuth=.45+yaw;nearCamera.position.set(target.x+Math.sin(azimuth)*distance,target.y+distance*(.13+pitch),target.z+Math.cos(azimuth)*distance);nearCamera.lookAt(target);
+      if(width<700){nearCamera.setViewOffset(width,height,0,-height*(.13+(!s.separated?smooth(0,6,t)*.06:0)),width,height);nearCamera.updateProjectionMatrix();}
+      nearCamera.updateMatrixWorld();
+      if(!s.separated){const tip=ship.localToWorld(new THREE.Vector3(0,53.4,0)).project(nearCamera),tail=booster.localToWorld(new THREE.Vector3(0,-92,0)).project(nearCamera);framing={tipY:tip.y,tailY:tail.y};}else framing=null;
       // Geometry stays original in scale. Tracking camera changes framing only.
       pad.visible=launch&&t<40;pad.position.y=0;
       ocean.visible=landing;ocean.position.y=-.2;
