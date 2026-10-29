@@ -15,7 +15,7 @@ jobs:
           import urllib.request,re,json,concurrent.futures
           def get(url):
             try:
-              with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'SuperchargedDaily-Earth-research/1.0'}),timeout=22) as r:
+              with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'SuperchargedDaily-Earth-research/1.0','Origin':'https://superchargeddaily.com'}),timeout=22) as r:
                 b=r.read(2500000);ct=r.headers.get('Content-Type','');print('HTTP',url,r.status,ct,'CORS',r.headers.get('Access-Control-Allow-Origin'),'LAST',r.headers.get('Last-Modified'),'BYTES',len(b))
                 if 'json' in ct or url.endswith('styles/liberty'):
                   d=json.loads(b)
@@ -25,12 +25,20 @@ jobs:
                 elif 'html' in ct or 'text' in ct:
                   text=b.decode('utf-8','replace')
                   links=sorted(set(re.findall(r'(?:href|src)=[\"\']([^\"\']+)',text)))
-                  print('LINKS',url,json.dumps(links)[:16000])
+                  print('LINKS',url,json.dumps(links[:160])[:22000])
+                  if url.endswith('.sos'):print('PLAYLIST',url,text[:10000])
                   for pattern in ['ftp','cloud','GLOBAL','netcdf']:
-                    if 'sos.noaa.gov/catalog' in url:
+                    if url.endswith('.sos'):
                       print('CONTEXT',pattern,json.dumps([text[max(0,m.start()-80):m.end()+180] for m in list(re.finditer(pattern,text,re.I))[:8]]))
                 return
             except Exception as e: print('SOURCE_ERROR',url,str(e))
-          urls=['https://sos.noaa.gov/catalog/datasets/clouds-real-time/','https://public.sos.noaa.gov/atmosphere/','https://public.sos.noaa.gov/realtime/','https://ftp.sos.noaa.gov/atmosphere/','https://sos.noaa.gov/ftp_mirror/atmosphere/','https://aviationweather.gov/data/products/satellite/','https://api.github.com/repos/maplibre/maplibre-gl-js/releases/latest','https://tiles.openfreemap.org/styles/liberty','https://tiles.openfreemap.org/planet','https://s3.amazonaws.com/elevation-tiles-prod/terrarium/0/0/0.png']
+          urls=['https://sos.noaa.gov/ftp_mirror/rt/sat/linear/','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist/','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist.sos','https://sos.noaa.gov/ftp_mirror/rt/sat/linear/playlist/playlist.sos','https://sos.noaa.gov/ftp_mirror/rt/sat/','https://tiles.openfreemap.org/styles/liberty','https://s3.amazonaws.com/elevation-tiles-prod/terrarium/0/0/0.png']
           with concurrent.futures.ThreadPoolExecutor(max_workers=5) as p:list(p.map(get,urls))
           PY
+          import base64,hashlib
+          for name,url in [('maplibre-gl.js','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.js'),('maplibre-gl.css','https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.css'),('LICENSE','https://unpkg.com/maplibre-gl@6.16.0/LICENSE.txt')]:
+            try:
+              with urllib.request.urlopen(url,timeout=30) as r: data=r.read()
+              print('VENDOR_META',name,len(data),hashlib.sha256(data).hexdigest())
+              print('VENDOR_BASE64',name,base64.b64encode(data).decode())
+            except Exception as e:print('VENDOR_ERROR',name,str(e))
