@@ -122,9 +122,9 @@ async def main():
     ctx=await browser.new_context(viewport={'width':1440,'height':1000},record_video_dir=str(OUT),record_video_size={'width':1440,'height':1000},service_workers='block')
     await ctx.route('**/*',serve);page=await ctx.new_page();await page.goto(SITE+'/starship-replay.html',wait_until='domcontentloaded')
     await page.wait_for_function('window.__starshipReplay&&'+STATE+'.ready',timeout=120000)
-    for chapter,t in [('launch',3),('staging',142),('booster',397),('orbit',3100),('payload',2800),('deorbit',7940),('entry',10400),('landing',11296)]:
+    for chapter,t,speed in [('launch',3,'10'),('staging',142,'10'),('booster',397,'10'),('orbit',3100,'300'),('payload',2800,'60'),('deorbit',7940,'10'),('entry',10400,'60'),('landing',11298,'10')]:
       await page.evaluate("([c,t])=>{window.__starshipReplay.jump(c);window.__starshipReplay.seek(t)}",[chapter,t])
-      await page.locator('#speed').select_option('1');await page.evaluate('window.__starshipReplay.play()');await page.wait_for_timeout(2600);await page.evaluate('window.__starshipReplay.pause()')
+      await page.locator('#speed').select_option(speed);await page.evaluate('window.__starshipReplay.play()');await page.wait_for_timeout(2600);await page.evaluate('window.__starshipReplay.pause()')
     video=page.video;await ctx.close();video_file=await video.path()
     subprocess.run(['ffmpeg','-y','-sseof','-21','-i',str(video_file),'-an','-c:v','libx264','-crf','21','-preset','fast','-pix_fmt','yuv420p','-movflags','+faststart',str(OUT/'starship-flight-14.mp4')],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
     await browser.close()

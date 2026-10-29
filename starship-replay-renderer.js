@@ -157,9 +157,8 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
       ship.position.set(0,0,0);booster.position.set(0,0,0);shipRig.position.set(0,0,0);boosterRig.position.set(0,0,0);shipRig.rotation.set(0,0,0);boosterRig.rotation.set(0,0,0);
       let target=new THREE.Vector3(0,28,0),distance=155;
       if(!s.separated){
-        const lift=t<20?Math.pow(t/20,2)*27:27+(t-20)*2.1;
-        const rise=launch?lift:0;boosterRig.position.y=rise;shipRig.position.y=71+rise;
-        target.set(0,65+rise*.92,0);distance=width<700?250:220;
+        const rise=Math.max(0,(s.shipAltitude-shipPosition(0).altitude)*1000);boosterRig.position.y=rise;shipRig.position.y=71+rise;
+        target.set(0,65-smooth(0,12,t)*45+rise,0);distance=(width<700?250:220)*(1+smooth(0,22,t)*.5);
         const tilt=smooth(35,140,t)*.48;shipRig.rotation.z=-tilt;boosterRig.rotation.z=-tilt;
         if(t>20){shipRig.position.set(Math.sin(tilt)*71,71*Math.cos(tilt)+rise,0);}
       }else if(staging){
@@ -168,14 +167,15 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
       }else if(followBooster){
         const rotation=t<190?mix(1.8,Math.PI,smooth(162,175,t)):Math.PI*(1-smooth(220,310,t));
         boosterRig.rotation.z=rotation;target.set(0,34,0);distance=width<700?165:145;
-        if(landing){boosterRig.rotation.z=0;boosterRig.position.y=Math.min(110,s.boosterAltitude*1000);target.y=34+boosterRig.position.y;}
+        if(landing){boosterRig.rotation.z=0;boosterRig.position.y=s.boosterAltitude*1000;target.y=34+boosterRig.position.y;}
       }else{
         if(s.entry>.01)shipRig.rotation.z=-Math.PI/2+.14*Math.sin(t*.003);
         else if(t>11260)shipRig.rotation.z=mix(-Math.PI/2,0,s.flip);
         else shipRig.rotation.z=-.35;
-        if(landing){shipRig.position.y=Math.min(110,s.shipAltitude*1000);target.set(0,26+shipRig.position.y,0);}
+        if(landing){shipRig.position.y=s.shipAltitude*1000;target.set(0,26+shipRig.position.y,0);}
         else target.set(s.entry>.01?22:8,18,0);
         distance=width<700?140:118;
+        if(s.shipEngine>.01){distance*=1.3;target.y-=12;}
       }
       const aspectFactor=width/height<1?Math.max(1,(height/width)*.58):1;
       distance*=aspectFactor/zoom;

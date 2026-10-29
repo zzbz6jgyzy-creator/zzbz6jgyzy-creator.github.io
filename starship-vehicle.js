@@ -76,7 +76,9 @@ function makeFlame(parent, radius, length) {
   const flame=mesh(geo,mat,parent); flame.position.y=-.1;
   const core=mesh(new THREE.CylinderGeometry(radius*.1,radius*.24,length*.62,20,1,true),new THREE.MeshBasicMaterial({color:0xc0d9ff,transparent:true,opacity:.35,depthWrite:false,blending:THREE.AdditiveBlending}),parent,0,-length*.3,0);
   const light=new THREE.PointLight(0x86baff,500,120,1.8);light.position.y=-5;parent.add(light);
-  return {group:parent, flame,core,light,uniforms,set(power,time){parent.visible=power>.005;uniforms.uPower.value=Math.max(.01,power);uniforms.uTime.value=time;core.scale.y=Math.max(.01,power);light.intensity=power*800;}};
+  const glowMap=texture(128,128,(c,w,h)=>{const g=c.createRadialGradient(w/2,h/2,0,w/2,h/2,w/2);g.addColorStop(0,'rgba(225,240,255,1)');g.addColorStop(.13,'rgba(160,200,255,.6)');g.addColorStop(.35,'rgba(85,125,255,.15)');g.addColorStop(1,'rgba(10,30,100,0)');c.fillStyle=g;c.fillRect(0,0,w,h);});
+  const glow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowMap,color:0xb2cdff,transparent:true,opacity:.7,blending:THREE.AdditiveBlending,depthWrite:false}));glow.position.y=-radius*.7;glow.scale.setScalar(radius*5);parent.add(glow);
+  return {group:parent, flame,core,light,uniforms,set(power,time){parent.visible=power>.005;uniforms.uPower.value=Math.max(.01,power);uniforms.uTime.value=time;core.scale.y=Math.max(.01,power);light.intensity=power*800;glow.material.opacity=power*.8;glow.scale.setScalar(radius*(4.7+.3*Math.sin(time*33)));}};
 }
 
 export function buildVehicles({mobile=false}={}) {
