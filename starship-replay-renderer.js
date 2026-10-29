@@ -1,7 +1,7 @@
 import * as THREE from '/vendor/three/three.module.min.js';
-import { earthShaders } from '/earth-renderer.js';
+import { earthShaders } from '/earth-renderer.js?v=20261029-flight14';
 import { buildVehicles, vehicleEnvironment, batchStatic } from '/starship-vehicle.js';
-import { FLIGHT, sampleFlight, clamp, mix, smooth } from '/starship-replay-model.js';
+import { FLIGHT, sampleFlight, shipPosition, clamp, mix, smooth } from '/starship-replay-model.js';
 
 const TAU=Math.PI*2;
 const geo=(lat,lon,r=1)=>new THREE.Vector3(Math.cos(lat)*Math.cos(lon)*r,Math.sin(lat)*r,-Math.cos(lat)*Math.sin(lon)*r);
@@ -42,10 +42,10 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   const pad=new THREE.Group();nearScene.add(pad);
   const structure=new THREE.MeshStandardMaterial({color:0x46515d,metalness:.8,roughness:.65});
   const dark=new THREE.MeshStandardMaterial({color:0x263440,metalness:.3,roughness:.9});
-  const groundMaterial=new THREE.ShaderMaterial({vertexShader:'varying vec3 vP;varying float vD;void main(){vP=position;vec4 p=modelViewMatrix*vec4(position,1.);vD=length(p.xyz);gl_Position=projectionMatrix*p;}',fragmentShader:`varying vec3 vP;varying float vD;
+  const groundMaterial=new THREE.ShaderMaterial({vertexShader:'varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:`varying vec3 vP;
     float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
     float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+1.),f.x),f.y);}
-    void main(){vec2 p=vP.xz;float n=noise(p*.03)*.5+noise(p*.15)*.3+noise(p*.6)*.2;float shore=p.x-230.-sin(p.y*.002)*120.;float sea=smoothstep(-18.,22.,shore);vec3 land=mix(vec3(.14,.145,.1),vec3(.26,.255,.19),n);float sand=smoothstep(-70.,0.,shore)*(1.-sea);land=mix(land,vec3(.39,.36,.27),sand*.75);float road=1.-smoothstep(4.,7.,abs(p.x+52.));land=mix(land,vec3(.17,.19,.2),road);float apron=1.-smoothstep(34.,39.,length(p));land=mix(land,vec3(.29,.31,.31),apron);vec3 ocean=mix(vec3(.025,.16,.21),vec3(.045,.22,.26),noise(p*.06));vec3 col=mix(land,ocean,sea);float haze=smoothstep(500.,2400.,vD);gl_FragColor=vec4(mix(col,vec3(.22,.32,.42),haze),1.);}`});
+    void main(){vec2 p=vP.xz;float n=noise(p*.03)*.5+noise(p*.15)*.3+noise(p*.6)*.2;float shore=p.x-230.-sin(p.y*.002)*120.;float sea=smoothstep(-18.,22.,shore);vec3 land=mix(vec3(.14,.145,.1),vec3(.26,.255,.19),n);float sand=smoothstep(-70.,0.,shore)*(1.-sea);land=mix(land,vec3(.39,.36,.27),sand*.75);float road=1.-smoothstep(4.,7.,abs(p.x+52.));land=mix(land,vec3(.17,.19,.2),road);float apron=1.-smoothstep(34.,39.,length(p));land=mix(land,vec3(.29,.31,.31),apron);vec3 ocean=mix(vec3(.025,.16,.21),vec3(.045,.22,.26),noise(p*.06));vec3 col=mix(land,ocean,sea);float haze=smoothstep(500.,2400.,length(vP-cameraPosition));gl_FragColor=vec4(mix(col,vec3(.22,.32,.42),haze),1.);}`});
   const ground=new THREE.Mesh(new THREE.PlaneGeometry(8000,8000),groundMaterial);ground.rotation.x=-Math.PI/2;ground.position.y=-8;pad.add(ground);
   const mount=new THREE.Mesh(new THREE.CylinderGeometry(8,9,8,24,1,true),structure);mount.position.y=-4;pad.add(mount);
   for(let i=0;i<6;i++){const a=i*TAU/6;const leg=new THREE.Mesh(new THREE.CylinderGeometry(.6,.9,10,8),structure);leg.position.set(Math.sin(a)*6,-4,Math.cos(a)*6);pad.add(leg);}
@@ -93,14 +93,11 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   function positionAt(seconds,stage='ship') {
     const s=sampleFlight(seconds);
     if(stage==='booster'){
-      const f=smooth(0,142,seconds)*(1-smooth(147,421,seconds))*.018;
-      return geo(rad(25.997)-f*.3,rad(-97.156)+f,1+s.boosterAltitude/6371);
+      const p=shipPosition(Math.min(142,seconds)),f=smooth(147,421,seconds);
+      // Reconstruct the booster return to an illustrative offshore Gulf point; not GPS.
+      return geo(rad(mix(p.lat,25.95,f)),rad(mix(p.lon,-96.86,f)),1+s.boosterAltitude/6371);
     }
-    // Illustrative inclined orbit. Replaced only when an attributable recording is available.
-    const a=s.orbitalAngle,base=rad(25.997);
-    const lat=Math.asin(Math.sin(base)*Math.cos(a));
-    const lon=rad(-97.156)+Math.atan2(Math.cos(base)*Math.sin(a),Math.cos(a))-s.earthRotation;
-    return geo(lat,lon,1+s.shipAltitude/6371);
+    return geo(rad(s.position.lat),rad(s.position.lon),1+s.shipAltitude/6371);
   }
   const route=[];for(let n=0;n<=900;n++)route.push(positionAt(FLIGHT.duration*n/900));
   orbitGeo.setFromPoints(route);future.computeLineDistances();historyGeo.setFromPoints(route);historyGeo.setDrawRange(0,1);
@@ -110,7 +107,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   function setTime(value){t=clamp(Number(value)||0,0,FLIGHT.duration);draw();}
   function setCamera(value){if(!['cinema','ship','booster','earth'].includes(value))return;mode=value;yaw=.12;pitch=.04;zoom=1;draw();onChange(state());}
   function resize(){const b=canvas.getBoundingClientRect();width=Math.max(1,b.width);height=Math.max(1,b.height);const budget=width<700?1800000:quality==='ultra'?6200000:3300000;renderer.setPixelRatio(Math.min(devicePixelRatio||1,2,Math.sqrt(budget/(width*height))));renderer.setSize(width,height,false);for(const c of [camera,nearCamera]){c.aspect=width/height;c.setViewOffset(width,height,-width*(width<700?0:.1),-height*(width<700?.13:0),width,height);c.updateProjectionMatrix();}draw();}
-  function load(name,color=true){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('Earth imagery took too long to load.')),18000);new THREE.TextureLoader().load('/assets/earth/'+name,tex=>{clearTimeout(timer);if(disposed){tex.dispose();reject(new Error('Replay closed.'));return;}tex.colorSpace=color?THREE.SRGBColorSpace:THREE.NoColorSpace;tex.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());resolve(tex);},undefined,()=>{clearTimeout(timer);reject(new Error('Earth imagery could not load.'));});});}
+  function load(name,color=true){return new Promise((resolve,reject)=>{let settled=false;const timer=setTimeout(()=>{settled=true;reject(new Error('Earth imagery took too long to load.'));},18000);new THREE.TextureLoader().load('/assets/earth/'+name,tex=>{clearTimeout(timer);if(settled||disposed){tex.dispose();if(!settled)reject(new Error('Replay closed.'));return;}settled=true;tex.colorSpace=color?THREE.SRGBColorSpace:THREE.NoColorSpace;tex.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());resolve(tex);},undefined,()=>{clearTimeout(timer);if(!settled){settled=true;reject(new Error('Earth imagery could not load.'));}});});}
   async function setQuality(value){
     if(!['auto','high','ultra'].includes(value)||disposed)return;
     quality=value;const token=++textureToken;
@@ -139,7 +136,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
     const sub=positionAt(t,stage).normalize();
     // Earth and close vehicles have separate cameras in one WebGL context.
     if(isEarth){
-      const a=rad(-97.156)+yaw,lat=.35+pitch;
+      const a=Math.atan2(-sub.z,sub.x)+yaw,lat=clamp(Math.asin(sub.y)+pitch,-1.3,1.3);
       const orbit=new THREE.Vector3(Math.cos(a)*Math.cos(lat),Math.sin(lat),-Math.sin(a)*Math.cos(lat));
       camera.position.copy(orbit.multiplyScalar(3.25/zoom));camera.lookAt(0,0,0);
     }else{
@@ -167,7 +164,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
         if(t>20){shipRig.position.set(Math.sin(tilt)*71,71*Math.cos(tilt)+rise,0);}
       }else if(staging){
         const f=s.separation;shipRig.rotation.z=-.62;boosterRig.rotation.z=mix(-.62,1.8,smooth(144,162,t));
-        shipRig.position.set(20+f*30,46+f*45,0);boosterRig.position.set(-10-f*20,-40-f*45,0);target.set(10,48,0);distance=width<700?310:250;
+        shipRig.position.set(-20+Math.sin(.62)*(71+f*70),-35+Math.cos(.62)*(71+f*70),0);boosterRig.position.set(-20-f*30,-35-f*40,0);target.set(8,42,0);distance=width<700?310:250;
       }else if(followBooster){
         const rotation=t<190?mix(1.8,Math.PI,smooth(162,175,t)):Math.PI*(1-smooth(220,310,t));
         boosterRig.rotation.z=rotation;target.set(0,34,0);distance=width<700?165:145;
@@ -213,7 +210,7 @@ export async function initReplay({canvas,onStatus=()=>{},onError=()=>{},onChange
   bind(document,'visibilitychange',()=>{if(!document.hidden)draw();});
   const observer=new ResizeObserver(resize);observer.observe(canvas);
   const intersection=typeof IntersectionObserver!=='undefined'?new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)draw();}):null;intersection?.observe(canvas);
-  function dispose(){if(disposed)return;disposed=true;textureToken++;observer.disconnect();intersection?.disconnect();cleanups.forEach(f=>f());vehicles.dispose();environment.dispose();const geometries=new Set(),materials=new Set();for(const root of[scene,nearScene])root.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material);});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());Object.values(textures).forEach(x=>x.texture.dispose());blank.dispose();renderer.dispose();}
+  function dispose(){if(disposed)return;disposed=true;textureToken++;observer.disconnect();intersection?.disconnect();cleanups.forEach(f=>f());vehicles.dispose();environment.dispose();const geometries=new Set(),materials=new Set();for(const root of[scene,nearScene,skyScene])root.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)materials.add(o.material);});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());Object.values(textures).forEach(x=>x.texture.dispose());blank.dispose();renderer.dispose();}
   const api={getState:state,setTime,setCamera,setQuality,render:draw,dispose,resetView(){yaw=.12;pitch=.04;zoom=1;draw();}};
   try{await setQuality('auto');ready=true;resize();onStatus('Replay ready.');return api;}catch(error){dispose();onError(error);throw error;}
 }

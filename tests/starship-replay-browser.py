@@ -42,7 +42,7 @@ async def main():
         assert await page.locator('meta[name=robots]').get_attribute('content')=='noindex,follow'
         assert await page.locator('#newsletter,.sd-band,.scroll-beam').count()==0
         await page.locator('#sources').click();assert await page.locator('#about').is_visible()
-        assert 'not recorded position telemetry' in await page.locator('#about').inner_text()
+        assert '373 archived SpaceX position samples' in await page.locator('#about').inner_text()
         await page.keyboard.press('Escape');assert not await page.locator('#about').is_visible()
         assert await page.locator('#sources').evaluate('e=>e===document.activeElement')
         if mode in ['no-webgl','texture-fail','module-fail']:
@@ -58,10 +58,14 @@ async def main():
           assert not state['playing'],'Replay must begin paused, including reduced motion'
           assert await page.locator('#flight-canvas').evaluate("e=>!!e.getContext('webgl2')")
           await shot(page,name+'-launch')
+          if width==1440 and mode=='normal':
+            await page.evaluate('window.__starshipReplay.seek(7)');await shot(page,'1440-ignition');await page.evaluate('window.__starshipReplay.seek(0)')
           if mode=='context-loss':
             await page.locator('#flight-canvas').evaluate("e=>e.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext()")
             await page.wait_for_function("document.querySelector('[data-flight-replay]').dataset.state==='fallback'")
             await shot(page,name)
+            await page.locator('#retry').click()
+            await page.wait_for_function("document.querySelector('[data-flight-replay]').dataset.state==='ready'&&window.__starshipReplay",timeout=120000)
           else:
             await page.locator('#timeline').evaluate("e=>{e.value=142;e.dispatchEvent(new Event('input',{bubbles:true}))}")
             assert (await page.evaluate(STATE))['separated']
@@ -79,7 +83,18 @@ async def main():
             assert (await page.evaluate(STATE))['entry']>0
             await page.evaluate('window.__starshipReplay.seek(10500)')
             await page.locator('.viewer').scroll_into_view_if_needed();await shot(page,name+'-entry')
-            canvas=page.locator('#flight-canvas');await canvas.focus();yaw=(await page.evaluate(STATE))['yaw']
+            canvas=page.locator('#flight-canvas')
+            if width<1000:
+              box=await canvas.bounding_box();cx=box['x']+box['width']*.5;cy=box['y']+box['height']*.6
+              cdp=await ctx.new_cdp_session(page)
+              def fingers(distance):return [{'x':cx-distance,'y':cy,'id':1},{'x':cx+distance,'y':cy,'id':2}]
+              before_zoom=(await page.evaluate(STATE))['zoom']
+              await cdp.send('Input.dispatchTouchEvent',{'type':'touchStart','touchPoints':fingers(30)})
+              await cdp.send('Input.dispatchTouchEvent',{'type':'touchMove','touchPoints':fingers(48)})
+              await cdp.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]})
+              assert (await page.evaluate(STATE))['zoom']>before_zoom,'pinch did not zoom'
+              await cdp.detach()
+            await canvas.focus();yaw=(await page.evaluate(STATE))['yaw']
             await page.keyboard.press('ArrowRight');assert (await page.evaluate(STATE))['yaw']!=yaw
             await page.keyboard.press('+');assert (await page.evaluate(STATE))['zoom']>1
             await page.keyboard.press('Home');assert (await page.evaluate(STATE))['zoom']==1
@@ -107,11 +122,11 @@ async def main():
     ctx=await browser.new_context(viewport={'width':1440,'height':1000},record_video_dir=str(OUT),record_video_size={'width':1440,'height':1000},service_workers='block')
     await ctx.route('**/*',serve);page=await ctx.new_page();await page.goto(SITE+'/starship-replay.html',wait_until='domcontentloaded')
     await page.wait_for_function('window.__starshipReplay&&'+STATE+'.ready',timeout=120000)
-    for chapter,t in [('launch',3),('staging',142),('booster',397),('payload',2800),('entry',10400),('landing',11296)]:
+    for chapter,t in [('launch',3),('staging',142),('booster',397),('orbit',3100),('payload',2800),('deorbit',7940),('entry',10400),('landing',11296)]:
       await page.evaluate("([c,t])=>{window.__starshipReplay.jump(c);window.__starshipReplay.seek(t)}",[chapter,t])
       await page.locator('#speed').select_option('1');await page.evaluate('window.__starshipReplay.play()');await page.wait_for_timeout(2600);await page.evaluate('window.__starshipReplay.pause()')
     video=page.video;await ctx.close();video_file=await video.path()
-    subprocess.run(['ffmpeg','-y','-sseof','-16','-i',str(video_file),'-an','-c:v','libx264','-crf','21','-preset','fast','-pix_fmt','yuv420p','-movflags','+faststart',str(OUT/'starship-flight-14.mp4')],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+    subprocess.run(['ffmpeg','-y','-sseof','-21','-i',str(video_file),'-an','-c:v','libx264','-crf','21','-preset','fast','-pix_fmt','yuv420p','-movflags','+faststart',str(OUT/'starship-flight-14.mp4')],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
     await browser.close()
   (OUT/'results.json').write_text(json.dumps(results,indent=2));print('STARSHIP_PASS '+str(len(results))+' rendered journeys; responsive/fallback checks and film complete.',flush=True)
 

@@ -1,6 +1,6 @@
 ## 2026-10-29 — Starship Flight 14 cinematic replay
 
-Added an isolated replay study with detailed procedural stages, shared NASA Earth shading, chapter cameras, scrubbing, adaptive imagery and rendering fallbacks. Models and trajectories are clearly distinguished from recorded telemetry; the early North Pacific return replaces the abandoned ten-hour plan in this study. The existing Earth preview links to it. No live tracking is added. See `docs/starship-flight-14-replay.md` for provenance, architecture and validation.
+Added an isolated replay study with detailed procedural stages, shared NASA Earth shading, chapter cameras, scrubbing, adaptive imagery and rendering fallbacks. The Ship follows attributed archived SpaceX position samples; the reconstructed booster, attitudes and effects are clearly distinguished from recorded position data; the early North Pacific return replaces the abandoned ten-hour plan in this study. The existing Earth preview links to it. No live tracking is added. See `docs/starship-flight-14-replay.md` for provenance, architecture and validation.
 
 ## 2026-10-29 — Cinematic Earth preview
 

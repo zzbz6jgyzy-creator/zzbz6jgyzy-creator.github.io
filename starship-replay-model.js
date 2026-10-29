@@ -1,13 +1,15 @@
 /* Flight 14: one deterministic clock for every camera and stage. Units: seconds, km. */
+import { SHIP_POSITIONS } from './starship-replay-positions.js';
 export const FLIGHT = Object.freeze({
   name: 'Starship Flight 14', date: '28 September 2026',
   launchUTC: '2026-09-28T12:48:59Z', ship: 'S41', booster: 'B21',
-  duration: 11312, staging: 142, boosterLanding: 421,
+  duration: 11324.4, staging: 142, boosterLanding: 421,
   sources: [
     { name: 'SpaceX · Flight 14 mission', url: 'https://www.spacex.com/launches/starship-flight-14' },
     { name: 'SpaceX · flight broadcast', url: 'https://x.com/i/broadcasts/1qxvvenMPMQxB' },
     { name: 'Launch Library 2 · hardware and outcomes', url: 'https://spacelaunchnow.app/launch/7d1afb26-6f9c-429b-9ccf-29012fd1e519/' },
     { name: 'AIAA · post-flight report', url: 'https://aerospaceamerica.aiaa.org/spacex-shortens-starships-first-orbital-flight-but-achieves-other-objectives/' },
+    { name: 'SpaceX position feed · archived by StarDash', url: 'https://stardash.live/?replay=14' },
   ],
 });
 
@@ -27,13 +29,25 @@ export const clamp = (x, lo, hi) => Math.max(lo, Math.min(hi, x));
 export const mix = (a, b, t) => a + (b - a) * t;
 export const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
 
+export const ARCHIVE = Object.freeze({count:SHIP_POSITIONS.length,first:SHIP_POSITIONS[0][0],last:SHIP_POSITIONS.at(-1)[0],maxGap:Math.max(...SHIP_POSITIONS.slice(1).map((r,i)=>r[0]-SHIP_POSITIONS[i][0]))});
+
+export function shipPosition(value) {
+  const t=clamp(Number(value)||0,SHIP_POSITIONS[0][0],SHIP_POSITIONS.at(-1)[0]);
+  let lo=0,hi=SHIP_POSITIONS.length-1;
+  while(hi-lo>1){const mid=(lo+hi)>>1;if(SHIP_POSITIONS[mid][0]<=t)lo=mid;else hi=mid;}
+  const a=SHIP_POSITIONS[lo],b=SHIP_POSITIONS[hi],span=b[0]-a[0];
+  // A known liftoff anchor avoids interpolating upward movement before launch.
+  const f=a[0]<0&&b[0]>0?(t<=0?0:clamp(t/b[0],0,1)):span?clamp((t-a[0])/span,0,1):0;
+  const deltaLon=((b[3]-a[3]+540)%360)-180;
+  return {lat:mix(a[2],b[2],f),lon:((a[3]+deltaLon*f+540)%360)-180,altitude:Math.max(0,mix(a[1],b[1],f)/1000),sampleBefore:a[0],sampleAfter:b[0],gap:span>60,kind:'interpolated-archive'};
+}
+
 export function clock(t) {
   const n = Math.floor(Math.max(0, Number(t) || 0));
   return 'T+' + [Math.floor(n / 3600), Math.floor(n / 60) % 60, n % 60].map(v => String(v).padStart(2, '0')).join(':');
 }
 
-// These envelopes are explicitly illustrative, not a recorded trajectory or telemetry.
-const shipEnvelope = [[0, 0], [20, .4], [58, 10], [142, 68], [270, 126], [491, 168], [1517, 270], [1538, 275], [7938, 275], [7946, 270], [10024, 100], [10800, 46], [11130, 12], [11270, 2.1], [11293, .75], [11312, 0]];
+// The booster envelope is illustrative. The Ship path uses archived position samples.
 const boosterEnvelope = [[0, 0], [20, .4], [58, 10], [142, 68], [187, 93], [245, 99], [310, 70], [365, 25], [396, 4], [415, .3], [421, 0]];
 
 function interpolate(knots, t) {
@@ -48,14 +62,15 @@ export function sampleFlight(value) {
   const t = clamp(Number(value) || 0, 0, FLIGHT.duration);
   const chapter = [...CHAPTERS].reverse().find(c => t >= c.t) || CHAPTERS[0];
   const separated = t >= FLIGHT.staging;
-  const shipAltitude = interpolate(shipEnvelope, t);
-  const boosterAltitude = interpolate(boosterEnvelope, t);
+  const position=shipPosition(t);
+  const shipAltitude = t>=FLIGHT.duration?0:position.altitude;
+  const boosterAltitude = t<=142?shipAltitude:Math.max(0,interpolate(boosterEnvelope,t)+(shipPosition(142).altitude-68)*(1-smooth(142,245,t)));
   const shipEngine = t < 140 ? 0 : t < 491 ? 1 : t >= 1517 && t <= 1538 ? .48 : t >= 7938 && t <= 7946 ? .3 : t >= 11293 && t < FLIGHT.duration ? .76 : 0;
   const boosterEngine = t < 140 ? 1 : t >= 147 && t < 187 ? .8 : t >= 396 && t < 421 ? mix(.95, .25, smooth(396, 421, t)) : 0;
   const entry = smooth(9920, 10330, t) * (1 - smooth(10980, 11290, t));
   const deploy = clamp((t - 2047) / (3879 - 2047), 0, 1);
   return {
-    t, chapter, separated, shipAltitude, boosterAltitude, shipEngine, boosterEngine,
+    t, chapter, separated, shipAltitude, boosterAltitude, shipEngine, boosterEngine,position,
     entry, deploy, deployed: Math.floor(deploy * 26),
     shipLanded: t >= FLIGHT.duration, boosterLanded: t >= FLIGHT.boosterLanding,
     // A two-body-inspired overview, not recovered GPS coordinates.
@@ -68,6 +83,6 @@ export function sampleFlight(value) {
 
 export function cinematicTime(realSeconds) {
   // A 150-second guided cut. Every chapter still has its real mission clock.
-  const cuts = [[0,0],[20,140],[33,160],[44,396],[57,421],[65,1517],[85,2140],[99,3879],[111,7938],[125,10024],[143,11293],[150,11312]];
+  const cuts = [[0,0],[20,140],[33,160],[44,396],[57,421],[65,1517],[85,2140],[99,3879],[111,7938],[125,10024],[143,11293],[150,FLIGHT.duration]];
   return interpolate(cuts, clamp(realSeconds, 0, 150));
 }

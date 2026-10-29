@@ -19,6 +19,7 @@
     $('vehicle-name').textContent=booster?'SUPER HEAVY / B21':s.separated?'STARSHIP / S41':'FULL STACK / B21 + S41';
     $('phase-label').textContent=booster&&s.boosterLanded?'BOOSTER SPLASHDOWN':s.shipLanded?'SHIP SPLASHDOWN':s.chapter.short.toUpperCase();
     $('altitude-value').textContent=Math.round(booster?s.boosterAltitude:s.shipAltitude).toLocaleString('en');
+    $('altitude-kind').textContent=booster?'KM · MODELLED BOOSTER':'KM · INTERPOLATED SHIP';
     $('payload-value').replaceChildren(document.createTextNode(String(s.deployed)),Object.assign(document.createElement('span'),{textContent:'/26'}));
     if(lastChapter!==s.chapter.id){
       lastChapter=s.chapter.id;
@@ -54,7 +55,7 @@
       if(!$('chapters').children.length)for(const[cIndex,c]of model.CHAPTERS.entries()){
         const b=document.createElement('button');b.type='button';b.className='chapter';b.dataset.chapter=c.id;b.setAttribute('aria-current',String(cIndex===0));b.setAttribute('aria-label','Jump to '+c.short+', approximately '+model.clock(c.t));
         for(const[cls,value]of[['chapter-no',String(cIndex+1).padStart(2,'0')+' /'],['chapter-name',c.short],['chapter-time','~ '+model.clock(c.t)]]){const span=document.createElement('span');span.className=cls;span.textContent=value;b.append(span);}
-        b.addEventListener('click',()=>jump(c));$('chapters').append(b);
+        b.addEventListener('click',()=>{jump(c);root.querySelector('.viewer').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});});$('chapters').append(b);
       }
       const renderer=await import('/starship-replay-renderer.js');
       if(disposed)return;
@@ -72,7 +73,7 @@
   $('quality').addEventListener('change',async e=>{const select=e.target;select.disabled=true;try{await viewer?.setQuality(select.value);updateUI();}catch{$('detail-note').hidden=false;$('detail-note').textContent='Higher detail could not load. The existing imagery is still available.';}finally{if(root.dataset.state==='ready')select.disabled=false;}});
   $('reset-view').addEventListener('click',()=>viewer?.resetView());
   $('flight-canvas').addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();playing?pause():play();}});
-  $('retry').addEventListener('click',()=>{viewer?.dispose();viewer=null;boot();});
+  $('retry').addEventListener('click',()=>{if(viewer?.getState().contextLost){location.reload();return;}viewer?.dispose();viewer=null;boot();});
   const dialog=$('about');let opener;
   for(const id of ['sources','keyboard-help'])$(id).addEventListener('click',()=>{opener=$(id);dialog.showModal();});
   for(const id of ['close-about','done-about'])$(id).addEventListener('click',()=>dialog.close());
