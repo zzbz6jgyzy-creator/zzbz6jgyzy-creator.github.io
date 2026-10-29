@@ -1,6 +1,42 @@
 {
-  "updated": "2026-10-29T08:41:00Z",
+  "updated": "2026-10-29T10:09:00Z",
   "articles": [
+    {
+      "url": "/dispatch/roadster-hawthorne-falcon-9.html",
+      "title": "Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster",
+      "date": "2026-10-29T10:09:00Z",
+      "topic": "tesla",
+      "tag": "Roadster",
+      "image": "/assets/og-v2.jpg",
+      "summary": "Tesla brought the next-gen Roadster to SpaceX's Hawthorne headquarters on 28 Oct, parking it under the first Falcon 9 stage to land after an orbital launch.",
+      "pinned": false,
+      "imageAlt": "Supercharged Daily",
+      "author": "Alex R"
+    },
+    {
+      "url": "/dispatch/fcc-d2d-482mhz-vote.html",
+      "title": "The FCC votes today on opening 482 MHz more spectrum to satellite-to-phone service, and AT&T, Verizon and T-Mobile want their busiest 5G bands kept out",
+      "date": "2026-10-29T10:09:00Z",
+      "topic": "spacex",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/cell-tower-jefferson-wi.jpg",
+      "summary": "The FCC votes today on a proposal adding 482 MHz for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. The big carriers want 2.5 and 3.45 GHz out.",
+      "pinned": false,
+      "imageAlt": "A tall steel lattice cell tower over a harvested field",
+      "author": "Alex R"
+    },
+    {
+      "url": "/dispatch/ship-42-first-tower-catch.html",
+      "title": "Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done",
+      "date": "2026-10-29T10:09:00Z",
+      "topic": "spacex",
+      "tag": "Starship",
+      "image": "/assets/dispatch/starship-booster-catch-approach.jpg",
+      "summary": "SpaceX says Ship 42 finished its static fires for Flight 15, and Musk says it will be the first Starship caught by the tower. No launch date or FAA licence yet.",
+      "pinned": false,
+      "imageAlt": "A Super Heavy booster descends toward the Starbase launch tower with its catch arms open",
+      "author": "Alex R"
+    },
     {
       "url": "/dispatch/grok-bot-shop-pay-vs-amazon.html",
       "title": "Amazon locked Grok Bot out. Shopify just made it one of three AI agents that can pay almost anywhere with Shop Pay",

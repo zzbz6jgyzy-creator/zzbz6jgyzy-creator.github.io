@@ -160,11 +160,11 @@
     ]
   },
   "software": {
-    "updated": "2026-10-29T02:30:58Z",
+    "updated": "2026-10-29T08:58:21Z",
     "id": "2026.38.5.11",
     "firstSeen": "2026-10-24T19:43:09Z",
     "source": "https://teslascope.com/software",
-    "count": 850
+    "count": 879
   },
   "europe": {
     "updated": "2026-10-28",
@@ -172,6 +172,15 @@
     "recognised": 10
   },
   "stories": [
+    {
+      "url": "/dispatch/roadster-hawthorne-falcon-9.html",
+      "image": "/assets/og-v2.jpg",
+      "title": "Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster",
+      "summary": "Tesla brought the next-gen Roadster to SpaceX's Hawthorne headquarters on 28 Oct, parking it under the first Falcon 9 stage to land after an orbital launch.",
+      "tag": "Roadster",
+      "date": "2026-10-29T10:09:00Z",
+      "thumb": "/assets/og-v2-480w.webp"
+    },
     {
       "url": "/dispatch/cybercab-outnumbers-model-y.html",
       "image": "/assets/dispatch/cybercab-outnumbers-model-y-line.jpg",
@@ -216,16 +225,7 @@
       "tag": "Markets",
       "date": "2026-10-22T19:40:00Z",
       "thumb": "/assets/dispatch/giga-texas-hero-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-ai-maps-v15.html",
-      "image": "/assets/dispatch/tesla-nav-screen-hero.jpg",
-      "title": "Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet",
-      "summary": "Tesla’s AI chief says FSD will stop relying on other companies’ maps, starting with V15. I put 15.8 billion FSD miles next to Street View, Waymo and every US road.",
-      "tag": "FSD",
-      "date": "2026-10-22T07:41:03Z",
-      "thumb": "/assets/dispatch/tesla-nav-screen-hero-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-10-29T08:41:00Z"
+  "articlesUpdated": "2026-10-29T10:09:00Z"
 }
