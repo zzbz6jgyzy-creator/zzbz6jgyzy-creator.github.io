@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 29 Oct 2026 12:13:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 20:36:00 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX has told NASA's Moon lander companies it won't launch them, the latest step back from the agency that saved it in 2008</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-dragon-falcon-nasa-retreat.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-dragon-falcon-nasa-retreat.html</guid>
+      <pubDate>Thu, 29 Oct 2026 20:36:00 +0000</pubDate>
+      <category>Dragon</category>
+      <description>Ars Technica reports SpaceX told NASA's Moon lander companies it won't launch them, on top of ending Crew Dragon by 2030 and Falcon 9 sales after 2028.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/crew-dragon-endeavour-iss.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tesla: The Plan. The complete story, 2003 to today</title>
       <link>https://superchargeddaily.com/dispatch/tesla-the-plan-complete-story.html</link>
@@ -717,15 +726,6 @@
       <category>Software</category>
       <description>“If this, then that” for your Tesla, seen on one car in Europe. Not confirmed by Tesla.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-automations-europe-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>FSD fleet passes 15.4 billion miles</title>
-      <link>https://superchargeddaily.com/dispatch/fsd-15-billion-miles.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/fsd-15-billion-miles.html</guid>
-      <pubDate>Mon, 12 Oct 2026 14:53:42 +0000</pubDate>
-      <category>FSD</category>
-      <description>About 35 million supervised miles a day, per Tesla’s safety report.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/fsd-15-billion-miles-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.11</title>

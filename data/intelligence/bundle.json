@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-29T16:25:40.417Z",
+  "generatedAt": "2026-10-29T20:36:38.877Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-dragon-falcon-nasa-retreat.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX has told NASA's Moon lander companies it won't launch them, the latest step back from the agency that saved it in 2008",
+      "at": "2026-10-29T20:36:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-dragon-falcon-nasa-retreat.html",
+      "href": "/dispatch/spacex-dragon-falcon-nasa-retreat.html",
+      "summary": "Ars Technica reports SpaceX told NASA's Moon lander companies it won't launch them, on top of ending Crew Dragon by 2030 and Falcon 9 sales after 2028.",
+      "title": "SpaceX has told NASA's Moon lander companies it won't launch them, the latest step back from the agency that saved it in 2008",
+      "id": "logged|dispatch:/dispatch/spacex-dragon-falcon-nasa-retreat.html|2026-10-29T20:36:00.000Z|SpaceX has told NASA's Moon lander companies it won't launch them, the latest step back from the agency that saved it in 2008"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-the-plan-complete-story.html",
@@ -573,23 +590,6 @@
       "summary": "2026.38.5.11 moved from 467 to 519 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.11",
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-27T11:54:28.000Z|519"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/easyjet-starlink-u-turn.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet",
-      "at": "2026-10-27T08:45:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/easyjet-starlink-u-turn.html",
-      "href": "/dispatch/easyjet-starlink-u-turn.html",
-      "summary": "In January easyJet’s CEO said Starlink’s economics weren’t working. On 26 Oct it said Starlink goes on 277 A320-family jets from 2027. What changed, and the Apollo link.",
-      "title": "easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet",
-      "id": "logged|dispatch:/dispatch/easyjet-starlink-u-turn.html|2026-10-27T08:45:00.000Z|easyJet said Starlink’s numbers didn’t work. Nine months later it’s putting it on its whole Airbus fleet"
     },
     {
       "type": "logged",
@@ -1756,14 +1756,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1777,14 +1777,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-29T11:40:27.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1798,35 +1798,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-29T16:25:40.417Z",
+      "lastChecked": "2026-10-29T20:36:38.877Z",
       "lastVerified": "2026-10-29T16:15:39.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1835,85 +1835,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.397Z",
-      "finished": "2026-10-29T16:25:40.403Z"
+      "started": "2026-10-29T20:36:38.856Z",
+      "finished": "2026-10-29T20:36:38.863Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.403Z",
-      "finished": "2026-10-29T16:25:40.403Z"
+      "started": "2026-10-29T20:36:38.863Z",
+      "finished": "2026-10-29T20:36:38.863Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.403Z",
-      "finished": "2026-10-29T16:25:40.403Z"
+      "started": "2026-10-29T20:36:38.863Z",
+      "finished": "2026-10-29T20:36:38.864Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.403Z",
-      "finished": "2026-10-29T16:25:40.410Z"
+      "started": "2026-10-29T20:36:38.864Z",
+      "finished": "2026-10-29T20:36:38.870Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.410Z",
-      "finished": "2026-10-29T16:25:40.413Z"
+      "started": "2026-10-29T20:36:38.870Z",
+      "finished": "2026-10-29T20:36:38.874Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.413Z",
-      "finished": "2026-10-29T16:25:40.414Z"
+      "started": "2026-10-29T20:36:38.874Z",
+      "finished": "2026-10-29T20:36:38.874Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.414Z",
-      "finished": "2026-10-29T16:25:40.414Z"
+      "started": "2026-10-29T20:36:38.874Z",
+      "finished": "2026-10-29T20:36:38.875Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.414Z",
-      "finished": "2026-10-29T16:25:40.415Z"
+      "started": "2026-10-29T20:36:38.875Z",
+      "finished": "2026-10-29T20:36:38.875Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.415Z",
-      "finished": "2026-10-29T16:25:40.415Z"
+      "started": "2026-10-29T20:36:38.875Z",
+      "finished": "2026-10-29T20:36:38.875Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.415Z",
-      "finished": "2026-10-29T16:25:40.416Z"
+      "started": "2026-10-29T20:36:38.875Z",
+      "finished": "2026-10-29T20:36:38.877Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.416Z",
-      "finished": "2026-10-29T16:25:40.416Z"
+      "started": "2026-10-29T20:36:38.877Z",
+      "finished": "2026-10-29T20:36:38.877Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.416Z",
-      "finished": "2026-10-29T16:25:40.416Z"
+      "started": "2026-10-29T20:36:38.877Z",
+      "finished": "2026-10-29T20:36:38.877Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-29T16:25:40.416Z",
-      "finished": "2026-10-29T16:25:40.416Z"
+      "started": "2026-10-29T20:36:38.877Z",
+      "finished": "2026-10-29T20:36:38.877Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-29T16:25:40.417Z",
+    "generatedAt": "2026-10-29T20:36:38.877Z",
     "factCount": 20,
     "changeCount": 84,
     "conflictCount": 2,
