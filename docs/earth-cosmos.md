@@ -119,7 +119,7 @@ Owner decision, 30 October 2026: the street-level Ground mode was removed ("it
 zooms into a flat map, it looks terrible"). The camera now stops at a realistic
 orbital altitude.
 
-- One named constant, `MIN_ORBIT_ALTITUDE_KM = 400` in `earth-cosmos-model.js` (about the ISS). Camera range is stored from Earth's centre, so the renderer converts it with the current `fitDistance` (`earthMaxZoom()`).
+- One named constant, `MIN_ORBIT_ALTITUDE_KM = 400` in `earth-live-model.js` (not the cosmos model, so the Starship replay does not pull in the 412 KB astronomy engine through `earth-renderer.js`) (about the ISS). Camera range is stored from Earth's centre, so the renderer converts it with the current `fitDistance` (`earthMaxZoom()`).
 - Every route goes through `setZoom()`: wheel, ctrl-wheel/trackpad pinch, touch pinch, `+`/`-`/`=` keys and the panel buttons (`zoomBy`) all call it. `setScale('earth')` clamps its destination to the floor, `setSceneGeo({zoom})` clamps, and `viewLocation()` (used by the place picker) clamps. `updateCamera()` re-clamps every frame, so a resize that changes `fitDistance` cannot leave the camera under the floor.
 - Soft approach: `easeToAltitudeFloor()`. Inside the last 1,500 km the remaining margin can at most halve per input step, so the camera glides in geometrically and snaps exactly on the floor under 0.5 km. It is monotone: no overshoot, no bounce, no jitter. Zooming out is never eased.
 - At the floor the camera is at about 1.063 Earth radii. The near plane is derived from the distance (also before the cosmos module loads) so the surface is not clipped.

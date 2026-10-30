@@ -48,17 +48,6 @@ export function levelFor(distance,focus='Earth'){
 }
 export function unitFor(distance){return distance<2e7?EARTH_RADIUS:distance<LY*.08?AU:distance<LY*800?LY:KPC;}
 export function formatDistance(km){if(km<1e6)return new Intl.NumberFormat('en-GB',{maximumFractionDigits:0}).format(km)+' km';if(km<LY*.01)return(km/AU).toLocaleString('en-GB',{maximumFractionDigits:km/AU<10?2:0})+' AU';return(km/LY).toLocaleString('en-GB',{maximumFractionDigits:km/LY<10?2:0})+' light-years';}
-// Nearest the camera may get to Earth's surface: a realistic low-orbit altitude (the ISS flies at about 400 km).
-// This is the single source of truth for the zoom floor; the renderer enforces it on every path.
-export const MIN_ORBIT_ALTITUDE_KM=400;
-// Soft floor. Zooming in, the remaining margin above the floor can at most halve per input step once within
-// 1,500 km, so the camera glides into the floor geometrically and never crosses it. Zooming out is untouched.
-export function easeToAltitudeFloor(currentKm,requestedKm,floor=MIN_ORBIT_ALTITUDE_KM,band=1500){
-  const cur=Math.max(currentKm-floor,0),req=requestedKm-floor;
-  if(!(req<cur))return Math.max(requestedKm,floor);
-  const next=Math.max(req,Math.min(cur,band)*.5);
-  return floor+(next<.5?0:next);
-}
 export function scalePreset(id,fit=3.4){
  if(id==='earth')return{focus:'Earth',distance:fit*EARTH_RADIUS,level:'earth'};
  if(id==='moon')return{focus:'Moon',distance:6.5*1737.4,level:'moon'};

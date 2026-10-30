@@ -3,6 +3,17 @@ export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export const radians=d=>d*Math.PI/180;
 export const degrees=r=>r*180/Math.PI;
 export const longitude=d=>(((d+180)%360)+360)%360-180;
+// Nearest the camera may get to Earth's surface: a realistic low-orbit altitude (the ISS flies at about 400 km).
+// This is the single source of truth for the zoom floor; the renderer enforces it on every path.
+export const MIN_ORBIT_ALTITUDE_KM=400;
+// Soft floor. Zooming in, the remaining margin above the floor can at most halve per input step once within
+// 1,500 km, so the camera glides into the floor geometrically and never crosses it. Zooming out is untouched.
+export function easeToAltitudeFloor(currentKm,requestedKm,floor=MIN_ORBIT_ALTITUDE_KM,band=1500){
+  const cur=Math.max(currentKm-floor,0),req=requestedKm-floor;
+  if(!(req<cur))return Math.max(requestedKm,floor);
+  const next=Math.max(req,Math.min(cur,band)*.5);
+  return floor+(next<.5?0:next);
+}
 export const PLACES=Object.freeze([
   {id:'starbase',name:'Starbase',country:'Texas · United States',lat:25.997,lon:-97.156,timeZone:'America/Chicago'},
   {id:'manhattan',name:'Manhattan',country:'New York · United States',lat:40.7485,lon:-73.9857,timeZone:'America/New_York'},

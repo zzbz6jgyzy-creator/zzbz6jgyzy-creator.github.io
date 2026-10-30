@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import * as M from '../earth-cosmos-model.js';
+import * as L from '../earth-live-model.js';
 const date=new Date('2026-10-29T00:00:00Z'),e=M.ephemeris(date);
 assert.ok(M.length(e.positions.Moon)>350000&&M.length(e.positions.Moon)<405000);
 assert.ok(M.length(e.positions.Sun)/M.AU>.98&&M.length(e.positions.Sun)/M.AU<1.02);
@@ -51,16 +52,16 @@ for (const banned of ['ground-stage', 'ground-map', 'data-earth-mode', 'earth-re
   assert.ok(!html.toLowerCase().includes(banned.toLowerCase()) && !js.toLowerCase().includes(banned.toLowerCase()), banned + ' must not appear in the page or its script');
 for (const gone of ['earth-ground.js', 'vendor/maplibre']) assert.ok(!existsSync(new URL('../' + gone, import.meta.url)), gone + ' was removed');
 // Zoom floor: one named constant, a soft approach and a hard guarantee.
-assert.equal(M.MIN_ORBIT_ALTITUDE_KM, 400, 'floor is a realistic low orbit (ISS ~400 km)');
+assert.equal(L.MIN_ORBIT_ALTITUDE_KM, 400, 'floor is a realistic low orbit (ISS ~400 km)');
 {
   let alt = 20000;
-  for (let i = 0; i < 200; i++) { alt = M.easeToAltitudeFloor(alt, alt - 900); assert.ok(alt >= M.MIN_ORBIT_ALTITUDE_KM, 'never below the floor: ' + alt); }
-  assert.equal(alt, M.MIN_ORBIT_ALTITUDE_KM, 'repeated zoom-in settles exactly on the floor');
-  assert.equal(M.easeToAltitudeFloor(400, -5000), 400); assert.equal(M.easeToAltitudeFloor(400, 100), 400);
-  assert.equal(M.easeToAltitudeFloor(5000, 8000), 8000, 'zooming out is not eased');
+  for (let i = 0; i < 200; i++) { alt = L.easeToAltitudeFloor(alt, alt - 900); assert.ok(alt >= L.MIN_ORBIT_ALTITUDE_KM, 'never below the floor: ' + alt); }
+  assert.equal(alt, L.MIN_ORBIT_ALTITUDE_KM, 'repeated zoom-in settles exactly on the floor');
+  assert.equal(L.easeToAltitudeFloor(400, -5000), 400); assert.equal(L.easeToAltitudeFloor(400, 100), 400);
+  assert.equal(L.easeToAltitudeFloor(5000, 8000), 8000, 'zooming out is not eased');
   // Approach is monotone and geometric: no overshoot, no oscillation.
-  let a = 1000, last = a; for (let i = 0; i < 12; i++) { a = M.easeToAltitudeFloor(a, 0); assert.ok(a <= last && a >= 400); last = a; }
-  assert.ok(M.easeToAltitudeFloor(1000, 900) === 900, 'ordinary steps well above the floor are untouched');
+  let a = 1000, last = a; for (let i = 0; i < 12; i++) { a = L.easeToAltitudeFloor(a, 0); assert.ok(a <= last && a >= 400); last = a; }
+  assert.ok(L.easeToAltitudeFloor(1000, 900) === 900, 'ordinary steps well above the floor are untouched');
 }
 const rend = readFileSync(new URL('../earth-renderer.js', import.meta.url), 'utf8');
 assert.ok(rend.includes('MIN_ORBIT_ALTITUDE_KM') && rend.includes('earthMaxZoom'), 'renderer enforces the floor');

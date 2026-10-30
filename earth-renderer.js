@@ -1,7 +1,6 @@
 /* Supercharged Daily Earth preview. Local Three.js r170 (MIT); optional dated satellite cloud texture. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import {solarPosition, geoVector, vectorGeo} from '/earth-live-model.js?v=20261030-noground1';
-import {MIN_ORBIT_ALTITUDE_KM, easeToAltitudeFloor} from '/earth-cosmos-model.js?v=20261030-noground1';
+import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM, easeToAltitudeFloor} from '/earth-live-model.js?v=20261030-noground1';
 
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;

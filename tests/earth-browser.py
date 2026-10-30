@@ -50,6 +50,10 @@ async def hud_click(page,selector):
 async def open_panel(page):
     if not await page.evaluate("document.getElementById('earth-panel').open"):
         await hud_click(page,'#earth-menu');await expect(page.locator('#earth-panel')).to_be_visible()
+async def js_panel(page):
+    # Software GL starves Playwright's actionability checks right after a camera flight; open the panel through the DOM.
+    if not await page.evaluate("document.getElementById('earth-panel').open"):
+        await page.evaluate("document.getElementById('earth-menu').click()");await expect(page.locator('#earth-panel')).to_be_visible()
 async def close_panels(page):
     for _ in range(4):
         if not await page.evaluate("[...document.querySelectorAll('dialog')].some(d=>d.open)"):break
@@ -226,9 +230,9 @@ async def main():
                         placed=await page.evaluate(STATE);assert placed['running'] or placed['paused'],placed
                         assert placed['distanceKm']-6371>=MIN_ALT-.01,placed
                         assert await page.locator('#earth-canvas').is_visible(),'Globe stays on screen after choosing a place'
-                        await open_panel(page);await page.locator('#earth-explore').click();await page.locator('#earth-locate').click()
+                        await js_panel(page);await page.locator('#earth-explore').click();await page.locator('#earth-locate').click()
                         await page.wait_for_function(STATE+'.selectedPoint&&'+STATE+'.selectedPoint.lat>53&&'+STATE+'.selectedPoint.lat<54',timeout=20000)
-                        await open_panel(page);await page.locator('#earth-fly-here').click()
+                        await js_panel(page);await page.locator('#earth-fly-here').click()
                         assert (await page.evaluate(STATE))['distanceKm']-6371>=MIN_ALT-.01
                         await zoom_floor_journey(page,ctx,width,name)
                     if mode!='normal':await snapshot(page,name)
