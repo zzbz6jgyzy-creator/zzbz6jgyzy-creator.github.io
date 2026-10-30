@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-30T10:32:46.656Z",
+  "updated": "2026-10-30T10:35:56.521Z",
   "changes": [
     {
       "type": "logged",
@@ -255,40 +255,6 @@
       "summary": "Texas DMV records list 573 Cybercabs and 507 Model Ys under Tesla Robotaxi LLC. Tesla’s fleet is now 89% the size of Waymo’s in the state.",
       "title": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
       "id": "logged|dispatch:/dispatch/cybercab-outnumbers-model-y.html|2026-10-28T14:45:00.000Z|Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet"
-    },
-    {
-      "type": "changed",
-      "factId": "starship:event:starship-flight-15",
-      "topic": "starship",
-      "tracker": "starship",
-      "field": "event:starship-flight-15",
-      "previous": "2026-11-08T06:00:00.000Z|net",
-      "next": "2026-11-12T06:00:00.000Z|net",
-      "at": "2026-10-28T09:15:00.000Z",
-      "evidence": "estimated",
-      "source": "FAA CADENA planning deck, 29 Oct 2026, Upcoming High-Profile Missions slide: Starship FLT-15 NOV 12 (https://compass.atfm.aero/public_svcdynamic/getfile?download=false&fileuuid=0fb6079b-6d10-4039-8766-b3ccb3c877f0)",
-      "sourceUrl": "",
-      "href": "/calendar.html",
-      "summary": "Starship Flight 15 changed from 2026-11-08T06:00:00.000Z|net to 2026-11-12T06:00:00.000Z|net.",
-      "title": "Starship Flight 15",
-      "id": "changed|starship:event:starship-flight-15|2026-10-28T09:15:00.000Z|2026-11-12T06:00:00.000Z|net"
-    },
-    {
-      "type": "changed",
-      "factId": "starship:next-flight",
-      "topic": "starship",
-      "tracker": "starship",
-      "field": "next-flight",
-      "previous": "15|2026-11-08|day",
-      "next": "15|2026-11-12|day",
-      "at": "2026-10-28T09:15:00.000Z",
-      "evidence": "estimated",
-      "source": "FAA planning slides",
-      "sourceUrl": "",
-      "href": "/starship.html",
-      "summary": "Next Starship flight changed from 15|2026-11-08|day to 15|2026-11-12|day.",
-      "title": "Next Starship flight",
-      "id": "changed|starship:next-flight|2026-10-28T09:15:00.000Z|15|2026-11-12|day"
     },
     {
       "type": "logged",
