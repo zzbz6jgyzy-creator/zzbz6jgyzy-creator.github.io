@@ -10,7 +10,7 @@ The detailed map still uses free open geometry, rather than Google 3D Tiles.
   support touch pinch and return smoothly to one-finger dragging. Pause preserves
   the released view. Taps mark a location without recentering it. Keyboard orbit,
   canvas trackpad zoom, reduced motion and reset remain available.
-- The Earth gains a restrained 4K terrain-normal layer and ocean reflection mask.
+- The Earth gains a restrained 4K terrain-normal layer and an ocean mask used for GGX sun glint (see the lighting model below).
   The opening camera selects a naturally lit three-quarter view using the current
   Sun direction; geographic sunlight is unchanged. The day/night base maps remain
   historical. Auto adapts to the GPU and data-saving
@@ -113,6 +113,71 @@ successful image load.
 - **Planet dots:** with labels off every label keeps a 6 px coloured dot (24 px hit area, so touch devices can find and tap planets); only the name fades. Label boxes are `pointer-events:none`, so drags pass to the canvas. The Sun and Galactic-centre markers (`.is-marker`) stay named regardless of the setting.
 - **Toasts:** `#earth-loading`, `#earth-note` (7 s, except the sticky detail-loading message), `#ground-status` (while the map loads and for 5 s after a new message).
 - Tests: `tests/earth-browser.py` (intro, session memory, clean-text assertion, HUD, panel focus, credits, ground view text), `tests/cosmos-browser.py` (labels off/hover/switch/persist, live region), `tests/earth-cosmos.test.mjs` (markup hooks and ids).
+
+## Earth lighting model (stage 2)
+
+All of this lives in `earth-renderer.js` (`PBR_*` shader strings, exported as `earthShadersPhysical`). The older
+`earthShaders` export is unchanged and still drives the isolated Starship replay, which only supplies
+`uDay/uNight/uCloud/uSun/uCloudOffset`; it keeps its legacy flat look on purpose until it gets its own pass.
+Three.js stays at the vendored r170 (WebGL2 only; it already has `AgXToneMapping`, `textureGrad` and `textureSize`).
+
+**Atmosphere (shell mesh, radius 1.08, front faces, additive).** Single scattering after O'Neil, GPU Gems 2 ch. 16:
+Rayleigh (wavelength dependent, vertical optical depth 0.046/0.108/0.265 for R/G/B, the physical sea-level values)
+plus Mie (g = 0.76, Cornette-Shanks phase), exponential density, scale heights in Earth radii (Rayleigh 0.005, Mie 0.0012).
+The optical depth from any point to the Sun is the closed-form Chapman function, so there is no inner light-ray loop.
+Rather than Schueler's published constants I fitted the leading factor and the grazing term; against a brute-force integral
+it is within 3% for zenith cosines from 1 to -0.08 (checked at three heights). The view ray is a midpoint integral whose
+samples crowd around the tangent point (limb rays) or towards the ground (rays that hit the planet), so there is no
+banding and no hard ring. Steps follow the quality tier: 2K 5, 4K 8, 8K and 16K 12; rays that hit the planet use 60%.
+The same functions give the surface and the clouds their transmittance, so the terminator colour is one model.
+
+**Surface.** Land diffuse is albedo x Sun x transmittance(Sun path), so the day/night edge turns orange. A blue sky-fill term
+fades through astronomical twilight instead of a hard cut. Ocean is the `earth-specular-4k` mask (colour heuristic only
+until it loads), lit with GGX (alpha 0.03 plus a faint 0.2 skirt, Smith visibility, Schlick Fresnel F0 0.02) on the smooth
+geometric normal, plus a Fresnel sky reflection. The result is a small sharp glint that stretches towards the limb. The
+terrain normal map is applied to land diffuse only. The view path is attenuated by the same transmittance and the shell adds
+the in-scatter, which is the aerial perspective (hazy blue rim, blue wash at grazing angles). City lights start when the Sun
+is 6 degrees below the horizon (civil twilight), ramp through nautical and are complete at 18 degrees (astronomical), warm
+tinted, with a soft halo from a blurred read of the same night map. Cloud shadows: the surface looks up the cloud map where
+the ray towards the Sun meets the cloud shell (height 0.009), so the shadow offset grows at low Sun (parallax), and it is
+only evaluated near the day side.
+
+**Clouds.** Lit through transmittance at cloud height (they stay lit after the ground goes dark, and go warm at sunset),
+a mild forward-scatter phase (Henyey-Greenstein, g 0.62) with a silver lining near the terminator, a faint blue night
+side, relief shading from comparing the source brightness with a sample towards the Sun, and a quintic-smoothed texture
+read (`textureGrad` with the true screen derivatives, so mip selection is unchanged) instead of plain bilinear. Sub-texel
+edge breakup noise is added only where the data is already partly cloudy (edges), and only above the 2K tier. The live
+EUMETSAT frame is 2048 x 1024 (about 20 km per texel), so close up the shapes are limited by the source, not by filtering;
+the smoothing removes the stair-steps but cannot invent structure. The infrared proxy ramp was widened slightly
+(0.24-0.74) for softer edges.
+
+**Tone mapping.** AgX at exposure 1.25 replaced ACES at 1.08 (see `docs/decisions.md`). Moon, planets and the galaxy share it.
+No post-processing bloom: the glint skirt and the atmosphere give the glow in-shader, and an `EffectComposer` at r170 would
+add an HDR target plus a mip chain of blur passes on phones for one highlight.
+
+**Physical versus artistic.** Physical: Rayleigh and Mie coefficients and ratios, the Chapman optical depth, phase
+functions, twilight angles (6, 12, 18 degrees), Fresnel and GGX forms, parallax of cloud shadows, the Sun-lit cloud height
+advantage. Artistic and labelled as such in the code: scale heights about four times real Rayleigh and six times real Mie
+(so the limb is visible at screen scale); sun path optical depth x2 (`SUNSET_WARMTH`, stands in for ozone and aerosol);
+view path extinction x0.6 (`MS`, stands in for multiple scattering that single scattering lacks, keeps the limb blue
+instead of yellow); the glint gain and roughness; city light intensity and halo; the sky-fill colour; the cloud edge noise;
+and the relief strength. The day, night and cloud maps are still historical or proxy data, not a rendering of the current
+sky.
+
+**Test and screenshot hook.** `viewer.setSceneGeo({sunLat, sunLon, camLat, camLon, zoom})` fixes the sub-solar point and
+points the camera straight down at a place. It switches the view to a fixed state (no clock, no clouds drifting) and is only
+used by tests and review captures.
+
+**Sources.** O'Neil, "Accurate Atmospheric Scattering", GPU Gems 2 ch. 16
+(<https://developer.nvidia.com/gpugems/gpugems2/part-ii-shading-lighting-and-shadows/chapter-16-accurate-atmospheric-scattering>);
+Bruneton and Neyret 2008 and Bruneton 2017 precomputed atmospheric scattering
+(<https://github.com/ebruneton/precomputed_atmospheric_scattering>); Hillaire, "A Scalable and Production Ready Sky and
+Atmosphere Rendering Technique", EGSR 2020 (<https://sebh.github.io/publications/egsr2020.pdf>); Schueler, "An Analytic
+Approximation of the Chapman Function", GPU Pro 3, 2012; Walter et al., "Microfacet Models for Refraction", 2007 (GGX);
+Cornette and Shanks 1992 and Henyey and Greenstein 1941 (phase functions); three.js `AgXToneMapping` (Troy Sobotka's AgX).
+Hillaire's LUT approach is the best fit for a ground-level sky with many lights; for one planet seen from space the
+per-pixel analytic form needs no extra render passes or LUT textures, so it was chosen. References for the look: NASA Blue
+Marble and ISS photographs of the limb, sun glint and terminator.
 
 ## Sources, maintenance and validation
 

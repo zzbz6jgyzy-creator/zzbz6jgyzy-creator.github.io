@@ -170,6 +170,10 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 - **Decision:** `home-v2.js` reads Dispatch card titles from `h2, h3` and compares the fetched lead and supporting stories with what is already rendered. If hrefs and titles match, it leaves the DOM alone.
 - **Why:** the pre-render (`scripts/build-home.js`, ~30 min) normally already holds the newest stories, so the refresh is a no-op and cannot shift layout. It only swaps when a story landed since the last build, which is the case the refresh exists for. Removing it would delay new or pinned leads by up to 30 minutes.
 
+## 2026-10-30 · Earth explorer: AgX tone mapping, analytic atmosphere, stay on three r170
+- **Decision:** AgX at exposure 1.25 replaces ACES at 1.08 for the explorer renderer. The atmosphere is a per-pixel single-scattering integral with the Chapman function for the Sun path, not a LUT pipeline and not a post-processing stack. Three.js stays at r170.
+- **Why:** at matched exposure ACES clipped the clouds and desert to flat white and pushed the blue limb towards cyan. AgX kept cloud and Sahara detail and hue, and at 1.25 the sunlit side is bright without clipping while city lights stay visible (compared with ACES 1.08 and AgX 1.08 and 1.4 on the day glint and sunset limb views; Moon and Solar System views checked, no regression). Hillaire-style LUTs need extra render passes and textures that pay off for ground-level skies, not one planet from space; bloom would need an HDR composer on phones for a single highlight. r170 already has AgX, `textureGrad` and WebGL2; r186 has no feature we need, so the engine change would be risk without a visual gain. The Starship replay deliberately keeps the legacy shaders and ACES.
+
 ## Open: review ratings
 Reviews deliberately replaced unexplained numeric scores with recommendations (`docs/reviews-studio.md`). Google's review rich
 results require a rating. Adding one is an editorial decision for the owner, not a technical one; until then no `Review` schema.
