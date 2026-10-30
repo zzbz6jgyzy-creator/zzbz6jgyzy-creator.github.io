@@ -1,3 +1,17 @@
+## 2026-10-30 — Earth explorer: provenance chip and planet dots
+
+- One quiet chip (bottom left, does not fade) says when the view is not live data: galaxy "Illustration · structural model", star-catalogue scale "Catalogue positions · distances approximate", illustrative clouds, or a satellite frame older than about 3 hours with its UTC time. Hidden on live Earth with a fresh frame. The Sun and Galactic-centre markers stay named in galaxy view.
+- With labels off, each planet keeps a small dot (24 px target) so it can be found and tapped on touch; label boxes no longer swallow canvas drags. Darker intro scrim for text over bright clouds, canvas has its own screen-reader help, page scroll locked while the intro is up.
+
+## 2026-10-30 — Earth explorer: immersive viewer (stage 1)
+
+- `/mission-control.html` is now a full-screen viewer with no text over the canvas. The headline, one-line intro and instructions became an opening overlay with an Enter button (Enter, tap or Esc dismisses it with a fade, focus lands on the canvas, dismissal is remembered in `sessionStorage`). The poster and canvas load behind it, so loading and LCP are unchanged.
+- Inside, only four controls remain: brand mark, Pause, fullscreen and menu. They fade after 2.5 s of inactivity and return on any pointer, touch or key activity; they never hide while keyboard focus is in them or a dialog is open, and stay in the accessibility tree.
+- Everything else moved into a slide-out panel (modal dialog: right side on desktop, bottom sheet on phones; Esc closes, focus returns to the menu button): Space/Ground, perspectives, zoom, reset, deep sky, detail, labels switch, place card, Explore a place, Starship 14, UTC time, distance, cloud status and refresh, credits and Sources & detail. Ground mode shows the map with a Back to Earth button and the menu; map layer toggles are in the panel.
+- Planet labels are off by default; hover or keyboard focus shows one name, and a camera change fades a single soft name. "Show labels" (saved in `localStorage`) restores all. A visually hidden live region announces the view and distance.
+- Status text is a transient toast. The globe is now centred (the old right-hand view offset existed only to make room for text). Map attribution is the compact MapLibre control.
+- Tests updated: intro dismiss and session memory, clean-viewer text assertion, panel and focus, HUD fade and wake, labels, credits. axe passes with the panel open.
+
 ## 2026-10-29 — Earth to the Milky Way
 
 - Fixed the PR's satellite outage failure: transient provider errors receive bounded retries, and the real-source browser check verifies the honest fallback against the observed HTTP status. Invalid metadata, image data and rendering errors remain failures; the run records its actual provider outcome.

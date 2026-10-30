@@ -1,5 +1,5 @@
 /* Free ground explorer. No API keys or paid imagery endpoints. */
-import {clamp, longitude} from './earth-live-model.js?v=20261029-cosmos1';
+import {clamp, longitude} from './earth-live-model.js?v=20261030-immersive2';
 
 export function groundStyle(){
   const source='openmaptiles';
@@ -52,7 +52,7 @@ export async function createGround({container,place,onChange=()=>{},onInteract=(
   const controller=new AbortController();let disposed=false,ready=false,terrain=true,buildings=true,failed=0;const diagnostics=[];
   map.addControl(new lib.NavigationControl({visualizePitch:true}),'top-right');
   map.addControl(new lib.ScaleControl({unit:'metric',maxWidth:100}),'bottom-right');
-  map.addControl(new lib.AttributionControl({compact:false}),'bottom-right');
+  map.addControl(new lib.AttributionControl({compact:true}),'bottom-right');
   map.getCanvas().setAttribute('aria-label','Interactive terrain map. Arrow keys pan; plus and minus zoom; shift and arrows tilt or rotate.');
   const notify=()=>{if(disposed)return;const c=map.getCenter();onChange({lat:c.lat,lon:longitude(c.lng),zoom:map.getZoom(),pitch:map.getPitch(),bearing:map.getBearing(),terrain,buildings,elevation:map.queryTerrainElevation(c),ready});};
   const timer=setTimeout(()=>{if(!ready&&!disposed){onError('The map is taking longer than expected. You can retry or open the satellite view.');}},30000);

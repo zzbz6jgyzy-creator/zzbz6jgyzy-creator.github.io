@@ -1,6 +1,6 @@
 /* Supercharged Daily Earth preview. Local Three.js r170 (MIT); optional dated satellite cloud texture. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import {solarPosition, geoVector, vectorGeo} from '/earth-live-model.js?v=20261029-cosmos1';
+import {solarPosition, geoVector, vectorGeo} from '/earth-live-model.js?v=20261030-immersive2';
 
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;
@@ -254,14 +254,14 @@ export async function initEarth(options = {}) {
   }
   async function ensureCosmos(){
     if(cosmos)return cosmos;if(cosmosPromise)return cosmosPromise;
-    cosmosPromise=import('/earth-cosmos.js?v=20261029-cosmos1').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
+    cosmosPromise=import('/earth-cosmos.js?v=20261030-immersive2').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
       onLabels:rows=>options.onLabels?.(rows),onStatus:message=>{if(!disposed){onStatus(message);renderDemand();}}
     })).then(world=>{if(disposed){world.dispose();return null;}cosmos=world;cosmos.setFocus(focusBody);cosmos.setDeepSky(deepSky);renderDemand();return world;}).catch(()=>{cosmosPromise=null;detailMessage='The wider view could not load. Earth is still available.';zoom=Math.max(zoom,.65);focusBody='Earth';renderDemand();return null;});
     return cosmosPromise;
   }
   async function setScale(id){
     const world=await ensureCosmos();if(!world||disposed)return;
-    const model=await import('/earth-cosmos-model.js?v=20261029-cosmos1');
+    const model=await import('/earth-cosmos-model.js?v=20261030-immersive2');
     const preset=model.scalePreset(id,fitDistance);const startRange=fitDistance/zoom*EARTH_KM;const separation=world.beginFlight(preset.focus);focusBody=preset.focus;
     const destination=clamp(fitDistance*EARTH_KM/preset.distance,fitDistance*EARTH_KM/MAX_RANGE_KM,fitDistance*EARTH_KM/(preset.focus==='Moon'?1737.4*2.5:EARTH_KM/2));
     const target=id==='earth'?initialOrbit.clone():world.recommendedOrbit(id==='galaxy');
@@ -318,7 +318,7 @@ export async function initEarth(options = {}) {
     const verticalFov = THREE.MathUtils.degToRad(camera.fov);
     const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * camera.aspect);
     fitDistance = 1 / Math.sin(Math.min(verticalFov, horizontalFov) * (compact ? 0.98 : 0.80) / 2);
-    camera.setViewOffset(width, height, -width * (compact ? 0.03 : 0.14), -height * (compact ? 0.03 : 0.015), width, height);
+    camera.setViewOffset(width, height, 0, 0, width, height);
     camera.updateProjectionMatrix(); renderDemand();
   }
   function loadTexture(file, color = true) {
