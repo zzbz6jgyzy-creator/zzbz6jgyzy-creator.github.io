@@ -1,6 +1,18 @@
 {
-  "updated": "2026-10-30T02:40:00Z",
+  "updated": "2026-10-30T08:41:00Z",
   "articles": [
+    {
+      "url": "/dispatch/starlink-dynamic-pricing-map.html",
+      "title": "Starlink’s new “dynamic pricing” moves in 10% and 20% steps, so the same Max plan now costs $104 to $156 depending on the town",
+      "date": "2026-10-30T08:41:00Z",
+      "topic": "spacex",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/starlink-dish-ka23-13.jpg",
+      "summary": "Starlink is moving some US Residential customers to local prices reviewed roughly quarterly. Every price checked so far is 10% or 20% above or below list.",
+      "pinned": false,
+      "imageAlt": "Two Starlink flat-panel dishes on a white mount against a clear blue sky",
+      "author": "Alex R"
+    },
     {
       "url": "/dispatch/grok-bot-600k-dau-no-free-tier.html",
       "title": "Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier",
