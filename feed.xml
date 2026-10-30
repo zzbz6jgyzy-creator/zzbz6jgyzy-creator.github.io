@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 30 Oct 2026 02:40:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 08:41:00 +0000</lastBuildDate>
+    <item>
+      <title>Starlink’s new “dynamic pricing” moves in 10% and 20% steps, so the same Max plan now costs $104 to $156 depending on the town</title>
+      <link>https://superchargeddaily.com/dispatch/starlink-dynamic-pricing-map.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-dynamic-pricing-map.html</guid>
+      <pubDate>Fri, 30 Oct 2026 08:41:00 +0000</pubDate>
+      <category>Starlink</category>
+      <description>Starlink is moving some US Residential customers to local prices reviewed roughly quarterly. Every price checked so far is 10% or 20% above or below list.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-dish-ka23-13.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier</title>
       <link>https://superchargeddaily.com/dispatch/grok-bot-600k-dau-no-free-tier.html</link>
@@ -717,15 +726,6 @@
       <category>Roadster</category>
       <description>Nine years after the 2017 unveil promised 0-60 in 1.9 seconds. Start time not yet announced.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/roadster-reveal-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>668 Falcon booster landings</title>
-      <link>https://superchargeddaily.com/dispatch/falcon-668-landings.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/falcon-668-landings.html</guid>
-      <pubDate>Mon, 12 Oct 2026 18:27:46 +0000</pubDate>
-      <category>Falcon 9</category>
-      <description>B1103 made it 668 on Saturday. CRS-35 followed on Tuesday 13 Oct, with B1096 landing at LZ-40.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/falcon-668-landings-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.6.1</title>

@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/starlink-dynamic-pricing-map.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-30T08:41:00Z</news:publication_date>
+      <news:title>Starlink’s new “dynamic pricing” moves in 10% and 20% steps, so the same Max plan now costs $104 to $156 depending on the town</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/grok-bot-600k-dau-no-free-tier.html</loc>
     <news:news>
       <news:publication>
@@ -98,17 +109,6 @@
       </news:publication>
       <news:publication_date>2026-10-28T14:45:00Z</news:publication_date>
       <news:title>Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/spacex-faa-10000-launches.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-28T08:40:00Z</news:publication_date>
-      <news:title>SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours</news:title>
     </news:news>
   </url>
 </urlset>
