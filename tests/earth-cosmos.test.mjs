@@ -46,7 +46,7 @@ assert.ok(html.includes("sessionStorage.getItem('sd-earth-intro')") && js.includ
 assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes("localStorage.getItem('sd-earth-labels')"), 'label choice persists');
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
-for (const m of html.matchAll(/(earth-[a-z-]+\.(?:js|css)|\/earth-[a-z-]+\.js)\?v=([\w-]+)/g)) assert.equal(m[2], /earth-preview\./.test(m[1]) ? '20261030-phone1' : '20261030-noground1', 'consistent ?v= token (page files bump together; renderer imports keep theirs)');
+for (const m of html.matchAll(/(?:earth-[a-z-]+\.(?:js|css)|\/earth-[a-z-]+\.js)\?v=([\w-]+)/g)) assert.equal(m[1], '20261030-flight1', 'consistent ?v= token');
 // No ground mode: owner decision 30 Oct 2026. Nothing for the street map may come back.
 for (const banned of ['ground-stage', 'ground-map', 'data-earth-mode', 'earth-return', 'earth-ground-open', 'ground-terrain', 'ground-buildings', 'earth-satellite', 'maplibre', 'openfreemap', 'openstreetmap', 'OpenMapTiles'])
   assert.ok(!html.toLowerCase().includes(banned.toLowerCase()) && !js.toLowerCase().includes(banned.toLowerCase()), banned + ' must not appear in the page or its script');

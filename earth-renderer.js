@@ -1,6 +1,7 @@
 /* Supercharged Daily Earth preview. Local Three.js r170 (MIT); optional dated satellite cloud texture. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM, easeToAltitudeFloor} from '/earth-live-model.js?v=20261030-noground1';
+import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM} from '/earth-live-model.js?v=20261030-flight1';
+import * as Flight from '/earth-flight.js?v=20261030-flight1';
 
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;
@@ -501,7 +502,12 @@ export async function initEarth(options = {}) {
   const fallbackStars=new THREE.Points(starGeometry,starMaterial);scene.add(fallbackStars);
 
   const maps = { day: null, night: null, clouds: null, normal:null, ocean:null };
-  let cosmos=null,cosmosPromise=null,cosmicState=null,focusBody='Earth',fly=null,deepSky=false;
+  let cosmos=null,cosmosPromise=null,cosmicState=null,deepSky=false;
+  // Camera: earth-flight.js owns position, orientation, inertia, modes and the autopilot. This file turns its state into a camera.
+  const flight=Flight.createFlight({earthFloor:EARTH_KM+MIN_ORBIT_ALTITUDE_KM});
+  const focusId=()=>flight.state.anchor, travelling=()=>flight.state.mode==='auto';
+  const orbitTmp=new Float64Array(4),camKm=new Float64Array(3);
+  let flightPlaced=false;
   const cameraOrbit=new THREE.Quaternion().setFromEuler(new THREE.Euler(-.10,0,0,'YXZ'));
   // Open on a naturally illuminated three-quarter Earth without changing geographic sunlight.
   if(options.view==='live'){
@@ -511,7 +517,7 @@ export async function initEarth(options = {}) {
     cameraOrbit.setFromRotationMatrix(new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),north));
   }
   const initialOrbit=cameraOrbit.clone();
-  let dragOrbit=null,dragVector=null,gestureZoom=1;
+  let dragOrbit=null,dragVector=null,lookDrag=false,lastLook=null,pad0=null;const spinAxis=new THREE.Vector3(),rayDir=new THREE.Vector3(),hitDir=new Float64Array(3);
   let observedCloud = null, weatherToken = 0, weatherAt = null, selectedPoint = null;
   const marker = new THREE.Mesh(new THREE.SphereGeometry(.007, 16, 12),new THREE.MeshBasicMaterial({color:0xf34765}));
   marker.visible = false; marker.renderOrder = 4; globe.add(marker);
@@ -527,52 +533,61 @@ export async function initEarth(options = {}) {
   }
 
   const pointers = new Map();
-  let width = 1, height = 1, fitDistance = 3.3, zoom = 1, yaw = 0, pitch = 0.10;
+  let width = 1, height = 1, fitDistance = 3.3, yaw = 0, pitch = 0.10;
+  const zoomNow = () => fitDistance * EARTH_KM / flight.distance();
   let targetYaw = yaw, targetPitch = pitch, cloudAngle = 0, pinchDistance = 0;
+  flight.setAnimated(!motion.matches);
   let paused = motion.matches, visible = true, disposed = false, contextLost = false, ready = false;
   let quality = ['auto', 'high', 'ultra', 'studio'].includes(options.quality) ? options.quality : 'auto';
-  let qualityToken = 0, frames = 0, raf = 0, lastTime = 0, lastRender = 0, interactionUntil = 0;
+  let lastFlight = 0, qualityToken = 0, frames = 0, raf = 0, lastTime = 0, lastRender = 0, interactionUntil = 0;
   let currentView = options.view === 'live' ? 'live' : 'sunrise', appliedTier = '2k', detailMessage = '';
   const maxTexture = renderer.capabilities.maxTextureSize;
   const cleanups = [];
   const bind = (target, type, handler, opts) => { target.addEventListener(type, handler, opts); cleanups.push(() => target.removeEventListener(type, handler, opts)); };
-  const running = () => ready && (!paused || !!fly) && visible && !document.hidden && !disposed && !contextLost;
+  const running = () => ready && (!paused || travelling()) && visible && !document.hidden && !disposed && !contextLost;
   const notify = () => { if (!disposed) onChange(getState()); };
 
   function getState() {
-    return { ready, frames, running: running(), paused, reducedMotion: motion.matches, quality, view: currentView, rotation: globe.rotation.y, zoom, cameraYaw: yaw, cameraPitch: pitch, textureCount: Object.values(maps).filter(Boolean).length, textureWidth: maps.day?.image?.width || 0, textureTier: appliedTier.toUpperCase(), maxTextureSize: maxTexture, contextLost, detailMessage, orbitQuaternion:cameraOrbit.toArray(), cameraUp:camera.up.toArray(), distanceKm:fitDistance/zoom*EARTH_KM, scene:cosmicState?.level||'earth', focus:focusBody,travelling:!!fly,cosmos:cosmos?.getState()||null, studioSupported:maxTexture>=16384&&navigator.deviceMemory>=8&&innerWidth>=1100, relief:uniforms.uRelief.value>0, skyReady:cosmicState?.skyReady||false, sun:solarPosition(), weatherAt,cloudKind:uniforms.uCloudIR.value?'infrared':'illustrative',observedCloud:!!observedCloud, selectedPoint };
+    return { ready, frames, running: running(), paused, reducedMotion: motion.matches, quality, view: currentView, rotation: globe.rotation.y, zoom: zoomNow(), cameraYaw: yaw, cameraPitch: pitch, textureCount: Object.values(maps).filter(Boolean).length, textureWidth: maps.day?.image?.width || 0, textureTier: appliedTier.toUpperCase(), maxTextureSize: maxTexture, contextLost, detailMessage, orbitQuaternion:Array.from(flight.orbitQuaternion()), cameraUp:camera.up.toArray(), distanceKm:flight.distance(), scene:cosmicState?.level||'earth', focus:focusId(),travelling:travelling(), flight:flightInfo(), cameraKm:Array.from(flight.worldOf(camKm)),cosmos:cosmos?.getState()||null, studioSupported:maxTexture>=16384&&navigator.deviceMemory>=8&&innerWidth>=1100, relief:uniforms.uRelief.value>0, skyReady:cosmicState?.skyReady||false, sun:solarPosition(), weatherAt,cloudKind:uniforms.uCloudIR.value?'infrared':'illustrative',observedCloud:!!observedCloud, selectedPoint };
+  }
+  function flightInfo(){
+    const f=flight.state;
+    return {mode:f.mode==='auto'?'autopilot':f.mode, anchor:f.anchor, nearest:f.nearestId, altitudeKm:f.altitude, cruiseKmS:f.cruise, speedMult:f.speedMult, offer:f.offer, autopilot:f.auto?f.auto.target:null, progress:f.auto?clamp(f.auto.t,0,1):0, speedText:Flight.formatSpeed(f.cruise), path:!!f.path, floorKm:flight.floorOf(f.anchor)||0};
   }
   function updateCamera() {
-    if(focusBody==='Earth'&&!fly&&zoom>earthMaxZoom())zoom=earthMaxZoom();
-    const distanceKm=fitDistance/zoom*EARTH_KM;
+    flight.refresh();
+    const fs=flight.state, distanceKm=flight.distance();
     const estimateUnit=distanceKm<2e7?EARTH_KM:distanceKm<LY_KM*.08?AU_KM:distanceKm<LY_KM*800?LY_KM:LY_KM*3261.563777;
     const distance=distanceKm/estimateUnit;
-    if(!closeSeen&&focusBody==='Earth'&&distanceKm-EARTH_KM<CLOSE_DETAIL_ALTITUDE_KM&&ready){closeSeen=true;if(quality==='auto'&&tierFor('auto')!==appliedTier)void setQuality('auto');}
+    if(!closeSeen&&focusId()==='Earth'&&distanceKm-EARTH_KM<CLOSE_DETAIL_ALTITUDE_KM&&ready){closeSeen=true;if(quality==='auto'&&tierFor('auto')!==appliedTier)void setQuality('auto');}
     // Keep the selection marker the same angular size when the camera is close (it is 45 km wide at scale 1).
     marker.scale.setScalar(estimateUnit===EARTH_KM?clamp((distance-1)/2.3,.03,1):1);
-    camera.position.set(0,0,distance).applyQuaternion(cameraOrbit);
-    camera.up.set(0,1,0).applyQuaternion(cameraOrbit);camera.lookAt(0,0,0);
-    yaw=Math.atan2(camera.position.x,camera.position.z);pitch=Math.asin(clamp(camera.position.y/distance,-1,1));
+    camera.position.set(fs.off[0]/estimateUnit,fs.off[1]/estimateUnit,fs.off[2]/estimateUnit);
+    camera.quaternion.set(fs.q[0],fs.q[1],fs.q[2],fs.q[3]);
+    camera.up.set(0,1,0).applyQuaternion(camera.quaternion);
+    yaw=Math.atan2(fs.off[0],fs.off[2]);pitch=Math.asin(clamp(fs.off[1]/(distanceKm||1),-1,1));
     camera.updateMatrixWorld();
-    if(cosmos){cosmicState=cosmos.update({distanceKm});fallbackStars.visible=!cosmicState?.skyReady;}
+    if(cosmos){if(cosmos.getFocus()!==fs.anchor)cosmos.setFocus(fs.anchor);cosmicState=cosmos.update({distanceKm,nearKm:Math.max(fs.altitude,1e-3),blend:fs.mode==='orbit'});fallbackStars.visible=!cosmicState?.skyReady;}
     else {camera.near=clamp((distance-1)*.4,.002,.1);camera.far=Math.max(150,distance*100);camera.updateProjectionMatrix();}
   }
   async function ensureCosmos(){
     if(cosmos)return cosmos;if(cosmosPromise)return cosmosPromise;
-    cosmosPromise=import('/earth-cosmos.js?v=20261030-noground1').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
+    cosmosPromise=import('/earth-cosmos.js?v=20261030-flight1').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
       onLabels:rows=>options.onLabels?.(rows),onStatus:message=>{if(!disposed){onStatus(message);renderDemand();}}
-    })).then(world=>{if(disposed){world.dispose();return null;}cosmos=world;cosmos.setFocus(focusBody);cosmos.setDeepSky(deepSky);renderDemand();return world;}).catch(()=>{cosmosPromise=null;detailMessage='The wider view could not load. Earth is still available.';zoom=Math.max(zoom,.65);focusBody='Earth';renderDemand();return null;});
+    })).then(world=>{if(disposed){world.dispose();return null;}cosmos=world;flight.setBodies(world.bodyList());flight.setPositionProvider(world.scenePosition);cosmos.setFocus(focusId());cosmos.setDeepSky(deepSky);renderDemand();return world;}).catch(()=>{cosmosPromise=null;detailMessage='The wider view could not load. Earth is still available.';flight.setBodies([{id:'Earth',radius:EARTH_KM}]);flight.jump({anchor:'Earth',distance:Math.min(flight.distance(),fitDistance*EARTH_KM/.65)});renderDemand();return null;});
     return cosmosPromise;
   }
+  // Fly to a world or a scale preset on the autopilot's curved path. Body ids and the presets earth/moon/solar/galaxy are accepted.
   async function setScale(id){
     const world=await ensureCosmos();if(!world||disposed)return;
-    const model=await import('/earth-cosmos-model.js?v=20261030-noground1');
-    const preset=model.scalePreset(id,fitDistance);const startRange=fitDistance/zoom*EARTH_KM;const separation=world.beginFlight(preset.focus);focusBody=preset.focus;
-    const destination=clamp(fitDistance*EARTH_KM/preset.distance,fitDistance*EARTH_KM/MAX_RANGE_KM,fitDistance*EARTH_KM/(preset.focus==='Moon'?1737.4*2.5:EARTH_KM+MIN_ORBIT_ALTITUDE_KM));
-    const target=id==='earth'?initialOrbit.clone():world.recommendedOrbit(id==='galaxy');
-    if(motion.matches||paused){world.setFocus(preset.focus);zoom=destination;cameraOrbit.copy(target);fly=null;renderDemand();}
-    else {fly={at:performance.now(),duration:id==='galaxy'?4200:2200,from:Math.log(zoom),to:Math.log(destination),peak:Math.log(fitDistance*EARTH_KM/Math.max(startRange,preset.distance,separation*3)),a:cameraOrbit.clone(),b:target};schedule();}
-    interactionUntil=performance.now()+10000;setView('live');notify();
+    const model=await import('/earth-cosmos-model.js?v=20261030-flight1');
+    if(id==='Earth')id='earth';
+    const preset=model.scalePreset(id,fitDistance);
+    const q=id==='earth'?initialOrbit:world.recommendedOrbit(id==='galaxy');
+    world.prepare(preset.focus);
+    flight.setAnimated(!paused&&!motion.matches);
+    flight.flyTo(preset.focus,{distance:preset.distance,q:q.toArray(),onDone:()=>{renderDemand();notify();}});
+    interactionUntil=performance.now()+10000;setView('live');schedule();renderDemand();notify();
   }
   function setDeepSky(value){deepSky=!!value;cosmos?.setDeepSky(deepSky);renderDemand();}
   function draw() {
@@ -587,14 +602,15 @@ export async function initEarth(options = {}) {
     if (!running()) return;
     const elapsed = lastTime ? Math.min((now - lastTime) / 1000, 0.1) : 0;
     lastTime = now;
-    const rate=pointers.size||fly?60:30;
+    const rate=pointers.size||flight.active()?60:30;
     if (now - lastRender >= 1000 / rate - 0.5) {
       const dt = lastRender ? Math.min((now - lastRender) / 1000, 0.12) : elapsed;
       lastRender = now;
-      if(fly){const t=clamp((now-fly.at)/fly.duration,0,1),e=t*t*(3-2*t);let a,b,k;if(t<.4){a=fly.from;b=fly.peak;k=t/.4;}else if(t<.65){a=fly.peak;b=fly.peak;k=0;}else{a=fly.peak;b=fly.to;k=(t-.65)/.35;}k=k*k*(3-2*k);zoom=Math.exp(a+(b-a)*k);cosmos?.setFlightMix(clamp((t-.4)/.25,0,1));cameraOrbit.slerpQuaternions(fly.a,fly.b,e);if(t===1)fly=null;}
+      // The camera runs on wall-clock time (capped at a quarter second), so a slow frame never stretches an autopilot trip.
+      flight.step(lastFlight?Math.min((now-lastFlight)/1000,.25):dt);lastFlight=now;
 
       sun.lerp(targetSun, 1 - Math.exp(-dt * 4)).normalize();
-      if (!paused&&!fly&&currentView!=='custom'&&now > interactionUntil&&!pointers.size){const axis=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);cameraOrbit.premultiply(new THREE.Quaternion().setFromAxisAngle(axis,-dt*.012));}
+      if (!paused&&flight.state.mode==='orbit'&&currentView!=='custom'&&now > interactionUntil&&!pointers.size&&!flight.active()){spinAxis.set(0,1,0).applyQuaternion(globe.quaternion);flight.spinOrbit(spinAxis.x,spinAxis.y,spinAxis.z,-dt*.012);}
       if (!observedCloud && currentView !== 'live' && currentView !== 'custom') cloudAngle += dt * 0.0024;
       clouds.rotation.y = cloudAngle;
       uniforms.uCloudOffset.value = -cloudAngle / TAU;
@@ -603,7 +619,7 @@ export async function initEarth(options = {}) {
     raf = requestAnimationFrame(frame);
   }
   function schedule() {
-    if (running() && !raf) { lastTime = 0; lastRender = 0; raf = requestAnimationFrame(frame); }
+    if (running() && !raf) { lastTime = 0; lastRender = 0; lastFlight = 0; raf = requestAnimationFrame(frame); }
     else if (!running() && raf) { cancelAnimationFrame(raf); raf = 0; }
   }
   // Input bursts (wheel, pinch, key repeat) can arrive faster than a frame; the close-up globe fills the screen, so a
@@ -618,7 +634,7 @@ export async function initEarth(options = {}) {
   function resize() {
     const bounds = canvas.getBoundingClientRect();
     width = Math.max(1, bounds.width); height = Math.max(1, bounds.height);
-    const compact = width / height < 1.1;
+    const compact = width / height < 1.1, previousFit = fitDistance;
     const ultraBudget = (quality === 'ultra'||quality === 'studio') && !(navigator.deviceMemory && navigator.deviceMemory <= 4);
     const maxPixels = compact ? 2400000 : ultraBudget ? 8300000 : 4200000;
     const dpr = Math.min(window.devicePixelRatio || 1, 2, Math.sqrt(maxPixels / (width * height)));
@@ -628,6 +644,8 @@ export async function initEarth(options = {}) {
     const verticalFov = THREE.MathUtils.degToRad(camera.fov);
     const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * camera.aspect);
     fitDistance = 1 / Math.sin(Math.min(verticalFov, horizontalFov) * (compact ? 0.98 : 0.80) / 2);
+    if (!flightPlaced) { flightPlaced = true; flight.jump({ anchor: 'Earth', distance: fitDistance * EARTH_KM, q: cameraOrbit.toArray() }); }
+    else if (previousFit !== fitDistance && flight.state.mode === 'orbit') flight.scaleDistance(fitDistance / previousFit);
     camera.setViewOffset(width, height, 0, 0, width, height);
     camera.updateProjectionMatrix();
     if(paused)sun.copy(targetSun);
@@ -701,8 +719,8 @@ export async function initEarth(options = {}) {
     if (!disposed && token === qualityToken) { resize(); notify(); }
     return getState();
   }
-  function pause() { paused = true; fly=null; sun.copy(targetSun); schedule(); draw(); notify(); }
-  function resume() { paused = false; schedule(); notify(); }
+  function pause() { paused = true; flight.cancelAutopilot(); flight.setAnimated(false); sun.copy(targetSun); schedule(); draw(); notify(); }
+  function resume() { paused = false; flight.setAnimated(!motion.matches); schedule(); notify(); }
   function togglePause() { paused ? resume() : pause(); return paused; }
   function setView(view) {
     const views = { sunrise: [-0.92, 0.28, 0.43], daylight: [-0.35, 0.5, 1.0], night: [-1.0, 0.20, -0.58] };
@@ -715,29 +733,22 @@ export async function initEarth(options = {}) {
   const earthMaxZoom = () => fitDistance * EARTH_KM / (EARTH_KM + MIN_ORBIT_ALTITUDE_KM);
   const altitudeOf = value => fitDistance / value * EARTH_KM - EARTH_KM;
   const zoomAt = altitudeKm => fitDistance * EARTH_KM / (EARTH_KM + altitudeKm);
+  // Programmatic and button zoom: immediate, clamped by the focused body's floor (Earth: MIN_ORBIT_ALTITUDE_KM).
   function setZoom(value) {
-    if(!Number.isFinite(value)||value<=0||disposed)return;fly=null;
-    const nearEarth=focusBody==='Earth';
-    const bodyRadius=cosmicState?.focusRadius||6371;
-    let wanted=value,limit=fitDistance*EARTH_KM/(bodyRadius*2.5);
-    if(nearEarth){
-      // Soft floor: the last stretch above the minimum altitude is approached geometrically, never crossed.
-      wanted=zoomAt(easeToAltitudeFloor(altitudeOf(zoom),altitudeOf(value)));
-      limit=earthMaxZoom();
-    }
-    zoom=clamp(wanted,fitDistance*EARTH_KM/MAX_RANGE_KM,limit);
-    if(zoom<.58)void ensureCosmos();
+    if(!Number.isFinite(value)||value<=0||disposed)return;
+    flight.setDistance(clamp(fitDistance*EARTH_KM/value,EARTH_KM*.5,MAX_RANGE_KM),true);
+    if(zoomNow()<.58)void ensureCosmos();
     interactionUntil=performance.now()+8000;renderDemand();
   }
   // Fly the camera to a place at a chosen altitude (never below the floor).
   function viewLocation(lat,lon,altitudeKm=MIN_ORBIT_ALTITUDE_KM*1.1){
     // From the Moon, a planet or the galaxy this brings the camera home to Earth first.
-    fly=null;if(focusBody!=='Earth'){focusBody='Earth';cosmos?.setFocus('Earth');}
-    focusLocation(lat,lon);zoom=clamp(zoomAt(Math.max(altitudeKm,MIN_ORBIT_ALTITUDE_KM)),fitDistance*EARTH_KM/MAX_RANGE_KM,earthMaxZoom());renderDemand();notify();
+    flight.jump({anchor:'Earth',distance:Math.max(altitudeKm,MIN_ORBIT_ALTITUDE_KM)+EARTH_KM});
+    focusLocation(lat,lon);flight.setDistance(Math.max(altitudeKm,MIN_ORBIT_ALTITUDE_KM)+EARTH_KM,true);renderDemand();notify();
   }
-  function zoomBy(delta) {setZoom(zoom<.55?zoom*Math.exp(delta*6):zoom+delta);}
-  function stepOrbit(dx=0,dy=0){fly=null;const turn=new THREE.Quaternion().setFromEuler(new THREE.Euler(-dy,dx,0,'YXZ'));cameraOrbit.multiply(turn).normalize();interactionUntil=performance.now()+8000;renderDemand();}
-  function reset(){focusBody='Earth';cosmos?.setFocus('Earth');globe.rotation.set(0,-1.92,-.07);cameraOrbit.copy(initialOrbit);zoom=1;fly=null;cloudAngle=0;clouds.rotation.y=0;uniforms.uCloudOffset.value=0;setView(options.view==='live'?'live':'sunrise');renderDemand();}
+  function zoomBy(delta) {if(flight.state.mode==='free'){flight.dolly(delta>0?.5:-.5);interactionUntil=performance.now()+8000;renderDemand();return;}const zoom=zoomNow();setZoom(zoom<.55?zoom*Math.exp(delta*6):zoom+delta);}
+  function stepOrbit(dx=0,dy=0){flight.orbitStep(dx,dy);interactionUntil=performance.now()+8000;renderDemand();}
+  function reset(){flight.cancelAutopilot();globe.rotation.set(0,-1.92,-.07);flight.jump({anchor:'Earth',distance:fitDistance*EARTH_KM,q:initialOrbit.toArray()});cloudAngle=0;clouds.rotation.y=0;uniforms.uCloudOffset.value=0;setView(options.view==='live'?'live':'sunrise');renderDemand();}
   function arcballPoint(x,y){
     const r=canvas.getBoundingClientRect();const distance=camera.position.length();
     const ray=new THREE.Vector3((x-r.left)/r.width*2-1,-(y-r.top)/r.height*2+1,.5).applyMatrix4(camera.projectionMatrixInverse).normalize();
@@ -749,26 +760,66 @@ export async function initEarth(options = {}) {
     const px=(x-r.left-(centre.x+1)*r.width/2)/radius,py=((1-centre.y)*r.height/2-(y-r.top))/radius,r2=px*px+py*py;
     return new THREE.Vector3(px,py,r2<.5?Math.sqrt(1-r2):.5/Math.sqrt(r2)).normalize();
   }
+  const nowSec = () => performance.now() / 1000;
+  const syncOrbit = () => cameraOrbit.fromArray(flight.orbitQuaternion());
+  // Direction (scene frame, unit, from the focused body's centre) of the surface point under a screen position, or null.
+  function hitAt(x, y) {
+    const r = canvas.getBoundingClientRect();
+    rayDir.set((x - r.left) / r.width * 2 - 1, -(y - r.top) / r.height * 2 + 1, .5).unproject(camera).sub(camera.position).normalize();
+    return flight.rayHit(rayDir.x, rayDir.y, rayDir.z, hitDir) ? hitDir : null;
+  }
   function pointerDown(event) {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (event.pointerType === 'mouse' && event.button !== 0 && event.button !== 2) return;
     canvas.focus({ preventScroll: true });
-    if (!pointers.size) {fly=null;gestureStart={x:event.clientX,y:event.clientY};gestureMoved=false;dragOrbit=cameraOrbit.clone();dragVector=arcballPoint(event.clientX,event.clientY);} else gestureMoved = true;
+    if (!pointers.size) {
+      flight.cancelAutopilot(); gestureStart={x:event.clientX,y:event.clientY}; gestureMoved=event.button===2;
+      lookDrag = event.button === 2 || flight.state.mode === 'free';
+      if (lookDrag) lastLook = { x: event.clientX, y: event.clientY };
+      else { syncOrbit(); dragOrbit = cameraOrbit.clone(); dragVector = arcballPoint(event.clientX, event.clientY); flight.dragStart(nowSec()); }
+    } else { gestureMoved = true; dragOrbit = null; dragVector = null; lastLook = null; flight.state.drag.active = false; }
     pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
     try { canvas.setPointerCapture(event.pointerId); } catch { /* A cancelled gesture has no capture. */ }
     canvas.style.cursor = 'grabbing'; interactionUntil = performance.now() + 2500;
-    if (pointers.size === 2) { const [a, b] = [...pointers.values()]; pinchDistance = Math.hypot(a.x - b.x, a.y - b.y); }
+    if (pointers.size === 2) { const [a, b] = [...pointers.values()]; pinchDistance = Math.hypot(a.x - b.x, a.y - b.y); pad0 = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }; }
   }
   function pointerMove(event) {
     const previous = pointers.get(event.pointerId); if (!previous) return;
     if (gestureStart && Math.hypot(event.clientX-gestureStart.x,event.clientY-gestureStart.y)>7) gestureMoved = true;
     const next = { x: event.clientX, y: event.clientY }; pointers.set(event.pointerId, next);
-    if(pointers.size===1&&dragOrbit&&dragVector){const q=new THREE.Quaternion().setFromUnitVectors(dragVector,arcballPoint(next.x,next.y));cameraOrbit.copy(dragOrbit).multiply(q.invert()).normalize();interactionUntil=performance.now()+8000;renderDemand();}
-    else if (pointers.size === 2) {
-      const [a, b] = [...pointers.values()], distance = Math.hypot(a.x - b.x, a.y - b.y);
-      if (pinchDistance > 0) setZoom(zoom * distance / pinchDistance); pinchDistance = distance;
+    if (pointers.size === 1) {
+      if (lookDrag && lastLook) { // grab the sky: the view follows the finger
+        const k = THREE.MathUtils.degToRad(camera.fov) / Math.max(1, height);
+        flight.lookBy((next.x - lastLook.x) * k, (next.y - lastLook.y) * k); lastLook = next; interactionUntil = performance.now() + 8000; renderDemand();
+      } else if (dragOrbit && dragVector) {
+        const q = new THREE.Quaternion().setFromUnitVectors(dragVector, arcballPoint(next.x, next.y));
+        cameraOrbit.copy(dragOrbit).multiply(q.invert()).normalize(); cameraOrbit.toArray(orbitTmp); flight.setOrbitQuaternion(orbitTmp, nowSec()); interactionUntil = performance.now() + 8000; renderDemand();
+      }
+    } else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()], distance = Math.hypot(a.x - b.x, a.y - b.y), cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2;
+      if (flight.state.mode === 'free') { // two fingers fly: drag up/down moves forward/back, sideways strafes, pinch changes speed
+        if (pinchDistance > 0) flight.speedBy(distance / pinchDistance);
+        if (pad0) flight.setMove(clamp((cx - pad0.x) / 80, -1, 1), 0, clamp((cy - pad0.y) / 80, -1, 1));
+      } else if (pinchDistance > 0) { flight.zoomBy(pinchDistance / distance, hitAt(cx, cy)); if (flight.state.lzt < Math.log(EARTH_KM * 40)) void ensureCosmos(); }
+      pinchDistance = distance; interactionUntil = performance.now() + 8000; schedule(); renderDemand();
     }
   }
-  function pointerUp(event) { if (event.type === 'pointerup' && pointers.size === 1 && gestureStart && !gestureMoved) { const p=pickLocation(event.clientX,event.clientY); if(p) options.onSelect?.(p); } gestureStart=null;dragOrbit=null;dragVector=null; pointers.delete(event.pointerId); pinchDistance=0;if(pointers.size===1){const p=[...pointers.values()][0];dragOrbit=cameraOrbit.clone();dragVector=arcballPoint(p.x,p.y);}if (!pointers.size) canvas.style.cursor = 'grab'; interactionUntil = performance.now() + 2500; }
+  // A tap on a place selects it (Earth); a tap on another world flies there.
+  function tap(x, y) {
+    const p = pickLocation(x, y);
+    if (p && focusId() === 'Earth') { options.onSelect?.(p); return; }
+    const body = cosmos?.pickBody(x, y);
+    if (body && body !== focusId()) void setScale(body); else if (p) options.onSelect?.(p);
+  }
+  function pointerUp(event) {
+    if (event.type === 'pointerup' && pointers.size === 1 && gestureStart && !gestureMoved) tap(event.clientX, event.clientY);
+    gestureStart=null;dragOrbit=null;dragVector=null;lastLook=null; pointers.delete(event.pointerId); pinchDistance=0;
+    if (pointers.size < 2) { pad0 = null; flight.setMove(0, 0, 0); }
+    if (pointers.size === 1) {
+      const p = [...pointers.values()][0];
+      if (flight.state.mode === 'free') lastLook = { x: p.x, y: p.y }; else { syncOrbit(); dragOrbit = cameraOrbit.clone(); dragVector = arcballPoint(p.x, p.y); flight.dragStart(nowSec()); }
+    } else if (!pointers.size) { flight.dragEnd(nowSec()); lookDrag = false; canvas.style.cursor = 'grab'; schedule(); }
+    interactionUntil = performance.now() + 2500;
+  }
   function pickLocation(clientX,clientY) {
     if (!ready || disposed) return null;
     updateCamera(); globe.updateMatrixWorld(true);
@@ -786,9 +837,15 @@ export async function initEarth(options = {}) {
     if(!center){renderDemand();return;}
     globe.updateMatrixWorld(true); v.applyQuaternion(globe.quaternion);
     const north=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);
-    cameraOrbit.setFromRotationMatrix(new THREE.Matrix4().lookAt(v,new THREE.Vector3(),north));
+    lookFrom(v,north);
     interactionUntil=performance.now()+10000;
     renderDemand();
+  }
+  // Orbit orientation that looks at Earth's centre from direction v (scene frame) with the given up; keeps the distance.
+  function lookFrom(v,north){
+    new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().lookAt(v,new THREE.Vector3(),north)).toArray(orbitTmp);
+    if(flight.state.mode==='orbit'&&focusId()==='Earth')flight.setOrbitQuaternion(orbitTmp);
+    else flight.jump({anchor:'Earth',distance:fitDistance*EARTH_KM,q:orbitTmp});
   }
   async function setWeatherTexture(url, at, metadata={}) {
     const token=++weatherToken;
@@ -820,20 +877,73 @@ export async function initEarth(options = {}) {
   function setSceneGeo({sunLat,sunLon,camLat,camLon,zoom:z}={}){
     if(disposed)return;currentView='custom';globe.updateMatrixWorld(true);
     if(Number.isFinite(sunLat)&&Number.isFinite(sunLon)){const d=geoVector(sunLat,sunLon);targetSun.set(d.x,d.y,d.z).applyQuaternion(globe.quaternion).normalize();sun.copy(targetSun);}
-    if(Number.isFinite(camLat)&&Number.isFinite(camLon)){const p=geoVector(camLat,camLon),v=new THREE.Vector3(p.x,p.y,p.z).applyQuaternion(globe.quaternion),n=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);cameraOrbit.setFromRotationMatrix(new THREE.Matrix4().lookAt(v,new THREE.Vector3(),n));}
-    if(Number.isFinite(z))zoom=focusBody==='Earth'?Math.min(z,earthMaxZoom()):z;fly=null;renderDemand();
+    if(Number.isFinite(camLat)&&Number.isFinite(camLon)){const p=geoVector(camLat,camLon),v=new THREE.Vector3(p.x,p.y,p.z).applyQuaternion(globe.quaternion),n=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);lookFrom(v,n);}
+    if(Number.isFinite(z))flight.setDistance(fitDistance*EARTH_KM/z,true);renderDemand();
   }
-  const api = { setSceneGeo, getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, viewLocation, minAltitudeKm:MIN_ORBIT_ALTITUDE_KM, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive,setScale,setDeepSky,dispose };
+  const api = { setFlightMode, flyTo: setScale, cancelAutopilot: () => { flight.cancelAutopilot(); renderDemand(); notify(); }, getFlight: flightInfo, playPath: async keys => { await ensureCosmos(); flight.setAnimated(animatedNow()); return flight.playPath(keys, { onDone: () => { renderDemand(); notify(); } }); }, __cinemaDemo: async () => api.playPath(Flight.DEMO_PATH), setSceneGeo, getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, viewLocation, minAltitudeKm:MIN_ORBIT_ALTITUDE_KM, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive,setScale,setDeepSky,dispose };
   if (canvas.tabIndex < 0) canvas.tabIndex = 0;
   canvas.style.touchAction = 'none'; canvas.style.cursor = 'grab';
   bind(canvas, 'pointerdown', pointerDown); bind(canvas, 'pointermove', pointerMove);
   bind(canvas, 'pointerup', pointerUp); bind(canvas, 'pointercancel', pointerUp); bind(canvas, 'lostpointercapture', pointerUp);
+  /* Keyboard. Orbit mode: arrows or A/D orbit, W/S zoom, +/- step the zoom. Free flight: W/A/S/D move, Q/E down/up, arrows look,
+     Z/C roll, Shift boosts. F enters free flight, O orbits the nearest world, [ and ] change the cruise speed, Esc stops the autopilot.
+     A key held for less than 140 ms still moves the camera a little, so a tap always does something. */
+  const keysDown = new Set(), pressedAt = new Map(), animatedNow = () => !paused && !motion.matches;
+  const MOVE_KEYS = new Set(['w', 'a', 's', 'd', 'q', 'e', 'z', 'c', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Shift']);
+  function applyKeys() {
+    const k = n => keysDown.has(n) ? 1 : 0;
+    flight.setBoost(keysDown.has('Shift'));
+    if (flight.state.mode === 'free') {
+      flight.setMove(k('d') - k('a'), k('e') - k('q'), k('s') - k('w')); flight.setLook((k('ArrowLeft') - k('ArrowRight')) * 1.1, (k('ArrowUp') - k('ArrowDown')) * 1.1, (k('z') - k('c')) * 1); flight.setOrbitInput(0, 0, 0);
+    } else {
+      flight.setOrbitInput(k('ArrowRight') - k('ArrowLeft') + k('d') - k('a'), k('ArrowUp') - k('ArrowDown'), k('w') - k('s')); flight.setMove(0, 0, 0); flight.setLook(0, 0, 0);
+    }
+    interactionUntil = performance.now() + 8000; schedule(); renderDemand();
+  }
+  function discreteKey(name) { // paused or reduced motion: one step per key press, no inertia
+    if (flight.state.mode === 'free') {
+      const m = { w: [0, 0, -1], s: [0, 0, 1], a: [-1, 0, 0], d: [1, 0, 0], q: [0, -1, 0], e: [0, 1, 0] }[name];
+      if (m) flight.nudge(m[0], m[1], m[2]); else flight.lookBy({ ArrowLeft: .12, ArrowRight: -.12 }[name] || 0, { ArrowUp: .1, ArrowDown: -.1 }[name] || 0, { z: .12, c: -.12 }[name] || 0);
+    } else {
+      const m = { ArrowLeft: [-.14, 0], ArrowRight: [.14, 0], ArrowUp: [0, .1], ArrowDown: [0, -.1], a: [-.14, 0], d: [.14, 0] }[name];
+      if (m) flight.orbitStep(m[0], m[1]); else if (name === 'w') zoomBy(.12); else if (name === 's') zoomBy(-.12);
+    }
+    interactionUntil = performance.now() + 8000; renderDemand();
+  }
+  function setFlightMode(mode) {
+    if (disposed) return flight.state.mode;
+    keysDown.clear(); flight.setMove(0, 0, 0); flight.setLook(0, 0, 0); flight.setOrbitInput(0, 0, 0);
+    if (mode === 'free') flight.enterFree(); else if (mode === 'orbit') flight.enterOrbit();
+    interactionUntil = performance.now() + 8000; schedule(); renderDemand(); notify(); return flight.state.mode;
+  }
   bind(canvas, 'keydown', event => {
     if (event.altKey || event.ctrlKey || event.metaKey) return;
-    const actions = { ArrowLeft: () => stepOrbit(-0.14, 0), ArrowRight: () => stepOrbit(0.14, 0), ArrowUp: () => stepOrbit(0, 0.10), ArrowDown: () => stepOrbit(0, -0.10), '+': () => zoomBy(0.12), '=': () => zoomBy(0.12), '-': () => zoomBy(-0.12), '_': () => zoomBy(-0.12), Home: reset, ' ': togglePause };
-    if (actions[event.key]) { event.preventDefault(); actions[event.key](); }
+    const name = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+    if (name === 'Escape' && travelling()) { event.preventDefault(); flight.cancelAutopilot(); renderDemand(); notify(); return; }
+    const actions = { '+': () => zoomBy(0.12), '=': () => zoomBy(0.12), '-': () => zoomBy(-0.12), '_': () => zoomBy(-0.12), Home: reset, ' ': togglePause, f: () => setFlightMode('free'), o: () => setFlightMode('orbit'),
+      '[': () => { flight.speedBy(1 / 1.25); renderDemand(); notify(); }, ']': () => { flight.speedBy(1.25); renderDemand(); notify(); } };
+    if (actions[name]) { event.preventDefault(); if (!event.repeat || name === '+' || name === '=' || name === '-' || name === '_') actions[name](); return; }
+    if (!MOVE_KEYS.has(name)) return;
+    event.preventDefault();
+    if (name === 'Shift') { if (!keysDown.has('Shift')) { keysDown.add('Shift'); applyKeys(); } return; }
+    if (!animatedNow()) { discreteKey(name); return; }
+    if (!keysDown.has(name)) { keysDown.add(name); pressedAt.set(name, performance.now()); applyKeys(); }
   });
-  bind(canvas, 'wheel', event => { event.preventDefault(); setZoom(zoom*Math.exp(-event.deltaY*(event.ctrlKey?.012:zoom<.01?.006:zoom<.55?.003:.001))); }, { passive: false });
+  bind(canvas, 'keyup', event => {
+    const name = event.key.length === 1 ? event.key.toLowerCase() : event.key; if (!keysDown.has(name)) return;
+    const wait = name === 'Shift' ? 0 : Math.max(0, 140 - (performance.now() - (pressedAt.get(name) || 0)));
+    setTimeout(() => { keysDown.delete(name); if (!disposed) applyKeys(); }, wait);
+  });
+  bind(canvas, 'blur', () => { if (keysDown.size) { keysDown.clear(); applyKeys(); } });
+  bind(canvas, 'contextmenu', event => event.preventDefault());
+  bind(canvas, 'wheel', event => {
+    event.preventDefault(); flight.cancelAutopilot();
+    if (flight.state.mode === 'free') { flight.speedBy(Math.exp(-event.deltaY * .0018)); renderDemand(); notify(); return; }
+    const zoom = zoomNow(), k = event.ctrlKey ? .012 : zoom < .01 ? .006 : zoom < .55 ? .003 : .001;
+    flight.zoomBy(Math.exp(event.deltaY * k), hitAt(event.clientX, event.clientY));
+    if (flight.state.lzt > Math.log(EARTH_KM * 40)) void ensureCosmos();
+    interactionUntil = performance.now() + 8000; schedule(); renderDemand();
+  }, { passive: false });
   const sunTimer = setInterval(()=>{if(currentView==='live'&&!document.hidden&&visible){draw();notify();}},30000);
   cleanups.push(()=>clearInterval(sunTimer));
   bind(document, 'visibilitychange', () => { schedule(); if (!document.hidden) draw(); notify(); });

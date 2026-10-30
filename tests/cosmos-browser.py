@@ -47,6 +47,105 @@ async def labels_check(page,width):
  await page.wait_for_function(OPQ+".every(o=>o<.05)",timeout=5000)
  assert await page.evaluate("localStorage.getItem('sd-earth-labels')")=='0'
 
+# ---------------------------------------------------------------- flight (earth-flight.js): free flight, autopilot, floors
+async def wait_state(page,expr,timeout=90000):await page.wait_for_function("(()=>{const s=window.__earthPreview.getState();return "+expr+"})()",timeout=timeout)
+def dist3(a,b):return sum((x-y)**2 for x,y in zip(a,b))**.5
+async def touch(client,kind,pts):await client.send('Input.dispatchTouchEvent',{'type':kind,'touchPoints':[{'x':x,'y':y,'id':i+1} for i,(x,y) in enumerate(pts)]})
+async def flight_checks(page,ctx,width,errors):
+ """Keyboard and touch flight, autopilot arrival, cancel on input, floors."""
+ await page.evaluate("window.__earthPreview.resume()");await page.evaluate("window.__earthPreview.setScale('earth')")
+ await wait_state(page,"s.focus==='Earth'&&!s.travelling");await page.evaluate("document.getElementById('earth-canvas').focus()")
+ st=await page.evaluate(STATE);assert st['flight']['mode']=='orbit' and st['flight']['anchor']=='Earth',st['flight']
+ if width>1000:
+  # --- orbit keys move the camera; a bare tap of a key still does something
+  q0=st['orbitQuaternion'];await page.keyboard.press('ArrowRight');await wait_state(page,"s.orbitQuaternion.some((v,i)=>Math.abs(v-"+json.dumps(q0)+"[i])>1e-4)")
+  # --- free flight by keyboard: F, hold W, speed scales with altitude, Shift boosts
+  await page.keyboard.press('f');await wait_state(page,"s.flight.mode==='free'");free=await page.evaluate(STATE)
+  assert free['flight']['cruiseKmS']>0 and free['flight']['altitudeKm']>2000,free['flight']
+  start=free['cameraKm'];await page.keyboard.down('w');await wait_state(page,"Math.hypot(...s.cameraKm.map((v,i)=>v-"+json.dumps(start)+"[i]))>"+str(free['flight']['cruiseKmS']*.4),timeout=60000);await page.keyboard.up('w')
+  await page.wait_for_timeout(300);mid=await page.evaluate(STATE);assert dist3(mid['cameraKm'],start)>free['flight']['cruiseKmS']*.4,'W must fly the camera'
+  q1=mid['orbitQuaternion'];await page.keyboard.down('ArrowLeft');await wait_state(page,"s.orbitQuaternion.some((v,i)=>Math.abs(v-"+json.dumps(q1)+"[i])>.01)");await page.keyboard.up('ArrowLeft')
+  after_look=await page.evaluate(STATE);await page.wait_for_timeout(600)
+  # --- the Earth floor holds in free flight even boosted straight at it
+  await page.evaluate("window.__earthPreview.setScale('earth')");await wait_state(page,"s.flight.mode==='orbit'&&!s.travelling");await page.keyboard.press('f')
+  await wait_state(page,"s.flight.mode==='free'");floor=await page.evaluate(STATE+'.flight.floorKm');assert floor==8871,floor
+  await page.keyboard.down('Shift');await page.keyboard.down('w')
+  await page.wait_for_function("(()=>{const s=window.__earthPreview.getState();window.__minD=Math.min(window.__minD||1e18,Math.hypot(...s.cameraKm));return window.__minD<8871*1.002})()",timeout=90000)
+  for _ in range(6):await page.wait_for_timeout(400);await page.evaluate("(()=>{const s=window.__earthPreview.getState();window.__minD=Math.min(window.__minD,Math.hypot(...s.cameraKm))})()")
+  await page.keyboard.up('w');await page.keyboard.up('Shift');assert await page.evaluate('window.__minD')>=8871-.01,('free flight crossed the Earth floor',await page.evaluate('window.__minD'))
+  await page.keyboard.press('o');await wait_state(page,"s.flight.mode==='orbit'&&s.focus==='Earth'")
+  # --- autopilot from the panel: Earth to Mars arrives in orbit, framed at 6.5 radii
+  await open_panel(page);await page.locator('#earth-explore').click();await expect(page.locator('#cosmos-places-dialog')).to_be_visible()
+  await page.locator('#cosmos-places-list button').filter(has=page.locator('span',has_text='Mars')).click()
+  await wait_state(page,"s.flight.mode==='autopilot'&&s.travelling",timeout=60000)
+  await wait_state(page,"s.focus==='Mars'&&s.flight.mode==='orbit'&&!s.travelling",timeout=150000)
+  mars=await page.evaluate(STATE);assert 3389.5*3<mars['distanceKm']<3389.5*30,mars['distanceKm'];assert abs(mars['distanceKm']-3389.5*6.5)<1,mars['distanceKm']
+  # --- floors at another world: scroll in as far as possible
+  await page.mouse.move(width/2,450)
+  for _ in range(60):await page.mouse.wheel(0,-400)
+  await page.wait_for_function(STATE+".distanceKm<"+str(3389.5*1.4*1.02),timeout=90000);await page.wait_for_timeout(1500)
+  d=await page.evaluate(STATE+'.distanceKm');assert 3389.5*1.4-.01<=d<3389.5*1.4*1.02,('Mars floor',d)
+  # --- input cancels the autopilot (key, wheel, pointer, Escape)
+  for how in ['key','wheel','pointer','escape']:
+   await page.evaluate("window.__earthPreview.setScale('earth')");await wait_state(page,"s.flight.mode==='orbit'&&s.focus==='Earth'",timeout=150000)
+   await page.evaluate("window.__earthPreview.flyTo('Saturn')");await wait_state(page,"s.flight.mode==='autopilot'&&s.flight.progress>.08",timeout=60000)
+   await page.evaluate("document.getElementById('earth-canvas').focus()")
+   if how=='key':await page.keyboard.press('w')
+   elif how=='wheel':await page.mouse.wheel(0,120)
+   elif how=='pointer':await page.mouse.move(width/2,300);await page.mouse.down();await page.mouse.up()
+   else:await page.keyboard.press('Escape')
+   await wait_state(page,"!s.travelling&&s.flight.mode!=='autopilot'",timeout=20000);after=await page.evaluate(STATE)
+   assert after['focus']!='Saturn' or after['distanceKm']>58232*12*3,(how,after['focus'],after['distanceKm'])
+   await page.wait_for_timeout(1200);later=await page.evaluate(STATE);assert not later['travelling'] and later['flight']['mode']!='autopilot',how
+  # --- tap-to-travel: a planet's dot in the Solar System flies there
+  await page.evaluate("window.__earthPreview.setScale('solar')");await wait_state(page,"s.scene==='solar'&&!s.travelling",timeout=150000);await page.wait_for_timeout(800)
+  await page.locator('.cosmos-object-label:not([hidden])').filter(has=page.locator('.cosmos-name',has_text='Jupiter')).first.click(force=True)
+  await wait_state(page,"s.focus==='Jupiter'&&!s.travelling&&s.flight.mode==='orbit'",timeout=150000)
+  await page.evaluate("window.__earthPreview.setScale('earth')");await wait_state(page,"s.focus==='Earth'&&!s.travelling",timeout=150000)
+ else:
+  # --- touch: free flight from the panel, one finger looks, two fingers move, pinch changes speed
+  client=await ctx.new_cdp_session(page)
+  await panel_click(page,'#flight-free');await wait_state(page,"s.flight.mode==='free'");s0=await page.evaluate(STATE)
+  await touch(client,'touchStart',[(195,420)])
+  for k in range(1,9):await touch(client,'touchMove',[(195+k*12,420-k*9)])
+  await touch(client,'touchEnd',[]);s1=await page.evaluate(STATE)
+  assert dist3(s1['cameraKm'],s0['cameraKm'])<1e-3,'one-finger drag must look, not move';assert any(abs(a-b)>.02 for a,b in zip(s0['orbitQuaternion'],s1['orbitQuaternion'])),'one-finger drag must turn the camera'
+  await touch(client,'touchStart',[(150,520),(240,520)])
+  for k in range(1,6):await touch(client,'touchMove',[(150,520-k*22),(240,520-k*22)])
+  await wait_state(page,"Math.hypot(...s.cameraKm.map((v,i)=>v-"+json.dumps(s1['cameraKm'])+"[i]))>"+str(max(1,s1['flight']['cruiseKmS']*.1)),timeout=60000);await touch(client,'touchEnd',[])
+  mult0=(await page.evaluate(STATE))['flight']['speedMult']
+  await touch(client,'touchStart',[(160,500),(230,500)])
+  for k in range(1,8):await touch(client,'touchMove',[(160-k*10,500),(230+k*10,500)])
+  await touch(client,'touchEnd',[]);mult1=(await page.evaluate(STATE))['flight']['speedMult'];assert mult1>mult0*1.5,('pinch must raise the speed',mult0,mult1)
+  await panel_click(page,'#flight-orbit');await wait_state(page,"s.flight.mode==='orbit'")
+ st=await page.evaluate(STATE);assert st['flight']['mode']=='orbit'
+ assert not [e for e in errors if 'ERR_' not in e],errors
+
+async def route_site(ctx):
+ async def route(r):
+  u=urlparse(r.request.url)
+  if r.request.method!='GET':return await r.abort()
+  if u.hostname=='view.eumetsat.int':return await r.continue_()
+  if u.hostname!='superchargeddaily.com':return await r.abort()
+  path=ROOT/(unquote(u.path).lstrip('/') or 'index.html')
+  if path.is_file() and ROOT in path.resolve().parents:return await r.fulfill(body=path.read_bytes(),content_type='text/javascript' if path.suffix in ['.js','.mjs'] else mimetypes.guess_type(str(path))[0] or 'application/octet-stream')
+  return await r.fulfill(status=404,body='Not found')
+ await ctx.route('**/*',route)
+
+async def reduced_motion_flight(browser,route_ctx):
+ """Reduced motion: no inertia, no animated trips. The autopilot lands at once and keys step the camera."""
+ ctx=await browser.new_context(viewport={'width':1440,'height':900},device_scale_factor=1,reduced_motion='reduce',service_workers='block');await route_ctx(ctx);page=await ctx.new_page();errors=[]
+ page.on('pageerror',lambda e:errors.append(str(e)))
+ await page.goto(SITE+'/mission-control.html',wait_until='domcontentloaded');await page.locator('#earth-enter').click()
+ await page.wait_for_function('window.__earthPreview?.getState().ready&&window.__earthPreview.getState().cosmos?.skyReady',timeout=100000)
+ assert (await page.evaluate(STATE))['paused']
+ await page.evaluate("window.__earthPreview.setScale('Mars')");await wait_state(page,"s.focus==='Mars'&&s.flight.mode==='orbit'",timeout=60000)
+ assert not (await page.evaluate(STATE))['travelling'],'reduced motion must not animate a trip'
+ await page.evaluate("document.getElementById('earth-canvas').focus()");await page.keyboard.press('f');await wait_state(page,"s.flight.mode==='free'");a=(await page.evaluate(STATE))['cameraKm']
+ await page.keyboard.press('w');await wait_state(page,"Math.hypot(...s.cameraKm.map((v,i)=>v-"+json.dumps(a)+"[i]))>0");b=(await page.evaluate(STATE))['cameraKm']
+ await page.wait_for_timeout(600);assert (await page.evaluate(STATE))['cameraKm']==b,'no coasting under reduced motion'
+ assert not errors,errors;await ctx.close()
+
 async def main():
  async with async_playwright() as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome'),args=ARGS)
@@ -73,6 +172,8 @@ async def main():
    try:
     print('COSMOS_START',width,flush=True);await page.goto(SITE+'/mission-control.html',wait_until='domcontentloaded');await page.mouse.move(width/2,height/2);await page.locator('#earth-enter').click();await expect(page.locator('#earth-intro')).to_be_hidden(timeout=15000)
     await page.wait_for_function('window.__earthPreview?.getState().ready&&window.__earthPreview.getState().cosmos?.skyReady',timeout=100000)
+    if os.environ.get('COSMOS_GROUP')=='flight':
+     await page.wait_for_function(STATE+'.relief',timeout=40000);await flight_checks(page,ctx,width,errors);results.append({'width':width,'ok':True,'group':'flight'});print('COSMOS_FLIGHT_PASS',width,flush=True);continue
     await page.wait_for_function(STATE+'.relief',timeout=40000);await hud_click(page,'#earth-motion');await page.wait_for_function(STATE+'.paused')
     await snapshot(page,str(width)+'-earth')
     # Touch/mouse must grab the sphere, not clamp latitude or keep drifting after release.
@@ -129,6 +230,7 @@ async def main():
      if state['studioSupported']:
       await open_panel(page);await page.locator('#earth-quality').select_option('studio');await close_panels(page);await page.wait_for_function(STATE+'.textureWidth===16384',timeout=120000);await snapshot(page,'studio-16k');await open_panel(page);await page.locator('#earth-quality').select_option('auto');await close_panels(page);await page.wait_for_function('!document.getElementById("earth-quality").disabled',timeout=60000)
      await hud_click(page,'#earth-motion');await panel_click(page,'[data-earth-scale=galaxy]');await page.wait_for_function(STATE+'.scene==="galaxy"&&!'+STATE+'.travelling',timeout=30000);await page.wait_for_timeout(1500)
+    await flight_checks(page,ctx,width,errors)
     assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
     print('COSMOS_WEATHER',width,json.dumps({'state':await page.evaluate('window.__earthWeather?.getState()'),'console':console}),flush=True)
     assert not [h for h in hosts if h and re.search(r'openfreemap|openstreetmap|maptiler|mapbox|amazonaws|arcgis|google|carto',h,re.I)],('map or tile host requested',hosts)
@@ -140,5 +242,6 @@ async def main():
     video=page.video if width==1440 else None;await ctx.close()
     if video:
      source=await video.path();ffmpeg=shutil.which('ffmpeg');proc=await asyncio.create_subprocess_exec(ffmpeg,'-hide_banner','-loglevel','error','-y','-i',str(source),'-vf','fps=24,format=yuv420p','-c:v','libx264','-preset','fast','-crf','24','-movflags','+faststart',str(OUT/'cosmos-tour.mp4'),stderr=asyncio.subprocess.PIPE);_,err=await proc.communicate();assert proc.returncode==0,err.decode()
+  await reduced_motion_flight(browser,route_site);print('COSMOS_REDUCED_PASS',flush=True)
   (OUT/'cosmos-results.json').write_text(json.dumps(results,indent=2));await browser.close();print('COSMOS_COMPLETE',len(results),flush=True)
 asyncio.run(main())

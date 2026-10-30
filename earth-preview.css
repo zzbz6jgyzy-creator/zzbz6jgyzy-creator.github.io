@@ -94,3 +94,9 @@
 @media(max-height:500px){.cosmos-focus-name{bottom:calc(max(14px,var(--sab)) + 84px)}.earth-panel{width:min(400px,100%)}.earth-panel-head{padding-block:max(8px,var(--sat)) 2px}.earth-panel-section{padding:14px 0}.earth-toasts{bottom:calc(max(14px,var(--sab)) + 26px)}}
 @media(max-height:520px){.earth-intro-wordmark{margin-bottom:14px}.earth-intro-card .earth-eyebrow{margin-bottom:10px}.earth-intro-card h2{font-size:38px}.earth-intro-line{margin:10px 0 14px}.earth-intro-card .earth-instructions{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== Flight section (earth-flight.js): additions only ===== */
+.earth-flight-section [hidden]{display:none}
+.earth-flight-section .earth-panel-note{margin-top:10px;min-height:24px}
+.earth-flight-section .earth-text-button{margin-top:4px}
+/* ===== end flight section ===== */
