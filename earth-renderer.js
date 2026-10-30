@@ -1,12 +1,13 @@
 /* Supercharged Daily Earth preview. Local Three.js r170 (MIT); optional dated satellite cloud texture. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import {solarPosition, geoVector, vectorGeo} from '/earth-live-model.js?v=20261030-immersive2';
+import {solarPosition, geoVector, vectorGeo} from '/earth-live-model.js?v=20261030-light1';
 
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;
 const MAX_RANGE_KM=600000*LY_KM;
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-const VERTEX = `
+// Legacy Earth shaders: unchanged, shared with the isolated Starship replay (it supplies only uDay/uNight/uCloud/uSun/uCloudOffset).
+const LEGACY_VERTEX = `
   varying vec2 vUv;
   varying vec3 vWorldPosition;
   varying vec3 vWorldNormal;
@@ -18,7 +19,7 @@ const VERTEX = `
     gl_Position = projectionMatrix * viewMatrix * world;
   }
 `;
-const SURFACE = `
+const LEGACY_SURFACE = `
   uniform sampler2D uDay;
   uniform sampler2D uNight;
   uniform sampler2D uCloud;
@@ -60,7 +61,7 @@ const SURFACE = `
     #include <colorspace_fragment>
   }
 `;
-const CLOUDS = `
+const LEGACY_CLOUDS = `
   uniform sampler2D uCloud;
   uniform vec3 uSun;
   varying vec2 vUv;
@@ -82,7 +83,7 @@ const CLOUDS = `
     #include <colorspace_fragment>
   }
 `;
-const ATMOSPHERE = `
+const LEGACY_ATMOSPHERE = `
   uniform vec3 uSun;
   varying vec3 vWorldPosition;
   void main() {
@@ -115,22 +116,295 @@ const ATMOSPHERE = `
   }
 `;
 
-// Share the exact Earth lighting with the isolated Starship replay.
-export const earthShaders = Object.freeze({ vertex: VERTEX, surface: SURFACE, clouds: CLOUDS, atmosphere: ATMOSPHERE });
+// ---- Physically based Earth (mission-control explorer). Units: Earth radius = 1. ----
+const PBR_VERTEX = `
+  varying vec2 vUv;
+  varying vec3 vWorldPosition;
+  varying vec3 vWorldNormal;
+  varying vec3 vEast;
+  varying vec3 vNorth;
+  void main() {
+    vUv = uv;
+    vec4 world = modelMatrix * vec4(position, 1.0);
+    vWorldPosition = world.xyz;
+    mat3 m = mat3(modelMatrix);
+    vWorldNormal = normalize(m * normal);
+    // Unit-sphere tangents in the texture's own frame: east = +u, north = +v.
+    vEast = m * normalize(vec3(position.z, 0.0, -position.x) + vec3(1e-5, 0.0, 0.0));
+    vNorth = m * normalize(vec3(-position.x * position.y, position.x * position.x + position.z * position.z, -position.z * position.y) + vec3(0.0, 1e-5, 0.0));
+    gl_Position = projectionMatrix * viewMatrix * world;
+  }
+`;
+// Single scattering (O'Neil, GPU Gems 2 ch.16): Rayleigh + Mie, exponential density, optical depth to the Sun
+// from the Chapman function (closed form, no inner loop), midpoint view-ray integral. The scale heights are
+// exaggerated (about 4x Rayleigh, 6x Mie) so the limb reads at screen scale; vertical optical depths are physical.
+const ATMO_COMMON = `
+  #define PI 3.14159265
+  const float HR = 0.005;
+  const float HM = 0.0012;
+  const float ATM_TOP = 1.062;
+  const vec3 TAU_R = vec3(0.0464, 0.1080, 0.2650);
+  const float TAU_M = 0.022;
+  const float TAU_M_EXT = 0.025;
+  const float MIE_G = 0.76;
+  const float SUN_E = 1.25;
+  const float SUNSET_WARMTH = 2.0; // artistic: ozone and aerosol reddening the single-scattering model lacks
+  float chPos(float X, float h, float cz) {
+    float c = sqrt(1.5707963 * (X + h));
+    float x = c * cz, s4 = sqrt(sqrt(x));
+    return exp(-h) / (cz + (1.0 / c) / (1.0 + 0.337 * x * s4 * sqrt(s4)));
+  }
+  // Optical depth multiplier along a ray leaving radius r at zenith cosine cz (Chapman function, within 3% of numeric integration).
+  float chapman(float X, float h, float cz) {
+    if (cz >= 0.0) return chPos(X, h, cz);
+    float x0 = sqrt(1.0 - cz * cz) * (X + h);
+    return 2.0 * sqrt(1.5707963 * x0) * exp(X - x0) - chPos(X, h, -cz);
+  }
+  vec3 opticalDepth(float r, float cz) {
+    float h = max(r - 1.0, 0.0);
+    float chR = chapman(1.0 / HR, h / HR, cz);
+    // Mie shares the Rayleigh Chapman value, rescaled for its lower scale height (path ratio sqrt(HR/HM) at the horizon, 1 at zenith).
+    float chM = chR * (1.0 + 1.04 * clamp(1.0 - cz, 0.0, 1.5)) * exp(h / HR - h / HM);
+    return TAU_R * chR + vec3(TAU_M_EXT * chM);
+  }
+  // Sun visibility (1 in daylight, fading to 0 once the planet blocks the Sun at this height).
+  float sunVisibility(float r, float cz) {
+    if (cz >= 0.0) return 1.0;
+    return smoothstep(-0.004, 0.0, sqrt(max(1.0 - cz * cz, 0.0)) * r - 1.0);
+  }
+  vec3 sunTransmittance(float r, float cz) {
+    float vis = sunVisibility(r, cz);
+    if (vis <= 0.0) return vec3(0.0);
+    return exp(-SUNSET_WARMTH * opticalDepth(r, cz)) * vis;
+  }
+  // Multiple scattering refills the blue that single scattering removes along long paths; view-path extinction is scaled by MS.
+  const float MS = 0.6;
+  vec3 viewTransmittance(float r, float cv) { return exp(-MS * opticalDepth(r, max(cv, 0.0))); }
+  float hgNorm(float c, float g) { return (1.0 - g * g) / pow(1.0 + g * g - 2.0 * g * c, 1.5); }
+`;
+const CLOUD_COMMON = `
+  uniform sampler2D uCloud;
+  uniform float uObservedCloud;
+  uniform float uCloudIR;
+  uniform float uDetail;
+  float hash21(vec2 p) { p = fract(p * vec2(0.1031, 0.1030)); p += dot(p, p.yx + 33.33); return fract((p.x + p.y) * p.x); }
+  float vnoise(vec2 p) {
+    vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+    return mix(mix(hash21(i), hash21(i + vec2(1.0, 0.0)), f.x), mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), f.x), f.y);
+  }
+  // Quintic-smoothed bilinear sample: removes the diamond/blocky bilinear artefacts of a 2K source at close range.
+  vec4 texSmooth(sampler2D t, vec2 uv, vec2 gx, vec2 gy) {
+    vec2 sz = vec2(textureSize(t, 0));
+    vec2 p = uv * sz - 0.5;
+    vec2 i = floor(p);
+    vec2 f = p - i;
+    f = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
+    return textureGrad(t, (i + 0.5 + f) / sz, gx, gy);
+  }
+  // cov: opacity proxy. rel: unsaturated brightness of the source (cold = high), used only for relief shading.
+  void cloudSample(vec2 uv, vec2 gx, vec2 gy, float detail, out float cov, out float rel) {
+    float c = dot(texSmooth(uCloud, uv, gx, gy).rgb, vec3(0.3333));
+    rel = smoothstep(0.15, 0.95, c);
+    c = mix(c, smoothstep(0.24, 0.74, c), uCloudIR);
+    float ill = smoothstep(0.1, 0.76, c);
+    float obs = pow(smoothstep(0.08, 0.98, c), 1.65) * (1.0 - smoothstep(0.35, 0.375, abs(uv.y - 0.5)));
+    cov = mix(ill, obs, uObservedCloud);
+    if (detail > 0.5) {
+      // Sub-texel edge breakup only; it adds no cloud where the data has none.
+      float cl = max(sin(uv.y * PI), 0.12);
+      vec2 q = vec2(uv.x * cl * 2048.0, uv.y * 1024.0);
+      float n = vnoise(q) * 0.6 + vnoise(q * 2.3 + 7.1) * 0.4 - 0.5;
+      cov = clamp(cov + n * 0.34 * cov * (1.0 - cov) * 4.0, 0.0, 1.0);
+    }
+  }
+`;
+const PBR_SURFACE = `
+  uniform sampler2D uDay;
+  uniform sampler2D uNight;
+  uniform sampler2D uNormalMap;
+  uniform sampler2D uOceanMap;
+  uniform vec3 uSun;
+  uniform float uCloudOffset;
+  uniform float uRelief;
+  uniform float uOceanReady;
+  varying vec2 vUv;
+  varying vec3 vWorldPosition;
+  varying vec3 vWorldNormal;
+  varying vec3 vEast;
+  varying vec3 vNorth;
+  ${ATMO_COMMON}
+  ${CLOUD_COMMON}
+  void main() {
+    vec3 Ng = normalize(vWorldNormal);
+    vec3 V = normalize(cameraPosition - vWorldPosition);
+    vec3 L = normalize(uSun);
+    vec3 E = normalize(vEast), Nt = normalize(vNorth);
+    vec3 d = texture2D(uNormalMap, vUv).xyz * 2.0 - 1.0;
+    d.xy *= 0.32; d.z = max(d.z, 0.1);
+    vec3 N = normalize(mix(Ng, mat3(E, Nt, Ng) * normalize(d), uRelief));
+    float mu = dot(Ng, L);
+    float muD = dot(N, L);
+    float NV = max(dot(Ng, V), 0.0);
+    vec3 day = texture2D(uDay, vUv).rgb;
+    vec3 Tsun = sunTransmittance(1.0, mu);
+    // Cloud shadow: ray from the surface to the Sun meets the cloud shell at height 0.009 after path t (parallax, not a fixed offset).
+    vec3 Lt = L - Ng * mu;
+    float tShadow = min(-mu + sqrt(mu * mu + 0.018081), 0.3);
+    float cl = max(sin(vUv.y * PI), 0.1);
+    vec2 suv = vUv + vec2(uCloudOffset + dot(Lt, E) * tShadow / (6.2831853 * cl), dot(Lt, Nt) * tShadow / PI);
+    vec2 gx = dFdx(vUv), gy = dFdy(vUv);
+    float cover = 0.0, rel0;
+    if (mu > -0.1) cloudSample(suv, gx, gy, 0.0, cover, rel0);
+    float shadow = 1.0 - 0.6 * smoothstep(0.12, 0.85, cover);
+    float ocean = 1.0 - smoothstep(0.55, 0.92, (day.r + day.g) / max(day.b * 2.0, 0.002));
+    ocean = mix(ocean, texture2D(uOceanMap, vUv).r, uOceanReady);
+    vec3 albedo = day;
+    // Direct sun through the atmosphere, plus blue sky fill that fades through astronomical twilight.
+    float skyLight = smoothstep(-0.31, 0.3, mu);
+    vec3 sky = vec3(0.42, 0.62, 1.0) * 0.08 * skyLight * skyLight;
+    vec3 color = albedo * SUN_E * (Tsun * max(muD, 0.0) * shadow + sky);
+    // Ocean sun glint: GGX (narrow lobe + wide skirt), Schlick Fresnel, flat geometric normal.
+    vec3 H = normalize(L + V);
+    float NL = max(mu, 0.0), NH = max(dot(Ng, H), 0.0), VH = max(dot(V, H), 0.0), nv = max(NV, 0.02);
+    float a = 0.03, a2 = a * a;
+    float dn = NH * NH * (a2 - 1.0) + 1.0;
+    float D = a2 / (PI * dn * dn);
+    float b2 = 0.2 * 0.2;
+    float dw = NH * NH * (b2 - 1.0) + 1.0;
+    float Dw = b2 / (PI * dw * dw);
+    float F = 0.02 + 0.98 * pow(1.0 - VH, 5.0);
+    float vis = 0.5 / (NL * sqrt(nv * nv * (1.0 - a2) + a2) + nv * sqrt(NL * NL * (1.0 - a2) + a2) + 1e-4);
+    float glint = (D + 0.02 * Dw) * F * vis * NL;
+    if (ocean > 0.01 && NL > 0.0) color += Tsun * (PI * SUN_E * 0.55) * glint * ocean * shadow;
+    // Sky reflected at grazing angles.
+    float Fv = 0.02 + 0.98 * pow(1.0 - nv, 5.0);
+    color += vec3(0.20, 0.36, 0.70) * Fv * ocean * skyLight * 0.9;
+    // City lights: none until the Sun is 6 degrees below the horizon (civil twilight), full by 18 degrees.
+    float dark = (1.0 - smoothstep(-0.2079, -0.1045, mu)) * (0.5 + 0.5 * (1.0 - smoothstep(-0.309, -0.2079, mu)));
+    if (dark > 0.0) {
+      vec3 night = texture2D(uNight, vUv).rgb;
+      float lightStrength = max(0.0, min(night.r, night.g) - night.b * 0.7);
+      vec3 lights = pow(max(night, vec3(0.0)), vec3(0.88)) * smoothstep(0.008, 0.12, lightStrength);
+      vec3 halo = textureGrad(uNight, vUv, gx * 11.3, gy * 11.3).rgb;
+      halo *= smoothstep(0.004, 0.06, max(0.0, min(halo.r, halo.g) - halo.b * 0.7));
+      color += (lights + halo * 0.3) * vec3(1.0, 0.76, 0.48) * dark * 1.45; // clouds above already hide lights through their own alpha
+    }
+    color *= viewTransmittance(1.0, NV);
+    gl_FragColor = vec4(color, 1.0);
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+  }
+`;
+const PBR_CLOUDS = `
+  uniform vec3 uSun;
+  varying vec2 vUv;
+  varying vec3 vWorldPosition;
+  varying vec3 vWorldNormal;
+  varying vec3 vEast;
+  varying vec3 vNorth;
+  ${ATMO_COMMON}
+  ${CLOUD_COMMON}
+  void main() {
+    vec3 N = normalize(vWorldNormal);
+    vec3 V = normalize(cameraPosition - vWorldPosition);
+    vec3 L = normalize(uSun);
+    vec3 E = normalize(vEast), Nt = normalize(vNorth);
+    float mu = dot(N, L);
+    vec2 gx = dFdx(vUv), gy = dFdy(vUv);
+    float cov, rel;
+    cloudSample(vUv, gx, gy, uDetail, cov, rel);
+    if (cov < 0.004) discard;
+    // Relief: compare coverage with a sample towards the Sun (thicker upsun = shaded, thinner = lit).
+    vec3 Lt = L - N * mu;
+    float cl = max(sin(vUv.y * PI), 0.1);
+    vec2 off = vec2(dot(Lt, E) / (6.2831853 * cl), dot(Lt, Nt) / PI) * 0.02;
+    float shade = 1.0;
+    if (uDetail > 0.5) { float c2, r2; cloudSample(vUv + off, gx, gy, 0.0, c2, r2); shade = clamp((0.8 + 0.25 * rel) * (1.0 + 2.6 * (rel - r2)) * (1.0 + 1.2 * (cov - c2)), 0.45, 1.3); }
+    vec3 Tsun = sunTransmittance(1.009, mu);
+    float lit = clamp((mu + 0.1) / 1.1, 0.0, 1.0);
+    float cs = -dot(V, L); // scattering angle cosine seen from the camera (1 = looking at the Sun through the cloud)
+    float phase = mix(1.0, hgNorm(-cs, 0.62), 0.32) / 0.78;
+    vec3 color = Tsun * SUN_E * 0.95 * lit * phase * shade;
+    // Silver lining: thin cloud edges transmit forward-scattered light near the terminator.
+    float thin = (1.0 - cov) * (1.0 - cov);
+    color += Tsun * SUN_E * 0.5 * thin * smoothstep(-0.3, 0.2, mu) * (1.0 - smoothstep(0.1, 0.5, mu)) * hgNorm(-cs, 0.7) * 0.06;
+    float skyLight = smoothstep(-0.31, 0.3, mu);
+    color += vec3(0.42, 0.62, 1.0) * 0.1 * skyLight * skyLight + vec3(0.004, 0.006, 0.012);
+    color *= viewTransmittance(1.009, dot(N, V));
+    float alpha = cov * 0.9 * smoothstep(0.0, 0.11, dot(N, V));
+    gl_FragColor = vec4(color, alpha);
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+  }
+`;
+const PBR_ATMOSPHERE = `
+  uniform vec3 uSun;
+  uniform float uSteps;
+  varying vec3 vWorldPosition;
+  ${ATMO_COMMON}
+  void main() {
+    vec3 ro = cameraPosition;
+    vec3 rd = normalize(vWorldPosition - ro);
+    vec3 L = normalize(uSun);
+    float b = dot(ro, rd);
+    float cc = dot(ro, ro);
+    float disc = b * b - cc + ATM_TOP * ATM_TOP;
+    if (disc <= 0.0) discard;
+    float sd = sqrt(disc);
+    float t0 = max(0.0, -b - sd);
+    float t1 = -b + sd;
+    float dp = b * b - cc + 1.0;
+    bool hit = false;
+    if (dp > 0.0) { float tp = -b - sqrt(dp); if (tp > 0.0) { t1 = min(t1, tp); hit = true; } }
+    float n = hit ? max(3.0, floor(uSteps * 0.6)) : uSteps;
+    float odR = 0.0, odM = 0.0;
+    vec3 sumR = vec3(0.0), sumM = vec3(0.0);
+    for (int i = 0; i < 12; i++) {
+      if (float(i) >= n) break;
+      float ua = float(i) / n, ub = (float(i) + 1.0) / n, um = 0.5 * (ua + ub);
+      float ta, tb, tm;
+      if (hit) {
+        // Samples crowd towards the ground, where the air is densest.
+        ta = t0 + (t1 - t0) * (1.0 - (1.0 - ua) * (1.0 - ua));
+        tb = t0 + (t1 - t0) * (1.0 - (1.0 - ub) * (1.0 - ub));
+        tm = t0 + (t1 - t0) * (1.0 - (1.0 - um) * (1.0 - um));
+      } else {
+        // Limb rays: samples crowd around the tangent point.
+        float wa = 2.0 * ua - 1.0, wb = 2.0 * ub - 1.0, wm = 2.0 * um - 1.0;
+        ta = -b + sd * sign(wa) * wa * wa;
+        tb = -b + sd * sign(wb) * wb * wb;
+        tm = -b + sd * sign(wm) * wm * wm;
+        ta = max(ta, t0); tb = max(tb, t0); tm = max(tm, t0);
+      }
+      float dt = tb - ta;
+      vec3 p = ro + rd * tm;
+      float r = length(p);
+      float h = max(r - 1.0, 0.0);
+      float dR = exp(-h / HR), dM = exp(-h / HM);
+      odR += 0.5 * dR * dt; odM += 0.5 * dM * dt;
+      float cz = dot(p, L) / r;
+      float vis = sunVisibility(r, cz);
+      vec3 T = vec3(0.0);
+      if (vis > 0.0) T = vis * exp(-(SUNSET_WARMTH * opticalDepth(r, cz) + MS * (TAU_R / HR * odR + vec3(TAU_M_EXT / HM) * odM)));
+      sumR += dR * dt * T; sumM += dM * dt * T;
+      odR += 0.5 * dR * dt; odM += 0.5 * dM * dt;
+    }
+    float mu = dot(rd, L);
+    float pr = 0.75 * (1.0 + mu * mu);
+    float g2 = MIE_G * MIE_G;
+    float pm = 1.5 * (1.0 - g2) / (2.0 + g2) * (1.0 + mu * mu) / pow(1.0 + g2 - 2.0 * MIE_G * mu, 1.5);
+    vec3 col = SUN_E * 0.2 * (TAU_R / HR * pr * sumR + vec3(TAU_M / HM) * pm * sumM);
+    gl_FragColor = vec4(col, 1.0);
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+    gl_FragColor.a = clamp(max(gl_FragColor.r, max(gl_FragColor.g, gl_FragColor.b)), 0.0, 1.0);
+  }
+`;
 
-// Observed cloud masks have a different brightness response from the illustrative
-// texture. Keep the shared replay shaders unchanged. Hide the provider's mirrored
-// polar fill (outside ±67.5°) instead of presenting it as observed cloud coverage.
-const OBSERVED_SURFACE = SURFACE
-  .replace('uniform float uCloudOffset;', 'uniform float uCloudOffset; uniform float uObservedCloud; uniform float uCloudIR; uniform sampler2D uNormalMap; uniform sampler2D uOceanMap; uniform float uRelief; uniform float uOceanReady;')
-  .replace('vec3 V = normalize(cameraPosition - vWorldPosition);', 'vec3 px=dFdx(vWorldPosition),py=dFdy(vWorldPosition);vec2 tx=dFdx(vUv),ty=dFdy(vUv);vec3 T=normalize(px*ty.y-py*tx.y);vec3 B=normalize(-px*ty.x+py*tx.x);vec3 detail=texture2D(uNormalMap,vUv).xyz*2.0-1.0;detail.xy*=0.32;detail.z=max(detail.z,0.1);N=normalize(mix(N,mat3(T,B,N)*normalize(detail),uRelief));vec3 V=normalize(cameraPosition-vWorldPosition);')
-  .replace('float specular =', 'ocean=mix(ocean,texture2D(uOceanMap,vUv).r,uOceanReady);float specular =')
-  .replace('cityLights * vec3(1.13, 0.91, 0.68)', 'cityLights * (1.0-clouds*0.48*uObservedCloud) * vec3(1.13,0.91,0.68)')
-  .replace('float cloudShadow = smoothstep(0.15, 0.78, clouds) * 0.16;', 'clouds=mix(clouds,smoothstep(0.28235,0.69804,clouds),uCloudIR);float observedCoverage = 1.0 - smoothstep(0.35, 0.375, abs(vUv.y - 0.5)); float cloudShadow = smoothstep(0.15, 0.78, clouds) * 0.16 * mix(1.0, observedCoverage, uObservedCloud);');
-const OBSERVED_CLOUDS = CLOUDS
-  .replace('uniform sampler2D uCloud;', 'uniform sampler2D uCloud; uniform float uObservedCloud; uniform float uCloudIR;')
-  .replace('coverage = smoothstep(0.1, 0.76, coverage);', 'coverage=mix(coverage,smoothstep(0.28235,0.69804,coverage),uCloudIR);float observedCoverage = pow(smoothstep(0.08, 0.98, coverage), 1.65) * (1.0 - smoothstep(0.35, 0.375, abs(vUv.y - 0.5))); coverage = mix(smoothstep(0.1, 0.76, coverage), observedCoverage, uObservedCloud);')
-  .replace('coverage * 0.84', 'coverage * mix(0.84, 0.66, uObservedCloud)');
+// The Starship replay keeps the legacy look: it only supplies the five basic uniforms.
+export const earthShaders = Object.freeze({ vertex: LEGACY_VERTEX, surface: LEGACY_SURFACE, clouds: LEGACY_CLOUDS, atmosphere: LEGACY_ATMOSPHERE });
+// Physically based shaders used by the mission-control explorer.
+export const earthShadersPhysical = Object.freeze({ vertex: PBR_VERTEX, surface: PBR_SURFACE, clouds: PBR_CLOUDS, atmosphere: PBR_ATMOSPHERE });
 
 
 /**
@@ -152,8 +426,8 @@ export async function initEarth(options = {}) {
   }
   renderer.setClearColor(0x030509, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.08;
+  renderer.toneMapping = THREE.AgXToneMapping;
+  renderer.toneMappingExposure = 1.25;
   renderer.debug.onShaderError = () => { throw new Error('The Earth graphics could not start on this device.'); };
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 150);
@@ -165,15 +439,15 @@ export async function initEarth(options = {}) {
   black.needsUpdate = true;
   const sun = new THREE.Vector3(-0.92, 0.28, 0.43).normalize();
   const targetSun = sun.clone();
-  const uniforms = { uDay: { value: black }, uNight: { value: black }, uCloud: { value: black }, uSun: { value: sun }, uCloudOffset: { value: 0 }, uObservedCloud: { value: 0 },uCloudIR:{value:0}, uNormalMap:{value:black},uOceanMap:{value:black},uRelief:{value:0},uOceanReady:{value:0} };
+  const uniforms = { uDay: { value: black }, uNight: { value: black }, uCloud: { value: black }, uSun: { value: sun }, uCloudOffset: { value: 0 }, uObservedCloud: { value: 0 },uCloudIR:{value:0}, uNormalMap:{value:black},uOceanMap:{value:black},uRelief:{value:0},uOceanReady:{value:0},uDetail:{value:0},uSteps:{value:8} };
   const sphere = new THREE.SphereGeometry(1, 160, 112);
-  const surface = new THREE.Mesh(sphere, new THREE.ShaderMaterial({ vertexShader: VERTEX, fragmentShader: OBSERVED_SURFACE, uniforms }));
+  const surface = new THREE.Mesh(sphere, new THREE.ShaderMaterial({ vertexShader: PBR_VERTEX, fragmentShader: PBR_SURFACE, uniforms }));
   globe.add(surface);
-  const cloudMaterial = new THREE.ShaderMaterial({ vertexShader: VERTEX, fragmentShader: OBSERVED_CLOUDS, uniforms: { uCloud: uniforms.uCloud, uSun: uniforms.uSun, uObservedCloud: uniforms.uObservedCloud,uCloudIR:uniforms.uCloudIR }, transparent: true, depthWrite: false });
+  const cloudMaterial = new THREE.ShaderMaterial({ vertexShader: PBR_VERTEX, fragmentShader: PBR_CLOUDS, uniforms: { uCloud: uniforms.uCloud, uSun: uniforms.uSun, uObservedCloud: uniforms.uObservedCloud,uCloudIR:uniforms.uCloudIR,uDetail:uniforms.uDetail }, transparent: true, depthWrite: false });
   const clouds = new THREE.Mesh(new THREE.SphereGeometry(1.009, 144, 96), cloudMaterial);
   clouds.renderOrder = 2;
   globe.add(clouds);
-  const atmosphere = new THREE.Mesh(new THREE.SphereGeometry(1.035, 112, 80), new THREE.ShaderMaterial({ vertexShader: VERTEX, fragmentShader: ATMOSPHERE, uniforms: { uSun: uniforms.uSun }, transparent: true, blending: THREE.AdditiveBlending, premultipliedAlpha: true, side: THREE.BackSide, depthWrite: false }));
+  const atmosphere = new THREE.Mesh(new THREE.SphereGeometry(1.08, 112, 80), new THREE.ShaderMaterial({ vertexShader: PBR_VERTEX, fragmentShader: PBR_ATMOSPHERE, uniforms: { uSun: uniforms.uSun, uSteps: uniforms.uSteps }, transparent: true, blending: THREE.AdditiveBlending, premultipliedAlpha: true, side: THREE.FrontSide, depthWrite: false }));
   atmosphere.renderOrder = 3;
   scene.add(atmosphere);
 
@@ -254,14 +528,14 @@ export async function initEarth(options = {}) {
   }
   async function ensureCosmos(){
     if(cosmos)return cosmos;if(cosmosPromise)return cosmosPromise;
-    cosmosPromise=import('/earth-cosmos.js?v=20261030-immersive2').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
+    cosmosPromise=import('/earth-cosmos.js?v=20261030-light1').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
       onLabels:rows=>options.onLabels?.(rows),onStatus:message=>{if(!disposed){onStatus(message);renderDemand();}}
     })).then(world=>{if(disposed){world.dispose();return null;}cosmos=world;cosmos.setFocus(focusBody);cosmos.setDeepSky(deepSky);renderDemand();return world;}).catch(()=>{cosmosPromise=null;detailMessage='The wider view could not load. Earth is still available.';zoom=Math.max(zoom,.65);focusBody='Earth';renderDemand();return null;});
     return cosmosPromise;
   }
   async function setScale(id){
     const world=await ensureCosmos();if(!world||disposed)return;
-    const model=await import('/earth-cosmos-model.js?v=20261030-immersive2');
+    const model=await import('/earth-cosmos-model.js?v=20261030-light1');
     const preset=model.scalePreset(id,fitDistance);const startRange=fitDistance/zoom*EARTH_KM;const separation=world.beginFlight(preset.focus);focusBody=preset.focus;
     const destination=clamp(fitDistance*EARTH_KM/preset.distance,fitDistance*EARTH_KM/MAX_RANGE_KM,fitDistance*EARTH_KM/(preset.focus==='Moon'?1737.4*2.5:EARTH_KM/2));
     const target=id==='earth'?initialOrbit.clone():world.recommendedOrbit(id==='galaxy');
@@ -341,6 +615,8 @@ export async function initEarth(options = {}) {
     if(key==='normal')uniforms.uRelief.value=1;if(key==='ocean')uniforms.uOceanReady.value=1;
     previous?.dispose();
   }
+  // Quality tiers: atmosphere integration steps and cloud/relief detail follow the texture tier (2K is the low tier).
+  function shadeForTier() { uniforms.uSteps.value = { '2k': 5, '4k': 8, '8k': 12, '16k': 12 }[appliedTier] || 8; uniforms.uDetail.value = appliedTier === '2k' ? 0 : 1; }
   function tierFor(requested) {
     const saving = navigator.connection?.saveData;
     const mobile = width < 800 || (navigator.deviceMemory && navigator.deviceMemory <= 4);
@@ -362,7 +638,7 @@ export async function initEarth(options = {}) {
       if (tier !== appliedTier) {
         const day = await loadTexture(tier==='16k'?'/assets/cosmos/earth-day-16k.jpg':'earth-day-' + tier + '.webp');
         if (disposed || token !== qualityToken) { day.dispose(); return getState(); }
-        applyMap('day', day); appliedTier = tier; renderDemand();
+        applyMap('day', day); appliedTier = tier; shadeForTier(); renderDemand();
       }
       for (const key of ['night', 'clouds']) {
         if (key === 'clouds' && observedCloud) continue;
@@ -490,7 +766,14 @@ export async function initEarth(options = {}) {
     scene.traverse(object => { object.geometry?.dispose(); if (object.material) (Array.isArray(object.material) ? object.material : [object.material]).forEach(m => m.dispose()); });
     renderer.dispose(); pointers.clear();
   }
-  const api = { getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive,setScale,setDeepSky,dispose };
+  // Deterministic scene for tests and screenshots: fixed sub-solar point and a camera looking straight down at lat/lon.
+  function setSceneGeo({sunLat,sunLon,camLat,camLon,zoom:z}={}){
+    if(disposed)return;currentView='custom';globe.updateMatrixWorld(true);
+    if(Number.isFinite(sunLat)&&Number.isFinite(sunLon)){const d=geoVector(sunLat,sunLon);targetSun.set(d.x,d.y,d.z).applyQuaternion(globe.quaternion).normalize();sun.copy(targetSun);}
+    if(Number.isFinite(camLat)&&Number.isFinite(camLon)){const p=geoVector(camLat,camLon),v=new THREE.Vector3(p.x,p.y,p.z).applyQuaternion(globe.quaternion),n=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);cameraOrbit.setFromRotationMatrix(new THREE.Matrix4().lookAt(v,new THREE.Vector3(),n));}
+    if(Number.isFinite(z))zoom=z;fly=null;renderDemand();
+  }
+  const api = { setSceneGeo, getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive,setScale,setDeepSky,dispose };
   if (canvas.tabIndex < 0) canvas.tabIndex = 0;
   canvas.style.touchAction = 'none'; canvas.style.cursor = 'grab';
   bind(canvas, 'pointerdown', pointerDown); bind(canvas, 'pointermove', pointerMove);
@@ -518,7 +801,7 @@ export async function initEarth(options = {}) {
     const layers = await Promise.allSettled([loadTexture('earth-night-2k.webp'), loadTexture('earth-clouds-2k.webp', false)]);
     layers.forEach((result, i) => { if (result.status === 'fulfilled') applyMap(i === 0 ? 'night' : 'clouds', result.value); });
     if (disposed) return api;
-    ready = true; resize(); draw(); schedule();
+    shadeForTier(); ready = true; resize(); draw(); schedule();
     void ensureCosmos();
     Promise.allSettled([loadTexture('/assets/cosmos/earth-normal-4k.webp',false),loadTexture('/assets/cosmos/earth-specular-4k.webp',false)]).then(rows=>{if(disposed){rows.forEach(r=>r.status==='fulfilled'&&r.value.dispose());return;}rows.forEach((r,i)=>{if(r.status==='fulfilled')applyMap(i===0?'normal':'ocean',r.value);});renderDemand();});
     onStatus('Earth ready.'); onReady(api); notify();

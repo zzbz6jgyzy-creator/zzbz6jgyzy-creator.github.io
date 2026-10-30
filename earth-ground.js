@@ -1,5 +1,5 @@
 /* Free ground explorer. No API keys or paid imagery endpoints. */
-import {clamp, longitude} from './earth-live-model.js?v=20261030-immersive2';
+import {clamp, longitude} from './earth-live-model.js?v=20261030-light1';
 
 export function groundStyle(){
   const source='openmaptiles';

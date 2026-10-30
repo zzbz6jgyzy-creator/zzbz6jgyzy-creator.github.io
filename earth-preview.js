@@ -111,7 +111,7 @@
     for(const[id,b]of labels)if(!active.has(id))b.hidden=true;
   }
   async function worldFinder(){
-    if(!cosmicModel){cosmicModel=await import('/earth-cosmos-model.js?v=20261030-immersive2');for(const body of cosmicModel.BODIES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),detail=document.createElement('small');name.textContent=body.id;detail.textContent=body.radius.toLocaleString('en-GB')+' km mean radius';b.append(name,detail);b.addEventListener('click',()=>{$('cosmos-places-dialog').close();panel.close();viewer?.setScale(body.id);});$('cosmos-places-list').append(b);}}
+    if(!cosmicModel){cosmicModel=await import('/earth-cosmos-model.js?v=20261030-light1');for(const body of cosmicModel.BODIES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),detail=document.createElement('small');name.textContent=body.id;detail.textContent=body.radius.toLocaleString('en-GB')+' km mean radius';b.append(name,detail);b.addEventListener('click',()=>{$('cosmos-places-dialog').close();panel.close();viewer?.setScale(body.id);});$('cosmos-places-list').append(b);}}
     $('cosmos-places-dialog').showModal();
   }
   for(const b of root.querySelectorAll('[data-earth-scale]'))b.addEventListener('click',()=>{viewer?.setScale(b.dataset.earthScale);if(matchMedia('(max-width:699px)').matches)panel.close();});
@@ -121,7 +121,7 @@
     const token=++attempt;viewer?.dispose();weather?.dispose();viewer=null;weather=null;window.__earthPreview=null;
     root.dataset.state='loading';$('earth-fallback').hidden=true;managed.forEach(b=>b.disabled=true);message('');
     try{
-      const {initEarth}=await import('/earth-renderer.js?v=20261030-immersive2');
+      const {initEarth}=await import('/earth-renderer.js?v=20261030-light1');
       const result=await initEarth({canvas,view:'live',textureBase:'/assets/earth/',
         onLabels:paintLabels,onStatus:s=>{if(token===attempt)$('earth-status').textContent=s;},
         onGroundRequest:point=>{if(mode!=='earth'||token!==attempt)return;place={...point,id:'point',name:'Your chosen place',country:model.coordinates(point.lat,point.lon),zoom:14.5,pitch:58};zoneAnchor=null;openGround();},
@@ -132,7 +132,7 @@
       if(token!==attempt||dead){result.dispose();return;}
       viewer=result;window.__earthPreview=result;if(!result.getState().ready)throw new Error('First frame unavailable');
       root.dataset.state='ready';$('earth-fallback').hidden=true;managed.forEach(b=>b.disabled=false);paint(viewer.getState());
-      const module=await import('/earth-weather.js?v=20261030-immersive2');
+      const module=await import('/earth-weather.js?v=20261030-light1');
       if(token!==attempt||dead)return;
       weather=module.createWeather({viewer,onChange:weatherPaint});window.__earthWeather=weather;
       if(mode==='ground')viewer.setActive(false);
@@ -164,7 +164,7 @@
     const token=++groundAttempt;$('ground-fallback').hidden=true;$('ground-status').textContent='Preparing the streets below…';
     try{
       if(!document.querySelector('[data-map-css]')){const css=document.createElement('link');css.rel='stylesheet';css.href='/vendor/maplibre/6.16.0/maplibre-gl.css';css.dataset.mapCss='true';document.head.append(css);}
-      const {createGround}=await import('/earth-ground.js?v=20261030-immersive2');
+      const {createGround}=await import('/earth-ground.js?v=20261030-light1');
       if(dead||token!==groundAttempt)return;
       const result=await createGround({container:$('ground-map'),place:destination,onGlobe:point=>{
         place={...point,id:'point',name:'Your map view',country:model.coordinates(point.lat,point.lon),zoom:14.5,pitch:55};zoneAnchor=null;
@@ -215,7 +215,7 @@
   window.addEventListener('pagehide',()=>{dead=true;attempt++;groundAttempt++;clearInterval(clockTimer);weather?.dispose();viewer?.dispose();ground?.dispose();ground=null;});
   window.addEventListener('pageshow',event=>{if(event.persisted){dead=false;clockTimer=setInterval(clocks,1000);boot();if(mode==='ground')openGround();}});
   async function start(){
-    try{model=await import('/earth-live-model.js?v=20261030-immersive2');place={...model.PLACES[1]};zoneAnchor={lat:place.lat,lon:place.lon};
+    try{model=await import('/earth-live-model.js?v=20261030-light1');place={...model.PLACES[1]};zoneAnchor={lat:place.lat,lon:place.lon};
       for(const p of model.PLACES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),country=document.createElement('small');name.textContent=p.name;country.textContent=p.country;b.append(name,country);b.addEventListener('click',()=>choose(p));$('earth-place-list').append(b);}
       renderPlace();clocks();clockTimer=setInterval(clocks,1000);
       await boot();
