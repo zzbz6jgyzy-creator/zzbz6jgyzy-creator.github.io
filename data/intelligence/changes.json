@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-30T00:52:38.172Z",
+  "updated": "2026-10-30T01:08:20.154Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:newest-reporting",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "newest-reporting",
+      "previous": "2026.38.6",
+      "next": "2026.38.6.1",
+      "at": "2026-10-30T01:08:18.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample (3346 cars)",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Newest reporting build changed from 2026.38.6 to 2026.38.6.1.",
+      "title": "Newest reporting build",
+      "id": "changed|tesla-software:newest-reporting|2026-10-30T01:08:18.000Z|2026.38.6.1"
+    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.38.6",
