@@ -1,6 +1,40 @@
 {
-  "updated": "2026-10-30T23:11:36.590Z",
+  "updated": "2026-10-30T23:18:03.502Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:newest-reporting",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "newest-reporting",
+      "previous": "2026.38.6.1",
+      "next": "2026.39.6",
+      "at": "2026-10-30T23:18:01.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample (3341 cars)",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Newest reporting build changed from 2026.38.6.1 to 2026.39.6.",
+      "title": "Newest reporting build",
+      "id": "changed|tesla-software:newest-reporting|2026-10-30T23:18:01.000Z|2026.39.6"
+    },
+    {
+      "type": "changed",
+      "factId": "tesla-software:most-common",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "most-common",
+      "previous": "2026.38.5.1@30.7",
+      "next": "2026.38.5.1@30.8",
+      "at": "2026-10-30T23:18:01.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html",
+      "summary": "Most common sample build changed from 2026.38.5.1@30.7 to 2026.38.5.1@30.8.",
+      "title": "Most common sample build",
+      "id": "changed|tesla-software:most-common|2026-10-30T23:18:01.000Z|2026.38.5.1@30.8"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/robotaxi-2am-20-hours.html",
