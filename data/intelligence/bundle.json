@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-30T08:41:33.409Z",
+  "generatedAt": "2026-10-30T10:32:46.656Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -50,14 +50,14 @@
       "topic": "starship",
       "tracker": "starship",
       "field": "event:starship-flight-15",
-      "value": "2026-11-08T06:00:00.000Z|net",
+      "value": "2026-11-12T06:00:00.000Z|net",
       "label": "Starship Flight 15",
       "at": "2026-10-28T09:15:00.000Z",
       "evidence": "estimated",
-      "source": "FAA CADENA / air-traffic planning slides (NET 8 Nov)",
+      "source": "FAA CADENA planning deck, 29 Oct 2026, Upcoming High-Profile Missions slide: Starship FLT-15 NOV 12 (https://compass.atfm.aero/public_svcdynamic/getfile?download=false&fileuuid=0fb6079b-6d10-4039-8766-b3ccb3c877f0)",
       "sourceUrl": "",
       "href": "/calendar.html",
-      "summary": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date."
+      "summary": "NET 12 November on the FAA's 29 Oct 2026 air-traffic planning slides (moved from 8 Nov), not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date."
     },
     {
       "id": "spacex-launches:event:crs35-docking",
@@ -246,7 +246,7 @@
       "topic": "starship",
       "tracker": "starship",
       "field": "next-flight",
-      "value": "15|2026-11-08|day",
+      "value": "15|2026-11-12|day",
       "label": "Next Starship flight",
       "at": "2026-10-28T09:15:00.000Z",
       "evidence": "estimated",
@@ -490,6 +490,23 @@
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-29T02:30:58.000Z|850"
     },
     {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "The FAA’s CADENA air-traffic planning deck dated 29 Oct 2026 lists Starship Flight 15 on 12 Nov, four days later than the NET 8 Nov on earlier slides. Starship Starlink 30-1 stays on 10 Dec. Still no FAA Flight 15 licence and no SpaceX date.",
+      "at": "2026-10-29T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "FAA CADENA planning deck (via SpaceNotices)",
+      "sourceUrl": "https://x.com/SpaceNotices/status/2115815059381469690",
+      "href": "/starship.html#schedule",
+      "summary": "The FAA’s CADENA air-traffic planning deck dated 29 Oct 2026 lists Starship Flight 15 on 12 Nov, four days later than the NET 8 Nov on earlier slides. Starship Starlink 30-1 stays on 10 Dec. Still no FAA Flight 15 licence and no SpaceX date.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-10-29T00:00:00.000Z|The FAA’s CADENA air-traffic planning deck dated 29 Oct 2026 lists Starship Flight 15 on 12 Nov, four days later than the NET 8 Nov on earlier slides. Starship Starlink 30-1 stays on 10 Dec. Still no FAA Flight 15 licence and no SpaceX date."
+    },
+    {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.11",
       "topic": "tesla-software",
@@ -522,6 +539,40 @@
       "summary": "Texas DMV records list 573 Cybercabs and 507 Model Ys under Tesla Robotaxi LLC. Tesla’s fleet is now 89% the size of Waymo’s in the state.",
       "title": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
       "id": "logged|dispatch:/dispatch/cybercab-outnumbers-model-y.html|2026-10-28T14:45:00.000Z|Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet"
+    },
+    {
+      "type": "changed",
+      "factId": "starship:event:starship-flight-15",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "event:starship-flight-15",
+      "previous": "2026-11-08T06:00:00.000Z|net",
+      "next": "2026-11-12T06:00:00.000Z|net",
+      "at": "2026-10-28T09:15:00.000Z",
+      "evidence": "estimated",
+      "source": "FAA CADENA planning deck, 29 Oct 2026, Upcoming High-Profile Missions slide: Starship FLT-15 NOV 12 (https://compass.atfm.aero/public_svcdynamic/getfile?download=false&fileuuid=0fb6079b-6d10-4039-8766-b3ccb3c877f0)",
+      "sourceUrl": "",
+      "href": "/calendar.html",
+      "summary": "Starship Flight 15 changed from 2026-11-08T06:00:00.000Z|net to 2026-11-12T06:00:00.000Z|net.",
+      "title": "Starship Flight 15",
+      "id": "changed|starship:event:starship-flight-15|2026-10-28T09:15:00.000Z|2026-11-12T06:00:00.000Z|net"
+    },
+    {
+      "type": "changed",
+      "factId": "starship:next-flight",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "next-flight",
+      "previous": "15|2026-11-08|day",
+      "next": "15|2026-11-12|day",
+      "at": "2026-10-28T09:15:00.000Z",
+      "evidence": "estimated",
+      "source": "FAA planning slides",
+      "sourceUrl": "",
+      "href": "/starship.html",
+      "summary": "Next Starship flight changed from 15|2026-11-08|day to 15|2026-11-12|day.",
+      "title": "Next Starship flight",
+      "id": "changed|starship:next-flight|2026-10-28T09:15:00.000Z|15|2026-11-12|day"
     },
     {
       "type": "logged",
@@ -1756,14 +1807,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
-      "lastVerified": "2026-10-28T00:00:00.000Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
+      "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1777,56 +1828,56 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
       "lastVerified": "2026-10-29T21:56:18.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
     {
       "tracker": "starlink",
       "href": "/starlink.html",
-      "lastChecked": "2026-10-29T06:22:18.000Z",
+      "lastChecked": "2026-10-30T06:11:47.000Z",
       "lastVerified": "2026-10-29T01:44:51.000Z",
       "note": "Sources: Jonathan McDowell (counts), CelesTrak (orbits)."
     },
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-30T08:41:33.409Z",
+      "lastChecked": "2026-10-30T10:32:46.656Z",
       "lastVerified": "2026-10-30T07:16:52.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1835,87 +1886,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.385Z",
-      "finished": "2026-10-30T08:41:33.391Z"
+      "started": "2026-10-30T10:32:46.635Z",
+      "finished": "2026-10-30T10:32:46.642Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.391Z",
-      "finished": "2026-10-30T08:41:33.391Z"
+      "started": "2026-10-30T10:32:46.642Z",
+      "finished": "2026-10-30T10:32:46.642Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.391Z",
-      "finished": "2026-10-30T08:41:33.392Z"
+      "started": "2026-10-30T10:32:46.642Z",
+      "finished": "2026-10-30T10:32:46.642Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.392Z",
-      "finished": "2026-10-30T08:41:33.402Z"
+      "started": "2026-10-30T10:32:46.642Z",
+      "finished": "2026-10-30T10:32:46.649Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.402Z",
-      "finished": "2026-10-30T08:41:33.406Z"
+      "started": "2026-10-30T10:32:46.649Z",
+      "finished": "2026-10-30T10:32:46.653Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.406Z",
-      "finished": "2026-10-30T08:41:33.406Z"
+      "started": "2026-10-30T10:32:46.653Z",
+      "finished": "2026-10-30T10:32:46.653Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.406Z",
-      "finished": "2026-10-30T08:41:33.407Z"
+      "started": "2026-10-30T10:32:46.653Z",
+      "finished": "2026-10-30T10:32:46.654Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.407Z",
-      "finished": "2026-10-30T08:41:33.407Z"
+      "started": "2026-10-30T10:32:46.654Z",
+      "finished": "2026-10-30T10:32:46.654Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.407Z",
-      "finished": "2026-10-30T08:41:33.407Z"
+      "started": "2026-10-30T10:32:46.654Z",
+      "finished": "2026-10-30T10:32:46.654Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.407Z",
-      "finished": "2026-10-30T08:41:33.409Z"
+      "started": "2026-10-30T10:32:46.654Z",
+      "finished": "2026-10-30T10:32:46.655Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.409Z",
-      "finished": "2026-10-30T08:41:33.409Z"
+      "started": "2026-10-30T10:32:46.655Z",
+      "finished": "2026-10-30T10:32:46.655Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.409Z",
-      "finished": "2026-10-30T08:41:33.409Z"
+      "started": "2026-10-30T10:32:46.655Z",
+      "finished": "2026-10-30T10:32:46.656Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-30T08:41:33.409Z",
-      "finished": "2026-10-30T08:41:33.409Z"
+      "started": "2026-10-30T10:32:46.656Z",
+      "finished": "2026-10-30T10:32:46.656Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-30T08:41:33.409Z",
+    "generatedAt": "2026-10-30T10:32:46.656Z",
     "factCount": 20,
-    "changeCount": 84,
+    "changeCount": 87,
     "conflictCount": 2,
     "issues": [
       {
