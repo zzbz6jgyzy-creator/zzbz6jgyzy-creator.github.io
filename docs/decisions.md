@@ -2,6 +2,16 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-30 · Earth explorer: a clean canvas, one modal panel, auto-hiding controls
+
+- **Choice:** the 3D view carries no text by default. An opening overlay holds the headline; a native modal `<dialog>` (side panel or bottom sheet) holds every control and credit; a four-button HUD fades when idle.
+- **Why:** on a phone the old hero, place card, caption and dock covered most of the Earth. A modal dialog gives the focus trap, Esc, inert background and focus return for free, which is safer than a hand-rolled disclosure. The cost is that the canvas is not interactive while the panel is open.
+- **Pause stays reachable (WCAG 2.2.2):** the fade is opacity only, the button stays focusable and in the accessibility tree, and any activity brings it back. On touch devices an idle HUD ignores taps (the first tap wakes it), so invisible buttons are not hit by accident.
+- **Labels:** kept as real buttons (keyboard, screen reader, tap-to-travel) but transparent until hover/focus or the "Show labels" switch. The headline and distance are spoken through a live region instead of shown.
+- **Credits:** a short credit paragraph is in the panel itself, with the full notes one tap further. Map attribution is MapLibre's compact control plus the panel credits.
+- **Camera:** removed the globe's view offset (14% right on desktop), which only existed for the old text column. Rendering and lighting are otherwise untouched; stage 2 and 4 own those.
+- **Theme:** this page is dark only by design (`color-scheme: dark`); there is no light variant to test.
+
 ## 2026-10-29 · Gear second pass: a need-based list, CSS-only filters, two disclosures, no photographs in the list
 
 - **Choice:** replace the shop-by-shop banners and photo grids with one list of equal cards grouped by what people want (interior, screen and glass, wheels, exterior and performance), with radio-button chips as the filter and a plain sticky three-link nav.

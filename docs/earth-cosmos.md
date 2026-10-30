@@ -103,6 +103,15 @@ the retry, and other HTTP errors are not retried. The exact pinned frame URL is
 retained. Diagnostics expose the final provider status without calling it a
 successful image load.
 
+## Immersive viewer (stage 1)
+
+- **Opening overlay** (`#earth-intro`, a modal-style dialog): title, one line, Enter button, small instructions. Enter, a tap or Esc dismisses it; focus moves to the canvas; `sessionStorage['sd-earth-intro']` skips it for the rest of the session (a tiny inline script sets `html.earth-entered` before first paint so it never flashes). The page `h1` is a visually hidden heading. Without JavaScript the overlay shows the text only.
+- **HUD** (`#earth-hud`): brand mark, Pause (`#earth-motion`), fullscreen, menu (`#earth-menu`), plus Back to Earth in ground mode. `data-hud` is `active` or `idle`; idle after 2.5 s without pointer, touch, key or wheel activity. It never idles while the intro or any dialog is open or a `:focus-visible` element is inside it. Reduced motion removes the fade (instant).
+- **Panel** (`#earth-panel`, a modal `<dialog>`): View (mode, perspectives, zoom, reset, deep sky, detail, Show labels), Place, Now (UTC, distance), Clouds and credits, Keyboard. Side panel from 700 px, bottom sheet below. Perspective choices close the sheet on phones.
+- **Labels:** `data-labels="off|on"` on the root, stored in `localStorage['sd-earth-labels']`. Label buttons stay in the DOM; opacity 0 until hover/focus. `#cosmos-focus-name` shows one soft name for 3.2 s after a view change; `#earth-live` announces name, description and distance (debounced).
+- **Toasts:** `#earth-loading`, `#earth-note` (7 s, except the sticky detail-loading message), `#ground-status` (while the map loads and for 5 s after a new message).
+- Tests: `tests/earth-browser.py` (intro, session memory, clean-text assertion, HUD, panel focus, credits, ground view text), `tests/cosmos-browser.py` (labels off/hover/switch/persist, live region), `tests/earth-cosmos.test.mjs` (markup hooks and ids).
+
 ## Sources, maintenance and validation
 
 See [all image/data credits](../assets/cosmos/SOURCES.md), the asset manifest and
