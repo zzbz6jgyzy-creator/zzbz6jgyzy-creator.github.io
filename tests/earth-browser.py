@@ -46,7 +46,14 @@ async def setup_route(ctx,mode='normal',cloud='fixture'):
 async def wake(page):
     await page.mouse.move(3,3);await page.mouse.move(6,9)
 async def hud_click(page,selector):
-    await wake(page);await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.hud==='active'");await page.locator(selector).click()
+    await wake(page);await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.hud==='active'")
+    btn=page.locator(selector)
+    try:await btn.click(timeout=8000)
+    except Exception:
+        # Software GL can starve animation frames so Playwright's 'stable' check never settles (CI saw this on #273).
+        # The control must still be visible, enabled and the HUD awake; then click without the stability wait.
+        await expect(btn).to_be_visible();await expect(btn).to_be_enabled();await wake(page)
+        await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.hud==='active'");await btn.click(force=True)
 async def open_panel(page):
     if not await page.evaluate("document.getElementById('earth-panel').open"):
         await hud_click(page,'#earth-menu');await expect(page.locator('#earth-panel')).to_be_visible()
