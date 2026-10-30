@@ -45,9 +45,37 @@ End the document with a single **recommended stack**, the reason for each choice
   - `seo`: structured data, metadata, sitemaps, Google News readiness.
   - `reviewer`: reviews every change cold, like a strict senior engineer.
   - `content-ops`: article templates, the newsletter workflow, publishing checklist.
-- **Slash commands** in `.claude/commands/`: `/new-article`, `/new-review`, `/audit-page`, `/screenshot`, `/newsletter-draft`, `/ship`.
+- **Slash commands** in `.claude/commands/`: `/new-article`, `/new-review`, `/audit-page`, `/screenshot`, `/newsletter-draft`, `/ship`, plus the elephant/goldfish set (`/eg-brainstorm`, `/eg-prd`, `/eg-fix-bug`, `/eg-new-feature`, `/eg-precommit-review`).
 - **Hooks:** auto-format on save, run type checks and lint before commit, and block commits that contain secrets.
-- **Skills:** anything repeatable, such as building a tracker or writing a review page in house style.
+- **Skills:** anything repeatable, such as building a tracker or writing a review page in house style. `motionsites-web-builder` is for cinematic landing-page / hero work only: self-host media, no extra CDNs or Unlimited upsell on production pages; fetch the © MotionSites shelf with `sh scripts/fetch-motionsites-shelf.sh` (gitignored).
+
+## Working with Claude Code (elephant/goldfish commands)
+
+Five extra slash commands in [.claude/commands/](.claude/commands/) wrap an [elephant/goldfish](https://drensin.medium.com/elephants-goldfish-and-the-new-golden-age-of-software-engineering-c33641a48874) workflow: the elephant is this session (CLAUDE.md, repo state, conversation); the goldfish is a fresh subagent with no prior context. Cursor Agent has the same five flows as skills under `.cursor/skills/eg-*/`.
+
+| Command | When to use |
+|---|---|
+| `/eg-brainstorm <rough idea>` | Early-stage concept design. Multiple goldfish in parallel (technical / business / UX / contrarian / market research), then a concepts brief. Saves to `docs/eg-brainstorms/` if you ask. |
+| `/eg-prd <idea \| feature description>` | Ground the request in this repo, fill gaps, research, then write a PRD to `docs/prds/`. Hands off to `/eg-new-feature` if you want. |
+| `/eg-fix-bug <description \| #issue \| URL>` | Problem doc → goldfish diagnosis → failing test → fix → `/eg-precommit-review` → test gate. Skips ceremony for trivial diffs. |
+| `/eg-new-feature <description \| #issue \| URL>` | Design doc → three-goldfish check (comprehension + critic + readiness) → implement → `/eg-precommit-review`. Publishing still uses `/new-article`, `/new-review`, `/ship`; studios follow `build-tracker`. |
+| `/eg-precommit-review` | Independent goldfish review of the pending diff (SEO/setup unittests, `node --test`, Playwright when UI changed, rebuild JS when bundles changed). |
+
+Examples:
+
+```
+/eg-brainstorm what if the homepage had a live Starship countdown that didn't hurt LCP
+/eg-prd a public FSD version history with sourced dates and no invented rollout numbers
+/eg-fix-bug the Earth explorer HUD covers the provenance chip on iPhone landscape
+/eg-new-feature a sourced Cybertruck towing-spec desk that rebuilds from data
+/eg-precommit-review
+```
+
+Browser validation: preview with `python3 -m http.server 4173` at http://localhost:4173. In Claude Code use `python3 tests/<page>-browser.py` or `scripts/audit/run.sh /<path> --quick`. In Cursor, the `browser` subagent is also fine.
+
+Each of these commands stops short of committing. Authorize the commit explicitly. Plain-English subjects, never on `main`, merge `origin/main` before pushing.
+
+They are interactive by design. Structured question gates run even when a session asks the agent to work autonomously. Say "skip the framing questions and use defaults" in the same turn if you want a faster pass; each command says which gates stay non-negotiable.
 
 ## Design direction
 - Premium, modern and technical, in the spirit of Tesla and SpaceX design: clean, confident, lots of breathing room, strong typography, restrained colour with one sharp accent. Avoid generic templates.

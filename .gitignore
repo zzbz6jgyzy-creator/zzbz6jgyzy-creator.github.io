@@ -11,3 +11,7 @@ astro/.wrangler/
 
 # graphify output (see .claude/rules/tools.md)
 graphify-out/
+
+# MotionSites example prompts and media (© MotionSites; do not redistribute)
+.claude/skills/motionsites-web-builder/examples/
+.claude/skills/motionsites-web-builder/media/
