@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-10-30T08:35:03Z",
- "checked": "2026-10-30T08:35:03Z",
+ "updated": "2026-10-30T15:53:32Z",
+ "checked": "2026-10-30T15:53:32Z",
  "results": [
   {
    "id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
@@ -330,7 +330,7 @@
   {
    "id": "57ce0a39-d035-4f16-a418-bd6108f78199",
    "name": "Falcon 9 Block 5 | Starlink Group 15-18",
-   "net": "2026-10-31T03:48:00Z",
+   "net": "2026-10-31T04:02:22Z",
    "window_start": "2026-10-31T03:48:00Z",
    "window_end": "2026-10-31T07:48:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/57ce0a39-d035-4f16-a418-bd6108f78199/",
@@ -339,8 +339,8 @@
     "abbrev": "Go"
    },
    "net_precision": {
-    "name": "Minute",
-    "abbrev": "MIN"
+    "name": "Second",
+    "abbrev": "SEC"
    },
    "pad": {
     "name": "Space Launch Complex 4E",
@@ -348,7 +348,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-29T18:34:20Z",
+   "last_updated": "2026-10-30T14:42:22Z",
    "mission": {
     "name": "Starlink Group 15-18",
     "type": "Communications",
