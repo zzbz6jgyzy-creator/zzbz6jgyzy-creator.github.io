@@ -1,7 +1,6 @@
 /* Supercharged Daily Earth preview. Local Three.js r170 (MIT); optional dated satellite cloud texture. */
 import * as THREE from '/vendor/three/three.module.min.js';
 import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM} from '/earth-live-model.js?v=20261030-flight1';
-import * as Flight from '/earth-flight.js?v=20261030-flight1';
 
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;
@@ -441,6 +440,7 @@ export const earthShadersPhysical = Object.freeze({ vertex: PBR_VERTEX, surface:
  * onError?:(error:Error)=>void, onChange?:(state:object)=>void}} options
  */
 export async function initEarth(options = {}) {
+  const Flight = await import('/earth-flight.js?v=20261030-flight1'); // loaded here so the Starship replay, which only needs the shaders, never downloads it
   const { canvas, onStatus = () => {}, onReady = () => {}, onError = () => {}, onChange = () => {} } = options;
   if (!(canvas instanceof HTMLCanvasElement)) throw new TypeError('An Earth canvas is required.');
   const textureBase = (options.textureBase || '/assets/earth').replace(/\/$/, '');
@@ -506,7 +506,7 @@ export async function initEarth(options = {}) {
   // Camera: earth-flight.js owns position, orientation, inertia, modes and the autopilot. This file turns its state into a camera.
   const flight=Flight.createFlight({earthFloor:EARTH_KM+MIN_ORBIT_ALTITUDE_KM});
   const focusId=()=>flight.state.anchor, travelling=()=>flight.state.mode==='auto';
-  const orbitTmp=new Float64Array(4),camKm=new Float64Array(3);
+  const orbitTmp=new Float64Array(4),camKm=new Float64Array(3),sunPos=new Float64Array(3);
   let flightPlaced=false;
   const cameraOrbit=new THREE.Quaternion().setFromEuler(new THREE.Euler(-.10,0,0,'YXZ'));
   // Open on a naturally illuminated three-quarter Earth without changing geographic sunlight.
@@ -517,7 +517,7 @@ export async function initEarth(options = {}) {
     cameraOrbit.setFromRotationMatrix(new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),north));
   }
   const initialOrbit=cameraOrbit.clone();
-  let dragOrbit=null,dragVector=null,lookDrag=false,lastLook=null,pad0=null;const spinAxis=new THREE.Vector3(),rayDir=new THREE.Vector3(),hitDir=new Float64Array(3);
+  let rightDown=false,dragOrbit=null,dragVector=null,lookDrag=false,lastLook=null,pad0=null;const spinAxis=new THREE.Vector3(),rayDir=new THREE.Vector3(),hitDir=new Float64Array(3);
   let observedCloud = null, weatherToken = 0, weatherAt = null, selectedPoint = null;
   const marker = new THREE.Mesh(new THREE.SphereGeometry(.007, 16, 12),new THREE.MeshBasicMaterial({color:0xf34765}));
   marker.visible = false; marker.renderOrder = 4; globe.add(marker);
@@ -567,7 +567,9 @@ export async function initEarth(options = {}) {
     camera.up.set(0,1,0).applyQuaternion(camera.quaternion);
     yaw=Math.atan2(fs.off[0],fs.off[2]);pitch=Math.asin(clamp(fs.off[1]/(distanceKm||1),-1,1));
     camera.updateMatrixWorld();
-    if(cosmos){if(cosmos.getFocus()!==fs.anchor)cosmos.setFocus(fs.anchor);cosmicState=cosmos.update({distanceKm,nearKm:Math.max(fs.altitude,1e-3),blend:fs.mode==='orbit'});fallbackStars.visible=!cosmicState?.skyReady;}
+    if(cosmos){if(cosmos.getFocus()!==fs.anchor)cosmos.setFocus(fs.anchor);// Star, sky and galaxy fades follow the distance to the Sun in free flight and autopilot, so they stay continuous when the anchor changes.
+      let fadeKm=distanceKm;if(fs.mode!=='orbit'){const sun=flight.bodyOf('Sun');if(sun){flight.worldOf(camKm);fadeKm=Math.hypot(camKm[0]-sun.pos[0],camKm[1]-sun.pos[1],camKm[2]-sun.pos[2]);}}
+      cosmicState=cosmos.update({distanceKm,nearKm:Math.max(fs.altitude,1e-3),blend:fs.mode==='orbit',live:fs.mode!=='orbit'||flight.active(),fadeKm});fallbackStars.visible=!cosmicState?.skyReady;}
     else {camera.near=clamp((distance-1)*.4,.002,.1);camera.far=Math.max(150,distance*100);camera.updateProjectionMatrix();}
   }
   async function ensureCosmos(){
@@ -772,7 +774,7 @@ export async function initEarth(options = {}) {
     if (event.pointerType === 'mouse' && event.button !== 0 && event.button !== 2) return;
     canvas.focus({ preventScroll: true });
     if (!pointers.size) {
-      flight.cancelAutopilot(); gestureStart={x:event.clientX,y:event.clientY}; gestureMoved=event.button===2;
+      flight.cancelAutopilot(); gestureStart={x:event.clientX,y:event.clientY}; gestureMoved=event.button===2; rightDown = event.button === 2;
       lookDrag = event.button === 2 || flight.state.mode === 'free';
       if (lookDrag) lastLook = { x: event.clientX, y: event.clientY };
       else { syncOrbit(); dragOrbit = cameraOrbit.clone(); dragVector = arcballPoint(event.clientX, event.clientY); flight.dragStart(nowSec()); }
@@ -788,6 +790,7 @@ export async function initEarth(options = {}) {
     const next = { x: event.clientX, y: event.clientY }; pointers.set(event.pointerId, next);
     if (pointers.size === 1) {
       if (lookDrag && lastLook) { // grab the sky: the view follows the finger
+        if (rightDown && flight.state.mode !== 'free' && Math.hypot(next.x - gestureStart.x, next.y - gestureStart.y) <= 7) return; // a click is not a look
         const k = THREE.MathUtils.degToRad(camera.fov) / Math.max(1, height);
         flight.lookBy((next.x - lastLook.x) * k, (next.y - lastLook.y) * k); lastLook = next; interactionUntil = performance.now() + 8000; renderDemand();
       } else if (dragOrbit && dragVector) {
@@ -799,7 +802,7 @@ export async function initEarth(options = {}) {
       if (flight.state.mode === 'free') { // two fingers fly: drag up/down moves forward/back, sideways strafes, pinch changes speed
         if (pinchDistance > 0) flight.speedBy(distance / pinchDistance);
         if (pad0) flight.setMove(clamp((cx - pad0.x) / 80, -1, 1), 0, clamp((cy - pad0.y) / 80, -1, 1));
-      } else if (pinchDistance > 0) { flight.zoomBy(pinchDistance / distance, hitAt(cx, cy)); if (flight.state.lzt < Math.log(EARTH_KM * 40)) void ensureCosmos(); }
+      } else if (pinchDistance > 0) { flight.zoomBy(pinchDistance / distance, hitAt(cx, cy)); if (flight.state.lzt > Math.log(EARTH_KM * 40)) void ensureCosmos(); }
       pinchDistance = distance; interactionUntil = performance.now() + 8000; schedule(); renderDemand();
     }
   }
@@ -813,7 +816,7 @@ export async function initEarth(options = {}) {
   function pointerUp(event) {
     if (event.type === 'pointerup' && pointers.size === 1 && gestureStart && !gestureMoved) tap(event.clientX, event.clientY);
     gestureStart=null;dragOrbit=null;dragVector=null;lastLook=null; pointers.delete(event.pointerId); pinchDistance=0;
-    if (pointers.size < 2) { pad0 = null; flight.setMove(0, 0, 0); }
+    if (pointers.size < 2) { if (pad0) flight.setMove(0, 0, 0); pad0 = null; }
     if (pointers.size === 1) {
       const p = [...pointers.values()][0];
       if (flight.state.mode === 'free') lastLook = { x: p.x, y: p.y }; else { syncOrbit(); dragOrbit = cameraOrbit.clone(); dragVector = arcballPoint(p.x, p.y); flight.dragStart(nowSec()); }
@@ -880,7 +883,9 @@ export async function initEarth(options = {}) {
     if(Number.isFinite(camLat)&&Number.isFinite(camLon)){const p=geoVector(camLat,camLon),v=new THREE.Vector3(p.x,p.y,p.z).applyQuaternion(globe.quaternion),n=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);lookFrom(v,n);}
     if(Number.isFinite(z))flight.setDistance(fitDistance*EARTH_KM/z,true);renderDemand();
   }
-  const api = { pickBodyAt: (x, y) => cosmos?.pickBody(x, y) || null, __seek: tau => { const a = flight.state.auto; if (!a) return false; a.seg.duration = 1e9; a.t = clamp(tau, 0, 1); flight.step(0); renderDemand(); return true; }, setFlightMode, flyTo: setScale, cancelAutopilot: () => { flight.cancelAutopilot(); renderDemand(); notify(); }, getFlight: flightInfo, playPath: async keys => { await ensureCosmos(); flight.setAnimated(animatedNow()); return flight.playPath(keys, { onDone: () => { renderDemand(); notify(); } }); }, __cinemaDemo: async () => api.playPath(Flight.DEMO_PATH), setSceneGeo, getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, viewLocation, minAltitudeKm:MIN_ORBIT_ALTITUDE_KM, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive,setScale,setDeepSky,dispose };
+  const api = { setFlightMode, flyTo: setScale, cancelAutopilot: () => { flight.cancelAutopilot(); renderDemand(); notify(); }, getFlight: flightInfo, playPath: async keys => { await ensureCosmos(); flight.setAnimated(animatedNow()); return flight.playPath(keys, { onDone: () => { renderDemand(); notify(); } }); }, __cinemaDemo: async () => api.playPath(Flight.DEMO_PATH), setSceneGeo, getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, viewLocation, minAltitudeKm:MIN_ORBIT_ALTITUDE_KM, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive,setScale,setDeepSky,dispose, turn: name => { if (!disposed) discreteKey(name); } };
+  // Test hooks (not part of the interface): only when a test sets window.__earthTestHooks before the page loads.
+  if (window.__earthTestHooks) Object.assign(api, { pickBodyAt: (x, y) => cosmos?.pickBody(x, y) || null, __seek: tau => { const a = flight.state.auto; if (!a) return false; a.seg.duration = 1e9; a.t = clamp(tau, 0, 1); flight.step(0); renderDemand(); return true; } });
   if (canvas.tabIndex < 0) canvas.tabIndex = 0;
   canvas.style.touchAction = 'none'; canvas.style.cursor = 'grab';
   bind(canvas, 'pointerdown', pointerDown); bind(canvas, 'pointermove', pointerMove);
@@ -888,7 +893,7 @@ export async function initEarth(options = {}) {
   /* Keyboard. Orbit mode: arrows or A/D orbit, W/S zoom, +/- step the zoom. Free flight: W/A/S/D move, Q/E down/up, arrows look,
      Z/C roll, Shift boosts. F enters free flight, O orbits the nearest world, [ and ] change the cruise speed, Esc stops the autopilot.
      A key held for less than 140 ms still moves the camera a little, so a tap always does something. */
-  const keysDown = new Set(), pressedAt = new Map(), animatedNow = () => !paused && !motion.matches;
+  const keysDown = new Set(), pressedAt = new Map(), keyTimers = new Map(), animatedNow = () => !paused && !motion.matches;
   const MOVE_KEYS = new Set(['w', 'a', 's', 'd', 'q', 'e', 'z', 'c', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Shift']);
   function applyKeys() {
     const k = n => keysDown.has(n) ? 1 : 0;
@@ -927,12 +932,13 @@ export async function initEarth(options = {}) {
     event.preventDefault();
     if (name === 'Shift') { if (!keysDown.has('Shift')) { keysDown.add('Shift'); applyKeys(); } return; }
     if (!animatedNow()) { discreteKey(name); return; }
+    if (keyTimers.has(name)) { clearTimeout(keyTimers.get(name)); keyTimers.delete(name); }
     if (!keysDown.has(name)) { keysDown.add(name); pressedAt.set(name, performance.now()); applyKeys(); }
   });
   bind(canvas, 'keyup', event => {
     const name = event.key.length === 1 ? event.key.toLowerCase() : event.key; if (!keysDown.has(name)) return;
     const wait = name === 'Shift' ? 0 : Math.max(0, 140 - (performance.now() - (pressedAt.get(name) || 0)));
-    setTimeout(() => { keysDown.delete(name); if (!disposed) applyKeys(); }, wait);
+    clearTimeout(keyTimers.get(name)); keyTimers.set(name, setTimeout(() => { keysDown.delete(name); keyTimers.delete(name); if (!disposed) applyKeys(); }, wait));
   });
   bind(canvas, 'blur', () => { if (keysDown.size) { keysDown.clear(); applyKeys(); } });
   bind(canvas, 'contextmenu', event => event.preventDefault());

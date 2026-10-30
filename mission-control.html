@@ -32,7 +32,7 @@
       <div class="earth-stage" id="earth-stage">
         <img class="earth-poster" src="/assets/earth/earth-poster.webp" width="1100" height="1100" alt="An illustrative view of Earth from space, with oceans, land and white clouds" fetchpriority="high">
         <canvas id="earth-canvas" tabindex="0" role="img" aria-label="Interactive three-dimensional Earth. Drag or use arrow keys to orbit, plus or minus to zoom. Press F for free flight. Tap a place to select it, or a world to fly there." aria-describedby="earth-canvas-help"></canvas>
-        <p class="sr-only" id="earth-canvas-help">Drag or use the arrow keys to orbit, plus or minus to zoom, Home to reset and Space to pause. Press F for free flight: W A S D to move, Q and E for down and up, arrow keys to look, Shift to boost, O to orbit the nearest world. Tap a place to select it, or tap a world to fly there; any key or touch stops the autopilot.</p>
+        <p class="sr-only" id="earth-canvas-help">Drag or use the arrow keys to orbit, plus or minus to zoom, Home to reset and Space to pause. Press F for free flight: W A S D to move, Q and E for down and up, arrow keys to look, Shift to boost, O to orbit the nearest world. Tap a place to select it, or tap a world to fly there; any movement key, scroll or touch stops the autopilot.</p>
         <div class="earth-vignette" aria-hidden="true"></div>
       </div>
       <div class="earth-hud" id="earth-hud">
@@ -85,6 +85,7 @@
         <section class="earth-panel-section earth-flight-section" aria-labelledby="earth-flight-title">
           <h3 id="earth-flight-title">Flight</h3>
           <div class="earth-presets" role="group" aria-label="Camera mode"><button type="button" id="flight-orbit" aria-pressed="true">Orbit</button><button type="button" id="flight-free" aria-pressed="false">Free flight</button></div>
+          <div class="earth-presets" role="group" aria-label="Turn the view"><button type="button" data-flight-turn="ArrowLeft">Turn left</button><button type="button" data-flight-turn="ArrowRight">Turn right</button><button type="button" data-flight-turn="ArrowUp">Turn up</button><button type="button" data-flight-turn="ArrowDown">Turn down</button></div>
           <p class="earth-panel-note" id="flight-readout">Orbit · drag to turn the world</p>
           <button type="button" class="earth-text-button" id="flight-offer" hidden>Orbit nearest world <span aria-hidden="true">↗</span></button>
         </section>
@@ -114,7 +115,7 @@
         </section>
         <section class="earth-panel-section" aria-labelledby="earth-keys-title">
           <h3 id="earth-keys-title">Keyboard</h3>
-          <p class="earth-credits"><strong>Orbit</strong> (around a world): arrow keys or A and D turn it, W and S or + and − zoom (down to about 2,500 km above Earth), Home resets. <strong>Free flight</strong> (press F): W A S D move, Q and E go down and up, the arrow keys look, Z and C roll, Shift boosts, [ and ] change the cruise speed. Press O to orbit the nearest world. Choose a world and the autopilot flies there; any key, scroll or touch takes over, and Esc stops it. Space pauses.</p>
+          <p class="earth-credits"><strong>Orbit</strong> (around a world): arrow keys or A and D turn it, W and S or + and − zoom (down to about 2,500 km above Earth), Home resets. <strong>Free flight</strong> (press F): W A S D move, Q and E go down and up, the arrow keys look, Z and C roll, Shift boosts, [ and ] change the cruise speed. Press O to orbit the nearest world. Choose a world and the autopilot flies there; any movement key, scroll or touch takes over, and Esc stops it. Space pauses.</p>
         </section>
       </div>
     </dialog>

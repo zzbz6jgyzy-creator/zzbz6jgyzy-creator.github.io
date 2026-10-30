@@ -473,7 +473,7 @@ export function createFlight(cfg = {}) {
 
   /* ----- autopilot and paths ----- */
   function cancelAuto(silent) {
-    if (!st.auto) return false;
+    if (!st.auto) { st.path = null; return false; }
     // carry the path's velocity so the camera coasts to a stop instead of freezing
     st.vel[0] = st.pathVel[0]; st.vel[1] = st.pathVel[1]; st.vel[2] = st.pathVel[2]; st.acc.fill(0);
     st.auto = null; st.path = null; st.mode = 'free'; qCopy(st.qt, st.q); st.rotErrV.fill(0); st.w.fill(0); st.wv.fill(0); st.version++;
@@ -536,8 +536,11 @@ export function createFlight(cfg = {}) {
     if (dt > 0) { st.pathVel[0] = (S.a[0] - st.lastP[0]) / dt; st.pathVel[1] = (S.a[1] - st.lastP[1]) / dt; st.pathVel[2] = (S.a[2] - st.lastP[2]) / dt; }
     st.lastP[0] = S.a[0]; st.lastP[1] = S.a[1]; st.lastP[2] = S.a[2];
     // target-relative to anchor-relative
-    const an = anchorBody(), tp = seg.tpt; st.off[0] = S.a[0] + tp[0] - an.pos[0]; st.off[1] = S.a[1] + tp[1] - an.pos[1]; st.off[2] = S.a[2] + tp[2] - an.pos[2];
-    bodyDistances(); followNearest();
+    // blend from the planned target position to its live one: the scene frame turns with the Earth, so the target moves while we fly
+    pivotVec(S.p, a.target, seg.r1); const an = anchorBody(), tp = S.c, pl = seg.tpt, span = Math.log(seg.r0 / seg.r1), frac = Math.abs(span) > .3 ? clamp(Math.log(seg.r0 / (Math.hypot(S.a[0], S.a[1], S.a[2]) || 1)) / span, 0, 1) : a.t, w = smooth01(frac * 1.8);
+    tp[0] = pl[0] + (t.pos[0] + S.p[0] - pl[0]) * w; tp[1] = pl[1] + (t.pos[1] + S.p[1] - pl[1]) * w; tp[2] = pl[2] + (t.pos[2] + S.p[2] - pl[2]) * w;
+    st.off[0] = S.a[0] + tp[0] - an.pos[0]; st.off[1] = S.a[1] + tp[1] - an.pos[1]; st.off[2] = S.a[2] + tp[2] - an.pos[2];
+    bodyDistances(); followNearest(); bodyDistances(); constrain();
     if (done) finishAuto();
   }
   /** Play a keyframe path. Each keyframe is one autopilot segment (with obstacle avoidance); hold pauses on the pose. */

@@ -141,7 +141,7 @@ async def route_site(ctx):
   path=ROOT/(unquote(u.path).lstrip('/') or 'index.html')
   if path.is_file() and ROOT in path.resolve().parents:return await r.fulfill(body=path.read_bytes(),content_type='text/javascript' if path.suffix in ['.js','.mjs'] else mimetypes.guess_type(str(path))[0] or 'application/octet-stream')
   return await r.fulfill(status=404,body='Not found')
- await ctx.route('**/*',route)
+ await ctx.add_init_script('window.__earthTestHooks=true');await ctx.route('**/*',route)
 
 async def reduced_motion_flight(browser,route_ctx):
  """Reduced motion: no inertia, no animated trips. The autopilot lands at once and keys step the camera."""
@@ -172,7 +172,7 @@ async def main():
     path=ROOT/(unquote(u.path).lstrip('/') or 'index.html')
     if path.is_file() and ROOT in path.resolve().parents:return await r.fulfill(body=path.read_bytes(),content_type='text/javascript' if path.suffix in ['.js','.mjs'] else mimetypes.guess_type(str(path))[0] or 'application/octet-stream')
     return await r.fulfill(status=404,body='Not found')
-   await ctx.route('**/*',route);page=await ctx.new_page();page.set_default_timeout(30000);errors=[];console=[]
+   await ctx.add_init_script('window.__earthTestHooks=true');await ctx.route('**/*',route);page=await ctx.new_page();page.set_default_timeout(30000);errors=[];console=[]
    page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:console.append(m.text) if m.type=='error' else None)
    async def audit_response(response):
     if 'view.eumetsat.int' not in response.url:return

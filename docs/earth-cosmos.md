@@ -167,9 +167,7 @@ yaw/pitch are the camera's offset direction from the target in the scene frame).
 same avoidance. `DEMO_PATH` (Earth, Moon, Earth) is reachable only through `window.__earthPreview.__cinemaDemo()` for tests and
 nothing in the interface uses it yet. Input stops a path like any autopilot.
 
-**Known limits.** The Earth-fixed scene frame is refreshed every 30 s as before, so in free flight far from the anchor the other
-worlds step by up to 0.125 degrees of Earth's rotation at each refresh; near the anchor nothing moves. Orbit-mode zoom-out is not cut off
-at the sphere of influence (scrolling out to the galaxy still works); free flight is entered explicitly. The thumb control was not built.
+**Known limits.** The Earth-fixed scene frame turns with the Earth. It is rebuilt every frame while the camera is moving (about 0.2 ms) and once a second at rest, so worlds never step; the autopilot also blends from the planned target position to the live one, so a frame turn cannot make a trip jump (tested with a 2.18e-3 rad turn mid-trip). Orbit-mode zoom-out is not cut off at the sphere of influence (scrolling out to the galaxy still works); free flight is entered explicitly. The thumb control was not built: two-finger drag moves, and the panel has Turn buttons for users who cannot drag. Under pause or reduced motion a two-finger move does nothing (use the keys); any movement key, scroll or touch stops the autopilot.
 
 ## Zoom floor (no ground view)
 

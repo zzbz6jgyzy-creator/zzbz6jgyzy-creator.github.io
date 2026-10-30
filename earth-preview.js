@@ -61,11 +61,11 @@
     const f=state.flight;if(!f)return;const mode=f.mode;
     $('flight-orbit').setAttribute('aria-pressed',String(mode==='orbit'));$('flight-free').setAttribute('aria-pressed',String(mode==='free'));
     const dist=km=>km<1e6?Math.round(km).toLocaleString('en-GB')+' km':km<9.46e10?(km/149597870.7).toLocaleString('en-GB',{maximumFractionDigits:2})+' AU':(km/9460730472580.8).toLocaleString('en-GB',{maximumFractionDigits:1})+' light-years';
-    const text=mode==='autopilot'?'Autopilot to '+f.autopilot+' · any key, scroll or touch takes over':mode==='free'?'Free flight · cruise '+f.speedText+' · '+dist(f.altitudeKm)+' above '+f.nearest:'Orbit · '+f.anchor+' · drag to turn it, scroll to zoom';
+    const text=mode==='autopilot'?'Autopilot to '+f.autopilot+' · any movement key, scroll or touch takes over':mode==='free'?'Free flight · cruise '+f.speedText+' · '+dist(f.altitudeKm)+' above '+f.nearest:'Orbit · '+f.anchor+' · drag to turn it, scroll to zoom';
     if($('flight-readout').textContent!==text)$('flight-readout').textContent=text;
     const offer=mode==='free'&&f.offer;$('flight-offer').hidden=!offer;if(offer){const t='Orbit '+f.offer;const label=$('flight-offer').firstChild;if(label&&label.textContent!==t+' ')label.textContent=t+' ';}
     if(mode!==lastMode){const prev=lastMode;lastMode=mode;clearTimeout(modeTimer);
-      modeTimer=setTimeout(()=>{$('earth-live').textContent=mode==='free'?'Free flight. W A S D move, Q and E go down and up, arrow keys look, Shift boosts.':mode==='autopilot'?'Flying to '+f.autopilot+'.':prev==='autopilot'?'Arrived. Orbiting '+f.anchor+'.':'Orbiting '+f.anchor+'.';},300);}
+      modeTimer=setTimeout(()=>{$('earth-live').textContent=mode==='free'?(matchMedia('(pointer:coarse)').matches?'Free flight. Drag to look, drag with two fingers to move, pinch to change speed.':'Free flight. W A S D move, Q and E go down and up, arrow keys look, Shift boosts.'):mode==='autopilot'?'Flying to '+f.autopilot+'.':prev==='autopilot'?'Arrived. Orbiting '+f.anchor+'.':'Orbiting '+f.anchor+'.';},300);}
   }
   function paintCosmos(state){
     paintFlight(state);
@@ -125,6 +125,7 @@
     if(!cosmicModel){cosmicModel=await import('/earth-cosmos-model.js?v=20261030-flight1');for(const body of cosmicModel.BODIES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),detail=document.createElement('small');name.textContent=body.id;detail.textContent=body.radius.toLocaleString('en-GB')+' km mean radius';b.append(name,detail);b.addEventListener('click',()=>{$('cosmos-places-dialog').close();panel.close();viewer?.setScale(body.id);});$('cosmos-places-list').append(b);}}
     $('cosmos-places-dialog').showModal();
   }
+  for(const b of root.querySelectorAll('[data-flight-turn]'))b.addEventListener('click',()=>viewer?.turn(b.dataset.flightTurn));
   $('flight-orbit').addEventListener('click',()=>viewer?.setFlightMode('orbit'));$('flight-free').addEventListener('click',()=>{viewer?.setFlightMode('free');panel.close();});$('flight-offer').addEventListener('click',()=>viewer?.setFlightMode('orbit'));
   for(const b of root.querySelectorAll('[data-earth-scale]'))b.addEventListener('click',()=>{viewer?.setScale(b.dataset.earthScale);if(matchMedia('(max-width:699px)').matches)panel.close();});
   $('cosmos-deep-sky').addEventListener('click',()=>{const b=$('cosmos-deep-sky'),value=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(value));viewer?.setDeepSky(value);});

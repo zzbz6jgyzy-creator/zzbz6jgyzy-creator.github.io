@@ -193,6 +193,30 @@ function bodiesClear(f, startClear) {
   assert.ok(done && f.state.anchor === 'Jupiter' && f.state.mode === 'orbit' && Math.abs(f.distance() - 69911 * 6.5) < 1e-3);
 }
 
+// ---- the scene frame refreshes while flying: bodies rotate about Earth (2.18e-3 rad = 30 s of Earth turn at the 30 s refresh)
+{
+  const run = (target, factor, when) => {
+    const base = Object.fromEntries(Object.entries(positions).map(([k, v]) => [k, [...v]])), cur = Object.fromEntries(Object.entries(base).map(([k, v]) => [k, [...v]]));
+    const f = F.createFlight({ earthFloor: FLOOR_EARTH, bodies: [...M.BODIES.map(b => ({ id: b.id, radius: b.radius })), { id: 'Galaxy', radius: M.KPC, skipOffer: true }] });
+    f.setPositionProvider((id, out) => { const p = cur[id]; out[0] = p[0]; out[1] = p[1]; out[2] = p[2]; });
+    f.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 1.2 }); f.flyTo(target, { distance: f.bodyOf(target).radius * factor, q: F.qLook(new Float64Array(4), -.5, -.5, -.7, 0, 1, 0) });
+    const tb = f.bodyOf(target), ds = []; let rotated = when === null, frames = 0;
+    while (f.state.mode === 'auto' && frames++ < 1000) {
+      if (!rotated && f.state.auto.t >= when) { rotated = true; const c = Math.cos(2.18e-3), s = Math.sin(2.18e-3); for (const [k, v] of Object.entries(base)) cur[k] = [v[0] * c - v[1] * s, v[0] * s + v[1] * c, v[2]]; }
+      f.step(1 / 60); ds.push(len(sub(camera(f), tb.pos)));
+    }
+    assert.equal(f.state.mode, 'orbit'); return { ds, framing: tb.radius * factor, final: len(sub(camera(f), tb.pos)) };
+  };
+  for (const [target, factor] of [['Saturn', 12], ['Neptune', 6.5], ['Mars', 6.5], ['Moon', 6.5]]) {
+    const base = run(target, factor, null);
+    for (const when of [.05, .3, .6, .9]) {
+      const r = run(target, factor, when); assert.ok(Math.abs(r.final / r.framing - 1) < 1e-6, `${target}: arrival is exactly the framing distance`);
+      let worst = 0; for (let i = 0; i < Math.min(r.ds.length, base.ds.length); i++) worst = Math.max(worst, Math.abs(r.ds[i] / base.ds[i] - 1));
+      assert.ok(worst < .05, `${target} frame turn at ${when}: distance to the target departs from the undisturbed trip by ${(worst * 100).toFixed(1)}%`);
+    }
+  }
+}
+
 // ---- galaxy scale: the orbit pivot slides to the galactic centre; trips to and from there must not pop
 {
   const q = F.qLook(new Float64Array(4), -.4, -.7, -.6, 0, 1, 0), far = 60 * M.KPC;

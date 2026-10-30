@@ -109,9 +109,10 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   const e=frameElements,x=p[0],y=p[1],z=p[2];out[0]=e[0]*x+e[4]*y+e[8]*z;out[1]=e[1]*x+e[5]*y+e[9]*z;out[2]=e[2]*x+e[6]*y+e[10]*z;return out;
  }
 
- function update({distanceKm,nearKm=distanceKm,blend=true}){
+ function update({distanceKm,nearKm=distanceKm,blend=true,live=false,fadeKm=distanceKm}){
   if(disposed)return null;currentRange=distanceKm;blendGalaxy=blend;level=M.levelFor(distanceKm,focus);
-  if(Date.now()-lastEpoch>30000){lastEpoch=Date.now();frameMatrix(new Date());}
+  // The Earth-fixed frame turns with the Earth. While the camera is moving it is rebuilt every frame (about 0.2 ms), so bodies never step; at rest once a second.
+  if(live||Date.now()-lastEpoch>1000){lastEpoch=Date.now();frameMatrix(new Date());}
   renderUnit=M.unitFor(distanceKm);const f=focusPosition(),origin=world(f),ratio=Math.min(devicePixelRatio||1,2);
   globe.position.copy(origin).multiplyScalar(-1/renderUnit);globe.scale.setScalar(M.EARTH_RADIUS/renderUnit);globe.visible=distanceKm<1e12;
   const earthNear=focus==='Earth'&&distanceKm<M.EARTH_RADIUS*65;
@@ -125,14 +126,14 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   orbitGroup.visible=distanceKm>M.AU*.07&&distanceKm<M.AU*2000;
   if(orbitGroup.visible){ensureOrbits();orbitGroup.quaternion.setFromRotationMatrix(eqFrame);orbitGroup.position.copy(world(M.sub(physical.earthHelio.map(v=>-v),f))).multiplyScalar(1/renderUnit);orbitGroup.scale.setScalar(M.AU/renderUnit);}
   const sOrigin=world(M.sub(physical.positions.Sun,f)).multiplyScalar(1/renderUnit);groupStars.position.copy(sOrigin);groupStars.quaternion.setFromRotationMatrix(eqFrame);groupStars.scale.setScalar(M.PC/renderUnit);
-  groupStars.visible=starsCount>0&&distanceKm>M.LY*.025&&distanceKm<M.LY*8000;
-  starMaterial.uniforms.uRatio.value=ratio;starMaterial.uniforms.uOpacity.value=smooth(.025,.3,distanceKm/M.LY)*(1-smooth(1000,8000,distanceKm/M.LY));
+  groupStars.visible=starsCount>0&&fadeKm>M.LY*.025&&fadeKm<M.LY*8000;
+  starMaterial.uniforms.uRatio.value=ratio;starMaterial.uniforms.uOpacity.value=smooth(.025,.3,fadeKm/M.LY)*(1-smooth(1000,8000,fadeKm/M.LY));
   const centre=M.galToEq(M.SUN_GALACTIC.map(v=>-v*M.KPC));groupGalaxy.position.copy(world(M.sub(centre,f))).multiplyScalar(1/renderUnit);groupGalaxy.quaternion.setFromRotationMatrix(galFrame);groupGalaxy.scale.setScalar(M.KPC/renderUnit);
-  const galaxyFade=smooth(250,1800,distanceKm/M.LY);groupGalaxy.visible=galaxyFade>0;galMaterial.uniforms.uRatio.value=ratio;galMaterial.uniforms.uOpacity.value=galaxyFade*.28;disk.material.uniforms.uOpacity.value=galaxyFade;
-  sky.position.copy(camera.position);sky.scale.setScalar(Math.max(10,distanceKm/renderUnit*4));skyUniforms.uExposure.value=deepSky?.45:earthNear?.05:.07;skyUniforms.uOpacity.value=1-smooth(.05,.4,distanceKm/M.LY);
+  const galaxyFade=smooth(250,1800,fadeKm/M.LY);groupGalaxy.visible=galaxyFade>0;galMaterial.uniforms.uRatio.value=ratio;galMaterial.uniforms.uOpacity.value=galaxyFade*.28;disk.material.uniforms.uOpacity.value=galaxyFade;
+  sky.position.copy(camera.position);sky.scale.setScalar(Math.max(10,distanceKm/renderUnit*4));skyUniforms.uExposure.value=deepSky?.45:earthNear?.05:.07;skyUniforms.uOpacity.value=1-smooth(.05,.4,fadeKm/M.LY);
   // The far plane follows the range; the near plane follows the altitude above the nearest surface (a quarter of it), but never
   // closer than 1e-7 of the far plane, so the depth buffer keeps its precision from the Earth floor out to the galaxy.
-  const far=Math.max(200,distanceKm/renderUnit*100);camera.far=far;camera.near=Math.max(nearKm/renderUnit*.25,far*1e-7);camera.updateProjectionMatrix();
+  const far=Math.max(200,distanceKm/renderUnit*100);camera.far=far;camera.near=Math.min(Math.max(nearKm/renderUnit*.25,far*1e-7),distanceKm/renderUnit*.05);camera.updateProjectionMatrix();
   return{distanceWorld:distanceKm/renderUnit,level,focus,unit:renderUnit,range:distanceKm,skyReady:!!skyMap,skyVisible:skyUniforms.uOpacity.value>0,starsCount,galaxyCount,model:level==='galaxy',at:physical.at,focusRadius:M.BODIES.find(b=>b.id===focus)?.radius||M.EARTH_RADIUS,failures:[...failures]};
  }
  const LY_LIMIT=M.LY*3;
