@@ -148,7 +148,9 @@ const ATMO_COMMON = `
   const float TAU_M_EXT = 0.025;
   const float MIE_G = 0.76;
   const float SUN_E = 1.25;
-  const float SUNSET_WARMTH = 2.0; // artistic: ozone and aerosol reddening the single-scattering model lacks
+  // Sun path: real planet curvature (scale height 8 km = 0.001256 Earth radii) so the horizon path is twice as long as in the
+  // exaggerated atmosphere, with the exaggerated density profile above the ground. Zenith optical depth is unchanged.
+  const float X_SUN = 796.0;
   float chPos(float X, float h, float cz) {
     float c = sqrt(1.5707963 * (X + h));
     float x = c * cz, s4 = sqrt(sqrt(x));
@@ -160,12 +162,9 @@ const ATMO_COMMON = `
     float x0 = sqrt(1.0 - cz * cz) * (X + h);
     return 2.0 * sqrt(1.5707963 * x0) * exp(X - x0) - chPos(X, h, -cz);
   }
-  vec3 opticalDepth(float r, float cz) {
+  vec3 opticalDepth(float r, float cz, float X) {
     float h = max(r - 1.0, 0.0);
-    float chR = chapman(1.0 / HR, h / HR, cz);
-    // Mie shares the Rayleigh Chapman value, rescaled for its lower scale height (path ratio sqrt(HR/HM) at the horizon, 1 at zenith).
-    float chM = chR * (1.0 + 1.04 * clamp(1.0 - cz, 0.0, 1.5)) * exp(h / HR - h / HM);
-    return TAU_R * chR + vec3(TAU_M_EXT * chM);
+    return TAU_R * chapman(X, h / HR, cz) + vec3(TAU_M_EXT * chapman(1.0 / HM, h / HM, cz));
   }
   // Sun visibility (1 in daylight, fading to 0 once the planet blocks the Sun at this height).
   float sunVisibility(float r, float cz) {
@@ -175,11 +174,66 @@ const ATMO_COMMON = `
   vec3 sunTransmittance(float r, float cz) {
     float vis = sunVisibility(r, cz);
     if (vis <= 0.0) return vec3(0.0);
-    return exp(-SUNSET_WARMTH * opticalDepth(r, cz)) * vis;
+    return exp(-opticalDepth(r, cz, X_SUN)) * vis;
   }
   // Multiple scattering refills the blue that single scattering removes along long paths; view-path extinction is scaled by MS.
   const float MS = 0.6;
-  vec3 viewTransmittance(float r, float cv) { return exp(-MS * opticalDepth(r, max(cv, 0.0))); }
+  vec3 viewTransmittance(float r, float cv) { return exp(-MS * opticalDepth(r, max(cv, 0.0), 1.0 / HR)); }
+  // Single-scattered light along a view ray (camera ro, direction rd) to the atmosphere exit or the planet.
+  // status: -1 misses the atmosphere, 0 limb ray, 1 hits the planet.
+  vec3 atmosphereScatter(vec3 ro, vec3 rd, vec3 L, float steps, out float status) {
+    status = -1.0;
+    float b = dot(ro, rd);
+    float cc = dot(ro, ro);
+    float disc = b * b - cc + ATM_TOP * ATM_TOP;
+    if (disc <= 0.0) return vec3(0.0);
+    float sd = sqrt(disc);
+    float t0 = max(0.0, -b - sd);
+    float t1 = -b + sd;
+    float dp = b * b - cc + 1.0;
+    bool hit = false;
+    if (dp > 0.0) { float tp = -b - sqrt(dp); if (tp > 0.0) { t1 = min(t1, tp); hit = true; } }
+    status = hit ? 1.0 : 0.0;
+    // Grazing rays that end on the planet keep the full step count so they match the limb shell without a seam.
+    float n = hit && (cc - b * b) > 1.1 ? min(steps, 3.0) : steps;
+    float odR = 0.0, odM = 0.0;
+    vec3 sumR = vec3(0.0), sumM = vec3(0.0);
+    for (int i = 0; i < 12; i++) {
+      if (float(i) >= n) break;
+      float ua = float(i) / n, ub = (float(i) + 1.0) / n, um = 0.5 * (ua + ub);
+      float ta, tb, tm;
+      if (hit) {
+        // Samples crowd towards the ground, where the air is densest.
+        ta = t0 + (t1 - t0) * (1.0 - (1.0 - ua) * (1.0 - ua));
+        tb = t0 + (t1 - t0) * (1.0 - (1.0 - ub) * (1.0 - ub));
+        tm = t0 + (t1 - t0) * (1.0 - (1.0 - um) * (1.0 - um));
+      } else {
+        // Limb rays: samples crowd around the tangent point.
+        float wa = 2.0 * ua - 1.0, wb = 2.0 * ub - 1.0, wm = 2.0 * um - 1.0;
+        ta = max(-b + sd * sign(wa) * wa * wa, t0);
+        tb = max(-b + sd * sign(wb) * wb * wb, t0);
+        tm = max(-b + sd * sign(wm) * wm * wm, t0);
+      }
+      float dt = tb - ta;
+      vec3 p = ro + rd * tm;
+      float r = length(p);
+      float h = max(r - 1.0, 0.0);
+      float dR = exp(-h / HR), dM = exp(-h / HM);
+      odR += 0.5 * dR * dt; odM += 0.5 * dM * dt;
+      float cz = dot(p, L) / r;
+      float vis = sunVisibility(r, cz);
+      if (vis > 0.0) {
+        vec3 T = vis * exp(-(opticalDepth(r, cz, X_SUN) + MS * (TAU_R / HR * odR + vec3(TAU_M_EXT / HM) * odM)));
+        sumR += dR * dt * T; sumM += dM * dt * T;
+      }
+      odR += 0.5 * dR * dt; odM += 0.5 * dM * dt;
+    }
+    float mu = dot(rd, L);
+    float pr = 0.75 * (1.0 + mu * mu);
+    float g2 = MIE_G * MIE_G;
+    float pm = 1.5 * (1.0 - g2) / (2.0 + g2) * (1.0 + mu * mu) / pow(1.0 + g2 - 2.0 * MIE_G * mu, 1.5);
+    return SUN_E * 0.2 * (TAU_R / HR * pr * sumR + vec3(TAU_M / HM) * pm * sumM);
+  }
   float hgNorm(float c, float g) { return (1.0 - g * g) / pow(1.0 + g * g - 2.0 * g * c, 1.5); }
 `;
 const CLOUD_COMMON = `
@@ -227,6 +281,7 @@ const PBR_SURFACE = `
   uniform float uCloudOffset;
   uniform float uRelief;
   uniform float uOceanReady;
+  uniform float uSteps;
   varying vec2 vUv;
   varying vec3 vWorldPosition;
   varying vec3 vWorldNormal;
@@ -261,24 +316,28 @@ const PBR_SURFACE = `
     vec3 albedo = day;
     // Direct sun through the atmosphere, plus blue sky fill that fades through astronomical twilight.
     float skyLight = smoothstep(-0.31, 0.3, mu);
-    vec3 sky = vec3(0.42, 0.62, 1.0) * 0.08 * skyLight * skyLight;
+    // Sky fill is blue by day and warms (towards the reddened sun) in the narrow band around sunset.
+    float warm = smoothstep(-0.10, -0.02, mu) * (1.0 - smoothstep(0.02, 0.14, mu));
+    vec3 sky = mix(vec3(0.42, 0.62, 1.0), vec3(1.0, 0.55, 0.32), warm) * 0.08 * skyLight * skyLight;
     vec3 color = albedo * SUN_E * (Tsun * max(muD, 0.0) * shadow + sky);
-    // Ocean sun glint: GGX (narrow lobe + wide skirt), Schlick Fresnel, flat geometric normal.
+    // Ocean sun glint: Cox-Munk style Beckmann slope distribution (wind-roughened sea, m2 = 0.003 + 0.00512 U, U about 3 m/s),
+    // Schlick Fresnel, flat geometric normal. Gain and soft peak clamp are artistic: the patch is broad with a defined edge.
     vec3 H = normalize(L + V);
-    float NL = max(mu, 0.0), NH = max(dot(Ng, H), 0.0), VH = max(dot(V, H), 0.0), nv = max(NV, 0.02);
-    float a = 0.03, a2 = a * a;
-    float dn = NH * NH * (a2 - 1.0) + 1.0;
-    float D = a2 / (PI * dn * dn);
-    float b2 = 0.2 * 0.2;
-    float dw = NH * NH * (b2 - 1.0) + 1.0;
-    float Dw = b2 / (PI * dw * dw);
+    float NL = max(mu, 0.0), NH = max(dot(Ng, H), 1e-3), VH = max(dot(V, H), 0.0), nv = max(NV, 0.02);
+    float m2 = 0.005;
+    float t2 = (1.0 - NH * NH) / (NH * NH);
+    float D = exp(-t2 / m2) / (PI * m2 * NH * NH * NH * NH);
     float F = 0.02 + 0.98 * pow(1.0 - VH, 5.0);
-    float vis = 0.5 / (NL * sqrt(nv * nv * (1.0 - a2) + a2) + nv * sqrt(NL * NL * (1.0 - a2) + a2) + 1e-4);
-    float glint = (D + 0.02 * Dw) * F * vis * NL;
-    if (ocean > 0.01 && NL > 0.0) color += Tsun * (PI * SUN_E * 0.55) * glint * ocean * shadow;
-    // Sky reflected at grazing angles.
+    float va = 0.2, va2 = va * va;
+    float vis = 0.5 / (NL * sqrt(nv * nv * (1.0 - va2) + va2) + nv * sqrt(NL * NL * (1.0 - va2) + va2) + 1e-4);
+    float glint = D * F * vis * NL * PI * SUN_E * 0.7;
+    glint = 3.0 * (1.0 - exp(-glint / 3.0));
+    if (ocean > 0.01 && NL > 0.0) color += Tsun * glint * ocean * shadow;
+    // Artistic water-leaving radiance: the source ocean texture is nearly black, real seawater scatters a little blue-green light.
+    color += vec3(0.010, 0.032, 0.070) * SUN_E * Tsun * max(muD, 0.0) * ocean * shadow;
+    // Sky reflected at grazing angles (artistic colour and gain).
     float Fv = 0.02 + 0.98 * pow(1.0 - nv, 5.0);
-    color += vec3(0.20, 0.36, 0.70) * Fv * ocean * skyLight * 0.9;
+    color += vec3(0.05, 0.10, 0.20) * Fv * ocean * skyLight;
     // City lights: none until the Sun is 6 degrees below the horizon (civil twilight), full by 18 degrees.
     float dark = (1.0 - smoothstep(-0.2079, -0.1045, mu)) * (0.5 + 0.5 * (1.0 - smoothstep(-0.309, -0.2079, mu)));
     if (dark > 0.0) {
@@ -289,7 +348,10 @@ const PBR_SURFACE = `
       halo *= smoothstep(0.004, 0.06, max(0.0, min(halo.r, halo.g) - halo.b * 0.7));
       color += (lights + halo * 0.3) * vec3(1.0, 0.76, 0.48) * dark * 1.45; // clouds above already hide lights through their own alpha
     }
-    color *= viewTransmittance(1.0, NV);
+    // Aerial perspective in linear light, before tone mapping: surface seen through the air, plus the air's own in-scatter.
+    float status;
+    vec3 hazeIn = atmosphereScatter(cameraPosition, -V, L, uSteps, status);
+    color = color * viewTransmittance(1.0, NV) + hazeIn;
     gl_FragColor = vec4(color, 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
@@ -297,6 +359,7 @@ const PBR_SURFACE = `
 `;
 const PBR_CLOUDS = `
   uniform vec3 uSun;
+  uniform float uSteps;
   varying vec2 vUv;
   varying vec3 vWorldPosition;
   varying vec3 vWorldNormal;
@@ -321,7 +384,8 @@ const PBR_CLOUDS = `
     float shade = 1.0;
     if (uDetail > 0.5) { float c2, r2; cloudSample(vUv + off, gx, gy, 0.0, c2, r2); shade = clamp((0.8 + 0.25 * rel) * (1.0 + 2.6 * (rel - r2)) * (1.0 + 1.2 * (cov - c2)), 0.45, 1.3); }
     vec3 Tsun = sunTransmittance(1.009, mu);
-    float lit = clamp((mu + 0.1) / 1.1, 0.0, 1.0);
+    // Front-loaded ramp: cloud tops stay lit (and turn orange-pink through the reddened path) after the ground terminator.
+    float lit = smoothstep(-0.12, 0.25, mu);
     float cs = -dot(V, L); // scattering angle cosine seen from the camera (1 = looking at the Sun through the cloud)
     float phase = mix(1.0, hgNorm(-cs, 0.62), 0.32) / 0.78;
     vec3 color = Tsun * SUN_E * 0.95 * lit * phase * shade;
@@ -329,8 +393,11 @@ const PBR_CLOUDS = `
     float thin = (1.0 - cov) * (1.0 - cov);
     color += Tsun * SUN_E * 0.5 * thin * smoothstep(-0.3, 0.2, mu) * (1.0 - smoothstep(0.1, 0.5, mu)) * hgNorm(-cs, 0.7) * 0.06;
     float skyLight = smoothstep(-0.31, 0.3, mu);
-    color += vec3(0.42, 0.62, 1.0) * 0.1 * skyLight * skyLight + vec3(0.004, 0.006, 0.012);
-    color *= viewTransmittance(1.009, dot(N, V));
+    float warm = smoothstep(-0.10, -0.02, mu) * (1.0 - smoothstep(0.02, 0.14, mu));
+    color += mix(vec3(0.42, 0.62, 1.0), vec3(1.0, 0.55, 0.32), warm) * 0.1 * skyLight * skyLight + vec3(0.004, 0.006, 0.012);
+    float status;
+    vec3 hazeIn = atmosphereScatter(cameraPosition, -V, L, min(uSteps, 2.0), status);
+    color = color * viewTransmittance(1.009, dot(N, V)) + hazeIn;
     float alpha = cov * 0.9 * smoothstep(0.0, 0.11, dot(N, V));
     gl_FragColor = vec4(color, alpha);
     #include <tonemapping_fragment>
@@ -343,57 +410,16 @@ const PBR_ATMOSPHERE = `
   varying vec3 vWorldPosition;
   ${ATMO_COMMON}
   void main() {
+    // The shell only draws the limb glow beyond the disc. In-scatter over the planet is added inside the surface and cloud
+    // shaders before tone mapping, so the haze is summed in linear light.
     vec3 ro = cameraPosition;
     vec3 rd = normalize(vWorldPosition - ro);
-    vec3 L = normalize(uSun);
-    float b = dot(ro, rd);
-    float cc = dot(ro, ro);
-    float disc = b * b - cc + ATM_TOP * ATM_TOP;
-    if (disc <= 0.0) discard;
-    float sd = sqrt(disc);
-    float t0 = max(0.0, -b - sd);
-    float t1 = -b + sd;
-    float dp = b * b - cc + 1.0;
-    bool hit = false;
-    if (dp > 0.0) { float tp = -b - sqrt(dp); if (tp > 0.0) { t1 = min(t1, tp); hit = true; } }
-    float n = hit ? max(3.0, floor(uSteps * 0.6)) : uSteps;
-    float odR = 0.0, odM = 0.0;
-    vec3 sumR = vec3(0.0), sumM = vec3(0.0);
-    for (int i = 0; i < 12; i++) {
-      if (float(i) >= n) break;
-      float ua = float(i) / n, ub = (float(i) + 1.0) / n, um = 0.5 * (ua + ub);
-      float ta, tb, tm;
-      if (hit) {
-        // Samples crowd towards the ground, where the air is densest.
-        ta = t0 + (t1 - t0) * (1.0 - (1.0 - ua) * (1.0 - ua));
-        tb = t0 + (t1 - t0) * (1.0 - (1.0 - ub) * (1.0 - ub));
-        tm = t0 + (t1 - t0) * (1.0 - (1.0 - um) * (1.0 - um));
-      } else {
-        // Limb rays: samples crowd around the tangent point.
-        float wa = 2.0 * ua - 1.0, wb = 2.0 * ub - 1.0, wm = 2.0 * um - 1.0;
-        ta = -b + sd * sign(wa) * wa * wa;
-        tb = -b + sd * sign(wb) * wb * wb;
-        tm = -b + sd * sign(wm) * wm * wm;
-        ta = max(ta, t0); tb = max(tb, t0); tm = max(tm, t0);
-      }
-      float dt = tb - ta;
-      vec3 p = ro + rd * tm;
-      float r = length(p);
-      float h = max(r - 1.0, 0.0);
-      float dR = exp(-h / HR), dM = exp(-h / HM);
-      odR += 0.5 * dR * dt; odM += 0.5 * dM * dt;
-      float cz = dot(p, L) / r;
-      float vis = sunVisibility(r, cz);
-      vec3 T = vec3(0.0);
-      if (vis > 0.0) T = vis * exp(-(SUNSET_WARMTH * opticalDepth(r, cz) + MS * (TAU_R / HR * odR + vec3(TAU_M_EXT / HM) * odM)));
-      sumR += dR * dt * T; sumM += dM * dt * T;
-      odR += 0.5 * dR * dt; odM += 0.5 * dM * dt;
-    }
-    float mu = dot(rd, L);
-    float pr = 0.75 * (1.0 + mu * mu);
-    float g2 = MIE_G * MIE_G;
-    float pm = 1.5 * (1.0 - g2) / (2.0 + g2) * (1.0 + mu * mu) / pow(1.0 + g2 - 2.0 * MIE_G * mu, 1.5);
-    vec3 col = SUN_E * 0.2 * (TAU_R / HR * pr * sumR + vec3(TAU_M / HM) * pm * sumM);
+    // Cheap reject first: rays that end on the planet are shaded in the surface and cloud passes.
+    float bb = dot(ro, rd), dd = bb * bb - dot(ro, ro) + 1.0;
+    if (dd > 0.0 && -bb - sqrt(dd) > 0.0) discard;
+    float status;
+    vec3 col = atmosphereScatter(ro, rd, normalize(uSun), uSteps, status);
+    if (status != 0.0) discard;
     gl_FragColor = vec4(col, 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
@@ -426,8 +452,8 @@ export async function initEarth(options = {}) {
   }
   renderer.setClearColor(0x030509, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.AgXToneMapping;
-  renderer.toneMappingExposure = 1.25;
+  renderer.toneMapping = THREE.NeutralToneMapping;
+  renderer.toneMappingExposure = 1.2;
   renderer.debug.onShaderError = () => { throw new Error('The Earth graphics could not start on this device.'); };
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 150);
@@ -439,11 +465,11 @@ export async function initEarth(options = {}) {
   black.needsUpdate = true;
   const sun = new THREE.Vector3(-0.92, 0.28, 0.43).normalize();
   const targetSun = sun.clone();
-  const uniforms = { uDay: { value: black }, uNight: { value: black }, uCloud: { value: black }, uSun: { value: sun }, uCloudOffset: { value: 0 }, uObservedCloud: { value: 0 },uCloudIR:{value:0}, uNormalMap:{value:black},uOceanMap:{value:black},uRelief:{value:0},uOceanReady:{value:0},uDetail:{value:0},uSteps:{value:8} };
+  const uniforms = { uDay: { value: black }, uNight: { value: black }, uCloud: { value: black }, uSun: { value: sun }, uCloudOffset: { value: 0 }, uObservedCloud: { value: 0 },uCloudIR:{value:0}, uNormalMap:{value:black},uOceanMap:{value:black},uRelief:{value:0},uOceanReady:{value:0},uDetail:{value:0},uSteps:{value:6} };
   const sphere = new THREE.SphereGeometry(1, 160, 112);
   const surface = new THREE.Mesh(sphere, new THREE.ShaderMaterial({ vertexShader: PBR_VERTEX, fragmentShader: PBR_SURFACE, uniforms }));
   globe.add(surface);
-  const cloudMaterial = new THREE.ShaderMaterial({ vertexShader: PBR_VERTEX, fragmentShader: PBR_CLOUDS, uniforms: { uCloud: uniforms.uCloud, uSun: uniforms.uSun, uObservedCloud: uniforms.uObservedCloud,uCloudIR:uniforms.uCloudIR,uDetail:uniforms.uDetail }, transparent: true, depthWrite: false });
+  const cloudMaterial = new THREE.ShaderMaterial({ vertexShader: PBR_VERTEX, fragmentShader: PBR_CLOUDS, uniforms: { uCloud: uniforms.uCloud, uSun: uniforms.uSun, uObservedCloud: uniforms.uObservedCloud,uCloudIR:uniforms.uCloudIR,uDetail:uniforms.uDetail,uSteps:uniforms.uSteps }, transparent: true, depthWrite: false });
   const clouds = new THREE.Mesh(new THREE.SphereGeometry(1.009, 144, 96), cloudMaterial);
   clouds.renderOrder = 2;
   globe.add(clouds);
@@ -563,8 +589,8 @@ export async function initEarth(options = {}) {
       if(fly){const t=clamp((now-fly.at)/fly.duration,0,1),e=t*t*(3-2*t);let a,b,k;if(t<.4){a=fly.from;b=fly.peak;k=t/.4;}else if(t<.65){a=fly.peak;b=fly.peak;k=0;}else{a=fly.peak;b=fly.to;k=(t-.65)/.35;}k=k*k*(3-2*k);zoom=Math.exp(a+(b-a)*k);cosmos?.setFlightMix(clamp((t-.4)/.25,0,1));cameraOrbit.slerpQuaternions(fly.a,fly.b,e);if(t===1)fly=null;}
 
       sun.lerp(targetSun, 1 - Math.exp(-dt * 4)).normalize();
-      if (!paused&&!fly&&now > interactionUntil&&!pointers.size){const axis=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);cameraOrbit.premultiply(new THREE.Quaternion().setFromAxisAngle(axis,-dt*.012));}
-      if (!observedCloud && currentView !== 'live') cloudAngle += dt * 0.0024;
+      if (!paused&&!fly&&currentView!=='custom'&&now > interactionUntil&&!pointers.size){const axis=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);cameraOrbit.premultiply(new THREE.Quaternion().setFromAxisAngle(axis,-dt*.012));}
+      if (!observedCloud && currentView !== 'live' && currentView !== 'custom') cloudAngle += dt * 0.0024;
       clouds.rotation.y = cloudAngle;
       uniforms.uCloudOffset.value = -cloudAngle / TAU;
       draw();
@@ -616,7 +642,7 @@ export async function initEarth(options = {}) {
     previous?.dispose();
   }
   // Quality tiers: atmosphere integration steps and cloud/relief detail follow the texture tier (2K is the low tier).
-  function shadeForTier() { uniforms.uSteps.value = { '2k': 5, '4k': 8, '8k': 12, '16k': 12 }[appliedTier] || 8; uniforms.uDetail.value = appliedTier === '2k' ? 0 : 1; }
+  function shadeForTier() { uniforms.uSteps.value = { '2k': 4, '4k': 6, '8k': 10, '16k': 10 }[appliedTier] || 6; uniforms.uDetail.value = appliedTier === '2k' ? 0 : 1; }
   function tierFor(requested) {
     const saving = navigator.connection?.saveData;
     const mobile = width < 800 || (navigator.deviceMemory && navigator.deviceMemory <= 4);

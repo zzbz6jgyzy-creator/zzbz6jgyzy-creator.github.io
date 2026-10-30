@@ -1,4 +1,4 @@
-/* A floating-origin, physically scaled scene. Earth shaders stay shared with the replay. */
+/* A floating-origin, physically scaled scene. The legacy Earth shaders stay shared with the replay; the explorer uses the physical ones. */
 import * as THREE from '/vendor/three/three.module.min.js';
 import * as M from './earth-cosmos-model.js?v=20261030-light1';
 const BASE='/assets/cosmos/';
