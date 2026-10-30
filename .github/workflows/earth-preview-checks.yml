@@ -11,6 +11,7 @@ on:
       - 'tests/cosmos-browser.py'
       - 'tests/earth-cosmos.test.mjs'
       - 'tests/earth-flight.test.mjs'
+      - 'tests/earth-time.test.mjs'
       - 'assets/cosmos/**'
       - 'vendor/astronomy/**'
       - 'vendor/three*'
@@ -58,6 +59,8 @@ jobs:
           node tests/earth-cosmos.test.mjs
           node --check earth-flight.js
           node tests/earth-flight.test.mjs
+          node --check earth-time.js
+          node tests/earth-time.test.mjs
           node --check earth-cosmos.js
           node --check earth-cosmos-model.js
           python3 scripts/build-cosmos-assets.py --check

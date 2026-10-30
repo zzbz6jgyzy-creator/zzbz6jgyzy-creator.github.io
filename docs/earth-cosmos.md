@@ -105,9 +105,9 @@ successful image load.
 
 - **Opening overlay** (`#earth-intro`, a modal-style dialog): title, one line, Enter button, small instructions. Enter, a tap or Esc dismisses it; focus moves to the canvas; `sessionStorage['sd-earth-intro']` skips it for the rest of the session (a tiny inline script sets `html.earth-entered` before first paint so it never flashes). The page `h1` is a visually hidden heading. Without JavaScript the overlay shows the text only.
 - **HUD** (`#earth-hud`): brand mark, Pause (`#earth-motion`), fullscreen, menu (`#earth-menu`). `data-hud` is `active` or `idle`; idle after 2.5 s without pointer, touch, key or wheel activity. It never idles while the intro or any dialog is open or a `:focus-visible` element is inside it. Reduced motion removes the fade (instant).
-- **Panel** (`#earth-panel`, a modal `<dialog>`): View (mode, perspectives, zoom, reset, deep sky, detail, Show labels), Place, Now (UTC, distance), Clouds and credits, Keyboard. Side panel from 700 px, bottom sheet below. Perspective choices close the sheet on phones.
+- **Panel** (`#earth-panel`, a modal `<dialog>`): View (mode, perspectives, zoom, reset, deep sky, detail, Show labels), Place, Now (UTC, distance), Time (Live, speeds, reverse, UTC date, next solar/lunar eclipse), Clouds and credits, Keyboard. Side panel from 700 px, bottom sheet below. Perspective choices close the sheet on phones.
 - **Labels:** `data-labels="off|on"` on the root, stored in `localStorage['sd-earth-labels']`. Label buttons stay in the DOM; opacity 0 until hover/focus. `#cosmos-focus-name` shows one soft name for 3.2 s after a view change; `#earth-live` announces name, description and distance (debounced).
-- **Provenance chip** (`#earth-provenance`, outside the HUD so it never fades; editorial rule 8): shown only when the view is not live or measured. Galaxy: "Illustration · structural model"; neighbourhood scale: "Catalogue positions · distances approximate"; Earth with illustrative clouds: "Illustrative clouds · live feed unavailable" (or "requesting satellite frame" while loading); satellite frame older than 200 min: "Satellite clouds · HH:MM UTC". Hidden on live Earth with a fresh frame.
+- **Provenance chip** (`#earth-provenance`, outside the HUD so it never fades; editorial rule 8): shown only when the view is not live or measured. Simulated clock: "Simulated time · HH:MM UTC D Mon YYYY" (galaxy and neighbourhood still append their model notes). Live galaxy: "Illustration · structural model"; neighbourhood scale: "Catalogue positions · distances approximate"; Earth with illustrative clouds: "Illustrative clouds · live feed unavailable" (or "requesting satellite frame" while loading); satellite frame older than 200 min: "Satellite clouds · HH:MM UTC". Hidden on live Earth with a fresh frame. Simulated time keeps the live cloud frame and labels it "not for this time".
 - **Planet dots:** with labels off every label keeps a 6 px coloured dot (24 px hit area, so touch devices can find and tap planets); only the name fades. Label boxes are `pointer-events:none`, so drags pass to the canvas. The Sun and Galactic-centre markers (`.is-marker`) stay named regardless of the setting.
 - **Toasts:** `#earth-loading`, `#earth-note` (7 s, except the sticky detail-loading message).
 - Tests: `tests/earth-browser.py` (intro, session memory, clean-text assertion, HUD, panel focus, credits, no ground UI, zoom floor), `tests/cosmos-browser.py` (labels off/hover/switch/persist, live region), `tests/earth-cosmos.test.mjs` (markup hooks and ids).
@@ -168,6 +168,18 @@ same avoidance. `DEMO_PATH` (Earth, Moon, Earth) is reachable only through `wind
 nothing in the interface uses it yet. Input stops a path like any autopilot.
 
 **Known limits.** The Earth-fixed scene frame turns with the Earth. It is rebuilt every frame while the camera is moving (about 0.2 ms) and once a second at rest, so worlds never step; the autopilot also blends from the planned target position to the live one, so a frame turn cannot make a trip jump (tested with a 2.18e-3 rad turn mid-trip). Orbit-mode zoom-out is not cut off at the sphere of influence (scrolling out to the galaxy still works); free flight is entered explicitly. The thumb control was not built: two-finger drag moves, and the panel has Turn buttons for users who cannot drag. Under pause or reduced motion a two-finger move does nothing (use the keys); any movement key, scroll or touch stops the autopilot.
+
+## Time control
+
+Owner-facing clock, 30 October 2026. All of it lives in `earth-time.js` (pure maths plus Astronomy Engine eclipse search; no DOM). `earth-renderer.js` ticks it each frame and passes the Date into `solarPosition` and `cosmos.update`. Pause still only stops the camera.
+
+- **Live** (default): wall-clock UTC. Sunlight, ephemerides and the Now strip follow it. Clouds are the latest EUMETSAT frame.
+- **Speed:** ±1, ±10, ±100, ±1 000, ±10 000. Reverse flips the sign. 1× while already Live stays Live; any other speed leaves Live.
+- **Date:** a `datetime-local` labelled UTC; picking a value freezes the clock at that instant (speed 0).
+- **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Shadows are not drawn yet.
+- **Editorial:** the provenance chip reads `Simulated time · HH:MM UTC D Mon YYYY`, and on Earth/Moon appends `· clouds not for this time` (or `· illustrative clouds`). The Clouds row says the same. No historical weather is invented.
+
+Tests: `tests/earth-time.test.mjs`. `?v=` token `20261030-time1`.
 
 ## Zoom floor (no ground view)
 

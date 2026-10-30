@@ -1,6 +1,6 @@
 /* Timestamped EUMETSAT WMS infrared composite. Cold-brightness is a cloud proxy,
  * not an exhaustive cloud classification or an instantaneous weather forecast. */
-import {weatherAge} from './earth-live-model.js?v=20261030-flight1';
+import {weatherAge} from './earth-live-model.js?v=20261030-time1';
 const ENDPOINT='https://view.eumetsat.int/geoserver/ows';
 export const CLOUD_LAYER='mumi:worldcloudmap_ir108';
 export const TRANSIENT_STATUS=Object.freeze([408,429,500,502,503,504]);

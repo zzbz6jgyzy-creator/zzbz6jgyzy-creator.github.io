@@ -1,7 +1,7 @@
 /* A floating-origin, physically scaled scene. The legacy Earth shaders stay shared with the replay; the explorer uses the physical ones. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import * as M from './earth-cosmos-model.js?v=20261030-flight1';
-import {galaxyBlend} from './earth-flight.js?v=20261030-flight1';
+import * as M from './earth-cosmos-model.js?v=20261030-time1';
+import {galaxyBlend} from './earth-flight.js?v=20261030-time1';
 const BASE='/assets/cosmos/';
 const matrixFromAxes=axes=>new THREE.Matrix4().makeBasis(...axes.map(v=>new THREE.Vector3(...v)));
 const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};
@@ -41,7 +41,7 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  const groupSolar=new THREE.Group(),groupStars=new THREE.Group(),groupGalaxy=new THREE.Group();root.add(groupSolar,groupStars,groupGalaxy);
  const system=new Map(),textures=new Map(),pending=new Set(),failedBodies=new Set(),failures=[];
  const eqFrame=new THREE.Matrix4(),galFrame=new THREE.Matrix4();
- let disposed=false,focus='Earth',level='earth',deepSky=false,physical=M.ephemeris(),lastEpoch=0,lastLabels=0,starsCount=0,galaxyCount=0,renderUnit=M.EARTH_RADIUS,currentRange=25000;
+ let disposed=false,focus='Earth',level='earth',deepSky=false,physical=M.ephemeris(),lastEpoch=0,lastIso='',lastLabels=0,starsCount=0,galaxyCount=0,renderUnit=M.EARTH_RADIUS,currentRange=25000;
  let galaxy,skyMap,blendGalaxy=true,galacticCentre=[0,0,0];
  const grey=new THREE.Color('#bdc9d0');
  for(const b of M.BODIES){if(b.id==='Earth')continue;
@@ -109,10 +109,12 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   const e=frameElements,x=p[0],y=p[1],z=p[2];out[0]=e[0]*x+e[4]*y+e[8]*z;out[1]=e[1]*x+e[5]*y+e[9]*z;out[2]=e[2]*x+e[6]*y+e[10]*z;return out;
  }
 
- function update({distanceKm,nearKm=distanceKm,blend=true,live=false,fadeKm=distanceKm}){
+ function update({distanceKm,nearKm=distanceKm,blend=true,live=false,fadeKm=distanceKm,date,simulated=false}={}){
   if(disposed)return null;currentRange=distanceKm;blendGalaxy=blend;level=M.levelFor(distanceKm,focus);
-  // The Earth-fixed frame turns with the Earth. While the camera is moving it is rebuilt every frame (about 0.2 ms), so bodies never step; at rest once a second.
-  if(live||Date.now()-lastEpoch>1000){lastEpoch=Date.now();frameMatrix(new Date());}
+  const at=date instanceof Date?date:date?new Date(date):new Date();
+  const iso=Number.isFinite(at.getTime())?at.toISOString():'';
+  // The Earth-fixed frame turns with the Earth. While the camera is moving it is rebuilt every frame (about 0.2 ms), so bodies never step; at rest once a second. A simulated-time jump always rebuilds.
+  if(live||(simulated&&iso!==lastIso)||Date.now()-lastEpoch>1000){lastEpoch=Date.now();lastIso=iso;frameMatrix(at);}
   renderUnit=M.unitFor(distanceKm);const f=focusPosition(),origin=world(f),ratio=Math.min(devicePixelRatio||1,2);
   globe.position.copy(origin).multiplyScalar(-1/renderUnit);globe.scale.setScalar(M.EARTH_RADIUS/renderUnit);globe.visible=distanceKm<1e12;
   const earthNear=focus==='Earth'&&distanceKm<M.EARTH_RADIUS*65;
