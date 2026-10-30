@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-28",
-  "revision": "2026-10-28.3",
+  "updated": "2026-10-30",
+  "revision": "2026-10-30.1",
   "scope": "Tesla Cybercab and Model Y Robotaxi",
   "sources": [
     {
@@ -147,6 +147,14 @@
       "type": "authority",
       "checkedAt": null,
       "publishedAt": null
+    },
+    {
+      "id": "s-a746ebe95e33",
+      "url": "https://x.com/robotaxi/status/2116029730793431481",
+      "label": "Tesla Robotaxi (@robotaxi) on X: “Operating hours are now 6am - 2am”",
+      "type": "manufacturer",
+      "checkedAt": "2026-10-30",
+      "publishedAt": "2026-10-30"
     }
   ],
   "cities": [
@@ -187,11 +195,11 @@
         "note": "Operator-level reports do not guarantee the configuration of every individual ride."
       },
       "hours": {
-        "value": "06:00–00:00 CT",
+        "value": "06:00–02:00 CT",
         "evidence": [
-          "s-1c8cd934cb0d"
+          "s-a746ebe95e33"
         ],
-        "note": "Tesla reported these Austin hours in its Q3 update; check the app before travelling."
+        "note": "Tesla’s official Robotaxi account listed hours of 6am to 2am on 30 Oct 2026 (as of 30 Oct 2026). The post doesn’t name cities; check the app before travelling."
       },
       "fare": {
         "value": null,
