@@ -1,5 +1,5 @@
 window.TESLA_UPDATES = {
-  updated: "2026-10-25",
+  updated: "2026-10-30",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
@@ -71,6 +71,45 @@ window.TESLA_UPDATES = {
     { code: "SA", name: "Saudi Arabia", aliases: ["saudi"] },
   ],
   versions: [
+    {
+      id: "2026.38.6",
+      family: "2026.38",
+      date: "2026-10-29",
+      kind: "cabin",
+      status: "early",
+      headline: "2026.38.6 — security point release, early wave incl. Europe",
+      summary:
+        "New build on the 2026.38 cabin branch. Teslascope lists security improvements as the only new item; Halloween Mode, Emergency Drive Away and Apple Music carry over. No FSD build is listed for it.",
+      features: [
+        "Security improvements (the only new item Teslascope lists).",
+        "Halloween Mode, Emergency Drive Away and Apple Music carry over from earlier 2026.38 builds.",
+      ],
+      fsd: null,
+      models: ["3", "Y"],
+      hardware: ["HW3", "HW4"],
+      reached:
+        "First spotted on Teslascope on 29 Oct 2026 (19:08 Irish time). 14 cars by 30 Oct 2026, 10:30 Irish time, in the UK, Spain, Italy, Switzerland, Germany, Poland, Taiwan and the US, with 8 more pending.",
+      countries: ["GB", "ES", "IT", "CH", "DE", "PL", "TW", "US"],
+    },
+    {
+      id: "2026.38.6.1",
+      family: "2026.38",
+      date: "2026-10-29",
+      kind: "cabin",
+      status: "early",
+      headline: "2026.38.6.1 — minor-fixes build for Australia and New Zealand",
+      summary:
+        "Point release seen only in Australia and New Zealand so far. Teslascope lists minor fixes and improvements as the new item; Halloween Mode and Apple Music carry over. No FSD build is listed for it.",
+      features: [
+        "Minor fixes and improvements (the only new item Teslascope lists).",
+        "Halloween Mode and Apple Music carry over.",
+      ],
+      fsd: null,
+      models: ["3", "Y"],
+      reached:
+        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 21 cars by 30 Oct 2026, 10:30 Irish time: 19 in Australia and 2 in New Zealand, with 6 more pending.",
+      countries: ["AU", "NZ"],
+    },
     {
       id: "2026.38.5.11",
       family: "2026.38",
