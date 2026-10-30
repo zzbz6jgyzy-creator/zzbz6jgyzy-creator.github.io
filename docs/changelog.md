@@ -1,3 +1,10 @@
+## 2026-10-30 — MotionSites and elephant/goldfish agent skills
+
+- Vendored the MIT core of the [MotionSites web-builder skill](https://github.com/Motionsites-AI/claude-skill) into `.claude/skills/motionsites-web-builder` (upstream `faa30d5`). Example prompts and media stay © MotionSites, are gitignored, and are fetched locally with `sh scripts/fetch-motionsites-shelf.sh`.
+- Bootstrapped the [elephant/goldfish](https://github.com/Fallenstedt/elephant-goldfish) workflow for this stack: five Cursor skills under `.cursor/skills/eg-*/` and five Claude slash commands (`/eg-brainstorm`, `/eg-prd`, `/eg-fix-bug`, `/eg-new-feature`, `/eg-precommit-review`).
+- `CLAUDE.md` and `AGENTS.md` describe the flows. Briefs and PRDs save under `docs/eg-brainstorms/` and `docs/prds/`.
+- `tests/test_claude_setup.py` now expects the new commands and skills, and skips path-checks inside the vendored MotionSites tree.
+
 ## 2026-10-30 — Earth explorer: simulated time
 
 - New `earth-time.js`: a UTC clock with Live, speeds (±1 to ±10 000), freeze, a date picker and jump-to-next solar/lunar eclipse (Astronomy Engine `SearchGlobalSolarEclipse` / `SearchLunarEclipse`). Pause still only stops the camera.

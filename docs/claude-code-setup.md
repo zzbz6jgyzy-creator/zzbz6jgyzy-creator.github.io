@@ -36,6 +36,13 @@ Ask for one by name ("have the reviewer look at this") or let the description ma
 | `/screenshot <path or URL> [--full] [--live]` | 390/768/1440 px in light and dark, then looks at them |
 | `/newsletter-draft` | `scripts/newsletter-draft.py`: the week's top stories and sourced tracker changes as Markdown to paste into Beehiiv; never sends |
 | `/ship` | tests, builders, audits, `reviewer`, changelog, merge `main`, push, open the PR |
+| `/eg-brainstorm` | Elephant/goldfish concept brief from a rough idea (parallel goldfish, then synthesis) |
+| `/eg-prd` | Elephant/goldfish PRD: codebase grounding, gap-filling, research, then a durable spec |
+| `/eg-fix-bug` | Problem doc → goldfish diagnosis → failing test → fix → `/eg-precommit-review` |
+| `/eg-new-feature` | Design doc → three-goldfish check → implement → `/eg-precommit-review` |
+| `/eg-precommit-review` | Independent goldfish review of the pending diff before you commit |
+
+Cursor Agent reads the same five flows as skills under `.cursor/skills/eg-*/` (`/eg-brainstorm` and so on in a new Agent chat). Publishing still uses `/new-article`, `/new-review`, `/newsletter-draft` and `/ship`.
 
 ## Hooks (`.claude/hooks/`, active once `settings.json` is enabled)
 | Hook | When | What |
@@ -50,6 +57,7 @@ TypeScript or linter yet; add them to `pre_commit.py` when the migration lands.
 ## Skills (`.claude/skills/`) and rules (`.claude/rules/`)
 - `build-tracker`: the studio pattern (data, model, view, builder, tests, CI, docs) and the honesty rules for sourced data.
 - `review-page`: how review pages are built, and why no star rating exists yet.
+- `motionsites-web-builder`: vendored MIT core from [Motionsites-AI/claude-skill](https://github.com/Motionsites-AI/claude-skill). Example prompts and media stay © MotionSites and are gitignored — `sh scripts/fetch-motionsites-shelf.sh` pulls them locally. Use it only for a cinematic landing page or hero; self-host media; no Unlimited upsell on site pages.
 - `rules/repo-mechanics.md`: generated pages, bots committing every 30 minutes, hashed bundles, shallow-clone date logic.
 - `rules/editorial.md`: sourcing, claim types, corrections, disclosure; loads when editing `dispatch/`, `reviews/`, `data/`.
 
