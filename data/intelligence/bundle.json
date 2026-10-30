@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-30T01:08:20.154Z",
+  "generatedAt": "2026-10-30T02:40:32.357Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -286,21 +286,38 @@
   ],
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:newest-reporting",
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-600k-dau-no-free-tier.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier",
+      "at": "2026-10-30T02:40:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-600k-dau-no-free-tier.html",
+      "href": "/dispatch/grok-bot-600k-dau-no-free-tier.html",
+      "summary": "Similarweb estimates Grok Bot's daily users grew 16 days straight to about 600,000 on iPhone and Android as of 26 Oct. Musk notes there's no free tier.",
+      "title": "Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier",
+      "id": "logged|dispatch:/dispatch/grok-bot-600k-dau-no-free-tier.html|2026-10-30T02:40:00.000Z|Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier"
+    },
+    {
+      "type": "appeared",
+      "factId": "tesla-software:wave:2026.38.6.1",
       "topic": "tesla-software",
       "tracker": "software",
-      "field": "newest-reporting",
-      "previous": "2026.38.6",
-      "next": "2026.38.6.1",
+      "field": "wave:2026.38.6.1",
+      "previous": "0",
+      "next": "16",
       "at": "2026-10-30T01:08:18.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3346 cars)",
+      "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Newest reporting build changed from 2026.38.6 to 2026.38.6.1.",
-      "title": "Newest reporting build",
-      "id": "changed|tesla-software:newest-reporting|2026-10-30T01:08:18.000Z|2026.38.6.1"
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.6.1 first appeared in the Teslascope sample with 16 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "title": "2026.38.6.1",
+      "id": "appeared|tesla-software:wave:2026.38.6.1|2026-10-30T01:08:18.000Z|16"
     },
     {
       "type": "appeared",
@@ -573,23 +590,6 @@
       "summary": "Musk says Raptor 4 will make 300 t of thrust. How full-flow staged combustion works, Raptor 1–3 side by side, the deleted heat shield, and the Saturn V math. With our film.",
       "title": "SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300",
       "id": "logged|dispatch:/dispatch/raptor-engines-explained.html|2026-10-27T20:52:00.000Z|SpaceX’s Raptor engines, explained: from 185 tons to Raptor 4’s 300"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/vandenberg-72-launch-record.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Vandenberg just broke its launch record with two months to spare",
-      "at": "2026-10-27T20:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/vandenberg-72-launch-record.html",
-      "href": "/dispatch/vandenberg-72-launch-record.html",
-      "summary": "Vandenberg says a Falcon 9 Starlink launch on 27 Oct was its 72nd of 2026, beating 2025’s 71. The pace math, the 26-flight booster, and the 100-a-year goal.",
-      "title": "Vandenberg just broke its launch record with two months to spare",
-      "id": "logged|dispatch:/dispatch/vandenberg-72-launch-record.html|2026-10-27T20:40:00.000Z|Vandenberg just broke its launch record with two months to spare"
     },
     {
       "type": "changed",
@@ -1187,23 +1187,6 @@
       "id": "logged|promises:roadster-production-2020|2026-10-15T00:00:00.000Z|At the reveal, Musk said production will start in 2028."
     },
     {
-      "type": "changed",
-      "factId": "tesla-software:wave:2026.38.5",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.5",
-      "previous": "52",
-      "next": "92",
-      "at": "2026-10-14T02:50:43.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5 moved from 52 to 92 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
-      "title": "2026.38.5",
-      "id": "changed|tesla-software:wave:2026.38.5|2026-10-14T02:50:43.000Z|92"
-    },
-    {
       "type": "logged",
       "factId": "starship:schedule",
       "topic": "starship",
@@ -1773,14 +1756,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1794,14 +1777,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-29T21:56:18.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1815,35 +1798,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-30T01:08:20.154Z",
+      "lastChecked": "2026-10-30T02:40:32.357Z",
       "lastVerified": "2026-10-30T01:08:18.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1852,87 +1835,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.136Z",
-      "finished": "2026-10-30T01:08:20.141Z"
+      "started": "2026-10-30T02:40:32.331Z",
+      "finished": "2026-10-30T02:40:32.336Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.141Z",
-      "finished": "2026-10-30T01:08:20.141Z"
+      "started": "2026-10-30T02:40:32.336Z",
+      "finished": "2026-10-30T02:40:32.336Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.141Z",
-      "finished": "2026-10-30T01:08:20.142Z"
+      "started": "2026-10-30T02:40:32.336Z",
+      "finished": "2026-10-30T02:40:32.336Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.142Z",
-      "finished": "2026-10-30T01:08:20.148Z"
+      "started": "2026-10-30T02:40:32.336Z",
+      "finished": "2026-10-30T02:40:32.351Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.148Z",
-      "finished": "2026-10-30T01:08:20.151Z"
+      "started": "2026-10-30T02:40:32.351Z",
+      "finished": "2026-10-30T02:40:32.354Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.151Z",
-      "finished": "2026-10-30T01:08:20.151Z"
+      "started": "2026-10-30T02:40:32.354Z",
+      "finished": "2026-10-30T02:40:32.355Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.151Z",
-      "finished": "2026-10-30T01:08:20.152Z"
+      "started": "2026-10-30T02:40:32.355Z",
+      "finished": "2026-10-30T02:40:32.355Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.152Z",
-      "finished": "2026-10-30T01:08:20.152Z"
+      "started": "2026-10-30T02:40:32.355Z",
+      "finished": "2026-10-30T02:40:32.355Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.152Z",
-      "finished": "2026-10-30T01:08:20.152Z"
+      "started": "2026-10-30T02:40:32.355Z",
+      "finished": "2026-10-30T02:40:32.355Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.152Z",
-      "finished": "2026-10-30T01:08:20.153Z"
+      "started": "2026-10-30T02:40:32.355Z",
+      "finished": "2026-10-30T02:40:32.356Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.153Z",
-      "finished": "2026-10-30T01:08:20.153Z"
+      "started": "2026-10-30T02:40:32.356Z",
+      "finished": "2026-10-30T02:40:32.357Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.153Z",
-      "finished": "2026-10-30T01:08:20.154Z"
+      "started": "2026-10-30T02:40:32.357Z",
+      "finished": "2026-10-30T02:40:32.357Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-30T01:08:20.154Z",
-      "finished": "2026-10-30T01:08:20.154Z"
+      "started": "2026-10-30T02:40:32.357Z",
+      "finished": "2026-10-30T02:40:32.357Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-30T01:08:20.154Z",
+    "generatedAt": "2026-10-30T02:40:32.357Z",
     "factCount": 20,
-    "changeCount": 85,
+    "changeCount": 84,
     "conflictCount": 2,
     "issues": [
       {

@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 29 Oct 2026 20:36:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 02:40:00 +0000</lastBuildDate>
+    <item>
+      <title>Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier</title>
+      <link>https://superchargeddaily.com/dispatch/grok-bot-600k-dau-no-free-tier.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-bot-600k-dau-no-free-tier.html</guid>
+      <pubDate>Fri, 30 Oct 2026 02:40:00 +0000</pubDate>
+      <category>Grok</category>
+      <description>Similarweb estimates Grok Bot's daily users grew 16 days straight to about 600,000 on iPhone and Android as of 26 Oct. Musk notes there's no free tier.</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceX has told NASA's Moon lander companies it won't launch them, the latest step back from the agency that saved it in 2008</title>
       <link>https://superchargeddaily.com/dispatch/spacex-dragon-falcon-nasa-retreat.html</link>
@@ -719,13 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/falcon-668-landings-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Automations app spotted in Europe</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-automations-europe.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-automations-europe.html</guid>
-      <pubDate>Mon, 12 Oct 2026 14:58:47 +0000</pubDate>
-      <category>Software</category>
-      <description>“If this, then that” for your Tesla, seen on one car in Europe. Not confirmed by Tesla.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-automations-europe-poster.jpg" type="image/jpeg" />
+      <title>Tracker: 2026.38.6.1</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.6.1-2026-10-30T01:08:18.000Z-16</guid>
+      <pubDate>Fri, 30 Oct 2026 01:08:18 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.6.1 first appeared in the Teslascope sample with 16 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
     <item>
       <title>Tracker: 2026.38.6</title>
@@ -814,14 +822,6 @@
       <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
       <category>promises</category>
       <description>On the Q3 2026 call, Tesla AI chief Ashok Elluswamy said: &quot;We suspect somewhere around Q2 next year is when we can turn on some of the first customer vehicles to be part of the Robotaxi fleet.&quot; That points to about Q2 2027, after this promise's Q4 2026 deadline.</description>
-    </item>
-    <item>
-      <title>Tracker: 2026.38.5.10</title>
-      <link>https://superchargeddaily.com/updates.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.5.10-2026-10-20T08:56:06.000Z-1</guid>
-      <pubDate>Tue, 20 Oct 2026 08:56:06 +0000</pubDate>
-      <category>software</category>
-      <description>2026.38.5.10 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
   </channel>
 </rss>
