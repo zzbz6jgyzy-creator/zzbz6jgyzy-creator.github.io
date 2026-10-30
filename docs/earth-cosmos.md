@@ -2,8 +2,8 @@
 
 Page: `/mission-control.html` (isolated, `noindex,follow`). No paid services,
 API keys, billing account, runtime ephemeris API or new hosting are required.
-There is no street-level or ground view: the closest the camera can get is a
-2,500 km up (see *Zoom floor* below).
+There is no street-level or ground view: the closest the camera can get is
+2,500 km above the surface (see *Zoom floor* below).
 
 ## Experience and architecture
 
