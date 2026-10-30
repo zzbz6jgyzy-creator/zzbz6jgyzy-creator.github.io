@@ -18,6 +18,7 @@ on:
       - 'scripts/build-earth-assets.py'
       - 'scripts/build-cosmos-assets.py'
       - 'tests/earth-browser.py'
+      - 'tests/earth-phone-browser.py'
       - '.github/workflows/earth-preview-checks.yml'
   workflow_dispatch:
 concurrency:
@@ -28,11 +29,11 @@ permissions:
 jobs:
   earth-preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        device: [desktop, touch, failures, cosmos]
+        device: [desktop, touch, failures, cosmos, phone]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -58,7 +59,7 @@ jobs:
           node --check earth-cosmos-model.js
           python3 scripts/build-cosmos-assets.py --check
           node --check earth-renderer.js
-          python3 -m py_compile tests/earth-browser.py
+          python3 -m py_compile tests/earth-browser.py tests/earth-phone-browser.py
           python3 -c 'import json; from pathlib import Path; assert "mission-control.html" in json.loads(Path("scripts/js-bundles.json").read_text())["skipPages"]'
       - name: Real WebGL, responsive controls, high resolution and fallback journeys
         env:
@@ -66,6 +67,8 @@ jobs:
         run: |
           if [ "$EARTH_TEST_GROUP" = cosmos ]; then
             CHROMIUM_PATH="$(command -v google-chrome)" timeout 1200s python3 -u tests/cosmos-browser.py
+          elif [ "$EARTH_TEST_GROUP" = phone ]; then
+            PHONE_SHOTS=/tmp/earth-preview CHROMIUM_PATH="$(command -v google-chrome)" timeout 1500s python3 -u tests/earth-phone-browser.py
           else
             CHROMIUM_PATH="$(command -v google-chrome)" timeout 1200s python3 -u tests/earth-browser.py
           fi
@@ -75,6 +78,7 @@ jobs:
           name: earth-preview-screenshots-${{ matrix.device }}
           path: |
             /tmp/earth-preview/*.jpg
+            /tmp/earth-preview/*.png
             /tmp/earth-preview/*results.json
       - uses: actions/upload-artifact@v4
         if: always()
