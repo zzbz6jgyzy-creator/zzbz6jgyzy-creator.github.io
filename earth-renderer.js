@@ -555,7 +555,7 @@ export async function initEarth(options = {}) {
     return {mode:f.mode==='auto'?'autopilot':f.mode, anchor:f.anchor, nearest:f.nearestId, altitudeKm:f.altitude, cruiseKmS:f.cruise, speedMult:f.speedMult, offer:f.offer, autopilot:f.auto?f.auto.target:null, progress:f.auto?clamp(f.auto.t,0,1):0, speedText:Flight.formatSpeed(f.cruise), path:!!f.path, floorKm:flight.floorOf(f.anchor)||0};
   }
   function updateCamera() {
-    flight.refresh();
+    flight.measure();
     const fs=flight.state, distanceKm=flight.distance();
     const estimateUnit=distanceKm<2e7?EARTH_KM:distanceKm<LY_KM*.08?AU_KM:distanceKm<LY_KM*800?LY_KM:LY_KM*3261.563777;
     const distance=distanceKm/estimateUnit;

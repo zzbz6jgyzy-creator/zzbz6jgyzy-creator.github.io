@@ -112,7 +112,7 @@ export const galaxyBlend = rangeKm => smooth01((rangeKm / LY - 3000) / (70000 - 
 /* ---------- scratch (module level: step() allocates nothing) ---------- */
 const S = {
   a: new Float64Array(3), b: new Float64Array(3), c: new Float64Array(3), d: new Float64Array(3),
-  q1: new Float64Array(4), q2: new Float64Array(4), q3: new Float64Array(4), r: new Float64Array(3), e: new Float64Array(3), zx: new Float64Array(1), zv: new Float64Array(1),
+  q1: new Float64Array(4), q2: new Float64Array(4), q3: new Float64Array(4), r: new Float64Array(3), e: new Float64Array(3), zx: new Float64Array(1), zv: new Float64Array(1), p: new Float64Array(3),
 };
 
 /* ---------- autopilot segments ----------
@@ -284,15 +284,35 @@ export function createFlight(cfg = {}) {
   function setPositionProvider(fn) { provider = fn; refresh(); }
   function refresh() { if (provider) for (let i = 0; i < bodies.length; i++) provider(bodies[i].id, bodies[i].pos); }
   const anchorBody = () => index.get(st.anchor) || bodies[0];
+  const org = new Float64Array(3);
+  /** Pivot slide (orbit mode only, far out): the vector from the anchor to the point the camera orbits, which moves towards the galactic centre. */
+  function pivotVec(out, id, range) {
+    out[0] = out[1] = out[2] = 0; const g = index.get('Galaxy'), a = index.get(id);
+    if (!g || !a || id === 'Galaxy') return out; const t = galaxyBlend(range); if (t <= 0) return out;
+    out[0] = (g.pos[0] - a.pos[0]) * t; out[1] = (g.pos[1] - a.pos[1]) * t; out[2] = (g.pos[2] - a.pos[2]) * t; return out;
+  }
+  /** The point offsets are measured from: the anchor, plus the pivot slide in orbit mode. */
+  function syncOrg() {
+    const a = anchorBody(); org[0] = a.pos[0]; org[1] = a.pos[1]; org[2] = a.pos[2];
+    if (st.mode === 'orbit') { pivotVec(S.p, st.anchor, Math.hypot(st.off[0], st.off[1], st.off[2])); org[0] += S.p[0]; org[1] += S.p[1]; org[2] += S.p[2]; }
+    return org;
+  }
+  /** st.off holds the camera's real offset from the anchor; make it the orbit-mode offset: off + pivot(|off|) = real. */
+  function solvePivot() {
+    S.e[0] = st.off[0]; S.e[1] = st.off[1]; S.e[2] = st.off[2];
+    for (let i = 0; i < 40; i++) { pivotVec(S.p, st.anchor, Math.hypot(st.off[0], st.off[1], st.off[2])); st.off[0] = S.e[0] - S.p[0]; st.off[1] = S.e[1] - S.p[1]; st.off[2] = S.e[2] - S.p[2]; }
+  }
   /** Move the anchor without moving the camera. */
   function reanchor(id) {
-    const to = index.get(id); if (!to || id === st.anchor) return; const from = anchorBody();
-    st.off[0] += from.pos[0] - to.pos[0]; st.off[1] += from.pos[1] - to.pos[1]; st.off[2] += from.pos[2] - to.pos[2]; st.anchor = id;
+    const to = index.get(id); if (!to || id === st.anchor) return; syncOrg();
+    S.e[0] = st.off[0] + org[0] - to.pos[0]; S.e[1] = st.off[1] + org[1] - to.pos[1]; S.e[2] = st.off[2] + org[2] - to.pos[2]; st.anchor = id;
+    st.off[0] = S.e[0]; st.off[1] = S.e[1]; st.off[2] = S.e[2];
+    if (st.mode === 'orbit') solvePivot();
   }
   const dist = () => Math.hypot(st.off[0], st.off[1], st.off[2]);
   function bodyDistances() { // fills b.d (centre distance); returns nothing
-    const a = anchorBody();
-    for (let i = 0; i < bodies.length; i++) { const b = bodies[i]; b.d = Math.hypot(st.off[0] + a.pos[0] - b.pos[0], st.off[1] + a.pos[1] - b.pos[1], st.off[2] + a.pos[2] - b.pos[2]); }
+    syncOrg();
+    for (let i = 0; i < bodies.length; i++) { const b = bodies[i]; b.d = Math.hypot(st.off[0] + org[0] - b.pos[0], st.off[1] + org[1] - b.pos[1], st.off[2] + org[2] - b.pos[2]); }
   }
   function nearest() {
     let best = null, bs = Infinity, offer = null, os = Infinity;
@@ -315,14 +335,14 @@ export function createFlight(cfg = {}) {
   }
   /** Keep the camera out of every floor sphere, sliding along the surface and dropping the inward velocity. */
   function constrain() {
-    const a = anchorBody();
+    syncOrg();
     for (let i = 0; i < bodies.length; i++) {
       const b = bodies[i];
-      let rx = st.off[0] + a.pos[0] - b.pos[0], ry = st.off[1] + a.pos[1] - b.pos[1], rz = st.off[2] + a.pos[2] - b.pos[2], d = Math.hypot(rx, ry, rz);
+      let rx = st.off[0] + org[0] - b.pos[0], ry = st.off[1] + org[1] - b.pos[1], rz = st.off[2] + org[2] - b.pos[2], d = Math.hypot(rx, ry, rz);
       if (d >= b.floor) continue;
       if (d < 1e-9) { rx = 0; ry = 0; rz = 1; d = 1; }
       const k = b.floor / d; rx *= k; ry *= k; rz *= k;
-      st.off[0] = rx - a.pos[0] + b.pos[0]; st.off[1] = ry - a.pos[1] + b.pos[1]; st.off[2] = rz - a.pos[2] + b.pos[2];
+      st.off[0] = rx - org[0] + b.pos[0]; st.off[1] = ry - org[1] + b.pos[1]; st.off[2] = rz - org[2] + b.pos[2];
       const nx = rx / b.floor, ny = ry / b.floor, nz = rz / b.floor, vn = st.vel[0] * nx + st.vel[1] * ny + st.vel[2] * nz;
       if (vn < 0) { st.vel[0] -= nx * vn; st.vel[1] -= ny * vn; st.vel[2] -= nz * vn; st.acc.fill(0); }
       if (st.lzv < 0 && st.mode === 'orbit' && b.id === st.anchor) st.lzv = 0;
@@ -355,8 +375,7 @@ export function createFlight(cfg = {}) {
   function enterOrbit(id) {
     cancelAuto(true); st.path = null;
     const target = id || st.offer || st.nearestId; if (!index.has(target)) return false;
-    reanchor(target);
-    st.mode = 'orbit';
+    const previous = st.mode; reanchor(target); if (previous !== 'orbit') { st.mode = 'orbit'; solvePivot(); }
     const d = clamp(dist(), orbitFloor(), MAX_RANGE); if (d !== dist()) { const k = d / (dist() || 1); st.off[0] *= k; st.off[1] *= k; st.off[2] *= k; }
     lookAtCentre(S.q1); qCopy(st.qt, S.q1); if (!st.animated) { qCopy(st.q, S.q1); st.rotErrV.fill(0); }
     st.lz = Math.log(d); st.lzt = st.lz; st.lzv = 0; st.w.fill(0); st.wv.fill(0); st.vel.fill(0); st.acc.fill(0); st.version++;
@@ -365,6 +384,7 @@ export function createFlight(cfg = {}) {
   function enterFree() {
     cancelAuto(true); st.path = null;
     if (st.mode === 'free') return;
+    if (st.mode === 'orbit') { syncOrg(); const a = anchorBody(); st.off[0] += org[0] - a.pos[0]; st.off[1] += org[1] - a.pos[1]; st.off[2] += org[2] - a.pos[2]; }
     st.mode = 'free'; qCopy(st.qt, st.q);
     // keep any orbital momentum as a drift that the spring then brakes
     st.vel[0] = st.w[1] * st.off[2] - st.w[2] * st.off[1]; st.vel[1] = st.w[2] * st.off[0] - st.w[0] * st.off[2]; st.vel[2] = st.w[0] * st.off[1] - st.w[1] * st.off[0];
@@ -460,21 +480,26 @@ export function createFlight(cfg = {}) {
     if (!silent) st.cancelled = (st.cancelled || 0) + 1;
     return true;
   }
-  function worldOf(out) { const a = anchorBody(); out[0] = a.pos[0] + st.off[0]; out[1] = a.pos[1] + st.off[1]; out[2] = a.pos[2] + st.off[2]; return out; }
-  /** Build a segment from the current camera to a pose around target. dir is the unit offset direction at the end. */
+  function worldOf(out) { syncOrg(); out[0] = org[0] + st.off[0]; out[1] = org[1] + st.off[1]; out[2] = org[2] + st.off[2]; return out; }
+  /** Build a segment from the current camera to a pose around target. dir is the unit offset direction at the end.
+   * Far out (orbit mode beyond ~3,000 light-years) the point the camera orbits has slid towards the galactic centre, so the path
+   * is planned to that point and the arrival matches what orbit mode will draw. */
   function segmentTo({ target, distance, dir, q, duration, easing }) {
     const t = index.get(target); if (!t) throw new RangeError('Unknown body ' + target);
-    const start = [0, 0, 0]; worldOf(S.c); start[0] = S.c[0] - t.pos[0]; start[1] = S.c[1] - t.pos[1]; start[2] = S.c[2] - t.pos[2];
-    const r1 = Math.max(distance, t.floor * 1.001), end = [dir[0] * r1, dir[1] * r1, dir[2] * r1];
-    bodyDistances(); const near = nearest(), startCentre = [near.pos[0] - t.pos[0], near.pos[1] - t.pos[1], near.pos[2] - t.pos[2]];
+    const r1 = Math.max(distance, t.floor * 1.001); pivotVec(S.p, target, r1);
+    const tpt = [t.pos[0] + S.p[0], t.pos[1] + S.p[1], t.pos[2] + S.p[2]];
+    const start = [0, 0, 0]; worldOf(S.c); start[0] = S.c[0] - tpt[0]; start[1] = S.c[1] - tpt[1]; start[2] = S.c[2] - tpt[2];
+    const end = [dir[0] * r1, dir[1] * r1, dir[2] * r1];
+    bodyDistances(); const near = nearest(), startCentre = [near.pos[0] - tpt[0], near.pos[1] - tpt[1], near.pos[2] - tpt[2]];
     const obstacles = [];
     for (const b of bodies) {
-      const x = b.pos[0] - t.pos[0], y = b.pos[1] - t.pos[1], z = b.pos[2] - t.pos[2];
+      const x = b.pos[0] - tpt[0], y = b.pos[1] - tpt[1], z = b.pos[2] - tpt[2];
       const startD = Math.hypot(start[0] - x, start[1] - y, start[2] - z), endD = Math.hypot(end[0] - x, end[1] - y, end[2] - z);
       obstacles.push({ x, y, z, need: Math.min(b.floor * 1.04, startD * .999, endD * .999) });
     }
     qRot(S.d, q, 0, 1, 0);
-    return planSegment({ start, end, startCentre, startAltitude: st.altitude, q0: st.q, upRef: [S.d[0], S.d[1], S.d[2]], obstacles, duration, easing, targetFloor: t.floor, targetRadius: t.radius });
+    const seg = planSegment({ start, end, startCentre, startAltitude: st.altitude, q0: st.q, upRef: [S.d[0], S.d[1], S.d[2]], obstacles, duration, easing, targetFloor: t.floor, targetRadius: t.radius });
+    seg.tpt = new Float64Array(tpt); return seg;
   }
   /**
    * Fly to a body on a curved path. Returns false (and jumps) when not animated.
@@ -511,7 +536,7 @@ export function createFlight(cfg = {}) {
     if (dt > 0) { st.pathVel[0] = (S.a[0] - st.lastP[0]) / dt; st.pathVel[1] = (S.a[1] - st.lastP[1]) / dt; st.pathVel[2] = (S.a[2] - st.lastP[2]) / dt; }
     st.lastP[0] = S.a[0]; st.lastP[1] = S.a[1]; st.lastP[2] = S.a[2];
     // target-relative to anchor-relative
-    const an = anchorBody(); st.off[0] = S.a[0] + t.pos[0] - an.pos[0]; st.off[1] = S.a[1] + t.pos[1] - an.pos[1]; st.off[2] = S.a[2] + t.pos[2] - an.pos[2];
+    const an = anchorBody(), tp = seg.tpt; st.off[0] = S.a[0] + tp[0] - an.pos[0]; st.off[1] = S.a[1] + tp[1] - an.pos[1]; st.off[2] = S.a[2] + tp[2] - an.pos[2];
     bodyDistances(); followNearest();
     if (done) finishAuto();
   }
@@ -625,6 +650,8 @@ export function createFlight(cfg = {}) {
     state: st, bodies, setBodies, setPositionProvider, refresh, step, active, snapshot: state, orbitQuaternion,
     nudge, jump, flyTo, cancelAutopilot: () => cancelAuto(), enterOrbit, enterFree, setMode, playPath, planTo: segmentTo,
     setOrbitQuaternion, dragStart, dragEnd, spinOrbit, orbitStep, lookBy, setDistance, zoomBy, dolly, speedBy, setMove, setLook, setOrbitInput, setBoost,
+    /** Recompute distances, nearest world, offer and cruise speed (the renderer calls this when frames are not stepping). */
+    measure() { refresh(); bodyDistances(); nearest(); st.cruise = cruiseSpeed(st.altitude, st.speedMult, st.boost); },
     distance: dist, worldOf, reanchor, floorOf: id => index.get(id)?.floor, bodyOf: id => index.get(id),
     setAnimated(on) { st.animated = !!on; if (!on) { st.w.fill(0); st.wv.fill(0); st.vel.fill(0); st.acc.fill(0); st.rotErrV.fill(0); st.lz = Math.log(dist()); st.lzt = st.lz; st.lzv = 0; qCopy(st.q, st.qt); st.drag.active = false; } },
     setInertia(on) { st.inertia = !!on; },

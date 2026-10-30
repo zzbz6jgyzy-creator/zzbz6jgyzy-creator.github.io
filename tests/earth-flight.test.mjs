@@ -193,6 +193,24 @@ function bodiesClear(f, startClear) {
   assert.ok(done && f.state.anchor === 'Jupiter' && f.state.mode === 'orbit' && Math.abs(f.distance() - 69911 * 6.5) < 1e-3);
 }
 
+// ---- galaxy scale: the orbit pivot slides to the galactic centre; trips to and from there must not pop
+{
+  const q = F.qLook(new Float64Array(4), -.4, -.7, -.6, 0, 1, 0), far = 60 * M.KPC;
+  const f = makeFlight(); f.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 1.2 });
+  f.flyTo('Earth', { distance: far, q }); let prev = camera(f), steps = [], anchors = new Set();
+  while (f.state.mode === 'auto') { f.step(1 / 60); const c = camera(f); steps.push(len(sub(c, prev))); prev = c; anchors.add(f.state.anchor); }
+  assert.equal(f.state.anchor, 'Earth'); assert.equal(f.state.mode, 'orbit'); assert.ok(Math.abs(f.distance() / far - 1) < 1e-9);
+  const n = steps.length; assert.ok(steps[n - 1] < steps[n - 2] * 3 + 1, 'no jump when the galaxy trip lands: ' + steps.slice(-3));
+  assert.ok(anchors.has('Galaxy'), 'the anchor moves to the galactic centre between the stars');
+  // and back: from galaxy orbit the first frame of the way home is small (no pop when the pivot stops sliding)
+  const g = camera(f); f.flyTo('Earth', { distance: FLOOR_EARTH * 1.2, q }); f.step(1 / 60); const first = len(sub(camera(f), g));
+  f.step(1 / 60); const second = len(sub(camera(f), g)) - first; assert.ok(first < far * 1e-3, 'first frame home is gentle: ' + first / far);
+  // orbit to free keeps the real position
+  const h = makeFlight(); h.jump({ anchor: 'Earth', distance: 20 * M.KPC, q }); const before = camera(h); h.enterFree(); const after = camera(h);
+  assert.ok(len(sub(before, after)) < 1, 'leaving galaxy orbit does not move the camera: ' + len(sub(before, after)));
+  h.enterOrbit(); assert.ok(len(sub(camera(h), before)) < M.KPC * 1e-6, 'nor does re-entering orbit: ' + len(sub(camera(h), before)));
+}
+
 // ---- keyframe paths
 {
   assert.throws(() => F.normalizeKeyframes([]), TypeError); assert.throws(() => F.normalizeKeyframes([{ target: 'Mars' }]), TypeError); assert.throws(() => F.normalizeKeyframes([{ target: 'Mars', distance: 5, easing: 'wobble' }]), TypeError);
