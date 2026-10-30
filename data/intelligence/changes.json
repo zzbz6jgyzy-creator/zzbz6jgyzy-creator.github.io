@@ -1,39 +1,22 @@
 {
-  "updated": "2026-10-30T23:18:03.502Z",
+  "updated": "2026-10-30T23:27:24.116Z",
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:newest-reporting",
+      "type": "appeared",
+      "factId": "tesla-software:wave:2026.39.6",
       "topic": "tesla-software",
       "tracker": "software",
-      "field": "newest-reporting",
-      "previous": "2026.38.6.1",
-      "next": "2026.39.6",
-      "at": "2026-10-30T23:18:01.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3341 cars)",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Newest reporting build changed from 2026.38.6.1 to 2026.39.6.",
-      "title": "Newest reporting build",
-      "id": "changed|tesla-software:newest-reporting|2026-10-30T23:18:01.000Z|2026.39.6"
-    },
-    {
-      "type": "changed",
-      "factId": "tesla-software:most-common",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "most-common",
-      "previous": "2026.38.5.1@30.7",
-      "next": "2026.38.5.1@30.8",
+      "field": "wave:2026.39.6",
+      "previous": "0",
+      "next": "4",
       "at": "2026-10-30T23:18:01.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Most common sample build changed from 2026.38.5.1@30.7 to 2026.38.5.1@30.8.",
-      "title": "Most common sample build",
-      "id": "changed|tesla-software:most-common|2026-10-30T23:18:01.000Z|2026.38.5.1@30.8"
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.39.6 first appeared in the Teslascope sample with 4 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "title": "2026.39.6",
+      "id": "appeared|tesla-software:wave:2026.39.6|2026-10-30T23:18:01.000Z|4"
     },
     {
       "type": "logged",
@@ -884,23 +867,6 @@
       "summary": "McDowell snapshot: inOrbit 11,156 → 11,154; working 11,142 → 11,140. This is a published table snapshot, not a live operator feed.",
       "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-10-15T19:00:26.000Z|11154"
-    },
-    {
-      "type": "changed",
-      "factId": "tesla-software:wave:2026.38.5.1",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.5.1",
-      "previous": "28",
-      "next": "73",
-      "at": "2026-10-15T05:51:24.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 moved from 28 to 73 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
-      "title": "2026.38.5.1",
-      "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-15T05:51:24.000Z|73"
     },
     {
       "type": "logged",
