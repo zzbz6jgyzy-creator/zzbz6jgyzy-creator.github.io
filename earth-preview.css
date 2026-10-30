@@ -65,7 +65,7 @@
 .earth-panel .earth-primary{width:100%;font-size:13px}.earth-panel-link{display:flex;align-items:center;justify-content:space-between;min-height:44px;color:#c5e4f2;font-size:13px;text-decoration:none;border-bottom:1px solid #b5d3ef1c}.earth-panel-link:hover{color:#fff}
 .earth-text-button{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:44px;padding:9px 0;border:0;background:none;color:#c5e4f2;font-size:13px;width:100%;text-align:left}
 .earth-location{display:grid;gap:4px;padding:14px 16px;border:1px solid #adc9e025;border-radius:12px;background:#11202b80}.earth-location>.earth-eyebrow{margin:0 0 4px;font-size:9px;color:#a7bacb}.earth-location h4{margin:0;font-size:22px;font-weight:550;letter-spacing:-.04em;line-height:1.2}.earth-place-country{margin:0 0 8px;font-size:12px;color:#a9bccc}.earth-place-stats{display:flex;gap:26px}.earth-place-stats>div{display:grid;gap:5px}.earth-place-stats span{font:9px/1.5 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#a3b8ca}.earth-place-stats strong,.earth-place-stats time{font-size:15px;font-weight:500;color:#e0f0f7}.earth-coordinates{margin:8px 0 0;font-size:10px;color:#a3b9ca;letter-spacing:.04em}
-.earth-time-strip{display:flex;align-items:center;gap:10px;color:#a7bdcd;font-size:10px;letter-spacing:.08em}.earth-time-strip>time{color:#d8ecf5}.earth-live-dot{width:6px;height:6px;flex-shrink:0;border-radius:50%;background:#b7e6f1;box-shadow:0 0 12px #ace2f470}
+.earth-time-strip{display:flex;align-items:center;gap:10px;color:#a7bdcd;font-size:10px;letter-spacing:.08em}.earth-time-strip>time{color:#d8ecf5}.earth-live-dot{width:6px;height:6px;flex-shrink:0;border-radius:50%;background:#b7e6f1;box-shadow:0 0 12px #ace2f470}[data-time=sim] .earth-live-dot{background:#d2ad78;box-shadow:0 0 12px #d2ad7840}
 .cosmos-distance{display:grid;gap:6px;padding:14px 16px;border:1px solid #bdd9f029;border-radius:11px;background:#0f203180}.cosmos-distance>span{font:9px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#a3b9cb}.cosmos-distance>strong{font-size:24px;font-weight:450;letter-spacing:-.045em;color:#dbeef8}.cosmos-distance>small{font-size:11px;line-height:1.6;color:#a9bdce}
 .earth-weather{display:flex;align-items:center;gap:10px;font-size:12px;line-height:1.5}.earth-weather>span{width:6px;height:6px;border:1px solid #a7c6d6;border-radius:50%;flex:none}.earth-weather>div{flex:1}.earth-weather[data-state=available]>span{background:#a9d7d9;border-color:#a9d7d9;box-shadow:0 0 9px #a9d7d930}.earth-weather[data-state=older]>span{background:#d2ad78;border-color:#d2ad78}.earth-weather strong{display:block;font-size:12px;color:#c3d6e6;font-weight:500}.earth-weather small{display:block;color:#a3b8c9;font-size:11px}.earth-weather>button{background:none;color:#b8d2e3;border:0;min-width:44px;min-height:44px;font-size:20px}
 .earth-credits{margin:0;font-size:12px;line-height:1.75;color:#a9bccd}.cosmos-sky-credit{display:flex;align-items:center;color:#b6d3e5;font-size:12px;line-height:1.6;min-height:44px;text-underline-offset:3px}
@@ -94,3 +94,15 @@
 @media(max-height:500px){.cosmos-focus-name{bottom:calc(max(14px,var(--sab)) + 84px)}.earth-panel{width:min(400px,100%)}.earth-panel-head{padding-block:max(8px,var(--sat)) 2px}.earth-panel-section{padding:14px 0}.earth-toasts{bottom:calc(max(14px,var(--sab)) + 26px)}}
 @media(max-height:520px){.earth-intro-wordmark{margin-bottom:14px}.earth-intro-card .earth-eyebrow{margin-bottom:10px}.earth-intro-card h2{font-size:38px}.earth-intro-line{margin:10px 0 14px}.earth-intro-card .earth-instructions{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== Flight section (earth-flight.js): additions only ===== */
+.earth-flight-section [hidden]{display:none}
+.earth-flight-section .earth-panel-note{margin-top:10px;min-height:24px}
+.earth-flight-section .earth-text-button{margin-top:4px}
+/* ===== end flight section ===== */
+/* ===== Time section (earth-time.js) ===== */
+.earth-time-speeds{grid-template-columns:repeat(3,1fr)}
+.earth-time-section input[type=datetime-local]{min-height:44px;width:100%;border:1px solid #a8d8ed2e;border-radius:10px;background:#0e1a28;color:#dbe6f0;font-size:16px;padding:5px 10px;color-scheme:dark}
+.earth-time-section .earth-text-button{margin-top:0}
+.earth-time-section .earth-panel-note{min-height:24px}
+/* ===== end time section ===== */

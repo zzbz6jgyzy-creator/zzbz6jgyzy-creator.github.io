@@ -38,15 +38,25 @@ assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, 'exactly one h1');
 const hud = html.slice(html.indexOf('id="earth-hud"'), html.indexOf('id="cosmos-labels"'));
 for (const id of ['earth-motion', 'earth-fullscreen', 'earth-menu']) assert.ok(hud.includes('id="' + id + '"'), id + ' belongs in the HUD');
 const panel = html.slice(html.indexOf('<dialog class="earth-panel"'), html.indexOf('</dialog>', html.indexOf('<dialog class="earth-panel"')));
-for (const hook of ['data-earth-scale', 'data-earth-zoom', 'earth-reset', 'cosmos-deep-sky', 'earth-quality', 'earth-labels-toggle', 'earth-location', 'earth-explore', 'earth-fly-here', 'earth-utc', 'cosmos-distance', 'earth-weather-refresh', 'earth-about', '/starship-replay.html', 'EUMETSAT', 'Brunier', 'cosmos-sky-credit'])
+for (const hook of ['data-earth-scale', 'data-earth-zoom', 'earth-reset', 'cosmos-deep-sky', 'earth-quality', 'earth-labels-toggle', 'earth-location', 'earth-explore', 'earth-fly-here', 'earth-utc', 'cosmos-distance', 'earth-weather-refresh', 'earth-about', '/starship-replay.html', 'EUMETSAT', 'Brunier', 'cosmos-sky-credit', 'earth-time-live', 'earth-time-reverse', 'earth-time-when', 'earth-time-solar', 'earth-time-lunar', 'data-earth-speed'])
   assert.ok(panel.includes(hook), hook + ' must be in the panel');
+assert.ok(html.includes('data-time="live"'), 'clock starts in live mode');
+assert.ok(js.includes('Simulated time'), 'provenance names simulated time on screen');
+assert.ok(js.includes('clouds not for this time'), 'the chip names live clouds as not for simulated time');
+assert.ok(js.includes('not for this time'), 'clouds are labelled when the clock is not live');
 assert.ok(!html.includes('earth-copy') && !html.includes('earth-controls') && !html.includes('earth-bottom'), 'no text or dock layers over the canvas');
 assert.ok(/<div class="earth-intro-overlay" id="earth-intro" role="dialog" aria-modal="true"/.test(html) && html.includes('id="earth-enter"'), 'intro overlay with Enter');
 assert.ok(html.includes("sessionStorage.getItem('sd-earth-intro')") && js.includes("sessionStorage.setItem('sd-earth-intro'"), 'intro dismissal is remembered for the session, guarded by try/catch');
 assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes("localStorage.getItem('sd-earth-labels')"), 'label choice persists');
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
-for (const m of html.matchAll(/(earth-[a-z-]+\.(?:js|css)|\/earth-[a-z-]+\.js)\?v=([\w-]+)/g)) assert.equal(m[2], /earth-preview\./.test(m[1]) ? '20261030-phone1' : '20261030-noground1', 'consistent ?v= token (page files bump together; renderer imports keep theirs)');
+const TOKEN = '20261030-time2';
+for (const file of ['mission-control.html', 'earth-preview.js', 'earth-renderer.js', 'earth-cosmos.js', 'earth-weather.js', 'starship-replay-renderer.js']) {
+  const text = file === 'mission-control.html' ? html : readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+  const hits = [...text.matchAll(/earth-[a-z0-9.-]+\.(?:js|css)\?v=([\w-]+)/g)];
+  assert.ok(hits.length, file + ' must pin earth ?v= tokens');
+  for (const m of hits) assert.equal(m[1], TOKEN, file + ' token ' + m[0]);
+}
 // No ground mode: owner decision 30 Oct 2026. Nothing for the street map may come back.
 for (const banned of ['ground-stage', 'ground-map', 'data-earth-mode', 'earth-return', 'earth-ground-open', 'ground-terrain', 'ground-buildings', 'earth-satellite', 'maplibre', 'openfreemap', 'openstreetmap', 'OpenMapTiles'])
   assert.ok(!html.toLowerCase().includes(banned.toLowerCase()) && !js.toLowerCase().includes(banned.toLowerCase()), banned + ' must not appear in the page or its script');
@@ -67,4 +77,7 @@ assert.equal(FLOOR, 2500, 'owner decision 30 Oct 2026: imagery is only crisp fro
 }
 const rend = readFileSync(new URL('../earth-renderer.js', import.meta.url), 'utf8');
 assert.ok(rend.includes('MIN_ORBIT_ALTITUDE_KM') && rend.includes('earthMaxZoom'), 'renderer enforces the floor');
+assert.ok(!rend.includes("from '/earth-time.js") && rend.includes("import('/earth-time.js?v="), 'earth-time.js is a dynamic import so the Starship replay never loads it');
+const timeSrc = readFileSync(new URL('../earth-time.js', import.meta.url), 'utf8');
+assert.ok(!timeSrc.includes("from './vendor/astronomy") && timeSrc.includes("import('./vendor/astronomy/astronomy.js')"), 'Astronomy Engine loads only for eclipse jumps');
 console.log('Immersive viewer structure, hooks, credits-in-panel and session/label persistence verified.');

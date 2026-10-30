@@ -10,6 +10,8 @@ on:
       - 'tests/earth-weather.test.mjs'
       - 'tests/cosmos-browser.py'
       - 'tests/earth-cosmos.test.mjs'
+      - 'tests/earth-flight.test.mjs'
+      - 'tests/earth-time.test.mjs'
       - 'assets/cosmos/**'
       - 'vendor/astronomy/**'
       - 'vendor/three*'
@@ -55,6 +57,10 @@ jobs:
           node tests/earth-live-model.test.mjs
           node tests/earth-weather.test.mjs
           node tests/earth-cosmos.test.mjs
+          node --check earth-flight.js
+          node tests/earth-flight.test.mjs
+          node --check earth-time.js
+          node tests/earth-time.test.mjs
           node --check earth-cosmos.js
           node --check earth-cosmos-model.js
           python3 scripts/build-cosmos-assets.py --check

@@ -7,10 +7,9 @@ There is no street-level or ground view: the closest the camera can get is
 
 ## Experience and architecture
 
-- Quaternion arcball controls grab the surface under the pointer, cross the poles,
-  support touch pinch and return smoothly to one-finger dragging. Pause preserves
-  the released view. Taps mark a location without recentering it. Keyboard orbit,
-  canvas trackpad zoom, reduced motion and reset remain available.
+- The camera is a 6-DOF flight camera (`earth-flight.js`, see *Flight and autopilot*): quaternion orbit controls that grab the
+  surface under the pointer and cross the poles, free flight with inertia, and a curved autopilot between worlds. Pause preserves
+  the released view. Taps mark a location without recentering it, or fly to the world tapped. Keyboard, reduced motion and reset remain available.
 - The Earth gains a restrained 4K terrain-normal layer and an ocean mask used for GGX sun glint (see the lighting model below).
   The opening camera selects a naturally lit three-quarter view using the current
   Sun direction; geographic sunlight is unchanged. The day/night base maps remain
@@ -23,7 +22,7 @@ There is no street-level or ground view: the closest the camera can get is
   avoid near/far precision loss. Body radii and distances are physical. Enlarged
   labels make unresolved worlds selectable without enlarging their physical disks.
 - A four-stop scale rail and world finder provide direct navigation. Manual zoom
-  traverses all scales; galaxy-scale zoom smoothly shifts the focus towards the
+  traverses all scales (and the autopilot flies there on a curve); galaxy-scale zoom smoothly shifts the focus towards the
   galactic centre while keeping Earth as its logical home anchor. Zooming back in
   returns naturally through the Solar System to Earth. Zooming into Earth stops
   at a 2,500 km floor (below).
@@ -106,12 +105,81 @@ successful image load.
 
 - **Opening overlay** (`#earth-intro`, a modal-style dialog): title, one line, Enter button, small instructions. Enter, a tap or Esc dismisses it; focus moves to the canvas; `sessionStorage['sd-earth-intro']` skips it for the rest of the session (a tiny inline script sets `html.earth-entered` before first paint so it never flashes). The page `h1` is a visually hidden heading. Without JavaScript the overlay shows the text only.
 - **HUD** (`#earth-hud`): brand mark, Pause (`#earth-motion`), fullscreen, menu (`#earth-menu`). `data-hud` is `active` or `idle`; idle after 2.5 s without pointer, touch, key or wheel activity. It never idles while the intro or any dialog is open or a `:focus-visible` element is inside it. Reduced motion removes the fade (instant).
-- **Panel** (`#earth-panel`, a modal `<dialog>`): View (mode, perspectives, zoom, reset, deep sky, detail, Show labels), Place, Now (UTC, distance), Clouds and credits, Keyboard. Side panel from 700 px, bottom sheet below. Perspective choices close the sheet on phones.
+- **Panel** (`#earth-panel`, a modal `<dialog>`): View (mode, perspectives, zoom, reset, deep sky, detail, Show labels), Place, Now (UTC, distance), Time (Live, speeds, reverse, UTC date, next solar/lunar eclipse), Clouds and credits, Keyboard. Side panel from 700 px, bottom sheet below. Perspective choices close the sheet on phones.
 - **Labels:** `data-labels="off|on"` on the root, stored in `localStorage['sd-earth-labels']`. Label buttons stay in the DOM; opacity 0 until hover/focus. `#cosmos-focus-name` shows one soft name for 3.2 s after a view change; `#earth-live` announces name, description and distance (debounced).
-- **Provenance chip** (`#earth-provenance`, outside the HUD so it never fades; editorial rule 8): shown only when the view is not live or measured. Galaxy: "Illustration · structural model"; neighbourhood scale: "Catalogue positions · distances approximate"; Earth with illustrative clouds: "Illustrative clouds · live feed unavailable" (or "requesting satellite frame" while loading); satellite frame older than 200 min: "Satellite clouds · HH:MM UTC". Hidden on live Earth with a fresh frame.
+- **Provenance chip** (`#earth-provenance`, outside the HUD so it never fades; editorial rule 8): shown only when the view is not live or measured. Simulated clock: "Simulated time · HH:MM UTC D Mon YYYY" (galaxy and neighbourhood still append their model notes). Live galaxy: "Illustration · structural model"; neighbourhood scale: "Catalogue positions · distances approximate"; Earth with illustrative clouds: "Illustrative clouds · live feed unavailable" (or "requesting satellite frame" while loading); satellite frame older than 200 min: "Satellite clouds · HH:MM UTC". Hidden on live Earth with a fresh frame. Simulated time keeps the live cloud frame and labels it "not for this time".
 - **Planet dots:** with labels off every label keeps a 6 px coloured dot (24 px hit area, so touch devices can find and tap planets); only the name fades. Label boxes are `pointer-events:none`, so drags pass to the canvas. The Sun and Galactic-centre markers (`.is-marker`) stay named regardless of the setting.
 - **Toasts:** `#earth-loading`, `#earth-note` (7 s, except the sticky detail-loading message).
 - Tests: `tests/earth-browser.py` (intro, session memory, clean-text assertion, HUD, panel focus, credits, no ground UI, zoom floor), `tests/cosmos-browser.py` (labels off/hover/switch/persist, live region), `tests/earth-cosmos.test.mjs` (markup hooks and ids).
+
+## Flight and autopilot
+
+Owner decision, 30 October 2026 ("Free flight + autopilot"): movement was too linear and zooming dived into planets, so the
+camera is now a flying camera rather than a zoom slider. All of it lives in `earth-flight.js`, pure maths with no DOM and no
+three.js (node-tested, no allocation per frame). `earth-renderer.js` turns its state into a camera, `earth-cosmos.js` supplies the
+body positions (`scenePosition`) and the floating origin.
+
+**State.** The camera is stored as (anchor body, offset in km from that body, orientation quaternion). The anchor is the nearest
+world in free flight (with hysteresis), the focused world in orbit, and the galactic centre beyond about 2,000 light-years from the
+Sun, so the offset is always small next to what is in view and float32 keeps its precision from the 2,500 km Earth floor to the
+Milky Way. Units stay km (the cosmos module converts to Earth radii, AU, light-years or kpc for rendering).
+
+**Orbit mode** (default, near a world). Drag turns the world by the surface point under the pointer; on release the momentum decays
+on a critically damped spring (none while paused or under reduced motion). Scroll, pinch, W/S and +/- zoom on a log scale through a
+critically damped spring, and while zooming in the orbit turns a fraction of the way towards the point under the cursor or fingers.
+Floors: Earth keeps `MIN_ORBIT_ALTITUDE_KM` (2,500 km); every other world stops 0.4 radii above its surface (1.4 R from the centre).
+
+**Free flight.** Entered with F (or the panel's Flight section), by right-drag, or when you cancel the autopilot. It moves in
+the camera's own axes with a velocity spring (response ~0.25 s) and a 6-DOF orientation that follows the target orientation on
+a second spring. The cruise speed is 0.35 x the altitude above the nearest surface per second, so it is metres per second when
+you could be that close and light-years per second between the stars, and feels the same at every scale; the multiplier (1/32 to 32)
+and Shift (x4) scale it. Floors hold in this mode too: the camera slides along the floor sphere instead of passing through it,
+and a move is cut into sub-steps so even a boosted move cannot jump over a world. Each body has a sphere of influence of 40 radii;
+inside it the panel offers "Orbit <world>" and O orbits the nearest one (the camera turns to face it smoothly).
+
+| Input | Orbit | Free flight |
+|---|---|---|
+| Mouse drag | turn the world | right-drag or drag to look (grab the sky) |
+| Scroll / trackpad pinch | zoom toward the cursor | change cruise speed |
+| Keyboard | arrows or A/D orbit, W/S or +/- zoom | W A S D move, Q/E down/up, arrows look, Z/C roll, Shift boost, [ ] speed |
+| One finger | turn the world | look |
+| Two fingers | pinch zooms | drag moves (up forward, sideways strafes), pinch changes speed |
+| Mode | F free flight | O orbit nearest world |
+| Anywhere | Home reset, Space pause, Esc stops the autopilot | |
+
+A key held for less than 140 ms still moves the camera a little, so a tap always does something. While paused or under reduced
+motion each key press is one discrete step, with no inertia. There is no thumb pad: two-finger drag does that job on phones, and
+the panel's Flight section switches modes without a keyboard.
+
+**Autopilot.** Choosing a world (panel list, a label dot, or a tap on its disc) calls `flyTo()`. The path is a cubic Bezier that
+leaves radially away from the nearest world and arrives radially towards the target, plus a sideways swing found by search until
+every other world's floor sphere is cleared (checked against the exact polyline, not frames), so Earth to a planet behind the Sun
+arcs past the Sun. The pace is the ratio of "travelled plus start altitude" to "left plus end altitude" moving linearly (eased)
+in log space: exponential departure, fast middle, exponential deceleration into the target, a smooth speed throughout. A trip is
+2 to 6.5 s (Earth to Saturn about 3 s). The camera turns from its current orientation to face the target over the first half.
+Arrival is orbit mode at the preset framing distance (6.5 radii, Saturn 12, the Sun 95 AU, the galaxy 60 kpc). Any input (key,
+scroll, pointer, touch) cancels it, the camera coasts to a stop on its own velocity, and the mode becomes free flight. Under
+reduced motion or pause the autopilot jumps straight to the end.
+
+**Camera paths (for a later Cinema mode).** `flight.playPath(keyframes, {onDone, onKeyframe})` plays an array of
+`{target, distance, yaw, pitch, duration, easing, hold}` (`normalizeKeyframes` validates; easings `linear in out inOut smooth`;
+yaw/pitch are the camera's offset direction from the target in the scene frame). Each keyframe is one autopilot segment with the
+same avoidance. `DEMO_PATH` (Earth, Moon, Earth) is reachable only through `window.__earthPreview.__cinemaDemo()` for tests and
+nothing in the interface uses it yet. Input stops a path like any autopilot.
+
+**Known limits.** The Earth-fixed scene frame turns with the Earth. It is rebuilt every frame while the camera is moving (about 0.2 ms) and once a second at rest, so worlds never step; the autopilot also blends from the planned target position to the live one, so a frame turn cannot make a trip jump (tested with a 2.18e-3 rad turn mid-trip). Orbit-mode zoom-out is not cut off at the sphere of influence (scrolling out to the galaxy still works); free flight is entered explicitly. The thumb control was not built: two-finger drag moves, and the panel has Turn buttons for users who cannot drag. Under pause or reduced motion a two-finger move does nothing (use the keys); any movement key, scroll or touch stops the autopilot.
+
+## Time control
+
+Owner-facing clock, 30 October 2026. All of it lives in `earth-time.js` (pure maths plus Astronomy Engine eclipse search; no DOM). `earth-renderer.js` ticks it each frame and passes the Date into `solarPosition` and `cosmos.update`. Pause still only stops the camera.
+
+- **Live** (default): wall-clock UTC (`Date.now`). Sunlight, ephemerides and the Now strip follow it. Clouds are the latest EUMETSAT frame.
+- **Speed:** ±1, ±10, ±100, ±1 000, ±10 000, driven by `performance.now()` so a frozen `Date.now` (cloud fixtures) cannot stall it. Reverse flips the sign. 1× while already Live stays Live; any other speed leaves Live.
+- **Date:** a `datetime-local` labelled UTC; picking a value freezes the clock at that instant (speed 0).
+- **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Shadows are not drawn yet.
+- **Editorial:** the provenance chip reads `Simulated time · HH:MM UTC D Mon YYYY`, and on Earth/Moon appends `· clouds not for this time` (or `· illustrative clouds`). The Clouds row says the same. No historical weather is invented.
+
+Tests: `tests/earth-time.test.mjs`. `?v=` token `20261030-time2`.
 
 ## Zoom floor (no ground view)
 
@@ -122,8 +190,8 @@ surface. The first cut was 400 km (like the ISS); after seeing 400, 1,000 and 2,
 at 400 km one texel covered 6 to 7 screen pixels). It will be lowered when sharper imagery lands.
 
 - One named constant, `MIN_ORBIT_ALTITUDE_KM = 2500` in `earth-live-model.js` (not the cosmos model, so the Starship replay does not pull in the 412 KB astronomy engine through `earth-renderer.js`). Camera range is stored from Earth's centre, so the renderer converts it with the current `fitDistance` (`earthMaxZoom()`).
-- Every route goes through `setZoom()`: wheel, ctrl-wheel/trackpad pinch, touch pinch, `+`/`-`/`=` keys and the panel buttons (`zoomBy`). `setScale('earth')` clamps its destination to the floor, `setSceneGeo({zoom})` clamps, and `viewLocation()` (used by the place picker) clamps. `updateCamera()` re-clamps every frame while no flight is running, so a resize that changes `fitDistance` cannot leave the camera under the floor.
-- Soft approach: `easeToAltitudeFloor()`. Inside the last 0.6 x floor (1,500 km at 2,500) the remaining margin can at most halve per input step, so the camera glides in geometrically and snaps exactly on the floor under 0.5 km. Monotone: no overshoot, no bounce. Zooming out is never eased. The band scales with the constant.
+- Every route reaches the floor in `earth-flight.js`: wheel and pinch (`zoomBy`), `setDistance` for `setZoom()`, the `+`/`-`/`=` keys and panel buttons, free flight, the autopilot (`flyTo` clamps its framing distance) and `setSceneGeo({zoom})`, `viewLocation()` (place picker) and resize (`scaleDistance`). The floor sphere is also enforced every frame against free flight and orbit.
+- Soft approach: the zoom is a critically damped spring on log distance aimed at the clamped target, so the camera glides onto the floor without overshoot or bounce (the flight module also pins it to the floor if a spring ever crossed). `easeToAltitudeFloor()` stays exported and tested in `earth-live-model.js` but is no longer on the zoom path.
 - At the floor the camera is about 1.39 Earth radii from the centre. The near plane is derived from the distance (also before the cosmos module loads).
 - Detail: once the camera is within twice the floor altitude (`CLOSE_DETAIL_ALTITUDE_KM`), Auto asks for a sharper tier, then keeps it: 8K on desktop, 4K on phones (width under 800 px or 4 GB or less reported memory; iOS reports no memory, so width decides); save-data keeps the lower tier.
 - The selection marker is scaled with distance and sits at 1.0005 R, so it stays a small dot on the tapped point.

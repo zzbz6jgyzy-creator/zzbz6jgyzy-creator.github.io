@@ -2,6 +2,15 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-30 · Earth explorer: a simulated UTC clock, clouds stay live
+
+- **Decision:** time is a separate module (`earth-time.js`), like the flight camera. Live follows the wall clock. Speeds, reverse, a picked date and eclipse jumps are simulated UTC. Existing Pause still only stops the camera.
+- **Why:** sunlight and ephemerides already take a Date; the missing piece was a clock the panel can drive. Jump-to-next eclipse uses Astronomy Engine search (already vendored) so the date is sourced, not invented. Shadow drawing is a later PR.
+- **Clouds:** the EUMETSAT infrared frame is a real observation at a real time. Simulated time does not invent a historical cloud map. The provenance chip on Earth/Moon reads `Simulated time · … · clouds not for this time` (or `· illustrative clouds` if the feed is down); the Clouds row says the same.
+- **1× from Live stays Live.** Taking 10× (or a date, or reverse) leaves Live. Live is the only way back to the wall clock.
+- **Picker is UTC.** `datetime-local` has no zone, so the field is labelled UTC and parsed as UTC.
+- **Speed uses monotonic elapsed time.** Live still reads `Date.now`. Browser tests freeze `Date.now` for the cloud fixtures, so 1000× would otherwise stand still.
+
 ## 2026-10-30 · Earth explorer: Ground mode removed, orbital zoom floor
 
 - **Decision (owner, 30 Oct 2026):** remove Ground mode and the street map entirely. In the owner's words it "zooms into a flat map, it looks terrible". The camera stops well above the surface. First cut 400 km (ISS-like); the owner then chose **2,500 km** on 30 Oct 2026 after seeing 400, 1,000 and 2,500 km samples, because the imagery is only crisp from there. To be lowered when sharper imagery lands.
@@ -182,6 +191,12 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 - **Decision:** Khronos PBR Neutral at exposure 1.2 for the explorer renderer (was ACES 1.08). The atmosphere is a per-pixel single-scattering integral with the Chapman function for the Sun path, evaluated in linear light inside the surface and cloud shaders (the shell only draws the limb). Three.js stays at r170.
 - **Why Neutral over AgX and ACES:** same scene, same views (day glint, terminator, sunset limb), after the haze was moved into linear light. Deep ocean (sRGB): AgX 1.25 (52,83,114) is a washed grey-blue; Neutral 1.0 (11,48,81) and 1.2 (15,53,89) are deep blue, closer to DSCOVR EPIC. Sahara: AgX (193,178,159) desaturated, Neutral 1.2 (219,187,144) keeps its colour with no channel at 255; clouds reach about (230,233,234), not clipped. City lights stay saturated warm under Neutral and go grey under AgX. ACES clipped clouds and desert to flat white in the first pass. Moon and Solar System views were checked and show no regression.
 - **Engine and method:** r170 has Neutral, AgX, `textureGrad` and WebGL2; r186 has nothing we need, so an engine change is risk without a visual gain. Hillaire-style LUTs need extra passes and textures that pay off for ground-level skies, not one planet from space; bloom would need an HDR composer on phones for one highlight. The Starship replay deliberately keeps the legacy shaders and ACES.
+
+## 2026-10-30 · Earth explorer: a flying camera (orbit + free flight + autopilot) instead of a zoom slider
+- **Decision:** the camera is its own module, `earth-flight.js`: anchor + km offset + quaternion, critically damped springs, speed proportional to the altitude above the nearest surface, an orbit mode and a free-flight mode, and an autopilot on a curved, obstacle-clearing path paced in log distance. Owner approved "Free flight + autopilot".
+- **Why this shape:** (1) positions as (nearest anchor, small offset) keep float32 precision at every scale without a logarithmic depth buffer or a rebuild of the cosmos renderer. (2) The exact closed-form critically damped spring makes inertia identical at 15 and 144 fps (tested), where the old per-frame lerps and fixed-duration fly-to were not. (3) Speed = rate x altitude is uniform on a log scale, which is what made the old linear zoom feel wrong. (4) The autopilot separates the curve (Bezier, radial departure and arrival, swing searched against the exact polyline) from the pace (log ratio of travelled to remaining distance), so a trip leaves and arrives exponentially and a short hop and a trip to the galaxy use the same code.
+- **Choices to review:** scrolling out in orbit mode is not cut off at a body's sphere of influence (the scale rail and "zoom to the galaxy" keep working); free flight is entered explicitly (F, right-drag, the panel, or cancelling an autopilot) and scroll then sets the cruise speed, as asked. Other worlds' floor is 0.4 radii altitude (Earth stays 2,500 km, owner decision). No thumb pad: two-finger drag moves on touch. Pure-maths module with no three.js so it is unit-testable in node; positions come from the cosmos module through one function.
+- **Rejected:** Rewriting the cosmos renderer around a camera-relative origin (the anchor scheme does the same job for far less risk); log-depth buffer (not needed once near/far follow altitude); hard-coded per-pair waypoints for the autopilot (the search covers any pair, and any future body).
 
 ## Open: review ratings
 Reviews deliberately replaced unexplained numeric scores with recommendations (`docs/reviews-studio.md`). Google's review rich

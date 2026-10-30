@@ -46,7 +46,14 @@ async def setup_route(ctx,mode='normal',cloud='fixture'):
 async def wake(page):
     await page.mouse.move(3,3);await page.mouse.move(6,9)
 async def hud_click(page,selector):
-    await wake(page);await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.hud==='active'");await page.locator(selector).click()
+    await wake(page);await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.hud==='active'")
+    btn=page.locator(selector)
+    try:await btn.click(timeout=8000)
+    except Exception:
+        # Software GL can starve animation frames so Playwright's 'stable' check never settles (CI saw this on #273).
+        # The control must still be visible, enabled and the HUD awake; then click without the stability wait.
+        await expect(btn).to_be_visible();await expect(btn).to_be_enabled();await wake(page)
+        await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.hud==='active'");await btn.click(force=True)
 async def open_panel(page):
     if not await page.evaluate("document.getElementById('earth-panel').open"):
         await hud_click(page,'#earth-menu');await expect(page.locator('#earth-panel')).to_be_visible()
@@ -82,6 +89,34 @@ async def intro_check(page,name):
     await expect(page.locator('#earth-intro')).to_be_hidden()
 
 HUD="document.querySelector('[data-earth-preview]').dataset.hud"
+async def time_control_check(page):
+    """Live → eclipse jump: simulated chip, clouds labelled, pause does not stop the clock."""
+    await js_panel(page)
+    assert await page.evaluate("document.querySelector('[data-earth-preview]').dataset.time")=='live'
+    await page.evaluate("document.getElementById('earth-time-solar').click()")
+    await page.wait_for_function("window.__earthPreview.getState().time&&!window.__earthPreview.getState().time.live",timeout=20000)
+    st=await page.evaluate(STATE)
+    assert st['time']['speed']==0 and st['time']['label'],st['time']
+    chip=await page.locator('#earth-provenance').inner_text()
+    assert chip.startswith('Simulated time ·') and 'clouds not for this time' in chip,chip
+    await expect(page.locator('#earth-weather-label')).to_contain_text('not for this time')
+    live=await page.locator('#earth-live').inner_text()
+    assert 'solar eclipse' in live.lower() and 'utc' in live.lower(),live
+    await page.evaluate("document.getElementById('earth-time-live').click()")
+    await page.wait_for_function("window.__earthPreview.getState().time.live")
+    await page.evaluate("document.querySelector('[data-earth-speed=\"1000\"]').click()")
+    await page.wait_for_function("window.__earthPreview.getState().time.speed===1000")
+    await page.evaluate("window.__earthPreview.pause()")
+    cam0=await page.evaluate(STATE+'.cameraKm')
+    t0=(await page.evaluate(STATE))['time']['ms']
+    await page.wait_for_function(f'window.__earthPreview.getState().time.ms-{t0}>500000',timeout=8000)
+    t1=(await page.evaluate(STATE))['time']['ms']
+    cam1=await page.evaluate(STATE+'.cameraKm')
+    assert t1-t0>500000,('paused camera must not freeze simulated time',t0,t1)
+    assert sum((a-b)**2 for a,b in zip(cam0,cam1))**.5<50,('paused camera must stay put while time runs',cam0,cam1)
+    await page.evaluate("window.__earthPreview.resume();window.__earthPreview.setTimeLive()")
+    await close_panels(page)
+
 async def hud_panel_checks(page):
     await expect(page.locator('#earth-menu')).to_have_attribute('aria-expanded','false')
     await page.evaluate('document.activeElement?.blur()')
@@ -100,7 +135,7 @@ async def hud_panel_checks(page):
     assert await page.evaluate("document.getElementById('earth-panel').contains(document.activeElement)"),'Focus must move into the panel'
     await page.wait_for_timeout(3600);assert await page.evaluate(HUD)=='active','HUD must not hide while the panel is open'
     text=(await panel.inner_text()).lower()
-    for phrase in ['eumetsat','brunier','sources & detail','show labels','pause' if False else 'zoom']:assert phrase in text,phrase
+    for phrase in ['eumetsat','brunier','sources & detail','show labels','pause' if False else 'zoom','utc date and time','solar eclipse']:assert phrase in text,phrase
     await page.keyboard.press('Escape');await expect(panel).to_be_hidden()
     await expect(page.locator('#earth-menu')).to_have_attribute('aria-expanded','false')
     await page.wait_for_function("document.activeElement.id==='earth-menu'",timeout=3000)
@@ -200,7 +235,10 @@ async def main():
                     elif mode=='normal':
                         await assert_clean(page,name)
                         assert await page.locator('#earth-provenance').is_hidden(),'Live Earth with a fresh frame needs no provenance chip'
-                        await hud_panel_checks(page);await hud_click(page,'#earth-motion');await page.wait_for_function(STATE+'.paused')
+                        await hud_panel_checks(page)
+                        if width>1000 and theme=='dark':
+                            await time_control_check(page)
+                        await hud_click(page,'#earth-motion');await page.wait_for_function(STATE+'.paused')
                         before=(await page.evaluate(STATE))['rotation'];await page.wait_for_timeout(200);assert (await page.evaluate(STATE))['rotation']==before
                         for view in ['daylight','night','live']:
                             await open_panel(page);await page.locator('#earth-about').click()

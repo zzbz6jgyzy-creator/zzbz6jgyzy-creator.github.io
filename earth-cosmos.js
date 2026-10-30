@@ -1,6 +1,7 @@
 /* A floating-origin, physically scaled scene. The legacy Earth shaders stay shared with the replay; the explorer uses the physical ones. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import * as M from './earth-cosmos-model.js?v=20261030-noground1';
+import * as M from './earth-cosmos-model.js?v=20261030-time2';
+import {galaxyBlend} from './earth-flight.js?v=20261030-time2';
 const BASE='/assets/cosmos/';
 const matrixFromAxes=axes=>new THREE.Matrix4().makeBasis(...axes.map(v=>new THREE.Vector3(...v)));
 const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};
@@ -40,8 +41,8 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  const groupSolar=new THREE.Group(),groupStars=new THREE.Group(),groupGalaxy=new THREE.Group();root.add(groupSolar,groupStars,groupGalaxy);
  const system=new Map(),textures=new Map(),pending=new Set(),failedBodies=new Set(),failures=[];
  const eqFrame=new THREE.Matrix4(),galFrame=new THREE.Matrix4();
- let disposed=false,focus='Earth',level='earth',deepSky=false,physical=M.ephemeris(),lastEpoch=0,lastLabels=0,starsCount=0,galaxyCount=0,renderUnit=M.EARTH_RADIUS,currentRange=25000;
- let galaxy,skyMap,flightFrom=null,flightMix=1;
+ let disposed=false,focus='Earth',level='earth',deepSky=false,physical=M.ephemeris(),lastEpoch=0,lastIso='',lastLabels=0,starsCount=0,galaxyCount=0,renderUnit=M.EARTH_RADIUS,currentRange=25000;
+ let galaxy,skyMap,blendGalaxy=true,galacticCentre=[0,0,0];
  const grey=new THREE.Color('#bdc9d0');
  for(const b of M.BODIES){if(b.id==='Earth')continue;
   const uniforms={uMap:{value:black},uHasMap:{value:0},uColor:{value:new THREE.Color(b.color)},uSun:{value:new THREE.Vector3(1,0,0)},uEmissive:{value:b.id==='Sun'?1:0}};
@@ -93,17 +94,27 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  function frameMatrix(date){
   physical=M.ephemeris(date);const geo=matrixFromAxes(physical.axes),g=new THREE.Matrix4().makeRotationFromQuaternion(globe.quaternion);eqFrame.multiplyMatrices(g,geo);
   galFrame.multiplyMatrices(eqFrame,matrixFromAxes([[1,0,0],[0,1,0],[0,0,1]].map(v=>M.galToEq(v,date))));
-  skyUniforms.uWorldToGal.value.setFromMatrix4(galFrame.clone().invert());
+  skyUniforms.uWorldToGal.value.setFromMatrix4(galFrame.clone().invert());galacticCentre=M.galToEq(M.SUN_GALACTIC.map(v=>-v*M.KPC),date);
  }
- frameMatrix(new Date());
+ frameMatrix(new Date());galacticCentre=M.galToEq(M.SUN_GALACTIC.map(v=>-v*M.KPC));
  function world(v){return new THREE.Vector3(...v).applyMatrix4(eqFrame);}
  function bodyPosition(id){return id==='Galaxy'?M.galToEq(M.SUN_GALACTIC.map(v=>-v*M.KPC)):physical.positions[id]||[0,0,0];}
- function focusPosition(){const p=bodyPosition(focus);let result=flightFrom?flightFrom.map((v,i)=>v+(p[i]-v)*flightMix):p;
-  if(focus!=='Galaxy'&&currentRange>M.LY*3000){const g=bodyPosition('Galaxy'),t=smooth(3000,70000,currentRange/M.LY);result=result.map((v,i)=>v+(g[i]-v)*t);}return result;}
+ function focusPosition(){const p=bodyPosition(focus);let result=p;
+  // Orbit mode only: far out the pivot slides from the focus to the galactic centre. Free flight re-anchors instead.
+  if(blendGalaxy&&focus!=='Galaxy'&&currentRange>M.LY*3000){const g=bodyPosition('Galaxy'),t=galaxyBlend(currentRange);result=result.map((v,i)=>v+(g[i]-v)*t);}return result;}
+ // Allocation-free: a body position in the scene (Earth-fixed) frame, km, relative to Earth. Used by the flight module every frame.
+ const frameElements=eqFrame.elements;
+ function scenePosition(id,out){
+  const p=id==='Galaxy'?galacticCentre:physical.positions[id];if(!p){out[0]=out[1]=out[2]=0;return out;}
+  const e=frameElements,x=p[0],y=p[1],z=p[2];out[0]=e[0]*x+e[4]*y+e[8]*z;out[1]=e[1]*x+e[5]*y+e[9]*z;out[2]=e[2]*x+e[6]*y+e[10]*z;return out;
+ }
 
- function update({distanceKm,now=performance.now(),onDemand=false}){
-  if(disposed)return null;currentRange=distanceKm;level=M.levelFor(distanceKm,focus);
-  if(Date.now()-lastEpoch>30000){lastEpoch=Date.now();frameMatrix(new Date());}
+ function update({distanceKm,nearKm=distanceKm,blend=true,live=false,fadeKm=distanceKm,date,simulated=false}={}){
+  if(disposed)return null;currentRange=distanceKm;blendGalaxy=blend;level=M.levelFor(distanceKm,focus);
+  const at=date instanceof Date?date:date?new Date(date):new Date();
+  const iso=Number.isFinite(at.getTime())?at.toISOString():'';
+  // The Earth-fixed frame turns with the Earth. While the camera is moving it is rebuilt every frame (about 0.2 ms), so bodies never step; at rest once a second. A simulated-time jump always rebuilds.
+  if(live||(simulated&&iso!==lastIso)||Date.now()-lastEpoch>1000){lastEpoch=Date.now();lastIso=iso;frameMatrix(at);}
   renderUnit=M.unitFor(distanceKm);const f=focusPosition(),origin=world(f),ratio=Math.min(devicePixelRatio||1,2);
   globe.position.copy(origin).multiplyScalar(-1/renderUnit);globe.scale.setScalar(M.EARTH_RADIUS/renderUnit);globe.visible=distanceKm<1e12;
   const earthNear=focus==='Earth'&&distanceKm<M.EARTH_RADIUS*65;
@@ -117,12 +128,14 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   orbitGroup.visible=distanceKm>M.AU*.07&&distanceKm<M.AU*2000;
   if(orbitGroup.visible){ensureOrbits();orbitGroup.quaternion.setFromRotationMatrix(eqFrame);orbitGroup.position.copy(world(M.sub(physical.earthHelio.map(v=>-v),f))).multiplyScalar(1/renderUnit);orbitGroup.scale.setScalar(M.AU/renderUnit);}
   const sOrigin=world(M.sub(physical.positions.Sun,f)).multiplyScalar(1/renderUnit);groupStars.position.copy(sOrigin);groupStars.quaternion.setFromRotationMatrix(eqFrame);groupStars.scale.setScalar(M.PC/renderUnit);
-  groupStars.visible=starsCount>0&&distanceKm>M.LY*.025&&distanceKm<M.LY*8000;
-  starMaterial.uniforms.uRatio.value=ratio;starMaterial.uniforms.uOpacity.value=smooth(.025,.3,distanceKm/M.LY)*(1-smooth(1000,8000,distanceKm/M.LY));
+  groupStars.visible=starsCount>0&&fadeKm>M.LY*.025&&fadeKm<M.LY*8000;
+  starMaterial.uniforms.uRatio.value=ratio;starMaterial.uniforms.uOpacity.value=smooth(.025,.3,fadeKm/M.LY)*(1-smooth(1000,8000,fadeKm/M.LY));
   const centre=M.galToEq(M.SUN_GALACTIC.map(v=>-v*M.KPC));groupGalaxy.position.copy(world(M.sub(centre,f))).multiplyScalar(1/renderUnit);groupGalaxy.quaternion.setFromRotationMatrix(galFrame);groupGalaxy.scale.setScalar(M.KPC/renderUnit);
-  const galaxyFade=smooth(250,1800,distanceKm/M.LY);groupGalaxy.visible=galaxyFade>0;galMaterial.uniforms.uRatio.value=ratio;galMaterial.uniforms.uOpacity.value=galaxyFade*.28;disk.material.uniforms.uOpacity.value=galaxyFade;
-  sky.position.copy(camera.position);sky.scale.setScalar(Math.max(10,distanceKm/renderUnit*4));skyUniforms.uExposure.value=deepSky?.45:earthNear?.05:.07;skyUniforms.uOpacity.value=1-smooth(.05,.4,distanceKm/M.LY);
-  camera.near=Math.max(.00001,distanceKm/renderUnit*.0001);camera.far=Math.max(200,distanceKm/renderUnit*100);camera.updateProjectionMatrix();
+  const galaxyFade=smooth(250,1800,fadeKm/M.LY);groupGalaxy.visible=galaxyFade>0;galMaterial.uniforms.uRatio.value=ratio;galMaterial.uniforms.uOpacity.value=galaxyFade*.28;disk.material.uniforms.uOpacity.value=galaxyFade;
+  sky.position.copy(camera.position);sky.scale.setScalar(Math.max(10,distanceKm/renderUnit*4));skyUniforms.uExposure.value=deepSky?.45:earthNear?.05:.07;skyUniforms.uOpacity.value=1-smooth(.05,.4,fadeKm/M.LY);
+  // The far plane follows the range; the near plane follows the altitude above the nearest surface (a quarter of it), but never
+  // closer than 1e-7 of the far plane, so the depth buffer keeps its precision from the Earth floor out to the galaxy.
+  const far=Math.max(200,distanceKm/renderUnit*100);camera.far=far;camera.near=Math.min(Math.max(nearKm/renderUnit*.25,far*1e-7),distanceKm/renderUnit*.05);camera.updateProjectionMatrix();
   return{distanceWorld:distanceKm/renderUnit,level,focus,unit:renderUnit,range:distanceKm,skyReady:!!skyMap,skyVisible:skyUniforms.uOpacity.value>0,starsCount,galaxyCount,model:level==='galaxy',at:physical.at,focusRadius:M.BODIES.find(b=>b.id===focus)?.radius||M.EARTH_RADIUS,failures:[...failures]};
  }
  const LY_LIMIT=M.LY*3;
@@ -139,11 +152,20 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   }
   onLabels(out);
  }
- function setFocus(value){flightFrom=null;flightMix=1;if(value!=='Galaxy'&&!M.BODIES.some(b=>b.id===value))return;focus=value;requestBody(value);}
+ // Nearest body to a screen point (within its disc or 28 px of its centre), for tap-to-travel. Not a hot path.
+ function pickBody(clientX,clientY){
+  const rect=renderer.domElement.getBoundingClientRect(),f=focusPosition(),forward=camera.getWorldDirection(new THREE.Vector3());let best=null,bestScore=Infinity;
+  for(const b of M.BODIES){const p=world(M.sub(physical.positions[b.id],f)).multiplyScalar(1/renderUnit),rel=p.clone().sub(camera.position),depth=rel.dot(forward);if(depth<=0)continue;
+   const c=p.clone().project(camera),x=(c.x+1)/2*rect.width+rect.left,y=(1-c.y)/2*rect.height+rect.top;
+   const discPx=Math.atan((b.radius/renderUnit)/depth)/Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*rect.height/2,reach=Math.max(28,discPx),d=Math.hypot(clientX-x,clientY-y);
+   if(d<=reach&&d/reach<bestScore){bestScore=d/reach;best=b.id;}}
+  return best;
+ }
+ function setFocus(value){if(value===focus)return;if(value!=='Galaxy'&&!M.BODIES.some(b=>b.id===value))return;focus=value;requestBody(value);}
  function recommendedOrbit(galactic=false){
   let normal;if(galactic||focus==='Galaxy')normal=world(M.galToEq([0,0,1]));else{const eclipticPole=[0,-.3977771559,.9174820621];normal=world(eclipticPole);}
   normal.normalize();const side=new THREE.Vector3(1,.2,.4).cross(normal).normalize();const direction=normal.multiplyScalar(.8).addScaledVector(side,.65).normalize();const look=new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),world(M.galToEq([0,0,1])).normalize());return new THREE.Quaternion().setFromRotationMatrix(look);
  }
  function dispose(){if(disposed)return;disposed=true;fetchAbort.abort();root.removeFromParent();sky.removeFromParent();for(const t of textures.values())t.dispose();black.dispose();root.traverse(o=>{if(o.geometry!==plane)o.geometry?.dispose();if(o.material&&o.material!==orbitMaterial)o.material.dispose();});plane.dispose();orbitMaterial.dispose();sky.geometry.dispose();sky.material.dispose();}
- return{update,labels,setFocus,beginFlight(id){const p=focusPosition();const end=bodyPosition(id);const separation=M.length(M.sub(p,end));flightFrom=p;flightMix=0;focus=id;requestBody(id);return separation;},setFlightMix(t){flightMix=t;if(t>=1)flightFrom=null;},recommendedOrbit,getFocus:()=>focus,getState:()=>({focus,level,range:currentRange,starsCount,galaxyCount,skyReady:!!skyMap,surfaces:[...system].filter(([,row])=>row.uniforms.uHasMap.value).map(([id])=>id),ringsReady:!!ring.material.map,at:physical.at,failures:[...failures]}),setDeepSky(value){deepSky=!!value;},dispose};
+ return{update,labels,setFocus,prepare:requestBody,scenePosition,bodyList:()=>[...M.BODIES.map(b=>({id:b.id,radius:b.radius})),{id:'Galaxy',radius:M.KPC,skipOffer:true}],pickBody,recommendedOrbit,getFocus:()=>focus,getState:()=>({focus,level,range:currentRange,starsCount,galaxyCount,skyReady:!!skyMap,surfaces:[...system].filter(([,row])=>row.uniforms.uHasMap.value).map(([id])=>id),ringsReady:!!ring.material.map,at:physical.at,failures:[...failures]}),setDeepSky(value){deepSky=!!value;},dispose};
 }
