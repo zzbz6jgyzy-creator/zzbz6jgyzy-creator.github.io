@@ -548,6 +548,8 @@ export async function initEarth(options = {}) {
     const estimateUnit=distanceKm<2e7?EARTH_KM:distanceKm<LY_KM*.08?AU_KM:distanceKm<LY_KM*800?LY_KM:LY_KM*3261.563777;
     const distance=distanceKm/estimateUnit;
     if(!closeSeen&&focusBody==='Earth'&&distanceKm-EARTH_KM<CLOSE_DETAIL_ALTITUDE_KM&&ready){closeSeen=true;if(quality==='auto'&&tierFor('auto')!==appliedTier)void setQuality('auto');}
+    // Keep the selection marker the same angular size when the camera is close (it is 45 km wide at scale 1).
+    marker.scale.setScalar(estimateUnit===EARTH_KM?clamp((distance-1)/2.3,.03,1):1);
     camera.position.set(0,0,distance).applyQuaternion(cameraOrbit);
     camera.up.set(0,1,0).applyQuaternion(cameraOrbit);camera.lookAt(0,0,0);
     yaw=Math.atan2(camera.position.x,camera.position.z);pitch=Math.asin(clamp(camera.position.y/distance,-1,1));

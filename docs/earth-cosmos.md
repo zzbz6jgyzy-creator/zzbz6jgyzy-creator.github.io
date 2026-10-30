@@ -124,6 +124,7 @@ orbital altitude.
 - Soft approach: `easeToAltitudeFloor()`. Inside the last 1,500 km the remaining margin can at most halve per input step, so the camera glides in geometrically and snaps exactly on the floor under 0.5 km. It is monotone: no overshoot, no bounce, no jitter. Zooming out is never eased.
 - At the floor the camera is at about 1.063 Earth radii. The near plane is derived from the distance (also before the cosmos module loads) so the surface is not clipped.
 - Detail: once the camera is under 3,000 km, Auto asks for the sharpest tier the device allows (8K, or 4K on low-memory devices; save-data keeps the lower tier), then keeps it. The 4K terrain normal map and ocean mask are already loaded. Source limits still apply: the 8K surface is about 5 km per texel and the live cloud frame about 20 km.
+- The selection marker is scaled with distance so it stays a small dot at the floor (it is 45 km wide at scale 1).
 - The place picker still exists: choosing a place (or the card's "Fly to this place") turns the globe to it and eases to 2,500 km altitude. It opens nothing else.
 
 ## Earth lighting model (stage 2)
