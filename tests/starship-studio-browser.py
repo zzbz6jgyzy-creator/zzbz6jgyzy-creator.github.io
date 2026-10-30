@@ -4,6 +4,8 @@ from urllib.parse import urlparse
 from playwright.async_api import async_playwright
 ROOT=pathlib.Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=pathlib.Path(os.environ.get('STARSHIP_SCREENSHOTS','/tmp/starship-observatory'));OUT.mkdir(parents=True,exist_ok=True);KEY='sd-starship-observatory-v1'
 DATA=json.loads((ROOT/'data/starship-studio.json').read_text())
+# The planning date shown is the next flight's reference date; read it from the data so a schedule change doesn't break the test.
+import datetime as _dt;_r=_dt.date.fromisoformat(DATA['next']['referenceDate']);PLAN_DATE=f"{_r.day} {_r.strftime('%b')} {_r.year}"
 async def main():
  async with async_playwright()as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH')or shutil.which('google-chrome')or shutil.which('chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
@@ -70,6 +72,6 @@ async def main():
     if mode=='storage-blocked':
      await page.locator('.ss-flight>summary').click();await page.locator('#ss-save-flight').click();assert 'visit only'in await page.locator('#ss-flight-status').inner_text()
    assert not errors,(mode,errors);assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),mode;await c.close()
-  c,page,errors,_=await context(timezone='Pacific/Kiritimati');await page.locator('.ss-nav [data-view=next]').click();assert '8 Nov 2026'in await page.locator('.ss-planning-date').inner_text();assert 'Awaiting'in await page.locator('#ss-clock-label').inner_text();await c.close();print('PASS: failed/older/malformed sources, blocked storage, malformed preferences, readable no/blocked-JS page, calendar-date timezone and unconfirmed timing',flush=True)
+  c,page,errors,_=await context(timezone='Pacific/Kiritimati');await page.locator('.ss-nav [data-view=next]').click();assert PLAN_DATE in await page.locator('.ss-planning-date').inner_text(),PLAN_DATE;assert 'Awaiting'in await page.locator('#ss-clock-label').inner_text();await c.close();print('PASS: failed/older/malformed sources, blocked storage, malformed preferences, readable no/blocked-JS page, calendar-date timezone and unconfirmed timing',flush=True)
   await browser.close()
 asyncio.run(main())
