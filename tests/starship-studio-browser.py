@@ -17,6 +17,9 @@ async def main():
    await c.add_init_script(init);page=await c.new_page();errors=[];requests=[];page.on('pageerror',lambda err:errors.append(str(err)));page.on('request',lambda req:requests.append(req.url))
    async def route(r):
     u=urlparse(r.request.url)
+    # Mock the consent-gated embed. Aborting it leaves an opaque frame, and Chromium then throws
+    # "Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
+    if u.hostname=='www.youtube-nocookie.com':return await r.fulfill(body='<html><body>Mock official player</body></html>',content_type='text/html')
     if u.hostname!='superchargeddaily.com':return await r.abort()
     if u.path.endswith('.mp4'):return await r.abort()
     if mode=='blocked-js'and'/starship.bundle.'in u.path:return await r.abort()
