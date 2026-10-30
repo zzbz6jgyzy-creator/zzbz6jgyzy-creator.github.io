@@ -27,7 +27,7 @@ for(const [w,h] of [[1440,900],[390,844],[280,1000]]){
 console.log('Current ephemerides, lunar orientation, IAU galactic axes, physical scales and bounded galaxy model verified.');
 
 // Immersive viewer structure (stage 1): intro overlay, HUD, slide-out panel, hooks the script relies on.
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 const html = readFileSync(new URL('../mission-control.html', import.meta.url), 'utf8');
 const js = readFileSync(new URL('../earth-preview.js', import.meta.url), 'utf8');
 const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
@@ -37,7 +37,7 @@ assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, 'exactly one h1');
 const hud = html.slice(html.indexOf('id="earth-hud"'), html.indexOf('id="cosmos-labels"'));
 for (const id of ['earth-motion', 'earth-fullscreen', 'earth-menu']) assert.ok(hud.includes('id="' + id + '"'), id + ' belongs in the HUD');
 const panel = html.slice(html.indexOf('<dialog class="earth-panel"'), html.indexOf('</dialog>', html.indexOf('<dialog class="earth-panel"')));
-for (const hook of ['data-earth-mode', 'data-earth-scale', 'data-earth-zoom', 'earth-reset', 'cosmos-deep-sky', 'earth-quality', 'earth-labels-toggle', 'earth-location', 'earth-explore', 'earth-utc', 'cosmos-distance', 'earth-weather-refresh', 'earth-about', 'ground-terrain', '/starship-replay.html', 'EUMETSAT', 'Brunier', 'OpenStreetMap', 'cosmos-sky-credit'])
+for (const hook of ['data-earth-scale', 'data-earth-zoom', 'earth-reset', 'cosmos-deep-sky', 'earth-quality', 'earth-labels-toggle', 'earth-location', 'earth-explore', 'earth-fly-here', 'earth-utc', 'cosmos-distance', 'earth-weather-refresh', 'earth-about', '/starship-replay.html', 'EUMETSAT', 'Brunier', 'cosmos-sky-credit'])
   assert.ok(panel.includes(hook), hook + ' must be in the panel');
 assert.ok(!html.includes('earth-copy') && !html.includes('earth-controls') && !html.includes('earth-bottom'), 'no text or dock layers over the canvas');
 assert.ok(/<div class="earth-intro-overlay" id="earth-intro" role="dialog" aria-modal="true"/.test(html) && html.includes('id="earth-enter"'), 'intro overlay with Enter');
@@ -46,4 +46,22 @@ assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
 for (const m of html.matchAll(/(?:earth-[a-z-]+\.(?:js|css)|\/earth-[a-z-]+\.js)\?v=([\w-]+)/g)) assert.equal(m[1], '20261030-noground1', 'consistent ?v= token');
+// No ground mode: owner decision 30 Oct 2026. Nothing for the street map may come back.
+for (const banned of ['ground-stage', 'ground-map', 'data-earth-mode', 'earth-return', 'earth-ground-open', 'ground-terrain', 'ground-buildings', 'earth-satellite', 'maplibre', 'openfreemap', 'openstreetmap', 'OpenMapTiles'])
+  assert.ok(!html.toLowerCase().includes(banned.toLowerCase()) && !js.toLowerCase().includes(banned.toLowerCase()), banned + ' must not appear in the page or its script');
+for (const gone of ['earth-ground.js', 'vendor/maplibre']) assert.ok(!existsSync(new URL('../' + gone, import.meta.url)), gone + ' was removed');
+// Zoom floor: one named constant, a soft approach and a hard guarantee.
+assert.equal(M.MIN_ORBIT_ALTITUDE_KM, 400, 'floor is a realistic low orbit (ISS ~400 km)');
+{
+  let alt = 20000;
+  for (let i = 0; i < 200; i++) { alt = M.easeToAltitudeFloor(alt, alt - 900); assert.ok(alt >= M.MIN_ORBIT_ALTITUDE_KM, 'never below the floor: ' + alt); }
+  assert.equal(alt, M.MIN_ORBIT_ALTITUDE_KM, 'repeated zoom-in settles exactly on the floor');
+  assert.equal(M.easeToAltitudeFloor(400, -5000), 400); assert.equal(M.easeToAltitudeFloor(400, 100), 400);
+  assert.equal(M.easeToAltitudeFloor(5000, 8000), 8000, 'zooming out is not eased');
+  // Approach is monotone and geometric: no overshoot, no oscillation.
+  let a = 1000, last = a; for (let i = 0; i < 12; i++) { a = M.easeToAltitudeFloor(a, 0); assert.ok(a <= last && a >= 400); last = a; }
+  assert.ok(M.easeToAltitudeFloor(1000, 900) === 900, 'ordinary steps well above the floor are untouched');
+}
+const rend = readFileSync(new URL('../earth-renderer.js', import.meta.url), 'utf8');
+assert.ok(rend.includes('MIN_ORBIT_ALTITUDE_KM') && rend.includes('earthMaxZoom'), 'renderer enforces the floor');
 console.log('Immersive viewer structure, hooks, credits-in-panel and session/label persistence verified.');

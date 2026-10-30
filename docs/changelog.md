@@ -1,3 +1,10 @@
+## 2026-10-30 — Earth explorer: Ground mode removed, 400 km zoom floor
+
+- Removed the Space/Ground toggle, the MapLibre street/terrain map, `earth-ground.js`, `vendor/maplibre` (1.6 MB), the map-layer switches, "Back to Earth", "Explore the streets", the Google Maps satellite link, the zoom-below-level-3 handoff and the OpenFreeMap/OpenStreetMap credits. The page no longer talks to any map or tile host.
+- The camera cannot get closer than 400 km above the surface (`MIN_ORBIT_ALTITUDE_KM`, like the ISS). It eases in over the last 1,500 km and never crosses the floor by wheel, pinch, keys, buttons or fly-to. Auto detail goes to the sharpest tier when close.
+- The place picker stays: it flies the globe to the place. Featured places copy now says "seen from about 400 km up".
+- `?v=` tokens are now `20261030-noground1` (mission-control.html, dynamic imports, starship-replay-renderer.js).
+
 ## 2026-10-30 — Earth explorer: physically based lighting (stage 2)
 
 - Atmosphere rewritten as Rayleigh + Mie single scattering with Chapman-function optical depth: a thick blue limb by day, orange along the sunset terminator, black at night, no ring edge. The shell draws only the limb; haze over the planet is added in linear light inside the surface and cloud shaders. Steps follow the tier (2K 4, 4K 6, 8K/16K 10).

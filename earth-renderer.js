@@ -605,9 +605,14 @@ export async function initEarth(options = {}) {
     if (running() && !raf) { lastTime = 0; lastRender = 0; raf = requestAnimationFrame(frame); }
     else if (!running() && raf) { cancelAnimationFrame(raf); raf = 0; }
   }
+  // Input bursts (wheel, pinch, key repeat) can arrive faster than a frame; the close-up globe fills the screen, so a
+  // synchronous full render per event is wasteful. Coalesce to one draw per animation frame.
+  let demandFrame = 0;
   function renderDemand() {
     if(paused)sun.copy(targetSun);
-    draw(); schedule(); notify();
+    schedule();
+    if(demandFrame||disposed)return;
+    demandFrame=requestAnimationFrame(()=>{demandFrame=0;if(disposed)return;draw();notify();});
   }
   function resize() {
     const bounds = canvas.getBoundingClientRect();
@@ -800,7 +805,7 @@ export async function initEarth(options = {}) {
   }
   function setActive(active) {visible=!!active; schedule(); if(visible) renderDemand();}
   function dispose() {
-    if (disposed) return; disposed = true;cosmos?.dispose(); qualityToken++; weatherToken++; observedCloud?.dispose(); if (raf) cancelAnimationFrame(raf);
+    if (disposed) return; disposed = true;cosmos?.dispose(); qualityToken++; weatherToken++; observedCloud?.dispose(); if (raf) cancelAnimationFrame(raf);if(demandFrame)cancelAnimationFrame(demandFrame);
     resizeObserver.disconnect(); intersectionObserver?.disconnect(); cleanups.forEach(fn => fn());
     for (const map of Object.values(maps)) map?.dispose(); black.dispose();
     scene.traverse(object => { object.geometry?.dispose(); if (object.material) (Array.isArray(object.material) ? object.material : [object.material]).forEach(m => m.dispose()); });
