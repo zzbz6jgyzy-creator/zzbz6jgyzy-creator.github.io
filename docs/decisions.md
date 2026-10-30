@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-30 · Vendor MotionSites and elephant/goldfish as project files
+
+- **Decision:** install both as committed project skills/commands, not as user-global plugins or an npm CLI on the container.
+- **Why:** cloud sessions do not load Claude plugins, and this repo already vendors `.claude/skills/`. Cursor discovers `.cursor/skills/`. Elephant/goldfish's official Cursor bootstrap writes customized `/eg-*` skills plus a CLAUDE.md/AGENTS.md snippet; MotionSites' official manual install is "copy the skill folder".
+- **Rejected:** `npx motionsites` as the only install (that CLI pulls individual slugs; the user asked for Motionsites the skill). Google's `elephant-goldfish-model` plugin (different product; no Cursor harness). User-only `~/.claude/skills/` (dies with the session).
+- **Licence:** MotionSites instructions/scripts are MIT and are committed. `examples/` and `media/` remain © MotionSites ("may not redistribute as a prompt or media collection"). This repo is also the public GitHub Pages source, so those two folders are gitignored and fetched locally with `scripts/fetch-motionsites-shelf.sh`. Elephant/goldfish templates are customized for this static-site stack. We do not duplicate the Motionsites tree under `.cursor/skills/` — Cursor already reads `.claude/skills/`.
+
 ## 2026-10-30 · Earth explorer: a simulated UTC clock, clouds stay live
 
 - **Decision:** time is a separate module (`earth-time.js`), like the flight camera. Live follows the wall clock. Speeds, reverse, a picked date and eclipse jumps are simulated UTC. Existing Pause still only stops the camera.
@@ -147,7 +154,7 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 - **Why:** “newest build reporting” means the later point release, not whichever row Teslascope logged a few minutes later. The software tracker already compared versions this way.
 
 ## 2026-10-26 · Claude Code project setup (agents, commands, hooks, skills)
-- **Decision:** five subagents (`designer`, `frontend`, `seo`, `reviewer`, `content-ops`), six slash commands, three hooks, two skills and
+- **Decision:** five subagents (`designer`, `frontend`, `seo`, `reviewer`, `content-ops`), six slash commands (later plus five `/eg-*` commands), three hooks, two skills (later plus MotionSites) and
   two rules files live in `.claude/`; helper scripts in `scripts/audit/`, `scripts/new-article.py`, `scripts/newsletter-draft.py`.
   Details in `docs/claude-code-setup.md`.
 - **Why:** repeatable work (publishing, auditing, shipping) should be one command from a phone session, and the mistakes this

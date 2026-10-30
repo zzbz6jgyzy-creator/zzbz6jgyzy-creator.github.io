@@ -44,24 +44,47 @@ class Definitions(unittest.TestCase):
 
     def test_commands(self):
         names = {p.stem for p in (CLAUDE / "commands").glob("*.md")}
-        self.assertEqual(names, {"new-article", "new-review", "audit-page", "screenshot", "newsletter-draft", "ship"})
+        self.assertEqual(names, {
+            "new-article", "new-review", "audit-page", "screenshot", "newsletter-draft", "ship",
+            "eg-brainstorm", "eg-prd", "eg-fix-bug", "eg-new-feature", "eg-precommit-review",
+        })
         for p in (CLAUDE / "commands").glob("*.md"):
             fm, body = frontmatter(p)
             self.assertIn("description", fm, p)
             self.assertIn("$ARGUMENTS", body, p)
+            if p.stem.startswith("eg-"):
+                self.assertNotIn("[BOOTSTRAP:", body, p)
 
     def test_skills(self):
-        for name in ("build-tracker", "review-page"):
+        for name in ("build-tracker", "review-page", "motionsites-web-builder"):
             fm, body = frontmatter(CLAUDE / "skills" / name / "SKILL.md")
             self.assertEqual(fm["name"], name)
             self.assertGreater(len(fm["description"]), 60)
+        self.assertTrue((CLAUDE / "skills" / "motionsites-web-builder" / "LICENSE").exists())
+        self.assertTrue((CLAUDE / "skills" / "motionsites-web-builder" / "scripts" / "shoot.py").exists())
+
+    def test_cursor_elephant_goldfish_skills(self):
+        root = ROOT / ".cursor" / "skills"
+        for name in ("eg-brainstorm", "eg-prd", "eg-fix-bug", "eg-new-feature", "eg-precommit-review"):
+            fm, body = frontmatter(root / name / "SKILL.md")
+            self.assertEqual(fm["name"], name)
+            self.assertEqual(fm.get("disable-model-invocation"), "true")
+            self.assertNotIn("[BOOTSTRAP:", body)
+        self.assertFalse((root / "motionsites-web-builder").exists())
 
     def test_every_referenced_path_exists(self):
         """Backticked repo paths in the setup files must exist, or the instructions are lying."""
         files = list(CLAUDE.rglob("*.md")) + [ROOT / "docs" / "claude-code-setup.md"]
+        skip_vendored = CLAUDE / "skills" / "motionsites-web-builder"
         missing = []
         for f in files:
             if not f.exists():
+                continue
+            try:
+                f.relative_to(skip_vendored)
+            except ValueError:
+                pass
+            else:
                 continue
             for ref in re.findall(r"`((?:scripts|tests|data|docs|\.claude|\.github)/[\w./*-]+?\.(?:py|mjs|js|json|md|yml|sh))`", f.read_text(encoding="utf-8")):
                 if "*" in ref or "<" in ref or ref in PENDING:
