@@ -13,6 +13,22 @@ assert.ok(M.BODIES.some(b=>b.id==='Pluto'&&!b.texture)&&M.BODIES.some(b=>b.paren
 assert.equal(M.satelliteVisible({parent:'Jupiter'},{focus:'Sun',rangeToParentKm:M.AU,parentRadius:69911}),false);
 assert.equal(M.satelliteVisible({id:'Io',parent:'Jupiter'},{focus:'Jupiter',rangeToParentKm:69911*6.5,parentRadius:69911}),true);
 assert.equal(M.satelliteVisible({id:'Io',parent:'Jupiter'},{focus:'Io',rangeToParentKm:M.AU,parentRadius:69911}),true);
+{
+ const peak=new Date('2024-04-08T18:17:19Z'),solar=M.eclipseShadows(peak).solar;
+ assert.equal(solar.kind,'total');assert.ok(solar.r<M.EARTH_RADIUS);assert.ok(solar.k>20&&solar.k<120);
+ const moon=M.toEarthFixed(solar.moon,peak),sun=M.toEarthFixed(solar.sun,peak),dir=M.sub(moon,sun);
+ const d2=dir.reduce((n,v)=>n+v*v,0),B=2*moon.reduce((n,v,i)=>n+v*dir[i],0),C=moon.reduce((n,v)=>n+v*v,0)-M.EARTH_RADIUS**2;
+ const t=(-B-Math.sqrt(B*B-4*d2*C))/(2*d2),hit=moon.map((v,i)=>v+t*dir[i]);
+ const lat=Math.asin(hit[1]/M.length(hit))*180/Math.PI,lon=Math.atan2(-hit[2],hit[0])*180/Math.PI;
+ assert.ok(Math.abs(lat-25.3)<0.5&&Math.abs(lon+104.1)<0.5,'8 Apr 2024 umbra over Mexico, not the pole: '+lat+' '+lon);
+ assert.equal(M.eclipseShadows(peak).lunar.kind,'none','a solar eclipse is not also a lunar eclipse');
+ const lunarAt=new Date('2025-03-14T06:59:00Z'),lunar=M.eclipseShadows(lunarAt).lunar;
+ assert.equal(lunar.kind,'total');assert.ok(lunar.r+1737.4<lunar.k);
+ assert.equal(M.eclipseShadows(lunarAt).solar.kind,'none','a lunar eclipse is not also a solar eclipse');
+ const quiet=M.eclipseShadows(new Date('2026-10-29T00:00:00Z'));
+ assert.equal(quiet.solar.kind,'none');assert.equal(quiet.lunar.kind,'none');
+ assert.equal(e.shadows.solar.kind,'none');
+}
 assert.ok(e.moonPhase>=0&&e.moonPhase<360);
 // IAU Galactic-centre sight line: RA 266.4051°, Dec −28.936175°.
 const a=266.4051*Math.PI/180,b=-28.936175*Math.PI/180;
@@ -58,7 +74,7 @@ assert.ok(html.includes("sessionStorage.getItem('sd-earth-intro')") && js.includ
 assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes("localStorage.getItem('sd-earth-labels')"), 'label choice persists');
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
-const TOKEN = '20261030-bodies1';
+const TOKEN = '20261030-eclipse1';
 for (const file of ['mission-control.html', 'earth-preview.js', 'earth-renderer.js', 'earth-cosmos.js', 'earth-weather.js', 'starship-replay-renderer.js']) {
   const text = file === 'mission-control.html' ? html : readFileSync(new URL('../' + file, import.meta.url), 'utf8');
   const hits = [...text.matchAll(/earth-[a-z0-9.-]+\.(?:js|css)\?v=([\w-]+)/g)];
@@ -90,6 +106,8 @@ const timeSrc = readFileSync(new URL('../earth-time.js', import.meta.url), 'utf8
 assert.ok(!timeSrc.includes("from './vendor/astronomy") && timeSrc.includes("import('./vendor/astronomy/astronomy.js')"), 'Astronomy Engine loads only for eclipse jumps');
 const cosmosSrc = readFileSync(new URL('../earth-cosmos.js', import.meta.url), 'utf8');
 assert.ok(cosmosSrc.includes('glowSize') && cosmosSrc.includes('new THREE.Points(glowGeo'), 'unresolved worlds keep a glow sprite');
+assert.ok(cosmosSrc.includes('uShOn') && cosmosSrc.includes('MultiplyBlending') && cosmosSrc.includes('earthEclipse'), 'eclipse umbra and penumbra are drawn');
 assert.ok(html.includes('Ceres is omitted') && html.includes('colour spheres') && html.includes('no sourced surface map is loaded'), 'about copy names the sourced bodies and the missing Ceres ephemeris');
+assert.ok(html.includes('umbra and penumbra') && html.includes('88 km atmosphere'), 'about copy names the sourced eclipse shadows');
 assert.ok(!M.BODIES.filter(b=>b.parent).some(b=>/Astronomy Engine has no surface/.test(b.description)), 'moon copy does not blame the ephemeris library for maps');
 console.log('Immersive viewer structure, hooks, credits-in-panel and session/label persistence verified.');

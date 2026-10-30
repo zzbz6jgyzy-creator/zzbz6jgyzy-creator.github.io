@@ -1,3 +1,10 @@
+## 2026-10-30 — Earth explorer: eclipse umbra and penumbra
+
+- Solar eclipses draw the Moon’s umbra and penumbra on Earth (multiply overlay on the globe and clouds). Lunar eclipses tint the Moon in Earth’s shadow, with a copper umbra.
+- Geometry is Astronomy Engine’s internal `CalcShadow` cone: light-time `GeoVector(Sun)` and `GeoMoon`, IAU radii, and the library’s 88 km atmosphere on lunar umbras. Verified on 8 Apr 2024 (total solar) and 14 Mar 2025 (total lunar).
+- Provenance chip adds “Moon’s shadow” / “Earth’s shadow” when those discs are active. Clouds stay the live frame and stay labelled not-for-this-time.
+- `?v=` tokens are now `20261030-eclipse1`.
+
 ## 2026-10-30 — Earth explorer: Pluto, Galilean moons, glow sprites
 
 - Pluto (Astronomy Engine `HelioVector`) and Jupiter’s Io, Europa, Ganymede and Callisto (`JupiterMoons`) join the Solar System view. Galilean mean radii come from the engine (JPL SSD figures); Pluto’s 1,188.3 km mean radius is the NASA/New Horizons figure.

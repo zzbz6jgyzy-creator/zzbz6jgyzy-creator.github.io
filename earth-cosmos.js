@@ -1,15 +1,18 @@
 /* A floating-origin, physically scaled scene. The legacy Earth shaders stay shared with the replay; the explorer uses the physical ones. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import * as M from './earth-cosmos-model.js?v=20261030-bodies1';
-import {galaxyBlend} from './earth-flight.js?v=20261030-bodies1';
+import * as M from './earth-cosmos-model.js?v=20261030-eclipse1';
+import {galaxyBlend} from './earth-flight.js?v=20261030-eclipse1';
 const BASE='/assets/cosmos/';
 const matrixFromAxes=axes=>new THREE.Matrix4().makeBasis(...axes.map(v=>new THREE.Vector3(...v)));
 const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};
 const BODY_VERTEX=`varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){vUv=uv;vec4 p=modelMatrix*vec4(position,1.);vP=p.xyz;vN=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*p;}`;
-const BODY_FRAGMENT=`uniform sampler2D uMap;uniform float uHasMap;uniform vec3 uColor;uniform vec3 uSun;uniform float uEmissive;varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){vec3 base=mix(uColor,texture2D(uMap,vUv).rgb,uHasMap);float mu=max(0.,dot(normalize(vN),uSun));vec3 c=base*mix(.008+1.18*mu,1.15,uEmissive);gl_FragColor=vec4(c,1.);
+const BODY_FRAGMENT=`uniform sampler2D uMap;uniform float uHasMap;uniform vec3 uColor;uniform vec3 uSun;uniform float uEmissive;uniform float uShOn;uniform vec3 uShDir;uniform vec3 uShEarth;uniform float uShUmbra;uniform float uShPenumbra;varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){vec3 base=mix(uColor,texture2D(uMap,vUv).rgb,uHasMap);float mu=max(0.,dot(normalize(vN),uSun));vec3 c=base*mix(.008+1.18*mu,1.15,uEmissive);if(uShOn>0.5){vec3 d=vP-uShEarth;float along=dot(d,uShDir);if(along>0.){vec3 perp=d-uShDir*along;float r=length(perp);float f=r<uShUmbra?.18:r<uShPenumbra?mix(.18,1.,smoothstep(uShUmbra,uShPenumbra,r)):1.;c=mix(c*vec3(1.15,.45,.22)*.4,c,f);}}gl_FragColor=vec4(c,1.);
 #include <tonemapping_fragment>
 #include <colorspace_fragment>
 }`;
+const ECLIPSE_VERTEX=`varying vec3 vN;void main(){vN=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
+const ECLIPSE_FRAGMENT=`varying vec3 vN;uniform vec3 uMoon;uniform vec3 uSun;uniform float uOn;
+void main(){if(uOn<0.5)discard;vec3 P=normalize(vN),dir=uMoon-uSun,target=P-uMoon;float d2=dot(dir,dir);if(d2<1e-12)discard;float u=dot(dir,target)/d2;if(u<=0.||dot(P,normalize(uSun))<=0.)discard;float r=length(u*dir-target);float sunR=109.1986,moonR=0.2727;float k=sunR-(1.+u)*(sunR-moonR),p=-sunR+(1.+u)*(sunR+moonR);float core=max(abs(k),0.);float f=1.;if(r<core&&k>0.)f=.12;else if(r<core&&k<=0.)f=.22;else if(r<p)f=mix(k>0.?.12:.22,1.,smoothstep(core,p,r));if(f>.985)discard;gl_FragColor=vec4(f,f,f,1.);}`;
 const POINT_VERTEX=`attribute float aSize;varying vec3 vColor;uniform float uRatio;void main(){vColor=color;vec4 p=modelViewMatrix*vec4(position,1.);gl_Position=projectionMatrix*p;gl_PointSize=aSize*uRatio;}`;
 const POINT_FRAGMENT=`varying vec3 vColor;uniform float uOpacity;void main(){float d=length(gl_PointCoord-.5)*2.;if(d>1.)discard;float core=exp(-d*d*13.);float halo=exp(-d*d*3.)*.16;gl_FragColor=vec4(vColor*(core+halo),uOpacity*(core+halo));
 #include <colorspace_fragment>
@@ -45,12 +48,15 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  let galaxy,skyMap,blendGalaxy=true,galacticCentre=[0,0,0];
  const grey=new THREE.Color('#bdc9d0');
  for(const b of M.BODIES){if(b.id==='Earth')continue;
-  const uniforms={uMap:{value:black},uHasMap:{value:0},uColor:{value:new THREE.Color(b.color)},uSun:{value:new THREE.Vector3(1,0,0)},uEmissive:{value:b.id==='Sun'?1:0}};
+  const uniforms={uMap:{value:black},uHasMap:{value:0},uColor:{value:new THREE.Color(b.color)},uSun:{value:new THREE.Vector3(1,0,0)},uEmissive:{value:b.id==='Sun'?1:0},uShOn:{value:0},uShDir:{value:new THREE.Vector3(0,1,0)},uShEarth:{value:new THREE.Vector3()},uShUmbra:{value:0},uShPenumbra:{value:0}};
   const mesh=new THREE.Mesh(plane,new THREE.ShaderMaterial({vertexShader:BODY_VERTEX,fragmentShader:BODY_FRAGMENT,uniforms}));mesh.name=b.id;groupSolar.add(mesh);system.set(b.id,{body:b,mesh,uniforms});
  }
  const ring=new THREE.Mesh(new THREE.RingGeometry(1.24,2.32,160),new THREE.MeshBasicMaterial({color:'#c8b58e',side:THREE.DoubleSide,transparent:true,opacity:.72,depthWrite:false}));
  const ringUV=ring.geometry.getAttribute('uv'),rp=ring.geometry.getAttribute('position');for(let i=0;i<rp.count;i++)ringUV.setXY(i,(Math.hypot(rp.getX(i),rp.getY(i))-1.24)/(2.32-1.24),.5);
  ring.rotation.x=-Math.PI/2;system.get('Saturn').mesh.add(ring);
+ const earthEclipseUniforms={uMoon:{value:new THREE.Vector3()},uSun:{value:new THREE.Vector3(1,0,0)},uOn:{value:0}};
+ const earthEclipse=new THREE.Mesh(plane,new THREE.ShaderMaterial({vertexShader:ECLIPSE_VERTEX,fragmentShader:ECLIPSE_FRAGMENT,uniforms:earthEclipseUniforms,transparent:true,depthWrite:false,blending:THREE.MultiplyBlending,toneMapped:false}));
+ earthEclipse.scale.setScalar(1.011);earthEclipse.renderOrder=3;earthEclipse.frustumCulled=false;globe.add(earthEclipse);
  const glowNames=['Earth',...system.keys()],glowN=glowNames.length,glowPos=new Float32Array(glowN*3),glowCol=new Float32Array(glowN*3),glowSize=new Float32Array(glowN);
  glowNames.forEach((id,i)=>{const c=new THREE.Color(id==='Earth'?'#a9deef':system.get(id).body.color);glowCol.set([c.r,c.g,c.b],i*3);});
  const glowGeo=new THREE.BufferGeometry();glowGeo.setAttribute('position',new THREE.BufferAttribute(glowPos,3));glowGeo.setAttribute('color',new THREE.BufferAttribute(glowCol,3));glowGeo.setAttribute('aSize',new THREE.BufferAttribute(glowSize,1));
@@ -141,6 +147,19 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
    glowSize[i]=disc<10?Math.max(4,12-disc*.6):0;
   }
   glowGeo.attributes.position.needsUpdate=true;glowGeo.attributes.aSize.needsUpdate=true;
+  const sh=physical.shadows,moonRow=system.get('Moon');
+  if(moonRow){
+   const lu=sh?.lunar,on=!!lu?.active;
+   moonRow.uniforms.uShOn.value=on?1:0;
+   if(on){moonRow.uniforms.uShDir.value.copy(world(lu.dir).normalize());moonRow.uniforms.uShEarth.value.copy(globe.position);moonRow.uniforms.uShUmbra.value=Math.max(lu.k,0)/renderUnit;moonRow.uniforms.uShPenumbra.value=Math.max(lu.p,0)/renderUnit;}
+  }
+  const so=sh?.solar,earthOn=!!so?.active&&distanceKm<M.AU*2;
+  earthEclipse.visible=earthOn;earthEclipseUniforms.uOn.value=earthOn?1:0;
+  if(earthOn){
+   const at=new Date(physical.at),moonEf=M.toEarthFixed(so.moon,at),sunEf=M.toEarthFixed(so.sun,at);
+   earthEclipseUniforms.uMoon.value.set(moonEf[0]/M.EARTH_RADIUS,moonEf[1]/M.EARTH_RADIUS,moonEf[2]/M.EARTH_RADIUS);
+   earthEclipseUniforms.uSun.value.set(sunEf[0]/M.EARTH_RADIUS,sunEf[1]/M.EARTH_RADIUS,sunEf[2]/M.EARTH_RADIUS);
+  }
   glows.visible=level!=='earth'&&level!=='moon'&&distanceKm<M.LY*.5;
   orbitGroup.visible=distanceKm>M.AU*.07&&distanceKm<M.AU*2000;
   if(orbitGroup.visible){ensureOrbits();orbitGroup.quaternion.setFromRotationMatrix(eqFrame);orbitGroup.position.copy(world(M.sub(physical.earthHelio.map(v=>-v),f))).multiplyScalar(1/renderUnit);orbitGroup.scale.setScalar(M.AU/renderUnit);}
@@ -188,6 +207,6 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   let normal;if(galactic||focus==='Galaxy')normal=world(M.galToEq([0,0,1]));else{const eclipticPole=[0,-.3977771559,.9174820621];normal=world(eclipticPole);}
   normal.normalize();const side=new THREE.Vector3(1,.2,.4).cross(normal).normalize();const direction=normal.multiplyScalar(.8).addScaledVector(side,.65).normalize();const look=new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),world(M.galToEq([0,0,1])).normalize());return new THREE.Quaternion().setFromRotationMatrix(look);
  }
- function dispose(){if(disposed)return;disposed=true;fetchAbort.abort();root.removeFromParent();sky.removeFromParent();for(const t of textures.values())t.dispose();black.dispose();root.traverse(o=>{if(o.geometry!==plane)o.geometry?.dispose();if(o.material&&o.material!==orbitMaterial)o.material.dispose();});plane.dispose();orbitMaterial.dispose();sky.geometry.dispose();sky.material.dispose();}
- return{update,labels,setFocus,prepare:requestBody,scenePosition,bodyList:()=>[...M.BODIES.map(b=>({id:b.id,radius:b.radius})),{id:'Galaxy',radius:M.KPC,skipOffer:true}],pickBody,recommendedOrbit,getFocus:()=>focus,getState:()=>({focus,level,range:currentRange,starsCount,galaxyCount,skyReady:!!skyMap,surfaces:[...system].filter(([,row])=>row.uniforms.uHasMap.value).map(([id])=>id),ringsReady:!!ring.material.map,at:physical.at,failures:[...failures]}),setDeepSky(value){deepSky=!!value;},dispose};
+ function dispose(){if(disposed)return;disposed=true;fetchAbort.abort();earthEclipse.removeFromParent();earthEclipse.material.dispose();root.removeFromParent();sky.removeFromParent();for(const t of textures.values())t.dispose();black.dispose();root.traverse(o=>{if(o.geometry!==plane)o.geometry?.dispose();if(o.material&&o.material!==orbitMaterial)o.material.dispose();});plane.dispose();orbitMaterial.dispose();sky.geometry.dispose();sky.material.dispose();}
+ return{update,labels,setFocus,prepare:requestBody,scenePosition,bodyList:()=>[...M.BODIES.map(b=>({id:b.id,radius:b.radius})),{id:'Galaxy',radius:M.KPC,skipOffer:true}],pickBody,recommendedOrbit,getFocus:()=>focus,getState:()=>({focus,level,range:currentRange,starsCount,galaxyCount,skyReady:!!skyMap,surfaces:[...system].filter(([,row])=>row.uniforms.uHasMap.value).map(([id])=>id),ringsReady:!!ring.material.map,at:physical.at,eclipse:{solar:physical.shadows?.solar.kind||'none',lunar:physical.shadows?.lunar.kind||'none'},failures:[...failures]}),setDeepSky(value){deepSky=!!value;},dispose};
 }
