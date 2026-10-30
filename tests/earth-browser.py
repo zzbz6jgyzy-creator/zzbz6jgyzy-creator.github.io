@@ -43,7 +43,7 @@ async def setup_route(ctx,mode='normal',cloud='fixture'):
 async def wake(page):
     await page.mouse.move(3,3);await page.mouse.move(6,9)
 async def hud_click(page,selector):
-    await wake(page);await page.locator(selector).click()
+    await wake(page);await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.hud==='active'");await page.locator(selector).click()
 async def open_panel(page):
     if not await page.evaluate("document.getElementById('earth-panel').open"):
         await hud_click(page,'#earth-menu');await expect(page.locator('#earth-panel')).to_be_visible()
@@ -55,7 +55,7 @@ async def panel_click(page,selector,keep=False):
     await open_panel(page);await page.locator(selector).click()
     if not keep:await close_panels(page)
 VISIBLE_TEXT="""()=>{const out=[];const root=document.querySelector('.earth-experience');const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
- while(w.nextNode()){const n=w.currentNode;if(!n.textContent.trim())continue;const e=n.parentElement;if(e.closest('script,style,noscript,.maplibregl-ctrl'))continue;
+ while(w.nextNode()){const n=w.currentNode;if(!n.textContent.trim())continue;const e=n.parentElement;if(e.closest('script,style,noscript,.maplibregl-ctrl,#earth-provenance,#cosmos-focus-name'))continue;
   if(!e.checkVisibility({opacityProperty:true,visibilityProperty:true}))continue;const r=e.getBoundingClientRect();if(r.width<=2||r.height<=2)continue;out.push(n.textContent.trim().slice(0,60));}
  return out;}"""
 async def assert_clean(page,name):
@@ -76,6 +76,7 @@ async def intro_check(page,name):
 
 HUD="document.querySelector('[data-earth-preview]').dataset.hud"
 async def hud_panel_checks(page):
+    await expect(page.locator('#earth-menu')).to_have_attribute('aria-expanded','false')
     await page.evaluate('document.activeElement?.blur()')
     await page.wait_for_function(HUD+"==='idle'",timeout=25000)
     await page.wait_for_function("parseFloat(getComputedStyle(document.getElementById('earth-hud')).opacity)<.05",timeout=5000)
@@ -144,11 +145,14 @@ async def main():
                     elif mode=='cloud-fail':
                         assert not (await page.evaluate('window.__earthWeather.getState()'))['available']
                         await expect(page.locator('#earth-weather-label')).to_contain_text('Illustrative')
+                        await expect(page.locator('#earth-provenance')).to_have_text('Illustrative clouds · live feed unavailable');await snapshot(page,name+'-chip')
                     elif mode=='context-loss':
                         await page.locator('#earth-canvas').evaluate("e=>e.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext()")
                         await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.state==='fallback'")
                     elif mode in ['normal','map-fail']:
-                        await assert_clean(page,name);await hud_panel_checks(page);await hud_click(page,'#earth-motion');await page.wait_for_function(STATE+'.paused')
+                        await assert_clean(page,name)
+                        assert await page.locator('#earth-provenance').is_hidden(),'Live Earth with a fresh frame needs no provenance chip'
+                        await hud_panel_checks(page);await hud_click(page,'#earth-motion');await page.wait_for_function(STATE+'.paused')
                         before=(await page.evaluate(STATE))['rotation'];await page.wait_for_timeout(200);assert (await page.evaluate(STATE))['rotation']==before
                         for view in ['daylight','night','live']:
                             await open_panel(page);await page.locator('#earth-about').click()

@@ -22,7 +22,7 @@
 .earth-brand{border-radius:50%}.earth-brand img{display:block;width:27px;height:27px}
 .earth-return{display:none;padding:0 14px 0 10px}[data-mode=ground] .earth-return{display:inline-flex}[data-mode=ground] #earth-motion{display:none}
 /* Opening screen */
-.earth-intro-overlay{position:absolute;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 50%,#05080d8c 0,#05080dd6 100%);transition:opacity .7s ease}
+.earth-intro-overlay{position:absolute;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 50%,#05080dc4 0,#05080de0 100%);transition:opacity .7s ease}
 .earth-intro-overlay.is-leaving{opacity:0;pointer-events:none}.earth-entered .earth-intro-overlay{display:none}
 .earth-intro-card{display:flex;flex-direction:column;align-items:center;max-width:560px;text-align:center;text-shadow:0 2px 25px #03060aa0}
 .earth-intro-wordmark{display:block;margin-bottom:34px;width:148px;height:auto}
@@ -32,7 +32,7 @@
 .earth-intro-card .earth-primary{min-width:200px;justify-content:center;font-size:14px;min-height:52px}
 .earth-intro-card .earth-instructions{margin-top:22px;max-width:40ch;font-size:11px;line-height:1.8;color:#a3b6c8}
 /* Transient status toasts */
-.earth-toasts{position:absolute;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:6;display:grid;gap:8px;justify-items:center;width:min(92vw,480px);pointer-events:none}
+.earth-toasts{position:absolute;left:50%;bottom:calc(max(20px,env(safe-area-inset-bottom)) + 32px);transform:translateX(-50%);z-index:6;display:grid;gap:8px;justify-items:center;width:min(92vw,480px);pointer-events:none}
 .earth-loading,.earth-note,#ground-status{margin:0;padding:9px 14px;border:1px solid var(--earth-line);border-radius:10px;background:#07101bdd;backdrop-filter:blur(12px);color:#c6d8e8;font-size:12px;line-height:1.5;text-align:center}
 .earth-loading{display:flex;align-items:center;gap:12px}.earth-loading p{margin:0;font-size:12px;color:#c6d8e8}.earth-loading-line{display:block;flex:none;width:44px;height:1px;background:linear-gradient(90deg,transparent,#a6d9ef,transparent);animation:earth-loading 1.9s ease-in-out infinite;transform-origin:left}[data-state=ready] .earth-loading,[data-state=fallback] .earth-loading{display:none}
 #ground-status{display:none}[data-mode=ground][data-ground-state=loading] #ground-status,#ground-status.is-flash{display:block}
@@ -40,13 +40,17 @@
 .earth-fallback strong{font-size:16px}.earth-fallback p,.ground-fallback p{font-size:13px;line-height:1.65;color:#b3c3d3}.earth-fallback button{min-height:44px;border:0;border-bottom:1px solid #94c7e855;background:transparent;color:#c7e9fa;padding:8px 0;font-size:13px}
 .ground-fallback h2{margin:0 0 8px;font-size:26px;letter-spacing:-.04em}.ground-fallback a{display:inline-flex;align-items:center;min-height:44px;color:#b5dff1;font-size:13px}.ground-fallback .earth-primary{justify-content:center;margin:6px 0}
 .earth-nojs{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:4;width:min(88vw,420px);text-align:center;font-size:13px;line-height:1.6;color:#bdcbd9}
+/* Provenance: one quiet chip whenever the view is not live, measured data. Outside the HUD, never fades. */
+.earth-provenance{position:absolute;left:max(14px,env(safe-area-inset-left));bottom:max(14px,env(safe-area-inset-bottom));z-index:5;max-width:calc(100% - 28px);margin:0;padding:4px 9px;border-radius:6px;background:#05080d99;color:#a9bccd;font:400 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:.06em;pointer-events:none}
 /* Planet labels: hidden until hovered or focused, unless the reader turns them on. */
 .cosmos-labels{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}
-.cosmos-object-label{position:absolute;left:0;top:0;min-height:32px;padding:6px 10px 6px 17px;border:1px solid #b4d7ed27;border-radius:6px;background:#07111dcc;color:#cbdce8;font-size:11px;white-space:nowrap;pointer-events:auto;box-shadow:0 4px 15px #0003;transform-origin:0 0;opacity:0;transition:opacity .25s ease}
-.cosmos-object-label::before{content:'';position:absolute;width:4px;height:4px;left:6px;top:calc(50% - 2px);border-radius:50%;background:var(--object-color,#d7eaff);box-shadow:0 0 10px var(--object-color,#d7eaff)}
-.cosmos-object-label:hover,.cosmos-object-label:focus-visible,[data-labels=on] .cosmos-object-label{opacity:1}.cosmos-object-label:hover{border-color:#c5e9fa88;color:#fff}.cosmos-object-label:focus-visible{z-index:10}
+.cosmos-object-label{position:absolute;left:0;top:0;display:flex;align-items:center;gap:2px;min-height:24px;padding:0;border:0;background:none;color:#cbdce8;font-size:11px;white-space:nowrap;pointer-events:none;transform-origin:0 0}
+.cosmos-dot{display:block;flex:none;width:24px;height:24px;margin:-12px 0 0 -12px;position:relative;pointer-events:auto;cursor:pointer}
+.cosmos-dot::before{content:'';position:absolute;left:9px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--object-color,#d7eaff);box-shadow:0 0 10px var(--object-color,#d7eaff)}
+.cosmos-name{margin:-12px 0 0 -6px;padding:4px 8px;border:1px solid #b4d7ed27;border-radius:6px;background:#07111ddd;box-shadow:0 4px 15px #0003;opacity:0;transition:opacity .25s ease;pointer-events:none}
+.cosmos-object-label:hover .cosmos-name,.cosmos-object-label:focus-visible .cosmos-name,[data-labels=on] .cosmos-name,.cosmos-object-label.is-marker .cosmos-name{opacity:1}.cosmos-object-label:focus-visible{z-index:10;outline:2px solid var(--earth-accent);outline-offset:2px;border-radius:6px}
 [data-mode=ground] .cosmos-labels,[data-mode=ground] .cosmos-focus-name{display:none}
-.cosmos-focus-name{position:absolute;left:50%;bottom:calc(max(20px,env(safe-area-inset-bottom)) + 52px);transform:translateX(-50%);z-index:3;margin:0;font:400 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#d5e5f0;text-shadow:0 1px 12px #000;white-space:nowrap;opacity:0;transition:opacity .6s ease;pointer-events:none}.cosmos-focus-name.is-visible{opacity:1}
+.cosmos-focus-name{position:absolute;left:50%;bottom:calc(max(20px,env(safe-area-inset-bottom)) + 84px);transform:translateX(-50%);z-index:3;margin:0;font:400 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#d5e5f0;text-shadow:0 1px 12px #000;white-space:nowrap;opacity:0;transition:opacity .6s ease;pointer-events:none}.cosmos-focus-name.is-visible{opacity:1}
 /* Panel: right side on desktop, bottom sheet on phones. A modal dialog, so focus is trapped and Esc closes. */
 .earth-panel{position:fixed;inset:0 0 0 auto;margin:0;width:min(400px,100vw);max-width:none;height:100%;max-height:none;padding:0;border:0;border-left:1px solid #9cbbd63d;border-radius:0;background:#0a131ff5;color:#dce8f2;overflow:hidden;box-shadow:-20px 0 80px #0007}
 .earth-panel[open]{display:flex;flex-direction:column;animation:earth-panel-in .28s ease}.earth-panel::backdrop{background:transparent}

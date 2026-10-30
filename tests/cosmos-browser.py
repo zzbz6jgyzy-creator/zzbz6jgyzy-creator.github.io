@@ -10,7 +10,8 @@ async def snapshot(page,name):
  b=await page.screenshot(type='jpeg',quality=76,animations='disabled',timeout=35000);(OUT/(name+'.jpg')).write_bytes(b);print('COSMOS_PREVIEW '+name+' '+base64.b64encode(b).decode(),flush=True)
 
 async def wake(page):await page.mouse.move(3,3);await page.mouse.move(6,9)
-async def hud_click(page,sel):await wake(page);await page.locator(sel).click()
+async def hud_click(page,sel):
+ await wake(page);await page.wait_for_function("document.querySelector('[data-earth-preview]').dataset.hud==='active'");await page.locator(sel).click()
 async def open_panel(page):
  if not await page.evaluate("document.getElementById('earth-panel').open"):await hud_click(page,'#earth-menu');await expect(page.locator('#earth-panel')).to_be_visible()
 async def close_panels(page):
@@ -20,10 +21,10 @@ async def close_panels(page):
 async def panel_click(page,sel,keep=False):
  await open_panel(page);await page.locator(sel).click()
  if not keep:await close_panels(page)
-OPQ="[...document.querySelectorAll('.cosmos-object-label:not([hidden])')].map(b=>parseFloat(getComputedStyle(b).opacity))"
+OPQ="[...document.querySelectorAll('.cosmos-object-label:not([hidden]) .cosmos-name')].map(b=>parseFloat(getComputedStyle(b).opacity))"
 OPACITIES="()=>"+OPQ
 VISIBLE_TEXT="""()=>{const out=[];const w=document.createTreeWalker(document.querySelector('.earth-experience'),NodeFilter.SHOW_TEXT);
- while(w.nextNode()){const n=w.currentNode;if(!n.textContent.trim())continue;const e=n.parentElement;if(e.closest('script,style,noscript'))continue;
+ while(w.nextNode()){const n=w.currentNode;if(!n.textContent.trim())continue;const e=n.parentElement;if(e.closest('script,style,noscript,#earth-provenance,#cosmos-focus-name'))continue;
   if(!e.checkVisibility({opacityProperty:true,visibilityProperty:true}))continue;const r=e.getBoundingClientRect();if(r.width<=2||r.height<=2)continue;out.push(n.textContent.trim().slice(0,60));}return out;}"""
 async def labels_check(page,width):
  # Solar System: labels are off by default, one name appears on hover, the switch restores all.
@@ -34,8 +35,8 @@ async def labels_check(page,width):
  await page.wait_for_function("document.getElementById('earth-note').hidden",timeout=20000)
  texts=await page.evaluate(VISIBLE_TEXT);assert texts==[],('Solar view must be clean',texts)
  if width>1000:
-  label=page.locator('.cosmos-object-label:not([hidden])').first;box=await label.bounding_box();await page.mouse.move(box['x']+box['width']/2,box['y']+box['height']/2)
-  await page.wait_for_function("document.querySelectorAll('.cosmos-object-label:hover').length===1&&parseFloat(getComputedStyle(document.querySelector('.cosmos-object-label:hover')).opacity)>.9",timeout=5000)
+  label=page.locator('.cosmos-object-label:not([hidden]) .cosmos-dot').first;box=await label.bounding_box();await page.mouse.move(box['x']+box['width']/2,box['y']+box['height']/2)
+  await page.wait_for_function("document.querySelectorAll('.cosmos-object-label:hover').length===1&&parseFloat(getComputedStyle(document.querySelector('.cosmos-object-label:hover .cosmos-name')).opacity)>.9",timeout=5000)
   assert len([o for o in await page.evaluate(OPACITIES) if o>.5])==1,'Only the hovered name may show'
   await page.mouse.move(width/2,450)
  live=await page.evaluate("document.getElementById('earth-live').textContent");assert 'Solar System' in live and 'Viewing distance' in live,live
@@ -97,6 +98,11 @@ async def main():
      await panel_click(page,'[data-earth-scale='+scale+']');await page.wait_for_function(STATE+'.scene==='+json.dumps(scene)+'&&'+STATE+'.focus==='+json.dumps(focus),timeout=80000)
      await page.wait_for_timeout(750)
      if scene=='solar':await labels_check(page,width)
+     if scene=='galaxy':
+      await expect(page.locator('#earth-provenance')).to_have_text('Illustration · structural model')
+      assert await page.locator('.cosmos-object-label.is-marker .cosmos-name').count()>=1,'Sun and galactic centre markers must stay'
+      assert all(o>.95 for o in await page.evaluate("[...document.querySelectorAll('.is-marker .cosmos-name')].map(n=>parseFloat(getComputedStyle(n).opacity))")),'Markers stay named with labels off'
+     else:await expect(page.locator('#earth-provenance')).to_be_hidden()
      await snapshot(page,str(width)+'-'+scene)
      assert await page.locator('[data-earth-scale='+scale+']').get_attribute('aria-pressed')=='true'
      state=await page.evaluate(STATE);assert state['cosmos']['starsCount']>6000,state

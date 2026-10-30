@@ -1,3 +1,8 @@
+## 2026-10-30 — Earth explorer: provenance chip and planet dots
+
+- One quiet chip (bottom left, does not fade) says when the view is not live data: galaxy "Illustration · structural model", star-catalogue scale "Catalogue positions · distances approximate", illustrative clouds, or a satellite frame older than about 3 hours with its UTC time. Hidden on live Earth with a fresh frame. The Sun and Galactic-centre markers stay named in galaxy view.
+- With labels off, each planet keeps a small dot (24 px target) so it can be found and tapped on touch; label boxes no longer swallow canvas drags. Darker intro scrim for text over bright clouds, canvas has its own screen-reader help, page scroll locked while the intro is up.
+
 ## 2026-10-30 — Earth explorer: immersive viewer (stage 1)
 
 - `/mission-control.html` is now a full-screen viewer with no text over the canvas. The headline, one-line intro and instructions became an opening overlay with an Enter button (Enter, tap or Esc dismisses it with a fade, focus lands on the canvas, dismissal is remembered in `sessionStorage`). The poster and canvas load behind it, so loading and LCP are unchanged.
