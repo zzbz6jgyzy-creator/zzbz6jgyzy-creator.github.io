@@ -3,19 +3,31 @@ export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export const radians=d=>d*Math.PI/180;
 export const degrees=r=>r*180/Math.PI;
 export const longitude=d=>(((d+180)%360)+360)%360-180;
+// Nearest the camera may get to Earth's surface. Owner decision, 30 Oct 2026: 2,500 km, because the global imagery is not
+// crisp any closer. Lower it when sharper imagery lands (400 km would be an ISS-like low orbit).
+// This is the single source of truth for the zoom floor; the renderer enforces it on every path.
+export const MIN_ORBIT_ALTITUDE_KM=2500;
+// Soft floor. Zooming in, the remaining margin above the floor can at most halve per input step once within
+// 0.6 x the floor altitude, so the camera glides into the floor geometrically and never crosses it. Zooming out is untouched.
+export function easeToAltitudeFloor(currentKm,requestedKm,floor=MIN_ORBIT_ALTITUDE_KM,band=floor*.6){
+  const cur=Math.max(currentKm-floor,0),req=requestedKm-floor;
+  if(!(req<cur))return Math.max(requestedKm,floor);
+  const next=Math.max(req,Math.min(cur,band)*.5);
+  return floor+(next<.5?0:next);
+}
 export const PLACES=Object.freeze([
-  {id:'starbase',name:'Starbase',country:'Texas · United States',lat:25.997,lon:-97.156,timeZone:'America/Chicago',zoom:15.2,pitch:56,kind:'launch',tag:'WHERE THE JOURNEY STARTS'},
-  {id:'manhattan',name:'Manhattan',country:'New York · United States',lat:40.7485,lon:-73.9857,timeZone:'America/New_York',zoom:15.5,pitch:61,kind:'city',tag:'A CITY IN THREE DIMENSIONS'},
-  {id:'alps',name:'The Matterhorn',country:'Alps · Switzerland',lat:45.9763,lon:7.6586,timeZone:'Europe/Zurich',zoom:12.5,pitch:66,kind:'mountain',tag:'FOLLOW THE CONTOURS'},
-  {id:'dublin',name:'Dublin',country:'Ireland',lat:53.3464,lon:-6.2631,timeZone:'Europe/Dublin',zoom:15.5,pitch:55,kind:'city',tag:'AT THE EDGE OF THE ATLANTIC'},
-  {id:'tokyo',name:'Tokyo',country:'Japan',lat:35.6586,lon:139.7454,timeZone:'Asia/Tokyo',zoom:15.2,pitch:60,kind:'city',tag:'A DIFFERENT SIDE OF THE DAY'},
-  {id:'canaveral',name:'Cape Canaveral',country:'Florida · United States',lat:28.6084,lon:-80.6043,timeZone:'America/New_York',zoom:14.5,pitch:55,kind:'launch',tag:'THE SPACE COAST'},
-  {id:'grandcanyon',name:'Grand Canyon',country:'Arizona · United States',lat:36.0982,lon:-112.1115,timeZone:'America/Phoenix',zoom:12.5,pitch:65,kind:'mountain',tag:'DEEP TIME, IN DETAIL'},
-  {id:'london',name:'London',country:'United Kingdom',lat:51.5077,lon:-.1238,timeZone:'Europe/London',zoom:15.2,pitch:58,kind:'city',tag:'TRACE THE RIVER'},
-  {id:'sydney',name:'Sydney',country:'Australia',lat:-33.8584,lon:151.2124,timeZone:'Australia/Sydney',zoom:14.7,pitch:58,kind:'city',tag:'THE HARBOUR BELOW'},
-  {id:'dubai',name:'Dubai',country:'United Arab Emirates',lat:25.1972,lon:55.2744,timeZone:'Asia/Dubai',zoom:15,pitch:60,kind:'city',tag:'BETWEEN CITY AND DESERT'},
-  {id:'singapore',name:'Singapore',country:'Singapore',lat:1.2845,lon:103.86,timeZone:'Asia/Singapore',zoom:15,pitch:58,kind:'city',tag:'A GARDEN AT THE EQUATOR'},
-  {id:'paris',name:'Paris',country:'France',lat:48.8583,lon:2.2945,timeZone:'Europe/Paris',zoom:15.5,pitch:58,kind:'city',tag:'STREETS WITH A STORY'},
+  {id:'starbase',name:'Starbase',country:'Texas · United States',lat:25.997,lon:-97.156,timeZone:'America/Chicago'},
+  {id:'manhattan',name:'Manhattan',country:'New York · United States',lat:40.7485,lon:-73.9857,timeZone:'America/New_York'},
+  {id:'alps',name:'The Matterhorn',country:'Alps · Switzerland',lat:45.9763,lon:7.6586,timeZone:'Europe/Zurich'},
+  {id:'dublin',name:'Dublin',country:'Ireland',lat:53.3464,lon:-6.2631,timeZone:'Europe/Dublin'},
+  {id:'tokyo',name:'Tokyo',country:'Japan',lat:35.6586,lon:139.7454,timeZone:'Asia/Tokyo'},
+  {id:'canaveral',name:'Cape Canaveral',country:'Florida · United States',lat:28.6084,lon:-80.6043,timeZone:'America/New_York'},
+  {id:'grandcanyon',name:'Grand Canyon',country:'Arizona · United States',lat:36.0982,lon:-112.1115,timeZone:'America/Phoenix'},
+  {id:'london',name:'London',country:'United Kingdom',lat:51.5077,lon:-.1238,timeZone:'Europe/London'},
+  {id:'sydney',name:'Sydney',country:'Australia',lat:-33.8584,lon:151.2124,timeZone:'Australia/Sydney'},
+  {id:'dubai',name:'Dubai',country:'United Arab Emirates',lat:25.1972,lon:55.2744,timeZone:'Asia/Dubai'},
+  {id:'singapore',name:'Singapore',country:'Singapore',lat:1.2845,lon:103.86,timeZone:'Asia/Singapore'},
+  {id:'paris',name:'Paris',country:'France',lat:48.8583,lon:2.2945,timeZone:'Europe/Paris'},
 ]);
 
 /** Low-order apparent solar position; sufficient for visual illumination, not navigation. */
@@ -42,12 +54,8 @@ export function coordinates(lat,lon,precision=2){return Math.abs(lat).toFixed(pr
 export function parsePlace(text){
   const input=String(text||'').trim();const preset=PLACES.find(p=>p.name.toLowerCase()===input.toLowerCase()||p.id===input.toLowerCase());if(preset)return{...preset};
   const m=input.match(/^([+-]?\d+(?:\.\d+)?)\s*[,;]\s*([+-]?\d+(?:\.\d+)?)$/);
-  if(m&&Number.isFinite(+m[1])&&Number.isFinite(+m[2])&&Math.abs(+m[1])<=85&&Math.abs(+m[2])<=180)return{id:'point',name:'Your chosen place',country:coordinates(+m[1],+m[2]),lat:+m[1],lon:+m[2],zoom:15,pitch:55,kind:'point'};
+  if(m&&Number.isFinite(+m[1])&&Number.isFinite(+m[2])&&Math.abs(+m[1])<=85&&Math.abs(+m[2])<=180)return{id:'point',name:'Your chosen place',country:coordinates(+m[1],+m[2]),lat:+m[1],lon:+m[2]};
   return null;
-}
-export function satelliteURL(lat,lon){
-  if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)throw new TypeError('Invalid map coordinates.');
-  const u=new URL('https://www.google.com/maps/@');u.search=new URLSearchParams({api:'1',map_action:'map',center:lat.toFixed(6)+','+lon.toFixed(6),zoom:'20',basemap:'satellite'}).toString();return u.href;
 }
 export function weatherAge(at,now=Date.now()){
   const time=Date.parse(at),age=(now-time)/60000;

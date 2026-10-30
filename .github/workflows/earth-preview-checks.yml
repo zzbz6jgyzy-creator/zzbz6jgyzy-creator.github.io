@@ -6,7 +6,6 @@ on:
       - 'earth-*.js'
       - 'earth-*.css'
       - 'assets/earth/**'
-      - 'vendor/maplibre/**'
       - 'tests/earth-live-model.test.mjs'
       - 'tests/earth-weather.test.mjs'
       - 'tests/cosmos-browser.py'
@@ -51,7 +50,6 @@ jobs:
         run: |
           node --check earth-preview.js
           node --check earth-live-model.js
-          node --check earth-ground.js
           node --check earth-weather.js
           node tests/earth-live-model.test.mjs
           node tests/earth-weather.test.mjs

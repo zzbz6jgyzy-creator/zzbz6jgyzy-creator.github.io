@@ -1,5 +1,5 @@
 """Tactile controls and measured-scale Earth → Moon → Solar System → Milky Way."""
-import asyncio,base64,json,mimetypes,os,pathlib,shutil
+import asyncio,base64,json,mimetypes,os,pathlib,re,shutil
 from urllib.parse import urlparse,unquote
 from playwright.async_api import async_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1];OUT=pathlib.Path('/tmp/earth-preview');OUT.mkdir(exist_ok=True)
@@ -50,13 +50,14 @@ async def labels_check(page,width):
 async def main():
  async with async_playwright() as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome'),args=ARGS)
-  results=[]
+  results=[];hosts=set()
   for width,height in [(1440,900),(390,844),(768,1024)]:
    ctx=await browser.new_context(viewport={'width':width,'height':height},device_scale_factor=1,has_touch=width<1000,is_mobile=width<500,service_workers='block',record_video_dir=str(OUT/'cosmos-recording') if width==1440 else None,record_video_size={'width':width,'height':height} if width==1440 else None)
    async def route(r):
     u=urlparse(r.request.url)
     if r.request.method!='GET':return await r.abort()
-    if u.hostname in ['view.eumetsat.int','tiles.openfreemap.org','s3.amazonaws.com']:return await r.continue_()
+    hosts.add(u.hostname)
+    if u.hostname=='view.eumetsat.int':return await r.continue_()
     if u.hostname!='superchargeddaily.com':return await r.abort()
     path=ROOT/(unquote(u.path).lstrip('/') or 'index.html')
     if path.is_file() and ROOT in path.resolve().parents:return await r.fulfill(body=path.read_bytes(),content_type='text/javascript' if path.suffix in ['.js','.mjs'] else mimetypes.guess_type(str(path))[0] or 'application/octet-stream')
@@ -110,7 +111,10 @@ async def main():
       assert state['distanceKm']>1e18 and state['cosmos']['galaxyCount']>=40000,state
       await page.evaluate('window.__earthPreview.setZoom(.0001)');await page.wait_for_function(STATE+'.scene==="solar"')
       await page.evaluate('window.__earthPreview.setZoom(1)');await page.wait_for_function(STATE+'.scene==="earth"&&'+STATE+'.focus==="Earth"')
-      assert await page.evaluate('document.querySelector("[data-earth-preview]").dataset.mode')=='earth','Zooming in from the galaxy must return to Earth, not empty galactic-centre space'
+      assert await page.evaluate('document.querySelector("[data-earth-preview]").dataset.scene')=='earth','Zooming in from the galaxy must return to Earth, not empty galactic-centre space'
+      # Earth zoom floor (2,500 km, MIN_ORBIT_ALTITUDE_KM in earth-live-model.js): programmatic zoom and the fly back to Earth both respect it.
+      await page.evaluate('window.__earthPreview.setZoom(1e7)');assert await page.evaluate(STATE+'.distanceKm')-6371>=2499.99,'setZoom must clamp at the orbital floor'
+      await page.evaluate('window.__earthPreview.setScale("earth")');await page.wait_for_timeout(2600);assert await page.evaluate(STATE+'.distanceKm')-6371>=2499.99,'fly-to Earth must not go below the floor'
      if scale=='moon':
       for body in ['Saturn','Jupiter']:
        await open_panel(page);await page.locator('#earth-explore').click();await expect(page.locator('#cosmos-places-dialog')).to_be_visible()
@@ -127,6 +131,7 @@ async def main():
      await hud_click(page,'#earth-motion');await panel_click(page,'[data-earth-scale=galaxy]');await page.wait_for_function(STATE+'.scene==="galaxy"&&!'+STATE+'.travelling',timeout=30000);await page.wait_for_timeout(1500)
     assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
     print('COSMOS_WEATHER',width,json.dumps({'state':await page.evaluate('window.__earthWeather?.getState()'),'console':console}),flush=True)
+    assert not [h for h in hosts if h and re.search(r'openfreemap|openstreetmap|maptiler|mapbox|amazonaws|arcgis|google|carto',h,re.I)],('map or tile host requested',hosts)
     assert not errors,(width,errors);assert not [x for x in console if 'shader' in x.lower() or 'WebGLProgram' in x],console
     results.append({'width':width,'ok':True,'state':await page.evaluate(STATE)});print('COSMOS_PASS',width,flush=True)
    except Exception:

@@ -2,6 +2,14 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-30 · Earth explorer: Ground mode removed, orbital zoom floor
+
+- **Decision (owner, 30 Oct 2026):** remove Ground mode and the street map entirely. In the owner's words it "zooms into a flat map, it looks terrible". The camera stops well above the surface. First cut 400 km (ISS-like); the owner then chose **2,500 km** on 30 Oct 2026 after seeing 400, 1,000 and 2,500 km samples, because the imagery is only crisp from there. To be lowered when sharper imagery lands.
+- **Why:** the handoff from a photographic globe to a flat vector map broke the experience at exactly the moment of highest attention, and the data on either side of the join (2K to 16K historical imagery vs OpenStreetMap vectors) does not match. It also cost a 1.6 MB engine, three third-party map hosts and an attribution burden for a feature the owner did not want.
+- **What we kept:** the place picker, because flying the globe to Manhattan or Starbase still does something useful in space view.
+- **How the floor works:** one constant (`MIN_ORBIT_ALTITUDE_KM`), one soft-approach function, one clamp in `setZoom()` plus a per-frame guard. See `docs/earth-cosmos.md`, "Zoom floor".
+- **Consequence:** we do not offer anything closer than 2,500 km. If street-level is ever wanted again it needs real photographic data (it would need its own approval and licence review), not a styled map.
+
 ## 2026-10-30 · Earth explorer: a clean canvas, one modal panel, auto-hiding controls
 
 - **Choice:** the 3D view carries no text by default. An opening overlay holds the headline; a native modal `<dialog>` (side panel or bottom sheet) holds every control and credit; a four-button HUD fades when idle.
