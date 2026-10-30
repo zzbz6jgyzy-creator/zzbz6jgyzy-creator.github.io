@@ -135,10 +135,11 @@ function bezierPoint(seg, t, out) {
   for (let k = 0; k < 3; k++) out[k] = a * p[k] + b * p[3 + k] + c * p[6 + k] + d * p[9 + k] + w * seg.n[k];
   return out;
 }
+// Table samples are denser near both ends of the curve, where the small-scale motion is.
 function buildTable(seg) {
   const pts = seg.pts, cum = seg.cum; bezierPoint(seg, 0, S.e); pts[0] = S.e[0]; pts[1] = S.e[1]; pts[2] = S.e[2]; cum[0] = 0;
   for (let i = 1; i <= TABLE; i++) {
-    bezierPoint(seg, i / TABLE, S.e); pts[i * 3] = S.e[0]; pts[i * 3 + 1] = S.e[1]; pts[i * 3 + 2] = S.e[2];
+    bezierPoint(seg, (1 - Math.cos(Math.PI * i / TABLE)) / 2, S.e); pts[i * 3] = S.e[0]; pts[i * 3 + 1] = S.e[1]; pts[i * 3 + 2] = S.e[2];
     cum[i] = cum[i - 1] + Math.hypot(pts[i * 3] - pts[i * 3 - 3], pts[i * 3 + 1] - pts[i * 3 - 2], pts[i * 3 + 2] - pts[i * 3 - 1]);
   }
   seg.length = cum[TABLE];
@@ -170,6 +171,12 @@ function pathMargin(seg) {
     }
   }
   return worst;
+}
+/** True when the distance from c never decreases while the path is within 6x its starting distance of c. */
+function leavesMonotonically(seg, c, startScale) {
+  const pts = seg.pts; let prev = Math.hypot(pts[0] - c[0], pts[1] - c[1], pts[2] - c[2]);
+  for (let i = 1; i <= TABLE; i++) { const d = Math.hypot(pts[i * 3] - c[0], pts[i * 3 + 1] - c[1], pts[i * 3 + 2] - c[2]); if (d < prev - 2e-3 * startScale) return false; if (d > 6 * startScale) return true; prev = d; }
+  return true;
 }
 /**
  * Plan a segment. Vectors are relative to the target body's centre, in km.
@@ -212,14 +219,18 @@ export function planSegment(o) {
     seg.lnR0 = Math.log(seg.a0 / (seg.length + seg.b1)); seg.lnR1 = Math.log((seg.length + seg.a0) / seg.b1);
   };
   let best = null;
-  search: for (const kMul of [5, 14, 40]) {
-    for (const m of [0, .03, .08, .16, .3, .5, .85, 1.4]) {
-      for (const h of m === 0 ? [headings[0]] : headings) {
-        shape(kMul, m, h); const g = seg.obstacles.length ? pathMargin(seg) : Infinity;
-        if (!best || g > best.g) best = { g, kMul, m, h };
-        if (g >= 0) break search;
+  for (const needLeave of [true, false]) { // prefer a path that never dips back towards the world we leave; accept one that does if none clears
+    search: for (const kMul of [5, 14, 40, 120, 400]) {
+      for (const m of [0, .03, .08, .16, .3, .5, .85, 1.4]) {
+        for (const h of m === 0 ? [headings[0]] : headings) {
+          shape(kMul, m, h); let g = seg.obstacles.length ? pathMargin(seg) : Infinity;
+          if (needLeave && g >= 0 && o.startCentre && !leavesMonotonically(seg, o.startCentre, startScale)) g = -1;
+          if (!best || g > best.g) best = { g, kMul, m, h };
+          if (g >= 0) break search;
+        }
       }
     }
+    if (best.g >= 0) break;
   }
   shape(best.kMul, best.m, best.h); seg.margin = best.g;
   seg.duration = o.duration || clamp(1.5 + .32 * Math.abs(Math.log10(Math.max(seg.length, 1) / Math.max(seg.a0 + seg.b1, 1))) + .3 * Math.min(2, seg.length > 0 ? seg.chord / seg.length : 1), 2, 6.5);

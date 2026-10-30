@@ -193,6 +193,15 @@ function bodiesClear(f, startClear) {
   assert.ok(done && f.state.anchor === 'Jupiter' && f.state.mode === 'orbit' && Math.abs(f.distance() - 69911 * 6.5) < 1e-3);
 }
 
+// ---- leaving a world: the distance from it never shrinks, from any side
+{
+  for (const target of ['Saturn', 'Mars', 'Sun']) for (let i = 0; i < 10; i++) {
+    const f = makeFlight(), dir = direction(i + 40); f.jump({ anchor: 'Earth', distance: 22000, q: F.qLook(new Float64Array(4), -dir[0], -dir[1], -dir[2], 0, 1, 0) });
+    f.flyTo(target, { distance: f.bodyOf(target).radius * 6.5, q: F.qLook(new Float64Array(4), -.5, -.6, -.62, 0, 1, 0) });
+    let prev = 22000; for (let k = 0; k < 90 && f.state.mode === 'auto'; k++) { f.step(1 / 60); const d = len(camera(f)); assert.ok(d >= prev * .995, `Earth->${target} #${i}: moved back towards Earth (${prev} -> ${d})`); prev = Math.max(prev, d); }
+  }
+}
+
 // ---- the scene frame refreshes while flying: bodies rotate about Earth (2.18e-3 rad = 30 s of Earth turn at the 30 s refresh)
 {
   const run = (target, factor, when) => {
