@@ -1,9 +1,13 @@
-## 2026-10-30 — Earth explorer: phones (safe areas, landscape, keyboard)
+## 2026-10-30 — Earth explorer: free flight, autopilot, camera paths
 
-- Fixed on phones: a 420 px minimum height that cut the bottom of landscape screens (provenance chip below the fold, canvas taller than the screen); dialogs and the panel ignoring the notch and home indicator (close buttons inside the notch); the toast wider than the safe area in landscape; the intro card clipped at the top on short or large-text screens; focus rings on dialog and panel close buttons clipped; 24 px and 26 px targets; 14 px search input that made iOS Safari zoom on focus; landscape phones under 700 px wide getting a bottom sheet with about 300 px of height.
-- Added: `--sat/--sar/--sab/--sal` safe-area variables, `svh` hero height (`dvh` only for the panel and dialogs), a side sheet for short screens, `visualViewport` keyboard handling for dialogs, `touch-action:manipulation` and `overscroll-behavior`.
-- Test: `tests/earth-phone-browser.py` (nine devices, portrait and landscape, CDP safe-area emulation, large text, keyboard) wired into `earth-preview-checks.yml` as group `phone`. `tests/earth-cosmos.test.mjs` now expects `20261030-phone1` on the page's own `earth-preview` tags and leaves the renderer import tokens at `noground1`.
-- `?v=` on `earth-preview.css` and `earth-preview.js` in `mission-control.html` is `20261030-phone1`. See `docs/earth-cosmos.md`, "Phone support".
+- New `earth-flight.js`: a 6-DOF camera with quaternion orientation and frame-rate independent critically damped springs, replacing the linear zoom slider and the fixed fly-through. Orbit mode keeps the grab-the-surface drag, now with momentum and zoom toward the cursor or fingers; free flight (F) moves with inertia at 0.35 altitudes per second, so speed follows the distance to the nearest surface from metres per second to light-years per second.
+- Autopilot: choosing a world, tapping its label or tapping its disc flies there on a curved path that clears every other world (it arcs past the Sun), eases in and out in log distance (Earth to Saturn about 3 s) and arrives in orbit at a framing distance. Any key, scroll or touch cancels it and the camera coasts to a stop.
+- Floors hold everywhere: Earth 2,500 km, other worlds 0.4 radii above the surface, in orbit, free flight and autopilot.
+- Keyboard: W A S D / Q E / arrows / Z C / Shift / [ ], F free flight, O orbit nearest world, Esc stops the autopilot; documented in the panel. Touch: one finger looks, two fingers move, pinch changes speed. Reduced motion and pause: no inertia, instant arrival, one step per key.
+- Panel: a Flight section (mode switch, cruise-speed readout, "Orbit nearest world" offer); mode changes are announced in the live region. Nothing over the canvas.
+- Camera-path API (`playPath` with keyframes) for a later Cinema mode; a demo path is reachable only through a test hook.
+- Tests: `tests/earth-flight.test.mjs` (springs at 15/30/60/144 fps, speed scaling, floors, 100+ autopilot start/target pairs never entering a body's clearance, cancel, keyframes, no allocation per frame) and flight groups in `tests/cosmos-browser.py`.
+- `?v=` tokens are now `20261030-flight1`.
 
 ## 2026-10-30 — Earth explorer: Ground mode removed, 2,500 km zoom floor
 
