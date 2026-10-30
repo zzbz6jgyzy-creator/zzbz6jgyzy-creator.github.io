@@ -49,10 +49,10 @@
     {
       id: "starship-f15",
       title: "Starship Flight 15",
-      start: "2026-11-08T12:00:00Z",
+      start: "2026-11-12T12:00:00Z",
       group: "spacex",
       where: "Starbase · Pad 2",
-      note: "FAA planning target NET 8 Nov — SpaceX has not set an official time. On the 20 Oct earnings call Musk said SpaceX expects it next month and will try to catch both the booster and the ship.",
+      note: "FAA planning target NET 12 Nov (as of 29 Oct 2026) — SpaceX has not set an official time. On the 20 Oct earnings call Musk said SpaceX expects it next month and will try to catch both the booster and the ship.",
       href: "",
       status: "net",
       precision: "day",

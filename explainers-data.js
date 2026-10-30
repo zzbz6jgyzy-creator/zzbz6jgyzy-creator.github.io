@@ -48,7 +48,7 @@ window.EXPLAINERS = {
     facts: [
       { k: "Flight 5", v: "13 Oct 2024 · B12 · first Super Heavy catch, ~T+6:56. No engine failures on the way up." },
       { k: "Divert", v: "If the approach is off, SpaceX sends it to a controlled splashdown. Missing is allowed. Hitting the tower wrong is not." },
-      { k: "Flight 15", v: "First serious attempt to catch a Ship. Same chopsticks idea, harder timing. NET 8 Nov." },
+      { k: "Flight 15", v: "First serious attempt to catch a Ship. Same chopsticks idea, harder timing. NET 12 Nov (FAA planning, as of 29 Oct 2026)." },
     ],
     steps: [
       { at: 0.1, title: "Leave the tower", clock: "T+0", caption: "The chopsticks that will catch it later have just released the stack.", callout: "Liftoff", text: "Mechazilla is the pad and the landing site. The arms that hold the stack for launch are the arms that have to meet the pins on the way back." },

@@ -597,19 +597,44 @@
    "origin": "Editorial calendar"
   },
   {
+   "id": "ll2-6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
+   "title": "Falcon 9 Block 5 | USSF-xxx (\"R-5\")",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-10T03:03:00Z",
+   "end": "",
+   "date": "2026-11-10",
+   "precision": "datetime",
+   "status": "TBC",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
+   "windowStart": "2026-11-10T03:03:00Z",
+   "windowEnd": "2026-11-10T07:03:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "To Be Confirmed"
+  },
+  {
    "id": "starship-15",
    "title": "Starship Flight 15",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-08T12:00:00Z",
+   "start": "2026-11-12T12:00:00Z",
    "end": "",
-   "date": "2026-11-08",
+   "date": "2026-11-12",
    "precision": "day",
    "status": "net",
-   "note": "NET 8 November on FAA air-traffic planning slides, not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date.",
+   "note": "NET 12 November on the FAA's 29 Oct 2026 air-traffic planning slides (moved from 8 Nov), not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date.",
    "where": "Starbase · Pad 2",
    "href": "",
    "sources": [
+    {
+     "href": "https://compass.atfm.aero/public_svcdynamic/getfile?download=false&fileuuid=0fb6079b-6d10-4039-8766-b3ccb3c877f0",
+     "label": "compass.atfm.aero"
+    },
     {
      "href": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
      "label": "fool.com"
@@ -635,27 +660,6 @@
     "article": "",
     "status": "scheduled"
    }
-  },
-  {
-   "id": "ll2-6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
-   "title": "Falcon 9 Block 5 | USSF-xxx (\"R-5\")",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-11-10T03:03:00Z",
-   "end": "",
-   "date": "2026-11-10",
-   "precision": "datetime",
-   "status": "TBC",
-   "note": "Government/Top Secret · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
-   "windowStart": "2026-11-10T03:03:00Z",
-   "windowEnd": "2026-11-10T07:03:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "To Be Confirmed"
   },
   {
    "id": "ll2-d74afbc7-0de5-491c-be05-4e9c31f736ac",

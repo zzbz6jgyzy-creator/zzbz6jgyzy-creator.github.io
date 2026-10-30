@@ -36,7 +36,7 @@ window.STARSHIP_LAB = {
       hardware: ["Block 3", "B22", "S42", "OLP-2", "Raptor 3", "Ship catch attempt"],
       anomalies: ["No SpaceX clock yet. Ship 42’s Raptors came off in early October for another cryo-proof."],
       phases: [
-        { id: "liftoff", tPlus: "NET", result: "pending", note: "FAA planning window is NET 8 November — not a T-0." },
+        { id: "liftoff", tPlus: "NET", result: "pending", note: "FAA planning window is NET 12 November (as of 29 Oct 2026) — not a T-0." },
         { id: "staging", tPlus: "—", result: "pending", note: "Block 3 hot-stage, same family as Flights 12–14." },
         { id: "boostback", tPlus: "—", result: "pending", note: "Return Super Heavy B22 toward Pad 2." },
         { id: "booster", tPlus: "—", result: "pending", note: "Catch or controlled splashdown." },

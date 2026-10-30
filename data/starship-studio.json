@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-10-28",
+ "updated": "2026-10-30",
  "reviewed": "2026-10-24",
  "phaseOrder": [
   "liftoff",
@@ -1682,7 +1682,7 @@
  ],
  "next": {
   "number": 15,
-  "referenceDate": "2026-11-08",
+  "referenceDate": "2026-11-12",
   "precision": "day",
   "officialTime": null,
   "officialSource": null,
@@ -1726,6 +1726,13 @@
   ]
  },
  "schedule": [
+  {
+   "date": "2026-10-29",
+   "text": "The FAA’s CADENA air-traffic planning deck dated 29 Oct 2026 lists Starship Flight 15 on 12 Nov, four days later than the NET 8 Nov on earlier slides. Starship Starlink 30-1 stays on 10 Dec. Still no FAA Flight 15 licence and no SpaceX date.",
+   "url": "https://x.com/SpaceNotices/status/2115815059381469690",
+   "outlet": "FAA CADENA planning deck (via SpaceNotices)",
+   "kind": "reported"
+  },
   {
    "date": "2026-10-27",
    "text": "SpaceX confirmed on 28 Oct 2026 (12:10pm ET, 9:10am PT) that Ship 42’s static fires are complete: the Flight 15 Starship performed a full-duration, six-engine static fire and fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight and Next Spaceflight put the six-engine fire, roughly 60 seconds long, at Massey’s on 27 Oct 2026, about 5:46pm ET (2:46pm PT). Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",

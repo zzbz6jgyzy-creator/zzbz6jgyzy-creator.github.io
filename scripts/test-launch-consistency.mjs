@@ -48,11 +48,11 @@ const patchedBand = patched.find((e) => e.id === "f9-bandwagon5");
 if (patchedBand && Date.parse(patchedBand.start) === Date.parse(band.start)) ok("shared start overlay");
 else bad("shared start overlay", patchedBand && patchedBand.start);
 
-if (/start: "2026-11-08T12:00:00Z"/.test(ship) && /precision: "day"/.test(ship)) ok("starship F15 day NET");
+if (/start: "2026-11-12T12:00:00Z"/.test(ship) && /precision: "day"/.test(ship)) ok("starship F15 day NET");
 else bad("starship F15 day NET", "clock still drifted");
 
-const f15see = /id: "starship-f15"[\s\S]{0,80}start: "2026-11-08T12:00:00Z"/.test(see);
-const f15cal = /id: "starship-f15"[\s\S]{0,80}start: "2026-11-08T12:00:00Z"/.test(cal);
+const f15see = /id: "starship-f15"[\s\S]{0,80}start: "2026-11-12T12:00:00Z"/.test(see);
+const f15cal = /id: "starship-f15"[\s\S]{0,80}start: "2026-11-12T12:00:00Z"/.test(cal);
 if (f15see && f15cal) ok("F15 clocks aligned");
 else bad("F15 clocks aligned", `see=${f15see} cal=${f15cal}`);
 

@@ -333,30 +333,6 @@ STATUS:TENTATIVE
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:starship-15@superchargeddaily.com
-DTSTAMP:20261030T083503Z
-DTSTART;VALUE=DATE:20261108
-DTEND;VALUE=DATE:20261109
-SUMMARY:[Date only] Starship Flight 15
-DESCRIPTION:NET date · time unconfirmed\nNET 8 November on FAA air-traffic
-  planning slides\, not a SpaceX T-0. On the 20 Oct earnings call Musk said
-  SpaceX expects Flight 15 next month and will try to catch both the booste
- r and the ship. Booster 22 completed a full-duration 33-engine static fire
-  on 25 Oct\, per SpaceX. NASASpaceflight and Next Spaceflight report a Shi
- p 42 single-engine static fire at Massey’s on 26 Oct\, then a six-engine
- \, roughly 60-second full-duration fire on 27 Oct 2026\, about 4:46pm CDT 
- (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. 
- Both Flight 15 vehicles have now static-fired. Still no FAA licence and no
-  SpaceX date.\nhttps://www.fool.com/earnings/call-transcripts/2026/10/20/s
- pacex-spcx-q3-2026-earnings-call-transcript/\nhttps://x.com/SpaceX/status/
- 2114444137067844004\nhttps://www.nextspaceflight.com/starship/hardware/80/
- \nhttps://thespaceroad.com/articles/when-is-starship-flight-15/
-LOCATION:Starbase · Pad 2
-URL:https://superchargeddaily.com/calendar.html?event=starship-15
-STATUS:TENTATIVE
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:ll2-6aa7b90b-e5ed-45d8-a52e-04fbf399d178@superchargeddaily.com
 DTSTAMP:20261030T083503Z
 DTSTART:20261110T030300Z
@@ -365,6 +341,32 @@ DESCRIPTION:Provisional target\nGovernment/Top Secret · Low Earth Orbit\n
 LOCATION:Space Launch Complex 4E · Vandenberg SFB\, CA\, USA
 URL:https://superchargeddaily.com/calendar.html?event=ll2-6aa7b90b-e5ed-45d
  8-a52e-04fbf399d178
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:starship-15@superchargeddaily.com
+DTSTAMP:20261030T083503Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+SUMMARY:[Date only] Starship Flight 15
+DESCRIPTION:NET date · time unconfirmed\nNET 12 November on the FAA's 29 O
+ ct 2026 air-traffic planning slides (moved from 8 Nov)\, not a SpaceX T-0.
+  On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month
+  and will try to catch both the booster and the ship. Booster 22 completed
+  a full-duration 33-engine static fire on 25 Oct\, per SpaceX. NASASpacefl
+ ight and Next Spaceflight report a Ship 42 single-engine static fire at Ma
+ ssey’s on 26 Oct\, then a six-engine\, roughly 60-second full-duration f
+ ire on 27 Oct 2026\, about 4:46pm CDT (about 21:46 Irish time). SpaceX has
+ n’t posted about the Ship 42 fires. Both Flight 15 vehicles have now sta
+ tic-fired. Still no FAA licence and no SpaceX date.\nhttps://compass.atfm.
+ aero/public_svcdynamic/getfile?download=false&fileuuid=0fb6079b-6d10-4039-
+ 8766-b3ccb3c877f0\nhttps://www.fool.com/earnings/call-transcripts/2026/10/
+ 20/spacex-spcx-q3-2026-earnings-call-transcript/\nhttps://x.com/SpaceX/sta
+ tus/2114444137067844004\nhttps://www.nextspaceflight.com/starship/hardware
+ /80/\nhttps://thespaceroad.com/articles/when-is-starship-flight-15/
+LOCATION:Starbase · Pad 2
+URL:https://superchargeddaily.com/calendar.html?event=starship-15
 STATUS:TENTATIVE
 TRANSP:TRANSPARENT
 END:VEVENT
