@@ -110,6 +110,22 @@ export function scalePreset(id,fit=3.4){
  const b=BODIES.find(b=>b.id===id);if(b)return{focus:id,distance:b.radius*(id==='Saturn'?12:6.5),level:id==='Earth'?'earth':id==='Moon'?'moon':'planet'};
  throw new TypeError('Unknown cosmic destination');
 }
+export const SOLAR_TOUR=Object.freeze(['Sun','Mercury','Venus','Earth','Moon','Mars','Jupiter','Io','Europa','Ganymede','Callisto','Saturn','Uranus','Neptune','Pluto']);
+/** Distance from a world's centre for a close tour pass. Always above the flight floor (Earth 2,500 km; others 0.4 radii). Saturn stays outside the ring mesh. */
+export function solarTourClose(id){
+ const b=BODIES.find(x=>x.id===id);if(!b)throw new TypeError('Unknown tour stop');
+ if(id==='Earth')return EARTH_RADIUS+2500+900;
+ if(id==='Sun')return b.radius*2.8;
+ if(id==='Saturn')return b.radius*3.8;
+ return b.radius*2.4;
+}
+/** Autopilot keyframes: Sun to Pluto, close to each planet and the Galilean moons. */
+export function solarTourPath(){
+ return SOLAR_TOUR.map((id,i)=>({
+  target:id,distance:solarTourClose(id),yaw:(i*51+24)%360-180,pitch:6+(i%4)*7,
+  duration:i===0?3.4:i>=11?4.4:3.6,easing:'inOut',hold:id==='Earth'||id==='Moon'||id==='Jupiter'||id==='Saturn'||id==='Pluto'?1:0.55,
+ }));
+}
 export function galaxyPopulation(count=120000){
  let seed=731977;const random=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646;};
  const normal=()=>Math.sqrt(-2*Math.log(Math.max(1e-9,random())))*Math.cos(2*Math.PI*random());

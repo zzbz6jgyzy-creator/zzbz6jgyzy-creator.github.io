@@ -65,15 +65,19 @@
   }
 
   // Flight section of the panel: mode, readout, "orbit nearest" offer, and a spoken note when the mode changes.
-  let lastMode='orbit',modeTimer;
+  let lastMode='orbit',modeTimer,lastTourStop='';
   function paintFlight(state){
     const f=state.flight;if(!f)return;const mode=f.mode;
     $('flight-orbit').setAttribute('aria-pressed',String(mode==='orbit'));$('flight-free').setAttribute('aria-pressed',String(mode==='free'));
+    $('flight-tour').setAttribute('aria-pressed',String(!!f.path));
     const dist=km=>km<1e6?Math.round(km).toLocaleString('en-GB')+' km':km<9.46e10?(km/149597870.7).toLocaleString('en-GB',{maximumFractionDigits:2})+' AU':(km/9460730472580.8).toLocaleString('en-GB',{maximumFractionDigits:1})+' light-years';
-    const text=mode==='autopilot'?'Autopilot to '+f.autopilot+' · any movement key, scroll or touch takes over':mode==='free'?'Free flight · cruise '+f.speedText+' · '+dist(f.altitudeKm)+' above '+f.nearest:'Orbit · '+f.anchor+' · drag to turn it, scroll to zoom';
+    const text=f.path?'Tour · '+(f.pathStop||f.autopilot||f.anchor)+' · any movement key, scroll or touch takes over':mode==='autopilot'?'Autopilot to '+f.autopilot+' · any movement key, scroll or touch takes over':mode==='free'?'Free flight · cruise '+f.speedText+' · '+dist(f.altitudeKm)+' above '+f.nearest:'Orbit · '+f.anchor+' · drag to turn it, scroll to zoom';
     if($('flight-readout').textContent!==text)$('flight-readout').textContent=text;
     const offer=mode==='free'&&f.offer;$('flight-offer').hidden=!offer;if(offer){const t='Orbit '+f.offer;const label=$('flight-offer').firstChild;if(label&&label.textContent!==t+' ')label.textContent=t+' ';}
+    if(f.path&&f.pathStop&&f.pathStop!==lastTourStop){lastTourStop=f.pathStop;$('earth-live').textContent='Tour · '+f.pathStop+'.';}
+    if(!f.path)lastTourStop='';
     if(mode!==lastMode){const prev=lastMode;lastMode=mode;clearTimeout(modeTimer);
+      if(f.path)return;
       modeTimer=setTimeout(()=>{$('earth-live').textContent=mode==='free'?(matchMedia('(pointer:coarse)').matches?'Free flight. Drag to look, drag with two fingers to move, pinch to change speed.':'Free flight. W A S D move, Q and E go down and up, arrow keys look, Shift boosts.'):mode==='autopilot'?'Flying to '+f.autopilot+'.':prev==='autopilot'?'Arrived. Orbiting '+f.anchor+'.':'Orbiting '+f.anchor+'.';},300);}
   }
   function paintCosmos(state){
@@ -154,7 +158,7 @@
     for(const[id,b]of labels)if(!active.has(id))b.hidden=true;
   }
   async function worldFinder(){
-    if(!cosmicModel){cosmicModel=await import('/earth-cosmos-model.js?v=20261030-eclipse1');for(const body of cosmicModel.BODIES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),detail=document.createElement('small');name.textContent=body.id;detail.textContent=body.parent?body.radius.toLocaleString('en-GB')+' km mean radius · moon of '+body.parent:body.radius.toLocaleString('en-GB')+' km mean radius';b.append(name,detail);b.addEventListener('click',()=>{$('cosmos-places-dialog').close();panel.close();viewer?.setScale(body.id);});$('cosmos-places-list').append(b);}}
+    if(!cosmicModel){cosmicModel=await import('/earth-cosmos-model.js?v=20261030-tour1');for(const body of cosmicModel.BODIES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),detail=document.createElement('small');name.textContent=body.id;detail.textContent=body.parent?body.radius.toLocaleString('en-GB')+' km mean radius · moon of '+body.parent:body.radius.toLocaleString('en-GB')+' km mean radius';b.append(name,detail);b.addEventListener('click',()=>{$('cosmos-places-dialog').close();panel.close();viewer?.setScale(body.id);});$('cosmos-places-list').append(b);}}
     $('cosmos-places-dialog').showModal();
   }
   function announceEclipse(info,kind){
@@ -171,6 +175,7 @@
   $('earth-time-lunar').addEventListener('click',async()=>{try{announceEclipse(await viewer?.jumpLunarEclipse(),'lunar');}catch{message('Could not find the next lunar eclipse.');}});
   for(const b of root.querySelectorAll('[data-flight-turn]'))b.addEventListener('click',()=>viewer?.turn(b.dataset.flightTurn));
   $('flight-orbit').addEventListener('click',()=>viewer?.setFlightMode('orbit'));$('flight-free').addEventListener('click',()=>{viewer?.setFlightMode('free');panel.close();});$('flight-offer').addEventListener('click',()=>viewer?.setFlightMode('orbit'));
+  $('flight-tour').addEventListener('click',()=>{if(viewer?.getState().flight?.path){viewer.cancelAutopilot();$('earth-live').textContent='Tour stopped.';return;}const reduced=viewer?.getState().reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches;viewer?.playSolarTour();$('earth-live').textContent=reduced?'Jumped to Pluto, the last stop of the tour.':'Touring the Solar System, from the Sun to Pluto.';panel.close();});
   for(const b of root.querySelectorAll('[data-earth-scale]'))b.addEventListener('click',()=>{viewer?.setScale(b.dataset.earthScale);if(matchMedia('(max-width:699px)').matches)panel.close();});
   $('cosmos-deep-sky').addEventListener('click',()=>{const b=$('cosmos-deep-sky'),value=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(value));viewer?.setDeepSky(value);});
 
@@ -178,7 +183,7 @@
     const token=++attempt;viewer?.dispose();weather?.dispose();viewer=null;weather=null;window.__earthPreview=null;
     root.dataset.state='loading';$('earth-fallback').hidden=true;managed.forEach(b=>b.disabled=true);message('');
     try{
-      const {initEarth}=await import('/earth-renderer.js?v=20261030-eclipse1');
+      const {initEarth}=await import('/earth-renderer.js?v=20261030-tour1');
       const result=await initEarth({canvas,view:'live',textureBase:'/assets/earth/',
         onLabels:paintLabels,onStatus:s=>{if(token===attempt)$('earth-status').textContent=s;},
         onSelect:point=>{if(token!==attempt)return;place={...point,id:'point',name:'Your chosen place',country:model.coordinates(point.lat,point.lon)};viewer.focusLocation(point.lat,point.lon,{center:false});renderPlace();},
@@ -188,7 +193,7 @@
       if(token!==attempt||dead){result.dispose();return;}
       viewer=result;window.__earthPreview=result;if(!result.getState().ready)throw new Error('First frame unavailable');
       root.dataset.state='ready';$('earth-fallback').hidden=true;managed.forEach(b=>b.disabled=false);paint(viewer.getState());
-      const module=await import('/earth-weather.js?v=20261030-eclipse1');
+      const module=await import('/earth-weather.js?v=20261030-tour1');
       if(token!==attempt||dead)return;
       weather=module.createWeather({viewer,onChange:weatherPaint});window.__earthWeather=weather;
     }catch{if(token===attempt&&!dead)unavailable();}
@@ -217,7 +222,7 @@
   window.addEventListener('pagehide',()=>{dead=true;attempt++;clearInterval(clockTimer);weather?.dispose();viewer?.dispose();});
   window.addEventListener('pageshow',event=>{if(event.persisted){dead=false;clockTimer=setInterval(clocks,1000);boot();}});
   async function start(){
-    try{model=await import('/earth-live-model.js?v=20261030-eclipse1');place={...model.PLACES[1]};
+    try{model=await import('/earth-live-model.js?v=20261030-tour1');place={...model.PLACES[1]};
       for(const p of model.PLACES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),country=document.createElement('small');name.textContent=p.name;country.textContent=p.country;b.append(name,country);b.addEventListener('click',()=>choose(p));$('earth-place-list').append(b);}
       renderPlace();clocks();clockTimer=setInterval(clocks,1000);
       await boot();

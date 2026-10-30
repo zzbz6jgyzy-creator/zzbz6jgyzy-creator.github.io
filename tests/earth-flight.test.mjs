@@ -255,6 +255,27 @@ function bodiesClear(f, startClear) {
   const g = makeFlight(); g.setAnimated(false); g.jump({ anchor: 'Earth', distance: 6371 * 3.4 }); let d2 = false; g.playPath(F.DEMO_PATH, { onDone: () => { d2 = true; } }); assert.ok(d2 && g.state.anchor === 'Earth');
   const h = makeFlight(); h.jump({ anchor: 'Earth', distance: 6371 * 3.4 }); h.playPath(F.DEMO_PATH); run(h, .5, 60); h.setMove(1, 0, 0); assert.ok(!h.state.path && h.state.mode !== 'auto', 'input stops a path');
   assert.throws(() => h.playPath([{ target: 'Ceres', distance: 5 }]), RangeError);
+  const tour = M.solarTourPath();
+  assert.deepEqual(tour.map(k => k.target), [...M.SOLAR_TOUR]);
+  for (const k of tour) { const b = makeFlight().bodyOf(k.target); assert.ok(k.distance > b.floor, k.target + ' tour pass is above the floor'); }
+  const tourFlight = makeFlight(); tourFlight.setAnimated(false); tourFlight.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 });
+  tourFlight.playPath(tour); assert.equal(tourFlight.state.anchor, 'Pluto');
+  const live = makeFlight(); live.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 });
+  const tourMargins = []; let lastSeg = null;
+  live.playPath(tour);
+  if (live.state.auto) { lastSeg = live.state.auto.seg; tourMargins.push([live.state.auto.target, lastSeg.margin]); }
+  let tourT = 0; while (live.state.path && tourT < 90) {
+    live.step(1 / 60); tourT += 1 / 60;
+    if (live.state.auto && live.state.auto.seg !== lastSeg) { lastSeg = live.state.auto.seg; tourMargins.push([live.state.auto.target, lastSeg.margin]); }
+    for (const c of clearances(live)) assert.ok(c.d + 1e-3 >= c.floor, c.id + ' floor during tour: ' + c.d + ' < ' + c.floor);
+  }
+  assert.ok(!live.state.path && live.state.anchor === 'Pluto', 'the live tour lands at Pluto');
+  assert.equal(tourMargins.length, tour.length);
+  for (const [id, margin] of tourMargins) assert.ok(margin >= 0, id + ' tour hop margin ' + margin);
+  const hold = makeFlight(); hold.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 }); hold.playPath(tour);
+  while (hold.state.mode === 'auto') hold.step(1 / 60);
+  assert.ok(hold.state.path && hold.state.pathHold > 0, 'the tour pauses on the first stop');
+  hold.cancelAutopilot(); assert.ok(!hold.state.path, 'cancel during a hold stops the tour');
   const pluto = makeFlight(); pluto.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 });
   assert.equal(pluto.flyTo('Pluto', { distance: 1188.3 * 6.5 }), true); assert.ok(pluto.state.auto.seg.margin >= 0, 'Earth to Pluto has a clear path');
   const io = makeFlight(); io.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 });

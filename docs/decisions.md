@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-30 · Earth explorer: a Solar System tour, not a cinema overlay
+
+- **Decision:** one panel button plays a 15-stop close tour (Sun to Pluto, including the Moon and the Galilean moons). No HUD on the canvas, no scored “cinema mode”, no invented worlds.
+- **Why:** the path player already existed for tests. The missing piece was a sourced itinerary and a way to start it. Distances sit above the same floors as free flight. Jupiter’s moons only appear as themselves, not as a fake Saturn-moon set.
+- **Stop:** any movement input cancels, same as a single-world fly-to, including Esc during the pause at a stop. Reduced motion jumps to Pluto.
+
 ## 2026-10-30 · Earth explorer: draw the eclipse cone, do not invent a path
 
 - **Decision:** when the Moon’s or Earth’s shadow actually falls on the other body, draw umbra and penumbra from Astronomy Engine’s cone. Do not stroke a path of totality, do not invent historical clouds for 8 Apr 2024, and do not change the shared Starship Earth shaders.
