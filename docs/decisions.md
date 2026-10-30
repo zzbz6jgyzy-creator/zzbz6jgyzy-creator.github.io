@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-30 · Earth explorer: draw the eclipse cone, do not invent a path
+
+- **Decision:** when the Moon’s or Earth’s shadow actually falls on the other body, draw umbra and penumbra from Astronomy Engine’s cone. Do not stroke a path of totality, do not invent historical clouds for 8 Apr 2024, and do not change the shared Starship Earth shaders.
+- **Why:** the clock already jumps to sourced eclipse peaks. The missing piece was the shadow. `CalcShadow` is not exported, so the explorer repeats that published formula (Montenbruck & Pfleger; same `k`/`p`/`r` as the vendored 2.1.19 source) on `GeoVector`/`GeoMoon`.
+- **Look:** a multiply overlay on Earth (above the cloud shell, dayside only) and a copper tint on the Moon. Classification is a spherical-Earth read of the cone (`u > 0`, then umbra/penumbra vs body radius). The library’s published kind can differ on hybrid eclipses because it uses the flattened geoid.
+- **Rejected:** a hand-drawn totality track, a downloaded NASA eclipse map, or darkening the Sun’s mesh.
+
 ## 2026-10-30 · Earth explorer: only bodies Astronomy Engine can place
 
 - **Decision:** add Pluto and Jupiter’s four large moons, with glow sprites for unresolved discs. Do not add Ceres, Titan or other moons this engine cannot position.

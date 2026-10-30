@@ -177,10 +177,14 @@ Owner-facing clock, 30 October 2026. All of it lives in `earth-time.js` (pure ma
 - **Live** (default): wall-clock UTC (`Date.now`). Sunlight, ephemerides and the Now strip follow it. Clouds are the latest EUMETSAT frame.
 - **Speed:** ±1, ±10, ±100, ±1 000, ±10 000, driven by `performance.now()` so a frozen `Date.now` (cloud fixtures) cannot stall it. Reverse flips the sign. 1× while already Live stays Live; any other speed leaves Live.
 - **Date:** a `datetime-local` labelled UTC; picking a value freezes the clock at that instant (speed 0).
-- **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Shadows are not drawn yet.
+- **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Umbra and penumbra are drawn (see Eclipse shadows).
 - **Editorial:** the provenance chip reads `Simulated time · HH:MM UTC D Mon YYYY`, and on Earth/Moon appends `· clouds not for this time` (or `· illustrative clouds`). The Clouds row says the same. No historical weather is invented.
 
-Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261030-bodies1`.
+Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261030-eclipse1`.
+
+## Eclipse shadows
+
+At any UTC instant, `eclipseShadows()` builds the umbra and penumbra cones from Astronomy Engine `GeoVector(Sun, light-time)` and `GeoMoon`, using the library’s `CalcShadow` formula (Montenbruck & Pfleger). A solar eclipse multiplies a dark disc onto Earth (and the cloud shell). A lunar eclipse tints the Moon, including the 88 km atmosphere the library adds to Earth’s shadow. No path of totality is drawn. Clouds stay the live infrared frame. Tests pin 8 Apr 2024 total solar and 14 Mar 2025 total lunar.
 
 ## Worlds beyond the eight planets
 

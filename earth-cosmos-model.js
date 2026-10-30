@@ -1,7 +1,7 @@
 /* Astronomical positions: Astronomy Engine 2.1.19 (MIT), EQJ / AU.
  * Galaxy morphology is a structural illustration, not a measured full stellar map. */
 import * as A from './vendor/astronomy/astronomy.js';
-export const AU=149597870.7,EARTH_RADIUS=6371,LY=9460730472580.8,PC=AU*206264.80624709636,KPC=1000*PC;
+export const AU=149597870.7,EARTH_RADIUS=6371,SUN_RADIUS=695700,EARTH_ECLIPSE_RADIUS=EARTH_RADIUS+88,LY=9460730472580.8,PC=AU*206264.80624709636,KPC=1000*PC;
 export const SUN_GALACTIC=[-8.2,0,.0208];
 export const MAX_RANGE=600000*LY;
 export const BODIES=Object.freeze([
@@ -56,7 +56,33 @@ export function ephemeris(date=new Date()){
   else p=scale(sub(vec(A.HelioVector(body.id,date)),earth),AU);
   positions[body.id]=p;
  }
- return{at:date.toISOString(),earthHelio:scale(earth,AU),positions,moonPhase:A.MoonPhase(date),axes:earthAxes(date)};
+ return{at:date.toISOString(),earthHelio:scale(earth,AU),positions,moonPhase:A.MoonPhase(date),axes:earthAxes(date),shadows:eclipseShadows(date)};
+}
+/** Geographic Earth-fixed frame of an EQJ vector: EQD then Greenwich sidereal, Y north. Same rotation `earthAxes` applies to the basis. */
+export function toEarthFixed(eqj,date=new Date()){
+ const time=A.MakeTime(date),e=A.RotateVector(A.Rotation_EQJ_EQD(time),new A.Vector(...eqj,time)),th=A.SiderealTime(time)*Math.PI/12;
+ return[e.x*Math.cos(th)+e.y*Math.sin(th),e.z,e.x*Math.sin(th)-e.y*Math.cos(th)];
+}
+function calcShadow(bodyR,target,dir){
+ const d2=dir[0]*dir[0]+dir[1]*dir[1]+dir[2]*dir[2];
+ const u=(dir[0]*target[0]+dir[1]*target[1]+dir[2]*target[2])/d2;
+ const r=AU*Math.hypot(u*dir[0]-target[0],u*dir[1]-target[1],u*dir[2]-target[2]);
+ return{u,r,k:SUN_RADIUS-(1+u)*(SUN_RADIUS-bodyR),p:-SUN_RADIUS+(1+u)*(SUN_RADIUS+bodyR)};
+}
+function classifySolar(s){if(s.u<=0||s.r>=s.p+EARTH_RADIUS)return'none';if(s.r>EARTH_RADIUS)return'partial';return s.k>0.014?'total':'annular';}
+function classifyLunar(s){const moonR=1737.4;if(s.u<=0||s.r>=s.p+moonR)return'none';if(s.r>=s.k+moonR)return'penumbral';if(s.r+moonR<s.k)return'total';return'partial';}
+/** Umbra/penumbra cones at this UTC instant. Same geometry as Astronomy Engine's internal CalcShadow (Montenbruck & Pfleger): light-time Sun (`GeoVector`) and `GeoMoon`. Lunar umbra uses the library's 88 km atmosphere. */
+export function eclipseShadows(date=new Date()){
+ const sun=vec(A.GeoVector(A.Body.Sun,date,true)),moon=vec(A.GeoMoon(date));
+ const solar=calcShadow(1737.4,[-moon[0],-moon[1],-moon[2]],[moon[0]-sun[0],moon[1]-sun[1],moon[2]-sun[2]]);
+ const lunar=calcShadow(EARTH_ECLIPSE_RADIUS,moon,[-sun[0],-sun[1],-sun[2]]);
+ const solarKind=classifySolar(solar),lunarKind=classifyLunar(lunar);
+ const moonKm=scale(moon,AU),sunKm=scale(sun,AU);
+ return{
+  at:date.toISOString(),
+  solar:{kind:solarKind,active:solarKind!=='none',r:solar.r,k:solar.k,p:solar.p,u:solar.u,dir:sub(moonKm,sunKm),moon:moonKm,sun:sunKm},
+  lunar:{kind:lunarKind,active:lunarKind!=='none',r:lunar.r,k:lunar.k,p:lunar.p,u:lunar.u,dir:scale(sunKm,-1),moon:moonKm,sun:sunKm},
+ };
 }
 export function orbit(id,date=new Date(),count=192){
  const b=BODIES.find(x=>x.id===id);if(!b?.period||b.parent)return[];
