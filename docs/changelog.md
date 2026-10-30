@@ -1,3 +1,11 @@
+## 2026-10-30 — Earth explorer: Pluto, Galilean moons, glow sprites
+
+- Pluto (Astronomy Engine `HelioVector`) and Jupiter’s Io, Europa, Ganymede and Callisto (`JupiterMoons`) join the Solar System view. Galilean mean radii come from the engine (JPL SSD figures); Pluto’s 1,188.3 km mean radius is the NASA/New Horizons figure.
+- No surface maps: those worlds are colour spheres. Ceres is omitted — this Astronomy Engine 2.1.19 build has no Ceres body.
+- Distant unresolved worlds keep an additive glow sprite (physical discs stay true size) plus the existing enlarged labels.
+- Galilean-moon labels only appear when Jupiter is nearby, so the Solar System view is not four stacked names on the giant.
+- `?v=` tokens are now `20261030-bodies1`.
+
 ## 2026-10-30 — Earth explorer: simulated time
 
 - New `earth-time.js`: a UTC clock with Live, speeds (±1 to ±10 000), freeze, a date picker and jump-to-next solar/lunar eclipse (Astronomy Engine `SearchGlobalSolarEclipse` / `SearchLunarEclipse`). Pause still only stops the camera.

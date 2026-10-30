@@ -20,7 +20,8 @@ There is no street-level or ground view: the closest the camera can get is
 - One Three.js context renders Earth, the Moon, planets, stars and galaxy. Camera
   range is stored in kilometres; floating origins and Earth/AU/light-year/kpc units
   avoid near/far precision loss. Body radii and distances are physical. Enlarged
-  labels make unresolved worlds selectable without enlarging their physical disks.
+  labels and a glow sprite make unresolved worlds selectable without enlarging their physical disks.
+  Pluto and Jupiter’s four large moons are included; Ceres is not (Astronomy Engine 2.1.19 has no Ceres body).
 - A four-stop scale rail and world finder provide direct navigation. Manual zoom
   traverses all scales (and the autopilot flies there on a curve); galaxy-scale zoom smoothly shifts the focus towards the
   galactic centre while keeping Earth as its logical home anchor. Zooming back in
@@ -179,7 +180,11 @@ Owner-facing clock, 30 October 2026. All of it lives in `earth-time.js` (pure ma
 - **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Shadows are not drawn yet.
 - **Editorial:** the provenance chip reads `Simulated time · HH:MM UTC D Mon YYYY`, and on Earth/Moon appends `· clouds not for this time` (or `· illustrative clouds`). The Clouds row says the same. No historical weather is invented.
 
-Tests: `tests/earth-time.test.mjs`. `?v=` token `20261030-time2`.
+Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261030-bodies1`.
+
+## Worlds beyond the eight planets
+
+Pluto uses Astronomy Engine `HelioVector`. Io, Europa, Ganymede and Callisto use `JupiterMoons` (jovicentric, added to Jupiter). They have no surface maps (colour spheres) and the Galilean moons have no IAU axes in this library (identity orientation). Ceres is not drawn. Distant worlds keep an additive glow sprite while their disc is under 10 px; pick radius stays 28 px. Moon labels only appear when the camera is within 180 parent-radii of Jupiter (or that moon is the focus).
 
 ## Zoom floor (no ground view)
 

@@ -12,10 +12,16 @@ export const BODIES=Object.freeze([
  {id:'Moon',radius:1737.4,period:27.322,texture:'moon-4k.webp',color:'#d8dcde',description:'Lunar Reconnaissance Orbiter surface imagery.'},
  {id:'Mars',radius:3389.5,period:686.98,texture:'mars-2k.webp',color:'#d59c7f',description:'A rocky planet with a thin atmosphere.'},
  {id:'Jupiter',radius:69911,period:4332.589,texture:'jupiter-2k.webp',color:'#d7b79e',description:'The largest planet in our Solar System.'},
+ {id:'Io',radius:A.IO_RADIUS_KM,parent:'Jupiter',moon:'io',color:'#e8d6a8',description:'The innermost of Jupiter’s four large moons. Colour sphere; no sourced surface map is loaded.'},
+ {id:'Europa',radius:A.EUROPA_RADIUS_KM,parent:'Jupiter',moon:'europa',color:'#d5cfc4',description:'An icy Galilean moon of Jupiter. Colour sphere; no sourced surface map is loaded.'},
+ {id:'Ganymede',radius:A.GANYMEDE_RADIUS_KM,parent:'Jupiter',moon:'ganymede',color:'#b7a48c',description:'The largest moon in the Solar System. Colour sphere; no sourced surface map is loaded.'},
+ {id:'Callisto',radius:A.CALLISTO_RADIUS_KM,parent:'Jupiter',moon:'callisto',color:'#8f8680',description:'The outermost of Jupiter’s four large moons. Colour sphere; no sourced surface map is loaded.'},
  {id:'Saturn',radius:58232,period:10759.22,texture:'saturn-2k.webp',color:'#e5d4a8',description:'An immense gas giant, surrounded by rings.'},
  {id:'Uranus',radius:25362,period:30685.4,texture:'uranus-2k.webp',color:'#b2d8dc',description:'An ice giant whose rotation axis lies almost in its orbital plane.'},
  {id:'Neptune',radius:24622,period:60189,texture:'neptune-2k.webp',color:'#8eaac9',description:'The outermost of the eight planets.'},
+ {id:'Pluto',radius:1188.3,period:90560,texture:null,color:'#c9b49a',description:'A dwarf planet in the outer Solar System. Colour sphere; no sourced surface map is loaded.'},
 ]);
+const HAS_AXIS=new Set(['Sun','Moon','Mercury','Venus','Earth','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto']);
 export const sub=(a,b)=>a.map((x,i)=>x-b[i]);
 export const scale=(v,n)=>v.map(x=>x*n);
 export const length=v=>Math.hypot(...v);
@@ -27,6 +33,7 @@ export function earthAxes(date=new Date()){
  return [[1,0,0],[0,1,0],[0,0,1]].map(v=>{const e=A.RotateVector(rotation,new A.Vector(...v,time));return[e.x*Math.cos(theta)+e.y*Math.sin(theta),e.z,e.x*Math.sin(theta)-e.y*Math.cos(theta)];});
 }
 export function bodyAxes(id,date=new Date()){
+ if(!HAS_AXIS.has(id))return[[1,0,0],[0,1,0],[0,0,1]];
  const a=A.RotationAxis(id,date),ra=a.ra*Math.PI/12,d=a.dec*Math.PI/180,w=a.spin*Math.PI/180;
  const ca=Math.cos(ra),sa=Math.sin(ra),cd=Math.cos(d),sd=Math.sin(d),cw=Math.cos(w),sw=Math.sin(w);
  const prime=[-sa*cw-ca*sd*sw,ca*cw-sa*sd*sw,cd*sw];
@@ -35,12 +42,31 @@ export function bodyAxes(id,date=new Date()){
 }
 export function ephemeris(date=new Date()){
  const earth=vec(A.HelioVector(A.Body.Earth,date)),positions={};
- for(const body of BODIES){let p;if(body.id==='Earth')p=[0,0,0];else if(body.id==='Moon')p=scale(vec(A.GeoMoon(date)),AU);else p=scale(sub(vec(A.HelioVector(body.id,date)),earth),AU);positions[body.id]=p;}
+ let jupiterGeo=null,jupiterMoons=null;
+ for(const body of BODIES){
+  let p;
+  if(body.id==='Earth')p=[0,0,0];
+  else if(body.id==='Moon')p=scale(vec(A.GeoMoon(date)),AU);
+  else if(body.parent==='Jupiter'){
+   if(!jupiterGeo)jupiterGeo=scale(sub(vec(A.HelioVector('Jupiter',date)),earth),AU);
+   if(!jupiterMoons)jupiterMoons=A.JupiterMoons(date);
+   const m=jupiterMoons[body.moon];
+   p=[jupiterGeo[0]+m.x*AU,jupiterGeo[1]+m.y*AU,jupiterGeo[2]+m.z*AU];
+  }
+  else p=scale(sub(vec(A.HelioVector(body.id,date)),earth),AU);
+  positions[body.id]=p;
+ }
  return{at:date.toISOString(),earthHelio:scale(earth,AU),positions,moonPhase:A.MoonPhase(date),axes:earthAxes(date)};
 }
 export function orbit(id,date=new Date(),count=192){
- const b=BODIES.find(x=>x.id===id);if(!b?.period)return[];
+ const b=BODIES.find(x=>x.id===id);if(!b?.period||b.parent)return[];
  return Array.from({length:count+1},(_,i)=>{const t=new Date(date.getTime()+b.period*86400000*(i/count-.5));return scale(vec(A.HelioVector(id,t)),AU);});
+}
+export const SATELLITE_SHOW_RADII=180;
+export function satelliteVisible(body,{focus,rangeToParentKm,parentRadius}={}){
+ if(!body?.parent)return true;
+ if(focus===body.id||focus===body.parent)return true;
+ return Number(rangeToParentKm)<=parentRadius*SATELLITE_SHOW_RADII;
 }
 export function levelFor(distance,focus='Earth'){
  if(focus!=='Earth'&&distance<BODIES.find(b=>b.id===focus)?.radius*120)return focus==='Moon'?'moon':'planet';

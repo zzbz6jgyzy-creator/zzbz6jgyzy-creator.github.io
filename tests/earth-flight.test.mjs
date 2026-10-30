@@ -254,7 +254,11 @@ function bodiesClear(f, startClear) {
   assert.ok(t > 4 && t < 14, 'demo path duration ' + t);
   const g = makeFlight(); g.setAnimated(false); g.jump({ anchor: 'Earth', distance: 6371 * 3.4 }); let d2 = false; g.playPath(F.DEMO_PATH, { onDone: () => { d2 = true; } }); assert.ok(d2 && g.state.anchor === 'Earth');
   const h = makeFlight(); h.jump({ anchor: 'Earth', distance: 6371 * 3.4 }); h.playPath(F.DEMO_PATH); run(h, .5, 60); h.setMove(1, 0, 0); assert.ok(!h.state.path && h.state.mode !== 'auto', 'input stops a path');
-  assert.throws(() => h.playPath([{ target: 'Pluto', distance: 5 }]), RangeError);
+  assert.throws(() => h.playPath([{ target: 'Ceres', distance: 5 }]), RangeError);
+  const pluto = makeFlight(); pluto.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 });
+  assert.equal(pluto.flyTo('Pluto', { distance: 1188.3 * 6.5 }), true); assert.ok(pluto.state.auto.seg.margin >= 0, 'Earth to Pluto has a clear path');
+  const io = makeFlight(); io.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 });
+  assert.equal(io.flyTo('Io', { distance: io.bodyOf('Io').radius * 6.5 }), true); assert.ok(io.state.auto.seg.margin >= 0, 'Earth to Io clears Jupiter');
 }
 
 // ---- no per-frame allocation in step()
