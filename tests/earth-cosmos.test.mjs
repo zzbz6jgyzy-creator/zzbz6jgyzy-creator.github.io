@@ -5,6 +5,14 @@ const date=new Date('2026-10-29T00:00:00Z'),e=M.ephemeris(date);
 assert.ok(M.length(e.positions.Moon)>350000&&M.length(e.positions.Moon)<405000);
 assert.ok(M.length(e.positions.Sun)/M.AU>.98&&M.length(e.positions.Sun)/M.AU<1.02);
 assert.ok(M.length(e.positions.Neptune)/M.AU>28&&M.length(e.positions.Neptune)/M.AU<32);
+assert.ok(M.length(e.positions.Pluto)/M.AU>28&&M.length(e.positions.Pluto)/M.AU<50,'Pluto is a trans-Neptunian dwarf planet');
+assert.ok(M.length(M.sub(e.positions.Io,e.positions.Jupiter))>350000&&M.length(M.sub(e.positions.Io,e.positions.Jupiter))<500000,'Io stays in its Jupiter orbit');
+assert.ok(M.length(M.sub(e.positions.Callisto,e.positions.Jupiter))>M.length(M.sub(e.positions.Io,e.positions.Jupiter)));
+assert.equal(M.orbit('Io').length,0);assert.ok(M.orbit('Pluto').length>10);
+assert.ok(M.BODIES.some(b=>b.id==='Pluto'&&!b.texture)&&M.BODIES.some(b=>b.parent==='Jupiter'));
+assert.equal(M.satelliteVisible({parent:'Jupiter'},{focus:'Sun',rangeToParentKm:M.AU,parentRadius:69911}),false);
+assert.equal(M.satelliteVisible({id:'Io',parent:'Jupiter'},{focus:'Jupiter',rangeToParentKm:69911*6.5,parentRadius:69911}),true);
+assert.equal(M.satelliteVisible({id:'Io',parent:'Jupiter'},{focus:'Io',rangeToParentKm:M.AU,parentRadius:69911}),true);
 assert.ok(e.moonPhase>=0&&e.moonPhase<360);
 // IAU Galactic-centre sight line: RA 266.4051°, Dec −28.936175°.
 const a=266.4051*Math.PI/180,b=-28.936175*Math.PI/180;
@@ -50,7 +58,7 @@ assert.ok(html.includes("sessionStorage.getItem('sd-earth-intro')") && js.includ
 assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes("localStorage.getItem('sd-earth-labels')"), 'label choice persists');
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
-const TOKEN = '20261030-time2';
+const TOKEN = '20261030-bodies1';
 for (const file of ['mission-control.html', 'earth-preview.js', 'earth-renderer.js', 'earth-cosmos.js', 'earth-weather.js', 'starship-replay-renderer.js']) {
   const text = file === 'mission-control.html' ? html : readFileSync(new URL('../' + file, import.meta.url), 'utf8');
   const hits = [...text.matchAll(/earth-[a-z0-9.-]+\.(?:js|css)\?v=([\w-]+)/g)];
@@ -80,4 +88,8 @@ assert.ok(rend.includes('MIN_ORBIT_ALTITUDE_KM') && rend.includes('earthMaxZoom'
 assert.ok(!rend.includes("from '/earth-time.js") && rend.includes("import('/earth-time.js?v="), 'earth-time.js is a dynamic import so the Starship replay never loads it');
 const timeSrc = readFileSync(new URL('../earth-time.js', import.meta.url), 'utf8');
 assert.ok(!timeSrc.includes("from './vendor/astronomy") && timeSrc.includes("import('./vendor/astronomy/astronomy.js')"), 'Astronomy Engine loads only for eclipse jumps');
+const cosmosSrc = readFileSync(new URL('../earth-cosmos.js', import.meta.url), 'utf8');
+assert.ok(cosmosSrc.includes('glowSize') && cosmosSrc.includes('new THREE.Points(glowGeo'), 'unresolved worlds keep a glow sprite');
+assert.ok(html.includes('Ceres is omitted') && html.includes('colour spheres') && html.includes('no sourced surface map is loaded'), 'about copy names the sourced bodies and the missing Ceres ephemeris');
+assert.ok(!M.BODIES.filter(b=>b.parent).some(b=>/Astronomy Engine has no surface/.test(b.description)), 'moon copy does not blame the ephemeris library for maps');
 console.log('Immersive viewer structure, hooks, credits-in-panel and session/label persistence verified.');

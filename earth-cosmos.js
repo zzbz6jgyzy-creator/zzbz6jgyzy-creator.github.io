@@ -1,7 +1,7 @@
 /* A floating-origin, physically scaled scene. The legacy Earth shaders stay shared with the replay; the explorer uses the physical ones. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import * as M from './earth-cosmos-model.js?v=20261030-time2';
-import {galaxyBlend} from './earth-flight.js?v=20261030-time2';
+import * as M from './earth-cosmos-model.js?v=20261030-bodies1';
+import {galaxyBlend} from './earth-flight.js?v=20261030-bodies1';
 const BASE='/assets/cosmos/';
 const matrixFromAxes=axes=>new THREE.Matrix4().makeBasis(...axes.map(v=>new THREE.Vector3(...v)));
 const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};
@@ -51,6 +51,11 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  const ring=new THREE.Mesh(new THREE.RingGeometry(1.24,2.32,160),new THREE.MeshBasicMaterial({color:'#c8b58e',side:THREE.DoubleSide,transparent:true,opacity:.72,depthWrite:false}));
  const ringUV=ring.geometry.getAttribute('uv'),rp=ring.geometry.getAttribute('position');for(let i=0;i<rp.count;i++)ringUV.setXY(i,(Math.hypot(rp.getX(i),rp.getY(i))-1.24)/(2.32-1.24),.5);
  ring.rotation.x=-Math.PI/2;system.get('Saturn').mesh.add(ring);
+ const glowNames=['Earth',...system.keys()],glowN=glowNames.length,glowPos=new Float32Array(glowN*3),glowCol=new Float32Array(glowN*3),glowSize=new Float32Array(glowN);
+ glowNames.forEach((id,i)=>{const c=new THREE.Color(id==='Earth'?'#a9deef':system.get(id).body.color);glowCol.set([c.r,c.g,c.b],i*3);});
+ const glowGeo=new THREE.BufferGeometry();glowGeo.setAttribute('position',new THREE.BufferAttribute(glowPos,3));glowGeo.setAttribute('color',new THREE.BufferAttribute(glowCol,3));glowGeo.setAttribute('aSize',new THREE.BufferAttribute(glowSize,1));
+ const glowMat=new THREE.ShaderMaterial({uniforms:{uRatio:{value:1},uOpacity:{value:1}},vertexShader:POINT_VERTEX,fragmentShader:POINT_FRAGMENT,vertexColors:true,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
+ const glows=new THREE.Points(glowGeo,glowMat);glows.frustumCulled=false;groupSolar.add(glows);
  const orbitGroup=new THREE.Group();groupSolar.add(orbitGroup);
  const orbitMaterial=new THREE.LineBasicMaterial({color:'#96a8bd',transparent:true,opacity:.18,depthWrite:false});
  let orbitReady=false;
@@ -75,7 +80,7 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   });
  }
  function requestBody(id){
-  const row=system.get(id);if(!row||pending.has(id)||failedBodies.has(id)||row.uniforms.uHasMap.value)return;
+  const row=system.get(id);if(!row||!row.body.texture||pending.has(id)||failedBodies.has(id)||row.uniforms.uHasMap.value)return;
   pending.add(id);load(row.body.texture).then(t=>{
    row.uniforms.uMap.value=t;row.uniforms.uHasMap.value=1;onStatus(id+' surface ready.');
    if(id==='Saturn')load('saturn-rings.webp').then(t=>{ring.material.map=t;ring.material.needsUpdate=true;onStatus('Saturn rings ready.');}).catch(()=>failures.push('Saturn ring map unavailable'));
@@ -125,6 +130,18 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
    const sunDir=M.sub(physical.positions.Sun,p);if(id==='Sun')sunDir[0]=1;row.uniforms.uSun.value.copy(world(sunDir).normalize());
    if(focus===id||(level==='solar'&&distanceKm>M.AU*.1&&distanceKm<M.AU*200))requestBody(id);
   }
+  const fovTan=Math.tan(THREE.MathUtils.degToRad(camera.fov/2)),viewH=renderer.domElement.clientHeight||innerHeight;
+  glowMat.uniforms.uRatio.value=ratio;
+  for(let i=0;i<glowN;i++){
+   const id=glowNames[i],body=id==='Earth'?{id:'Earth'}:system.get(id).body,pos=id==='Earth'?globe.position:system.get(id).mesh.position;
+   glowPos[i*3]=pos.x;glowPos[i*3+1]=pos.y;glowPos[i*3+2]=pos.z;
+   if(body.parent&&!M.satelliteVisible(body,{focus,rangeToParentKm:world(M.sub(physical.positions[body.parent],f)).multiplyScalar(1/renderUnit).distanceTo(camera.position)*renderUnit,parentRadius:M.BODIES.find(x=>x.id===body.parent).radius})){glowSize[i]=0;continue;}
+   const depth=pos.distanceTo(camera.position),radius=(id==='Earth'?M.EARTH_RADIUS:system.get(id).body.radius)/renderUnit;
+   const disc=depth>1e-9?Math.atan(radius/Math.max(depth,radius))/fovTan*viewH/2:1e6;
+   glowSize[i]=disc<10?Math.max(4,12-disc*.6):0;
+  }
+  glowGeo.attributes.position.needsUpdate=true;glowGeo.attributes.aSize.needsUpdate=true;
+  glows.visible=level!=='earth'&&level!=='moon'&&distanceKm<M.LY*.5;
   orbitGroup.visible=distanceKm>M.AU*.07&&distanceKm<M.AU*2000;
   if(orbitGroup.visible){ensureOrbits();orbitGroup.quaternion.setFromRotationMatrix(eqFrame);orbitGroup.position.copy(world(M.sub(physical.earthHelio.map(v=>-v),f))).multiplyScalar(1/renderUnit);orbitGroup.scale.setScalar(M.AU/renderUnit);}
   const sOrigin=world(M.sub(physical.positions.Sun,f)).multiplyScalar(1/renderUnit);groupStars.position.copy(sOrigin);groupStars.quaternion.setFromRotationMatrix(eqFrame);groupStars.scale.setScalar(M.PC/renderUnit);
@@ -142,9 +159,12 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  function labels(){
   if(disposed)return;const now=performance.now();if(now-lastLabels<70)return;lastLabels=now;
   const f=focusPosition(),rect=renderer.domElement.getBoundingClientRect(),out=[];
-  const rows=level==='galaxy'?[{id:'Galactic centre',p:M.galToEq(M.SUN_GALACTIC.map(v=>-v*M.KPC)),color:'#f0d7ae'},{id:'Sun · Solar System',p:physical.positions.Sun,color:'#b3dff4'}]:M.BODIES.map(b=>({id:b.id,p:physical.positions[b.id],color:b.color}));
+  const rows=level==='galaxy'?[{id:'Galactic centre',p:M.galToEq(M.SUN_GALACTIC.map(v=>-v*M.KPC)),color:'#f0d7ae'},{id:'Sun · Solar System',p:physical.positions.Sun,color:'#b3dff4'}]:M.BODIES.map(b=>({id:b.id,p:physical.positions[b.id],color:b.color,parent:b.parent}));
   const occupied=[];
-  for(const row of rows){if(level==='earth'&&row.id==='Earth'||level==='moon'&&row.id==='Moon'||level==='planet'&&row.id===focus)continue;const point=world(M.sub(row.p,f)).multiplyScalar(1/renderUnit);const fromCamera=point.clone().sub(camera.position);if(fromCamera.dot(camera.getWorldDirection(new THREE.Vector3()))<=0)continue;
+  for(const row of rows){
+   if(level==='earth'&&row.id==='Earth'||level==='moon'&&row.id==='Moon'||level==='planet'&&row.id===focus)continue;
+   if(row.parent&&!M.satelliteVisible(row,{focus,rangeToParentKm:world(M.sub(physical.positions[row.parent],f)).multiplyScalar(1/renderUnit).distanceTo(camera.position)*renderUnit,parentRadius:M.BODIES.find(b=>b.id===row.parent).radius}))continue;
+   const point=world(M.sub(row.p,f)).multiplyScalar(1/renderUnit);const fromCamera=point.clone().sub(camera.position);if(fromCamera.dot(camera.getWorldDirection(new THREE.Vector3()))<=0)continue;
    const p=point.project(camera);if(p.z< -1||p.z>1||Math.abs(p.x)>.96||Math.abs(p.y)>.86)continue;if(level==='earth'&&row.id==='Moon'){const target=world(M.sub(row.p,f)).multiplyScalar(1/renderUnit);const ray=new THREE.Ray(camera.position.clone(),target.clone().sub(camera.position).normalize());const hit=ray.intersectSphere(new THREE.Sphere(globe.position.clone(),globe.scale.x),new THREE.Vector3());if(hit&&hit.distanceTo(camera.position)<target.distanceTo(camera.position))continue;}let x=(p.x+1)*rect.width/2,y=(1-p.y)*rect.height/2;
    if(level==='earth'&&row.id!=='Moon')continue;
    const width=Math.max(55,row.id.length*7+16);x=THREE.MathUtils.clamp(x,12,Math.max(12,rect.width-width-12));let shift=0;while(occupied.some(o=>Math.abs(x-o.x)<(width+o.w)/2&&Math.abs(y+shift-o.y)<34)&&shift<120)shift+=32;
@@ -155,7 +175,9 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  // Nearest body to a screen point (within its disc or 28 px of its centre), for tap-to-travel. Not a hot path.
  function pickBody(clientX,clientY){
   const rect=renderer.domElement.getBoundingClientRect(),f=focusPosition(),forward=camera.getWorldDirection(new THREE.Vector3());let best=null,bestScore=Infinity;
-  for(const b of M.BODIES){const p=world(M.sub(physical.positions[b.id],f)).multiplyScalar(1/renderUnit),rel=p.clone().sub(camera.position),depth=rel.dot(forward);if(depth<=0)continue;
+  for(const b of M.BODIES){
+   if(b.parent&&!M.satelliteVisible(b,{focus,rangeToParentKm:world(M.sub(physical.positions[b.parent],f)).multiplyScalar(1/renderUnit).distanceTo(camera.position)*renderUnit,parentRadius:M.BODIES.find(x=>x.id===b.parent).radius}))continue;
+   const p=world(M.sub(physical.positions[b.id],f)).multiplyScalar(1/renderUnit),rel=p.clone().sub(camera.position),depth=rel.dot(forward);if(depth<=0)continue;
    const c=p.clone().project(camera),x=(c.x+1)/2*rect.width+rect.left,y=(1-c.y)/2*rect.height+rect.top;
    const discPx=Math.atan((b.radius/renderUnit)/depth)/Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*rect.height/2,reach=Math.max(28,discPx),d=Math.hypot(clientX-x,clientY-y);
    if(d<=reach&&d/reach<bestScore){bestScore=d/reach;best=b.id;}}

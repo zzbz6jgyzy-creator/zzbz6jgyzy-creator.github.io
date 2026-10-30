@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-30 · Earth explorer: only bodies Astronomy Engine can place
+
+- **Decision:** add Pluto and Jupiter’s four large moons, with glow sprites for unresolved discs. Do not add Ceres, Titan or other moons this engine cannot position.
+- **Why:** the explorer’s ephemerides are Astronomy Engine 2.1.19. Inventing Keplerian Ceres or Saturn-moon paths would break the sourced-figures rule. Pluto is a first-class `Body`; the Galilean moons have `JupiterMoons`. Their IAU rotation is not in the library, so those four moons keep identity axes and no texture.
+- **Sprites:** a sub-pixel mesh is unpickable. A glow billboard (additive point, sized in pixels, hidden when the disc is already large) plus the existing 28 px pick radius and label dots keep distant worlds selectable without inflating radii.
+- **Rejected:** downloading uncredited moon maps, or a simplified Ceres ellipse from memory.
+
 ## 2026-10-30 · Vendor MotionSites and elephant/goldfish as project files
 
 - **Decision:** install both as committed project skills/commands, not as user-global plugins or an npm CLI on the container.
