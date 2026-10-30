@@ -50,6 +50,10 @@ async def labels_check(page,width):
 # ---------------------------------------------------------------- flight (earth-flight.js): free flight, autopilot, floors
 async def wait_state(page,expr,timeout=90000):await page.wait_for_function("(()=>{const s=window.__earthPreview.getState();return "+expr+"})()",timeout=timeout)
 def dist3(a,b):return sum((x-y)**2 for x,y in zip(a,b))**.5
+async def dom_panel_click(page,sel):
+ """Open the panel and press a button through the DOM: the HUD animates and software GL starves actionability checks."""
+ if not await page.evaluate("document.getElementById('earth-panel').open"):await page.evaluate("document.getElementById('earth-menu').click()")
+ await page.wait_for_function("document.getElementById('earth-panel').open");await page.evaluate("s=>document.querySelector(s).click()",sel);await close_panels(page)
 async def touch(client,kind,pts):await client.send('Input.dispatchTouchEvent',{'type':kind,'touchPoints':[{'x':x,'y':y,'id':i+1} for i,(x,y) in enumerate(pts)]})
 async def flight_checks(page,ctx,width,errors):
  """Keyboard and touch flight, autopilot arrival, cancel on input, floors."""
@@ -112,7 +116,7 @@ async def flight_checks(page,ctx,width,errors):
  else:
   # --- touch: free flight from the panel, one finger looks, two fingers move, pinch changes speed
   client=await ctx.new_cdp_session(page)
-  await panel_click(page,'#flight-free');await wait_state(page,"s.flight.mode==='free'");s0=await page.evaluate(STATE)
+  await dom_panel_click(page,'#flight-free');await wait_state(page,"s.flight.mode==='free'");s0=await page.evaluate(STATE)
   await touch(client,'touchStart',[(195,420)])
   for k in range(1,9):await touch(client,'touchMove',[(195+k*12,420-k*9)])
   await touch(client,'touchEnd',[]);s1=await page.evaluate(STATE)
@@ -124,7 +128,7 @@ async def flight_checks(page,ctx,width,errors):
   await touch(client,'touchStart',[(160,500),(230,500)])
   for k in range(1,8):await touch(client,'touchMove',[(160-k*10,500),(230+k*10,500)])
   await touch(client,'touchEnd',[]);mult1=(await page.evaluate(STATE))['flight']['speedMult'];assert mult1>mult0*1.5,('pinch must raise the speed',mult0,mult1)
-  await panel_click(page,'#flight-orbit');await wait_state(page,"s.flight.mode==='orbit'")
+  await dom_panel_click(page,'#flight-orbit');await wait_state(page,"s.flight.mode==='orbit'")
  st=await page.evaluate(STATE);assert st['flight']['mode']=='orbit'
  assert not [e for e in errors if 'ERR_' not in e],errors
 
@@ -157,7 +161,7 @@ async def main():
  async with async_playwright() as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome'),args=ARGS)
   results=[];hosts=set()
-  for width,height in [(1440,900),(390,844),(768,1024)]:
+  for width,height in [w for w in [(1440,900),(390,844),(768,1024)] if not os.environ.get('COSMOS_WIDTHS') or str(w[0]) in os.environ['COSMOS_WIDTHS'].split(',')]:
    ctx=await browser.new_context(viewport={'width':width,'height':height},device_scale_factor=1,has_touch=width<1000,is_mobile=width<500,service_workers='block',record_video_dir=str(OUT/'cosmos-recording') if width==1440 else None,record_video_size={'width':width,'height':height} if width==1440 else None)
    async def route(r):
     u=urlparse(r.request.url)

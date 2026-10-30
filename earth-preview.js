@@ -125,7 +125,7 @@
     if(!cosmicModel){cosmicModel=await import('/earth-cosmos-model.js?v=20261030-flight1');for(const body of cosmicModel.BODIES){const b=document.createElement('button');b.type='button';const name=document.createElement('span'),detail=document.createElement('small');name.textContent=body.id;detail.textContent=body.radius.toLocaleString('en-GB')+' km mean radius';b.append(name,detail);b.addEventListener('click',()=>{$('cosmos-places-dialog').close();panel.close();viewer?.setScale(body.id);});$('cosmos-places-list').append(b);}}
     $('cosmos-places-dialog').showModal();
   }
-  $('flight-orbit').addEventListener('click',()=>viewer?.setFlightMode('orbit'));$('flight-free').addEventListener('click',()=>{viewer?.setFlightMode('free');if(matchMedia('(max-width:699px)').matches)panel.close();});$('flight-offer').addEventListener('click',()=>viewer?.setFlightMode('orbit'));
+  $('flight-orbit').addEventListener('click',()=>viewer?.setFlightMode('orbit'));$('flight-free').addEventListener('click',()=>{viewer?.setFlightMode('free');panel.close();});$('flight-offer').addEventListener('click',()=>viewer?.setFlightMode('orbit'));
   for(const b of root.querySelectorAll('[data-earth-scale]'))b.addEventListener('click',()=>{viewer?.setScale(b.dataset.earthScale);if(matchMedia('(max-width:699px)').matches)panel.close();});
   $('cosmos-deep-sky').addEventListener('click',()=>{const b=$('cosmos-deep-sky'),value=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(value));viewer?.setDeepSky(value);});
 
