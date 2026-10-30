@@ -1,3 +1,11 @@
+## 2026-10-30 — Earth explorer: simulated time
+
+- New `earth-time.js`: a UTC clock with Live, speeds (±1 to ±10 000), freeze, a date picker and jump-to-next solar/lunar eclipse (Astronomy Engine `SearchGlobalSolarEclipse` / `SearchLunarEclipse`). Pause still only stops the camera.
+- Sunlight, local time, place sun-phase and planet positions follow the chosen UTC time. The live EUMETSAT cloud frame is kept and labelled **not for this time** — no invented historical weather.
+- Provenance chip: `Simulated time · HH:MM UTC D Mon YYYY` whenever the clock is not live, with `· clouds not for this time` on Earth and the Moon. Panel Time section (Live, Reverse, speeds, UTC `datetime-local`, eclipse jumps).
+- `?v=` tokens are now `20261030-time2`. Stacked on free flight (#273).
+- Tests: `tests/earth-time.test.mjs` (live tracking, 1000×, reverse, freeze, frozen-Date.now 1000×, 8 Apr 2024 solar and 14 Mar 2025 lunar jumps). Simulated speed uses `performance.now()`, because the browser checks freeze `Date.now` for cloud fixtures.
+
 ## 2026-10-30 — Earth explorer: free flight, autopilot, camera paths
 
 - New `earth-flight.js`: a 6-DOF camera with quaternion orientation and frame-rate independent critically damped springs, replacing the linear zoom slider and the fixed fly-through. Orbit mode keeps the grab-the-surface drag, now with momentum and zoom toward the cursor or fingers; free flight (F) moves with inertia at 0.35 altitudes per second, so speed follows the distance to the nearest surface from metres per second to light-years per second.

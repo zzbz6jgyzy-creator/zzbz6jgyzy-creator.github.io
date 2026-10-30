@@ -1,6 +1,6 @@
 /* Supercharged Daily Earth preview. Local Three.js r170 (MIT); optional dated satellite cloud texture. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM} from '/earth-live-model.js?v=20261030-flight1';
+import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM} from '/earth-live-model.js?v=20261030-time2';
 
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;
@@ -440,7 +440,9 @@ export const earthShadersPhysical = Object.freeze({ vertex: PBR_VERTEX, surface:
  * onError?:(error:Error)=>void, onChange?:(state:object)=>void}} options
  */
 export async function initEarth(options = {}) {
-  const Flight = await import('/earth-flight.js?v=20261030-flight1'); // loaded here so the Starship replay, which only needs the shaders, never downloads it
+  const Flight = await import('/earth-flight.js?v=20261030-time2'); // loaded here so the Starship replay, which only needs the shaders, never downloads it
+  const Time = await import('/earth-time.js?v=20261030-time2');
+  const clock = Time.createClock();
   const { canvas, onStatus = () => {}, onReady = () => {}, onError = () => {}, onChange = () => {} } = options;
   if (!(canvas instanceof HTMLCanvasElement)) throw new TypeError('An Earth canvas is required.');
   const textureBase = (options.textureBase || '/assets/earth').replace(/\/$/, '');
@@ -511,7 +513,7 @@ export async function initEarth(options = {}) {
   const cameraOrbit=new THREE.Quaternion().setFromEuler(new THREE.Euler(-.10,0,0,'YXZ'));
   // Open on a naturally illuminated three-quarter Earth without changing geographic sunlight.
   if(options.view==='live'){
-    const p=solarPosition(),point=geoVector(clamp(p.lat*.5,-18,18),p.lon+38);
+    const p=solarPosition(clock.ms()),point=geoVector(clamp(p.lat*.5,-18,18),p.lon+38);
     const direction=new THREE.Vector3(point.x,point.y,point.z).applyQuaternion(globe.quaternion);
     const north=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);
     cameraOrbit.setFromRotationMatrix(new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),north));
@@ -525,12 +527,13 @@ export async function initEarth(options = {}) {
   let gestureStart = null, gestureMoved = false;
   function updateLiveSun() {
     if (currentView !== 'live') return;
-    const position = solarPosition();
+    const position = solarPosition(clock.ms());
     const direction = geoVector(position.lat, position.lon);
     globe.updateMatrixWorld(true);
     sun.set(direction.x,direction.y,direction.z).applyQuaternion(globe.quaternion).normalize();
     targetSun.copy(sun);
   }
+  function snapSun() { updateLiveSun(); sun.copy(targetSun); }
 
   const pointers = new Map();
   let width = 1, height = 1, fitDistance = 3.3, yaw = 0, pitch = 0.10;
@@ -544,11 +547,11 @@ export async function initEarth(options = {}) {
   const maxTexture = renderer.capabilities.maxTextureSize;
   const cleanups = [];
   const bind = (target, type, handler, opts) => { target.addEventListener(type, handler, opts); cleanups.push(() => target.removeEventListener(type, handler, opts)); };
-  const running = () => ready && (!paused || travelling()) && visible && !document.hidden && !disposed && !contextLost;
+  const running = () => ready && (!paused || travelling() || clock.moving()) && visible && !document.hidden && !disposed && !contextLost;
   const notify = () => { if (!disposed) onChange(getState()); };
 
   function getState() {
-    return { ready, frames, running: running(), paused, reducedMotion: motion.matches, quality, view: currentView, rotation: globe.rotation.y, zoom: zoomNow(), cameraYaw: yaw, cameraPitch: pitch, textureCount: Object.values(maps).filter(Boolean).length, textureWidth: maps.day?.image?.width || 0, textureTier: appliedTier.toUpperCase(), maxTextureSize: maxTexture, contextLost, detailMessage, orbitQuaternion:Array.from(flight.orbitQuaternion()), cameraUp:camera.up.toArray(), distanceKm:flight.distance(), scene:cosmicState?.level||'earth', focus:focusId(),travelling:travelling(), flight:flightInfo(), cameraKm:Array.from(flight.worldOf(camKm)),cosmos:cosmos?.getState()||null, studioSupported:maxTexture>=16384&&navigator.deviceMemory>=8&&innerWidth>=1100, relief:uniforms.uRelief.value>0, skyReady:cosmicState?.skyReady||false, sun:solarPosition(), weatherAt,cloudKind:uniforms.uCloudIR.value?'infrared':'illustrative',observedCloud:!!observedCloud, selectedPoint };
+    return { ready, frames, running: running(), paused, reducedMotion: motion.matches, quality, view: currentView, rotation: globe.rotation.y, zoom: zoomNow(), cameraYaw: yaw, cameraPitch: pitch, textureCount: Object.values(maps).filter(Boolean).length, textureWidth: maps.day?.image?.width || 0, textureTier: appliedTier.toUpperCase(), maxTextureSize: maxTexture, contextLost, detailMessage, orbitQuaternion:Array.from(flight.orbitQuaternion()), cameraUp:camera.up.toArray(), distanceKm:flight.distance(), scene:cosmicState?.level||'earth', focus:focusId(),travelling:travelling(), flight:flightInfo(), cameraKm:Array.from(flight.worldOf(camKm)),cosmos:cosmos?.getState()||null, studioSupported:maxTexture>=16384&&navigator.deviceMemory>=8&&innerWidth>=1100, relief:uniforms.uRelief.value>0, skyReady:cosmicState?.skyReady||false, sun:solarPosition(clock.ms()), time:clock.getState(), weatherAt,cloudKind:uniforms.uCloudIR.value?'infrared':'illustrative',observedCloud:!!observedCloud, selectedPoint };
   }
   function flightInfo(){
     const f=flight.state;
@@ -569,12 +572,12 @@ export async function initEarth(options = {}) {
     camera.updateMatrixWorld();
     if(cosmos){if(cosmos.getFocus()!==fs.anchor)cosmos.setFocus(fs.anchor);// Star, sky and galaxy fades follow the distance to the Sun in free flight and autopilot, so they stay continuous when the anchor changes.
       let fadeKm=distanceKm;if(fs.mode!=='orbit'){const sun=flight.bodyOf('Sun');if(sun){flight.worldOf(camKm);fadeKm=Math.hypot(camKm[0]-sun.pos[0],camKm[1]-sun.pos[1],camKm[2]-sun.pos[2]);}}
-      cosmicState=cosmos.update({distanceKm,nearKm:Math.max(fs.altitude,1e-3),blend:fs.mode==='orbit',live:fs.mode!=='orbit'||flight.active(),fadeKm});fallbackStars.visible=!cosmicState?.skyReady;}
+      cosmicState=cosmos.update({distanceKm,nearKm:Math.max(fs.altitude,1e-3),blend:fs.mode==='orbit',live:fs.mode!=='orbit'||flight.active()||clock.moving(),fadeKm,date:clock.date(),simulated:!clock.isLive()});fallbackStars.visible=!cosmicState?.skyReady;}
     else {camera.near=clamp((distance-1)*.4,.002,.1);camera.far=Math.max(150,distance*100);camera.updateProjectionMatrix();}
   }
   async function ensureCosmos(){
     if(cosmos)return cosmos;if(cosmosPromise)return cosmosPromise;
-    cosmosPromise=import('/earth-cosmos.js?v=20261030-flight1').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
+    cosmosPromise=import('/earth-cosmos.js?v=20261030-time2').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
       onLabels:rows=>options.onLabels?.(rows),onStatus:message=>{if(!disposed){onStatus(message);renderDemand();}}
     })).then(world=>{if(disposed){world.dispose();return null;}cosmos=world;flight.setBodies(world.bodyList());flight.setPositionProvider(world.scenePosition);cosmos.setFocus(focusId());cosmos.setDeepSky(deepSky);renderDemand();return world;}).catch(()=>{cosmosPromise=null;detailMessage='The wider view could not load. Earth is still available.';flight.setBodies([{id:'Earth',radius:EARTH_KM}]);flight.jump({anchor:'Earth',distance:Math.min(flight.distance(),fitDistance*EARTH_KM/.65)});renderDemand();return null;});
     return cosmosPromise;
@@ -582,7 +585,7 @@ export async function initEarth(options = {}) {
   // Fly to a world or a scale preset on the autopilot's curved path. Body ids and the presets earth/moon/solar/galaxy are accepted.
   async function setScale(id){
     const world=await ensureCosmos();if(!world||disposed)return;
-    const model=await import('/earth-cosmos-model.js?v=20261030-flight1');
+    const model=await import('/earth-cosmos-model.js?v=20261030-time2');
     if(id==='Earth')id='earth';
     const preset=model.scalePreset(id,fitDistance);
     const q=id==='earth'?initialOrbit:world.recommendedOrbit(id==='galaxy');
@@ -608,11 +611,14 @@ export async function initEarth(options = {}) {
     if (now - lastRender >= 1000 / rate - 0.5) {
       const dt = lastRender ? Math.min((now - lastRender) / 1000, 0.12) : elapsed;
       lastRender = now;
-      // The camera runs on wall-clock time (capped at a quarter second), so a slow frame never stretches an autopilot trip.
-      flight.step(lastFlight?Math.min((now-lastFlight)/1000,.25):dt);lastFlight=now;
-
-      sun.lerp(targetSun, 1 - Math.exp(-dt * 4)).normalize();
-      if (!paused&&flight.state.mode==='orbit'&&currentView!=='custom'&&now > interactionUntil&&!pointers.size&&!flight.active()){spinAxis.set(0,1,0).applyQuaternion(globe.quaternion);flight.spinOrbit(spinAxis.x,spinAxis.y,spinAxis.z,-dt*.012);}
+      clock.tick();
+      if (!paused || travelling()) {
+        // The camera runs on wall-clock time (capped at a quarter second), so a slow frame never stretches an autopilot trip.
+        flight.step(lastFlight?Math.min((now-lastFlight)/1000,.25):dt);lastFlight=now;
+        if (!paused&&flight.state.mode==='orbit'&&currentView!=='custom'&&now > interactionUntil&&!pointers.size&&!flight.active()){spinAxis.set(0,1,0).applyQuaternion(globe.quaternion);flight.spinOrbit(spinAxis.x,spinAxis.y,spinAxis.z,-dt*.012);}
+      } else lastFlight = now;
+      if (clock.moving() && Math.abs(clock.speed()) > 1) sun.copy(targetSun);
+      else sun.lerp(targetSun, 1 - Math.exp(-dt * 4)).normalize();
       if (!observedCloud && currentView !== 'live' && currentView !== 'custom') cloudAngle += dt * 0.0024;
       clouds.rotation.y = cloudAngle;
       uniforms.uCloudOffset.value = -cloudAngle / TAU;
@@ -883,7 +889,20 @@ export async function initEarth(options = {}) {
     if(Number.isFinite(camLat)&&Number.isFinite(camLon)){const p=geoVector(camLat,camLon),v=new THREE.Vector3(p.x,p.y,p.z).applyQuaternion(globe.quaternion),n=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);lookFrom(v,n);}
     if(Number.isFinite(z))flight.setDistance(fitDistance*EARTH_KM/z,true);renderDemand();
   }
-  const api = { setFlightMode, flyTo: setScale, cancelAutopilot: () => { flight.cancelAutopilot(); renderDemand(); notify(); }, getFlight: flightInfo, playPath: async keys => { await ensureCosmos(); flight.setAnimated(animatedNow()); return flight.playPath(keys, { onDone: () => { renderDemand(); notify(); } }); }, __cinemaDemo: async () => api.playPath(Flight.DEMO_PATH), setSceneGeo, getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, viewLocation, minAltitudeKm:MIN_ORBIT_ALTITUDE_KM, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive,setScale,setDeepSky,dispose, turn: name => { if (!disposed) discreteKey(name); } };
+  function applyTime() { setView('live'); snapSun(); schedule(); renderDemand(); notify(); }
+  function setTimeLive() { if (disposed) return clock.getState(); clock.setLive(); applyTime(); return clock.getState(); }
+  function setTimeSpeed(mag) {
+    if (disposed) return clock.getState();
+    const n = Number(mag); if (!Number.isFinite(n) || n <= 0) return clock.getState();
+    const s = clock.getState();
+    if (s.live && n === 1) return s;
+    clock.setSpeed((s.live ? 1 : (s.speed < 0 ? -1 : 1)) * n); applyTime(); return clock.getState();
+  }
+  function setTimeDate(value) { if (disposed) return clock.getState(); clock.setDate(value); applyTime(); return clock.getState(); }
+  function reverseTime() { if (disposed) return clock.getState(); clock.reverse(); applyTime(); return clock.getState(); }
+  async function jumpSolarEclipse() { if (disposed) return null; const info = await clock.jumpSolar(); applyTime(); return info; }
+  async function jumpLunarEclipse() { if (disposed) return null; const info = await clock.jumpLunar(); applyTime(); return info; }
+  const api = { setFlightMode, flyTo: setScale, cancelAutopilot: () => { flight.cancelAutopilot(); renderDemand(); notify(); }, getFlight: flightInfo, playPath: async keys => { await ensureCosmos(); flight.setAnimated(animatedNow()); return flight.playPath(keys, { onDone: () => { renderDemand(); notify(); } }); }, __cinemaDemo: async () => api.playPath(Flight.DEMO_PATH), setSceneGeo, getState, pause, resume, togglePause, setView, setQuality, setZoom, zoomBy, viewLocation, minAltitudeKm:MIN_ORBIT_ALTITUDE_KM, stepOrbit, reset, pickLocation, focusLocation, setWeatherTexture, setActive,setScale,setDeepSky,dispose, turn: name => { if (!disposed) discreteKey(name); }, setTimeLive, setTimeSpeed, setTimeDate, reverseTime, jumpSolarEclipse, jumpLunarEclipse };
   // Test hooks (not part of the interface): only when a test sets window.__earthTestHooks before the page loads.
   if (window.__earthTestHooks) Object.assign(api, { pickBodyAt: (x, y) => cosmos?.pickBody(x, y) || null, __seek: tau => { const a = flight.state.auto; if (!a) return false; a.seg.duration = 1e9; a.t = clamp(tau, 0, 1); flight.step(0); renderDemand(); return true; } });
   if (canvas.tabIndex < 0) canvas.tabIndex = 0;

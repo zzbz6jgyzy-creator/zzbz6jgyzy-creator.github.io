@@ -2,6 +2,15 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-30 · Earth explorer: a simulated UTC clock, clouds stay live
+
+- **Decision:** time is a separate module (`earth-time.js`), like the flight camera. Live follows the wall clock. Speeds, reverse, a picked date and eclipse jumps are simulated UTC. Existing Pause still only stops the camera.
+- **Why:** sunlight and ephemerides already take a Date; the missing piece was a clock the panel can drive. Jump-to-next eclipse uses Astronomy Engine search (already vendored) so the date is sourced, not invented. Shadow drawing is a later PR.
+- **Clouds:** the EUMETSAT infrared frame is a real observation at a real time. Simulated time does not invent a historical cloud map. The provenance chip on Earth/Moon reads `Simulated time · … · clouds not for this time` (or `· illustrative clouds` if the feed is down); the Clouds row says the same.
+- **1× from Live stays Live.** Taking 10× (or a date, or reverse) leaves Live. Live is the only way back to the wall clock.
+- **Picker is UTC.** `datetime-local` has no zone, so the field is labelled UTC and parsed as UTC.
+- **Speed uses monotonic elapsed time.** Live still reads `Date.now`. Browser tests freeze `Date.now` for the cloud fixtures, so 1000× would otherwise stand still.
+
 ## 2026-10-30 · Earth explorer: Ground mode removed, orbital zoom floor
 
 - **Decision (owner, 30 Oct 2026):** remove Ground mode and the street map entirely. In the owner's words it "zooms into a flat map, it looks terrible". The camera stops well above the surface. First cut 400 km (ISS-like); the owner then chose **2,500 km** on 30 Oct 2026 after seeing 400, 1,000 and 2,500 km samples, because the imagery is only crisp from there. To be lowered when sharper imagery lands.
