@@ -1027,7 +1027,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-10-29T21:56:18Z",
+    "checked": "2026-10-30T11:32:03Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -1154,6 +1154,13 @@
       },
       {
         "date": "2026-10-29",
+        "cybercab": 573,
+        "modelY": 507,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "date": "2026-10-30",
         "cybercab": 573,
         "modelY": 507,
         "other": 0,
@@ -1312,11 +1319,19 @@
         "modelY": 507,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-10-30T11:32:03Z",
+        "date": "2026-10-30",
+        "cybercab": 573,
+        "modelY": 507,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-10-29T21:56:18Z",
+    "checked": "2026-10-30T11:32:03Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
@@ -1325,7 +1340,7 @@
       "Texas": {
         "count": 507,
         "kind": "registered",
-        "asOf": "2026-10-29",
+        "asOf": "2026-10-30",
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
         "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."
       },
@@ -1569,6 +1584,21 @@
           "count": 18,
           "asOf": "2026-07-22"
         }
+      },
+      {
+        "date": "2026-10-30",
+        "Texas": {
+          "count": 507,
+          "asOf": "2026-10-30"
+        },
+        "California": {
+          "count": 164,
+          "asOf": "2026-08-26"
+        },
+        "Florida": {
+          "count": 18,
+          "asOf": "2026-07-22"
+        }
       }
     ]
   },
@@ -1581,7 +1611,7 @@
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "revision": "3857624ca629688cbfbedde1b75d2ece7c2af0f6"
     },
-    "checked": "2026-10-29T21:56:18Z",
+    "checked": "2026-10-30T11:32:03Z",
     "features": [
       {
         "type": "Feature",
@@ -2525,7 +2555,7 @@
         "statusSrc": "https://robotracker.app/updates"
       }
     },
-    "checked": "2026-10-29T21:56:18Z"
+    "checked": "2026-10-30T11:32:03Z"
   },
   "checks": {
     "schemaVersion": 1,
