@@ -1,7 +1,7 @@
 ## 2026-10-30 — Earth explorer: phones (safe areas, landscape, keyboard)
 
 - Fixed on phones: a 420 px minimum height that cut the bottom of landscape screens (provenance chip below the fold, canvas taller than the screen); dialogs and the panel ignoring the notch and home indicator (close buttons inside the notch); the toast wider than the safe area in landscape; the intro card clipped at the top on short or large-text screens; focus rings on dialog and panel close buttons clipped; 24 px and 26 px targets; 14 px search input that made iOS Safari zoom on focus; landscape phones under 700 px wide getting a bottom sheet with about 300 px of height.
-- Added: `--sat/--sar/--sab/--sal` safe-area variables, `dvh` heights with `svh`/`vh` fallbacks, a side sheet for short screens, `visualViewport` keyboard handling for dialogs, `touch-action:manipulation` and `overscroll-behavior`.
+- Added: `--sat/--sar/--sab/--sal` safe-area variables, `svh` hero height (`dvh` only for the panel and dialogs), a side sheet for short screens, `visualViewport` keyboard handling for dialogs, `touch-action:manipulation` and `overscroll-behavior`.
 - Test: `tests/earth-phone-browser.py` (nine devices, portrait and landscape, CDP safe-area emulation, large text, keyboard) wired into `earth-preview-checks.yml` as group `phone`. `tests/earth-cosmos.test.mjs` now expects `20261030-phone1` on the page's own `earth-preview` tags and leaves the renderer import tokens at `noground1`.
 - `?v=` on `earth-preview.css` and `earth-preview.js` in `mission-control.html` is `20261030-phone1`. See `docs/earth-cosmos.md`, "Phone support".
 

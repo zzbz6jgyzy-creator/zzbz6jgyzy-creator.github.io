@@ -2,7 +2,7 @@
 (Emulation.setSafeAreaInsetsOverride makes env(safe-area-inset-*) real in Chromium), portrait and landscape, shrunken toolbar
 heights, large text. Every visible control must sit fully inside the viewport minus the safe insets.
 
-Environment: CHROMIUM_PATH (Chrome/Chromium binary), PHONE_ONLY (comma separated device names), PHONE_SHOTS (directory for
+Environment: CHROMIUM_PATH (Chrome/Chromium binary), PHONE_GROUP (ios|android) or PHONE_ONLY (comma separated device names), PHONE_SHOTS (directory for
 screenshots; contact sheets are built from them), PHONE_AUDIT=1 (report violations instead of failing)."""
 import asyncio, json, mimetypes, os, pathlib, re, shutil, sys
 from urllib.parse import unquote, urlparse
@@ -97,7 +97,7 @@ async def check_page(run, page, tag):
         run.add(tag, f'horizontal overflow {over}')
 
 async def shot(page, name):
-    await page.screenshot(path=str(SHOTS / (name + '.png')), animations='disabled', timeout=45000)
+    await page.screenshot(path=str(SHOTS / (name + '.jpg')), type='jpeg', quality=72, animations='disabled', timeout=45000)
 
 async def scroll_to_end(run, page, tag, container, last_selector, ins):
     """The last item of a scroller must be reachable and clear of the home indicator."""
@@ -108,6 +108,10 @@ async def scroll_to_end(run, page, tag, container, last_selector, ins):
     if info['bottom'] > info['h'] - ins['bottom'] + .5 or info['bottom'] > info['cb'] + .5:
         run.add(tag, f'last item {last_selector} not reachable: {info}')
     return info
+
+async def frames(page):
+    # Software GL starves animation frames; two real frames guarantee the page's queued sync has run.
+    await page.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(r,50))))')
 
 async def settle(page):
     await page.evaluate('document.getAnimations().forEach(a=>{try{if(isFinite(a.effect.getComputedTiming().endTime))a.finish()}catch(e){}})')
@@ -132,7 +136,7 @@ async def scenario(browser, run, dev, landscape, extra=None):
     vw, vh = (h, w) if landscape else (w, h)
     tag = f"{name}-{'land' if landscape else 'port'}"
     ins = insets_for(dev, landscape)
-    ctx = await browser.new_context(viewport={'width': vw, 'height': vh}, device_scale_factor=dpr, is_mobile=w < 600, has_touch=True,
+    ctx = await browser.new_context(viewport={'width': vw, 'height': vh}, device_scale_factor=min(dpr, 2), is_mobile=w < 600, has_touch=True,
         user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1' if name.startswith('iphone') else None)
     ctx.set_default_timeout(30000)
     await ctx.add_init_script('Date.now=()=>1793278800000;')
@@ -156,9 +160,8 @@ async def scenario(browser, run, dev, landscape, extra=None):
         await page.locator('#earth-enter').tap()
         await expect(page.locator('#earth-intro')).to_be_hidden(timeout=20000)
         await wait_ready(page)
-        await page.wait_for_function("document.getElementById('earth-note').hidden===false||true")
         # 2. Inside: HUD, toasts, provenance chip, focus name, canvas coverage.
-        await page.evaluate("""(()=>{const f=document.getElementById('cosmos-focus-name');f.textContent='Neptune and its moons';f.classList.add('is-visible');
+        await page.evaluate("""(()=>{const f=document.getElementById('cosmos-focus-name');f.textContent='Our stellar neighbourhood';f.classList.add('is-visible');
           const n=document.getElementById('earth-note');n.textContent='Fly to a place: choose where you want to look.';n.hidden=false;})()""")
         await page.wait_for_timeout(300)
         await page.evaluate("document.getElementById('earth-note').hidden=false")
@@ -174,6 +177,13 @@ async def scenario(browser, run, dev, landscape, extra=None):
             r = await page.evaluate(f"document.querySelector('{sel}').getBoundingClientRect().toJSON()")
             if r['left'] < sl - .5 or r['right'] > sr + .5 or r['bottom'] > sb + .5 or r['top'] < st - .5:
                 run.add(tag, f'{sel} outside safe area {r}')
+        ov = await page.evaluate("(()=>{const q=s=>document.querySelector(s).getBoundingClientRect();const f=q('#cosmos-focus-name');return ['#earth-note','#earth-provenance','.earth-toasts'].map(s=>{const r=q(s);return [s,!(r.width&&r.height)||f.bottom<=r.top||f.top>=r.bottom||f.right<=r.left||f.left>=r.right]})})()")
+        for sel, ok in ov:
+            if not ok:
+                run.add(tag, f'focus name overlaps {sel}')
+        fw = await page.evaluate("(()=>{const f=document.getElementById('cosmos-focus-name');return f.getBoundingClientRect().height<=2*parseFloat(getComputedStyle(f).lineHeight)+1})()")
+        if not fw:
+            run.add(tag, 'focus name wraps onto more than two lines')
         cv = await page.evaluate("(()=>{const r=document.getElementById('earth-canvas').getBoundingClientRect();return [r.left,r.top,r.right,r.bottom,innerWidth,innerHeight,document.getElementById('earth-canvas').width,document.getElementById('earth-canvas').height,devicePixelRatio]})()")
         if cv[0] > .5 or cv[1] > .5 or cv[2] < cv[4] - .5 or cv[3] < cv[5] - .5:
             run.add(tag, f'canvas does not cover the viewport {cv}')
@@ -259,7 +269,7 @@ async def large_text(browser, run, dev, landscape, k=1.5):
     vw, vh = (h, w) if landscape else (w, h)
     tag = f"{name}-{'land' if landscape else 'port'}-text{int(k*100)}"
     ins = insets_for(dev, landscape)
-    ctx = await browser.new_context(viewport={'width': vw, 'height': vh}, device_scale_factor=dpr, is_mobile=True, has_touch=True)
+    ctx = await browser.new_context(viewport={'width': vw, 'height': vh}, device_scale_factor=min(dpr, 2), is_mobile=True, has_touch=True)
     ctx.set_default_timeout(30000)
     await route_setup(ctx, 'fail')
     page = await ctx.new_page()
@@ -294,10 +304,10 @@ async def large_text(browser, run, dev, landscape, k=1.5):
         await ctx.close()
 
 async def keyboard_case(browser, run, dev):
-    """The search field must stay on screen when a keyboard takes ~40% of the height (layout viewport shrinks on Android)."""
+    """The search field must stay on screen when a keyboard takes ~40% of the height (stubbed VisualViewport, as Chrome 108+ and iOS report it)."""
     name, w, h, dpr, _, _, _ = dev
     ins = insets_for(dev, False)
-    ctx = await browser.new_context(viewport={'width': w, 'height': h}, device_scale_factor=dpr, is_mobile=True, has_touch=True)
+    ctx = await browser.new_context(viewport={'width': w, 'height': h}, device_scale_factor=min(dpr, 2), is_mobile=True, has_touch=True)
     ctx.set_default_timeout(30000)
     await route_setup(ctx, 'fail')
     page = await ctx.new_page()
@@ -311,11 +321,33 @@ async def keyboard_case(browser, run, dev):
         await page.evaluate("document.getElementById('earth-explore').click()")
         await expect(page.locator('#earth-search-dialog')).to_be_visible()
         await page.locator('#earth-search').focus()
-        await page.set_viewport_size({'width': w, 'height': int(h * .55)})
-        await page.wait_for_timeout(700)
-        r = await page.evaluate("(()=>{const i=document.getElementById('earth-search').getBoundingClientRect();return [i.top,i.bottom,innerHeight]})()")
-        if r[0] < 0 or r[1] > r[2]:
-            run.add(tag, f'search input hidden behind the keyboard {r}')
+        stub = """([h, top, scale]) => {
+          const P = VisualViewport.prototype;
+          Object.defineProperty(P, 'height', {configurable: true, get: () => h});
+          Object.defineProperty(P, 'offsetTop', {configurable: true, get: () => top});
+          Object.defineProperty(P, 'scale', {configurable: true, get: () => scale});
+          visualViewport.dispatchEvent(new Event('resize'));
+        }"""
+        kb = int(h * .55)
+        # Pinch zoom shrinks the visual viewport too: that is not a keyboard.
+        await page.evaluate(stub, [kb, 0, 2])
+        await frames(page)
+        if await page.evaluate("document.documentElement.classList.contains('kb-open')"):
+            run.add(tag, 'pinch zoom (scale 2) was treated as a keyboard')
+        await page.evaluate(stub, [kb, 40, 1])
+        await page.wait_for_function("document.documentElement.classList.contains('kb-open')", timeout=30000)
+        await page.wait_for_timeout(500)
+        d = await page.evaluate("document.getElementById('earth-search-dialog').getBoundingClientRect().toJSON()")
+        r = await page.evaluate("document.getElementById('earth-search').getBoundingClientRect().toJSON()")
+        if d['top'] < 40 - .5 or d['bottom'] > 40 + kb + .5:
+            run.add(tag, f'dialog not inside the visible band {d}')
+        if r['top'] < 40 or r['bottom'] > 40 + kb:
+            run.add(tag, f'search input outside the visible band {r}')
+        await page.evaluate(stub, [h, 0, 1])
+        await page.keyboard.press('Escape')
+        await frames(page)
+        if await page.evaluate("document.documentElement.classList.contains('kb-open')"):
+            run.add(tag, 'kb-open not cleared after closing the dialog')
         fs = await page.evaluate("parseFloat(getComputedStyle(document.getElementById('earth-search')).fontSize)")
         if fs < 16:
             run.add(tag, f'search font {fs}px under 16px makes iOS Safari zoom the page on focus')
@@ -341,6 +373,11 @@ async def check_dialog(run, page, tag, selector, ins, vw, vh):
 
 async def main():
     only = [x for x in os.environ.get('PHONE_ONLY', '').split(',') if x]
+    group = os.environ.get('PHONE_GROUP')
+    if group == 'ios':
+        only = [d[0] for d in DEVICES if d[0].startswith('iphone') or d[0] == 'ipad-mini']
+    elif group == 'android':
+        only = [d[0] for d in DEVICES if not (d[0].startswith('iphone') or d[0] == 'ipad-mini')]
     run = Run()
     async with async_playwright() as p:
         browser = await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome'), args=ARGS)
@@ -355,7 +392,7 @@ async def main():
                     await asyncio.wait_for(large_text(browser, run, dev, landscape), timeout=200)
                 await asyncio.wait_for(keyboard_case(browser, run, dev), timeout=200)
         await browser.close()
-    (SHOTS / 'problems.json').write_text(json.dumps(run.problems, indent=1))
+    (SHOTS / 'phone-results.json').write_text(json.dumps(run.problems, indent=1))
     print('PHONE_PROBLEMS', len(run.problems), flush=True)
     if run.problems and not AUDIT:
         sys.exit(1)
