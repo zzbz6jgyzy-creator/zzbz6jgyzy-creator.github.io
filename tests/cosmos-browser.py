@@ -153,8 +153,10 @@ async def reduced_motion_flight(browser,route_ctx):
  await page.evaluate("window.__earthPreview.setScale('Mars')");await wait_state(page,"s.focus==='Mars'&&s.flight.mode==='orbit'",timeout=60000)
  assert not (await page.evaluate(STATE))['travelling'],'reduced motion must not animate a trip'
  await page.evaluate("document.getElementById('earth-canvas').focus()");await page.keyboard.press('f');await wait_state(page,"s.flight.mode==='free'");a=(await page.evaluate(STATE))['cameraKm']
- await page.keyboard.press('w');await wait_state(page,"Math.hypot(...s.cameraKm.map((v,i)=>v-"+json.dumps(a)+"[i]))>0");b=(await page.evaluate(STATE))['cameraKm']
- await page.wait_for_timeout(600);assert (await page.evaluate(STATE))['cameraKm']==b,'no coasting under reduced motion'
+ await page.keyboard.press('w');await wait_state(page,"Math.hypot(...s.cameraKm.map((v,i)=>v-"+json.dumps(a)+"[i]))>0")
+ # A key press is held for at least 140 ms, so the step can land over a couple of frames; read the position once that window has passed.
+ await page.wait_for_timeout(400);b=(await page.evaluate(STATE))['cameraKm']
+ await page.wait_for_timeout(800);assert (await page.evaluate(STATE))['cameraKm']==b,'no coasting under reduced motion'
  assert not errors,errors;await ctx.close()
 
 async def main():
