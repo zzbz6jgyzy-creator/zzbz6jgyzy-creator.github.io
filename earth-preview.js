@@ -198,5 +198,17 @@
     if(performance.now()-hudAt>2500&&root.dataset.hud!=='idle')root.dataset.hud='idle';
   },250);
   window.addEventListener('pagehide',()=>clearInterval(hudTimer));
+  // On-screen keyboard: iOS keeps the layout viewport and shrinks only the visual viewport, so pin open dialogs to it.
+  const vv=window.visualViewport;
+  if(vv){
+    const html=document.documentElement;let vvFrame=0;
+    const syncVV=()=>{vvFrame=0;const keyboard=innerHeight-vv.height>120&&dialogs.some(d=>d.open);
+      html.classList.toggle('kb-open',keyboard);
+      if(keyboard){html.style.setProperty('--vv-h',vv.height+'px');html.style.setProperty('--vv-top',vv.offsetTop+'px');}
+      else{html.style.removeProperty('--vv-h');html.style.removeProperty('--vv-top');}};
+    const queue=()=>{if(!vvFrame)vvFrame=requestAnimationFrame(syncVV);};
+    vv.addEventListener('resize',queue);vv.addEventListener('scroll',queue);
+    document.addEventListener('focusin',e=>{if(e.target.matches?.('input,select,textarea')&&e.target.closest('dialog'))setTimeout(()=>e.target.scrollIntoView({block:'center',behavior:'instant'}),300);});
+  }
   start();
 })();
