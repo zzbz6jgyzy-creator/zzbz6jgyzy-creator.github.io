@@ -9,6 +9,7 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 - **Clouds:** the EUMETSAT infrared frame is a real observation at a real time. Simulated time does not invent a historical cloud map. The provenance chip on Earth/Moon reads `Simulated time · … · clouds not for this time` (or `· illustrative clouds` if the feed is down); the Clouds row says the same.
 - **1× from Live stays Live.** Taking 10× (or a date, or reverse) leaves Live. Live is the only way back to the wall clock.
 - **Picker is UTC.** `datetime-local` has no zone, so the field is labelled UTC and parsed as UTC.
+- **Speed uses monotonic elapsed time.** Live still reads `Date.now`. Browser tests freeze `Date.now` for the cloud fixtures, so 1000× would otherwise stand still.
 
 ## 2026-10-30 · Earth explorer: Ground mode removed, orbital zoom floor
 

@@ -29,20 +29,20 @@ assert.ok(Object.isFrozen(SPEEDS));
 
 {
   let t = 1_700_000_000_000;
-  const clock = createClock({ now: () => t });
+  const clock = createClock({ now: () => t, elapsed: () => t });
   clock.setSpeed(1000);
   clock.tick();
   t += 1000;
   const start = clock.ms();
   t += 1000;
   clock.tick();
-  assert.equal(clock.ms() - start, 1_000_000, '1000× advances 1000 s in 1 s of wall time');
+  assert.equal(clock.ms() - start, 1_000_000, '1000× advances 1000 s in 1 s of elapsed time');
   assert.equal(clock.getState().live, false);
   assert.equal(clock.moving(), true);
 }
 {
   let t = 1_700_000_000_000;
-  const clock = createClock({ now: () => t });
+  const clock = createClock({ now: () => t, elapsed: () => t });
   clock.setSpeed(1000);
   t += 500;
   clock.tick();
@@ -50,12 +50,24 @@ assert.ok(Object.isFrozen(SPEEDS));
   const mid = clock.ms();
   t += 1000;
   clock.tick();
-  assert.equal(clock.ms() - mid, 1_000_000, 'tick() and ms() share one wall cursor, so elapsed time is counted once');
+  assert.equal(clock.ms() - mid, 1_000_000, 'tick() and ms() share one elapsed cursor, so elapsed time is counted once');
+}
+
+{
+  const frozen = 1_793_278_800_000; // Date.now as the browser test freezes it for cloud fixtures
+  let elapsed = 1000;
+  const clock = createClock({ now: () => frozen, elapsed: () => elapsed });
+  clock.setSpeed(1000);
+  clock.tick();
+  const start = clock.ms();
+  elapsed += 1000;
+  clock.tick();
+  assert.equal(clock.ms() - start, 1_000_000, '1000× uses monotonic elapsed time, not Date.now');
 }
 
 {
   let t = 1_700_000_000_000;
-  const clock = createClock({ now: () => t });
+  const clock = createClock({ now: () => t, elapsed: () => t });
   clock.setSpeed(-100);
   clock.tick();
   t += 1000;
@@ -67,7 +79,7 @@ assert.ok(Object.isFrozen(SPEEDS));
 
 {
   let t = 1_700_000_000_000;
-  const clock = createClock({ now: () => t });
+  const clock = createClock({ now: () => t, elapsed: () => t });
   clock.setDate('2024-04-08T18:17');
   const s = clock.getState();
   assert.equal(s.live, false);
@@ -81,7 +93,7 @@ assert.ok(Object.isFrozen(SPEEDS));
 
 {
   let t = 1_700_000_000_000;
-  const clock = createClock({ now: () => t });
+  const clock = createClock({ now: () => t, elapsed: () => t });
   clock.setDate('2024-04-08T18:17');
   clock.setSpeed(10);
   clock.tick();
@@ -108,6 +120,7 @@ assert.ok(Object.isFrozen(SPEEDS));
   assert.equal(clock.speed(), 1000);
   assert.throws(() => clock.setSpeed(7), /Speed must be/);
   assert.throws(() => clock.setDate('not-a-date'), /valid UTC/);
+  assert.throws(() => clock.setDate('0999-01-01T00:00'), /valid UTC/);
 }
 
 {

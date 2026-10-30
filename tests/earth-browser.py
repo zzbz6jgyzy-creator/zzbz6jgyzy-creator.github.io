@@ -109,7 +109,7 @@ async def time_control_check(page):
     await page.evaluate("window.__earthPreview.pause()")
     cam0=await page.evaluate(STATE+'.cameraKm')
     t0=(await page.evaluate(STATE))['time']['ms']
-    await page.wait_for_timeout(1200)
+    await page.wait_for_function(f'window.__earthPreview.getState().time.ms-{t0}>500000',timeout=8000)
     t1=(await page.evaluate(STATE))['time']['ms']
     cam1=await page.evaluate(STATE+'.cameraKm')
     assert t1-t0>500000,('paused camera must not freeze simulated time',t0,t1)

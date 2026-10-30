@@ -173,13 +173,13 @@ nothing in the interface uses it yet. Input stops a path like any autopilot.
 
 Owner-facing clock, 30 October 2026. All of it lives in `earth-time.js` (pure maths plus Astronomy Engine eclipse search; no DOM). `earth-renderer.js` ticks it each frame and passes the Date into `solarPosition` and `cosmos.update`. Pause still only stops the camera.
 
-- **Live** (default): wall-clock UTC. Sunlight, ephemerides and the Now strip follow it. Clouds are the latest EUMETSAT frame.
-- **Speed:** ±1, ±10, ±100, ±1 000, ±10 000. Reverse flips the sign. 1× while already Live stays Live; any other speed leaves Live.
+- **Live** (default): wall-clock UTC (`Date.now`). Sunlight, ephemerides and the Now strip follow it. Clouds are the latest EUMETSAT frame.
+- **Speed:** ±1, ±10, ±100, ±1 000, ±10 000, driven by `performance.now()` so a frozen `Date.now` (cloud fixtures) cannot stall it. Reverse flips the sign. 1× while already Live stays Live; any other speed leaves Live.
 - **Date:** a `datetime-local` labelled UTC; picking a value freezes the clock at that instant (speed 0).
 - **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Shadows are not drawn yet.
 - **Editorial:** the provenance chip reads `Simulated time · HH:MM UTC D Mon YYYY`, and on Earth/Moon appends `· clouds not for this time` (or `· illustrative clouds`). The Clouds row says the same. No historical weather is invented.
 
-Tests: `tests/earth-time.test.mjs`. `?v=` token `20261030-time1`.
+Tests: `tests/earth-time.test.mjs`. `?v=` token `20261030-time2`.
 
 ## Zoom floor (no ground view)
 

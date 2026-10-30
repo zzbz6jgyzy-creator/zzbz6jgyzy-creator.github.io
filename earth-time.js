@@ -56,19 +56,27 @@ function packLunar(info) {
   return { type: 'lunar', kind: String(info.kind || ''), peak: peak.toISOString(), ms: peak.getTime() };
 }
 
-/**
- * @param {{now?: () => number}} options  `now` is Date.now, injectable for tests.
- */
-export function createClock({ now = Date.now } = {}) {
-  if (typeof now !== 'function') throw new TypeError('now must be a function.');
-  let live = true, speed = 1, sim = now(), wall = sim;
+const defaultElapsed = typeof performance === 'object' && typeof performance.now === 'function' ? () => performance.now() : Date.now;
 
-  function sync(wallMs = now()) {
-    const w = Number(wallMs);
-    if (!Number.isFinite(w)) throw new TypeError('A valid wall time is required.');
-    if (live) sim = w;
-    else sim += (w - wall) * speed;
-    wall = w;
+/**
+ * @param {{now?: () => number, elapsed?: () => number}} options
+ *   `now` is civil UTC (Date.now). `elapsed` is monotonic milliseconds for speed
+ *   (performance.now). Browser tests freeze Date.now for cloud fixtures, so simulated
+ *   speed must not use it.
+ */
+export function createClock({ now = Date.now, elapsed = defaultElapsed } = {}) {
+  if (typeof now !== 'function' || typeof elapsed !== 'function') throw new TypeError('now and elapsed must be functions.');
+  let live = true, speed = 1, sim = now(), mark = elapsed();
+
+  function sync() {
+    const e = Number(elapsed());
+    if (!Number.isFinite(e)) throw new TypeError('A valid elapsed time is required.');
+    if (live) {
+      const w = Number(now());
+      if (!Number.isFinite(w)) throw new TypeError('A valid wall time is required.');
+      sim = w;
+    } else sim += (e - mark) * speed;
+    mark = e;
     return sim;
   }
 
@@ -81,7 +89,7 @@ export function createClock({ now = Date.now } = {}) {
   }
 
   function setLive() {
-    live = true; speed = 1; sim = now(); wall = sim; return state();
+    live = true; speed = 1; sim = now(); mark = elapsed(); return state();
   }
 
   function setSpeed(value) {
@@ -94,13 +102,13 @@ export function createClock({ now = Date.now } = {}) {
   }
 
   function setDate(value) {
-    const d = value instanceof Date ? value : typeof value === 'number' ? new Date(value) : fromUtcInput(value) || new Date(value);
+    const d = value instanceof Date ? value : typeof value === 'number' ? new Date(value) : fromUtcInput(value);
     const ms = d instanceof Date ? d.getTime() : NaN;
     if (!Number.isFinite(ms)) throw new TypeError('A valid UTC time is required.');
     live = false;
     speed = 0;
     sim = ms;
-    wall = now();
+    mark = elapsed();
     return state();
   }
 

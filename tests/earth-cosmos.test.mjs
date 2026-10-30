@@ -50,7 +50,7 @@ assert.ok(html.includes("sessionStorage.getItem('sd-earth-intro')") && js.includ
 assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes("localStorage.getItem('sd-earth-labels')"), 'label choice persists');
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
-const TOKEN = '20261030-time1';
+const TOKEN = '20261030-time2';
 for (const file of ['mission-control.html', 'earth-preview.js', 'earth-renderer.js', 'earth-cosmos.js', 'earth-weather.js', 'starship-replay-renderer.js']) {
   const text = file === 'mission-control.html' ? html : readFileSync(new URL('../' + file, import.meta.url), 'utf8');
   const hits = [...text.matchAll(/earth-[a-z0-9.-]+\.(?:js|css)\?v=([\w-]+)/g)];
