@@ -170,6 +170,11 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 - **Decision:** `home-v2.js` reads Dispatch card titles from `h2, h3` and compares the fetched lead and supporting stories with what is already rendered. If hrefs and titles match, it leaves the DOM alone.
 - **Why:** the pre-render (`scripts/build-home.js`, ~30 min) normally already holds the newest stories, so the refresh is a no-op and cannot shift layout. It only swaps when a story landed since the last build, which is the case the refresh exists for. Removing it would delay new or pinned leads by up to 30 minutes.
 
+## 2026-10-30 · Earth explorer: Neutral tone mapping, analytic atmosphere, stay on three r170
+- **Decision:** Khronos PBR Neutral at exposure 1.2 for the explorer renderer (was ACES 1.08). The atmosphere is a per-pixel single-scattering integral with the Chapman function for the Sun path, evaluated in linear light inside the surface and cloud shaders (the shell only draws the limb). Three.js stays at r170.
+- **Why Neutral over AgX and ACES:** same scene, same views (day glint, terminator, sunset limb), after the haze was moved into linear light. Deep ocean (sRGB): AgX 1.25 (52,83,114) is a washed grey-blue; Neutral 1.0 (11,48,81) and 1.2 (15,53,89) are deep blue, closer to DSCOVR EPIC. Sahara: AgX (193,178,159) desaturated, Neutral 1.2 (219,187,144) keeps its colour with no channel at 255; clouds reach about (230,233,234), not clipped. City lights stay saturated warm under Neutral and go grey under AgX. ACES clipped clouds and desert to flat white in the first pass. Moon and Solar System views were checked and show no regression.
+- **Engine and method:** r170 has Neutral, AgX, `textureGrad` and WebGL2; r186 has nothing we need, so an engine change is risk without a visual gain. Hillaire-style LUTs need extra passes and textures that pay off for ground-level skies, not one planet from space; bloom would need an HDR composer on phones for one highlight. The Starship replay deliberately keeps the legacy shaders and ACES.
+
 ## Open: review ratings
 Reviews deliberately replaced unexplained numeric scores with recommendations (`docs/reviews-studio.md`). Google's review rich
 results require a rating. Adding one is an editorial decision for the owner, not a technical one; until then no `Review` schema.

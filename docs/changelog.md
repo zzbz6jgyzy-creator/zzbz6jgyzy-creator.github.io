@@ -1,3 +1,12 @@
+## 2026-10-30 — Earth explorer: physically based lighting (stage 2)
+
+- Atmosphere rewritten as Rayleigh + Mie single scattering with Chapman-function optical depth: a thick blue limb by day, orange along the sunset terminator, black at night, no ring edge. The shell draws only the limb; haze over the planet is added in linear light inside the surface and cloud shaders. Steps follow the tier (2K 4, 4K 6, 8K/16K 10).
+- Surface: ocean mask from `earth-specular-4k`, Cox-Munk style sun glint (a patch with a defined edge that stretches near the limb, peak clamped near cloud-white), sunlight and view path through the atmosphere (warm terminator, hazy rim), sky fill that warms at sunset, city lights only past civil twilight, cloud shadows with parallax.
+- Clouds lit through transmittance, forward-scatter silver lining, relief shading, smoother texture reads, soft edge breakup. The live frame is 2048 x 1024, so close-up shape is source-limited.
+- Tone mapping: Khronos PBR Neutral at exposure 1.2 (was ACES 1.08). Starship replay keeps its legacy shaders. Three.js stays at r170.
+- `viewer.setSceneGeo()` fixes sun and camera for tests and screenshots. `?v=` tokens are now `20261030-light1`.
+- Measured in software GL (relative only): about 1.9x frame time at 1440 x 900 (4K tier) and 1.5x at 390 x 844 (2K tier) versus the old shaders. Needs a real-GPU check.
+
 ## 2026-10-30 — Earth explorer: provenance chip and planet dots
 
 - One quiet chip (bottom left, does not fade) says when the view is not live data: galaxy "Illustration · structural model", star-catalogue scale "Catalogue positions · distances approximate", illustrative clouds, or a satellite frame older than about 3 hours with its UTC time. Hidden on live Earth with a fresh frame. The Sun and Galactic-centre markers stay named in galaxy view.
