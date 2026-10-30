@@ -74,9 +74,9 @@ async def flight_checks(page,ctx,width,errors):
   for _ in range(6):await page.wait_for_timeout(400);await page.evaluate("(()=>{const s=window.__earthPreview.getState();window.__minD=Math.min(window.__minD,Math.hypot(...s.cameraKm))})()")
   await page.keyboard.up('w');await page.keyboard.up('Shift');assert await page.evaluate('window.__minD')>=8871-.01,('free flight crossed the Earth floor',await page.evaluate('window.__minD'))
   await page.keyboard.press('o');await wait_state(page,"s.flight.mode==='orbit'&&s.focus==='Earth'")
-  # --- autopilot from the panel: Earth to Mars arrives in orbit, framed at 6.5 radii
-  await open_panel(page);await page.locator('#earth-explore').click();await expect(page.locator('#cosmos-places-dialog')).to_be_visible()
-  await page.locator('#cosmos-places-list button').filter(has=page.locator('span',has_text='Mars')).click()
+  # --- autopilot: Earth to Mars arrives in orbit around Mars, framed at 6.5 radii, travelling on the way
+  await page.evaluate('window.__earthPreview.setZoom(1)');await page.wait_for_timeout(1500)  # leave the 8K floor view: software GL renders it very slowly
+  await page.evaluate("window.__earthPreview.flyTo('Mars')")
   await wait_state(page,"s.flight.mode==='autopilot'&&s.travelling",timeout=60000)
   await wait_state(page,"s.focus==='Mars'&&s.flight.mode==='orbit'&&!s.travelling",timeout=150000)
   mars=await page.evaluate(STATE);assert 3389.5*3<mars['distanceKm']<3389.5*30,mars['distanceKm'];assert abs(mars['distanceKm']-3389.5*6.5)<1,mars['distanceKm']
@@ -85,6 +85,11 @@ async def flight_checks(page,ctx,width,errors):
   for _ in range(60):await page.mouse.wheel(0,-400)
   await page.wait_for_function(STATE+".distanceKm<"+str(3389.5*1.4*1.02),timeout=90000);await page.wait_for_timeout(1500)
   d=await page.evaluate(STATE+'.distanceKm');assert 3389.5*1.4-.01<=d<3389.5*1.4*1.02,('Mars floor',d)
+  # --- the world finder in the panel starts the autopilot too (from a world, "Choose a world")
+  await open_panel(page);await page.locator('#earth-explore').click();await expect(page.locator('#cosmos-places-dialog')).to_be_visible(timeout=40000)
+  await page.locator('#cosmos-places-list button').filter(has=page.locator('span',has_text='Jupiter')).click()
+  await wait_state(page,"s.flight.mode==='autopilot'||s.focus==='Jupiter'",timeout=60000)
+  await wait_state(page,"s.focus==='Jupiter'&&s.flight.mode==='orbit'&&!s.travelling",timeout=150000);assert abs((await page.evaluate(STATE+'.distanceKm'))-69911*6.5)<1
   # --- input cancels the autopilot (key, wheel, pointer, Escape)
   for how in ['key','wheel','pointer','escape']:
    await page.evaluate("window.__earthPreview.setScale('earth')");await wait_state(page,"s.flight.mode==='orbit'&&s.focus==='Earth'",timeout=150000)
@@ -99,7 +104,9 @@ async def flight_checks(page,ctx,width,errors):
    await page.wait_for_timeout(1200);later=await page.evaluate(STATE);assert not later['travelling'] and later['flight']['mode']!='autopilot',how
   # --- tap-to-travel: a planet's dot in the Solar System flies there
   await page.evaluate("window.__earthPreview.setScale('solar')");await wait_state(page,"s.scene==='solar'&&!s.travelling",timeout=150000);await page.wait_for_timeout(800)
-  await page.locator('.cosmos-object-label:not([hidden])').filter(has=page.locator('.cosmos-name',has_text='Jupiter')).first.click(force=True)
+  dot=page.locator('.cosmos-object-label:not([hidden])').filter(has=page.locator('.cosmos-name',has_text='Jupiter')).first.locator('.cosmos-dot');box=await dot.bounding_box()
+  assert await page.evaluate('([x,y])=>window.__earthPreview.pickBodyAt(x,y)',[box['x']+box['width']/2+6,box['y']+box['height']/2+5])=='Jupiter','a tap near a planet picks that planet'
+  await dot.evaluate('e=>e.closest("button").click()')
   await wait_state(page,"s.focus==='Jupiter'&&!s.travelling&&s.flight.mode==='orbit'",timeout=150000)
   await page.evaluate("window.__earthPreview.setScale('earth')");await wait_state(page,"s.focus==='Earth'&&!s.travelling",timeout=150000)
  else:
