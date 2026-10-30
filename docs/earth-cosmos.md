@@ -3,7 +3,7 @@
 Page: `/mission-control.html` (isolated, `noindex,follow`). No paid services,
 API keys, billing account, runtime ephemeris API or new hosting are required.
 There is no street-level or ground view: the closest the camera can get is a
-low Earth orbit (see *Zoom floor* below).
+2,500 km up (see *Zoom floor* below).
 
 ## Experience and architecture
 
@@ -26,7 +26,7 @@ low Earth orbit (see *Zoom floor* below).
   traverses all scales; galaxy-scale zoom smoothly shifts the focus towards the
   galactic centre while keeping Earth as its logical home anchor. Zooming back in
   returns naturally through the Solar System to Earth. Zooming into Earth stops
-  at a 400 km orbital floor (below).
+  at a 2,500 km floor (below).
 - Animation stops while hidden. Reduced motion and pause make destination jumps
   immediate. Planet textures load as needed
   and the 16K surface only when explicitly selected. Failed extra assets preserve
@@ -116,16 +116,18 @@ successful image load.
 ## Zoom floor (no ground view)
 
 Owner decision, 30 October 2026: the street-level Ground mode was removed ("it
-zooms into a flat map, it looks terrible"). The camera now stops at a realistic
-orbital altitude.
+zooms into a flat map, it looks terrible"). The camera also stops well above the
+surface. The first cut was 400 km (like the ISS); after seeing 400, 1,000 and 2,500 km samples the owner chose
+**2,500 km**, because the global imagery is only crisp from there (8K surface is about 5 km per texel, the live cloud frame about 20 km;
+at 400 km one texel covered 6 to 7 screen pixels). It will be lowered when sharper imagery lands.
 
-- One named constant, `MIN_ORBIT_ALTITUDE_KM = 400` in `earth-live-model.js` (not the cosmos model, so the Starship replay does not pull in the 412 KB astronomy engine through `earth-renderer.js`) (about the ISS). Camera range is stored from Earth's centre, so the renderer converts it with the current `fitDistance` (`earthMaxZoom()`).
-- Every route goes through `setZoom()`: wheel, ctrl-wheel/trackpad pinch, touch pinch, `+`/`-`/`=` keys and the panel buttons (`zoomBy`) all call it. `setScale('earth')` clamps its destination to the floor, `setSceneGeo({zoom})` clamps, and `viewLocation()` (used by the place picker) clamps. `updateCamera()` re-clamps every frame, so a resize that changes `fitDistance` cannot leave the camera under the floor.
-- Soft approach: `easeToAltitudeFloor()`. Inside the last 1,500 km the remaining margin can at most halve per input step, so the camera glides in geometrically and snaps exactly on the floor under 0.5 km. It is monotone: no overshoot, no bounce, no jitter. Zooming out is never eased.
-- At the floor the camera is at about 1.063 Earth radii. The near plane is derived from the distance (also before the cosmos module loads) so the surface is not clipped.
-- Detail: once the camera is under 3,000 km, Auto asks for the sharpest tier the device allows (8K, or 4K on low-memory devices; save-data keeps the lower tier), then keeps it. The 4K terrain normal map and ocean mask are already loaded. Source limits still apply: the 8K surface is about 5 km per texel and the live cloud frame about 20 km.
-- The selection marker is scaled with distance so it stays a small dot at the floor (it is 45 km wide at scale 1).
-- The place picker still exists: choosing a place (or the card's "Fly to this place") turns the globe to it and eases to 2,500 km altitude. It opens nothing else.
+- One named constant, `MIN_ORBIT_ALTITUDE_KM = 2500` in `earth-live-model.js` (not the cosmos model, so the Starship replay does not pull in the 412 KB astronomy engine through `earth-renderer.js`). Camera range is stored from Earth's centre, so the renderer converts it with the current `fitDistance` (`earthMaxZoom()`).
+- Every route goes through `setZoom()`: wheel, ctrl-wheel/trackpad pinch, touch pinch, `+`/`-`/`=` keys and the panel buttons (`zoomBy`). `setScale('earth')` clamps its destination to the floor, `setSceneGeo({zoom})` clamps, and `viewLocation()` (used by the place picker) clamps. `updateCamera()` re-clamps every frame while no flight is running, so a resize that changes `fitDistance` cannot leave the camera under the floor.
+- Soft approach: `easeToAltitudeFloor()`. Inside the last 0.6 x floor (1,500 km at 2,500) the remaining margin can at most halve per input step, so the camera glides in geometrically and snaps exactly on the floor under 0.5 km. Monotone: no overshoot, no bounce. Zooming out is never eased. The band scales with the constant.
+- At the floor the camera is about 1.39 Earth radii from the centre. The near plane is derived from the distance (also before the cosmos module loads).
+- Detail: once the camera is within twice the floor altitude (`CLOSE_DETAIL_ALTITUDE_KM`), Auto asks for a sharper tier, then keeps it: 8K on desktop, 4K on phones (width under 800 px or 4 GB or less reported memory; iOS reports no memory, so width decides); save-data keeps the lower tier.
+- The selection marker is scaled with distance and sits at 1.0005 R, so it stays a small dot on the tapped point.
+- The place picker still exists: choosing a place (or the card's "Fly to this place") brings the camera home to Earth if it was at another scale, turns the globe to the place and jumps (it does not animate) to 1.1 x the floor altitude. It opens nothing else.
 
 ## Earth lighting model (stage 2)
 
@@ -231,5 +233,5 @@ a previously loaded dated frame. No workflow failure is ignored or skipped.
 
 Remaining source limits are visible design decisions, not paid-service setup:
 the clouds are dated infrared proxies, surface maps are historical, nothing closer
-than low orbit is offered, and the outer galaxy is a model. Higher fidelity weather would need
+than 2,500 km is offered, and the outer galaxy is a model. Higher fidelity weather would need
 a cloud-classification product with its own availability and licence review.

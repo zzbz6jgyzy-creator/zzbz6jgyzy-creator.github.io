@@ -3,12 +3,13 @@ export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export const radians=d=>d*Math.PI/180;
 export const degrees=r=>r*180/Math.PI;
 export const longitude=d=>(((d+180)%360)+360)%360-180;
-// Nearest the camera may get to Earth's surface: a realistic low-orbit altitude (the ISS flies at about 400 km).
+// Nearest the camera may get to Earth's surface. Owner decision, 30 Oct 2026: 2,500 km, because the global imagery is not
+// crisp any closer. Lower it when sharper imagery lands (400 km would be an ISS-like low orbit).
 // This is the single source of truth for the zoom floor; the renderer enforces it on every path.
-export const MIN_ORBIT_ALTITUDE_KM=400;
+export const MIN_ORBIT_ALTITUDE_KM=2500;
 // Soft floor. Zooming in, the remaining margin above the floor can at most halve per input step once within
-// 1,500 km, so the camera glides into the floor geometrically and never crosses it. Zooming out is untouched.
-export function easeToAltitudeFloor(currentKm,requestedKm,floor=MIN_ORBIT_ALTITUDE_KM,band=1500){
+// 0.6 x the floor altitude, so the camera glides into the floor geometrically and never crosses it. Zooming out is untouched.
+export function easeToAltitudeFloor(currentKm,requestedKm,floor=MIN_ORBIT_ALTITUDE_KM,band=floor*.6){
   const cur=Math.max(currentKm-floor,0),req=requestedKm-floor;
   if(!(req<cur))return Math.max(requestedKm,floor);
   const next=Math.max(req,Math.min(cur,band)*.5);
@@ -53,7 +54,7 @@ export function coordinates(lat,lon,precision=2){return Math.abs(lat).toFixed(pr
 export function parsePlace(text){
   const input=String(text||'').trim();const preset=PLACES.find(p=>p.name.toLowerCase()===input.toLowerCase()||p.id===input.toLowerCase());if(preset)return{...preset};
   const m=input.match(/^([+-]?\d+(?:\.\d+)?)\s*[,;]\s*([+-]?\d+(?:\.\d+)?)$/);
-  if(m&&Number.isFinite(+m[1])&&Number.isFinite(+m[2])&&Math.abs(+m[1])<=85&&Math.abs(+m[2])<=180)return{id:'point',name:'Your chosen place',country:coordinates(+m[1],+m[2]),lat:+m[1],lon:+m[2],zoom:15,pitch:55,kind:'point'};
+  if(m&&Number.isFinite(+m[1])&&Number.isFinite(+m[2])&&Math.abs(+m[1])<=85&&Math.abs(+m[2])<=180)return{id:'point',name:'Your chosen place',country:coordinates(+m[1],+m[2]),lat:+m[1],lon:+m[2]};
   return null;
 }
 export function weatherAge(at,now=Date.now()){

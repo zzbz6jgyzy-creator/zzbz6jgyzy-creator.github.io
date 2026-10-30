@@ -11,7 +11,7 @@ The Starship replay is unchanged; it still shares the same exported Earth shader
 - Adds a current UTC solar direction in Earth-fixed coordinates. Rotating the viewing angle does not move day and night across geographic places. The sun updates even when camera rotation is paused. Artistic Day/Night studies remain explicitly labelled.
 - Adds UTC time, IANA civil clocks for 12 featured destinations (including DST), and a calculated daylight/twilight/night state at the selected coordinates. Other coordinates use labelled UTC. Geolocation uses labelled device time and is requested only on a user gesture.
 - Adds a dated EUMETSAT infrared cloud proxy at 2K, or up to 4K when a higher surface-quality mode is selected. Cloud geometry stays registered to geography, with no decorative drift of the observed mask.
-- The ground view (MapLibre street map, terrain, satellite-imagery link) was removed on 30 October 2026; see `docs/decisions.md`. The camera stops at a 400 km orbital floor. The place picker flies the globe to a place.
+- The ground view (MapLibre street map, terrain, satellite-imagery link) was removed on 30 October 2026; see `docs/decisions.md`. The camera stops 2,500 km above the surface. The place picker flies the globe to a place.
 
 ## Free sources and limits
 
@@ -64,7 +64,7 @@ and restricted to the EUMETSAT host.
 - The satellite composite has a source frame time, not per-pixel observation times.
   Keep the three-hour cadence and infrared-proxy limitations visible.
 - Street-level, photogrammetric and 3D-tile views are out of scope. The honest limit of the
-  imagery is low orbit.
+  imagery is about 2,500 km up.
 - Public services can change availability. Keep fallbacks and attribution; revisit
   hosting only if real traffic makes it necessary.
 

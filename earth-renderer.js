@@ -5,7 +5,7 @@ import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM, easeToAltitu
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;
 const MAX_RANGE_KM=600000*LY_KM;
-const CLOSE_DETAIL_ALTITUDE_KM=3000;
+const CLOSE_DETAIL_ALTITUDE_KM=MIN_ORBIT_ALTITUDE_KM*2; // close-up detail upgrade starts at twice the floor altitude
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 // Legacy Earth shaders: unchanged, shared with the isolated Starship replay (it supplies only uDay/uNight/uCloud/uSun/uCloudOffset).
 const LEGACY_VERTEX = `
@@ -543,7 +543,7 @@ export async function initEarth(options = {}) {
     return { ready, frames, running: running(), paused, reducedMotion: motion.matches, quality, view: currentView, rotation: globe.rotation.y, zoom, cameraYaw: yaw, cameraPitch: pitch, textureCount: Object.values(maps).filter(Boolean).length, textureWidth: maps.day?.image?.width || 0, textureTier: appliedTier.toUpperCase(), maxTextureSize: maxTexture, contextLost, detailMessage, orbitQuaternion:cameraOrbit.toArray(), cameraUp:camera.up.toArray(), distanceKm:fitDistance/zoom*EARTH_KM, scene:cosmicState?.level||'earth', focus:focusBody,travelling:!!fly,cosmos:cosmos?.getState()||null, studioSupported:maxTexture>=16384&&navigator.deviceMemory>=8&&innerWidth>=1100, relief:uniforms.uRelief.value>0, skyReady:cosmicState?.skyReady||false, sun:solarPosition(), weatherAt,cloudKind:uniforms.uCloudIR.value?'infrared':'illustrative',observedCloud:!!observedCloud, selectedPoint };
   }
   function updateCamera() {
-    if(focusBody==='Earth'&&zoom>earthMaxZoom())zoom=earthMaxZoom();
+    if(focusBody==='Earth'&&!fly&&zoom>earthMaxZoom())zoom=earthMaxZoom();
     const distanceKm=fitDistance/zoom*EARTH_KM;
     const estimateUnit=distanceKm<2e7?EARTH_KM:distanceKm<LY_KM*.08?AU_KM:distanceKm<LY_KM*800?LY_KM:LY_KM*3261.563777;
     const distance=distanceKm/estimateUnit;
@@ -629,7 +629,9 @@ export async function initEarth(options = {}) {
     const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * camera.aspect);
     fitDistance = 1 / Math.sin(Math.min(verticalFov, horizontalFov) * (compact ? 0.98 : 0.80) / 2);
     camera.setViewOffset(width, height, 0, 0, width, height);
-    camera.updateProjectionMatrix(); renderDemand();
+    camera.updateProjectionMatrix();
+    if(paused)sun.copy(targetSun);
+    schedule(); draw(); notify(); // resizing clears the canvas, so redraw now (no deferred draw)
   }
   function loadTexture(file, color = true) {
     return new Promise((resolve, reject) => {
@@ -657,7 +659,7 @@ export async function initEarth(options = {}) {
   let closeSeen = false;
   function tierFor(requested) {
     const saving = navigator.connection?.saveData;
-    if (requested === 'auto' && closeSeen && !saving) requested = 'ultra';
+    if (requested === 'auto' && closeSeen && !saving) requested = (width < 800 || (navigator.deviceMemory && navigator.deviceMemory <= 4)) ? 'high' : 'ultra'; // phones: 4K, not 8K
     const mobile = width < 800 || (navigator.deviceMemory && navigator.deviceMemory <= 4);
     if(requested==='studio'&&maxTexture>=16384&&navigator.deviceMemory>=8&&innerWidth>=1100)return'16k';
     if ((requested === 'ultra'||requested === 'studio') && maxTexture >= 8192 && !(navigator.deviceMemory && navigator.deviceMemory <= 4)) return '8k';
@@ -728,7 +730,9 @@ export async function initEarth(options = {}) {
     interactionUntil=performance.now()+8000;renderDemand();
   }
   // Fly the camera to a place at a chosen altitude (never below the floor).
-  function viewLocation(lat,lon,altitudeKm=2500){
+  function viewLocation(lat,lon,altitudeKm=MIN_ORBIT_ALTITUDE_KM*1.1){
+    // From the Moon, a planet or the galaxy this brings the camera home to Earth first.
+    fly=null;if(focusBody!=='Earth'){focusBody='Earth';cosmos?.setFocus('Earth');}
     focusLocation(lat,lon);zoom=clamp(zoomAt(Math.max(altitudeKm,MIN_ORBIT_ALTITUDE_KM)),fitDistance*EARTH_KM/MAX_RANGE_KM,earthMaxZoom());renderDemand();notify();
   }
   function zoomBy(delta) {setZoom(zoom<.55?zoom*Math.exp(delta*6):zoom+delta);}
@@ -778,7 +782,7 @@ export async function initEarth(options = {}) {
     if (!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180||disposed) return;
     selectedPoint={lat,lon};
     const p=geoVector(lat,lon), v=new THREE.Vector3(p.x,p.y,p.z);
-    marker.position.copy(v).multiplyScalar(1.014); marker.visible=true;
+    marker.position.copy(v).multiplyScalar(1.0005); marker.visible=true;
     if(!center){renderDemand();return;}
     globe.updateMatrixWorld(true); v.applyQuaternion(globe.quaternion);
     const north=new THREE.Vector3(0,1,0).applyQuaternion(globe.quaternion);

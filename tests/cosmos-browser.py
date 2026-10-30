@@ -112,9 +112,9 @@ async def main():
       await page.evaluate('window.__earthPreview.setZoom(.0001)');await page.wait_for_function(STATE+'.scene==="solar"')
       await page.evaluate('window.__earthPreview.setZoom(1)');await page.wait_for_function(STATE+'.scene==="earth"&&'+STATE+'.focus==="Earth"')
       assert await page.evaluate('document.querySelector("[data-earth-preview]").dataset.scene')=='earth','Zooming in from the galaxy must return to Earth, not empty galactic-centre space'
-      # Earth zoom floor (400 km, MIN_ORBIT_ALTITUDE_KM): programmatic zoom and the fly back to Earth both respect it.
-      await page.evaluate('window.__earthPreview.setZoom(1e7)');assert await page.evaluate(STATE+'.distanceKm')-6371>=399.99,'setZoom must clamp at the orbital floor'
-      await page.evaluate('window.__earthPreview.setScale("earth")');await page.wait_for_timeout(2600);assert await page.evaluate(STATE+'.distanceKm')-6371>=399.99,'fly-to Earth must not go below the floor'
+      # Earth zoom floor (2,500 km, MIN_ORBIT_ALTITUDE_KM in earth-live-model.js): programmatic zoom and the fly back to Earth both respect it.
+      await page.evaluate('window.__earthPreview.setZoom(1e7)');assert await page.evaluate(STATE+'.distanceKm')-6371>=2499.99,'setZoom must clamp at the orbital floor'
+      await page.evaluate('window.__earthPreview.setScale("earth")');await page.wait_for_timeout(2600);assert await page.evaluate(STATE+'.distanceKm')-6371>=2499.99,'fly-to Earth must not go below the floor'
      if scale=='moon':
       for body in ['Saturn','Jupiter']:
        await open_panel(page);await page.locator('#earth-explore').click();await expect(page.locator('#cosmos-places-dialog')).to_be_visible()

@@ -1,8 +1,9 @@
-## 2026-10-30 — Earth explorer: Ground mode removed, 400 km zoom floor
+## 2026-10-30 — Earth explorer: Ground mode removed, 2,500 km zoom floor
 
 - Removed the Space/Ground toggle, the MapLibre street/terrain map, `earth-ground.js`, `vendor/maplibre` (1.6 MB), the map-layer switches, "Back to Earth", "Explore the streets", the Google Maps satellite link, the zoom-below-level-3 handoff and the OpenFreeMap/OpenStreetMap credits. The page no longer talks to any map or tile host.
-- The camera cannot get closer than 400 km above the surface (`MIN_ORBIT_ALTITUDE_KM`, like the ISS). It eases in over the last 1,500 km and never crosses the floor by wheel, pinch, keys, buttons or fly-to. Auto detail goes to the sharpest tier when close.
-- The place picker stays: it flies the globe to the place. Featured places copy now says "seen from about 400 km up".
+- The camera cannot get closer than 2,500 km above the surface (`MIN_ORBIT_ALTITUDE_KM`; first cut 400 km, raised after the owner saw 400, 1,000 and 2,500 km samples). It eases in over the last 0.6 x floor and never crosses the floor by wheel, pinch, keys, buttons or fly-to. Auto detail upgrades when close (8K desktop, 4K phones).
+- Fixes: a featured place chosen from the Moon, a planet or the galaxy now returns the camera to Earth; the selection marker hugs the surface and scales with distance; resize redraws synchronously.
+- The place picker stays: it flies the globe to the place. Featured places copy now says "seen from about 2,500 km up".
 - `?v=` tokens are now `20261030-noground1` (mission-control.html, dynamic imports, starship-replay-renderer.js).
 
 ## 2026-10-30 — Earth explorer: physically based lighting (stage 2)

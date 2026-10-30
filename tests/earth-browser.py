@@ -11,7 +11,7 @@ ALLOWED={'view.eumetsat.int'}
 HOSTS=set()  # every host the page asked for, including blocked ones
 MAP_HOSTS=re.compile(r'openfreemap|openstreetmap|maptiler|mapbox|amazonaws|arcgis|googleapis|google\.com|maplibre|stadiamaps|carto',re.I)
 SCRATCH=pathlib.Path(os.environ.get('EARTH_SCRATCH','/tmp/earth-preview'));SCRATCH.mkdir(parents=True,exist_ok=True)
-MIN_ALT=400  # MIN_ORBIT_ALTITUDE_KM in earth-cosmos-model.js
+MIN_ALT=2500  # MIN_ORBIT_ALTITUDE_KM in earth-live-model.js
 
 async def snapshot(page,name):
     data=await page.screenshot(type='jpeg',quality=73,animations='disabled',timeout=30000)
@@ -133,7 +133,9 @@ async def zoom_floor_journey(page,ctx,width,name):
     low=await page.evaluate("window.__minAlt");now=await page.evaluate(ALT)
     assert low>=MIN_ALT-.01,('Camera went below the floor',low);assert MIN_ALT-.01<=now<MIN_ALT+25,now
     st=await page.evaluate(STATE)
-    assert st['textureWidth']>=4096,('Close view must use the sharpest tier the device allows',st['textureWidth'],st['textureTier'])
+    want=4096 if width<800 else 8192  # phones get 4K when close, desktops 8K
+    assert st['textureWidth']>=want,('Close view must use the sharpest tier allowed for this device',st['textureWidth'],st['textureTier'])
+    if width<800:assert st['textureWidth']<8192,'Phones must not auto-upgrade to 8K'
     assert st['scene']=='earth'
     f0=(await page.evaluate(STATE))['frames'];await page.wait_for_timeout(3000);f1=(await page.evaluate(STATE))['frames']
     print('EARTH_PERF',name,'frames in 3 s at the floor (software GL):',f1-f0,flush=True)
@@ -230,6 +232,11 @@ async def main():
                         placed=await page.evaluate(STATE);assert placed['running'] or placed['paused'],placed
                         assert placed['distanceKm']-6371>=MIN_ALT-.01,placed
                         assert await page.locator('#earth-canvas').is_visible(),'Globe stays on screen after choosing a place'
+                        # From another scale (the Solar System), a featured place must bring the camera home to Earth.
+                        await page.evaluate("window.__earthPreview.setScale('solar')");await page.wait_for_function(STATE+'.scene==="solar"&&'+STATE+'.focus==="Sun"',timeout=30000)
+                        await page.evaluate("document.querySelector('[data-place=alps]').click()")
+                        await page.wait_for_function(STATE+'.focus==="Earth"&&'+STATE+'.scene==="earth"&&Math.abs('+STATE+'.selectedPoint.lat-45.9763)<.01',timeout=30000)
+                        assert (await page.evaluate(STATE))['distanceKm']-6371>=MIN_ALT-.01,'featured place from the Solar System must land at or above the floor'
                         await js_panel(page);await page.locator('#earth-explore').click();await page.locator('#earth-locate').click()
                         await page.wait_for_function(STATE+'.selectedPoint&&'+STATE+'.selectedPoint.lat>53&&'+STATE+'.selectedPoint.lat<54',timeout=20000)
                         await js_panel(page);await page.locator('#earth-fly-here').click()
