@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-10-30T14:20:31.000Z",
+  "generatedAt": "2026-10-30T14:40:50.563Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -287,6 +287,23 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/robotaxi-2am-20-hours.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”",
+      "at": "2026-10-30T14:40:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/robotaxi-2am-20-hours.html",
+      "href": "/dispatch/robotaxi-2am-20-hours.html",
+      "summary": "Tesla’s official Robotaxi account says rides now run 6am to 2am, nine days after Tesla said 2am was coming “pretty soon.” The post also adds Calm Mode and Grok in Model Y.",
+      "title": "Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”",
+      "id": "logged|dispatch:/dispatch/robotaxi-2am-20-hours.html|2026-10-30T14:40:00.000Z|Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/starlink-dynamic-pricing-map.html",
       "topic": "starlink",
       "tracker": "dispatch",
@@ -556,23 +573,6 @@
       "summary": "SpaceX’s FAA filing says it expects 10,000 launches a year and that air traffic rules are now the limit. Airlines for America wants launches at low-traffic times.",
       "title": "SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours",
       "id": "logged|dispatch:/dispatch/spacex-faa-10000-launches.html|2026-10-28T08:40:00.000Z|SpaceX tells the FAA it plans 10,000 launches a year. The airlines want launches at off-peak hours"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-powershare-120v-outlet.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you",
-      "at": "2026-10-28T02:36:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-powershare-120v-outlet.html",
-      "href": "/dispatch/tesla-powershare-120v-outlet.html",
-      "summary": "Tesla says every new Model 3, Model Y and Cybertruck can now run tools from the charge port. Which cars qualify, the $80 adapter, and how 2.4 kW compares.",
-      "title": "Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you",
-      "id": "logged|dispatch:/dispatch/tesla-powershare-120v-outlet.html|2026-10-28T02:36:00.000Z|Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you"
     },
     {
       "type": "changed",
@@ -1773,14 +1773,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1794,14 +1794,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-30T11:32:03.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1815,35 +1815,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-30T14:20:31.000Z",
+      "lastChecked": "2026-10-30T14:40:50.563Z",
       "lastVerified": "2026-10-30T14:20:27.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1852,85 +1852,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.982Z",
-      "finished": "2026-10-30T14:20:30.987Z"
+      "started": "2026-10-30T14:40:50.480Z",
+      "finished": "2026-10-30T14:40:50.546Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.987Z",
-      "finished": "2026-10-30T14:20:30.987Z"
+      "started": "2026-10-30T14:40:50.546Z",
+      "finished": "2026-10-30T14:40:50.546Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.987Z",
-      "finished": "2026-10-30T14:20:30.987Z"
+      "started": "2026-10-30T14:40:50.546Z",
+      "finished": "2026-10-30T14:40:50.546Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.987Z",
-      "finished": "2026-10-30T14:20:30.993Z"
+      "started": "2026-10-30T14:40:50.546Z",
+      "finished": "2026-10-30T14:40:50.559Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.993Z",
-      "finished": "2026-10-30T14:20:30.996Z"
+      "started": "2026-10-30T14:40:50.559Z",
+      "finished": "2026-10-30T14:40:50.561Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.996Z",
-      "finished": "2026-10-30T14:20:30.997Z"
+      "started": "2026-10-30T14:40:50.561Z",
+      "finished": "2026-10-30T14:40:50.561Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.997Z",
-      "finished": "2026-10-30T14:20:30.998Z"
+      "started": "2026-10-30T14:40:50.561Z",
+      "finished": "2026-10-30T14:40:50.562Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.998Z",
-      "finished": "2026-10-30T14:20:30.998Z"
+      "started": "2026-10-30T14:40:50.562Z",
+      "finished": "2026-10-30T14:40:50.562Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.998Z",
-      "finished": "2026-10-30T14:20:30.998Z"
+      "started": "2026-10-30T14:40:50.562Z",
+      "finished": "2026-10-30T14:40:50.562Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.998Z",
-      "finished": "2026-10-30T14:20:30.999Z"
+      "started": "2026-10-30T14:40:50.562Z",
+      "finished": "2026-10-30T14:40:50.563Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.999Z",
-      "finished": "2026-10-30T14:20:30.999Z"
+      "started": "2026-10-30T14:40:50.563Z",
+      "finished": "2026-10-30T14:40:50.563Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-10-30T14:20:30.999Z",
-      "finished": "2026-10-30T14:20:31.000Z"
+      "started": "2026-10-30T14:40:50.563Z",
+      "finished": "2026-10-30T14:40:50.563Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-10-30T14:20:31.000Z",
-      "finished": "2026-10-30T14:20:31.000Z"
+      "started": "2026-10-30T14:40:50.563Z",
+      "finished": "2026-10-30T14:40:50.563Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-10-30T14:20:31.000Z",
+    "generatedAt": "2026-10-30T14:40:50.563Z",
     "factCount": 20,
     "changeCount": 85,
     "conflictCount": 2,

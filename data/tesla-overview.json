@@ -160,11 +160,11 @@
     ]
   },
   "software": {
-    "updated": "2026-10-30T07:16:52Z",
+    "updated": "2026-10-30T14:20:27Z",
     "id": "2026.38.6.1",
     "firstSeen": "2026-10-29T19:53:31Z",
     "source": "https://teslascope.com/software",
-    "count": 18
+    "count": 21
   },
   "europe": {
     "updated": "2026-10-29",
@@ -172,6 +172,15 @@
     "recognised": 10
   },
   "stories": [
+    {
+      "url": "/dispatch/robotaxi-2am-20-hours.html",
+      "image": "/assets/og-v2.jpg",
+      "title": "Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”",
+      "summary": "Tesla’s official Robotaxi account says rides now run 6am to 2am, nine days after Tesla said 2am was coming “pretty soon.” The post also adds Calm Mode and Grok in Model Y.",
+      "tag": "Robotaxi",
+      "date": "2026-10-30T14:40:00Z",
+      "thumb": "/assets/og-v2-480w.webp"
+    },
     {
       "url": "/dispatch/tesla-the-plan-complete-story.html",
       "image": "/assets/dispatch/tesla-the-plan-poster.jpg",
@@ -216,16 +225,7 @@
       "tag": "Tesla",
       "date": "2026-10-26T12:40:00Z",
       "thumb": "/assets/og-v2-480w.webp"
-    },
-    {
-      "url": "/dispatch/robotaxi-938-f1-cota.html",
-      "image": "/assets/og-v2.jpg",
-      "title": "Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am",
-      "summary": "135 cars added to the Texas registry in eight days, most of them Cybercabs, and Austin’s map now reaches the F1 track, with rides until 1am.",
-      "tag": "Tesla",
-      "date": "2026-10-25T02:38:05Z",
-      "thumb": "/assets/og-v2-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-10-30T08:41:00Z"
+  "articlesUpdated": "2026-10-30T14:40:00Z"
 }
