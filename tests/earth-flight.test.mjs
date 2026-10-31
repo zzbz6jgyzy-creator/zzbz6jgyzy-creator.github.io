@@ -255,21 +255,31 @@ function bodiesClear(f, startClear) {
   const g = makeFlight(); g.setAnimated(false); g.jump({ anchor: 'Earth', distance: 6371 * 3.4 }); let d2 = false; g.playPath(F.DEMO_PATH, { onDone: () => { d2 = true; } }); assert.ok(d2 && g.state.anchor === 'Earth');
   const h = makeFlight(); h.jump({ anchor: 'Earth', distance: 6371 * 3.4 }); h.playPath(F.DEMO_PATH); run(h, .5, 60); h.setMove(1, 0, 0); assert.ok(!h.state.path && h.state.mode !== 'auto', 'input stops a path');
   assert.throws(() => h.playPath([{ target: 'Ceres', distance: 5 }]), RangeError);
-  const tour = M.solarTourPath();
-  assert.deepEqual(tour.map(k => k.target), [...M.SOLAR_TOUR]);
+  assert.throws(() => h.playPath([{ target: 'Moon', distance: 5000, lookTarget: 'Ceres' }]), RangeError);
+  const when = Date.parse('2026-10-29T00:00:00Z');
+  const tour = M.solarTourPath(when);
+  for (const id of M.SOLAR_TOUR) assert.ok(tour.some(k => k.target === id), id + ' is on the tour');
+  assert.ok(tour.some(k => k.target === 'Moon' && k.lookTarget === 'Earth'), 'Earthrise looks at Earth from the Moon');
+  assert.ok(tour.some(k => k.target === 'Io' && k.lookTarget === 'Jupiter'), 'Io frames Jupiter');
+  assert.ok(tour.some(k => k.target === 'Saturn' && k.distance < M.BODIES.find(b => b.id === 'Saturn').radius * 5 && k.pitch < 12), 'a ring-plane pass');
+  assert.equal(tour.at(-1).target, 'Earth'); assert.ok(tour.at(-1).distance > F.EARTH_RADIUS * 8, 'the last beat comes home');
   for (const k of tour) { const b = makeFlight().bodyOf(k.target); assert.ok(k.distance > b.floor, k.target + ' tour pass is above the floor'); }
+  const earthrise = tour.find(k => k.title === 'Earthrise');
+  const rise = makeFlight(); rise.setAnimated(false); rise.playPath([earthrise]);
+  const cam = camera(rise), fwd = F.qRot(new Float64Array(3), rise.state.q, 0, 0, -1), toEarth = sub(positions.Earth, cam), el = len(toEarth);
+  assert.ok((fwd[0] * toEarth[0] + fwd[1] * toEarth[1] + fwd[2] * toEarth[2]) / el > .96, 'Earthrise aims at Earth');
   const tourFlight = makeFlight(); tourFlight.setAnimated(false); tourFlight.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 });
-  tourFlight.playPath(tour); assert.equal(tourFlight.state.anchor, 'Pluto');
+  tourFlight.playPath(tour); assert.equal(tourFlight.state.anchor, 'Earth');
   const live = makeFlight(); live.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 });
   const tourMargins = []; let lastSeg = null;
   live.playPath(tour);
   if (live.state.auto) { lastSeg = live.state.auto.seg; tourMargins.push([live.state.auto.target, lastSeg.margin]); }
-  let tourT = 0; while (live.state.path && tourT < 90) {
+  let tourT = 0; while (live.state.path && tourT < 200) {
     live.step(1 / 60); tourT += 1 / 60;
     if (live.state.auto && live.state.auto.seg !== lastSeg) { lastSeg = live.state.auto.seg; tourMargins.push([live.state.auto.target, lastSeg.margin]); }
     for (const c of clearances(live)) assert.ok(c.d + 1e-3 >= c.floor, c.id + ' floor during tour: ' + c.d + ' < ' + c.floor);
   }
-  assert.ok(!live.state.path && live.state.anchor === 'Pluto', 'the live tour lands at Pluto');
+  assert.ok(!live.state.path && live.state.anchor === 'Earth', 'the live tour comes home');
   assert.equal(tourMargins.length, tour.length);
   for (const [id, margin] of tourMargins) assert.ok(margin >= 0, id + ' tour hop margin ' + margin);
   const hold = makeFlight(); hold.jump({ anchor: 'Earth', distance: FLOOR_EARTH * 2 }); hold.playPath(tour);

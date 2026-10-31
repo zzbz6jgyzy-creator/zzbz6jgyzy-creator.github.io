@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-31 · Earth explorer: the tour is a sequence of shots
+
+- **Decision:** keep one button and the same autopilot. Rebuild the itinerary as establishing shots, close passes, orbit slides and look-at-another-world frames (Earthrise; Io/Ganymede with Jupiter; the Sun from Pluto). End at home, not on a dim 55 AU Sun.
+- **Why:** one similar close-up per world was a slideshow. The interesting pictures are relationships and changing angle, not a roll-call.
+- **Rejected:** a scored cinema overlay, invented moons, or a free-look camera that leaves the floors.
+
 ## 2026-10-30 · Earth explorer: a Solar System tour, not a cinema overlay
 
 - **Decision:** one panel button plays a 15-stop close tour (Sun to Pluto, including the Moon and the Galilean moons). No HUD on the canvas, no scored “cinema mode”, no invented worlds.

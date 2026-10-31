@@ -253,7 +253,7 @@ export function normalizeKeyframes(keys) {
     if (!k || typeof k.target !== 'string') throw new TypeError('Keyframe ' + i + ' needs a target body.');
     if (!(k.distance > 0)) throw new TypeError('Keyframe ' + i + ' needs a positive distance in km.');
     const easing = k.easing || 'inOut'; if (!EASINGS[easing]) throw new TypeError('Keyframe ' + i + ' has an unknown easing.');
-    return { target: k.target, distance: +k.distance, yaw: +k.yaw || 0, pitch: clamp(+k.pitch || 0, -89, 89), duration: k.duration > 0 ? +k.duration : 0, easing, hold: k.hold > 0 ? +k.hold : 0 };
+    return { target: k.target, distance: +k.distance, yaw: +k.yaw || 0, pitch: clamp(+k.pitch || 0, -89, 89), duration: k.duration > 0 ? +k.duration : 0, easing, hold: k.hold > 0 ? +k.hold : 0, lookTarget: typeof k.lookTarget === 'string' && k.lookTarget ? k.lookTarget : null, title: typeof k.title === 'string' && k.title ? k.title : '' };
   });
 }
 export const keyframeDirection = (yawDeg, pitchDeg, out) => {
@@ -557,15 +557,25 @@ export function createFlight(cfg = {}) {
   /** Play a keyframe path. Each keyframe is one autopilot segment (with obstacle avoidance); hold pauses on the pose. */
   function playPath(keys, { onDone, onKeyframe } = {}) {
     const frames = normalizeKeyframes(keys);
-    for (const k of frames) if (!index.has(k.target)) throw new RangeError('Unknown body ' + k.target);
-    cancelAuto(true); st.path = { frames, onDone, onKeyframe }; st.pathIndex = 0; st.pathHold = 0; runKeyframe();
+    for (const k of frames) {
+      if (!index.has(k.target)) throw new RangeError('Unknown body ' + k.target);
+      if (k.lookTarget && !index.has(k.lookTarget)) throw new RangeError('Unknown body ' + k.lookTarget);
+    }
+    cancelAuto(true); st.path = { frames, onDone, onKeyframe }; st.pathIndex = 0; st.pathHold = 0; st.pathTitle = ''; runKeyframe();
     return { stop: () => { st.path = null; cancelAuto(true); } };
   }
   function runKeyframe() {
     const p = st.path, k = p.frames[st.pathIndex], t = index.get(k.target);
     keyframeDirection(k.yaw, k.pitch, S.d); const dir = [S.d[0], S.d[1], S.d[2]];
     const r = Math.max(k.distance, t.floor * 1.001);
-    qLook(S.q1, -dir[0], -dir[1], -dir[2], 0, 1, 0); const q = qCopy(new Float64Array(4), S.q1);
+    refresh();
+    if (k.lookTarget && k.lookTarget !== k.target) {
+      const look = index.get(k.lookTarget);
+      const cx = t.pos[0] + dir[0] * r, cy = t.pos[1] + dir[1] * r, cz = t.pos[2] + dir[2] * r;
+      qLook(S.q1, look.pos[0] - cx, look.pos[1] - cy, look.pos[2] - cz, 0, 1, 0);
+    } else qLook(S.q1, -dir[0], -dir[1], -dir[2], 0, 1, 0);
+    const q = qCopy(new Float64Array(4), S.q1);
+    st.pathTitle = k.title || k.target;
     p.onKeyframe?.(st.pathIndex, k);
     if (!st.animated) { jump({ anchor: k.target, distance: r, q }); st.path = p; st.pathIndex++; if (st.pathIndex < p.frames.length) runKeyframe(); else { st.path = null; p.onDone?.(); } return; }
     const seg = segmentTo({ target: k.target, distance: r, dir, q, duration: k.duration || undefined, easing: k.easing });

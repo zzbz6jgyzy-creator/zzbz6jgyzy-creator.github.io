@@ -74,7 +74,7 @@ assert.ok(html.includes("sessionStorage.getItem('sd-earth-intro')") && js.includ
 assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes("localStorage.getItem('sd-earth-labels')"), 'label choice persists');
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
-const TOKEN = '20261030-tour1';
+const TOKEN = '20261031-tour2';
 for (const file of ['mission-control.html', 'earth-preview.js', 'earth-renderer.js', 'earth-cosmos.js', 'earth-weather.js', 'starship-replay-renderer.js']) {
   const text = file === 'mission-control.html' ? html : readFileSync(new URL('../' + file, import.meta.url), 'utf8');
   const hits = [...text.matchAll(/earth-[a-z0-9.-]+\.(?:js|css)\?v=([\w-]+)/g)];
@@ -110,7 +110,10 @@ assert.ok(cosmosSrc.includes('uShOn') && cosmosSrc.includes('MultiplyBlending') 
 assert.ok(html.includes('Ceres is omitted') && html.includes('colour spheres') && html.includes('no sourced surface map is loaded'), 'about copy names the sourced bodies and the missing Ceres ephemeris');
 assert.ok(html.includes('umbra and penumbra') && html.includes('88 km atmosphere'), 'about copy names the sourced eclipse shadows');
 assert.ok(html.includes('Tour the Solar System') && html.includes('id="flight-tour"'), 'the panel starts the Solar System tour');
-assert.ok(js.includes('playSolarTour') && js.includes('Jumped to Pluto'), 'reduced motion names the jump to Pluto');
-assert.deepEqual(M.solarTourPath().map(k=>k.target),['Sun','Mercury','Venus','Earth','Moon','Mars','Jupiter','Io','Europa','Ganymede','Callisto','Saturn','Uranus','Neptune','Pluto']);
+assert.ok(js.includes('playSolarTour') && js.includes('Jumped home'), 'reduced motion names the jump home');
+const tour=M.solarTourPath(Date.parse('2026-10-29T00:00:00Z'));
+for (const id of M.SOLAR_TOUR) assert.ok(tour.some(k=>k.target===id), id+' is on the tour');
+assert.ok(tour.some(k=>k.lookTarget==='Earth'&&k.target==='Moon'), 'Earthrise is a look-at shot');
+assert.ok(tour.at(-1).target==='Earth'&&tour.at(-1).title==='home', 'the tour comes home');
 assert.ok(!M.BODIES.filter(b=>b.parent).some(b=>/Astronomy Engine has no surface/.test(b.description)), 'moon copy does not blame the ephemeris library for maps');
 console.log('Immersive viewer structure, hooks, credits-in-panel and session/label persistence verified.');
