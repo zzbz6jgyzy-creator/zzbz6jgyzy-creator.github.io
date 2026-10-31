@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-31 · Earth explorer: dots stay on the world
+
+- **Decision:** occupancy may shift a planet’s name, never its tap dot. Inner worlds that project onto the Sun lose their label.
+- **Why:** from 95 AU the inner planets sit on the star. Sliding the whole button hid Jupiter and broke tap-to-travel.
+- **Rejected:** dropping any label after 120 px of shift, or enlarging the pick radius to chase a drifted dot.
+
 ## 2026-10-31 · Earth explorer: illustrate the Sun, do not claim a live feed
 
 - **Decision:** animate the Sun with a photosphere overlay and an additive corona (streamers and flare jets). Keep the sourced surface map. Say in credits that this is an illustration.

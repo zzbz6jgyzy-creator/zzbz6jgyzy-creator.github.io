@@ -108,6 +108,7 @@ async def flight_checks(page,ctx,width,errors):
    await page.wait_for_timeout(1200);later=await page.evaluate(STATE);assert not later['travelling'] and later['flight']['mode']!='autopilot',how
   # --- tap-to-travel: a planet's dot in the Solar System flies there
   await page.evaluate("window.__earthPreview.setScale('solar')");await wait_state(page,"s.scene==='solar'&&!s.travelling",timeout=150000);await page.wait_for_timeout(800)
+  await page.wait_for_function("[...document.querySelectorAll('.cosmos-object-label:not([hidden]) .cosmos-name')].some(n=>n.textContent==='Jupiter')",timeout=15000)
   dot=page.locator('.cosmos-object-label:not([hidden])').filter(has=page.locator('.cosmos-name',has_text='Jupiter')).first.locator('.cosmos-dot');box=await dot.bounding_box()
   assert await page.evaluate('([x,y])=>window.__earthPreview.pickBodyAt(x,y)',[box['x']+box['width']/2+6,box['y']+box['height']/2+5])=='Jupiter','a tap near a planet picks that planet'
   await dot.evaluate('e=>e.closest("button").click()')

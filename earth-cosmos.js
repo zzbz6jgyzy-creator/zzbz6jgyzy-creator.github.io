@@ -1,7 +1,7 @@
 /* A floating-origin, physically scaled scene. The legacy Earth shaders stay shared with the replay; the explorer uses the physical ones. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import * as M from './earth-cosmos-model.js?v=20261031-sun1';
-import {galaxyBlend} from './earth-flight.js?v=20261031-sun1';
+import * as M from './earth-cosmos-model.js?v=20261031-sun2';
+import {galaxyBlend} from './earth-flight.js?v=20261031-sun2';
 const BASE='/assets/cosmos/';
 const matrixFromAxes=axes=>new THREE.Matrix4().makeBasis(...axes.map(v=>new THREE.Vector3(...v)));
 const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};
@@ -231,8 +231,10 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
    const point=world(M.sub(row.p,f)).multiplyScalar(1/renderUnit);const fromCamera=point.clone().sub(camera.position);if(fromCamera.dot(camera.getWorldDirection(new THREE.Vector3()))<=0)continue;
    const p=point.project(camera);if(p.z< -1||p.z>1||Math.abs(p.x)>.96||Math.abs(p.y)>.86)continue;if(level==='earth'&&row.id==='Moon'){const target=world(M.sub(row.p,f)).multiplyScalar(1/renderUnit);const ray=new THREE.Ray(camera.position.clone(),target.clone().sub(camera.position).normalize());const hit=ray.intersectSphere(new THREE.Sphere(globe.position.clone(),globe.scale.x),new THREE.Vector3());if(hit&&hit.distanceTo(camera.position)<target.distanceTo(camera.position))continue;}let x=(p.x+1)*rect.width/2,y=(1-p.y)*rect.height/2;
    if(level==='earth'&&row.id!=='Moon')continue;
-   const width=Math.max(55,row.id.length*7+16);x=THREE.MathUtils.clamp(x,12,Math.max(12,rect.width-width-12));let shift=0;while(occupied.some(o=>Math.abs(x-o.x)<(width+o.w)/2&&Math.abs(y+shift-o.y)<34)&&shift<120)shift+=32;
-   if(shift>=120)continue;occupied.push({x,y:y+shift,w:width});out.push({id:row.id,x,y:y+shift,anchorY:y,color:row.color});
+   const width=Math.max(55,row.id.length*7+16);x=THREE.MathUtils.clamp(x,12,Math.max(12,rect.width-width-12));
+   if(M.INNER_LABELS.has(row.id)&&M.namesOverlap(x,y,occupied))continue;
+   const shift=M.nameShift(x,y,width,occupied);
+   occupied.push({x,y:y+shift,w:width,ax:x,ay:y});out.push({id:row.id,x,y,nameShift:shift,anchorY:y,color:row.color});
   }
   onLabels(out);
  }

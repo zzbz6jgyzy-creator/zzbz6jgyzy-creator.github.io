@@ -89,6 +89,20 @@ export function orbit(id,date=new Date(),count=192){
  return Array.from({length:count+1},(_,i)=>{const t=new Date(date.getTime()+b.period*86400000*(i/count-.5));return scale(vec(A.HelioVector(id,t)),AU);});
 }
 export const SATELLITE_SHOW_RADII=180;
+/** Inner worlds that sit on the Sun in the Solar System view. Their dots must not cover Jupiter. */
+export const INNER_LABELS=Object.freeze(new Set(['Mercury','Venus','Earth','Moon','Mars']));
+/** Pixel offset that keeps a name off others. The dot stays on the world; a name is never dropped. */
+export function nameShift(x,y,width,occupied,{row=34,step=32,max=280}={}){
+ const hit=s=>occupied.some(o=>Math.abs(x-o.x)<(width+(o.w||55))/2&&Math.abs(y+s-o.y)<row);
+ let shift=0;while(hit(shift)&&shift<max)shift+=step;
+ if(!hit(shift))return shift;
+ shift=0;while(hit(-shift)&&shift<max)shift+=step;
+ return -shift;
+}
+/** True when this world sits on another already-named world (Mercury on the Sun). */
+export function namesOverlap(x,y,occupied,px=16){
+ return occupied.some(o=>Math.hypot(x-(o.ax??o.x),y-(o.ay??o.y))<px);
+}
 export function satelliteVisible(body,{focus,rangeToParentKm,parentRadius}={}){
  if(!body?.parent)return true;
  if(focus===body.id||focus===body.parent)return true;

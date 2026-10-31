@@ -109,7 +109,7 @@ successful image load.
 - **Panel** (`#earth-panel`, a modal `<dialog>`): View (mode, perspectives, zoom, reset, deep sky, detail, Show labels), Place, Now (UTC, distance), Time (Live, speeds, reverse, UTC date, next solar/lunar eclipse), Clouds and credits, Keyboard. Side panel from 700 px, bottom sheet below. Perspective choices close the sheet on phones.
 - **Labels:** `data-labels="off|on"` on the root, stored in `localStorage['sd-earth-labels']`. Label buttons stay in the DOM; opacity 0 until hover/focus. `#cosmos-focus-name` shows one soft name for 3.2 s after a view change; `#earth-live` announces name, description and distance (debounced).
 - **Provenance chip** (`#earth-provenance`, outside the HUD so it never fades; editorial rule 8): shown only when the view is not live or measured. Simulated clock: "Simulated time · HH:MM UTC D Mon YYYY" (galaxy and neighbourhood still append their model notes). Live galaxy: "Illustration · structural model"; neighbourhood scale: "Catalogue positions · distances approximate"; Earth with illustrative clouds: "Illustrative clouds · live feed unavailable" (or "requesting satellite frame" while loading); satellite frame older than 200 min: "Satellite clouds · HH:MM UTC". Hidden on live Earth with a fresh frame. Simulated time keeps the live cloud frame and labels it "not for this time".
-- **Planet dots:** with labels off every label keeps a 6 px coloured dot (24 px hit area, so touch devices can find and tap planets); only the name fades. Label boxes are `pointer-events:none`, so drags pass to the canvas. The Sun and Galactic-centre markers (`.is-marker`) stay named regardless of the setting.
+- **Planet dots:** with labels off every label keeps a 6 px coloured dot (24 px hit area, so touch devices can find and tap planets); only the name fades. The button stays on the world’s projection — occupancy shifts the name with `translateY(var(--name-shift))`, never the tap target. Inner worlds that sit on another labelled world (Mercury through Mars) lose their label so the giant planets stay tappable. Label boxes are `pointer-events:none`, so drags pass to the canvas. The Sun and Galactic-centre markers (`.is-marker`) stay named regardless of the setting.
 - **Toasts:** `#earth-loading`, `#earth-note` (7 s, except the sticky detail-loading message).
 - Tests: `tests/earth-browser.py` (intro, session memory, clean-text assertion, HUD, panel focus, credits, no ground UI, zoom floor), `tests/cosmos-browser.py` (labels off/hover/switch/persist, live region), `tests/earth-cosmos.test.mjs` (markup hooks and ids).
 
@@ -183,7 +183,7 @@ Owner-facing clock, 30 October 2026. All of it lives in `earth-time.js` (pure ma
 - **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Umbra and penumbra are drawn (see Eclipse shadows).
 - **Editorial:** the provenance chip reads `Simulated time · HH:MM UTC D Mon YYYY`, and on Earth/Moon appends `· clouds not for this time` (or `· illustrative clouds`). The Clouds row says the same. No historical weather is invented.
 
-Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261031-sun1`.
+Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261031-sun2`.
 
 ## Eclipse shadows
 
