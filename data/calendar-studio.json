@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-10-28T09:15:00+00:00",
- "launchChecked": "2026-10-31T00:44:55Z",
+ "launchChecked": "2026-10-31T06:57:34Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -517,21 +517,21 @@
    "title": "Falcon 9 Block 5 | Starlink Group 15-18",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-10-31T04:02:22Z",
+   "start": "2026-10-31T04:04:34Z",
    "end": "",
    "date": "2026-10-31",
    "precision": "datetime",
-   "status": "Go",
-   "note": "Communications · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "status": "done",
+   "note": "Launch Library 2 schedule. Launch targets can change.",
+   "where": "",
    "href": "",
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "57ce0a39-d035-4f16-a418-bd6108f78199",
    "windowStart": "2026-10-31T03:48:00Z",
    "windowEnd": "2026-10-31T07:48:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch"
+   "vehicle": "",
+   "providerStatus": "Launch Successful"
   },
   {
    "id": "ussf-432",
