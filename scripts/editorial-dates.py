@@ -21,7 +21,7 @@ BOT_SUBJECT = re.compile(
 )
 # Data files whose git date is the honest lastmod for a tracker HTML shell.
 TRACKER_SOURCES = {
-    'starlink.html': ['data/starlink.json', 'starlink-live.js', 'data/starlink-history.json'],
+    'starlink.html': ['data/starlink.json', 'starlink-live.js', 'data/starlink-history.json', 'data/starlink-missions.json'],
     'fsd-europe.html': ['data/fsd-europe.json'],
     'cybercab.html': ['data/robotaxi-tx.json', 'data/robotaxi-evidence.json', 'data/mobility-snapshot.json'],
     'updates.html': ['updates-live.json', 'data/updates-history.json', 'data/updates-extras.json'],

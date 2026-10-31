@@ -26,7 +26,9 @@ if(valid%8===0)points.push([+lon.toFixed(2),+lat.toFixed(2),row[2],Math.round(h)
 }catch{}}
 const other=Object.fromEntries(['launched','inOrbit','working'].map(k=>[k,live.totals[k]-Object.values(live.generations).reduce((n,g)=>n+g[k],0)]));
 const land=JSON.parse(read('assets/starlink/land.json')).rings;
-const data={schema:1,countsAt:live.updated,source:live.source,totals:live.totals,other,generations:ctx.SDStarlink.GEN.map(([id,name,color,kicker,description])=>({id,name,color,kicker,description,...live.generations[id]})),orbits:{count:cat.count,valid,latest:epochs.at(-1),median:epochs[Math.floor(epochs.length/2)],oldest:epochs[0],catalogAt:cat.updated,positionAt:at.toISOString(),altitudes:bins.map(([min,max],i)=>({min,max:Number.isFinite(max)?max:null,count:altitudes[i]})),inclinations,points,land},history:histories};
+const missionsFile=path.join(ROOT,'data/starlink-missions.json');
+const latestLaunch=fs.existsSync(missionsFile)?JSON.parse(read('data/starlink-missions.json')).latest:undefined;
+const data={schema:1,countsAt:live.updated,source:live.source,totals:live.totals,other,generations:ctx.SDStarlink.GEN.map(([id,name,color,kicker,description])=>({id,name,color,kicker,description,...live.generations[id]})),orbits:{count:cat.count,valid,latest:epochs.at(-1),median:epochs[Math.floor(epochs.length/2)],oldest:epochs[0],catalogAt:cat.updated,positionAt:at.toISOString(),altitudes:bins.map(([min,max],i)=>({min,max:Number.isFinite(max)?max:null,count:altitudes[i]})),inclinations,points,land},history:histories,...(latestLaunch?{latestLaunch}:{})};
 ctx.SDStarlink.validate(data);
 const out=JSON.stringify(data,null,1)+'\n';fs.writeFileSync(path.join(ROOT,'data/starlink-observatory.json'),out);
 const target=path.join(ROOT,'starlink.html');let html=fs.readFileSync(target,'utf8');
