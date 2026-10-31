@@ -1,3 +1,9 @@
+## 2026-10-31 — Starlink Group 15-18 on the observatory
+
+- SpaceX says Falcon 9 launched 27 Starlink satellites from SLC-4E at Vandenberg at 04:04 UTC (04:04 Irish time). Launch Library 2 records the launch as successful. First stage B1093, flight 18, landed on Of Course I Still Love You in the Pacific.
+- Primary source: [SpaceX mission page](https://www.spacex.com/launches/sl-15-18). Liftoff second, booster serial and landing also match Launch Library 2. Next Spaceflight lists the batch as v2-mini; SpaceX’s page does not name the bus.
+- McDowell’s table is still dated 29 Oct 2026 (11,190 in orbit / 13,069 launched). Those totals are unchanged. The tracker now has a sourced latest-launch card. Launches are not added to the count by inference.
+
 ## 2026-10-31 — Texas Model Y robotaxi registry +124
 
 - Confirmed against FSD Database’s TxDMV mirror: 631 Model Y robotaxis (was 507) and 573 Cybercabs, 1,204 Teslas in total. 124 new `7SAY` VINs first seen in our 31 Oct UTC ingest.

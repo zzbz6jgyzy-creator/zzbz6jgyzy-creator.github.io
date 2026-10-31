@@ -32,6 +32,9 @@ async def main():
    assert await page.locator('.so-gen').count()==6
    assert TOTAL in await page.locator('.so-hero-total').inner_text()
    assert await page.locator('#identify').count()==1
+   assert 'Starlink Group 15-18' in await page.locator('#latest-launch').inner_text()
+   assert 'SpaceX says Falcon 9 launched 27' in await page.locator('#latest-launch').inner_text()
+   assert 'B1093' in await page.locator('#latest-launch').inner_text()
    # A leaked display-heading style must not crush small text, even on cached pages.
    if mode=='headline-tracking':await page.locator('.so-hero-copy').evaluate("e=>e.style.letterSpacing='-3px'")
    hero=await page.evaluate("""() => {
@@ -57,6 +60,8 @@ async def main():
    assert '/data/starlink.json' not in requests,requests
    assert not any(x.endswith('starlink-gp.js') for x in requests)
    await page.screenshot(path=str(OUT/f'{width}-{theme}-{mode}-hero.png'))
+   if mode=='normal' and width in (390,1440) and theme in ('dark','light'):
+    await page.locator('#latest-launch').screenshot(path=str(OUT/f'{width}-{theme}-launch.png'))
    if mode=='normal' and width==1440 and theme=='dark':
     await page.locator('#fleet').screenshot(path=str(OUT/'fleet-desktop.png'))
     await page.locator('#so-start').click();await page.wait_for_function("document.querySelector('.so-workspace').dataset.explorer==='ready'",timeout=30000)

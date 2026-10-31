@@ -6,14 +6,15 @@ This revision adds a bespoke orbital illustration from actual catalogue records,
 
 ## Sources and evidence
 
-- Counts: https://planet4589.org/space/con/star/stats.html — Jonathan McDowell, CC BY. Source dated 15 October 2026 at this review. The live source was fetched directly and matched the saved count; no inferred post-source launch additions were made.
+- Counts: https://planet4589.org/space/con/star/stats.html — Jonathan McDowell, CC BY. Source dated 29 October 2026 at this review. The live source was fetched directly and matched the saved count; no inferred post-source launch additions were made.
+- Latest launch: `data/starlink-missions.json`, checked against SpaceX’s mission page and Launch Library 2. Deployed is not the same as McDowell’s in-orbit total. Hardware generation is only shown as a secondary report when SpaceX’s page does not name the bus.
 - Orbits: https://celestrak.org/NORAD/elements/ — dated GP/TLE elements; latest element in the initial catalogue is 21 October 2026. The page exposes newest, median and oldest epochs, and each selected satellite's own epoch.
 - Hardware buses: https://planet4589.org/space/gcat/ — Jonathan McDowell, CC BY 4.0. New unmatched buses remain `unknown`, never guessed as Optimized. The original saved catalogue predates this fix; classifications are replaced by the next normal source refresh.
 - Availability: https://www.starlink.com/map — official service map. Orbital geometry cannot establish coverage, ordering availability, capacity or latency.
 - Direct to Cell: https://direct.starlink.com/ — official product context, not a per-country service assertion.
 - Observing: https://www.heavens-above.com/StarlinkLaunchPasses.aspx — complementary observing tools. Sky-finder matches are geometric candidates, not sightings.
 
-Benchmark review on 23 October 2026: https://satellitemap.space/ offers a broad WebGL constellation explorer; Heavens-Above provides observation-focused pass tools; https://starlink.sx/ now displays its creator's retirement notice. We retained useful existing tools instead of adding placeholder launch/event tabs. No claim to outperform every tracker is made.
+Benchmark review on 23 October 2026: https://satellitemap.space/ offers a broad WebGL constellation explorer; Heavens-Above provides observation-focused pass tools; https://starlink.sx/ now displays its creator's retirement notice. A sourced latest-launch card sits under the count metrics; it is not a substitute for McDowell’s table and is not a launch-calendar tab. `data/starlink-missions.json` is editorial and is not refreshed by the eight-hour job, so the card keeps naming the last saved mission until someone updates that file. No claim to outperform every tracker is made.
 
 ## Definitions
 
@@ -30,6 +31,7 @@ After successful source updates, `node scripts/build-starlink-observatory.mjs` r
 Canonical files:
 
 - `starlink-live.js`: generated count source, not manual editorial totals.
+- `data/starlink-missions.json`: sourced latest-launch log. Not added into McDowell totals.
 - `data/starlink.json`: generated same-origin orbit / identity catalogue.
 - `starlink-model.js`, `starlink-view.js`: pure validation and saved rendering.
 - `templates/starlink-sky.html`: existing sky-finder markup, with clearer candidate language.
