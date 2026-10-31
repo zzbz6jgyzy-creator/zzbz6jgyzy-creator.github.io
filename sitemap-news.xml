@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/shotwell-2m-spacex-shares-trump-accounts.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-31T02:49:00Z</news:publication_date>
+      <news:title>Gwynne Shotwell's 2 million SpaceX shares are headed to teens' Trump Accounts in December</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/robotaxi-2am-20-hours.html</loc>
     <news:news>
       <news:publication>
@@ -98,17 +109,6 @@
       </news:publication>
       <news:publication_date>2026-10-29T08:41:00Z</news:publication_date>
       <news:title>Amazon locked Grok Bot out. Shopify just made it one of three AI agents that can pay almost anywhere with Shop Pay</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/anthropic-spacex-compute-3-1b.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-29T02:46:00Z</news:publication_date>
-      <news:title>Anthropic’s IPO filing puts its SpaceX compute bill at $3.1 billion a month, 2.5 times what SpaceX disclosed in June</news:title>
     </news:news>
   </url>
 </urlset>
