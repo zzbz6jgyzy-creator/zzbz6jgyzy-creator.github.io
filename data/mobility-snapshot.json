@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "editorial": {
     "schemaVersion": 1,
-    "updated": "2026-10-30",
-    "revision": "2026-10-30.1",
+    "updated": "2026-10-31",
+    "revision": "2026-10-31.1",
     "scope": "Tesla Cybercab and Model Y Robotaxi",
     "sources": [
       {
@@ -67,7 +67,7 @@
         "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
         "label": "FSD Database: Texas registry mirror",
         "type": "tracker",
-        "checkedAt": "2026-10-23",
+        "checkedAt": "2026-10-31",
         "publishedAt": null
       },
       {
@@ -977,6 +977,21 @@
           "phoenix",
           "san_antonio"
         ]
+      },
+      {
+        "id": "tx-model-y-124",
+        "date": "2026-10-30",
+        "precision": "day",
+        "city": null,
+        "vehicle": "model_y",
+        "kind": "registry",
+        "title": "124 more Model Ys listed on the Texas registry",
+        "summary": "FSD Database’s TxDMV mirror lists 631 Model Y robotaxis, up 124 from 507, with Cybercab unchanged at 573 (1,204 Teslas in total). This is a statewide registration count, not cars in service, and the registry has no city split. FSD Database’s daily series lists 1,204 from 30 Oct; Supercharged Daily first ingested the 124 new 7SAY VINs on 31 Oct 07:33 UTC, after a 30 Oct 21:39 UTC reading still at 507.",
+        "evidence": [
+          "s-fef316c7def7",
+          "s-b58b31837c2f"
+        ],
+        "type": "tracker"
       }
     ],
     "companyClaims": [
@@ -1035,7 +1050,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-10-30T21:39:35Z",
+    "checked": "2026-10-31T07:33:00Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -1171,6 +1186,13 @@
         "date": "2026-10-30",
         "cybercab": 573,
         "modelY": 507,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "date": "2026-10-31",
+        "cybercab": 573,
+        "modelY": 631,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
@@ -1343,20 +1365,28 @@
         "modelY": 507,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-10-31T07:33:00Z",
+        "date": "2026-10-31",
+        "cybercab": 573,
+        "modelY": 631,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-10-30T21:39:35Z",
+    "checked": "2026-10-31T07:33:17Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
     },
     "states": {
       "Texas": {
-        "count": 507,
+        "count": 631,
         "kind": "registered",
-        "asOf": "2026-10-30",
+        "asOf": "2026-10-31",
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
         "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."
       },
@@ -1606,6 +1636,21 @@
         "Texas": {
           "count": 507,
           "asOf": "2026-10-30"
+        },
+        "California": {
+          "count": 164,
+          "asOf": "2026-08-26"
+        },
+        "Florida": {
+          "count": 18,
+          "asOf": "2026-07-22"
+        }
+      },
+      {
+        "date": "2026-10-31",
+        "Texas": {
+          "count": 631,
+          "asOf": "2026-10-31"
         },
         "California": {
           "count": 164,

@@ -1,3 +1,9 @@
+## 2026-10-31 — Texas Model Y robotaxi registry +124
+
+- Confirmed against FSD Database’s TxDMV mirror: 631 Model Y robotaxis (was 507) and 573 Cybercabs, 1,204 Teslas in total. 124 new `7SAY` VINs first seen in our 31 Oct UTC ingest.
+- `data/robotaxi-tx.json` keeps the 30 Oct daily point at 507 (last observed 21:39 UTC) and records 631 on 31 Oct. FSD Database’s daily series lists 1,204 from 30 Oct. Registered is not in service; no city split.
+- Fleet, evidence journal, Cybercab workspace, city profiles, homepage tracker stamp and `cybercab-data.js` share (573 / 1,204 = 48%) follow that snapshot.
+
 ## 2026-10-31 — Earth explorer: an illustrated living Sun
 
 - The Sun’s sourced surface map now has moving granules and bright flare patches. A corona shell adds streamers and jets around the disc; it does not wash out the photosphere.
