@@ -1,13 +1,46 @@
 /* A floating-origin, physically scaled scene. The legacy Earth shaders stay shared with the replay; the explorer uses the physical ones. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import * as M from './earth-cosmos-model.js?v=20261031-tour2';
-import {galaxyBlend} from './earth-flight.js?v=20261031-tour2';
+import * as M from './earth-cosmos-model.js?v=20261031-sun1';
+import {galaxyBlend} from './earth-flight.js?v=20261031-sun1';
 const BASE='/assets/cosmos/';
 const matrixFromAxes=axes=>new THREE.Matrix4().makeBasis(...axes.map(v=>new THREE.Vector3(...v)));
 const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};
 const BODY_VERTEX=`varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){vUv=uv;vec4 p=modelMatrix*vec4(position,1.);vP=p.xyz;vN=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*p;}`;
 const BODY_FRAGMENT=`uniform sampler2D uMap;uniform float uHasMap;uniform vec3 uColor;uniform vec3 uSun;uniform float uEmissive;uniform float uShOn;uniform vec3 uShDir;uniform vec3 uShEarth;uniform float uShUmbra;uniform float uShPenumbra;varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){vec3 base=mix(uColor,texture2D(uMap,vUv).rgb,uHasMap);float mu=max(0.,dot(normalize(vN),uSun));vec3 c=base*mix(.008+1.18*mu,1.15,uEmissive);if(uShOn>0.5){vec3 d=vP-uShEarth;float along=dot(d,uShDir);if(along>0.){vec3 perp=d-uShDir*along;float r=length(perp);float f=r<uShUmbra?.18:r<uShPenumbra?mix(.18,1.,smoothstep(uShUmbra,uShPenumbra,r)):1.;c=mix(c*vec3(1.15,.45,.22)*.4,c,f);}}gl_FragColor=vec4(c,1.);
 #include <tonemapping_fragment>
+#include <colorspace_fragment>
+}`;
+const SUN_VERTEX=`varying vec3 vN;varying vec3 vP;varying vec2 vUv;void main(){vUv=uv;vec4 p=modelMatrix*vec4(position,1.);vP=p.xyz;vN=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*p;}`;
+const SUN_FRAGMENT=`uniform sampler2D uMap;uniform float uHasMap;uniform vec3 uColor;uniform float uTime;uniform float uLive;
+varying vec2 vUv;varying vec3 vN;varying vec3 vP;
+float hash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
+float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash(i),hash(i+vec3(1.,0.,0.)),f.x),mix(hash(i+vec3(0.,1.,0.)),hash(i+vec3(1.,1.,0.)),f.x),f.y),mix(mix(hash(i+vec3(0.,0.,1.)),hash(i+vec3(1.,0.,1.)),f.x),mix(hash(i+vec3(0.,1.,1.)),hash(i+vec3(1.,1.,1.)),f.x),f.y),f.z);}
+void main(){vec3 n=normalize(vN);vec3 V=normalize(cameraPosition-vP);vec3 base=mix(uColor,texture2D(uMap,vUv).rgb,uHasMap);float t=uTime*uLive;
+float g=noise(n*16.+vec3(t*.06,t*.04,0.))+.45*noise(n*34.-vec3(t*.1,0.,t*.05));base*=.86+.32*g;
+float lon=atan(n.z,n.x),lat=asin(clamp(n.y,-1.,1.));
+float f1=smoothstep(.24,.0,abs(fract(lon*.159155+.31)-.5)*2.)*smoothstep(.62,.0,abs(lat-.16))*pow(.5+.5*sin(t*.72+1.4),3.);
+float f2=smoothstep(.2,.0,abs(fract(lon*.159155+.78)-.5)*2.)*smoothstep(.55,.0,abs(lat+.28))*pow(.5+.5*sin(t*1.05+3.8),4.);
+float f3=smoothstep(.18,.0,abs(fract(lon*.159155+.12)-.5)*2.)*smoothstep(.5,.12,abs(lat-.05))*pow(.5+.5*sin(t*.55+5.2),6.);
+base+=vec3(1.25,.52,.16)*(f1*.7+f2*.55+f3);
+float rim=pow(1.-max(0.,dot(n,V)),2.1);base+=vec3(1.,.42,.1)*rim*.4;
+gl_FragColor=vec4(base,1.);
+#include <tonemapping_fragment>
+#include <colorspace_fragment>
+}`;
+const CORONA_VERTEX=`varying vec3 vDir;varying vec3 vCam;void main(){vDir=position;vec4 p=modelMatrix*vec4(position,1.);vec3 d=cameraPosition-modelMatrix[3].xyz;mat3 lin=mat3(modelMatrix);vCam=vec3(dot(lin[0],d),dot(lin[1],d),dot(lin[2],d))/dot(lin[0],lin[0]);gl_Position=projectionMatrix*viewMatrix*p;}`;
+const CORONA_FRAGMENT=`varying vec3 vDir;varying vec3 vCam;uniform float uTime;uniform float uLive;uniform float uInner;
+float hash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
+float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash(i),hash(i+vec3(1.,0.,0.)),f.x),mix(hash(i+vec3(0.,1.,0.)),hash(i+vec3(1.,1.,0.)),f.x),f.y),mix(mix(hash(i+vec3(0.,0.,1.)),hash(i+vec3(1.,0.,1.)),f.x),mix(hash(i+vec3(0.,1.,1.)),hash(i+vec3(1.,1.,1.)),f.x),f.y),f.z);}
+void main(){vec3 rd=normalize(vDir-vCam);float along=dot(vCam,rd);float impact2=dot(vCam,vCam)-along*along;float inner2=uInner*uInner;if(impact2<inner2)discard;
+float impact=sqrt(max(impact2,1e-8)),span=max(1.-uInner,.12),near=impact-uInner;float halo=exp(-4.4*pow(near/span,1.35));
+vec3 perp=normalize(vCam-rd*along);float t=uTime*uLive,ang=atan(perp.z,perp.x),lat=perp.y;
+float stream=.45+.55*noise(vec3(ang*3.4,lat*4.,t*.11));
+float j1=smoothstep(.12,.0,abs(fract(ang*.159155+.14)-.5)*2.)*smoothstep(.55,.08,abs(lat-.2))*pow(.5+.5*sin(t*.62+2.),5.);
+float j2=smoothstep(.1,.0,abs(fract(ang*.159155+.61)-.5)*2.)*smoothstep(.52,.1,abs(lat+.16))*pow(.5+.5*sin(t*.84+4.6),6.);
+float j3=smoothstep(.1,.0,abs(fract(ang*.159155+.88)-.5)*2.)*smoothstep(.5,.12,abs(lat-.04))*pow(.5+.5*sin(t*.48+1.1),4.);
+float jets=j1*2.8+j2*2.2+j3*1.8;float jetHalo=exp(-1.15*pow(near/span,.9));
+float a=halo*stream*.7+jets*jetHalo;if(a<.018)discard;vec3 col=vec3(1.,.58,.24)*halo*stream+vec3(1.,.9,.55)*jets*jetHalo;
+gl_FragColor=vec4(col,1.);
 #include <colorspace_fragment>
 }`;
 const ECLIPSE_VERTEX=`varying vec3 vN;void main(){vN=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
@@ -48,8 +81,12 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
  let galaxy,skyMap,blendGalaxy=true,galacticCentre=[0,0,0];
  const grey=new THREE.Color('#bdc9d0');
  for(const b of M.BODIES){if(b.id==='Earth')continue;
-  const uniforms={uMap:{value:black},uHasMap:{value:0},uColor:{value:new THREE.Color(b.color)},uSun:{value:new THREE.Vector3(1,0,0)},uEmissive:{value:b.id==='Sun'?1:0},uShOn:{value:0},uShDir:{value:new THREE.Vector3(0,1,0)},uShEarth:{value:new THREE.Vector3()},uShUmbra:{value:0},uShPenumbra:{value:0}};
-  const mesh=new THREE.Mesh(plane,new THREE.ShaderMaterial({vertexShader:BODY_VERTEX,fragmentShader:BODY_FRAGMENT,uniforms}));mesh.name=b.id;groupSolar.add(mesh);system.set(b.id,{body:b,mesh,uniforms});
+  const isSun=b.id==='Sun';
+  const uniforms=isSun?{uMap:{value:black},uHasMap:{value:0},uColor:{value:new THREE.Color(b.color)},uTime:{value:0},uLive:{value:1}}:{uMap:{value:black},uHasMap:{value:0},uColor:{value:new THREE.Color(b.color)},uSun:{value:new THREE.Vector3(1,0,0)},uEmissive:{value:0},uShOn:{value:0},uShDir:{value:new THREE.Vector3(0,1,0)},uShEarth:{value:new THREE.Vector3()},uShUmbra:{value:0},uShPenumbra:{value:0}};
+  const mesh=new THREE.Mesh(plane,new THREE.ShaderMaterial({vertexShader:isSun?SUN_VERTEX:BODY_VERTEX,fragmentShader:isSun?SUN_FRAGMENT:BODY_FRAGMENT,uniforms}));mesh.name=b.id;groupSolar.add(mesh);
+  const row={body:b,mesh,uniforms};
+  if(isSun){const corona=new THREE.Mesh(plane,new THREE.ShaderMaterial({vertexShader:CORONA_VERTEX,fragmentShader:CORONA_FRAGMENT,uniforms:{uTime:{value:0},uLive:{value:1},uInner:{value:1/1.55}},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,toneMapped:false}));corona.scale.setScalar(1.55);corona.renderOrder=2;corona.frustumCulled=false;mesh.add(corona);row.corona=corona;}
+  system.set(b.id,row);
  }
  const ring=new THREE.Mesh(new THREE.RingGeometry(1.24,2.32,160),new THREE.MeshBasicMaterial({color:'#c8b58e',side:THREE.DoubleSide,transparent:true,opacity:.72,depthWrite:false}));
  const ringUV=ring.geometry.getAttribute('uv'),rp=ring.geometry.getAttribute('position');for(let i=0;i<rp.count;i++)ringUV.setXY(i,(Math.hypot(rp.getX(i),rp.getY(i))-1.24)/(2.32-1.24),.5);
@@ -120,7 +157,7 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   const e=frameElements,x=p[0],y=p[1],z=p[2];out[0]=e[0]*x+e[4]*y+e[8]*z;out[1]=e[1]*x+e[5]*y+e[9]*z;out[2]=e[2]*x+e[6]*y+e[10]*z;return out;
  }
 
- function update({distanceKm,nearKm=distanceKm,blend=true,live=false,fadeKm=distanceKm,date,simulated=false}={}){
+ function update({distanceKm,nearKm=distanceKm,blend=true,live=false,fadeKm=distanceKm,date,simulated=false,reducedMotion=false}={}){
   if(disposed)return null;currentRange=distanceKm;blendGalaxy=blend;level=M.levelFor(distanceKm,focus);
   const at=date instanceof Date?date:date?new Date(date):new Date();
   const iso=Number.isFinite(at.getTime())?at.toISOString():'';
@@ -133,8 +170,16 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   if(earthNear){atmosphere.position.set(0,0,0);atmosphere.scale.setScalar(1);}
   for(const [id,row] of system){const p=physical.positions[id];row.mesh.position.copy(world(M.sub(p,f))).multiplyScalar(1/renderUnit);row.mesh.scale.setScalar(row.body.radius/renderUnit);
    row.mesh.visible=distanceKm<LY_LIMIT;row.mesh.quaternion.setFromRotationMatrix(new THREE.Matrix4().multiplyMatrices(eqFrame,matrixFromAxes(M.bodyAxes(id))));
-   const sunDir=M.sub(physical.positions.Sun,p);if(id==='Sun')sunDir[0]=1;row.uniforms.uSun.value.copy(world(sunDir).normalize());
+   if(id!=='Sun'){const sunDir=M.sub(physical.positions.Sun,p);row.uniforms.uSun.value.copy(world(sunDir).normalize());}
    if(focus===id||(level==='solar'&&distanceKm>M.AU*.1&&distanceKm<M.AU*200))requestBody(id);
+  }
+  const sunRow=system.get('Sun');
+  if(sunRow){
+   const t=performance.now()*0.001,liveFx=reducedMotion?0:1;
+   sunRow.uniforms.uTime.value=t;sunRow.uniforms.uLive.value=liveFx;
+   if(sunRow.corona){sunRow.corona.material.uniforms.uTime.value=t;sunRow.corona.material.uniforms.uLive.value=liveFx;
+    const sunR=sunRow.body.radius/renderUnit,camD=camera.position.distanceTo(sunRow.mesh.position);
+    sunRow.corona.visible=camD>sunR*1.62&&camD<sunR*500;}
   }
   const fovTan=Math.tan(THREE.MathUtils.degToRad(camera.fov/2)),viewH=renderer.domElement.clientHeight||innerHeight;
   glowMat.uniforms.uRatio.value=ratio;
@@ -208,5 +253,5 @@ export async function installCosmos({scene,camera,globe,atmosphere,clouds,render
   normal.normalize();const side=new THREE.Vector3(1,.2,.4).cross(normal).normalize();const direction=normal.multiplyScalar(.8).addScaledVector(side,.65).normalize();const look=new THREE.Matrix4().lookAt(direction,new THREE.Vector3(),world(M.galToEq([0,0,1])).normalize());return new THREE.Quaternion().setFromRotationMatrix(look);
  }
  function dispose(){if(disposed)return;disposed=true;fetchAbort.abort();earthEclipse.removeFromParent();earthEclipse.material.dispose();root.removeFromParent();sky.removeFromParent();for(const t of textures.values())t.dispose();black.dispose();root.traverse(o=>{if(o.geometry!==plane)o.geometry?.dispose();if(o.material&&o.material!==orbitMaterial)o.material.dispose();});plane.dispose();orbitMaterial.dispose();sky.geometry.dispose();sky.material.dispose();}
- return{update,labels,setFocus,prepare:requestBody,scenePosition,bodyList:()=>[...M.BODIES.map(b=>({id:b.id,radius:b.radius})),{id:'Galaxy',radius:M.KPC,skipOffer:true}],pickBody,recommendedOrbit,getFocus:()=>focus,getState:()=>({focus,level,range:currentRange,starsCount,galaxyCount,skyReady:!!skyMap,surfaces:[...system].filter(([,row])=>row.uniforms.uHasMap.value).map(([id])=>id),ringsReady:!!ring.material.map,at:physical.at,eclipse:{solar:physical.shadows?.solar.kind||'none',lunar:physical.shadows?.lunar.kind||'none'},failures:[...failures]}),setDeepSky(value){deepSky=!!value;},dispose};
+ return{update,labels,setFocus,prepare:requestBody,scenePosition,bodyList:()=>[...M.BODIES.map(b=>({id:b.id,radius:b.radius})),{id:'Galaxy',radius:M.KPC,skipOffer:true}],pickBody,recommendedOrbit,getFocus:()=>focus,getState:()=>({focus,level,range:currentRange,starsCount,galaxyCount,skyReady:!!skyMap,surfaces:[...system].filter(([,row])=>row.uniforms.uHasMap.value).map(([id])=>id),ringsReady:!!ring.material.map,sunFx:!!system.get('Sun')?.corona,at:physical.at,eclipse:{solar:physical.shadows?.solar.kind||'none',lunar:physical.shadows?.lunar.kind||'none'},failures:[...failures]}),setDeepSky(value){deepSky=!!value;},dispose};
 }

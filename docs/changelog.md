@@ -1,3 +1,9 @@
+## 2026-10-31 — Earth explorer: an illustrated living Sun
+
+- The Sun’s sourced surface map now has moving granules and bright flare patches. A corona shell adds streamers and jets around the disc; it does not wash out the photosphere.
+- Reduced motion freezes the animation. Credits say the corona and flares are an illustration, not a live observatory feed.
+- `?v=` tokens are now `20261031-sun1`.
+
 ## 2026-10-31 — Earth explorer: a tour with shots, not a slideshow
 
 - The Solar System tour is rewritten: leave Earth, Earthrise, the Sun growing, a slide around Mercury, Mars from the pole, Jupiter’s moons as a system, Io and Ganymede with Jupiter in frame, Saturn’s rings, the Sun from Pluto, then home.

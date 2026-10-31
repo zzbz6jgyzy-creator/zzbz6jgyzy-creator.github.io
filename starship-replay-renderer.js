@@ -1,5 +1,5 @@
 import * as THREE from '/vendor/three/three.module.min.js';
-import { earthShaders } from '/earth-renderer.js?v=20261031-tour2';
+import { earthShaders } from '/earth-renderer.js?v=20261031-sun1';
 import { buildVehicles, vehicleEnvironment, batchStatic } from '/starship-vehicle.js';
 import { FLIGHT, sampleFlight, shipPosition, clamp, mix, smooth } from '/starship-replay-model.js';
 

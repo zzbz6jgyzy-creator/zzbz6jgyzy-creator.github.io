@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-10-31 · Earth explorer: illustrate the Sun, do not claim a live feed
+
+- **Decision:** animate the Sun with a photosphere overlay and an additive corona (streamers and flare jets). Keep the sourced surface map. Say in credits that this is an illustration.
+- **Why:** a static yellow ball is dead next to the tour’s close Sun pass. A live SDO texture would be a new feed, a lie if we faked timestamps, and a mobile-weight problem.
+- **Rejected:** volumetric raymarching (too heavy on phones), a real-time solar observatory API, and blooming the whole scene.
+
 ## 2026-10-31 · Earth explorer: the tour is a sequence of shots
 
 - **Decision:** keep one button and the same autopilot. Rebuild the itinerary as establishing shots, close passes, orbit slides and look-at-another-world frames (Earthrise; Io/Ganymede with Jupiter; the Sun from Pluto). End at home, not on a dim 55 AU Sun.

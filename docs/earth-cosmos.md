@@ -183,7 +183,7 @@ Owner-facing clock, 30 October 2026. All of it lives in `earth-time.js` (pure ma
 - **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Umbra and penumbra are drawn (see Eclipse shadows).
 - **Editorial:** the provenance chip reads `Simulated time · HH:MM UTC D Mon YYYY`, and on Earth/Moon appends `· clouds not for this time` (or `· illustrative clouds`). The Clouds row says the same. No historical weather is invented.
 
-Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261031-tour2`.
+Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261031-sun1`.
 
 ## Eclipse shadows
 
@@ -192,6 +192,8 @@ At any UTC instant, `eclipseShadows()` builds the umbra and penumbra cones from 
 ## Worlds beyond the eight planets
 
 Pluto uses Astronomy Engine `HelioVector`. Io, Europa, Ganymede and Callisto use `JupiterMoons` (jovicentric, added to Jupiter). They have no surface maps (colour spheres) and the Galilean moons have no IAU axes in this library (identity orientation). Ceres is not drawn. Distant worlds keep an additive glow sprite while their disc is under 10 px; pick radius stays 28 px. Moon labels only appear when the camera is within 180 parent-radii of Jupiter (or that moon is the focus).
+
+**Sun.** The photosphere keeps the sourced `sun-2k.webp` map, with a cheap noise overlay for granules and a few pulsing bright patches. An additive corona shell (1.55 solar radii) draws a limb ring, streamers and flare jets; rays that hit the photosphere are discarded so the surface stays readable. Animation uses `performance.now` and stops under reduced motion (`uLive = 0`). This is an illustration, not a live SDO/SOHO feed. The corona hides inside 1.62 radii and beyond about 500 radii (Earth is still inside that, Jupiter is not).
 
 ## Zoom floor (no ground view)
 
