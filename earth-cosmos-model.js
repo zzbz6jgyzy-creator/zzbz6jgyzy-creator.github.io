@@ -110,7 +110,7 @@ export function scalePreset(id,fit=3.4){
  const b=BODIES.find(b=>b.id===id);if(b)return{focus:id,distance:b.radius*(id==='Saturn'?12:6.5),level:id==='Earth'?'earth':id==='Moon'?'moon':'planet'};
  throw new TypeError('Unknown cosmic destination');
 }
-export const SOLAR_TOUR=Object.freeze(['Sun','Mercury','Venus','Earth','Moon','Mars','Jupiter','Io','Europa','Ganymede','Callisto','Saturn','Uranus','Neptune','Pluto']);
+export const SOLAR_TOUR=Object.freeze(['Earth','Moon','Sun','Mercury','Venus','Mars','Jupiter','Io','Europa','Ganymede','Callisto','Saturn','Uranus','Neptune','Pluto']);
 /** Distance from a world's centre for a close tour pass. Always above the flight floor (Earth 2,500 km; others 0.4 radii). Saturn stays outside the ring mesh. */
 export function solarTourClose(id){
  const b=BODIES.find(x=>x.id===id);if(!b)throw new TypeError('Unknown tour stop');
@@ -119,12 +119,51 @@ export function solarTourClose(id){
  if(id==='Saturn')return b.radius*3.8;
  return b.radius*2.4;
 }
-/** Autopilot keyframes: Sun to Pluto, close to each planet and the Galilean moons. */
-export function solarTourPath(){
- return SOLAR_TOUR.map((id,i)=>({
-  target:id,distance:solarTourClose(id),yaw:(i*51+24)%360-180,pitch:6+(i%4)*7,
-  duration:i===0?3.4:i>=11?4.4:3.6,easing:'inOut',hold:id==='Earth'||id==='Moon'||id==='Jupiter'||id==='Saturn'||id==='Pluto'?1:0.55,
- }));
+/** Camera offset that puts `lookId` on the limb of `fromId` (Earthrise, Io with Jupiter). */
+export function limbPose(fromId,lookId,positions,{distance,tilt=.28,side=1,duration=3,hold=1,title}={}){
+ const from=positions[fromId],look=positions[lookId];if(!from||!look)throw new TypeError('Unknown limb bodies');
+ const dx=look[0]-from[0],dy=look[1]-from[1],dz=look[2]-from[2],len=Math.hypot(dx,dy,dz)||1;
+ const tx=dx/len,ty=dy/len,tz=dz/len;
+ let sx=tz*side,sy=0,sz=-tx*side,sl=Math.hypot(sx,sy,sz);
+ if(sl<1e-8){sx=side;sy=0;sz=0;sl=1;}sx/=sl;sz/=sl;
+ const nx=sx+tx*tilt,ny=.22+ty*tilt*.12,nz=sz+tz*tilt,n=Math.hypot(nx,ny,nz)||1;
+ return{target:fromId,lookTarget:lookId,distance:distance||solarTourClose(fromId)*1.2,yaw:Math.atan2(nx/n,nz/n)*180/Math.PI,pitch:Math.asin(Math.max(-.985,Math.min(.985,ny/n)))*180/Math.PI,duration,easing:'inOut',hold,title:title||(lookId+' from '+fromId)};
+}
+/** Cinematic itinerary: leave Earth, Earthrise, the Sun, inner worlds, Jupiter’s system, Saturn’s rings, the ice giants, then look back from Pluto. */
+export function solarTourPath(ms=Date.now()){
+ const {positions}=ephemeris(new Date(ms));
+ const R=id=>BODIES.find(b=>b.id===id).radius;
+ const k=(id,o)=>({target:id,distance:o.d,yaw:o.yaw,pitch:o.pitch,duration:o.t??3.2,easing:o.ease||'inOut',hold:o.hold||0,title:o.title,lookTarget:o.look||null});
+ return[
+  k('Earth',{d:EARTH_RADIUS+3400,yaw:28,pitch:14,t:2.4,hold:.7,title:'Earth'}),
+  k('Earth',{d:EARTH_RADIUS*11,yaw:48,pitch:18,t:3.4,title:'Earth in space'}),
+  k('Moon',{d:1737.4*3.2,yaw:-30,pitch:10,t:3.2,hold:.45,title:'the Moon'}),
+  limbPose('Moon','Earth',positions,{distance:1737.4*4.6,tilt:.32,side:1,duration:2.8,hold:1.3,title:'Earthrise'}),
+  k('Sun',{d:R('Sun')*9,yaw:12,pitch:8,t:4,title:'the Sun'}),
+  k('Sun',{d:R('Sun')*2.8,yaw:-18,pitch:6,t:3.2,hold:.7,title:'the Sun, close'}),
+  k('Mercury',{d:R('Mercury')*2.5,yaw:70,pitch:8,t:3,title:'Mercury'}),
+  k('Mercury',{d:R('Mercury')*2.5,yaw:160,pitch:22,t:2.4,title:'around Mercury'}),
+  k('Venus',{d:R('Venus')*2.6,yaw:-80,pitch:16,t:3.1,title:'Venus'}),
+  k('Mars',{d:R('Mars')*14,yaw:20,pitch:12,t:3.2,title:'Mars ahead'}),
+  k('Mars',{d:R('Mars')*2.4,yaw:35,pitch:10,t:2.8,hold:.4,title:'Mars'}),
+  k('Mars',{d:R('Mars')*3.1,yaw:100,pitch:62,t:2.6,hold:.7,title:'over the pole of Mars'}),
+  k('Jupiter',{d:R('Jupiter')*36,yaw:-40,pitch:10,t:4.4,hold:.8,title:'Jupiter and its moons'}),
+  k('Jupiter',{d:R('Jupiter')*2.6,yaw:-15,pitch:8,t:3.4,hold:.5,title:'Jupiter'}),
+  k('Jupiter',{d:R('Jupiter')*2.8,yaw:70,pitch:14,t:2.8,title:'around Jupiter'}),
+  limbPose('Io','Jupiter',positions,{distance:R('Io')*3.2,tilt:.2,side:-1,duration:3,hold:1,title:'Io, Jupiter behind'}),
+  k('Europa',{d:R('Europa')*2.6,yaw:50,pitch:18,t:2.6,title:'Europa'}),
+  limbPose('Ganymede','Jupiter',positions,{distance:R('Ganymede')*2.8,tilt:.24,side:1,duration:2.8,hold:.7,title:'Ganymede'}),
+  k('Callisto',{d:R('Callisto')*2.6,yaw:-100,pitch:12,t:2.6,title:'Callisto'}),
+  k('Saturn',{d:R('Saturn')*22,yaw:15,pitch:18,t:4.4,hold:.7,title:'Saturn'}),
+  k('Saturn',{d:R('Saturn')*4.4,yaw:8,pitch:6,t:3.4,hold:1.1,title:'through the rings'}),
+  k('Saturn',{d:R('Saturn')*4.6,yaw:95,pitch:8,t:3,title:'along the rings'}),
+  k('Saturn',{d:R('Saturn')*7.5,yaw:130,pitch:52,t:2.8,hold:.8,title:'Saturn from above'}),
+  k('Uranus',{d:R('Uranus')*2.5,yaw:-55,pitch:28,t:4,hold:.45,title:'Uranus'}),
+  k('Neptune',{d:R('Neptune')*2.5,yaw:40,pitch:12,t:4,hold:.45,title:'Neptune'}),
+  k('Pluto',{d:R('Pluto')*2.6,yaw:-20,pitch:16,t:3.6,hold:.5,title:'Pluto'}),
+  limbPose('Pluto','Sun',positions,{distance:R('Pluto')*4.2,tilt:.18,side:1,duration:2.8,hold:1.1,title:'the Sun from Pluto'}),
+  k('Earth',{d:EARTH_RADIUS*11,yaw:-42,pitch:16,t:5,hold:1.6,title:'home'}),
+ ];
 }
 export function galaxyPopulation(count=120000){
  let seed=731977;const random=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646;};

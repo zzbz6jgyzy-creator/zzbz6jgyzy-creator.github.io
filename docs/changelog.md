@@ -1,3 +1,9 @@
+## 2026-10-31 — Earth explorer: a tour with shots, not a slideshow
+
+- The Solar System tour is rewritten: leave Earth, Earthrise, the Sun growing, a slide around Mercury, Mars from the pole, Jupiter’s moons as a system, Io and Ganymede with Jupiter in frame, Saturn’s rings, the Sun from Pluto, then home.
+- Keyframes can look at another world (`lookTarget`). Limb poses are computed from the current ephemeris so Earthrise and the Jupiter-behind-a-moon shots stay framed as the clock moves.
+- Reduced motion jumps home. `?v=` tokens are now `20261031-tour2`.
+
 ## 2026-10-30 — Earth explorer: Solar System tour
 
 - Panel **Tour the Solar System** flies a close pass of the Sun, the eight planets, the Moon, Jupiter’s four large moons and Pluto, using the existing autopilot (floors and obstacle clearance unchanged).
