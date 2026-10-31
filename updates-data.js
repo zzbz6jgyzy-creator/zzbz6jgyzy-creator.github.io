@@ -1,5 +1,5 @@
 window.TESLA_UPDATES = {
-  updated: "2026-10-30",
+  updated: "2026-10-31",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
@@ -72,6 +72,25 @@ window.TESLA_UPDATES = {
   ],
   versions: [
     {
+      id: "2026.39.6",
+      family: "2026.39",
+      date: "2026-10-29",
+      kind: "cabin",
+      status: "early",
+      headline: "2026.39.6 — first 2026.39 build, early wave in Europe",
+      summary:
+        "First build on a new 2026.39 branch. Teslascope lists FSD (Supervised), Halloween Mode and security improvements in its notes, but does not list an FSD version number for it yet.",
+      features: [
+        "FSD (Supervised) appears in the release notes (no FSD version listed by Teslascope).",
+        "Halloween Mode and security improvements.",
+      ],
+      fsd: null,
+      models: ["3", "Y"],
+      reached:
+        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 11 cars by 31 Oct 2026, 08:57 Irish time: 5 in the Netherlands, 2 in Czechia, 2 in Denmark, 1 in Slovenia and 1 in Belgium, with 19 more pending.",
+      countries: ["NL", "CZ", "DK", "SI", "BE"],
+    },
+    {
       id: "2026.38.6",
       family: "2026.38",
       date: "2026-10-29",
@@ -88,7 +107,7 @@ window.TESLA_UPDATES = {
       models: ["3", "Y"],
       hardware: ["HW3", "HW4"],
       reached:
-        "First spotted on Teslascope on 29 Oct 2026 (19:08 Irish time). 14 cars by 30 Oct 2026, 10:30 Irish time, in the UK, Spain, Italy, Switzerland, Germany, Poland, Taiwan and the US, with 8 more pending.",
+        "First spotted on Teslascope on 29 Oct 2026 (19:08 Irish time). 27 cars by 31 Oct 2026, 08:57 Irish time, across 13 countries (most in the UK, Switzerland, Germany and Italy), with 29 more pending.",
       countries: ["GB", "ES", "IT", "CH", "DE", "PL", "TW", "US"],
     },
     {
@@ -107,7 +126,7 @@ window.TESLA_UPDATES = {
       fsd: null,
       models: ["3", "Y"],
       reached:
-        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 21 cars by 30 Oct 2026, 10:30 Irish time: 19 in Australia and 2 in New Zealand, with 6 more pending.",
+        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 43 cars by 31 Oct 2026, 08:57 Irish time: 39 in Australia and 4 in New Zealand, with 30 more pending.",
       countries: ["AU", "NZ"],
     },
     {

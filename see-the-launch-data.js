@@ -1,5 +1,5 @@
 window.SEE_LAUNCH = {
-  updated: "2026-10-27",
+  updated: "2026-10-31",
   note:
     "Our estimate, not a full FlightClub trajectory. We use the pad, a typical azimuth for that mission type, distance, night vs day, and Open-Meteo cloud cover. A feature in the notes can still be hidden by haze, a late slip, or a dogleg. Not SpaceX’s official viewing guide.",
   pads: {
@@ -73,14 +73,14 @@ window.SEE_LAUNCH = {
     {
       id: "ll-starlink-15-18",
       title: "Falcon 9 · Starlink Group 15-18",
-      start: "2026-10-31T03:48:00Z",
+      start: "2026-10-31T04:04:34Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "sso",
-      status: "go",
+      status: "done",
       precision: "datetime",
-      href: "https://www.spacex.com/launches",
-      note: "Vandenberg polar Starlink.",
+      href: "https://www.spacex.com/launches/sl-15-18",
+      note: "Launched Sat 31 Oct at 04:04 UTC from Vandenberg SLC-4E (Launch Library 2: success); SpaceX says 27 Starlink satellites.",
     },
     {
       id: "ll-ussf-432",
@@ -105,6 +105,18 @@ window.SEE_LAUNCH = {
       precision: "datetime",
       href: "https://www.spacex.com/launches",
       note: "Vandenberg polar Starlink.",
+    },
+    {
+      id: "ll-ussf-r5",
+      title: "Falcon 9 · USSF (\u201cR-5\u201d)",
+      start: "2026-11-10T03:03:00Z",
+      pad: "slc4e",
+      vehicle: "falcon",
+      orbit: "leo",
+      status: "net",
+      precision: "day",
+      href: "https://www.spacex.com/launches",
+      note: "US Space Force mission; Launch Library 2 lists 10 Nov 03:03 UTC, to be confirmed (as of 31 Oct 2026).",
     },
   ],
 };
