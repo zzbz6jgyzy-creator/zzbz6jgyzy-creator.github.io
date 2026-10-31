@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "SCD Inter";
+        src: url("assets/fonts/inter-latin.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "SCD Mono";
+        src: url("assets/fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "SCD Display";
+        src: url("assets/fonts/michroma-latin.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      :root {
+        --ground: #0c0d10;
+        --ink: #ecece8;
+        --mute: #a7a9ae;
+        --red: #f23a52;
+        --line: rgba(236, 236, 232, 0.12);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        font-family: "SCD Inter", Inter, "Helvetica Neue", Arial, sans-serif;
+        color: var(--ink);
+        word-spacing: 0.08em;
+      }
+      .clip { position: absolute; inset: 0; }
+      .pad {
+        position: absolute;
+        left: 88px;
+        right: 88px;
+        top: 180px;
+        bottom: 180px;
+      }
+      .bg {
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(900px 1200px at 50% 100%, rgba(242, 58, 82, 0.2), transparent 50%),
+          radial-gradient(700px 500px at 50% 8%, rgba(255, 255, 255, 0.06), transparent 60%),
+          #0c0d10;
+      }
+      .arms {
+        position: absolute;
+        left: 120px;
+        right: 120px;
+        top: 240px;
+        height: 14px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .arm {
+        width: 210px;
+        height: 14px;
+        background: #ecece8;
+        opacity: 0.88;
+      }
+      .stack {
+        position: absolute;
+        left: 50%;
+        top: 320px;
+        width: 92px;
+        margin-left: -46px;
+        height: 980px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .ship, .booster {
+        background: linear-gradient(180deg, #d8d6cf, #8d8b84);
+        width: 100%;
+      }
+      .ship { height: 280px; border-radius: 46px 46px 8px 8px; }
+      .booster { height: 680px; border-radius: 8px; }
+      .kicker {
+        font-family: "SCD Mono", ui-monospace, monospace;
+        font-size: 22px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 22px;
+      }
+      .line {
+        font-size: 58px;
+        line-height: 1.15;
+        letter-spacing: 0;
+        font-weight: 400;
+      }
+      .sub {
+        margin-top: 28px;
+        font-size: 32px;
+        line-height: 1.35;
+        color: var(--mute);
+      }
+      .rule {
+        width: 72px;
+        height: 3px;
+        background: var(--red);
+        margin: 0 0 28px;
+      }
+      .fact strong {
+        display: block;
+        font-family: "SCD Mono", ui-monospace, monospace;
+        font-size: 40px;
+      }
+      .fact span {
+        display: block;
+        margin: 8px 0 28px;
+        color: var(--mute);
+        font-size: 26px;
+      }
+      .brand {
+        font-family: "SCD Mono", ui-monospace, monospace;
+        font-size: 20px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--mute);
+        margin-top: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="flight15" data-start="0" data-duration="16" data-width="1080" data-height="1920">
+      <div id="bg" class="clip" data-start="0" data-duration="16" data-track-index="0">
+        <div class="bg"></div>
+      </div>
+
+      <div id="hook" class="clip" data-start="0" data-duration="4.6" data-track-index="1">
+        <div class="pad hook-inner">
+          <p class="kicker">Starship Flight 15</p>
+          <p class="line">Catch both.</p>
+          <p class="sub">No orbital rocket has ever been fully recovered.</p>
+        </div>
+      </div>
+
+      <div id="ready" class="clip" data-start="4.4" data-duration="6.0" data-track-index="2">
+        <div class="pad ready-inner">
+          <div class="rule"></div>
+          <p class="kicker">Ground tests done</p>
+          <p class="fact"><strong>Ship 42</strong><span>Six-engine static fire + deorbit burn sim. SpaceX, 28 Oct.</span></p>
+          <p class="fact"><strong>Booster 22</strong><span>Full-duration 33-engine static fire, 25 Oct.</span></p>
+        </div>
+      </div>
+
+      <div id="close" class="clip" data-start="10.2" data-duration="5.8" data-track-index="3">
+        <div class="pad close-inner">
+          <div class="rule"></div>
+          <p class="line">November. No official date.</p>
+          <p class="sub">Elon says they will try both catches. Shotwell expects the FAA licence to cover it.</p>
+          <p class="brand">Supercharged Daily · illustration</p>
+        </div>
+      </div>
+
+      <audio id="bed" data-start="0" data-duration="16" data-track-index="4" data-volume="0.28" src="assets/bed.wav"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(".hook-inner", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 0.12);
+      tl.to(".hook-inner", { opacity: 0, y: -16, duration: 0.26, ease: "power2.in" }, 4.25);
+      tl.fromTo(".ready-inner", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.48, ease: "power3.out" }, 4.5);
+      tl.to(".ready-inner", { opacity: 0, y: -16, duration: 0.26, ease: "power2.in" }, 10.05);
+      tl.fromTo(".close-inner", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 10.3);
+      window.__timelines["flight15"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

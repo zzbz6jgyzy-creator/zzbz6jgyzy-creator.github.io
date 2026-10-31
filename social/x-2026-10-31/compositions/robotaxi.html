@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "SCD Inter";
+        src: url("assets/fonts/inter-latin.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "SCD Mono";
+        src: url("assets/fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "SCD Display";
+        src: url("assets/fonts/michroma-latin.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      :root {
+        --ground: #0c0d10;
+        --ink: #ecece8;
+        --mute: #a7a9ae;
+        --red: #f23a52;
+        --line: rgba(236, 236, 232, 0.12);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        font-family: "SCD Inter", Inter, "Helvetica Neue", Arial, sans-serif;
+        color: var(--ink);
+        word-spacing: 0.08em;
+      }
+      .clip { position: absolute; inset: 0; }
+      .pad {
+        position: absolute;
+        left: 88px;
+        right: 88px;
+        top: 180px;
+        bottom: 180px;
+      }
+      .bg {
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(1100px 800px at 80% 12%, rgba(242, 58, 82, 0.18), transparent 55%),
+          linear-gradient(180deg, #12141a 0%, #0c0d10 100%);
+      }
+      .kicker {
+        font-family: "SCD Mono", ui-monospace, monospace;
+        font-size: 22px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 22px;
+      }
+      .giant {
+        font-family: "SCD Inter", Inter, "Helvetica Neue", Arial, sans-serif;
+        font-size: 160px;
+        line-height: 0.92;
+        letter-spacing: -0.04em;
+        font-weight: 400;
+      }
+      .line {
+        font-size: 52px;
+        line-height: 1.15;
+        letter-spacing: 0;
+        font-weight: 400;
+      }
+      .sub {
+        margin-top: 26px;
+        font-size: 32px;
+        line-height: 1.35;
+        color: var(--mute);
+      }
+      .rule {
+        width: 72px;
+        height: 3px;
+        background: var(--red);
+        margin: 0 0 28px;
+      }
+      .split {
+        display: flex;
+        gap: 36px;
+        margin-top: 48px;
+      }
+      .box {
+        flex: 1;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+      }
+      .box strong {
+        display: block;
+        font-family: "SCD Mono", ui-monospace, monospace;
+        font-size: 64px;
+      }
+      .box span {
+        display: block;
+        margin-top: 8px;
+        color: var(--mute);
+        font-size: 26px;
+      }
+      .race strong {
+        font-family: "SCD Mono", ui-monospace, monospace;
+        font-size: 72px;
+        display: block;
+      }
+      .race span {
+        display: block;
+        color: var(--mute);
+        font-size: 28px;
+        margin: 8px 0 36px;
+      }
+      .note {
+        font-size: 26px;
+        color: var(--mute);
+        line-height: 1.4;
+      }
+      .brand {
+        font-family: "SCD Mono", ui-monospace, monospace;
+        font-size: 20px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--mute);
+        margin-top: 36px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="robotaxi" data-start="0" data-duration="16" data-width="1080" data-height="1920">
+      <div id="bg" class="clip" data-start="0" data-duration="16" data-track-index="0">
+        <div class="bg"></div>
+      </div>
+
+      <div id="hook" class="clip" data-start="0" data-duration="4.4" data-track-index="1">
+        <div class="pad hook-inner">
+          <p class="kicker">Tesla · Texas register · 31 Oct</p>
+          <p class="giant">1,204</p>
+          <p class="sub">Robotaxis on the public TxDMV list. Registered, not in service.</p>
+        </div>
+      </div>
+
+      <div id="mix" class="clip" data-start="4.2" data-duration="5.8" data-track-index="2">
+        <div class="pad mix-inner">
+          <div class="rule"></div>
+          <p class="kicker">The mix</p>
+          <p class="line">+124 Model Ys added in a day.</p>
+          <div class="split">
+            <p class="box"><strong>631</strong><span>Model Y</span></p>
+            <p class="box"><strong>573</strong><span>Cybercab</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div id="race" class="clip" data-start="9.8" data-duration="6.2" data-track-index="3">
+        <div class="pad race-inner">
+          <div class="rule"></div>
+          <p class="kicker">Same Texas register</p>
+          <p class="race"><strong>Waymo 1,259</strong><span>Jaguar I-PACE + Zeekr RT</span></p>
+          <p class="race"><strong>Tesla 1,204</strong><span>Gap: 55 vehicles</span></p>
+          <p class="note">A listing is not a ride. No city split on the register.</p>
+          <p class="brand">Supercharged Daily · sourced</p>
+        </div>
+      </div>
+
+      <audio id="bed" data-start="0" data-duration="16" data-track-index="4" data-volume="0.28" src="assets/bed.wav"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(".hook-inner", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 0.1);
+      tl.fromTo(".hook-inner .giant", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }, 0.28);
+      tl.to(".hook-inner", { opacity: 0, y: -16, duration: 0.26, ease: "power2.in" }, 4.05);
+      tl.fromTo(".mix-inner", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.48, ease: "power3.out" }, 4.3);
+      tl.to(".mix-inner", { opacity: 0, y: -16, duration: 0.26, ease: "power2.in" }, 9.65);
+      tl.fromTo(".race-inner", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 9.95);
+      window.__timelines["robotaxi"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
