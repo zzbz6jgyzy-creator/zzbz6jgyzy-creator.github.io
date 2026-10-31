@@ -1,9 +1,8 @@
-## 2026-10-31 — Earth explorer: an illustrated living Sun
+## 2026-10-31 — Earth explorer: the sourced Sun, and dots that stay put
 
-- The Sun’s sourced surface map now has moving granules and bright flare patches. A corona shell adds streamers and jets around the disc; it does not wash out the photosphere.
-- Reduced motion freezes the animation. Credits say the corona and flares are an illustration, not a live observatory feed.
-- Planet dots stay on the world in the Solar System view. Only the name shifts when labels pile up; inner worlds that sit on the Sun lose their label so Jupiter stays tappable.
-- `?v=` tokens are now `20261031-sun2`.
+- The procedural corona and flare overlay is gone. The Sun is again the sourced `sun-2k` disc, self-lit.
+- Planet dots stay on the world in the Solar System view. Only the name shifts when labels pile up; inner worlds that sit on another labelled world lose their label so Jupiter stays tappable.
+- `?v=` tokens are now `20261031-dots1`.
 
 ## 2026-10-31 — Earth explorer: a tour with shots, not a slideshow
 

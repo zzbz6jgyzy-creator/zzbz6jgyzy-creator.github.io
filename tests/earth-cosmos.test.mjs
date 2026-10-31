@@ -74,7 +74,7 @@ assert.ok(html.includes("sessionStorage.getItem('sd-earth-intro')") && js.includ
 assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes("localStorage.getItem('sd-earth-labels')"), 'label choice persists');
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
-const TOKEN = '20261031-sun2';
+const TOKEN = '20261031-dots1';
 for (const file of ['mission-control.html', 'earth-preview.js', 'earth-renderer.js', 'earth-cosmos.js', 'earth-weather.js', 'starship-replay-renderer.js']) {
   const text = file === 'mission-control.html' ? html : readFileSync(new URL('../' + file, import.meta.url), 'utf8');
   const hits = [...text.matchAll(/earth-[a-z0-9.-]+\.(?:js|css)\?v=([\w-]+)/g)];
@@ -107,11 +107,11 @@ assert.ok(!timeSrc.includes("from './vendor/astronomy") && timeSrc.includes("imp
 const cosmosSrc = readFileSync(new URL('../earth-cosmos.js', import.meta.url), 'utf8');
 assert.ok(cosmosSrc.includes('glowSize') && cosmosSrc.includes('new THREE.Points(glowGeo'), 'unresolved worlds keep a glow sprite');
 assert.ok(cosmosSrc.includes('uShOn') && cosmosSrc.includes('MultiplyBlending') && cosmosSrc.includes('earthEclipse'), 'eclipse umbra and penumbra are drawn');
-assert.ok(cosmosSrc.includes('SUN_FRAGMENT') && cosmosSrc.includes('CORONA_FRAGMENT') && cosmosSrc.includes('uLive'), 'the Sun has an animated photosphere and corona');
-assert.ok(cosmosSrc.includes('if(impact2<inner2)discard') && cosmosSrc.includes('reducedMotion'), 'the corona stays off the photosphere and respects reduced motion');
+assert.ok(!cosmosSrc.includes('SUN_FRAGMENT') && !cosmosSrc.includes('CORONA_FRAGMENT') && !cosmosSrc.includes('uLive'), 'the Sun is the sourced disc, not a flare illustration');
+assert.ok(cosmosSrc.includes("uEmissive:{value:b.id==='Sun'?1:0}"), 'the Sun stays self-lit');
 assert.ok(cosmosSrc.includes('INNER_LABELS') && cosmosSrc.includes('nameShift'), 'Solar System labels keep the dot on the world');
-assert.ok(html.includes('corona and flares') && html.includes('not a live'), 'credits name the illustrated Sun');
-assert.ok(rend.includes('reducedMotion:motion.matches'), 'the renderer freezes solar animation under reduced motion');
+assert.ok(!html.includes('corona and flares') && !html.includes('live SDO'), 'credits do not claim an illustrated corona');
+assert.ok(!rend.includes('reducedMotion:motion.matches'), 'the renderer no longer drives solar animation');
 assert.ok(html.includes('Ceres is omitted') && html.includes('colour spheres') && html.includes('no sourced surface map is loaded'), 'about copy names the sourced bodies and the missing Ceres ephemeris');
 assert.ok(html.includes('umbra and penumbra') && html.includes('88 km atmosphere'), 'about copy names the sourced eclipse shadows');
 assert.ok(html.includes('Tour the Solar System') && html.includes('id="flight-tour"'), 'the panel starts the Solar System tour');

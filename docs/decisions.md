@@ -8,11 +8,11 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 - **Why:** from 95 AU the inner planets sit on the star. Sliding the whole button hid Jupiter and broke tap-to-travel.
 - **Rejected:** dropping any label after 120 px of shift, or enlarging the pick radius to chase a drifted dot.
 
-## 2026-10-31 · Earth explorer: illustrate the Sun, do not claim a live feed
+## 2026-10-31 · Earth explorer: keep the sourced Sun
 
-- **Decision:** animate the Sun with a photosphere overlay and an additive corona (streamers and flare jets). Keep the sourced surface map. Say in credits that this is an illustration.
-- **Why:** a static yellow ball is dead next to the tour’s close Sun pass. A live SDO texture would be a new feed, a lie if we faked timestamps, and a mobile-weight problem.
-- **Rejected:** volumetric raymarching (too heavy on phones), a real-time solar observatory API, and blooming the whole scene.
+- **Decision:** drop the procedural granules, corona and flare jets. The Sun is the sourced `sun-2k` map, self-lit, as before.
+- **Why:** the overlay looked worse than the historical disc. A live SDO feed is still out of scope.
+- **Rejected:** iterating the illustration until it looked “real enough”.
 
 ## 2026-10-31 · Earth explorer: the tour is a sequence of shots
 
