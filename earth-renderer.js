@@ -1,6 +1,6 @@
 /* Supercharged Daily Earth preview. Local Three.js r170 (MIT); optional dated satellite cloud texture. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM} from '/earth-live-model.js?v=20261031-tour2';
+import {solarPosition, geoVector, vectorGeo, MIN_ORBIT_ALTITUDE_KM} from '/earth-live-model.js?v=20261031-sun2';
 
 const TAU = Math.PI * 2;
 const EARTH_KM=6371,AU_KM=149597870.7,LY_KM=9460730472580.8;
@@ -440,8 +440,8 @@ export const earthShadersPhysical = Object.freeze({ vertex: PBR_VERTEX, surface:
  * onError?:(error:Error)=>void, onChange?:(state:object)=>void}} options
  */
 export async function initEarth(options = {}) {
-  const Flight = await import('/earth-flight.js?v=20261031-tour2'); // loaded here so the Starship replay, which only needs the shaders, never downloads it
-  const Time = await import('/earth-time.js?v=20261031-tour2');
+  const Flight = await import('/earth-flight.js?v=20261031-sun2'); // loaded here so the Starship replay, which only needs the shaders, never downloads it
+  const Time = await import('/earth-time.js?v=20261031-sun2');
   const clock = Time.createClock();
   const { canvas, onStatus = () => {}, onReady = () => {}, onError = () => {}, onChange = () => {} } = options;
   if (!(canvas instanceof HTMLCanvasElement)) throw new TypeError('An Earth canvas is required.');
@@ -458,7 +458,7 @@ export async function initEarth(options = {}) {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.toneMappingExposure = 1.2;
-  renderer.debug.onShaderError = () => { throw new Error('The Earth graphics could not start on this device.'); };
+  renderer.debug.onShaderError = (gl, program, vs, fs) => { console.error('SHADER', gl.getShaderInfoLog(vs), gl.getShaderInfoLog(fs), gl.getProgramInfoLog(program)); throw new Error('The Earth graphics could not start on this device.'); };
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 150);
   const globe = new THREE.Group();
@@ -572,12 +572,12 @@ export async function initEarth(options = {}) {
     camera.updateMatrixWorld();
     if(cosmos){if(cosmos.getFocus()!==fs.anchor)cosmos.setFocus(fs.anchor);// Star, sky and galaxy fades follow the distance to the Sun in free flight and autopilot, so they stay continuous when the anchor changes.
       let fadeKm=distanceKm;if(fs.mode!=='orbit'){const sun=flight.bodyOf('Sun');if(sun){flight.worldOf(camKm);fadeKm=Math.hypot(camKm[0]-sun.pos[0],camKm[1]-sun.pos[1],camKm[2]-sun.pos[2]);}}
-      cosmicState=cosmos.update({distanceKm,nearKm:Math.max(fs.altitude,1e-3),blend:fs.mode==='orbit',live:fs.mode!=='orbit'||flight.active()||clock.moving(),fadeKm,date:clock.date(),simulated:!clock.isLive()});fallbackStars.visible=!cosmicState?.skyReady;}
+      cosmicState=cosmos.update({distanceKm,nearKm:Math.max(fs.altitude,1e-3),blend:fs.mode==='orbit',live:fs.mode!=='orbit'||flight.active()||clock.moving(),fadeKm,date:clock.date(),simulated:!clock.isLive(),reducedMotion:motion.matches});fallbackStars.visible=!cosmicState?.skyReady;}
     else {camera.near=clamp((distance-1)*.4,.002,.1);camera.far=Math.max(150,distance*100);camera.updateProjectionMatrix();}
   }
   async function ensureCosmos(){
     if(cosmos)return cosmos;if(cosmosPromise)return cosmosPromise;
-    cosmosPromise=import('/earth-cosmos.js?v=20261031-tour2').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
+    cosmosPromise=import('/earth-cosmos.js?v=20261031-sun2').then(m=>m.installCosmos({scene,camera,globe,clouds,atmosphere,renderer,
       onLabels:rows=>options.onLabels?.(rows),onStatus:message=>{if(!disposed){onStatus(message);renderDemand();}}
     })).then(world=>{if(disposed){world.dispose();return null;}cosmos=world;flight.setBodies(world.bodyList());flight.setPositionProvider(world.scenePosition);cosmos.setFocus(focusId());cosmos.setDeepSky(deepSky);renderDemand();return world;}).catch(()=>{cosmosPromise=null;detailMessage='The wider view could not load. Earth is still available.';flight.setBodies([{id:'Earth',radius:EARTH_KM}]);flight.jump({anchor:'Earth',distance:Math.min(flight.distance(),fitDistance*EARTH_KM/.65)});renderDemand();return null;});
     return cosmosPromise;
@@ -585,7 +585,7 @@ export async function initEarth(options = {}) {
   // Fly to a world or a scale preset on the autopilot's curved path. Body ids and the presets earth/moon/solar/galaxy are accepted.
   async function setScale(id){
     const world=await ensureCosmos();if(!world||disposed)return;
-    const model=await import('/earth-cosmos-model.js?v=20261031-tour2');
+    const model=await import('/earth-cosmos-model.js?v=20261031-sun2');
     if(id==='Earth')id='earth';
     const preset=model.scalePreset(id,fitDistance);
     const q=id==='earth'?initialOrbit:world.recommendedOrbit(id==='galaxy');
@@ -904,7 +904,7 @@ export async function initEarth(options = {}) {
   async function jumpLunarEclipse() { if (disposed) return null; const info = await clock.jumpLunar(); applyTime(); return info; }
   async function playSolarTour(){
     const world=await ensureCosmos();if(!world||disposed)return;
-    const model=await import('/earth-cosmos-model.js?v=20261031-tour2');
+    const model=await import('/earth-cosmos-model.js?v=20261031-sun2');
     flight.setAnimated(animatedNow());
     return flight.playPath(model.solarTourPath(clock.ms()),{onDone:()=>{renderDemand();notify();},onKeyframe:()=>{renderDemand();notify();}});
   }
