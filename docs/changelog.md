@@ -1,3 +1,9 @@
+## 2026-10-30 — Earth explorer: Solar System tour
+
+- Panel **Tour the Solar System** flies a close pass of the Sun, the eight planets, the Moon, Jupiter’s four large moons and Pluto, using the existing autopilot (floors and obstacle clearance unchanged).
+- A second tap, Esc (including during the pause at a stop), or any movement key, scroll or touch stops the tour. The readout names the current stop. Reduced motion jumps to Pluto.
+- `?v=` tokens are now `20261030-tour1`.
+
 ## 2026-10-30 — Earth explorer: eclipse umbra and penumbra
 
 - Solar eclipses draw the Moon’s umbra and penumbra on Earth (multiply overlay on the globe and clouds). Lunar eclipses tint the Moon in Earth’s shadow, with a copper umbra.

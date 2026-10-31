@@ -1,7 +1,7 @@
 /* A floating-origin, physically scaled scene. The legacy Earth shaders stay shared with the replay; the explorer uses the physical ones. */
 import * as THREE from '/vendor/three/three.module.min.js';
-import * as M from './earth-cosmos-model.js?v=20261030-eclipse1';
-import {galaxyBlend} from './earth-flight.js?v=20261030-eclipse1';
+import * as M from './earth-cosmos-model.js?v=20261030-tour1';
+import {galaxyBlend} from './earth-flight.js?v=20261030-tour1';
 const BASE='/assets/cosmos/';
 const matrixFromAxes=axes=>new THREE.Matrix4().makeBasis(...axes.map(v=>new THREE.Vector3(...v)));
 const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};

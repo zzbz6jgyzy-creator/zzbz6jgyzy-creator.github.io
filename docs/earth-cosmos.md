@@ -162,11 +162,12 @@ Arrival is orbit mode at the preset framing distance (6.5 radii, Saturn 12, the 
 scroll, pointer, touch) cancels it, the camera coasts to a stop on its own velocity, and the mode becomes free flight. Under
 reduced motion or pause the autopilot jumps straight to the end.
 
-**Camera paths (for a later Cinema mode).** `flight.playPath(keyframes, {onDone, onKeyframe})` plays an array of
-`{target, distance, yaw, pitch, duration, easing, hold}` (`normalizeKeyframes` validates; easings `linear in out inOut smooth`;
-yaw/pitch are the camera's offset direction from the target in the scene frame). Each keyframe is one autopilot segment with the
-same avoidance. `DEMO_PATH` (Earth, Moon, Earth) is reachable only through `window.__earthPreview.__cinemaDemo()` for tests and
-nothing in the interface uses it yet. Input stops a path like any autopilot.
+**Solar System tour.** `solarTourPath()` in `earth-cosmos-model.js` is 15 autopilot keyframes: Sun, Mercury, Venus, Earth, Moon,
+Mars, Jupiter, Io, Europa, Ganymede, Callisto, Saturn, Uranus, Neptune, Pluto. Each arrival is a close pass above the flight
+floor (Earth about 3,400 km altitude; other worlds 2.4 radii; the Sun 2.8; Saturn 3.8 so the rings stay in frame). The panel
+button **Tour the Solar System** plays it; a second tap, Esc (including during the pause at each stop), or any movement key,
+scroll or touch cancels it. Reduced motion and pause jump straight to Pluto. `DEMO_PATH` (Earth, Moon, Earth) remains a test
+hook via `window.__earthPreview.__cinemaDemo()`.
 
 **Known limits.** The Earth-fixed scene frame turns with the Earth. It is rebuilt every frame while the camera is moving (about 0.2 ms) and once a second at rest, so worlds never step; the autopilot also blends from the planned target position to the live one, so a frame turn cannot make a trip jump (tested with a 2.18e-3 rad turn mid-trip). Orbit-mode zoom-out is not cut off at the sphere of influence (scrolling out to the galaxy still works); free flight is entered explicitly. The thumb control was not built: two-finger drag moves, and the panel has Turn buttons for users who cannot drag. Under pause or reduced motion a two-finger move does nothing (use the keys); any movement key, scroll or touch stops the autopilot.
 
@@ -180,7 +181,7 @@ Owner-facing clock, 30 October 2026. All of it lives in `earth-time.js` (pure ma
 - **Eclipse jumps:** `SearchGlobalSolarEclipse` / `SearchLunarEclipse` (and Next* if the peak is already under a minute away). The clock freezes at the peak. Umbra and penumbra are drawn (see Eclipse shadows).
 - **Editorial:** the provenance chip reads `Simulated time · HH:MM UTC D Mon YYYY`, and on Earth/Moon appends `· clouds not for this time` (or `· illustrative clouds`). The Clouds row says the same. No historical weather is invented.
 
-Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261030-eclipse1`.
+Tests: `tests/earth-time.test.mjs`. Current `?v=` token `20261030-tour1`.
 
 ## Eclipse shadows
 

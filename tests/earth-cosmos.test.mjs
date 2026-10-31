@@ -62,7 +62,7 @@ assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, 'exactly one h1');
 const hud = html.slice(html.indexOf('id="earth-hud"'), html.indexOf('id="cosmos-labels"'));
 for (const id of ['earth-motion', 'earth-fullscreen', 'earth-menu']) assert.ok(hud.includes('id="' + id + '"'), id + ' belongs in the HUD');
 const panel = html.slice(html.indexOf('<dialog class="earth-panel"'), html.indexOf('</dialog>', html.indexOf('<dialog class="earth-panel"')));
-for (const hook of ['data-earth-scale', 'data-earth-zoom', 'earth-reset', 'cosmos-deep-sky', 'earth-quality', 'earth-labels-toggle', 'earth-location', 'earth-explore', 'earth-fly-here', 'earth-utc', 'cosmos-distance', 'earth-weather-refresh', 'earth-about', '/starship-replay.html', 'EUMETSAT', 'Brunier', 'cosmos-sky-credit', 'earth-time-live', 'earth-time-reverse', 'earth-time-when', 'earth-time-solar', 'earth-time-lunar', 'data-earth-speed'])
+for (const hook of ['data-earth-scale', 'data-earth-zoom', 'earth-reset', 'cosmos-deep-sky', 'earth-quality', 'earth-labels-toggle', 'earth-location', 'earth-explore', 'earth-fly-here', 'earth-utc', 'cosmos-distance', 'earth-weather-refresh', 'earth-about', '/starship-replay.html', 'EUMETSAT', 'Brunier', 'cosmos-sky-credit', 'earth-time-live', 'earth-time-reverse', 'earth-time-when', 'earth-time-solar', 'earth-time-lunar', 'data-earth-speed', 'flight-tour'])
   assert.ok(panel.includes(hook), hook + ' must be in the panel');
 assert.ok(html.includes('data-time="live"'), 'clock starts in live mode');
 assert.ok(js.includes('Simulated time'), 'provenance names simulated time on screen');
@@ -74,7 +74,7 @@ assert.ok(html.includes("sessionStorage.getItem('sd-earth-intro')") && js.includ
 assert.ok(/try\{[^}]*sd-earth-labels/.test(js.replace(/\s/g, '')) || js.includes("localStorage.getItem('sd-earth-labels')"), 'label choice persists');
 assert.ok(html.includes('data-labels="off"'), 'labels are off by default');
 assert.ok(html.includes('id="earth-live"') && /id="earth-live" role="status"/.test(html), 'live region announces the view');
-const TOKEN = '20261030-eclipse1';
+const TOKEN = '20261030-tour1';
 for (const file of ['mission-control.html', 'earth-preview.js', 'earth-renderer.js', 'earth-cosmos.js', 'earth-weather.js', 'starship-replay-renderer.js']) {
   const text = file === 'mission-control.html' ? html : readFileSync(new URL('../' + file, import.meta.url), 'utf8');
   const hits = [...text.matchAll(/earth-[a-z0-9.-]+\.(?:js|css)\?v=([\w-]+)/g)];
@@ -109,5 +109,8 @@ assert.ok(cosmosSrc.includes('glowSize') && cosmosSrc.includes('new THREE.Points
 assert.ok(cosmosSrc.includes('uShOn') && cosmosSrc.includes('MultiplyBlending') && cosmosSrc.includes('earthEclipse'), 'eclipse umbra and penumbra are drawn');
 assert.ok(html.includes('Ceres is omitted') && html.includes('colour spheres') && html.includes('no sourced surface map is loaded'), 'about copy names the sourced bodies and the missing Ceres ephemeris');
 assert.ok(html.includes('umbra and penumbra') && html.includes('88 km atmosphere'), 'about copy names the sourced eclipse shadows');
+assert.ok(html.includes('Tour the Solar System') && html.includes('id="flight-tour"'), 'the panel starts the Solar System tour');
+assert.ok(js.includes('playSolarTour') && js.includes('Jumped to Pluto'), 'reduced motion names the jump to Pluto');
+assert.deepEqual(M.solarTourPath().map(k=>k.target),['Sun','Mercury','Venus','Earth','Moon','Mars','Jupiter','Io','Europa','Ganymede','Callisto','Saturn','Uranus','Neptune','Pluto']);
 assert.ok(!M.BODIES.filter(b=>b.parent).some(b=>/Astronomy Engine has no surface/.test(b.description)), 'moon copy does not blame the ephemeris library for maps');
 console.log('Immersive viewer structure, hooks, credits-in-panel and session/label persistence verified.');
