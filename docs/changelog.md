@@ -1,3 +1,9 @@
+## 2026-10-31 — Three X posts (Falcon 700, Texas robotaxis, Flight 15)
+
+- Draft copy and 9:16 motion clips for @AlJR86: Falcon 9's 700th flight, 1,204 Tesla robotaxis on the Texas register, and Starship Flight 15's planned dual catch. Posts are drafts — X's connector cannot publish.
+- Facts from pages opened with Scrapling plus official X posts. Videos are HyperFrames illustrations (Remotion twins as a second renderer), finished with melt. No live footage.
+- Pack: `social/x-2026-10-31/POSTS.md`.
+
 ## 2026-10-31 — Starlink Group 15-18 on the observatory
 
 - SpaceX says Falcon 9 launched 27 Starlink satellites from SLC-4E at Vandenberg at 04:04 UTC (04:04 Irish time). Launch Library 2 records the launch as successful. First stage B1093, flight 18, landed on Of Course I Still Love You in the Pacific.
