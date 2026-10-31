@@ -1,17 +1,17 @@
 {
-  "updated": "2026-10-31T07:53:01.570Z",
+  "updated": "2026-10-31T07:58:34.583Z",
   "trackers": [
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
       "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -25,15 +25,15 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
-      "lastVerified": "2026-10-30T21:39:35.000Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
+      "lastVerified": "2026-10-31T07:33:00.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
     {
@@ -46,35 +46,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-10-31T07:53:01.570Z",
+      "lastChecked": "2026-10-31T07:58:34.583Z",
       "lastVerified": "2026-10-31T02:32:07.000Z",
       "note": "Your car details stay in this browser."
     }
