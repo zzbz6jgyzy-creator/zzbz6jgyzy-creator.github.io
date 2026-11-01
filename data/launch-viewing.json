@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-10-31T22:26:58Z",
+ "checked": "2026-11-01T02:11:02Z",
  "editorialUpdated": "2026-10-28T09:15:00+00:00",
  "presets": [
   {
@@ -181,28 +181,6 @@
     "az": 97,
     "coast": "east"
    }
-  },
-  {
-   "id": "ussf-259",
-   "title": "Falcon 9 Block 5 | USSF-259",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-09-17T01:07:56Z",
-   "end": "",
-   "date": "2026-09-17",
-   "precision": "datetime",
-   "status": "done",
-   "note": "Launch Library 2 schedule. Launch targets can change.",
-   "where": "",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "17c71937-dd80-406f-bb47-0c9ee9a24276",
-   "windowStart": "2026-09-17T01:00:00Z",
-   "windowEnd": "2026-09-17T05:00:00Z",
-   "vehicle": "",
-   "providerStatus": "Launch Successful",
-   "pad": null
   },
   {
    "id": "starlink-15-27",
