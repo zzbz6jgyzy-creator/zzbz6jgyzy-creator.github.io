@@ -143,7 +143,7 @@
   {
    "date": "2026-11-01",
    "cybercab": 573,
-   "modelY": 631,
+   "modelY": 633,
    "other": 0,
    "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
   }
@@ -1352,13 +1352,15 @@
   "7SAYGDEEXTF598620": "2026-10-31",
   "7SAYGDEEXTF598911": "2026-10-31",
   "7SAYGDEEXTF608563": "2026-10-31",
-  "7SAYGDEEXTF609051": "2026-10-31"
+  "7SAYGDEEXTF609051": "2026-10-31",
+  "7SAYGDEE5TF563211": "2026-11-01",
+  "7SAYGDEE8TF561050": "2026-11-01"
  },
  "source": {
   "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
   "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
  },
- "checked": "2026-11-01T11:57:47Z",
+ "checked": "2026-11-01T21:20:46Z",
  "observations": [
   {
    "at": "2026-10-23T17:57:18Z",
@@ -1557,6 +1559,14 @@
    "date": "2026-11-01",
    "cybercab": 573,
    "modelY": 631,
+   "other": 0,
+   "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+  },
+  {
+   "at": "2026-11-01T21:20:46Z",
+   "date": "2026-11-01",
+   "cybercab": 573,
+   "modelY": 633,
    "other": 0,
    "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
   }

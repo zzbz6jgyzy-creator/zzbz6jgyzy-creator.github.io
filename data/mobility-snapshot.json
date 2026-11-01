@@ -1050,7 +1050,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-11-01T11:57:47Z",
+    "checked": "2026-11-01T21:20:46Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -1199,7 +1199,7 @@
       {
         "date": "2026-11-01",
         "cybercab": 573,
-        "modelY": 631,
+        "modelY": 633,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
@@ -1404,18 +1404,26 @@
         "modelY": 631,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-11-01T21:20:46Z",
+        "date": "2026-11-01",
+        "cybercab": 573,
+        "modelY": 633,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-11-01T11:57:47Z",
+    "checked": "2026-11-01T21:20:46Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
     },
     "states": {
       "Texas": {
-        "count": 631,
+        "count": 633,
         "kind": "registered",
         "asOf": "2026-11-01",
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
@@ -1695,7 +1703,7 @@
       {
         "date": "2026-11-01",
         "Texas": {
-          "count": 631,
+          "count": 633,
           "asOf": "2026-11-01"
         },
         "California": {
@@ -1718,7 +1726,7 @@
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "revision": "3857624ca629688cbfbedde1b75d2ece7c2af0f6"
     },
-    "checked": "2026-11-01T11:57:47Z",
+    "checked": "2026-11-01T21:20:46Z",
     "features": [
       {
         "type": "Feature",
@@ -2662,7 +2670,7 @@
         "statusSrc": "https://robotracker.app/updates"
       }
     },
-    "checked": "2026-11-01T11:57:47Z"
+    "checked": "2026-11-01T21:20:46Z"
   },
   "checks": {
     "schemaVersion": 1,
