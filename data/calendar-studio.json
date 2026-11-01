@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-10-28T09:15:00+00:00",
- "launchChecked": "2026-11-01T02:11:02Z",
+ "launchChecked": "2026-11-01T09:12:12Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -1371,27 +1371,6 @@
    "providerStatus": "To Be Determined"
   },
   {
-   "id": "ll2-d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
-   "title": "Falcon Heavy | Griffin Mission One",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-12-31T00:00:00Z",
-   "end": "",
-   "date": "2026-12-31",
-   "precision": "month",
-   "status": "TBD",
-   "note": "Lunar Exploration · Lunar Orbit",
-   "where": "Launch Complex 39A · Kennedy Space Center, FL, USA",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
-   "windowStart": "2026-12-31T00:00:00Z",
-   "windowEnd": "2026-12-31T00:00:00Z",
-   "vehicle": "Falcon Heavy",
-   "providerStatus": "To Be Determined"
-  },
-  {
    "id": "ussf-75",
    "title": "Falcon Heavy | USSF-75",
    "group": "spacex",
@@ -1494,6 +1473,27 @@
    "windowStart": "2027-01-31T00:00:00Z",
    "windowEnd": "2027-01-31T00:00:00Z",
    "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "To Be Determined"
+  },
+  {
+   "id": "ll2-d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+   "title": "Falcon Heavy | Griffin Mission One",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2027-01-31T00:00:00Z",
+   "end": "",
+   "date": "2027-01-31",
+   "precision": "month",
+   "status": "TBD",
+   "note": "Lunar Exploration · Lunar Orbit",
+   "where": "Launch Complex 39A · Kennedy Space Center, FL, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+   "windowStart": "2027-01-31T00:00:00Z",
+   "windowEnd": "2027-01-31T00:00:00Z",
+   "vehicle": "Falcon Heavy",
    "providerStatus": "To Be Determined"
   },
   {
