@@ -47,7 +47,7 @@ Counts, definitions, hardware, sources and the source-epoch visual are saved HTM
 
 ## Validation
 
-`node --test tests/starlink-observatory.test.mjs`; `python3 tests/test_starlink_sources.py`; `python3 tests/starlink-observatory-browser.py` (Playwright / Chromium). Browser checks cover 320 / 390 / 768 / 1440px, both themes, reduced motion, real worker propagation, search, filters, inspector, local saves, time controls, CSV, no-JavaScript and blocked / malformed catalogues. CI reproduces saved artifacts and bundles.
+`node --test tests/starlink-observatory.test.mjs`; `python3 tests/test_starlink_sources.py`; `python3 tests/test_starlink_stats.py`; `python3 tests/starlink-observatory-browser.py` (Playwright / Chromium). Browser checks cover 320 / 390 / 768 / 1440px, both themes, reduced motion, real worker propagation, search, filters, inspector, local saves, time controls, CSV, no-JavaScript and blocked / malformed catalogues. CI reproduces saved artifacts and bundles.
 
 ## Recommendations needing a later decision
 
