@@ -3,7 +3,7 @@
   "editorial": {
     "schemaVersion": 1,
     "updated": "2026-11-02",
-    "revision": "2026-11-02.1",
+    "revision": "2026-11-02.2",
     "scope": "Tesla Cybercab and Model Y Robotaxi",
     "sources": [
       {
@@ -1072,7 +1072,7 @@
         "vehicle": "not_city_specific",
         "kind": "service",
         "title": "Tesla announces Robotaxi in Fort Worth",
-        "summary": "Tesla's Robotaxi account posted at 05:36 GMT on 2 Nov (11:36pm CT on 1 Nov) that Robotaxi is available in Fort Worth from 6am, with a launch geofence map. Vehicle type and supervision are unconfirmed, and Tesla's Robotaxi page doesn't list Fort Worth yet (as of 2 Nov 2026).",
+        "summary": "Tesla's Robotaxi account posted at 05:36 GMT on 2 Nov (11:36pm CT on 1 Nov) that Robotaxi is available in Fort Worth from 6am. Its launch geofence map covers central Fort Worth, reaching Saginaw, Haltom City, White Settlement and the Benbrook and Forest Hill areas. Vehicle type and supervision are unconfirmed, and Tesla's Robotaxi page doesn't list Fort Worth yet (as of 2 Nov 2026).",
         "evidence": [
           "s-9063fbb6d2bb"
         ],
