@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T10:36:36.814Z",
+  "generatedAt": "2026-11-02T10:41:24.464Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -216,9 +216,9 @@
       "topic": "starlink",
       "tracker": "starlink",
       "field": "in-orbit",
-      "value": "11190",
+      "value": "11214",
       "label": "Starlink in orbit",
-      "at": "2026-10-29T01:44:51.000Z",
+      "at": "2026-11-02T00:45:00.000Z",
       "evidence": "independently_corroborated",
       "source": "Jonathan McDowell Starlink statistics",
       "sourceUrl": "https://planet4589.org/space/con/star/stats.html",

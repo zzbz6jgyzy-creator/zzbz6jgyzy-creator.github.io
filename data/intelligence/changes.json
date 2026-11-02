@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T10:36:36.814Z",
+  "updated": "2026-11-02T10:41:24.464Z",
   "changes": [
     {
       "type": "logged",
@@ -34,6 +34,23 @@
       "summary": "Grok Bot subscribers ran out of their weekly allowance days early. Musk says the cost of serving Grok Bot was “unsustainably high relative to revenue.”",
       "title": "Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much",
       "id": "logged|dispatch:/dispatch/grok-bot-weekly-limits-cost.html|2026-11-02T09:23:00.000Z|Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much"
+    },
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11190",
+      "next": "11214",
+      "at": "2026-11-02T00:45:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html",
+      "summary": "Starlink in orbit changed from 11190 to 11214.",
+      "title": "Starlink in orbit",
+      "id": "changed|starlink:in-orbit|2026-11-02T00:45:00.000Z|11214"
     },
     {
       "type": "logged",
