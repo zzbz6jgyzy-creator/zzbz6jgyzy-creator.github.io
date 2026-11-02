@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-02T07:38:36Z",
+ "checked": "2026-11-02T10:35:31Z",
  "editorialUpdated": "2026-10-28T09:15:00+00:00",
  "presets": [
   {
@@ -660,36 +660,6 @@
     "article": "",
     "status": "scheduled"
    },
-   "pad": {
-    "id": "slc4e",
-    "name": "Vandenberg · SLC-4E",
-    "short": "Vandenberg",
-    "lat": 34.632,
-    "lon": -120.611,
-    "az": 186,
-    "coast": "west"
-   }
-  },
-  {
-   "id": "starlink-15-21",
-   "title": "Falcon 9 Block 5 | Starlink Group 15-21",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-11-06T02:21:00Z",
-   "end": "",
-   "date": "2026-11-06",
-   "precision": "datetime",
-   "status": "Go",
-   "note": "Communications · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
-   "windowStart": "2026-11-06T02:21:00Z",
-   "windowEnd": "2026-11-06T06:21:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch",
    "pad": {
     "id": "slc4e",
     "name": "Vandenberg · SLC-4E",

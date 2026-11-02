@@ -1,5 +1,5 @@
 window.SEE_LAUNCH = {
-  updated: "2026-10-31",
+  updated: "2026-11-02",
   note:
     "Our estimate, not a full FlightClub trajectory. We use the pad, a typical azimuth for that mission type, distance, night vs day, and Open-Meteo cloud cover. A feature in the notes can still be hidden by haze, a late slip, or a dogleg. Not SpaceX’s official viewing guide.",
   pads: {
@@ -85,26 +85,14 @@ window.SEE_LAUNCH = {
     {
       id: "ll-ussf-432",
       title: "Falcon 9 · USSF-432",
-      start: "2026-11-03T01:42:00Z",
+      start: "2026-11-04T01:28:00Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "leo",
       status: "go",
       precision: "datetime",
       href: "https://www.spacex.com/launches",
-      note: "Classified US Space Force mission from Vandenberg (Launch Library 2).",
-    },
-    {
-      id: "ll-starlink-15-21",
-      title: "Falcon 9 · Starlink Group 15-21",
-      start: "2026-11-06T02:21:00Z",
-      pad: "slc4e",
-      vehicle: "falcon",
-      orbit: "sso",
-      status: "go",
-      precision: "datetime",
-      href: "https://www.spacex.com/launches",
-      note: "Vandenberg polar Starlink.",
+      note: "Classified US Space Force mission from Vandenberg; Launch Library 2 lists Go for 4 Nov 01:28 UTC (Tue 3 Nov 5:28 p.m. PT), as of 2 Nov 2026.",
     },
     {
       id: "ll-ussf-r5",
@@ -116,7 +104,7 @@ window.SEE_LAUNCH = {
       status: "net",
       precision: "day",
       href: "https://www.spacex.com/launches",
-      note: "US Space Force mission; Launch Library 2 lists 10 Nov 03:03 UTC, to be confirmed (as of 31 Oct 2026).",
+      note: "US Space Force mission; Launch Library 2 lists 10 Nov 03:03 UTC, to be confirmed (as of 2 Nov 2026).",
     },
   ],
 };

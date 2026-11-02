@@ -64,12 +64,22 @@ def normalize(data, now, allow_empty=False):
 def rank(row):
     return RANK.get((row.get('status')or{}).get('abbrev'),1)
 
-def merge_rows(*groups):
+def merge_rows(cached,*groups):
+    # Fresh feed rows always replace cached non-final rows, so a launch that
+    # slips from Go to TBD/TBC (e.g. "November") stops showing its old timed
+    # countdown. A cached final result (Success/Failure) is never downgraded.
     by_id={}
+    for row in cached:
+        prev=by_id.get(row['id'])
+        if not prev or rank(row)>=rank(prev):by_id[row['id']]=row
+    fresh={}
     for rows in groups:
         for row in rows:
-            prev=by_id.get(row['id'])
-            if not prev or rank(row)>=rank(prev):by_id[row['id']]=row
+            prev=fresh.get(row['id'])
+            if not prev or rank(row)>=rank(prev):fresh[row['id']]=row
+    for key,row in fresh.items():
+        prev=by_id.get(key)
+        if not prev or rank(prev)<4 or rank(row)>=rank(prev):by_id[key]=row
     return sorted(by_id.values(),key=lambda row:row.get('net') or '')
 
 def fetch(url):

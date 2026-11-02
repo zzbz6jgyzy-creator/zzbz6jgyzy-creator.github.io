@@ -50,4 +50,11 @@ class Adapter(unittest.TestCase):
    self.assertEqual(r.returncode,0,r.stderr)
    data=json.loads(target.read_text());ids={row['id'] for row in data['results']}
    self.assertIn('crew-13-fixture',ids);self.assertEqual(next(row['status']['abbrev'] for row in data['results'] if row['id']=='e2886a96-5ce9-4f45-872f-4e25a00be837'),'Success')
+ def test_fresh_tbd_replaces_cached_go_but_not_success(self):
+  now=datetime.datetime(2026,11,2,12,tzinfo=datetime.timezone.utc)
+  row=lambda abbrev,net,prec:{"id":"slip","name":"Falcon 9 Block 5 | Starlink Group 15-21","net":net,"url":"","status":{"name":abbrev,"abbrev":abbrev},"net_precision":{"name":prec,"abbrev":prec},"pad":{"name":"SLC-4E","location":{"name":"Vandenberg"}}}
+  rows=M.merge_rows([row("Go","2026-11-06T02:21:00Z","MIN")],[row("TBD","2026-11-30T00:00:00Z","M")])
+  self.assertEqual(rows[0]["status"]["abbrev"],"TBD");self.assertEqual(rows[0]["net"],"2026-11-30T00:00:00Z")
+  rows=M.merge_rows([row("Success","2026-10-31T04:04:34Z","SEC")],[row("Go","2026-10-31T04:04:34Z","SEC")])
+  self.assertEqual(rows[0]["status"]["abbrev"],"Success")
 if __name__=='__main__':unittest.main()
