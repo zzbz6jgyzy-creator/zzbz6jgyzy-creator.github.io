@@ -20,8 +20,11 @@ test('latest launch is sourced, optional, and never added to McDowell totals',()
   assert.equal(data.latestLaunch.booster,'B1093');
   assert.equal(data.latestLaunch.boosterFlight,18);
   assert.ok(data.latestLaunch.sources.some(s=>s.href.includes('spacex.com/launches/sl-15-18')));
-  assert.equal(M.launchPending(data),true);
-  const html=ctx.SDStarlinkView.render(data);
+  // Pin the pre-catalogue state so the pending-card checks stay valid after McDowell's table catches up.
+  const pend=copy();if(!M.launchPending(pend))pend.countsAt='2026-10-29T01:44:51Z';
+  assert.equal(M.launchPending(pend),true);
+  if(!M.launchPending(data))assert.ok(!ctx.SDStarlinkView.render(data).slice(0,ctx.SDStarlinkView.render(data).indexOf('id="constellation"')).includes('not yet in that table'));
+  const html=ctx.SDStarlinkView.render(pend);
   const card=html.slice(html.indexOf('id="latest-launch"'),html.indexOf('id="constellation"'));
   assert.ok(card.includes('Starlink Group 15-18'));
   assert.ok(card.includes('SpaceX says Falcon 9 launched 27'));
@@ -30,7 +33,7 @@ test('latest launch is sourced, optional, and never added to McDowell totals',()
   assert.ok(card.includes('B1093'));
   assert.ok(!/optimi[sz]ed/i.test(card));
   assert.ok(!card.includes('SpaceX reports a successful deployment'));
-  const inflated=copy();inflated.totals.launched+=inflated.latestLaunch.satellites;assert.throws(()=>M.validate(inflated));
+  const inflated=structuredClone(pend);inflated.totals.launched+=inflated.latestLaunch.satellites;assert.throws(()=>M.validate(inflated));
   const stripped=copy();delete stripped.latestLaunch;assert.doesNotThrow(()=>M.validate(stripped));
   assert.ok(!ctx.SDStarlinkView.render(stripped).includes('Why didn’t the in-orbit number rise after this launch?'));
   const bad=copy();bad.latestLaunch={...bad.latestLaunch,satellites:0};assert.throws(()=>M.validate(bad));
