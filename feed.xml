@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 02 Nov 2026 09:23:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 14:37:00 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX is in talks to buy Boost Mobile, the Washington Post reports</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-boost-mobile-talks.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-boost-mobile-talks.html</guid>
+      <pubDate>Mon, 02 Nov 2026 14:37:00 +0000</pubDate>
+      <category>Starlink</category>
+      <description>SpaceX is in talks with EchoStar to buy Boost Mobile or use its network, the Washington Post reports. Boost had 7.38M wireless subscribers but leases its network from AT&amp;T and T-Mobile.</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Colossus 2 is now the world's biggest AI data center, Epoch AI estimates</title>
       <link>https://superchargeddaily.com/dispatch/colossus-2-epoch-largest-ai-data-center.html</link>
@@ -717,15 +726,6 @@
       <category>Starship</category>
       <description>Super Heavy makes roughly 2.4 times a Saturn V's thrust, the most powerful rocket ever flown.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/super-heavy-raptor3-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Model Y alone outsold the next nine US EV brands</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-us-ev-share-q3.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-us-ev-share-q3.html</guid>
-      <pubDate>Tue, 13 Oct 2026 15:45:26 +0000</pubDate>
-      <category>Tesla</category>
-      <description>99,037 Model Ys in Q3; Tesla took 54% of US EV sales, per Cox / KBB.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-us-ev-share-q3-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
