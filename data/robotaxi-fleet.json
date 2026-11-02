@@ -1,14 +1,14 @@
 {
- "checked": "2026-11-01T21:20:46Z",
+ "checked": "2026-11-02T10:36:31Z",
  "aggregator": {
   "name": "Platform Aeronaut AV Tracker",
   "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
  },
  "states": {
   "Texas": {
-   "count": 633,
+   "count": 671,
    "kind": "registered",
-   "asOf": "2026-11-01",
+   "asOf": "2026-11-02",
    "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
    "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."
   },
@@ -288,6 +288,21 @@
    "Texas": {
     "count": 633,
     "asOf": "2026-11-01"
+   },
+   "California": {
+    "count": 164,
+    "asOf": "2026-08-26"
+   },
+   "Florida": {
+    "count": 18,
+    "asOf": "2026-07-22"
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "Texas": {
+    "count": 671,
+    "asOf": "2026-11-02"
    },
    "California": {
     "count": 164,

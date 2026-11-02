@@ -1,12 +1,12 @@
 // Cybercab Tracker data. Edit this file to update the page.
 // Every item needs a real source link. Change `updated` when you edit.
 window.CYBERCAB = {
-  updated: "2026-10-31",
-  updatedLabel: "31 Oct 2026",
+  updated: "2026-11-02",
+  updatedLabel: "2 Nov 2026",
   stats: [
     { value: "300+", label: "Cybercabs serving Austin (Tesla Robotaxi, 10 Oct 2026)", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
-    { live: "cybercab", value: "573", label: "Cybercabs registered (unchanged; checked 31 Oct 2026). Texas DMV list via FSD Database, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
-    { live: "share", value: "48%", label: "Cybercab share of Tesla’s 1,204 registered Texas robotaxis (573 Cybercab, 631 Model Y; Texas DMV via FSD Database, checked 31 Oct 2026)", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { live: "cybercab", value: "573", label: "Cybercabs registered (unchanged; checked 2 Nov 2026). Texas DMV list via FSD Database, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { live: "share", value: "46%", label: "Cybercab share of Tesla’s 1,244 registered Texas robotaxis (573 Cybercab, 671 Model Y; Texas DMV via FSD Database, checked 2 Nov 2026)", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
     { value: "125k+", label: "Listed yearly production capacity at Giga Texas", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
   ],
   fleet: [
@@ -24,7 +24,7 @@ window.CYBERCAB = {
   ],
   share: {
     cybercab: 573,
-    total: 1204,
+    total: 1244,
     approx: false,
     src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
   },
@@ -52,7 +52,8 @@ window.CYBERCAB = {
     { date: "2026-10-24", label: "24 Oct 2026", text: "+11 Cybercabs on the Texas DMV registry, taking Cybercabs to 431 and Tesla’s Texas total to 938 (Model Y robotaxis unchanged at 507).", src: "https://x.com/RtaxiTracker/status/2114109646168326418" },
     { date: "2026-10-25", label: "25 Oct 2026", text: "Texas DMV registry shows 463 Cybercabs (+32 from 431) and Tesla’s Texas total passes 950 (970), with Model Y robotaxis unchanged at 507. +167 Tesla robotaxi registrations in seven days.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
     { date: "2026-10-28", label: "28 Oct 2026", text: "Cybercabs outnumber Model Ys on Tesla’s Texas DMV list: 573 Cybercabs and 507 Model Ys, 1,080 in total. Waymo lists 1,207 (812 Jaguar I-Pace, 395 Zeekr RT). Full story in Dispatch.", src: "/dispatch/cybercab-outnumbers-model-y.html" },
-    { date: "2026-10-30", label: "30 Oct 2026", text: "124 more Model Y robotaxis appear on the Texas DMV list (507 → 631). Cybercab stays 573; Tesla’s Texas total is 1,204. Registered is not in service; the registry has no city split. FSD Database’s daily series lists 1,204 from 30 Oct; first ingested here on 31 Oct UTC after a 30 Oct 21:39 UTC reading still at 507.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" }
+    { date: "2026-10-30", label: "30 Oct 2026", text: "124 more Model Y robotaxis appear on the Texas DMV list (507 → 631). Cybercab stays 573; Tesla’s Texas total is 1,204. Registered is not in service; the registry has no city split. FSD Database’s daily series lists 1,204 from 30 Oct; first ingested here on 31 Oct UTC after a 30 Oct 21:39 UTC reading still at 507.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { date: "2026-11-01", label: "1 Nov 2026", text: "40 more Model Y robotaxis appear on the Texas DMV list (631 → 671; FSD Database shows the new batch under the registry spelling “Modey Y”, but the VINs are Model Y). Cybercab stays 573; Tesla’s Texas total is 1,244. Registered is not in service. FSD Database’s daily series lists 1,244 from 1 Nov; checked here 2 Nov 2026.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" }
   ],
   watch: [
     { text: "30 Oct 2026: NHTSA deadline for Tesla’s sworn answers on Cybercab federal safety-standard compliance.", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
