@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-02T17:28:29.718Z",
+  "updated": "2026-11-02T20:41:34.010Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-robotaxi-fort-worth.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas",
+      "at": "2026-11-02T20:41:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-robotaxi-fort-worth.html",
+      "href": "/dispatch/tesla-robotaxi-fort-worth.html",
+      "summary": "Tesla Robotaxi opened in Fort Worth from 6am CT on 2 Nov in a zone estimated at 143 sq mi. Texas DMV lists 1,244 Teslas, 15 short of Waymo's 1,259 (as of 2 Nov 2026).",
+      "title": "Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas",
+      "id": "logged|dispatch:/dispatch/tesla-robotaxi-fort-worth.html|2026-11-02T20:41:00.000Z|Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-boost-mobile-talks.html",
@@ -255,23 +272,6 @@
       "summary": "The FCC voted 3-0 on 29 Oct 2026 to propose 482 MHz more spectrum for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. Public comment comes next.",
       "title": "The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile",
       "id": "logged|dispatch:/dispatch/fcc-d2d-482mhz-vote.html|2026-10-29T10:09:00.000Z|The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/ship-42-first-tower-catch.html",
-      "topic": "starship",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done",
-      "at": "2026-10-29T10:09:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/ship-42-first-tower-catch.html",
-      "href": "/dispatch/ship-42-first-tower-catch.html",
-      "summary": "SpaceX says Ship 42 finished its static fires for Flight 15, and Musk says it will be the first Starship caught by the tower. No launch date or FAA licence yet.",
-      "title": "Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done",
-      "id": "logged|dispatch:/dispatch/ship-42-first-tower-catch.html|2026-10-29T10:09:00.000Z|Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done"
     },
     {
       "type": "changed",

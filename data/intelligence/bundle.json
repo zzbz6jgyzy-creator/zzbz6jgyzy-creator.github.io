@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-02T17:28:29.718Z",
+  "generatedAt": "2026-11-02T20:41:34.010Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -287,6 +287,23 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-robotaxi-fort-worth.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas",
+      "at": "2026-11-02T20:41:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-robotaxi-fort-worth.html",
+      "href": "/dispatch/tesla-robotaxi-fort-worth.html",
+      "summary": "Tesla Robotaxi opened in Fort Worth from 6am CT on 2 Nov in a zone estimated at 143 sq mi. Texas DMV lists 1,244 Teslas, 15 short of Waymo's 1,259 (as of 2 Nov 2026).",
+      "title": "Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas",
+      "id": "logged|dispatch:/dispatch/tesla-robotaxi-fort-worth.html|2026-11-02T20:41:00.000Z|Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/spacex-boost-mobile-talks.html",
       "topic": "starlink",
       "tracker": "dispatch",
@@ -539,23 +556,6 @@
       "summary": "The FCC voted 3-0 on 29 Oct 2026 to propose 482 MHz more spectrum for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. Public comment comes next.",
       "title": "The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile",
       "id": "logged|dispatch:/dispatch/fcc-d2d-482mhz-vote.html|2026-10-29T10:09:00.000Z|The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/ship-42-first-tower-catch.html",
-      "topic": "starship",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done",
-      "at": "2026-10-29T10:09:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/ship-42-first-tower-catch.html",
-      "href": "/dispatch/ship-42-first-tower-catch.html",
-      "summary": "SpaceX says Ship 42 finished its static fires for Flight 15, and Musk says it will be the first Starship caught by the tower. No launch date or FAA licence yet.",
-      "title": "Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done",
-      "id": "logged|dispatch:/dispatch/ship-42-first-tower-catch.html|2026-10-29T10:09:00.000Z|Musk says Ship 42 will be the first Starship caught by the tower, now that its static fires are done"
     },
     {
       "type": "changed",
@@ -1790,14 +1790,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1811,14 +1811,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-11-02T13:44:46.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1832,35 +1832,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-02T17:28:29.718Z",
+      "lastChecked": "2026-11-02T20:41:34.010Z",
       "lastVerified": "2026-11-02T17:28:28.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1869,85 +1869,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.695Z",
-      "finished": "2026-11-02T17:28:29.702Z"
+      "started": "2026-11-02T20:41:33.992Z",
+      "finished": "2026-11-02T20:41:33.997Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.702Z",
-      "finished": "2026-11-02T17:28:29.702Z"
+      "started": "2026-11-02T20:41:33.997Z",
+      "finished": "2026-11-02T20:41:33.997Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.702Z",
-      "finished": "2026-11-02T17:28:29.702Z"
+      "started": "2026-11-02T20:41:33.997Z",
+      "finished": "2026-11-02T20:41:33.997Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.702Z",
-      "finished": "2026-11-02T17:28:29.711Z"
+      "started": "2026-11-02T20:41:33.997Z",
+      "finished": "2026-11-02T20:41:34.004Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.711Z",
-      "finished": "2026-11-02T17:28:29.715Z"
+      "started": "2026-11-02T20:41:34.004Z",
+      "finished": "2026-11-02T20:41:34.007Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.715Z",
-      "finished": "2026-11-02T17:28:29.715Z"
+      "started": "2026-11-02T20:41:34.007Z",
+      "finished": "2026-11-02T20:41:34.008Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.715Z",
-      "finished": "2026-11-02T17:28:29.716Z"
+      "started": "2026-11-02T20:41:34.008Z",
+      "finished": "2026-11-02T20:41:34.008Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.716Z",
-      "finished": "2026-11-02T17:28:29.716Z"
+      "started": "2026-11-02T20:41:34.008Z",
+      "finished": "2026-11-02T20:41:34.008Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.716Z",
-      "finished": "2026-11-02T17:28:29.716Z"
+      "started": "2026-11-02T20:41:34.008Z",
+      "finished": "2026-11-02T20:41:34.008Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.716Z",
-      "finished": "2026-11-02T17:28:29.718Z"
+      "started": "2026-11-02T20:41:34.008Z",
+      "finished": "2026-11-02T20:41:34.010Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.718Z",
-      "finished": "2026-11-02T17:28:29.718Z"
+      "started": "2026-11-02T20:41:34.010Z",
+      "finished": "2026-11-02T20:41:34.010Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.718Z",
-      "finished": "2026-11-02T17:28:29.718Z"
+      "started": "2026-11-02T20:41:34.010Z",
+      "finished": "2026-11-02T20:41:34.010Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-02T17:28:29.718Z",
-      "finished": "2026-11-02T17:28:29.718Z"
+      "started": "2026-11-02T20:41:34.010Z",
+      "finished": "2026-11-02T20:41:34.010Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-02T17:28:29.718Z",
+    "generatedAt": "2026-11-02T20:41:34.010Z",
     "factCount": 20,
     "changeCount": 86,
     "conflictCount": 2,

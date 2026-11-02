@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 02 Nov 2026 14:37:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 20:41:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-robotaxi-fort-worth.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-robotaxi-fort-worth.html</guid>
+      <pubDate>Mon, 02 Nov 2026 20:41:00 +0000</pubDate>
+      <category>Robotaxi</category>
+      <description>Tesla Robotaxi opened in Fort Worth from 6am CT on 2 Nov in a zone estimated at 143 sq mi. Texas DMV lists 1,244 Teslas, 15 short of Waymo's 1,259 (as of 2 Nov 2026).</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceX is in talks to buy Boost Mobile, the Washington Post reports</title>
       <link>https://superchargeddaily.com/dispatch/spacex-boost-mobile-talks.html</link>
@@ -717,15 +726,6 @@
       <category>Tesla</category>
       <description>About 10 thrusters and a claimed 1.1s 0-60, ahead of the 15 Oct reveal.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/roadster-cold-gas-thrusters-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>33 Raptor 3s: about 18 million pounds of thrust</title>
-      <link>https://superchargeddaily.com/dispatch/super-heavy-raptor3.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/super-heavy-raptor3.html</guid>
-      <pubDate>Tue, 13 Oct 2026 18:21:46 +0000</pubDate>
-      <category>Starship</category>
-      <description>Super Heavy makes roughly 2.4 times a Saturn V's thrust, the most powerful rocket ever flown.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/super-heavy-raptor3-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>

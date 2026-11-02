@@ -160,7 +160,7 @@
     ]
   },
   "software": {
-    "updated": "2026-11-02T07:46:12Z",
+    "updated": "2026-11-02T17:28:28Z",
     "id": "2026.39.6",
     "firstSeen": "2026-10-29T19:53:31Z",
     "source": "https://teslascope.com/software",
@@ -172,6 +172,15 @@
     "recognised": 10
   },
   "stories": [
+    {
+      "url": "/dispatch/tesla-robotaxi-fort-worth.html",
+      "image": "/assets/og-v2.jpg",
+      "title": "Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas",
+      "summary": "Tesla Robotaxi opened in Fort Worth from 6am CT on 2 Nov in a zone estimated at 143 sq mi. Texas DMV lists 1,244 Teslas, 15 short of Waymo's 1,259 (as of 2 Nov 2026).",
+      "tag": "Robotaxi",
+      "date": "2026-11-02T20:41:00Z",
+      "thumb": "/assets/og-v2-480w.webp"
+    },
     {
       "url": "/dispatch/robotaxi-2am-20-hours.html",
       "image": "/assets/og-v2.jpg",
@@ -216,16 +225,7 @@
       "tag": "Powershare",
       "date": "2026-10-28T02:36:00Z",
       "thumb": "/assets/dispatch/tesla-powershare-charge-port-480w.webp"
-    },
-    {
-      "url": "/dispatch/latvia-fsd-tenth-eu.html",
-      "image": "/assets/og-v2.jpg",
-      "title": "Latvia approves Tesla’s supervised FSD, making it 10 EU countries. Here’s what drivers there are getting",
-      "summary": "Latvia’s CSDD accepted the Dutch approval on 26 Oct, with tighter speed and driver-monitoring rules. Tesla says rollout begins soon; no date or Latvian price yet.",
-      "tag": "Tesla",
-      "date": "2026-10-26T12:40:00Z",
-      "thumb": "/assets/og-v2-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-02T14:37:00Z"
+  "articlesUpdated": "2026-11-02T20:41:00Z"
 }
