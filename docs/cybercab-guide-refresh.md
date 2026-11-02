@@ -16,7 +16,7 @@ source is `null` and renders "Not published".
 ## When to refresh
 
 - A Tesla quarterly update and call (late Jan, Apr, Jul, Oct): capacity, production wording, deployment, customer aim.
-- NHTSA acts on audit query AQ26002 (response was due 30 Oct 2026): add a regulator event; update the legality FAQ.
+- NHTSA publishes Tesla's AQ26002 answers, a finding, or a close date: update the legality FAQ and the 30 Oct regulator event.
 - Tesla publishes a spec sheet, price or order page: upgrade `reported` cells to `disclosed` only where Tesla said it.
 - Cybercabs reach a customer, or serve a second city (Dallas was stated as next month on the 21 Oct call).
 - Any correction: fix it, add a `changes` entry marked `correction` (editorial rule 6), update `reviewed`.

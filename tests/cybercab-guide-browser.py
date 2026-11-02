@@ -59,7 +59,7 @@ async def main():
                 bar = page.locator('[data-filters]')
                 assert await bar.is_visible(), tag
                 await page.locator('[data-filters] [data-type=regulator]').click()
-                assert await page.locator('.cg-event:visible').count() == 2, tag
+                assert await page.locator('.cg-event:visible').count() == 3, tag
                 assert await page.locator('.cg-year:visible').count() == 1, tag
                 await page.locator('[data-filters] [data-type=all]').click()
                 assert await page.locator('.cg-event:visible').count() == 15, tag
