@@ -1,5 +1,5 @@
 window.TESLA_UPDATES = {
-  updated: "2026-10-31",
+  updated: "2026-11-02",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
@@ -87,8 +87,8 @@ window.TESLA_UPDATES = {
       fsd: null,
       models: ["3", "Y"],
       reached:
-        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 11 cars by 31 Oct 2026, 08:57 Irish time: 5 in the Netherlands, 2 in Czechia, 2 in Denmark, 1 in Slovenia and 1 in Belgium, with 19 more pending.",
-      countries: ["NL", "CZ", "DK", "SI", "BE"],
+        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 28 cars by 2 Nov 2026 (Teslascope, checked 10:40 Irish time), all HW4 / AI4 and all coming from 2026.33.100: about 39% in the Netherlands, 18% each in Czechia and Belgium, 11% in Denmark and 7% in Slovakia, plus single cars in Lithuania and Slovenia. 2 more pending.",
+      countries: ["NL", "CZ", "BE", "DK", "SK", "LT", "SI"],
     },
     {
       id: "2026.38.6",
