@@ -54,7 +54,16 @@
       "title": "Audit Query AQ26002 resume: Tesla Cybercab FMVSS certification",
       "url": "https://static.nhtsa.gov/odi/inv/2026/INOA-AQ26002-17078.pdf",
       "date": "2026-09-03",
-      "checked": "2026-10-27"
+      "checked": "2026-11-02"
+    },
+    {
+      "id": "nhtsa-ext-memo",
+      "outlet": "NHTSA",
+      "kind": "regulator",
+      "title": "AQ26002 memo to file: Special Order response extension",
+      "url": "https://static.nhtsa.gov/odi/inv/2026/IRSPO-AQ26002-19155.pdf",
+      "date": "2026-09-29",
+      "checked": "2026-11-02"
     },
     {
       "id": "nhtsa-aq26002",
@@ -204,12 +213,13 @@
       "label": "NHTSA audit of the certification",
       "value": "AQ26002",
       "unit": "open since 3 Sep",
-      "detail": "NHTSA opened an audit query into the process Tesla relied on to certify a car that lacks permanently attached manual controls. Not a Tesla App reported Tesla's answers to 21 requests were due 30 Oct. No response has been made public, and NHTSA's AQ26002 record shows the audit still open.",
+      "detail": "NHTSA opened an audit query into the process Tesla relied on to certify a car that lacks permanently attached manual controls. Tesla's answers to 21 requests were due 30 Oct, under an NHTSA extension. That deadline has passed, and as of 2 Nov 2026 no response or further extension has been made public; NHTSA lists the audit as open.",
       "status": "disclosed",
       "asOf": "2026-11-02",
       "source": "nhtsa-resume",
       "also": [
         "nhtsa-aq26002",
+        "nhtsa-ext-memo",
         "nata-deadline"
       ]
     },
@@ -495,11 +505,11 @@
     },
     {
       "id": "deadline-extended",
-      "date": "2026-10-08",
+      "date": "2026-09-22",
       "type": "regulator",
       "title": "NHTSA extends Tesla's deadline",
-      "text": "Not a Tesla App reports Tesla asked for eight more weeks to answer 21 requests; NHTSA granted 30 days, moving the deadline from 30 September to 30 October.",
-      "source": "nata-deadline"
+      "text": "Tesla asked for eight more weeks, to 20 Nov, to answer the Special Order. NHTSA granted 30 days on 22 Sep, moving the deadline from 30 September to 30 October, per its 29 Sep memo.",
+      "source": "nhtsa-ext-memo"
     },
     {
       "id": "austin-300",
@@ -538,9 +548,9 @@
       "date": "2026-10-30",
       "type": "regulator",
       "display": "30 Oct 2026",
-      "title": "Tesla's NHTSA answers were due",
-      "text": "Not a Tesla App reported Tesla's answers to 21 requests were due 30 Oct. No response has been made public, and NHTSA's AQ26002 record shows the audit still open, with no finding or recall.",
-      "source": "nhtsa-aq26002"
+      "title": "Tesla's NHTSA deadline passed",
+      "text": "The 30 Oct deadline has passed. As of 2 Nov 2026, no Tesla response and no further extension has been made public: NHTSA's AQ26002 file still holds only the opening resume, the Special Order and the 29 Sep extension memo, and NHTSA's investigations data lists the audit as open, with no finding or recall.",
+      "source": "nhtsa-ext-memo"
     }
   ],
   "promises": [
@@ -643,10 +653,11 @@
     },
     {
       "q": "Is the Cybercab legal on US roads?",
-      "a": "Tesla told NHTSA it certified the cars as compliant with all applicable federal safety standards. NHTSA opened an audit query on 3 September to examine that certification, including where Tesla decided a standard did not apply. Not a Tesla App reported Tesla's answers to 21 requests were due 30 Oct. No response has been made public, and NHTSA's AQ26002 record shows the audit still open. An audit query is a fact-finding step, not a finding of non-compliance.",
+      "a": "Tesla told NHTSA it certified the cars as compliant with all applicable federal safety standards. NHTSA opened an audit query on 3 September to examine that certification, including where Tesla decided a standard did not apply. Tesla's answers to 21 requests were due 30 Oct, under an NHTSA extension. That deadline has passed, and as of 2 Nov 2026 no response or further extension has been made public; NHTSA lists the audit as open. An audit query is a fact-finding step, not a finding of non-compliance.",
       "sources": [
         "nhtsa-resume",
         "nhtsa-aq26002",
+        "nhtsa-ext-memo",
         "nata-deadline"
       ]
     },
@@ -670,7 +681,7 @@
     {
       "date": "2026-11-02",
       "kind": "update",
-      "text": "NHTSA audit AQ26002: Not a Tesla App reported Tesla's answers were due 30 Oct. No response has been made public, and the query remains open with no finding or recall."
+      "text": "NHTSA audit AQ26002: the 30 Oct deadline for Tesla's Special Order response has passed. As of 2 Nov 2026 no response or further extension has been made public, per NHTSA's AQ26002 file; the audit remains open with no finding or recall."
     },
     {
       "date": "2026-10-27",
