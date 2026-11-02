@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-02T07:46:14.137Z",
+  "generatedAt": "2026-11-02T09:24:00.178Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -287,6 +287,40 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/colossus-2-epoch-largest-ai-data-center.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Colossus 2 is now the world's biggest AI data center, Epoch AI estimates",
+      "at": "2026-11-02T09:23:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/colossus-2-epoch-largest-ai-data-center.html",
+      "href": "/dispatch/colossus-2-epoch-largest-ai-data-center.html",
+      "summary": "Epoch AI puts SpaceXAI's Colossus 2 in Memphis at about 1.11 million H100-equivalents, ahead of OpenAI's Stargate Abilene at 1.02 million (as of 1 Nov 2026).",
+      "title": "Colossus 2 is now the world's biggest AI data center, Epoch AI estimates",
+      "id": "logged|dispatch:/dispatch/colossus-2-epoch-largest-ai-data-center.html|2026-11-02T09:23:00.000Z|Colossus 2 is now the world's biggest AI data center, Epoch AI estimates"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-weekly-limits-cost.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much",
+      "at": "2026-11-02T09:23:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-weekly-limits-cost.html",
+      "href": "/dispatch/grok-bot-weekly-limits-cost.html",
+      "summary": "Grok Bot subscribers ran out of their weekly allowance days early. Musk says the cost of serving Grok Bot was “unsustainably high relative to revenue.”",
+      "title": "Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much",
+      "id": "logged|dispatch:/dispatch/grok-bot-weekly-limits-cost.html|2026-11-02T09:23:00.000Z|Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/shotwell-2m-spacex-shares-trump-accounts.html",
       "topic": "spacex-launches",
       "tracker": "dispatch",
@@ -507,23 +541,6 @@
       "id": "logged|dispatch:/dispatch/grok-bot-shop-pay-vs-amazon.html|2026-10-29T08:41:00.000Z|Amazon locked Grok Bot out. Shopify just made it one of three AI agents that can pay almost anywhere with Shop Pay"
     },
     {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/anthropic-spacex-compute-3-1b.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Anthropic’s IPO filing puts its SpaceX compute bill at $3.1 billion a month, 2.5 times what SpaceX disclosed in June",
-      "at": "2026-10-29T02:46:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/anthropic-spacex-compute-3-1b.html",
-      "href": "/dispatch/anthropic-spacex-compute-3-1b.html",
-      "summary": "Anthropic’s S-1 says it agreed to spend up to $120.5 billion with SpaceXAI, about $3.1 billion a month at full capacity. It’s a ceiling, and either side can exit on 90 days’ notice from 2027.",
-      "title": "Anthropic’s IPO filing puts its SpaceX compute bill at $3.1 billion a month, 2.5 times what SpaceX disclosed in June",
-      "id": "logged|dispatch:/dispatch/anthropic-spacex-compute-3-1b.html|2026-10-29T02:46:00.000Z|Anthropic’s IPO filing puts its SpaceX compute bill at $3.1 billion a month, 2.5 times what SpaceX disclosed in June"
-    },
-    {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.11",
       "topic": "tesla-software",
@@ -573,23 +590,6 @@
       "summary": "2026.38.5.11 moved from 718 to 792 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.11",
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-28T22:53:49.000Z|792"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/cybercab-outnumbers-model-y.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
-      "at": "2026-10-28T14:45:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/cybercab-outnumbers-model-y.html",
-      "href": "/dispatch/cybercab-outnumbers-model-y.html",
-      "summary": "Texas DMV records list 573 Cybercabs and 507 Model Ys under Tesla Robotaxi LLC. Tesla’s fleet is now 89% the size of Waymo’s in the state.",
-      "title": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
-      "id": "logged|dispatch:/dispatch/cybercab-outnumbers-model-y.html|2026-10-28T14:45:00.000Z|Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet"
     },
     {
       "type": "changed",
@@ -1773,14 +1773,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1794,14 +1794,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-11-01T21:20:46.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1815,35 +1815,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-10-28T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-02T07:46:14.137Z",
+      "lastChecked": "2026-11-02T09:24:00.178Z",
       "lastVerified": "2026-11-02T07:46:12.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1852,85 +1852,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.117Z",
-      "finished": "2026-11-02T07:46:14.124Z"
+      "started": "2026-11-02T09:24:00.155Z",
+      "finished": "2026-11-02T09:24:00.160Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.124Z",
-      "finished": "2026-11-02T07:46:14.124Z"
+      "started": "2026-11-02T09:24:00.160Z",
+      "finished": "2026-11-02T09:24:00.161Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.124Z",
-      "finished": "2026-11-02T07:46:14.124Z"
+      "started": "2026-11-02T09:24:00.161Z",
+      "finished": "2026-11-02T09:24:00.161Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.124Z",
-      "finished": "2026-11-02T07:46:14.131Z"
+      "started": "2026-11-02T09:24:00.161Z",
+      "finished": "2026-11-02T09:24:00.171Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.131Z",
-      "finished": "2026-11-02T07:46:14.134Z"
+      "started": "2026-11-02T09:24:00.171Z",
+      "finished": "2026-11-02T09:24:00.174Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.134Z",
-      "finished": "2026-11-02T07:46:14.135Z"
+      "started": "2026-11-02T09:24:00.174Z",
+      "finished": "2026-11-02T09:24:00.175Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.135Z",
-      "finished": "2026-11-02T07:46:14.135Z"
+      "started": "2026-11-02T09:24:00.175Z",
+      "finished": "2026-11-02T09:24:00.175Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.135Z",
-      "finished": "2026-11-02T07:46:14.135Z"
+      "started": "2026-11-02T09:24:00.175Z",
+      "finished": "2026-11-02T09:24:00.176Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.135Z",
-      "finished": "2026-11-02T07:46:14.136Z"
+      "started": "2026-11-02T09:24:00.176Z",
+      "finished": "2026-11-02T09:24:00.176Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.136Z",
-      "finished": "2026-11-02T07:46:14.137Z"
+      "started": "2026-11-02T09:24:00.176Z",
+      "finished": "2026-11-02T09:24:00.177Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.137Z",
-      "finished": "2026-11-02T07:46:14.137Z"
+      "started": "2026-11-02T09:24:00.177Z",
+      "finished": "2026-11-02T09:24:00.177Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.137Z",
-      "finished": "2026-11-02T07:46:14.137Z"
+      "started": "2026-11-02T09:24:00.177Z",
+      "finished": "2026-11-02T09:24:00.177Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-02T07:46:14.137Z",
-      "finished": "2026-11-02T07:46:14.137Z"
+      "started": "2026-11-02T09:24:00.177Z",
+      "finished": "2026-11-02T09:24:00.178Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-02T07:46:14.137Z",
+    "generatedAt": "2026-11-02T09:24:00.178Z",
     "factCount": 20,
     "changeCount": 85,
     "conflictCount": 2,

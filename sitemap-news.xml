@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/colossus-2-epoch-largest-ai-data-center.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-02T09:23:00Z</news:publication_date>
+      <news:title>Colossus 2 is now the world's biggest AI data center, Epoch AI estimates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/grok-bot-weekly-limits-cost.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-02T09:23:00Z</news:publication_date>
+      <news:title>Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much</news:title>
+    </news:news>
+  </url>
 </urlset>
