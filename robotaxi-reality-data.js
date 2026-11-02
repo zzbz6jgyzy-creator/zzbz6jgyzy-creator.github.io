@@ -2,8 +2,8 @@
 // Every claim needs a real source and a verification status.
 // Do not mark a city live unless a source says public rides are happening.
 window.ROBOTAXI_REALITY = {
-  updated: "2026-10-28",
-  updatedLabel: "28 Oct 2026",
+  updated: "2026-11-02",
+  updatedLabel: "2 Nov 2026",
   kinds: [
     { id: "operational", label: "Operational" },
     { id: "expansion", label: "Expansions" },
@@ -229,11 +229,11 @@ window.ROBOTAXI_REALITY = {
       verification: "announced",
       supervision: "unknown",
       vehicle: "Cybercab",
-      title: "NHTSA Cybercab compliance deadline",
-      text: "30 Oct 2026 deadline for Tesla’s sworn answers on Cybercab federal safety-standard compliance. This is a request, not an approval.",
+      title: "NHTSA Cybercab audit still open",
+      text: "Not a Tesla App reported Tesla’s answers to NHTSA’s 21 requests were due 30 Oct. No response has been made public, and NHTSA’s AQ26002 record shows the audit still open, with no finding or recall. An audit query is a fact-finding step, not a finding of non-compliance.",
       date: "2026-10-30",
-      src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/",
-      srcLabel: "Eletric Vehicles"
+      src: "https://dot.report/investigations/AQ26002",
+      srcLabel: "dot.report (NHTSA data)"
     },
     {
       id: "miami-modely-testing",

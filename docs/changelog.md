@@ -1,3 +1,8 @@
+## 2026-11-02 — Cybercab NHTSA deadline past; Starlink job keeps last good data
+
+- The 30 Oct NHTSA deadline on Cybercab audit AQ26002 has passed. Live tracker and guide copy is now past tense: Not a Tesla App reported Tesla's answers were due 30 Oct; no response has been made public, and the audit remains open with no finding or recall ([dot.report](https://dot.report/investigations/AQ26002)). Dated Dispatch articles are left as they were published.
+- `scripts/build-starlink-stats.py` no longer fails the 8-hour refresh when McDowell's page is missing a timestamp or otherwise incomplete. It keeps the last good `starlink-live.js` and exits 0 with a warning. Unmapped rows and generation-sum mismatches still fail. A test covers the missing-timestamp case.
+
 ## 2026-11-02 — Starlink counts unstick; USSF-432 webcast card
 
 - Jonathan McDowell’s Starlink table pads single-digit days (`2026 Nov  2 0045:00`). The baker required a single space, so the 2 Nov 07:46 UTC refresh exited `no timestamp` and left the observatory on the 29 Oct snapshot (11,190 in orbit). The parser now accepts padded days; CI writes the new table after merge. Tests cover padded, unpadded and HTML `&nbsp;` stamps.

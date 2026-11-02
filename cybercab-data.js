@@ -56,7 +56,7 @@ window.CYBERCAB = {
     { date: "2026-11-01", label: "1 Nov 2026", text: "40 more Model Y robotaxis appear on the Texas DMV list (631 → 671; FSD Database shows the new batch under the registry spelling “Modey Y”, but the VINs are Model Y). Cybercab stays 573; Tesla’s Texas total is 1,244. Registered is not in service. FSD Database’s daily series lists 1,244 from 1 Nov; checked here 2 Nov 2026.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" }
   ],
   watch: [
-    { text: "30 Oct 2026: NHTSA deadline for Tesla’s sworn answers on Cybercab federal safety-standard compliance.", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" },
+    { text: "Not a Tesla App reported Tesla’s answers to NHTSA’s 21 requests were due 30 Oct. No response has been made public, and NHTSA’s AQ26002 record shows the audit still open.", src: "https://dot.report/investigations/AQ26002" },
     { text: "November 2026: Cybercab rides in Dallas (Tesla said “next month” on 21 Oct). Tesla also said more cities before year-end and Cybercabs to customers by end of 2026.", src: "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/" }
   ]
 };

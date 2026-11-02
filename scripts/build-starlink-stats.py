@@ -2,20 +2,27 @@
 """Bake Jonathan McDowell's Starlink summary table into starlink-live.js.
 
 Source: https://planet4589.org/space/con/star/stats.html (summary status table).
-Only real numbers from that page are written; on any parse problem we exit
-without touching the file.
+Only real numbers from that page are written. Incomplete fetches (missing
+timestamp, truncated table, network errors) keep the last good file and exit 0
+with a warning. Mapping bugs (unmapped row, generation totals that don't add
+up) still fail the job.
 """
 from __future__ import annotations
 
 import html
+import http.client
 import json
 import re
+import sys
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
 URL = "https://planet4589.org/space/con/star/stats.html"
-OUT = Path(__file__).resolve().parents[1] / "starlink-live.js"
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "starlink-live.js"
+HIST = ROOT / "data" / "starlink-history.json"
 COLS = ["launched", "failedToOrbit", "earlyDeorbit", "disposed", "reentryAfterFail",
         "down", "inOrbit", "screened", "dead", "graveyard", "working", "retiring",
         "outOfConstellation", "anomalous", "reserve", "special", "drift", "ascent",
@@ -28,14 +35,38 @@ TS_RE = re.compile(
 )
 
 
+class IncompleteSource(Exception):
+    """McDowell's page was missing a field we need. Keep the last good file."""
+
+
 def plain_text(raw: str) -> str:
     return html.unescape(re.sub(r"<[^>]+>", " ", raw))
+
+
+def fetch() -> str:
+    req = urllib.request.Request(URL, headers={"User-Agent": "superchargeddaily.com starlink tracker (daily)"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            raw = resp.read().decode("utf-8", "replace")
+    except (urllib.error.URLError, TimeoutError, OSError, http.client.HTTPException) as exc:
+        raise IncompleteSource(f"fetch failed: {exc}") from exc
+    if not raw.strip():
+        raise IncompleteSource("empty page")
+    return raw
+
+
+def extract_block(raw: str) -> str:
+    start = raw.find("Summary status table")
+    end = raw.find("List of all Starlink satellites", start if start >= 0 else 0)
+    if start < 0 or end < 0:
+        raise IncompleteSource("summary table not found")
+    return raw[start:end]
 
 
 def parse_updated(block: str) -> datetime:
     m = TS_RE.search(plain_text(block))
     if not m:
-        raise SystemExit("no timestamp")
+        raise IncompleteSource("no timestamp")
     y, mon, d, hh, mm, ss = m.groups()
     return datetime.strptime(
         f"{y} {mon.title()} {int(d):02d} {hh}:{mm}:{ss}",
@@ -65,12 +96,9 @@ def gen_of(name: str) -> str | None:
     raise SystemExit(f"unmapped row: {name!r}")
 
 
-def main() -> None:
-    req = urllib.request.Request(URL, headers={"User-Agent": "superchargeddaily.com starlink tracker (daily)"})
-    raw = urllib.request.urlopen(req, timeout=60).read().decode("utf-8", "replace")
-    start = raw.index("Summary status table")
-    end = raw.index("List of all Starlink satellites", start)
-    block = raw[start:end]
+def parse_stats(raw: str) -> tuple[datetime, dict, dict]:
+    """Return (timestamp, totals, generations). IncompleteSource keeps last file."""
+    block = extract_block(raw)
     ts = parse_updated(block)
 
     gens = {g: dict.fromkeys(COLS, 0) for g in ["v10", "v15", "v2m", "v2opt", "v2dtc", "v3"]}
@@ -94,12 +122,15 @@ def main() -> None:
             for k, v in row.items():
                 gens[g][k] += v
     if not totals:
-        raise SystemExit("no Total row")
+        raise IncompleteSource("no Total row")
     for k in ("launched", "inOrbit", "working"):
         s = sum(g[k] for g in gens.values()) + other[k]
         if s != totals[k]:
             raise SystemExit(f"generation sum mismatch for {k}: {s} vs {totals[k]}")
+    return ts, totals, gens
 
+
+def write_output(ts: datetime, totals: dict, gens: dict) -> None:
     prev_orbits = ""
     if OUT.exists():
         try:
@@ -124,15 +155,14 @@ def main() -> None:
 
 def append_history(payload: dict) -> None:
     """Record McDowell count snapshots only when the published table actually moved."""
-    hist_path = Path(__file__).resolve().parents[1] / "data" / "starlink-history.json"
     data = {
         "source": URL,
         "note": "Committed Jonathan McDowell snapshots. Not a live operator feed. Days between snapshots are not interpolated.",
         "snapshots": [],
     }
-    if hist_path.exists():
+    if HIST.exists():
         try:
-            data = json.loads(hist_path.read_text(encoding="utf-8"))
+            data = json.loads(HIST.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             pass
     snaps = data.setdefault("snapshots", [])
@@ -148,9 +178,21 @@ def append_history(payload: dict) -> None:
         if last.get("updated") == rec["updated"] and last.get("inOrbit") == rec["inOrbit"] and last.get("working") == rec["working"]:
             return
     snaps.append(rec)
-    hist_path.write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
+    HIST.write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
     print(f"appended starlink-history: {rec['updated']} inOrbit={rec['inOrbit']}")
 
 
+def main() -> int:
+    try:
+        ts, totals, gens = parse_stats(fetch())
+    except IncompleteSource as exc:
+        msg = f"McDowell stats incomplete ({exc}); keeping last good data"
+        print(f"warning: {msg}", file=sys.stderr)
+        print(f"::warning::{msg}")
+        return 0
+    write_output(ts, totals, gens)
+    return 0
+
+
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
