@@ -728,12 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-us-ev-share-q3-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Tracker: Starlink in orbit</title>
+      <title>Tracker: Starlink McDowell snapshot</title>
       <link>https://superchargeddaily.com/starlink.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-02T00:45:00.000Z-11214</guid>
       <pubDate>Mon, 02 Nov 2026 00:45:00 +0000</pubDate>
       <category>starlink</category>
-      <description>Starlink in orbit changed from 11190 to 11214.</description>
+      <description>McDowell snapshot: inOrbit 11,190 → 11,214; working 11,176 → 11,200; launched 13,069 → 13,096. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: 2026.39.6</title>
@@ -776,14 +776,6 @@
       <description>The FAA’s CADENA air-traffic planning deck dated 29 Oct 2026 lists Starship Flight 15 on 12 Nov, four days later than the NET 8 Nov on earlier slides. Starship Starlink 30-1 stays on 10 Dec. Still no FAA Flight 15 licence and no SpaceX date.</description>
     </item>
     <item>
-      <title>Tracker: Starlink McDowell snapshot</title>
-      <link>https://superchargeddaily.com/starlink.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-10-28T00:31:45.000Z-11190</guid>
-      <pubDate>Wed, 28 Oct 2026 00:31:45 +0000</pubDate>
-      <category>starlink</category>
-      <description>McDowell snapshot: inOrbit 11,166 → 11,190; working 11,151 → 11,176; launched 13,042 → 13,069. This is a published table snapshot, not a live operator feed.</description>
-    </item>
-    <item>
       <title>Tracker: Texas Cybercab count</title>
       <link>https://superchargeddaily.com/cybercab.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/cybercab.html#changed-robotaxi:tx-cybercab-2026-10-28T00:00:00.000Z-573</guid>
@@ -822,6 +814,14 @@
       <pubDate>Thu, 22 Oct 2026 20:53:15 +0000</pubDate>
       <category>software</category>
       <description>2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
+    </item>
+    <item>
+      <title>Tracker: 2026.38.5.5</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.5.5-2026-10-21T17:50:46.000Z-2</guid>
+      <pubDate>Wed, 21 Oct 2026 17:50:46 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.5.5 first appeared in the Teslascope sample with 2 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
   </channel>
 </rss>
