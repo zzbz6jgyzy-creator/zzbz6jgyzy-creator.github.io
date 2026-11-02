@@ -33,6 +33,7 @@ jobs:
         run: |
           node --test tests/starlink-observatory.test.mjs
           python tests/test_starlink_sources.py
+          python tests/test_starlink_stats.py
           node scripts/build-starlink-observatory.mjs
           node scripts/build-js.mjs
           python scripts/inject-js-bundles.py

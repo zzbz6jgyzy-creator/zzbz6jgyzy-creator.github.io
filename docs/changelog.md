@@ -1,3 +1,9 @@
+## 2026-11-02 — Starlink counts unstick; USSF-432 webcast card
+
+- Jonathan McDowell’s Starlink table pads single-digit days (`2026 Nov  2 0045:00`). The baker required a single space, so the 2 Nov 07:46 UTC refresh exited `no timestamp` and left the observatory on the 29 Oct snapshot (11,190 in orbit). The parser now accepts padded days; CI writes the new table after merge. Tests cover padded, unpadded and HTML `&nbsp;` stamps.
+- Added a scheduled livestream card for Falcon 9 USSF-432. SpaceX’s mission page: four-hour window opens 5:28 p.m. PT on Tuesday 3 Nov from SLC-4E, backup 5:14 p.m. PT Wednesday, landing on Of Course I Still Love You. Watch link is the mission page until a direct X/YouTube broadcast URL exists.
+- Left Flight 15 at NET 12 Nov (FAA CADENA 29 Oct slides). SpaceX still has no T-0 and no licence. Texas robotaxi and Teslascope software snapshots stay on their existing CI jobs.
+
 ## 2026-10-31 — Three X posts (Falcon 700, Texas robotaxis, Flight 15)
 
 - Draft copy and 9:16 motion clips for @AlJR86: Falcon 9's 700th flight, 1,204 Tesla robotaxis on the Texas register, and Starship Flight 15's planned dual catch. Posts are drafts — X's connector cannot publish.

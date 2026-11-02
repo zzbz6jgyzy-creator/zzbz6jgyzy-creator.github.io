@@ -20,6 +20,27 @@ COLS = ["launched", "failedToOrbit", "earlyDeorbit", "disposed", "reentryAfterFa
         "down", "inOrbit", "screened", "dead", "graveyard", "working", "retiring",
         "outOfConstellation", "anomalous", "reserve", "special", "drift", "ascent",
         "operational"]
+# McDowell pads single-digit days ("Nov  2"). A single space between month and day
+# misses the 1st–9th of every month and exits without writing.
+TS_RE = re.compile(
+    r"Data last updated:\s*(\d{4})\s+(\w{3})\s+(\d{1,2})\s+(\d{2})(\d{2}):(\d{2})",
+    re.I,
+)
+
+
+def plain_text(raw: str) -> str:
+    return html.unescape(re.sub(r"<[^>]+>", " ", raw))
+
+
+def parse_updated(block: str) -> datetime:
+    m = TS_RE.search(plain_text(block))
+    if not m:
+        raise SystemExit("no timestamp")
+    y, mon, d, hh, mm, ss = m.groups()
+    return datetime.strptime(
+        f"{y} {mon.title()} {int(d):02d} {hh}:{mm}:{ss}",
+        "%Y %b %d %H:%M:%S",
+    ).replace(tzinfo=timezone.utc)
 
 
 def gen_of(name: str) -> str | None:
@@ -50,11 +71,7 @@ def main() -> None:
     start = raw.index("Summary status table")
     end = raw.index("List of all Starlink satellites", start)
     block = raw[start:end]
-    m = re.search(r"Data last updated:\s*(\d{4}) (\w{3}) (\d{1,2}) (\d{2})(\d{2}):(\d{2})", html.unescape(re.sub(r"<[^>]+>", " ", block)))
-    if not m:
-        raise SystemExit("no timestamp")
-    y, mon, d, hh, mm, ss = m.groups()
-    ts = datetime.strptime(f"{y} {mon} {d} {hh}:{mm}:{ss}", "%Y %b %d %H:%M:%S").replace(tzinfo=timezone.utc)
+    ts = parse_updated(block)
 
     gens = {g: dict.fromkeys(COLS, 0) for g in ["v10", "v15", "v2m", "v2opt", "v2dtc", "v3"]}
     totals = None
