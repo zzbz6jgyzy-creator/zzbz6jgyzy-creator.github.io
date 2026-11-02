@@ -655,6 +655,11 @@
    "windowEnd": "2026-11-04T05:28:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches/ussf432",
+    "article": "",
+    "status": "scheduled"
+   },
    "pad": {
     "id": "slc4e",
     "name": "Vandenberg · SLC-4E",

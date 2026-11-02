@@ -531,7 +531,12 @@
    "windowStart": "2026-11-04T01:28:00Z",
    "windowEnd": "2026-11-04T05:28:00Z",
    "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch"
+   "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches/ussf432",
+    "article": "",
+    "status": "scheduled"
+   }
   },
   {
    "id": "starlink-15-21",
