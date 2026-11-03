@@ -1,3 +1,9 @@
+## 2026-11-03 — USSF-432 slipped to 7 Nov UTC; Fort Worth on the Robotaxi map
+
+- Homepage livestream card and `see-the-launch-data.js` still had USSF-432 at 4 Nov 01:28 UTC after SpaceX moved it. SpaceX’s mission page now targets Friday 6 Nov, window 4:46 p.m. PT (00:46 UTC 7 Nov), backup Saturday 7 Nov 4:32 p.m. PT. Calendar, SpaceX studio and launch-viewing already had the new time from Launch Library 2.
+- Cybercab registry still 573 of 1,244 Texas Teslas (FSD Database / TxDMV, unchanged 3 Nov). NHTSA AQ26002 last updated 3 Nov and remains open. Starlink McDowell table still 11,214 in orbit / 11,200 working (updated 2 Nov 00:45 UTC). Flight 15 stays NET 12 Nov, no SpaceX T-0.
+- Robotaxi reality map now has Fort Worth as live unsupervised (Fort Worth Report rode a driverless car 2 Nov). Dallas Cybercab copy says November, not “next month”. Mobility tests count all 12 cities. The calendar browser test uses the next dated Falcon and Flight 15’s 12 Nov NET day.
+
 ## 2026-11-02 — Cybercab NHTSA deadline past; Starlink job keeps last good data
 
 - The 30 Oct NHTSA deadline on Cybercab audit AQ26002 has passed. Live tracker and guide copy is now past tense: Not a Tesla App reported Tesla's answers were due 30 Oct; no response has been made public, and the audit remains open with no finding or recall ([dot.report](https://dot.report/investigations/AQ26002)). Dated Dispatch articles are left as they were published.

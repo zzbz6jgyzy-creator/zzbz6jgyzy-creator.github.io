@@ -30,7 +30,7 @@ window.CYBERCAB = {
   },
   cities: [
     { name: "Austin, TX", status: "live", note: "Public paid rides in the Tesla Robotaxi app since 3 Sep 2026. The only city with public Cybercab rides.", src: "https://www.cybercab.news/article/dallas-cybercab-next-oct10" },
-    { name: "Dallas, TX", status: "next", note: "On Tesla’s Q3 call (21 Oct 2026), AI chief Ashok Elluswamy said “next month we’ll be launching in Dallas.” No exact day yet. Model Y Robotaxi rides already run there.", src: "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/" },
+    { name: "Dallas, TX", status: "next", note: "On Tesla’s Q3 call (21 Oct 2026), AI chief Ashok Elluswamy said “next month we’ll be launching in Dallas.” That is November; no exact day yet. Model Y Robotaxi rides already run there.", src: "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/" },
     { name: "Houston, TX", status: "staging", note: "Large Cybercab staging lot spotted. No public Cybercab service announced.", src: "https://www.cybercab.news/article/production-decaled-cybercabs-leave-giga-texas-oct7" }
   ],
   milestones: [
@@ -53,7 +53,8 @@ window.CYBERCAB = {
     { date: "2026-10-25", label: "25 Oct 2026", text: "Texas DMV registry shows 463 Cybercabs (+32 from 431) and Tesla’s Texas total passes 950 (970), with Model Y robotaxis unchanged at 507. +167 Tesla robotaxi registrations in seven days.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
     { date: "2026-10-28", label: "28 Oct 2026", text: "Cybercabs outnumber Model Ys on Tesla’s Texas DMV list: 573 Cybercabs and 507 Model Ys, 1,080 in total. Waymo lists 1,207 (812 Jaguar I-Pace, 395 Zeekr RT). Full story in Dispatch.", src: "/dispatch/cybercab-outnumbers-model-y.html" },
     { date: "2026-10-30", label: "30 Oct 2026", text: "124 more Model Y robotaxis appear on the Texas DMV list (507 → 631). Cybercab stays 573; Tesla’s Texas total is 1,204. Registered is not in service; the registry has no city split. FSD Database’s daily series lists 1,204 from 30 Oct; first ingested here on 31 Oct UTC after a 30 Oct 21:39 UTC reading still at 507.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
-    { date: "2026-11-01", label: "1 Nov 2026", text: "40 more Model Y robotaxis appear on the Texas DMV list (631 → 671; FSD Database shows the new batch under the registry spelling “Modey Y”, but the VINs are Model Y). Cybercab stays 573; Tesla’s Texas total is 1,244. Registered is not in service. FSD Database’s daily series lists 1,244 from 1 Nov; checked here 2 Nov 2026.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" }
+    { date: "2026-11-01", label: "1 Nov 2026", text: "40 more Model Y robotaxis appear on the Texas DMV list (631 → 671; FSD Database shows the new batch under the registry spelling “Modey Y”, but the VINs are Model Y). Cybercab stays 573; Tesla’s Texas total is 1,244. Registered is not in service. FSD Database’s daily series lists 1,244 from 1 Nov; checked here 2 Nov 2026.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { date: "2026-11-02", label: "2 Nov 2026", text: "Tesla Robotaxi opened in Fort Worth from 6am CT. Tesla has not said Cybercabs serve that city; public Cybercab rides remain Austin-only. Full story in Dispatch.", src: "/dispatch/tesla-robotaxi-fort-worth.html" }
   ],
   watch: [
     { text: "Not a Tesla App reported Tesla’s answers to NHTSA’s 21 requests were due 30 Oct. No response has been made public, and NHTSA’s AQ26002 record shows the audit still open.", src: "https://dot.report/investigations/AQ26002" },

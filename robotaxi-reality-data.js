@@ -2,8 +2,8 @@
 // Every claim needs a real source and a verification status.
 // Do not mark a city live unless a source says public rides are happening.
 window.ROBOTAXI_REALITY = {
-  updated: "2026-11-02",
-  updatedLabel: "2 Nov 2026",
+  updated: "2026-11-03",
+  updatedLabel: "3 Nov 2026",
   kinds: [
     { id: "operational", label: "Operational" },
     { id: "expansion", label: "Expansions" },
@@ -94,8 +94,8 @@ window.ROBOTAXI_REALITY = {
       verification: "announced",
       supervision: "unknown",
       vehicle: "Cybercab",
-      title: "Cybercab coming to Dallas next month",
-      text: "Named as the next Cybercab city on 10 Oct 2026. On the Q3 call on 21 Oct, Ashok Elluswamy said “next month we’ll be launching in Dallas.” No exact day yet.",
+      title: "Cybercab coming to Dallas in November",
+      text: "Named as the next Cybercab city on 10 Oct 2026. On the Q3 call on 21 Oct, Ashok Elluswamy said “next month we’ll be launching in Dallas.” That window is November; no exact day yet.",
       date: "2026-10-21",
       src: "https://teslanorth.com/2026/10/21/tesla-q3-2026-call-takeaways/",
       srcLabel: "TeslaNorth"
@@ -354,6 +354,21 @@ window.ROBOTAXI_REALITY = {
       date: "2026-10-21",
       src: "https://teslanorth.com/2026/10/21/tesla-robotaxi-safety-report-four-new-cities/",
       srcLabel: "TeslaNorth"
+    },
+    {
+      id: "fort-worth-live",
+      slug: "fort_worth",
+      lat: 32.7555,
+      lng: -97.3308,
+      kind: "operational",
+      verification: "verified",
+      supervision: "unsupervised",
+      vehicle: "Robotaxi",
+      title: "Public Robotaxi rides in Fort Worth",
+      text: "Tesla’s Robotaxi account said rides start from 6am CT on 2 Nov. Fort Worth Report rode a driverless Robotaxi the same day. Tesla has not said whether Cybercabs serve the city, and tesla.com/robotaxi still omits Fort Worth (checked 3 Nov 2026).",
+      date: "2026-11-02",
+      src: "https://fortworthreport.org/2026/11/02/robotaxis-roll-into-fort-worth-as-tesla-expands-service/",
+      srcLabel: "Fort Worth Report"
     }
   ]
 };
