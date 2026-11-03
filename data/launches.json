@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-03T10:34:11Z",
- "checked": "2026-11-03T10:34:11Z",
+ "updated": "2026-11-03T16:12:47Z",
+ "checked": "2026-11-03T16:12:47Z",
  "results": [
   {
    "id": "d1471f9d-e9d0-4146-8e97-90863e48bfc8",
@@ -362,9 +362,9 @@
   {
    "id": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
    "name": "Falcon 9 Block 5 | USSF-xxx (\"R-5\")",
-   "net": "2026-11-09T03:17:00Z",
-   "window_start": "2026-11-09T03:17:00Z",
-   "window_end": "2026-11-09T07:17:00Z",
+   "net": "2026-11-10T03:03:00Z",
+   "window_start": "2026-11-10T03:03:00Z",
+   "window_end": "2026-11-10T07:03:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/6aa7b90b-e5ed-45d8-a52e-04fbf399d178/",
    "status": {
     "name": "To Be Confirmed",
@@ -380,9 +380,41 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-02T16:03:38Z",
+   "last_updated": "2026-11-03T13:10:34Z",
    "mission": {
     "name": "USSF-xxx (\"R-5\")",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
+  },
+  {
+   "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
+   "name": "Falcon 9 Block 5 | USSF-xxx (\"R-6\")",
+   "net": "2026-11-13T04:23:00Z",
+   "window_start": "2026-11-13T04:23:00Z",
+   "window_end": "2026-11-13T08:23:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/76617033-4dc0-4448-b50c-e5b0d5a18539/",
+   "status": {
+    "name": "To Be Confirmed",
+    "abbrev": "TBC"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2026-11-03T13:16:04Z",
+   "mission": {
+    "name": "USSF-xxx (\"R-6\")",
     "type": "Government/Top Secret",
     "orbit": {
      "name": "Low Earth Orbit",

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-03T10:34:11Z",
+ "checked": "2026-11-03T16:12:47Z",
  "editorialUpdated": "2026-10-28T09:15:00+00:00",
  "presets": [
   {
@@ -671,36 +671,6 @@
    }
   },
   {
-   "id": "ll2-6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
-   "title": "Falcon 9 Block 5 | USSF-xxx (\"R-5\")",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-11-09T03:17:00Z",
-   "end": "",
-   "date": "2026-11-09",
-   "precision": "datetime",
-   "status": "TBC",
-   "note": "Government/Top Secret · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
-   "windowStart": "2026-11-09T03:17:00Z",
-   "windowEnd": "2026-11-09T07:17:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "To Be Confirmed",
-   "pad": {
-    "id": "slc4e",
-    "name": "Vandenberg · SLC-4E",
-    "short": "Vandenberg",
-    "lat": 34.632,
-    "lon": -120.611,
-    "az": 186,
-    "coast": "west"
-   }
-  },
-  {
    "id": "starship-15",
    "title": "Starship Flight 15",
    "group": "spacex",
@@ -751,6 +721,36 @@
     "lon": -97.147,
     "az": 97,
     "coast": "east"
+   }
+  },
+  {
+   "id": "ll2-76617033-4dc0-4448-b50c-e5b0d5a18539",
+   "title": "Falcon 9 Block 5 | USSF-xxx (\"R-6\")",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-13T04:23:00Z",
+   "end": "",
+   "date": "2026-11-13",
+   "precision": "datetime",
+   "status": "TBC",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "76617033-4dc0-4448-b50c-e5b0d5a18539",
+   "windowStart": "2026-11-13T04:23:00Z",
+   "windowEnd": "2026-11-13T08:23:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "To Be Confirmed",
+   "pad": {
+    "id": "slc4e",
+    "name": "Vandenberg · SLC-4E",
+    "short": "Vandenberg",
+    "lat": 34.632,
+    "lon": -120.611,
+    "az": 186,
+    "coast": "west"
    }
   },
   {
