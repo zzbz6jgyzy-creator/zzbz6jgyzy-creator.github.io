@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-03T16:12:47Z",
- "checked": "2026-11-03T16:12:47Z",
+ "updated": "2026-11-03T21:46:55Z",
+ "checked": "2026-11-03T21:46:55Z",
  "results": [
   {
    "id": "d1471f9d-e9d0-4146-8e97-90863e48bfc8",
@@ -361,14 +361,14 @@
   },
   {
    "id": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
-   "name": "Falcon 9 Block 5 | USSF-xxx (\"R-5\")",
+   "name": "Falcon 9 Block 5 | USSF-627",
    "net": "2026-11-10T03:03:00Z",
    "window_start": "2026-11-10T03:03:00Z",
    "window_end": "2026-11-10T07:03:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/6aa7b90b-e5ed-45d8-a52e-04fbf399d178/",
    "status": {
-    "name": "To Be Confirmed",
-    "abbrev": "TBC"
+    "name": "Go for Launch",
+    "abbrev": "Go"
    },
    "net_precision": {
     "name": "Minute",
@@ -380,9 +380,9 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-03T13:10:34Z",
+   "last_updated": "2026-11-03T21:43:31Z",
    "mission": {
-    "name": "USSF-xxx (\"R-5\")",
+    "name": "USSF-627",
     "type": "Government/Top Secret",
     "orbit": {
      "name": "Low Earth Orbit",
@@ -476,7 +476,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-02T00:59:11Z",
+   "last_updated": "2026-11-03T21:40:38Z",
    "mission": {
     "name": "Starlink Group 15-21",
     "type": "Communications",

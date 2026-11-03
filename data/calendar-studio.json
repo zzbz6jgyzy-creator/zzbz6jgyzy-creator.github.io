@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-10-28T09:15:00+00:00",
- "launchChecked": "2026-11-03T16:12:47Z",
+ "launchChecked": "2026-11-03T21:46:55Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -558,6 +558,27 @@
     "article": "",
     "status": "scheduled"
    }
+  },
+  {
+   "id": "ussf-627",
+   "title": "Falcon 9 Block 5 | USSF-627",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-10T03:03:00Z",
+   "end": "",
+   "date": "2026-11-10",
+   "precision": "datetime",
+   "status": "Go",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
+   "windowStart": "2026-11-10T03:03:00Z",
+   "windowEnd": "2026-11-10T07:03:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "Go for Launch"
   },
   {
    "id": "starship-15",
