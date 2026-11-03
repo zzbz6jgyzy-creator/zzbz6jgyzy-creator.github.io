@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/musk-pay-spacex-tesla-merger-control.html",
+      "image": "/assets/dispatch/musk-royal-society-2018.jpg",
+      "title": "A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal",
+      "summary": "No deal exists yet, but a Reuters analysis and Tesla's filings show a SpaceX takeover could give Musk Tesla voting control while skipping his pay plan's robotaxi and robot goals.",
+      "tag": "Governance",
+      "date": "2026-11-03T14:41:00Z",
+      "thumb": "/assets/dispatch/musk-royal-society-2018-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-robotaxi-fort-worth.html",
       "image": "/assets/og-v2.jpg",
       "title": "Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas",
@@ -216,16 +225,7 @@
       "tag": "Robotaxi",
       "date": "2026-10-28T14:45:00Z",
       "thumb": "/assets/dispatch/cybercab-outnumbers-model-y-line-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-powershare-120v-outlet.html",
-      "image": "/assets/dispatch/tesla-powershare-charge-port.jpg",
-      "title": "Every new Tesla can now power tools from its charge port. Here’s what 2.4 kW gets you",
-      "summary": "Tesla says every new Model 3, Model Y and Cybertruck can now run tools from the charge port. Which cars qualify, the $80 adapter, and how 2.4 kW compares.",
-      "tag": "Powershare",
-      "date": "2026-10-28T02:36:00Z",
-      "thumb": "/assets/dispatch/tesla-powershare-charge-port-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-02T20:41:00Z"
+  "articlesUpdated": "2026-11-03T14:41:00Z"
 }

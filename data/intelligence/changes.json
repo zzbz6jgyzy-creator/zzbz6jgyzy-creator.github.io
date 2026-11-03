@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-03T12:56:53.234Z",
+  "updated": "2026-11-03T14:41:30.973Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/musk-pay-spacex-tesla-merger-control.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal",
+      "at": "2026-11-03T14:41:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/musk-pay-spacex-tesla-merger-control.html",
+      "href": "/dispatch/musk-pay-spacex-tesla-merger-control.html",
+      "summary": "No deal exists yet, but a Reuters analysis and Tesla's filings show a SpaceX takeover could give Musk Tesla voting control while skipping his pay plan's robotaxi and robot goals.",
+      "title": "A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal",
+      "id": "logged|dispatch:/dispatch/musk-pay-spacex-tesla-merger-control.html|2026-11-03T14:41:00.000Z|A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-robotaxi-fort-worth.html",
@@ -255,23 +272,6 @@
       "summary": "Tesla brought the next-gen Roadster to SpaceX's Hawthorne headquarters on 28 Oct, parking it under the first Falcon 9 stage to land after an orbital launch.",
       "title": "Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster",
       "id": "logged|dispatch:/dispatch/roadster-hawthorne-falcon-9.html|2026-10-29T10:09:00.000Z|Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/fcc-d2d-482mhz-vote.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile",
-      "at": "2026-10-29T10:09:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/fcc-d2d-482mhz-vote.html",
-      "href": "/dispatch/fcc-d2d-482mhz-vote.html",
-      "summary": "The FCC voted 3-0 on 29 Oct 2026 to propose 482 MHz more spectrum for direct-to-device services like Starlink Mobile, raising eligible bands from 5 to 13. Public comment comes next.",
-      "title": "The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile",
-      "id": "logged|dispatch:/dispatch/fcc-d2d-482mhz-vote.html|2026-10-29T10:09:00.000Z|The FCC voted 3-0 to propose opening 482 MHz more spectrum to satellite-to-phone service, over objections from AT&T, Verizon and T-Mobile"
     },
     {
       "type": "changed",
