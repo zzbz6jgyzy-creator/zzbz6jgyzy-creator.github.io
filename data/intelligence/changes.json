@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-03T19:29:13.410Z",
+  "updated": "2026-11-03T20:41:59.922Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starlink-airlines-scorecard.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Starlink on airlines: what the numbers actually show",
+      "at": "2026-11-03T20:37:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starlink-airlines-scorecard.html",
+      "href": "/dispatch/starlink-airlines-scorecard.html",
+      "summary": "JAL says Starlink and pricing helped lift ZIPAIR's passenger revenue 12.3%. What United, Alaska, Qatar, Virgin and airBaltic report about in-flight Starlink (as of 3 Nov 2026).",
+      "title": "Starlink on airlines: what the numbers actually show",
+      "id": "logged|dispatch:/dispatch/starlink-airlines-scorecard.html|2026-11-03T20:37:00.000Z|Starlink on airlines: what the numbers actually show"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/musk-pay-spacex-tesla-merger-control.html",
@@ -255,23 +272,6 @@
       "summary": "The whole Tesla story, from the 2006 'secret' master plan to robotaxis, Optimus and the new Roadster, with our 12-minute film.",
       "title": "Tesla: The Plan. The complete story, 2003 to today",
       "id": "logged|dispatch:/dispatch/tesla-the-plan-complete-story.html|2026-10-29T12:13:00.000Z|Tesla: The Plan. The complete story, 2003 to today"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/roadster-hawthorne-falcon-9.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster",
-      "at": "2026-10-29T10:09:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/roadster-hawthorne-falcon-9.html",
-      "href": "/dispatch/roadster-hawthorne-falcon-9.html",
-      "summary": "Tesla brought the next-gen Roadster to SpaceX's Hawthorne headquarters on 28 Oct, parking it under the first Falcon 9 stage to land after an orbital launch.",
-      "title": "Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster",
-      "id": "logged|dispatch:/dispatch/roadster-hawthorne-falcon-9.html|2026-10-29T10:09:00.000Z|Tesla's new Roadster is on display at SpaceX's Hawthorne HQ, parked under the Falcon 9 booster"
     },
     {
       "type": "changed",

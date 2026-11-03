@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 03 Nov 2026 14:41:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 20:37:00 +0000</lastBuildDate>
+    <item>
+      <title>Starlink on airlines: what the numbers actually show</title>
+      <link>https://superchargeddaily.com/dispatch/starlink-airlines-scorecard.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-airlines-scorecard.html</guid>
+      <pubDate>Tue, 03 Nov 2026 20:37:00 +0000</pubDate>
+      <category>Starlink</category>
+      <description>JAL says Starlink and pricing helped lift ZIPAIR's passenger revenue 12.3%. What United, Alaska, Qatar, Virgin and airBaltic report about in-flight Starlink (as of 3 Nov 2026).</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal</title>
       <link>https://superchargeddaily.com/dispatch/musk-pay-spacex-tesla-merger-control.html</link>
@@ -717,15 +726,6 @@
       <category>Tesla Energy</category>
       <description>Tesla and Sunrun sent enough power to California's grid for every home in San Francisco and San Jose at peak.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/powerwall-745mw-record-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Roadster livestream: Thu 8:55pm ET (5:55pm PT)</title>
-      <link>https://superchargeddaily.com/dispatch/roadster-livestream.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/roadster-livestream.html</guid>
-      <pubDate>Wed, 14 Oct 2026 09:25:39 +0000</pubDate>
-      <category>Tesla</category>
-      <description>What to watch for: the 1.1-second 0-60 claim, the 2017 targets and &quot;Timing is everything.&quot;</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/roadster-livestream-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
