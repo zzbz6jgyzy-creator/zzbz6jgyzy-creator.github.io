@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-02T18:17:29Z",
+ "checked": "2026-11-03T07:54:16Z",
  "editorialUpdated": "2026-10-28T09:15:00+00:00",
  "presets": [
   {
@@ -640,9 +640,9 @@
    "title": "Falcon 9 Block 5 | USSF-432",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-04T01:28:00Z",
+   "start": "2026-11-07T00:46:00Z",
    "end": "",
-   "date": "2026-11-04",
+   "date": "2026-11-07",
    "precision": "datetime",
    "status": "Go",
    "note": "Government/Top Secret · Low Earth Orbit",
@@ -651,8 +651,8 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "54d471e8-695c-4fa7-a3cf-dbd8b389e8ae",
-   "windowStart": "2026-11-04T01:28:00Z",
-   "windowEnd": "2026-11-04T05:28:00Z",
+   "windowStart": "2026-11-07T00:46:00Z",
+   "windowEnd": "2026-11-07T04:46:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
    "coverage": {
