@@ -1,0 +1,628 @@
+##### index.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### news.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### tesla.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### spacex.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### starship.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### starlink.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### calendar.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### fsd.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### fsd-tracker.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### fsd-europe.html
+== light 390px
+  [moderate] landmark-unique ×1 ()
+      e.g. .rail
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] landmark-unique ×1 ()
+      e.g. .rail
+== dark 390px
+  [moderate] landmark-unique ×1 ()
+      e.g. .rail
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] landmark-unique ×1 ()
+      e.g. .rail
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### robotaxi.html
+== light 390px
+  [serious] color-contrast ×1 (wcag2aa,wcag143) #ffffff on #efede8 = 1.16:1
+      e.g. .sd-btn
+== light 1440px
+  [serious] color-contrast ×1 (wcag2aa,wcag143) #ffffff on #efede8 = 1.16:1
+      e.g. .sd-btn
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 4 serious/critical issue(s) or scroll problem(s)
+##### cybercab.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### cybercab-guide.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### autonomy.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### promise-tracker.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### production.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### tsla.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### updates.html
+== light 390px
+  [moderate] landmark-unique ×1 ()
+      e.g. .sw-side
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] landmark-unique ×1 ()
+      e.g. .sw-side
+== dark 390px
+  [moderate] landmark-unique ×1 ()
+      e.g. .sw-side
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] landmark-unique ×1 ()
+      e.g. .sw-side
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### roadster.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### optimus.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### grok.html
+== light 390px
+  [minor] aria-allowed-role ×1 ()
+      e.g. #capability-research
+== light 1440px
+  [minor] aria-allowed-role ×1 ()
+      e.g. #capability-research
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  [minor] aria-allowed-role ×1 ()
+      e.g. #capability-research
+== dark 1440px
+  [minor] aria-allowed-role ×1 ()
+      e.g. #capability-research
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### gear.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### newsletter.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### members.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### daily.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### dispatch.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### wallpapers.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### about.html
+== light 390px
+  [moderate] region ×1 ()
+      e.g. .about-support
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 390px
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### editorial.html
+== light 390px
+  [moderate] region ×1 ()
+      e.g. .about-support
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 390px
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### search.html
+== light 390px
+  [critical] aria-required-parent ×168 (wcag2a,wcag131)
+      e.g. #sd-find-opt-0
+  [moderate] heading-order ×1 ()
+      e.g. #sd-find-opt-0 > span:nth-child(2) > h3
+  [moderate] region ×1 ()
+      e.g. .about-support
+== light 1440px
+  [critical] aria-required-parent ×168 (wcag2a,wcag131)
+      e.g. #sd-find-opt-0
+  [moderate] heading-order ×1 ()
+      e.g. #sd-find-opt-0 > span:nth-child(2) > h3
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 390px
+  [critical] aria-required-parent ×168 (wcag2a,wcag131)
+      e.g. #sd-find-opt-0
+  [moderate] heading-order ×1 ()
+      e.g. #sd-find-opt-0 > span:nth-child(2) > h3
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 1440px
+  [critical] aria-required-parent ×168 (wcag2a,wcag131)
+      e.g. #sd-find-opt-0
+  [moderate] heading-order ×1 ()
+      e.g. #sd-find-opt-0 > span:nth-child(2) > h3
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+##### model3-explorer.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### cybertruck-explorer.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### my-tesla.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### see-the-launch.html
+== light 390px
+  [serious] color-contrast ×22 (wcag2aa,wcag143) #d5b88d on #eef2f4 = 1.68:1
+      e.g. #lv-freshness
+== light 1440px
+  [serious] color-contrast ×22 (wcag2aa,wcag143) #d5b88d on #eef2f4 = 1.68:1
+      e.g. #lv-freshness
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 4 serious/critical issue(s) or scroll problem(s)
+##### games.html
+== light 390px
+  [serious] color-contrast ×2 (wcag2aa,wcag143) #e6c36a on #efede8 = 1.44:1
+      e.g. .ac-card-robotaxi > .ac-card-copy > .ac-kicker
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .ac-feature-art
+== light 1440px
+  [serious] color-contrast ×2 (wcag2aa,wcag143) #e6c36a on #efede8 = 1.44:1
+      e.g. .ac-card-robotaxi > .ac-card-copy > .ac-kicker
+  [serious] label-content-name-mismatch ×2 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .ac-feature-art
+== dark 1440px
+  [serious] label-content-name-mismatch ×2 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 6 serious/critical issue(s) or scroll problem(s)
+##### community.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### contact.html
+== light 390px
+  [moderate] region ×1 ()
+      e.g. .about-support
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 390px
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### author.html
+== light 390px
+  [moderate] region ×1 ()
+      e.g. .about-support
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 390px
+  [moderate] region ×1 ()
+      e.g. .about-support
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+  [moderate] region ×1 ()
+      e.g. .about-support
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### tesla-clubs.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### explainers.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### catch.html
+== light 390px
+  [serious] color-contrast ×1 (wcag2aa,wcag143) #ffffff on #efede8 = 1.16:1
+      e.g. .sd-btn
+== light 1440px
+  [serious] color-contrast ×1 (wcag2aa,wcag143) #ffffff on #efede8 = 1.16:1
+      e.g. .sd-btn
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 4 serious/critical issue(s) or scroll problem(s)
+##### tcmv.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### dispatch/starship-f15-ship-catch.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### dispatch/robotaxi-938-f1-cota.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### explainers/booster-catch.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
+##### 404.html
+== light 390px
+  no violations
+== light 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+== dark 390px
+  no violations
+== dark 1440px
+  [serious] label-content-name-mismatch ×1 (wcag21a,wcag253)
+      e.g. .pn-search
+FAIL: 2 serious/critical issue(s) or scroll problem(s)
