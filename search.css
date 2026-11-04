@@ -21,7 +21,7 @@
 .sd-find-media img{width:100%;height:100%;object-fit:cover;display:block}
 .sd-find-k{display:flex;flex-wrap:wrap;gap:.35rem .7rem;align-items:center;font:500 .66rem/1 "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;color:#8a8a8e;margin:0 0 4px}
 .sd-find-tag{color:#fff;padding:.15rem .4rem;border-radius:4px;background:rgba(227,25,55,.22);border:1px solid rgba(227,25,55,.45)}
-.sd-find-hit h3{margin:0;font:600 1rem/1.3 Inter,system-ui,sans-serif}
+.sd-find-hit h3,.sd-find-hit h2{margin:0;font:600 1rem/1.3 Inter,system-ui,sans-serif}
 .sd-find-hit p{margin:.3rem 0 0;color:#9a9a9e;font-size:.88rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .sd-find-hit mark{background:rgba(227,25,55,.35);color:inherit;padding:0 .12em;border-radius:2px}
 .sd-find-empty{margin:0;padding:18px 18px 22px;color:#9a9a9e}

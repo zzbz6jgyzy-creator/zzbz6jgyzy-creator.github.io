@@ -83,7 +83,7 @@ def block(navtag):
  {navtag}{symbols}
   <a class="pn-logo" href="/" aria-label="Supercharged Daily home"><img src="/assets/brand/icon-1b-mark.svg" alt="" width="26" height="26"/><img class="pn-word" src="/assets/brand/wordmark.svg" alt="" width="114" height="18"/></a>
   <div class="pn-items">{menus}</div>
-  <div class="pn-utilities"><a class="pn-link pn-search" href="/search.html" aria-label="Search">{icon('search')}<span>Search</span><kbd aria-hidden="true">⌘ K</kbd></a><a class="pn-link pn-daily" href="/daily.html" aria-label="Your Daily">{icon('spark')}<span>Your Daily</span></a><a class="pn-link pn-members" href="/members.html" data-ns-account>{icon('person')}<span>Members</span></a><a class="pn-sub pn-cta" href="/#newsletter">Free briefing</a></div>
+  <div class="pn-utilities"><a class="pn-link pn-search" href="/search.html">{icon('search')}<span>Search</span><kbd aria-hidden="true">⌘ K</kbd></a><a class="pn-link pn-daily" href="/daily.html" aria-label="Your Daily">{icon('spark')}<span>Your Daily</span></a><a class="pn-link pn-members" href="/members.html" data-ns-account>{icon('person')}<span>Members</span></a><a class="pn-sub pn-cta" href="/#newsletter">Free briefing</a></div>
   <a class="pn-menu" href="#pn-sheet" aria-controls="pn-sheet">{icon('menu')}<span>Menu</span></a>
  </nav></div>
  <div class="pn-overlay" data-nav-studio></div>

@@ -1,8 +1,8 @@
 {
   "bundles": {
     "core": {
-      "file": "/assets/js/core.bundle.998957fe8c.js",
-      "bytes": 43612,
+      "file": "/assets/js/core.bundle.6e32db3fe9.js",
+      "bytes": 43856,
       "sources": [
         "track.js",
         "newsletter.js",
@@ -91,8 +91,8 @@
       ]
     },
     "updates": {
-      "file": "/assets/js/updates.bundle.a10d1b4d01.js",
-      "bytes": 39123,
+      "file": "/assets/js/updates.bundle.83050ab875.js",
+      "bytes": 39177,
       "sources": [
         "cesium-lazy.js",
         "software-data.js",
@@ -127,8 +127,8 @@
       ]
     },
     "fsd-europe": {
-      "file": "/assets/js/fsd-europe.bundle.f9c928a411.js",
-      "bytes": 110891,
+      "file": "/assets/js/fsd-europe.bundle.22011bce3a.js",
+      "bytes": 110948,
       "sources": [
         "fsd-europe-data.js",
         "fsd-europe-model.js",
@@ -388,8 +388,8 @@
       ]
     },
     "arcade-core": {
-      "file": "/assets/js/arcade-core.bundle.68a4f3a42b.js",
-      "bytes": 38216,
+      "file": "/assets/js/arcade-core.bundle.3a983e8204.js",
+      "bytes": 38460,
       "sources": [
         "track.js",
         "newsletter.js",

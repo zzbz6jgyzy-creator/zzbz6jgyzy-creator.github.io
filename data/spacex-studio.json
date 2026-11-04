@@ -5,13 +5,13 @@
     {
       "id": "falcon",
       "name": "SpaceX · Falcon 9",
-      "url": "https://new.spacex.com/vehicles/falcon-9",
+      "url": "https://www.spacex.com/vehicles/falcon-9",
       "note": "Published vehicle architecture and reference dimensions; mission capabilities depend on configuration."
     },
     {
       "id": "heavy",
       "name": "SpaceX · Falcon Heavy",
-      "url": "https://new.spacex.com/vehicles/falcon-heavy",
+      "url": "https://www.spacex.com/vehicles/falcon-heavy",
       "note": "Three-core first stage and 27 Merlin engines; recovery is mission-dependent."
     },
     {
@@ -23,7 +23,7 @@
     {
       "id": "starship",
       "name": "SpaceX · Starship",
-      "url": "https://new.spacex.com/vehicles/starship",
+      "url": "https://www.spacex.com/vehicles/starship",
       "note": "Programme design goals are distinct from demonstrated flight results; use the flight log for outcomes."
     },
     {

@@ -22,7 +22,7 @@
 
   function areaStyle(supervision, status) {
     if (supervision === "unsupervised") return { color: "#3ddc97", weight: 2.5, fillColor: "#1fa86a", fillOpacity: 0.34 };
-    if (status === "supervised" || (supervision === "supervised" && status !== "testing")) return { color: "#e2c48a", weight: 2.5, fillColor: "#c9a227", fillOpacity: 0.34 };
+    if (status === "supervised" || (supervision === "supervised" && status !== "testing" && status !== "ramping")) return { color: "#e2c48a", weight: 2.5, fillColor: "#c9a227", fillOpacity: 0.34 };
     return { color: "#8b90a0", weight: 2.5, fillColor: "#6d7178", fillOpacity: 0.26 };
   }
 

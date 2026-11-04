@@ -1,3 +1,9 @@
+## 2026-11-04 — Audit fixes
+
+- Accessibility: menu Search link label, search results structure, Subscribe button and kicker contrast in the arcade pages, unique `aside` labels on FSD Europe and Updates, the Support button inside `main`.
+- Facts: Robotaxi Florida/Texas city labels and launch dates, FSD promise ledger wording and statuses, the unproven FSD v14.2.2.6 label for the European build, a time-zone error in the Ship 42 article (with a visible correction), dead SpaceX source links, the Fort Worth Cybercab note.
+- Details and what was left for a decision: `docs/audit-2026-11-04.md`.
+
 ## 2026-11-04 — tesla.com lists Fort Worth; NHTSA Q8 confidentiality placeholder
 
 - tesla.com/robotaxi now lists Fort Worth among cities where you can already hail a car (checked 4 Nov 2026). Tesla has still not said Cybercabs serve that city. The 2 Nov Fort Worth launch note stays as a dated snapshot of the X announcement. The promise ledger now says seven cities; Dallas and Fort Worth remain one metro area.
