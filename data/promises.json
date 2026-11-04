@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "updated": "2026-10-28",
+ "updated": "2026-11-04",
  "promises": [
   {
    "id": "fsd-90-percent-2013",
@@ -156,18 +156,18 @@
    "status": "Missed",
    "evidence": [
     {
-     "text": "Tesla's official Robotaxi page lists rides in six US metro areas (Austin, Dallas, Houston, Miami, Orlando and Tampa), far from a million vehicles.",
+     "text": "Tesla's official Robotaxi page lists rides in seven US cities (Austin, Dallas, Fort Worth, Houston, Miami, Orlando and Tampa), far from a million vehicles.",
      "source": {
       "outlet": "Tesla",
       "title": "Robotaxi (official page)",
       "url": "https://www.tesla.com/robotaxi",
-      "date": "2026-10-15"
+      "date": "2026-11-04"
      },
-     "date": "2026-10-15"
+     "date": "2026-11-04"
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-15",
+   "last_verified": "2026-11-04",
    "note": "Musk said at the time this would require regulatory approval."
   },
   {
@@ -559,18 +559,18 @@
    "status": "Missed",
    "evidence": [
     {
-     "text": "Tesla's official Robotaxi page lists rides in Austin, Dallas, Houston, Miami, Orlando and Tampa.",
+     "text": "Tesla's official Robotaxi page lists rides in Austin, Dallas, Fort Worth, Houston, Miami, Orlando and Tampa.",
      "source": {
       "outlet": "Tesla",
       "title": "Robotaxi (official page)",
       "url": "https://www.tesla.com/robotaxi",
-      "date": "2026-10-15"
+      "date": "2026-11-04"
      },
-     "date": "2026-10-15"
+     "date": "2026-11-04"
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-15"
+   "last_verified": "2026-11-04"
   },
   {
    "id": "unsupervised-personal-2025",
@@ -646,18 +646,18 @@
      "date": "2026-01-22"
     },
     {
-     "text": "Tesla lists autonomous rides in Austin, Dallas, Houston, Miami, Orlando and Tampa.",
+     "text": "Tesla lists autonomous rides in Austin, Dallas, Fort Worth, Houston, Miami, Orlando and Tampa.",
      "source": {
       "outlet": "Tesla",
       "title": "Robotaxi (official page)",
       "url": "https://www.tesla.com/robotaxi",
-      "date": "2026-10-15"
+      "date": "2026-11-04"
      },
-     "date": "2026-10-15"
+     "date": "2026-11-04"
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-15",
+   "last_verified": "2026-11-04",
    "note": "Judgment call: met in Austin about three weeks late, starting with a few vehicles.",
    "outcome_date": "2026-01-22"
   },
@@ -715,18 +715,18 @@
    "status": "In progress",
    "evidence": [
     {
-     "text": "Tesla lists robotaxi rides in six US metro areas: Austin, Dallas, Houston, Miami, Orlando and Tampa.",
+     "text": "Tesla lists robotaxi rides in seven US cities: Austin, Dallas, Fort Worth, Houston, Miami, Orlando and Tampa.",
      "source": {
       "outlet": "Tesla",
       "title": "Robotaxi (official page)",
       "url": "https://www.tesla.com/robotaxi",
-      "date": "2026-10-15"
+      "date": "2026-11-04"
      },
-     "date": "2026-10-15"
+     "date": "2026-11-04"
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-15"
+   "last_verified": "2026-11-04"
   },
   {
    "id": "optimus-factories-2025",
@@ -1574,18 +1574,18 @@
    "status": "Missed",
    "evidence": [
     {
-     "text": "Tesla's Robotaxi page lists six metro areas.",
+     "text": "Tesla's Robotaxi page lists seven cities. Dallas and Fort Worth share one metro area, so that is six metro areas against the 8-to-10-metro target.",
      "source": {
       "outlet": "Tesla",
       "title": "Robotaxi (official page)",
       "url": "https://www.tesla.com/robotaxi",
-      "date": "2026-10-15"
+      "date": "2026-11-04"
      },
-     "date": "2026-10-15"
+     "date": "2026-11-04"
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-15"
+   "last_verified": "2026-11-04"
   },
   {
    "id": "austin-no-safety-drivers-few-months",

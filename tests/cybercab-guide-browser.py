@@ -45,14 +45,14 @@ async def main():
             assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'), (tag, 'overflow')
             assert await page.locator('.cg-metric').count() == 6, tag
             assert await page.locator('.cg-versions:not(.cg-rivals) tbody tr').count() == 10, tag
-            assert await page.locator('.cg-event').count() == 15, tag
+            assert await page.locator('.cg-event').count() == 16, tag
             assert await page.locator('.cg-promise').count() == 7, tag
             assert await page.locator('.cg-faq details').count() == 10, tag
             assert await page.locator('.cg-mark').count() == 5, tag
             assert await page.locator('.cg-captable tbody tr').count() == 5, tag
             assert await page.locator('.cg-rivals tbody tr').count() == 4, tag
             # Saved content reads without JS: every event visible, filter bar hidden.
-            assert await page.locator('.cg-event:visible').count() == 15, tag
+            assert await page.locator('.cg-event:visible').count() == 16, tag
             assert 'platform.twitter.com' not in ' '.join(hosts), tag
             assert not errors, (tag, errors)
             if mode == 'normal':
@@ -62,7 +62,7 @@ async def main():
                 assert await page.locator('.cg-event:visible').count() == 3, tag
                 assert await page.locator('.cg-year:visible').count() == 1, tag
                 await page.locator('[data-filters] [data-type=all]').click()
-                assert await page.locator('.cg-event:visible').count() == 15, tag
+                assert await page.locator('.cg-event:visible').count() == 16, tag
                 assert await page.locator('[data-cap-control]').is_visible(), tag
                 await page.locator('#cg-weekly').fill('1000')
                 assert '52,000 a year' in await page.locator('[data-cap-read]').inner_text(), tag
