@@ -1,3 +1,9 @@
+## 2026-11-04 — tesla.com lists Fort Worth; NHTSA Q8 confidentiality placeholder
+
+- tesla.com/robotaxi now lists Fort Worth among cities where you can already hail a car (checked 4 Nov 2026). Tesla has still not said Cybercabs serve that city. The 2 Nov Fort Worth launch note stays as a dated snapshot of the X announcement. The promise ledger now says seven cities; Dallas and Fort Worth remain one metro area.
+- TeslaNorth reported 3 Nov that an Oct 30 NHTSA record shows Tesla asked to keep every remaining Question 8 document confidential; the answers are not on the open docket. AQ26002 remains open with no finding or recall (dot.report, last updated 4 Nov 2026).
+- Calendar, SpaceX studio and homepage USSF-432 card already match SpaceX: Friday 6 Nov, window 4:46 p.m. PT (00:46 UTC 7 Nov). Starlink McDowell table is still 11,214 in orbit / 11,200 working (updated 2 Nov 00:45 UTC). Flight 15 stays NET 12 Nov, no SpaceX T-0.
+
 ## 2026-11-03 — USSF-432 slipped to 7 Nov UTC; Fort Worth on the Robotaxi map
 
 - Homepage livestream card and `see-the-launch-data.js` still had USSF-432 at 4 Nov 01:28 UTC after SpaceX moved it. SpaceX’s mission page now targets Friday 6 Nov, window 4:46 p.m. PT (00:46 UTC 7 Nov), backup Saturday 7 Nov 4:32 p.m. PT. Calendar, SpaceX studio and launch-viewing already had the new time from Launch Library 2.

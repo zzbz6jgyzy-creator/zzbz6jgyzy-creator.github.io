@@ -12,7 +12,7 @@ The old nationwide fleet percentage combined Texas registrations with older regi
 
 ## Evidence corrections and research
 
-Tesla’s current general Robotaxi support page lists Austin, Dallas, Houston, Miami, Orlando and Tampa. Its separate Cybercab FAQ lists Cybercab rides in limited parts of Austin. Several former testing labels were outdated; they were replaced with manufacturer-listed service records, with supervision separately attributed. The shorter Model Y list in the Cybercab FAQ omits Orlando, while the general page includes it; this discrepancy is visible, and city-specific vehicle attribution remains unresolved there.
+Tesla’s current Robotaxi page lists Austin, Dallas, Fort Worth, Houston, Miami, Orlando and Tampa (checked 4 Nov 2026). Its separate Cybercab FAQ lists Cybercab rides in limited parts of Austin. Several former testing labels were outdated; they were replaced with manufacturer-listed service records, with supervision separately attributed. The shorter Model Y list in the Cybercab FAQ omits Orlando, while the general page includes it; this discrepancy is visible, and city-specific vehicle attribution remains unresolved there.
 
 Tesla’s Q3 report supports the 3 September Austin Cybercab launch, reported Austin operating hours and installed annual manufacturing capacity above 125,000. Installed capacity is not annual output. Tesla’s safety report is operator-level, covers a specified period and excludes onboard-monitor miles; it is not presented as Cybercab-only safety data.
 

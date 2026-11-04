@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-02",
-  "revision": "2026-11-02.2",
+  "updated": "2026-11-04",
+  "revision": "2026-11-04.1",
   "scope": "Tesla Cybercab and Model Y Robotaxi",
   "sources": [
     {
@@ -25,7 +25,7 @@
       "url": "https://www.tesla.com/robotaxi",
       "label": "Tesla Robotaxi fleet and current service cities",
       "type": "manufacturer",
-      "checkedAt": "2026-11-02",
+      "checkedAt": "2026-11-04",
       "publishedAt": null
     },
     {
@@ -311,16 +311,17 @@
         ],
         "date": "2026-11-02",
         "vehicle": "not_city_specific",
-        "note": "Tesla's official Robotaxi account posted on 2 Nov 2026 at 05:36 GMT (11:36pm CT on 1 Nov) that Robotaxi is available in Fort Worth \"starting tomorrow, 6am\", so service most likely began from 6am CT on 2 Nov. The launch geofence on Tesla's map covers central Fort Worth and reaches Saginaw to the north, Haltom City to the east, White Settlement to the west, and the Benbrook and Forest Hill areas to the south (as of 2 Nov 2026). Tesla's Robotaxi page does not list Fort Worth yet, as of 2 Nov 2026. The app is the current check for bookings and availability."
+        "note": "Tesla's official Robotaxi account posted on 2 Nov 2026 at 05:36 GMT (11:36pm CT on 1 Nov) that Robotaxi is available in Fort Worth \"starting tomorrow, 6am\", so service most likely began from 6am CT on 2 Nov. The launch geofence on Tesla's map covers central Fort Worth and reaches Saginaw to the north, Haltom City to the east, White Settlement to the west, and the Benbrook and Forest Hill areas to the south (as of 2 Nov 2026). tesla.com/robotaxi now lists Fort Worth among cities where you can already hail a car, alongside Austin, Dallas, Houston, Miami, Orlando and Tampa (checked 4 Nov 2026). The app is the current check for bookings and availability."
       },
       "cybercab": {
         "status": "not_listed",
         "evidence": [
           "s-0cffd265d479",
-          "s-9063fbb6d2bb"
+          "s-9063fbb6d2bb",
+          "s-ff84ae0cf870"
         ],
         "date": null,
-        "note": "Tesla's Fort Worth post doesn't say which vehicle serves the city, and the checked Cybercab availability source lists only Austin (as of 2 Nov 2026)."
+        "note": "Tesla's Fort Worth post doesn't say which vehicle serves the city. tesla.com/robotaxi now lists Fort Worth as a hail city for the Model Y and Cybercab fleet (checked 4 Nov 2026), without saying Cybercabs serve that city. The checked Cybercab availability source listed only Austin as of 23 Oct 2026."
       },
       "supervision": {
         "status": "unknown",
@@ -350,7 +351,7 @@
         ],
         "note": "Tesla's launch map is not confirmation of airport access. Enter the actual pickup and destination in the app."
       },
-      "vehicleNote": "Vehicle type for Fort Worth is unconfirmed as of 2 Nov 2026. Cybercab seats up to two; Model Y up to four, according to Tesla.",
+      "vehicleNote": "Vehicle type for Fort Worth is unconfirmed as of 4 Nov 2026. tesla.com/robotaxi lists the city for hail rides; it does not say Cybercabs serve it. Cybercab seats up to two; Model Y up to four, according to Tesla.",
       "evidence": [
         "s-9063fbb6d2bb",
         "s-ff84ae0cf870",
@@ -1070,9 +1071,23 @@
       "vehicle": "not_city_specific",
       "kind": "service",
       "title": "Tesla announces Robotaxi in Fort Worth",
-      "summary": "Tesla's Robotaxi account posted at 05:36 GMT on 2 Nov (11:36pm CT on 1 Nov) that Robotaxi is available in Fort Worth from 6am. Its launch geofence map covers central Fort Worth, reaching Saginaw, Haltom City, White Settlement and the Benbrook and Forest Hill areas. Vehicle type and supervision are unconfirmed, and Tesla's Robotaxi page doesn't list Fort Worth yet (as of 2 Nov 2026).",
+      "summary": "Tesla's Robotaxi account posted at 05:36 GMT on 2 Nov (11:36pm CT on 1 Nov) that Robotaxi is available in Fort Worth from 6am. Its launch geofence map covers central Fort Worth, reaching Saginaw, Haltom City, White Settlement and the Benbrook and Forest Hill areas. Vehicle type and supervision are unconfirmed, and Tesla's Robotaxi page did not list Fort Worth yet (as of 2 Nov 2026).",
       "evidence": [
         "s-9063fbb6d2bb"
+      ],
+      "type": "manufacturer"
+    },
+    {
+      "id": "fort-worth-tesla-com-list",
+      "date": "2026-11-04",
+      "precision": "day",
+      "city": "fort_worth",
+      "vehicle": "not_city_specific",
+      "kind": "service",
+      "title": "tesla.com/robotaxi lists Fort Worth",
+      "summary": "Tesla's Robotaxi page now lists Fort Worth among cities where you can already hail a car, alongside Austin, Dallas, Houston, Miami, Orlando and Tampa (checked 4 Nov 2026). Tesla has still not said Cybercabs serve Fort Worth.",
+      "evidence": [
+        "s-ff84ae0cf870"
       ],
       "type": "manufacturer"
     }

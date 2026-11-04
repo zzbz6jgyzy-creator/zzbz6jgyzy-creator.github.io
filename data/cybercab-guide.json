@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewed": "2026-11-02",
+  "reviewed": "2026-11-04",
   "sources": [
     {
       "id": "drive-2024",
@@ -72,7 +72,16 @@
       "title": "NHTSA Audit Query AQ26002: Tesla Cybercab FMVSS Certification",
       "url": "https://dot.report/investigations/AQ26002",
       "date": "2026-09-03",
-      "checked": "2026-11-02"
+      "checked": "2026-11-04"
+    },
+    {
+      "id": "teslanorth-q8",
+      "outlet": "TeslaNorth",
+      "kind": "reporting",
+      "title": "Tesla Answers NHTSA's Cybercab Order but Keeps Question 8 Secret",
+      "url": "https://teslanorth.com/2026/11/03/tesla-cybercab-nhtsa-question-8-secret/",
+      "date": "2026-11-03",
+      "checked": "2026-11-04"
     },
     {
       "id": "nata-deadline",
@@ -213,14 +222,15 @@
       "label": "NHTSA audit of the certification",
       "value": "AQ26002",
       "unit": "open since 3 Sep",
-      "detail": "NHTSA opened an audit query into the process Tesla relied on to certify a car that lacks permanently attached manual controls. Tesla's answers to 21 requests were due 30 Oct, under an NHTSA extension. That deadline has passed, and as of 2 Nov 2026 no response or further extension has been made public; NHTSA lists the audit as open.",
+      "detail": "NHTSA opened an audit query into the process Tesla relied on to certify a car that lacks permanently attached manual controls. Tesla's answers to 21 requests were due 30 Oct, under an NHTSA extension. TeslaNorth reported on 3 Nov that Tesla has answered the special order by that deadline, citing an Oct 30 NHTSA record that remaining Question 8 documents carry a confidential-business-information request covering each document in its entirety. TeslaNorth says the Question 8 pages are not on the open docket, and that the same record does not publish answers to the other requests. NHTSA lists the audit as open, with no finding or recall (dot.report, last updated 4 Nov 2026).",
       "status": "disclosed",
-      "asOf": "2026-11-02",
+      "asOf": "2026-11-04",
       "source": "nhtsa-resume",
       "also": [
         "nhtsa-aq26002",
         "nhtsa-ext-memo",
-        "nata-deadline"
+        "nata-deadline",
+        "teslanorth-q8"
       ]
     },
     {
@@ -549,8 +559,16 @@
       "type": "regulator",
       "display": "30 Oct 2026",
       "title": "Tesla's NHTSA deadline passed",
-      "text": "The 30 Oct deadline has passed. As of 2 Nov 2026, no Tesla response and no further extension has been made public: NHTSA's AQ26002 file still holds only the opening resume, the Special Order and the 29 Sep extension memo, and NHTSA's investigations data lists the audit as open, with no finding or recall.",
+      "text": "The 30 Oct deadline has passed, per NHTSA's 29 Sep extension memo. NHTSA's AQ26002 record still lists the audit as open, with no finding or recall (dot.report, last updated 4 Nov 2026).",
       "source": "nhtsa-ext-memo"
+    },
+    {
+      "id": "nhtsa-q8-cbi",
+      "date": "2026-11-03",
+      "type": "report",
+      "title": "TeslaNorth: Question 8 documents kept confidential",
+      "text": "TeslaNorth reported that Tesla has answered NHTSA's Cybercab special order by the 30 Oct deadline, citing an Oct 30 NHTSA record that remaining Question 8 documents carry a confidential-business-information request covering each document in its entirety. TeslaNorth says the Question 8 pages are not on the open docket, and that the same record does not publish answers to the other requests. TeslaNorth notes NHTSA has not said in that filing whether it will grant or deny the confidentiality request, and has not found that Cybercab breaks any standard.",
+      "source": "teslanorth-q8"
     }
   ],
   "promises": [
@@ -653,12 +671,13 @@
     },
     {
       "q": "Is the Cybercab legal on US roads?",
-      "a": "Tesla told NHTSA it certified the cars as compliant with all applicable federal safety standards. NHTSA opened an audit query on 3 September to examine that certification, including where Tesla decided a standard did not apply. Tesla's answers to 21 requests were due 30 Oct, under an NHTSA extension. That deadline has passed, and as of 2 Nov 2026 no response or further extension has been made public; NHTSA lists the audit as open. An audit query is a fact-finding step, not a finding of non-compliance.",
+      "a": "Tesla told NHTSA it certified the cars as compliant with all applicable federal safety standards. NHTSA opened an audit query on 3 September to examine that certification, including where Tesla decided a standard did not apply. Tesla's answers to 21 requests were due 30 Oct, under an NHTSA extension. TeslaNorth reported on 3 Nov that Tesla has answered the special order by that deadline, citing an Oct 30 NHTSA record that remaining Question 8 documents carry a confidential-business-information request covering each document in its entirety. TeslaNorth says the Question 8 pages are not on the open docket, and that the same record does not publish answers to the other requests. NHTSA lists the audit as open, with no finding or recall (dot.report, last updated 4 Nov 2026). An audit query is a fact-finding step, not a finding of non-compliance.",
       "sources": [
         "nhtsa-resume",
         "nhtsa-aq26002",
         "nhtsa-ext-memo",
-        "nata-deadline"
+        "nata-deadline",
+        "teslanorth-q8"
       ]
     },
     {
@@ -678,6 +697,11 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-11-04",
+      "kind": "update",
+      "text": "TeslaNorth reported 3 Nov that an Oct 30 NHTSA record shows Tesla asked to keep every remaining Question 8 document confidential; the answers are not on the open docket. AQ26002 remains open with no finding or recall (dot.report, last updated 4 Nov 2026)."
+    },
     {
       "date": "2026-11-02",
       "kind": "update",
