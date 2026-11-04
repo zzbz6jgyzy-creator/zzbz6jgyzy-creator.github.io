@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-03T21:46:55Z",
+ "checked": "2026-11-04T02:17:46Z",
  "editorialUpdated": "2026-10-28T09:15:00+00:00",
  "presets": [
   {
@@ -181,28 +181,6 @@
     "az": 97,
     "coast": "east"
    }
-  },
-  {
-   "id": "starlink-15-27",
-   "title": "Falcon 9 Block 5 | Starlink Group 15-27",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-09-20T01:47:00Z",
-   "end": "",
-   "date": "2026-09-20",
-   "precision": "datetime",
-   "status": "done",
-   "note": "Launch Library 2 schedule. Launch targets can change.",
-   "where": "",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "d1471f9d-e9d0-4146-8e97-90863e48bfc8",
-   "windowStart": "2026-09-20T01:47:00Z",
-   "windowEnd": "2026-09-20T05:47:00Z",
-   "vehicle": "",
-   "providerStatus": "Launch Successful",
-   "pad": null
   },
   {
    "id": "ussf-385",
@@ -754,15 +732,15 @@
    }
   },
   {
-   "id": "ll2-76617033-4dc0-4448-b50c-e5b0d5a18539",
-   "title": "Falcon 9 Block 5 | USSF-xxx (\"R-6\")",
+   "id": "ussf-317",
+   "title": "Falcon 9 Block 5 | USSF-317",
    "group": "spacex",
    "category": "Launch",
    "start": "2026-11-13T04:23:00Z",
    "end": "",
    "date": "2026-11-13",
    "precision": "datetime",
-   "status": "TBC",
+   "status": "Go",
    "note": "Government/Top Secret · Low Earth Orbit",
    "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
    "href": "",
@@ -772,7 +750,7 @@
    "windowStart": "2026-11-13T04:23:00Z",
    "windowEnd": "2026-11-13T08:23:00Z",
    "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "To Be Confirmed",
+   "providerStatus": "Go for Launch",
    "pad": {
     "id": "slc4e",
     "name": "Vandenberg · SLC-4E",
