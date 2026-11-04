@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T13:12:17.208Z",
+  "generatedAt": "2026-11-04T13:41:49.962Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -272,7 +272,7 @@
       "topic": "promises",
       "tracker": "promises",
       "field": "status-counts",
-      "value": "Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4",
+      "value": "Delivered:6,Delivered late:11,In progress:15,Missed:27,Revised:5",
       "label": "Promise status mix",
       "at": "2026-11-04T00:00:00.000Z",
       "evidence": "historical",
