@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 03 Nov 2026 20:37:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 14:42:00 +0000</lastBuildDate>
+    <item>
+      <title>Texas elects a Democratic governor, and SpaceX's data center plans face a new risk</title>
+      <link>https://superchargeddaily.com/dispatch/texas-spacex-data-centers-risk.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/texas-spacex-data-centers-risk.html</guid>
+      <pubDate>Wed, 04 Nov 2026 14:42:00 +0000</pubDate>
+      <category>SpaceX AI</category>
+      <description>AP called Texas for Gina Hinojosa, who backs a data center moratorium. SpaceX aims for 3 GW by year-end and 13 GW next year, some of it in Texas (as of 4 Nov 2026).</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Starlink on airlines: what the numbers actually show</title>
       <link>https://superchargeddaily.com/dispatch/starlink-airlines-scorecard.html</link>
@@ -719,23 +728,6 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/roadster-falcon9-cold-gas-thrusters-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Powerwalls help set a 745 MW home-battery record</title>
-      <link>https://superchargeddaily.com/dispatch/powerwall-745mw-record.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/powerwall-745mw-record.html</guid>
-      <pubDate>Wed, 14 Oct 2026 15:27:10 +0000</pubDate>
-      <category>Tesla Energy</category>
-      <description>Tesla and Sunrun sent enough power to California's grid for every home in San Francisco and San Jose at peak.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/powerwall-745mw-record-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tracker: Promise status mix</title>
-      <link>https://superchargeddaily.com/promise-tracker.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/promise-tracker.html#changed-promises:status-counts-2026-11-04T00:00:00.000Z-Delivered:6-Delivered-la</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
-      <category>promises</category>
-      <description>Promise status mix changed from Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4 to Delivered:6,Delivered late:11,In progress:15,Missed:27,Revised:5.</description>
-    </item>
-    <item>
       <title>Tracker: Starlink McDowell snapshot</title>
       <link>https://superchargeddaily.com/starlink.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-02T00:45:00.000Z-11214</guid>
@@ -822,6 +814,14 @@
       <pubDate>Thu, 22 Oct 2026 20:53:15 +0000</pubDate>
       <category>software</category>
       <description>2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
+    </item>
+    <item>
+      <title>Tracker: 2026.38.5.5</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.5.5-2026-10-21T17:50:46.000Z-2</guid>
+      <pubDate>Wed, 21 Oct 2026 17:50:46 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.5.5 first appeared in the Teslascope sample with 2 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
   </channel>
 </rss>

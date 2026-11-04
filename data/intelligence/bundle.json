@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-04T13:41:49.962Z",
+  "generatedAt": "2026-11-04T14:42:33.631Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -286,21 +286,21 @@
   ],
   "changes": [
     {
-      "type": "changed",
-      "factId": "promises:status-counts",
-      "topic": "promises",
-      "tracker": "promises",
-      "field": "status-counts",
-      "previous": "Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4",
-      "next": "Delivered:6,Delivered late:11,In progress:15,Missed:27,Revised:5",
-      "at": "2026-11-04T00:00:00.000Z",
-      "evidence": "historical",
-      "source": "data/promises.json",
-      "sourceUrl": "",
-      "href": "/promise-tracker.html",
-      "summary": "Promise status mix changed from Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4 to Delivered:6,Delivered late:11,In progress:15,Missed:27,Revised:5.",
-      "title": "Promise status mix",
-      "id": "changed|promises:status-counts|2026-11-04T00:00:00.000Z|Delivered:6,Delivered late:11,In progress:15,Missed:27,Revised:5"
+      "type": "logged",
+      "factId": "dispatch:/dispatch/texas-spacex-data-centers-risk.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Texas elects a Democratic governor, and SpaceX's data center plans face a new risk",
+      "at": "2026-11-04T14:42:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/texas-spacex-data-centers-risk.html",
+      "href": "/dispatch/texas-spacex-data-centers-risk.html",
+      "summary": "AP called Texas for Gina Hinojosa, who backs a data center moratorium. SpaceX aims for 3 GW by year-end and 13 GW next year, some of it in Texas (as of 4 Nov 2026).",
+      "title": "Texas elects a Democratic governor, and SpaceX's data center plans face a new risk",
+      "id": "logged|dispatch:/dispatch/texas-spacex-data-centers-risk.html|2026-11-04T14:42:00.000Z|Texas elects a Democratic governor, and SpaceX's data center plans face a new risk"
     },
     {
       "type": "logged",
@@ -556,23 +556,6 @@
       "summary": "Ars Technica reports SpaceX told NASA's Moon lander companies it won't launch them, on top of ending Crew Dragon by 2030 and Falcon 9 sales after 2028.",
       "title": "SpaceX has told NASA's Moon lander companies it won't launch them, the latest step back from the agency that saved it in 2008",
       "id": "logged|dispatch:/dispatch/spacex-dragon-falcon-nasa-retreat.html|2026-10-29T20:36:00.000Z|SpaceX has told NASA's Moon lander companies it won't launch them, the latest step back from the agency that saved it in 2008"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-the-plan-complete-story.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla: The Plan. The complete story, 2003 to today",
-      "at": "2026-10-29T12:13:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-the-plan-complete-story.html",
-      "href": "/dispatch/tesla-the-plan-complete-story.html",
-      "summary": "The whole Tesla story, from the 2006 'secret' master plan to robotaxis, Optimus and the new Roadster, with our 12-minute film.",
-      "title": "Tesla: The Plan. The complete story, 2003 to today",
-      "id": "logged|dispatch:/dispatch/tesla-the-plan-complete-story.html|2026-10-29T12:13:00.000Z|Tesla: The Plan. The complete story, 2003 to today"
     },
     {
       "type": "changed",
@@ -1807,14 +1790,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1828,14 +1811,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-10-29T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-11-04T13:12:12.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1849,35 +1832,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-11-04T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-11-04T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-04T13:41:49.962Z",
+      "lastChecked": "2026-11-04T14:42:33.631Z",
       "lastVerified": "2026-11-04T08:09:14.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1886,87 +1869,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.663Z",
-      "finished": "2026-11-04T13:41:49.948Z"
+      "started": "2026-11-04T14:42:33.607Z",
+      "finished": "2026-11-04T14:42:33.613Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.948Z",
-      "finished": "2026-11-04T13:41:49.948Z"
+      "started": "2026-11-04T14:42:33.613Z",
+      "finished": "2026-11-04T14:42:33.614Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.948Z",
-      "finished": "2026-11-04T13:41:49.948Z"
+      "started": "2026-11-04T14:42:33.614Z",
+      "finished": "2026-11-04T14:42:33.614Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.948Z",
-      "finished": "2026-11-04T13:41:49.955Z"
+      "started": "2026-11-04T14:42:33.614Z",
+      "finished": "2026-11-04T14:42:33.624Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.955Z",
-      "finished": "2026-11-04T13:41:49.959Z"
+      "started": "2026-11-04T14:42:33.624Z",
+      "finished": "2026-11-04T14:42:33.627Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.959Z",
-      "finished": "2026-11-04T13:41:49.959Z"
+      "started": "2026-11-04T14:42:33.627Z",
+      "finished": "2026-11-04T14:42:33.628Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.960Z",
-      "finished": "2026-11-04T13:41:49.960Z"
+      "started": "2026-11-04T14:42:33.628Z",
+      "finished": "2026-11-04T14:42:33.628Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.960Z",
-      "finished": "2026-11-04T13:41:49.960Z"
+      "started": "2026-11-04T14:42:33.628Z",
+      "finished": "2026-11-04T14:42:33.628Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.960Z",
-      "finished": "2026-11-04T13:41:49.960Z"
+      "started": "2026-11-04T14:42:33.628Z",
+      "finished": "2026-11-04T14:42:33.628Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.960Z",
-      "finished": "2026-11-04T13:41:49.962Z"
+      "started": "2026-11-04T14:42:33.628Z",
+      "finished": "2026-11-04T14:42:33.630Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.962Z",
-      "finished": "2026-11-04T13:41:49.962Z"
+      "started": "2026-11-04T14:42:33.630Z",
+      "finished": "2026-11-04T14:42:33.630Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.962Z",
-      "finished": "2026-11-04T13:41:49.962Z"
+      "started": "2026-11-04T14:42:33.630Z",
+      "finished": "2026-11-04T14:42:33.630Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-04T13:41:49.962Z",
-      "finished": "2026-11-04T13:41:49.962Z"
+      "started": "2026-11-04T14:42:33.630Z",
+      "finished": "2026-11-04T14:42:33.630Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-04T13:41:49.962Z",
+    "generatedAt": "2026-11-04T14:42:33.631Z",
     "factCount": 20,
-    "changeCount": 87,
+    "changeCount": 86,
     "conflictCount": 2,
     "issues": [
       {
