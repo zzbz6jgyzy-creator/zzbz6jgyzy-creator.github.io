@@ -527,3 +527,7 @@ Known leftovers:
 - **Pre-existing failure:** `tests/fsd-global.test.mjs` fails the same way on `main` before these changes.
 
 
+
+## 2026-11-04 — Light-theme contrast and Roadster og:type
+- `see-the-launch.html`: added a scoped light-theme colour block in `launch-viewing.css` for pale text that stayed on white cards (stale-data note, place buttons, metrics, map footer, weather notes, verdict text, tags). axe is clean at 390 and 1440 in light and dark. Cache token bumped to `20261104-contrast`.
+- `roadster.html`: `og:type` changed from `article` to `website`; it is a showcase page with WebPage/VideoObject data, not a news article. The four explainers already carry Article/LearningResource JSON-LD (the audit's S3 finding was wrong for them).
