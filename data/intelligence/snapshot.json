@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T10:35:14.146Z",
+  "generatedAt": "2026-11-04T13:12:17.208Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -232,7 +232,7 @@
       "field": "tx-cybercab",
       "value": "573",
       "label": "Texas Cybercab registrations",
-      "at": "2026-11-03T00:00:00.000Z",
+      "at": "2026-11-04T00:00:00.000Z",
       "evidence": "independently_corroborated",
       "source": "Texas DMV list via fsddb.com",
       "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
@@ -274,7 +274,7 @@
       "field": "status-counts",
       "value": "Delivered:6,Delivered late:11,In progress:16,Missed:27,Revised:4",
       "label": "Promise status mix",
-      "at": "2026-10-28T00:00:00.000Z",
+      "at": "2026-11-04T00:00:00.000Z",
       "evidence": "historical",
       "source": "data/promises.json",
       "sourceUrl": "",
