@@ -68,7 +68,7 @@ window.EXPLAINERS = {
     facts: [
       { k: "US HW4", v: "v14.3.12 on 2026.38.5 — same notes as 14.3.11, early US wave since 10 Oct. Collision Evasion on." },
       { k: "US HW3", v: "v14.3 Lite. Parking, unparking, start-from-park. Distilled from HW4. No Collision Evasion." },
-      { k: "Europe", v: "v14.2.2.6 on 2026.33.100. Assisted Driving Basic, €99 a month. Same week as US 14.3.11, still on 14.2." },
+      { k: "Europe", v: "Build 2026.33.100 (FSD version not independently established). Assisted Driving Basic, €99 a month." },
     ],
     stacks: [
       {

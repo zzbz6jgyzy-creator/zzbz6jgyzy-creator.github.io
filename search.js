@@ -268,6 +268,11 @@
     } else {
       hits.innerHTML = res.items.map((item, i) => hitHtml(item, toks, i, prefix)).join("");
     }
+    // The search page lists results as plain links (no combobox), so they are not options and the titles sit under the page h1.
+    if (hits.getAttribute("role") !== "listbox") {
+      hits.querySelectorAll('[role="option"]').forEach((a) => a.removeAttribute("role"));
+      hits.querySelectorAll(".sd-find-hit h3").forEach((h) => { const h2 = document.createElement("h2"); h2.innerHTML = h.innerHTML; h.replaceWith(h2); });
+    }
     return res.n;
   }
 

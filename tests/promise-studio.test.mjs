@@ -26,7 +26,7 @@ test('the dated source retains all 64 claim records with independent company and
 
 test('status totals describe claims, not distinct product deliveries',()=>{
   const counts=M.counts(d);
-  assert.deepEqual(counts,{'Delivered':6,'Delivered late':11,'In progress':16,'Missed':27,'Revised':4});
+  assert.deepEqual(counts,{'Delivered':6,'Delivered late':11,'In progress':15,'Missed':27,'Revised':5});
   assert.equal(Object.values(counts).reduce((n,x)=>n+x,0),64);
   const completed=d.records.filter(p=>p.status==='Delivered'||p.status==='Delivered late');
   assert.equal(completed.length,17);
@@ -141,7 +141,7 @@ test('upcoming cards exclude elapsed windows but do not relabel those source rec
   assert.ok(rows.every(p=>p.status==='In progress'&&M.target(p,d).end>now));
   for(let i=1;i<rows.length;i++)assert.ok(M.target(rows[i],d).end>=M.target(rows[i-1],d).end);
   assert.equal(M.upcoming(d,Date.UTC(2100,0,1)).length,0);
-  assert.equal(M.counts(d)['In progress'],16);
+  assert.equal(M.counts(d)['In progress'],15);
 });
 
 test('share links whitelist descriptive filters and never contain local watchlists or coordinates',()=>{
