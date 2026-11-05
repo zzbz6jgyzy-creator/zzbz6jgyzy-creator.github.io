@@ -537,3 +537,10 @@ Known leftovers:
 - 26 articles whose `<title>` was 72 to 137 characters (cut off in search results) now have a hand-written title of 60 characters or less. Titles only compress the existing headline; no new claims.
 - `tests/test_seo_audit.py` checks each `seoTitle` reaches the `<title>` tag and stays within 70 characters.
 - For a new article with a long headline, add `"seoTitle"` when the `<title>` would exceed about 65 characters.
+
+## 2026-11-05 — Re-encoded the two videos over the Cloudflare 25 MiB limit
+- `assets/video/tesla-the-plan-720.mp4` (79.6 MiB, 1280x720) is now `assets/video/tesla-the-plan-540.mp4` (19.7 MiB, 960x540, H.264 CRF 33, AAC 48 kbps). Renamed because it is no longer 720p, which also avoids stale cached copies.
+- `assets/dispatch/raptor-film-720p.mp4` (27.9 MiB) is now 13.0 MiB, still 1280x720 (H.264 CRF 31, AAC 64 kbps). Cache token bumped to `?v=3`.
+- Durations unchanged (12:19 and 3:08). Download-link sizes on `dispatch/tesla-the-plan-complete-story.html` and `dispatch/raptor-engines-explained.html` updated.
+- `tests/test_astro_scaffold.py` passes again; it was blocked only by these two files.
+- Originals remain in git history. Re-encode recipe: `ffmpeg -i <src> -vf scale=960:540 -c:v libx264 -preset slow -crf 33 -pix_fmt yuv420p -c:a aac -b:a 48k -movflags +faststart <out>`.
