@@ -15,7 +15,7 @@ window.STARSHIP = {
       "Working window is now NET 12 November on the FAA’s 29 Oct 2026 air-traffic planning slides (moved from 8 Nov) — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. Ship 42 did a single-engine deorbit-burn demo at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration static fire on 27 Oct 2026, about 5:46pm ET (2:46pm PT), as reported by NASASpaceflight and logged by Next Spaceflight. SpaceX confirmed on 28 Oct 2026 that Ship 42’s static fires are complete. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date. The story is still the first real attempt to catch a Ship.",
     objectives: [
       "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, which Musk confirmed on the 20 Oct earnings call",
-      "Fly and recover Super Heavy B22 (catch or controlled splashdown)",
+      "Fly Super Heavy B22 and try to catch it on the tower as well — SpaceX said on the 20 Oct call it will attempt both catches; the FAA licence is not issued yet",
       "Prove Block 3 after Flight 14’s first orbital Starlink V3 deploy",
     ],
     coverage: [
@@ -85,11 +85,11 @@ window.STARSHIP = {
       source: { outlet: "NASASpaceflight", url: "https://www.nasaspaceflight.com/" },
     },
     {
-      date: "2026-10-11",
+      date: "2026-10-10",
       mission: 15,
       confirmed: false,
       change:
-        "Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page.",
+        "Estimate: at the X Takeover event on 10 Oct 2026, Elon Musk said Flight 15 was about 4 to 6 weeks away (7 to 21 Nov counted from that day) and guessed a launch a little before US Thanksgiving on 26 Nov. He said Flight 15 will try the first ship catch, and that he did not know the exact date. SpaceX has not published a mission page.",
       source: { outlet: "Supercharged Daily dispatch", url: "/dispatch/starship-f15-ship-catch.html" },
     },
     {
