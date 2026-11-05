@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 04 Nov 2026 14:42:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 09:40:00 +0000</lastBuildDate>
+    <item>
+      <title>Dutch regulator approves Tesla's cut to the FSD speed margin, from +50% to +10%, and a new name</title>
+      <link>https://superchargeddaily.com/dispatch/rdw-tesla-assisted-driving-10-percent.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/rdw-tesla-assisted-driving-10-percent.html</guid>
+      <pubDate>Thu, 05 Nov 2026 09:40:00 +0000</pubDate>
+      <category>FSD</category>
+      <description>RDW approved Tesla's requested changes to FSD Supervised: a new name, Tesla Assisted Driving, and a driver-set speed margin capped at +10% (down from +50%). No OTA date yet; EU-wide approval still pending (as of 5 Nov 2026).</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Texas elects a Democratic governor, and SpaceX's data center plans face a new risk</title>
       <link>https://superchargeddaily.com/dispatch/texas-spacex-data-centers-risk.html</link>
@@ -717,15 +726,6 @@
       <category>Analysis</category>
       <description>Registered isn’t running. The S-curve, the NHTSA deadline and what to watch next.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/cybercab-austin-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Roadster thrusters vs Falcon 9</title>
-      <link>https://superchargeddaily.com/dispatch/roadster-falcon9-cold-gas-thrusters.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/roadster-falcon9-cold-gas-thrusters.html</guid>
-      <pubDate>Wed, 14 Oct 2026 15:58:44 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>How cold gas flips a booster, and what it could do on a car.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/roadster-falcon9-cold-gas-thrusters-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.12</title>

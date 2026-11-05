@@ -167,11 +167,20 @@
     "count": 7
   },
   "europe": {
-    "updated": "2026-10-29",
+    "updated": "2026-11-05",
     "listed": 9,
     "recognised": 10
   },
   "stories": [
+    {
+      "url": "/dispatch/rdw-tesla-assisted-driving-10-percent.html",
+      "image": "/assets/og-v2.jpg",
+      "title": "Dutch regulator approves Tesla's cut to the FSD speed margin, from +50% to +10%, and a new name",
+      "summary": "RDW approved Tesla's requested changes to FSD Supervised: a new name, Tesla Assisted Driving, and a driver-set speed margin capped at +10% (down from +50%). No OTA date yet; EU-wide approval still pending (as of 5 Nov 2026).",
+      "tag": "FSD",
+      "date": "2026-11-05T09:40:00Z",
+      "thumb": "/assets/og-v2-480w.webp"
+    },
     {
       "url": "/dispatch/musk-pay-spacex-tesla-merger-control.html",
       "image": "/assets/dispatch/musk-royal-society-2018.jpg",
@@ -216,16 +225,7 @@
       "tag": "Roadster",
       "date": "2026-10-29T10:09:00Z",
       "thumb": "/assets/og-v2-480w.webp"
-    },
-    {
-      "url": "/dispatch/cybercab-outnumbers-model-y.html",
-      "image": "/assets/dispatch/cybercab-outnumbers-model-y-line.jpg",
-      "title": "Cybercabs now outnumber Model Ys in Tesla’s Texas robotaxi fleet",
-      "summary": "Texas DMV records list 573 Cybercabs and 507 Model Ys under Tesla Robotaxi LLC. Tesla’s fleet is now 89% the size of Waymo’s in the state.",
-      "tag": "Robotaxi",
-      "date": "2026-10-28T14:45:00Z",
-      "thumb": "/assets/dispatch/cybercab-outnumbers-model-y-line-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-04T14:42:00Z"
+  "articlesUpdated": "2026-11-05T09:40:00Z"
 }
