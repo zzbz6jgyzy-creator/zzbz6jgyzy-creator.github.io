@@ -558,3 +558,7 @@ Known leftovers:
 - TeslaFi is now fetched when the saved fetch time is older than about 105 minutes (`--force` for manual runs) instead of only on even-hour runs in the first 35 minutes, which GitHub's irregular scheduling rarely hit. `updates-snapshot.yml` updated to match.
 - Refreshed `updates-live.json`, `data/updates-extras.json`, `updates.html` and the derived intelligence files: Teslascope 3,289 cars and TeslaFi 12,336 cars, both 5 Nov 2026 about 21:16 UTC.
 - Known limit: GitHub runs the "every 30 minutes" schedule only every 4 to 8 hours, so the page can lag by that much. A trigger from outside GitHub would fix it.
+
+## 2026-11-05 — Starship Flight 15 now NET 13 Nov
+- Flight 15 moved from NET 12 Nov to **NET 13 Nov** across the Starship tracker, calendar, launch observatory, homepage tile, countdowns, live card, promise tracker, explainers, JSON-LD and feed. The new date is reported by community trackers (the Starship Flight 15 wiki, citing an FAA CADENA/COMPASS planning slide dated 5 Nov, and Wikipedia's infobox). We have not opened the slide ourselves, so it is labelled "reported", not confirmed. Still no FAA licence and no SpaceX date. The two Dispatch notes added earlier today carry the new date.
+- `tests/calendar-studio-browser.py` no longer hard-codes the Flight 15 day; it reads it from `data/events.json`.

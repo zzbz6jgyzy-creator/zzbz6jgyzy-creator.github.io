@@ -4,7 +4,7 @@ window.STARSHIP = {
     "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
   next: {
     flight: 15,
-    start: "2026-11-12T12:00:00Z",
+    start: "2026-11-13T12:00:00Z",
     precision: "day",
     pad: "Starbase · OLP-2",
     booster: "B22",
@@ -12,7 +12,7 @@ window.STARSHIP = {
     block: "Block 3",
     headline: "First serious Ship catch",
     tested:
-      "Working window is now NET 12 November on the FAA’s 29 Oct 2026 air-traffic planning slides (moved from 8 Nov) — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. Ship 42 did a single-engine deorbit-burn demo at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration static fire on 27 Oct 2026, about 5:46pm ET (2:46pm PT), as reported by NASASpaceflight and logged by Next Spaceflight. SpaceX confirmed on 28 Oct 2026 that Ship 42’s static fires are complete. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date. The story is still the first real attempt to catch a Ship.",
+      "Working window is now NET 13 November on the FAA’s 5 Nov 2026 air-traffic planning slides, as reported by community trackers (moved from 12 Nov on the 29 Oct slides, and 8 Nov before that) — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. Ship 42 did a single-engine deorbit-burn demo at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration static fire on 27 Oct 2026, about 5:46pm ET (2:46pm PT), as reported by NASASpaceflight and logged by Next Spaceflight. SpaceX confirmed on 28 Oct 2026 that Ship 42’s static fires are complete. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date. The story is still the first real attempt to catch a Ship.",
     objectives: [
       "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, which Musk confirmed on the 20 Oct earnings call",
       "Fly Super Heavy B22 and try to catch it on the tower as well — SpaceX said on the 20 Oct call it will attempt both catches; the FAA licence is not issued yet",
@@ -28,6 +28,14 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-11-05",
+      mission: 15,
+      confirmed: false,
+      change:
+        "Community trackers report that the FAA’s CADENA/COMPASS air-traffic planning slide dated 5 Nov 2026 lists Starship Flight 15 on 13 Nov, one day later than the 12 Nov on the 29 Oct slides. We have not opened the slide ourselves. Still no FAA Flight 15 licence and no SpaceX date.",
+      source: { outlet: "Starship Flight 15 wiki, citing the FAA CADENA/COMPASS slide of 5 Nov 2026", url: "https://starship-spacex.fandom.com/wiki/Starship_Flight_15" },
+    },
     {
       date: "2026-10-29",
       mission: 15,
