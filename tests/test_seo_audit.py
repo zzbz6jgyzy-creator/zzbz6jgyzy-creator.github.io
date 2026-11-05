@@ -215,6 +215,19 @@ class Site(unittest.TestCase):
         self.assertIn("ns-card", news)
         self.assertGreater(news.count('class="ns-card"'), 5)
 
+    def test_article_seo_titles_reach_the_title_tag(self):
+        import html as htmllib
+        data = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))["articles"]
+        custom = [a for a in data if a.get("seoTitle")]
+        self.assertGreater(len(custom), 0)
+        for a in custom:
+            src = (ROOT / a["url"].lstrip("/")).read_text(encoding="utf-8")
+            title = htmllib.unescape(re.search(r"<title>(.*?)</title>", src, re.S).group(1))
+            self.assertTrue(title.startswith(a["seoTitle"]), (a["url"], title))
+            self.assertLessEqual(len(title), 70, (a["url"], title))
+            # The visible headline and share cards keep the full headline.
+            self.assertIn(htmllib.escape(a["title"], quote=False).replace("'", "&#x27;")[:30], src)
+
     def test_json_ld_parses(self):
         bad = []
         for path in list((ROOT).glob("*.html")) + list((ROOT / "dispatch").glob("*.html")):

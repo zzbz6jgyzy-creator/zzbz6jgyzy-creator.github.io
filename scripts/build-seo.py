@@ -199,6 +199,11 @@ def articles():
         # <title> keeps the " | Supercharged Daily" suffix only when a whole clause fits ~60 chars.
         # Share cards and JSON-LD get the full headline (or a whole clause), never half a sentence.
         page_title = seo_lib.headline_title(title, 60)
+        # Optional hand-written search title (data/articles.json "seoTitle"): used verbatim, with the brand
+        # suffix only when the whole title stays inside the 70-character band. Social and JSON-LD keep the headline.
+        if a.get("seoTitle"):
+            seo_text = re.sub(r"\s+", " ", a["seoTitle"]).strip()
+            page_title = seo_text + seo_lib.SUFFIX if len(seo_text) + len(seo_lib.SUFFIX) <= 70 else seo_text
         social_title = seo_lib.social_headline(title, 110)
         src = seo_lib.set_title(src, page_title, social_title)
         if desc:
