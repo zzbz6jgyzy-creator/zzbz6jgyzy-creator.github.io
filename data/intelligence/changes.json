@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05T10:45:08.875Z",
+  "updated": "2026-11-05T12:29:37.948Z",
   "changes": [
     {
       "type": "logged",
@@ -943,15 +943,15 @@
       "tracker": "starship",
       "field": "schedule",
       "previous": "",
-      "next": "Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page.",
-      "at": "2026-10-11T00:00:00.000Z",
+      "next": "Estimate: at the X Takeover event on 10 Oct 2026, Elon Musk said Flight 15 was about 4 to 6 weeks away (7 to 21 Nov counted from that day) and guessed a launch a little before US Thanksgiving on 26 Nov. He said Flight 15 will try the first ship catch, and that he did not know the exact date. SpaceX has not published a mission page.",
+      "at": "2026-10-10T00:00:00.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Supercharged Daily dispatch",
       "sourceUrl": "/dispatch/starship-f15-ship-catch.html",
       "href": "/starship.html#schedule",
-      "summary": "Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page.",
+      "summary": "Estimate: at the X Takeover event on 10 Oct 2026, Elon Musk said Flight 15 was about 4 to 6 weeks away (7 to 21 Nov counted from that day) and guessed a launch a little before US Thanksgiving on 26 Nov. He said Flight 15 will try the first ship catch, and that he did not know the exact date. SpaceX has not published a mission page.",
       "title": "Flight 15 change",
-      "id": "logged|starship:schedule|2026-10-11T00:00:00.000Z|Estimate: Elon Musk said Flight 15 is 4 to 6 weeks away (roughly late November 2026, a little before US Thanksgiving) and will be the first ship catch attempt. SpaceX has not published a mission page."
+      "id": "logged|starship:schedule|2026-10-10T00:00:00.000Z|Estimate: at the X Takeover event on 10 Oct 2026, Elon Musk said Flight 15 was about 4 to 6 weeks away (7 to 21 Nov counted from that day) and guessed a launch a little before US Thanksgiving on 26 Nov. He said Flight 15 will try the first ship catch, and that he did not know the exact date. SpaceX has not published a mission page."
     },
     {
       "type": "logged",
