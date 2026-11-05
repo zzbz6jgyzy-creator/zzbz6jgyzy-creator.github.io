@@ -544,3 +544,7 @@ Known leftovers:
 - Durations unchanged (12:19 and 3:08). Download-link sizes on `dispatch/tesla-the-plan-complete-story.html` and `dispatch/raptor-engines-explained.html` updated.
 - `tests/test_astro_scaffold.py` passes again; it was blocked only by these two files.
 - Originals remain in git history. Re-encode recipe: `ffmpeg -i <src> -vf scale=960:540 -c:v libx264 -preset slow -crf 33 -pix_fmt yuv420p -c:a aac -b:a 48k -movflags +faststart <out>`.
+
+## 2026-11-05 — Facts re-check
+- `docs/audit-2026-11-05.md`: live trackers, launch dates, counts and the two newest articles re-checked against sources. No wrong headline number found.
+- Fixed: Starship schedule entry for Musk's "4 to 6 weeks" (event date 10 Oct, both his figures stated), Flight 15 booster objective wording, visible "Update, 5 Nov" on two articles that still gave NET 8 Nov, Norway context from Statens vegvesen (29 Oct), and the FSD Europe test that main failed after the 09:40 RDW publish (hardware condition now needs an authority source).
