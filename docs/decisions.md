@@ -246,3 +246,9 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 ## Open: review ratings
 Reviews deliberately replaced unexplained numeric scores with recommendations (`docs/reviews-studio.md`). Google's review rich
 results require a rating. Adding one is an editorial decision for the owner, not a technical one; until then no `Review` schema.
+
+## 2026-11-05 · A page-flip book edition of "Tesla: The Plan", as a hidden preview
+- **Decision:** build `tesla-the-plan-book.html` (noindex, unlinked) with StPageFlip 2.0.7 vendored under `vendor/page-flip/`, paginating the article text in the browser. Not wired into CI or the sitemap. The standard article stays the canonical, accessible version.
+- **Why:** the owner asked to test a book format for the long read. Research on 5 Nov 2026: MIT, no dependencies, 904 stars, 43 open issues, last npm release April 2021, a 2024 issue asking for it to be marked abandoned, and 2026 issues (destroy() leaves the render loop running; HTML-mode boundary bugs). It still works, so it is used as asked, self-hosted and pinned, and designed around the known problems (no destroy(); reload on layout change; text-only buttons because its click check reads the target's own tag).
+- **Rejected:** turn.js and flip libraries with licence or maintenance problems were not evaluated further because the owner named StPageFlip. CSS-columns pagination (one clone of the whole article per page) was rejected: about 45 copies of 60 KB of HTML and the same text duplicated for screen readers.
+- **Revisit before going public:** accessibility, find-in-page, text size, and whether an unmaintained library is acceptable on a page we want indexed.
