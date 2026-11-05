@@ -1,16 +1,16 @@
 {
-  "updated": "2026-11-05T21:57:12Z",
+  "updated": "2026-11-05T23:42:36Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fleet": 3289,
+  "fleet": 3288,
   "latest": "2026.38.5.12",
   "versions": [
     {
       "id": "2026.38.5.12",
       "date": "2026-11-04",
-      "count": 34,
-      "fleet": 3289,
-      "percent": 1.0,
+      "count": 59,
+      "fleet": 3288,
+      "percent": 1.8,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -29,23 +29,23 @@
         },
         {
           "title": "Apple Music",
-          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
         },
         {
-          "title": "Dynamic Headlight Leveling",
-          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
         },
         {
-          "title": "Emergency Drive Away",
-          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
         },
         {
-          "title": "Halloween Mode",
-          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
+          "title": "Caraoke with Scoring",
+          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
         },
         {
-          "title": "Powershare with Powerwall",
-          "text": "Powershare Home Backup with Powerwall keeps your home powered longer during an outage. When parked and plugged in, your vehicle now backs up your home alongside your Powerwall, down to the discharge limit you set. Requi\u2026"
+          "title": "Custom Wraps",
+          "text": "Use the Mobile App to upload custom wrap designs from images on your phone and send directly to your Tesla. Go to Creations > Wrap > Upload. Requires Mobile App v4.59.0 or later. To access in car, go to App Launcher > T\u2026"
         }
       ],
       "countries": [
@@ -53,18 +53,18 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 32,
-        "CA": 2
+        "US": 56,
+        "CA": 3
       },
-      "pending": 69,
+      "pending": 141,
       "firstSeen": "2026-11-04T21:22:58Z",
-      "lastSeen": "2026-11-05T21:51:48Z"
+      "lastSeen": "2026-11-05T23:35:59Z"
     },
     {
       "id": "2026.39.6",
       "date": "2026-10-29",
       "count": 39,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 1.2,
       "fsd": null,
       "fsdHw3": null,
@@ -118,8 +118,8 @@
     {
       "id": "2026.38.6.1",
       "date": "2026-10-29",
-      "count": 121,
-      "fleet": 3289,
+      "count": 122,
+      "fleet": 3288,
       "percent": 3.7,
       "fsd": null,
       "fsdHw3": null,
@@ -163,19 +163,19 @@
         "NZ"
       ],
       "countryCounts": {
-        "AU": 113,
+        "AU": 114,
         "NZ": 8
       },
-      "pending": 24,
+      "pending": 23,
       "firstSeen": "2026-10-29T19:53:31Z",
-      "lastSeen": "2026-11-05T19:45:06Z"
+      "lastSeen": "2026-11-05T23:07:12Z"
     },
     {
       "id": "2026.38.6",
       "date": "2026-10-29",
-      "count": 193,
-      "fleet": 3289,
-      "percent": 5.9,
+      "count": 205,
+      "fleet": 3288,
+      "percent": 6.2,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -218,10 +218,10 @@
         "GB",
         "DE",
         "DK",
+        "NL",
         "CH",
         "FR",
         "CA",
-        "NL",
         "IT",
         "BE",
         "TW",
@@ -246,14 +246,14 @@
         "IL"
       ],
       "countryCounts": {
-        "US": 68,
-        "GB": 28,
-        "DE": 10,
+        "US": 71,
+        "GB": 33,
+        "DE": 13,
         "DK": 8,
+        "NL": 8,
         "CH": 8,
         "FR": 8,
         "CA": 7,
-        "NL": 7,
         "IT": 7,
         "BE": 5,
         "TW": 3,
@@ -277,15 +277,15 @@
         "AE": 1,
         "IL": 1
       },
-      "pending": 120,
+      "pending": 139,
       "firstSeen": "2026-10-29T19:08:27Z",
-      "lastSeen": "2026-11-05T21:44:04Z"
+      "lastSeen": "2026-11-05T23:39:32Z"
     },
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
       "count": 150,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 4.6,
       "fsd": null,
       "fsdHw3": null,
@@ -339,8 +339,8 @@
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 993,
-      "fleet": 3289,
+      "count": 994,
+      "fleet": 3288,
       "percent": 30.2,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -386,20 +386,20 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 928,
+        "US": 929,
         "CA": 59,
         "MX": 4,
         "PR": 2
       },
       "pending": 39,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-11-05T03:03:22Z"
+      "lastSeen": "2026-11-05T21:56:11Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
       "count": 360,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 10.9,
       "fsd": null,
       "fsdHw3": null,
@@ -530,7 +530,7 @@
         "MA": 1,
         "SK": 1
       },
-      "pending": 8,
+      "pending": 7,
       "firstSeen": "2026-10-22T20:10:42Z",
       "lastSeen": "2026-11-05T11:40:05Z"
     },
@@ -538,7 +538,7 @@
       "id": "2026.38.5.5",
       "date": "2026-10-21",
       "count": 136,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 4.1,
       "fsd": null,
       "fsdHw3": null,
@@ -593,7 +593,7 @@
       "id": "2026.38.5.10",
       "date": "2026-10-20",
       "count": 93,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 2.8,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -650,7 +650,7 @@
       "id": "2026.38.5.1",
       "date": "2026-10-13",
       "count": 1030,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 31.3,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -711,7 +711,7 @@
       "id": "2026.38.5",
       "date": "2026-10-10",
       "count": 136,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 4.1,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -770,7 +770,7 @@
       "id": "2026.38.3.1",
       "date": "2026-10-08",
       "count": 327,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 9.9,
       "fsd": null,
       "fsdHw3": null,
@@ -901,7 +901,7 @@
       "id": "2026.33.5",
       "date": "2026-10-07",
       "count": 102,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 3.1,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -956,7 +956,7 @@
       "id": "2026.38.3",
       "date": "2026-10-06",
       "count": 7,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": null,
@@ -1015,7 +1015,7 @@
       "id": "2026.33.100",
       "date": "2026-10-06",
       "count": 42,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 1.3,
       "fsd": null,
       "fsdHw3": null,
@@ -1070,7 +1070,7 @@
       "id": "2026.38",
       "date": "2026-09-30",
       "count": 69,
-      "fleet": 3289,
+      "fleet": 3288,
       "percent": 2.1,
       "fsd": null,
       "fsdHw3": null,
