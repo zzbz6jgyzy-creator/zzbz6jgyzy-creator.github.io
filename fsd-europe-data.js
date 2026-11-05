@@ -1,8 +1,8 @@
 // Generated from data/fsd-europe.json by scripts/build-fsd-europe.mjs. Edit the JSON source.
 window.FSD_EUROPE = {
   "schemaVersion": 1,
-  "updated": "2026-10-29",
-  "revision": "2026-10-29.1",
+  "updated": "2026-11-05",
+  "revision": "2026-11-05.1",
   "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
   "thresholds": {
     "euPopulationM": 448.9,
@@ -41,11 +41,12 @@ window.FSD_EUROPE = {
         "note": "First customer installation date not yet confirmed."
       },
       "conditions": {
-        "hardware": null,
+        "hardware": "HW4+",
         "software": null,
         "model": null,
-        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "note": "RDW’s 3 Nov 2026 notice applies the approved changes to HW4 and newer. The driver-set speed margin is capped at +10% (down from +50%) and resets to 0% at each start, with other speed-related functions off by default. Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
         "evidence": [
+          "s-01557dac7f9c",
           "s-c55a052f27a6"
         ]
       },
@@ -60,6 +61,7 @@ window.FSD_EUROPE = {
         "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
       },
       "sourceIds": [
+        "s-01557dac7f9c",
         "s-c55a052f27a6",
         "s-8bd1015b0ba9",
         "s-ceb8f4f6d674",
@@ -74,6 +76,10 @@ window.FSD_EUROPE = {
       "regulator": "RDW",
       "note": "Tesla lists customer availability; eligibility depends on the vehicle and region.",
       "sources": [
+        {
+          "label": "RDW notice approving Tesla Assisted Driving changes, 3 Nov 2026",
+          "url": "https://www.rdw.nl/over-rdw/nieuws/2026/rdw-keurt-wijzigingen-aan-tesla-rijhulpsysteem-goed"
+        },
         {
           "label": "Tesla Assisted Driving availability and conditions",
           "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
@@ -2330,6 +2336,14 @@ window.FSD_EUROPE = {
   ],
   "sources": [
     {
+      "id": "s-01557dac7f9c",
+      "url": "https://www.rdw.nl/over-rdw/nieuws/2026/rdw-keurt-wijzigingen-aan-tesla-rijhulpsysteem-goed",
+      "label": "RDW notice on Tesla Assisted Driving changes, 3 Nov 2026",
+      "type": "authority",
+      "checkedAt": "2026-11-05",
+      "publishedAt": "2026-11-03"
+    },
+    {
       "id": "s-it-salvini-20261029",
       "url": "https://x.com/matteosalvinimi/status/2115720560994836862",
       "label": "Italian transport minister Matteo Salvini on X, 29 Oct",
@@ -2988,6 +3002,19 @@ window.FSD_EUROPE = {
       ],
       "sourceType": "authority",
       "reviewedAt": null
+    },
+    {
+      "id": "event-24",
+      "date": "2026-11-03",
+      "precision": "day",
+      "country": "NL",
+      "type": "terminology",
+      "summary": "RDW approves Tesla-requested changes: rename to Tesla Assisted Driving (TAD) on HW4+, speed margin capped at +10% (from +50%), resets to 0% at each start.",
+      "evidence": [
+        "s-01557dac7f9c"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": "2026-11-05"
     }
   ],
   "changelog": [
@@ -3190,6 +3217,14 @@ window.FSD_EUROPE = {
       "text": "RDW grants provisional EU type approval (Art. 39, Reg. (EU) 2018/858).",
       "source": "https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands",
       "evidence": "reported_unconfirmed"
+    },
+    {
+      "date": "2026-11-03",
+      "code": "NL",
+      "type": "terminology",
+      "text": "RDW approves rename to Tesla Assisted Driving and a +10% speed-margin cap (from +50%), with a 0% default at each start.",
+      "source": "https://www.rdw.nl/over-rdw/nieuws/2026/rdw-keurt-wijzigingen-aan-tesla-rijhulpsysteem-goed",
+      "evidence": "authority"
     }
   ],
   "process": {
