@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-05T13:25:42.138Z",
+  "updated": "2026-11-05T14:44:26.468Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/musk-midterms-tesla-spacex-selloff.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger",
+      "at": "2026-11-05T14:44:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/musk-midterms-tesla-spacex-selloff.html",
+      "href": "/dispatch/musk-midterms-tesla-spacex-selloff.html",
+      "summary": "SpaceX closed -3.8% and Tesla -3.3% on 4 Nov after Democrats won Congress. No merger terms yet; the new Congress seats on 3 Jan 2027 (as of 5 Nov 2026).",
+      "title": "Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger",
+      "id": "logged|dispatch:/dispatch/musk-midterms-tesla-spacex-selloff.html|2026-11-05T14:44:00.000Z|Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/rdw-tesla-assisted-driving-10-percent.html",
@@ -238,23 +255,6 @@
       "summary": "Starlink is moving some US Residential customers to local prices reviewed roughly quarterly. Every price checked so far is 10% or 20% above or below list.",
       "title": "Starlink’s new “dynamic pricing” moves in 10% and 20% steps, so the same Max plan now costs $104 to $156 depending on the town",
       "id": "logged|dispatch:/dispatch/starlink-dynamic-pricing-map.html|2026-10-30T08:41:00.000Z|Starlink’s new “dynamic pricing” moves in 10% and 20% steps, so the same Max plan now costs $104 to $156 depending on the town"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-bot-600k-dau-no-free-tier.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier",
-      "at": "2026-10-30T02:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-bot-600k-dau-no-free-tier.html",
-      "href": "/dispatch/grok-bot-600k-dau-no-free-tier.html",
-      "summary": "Similarweb estimates Grok Bot's daily users grew 16 days straight to about 600,000 on iPhone and Android as of 26 Oct. Musk notes there's no free tier.",
-      "title": "Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier",
-      "id": "logged|dispatch:/dispatch/grok-bot-600k-dau-no-free-tier.html|2026-10-30T02:40:00.000Z|Grok Bot passes 600,000 daily users on phones, and Musk points out there's no free tier"
     },
     {
       "type": "appeared",
