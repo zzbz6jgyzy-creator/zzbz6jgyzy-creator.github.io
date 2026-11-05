@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-10-28T09:15:00+00:00",
- "launchChecked": "2026-11-05T16:27:06Z",
+ "launchChecked": "2026-11-05T22:40:02Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -795,7 +795,7 @@
    "start": "2026-12-31T00:00:00Z",
    "end": "",
    "date": "2026-12-31",
-   "precision": "quarter",
+   "precision": "month",
    "status": "TBD",
    "note": "Earth Science · Low Earth Orbit",
    "where": "Unknown Pad · Cape Canaveral SFS, FL, USA",
@@ -816,7 +816,7 @@
    "start": "2026-12-31T00:00:00Z",
    "end": "",
    "date": "2026-12-31",
-   "precision": "half",
+   "precision": "month",
    "status": "TBD",
    "note": "Communications · Low Earth Orbit",
    "where": "Space Launch Complex 40 · Cape Canaveral SFS, FL, USA",
