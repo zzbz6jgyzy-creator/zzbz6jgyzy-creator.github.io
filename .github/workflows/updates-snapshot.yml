@@ -23,12 +23,13 @@ jobs:
       - name: Pull Teslascope software list
         run: python3 scripts/snapshot-updates.py --out updates-live.json
       - name: Pull TeslaFi shares + Teslascope recent feed
-        # TeslaFi every 2 hours (polite), Teslascope feed every run. Keeps old data if a source blocks us.
+        # The script fetches TeslaFi at most every ~105 minutes, judged from the saved fetch time (scheduled runs arrive
+        # at irregular intervals, so the clock is no guide). A manual run forces it. Keeps old data if a source fails.
         run: |
-          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || { [ $(( 10#$(date -u +%H) % 2 )) -eq 0 ] && [ $(( 10#$(date -u +%M) )) -lt 35 ]; }; then
-            python3 scripts/snapshot-extras.py || true
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            python3 scripts/snapshot-extras.py --force || true
           else
-            python3 scripts/snapshot-extras.py --skip-teslafi || true
+            python3 scripts/snapshot-extras.py || true
           fi
       - name: Commit if firmware snapshot changed
         run: |

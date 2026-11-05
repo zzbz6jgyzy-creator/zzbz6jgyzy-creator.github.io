@@ -1,88 +1,124 @@
 {
- "updated": "2026-11-05T18:07:28Z",
+ "updated": "2026-11-05T21:16:50Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-10-19T14:03:40Z",
-  "fleet": 12436,
+  "fetched": "2026-11-05T21:16:50Z",
+  "fleet": 12336,
   "versions": [
    {
-    "id": "2026.38.5.1",
-    "installs": 3424,
-    "percent": 27.5,
-    "pending": 600
+    "id": "2026.39.6",
+    "installs": 206,
+    "percent": 1.7,
+    "pending": 31
    },
    {
-    "id": "2026.38.5",
-    "installs": 202,
-    "percent": 1.6,
-    "pending": 1
+    "id": "2026.38.6.1",
+    "installs": 235,
+    "percent": 1.9,
+    "pending": 51
    },
    {
-    "id": "2026.38.3.1",
-    "installs": 4774,
-    "percent": 38.4,
-    "pending": 880
+    "id": "2026.38.6",
+    "installs": 3038,
+    "percent": 24.6,
+    "pending": 1632
    },
    {
-    "id": "2026.38.3",
-    "installs": 5,
-    "percent": 0.0,
-    "pending": 0
-   },
-   {
-    "id": "2026.38",
-    "installs": 85,
+    "id": "2026.38.5.12",
+    "installs": 90,
     "percent": 0.7,
-    "pending": 2
+    "pending": 130
    },
    {
-    "id": "2026.33.100",
-    "installs": 229,
-    "percent": 1.8,
-    "pending": 9
+    "id": "2026.38.5.11",
+    "installs": 4111,
+    "percent": 33.3,
+    "pending": 277
    },
    {
-    "id": "2026.33.5",
-    "installs": 32,
-    "percent": 0.3,
-    "pending": 3
-   },
-   {
-    "id": "2026.32.7",
-    "installs": 858,
-    "percent": 6.9,
-    "pending": 81
-   },
-   {
-    "id": "2026.32.3",
-    "installs": 277,
-    "percent": 2.2,
-    "pending": 8
-   },
-   {
-    "id": "2026.28.5",
-    "installs": 3,
-    "percent": 0.0,
-    "pending": 0
-   },
-   {
-    "id": "2026.27.300",
-    "installs": 8,
+    "id": "2026.38.5.10",
+    "installs": 7,
     "percent": 0.1,
     "pending": 0
    },
    {
-    "id": "2026.27.200",
+    "id": "2026.38.5.6",
+    "installs": 117,
+    "percent": 0.9,
+    "pending": 2
+   },
+   {
+    "id": "2026.38.5.1",
+    "installs": 292,
+    "percent": 2.4,
+    "pending": 10
+   },
+   {
+    "id": "2026.38.5",
+    "installs": 4,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.38.3.2",
+    "installs": 2460,
+    "percent": 19.9,
+    "pending": 149
+   },
+   {
+    "id": "2026.38.3.1",
+    "installs": 202,
+    "percent": 1.6,
+    "pending": 12
+   },
+   {
+    "id": "2026.38.3",
     "installs": 1,
     "percent": 0.0,
     "pending": 0
    },
    {
+    "id": "2026.38",
+    "installs": 13,
+    "percent": 0.1,
+    "pending": 0
+   },
+   {
+    "id": "2026.33.100",
+    "installs": 27,
+    "percent": 0.2,
+    "pending": 0
+   },
+   {
+    "id": "2026.33.5",
+    "installs": 3,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
+    "id": "2026.32.7",
+    "installs": 131,
+    "percent": 1.1,
+    "pending": 3
+   },
+   {
+    "id": "2026.32.3",
+    "installs": 88,
+    "percent": 0.7,
+    "pending": 6
+   },
+   {
+    "id": "2026.27.300",
+    "installs": 4,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
     "id": "2026.27.11",
-    "installs": 204,
-    "percent": 1.6,
-    "pending": 5
+    "installs": 16,
+    "percent": 0.1,
+    "pending": 3
    },
    {
     "id": "2026.27.6.15",
@@ -98,56 +134,44 @@
    },
    {
     "id": "2026.27.6",
-    "installs": 15,
-    "percent": 0.1,
-    "pending": 1
-   },
-   {
-    "id": "2026.26.300",
-    "installs": 7,
-    "percent": 0.1,
-    "pending": 0
-   },
-   {
-    "id": "2026.26.200",
-    "installs": 2,
+    "installs": 4,
     "percent": 0.0,
     "pending": 0
    },
    {
-    "id": "2026.26.100.1",
-    "installs": 2,
+    "id": "2026.26.300",
+    "installs": 5,
     "percent": 0.0,
     "pending": 0
    },
    {
     "id": "2026.26.6.5",
-    "installs": 582,
-    "percent": 4.7,
-    "pending": 27
-   },
-   {
-    "id": "2026.26.6.3",
-    "installs": 276,
-    "percent": 2.2,
-    "pending": 22
-   },
-   {
-    "id": "2026.26.6.2",
-    "installs": 22,
-    "percent": 0.2,
+    "installs": 91,
+    "percent": 0.7,
     "pending": 1
    },
    {
+    "id": "2026.26.6.3",
+    "installs": 49,
+    "percent": 0.4,
+    "pending": 0
+   },
+   {
+    "id": "2026.26.6.2",
+    "installs": 5,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
     "id": "2026.26.6.1",
-    "installs": 189,
-    "percent": 1.5,
-    "pending": 6
+    "installs": 95,
+    "percent": 0.8,
+    "pending": 4
    },
    {
     "id": "2026.26.1",
-    "installs": 27,
-    "percent": 0.2,
+    "installs": 17,
+    "percent": 0.1,
     "pending": 0
    },
    {
@@ -158,33 +182,21 @@
    },
    {
     "id": "2026.21.6",
-    "installs": 19,
-    "percent": 0.2,
+    "installs": 18,
+    "percent": 0.1,
     "pending": 0
    },
    {
     "id": "2026.20.300",
-    "installs": 2,
-    "percent": 0.0,
-    "pending": 0
-   },
-   {
-    "id": "2026.20.200.1",
-    "installs": 1,
-    "percent": 0.0,
-    "pending": 0
-   },
-   {
-    "id": "2026.20.200",
     "installs": 1,
     "percent": 0.0,
     "pending": 0
    },
    {
     "id": "2026.20.10",
-    "installs": 115,
-    "percent": 0.9,
-    "pending": 1
+    "installs": 2,
+    "percent": 0.0,
+    "pending": 0
    },
    {
     "id": "2026.20.7.5",
@@ -194,14 +206,14 @@
    },
    {
     "id": "2026.20.6.11",
-    "installs": 28,
+    "installs": 20,
     "percent": 0.2,
     "pending": 0
    },
    {
     "id": "2026.20.6.9",
-    "installs": 20,
-    "percent": 0.2,
+    "installs": 13,
+    "percent": 0.1,
     "pending": 0
    },
    {
@@ -212,14 +224,14 @@
    },
    {
     "id": "2026.20.6.1",
-    "installs": 169,
-    "percent": 1.4,
-    "pending": 3
+    "installs": 145,
+    "percent": 1.2,
+    "pending": 2
    },
    {
     "id": "2026.20.3",
-    "installs": 35,
-    "percent": 0.3,
+    "installs": 27,
+    "percent": 0.2,
     "pending": 1
    },
    {
@@ -230,19 +242,19 @@
    },
    {
     "id": "2026.14.6.11",
-    "installs": 3,
+    "installs": 2,
     "percent": 0.0,
     "pending": 0
    },
    {
     "id": "2026.14.6",
-    "installs": 22,
+    "installs": 21,
     "percent": 0.2,
     "pending": 3
    },
    {
     "id": "2026.14.3",
-    "installs": 5,
+    "installs": 4,
     "percent": 0.0,
     "pending": 1
    },
@@ -253,12 +265,6 @@
     "pending": 0
    },
    {
-    "id": "2026.8.6",
-    "installs": 1,
-    "percent": 0.0,
-    "pending": 2
-   },
-   {
     "id": "2026.8.3.10",
     "installs": 1,
     "percent": 0.0,
@@ -266,14 +272,8 @@
    },
    {
     "id": "2026.8.3",
-    "installs": 12,
+    "installs": 10,
     "percent": 0.1,
-    "pending": 0
-   },
-   {
-    "id": "2026.8",
-    "installs": 1,
-    "percent": 0.0,
     "pending": 0
    },
    {
@@ -314,7 +314,7 @@
    },
    {
     "id": "2026.2.3",
-    "installs": 21,
+    "installs": 20,
     "percent": 0.2,
     "pending": 5
    },
@@ -380,7 +380,7 @@
    },
    {
     "id": "2025.44.3",
-    "installs": 10,
+    "installs": 8,
     "percent": 0.1,
     "pending": 0
    },
@@ -391,10 +391,16 @@
     "pending": 0
    },
    {
+    "id": "2025.38.14",
+    "installs": 139,
+    "percent": 1.1,
+    "pending": 47
+   },
+   {
     "id": "2025.38.13",
-    "installs": 193,
-    "percent": 1.6,
-    "pending": 1
+    "installs": 55,
+    "percent": 0.4,
+    "pending": 0
    },
    {
     "id": "2025.38.12",
@@ -440,7 +446,7 @@
    },
    {
     "id": "2025.32.8",
-    "installs": 3,
+    "installs": 2,
     "percent": 0.0,
     "pending": 0
    },
@@ -479,99 +485,93 @@
     "installs": 17,
     "percent": 0.1,
     "pending": 6
-   },
-   {
-    "id": "2025.26.4",
-    "installs": 2,
-    "percent": 0.0,
-    "pending": 1
    }
   ]
  },
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-05T18:07:28Z",
+  "fetched": "2026-11-05T21:16:50Z",
   "items": [
    {
-    "t": "2026-11-05T17:27:04Z",
+    "t": "2026-11-05T21:06:13Z",
     "to": "2026.38.6",
     "from": "2026.38.3.2",
-    "model": "Model Y AWD LR (2023)",
+    "model": "Model 3 SR (2026)",
     "hw": "4.0",
-    "country": "Netherlands"
+    "country": "United Kingdom"
    },
    {
-    "t": "2026-11-05T16:57:35Z",
-    "to": "2026.38.6.1",
-    "from": "2026.26.6.3",
-    "model": "Model 3 SR (2022)",
-    "hw": "3.0",
-    "country": "Australia"
-   },
-   {
-    "t": "2026-11-05T15:31:53Z",
-    "to": "2026.38.6",
-    "from": "2026.38.3.2",
-    "model": "Model 3 AWD LR (2021)",
-    "hw": "3.0",
-    "country": "Germany"
-   },
-   {
-    "t": "2026-11-05T14:42:13Z",
-    "to": "2026.38.6",
-    "from": "2026.38.3.1",
-    "model": "Model 3 SR (2022)",
-    "hw": "3.0",
-    "country": "Ukraine"
-   },
-   {
-    "t": "2026-11-05T14:29:46Z",
-    "to": "2026.38.5.12",
-    "from": "2026.38.5.11",
-    "model": "Cybertruck AWD (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-05T13:38:12Z",
-    "to": "2026.38.5.12",
-    "from": "2026.38.5.11",
-    "model": "Model 3 Performance (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-05T12:20:22Z",
-    "to": "2026.38.6",
-    "from": "2026.38.3.2",
-    "model": "Model 3 RWD LR (2018)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-05T12:08:26Z",
-    "to": "2026.38.6",
-    "from": "2026.38.3.2",
-    "model": "Model Y AWD LR (2022)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-05T11:40:05Z",
-    "to": "2026.38.3.2",
-    "from": "2026.32.7",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "South Korea"
-   },
-   {
-    "t": "2026-11-05T11:31:21Z",
+    "t": "2026-11-05T20:57:29Z",
     "to": "2026.38.6",
     "from": "2026.38.3.2",
     "model": "Model S 100D (2020)",
     "hw": "3.0",
-    "country": "Australia"
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-05T20:45:09Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model X AWD (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-05T20:41:09Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model Y AWD LR (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-05T20:29:43Z",
+    "to": "2026.38.6",
+    "from": "2026.38.3.2",
+    "model": "Model 3 RWD LR (2026)",
+    "hw": "4.0",
+    "country": "United Kingdom"
+   },
+   {
+    "t": "2026-11-05T20:28:07Z",
+    "to": "2026.38.6",
+    "from": "2026.38.3.2",
+    "model": "Model 3 SR (2026)",
+    "hw": "4.0",
+    "country": "United Kingdom"
+   },
+   {
+    "t": "2026-11-05T20:22:42Z",
+    "to": "2026.38.6",
+    "from": "2026.38.3.2",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "France"
+   },
+   {
+    "t": "2026-11-05T20:22:29Z",
+    "to": "2026.38.6",
+    "from": "2026.38.3.2",
+    "model": "Model 3 SR (2026)",
+    "hw": "3.0",
+    "country": "Italy"
+   },
+   {
+    "t": "2026-11-05T20:17:41Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model 3 AWD LR (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-05T20:13:13Z",
+    "to": "2026.39.6",
+    "from": "2026.33.100",
+    "model": "Model Y Performance (2024)",
+    "hw": "4.0",
+    "country": "Estonia"
    }
   ]
  }
