@@ -552,3 +552,9 @@ Known leftovers:
 ## 2026-11-05 — Book edition of Tesla: The Plan (hidden preview)
 - New hidden page `/tesla-the-plan-book.html` (noindex, unlinked): the long read as a page-flip book. StPageFlip 2.0.7 vendored in `vendor/page-flip/`; `scripts/build-plan-book.mjs`, `plan-book.js`, `plan-book.css`, `tests/plan-book-browser.py`, `docs/plan-book.md`.
 - Text is copied verbatim and checked word for word by the browser test; the film becomes its poster with a link to the article.
+
+## 2026-11-05 — Software tracker: TeslaFi fixed, data refreshed
+- TeslaFi moved its tracker from `www.teslafi.com/firmware.php` to `beta.teslafi.com/firmware.php` and changed the table layout in October, so the comparison column had been frozen at 19 Oct. `scripts/snapshot-extras.py` now reads the new address and layout (`parse_teslafi`), with `tests/test_snapshot_extras.py`.
+- TeslaFi is now fetched when the saved fetch time is older than about 105 minutes (`--force` for manual runs) instead of only on even-hour runs in the first 35 minutes, which GitHub's irregular scheduling rarely hit. `updates-snapshot.yml` updated to match.
+- Refreshed `updates-live.json`, `data/updates-extras.json`, `updates.html` and the derived intelligence files: Teslascope 3,289 cars and TeslaFi 12,336 cars, both 5 Nov 2026 about 21:16 UTC.
+- Known limit: GitHub runs the "every 30 minutes" schedule only every 4 to 8 hours, so the page can lag by that much. A trigger from outside GitHub would fix it.
