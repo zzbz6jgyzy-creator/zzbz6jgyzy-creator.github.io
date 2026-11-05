@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-05T20:19:43.057Z",
+  "updated": "2026-11-05T20:48:00.133Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/evgo-first-tesla-supercharger-chicago.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get",
+      "at": "2026-11-05T20:47:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/evgo-first-tesla-supercharger-chicago.html",
+      "href": "/dispatch/evgo-first-tesla-supercharger-chicago.html",
+      "summary": "EVgo opened 12 Supercharger stalls in Chicago. EVgo owns and brands them; Tesla operates and maintains them under Supercharger for Business (as of 5 Nov 2026).",
+      "title": "EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get",
+      "id": "logged|dispatch:/dispatch/evgo-first-tesla-supercharger-chicago.html|2026-11-05T20:47:00.000Z|EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/musk-midterms-tesla-spacex-selloff.html",
@@ -238,23 +255,6 @@
       "summary": "Tesla’s official Robotaxi account says rides now run 6am to 2am, nine days after Tesla said 2am was coming “pretty soon.” The post also adds Calm Mode and Grok in Model Y.",
       "title": "Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”",
       "id": "logged|dispatch:/dispatch/robotaxi-2am-20-hours.html|2026-10-30T14:40:00.000Z|Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-dynamic-pricing-map.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Starlink’s new “dynamic pricing” moves in 10% and 20% steps, so the same Max plan now costs $104 to $156 depending on the town",
-      "at": "2026-10-30T08:41:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-dynamic-pricing-map.html",
-      "href": "/dispatch/starlink-dynamic-pricing-map.html",
-      "summary": "Starlink is moving some US Residential customers to local prices reviewed roughly quarterly. Every price checked so far is 10% or 20% above or below list.",
-      "title": "Starlink’s new “dynamic pricing” moves in 10% and 20% steps, so the same Max plan now costs $104 to $156 depending on the town",
-      "id": "logged|dispatch:/dispatch/starlink-dynamic-pricing-map.html|2026-10-30T08:41:00.000Z|Starlink’s new “dynamic pricing” moves in 10% and 20% steps, so the same Max plan now costs $104 to $156 depending on the town"
     },
     {
       "type": "appeared",

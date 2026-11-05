@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/evgo-first-tesla-supercharger-chicago.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T20:47:00Z</news:publication_date>
+      <news:title>EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/musk-midterms-tesla-spacex-selloff.html</loc>
     <news:news>
       <news:publication>
@@ -32,17 +43,6 @@
       </news:publication>
       <news:publication_date>2026-11-04T14:42:00Z</news:publication_date>
       <news:title>Texas elects a Democratic governor, and SpaceX's data center plans face a new risk</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/starlink-airlines-scorecard.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-03T20:37:00Z</news:publication_date>
-      <news:title>Starlink on airlines: what the numbers actually show</news:title>
     </news:news>
   </url>
 </urlset>

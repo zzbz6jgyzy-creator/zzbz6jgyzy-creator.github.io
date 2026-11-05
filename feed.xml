@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 05 Nov 2026 14:44:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 20:47:00 +0000</lastBuildDate>
+    <item>
+      <title>EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get</title>
+      <link>https://superchargeddaily.com/dispatch/evgo-first-tesla-supercharger-chicago.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/evgo-first-tesla-supercharger-chicago.html</guid>
+      <pubDate>Thu, 05 Nov 2026 20:47:00 +0000</pubDate>
+      <category>Charging</category>
+      <description>EVgo opened 12 Supercharger stalls in Chicago. EVgo owns and brands them; Tesla operates and maintains them under Supercharger for Business (as of 5 Nov 2026).</description>
+      <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger</title>
       <link>https://superchargeddaily.com/dispatch/musk-midterms-tesla-spacex-selloff.html</link>
@@ -717,15 +726,6 @@
       <category>Tesla</category>
       <description>Optimus, Cybercab, a thruster Roadster and a truck for Mars: what's real, and what could be.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-dream-scenario-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Grok Voice 3.0 tops speech-to-speech at 86.9</title>
-      <link>https://superchargeddaily.com/dispatch/grok-voice-3-spacexsi.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-voice-3-spacexsi.html</guid>
-      <pubDate>Wed, 14 Oct 2026 18:14:56 +0000</pubDate>
-      <category>SpaceX AI</category>
-      <description>Already running ~20,000 Starlink support calls a day, ~70% with no human.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/grok-voice-3-spacexsi-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.12</title>
