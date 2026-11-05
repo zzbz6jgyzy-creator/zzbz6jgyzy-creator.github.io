@@ -531,3 +531,9 @@ Known leftovers:
 ## 2026-11-04 — Light-theme contrast and Roadster og:type
 - `see-the-launch.html`: added a scoped light-theme colour block in `launch-viewing.css` for pale text that stayed on white cards (stale-data note, place buttons, metrics, map footer, weather notes, verdict text, tags). axe is clean at 390 and 1440 in light and dark. Cache token bumped to `20261104-contrast`.
 - `roadster.html`: `og:type` changed from `article` to `website`; it is a showcase page with WebPage/VideoObject data, not a news article. The four explainers already carry Article/LearningResource JSON-LD (the audit's S3 finding was wrong for them).
+
+## 2026-11-05 — Short search titles for 26 long article headlines
+- New optional `seoTitle` field in `data/articles.json`; `scripts/build-seo.py` uses it verbatim as the page `<title>` (brand suffix added only when the whole title stays within 70 characters). The on-page headline, og/X titles and NewsArticle `headline` keep the full headline.
+- 26 articles whose `<title>` was 72 to 137 characters (cut off in search results) now have a hand-written title of 60 characters or less. Titles only compress the existing headline; no new claims.
+- `tests/test_seo_audit.py` checks each `seoTitle` reaches the `<title>` tag and stays within 70 characters.
+- For a new article with a long headline, add `"seoTitle"` when the `<title>` would exceed about 65 characters.
