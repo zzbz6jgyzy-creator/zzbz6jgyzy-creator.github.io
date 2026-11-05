@@ -548,3 +548,7 @@ Known leftovers:
 ## 2026-11-05 — Facts re-check
 - `docs/audit-2026-11-05.md`: live trackers, launch dates, counts and the two newest articles re-checked against sources. No wrong headline number found.
 - Fixed: Starship schedule entry for Musk's "4 to 6 weeks" (event date 10 Oct, both his figures stated), Flight 15 booster objective wording, visible "Update, 5 Nov" on two articles that still gave NET 8 Nov, Norway context from Statens vegvesen (29 Oct), and the FSD Europe test that main failed after the 09:40 RDW publish (hardware condition now needs an authority source).
+
+## 2026-11-05 — Book edition of Tesla: The Plan (hidden preview)
+- New hidden page `/tesla-the-plan-book.html` (noindex, unlinked): the long read as a page-flip book. StPageFlip 2.0.7 vendored in `vendor/page-flip/`; `scripts/build-plan-book.mjs`, `plan-book.js`, `plan-book.css`, `tests/plan-book-browser.py`, `docs/plan-book.md`.
+- Text is copied verbatim and checked word for word by the browser test; the film becomes its poster with a link to the article.

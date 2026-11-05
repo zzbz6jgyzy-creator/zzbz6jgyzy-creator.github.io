@@ -1,0 +1,4 @@
+StPageFlip (npm: page-flip) 2.0.7, MIT licence, Copyright (c) 2020 Nodlik. Source: https://github.com/Nodlik/StPageFlip
+File: dist/js/page-flip.browser.js, unmodified, from the npm tarball page-flip-2.0.7.tgz.
+Used only by tesla-the-plan-book.html (hidden preview). Last npm release April 2021; the project has open
+issues (for example destroy() does not stop its render loop), so plan-book.js never calls destroy().
