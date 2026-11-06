@@ -1,3 +1,8 @@
+## 2026-11-06 — Daily audit
+
+- Midterms article: dated update with the 5 Nov closes (Tesla $343.69, -10.77%; SpaceX $123.62, -9.05%).
+- Starship: 5 Nov schedule entry for SpaceX's stated Flight 15 target of 13 Nov (reported via Eric Berger; not a launch time). Details: `docs/audit-2026-11-06.md`.
+
 ## 2026-11-04 — Audit fixes
 
 - Accessibility: menu Search link label, search results structure, Subscribe button and kicker contrast in the arcade pages, unique `aside` labels on FSD Europe and Updates, the Support button inside `main`.

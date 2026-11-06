@@ -33,6 +33,14 @@ window.STARSHIP = {
       mission: 15,
       confirmed: false,
       change:
+        "Eric Berger reported on X that SpaceX vice president of launch Kiko Dontchev said at the UP.Summit that the company is targeting Friday 13 Nov for Starship Flight 15. This is a stated target, relayed by TeslaNorth; we have not opened Berger’s post ourselves. It is not a launch time, and there is still no FAA Flight 15 licence and no official SpaceX mission page.",
+      source: { outlet: "TeslaNorth, citing Eric Berger on X (5 Nov 2026)", url: "https://teslanorth.com/2026/11/05/starship-flight-15-nov-13/" },
+    },
+    {
+      date: "2026-11-05",
+      mission: 15,
+      confirmed: false,
+      change:
         "Community trackers report that the FAA’s CADENA/COMPASS air-traffic planning slide dated 5 Nov 2026 lists Starship Flight 15 on 13 Nov, one day later than the 12 Nov on the 29 Oct slides. We have not opened the slide ourselves. Still no FAA Flight 15 licence and no SpaceX date.",
       source: { outlet: "Starship Flight 15 wiki, citing the FAA CADENA/COMPASS slide of 5 Nov 2026", url: "https://starship-spacex.fandom.com/wiki/Starship_Flight_15" },
     },
