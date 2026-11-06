@@ -1,3 +1,7 @@
+## 2026-11-06 — On-time data refresh (Worker, needs your setup)
+
+- New `workers/sd-refresh/`: a Cloudflare Worker whose cron triggers dispatch the snapshot and refresh workflows on time (GitHub's own schedule drifts 4 to 8 hours). Nothing changes until you deploy it with a GitHub token; steps in `workers/sd-refresh/README.md`.
+
 ## 2026-11-06 — Daily audit
 
 - Midterms article: dated update with the 5 Nov closes (Tesla $343.69, -10.77%; SpaceX $123.62, -9.05%).
