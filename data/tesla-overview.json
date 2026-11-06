@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-argentina.html",
+      "image": "/assets/dispatch/tesla-model-y-standard-front.jpg",
+      "title": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
+      "summary": "Tesla confirmed an Argentina arrival date of 20 November 2026 via @Tesla_LatAm, with @Tesla and Elon Musk quoting the post. Argentine press reports an Unicenter exhibition first, with sales and test drives planned for 2027. Official posts name no models or prices.",
+      "tag": "Markets",
+      "date": "2026-11-06T20:37:00Z",
+      "thumb": "/assets/dispatch/tesla-model-y-standard-front-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-spacex-government-contracts.html",
       "image": "/assets/dispatch/falcon9-crew10-launch.jpg",
       "title": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
@@ -216,16 +225,7 @@
       "tag": "Charging",
       "date": "2026-11-05T20:47:00Z",
       "thumb": "/assets/og-v2-480w.webp"
-    },
-    {
-      "url": "/dispatch/musk-midterms-tesla-spacex-selloff.html",
-      "image": "/assets/og-v2.jpg",
-      "title": "Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger",
-      "summary": "SpaceX closed -3.8% and Tesla -3.3% on 4 Nov after Democrats won Congress. No merger terms yet; the new Congress seats on 3 Jan 2027 (as of 5 Nov 2026).",
-      "tag": "Markets",
-      "date": "2026-11-05T14:44:00Z",
-      "thumb": "/assets/og-v2-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-06T18:31:00Z"
+  "articlesUpdated": "2026-11-06T20:37:00Z"
 }

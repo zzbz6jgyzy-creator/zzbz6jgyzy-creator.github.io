@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 06 Nov 2026 18:31:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 20:37:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla says it arrives in Argentina on 20 November; exhibition first, sales later</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-argentina.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-argentina.html</guid>
+      <pubDate>Fri, 06 Nov 2026 20:37:00 +0000</pubDate>
+      <category>Markets</category>
+      <description>Tesla confirmed an Argentina arrival date of 20 November 2026 via @Tesla_LatAm, with @Tesla and Elon Musk quoting the post. Argentine press reports an Unicenter exhibition first, with sales and test drives planned for 2027. Official posts name no models or prices.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-model-y-standard-front.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter</title>
       <link>https://superchargeddaily.com/dispatch/tesla-spacex-government-contracts.html</link>
@@ -717,15 +726,6 @@
       <category>SpaceX</category>
       <description>CRS-35 arrived half an hour early with 6,300+ lb of cargo and health experiments.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/crs35-dragon-docks-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Starlink on nearly half of United’s flights</title>
-      <link>https://superchargeddaily.com/dispatch/united-starlink-half.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/united-starlink-half.html</guid>
-      <pubDate>Thu, 15 Oct 2026 12:18:28 +0000</pubDate>
-      <category>Starlink</category>
-      <description>635+ jets, 250,000+ passengers a day, and a tracker for your flight.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/united-starlink-half-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.12</title>
