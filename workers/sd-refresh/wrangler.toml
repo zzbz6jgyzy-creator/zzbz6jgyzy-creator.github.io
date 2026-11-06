@@ -1,0 +1,9 @@
+name = "sd-refresh"
+main = "sd-refresh.js"
+compatibility_date = "2025-10-01"
+
+# Keep these crons identical to the keys of JOBS in sd-refresh.js.
+[triggers]
+crons = ["*/30 * * * *", "5 * * * *", "10 */4 * * *", "35 5,17 * * *"]
+
+# Needs one secret, set outside the repo:  npx wrangler secret put GITHUB_TOKEN
