@@ -1,6 +1,42 @@
 {
-  "updated": "2026-11-06T16:00:00Z",
+  "updated": "2026-11-06T18:31:00Z",
   "articles": [
+    {
+      "url": "/dispatch/tesla-spacex-government-contracts.html",
+      "title": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
+      "date": "2026-11-06T18:31:00Z",
+      "topic": "tesla",
+      "tag": "Governance",
+      "image": "/assets/dispatch/falcon9-crew10-launch.jpg",
+      "summary": "Elon Musk said Tesla has no government contracts and that government revenue will be under 10% of SpaceX revenue this quarter and under 5% a year from now, quoting a Warren Redlich draft letter. Those figures are his claims on X, not filings.",
+      "pinned": false,
+      "imageAlt": "A SpaceX Falcon 9 rocket carrying a Dragon spacecraft lifts off on NASA's Crew-10 mission",
+      "author": "Alex R"
+    },
+    {
+      "url": "/dispatch/baron-orbital-data-centers.html",
+      "title": "Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028",
+      "date": "2026-11-06T18:31:00Z",
+      "topic": "spacex",
+      "tag": "SpaceX AI",
+      "image": "/assets/dispatch/starlink-satellite-stack.jpg",
+      "summary": "Investor Ron Baron told CNBC Squawk Box that Elon Musk is targeting 2027 and 2028 launches of solar-powered data centers into orbit. Elon replied: \"Ron Baron understands.\" Investor commentary, not a SpaceX announcement.",
+      "pinned": false,
+      "imageAlt": "A stack of flat Starlink satellites in orbit with Earth's clouds and ocean behind them",
+      "author": "Alex R"
+    },
+    {
+      "url": "/dispatch/model-y-australia-passenger-car.html",
+      "title": "The Tesla Model Y is Australia's best-selling passenger car through October, with 39,035 sold against 35,927 RAV4s",
+      "date": "2026-11-06T18:31:00Z",
+      "topic": "tesla",
+      "tag": "Tesla",
+      "image": "/assets/dispatch/tesla-model-y-juniper.jpg",
+      "summary": "CarsGuide reports the Tesla Model Y sold 39,035 units in Australia from January to October 2026, ahead of the Toyota RAV4's 35,927. Elon called it the best-selling car of any kind on Earth; the figures cover Australian passenger cars only.",
+      "pinned": false,
+      "imageAlt": "A dark grey current-generation Tesla Model Y with a full-width front light bar driving across a road",
+      "author": "Alex R"
+    },
     {
       "url": "/dispatch/tesla-si-roadmap.html",
       "title": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",

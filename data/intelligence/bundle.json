@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-06T18:23:57.856Z",
+  "generatedAt": "2026-11-06T18:31:43.848Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -287,6 +287,57 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-spacex-government-contracts.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
+      "at": "2026-11-06T18:31:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-spacex-government-contracts.html",
+      "href": "/dispatch/tesla-spacex-government-contracts.html",
+      "summary": "Elon Musk said Tesla has no government contracts and that government revenue will be under 10% of SpaceX revenue this quarter and under 5% a year from now, quoting a Warren Redlich draft letter. Those figures are his claims on X, not filings.",
+      "title": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
+      "id": "logged|dispatch:/dispatch/tesla-spacex-government-contracts.html|2026-11-06T18:31:00.000Z|Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/baron-orbital-data-centers.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028",
+      "at": "2026-11-06T18:31:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/baron-orbital-data-centers.html",
+      "href": "/dispatch/baron-orbital-data-centers.html",
+      "summary": "Investor Ron Baron told CNBC Squawk Box that Elon Musk is targeting 2027 and 2028 launches of solar-powered data centers into orbit. Elon replied: \"Ron Baron understands.\" Investor commentary, not a SpaceX announcement.",
+      "title": "Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028",
+      "id": "logged|dispatch:/dispatch/baron-orbital-data-centers.html|2026-11-06T18:31:00.000Z|Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/model-y-australia-passenger-car.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "The Tesla Model Y is Australia's best-selling passenger car through October, with 39,035 sold against 35,927 RAV4s",
+      "at": "2026-11-06T18:31:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/model-y-australia-passenger-car.html",
+      "href": "/dispatch/model-y-australia-passenger-car.html",
+      "summary": "CarsGuide reports the Tesla Model Y sold 39,035 units in Australia from January to October 2026, ahead of the Toyota RAV4's 35,927. Elon called it the best-selling car of any kind on Earth; the figures cover Australian passenger cars only.",
+      "title": "The Tesla Model Y is Australia's best-selling passenger car through October, with 39,035 sold against 35,927 RAV4s",
+      "id": "logged|dispatch:/dispatch/model-y-australia-passenger-car.html|2026-11-06T18:31:00.000Z|The Tesla Model Y is Australia's best-selling passenger car through October, with 39,035 sold against 35,927 RAV4s"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/tesla-si-roadmap.html",
       "topic": "tesla",
       "tracker": "dispatch",
@@ -539,57 +590,6 @@
       "summary": "Tesla Robotaxi opened in Fort Worth from 6am CT on 2 Nov in a zone estimated at 143 sq mi. Texas DMV lists 1,244 Teslas, 15 short of Waymo's 1,259 (as of 2 Nov 2026).",
       "title": "Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas",
       "id": "logged|dispatch:/dispatch/tesla-robotaxi-fort-worth.html|2026-11-02T20:41:00.000Z|Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-boost-mobile-talks.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX is in talks to buy Boost Mobile, the Washington Post reports",
-      "at": "2026-11-02T14:37:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-boost-mobile-talks.html",
-      "href": "/dispatch/spacex-boost-mobile-talks.html",
-      "summary": "SpaceX is in talks with EchoStar to buy Boost Mobile or use its network, the Washington Post reports. Boost had 7.38M wireless subscribers but leases its network from AT&T and T-Mobile.",
-      "title": "SpaceX is in talks to buy Boost Mobile, the Washington Post reports",
-      "id": "logged|dispatch:/dispatch/spacex-boost-mobile-talks.html|2026-11-02T14:37:00.000Z|SpaceX is in talks to buy Boost Mobile, the Washington Post reports"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/colossus-2-epoch-largest-ai-data-center.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Colossus 2 is now the world's biggest AI data center, Epoch AI estimates",
-      "at": "2026-11-02T09:23:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/colossus-2-epoch-largest-ai-data-center.html",
-      "href": "/dispatch/colossus-2-epoch-largest-ai-data-center.html",
-      "summary": "Epoch AI puts SpaceXAI's Colossus 2 in Memphis at about 1.11 million H100-equivalents, ahead of OpenAI's Stargate Abilene at 1.02 million (as of 1 Nov 2026).",
-      "title": "Colossus 2 is now the world's biggest AI data center, Epoch AI estimates",
-      "id": "logged|dispatch:/dispatch/colossus-2-epoch-largest-ai-data-center.html|2026-11-02T09:23:00.000Z|Colossus 2 is now the world's biggest AI data center, Epoch AI estimates"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-bot-weekly-limits-cost.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much",
-      "at": "2026-11-02T09:23:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-bot-weekly-limits-cost.html",
-      "href": "/dispatch/grok-bot-weekly-limits-cost.html",
-      "summary": "Grok Bot subscribers ran out of their weekly allowance days early. Musk says the cost of serving Grok Bot was “unsustainably high relative to revenue.”",
-      "title": "Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much",
-      "id": "logged|dispatch:/dispatch/grok-bot-weekly-limits-cost.html|2026-11-02T09:23:00.000Z|Grok Bot users hit their weekly limits days early, and Musk says serving them cost too much"
     },
     {
       "type": "changed",
@@ -1824,14 +1824,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1845,14 +1845,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-11-05T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-11-06T13:08:54.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1866,35 +1866,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-11-04T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-11-04T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-06T18:23:57.856Z",
+      "lastChecked": "2026-11-06T18:31:43.848Z",
       "lastVerified": "2026-11-06T11:37:33.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1903,85 +1903,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.780Z",
-      "finished": "2026-11-06T18:23:57.841Z"
+      "started": "2026-11-06T18:31:43.831Z",
+      "finished": "2026-11-06T18:31:43.836Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.841Z",
-      "finished": "2026-11-06T18:23:57.841Z"
+      "started": "2026-11-06T18:31:43.836Z",
+      "finished": "2026-11-06T18:31:43.836Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.841Z",
-      "finished": "2026-11-06T18:23:57.841Z"
+      "started": "2026-11-06T18:31:43.836Z",
+      "finished": "2026-11-06T18:31:43.836Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.841Z",
-      "finished": "2026-11-06T18:23:57.849Z"
+      "started": "2026-11-06T18:31:43.836Z",
+      "finished": "2026-11-06T18:31:43.842Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.849Z",
-      "finished": "2026-11-06T18:23:57.853Z"
+      "started": "2026-11-06T18:31:43.842Z",
+      "finished": "2026-11-06T18:31:43.844Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.853Z",
-      "finished": "2026-11-06T18:23:57.853Z"
+      "started": "2026-11-06T18:31:43.844Z",
+      "finished": "2026-11-06T18:31:43.845Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.853Z",
-      "finished": "2026-11-06T18:23:57.854Z"
+      "started": "2026-11-06T18:31:43.845Z",
+      "finished": "2026-11-06T18:31:43.845Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.854Z",
-      "finished": "2026-11-06T18:23:57.854Z"
+      "started": "2026-11-06T18:31:43.845Z",
+      "finished": "2026-11-06T18:31:43.846Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.854Z",
-      "finished": "2026-11-06T18:23:57.854Z"
+      "started": "2026-11-06T18:31:43.846Z",
+      "finished": "2026-11-06T18:31:43.846Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.854Z",
-      "finished": "2026-11-06T18:23:57.856Z"
+      "started": "2026-11-06T18:31:43.846Z",
+      "finished": "2026-11-06T18:31:43.847Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.856Z",
-      "finished": "2026-11-06T18:23:57.856Z"
+      "started": "2026-11-06T18:31:43.847Z",
+      "finished": "2026-11-06T18:31:43.847Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.856Z",
-      "finished": "2026-11-06T18:23:57.856Z"
+      "started": "2026-11-06T18:31:43.847Z",
+      "finished": "2026-11-06T18:31:43.847Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-06T18:23:57.856Z",
-      "finished": "2026-11-06T18:23:57.856Z"
+      "started": "2026-11-06T18:31:43.847Z",
+      "finished": "2026-11-06T18:31:43.847Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-06T18:23:57.856Z",
+    "generatedAt": "2026-11-06T18:31:43.848Z",
     "factCount": 20,
     "changeCount": 88,
     "conflictCount": 2,
