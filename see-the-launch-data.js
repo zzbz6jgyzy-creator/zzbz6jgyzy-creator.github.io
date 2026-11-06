@@ -37,14 +37,14 @@ window.SEE_LAUNCH = {
     {
       id: "starship-f15",
       title: "Starship Flight 15",
-      start: "2026-11-12T12:00:00Z",
+      start: "2026-11-13T12:00:00Z",
       pad: "sb2",
       vehicle: "starship",
       orbit: "suborbital",
       status: "net",
       precision: "day",
       href: "https://www.spacex.com/launches/starship-flight-15",
-      note: "FAA planning target NET 12 Nov (as of 29 Oct 2026) — SpaceX has not set an official T-0. First serious Ship catch.",
+      note: "FAA planning target NET 13 Nov (as of 5 Nov 2026, reported by community trackers) — SpaceX has not set an official T-0. First serious Ship catch.",
     },
     {
       id: "ll-bandwagon-5",

@@ -33,15 +33,18 @@ class Adapter(unittest.TestCase):
   by_id={row["id"]:row for row in M.merge_rows(cached,fresh,previous)}
   self.assertEqual(by_id["starlink-15-21-fixture"]["net"],"2026-11-05T02:35:00Z")
   self.assertEqual(by_id["crew-13-fixture"]["status"]["abbrev"],"Success")
+  # The CLI uses the real clock, so these launch times are relative to it (fixed dates expire and the check goes red).
+  fmt=lambda d:d.strftime('%Y-%m-%dT%H:%M:%SZ');soon=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)+datetime.timedelta(days=3)
+  fresh_net,fresh_end=fmt(soon),fmt(soon+datetime.timedelta(hours=4));cached_net,cached_end=fmt(soon+datetime.timedelta(hours=2,minutes=39)),fmt(soon+datetime.timedelta(hours=6,minutes=39))
   with tempfile.TemporaryDirectory()as temp:
    target=pathlib.Path(temp)/"launches.json"
-   target.write_text(json.dumps({"results":[go("2026-11-05T05:14:00Z","2026-11-05T09:14:00Z"),done]}))
-   upcoming=pathlib.Path(temp)/"upcoming.json";upcoming.write_text(json.dumps({"results":[go("2026-11-05T02:35:00Z","2026-11-05T06:35:00Z")]}))
+   target.write_text(json.dumps({"results":[go(cached_net,cached_end),done]}))
+   upcoming=pathlib.Path(temp)/"upcoming.json";upcoming.write_text(json.dumps({"results":[go(fresh_net,fresh_end)]}))
    previous_path=pathlib.Path(temp)/"previous.json";previous_path.write_text(json.dumps({"results":[done]}))
    r=subprocess.run(["python3",str(ROOT/"scripts/fetch-launches.py"),"--input",str(upcoming),"--previous-input",str(previous_path),"--output",str(target)],capture_output=True)
    self.assertEqual(r.returncode,0,r.stderr)
    data=json.loads(target.read_text());got={row["id"]:row for row in data["results"]}
-   self.assertEqual(got["starlink-15-21-fixture"]["net"],"2026-11-05T02:35:00Z")
+   self.assertEqual(got["starlink-15-21-fixture"]["net"],fresh_net)
    self.assertEqual(got["crew-13-fixture"]["status"]["abbrev"],"Success")
  def test_cli_previous_input_writes_merged_file(self):
   with tempfile.TemporaryDirectory()as temp:

@@ -1682,7 +1682,7 @@
  ],
  "next": {
   "number": 15,
-  "referenceDate": "2026-11-12",
+  "referenceDate": "2026-11-13",
   "precision": "day",
   "officialTime": null,
   "officialSource": null,
@@ -1726,6 +1726,13 @@
   ]
  },
  "schedule": [
+  {
+   "date": "2026-11-05",
+   "text": "Community trackers report that the FAA’s CADENA/COMPASS air-traffic planning slide dated 5 Nov 2026 lists Starship Flight 15 on 13 Nov, one day later than the 12 Nov on the 29 Oct slides. We have not opened the slide ourselves. Still no FAA Flight 15 licence and no SpaceX date.",
+   "url": "https://starship-spacex.fandom.com/wiki/Starship_Flight_15",
+   "outlet": "Starship Flight 15 wiki, citing the FAA CADENA/COMPASS slide of 5 Nov 2026",
+   "kind": "reported"
+  },
   {
    "date": "2026-10-29",
    "text": "The FAA’s CADENA air-traffic planning deck dated 29 Oct 2026 lists Starship Flight 15 on 12 Nov, four days later than the NET 8 Nov on earlier slides. Starship Starlink 30-1 stays on 10 Dec. Still no FAA Flight 15 licence and no SpaceX date.",
