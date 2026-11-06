@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-06T13:08:59.604Z",
+  "generatedAt": "2026-11-06T16:00:53.066Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-si-roadmap.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",
+      "at": "2026-11-06T16:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-si-roadmap.html",
+      "href": "/dispatch/tesla-si-roadmap.html",
+      "summary": "Tom's Hardware published a photographed Tesla slide renaming HW4 to SI4, listing SI5 at 40x and SI6 at 80x, with Dojo 3 aimed at space. Tesla and Musk have not posted the slide (as of 6 Nov 2026).",
+      "title": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",
+      "id": "logged|dispatch:/dispatch/tesla-si-roadmap.html|2026-11-06T16:00:00.000Z|Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space"
+    },
     {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.12",
@@ -590,23 +607,6 @@
       "summary": "McDowell snapshot: inOrbit 11,190 → 11,214; working 11,176 → 11,200; launched 13,069 → 13,096. This is a published table snapshot, not a live operator feed.",
       "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-11-02T00:45:00.000Z|11214"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/shotwell-2m-spacex-shares-trump-accounts.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Gwynne Shotwell's 2 million SpaceX shares are headed to teens' Trump Accounts in December",
-      "at": "2026-10-31T02:49:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/shotwell-2m-spacex-shares-trump-accounts.html",
-      "href": "/dispatch/shotwell-2m-spacex-shares-trump-accounts.html",
-      "summary": "SpaceX President Gwynne Shotwell says over 2 million SpaceX shares are going to Trump Accounts of 11 to 17-year-olds, starting in lower-income ZIP codes, in December.",
-      "title": "Gwynne Shotwell's 2 million SpaceX shares are headed to teens' Trump Accounts in December",
-      "id": "logged|dispatch:/dispatch/shotwell-2m-spacex-shares-trump-accounts.html|2026-10-31T02:49:00.000Z|Gwynne Shotwell's 2 million SpaceX shares are headed to teens' Trump Accounts in December"
     },
     {
       "type": "appeared",
@@ -1824,14 +1824,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1845,14 +1845,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-11-05T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-11-06T13:08:54.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1866,35 +1866,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-11-04T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-11-04T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-06T13:08:59.604Z",
+      "lastChecked": "2026-11-06T16:00:53.066Z",
       "lastVerified": "2026-11-06T11:37:33.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1903,85 +1903,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.530Z",
-      "finished": "2026-11-06T13:08:59.595Z"
+      "started": "2026-11-06T16:00:53.037Z",
+      "finished": "2026-11-06T16:00:53.042Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.595Z",
-      "finished": "2026-11-06T13:08:59.595Z"
+      "started": "2026-11-06T16:00:53.042Z",
+      "finished": "2026-11-06T16:00:53.043Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.595Z",
-      "finished": "2026-11-06T13:08:59.595Z"
+      "started": "2026-11-06T16:00:53.043Z",
+      "finished": "2026-11-06T16:00:53.043Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.595Z",
-      "finished": "2026-11-06T13:08:59.599Z"
+      "started": "2026-11-06T16:00:53.043Z",
+      "finished": "2026-11-06T16:00:53.054Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.599Z",
-      "finished": "2026-11-06T13:08:59.601Z"
+      "started": "2026-11-06T16:00:53.054Z",
+      "finished": "2026-11-06T16:00:53.060Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.601Z",
-      "finished": "2026-11-06T13:08:59.602Z"
+      "started": "2026-11-06T16:00:53.060Z",
+      "finished": "2026-11-06T16:00:53.061Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.602Z",
-      "finished": "2026-11-06T13:08:59.602Z"
+      "started": "2026-11-06T16:00:53.061Z",
+      "finished": "2026-11-06T16:00:53.062Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.602Z",
-      "finished": "2026-11-06T13:08:59.602Z"
+      "started": "2026-11-06T16:00:53.062Z",
+      "finished": "2026-11-06T16:00:53.062Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.602Z",
-      "finished": "2026-11-06T13:08:59.602Z"
+      "started": "2026-11-06T16:00:53.062Z",
+      "finished": "2026-11-06T16:00:53.062Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.602Z",
-      "finished": "2026-11-06T13:08:59.603Z"
+      "started": "2026-11-06T16:00:53.062Z",
+      "finished": "2026-11-06T16:00:53.065Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.603Z",
-      "finished": "2026-11-06T13:08:59.603Z"
+      "started": "2026-11-06T16:00:53.065Z",
+      "finished": "2026-11-06T16:00:53.065Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.603Z",
-      "finished": "2026-11-06T13:08:59.603Z"
+      "started": "2026-11-06T16:00:53.065Z",
+      "finished": "2026-11-06T16:00:53.066Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-06T13:08:59.603Z",
-      "finished": "2026-11-06T13:08:59.603Z"
+      "started": "2026-11-06T16:00:53.066Z",
+      "finished": "2026-11-06T16:00:53.066Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-06T13:08:59.604Z",
+    "generatedAt": "2026-11-06T16:00:53.066Z",
     "factCount": 20,
     "changeCount": 88,
     "conflictCount": 2,

@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-06T13:08:59.604Z",
+  "updated": "2026-11-06T16:00:53.066Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-si-roadmap.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",
+      "at": "2026-11-06T16:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-si-roadmap.html",
+      "href": "/dispatch/tesla-si-roadmap.html",
+      "summary": "Tom's Hardware published a photographed Tesla slide renaming HW4 to SI4, listing SI5 at 40x and SI6 at 80x, with Dojo 3 aimed at space. Tesla and Musk have not posted the slide (as of 6 Nov 2026).",
+      "title": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",
+      "id": "logged|dispatch:/dispatch/tesla-si-roadmap.html|2026-11-06T16:00:00.000Z|Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space"
+    },
     {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.12",
@@ -306,23 +323,6 @@
       "summary": "McDowell snapshot: inOrbit 11,190 → 11,214; working 11,176 → 11,200; launched 13,069 → 13,096. This is a published table snapshot, not a live operator feed.",
       "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-11-02T00:45:00.000Z|11214"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/shotwell-2m-spacex-shares-trump-accounts.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Gwynne Shotwell's 2 million SpaceX shares are headed to teens' Trump Accounts in December",
-      "at": "2026-10-31T02:49:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/shotwell-2m-spacex-shares-trump-accounts.html",
-      "href": "/dispatch/shotwell-2m-spacex-shares-trump-accounts.html",
-      "summary": "SpaceX President Gwynne Shotwell says over 2 million SpaceX shares are going to Trump Accounts of 11 to 17-year-olds, starting in lower-income ZIP codes, in December.",
-      "title": "Gwynne Shotwell's 2 million SpaceX shares are headed to teens' Trump Accounts in December",
-      "id": "logged|dispatch:/dispatch/shotwell-2m-spacex-shares-trump-accounts.html|2026-10-31T02:49:00.000Z|Gwynne Shotwell's 2 million SpaceX shares are headed to teens' Trump Accounts in December"
     },
     {
       "type": "appeared",

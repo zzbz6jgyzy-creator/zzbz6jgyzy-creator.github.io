@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 06 Nov 2026 09:02:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 16:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-si-roadmap.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-si-roadmap.html</guid>
+      <pubDate>Fri, 06 Nov 2026 16:00:00 +0000</pubDate>
+      <category>Hardware</category>
+      <description>Tom's Hardware published a photographed Tesla slide renaming HW4 to SI4, listing SI5 at 40x and SI6 at 80x, with Dojo 3 aimed at space. Tesla and Musk have not posted the slide (as of 6 Nov 2026).</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-dojo-tile-2023.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab</title>
       <link>https://superchargeddaily.com/dispatch/cybertruck-texas-wind-down.html</link>
@@ -719,21 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-spacex-merger-barclays-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>349 Cybercabs registered in Texas</title>
-      <link>https://superchargeddaily.com/dispatch/cybercab-349-texas.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/cybercab-349-texas.html</guid>
-      <pubDate>Thu, 15 Oct 2026 08:56:38 +0000</pubDate>
-      <category>Robotaxi</category>
-      <description>30 more on the DMV list, and every new car is a Cybercab.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/cybercab-349-texas-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
       <title>Tracker: 2026.38.5.12</title>
       <link>https://superchargeddaily.com/updates.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.12-2026-11-06T10:40:44.000Z-316</guid>
-      <pubDate>Fri, 06 Nov 2026 10:40:44 +0000</pubDate>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.12-2026-11-06T11:37:33.000Z-322</guid>
+      <pubDate>Fri, 06 Nov 2026 11:37:33 +0000</pubDate>
       <category>software</category>
-      <description>2026.38.5.12 moved from 242 to 316 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
+      <description>2026.38.5.12 moved from 242 to 322 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
     </item>
     <item>
       <title>Tracker: Flight 15 change</title>
