@@ -1,3 +1,7 @@
+## 2026-11-06 — Section themes site-wide
+
+- `theme-boot.js` sets `html[data-section]` from one path map and loads `section-theme.css` where it is missing. SpaceX pages (Starship, Starlink, See the launch, replay) move to the ice accent; Grok gets a silver accent; Tesla pages are tagged and stay red. Details and the page list: `docs/design-system.md`.
+
 ## 2026-11-06 — Tesla and SpaceX section themes
 
 - New `section-theme.css`: SpaceX moves to ice blue (kickers, primary button, pinned state) with a trajectory arc under section headings; Tesla gets a red charge line. Both hubs set `data-section` from their builders. Fixed the pin label that was dark on dark in light mode. Details: `docs/design-system.md`.

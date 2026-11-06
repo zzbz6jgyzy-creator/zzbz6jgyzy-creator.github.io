@@ -1,29 +1,73 @@
-/* Section themes: one design language, two temperatures.
+/* Section themes: one design language, two temperatures (plus a quiet third for Grok).
    Tesla = the product (warm neutral black, red). SpaceX = the mission (night blue-black, ice blue).
-   Shared: type, grid, cards, spacing, motion rules. Only the tokens and the heading signature differ.
-   Set by data-section on <main>. Loaded after the section stylesheets. See docs/design-system.md. */
+   Grok = cool silver. Shared: type, grid, cards, spacing, motion rules. Only tokens and the heading signature differ.
+   html[data-section] is set by theme-boot.js from one path map; this file is added there too for pages that do not link it.
+   Bump SECTION_CSS_V in theme-boot.js and the ?v= on the hub links when this changes. See docs/design-system.md. */
 
+html[data-section][data-section=tesla]{--sec-accent:#e31937;--sec-glow:rgba(227,25,55,.16)}
+html[data-section][data-section=spacex]{--sec-accent:#93d9f0;--sec-glow:rgba(147,217,240,.14)}
+html[data-section][data-section=grok]{--sec-accent:#cfd6e4;--sec-glow:rgba(207,214,228,.12)}
+html[data-theme=light][data-section=tesla]{--sec-accent:#ba0935}
+html[data-theme=light][data-section=spacex]{--sec-accent:#075a7b}
+html[data-theme=light][data-section=grok]{--sec-accent:#39425a}
+
+/* Browser focus ring and text selection follow the section (all pages in it) */
+html[data-section] :focus-visible{outline-color:var(--sec-accent)}
+html[data-section][data-section]::selection,html[data-section][data-section] ::selection{background:color-mix(in srgb,var(--sec-accent) 38%,transparent)}
+
+/* ---- Hubs --------------------------------------------------------------------------------- */
 /* Tesla: red "charge line" under each section heading */
-main[data-section=tesla]{--sec-accent:#e31937;--sec-glow:rgba(227,25,55,.16)}
-main[data-section=tesla] .to-section-head h2::after{content:"";display:block;width:64px;height:2px;margin-top:18px;border-radius:2px;background:linear-gradient(90deg,var(--sec-accent) 0 62%,rgba(227,25,55,.3) 62% 100%)}
+html[data-section][data-section=tesla] .to-section-head h2::after{content:"";display:block;width:64px;height:2px;margin-top:18px;border-radius:2px;background:linear-gradient(90deg,var(--sec-accent) 0 62%,rgba(227,25,55,.3) 62% 100%)}
 
-/* SpaceX: ice-blue accent, and a thin "trajectory arc" under each section heading.
-   The primary button and the pressed state move from red to ice so red is left for warnings. */
-main[data-section=spacex]{--sec-accent:#93d9f0;--sec-glow:rgba(147,217,240,.14);--sx-red:#93d9f0}
-html:not([data-theme=light]) main[data-section=spacex] .sx-kicker{color:var(--sx-ice)!important}
-html[data-theme=light] main[data-section=spacex] .sx-section-head .sx-kicker{color:#075a7b!important}
-main[data-section=spacex] .sx-primary{background:#93d9f0;border-color:#c4ecf8;color:#06121a!important}
-main[data-section=spacex] .sx-primary:hover{background:#b6e6f6}
-html:not([data-theme=light]) main[data-section=spacex] button[aria-pressed=true]{background:rgba(147,217,240,.14);border-color:var(--sx-ice)}
-main[data-section=spacex] .sx-section-head h2::after{content:"";display:block;width:96px;height:16px;margin-top:16px;border-top:1.5px solid var(--sec-accent);border-radius:50% 50% 0 0/100% 100% 0 0;opacity:.85}
-html[data-theme=light] main[data-section=spacex]{--sec-accent:#075a7b;--sx-red:#075a7b}
-html[data-theme=light] main[data-section=spacex] .sx-primary{background:#075a7b;border-color:#075a7b;color:#fff!important}
-html[data-theme=light] main[data-section=spacex] .sx-primary:hover{background:#06496a}
-html[data-theme=light] main[data-section=tesla]{--sec-accent:#ba0935}
-/* The SpaceX hero is dark in both themes, so it keeps the light ice values in light mode too */
-html[data-theme=light] main[data-section=spacex] .sx-hero{--sx-ice:#93d9f0}
-html[data-theme=light] main[data-section=spacex] .sx-hero .sx-kicker{color:#93d9f0!important}
-html[data-theme=light] main[data-section=spacex] .sx-hero .sx-primary{background:#93d9f0;border-color:#c4ecf8;color:#06121a!important}
-html[data-theme=light] main[data-section=spacex] .sx-hero .sx-primary:hover{background:#b6e6f6}
-/* Pin buttons sit on dark programme cards in both themes (the label was dark on dark in light mode) */
-html[data-theme=light] main[data-section=spacex] .sx-pin{color:#eaf4fa}
+/* SpaceX hub: ice accent, "trajectory arc" under each section heading; red is left for warnings */
+html[data-section][data-section=spacex] .sx-studio{--sx-red:#93d9f0}
+html:not([data-theme=light])[data-section][data-section=spacex] .sx-kicker{color:var(--sx-ice)!important}
+html[data-section][data-section=spacex] .sx-primary{background:#93d9f0;border-color:#c4ecf8;color:#06121a!important}
+html[data-section][data-section=spacex] .sx-primary:hover{background:#b6e6f6}
+html:not([data-theme=light])[data-section][data-section=spacex] .sx-studio button[aria-pressed=true]{background:rgba(147,217,240,.14);border-color:var(--sx-ice)}
+html[data-section][data-section=spacex] .sx-section-head h2::after{content:"";display:block;width:96px;height:16px;margin-top:16px;border-top:1.5px solid var(--sec-accent);border-radius:50% 50% 0 0/100% 100% 0 0;opacity:.85}
+html[data-theme=light][data-section=spacex] .sx-studio{--sx-red:#075a7b}
+html[data-theme=light][data-section=spacex] .sx-section-head .sx-kicker{color:#075a7b!important}
+html[data-theme=light][data-section=spacex] .sx-primary{background:#075a7b;border-color:#075a7b;color:#fff!important}
+html[data-theme=light][data-section=spacex] .sx-primary:hover{background:#06496a}
+/* The SpaceX hero and programme cards are dark in both themes: they keep the light ice values */
+html[data-theme=light][data-section=spacex] .sx-hero{--sx-ice:#93d9f0}
+html[data-theme=light][data-section=spacex] .sx-hero .sx-kicker{color:#93d9f0!important}
+html[data-theme=light][data-section=spacex] .sx-hero .sx-primary{background:#93d9f0;border-color:#c4ecf8;color:#06121a!important}
+html[data-theme=light][data-section=spacex] .sx-hero .sx-primary:hover{background:#b6e6f6}
+html[data-theme=light][data-section=spacex] .sx-pin{color:#eaf4fa}
+html[data-theme=light][data-section=tesla] .to-studio{--to-accent:#ba0935}
+
+/* ---- Other SpaceX studios: move the studio's own red token to the section accent ----------- */
+html[data-section][data-section=spacex] .ss-page{--ss-red:var(--sec-accent)}
+html[data-section][data-section=spacex] .lv-page{--lv-red:var(--sec-accent)}
+html[data-section][data-section=spacex] .ss-primary,html[data-section][data-section=spacex] .lv-primary{background:#93d9f0;border-color:#c4ecf8;color:#06121a!important;box-shadow:none}
+html[data-section][data-section=spacex] .ss-primary:hover,html[data-section][data-section=spacex] .lv-primary:hover{background:#b6e6f6;border-color:#c4ecf8}
+html[data-theme=light][data-section=spacex] .ss-primary,html[data-theme=light][data-section=spacex] .lv-primary{background:#075a7b;border-color:#075a7b;color:#fff!important}
+html[data-theme=light][data-section=spacex] .ss-primary:hover,html[data-theme=light][data-section=spacex] .lv-primary:hover{background:#06496a}
+html[data-theme=light][data-section=spacex] .ss-hero .ss-primary,html[data-theme=light][data-section=spacex] .lv-hero-copy .lv-primary{background:#93d9f0;border-color:#c4ecf8;color:#06121a!important}
+html[data-section][data-section=spacex]:root{--red:#93d9f0}             /* starship-replay is dark-only */
+html[data-section][data-section=spacex] .sl-hero-copy h1 span{color:var(--sec-accent)}
+html[data-section][data-section=spacex] .sl-zoom input{accent-color:var(--sec-accent)}
+html[data-section][data-section=spacex] .sl-zoom input:focus-visible{outline-color:var(--sec-accent)}
+
+/* ---- Grok: a quiet silver instead of red ---------------------------------------------------- */
+html[data-section][data-section=grok] .gx-studio,html[data-section][data-section=grok] main{--gx-accent:var(--sec-accent);--gx-red:var(--sec-accent);--gx-glow:var(--sec-glow)}
+html[data-section][data-section=grok] .gx-button:not(.gx-secondary){background:#e3e8f1;border-color:#e3e8f1;color:#0b0e14!important}
+html[data-section][data-section=grok] .gx-button:not(.gx-secondary):hover{background:#f4f6fa}
+html[data-theme=light][data-section=grok] .gx-button:not(.gx-secondary){background:#39425a;border-color:#39425a;color:#fff!important}
+html[data-theme=light][data-section=grok] .gx-button:not(.gx-secondary):hover{background:#2c3447}
+
+/* ---- See the launch: its hero and compass hard-code pink tints; move them to the ice accent ---- */
+html[data-section][data-section=spacex] .lv-hero-v3 h1 em,html[data-theme=light][data-section=spacex] .lv-hero-v3 h1 em{color:#93d9f0}
+html[data-section][data-section=spacex] .lv-page .lv-hero-v3 .lv-eyebrow{color:#93d9f0}
+html[data-section][data-section=spacex] .lv-orbit-label i,html[data-section][data-section=spacex] .lv-pulse{background:#93d9f0}
+html[data-section][data-section=spacex] .lv-nav>.lv-nav-compass,html[data-section][data-section=spacex] .lv-page .lv-nav>.lv-nav-compass{color:#cdeefa;border-color:#93d9f055;background:#93d9f014}
+html[data-section][data-section=spacex] .lv-page .lv-launch-card:before{background:linear-gradient(#93d9f0,#679bbf44)}
+html[data-section][data-section=spacex] .lv-page svg [stroke="#ff496b"],html[data-section][data-section=spacex] .lv-page svg [stroke="#ff7893"]{stroke:#93d9f0}
+html[data-section][data-section=spacex] .lv-page svg [fill="#ff496b"],html[data-section][data-section=spacex] .lv-page svg [fill="#ff7893"]{fill:#93d9f0}
+html[data-section][data-section=grok] svg [stroke="#e31937"]{stroke:var(--sec-accent)}
+html[data-section][data-section=grok] svg [fill="#e31937"]{fill:var(--sec-accent)}
+html[data-section][data-section=grok] .gx-art-sun{background:radial-gradient(circle,rgba(207,214,228,.55) 0,rgba(207,214,228,.18) 28%,transparent 67%)}
+html[data-theme=light][data-section=grok] .gx-art-sun{background:radial-gradient(circle,rgba(57,66,90,.35) 0,rgba(57,66,90,.12) 28%,transparent 67%)}
+html[data-section][data-section=grok] .gx-wave i{background:linear-gradient(#e3e8f1,#8a93a8);box-shadow:0 0 22px rgba(207,214,228,.15)}

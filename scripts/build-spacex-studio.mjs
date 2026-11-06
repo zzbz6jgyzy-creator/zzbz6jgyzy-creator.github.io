@@ -54,7 +54,7 @@ export function buildSpaceXStudio(root=ROOT){
   const schema={'@context':'https://schema.org','@type':'CollectionPage','@id':'https://superchargeddaily.com/spacex.html#page',url:'https://superchargeddaily.com/spacex.html',name:title,description,dateModified:data.reviewed,isPartOf:{'@type':'WebSite',name:'Supercharged Daily',url:'https://superchargeddaily.com/'},mainEntity:{'@type':'ItemList',itemListElement:data.tools.map((t,i)=>({'@type':'ListItem',position:i+1,name:t.name,url:'https://superchargeddaily.com'+t.href}))}};
   html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>`<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
   if(!html.includes('/spacex-studio.css'))html=html.replace('</head>','    <link rel="stylesheet" href="/spacex-studio.css?v=20261025"/>\n  </head>');
-  html=html.replace(/\s*<link rel="stylesheet" href="\/section-theme\.css[^>]*>/g,'').replace('</head>','    <link rel="stylesheet" href="/section-theme.css?v=20261106"/>\n  </head>');
+  html=html.replace(/\s*<link rel="stylesheet" href="\/section-theme\.css[^>]*>/g,'').replace('</head>','    <link rel="stylesheet" href="/section-theme.css?v=20261106e"/>\n  </head>');
   fs.writeFileSync(path.join(root,'spacex.html'),html);
   const searchPath=path.join(root,'data/pages.json'), search=JSON.parse(fs.readFileSync(searchPath,'utf8'));
   const records=[{url:'/spacex.html',title:'SpaceX mission hub',tag:'SpaceX',summary:description},...[
