@@ -173,6 +173,24 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-spacex-government-contracts.html",
+      "image": "/assets/dispatch/falcon9-crew10-launch.jpg",
+      "title": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
+      "summary": "Elon Musk said Tesla has no government contracts and that government revenue will be under 10% of SpaceX revenue this quarter and under 5% a year from now, quoting a Warren Redlich draft letter. Those figures are his claims on X, not filings.",
+      "tag": "Governance",
+      "date": "2026-11-06T18:31:00Z",
+      "thumb": "/assets/dispatch/falcon9-crew10-launch-480w.webp"
+    },
+    {
+      "url": "/dispatch/model-y-australia-passenger-car.html",
+      "image": "/assets/dispatch/tesla-model-y-juniper.jpg",
+      "title": "The Tesla Model Y is Australia's best-selling passenger car through October, with 39,035 sold against 35,927 RAV4s",
+      "summary": "CarsGuide reports the Tesla Model Y sold 39,035 units in Australia from January to October 2026, ahead of the Toyota RAV4's 35,927. Elon called it the best-selling car of any kind on Earth; the figures cover Australian passenger cars only.",
+      "tag": "Tesla",
+      "date": "2026-11-06T18:31:00Z",
+      "thumb": "/assets/dispatch/tesla-model-y-juniper-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-si-roadmap.html",
       "image": "/assets/dispatch/tesla-dojo-tile-2023.jpg",
       "title": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",
@@ -207,25 +225,7 @@
       "tag": "Markets",
       "date": "2026-11-05T14:44:00Z",
       "thumb": "/assets/og-v2-480w.webp"
-    },
-    {
-      "url": "/dispatch/rdw-tesla-assisted-driving-10-percent.html",
-      "image": "/assets/og-v2.jpg",
-      "title": "Dutch regulator approves Tesla's cut to the FSD speed margin, from +50% to +10%, and a new name",
-      "summary": "RDW approved Tesla's requested changes to FSD Supervised: a new name, Tesla Assisted Driving, and a driver-set speed margin capped at +10% (down from +50%). No OTA date yet; EU-wide approval still pending (as of 5 Nov 2026).",
-      "tag": "FSD",
-      "date": "2026-11-05T09:40:00Z",
-      "thumb": "/assets/og-v2-480w.webp"
-    },
-    {
-      "url": "/dispatch/musk-pay-spacex-tesla-merger-control.html",
-      "image": "/assets/dispatch/musk-royal-society-2018.jpg",
-      "title": "A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal",
-      "summary": "No deal exists yet, but a Reuters analysis and Tesla's filings show a SpaceX takeover could give Musk Tesla voting control while skipping his pay plan's robotaxi and robot goals.",
-      "tag": "Governance",
-      "date": "2026-11-03T14:41:00Z",
-      "thumb": "/assets/dispatch/musk-royal-society-2018-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-06T16:00:00Z"
+  "articlesUpdated": "2026-11-06T18:31:00Z"
 }
