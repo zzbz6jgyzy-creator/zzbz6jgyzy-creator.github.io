@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T04:21:39.124Z",
+  "updated": "2026-11-06T07:58:34.077Z",
   "changes": [
     {
       "type": "changed",
@@ -391,40 +391,6 @@
       "summary": "2026.38.5.11 moved from 718 to 792 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.11",
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-28T22:53:49.000Z|792"
-    },
-    {
-      "type": "changed",
-      "factId": "starship:event:starship-flight-15",
-      "topic": "starship",
-      "tracker": "starship",
-      "field": "event:starship-flight-15",
-      "previous": "2026-11-12T06:00:00.000Z|net",
-      "next": "2026-11-13T06:00:00.000Z|net",
-      "at": "2026-10-28T09:15:00.000Z",
-      "evidence": "estimated",
-      "source": "Starship Flight 15 wiki, citing the FAA CADENA/COMPASS planning slide of 5 Nov 2026: NET 13 Nov (https://starship-spacex.fandom.com/wiki/Starship_Flight_15). We have not opened the slide ourselves; Wikipedia's Starship flight 15 infobox also reads NET November 13, 2026.",
-      "sourceUrl": "",
-      "href": "/calendar.html",
-      "summary": "Starship Flight 15 changed from 2026-11-12T06:00:00.000Z|net to 2026-11-13T06:00:00.000Z|net.",
-      "title": "Starship Flight 15",
-      "id": "changed|starship:event:starship-flight-15|2026-10-28T09:15:00.000Z|2026-11-13T06:00:00.000Z|net"
-    },
-    {
-      "type": "changed",
-      "factId": "starship:next-flight",
-      "topic": "starship",
-      "tracker": "starship",
-      "field": "next-flight",
-      "previous": "15|2026-11-12|day",
-      "next": "15|2026-11-13|day",
-      "at": "2026-10-28T09:15:00.000Z",
-      "evidence": "estimated",
-      "source": "FAA planning slides",
-      "sourceUrl": "",
-      "href": "/starship.html",
-      "summary": "Next Starship flight changed from 15|2026-11-12|day to 15|2026-11-13|day.",
-      "title": "Next Starship flight",
-      "id": "changed|starship:next-flight|2026-10-28T09:15:00.000Z|15|2026-11-13|day"
     },
     {
       "type": "changed",

@@ -728,20 +728,20 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-dream-scenario-poster.jpg" type="image/jpeg" />
     </item>
     <item>
+      <title>Tracker: 2026.38.5.12</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.12-2026-11-06T03:43:35.000Z-242</guid>
+      <pubDate>Fri, 06 Nov 2026 03:43:35 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.5.12 moved from 59 to 242 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
+    </item>
+    <item>
       <title>Tracker: Flight 15 change</title>
       <link>https://superchargeddaily.com/starship.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starship.html#logged-starship:schedule-2026-11-05T00:00:00.000Z-Community-trackers-report-that</guid>
       <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
       <category>starship</category>
       <description>Community trackers report that the FAA’s CADENA/COMPASS air-traffic planning slide dated 5 Nov 2026 lists Starship Flight 15 on 13 Nov, one day later than the 12 Nov on the 29 Oct slides. We have not opened the slide ourselves. Still no FAA Flight 15 licence and no SpaceX date.</description>
-    </item>
-    <item>
-      <title>Tracker: 2026.38.5.12</title>
-      <link>https://superchargeddaily.com/updates.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.12-2026-11-05T23:42:36.000Z-59</guid>
-      <pubDate>Thu, 05 Nov 2026 23:42:36 +0000</pubDate>
-      <category>software</category>
-      <description>2026.38.5.12 moved from 15 to 59 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
@@ -784,22 +784,6 @@
       <description>2026.38.5.11 moved from 792 to 850 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
     </item>
     <item>
-      <title>Tracker: Starship Flight 15</title>
-      <link>https://superchargeddaily.com/calendar.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/calendar.html#changed-starship:event:starship-flight-15-2026-10-28T09:15:00.000Z-2026-11-13T06</guid>
-      <pubDate>Wed, 28 Oct 2026 09:15:00 +0000</pubDate>
-      <category>starship</category>
-      <description>Starship Flight 15 changed from 2026-11-12T06:00:00.000Z|net to 2026-11-13T06:00:00.000Z|net.</description>
-    </item>
-    <item>
-      <title>Tracker: Next Starship flight</title>
-      <link>https://superchargeddaily.com/starship.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/starship.html#changed-starship:next-flight-2026-10-28T09:15:00.000Z-15-2026-11-13-day</guid>
-      <pubDate>Wed, 28 Oct 2026 09:15:00 +0000</pubDate>
-      <category>starship</category>
-      <description>Next Starship flight changed from 15|2026-11-12|day to 15|2026-11-13|day.</description>
-    </item>
-    <item>
       <title>Tracker: Texas Cybercab count</title>
       <link>https://superchargeddaily.com/cybercab.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/cybercab.html#changed-robotaxi:tx-cybercab-2026-10-28T00:00:00.000Z-573</guid>
@@ -822,6 +806,22 @@
       <pubDate>Sat, 24 Oct 2026 23:42:11 +0000</pubDate>
       <category>software</category>
       <description>2026.38.5.6 first appeared in the Teslascope sample with 62 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
+    </item>
+    <item>
+      <title>Tracker: availability</title>
+      <link>https://superchargeddaily.com/fsd-europe.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/fsd-europe.html#logged-fsd:availability-2026-10-23T00:00:00.000Z-Tesla-s-current-support-page-li</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>fsd</category>
+      <description>Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.</description>
+    </item>
+    <item>
+      <title>Tracker: 2026.38.3.2</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.3.2-2026-10-22T20:53:15.000Z-3</guid>
+      <pubDate>Thu, 22 Oct 2026 20:53:15 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
   </channel>
 </rss>
