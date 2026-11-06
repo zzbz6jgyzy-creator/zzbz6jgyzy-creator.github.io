@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T11:26:49.481Z",
+  "updated": "2026-11-06T11:33:53.327Z",
   "changes": [
     {
       "type": "changed",
@@ -119,6 +119,23 @@
       "summary": "RDW approved Tesla's requested changes to FSD Supervised: a new name, Tesla Assisted Driving, and a driver-set speed margin capped at +10% (down from +50%). No OTA date yet; EU-wide approval still pending (as of 5 Nov 2026).",
       "title": "Dutch regulator approves Tesla's cut to the FSD speed margin, from +50% to +10%, and a new name",
       "id": "logged|dispatch:/dispatch/rdw-tesla-assisted-driving-10-percent.html|2026-11-05T09:40:00.000Z|Dutch regulator approves Tesla's cut to the FSD speed margin, from +50% to +10%, and a new name"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "Eric Berger reported on X that SpaceX vice president of launch Kiko Dontchev said at the UP.Summit that the company is targeting Friday 13 Nov for Starship Flight 15. This is a stated target, relayed by TeslaNorth; we have not opened Berger’s post ourselves. It is not a launch time, and there is still no FAA Flight 15 licence and no official SpaceX mission page.",
+      "at": "2026-11-05T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "TeslaNorth, citing Eric Berger on X (5 Nov 2026)",
+      "sourceUrl": "https://teslanorth.com/2026/11/05/starship-flight-15-nov-13/",
+      "href": "/starship.html#schedule",
+      "summary": "Eric Berger reported on X that SpaceX vice president of launch Kiko Dontchev said at the UP.Summit that the company is targeting Friday 13 Nov for Starship Flight 15. This is a stated target, relayed by TeslaNorth; we have not opened Berger’s post ourselves. It is not a launch time, and there is still no FAA Flight 15 licence and no official SpaceX mission page.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-05T00:00:00.000Z|Eric Berger reported on X that SpaceX vice president of launch Kiko Dontchev said at the UP.Summit that the company is targeting Friday 13 Nov for Starship Flight 15. This is a stated target, relayed by TeslaNorth; we have not opened Berger’s post ourselves. It is not a launch time, and there is still no FAA Flight 15 licence and no official SpaceX mission page."
     },
     {
       "type": "logged",
