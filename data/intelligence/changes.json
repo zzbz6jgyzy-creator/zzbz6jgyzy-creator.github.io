@@ -1,6 +1,40 @@
 {
-  "updated": "2026-11-06T07:58:34.077Z",
+  "updated": "2026-11-06T10:54:46.930Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:wave:2026.38.5.12",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.12",
+      "previous": "242",
+      "next": "316",
+      "at": "2026-11-06T10:40:44.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.12 moved from 242 to 316 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "title": "2026.38.5.12",
+      "id": "changed|tesla-software:wave:2026.38.5.12|2026-11-06T10:40:44.000Z|316"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/cybertruck-texas-wind-down.html",
+      "topic": "production",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab",
+      "at": "2026-11-06T09:02:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/cybertruck-texas-wind-down.html",
+      "href": "/dispatch/cybertruck-texas-wind-down.html",
+      "summary": "Musk said Cybertruck production at Giga Texas winds down around mid-2027 for more Cybercab. Tesla still calls Austin the truck's home; Wes Morrill says parts and service continue (as of 6 Nov 2026).",
+      "title": "Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab",
+      "id": "logged|dispatch:/dispatch/cybertruck-texas-wind-down.html|2026-11-06T09:02:00.000Z|Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab"
+    },
     {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.12",
@@ -289,23 +323,6 @@
       "summary": "2026.39.6 first appeared in the Teslascope sample with 4 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.39.6",
       "id": "appeared|tesla-software:wave:2026.39.6|2026-10-30T23:18:01.000Z|4"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/robotaxi-2am-20-hours.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”",
-      "at": "2026-10-30T14:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/robotaxi-2am-20-hours.html",
-      "href": "/dispatch/robotaxi-2am-20-hours.html",
-      "summary": "Tesla’s official Robotaxi account says rides now run 6am to 2am, nine days after Tesla said 2am was coming “pretty soon.” The post also adds Calm Mode and Grok in Model Y.",
-      "title": "Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”",
-      "id": "logged|dispatch:/dispatch/robotaxi-2am-20-hours.html|2026-10-30T14:40:00.000Z|Tesla Robotaxi now runs until 2am, 20 hours a day, nine days after Tesla said 2am was coming “pretty soon”"
     },
     {
       "type": "appeared",
@@ -833,23 +850,6 @@
       "summary": "On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time.",
       "title": "Flight 15 change",
       "id": "logged|starship:schedule|2026-10-20T00:00:00.000Z|On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time."
-    },
-    {
-      "type": "changed",
-      "factId": "tesla-software:wave:2026.38.5.1",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.5.1",
-      "previous": "658",
-      "next": "727",
-      "at": "2026-10-18T02:50:02.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 moved from 658 to 727 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
-      "title": "2026.38.5.1",
-      "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-18T02:50:02.000Z|727"
     },
     {
       "type": "logged",

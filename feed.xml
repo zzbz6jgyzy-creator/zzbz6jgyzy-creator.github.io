@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 05 Nov 2026 20:47:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 09:02:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab</title>
+      <link>https://superchargeddaily.com/dispatch/cybertruck-texas-wind-down.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/cybertruck-texas-wind-down.html</guid>
+      <pubDate>Fri, 06 Nov 2026 09:02:00 +0000</pubDate>
+      <category>Cybertruck</category>
+      <description>Musk said Cybertruck production at Giga Texas winds down around mid-2027 for more Cybercab. Tesla still calls Austin the truck's home; Wes Morrill says parts and service continue (as of 6 Nov 2026).</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/cybertruck-skoyen-2024.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get</title>
       <link>https://superchargeddaily.com/dispatch/evgo-first-tesla-supercharger-chicago.html</link>
@@ -719,21 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/cybercab-349-texas-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>The Tesla dream scenario</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-dream-scenario.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-dream-scenario.html</guid>
-      <pubDate>Wed, 14 Oct 2026 21:56:55 +0000</pubDate>
-      <category>Tesla</category>
-      <description>Optimus, Cybercab, a thruster Roadster and a truck for Mars: what's real, and what could be.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-dream-scenario-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
       <title>Tracker: 2026.38.5.12</title>
       <link>https://superchargeddaily.com/updates.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.12-2026-11-06T03:43:35.000Z-242</guid>
-      <pubDate>Fri, 06 Nov 2026 03:43:35 +0000</pubDate>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:wave:2026.38.5.12-2026-11-06T10:40:44.000Z-316</guid>
+      <pubDate>Fri, 06 Nov 2026 10:40:44 +0000</pubDate>
       <category>software</category>
-      <description>2026.38.5.12 moved from 59 to 242 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
+      <description>2026.38.5.12 moved from 242 to 316 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
     </item>
     <item>
       <title>Tracker: Flight 15 change</title>
