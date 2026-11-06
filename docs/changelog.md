@@ -1,3 +1,7 @@
+## 2026-11-06 — On-time data refresh (Worker, needs your setup)
+
+- New `workers/sd-refresh/`: a Cloudflare Worker whose cron triggers dispatch the snapshot and refresh workflows on time (GitHub's own schedule drifts 4 to 8 hours). Nothing changes until you deploy it with a GitHub token; steps in `workers/sd-refresh/README.md`.
+
 ## 2026-11-04 — Audit fixes
 
 - Accessibility: menu Search link label, search results structure, Subscribe button and kicker contrast in the arcade pages, unique `aside` labels on FSD Europe and Updates, the Support button inside `main`.

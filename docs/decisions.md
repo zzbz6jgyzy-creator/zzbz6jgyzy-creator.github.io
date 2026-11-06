@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-11-06 · Refresh cadence comes from a Cloudflare cron, not GitHub's schedule
+
+- **Decision:** a Worker (`workers/sd-refresh/`) dispatches the refresh workflows with `workflow_dispatch`. The GitHub `schedule:` triggers stay as a fallback.
+- **Why:** GitHub's scheduler ran our "every 30 minutes" jobs every 4 to 8 hours, so trackers lagged on busy news days. Cloudflare is already in front of the site. Cost: one fine-grained token (this repo, Actions write) that expires and must be renewed.
+- **Rejected:** removing the GitHub schedules (no fallback if the token lapses); polling from the browser (leaks nothing but cannot commit data).
+
 ## 2026-10-31 · Earth explorer: dots stay on the world
 
 - **Decision:** occupancy may shift a planet’s name, never its tap dot. Inner worlds that project onto the Sun lose their label.
