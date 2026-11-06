@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-05T23:46:29.441Z",
+  "updated": "2026-11-06T04:21:39.124Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "tesla-software:wave:2026.38.5.12",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.12",
+      "previous": "59",
+      "next": "242",
+      "at": "2026-11-06T03:43:35.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.12 moved from 59 to 242 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "title": "2026.38.5.12",
+      "id": "changed|tesla-software:wave:2026.38.5.12|2026-11-06T03:43:35.000Z|242"
+    },
     {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.12",
@@ -867,23 +884,6 @@
       "summary": "2026.38.5.1 moved from 658 to 727 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.1",
       "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-18T02:50:02.000Z|727"
-    },
-    {
-      "type": "changed",
-      "factId": "tesla-software:wave:2026.38.5.1",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.5.1",
-      "previous": "329",
-      "next": "426",
-      "at": "2026-10-16T05:50:23.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.1 moved from 329 to 426 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
-      "title": "2026.38.5.1",
-      "id": "changed|tesla-software:wave:2026.38.5.1|2026-10-16T05:50:23.000Z|426"
     },
     {
       "type": "logged",
