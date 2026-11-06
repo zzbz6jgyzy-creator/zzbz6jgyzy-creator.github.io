@@ -1,0 +1,29 @@
+/* Section themes: one design language, two temperatures.
+   Tesla = the product (warm neutral black, red). SpaceX = the mission (night blue-black, ice blue).
+   Shared: type, grid, cards, spacing, motion rules. Only the tokens and the heading signature differ.
+   Set by data-section on <main>. Loaded after the section stylesheets. See docs/design-system.md. */
+
+/* Tesla: red "charge line" under each section heading */
+main[data-section=tesla]{--sec-accent:#e31937;--sec-glow:rgba(227,25,55,.16)}
+main[data-section=tesla] .to-section-head h2::after{content:"";display:block;width:64px;height:2px;margin-top:18px;border-radius:2px;background:linear-gradient(90deg,var(--sec-accent) 0 62%,rgba(227,25,55,.3) 62% 100%)}
+
+/* SpaceX: ice-blue accent, and a thin "trajectory arc" under each section heading.
+   The primary button and the pressed state move from red to ice so red is left for warnings. */
+main[data-section=spacex]{--sec-accent:#93d9f0;--sec-glow:rgba(147,217,240,.14);--sx-red:#93d9f0}
+html:not([data-theme=light]) main[data-section=spacex] .sx-kicker{color:var(--sx-ice)!important}
+html[data-theme=light] main[data-section=spacex] .sx-section-head .sx-kicker{color:#075a7b!important}
+main[data-section=spacex] .sx-primary{background:#93d9f0;border-color:#c4ecf8;color:#06121a!important}
+main[data-section=spacex] .sx-primary:hover{background:#b6e6f6}
+html:not([data-theme=light]) main[data-section=spacex] button[aria-pressed=true]{background:rgba(147,217,240,.14);border-color:var(--sx-ice)}
+main[data-section=spacex] .sx-section-head h2::after{content:"";display:block;width:96px;height:16px;margin-top:16px;border-top:1.5px solid var(--sec-accent);border-radius:50% 50% 0 0/100% 100% 0 0;opacity:.85}
+html[data-theme=light] main[data-section=spacex]{--sec-accent:#075a7b;--sx-red:#075a7b}
+html[data-theme=light] main[data-section=spacex] .sx-primary{background:#075a7b;border-color:#075a7b;color:#fff!important}
+html[data-theme=light] main[data-section=spacex] .sx-primary:hover{background:#06496a}
+html[data-theme=light] main[data-section=tesla]{--sec-accent:#ba0935}
+/* The SpaceX hero is dark in both themes, so it keeps the light ice values in light mode too */
+html[data-theme=light] main[data-section=spacex] .sx-hero{--sx-ice:#93d9f0}
+html[data-theme=light] main[data-section=spacex] .sx-hero .sx-kicker{color:#93d9f0!important}
+html[data-theme=light] main[data-section=spacex] .sx-hero .sx-primary{background:#93d9f0;border-color:#c4ecf8;color:#06121a!important}
+html[data-theme=light] main[data-section=spacex] .sx-hero .sx-primary:hover{background:#b6e6f6}
+/* Pin buttons sit on dark programme cards in both themes (the label was dark on dark in light mode) */
+html[data-theme=light] main[data-section=spacex] .sx-pin{color:#eaf4fa}

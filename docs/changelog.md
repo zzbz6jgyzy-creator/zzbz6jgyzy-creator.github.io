@@ -1,3 +1,7 @@
+## 2026-11-06 — Tesla and SpaceX section themes
+
+- New `section-theme.css`: SpaceX moves to ice blue (kickers, primary button, pinned state) with a trajectory arc under section headings; Tesla gets a red charge line. Both hubs set `data-section` from their builders. Fixed the pin label that was dark on dark in light mode. Details: `docs/design-system.md`.
+
 ## 2026-11-06 — On-time data refresh (Worker, needs your setup)
 
 - New `workers/sd-refresh/`: a Cloudflare Worker whose cron triggers dispatch the snapshot and refresh workflows on time (GitHub's own schedule drifts 4 to 8 hours). Nothing changes until you deploy it with a GitHub token; steps in `workers/sd-refresh/README.md`.
