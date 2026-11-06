@@ -1,6 +1,18 @@
 {
-  "updated": "2026-11-06T09:02:00Z",
+  "updated": "2026-11-06T16:00:00Z",
   "articles": [
+    {
+      "url": "/dispatch/tesla-si-roadmap.html",
+      "title": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",
+      "date": "2026-11-06T16:00:00Z",
+      "topic": "tesla",
+      "tag": "Hardware",
+      "image": "/assets/dispatch/tesla-dojo-tile-2023.jpg",
+      "summary": "Tom's Hardware published a photographed Tesla slide renaming HW4 to SI4, listing SI5 at 40x and SI6 at 80x, with Dojo 3 aimed at space. Tesla and Musk have not posted the slide (as of 6 Nov 2026).",
+      "pinned": false,
+      "imageAlt": "Tesla Dojo supercomputer tile with a grid of D1 chips under a clear cover",
+      "author": "Alex R"
+    },
     {
       "url": "/dispatch/cybertruck-texas-wind-down.html",
       "title": "Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab",

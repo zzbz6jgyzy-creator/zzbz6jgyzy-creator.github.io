@@ -160,11 +160,11 @@
     ]
   },
   "software": {
-    "updated": "2026-11-06T10:40:44Z",
+    "updated": "2026-11-06T11:37:33Z",
     "id": "2026.38.5.12",
     "firstSeen": "2026-11-04T21:22:58Z",
     "source": "https://teslascope.com/software",
-    "count": 316
+    "count": 322
   },
   "europe": {
     "updated": "2026-11-05",
@@ -172,6 +172,15 @@
     "recognised": 10
   },
   "stories": [
+    {
+      "url": "/dispatch/tesla-si-roadmap.html",
+      "image": "/assets/dispatch/tesla-dojo-tile-2023.jpg",
+      "title": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",
+      "summary": "Tom's Hardware published a photographed Tesla slide renaming HW4 to SI4, listing SI5 at 40x and SI6 at 80x, with Dojo 3 aimed at space. Tesla and Musk have not posted the slide (as of 6 Nov 2026).",
+      "tag": "Hardware",
+      "date": "2026-11-06T16:00:00Z",
+      "thumb": "/assets/dispatch/tesla-dojo-tile-2023-480w.webp"
+    },
     {
       "url": "/dispatch/cybertruck-texas-wind-down.html",
       "image": "/assets/dispatch/cybertruck-skoyen-2024.jpg",
@@ -216,16 +225,7 @@
       "tag": "Governance",
       "date": "2026-11-03T14:41:00Z",
       "thumb": "/assets/dispatch/musk-royal-society-2018-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-robotaxi-fort-worth.html",
-      "image": "/assets/og-v2.jpg",
-      "title": "Tesla Robotaxi launches in Fort Worth with an estimated 143-square-mile zone, but it still hasn't passed Waymo in Texas",
-      "summary": "Tesla Robotaxi opened in Fort Worth from 6am CT on 2 Nov in a zone estimated at 143 sq mi. Texas DMV lists 1,244 Teslas, 15 short of Waymo's 1,259 (as of 2 Nov 2026).",
-      "tag": "Robotaxi",
-      "date": "2026-11-02T20:41:00Z",
-      "thumb": "/assets/og-v2-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-06T09:02:00Z"
+  "articlesUpdated": "2026-11-06T16:00:00Z"
 }
