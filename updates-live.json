@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T10:28:03Z",
+  "updated": "2026-11-07T16:39:36Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3293,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.12",
       "date": "2026-11-04",
-      "count": 477,
+      "count": 490,
       "fleet": 3293,
-      "percent": 14.5,
+      "percent": 14.9,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -55,14 +55,14 @@
         "MX"
       ],
       "countryCounts": {
-        "US": 452,
+        "US": 465,
         "CA": 22,
         "PR": 2,
         "MX": 1
       },
-      "pending": 114,
+      "pending": 93,
       "firstSeen": "2026-11-04T21:22:58Z",
-      "lastSeen": "2026-11-07T09:51:38Z"
+      "lastSeen": "2026-11-07T16:22:51Z"
     },
     {
       "id": "2026.39.6",
@@ -177,9 +177,9 @@
     {
       "id": "2026.38.6",
       "date": "2026-10-29",
-      "count": 290,
+      "count": 296,
       "fleet": 3293,
-      "percent": 8.8,
+      "percent": 9.0,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -230,12 +230,12 @@
         "AT",
         "PL",
         "BE",
+        "ES",
+        "PT",
         "TW",
         "CZ",
         "NO",
-        "ES",
         "HU",
-        "PT",
         "SE",
         "SK",
         "IL",
@@ -253,11 +253,12 @@
         "TH",
         "TR",
         "GR",
-        "RO"
+        "RO",
+        "CO"
       ],
       "countryCounts": {
-        "US": 88,
-        "GB": 43,
+        "US": 90,
+        "GB": 44,
         "DE": 24,
         "FR": 17,
         "CA": 11,
@@ -268,12 +269,12 @@
         "AT": 7,
         "PL": 6,
         "BE": 6,
+        "ES": 5,
+        "PT": 4,
         "TW": 4,
         "CZ": 4,
         "NO": 4,
-        "ES": 4,
         "HU": 3,
-        "PT": 3,
         "SE": 3,
         "SK": 2,
         "IL": 2,
@@ -291,11 +292,12 @@
         "TH": 1,
         "TR": 1,
         "GR": 1,
-        "RO": 1
+        "RO": 1,
+        "CO": 1
       },
-      "pending": 80,
+      "pending": 74,
       "firstSeen": "2026-10-29T19:08:27Z",
-      "lastSeen": "2026-11-07T08:52:31Z"
+      "lastSeen": "2026-11-07T14:46:08Z"
     },
     {
       "id": "2026.38.5.6",
