@@ -497,3 +497,7 @@ html[data-theme=light] .hs-home .hs-newsletter .hs-form input::placeholder { col
   .hs-home * { scroll-behavior:auto!important;transition:none!important;animation:none!important; }
   .hs-home .hs-tool:hover,.hs-home .hs-hero-roadster:hover img { transform:none; }
 }
+/* Hero tile shows the day's lead story: headlines are long, so smaller type and a line clamp */
+.hs-home .hs-hero-lead .hs-hero-roadster-copy>span{font-size:clamp(20px,1.9vw,27px);line-height:1.2;letter-spacing:-.035em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.hs-home .hs-hero-lead .hs-hero-roadster-copy{margin-top:auto}
+.hs-home .hs-hero-lead:after{background:linear-gradient(180deg,#030508b8,transparent 34%,#030508f0 100%)}
