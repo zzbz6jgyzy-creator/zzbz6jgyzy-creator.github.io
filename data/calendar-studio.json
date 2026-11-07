@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-10-28T09:15:00+00:00",
+ "updated": "2026-11-07T09:45:00+00:00",
  "launchChecked": "2026-11-07T05:53:23Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
@@ -500,8 +500,8 @@
    "end": "",
    "date": "2026-11-06",
    "precision": "datetime",
-   "status": "scheduled",
-   "note": "Deadline to enter Tesla’s random drawing for limited in-person seats at the 3 Dec 2026 Annual Meeting: Fri 6 Nov 2026, 11:59 p.m. CT. Selections are communicated the week of 16 Nov.",
+   "status": "ended",
+   "note": "Past: the deadline to enter Tesla’s random drawing for limited in-person seats at the 3 Dec 2026 Annual Meeting was Fri 6 Nov 2026, 11:59 p.m. CT. Selections are communicated the week of 16 Nov.",
    "where": "",
    "href": "https://www.votetesla.com/annual-meeting-details/",
    "sources": [
@@ -535,7 +535,7 @@
    "coverage": {
     "url": "https://www.spacex.com/launches/ussf432",
     "article": "",
-    "status": "scheduled"
+    "status": "ended"
    }
   },
   {
@@ -557,7 +557,12 @@
    "windowStart": "2026-11-10T03:03:00Z",
    "windowEnd": "2026-11-10T07:03:00Z",
    "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch"
+   "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches/ussf627",
+    "article": "",
+    "status": "scheduled"
+   }
   },
   {
    "id": "ussf-317",
@@ -755,7 +760,7 @@
    "date": "2026-12-03",
    "precision": "datetime",
    "status": "scheduled",
-   "note": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 Irish time). Virtual at virtualshareholdermeeting.com/TSLA2026, webcast at tesla.com/2026shareholdermeeting, limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov.",
+   "note": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 Irish time). Virtual at virtualshareholdermeeting.com/TSLA2026, webcast at tesla.com/2026shareholdermeeting, limited in-person at Giga Texas. Record date 13 Oct 2026. The in-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov.",
    "where": "",
    "href": "https://www.votetesla.com/annual-meeting-details/",
    "sources": [
