@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 07 Nov 2026 02:43:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 08:36:58 +0000</lastBuildDate>
+    <item>
+      <title>Musk says Starlink V4 lasers could outcompete undersea cables</title>
+      <link>https://superchargeddaily.com/dispatch/starlink-v4-lasers.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-v4-lasers.html</guid>
+      <pubDate>Sat, 07 Nov 2026 08:36:58 +0000</pubDate>
+      <category>Starlink</category>
+      <description>Musk sketched Starlink V4 with about 10 times V3 capability and 10 Tb/s laser links. His interview said ten lasers; his posts discussed roughly 100 as an engineering ambition, not a settled design.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-carson-v4.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Musk says Tesla will likely rent Optimus rather than sell it</title>
       <link>https://superchargeddaily.com/dispatch/tesla-optimus-rental.html</link>
@@ -717,15 +726,6 @@
       <category>Starlink</category>
       <description>Full fleet by fall 2027, setting up a race with United to finish first.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/southwest-starlink-full-fleet-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Star Mind computer hits volume production next year</title>
-      <link>https://superchargeddaily.com/dispatch/starmind-volume-production.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starmind-volume-production.html</guid>
-      <pubDate>Thu, 15 Oct 2026 18:17:07 +0000</pubDate>
-      <category>Starmind</category>
-      <description>Musk puts a year on the orbital AI computer SpaceX is building with Nvidia.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starmind-volume-production-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.12</title>

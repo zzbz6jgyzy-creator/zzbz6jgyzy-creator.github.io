@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-07T03:17:21.027Z",
+  "updated": "2026-11-07T08:37:53.137Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starlink-v4-lasers.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says Starlink V4 lasers could outcompete undersea cables",
+      "at": "2026-11-07T08:36:58.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starlink-v4-lasers.html",
+      "href": "/dispatch/starlink-v4-lasers.html",
+      "summary": "Musk sketched Starlink V4 with about 10 times V3 capability and 10 Tb/s laser links. His interview said ten lasers; his posts discussed roughly 100 as an engineering ambition, not a settled design.",
+      "title": "Musk says Starlink V4 lasers could outcompete undersea cables",
+      "id": "logged|dispatch:/dispatch/starlink-v4-lasers.html|2026-11-07T08:36:58.000Z|Musk says Starlink V4 lasers could outcompete undersea cables"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-optimus-rental.html",
@@ -306,23 +323,6 @@
       "summary": "AP called Texas for Gina Hinojosa, who backs a data center moratorium. SpaceX aims for 3 GW by year-end and 13 GW next year, some of it in Texas (as of 4 Nov 2026).",
       "title": "Texas elects a Democratic governor, and SpaceX's data center plans face a new risk",
       "id": "logged|dispatch:/dispatch/texas-spacex-data-centers-risk.html|2026-11-04T14:42:00.000Z|Texas elects a Democratic governor, and SpaceX's data center plans face a new risk"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-airlines-scorecard.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Starlink on airlines: what the numbers actually show",
-      "at": "2026-11-03T20:37:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-airlines-scorecard.html",
-      "href": "/dispatch/starlink-airlines-scorecard.html",
-      "summary": "JAL says Starlink and pricing helped lift ZIPAIR's passenger revenue 12.3%. What United, Alaska, Qatar, Virgin and airBaltic report about in-flight Starlink (as of 3 Nov 2026).",
-      "title": "Starlink on airlines: what the numbers actually show",
-      "id": "logged|dispatch:/dispatch/starlink-airlines-scorecard.html|2026-11-03T20:37:00.000Z|Starlink on airlines: what the numbers actually show"
     },
     {
       "type": "changed",
