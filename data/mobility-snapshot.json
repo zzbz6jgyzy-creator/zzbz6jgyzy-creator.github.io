@@ -1150,7 +1150,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-11-06T22:15:30Z",
+    "checked": "2026-11-07T10:35:56Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -1333,6 +1333,13 @@
       },
       {
         "date": "2026-11-06",
+        "cybercab": 573,
+        "modelY": 671,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "date": "2026-11-07",
         "cybercab": 573,
         "modelY": 671,
         "other": 0,
@@ -1643,11 +1650,19 @@
         "modelY": 671,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-11-07T10:35:56Z",
+        "date": "2026-11-07",
+        "cybercab": 573,
+        "modelY": 671,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-11-06T22:15:30Z",
+    "checked": "2026-11-07T10:38:22Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
@@ -1656,7 +1671,7 @@
       "Texas": {
         "count": 671,
         "kind": "registered",
-        "asOf": "2026-11-06",
+        "asOf": "2026-11-07",
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
         "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."
       },
@@ -2020,6 +2035,21 @@
           "count": 18,
           "asOf": "2026-07-22"
         }
+      },
+      {
+        "date": "2026-11-07",
+        "Texas": {
+          "count": 671,
+          "asOf": "2026-11-07"
+        },
+        "California": {
+          "count": 164,
+          "asOf": "2026-08-26"
+        },
+        "Florida": {
+          "count": 18,
+          "asOf": "2026-07-22"
+        }
       }
     ]
   },
@@ -2032,7 +2062,7 @@
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "revision": "3857624ca629688cbfbedde1b75d2ece7c2af0f6"
     },
-    "checked": "2026-11-06T22:15:30Z",
+    "checked": "2026-11-07T10:38:22Z",
     "features": [
       {
         "type": "Feature",
@@ -2978,7 +3008,7 @@
         "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
       }
     },
-    "checked": "2026-11-06T22:15:30Z"
+    "checked": "2026-11-07T10:38:22Z"
   },
   "checks": {
     "schemaVersion": 1,
