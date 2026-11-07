@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-optimus-rental.html",
+      "image": "/assets/dispatch/optimus-stockholm-2024.jpg",
+      "title": "Musk says Tesla will likely rent Optimus rather than sell it",
+      "summary": "At the Baron Investment Conference on 6 Nov 2026, Elon Musk said Tesla will probably rent Optimus humanoid robots. Talk of about $30,000 falling toward $20,000 is build cost, not a rental price. Outside deliveries still point to around end of 2027.",
+      "tag": "Tesla",
+      "date": "2026-11-07T02:43:00Z",
+      "thumb": "/assets/dispatch/optimus-stockholm-2024-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-argentina.html",
       "image": "/assets/dispatch/tesla-model-y-standard-front.jpg",
       "title": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
@@ -216,16 +225,7 @@
       "tag": "Cybertruck",
       "date": "2026-11-06T09:02:00Z",
       "thumb": "/assets/dispatch/cybertruck-skoyen-2024-480w.webp"
-    },
-    {
-      "url": "/dispatch/evgo-first-tesla-supercharger-chicago.html",
-      "image": "/assets/og-v2.jpg",
-      "title": "EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get",
-      "summary": "EVgo opened 12 Supercharger stalls in Chicago. EVgo owns and brands them; Tesla operates and maintains them under Supercharger for Business (as of 5 Nov 2026).",
-      "tag": "Charging",
-      "date": "2026-11-05T20:47:00Z",
-      "thumb": "/assets/og-v2-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-06T20:37:00Z"
+  "articlesUpdated": "2026-11-07T02:43:00Z"
 }
