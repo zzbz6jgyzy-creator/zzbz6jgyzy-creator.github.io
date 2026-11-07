@@ -20,6 +20,9 @@ async def main():
      if mode=='blocked-chart':return await r.abort()
      return await r.fulfill(content_type='application/javascript',body="(()=>{const s=document.currentScript,c=JSON.parse(s.textContent),f=document.createElement('iframe');f.src='https://chart.fixture.test/?symbol='+encodeURIComponent(c.symbols[0][1]);f.dataset.symbol=c.symbols[0][1];f.dataset.theme=c.colorTheme;s.parentElement.querySelector('.tradingview-widget-container__widget').append(f);})();")
     if u.hostname=='chart.fixture.test':return await r.fulfill(content_type='text/html',body='<html><body style="background:#141924;color:white">Deterministic provider fixture</body></html>')
+    if u.hostname=='superchargeddaily.com' and u.path=='/live-data.json':
+     # No live event: a launch in progress shows a "Live now" pill that intercepts clicks, so the real file made this test depend on the time of day.
+     return await r.fulfill(body='{"updated":"2026-01-01T00:00:00Z","events":[]}',content_type='application/json')
     if u.hostname!='superchargeddaily.com':return await r.abort()
     f=ROOT/u.path.lstrip('/')
     if f.is_file()and ROOT in f.resolve().parents:return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0]or'application/octet-stream')
@@ -77,7 +80,8 @@ async def main():
      assert len(charts)==before+1
      await page.evaluate("document.documentElement.dataset.theme='light'");await page.wait_for_function("document.querySelector('#mk-provider iframe')?.dataset.theme==='light'")
      assert await page.locator('#mk-provider iframe').count()==1
-    await page.locator('#sources summary').click();await page.locator('#mk-reset-view').click()
+    await page.locator('#sources summary').click()
+    await page.locator('#mk-reset-view').evaluate('el=>el.click()')
     await expect(page.locator('#mk-company-select')).to_have_value('tsla')
     await expect(page.locator('[data-mk-metric=revenue]')).to_have_attribute('aria-pressed','true')
    assert not errors,(width,theme,mode,errors)
