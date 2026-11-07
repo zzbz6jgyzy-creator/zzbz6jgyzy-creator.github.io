@@ -15,3 +15,9 @@ A launch-stream style overlay for Catch and Hot Staging, and a small version on 
 ## Notes
 - Hot Staging's own attitude dial moved above the bar, and its in-canvas velocity readout was removed (the SPEED gauge replaces it).
 - `tests/home-studio-browser.py` and `tests/arcade-browser.py` now serve an empty `live-data.json`, so a real launch in progress cannot change their result.
+
+## Booster-cam view (Hot Staging) and camera grade (Catch)
+- **Hot Staging** now defaults to a first-person booster camera, drawn in the canvas (`drawCam` in `staging.js`): a rounded steel body and two lattice grid fins fixed in frame, a bright plume haze, a lit Earth limb with an atmosphere rim, stars, vignette, film grain and a warm heat rim. The world rolls with the stack's angle, so balancing the climb means levelling the horizon; the grid fins deflect with your steering input; Max-Q adds a pale condensation glow; at separation the ship's engines pull away ahead. Fail, success and results fall back to the original side-view scene.
+- A "Booster cam / Side view" button (`data-staging-cam`) switches views; the choice is remembered in `localStorage` (`sd-staging-cam`) and defaults to the booster cam. Reduced motion removes grain and flicker.
+- **Catch** keeps its side view but gets the same camera grade (cool shadows, warm highlights, stronger vignette, grain).
+- Gameplay, scoring and the HUD are unchanged.

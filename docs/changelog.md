@@ -1,3 +1,8 @@
+## 2026-11-07 — Booster-cam look and news headline fix
+
+- Hot Staging gets a booster-camera view in the style of a launch-webcast camera (dome body, grid fins, Earth limb, haze, grain), with a "Booster cam / Side view" switch; Catch gets the same camera grade. Details: `docs/webcast-hud.md`.
+- News page: an expired pin no longer keeps the Roadster article as the headline; the featured slot is the newest story unless a pin is still active.
+
 ## 2026-11-07 — SpaceX games get a launch-webcast HUD
 
 - Catch and Hot Staging now wear a shared webcast-style overlay (speed, altitude and G-force gauges, T+ clock with a milestone timeline, mission name, engine ring), with numbers derived from the game and labelled simulated. The Games hub's featured card gets a small version. Details: `docs/webcast-hud.md`.

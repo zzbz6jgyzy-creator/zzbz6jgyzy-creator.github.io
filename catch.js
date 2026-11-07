@@ -1346,9 +1346,24 @@
 
     const vig = ctx.createRadialGradient(cssW * 0.5, cssH * 0.46, cssW * 0.2, cssW * 0.5, cssH * 0.5, cssW * 0.78);
     vig.addColorStop(0, "rgba(0,0,0,0)");
-    vig.addColorStop(1, "rgba(0,0,0,0.22)");
+    vig.addColorStop(1, "rgba(0,0,0,0.4)");
     ctx.fillStyle = vig;
     ctx.fillRect(0, 0, cssW, cssH);
+    // Webcast camera grade: cool shadows and warm highlights, a soft top-light bloom, then film grain.
+    ctx.save();
+    ctx.globalCompositeOperation = "soft-light";
+    const grade = ctx.createLinearGradient(0, 0, 0, cssH);
+    grade.addColorStop(0, "rgba(120,160,220,0.28)");
+    grade.addColorStop(1, "rgba(255,170,110,0.2)");
+    ctx.fillStyle = grade;
+    ctx.fillRect(0, 0, cssW, cssH);
+    ctx.restore();
+    if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      ctx.fillStyle = "rgba(255,255,255,0.05)";
+      for (let i = 0; i < 80; i += 1) ctx.fillRect(Math.random() * cssW, Math.random() * cssH, 1, 1);
+      ctx.fillStyle = "rgba(0,0,0,0.06)";
+      for (let i = 0; i < 60; i += 1) ctx.fillRect(Math.random() * cssW, Math.random() * cssH, 1.4, 1);
+    }
 
     if (flash > 0) {
       ctx.fillStyle = `rgba(255,236,210,${flash * 0.2})`;
