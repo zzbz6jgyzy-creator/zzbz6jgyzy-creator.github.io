@@ -1,0 +1,56 @@
+/* Webcast HUD (see webcast-hud.js). Always dark: it sits over the game canvas in both themes. */
+.wc-host{container-type:inline-size;container-name:wc}
+.wc-hud{position:absolute;left:0;right:0;bottom:0;z-index:3;pointer-events:none;color:#f4f6f8;font-family:Inter,system-ui,sans-serif}
+.wc-hud[hidden]{display:none}
+.wc-bar{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:44px 22px 14px;background:linear-gradient(0deg,rgba(2,4,8,.88) 0,rgba(2,4,8,.7) 55%,transparent 100%)}
+.wc-side{display:flex;gap:14px;align-items:flex-end;flex:0 0 auto}
+.wc-gauge{position:relative;width:86px;height:86px}
+.wc-gauge svg,.wc-engines svg{position:absolute;inset:0;width:100%;height:100%}
+.wc-ring-bg{stroke:rgba(255,255,255,.22);fill:none}
+.wc-ring-fg{stroke:#f4f6f8;transition:stroke-dasharray .12s linear}
+.wc-gauge-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.05}
+.wc-gauge-label{font:600 9px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.1em;color:#d5dae1;margin-bottom:4px}
+.wc-gauge-value{font-size:23px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.wc-gauge-unit{font:600 8px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;color:#d5dae1;margin-top:3px}
+.wc-engines{position:relative;width:86px;height:86px}
+.wc-engine{fill:rgba(255,255,255,.2)}
+.wc-engine.is-on{fill:#f4f6f8}
+.wc-mid{position:relative;flex:1 1 auto;min-width:0;max-width:520px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.wc-timeline{position:relative;width:100%;height:30px;margin-bottom:2px}
+.wc-timeline svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wc-tl-line{stroke:rgba(255,255,255,.35)}
+.wc-mark{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center}
+.wc-dot{display:block;width:7px;height:7px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);background:#05080d}
+.wc-mark-label{position:absolute;bottom:9px;white-space:nowrap;font:600 9px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.wc-mark.is-done .wc-dot{background:#f4f6f8;border-color:#f4f6f8}
+.wc-mark.is-done .wc-mark-label{color:rgba(255,255,255,.75)}
+.wc-mark.is-now .wc-dot{background:#93d9f0;border-color:#93d9f0;box-shadow:0 0 0 4px rgba(147,217,240,.25)}
+.wc-mark.is-now .wc-mark-label{color:#fff}
+.wc-clock{display:flex;align-items:baseline;gap:8px;line-height:1}
+.wc-sign{font-size:20px;font-weight:700;color:#d5dae1}
+.wc-time{font-size:40px;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.wc-mission{font:600 10px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#d5dae1;margin-top:6px}
+.wc-sim{font:500 8px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px}
+/* Stage: a black, edge-to-edge "stream" frame */
+.wc-host{background:#000!important;border-radius:6px}
+/* Narrower stages (container width, so it also works in focus view) */
+@container wc (max-width:780px){
+  .wc-bar{padding:38px 12px 10px;gap:8px}
+  .wc-gauge,.wc-engines{width:64px;height:64px}
+  .wc-gauge-value{font-size:17px}.wc-gauge-label{font-size:7px;margin-bottom:3px}.wc-gauge-unit{font-size:6.5px}
+  .wc-time{font-size:30px}.wc-sign{font-size:15px}.wc-engines{display:none}
+  .wc-mark-label{font-size:7.5px}
+}
+@container wc (max-width:560px){
+  .wc-side{gap:6px}.wc-gauge{width:52px;height:52px}.wc-gauge-value{font-size:13px}.wc-gauge-label,.wc-gauge-unit{display:none}
+  .wc-time{font-size:24px}.wc-mark-label{display:none}.wc-mission{font-size:8px}.wc-sim{display:none}
+  .wc-right .wc-gauge{display:none}
+}
+@media (prefers-reduced-motion:reduce){.wc-ring-fg{transition:none}}
+/* Games hub: the HUD sits along the top of the featured card, so the card's own caption stays readable */
+.wc-hub .wc-hud{top:0;bottom:auto}
+.wc-hub .wc-bar{align-items:flex-start;padding:14px 18px 20px;background:none;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.wc-hub .wc-gauge,.wc-hub .wc-engines{width:56px;height:56px}
+.wc-hub .wc-gauge-value{font-size:12px}.wc-hub .wc-gauge-label,.wc-hub .wc-gauge-unit,.wc-hub .wc-engines,.wc-hub .wc-sim{display:none}
+.wc-hub .wc-time{font-size:26px}.wc-hub .wc-sign{font-size:14px}.wc-hub .wc-mark-label{display:none}.wc-hub .wc-timeline{height:20px}
+.wc-hub.wc-host{background:inherit!important;border-radius:inherit}

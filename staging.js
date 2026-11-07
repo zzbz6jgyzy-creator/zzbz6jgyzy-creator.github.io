@@ -15,6 +15,17 @@
   const hudClock = document.querySelector("[data-hud-clock]");
   const hudAlt = document.querySelector("[data-hud-alt]");
   const hudScore = document.querySelector("[data-hud-score]");
+  // Launch-webcast style overlay. Numbers are derived from the game and are simulated.
+  const wc = window.WebcastHud ? window.WebcastHud.create(stage, { mission: "Hot staging", milestones: ["Startup", "Liftoff", "Max Q", "Stage sep", "Fairing"], speedMax: 8000, altMax: 100, gMax: 4 }) : null;
+  function updateWebcast() {
+    if (!wc) return;
+    const live = stack && hud && !hud.hidden && (state === "count" || state === "boost" || state === "window" || state === "sep" || state === "pause");
+    if (!live) { wc.update({ visible: false }); return; }
+    const s = spec(), q = clamp(tPlay / s.climb, 0, 1), counting = state === "count", sepNow = state === "sep";
+    const kmh = counting ? 0 : 5120 + tPlay * 41 + (sepNow ? ease(sepT) * 1400 : 0);
+    const m = counting ? 0 : sepNow ? (sepT > 0.55 ? 4 : 3) : q >= MAXQ_TO ? 3 : q >= MAXQ_FROM ? 2 : 1;
+    wc.update({ visible: true, mission: "Hot staging · " + s.name, t: counting ? -countT : T0 + tPlay, speed: kmh, alt: stack.alt, g: counting ? 1 : sepNow ? 0.2 : 1.1 + q * 2.1 + Math.min(1, load) * 0.8, engines: counting ? 0.2 : sepNow ? 0.4 : 1, milestone: m });
+  }
   const cueLabel = document.querySelector("[data-cue-label]");
   const cueClock = document.querySelector("[data-cue-clock]");
   const boardList = document.querySelector("[data-board-list]");
@@ -2141,16 +2152,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     fx.drawAltTape(ctx, { x: 12 * ui, y: cssH * 0.2, hgt: tapeH, alt: stack.alt, ui });
     const r = 54 * ui;
-    fx.drawAttitude(ctx, { cx: cssW - r - 20 * ui, cy: cssH - 50 * ui, r, angle: stack.angle, stage: s.stageAngle, fail: s.failAngle, ui });
-    const sepNow = state === "sep";
-    const kmh = Math.round(5120 + tPlay * 41 + (sepNow ? ease(sepT) * 1400 : 0));
-    ctx.textAlign = "right";
-    ctx.font = `600 ${12 * ui}px ${MONO}`;
-    ctx.fillStyle = "#ffe8c8";
-    ctx.fillText(`${kmh.toLocaleString()} KM/H`, cssW - 14 * ui, cssH * 0.2 + 4 * ui);
-    ctx.font = `500 ${8.5 * ui}px ${MONO}`;
-    ctx.fillStyle = "rgba(220,232,246,0.6)";
-    ctx.fillText("VELOCITY", cssW - 14 * ui, cssH * 0.2 - 8 * ui);
+    fx.drawAttitude(ctx, { cx: cssW - r - 20 * ui, cy: cssH - 50 * ui - Math.min(150, cssH * 0.19), r, angle: stack.angle, stage: s.stageAngle, fail: s.failAngle, ui });
     if (dyn && (state === "boost" || state === "window") && stack.alive) {
       const q = tPlay / s.climb;
       if (load > 0.02 || (q > MAXQ_FROM - 0.16 && q < MAXQ_TO + 0.12)) {
@@ -2173,7 +2175,208 @@
     ctx.restore();
   }
 
+  // ---- Booster-cam view ---------------------------------------------------------------------
+  // First-person look from the booster, in the style of a launch-webcast camera: the rounded body and two
+  // grid fins fixed in frame, the world (Earth limb, atmosphere, stars) rolling with the stack's angle,
+  // a bright plume haze, vignette, grade and grain. Gameplay is unchanged; this only draws.
+  let camView = true;
+  try { camView = localStorage.getItem("sd-staging-cam") !== "side"; } catch (e) { /* blocked storage: default view */ }
+  const camBtn = document.querySelector("[data-staging-cam]");
+  function syncCamBtn() {
+    if (!camBtn) return;
+    camBtn.setAttribute("aria-pressed", camView ? "true" : "false");
+    camBtn.textContent = camView ? "Booster cam" : "Side view";
+  }
+  if (camBtn) {
+    syncCamBtn();
+    camBtn.addEventListener("click", () => {
+      camView = !camView;
+      try { localStorage.setItem("sd-staging-cam", camView ? "cam" : "side"); } catch (e) { /* ignore */ }
+      syncCamBtn();
+    });
+  }
+  const camStates = () => stack && (state === "count" || state === "boost" || state === "window" || state === "sep" || state === "pause" || state === "attract" || state === "attract-sep");
+
+  function drawFin(ctx, w, h, side, deflect) {
+    // A lattice grid fin seen edge-on from the camera: steel frame, cross-hatched cells, a hinge arm to the body.
+    const fw = w * 0.17, fh = h * 0.2;
+    ctx.save();
+    ctx.translate(side * w * 0.215, -h * 0.02);
+    ctx.rotate(side * (0.2 + deflect * 0.5));
+    ctx.transform(1, 0, side * -0.22, 1, 0, 0);
+    const g = ctx.createLinearGradient(-fw / 2, 0, fw / 2, 0);
+    g.addColorStop(0, "#5a5852"); g.addColorStop(0.5, "#a8a49a"); g.addColorStop(1, "#4a4944");
+    ctx.fillStyle = "rgba(10,10,12,0.55)";
+    ctx.fillRect(-fw / 2, -fh / 2, fw, fh);
+    ctx.save();
+    ctx.beginPath(); ctx.rect(-fw / 2, -fh / 2, fw, fh); ctx.clip();
+    ctx.strokeStyle = g; ctx.lineWidth = Math.max(1, w * 0.0022);
+    const cells = 7;
+    for (let i = 0; i <= cells; i += 1) {
+      const x = -fw / 2 + (fw * i) / cells, y = -fh / 2 + (fh * i) / cells;
+      ctx.beginPath(); ctx.moveTo(x, -fh / 2); ctx.lineTo(x, fh / 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-fw / 2, y); ctx.lineTo(fw / 2, y); ctx.stroke();
+    }
+    ctx.strokeStyle = "rgba(255,244,222,0.35)"; ctx.lineWidth = 1;
+    for (let i = 0; i <= cells; i += 2) {
+      const x = -fw / 2 + (fw * i) / cells;
+      ctx.beginPath(); ctx.moveTo(x, -fh / 2); ctx.lineTo(x, fh / 2); ctx.stroke();
+    }
+    ctx.restore();
+    ctx.lineWidth = Math.max(2, w * 0.004); ctx.strokeStyle = g;
+    ctx.strokeRect(-fw / 2, -fh / 2, fw, fh);
+    ctx.restore();
+  }
+
+  function drawCam(ctx) {
+    const w = cssW, h = cssH, space = spaceT();
+    const roll = stack ? clamp(stack.angle, -0.75, 0.75) : 0;
+    const q = stack ? clamp(tPlay / spec().climb, 0, 1) : 0;
+    const sepNow = state === "sep" || state === "attract-sep";
+    const ox = (shake ? rand(-shake, shake) : 0) + cam.x * 0.6, oy = (shake ? rand(-shake, shake) : 0) + cam.y * 0.6;
+    const burning = state === "boost" || state === "window" || sepNow || state === "attract" || (state === "count" && ignite > 0.4);
+    const thr = burning ? 0.7 + (thrOn() ? 0.3 : 0) : state === "count" ? ignite * 0.6 : 0;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = "#02040a";
+    ctx.fillRect(0, 0, w, h);
+
+    // World layer: rolls with the stack. Drawn oversized so the corners never show when it turns.
+    ctx.save();
+    ctx.translate(w * 0.5 + ox, h * 0.46 + oy);
+    ctx.rotate(-roll * 0.9);
+    const R = Math.max(w, h) * 1.6;
+    const sky = ctx.createLinearGradient(0, -R, 0, R);
+    sky.addColorStop(0, "#02040a"); sky.addColorStop(0.55, "#050914"); sky.addColorStop(1, "#0a1424");
+    ctx.fillStyle = sky; ctx.fillRect(-R, -R, R * 2, R * 2);
+    stars.forEach((st) => {
+      const tw = 0.7 + Math.sin(clock * st.tw) * 0.3;
+      ctx.globalAlpha = st.a * (0.25 + space * 0.7) * tw;
+      ctx.fillStyle = st.r > 1.1 ? "#fff4d4" : "#d8e4ff";
+      ctx.beginPath();
+      ctx.arc((st.x - 0.5) * w * 1.6, (st.y - 0.8) * h * 1.2, st.r * 0.9, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    // Earth limb: a huge circle below and to the right, lit from the right, with a thin bright atmosphere rim.
+    const limbR = w * (1.25 - space * 0.3 + (1 - q) * 0.25), cx = w * 0.72, cy = limbR - h * 0.2;
+    const rim = ctx.createRadialGradient(cx, cy, limbR * 0.985, cx, cy, limbR * 1.045);
+    rim.addColorStop(0, "rgba(190,228,255,0.95)"); rim.addColorStop(0.14, "rgba(120,180,255,0.55)");
+    rim.addColorStop(0.5, "rgba(60,110,210,0.12)"); rim.addColorStop(1, "rgba(30,60,140,0)");
+    ctx.fillStyle = rim;
+    ctx.beginPath(); ctx.arc(cx, cy, limbR * 1.045, 0, Math.PI * 2); ctx.fill();
+    const earth = ctx.createLinearGradient(-w * 0.3, -h * 0.2, w * 0.7, h * 0.5);
+    earth.addColorStop(0, "#050a14"); earth.addColorStop(0.55, "#0b1730"); earth.addColorStop(1, "#1d3f73");
+    ctx.fillStyle = earth;
+    ctx.beginPath(); ctx.arc(cx, cy, limbR, 0, Math.PI * 2); ctx.fill();
+    // Clouds and a sunlit crescent along the limb
+    ctx.save();
+    ctx.beginPath(); ctx.arc(cx, cy, limbR * 0.995, 0, Math.PI * 2); ctx.clip();
+    for (let i = 0; i < 26; i += 1) {
+      const a = -Math.PI / 2 + (i / 26 - 0.5) * 1.5 + Math.sin(i * 12.9898) * 0.04, d = limbR * (0.93 - ((i * 37) % 11) * 0.011);
+      ctx.fillStyle = `rgba(210,228,250,${0.05 + ((i * 53) % 7) * 0.012})`;
+      ctx.beginPath();
+      ctx.ellipse(cx + Math.cos(a) * d + scrollX * 0.02 * ((i % 3) + 1), cy + Math.sin(a) * d, w * (0.05 + ((i * 17) % 9) * 0.012), h * 0.012, a + Math.PI / 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    const crescent = ctx.createRadialGradient(cx + limbR * 0.35, cy - limbR * 0.55, limbR * 0.1, cx + limbR * 0.35, cy - limbR * 0.55, limbR * 0.7);
+    crescent.addColorStop(0, "rgba(255,255,255,0.0)"); crescent.addColorStop(1, "rgba(140,190,255,0.0)");
+    ctx.fillStyle = crescent; ctx.fillRect(cx - limbR, cy - limbR, limbR * 2, limbR * 2);
+    ctx.restore();
+    // Thin bright line right on the horizon
+    ctx.strokeStyle = "rgba(225,240,255,0.95)"; ctx.lineWidth = Math.max(1.5, w * 0.002);
+    ctx.beginPath(); ctx.arc(cx, cy, limbR, -Math.PI * 1.05, -Math.PI * 0.5); ctx.stroke();
+    ctx.restore();
+
+    // Plume haze: a soft white-warm bloom behind the body, stronger with throttle and flickering
+    const flick = reduceMotion ? 1 : 0.9 + Math.sin(clock * 0.31) * 0.06 + Math.random() * 0.04;
+    ctx.save();
+    ctx.globalCompositeOperation = "lighter";
+    const hx = w * 0.5 + ox, hy = h * 0.52 + oy;
+    const haze = ctx.createRadialGradient(hx, hy, 2, hx, hy, w * (0.2 + thr * 0.2));
+    haze.addColorStop(0, `rgba(255,248,236,${0.78 * thr * flick})`);
+    haze.addColorStop(0.25, `rgba(255,226,190,${0.34 * thr})`);
+    haze.addColorStop(0.65, `rgba(190,205,230,${0.12 * thr})`);
+    haze.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = haze; ctx.fillRect(0, 0, w, h);
+    // Max-Q: a pale condensation shock around the body
+    const band = state === "boost" && q >= MAXQ_FROM - 0.06 && q <= MAXQ_TO + 0.06 ? 1 - Math.abs((q - (MAXQ_FROM + MAXQ_TO) / 2) / ((MAXQ_TO - MAXQ_FROM) / 2 + 0.06)) : 0;
+    if (band > 0) {
+      const cone = ctx.createRadialGradient(hx, hy + h * 0.05, w * 0.05, hx, hy + h * 0.05, w * 0.34);
+      cone.addColorStop(0, `rgba(235,242,255,${0.22 * band})`); cone.addColorStop(1, "rgba(235,242,255,0)");
+      ctx.fillStyle = cone; ctx.fillRect(0, 0, w, h);
+    }
+    ctx.restore();
+
+    // Separation: the ship's engines pull away ahead, a bright dot on a growing trail
+    if (sepNow) {
+      const e = ease(sepT);
+      const sx = w * 0.5 + ox, sy = h * 0.5 - e * h * 0.3 + oy, sr = Math.max(2, w * 0.016 * (1 - e * 0.65));
+      ctx.save(); ctx.globalCompositeOperation = "lighter";
+      const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, sr * 6);
+      g.addColorStop(0, "rgba(255,246,230,0.95)"); g.addColorStop(0.2, "rgba(255,210,150,0.55)"); g.addColorStop(1, "rgba(255,160,80,0)");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(sx, sy, sr * 6, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+
+    // Booster body: a dark, rounded steel dome filling the lower part of the frame, with rim light and seams
+    ctx.save();
+    ctx.translate(w * 0.5 + ox * 0.4, h + oy * 0.4);
+    const top = -h * 0.4;
+    const bodyW = w * 0.78;
+    const body = ctx.createLinearGradient(0, top, 0, 0);
+    body.addColorStop(0, "#4b4a47"); body.addColorStop(0.35, "#33322f"); body.addColorStop(1, "#181817");
+    ctx.fillStyle = body;
+    ctx.beginPath();
+    ctx.moveTo(-bodyW, 0); ctx.bezierCurveTo(-bodyW * 0.8, top * 0.55, -bodyW * 0.38, top, 0, top);
+    ctx.bezierCurveTo(bodyW * 0.38, top, bodyW * 0.8, top * 0.55, bodyW, 0);
+    ctx.closePath(); ctx.fill();
+    ctx.save(); ctx.clip();
+    for (let i = 1; i < 6; i += 1) {
+      ctx.strokeStyle = `rgba(0,0,0,${0.22 - i * 0.02})`; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.ellipse(0, 0, bodyW * (0.2 + i * 0.16), -top * (0.15 + i * 0.16), 0, Math.PI, Math.PI * 2); ctx.stroke();
+    }
+    const sheen = ctx.createLinearGradient(-bodyW * 0.6, top, bodyW * 0.7, 0);
+    sheen.addColorStop(0, "rgba(255,240,220,0.0)"); sheen.addColorStop(0.55, "rgba(255,240,220,0.10)"); sheen.addColorStop(1, "rgba(255,240,220,0.0)");
+    ctx.fillStyle = sheen; ctx.fillRect(-bodyW, top, bodyW * 2, -top);
+    ctx.restore();
+    // Sunlit edge on the right
+    ctx.strokeStyle = "rgba(210,225,255,0.4)"; ctx.lineWidth = Math.max(1.5, w * 0.003);
+    ctx.beginPath(); ctx.moveTo(bodyW * 0.38, top); ctx.bezierCurveTo(bodyW * 0.8, top * 0.55, bodyW, 0, bodyW, 0); ctx.stroke();
+    ctx.restore();
+
+    // Grid fins (they deflect a little with steering input)
+    const steer = (held.right ? 1 : 0) - (held.left ? 1 : 0);
+    ctx.save(); ctx.translate(w * 0.5 + ox * 0.5, h * 0.7 + oy * 0.5);
+    drawFin(ctx, w, h, -1, auto ? roll * 0.6 : steer * 0.35); drawFin(ctx, w, h, 1, auto ? roll * 0.6 : steer * 0.35);
+    ctx.restore();
+
+    // Camera grade: vignette, warm heat rim, grain, scanlines-free
+    const vig = ctx.createRadialGradient(w * 0.5, h * 0.5, w * 0.25, w * 0.5, h * 0.5, w * 0.78);
+    vig.addColorStop(0, "rgba(0,0,0,0)"); vig.addColorStop(1, "rgba(0,0,0,0.5)");
+    ctx.fillStyle = vig; ctx.fillRect(0, 0, w, h);
+    const heat = heatAmt();
+    if (heat > 0.05) {
+      const hr = ctx.createRadialGradient(w * 0.5, h * 0.62, w * 0.2, w * 0.5, h * 0.62, w * 0.7);
+      hr.addColorStop(0, "rgba(255,80,10,0)"); hr.addColorStop(1, `rgba(255,80,16,${0.22 * heat})`);
+      ctx.fillStyle = hr; ctx.fillRect(0, 0, w, h);
+    }
+    if (!reduceMotion) {
+      ctx.fillStyle = "rgba(255,255,255,0.05)";
+      for (let i = 0; i < 90; i += 1) ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1);
+      ctx.fillStyle = "rgba(0,0,0,0.05)";
+      for (let i = 0; i < 70; i += 1) ctx.fillRect(Math.random() * w, Math.random() * h, 1.4, 1);
+    }
+    if (flash > 0) { ctx.fillStyle = `rgba(255,232,200,${flash * 0.3})`; ctx.fillRect(0, 0, w, h); }
+
+    drawGust(ctx);
+    drawHud(ctx);
+    drawCallouts(ctx);
+    drawCalloutPill(ctx);
+  }
+
+
   function drawWorld(ctx) {
+    if (camView && camStates()) { drawCam(ctx); return; }
     const space = spaceT();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const sky = ctx.createLinearGradient(0, 0, 0, cssH);
@@ -2370,6 +2573,7 @@
   }
 
   function updateHud() {
+    updateWebcast();
     if(stack){const s=spec(),remaining=s.climb-tPlay,open=(state==='boost'||state==='window')&&tPlay>=s.climb&&tPlay<=s.climb+s.window;
     arcade.telemetry({primary:open?'OPEN · '+Math.max(0,s.climb+s.window-tPlay).toFixed(1)+'s':remaining>0?'In '+remaining.toFixed(1)+'s':'Closed',secondary:(stack.angle*180/Math.PI).toFixed(1)+'° / '+(s.stageAngle*180/Math.PI).toFixed(0)+'° limit',state:state==='pause'?'Paused':state==='count'?'Countdown':state==='boost'?'Climbing':state==='window'?'STAGE NOW':state==='sep'?'Separation':state==='success'||state==='complete'?'Complete':'Ready',guidance:open?'Stage now. The midpoint gives the best timing score.':Math.abs(stack.angle)>s.stageAngle*.75?'Counter the lean before ignition. Short taps are enough.':'Keep the stack level, then watch for the ignition window.',sound:muted?'Sound off':'Sound on'});}
 

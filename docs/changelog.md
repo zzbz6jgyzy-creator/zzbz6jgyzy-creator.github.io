@@ -6,6 +6,15 @@
 - Electrek reported 5 Nov that Tesla met the 30 Oct NHTSA Special Order deadline and that the public AQ26002 docket now has three Tesla filings, two of them empty confidentiality placeholders plus the Cybercab First Responder Interaction Plan. The audit remains open with no finding or recall ([dot.report](https://dot.report/investigations/AQ26002), last updated 7 Nov 2026 08:12:05).
 - Tesla’s 2026 Annual Meeting in-person drawing deadline (Fri 6 Nov, 11:59 p.m. CT) has passed. Selections still go out the week of 16 Nov.
 
+## 2026-11-07 — Booster-cam look and news headline fix
+
+- Hot Staging gets a booster-camera view in the style of a launch-webcast camera (dome body, grid fins, Earth limb, haze, grain), with a "Booster cam / Side view" switch; Catch gets the same camera grade. Details: `docs/webcast-hud.md`.
+- News page: an expired pin no longer keeps the Roadster article as the headline; the featured slot is the newest story unless a pin is still active.
+
+## 2026-11-07 — SpaceX games get a launch-webcast HUD
+
+- Catch and Hot Staging now wear a shared webcast-style overlay (speed, altitude and G-force gauges, T+ clock with a milestone timeline, mission name, engine ring), with numbers derived from the game and labelled simulated. The Games hub's featured card gets a small version. Details: `docs/webcast-hud.md`.
+
 ## 2026-11-07 — Homepage hero shows today's news, not the Roadster
 
 - The homepage hero tile no longer promotes the Roadster page. `scripts/build-home.js` now fills it with the next-newest Dispatch story after the lead (the lead sits just below), and preloads that image. It updates with every home build. The Roadster page and its other links are unchanged.

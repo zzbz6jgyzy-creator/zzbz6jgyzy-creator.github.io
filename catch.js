@@ -14,6 +14,21 @@
   const hudFuel = document.querySelector("[data-hud-fuel]");
   const hudSpeed = document.querySelector("[data-hud-speed]");
   const hudScore = document.querySelector("[data-hud-score]");
+  // Launch-webcast style overlay. Numbers are derived from the game and are simulated.
+  const wc = window.WebcastHud ? window.WebcastHud.create(stage, { mission: "Starship recovery", milestones: ["Boostback", "Entry burn", "Landing burn", "Catch"], speedMax: 900, altMax: 80, gMax: 4 }) : null;
+  let wcT = 0, wcLast = 0, wcAlt0 = 0;
+  function updateWebcast() {
+    if (!wc) return;
+    const on = !!(ship && hud && !hud.hidden);
+    if (!on) { wcT = 0; wcLast = 0; wcAlt0 = 0; wc.update({ visible: false }); return; }
+    const now = performance.now();
+    if (state === "fly" && wcLast) wcT += Math.min(0.25, (now - wcLast) / 1000);
+    wcLast = now;
+    const alt = Math.max(0, ARM_Y - (ship.y - 4)), spd = Math.hypot(ship.vx, ship.vy);
+    if (wcAlt0 <= 0) wcAlt0 = Math.max(alt, 1);
+    const f = alt / wcAlt0, burning = !!ship.thrusting && ship.fuel > 0;
+    wc.update({ visible: true, mission: "Starship recovery · " + spec().name, t: wcT, speed: spd * 55, alt: f * 72, g: burning ? 2.2 + (1 - ship.fuel / 100) * 0.8 : 0, engines: burning ? 0.34 : 0, milestone: state === "complete" ? 3 : f < 0.3 ? 2 : f < 0.7 ? 1 : 0 });
+  }
   const boardList = document.querySelector("[data-board-list]");
   const boardNow = document.querySelector("[data-board-now]");
   const nameInput = document.querySelector("[data-catch-name]");
@@ -1331,9 +1346,24 @@
 
     const vig = ctx.createRadialGradient(cssW * 0.5, cssH * 0.46, cssW * 0.2, cssW * 0.5, cssH * 0.5, cssW * 0.78);
     vig.addColorStop(0, "rgba(0,0,0,0)");
-    vig.addColorStop(1, "rgba(0,0,0,0.22)");
+    vig.addColorStop(1, "rgba(0,0,0,0.4)");
     ctx.fillStyle = vig;
     ctx.fillRect(0, 0, cssW, cssH);
+    // Webcast camera grade: cool shadows and warm highlights, a soft top-light bloom, then film grain.
+    ctx.save();
+    ctx.globalCompositeOperation = "soft-light";
+    const grade = ctx.createLinearGradient(0, 0, 0, cssH);
+    grade.addColorStop(0, "rgba(120,160,220,0.28)");
+    grade.addColorStop(1, "rgba(255,170,110,0.2)");
+    ctx.fillStyle = grade;
+    ctx.fillRect(0, 0, cssW, cssH);
+    ctx.restore();
+    if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      ctx.fillStyle = "rgba(255,255,255,0.05)";
+      for (let i = 0; i < 80; i += 1) ctx.fillRect(Math.random() * cssW, Math.random() * cssH, 1, 1);
+      ctx.fillStyle = "rgba(0,0,0,0.06)";
+      for (let i = 0; i < 60; i += 1) ctx.fillRect(Math.random() * cssW, Math.random() * cssH, 1.4, 1);
+    }
 
     if (flash > 0) {
       ctx.fillStyle = `rgba(255,236,210,${flash * 0.2})`;
@@ -1366,6 +1396,7 @@
   }
 
   function updateHud() {
+    updateWebcast();
     if (!ship || !hud || hud.hidden) return;
     const s = spec();
     const spd = Math.hypot(ship.vx, ship.vy);

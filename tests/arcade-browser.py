@@ -15,6 +15,9 @@ async def main():
     if u.hostname=='aljr-boards.superchargeddaily.workers.dev':
      assert r.request.method=='GET','new-edition scores must not enter legacy public boards'
      return await r.fulfill(json={'rows':[]})
+    if u.hostname=='superchargeddaily.com' and u.path=='/live-data.json':
+     # No live event: a launch in progress shows a "Live now" pill that intercepts clicks, so the real file made this test depend on the time of day.
+     return await r.fulfill(body='{"updated":"2026-01-01T00:00:00Z","events":[]}',content_type='application/json')
     if u.hostname!='superchargeddaily.com' or not f.is_file():return await r.abort()
     return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0]or'application/octet-stream')
    await c.route('**/*',route);return c

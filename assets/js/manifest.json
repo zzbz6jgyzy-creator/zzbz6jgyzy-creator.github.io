@@ -173,8 +173,8 @@
       ]
     },
     "news": {
-      "file": "/assets/js/news.bundle.53445abacc.js",
-      "bytes": 45496,
+      "file": "/assets/js/news.bundle.0683c3b191.js",
+      "bytes": 45541,
       "sources": [
         "personal-model.js",
         "personal-sync.js",
@@ -297,18 +297,20 @@
       ]
     },
     "catch": {
-      "file": "/assets/js/catch.bundle.342dc7af65.js",
-      "bytes": 48164,
+      "file": "/assets/js/catch.bundle.495e490484.js",
+      "bytes": 53324,
       "sources": [
+        "webcast-hud.js",
         "arcade-model.js",
         "arcade.js",
         "catch.js"
       ]
     },
     "staging": {
-      "file": "/assets/js/staging.bundle.24be628c4a.js",
-      "bytes": 79252,
+      "file": "/assets/js/staging.bundle.2f6bcc3bc9.js",
+      "bytes": 89910,
       "sources": [
+        "webcast-hud.js",
         "arcade-model.js",
         "arcade.js",
         "staging-fx.js",
@@ -326,12 +328,14 @@
       ]
     },
     "games": {
-      "file": "/assets/js/games.bundle.07e6cbfac8.js",
-      "bytes": 18080,
+      "file": "/assets/js/games.bundle.511d51f817.js",
+      "bytes": 22546,
       "sources": [
         "board.js",
         "arcade-model.js",
-        "arcade.js"
+        "arcade.js",
+        "webcast-hud.js",
+        "games-webcast.js"
       ]
     },
     "buy-guide": {
