@@ -1,3 +1,7 @@
+## 2026-11-07 — Hot Staging camera view reworked
+
+- Booster cam: steadier body and fins, deeper grid fins, darker steel with soot and seams, radial speed streaks, moving cloud bands, and a real hot-staging blast at separation. Details: `docs/webcast-hud.md`.
+
 ## 2026-11-07 — Booster-cam look and news headline fix
 
 - Hot Staging gets a booster-camera view in the style of a launch-webcast camera (dome body, grid fins, Earth limb, haze, grain), with a "Booster cam / Side view" switch; Catch gets the same camera grade. Details: `docs/webcast-hud.md`.

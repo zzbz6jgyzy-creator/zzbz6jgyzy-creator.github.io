@@ -2197,33 +2197,40 @@
   }
   const camStates = () => stack && (state === "count" || state === "boost" || state === "window" || state === "sep" || state === "pause" || state === "attract" || state === "attract-sep");
 
-  function drawFin(ctx, w, h, side, deflect) {
-    // A lattice grid fin seen edge-on from the camera: steel frame, cross-hatched cells, a hinge arm to the body.
-    const fw = w * 0.17, fh = h * 0.2;
+  function drawFin(ctx, w, h, side, deflect, lit) {
+    // A lattice grid fin seen from the camera: a hinge arm from the body, a thick steel frame with real depth,
+    // cross-hatched cells you can see space through, and a warm rim light from the plume.
+    const fw = w * 0.17, fh = h * 0.21, depth = Math.max(3, w * 0.007);
     ctx.save();
     ctx.translate(side * w * 0.215, -h * 0.02);
     ctx.rotate(side * (0.2 + deflect * 0.5));
     ctx.transform(1, 0, side * -0.22, 1, 0, 0);
-    const g = ctx.createLinearGradient(-fw / 2, 0, fw / 2, 0);
-    g.addColorStop(0, "#5a5852"); g.addColorStop(0.5, "#a8a49a"); g.addColorStop(1, "#4a4944");
-    ctx.fillStyle = "rgba(10,10,12,0.55)";
+    // hinge arm back toward the body
+    const arm = ctx.createLinearGradient(0, 0, side * -fw * 0.6, 0);
+    arm.addColorStop(0, "#6a675f"); arm.addColorStop(1, "#2a2926");
+    ctx.fillStyle = arm;
+    ctx.fillRect(side > 0 ? -fw * 0.62 : fw * 0.12, fh * 0.28, fw * 0.5, fh * 0.14);
+    // the fin's side face gives it thickness
+    ctx.fillStyle = "#1c1b19";
+    ctx.fillRect(-fw / 2 + depth * side, -fh / 2 + depth, fw, fh);
+    // cells: darker so stars and haze read through
+    ctx.fillStyle = "rgba(4,6,12,0.62)";
     ctx.fillRect(-fw / 2, -fh / 2, fw, fh);
-    ctx.save();
-    ctx.beginPath(); ctx.rect(-fw / 2, -fh / 2, fw, fh); ctx.clip();
-    ctx.strokeStyle = g; ctx.lineWidth = Math.max(1, w * 0.0022);
+    const frame = ctx.createLinearGradient(-fw / 2, -fh / 2, fw / 2, fh / 2);
+    frame.addColorStop(0, "#c9c5ba"); frame.addColorStop(0.45, "#8e8b82"); frame.addColorStop(1, "#4b4a45");
+    ctx.save(); ctx.beginPath(); ctx.rect(-fw / 2, -fh / 2, fw, fh); ctx.clip();
+    ctx.strokeStyle = frame; ctx.lineWidth = Math.max(1.4, w * 0.0026);
     const cells = 7;
     for (let i = 0; i <= cells; i += 1) {
       const x = -fw / 2 + (fw * i) / cells, y = -fh / 2 + (fh * i) / cells;
       ctx.beginPath(); ctx.moveTo(x, -fh / 2); ctx.lineTo(x, fh / 2); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(-fw / 2, y); ctx.lineTo(fw / 2, y); ctx.stroke();
     }
-    ctx.strokeStyle = "rgba(255,244,222,0.35)"; ctx.lineWidth = 1;
-    for (let i = 0; i <= cells; i += 2) {
-      const x = -fw / 2 + (fw * i) / cells;
-      ctx.beginPath(); ctx.moveTo(x, -fh / 2); ctx.lineTo(x, fh / 2); ctx.stroke();
-    }
+    // warm rim light on the edges nearest the plume
+    ctx.strokeStyle = `rgba(255,214,160,${0.18 + lit * 0.4})`; ctx.lineWidth = 1;
+    for (let i = 0; i <= cells; i += 1) { const y = -fh / 2 + (fh * i) / cells; ctx.beginPath(); ctx.moveTo(-fw / 2, y + 1); ctx.lineTo(fw / 2, y + 1); ctx.stroke(); }
     ctx.restore();
-    ctx.lineWidth = Math.max(2, w * 0.004); ctx.strokeStyle = g;
+    ctx.lineWidth = Math.max(2.4, w * 0.0045); ctx.strokeStyle = frame;
     ctx.strokeRect(-fw / 2, -fh / 2, fw, fh);
     ctx.restore();
   }
@@ -2233,16 +2240,22 @@
     const roll = stack ? clamp(stack.angle, -0.75, 0.75) : 0;
     const q = stack ? clamp(tPlay / spec().climb, 0, 1) : 0;
     const sepNow = state === "sep" || state === "attract-sep";
-    const ox = (shake ? rand(-shake, shake) : 0) + cam.x * 0.6, oy = (shake ? rand(-shake, shake) : 0) + cam.y * 0.6;
+    const se = sepNow ? ease(sepT) : 0;
+    // The body and fins are bolted to the camera, so they only feel shake and rumble (never the follow camera).
+    const rumble = reduceMotion ? 0 : (state === "boost" || state === "window" ? 1.1 : 0) + Math.min(1, load) * 1.4;
+    const ox = (shake ? rand(-shake, shake) : 0) + (rumble ? rand(-rumble, rumble) : 0);
+    const oy = (shake ? rand(-shake, shake) : 0) + (rumble ? rand(-rumble, rumble) : 0);
     const burning = state === "boost" || state === "window" || sepNow || state === "attract" || (state === "count" && ignite > 0.4);
     const thr = burning ? 0.7 + (thrOn() ? 0.3 : 0) : state === "count" ? ignite * 0.6 : 0;
+    // How fast things are moving drives the streaks and the plume
+    const speedK = burning ? 0.45 + q * 0.55 + se * 0.4 : 0.1;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.fillStyle = "#02040a";
     ctx.fillRect(0, 0, w, h);
 
-    // World layer: rolls with the stack. Drawn oversized so the corners never show when it turns.
+    // ---- World layer: rolls with the stack. Drawn oversized so the corners never show when it turns.
     ctx.save();
-    ctx.translate(w * 0.5 + ox, h * 0.46 + oy);
+    ctx.translate(w * 0.5 + ox * 0.5, h * 0.46 + oy * 0.5);
     ctx.rotate(-roll * 0.9);
     const R = Math.max(w, h) * 1.6;
     const sky = ctx.createLinearGradient(0, -R, 0, R);
@@ -2257,100 +2270,156 @@
       ctx.fill();
     });
     ctx.globalAlpha = 1;
-    // Earth limb: a huge circle below and to the right, lit from the right, with a thin bright atmosphere rim.
+    // Earth limb: a huge circle to the right, lit from the right, with a thin bright atmosphere rim
     const limbR = w * (1.25 - space * 0.3 + (1 - q) * 0.25), cx = w * 0.72, cy = limbR - h * 0.2;
-    const rim = ctx.createRadialGradient(cx, cy, limbR * 0.985, cx, cy, limbR * 1.045);
-    rim.addColorStop(0, "rgba(190,228,255,0.95)"); rim.addColorStop(0.14, "rgba(120,180,255,0.55)");
-    rim.addColorStop(0.5, "rgba(60,110,210,0.12)"); rim.addColorStop(1, "rgba(30,60,140,0)");
+    const rim = ctx.createRadialGradient(cx, cy, limbR * 0.985, cx, cy, limbR * 1.05);
+    rim.addColorStop(0, "rgba(200,232,255,0.95)"); rim.addColorStop(0.12, "rgba(120,180,255,0.6)");
+    rim.addColorStop(0.45, "rgba(60,110,210,0.16)"); rim.addColorStop(1, "rgba(30,60,140,0)");
     ctx.fillStyle = rim;
-    ctx.beginPath(); ctx.arc(cx, cy, limbR * 1.045, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx, cy, limbR * 1.05, 0, Math.PI * 2); ctx.fill();
     const earth = ctx.createLinearGradient(-w * 0.3, -h * 0.2, w * 0.7, h * 0.5);
-    earth.addColorStop(0, "#050a14"); earth.addColorStop(0.55, "#0b1730"); earth.addColorStop(1, "#1d3f73");
+    earth.addColorStop(0, "#050a14"); earth.addColorStop(0.5, "#0b1730"); earth.addColorStop(1, "#1f4478");
     ctx.fillStyle = earth;
     ctx.beginPath(); ctx.arc(cx, cy, limbR, 0, Math.PI * 2); ctx.fill();
-    // Clouds and a sunlit crescent along the limb
     ctx.save();
     ctx.beginPath(); ctx.arc(cx, cy, limbR * 0.995, 0, Math.PI * 2); ctx.clip();
-    for (let i = 0; i < 26; i += 1) {
-      const a = -Math.PI / 2 + (i / 26 - 0.5) * 1.5 + Math.sin(i * 12.9898) * 0.04, d = limbR * (0.93 - ((i * 37) % 11) * 0.011);
-      ctx.fillStyle = `rgba(210,228,250,${0.05 + ((i * 53) % 7) * 0.012})`;
+    const drift = reduceMotion ? 0 : clock * 0.0009 * (0.4 + speedK);
+    for (let i = 0; i < 30; i += 1) {
+      const a = -Math.PI / 2 + (i / 30 - 0.5) * 1.6 + Math.sin(i * 12.9898) * 0.04, d = limbR * (0.94 - ((i * 37) % 11) * 0.011);
+      const along = ((i * 0.137 + drift) % 1) - 0.5;
+      ctx.fillStyle = `rgba(215,232,252,${0.05 + ((i * 53) % 7) * 0.013})`;
       ctx.beginPath();
-      ctx.ellipse(cx + Math.cos(a) * d + scrollX * 0.02 * ((i % 3) + 1), cy + Math.sin(a) * d, w * (0.05 + ((i * 17) % 9) * 0.012), h * 0.012, a + Math.PI / 2, 0, Math.PI * 2);
+      ctx.ellipse(cx + Math.cos(a) * d + along * w * 0.5, cy + Math.sin(a) * d, w * (0.05 + ((i * 17) % 9) * 0.013), h * 0.012, a + Math.PI / 2, 0, Math.PI * 2);
       ctx.fill();
     }
-    const crescent = ctx.createRadialGradient(cx + limbR * 0.35, cy - limbR * 0.55, limbR * 0.1, cx + limbR * 0.35, cy - limbR * 0.55, limbR * 0.7);
-    crescent.addColorStop(0, "rgba(255,255,255,0.0)"); crescent.addColorStop(1, "rgba(140,190,255,0.0)");
-    ctx.fillStyle = crescent; ctx.fillRect(cx - limbR, cy - limbR, limbR * 2, limbR * 2);
     ctx.restore();
-    // Thin bright line right on the horizon
-    ctx.strokeStyle = "rgba(225,240,255,0.95)"; ctx.lineWidth = Math.max(1.5, w * 0.002);
+    ctx.strokeStyle = "rgba(230,243,255,0.95)"; ctx.lineWidth = Math.max(1.5, w * 0.002);
     ctx.beginPath(); ctx.arc(cx, cy, limbR, -Math.PI * 1.05, -Math.PI * 0.5); ctx.stroke();
     ctx.restore();
 
-    // Plume haze: a soft white-warm bloom behind the body, stronger with throttle and flickering
-    const flick = reduceMotion ? 1 : 0.9 + Math.sin(clock * 0.31) * 0.06 + Math.random() * 0.04;
+    // ---- Speed: radial exhaust motes and ice streaks flowing outward from the vanishing point
+    if (!reduceMotion && burning) {
+      const vx = w * 0.5, vy = h * 0.5, n = 70, hash = (i, k) => { const x = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return x - Math.floor(x); };
+      ctx.save();
+      ctx.globalCompositeOperation = "lighter";
+      ctx.lineCap = "round";
+      for (let i = 0; i < n; i += 1) {
+        const ph = ((clock * 0.0036 * (0.5 + speedK) + hash(i, 1)) % 1), ang = hash(i, 2) * Math.PI * 2;
+        const r0 = (0.04 + ph * ph) * w * 0.62, r1 = r0 + w * (0.012 + ph * 0.05 * speedK);
+        ctx.strokeStyle = `rgba(236,244,255,${Math.sin(ph * Math.PI) * 0.3 * (0.4 + speedK)})`;
+        ctx.lineWidth = 0.5 + ph * 1.3;
+        ctx.beginPath(); ctx.moveTo(vx + Math.cos(ang) * r0, vy + Math.sin(ang) * r0 * 0.72); ctx.lineTo(vx + Math.cos(ang) * r1, vy + Math.sin(ang) * r1 * 0.72); ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // ---- Plume haze: a soft white-warm bloom with flickering shock rings
+    const flick = reduceMotion ? 1 : 0.88 + Math.sin(clock * 0.31) * 0.06 + Math.random() * 0.06;
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
-    const hx = w * 0.5 + ox, hy = h * 0.52 + oy;
-    const haze = ctx.createRadialGradient(hx, hy, 2, hx, hy, w * (0.2 + thr * 0.2));
-    haze.addColorStop(0, `rgba(255,248,236,${0.78 * thr * flick})`);
-    haze.addColorStop(0.25, `rgba(255,226,190,${0.34 * thr})`);
-    haze.addColorStop(0.65, `rgba(190,205,230,${0.12 * thr})`);
+    const hx = w * 0.5 + ox * 0.6, hy = h * 0.52 + oy * 0.6;
+    const haze = ctx.createRadialGradient(hx, hy, 2, hx, hy, w * (0.2 + thr * 0.22));
+    haze.addColorStop(0, `rgba(255,250,240,${0.82 * thr * flick})`);
+    haze.addColorStop(0.22, `rgba(255,228,192,${0.38 * thr})`);
+    haze.addColorStop(0.6, `rgba(190,205,232,${0.13 * thr})`);
     haze.addColorStop(1, "rgba(0,0,0,0)");
     ctx.fillStyle = haze; ctx.fillRect(0, 0, w, h);
-    // Max-Q: a pale condensation shock around the body
+    if (thr > 0.3) {
+      for (let k = 0; k < 3; k += 1) {
+        const rr = w * (0.07 + k * 0.045) * (0.95 + flick * 0.1);
+        ctx.strokeStyle = `rgba(255,236,208,${0.1 * thr * (1 - k * 0.28)})`; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.ellipse(hx, hy, rr, rr * 0.55, 0, 0, Math.PI * 2); ctx.stroke();
+      }
+    }
     const band = state === "boost" && q >= MAXQ_FROM - 0.06 && q <= MAXQ_TO + 0.06 ? 1 - Math.abs((q - (MAXQ_FROM + MAXQ_TO) / 2) / ((MAXQ_TO - MAXQ_FROM) / 2 + 0.06)) : 0;
     if (band > 0) {
-      const cone = ctx.createRadialGradient(hx, hy + h * 0.05, w * 0.05, hx, hy + h * 0.05, w * 0.34);
-      cone.addColorStop(0, `rgba(235,242,255,${0.22 * band})`); cone.addColorStop(1, "rgba(235,242,255,0)");
+      const cone = ctx.createRadialGradient(hx, hy + h * 0.05, w * 0.05, hx, hy + h * 0.05, w * 0.36);
+      cone.addColorStop(0, `rgba(235,242,255,${0.26 * band})`); cone.addColorStop(1, "rgba(235,242,255,0)");
       ctx.fillStyle = cone; ctx.fillRect(0, 0, w, h);
     }
     ctx.restore();
 
-    // Separation: the ship's engines pull away ahead, a bright dot on a growing trail
+    // ---- Hot staging: the ship lights its engines right above the booster. A fierce orange-white blast pours
+    // down onto the dome, then the ship pulls away, a small bright flare on a trail.
     if (sepNow) {
-      const e = ease(sepT);
-      const sx = w * 0.5 + ox, sy = h * 0.5 - e * h * 0.3 + oy, sr = Math.max(2, w * 0.016 * (1 - e * 0.65));
+      const blast = Math.sin(Math.min(1, se * 1.6) * Math.PI) * (1 - se * 0.4);
       ctx.save(); ctx.globalCompositeOperation = "lighter";
-      const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, sr * 6);
-      g.addColorStop(0, "rgba(255,246,230,0.95)"); g.addColorStop(0.2, "rgba(255,210,150,0.55)"); g.addColorStop(1, "rgba(255,160,80,0)");
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(sx, sy, sr * 6, 0, Math.PI * 2); ctx.fill();
+      const bx = w * 0.5 + ox * 0.6, by = h * 0.3 + se * h * 0.08;
+      const fire = ctx.createRadialGradient(bx, by, 4, bx, by + h * 0.18, w * 0.46);
+      fire.addColorStop(0, `rgba(255,252,238,${0.95 * blast})`); fire.addColorStop(0.16, `rgba(255,214,140,${0.7 * blast})`);
+      fire.addColorStop(0.45, `rgba(255,120,40,${0.38 * blast})`); fire.addColorStop(1, "rgba(255,60,10,0)");
+      ctx.fillStyle = fire; ctx.fillRect(0, 0, w, h);
+      if (!reduceMotion) {
+        for (let i = 0; i < 16; i += 1) {
+          const ang = Math.PI / 2 + (i - 7.5) * 0.11 + Math.sin(clock * 0.2 + i) * 0.03, len = h * (0.3 + ((i * 7) % 5) * 0.06) * blast;
+          ctx.strokeStyle = `rgba(255,224,170,${0.32 * blast})`; ctx.lineWidth = 2 + (i % 3);
+          ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx + Math.cos(ang) * len, by + Math.sin(ang) * len); ctx.stroke();
+        }
+      }
+      const sx = w * 0.5 + ox * 0.4, sy = h * 0.34 - se * h * 0.26, sr = Math.max(2.5, w * 0.018 * (1 - se * 0.7));
+      const ship = ctx.createRadialGradient(sx, sy, 0, sx, sy, sr * 7);
+      ship.addColorStop(0, "rgba(255,248,232,0.95)"); ship.addColorStop(0.2, "rgba(255,206,140,0.55)"); ship.addColorStop(1, "rgba(255,150,70,0)");
+      ctx.fillStyle = ship; ctx.beginPath(); ctx.arc(sx, sy, sr * 7, 0, Math.PI * 2); ctx.fill();
+      const pl = ctx.createLinearGradient(0, sy, 0, h * 0.52);
+      pl.addColorStop(0, `rgba(255,226,176,${0.5 * (1 - se * 0.5)})`); pl.addColorStop(1, "rgba(255,170,90,0)");
+      ctx.fillStyle = pl;
+      ctx.beginPath(); ctx.moveTo(sx - sr * 1.6, sy + sr * 0.5); ctx.lineTo(sx + sr * 1.6, sy + sr * 0.5); ctx.lineTo(sx + sr * 0.2, h * 0.52); ctx.lineTo(sx - sr * 0.2, h * 0.52); ctx.closePath(); ctx.fill();
       ctx.restore();
     }
 
-    // Booster body: a dark, rounded steel dome filling the lower part of the frame, with rim light and seams
+    // ---- Booster body: dark steel dome with a real light model. Cool fill from Earth on the left, warm bounce
+    // from the plume, a sunlit right edge, panel seams, and soot around the interstage.
     ctx.save();
-    ctx.translate(w * 0.5 + ox * 0.4, h + oy * 0.4);
-    const top = -h * 0.4;
-    const bodyW = w * 0.78;
+    ctx.translate(w * 0.5 + ox, h + oy);
+    const top = -h * 0.4, bodyW = w * 0.78;
+    const path = () => {
+      ctx.beginPath();
+      ctx.moveTo(-bodyW, 0); ctx.bezierCurveTo(-bodyW * 0.8, top * 0.55, -bodyW * 0.38, top, 0, top);
+      ctx.bezierCurveTo(bodyW * 0.38, top, bodyW * 0.8, top * 0.55, bodyW, 0); ctx.closePath();
+    };
     const body = ctx.createLinearGradient(0, top, 0, 0);
-    body.addColorStop(0, "#4b4a47"); body.addColorStop(0.35, "#33322f"); body.addColorStop(1, "#181817");
-    ctx.fillStyle = body;
-    ctx.beginPath();
-    ctx.moveTo(-bodyW, 0); ctx.bezierCurveTo(-bodyW * 0.8, top * 0.55, -bodyW * 0.38, top, 0, top);
-    ctx.bezierCurveTo(bodyW * 0.38, top, bodyW * 0.8, top * 0.55, bodyW, 0);
-    ctx.closePath(); ctx.fill();
-    ctx.save(); ctx.clip();
+    body.addColorStop(0, "#4c4f57"); body.addColorStop(0.3, "#32353b"); body.addColorStop(1, "#131416");
+    ctx.fillStyle = body; path(); ctx.fill();
+    ctx.save(); path(); ctx.clip();
+    const fillL = ctx.createLinearGradient(-bodyW, 0, 0, 0);
+    fillL.addColorStop(0, "rgba(70,110,180,0.22)"); fillL.addColorStop(1, "rgba(70,110,180,0)");
+    ctx.fillStyle = fillL; ctx.fillRect(-bodyW, top, bodyW, -top);
+    const bounce = ctx.createRadialGradient(0, top, 2, 0, top, bodyW * 0.7);
+    bounce.addColorStop(0, `rgba(255,214,160,${0.3 * thr + 0.55 * (sepNow ? Math.sin(Math.min(1, se * 1.6) * Math.PI) : 0)})`);
+    bounce.addColorStop(1, "rgba(255,214,160,0)");
+    ctx.fillStyle = bounce; ctx.fillRect(-bodyW, top, bodyW * 2, -top);
+    // soot and heat staining near the top
+    const soot = ctx.createLinearGradient(0, top, 0, top + h * 0.09);
+    soot.addColorStop(0, "rgba(10,8,6,0.55)"); soot.addColorStop(1, "rgba(10,8,6,0)");
+    ctx.fillStyle = soot; ctx.fillRect(-bodyW, top, bodyW * 2, h * 0.09);
+    // panel seams: latitude rings and meridians from the apex
+    ctx.lineWidth = 1.2;
     for (let i = 1; i < 6; i += 1) {
-      ctx.strokeStyle = `rgba(0,0,0,${0.22 - i * 0.02})`; ctx.lineWidth = 1.5;
+      ctx.strokeStyle = `rgba(0,0,0,${0.3 - i * 0.03})`;
       ctx.beginPath(); ctx.ellipse(0, 0, bodyW * (0.2 + i * 0.16), -top * (0.15 + i * 0.16), 0, Math.PI, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = `rgba(255,255,255,${0.05})`;
+      ctx.beginPath(); ctx.ellipse(0, 2, bodyW * (0.2 + i * 0.16), -top * (0.15 + i * 0.16), 0, Math.PI, Math.PI * 2); ctx.stroke();
     }
-    const sheen = ctx.createLinearGradient(-bodyW * 0.6, top, bodyW * 0.7, 0);
-    sheen.addColorStop(0, "rgba(255,240,220,0.0)"); sheen.addColorStop(0.55, "rgba(255,240,220,0.10)"); sheen.addColorStop(1, "rgba(255,240,220,0.0)");
+    ctx.strokeStyle = "rgba(0,0,0,0.22)";
+    for (let m = -4; m <= 4; m += 1) {
+      ctx.beginPath(); ctx.moveTo(m * bodyW * 0.07, top); ctx.quadraticCurveTo(m * bodyW * 0.3, top * 0.45, m * bodyW * 0.62, 0); ctx.stroke();
+    }
+    const sheen = ctx.createLinearGradient(-bodyW * 0.6, top, bodyW * 0.8, 0);
+    sheen.addColorStop(0, "rgba(255,244,228,0)"); sheen.addColorStop(0.6, "rgba(255,244,228,0.08)"); sheen.addColorStop(1, "rgba(255,244,228,0)");
     ctx.fillStyle = sheen; ctx.fillRect(-bodyW, top, bodyW * 2, -top);
     ctx.restore();
-    // Sunlit edge on the right
-    ctx.strokeStyle = "rgba(210,225,255,0.4)"; ctx.lineWidth = Math.max(1.5, w * 0.003);
+    ctx.strokeStyle = "rgba(215,230,255,0.5)"; ctx.lineWidth = Math.max(1.6, w * 0.003);
     ctx.beginPath(); ctx.moveTo(bodyW * 0.38, top); ctx.bezierCurveTo(bodyW * 0.8, top * 0.55, bodyW, 0, bodyW, 0); ctx.stroke();
     ctx.restore();
 
-    // Grid fins (they deflect a little with steering input)
-    const steer = (held.right ? 1 : 0) - (held.left ? 1 : 0);
-    ctx.save(); ctx.translate(w * 0.5 + ox * 0.5, h * 0.7 + oy * 0.5);
-    drawFin(ctx, w, h, -1, auto ? roll * 0.6 : steer * 0.35); drawFin(ctx, w, h, 1, auto ? roll * 0.6 : steer * 0.35);
+    // ---- Grid fins: fixed to the frame (they swing with steering input), with a soft shadow on the body
+    const steer = (held.right ? 1 : 0) - (held.left ? 1 : 0), deflect = auto ? roll * 0.6 : steer * 0.35;
+    const finLit = Math.max(thr, sepNow ? 1 : 0);
+    ctx.save(); ctx.translate(w * 0.5 + ox * 0.8, h * 0.7 + oy * 0.8);
+    drawFin(ctx, w, h, -1, deflect, finLit); drawFin(ctx, w, h, 1, deflect, finLit);
     ctx.restore();
 
-    // Camera grade: vignette, warm heat rim, grain, scanlines-free
+    // ---- Camera grade: vignette, warm heat rim, chromatic edge, grain
     const vig = ctx.createRadialGradient(w * 0.5, h * 0.5, w * 0.25, w * 0.5, h * 0.5, w * 0.78);
     vig.addColorStop(0, "rgba(0,0,0,0)"); vig.addColorStop(1, "rgba(0,0,0,0.5)");
     ctx.fillStyle = vig; ctx.fillRect(0, 0, w, h);
@@ -2373,7 +2442,6 @@
     drawCallouts(ctx);
     drawCalloutPill(ctx);
   }
-
 
   function drawWorld(ctx) {
     if (camView && camStates()) { drawCam(ctx); return; }
