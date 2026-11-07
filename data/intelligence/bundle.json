@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-07T01:08:00.516Z",
+  "generatedAt": "2026-11-07T08:37:53.137Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -164,9 +164,9 @@
       "field": "newest-reporting",
       "value": "2026.38.5.12",
       "label": "Newest reporting build",
-      "at": "2026-11-06T23:33:52.000Z",
+      "at": "2026-11-07T03:17:17.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3293 cars)",
+      "source": "Teslascope sample (3294 cars)",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html",
       "summary": "A version appearing in a public sample is not the same as Tesla offering it to a given car."
@@ -192,7 +192,7 @@
       "field": "most-common",
       "value": "2026.38.5.1@31.3",
       "label": "Most common sample build",
-      "at": "2026-11-06T23:33:52.000Z",
+      "at": "2026-11-07T03:17:17.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
@@ -285,6 +285,40 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starlink-v4-lasers.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says Starlink V4 lasers could outcompete undersea cables",
+      "at": "2026-11-07T08:36:58.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starlink-v4-lasers.html",
+      "href": "/dispatch/starlink-v4-lasers.html",
+      "summary": "Musk sketched Starlink V4 with about 10 times V3 capability and 10 Tb/s laser links. His interview said ten lasers; his posts discussed roughly 100 as an engineering ambition, not a settled design.",
+      "title": "Musk says Starlink V4 lasers could outcompete undersea cables",
+      "id": "logged|dispatch:/dispatch/starlink-v4-lasers.html|2026-11-07T08:36:58.000Z|Musk says Starlink V4 lasers could outcompete undersea cables"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-optimus-rental.html",
+      "topic": "production",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says Tesla will likely rent Optimus rather than sell it",
+      "at": "2026-11-07T02:43:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-optimus-rental.html",
+      "href": "/dispatch/tesla-optimus-rental.html",
+      "summary": "At the Baron Investment Conference on 6 Nov 2026, Elon Musk said Tesla will probably rent Optimus humanoid robots. Talk of about $30,000 falling toward $20,000 is build cost, not a rental price. Outside deliveries still point to around end of 2027.",
+      "title": "Musk says Tesla will likely rent Optimus rather than sell it",
+      "id": "logged|dispatch:/dispatch/tesla-optimus-rental.html|2026-11-07T02:43:00.000Z|Musk says Tesla will likely rent Optimus rather than sell it"
+    },
     {
       "type": "changed",
       "factId": "tesla-software:wave:2026.38.5.12",
@@ -573,40 +607,6 @@
       "summary": "AP called Texas for Gina Hinojosa, who backs a data center moratorium. SpaceX aims for 3 GW by year-end and 13 GW next year, some of it in Texas (as of 4 Nov 2026).",
       "title": "Texas elects a Democratic governor, and SpaceX's data center plans face a new risk",
       "id": "logged|dispatch:/dispatch/texas-spacex-data-centers-risk.html|2026-11-04T14:42:00.000Z|Texas elects a Democratic governor, and SpaceX's data center plans face a new risk"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-airlines-scorecard.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Starlink on airlines: what the numbers actually show",
-      "at": "2026-11-03T20:37:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-airlines-scorecard.html",
-      "href": "/dispatch/starlink-airlines-scorecard.html",
-      "summary": "JAL says Starlink and pricing helped lift ZIPAIR's passenger revenue 12.3%. What United, Alaska, Qatar, Virgin and airBaltic report about in-flight Starlink (as of 3 Nov 2026).",
-      "title": "Starlink on airlines: what the numbers actually show",
-      "id": "logged|dispatch:/dispatch/starlink-airlines-scorecard.html|2026-11-03T20:37:00.000Z|Starlink on airlines: what the numbers actually show"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/musk-pay-spacex-tesla-merger-control.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal",
-      "at": "2026-11-03T14:41:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/musk-pay-spacex-tesla-merger-control.html",
-      "href": "/dispatch/musk-pay-spacex-tesla-merger-control.html",
-      "summary": "No deal exists yet, but a Reuters analysis and Tesla's filings show a SpaceX takeover could give Musk Tesla voting control while skipping his pay plan's robotaxi and robot goals.",
-      "title": "A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal",
-      "id": "logged|dispatch:/dispatch/musk-pay-spacex-tesla-merger-control.html|2026-11-03T14:41:00.000Z|A SpaceX–Tesla merger could hand Musk Tesla control without hitting a single Mars or robotaxi goal"
     },
     {
       "type": "changed",
@@ -1824,35 +1824,35 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
       "lastVerified": "2026-10-30T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
       "lastVerified": "2026-10-28T09:15:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
     {
       "tracker": "software",
       "href": "/updates.html",
-      "lastChecked": "2026-11-06T23:33:52.000Z",
-      "lastVerified": "2026-11-06T23:33:52.000Z",
+      "lastChecked": "2026-11-07T03:17:17.000Z",
+      "lastVerified": "2026-11-07T03:17:17.000Z",
       "note": "Source: Teslascope."
     },
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
       "lastVerified": "2026-11-05T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
       "lastVerified": "2026-11-06T22:15:30.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1866,36 +1866,36 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
       "lastVerified": "2026-11-04T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
       "lastVerified": "2026-11-04T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-07T01:08:00.516Z",
-      "lastVerified": "2026-11-06T23:33:52.000Z",
+      "lastChecked": "2026-11-07T08:37:53.137Z",
+      "lastVerified": "2026-11-07T03:17:17.000Z",
       "note": "Your car details stay in this browser."
     }
   ],
@@ -1903,85 +1903,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.499Z",
-      "finished": "2026-11-07T01:08:00.503Z"
+      "started": "2026-11-07T08:37:53.115Z",
+      "finished": "2026-11-07T08:37:53.120Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.503Z",
-      "finished": "2026-11-07T01:08:00.504Z"
+      "started": "2026-11-07T08:37:53.120Z",
+      "finished": "2026-11-07T08:37:53.121Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.504Z",
-      "finished": "2026-11-07T01:08:00.504Z"
+      "started": "2026-11-07T08:37:53.121Z",
+      "finished": "2026-11-07T08:37:53.121Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.504Z",
-      "finished": "2026-11-07T01:08:00.510Z"
+      "started": "2026-11-07T08:37:53.121Z",
+      "finished": "2026-11-07T08:37:53.129Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.510Z",
-      "finished": "2026-11-07T01:08:00.513Z"
+      "started": "2026-11-07T08:37:53.129Z",
+      "finished": "2026-11-07T08:37:53.133Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.513Z",
-      "finished": "2026-11-07T01:08:00.514Z"
+      "started": "2026-11-07T08:37:53.133Z",
+      "finished": "2026-11-07T08:37:53.133Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.514Z",
-      "finished": "2026-11-07T01:08:00.514Z"
+      "started": "2026-11-07T08:37:53.133Z",
+      "finished": "2026-11-07T08:37:53.134Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.514Z",
-      "finished": "2026-11-07T01:08:00.514Z"
+      "started": "2026-11-07T08:37:53.134Z",
+      "finished": "2026-11-07T08:37:53.134Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.514Z",
-      "finished": "2026-11-07T01:08:00.514Z"
+      "started": "2026-11-07T08:37:53.134Z",
+      "finished": "2026-11-07T08:37:53.134Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.514Z",
-      "finished": "2026-11-07T01:08:00.516Z"
+      "started": "2026-11-07T08:37:53.134Z",
+      "finished": "2026-11-07T08:37:53.136Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.516Z",
-      "finished": "2026-11-07T01:08:00.516Z"
+      "started": "2026-11-07T08:37:53.136Z",
+      "finished": "2026-11-07T08:37:53.136Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.516Z",
-      "finished": "2026-11-07T01:08:00.516Z"
+      "started": "2026-11-07T08:37:53.136Z",
+      "finished": "2026-11-07T08:37:53.136Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-07T01:08:00.516Z",
-      "finished": "2026-11-07T01:08:00.516Z"
+      "started": "2026-11-07T08:37:53.136Z",
+      "finished": "2026-11-07T08:37:53.136Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-07T01:08:00.516Z",
+    "generatedAt": "2026-11-07T08:37:53.137Z",
     "factCount": 20,
     "changeCount": 88,
     "conflictCount": 2,
