@@ -25,8 +25,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.6781ff5a67.js",
-      "bytes": 140785,
+      "file": "/assets/js/home.bundle.b82e29ce34.js",
+      "bytes": 141093,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -51,7 +51,7 @@
       ]
     },
     "starlink": {
-      "file": "/assets/js/starlink.bundle.f3e668d5b9.js",
+      "file": "/assets/js/starlink.bundle.0e84538c03.js",
       "bytes": 23046,
       "sources": [
         "starlink-data.js",
@@ -61,7 +61,7 @@
       ]
     },
     "starlink-orbit": {
-      "file": "/assets/js/starlink-orbit.bundle.7228edb667.js",
+      "file": "/assets/js/starlink-orbit.bundle.145bb85da7.js",
       "bytes": 32230,
       "sources": [
         "cesium-lazy.js",

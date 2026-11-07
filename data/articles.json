@@ -1,6 +1,18 @@
 {
-  "updated": "2026-11-07T08:36:58Z",
+  "updated": "2026-11-07T14:38:30Z",
   "articles": [
+    {
+      "url": "/dispatch/grok-api-watermark.html",
+      "title": "Grok API text gets an invisible watermark starting today",
+      "date": "2026-11-07T14:38:30Z",
+      "topic": "xai",
+      "tag": "Grok",
+      "image": "/assets/dispatch/eu-parliament-watermark.jpg",
+      "summary": "Official docs set 7 Nov 2026 as the default invisible watermark start date for seven Grok API models. Team admins can opt out; consumer app scope is not established by the API docs.",
+      "pinned": false,
+      "imageAlt": "The hemicycle of the European Parliament in Strasbourg",
+      "author": "Alex R"
+    },
     {
       "url": "/dispatch/starlink-v4-lasers.html",
       "title": "Musk says Starlink V4 lasers could outcompete undersea cables",
