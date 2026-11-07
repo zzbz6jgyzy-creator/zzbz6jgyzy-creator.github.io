@@ -2,8 +2,8 @@
 // Every claim needs a real source and a verification status.
 // Do not mark a city live unless a source says public rides are happening.
 window.ROBOTAXI_REALITY = {
-  updated: "2026-11-04",
-  updatedLabel: "4 Nov 2026",
+  updated: "2026-11-07",
+  updatedLabel: "7 Nov 2026",
   kinds: [
     { id: "operational", label: "Operational" },
     { id: "expansion", label: "Expansions" },
@@ -230,10 +230,10 @@ window.ROBOTAXI_REALITY = {
       supervision: "unknown",
       vehicle: "Cybercab",
       title: "NHTSA Cybercab audit still open",
-      text: "TeslaNorth reported 3 Nov that Tesla has answered NHTSA’s Cybercab special order by the 30 Oct deadline, citing an Oct 30 NHTSA record that remaining Question 8 documents carry a confidential-business-information request covering each document in its entirety. TeslaNorth says the Question 8 pages are not on the open docket, and that the same record does not publish answers to the other requests. NHTSA’s AQ26002 record still lists the audit as open, with no finding or recall (dot.report, last updated 4 Nov 2026). An audit query is a fact-finding step, not a finding of non-compliance.",
-      date: "2026-11-03",
-      src: "https://teslanorth.com/2026/11/03/tesla-cybercab-nhtsa-question-8-secret/",
-      srcLabel: "TeslaNorth"
+      text: "Electrek reported 5 Nov that Tesla met the 30 Oct Special Order deadline and that the public AQ26002 docket now has three Tesla filings: a one-page confidentiality letter, a Question 8 placeholder, and the Cybercab First Responder Interaction Plan dated 3 Sep. Electrek says NHTSA has not commented on the confidentiality request. NHTSA’s AQ26002 record still lists the audit as open, with no finding or recall (dot.report, last updated 7 Nov 2026). An audit query is a fact-finding step, not a finding of non-compliance.",
+      date: "2026-11-05",
+      src: "https://electrek.co/2026/11/05/tesla-cybercab-nhtsa-sworn-answers-confidential/",
+      srcLabel: "Electrek"
     },
     {
       id: "miami-modely-testing",
@@ -365,7 +365,7 @@ window.ROBOTAXI_REALITY = {
       supervision: "unsupervised",
       vehicle: "Robotaxi",
       title: "Public Robotaxi rides in Fort Worth",
-      text: "Tesla’s Robotaxi account said rides start from 6am CT on 2 Nov. Fort Worth Report rode a driverless Robotaxi the same day. tesla.com/robotaxi now lists Fort Worth among hail cities (checked 4 Nov 2026). Tesla has not said whether Cybercabs serve the city.",
+      text: "Tesla’s Robotaxi account said rides start from 6am CT on 2 Nov. Fort Worth Report rode a driverless Robotaxi the same day. Tesla has not said whether Cybercabs serve the city.",
       date: "2026-11-02",
       src: "https://fortworthreport.org/2026/11/02/robotaxis-roll-into-fort-worth-as-tesla-expands-service/",
       srcLabel: "Fort Worth Report"

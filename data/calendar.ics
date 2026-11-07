@@ -277,14 +277,14 @@ BEGIN:VEVENT
 UID:tesla-2026-asm-draw@superchargeddaily.com
 DTSTAMP:20261107T103555Z
 DTSTART:20261107T055900Z
-SUMMARY:[Target] Tesla 2026 Annual Meeting in-person drawing deadline
-DESCRIPTION:Target passed · awaiting update\nDeadline to enter Tesla’s r
- andom drawing for limited in-person seats at the 3 Dec 2026 Annual Meeting
- : Fri 6 Nov 2026\, 11:59 p.m. CT. Selections are communicated the week of 
- 16 Nov.\nhttps://www.votetesla.com/annual-meeting-details/
+SUMMARY:Tesla 2026 Annual Meeting in-person drawing deadline
+DESCRIPTION:Completed\nPast: the deadline to enter Tesla’s random drawing
+  for limited in-person seats at the 3 Dec 2026 Annual Meeting was Fri 6 No
+ v 2026\, 11:59 p.m. CT. Selections are communicated the week of 16 Nov.\nh
+ ttps://www.votetesla.com/annual-meeting-details/
 LOCATION:
 URL:https://superchargeddaily.com/calendar.html?event=tesla-2026-asm-draw
-STATUS:TENTATIVE
+STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -369,10 +369,10 @@ SUMMARY:[Target] Tesla 2026 Annual Meeting of Shareholders
 DESCRIPTION:Scheduled target\nThu 3 Dec 2026\, 3:00 p.m. CT (21:00 Irish ti
  me). Virtual at virtualshareholdermeeting.com/TSLA2026\, webcast at tesla.
  com/2026shareholdermeeting\, limited in-person at Giga Texas. Record date 
- 13 Oct 2026. In-person drawing deadline Fri 6 Nov 2026\, 11:59 p.m. CT\; s
- elections go out the week of 16 Nov.\nhttps://www.sec.gov/Archives/edgar/d
- ata/1318605/000110465926116718/tm2626016d2_ars.pdf\nhttps://www.votetesla.
- com/annual-meeting-details/
+ 13 Oct 2026. The in-person drawing deadline was Fri 6 Nov 2026\, 11:59 p.m
+ . CT\; selections go out the week of 16 Nov.\nhttps://www.sec.gov/Archives
+ /edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf\nhttps://www.vo
+ tetesla.com/annual-meeting-details/
 LOCATION:
 URL:https://superchargeddaily.com/calendar.html?event=tesla-2026-asm
 STATUS:TENTATIVE

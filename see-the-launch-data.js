@@ -1,5 +1,5 @@
 window.SEE_LAUNCH = {
-  updated: "2026-11-03",
+  updated: "2026-11-07",
   note:
     "Our estimate, not a full FlightClub trajectory. We use the pad, a typical azimuth for that mission type, distance, night vs day, and Open-Meteo cloud cover. A feature in the notes can still be hidden by haze, a late slip, or a dogleg. Not SpaceX’s official viewing guide.",
   pads: {
@@ -85,26 +85,26 @@ window.SEE_LAUNCH = {
     {
       id: "ll-ussf-432",
       title: "Falcon 9 · USSF-432",
-      start: "2026-11-07T00:46:00Z",
+      start: "2026-11-07T00:48:42Z",
+      pad: "slc4e",
+      vehicle: "falcon",
+      orbit: "leo",
+      status: "done",
+      precision: "datetime",
+      href: "https://www.spacex.com/launches/ussf432",
+      note: "Launched Fri 6 Nov at 4:48 p.m. PT (00:48 UTC 7 Nov) from Vandenberg SLC-4E; first stage, on its eighth flight, landed on Of Course I Still Love You (SpaceX mission page; Launch Library 2: success).",
+    },
+    {
+      id: "ll-ussf-627",
+      title: "Falcon 9 · USSF-627",
+      start: "2026-11-10T03:03:00Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "leo",
       status: "go",
       precision: "datetime",
-      href: "https://www.spacex.com/launches/ussf432",
-      note: "Classified US Space Force mission from Vandenberg; SpaceX is targeting Friday 6 Nov, window opens 4:46 p.m. PT (00:46 UTC 7 Nov), backup Saturday 7 Nov 4:32 p.m. PT (checked 3 Nov 2026).",
-    },
-    {
-      id: "ll-ussf-r5",
-      title: "Falcon 9 · USSF (\u201cR-5\u201d)",
-      start: "2026-11-09T03:17:00Z",
-      pad: "slc4e",
-      vehicle: "falcon",
-      orbit: "leo",
-      status: "net",
-      precision: "day",
-      href: "https://www.spacex.com/launches",
-      note: "US Space Force mission; Launch Library 2 lists 9 Nov 03:17 UTC, to be confirmed (as of 3 Nov 2026).",
+      href: "https://www.spacex.com/launches/ussf627",
+      note: "Classified US Space Force mission from Vandenberg; SpaceX is targeting Monday 9 Nov, window opens 7:03 p.m. PT (03:03 UTC 10 Nov), backup Tuesday 10 Nov 6:49 p.m. PT (checked 7 Nov 2026).",
     },
   ],
 };

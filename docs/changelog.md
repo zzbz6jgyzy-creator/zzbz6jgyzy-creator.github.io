@@ -1,3 +1,11 @@
+## 2026-11-07 — USSF-432 flown; USSF-627 next; NHTSA docket still open
+
+- Falcon 9 USSF-432 launched from Vandenberg at 4:48 p.m. PT on Friday 6 Nov (00:48 UTC 7 Nov). SpaceX’s mission page: eighth-flight booster, landing on Of Course I Still Love You. Launch Library 2 lists it as a success. The homepage livestream card and See the Launch fallback now treat it as flown.
+- Next Falcon: USSF-627, SpaceX targeting Monday 9 Nov, four-hour window opening 7:03 p.m. PT (03:03 UTC 10 Nov), backup Tuesday 10 Nov 6:49 p.m. PT. Webcast on spacex.com and X @SpaceX. Calendar / SpaceX studio already had this from Launch Library 2; the livestream card now uses the mission page.
+- Starship Flight 15 stays NET 13 Nov. SpaceX still has no T-0 and no licence. Starlink McDowell table is still 11,214 in orbit / 11,200 working (updated 2 Nov 00:45 UTC). Texas robotaxi registry is still 573 Cybercab / 671 Model Y / 1,244 total (FSD Database, 7 Nov). tesla.com/robotaxi still lists the same seven hail cities.
+- Electrek reported 5 Nov that Tesla met the 30 Oct NHTSA Special Order deadline and that the public AQ26002 docket now has three Tesla filings, two of them empty confidentiality placeholders plus the Cybercab First Responder Interaction Plan. The audit remains open with no finding or recall ([dot.report](https://dot.report/investigations/AQ26002), last updated 7 Nov 2026 08:12:05).
+- Tesla’s 2026 Annual Meeting in-person drawing deadline (Fri 6 Nov, 11:59 p.m. CT) has passed. Selections still go out the week of 16 Nov.
+
 ## 2026-11-07 — Booster-cam look and news headline fix
 
 - Hot Staging gets a booster-camera view in the style of a launch-webcast camera (dome body, grid fins, Earth limb, haze, grain), with a "Booster cam / Side view" switch; Catch gets the same camera grade. Details: `docs/webcast-hud.md`.
