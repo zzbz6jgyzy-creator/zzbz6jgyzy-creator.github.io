@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T11:07:50.589Z",
+  "updated": "2026-11-07T11:52:32.492Z",
   "changes": [
     {
       "type": "changed",
@@ -17,23 +17,6 @@
       "summary": "2026.38.5.12 moved from 436 to 477 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.12",
       "id": "changed|tesla-software:wave:2026.38.5.12|2026-11-07T10:28:03.000Z|477"
-    },
-    {
-      "type": "changed",
-      "factId": "production:event:tesla-2026-asm-draw",
-      "topic": "production",
-      "tracker": "launches",
-      "field": "event:tesla-2026-asm-draw",
-      "previous": "2026-11-07T05:59:00.000Z|scheduled",
-      "next": "2026-11-07T05:59:00.000Z|ended",
-      "at": "2026-11-07T09:45:00.000Z",
-      "evidence": "officially_confirmed",
-      "source": "https://www.votetesla.com/annual-meeting-details/",
-      "sourceUrl": "",
-      "href": "https://www.votetesla.com/annual-meeting-details/",
-      "summary": "Tesla 2026 Annual Meeting in-person drawing deadline changed from 2026-11-07T05:59:00.000Z|scheduled to 2026-11-07T05:59:00.000Z|ended.",
-      "title": "Tesla 2026 Annual Meeting in-person drawing deadline",
-      "id": "changed|production:event:tesla-2026-asm-draw|2026-11-07T09:45:00.000Z|2026-11-07T05:59:00.000Z|ended"
     },
     {
       "type": "logged",
