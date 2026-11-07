@@ -21,3 +21,6 @@ A launch-stream style overlay for Catch and Hot Staging, and a small version on 
 - A "Booster cam / Side view" button (`data-staging-cam`) switches views; the choice is remembered in `localStorage` (`sd-staging-cam`) and defaults to the booster cam. Reduced motion removes grain and flicker.
 - **Catch** keeps its side view but gets the same camera grade (cool shadows, warm highlights, stronger vignette, grain).
 - Gameplay, scoring and the HUD are unchanged.
+
+### Booster-cam polish (7 Nov)
+After playing a full run, the camera view was reworked: the body and fins no longer follow the game's follow-camera (they only feel shake and rumble, so nothing slides into the HUD at separation); the grid fins have depth, a hinge arm, dark cells and a warm rim light; the steel dome has a cool fill from Earth, soot at the top and panel seams; hashed radial streaks give a sense of speed and drift with it; cloud bands move along the limb; and hot staging now shows what it should: the ship lights its engines above the booster, an orange-white blast pours onto the dome, then the ship pulls away on a tapered plume. Reduced motion removes streaks, grain and flicker.
