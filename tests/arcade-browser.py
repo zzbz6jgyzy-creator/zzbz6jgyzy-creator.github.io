@@ -42,7 +42,10 @@ async def main():
      jpg=OUT/f'{name}-{width}-preview.jpg';await q.screenshot(path=str(jpg),type='jpeg',quality=65);previews.append(jpg);print('ARCADE_PREVIEW '+jpg.name+' '+base64.b64encode(jpg.read_bytes()).decode(),flush=True)
     print('PASS layout',name,width,theme,flush=True);await c.close()
   for name,api in [('catch','CatchGame'),('staging','StagingGame')]:
-   c=await context();q=await c.new_page();errors=[];q.on('pageerror',lambda e:errors.append(e.stack));await q.goto('https://superchargeddaily.com/'+name+'.html',wait_until='networkidle');await q.clock.install()
+   c=await context()
+   # Seed Math.random: wind gusts are random, and about one run in six topples the stack before the pause check, so the test depended on luck.
+   await c.add_init_script("(()=>{let a=0x2f6e2b1;Math.random=()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}})()")
+   q=await c.new_page();errors=[];q.on('pageerror',lambda e:errors.append(e.stack));await q.goto('https://superchargeddaily.com/'+name+'.html',wait_until='networkidle');await q.clock.install()
    await q.locator('[data-ac-focus]').click();await q.locator('[data-'+name+'-play]').click();await q.clock.run_for(3500 if name=='staging' else 200)
    if name=='catch':assert 'Fuel ' in await q.locator('[data-ac-fuel]').inner_text()
    assert await q.evaluate(f'{api}.state()') in ['fly','boost'];assert not await q.evaluate(f'{api}.muted()'),'Play turns sound on for both games'
