@@ -728,12 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/roadster-reveal-2026-rearhero.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Tracker: Starlink in orbit</title>
+      <title>Tracker: Starlink McDowell snapshot</title>
       <link>https://superchargeddaily.com/starlink.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-07T10:49:32.000Z-11207</guid>
       <pubDate>Sat, 07 Nov 2026 10:49:32 +0000</pubDate>
       <category>starlink</category>
-      <description>Starlink in orbit changed from 11214 to 11207.</description>
+      <description>McDowell snapshot: inOrbit 11,214 → 11,207; working 11,200 → 11,193. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: 2026.38.5.12</title>
@@ -750,14 +750,6 @@
       <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
       <category>starship</category>
       <description>Eric Berger reported on X that SpaceX vice president of launch Kiko Dontchev said at the UP.Summit that the company is targeting Friday 13 Nov for Starship Flight 15. This is a stated target, relayed by TeslaNorth; we have not opened Berger’s post ourselves. It is not a launch time, and there is still no FAA Flight 15 licence and no official SpaceX mission page.</description>
-    </item>
-    <item>
-      <title>Tracker: Starlink McDowell snapshot</title>
-      <link>https://superchargeddaily.com/starlink.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-02T00:45:00.000Z-11214</guid>
-      <pubDate>Mon, 02 Nov 2026 00:45:00 +0000</pubDate>
-      <category>starlink</category>
-      <description>McDowell snapshot: inOrbit 11,190 → 11,214; working 11,176 → 11,200; launched 13,069 → 13,096. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: 2026.39.6</title>
@@ -822,6 +814,14 @@
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <category>fsd</category>
       <description>Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.</description>
+    </item>
+    <item>
+      <title>Tracker: 2026.38.3.2</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.3.2-2026-10-22T20:53:15.000Z-3</guid>
+      <pubDate>Thu, 22 Oct 2026 20:53:15 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
   </channel>
 </rss>
