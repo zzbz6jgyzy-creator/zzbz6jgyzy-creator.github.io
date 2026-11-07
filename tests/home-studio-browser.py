@@ -40,6 +40,10 @@ def route_for(root, mode, requested, signups, analytics):
             return await r.abort()
         if rel == 'members-config.json':
             return await r.fulfill(body='{"enabled":false}', content_type='application/json')
+        if rel == 'live-data.json':
+            # No live event: a launch in progress adds a banner that pushes the showcase below the first screen,
+            # so the real file made this test pass or fail depending on the time of day.
+            return await r.fulfill(body='{"updated":"2026-01-01T00:00:00Z","events":[]}', content_type='application/json')
         f = root / rel
         if f.is_file() and root in f.resolve().parents:
             return await r.fulfill(body=f.read_bytes(), content_type=mimetypes.guess_type(str(f))[0] or 'application/octet-stream')

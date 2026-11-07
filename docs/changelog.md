@@ -1,3 +1,7 @@
+## 2026-11-07 — Homepage hero shows today's news, not the Roadster
+
+- The homepage hero tile no longer promotes the Roadster page. `scripts/build-home.js` now fills it with the next-newest Dispatch story after the lead (the lead sits just below), and preloads that image. It updates with every home build. The Roadster page and its other links are unchanged.
+
 ## 2026-11-06 — Section themes site-wide
 
 - `theme-boot.js` sets `html[data-section]` from one path map and loads `section-theme.css` where it is missing. SpaceX pages (Starship, Starlink, See the launch, replay) move to the ice accent; Grok gets a silver accent; Tesla pages are tagged and stay red. Details and the page list: `docs/design-system.md`.
