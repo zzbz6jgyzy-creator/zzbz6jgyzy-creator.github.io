@@ -45,7 +45,7 @@
   function render() {
     if (nl && nlSec && list.contains(nl)) nlSec.append(nl);
     const pool = all.filter((a) => topic === "all" || a.topic === topic);
-    const L = pool.find((a) => a.pinned) || pool[0];
+    const L = pool.find((a) => a.pinned && (!a.pinUntil || Date.parse(a.pinUntil) > Date.now())) || pool[0];
     if (!L) { lead.innerHTML = ""; list.innerHTML = '<p class="art-empty">No stories in this topic yet.</p>'; more.hidden = true; placeNl(); return; }
     const d = new Date(L.date);
     lead.innerHTML = `<a class="art-lead art-${esc(L.topic)}" href="${esc(L.url)}">
