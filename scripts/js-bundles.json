@@ -190,11 +190,13 @@
       "wallpapers-ring.js"
     ],
     "catch": [
+      "webcast-hud.js",
       "arcade-model.js",
       "arcade.js",
       "catch.js"
     ],
     "staging": [
+      "webcast-hud.js",
       "arcade-model.js",
       "arcade.js",
       "staging-fx.js",
@@ -209,7 +211,9 @@
     "games": [
       "board.js",
       "arcade-model.js",
-      "arcade.js"
+      "arcade.js",
+      "webcast-hud.js",
+      "games-webcast.js"
     ],
     "buy-guide": [
       "buying-studio-model.js",

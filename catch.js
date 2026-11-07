@@ -14,6 +14,21 @@
   const hudFuel = document.querySelector("[data-hud-fuel]");
   const hudSpeed = document.querySelector("[data-hud-speed]");
   const hudScore = document.querySelector("[data-hud-score]");
+  // Launch-webcast style overlay. Numbers are derived from the game and are simulated.
+  const wc = window.WebcastHud ? window.WebcastHud.create(stage, { mission: "Starship recovery", milestones: ["Boostback", "Entry burn", "Landing burn", "Catch"], speedMax: 900, altMax: 80, gMax: 4 }) : null;
+  let wcT = 0, wcLast = 0, wcAlt0 = 0;
+  function updateWebcast() {
+    if (!wc) return;
+    const on = !!(ship && hud && !hud.hidden);
+    if (!on) { wcT = 0; wcLast = 0; wcAlt0 = 0; wc.update({ visible: false }); return; }
+    const now = performance.now();
+    if (state === "fly" && wcLast) wcT += Math.min(0.25, (now - wcLast) / 1000);
+    wcLast = now;
+    const alt = Math.max(0, ARM_Y - (ship.y - 4)), spd = Math.hypot(ship.vx, ship.vy);
+    if (wcAlt0 <= 0) wcAlt0 = Math.max(alt, 1);
+    const f = alt / wcAlt0, burning = !!ship.thrusting && ship.fuel > 0;
+    wc.update({ visible: true, mission: "Starship recovery · " + spec().name, t: wcT, speed: spd * 55, alt: f * 72, g: burning ? 2.2 + (1 - ship.fuel / 100) * 0.8 : 0, engines: burning ? 0.34 : 0, milestone: state === "complete" ? 3 : f < 0.3 ? 2 : f < 0.7 ? 1 : 0 });
+  }
   const boardList = document.querySelector("[data-board-list]");
   const boardNow = document.querySelector("[data-board-now]");
   const nameInput = document.querySelector("[data-catch-name]");
@@ -1366,6 +1381,7 @@
   }
 
   function updateHud() {
+    updateWebcast();
     if (!ship || !hud || hud.hidden) return;
     const s = spec();
     const spd = Math.hypot(ship.vx, ship.vy);

@@ -1,3 +1,7 @@
+## 2026-11-07 — SpaceX games get a launch-webcast HUD
+
+- Catch and Hot Staging now wear a shared webcast-style overlay (speed, altitude and G-force gauges, T+ clock with a milestone timeline, mission name, engine ring), with numbers derived from the game and labelled simulated. The Games hub's featured card gets a small version. Details: `docs/webcast-hud.md`.
+
 ## 2026-11-07 — Homepage hero shows today's news, not the Roadster
 
 - The homepage hero tile no longer promotes the Roadster page. `scripts/build-home.js` now fills it with the next-newest Dispatch story after the lead (the lead sits just below), and preloads that image. It updates with every home build. The Roadster page and its other links are unchanged.

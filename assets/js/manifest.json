@@ -297,18 +297,20 @@
       ]
     },
     "catch": {
-      "file": "/assets/js/catch.bundle.342dc7af65.js",
-      "bytes": 48164,
+      "file": "/assets/js/catch.bundle.60b581ab65.js",
+      "bytes": 52795,
       "sources": [
+        "webcast-hud.js",
         "arcade-model.js",
         "arcade.js",
         "catch.js"
       ]
     },
     "staging": {
-      "file": "/assets/js/staging.bundle.24be628c4a.js",
-      "bytes": 79252,
+      "file": "/assets/js/staging.bundle.41d9f970ad.js",
+      "bytes": 83554,
       "sources": [
+        "webcast-hud.js",
         "arcade-model.js",
         "arcade.js",
         "staging-fx.js",
@@ -326,12 +328,14 @@
       ]
     },
     "games": {
-      "file": "/assets/js/games.bundle.07e6cbfac8.js",
-      "bytes": 18080,
+      "file": "/assets/js/games.bundle.511d51f817.js",
+      "bytes": 22546,
       "sources": [
         "board.js",
         "arcade-model.js",
-        "arcade.js"
+        "arcade.js",
+        "webcast-hud.js",
+        "games-webcast.js"
       ]
     },
     "buy-guide": {

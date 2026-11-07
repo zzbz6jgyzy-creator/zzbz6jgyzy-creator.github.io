@@ -15,6 +15,17 @@
   const hudClock = document.querySelector("[data-hud-clock]");
   const hudAlt = document.querySelector("[data-hud-alt]");
   const hudScore = document.querySelector("[data-hud-score]");
+  // Launch-webcast style overlay. Numbers are derived from the game and are simulated.
+  const wc = window.WebcastHud ? window.WebcastHud.create(stage, { mission: "Hot staging", milestones: ["Startup", "Liftoff", "Max Q", "Stage sep", "Fairing"], speedMax: 8000, altMax: 100, gMax: 4 }) : null;
+  function updateWebcast() {
+    if (!wc) return;
+    const live = stack && hud && !hud.hidden && (state === "count" || state === "boost" || state === "window" || state === "sep" || state === "pause");
+    if (!live) { wc.update({ visible: false }); return; }
+    const s = spec(), q = clamp(tPlay / s.climb, 0, 1), counting = state === "count", sepNow = state === "sep";
+    const kmh = counting ? 0 : 5120 + tPlay * 41 + (sepNow ? ease(sepT) * 1400 : 0);
+    const m = counting ? 0 : sepNow ? (sepT > 0.55 ? 4 : 3) : q >= MAXQ_TO ? 3 : q >= MAXQ_FROM ? 2 : 1;
+    wc.update({ visible: true, mission: "Hot staging · " + s.name, t: counting ? -countT : T0 + tPlay, speed: kmh, alt: stack.alt, g: counting ? 1 : sepNow ? 0.2 : 1.1 + q * 2.1 + Math.min(1, load) * 0.8, engines: counting ? 0.2 : sepNow ? 0.4 : 1, milestone: m });
+  }
   const cueLabel = document.querySelector("[data-cue-label]");
   const cueClock = document.querySelector("[data-cue-clock]");
   const boardList = document.querySelector("[data-board-list]");
@@ -2141,16 +2152,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     fx.drawAltTape(ctx, { x: 12 * ui, y: cssH * 0.2, hgt: tapeH, alt: stack.alt, ui });
     const r = 54 * ui;
-    fx.drawAttitude(ctx, { cx: cssW - r - 20 * ui, cy: cssH - 50 * ui, r, angle: stack.angle, stage: s.stageAngle, fail: s.failAngle, ui });
-    const sepNow = state === "sep";
-    const kmh = Math.round(5120 + tPlay * 41 + (sepNow ? ease(sepT) * 1400 : 0));
-    ctx.textAlign = "right";
-    ctx.font = `600 ${12 * ui}px ${MONO}`;
-    ctx.fillStyle = "#ffe8c8";
-    ctx.fillText(`${kmh.toLocaleString()} KM/H`, cssW - 14 * ui, cssH * 0.2 + 4 * ui);
-    ctx.font = `500 ${8.5 * ui}px ${MONO}`;
-    ctx.fillStyle = "rgba(220,232,246,0.6)";
-    ctx.fillText("VELOCITY", cssW - 14 * ui, cssH * 0.2 - 8 * ui);
+    fx.drawAttitude(ctx, { cx: cssW - r - 20 * ui, cy: cssH - 50 * ui - Math.min(150, cssH * 0.19), r, angle: stack.angle, stage: s.stageAngle, fail: s.failAngle, ui });
     if (dyn && (state === "boost" || state === "window") && stack.alive) {
       const q = tPlay / s.climb;
       if (load > 0.02 || (q > MAXQ_FROM - 0.16 && q < MAXQ_TO + 0.12)) {
@@ -2370,6 +2372,7 @@
   }
 
   function updateHud() {
+    updateWebcast();
     if(stack){const s=spec(),remaining=s.climb-tPlay,open=(state==='boost'||state==='window')&&tPlay>=s.climb&&tPlay<=s.climb+s.window;
     arcade.telemetry({primary:open?'OPEN · '+Math.max(0,s.climb+s.window-tPlay).toFixed(1)+'s':remaining>0?'In '+remaining.toFixed(1)+'s':'Closed',secondary:(stack.angle*180/Math.PI).toFixed(1)+'° / '+(s.stageAngle*180/Math.PI).toFixed(0)+'° limit',state:state==='pause'?'Paused':state==='count'?'Countdown':state==='boost'?'Climbing':state==='window'?'STAGE NOW':state==='sep'?'Separation':state==='success'||state==='complete'?'Complete':'Ready',guidance:open?'Stage now. The midpoint gives the best timing score.':Math.abs(stack.angle)>s.stageAngle*.75?'Counter the lean before ignition. Short taps are enough.':'Keep the stack level, then watch for the ignition window.',sound:muted?'Sound off':'Sound on'});}
 
