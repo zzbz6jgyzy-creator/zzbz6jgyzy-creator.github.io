@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 07 Nov 2026 08:36:58 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 14:38:30 +0000</lastBuildDate>
+    <item>
+      <title>Grok API text gets an invisible watermark starting today</title>
+      <link>https://superchargeddaily.com/dispatch/grok-api-watermark.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-api-watermark.html</guid>
+      <pubDate>Sat, 07 Nov 2026 14:38:30 +0000</pubDate>
+      <category>Grok</category>
+      <description>Official docs set 7 Nov 2026 as the default invisible watermark start date for seven Grok API models. Team admins can opt out; consumer app scope is not established by the API docs.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/eu-parliament-watermark.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Musk says Starlink V4 lasers could outcompete undersea cables</title>
       <link>https://superchargeddaily.com/dispatch/starlink-v4-lasers.html</link>
@@ -717,15 +726,6 @@
       <category>Roadster</category>
       <description>Upside down on a ramp, over five Teslas, 0–60 under 0.59s. $50,000 to reserve, production 2028.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/roadster-reveal-2026-rearhero.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Southwest puts Starlink on every plane</title>
-      <link>https://superchargeddaily.com/dispatch/southwest-starlink-full-fleet.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/southwest-starlink-full-fleet.html</guid>
-      <pubDate>Thu, 15 Oct 2026 20:41:22 +0000</pubDate>
-      <category>Starlink</category>
-      <description>Full fleet by fall 2027, setting up a race with United to finish first.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/southwest-starlink-full-fleet-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.12</title>
