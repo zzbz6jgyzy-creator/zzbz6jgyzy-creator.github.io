@@ -1,3 +1,6 @@
+## 2026-11-07 — Hot Staging camera view reworked
+
+- Booster cam: steadier body and fins, deeper grid fins, darker steel with soot and seams, radial speed streaks, moving cloud bands, and a real hot-staging blast at separation. Details: `docs/webcast-hud.md`.
 ## 2026-11-07 — USSF-432 flown; USSF-627 next; NHTSA docket still open
 
 - Falcon 9 USSF-432 launched from Vandenberg at 4:48 p.m. PT on Friday 6 Nov (00:48 UTC 7 Nov). SpaceX’s mission page: eighth-flight booster, landing on Of Course I Still Love You. Launch Library 2 lists it as a success. The homepage livestream card and See the Launch fallback now treat it as flown.
