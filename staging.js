@@ -2179,8 +2179,9 @@
   // First-person look from the booster, in the style of a launch-webcast camera: the rounded body and two
   // grid fins fixed in frame, the world (Earth limb, atmosphere, stars) rolling with the stack's angle,
   // a bright plume haze, vignette, grade and grain. Gameplay is unchanged; this only draws.
-  let camView = true;
-  try { camView = localStorage.getItem("sd-staging-cam") !== "side"; } catch (e) { /* blocked storage: default view */ }
+  // The original side view is the default (owner decision, 7 Nov 2026); the booster cam is an opt-in switch.
+  let camView = false;
+  try { camView = localStorage.getItem("sd-staging-cam") === "cam"; } catch (e) { /* blocked storage: default view */ }
   const camBtn = document.querySelector("[data-staging-cam]");
   function syncCamBtn() {
     if (!camBtn) return;

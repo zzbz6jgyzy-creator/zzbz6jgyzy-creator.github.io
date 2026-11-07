@@ -1,3 +1,7 @@
+## 2026-11-07 — Hot Staging back to the original side view
+
+- Hot Staging's default view is the original side view again (the booster cam stays available as an opt-in switch). The webcast HUD is unchanged. `docs/webcast-hud.md`.
+
 ## 2026-11-07 — Hot Staging camera view reworked
 
 - Booster cam: steadier body and fins, deeper grid fins, darker steel with soot and seams, radial speed streaks, moving cloud bands, and a real hot-staging blast at separation. Details: `docs/webcast-hud.md`.
