@@ -1,6 +1,18 @@
 {
-  "updated": "2026-11-07T02:43:00Z",
+  "updated": "2026-11-07T08:36:58Z",
   "articles": [
+    {
+      "url": "/dispatch/starlink-v4-lasers.html",
+      "title": "Musk says Starlink V4 lasers could outcompete undersea cables",
+      "date": "2026-11-07T08:36:58Z",
+      "topic": "spacex",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/starlink-carson-v4.jpg",
+      "summary": "Musk sketched Starlink V4 with about 10 times V3 capability and 10 Tb/s laser links. His interview said ten lasers; his posts discussed roughly 100 as an engineering ambition, not a settled design.",
+      "pinned": false,
+      "imageAlt": "A train of Starlink satellites crossing the night sky near Carson National Forest, New Mexico",
+      "author": "Alex R"
+    },
     {
       "url": "/dispatch/tesla-optimus-rental.html",
       "title": "Musk says Tesla will likely rent Optimus rather than sell it",
