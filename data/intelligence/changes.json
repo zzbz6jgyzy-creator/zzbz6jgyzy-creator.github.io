@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T14:38:59.262Z",
+  "updated": "2026-11-07T16:22:21.590Z",
   "changes": [
     {
       "type": "logged",
@@ -17,6 +17,23 @@
       "summary": "Official docs set 7 Nov 2026 as the default invisible watermark start date for seven Grok API models. Team admins can opt out; consumer app scope is not established by the API docs.",
       "title": "Grok API text gets an invisible watermark starting today",
       "id": "logged|dispatch:/dispatch/grok-api-watermark.html|2026-11-07T14:38:30.000Z|Grok API text gets an invisible watermark starting today"
+    },
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11214",
+      "next": "11207",
+      "at": "2026-11-07T10:49:32.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html",
+      "summary": "Starlink in orbit changed from 11214 to 11207.",
+      "title": "Starlink in orbit",
+      "id": "changed|starlink:in-orbit|2026-11-07T10:49:32.000Z|11207"
     },
     {
       "type": "changed",
