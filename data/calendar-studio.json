@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-07T09:45:00+00:00",
+ "updated": "2026-11-08T10:20:00+00:00",
  "launchChecked": "2026-11-08T08:56:48Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
@@ -583,22 +583,35 @@
    "windowStart": "2026-11-13T04:23:00Z",
    "windowEnd": "2026-11-13T08:23:00Z",
    "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch"
+   "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches/ussf317",
+    "article": "",
+    "status": "scheduled"
+   }
   },
   {
    "id": "starship-15",
    "title": "Starship Flight 15",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-13T12:00:00Z",
-   "end": "",
+   "start": "2026-11-13T16:45:00-06:00",
+   "end": "2026-11-13T18:00:00-06:00",
    "date": "2026-11-13",
-   "precision": "day",
+   "precision": "datetime",
    "status": "net",
-   "note": "NET 13 November on the FAA's 5 Nov 2026 air-traffic planning slides, as reported by community trackers (moved from 12 Nov on the 29 Oct slides, and 8 Nov before that), not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date.",
+   "note": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published.",
    "where": "Starbase · Pad 2",
-   "href": "",
+   "href": "https://www.spacex.com/launches/starship-flight-15",
    "sources": [
+    {
+     "href": "https://www.spacex.com/launches/starship-flight-15",
+     "label": "spacex.com"
+    },
+    {
+     "href": "https://www.spacex.com/updates",
+     "label": "spacex.com"
+    },
     {
      "href": "https://starship-spacex.fandom.com/wiki/Starship_Flight_15",
      "label": "starship-spacex.fandom.com"
@@ -618,17 +631,13 @@
     {
      "href": "https://www.nextspaceflight.com/starship/hardware/80/",
      "label": "nextspaceflight.com"
-    },
-    {
-     "href": "https://thespaceroad.com/articles/when-is-starship-flight-15/",
-     "label": "thespaceroad.com"
     }
    ],
    "origin": "Editorial calendar",
    "providerId": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
    "providerStatus": "To Be Confirmed",
    "coverage": {
-    "url": "https://x.com/SpaceX",
+    "url": "https://www.spacex.com/launches/starship-flight-15",
     "article": "",
     "status": "scheduled"
    }

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-08T06:18:59.845Z",
+  "generatedAt": "2026-11-08T10:23:33.351Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -10,7 +10,7 @@
       "field": "event:tesla-2026-asm",
       "value": "2026-12-03T21:00:00.000Z|scheduled",
       "label": "Tesla 2026 Annual Meeting of Shareholders",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
       "sourceUrl": "",
@@ -24,7 +24,7 @@
       "field": "event:tesla-2026-asm-draw",
       "value": "2026-11-07T05:59:00.000Z|ended",
       "label": "Tesla 2026 Annual Meeting in-person drawing deadline",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.votetesla.com/annual-meeting-details/",
       "sourceUrl": "",
@@ -38,7 +38,7 @@
       "field": "event:starship-flight-16",
       "value": "2026-12-01T00:00:00.000Z|expected",
       "label": "Starship Flight 16",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "independently_corroborated",
       "source": "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
       "sourceUrl": "",
@@ -50,14 +50,14 @@
       "topic": "starship",
       "tracker": "starship",
       "field": "event:starship-flight-15",
-      "value": "2026-11-13T06:00:00.000Z|net",
+      "value": "2026-11-13T22:45:00.000Z|net",
       "label": "Starship Flight 15",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "estimated",
-      "source": "Starship Flight 15 wiki, citing the FAA CADENA/COMPASS planning slide of 5 Nov 2026: NET 13 Nov (https://starship-spacex.fandom.com/wiki/Starship_Flight_15). We have not opened the slide ourselves; Wikipedia's Starship flight 15 infobox also reads NET November 13, 2026.",
+      "source": "https://www.spacex.com/launches/starship-flight-15",
       "sourceUrl": "",
-      "href": "/calendar.html",
-      "summary": "NET 13 November on the FAA's 5 Nov 2026 air-traffic planning slides, as reported by community trackers (moved from 12 Nov on the 29 Oct slides, and 8 Nov before that), not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date."
+      "href": "https://www.spacex.com/launches/starship-flight-15",
+      "summary": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published."
     },
     {
       "id": "spacex-launches:event:crs35-docking",
@@ -66,7 +66,7 @@
       "field": "event:crs35-docking",
       "value": "2026-10-15T14:27:00.000Z|done",
       "label": "Dragon · CRS-35 docked with the ISS",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "independently_corroborated",
       "source": "NASA space station blog, 15 Oct 2026: docked at 10:27 a.m. EDT",
       "sourceUrl": "",
@@ -80,7 +80,7 @@
       "field": "event:tesla-roadster-demo",
       "value": "2026-10-16T00:55:00.000Z|ended",
       "label": "Tesla Roadster reveal",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "independently_corroborated",
       "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
       "sourceUrl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
@@ -94,7 +94,7 @@
       "field": "event:spacex-q3-2026-earnings",
       "value": "2026-10-20T20:30:00.000Z|ended",
       "label": "SpaceX Q3 2026 earnings call",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
       "sourceUrl": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
@@ -108,7 +108,7 @@
       "field": "event:tesla-q3-2026-earnings",
       "value": "2026-10-21T21:30:00.000Z|ended",
       "label": "Tesla Q3 2026 earnings call",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
       "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
@@ -122,7 +122,7 @@
       "field": "event:ussf-481",
       "value": "2026-10-16T00:02:07.000Z|done",
       "label": "Falcon 9 · USSF-481",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://x.com/SpaceX/status/2110883955004035154",
       "sourceUrl": "",
@@ -136,7 +136,7 @@
       "field": "event:bandwagon-5",
       "value": "2026-10-20T11:04:00.000Z|done",
       "label": "Falcon 9 · Bandwagon-5 rideshare",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.spacex.com/launches/bandwagon5",
       "sourceUrl": "",
@@ -150,7 +150,7 @@
       "field": "event:spcx-q3-lockup-release",
       "value": "2026-10-22T00:00:00.000Z|ended",
       "label": "SpaceX lock-up release · up to 1.3B shares",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
       "sourceUrl": "",
@@ -248,7 +248,7 @@
       "field": "next-flight",
       "value": "15|2026-11-13|day",
       "label": "Next Starship flight",
-      "at": "2026-11-07T09:45:00.000Z",
+      "at": "2026-11-08T10:20:00.000Z",
       "evidence": "estimated",
       "source": "FAA planning slides",
       "sourceUrl": "",
@@ -276,7 +276,7 @@
       "field": "status-counts",
       "value": "Delivered:6,Delivered late:11,In progress:15,Missed:27,Revised:5",
       "label": "Promise status mix",
-      "at": "2026-11-04T00:00:00.000Z",
+      "at": "2026-11-08T00:00:00.000Z",
       "evidence": "historical",
       "source": "data/promises.json",
       "sourceUrl": "",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published.",
+      "at": "2026-11-08T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "SpaceX · Starship Flight 15",
+      "sourceUrl": "https://www.spacex.com/launches/starship-flight-15",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-08T00:00:00.000Z|SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published."
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-api-watermark.html",
@@ -369,6 +386,23 @@
       "summary": "At the Baron Investment Conference on 6 Nov 2026, Elon Musk said Tesla will probably rent Optimus humanoid robots. Talk of about $30,000 falling toward $20,000 is build cost, not a rental price. Outside deliveries still point to around end of 2027.",
       "title": "Musk says Tesla will likely rent Optimus rather than sell it",
       "id": "logged|dispatch:/dispatch/tesla-optimus-rental.html|2026-11-07T02:43:00.000Z|Musk says Tesla will likely rent Optimus rather than sell it"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met.",
+      "at": "2026-11-07T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "SpaceX Updates (7 Nov 2026)",
+      "sourceUrl": "https://www.spacex.com/updates",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-07T00:00:00.000Z|SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met."
     },
     {
       "type": "changed",
@@ -1841,15 +1875,15 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
-      "lastVerified": "2026-10-30T00:00:00.000Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
+      "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
-      "lastVerified": "2026-11-07T09:45:00.000Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
+      "lastVerified": "2026-11-08T10:20:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
     {
@@ -1862,14 +1896,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
       "lastVerified": "2026-11-05T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
       "lastVerified": "2026-11-07T21:01:48.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1883,35 +1917,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
-      "lastVerified": "2026-11-04T00:00:00.000Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
+      "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
-      "lastVerified": "2026-11-04T00:00:00.000Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
+      "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-08T06:18:59.845Z",
+      "lastChecked": "2026-11-08T10:23:33.351Z",
       "lastVerified": "2026-11-08T06:18:56.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1920,87 +1954,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.825Z",
-      "finished": "2026-11-08T06:18:59.830Z"
+      "started": "2026-11-08T10:23:33.340Z",
+      "finished": "2026-11-08T10:23:33.340Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.830Z",
-      "finished": "2026-11-08T06:18:59.830Z"
+      "started": "2026-11-08T10:23:33.340Z",
+      "finished": "2026-11-08T10:23:33.340Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.830Z",
-      "finished": "2026-11-08T06:18:59.831Z"
+      "started": "2026-11-08T10:23:33.340Z",
+      "finished": "2026-11-08T10:23:33.340Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.831Z",
-      "finished": "2026-11-08T06:18:59.838Z"
+      "started": "2026-11-08T10:23:33.340Z",
+      "finished": "2026-11-08T10:23:33.346Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.838Z",
-      "finished": "2026-11-08T06:18:59.841Z"
+      "started": "2026-11-08T10:23:33.346Z",
+      "finished": "2026-11-08T10:23:33.348Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.841Z",
-      "finished": "2026-11-08T06:18:59.842Z"
+      "started": "2026-11-08T10:23:33.348Z",
+      "finished": "2026-11-08T10:23:33.348Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.842Z",
-      "finished": "2026-11-08T06:18:59.842Z"
+      "started": "2026-11-08T10:23:33.348Z",
+      "finished": "2026-11-08T10:23:33.349Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.842Z",
-      "finished": "2026-11-08T06:18:59.843Z"
+      "started": "2026-11-08T10:23:33.349Z",
+      "finished": "2026-11-08T10:23:33.349Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.843Z",
-      "finished": "2026-11-08T06:18:59.843Z"
+      "started": "2026-11-08T10:23:33.349Z",
+      "finished": "2026-11-08T10:23:33.349Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.843Z",
-      "finished": "2026-11-08T06:18:59.844Z"
+      "started": "2026-11-08T10:23:33.349Z",
+      "finished": "2026-11-08T10:23:33.350Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.844Z",
-      "finished": "2026-11-08T06:18:59.845Z"
+      "started": "2026-11-08T10:23:33.350Z",
+      "finished": "2026-11-08T10:23:33.351Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.845Z",
-      "finished": "2026-11-08T06:18:59.845Z"
+      "started": "2026-11-08T10:23:33.351Z",
+      "finished": "2026-11-08T10:23:33.351Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-08T06:18:59.845Z",
-      "finished": "2026-11-08T06:18:59.845Z"
+      "started": "2026-11-08T10:23:33.351Z",
+      "finished": "2026-11-08T10:23:33.351Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-08T06:18:59.845Z",
+    "generatedAt": "2026-11-08T10:23:33.351Z",
     "factCount": 20,
-    "changeCount": 89,
+    "changeCount": 91,
     "conflictCount": 2,
     "issues": [
       {

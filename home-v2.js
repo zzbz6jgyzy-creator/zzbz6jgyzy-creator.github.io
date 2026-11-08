@@ -173,7 +173,7 @@
   ]).then(([j, ld]) => {
     const live = {}; (ld.events || []).forEach((e) => { live[e.id] = e; });
     const list = Object.entries(j.events || {}).filter(([, e]) => e.major).map(([id, e]) => {
-      const day = !e.start && e.precision === "day";
+      const day = /net/i.test(e.status) || (!e.start && e.precision === "day");
       const t = new Date(e.start || (e.date + "T" + (e.time || "00:00") + ":00" + (e.tz || "Z"))).getTime();
       return { id, e, t, day };
     });

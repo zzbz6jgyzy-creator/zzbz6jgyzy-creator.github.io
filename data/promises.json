@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "updated": "2026-11-04",
+ "updated": "2026-11-08",
  "promises": [
   {
    "id": "fsd-90-percent-2013",
@@ -2220,11 +2220,20 @@
       "date": "2026-10-27"
      },
      "date": "2026-10-27"
+    },
+    {
+     "text": "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval, with a 75-minute window opening at 4:45 p.m. CT. Dual catch and 26 Starlink V3 are on that page. No FAA licence is published.",
+     "source": {
+      "outlet": "SpaceX · Starship Flight 15",
+      "url": "https://www.spacex.com/launches/starship-flight-15",
+      "date": "2026-11-08"
+     },
+     "date": "2026-11-08"
     }
    ],
    "revisions": [],
-   "last_verified": "2026-10-28",
-   "note": "Musk added that success is \"not guaranteed\" but \"more likely than not\". The FAA planning date is NET 13 November (as of 5 Nov 2026, reported by community trackers; was 12 November on 29 Oct and 8 November before that)."
+   "last_verified": "2026-11-08",
+   "note": "Musk added that success is \"not guaranteed\" but \"more likely than not\". SpaceX’s Flight 15 mission page now targets as soon as Friday 13 November, pending regulatory approval, with a 75-minute window opening at 4:45 p.m. CT. No FAA licence is published."
   },
   {
    "id": "starship-weekly-h1-2027",

@@ -2,8 +2,8 @@
 // Every claim needs a real source and a verification status.
 // Do not mark a city live unless a source says public rides are happening.
 window.ROBOTAXI_REALITY = {
-  updated: "2026-11-07",
-  updatedLabel: "7 Nov 2026",
+  updated: "2026-11-08",
+  updatedLabel: "8 Nov 2026",
   kinds: [
     { id: "operational", label: "Operational" },
     { id: "expansion", label: "Expansions" },
@@ -230,7 +230,7 @@ window.ROBOTAXI_REALITY = {
       supervision: "unknown",
       vehicle: "Cybercab",
       title: "NHTSA Cybercab audit still open",
-      text: "Electrek reported 5 Nov that Tesla met the 30 Oct Special Order deadline and that the public AQ26002 docket now has three Tesla filings: a one-page confidentiality letter, a Question 8 placeholder, and the Cybercab First Responder Interaction Plan dated 3 Sep. Electrek says NHTSA has not commented on the confidentiality request. NHTSA’s AQ26002 record still lists the audit as open, with no finding or recall (dot.report, last updated 7 Nov 2026). An audit query is a fact-finding step, not a finding of non-compliance.",
+      text: "Electrek reported 5 Nov that Tesla met the 30 Oct Special Order deadline and that the public AQ26002 docket now has three Tesla filings: a one-page confidentiality letter, a Question 8 placeholder, and the Cybercab First Responder Interaction Plan dated 3 Sep. Electrek says NHTSA has not commented on the confidentiality request. NHTSA’s AQ26002 record still lists the audit as open, with no finding or recall (dot.report, last updated 8 Nov 2026 08:12:04). An audit query is a fact-finding step, not a finding of non-compliance.",
       date: "2026-11-05",
       src: "https://electrek.co/2026/11/05/tesla-cybercab-nhtsa-sworn-answers-confidential/",
       srcLabel: "Electrek"

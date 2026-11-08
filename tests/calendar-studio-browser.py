@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 from playwright.async_api import async_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=pathlib.Path(os.environ.get('CALENDAR_SCREENSHOTS','/tmp/calendar-studio'));OUT.mkdir(parents=True,exist_ok=True);DATA=json.loads((ROOT/'data/calendar-studio.json').read_text());KEY='sd-calendar-studio-v1'
-F15_DATE=json.loads((ROOT/'data/events.json').read_text())['events']['starship-flight-15']['date']  # day-precision NET moves with the FAA slides; never hard-code it
+F15_DATE=json.loads((ROOT/'data/events.json').read_text())['events']['starship-flight-15']['date']  # Flight 15 day from the editorial calendar; never hard-code it
 DONE={'done','ended','success','failure','failed','partial','partial failure','cancelled','canceled'}
 def pick_launch(events):
     upcoming=[e for e in events if e.get('group')=='spacex' and e.get('category')=='Launch' and e.get('precision')=='datetime' and e.get('status','').lower() not in DONE]
@@ -60,7 +60,7 @@ async def main():
    await page.locator('[data-view=month]').click();cell=page.locator('.cs-month-grid [tabindex="0"]');await cell.focus();old=await cell.get_attribute('data-date');await page.keyboard.press('ArrowRight');assert await page.locator('.cs-month-grid [tabindex="0"]').get_attribute('data-date')!=old;assert await page.locator('.cs-month-grid [tabindex="0"]').evaluate('(e)=>document.activeElement===e')
    async with page.expect_download()as info:await page.locator('#cs-export').click()
    downloaded=await info.value;ics=pathlib.Path(await downloaded.path()).read_text();starts=[line for line in ics.splitlines()if line.startswith('DTSTART')];assert starts and all('202610'in line for line in starts),starts
-   await page.locator('[data-month="1"]').click();await expect(page.locator('.cs-month-bar h3')).to_have_text('November 2026');await page.locator('[data-date="'+F15_DATE+'"]').click();assert 'NET date'in await page.locator('.cs-day-panel').inner_text();assert 'Time unconfirmed'in await page.locator('.cs-day-panel').inner_text()
+   await page.locator('[data-month="1"]').click();await expect(page.locator('.cs-month-bar h3')).to_have_text('November 2026');await page.locator('[data-date="'+F15_DATE+'"]').click();panel=await page.locator('.cs-day-panel').inner_text();assert 'Provisional target'in panel;assert 'Time unconfirmed'not in panel;assert '14:45'in panel
    assert not errors,errors;assert not any('ll.thespacedevs.com'in u for u in requests);await c.close()
   for mode in ['light','no-js','blocked-js','bad-prefs','blocked-storage','source-failed','malformed','older']:
    c,page,errors,requests=await context(mode=mode)

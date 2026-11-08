@@ -170,10 +170,10 @@
           value: start + "|" + (e.status || ""),
           label: e.title || id,
           at: src.events.updated || start,
-          evidence: /official|ir\.|sec\.gov|spacex\.com|tesla\.com/i.test(JSON.stringify(e.source || e.sources || ""))
-            ? "officially_confirmed"
-            : e.status === "net"
-              ? "estimated"
+          evidence: e.status === "net"
+            ? "estimated"
+            : /official|ir\.|sec\.gov|spacex\.com|tesla\.com/i.test(JSON.stringify(e.source || e.sources || ""))
+              ? "officially_confirmed"
               : "independently_corroborated",
           source: e.source || (Array.isArray(e.sources) ? e.sources[0] : "") || "data/events.json",
           sourceUrl: typeof e.source === "string" && /^https:\/\//.test(e.source) ? e.source : "",

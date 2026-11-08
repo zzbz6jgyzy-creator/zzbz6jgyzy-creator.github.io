@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-10-30",
+ "updated": "2026-11-08",
  "reviewed": "2026-10-24",
  "phaseOrder": [
   "liftoff",
@@ -1687,18 +1687,22 @@
   "officialTime": null,
   "officialSource": null,
   "confirmed": false,
-  "title": "First serious Ship catch",
+  "title": "First dual catch attempt",
   "booster": "B22",
   "ship": "S42",
   "pad": "Starbase · OLP-2",
   "generation": "Block 3",
-  "summary": "The saved planning reference is not a SpaceX launch announcement. Readiness, licensing and an official launch window remain separate questions.",
+  "summary": "SpaceX published a Flight 15 window pending regulatory approval. Licensing and a confirmed T-0 remain separate questions.",
   "objectives": [
    "Attempt to return the ship to the launch tower; this remains a mission target, not an achieved capability.",
-   "Fly Super Heavy B22 and try to catch it on the tower as well — SpaceX said on the 20 Oct call it will attempt both catches; the FAA licence is not issued yet",
-   "Prove Block 3 after Flight 14’s first orbital Starlink V3 deploy"
+   "Catch Super Heavy B22 — first Super Heavy V3 catch; SpaceX says the booster’s primary objective is a return to the launch site",
+   "Deploy 26 Starlink V3 satellites, then fly more than 22 hours before a Ship catch if systems stay healthy"
   ],
   "coverage": [
+   {
+    "label": "SpaceX Flight 15",
+    "url": "https://www.spacex.com/launches/starship-flight-15"
+   },
    {
     "label": "SpaceX launches",
     "url": "https://www.spacex.com/launches"
@@ -1726,6 +1730,20 @@
   ]
  },
  "schedule": [
+  {
+   "date": "2026-11-08",
+   "text": "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published.",
+   "url": "https://www.spacex.com/launches/starship-flight-15",
+   "outlet": "SpaceX · Starship Flight 15",
+   "kind": "primary"
+  },
+  {
+   "date": "2026-11-07",
+   "text": "SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met.",
+   "url": "https://www.spacex.com/updates",
+   "outlet": "SpaceX Updates (7 Nov 2026)",
+   "kind": "primary"
+  },
   {
    "date": "2026-11-05",
    "text": "Eric Berger reported on X that SpaceX vice president of launch Kiko Dontchev said at the UP.Summit that the company is targeting Friday 13 Nov for Starship Flight 15. This is a stated target, relayed by TeslaNorth; we have not opened Berger’s post ourselves. It is not a launch time, and there is still no FAA Flight 15 licence and no official SpaceX mission page.",
