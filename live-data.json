@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T09:45:00+00:00",
+  "updated": "2026-11-08T10:20:00+00:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
     {
@@ -153,23 +153,41 @@
       "descSource": "https://www.spacex.com/launches/ussf627"
     },
     {
+      "id": "f9-ussf317",
+      "title": "Falcon 9 · USSF-317",
+      "page": "starship",
+      "start": "2026-11-12T20:23:00-08:00",
+      "end": "2026-11-13T00:23:00-08:00",
+      "status": "scheduled",
+      "provider": "link",
+      "embedId": "",
+      "postUrl": "https://www.spacex.com/launches/ussf317",
+      "fallbackUrl": "https://www.spacex.com/launches/ussf317",
+      "fallbackLabel": "Webcast on spacex.com and X (@SpaceX)",
+      "source": "https://www.spacex.com/launches/ussf317",
+      "image": "/assets/live/falcon9.jpg",
+      "imageCredit": "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain",
+      "description": "SpaceX is targeting Thursday 12 Nov for Falcon 9 USSF-317 from SLC-4E at Vandenberg. The four-hour window opens at 8:23 p.m. PT (04:23 UTC 13 Nov); backup is Friday 13 Nov at 8:09 p.m. PT. The booster is on its 11th flight and will land on Of Course I Still Love You. Webcast starts about 10 minutes before liftoff. Direct X broadcast URL not posted yet.",
+      "descSource": "https://www.spacex.com/launches/ussf317"
+    },
+    {
       "id": "starship-flight-15",
       "title": "Starship Flight 15",
       "page": "starship",
-      "start": "2026-11-13T00:00:00-06:00",
-      "end": "2026-11-13T23:59:00-06:00",
+      "start": "2026-11-13T16:45:00-06:00",
+      "end": "2026-11-13T18:00:00-06:00",
       "net": true,
       "status": "scheduled",
-      "provider": "x",
+      "provider": "link",
       "embedId": "",
-      "postUrl": "",
-      "fallbackUrl": "https://x.com/SpaceX",
-      "fallbackLabel": "Watch on X",
-      "source": "https://www.spacex.com/launches/",
+      "postUrl": "https://www.spacex.com/launches/starship-flight-15",
+      "fallbackUrl": "https://www.spacex.com/launches/starship-flight-15",
+      "fallbackLabel": "Webcast on spacex.com and X (@SpaceX)",
+      "source": "https://www.spacex.com/launches/starship-flight-15",
       "image": "/assets/live/starship.jpg",
       "imageCredit": "Photo: Shujianyang, Wikimedia Commons, CC BY-SA 4.0",
-      "description": "Starship's fifteenth flight test from Starbase, Texas, targeted no earlier than 13 November on the FAA's 5 Nov 2026 planning slides, as reported by community trackers (moved from 12 November on 29 Oct, and 8 November before that). On the 20 Oct earnings call Musk said SpaceX expects it next month and will try to catch both the booster and the ship.",
-      "descSource": "https://www.spacex.com/launches/",
+      "description": "SpaceX is targeting Starship Flight 15 as soon as Friday 13 Nov from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: catch Super Heavy and Ship, deploy 26 Starlink V3 satellites, then a more than 22-hour flight before a Ship catch. Webcast starts about 30 minutes before liftoff. Direct X broadcast URL not posted yet. This is a published window, not a confirmed T-0.",
+      "descSource": "https://www.spacex.com/launches/starship-flight-15",
       "thumb": "/assets/live/starship-480w.webp"
     },
     {

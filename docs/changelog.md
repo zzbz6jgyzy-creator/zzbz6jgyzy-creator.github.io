@@ -1,3 +1,10 @@
+## 2026-11-08 — Flight 15 window; USSF-317 livestream; NHTSA stamp
+
+- SpaceX published a [Starship Flight 15 mission page](https://www.spacex.com/launches/starship-flight-15): as soon as Friday 13 Nov from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, then more than 22 hours before a Ship catch. The livestream card stays NET so USSF-627 remains the homepage pick. The calendar shows the window as a provisional target. No FAA licence is published, so this is not a confirmed T-0 and the Starship studio does not start a countdown. SpaceX’s 7 Nov update is about the return-to-launch-site plan, not a licence-date estimate.
+- Falcon 9 USSF-317 has a [mission page](https://www.spacex.com/launches/ussf317): Thursday 12 Nov, four-hour window opening 8:23 p.m. PT, backup Friday 13 Nov 8:09 p.m. PT, 11th-flight booster, landing on Of Course I Still Love You. New livestream card. USSF-627 (Monday 9 Nov, 7:03 p.m. PT) is unchanged.
+- NHTSA AQ26002 remains open with no finding or recall ([dot.report](https://dot.report/investigations/AQ26002), last updated 8 Nov 2026 08:12:04). Stamp only; the Cybercab guide timeline stays at 17 events.
+- Unchanged after a recheck: Starlink McDowell 11,207 in orbit / 11,193 working (7 Nov 10:49 UTC); Texas registry 573 Cybercab / 671 Model Y / 1,244 total; tesla.com/robotaxi still lists the same seven hail cities. Details: `docs/audit-2026-11-08.md`.
+
 ## 2026-11-07 — Hot Staging back to the original side view
 
 - Hot Staging's default view is the original side view again (the booster cam stays available as an opt-in switch). The webcast HUD is unchanged. `docs/webcast-hud.md`.

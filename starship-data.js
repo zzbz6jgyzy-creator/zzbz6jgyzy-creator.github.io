@@ -1,24 +1,25 @@
 window.STARSHIP = {
-  updated: "2026-10-30",
+  updated: "2026-11-08",
   note:
-    "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has no SpaceX clock. Not affiliated with SpaceX.",
+    "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has a published window pending regulatory approval; that is not a confirmed T-0. Not affiliated with SpaceX.",
   next: {
     flight: 15,
-    start: "2026-11-13T12:00:00Z",
+    start: "2026-11-13T16:45:00-06:00",
     precision: "day",
     pad: "Starbase · OLP-2",
     booster: "B22",
     ship: "S42",
     block: "Block 3",
-    headline: "First serious Ship catch",
+    headline: "First dual catch attempt",
     tested:
-      "Working window is now NET 13 November on the FAA’s 5 Nov 2026 air-traffic planning slides, as reported by community trackers (moved from 12 Nov on the 29 Oct slides, and 8 Nov before that) — not a SpaceX T-0. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. Ship 42 did a single-engine deorbit-burn demo at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration static fire on 27 Oct 2026, about 5:46pm ET (2:46pm PT), as reported by NASASpaceflight and logged by Next Spaceflight. SpaceX confirmed on 28 Oct 2026 that Ship 42’s static fires are complete. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date. The story is still the first real attempt to catch a Ship.",
+      "SpaceX’s Flight 15 mission page targets as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: catch Super Heavy (first V3 catch) and Ship, deploy 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0; no FAA licence is published. Booster 22 completed a full-duration 33-engine static fire on 25 Oct. SpaceX confirmed on 28 Oct that Ship 42’s static fires are complete.",
     objectives: [
-      "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, which Musk confirmed on the 20 Oct earnings call",
-      "Fly Super Heavy B22 and try to catch it on the tower as well — SpaceX said on the 20 Oct call it will attempt both catches; the FAA licence is not issued yet",
-      "Prove Block 3 after Flight 14’s first orbital Starlink V3 deploy",
+      "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, now on the SpaceX mission page",
+      "Catch Super Heavy B22 — first Super Heavy V3 catch; SpaceX says the booster’s primary objective is a return to the launch site",
+      "Deploy 26 Starlink V3 satellites, then fly more than 22 hours before a Ship catch if systems stay healthy",
     ],
     coverage: [
+      { label: "SpaceX Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
       { label: "SpaceX launches", url: "https://www.spacex.com/launches" },
       { label: "SpaceX on X", url: "https://x.com/SpaceX" },
       { label: "SpaceX on YouTube", url: "https://www.youtube.com/@SpaceX" },
@@ -28,6 +29,22 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-11-08",
+      mission: 15,
+      confirmed: false,
+      change:
+        "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published.",
+      source: { outlet: "SpaceX · Starship Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
+    },
+    {
+      date: "2026-11-07",
+      mission: 15,
+      confirmed: false,
+      change:
+        "SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met.",
+      source: { outlet: "SpaceX Updates (7 Nov 2026)", url: "https://www.spacex.com/updates" },
+    },
     {
       date: "2026-11-05",
       mission: 15,

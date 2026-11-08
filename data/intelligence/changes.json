@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-08T06:18:59.845Z",
+  "updated": "2026-11-08T10:23:33.351Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published.",
+      "at": "2026-11-08T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "SpaceX · Starship Flight 15",
+      "sourceUrl": "https://www.spacex.com/launches/starship-flight-15",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-08T00:00:00.000Z|SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published."
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-api-watermark.html",
@@ -85,6 +102,23 @@
       "summary": "At the Baron Investment Conference on 6 Nov 2026, Elon Musk said Tesla will probably rent Optimus humanoid robots. Talk of about $30,000 falling toward $20,000 is build cost, not a rental price. Outside deliveries still point to around end of 2027.",
       "title": "Musk says Tesla will likely rent Optimus rather than sell it",
       "id": "logged|dispatch:/dispatch/tesla-optimus-rental.html|2026-11-07T02:43:00.000Z|Musk says Tesla will likely rent Optimus rather than sell it"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met.",
+      "at": "2026-11-07T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "SpaceX Updates (7 Nov 2026)",
+      "sourceUrl": "https://www.spacex.com/updates",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-07T00:00:00.000Z|SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met."
     },
     {
       "type": "changed",

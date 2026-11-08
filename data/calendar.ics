@@ -324,26 +324,21 @@ END:VEVENT
 BEGIN:VEVENT
 UID:starship-15@superchargeddaily.com
 DTSTAMP:20261108T085648Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261114
-SUMMARY:[Date only] Starship Flight 15
-DESCRIPTION:NET date · time unconfirmed\nNET 13 November on the FAA's 5 No
- v 2026 air-traffic planning slides\, as reported by community trackers (mo
- ved from 12 Nov on the 29 Oct slides\, and 8 Nov before that)\, not a Spac
- eX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 nex
- t month and will try to catch both the booster and the ship. Booster 22 co
- mpleted a full-duration 33-engine static fire on 25 Oct\, per SpaceX. NASA
- Spaceflight and Next Spaceflight report a Ship 42 single-engine static fir
- e at Massey’s on 26 Oct\, then a six-engine\, roughly 60-second full-dur
- ation fire on 27 Oct 2026\, about 4:46pm CDT (about 21:46 Irish time). Spa
- ceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have 
- now static-fired. Still no FAA licence and no SpaceX date.\nhttps://starsh
- ip-spacex.fandom.com/wiki/Starship_Flight_15\nhttps://compass.atfm.aero/pu
- blic_svcdynamic/getfile?download=false&fileuuid=0fb6079b-6d10-4039-8766-b3
- ccb3c877f0\nhttps://www.fool.com/earnings/call-transcripts/2026/10/20/spac
- ex-spcx-q3-2026-earnings-call-transcript/\nhttps://x.com/SpaceX/status/211
- 4444137067844004\nhttps://www.nextspaceflight.com/starship/hardware/80/\nh
- ttps://thespaceroad.com/articles/when-is-starship-flight-15/
+DTSTART:20261113T224500Z
+DTEND:20261114T000000Z
+SUMMARY:[Target] Starship Flight 15
+DESCRIPTION:Provisional target\nSpaceX is targeting Flight 15 as soon as Fr
+ iday 13 November from Pad 2\, pending regulatory approval. The 75-minute w
+ indow opens at 4:45 p.m. CT (22:45 UTC). Planned: first Super Heavy V3 cat
+ ch\, first Ship return-to-launch-site catch\, 26 Starlink V3\, then a more
+  than 22-hour flight before a Ship catch. This is a published window\, not
+  a guaranteed T-0. No FAA licence is published.\nhttps://www.spacex.com/la
+ unches/starship-flight-15\nhttps://www.spacex.com/updates\nhttps://starshi
+ p-spacex.fandom.com/wiki/Starship_Flight_15\nhttps://compass.atfm.aero/pub
+ lic_svcdynamic/getfile?download=false&fileuuid=0fb6079b-6d10-4039-8766-b3c
+ cb3c877f0\nhttps://www.fool.com/earnings/call-transcripts/2026/10/20/space
+ x-spcx-q3-2026-earnings-call-transcript/\nhttps://x.com/SpaceX/status/2114
+ 444137067844004\nhttps://www.nextspaceflight.com/starship/hardware/80/
 LOCATION:Starbase · Pad 2
 URL:https://superchargeddaily.com/calendar.html?event=starship-15
 STATUS:TENTATIVE

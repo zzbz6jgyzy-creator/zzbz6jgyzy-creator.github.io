@@ -71,7 +71,7 @@ let ev = null; try { ev = JSON.parse(rd("data/events.json")); } catch (e) {}
 if (S && S.next) {
   const e = ev && ev.events && ev.events["starship-flight-" + S.next.flight];
   const start = e && e.date ? e.date + "T00:00:00Z" : S.next.start, prec = (e && e.precision) || S.next.precision;
-  trk.push({ href: "/starship.html", k: "Starship", v: "Flight " + S.next.flight, s: (prec === "day" ? "NET " : "") + day(new Date(start)) + " · " + (S.next.headline || "") });
+  trk.push({ href: "/starship.html", k: "Starship", v: "Flight " + S.next.flight, s: (prec === "day" || (e && /net/i.test(e.status)) ? "NET " : "") + day(new Date(start)) + " · " + (S.next.headline || "") });
 }
 if (F && F.countries) {
   const rec = F.countries.filter((c) => c.jurisdiction === "EU" && c.permission?.status !== "unknown" && c.permission?.date);

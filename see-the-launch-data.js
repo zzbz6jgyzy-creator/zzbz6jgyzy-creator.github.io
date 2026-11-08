@@ -1,5 +1,5 @@
 window.SEE_LAUNCH = {
-  updated: "2026-11-07",
+  updated: "2026-11-08",
   note:
     "Our estimate, not a full FlightClub trajectory. We use the pad, a typical azimuth for that mission type, distance, night vs day, and Open-Meteo cloud cover. A feature in the notes can still be hidden by haze, a late slip, or a dogleg. Not SpaceX’s official viewing guide.",
   pads: {
@@ -37,14 +37,14 @@ window.SEE_LAUNCH = {
     {
       id: "starship-f15",
       title: "Starship Flight 15",
-      start: "2026-11-13T12:00:00Z",
+      start: "2026-11-13T16:45:00-06:00",
       pad: "sb2",
       vehicle: "starship",
-      orbit: "suborbital",
+      orbit: "leo",
       status: "net",
       precision: "day",
       href: "https://www.spacex.com/launches/starship-flight-15",
-      note: "FAA planning target NET 13 Nov (as of 5 Nov 2026, reported by community trackers) — SpaceX has not set an official T-0. First serious Ship catch.",
+      note: "SpaceX window opens 4:45 p.m. CT as soon as 13 Nov, pending regulatory approval. Dual catch + 26 Starlink V3. Not a guaranteed T-0, so this stays a day-only viewing target.",
     },
     {
       id: "ll-bandwagon-5",
@@ -104,7 +104,19 @@ window.SEE_LAUNCH = {
       status: "go",
       precision: "datetime",
       href: "https://www.spacex.com/launches/ussf627",
-      note: "Classified US Space Force mission from Vandenberg; SpaceX is targeting Monday 9 Nov, window opens 7:03 p.m. PT (03:03 UTC 10 Nov), backup Tuesday 10 Nov 6:49 p.m. PT (checked 7 Nov 2026).",
+      note: "Classified US Space Force mission from Vandenberg; SpaceX is targeting Monday 9 Nov, window opens 7:03 p.m. PT (03:03 UTC 10 Nov), backup Tuesday 10 Nov 6:49 p.m. PT (checked 8 Nov 2026).",
+    },
+    {
+      id: "ll-ussf-317",
+      title: "Falcon 9 · USSF-317",
+      start: "2026-11-13T04:23:00Z",
+      pad: "slc4e",
+      vehicle: "falcon",
+      orbit: "leo",
+      status: "go",
+      precision: "datetime",
+      href: "https://www.spacex.com/launches/ussf317",
+      note: "Classified US Space Force mission from Vandenberg; SpaceX is targeting Thursday 12 Nov, four-hour window opens 8:23 p.m. PT (04:23 UTC 13 Nov), backup Friday 13 Nov 8:09 p.m. PT. 11th-flight booster, landing on Of Course I Still Love You (checked 8 Nov 2026).",
     },
   ],
 };

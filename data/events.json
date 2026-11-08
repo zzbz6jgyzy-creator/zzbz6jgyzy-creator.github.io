@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-11-07T09:45:00+00:00",
+  "updated": "2026-11-08T10:20:00+00:00",
   "events": {
     "tesla-2026-asm": {
       "title": "Tesla 2026 Annual Meeting of Shareholders",
@@ -42,19 +42,21 @@
     "starship-flight-15": {
       "title": "Starship Flight 15",
       "date": "2026-11-13",
-      "precision": "day",
+      "start": "2026-11-13T16:45:00-06:00",
+      "end": "2026-11-13T18:00:00-06:00",
+      "precision": "datetime",
       "status": "net",
       "tz": "-06:00",
-      "summary": "NET 13 November on the FAA's 5 Nov 2026 air-traffic planning slides, as reported by community trackers (moved from 12 Nov on the 29 Oct slides, and 8 Nov before that), not a SpaceX T-0. On the 20 Oct earnings call Musk said SpaceX expects Flight 15 next month and will try to catch both the booster and the ship. Booster 22 completed a full-duration 33-engine static fire on 25 Oct, per SpaceX. NASASpaceflight and Next Spaceflight report a Ship 42 single-engine static fire at Massey’s on 26 Oct, then a six-engine, roughly 60-second full-duration fire on 27 Oct 2026, about 4:46pm CDT (about 21:46 Irish time). SpaceX hasn’t posted about the Ship 42 fires. Both Flight 15 vehicles have now static-fired. Still no FAA licence and no SpaceX date.",
+      "href": "https://www.spacex.com/launches/starship-flight-15",
+      "summary": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published.",
       "sources": [
+        "https://www.spacex.com/launches/starship-flight-15",
+        "https://www.spacex.com/updates",
         "Starship Flight 15 wiki, citing the FAA CADENA/COMPASS planning slide of 5 Nov 2026: NET 13 Nov (https://starship-spacex.fandom.com/wiki/Starship_Flight_15). We have not opened the slide ourselves; Wikipedia's Starship flight 15 infobox also reads NET November 13, 2026.",
         "FAA CADENA planning deck, 29 Oct 2026, Upcoming High-Profile Missions slide: Starship FLT-15 NOV 12 (https://compass.atfm.aero/public_svcdynamic/getfile?download=false&fileuuid=0fb6079b-6d10-4039-8766-b3ccb3c877f0)",
         "Elon Musk, SpaceX Q3 2026 earnings call, 20 Oct 2026: Flight 15 'next month' (https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/)",
-        "Elon Musk, 10 Oct 2026: '4 to 6 weeks'",
-        "NASASpaceflight: Ship 42 cryo campaign (Oct 2026)",
         "SpaceX on X, 25 Oct 2026: full-duration 33-engine static fire of the Flight 15 booster (https://x.com/SpaceX/status/2114444137067844004)",
-        "Next Spaceflight Ship 42 test log, including the 27 Oct six-engine static fire (https://www.nextspaceflight.com/starship/hardware/80/)",
-        "The Space Road: Flight 15 prep, citing the 27 Oct Massey’s fire (https://thespaceroad.com/articles/when-is-starship-flight-15/)"
+        "Next Spaceflight Ship 42 test log, including the 27 Oct six-engine static fire (https://www.nextspaceflight.com/starship/hardware/80/)"
       ],
       "major": true
     },

@@ -1,5 +1,5 @@
 window.STARSHIP_LAB = {
-  updated: "2026-10-15",
+  updated: "2026-11-08",
   note:
     "Lab notes are our read of SpaceX flight pages and the public record. Video is official SpaceX only — recaps, a pre-flight film, or clips already on this site. Recap chips jump inside the highlight edit, not T+ mission time. Flights without a SpaceX recap link the mission page and @SpaceX.",
   phaseOrder: [
@@ -29,25 +29,25 @@ window.STARSHIP_LAB = {
   flights: {
     15: {
       objectives: [
-        "Catch Ship 42 on the Pad 2 tower — first serious Ship catch, not confirmed by SpaceX",
-        "Fly and recover Super Heavy B22 (catch or controlled splashdown)",
-        "Prove Block 3 after Flight 14’s first orbital Starlink V3 deploy",
+        "Catch Ship 42 on the Pad 2 tower — first Ship return-to-launch-site, per the SpaceX mission page",
+        "Catch Super Heavy B22 — first Super Heavy V3 catch",
+        "Deploy 26 Starlink V3 satellites, then a more than 22-hour flight before a Ship catch if systems stay healthy",
       ],
-      hardware: ["Block 3", "B22", "S42", "OLP-2", "Raptor 3", "Ship catch attempt"],
-      anomalies: ["No SpaceX clock yet. Ship 42’s Raptors came off in early October for another cryo-proof."],
+      hardware: ["Block 3", "B22", "S42", "OLP-2", "Raptor 3", "26 Starlink V3", "Dual catch attempt"],
+      anomalies: ["No FAA licence published. SpaceX says the flight is pending regulatory approval."],
       phases: [
-        { id: "liftoff", tPlus: "NET", result: "pending", note: "FAA planning window is NET 13 November (as of 5 Nov 2026) — not a T-0." },
+        { id: "liftoff", tPlus: "NET", result: "pending", note: "SpaceX window opens 4:45 p.m. CT as soon as 13 Nov, pending regulatory approval — not a guaranteed T-0." },
         { id: "staging", tPlus: "—", result: "pending", note: "Block 3 hot-stage, same family as Flights 12–14." },
         { id: "boostback", tPlus: "—", result: "pending", note: "Return Super Heavy B22 toward Pad 2." },
-        { id: "booster", tPlus: "—", result: "pending", note: "Catch or controlled splashdown." },
+        { id: "booster", tPlus: "—", result: "pending", note: "First Super Heavy V3 catch attempt. Planned profile times are not treated as a flown clock." },
         { id: "ascent", tPlus: "—", result: "pending", note: "Ship 42 to the catch profile." },
-        { id: "onorbit", tPlus: "—", result: "skip", note: "Not the story. Flight 14 already reached orbit." },
-        { id: "payload", tPlus: "—", result: "skip", note: "No published payload for this flight." },
-        { id: "relight", tPlus: "—", result: "pending", note: "Needed if SpaceX flies a longer coast." },
+        { id: "onorbit", tPlus: "—", result: "pending", note: "Planned ~275 km, about 14 orbits, more than 22 hours, per the SpaceX mission page." },
+        { id: "payload", tPlus: "—", result: "pending", note: "26 Starlink V3 satellites, including three camera-modified birds to image the heatshield." },
+        { id: "relight", tPlus: "—", result: "pending", note: "Deorbit burn only if the team is go for a Ship catch; otherwise a safe ocean deorbit." },
         { id: "reentry", tPlus: "—", result: "pending", note: "Ship has to come home intact to be caught." },
-        { id: "ship", tPlus: "—", result: "pending", note: "First serious attempt to catch a Ship." },
+        { id: "ship", tPlus: "—", result: "pending", note: "First Ship catch attempt. SpaceX says it flies only if reentry and landing systems are healthy." },
       ],
-      spacex: "https://www.spacex.com/launches",
+      spacex: "https://www.spacex.com/launches/starship-flight-15",
       xq: "from:SpaceX Flight 15",
     },
     14: {

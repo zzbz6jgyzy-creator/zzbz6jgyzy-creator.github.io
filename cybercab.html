@@ -132,7 +132,7 @@
     <script>
       /* Reality Map loads when it nears the screen or once the page is idle (keeps phone first paint fast). */
       (function () {
-        var files = ["/robotaxi-reality-data.js?v=202611071200", "/cybercab-cities.js?v=202610201215", "/robotaxi-map.js?v=202610161200"], started = false;
+        var files = ["/robotaxi-reality-data.js?v=202611081020", "/cybercab-cities.js?v=202610201215", "/robotaxi-map.js?v=202610161200"], started = false;
         function next(i) { if (i >= files.length) return; var s = document.createElement("script"); s.src = files[i]; s.onload = s.onerror = function () { next(i + 1); }; document.body.appendChild(s); }
         function go() { if (started) return; started = true; next(0); }
         var el = document.getElementById("reality-map");
@@ -144,7 +144,7 @@
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1927a50f248444ec9bdcf9f5607e7d7b"}'></script>
     <!--sd:bundles-->
     <script defer src="/assets/js/core.bundle.6e32db3fe9.js" data-band></script>
-    <script defer src="/assets/js/intel.bundle.5799a56929.js"></script>
+    <script defer src="/assets/js/intel.bundle.fe357969ad.js"></script>
     <script defer src="/assets/js/cybercab.bundle.d5d810b522.js"></script>
     <!--/sd:bundles-->
   </body>
