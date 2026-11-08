@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-07T09:45:00+00:00",
- "launchChecked": "2026-11-07T21:46:01Z",
+ "launchChecked": "2026-11-08T01:24:33Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -1508,6 +1508,27 @@
    "windowStart": "2027-01-31T00:00:00Z",
    "windowEnd": "2027-01-31T00:00:00Z",
    "vehicle": "Falcon Heavy",
+   "providerStatus": "To Be Determined"
+  },
+  {
+   "id": "ll2-3624047e-9891-420b-820f-7db4a7570383",
+   "title": "Falcon 9 Block 5 | SDA Tranche 2 Transport Layer G",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2027-02-28T00:00:00Z",
+   "end": "",
+   "date": "2027-02-28",
+   "precision": "month",
+   "status": "TBD",
+   "note": "Government/Top Secret · Polar Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "3624047e-9891-420b-820f-7db4a7570383",
+   "windowStart": "2027-02-28T00:00:00Z",
+   "windowEnd": "2027-02-28T00:00:00Z",
+   "vehicle": "Falcon 9 Block 5",
    "providerStatus": "To Be Determined"
   },
   {
