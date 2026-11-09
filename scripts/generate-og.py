@@ -43,14 +43,22 @@ def font(name, size):
     path = os.path.join(FONT_DIR, name)
     if os.path.exists(path):
         return ImageFont.truetype(path, size)
-    # Debian/Ubuntu ship Inter as OpenType (fonts-inter); same family, same metrics.
+    # The site's own Inter (variable WOFF2) works on any machine with Pillow, CI included.
+    web = os.path.join(ROOT, "assets", "fonts", "inter-latin.woff2")
+    if os.path.exists(web):
+        try:
+            f = ImageFont.truetype(web, size)
+            f.set_variation_by_name(name.replace("Inter-", "").replace(".ttf", ""))
+            return f
+        except (OSError, ValueError):
+            pass
     alt = os.path.join("/usr/share/fonts/opentype/inter", name.replace(".ttf", ".otf"))
     if os.path.exists(alt):
         return ImageFont.truetype(alt, size)
     return ImageFont.load_default()
 
 
-def draw_card(kicker, title):
+def draw_card(kicker, title, big_size=72, step=86):
     from PIL import Image, ImageDraw
 
     img = Image.new("RGB", (W, H), BG)
@@ -58,7 +66,7 @@ def draw_card(kicker, title):
     d.rectangle((0, 0, 12, H), fill=RED)
     d.rectangle((0, H - 8, W, H), fill=RED)
     kick = font("Inter-SemiBold.ttf", 22)
-    big = font("Inter-Bold.ttf", 72)
+    big = font("Inter-Bold.ttf", big_size)
     small = font("Inter-Medium.ttf", 22)
     # Red bolt mark (assets/brand/icon-1b.png) beside the wordmark
     mark_path = os.path.join(ROOT, "assets", "brand", "icon-1b.png")
@@ -73,9 +81,53 @@ def draw_card(kicker, title):
     y = 200
     for line in title.split("\n"):
         d.text((64, y), line, font=big, fill=INK)
-        y += 86
+        y += step
     d.text((64, H - 72), "Independent · sourced", font=small, fill=MUTE)
     return img
+
+
+def wrap(text, fnt, width, max_lines=4):
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        nxt = (cur + " " + w).strip()
+        if fnt.getlength(nxt) <= width or not cur:
+            cur = nxt
+        else:
+            lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+    if len(lines) > max_lines:
+        lines = lines[:max_lines]
+        while lines[-1] and fnt.getlength(lines[-1] + "…") > width:
+            lines[-1] = lines[-1].rsplit(" ", 1)[0]
+        lines[-1] += "…"
+    return lines
+
+
+def article_cards():
+    """Dispatch stories with no image of their own get a title card: assets/og/dispatch-<slug>.jpg.
+    build-seo.py points the story's og:image / twitter:image at it."""
+    import json
+    try:
+        arts = json.load(open(os.path.join(ROOT, "data", "articles.json"), encoding="utf-8"))["articles"]
+    except (OSError, ValueError, KeyError):
+        return []
+    out = []
+    for a in arts:
+        img = a.get("image") or ""
+        if img and not img.endswith("/assets/og-v2.jpg"):
+            continue
+        slug = os.path.splitext(os.path.basename(a["url"]))[0]
+        out.append(("dispatch-" + slug, (a.get("tag") or a.get("topic") or "Dispatch").upper(), a["title"]))
+    return out
+
+
+def draw_article(kicker, title):
+    from PIL import ImageDraw
+    big = font("Inter-Bold.ttf", 60)
+    lines = wrap(title, big, W - 128)
+    return draw_card(kicker, "\n".join(lines), big_size=60 if len(lines) > 2 else 72, step=74 if len(lines) > 2 else 86)
 
 
 def run(force=False):
@@ -92,6 +144,13 @@ def run(force=False):
         if os.path.exists(dest) and not force:
             continue
         draw_card(kicker, title).save(dest, "JPEG", quality=88, optimize=True)
+        n += 1
+        print("og:", dest)
+    for slug, kicker, title in article_cards():
+        dest = os.path.join(OUT, slug + ".jpg")
+        if os.path.exists(dest) and not force:
+            continue
+        draw_article(kicker, title).save(dest, "JPEG", quality=88, optimize=True)
         n += 1
         print("og:", dest)
     print("og images: %d written" % n)
