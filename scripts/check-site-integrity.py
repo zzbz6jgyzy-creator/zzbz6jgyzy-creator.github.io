@@ -9,7 +9,7 @@ kinds of problem before the push.
 
 Checks, on every tracked page outside astro/, social/, templates/ and scripts/:
   1. the page ends with </html> (not cut off part-way)
-  2. every local script, stylesheet and /assets/ file it points to exists
+  2. every local script, stylesheet, calendar (.ics) and /assets/ file it points to exists
   3. every JSON file under data/ and at the root parses
   4. dispatch.html still lists at least 10 stories, and no fewer than 80% of the base's
   5. the homepage lead slot links to a story
@@ -32,7 +32,7 @@ import sys
 
 ROOT = os.environ.get("SITE_INTEGRITY_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP_DIRS = ("astro/", "social/", "templates/", "scripts/", "node_modules/", "dist/", "tests/")
-REF_RE = re.compile(r'''(?:src|href)=["'](/[^"'?#\s]+?\.(?:js|css|mjs))(?:[?#][^"']*)?["']''', re.I)
+REF_RE = re.compile(r'''(?:src|href)=["'](/[^"'?#\s]+?\.(?:js|css|mjs|ics))(?:[?#][^"']*)?["']''', re.I)
 ASSET_RE = re.compile(r'''(?:src|href|poster)=["'](/assets/[^"'?#\s]+)(?:[?#][^"']*)?["']''', re.I)
 MIN_STORIES, MIN_SHARE = 10, 0.8
 

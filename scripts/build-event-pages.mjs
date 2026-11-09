@@ -11,14 +11,40 @@ const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": 
 import { createRequire } from "node:module";
 const { whenText, countdownHtml, eventPages } = createRequire(import.meta.url)("./event-shared.cjs");
 export { whenText, countdownHtml };
-const CSS_V = "20261109";
+const CSS_V = "20261109b";
 const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(new Date(d + "T12:00:00Z"));
+
+
+// Calendar: an .ics file next to the page (deterministic, so CI rebuilds match) and a Google Calendar link.
+const calStamp = (iso) => new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+const calText = (t) => String(t).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+const fold = (line) => { const out = []; let rest = line; while (rest.length > 74) { out.push(rest.slice(0, 74)); rest = " " + rest.slice(74); } out.push(rest); return out.join("\r\n"); };
+function calDetails(p, ev, url) {
+  return `${p.windowNote ? p.windowNote.replace(" · ", ", ") + ". " : ""}Times can move: check ${url} for the latest.`;
+}
+function googleCal(p, ev, url) {
+  const q = new URLSearchParams({ action: "TEMPLATE", text: ev.title, dates: `${calStamp(ev.start)}/${calStamp(ev.end || ev.start)}`, details: calDetails(p, ev, url), location: p.location.name });
+  return "https://calendar.google.com/calendar/render?" + q.toString();
+}
+function icsFor(p, ev, url, stampIso) {
+  return [
+    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Supercharged Daily//Event pages//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+    "BEGIN:VEVENT", `UID:${p.slug}@superchargeddaily.com`, `DTSTAMP:${calStamp(stampIso)}`, `SEQUENCE:${Math.floor(Date.parse(stampIso) / 1000)}`,
+    `DTSTART:${calStamp(ev.start)}`, `DTEND:${calStamp(ev.end || ev.start)}`, `SUMMARY:${calText(ev.title)}`,
+    `DESCRIPTION:${calText(calDetails(p, ev, url))}`, `LOCATION:${calText(p.location.name)}`, `URL:${url}`, "STATUS:TENTATIVE",
+    "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${calText(ev.title + " window opens in 30 minutes")}`, "TRIGGER:-PT30M", "END:VALARM",
+    "END:VEVENT", "END:VCALENDAR", "",
+  ].map(fold).join("\r\n");
+}
 
 function pageMain(p, ev, articles) {
   const url = `${SITE}/${p.slug}.html`;
   const chip = (k) => `<span class="ev-chip ev-chip-${esc(k.toLowerCase())}">${esc(k)}</span>`;
   const rel = (p.related || []).map((h) => articles.find((a) => a.url === h)).filter(Boolean);
-  const updates = [...(p.updates || [])].sort((a, b) => b.date.localeCompare(a.date));
+  const stamp = (u) => u.time || u.date;
+  const updates = [...(p.updates || [])].sort((a, b) => stamp(b).localeCompare(stamp(a)));
+  const when = (u) => u.time ? `${fmtDate(u.time.slice(0, 10))}, ${new Date(u.time).toISOString().slice(11, 16)} UTC` : fmtDate(u.date);
+  const latest = updates.length ? stamp(updates[0]) : "";
   return `<main id="main" class="ev-page">
   <nav class="ev-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="${esc(p.sectionUrl)}">${esc(p.section)}</a></li><li aria-current="page">${esc(ev.title)}</li></ol></nav>
   <header class="ev-hero">
@@ -27,6 +53,7 @@ function pageMain(p, ev, articles) {
     ${countdownHtml(ev, p.windowNote)}
     <p class="ev-where">${esc(p.location.name)}</p>
     <div class="ev-share" data-share><a class="ev-share-x" href="https://x.com/intent/post?text=${encodeURIComponent(p.title)}&amp;url=${encodeURIComponent(url)}&amp;via=ALJR86" target="_blank" rel="noopener">Share on X</a><button type="button" data-share-copy data-url="${esc(url)}">Copy link</button><button type="button" data-share-native data-url="${esc(url)}" data-title="${esc(p.title)}" hidden>Share…</button></div>
+    <div class="ev-cal" aria-label="Add to your calendar"><a href="/${esc(p.slug)}.ics" download>Add to calendar</a><a href="${esc(googleCal(p, ev, url))}" target="_blank" rel="noopener">Google Calendar ↗</a></div>
   </header>
   <section class="ev-section" aria-labelledby="ev-mission">
     <h2 id="ev-mission">The mission</h2>
@@ -51,7 +78,8 @@ function pageMain(p, ev, articles) {
   <section class="ev-section" id="updates" aria-labelledby="ev-updates">
     <h2 id="ev-updates">Updates</h2>
     <p class="ev-note">Newest first. Each line carries its date and how sure we are: Disclosed (from the company), Reported (from outlets) or Target (a plan, not a result).</p>
-    <ol class="ev-log">${updates.map((u) => `<li><time datetime="${esc(u.date)}">${esc(fmtDate(u.date))}</time> ${chip(u.kind)} ${esc(u.text)}${u.source ? ` <a href="${esc(u.source)}" target="_blank" rel="noopener">Source</a>` : ""}</li>`).join("")}</ol>
+    <p class="ev-fresh" data-ev-fresh hidden role="status"><span></span> <a href="#updates" data-ev-reload>Reload</a></p>
+    <ol class="ev-log" data-ev-log data-src="/data/event-pages/${esc(p.slug)}.json" data-event="${esc(p.eventId)}" data-latest="${esc(latest)}" data-count="${updates.length}" data-start="${esc(new Date(ev.start).toISOString())}">${updates.map((u) => `<li><time datetime="${esc(stamp(u))}">${esc(when(u))}</time> ${chip(u.kind)} ${esc(u.text)}${u.source ? ` <a href="${esc(u.source)}" target="_blank" rel="noopener">Source</a>` : ""}</li>`).join("")}</ol>
   </section>
   ${rel.length ? `<section class="ev-section" aria-labelledby="ev-related"><h2 id="ev-related">Related reporting</h2><ul class="ev-cards">${rel.map((a) => `<li><a href="${esc(a.url)}"><strong>${esc(a.title)}</strong><span>${esc(fmtDate(a.date.slice(0, 10)))}</span></a></li>`).join("")}</ul></section>` : ""}
   <p class="ev-small">Independent coverage. Not affiliated with SpaceX. Times are SpaceX's published window, not a guaranteed lift-off time.</p>
@@ -99,7 +127,7 @@ function pageHead(p, ev) {
 }
 
 export function buildEventPages(root = ROOT) {
-  const events = JSON.parse(fs.readFileSync(path.join(root, "data/events.json"), "utf8")).events;
+  const eventsFile = JSON.parse(fs.readFileSync(path.join(root, "data/events.json"), "utf8")), events = eventsFile.events;
   const articles = JSON.parse(fs.readFileSync(path.join(root, "data/articles.json"), "utf8")).articles;
   const built = [];
   for (const { file: f, page: p } of eventPages(root)) {
@@ -117,6 +145,11 @@ export function buildEventPages(root = ROOT) {
     html = html.replace(/<main id="main"[\s\S]*?<\/main>/, () => pageMain(p, ev, articles));
     if (!/<!--ev:head-->/.test(html) || !/class="ev-page"/.test(html)) throw new Error(`${f}: page markers missing`);
     if (!fs.existsSync(out) || fs.readFileSync(out, "utf8") !== html) fs.writeFileSync(out, html);
+    // DTSTAMP/SEQUENCE follow the event data, not the clock, so a rebuild is byte-identical.
+    const stampIso = [...(p.updates || [])].map((u) => u.time || `${u.date}T00:00:00Z`).concat([eventsFile.updated || ev.start]).filter((t) => !Number.isNaN(Date.parse(t))).sort().pop();
+    const ics = icsFor(p, ev, `${SITE}/${p.slug}.html`, stampIso);
+    const icsOut = path.join(root, `${p.slug}.ics`);
+    if (!fs.existsSync(icsOut) || fs.readFileSync(icsOut, "utf8") !== ics) fs.writeFileSync(icsOut, ics);
     built.push(p.slug);
   }
   return built;

@@ -39,3 +39,15 @@ html[data-theme=light] .ev-chip-disclosed{color:#17684c}
 html[data-theme=light] .ev-chip-reported{color:#7a5208}
 html[data-theme=light] .ev-chip-target{color:#1f5a9a}
 .ev-small{font-size:12px;color:var(--ink-soft);margin:40px 0 0;max-width:68ch}
+
+/* Calendar actions under the share row */
+.ev-cal{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.ev-cal a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line-strong);color:var(--ink);font:600 13px/1 Inter,"Inter Fallback",system-ui,sans-serif;text-decoration:none}
+.ev-cal a:first-child{border:1.5px solid var(--sec-accent,var(--red,#E31937))}
+.ev-cal a:hover{border-color:var(--ink-soft)}
+.ev-cal a:first-child:hover{border-color:var(--ink)}
+.ev-cal a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+/* "New update" note above the log (event-live.js) */
+.ev-fresh{margin:0 0 12px;padding:10px 14px;border:1px solid var(--line-strong);border-left:3px solid var(--sec-accent,var(--red,#E31937));border-radius:10px;font:500 14px/1.4 Inter,"Inter Fallback",system-ui,sans-serif;color:var(--ink)}
+.ev-fresh[hidden]{display:none}
+.ev-fresh a{color:inherit;font-weight:700;text-underline-offset:3px}

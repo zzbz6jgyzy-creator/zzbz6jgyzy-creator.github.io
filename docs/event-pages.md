@@ -20,6 +20,17 @@ Add an object to `updates` in the page's JSON, newest anywhere (the builder sort
 
 `kind` is one of `Disclosed` (from the company), `Reported` (from outlets) or `Target` (a plan, not a result). These are the same labels the trackers use.
 
+On launch day add a `time` (ISO, UTC) so entries sort to the minute and show "13 Nov 2026, 22:47 UTC":
+
+```json
+{"date": "2026-11-13", "time": "2026-11-13T22:47:00Z", "kind": "Disclosed", "text": "Lift-off at 4:47 p.m. CT, per SpaceX's webcast.", "source": "https://x.com/SpaceX/status/..."}
+```
+
+Readers who already have the page open see the new entry within about two minutes, without reloading (`event-live.js` re-reads this JSON every two minutes while the page is visible, from a week before the start until three days after). If the start time in `data/events.json` changes, their countdown follows it and they get a note to reload. You can edit the JSON from GitHub's web editor on your phone; the saved page catches up when CI rebuilds it.
+
+## Add to calendar
+Each event page gets `/<slug>.ics` (built next to the page, with a 30-minute reminder) and a Google Calendar link, both from the times in `data/events.json`. When the time moves, the rebuilt .ics keeps the same UID with a higher SEQUENCE, so calendar apps that re-import it update the entry rather than adding a second one.
+
 ## Make a new event page (e.g. "FSD v14 release notes")
 1. Add the event (title, `start`, `end`) to `data/events.json` if it has a time.
 2. Copy `data/event-pages/starship-flight-15.json` to `data/event-pages/<slug>.json` and edit `slug`, `eventId`, `section`, `sectionUrl`, `kicker`, `title`, `seoTitle`, `description`, `summary`, `links`, `watch`, `updates`, `related`. `heatShield` is optional (any page can drop it).
