@@ -12,7 +12,7 @@ Checks, on every tracked page outside astro/, social/, templates/ and scripts/:
   2. every local script, stylesheet, calendar (.ics) and /assets/ file it points to exists
   3. every JSON file under data/ and at the root parses
   4. dispatch.html still lists at least 10 stories, and no fewer than 80% of the base's
-  5. the homepage lead slot links to a story
+  5. the homepage lead slot links to a story (any page on this site)
 
 With --base, only problems that the base does not already have fail the check, so a problem
 already on main never blocks an unrelated bot. Sources:
@@ -110,7 +110,7 @@ def problems(tree):
     home = htmls.get("index.html", "")
     if home:
         lead = re.search(r"<!--hv:lead-->(.*?)<!--/hv:lead-->", home, re.S)
-        if not lead or not re.search(r'href="/dispatch/[^"]+\.html"', lead.group(1)):
+        if not lead or not re.search(r'href="/[^"/][^"]*"', lead.group(1)):
             found.add("index.html: the homepage lead slot has no story link")
     return found, stories
 

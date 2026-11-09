@@ -27,7 +27,9 @@ jobs:
           BEFORE: ${{ github.event.before }}
         run: |
           if [ -n "$BASE_REF" ]; then
-            base="origin/$BASE_REF"
+            # HEAD is GitHub's merge commit; its first parent is the main it was merged onto. Comparing
+            # with today's main instead would blame the PR for whatever main fixed since.
+            base="HEAD^1"
           elif [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ]; then
             base="$BEFORE"
           else

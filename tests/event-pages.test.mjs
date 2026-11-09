@@ -80,7 +80,7 @@ test("calendar: a deterministic .ics next to the page and a Google Calendar link
   assert.match(ics, new RegExp(`\\r\\nDTEND:${stamp(ev.end)}\\r\\n`));
   assert.match(ics, /\r\nUID:starship-flight-15@superchargeddaily\.com\r\n/);
   assert.match(ics, /BEGIN:VALARM[\s\S]*TRIGGER:-PT30M[\s\S]*END:VALARM/);
-  for (const line of ics.split("\r\n")) assert.ok(line.length <= 75, "fold long lines: " + line);
+  for (const line of ics.split("\r\n")) assert.ok(Buffer.byteLength(line) <= 75, "fold at 75 octets: " + line);
   const html = fs.readFileSync("starship-flight-15.html", "utf8");
   assert.match(html, /<a href="\/starship-flight-15\.ics" download>Add to calendar<\/a>/);
   const g = html.match(/href="(https:\/\/calendar\.google\.com\/calendar\/render\?[^"]+)"/);
@@ -91,7 +91,10 @@ test("calendar: a deterministic .ics next to the page and a Google Calendar link
 test("updates log carries what event-live.js needs, and timed entries sort and render with their time", () => {
   const html = fs.readFileSync("starship-flight-15.html", "utf8");
   const log = html.match(/<ol class="ev-log"([^>]*)>/)[1];
-  for (const k of ["data-ev-log", 'data-src="/data/event-pages/starship-flight-15.json"', 'data-event="starship-flight-15"', "data-latest=", "data-count=", "data-start="]) assert.ok(log.includes(k), k);
+  for (const k of ["data-ev-log", 'data-ev-src="/data/event-pages/starship-flight-15.json"', 'data-ev-event="starship-flight-15"', "data-ev-latest=", "data-ev-count=", "data-ev-start="]) assert.ok(log.includes(k), k);
+  // script.js (core bundle) rewrites every [data-count] element as a number; on the log that wiped the whole list.
+  assert.doesNotMatch(log, /\sdata-(count|start|src|latest|event)=/);
+  assert.doesNotMatch(fs.readFileSync("event-live.js", "utf8"), /"data-count"/);
   assert.match(html, /<p class="ev-fresh" data-ev-fresh hidden role="status">/);
   const dir = sandbox();
   try {
@@ -102,6 +105,25 @@ test("updates log carries what event-live.js needs, and timed entries sort and r
     const out = fs.readFileSync(path.join(dir, "starship-flight-15.html"), "utf8");
     const first = out.match(/<ol class="ev-log"[^>]*><li>([\s\S]*?)<\/li>/)[1];
     assert.match(first, /<time datetime="2026-11-13T22:47:00Z">13 Nov 2026, 22:47 UTC<\/time>/);
-    assert.match(out, /data-latest="2026-11-13T22:47:00Z"/);
+    assert.match(out, /data-ev-latest="2026-11-13T22:47:00Z"/);
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+
+test(".ics folds by octets without splitting characters, and update times must be UTC", () => {
+  const dir = sandbox();
+  try {
+    const f = path.join(dir, "data/event-pages/starship-flight-15.json"), p = JSON.parse(fs.readFileSync(f, "utf8"));
+    p.windowNote = "75-minute window · pending regulatory approval · SpaceX’s “best effort” – timing ✓ ".repeat(3);
+    p.location.name = "Starbase – Texas’ “Pad 2” ".repeat(4);
+    fs.writeFileSync(f, JSON.stringify(p));
+    buildEventPages(dir);
+    const ics = fs.readFileSync(path.join(dir, "starship-flight-15.ics"), "utf8");
+    for (const line of ics.split("\r\n")) assert.ok(Buffer.byteLength(line) <= 75, line);
+    const unfolded = ics.replace(/\r\n /g, "");
+    assert.ok(unfolded.includes("Starbase – Texas’ “Pad 2”"), "no character split across a fold");
+    assert.doesNotMatch(unfolded, /DESCRIPTION:[^\r]*·/, "every ' · ' becomes a comma");
+    p.updates.push({ date: "2026-11-13", time: "2026-11-13T16:47:00-06:00", kind: "Disclosed", text: "x" });
+    fs.writeFileSync(f, JSON.stringify(p));
+    assert.throws(() => buildEventPages(dir), /must be UTC/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });

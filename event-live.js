@@ -1,4 +1,5 @@
-/* Launch-day freshness for event pages (built by scripts/build-event-pages.mjs).
+/* Attributes are namespaced data-ev-*: script.js rewrites any [data-count] element as a number.
+   Launch-day freshness for event pages (built by scripts/build-event-pages.mjs).
    While the page is open and visible in the week around the event, it re-reads the page's own data
    every two minutes. New Updates entries appear in the log straight away, and if the start time moves
    in data/events.json the countdown follows it, with a note to reload for the rest of the page.
@@ -8,8 +9,8 @@
   var log = document.querySelector("[data-ev-log]");
   if (!log || !window.fetch || !window.JSON) return;
   var fresh = document.querySelector("[data-ev-fresh]");
-  var src = log.getAttribute("data-src"), id = log.getAttribute("data-event");
-  var start = Date.parse(log.getAttribute("data-start") || ""), D = 864e5, EVERY = 12e4;
+  var src = log.getAttribute("data-ev-src"), id = log.getAttribute("data-ev-event");
+  var start = Date.parse(log.getAttribute("data-ev-start") || ""), D = 864e5, EVERY = 12e4;
   if (!src || !id || !isFinite(start)) return;
   var timer = 0;
 
@@ -41,11 +42,11 @@
       var ups = (page.updates || []).filter(function (u) { return u && u.text && stamp(u); })
         .sort(function (a, b) { return stamp(b).localeCompare(stamp(a)); });
       var latest = ups.length ? stamp(ups[0]) : "";
-      var had = Number(log.getAttribute("data-count")) || 0;
-      if (latest !== log.getAttribute("data-latest") || ups.length !== had) {
+      var had = Number(log.getAttribute("data-ev-count")) || 0;
+      if (latest !== log.getAttribute("data-ev-latest") || ups.length !== had) {
         log.innerHTML = ups.map(li).join("");
-        log.setAttribute("data-latest", latest);
-        log.setAttribute("data-count", String(ups.length));
+        log.setAttribute("data-ev-latest", latest);
+        log.setAttribute("data-ev-count", String(ups.length));
         var added = ups.length - had;
         say("log", added > 0 ? (added === 1 ? "1 new update" : added + " new updates") + " below." : "Updates revised below.", false);
       }
@@ -55,7 +56,7 @@
       var s = ev && Date.parse(ev.start), e = ev && (Date.parse(ev.end || "") || s);
       if (!isFinite(s) || new Date(s).toISOString() === new Date(start).toISOString()) return;
       start = s;
-      log.setAttribute("data-start", new Date(s).toISOString());
+      log.setAttribute("data-ev-start", new Date(s).toISOString());
       var cd = document.querySelector(".ev-hero [data-countdown]");
       if (cd) {
         cd.setAttribute("data-start", new Date(s).toISOString());

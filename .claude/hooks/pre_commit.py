@@ -144,7 +144,7 @@ def main():
 
     # 6. site integrity: no page cut off, no missing bundle, Dispatch not emptied (vs HEAD)
     guard = os.path.join(ROOT, "scripts", "check-site-integrity.py")
-    if os.path.exists(guard) and any(f.endswith((".html", ".json", ".js", ".css")) for f in files):
+    if os.path.exists(guard) and any(f.endswith((".html", ".json", ".js", ".css", ".ics")) for f in files):
         all_files = re.search(r"(^|\s)(-[a-zA-Z]*a[a-zA-Z]*|--all)(\s|$)", cmd or "")
         g = subprocess.run([sys.executable, guard, *([] if all_files else ["--ref", ":"]), "--base", "HEAD"],
                            cwd=ROOT, capture_output=True, text=True)

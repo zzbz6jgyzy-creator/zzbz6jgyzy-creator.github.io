@@ -18,9 +18,19 @@ const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: 
 // Calendar: an .ics file next to the page (deterministic, so CI rebuilds match) and a Google Calendar link.
 const calStamp = (iso) => new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 const calText = (t) => String(t).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
-const fold = (line) => { const out = []; let rest = line; while (rest.length > 74) { out.push(rest.slice(0, 74)); rest = " " + rest.slice(74); } out.push(rest); return out.join("\r\n"); };
+// RFC 5545: fold at 75 octets (not characters), never inside a multi-byte character.
+const fold = (line) => {
+  const out = []; let cur = "", room = 75;
+  for (const ch of line) {
+    const n = Buffer.byteLength(ch);
+    if (n > room) { out.push(cur); cur = " "; room = 74; }
+    cur += ch; room -= n;
+  }
+  out.push(cur);
+  return out.join("\r\n");
+};
 function calDetails(p, ev, url) {
-  return `${p.windowNote ? p.windowNote.replace(" · ", ", ") + ". " : ""}Times can move: check ${url} for the latest.`;
+  return `${p.windowNote ? p.windowNote.split(" · ").join(", ") + ". " : ""}Times can move: check ${url} for the latest.`;
 }
 function googleCal(p, ev, url) {
   const q = new URLSearchParams({ action: "TEMPLATE", text: ev.title, dates: `${calStamp(ev.start)}/${calStamp(ev.end || ev.start)}`, details: calDetails(p, ev, url), location: p.location.name });
@@ -29,7 +39,7 @@ function googleCal(p, ev, url) {
 function icsFor(p, ev, url, stampIso) {
   return [
     "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Supercharged Daily//Event pages//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
-    "BEGIN:VEVENT", `UID:${p.slug}@superchargeddaily.com`, `DTSTAMP:${calStamp(stampIso)}`, `SEQUENCE:${Math.floor(Date.parse(stampIso) / 1000)}`,
+    "BEGIN:VEVENT", `UID:${p.slug}@superchargeddaily.com`, `DTSTAMP:${calStamp(stampIso)}`, `SEQUENCE:${Math.max(0, Math.floor((Date.parse(stampIso) - Date.UTC(2026, 0, 1)) / 6e4))}`,
     `DTSTART:${calStamp(ev.start)}`, `DTEND:${calStamp(ev.end || ev.start)}`, `SUMMARY:${calText(ev.title)}`,
     `DESCRIPTION:${calText(calDetails(p, ev, url))}`, `LOCATION:${calText(p.location.name)}`, `URL:${url}`, "STATUS:TENTATIVE",
     "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${calText(ev.title + " window opens in 30 minutes")}`, "TRIGGER:-PT30M", "END:VALARM",
@@ -41,6 +51,7 @@ function pageMain(p, ev, articles) {
   const url = `${SITE}/${p.slug}.html`;
   const chip = (k) => `<span class="ev-chip ev-chip-${esc(k.toLowerCase())}">${esc(k)}</span>`;
   const rel = (p.related || []).map((h) => articles.find((a) => a.url === h)).filter(Boolean);
+  for (const u of p.updates || []) if (u.time && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?Z$/.test(u.time)) throw new Error(`${p.slug}: update time "${u.time}" must be UTC, like 2026-11-13T22:47:00Z`);
   const stamp = (u) => u.time || u.date;
   const updates = [...(p.updates || [])].sort((a, b) => stamp(b).localeCompare(stamp(a)));
   const when = (u) => u.time ? `${fmtDate(u.time.slice(0, 10))}, ${new Date(u.time).toISOString().slice(11, 16)} UTC` : fmtDate(u.date);
@@ -79,7 +90,7 @@ function pageMain(p, ev, articles) {
     <h2 id="ev-updates">Updates</h2>
     <p class="ev-note">Newest first. Each line carries its date and how sure we are: Disclosed (from the company), Reported (from outlets) or Target (a plan, not a result).</p>
     <p class="ev-fresh" data-ev-fresh hidden role="status"><span></span> <a href="#updates" data-ev-reload>Reload</a></p>
-    <ol class="ev-log" data-ev-log data-src="/data/event-pages/${esc(p.slug)}.json" data-event="${esc(p.eventId)}" data-latest="${esc(latest)}" data-count="${updates.length}" data-start="${esc(new Date(ev.start).toISOString())}">${updates.map((u) => `<li><time datetime="${esc(stamp(u))}">${esc(when(u))}</time> ${chip(u.kind)} ${esc(u.text)}${u.source ? ` <a href="${esc(u.source)}" target="_blank" rel="noopener">Source</a>` : ""}</li>`).join("")}</ol>
+    <ol class="ev-log" data-ev-log data-ev-src="/data/event-pages/${esc(p.slug)}.json" data-ev-event="${esc(p.eventId)}" data-ev-latest="${esc(latest)}" data-ev-count="${updates.length}" data-ev-start="${esc(new Date(ev.start).toISOString())}">${updates.map((u) => `<li><time datetime="${esc(stamp(u))}">${esc(when(u))}</time> ${chip(u.kind)} ${esc(u.text)}${u.source ? ` <a href="${esc(u.source)}" target="_blank" rel="noopener">Source</a>` : ""}</li>`).join("")}</ol>
   </section>
   ${rel.length ? `<section class="ev-section" aria-labelledby="ev-related"><h2 id="ev-related">Related reporting</h2><ul class="ev-cards">${rel.map((a) => `<li><a href="${esc(a.url)}"><strong>${esc(a.title)}</strong><span>${esc(fmtDate(a.date.slice(0, 10)))}</span></a></li>`).join("")}</ul></section>` : ""}
   <p class="ev-small">Independent coverage. Not affiliated with SpaceX. Times are SpaceX's published window, not a guaranteed lift-off time.</p>
