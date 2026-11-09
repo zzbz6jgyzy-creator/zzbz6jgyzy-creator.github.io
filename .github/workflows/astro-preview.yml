@@ -1,18 +1,23 @@
 name: astro-preview
 
-# Uploads a PREVIEW copy of the site to Cloudflare Workers ("superchargeddaily-preview" on a *.workers.dev address).
-# It never touches superchargeddaily.com: astro/wrangler.preview.jsonc has no routes and no custom domain, and the
-# preview Worker marks every response noindex. Run it by hand (Actions > astro-preview > Run workflow); it is not
-# scheduled. Needs the repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID.
+# Keeps a PREVIEW copy of the site on Cloudflare Workers ("superchargeddaily-preview" on a *.workers.dev address) in step
+# with main: after every push to main, once an hour (bot commits made with the Actions token do not trigger push runs),
+# and by hand (Actions > astro-preview > Run workflow). It never touches superchargeddaily.com:
+# astro/wrangler.preview.jsonc has no routes and no custom domain, and the preview Worker marks every response noindex.
+# Never runs on pull requests, so the secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are only used from main.
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 * * * *'
 
 permissions:
   contents: read
 
 concurrency:
   group: astro-preview
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   preview:
