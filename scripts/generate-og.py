@@ -20,6 +20,7 @@ FONT_DIR = "/usr/share/fonts/truetype/macos"
 
 # (filename without .jpg, kicker, title lines)
 CARDS = [
+    ("starship-flight-15", "STARSHIP · FLIGHT 15", "Starship Flight 15:\nthe double catch"),
     ("updates", "TESLA SOFTWARE", "Software update\ntracker"),
     ("see-the-launch", "SPACEX", "Can I see\nthe launch?"),
     ("calendar", "LAUNCHES & DATES", "SpaceX & Tesla\ncalendar"),
@@ -42,6 +43,10 @@ def font(name, size):
     path = os.path.join(FONT_DIR, name)
     if os.path.exists(path):
         return ImageFont.truetype(path, size)
+    # Debian/Ubuntu ship Inter as OpenType (fonts-inter); same family, same metrics.
+    alt = os.path.join("/usr/share/fonts/opentype/inter", name.replace(".ttf", ".otf"))
+    if os.path.exists(alt):
+        return ImageFont.truetype(alt, size)
     return ImageFont.load_default()
 
 
@@ -55,7 +60,15 @@ def draw_card(kicker, title):
     kick = font("Inter-SemiBold.ttf", 22)
     big = font("Inter-Bold.ttf", 72)
     small = font("Inter-Medium.ttf", 22)
-    d.text((64, 72), "SUPERCHARGED DAILY", font=kick, fill=RED)
+    # Red bolt mark (assets/brand/icon-1b.png) beside the wordmark
+    mark_path = os.path.join(ROOT, "assets", "brand", "icon-1b.png")
+    if os.path.exists(mark_path):
+        from PIL import Image as _I
+        mark = _I.open(mark_path).convert("RGBA").resize((40, 40))
+        img.paste(mark, (64, 64), mark)
+        d.text((118, 72), "SUPERCHARGED DAILY", font=kick, fill=RED)
+    else:
+        d.text((64, 72), "SUPERCHARGED DAILY", font=kick, fill=RED)
     d.text((64, 118), kicker, font=small, fill=MUTE)
     y = 200
     for line in title.split("\n"):
