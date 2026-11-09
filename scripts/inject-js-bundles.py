@@ -105,9 +105,11 @@ def grow_from_html(html: str, spec: dict) -> list[str]:
             for a in GROW_ATTRS:
                 if re.search(r"\b" + a + r"\b", t) and a not in attrs:
                     attrs.append(a)
-    if attrs:
-        return attrs
-    return list(spec.get("grow") or [])
+    # The spec can add attributes (for example data-bar) that an older page tag does not carry yet.
+    for a in spec.get("grow") or []:
+        if a not in attrs:
+            attrs.append(a)
+    return attrs
 
 
 def live_from_html(html: str, spec: dict) -> str:
