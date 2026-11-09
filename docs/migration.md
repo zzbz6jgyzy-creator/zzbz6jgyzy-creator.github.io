@@ -46,6 +46,9 @@ Delete `astro/`, `.github/workflows/astro-checks.yml` and `tests/test_astro_scaf
 3. **P5** video to R2 or Stream, repo history slimming. **P6** retire the per-page generator scripts.
 4. **Cutover:** attach `superchargeddaily.com` to the Worker (your DNS action), keep Pages for instant rollback, watch Search Console and CrUX for 24 h.
 
-## Owner actions, only when you want the preview deployed
-Create a Cloudflare API token (Workers Scripts: Edit, Account Settings: Read) and add `CLOUDFLARE_API_TOKEN` and
-`CLOUDFLARE_ACCOUNT_ID` as GitHub Actions secrets. The current workflow (`astro-checks.yml`) builds and runs parity only and needs no secrets; a preview-upload step is added in the next step once the secrets exist.
+## Preview on Cloudflare (set up 9 Nov 2026)
+The owner added the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. `.github/workflows/astro-preview.yml`
+(manual: Actions > astro-preview > Run workflow) builds, runs parity and uploads a separate Worker, `superchargeddaily-preview`,
+from `astro/wrangler.preview.jsonc`. It lives on a `*.workers.dev` address, has no routes or custom domain, and its Worker adds
+`X-Robots-Tag: noindex, nofollow` to every response, so it cannot compete with the real site in search. The run's summary shows
+the address. The production config (`astro/wrangler.jsonc`) is unchanged and still not deployed anywhere.

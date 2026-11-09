@@ -21,6 +21,21 @@ class Scaffold(unittest.TestCase):
         self.assertRegex(wr, r'"not_found_handling":\s*"404-page"')
         self.assertNotRegex(wr, r'"routes"|custom_domain', "no route or domain until the approved cutover")
 
+    def test_preview_worker_is_separate_and_never_indexed(self):
+        pv = (ASTRO / "wrangler.preview.jsonc").read_text(encoding="utf-8")
+        self.assertRegex(pv, r'"name":\s*"superchargeddaily-preview"', "the preview must not share the production Worker name")
+        self.assertRegex(pv, r'"html_handling":\s*"none"')
+        self.assertRegex(pv, r'"PREVIEW":\s*"1"')
+        self.assertRegex(pv, r'"run_worker_first":\s*true', "every preview response must pass through the Worker to get noindex")
+        self.assertNotRegex(pv, r'"routes"|custom_domain|superchargeddaily\.com', "the preview never attaches to the real domain")
+        worker = (ASTRO / "worker" / "index.js").read_text(encoding="utf-8")
+        self.assertIn("X-Robots-Tag", worker)
+        self.assertIn("if (!env.PREVIEW) return res;", worker, "production responses stay untouched")
+        wf = (ROOT / ".github" / "workflows" / "astro-preview.yml").read_text(encoding="utf-8")
+        self.assertIn("--config wrangler.preview.jsonc", wf)
+        self.assertIn("workflow_dispatch", wf)
+        self.assertNotRegex(wf, r"\n  push:|\n  schedule:|pull_request", "manual only: secrets must not run on pull requests")
+
     def test_astro_pinned(self):
         pkg = json.loads((ASTRO / "package.json").read_text(encoding="utf-8"))
         self.assertRegex(pkg["dependencies"]["astro"], r"^\d+\.\d+\.\d+$", "pin Astro exactly")

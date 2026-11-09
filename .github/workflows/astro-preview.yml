@@ -1,0 +1,48 @@
+name: astro-preview
+
+# Uploads a PREVIEW copy of the site to Cloudflare Workers ("superchargeddaily-preview" on a *.workers.dev address).
+# It never touches superchargeddaily.com: astro/wrangler.preview.jsonc has no routes and no custom domain, and the
+# preview Worker marks every response noindex. Run it by hand (Actions > astro-preview > Run workflow); it is not
+# scheduled. Needs the repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: astro-preview
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.23.4'
+          cache: npm
+          cache-dependency-path: astro/package-lock.json
+      - run: npm ci
+        working-directory: astro
+      - run: npm run build
+        working-directory: astro
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+      - run: npm run parity
+        working-directory: astro
+      - name: Upload the preview to Cloudflare
+        working-directory: astro
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Add the repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID (docs/migration.md)."; exit 1
+          fi
+          npx wrangler deploy --config wrangler.preview.jsonc 2>&1 | tee deploy.log
+          url=$(grep -oE 'https://[a-z0-9.-]+\.workers\.dev' deploy.log | head -1)
+          echo "### Preview: ${url:-see the log above}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Not indexed by search engines. The live site is unchanged." >> "$GITHUB_STEP_SUMMARY"
