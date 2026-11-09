@@ -1,3 +1,8 @@
+## 2026-11-09 — Austin Robotaxi service area expansion (~442 sq mi)
+
+- Dispatch: Tesla’s @robotaxi account posted a bigger Austin geofence on 9 Nov 2026. Tesla gave no square-mileage. Robotaxi Tracker measured about 442 sq mi (from 272); RoboTracker lists 435. Licensed Tony Webster skyline is the card hero; Tesla’s map is in-article only.
+- Austin city page and Cybercab tracker now show ~442 mi² as of 9 Nov 2026 from the Robotaxi Tracker history log, because the GitHub app-derived outline is still 264.1 mi².
+
 ## 2026-11-09 — Texas robotaxi registry: +38 Model Ys, 1,282 total
 
 - FSD Database’s TxDMV VIN list now has 1,282 Tesla robotaxis: 573 Cybercab (unchanged) and 709 Model Y (+38). Registered is not in service; the registry has no city split. Cybercab share of the Texas list is 45%. Details: `docs/audit-2026-11-09.md`.

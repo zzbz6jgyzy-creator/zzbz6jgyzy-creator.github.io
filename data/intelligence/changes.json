@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-09T10:42:13.149Z",
+  "updated": "2026-11-09T11:25:57.748Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)",
+      "at": "2026-11-09T11:22:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
+      "href": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
+      "summary": "Tesla’s official @robotaxi account posted “Bigger Austin service area now live” with an old/new geofence map at 11:00 UTC on 9 Nov 2026. Tesla gave no square-mileage. Robotaxi Tracker measures about 442 sq mi, up from 272; RoboTracker lists 435.",
+      "title": "Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/tesla-robotaxi-austin-bigger-service-area.html|2026-11-09T11:22:00.000Z|Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-robotaxi-san-antonio.html",
@@ -340,23 +357,6 @@
       "summary": "EVgo opened 12 Supercharger stalls in Chicago. EVgo owns and brands them; Tesla operates and maintains them under Supercharger for Business (as of 5 Nov 2026).",
       "title": "EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get",
       "id": "logged|dispatch:/dispatch/evgo-first-tesla-supercharger-chicago.html|2026-11-05T20:47:00.000Z|EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/musk-midterms-tesla-spacex-selloff.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger",
-      "at": "2026-11-05T14:44:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/musk-midterms-tesla-spacex-selloff.html",
-      "href": "/dispatch/musk-midterms-tesla-spacex-selloff.html",
-      "summary": "SpaceX closed -3.8% and Tesla -3.3% on 4 Nov after Democrats won Congress. No merger terms yet; the new Congress seats on 3 Jan 2027 (as of 5 Nov 2026).",
-      "title": "Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger",
-      "id": "logged|dispatch:/dispatch/musk-midterms-tesla-spacex-selloff.html|2026-11-05T14:44:00.000Z|Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger"
     },
     {
       "type": "logged",

@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 09 Nov 2026 08:36:35 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 11:22:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-robotaxi-austin-bigger-service-area.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-robotaxi-austin-bigger-service-area.html</guid>
+      <pubDate>Mon, 09 Nov 2026 11:22:00 +0000</pubDate>
+      <category>Robotaxi</category>
+      <description>Tesla’s official @robotaxi account posted “Bigger Austin service area now live” with an old/new geofence map at 11:00 UTC on 9 Nov 2026. Tesla gave no square-mileage. Robotaxi Tracker measures about 442 sq mi, up from 272; RoboTracker lists 435.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/austin-skyline-colorado.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart</title>
       <link>https://superchargeddaily.com/dispatch/tesla-robotaxi-san-antonio.html</link>
@@ -717,15 +726,6 @@
       <category>FSD Europe</category>
       <description>Nine EU yeses, but only ~14% of the EU's people. An EU-wide approval needs 65%.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/slovakia-fsd-ninth-eu-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>EU fast-tracks Project Bromo vs SpaceX</title>
-      <link>https://superchargeddaily.com/dispatch/project-bromo-eu-spacex-rival.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/project-bromo-eu-spacex-rival.html</guid>
-      <pubDate>Fri, 16 Oct 2026 05:34:19 +0000</pubDate>
-      <category>Starlink</category>
-      <description>€6.5B Airbus–Leonardo–Thales merger vs Starlink’s 11,000+ satellites — the scale gap.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/project-bromo-eu-spacex-rival-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
