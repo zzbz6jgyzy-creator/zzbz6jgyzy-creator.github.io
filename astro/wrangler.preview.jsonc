@@ -1,0 +1,19 @@
+{
+  // PREVIEW ONLY: a separate Worker ("superchargeddaily-preview") on a *.workers.dev address, uploaded by
+  // .github/workflows/astro-preview.yml. It never touches the real domain: it has no route and no domain of its own.
+  // The Worker runs for every request here so it can tell search engines not to index the copy (PREVIEW var).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "superchargeddaily-preview",
+  "main": "./worker/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": { "PREVIEW": "1" },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
+  }
+}
