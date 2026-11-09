@@ -34,7 +34,8 @@ class Scaffold(unittest.TestCase):
         wf = (ROOT / ".github" / "workflows" / "astro-preview.yml").read_text(encoding="utf-8")
         self.assertIn("--config wrangler.preview.jsonc", wf)
         self.assertIn("workflow_dispatch", wf)
-        self.assertNotRegex(wf, r"\n  push:|\n  schedule:|pull_request", "manual only: secrets must not run on pull requests")
+        self.assertNotIn("pull_request", wf, "the Cloudflare secrets must never run on pull requests")
+        self.assertRegex(wf, r"push:\n    branches: \[main\]", "only main is uploaded")
 
     def test_astro_pinned(self):
         pkg = json.loads((ASTRO / "package.json").read_text(encoding="utf-8"))
