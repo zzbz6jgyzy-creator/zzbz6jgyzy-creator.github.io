@@ -1,3 +1,9 @@
+## 2026-11-09 — Starship Flight 15 hub and event pages
+
+- New `/starship-flight-15.html`: live countdown (window open and closed states), mission summary, heat-shield explainer, where to watch, links to the Starship tracker, calendar and launch compass, a dated Updates log with Disclosed / Reported / Target labels, share buttons, Event + BreadcrumbList structured data and a 1200x630 card. Facts not yet sourced in the repo carry TODO comments for the editor.
+- Reusable event-page template (`scripts/build-event-pages.mjs`, `data/event-pages/`), shared countdown (`event-countdown.js`) and share buttons (`share-buttons.js`, no third-party scripts).
+- Homepage: Flight 15 strip at the top until 16 Nov, from the same launch time. Details: `docs/event-pages.md`.
+
 ## 2026-11-08 — Flight 15 window; USSF-317 livestream; NHTSA stamp
 
 - SpaceX published a [Starship Flight 15 mission page](https://www.spacex.com/launches/starship-flight-15): as soon as Friday 13 Nov from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, then more than 22 hours before a Ship catch. The livestream card stays NET so USSF-627 remains the homepage pick. The calendar shows the window as a provisional target. No FAA licence is published, so this is not a confirmed T-0 and the Starship studio does not start a countdown. SpaceX’s 7 Nov update is about the return-to-launch-site plan, not a licence-date estimate.

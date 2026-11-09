@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-11-09 · Event pages: flat URL, one launch time, data-driven
+
+- **Decision:** `/starship-flight-15.html` (flat, like every other page) built from `data/event-pages/*.json`; the time comes only from `data/events.json`.
+- **Why:** the site has no extensionless URLs and Cloudflare is set to `html_handling: none`, so `/starship/flight-15` would need new routing. One source for the time means a slip is a one-line edit.
+- **Also:** the saved countdown shows the absolute time (correct without JavaScript, never a stale "in 2d"); a featured-event strip counts as first-screen showcase content in the homepage test.
+
 ## 2026-11-06 · Refresh cadence comes from a Cloudflare cron, not GitHub's schedule
 
 - **Decision:** a Worker (`workers/sd-refresh/`) dispatches the refresh workflows with `workflow_dispatch`. The GitHub `schedule:` triggers stay as a fallback.
