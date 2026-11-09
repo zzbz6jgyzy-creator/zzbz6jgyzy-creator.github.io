@@ -25,6 +25,18 @@ Needs Node 22.23.4 or newer (Astro 7). `engines` enforces it.
 ## Rollback
 Delete `astro/`, `.github/workflows/astro-checks.yml` and `tests/test_astro_scaffold.py`. Nothing else was touched.
 
+## P2 progress (approved by the owner on 9 Nov 2026)
+- **A, done:** Markdown is the publishing path today, without Astro. `docs/publish-from-phone.md` has a one-tap link that opens
+  GitHub's editor on a pre-filled `content/dispatch/<slug>.md` (template: `docs/article-template.md`); `home-build.yml` renders it
+  with `scripts/render-article.py`. `tests/test_publish_flow.py` runs the whole path in a throwaway copy.
+- **B1, done:** `astro/src/content.config.ts` defines the `dispatch` collection over the same files with the renderer's front-matter
+  rules. `astro/scripts/check-content-schema.mjs` (in `astro-checks.yml`) proves Astro and the renderer accept and refuse the same
+  fixtures; writing it found that the renderer let a DRAFT headline through, now fixed. No page is built from the collection yet.
+- **B2, next:** an Astro article layout for collection entries (head, nav, reader tools, related stories, NewsArticle data, footer)
+  that matches the live article template, compared section by section with what `render-article.py` + the CI generators produce.
+  Pages switch to Astro only through `ported.json`, one at a time.
+- **C, after B2:** convert the 121 hand-written HTML articles to Markdown (scripted, checked page by page).
+
 ## Later phases (each needs its own plan and approval)
 1. **P2** Dispatch articles as an Astro content collection; new articles in Markdown, publishable from a phone.
 2. **P3** reviews, hubs, homepage. **P4** trackers on Worker crons and R2 instead of bot commits to `main`.

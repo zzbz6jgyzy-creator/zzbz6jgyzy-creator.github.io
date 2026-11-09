@@ -213,6 +213,9 @@ def render(slug, text):
     for k in ("title", "summary", "topic", "tag"):
         if not meta.get(k):
             raise ArticleError(f"front matter needs '{k}:'")
+    for k, v in meta.items():
+        if re.search(r"\bDRAFT\b", str(v)):
+            raise ArticleError(f"front matter '{k}:' still says DRAFT")
     if re.search(r"[*`\[\]<>]|\]\(", meta["summary"] + meta["title"]):
         raise ArticleError("title and summary are plain text (they become meta tags); no Markdown or HTML")
     if meta["topic"] not in na.TOPICS:
