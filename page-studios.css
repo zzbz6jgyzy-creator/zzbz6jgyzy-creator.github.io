@@ -14,3 +14,19 @@
 
 @media(max-width:650px){.ps-search .sd-search-form{grid-template-columns:minmax(0,1fr) auto}.ps-search .sd-search-form>svg{display:none}}
 .ps-page a.button-primary,.ps-page a.button-primary:hover{color:#fff}
+
+/* Dispatch cards (9 Nov 2026): the card grid gave the photo a fixed 160px row while the photo is 16:10 of the card
+   width, so the text block started over the bottom of the photo and the topic tag sat on it, unreadable on bright
+   images. The photo row now fits the photo, and the tag is a solid chip in the topic's colour. */
+.ps-dispatch [data-disp-grid] .story-card{grid-template-rows:auto 1fr}
+.ps-dispatch [data-disp-grid] .story-card .tag{padding:4px 9px;border-radius:999px;font-weight:600;letter-spacing:.12em;background:#ffffff0d;border-color:#ffffff24;color:#d7dae2}
+.ps-dispatch [data-disp-grid] .story-card .tag-tesla{background:#e3193722;border-color:#ff5d7566;color:#ff8a9a}
+.ps-dispatch [data-disp-grid] .story-card .tag-spacex{background:#39a7d322;border-color:#93d9f066;color:#93d9f0}
+.ps-dispatch [data-disp-grid] .story-card .tag-xai{background:#cfd6e41c;border-color:#cfd6e466;color:#dfe5f1}
+html[data-theme=light] .ps-dispatch [data-disp-grid] .story-card .tag{background:#0000000a;border-color:#00000026;color:#3a3f4b}
+html[data-theme=light] .ps-dispatch [data-disp-grid] .story-card .tag-tesla{background:#e3193714;border-color:#b30f2a66;color:#a3132a}
+html[data-theme=light] .ps-dispatch [data-disp-grid] .story-card .tag-spacex{background:#075a7b14;border-color:#075a7b66;color:#075a7b}
+html[data-theme=light] .ps-dispatch [data-disp-grid] .story-card .tag-xai{background:#39425a14;border-color:#39425a66;color:#39425a}
+@media(hover:hover){.ps-dispatch [data-disp-grid] .story-card:hover{transform:translateY(-3px);border-color:#ffffff4d}.ps-dispatch [data-disp-grid] .story-card:hover img{transform:scale(1.03)}.ps-dispatch [data-disp-grid] .story-card img{transition:transform .35s ease}}
+@media(prefers-reduced-motion:reduce){.ps-dispatch [data-disp-grid] .story-card,.ps-dispatch [data-disp-grid] .story-card img{transition:none!important;transform:none!important}}
+.ps-dispatch [data-disp-grid] .story-card .story-copy{align-content:start}

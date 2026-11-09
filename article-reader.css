@@ -13,3 +13,22 @@ html[data-theme=light] .rs-story .rs-article figure figcaption,html[data-theme=l
 
 .rs-controls .rs-x{display:inline-flex;align-items:center;font:500 12px/1.4 Inter,sans-serif;min-height:44px;padding:10px 12px;border:1px solid var(--rs-line);border-radius:7px;color:var(--rs-ink);text-decoration:none}
 .rs-controls .rs-x:hover{border-color:currentColor}
+
+/* Phones: the reading tools were two rows of buttons (104px+ of a sticky bar over the story). One row now:
+   a narrow label, then the buttons in a strip that scrolls sideways, with a fade where more are off screen. */
+@media(max-width:650px){
+.rs-tools{min-height:58px;padding:6px 0 6px 10px;gap:0 8px;flex-wrap:wrap;margin:18px 0}
+.rs-time{flex:0 0 62px;font-size:8.5px;line-height:1.45;letter-spacing:.02em}
+.rs-controls{flex:1 1 0;min-width:0;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding-right:26px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 30px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 30px),transparent)}
+.rs-controls::-webkit-scrollbar{display:none}
+.rs-controls>*,.rs-size{flex:none}
+.rs-size{display:flex;gap:4px}
+.rs-controls button,.rs-controls .rs-x{white-space:nowrap}
+.rs-status:empty{display:none}
+.rs-status{padding:2px 10px 2px 0}
+.rs-story .rs-article h2[id]{scroll-margin-top:150px}
+}
+
+/* An article photo marked <figure class="hero"> also picked up the old homepage .hero rules (a grid with a tall
+   minimum height), which left about 140px of empty space above and below the photo on phones. */
+.rs-story .rs-article>figure.hero{display:block;min-height:0;align-items:initial;position:static;overflow:hidden}
