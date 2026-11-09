@@ -6,12 +6,12 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 09 Nov 2026 08:33:59 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 08:36:35 +0000</lastBuildDate>
     <item>
       <title>Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart</title>
       <link>https://superchargeddaily.com/dispatch/tesla-robotaxi-san-antonio.html</link>
       <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-robotaxi-san-antonio.html</guid>
-      <pubDate>Mon, 09 Nov 2026 08:33:59 +0000</pubDate>
+      <pubDate>Mon, 09 Nov 2026 08:36:35 +0000</pubDate>
       <category>Robotaxi</category>
       <description>Tesla's @robotaxi account says San Antonio rides start at 5am CT. Merritt measures the launch zone at about 275 sq mi. A 9 Nov Texas DMV pull puts Tesla at 1,282 registered driverless vehicles against Waymo's 1,285.</description>
       <enclosure url="https://superchargeddaily.com/assets/og-v2.jpg" type="image/jpeg" />
@@ -728,6 +728,14 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/project-bromo-eu-spacex-rival-poster.jpg" type="image/jpeg" />
     </item>
     <item>
+      <title>Tracker: Starlink in orbit</title>
+      <link>https://superchargeddaily.com/starlink.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-09T01:19:56.000Z-11204</guid>
+      <pubDate>Mon, 09 Nov 2026 01:19:56 +0000</pubDate>
+      <category>starlink</category>
+      <description>Starlink in orbit changed from 11207 to 11204.</description>
+    </item>
+    <item>
       <title>Tracker: Flight 15 change</title>
       <link>https://superchargeddaily.com/starship.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starship.html#logged-starship:schedule-2026-11-08T00:00:00.000Z-SpaceX-published-the-Flight-15</guid>
@@ -814,14 +822,6 @@
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <category>fsd</category>
       <description>Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.</description>
-    </item>
-    <item>
-      <title>Tracker: 2026.38.3.2</title>
-      <link>https://superchargeddaily.com/updates.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.3.2-2026-10-22T20:53:15.000Z-3</guid>
-      <pubDate>Thu, 22 Oct 2026 20:53:15 +0000</pubDate>
-      <category>software</category>
-      <description>2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
   </channel>
 </rss>
