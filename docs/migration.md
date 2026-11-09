@@ -1,6 +1,7 @@
 # Migration: GitHub Pages to Astro on Cloudflare Workers
 
-Status: **Step 0 and 1 only (scaffold and parity proof).** The live site is unchanged. GitHub Pages still serves the repo root.
+Status: **PAUSED by the owner on 9 Nov 2026** ("the site is fine"). Done so far: scaffold and parity proof, phone publishing,
+the Dispatch collection and Markdown renderer, and a manual Cloudflare preview. Nothing below is scheduled. The live site is unchanged. GitHub Pages still serves the repo root.
 Nothing is deleted, no DNS changes. Approved by the owner on 26 Oct 2026; later phases each need their own plan and approval.
 
 ## How it works today (this branch)
@@ -48,7 +49,7 @@ Delete `astro/`, `.github/workflows/astro-checks.yml` and `tests/test_astro_scaf
 
 ## Preview on Cloudflare (set up 9 Nov 2026)
 The owner added the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. `.github/workflows/astro-preview.yml`
-(after every push to main, hourly, or by hand: Actions > astro-preview > Run workflow) builds, runs parity and uploads a separate Worker, `superchargeddaily-preview`,
+(by hand only: Actions > astro-preview > Run workflow) builds, runs parity and uploads a separate Worker, `superchargeddaily-preview`,
 from `astro/wrangler.preview.jsonc`. It lives on a `*.workers.dev` address, has no routes or custom domain, and its Worker adds
 `X-Robots-Tag: noindex, nofollow` to every response, so it cannot compete with the real site in search. The run's summary shows
 the address: https://superchargeddaily-preview.superchargeddaily.workers.dev (first upload 9 Nov 2026: 2,287 files, 90 s).
@@ -61,3 +62,8 @@ are ported. The hosting move does not depend on it, because the Cloudflare copy 
 1. **Hosting cutover first** (owner's DNS action, Pages kept for rollback): gains real 301s, cache rules and Workers crons.
 2. **P4 trackers** on Workers crons/R2: ends the bot commits to main and the merge conflicts.
 3. **Then** port generators and pages into Astro, one at a time, behind `ported.json`.
+
+## Paused (9 Nov 2026)
+The owner decided the site is fine as it is. The site integrity check (`scripts/check-site-integrity.py`) now stops the
+failures that motivated the move. The preview workflow is manual only and the preview Worker can be deleted in the Cloudflare
+dashboard (Workers & Pages > superchargeddaily-preview) at any time. To resume, start from "Order of work" above.

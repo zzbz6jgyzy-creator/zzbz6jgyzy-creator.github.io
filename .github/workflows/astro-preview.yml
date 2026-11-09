@@ -1,16 +1,11 @@
 name: astro-preview
 
-# Keeps a PREVIEW copy of the site on Cloudflare Workers ("superchargeddaily-preview" on a *.workers.dev address) in step
-# with main: after every push to main, once an hour (bot commits made with the Actions token do not trigger push runs),
-# and by hand (Actions > astro-preview > Run workflow). It never touches superchargeddaily.com:
-# astro/wrangler.preview.jsonc has no routes and no custom domain, and the preview Worker marks every response noindex.
-# Never runs on pull requests, so the secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are only used from main.
+# Uploads a PREVIEW copy of the site to Cloudflare Workers ("superchargeddaily-preview" on a *.workers.dev address).
+# Manual only (Actions > astro-preview > Run workflow): the Cloudflare move is paused (docs/migration.md, 9 Nov 2026), so
+# nothing uploads on its own. It never touches superchargeddaily.com: astro/wrangler.preview.jsonc has no routes and no
+# custom domain, and the preview Worker marks every response noindex.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-  schedule:
-    - cron: '23 * * * *'
 
 permissions:
   contents: read
