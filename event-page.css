@@ -35,6 +35,8 @@
 .ev-chip-disclosed{color:#7fd4b2;border-color:#7fd4b255}
 .ev-chip-reported{color:#e8c27a;border-color:#e8c27a55}
 .ev-chip-target{color:#9ccbff;border-color:#9ccbff55}
+.ev-chip-correction{color:#ff8a9a;border-color:#ff8a9a55}
+html[data-theme=light] .ev-chip-correction{color:#a3132a}
 html[data-theme=light] .ev-chip-disclosed{color:#17684c}
 html[data-theme=light] .ev-chip-reported{color:#7a5208}
 html[data-theme=light] .ev-chip-target{color:#1f5a9a}

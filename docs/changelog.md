@@ -1,3 +1,7 @@
+## 2026-11-09 — Flight 15 page fact-checked
+
+- Every unconfirmed claim on `/starship-flight-15.html` is now sourced or gone. Heat shield: "thousands" of tiles (CNBC), not a confirmed 18,000; the temperature is SpaceX's 2019 tile test, about 1,650 K / 1,377 °C (Digital Trends); tiles are mostly attached mechanically (Air & Space). The gap-sealing felt and tile-factory output were removed: no source we could open supports them. Flight plan: about 14 orbits per SpaceX's timeline, orbit "about 275 km" labelled as reported. Booster catches so far: three (Flights 5, 7, 8). The stream-start claim is replaced by "time posted on the day". A visible Correction entry in the Updates log says what changed.
+
 ## 2026-11-09 — Reliability and launch-day upgrades
 
 - Site integrity check: bots, pull requests and the commit hook now refuse a change that cuts a page off, points a page at a missing script, stylesheet, calendar file or asset, breaks a JSON data file, empties the Dispatch list or leaves the homepage lead empty. It would have stopped both of this morning's breakages (`scripts/check-site-integrity.py`).
