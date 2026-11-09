@@ -32,7 +32,10 @@ Delete `astro/`, `.github/workflows/astro-checks.yml` and `tests/test_astro_scaf
 - **B1, done:** `astro/src/content.config.ts` defines the `dispatch` collection over the same files with the renderer's front-matter
   rules. `astro/scripts/check-content-schema.mjs` (in `astro-checks.yml`) proves Astro and the renderer accept and refuse the same
   fixtures; writing it found that the renderer let a DRAFT headline through, now fixed. No page is built from the collection yet.
-- **B2, next:** an Astro article layout for collection entries (head, nav, reader tools, related stories, NewsArticle data, footer)
+- **B2a, done:** `astro/src/lib/dispatch-md.mjs` renders the Markdown dialect for Astro; `astro/scripts/check-md-parity.mjs`
+  (in `astro-checks.yml`) proves it returns the same HTML and the same errors as `render-article.py` on every syntax. Writing it
+  found that an unknown `::directive` line hung the renderer (and CI) forever; both now refuse it.
+- **B2b, next:** an Astro article layout for collection entries (head, nav, reader tools, related stories, NewsArticle data, footer)
   that matches the live article template, compared section by section with what `render-article.py` + the CI generators produce.
   Pages switch to Astro only through `ported.json`, one at a time.
 - **C, after B2:** convert the 121 hand-written HTML articles to Markdown (scripted, checked page by page).
