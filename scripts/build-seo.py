@@ -649,6 +649,28 @@ def starship_event():
     }
 
 
+def apply_article_og():
+    """Stories with no image of their own use the generic site card. When generate-og.py has made a
+    title card (assets/og/dispatch-<slug>.jpg), point og:image / twitter:image at it. Real images win."""
+    try:
+        arts = json.load(open(os.path.join(ROOT, "data", "articles.json"), encoding="utf-8"))["articles"]
+    except (OSError, ValueError, KeyError):
+        return
+    for a in arts:
+        rel = a["url"].lstrip("/")
+        slug = os.path.splitext(os.path.basename(rel))[0]
+        card, path = "/assets/og/dispatch-%s.jpg" % slug, os.path.join(ROOT, rel)
+        if not os.path.exists(path) or not os.path.exists(os.path.join(ROOT, card.lstrip("/"))):
+            continue
+        src = open(path, encoding="utf-8").read()
+        cur = meta(src, "property", "og:image") or ""
+        if cur and not cur.endswith("/assets/og-v2.jpg") and not cur.endswith(card):
+            continue
+        new = seo_lib.set_og_image(src, SITE + card, "%s (Supercharged Daily title card)" % a["title"])
+        if new != src:
+            open(path, "w", encoding="utf-8").write(new)
+
+
 def apply_og():
     for rel, (img, alt) in TRACKER_OG.items():
         path = os.path.join(ROOT, rel)
@@ -787,6 +809,7 @@ if __name__ == "__main__":
     apply_titles()
     tracker_schema()
     apply_og()
+    apply_article_og()
     topic_stories()
     sitewide()
     sitemap()

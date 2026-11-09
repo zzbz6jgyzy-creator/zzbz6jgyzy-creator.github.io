@@ -8,7 +8,7 @@ import glob, html, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CFG = json.load(open(os.path.join(ROOT, "scripts/footer.json"), encoding="utf-8"))
 FOOT = re.compile(r'([ \t]*)<footer class="site-footer">[\s\S]*?</footer>')
-SKIP = ("node_modules/", "vendor/", "templates/")
+SKIP = ("node_modules/", "vendor/", "templates/", "astro/")
 
 def link(item):
     name, href = item[0], item[1]
@@ -38,6 +38,7 @@ def footer(rel, ind):
             + ref +
             f'{i2}<p class="footer-support"><a class="support-button" href="https://buymeacoffee.com/Superchargeddaily" target="_blank" rel="noopener">Support Supercharged Daily ☕</a></p>\n'
             f'{i2}<p class="footer-disclosure">Some links are affiliate links; I may earn a commission at no extra cost to you.</p>\n'
+            + (f'{i2}<p class="footer-disclosure footer-legal">' + " · ".join(link(x) for x in CFG.get("legal", [])) + '</p>\n' if CFG.get("legal") else "") +
             f'{ind}</footer>')
 
 def run(check=False):

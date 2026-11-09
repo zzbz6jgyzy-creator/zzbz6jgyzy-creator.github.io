@@ -1,0 +1,41 @@
+/* Event pages (single-topic hubs such as /starship-flight-15.html) and the shared countdown. */
+.ev-page{width:min(880px,calc(100% - 32px));margin:28px auto 64px;color:var(--ink)}
+.ev-crumbs ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0 0 22px;padding:0;font:500 11px/1.6 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.ev-crumbs li+li::before{content:"/";margin-right:6px;opacity:.6}
+.ev-crumbs a{color:inherit;text-underline-offset:3px}
+.ev-crumbs [aria-current]{color:var(--ink)}
+.ev-kicker{font:500 11px/1.6 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--sec-accent,var(--red-text));margin:0 0 12px}
+.ev-hero h1{font-size:clamp(34px,6vw,58px);line-height:1.04;letter-spacing:-.045em;margin:0 0 24px;font-weight:650}
+.evc{border:1px solid var(--line-strong);border-radius:var(--radius-card,14px);background:var(--card);padding:18px 20px;margin:0 0 14px}
+.evc-label{font:500 11px/1.4 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 6px}
+.evc-time{white-space:nowrap;font-size:clamp(26px,5vw,40px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:0}
+.evc-sub{font-size:13px;color:var(--ink-soft);margin:8px 0 0}
+.evc[data-cd-state=open]{border-color:var(--sec-accent,#e31937)}
+.evc[data-cd-state=open] .evc-label{color:var(--sec-accent,var(--red-text))}
+.ev-where{font-size:14px;color:var(--ink-soft);margin:0 0 16px}
+.ev-share{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.ev-share a,.ev-share button{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line-strong);border-radius:999px;background:transparent;color:var(--ink);font:600 13px/1 Inter,"Inter Fallback",system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.ev-share a:hover,.ev-share button:hover{border-color:var(--ink-soft)}
+.ev-section{margin:44px 0 0}
+.ev-section h2{font-size:clamp(22px,3.4vw,30px);letter-spacing:-.03em;line-height:1.15;margin:0 0 14px}
+.ev-section p{font-size:16px;line-height:1.7;margin:0 0 12px;max-width:68ch}
+.ev-points{margin:0;padding-left:20px;max-width:68ch}
+.ev-points li{font-size:16px;line-height:1.65;margin:0 0 10px}
+.ev-cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.ev-cards a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 18px;border:1px solid var(--line-strong);border-radius:var(--radius-card,14px);background:var(--card);color:var(--ink);text-decoration:none}
+.ev-cards a:hover{border-color:var(--ink-soft)}
+.ev-cards strong{font-size:15px}
+.ev-cards span{font-size:13px;line-height:1.55;color:var(--ink-soft)}
+.ev-note{font-size:13px!important;color:var(--ink-soft)}
+.ev-log{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ev-log li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.65}
+.ev-log time{font:500 12px "IBM Plex Mono",ui-monospace,monospace;color:var(--ink-soft);margin-right:8px}
+.ev-log a{color:var(--ink);text-underline-offset:3px;font-size:13px}
+.ev-chip{display:inline-block;font:500 10px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--line-strong);border-radius:999px;margin-right:6px;vertical-align:2px}
+.ev-chip-disclosed{color:#7fd4b2;border-color:#7fd4b255}
+.ev-chip-reported{color:#e8c27a;border-color:#e8c27a55}
+.ev-chip-target{color:#9ccbff;border-color:#9ccbff55}
+html[data-theme=light] .ev-chip-disclosed{color:#17684c}
+html[data-theme=light] .ev-chip-reported{color:#7a5208}
+html[data-theme=light] .ev-chip-target{color:#1f5a9a}
+.ev-small{font-size:12px;color:var(--ink-soft);margin:40px 0 0;max-width:68ch}

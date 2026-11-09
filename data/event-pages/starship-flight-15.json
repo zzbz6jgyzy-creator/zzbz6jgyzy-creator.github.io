@@ -1,0 +1,46 @@
+{
+  "slug": "starship-flight-15",
+  "eventId": "starship-flight-15",
+  "section": "SpaceX",
+  "sectionUrl": "/spacex.html",
+  "kicker": "Starship / Flight 15",
+  "title": "Starship Flight 15: the first attempt to catch both stages",
+  "seoTitle": "Starship Flight 15: launch time, countdown and what to watch",
+  "description": "Starship Flight 15 targets Friday 13 November 2026 from Starbase Pad 2: live countdown, the double-catch plan, why the heat shield matters, and where to watch.",
+  "ogImage": "/assets/og/starship-flight-15.jpg",
+  "ogImageAlt": "Starship Flight 15 title card on a dark background with the Supercharged Daily bolt",
+  "featureUntil": "2026-11-16T12:00:00Z",
+  "windowNote": "75-minute window · pending regulatory approval",
+  "location": {"name": "Starbase, Texas (Pad 2)", "region": "Texas", "country": "US"},
+  "summary": [
+    "SpaceX is targeting Starship Flight 15 for Friday 13 November 2026 from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). That is a published window, not a guaranteed lift-off time.",
+    "For the first time SpaceX plans to try to catch both stages with the tower: Super Heavy minutes after launch, and the Ship after a flight of more than 22 hours, about 14 orbits at roughly 275 km, during which it deploys 26 Starlink V3 satellites.",
+    "If both catches work, it would be the first full recovery of an orbital launch system. Super Heavy boosters have been caught before; an orbital ship never has."
+  ],
+  "summaryTodo": "TODO(owner): confirm '14 orbits at roughly 275 km' against SpaceX's Flight 15 page before Friday, and confirm how many boosters have been caught so far (your note says three; the repo does not state a count).",
+  "heatShield": {
+    "lead": "Bringing the Ship home intact means surviving re-entry, and that is the heat shield's job.",
+    "points": [
+      "About 18,000 hexagonal silica tiles cover the Ship's windward side.",
+      "The surface reaches around 1,400 °C (about 2,550 °F) during re-entry.",
+      "A ceramic felt layer, nicknamed the \"crunchwrap\", seals the gaps between tiles so hot gas cannot reach the steel.",
+      "Tiles clip onto welded studs instead of being glued, which makes them quicker to replace.",
+      "Tiles are made at SpaceX's Florida \"Bakery\": about 40 hours per tile. In October 2025 SpaceX said it was producing about 1,000 a day, with the line built for 7,000 a day."
+    ],
+    "todo": "TODO(owner): none of these heat-shield figures are sourced in the repo yet. Check each against a SpaceX source (and add the link) before Friday."
+  },
+  "links": [
+    {"href": "/starship.html", "title": "Starship tracker", "text": "Every flight, the hardware and the next target."},
+    {"href": "/calendar.html", "title": "Launch calendar", "text": "Upcoming SpaceX launches with add-to-calendar."},
+    {"href": "/see-the-launch.html", "title": "Can I see the launch?", "text": "Find where to look from your location with a live compass."}
+  ],
+  "watch": [
+    {"href": "https://x.com/SpaceX", "title": "SpaceX on X", "text": "SpaceX's official livestream usually starts about 30 minutes before the window."},
+    {"href": "https://www.spacex.com/launches/starship-flight-15", "title": "spacex.com", "text": "The official Flight 15 mission page and webcast."}
+  ],
+  "watchTodo": "TODO(owner): the '30 minutes before' lead time is typical, not announced for this flight. Remove or confirm.",
+  "updates": [
+    {"date": "2026-11-09", "kind": "Target", "text": "SpaceX lists Flight 15 as soon as Friday 13 November, 4:45 p.m. CT (22:45 UTC), 75-minute window, pending regulatory approval.", "source": "https://www.spacex.com/launches/starship-flight-15"}
+  ],
+  "related": ["/dispatch/starship-flight-15-catch-timeline.html", "/dispatch/starship-f15-ship-catch.html", "/dispatch/ship-42-first-tower-catch.html"]
+}

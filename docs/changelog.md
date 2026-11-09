@@ -1,3 +1,26 @@
+## 2026-11-09 — Growth: sharing, social cards, one signup, nav names, "Last updated"
+
+- Articles: share row is now "Post on X" (adds via @ALJR86), "Copy link", and the phone's own Share sheet where the browser has one. No third-party scripts.
+- Social cards: every story without its own image gets a branded 1200x630 title card (`assets/og/dispatch-<slug>.jpg`, built by `scripts/generate-og.py`); stories with their own image keep it.
+- Homepage: one main signup (the hero form). The second, bottom signup form is gone; on phones a slim bar appears once the hero form has scrolled away, jumps back to it, and stays closed for 14 days after "×". The hero's sample link now opens a real issue.
+- Homepage shows "Last updated" (newest of stories, software tracker, Starlink and live data) under the hero eyebrow.
+- Nav: one name per page in every menu (Starlink tracker, Robotaxi tracker, Cybercab guide, Model 3 explorer, Cybertruck explorer, Owner gear). Labels only, no URL changes, so no redirects were needed.
+- Footer: RSS feed link on every page (the head already linked `/feed.xml`). Sitemap and robots already cover the Flight 15 page; the draft legal pages are noindex and stay out of the sitemap.
+
+## 2026-11-09 — Quick fixes: countdown, publisher links, legal drafts, checks
+
+- Homepage "Next livestream" card counts down every second from the stored start time (T−, Live now, Ended), using the same component as the Flight 15 hub. No stale "in 1d 4h" in the saved page.
+- News snapshot resolves Google News redirect links to the publisher's own URL (cached in `data/news-resolve-cache.json`, at most 40 lookups a run, stops on rate limits, falls back to the Google link).
+- Draft Privacy, Cookie and Terms pages (noindex, DRAFT banner) and footer links on every page. Notes and open questions: `docs/legal-drafts.md`.
+- Meta tags: the reported "meta-" prefix was not found in the source or on the live site; a guard test now checks every page and the standard head tags on the homepage and an article.
+- Alt text: audit found every image already has alt (decorative ones empty) and every inline SVG hidden or labelled; guard tests added.
+
+## 2026-11-09 — Starship Flight 15 hub and event pages
+
+- New `/starship-flight-15.html`: live countdown (window open and closed states), mission summary, heat-shield explainer, where to watch, links to the Starship tracker, calendar and launch compass, a dated Updates log with Disclosed / Reported / Target labels, share buttons, Event + BreadcrumbList structured data and a 1200x630 card. Facts not yet sourced in the repo carry TODO comments for the editor.
+- Reusable event-page template (`scripts/build-event-pages.mjs`, `data/event-pages/`), shared countdown (`event-countdown.js`) and share buttons (`share-buttons.js`, no third-party scripts).
+- Homepage: Flight 15 strip at the top until 16 Nov, from the same launch time. Details: `docs/event-pages.md`.
+
 ## 2026-11-08 — Flight 15 window; USSF-317 livestream; NHTSA stamp
 
 - SpaceX published a [Starship Flight 15 mission page](https://www.spacex.com/launches/starship-flight-15): as soon as Friday 13 Nov from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, then more than 22 hours before a Ship catch. The livestream card stays NET so USSF-627 remains the homepage pick. The calendar shows the window as a provisional target. No FAA licence is published, so this is not a confirmed T-0 and the Starship studio does not start a countdown. SpaceX’s 7 Nov update is about the return-to-launch-site plan, not a licence-date estimate.

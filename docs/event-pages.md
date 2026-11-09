@@ -1,0 +1,37 @@
+# Event pages (single-topic hubs)
+
+Built by `scripts/build-event-pages.mjs` from one JSON file per page in `data/event-pages/`. First example: `/starship-flight-15.html` from `data/event-pages/starship-flight-15.json`.
+
+## If Flight 15 slips: change the launch time in ONE place
+Edit `start` and `end` for `starship-flight-15` in `data/events.json` (keep the offset, e.g. `2026-11-14T16:45:00-06:00`). Then run, or let CI run on push to main:
+
+```
+node scripts/build-event-pages.mjs && node scripts/build-home.js
+```
+
+The hub countdown, the homepage feature strip and the Event structured data all read that value. Other trackers keep their own copies (`live-data.json` for the live banner, `starship-data.js` for the Starship tracker, `calendar.js`, `see-the-launch-data.js`); update those as you already do for a date change.
+
+## Add a line to the Updates log
+Add an object to `updates` in the page's JSON, newest anywhere (the builder sorts by date):
+
+```json
+{"date": "2026-11-12", "kind": "Disclosed", "text": "FAA issues the Flight 15 licence.", "source": "https://..."}
+```
+
+`kind` is one of `Disclosed` (from the company), `Reported` (from outlets) or `Target` (a plan, not a result). These are the same labels the trackers use.
+
+## Make a new event page (e.g. "FSD v14 release notes")
+1. Add the event (title, `start`, `end`) to `data/events.json` if it has a time.
+2. Copy `data/event-pages/starship-flight-15.json` to `data/event-pages/<slug>.json` and edit `slug`, `eventId`, `section`, `sectionUrl`, `kicker`, `title`, `seoTitle`, `description`, `summary`, `links`, `watch`, `updates`, `related`. `heatShield` is optional (any page can drop it).
+3. Add a 1200x630 card: add a line to `CARDS` in `scripts/generate-og.py` and run it, then point `ogImage` at `/assets/og/<slug>.jpg`.
+4. Add the page to `pages` in `scripts/js-bundles.json` with `{"bundles": ["core", "event"], "grow": ["data-band"]}` and run `sh scripts/rebuild-js.sh`.
+5. Run `node scripts/build-event-pages.mjs`. The first run copies the site shell (nav, footer) from `editorial.html`; later runs only replace the `<!--ev:head-->` block and `<main>`.
+
+## Homepage feature
+A page with `featureUntil` in the future is featured as a strip at the top of the homepage (`<!--hv:feature-->`, built by `scripts/build-home.js`). It drops off by itself after that time, on the next home build. Flight 15 is featured until 16 Nov 2026 12:00 UTC.
+
+## Countdown states
+`event-countdown.js` (bundles `event` and `home`): before the window it ticks `d hh:mm:ss`; during the window it says "Launch window open"; after the window closes it says "Launched" and points to the Updates log. The saved HTML always shows the absolute time, so it is right with JavaScript off. If a launch scrubs, add an update line and move the time in `data/events.json`; the page goes back to counting down.
+
+## Checks
+`node --test tests/event-pages.test.mjs` (rebuilding the page changes nothing, the start time comes from events.json, Event + BreadcrumbList schema, standard head tags, countdown states).

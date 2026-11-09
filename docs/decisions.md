@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-11-09 · Event pages: flat URL, one launch time, data-driven
+
+- **Decision:** `/starship-flight-15.html` (flat, like every other page) built from `data/event-pages/*.json`; the time comes only from `data/events.json`.
+- **Why:** the site has no extensionless URLs and Cloudflare is set to `html_handling: none`, so `/starship/flight-15` would need new routing. One source for the time means a slip is a one-line edit.
+- **Also:** the saved countdown shows the absolute time (correct without JavaScript, never a stale "in 2d"); a featured-event strip counts as first-screen showcase content in the homepage test.
+
 ## 2026-11-06 · Refresh cadence comes from a Cloudflare cron, not GitHub's schedule
 
 - **Decision:** a Worker (`workers/sd-refresh/`) dispatches the refresh workflows with `workflow_dispatch`. The GitHub `schedule:` triggers stay as a fallback.
@@ -258,3 +264,7 @@ results require a rating. Adding one is an editorial decision for the owner, not
 - **Why:** the owner asked to test a book format for the long read. Research on 5 Nov 2026: MIT, no dependencies, 904 stars, 43 open issues, last npm release April 2021, a 2024 issue asking for it to be marked abandoned, and 2026 issues (destroy() leaves the render loop running; HTML-mode boundary bugs). It still works, so it is used as asked, self-hosted and pinned, and designed around the known problems (no destroy(); reload on layout change; text-only buttons because its click check reads the target's own tag).
 - **Rejected:** turn.js and flip libraries with licence or maintenance problems were not evaluated further because the owner named StPageFlip. CSS-columns pagination (one clone of the whole article per page) was rejected: about 45 copies of 60 KB of HTML and the same text duplicated for screen readers.
 - **Revisit before going public:** accessibility, find-in-page, text size, and whether an unmaintained library is acceptable on a page we want indexed.
+
+## 2026-11-09 — One homepage signup, phone bar instead of a second form
+
+The homepage had two full signup forms. We keep the hero form as the only one and drop the bottom band. On phones (most readers arrive from X), a slim bar in `grow.js` (`data-bar`, homepage only) appears once the hero form has scrolled away and jumps back to that form rather than adding another form. It hides while a form is on screen, never shows to someone marked subscribed in this browser, and stays closed for 14 days after "×". Desktop keeps no bar: the hero form and the nav "Subscribe" link are enough, and the scroll pop-up still never fires where an inline form exists.

@@ -44,7 +44,8 @@
       "home-v2.js",
       "home-next.js",
       "home-studio.js",
-      "live.js"
+      "live.js",
+      "event-countdown.js"
     ],
     "starship": [
       "starship-studio-model.js",
@@ -260,6 +261,10 @@
     ],
     "roadster-x": [
       "roadster-experience.js"
+    ],
+    "event": [
+      "event-countdown.js",
+      "share-buttons.js"
     ]
   },
   "pages": {
@@ -271,7 +276,8 @@
       ],
       "grow": [
         "data-band",
-        "data-pop"
+        "data-pop",
+        "data-bar"
       ],
       "livePage": "home"
     },
@@ -725,6 +731,15 @@
       "bundles": [
         "core",
         "roadster-x"
+      ],
+      "grow": [
+        "data-band"
+      ]
+    },
+    "starship-flight-15.html": {
+      "bundles": [
+        "core",
+        "event"
       ],
       "grow": [
         "data-band"

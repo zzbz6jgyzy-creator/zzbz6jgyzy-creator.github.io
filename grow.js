@@ -1,6 +1,6 @@
 (() => {
   // Referral card, end-of-page newsletter band and one-time scroll prompt.
-  // Pages opt in with <script src="/grow.js" data-ref data-band data-pop defer>.
+  // Pages opt in with <script src="/grow.js" data-ref data-band data-pop data-bar defer>.
   const me = document.currentScript;
   const has = (k) => me && me.hasAttribute("data-" + k);
   const REF = "https://ts.la/alex474841";
@@ -85,6 +85,47 @@
       bindForms();
     };
     addEventListener("scroll", onScroll, { passive: true });
+  }
+  // Slim phone bar (data-bar, homepage only): appears once the hero signup has scrolled out of view,
+  // hides again while any signup form is on screen, and jumps back to the one main form instead of
+  // adding a second. Closing it keeps it away for 14 days; subscribers never see it.
+  const BARKEY = "sd-bar-closed";
+  const main = document.getElementById("newsletter");
+  if (has("bar") && main && "IntersectionObserver" in window && matchMedia("(max-width:720px)").matches
+      && store.get(SUBKEY) !== "1" && !(Number(store.get(BARKEY)) > Date.now())) {
+    const bar = document.createElement("aside");
+    bar.className = "sd-bar"; bar.hidden = true; bar.setAttribute("aria-label", "Newsletter signup");
+    bar.innerHTML = `<p><b>Free Sunday briefing</b><span>Tesla, SpaceX and xAI in one email.</span></p>
+      <a class="sd-btn" href="#newsletter" data-bar-go>Sign up</a>
+      <button class="sd-x" type="button" aria-label="Close newsletter bar">×</button>`;
+    document.body.appendChild(bar);
+    const seen = new Set();
+    let closed = false, queued = false;
+    // Show only below the hero form (its bottom edge above the screen), never while a form is visible.
+    const sync = () => {
+      queued = false;
+      const show = !closed && seen.size === 0 && main.getBoundingClientRect().bottom < 0 && store.get(SUBKEY) !== "1";
+      if (bar.hidden === show) bar.hidden = !show;
+      document.documentElement.classList.toggle("has-sd-bar", show);
+    };
+    const queue = () => { if (!queued) { queued = true; requestAnimationFrame(sync); } };
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); }
+      queue();
+    });
+    addEventListener("scroll", queue, { passive: true });
+    document.querySelectorAll("[data-newsletter-form]").forEach((f) => io.observe(f));
+    io.observe(main);
+    bar.querySelector("[data-bar-go]").addEventListener("click", (e) => {
+      e.preventDefault();
+      main.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+      const input = main.querySelector("input[type=email]");
+      if (input) input.focus({ preventScroll: true });
+    });
+    bar.querySelector(".sd-x").addEventListener("click", () => {
+      closed = true; store.set(BARKEY, String(Date.now() + 14 * 864e5)); io.disconnect();
+      removeEventListener("scroll", queue); sync(); bar.remove();
+    });
   }
   function bindForms() { if (!window.__sdTrack) { const t = document.createElement("script"); t.src = "/track.js?v=202610190630"; document.body.appendChild(t); }  if (!window.__sdNewsletter && !document.querySelector('script[src^="/newsletter.js"]')) { const s = document.createElement("script"); s.src = "/newsletter.js?v=202610210800"; document.body.appendChild(s); } }
   bindForms();

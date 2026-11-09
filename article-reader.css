@@ -10,3 +10,6 @@
 /* light theme: the dark-panel accent and caption colours fail contrast on the light page (axe 2.95:1 and 1.6:1) */
 html[data-theme=light] .rs-story{--rs-accent:#b30f2a}
 html[data-theme=light] .rs-story .rs-article figure figcaption,html[data-theme=light] .rs-story .rs-article figure figcaption a{color:var(--rs-soft)}
+
+.rs-controls .rs-x{display:inline-flex;align-items:center;font:500 12px/1.4 Inter,sans-serif;min-height:44px;padding:10px 12px;border:1px solid var(--rs-line);border-radius:7px;color:var(--rs-ink);text-decoration:none}
+.rs-controls .rs-x:hover{border-color:currentColor}

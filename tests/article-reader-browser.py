@@ -22,7 +22,9 @@ async def main():
     await page.locator('[data-rs-size="1"]').click();assert await page.locator('.rs-article').get_attribute('data-text-size')=='1'
     await page.locator('[data-rs-focus]').click();assert await page.locator('body').evaluate('e=>e.classList.contains("rs-focus")');assert not await page.locator('.pn-wrap').is_visible()
     await page.keyboard.press('Escape');assert await page.locator('.pn-wrap').is_visible()
-    await page.locator('[data-rs-share]').click();assert '/dispatch/'+path in await page.evaluate('window.__copied')
+    await page.locator('[data-rs-copy]').click();assert '/dispatch/'+path in await page.evaluate('window.__copied')
+    assert await page.locator('[data-rs-share]').is_hidden(),'Native share stays hidden where the browser has none'
+    xh=await page.locator('.rs-x').get_attribute('href');assert xh.startswith('https://x.com/intent/post?') and 'via=ALJR86' in xh and path in xh,xh
     assert paragraphs==await page.locator('.rs-article>p').all_text_contents();assert sources==await page.locator('.rs-article a').evaluate_all('(els)=>els.map(e=>e.href)')
     await page.reload();assert await page.locator('.rs-article').get_attribute('data-text-size')=='1'
     await page.evaluate('const a=document.querySelector(".rs-article");scrollTo(0,scrollY+a.getBoundingClientRect().top+a.offsetHeight*.3)');await page.wait_for_function('new DOMMatrixReadOnly(getComputedStyle(document.querySelector(".rs-progress span")).transform).a>0')

@@ -30,7 +30,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -- templates/starlink-sky.html 2>/dev/null || true
           git add data/newsletter-latest.json index.html tesla.html news.html grow.js
-          git add -u -- assets/js '*.html'
+          git add -A -- assets/js  # -A: stage the new hashed bundles, not only the deleted old ones
+          git add -u -- '*.html'
           if git diff --cached --quiet; then echo "No change"; else
             git commit -m "Point Read the latest issue at the newest newsletter issue."
             sh scripts/ci-push-retry.sh

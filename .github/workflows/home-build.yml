@@ -13,6 +13,9 @@ on:
       - scripts/build-wayfinding.py
       - wayfinding.css
       - starship-data.js
+      - 'data/event-pages/**'
+      - scripts/build-event-pages.mjs
+      - scripts/event-shared.cjs
       - starship-lab-data.js
       - starship-studio-model.js
       - starship-studio-view.js
@@ -148,7 +151,7 @@ jobs:
       - name: Refresh newsletter signup blocks (slug + issue count)
         run: python3 scripts/inject_newsletter.py
       - name: Rebuild static homepage fallbacks
-        run: node scripts/build-home.js && node scripts/build-noscript.mjs && node scripts/build-starlink-observatory.mjs
+        run: node scripts/build-event-pages.mjs && node scripts/build-home.js && node scripts/build-noscript.mjs && node scripts/build-starlink-observatory.mjs
       - name: Responsive AVIF/WebP images (build-images.mjs)
         run: |
           npm i --no-save --no-package-lock sharp@0.33 >/dev/null 2>&1 || true

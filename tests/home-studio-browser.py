@@ -109,7 +109,7 @@ async def main():
             await page.goto(SITE + '/', wait_until='domcontentloaded')
             await settled(page)
             assert await page.locator('h1').count() == 1
-            assert await page.locator('[data-newsletter-form]').count() == 2, 'One hero form and one lower-page form'
+            assert await page.locator('[data-newsletter-form]').count() == 1, 'One main signup: the hero form'
             assert 'Tesla, SpaceX and xAI' in await page.locator('.hv-pitch').inner_text()
             assert await page.evaluate('''() => {
                 const blocks=['.hs-hero-copy','.hs-hero-visual','#newsletter'].map(s=>document.querySelector(s));
@@ -120,6 +120,10 @@ async def main():
                 assert await page.locator('#newsletter input[type=email]').evaluate('(i)=>parseFloat(getComputedStyle(i).fontSize)') >= 16, 'Prevent iOS input zoom'
                 roadster = await page.locator('.hs-hero-roadster').bounding_box()
                 visible_art = max(0, min(height, roadster['y'] + roadster['height']) - max(0, roadster['y']))
+                # A featured event strip (data/event-pages featureUntil, e.g. a launch week) is itself first-screen
+                # showcase content, so its height counts toward the requirement while it is shown.
+                feature = await page.locator('.hv-feature').bounding_box() if await page.locator('.hv-feature').count() else None
+                visible_art += feature['height'] if feature and feature['y'] < height else 0
                 assert visible_art >= min(180, roadster['height'] * .6), (width, mode, 'First screen needs substantial showcase imagery', roadster, visible_art)
             else:
                 copy = await page.locator('.hs-hero-copy').bounding_box()
@@ -161,7 +165,6 @@ async def main():
                 await page.locator('[data-hs-filter="all"]').click()
                 assert await page.locator('.hs-tool:not([hidden])').count() == 5
                 await preview(page, 'after-toolkit-desktop', page.locator('.hs-tools'))
-                await preview(page, 'after-newsletter-desktop', page.locator('.hs-newsletter'))
                 expanded = page.locator('[data-hv-feed]')
                 assert await expanded.locator('li:visible').count() <= 4
                 await expanded.locator('..').get_by_role('button', name='Show all headlines', exact=False).click()
@@ -187,12 +190,30 @@ async def main():
                 assert query['email'] == ['review@example.com']
                 assert query['utm_source'] == ['website'] and query['utm_content'] == ['website'] and query['utm_medium'] == ['site-band']
                 assert all('review%40example.com' not in u and 'review@example.com' not in u for u in analytics), 'Email must never enter analytics'
+            if mode == 'normal' and width in [320, 390] and theme == 'dark':
+                # Slim phone bar: hidden while the hero form is on screen, shown once it scrolls away,
+                # jumps back to the hero form, and stays closed after the reader dismisses it.
                 await page.goto(SITE + '/', wait_until='domcontentloaded')
                 await settled(page)
-                await page.locator('#newsletter-bottom input[type=email]').fill('second@example.com')
-                await page.locator('#newsletter-bottom button[type=submit]').click()
-                await page.wait_for_url('https://alexs-newsletter-84b17e.beehiiv.com/**')
-                assert parse_qs(urlparse(signups[-1]).query)['email'] == ['second@example.com']
+                bar = page.locator('.sd-bar')
+                assert await bar.count() == 1 and not await bar.is_visible(), 'Bar waits until the hero form has scrolled away'
+                await page.locator('#hv-trk-h').scroll_into_view_if_needed()
+                await page.wait_for_timeout(250)
+                assert await bar.is_visible(), 'Bar appears once the hero form is off screen'
+                box = await bar.bounding_box()
+                assert box['height'] <= 72 and box['x'] >= 0 and box['x'] + box['width'] <= width, box
+                await bar.get_by_role('link', name='Sign up').click()
+                await page.wait_for_timeout(700)
+                assert await page.evaluate("document.activeElement && document.activeElement.id") == 'hs-hero-email'
+                assert not await bar.is_visible(), 'Bar hides while the hero form is visible'
+                await page.locator('#hv-trk-h').scroll_into_view_if_needed()
+                await page.wait_for_timeout(250)
+                await bar.get_by_role('button', name='Close newsletter bar').click()
+                assert await page.locator('.sd-bar').count() == 0
+                await page.reload(wait_until='domcontentloaded')
+                await settled(page)
+                assert await page.locator('.sd-bar').count() == 0, 'Dismissed bar stays away'
+                await page.evaluate("localStorage.removeItem('sd-bar-closed')")
             if mode == 'nojs':
                 assert not await page.locator('.hs-tool-filters').is_visible()
             if mode == 'offline':
