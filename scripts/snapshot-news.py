@@ -362,11 +362,48 @@ def publisher_url(gid: str, timeout: int = 15) -> str:
     return parse_batchexecute(urllib.request.urlopen(req, timeout=timeout).read().decode("utf-8", "ignore"))
 
 
+# A Google News card that resolves to a social post (an outlet's Facebook page, an X post) is not the
+# publisher's article, so keep the Google link for those rather than label a social post with the outlet.
+SOCIAL_HOSTS = ("facebook.com", "x.com", "twitter.com", "instagram.com", "linkedin.com", "threads.net", "tiktok.com", "youtube.com")
+
+
+def _walk_garturlres(node):
+    if isinstance(node, list):
+        if len(node) >= 2 and node[0] == "garturlres" and isinstance(node[1], str):
+            return node[1]
+        for child in node:
+            found = _walk_garturlres(child)
+            if found:
+                return found
+    elif isinstance(node, str) and "garturlres" in node:
+        try:
+            return _walk_garturlres(json.loads(node))
+        except json.JSONDecodeError:
+            return ""
+    return ""
+
+
 def parse_batchexecute(raw: str) -> str:
-    m = re.search(r'\[\\"garturlres\\",\\"(https?://[^"\\]+)\\"', raw)
-    url = m.group(1) if m else ""
-    host = urllib.parse.urlparse(url).netloc
-    return url if host and not host.endswith("google.com") else ""
+    """Pull the publisher URL out of a batchexecute reply by decoding its JSON (so escaped characters
+    such as \\u003d and \\u0026 come back as = and &), then refuse Google and social hosts."""
+    url = ""
+    for line in raw.splitlines():
+        line = line.strip()
+        if not line.startswith("[") or "garturlres" not in line:
+            continue
+        try:
+            url = _walk_garturlres(json.loads(line))
+        except json.JSONDecodeError:
+            continue
+        if url:
+            break
+    parsed = urllib.parse.urlparse(url)
+    host = parsed.netloc.lower().split(":")[0]
+    if parsed.scheme not in ("http", "https") or not host or host.endswith("google.com"):
+        return ""
+    if any(host == h or host.endswith("." + h) for h in SOCIAL_HOSTS):
+        return ""
+    return url
 
 
 def resolve_links(items: list[dict], fetcher=publisher_url, cache_path: Path = RESOLVE_CACHE) -> list[dict]:

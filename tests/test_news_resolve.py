@@ -45,6 +45,13 @@ class Resolve(unittest.TestCase):
         self.assertEqual(sn.parse_batchexecute(ok), "https://www.cnbc.com/z")
         self.assertEqual(sn.parse_batchexecute(ok.replace("www.cnbc.com", "news.google.com")), "")
         self.assertEqual(sn.parse_batchexecute("nothing"), "")
+        self.assertEqual(sn.parse_batchexecute(ok.replace("www.cnbc.com", "www.facebook.com/nytimes/posts")), "")
+        self.assertEqual(sn.parse_batchexecute(ok.replace("www.cnbc.com", "x.com")), "")
+        self.assertEqual(sn.parse_batchexecute(ok.replace("ftp", "ftp").replace("https://", "javascript:")), "")
+
+    def test_parse_decodes_json_escapes(self):
+        raw = ')]}\'\n[["wrb.fr","Fbv4je","[\\"garturlres\\",\\"https://example.com/a?b\\u003d1\\u0026c\\u003d2\\",1]"]]'
+        self.assertEqual(sn.parse_batchexecute(raw), "https://example.com/a?b=1&c=2")
 
 
 if __name__ == "__main__":
