@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updated": "2026-11-09",
-  "revision": "2026-11-09.1",
+  "revision": "2026-11-09.3",
   "scope": "Tesla Cybercab and Model Y Robotaxi",
   "sources": [
     {
@@ -171,6 +171,30 @@
       "type": "manufacturer",
       "publishedAt": "2026-11-09",
       "checkedAt": "2026-11-09"
+    },
+    {
+      "id": "s-81f24987225b",
+      "url": "https://x.com/robotaxi/status/2119746828191027346",
+      "label": "Tesla Robotaxi on X: Bigger Austin service area now live",
+      "type": "manufacturer",
+      "publishedAt": "2026-11-09",
+      "checkedAt": "2026-11-09"
+    },
+    {
+      "id": "s-71cd8a4a86f0",
+      "url": "https://x.com/robotaxitracker/status/2119708695781142695",
+      "label": "Robotaxi Tracker (@robotaxitracker) on X: Austin zone about 442 sq mi after expansion",
+      "type": "tracker",
+      "publishedAt": "2026-11-09",
+      "checkedAt": "2026-11-09"
+    },
+    {
+      "id": "s-5cb40d36d4e3",
+      "url": "https://robotracker.app/updates?city_id=1&operator_id=1",
+      "label": "RoboTracker Austin updates: expanded zone 435 sq mi",
+      "type": "tracker",
+      "publishedAt": "2026-11-09",
+      "checkedAt": "2026-11-09"
     }
   ],
   "cities": [
@@ -186,6 +210,7 @@
       "robotaxi": {
         "status": "listed",
         "evidence": [
+          "s-81f24987225b",
           "s-ccaaee3c9c8d",
           "s-ff84ae0cf870"
         ],
@@ -233,6 +258,7 @@
       },
       "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
       "evidence": [
+        "s-81f24987225b",
         "s-ccaaee3c9c8d",
         "s-0cffd265d479",
         "s-ff84ae0cf870"
@@ -1112,6 +1138,22 @@
       "summary": "Tesla's Robotaxi account posted at 06:27 GMT on 9 Nov (12:27am CT) that Robotaxi is available in San Antonio \"starting tomorrow, 5am\". Merritt reads 5am CT on 9 Nov; a strict reading of \"tomorrow\" allows 10 Nov. Vehicle type and supervision are unconfirmed (as of 9 Nov 2026).",
       "evidence": [
         "s-143126f5ffcb"
+      ],
+      "type": "manufacturer"
+    },
+    {
+      "id": "austin-geofence-9nov",
+      "date": "2026-11-09",
+      "precision": "day",
+      "city": "austin",
+      "vehicle": "not_city_specific",
+      "kind": "service",
+      "title": "Tesla posts a bigger Austin service area",
+      "summary": "Tesla’s official @robotaxi account posted “Bigger Austin service area now live” at 11:00 UTC on 9 Nov 2026 with an old/new geofence map. Tesla gave no square-mileage. Independent trackers measured the expanded zone the same day: Robotaxi Tracker about 442 sq mi (up from 272) and RoboTracker 435 sq mi (also from 272). Neither figure is a Tesla number. The app remains the check for whether any given road is bookable.",
+      "evidence": [
+        "s-81f24987225b",
+        "s-71cd8a4a86f0",
+        "s-5cb40d36d4e3"
       ],
       "type": "manufacturer"
     }

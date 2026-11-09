@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
+      "image": "/assets/dispatch/austin-skyline-colorado.jpg",
+      "title": "Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)",
+      "summary": "Tesla’s official @robotaxi account posted “Bigger Austin service area now live” with an old/new geofence map at 11:00 UTC on 9 Nov 2026. Tesla gave no square-mileage. Robotaxi Tracker measures about 442 sq mi, up from 272; RoboTracker lists 435.",
+      "tag": "Robotaxi",
+      "date": "2026-11-09T11:22:00Z",
+      "thumb": "/assets/dispatch/austin-skyline-colorado-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-robotaxi-san-antonio.html",
       "image": "/assets/dispatch/san-antonio-skyline-night.jpg",
       "title": "Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart",
@@ -216,16 +225,7 @@
       "tag": "Tesla",
       "date": "2026-11-06T18:31:00Z",
       "thumb": "/assets/dispatch/tesla-model-y-juniper-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-si-roadmap.html",
-      "image": "/assets/dispatch/tesla-dojo-tile-2023.jpg",
-      "title": "Tesla's chip slide renames HW4 to SI4 and sketches SI6 at 80x the compute, with Dojo 3 aimed at space",
-      "summary": "Tom's Hardware published a photographed Tesla slide renaming HW4 to SI4, listing SI5 at 40x and SI6 at 80x, with Dojo 3 aimed at space. Tesla and Musk have not posted the slide (as of 6 Nov 2026).",
-      "tag": "Hardware",
-      "date": "2026-11-06T16:00:00Z",
-      "thumb": "/assets/dispatch/tesla-dojo-tile-2023-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-09T08:36:35Z"
+  "articlesUpdated": "2026-11-09T11:22:00Z"
 }

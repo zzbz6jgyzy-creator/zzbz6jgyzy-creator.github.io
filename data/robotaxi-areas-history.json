@@ -3,7 +3,7 @@
  "cities": {
   "austin": {
    "name": "Austin, TX",
-   "lastExpanded": "2026-08-31",
+   "lastExpanded": "2026-11-09",
    "log": [
     {
      "date": "2025-06-22",
@@ -45,6 +45,21 @@
      "from": 243,
      "kind": "expanded",
      "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2026-10-23",
+     "areaSqMi": 272,
+     "from": 264,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates?city_id=1&operator_id=1"
+    },
+    {
+     "date": "2026-11-09",
+     "areaSqMi": 442,
+     "from": 272,
+     "kind": "expanded",
+     "src": "https://x.com/robotaxitracker/status/2119708695781142695",
+     "note": "Tesla posted a bigger Austin service area but gave no square-mileage (https://x.com/robotaxi/status/2119746828191027346). Robotaxi Tracker measured about 442 sq mi, up from 272. RoboTracker lists 435 from 272 (https://robotracker.app/updates?city_id=1&operator_id=1). Neither is a Tesla figure. The retained GitHub app-derived outline is still 264.1 mi\u00b2."
     }
    ],
    "status": "active",

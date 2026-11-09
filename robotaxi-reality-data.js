@@ -65,10 +65,10 @@ window.ROBOTAXI_REALITY = {
       supervision: "unsupervised",
       vehicle: "Model Y",
       title: "Austin Model Y service area",
-      text: "App-traced geofence of about 264 mi². Robotracker lists Austin as public rides, not a safety-driver-only market.",
-      date: "2026-08-31",
-      src: "https://robotracker.app/updates",
-      srcLabel: "robotracker.app"
+      text: "Tesla posted a bigger Austin geofence on 9 Nov 2026 but gave no official size. Robotaxi Tracker measured about 442 mi² (from 272); RoboTracker lists 435. The retained GitHub outline is still 264.1 mi².",
+      date: "2026-11-09",
+      src: "https://x.com/robotaxitracker/status/2119708695781142695",
+      srcLabel: "Robotaxi Tracker"
     },
     {
       id: "austin-expanded",
@@ -79,11 +79,11 @@ window.ROBOTAXI_REALITY = {
       verification: "verified",
       supervision: "unsupervised",
       vehicle: "Model Y",
-      title: "Austin area grew to 264 mi²",
-      text: "Last recorded expansion on 31 Aug 2026, from 243 to 264 mi². Shape from the Tesla Robotaxi app.",
-      date: "2026-08-31",
-      src: "https://robotracker.app/updates",
-      srcLabel: "robotracker.app"
+      title: "Austin area expanded to about 442 mi²",
+      text: "Tesla’s @robotaxi account posted “Bigger Austin service area now live” on 9 Nov 2026. Robotaxi Tracker measured about 442 mi², up from 272; RoboTracker lists 435. Tesla did not publish square-mileage.",
+      date: "2026-11-09",
+      src: "https://x.com/robotaxi/status/2119746828191027346",
+      srcLabel: "@robotaxi"
     },
     {
       id: "dallas-cybercab-next",
