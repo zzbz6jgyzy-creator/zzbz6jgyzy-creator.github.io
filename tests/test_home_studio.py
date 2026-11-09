@@ -39,9 +39,13 @@ class Home(unittest.TestCase):
   self.assertNotIn('<video',main);self.assertNotIn('<iframe',main)
   self.assertIn('CC BY 2.0',main);self.assertIn('Constellation illustration',main)
  def test_refresh_keeps_design_and_all_dynamic_build_markers(self):
-  hero=self.source.split('<header class="hs-hero">',1)[1].split('</header>',1)[0]
+  # The "Last updated" line is meant to change with the data, so it is compared for shape, not value.
+  stamp=re.compile(r'<p class="hv-updated">Last updated <time datetime="[^"]+">[^<]+</time> · <a href="/[^"]+">[^<]+</a></p>')
+  hero_of=lambda h:h.split('<header class="hs-hero">',1)[1].split('</header>',1)[0]
+  hero=hero_of(self.source);self.assertEqual(len(stamp.findall(hero)),1)
   subprocess.run(['node','scripts/build-home.js'],cwd=ROOT,check=True,capture_output=True)
-  after=(ROOT/'index.html').read_text();self.assertEqual(hero,after.split('<header class="hs-hero">',1)[1].split('</header>',1)[0])
+  after=(ROOT/'index.html').read_text();self.assertEqual(len(stamp.findall(hero_of(after))),1)
+  self.assertEqual(stamp.sub('',hero),stamp.sub('',hero_of(after)))
   self.assertEqual(after.count('data-newsletter-form'),1);self.assertNotIn('class="hs-newsletter"',after)
   self.assertIn('<!--hv:band--><!--/hv:band-->',after);self.assertRegex(after,r'core\.bundle\.[0-9a-f]+\.js" data-band data-pop data-bar>')
   for marker in ['lead','supp','event','preload','band','trk','feed','changed','slasof']:self.assertIn('<!--hv:'+marker+'-->',after);self.assertIn('<!--/hv:'+marker+'-->',after)
