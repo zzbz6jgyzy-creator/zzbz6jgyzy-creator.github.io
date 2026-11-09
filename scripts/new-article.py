@@ -66,6 +66,8 @@ def build(args):
     _, page = skeleton(articles)
     image = args.image or "/assets/og-v2.jpg"
     alt = args.image_alt or "Supercharged Daily"
+    if not args.image:
+        print("warning: no --image; defaulting to /assets/og-v2.jpg. Pass --image with a licensed dispatch photo so listing cards are not generic.", file=sys.stderr)
     full = SITE + url
     title_tag = f"{args.title} | Supercharged Daily" if len(args.title) <= 42 else args.title
 
@@ -133,6 +135,9 @@ def build(args):
     page = page[:start] + body + page[end:]
     # the template may still carry the live widgets script; X posts load on request now (x-embed.js)
     page = re.sub(r'\s*<script async src="https://platform\.twitter\.com/widgets\.js"[^>]*></script>', "", page)
+    # newest text-only pages can still have leftover x-embed assets from an earlier tweet
+    page = re.sub(r'\n\s*<link rel="stylesheet" href="/x-embed\.css[^"]*" />', "", page)
+    page = re.sub(r'\n\s*<script defer src="/x-embed\.js[^"]*"></script>', "", page)
     # these are rebuilt by CI from the new entry
     page = re.sub(r"<!--related:start-->[\s\S]*?<!--related:end-->", "", page)
     page = re.sub(r"<!--sd:article-wayfinding-->[\s\S]*?<!--/sd:article-wayfinding-->", "", page)
