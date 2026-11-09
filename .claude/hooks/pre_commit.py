@@ -11,6 +11,7 @@ Checks, all on the staged files (plus tracked changes when the command uses -a):
   3. JSON, Python and JS files parse
   4. HTML <head> has no loose text (a half-broken meta tag) and no DRAFT marker in articles
   5. the fast unit tests pass (Python + Node)
+  6. scripts/check-site-integrity.py: no page cut off, no missing bundle, Dispatch not emptied
 """
 import json
 import os
@@ -140,6 +141,15 @@ def main():
                     problems.append(f"{f}: still has DRAFT markers. Finish the article or keep it out of this commit.")
         except (ValueError, SyntaxError) as e:
             problems.append(f"{f}: does not parse ({str(e)[:100]})")
+
+    # 6. site integrity: no page cut off, no missing bundle, Dispatch not emptied (vs HEAD)
+    guard = os.path.join(ROOT, "scripts", "check-site-integrity.py")
+    if os.path.exists(guard) and any(f.endswith((".html", ".json", ".js", ".css")) for f in files):
+        all_files = re.search(r"(^|\s)(-[a-zA-Z]*a[a-zA-Z]*|--all)(\s|$)", cmd or "")
+        g = subprocess.run([sys.executable, guard, *([] if all_files else ["--ref", ":"]), "--base", "HEAD"],
+                           cwd=ROOT, capture_output=True, text=True)
+        if g.returncode:
+            problems.append(g.stderr.strip()[-1200:])
 
     # 5. fast tests
     if not problems:

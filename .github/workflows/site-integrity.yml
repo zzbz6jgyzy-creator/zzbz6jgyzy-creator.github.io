@@ -1,0 +1,38 @@
+name: Site integrity
+
+# Fails when a change leaves a page cut off, points a page at a script, stylesheet or asset that
+# does not exist, breaks a JSON data file, or empties the Dispatch list. Problems that are already on
+# the base do not fail it. Bots run the same check before every push (scripts/ci-push-retry.sh); this
+# catches pull requests and anything pushed to main by hand or by a publishing tool.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check pages, bundles, data and the Dispatch list
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            base="origin/$BASE_REF"
+          elif [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            base="$BEFORE"
+          else
+            base="HEAD~1"
+          fi
+          python3 scripts/check-site-integrity.py --ref HEAD --base "$base"
+      - name: Integrity check's own tests
+        run: python3 -m unittest tests.test_site_integrity
