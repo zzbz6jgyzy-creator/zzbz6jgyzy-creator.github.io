@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-04",
-  "revision": "2026-11-04.1",
+  "updated": "2026-11-09",
+  "revision": "2026-11-09.1",
   "scope": "Tesla Cybercab and Model Y Robotaxi",
   "sources": [
     {
@@ -163,6 +163,14 @@
       "type": "manufacturer",
       "publishedAt": "2026-11-02",
       "checkedAt": "2026-11-02"
+    },
+    {
+      "id": "s-143126f5ffcb",
+      "url": "https://x.com/robotaxi/status/2119678179963187564",
+      "label": "Tesla Robotaxi on X: Robotaxi available in San Antonio starting tomorrow, 5am",
+      "type": "manufacturer",
+      "publishedAt": "2026-11-09",
+      "checkedAt": "2026-11-09"
     }
   ],
   "cities": [
@@ -865,53 +873,55 @@
         29.4241
       ],
       "robotaxi": {
-        "status": "coming_soon",
+        "status": "listed",
         "evidence": [
-          "s-c9f84c001b2c",
-          "s-771597199b75"
+          "s-143126f5ffcb",
+          "s-ff84ae0cf870"
         ],
-        "date": null,
+        "date": "2026-11-09",
         "vehicle": "not_city_specific",
-        "note": "Tesla lists as coming soon on its 21 Oct Robotaxi Safety Report. No launch date."
+        "note": "Tesla's official Robotaxi account posted on 9 Nov 2026 at 06:27 GMT (12:27am CT on 9 Nov) that Robotaxi is available in San Antonio \"starting tomorrow, 5am\". Sawyer Merritt reads that as 5am CT on 9 Nov; a strict reading of \"tomorrow\" after midnight would be 5am CT on 10 Nov. Treat the start as announced for 5am CT until first rides confirm the day. Vehicle type and supervision are unconfirmed (as of 9 Nov 2026). The app is the current check for bookings and availability."
       },
       "cybercab": {
         "status": "not_listed",
         "evidence": [
-          "s-0cffd265d479"
+          "s-0cffd265d479",
+          "s-143126f5ffcb"
         ],
         "date": null,
-        "note": "Not listed in the checked Cybercab availability source. This does not establish an absence of tests or sightings."
+        "note": "Tesla's San Antonio post doesn't say which vehicle serves the city. A Cybercab is not implied. The checked Cybercab availability source listed only Austin as of 23 Oct 2026."
       },
       "supervision": {
         "status": "unknown",
         "evidence": [
-          "s-771597199b75"
+          "s-143126f5ffcb"
         ],
-        "note": "A coming-soon listing is not a supervision configuration."
+        "note": "Tesla's San Antonio post doesn't say whether rides have a safety monitor or driver on board (as of 9 Nov 2026)."
       },
       "hours": {
         "value": null,
         "evidence": [
-          "s-771597199b75"
+          "s-143126f5ffcb"
         ],
-        "note": "No operating hours until Tesla lists a launch date. Check Tesla’s app."
+        "note": "Tesla's post says service starts from 5am; it gives no closing time (as of 9 Nov 2026). Check Tesla's app."
       },
       "fare": {
         "value": null,
         "evidence": [
-          "s-771597199b75"
+          "s-ccaaee3c9c8d"
         ],
-        "note": "No fare information until Tesla launches service in this city."
+        "note": "The app displays the current estimate before confirmation; this tracker has no live fare feed."
       },
       "airport": {
         "value": null,
         "evidence": [
-          "s-771597199b75"
+          "s-143126f5ffcb"
         ],
-        "note": "A coming-soon listing is not confirmation of airport access."
+        "note": "Tesla's San Antonio announcement is not confirmation of airport access. Enter the actual pickup and destination in the app."
       },
-      "vehicleNote": "Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla’s current guidance.",
+      "vehicleNote": "Vehicle type for San Antonio is unconfirmed as of 9 Nov 2026. Tesla's post does not say Cybercabs serve it. Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla's current guidance.",
       "evidence": [
+        "s-143126f5ffcb",
         "s-c9f84c001b2c",
         "s-771597199b75"
       ]
@@ -1088,6 +1098,20 @@
       "summary": "Tesla's Robotaxi page now lists Fort Worth among cities where you can already hail a car, alongside Austin, Dallas, Houston, Miami, Orlando and Tampa (checked 4 Nov 2026). Tesla has still not said Cybercabs serve Fort Worth.",
       "evidence": [
         "s-ff84ae0cf870"
+      ],
+      "type": "manufacturer"
+    },
+    {
+      "id": "san-antonio-launch",
+      "date": "2026-11-09",
+      "precision": "day",
+      "city": "san_antonio",
+      "vehicle": "not_city_specific",
+      "kind": "service",
+      "title": "Tesla announces Robotaxi in San Antonio",
+      "summary": "Tesla's Robotaxi account posted at 06:27 GMT on 9 Nov (12:27am CT) that Robotaxi is available in San Antonio \"starting tomorrow, 5am\". Merritt reads 5am CT on 9 Nov; a strict reading of \"tomorrow\" allows 10 Nov. Vehicle type and supervision are unconfirmed (as of 9 Nov 2026).",
+      "evidence": [
+        "s-143126f5ffcb"
       ],
       "type": "manufacturer"
     }

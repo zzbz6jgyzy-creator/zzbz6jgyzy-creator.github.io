@@ -1,6 +1,40 @@
 {
-  "updated": "2026-11-09T02:04:16.299Z",
+  "updated": "2026-11-09T08:37:30.552Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-robotaxi-san-antonio.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart",
+      "at": "2026-11-09T08:36:35.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-robotaxi-san-antonio.html",
+      "href": "/dispatch/tesla-robotaxi-san-antonio.html",
+      "summary": "Tesla's @robotaxi account says San Antonio rides start at 5am CT. Merritt measures the launch zone at about 275 sq mi. A 9 Nov Texas DMV pull puts Tesla at 1,282 registered driverless vehicles against Waymo's 1,285.",
+      "title": "Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart",
+      "id": "logged|dispatch:/dispatch/tesla-robotaxi-san-antonio.html|2026-11-09T08:36:35.000Z|Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart"
+    },
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11207",
+      "next": "11204",
+      "at": "2026-11-09T01:19:56.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html",
+      "summary": "Starlink in orbit changed from 11207 to 11204.",
+      "title": "Starlink in orbit",
+      "id": "changed|starlink:in-orbit|2026-11-09T01:19:56.000Z|11204"
+    },
     {
       "type": "logged",
       "factId": "starship:schedule",
@@ -323,23 +357,6 @@
       "summary": "SpaceX closed -3.8% and Tesla -3.3% on 4 Nov after Democrats won Congress. No merger terms yet; the new Congress seats on 3 Jan 2027 (as of 5 Nov 2026).",
       "title": "Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger",
       "id": "logged|dispatch:/dispatch/musk-midterms-tesla-spacex-selloff.html|2026-11-05T14:44:00.000Z|Tesla and SpaceX slide after the midterms. What a Democratic Congress can and can't do to the merger"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/rdw-tesla-assisted-driving-10-percent.html",
-      "topic": "fsd",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Dutch regulator approves Tesla's cut to the FSD speed margin, from +50% to +10%, and a new name",
-      "at": "2026-11-05T09:40:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/rdw-tesla-assisted-driving-10-percent.html",
-      "href": "/dispatch/rdw-tesla-assisted-driving-10-percent.html",
-      "summary": "RDW approved Tesla's requested changes to FSD Supervised: a new name, Tesla Assisted Driving, and a driver-set speed margin capped at +10% (down from +50%). No OTA date yet; EU-wide approval still pending (as of 5 Nov 2026).",
-      "title": "Dutch regulator approves Tesla's cut to the FSD speed margin, from +50% to +10%, and a new name",
-      "id": "logged|dispatch:/dispatch/rdw-tesla-assisted-driving-10-percent.html|2026-11-05T09:40:00.000Z|Dutch regulator approves Tesla's cut to the FSD speed margin, from +50% to +10%, and a new name"
     },
     {
       "type": "logged",
