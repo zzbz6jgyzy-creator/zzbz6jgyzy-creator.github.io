@@ -545,3 +545,7 @@ html[data-theme=light] .hv-feature-inner{border-left-color:#075a7b}
 html.has-sd-bar{scroll-padding-bottom:88px}
 html.has-sd-bar body{padding-bottom:76px}
 @media (min-width:721px){.sd-bar{display:none!important}}
+
+/* The feature strip sits inside the page gutters already; its own "100% - 32px" inset it a second time, so it was
+   narrower than the hero and off its left edge at every width. */
+.hs-home .hv-feature{width:100%}
