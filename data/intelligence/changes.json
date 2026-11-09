@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-09T20:51:13.811Z",
+  "updated": "2026-11-09T20:56:58.326Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/terafab-japan-rush-orders.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Terafab is rush-ordering chip tools in Japan, with a plan 40 times Rapidus’s wafer capacity",
+      "at": "2026-11-09T20:40:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/terafab-japan-rush-orders.html",
+      "href": "/dispatch/terafab-japan-rush-orders.html",
+      "summary": "Nikkei reports Terafab’s procurement team visited Japanese equipment makers, placed orders due within months, and shared a 2032 target of 1 million wafers a month — about 40 times Rapidus’s planned ~25,000 wafers a month. Reported plan, not a company announcement.",
+      "title": "Terafab is rush-ordering chip tools in Japan, with a plan 40 times Rapidus’s wafer capacity",
+      "id": "logged|dispatch:/dispatch/terafab-japan-rush-orders.html|2026-11-09T20:40:00.000Z|Terafab is rush-ordering chip tools in Japan, with a plan 40 times Rapidus’s wafer capacity"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-qualcomm-own-base-stations.html",
@@ -306,23 +323,6 @@
       "summary": "2026.38.5.12 moved from 242 to 322 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.12",
       "id": "changed|tesla-software:wave:2026.38.5.12|2026-11-06T11:37:33.000Z|322"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/cybertruck-texas-wind-down.html",
-      "topic": "production",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab",
-      "at": "2026-11-06T09:02:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/cybertruck-texas-wind-down.html",
-      "href": "/dispatch/cybertruck-texas-wind-down.html",
-      "summary": "Musk said Cybertruck production at Giga Texas winds down around mid-2027 for more Cybercab. Tesla still calls Austin the truck's home; Wes Morrill says parts and service continue (as of 6 Nov 2026).",
-      "title": "Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab",
-      "id": "logged|dispatch:/dispatch/cybertruck-texas-wind-down.html|2026-11-06T09:02:00.000Z|Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab"
     },
     {
       "type": "changed",
