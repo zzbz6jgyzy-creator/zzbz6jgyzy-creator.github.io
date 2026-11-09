@@ -1,3 +1,11 @@
+## 2026-11-09 — Quick fixes: countdown, publisher links, legal drafts, checks
+
+- Homepage "Next livestream" card counts down every second from the stored start time (T−, Live now, Ended), using the same component as the Flight 15 hub. No stale "in 1d 4h" in the saved page.
+- News snapshot resolves Google News redirect links to the publisher's own URL (cached in `data/news-resolve-cache.json`, at most 40 lookups a run, stops on rate limits, falls back to the Google link).
+- Draft Privacy, Cookie and Terms pages (noindex, DRAFT banner) and footer links on every page. Notes and open questions: `docs/legal-drafts.md`.
+- Meta tags: the reported "meta-" prefix was not found in the source or on the live site; a guard test now checks every page and the standard head tags on the homepage and an article.
+- Alt text: audit found every image already has alt (decorative ones empty) and every inline SVG hidden or labelled; guard tests added.
+
 ## 2026-11-09 — Starship Flight 15 hub and event pages
 
 - New `/starship-flight-15.html`: live countdown (window open and closed states), mission summary, heat-shield explainer, where to watch, links to the Starship tracker, calendar and launch compass, a dated Updates log with Disclosed / Reported / Target labels, share buttons, Event + BreadcrumbList structured data and a 1200x630 card. Facts not yet sourced in the repo carry TODO comments for the editor.
