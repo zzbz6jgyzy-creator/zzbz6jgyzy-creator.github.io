@@ -1,27 +1,27 @@
 {
  "schema": 1,
- "countsAt": "2026-11-07T10:49:32Z",
+ "countsAt": "2026-11-09T01:19:56Z",
  "source": "https://planet4589.org/space/con/star/stats.html",
  "totals": {
   "launched": 13096,
   "failedToOrbit": 20,
   "earlyDeorbit": 181,
-  "disposed": 1534,
+  "disposed": 1537,
   "reentryAfterFail": 154,
-  "down": 1889,
-  "inOrbit": 11207,
+  "down": 1892,
+  "inOrbit": 11204,
   "screened": 0,
   "dead": 14,
   "graveyard": 0,
-  "working": 11193,
-  "retiring": 110,
-  "outOfConstellation": 715,
+  "working": 11190,
+  "retiring": 331,
+  "outOfConstellation": 813,
   "anomalous": 0,
-  "reserve": 59,
+  "reserve": 55,
   "special": 0,
   "drift": 202,
   "ascent": 85,
-  "operational": 10022
+  "operational": 9704
  },
  "other": {
   "launched": 62,
@@ -38,22 +38,22 @@
    "launched": 1665,
    "failedToOrbit": 0,
    "earlyDeorbit": 42,
-   "disposed": 960,
+   "disposed": 963,
    "reentryAfterFail": 97,
-   "down": 1099,
-   "inOrbit": 566,
+   "down": 1102,
+   "inOrbit": 563,
    "screened": 0,
    "dead": 5,
    "graveyard": 0,
-   "working": 561,
-   "retiring": 87,
-   "outOfConstellation": 157,
+   "working": 558,
+   "retiring": 308,
+   "outOfConstellation": 248,
    "anomalous": 0,
    "reserve": 2,
    "special": 0,
    "drift": 0,
    "ascent": 0,
-   "operational": 315
+   "operational": 0
   },
   {
    "id": "v15",
@@ -73,13 +73,13 @@
    "graveyard": 0,
    "working": 2548,
    "retiring": 10,
-   "outOfConstellation": 439,
+   "outOfConstellation": 446,
    "anomalous": 0,
-   "reserve": 35,
+   "reserve": 31,
    "special": 0,
    "drift": 0,
    "ascent": 0,
-   "operational": 2064
+   "operational": 2061
   },
   {
    "id": "v2m",
@@ -21819,6 +21819,13 @@
    "inOrbit": 11207,
    "working": 11193,
    "operational": 10022,
+   "launched": 13096
+  },
+  {
+   "updated": "2026-11-09T01:19:56Z",
+   "inOrbit": 11204,
+   "working": 11190,
+   "operational": 9704,
    "launched": 13096
   }
  ],
