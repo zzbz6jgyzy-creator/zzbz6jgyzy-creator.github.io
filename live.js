@@ -182,7 +182,16 @@
         if (count) count.remove();
         var chip = pre.querySelector('.lv-tz');
         if (chip) chip.textContent = e.timeTbc ? 'Time TBC' : 'NET';
-      } else if (window.SDCountdown) window.SDCountdown.tick();
+      } else if (count) {
+        // The saved card carries the build-time event. Point the countdown at the fresh event so a
+        // slipped launch, or the next one after the saved event has passed, ticks to the right time.
+        var s0 = Date.parse(e.start), e0 = Date.parse(e.end || '') || s0;
+        if (Number.isFinite(s0)) {
+          count.setAttribute('data-start', new Date(s0).toISOString());
+          count.setAttribute('data-end', new Date(e0).toISOString());
+        }
+        if (window.SDCountdown) window.SDCountdown.tick();
+      }
       var leftover = document.querySelector('section.lv:not([data-prebuilt])');
       if (leftover && leftover !== pre) leftover.remove();
       pre.removeAttribute('data-prebuilt');
