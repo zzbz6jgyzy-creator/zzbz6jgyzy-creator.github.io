@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-09T14:12:44.926Z",
+  "updated": "2026-11-09T14:50:45.533Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-qualcomm-own-base-stations.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX is designing its own 5G base stations for Starlink Mobile, with Qualcomm chips inside",
+      "at": "2026-11-09T14:40:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-qualcomm-own-base-stations.html",
+      "href": "/dispatch/spacex-qualcomm-own-base-stations.html",
+      "summary": "Qualcomm CEO Cristiano Amon says SpaceX will build the base stations for one of the largest US 5G deployments, with Qualcomm supplying the radio silicon. Musk confirmed the partnership on X. Rollout planned from 2027; no tower deals announced.",
+      "title": "SpaceX is designing its own 5G base stations for Starlink Mobile, with Qualcomm chips inside",
+      "id": "logged|dispatch:/dispatch/spacex-qualcomm-own-base-stations.html|2026-11-09T14:40:00.000Z|SpaceX is designing its own 5G base stations for Starlink Mobile, with Qualcomm chips inside"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
@@ -340,23 +357,6 @@
       "summary": "2026.38.5.12 moved from 15 to 59 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.12",
       "id": "changed|tesla-software:wave:2026.38.5.12|2026-11-05T23:42:36.000Z|59"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/evgo-first-tesla-supercharger-chicago.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get",
-      "at": "2026-11-05T20:47:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/evgo-first-tesla-supercharger-chicago.html",
-      "href": "/dispatch/evgo-first-tesla-supercharger-chicago.html",
-      "summary": "EVgo opened 12 Supercharger stalls in Chicago. EVgo owns and brands them; Tesla operates and maintains them under Supercharger for Business (as of 5 Nov 2026).",
-      "title": "EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get",
-      "id": "logged|dispatch:/dispatch/evgo-first-tesla-supercharger-chicago.html|2026-11-05T20:47:00.000Z|EVgo opens its first Tesla Supercharger site. Who owns it, who runs it, and what drivers get"
     },
     {
       "type": "logged",
