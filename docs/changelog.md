@@ -1,3 +1,12 @@
+## 2026-11-09 — Growth: sharing, social cards, one signup, nav names, "Last updated"
+
+- Articles: share row is now "Post on X" (adds via @ALJR86), "Copy link", and the phone's own Share sheet where the browser has one. No third-party scripts.
+- Social cards: every story without its own image gets a branded 1200x630 title card (`assets/og/dispatch-<slug>.jpg`, built by `scripts/generate-og.py`); stories with their own image keep it.
+- Homepage: one main signup (the hero form). The second, bottom signup form is gone; on phones a slim bar appears once the hero form has scrolled away, jumps back to it, and stays closed for 14 days after "×". The hero's sample link now opens a real issue.
+- Homepage shows "Last updated" (newest of stories, software tracker, Starlink and live data) under the hero eyebrow.
+- Nav: one name per page in every menu (Starlink tracker, Robotaxi tracker, Cybercab guide, Model 3 explorer, Cybertruck explorer, Owner gear). Labels only, no URL changes, so no redirects were needed.
+- Footer: RSS feed link on every page (the head already linked `/feed.xml`). Sitemap and robots already cover the Flight 15 page; the draft legal pages are noindex and stay out of the sitemap.
+
 ## 2026-11-09 — Quick fixes: countdown, publisher links, legal drafts, checks
 
 - Homepage "Next livestream" card counts down every second from the stored start time (T−, Live now, Ended), using the same component as the Flight 15 hub. No stale "in 1d 4h" in the saved page.
