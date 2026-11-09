@@ -120,6 +120,10 @@ async def main():
                 assert await page.locator('#newsletter input[type=email]').evaluate('(i)=>parseFloat(getComputedStyle(i).fontSize)') >= 16, 'Prevent iOS input zoom'
                 roadster = await page.locator('.hs-hero-roadster').bounding_box()
                 visible_art = max(0, min(height, roadster['y'] + roadster['height']) - max(0, roadster['y']))
+                # A featured event strip (data/event-pages featureUntil, e.g. a launch week) is itself first-screen
+                # showcase content, so its height counts toward the requirement while it is shown.
+                feature = await page.locator('.hv-feature').bounding_box() if await page.locator('.hv-feature').count() else None
+                visible_art += feature['height'] if feature and feature['y'] < height else 0
                 assert visible_art >= min(180, roadster['height'] * .6), (width, mode, 'First screen needs substantial showcase imagery', roadster, visible_art)
             else:
                 copy = await page.locator('.hs-hero-copy').bounding_box()

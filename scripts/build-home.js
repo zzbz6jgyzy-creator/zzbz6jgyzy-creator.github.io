@@ -260,6 +260,15 @@ const put = (name, inner) => {
   html = html.replace(re, () => `<!--hv:${name}-->${inner}<!--/hv:${name}-->`);
 };
 put("lead", lead); put("preload", preload); put("band", band);
+// Featured event strip (data/event-pages/*.json with featureUntil in the future). It is rebuilt with
+// every home build, so it disappears on its own when featureUntil passes.
+{
+  const ev = require("./event-shared.cjs"), strip = ev.featureHtml(ev.activeFeature(R));
+  const re = /<!--hv:feature-->[\s\S]*?<!--\/hv:feature-->/;
+  if (!re.test(html)) html = html.replace('<div class="hv-live-top" data-live-slot data-live-only data-collapsed></div>', (m) => m + "<!--hv:feature--><!--/hv:feature-->");
+  if (!re.test(html)) throw new Error("marker missing: feature");
+  html = html.replace(re, () => `<!--hv:feature-->${strip}<!--/hv:feature-->`);
+}
 html = replaceEventCard(html, eventCard, "index.html");
  put("supp", supp); put("slasof", slAsOf); put("trk", trkHtml); put("feed", feed);
 try {
