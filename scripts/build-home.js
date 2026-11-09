@@ -227,10 +227,25 @@ const heroTile = H
   ? `<a class="hs-hero-roadster hs-hero-lead" href="${esc(H.href)}"><div class="hs-visual-label"><span class="hs-eyebrow">Also new / ${esc(H.tag || "Dispatch")}</span>${heroArrow}</div><picture>${hSets.avif ? `<source type="image/avif" srcset="${esc(hSets.avif)}" sizes="${SZH}"/>` : ""}${hSets.webp ? `<source type="image/webp" srcset="${esc(hSets.webp)}" sizes="${SZH}"/>` : ""}<img src="${esc((H && H.img) || leadSrc)}" alt="${esc(hAlt)}" width="1280" height="720" decoding="async" fetchpriority="high" loading="eager"/></picture><div class="hs-hero-roadster-copy"><span>${esc(H.h)}</span></div><small class="hs-image-credit">Image credit in the story</small></a>`
   : `<a class="hs-hero-roadster hs-hero-lead" href="/dispatch.html"><div class="hs-visual-label"><span class="hs-eyebrow">Latest from Dispatch</span>${heroArrow}</div><div class="hs-hero-roadster-copy"><span>Read today's stories.</span></div></a>`;
 
+// "Last updated": the newest of the latest Dispatch story and the trackers' own update times.
+const lastUpdated = (() => {
+  const cands = [];
+  try { const a = (JSON.parse(rd("data/articles.json")).articles || []).map((x) => x.date).filter(Boolean).sort().pop(); if (a) cands.push([a, "Dispatch", "/dispatch.html"]); } catch (e) {}
+  for (const [f, key, label, href] of [["updates-live.json", "updated", "Software tracker", "/updates.html"], ["data/starlink.json", "updated", "Starlink tracker", "/starlink.html"], ["live-data.json", "updated", "Launch board", "/calendar.html"]]) {
+    try { const v = JSON.parse(rd(f))[key]; if (v) cands.push([v, label, href]); } catch (e) {}
+  }
+  const now = Date.now(), ok = cands.filter(([t]) => Number.isFinite(Date.parse(t)) && Date.parse(t) <= now + 300000).sort((x, y) => Date.parse(y[0]) - Date.parse(x[0]));
+  if (!ok.length) return "";
+  const [t, label, href] = ok[0], d = new Date(t);
+  const text = new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hour12: false }).format(d).replace(",", "");
+  return `<p class="hv-updated">Last updated <time datetime="${esc(d.toISOString())}">${esc(text)} UTC</time> · <a href="${esc(href)}">${esc(label)}</a></p>`;
+})();
+
 // The saved hero follows its mobile reading order. CSS keeps the desktop split composition.
 const hero = `<header class="hs-hero">
   <div class="hs-hero-copy">
     <p class="hs-eyebrow"><span aria-hidden="true"></span> Independent minds. Extraordinary progress.</p>
+    ${lastUpdated}
     <h1>Go beyond<br/><span>the headline.</span></h1>
     <p class="hv-pitch">Tesla, SpaceX and xAI. Sourced stories and interactive tools that bring you closer to what’s next.</p>
 <!--sd:home-wayfinding--><nav class="hv-start" aria-label="Start exploring"><a href="#latest-stories">Latest stories <span aria-hidden="true">↓</span></a><a href="#hv-trk-h">Explore trackers <svg class="hs-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13L13 3M3 3H13V13"/></svg></a></nav><!--/sd:home-wayfinding-->

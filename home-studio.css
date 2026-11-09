@@ -526,3 +526,8 @@ html[data-theme=light] .hv-feature-inner{border-left-color:#075a7b}
   .hv-feature .evc{grid-row:1 / span 2;grid-column:2;text-align:right;margin:0}
   .hv-feature .evc-time{font-size:16px}
 }
+
+/* "Last updated" line under the hero eyebrow */
+.hs-home .hv-updated{font:500 11px/1.6 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.04em;color:var(--ink-soft);margin:6px 0 0}
+.hs-home .hv-updated a{color:inherit;text-underline-offset:3px}
+@media (max-width:420px){.hs-home .hv-updated{font-size:9.5px;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}}
