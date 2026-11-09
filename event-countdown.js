@@ -7,6 +7,7 @@
    relative time. One timer drives every countdown on the page. */
 (function () {
   "use strict";
+  function attr(el, k, d) { return el.hasAttribute(k) ? el.getAttribute(k) : d; }
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function span(ms) {
     var s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60);
@@ -22,13 +23,13 @@
     if (!el.hasAttribute("data-cd-fixed")) el.setAttribute("data-cd-fixed", time ? time.textContent : "");
     var fixed = el.getAttribute("data-cd-fixed");
     if (state === "before") {
-      if (label) label.textContent = el.getAttribute("data-before-label") || "Launch window opens in";
+      if (label) label.textContent = attr(el, "data-before-label", "Launch window opens in");
       if (time) time.textContent = span(start - now);
     } else if (state === "open") {
-      if (label) label.textContent = el.getAttribute("data-open-label") || "Launch window open";
-      if (time) time.textContent = "Closes in " + span(end - now);
+      if (label) label.textContent = attr(el, "data-open-label", "Launch window open");
+      if (time) time.textContent = attr(el, "data-open-prefix", "Closes in ") + span(end - now);
     } else {
-      if (label) label.textContent = el.getAttribute("data-after-label") || "Launched";
+      if (label) label.textContent = attr(el, "data-after-label", "Launched");
       if (time) time.textContent = fixed;
       if (sub && el.getAttribute("data-after-sub")) sub.textContent = el.getAttribute("data-after-sub");
     }

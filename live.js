@@ -79,8 +79,7 @@
     if (!live && page === 'home' && window.SDHomeNext) {
       slot.classList.add('lv-home-next');
       slot.innerHTML = window.SDHomeNext.html(e, {dateText: dateTxt, chip: chip, url: streamUrl(e), now: now});
-      var count = slot.querySelector('.lh-next-countdown');
-      if (count) setInterval(function () { count.textContent = window.SDHomeNext.countdown(e, Date.now()); }, 60000);
+      if (window.SDCountdown) window.SDCountdown.tick(); // the shared countdown ticks every second
       return;
     }
     if (!live && slim) { // >72h out: slim one-line card (fixed 56px, see live.css .lw-slim)
@@ -183,7 +182,7 @@
         if (count) count.remove();
         var chip = pre.querySelector('.lv-tz');
         if (chip) chip.textContent = e.timeTbc ? 'Time TBC' : 'NET';
-      } else if (count && window.SDHomeNext) count.textContent = window.SDHomeNext.countdown(e, now);
+      } else if (window.SDCountdown) window.SDCountdown.tick();
       var leftover = document.querySelector('section.lv:not([data-prebuilt])');
       if (leftover && leftover !== pre) leftover.remove();
       pre.removeAttribute('data-prebuilt');
