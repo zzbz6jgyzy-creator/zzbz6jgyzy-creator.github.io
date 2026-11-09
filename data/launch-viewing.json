@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-09T07:55:59Z",
+ "checked": "2026-11-09T18:43:45Z",
  "editorialUpdated": "2026-11-09T08:41:14+00:00",
  "presets": [
   {
@@ -645,7 +645,7 @@
    "title": "Falcon 9 Block 5 | USSF-627",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-10T03:03:00Z",
+   "start": "2026-11-10T04:59:49Z",
    "end": "",
    "date": "2026-11-10",
    "precision": "datetime",
@@ -797,6 +797,36 @@
     "short": "Cape",
     "lat": 28.5619,
     "lon": -80.5774,
+    "az": 48,
+    "coast": "east"
+   }
+  },
+  {
+   "id": "ll2-d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+   "title": "Falcon Heavy | Griffin Mission One",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2027-01-06T00:00:00Z",
+   "end": "",
+   "date": "2027-01-06",
+   "precision": "day",
+   "status": "TBD",
+   "note": "Lunar Exploration · Lunar Orbit",
+   "where": "Launch Complex 39A · Kennedy Space Center, FL, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+   "windowStart": "2027-01-06T00:00:00Z",
+   "windowEnd": "2027-01-06T00:00:00Z",
+   "vehicle": "Falcon Heavy",
+   "providerStatus": "To Be Determined",
+   "pad": {
+    "id": "lc39a",
+    "name": "Kennedy · LC-39A",
+    "short": "KSC",
+    "lat": 28.6082,
+    "lon": -80.6043,
     "az": 48,
     "coast": "east"
    }
