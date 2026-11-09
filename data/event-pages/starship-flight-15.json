@@ -11,36 +11,81 @@
   "ogImageAlt": "Starship Flight 15 title card on a dark background with the Supercharged Daily bolt",
   "featureUntil": "2026-11-16T12:00:00Z",
   "windowNote": "75-minute window · pending regulatory approval",
-  "location": {"name": "Starbase, Texas (Pad 2)", "region": "Texas", "country": "US"},
+  "location": {
+    "name": "Starbase, Texas (Pad 2)",
+    "region": "Texas",
+    "country": "US"
+  },
   "summary": [
     "SpaceX is targeting Starship Flight 15 for Friday 13 November 2026 from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). That is a published window, not a guaranteed lift-off time.",
-    "For the first time SpaceX plans to try to catch both stages with the tower: Super Heavy minutes after launch, and the Ship after a flight of more than 22 hours, about 14 orbits at roughly 275 km, during which it deploys 26 Starlink V3 satellites.",
-    "If both catches work, it would be the first full recovery of an orbital launch system. Super Heavy boosters have been caught before; an orbital ship never has."
+    "For the first time SpaceX plans to try to catch both stages with the tower: Super Heavy minutes after launch, and the Ship after a flight of more than 22 hours. SpaceX's flight plan has the Ship deploy 26 Starlink V3 satellites and make roughly 14 orbits before its deorbit burn; reports put the orbit at about 275 km.",
+    "If both catches work, it would be the first full recovery of an orbital launch system. The tower has caught a Super Heavy booster three times, on Flights 5, 7 and 8 (October 2024 to March 2025); it has never caught a Ship."
   ],
-  "summaryTodo": "TODO(owner): confirm '14 orbits at roughly 275 km' against SpaceX's Flight 15 page before Friday, and confirm how many boosters have been caught so far (your note says three; the repo does not state a count).",
   "heatShield": {
     "lead": "Bringing the Ship home intact means surviving re-entry, and that is the heat shield's job.",
     "points": [
-      "About 18,000 hexagonal silica tiles cover the Ship's windward side.",
-      "The surface reaches around 1,400 °C (about 2,550 °F) during re-entry.",
-      "A ceramic felt layer, nicknamed the \"crunchwrap\", seals the gaps between tiles so hot gas cannot reach the steel.",
-      "Tiles clip onto welded studs instead of being glued, which makes them quicker to replace.",
-      "Tiles are made at SpaceX's Florida \"Bakery\": about 40 hours per tile. In October 2025 SpaceX said it was producing about 1,000 a day, with the line built for 7,000 a day."
-    ],
-    "todo": "TODO(owner): none of these heat-shield figures are sourced in the repo yet. Check each against a SpaceX source (and add the link) before Friday."
+      {
+        "text": "Thousands of small hexagonal tiles cover the Ship's windward side. Because the Ship is mostly a plain cylinder, most tiles can share one shape and the rest are machined to fit, CNBC reported in August 2021.",
+        "source": "https://www.cnbc.com/2021/08/06/elon-musk-spacex-starship-fully-stacked-is-dream-come-true.html",
+        "sourceName": "Source"
+      },
+      {
+        "text": "In a 2019 test SpaceX heated tiles to about 1,650 K (around 1,377 °C or 2,510 °F), its estimate of orbital re-entry temperature, Digital Trends reported.",
+        "source": "https://www.digitaltrends.com/cool-tech/spacex-hexagon-heat-shield-tiles/",
+        "sourceName": "Source"
+      },
+      {
+        "text": "Most tiles are attached mechanically rather than glued, and SpaceX makes them in-house, according to Air & Space (December 2021). The space shuttle's glued tiles needed long repairs between flights.",
+        "source": "https://www.smithsonianmag.com/air-space-magazine/marsliner-180979371/",
+        "sourceName": "Source"
+      }
+    ]
   },
   "links": [
-    {"href": "/starship.html", "title": "Starship tracker", "text": "Every flight, the hardware and the next target."},
-    {"href": "/calendar.html", "title": "Launch calendar", "text": "Upcoming SpaceX launches with add-to-calendar."},
-    {"href": "/see-the-launch.html", "title": "Can I see the launch?", "text": "Find where to look from your location with a live compass."}
+    {
+      "href": "/starship.html",
+      "title": "Starship tracker",
+      "text": "Every flight, the hardware and the next target."
+    },
+    {
+      "href": "/calendar.html",
+      "title": "Launch calendar",
+      "text": "Upcoming SpaceX launches with add-to-calendar."
+    },
+    {
+      "href": "/see-the-launch.html",
+      "title": "Can I see the launch?",
+      "text": "Find where to look from your location with a live compass."
+    }
   ],
   "watch": [
-    {"href": "https://x.com/SpaceX", "title": "SpaceX on X", "text": "SpaceX's official livestream usually starts about 30 minutes before the window."},
-    {"href": "https://www.spacex.com/launches/starship-flight-15", "title": "spacex.com", "text": "The official Flight 15 mission page and webcast."}
+    {
+      "href": "https://x.com/SpaceX",
+      "title": "SpaceX on X",
+      "text": "SpaceX streams Starship flights on X and spacex.com. It posts the stream's start time on the day; we will add it to the Updates log."
+    },
+    {
+      "href": "https://www.spacex.com/launches/starship-flight-15",
+      "title": "spacex.com",
+      "text": "The official Flight 15 mission page and webcast."
+    }
   ],
-  "watchTodo": "TODO(owner): the '30 minutes before' lead time is typical, not announced for this flight. Remove or confirm.",
   "updates": [
-    {"date": "2026-11-09", "kind": "Target", "text": "SpaceX lists Flight 15 as soon as Friday 13 November, 4:45 p.m. CT (22:45 UTC), 75-minute window, pending regulatory approval.", "source": "https://www.spacex.com/launches/starship-flight-15"}
+    {
+      "date": "2026-11-09",
+      "kind": "Target",
+      "text": "SpaceX lists Flight 15 as soon as Friday 13 November, 4:45 p.m. CT (22:45 UTC), 75-minute window, pending regulatory approval.",
+      "source": "https://www.spacex.com/launches/starship-flight-15"
+    },
+    {
+      "date": "2026-11-09",
+      "kind": "Correction",
+      "text": "We checked this page against sources. The heat shield has thousands of tiles (CNBC), not a confirmed 18,000; the temperature is SpaceX's 2019 test figure (about 1,377 °C), not 1,400 °C; two unsourced claims (the gap-sealing felt and the tile factory's output) were removed; the booster-catch count (three) and the 14 orbits are now attributed."
+    }
   ],
-  "related": ["/dispatch/starship-flight-15-catch-timeline.html", "/dispatch/starship-f15-ship-catch.html", "/dispatch/ship-42-first-tower-catch.html"]
+  "related": [
+    "/dispatch/starship-flight-15-catch-timeline.html",
+    "/dispatch/starship-f15-ship-catch.html",
+    "/dispatch/ship-42-first-tower-catch.html"
+  ]
 }

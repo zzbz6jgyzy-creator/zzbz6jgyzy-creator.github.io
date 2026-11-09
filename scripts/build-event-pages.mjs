@@ -11,7 +11,7 @@ const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": 
 import { createRequire } from "node:module";
 const { whenText, countdownHtml, eventPages } = createRequire(import.meta.url)("./event-shared.cjs");
 export { whenText, countdownHtml };
-const CSS_V = "20261109b";
+const CSS_V = "20261109c";
 const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(new Date(d + "T12:00:00Z"));
 
 
@@ -75,7 +75,7 @@ function pageMain(p, ev, articles) {
     <h2 id="ev-heat">Why the heat shield matters</h2>
     ${p.heatShield.todo ? `<!-- ${esc(p.heatShield.todo)} -->` : ""}
     <p>${esc(p.heatShield.lead)}</p>
-    <ul class="ev-points">${p.heatShield.points.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+    <ul class="ev-points">${p.heatShield.points.map((t) => typeof t === "string" ? `<li>${esc(t)}</li>` : `<li>${esc(t.text)}${t.source ? ` <a href="${esc(t.source)}" target="_blank" rel="noopener">${esc(t.sourceName || "Source")}</a>` : ""}</li>`).join("")}</ul>
   </section>` : ""}
   <section class="ev-section" aria-labelledby="ev-watch">
     <h2 id="ev-watch">Where to watch</h2>
@@ -88,7 +88,7 @@ function pageMain(p, ev, articles) {
   </section>
   <section class="ev-section" id="updates" aria-labelledby="ev-updates">
     <h2 id="ev-updates">Updates</h2>
-    <p class="ev-note">Newest first. Each line carries its date and how sure we are: Disclosed (from the company), Reported (from outlets) or Target (a plan, not a result).</p>
+    <p class="ev-note">Newest first. Each line carries its date and how sure we are: Disclosed (from the company), Reported (from outlets), Target (a plan, not a result) or Correction (a change to this page).</p>
     <p class="ev-fresh" data-ev-fresh hidden role="status"><span></span> <a href="#updates" data-ev-reload>Reload</a></p>
     <ol class="ev-log" data-ev-log data-ev-src="/data/event-pages/${esc(p.slug)}.json" data-ev-event="${esc(p.eventId)}" data-ev-latest="${esc(latest)}" data-ev-count="${updates.length}" data-ev-start="${esc(new Date(ev.start).toISOString())}">${updates.map((u) => `<li><time datetime="${esc(stamp(u))}">${esc(when(u))}</time> ${chip(u.kind)} ${esc(u.text)}${u.source ? ` <a href="${esc(u.source)}" target="_blank" rel="noopener">Source</a>` : ""}</li>`).join("")}</ol>
   </section>

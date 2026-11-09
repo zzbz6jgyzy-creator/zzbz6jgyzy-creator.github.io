@@ -18,7 +18,7 @@ Add an object to `updates` in the page's JSON, newest anywhere (the builder sort
 {"date": "2026-11-12", "kind": "Disclosed", "text": "FAA issues the Flight 15 licence.", "source": "https://..."}
 ```
 
-`kind` is one of `Disclosed` (from the company), `Reported` (from outlets) or `Target` (a plan, not a result). These are the same labels the trackers use.
+`kind` is one of `Disclosed` (from the company), `Reported` (from outlets), `Target` (a plan, not a result) or `Correction` (we changed something already on the page, and say what). The first three are the labels the trackers use.
 
 On launch day add a `time` (ISO, UTC) so entries sort to the minute and show "13 Nov 2026, 22:47 UTC":
 
