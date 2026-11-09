@@ -66,6 +66,8 @@ def build(args):
     _, page = skeleton(articles)
     image = args.image or "/assets/og-v2.jpg"
     alt = args.image_alt or "Supercharged Daily"
+    if not args.image:
+        print("warning: no --image; defaulting to /assets/og-v2.jpg. Pass --image with a licensed dispatch photo so listing cards are not generic.", file=sys.stderr)
     full = SITE + url
     title_tag = f"{args.title} | Supercharged Daily" if len(args.title) <= 42 else args.title
 
