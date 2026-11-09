@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/tesla-robotaxi-san-antonio.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-09T08:36:35Z</news:publication_date>
+      <news:title>Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/grok-api-watermark.html</loc>
     <news:news>
       <news:publication>
@@ -21,17 +32,6 @@
       </news:publication>
       <news:publication_date>2026-11-07T08:36:58Z</news:publication_date>
       <news:title>Musk says Starlink V4 lasers could outcompete undersea cables</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/tesla-optimus-rental.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-07T02:43:00Z</news:publication_date>
-      <news:title>Musk says Tesla will likely rent Optimus rather than sell it</news:title>
     </news:news>
   </url>
 </urlset>

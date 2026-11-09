@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-robotaxi-san-antonio.html",
+      "image": "/assets/og-v2.jpg",
+      "title": "Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart",
+      "summary": "Tesla's @robotaxi account says San Antonio rides start at 5am CT. Merritt measures the launch zone at about 275 sq mi. A 9 Nov Texas DMV pull puts Tesla at 1,282 registered driverless vehicles against Waymo's 1,285.",
+      "tag": "Robotaxi",
+      "date": "2026-11-09T08:36:35Z",
+      "thumb": "/assets/og-v2-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-optimus-rental.html",
       "image": "/assets/dispatch/optimus-stockholm-2024.jpg",
       "title": "Musk says Tesla will likely rent Optimus rather than sell it",
@@ -216,16 +225,7 @@
       "tag": "Hardware",
       "date": "2026-11-06T16:00:00Z",
       "thumb": "/assets/dispatch/tesla-dojo-tile-2023-480w.webp"
-    },
-    {
-      "url": "/dispatch/cybertruck-texas-wind-down.html",
-      "image": "/assets/dispatch/cybertruck-skoyen-2024.jpg",
-      "title": "Tesla will wind down Cybertruck at Gigafactory Texas around mid-2027 to make room for Cybercab",
-      "summary": "Musk said Cybertruck production at Giga Texas winds down around mid-2027 for more Cybercab. Tesla still calls Austin the truck's home; Wes Morrill says parts and service continue (as of 6 Nov 2026).",
-      "tag": "Cybertruck",
-      "date": "2026-11-06T09:02:00Z",
-      "thumb": "/assets/dispatch/cybertruck-skoyen-2024-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-07T14:38:30Z"
+  "articlesUpdated": "2026-11-09T08:36:35Z"
 }
