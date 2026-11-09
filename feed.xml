@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 09 Nov 2026 14:40:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 20:40:00 +0000</lastBuildDate>
+    <item>
+      <title>Terafab is rush-ordering chip tools in Japan, with a plan 40 times Rapidus’s wafer capacity</title>
+      <link>https://superchargeddaily.com/dispatch/terafab-japan-rush-orders.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/terafab-japan-rush-orders.html</guid>
+      <pubDate>Mon, 09 Nov 2026 20:40:00 +0000</pubDate>
+      <category>Terafab</category>
+      <description>Nikkei reports Terafab’s procurement team visited Japanese equipment makers, placed orders due within months, and shared a 2032 target of 1 million wafers a month — about 40 times Rapidus’s planned ~25,000 wafers a month. Reported plan, not a company announcement.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/semiconductor-cleanroom-nasa.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceX is designing its own 5G base stations for Starlink Mobile, with Qualcomm chips inside</title>
       <link>https://superchargeddaily.com/dispatch/spacex-qualcomm-own-base-stations.html</link>
@@ -717,15 +726,6 @@
       <category>X</category>
       <description>Musk’s new ad “esthetic standard” vs Google’s and Meta’s rules: vaguer test, tougher penalty.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/x-ads-esthetic-standard-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Starlink answers Reliance: “ready to connect India”</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-india-reliance-reply.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-india-reliance-reply.html</guid>
-      <pubDate>Fri, 16 Oct 2026 19:45:00 +0000</pubDate>
-      <category>Starlink</category>
-      <description>Three licensees, none selling yet. The real gate is a Home Ministry security review, then spectrum pricing.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-india-reliance-reply-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
