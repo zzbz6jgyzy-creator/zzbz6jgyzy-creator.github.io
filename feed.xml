@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 09 Nov 2026 11:22:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 14:40:00 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX is designing its own 5G base stations for Starlink Mobile, with Qualcomm chips inside</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-qualcomm-own-base-stations.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-qualcomm-own-base-stations.html</guid>
+      <pubDate>Mon, 09 Nov 2026 14:40:00 +0000</pubDate>
+      <category>Starlink</category>
+      <description>Qualcomm CEO Cristiano Amon says SpaceX will build the base stations for one of the largest US 5G deployments, with Qualcomm supplying the radio silicon. Musk confirmed the partnership on X. Rollout planned from 2027; no tower deals announced.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/cellular-5g-tower-antennas.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)</title>
       <link>https://superchargeddaily.com/dispatch/tesla-robotaxi-austin-bigger-service-area.html</link>
@@ -717,15 +726,6 @@
       <category>Starlink</category>
       <description>Three licensees, none selling yet. The real gate is a Home Ministry security review, then spectrum pricing.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-india-reliance-reply-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Slovakia approves FSD, the 9th EU country</title>
-      <link>https://superchargeddaily.com/dispatch/slovakia-fsd-ninth-eu.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/slovakia-fsd-ninth-eu.html</guid>
-      <pubDate>Fri, 16 Oct 2026 11:42:37 +0000</pubDate>
-      <category>FSD Europe</category>
-      <description>Nine EU yeses, but only ~14% of the EU's people. An EU-wide approval needs 65%.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/slovakia-fsd-ninth-eu-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>

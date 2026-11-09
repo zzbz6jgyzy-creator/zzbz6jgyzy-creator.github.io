@@ -1,3 +1,8 @@
+## 2026-11-09 — SpaceX designing Starlink Mobile 5G base stations (Qualcomm chips)
+
+- Dispatch: Qualcomm CEO Cristiano Amon said SpaceX will build the base stations for Starlink Mobile, with Qualcomm supplying the radio silicon. Musk confirmed the partnership on X. Rollout planned from 2027; no tower deals announced. Licensed Tony Webster cell-tower photo (CC BY 2.0) is the card and hero.
+- One-line update on the Verizon vs Musk Starlink Mobile story pointing to this confirmation.
+
 ## 2026-11-09 — Austin Robotaxi service area expansion (~442 sq mi)
 
 - Dispatch: Tesla’s @robotaxi account posted a bigger Austin geofence on 9 Nov 2026. Tesla gave no square-mileage. Robotaxi Tracker measured about 442 sq mi (from 272); RoboTracker lists 435. Licensed Tony Webster skyline is the card hero; Tesla’s map is in-article only.
