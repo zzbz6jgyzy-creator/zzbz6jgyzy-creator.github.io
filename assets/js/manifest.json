@@ -422,11 +422,12 @@
       ]
     },
     "event": {
-      "file": "/assets/js/event.bundle.8d0076d05b.js",
-      "bytes": 2533,
+      "file": "/assets/js/event.bundle.6892441db9.js",
+      "bytes": 5417,
       "sources": [
         "event-countdown.js",
-        "share-buttons.js"
+        "share-buttons.js",
+        "event-live.js"
       ]
     }
   }

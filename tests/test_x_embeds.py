@@ -10,10 +10,11 @@ class XEmbeds(unittest.TestCase):
         bad, missing = [], []
         for path in sorted((ROOT / "dispatch").glob("*.html")):
             text = path.read_text(encoding="utf-8")
-            if "twitter-tweet" not in text:
-                continue
+            # Any article, with or without a post: six loaded X's script for nothing until 9 Nov 2026.
             if "platform.twitter.com/widgets.js" in text:
                 bad.append(path.name)
+            if "twitter-tweet" not in text:
+                continue
             if "/x-embed.js" not in text or "/x-embed.css" not in text:
                 missing.append(path.name)
         self.assertEqual(bad, [], "these load X's script on page load; use /x-embed.js instead")

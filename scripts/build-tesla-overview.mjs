@@ -21,5 +21,7 @@ const main=`<main id="main" class="to-studio" data-section="tesla">
 </div><script type="application/json" id="to-data">${JSON.stringify(d).replace(/</g,'\\u003c')}</script></main>`;
 html=html.replace(/<main\b[\s\S]*?<\/main>/,()=>main);
 if(!/href="\/section-theme\.css/.test(html)) html=html.replace('</head>','    <link rel="stylesheet" href="/section-theme.css?v=20261106e" />\n  </head>');
+// build-home.js prerenders the next Tesla livestream card into <!--hv:event--> here; it needs live.css.
+if(!/href="\/live\.css/.test(html)) html=html.replace('</head>','    <link rel="stylesheet" href="/live.css?v=202610211030" />\n  </head>');
 fs.writeFileSync(path.join(root,'tesla.html'),html);fs.writeFileSync(path.join(root,'data/tesla-overview.json'),JSON.stringify(d,null,2)+'\n');return d;}
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){buildTeslaOverview();console.log('Tesla overview saved HTML and snapshot built');}

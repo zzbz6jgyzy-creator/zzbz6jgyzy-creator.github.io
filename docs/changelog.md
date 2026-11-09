@@ -1,3 +1,10 @@
+## 2026-11-09 — Reliability and launch-day upgrades
+
+- Site integrity check: bots, pull requests and the commit hook now refuse a change that cuts a page off, points a page at a missing script, stylesheet, calendar file or asset, breaks a JSON data file, empties the Dispatch list or leaves the homepage lead empty. It would have stopped both of this morning's breakages (`scripts/check-site-integrity.py`).
+- Event pages: "Add to calendar" (an .ics with a 30-minute reminder) and a Google Calendar link; Updates entries can carry a time; readers with the page open see new updates and a moved launch time within about two minutes, without reloading.
+- Tesla hub: the prerendered livestream card (Tesla annual meeting) now has its styles; on phones it showed as raw text under the menu.
+- Six Dispatch articles no longer load X's script; they had no X posts. The X embed test now covers every article.
+
 ## 2026-11-09 — SpaceX designing Starlink Mobile 5G base stations (Qualcomm chips)
 
 - Dispatch: Qualcomm CEO Cristiano Amon said SpaceX will build the base stations for Starlink Mobile, with Qualcomm supplying the radio silicon. Musk confirmed the partnership on X. Rollout planned from 2027; no tower deals announced. Licensed Tony Webster cell-tower photo (CC BY 2.0) is the card and hero.

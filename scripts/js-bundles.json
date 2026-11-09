@@ -264,7 +264,8 @@
     ],
     "event": [
       "event-countdown.js",
-      "share-buttons.js"
+      "share-buttons.js",
+      "event-live.js"
     ]
   },
   "pages": {

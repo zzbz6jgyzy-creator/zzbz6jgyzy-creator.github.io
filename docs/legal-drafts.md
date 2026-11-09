@@ -7,11 +7,11 @@
 - **Members:** Google sign-in through Supabase (`members.js`, `signInWithOAuth` provider `google`); session in localStorage.
 - **Analytics:** Cloudflare Web Analytics beacon on every page (cookieless). Own counter `workers/sd-events`: per-day counts by event name and page path, "no cookies, no IPs, no user IDs" (its own header comment).
 - **No first-party cookies:** no `document.cookie` writes in site code. localStorage keys include theme (`sd-theme`), saved views, game and Earth explorer settings, members return path.
-- **Third parties loaded with the page:** X embed script `platform.twitter.com/widgets.js` on **96 pages** (mostly Dispatch articles); YouTube iframes (mostly `youtube-nocookie.com`, a few `youtube.com`); TradingView iframe (markets); jsDelivr scripts on 3 Dispatch pages.
+- **Third parties loaded with the page:** X embed script `platform.twitter.com/widgets.js`: Dispatch articles with X posts load it only when the reader presses "Load post from X" (`x-embed.js`); six articles loaded it on page load with no post in them, removed 9 Nov 2026. The homepage/Starship live card loads it while an X livestream is the live event; YouTube iframes (mostly `youtube-nocookie.com`, a few `youtube.com`); TradingView iframe (markets); jsDelivr scripts on 3 Dispatch pages.
 - **Money:** Tesla referral `ts.la/alex474841` (marked sponsored), Buy Me a Coffee.
 
 ## ⚠ Flag: consent
-The site's own code sets no non-essential cookies, so I did **not** add a banner. But the X embed script loads automatically on 96 pages and X can set cookies; the standard `youtube.com` embeds and TradingView can too. Under ePrivacy/GDPR that usually needs consent. The site already has a click-to-load X embed (`x-embed.js`); switching the remaining pages to it would avoid the question. Your call.
+The site's own code sets no non-essential cookies, so I did **not** add a banner. Correction (9 Nov 2026): the earlier note here said X's script loads automatically on 96 pages. That count included pages where it only loads after a click. The real number was six articles with no X post in them, and the script has been removed from those. What still loads X without a click: the homepage and Starship live card, while an X livestream is the live event. Standard `youtube.com` embeds and TradingView can also set cookies. Under ePrivacy/GDPR those may need consent; making them click-to-load as well would avoid the question.
 
 ## Could not determine (marked "To confirm" in the drafts)
 1. Which member data Supabase stores beyond the Google profile, and retention.

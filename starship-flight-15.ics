@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Supercharged Daily//Event pages//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:starship-flight-15@superchargeddaily.com
+DTSTAMP:20261109T084114Z
+SEQUENCE:449801
+DTSTART:20261113T224500Z
+DTEND:20261114T000000Z
+SUMMARY:Starship Flight 15
+DESCRIPTION:75-minute window\, pending regulatory approval. Times can move:
+  check https://superchargeddaily.com/starship-flight-15.html for the lates
+ t.
+LOCATION:Starbase\, Texas (Pad 2)
+URL:https://superchargeddaily.com/starship-flight-15.html
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Starship Flight 15 window opens in 30 minutes
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+END:VCALENDAR

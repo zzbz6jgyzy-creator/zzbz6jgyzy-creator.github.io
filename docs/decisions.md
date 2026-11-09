@@ -268,3 +268,7 @@ results require a rating. Adding one is an editorial decision for the owner, not
 ## 2026-11-09 — One homepage signup, phone bar instead of a second form
 
 The homepage had two full signup forms. We keep the hero form as the only one and drop the bottom band. On phones (most readers arrive from X), a slim bar in `grow.js` (`data-bar`, homepage only) appears once the hero form has scrolled away and jumps back to that form rather than adding another form. It hides while a form is on screen, never shows to someone marked subscribed in this browser, and stays closed for 14 days after "×". Desktop keeps no bar: the hero form and the nav "Subscribe" link are enough, and the scroll pop-up still never fires where an inline form exists.
+
+## 2026-11-09 — A site integrity check before every bot push
+
+On 9 Nov a publish commit cut `dispatch.html` off mid-tag (118 story cards lost) and a Starlink refresh pointed `starlink.html` at bundles it never committed; both were live within minutes. `scripts/check-site-integrity.py` now refuses a change that leaves a page cut off, points a page at a missing script, stylesheet or `/assets/` file, breaks a JSON data file, empties the Dispatch list (fewer than 10 cards, or under 80% of the base) or leaves the homepage lead slot without a story. It runs in `scripts/ci-push-retry.sh` (every bot), in `.github/workflows/site-integrity.yml` (pull requests and pushes to main) and in the Claude pre-commit hook. Problems that are already on the base never fail it, so an old problem cannot freeze the bots; it only stops new ones.
