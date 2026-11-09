@@ -28,6 +28,8 @@ jobs:
       - run: npm run parity
         working-directory: astro
       # Astro's Dispatch collection and scripts/render-article.py must accept and refuse the same front matter.
+      - run: node scripts/check-md-parity.mjs
+        working-directory: astro
       - run: node scripts/check-content-schema.mjs
         working-directory: astro
         env:

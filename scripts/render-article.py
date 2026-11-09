@@ -116,6 +116,9 @@ def render_body(md, uses):
             raise ArticleError(f"line {i + 1}: remove DRAFT markers and HTML comments")
         if re.match(r"<[a-zA-Z]", line):
             raise ArticleError(f"line {i + 1}: raw HTML is not allowed; use the directives in docs/writing-articles.md")
+        if line.startswith("::") and not re.match(r"::(x|video|image|note|sources|pull)\b", line):
+            # Without this an unknown directive matched nothing and the paragraph loop never advanced (hung CI).
+            raise ArticleError(f"line {i + 1}: unknown directive {line.split()[0]}; use ::x, ::video, ::image, ::note, ::sources or ::pull")
         m = re.match(r"::(x|video|image|note|sources|pull)\b\s*(.*)$", line)
         if m:
             name, rest = m.group(1), m.group(2)

@@ -67,6 +67,10 @@ class Render(unittest.TestCase):
 
 
 class Refuses(unittest.TestCase):
+    def test_unknown_directive_is_refused_not_hung(self):
+        with self.assertRaisesRegex(ra.ArticleError, "unknown directive ::unknown"):
+            ra.render_body("::unknown thing", set())
+
     def test_draft_in_front_matter(self):
         # The phone template's headline starts with DRAFT; fixing only the body must not publish it.
         with self.assertRaisesRegex(ra.ArticleError, "'title:' still says DRAFT"):
