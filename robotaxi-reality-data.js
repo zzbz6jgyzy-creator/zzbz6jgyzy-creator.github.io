@@ -2,8 +2,8 @@
 // Every claim needs a real source and a verification status.
 // Do not mark a city live unless a source says public rides are happening.
 window.ROBOTAXI_REALITY = {
-  updated: "2026-11-08",
-  updatedLabel: "8 Nov 2026",
+  updated: "2026-11-09",
+  updatedLabel: "9 Nov 2026",
   kinds: [
     { id: "operational", label: "Operational" },
     { id: "expansion", label: "Expansions" },
@@ -230,7 +230,7 @@ window.ROBOTAXI_REALITY = {
       supervision: "unknown",
       vehicle: "Cybercab",
       title: "NHTSA Cybercab audit still open",
-      text: "Electrek reported 5 Nov that Tesla met the 30 Oct Special Order deadline and that the public AQ26002 docket now has three Tesla filings: a one-page confidentiality letter, a Question 8 placeholder, and the Cybercab First Responder Interaction Plan dated 3 Sep. Electrek says NHTSA has not commented on the confidentiality request. NHTSA’s AQ26002 record still lists the audit as open, with no finding or recall (dot.report, last updated 8 Nov 2026 08:12:04). An audit query is a fact-finding step, not a finding of non-compliance.",
+      text: "Electrek reported 5 Nov that Tesla met the 30 Oct Special Order deadline and that the public AQ26002 docket now has three Tesla filings: a one-page confidentiality letter, a Question 8 placeholder, and the Cybercab First Responder Interaction Plan dated 3 Sep. Electrek says NHTSA has not commented on the confidentiality request. NHTSA’s AQ26002 record still lists the audit as open, with no finding or recall (dot.report, last updated 9 Nov 2026 08:12:06). An audit query is a fact-finding step, not a finding of non-compliance.",
       date: "2026-11-05",
       src: "https://electrek.co/2026/11/05/tesla-cybercab-nhtsa-sworn-answers-confidential/",
       srcLabel: "Electrek"
@@ -341,7 +341,7 @@ window.ROBOTAXI_REALITY = {
       srcLabel: "TeslaNorth"
     },
     {
-      id: "san-antonio-coming-soon",
+      id: "san-antonio-announced",
       slug: "san_antonio",
       lat: 29.4241,
       lng: -98.4936,
@@ -349,11 +349,11 @@ window.ROBOTAXI_REALITY = {
       verification: "announced",
       supervision: "unknown",
       vehicle: "Robotaxi",
-      title: "San Antonio listed as coming soon",
-      text: "Tesla lists San Antonio as coming soon on its Robotaxi Safety Report (21 Oct 2026). No launch date.",
-      date: "2026-10-21",
-      src: "https://teslanorth.com/2026/10/21/tesla-robotaxi-safety-report-four-new-cities/",
-      srcLabel: "TeslaNorth"
+      title: "Tesla announces Robotaxi in San Antonio",
+      text: "Tesla’s Robotaxi account posted on 9 Nov that rides start “tomorrow, 5am”. Merritt reads 5am CT on 9 Nov; a strict reading of “tomorrow” after midnight allows 10 Nov. tesla.com/robotaxi still lists seven hail cities and does not include San Antonio (checked 9 Nov). Vehicle type and supervision are unconfirmed. A Cybercab is not implied.",
+      date: "2026-11-09",
+      src: "https://x.com/robotaxi/status/2119678179963187564",
+      srcLabel: "@robotaxi"
     },
     {
       id: "fort-worth-live",

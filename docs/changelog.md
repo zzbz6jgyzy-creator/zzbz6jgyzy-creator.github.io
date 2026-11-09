@@ -1,3 +1,10 @@
+## 2026-11-09 — Texas robotaxi registry: +38 Model Ys, 1,282 total
+
+- FSD Database’s TxDMV VIN list now has 1,282 Tesla robotaxis: 573 Cybercab (unchanged) and 709 Model Y (+38). Registered is not in service; the registry has no city split. Cybercab share of the Texas list is 45%. Details: `docs/audit-2026-11-09.md`.
+- tesla.com/robotaxi still lists the same seven hail cities. San Antonio remains an @robotaxi announcement, not a tesla.com hail listing. Vehicle type and supervision there are unconfirmed.
+- NHTSA AQ26002 remains open with no finding or recall ([dot.report](https://dot.report/investigations/AQ26002), last updated 9 Nov 2026 08:12:06). Stamp only.
+- Rechecked, unchanged: USSF-627 tonight 7:03 p.m. PT; USSF-317 Thu 12 Nov; Flight 15 as soon as Fri 13 Nov pending regulatory approval; Starlink McDowell 11,204 in orbit / 11,190 working (9 Nov 01:19 UTC); Grok 4.7 still the recommended general model.
+
 ## 2026-11-09 — Growth: sharing, social cards, one signup, nav names, "Last updated"
 
 - Articles: share row is now "Post on X" (adds via @ALJR86), "Copy link", and the phone's own Share sheet where the browser has one. No third-party scripts.
