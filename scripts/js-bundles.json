@@ -276,7 +276,8 @@
       ],
       "grow": [
         "data-band",
-        "data-pop"
+        "data-pop",
+        "data-bar"
       ],
       "livePage": "home"
     },

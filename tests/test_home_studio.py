@@ -10,12 +10,12 @@ class Home(unittest.TestCase):
  def test_one_heading_and_unique_native_destinations(self):
   self.assertEqual(sum(t=='h1'for t,a in self.doc.tags),1)
   ids=[a['id']for t,a in self.doc.tags if'id'in a];self.assertEqual(len(ids),len(set(ids)))
-  for anchor in ['newsletter','newsletter-bottom','newsletter-preview','hv-trk-h','latest-stories']:self.assertIn(anchor,ids)
+  for anchor in ['newsletter','hv-trk-h','latest-stories']:self.assertIn(anchor,ids)
   for path in ['/roadster.html','/starship.html','/starlink.html','/updates.html','/cybercab.html','/fsd-europe.html','/explainers.html']:self.assertIn('href="'+path+'"',self.source)
  def test_native_signup_without_javascript_and_no_fabricated_social_proof(self):
-  forms=[a for t,a in self.doc.tags if t=='form'and'data-newsletter-form'in a];self.assertEqual(len(forms),2)
+  forms=[a for t,a in self.doc.tags if t=='form'and'data-newsletter-form'in a];self.assertEqual(len(forms),1,'One main signup: the hero form')
   for f in forms:self.assertEqual(f['method'],'get');self.assertEqual(f['action'],'https://alexs-newsletter-84b17e.beehiiv.com/')
-  inputs=[a for t,a in self.doc.tags if t=='input'and a.get('type')=='email'];self.assertEqual(len(inputs),2)
+  inputs=[a for t,a in self.doc.tags if t=='input'and a.get('type')=='email'];self.assertEqual(len(inputs),1)
   for a in inputs:self.assertIn('required',a);self.assertEqual(a['autocomplete'],'email');self.assertEqual(a['inputmode'],'email');self.assertIn(a['id']+'-status',a['aria-describedby'])
   self.assertIn('Free, every Sunday. Unsubscribe anytime.',self.source);self.assertIn('Read a real issue',self.source)
   self.assertNotRegex(self.source,r'Join [\d,]+ (?:readers|subscribers)')
@@ -42,7 +42,8 @@ class Home(unittest.TestCase):
   hero=self.source.split('<header class="hs-hero">',1)[1].split('</header>',1)[0]
   subprocess.run(['node','scripts/build-home.js'],cwd=ROOT,check=True,capture_output=True)
   after=(ROOT/'index.html').read_text();self.assertEqual(hero,after.split('<header class="hs-hero">',1)[1].split('</header>',1)[0])
-  self.assertEqual(after.count('data-newsletter-form'),2);self.assertIn('class="hs-newsletter"',after)
+  self.assertEqual(after.count('data-newsletter-form'),1);self.assertNotIn('class="hs-newsletter"',after)
+  self.assertIn('<!--hv:band--><!--/hv:band-->',after);self.assertRegex(after,r'core\.bundle\.[0-9a-f]+\.js" data-band data-pop data-bar>')
   for marker in ['lead','supp','event','preload','band','trk','feed','changed','slasof']:self.assertIn('<!--hv:'+marker+'-->',after);self.assertIn('<!--/hv:'+marker+'-->',after)
   self.assertIn('home-studio.css',after)
 if __name__=='__main__':unittest.main()

@@ -31,7 +31,7 @@ SRC_RX = re.compile(
     r"([^>]*\bsrc=\"([^\"]+)\"[^>]*)>\s*</script>[ \t]*\n?",
     re.I | re.M,
 )
-GROW_ATTRS = ("data-band", "data-pop", "data-ref")
+GROW_ATTRS = ("data-band", "data-pop", "data-ref", "data-bar")
 
 
 def bundled_names() -> set[str]:
