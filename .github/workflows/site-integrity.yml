@@ -34,5 +34,5 @@ jobs:
             base="HEAD~1"
           fi
           python3 scripts/check-site-integrity.py --ref HEAD --base "$base"
-      - name: Integrity check's own tests
-        run: python3 -m unittest tests.test_site_integrity
+      - name: Integrity tests (checker, live-card styles, X embeds)
+        run: python3 -m unittest tests.test_site_integrity tests.test_live_card_styles tests.test_x_embeds
