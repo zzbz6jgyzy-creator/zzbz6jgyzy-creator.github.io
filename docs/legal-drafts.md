@@ -11,7 +11,7 @@
 - **Money:** Tesla referral `ts.la/alex474841` (marked sponsored), Buy Me a Coffee.
 
 ## ⚠ Flag: consent
-The site's own code sets no non-essential cookies, so I did **not** add a banner. Correction (9 Nov 2026): the earlier note here said X's script loads automatically on 96 pages. That count included pages where it only loads after a click. The real number was six articles with no X post in them, and the script has been removed from those. What still loads X without a click: the homepage and Starship live card, while an X livestream is the live event. Standard `youtube.com` embeds and TradingView can also set cookies. Under ePrivacy/GDPR those may need consent; making them click-to-load as well would avoid the question.
+The site's own code sets no non-essential cookies, so I did **not** add a banner. Correction (9 Nov 2026): the earlier note here said X's script loads automatically on 96 pages. That count included pages where it only loads after a click. The real number was six articles with no X post in them, and the script has been removed from those. What still loads X without a click: the homepage and Starship live card, while an X livestream is the live event. YouTube and TradingView (updated 9 Nov 2026): article videos are now tap-to-play, showing our own image and loading YouTube's no-cookie player only after a tap; the TSLA chart loads TradingView only after a tap. What still loads without a tap: the live-stream player during a live event (youtube-nocookie.com, muted) and the X livestream card. Ask your adviser whether those two need a consent prompt.
 
 ## Could not determine (marked "To confirm" in the drafts)
 1. Which member data Supabase stores beyond the Google profile, and retention.

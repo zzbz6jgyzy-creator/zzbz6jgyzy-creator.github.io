@@ -37,4 +37,4 @@ jobs:
           fi
           python3 scripts/check-site-integrity.py --ref HEAD --base "$base"
       - name: Integrity tests (checker, live-card styles, X embeds)
-        run: python3 -m unittest tests.test_site_integrity tests.test_live_card_styles tests.test_x_embeds
+        run: python3 -m unittest tests.test_site_integrity tests.test_live_card_styles tests.test_x_embeds tests.test_video_embeds

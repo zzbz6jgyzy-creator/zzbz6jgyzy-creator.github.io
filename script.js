@@ -119,7 +119,7 @@
       if (!id) return;
       const iframe = document.createElement("iframe");
       iframe.src =
-        "https://www.youtube.com/embed/" +
+        "https://www.youtube-nocookie.com/embed/" +
         encodeURIComponent(id) +
         "?autoplay=1&rel=0&modestbranding=1&playsinline=1";
       iframe.title = title;
