@@ -1,5 +1,7 @@
 # Writing a Dispatch article in Markdown
 
+On your phone: start from the one-tap link in [publish-from-phone.md](publish-from-phone.md).
+
 Publishing is one file: add `content/dispatch/<slug>.md` and merge it. CI (`home-build.yml`) renders it to `dispatch/<slug>.html`,
 adds the story card and `data/articles.json` entry, then runs the usual generators (related stories, contents, share image,
 NewsArticle data, sitemap, feed). Editing the `.md` later re-renders the page. Works from the GitHub mobile app or any web editor.

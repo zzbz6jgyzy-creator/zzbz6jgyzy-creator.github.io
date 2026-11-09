@@ -67,6 +67,11 @@ class Render(unittest.TestCase):
 
 
 class Refuses(unittest.TestCase):
+    def test_draft_in_front_matter(self):
+        # The phone template's headline starts with DRAFT; fixing only the body must not publish it.
+        with self.assertRaisesRegex(ra.ArticleError, "'title:' still says DRAFT"):
+            ra.render("zz-test", HEAD.replace("title: A headline", "title: DRAFT A headline") + BODY)
+
     def bad(self, text, needle):
         with self.assertRaises(ra.ArticleError) as c:
             ra.render("zz-test", text)

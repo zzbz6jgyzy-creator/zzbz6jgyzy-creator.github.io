@@ -3,10 +3,10 @@ name: astro-checks
 # Builds the Astro packaging layer and proves it serves what the repo root serves. Does not deploy anything.
 on:
   pull_request:
-    paths: ['astro/**', 'tests/test_astro_scaffold.py', '.github/workflows/astro-checks.yml']
+    paths: ['astro/**', 'content/dispatch/**', 'scripts/render-article.py', 'tests/test_astro_scaffold.py', '.github/workflows/astro-checks.yml']
   push:
     branches: [main]
-    paths: ['astro/**']
+    paths: ['astro/**', 'content/dispatch/**']
 
 jobs:
   build:
@@ -27,3 +27,8 @@ jobs:
           ASTRO_TELEMETRY_DISABLED: '1'
       - run: npm run parity
         working-directory: astro
+      # Astro's Dispatch collection and scripts/render-article.py must accept and refuse the same front matter.
+      - run: node scripts/check-content-schema.mjs
+        working-directory: astro
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
