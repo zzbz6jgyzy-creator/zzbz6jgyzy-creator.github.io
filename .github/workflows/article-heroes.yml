@@ -1,0 +1,23 @@
+name: Article hero images
+on:
+  pull_request:
+    paths:
+      - 'data/articles.json'
+      - 'dispatch.html'
+      - 'dispatch/**'
+      - 'assets/dispatch/**'
+      - 'tests/article-heroes.test.mjs'
+      - '.github/workflows/article-heroes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  heroes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Flag generic or missing article card photos
+        run: node --test tests/article-heroes.test.mjs
