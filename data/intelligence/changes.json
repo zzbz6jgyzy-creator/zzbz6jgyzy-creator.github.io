@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09T08:37:30.552Z",
+  "updated": "2026-11-09T08:42:28.152Z",
   "changes": [
     {
       "type": "logged",
@@ -30,9 +30,9 @@
       "evidence": "independently_corroborated",
       "source": "Jonathan McDowell Starlink statistics",
       "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
-      "href": "/starlink.html",
-      "summary": "Starlink in orbit changed from 11207 to 11204.",
-      "title": "Starlink in orbit",
+      "href": "/starlink.html#counts-changed",
+      "summary": "McDowell snapshot: inOrbit 11,207 → 11,204; working 11,193 → 11,190; operational 10,022 → 9,704. This is a published table snapshot, not a live operator feed.",
+      "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-11-09T01:19:56.000Z|11204"
     },
     {

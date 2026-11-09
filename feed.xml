@@ -728,12 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/project-bromo-eu-spacex-rival-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Tracker: Starlink in orbit</title>
+      <title>Tracker: Starlink McDowell snapshot</title>
       <link>https://superchargeddaily.com/starlink.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-09T01:19:56.000Z-11204</guid>
       <pubDate>Mon, 09 Nov 2026 01:19:56 +0000</pubDate>
       <category>starlink</category>
-      <description>Starlink in orbit changed from 11207 to 11204.</description>
+      <description>McDowell snapshot: inOrbit 11,207 → 11,204; working 11,193 → 11,190; operational 10,022 → 9,704. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: Flight 15 change</title>
@@ -742,14 +742,6 @@
       <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
       <category>starship</category>
       <description>SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published.</description>
-    </item>
-    <item>
-      <title>Tracker: Starlink McDowell snapshot</title>
-      <link>https://superchargeddaily.com/starlink.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-07T10:49:32.000Z-11207</guid>
-      <pubDate>Sat, 07 Nov 2026 10:49:32 +0000</pubDate>
-      <category>starlink</category>
-      <description>McDowell snapshot: inOrbit 11,214 → 11,207; working 11,200 → 11,193. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: 2026.38.5.12</title>
@@ -822,6 +814,14 @@
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <category>fsd</category>
       <description>Tesla’s current support page lists nine European markets. The country list and vehicle eligibility conditions are tracked separately from legal recognition and individual installations.</description>
+    </item>
+    <item>
+      <title>Tracker: 2026.38.3.2</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.3.2-2026-10-22T20:53:15.000Z-3</guid>
+      <pubDate>Thu, 22 Oct 2026 20:53:15 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
   </channel>
 </rss>
