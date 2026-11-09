@@ -1,3 +1,7 @@
+## 2026-11-09 — Terafab rush-ordering chip tools in Japan (40× Rapidus wafer capacity)
+
+- Dispatch: Nikkei reports Terafab’s procurement team visited Japanese equipment makers, placed rush orders due within months, and shared a 2032 plan of 1 million wafers a month — about 40 times Rapidus’s planned ~25,000 wafers a month. Reported plan, not a company announcement. Licensed NASA Glenn Research Center cleanroom photo (public domain) is the card and hero.
+
 ## 2026-11-09 — Flight 15 page fact-checked
 
 - Every unconfirmed claim on `/starship-flight-15.html` is now sourced or gone. Heat shield: "thousands" of tiles (CNBC), not a confirmed 18,000; the temperature is SpaceX's 2019 tile test, about 1,650 K / 1,377 °C (Digital Trends); tiles are mostly attached mechanically (Air & Space). The gap-sealing felt and tile-factory output were removed: no source we could open supports them. Flight plan: about 14 orbits per SpaceX's timeline, orbit "about 275 km" labelled as reported. Booster catches so far: three (Flights 5, 7, 8). The stream-start claim is replaced by "time posted on the day". A visible Correction entry in the Updates log says what changed.
