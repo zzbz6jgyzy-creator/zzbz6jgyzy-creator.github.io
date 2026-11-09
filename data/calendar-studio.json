@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-09T08:41:14+00:00",
- "launchChecked": "2026-11-09T07:55:59Z",
+ "launchChecked": "2026-11-09T18:43:45Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -543,7 +543,7 @@
    "title": "Falcon 9 Block 5 | USSF-627",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-10T03:03:00Z",
+   "start": "2026-11-10T04:59:49Z",
    "end": "",
    "date": "2026-11-10",
    "precision": "datetime",
@@ -1441,6 +1441,27 @@
    "origin": "Editorial calendar"
   },
   {
+   "id": "ll2-d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+   "title": "Falcon Heavy | Griffin Mission One",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2027-01-06T00:00:00Z",
+   "end": "",
+   "date": "2027-01-06",
+   "precision": "day",
+   "status": "TBD",
+   "note": "Lunar Exploration · Lunar Orbit",
+   "where": "Launch Complex 39A · Kennedy Space Center, FL, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+   "windowStart": "2027-01-06T00:00:00Z",
+   "windowEnd": "2027-01-06T00:00:00Z",
+   "vehicle": "Falcon Heavy",
+   "providerStatus": "To Be Determined"
+  },
+  {
    "id": "ll2-de3d5d91-f115-4a86-b923-203a91a08735",
    "title": "Falcon 9 Block 5 | Axiom Space Mission 5",
    "group": "spacex",
@@ -1501,27 +1522,6 @@
    "windowStart": "2027-01-31T00:00:00Z",
    "windowEnd": "2027-01-31T00:00:00Z",
    "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "To Be Determined"
-  },
-  {
-   "id": "ll2-d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
-   "title": "Falcon Heavy | Griffin Mission One",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2027-01-31T00:00:00Z",
-   "end": "",
-   "date": "2027-01-31",
-   "precision": "month",
-   "status": "TBD",
-   "note": "Lunar Exploration · Lunar Orbit",
-   "where": "Launch Complex 39A · Kennedy Space Center, FL, USA",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
-   "windowStart": "2027-01-31T00:00:00Z",
-   "windowEnd": "2027-01-31T00:00:00Z",
-   "vehicle": "Falcon Heavy",
    "providerStatus": "To Be Determined"
   },
   {
