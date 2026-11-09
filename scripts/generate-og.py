@@ -125,9 +125,12 @@ def article_cards():
 
 def draw_article(kicker, title):
     from PIL import ImageDraw
-    big = font("Inter-Bold.ttf", 60)
-    lines = wrap(title, big, W - 128)
-    return draw_card(kicker, "\n".join(lines), big_size=60 if len(lines) > 2 else 72, step=74 if len(lines) > 2 else 86)
+    # Wrap at the size we draw at: try 72px first and fall back to 60px only for titles that need 3+ lines.
+    lines = wrap(title, font("Inter-Bold.ttf", 72), W - 128)
+    if len(lines) <= 2:
+        return draw_card(kicker, "\n".join(lines), big_size=72, step=86)
+    lines = wrap(title, font("Inter-Bold.ttf", 60), W - 128)
+    return draw_card(kicker, "\n".join(lines), big_size=60, step=74)
 
 
 def run(force=False):
