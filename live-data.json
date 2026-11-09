@@ -1,7 +1,25 @@
 {
-  "updated": "2026-11-08T10:20:00+00:00",
+  "updated": "2026-11-09T08:41:14+00:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
+    {
+      "id": "tesla-annual-meeting-2026",
+      "title": "Tesla 2026 Annual Meeting of Shareholders",
+      "page": "tesla",
+      "start": "2026-12-03T15:00:00-06:00",
+      "end": "2026-12-03T17:00:00-06:00",
+      "status": "scheduled",
+      "provider": "link",
+      "embedId": "",
+      "postUrl": "",
+      "fallbackUrl": "https://www.votetesla.com/annual-meeting-details/",
+      "fallbackLabel": "Annual meeting details on votetesla.com",
+      "source": "https://www.votetesla.com/annual-meeting-details/",
+      "image": "/assets/live/factory.jpg",
+      "imageCredit": "Photo: Steve Jurvetson, Wikimedia Commons, CC BY 2.0",
+      "description": "Tesla’s 2026 Annual Shareholder Meeting is Thursday 3 Dec 2026 at 3:00 p.m. CT (21:00 UTC / 21:00 Dublin). Shareholders as of 13 Oct 2026 can join virtually at virtualshareholdermeeting.com/TSLA2026; limited in-person seats at Giga Texas were drawn from entries that closed 6 Nov. Details: votetesla.com/annual-meeting-details/",
+      "descSource": "https://www.votetesla.com/annual-meeting-details/"
+    },
     {
       "id": "f9-crs35",
       "title": "Falcon 9 · CRS-35 to the ISS",

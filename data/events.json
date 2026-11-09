@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-11-08T10:20:00+00:00",
+  "updated": "2026-11-09T08:41:14+00:00",
   "events": {
     "tesla-2026-asm": {
       "title": "Tesla 2026 Annual Meeting of Shareholders",
@@ -9,7 +9,7 @@
       "status": "scheduled",
       "major": true,
       "href": "https://www.votetesla.com/annual-meeting-details/",
-      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 Irish time). Virtual at virtualshareholdermeeting.com/TSLA2026, webcast at tesla.com/2026shareholdermeeting, limited in-person at Giga Texas. Record date 13 Oct 2026. The in-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov.",
+      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 UTC / 21:00 Dublin). Virtual meeting at virtualshareholdermeeting.com/TSLA2026; limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov. Source: votetesla.com/annual-meeting-details/ (checked 9 Nov 2026).",
       "sources": [
         "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
         "https://www.votetesla.com/annual-meeting-details/"
