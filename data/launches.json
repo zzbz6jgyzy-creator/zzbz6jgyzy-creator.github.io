@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-09T00:50:06Z",
- "checked": "2026-11-09T00:50:06Z",
+ "updated": "2026-11-09T07:55:59Z",
+ "checked": "2026-11-09T07:55:59Z",
  "results": [
   {
    "id": "7330d83b-c478-426c-8859-f9e3a335876d",
@@ -72,7 +72,7 @@
      "name": null
     }
    },
-   "last_updated": "2026-11-08T01:58:35Z"
+   "last_updated": "2026-11-09T01:59:52Z"
   },
   {
    "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
@@ -187,7 +187,7 @@
      "name": null
     }
    },
-   "last_updated": "2026-11-08T01:58:28Z"
+   "last_updated": "2026-11-09T01:59:45Z"
   },
   {
    "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
