@@ -1,7 +1,7 @@
 /* Event countdown (Flight 15 hub, homepage feature, homepage "Next livestream").
    Markup: <div data-countdown data-start="ISO" data-end="ISO"> with optional
    [data-cd-label], [data-cd-time], [data-cd-sub] children and data-after-label.
-   Before the start: "T−" and a ticking d hh:mm:ss. During start..end: "Launch window open".
+   Before the start: "T−" and a ticking d hh:mm:ss (data-cd-urgent="soon" in the last 10 minutes, "final" in the last minute). During start..end: "Launch window open".
    After the end: the after label (default "Launched"). The saved HTML always shows the
    absolute time, so the page is correct with JavaScript off and never shows a stale
    relative time. One timer drives every countdown on the page. */
@@ -19,6 +19,10 @@
     var label = el.querySelector("[data-cd-label]"), time = el.querySelector("[data-cd-time]"), sub = el.querySelector("[data-cd-sub]");
     var state = now < start ? "before" : now < end ? "open" : "after";
     if (el.getAttribute("data-cd-state") !== state) el.setAttribute("data-cd-state", state);
+    // Launch-clock tension (CSS does the animating, and only when the reader allows motion): the last 10 minutes
+    // before the window opens are "soon", the last minute is "final".
+    var until = start - now, urgent = state === "before" && until <= 600000 ? (until <= 60000 ? "final" : "soon") : "";
+    if ((el.getAttribute("data-cd-urgent") || "") !== urgent) { if (urgent) el.setAttribute("data-cd-urgent", urgent); else el.removeAttribute("data-cd-urgent"); }
     // The saved line under the countdown already carries the full date, so only the big line changes.
     if (!el.hasAttribute("data-cd-fixed")) el.setAttribute("data-cd-fixed", time ? time.textContent : "");
     var fixed = el.getAttribute("data-cd-fixed");
