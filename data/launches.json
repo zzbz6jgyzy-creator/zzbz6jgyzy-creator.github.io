@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-10T17:46:35Z",
- "checked": "2026-11-10T17:46:35Z",
+ "updated": "2026-11-10T23:15:22Z",
+ "checked": "2026-11-10T23:15:22Z",
  "results": [
   {
    "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
@@ -325,7 +325,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-10T16:25:24Z",
+   "last_updated": "2026-11-10T18:41:03Z",
    "mission": {
     "name": "USSF-627",
     "type": "Government/Top Secret",
@@ -357,7 +357,7 @@
      "name": "SpaceX Starbase, TX, USA"
     }
    },
-   "last_updated": "2026-11-09T23:06:16Z",
+   "last_updated": "2026-11-10T22:06:46Z",
    "mission": {
     "name": "Starlink Group 31-2 (Starship Flight 15)",
     "type": "Communications",
