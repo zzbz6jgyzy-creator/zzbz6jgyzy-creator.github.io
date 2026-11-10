@@ -86,8 +86,10 @@
   // Shared dates (/data/events.json) override the starship-data.js fallback
   const evReady = fetch("/data/events.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((j) => {
     const ev = j && j.events && j.events["starship-flight-" + (S && S.next ? S.next.flight : "")];
-    if (ev && ev.date && S && S.next) {
-      S.next.start = ev.date + "T00:00:00Z"; if (ev.precision) S.next.precision = ev.precision;
+    if (ev && S && S.next && (ev.start || ev.date)) {
+      S.next.start = ev.start || (ev.date + "T00:00:00Z");
+      if (ev.end) S.next.end = ev.end;
+      if (ev.precision) S.next.precision = ev.precision;
       const i = trk.findIndex((x) => x.k === "Starship"), n = starship();
       if (n) { if (i >= 0) trk[i] = n; else trk.unshift(n); paint(); }
     }

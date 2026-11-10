@@ -1684,6 +1684,8 @@
   "number": 15,
   "referenceDate": "2026-11-13",
   "precision": "day",
+  "windowOpen": "2026-11-13T16:45:00-06:00",
+  "windowClose": "2026-11-13T18:00:00-06:00",
   "officialTime": null,
   "officialSource": null,
   "confirmed": false,
