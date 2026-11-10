@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-10T14:18:52.557Z",
+  "generatedAt": "2026-11-10T15:00:51.723Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-4-8-rl-c-stack.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)",
+      "at": "2026-11-10T14:41:15.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-4-8-rl-c-stack.html",
+      "href": "/dispatch/grok-4-8-rl-c-stack.html",
+      "summary": "Elon Musk says SpaceXSI dropped JAX and SGLang for its own C/C++ code, Grok 4.8 pre-training is done and the model is now in RL (as of 10 Nov 2026). He pledged a soft rollout to Grok Bot users later this week, with no date, benchmarks or pricing yet.",
+      "title": "Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/grok-4-8-rl-c-stack.html|2026-11-10T14:41:15.000Z|Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)"
+    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.38.4.5",
@@ -607,23 +624,6 @@
       "summary": "Elon Musk said Tesla has no government contracts and that government revenue will be under 10% of SpaceX revenue this quarter and under 5% a year from now, quoting a Warren Redlich draft letter. Those figures are his claims on X, not filings.",
       "title": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
       "id": "logged|dispatch:/dispatch/tesla-spacex-government-contracts.html|2026-11-06T18:31:00.000Z|Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/baron-orbital-data-centers.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028",
-      "at": "2026-11-06T18:31:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/baron-orbital-data-centers.html",
-      "href": "/dispatch/baron-orbital-data-centers.html",
-      "summary": "Investor Ron Baron told CNBC Squawk Box that Elon Musk is targeting 2027 and 2028 launches of solar-powered data centers into orbit. Elon replied: \"Ron Baron understands.\" Investor commentary, not a SpaceX announcement.",
-      "title": "Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028",
-      "id": "logged|dispatch:/dispatch/baron-orbital-data-centers.html|2026-11-06T18:31:00.000Z|Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028"
     },
     {
       "type": "changed",
@@ -1909,14 +1909,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-11-09T08:41:14.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1930,14 +1930,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-11-10T13:42:18.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1951,35 +1951,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-10T14:18:52.557Z",
+      "lastChecked": "2026-11-10T15:00:51.723Z",
       "lastVerified": "2026-11-10T12:38:51.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1988,85 +1988,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.538Z",
-      "finished": "2026-11-10T14:18:52.542Z"
+      "started": "2026-11-10T15:00:51.642Z",
+      "finished": "2026-11-10T15:00:51.708Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.542Z",
-      "finished": "2026-11-10T14:18:52.543Z"
+      "started": "2026-11-10T15:00:51.708Z",
+      "finished": "2026-11-10T15:00:51.708Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.543Z",
-      "finished": "2026-11-10T14:18:52.543Z"
+      "started": "2026-11-10T15:00:51.708Z",
+      "finished": "2026-11-10T15:00:51.708Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.543Z",
-      "finished": "2026-11-10T14:18:52.550Z"
+      "started": "2026-11-10T15:00:51.708Z",
+      "finished": "2026-11-10T15:00:51.715Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.550Z",
-      "finished": "2026-11-10T14:18:52.553Z"
+      "started": "2026-11-10T15:00:51.715Z",
+      "finished": "2026-11-10T15:00:51.719Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.553Z",
-      "finished": "2026-11-10T14:18:52.554Z"
+      "started": "2026-11-10T15:00:51.719Z",
+      "finished": "2026-11-10T15:00:51.720Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.554Z",
-      "finished": "2026-11-10T14:18:52.555Z"
+      "started": "2026-11-10T15:00:51.720Z",
+      "finished": "2026-11-10T15:00:51.720Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.555Z",
-      "finished": "2026-11-10T14:18:52.555Z"
+      "started": "2026-11-10T15:00:51.720Z",
+      "finished": "2026-11-10T15:00:51.720Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.555Z",
-      "finished": "2026-11-10T14:18:52.555Z"
+      "started": "2026-11-10T15:00:51.720Z",
+      "finished": "2026-11-10T15:00:51.720Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.555Z",
-      "finished": "2026-11-10T14:18:52.556Z"
+      "started": "2026-11-10T15:00:51.720Z",
+      "finished": "2026-11-10T15:00:51.722Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.556Z",
-      "finished": "2026-11-10T14:18:52.557Z"
+      "started": "2026-11-10T15:00:51.722Z",
+      "finished": "2026-11-10T15:00:51.722Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.557Z",
-      "finished": "2026-11-10T14:18:52.557Z"
+      "started": "2026-11-10T15:00:51.722Z",
+      "finished": "2026-11-10T15:00:51.722Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-10T14:18:52.557Z",
-      "finished": "2026-11-10T14:18:52.557Z"
+      "started": "2026-11-10T15:00:51.722Z",
+      "finished": "2026-11-10T15:00:51.723Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-10T14:18:52.557Z",
+    "generatedAt": "2026-11-10T15:00:51.723Z",
     "factCount": 20,
     "changeCount": 93,
     "conflictCount": 2,
