@@ -1,3 +1,7 @@
+## 2026-11-10 — Starship Flight 15 hub shows the published window
+
+- SpaceX’s mission page lists a 75-minute window on 13 Nov 2026, opening 4:45 p.m. CT (6:00 p.m. close). The Starship observatory next-mission card, briefing and hero now show that range. It is still a published window, not a confirmed T-0, so there is no countdown clock.
+
 ## 2026-11-10 — Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules
 
 - Dispatch: Tesla’s 9 Nov 2026 public comment on NHTSA’s notice of intent to form a committee to modernize FMVSS 108 asks that the overhaul cover camera-guided matrix LED headlights and over-the-air changes, and that more automaker seats be added. This is a comment, not a petition. No rule has changed. Licensed Commons Model 3 Highland photo (CC BY 4.0, Aos.1905) is the card and hero.

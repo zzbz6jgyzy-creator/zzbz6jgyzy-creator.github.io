@@ -5,6 +5,7 @@ window.STARSHIP = {
   next: {
     flight: 15,
     start: "2026-11-13T16:45:00-06:00",
+    end: "2026-11-13T18:00:00-06:00",
     precision: "day",
     pad: "Starbase · OLP-2",
     booster: "B22",
