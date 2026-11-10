@@ -130,6 +130,10 @@ def article_topic(html, relpath):
         return "roadster"
     if re.search(r"\bfsd\b|software|updates\b|cybercab|robotaxi|headlight|automation", hay):
         return "tesla-software"
+    # Grok / xAI / SpaceXSI before the SpaceX substring match: "SpaceXSI" would
+    # otherwise pull a Starship newsletter band onto Grok articles.
+    if re.search(r"\bgrok\b|\bxai\b|spacexsi", hay):
+        return "website"
     if re.search(r"starship|starlink|spacex|falcon|dragon|super heavy|raptor", hay):
         return "spacex"
     if re.search(r"tesla", hay):

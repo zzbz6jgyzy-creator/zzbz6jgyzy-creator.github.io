@@ -1,6 +1,19 @@
 {
-  "updated": "2026-11-10T08:45:00Z",
+  "updated": "2026-11-10T14:41:15Z",
   "articles": [
+    {
+      "url": "/dispatch/grok-4-8-rl-c-stack.html",
+      "title": "Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)",
+      "seoTitle": "Musk: Grok 4.8 is in RL on a homemade C stack; Bot rollout this week",
+      "date": "2026-11-10T14:41:15Z",
+      "topic": "xai",
+      "tag": "Grok",
+      "image": "/assets/dispatch/nvidia-gb200-nvl72-computex-2024.jpg",
+      "imageAlt": "An Nvidia GB200 NVL72 rack in an ASUS display at COMPUTEX 2024, shown to illustrate the kind of AI training hardware used for models like Grok. This is not a photograph of xAI’s Colossus facility or of Grok 4.8 training.",
+      "summary": "Elon Musk says SpaceXSI dropped JAX and SGLang for its own C/C++ code, Grok 4.8 pre-training is done and the model is now in RL (as of 10 Nov 2026). He pledged a soft rollout to Grok Bot users later this week, with no date, benchmarks or pricing yet.",
+      "pinned": false,
+      "author": "Alex R"
+    },
     {
       "url": "/dispatch/spacex-starbase-24b-gas-compute.html",
       "title": "SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)",

@@ -112,6 +112,15 @@ class InjectNewsletter(unittest.TestCase):
         html = '<meta property="article:section" content="SpaceX" /><p class="eyebrow">SpaceX · Updated 14 Oct 2026</p>'
         self.assertEqual(mod.article_topic(html, "dispatch/ship-40.html"), "spacex")
 
+    def test_spacexsi_grok_eyebrow_is_website_not_spacex(self):
+        html = (
+            '<script type="application/ld+json">{"articleSection":"Grok"}</script>'
+            '<p class="eyebrow">SpaceXSI · Grok · 10 Nov 2026</p>'
+        )
+        self.assertEqual(
+            mod.article_topic(html, "dispatch/grok-4-8-rl-c-stack.html"), "website"
+        )
+
     def test_block_has_no_issue_count_proof(self):
         html = mod.block_html(
             kind="article",
