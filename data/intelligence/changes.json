@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-10T11:51:54.273Z",
+  "updated": "2026-11-10T13:42:21.824Z",
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:newest-reporting",
+      "type": "appeared",
+      "factId": "tesla-software:wave:2026.38.4.5",
       "topic": "tesla-software",
       "tracker": "software",
-      "field": "newest-reporting",
-      "previous": "2026.38.5.12",
-      "next": "2026.38.4.5",
+      "field": "wave:2026.38.4.5",
+      "previous": "0",
+      "next": "1",
       "at": "2026-11-10T11:51:51.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3287 cars)",
+      "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Newest reporting build changed from 2026.38.5.12 to 2026.38.4.5.",
-      "title": "Newest reporting build",
-      "id": "changed|tesla-software:newest-reporting|2026-11-10T11:51:51.000Z|2026.38.4.5"
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.4.5 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "title": "2026.38.4.5",
+      "id": "appeared|tesla-software:wave:2026.38.4.5|2026-11-10T11:51:51.000Z|1"
     },
     {
       "type": "logged",
@@ -884,23 +884,6 @@
       "summary": "Texas Cybercab registrations moved from 351 to 420. A registered car isn’t necessarily in service yet.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-23T00:00:00.000Z|420"
-    },
-    {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.38.3.2",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.3.2",
-      "previous": "0",
-      "next": "3",
-      "at": "2026-10-22T20:53:15.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.3.2 first appeared in the Teslascope sample with 3 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
-      "title": "2026.38.3.2",
-      "id": "appeared|tesla-software:wave:2026.38.3.2|2026-10-22T20:53:15.000Z|3"
     },
     {
       "type": "changed",
