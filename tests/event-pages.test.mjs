@@ -55,12 +55,17 @@ test("head has standard title, description, canonical, og and twitter tags", () 
 test("countdown shows window open, then the after label, from the saved markup", () => {
   const src = fs.readFileSync("event-countdown.js", "utf8");
   const el = { attrs: { "data-start": "2026-11-13T22:45:00.000Z", "data-end": "2026-11-14T00:00:00.000Z", "data-after-sub": "closed" }, kids: {},
-    getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; }, setAttribute(k, v) { this.attrs[k] = String(v); }, hasAttribute(k) { return k in this.attrs; },
+    getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; }, setAttribute(k, v) { this.attrs[k] = String(v); }, removeAttribute(k) { delete this.attrs[k]; }, hasAttribute(k) { return k in this.attrs; },
     querySelector(s) { return this.kids[s] || (this.kids[s] = { textContent: s === "[data-cd-time]" ? "13 Nov, 22:45 UTC" : "" }); } };
   const ctx = { window: {}, document: { readyState: "complete", querySelectorAll: () => [] }, setInterval() {}, Date };
   vm.runInNewContext(src, ctx);
   const { render } = ctx.window.SDCountdown;
   render(el, Date.parse("2026-11-13T22:44:00Z")); assert.equal(el.attrs["data-cd-state"], "before"); assert.equal(el.kids["[data-cd-time]"].textContent, "00:01:00");
+  // Launch-clock tension: none until 10 minutes out, "soon" inside 10 minutes, "final" inside the last minute, none once open.
+  render(el, Date.parse("2026-11-13T22:30:00Z")); assert.equal(el.attrs["data-cd-urgent"], undefined);
+  render(el, Date.parse("2026-11-13T22:35:00Z")); assert.equal(el.attrs["data-cd-urgent"], "soon");
+  render(el, Date.parse("2026-11-13T22:44:30Z")); assert.equal(el.attrs["data-cd-urgent"], "final");
+  render(el, Date.parse("2026-11-13T22:45:00Z")); assert.equal(el.attrs["data-cd-urgent"], undefined, "window open: the open state takes over");
   render(el, Date.parse("2026-11-13T23:00:00Z")); assert.equal(el.attrs["data-cd-state"], "open"); assert.match(el.kids["[data-cd-label]"].textContent, /window open/);
   render(el, Date.parse("2026-11-14T01:00:00Z")); assert.equal(el.attrs["data-cd-state"], "after"); assert.equal(el.kids["[data-cd-time]"].textContent, "13 Nov, 22:45 UTC");
 });

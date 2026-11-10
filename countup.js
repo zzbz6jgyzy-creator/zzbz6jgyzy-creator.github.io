@@ -1,38 +1,49 @@
-// Count tracker numbers up once when they scroll into view. Skipped for reduced motion.
+/* Count-up for headline figures. Opt in with <strong data-countup>11,204</strong> (never data-count: script.js owns that
+   one and rewrites the element). The saved HTML keeps the true number, so the page is right without JavaScript, in
+   search results and in print. When the figure first scrolls into view it counts up from 0 to that number in about a
+   second. Only plain whole numbers with commas, and an optional trailing %, qualify, so nothing else is ever touched.
+   Nothing happens for readers who ask for reduced motion, in hidden tabs, or where IntersectionObserver is missing.
+   The element's width is fixed to its final width first, so the page never shifts while digits change. */
 (function () {
-  if (!("IntersectionObserver" in window)) return;
-  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var els = document.querySelectorAll(".stats .stat b, .fsd-kpi b, .cc-stat b, .sl-n");
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      io.unobserve(e.target);
-      run(e.target);
-    });
-  }, { threshold: 0.5 });
-  function run(el) {
-    var text = el.textContent.trim();
-    var m = text.match(/^([^\d]*)(\d[\d,]*(?:\.\d+)?)(.*)$/);
-    if (!m || /[A-Za-z]/.test(m[1]) || /^\d{4}$/.test(m[2])) return;
-    var raw = m[2], target = parseFloat(raw.replace(/,/g, ""));
-    if (!isFinite(target) || target === 0) return;
-    var decimals = (raw.split(".")[1] || "").length, commas = raw.indexOf(",") > -1;
-    var start = null, dur = 900;
-    el.setAttribute("aria-label", text);
-    el.style.fontVariantNumeric = "tabular-nums";
-    function fmt(v) {
-      var s = v.toFixed(decimals);
-      if (commas) s = Number(s).toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-      return m[1] + s + m[3];
-    }
-    function step(t) {
-      if (start === null) start = t;
-      var p = Math.min(1, (t - start) / dur), eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = p < 1 ? fmt(target * eased) : text;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+  "use strict";
+  var DUR = 1100;
+  function parse(text) {
+    var m = /^(\d[\d,]*)(%?)$/.exec(String(text).trim());
+    if (!m) return null;
+    var n = Number(m[1].replace(/,/g, ""));
+    return isFinite(n) ? { n: n, suffix: m[2], commas: m[1].indexOf(",") >= 0 } : null;
   }
-  function init() { els = document.querySelectorAll(".stats .stat b, .fsd-kpi b, .cc-stat b, .sl-n"); els.forEach(function (el) { io.observe(el); }); }
-  if (document.readyState === "complete") init(); else window.addEventListener("load", init);
+  function fmt(v, p) { return (p.commas ? Math.round(v).toLocaleString("en-US") : String(Math.round(v))) + p.suffix; }
+  function run(el, p, final) {
+    var t0 = null;
+    function frame(t) {
+      if (t0 === null) t0 = t;
+      var k = Math.min(1, (t - t0) / DUR), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = k < 1 ? fmt(p.n * e, p) : final;
+      if (k < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  function start() {
+    if (!("IntersectionObserver" in window) || !window.requestAnimationFrame) return;
+    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var els = document.querySelectorAll("[data-countup]");
+    if (!els.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        var el = en.target, final = el.textContent, p = parse(final);
+        if (!p || p.n <= 0 || document.hidden) return;
+        // Fixed-width digits first, then measure: measuring before would fix the box narrower than the final number.
+        el.style.fontVariantNumeric = "tabular-nums";
+        if (getComputedStyle(el).display === "inline") el.style.display = "inline-block";
+        el.style.minWidth = Math.ceil(el.getBoundingClientRect().width) + "px";
+        run(el, p, final);
+      });
+    }, { threshold: 0.6 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+  window.SDCountUp = { parse: parse, fmt: fmt };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();

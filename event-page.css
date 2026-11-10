@@ -53,3 +53,16 @@ html[data-theme=light] .ev-chip-target{color:#1f5a9a}
 .ev-fresh{margin:0 0 12px;padding:10px 14px;border:1px solid var(--line-strong);border-left:3px solid var(--sec-accent,var(--red,#E31937));border-radius:10px;font:500 14px/1.4 Inter,"Inter Fallback",system-ui,sans-serif;color:var(--ink)}
 .ev-fresh[hidden]{display:none}
 .ev-fresh a{color:inherit;font-weight:700;text-underline-offset:3px}
+
+/* Countdown tension: a slow glow in the last 10 minutes, faster in the last minute, and one soft flash when the window
+   opens. Border and shadow only (no layout change). Reduced motion keeps the accent border but nothing moves. */
+.evc[data-cd-urgent]{border-color:var(--sec-accent,#e31937)}
+.evc[data-cd-urgent] .evc-label{color:var(--sec-accent,var(--red-text))}
+.evc[data-cd-urgent] .evc-time{font-variant-numeric:tabular-nums}
+@media(prefers-reduced-motion:no-preference){
+.evc[data-cd-urgent=soon]{animation:evc-glow 2.4s ease-in-out infinite}
+.evc[data-cd-urgent=final]{animation:evc-glow 1s ease-in-out infinite}
+.evc[data-cd-state=open]{animation:evc-open 1.6s ease-out 1}
+@keyframes evc-glow{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 22px 2px color-mix(in srgb,var(--sec-accent,#e31937) 45%,transparent)}}
+@keyframes evc-open{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--sec-accent,#e31937) 70%,transparent)}100%{box-shadow:0 0 0 22px transparent}}
+}

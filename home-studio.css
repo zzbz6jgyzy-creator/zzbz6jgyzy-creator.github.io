@@ -549,3 +549,11 @@ html.has-sd-bar body{padding-bottom:76px}
 /* The feature strip sits inside the page gutters already; its own "100% - 32px" inset it a second time, so it was
    narrower than the hero and off its left edge at every width. */
 .hs-home .hv-feature{width:100%}
+
+/* Flight 15 strip: the same launch-clock glow as the event page (event-countdown.js sets data-cd-urgent). */
+.hv-feature .evc[data-cd-urgent]{border-color:var(--sec-accent,#e31937)}
+@media(prefers-reduced-motion:no-preference){
+.hv-feature .evc[data-cd-urgent=soon]{animation:hvf-glow 2.4s ease-in-out infinite}
+.hv-feature .evc[data-cd-urgent=final]{animation:hvf-glow 1s ease-in-out infinite}
+@keyframes hvf-glow{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 18px 1px color-mix(in srgb,var(--sec-accent,#e31937) 45%,transparent)}}
+}
