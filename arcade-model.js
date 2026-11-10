@@ -1,5 +1,5 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.SDArcadeModel=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){'use strict';
- const GAMES=['catch','staging','robotaxi'],MODES=['training','campaign','daily'];
+ const GAMES=['catch','staging','robotaxi'],MODES=['training','campaign','daily','flight15'];
  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
  function hash(s){let h=2166136261;for(const c of String(s)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
  function random(seed){let a=hash(seed);return()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;};}
@@ -12,6 +12,9 @@
  function merge(a,b){const x=profile(a),y=profile(b);for(const[k,r]of Object.entries(y.records)){const old=x.records[k];x.records[k]={...(!old||r.score>old.score?r:old),complete:r.complete||old?.complete||false,missions:Math.max(r.missions,old?.missions||0)};}x.checkpoints={...x.checkpoints,...y.checkpoints};x.last=y.last||x.last;x.lastMode=y.lastMode||x.lastMode;x.lastDay=y.lastDay||x.lastDay;return x;}
  const TITLES=['First light','Coastal breeze','Blue hour','Crosswind','Night watch','Precision approach'];
  function flightSpec(game,mode,index,base,date){const i=clamp(index,0,5),r=random(seed(game,mode,date)+':'+i),s={...base,name:(mode==='training'?'Flight school':mode==='daily'?'Daily mission '+(i+1):'Mission '+(i+1))+' · '+TITLES[i]};
+  // Flight 15 special (Catch only): two fixed missions, the same for every player, so scores can be compared.
+  // Arcade rules; not SpaceX's flight profile.
+  if(game==='catch'&&mode==='flight15'){const f=[{name:'Flight 15 · Super Heavy catch',wind:.004,fuel:110,gap:46,catchVy:2.6,night:.15},{name:'Flight 15 · Ship catch',wind:.006,fuel:100,gap:42,catchVy:2.4,night:.1}][clamp(index,0,1)];return{...s,...f};}
   if(game==='catch'){s.wind=mode==='training'?0:mode==='daily'?.006+r()*.012:.002+i*.003;s.fuel=mode==='training'?160:Math.max(78,120-i*7);s.gap=mode==='training'?64:Math.max(30,54-i*4);s.catchVy=mode==='training'?3.5:Math.max(1.6,2.8-i*.2);s.night=mode==='training'?.12:mode==='daily'?r():i/6;}
   else{s.climb=mode==='training'?8:mode==='daily'?7+r()*2:8.8-i*.3;s.window=mode==='training'?2.6:mode==='daily'?1.35+r()*.3:Math.max(1.1,2.1-i*.16);s.wind=mode==='training'?0:.003+i*.002;s.engineOut=mode==='training'?0:Math.max(0,Math.floor((i-1)/3));s.failAngle=mode==='training'?.65:.56-i*.025;s.stageAngle=mode==='training'?.35:.33-i*.018;}
   return s;

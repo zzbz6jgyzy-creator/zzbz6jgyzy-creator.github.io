@@ -666,7 +666,7 @@
     }
     score += gained;
     if (!demo && score > best) setBest(score);
-    const limit=arcade.mode==='daily'?3:arcade.mode==='training'?1:6;
+    const limit=arcade.mode==='daily'?3:arcade.mode==='training'?1:arcade.mode==='flight15'?2:6;
     const complete=flight+1>=limit;
     if(demo){state='complete';score=0;showOverlay('Training demonstration','Now it’s your turn.','Watch the bank, braking burn and final alignment. Demonstration scores are not saved.','Take the controls');return;}
     state=complete?'complete':'caught';
