@@ -12,3 +12,8 @@ html[data-theme=light] .to-studio{--to-bg:#f5f5f7;--to-card:#fff;--to-ink:#15192
 .to-hero picture{display:block}.to-hero-image{position:absolute;inset:0}.to-energy-mobile{display:none}
 @media(max-width:760px){.to-energy-diagram{min-width:0}.to-energy-desktop{display:none}.to-energy-mobile{display:block;max-width:360px;margin:30px auto}}
 .to-announcement{position:fixed;right:24px;bottom:24px;z-index:30;max-width:min(380px,calc(100vw - 40px));padding:15px 20px;border:1px solid var(--to-accent);border-radius:7px;background:var(--to-card);box-shadow:0 12px 50px #0005;font-size:12px;line-height:1.6}.to-announcement:empty{display:none}
+
+/* The prerendered livestream card sits directly in the page shell, above the full-bleed hero, so it ran edge to edge
+   with its border cut off. Keep it to the hero's text column width with the page gutters. */
+.site-shell>section.lv{width:min(1296px,calc(100% - 44px));margin:10px auto 12px}
+@media(min-width:900px){.site-shell>section.lv{width:min(1296px,calc(100% - 144px))}}

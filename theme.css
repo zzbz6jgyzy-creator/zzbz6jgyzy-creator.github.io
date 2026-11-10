@@ -642,3 +642,7 @@ html[data-theme="light"] .fe { --red: #c4132e; }
 /* Captions on the permanently dark screenshot panel need light text in the light theme too (video captions use the card colour). */
 html[data-theme="light"] .figure.figure-shot figcaption { color: #b9bcc3; }
 html[data-theme="light"] .sd-note { color: var(--ink-soft); opacity: 1; } /* some articles set opacity:.75 inline */
+
+/* The footer lockup's wordmark is white, so "SUPERCHARGED" vanished on the light page. Light theme swaps in the
+   ink version (same artwork, dark wordmark, white bolt on red). */
+html[data-theme=light] .footer-lockup img{content:url(/assets/brand/lockup-1b-trim-ink.svg)}
