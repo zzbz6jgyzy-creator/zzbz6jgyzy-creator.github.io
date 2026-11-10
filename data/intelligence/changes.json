@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-10T14:18:52.557Z",
+  "updated": "2026-11-10T15:00:51.723Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-4-8-rl-c-stack.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)",
+      "at": "2026-11-10T14:41:15.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-4-8-rl-c-stack.html",
+      "href": "/dispatch/grok-4-8-rl-c-stack.html",
+      "summary": "Elon Musk says SpaceXSI dropped JAX and SGLang for its own C/C++ code, Grok 4.8 pre-training is done and the model is now in RL (as of 10 Nov 2026). He pledged a soft rollout to Grok Bot users later this week, with no date, benchmarks or pricing yet.",
+      "title": "Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/grok-4-8-rl-c-stack.html|2026-11-10T14:41:15.000Z|Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)"
+    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.38.4.5",
@@ -323,23 +340,6 @@
       "summary": "Elon Musk said Tesla has no government contracts and that government revenue will be under 10% of SpaceX revenue this quarter and under 5% a year from now, quoting a Warren Redlich draft letter. Those figures are his claims on X, not filings.",
       "title": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
       "id": "logged|dispatch:/dispatch/tesla-spacex-government-contracts.html|2026-11-06T18:31:00.000Z|Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/baron-orbital-data-centers.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028",
-      "at": "2026-11-06T18:31:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/baron-orbital-data-centers.html",
-      "href": "/dispatch/baron-orbital-data-centers.html",
-      "summary": "Investor Ron Baron told CNBC Squawk Box that Elon Musk is targeting 2027 and 2028 launches of solar-powered data centers into orbit. Elon replied: \"Ron Baron understands.\" Investor commentary, not a SpaceX announcement.",
-      "title": "Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028",
-      "id": "logged|dispatch:/dispatch/baron-orbital-data-centers.html|2026-11-06T18:31:00.000Z|Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028"
     },
     {
       "type": "changed",
