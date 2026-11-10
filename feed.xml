@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 10 Nov 2026 02:42:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 08:45:00 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-starbase-24b-gas-compute.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-starbase-24b-gas-compute.html</guid>
+      <pubDate>Tue, 10 Nov 2026 08:45:00 +0000</pubDate>
+      <category>Starbase</category>
+      <description>A City of Starbase notice says SpaceX plans a gas-fired power plant and super-compute facility on about 444 acres by the Port of Brownsville, with about $24 billion for the first phases (as of 6 Nov 2026). Two of the city's three commissioners work for SpaceX. Nothing is approved yet; a hearing is set for 9 Dec 2026.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/starbase-launch-site-early-2026.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tesla pulls the Premium AWD Cybertruck. The Cyberbeast is the only trim left, at $109,990 (as of 10 Nov 2026)</title>
       <link>https://superchargeddaily.com/dispatch/cybertruck-cyberbeast-only.html</link>
@@ -717,15 +726,6 @@
       <category>SpaceX</category>
       <description>A draft agenda listed a closed-door 1,300-acre sale. Sources say SpaceX is the buyer; the state says it’s off November’s agenda.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/boca-chica-state-park-spacex-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Grok Bot says it’s 3x faster, adds Robinhood and Coinbase</title>
-      <link>https://superchargeddaily.com/dispatch/grok-bot-3x-faster-connectors.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-bot-3x-faster-connectors.html</guid>
-      <pubDate>Sat, 17 Oct 2026 01:55:00 +0000</pubDate>
-      <category>Grok</category>
-      <description>The speed figure is the company’s own claim. What’s new, and what to check before you connect a brokerage.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/grok-bot-3x-faster-connectors-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
