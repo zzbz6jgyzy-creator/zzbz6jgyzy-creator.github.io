@@ -1,40 +1,40 @@
 {
- "updated": "2026-11-10T03:38:48Z",
+ "updated": "2026-11-10T11:51:51Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-11-10T03:38:48Z",
-  "fleet": 12326,
+  "fetched": "2026-11-10T11:51:51Z",
+  "fleet": 12325,
   "versions": [
    {
     "id": "2026.39.6",
-    "installs": 221,
+    "installs": 222,
     "percent": 1.8,
-    "pending": 15
+    "pending": 14
    },
    {
     "id": "2026.38.6.1",
-    "installs": 253,
+    "installs": 254,
     "percent": 2.1,
-    "pending": 35
+    "pending": 33
    },
    {
     "id": "2026.38.6",
-    "installs": 5032,
-    "percent": 40.8,
-    "pending": 908
+    "installs": 5071,
+    "percent": 41.1,
+    "pending": 869
    },
    {
     "id": "2026.38.5.12",
-    "installs": 1760,
-    "percent": 14.3,
-    "pending": 159
+    "installs": 1786,
+    "percent": 14.5,
+    "pending": 132
    },
    {
     "id": "2026.38.5.11",
-    "installs": 2542,
-    "percent": 20.6,
-    "pending": 169
+    "installs": 2523,
+    "percent": 20.5,
+    "pending": 164
    },
    {
     "id": "2026.38.5.10",
@@ -50,7 +50,7 @@
    },
    {
     "id": "2026.38.5.1",
-    "installs": 235,
+    "installs": 230,
     "percent": 1.9,
     "pending": 8
    },
@@ -62,14 +62,14 @@
    },
    {
     "id": "2026.38.3.2",
-    "installs": 577,
-    "percent": 4.7,
+    "installs": 545,
+    "percent": 4.4,
     "pending": 44
    },
    {
     "id": "2026.38.3.1",
-    "installs": 145,
-    "percent": 1.2,
+    "installs": 141,
+    "percent": 1.1,
     "pending": 11
    },
    {
@@ -86,7 +86,7 @@
    },
    {
     "id": "2026.33.100",
-    "installs": 11,
+    "installs": 10,
     "percent": 0.1,
     "pending": 0
    },
@@ -103,8 +103,14 @@
     "pending": 0
    },
    {
+    "id": "2026.32.200",
+    "installs": 1,
+    "percent": 0.0,
+    "pending": 0
+   },
+   {
     "id": "2026.32.7",
-    "installs": 104,
+    "installs": 102,
     "percent": 0.8,
     "pending": 3
    },
@@ -146,14 +152,14 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 75,
+    "installs": 73,
     "percent": 0.6,
     "pending": 1
    },
    {
     "id": "2026.26.6.3",
-    "installs": 31,
-    "percent": 0.3,
+    "installs": 30,
+    "percent": 0.2,
     "pending": 0
    },
    {
@@ -224,7 +230,7 @@
    },
    {
     "id": "2026.20.6.1",
-    "installs": 137,
+    "installs": 136,
     "percent": 1.1,
     "pending": 2
    },
@@ -308,7 +314,7 @@
    },
    {
     "id": "2026.2.6",
-    "installs": 9,
+    "installs": 8,
     "percent": 0.1,
     "pending": 1
    },
@@ -479,78 +485,32 @@
     "installs": 7,
     "percent": 0.1,
     "pending": 1
-   },
-   {
-    "id": "2025.26.7",
-    "installs": 17,
-    "percent": 0.1,
-    "pending": 6
    }
   ]
  },
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-10T03:38:48Z",
+  "fetched": "2026-11-10T11:51:51Z",
   "items": [
    {
-    "t": "2026-11-10T01:26:29Z",
+    "t": "2026-11-10T09:58:18Z",
     "to": "2026.38.6",
     "from": "2026.38.3.2",
-    "model": "Model 3 AWD LR (2023)",
-    "hw": "3.0",
-    "country": "Sweden"
-   },
-   {
-    "t": "2026-11-10T01:05:44Z",
-    "to": "2026.38.5.12",
-    "from": "2026.38.5.1",
-    "model": "Model Y SR (2026)",
-    "hw": "4.0",
-    "country": "Canada"
-   },
-   {
-    "t": "2026-11-10T00:00:59Z",
-    "to": "2026.39.6",
-    "from": "2026.33.100",
     "model": "Model 3 SR (2024)",
     "hw": "4.0",
-    "country": "Netherlands"
+    "country": "France"
    },
    {
-    "t": "2026-11-09T23:00:44Z",
+    "t": "2026-11-10T08:34:10Z",
     "to": "2026.38.6",
-    "from": "2026.38.3.2",
-    "model": "Model Y AWD LR (2025)",
-    "hw": "3.0",
-    "country": "Austria"
-   },
-   {
-    "t": "2026-11-09T22:57:41Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model 3 Performance (2019)",
+    "from": "2026.38.3.1",
+    "model": "Model 3 AWD LR (2018)",
     "hw": "0.0",
     "country": "United States"
    },
    {
-    "t": "2026-11-09T21:34:14Z",
-    "to": "2026.38.6",
-    "from": "2026.38.3.2",
-    "model": "Model Y AWD LR (2022)",
-    "hw": "3.0",
-    "country": "United Kingdom"
-   },
-   {
-    "t": "2026-11-09T20:04:29Z",
-    "to": "2026.38.6",
-    "from": "2025.20.6",
-    "model": "Model 3 AWD LR (2021)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-09T19:27:41Z",
+    "t": "2026-11-10T08:32:52Z",
     "to": "2026.38.5.12",
     "from": "2026.38.5.11",
     "model": "Model Y AWD LR (2026)",
@@ -558,20 +518,60 @@
     "country": "United States"
    },
    {
-    "t": "2026-11-09T18:31:50Z",
-    "to": "2026.38.5.12",
-    "from": "2026.38.5.11",
-    "model": "Model Y AWD LR (2023)",
+    "t": "2026-11-10T08:30:53Z",
+    "to": "2026.38.6",
+    "from": "2026.38.3.2",
+    "model": "Model Y AWD LR (2021)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-10T08:28:30Z",
+    "to": "2026.38.6",
+    "from": "2026.38.3.2",
+    "model": "Model Y AWD LR (2026)",
     "hw": "4.0",
     "country": "United States"
    },
    {
-    "t": "2026-11-09T15:40:17Z",
-    "to": "2026.38.6",
-    "from": "2026.38.3.2",
-    "model": "Model Y AWD LR (2023)",
+    "t": "2026-11-10T08:24:10Z",
+    "to": "2026.38.4.5",
+    "from": "2026.27.6.5",
+    "model": "Model 3 SR (2022)",
+    "hw": "3.0",
+    "country": "South Korea"
+   },
+   {
+    "t": "2026-11-10T08:17:26Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model Y AWD LR (2026)",
     "hw": "4.0",
-    "country": "Germany"
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-10T08:15:48Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model 3 AWD LR (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-10T08:15:36Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model Y RWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-10T07:53:26Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model 3 RWD LR (2025)",
+    "hw": "3.0",
+    "country": "United States"
    }
   ]
  }
