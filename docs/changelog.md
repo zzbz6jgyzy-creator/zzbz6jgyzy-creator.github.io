@@ -1,3 +1,9 @@
+## 2026-11-10 — Grok 4.8 in RL on a homemade C stack; soft Bot rollout pledged later this week
+
+- Dispatch: Musk says SpaceXSI dumped JAX/SGLang for an in-house C/C++ RL and inference stack, Grok 4.8 pre-training is done and the model is now in RL, with a soft rollout to Grok Bot users pledged later this week (as of 10 Nov 2026). No date, cohort, benchmarks or 4.8 price. Licensed COMPUTEX 2024 GB200 NVL72 Commons photo (CC BY 3.0) is the card and hero — not Colossus, not Grok 4.8 training.
+- One-line update on the Grok Bot weekly-limits story pointing to this 4.8 stack note.
+- Newsletter topic matcher treats Grok / xAI / SpaceXSI as the general site band, so a SpaceXSI eyebrow does not pull the Starship signup onto Grok articles.
+
 ## 2026-11-09 — Terafab rush-ordering chip tools in Japan (40× Rapidus wafer capacity)
 
 - Dispatch: Nikkei reports Terafab’s procurement team visited Japanese equipment makers, placed rush orders due within months, and shared a 2032 plan of 1 million wafers a month — about 40 times Rapidus’s planned ~25,000 wafers a month. Reported plan, not a company announcement. Licensed NASA Glenn Research Center cleanroom photo (public domain) is the card and hero.
