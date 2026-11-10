@@ -1,5 +1,5 @@
 window.STARSHIP = {
-  updated: "2026-11-08",
+  updated: "2026-11-10",
   note:
     "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has a published window pending regulatory approval; that is not a confirmed T-0. Not affiliated with SpaceX.",
   next: {
@@ -29,6 +29,14 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-11-10",
+      mission: 15,
+      confirmed: false,
+      change:
+        "Re-checked SpaceX’s Flight 15 mission page on 10 Nov 2026: the window is still as soon as Friday 13 November from Pad 2, opening 4:45 p.m. CT, pending regulatory approval. Dual catch, 26 Starlink V3, more than 22 hours. No FAA licence is published. This is a re-check, not a new date.",
+      source: { outlet: "SpaceX · Starship Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
+    },
     {
       date: "2026-11-08",
       mission: 15,

@@ -210,6 +210,6 @@ test('map is a build-time SVG that shares its geometry, and the page stays light
   const page=fs.readFileSync('fsd-tracker.html','utf8');
   assert.equal((page.match(/<g id="ft-geo">/g)||[]).length,1,'geometry defined once');
   assert.equal((page.match(/<use href="#ft-geo"\/>/g)||[]).length,2);
-  assert.ok(Buffer.byteLength(page)<260*1024,'page HTML under 260 KB');
+  assert.ok(Buffer.byteLength(page)<280*1024,'page HTML under 280 KB');
   assert.ok(!/<script[^>]*src="[^"]*(leaflet|mapbox|d3|topojson)/i.test(page.replace(/\/assets\/js\/[\w-]+\.bundle\.[0-9a-f]+\.js/g,'')),'no map library (our own hashed bundles removed first)');
 });

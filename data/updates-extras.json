@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-10T11:51:51Z",
+ "updated": "2026-11-10T12:38:51Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-11-10T11:51:51Z",
-  "fleet": 12325,
+  "fetched": "2026-11-10T12:38:51Z",
+  "fleet": 12324,
   "versions": [
    {
     "id": "2026.39.6",
@@ -20,20 +20,20 @@
    },
    {
     "id": "2026.38.6",
-    "installs": 5071,
-    "percent": 41.1,
+    "installs": 5074,
+    "percent": 41.2,
     "pending": 869
    },
    {
     "id": "2026.38.5.12",
     "installs": 1786,
     "percent": 14.5,
-    "pending": 132
+    "pending": 131
    },
    {
     "id": "2026.38.5.11",
-    "installs": 2523,
-    "percent": 20.5,
+    "installs": 2520,
+    "percent": 20.4,
     "pending": 164
    },
    {
@@ -62,7 +62,7 @@
    },
    {
     "id": "2026.38.3.2",
-    "installs": 545,
+    "installs": 543,
     "percent": 4.4,
     "pending": 44
    },
@@ -230,7 +230,7 @@
    },
    {
     "id": "2026.20.6.1",
-    "installs": 136,
+    "installs": 137,
     "percent": 1.1,
     "pending": 2
    },
@@ -491,7 +491,7 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-10T11:51:51Z",
+  "fetched": "2026-11-10T12:38:51Z",
   "items": [
    {
     "t": "2026-11-10T09:58:18Z",

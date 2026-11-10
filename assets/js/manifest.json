@@ -25,8 +25,8 @@
       ]
     },
     "home": {
-      "file": "/assets/js/home.bundle.6c02000c7b.js",
-      "bytes": 144743,
+      "file": "/assets/js/home.bundle.2c084cf97f.js",
+      "bytes": 149378,
       "sources": [
         "starship-data.js",
         "fsd-europe-data.js",
@@ -52,7 +52,7 @@
       ]
     },
     "starlink": {
-      "file": "/assets/js/starlink.bundle.332c728221.js",
+      "file": "/assets/js/starlink.bundle.3043411760.js",
       "bytes": 23044,
       "sources": [
         "starlink-data.js",
@@ -80,8 +80,8 @@
       ]
     },
     "my-tesla": {
-      "file": "/assets/js/my-tesla.bundle.46be3f6da4.js",
-      "bytes": 180759,
+      "file": "/assets/js/my-tesla.bundle.2fe567a762.js",
+      "bytes": 187288,
       "sources": [
         "updates-data.js",
         "fsd-data.js",
@@ -128,8 +128,8 @@
       ]
     },
     "fsd-europe": {
-      "file": "/assets/js/fsd-europe.bundle.87e2267565.js",
-      "bytes": 112452,
+      "file": "/assets/js/fsd-europe.bundle.97579fa602.js",
+      "bytes": 116638,
       "sources": [
         "fsd-europe-data.js",
         "fsd-europe-model.js",
@@ -235,8 +235,8 @@
       ]
     },
     "explainers-fsd": {
-      "file": "/assets/js/explainers-fsd.bundle.1d830f1c26.js",
-      "bytes": 22142,
+      "file": "/assets/js/explainers-fsd.bundle.3711a2680f.js",
+      "bytes": 22559,
       "sources": [
         "fsd-data.js"
       ]
