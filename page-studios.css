@@ -30,3 +30,11 @@ html[data-theme=light] .ps-dispatch [data-disp-grid] .story-card .tag-xai{backgr
 @media(hover:hover){.ps-dispatch [data-disp-grid] .story-card:hover{transform:translateY(-3px);border-color:#ffffff4d}.ps-dispatch [data-disp-grid] .story-card:hover img{transform:scale(1.03)}.ps-dispatch [data-disp-grid] .story-card img{transition:transform .35s ease}}
 @media(prefers-reduced-motion:reduce){.ps-dispatch [data-disp-grid] .story-card,.ps-dispatch [data-disp-grid] .story-card img{transition:none!important;transform:none!important}}
 .ps-dispatch [data-disp-grid] .story-card .story-copy{align-content:start}
+
+/* Dispatch cards ease in as they scroll into view. CSS only (scroll-driven animation), so browsers without it and
+   readers who ask for reduced motion simply see the cards. Uses `translate`, leaving `transform` for the hover lift;
+   starts from 40% opacity, never fully hidden. */
+@supports (animation-timeline:view()){@media(prefers-reduced-motion:no-preference){
+.ps-dispatch [data-disp-grid] .story-card{animation:ps-card-in linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+@keyframes ps-card-in{from{opacity:.4;translate:0 22px}to{opacity:1;translate:0 0}}
+}}
