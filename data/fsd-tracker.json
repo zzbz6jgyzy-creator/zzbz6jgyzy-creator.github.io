@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewed": "2026-10-28",
+  "reviewed": "2026-11-10",
   "sources": [
     {
       "id": "q1-update",
@@ -35,8 +35,8 @@
       "kind": "reporting",
       "title": "Teslascope software updates (cars seen on each build)",
       "url": "https://www.teslascope.com/software",
-      "date": "2026-10-27",
-      "checked": "2026-10-27"
+      "date": "2026-11-10",
+      "checked": "2026-11-10"
     },
     {
       "id": "tesla-markets",
@@ -230,6 +230,11 @@
   },
   "changes": [
     {
+      "date": "2026-11-10",
+      "kind": "update",
+      "text": "Re-checked Teslascope and the Europe atlas. 2026.38.5.12 is now the largest Teslascope v14.3.13 sample. A Netherlands owner posted 2026.39.100 as Tesla Assisted Driving v14.2.2.7 with the RDW +10% speed cap; Teslascope has not recorded that build. No new EU country recognition. Tesla manufacturer pages remain 403, so Latvia is not independently re-listed."
+    },
+    {
       "date": "2026-10-28",
       "kind": "update",
       "text": "Latvia's 26 Oct recognition of the Dutch RDW approval is now recorded from the Latvian Ministry of Transport / CSDD notice, the tenth EU country. Tesla has not listed customer availability there yet; rollout begins soon."
@@ -397,12 +402,25 @@
       "2026-10-25",
       "2026-10-26",
       "2026-10-27",
-      "2026-10-28"
+      "2026-10-28",
+      "2026-10-29",
+      "2026-10-30",
+      "2026-10-31",
+      "2026-11-01",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+      "2026-11-05",
+      "2026-11-06",
+      "2026-11-07",
+      "2026-11-08",
+      "2026-11-09",
+      "2026-11-10"
     ],
     "timeline": 8,
     "caveat": "These are cars Teslascope has seen on each build: owners who connect their car to Teslascope, a self-selected sample that leans to enthusiasts and to North America and Europe. In our stored snapshots a build's count almost never falls, so we treat it as a running total of cars seen on that build, not a share of cars on it today. Other trackers follow different cars and can give different counts.",
-    "asOf": "2026-10-28T00:17:58Z",
-    "latestCount": 3362,
+    "asOf": "2026-11-10T11:51:51Z",
+    "latestCount": 3287,
     "builds": [
       {
         "id": "2026.38.5.1",
@@ -426,7 +444,20 @@
           1028,
           1029,
           1029,
-          1029
+          1029,
+          1028,
+          1028,
+          1029,
+          1029,
+          1029,
+          1030,
+          1030,
+          1030,
+          1031,
+          1031,
+          1031,
+          1031,
+          1031
         ]
       },
       {
@@ -451,57 +482,58 @@
           88,
           412,
           639,
-          642
+          792,
+          910,
+          939,
+          961,
+          968,
+          973,
+          983,
+          989,
+          994,
+          999,
+          1006,
+          1010,
+          1012,
+          1013
         ]
       },
       {
-        "id": "2026.32.7",
-        "fsd": "",
+        "id": "2026.38.5.12",
+        "fsd": "v14.3.13 (HW4)",
         "counts": [
-          357,
-          359,
-          361,
-          368,
-          369,
-          369,
-          370,
-          370,
-          373,
-          373,
-          374,
-          374,
-          375,
-          376,
-          376,
-          377,
-          377,
-          377,
-          377
-        ]
-      },
-      {
-        "id": "2026.38.3.1",
-        "fsd": "",
-        "counts": [
-          67,
-          91,
-          103,
-          167,
-          207,
-          255,
-          285,
-          294,
-          301,
-          305,
-          310,
-          314,
-          319,
-          323,
-          324,
-          326,
-          326,
-          326,
-          326
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          59,
+          404,
+          495,
+          551,
+          572,
+          581
         ]
       },
       {
@@ -526,12 +558,25 @@
           249,
           280,
           300,
-          300
+          322,
+          326,
+          334,
+          340,
+          344,
+          348,
+          354,
+          356,
+          360,
+          360,
+          360,
+          360,
+          360,
+          360
         ]
       },
       {
-        "id": "2026.38.5.6",
-        "fsd": "v14.3.12 (HW4)",
+        "id": "2026.38.6",
+        "fsd": "",
         "counts": [
           0,
           0,
@@ -547,15 +592,87 @@
           0,
           0,
           0,
-          62,
-          125,
-          139,
-          146,
-          146
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          17,
+          38,
+          44,
+          49,
+          78,
+          151,
+          205,
+          272,
+          296,
+          314,
+          319,
+          329
+        ]
+      },
+      {
+        "id": "2026.38.3.1",
+        "fsd": "",
+        "counts": [
+          67,
+          91,
+          103,
+          167,
+          207,
+          255,
+          285,
+          294,
+          301,
+          305,
+          310,
+          314,
+          319,
+          323,
+          324,
+          326,
+          326,
+          326,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327,
+          327
         ]
       }
     ],
     "releases": [
+      {
+        "id": "2026.39.100",
+        "date": "2026-11-10",
+        "status": "early",
+        "fsd": "v14.2.2.7 · Tesla Assisted Driving · Europe (owner report)",
+        "countries": [
+          "NL"
+        ]
+      },
+      {
+        "id": "2026.38.5.12",
+        "date": "2026-11-04",
+        "status": "early",
+        "fsd": "v14.3.13 (HW4) · North America",
+        "countries": [
+          "US",
+          "CA",
+          "MX",
+          "PR"
+        ]
+      },
       {
         "id": "2026.38.5.11",
         "date": "2026-10-24",
@@ -614,38 +731,12 @@
           "MX",
           "CA"
         ]
-      },
-      {
-        "id": "2026.33.5",
-        "date": "2026-10-06",
-        "status": "rolling",
-        "fsd": "v14.3.11 (HW4) · v14.3 Lite (HW3) · North America",
-        "countries": [
-          "US",
-          "CA"
-        ]
-      },
-      {
-        "id": "2026.33.100",
-        "date": "2026-10-06",
-        "status": "rolling",
-        "fsd": "FSD version not established · Europe",
-        "countries": [
-          "NL",
-          "BE",
-          "CZ",
-          "DK",
-          "EE",
-          "LT",
-          "SK",
-          "SI"
-        ]
       }
     ],
     "heatDays": 8
   },
   "atlas": {
-    "asOf": "2026-10-26",
+    "asOf": "2026-11-10",
     "source": "tesla-markets",
     "countries": [
       {
@@ -1075,7 +1166,7 @@
     ]
   },
   "europe": {
-    "asOf": "2026-10-28",
+    "asOf": "2026-11-10",
     "popSource": "eurostat",
     "popAsOf": "2025-01-01",
     "populationTotal": 450646971,
@@ -1438,7 +1529,7 @@
           "label": "Tesla with FSD (Supervised)",
           "miles": 5300676,
           "collisions": 830,
-          "drivenMiles": 4390000000.0,
+          "drivenMiles": 4390000000,
           "prior": 5100000
         },
         {
@@ -1446,7 +1537,7 @@
           "label": "Tesla, driven manually, with Active Safety",
           "miles": 2175763,
           "collisions": 16131,
-          "drivenMiles": 35090000000.0,
+          "drivenMiles": 35090000000,
           "prior": 2300000
         },
         {
@@ -1454,7 +1545,7 @@
           "label": "Tesla, driven manually, no Active Safety (pre-2014 cars)",
           "miles": 855132,
           "collisions": 250,
-          "drivenMiles": 213780000.0,
+          "drivenMiles": 213780000,
           "prior": 927000
         },
         {
@@ -1462,7 +1553,7 @@
           "label": "U.S. average, all vehicles",
           "miles": 660164,
           "collisions": 4989713,
-          "drivenMiles": 3290000000000.0,
+          "drivenMiles": 3290000000000,
           "prior": null
         }
       ],

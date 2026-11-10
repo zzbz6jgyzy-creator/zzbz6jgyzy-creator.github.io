@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewed": "2026-10-28",
-  "revision": "2026-10-28-global-3",
+  "reviewed": "2026-11-10",
+  "revision": "2026-11-10-global-1",
   "listed": [
     "US",
     "CA",
@@ -489,6 +489,14 @@
       "type": "media",
       "note": "Historical announcement reporting. It does not resolve current nationwide customer access.",
       "checked": "2026-10-26"
+    },
+    {
+      "id": "scope-eu-396",
+      "label": "Teslascope 2026.39.6",
+      "url": "https://teslascope.com/software/2026.39.6",
+      "type": "tracker",
+      "note": "42 cars in the Teslascope sample on 10 Nov 2026 in NL, BE, CZ, DK, SK, SI, LT and EE. Features list FSD (Supervised) without an FSD version number. Teslascope had not recorded 2026.39.100.",
+      "checked": "2026-11-10"
     }
   ],
   "versions": [
@@ -535,21 +543,46 @@
     {
       "id": "eu-firmware",
       "label": "FSD version not established",
-      "build": "2026.33.100",
+      "build": "2026.39.6",
       "hardware": "AI4 in this sample",
       "region": "European sample",
       "countries": [
         "NL",
         "BE",
+        "CZ",
         "DK",
-        "CZ"
+        "SK",
+        "SI",
+        "LT",
+        "EE"
       ],
-      "date": "2026-10-06",
-      "source": "scope-eu",
-      "note": "This is a firmware observation, not proof of a particular FSD version, national approval or eligibility."
+      "date": "2026-10-29",
+      "source": "scope-eu-396",
+      "note": "Teslascope sample on 10 Nov 2026. Firmware observation only. Teslascope does not list an FSD version for this build. A separate Netherlands owner video of 2026.39.100 is recorded on the Europe atlas, not here."
     }
   ],
   "events": [
+    {
+      "id": "eu-396",
+      "date": "2026-11-10",
+      "precision": "day",
+      "type": "software",
+      "title": "Europe firmware sample moved to 2026.39.6",
+      "summary": "Teslascope’s 10 Nov sample shows 42 cars on 2026.39.6 in eight FSD-approved EU countries. It lists FSD (Supervised) without a version number and has not recorded 2026.39.100.",
+      "countries": [
+        "NL",
+        "BE",
+        "CZ",
+        "DK",
+        "SK",
+        "SI",
+        "LT",
+        "EE"
+      ],
+      "sources": [
+        "scope-eu-396"
+      ]
+    },
     {
       "id": "world-review",
       "date": "2026-10-26",

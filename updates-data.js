@@ -1,17 +1,17 @@
 window.TESLA_UPDATES = {
-  updated: "2026-11-02",
+  updated: "2026-11-10",
   note:
     "Plain-English reading of Tesla’s public release notes, merged with a Teslascope snapshot of which builds connected cars are actually reporting. Not Tesla’s official rollout list. A feature can be in the notes and still missing in your country, on your hardware, or on your software package.",
   fsdNow: {
     headline: "FSD right now",
     lines: [
-      "Newest reporting, HW4 / AI4: FSD Supervised v14.3.13, first on 2026.38.5.10 (US cars from 20 Oct, 92 on Teslascope by 25 Oct) and now on the 2026.38.5.11 point release (first seen 24 Oct, 43 cars by 25 Oct, about 93% in the US and the rest in Canada). Its notes add better handling of small animals, rare objects leaning into the road, short system glitches and driver-monitoring gaze tracking, plus one shared model for Smart Summon, FSD and Robotaxi.",
-      "Australia and New Zealand, HW4 / AI4: FSD Supervised v14.3.12 (Tesla calls it “v14.3.12 Down Under”), first on 2026.38.5.5 from 20 Oct (136 installs on Teslascope) and now on the 2026.38.5.6 point release (first seen 24 Oct, 106 cars by 25 Oct, about 95% in Australia and the rest in New Zealand, almost all coming from 2026.38.5.5). Model 3 and Model Y. It adds Brake Confirm off by default for Start Self-Driving, and the new Arrival Options, Speed Profiles and Self-Driving stats.",
-      "Most common FSD build on 2026.38: v14.3.12 on 2026.38.5.1, the point release that started reaching US cars on 13 Oct. Mostly US, with the first cars in Mexico and Canada on 2026.38.5.",
-      "Wider North America HW4 build: v14.3.11 on 2026.33.5 (US and Canada). A big slice of US cars is still on v14.3.10 (2026.27.11). Automatic Collision Evasion is in 14.3.11, 14.3.12 and 14.3.13 — North America only.",
-      "North America, HW3: FSD Supervised v14.3 Lite on 2026.33.5 and 2026.38.5. Parking, unparking and start-from-park. No Collision Evasion.",
-      "Europe: FSD Supervised v14.2.2.6 on 2026.33.100. Seen so far in the Netherlands, Belgium, Czechia, Denmark, Estonia, Lithuania, Slovakia and Slovenia.",
-      "The US FSD stack is ahead. Europe waits on approvals. That is why a car in the EU can still be on 2026.32.7 while a car in California is already on 14.3.13.",
+      "Newest reporting, HW4 / AI4, North America: FSD Supervised v14.3.13. Teslascope’s 10 Nov sample has 581 cars on 2026.38.5.12 (first seen 4 Nov; 550 US, 27 Canada, 2 Mexico, 2 Puerto Rico) and TeslaFi has 1,786 installs (14.5%). 2026.38.5.11 is still a large slice (2,520 TeslaFi installs, 20.4%). HW3 stays on v14.3 Lite. Collision Evasion is North America only.",
+      "Australia and New Zealand, HW4 / AI4: FSD Supervised v14.3.12 Down Under on 2026.38.5.5 / 2026.38.5.6. The 2026.38 cabin wave there is 2026.38.6.1 (128 Teslascope cars on 10 Nov, 254 TeslaFi).",
+      "Widest cabin build on TeslaFi on 10 Nov: 2026.38.6, 5,074 installs (41.2%), a security point release with no FSD version listed. Teslascope has 329 cars across 39 countries.",
+      "Europe, Teslascope sample: 2026.39.6, 42 cars on 10 Nov in the Netherlands, Belgium, Czechia, Denmark, Slovakia, Slovenia, Lithuania and Estonia. Teslascope lists FSD (Supervised) on that build but no FSD version number. TeslaFi has 222 installs (1.8%).",
+      "Europe, owner report on 10 Nov: software 2026.39.100 is landing with the name Tesla Assisted Driving (v14.2.2.7) and the RDW +10% speed-offset cap. Teslascope and TeslaFi had not recorded 2026.39.100 by 12:40 UTC. That is the OTA for the 3 Nov RDW changes, not a new country list.",
+      "North America HW3: FSD Supervised v14.3 Lite on the 2026.38.5 family. Parking, unparking and start-from-park. No Collision Evasion.",
+      "The US FSD stack is still ahead (14.3.13 vs Europe’s 14.2 family). A car in Germany can still be on a 2026.38 cabin build with no FSD, while a car in California is on 14.3.13.",
     ],
   },
   countries: [
@@ -72,6 +72,27 @@ window.TESLA_UPDATES = {
   ],
   versions: [
     {
+      id: "2026.39.100",
+      family: "2026.39",
+      date: "2026-11-10",
+      kind: "fsd",
+      status: "early",
+      headline: "2026.39.100 — Tesla Assisted Driving rename, Europe",
+      summary:
+        "Owner reports in the Netherlands on 10 Nov 2026 show 2026.39.100 landing with the in-car name Tesla Assisted Driving software v14.2.2.7. That matches the RDW’s 3 Nov notice: speed offset capped at +10% (from +50%) and reset to 0% at each start. Teslascope and TeslaFi had not recorded this build by 12:40 UTC on 10 Nov. Community trackers say it is rolling to FSD-approved European countries. Not a Tesla company post.",
+      features: [
+        "In-car name Tesla Assisted Driving (TAD), replacing FSD (Supervised), on HW4+ in approved European countries.",
+        "Speed offset limited to 0, 5 or 10%; defaults to 0% after each start (RDW, 3 Nov 2026).",
+        "FSD version shown as v14.2.2.7 on a Netherlands owner screen. Teslascope has no record of the build yet.",
+      ],
+      fsd: "v14.2.2.7 · Tesla Assisted Driving · Europe (owner report)",
+      models: ["3", "Y"],
+      hardware: ["HW4"],
+      reached:
+        "Observed in at least one Netherlands car on 10 Nov 2026 (owner video). Teslascope sample at 12:40 UTC still had zero cars on 2026.39.100. Not independently counted.",
+      countries: ["NL"],
+    },
+    {
       id: "2026.39.6",
       family: "2026.39",
       date: "2026-10-29",
@@ -79,16 +100,16 @@ window.TESLA_UPDATES = {
       status: "early",
       headline: "2026.39.6 — first 2026.39 build, early wave in Europe",
       summary:
-        "First build on a new 2026.39 branch. Teslascope lists FSD (Supervised), Halloween Mode and security improvements in its notes, but does not list an FSD version number for it yet.",
+        "First build on a new 2026.39 branch. Teslascope lists FSD (Supervised) and minor fixes, but does not list an FSD version number for it.",
       features: [
         "FSD (Supervised) appears in the release notes (no FSD version listed by Teslascope).",
-        "Halloween Mode and security improvements.",
+        "Minor fixes.",
       ],
       fsd: null,
       models: ["3", "Y"],
       reached:
-        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 28 cars by 2 Nov 2026 (Teslascope, checked 10:40 Irish time), all HW4 / AI4 and all coming from 2026.33.100: about 39% in the Netherlands, 18% each in Czechia and Belgium, 11% in Denmark and 7% in Slovakia, plus single cars in Lithuania and Slovenia. 2 more pending.",
-      countries: ["NL", "CZ", "BE", "DK", "SK", "LT", "SI"],
+        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 42 cars by 10 Nov 2026 (Teslascope, 12:40 UTC): 20 Netherlands, 7 Belgium, 5 Czechia, 5 Denmark, 2 Slovakia, and one each in Slovenia, Lithuania and Estonia. 4 more pending. TeslaFi: 222 installs (1.8%). All in FSD-approved EU countries.",
+      countries: ["NL", "BE", "CZ", "DK", "SK", "SI", "LT", "EE"],
     },
     {
       id: "2026.38.6",
@@ -107,8 +128,8 @@ window.TESLA_UPDATES = {
       models: ["3", "Y"],
       hardware: ["HW3", "HW4"],
       reached:
-        "First spotted on Teslascope on 29 Oct 2026 (19:08 Irish time). 27 cars by 31 Oct 2026, 08:57 Irish time, across 13 countries (most in the UK, Switzerland, Germany and Italy), with 29 more pending.",
-      countries: ["GB", "ES", "IT", "CH", "DE", "PL", "TW", "US"],
+        "First spotted on Teslascope on 29 Oct 2026 (19:08 Irish time). 329 cars by 10 Nov 2026 (Teslascope, 12:40 UTC) across 39 countries, most in the US (104), UK (45), Germany (25) and France (18), with 47 more pending. TeslaFi: 5,074 installs (41.2%) — the widest cabin build in that sample.",
+      countries: ["US", "GB", "DE", "FR", "CA", "NL", "DK", "IT", "CH", "AT", "PL", "ES"],
     },
     {
       id: "2026.38.6.1",
@@ -126,8 +147,29 @@ window.TESLA_UPDATES = {
       fsd: null,
       models: ["3", "Y"],
       reached:
-        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 43 cars by 31 Oct 2026, 08:57 Irish time: 39 in Australia and 4 in New Zealand, with 30 more pending.",
+        "First spotted on Teslascope on 29 Oct 2026 (19:53 Irish time). 128 cars by 10 Nov 2026 (Teslascope, 12:40 UTC): 120 in Australia and 8 in New Zealand, with 18 more pending. TeslaFi: 254 installs (2.1%).",
       countries: ["AU", "NZ"],
+    },
+    {
+      id: "2026.38.5.12",
+      family: "2026.38",
+      date: "2026-11-04",
+      kind: "fsd",
+      status: "early",
+      headline: "2026.38.5.12 — FSD v14.3.13, now the largest Teslascope sample",
+      summary:
+        "Follow-up on the North America 2026.38 FSD branch. Teslascope labels HW4 FSD Supervised v14.3.13 and lists Automatic Collision Evasion. First spotted 4 Nov. By 10 Nov it is the largest Teslascope FSD sample (581 cars) though TeslaFi still has more cars on 2026.38.5.11.",
+      features: [
+        "HW4: FSD Supervised v14.3.13.",
+        "Automatic Collision Evasion (North America).",
+        "Security improvements.",
+      ],
+      fsd: "v14.3.13 (HW4) · North America",
+      models: ["3", "Y", "S", "X", "Cybertruck"],
+      hardware: ["HW3", "HW4"],
+      reached:
+        "First spotted on Teslascope on 4 Nov 2026. 581 cars by 10 Nov 2026 (Teslascope, 12:40 UTC): 550 US, 27 Canada, 2 Mexico, 2 Puerto Rico, 34 pending. TeslaFi: 1,786 installs (14.5%).",
+      countries: ["US", "CA", "MX", "PR"],
     },
     {
       id: "2026.38.5.11",

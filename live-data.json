@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T02:12:04+00:00",
+  "updated": "2026-11-10T12:45:00+00:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
     {

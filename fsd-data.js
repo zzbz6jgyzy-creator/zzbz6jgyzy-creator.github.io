@@ -1,5 +1,5 @@
 window.FSD_GLOBAL = {
-  updated: "2026-11-05",
+  updated: "2026-11-10",
   note:
     "Live describes sourced market availability, subject to vehicle eligibility. National recognition, manufacturer availability and individual delivery observations are separate. Driver supervision remains required.",
   teslaList: "https://www.tesla.com/support/full-self-driving",
@@ -9,9 +9,9 @@ window.FSD_GLOBAL = {
       date: "2026-10-20",
       region: "United States",
       hardware: "HW4 / AI4",
-      build: "2026.38.5.10 / 2026.38.5.11",
+      build: "2026.38.5.12 / 2026.38.5.11",
       status: "live",
-      note: "Newest US build, on top of 2026.38.5.1. 92 cars on 2026.38.5.10 and 43 on the 2026.38.5.11 point release (first seen 24 Oct, US and Canada) on Teslascope by 25 Oct. HW3 stays on v14.3 Lite. Source: Teslascope.",
+      note: "Newest US Teslascope sample on 10 Nov 2026: 581 cars on 2026.38.5.12 (first seen 4 Nov; US, Canada, Mexico, Puerto Rico) and TeslaFi 1,786 installs. 2026.38.5.11 is still a large TeslaFi slice. HW3 stays on v14.3 Lite. Source: Teslascope / TeslaFi.",
     },
     {
       id: "v14.3.12 Down Under",
@@ -59,13 +59,13 @@ window.FSD_GLOBAL = {
       note: "Still a large share of the US fleet. One point behind 14.3.11.",
     },
     {
-      id: "v14.2.2.6",
-      date: "2026-10-06",
+      id: "v14.2.2.7",
+      date: "2026-11-10",
       region: "Europe",
       hardware: "Hardware applicability not independently verified",
-      build: "2026.33.100",
+      build: "2026.39.100",
       status: "live",
-      note: "Reported European build mapping. This does not establish hardware or national eligibility. Consult Tesla Assisted Driving conditions.",
+      note: "Netherlands owner video on 10 Nov 2026 shows Tesla Assisted Driving v14.2.2.7 on 2026.39.100. Teslascope had not recorded that build; its Europe sample is 2026.39.6 with FSD (Supervised) and no version number. Consult Tesla Assisted Driving conditions.",
     },
     {
       id: "China limited",
@@ -155,7 +155,7 @@ window.FSD_GLOBAL = {
     {"code":"AT","name":"Austria","region":"Europe","status":"watch","date":null,"version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":14.6,"lat":47.5,"note":"This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration. Permission not established. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
     {"code":"BG","name":"Bulgaria","region":"Europe","status":"watch","date":null,"version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":25.5,"lat":42.7,"note":"This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration. Permission not established. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
     {"code":"SK","name":"Slovakia","region":"Europe","status":"live","date":"2026-10-26","version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":19.7,"lat":48.7,"note":"Tesla’s current availability list includes this market; vehicle eligibility still applies. Recognition recorded. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
-    {"code":"LV","name":"Latvia","region":"Europe","status":"approved","date":"2026-10-26","version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":24.6,"lat":56.9,"note":"Tesla says rollout begins soon. Latvia is not yet on the checked Tesla availability list. Recognition recorded. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
+    {"code":"LV","name":"Latvia","region":"Europe","status":"approved","date":"2026-10-26","version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":24.6,"lat":56.9,"note":"Tesla Mag, citing Tesla’s vehicle-safety-report page on 8 Nov 2026, says Tesla lists Latvia among ten deployed European markets. This tracker’s manufacturer availability page (tesla.com/nl_NL/support/tesla-assisted-driving) remains 403, so Latvia is not independently re-listed here. Tesla Europe still said rollout begins soon on 26 Oct. Recognition recorded. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
     {"code":"CY","name":"Cyprus","region":"Europe","status":"watch","date":null,"version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":33.4,"lat":35.1,"note":"This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration. Permission not established. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
     {"code":"LU","name":"Luxembourg","region":"Europe","status":"watch","date":null,"version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":6.1,"lat":49.75,"note":"This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration. Permission not established. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
     {"code":"MT","name":"Malta","region":"Europe","status":"watch","date":null,"version":"Market-specific version not verified","hardware":"Vehicle eligibility applies","lon":14.4,"lat":35.9,"note":"This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration. Permission not established. Individual customer installation dates remain separate.","source":{"label":"Tesla market availability and conditions","url":"https://www.tesla.com/nl_NL/support/tesla-assisted-driving"}},
