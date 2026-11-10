@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-10T19:51:41.230Z",
+  "generatedAt": "2026-11-10T20:51:33.290Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-matrix-headlights-nhtsa.html",
+      "topic": "tesla-software",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)",
+      "at": "2026-11-10T20:38:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-matrix-headlights-nhtsa.html",
+      "href": "/dispatch/tesla-matrix-headlights-nhtsa.html",
+      "summary": "Tesla’s 9 Nov 2026 comment on NHTSA’s notice of intent to form a committee to modernize FMVSS 108 asks that the overhaul cover camera-guided matrix LED headlights and over-the-air changes, and that more automaker seats be added. This is a public comment, not a petition for rulemaking. No rule has changed.",
+      "title": "Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/tesla-matrix-headlights-nhtsa.html|2026-11-10T20:38:00.000Z|Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-4-8-rl-c-stack.html",
@@ -607,23 +624,6 @@
       "summary": "Tesla confirmed an Argentina arrival date of 20 November 2026 via @Tesla_LatAm, with @Tesla and Elon Musk quoting the post. Argentine press reports an Unicenter exhibition first, with sales and test drives planned for 2027. Official posts name no models or prices.",
       "title": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
       "id": "logged|dispatch:/dispatch/tesla-argentina.html|2026-11-06T20:37:00.000Z|Tesla says it arrives in Argentina on 20 November; exhibition first, sales later"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-spacex-government-contracts.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
-      "at": "2026-11-06T18:31:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-spacex-government-contracts.html",
-      "href": "/dispatch/tesla-spacex-government-contracts.html",
-      "summary": "Elon Musk said Tesla has no government contracts and that government revenue will be under 10% of SpaceX revenue this quarter and under 5% a year from now, quoting a Warren Redlich draft letter. Those figures are his claims on X, not filings.",
-      "title": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
-      "id": "logged|dispatch:/dispatch/tesla-spacex-government-contracts.html|2026-11-06T18:31:00.000Z|Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter"
     },
     {
       "type": "changed",
@@ -1909,14 +1909,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-11-09T08:41:14.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1930,14 +1930,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-11-10T13:42:18.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1951,35 +1951,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-10T19:51:41.230Z",
+      "lastChecked": "2026-11-10T20:51:33.290Z",
       "lastVerified": "2026-11-10T19:51:35.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1988,85 +1988,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.146Z",
-      "finished": "2026-11-10T19:51:41.218Z"
+      "started": "2026-11-10T20:51:33.276Z",
+      "finished": "2026-11-10T20:51:33.281Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.219Z",
-      "finished": "2026-11-10T19:51:41.219Z"
+      "started": "2026-11-10T20:51:33.281Z",
+      "finished": "2026-11-10T20:51:33.281Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.219Z",
-      "finished": "2026-11-10T19:51:41.219Z"
+      "started": "2026-11-10T20:51:33.281Z",
+      "finished": "2026-11-10T20:51:33.282Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.219Z",
-      "finished": "2026-11-10T19:51:41.225Z"
+      "started": "2026-11-10T20:51:33.282Z",
+      "finished": "2026-11-10T20:51:33.286Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.225Z",
-      "finished": "2026-11-10T19:51:41.227Z"
+      "started": "2026-11-10T20:51:33.286Z",
+      "finished": "2026-11-10T20:51:33.288Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.227Z",
-      "finished": "2026-11-10T19:51:41.228Z"
+      "started": "2026-11-10T20:51:33.288Z",
+      "finished": "2026-11-10T20:51:33.289Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.228Z",
-      "finished": "2026-11-10T19:51:41.228Z"
+      "started": "2026-11-10T20:51:33.289Z",
+      "finished": "2026-11-10T20:51:33.289Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.228Z",
-      "finished": "2026-11-10T19:51:41.228Z"
+      "started": "2026-11-10T20:51:33.289Z",
+      "finished": "2026-11-10T20:51:33.289Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.228Z",
-      "finished": "2026-11-10T19:51:41.229Z"
+      "started": "2026-11-10T20:51:33.289Z",
+      "finished": "2026-11-10T20:51:33.289Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.229Z",
-      "finished": "2026-11-10T19:51:41.230Z"
+      "started": "2026-11-10T20:51:33.289Z",
+      "finished": "2026-11-10T20:51:33.290Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.230Z",
-      "finished": "2026-11-10T19:51:41.230Z"
+      "started": "2026-11-10T20:51:33.290Z",
+      "finished": "2026-11-10T20:51:33.290Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.230Z",
-      "finished": "2026-11-10T19:51:41.230Z"
+      "started": "2026-11-10T20:51:33.290Z",
+      "finished": "2026-11-10T20:51:33.290Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-10T19:51:41.230Z",
-      "finished": "2026-11-10T19:51:41.230Z"
+      "started": "2026-11-10T20:51:33.290Z",
+      "finished": "2026-11-10T20:51:33.290Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-10T19:51:41.230Z",
+    "generatedAt": "2026-11-10T20:51:33.290Z",
     "factCount": 20,
     "changeCount": 93,
     "conflictCount": 2,

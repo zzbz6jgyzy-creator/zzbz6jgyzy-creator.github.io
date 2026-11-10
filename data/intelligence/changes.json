@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-10T19:51:41.230Z",
+  "updated": "2026-11-10T20:51:33.290Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-matrix-headlights-nhtsa.html",
+      "topic": "tesla-software",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)",
+      "at": "2026-11-10T20:38:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-matrix-headlights-nhtsa.html",
+      "href": "/dispatch/tesla-matrix-headlights-nhtsa.html",
+      "summary": "Tesla’s 9 Nov 2026 comment on NHTSA’s notice of intent to form a committee to modernize FMVSS 108 asks that the overhaul cover camera-guided matrix LED headlights and over-the-air changes, and that more automaker seats be added. This is a public comment, not a petition for rulemaking. No rule has changed.",
+      "title": "Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/tesla-matrix-headlights-nhtsa.html|2026-11-10T20:38:00.000Z|Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/grok-4-8-rl-c-stack.html",
@@ -323,23 +340,6 @@
       "summary": "Tesla confirmed an Argentina arrival date of 20 November 2026 via @Tesla_LatAm, with @Tesla and Elon Musk quoting the post. Argentine press reports an Unicenter exhibition first, with sales and test drives planned for 2027. Official posts name no models or prices.",
       "title": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
       "id": "logged|dispatch:/dispatch/tesla-argentina.html|2026-11-06T20:37:00.000Z|Tesla says it arrives in Argentina on 20 November; exhibition first, sales later"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-spacex-government-contracts.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
-      "at": "2026-11-06T18:31:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-spacex-government-contracts.html",
-      "href": "/dispatch/tesla-spacex-government-contracts.html",
-      "summary": "Elon Musk said Tesla has no government contracts and that government revenue will be under 10% of SpaceX revenue this quarter and under 5% a year from now, quoting a Warren Redlich draft letter. Those figures are his claims on X, not filings.",
-      "title": "Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter",
-      "id": "logged|dispatch:/dispatch/tesla-spacex-government-contracts.html|2026-11-06T18:31:00.000Z|Elon says Tesla has no government contracts, and SpaceX government work will be under 10% of revenue this quarter"
     },
     {
       "type": "changed",
