@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-09T08:41:14+00:00",
- "launchChecked": "2026-11-09T18:43:45Z",
+ "launchChecked": "2026-11-10T02:02:38Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -543,9 +543,9 @@
    "title": "Falcon 9 Block 5 | USSF-627",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-10T04:59:49Z",
+   "start": "2026-11-11T02:49:00Z",
    "end": "",
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "precision": "datetime",
    "status": "Go",
    "note": "Government/Top Secret · Low Earth Orbit",
@@ -554,38 +554,12 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
-   "windowStart": "2026-11-10T03:03:00Z",
-   "windowEnd": "2026-11-10T07:03:00Z",
+   "windowStart": "2026-11-11T02:49:00Z",
+   "windowEnd": "2026-11-11T06:49:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
    "coverage": {
     "url": "https://www.spacex.com/launches/ussf627",
-    "article": "",
-    "status": "scheduled"
-   }
-  },
-  {
-   "id": "ussf-317",
-   "title": "Falcon 9 Block 5 | USSF-317",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-11-13T04:23:00Z",
-   "end": "",
-   "date": "2026-11-13",
-   "precision": "datetime",
-   "status": "Go",
-   "note": "Government/Top Secret · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "76617033-4dc0-4448-b50c-e5b0d5a18539",
-   "windowStart": "2026-11-13T04:23:00Z",
-   "windowEnd": "2026-11-13T08:23:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch",
-   "coverage": {
-    "url": "https://www.spacex.com/launches/ussf317",
     "article": "",
     "status": "scheduled"
    }
@@ -641,6 +615,53 @@
     "article": "",
     "status": "scheduled"
    }
+  },
+  {
+   "id": "ussf-317",
+   "title": "Falcon 9 Block 5 | USSF-317",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-14T04:09:00Z",
+   "end": "",
+   "date": "2026-11-14",
+   "precision": "datetime",
+   "status": "Go",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "76617033-4dc0-4448-b50c-e5b0d5a18539",
+   "windowStart": "2026-11-14T04:09:00Z",
+   "windowEnd": "2026-11-14T08:09:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches/ussf317",
+    "article": "",
+    "status": "scheduled"
+   }
+  },
+  {
+   "id": "ussf-266",
+   "title": "Falcon 9 Block 5 | USSF-266",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-17T16:58:00Z",
+   "end": "",
+   "date": "2026-11-17",
+   "precision": "datetime",
+   "status": "Go",
+   "note": "Government/Top Secret · Polar Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "460d9db7-eaf6-4cd9-b095-cff433534c09",
+   "windowStart": "2026-11-17T16:58:00Z",
+   "windowEnd": "2026-11-17T20:58:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "Go for Launch"
   },
   {
    "id": "ll2-d74afbc7-0de5-491c-be05-4e9c31f736ac",
