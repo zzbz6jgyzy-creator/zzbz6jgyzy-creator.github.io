@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-10T08:15:58.872Z",
+  "updated": "2026-11-10T08:51:20.396Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-starbase-24b-gas-compute.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)",
+      "at": "2026-11-10T08:45:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-starbase-24b-gas-compute.html",
+      "href": "/dispatch/spacex-starbase-24b-gas-compute.html",
+      "summary": "A City of Starbase notice says SpaceX plans a gas-fired power plant and super-compute facility on about 444 acres by the Port of Brownsville, with about $24 billion for the first phases (as of 6 Nov 2026). Two of the city's three commissioners work for SpaceX. Nothing is approved yet; a hearing is set for 9 Dec 2026.",
+      "title": "SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/spacex-starbase-24b-gas-compute.html|2026-11-10T08:45:00.000Z|SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/cybertruck-cyberbeast-only.html",
@@ -289,23 +306,6 @@
       "summary": "Investor Ron Baron told CNBC Squawk Box that Elon Musk is targeting 2027 and 2028 launches of solar-powered data centers into orbit. Elon replied: \"Ron Baron understands.\" Investor commentary, not a SpaceX announcement.",
       "title": "Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028",
       "id": "logged|dispatch:/dispatch/baron-orbital-data-centers.html|2026-11-06T18:31:00.000Z|Ron Baron says Elon is aiming to launch solar-powered data centers into orbit in 2027 and 2028"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/model-y-australia-passenger-car.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "The Tesla Model Y is Australia's best-selling passenger car through October, with 39,035 sold against 35,927 RAV4s",
-      "at": "2026-11-06T18:31:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/model-y-australia-passenger-car.html",
-      "href": "/dispatch/model-y-australia-passenger-car.html",
-      "summary": "CarsGuide reports the Tesla Model Y sold 39,035 units in Australia from January to October 2026, ahead of the Toyota RAV4's 35,927. Elon called it the best-selling car of any kind on Earth; the figures cover Australian passenger cars only.",
-      "title": "The Tesla Model Y is Australia's best-selling passenger car through October, with 39,035 sold against 35,927 RAV4s",
-      "id": "logged|dispatch:/dispatch/model-y-australia-passenger-car.html|2026-11-06T18:31:00.000Z|The Tesla Model Y is Australia's best-selling passenger car through October, with 39,035 sold against 35,927 RAV4s"
     },
     {
       "type": "changed",
