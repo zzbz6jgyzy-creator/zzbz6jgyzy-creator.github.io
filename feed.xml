@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 10 Nov 2026 14:41:15 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 20:38:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-matrix-headlights-nhtsa.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-matrix-headlights-nhtsa.html</guid>
+      <pubDate>Tue, 10 Nov 2026 20:38:00 +0000</pubDate>
+      <category>Regulation</category>
+      <description>Tesla’s 9 Nov 2026 comment on NHTSA’s notice of intent to form a committee to modernize FMVSS 108 asks that the overhaul cover camera-guided matrix LED headlights and over-the-air changes, and that more automaker seats be added. This is a public comment, not a petition for rulemaking. No rule has changed.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-model-3-highland-osaka-ibaraki.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)</title>
       <link>https://superchargeddaily.com/dispatch/grok-4-8-rl-c-stack.html</link>
@@ -717,15 +726,6 @@
       <category>SpaceX</category>
       <description>Bandwagon-5 flies 32 payloads, including two capsules built to come home: Varda’s W-7 and SpaceX’s Starfall.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/bandwagon5-starfall-second-demo-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tesla Robotaxi now runs until midnight in Austin</title>
-      <link>https://superchargeddaily.com/dispatch/robotaxi-austin-midnight-803.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/robotaxi-austin-midnight-803.html</guid>
-      <pubDate>Sat, 17 Oct 2026 13:40:27 +0000</pubDate>
-      <category>Robotaxi</category>
-      <description>An app alert pushed Austin’s day to 6am–midnight. Texas registrations passed 800, and all 34 new cars are Model Ys.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/robotaxi-austin-midnight-803-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.4.5</title>

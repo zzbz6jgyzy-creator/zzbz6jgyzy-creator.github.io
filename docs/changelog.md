@@ -1,3 +1,8 @@
+## 2026-11-10 — Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules
+
+- Dispatch: Tesla’s 9 Nov 2026 public comment on NHTSA’s notice of intent to form a committee to modernize FMVSS 108 asks that the overhaul cover camera-guided matrix LED headlights and over-the-air changes, and that more automaker seats be added. This is a comment, not a petition. No rule has changed. Licensed Commons Model 3 Highland photo (CC BY 4.0, Aos.1905) is the card and hero.
+- One-line update on the Dynamic Headlight Leveling story pointing to this NHTSA comment.
+
 ## 2026-11-10 — Grok 4.8 in RL on a homemade C stack; soft Bot rollout pledged later this week
 
 - Dispatch: Musk says SpaceXSI dumped JAX/SGLang for an in-house C/C++ RL and inference stack, Grok 4.8 pre-training is done and the model is now in RL, with a soft rollout to Grok Bot users pledged later this week (as of 10 Nov 2026). No date, cohort, benchmarks or 4.8 price. Licensed COMPUTEX 2024 GB200 NVL72 Commons photo (CC BY 3.0) is the card and hero — not Colossus, not Grok 4.8 training.
