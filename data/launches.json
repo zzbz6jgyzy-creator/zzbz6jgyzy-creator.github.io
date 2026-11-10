@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-09T18:43:45Z",
- "checked": "2026-11-09T18:43:45Z",
+ "updated": "2026-11-10T02:02:38Z",
+ "checked": "2026-11-10T02:02:38Z",
  "results": [
   {
    "id": "7330d83b-c478-426c-8859-f9e3a335876d",
@@ -330,42 +330,10 @@
   {
    "id": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
    "name": "Falcon 9 Block 5 | USSF-627",
-   "net": "2026-11-10T04:59:49Z",
-   "window_start": "2026-11-10T03:03:00Z",
-   "window_end": "2026-11-10T07:03:00Z",
+   "net": "2026-11-11T02:49:00Z",
+   "window_start": "2026-11-11T02:49:00Z",
+   "window_end": "2026-11-11T06:49:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/6aa7b90b-e5ed-45d8-a52e-04fbf399d178/",
-   "status": {
-    "name": "Go for Launch",
-    "abbrev": "Go"
-   },
-   "net_precision": {
-    "name": "Second",
-    "abbrev": "SEC"
-   },
-   "pad": {
-    "name": "Space Launch Complex 4E",
-    "location": {
-     "name": "Vandenberg SFB, CA, USA"
-    }
-   },
-   "last_updated": "2026-11-09T17:13:07Z",
-   "mission": {
-    "name": "USSF-627",
-    "type": "Government/Top Secret",
-    "orbit": {
-     "name": "Low Earth Orbit",
-     "abbrev": "LEO"
-    }
-   },
-   "vehicle": "Falcon 9 Block 5"
-  },
-  {
-   "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
-   "name": "Falcon 9 Block 5 | USSF-317",
-   "net": "2026-11-13T04:23:00Z",
-   "window_start": "2026-11-13T04:23:00Z",
-   "window_end": "2026-11-13T08:23:00Z",
-   "url": "https://ll.thespacedevs.com/2.3.0/launches/76617033-4dc0-4448-b50c-e5b0d5a18539/",
    "status": {
     "name": "Go for Launch",
     "abbrev": "Go"
@@ -380,9 +348,9 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-04T20:05:26Z",
+   "last_updated": "2026-11-09T21:22:26Z",
    "mission": {
-    "name": "USSF-317",
+    "name": "USSF-627",
     "type": "Government/Top Secret",
     "orbit": {
      "name": "Low Earth Orbit",
@@ -412,7 +380,7 @@
      "name": "SpaceX Starbase, TX, USA"
     }
    },
-   "last_updated": "2026-11-08T15:50:02Z",
+   "last_updated": "2026-11-09T23:06:16Z",
    "mission": {
     "name": "Starlink Group 31-2 (Starship Flight 15)",
     "type": "Communications",
@@ -422,6 +390,70 @@
     }
    },
    "vehicle": "Starship V3"
+  },
+  {
+   "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
+   "name": "Falcon 9 Block 5 | USSF-317",
+   "net": "2026-11-14T04:09:00Z",
+   "window_start": "2026-11-14T04:09:00Z",
+   "window_end": "2026-11-14T08:09:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/76617033-4dc0-4448-b50c-e5b0d5a18539/",
+   "status": {
+    "name": "Go for Launch",
+    "abbrev": "Go"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2026-11-09T21:55:20Z",
+   "mission": {
+    "name": "USSF-317",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
+  },
+  {
+   "id": "460d9db7-eaf6-4cd9-b095-cff433534c09",
+   "name": "Falcon 9 Block 5 | USSF-266",
+   "net": "2026-11-17T16:58:00Z",
+   "window_start": "2026-11-17T16:58:00Z",
+   "window_end": "2026-11-17T20:58:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/460d9db7-eaf6-4cd9-b095-cff433534c09/",
+   "status": {
+    "name": "Go for Launch",
+    "abbrev": "Go"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2026-11-09T21:55:20Z",
+   "mission": {
+    "name": "USSF-266",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Polar Orbit",
+     "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
   },
   {
    "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",

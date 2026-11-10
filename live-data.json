@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09T08:43:32+00:00",
+  "updated": "2026-11-10T02:12:04+00:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
     {
@@ -158,8 +158,8 @@
       "id": "f9-ussf627",
       "title": "Falcon 9 · USSF-627",
       "page": "starship",
-      "start": "2026-11-09T19:03:00-08:00",
-      "end": "2026-11-09T23:03:00-08:00",
+      "start": "2026-11-10T18:49:00-08:00",
+      "end": "2026-11-10T22:49:00-08:00",
       "status": "scheduled",
       "provider": "link",
       "embedId": "",
@@ -169,7 +169,7 @@
       "source": "https://www.spacex.com/launches/ussf627",
       "image": "/assets/live/falcon9.jpg",
       "imageCredit": "Photo: U.S. Space Force/Senior Airman Samuel Becker, public domain",
-      "description": "SpaceX is targeting Monday 9 Nov for Falcon 9 USSF-627 from SLC-4E at Vandenberg. The four-hour window opens at 7:03 p.m. PT (03:03 UTC 10 Nov); backup is Tuesday 10 Nov at 6:49 p.m. PT. The booster is on its seventh flight and will land on Of Course I Still Love You. Webcast starts about 10 minutes before liftoff. Direct X broadcast URL not posted yet.",
+      "description": "SpaceX is targeting Tuesday 10 Nov for Falcon 9 USSF-627 from SLC-4E at Vandenberg. The four-hour window opens at 6:49 p.m. PT (02:49 UTC 11 Nov); backup is Wednesday 11 Nov at 6:35 p.m. PT. The booster is on its seventh flight and will land on Of Course I Still Love You. Webcast starts about 10 minutes before liftoff. Direct X broadcast URL not posted yet.",
       "descSource": "https://www.spacex.com/launches/ussf627"
     },
     {
