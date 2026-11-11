@@ -21,7 +21,7 @@ def decorate(src):
  s=s[:at]+block+s[at:]
  s=re.sub(r'<article\b([^>]*)>',lambda m:'<article'+re.sub(r'class="([^"]*)"',lambda c:'class="'+c[1].replace(' rs-article','')+' rs-article"',m[1])+'>',s,count=1)
  s=re.sub(r'<body\b([^>]*)>',lambda m:'<body'+(re.sub(r'class="([^"]*)"',lambda c:'class="'+' '.join([x for x in c[1].split() if x!='rs-story']+['rs-story'])+'"',m[1]) if 'class=' in m[1] else m[1]+' class="rs-story"')+'>',s,count=1)
- assets='    <!--rs:assets--><link rel="stylesheet" href="/article-reader.css?v=20261109b"/><script defer src="/article-reader.js?v=20261109"></script><!--/rs:assets-->\n'
+ assets='    <!--rs:assets--><link rel="stylesheet" href="/article-reader.css?v=20261111glass"/><script defer src="/article-reader.js?v=20261109"></script><!--/rs:assets-->\n'
  if '<!--sd:members-->' in s:s=s.replace('    <!--sd:members-->',assets+'    <!--sd:members-->',1)
  else:s=s.replace('  </head>',assets+'  </head>',1)
  return s

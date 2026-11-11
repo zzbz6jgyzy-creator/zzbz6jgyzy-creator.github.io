@@ -32,3 +32,13 @@ html[data-theme=light] .rs-story .rs-article figure figcaption,html[data-theme=l
 /* An article photo marked <figure class="hero"> also picked up the old homepage .hero rules (a grid with a tall
    minimum height), which left about 140px of empty space above and below the photo on phones. */
 .rs-story .rs-article>figure.hero{display:block;min-height:0;align-items:initial;position:static;overflow:hidden}
+
+/* Glass reading bar: clearer, so the article shows through as it scrolls under. */
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+.rs-tools{background:linear-gradient(180deg,#ffffff10,#ffffff00 55%),rgb(17 21 27/.6);-webkit-backdrop-filter:blur(9px) saturate(160%) brightness(.6);backdrop-filter:blur(9px) saturate(160%) brightness(.6);border-color:#ffffff30;box-shadow:inset 0 1px 0 #ffffff2e,0 10px 30px #00000030}
+html[data-theme=light] .rs-tools{background:linear-gradient(180deg,#ffffff8c,#ffffff00 55%),rgb(247 245 240/.68);-webkit-backdrop-filter:blur(9px) saturate(160%);backdrop-filter:blur(9px) saturate(160%);border-color:#ffffffb3;box-shadow:inset 0 1px 0 #ffffffd9,0 0 0 1px #17191e12,0 10px 30px #17191e1a}
+}
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more){
+.rs-tools{background:#11151b;-webkit-backdrop-filter:none;backdrop-filter:none}
+html[data-theme=light] .rs-tools{background:#f7f5f0}
+}

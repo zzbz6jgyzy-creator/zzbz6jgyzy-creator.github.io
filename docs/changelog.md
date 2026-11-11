@@ -730,3 +730,6 @@ Known leftovers:
 
 ## 11 Nov 2026 — Glass navigation bar
 - The floating navigation bar is now frosted glass (blur plus a light edge) in dark and light themes. Dropdown panels and the phone menu stay solid. Solid again for "reduce transparency" and "increase contrast" settings and for browsers without `backdrop-filter`. `nav-pill.css` version bumped through `scripts/sync-nav.py`.
+
+## 11 Nov 2026 — Glass on more surfaces
+- Clearer glass on the navigation bar (less blur and tint). Glass also on the phone menu, the search overlay, the article reading bar, and a glass edge on event countdown cards. All fall back to solid for "reduce transparency", "increase contrast" and browsers without `backdrop-filter`.
