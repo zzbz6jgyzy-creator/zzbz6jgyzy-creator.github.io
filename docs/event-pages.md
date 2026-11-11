@@ -46,3 +46,9 @@ A page with `featureUntil` in the future is featured as a strip at the top of th
 
 ## Checks
 `node --test tests/event-pages.test.mjs` (rebuilding every event page changes nothing, the start time comes from events.json, Event + BreadcrumbList schema, standard head tags, countdown states).
+
+## Optional rich fields (added 11 Nov 2026)
+- `hero`: a credited photo beside the title (`base`, `widths`, `width`, `height`, `alt`, `caption`, `credit`, `creditUrl`, `licence`, `licenceUrl`, optional `note`). The build fails without a credit and licence.
+- `quote`: a pull quote under the mission text (`text`, `by`, `source`).
+- `glance`: the at-a-glance strip (`label`, `value`, `kind`).
+- In a section: `timeline` (`t`, `title`, `text`, `source`), `diagram` (`file` under `assets/explainers/`, `steps`, a `caption` that says it is an illustration), and points with `title` and `kind`, which render as cards.
