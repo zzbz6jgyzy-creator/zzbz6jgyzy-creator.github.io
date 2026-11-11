@@ -1,3 +1,13 @@
+## 2026-11-11 — Finland, 11th EU country for Tesla Assisted Driving (Dispatch)
+
+- Dispatch: Traficom recognised the Dutch provisional type-approval of Tesla Assisted Driving on 10 Nov 2026 (notice 11 Nov, 7:53 Finnish time). That is the 11th EU country as of 11 Nov 2026. Tesla says rollout begins soon, with no date. Licensed Helsinki Länsiväylä Model 3 / Onnibus photo (CC BY 4.0, VynedJ); bus plate SRJ-513 blurred before publish.
+- One-line updates on the Latvia, Slovakia and RDW +10% stories pointing here.
+
+## 2026-11-11 — Claroc report on open Grok Build apps (Dispatch)
+
+- Dispatch: Claroc, which sells security for AI-built apps, says 35,578 of 37,571 live Grok Build apps opened without sign-in as of 10 Nov 2026 (94.7%), including 24 built by SpaceXSI and X staff that were pulled after reporters asked. This is a report, not a proven breach. Licensed BalticServers data-center photo (CC BY-SA 3.0); not SpaceXSI equipment.
+- One-line updates on the Grok 4.8 C-stack and Grok API watermark stories pointing here.
+
 ## 2026-11-11 — FCC accepts SpaceX’s 800 MHz applications for filing
 
 - Dispatch: The FCC accepted SpaceX’s applications to take control of Grain Management’s 546 paired 800 MHz licenses for filing (DA 26-1218, WT Docket 26-313). Comments are due 1 Dec 2026. This is not approval; the spectrum still belongs to Grain. Licensed USDA Fort Valley broadband-tower photo (public domain) is the card and hero — a generic tower, not SpaceX or Grain equipment.

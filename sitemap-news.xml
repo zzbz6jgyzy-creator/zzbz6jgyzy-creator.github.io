@@ -2,6 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/finland-fsd-eleventh-eu.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-11T14:55:53Z</news:publication_date>
+      <news:title>Finland approves Tesla Assisted Driving, making it 11 EU countries (as of 11 Nov 2026)</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/grok-build-open-apps.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-11T14:55:53Z</news:publication_date>
+      <news:title>Security firm says 94.7% of live Grok Build apps opened without sign-in, including 24 from SpaceXSI staff (as of 10 Nov 2026)</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/spacex-fcc-800mhz-review.html</loc>
     <news:news>
       <news:publication>

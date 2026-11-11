@@ -1,6 +1,34 @@
 {
-  "updated": "2026-11-11T08:43:07Z",
+  "updated": "2026-11-11T14:55:53Z",
   "articles": [
+    {
+      "url": "/dispatch/finland-fsd-eleventh-eu.html",
+      "title": "Finland approves Tesla Assisted Driving, making it 11 EU countries (as of 11 Nov 2026)",
+      "seoTitle": "Finland approves Tesla Assisted Driving, making it 11 EU countries",
+      "date": "2026-11-11T14:55:53Z",
+      "topic": "tesla",
+      "tag": "FSD",
+      "image": "/assets/dispatch/helsinki-lansivayla-tesla-model-3.jpg",
+      "imageAlt": "A dark Tesla Model 3 drives beside a red Onnibus double-decker coach on a multi-lane highway in Helsinki, Finland. Number plates in the published image are blurred.",
+      "summary": "Finland’s Traficom has recognised the Dutch approval of Tesla Assisted Driving, formerly FSD (Supervised). That makes 11 EU countries, about 15.5% of the EU population as of 1 Jan 2026. Tesla says rollout begins soon, with no date.",
+      "pinned": false,
+      "author": "Alex R",
+      "minutes": 5
+    },
+    {
+      "url": "/dispatch/grok-build-open-apps.html",
+      "title": "Security firm says 94.7% of live Grok Build apps opened without sign-in, including 24 from SpaceXSI staff (as of 10 Nov 2026)",
+      "seoTitle": "Security firm says 94.7% of live Grok Build apps opened without sign-in (as of 10 Nov 2026)",
+      "date": "2026-11-11T14:55:53Z",
+      "topic": "xai",
+      "tag": "Grok",
+      "image": "/assets/dispatch/balticservers-data-center.jpg",
+      "imageAlt": "Rows of server racks with blue lights in a data center corridor. This is a generic server room, not SpaceXSI equipment.",
+      "summary": "Claroc, which sells security for AI-built apps, says 35,578 of 37,571 live Grok Build apps opened for anyone as of 10 Nov 2026, including 24 built by SpaceXSI and X staff, which were pulled after reporters asked. This is a report, not a proven breach.",
+      "pinned": false,
+      "author": "Alex R",
+      "minutes": 6
+    },
     {
       "url": "/dispatch/spacex-fcc-800mhz-review.html",
       "title": "FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026",
