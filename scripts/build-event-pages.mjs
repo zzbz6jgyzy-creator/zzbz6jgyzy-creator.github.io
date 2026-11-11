@@ -11,7 +11,7 @@ const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": 
 import { createRequire } from "node:module";
 const { whenText, countdownHtml, eventPages } = createRequire(import.meta.url)("./event-shared.cjs");
 export { whenText, countdownHtml };
-const CSS_V = "20261111f";
+const CSS_V = "20261111g";
 const XEMBED_V = "202610262130";
 const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(new Date(d + "T12:00:00Z"));
 const X_STATUS = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;

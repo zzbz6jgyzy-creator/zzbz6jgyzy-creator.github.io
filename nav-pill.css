@@ -156,3 +156,14 @@ html[data-theme=light] .pn[data-nav-studio] .ns-panel{--sdn-muted:#60636b}
 @media (prefers-reduced-transparency:reduce),(prefers-contrast:more){
 nav.pn[data-nav-studio],html[data-theme=light] nav.pn[data-nav-studio]{--sdn-muted:#b1b4bd;background:var(--sdn-bg);-webkit-backdrop-filter:none;backdrop-filter:none;border-color:var(--sdn-line);box-shadow:0 12px 36px #00000018}
 }
+/* Glass on the phone menu: the page shows faintly through the full-screen sheet. Cards inside keep solid fills. */
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+.pn-sheet[data-nav-studio]{background:rgb(16 18 22/.8);-webkit-backdrop-filter:blur(18px) saturate(160%) brightness(.7);backdrop-filter:blur(18px) saturate(160%) brightness(.7)}
+.pn-sheet[data-nav-studio] .pn-sheet-head{background:rgb(16 18 22/.2);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);margin-inline:-20px;padding-inline:20px;border-bottom:1px solid var(--sdn-line)}
+html[data-theme=light] aside.pn-sheet[data-nav-studio]{background:rgb(250 249 246/.84);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%)}
+html[data-theme=light] .pn-sheet[data-nav-studio] .pn-sheet-head{background:transparent}
+}
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more){
+.pn-sheet[data-nav-studio],html[data-theme=light] aside.pn-sheet[data-nav-studio]{background:var(--sdn-bg);-webkit-backdrop-filter:none;backdrop-filter:none}
+.pn-sheet[data-nav-studio] .pn-sheet-head,html[data-theme=light] .pn-sheet[data-nav-studio] .pn-sheet-head{background:var(--sdn-bg);-webkit-backdrop-filter:none;backdrop-filter:none}
+}

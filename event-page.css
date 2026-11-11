@@ -133,3 +133,7 @@ html{scroll-behavior:smooth}
 @media(max-width:560px){.ev-steps li{font-size:11.5px;padding:0 2px}}
 .ev-section>p:first-of-type{font-size:17px}
 @media(min-width:900px){.ev-page:has(.ev-hero-photo) .ev-glance dl{grid-template-columns:repeat(3,1fr)}}
+
+/* Glass edge on the countdown card: a soft sheen and light top edge (nothing sits behind it, so no blur). */
+.evc{background:linear-gradient(180deg,#ffffff0f,#ffffff00 60%),var(--card);box-shadow:inset 0 1px 0 #ffffff24,0 10px 30px #00000024}
+html[data-theme=light] .evc{background:linear-gradient(180deg,#ffffffcc,#ffffff00 60%),var(--card);box-shadow:inset 0 1px 0 #fff,0 10px 30px #17191e12}
