@@ -746,6 +746,15 @@
       "grow": [
         "data-band"
       ]
+    },
+    "ship-42.html": {
+      "bundles": [
+        "core",
+        "event"
+      ],
+      "grow": [
+        "data-band"
+      ]
     }
   },
   "pageGlobs": {

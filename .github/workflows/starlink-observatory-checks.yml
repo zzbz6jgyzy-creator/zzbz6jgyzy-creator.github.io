@@ -28,7 +28,6 @@ jobs:
         run: |
           npm install --no-save --no-package-lock esbuild@0.25.12
           python -m pip install playwright==1.62.0
-          python -m playwright install --with-deps chromium
       - name: Validate data, sources and reproducible saved render
         run: |
           node --test tests/starlink-observatory.test.mjs
@@ -39,6 +38,8 @@ jobs:
           python scripts/inject-js-bundles.py
           sh scripts/ci-generated-ownership.sh -- starlink.html data/starlink-observatory.json assets/js
       - name: Responsive, accessibility, worker and fallback checks
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
         run: python tests/starlink-observatory-browser.py
       - uses: actions/upload-artifact@v4
         if: always()

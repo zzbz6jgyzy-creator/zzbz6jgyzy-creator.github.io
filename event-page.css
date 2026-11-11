@@ -54,6 +54,11 @@ html[data-theme=light] .ev-chip-target{color:#1f5a9a}
 .ev-fresh[hidden]{display:none}
 .ev-fresh a{color:inherit;font-weight:700;text-underline-offset:3px}
 
+.ev-page .figure-embed{margin:1.2rem 0 1.4rem;max-width:68ch}
+.ev-page .figure-embed figcaption,.ev-ol figcaption{font-size:.85rem;line-height:1.55;color:var(--ink-soft);margin:.55rem 0 0;max-width:68ch}
+.ev-ol{margin:1.2rem 0 1.4rem;max-width:560px}
+.ev-ol-frame{display:block;width:100%;max-width:560px;height:260px;border:0;border-radius:var(--radius-card,14px);background:#0F1012}
+
 /* Countdown tension: a slow glow in the last 10 minutes, faster in the last minute, and one soft flash when the window
    opens. Border and shadow only (no layout change). Reduced motion keeps the accent border but nothing moves. */
 .evc[data-cd-urgent]{border-color:var(--sec-accent,#e31937)}

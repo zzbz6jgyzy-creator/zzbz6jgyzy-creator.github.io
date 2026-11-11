@@ -10,7 +10,7 @@ DATA=json.loads((ROOT/'data/starlink-observatory.json').read_text());TOTAL=forma
 
 async def main():
  async with async_playwright() as p:
-  browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE') or shutil.which('chromium'),headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
+  browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE') or os.environ.get('CHROMIUM_PATH') or shutil.which('google-chrome') or shutil.which('chromium'),headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
   for width,theme,mode in [(320,'dark','normal'),(390,'dark','normal'),(768,'dark','normal'),(1440,'dark','normal'),(390,'light','normal'),(1440,'light','normal'),(390,'dark','nojs'),(390,'dark','blocked'),(390,'dark','malformed'),(390,'dark','older'),(390,'dark','headline-tracking')]:
    context=await browser.new_context(viewport={'width':width,'height':920},is_mobile=width<=430,has_touch=width<=768,java_script_enabled=mode!='nojs',reduced_motion='reduce',service_workers='block')
    await context.add_init_script("localStorage.setItem('sd-theme',"+json.dumps(theme)+")")

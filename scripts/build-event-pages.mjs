@@ -11,8 +11,48 @@ const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": 
 import { createRequire } from "node:module";
 const { whenText, countdownHtml, eventPages } = createRequire(import.meta.url)("./event-shared.cjs");
 export { whenText, countdownHtml };
-const CSS_V = "20261110";
+const CSS_V = "20261111";
+const XEMBED_V = "202610262130";
 const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(new Date(d + "T12:00:00Z"));
+const X_STATUS = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;
+const OL_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function needsXEmbed(p) {
+  return (p.sections || []).some((s) => s.embed?.kind === "x") || p.heatShield?.embed?.kind === "x";
+}
+
+function xPostHtml(embed, slug) {
+  if (!X_STATUS.test(embed.url || "")) throw new Error(`${slug}: embed.url must be an x.com status URL`);
+  if (!embed.handle || !embed.name || !embed.text || !embed.dateLabel) throw new Error(`${slug}: X embed needs handle, name, text and dateLabel`);
+  const body = esc(embed.text).replace(/\n/g, "<br>");
+  const caption = embed.caption
+    ? `<figcaption>${esc(embed.caption)}</figcaption>`
+    : `<figcaption>Video: <a href="${esc(embed.url)}">${esc(embed.name)} (@${esc(embed.handle)})</a>, ${esc(embed.dateLabel)}. Shown as text; "Load post from X" brings in the video.</figcaption>`;
+  return `<figure class="figure-embed">
+    <blockquote class="twitter-tweet" data-dnt="true" data-theme="dark"><p lang="${esc(embed.lang || "en")}" dir="ltr">${body}</p>&mdash; ${esc(embed.name)} (@${esc(embed.handle)}) <a href="${esc(embed.url)}">${esc(embed.dateLabel)}</a></blockquote>
+    ${caption}
+  </figure>`;
+}
+
+function olEmbedHtml(call, slug) {
+  if (call.kind && call.kind !== "obvious-later") throw new Error(`${slug}: unknown call kind ${call.kind}`);
+  if (!OL_SLUG.test(call.slug || "")) throw new Error(`${slug}: call.slug must be a lowercase hyphenated Obvious Later id`);
+  if (!call.question || !call.closes) throw new Error(`${slug}: Obvious Later embed needs question and closes`);
+  const src = `https://obviouslater.com/embed/call/${call.slug}?l=en`;
+  const href = `https://obviouslater.com/en/calls/${call.slug}`;
+  return `<figure class="ev-ol">
+    <iframe class="ev-ol-frame" src="${esc(src)}" title="${esc(call.question)}" width="560" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <figcaption>A private 0 to 100 percent call on Obvious Later. The card does not show the crowd's numbers. <a href="${esc(href)}" target="_blank" rel="noopener">Open the question</a></figcaption>
+  </figure>`;
+}
+
+function sectionMedia(s, slug) {
+  const parts = [];
+  if (s.embed?.kind === "x") parts.push(xPostHtml(s.embed, slug));
+  else if (s.embed) throw new Error(`${slug}: unknown embed kind ${s.embed.kind}`);
+  if (s.call) parts.push(olEmbedHtml(s.call, slug));
+  return parts.join("\n    ");
+}
 
 
 // Calendar: an .ics file next to the page (deterministic, so CI rebuilds match) and a Google Calendar link.
@@ -33,19 +73,41 @@ function calDetails(p, ev, url) {
   return `${p.windowNote ? p.windowNote.split(" · ").join(", ") + ". " : ""}Times can move: check ${url} for the latest.`;
 }
 function googleCal(p, ev, url) {
-  const q = new URLSearchParams({ action: "TEMPLATE", text: ev.title, dates: `${calStamp(ev.start)}/${calStamp(ev.end || ev.start)}`, details: calDetails(p, ev, url), location: p.location.name });
+  const q = new URLSearchParams({ action: "TEMPLATE", text: calName(p, ev), dates: `${calStamp(ev.start)}/${calStamp(ev.end || ev.start)}`, details: calDetails(p, ev, url), location: p.location.name });
   return "https://calendar.google.com/calendar/render?" + q.toString();
 }
 function icsFor(p, ev, url, stampIso) {
   return [
     "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Supercharged Daily//Event pages//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
     "BEGIN:VEVENT", `UID:${p.slug}@superchargeddaily.com`, `DTSTAMP:${calStamp(stampIso)}`, `SEQUENCE:${Math.max(0, Math.floor((Date.parse(stampIso) - Date.UTC(2026, 0, 1)) / 6e4))}`,
-    `DTSTART:${calStamp(ev.start)}`, `DTEND:${calStamp(ev.end || ev.start)}`, `SUMMARY:${calText(ev.title)}`,
+    `DTSTART:${calStamp(ev.start)}`, `DTEND:${calStamp(ev.end || ev.start)}`, `SUMMARY:${calText(calName(p, ev))}`,
     `DESCRIPTION:${calText(calDetails(p, ev, url))}`, `LOCATION:${calText(p.location.name)}`, `URL:${url}`, "STATUS:TENTATIVE",
     "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${calText(ev.title + " window opens in 30 minutes")}`, "TRIGGER:-PT30M", "END:VALARM",
     "END:VEVENT", "END:VCALENDAR", "",
   ].map(fold).join("\r\n");
 }
+
+function pointItems(items) {
+  return `<ul class="ev-points">${(items || []).map((t) => typeof t === "string" ? `<li>${esc(t)}</li>` : `<li>${esc(t.text)}${t.source ? ` <a href="${esc(t.source)}" target="_blank" rel="noopener">${esc(t.sourceName || "Source")}</a>` : ""}</li>`).join("")}</ul>`;
+}
+function extraSections(p) {
+  const list = p.sections?.length
+    ? p.sections
+    : (p.heatShield ? [{ id: "heat", title: "Why the heat shield matters", lead: p.heatShield.lead, points: p.heatShield.points, todo: p.heatShield.todo, embed: p.heatShield.embed, call: p.heatShield.call }] : []);
+  return list.map((s) => {
+    const bits = [`<section class="ev-section" aria-labelledby="ev-${esc(s.id)}">`, `    <h2 id="ev-${esc(s.id)}">${esc(s.title)}</h2>`];
+    if (s.todo) bits.push(`    <!-- ${esc(s.todo)} -->`);
+    if (s.lead) bits.push(`    <p>${esc(s.lead)}</p>`);
+    if (s.points?.length) bits.push(`    ${pointItems(s.points)}`);
+    const media = sectionMedia(s, p.slug);
+    if (media) bits.push(`    ${media}`);
+    bits.push("  </section>");
+    return bits.join("\n");
+  }).join("\n  ");
+}
+function calName(p, ev) { return p.calTitle || ev.title; }
+function crumbName(p, ev) { return p.crumb || ev.title; }
+function eventName(p, ev) { return p.eventName || ev.title; }
 
 function pageMain(p, ev, articles) {
   const url = `${SITE}/${p.slug}.html`;
@@ -57,7 +119,7 @@ function pageMain(p, ev, articles) {
   const when = (u) => u.time ? `${fmtDate(u.time.slice(0, 10))}, ${new Date(u.time).toISOString().slice(11, 16)} UTC` : fmtDate(u.date);
   const latest = updates.length ? stamp(updates[0]) : "";
   return `<main id="main" class="ev-page">
-  <nav class="ev-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="${esc(p.sectionUrl)}">${esc(p.section)}</a></li><li aria-current="page">${esc(ev.title)}</li></ol></nav>
+  <nav class="ev-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="${esc(p.sectionUrl)}">${esc(p.section)}</a></li><li aria-current="page">${esc(crumbName(p, ev))}</li></ol></nav>
   <header class="ev-hero">
     <p class="ev-kicker">${esc(p.kicker)}</p>
     <h1>${esc(p.title)}</h1>
@@ -67,16 +129,11 @@ function pageMain(p, ev, articles) {
     <div class="ev-cal" aria-label="Add to your calendar"><a href="/${esc(p.slug)}.ics" download>Add to calendar</a><a href="${esc(googleCal(p, ev, url))}" target="_blank" rel="noopener">Google Calendar ↗</a></div>
   </header>
   <section class="ev-section" aria-labelledby="ev-mission">
-    <h2 id="ev-mission">The mission</h2>
+    <h2 id="ev-mission">${esc(p.missionTitle || "The mission")}</h2>
     ${p.summaryTodo ? `<!-- ${esc(p.summaryTodo)} -->` : ""}
     ${p.summary.map((t) => `<p>${esc(t)}</p>`).join("\n    ")}
   </section>
-  ${p.heatShield ? `<section class="ev-section" aria-labelledby="ev-heat">
-    <h2 id="ev-heat">Why the heat shield matters</h2>
-    ${p.heatShield.todo ? `<!-- ${esc(p.heatShield.todo)} -->` : ""}
-    <p>${esc(p.heatShield.lead)}</p>
-    <ul class="ev-points">${p.heatShield.points.map((t) => typeof t === "string" ? `<li>${esc(t)}</li>` : `<li>${esc(t.text)}${t.source ? ` <a href="${esc(t.source)}" target="_blank" rel="noopener">${esc(t.sourceName || "Source")}</a>` : ""}</li>`).join("")}</ul>
-  </section>` : ""}
+  ${extraSections(p)}
   <section class="ev-section" aria-labelledby="ev-watch">
     <h2 id="ev-watch">Where to watch</h2>
     ${p.watchTodo ? `<!-- ${esc(p.watchTodo)} -->` : ""}
@@ -101,7 +158,7 @@ function pageHead(p, ev) {
   const url = `${SITE}/${p.slug}.html`, img = SITE + p.ogImage, title = `${p.seoTitle} | Supercharged Daily`;
   const latest = [...(p.updates || [])].map((u) => u.date).sort().pop() || ev.start.slice(0, 10);
   const ld = [
-    { "@context": "https://schema.org", "@type": "Event", name: ev.title, description: p.description, startDate: ev.start, endDate: ev.end || ev.start,
+    { "@context": "https://schema.org", "@type": "Event", name: eventName(p, ev), description: p.description, startDate: ev.start, endDate: ev.end || ev.start,
       eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
       location: [{ "@type": "Place", name: p.location.name, address: { "@type": "PostalAddress", addressRegion: p.location.region, addressCountry: p.location.country } },
                  { "@type": "VirtualLocation", url: (p.watch[1] || p.watch[0]).href }],
@@ -109,7 +166,7 @@ function pageHead(p, ev) {
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
       { "@type": "ListItem", position: 2, name: p.section, item: SITE + p.sectionUrl },
-      { "@type": "ListItem", position: 3, name: ev.title, item: url }] },
+      { "@type": "ListItem", position: 3, name: crumbName(p, ev), item: url }] },
     { "@context": "https://schema.org", "@type": "WebPage", name: title, url, dateModified: latest, publisher: { "@type": "Organization", name: "Supercharged Daily", url: SITE + "/" } },
   ];
   return `<!--ev:head-->
@@ -132,7 +189,7 @@ function pageHead(p, ev) {
     <meta name="twitter:description" content="${esc(p.description)}" />
     <meta name="twitter:image" content="${esc(img)}" />
     <meta name="twitter:image:alt" content="${esc(p.ogImageAlt)}" />
-    <link rel="stylesheet" href="/event-page.css?v=${CSS_V}" />
+    <link rel="stylesheet" href="/event-page.css?v=${CSS_V}" />${needsXEmbed(p) ? `\n    <link rel="stylesheet" href="/x-embed.css?v=${XEMBED_V}" />` : ""}
     <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>
     <!--/ev:head-->`;
 }
@@ -154,6 +211,8 @@ export function buildEventPages(root = ROOT) {
     }
     html = html.replace(/<!--ev:head-->[\s\S]*?<!--\/ev:head-->/, () => pageHead(p, ev).trimStart());
     html = html.replace(/<main id="main"[\s\S]*?<\/main>/, () => pageMain(p, ev, articles));
+    html = html.replace(/\n?[ \t]*<script defer src="\/x-embed\.js[^"]*"><\/script>/g, "");
+    if (needsXEmbed(p)) html = html.replace(/\s*<\/body>/, `\n    <script defer src="/x-embed.js?v=${XEMBED_V}"></script>\n  </body>`);
     if (!/<!--ev:head-->/.test(html) || !/class="ev-page"/.test(html)) throw new Error(`${f}: page markers missing`);
     if (!fs.existsSync(out) || fs.readFileSync(out, "utf8") !== html) fs.writeFileSync(out, html);
     // DTSTAMP/SEQUENCE follow the event data, not the clock, so a rebuild is byte-identical.

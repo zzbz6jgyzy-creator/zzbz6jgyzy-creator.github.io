@@ -1,3 +1,9 @@
+## 2026-11-11 — Ship 42 launch hub
+
+- New `/ship-42.html`: countdown for the Flight 15 window (same `eventId` as `/starship-flight-15.html`, so the time still lives in one place), Ship 42 static fires and catch tests, the approximate ship timeline from SpaceX’s mission page, heat-shield notes, where to watch, and a dated Updates log. Same event-page chrome as the SpaceX Flight 15 hub.
+- Flight 15 hub now links to the Ship 42 page.
+- Tower section from the 11 Nov note (roof/cladding, shorter chopsticks, stronger QD arm), with SpaceX’s 12 May Pad 2 update as the disclosed hardware source. Click-to-load X post `2120458679652696160`. Official Obvious Later embed for “Will SpaceX catch a Starship upper stage with its launch tower arms by December 31, 2026?” (no crowd numbers).
+
 ## 2026-11-11 — Finland, 11th EU country for Tesla Assisted Driving (Dispatch)
 
 - Dispatch: Traficom recognised the Dutch provisional type-approval of Tesla Assisted Driving on 10 Nov 2026 (notice 11 Nov, 7:53 Finnish time). That is the 11th EU country as of 11 Nov 2026. Tesla says rollout begins soon, with no date. Licensed Helsinki Länsiväylä Model 3 / Onnibus photo (CC BY 4.0, VynedJ); bus plate SRJ-513 blurred before publish.
