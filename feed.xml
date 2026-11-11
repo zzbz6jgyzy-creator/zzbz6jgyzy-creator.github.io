@@ -6,7 +6,25 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 11 Nov 2026 08:43:07 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 14:55:53 +0000</lastBuildDate>
+    <item>
+      <title>Finland approves Tesla Assisted Driving, making it 11 EU countries (as of 11 Nov 2026)</title>
+      <link>https://superchargeddaily.com/dispatch/finland-fsd-eleventh-eu.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/finland-fsd-eleventh-eu.html</guid>
+      <pubDate>Wed, 11 Nov 2026 14:55:53 +0000</pubDate>
+      <category>FSD</category>
+      <description>Finland’s Traficom has recognised the Dutch approval of Tesla Assisted Driving, formerly FSD (Supervised). That makes 11 EU countries, about 15.5% of the EU population as of 1 Jan 2026. Tesla says rollout begins soon, with no date.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/helsinki-lansivayla-tesla-model-3.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Security firm says 94.7% of live Grok Build apps opened without sign-in, including 24 from SpaceXSI staff (as of 10 Nov 2026)</title>
+      <link>https://superchargeddaily.com/dispatch/grok-build-open-apps.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-build-open-apps.html</guid>
+      <pubDate>Wed, 11 Nov 2026 14:55:53 +0000</pubDate>
+      <category>Grok</category>
+      <description>Claroc, which sells security for AI-built apps, says 35,578 of 37,571 live Grok Build apps opened for anyone as of 10 Nov 2026, including 24 built by SpaceXSI and X staff, which were pulled after reporters asked. This is a report, not a proven breach.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/balticservers-data-center.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026</title>
       <link>https://superchargeddaily.com/dispatch/spacex-fcc-800mhz-review.html</link>
@@ -708,24 +726,6 @@
       <category>Starlink</category>
       <description>A letter of intent to explore a joint EU 2 GHz bid, an EU proposal still awaiting approval, and a US warning of “devastating” retaliation.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-eu-spectrum-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>SpaceX rents out its compute, but can’t rent any itself</title>
-      <link>https://superchargeddaily.com/dispatch/spacex-cant-rent-compute.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-cant-rent-compute.html</guid>
-      <pubDate>Mon, 19 Oct 2026 09:23:56 +0000</pubDate>
-      <category>SpaceX AI</category>
-      <description>Musk says AWS, Google Cloud “or anyone” had no inference capacity, while SpaceX leases GPUs to Google and Anthropic.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/spacex-cant-rent-compute-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Musk pledges a SpaceX share to every kid in America</title>
-      <link>https://superchargeddaily.com/dispatch/musk-spacex-share-every-kid.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/musk-spacex-share-every-kid.html</guid>
-      <pubDate>Mon, 19 Oct 2026 09:23:56 +0000</pubDate>
-      <category>Markets</category>
-      <description>One share each for about 72 million children is worth roughly $10.5 billion. How it compares, and how it could work.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/musk-spacex-share-every-kid-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.4.5</title>
