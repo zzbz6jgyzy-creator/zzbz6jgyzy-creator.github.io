@@ -1,3 +1,8 @@
+## 2026-11-11 — SpaceX orders SINGULUS solar-cell factory gear; Musk says 100 GW a year is already ordered
+
+- Dispatch: SINGULUS says it has signed a contract to supply SpaceX with a turnkey heterojunction solar-cell line for Bastrop, with the first line worth more than €60 million and due in the first half of 2027. SpaceX and SINGULUS say production will scale to support more than 100 GW of equipment; Musk says 100 GW a year is already ordered (as of 10 Nov 2026). Licensed NASA STS-134 ISS solar-array still (public domain) is the card and hero — not Starmind, Starlink or SINGULUS hardware.
+- One-line update on the Baron orbital data-centers story pointing to this SINGULUS/SpaceX order.
+
 ## 2026-11-10 — Starship Flight 15 hub shows the published window
 
 - SpaceX’s mission page lists a 75-minute window on 13 Nov 2026, opening 4:45 p.m. CT (6:00 p.m. close). The Starship observatory next-mission card, briefing and hero now show that range. It is still a published window, not a confirmed T-0, so there is no countdown clock.
