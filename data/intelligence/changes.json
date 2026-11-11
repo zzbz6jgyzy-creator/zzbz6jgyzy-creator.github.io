@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-11T02:34:41.401Z",
+  "updated": "2026-11-11T02:52:01.808Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-singulus-100gw-solar.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)",
+      "at": "2026-11-11T02:35:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-singulus-100gw-solar.html",
+      "href": "/dispatch/spacex-singulus-100gw-solar.html",
+      "summary": "SINGULUS says it has signed a contract with SpaceX for a turnkey heterojunction solar-cell line as SpaceX expands satellite manufacturing in Bastrop, Texas, with the first line worth more than €60 million and due in the first half of 2027. SpaceX and SINGULUS say production will scale to support more than 100 GW of equipment. Musk says 100 GW a year is already ordered.",
+      "title": "SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/spacex-singulus-100gw-solar.html|2026-11-11T02:35:00.000Z|SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-matrix-headlights-nhtsa.html",
@@ -323,23 +340,6 @@
       "summary": "2026.38.5.12 moved from 322 to 404 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.12",
       "id": "changed|tesla-software:wave:2026.38.5.12|2026-11-06T23:33:52.000Z|404"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-argentina.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
-      "at": "2026-11-06T20:37:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-argentina.html",
-      "href": "/dispatch/tesla-argentina.html",
-      "summary": "Tesla confirmed an Argentina arrival date of 20 November 2026 via @Tesla_LatAm, with @Tesla and Elon Musk quoting the post. Argentine press reports an Unicenter exhibition first, with sales and test drives planned for 2027. Official posts name no models or prices.",
-      "title": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
-      "id": "logged|dispatch:/dispatch/tesla-argentina.html|2026-11-06T20:37:00.000Z|Tesla says it arrives in Argentina on 20 November; exhibition first, sales later"
     },
     {
       "type": "changed",

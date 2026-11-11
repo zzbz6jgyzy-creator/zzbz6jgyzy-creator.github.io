@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-11T02:34:41.401Z",
+  "generatedAt": "2026-11-11T02:52:01.808Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-singulus-100gw-solar.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)",
+      "at": "2026-11-11T02:35:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-singulus-100gw-solar.html",
+      "href": "/dispatch/spacex-singulus-100gw-solar.html",
+      "summary": "SINGULUS says it has signed a contract with SpaceX for a turnkey heterojunction solar-cell line as SpaceX expands satellite manufacturing in Bastrop, Texas, with the first line worth more than €60 million and due in the first half of 2027. SpaceX and SINGULUS say production will scale to support more than 100 GW of equipment. Musk says 100 GW a year is already ordered.",
+      "title": "SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/spacex-singulus-100gw-solar.html|2026-11-11T02:35:00.000Z|SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/tesla-matrix-headlights-nhtsa.html",
@@ -607,23 +624,6 @@
       "summary": "2026.38.5.12 moved from 322 to 404 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.12",
       "id": "changed|tesla-software:wave:2026.38.5.12|2026-11-06T23:33:52.000Z|404"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-argentina.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
-      "at": "2026-11-06T20:37:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-argentina.html",
-      "href": "/dispatch/tesla-argentina.html",
-      "summary": "Tesla confirmed an Argentina arrival date of 20 November 2026 via @Tesla_LatAm, with @Tesla and Elon Musk quoting the post. Argentine press reports an Unicenter exhibition first, with sales and test drives planned for 2027. Official posts name no models or prices.",
-      "title": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
-      "id": "logged|dispatch:/dispatch/tesla-argentina.html|2026-11-06T20:37:00.000Z|Tesla says it arrives in Argentina on 20 November; exhibition first, sales later"
     },
     {
       "type": "changed",
@@ -1909,14 +1909,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-11-09T08:41:14.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1930,14 +1930,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-11-10T22:28:42.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1951,35 +1951,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-11-08T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-11T02:34:41.401Z",
+      "lastChecked": "2026-11-11T02:52:01.808Z",
       "lastVerified": "2026-11-11T00:43:05.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1988,85 +1988,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.324Z",
-      "finished": "2026-11-11T02:34:41.386Z"
+      "started": "2026-11-11T02:52:01.793Z",
+      "finished": "2026-11-11T02:52:01.796Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.386Z",
-      "finished": "2026-11-11T02:34:41.386Z"
+      "started": "2026-11-11T02:52:01.796Z",
+      "finished": "2026-11-11T02:52:01.796Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.386Z",
-      "finished": "2026-11-11T02:34:41.387Z"
+      "started": "2026-11-11T02:52:01.796Z",
+      "finished": "2026-11-11T02:52:01.796Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.387Z",
-      "finished": "2026-11-11T02:34:41.394Z"
+      "started": "2026-11-11T02:52:01.796Z",
+      "finished": "2026-11-11T02:52:01.802Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.394Z",
-      "finished": "2026-11-11T02:34:41.397Z"
+      "started": "2026-11-11T02:52:01.802Z",
+      "finished": "2026-11-11T02:52:01.805Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.397Z",
-      "finished": "2026-11-11T02:34:41.398Z"
+      "started": "2026-11-11T02:52:01.805Z",
+      "finished": "2026-11-11T02:52:01.805Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.398Z",
-      "finished": "2026-11-11T02:34:41.399Z"
+      "started": "2026-11-11T02:52:01.805Z",
+      "finished": "2026-11-11T02:52:01.806Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.399Z",
-      "finished": "2026-11-11T02:34:41.399Z"
+      "started": "2026-11-11T02:52:01.806Z",
+      "finished": "2026-11-11T02:52:01.806Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.399Z",
-      "finished": "2026-11-11T02:34:41.399Z"
+      "started": "2026-11-11T02:52:01.806Z",
+      "finished": "2026-11-11T02:52:01.806Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.399Z",
-      "finished": "2026-11-11T02:34:41.400Z"
+      "started": "2026-11-11T02:52:01.806Z",
+      "finished": "2026-11-11T02:52:01.807Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.400Z",
-      "finished": "2026-11-11T02:34:41.401Z"
+      "started": "2026-11-11T02:52:01.807Z",
+      "finished": "2026-11-11T02:52:01.807Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.401Z",
-      "finished": "2026-11-11T02:34:41.401Z"
+      "started": "2026-11-11T02:52:01.807Z",
+      "finished": "2026-11-11T02:52:01.807Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-11T02:34:41.401Z",
-      "finished": "2026-11-11T02:34:41.401Z"
+      "started": "2026-11-11T02:52:01.807Z",
+      "finished": "2026-11-11T02:52:01.808Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-11T02:34:41.401Z",
+    "generatedAt": "2026-11-11T02:52:01.808Z",
     "factCount": 20,
     "changeCount": 93,
     "conflictCount": 2,
