@@ -11,7 +11,7 @@ const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": 
 import { createRequire } from "node:module";
 const { whenText, countdownHtml, eventPages } = createRequire(import.meta.url)("./event-shared.cjs");
 export { whenText, countdownHtml };
-const CSS_V = "20261111c";
+const CSS_V = "20261111f";
 const XEMBED_V = "202610262130";
 const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(new Date(d + "T12:00:00Z"));
 const X_STATUS = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;
@@ -88,7 +88,27 @@ function icsFor(p, ev, url, stampIso) {
 }
 
 function pointItems(items) {
-  return `<ul class="ev-points">${(items || []).map((t) => typeof t === "string" ? `<li>${esc(t)}</li>` : `<li>${esc(t.text)}${t.source ? ` <a href="${esc(t.source)}" target="_blank" rel="noopener">${esc(t.sourceName || "Source")}</a>` : ""}</li>`).join("")}</ul>`;
+  const src = (t) => t.source ? ` <a href="${esc(t.source)}" target="_blank" rel="noopener">${esc(t.sourceName || "Source")}</a>` : "";
+  if ((items || []).length && items.every((t) => t && t.title)) {
+    return `<ul class="ev-facts">${items.map((t) => `<li><h3>${esc(t.title)}${t.kind ? ` <span class="ev-chip ev-chip-${esc(t.kind.toLowerCase())}">${esc(t.kind)}</span>` : ""}</h3><p>${esc(t.text)}${src(t)}</p></li>`).join("")}</ul>`;
+  }
+  return `<ul class="ev-points">${(items || []).map((t) => typeof t === "string" ? `<li>${esc(t)}</li>` : `<li>${esc(t.text)}${src(t)}</li>`).join("")}</ul>`;
+}
+function timelineHtml(items) {
+  return `<ol class="ev-tl">${items.map((t) => `<li><p class="ev-tl-t">${esc(t.t)}</p><h3>${esc(t.title)}</h3><p>${esc(t.text)}${t.source ? ` <a href="${esc(t.source)}" target="_blank" rel="noopener">Source</a>` : ""}</p></li>`).join("")}</ol>`;
+}
+function diagramHtml(dg, slug) {
+  if (!/^assets\/explainers\/[a-z0-9-]+\.svg$/.test(dg.file || "")) throw new Error(`${slug}: diagram.file must be an SVG under assets/explainers/`);
+  if (!dg.caption || !/illustration/i.test(dg.caption)) throw new Error(`${slug}: a diagram caption must say it is an illustration`);
+  const svg = fs.readFileSync(path.join(ROOT, dg.file), "utf8").trim();
+  return `<figure class="ev-diagram">${svg}${dg.steps?.length ? `<ol class="ev-steps">${dg.steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>` : ""}<figcaption>${esc(dg.caption)}</figcaption></figure>`;
+}
+function heroFigure(p) {
+  const h = p.hero; if (!h) return "";
+  for (const k of ["base", "widths", "alt", "caption", "credit", "creditUrl", "licence", "licenceUrl", "width", "height"]) if (!h[k]) throw new Error(`${p.slug}: hero.${k} is required (photos need a credit and licence)`);
+  const set = (ext) => h.widths.map((w) => `${h.base}-${w}w.${ext} ${w}w`).join(", ");
+  const sizes = "(min-width:900px) 300px, calc(100vw - 32px)";
+  return `<figure class="ev-photo"><picture><source type="image/avif" srcset="${esc(set("avif"))}" sizes="${sizes}" /><source type="image/webp" srcset="${esc(set("webp"))}" sizes="${sizes}" /><img src="${esc(h.base)}.jpg" alt="${esc(h.alt)}" width="${h.width}" height="${h.height}" fetchpriority="high" decoding="async" /></picture><figcaption>${esc(h.caption)} Photo: <a href="${esc(h.creditUrl)}" target="_blank" rel="noopener">${esc(h.credit)}</a>, <a href="${esc(h.licenceUrl)}" target="_blank" rel="noopener">${esc(h.licence)}</a>${h.note ? ` (${esc(h.note)})` : ""}.</figcaption></figure>`;
 }
 function extraSections(p) {
   const list = p.sections?.length
@@ -98,6 +118,8 @@ function extraSections(p) {
     const bits = [`<section class="ev-section" aria-labelledby="ev-${esc(s.id)}">`, `    <h2 id="ev-${esc(s.id)}">${esc(s.title)}</h2>`];
     if (s.todo) bits.push(`    <!-- ${esc(s.todo)} -->`);
     if (s.lead) bits.push(`    <p>${esc(s.lead)}</p>`);
+    if (s.diagram) bits.push(`    ${diagramHtml(s.diagram, p.slug)}`);
+    if (s.timeline?.length) bits.push(`    ${timelineHtml(s.timeline)}`);
     if (s.points?.length) bits.push(`    ${pointItems(s.points)}`);
     const media = sectionMedia(s, p.slug);
     if (media) bits.push(`    ${media}`);
@@ -130,7 +152,8 @@ function pageMain(p, ev, articles) {
   const latest = updates.length ? stamp(updates[0]) : "";
   return `<main id="main" class="ev-page">
   <nav class="ev-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="${esc(p.sectionUrl)}">${esc(p.section)}</a></li><li aria-current="page">${esc(crumbName(p, ev))}</li></ol></nav>
-  <header class="ev-hero">
+  <header class="ev-hero${p.hero ? " ev-hero-photo" : ""}">
+    <div class="ev-hero-main">
     <p class="ev-kicker">${esc(p.kicker)}</p>
     <h1>${esc(p.title)}</h1>
     ${countdownHtml(ev, p.windowNote)}
@@ -138,6 +161,8 @@ function pageMain(p, ev, articles) {
     <p class="ev-where">${esc(p.location.name)}</p>
     <div class="ev-share" data-share><a class="ev-share-x" href="https://x.com/intent/post?text=${encodeURIComponent(p.title)}&amp;url=${encodeURIComponent(url)}&amp;via=ALJR86" target="_blank" rel="noopener">Share on X</a><button type="button" data-share-copy data-url="${esc(url)}">Copy link</button><button type="button" data-share-native data-url="${esc(url)}" data-title="${esc(p.title)}" hidden>Share…</button></div>
     <div class="ev-cal" aria-label="Add to your calendar"><a href="/${esc(p.slug)}.ics" download>Add to calendar</a><a href="${esc(googleCal(p, ev, url))}" target="_blank" rel="noopener">Google Calendar ↗</a></div>
+    </div>
+    ${heroFigure(p)}
   </header>
   ${glanceHtml(p, chip)}
   ${jumpHtml(p)}
@@ -145,6 +170,7 @@ function pageMain(p, ev, articles) {
     <h2 id="ev-mission">${esc(p.missionTitle || "The mission")}</h2>
     ${p.summaryTodo ? `<!-- ${esc(p.summaryTodo)} -->` : ""}
     ${p.summary.map((t) => `<p>${esc(t)}</p>`).join("\n    ")}
+    ${p.quote ? `<figure class="ev-quote"><blockquote><p>${esc(p.quote.text)}</p></blockquote><figcaption>${p.quote.source ? `<a href="${esc(p.quote.source)}" target="_blank" rel="noopener">${esc(p.quote.by)}</a>` : esc(p.quote.by)}</figcaption></figure>` : ""}
   </section>
   ${extraSections(p)}
   <section class="ev-section" aria-labelledby="ev-watch">

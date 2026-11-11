@@ -28,4 +28,5 @@ The brand is that it can be trusted on contested, fast-moving subjects. Hold the
 10. **X posts**: paste the standard embed `<blockquote class="twitter-tweet">` (it holds the text, author, date and link) inside
     `<figure class="figure-embed">`, add `<link rel="stylesheet" href="/x-embed.css?v=...">` in the head and
     `<script defer src="/x-embed.js?v=..."></script>` before `</body>`, and never `platform.twitter.com/widgets.js`. The post then
-    reads as text and the live embed loads only when the reader presses "Load post from X" (`tests/test_x_embeds.py`).
+    reads as text and the live embed loads as the post scrolls near the reader; Save-Data readers get a "Load post from X"
+    button instead (`tests/test_x_embeds.py`, `tests/x-embed-browser.py`).

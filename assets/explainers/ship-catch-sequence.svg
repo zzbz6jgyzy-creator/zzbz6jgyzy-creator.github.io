@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" role="img" aria-labelledby="scs-t scs-d" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<title id="scs-t">How a Ship catch is meant to work, in four steps</title>
+<desc id="scs-d">Four panels. One: the Ship falls belly-first. Two: it flips upright. Three: it fires its engines beside the tower. Four: the tower arms close around it. Illustration, not to scale.</desc>
+<defs>
+<g id="scs-ship"><path d="M-9,36V-18Q-9,-34 0,-40Q9,-34 9,-18V36Z" fill="currentColor" fill-opacity=".14"/><path d="M-9,-16l-7,-8v12zM9,-16l7,-8v12zM-9,36l-9,-2v-16l9,6zM9,36l9,-2v-16l-9,6z" fill="currentColor" fill-opacity=".3"/></g>
+<g id="scs-tower"><path d="M0,0V-190M14,0V-190M0,-190H14M0,-150l14,-20M0,-110l14,-20M0,-70l14,-20M0,-30l14,-20" opacity=".7"/><path d="M-6,-196H20l-4,-8H-2z" fill="currentColor" fill-opacity=".3"/></g>
+</defs>
+<g opacity=".35"><path d="M240,20V260M480,20V260M720,20V260" stroke-dasharray="3 7"/></g>
+<path d="M20,250H940" opacity=".5"/>
+<g><use href="#scs-tower" x="200" y="250"/><path d="M200,100H150M200,108H150" opacity=".6"/><use href="#scs-ship" transform="translate(96,64) rotate(90) scale(1.5)"/><path d="M66,104v30m-6,-8l6,8l6,-8M126,104v30m-6,-8l6,8l6,-8" opacity=".7"/></g>
+<g><use href="#scs-tower" x="440" y="250"/><path d="M440,100H390M440,108H390" opacity=".6"/><use href="#scs-ship" transform="translate(330,112) rotate(42) scale(1.5)"/><path d="M372,40a70,70 0 0 1 22,50m-10,-5l10,5l4,-11" opacity=".7"/></g>
+<g><use href="#scs-tower" x="680" y="250"/><path d="M680,100H630M680,108H630" opacity=".6"/><use href="#scs-ship" transform="translate(600,112) scale(1.5)"/><path d="M592,170q8,36 8,62q0,-26 8,-62z" stroke="var(--sec-accent,#e31937)" fill="var(--sec-accent,#e31937)" fill-opacity=".35"/></g>
+<g><use href="#scs-tower" x="920" y="250"/><use href="#scs-ship" transform="translate(872,150) scale(1.5)"/><path d="M920,100H846M920,108H846" stroke="var(--sec-accent,#e31937)" stroke-width="4"/></g>
+</svg>

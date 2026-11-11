@@ -723,3 +723,7 @@ Known leftovers:
 - `tests/calendar-studio-browser.py` no longer hard-codes the Flight 15 day; it reads it from `data/events.json`.
 - Follow-up the same day: three older Starship articles (`ship-42-first-tower-catch`, `starship-f15-ship-catch`, `starship-flight-15-catch-timeline`) now carry a dated update with the 13 Nov slide, and the personal-home data block shows the 5 Nov tracker change. The calendar feed (`data/calendar.ics`) already carries 13 Nov for the Flight 15 event; older one-off .ics downloads people saved before today cannot be changed from here.
 - Test fix: `tests/calendar-launch-import.py` (`test_fresh_go_net_overrides_cached_go_net_and_preserves_done`) ran the real command against hard-coded launch times for 5 Nov; once they passed ("No usable launches") the `calendar-studio` check went red on main. Its command-line part now uses launch times relative to the real clock.
+
+## 11 Nov 2026 — Ship 42 page upgrade
+- Ship 42 page: licensed photo in the hero (Steve Jurvetson, CC BY 2.0, already used on the site), a pull quote, numbered sections, a visual flight timeline, tower changes as labelled cards and a four-step catch diagram (our illustration, labelled). All from `data/event-pages/ship-42.json`; new optional fields `hero`, `quote`, `timeline`, `diagram` and point `title`/`kind` in `scripts/build-event-pages.mjs`.
+- Editorial rule 10 now matches the X-post change: posts load as they scroll near.

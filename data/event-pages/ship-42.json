@@ -21,7 +21,7 @@
   "summary": [
     "Ship 42 is the Starship upper stage on Flight 15, stacked with Super Heavy Booster 22. SpaceX is targeting Friday 13 November 2026 from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). That is a published window, not a guaranteed lift-off time.",
     "For the first time SpaceX plans to catch both stages with the tower. Ship 42's job, after deploying 26 Starlink V3 satellites, is a flight of more than 22 hours and then the first Ship catch at Starbase, if the flight-control team is satisfied the vehicle is healthy. The tower has never caught a Starship; it has caught a Super Heavy booster three times, on Flights 5, 7 and 8.",
-    "SpaceX said on 28 October that Ship 42's static fires were complete. Elon Musk quoted that post the same evening: \"As the prophecy foretold, Starship 42 will be the first tower catch.\" No FAA licence for Flight 15 is published."
+    "SpaceX said on 28 October that Ship 42's static fires were complete. Elon Musk quoted that post the same evening. No FAA licence for Flight 15 is published."
   ],
   "sections": [
     {
@@ -54,22 +54,30 @@
         {
           "text": "SpaceX's 12 May 2026 update on Pad 2 said the chopsticks are now shorter, \"allowing faster motion to better track vehicles during catch operations.\" The main actuators changed from hydraulic to electromechanical \"to improve speed, redundancy, and reliability.\" The ship quick-disconnect arm \"has been strengthened, repackaged, and now rotates farther away from the rocket during launch.\"",
           "source": "https://www.spacex.com/updates",
-          "sourceName": "Source"
+          "sourceName": "Source",
+          "title": "What SpaceX has said",
+          "kind": "Disclosed"
         },
         {
           "text": "The Pad 2 tower now has a roof with protective cladding. Alex R's 11 November post reads that as a Ship-catch change: the vehicle comes in belly-first, flips upright and fires its Raptors beside the tower, and that burn can throw exhaust at the cables that move the chopsticks. That purpose is our analysis, not a SpaceX line. The same post says the roof went on late in construction and that SpaceX plans one for Pad 1; SpaceX has not published either.",
           "source": "https://x.com/AlJR86/status/2120458679652696160",
-          "sourceName": "Source"
+          "sourceName": "Source",
+          "title": "A roof on the tower",
+          "kind": "Reported"
         },
         {
           "text": "The arms are two full truss sections shorter than the originals. The 11 November post's reading is that Boosters 12, 14 and 15 were all caught on the inner part of the arms, close to the tower, so the unused outer end came off. The old ship lifting pins are gone; Block 3 ships are not lifted that way.",
           "source": "https://x.com/AlJR86/status/2120458679652696160",
-          "sourceName": "Source"
+          "sourceName": "Source",
+          "title": "Shorter arms",
+          "kind": "Reported"
         },
         {
           "text": "After a catch the ship still has leftover cryogenic propellant. The 11 November post's reading is that the stronger Pad 2 quick-disconnect arm swings in so that propellant can be drained before anyone inspects the vehicle or flies it again. SpaceX connected that arm to Ship 42 in September, as seen in the catch-related tests above; calling that a drain rehearsal is our reading.",
           "source": "https://x.com/AlJR86/status/2120458679652696160",
-          "sourceName": "Source"
+          "sourceName": "Source",
+          "title": "Draining the Ship after a catch",
+          "kind": "Reported"
         }
       ],
       "embed": {
@@ -81,32 +89,46 @@
         "dateLabel": "November 11, 2026",
         "text": "SpaceX put a roof on its Starship launch tower, and it's there because of Friday's ship catch.\n\nWhen Starship comes home, it falls belly-first, then flips upright and fires its Raptors to slow down right next to the tower. That burn can throw exhaust at the top of the tower, which is where the cables that move the chopstick arms run. So the Pad 2 tower got a roof covered in protective cladding. It went on late in construction, and SpaceX plans to add one to the Pad 1 tower too.\n\nThe arms changed as well. They're two full truss sections shorter than the originals, because Boosters 12, 14 and 15 were all caught on the inner part of the arms, close to the tower. The outer end never got used. The old ship lifting pins are gone too, since Block 3 ships don't get lifted that way anymore, and Pad 2 uses electromechanical actuators.\n\nThen there's the quick disconnect arm, which is stronger on Pad 2. After a catch, the ship still has leftover super-cold propellant on board. This arm swings in and plugs into the ship so it can be drained before anyone inspects it or flies it again. SpaceX already rehearsed this with Ship 42, the Flight 15 ship, back in September.\n\nFlight 15 is targeting Friday, Nov 13, if the FAA signs off. If it goes to plan, this tower catches its first Starship.",
         "caption": "Video: Alex R (@AlJR86), posted 11 Nov 2026 at 5:08 a.m. ET (2:08 a.m. PT; 10:08 UTC)."
+      },
+      "diagram": {
+        "file": "assets/explainers/ship-catch-sequence.svg",
+        "steps": [
+          "Falls belly-first",
+          "Flips upright",
+          "Fires its Raptors beside the tower",
+          "The arms close around it"
+        ],
+        "caption": "The Ship-catch sequence as described in the 11 November post below and in SpaceX's plan for Flight 15. Illustration by Supercharged Daily, not to scale."
       }
     },
     {
       "id": "watch-ship",
       "title": "What to watch on Ship 42",
       "lead": "Times below are approximate, from SpaceX's Flight 15 mission page. The booster catch, if it happens, is about six and a half minutes after lift-off. Ship 42's own catch is more than 22 hours later.",
-      "points": [
+      "timeline": [
         {
-          "text": "T+8:09 — Starship engine cutoff. Hot-staging is at about T+2:21; the Ship then burns until engine cutoff eight minutes after lift-off.",
-          "source": "https://www.spacex.com/launches/starship-flight-15",
-          "sourceName": "Source"
+          "t": "T+8:09",
+          "title": "Starship engine cutoff",
+          "text": "Hot-staging is at about T+2:21; the Ship then burns until engine cutoff eight minutes after lift-off.",
+          "source": "https://www.spacex.com/launches/starship-flight-15"
         },
         {
-          "text": "T+35:01 to T+1:17:40 — payload deploy. SpaceX plans 26 Starlink V3 satellites. Three of them carry cameras to scan the heat shield and send the pictures down.",
-          "source": "https://www.spacex.com/launches/starship-flight-15",
-          "sourceName": "Source"
+          "t": "T+35:01 to T+1:17:40",
+          "title": "Payload deploy",
+          "text": "SpaceX plans 26 Starlink V3 satellites. Three of them carry cameras to scan the heat shield and send the pictures down.",
+          "source": "https://www.spacex.com/launches/starship-flight-15"
         },
         {
-          "text": "T+21:35:57 — deorbit burn. SpaceX lists return checks over Hawaii and Chile during the coast (early Hawaii, mid Chile, final Hawaii).",
-          "source": "https://www.spacex.com/launches/starship-flight-15",
-          "sourceName": "Source"
+          "t": "T+21:35:57",
+          "title": "Deorbit burn",
+          "text": "SpaceX lists return checks over Hawaii and Chile during the coast (early Hawaii, mid Chile, final Hawaii).",
+          "source": "https://www.spacex.com/launches/starship-flight-15"
         },
         {
-          "text": "T+22:10:46 entry, then landing burn and catch at about T+22:32:34. SpaceX says the Ship will only fly that profile if systems critical for re-entry, the landing burn and the tower approach are healthy.",
-          "source": "https://www.spacex.com/launches/starship-flight-15",
-          "sourceName": "Source"
+          "t": "T+22:10:46",
+          "title": "Entry, then landing burn and catch at about T+22:32:34",
+          "text": "SpaceX says the Ship will only fly that profile if systems critical for re-entry, the landing burn and the tower approach are healthy.",
+          "source": "https://www.spacex.com/launches/starship-flight-15"
         }
       ]
     },
@@ -275,5 +297,27 @@
       "value": "First Ship catch with the tower",
       "kind": "Target"
     }
-  ]
+  ],
+  "hero": {
+    "base": "/assets/dispatch/starship-booster-catch-approach",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "width": 1200,
+    "height": 1500,
+    "alt": "A Super Heavy booster, engines lit, descends beside the launch tower's open arms at dusk",
+    "caption": "Super Heavy on final approach to the tower on Flight 5, 13 Oct 2024, the first booster catch. A Ship has never been caught.",
+    "credit": "Steve Jurvetson, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Starship_Booster_Return_on_Final_Approach_(54063904149).jpg",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "note": "cropped"
+  },
+  "quote": {
+    "text": "As the prophecy foretold, Starship 42 will be the first tower catch.",
+    "by": "Elon Musk on X, 28 Oct 2026",
+    "source": "https://x.com/elonmusk/status/2115634093949911506"
+  }
 }

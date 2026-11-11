@@ -191,3 +191,13 @@ test("Ship 42 shows an at-a-glance strip, jump links and a latest-update line", 
   assert.match(html, /data-ev-latest-line/);
   assert.equal((html.match(/<nav class="ev-jump"/g) || []).length, 1);
 });
+
+test("Ship 42 has a credited photo, a flight timeline, fact cards and a labelled diagram", () => {
+  const html = fs.readFileSync(new URL("../ship-42.html", import.meta.url), "utf8");
+  assert.match(html, /<figure class="ev-photo">[\s\S]*?Photo: <a href="https:\/\/commons\.wikimedia\.org[^"]+"[\s\S]*?CC BY 2\.0/);
+  assert.equal((html.match(/<ol class="ev-tl">/g) || []).length, 1);
+  assert.equal((html.match(/class="ev-tl-t"/g) || []).length, 4);
+  assert.match(html, /<ul class="ev-facts">/);
+  assert.match(html, /<figure class="ev-diagram">[\s\S]*?Illustration by Supercharged Daily, not to scale/);
+  assert.match(html, /<figure class="ev-quote">[\s\S]*?x\.com\/elonmusk\/status\/2115634093949911506/);
+});
