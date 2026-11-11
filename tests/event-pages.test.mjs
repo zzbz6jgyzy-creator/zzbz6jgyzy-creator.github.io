@@ -182,3 +182,12 @@ test(".ics folds by octets without splitting characters, and update times must b
     assert.throws(() => buildEventPages(dir), /must be UTC/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
+
+test("Ship 42 shows an at-a-glance strip, jump links and a latest-update line", async () => {
+  const fs = await import("node:fs");
+  const html = fs.readFileSync(new URL("../ship-42.html", import.meta.url), "utf8");
+  assert.match(html, /class="ev-glance"/);
+  assert.match(html, /class="ev-jump"[^>]*aria-label="On this page"/);
+  assert.match(html, /data-ev-latest-line/);
+  assert.equal((html.match(/<nav class="ev-jump"/g) || []).length, 1);
+});
