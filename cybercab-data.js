@@ -1,12 +1,12 @@
 // Cybercab Tracker data. Edit this file to update the page.
 // Every item needs a real source link. Change `updated` when you edit.
 window.CYBERCAB = {
-  updated: "2026-11-09",
-  updatedLabel: "9 Nov 2026",
+  updated: "2026-11-11",
+  updatedLabel: "11 Nov 2026",
   stats: [
     { value: "300+", label: "Cybercabs serving Austin (Tesla Robotaxi, 10 Oct 2026)", src: "https://eletric-vehicles.com/tesla/teslas-cybercab-is-coming-to-dallas-soon-exec-says/" },
-    { live: "cybercab", value: "573", label: "Cybercabs registered (unchanged; checked 9 Nov 2026). Texas DMV list via FSD Database, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
-    { live: "share", value: "45%", label: "Cybercab share of Tesla’s 1,282 registered Texas robotaxis (573 Cybercab, 709 Model Y; Texas DMV via FSD Database, checked 9 Nov 2026)", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { live: "cybercab", value: "573", label: "Cybercabs registered (unchanged; checked 11 Nov 2026). Texas DMV list via FSD Database, the only state that publishes a count", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
+    { live: "share", value: "44%", label: "Cybercab share of Tesla’s 1,302 registered Texas robotaxis (573 Cybercab, 729 Model Y; Texas DMV via FSD Database, checked 11 Nov 2026)", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
     { value: "125k+", label: "Listed yearly production capacity at Giga Texas", src: "https://eletric-vehicles.com/tesla/tesla-adds-150-cybercabs-in-texas-nearly-doubling-its-registered-count/" }
   ],
   fleet: [
@@ -24,7 +24,7 @@ window.CYBERCAB = {
   ],
   share: {
     cybercab: 573,
-    total: 1282,
+    total: 1302,
     approx: false,
     src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
   },
@@ -58,7 +58,9 @@ window.CYBERCAB = {
     { date: "2026-11-04", label: "4 Nov 2026", text: "tesla.com/robotaxi now lists Fort Worth among cities where you can already hail a car. Tesla has still not said Cybercabs serve that city; public Cybercab rides remain Austin-only.", src: "https://www.tesla.com/robotaxi" },
     { date: "2026-11-07", label: "7 Nov 2026", text: "FSD Database still lists 1,244 Tesla robotaxis on the Texas DMV register (573 Cybercab, 671 Model Y), unchanged from 1 Nov. Registered is not in service. Rechecked 8 Nov, still 1,244.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
     { date: "2026-11-09", label: "9 Nov 2026", text: "38 more Model Y robotaxis appear on the Texas DMV list (671 → 709). Cybercab stays 573; Tesla’s Texas total is 1,282. Registered is not in service; the registry has no city split. FSD Database’s VIN list matches the 9 Nov TxDMV pull in Dispatch.", src: "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc" },
-    { date: "2026-11-09", label: "9 Nov 2026", text: "Tesla’s @robotaxi account posted a bigger Austin service area. Tesla gave no square-mileage. Robotaxi Tracker measured about 442 sq mi (from 272); RoboTracker lists 435. Full story in Dispatch.", src: "/dispatch/tesla-robotaxi-austin-bigger-service-area.html" }
+    { date: "2026-11-09", label: "9 Nov 2026", text: "Tesla’s @robotaxi account posted a bigger Austin service area. Tesla gave no square-mileage. Robotaxi Tracker measured about 442 sq mi (from 272); RoboTracker lists 435. Full story in Dispatch.", src: "/dispatch/tesla-robotaxi-austin-bigger-service-area.html" },
+    { date: "2026-11-10", label: "10 Nov 2026", text: "20 more Model Y robotaxis appear on the Texas DMV list (709 → 729). Cybercab stays 573; Tesla’s Texas total is 1,302. Registered is not in service; the registry has no city split. Texas AV Tracker first-seen dates and Teslanorth’s evening TxDMV check put the drop on 10 Nov; first ingested here 11 Nov 07:43 UTC after a 10 Nov 22:28 UTC reading still at 1,282.", src: "https://teslanorth.com/2026/11/10/tesla-passes-waymo-texas-robotaxi-registry-1302/" },
+    { date: "2026-11-11", label: "11 Nov 2026", text: "tesla.com/robotaxi now lists San Antonio among cities where you can already hail a car. Tesla has still not said Cybercabs serve that city; public Cybercab rides remain Austin-only.", src: "https://www.tesla.com/robotaxi" }
   ],
   watch: [
     { text: "Electrek reported 5 Nov that Tesla met NHTSA’s 30 Oct Cybercab Special Order deadline and asked to keep the answers confidential. It says the public AQ26002 docket now has three Tesla filings: a one-page letter whose only readable sentence is that the entire file is confidential business information; a Question 8 placeholder with the same request; and the Cybercab First Responder Interaction Plan dated 3 Sep. NHTSA’s AQ26002 record still lists the audit as open, with no finding or recall (dot.report, last updated 9 Nov 2026 08:12:06).", src: "https://electrek.co/2026/11/05/tesla-cybercab-nhtsa-sworn-answers-confidential/" },

@@ -1,3 +1,10 @@
+## 2026-11-11 — Texas robotaxi registry: +20 Model Ys, 1,302 total
+
+- FSD Database’s TxDMV VIN list now has 1,302 Tesla robotaxis: 573 Cybercab (unchanged) and 729 Model Y (+20). Registered is not in service; the registry has no city split. Cybercab share of the Texas list is 44%. Texas AV Tracker first-seen dates and Teslanorth’s evening TxDMV check put the 20 new VINs on 10 Nov; Supercharged Daily first ingested them 11 Nov 07:43 UTC after a 10 Nov 22:28 UTC reading still at 1,282. Details: `docs/audit-2026-11-11.md`.
+- tesla.com/robotaxi now lists San Antonio among cities where you can already hail a car (checked 11 Nov 2026). Tesla has still not said Cybercabs serve that city. The 9 Nov @robotaxi announcement stays as a dated snapshot.
+- Promise ledger: eight hail cities, seven metro areas (Dallas and Fort Worth still share one metro).
+- Calendar: USSF-317 slipped to Saturday 14 Nov, 7:55 p.m. PT. USSF-266 added (Wednesday 18 Nov, 8:49 a.m. PT). USSF-627 remains Wednesday 11 Nov, 6:35 p.m. PT. Flight 15 is unchanged.
+
 ## 2026-11-11 — SpaceX orders SINGULUS solar-cell factory gear; Musk says 100 GW a year is already ordered
 
 - Dispatch: SINGULUS says it has signed a contract to supply SpaceX with a turnkey heterojunction solar-cell line for Bastrop, with the first line worth more than €60 million and due in the first half of 2027. SpaceX and SINGULUS say production will scale to support more than 100 GW of equipment; Musk says 100 GW a year is already ordered (as of 10 Nov 2026). Licensed NASA STS-134 ISS solar-array still (public domain) is the card and hero — not Starmind, Starlink or SINGULUS hardware.
