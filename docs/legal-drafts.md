@@ -7,7 +7,7 @@
 - **Members:** Google sign-in through Supabase (`members.js`, `signInWithOAuth` provider `google`); session in localStorage.
 - **Analytics:** Cloudflare Web Analytics beacon on every page (cookieless). Own counter `workers/sd-events`: per-day counts by event name and page path, "no cookies, no IPs, no user IDs" (its own header comment).
 - **No first-party cookies:** no `document.cookie` writes in site code. localStorage keys include theme (`sd-theme`), saved views, game and Earth explorer settings, members return path.
-- **Third parties loaded with the page:** X embed script `platform.twitter.com/widgets.js`: Dispatch articles with X posts load it only when the reader presses "Load post from X" (`x-embed.js`); six articles loaded it on page load with no post in them, removed 9 Nov 2026. The homepage/Starship live card loads it while an X livestream is the live event; YouTube iframes (mostly `youtube-nocookie.com`, a few `youtube.com`); TradingView iframe (markets); jsDelivr scripts on 3 Dispatch pages.
+- **Third parties loaded with the page:** X embed script `platform.twitter.com/widgets.js`: Dispatch articles with X posts load it when a post scrolls near the reader, or on the "Load post from X" button where Save-Data is on (`x-embed.js`; changed 11 Nov 2026 at the owner's request); six articles loaded it on page load with no post in them, removed 9 Nov 2026. The homepage/Starship live card loads it while an X livestream is the live event; YouTube iframes (mostly `youtube-nocookie.com`, a few `youtube.com`); TradingView iframe (markets); jsDelivr scripts on 3 Dispatch pages.
 - **Money:** Tesla referral `ts.la/alex474841` (marked sponsored), Buy Me a Coffee.
 
 ## ⚠ Flag: consent

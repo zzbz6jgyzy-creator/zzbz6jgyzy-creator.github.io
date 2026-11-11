@@ -11,7 +11,7 @@ const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": 
 import { createRequire } from "node:module";
 const { whenText, countdownHtml, eventPages } = createRequire(import.meta.url)("./event-shared.cjs");
 export { whenText, countdownHtml };
-const CSS_V = "20261111";
+const CSS_V = "20261111c";
 const XEMBED_V = "202610262130";
 const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(new Date(d + "T12:00:00Z"));
 const X_STATUS = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;
@@ -109,6 +109,16 @@ function calName(p, ev) { return p.calTitle || ev.title; }
 function crumbName(p, ev) { return p.crumb || ev.title; }
 function eventName(p, ev) { return p.eventName || ev.title; }
 
+function glanceHtml(p, chip) {
+  if (!p.glance?.length) return "";
+  return `<section class="ev-glance" aria-label="At a glance"><dl>${p.glance.map((g) => `<div><dt>${esc(g.label)}</dt><dd>${esc(g.value)}${g.kind ? " " + chip(g.kind) : ""}</dd></div>`).join("")}</dl></section>`;
+}
+function jumpHtml(p) {
+  const items = [["ev-mission", p.missionTitle || "The mission"], ...(p.sections || []).map((x) => [`ev-${x.id}`, x.title]), ["ev-watch", "Where to watch"], ["updates", "Updates"]];
+  if (!(p.sections || []).length) return "";
+  return `<nav class="ev-jump" aria-label="On this page">${items.map(([id, t]) => `<a href="#${esc(id)}">${esc(t)}</a>`).join("")}</nav>`;
+}
+
 function pageMain(p, ev, articles) {
   const url = `${SITE}/${p.slug}.html`;
   const chip = (k) => `<span class="ev-chip ev-chip-${esc(k.toLowerCase())}">${esc(k)}</span>`;
@@ -124,10 +134,13 @@ function pageMain(p, ev, articles) {
     <p class="ev-kicker">${esc(p.kicker)}</p>
     <h1>${esc(p.title)}</h1>
     ${countdownHtml(ev, p.windowNote)}
+    ${updates.length ? `<p class="ev-latest"><span class="ev-latest-k">Latest</span> <time datetime="${esc(stamp(updates[0]))}">${esc(when(updates[0]))}</time> ${chip(updates[0].kind)} <a href="#updates" data-ev-latest-line>${esc(updates[0].text.length > 140 ? updates[0].text.slice(0, 137).replace(/\s+\S*$/, "") + "…" : updates[0].text)}</a></p>` : ""}
     <p class="ev-where">${esc(p.location.name)}</p>
     <div class="ev-share" data-share><a class="ev-share-x" href="https://x.com/intent/post?text=${encodeURIComponent(p.title)}&amp;url=${encodeURIComponent(url)}&amp;via=ALJR86" target="_blank" rel="noopener">Share on X</a><button type="button" data-share-copy data-url="${esc(url)}">Copy link</button><button type="button" data-share-native data-url="${esc(url)}" data-title="${esc(p.title)}" hidden>Share…</button></div>
     <div class="ev-cal" aria-label="Add to your calendar"><a href="/${esc(p.slug)}.ics" download>Add to calendar</a><a href="${esc(googleCal(p, ev, url))}" target="_blank" rel="noopener">Google Calendar ↗</a></div>
   </header>
+  ${glanceHtml(p, chip)}
+  ${jumpHtml(p)}
   <section class="ev-section" aria-labelledby="ev-mission">
     <h2 id="ev-mission">${esc(p.missionTitle || "The mission")}</h2>
     ${p.summaryTodo ? `<!-- ${esc(p.summaryTodo)} -->` : ""}

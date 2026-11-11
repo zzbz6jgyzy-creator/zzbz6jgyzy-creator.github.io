@@ -1,5 +1,7 @@
 /* X posts as text first. Each <blockquote class="twitter-tweet"> already holds the post text, author, date and link,
-   so it reads fine on its own. The live embed (photos, video, platform.twitter.com) loads only when the reader asks. */
+   so it reads fine on its own. The live embed (photos, video, platform.twitter.com) loads when the post is about to scroll
+   into view, so nothing is requested from X for posts the reader never reaches. Save-Data readers, and browsers without
+   IntersectionObserver, keep the "Load post from X" button. */
 (() => {
   const quotes = document.querySelectorAll("blockquote.twitter-tweet");
   if (!quotes.length) return;
@@ -19,6 +21,22 @@
       };
       document.head.appendChild(s);
     }));
+
+  const conn = navigator.connection || {};
+  const auto = "IntersectionObserver" in window && !conn.saveData;
+  const watcher = auto
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            watcher.unobserve(entry.target);
+            const btn = entry.target.nextElementSibling && entry.target.nextElementSibling.querySelector(".x-embed-load");
+            if (btn && !btn.disabled) btn.click();
+          });
+        },
+        { rootMargin: "400px 0px" }
+      )
+    : null;
 
   quotes.forEach((quote) => {
     const host = quote.parentElement;
@@ -55,6 +73,8 @@
         })
         .catch(fail);
     });
+
+    if (watcher) watcher.observe(quote);
 
     function fail() {
       btn.disabled = false;

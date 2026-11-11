@@ -45,6 +45,14 @@
       var had = Number(log.getAttribute("data-ev-count")) || 0;
       if (latest !== log.getAttribute("data-ev-latest") || ups.length !== had) {
         log.innerHTML = ups.map(li).join("");
+        var top = document.querySelector("[data-ev-latest-line]");
+        if (top && ups[0]) {
+          var t = String(ups[0].text), line = top.parentNode;
+          top.textContent = t.length > 140 ? t.slice(0, 137).replace(/\s+\S*$/, "") + "\u2026" : t;
+          var tm = line.querySelector("time"), chip = line.querySelector(".ev-chip"), k = String(ups[0].kind || "");
+          if (tm) { tm.setAttribute("datetime", stamp(ups[0])); tm.textContent = when(ups[0]); }
+          if (chip) { chip.className = "ev-chip ev-chip-" + k.toLowerCase(); chip.textContent = k; }
+        }
         log.setAttribute("data-ev-latest", latest);
         log.setAttribute("data-ev-count", String(ups.length));
         var added = ups.length - had;

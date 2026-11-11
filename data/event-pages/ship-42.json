@@ -243,5 +243,37 @@
     "/dispatch/ship-42-first-tower-catch.html",
     "/dispatch/starship-f15-ship-catch.html",
     "/dispatch/starship-flight-15-catch-timeline.html"
+  ],
+  "glance": [
+    {
+      "label": "Vehicle",
+      "value": "Ship 42 on Booster 22",
+      "kind": "Disclosed"
+    },
+    {
+      "label": "Launch site",
+      "value": "Pad 2, Starbase, Texas",
+      "kind": "Disclosed"
+    },
+    {
+      "label": "Window",
+      "value": "Fri 13 Nov, 22:45 UTC, 75 min",
+      "kind": "Target"
+    },
+    {
+      "label": "Payload",
+      "value": "26 Starlink V3 satellites",
+      "kind": "Target"
+    },
+    {
+      "label": "Flight",
+      "value": "More than 22 hours, then a Ship catch",
+      "kind": "Target"
+    },
+    {
+      "label": "First",
+      "value": "First Ship catch with the tower",
+      "kind": "Target"
+    }
   ]
 }
