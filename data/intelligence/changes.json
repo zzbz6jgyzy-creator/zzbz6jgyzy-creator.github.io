@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-11T08:29:24.882Z",
+  "updated": "2026-11-11T08:51:02.501Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-fcc-800mhz-review.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026",
+      "at": "2026-11-11T08:43:07.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-fcc-800mhz-review.html",
+      "href": "/dispatch/spacex-fcc-800mhz-review.html",
+      "summary": "The FCC has accepted SpaceX’s applications to take control of Grain Management’s 546 paired 800 MHz licenses for filing. That starts the review; it is not approval. Comments are due 1 Dec 2026, and the build-out rules Grain agreed to would pass to SpaceX if the transfer is approved.",
+      "title": "FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026",
+      "id": "logged|dispatch:/dispatch/spacex-fcc-800mhz-review.html|2026-11-11T08:43:07.000Z|FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-singulus-100gw-solar.html",
@@ -289,23 +306,6 @@
       "summary": "Musk sketched Starlink V4 with about 10 times V3 capability and 10 Tb/s laser links. His interview said ten lasers; his posts discussed roughly 100 as an engineering ambition, not a settled design.",
       "title": "Musk says Starlink V4 lasers could outcompete undersea cables",
       "id": "logged|dispatch:/dispatch/starlink-v4-lasers.html|2026-11-07T08:36:58.000Z|Musk says Starlink V4 lasers could outcompete undersea cables"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-optimus-rental.html",
-      "topic": "production",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Musk says Tesla will likely rent Optimus rather than sell it",
-      "at": "2026-11-07T02:43:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-optimus-rental.html",
-      "href": "/dispatch/tesla-optimus-rental.html",
-      "summary": "At the Baron Investment Conference on 6 Nov 2026, Elon Musk said Tesla will probably rent Optimus humanoid robots. Talk of about $30,000 falling toward $20,000 is build cost, not a rental price. Outside deliveries still point to around end of 2027.",
-      "title": "Musk says Tesla will likely rent Optimus rather than sell it",
-      "id": "logged|dispatch:/dispatch/tesla-optimus-rental.html|2026-11-07T02:43:00.000Z|Musk says Tesla will likely rent Optimus rather than sell it"
     },
     {
       "type": "logged",

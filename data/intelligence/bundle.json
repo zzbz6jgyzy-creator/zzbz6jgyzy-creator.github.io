@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-11T08:29:24.882Z",
+  "generatedAt": "2026-11-11T08:51:02.501Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-fcc-800mhz-review.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026",
+      "at": "2026-11-11T08:43:07.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-fcc-800mhz-review.html",
+      "href": "/dispatch/spacex-fcc-800mhz-review.html",
+      "summary": "The FCC has accepted SpaceX’s applications to take control of Grain Management’s 546 paired 800 MHz licenses for filing. That starts the review; it is not approval. Comments are due 1 Dec 2026, and the build-out rules Grain agreed to would pass to SpaceX if the transfer is approved.",
+      "title": "FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026",
+      "id": "logged|dispatch:/dispatch/spacex-fcc-800mhz-review.html|2026-11-11T08:43:07.000Z|FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/spacex-singulus-100gw-solar.html",
@@ -573,23 +590,6 @@
       "summary": "Musk sketched Starlink V4 with about 10 times V3 capability and 10 Tb/s laser links. His interview said ten lasers; his posts discussed roughly 100 as an engineering ambition, not a settled design.",
       "title": "Musk says Starlink V4 lasers could outcompete undersea cables",
       "id": "logged|dispatch:/dispatch/starlink-v4-lasers.html|2026-11-07T08:36:58.000Z|Musk says Starlink V4 lasers could outcompete undersea cables"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-optimus-rental.html",
-      "topic": "production",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Musk says Tesla will likely rent Optimus rather than sell it",
-      "at": "2026-11-07T02:43:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-optimus-rental.html",
-      "href": "/dispatch/tesla-optimus-rental.html",
-      "summary": "At the Baron Investment Conference on 6 Nov 2026, Elon Musk said Tesla will probably rent Optimus humanoid robots. Talk of about $30,000 falling toward $20,000 is build cost, not a rental price. Outside deliveries still point to around end of 2027.",
-      "title": "Musk says Tesla will likely rent Optimus rather than sell it",
-      "id": "logged|dispatch:/dispatch/tesla-optimus-rental.html|2026-11-07T02:43:00.000Z|Musk says Tesla will likely rent Optimus rather than sell it"
     },
     {
       "type": "logged",
@@ -1909,14 +1909,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-11-09T08:41:14.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1930,14 +1930,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-11-11T07:43:17.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1951,35 +1951,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-11T08:29:24.882Z",
+      "lastChecked": "2026-11-11T08:51:02.501Z",
       "lastVerified": "2026-11-11T07:16:10.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1988,85 +1988,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.863Z",
-      "finished": "2026-11-11T08:29:24.868Z"
+      "started": "2026-11-11T08:51:02.482Z",
+      "finished": "2026-11-11T08:51:02.486Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.868Z",
-      "finished": "2026-11-11T08:29:24.868Z"
+      "started": "2026-11-11T08:51:02.486Z",
+      "finished": "2026-11-11T08:51:02.487Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.868Z",
-      "finished": "2026-11-11T08:29:24.868Z"
+      "started": "2026-11-11T08:51:02.487Z",
+      "finished": "2026-11-11T08:51:02.487Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.868Z",
-      "finished": "2026-11-11T08:29:24.876Z"
+      "started": "2026-11-11T08:51:02.487Z",
+      "finished": "2026-11-11T08:51:02.494Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.876Z",
-      "finished": "2026-11-11T08:29:24.879Z"
+      "started": "2026-11-11T08:51:02.494Z",
+      "finished": "2026-11-11T08:51:02.498Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.879Z",
-      "finished": "2026-11-11T08:29:24.879Z"
+      "started": "2026-11-11T08:51:02.498Z",
+      "finished": "2026-11-11T08:51:02.498Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.879Z",
-      "finished": "2026-11-11T08:29:24.880Z"
+      "started": "2026-11-11T08:51:02.498Z",
+      "finished": "2026-11-11T08:51:02.499Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.880Z",
-      "finished": "2026-11-11T08:29:24.880Z"
+      "started": "2026-11-11T08:51:02.499Z",
+      "finished": "2026-11-11T08:51:02.499Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.880Z",
-      "finished": "2026-11-11T08:29:24.880Z"
+      "started": "2026-11-11T08:51:02.499Z",
+      "finished": "2026-11-11T08:51:02.499Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.880Z",
-      "finished": "2026-11-11T08:29:24.881Z"
+      "started": "2026-11-11T08:51:02.499Z",
+      "finished": "2026-11-11T08:51:02.501Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.881Z",
-      "finished": "2026-11-11T08:29:24.882Z"
+      "started": "2026-11-11T08:51:02.501Z",
+      "finished": "2026-11-11T08:51:02.501Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.882Z",
-      "finished": "2026-11-11T08:29:24.882Z"
+      "started": "2026-11-11T08:51:02.501Z",
+      "finished": "2026-11-11T08:51:02.501Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-11T08:29:24.882Z",
-      "finished": "2026-11-11T08:29:24.882Z"
+      "started": "2026-11-11T08:51:02.501Z",
+      "finished": "2026-11-11T08:51:02.501Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-11T08:29:24.882Z",
+    "generatedAt": "2026-11-11T08:51:02.501Z",
     "factCount": 20,
     "changeCount": 93,
     "conflictCount": 2,
