@@ -1,4 +1,4 @@
-"""X posts load only on request: no platform.twitter.com traffic until the button is pressed, text readable without JS."""
+"""X posts load when scrolled near: no platform.twitter.com traffic while the post is far away, text readable without JS, button as fallback."""
 import asyncio,os,pathlib,shutil,subprocess,sys,time,socket
 from playwright.async_api import async_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
@@ -25,14 +25,13 @@ async def main():
    for mode in ['ok','fail']:
     c,hits=await ctx(mode);page=await c.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
     await page.goto(f'http://127.0.0.1:{port}{PAGE}',wait_until='load');await page.wait_for_timeout(800)
-    assert not hits,('third-party request before any click',hits)
-    q=page.locator('blockquote.twitter-tweet').first;await expect(q).to_be_visible();assert 'Latvia' in await q.inner_text()
-    btn=page.locator('.x-embed-load').first;await expect(btn).to_be_visible();box=await btn.bounding_box();assert box['height']>=44,box
-    await btn.click()
+    assert not hits,('third-party request while the post is far away',hits)
+    q=page.locator('blockquote.twitter-tweet').first;assert 'Latvia' in await q.inner_text()
+    await q.scroll_into_view_if_needed();await page.wait_for_timeout(300)
     if mode=='ok':
      await expect(page.locator('.fake-x-iframe').first).to_be_visible(timeout=5000);await expect(page.locator('.x-embed-load')).to_have_count(0,timeout=5000);assert hits
     else:
-     await expect(btn).to_have_text('Try again',timeout=5000);await expect(page.locator('.x-embed-actions a').first).to_have_attribute('href',__import__('re').compile('x.com/.*/status/'))
+     btn=page.locator('.x-embed-load').first;await expect(btn).to_have_text('Try again',timeout=8000);box=await btn.bounding_box();assert box['height']>=44,box;await expect(page.locator('.x-embed-actions a').first).to_have_attribute('href',__import__('re').compile('x.com/.*/status/'))
     assert not errors,errors;await c.close();print('PASS',mode,flush=True)
    c,hits=await ctx('nojs');page=await c.new_page();await page.goto(f'http://127.0.0.1:{port}{PAGE}',wait_until='load')
    await expect(page.locator('blockquote.twitter-tweet').first).to_be_visible();assert 'Latvia' in await page.locator('blockquote.twitter-tweet').first.inner_text();assert await page.locator('.x-embed-load').count()==0;assert not hits;await c.close();print('PASS no-js',flush=True)
