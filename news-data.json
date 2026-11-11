@@ -1,39 +1,248 @@
 {
-  "updated": "2026-11-11T03:00:38Z",
+  "updated": "2026-11-11T10:46:14Z",
   "items": [
     {
-      "id": "b3f1e89db50b",
-      "topic": "grok",
-      "title": "How to Check Grok Bot Usage and What’s Eating Your Limit",
-      "source": "TeslaNorth.com",
-      "url": "https://teslanorth.com/2026/11/10/how-to-check-grok-bot-usage/",
-      "published": "2026-11-11T01:57:43Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 12
-    },
-    {
-      "id": "11d882e33f99",
+      "id": "85bacff833ac",
       "topic": "spacex",
-      "title": "SpaceX’s biggest business this quarter may not be rockets",
-      "source": "TheStreet",
-      "url": "https://www.thestreet.com/investing/spacex-biggest-business-this-quarter-colossus-2-computing-contracts-not-rockets",
-      "published": "2026-11-11T01:07:00Z",
+      "title": "Starlink’s U.S. Speeds Rise Amid SpaceX IPO",
+      "source": "www.ookla.com",
+      "url": "https://www.ookla.com/articles/starlinks-u-s-speeds-rise-amid-spacex-ipo",
+      "published": "2026-11-11T10:34:03Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.60cUkPNI4UlYtTSQbJD79g&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "5d5367bbceae",
+      "id": "87a5e533b419",
       "topic": "tesla",
-      "title": "How Tesla's CHIL System Gets Megapack Sites Online Faster - BASENOR",
-      "source": "BASENOR - Tesla Accessories",
-      "url": "https://www.basenor.com/blogs/news/how-teslas-chil-system-gets-megapack-sites-online-faster",
-      "published": "2026-11-11T01:04:27Z",
+      "title": "Kentucky man shares what happened when his 2022 Tesla Model Y battery died after just 4 years and 47,000 miles",
+      "source": "Supercar Blondie",
+      "url": "https://supercarblondie.com/2022-tesla-model-y-battery-died-andy-slye/",
+      "published": "2026-11-11T10:31:00Z",
       "snippet": "",
-      "kind": "accessory",
-      "score": 2
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "62ebcd6447c9",
+      "topic": "tesla",
+      "title": "Finland Approves Tesla’s Driver Assistance System Ahead of EU",
+      "source": "Bloomberg.com",
+      "url": "https://www.bloomberg.com/news/articles/2026-11-11/finland-approves-tesla-s-driver-assistance-system-ahead-of-eu",
+      "published": "2026-11-11T09:58:23Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 8
+    },
+    {
+      "id": "ae6d24dcb1a9",
+      "topic": "tesla",
+      "title": "Elon Musk Just Put a $1 Trillion Chip Bill on Tesla's Table. That's a Warning for Anyone Holding 1,000 Tesla Shares",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/11/11/elon-musk-just-put-a-1-trillion-chip-bill-on-teslas-table-thats-a-warning-for-anyone-holding-1000-tesla-shares/",
+      "published": "2026-11-11T09:41:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "0eddf458a1ac",
+      "topic": "tesla",
+      "title": "Is It Too Late to Buy Tesla Stock?",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/11/11/is-it-too-late-to-buy-tesla-stock/",
+      "published": "2026-11-11T09:15:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": -2
+    },
+    {
+      "id": "a8709cb1d04d",
+      "topic": "tesla",
+      "title": "Tesla Assisted Driving Approved in Finland, the 11th EU Country to Allow It",
+      "source": "Electric Vehicles",
+      "url": "https://eletric-vehicles.com/tesla/tesla-assisted-driving-approved-in-finland-the-11th-eu-country-to-allow-it/",
+      "published": "2026-11-11T09:04:00Z",
+      "snippet": "",
+      "kind": "software",
+      "score": 11
+    },
+    {
+      "id": "8b58c62793d4",
+      "topic": "grok",
+      "title": "Grok Build Leak Exposes Sensitive Data From Thousands Of Users",
+      "source": "Dataconomy",
+      "url": "https://dataconomy.com/2026/11/11/grok-build-leak-exposes-sensitive-data-from-thousands-of/",
+      "published": "2026-11-11T08:36:43Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "922b40424b87",
+      "topic": "spacex",
+      "title": "SpaceX just cleared a key FCC hurdle in its fight with Verizon and AT&T",
+      "source": "Teslarati",
+      "url": "https://www.teslarati.com/spacex-fcc-verizon-att-approved/",
+      "published": "2026-11-11T08:33:51Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 14
+    },
+    {
+      "id": "7bb20eba0443",
+      "topic": "tesla",
+      "title": "Tesla Assisted Driving Approved in Finland — 11th European Country - BASENOR",
+      "source": "BASENOR - Tesla Accessories",
+      "url": "https://www.basenor.com/blogs/news/tesla-assisted-driving-approved-in-finland-11th-european-country",
+      "published": "2026-11-11T08:07:18Z",
+      "snippet": "",
+      "kind": "software",
+      "score": 19
+    },
+    {
+      "id": "25a07d8d1c6a",
+      "topic": "tesla",
+      "title": "Is Musk A Risk To Tesla Stock At $380?",
+      "source": "Trefis",
+      "url": "https://www.trefis.com/stock/tsla/articles/623843/is-musk-a-risk-to-tesla-stock-at-380/2026-11-11",
+      "published": "2026-11-11T07:47:11Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "bd3732c7f81d",
+      "topic": "spacex",
+      "title": "Elon Musk Wants to Build a ‘Sentient Sun’: SpaceX Orders Massive 100 GW Solar Manufacturing Line",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/tech/26/11/63131131/elon-musk-wants-to-build-a-sentient-sun-spacex-orders-massive-100-gw-solar-manufacturing-line",
+      "published": "2026-11-11T07:46:44Z",
+      "snippet": "",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": -2
+    },
+    {
+      "id": "28023305c84e",
+      "topic": "tesla",
+      "title": "Finland approves Tesla’s Assisted Driving system",
+      "source": "WTVB",
+      "url": "https://wtvbam.com/2026/11/11/finland-approves-teslas-assisted-driving-system/",
+      "published": "2026-11-11T07:27:28Z",
+      "snippet": "",
+      "kind": "software",
+      "score": 11
+    },
+    {
+      "id": "0e0142a3a408",
+      "topic": "tesla",
+      "title": "Tesla May Be Done With Cybertruck, but This Company Wants to Keep It Alive — and Ross Gerber Is on Board",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/tech/26/11/63130810/tesla-may-be-done-with-cybertruck-but-this-company-wants-to-keep-it-alive-and-ross-gerber-is-on-board",
+      "published": "2026-11-11T07:07:40Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 1
+    },
+    {
+      "id": "46f3c07ffd5a",
+      "topic": "tesla",
+      "title": "Finland clears Tesla assisted driving tech after changes",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/business/finance/finland-approves-teslas-assisted-driving-system-2026-11-11/",
+      "published": "2026-11-11T06:53:00Z",
+      "snippet": "",
+      "kind": "software",
+      "score": 16
+    },
+    {
+      "id": "305ec126c689",
+      "topic": "grok",
+      "title": "Security Firm Says Grok Build Apps Exposed Medical Exams, Sales Plans and Staff Data",
+      "source": "the deep dive",
+      "url": "https://thedeepdive.ca/security-firm-says-grok-build-apps-exposed-medical-exams-sales-plans-and-staff-data/",
+      "published": "2026-11-11T06:18:29Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "5310f8258ba9",
+      "topic": "grok",
+      "title": "Grok vs Groq: Two Different AI Companies, Explained",
+      "source": "Fello AI",
+      "url": "https://felloai.com/grok-vs-groq/",
+      "published": "2026-11-11T06:09:13Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "7d62d8c2788e",
+      "topic": "grok",
+      "title": "Musk calls Claude Opus 5.5 a masterpiece, says Grok 4.8 will not beat it",
+      "source": "디지털투데이",
+      "url": "https://www.digitaltoday.co.kr/en/view/124180/musk-calls-claude-opus-5-5-a-masterpiece-says-grok-4-8-wont-beat-it",
+      "published": "2026-11-11T05:11:56Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "4776696c2e26",
+      "topic": "spacex",
+      "title": "The barriers to creating a European SpaceX",
+      "source": "Financial Times",
+      "url": "https://www.ft.com/content/58d7ab59-688f-4d15-9c7f-96e621775777",
+      "published": "2026-11-11T05:11:49Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "39616ec09c4e",
+      "topic": "tesla",
+      "title": "Tesla Robotaxis Extend into San Antonio",
+      "source": "CleanTechnica",
+      "url": "https://cleantechnica.com/2026/11/10/tesla-robotaxis-extend-into-san-antonio/",
+      "published": "2026-11-11T04:53:25Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "a2c141f55017",
+      "topic": "spacex",
+      "title": "SpaceX Plans Texas Data Center Expansion",
+      "source": "FOX5 Vegas",
+      "url": "https://www.fox5vegas.com/video/2026/11/11/spacex-plans-texas-data-center-expansion/",
+      "published": "2026-11-11T04:19:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "eed3c3c07989",
+      "topic": "spacex",
+      "title": "Terafab land holdings top 10,000 acres as SpaceX challenges release of records requested by KBTX",
+      "source": "KBTX News 3",
+      "url": "https://www.kbtx.com/2026/11/11/terafab-land-holdings-top-10000-acres-spacex-challenges-release-records-requested-by-kbtx/",
+      "published": "2026-11-11T03:24:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "bca306015787",
+      "topic": "spacex",
+      "title": "Elon Musk Just Warned SpaceX Revenue 'Will Drop' If Compute Gets Cheap. Deutsche Bank Raised Its 2028 Forecast $18 Billion Two Days Later",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/11/10/elon-musk-just-warned-spacex-revenue-will-drop-if-compute-gets-cheap-deutsche-bank-raised-its-2028-forecast-18-billion-two-days-later/",
+      "published": "2026-11-11T03:17:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "58a61e5f4efc",
@@ -45,40 +254,6 @@
       "snippet": "",
       "kind": "general",
       "score": 12
-    },
-    {
-      "id": "d62a3b2f0891",
-      "topic": "spacex",
-      "title": "Why SpaceX Stock Should Look At Buying EchoStar (NASDAQ:ECHO)",
-      "source": "Seeking Alpha",
-      "url": "https://seekingalpha.com/article/4966191-why-spacex-should-look-at-buying-echostar",
-      "published": "2026-11-11T00:40:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 0
-    },
-    {
-      "id": "85292337cb2c",
-      "topic": "tesla",
-      "title": "Tesla upfitter offers to keep Cybertruck alive",
-      "source": "Teslarati",
-      "url": "https://www.teslarati.com/tesla-upfitter-offers-keep-cybertruck-alive/",
-      "published": "2026-11-11T00:33:09Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 14
-    },
-    {
-      "id": "df5f90c708fa",
-      "topic": "tesla",
-      "title": "Tesla slims Cybertruck offerings to only its most expensive trim",
-      "source": "Teslarati",
-      "url": "https://www.teslarati.com/tesla-slims-cybertruck-offerings-most-expensive-trim/",
-      "published": "2026-11-11T00:22:11Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.FPFqzRdErVidW1wv9iUbrg&pid=News&w=640",
-      "kind": "general",
-      "score": 14
     },
     {
       "id": "bf7fec5c6e22",
@@ -110,7 +285,7 @@
       "url": "https://www.texastribune.org/2026/11/10/texas-spacex-data-center-power-plant/",
       "published": "2026-11-10T22:55:46Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.8nsk7y5k8Jjanek96gcJdA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.CrFaurvcDFj7nSomMSuBBA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -127,18 +302,6 @@
       "score": 4
     },
     {
-      "id": "f95b82538cbd",
-      "topic": "spacex",
-      "title": "SpaceX Targets Nov. 13 for Historic Starship Launch",
-      "source": "Broadband Breakfast",
-      "url": "https://broadbandbreakfast.com/spacex-targets-nov-13-for-historic-starship-launch/",
-      "published": "2026-11-10T22:25:33Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.5qY70gYRnHuwAWMfNpOpOQ&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "f26d28d36af8",
       "topic": "spacex",
       "title": "Germany's Isar Aerospace eyes overtaking Elon Musk's SpaceX",
@@ -149,29 +312,6 @@
       "image": "https://www.bing.com/th?id=ONUT.QWr1WIhDoUjQ4MWESmL5ww&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "f465369e2f8c",
-      "topic": "spacex",
-      "title": "SpaceX moves Starship Flight 15 booster to launch pad for 'squeeze test' ahead of epic double-catch attempt (photos)",
-      "source": "Space",
-      "url": "https://www.space.com/space-exploration/launches-spacecraft/spacex-moves-starship-flight-15-booster-to-launch-pad-for-squeeze-test-ahead-of-epic-double-catch-attempt-photos",
-      "published": "2026-11-10T22:09:39Z",
-      "snippet": "",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "8a43472be324",
-      "topic": "tesla",
-      "title": "US SEC seeks to close Musk, Tesla settlement fund",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/legal/government/us-sec-seeks-close-musk-tesla-settlement-fund-2026-11-10/",
-      "published": "2026-11-10T22:06:29Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.llz4ZplbJ4NU42nMmzLx0g&pid=News&w=640",
-      "kind": "general",
-      "score": 9
     },
     {
       "id": "e34f0d984233",
@@ -218,11 +358,11 @@
       "score": 4
     },
     {
-      "id": "c35bf482635e",
+      "id": "67606d186e26",
       "topic": "spacex",
       "title": "Ninth Circuit rebuffs SpaceX bid to force arbitration of harassment claims",
       "source": "Courthouse News",
-      "url": "https://www.courthousenews.com/ninth-circuit-rebuffs-spacex-bid-to-force-arbitration-of-harassment-claims/",
+      "url": "https://www.courthousenews.com/ninth-circuit-rebuffs-spacex-bid-to-force-arbitration-of-harassment-claims",
       "published": "2026-11-10T21:19:41Z",
       "snippet": "",
       "kind": "general",
@@ -240,6 +380,18 @@
       "score": 2
     },
     {
+      "id": "1034d1ccb10e",
+      "topic": "spacex",
+      "title": "Kyiv wants to do without Starlink. The HiSKY terminals and Italy’s role",
+      "source": "Il Foglio",
+      "url": "https://www.ilfoglio.it/en/world/2026/11/11/news/kyiv-wants-to-do-without-starlink-the-hisky-terminals-and-italys-role--413295",
+      "published": "2026-11-10T21:00:00Z",
+      "snippet": "The Ukrainians are reportedly starting to use a new satellite dish called SmartLITE Sirius 16x16 Ku, manufactured by an Israeli company. It is far less powerful than Musk’s terminal, but the advantage ...",
+      "image": "https://www.bing.com/th?id=ONUT.VAmo99jEU8JyOJYFIBD-vw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "63ece17020f6",
       "topic": "grok",
       "title": "Cursor Pricing 2026: X Subscription Tiers and Usage Limits",
@@ -249,18 +401,6 @@
       "snippet": "",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "26baf542b5fc",
-      "topic": "tesla",
-      "title": "SpaceX unveils Starlink Mini 2 satellite broadband terminal with built-in battery and Wi-Fi support",
-      "source": "Tesla Oracle",
-      "url": "https://www.teslaoracle.com/2026/11/10/spacex-unveils-starlink-mini-2-satellite-broadband-terminal-with-built-in-battery-and-wi-fi-support/",
-      "published": "2026-11-10T20:50:05Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.oyPTtf8mufYJEkYHQNRF8A&pid=News&w=640",
-      "kind": "general",
-      "score": 12
     },
     {
       "id": "2e78bf658715",
@@ -297,51 +437,16 @@
       "score": 4
     },
     {
-      "id": "c8df4335e46b",
+      "id": "3c0aaaa8c6f6",
       "topic": "tesla",
-      "title": "Here Are All Of The Crazy Tricks The Tesla Roadster Just Did",
-      "source": "InsideEVs",
-      "url": "https://insideevs.com/news/812152/tesla-roadster-backflip-suction-2g/",
-      "published": "2026-11-10T18:24:51Z",
-      "snippet": "",
-      "kind": "milestone",
+      "title": "Chinese media CEO defies Tesla’s legal threat over unauthorized FSD testing: “See you in court”",
+      "source": "CarNewsChina.com",
+      "url": "https://carnewschina.com/2026/11/11/chinese-media-ceo-defies-teslas-legal-threat-over-unauthorized-fsd-testing-see-you-in-court/",
+      "published": "2026-11-10T18:47:00Z",
+      "snippet": "Tesla ‘s legal team has issued a formal notice to D1EV ( D1ev.com ), a Chinese new energy vehicle media platform, demanding the immediate cessation of unauthorised testing and promotion of Tesla’s ...",
+      "image": "https://www.bing.com/th?id=ONUT.jBiwVwCzFyqP21dukBWPtw&pid=News&w=640",
+      "kind": "software",
       "score": 11
-    },
-    {
-      "id": "c3aa59db8930",
-      "topic": "spacex",
-      "title": "SpaceX is competing for NASA’s $10 billion in contracts to build a moon base",
-      "source": "Fortune",
-      "url": "https://fortune.com/2026/11/10/elon-musk-wants-to-build-ai-satellite-factories-on-the-moonand-now-spacex-will-compete-for-nasas-10-billion-in-contracts-to-build-a-lunar-base/",
-      "published": "2026-11-10T18:17:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.0UqymKkbIZ3EUPUOdy926w&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "db5e8b119920",
-      "topic": "spacex",
-      "title": "SpaceX orders 100 GW of solar equipment to build Musk’s planned Starmind ‘sentient sun’",
-      "source": "Interesting Engineering on MSN",
-      "url": "https://www.msn.com/en-us/news/other/spacex-orders-100-gw-of-solar-equipment-to-build-musk-s-planned-starmind-sentient-sun/ar-AA2haQcT",
-      "published": "2026-11-10T17:59:50Z",
-      "snippet": "SpaceX has signed a supply deal worth more than $69 million with German equipment ...",
-      "image": "https://www.bing.com/th?id=ORMS.f88b3faa44995e83ef73f7e90821dd73&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
-    },
-    {
-      "id": "8686e7099a53",
-      "topic": "tesla",
-      "title": "Is it over for the Cybertruck? Tesla to wind down production in Texas.",
-      "source": "Mashable",
-      "url": "https://mashable.com/tech/tesla-cybertruck-over",
-      "published": "2026-11-10T17:44:41Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "97cadcd3d1f7",
@@ -355,6 +460,19 @@
       "score": 4
     },
     {
+      "id": "b12e0fd48e29",
+      "topic": "spacex",
+      "title": "Why SpaceX Could Be the Best Buy-and-Hold Stock of the Decade",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/why-spacex-could-best-buy-173600644.html",
+      "published": "2026-11-10T17:36:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.CCnj5MPPWE5RLgbQ-yuh1Q&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 1
+    },
+    {
       "id": "62c34a1c59a9",
       "topic": "spacex",
       "title": "Google’s SpaceX investment takes an unexpected turn",
@@ -362,7 +480,6 @@
       "url": "https://www.thestreet.com/investing/stocks/googles-spacex-investment-is-taking-an-unexpected-turn",
       "published": "2026-11-10T17:13:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.KjYRq2cmU79M3YDLtNn6yQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -374,31 +491,19 @@
       "url": "https://www.businessinsider.com/tesla-killing-off-sunroof-option-model-y-2026-11",
       "published": "2026-11-10T16:44:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Th1knFo06OIXXkFuXpTzkg&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.VIKRxIaC7ex12acE6N2hRQ&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "1088a1257f39",
-      "topic": "tesla",
-      "title": "Tesla Explains Why It Dropped Sunroofs From Its Vehicles",
-      "source": "Not a Tesla App",
-      "url": "https://www.notateslaapp.com/news/4980/tesla-explains-why-it-dropped-sunroofs-from-its-vehicles",
-      "published": "2026-11-10T15:47:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.VIKRxIaC7ex12acE6N2hRQ&pid=News&w=640",
-      "kind": "general",
-      "score": 14
-    },
-    {
-      "id": "f1ef74a4b013",
+      "id": "b7a3dc81c5ff",
       "topic": "spacex",
-      "title": "SpaceX, Anthropic and OpenAI: 3 giant IPOs and only 1 has sold shares",
-      "source": "qz.com",
-      "url": "https://qz.com/biggest-ipos-anthropic-openai-spacex-reuters",
-      "published": "2026-11-10T15:36:09Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.NjKqIPR28lEWK0kLwBP3Qg&pid=News&w=640",
+      "title": "SpaceX’s biggest business this quarter may not be rockets",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/investing/spacex-biggest-business-this-quarter-colossus-2-computing-contracts-not-rockets",
+      "published": "2026-11-10T16:00:00Z",
+      "snippet": "A Deutsche Bank analyst says SpaceX's least flashy business is about to become its biggest. The fine print is worth a look.",
+      "image": "https://www.bing.com/th?id=ONUT.60cUkPNI4UlYtTSQbJD79g&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -426,87 +531,6 @@
       "score": 4
     },
     {
-      "id": "59939b76a1da",
-      "topic": "spacex",
-      "title": "SpaceX moves Starship Flight 15 booster to pad for 'squeeze test' ahead of epic double-catch attempt",
-      "source": "YAHOO!",
-      "url": "https://tech.yahoo.com/science/articles/spacex-moves-starship-flight-15-220939673.html",
-      "published": "2026-11-10T14:08:00Z",
-      "snippet": "SpaceX has moved its Starship Super Heavy booster to the pad to prep for the next test flight of the megarocket, a historic mission scheduled to launch this Friday (Nov. 13).",
-      "image": "https://www.bing.com/th?id=ONUT.5HIblNB9LNfniJKNNaOpfg&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "5fa64a7aac79",
-      "topic": "tesla",
-      "title": "After Terafab Chips, Tesla’s $10 Billion Crystal Sun Solar Factory Breaks Ground",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/energy/articles/terafab-chips-tesla-10-billion-013600345.html",
-      "published": "2026-11-10T14:00:00Z",
-      "snippet": "Tesla has started building Crystal Sun, a $10 billion solar factory near Houston, Texas, that will make panels from ingot to module by 2029.",
-      "image": "https://www.bing.com/th?id=ONUT.dnMntTPNTSAWGCRrb-wXzg&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "40243ab66b94",
-      "topic": "spacex",
-      "title": "Starlink’s Senegal Entry Fee Is US$175,000",
-      "source": "The Rio Times",
-      "url": "https://www.riotimesonline.com/starlink-senegal-entry-fee-100-million-fcfa/",
-      "published": "2026-11-10T13:54:00Z",
-      "snippet": "Senegal set a one-off 100 million FCFA (about US$175,000) fee for Starlink's five-year licence, now frozen by the Supreme Court.",
-      "image": "https://www.bing.com/th?id=ONUT.JG3cTxm_i18Qh0ljREN6TQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "4c9f170876ff",
-      "topic": "tesla",
-      "title": "Tesla Says “Private FSD Only For Robotaxi.” A Legal Flaw May Say Why",
-      "source": "Forbes",
-      "url": "https://www.forbes.com/sites/bradtempleton/2026/11/10/tesla-says-private-fsd-only-for-robotaxi--a-legal-flaw-may-say-why/",
-      "published": "2026-11-10T13:30:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.E4kvIGJsr6wwnqOw7JV1qA&pid=News&w=640",
-      "kind": "software",
-      "score": 11
-    },
-    {
-      "id": "bbc421dca141",
-      "topic": "tesla",
-      "title": "Tesla CarPlay Port: 4 Details That Matter From the Latest Demo - BASENOR",
-      "source": "BASENOR - Tesla Accessories",
-      "url": "https://www.basenor.com/blogs/news/tesla-carplay-port-4-details-that-matter-from-the-latest-demo",
-      "published": "2026-11-10T13:06:03Z",
-      "snippet": "",
-      "kind": "accessory",
-      "score": 2
-    },
-    {
-      "id": "14071ef63a60",
-      "topic": "spacex",
-      "title": "Prediction: Here's How Much SpaceX Will Be Worth by the End of 2027",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/prediction-heres-much-spacex-worth-130100690.html",
-      "published": "2026-11-10T13:01:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "dc90a2ea21fd",
-      "topic": "spacex",
-      "title": "SpaceX aims to catch Starship for 1st time on flight 15. Here's when",
-      "source": "USA Today",
-      "url": "https://www.usatoday.com/story/tech/space/2026/11/09/spacex-starship-flight-15-dual-catch/92687599007/",
-      "published": "2026-11-10T12:23:00Z",
-      "snippet": "",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "02e77c1aa9c5",
       "topic": "spacex",
       "title": "Starlink Mini 2 packs a 4.5-hour swappable battery, Wi-Fi 6 with 1,800 sq ft coverage",
@@ -519,16 +543,16 @@
       "score": 4
     },
     {
-      "id": "b0948db4c2ba",
-      "topic": "tesla",
-      "title": "Tesla Cybertruck is EV pickup market's latest casualty",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/business/autos-transportation/tesla-cybertruck-is-ev-pickup-markets-latest-casualty-2026-11-10/",
-      "published": "2026-11-10T11:33:15Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ORMS.d5b5439213df346708b12504bc241b79&pid=News&w=640",
+      "id": "3a718b8edcd2",
+      "topic": "spacex",
+      "title": "Starlink Mini 2 adds a swappable battery",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/tech/1031028/spacex-starlink-mini-2-satellite-internet-terminal-hot-swap-battery",
+      "published": "2026-11-10T11:19:00Z",
+      "snippet": "Despite the addition of an integrated battery, the Starlink Mini 2 dish is thinner than the original Mini. SpaceX has managed to slim it down to 23.1mm thick, while the previous v ...",
+      "image": "https://www.bing.com/th?id=ONUT.3Fw_dkqrcWcOTyV9CJJopw&pid=News&w=640",
       "kind": "general",
-      "score": 9
+      "score": 7
     },
     {
       "id": "7803977fb928",
@@ -565,18 +589,6 @@
       "score": 4
     },
     {
-      "id": "97c8fc185ee8",
-      "topic": "spacex",
-      "title": "From explosions to catches, how SpaceX's Starship reached flight 15",
-      "source": "USA TODAY",
-      "url": "https://www.usatoday.com/story/tech/space/2026/11/10/space-starship-flight-15-recap/92687632007/",
-      "published": "2026-11-10T10:24:00Z",
-      "snippet": "SpaceX prepares for a dual catch of both stages of its Starship rocket on Nov. 13 during flight 15. Before that, relive all previous launches.",
-      "image": "https://www.bing.com/th?id=ONUT.fEEgglAhyChNIha-gsohQA&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "8aaca66ea065",
       "topic": "tesla",
       "title": "\"It's Thinking Too Fast\": Tesla FSD Put to Wild Traffic Test To See If It Crashes",
@@ -587,30 +599,6 @@
       "image": "https://www.bing.com/th?id=ONUT.9uKpEgnRFCuvKbDvM7ch1A&pid=News&w=640",
       "kind": "software",
       "score": 11
-    },
-    {
-      "id": "f3a3ce68226b",
-      "topic": "tesla",
-      "title": "Tesla Urges Safety Regulator To Overhaul Headlight Rules – Calls For Greater Automaker Representation In Advisory Committee",
-      "source": "YAHOO!",
-      "url": "https://autos.yahoo.com/policy-and-environment/articles/tesla-urges-safety-regulator-overhaul-173533632.html",
-      "published": "2026-11-10T09:35:00Z",
-      "snippet": "Tesla has offered suggestions in response to NHTSA’s proposal to form an advisory committee to update FMVSS 108.",
-      "image": "https://www.bing.com/th?id=ONUT.sNoZ-bqQZuxJFxMAHKPROg&pid=News&w=640",
-      "kind": "regulatory",
-      "score": 10
-    },
-    {
-      "id": "d2c3b1acacad",
-      "topic": "spacex",
-      "title": "SpaceX unveils Starlink Mini 2 with a removable battery that can last up to 4.5 hours",
-      "source": "Digital Trends",
-      "url": "https://www.digitaltrends.com/cool-tech/spacex-starlink-mini-2-launch-battery-life/",
-      "published": "2026-11-10T07:20:00Z",
-      "snippet": "Back in May, firmware references had pointed toward SpaceX working on a new Starlink Mini with its own battery. The original Mini was already designed for travelers, campers, and people who need ...",
-      "image": "https://www.bing.com/th?id=ONUT.oyPTtf8mufYJEkYHQNRF8A&pid=News&w=640",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "70eb79373e05",
@@ -625,29 +613,16 @@
       "score": 4
     },
     {
-      "id": "fe270e54daa1",
-      "topic": "spacex",
-      "title": "Some Missouri and Kansas Starlink customers could see bills jump as SpaceX tests dynamic pricing",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/technology/articles/missouri-kansas-starlink-customers-could-141500293.html",
-      "published": "2026-11-10T06:15:00Z",
-      "snippet": "The switch, announced by parent company SpaceX in an Oct. 29 note to customers, will be based on Starlink's ability to meet rising consumer demand and properly manage network capacity in select areas.",
-      "image": "https://www.bing.com/th?id=ONUT.44XXE_dZ2P212Xgcwq2ycA&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
-    },
-    {
-      "id": "a400e09bfdef",
-      "topic": "spacex",
-      "title": "SpaceX's First Attempt To Catch Both Starship Stages Takes Place November 13",
-      "source": "Engadget on MSN",
-      "url": "https://www.msn.com/en-us/technology/space-exploration/spacex-s-first-attempt-to-catch-both-starship-stages-takes-place-november-13/ar-AA2h9gvK",
-      "published": "2026-11-10T05:03:18Z",
-      "snippet": "Starship's Flight 15 is scheduled for November 13, pending regulatory approval.",
-      "image": "https://www.bing.com/th?id=ONUT.Zj2BTqFqF_WYdTcNlgWKYQ&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
+      "id": "0f55a7a8609a",
+      "topic": "tesla",
+      "title": "Tesla Says “Private FSD Only For Robotaxi.” A Legal Flaw May Say Why",
+      "source": "Forbes",
+      "url": "https://www.forbes.com/sites/bradtempleton/2026/11/10/tesla-says-private-fsd-only-for-robotaxi--a-legal-flaw-may-say-why/",
+      "published": "2026-11-10T05:30:00Z",
+      "snippet": "Tesla says at first you will only be able to turn on Unsupervised by putting car in robotaxi fleet. One reason may be that your name goes on any ticket the car gets ...",
+      "image": "https://www.bing.com/th?id=ONUT.E4kvIGJsr6wwnqOw7JV1qA&pid=News&w=640",
+      "kind": "software",
+      "score": 11
     },
     {
       "id": "b87809242f8d",
@@ -663,15 +638,16 @@
       "score": 11
     },
     {
-      "id": "6ecb72d6c627",
-      "topic": "grok",
-      "title": "Grok hits 99.9% accuracy spotting rocket debris for SpaceX",
-      "source": "Crypto Briefing",
-      "url": "https://cryptobriefing.com/grok-spacex-foreign-object-debris-detection/",
-      "published": "2026-11-10T03:08:25Z",
-      "snippet": "",
+      "id": "9059f0205b93",
+      "topic": "tesla",
+      "title": "Tesla Cybertruck is EV pickup market's latest casualty",
+      "source": "Reuters on MSN",
+      "url": "https://www.msn.com/en-us/autos/general/tesla-cybertruck-is-ev-pickup-market-s-latest-casualty/ar-AA2h8ARA",
+      "published": "2026-11-10T03:04:29Z",
+      "snippet": "By Mike Colias Nov 10 (Reuters) - Tesla’s move to discontinue its Cybertruck next year is perhaps the highest-profile flameout in a category that automakers had once hyped: huge electric pickups.",
+      "image": "https://www.bing.com/th?id=ONUT.vNmLiJZRrCYnDWpmX__IxA&pid=News&w=640",
       "kind": "general",
-      "score": 4
+      "score": 9
     },
     {
       "id": "6652ca458bc2",
@@ -682,18 +658,6 @@
       "published": "2026-11-10T02:30:00Z",
       "snippet": "Tesla sold more of its unconventional Cybertruck electric pickups in October than it had in any one-month period for over a year, even as the company has announced plans to end production next year, ...",
       "image": "https://www.bing.com/th?id=ONUT.LgaND9aC13jMvqcE6_mruA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "047b4c3ea283",
-      "topic": "spacex",
-      "title": "SpaceX’s 1 million wafer Terafab goal meets a rural Texas fight",
-      "source": "TheStreet on MSN",
-      "url": "https://www.msn.com/en-us/news/money/spacex-s-1-million-wafer-terafab-goal-meets-a-rural-texas-fight/ar-AA2h8wDm",
-      "published": "2026-11-10T02:03:00Z",
-      "snippet": "SpaceX’s Terafab targets 1 million wafers a month from 2032, Nikkei reports. Rushed orders in Japan and a records fight in rural Texas test the plan.",
-      "image": "https://www.bing.com/th?id=ONUT.rhEvCsn9tCKhhjQJdUahNg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -720,18 +684,6 @@
       "image": "https://www.bing.com/th?id=ONUT.HtUQRaRHFrSRnXz5csHjSw&pid=News&w=640",
       "kind": "general",
       "score": 9
-    },
-    {
-      "id": "c236d7af3ca9",
-      "topic": "spacex",
-      "title": "Why Starship was able to reach orbit even after an engine shut down",
-      "source": "note",
-      "url": "https://note.com/thegap/n/n0389e0e1e577?hl=en",
-      "published": "2026-11-09T21:38:00Z",
-      "snippet": "At the end of my previous article I wrote that I was a little excited to see what kind of move Elon would make. This time, I want to write about what happened during Starship's flight.During the ascent,",
-      "image": "https://www.bing.com/th?id=ONUT.J0nscckHnLgxgey6uRfP9w&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
     }
   ]
 }
