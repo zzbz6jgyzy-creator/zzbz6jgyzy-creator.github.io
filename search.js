@@ -2,7 +2,7 @@
    Overlay (⌘K / nav Search) on pages that load this file; full page on /search.html. */
 (() => {
   if (window.__sdFind) return;
-  const V = "20261111glass";
+  const V = "20261111glass2";
   const PAGE = /\/search\.html$/.test(location.pathname);
   const LIMIT = PAGE ? 60 : 24;
   const LATEST = PAGE ? 12 : 8;

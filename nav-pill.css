@@ -148,9 +148,9 @@ html[data-theme=light] .pn[data-nav-studio] .pn-members{color:var(--sdn-red)}
    thing). The dropdown panels and the phone menu stay solid. Solid again for readers who ask for less transparency or more
    contrast, and where backdrop-filter is missing. Opacity is set so text still passes AA over the brightest or darkest page. */
 @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-nav.pn[data-nav-studio]{--sdn-muted:#d6d8de;background:linear-gradient(180deg,#ffffff12,#ffffff00 50%),rgb(16 18 22/.46);-webkit-backdrop-filter:blur(7px) saturate(160%) brightness(.62);backdrop-filter:blur(7px) saturate(160%) brightness(.62);border-color:#ffffff30;box-shadow:inset 0 1px 0 #ffffff33,inset 0 -1px 0 #00000040,0 14px 40px #00000038}
+nav.pn[data-nav-studio]{--sdn-muted:#d6d8de;background:linear-gradient(180deg,#ffffff12,#ffffff00 50%),rgb(16 18 22/.28);-webkit-backdrop-filter:blur(3px) saturate(150%) contrast(.7) brightness(.5);backdrop-filter:blur(3px) saturate(150%) contrast(.7) brightness(.5);border-color:#ffffff30;box-shadow:inset 0 1px 0 #ffffff33,inset 0 -1px 0 #00000040,0 14px 40px #00000038}
 .pn[data-nav-studio] .ns-panel{--sdn-muted:#b1b4bd}
-html[data-theme=light] nav.pn[data-nav-studio]{--sdn-muted:#2a2c31;background:linear-gradient(180deg,#ffffff8c,#ffffff00 55%),rgb(250 249 246/.58);-webkit-backdrop-filter:blur(7px) saturate(160%);backdrop-filter:blur(7px) saturate(160%);border-color:#ffffffb3;box-shadow:inset 0 1px 0 #ffffffd9,inset 0 -1px 0 #17191e14,0 0 0 1px #17191e12,0 14px 40px #17191e1f}
+html[data-theme=light] nav.pn[data-nav-studio]{--sdn-muted:#2a2c31;background:linear-gradient(180deg,#ffffff59,#ffffff00 55%),rgb(250 249 246/.42);-webkit-backdrop-filter:blur(3px) saturate(150%) contrast(.6) brightness(1.5);backdrop-filter:blur(3px) saturate(150%) contrast(.6) brightness(1.5);border-color:#ffffffb3;box-shadow:inset 0 1px 0 #ffffffd9,inset 0 -1px 0 #17191e14,0 0 0 1px #17191e12,0 14px 40px #17191e1f}
 html[data-theme=light] .pn[data-nav-studio] .ns-panel{--sdn-muted:#60636b}
 }
 @media (prefers-reduced-transparency:reduce),(prefers-contrast:more){
@@ -158,9 +158,9 @@ nav.pn[data-nav-studio],html[data-theme=light] nav.pn[data-nav-studio]{--sdn-mut
 }
 /* Glass on the phone menu: the page shows faintly through the full-screen sheet. Cards inside keep solid fills. */
 @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-.pn-sheet[data-nav-studio]{background:rgb(16 18 22/.8);-webkit-backdrop-filter:blur(18px) saturate(160%) brightness(.7);backdrop-filter:blur(18px) saturate(160%) brightness(.7)}
+.pn-sheet[data-nav-studio]{background:rgb(16 18 22/.62);-webkit-backdrop-filter:blur(8px) saturate(150%) brightness(.5);backdrop-filter:blur(8px) saturate(150%) brightness(.5)}
 .pn-sheet[data-nav-studio] .pn-sheet-head{background:rgb(16 18 22/.2);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);margin-inline:-20px;padding-inline:20px;border-bottom:1px solid var(--sdn-line)}
-html[data-theme=light] aside.pn-sheet[data-nav-studio]{background:rgb(250 249 246/.84);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%)}
+html[data-theme=light] aside.pn-sheet[data-nav-studio]{background:rgb(250 249 246/.7);-webkit-backdrop-filter:blur(8px) saturate(150%) contrast(.6) brightness(1.5);backdrop-filter:blur(8px) saturate(150%) contrast(.6) brightness(1.5)}
 html[data-theme=light] .pn-sheet[data-nav-studio] .pn-sheet-head{background:transparent}
 }
 @media (prefers-reduced-transparency:reduce),(prefers-contrast:more){
