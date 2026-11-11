@@ -727,3 +727,6 @@ Known leftovers:
 ## 11 Nov 2026 — Ship 42 page upgrade
 - Ship 42 page: licensed photo in the hero (Steve Jurvetson, CC BY 2.0, already used on the site), a pull quote, numbered sections, a visual flight timeline, tower changes as labelled cards and a four-step catch diagram (our illustration, labelled). All from `data/event-pages/ship-42.json`; new optional fields `hero`, `quote`, `timeline`, `diagram` and point `title`/`kind` in `scripts/build-event-pages.mjs`.
 - Editorial rule 10 now matches the X-post change: posts load as they scroll near.
+
+## 11 Nov 2026 — Glass navigation bar
+- The floating navigation bar is now frosted glass (blur plus a light edge) in dark and light themes. Dropdown panels and the phone menu stay solid. Solid again for "reduce transparency" and "increase contrast" settings and for browsers without `backdrop-filter`. `nav-pill.css` version bumped through `scripts/sync-nav.py`.

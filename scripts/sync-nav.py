@@ -8,7 +8,7 @@ import html, json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CFG = json.loads((ROOT / 'scripts/nav.json').read_text())
-CSS_VERSION = '20261028-members-1'
+CSS_VERSION = '20261111-glass'
 CHEVRON = '<svg class="ns-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#ns-icon-chevron"/></svg>'
 ARROW = '<svg class="ns-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#ns-icon-arrow"/></svg>'
 PATHS = {
