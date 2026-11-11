@@ -76,7 +76,7 @@ if (S && S.next) {
 if (F && F.countries) {
   const rec = F.countries.filter((c) => c.jurisdiction === "EU" && c.permission?.status !== "unknown" && c.permission?.date);
   const listed = F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length;
-  trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: rec.length + " EU countries recognised", s: (F.updated ? "As of " + homeTrackers.irishTime(F.updated) + " · " : "") + listed + " Tesla-listed · Latvia rollout pending · recognition is not a committee vote" });
+  trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: rec.length + " EU countries recognised", s: (F.updated ? "As of " + homeTrackers.irishTime(F.updated) + " · " : "") + listed + " Tesla-listed · Finland latest, Tesla listing pending · recognition is not a committee vote" });
 }
 let tx = null; try { tx = JSON.parse(rd("data/robotaxi-tx.json")); } catch (e) {}
 let savedCc = null;

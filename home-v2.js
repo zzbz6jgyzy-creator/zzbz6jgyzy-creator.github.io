@@ -65,7 +65,7 @@
   if (F && F.countries) {
     const rec = F.countries.filter((c) => c.jurisdiction === "EU" && c.permission?.status !== "unknown" && c.permission?.date);
     const listed = F.countries.filter((c) => c.jurisdiction === "EU" && c.availability?.status === "listed").length;
-    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: rec.length + " EU countries recognised", s: (F.updated ? "As of " + window.SDHomeTrackers.irishTime(F.updated) + " · " : "") + listed + " Tesla-listed · Latvia rollout pending · recognition is not a committee vote" });
+    trk.push({ href: "/fsd-europe.html", k: "FSD Europe", v: rec.length + " EU countries recognised", s: (F.updated ? "As of " + window.SDHomeTrackers.irishTime(F.updated) + " · " : "") + listed + " Tesla-listed · Finland latest, Tesla listing pending · recognition is not a committee vote" });
   }
   // Keep the pre-rendered snapshot until a newer JSON response arrives.
   const savedCc = $("[data-hv-trk] a[href='/cybercab.html']");

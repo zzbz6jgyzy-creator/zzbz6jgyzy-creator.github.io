@@ -1,3 +1,7 @@
+## 2026-11-11 — Finland recognises Tesla Assisted Driving
+
+- Traficom recognised the Dutch provisional type-approval on 10 Nov 2026 (notice published 11 Nov 07:53). Tesla Assisted Driving / FSD (Supervised) may be used on Finnish roads, the eleventh EU country. Traficom says Tesla can start offering it immediately; that is not a Tesla listing, and first customer installation is not confirmed. Driver supervision remains required. National recognition does not bind Finland’s TCMV vote.
+
 ## 2026-11-11 — Texas robotaxi registry: +20 Model Ys, 1,302 total
 
 - FSD Database’s TxDMV VIN list now has 1,302 Tesla robotaxis: 573 Cybercab (unchanged) and 729 Model Y (+20). Registered is not in service; the registry has no city split. Cybercab share of the Texas list is 44%. Texas AV Tracker first-seen dates and Teslanorth’s evening TxDMV check put the 20 new VINs on 10 Nov; Supercharged Daily first ingested them 11 Nov 07:43 UTC after a 10 Nov 22:28 UTC reading still at 1,282. Details: `docs/audit-2026-11-11.md`.
