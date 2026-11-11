@@ -1,3 +1,8 @@
+## 2026-11-11 — FCC accepts SpaceX’s 800 MHz applications for filing
+
+- Dispatch: The FCC accepted SpaceX’s applications to take control of Grain Management’s 546 paired 800 MHz licenses for filing (DA 26-1218, WT Docket 26-313). Comments are due 1 Dec 2026. This is not approval; the spectrum still belongs to Grain. Licensed USDA Fort Valley broadband-tower photo (public domain) is the card and hero — a generic tower, not SpaceX or Grain equipment.
+- One-line update on the Starlink Mobile 80,000-towers story pointing to this FCC filing review.
+
 ## 2026-11-11 — Finland recognises Tesla Assisted Driving
 
 - Traficom recognised the Dutch provisional type-approval on 10 Nov 2026 (notice published 11 Nov 07:53). Tesla Assisted Driving / FSD (Supervised) may be used on Finnish roads, the eleventh EU country. Traficom says Tesla can start offering it immediately; that is not a Tesla listing, and first customer installation is not confirmed. Driver supervision remains required. National recognition does not bind Finland’s TCMV vote.
