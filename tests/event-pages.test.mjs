@@ -122,9 +122,25 @@ test("Ship 42 is a companion hub on the same Flight 15 window", () => {
   assert.match(html, />Ship 42</);
   assert.match(html, /Why this ship/);
   assert.match(html, /What to watch on Ship 42/);
+  assert.match(html, /The tower for a Ship catch/);
   assert.match(html, /href="\/starship-flight-15\.html"/);
   const f15 = fs.readFileSync("starship-flight-15.html", "utf8");
   assert.match(f15, /href="\/ship-42\.html"/);
+});
+
+test("Ship 42 loads the tower X post on request and embeds the Obvious Later call", () => {
+  const html = fs.readFileSync("ship-42.html", "utf8");
+  const f15 = fs.readFileSync("starship-flight-15.html", "utf8");
+  assert.match(html, /blockquote class="twitter-tweet"/);
+  assert.match(html, /x\.com\/AlJR86\/status\/2120458679652696160/);
+  assert.match(html, /x-embed\.css/);
+  assert.match(html, /x-embed\.js/);
+  assert.doesNotMatch(html, /platform\.twitter\.com\/widgets\.js/);
+  assert.match(html, /obviouslater\.com\/embed\/call\/starship-ship-catch-by-end-2026\?l=en/);
+  assert.match(html, /Will SpaceX catch a Starship upper stage with its launch tower arms by December 31, 2026\?/);
+  assert.doesNotMatch(html, /crowd(?:'s)? (?:odds|forecast|percent|average)/i);
+  assert.doesNotMatch(f15, /twitter-tweet/);
+  assert.doesNotMatch(f15, /x-embed\.js/);
 });
 
 test("updates log carries what event-live.js needs, and timed entries sort and render with their time", () => {

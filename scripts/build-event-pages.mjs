@@ -11,8 +11,48 @@ const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": 
 import { createRequire } from "node:module";
 const { whenText, countdownHtml, eventPages } = createRequire(import.meta.url)("./event-shared.cjs");
 export { whenText, countdownHtml };
-const CSS_V = "20261110";
+const CSS_V = "20261111";
+const XEMBED_V = "202610262130";
 const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(new Date(d + "T12:00:00Z"));
+const X_STATUS = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;
+const OL_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function needsXEmbed(p) {
+  return (p.sections || []).some((s) => s.embed?.kind === "x") || p.heatShield?.embed?.kind === "x";
+}
+
+function xPostHtml(embed, slug) {
+  if (!X_STATUS.test(embed.url || "")) throw new Error(`${slug}: embed.url must be an x.com status URL`);
+  if (!embed.handle || !embed.name || !embed.text || !embed.dateLabel) throw new Error(`${slug}: X embed needs handle, name, text and dateLabel`);
+  const body = esc(embed.text).replace(/\n/g, "<br>");
+  const caption = embed.caption
+    ? `<figcaption>${esc(embed.caption)}</figcaption>`
+    : `<figcaption>Video: <a href="${esc(embed.url)}">${esc(embed.name)} (@${esc(embed.handle)})</a>, ${esc(embed.dateLabel)}. Shown as text; "Load post from X" brings in the video.</figcaption>`;
+  return `<figure class="figure-embed">
+    <blockquote class="twitter-tweet" data-dnt="true" data-theme="dark"><p lang="${esc(embed.lang || "en")}" dir="ltr">${body}</p>&mdash; ${esc(embed.name)} (@${esc(embed.handle)}) <a href="${esc(embed.url)}">${esc(embed.dateLabel)}</a></blockquote>
+    ${caption}
+  </figure>`;
+}
+
+function olEmbedHtml(call, slug) {
+  if (call.kind && call.kind !== "obvious-later") throw new Error(`${slug}: unknown call kind ${call.kind}`);
+  if (!OL_SLUG.test(call.slug || "")) throw new Error(`${slug}: call.slug must be a lowercase hyphenated Obvious Later id`);
+  if (!call.question || !call.closes) throw new Error(`${slug}: Obvious Later embed needs question and closes`);
+  const src = `https://obviouslater.com/embed/call/${call.slug}?l=en`;
+  const href = `https://obviouslater.com/en/calls/${call.slug}`;
+  return `<figure class="ev-ol">
+    <iframe class="ev-ol-frame" src="${esc(src)}" title="${esc(call.question)}" width="560" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <figcaption>A private 0 to 100 percent call on Obvious Later. The card does not show the crowd's numbers. <a href="${esc(href)}" target="_blank" rel="noopener">Open the question</a></figcaption>
+  </figure>`;
+}
+
+function sectionMedia(s, slug) {
+  const parts = [];
+  if (s.embed?.kind === "x") parts.push(xPostHtml(s.embed, slug));
+  else if (s.embed) throw new Error(`${slug}: unknown embed kind ${s.embed.kind}`);
+  if (s.call) parts.push(olEmbedHtml(s.call, slug));
+  return parts.join("\n    ");
+}
 
 
 // Calendar: an .ics file next to the page (deterministic, so CI rebuilds match) and a Google Calendar link.
@@ -53,13 +93,17 @@ function pointItems(items) {
 function extraSections(p) {
   const list = p.sections?.length
     ? p.sections
-    : (p.heatShield ? [{ id: "heat", title: "Why the heat shield matters", lead: p.heatShield.lead, points: p.heatShield.points, todo: p.heatShield.todo }] : []);
-  return list.map((s) => `<section class="ev-section" aria-labelledby="ev-${esc(s.id)}">
-    <h2 id="ev-${esc(s.id)}">${esc(s.title)}</h2>
-    ${s.todo ? `<!-- ${esc(s.todo)} -->` : ""}
-    ${s.lead ? `<p>${esc(s.lead)}</p>` : ""}
-    ${s.points?.length ? pointItems(s.points) : ""}
-  </section>`).join("\n  ");
+    : (p.heatShield ? [{ id: "heat", title: "Why the heat shield matters", lead: p.heatShield.lead, points: p.heatShield.points, todo: p.heatShield.todo, embed: p.heatShield.embed, call: p.heatShield.call }] : []);
+  return list.map((s) => {
+    const bits = [`<section class="ev-section" aria-labelledby="ev-${esc(s.id)}">`, `    <h2 id="ev-${esc(s.id)}">${esc(s.title)}</h2>`];
+    if (s.todo) bits.push(`    <!-- ${esc(s.todo)} -->`);
+    if (s.lead) bits.push(`    <p>${esc(s.lead)}</p>`);
+    if (s.points?.length) bits.push(`    ${pointItems(s.points)}`);
+    const media = sectionMedia(s, p.slug);
+    if (media) bits.push(`    ${media}`);
+    bits.push("  </section>");
+    return bits.join("\n");
+  }).join("\n  ");
 }
 function calName(p, ev) { return p.calTitle || ev.title; }
 function crumbName(p, ev) { return p.crumb || ev.title; }
@@ -145,7 +189,7 @@ function pageHead(p, ev) {
     <meta name="twitter:description" content="${esc(p.description)}" />
     <meta name="twitter:image" content="${esc(img)}" />
     <meta name="twitter:image:alt" content="${esc(p.ogImageAlt)}" />
-    <link rel="stylesheet" href="/event-page.css?v=${CSS_V}" />
+    <link rel="stylesheet" href="/event-page.css?v=${CSS_V}" />${needsXEmbed(p) ? `\n    <link rel="stylesheet" href="/x-embed.css?v=${XEMBED_V}" />` : ""}
     <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>
     <!--/ev:head-->`;
 }
@@ -167,6 +211,8 @@ export function buildEventPages(root = ROOT) {
     }
     html = html.replace(/<!--ev:head-->[\s\S]*?<!--\/ev:head-->/, () => pageHead(p, ev).trimStart());
     html = html.replace(/<main id="main"[\s\S]*?<\/main>/, () => pageMain(p, ev, articles));
+    html = html.replace(/\n?[ \t]*<script defer src="\/x-embed\.js[^"]*"><\/script>/g, "");
+    if (needsXEmbed(p)) html = html.replace(/\s*<\/body>/, `\n    <script defer src="/x-embed.js?v=${XEMBED_V}"></script>\n  </body>`);
     if (!/<!--ev:head-->/.test(html) || !/class="ev-page"/.test(html)) throw new Error(`${f}: page markers missing`);
     if (!fs.existsSync(out) || fs.readFileSync(out, "utf8") !== html) fs.writeFileSync(out, html);
     // DTSTAMP/SEQUENCE follow the event data, not the clock, so a rebuild is byte-identical.

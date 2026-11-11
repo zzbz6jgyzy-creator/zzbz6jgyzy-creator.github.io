@@ -47,6 +47,43 @@
       ]
     },
     {
+      "id": "tower",
+      "title": "The tower for a Ship catch",
+      "lead": "Pad 2's tower is not the same machine that caught Super Heavy on earlier flights. SpaceX's May update covers shorter chopsticks, electromechanical actuators and a strengthened ship quick-disconnect. Alex R's 11 November post on X walks through the roof, the shorter arms and why they matter for Friday's Ship catch.",
+      "points": [
+        {
+          "text": "SpaceX's 12 May 2026 update on Pad 2 said the chopsticks are now shorter, \"allowing faster motion to better track vehicles during catch operations.\" The main actuators changed from hydraulic to electromechanical \"to improve speed, redundancy, and reliability.\" The ship quick-disconnect arm \"has been strengthened, repackaged, and now rotates farther away from the rocket during launch.\"",
+          "source": "https://www.spacex.com/updates",
+          "sourceName": "Source"
+        },
+        {
+          "text": "The Pad 2 tower now has a roof with protective cladding. Alex R's 11 November post reads that as a Ship-catch change: the vehicle comes in belly-first, flips upright and fires its Raptors beside the tower, and that burn can throw exhaust at the cables that move the chopsticks. That purpose is our analysis, not a SpaceX line. The same post says the roof went on late in construction and that SpaceX plans one for Pad 1; SpaceX has not published either.",
+          "source": "https://x.com/AlJR86/status/2120458679652696160",
+          "sourceName": "Source"
+        },
+        {
+          "text": "The arms are two full truss sections shorter than the originals. The 11 November post's reading is that Boosters 12, 14 and 15 were all caught on the inner part of the arms, close to the tower, so the unused outer end came off. The old ship lifting pins are gone; Block 3 ships are not lifted that way.",
+          "source": "https://x.com/AlJR86/status/2120458679652696160",
+          "sourceName": "Source"
+        },
+        {
+          "text": "After a catch the ship still has leftover cryogenic propellant. The 11 November post's reading is that the stronger Pad 2 quick-disconnect arm swings in so that propellant can be drained before anyone inspects the vehicle or flies it again. SpaceX connected that arm to Ship 42 in September, as seen in the catch-related tests above; calling that a drain rehearsal is our reading.",
+          "source": "https://x.com/AlJR86/status/2120458679652696160",
+          "sourceName": "Source"
+        }
+      ],
+      "embed": {
+        "kind": "x",
+        "url": "https://x.com/AlJR86/status/2120458679652696160",
+        "handle": "AlJR86",
+        "name": "Alex R",
+        "lang": "en",
+        "dateLabel": "November 11, 2026",
+        "text": "SpaceX put a roof on its Starship launch tower, and it's there because of Friday's ship catch.\n\nWhen Starship comes home, it falls belly-first, then flips upright and fires its Raptors to slow down right next to the tower. That burn can throw exhaust at the top of the tower, which is where the cables that move the chopstick arms run. So the Pad 2 tower got a roof covered in protective cladding. It went on late in construction, and SpaceX plans to add one to the Pad 1 tower too.\n\nThe arms changed as well. They're two full truss sections shorter than the originals, because Boosters 12, 14 and 15 were all caught on the inner part of the arms, close to the tower. The outer end never got used. The old ship lifting pins are gone too, since Block 3 ships don't get lifted that way anymore, and Pad 2 uses electromechanical actuators.\n\nThen there's the quick disconnect arm, which is stronger on Pad 2. After a catch, the ship still has leftover super-cold propellant on board. This arm swings in and plugs into the ship so it can be drained before anyone inspects it or flies it again. SpaceX already rehearsed this with Ship 42, the Flight 15 ship, back in September.\n\nFlight 15 is targeting Friday, Nov 13, if the FAA signs off. If it goes to plan, this tower catches its first Starship.",
+        "caption": "Video: Alex R (@AlJR86), posted 11 Nov 2026 at 5:08 a.m. ET (2:08 a.m. PT; 10:08 UTC)."
+      }
+    },
+    {
       "id": "watch-ship",
       "title": "What to watch on Ship 42",
       "lead": "Times below are approximate, from SpaceX's Flight 15 mission page. The booster catch, if it happens, is about six and a half minutes after lift-off. Ship 42's own catch is more than 22 hours later.",
@@ -94,6 +131,17 @@
           "sourceName": "Source"
         }
       ]
+    },
+    {
+      "id": "call",
+      "title": "Will the tower catch a Ship this year?",
+      "lead": "Obvious Later is running a private call on whether SpaceX catches a Starship upper stage with the tower arms by 31 December 2026 UTC. Make your own 0 to 100 percent call. The card does not show anyone else's number.",
+      "call": {
+        "kind": "obvious-later",
+        "slug": "starship-ship-catch-by-end-2026",
+        "question": "Will SpaceX catch a Starship upper stage with its launch tower arms by December 31, 2026?",
+        "closes": "Dec 30, 2026"
+      }
     }
   ],
   "links": [
@@ -136,6 +184,12 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-11",
+      "kind": "Reported",
+      "text": "Alex R's 11 November post on X walks through Pad 2's new roof, shorter chopsticks and stronger quick-disconnect arm. The roof purpose, Pad 1 plan, truss cut and drain-after-catch reading are ours, not a SpaceX line. SpaceX's May Pad 2 update is linked in the tower section.",
+      "source": "https://x.com/AlJR86/status/2120458679652696160"
+    },
     {
       "date": "2026-11-11",
       "kind": "Target",

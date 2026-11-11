@@ -2,6 +2,7 @@
 
 - New `/ship-42.html`: countdown for the Flight 15 window (same `eventId` as `/starship-flight-15.html`, so the time still lives in one place), Ship 42 static fires and catch tests, the approximate ship timeline from SpaceX’s mission page, heat-shield notes, where to watch, and a dated Updates log. Same event-page chrome as the SpaceX Flight 15 hub.
 - Flight 15 hub now links to the Ship 42 page.
+- Tower section from the 11 Nov note (roof/cladding, shorter chopsticks, stronger QD arm), with SpaceX’s 12 May Pad 2 update as the disclosed hardware source. Click-to-load X post `2120458679652696160`. Official Obvious Later embed for “Will SpaceX catch a Starship upper stage with its launch tower arms by December 31, 2026?” (no crowd numbers).
 
 ## 2026-11-11 — FCC accepts SpaceX’s 800 MHz applications for filing
 
