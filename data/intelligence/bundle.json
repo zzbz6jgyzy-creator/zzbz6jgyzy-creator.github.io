@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-11T12:53:31.350Z",
+  "generatedAt": "2026-11-11T15:12:02.825Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -287,6 +287,40 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/finland-fsd-eleventh-eu.html",
+      "topic": "fsd",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Finland approves Tesla Assisted Driving, making it 11 EU countries (as of 11 Nov 2026)",
+      "at": "2026-11-11T14:55:53.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/finland-fsd-eleventh-eu.html",
+      "href": "/dispatch/finland-fsd-eleventh-eu.html",
+      "summary": "Finland’s Traficom has recognised the Dutch approval of Tesla Assisted Driving, formerly FSD (Supervised). That makes 11 EU countries, about 15.5% of the EU population as of 1 Jan 2026. Tesla says rollout begins soon, with no date.",
+      "title": "Finland approves Tesla Assisted Driving, making it 11 EU countries (as of 11 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/finland-fsd-eleventh-eu.html|2026-11-11T14:55:53.000Z|Finland approves Tesla Assisted Driving, making it 11 EU countries (as of 11 Nov 2026)"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-build-open-apps.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Security firm says 94.7% of live Grok Build apps opened without sign-in, including 24 from SpaceXSI staff (as of 10 Nov 2026)",
+      "at": "2026-11-11T14:55:53.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-build-open-apps.html",
+      "href": "/dispatch/grok-build-open-apps.html",
+      "summary": "Claroc, which sells security for AI-built apps, says 35,578 of 37,571 live Grok Build apps opened for anyone as of 10 Nov 2026, including 24 built by SpaceXSI and X staff, which were pulled after reporters asked. This is a report, not a proven breach.",
+      "title": "Security firm says 94.7% of live Grok Build apps opened without sign-in, including 24 from SpaceXSI staff (as of 10 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/grok-build-open-apps.html|2026-11-11T14:55:53.000Z|Security firm says 94.7% of live Grok Build apps opened without sign-in, including 24 from SpaceXSI staff (as of 10 Nov 2026)"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/spacex-fcc-800mhz-review.html",
       "topic": "starlink",
       "tracker": "dispatch",
@@ -524,23 +558,6 @@
       "id": "logged|starship:schedule|2026-11-08T00:00:00.000Z|SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published."
     },
     {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-api-watermark.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok API text gets an invisible watermark starting today",
-      "at": "2026-11-07T14:38:30.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-api-watermark.html",
-      "href": "/dispatch/grok-api-watermark.html",
-      "summary": "Official docs set 7 Nov 2026 as the default invisible watermark start date for seven Grok API models. Team admins can opt out; consumer app scope is not established by the API docs.",
-      "title": "Grok API text gets an invisible watermark starting today",
-      "id": "logged|dispatch:/dispatch/grok-api-watermark.html|2026-11-07T14:38:30.000Z|Grok API text gets an invisible watermark starting today"
-    },
-    {
       "type": "changed",
       "factId": "starlink:in-orbit",
       "topic": "starlink",
@@ -573,23 +590,6 @@
       "summary": "2026.38.5.12 moved from 436 to 477 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.12",
       "id": "changed|tesla-software:wave:2026.38.5.12|2026-11-07T10:28:03.000Z|477"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/starlink-v4-lasers.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Musk says Starlink V4 lasers could outcompete undersea cables",
-      "at": "2026-11-07T08:36:58.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/starlink-v4-lasers.html",
-      "href": "/dispatch/starlink-v4-lasers.html",
-      "summary": "Musk sketched Starlink V4 with about 10 times V3 capability and 10 Tb/s laser links. His interview said ten lasers; his posts discussed roughly 100 as an engineering ambition, not a settled design.",
-      "title": "Musk says Starlink V4 lasers could outcompete undersea cables",
-      "id": "logged|dispatch:/dispatch/starlink-v4-lasers.html|2026-11-07T08:36:58.000Z|Musk says Starlink V4 lasers could outcompete undersea cables"
     },
     {
       "type": "logged",
@@ -1909,14 +1909,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-11-09T08:41:14.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1930,14 +1930,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-11-11T12:53:27.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1951,35 +1951,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-11T12:53:31.350Z",
+      "lastChecked": "2026-11-11T15:12:02.825Z",
       "lastVerified": "2026-11-11T07:16:10.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1988,85 +1988,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.255Z",
-      "finished": "2026-11-11T12:53:31.335Z"
+      "started": "2026-11-11T15:12:02.731Z",
+      "finished": "2026-11-11T15:12:02.809Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.335Z",
-      "finished": "2026-11-11T12:53:31.335Z"
+      "started": "2026-11-11T15:12:02.809Z",
+      "finished": "2026-11-11T15:12:02.810Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.335Z",
-      "finished": "2026-11-11T12:53:31.336Z"
+      "started": "2026-11-11T15:12:02.810Z",
+      "finished": "2026-11-11T15:12:02.810Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.336Z",
-      "finished": "2026-11-11T12:53:31.343Z"
+      "started": "2026-11-11T15:12:02.810Z",
+      "finished": "2026-11-11T15:12:02.817Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.343Z",
-      "finished": "2026-11-11T12:53:31.346Z"
+      "started": "2026-11-11T15:12:02.817Z",
+      "finished": "2026-11-11T15:12:02.821Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.346Z",
-      "finished": "2026-11-11T12:53:31.347Z"
+      "started": "2026-11-11T15:12:02.821Z",
+      "finished": "2026-11-11T15:12:02.821Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.347Z",
-      "finished": "2026-11-11T12:53:31.347Z"
+      "started": "2026-11-11T15:12:02.821Z",
+      "finished": "2026-11-11T15:12:02.822Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.347Z",
-      "finished": "2026-11-11T12:53:31.347Z"
+      "started": "2026-11-11T15:12:02.822Z",
+      "finished": "2026-11-11T15:12:02.822Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.348Z",
-      "finished": "2026-11-11T12:53:31.348Z"
+      "started": "2026-11-11T15:12:02.822Z",
+      "finished": "2026-11-11T15:12:02.822Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.348Z",
-      "finished": "2026-11-11T12:53:31.349Z"
+      "started": "2026-11-11T15:12:02.822Z",
+      "finished": "2026-11-11T15:12:02.824Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.349Z",
-      "finished": "2026-11-11T12:53:31.349Z"
+      "started": "2026-11-11T15:12:02.824Z",
+      "finished": "2026-11-11T15:12:02.824Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.349Z",
-      "finished": "2026-11-11T12:53:31.350Z"
+      "started": "2026-11-11T15:12:02.824Z",
+      "finished": "2026-11-11T15:12:02.824Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-11T12:53:31.350Z",
-      "finished": "2026-11-11T12:53:31.350Z"
+      "started": "2026-11-11T15:12:02.824Z",
+      "finished": "2026-11-11T15:12:02.824Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-11T12:53:31.350Z",
+    "generatedAt": "2026-11-11T15:12:02.825Z",
     "factCount": 20,
     "changeCount": 93,
     "conflictCount": 2,

@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/finland-fsd-eleventh-eu.html",
+      "image": "/assets/dispatch/helsinki-lansivayla-tesla-model-3.jpg",
+      "title": "Finland approves Tesla Assisted Driving, making it 11 EU countries (as of 11 Nov 2026)",
+      "summary": "Finland’s Traficom has recognised the Dutch approval of Tesla Assisted Driving, formerly FSD (Supervised). That makes 11 EU countries, about 15.5% of the EU population as of 1 Jan 2026. Tesla says rollout begins soon, with no date.",
+      "tag": "FSD",
+      "date": "2026-11-11T14:55:53Z",
+      "thumb": "/assets/dispatch/helsinki-lansivayla-tesla-model-3-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-matrix-headlights-nhtsa.html",
       "image": "/assets/dispatch/tesla-model-3-highland-osaka-ibaraki.jpg",
       "title": "Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)",
@@ -216,16 +225,7 @@
       "tag": "Tesla",
       "date": "2026-11-07T02:43:00Z",
       "thumb": "/assets/dispatch/optimus-stockholm-2024-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-argentina.html",
-      "image": "/assets/dispatch/tesla-model-y-standard-front.jpg",
-      "title": "Tesla says it arrives in Argentina on 20 November; exhibition first, sales later",
-      "summary": "Tesla confirmed an Argentina arrival date of 20 November 2026 via @Tesla_LatAm, with @Tesla and Elon Musk quoting the post. Argentine press reports an Unicenter exhibition first, with sales and test drives planned for 2027. Official posts name no models or prices.",
-      "tag": "Markets",
-      "date": "2026-11-06T20:37:00Z",
-      "thumb": "/assets/dispatch/tesla-model-y-standard-front-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-11T08:43:07Z"
+  "articlesUpdated": "2026-11-11T14:55:53Z"
 }
