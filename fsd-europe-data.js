@@ -1,8 +1,8 @@
 // Generated from data/fsd-europe.json by scripts/build-fsd-europe.mjs. Edit the JSON source.
 window.FSD_EUROPE = {
   "schemaVersion": 1,
-  "updated": "2026-11-10",
-  "revision": "2026-11-10.1",
+  "updated": "2026-11-11",
+  "revision": "2026-11-11.1",
   "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
   "thresholds": {
     "euPopulationM": 448.9,
@@ -1165,10 +1165,12 @@ window.FSD_EUROPE = {
       "jurisdiction": "EU",
       "authority": "Traficom",
       "permission": {
-        "status": "unknown",
-        "date": null,
-        "evidence": [],
-        "reviewedAt": null
+        "status": "recorded",
+        "date": "2026-11-10",
+        "evidence": [
+          "s-traficom-en-20261111"
+        ],
+        "reviewedAt": "2026-11-11"
       },
       "availability": {
         "status": "not_listed",
@@ -1177,7 +1179,7 @@ window.FSD_EUROPE = {
           "s-c55a052f27a6"
         ],
         "reviewedAt": "2026-10-23",
-        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+        "note": "Traficom says Tesla can immediately start offering the system in Finland. That is not a Tesla listing. This tracker’s last manufacturer availability page remains 403, so Finland is not independently listed here."
       },
       "observations": {
         "status": "unverified",
@@ -1189,35 +1191,48 @@ window.FSD_EUROPE = {
         "hardware": null,
         "software": null,
         "model": null,
-        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "note": "Traficom’s 11 Nov 2026 notice: the driver remains fully responsible; winter snow, slush or dirt on cameras can limit the system; the previous 50% overspeed setting is gone and speed-offset settings reset at each start. National recognition does not bind Finland’s TCMV vote. Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
         "evidence": [
+          "s-traficom-en-20261111",
           "s-c55a052f27a6"
         ]
       },
       "context": {
-        "summary": "Reviewing; stance reported positive",
+        "summary": "Recognised RDW approval (Traficom, 10 Nov 2026); Tesla listing not independently confirmed",
         "evidence": [
+          "s-traficom-en-20261111",
+          "s-traficom-fi-20261111",
           "s-07f6e5d3dd29",
           "s-ceb8f4f6d674",
           "s-ddf43be4eb49"
         ],
-        "reviewedAt": null,
-        "note": "Imported editorial context; follow the linked dated sources. It is not a recorded committee vote."
+        "reviewedAt": "2026-11-11",
+        "note": "Traficom recognised the Dutch provisional type-approval so Tesla Assisted Driving may be used on Finnish roads. The June 2026 Reuters item that Finland may approve before the EU vote is now superseded by this authority notice. It is not a recorded committee vote."
       },
       "sourceIds": [
         "s-c55a052f27a6",
+        "s-traficom-en-20261111",
+        "s-traficom-fi-20261111",
         "s-07f6e5d3dd29",
         "s-ceb8f4f6d674",
         "s-ddf43be4eb49"
       ],
-      "status": "watch",
-      "stage": "watch",
+      "status": "approved",
+      "stage": "recognised",
       "rolloutLive": false,
-      "date": null,
+      "date": "2026-11-10",
       "pop": 5.6,
       "regulator": "Traficom",
-      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "note": "National recognition recorded on 10 Nov 2026. Traficom says Tesla can start offering the system immediately; Tesla listing is not independently confirmed. Driver supervision remains required.",
       "sources": [
+        {
+          "label": "Traficom, English notice, 11 Nov 2026",
+          "url": "https://www.traficom.fi/en/news/teslas-driver-assistance-system-now-permitted-finnish-roads"
+        },
+        {
+          "label": "Traficom, Finnish notice, 11 Nov 2026",
+          "url": "https://www.traficom.fi/fi/uutiset/teslan-kuljettajaa-avustava-jarjestelma-nyt-sallittu-suomen-tieliikenteessa"
+        },
         {
           "label": "Tesla Assisted Driving availability and conditions",
           "url": "https://www.tesla.com/nl_NL/support/tesla-assisted-driving"
@@ -2342,6 +2357,22 @@ window.FSD_EUROPE = {
   ],
   "sources": [
     {
+      "id": "s-traficom-en-20261111",
+      "url": "https://www.traficom.fi/en/news/teslas-driver-assistance-system-now-permitted-finnish-roads",
+      "label": "Traficom: Tesla’s driver assistance system is now permitted on Finnish roads, 11 Nov 2026",
+      "type": "authority",
+      "checkedAt": "2026-11-11",
+      "publishedAt": "2026-11-11"
+    },
+    {
+      "id": "s-traficom-fi-20261111",
+      "url": "https://www.traficom.fi/fi/uutiset/teslan-kuljettajaa-avustava-jarjestelma-nyt-sallittu-suomen-tieliikenteessa",
+      "label": "Traficom: Teslan kuljettajaa avustava järjestelmä on nyt sallittu Suomen tieliikenteessä, 11 Nov 2026",
+      "type": "authority",
+      "checkedAt": "2026-11-11",
+      "publishedAt": "2026-11-11"
+    },
+    {
       "id": "s-tesla-mag-20261108",
       "url": "https://www.tesla-mag.com/en/tesla-fsd-supervised-europe-approved-countries-tracker/",
       "label": "Tesla Mag Europe tracker, 8 Nov 2026",
@@ -3093,9 +3124,31 @@ window.FSD_EUROPE = {
       ],
       "sourceType": "authority",
       "reviewedAt": "2026-11-05"
+    },
+    {
+      "id": "event-28",
+      "date": "2026-11-10",
+      "precision": "day",
+      "country": "FI",
+      "type": "recognition",
+      "summary": "Traficom recognises the Dutch provisional type-approval; Tesla Assisted Driving may be used on Finnish roads. Tesla can start offering it; Tesla listing is not independently confirmed. Eleventh EU country.",
+      "evidence": [
+        "s-traficom-en-20261111",
+        "s-traficom-fi-20261111"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": "2026-11-11"
     }
   ],
   "changelog": [
+    {
+      "date": "2026-11-11",
+      "code": "FI",
+      "type": "recognition",
+      "text": "Traficom recognised the Dutch provisional type-approval on 10 Nov 2026 (notice published 11 Nov 07:53). Tesla Assisted Driving may be used on Finnish roads and Tesla can start offering it. That is not a Tesla listing; first customer installation is not confirmed. The eleventh EU country. National recognition does not bind Finland’s TCMV vote.",
+      "source": "https://www.traficom.fi/en/news/teslas-driver-assistance-system-now-permitted-finnish-roads",
+      "evidence": "authority"
+    },
     {
       "date": "2026-11-10",
       "code": "NL",

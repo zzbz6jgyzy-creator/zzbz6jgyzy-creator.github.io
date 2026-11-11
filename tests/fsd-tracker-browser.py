@@ -46,7 +46,7 @@ async def main():
             assert await page.locator('.ft-kpi').count() == 5, tag
             assert await page.locator('#miles svg').count() == 2 and await page.locator('#software .ft-chart').count() == 2, tag
             assert await page.locator('.ft-heat tbody tr').count() == 6, tag
-            assert await page.locator('#atlas svg.ft-map').count() == 2 and await page.locator('.ft-tiles li').count() == 27 and await page.locator('.ft-rec li').count() == 10, tag
+            assert await page.locator('#atlas svg.ft-map').count() == 2 and await page.locator('.ft-tiles li').count() == 27 and await page.locator('.ft-rec li').count() == 11, tag
             assert await page.locator('.ft-meter').count() == 2, tag
             # No overlapping labels in the recognition list (WCAG 1.4.10 at 320 px): chip and link boxes must not intersect.
             for li in await page.locator('.ft-rec li').all():
