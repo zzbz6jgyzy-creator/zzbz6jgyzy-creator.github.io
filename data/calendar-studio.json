@@ -640,7 +640,12 @@
    "windowStart": "2026-11-18T16:49:00Z",
    "windowEnd": "2026-11-18T20:49:00Z",
    "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch"
+   "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches/ussf266",
+    "article": "",
+    "status": "scheduled"
+   }
   },
   {
    "id": "ll2-d74afbc7-0de5-491c-be05-4e9c31f736ac",

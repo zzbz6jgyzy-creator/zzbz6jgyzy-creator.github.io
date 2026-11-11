@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "editorial": {
     "schemaVersion": 1,
-    "updated": "2026-11-10",
-    "revision": "2026-11-10.1",
+    "updated": "2026-11-11",
+    "revision": "2026-11-11.1",
     "scope": "Tesla Cybercab and Model Y Robotaxi",
     "sources": [
       {
@@ -27,7 +27,7 @@
         "url": "https://www.tesla.com/robotaxi",
         "label": "Tesla Robotaxi fleet and current service cities",
         "type": "manufacturer",
-        "checkedAt": "2026-11-09",
+        "checkedAt": "2026-11-11",
         "publishedAt": null
       },
       {
@@ -67,8 +67,24 @@
         "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
         "label": "FSD Database: Texas registry mirror",
         "type": "tracker",
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-11",
         "publishedAt": null
+      },
+      {
+        "id": "s-9c2e4b81a7d0",
+        "url": "https://texasavtracker.com/tesla",
+        "label": "Texas AV Tracker: Tesla Robotaxi VIN first-seen dates",
+        "type": "tracker",
+        "checkedAt": "2026-11-11",
+        "publishedAt": null
+      },
+      {
+        "id": "s-4f18d6c2b90e",
+        "url": "https://teslanorth.com/2026/11/10/tesla-passes-waymo-texas-robotaxi-registry-1302/",
+        "label": "Teslanorth: TxDMV evening 10 Nov check, Tesla 1,302 vs Waymo 1,297",
+        "type": "media",
+        "checkedAt": "2026-11-11",
+        "publishedAt": "2026-11-10"
       },
       {
         "id": "s-29bb5c4b65c2",
@@ -908,7 +924,7 @@
           ],
           "date": "2026-11-09",
           "vehicle": "not_city_specific",
-          "note": "Tesla's official Robotaxi account posted on 9 Nov 2026 at 06:27 GMT (12:27am CT on 9 Nov) that Robotaxi is available in San Antonio \"starting tomorrow, 5am\". Sawyer Merritt reads that as 5am CT on 9 Nov; a strict reading of \"tomorrow\" after midnight would be 5am CT on 10 Nov. Treat the start as announced for 5am CT until first rides confirm the day. Vehicle type and supervision are unconfirmed (as of 9 Nov 2026). The app is the current check for bookings and availability."
+          "note": "Tesla's official Robotaxi account posted on 9 Nov 2026 at 06:27 GMT (12:27am CT on 9 Nov) that Robotaxi is available in San Antonio \"starting tomorrow, 5am\". Sawyer Merritt reads that as 5am CT on 9 Nov; a strict reading of \"tomorrow\" after midnight would be 5am CT on 10 Nov. tesla.com/robotaxi now lists San Antonio among cities where you can already hail a car, alongside Austin, Dallas, Fort Worth, Houston, Miami, Orlando and Tampa (checked 11 Nov 2026). Vehicle type and supervision remain unconfirmed. The app is the current check for bookings and availability."
         },
         "cybercab": {
           "status": "not_listed",
@@ -917,7 +933,7 @@
             "s-143126f5ffcb"
           ],
           "date": null,
-          "note": "Tesla's San Antonio post doesn't say which vehicle serves the city. A Cybercab is not implied. The checked Cybercab availability source listed only Austin as of 23 Oct 2026."
+          "note": "Tesla's San Antonio post doesn't say which vehicle serves the city. tesla.com/robotaxi now lists San Antonio as a hail city (checked 11 Nov 2026). The page does not say which vehicle serves it, so a Cybercab is not implied. The checked Cybercab availability source listed only Austin as of 23 Oct 2026."
         },
         "supervision": {
           "status": "unknown",
@@ -947,7 +963,7 @@
           ],
           "note": "Tesla's San Antonio announcement is not confirmation of airport access. Enter the actual pickup and destination in the app."
         },
-        "vehicleNote": "Vehicle type for San Antonio is unconfirmed as of 9 Nov 2026. Tesla's post does not say Cybercabs serve it. Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla's current guidance.",
+        "vehicleNote": "Vehicle type for San Antonio is unconfirmed as of 11 Nov 2026. tesla.com/robotaxi lists the city for hail rides; it does not say Cybercabs serve it. Cybercab seats up to two; Model Y up to four, according to Tesla. Vehicle allocation and rider conditions remain subject to Tesla's current guidance.",
         "evidence": [
           "s-143126f5ffcb",
           "s-c9f84c001b2c",
@@ -1158,6 +1174,37 @@
           "s-5cb40d36d4e3"
         ],
         "type": "manufacturer"
+      },
+      {
+        "id": "tx-model-y-20",
+        "date": "2026-11-10",
+        "precision": "day",
+        "city": null,
+        "vehicle": "model_y",
+        "kind": "registry",
+        "title": "20 more Model Ys listed on the Texas registry",
+        "summary": "FSD Database’s TxDMV mirror lists 729 Model Y robotaxis, up 20 from 709, with Cybercab unchanged at 573 (1,302 Teslas in total). This is a statewide registration count, not cars in service, and the registry has no city split. Texas AV Tracker first-seen dates and Teslanorth’s evening TxDMV check put the 20 new 7SAY VINs on 10 Nov; Supercharged Daily first ingested them on 11 Nov 07:43 UTC, after a 10 Nov 22:28 UTC reading still at 709.",
+        "evidence": [
+          "s-fef316c7def7",
+          "s-9c2e4b81a7d0",
+          "s-4f18d6c2b90e",
+          "s-b58b31837c2f"
+        ],
+        "type": "tracker"
+      },
+      {
+        "id": "san-antonio-tesla-com-list",
+        "date": "2026-11-11",
+        "precision": "day",
+        "city": "san_antonio",
+        "vehicle": "not_city_specific",
+        "kind": "service",
+        "title": "tesla.com/robotaxi lists San Antonio",
+        "summary": "Tesla's Robotaxi page now lists San Antonio among cities where you can already hail a car, alongside Austin, Dallas, Fort Worth, Houston, Miami, Orlando and Tampa (checked 11 Nov 2026). Tesla has still not said Cybercabs serve San Antonio.",
+        "evidence": [
+          "s-ff84ae0cf870"
+        ],
+        "type": "manufacturer"
       }
     ],
     "companyClaims": [
@@ -1216,7 +1263,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-11-10T22:28:42Z",
+    "checked": "2026-11-11T07:43:17Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -1429,6 +1476,13 @@
         "date": "2026-11-10",
         "cybercab": 573,
         "modelY": 709,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "date": "2026-11-11",
+        "cybercab": 573,
+        "modelY": 729,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
@@ -1817,20 +1871,28 @@
         "modelY": 709,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-11-11T07:43:17Z",
+        "date": "2026-11-11",
+        "cybercab": 573,
+        "modelY": 729,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-11-10T22:28:42Z",
+    "checked": "2026-11-11T07:43:20Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
     },
     "states": {
       "Texas": {
-        "count": 709,
+        "count": 729,
         "kind": "registered",
-        "asOf": "2026-11-10",
+        "asOf": "2026-11-11",
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
         "note": "Model Y robotaxis on the TxDMV automated-vehicle registry (Cybercabs excluded). The registry has no city split."
       },
@@ -2254,6 +2316,21 @@
           "count": 18,
           "asOf": "2026-07-22"
         }
+      },
+      {
+        "date": "2026-11-11",
+        "Texas": {
+          "count": 729,
+          "asOf": "2026-11-11"
+        },
+        "California": {
+          "count": 164,
+          "asOf": "2026-08-26"
+        },
+        "Florida": {
+          "count": 18,
+          "asOf": "2026-07-22"
+        }
       }
     ]
   },
@@ -2266,7 +2343,7 @@
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "revision": "3857624ca629688cbfbedde1b75d2ece7c2af0f6"
     },
-    "checked": "2026-11-10T22:28:42Z",
+    "checked": "2026-11-11T07:43:20Z",
     "features": [
       {
         "type": "Feature",
@@ -3227,7 +3304,7 @@
         "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
       }
     },
-    "checked": "2026-11-10T22:28:42Z"
+    "checked": "2026-11-11T07:43:20Z"
   },
   "checks": {
     "schemaVersion": 1,
