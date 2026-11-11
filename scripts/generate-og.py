@@ -21,6 +21,7 @@ FONT_DIR = "/usr/share/fonts/truetype/macos"
 # (filename without .jpg, kicker, title lines)
 CARDS = [
     ("starship-flight-15", "STARSHIP · FLIGHT 15", "Starship Flight 15:\nthe double catch"),
+    ("ship-42", "STARSHIP · SHIP 42", "Ship 42 launch:\nfirst catch attempt"),
     ("updates", "TESLA SOFTWARE", "Software update\ntracker"),
     ("see-the-launch", "SPACEX", "Can I see\nthe launch?"),
     ("calendar", "LAUNCHES & DATES", "SpaceX & Tesla\ncalendar"),

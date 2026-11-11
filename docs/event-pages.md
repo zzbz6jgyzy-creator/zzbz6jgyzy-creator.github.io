@@ -1,6 +1,6 @@
 # Event pages (single-topic hubs)
 
-Built by `scripts/build-event-pages.mjs` from one JSON file per page in `data/event-pages/`. First example: `/starship-flight-15.html` from `data/event-pages/starship-flight-15.json`.
+Built by `scripts/build-event-pages.mjs` from one JSON file per page in `data/event-pages/`. Examples: `/starship-flight-15.html` from `data/event-pages/starship-flight-15.json`, and `/ship-42.html` from `data/event-pages/ship-42.json` (same Flight 15 window via `eventId`).
 
 ## If Flight 15 slips: change the launch time in ONE place
 Edit `start` and `end` for `starship-flight-15` in `data/events.json` (keep the offset, e.g. `2026-11-14T16:45:00-06:00`). Then run, or let CI run on push to main:
@@ -33,7 +33,7 @@ Each event page gets `/<slug>.ics` (built next to the page, with a 30-minute rem
 
 ## Make a new event page (e.g. "FSD v14 release notes")
 1. Add the event (title, `start`, `end`) to `data/events.json` if it has a time.
-2. Copy `data/event-pages/starship-flight-15.json` to `data/event-pages/<slug>.json` and edit `slug`, `eventId`, `section`, `sectionUrl`, `kicker`, `title`, `seoTitle`, `description`, `summary`, `links`, `watch`, `updates`, `related`. `heatShield` is optional (any page can drop it).
+2. Copy `data/event-pages/starship-flight-15.json` to `data/event-pages/<slug>.json` and edit `slug`, `eventId`, `section`, `sectionUrl`, `kicker`, `title`, `seoTitle`, `description`, `summary`, `links`, `watch`, `updates`, `related`. `heatShield` is optional (any page can drop it). For a ship-focused companion like Ship 42, use `sections` (id, title, lead, sourced points) instead of `heatShield`, and set `crumb`, `eventName` and `calTitle` so the breadcrumb and calendar entry are not the shared event's generic name. Two pages may share one `eventId` so the countdown stays in one place.
 3. Add a 1200x630 card: add a line to `CARDS` in `scripts/generate-og.py` and run it, then point `ogImage` at `/assets/og/<slug>.jpg`.
 4. Add the page to `pages` in `scripts/js-bundles.json` with `{"bundles": ["core", "event"], "grow": ["data-band"]}` and run `sh scripts/rebuild-js.sh`.
 5. Run `node scripts/build-event-pages.mjs`. The first run copies the site shell (nav, footer) from `editorial.html`; later runs only replace the `<!--ev:head-->` block and `<main>`.
@@ -45,4 +45,4 @@ A page with `featureUntil` in the future is featured as a strip at the top of th
 `event-countdown.js` (bundles `event` and `home`): before the window it ticks `d hh:mm:ss`; during the window it says "Launch window open"; after the window closes it says "Launched" and points to the Updates log. The saved HTML always shows the absolute time, so it is right with JavaScript off. If a launch scrubs, add an update line and move the time in `data/events.json`; the page goes back to counting down.
 
 ## Checks
-`node --test tests/event-pages.test.mjs` (rebuilding the page changes nothing, the start time comes from events.json, Event + BreadcrumbList schema, standard head tags, countdown states).
+`node --test tests/event-pages.test.mjs` (rebuilding every event page changes nothing, the start time comes from events.json, Event + BreadcrumbList schema, standard head tags, countdown states).

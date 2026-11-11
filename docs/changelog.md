@@ -1,3 +1,8 @@
+## 2026-11-11 — Ship 42 launch hub
+
+- New `/ship-42.html`: countdown for the Flight 15 window (same `eventId` as `/starship-flight-15.html`, so the time still lives in one place), Ship 42 static fires and catch tests, the approximate ship timeline from SpaceX’s mission page, heat-shield notes, where to watch, and a dated Updates log. Same event-page chrome as the SpaceX Flight 15 hub.
+- Flight 15 hub now links to the Ship 42 page.
+
 ## 2026-11-11 — FCC accepts SpaceX’s 800 MHz applications for filing
 
 - Dispatch: The FCC accepted SpaceX’s applications to take control of Grain Management’s 546 paired 800 MHz licenses for filing (DA 26-1218, WT Docket 26-313). Comments are due 1 Dec 2026. This is not approval; the spectrum still belongs to Grain. Licensed USDA Fort Valley broadband-tower photo (public domain) is the card and hero — a generic tower, not SpaceX or Grain equipment.

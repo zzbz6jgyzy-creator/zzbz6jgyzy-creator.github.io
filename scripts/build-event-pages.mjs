@@ -33,19 +33,37 @@ function calDetails(p, ev, url) {
   return `${p.windowNote ? p.windowNote.split(" · ").join(", ") + ". " : ""}Times can move: check ${url} for the latest.`;
 }
 function googleCal(p, ev, url) {
-  const q = new URLSearchParams({ action: "TEMPLATE", text: ev.title, dates: `${calStamp(ev.start)}/${calStamp(ev.end || ev.start)}`, details: calDetails(p, ev, url), location: p.location.name });
+  const q = new URLSearchParams({ action: "TEMPLATE", text: calName(p, ev), dates: `${calStamp(ev.start)}/${calStamp(ev.end || ev.start)}`, details: calDetails(p, ev, url), location: p.location.name });
   return "https://calendar.google.com/calendar/render?" + q.toString();
 }
 function icsFor(p, ev, url, stampIso) {
   return [
     "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Supercharged Daily//Event pages//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
     "BEGIN:VEVENT", `UID:${p.slug}@superchargeddaily.com`, `DTSTAMP:${calStamp(stampIso)}`, `SEQUENCE:${Math.max(0, Math.floor((Date.parse(stampIso) - Date.UTC(2026, 0, 1)) / 6e4))}`,
-    `DTSTART:${calStamp(ev.start)}`, `DTEND:${calStamp(ev.end || ev.start)}`, `SUMMARY:${calText(ev.title)}`,
+    `DTSTART:${calStamp(ev.start)}`, `DTEND:${calStamp(ev.end || ev.start)}`, `SUMMARY:${calText(calName(p, ev))}`,
     `DESCRIPTION:${calText(calDetails(p, ev, url))}`, `LOCATION:${calText(p.location.name)}`, `URL:${url}`, "STATUS:TENTATIVE",
     "BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${calText(ev.title + " window opens in 30 minutes")}`, "TRIGGER:-PT30M", "END:VALARM",
     "END:VEVENT", "END:VCALENDAR", "",
   ].map(fold).join("\r\n");
 }
+
+function pointItems(items) {
+  return `<ul class="ev-points">${(items || []).map((t) => typeof t === "string" ? `<li>${esc(t)}</li>` : `<li>${esc(t.text)}${t.source ? ` <a href="${esc(t.source)}" target="_blank" rel="noopener">${esc(t.sourceName || "Source")}</a>` : ""}</li>`).join("")}</ul>`;
+}
+function extraSections(p) {
+  const list = p.sections?.length
+    ? p.sections
+    : (p.heatShield ? [{ id: "heat", title: "Why the heat shield matters", lead: p.heatShield.lead, points: p.heatShield.points, todo: p.heatShield.todo }] : []);
+  return list.map((s) => `<section class="ev-section" aria-labelledby="ev-${esc(s.id)}">
+    <h2 id="ev-${esc(s.id)}">${esc(s.title)}</h2>
+    ${s.todo ? `<!-- ${esc(s.todo)} -->` : ""}
+    ${s.lead ? `<p>${esc(s.lead)}</p>` : ""}
+    ${s.points?.length ? pointItems(s.points) : ""}
+  </section>`).join("\n  ");
+}
+function calName(p, ev) { return p.calTitle || ev.title; }
+function crumbName(p, ev) { return p.crumb || ev.title; }
+function eventName(p, ev) { return p.eventName || ev.title; }
 
 function pageMain(p, ev, articles) {
   const url = `${SITE}/${p.slug}.html`;
@@ -57,7 +75,7 @@ function pageMain(p, ev, articles) {
   const when = (u) => u.time ? `${fmtDate(u.time.slice(0, 10))}, ${new Date(u.time).toISOString().slice(11, 16)} UTC` : fmtDate(u.date);
   const latest = updates.length ? stamp(updates[0]) : "";
   return `<main id="main" class="ev-page">
-  <nav class="ev-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="${esc(p.sectionUrl)}">${esc(p.section)}</a></li><li aria-current="page">${esc(ev.title)}</li></ol></nav>
+  <nav class="ev-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="${esc(p.sectionUrl)}">${esc(p.section)}</a></li><li aria-current="page">${esc(crumbName(p, ev))}</li></ol></nav>
   <header class="ev-hero">
     <p class="ev-kicker">${esc(p.kicker)}</p>
     <h1>${esc(p.title)}</h1>
@@ -67,16 +85,11 @@ function pageMain(p, ev, articles) {
     <div class="ev-cal" aria-label="Add to your calendar"><a href="/${esc(p.slug)}.ics" download>Add to calendar</a><a href="${esc(googleCal(p, ev, url))}" target="_blank" rel="noopener">Google Calendar ↗</a></div>
   </header>
   <section class="ev-section" aria-labelledby="ev-mission">
-    <h2 id="ev-mission">The mission</h2>
+    <h2 id="ev-mission">${esc(p.missionTitle || "The mission")}</h2>
     ${p.summaryTodo ? `<!-- ${esc(p.summaryTodo)} -->` : ""}
     ${p.summary.map((t) => `<p>${esc(t)}</p>`).join("\n    ")}
   </section>
-  ${p.heatShield ? `<section class="ev-section" aria-labelledby="ev-heat">
-    <h2 id="ev-heat">Why the heat shield matters</h2>
-    ${p.heatShield.todo ? `<!-- ${esc(p.heatShield.todo)} -->` : ""}
-    <p>${esc(p.heatShield.lead)}</p>
-    <ul class="ev-points">${p.heatShield.points.map((t) => typeof t === "string" ? `<li>${esc(t)}</li>` : `<li>${esc(t.text)}${t.source ? ` <a href="${esc(t.source)}" target="_blank" rel="noopener">${esc(t.sourceName || "Source")}</a>` : ""}</li>`).join("")}</ul>
-  </section>` : ""}
+  ${extraSections(p)}
   <section class="ev-section" aria-labelledby="ev-watch">
     <h2 id="ev-watch">Where to watch</h2>
     ${p.watchTodo ? `<!-- ${esc(p.watchTodo)} -->` : ""}
@@ -101,7 +114,7 @@ function pageHead(p, ev) {
   const url = `${SITE}/${p.slug}.html`, img = SITE + p.ogImage, title = `${p.seoTitle} | Supercharged Daily`;
   const latest = [...(p.updates || [])].map((u) => u.date).sort().pop() || ev.start.slice(0, 10);
   const ld = [
-    { "@context": "https://schema.org", "@type": "Event", name: ev.title, description: p.description, startDate: ev.start, endDate: ev.end || ev.start,
+    { "@context": "https://schema.org", "@type": "Event", name: eventName(p, ev), description: p.description, startDate: ev.start, endDate: ev.end || ev.start,
       eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
       location: [{ "@type": "Place", name: p.location.name, address: { "@type": "PostalAddress", addressRegion: p.location.region, addressCountry: p.location.country } },
                  { "@type": "VirtualLocation", url: (p.watch[1] || p.watch[0]).href }],
@@ -109,7 +122,7 @@ function pageHead(p, ev) {
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
       { "@type": "ListItem", position: 2, name: p.section, item: SITE + p.sectionUrl },
-      { "@type": "ListItem", position: 3, name: ev.title, item: url }] },
+      { "@type": "ListItem", position: 3, name: crumbName(p, ev), item: url }] },
     { "@context": "https://schema.org", "@type": "WebPage", name: title, url, dateModified: latest, publisher: { "@type": "Organization", name: "Supercharged Daily", url: SITE + "/" } },
   ];
   return `<!--ev:head-->

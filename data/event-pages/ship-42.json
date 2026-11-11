@@ -1,0 +1,193 @@
+{
+  "slug": "ship-42",
+  "eventId": "starship-flight-15",
+  "section": "SpaceX",
+  "sectionUrl": "/spacex.html",
+  "kicker": "Starship / Ship 42",
+  "title": "Ship 42: first Starship to attempt a tower catch",
+  "seoTitle": "Ship 42 launch: countdown, first tower catch and what to watch",
+  "description": "Ship 42 is the Flight 15 Starship. Pending regulatory approval: the 13 November window, first tower-catch attempt, static fires, and where to watch.",
+  "ogImage": "/assets/og/ship-42.jpg",
+  "ogImageAlt": "Ship 42 launch title card on a dark background with the Supercharged Daily bolt",
+  "crumb": "Ship 42",
+  "eventName": "Ship 42 on Starship Flight 15",
+  "calTitle": "Ship 42 launch (Starship Flight 15)",
+  "windowNote": "75-minute window · pending regulatory approval",
+  "location": {
+    "name": "Starbase, Texas (Pad 2)",
+    "region": "Texas",
+    "country": "US"
+  },
+  "summary": [
+    "Ship 42 is the Starship upper stage on Flight 15, stacked with Super Heavy Booster 22. SpaceX is targeting Friday 13 November 2026 from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). That is a published window, not a guaranteed lift-off time.",
+    "For the first time SpaceX plans to catch both stages with the tower. Ship 42's job, after deploying 26 Starlink V3 satellites, is a flight of more than 22 hours and then the first Ship catch at Starbase, if the flight-control team is satisfied the vehicle is healthy. The tower has never caught a Starship; it has caught a Super Heavy booster three times, on Flights 5, 7 and 8.",
+    "SpaceX said on 28 October that Ship 42's static fires were complete. Elon Musk quoted that post the same evening: \"As the prophecy foretold, Starship 42 will be the first tower catch.\" No FAA licence for Flight 15 is published."
+  ],
+  "sections": [
+    {
+      "id": "ship",
+      "title": "Why this ship",
+      "lead": "The hardware work that is public is the static-fire campaign and catch tests on Pad 2.",
+      "points": [
+        {
+          "text": "SpaceX said on 28 Oct 2026 that Ship 42 \"performed a full duration, six-engine static fire, and fired a single Raptor engine to simulate a deorbit burn.\" NASASpaceflight and Next Spaceflight put the single-engine burn on 26 Oct and the six-engine fire, about 60 seconds, on 27 Oct, both at Massey's.",
+          "source": "https://x.com/SpaceX/status/2115476295169814978",
+          "sourceName": "Source"
+        },
+        {
+          "text": "On 11 and 12 September, Ship 42 was lifted by the Pad 2 chopsticks in catch-related tests, as seen in LabPadre and NASASpaceflight footage. Teams also connected the ship quick-disconnect arm several times.",
+          "source": "https://x.com/LabPadre/status/2098846144222675414",
+          "sourceName": "Source"
+        },
+        {
+          "text": "On SpaceX's 20 Oct earnings call, Musk said the company will \"attempt to catch both the booster and the ship\" on Flight 15, and that \"it's more likely than not that this succeeds next flight.\" If both catches work, he said that would be \"the first time that an orbital launch vehicle has been fully recovered.\"",
+          "source": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
+          "sourceName": "Source"
+        }
+      ]
+    },
+    {
+      "id": "watch-ship",
+      "title": "What to watch on Ship 42",
+      "lead": "Times below are approximate, from SpaceX's Flight 15 mission page. The booster catch, if it happens, is about six and a half minutes after lift-off. Ship 42's own catch is more than 22 hours later.",
+      "points": [
+        {
+          "text": "T+8:09 — Starship engine cutoff. Hot-staging is at about T+2:21; the Ship then burns until engine cutoff eight minutes after lift-off.",
+          "source": "https://www.spacex.com/launches/starship-flight-15",
+          "sourceName": "Source"
+        },
+        {
+          "text": "T+35:01 to T+1:17:40 — payload deploy. SpaceX plans 26 Starlink V3 satellites. Three of them carry cameras to scan the heat shield and send the pictures down.",
+          "source": "https://www.spacex.com/launches/starship-flight-15",
+          "sourceName": "Source"
+        },
+        {
+          "text": "T+21:35:57 — deorbit burn. SpaceX lists return checks over Hawaii and Chile during the coast (early Hawaii, mid Chile, final Hawaii).",
+          "source": "https://www.spacex.com/launches/starship-flight-15",
+          "sourceName": "Source"
+        },
+        {
+          "text": "T+22:10:46 entry, then landing burn and catch at about T+22:32:34. SpaceX says the Ship will only fly that profile if systems critical for re-entry, the landing burn and the tower approach are healthy.",
+          "source": "https://www.spacex.com/launches/starship-flight-15",
+          "sourceName": "Source"
+        }
+      ]
+    },
+    {
+      "id": "heat",
+      "title": "Why the heat shield matters",
+      "lead": "Bringing Ship 42 home intact means surviving re-entry. SpaceX's Flight 15 page is specific about what this heat shield is testing.",
+      "points": [
+        {
+          "text": "SpaceX says the heat shield takes the Flight 14 changes: extra retention on tiles most at risk of coming off during ascent, and work on paths that let plasma get behind the tiles. A large portion uses a curved tile meant to cut heating in the gaps.",
+          "source": "https://www.spacex.com/launches/starship-flight-15",
+          "sourceName": "Source"
+        },
+        {
+          "text": "Thousands of small hexagonal tiles cover the Ship's windward side. Because the Ship is mostly a plain cylinder, most tiles can share one shape and the rest are machined to fit, CNBC reported in August 2021.",
+          "source": "https://www.cnbc.com/2021/08/06/elon-musk-spacex-starship-fully-stacked-is-dream-come-true.html",
+          "sourceName": "Source"
+        },
+        {
+          "text": "Most tiles are attached mechanically rather than glued, and SpaceX makes them in-house, according to Air & Space (December 2021).",
+          "source": "https://www.smithsonianmag.com/air-space-magazine/marsliner-180979371/",
+          "sourceName": "Source"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "/starship-flight-15.html",
+      "title": "Flight 15 hub",
+      "text": "The full dual-catch plan, countdown and where to watch both stages."
+    },
+    {
+      "href": "/starship.html",
+      "title": "Starship tracker",
+      "text": "Every flight, the hardware and the next target."
+    },
+    {
+      "href": "/calendar.html",
+      "title": "Launch calendar",
+      "text": "Upcoming SpaceX launches with add-to-calendar."
+    },
+    {
+      "href": "/see-the-launch.html",
+      "title": "Can I see the launch?",
+      "text": "Find where to look from your location with a live compass."
+    },
+    {
+      "href": "/catch.html?mode=flight15",
+      "title": "Play the double catch",
+      "text": "Our arcade game: catch the booster, then the Ship. Same mission for everyone, so you can compare scores."
+    }
+  ],
+  "watch": [
+    {
+      "href": "https://x.com/SpaceX",
+      "title": "SpaceX on X",
+      "text": "SpaceX streams Starship flights on X and spacex.com. It posts the stream's start time on the day; we will add it to the Updates log."
+    },
+    {
+      "href": "https://www.spacex.com/launches/starship-flight-15",
+      "title": "spacex.com",
+      "text": "The official Flight 15 mission page and webcast. Ship 42 is the Starship on that flight."
+    }
+  ],
+  "updates": [
+    {
+      "date": "2026-11-11",
+      "kind": "Target",
+      "text": "Re-checked SpaceX's Flight 15 mission page: the window is still as soon as Friday 13 November, 4:45 p.m. CT (22:45 UTC), 75 minutes, pending regulatory approval. No FAA licence is published.",
+      "source": "https://www.spacex.com/launches/starship-flight-15"
+    },
+    {
+      "date": "2026-11-08",
+      "kind": "Disclosed",
+      "text": "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. Dual catch, 26 Starlink V3, more than 22 hours, first Ship return-to-launch-site.",
+      "source": "https://www.spacex.com/launches/starship-flight-15"
+    },
+    {
+      "date": "2026-11-07",
+      "kind": "Disclosed",
+      "text": "SpaceX's 7 Nov update, \"Returning Starship to the Launch Site\", says Flight 15 will attempt the first Ship catch at Starbase. Controllers will only commit to that catch if internally developed, FAA-approved return conditions are met.",
+      "source": "https://www.spacex.com/updates"
+    },
+    {
+      "date": "2026-10-28",
+      "kind": "Disclosed",
+      "text": "SpaceX said Ship 42's static fires are complete: a full-duration six-engine fire and a single-engine deorbit-burn simulation.",
+      "source": "https://x.com/SpaceX/status/2115476295169814978"
+    },
+    {
+      "date": "2026-10-28",
+      "kind": "Disclosed",
+      "text": "Elon Musk quoted SpaceX's post: \"As the prophecy foretold, Starship 42 will be the first tower catch.\"",
+      "source": "https://x.com/elonmusk/status/2115634093949911506"
+    },
+    {
+      "date": "2026-10-27",
+      "kind": "Reported",
+      "text": "NASASpaceflight and Next Spaceflight logged Ship 42's six-engine static fire at Massey's on 27 Oct, about 5:46 p.m. ET (2:46 p.m. PT), roughly 60 seconds.",
+      "source": "https://www.nextspaceflight.com/starship/hardware/80/"
+    },
+    {
+      "date": "2026-10-26",
+      "kind": "Reported",
+      "text": "NASASpaceflight's live coverage and Next Spaceflight's test log put Ship 42's single-engine deorbit-burn simulation at Massey's on 26 Oct at about 10:17 p.m. ET (7:17 p.m. PT).",
+      "source": "https://www.nextspaceflight.com/starship/hardware/80/"
+    },
+    {
+      "date": "2026-10-25",
+      "kind": "Disclosed",
+      "text": "SpaceX confirmed a full-duration 33-engine static fire of Booster 22, the Flight 15 Super Heavy, on Pad 2.",
+      "source": "https://x.com/SpaceX/status/2114444137067844004"
+    }
+  ],
+  "related": [
+    "/dispatch/ship-42-first-tower-catch.html",
+    "/dispatch/starship-f15-ship-catch.html",
+    "/dispatch/starship-flight-15-catch-timeline.html"
+  ]
+}

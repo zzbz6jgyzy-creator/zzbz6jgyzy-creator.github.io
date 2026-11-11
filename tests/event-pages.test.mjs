@@ -6,12 +6,18 @@ import { buildEventPages } from "../scripts/build-event-pages.mjs";
 const require = createRequire(import.meta.url), shared = require("../scripts/event-shared.cjs");
 const events = JSON.parse(fs.readFileSync("data/events.json", "utf8")).events;
 
+function slugs() {
+  return fs.readdirSync("data/event-pages").filter((x) => x.endsWith(".json")).map((x) => x.replace(/\.json$/, ""));
+}
 function sandbox() {
   // A copy of only what the builder reads, so the test never touches the real pages.
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "event-pages-"));
   fs.mkdirSync(path.join(dir, "data/event-pages"), { recursive: true });
-  for (const f of ["data/events.json", "data/articles.json", "editorial.html", "starship-flight-15.html"]) fs.copyFileSync(f, path.join(dir, f));
-  for (const f of fs.readdirSync("data/event-pages")) fs.copyFileSync(path.join("data/event-pages", f), path.join(dir, "data/event-pages", f));
+  for (const f of ["data/events.json", "data/articles.json", "editorial.html"]) fs.copyFileSync(f, path.join(dir, f));
+  for (const slug of slugs()) {
+    fs.copyFileSync(path.join("data/event-pages", slug + ".json"), path.join(dir, "data/event-pages", slug + ".json"));
+    if (fs.existsSync(slug + ".html")) fs.copyFileSync(slug + ".html", path.join(dir, slug + ".html"));
+  }
   return dir;
 }
 
@@ -19,37 +25,47 @@ test("saved event pages match the builder and a second build changes nothing", (
   const dir = sandbox();
   try {
     buildEventPages(dir);
-    const first = fs.readFileSync(path.join(dir, "starship-flight-15.html"), "utf8");
-    buildEventPages(dir);
-    assert.equal(fs.readFileSync(path.join(dir, "starship-flight-15.html"), "utf8"), first);
-    const saved = fs.readFileSync("starship-flight-15.html", "utf8");
     const strip = (h) => h.replace(/<!--sd:bundles-->[\s\S]*?<!--\/sd:bundles-->/, "");
-    assert.equal(strip(first), strip(saved), "run node scripts/build-event-pages.mjs and commit the page");
+    for (const slug of slugs()) {
+      const first = fs.readFileSync(path.join(dir, slug + ".html"), "utf8");
+      buildEventPages(dir);
+      assert.equal(fs.readFileSync(path.join(dir, slug + ".html"), "utf8"), first, slug + " second build");
+      const saved = fs.readFileSync(slug + ".html", "utf8");
+      assert.equal(strip(first), strip(saved), "run node scripts/build-event-pages.mjs and commit " + slug + ".html");
+    }
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
 test("the launch time has one source: data/events.json", () => {
-  const html = fs.readFileSync("starship-flight-15.html", "utf8"), home = fs.readFileSync("index.html", "utf8");
+  const home = fs.readFileSync("index.html", "utf8");
   const start = new Date(events["starship-flight-15"].start).toISOString();
-  assert.ok(html.includes(`data-start="${start}"`));
-  const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1])).flat();
-  const ev = ld.flat().find((x) => x["@type"] === "Event");
-  assert.equal(ev.startDate, events["starship-flight-15"].start);
-  assert.equal(ev.endDate, events["starship-flight-15"].end);
-  assert.ok(ld.flat().some((x) => x["@type"] === "BreadcrumbList"));
-  for (const k of ["name", "description", "location", "organizer", "image", "eventStatus"]) assert.ok(ev[k], k);
+  for (const slug of slugs()) {
+    const page = JSON.parse(fs.readFileSync(path.join("data/event-pages", slug + ".json"), "utf8"));
+    const html = fs.readFileSync(slug + ".html", "utf8");
+    const evTimes = events[page.eventId];
+    assert.ok(html.includes(`data-start="${new Date(evTimes.start).toISOString()}"`), slug);
+    const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1])).flat();
+    const ev = ld.flat().find((x) => x["@type"] === "Event");
+    assert.equal(ev.startDate, evTimes.start, slug);
+    assert.equal(ev.endDate, evTimes.end, slug);
+    assert.ok(ld.flat().some((x) => x["@type"] === "BreadcrumbList"), slug);
+    for (const k of ["name", "description", "location", "organizer", "image", "eventStatus"]) assert.ok(ev[k], slug + " " + k);
+  }
   // While the page is featured, the homepage strip uses the same start time.
   if (shared.activeFeature(".", Date.now())) assert.ok(home.includes(`data-start="${start}"`));
 });
 
 test("head has standard title, description, canonical, og and twitter tags", () => {
-  const html = fs.readFileSync("starship-flight-15.html", "utf8");
-  assert.equal((html.match(/<title>/g) || []).length, 1);
-  for (const re of [/<meta name="description" content="[^"]{60,}"/, /<link rel="canonical" href="https:\/\/superchargeddaily\.com\/starship-flight-15\.html"/,
-    /<meta property="og:image" content="https:\/\/superchargeddaily\.com\/assets\/og\/starship-flight-15\.jpg"/, /<meta name="twitter:card" content="summary_large_image"/])
-    assert.match(html, re);
-  assert.ok(fs.existsSync("assets/og/starship-flight-15.jpg"));
-  assert.doesNotMatch(html, /(name|property)="meta-/);
+  for (const slug of slugs()) {
+    const html = fs.readFileSync(slug + ".html", "utf8");
+    const page = JSON.parse(fs.readFileSync(path.join("data/event-pages", slug + ".json"), "utf8"));
+    assert.equal((html.match(/<title>/g) || []).length, 1, slug);
+    for (const re of [/<meta name="description" content="[^"]{60,}"/, new RegExp(`<link rel="canonical" href="https://superchargeddaily\\.com/${slug}\\.html"`),
+      new RegExp(`<meta property="og:image" content="https://superchargeddaily\\.com${page.ogImage.replace(/\./g, "\\.")}"`), /<meta name="twitter:card" content="summary_large_image"/])
+      assert.match(html, re, slug);
+    assert.ok(fs.existsSync(page.ogImage.slice(1)), page.ogImage);
+    assert.doesNotMatch(html, /(name|property)="meta-/);
+  }
 });
 
 test("countdown shows window open, then the after label, from the saved markup", () => {
@@ -74,23 +90,41 @@ test("calendar: a deterministic .ics next to the page and a Google Calendar link
   const dir = sandbox();
   try {
     buildEventPages(dir);
-    const ics = fs.readFileSync(path.join(dir, "starship-flight-15.ics"), "utf8");
-    buildEventPages(dir);
-    assert.equal(fs.readFileSync(path.join(dir, "starship-flight-15.ics"), "utf8"), ics, "a rebuild must not change the .ics");
-    assert.equal(ics, fs.readFileSync("starship-flight-15.ics", "utf8"), "run node scripts/build-event-pages.mjs and commit the .ics");
+    for (const slug of slugs()) {
+      const ics = fs.readFileSync(path.join(dir, slug + ".ics"), "utf8");
+      buildEventPages(dir);
+      assert.equal(fs.readFileSync(path.join(dir, slug + ".ics"), "utf8"), ics, slug + " rebuild must not change the .ics");
+      assert.equal(ics, fs.readFileSync(slug + ".ics", "utf8"), "run node scripts/build-event-pages.mjs and commit " + slug + ".ics");
+    }
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
-  const ev = events["starship-flight-15"], ics = fs.readFileSync("starship-flight-15.ics", "utf8");
   const stamp = (iso) => new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-  assert.match(ics, new RegExp(`\\r\\nDTSTART:${stamp(ev.start)}\\r\\n`));
-  assert.match(ics, new RegExp(`\\r\\nDTEND:${stamp(ev.end)}\\r\\n`));
-  assert.match(ics, /\r\nUID:starship-flight-15@superchargeddaily\.com\r\n/);
-  assert.match(ics, /BEGIN:VALARM[\s\S]*TRIGGER:-PT30M[\s\S]*END:VALARM/);
-  for (const line of ics.split("\r\n")) assert.ok(Buffer.byteLength(line) <= 75, "fold at 75 octets: " + line);
-  const html = fs.readFileSync("starship-flight-15.html", "utf8");
-  assert.match(html, /<a href="\/starship-flight-15\.ics" download>Add to calendar<\/a>/);
-  const g = html.match(/href="(https:\/\/calendar\.google\.com\/calendar\/render\?[^"]+)"/);
-  assert.ok(g, "Google Calendar link");
-  assert.equal(new URL(g[1].replace(/&amp;/g, "&")).searchParams.get("dates"), `${stamp(ev.start)}/${stamp(ev.end)}`);
+  for (const slug of slugs()) {
+    const page = JSON.parse(fs.readFileSync(path.join("data/event-pages", slug + ".json"), "utf8"));
+    const ev = events[page.eventId], ics = fs.readFileSync(slug + ".ics", "utf8");
+    assert.match(ics, new RegExp(`\\r\\nDTSTART:${stamp(ev.start)}\\r\\n`));
+    assert.match(ics, new RegExp(`\\r\\nDTEND:${stamp(ev.end)}\\r\\n`));
+    assert.match(ics, new RegExp(`\\r\\nUID:${slug}@superchargeddaily\\.com\\r\\n`));
+    assert.match(ics, /BEGIN:VALARM[\s\S]*TRIGGER:-PT30M[\s\S]*END:VALARM/);
+    for (const line of ics.split("\r\n")) assert.ok(Buffer.byteLength(line) <= 75, slug + " fold at 75 octets: " + line);
+    const html = fs.readFileSync(slug + ".html", "utf8");
+    assert.match(html, new RegExp(`<a href="/${slug}\\.ics" download>Add to calendar</a>`));
+    const g = html.match(/href="(https:\/\/calendar\.google\.com\/calendar\/render\?[^"]+)"/);
+    assert.ok(g, slug + " Google Calendar link");
+    assert.equal(new URL(g[1].replace(/&amp;/g, "&")).searchParams.get("dates"), `${stamp(ev.start)}/${stamp(ev.end)}`);
+  }
+});
+
+test("Ship 42 is a companion hub on the same Flight 15 window", () => {
+  const page = JSON.parse(fs.readFileSync("data/event-pages/ship-42.json", "utf8"));
+  assert.equal(page.eventId, "starship-flight-15");
+  assert.equal(page.slug, "ship-42");
+  const html = fs.readFileSync("ship-42.html", "utf8");
+  assert.match(html, />Ship 42</);
+  assert.match(html, /Why this ship/);
+  assert.match(html, /What to watch on Ship 42/);
+  assert.match(html, /href="\/starship-flight-15\.html"/);
+  const f15 = fs.readFileSync("starship-flight-15.html", "utf8");
+  assert.match(f15, /href="\/ship-42\.html"/);
 });
 
 test("updates log carries what event-live.js needs, and timed entries sort and render with their time", () => {
