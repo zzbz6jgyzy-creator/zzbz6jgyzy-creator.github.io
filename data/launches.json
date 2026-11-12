@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-12T01:29:53Z",
- "checked": "2026-11-12T01:29:53Z",
+ "updated": "2026-11-12T09:45:10Z",
+ "checked": "2026-11-12T09:45:10Z",
  "results": [
   {
    "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
@@ -49,7 +49,7 @@
      "name": null
     }
    },
-   "last_updated": "2026-11-11T02:04:37Z"
+   "last_updated": "2026-11-12T02:00:58Z"
   },
   {
    "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
@@ -164,7 +164,7 @@
      "name": null
     }
    },
-   "last_updated": "2026-11-11T02:04:29Z"
+   "last_updated": "2026-11-12T02:00:47Z"
   },
   {
    "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
@@ -312,29 +312,20 @@
    "window_end": "2026-11-12T06:35:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/6aa7b90b-e5ed-45d8-a52e-04fbf399d178/",
    "status": {
-    "name": "Go for Launch",
-    "abbrev": "Go"
+    "name": "Launch Successful",
+    "abbrev": "Success"
    },
    "net_precision": {
     "name": "Second",
     "abbrev": "SEC"
    },
    "pad": {
-    "name": "Space Launch Complex 4E",
+    "name": null,
     "location": {
-     "name": "Vandenberg SFB, CA, USA"
+     "name": null
     }
    },
-   "last_updated": "2026-11-11T23:51:06Z",
-   "mission": {
-    "name": "USSF-627",
-    "type": "Government/Top Secret",
-    "orbit": {
-     "name": "Low Earth Orbit",
-     "abbrev": "LEO"
-    }
-   },
-   "vehicle": "Falcon 9 Block 5"
+   "last_updated": "2026-11-12T07:02:47Z"
   },
   {
    "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
@@ -389,7 +380,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-10T16:25:25Z",
+   "last_updated": "2026-11-12T03:55:21Z",
    "mission": {
     "name": "USSF-317",
     "type": "Government/Top Secret",
