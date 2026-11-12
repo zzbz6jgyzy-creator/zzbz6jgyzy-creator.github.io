@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-09T08:41:14+00:00",
- "launchChecked": "2026-11-12T18:14:59Z",
+ "launchChecked": "2026-11-12T23:39:02Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -641,6 +641,27 @@
     "article": "",
     "status": "scheduled"
    }
+  },
+  {
+   "id": "ll2-951a341f-236b-42fe-a667-4ab2fcf36eac",
+   "title": "Falcon 9 Block 5 | NROL-136",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-21T12:30:00Z",
+   "end": "",
+   "date": "2026-11-21",
+   "precision": "datetime",
+   "status": "Go",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "951a341f-236b-42fe-a667-4ab2fcf36eac",
+   "windowStart": "2026-11-21T12:30:00Z",
+   "windowEnd": "2026-11-21T13:00:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "Go for Launch"
   },
   {
    "id": "ll2-d74afbc7-0de5-491c-be05-4e9c31f736ac",
