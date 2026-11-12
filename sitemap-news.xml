@@ -2,6 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/cybertruck-summer-2027-extension.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T08:56:21Z</news:publication_date>
+      <news:title>Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/starlink-mini-2-vs-mini.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T08:56:21Z</news:publication_date>
+      <news:title>Starlink Mini 2 vs Mini: thinner, heavier, and finally a battery</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/finland-fsd-eleventh-eu.html</loc>
     <news:news>
       <news:publication>
@@ -65,17 +87,6 @@
       </news:publication>
       <news:publication_date>2026-11-10T14:41:15Z</news:publication_date>
       <news:title>Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/spacex-starbase-24b-gas-compute.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-10T08:45:00Z</news:publication_date>
-      <news:title>SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)</news:title>
     </news:news>
   </url>
 </urlset>
