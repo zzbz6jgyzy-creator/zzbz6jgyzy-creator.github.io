@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-12T08:13:43.673Z",
+  "generatedAt": "2026-11-12T09:12:19.832Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -286,6 +286,40 @@
   ],
   "changes": [
     {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/cybertruck-summer-2027-extension.html",
+      "topic": "production",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)",
+      "at": "2026-11-12T08:56:21.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/cybertruck-summer-2027-extension.html",
+      "href": "/dispatch/cybertruck-summer-2027-extension.html",
+      "summary": "Elon Musk says Cybertruck production will now run through the end of summer 2027 to work through more of the backlog. That’s the third timeline in six days, and roughly two more months than the eight months he gave on 9 Nov 2026.",
+      "title": "Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/cybertruck-summer-2027-extension.html|2026-11-12T08:56:21.000Z|Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starlink-mini-2-vs-mini.html",
+      "topic": "starlink",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Starlink Mini 2 vs Mini: thinner, heavier, and finally a battery",
+      "at": "2026-11-12T08:56:21.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starlink-mini-2-vs-mini.html",
+      "href": "/dispatch/starlink-mini-2-vs-mini.html",
+      "summary": "Starlink’s Mini 2 adds a 71 Wh quick-swap battery, USB-C power and Wi-Fi 6, as reported from its spec sheet. It is 40% thinner and about a pound heavier than the original Mini with kickstand. Invite-only US preorders are a $999 bundle with a year of Roam Unlimited, as reported.",
+      "title": "Starlink Mini 2 vs Mini: thinner, heavier, and finally a battery",
+      "id": "logged|dispatch:/dispatch/starlink-mini-2-vs-mini.html|2026-11-12T08:56:21.000Z|Starlink Mini 2 vs Mini: thinner, heavier, and finally a battery"
+    },
+    {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.39.100",
       "topic": "tesla-software",
@@ -505,40 +539,6 @@
       "summary": "Qualcomm CEO Cristiano Amon says SpaceX will build the base stations for one of the largest US 5G deployments, with Qualcomm supplying the radio silicon. Musk confirmed the partnership on X. Rollout planned from 2027; no tower deals announced.",
       "title": "SpaceX is designing its own 5G base stations for Starlink Mobile, with Qualcomm chips inside",
       "id": "logged|dispatch:/dispatch/spacex-qualcomm-own-base-stations.html|2026-11-09T14:40:00.000Z|SpaceX is designing its own 5G base stations for Starlink Mobile, with Qualcomm chips inside"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)",
-      "at": "2026-11-09T11:22:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
-      "href": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
-      "summary": "Tesla’s official @robotaxi account posted “Bigger Austin service area now live” with an old/new geofence map at 11:00 UTC on 9 Nov 2026. Tesla gave no square-mileage. Robotaxi Tracker measures about 442 sq mi, up from 272; RoboTracker lists 435.",
-      "title": "Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)",
-      "id": "logged|dispatch:/dispatch/tesla-robotaxi-austin-bigger-service-area.html|2026-11-09T11:22:00.000Z|Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-robotaxi-san-antonio.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart",
-      "at": "2026-11-09T08:36:35.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-robotaxi-san-antonio.html",
-      "href": "/dispatch/tesla-robotaxi-san-antonio.html",
-      "summary": "Tesla's @robotaxi account says San Antonio rides start at 5am CT. Merritt measures the launch zone at about 275 sq mi. A 9 Nov Texas DMV pull puts Tesla at 1,282 registered driverless vehicles against Waymo's 1,285.",
-      "title": "Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart",
-      "id": "logged|dispatch:/dispatch/tesla-robotaxi-san-antonio.html|2026-11-09T08:36:35.000Z|Tesla Robotaxi reaches San Antonio with its biggest launch zone yet, and Texas registrations are now 3 cars apart"
     },
     {
       "type": "changed",
@@ -1909,14 +1909,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-11-10T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-11-09T08:41:14.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1930,14 +1930,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-11-11T23:38:06.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -1951,35 +1951,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-12T08:13:43.673Z",
+      "lastChecked": "2026-11-12T09:12:19.832Z",
       "lastVerified": "2026-11-12T03:09:56.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -1988,85 +1988,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.650Z",
-      "finished": "2026-11-12T08:13:43.656Z"
+      "started": "2026-11-12T09:12:19.810Z",
+      "finished": "2026-11-12T09:12:19.816Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.656Z",
-      "finished": "2026-11-12T08:13:43.656Z"
+      "started": "2026-11-12T09:12:19.816Z",
+      "finished": "2026-11-12T09:12:19.817Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.656Z",
-      "finished": "2026-11-12T08:13:43.656Z"
+      "started": "2026-11-12T09:12:19.817Z",
+      "finished": "2026-11-12T09:12:19.817Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.656Z",
-      "finished": "2026-11-12T08:13:43.665Z"
+      "started": "2026-11-12T09:12:19.817Z",
+      "finished": "2026-11-12T09:12:19.825Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.665Z",
-      "finished": "2026-11-12T08:13:43.669Z"
+      "started": "2026-11-12T09:12:19.825Z",
+      "finished": "2026-11-12T09:12:19.828Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.669Z",
-      "finished": "2026-11-12T08:13:43.669Z"
+      "started": "2026-11-12T09:12:19.828Z",
+      "finished": "2026-11-12T09:12:19.829Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.669Z",
-      "finished": "2026-11-12T08:13:43.670Z"
+      "started": "2026-11-12T09:12:19.829Z",
+      "finished": "2026-11-12T09:12:19.829Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.670Z",
-      "finished": "2026-11-12T08:13:43.670Z"
+      "started": "2026-11-12T09:12:19.829Z",
+      "finished": "2026-11-12T09:12:19.830Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.670Z",
-      "finished": "2026-11-12T08:13:43.671Z"
+      "started": "2026-11-12T09:12:19.830Z",
+      "finished": "2026-11-12T09:12:19.830Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.671Z",
-      "finished": "2026-11-12T08:13:43.672Z"
+      "started": "2026-11-12T09:12:19.830Z",
+      "finished": "2026-11-12T09:12:19.831Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.672Z",
-      "finished": "2026-11-12T08:13:43.673Z"
+      "started": "2026-11-12T09:12:19.831Z",
+      "finished": "2026-11-12T09:12:19.832Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.673Z",
-      "finished": "2026-11-12T08:13:43.673Z"
+      "started": "2026-11-12T09:12:19.832Z",
+      "finished": "2026-11-12T09:12:19.832Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-12T08:13:43.673Z",
-      "finished": "2026-11-12T08:13:43.673Z"
+      "started": "2026-11-12T09:12:19.832Z",
+      "finished": "2026-11-12T09:12:19.832Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-12T08:13:43.673Z",
+    "generatedAt": "2026-11-12T09:12:19.832Z",
     "factCount": 20,
     "changeCount": 93,
     "conflictCount": 2,
