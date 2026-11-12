@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T11:29:20Z",
+  "updated": "2026-11-12T19:12:35Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3283,
@@ -8,9 +8,9 @@
     {
       "id": "2026.39.100",
       "date": "2026-11-11",
-      "count": 16,
+      "count": 23,
       "fleet": 3283,
-      "percent": 0.5,
+      "percent": 0.7,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -18,6 +18,10 @@
         {
           "title": "FSD (Supervised) Naming Update",
           "text": "This change only updates the name of certain features and text in your vehicle, and does not change the way your features behave."
+        },
+        {
+          "title": "Minor Fixes",
+          "text": "This release contains minor fixes and improvements"
         },
         {
           "title": "Tesla Assisted Driving",
@@ -42,29 +46,31 @@
         {
           "title": "Visual Updates",
           "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
-        },
-        {
-          "title": "Wheel Selection",
-          "text": "Choose from new wheel options to customize the appearance of your Tesla."
         }
       ],
       "countries": [
         "NL",
         "CZ",
-        "SK",
         "DK",
-        "BE"
+        "SK",
+        "BE",
+        "FI",
+        "LT",
+        "EE"
       ],
       "countryCounts": {
-        "NL": 8,
+        "NL": 10,
         "CZ": 5,
+        "DK": 3,
         "SK": 1,
-        "DK": 1,
-        "BE": 1
+        "BE": 1,
+        "FI": 1,
+        "LT": 1,
+        "EE": 1
       },
-      "pending": 22,
+      "pending": 16,
       "firstSeen": "2026-11-11T16:28:06Z",
-      "lastSeen": "2026-11-12T09:33:42Z"
+      "lastSeen": "2026-11-12T17:55:01Z"
     },
     {
       "id": "2026.38.4.5",
@@ -174,7 +180,7 @@
         "MX": 2,
         "PR": 2
       },
-      "pending": 28,
+      "pending": 25,
       "firstSeen": "2026-11-04T21:22:58Z",
       "lastSeen": "2026-11-12T11:19:38Z"
     },
@@ -291,9 +297,9 @@
     {
       "id": "2026.38.6",
       "date": "2026-10-29",
-      "count": 336,
+      "count": 337,
       "fleet": 3283,
-      "percent": 10.2,
+      "percent": 10.3,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -339,9 +345,9 @@
         "CA",
         "DK",
         "NL",
+        "AT",
         "IT",
         "CH",
-        "AT",
         "PL",
         "ES",
         "BE",
@@ -380,9 +386,9 @@
         "CA": 12,
         "DK": 12,
         "NL": 12,
+        "AT": 10,
         "IT": 10,
         "CH": 10,
-        "AT": 9,
         "PL": 7,
         "ES": 7,
         "BE": 6,
@@ -413,9 +419,9 @@
         "LT": 1,
         "PH": 1
       },
-      "pending": 38,
+      "pending": 37,
       "firstSeen": "2026-10-29T19:08:27Z",
-      "lastSeen": "2026-11-12T01:45:29Z"
+      "lastSeen": "2026-11-12T19:07:46Z"
     },
     {
       "id": "2026.38.5.6",
@@ -529,7 +535,7 @@
         "PR": 2,
         "UA": 2
       },
-      "pending": 16,
+      "pending": 18,
       "firstSeen": "2026-10-24T19:43:09Z",
       "lastSeen": "2026-11-12T03:14:07Z"
     },
