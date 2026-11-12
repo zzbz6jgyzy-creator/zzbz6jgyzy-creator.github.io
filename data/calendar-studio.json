@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-09T08:41:14+00:00",
- "launchChecked": "2026-11-12T09:45:10Z",
+ "launchChecked": "2026-11-12T18:14:59Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -15,6 +15,22 @@
    "precision": "day",
    "status": "done",
    "note": "Flown 24 Jul. Starship flight log: first real Starlink V3s. Not live telemetry. Full read on Mission Control.",
+   "where": "Starbase · OLP-2",
+   "href": "",
+   "sources": [],
+   "origin": "Editorial calendar"
+  },
+  {
+   "id": "starship-14",
+   "title": "Starship Flight 14",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-09-28T12:00:00Z",
+   "end": "",
+   "date": "2026-09-28",
+   "precision": "day",
+   "status": "done",
+   "note": "Flown 28 Sep. Starship flight log: first orbit and 26 Starlink V3. Not live telemetry.",
    "where": "Starbase · OLP-2",
    "href": "",
    "sources": [],

@@ -2,32 +2,9 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-12T09:45:10Z",
- "checked": "2026-11-12T09:45:10Z",
+ "updated": "2026-11-12T18:14:59Z",
+ "checked": "2026-11-12T18:14:59Z",
  "results": [
-  {
-   "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
-   "name": "Starship | Starlink Group 31-1 (Starship Flight 14)",
-   "net": "2026-09-28T12:48:59Z",
-   "window_start": "2026-09-28T12:15:00Z",
-   "window_end": "2026-09-28T13:30:00Z",
-   "url": "https://ll.thespacedevs.com/2.3.0/launches/7d1afb26-6f9c-429b-9ccf-29012fd1e519/",
-   "status": {
-    "name": "Launch Successful",
-    "abbrev": "Success"
-   },
-   "net_precision": {
-    "name": "Second",
-    "abbrev": "SEC"
-   },
-   "pad": {
-    "name": null,
-    "location": {
-     "name": null
-    }
-   },
-   "last_updated": "2026-09-29T15:33:32Z"
-  },
   {
    "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
    "name": "Falcon 9 Block 5 | Crew-13",
