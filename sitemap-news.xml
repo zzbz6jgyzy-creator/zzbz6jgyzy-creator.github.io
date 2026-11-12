@@ -2,6 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/robotaxi-24-7-every-city.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T14:54:53Z</news:publication_date>
+      <news:title>Tesla Robotaxi now runs 24/7 in all eight cities (as of 11 Nov 2026)</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/grok-bot-1-0-team-bots.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T14:54:53Z</news:publication_date>
+      <news:title>Grok Bot 1.0 is out: shared Bots, Slack and Teams, and Bots in your meetings</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/cybertruck-summer-2027-extension.html</loc>
     <news:news>
       <news:publication>
@@ -76,17 +98,6 @@
       </news:publication>
       <news:publication_date>2026-11-10T20:38:00Z</news:publication_date>
       <news:title>Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/grok-4-8-rl-c-stack.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-10T14:41:15Z</news:publication_date>
-      <news:title>Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)</news:title>
     </news:news>
   </url>
 </urlset>

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "editorial": {
     "schemaVersion": 1,
-    "updated": "2026-11-11",
-    "revision": "2026-11-11.1",
+    "updated": "2026-11-12",
+    "revision": "2026-11-12.1",
     "scope": "Tesla Cybercab and Model Y Robotaxi",
     "sources": [
       {
@@ -213,6 +213,14 @@
         "type": "tracker",
         "publishedAt": "2026-11-09",
         "checkedAt": "2026-11-09"
+      },
+      {
+        "id": "s-01e76b9da884",
+        "url": "https://x.com/robotaxi/status/2120736143566344324",
+        "label": "Tesla Robotaxi (@robotaxi) on X: “Robotaxi now runs 24/7. Every city we're available in”",
+        "type": "manufacturer",
+        "checkedAt": "2026-11-12",
+        "publishedAt": "2026-11-11"
       }
     ],
     "cities": [
@@ -254,11 +262,11 @@
           "note": "Operator-level reports do not guarantee the configuration of every individual ride."
         },
         "hours": {
-          "value": "06:00–02:00 CT",
+          "value": "24/7",
           "evidence": [
-            "s-a746ebe95e33"
+            "s-01e76b9da884"
           ],
-          "note": "Tesla’s official Robotaxi account listed hours of 6am to 2am on 30 Oct 2026 (as of 30 Oct 2026). The post doesn’t name cities; check the app before travelling."
+          "note": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Check the Tesla app before travelling."
         },
         "fare": {
           "value": null,
@@ -319,11 +327,11 @@
           "note": "Operator-level reports do not guarantee the configuration of every individual ride."
         },
         "hours": {
-          "value": null,
+          "value": "24/7",
           "evidence": [
-            "s-ccaaee3c9c8d"
+            "s-01e76b9da884"
           ],
-          "note": "Operating hours vary by area. Check Tesla’s app."
+          "note": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Check the Tesla app before travelling."
         },
         "fare": {
           "value": null,
@@ -383,11 +391,11 @@
           "note": "Tesla's Fort Worth post doesn't say whether rides have a safety monitor or driver on board (as of 2 Nov 2026)."
         },
         "hours": {
-          "value": null,
+          "value": "24/7",
           "evidence": [
-            "s-9063fbb6d2bb"
+            "s-01e76b9da884"
           ],
-          "note": "Tesla's post says service starts from 6am; it gives no closing time (as of 2 Nov 2026). Check Tesla's app."
+          "note": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Check the Tesla app before travelling."
         },
         "fare": {
           "value": null,
@@ -447,11 +455,11 @@
           "note": "Operator-level reports do not guarantee the configuration of every individual ride."
         },
         "hours": {
-          "value": null,
+          "value": "24/7",
           "evidence": [
-            "s-ccaaee3c9c8d"
+            "s-01e76b9da884"
           ],
-          "note": "Operating hours vary by area. Check Tesla’s app."
+          "note": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Check the Tesla app before travelling."
         },
         "fare": {
           "value": null,
@@ -510,11 +518,11 @@
           "note": "Operator-level reports do not guarantee the configuration of every individual ride."
         },
         "hours": {
-          "value": null,
+          "value": "24/7",
           "evidence": [
-            "s-ccaaee3c9c8d"
+            "s-01e76b9da884"
           ],
-          "note": "Operating hours vary by area. Check Tesla’s app."
+          "note": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Check the Tesla app before travelling."
         },
         "fare": {
           "value": null,
@@ -573,11 +581,11 @@
           "note": "Operator-level reports do not guarantee the configuration of every individual ride."
         },
         "hours": {
-          "value": null,
+          "value": "24/7",
           "evidence": [
-            "s-ccaaee3c9c8d"
+            "s-01e76b9da884"
           ],
-          "note": "Operating hours vary by area. Check Tesla’s app."
+          "note": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Check the Tesla app before travelling."
         },
         "fare": {
           "value": null,
@@ -636,11 +644,11 @@
           "note": "Operator-level reports do not guarantee the configuration of every individual ride."
         },
         "hours": {
-          "value": null,
+          "value": "24/7",
           "evidence": [
-            "s-ccaaee3c9c8d"
+            "s-01e76b9da884"
           ],
-          "note": "Operating hours vary by area. Check Tesla’s app."
+          "note": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Check the Tesla app before travelling."
         },
         "fare": {
           "value": null,
@@ -943,11 +951,11 @@
           "note": "Tesla's San Antonio post doesn't say whether rides have a safety monitor or driver on board (as of 9 Nov 2026)."
         },
         "hours": {
-          "value": null,
+          "value": "24/7",
           "evidence": [
-            "s-143126f5ffcb"
+            "s-01e76b9da884"
           ],
-          "note": "Tesla's post says service starts from 5am; it gives no closing time (as of 9 Nov 2026). Check Tesla's app."
+          "note": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Check the Tesla app before travelling."
         },
         "fare": {
           "value": null,
@@ -1205,6 +1213,30 @@
           "s-ff84ae0cf870"
         ],
         "type": "manufacturer"
+      },
+      {
+        "id": "hours-24-7-every-city",
+        "date": "2026-11-11",
+        "precision": "day",
+        "city": null,
+        "vehicle": "all",
+        "kind": "service",
+        "title": "Robotaxi hours become 24/7 in every listed city",
+        "summary": "Tesla’s official Robotaxi account said rides now run 24/7 in every city the service is available in. tesla.com/robotaxi lists eight cities. This is Tesla’s stated schedule, not a measured ridership figure.",
+        "evidence": [
+          "s-01e76b9da884"
+        ],
+        "type": "manufacturer",
+        "cities": [
+          "austin",
+          "dallas",
+          "fort_worth",
+          "houston",
+          "miami",
+          "orlando",
+          "san_antonio",
+          "tampa"
+        ]
       }
     ],
     "companyClaims": [

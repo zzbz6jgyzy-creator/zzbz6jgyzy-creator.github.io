@@ -1,3 +1,8 @@
+## 2026-11-12 — Robotaxi 24/7 in every listed city, and Grok Bot 1.0 (Dispatch)
+
+- Dispatch: Tesla’s @robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Licensed Commons Cybercab photo (CC BY 4.0, 9yz); background Mazda plate blurred. Tracker hours set to 24/7 on the eight live cities. One-line update on the 2am story.
+- Dispatch: SpaceXSI launched Grok Bot 1.0 on 11 Nov 2026 (shared Team Bots, Slack/Teams, meeting Bots). Licensed Commons Twenty Air Street photo (CC BY-SA 4.0, Doeze); not a picture of Grok Bot. Related cards on the weekly-limits and phone-apps stories.
+
 ## 2026-11-11 — Ship 42 launch hub
 
 - New `/ship-42.html`: countdown for the Flight 15 window (same `eventId` as `/starship-flight-15.html`, so the time still lives in one place), Ship 42 static fires and catch tests, the approximate ship timeline from SpaceX’s mission page, heat-shield notes, where to watch, and a dated Updates log. Same event-page chrome as the SpaceX Flight 15 hub.
