@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-13T08:49:48Z",
- "checked": "2026-11-13T08:49:48Z",
+ "updated": "2026-11-13T15:21:00Z",
+ "checked": "2026-11-13T15:21:00Z",
  "results": [
   {
    "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
@@ -435,9 +435,9 @@
   {
    "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
    "name": "Falcon 9 Block 5 | Cygnus CRS-2 NG-25",
-   "net": "2026-11-29T15:49:00Z",
-   "window_start": "2026-11-29T15:49:00Z",
-   "window_end": "2026-11-29T15:49:00Z",
+   "net": "2026-11-29T15:47:00Z",
+   "window_start": "2026-11-29T15:47:00Z",
+   "window_end": "2026-11-29T15:47:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
    "status": {
     "name": "Go for Launch",
@@ -453,7 +453,7 @@
      "name": "Cape Canaveral SFS, FL, USA"
     }
    },
-   "last_updated": "2026-11-04T20:05:35Z",
+   "last_updated": "2026-11-13T12:35:58Z",
    "mission": {
     "name": "Cygnus CRS-2 NG-25",
     "type": "Resupply",

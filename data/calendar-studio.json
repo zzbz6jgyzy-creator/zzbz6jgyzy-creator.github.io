@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-13T08:50:00+00:00",
- "launchChecked": "2026-11-13T08:49:48Z",
+ "launchChecked": "2026-11-13T15:21:00Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -676,7 +676,7 @@
    "title": "Falcon 9 Block 5 | Cygnus CRS-2 NG-25",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-29T15:49:00Z",
+   "start": "2026-11-29T15:47:00Z",
    "end": "",
    "date": "2026-11-29",
    "precision": "datetime",
@@ -687,8 +687,8 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
-   "windowStart": "2026-11-29T15:49:00Z",
-   "windowEnd": "2026-11-29T15:49:00Z",
+   "windowStart": "2026-11-29T15:47:00Z",
+   "windowEnd": "2026-11-29T15:47:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch"
   },
