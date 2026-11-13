@@ -18,7 +18,7 @@ test('the guide has six distinct surfaces, twelve actionable lessons and a dated
   assert.equal(d.products.length, 6);
   assert.equal(d.lessons.length, 12);
   assert.equal(d.sources.length, 18);
-  assert.equal(d.checked, '2026-10-26');
+  assert.equal(d.checked, '2026-11-13');
   for (const level of d.levels) assert.equal(d.lessons.filter(l=>l.level===level.id).length, 3);
   for (const l of d.lessons) {
     assert.ok(l.intro.length > 100);
