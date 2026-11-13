@@ -6,7 +6,25 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 13 Nov 2026 08:59:43 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 14:53:12 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX's $50 billion Arizona compute campus: 6 GW, no turbines, and a zoning vote on Dec 9</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-cochise-6gw-campus.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-cochise-6gw-campus.html</guid>
+      <pubDate>Fri, 13 Nov 2026 14:53:12 +0000</pubDate>
+      <category>SpaceX / Compute</category>
+      <description>SpaceX has published its plan for a 6 GW supercomputing campus in Cochise County, Arizona: nine buildings, a 24 GWh battery, dry cooling and a $50 billion pledge (as of 13 Nov 2026). How it differs from the gas-fired Starbase plan, and what the county decides on Dec 9.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/willcox-playa-cochise-2014.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Grok Bot on Mac can now use Messages, Mail and Notes. Here's how it compares with the phone app</title>
+      <link>https://superchargeddaily.com/dispatch/grok-bot-mac-apple-apps.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-bot-mac-apple-apps.html</guid>
+      <pubDate>Fri, 13 Nov 2026 14:53:12 +0000</pubDate>
+      <category>Grok</category>
+      <description>Grok Bot's Mac app can now connect to seven Apple apps, including Mail and Notes, which the phone version doesn't list. What each permission allows, what's missing, and which one to think twice about.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/macbook-pro-16-2021.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)</title>
       <link>https://superchargeddaily.com/dispatch/spacex-tesla-merger-december.html</link>
@@ -708,24 +726,6 @@
       <category>SpaceX</category>
       <description>Revenue of $14.58B beat the $12.72B estimate, with $4.40B in net income. AI brought in more than Starlink for the first time, and capex hit $19.59B.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/spacex-q3-results-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>No, Canada isn’t cutting off Starlink. Here’s what Carney actually said, and why Telesat still needs SpaceX</title>
-      <link>https://superchargeddaily.com/dispatch/canada-starlink-telesat-fact-check.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/canada-starlink-telesat-fact-check.html</guid>
-      <pubDate>Tue, 20 Oct 2026 19:30:55 +0000</pubDate>
-      <category>Starlink</category>
-      <description>The viral claim stitches an August military contract to a September quote. There’s no ban, and Canada’s rival network launches on SpaceX rockets.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/canada-starlink-dish.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tesla Q3 preview: the cash burn, what’s at stake for the stock, and the SpaceX merger talk</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-q3-2026-preview.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-q3-2026-preview.html</guid>
-      <pubDate>Tue, 20 Oct 2026 18:30:00 +0000</pubDate>
-      <category>Tesla</category>
-      <description>Results landed after the US close on Wed 21 Oct. Why free cash flow is expected to be negative, the bull and bear cases for the stock, and what has actually been said about a SpaceX merger.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-q3-preview-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
