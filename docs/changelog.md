@@ -1,3 +1,8 @@
+## 2026-11-13 — SpaceX–Tesla merger talks (Bloomberg) and AI-freeze lawsuit (Dispatch)
+
+- Dispatch: Bloomberg, citing unnamed sources, said on 12 Nov 2026 that SpaceX and Tesla boards are negotiating terms and governance, with an announcement possible as soon as December or early 2027. Neither company has confirmed this. Licensed Commons Starbase still (CC BY 2.0, Alexander Hatley, 27 June 2021). Update pointers on the 10-Q and Barclays merger pages.
+- Dispatch: Four nonprofits sued Anthropic, Google, Meta, OpenAI and SpaceXSI in San Francisco on 12 Nov 2026 seeking a freeze of frontier AI at that day’s capability. This is a complaint; no ruling, no case number. Licensed Commons San Francisco Superior Court photo (CC BY-SA 4.0, Cocoablini, 15 Sep 2002); parked-car plates blurred.
+
 ## 2026-11-13 — Tracker dates, Flight 15 window, Ship 42 minute-by-minute
 
 - Re-checked SpaceX’s Flight 15 page on launch day: window still 4:45–6:00 p.m. CT (22:45–00:00 UTC) from Pad 2, pending regulatory approval. No FAA licence published. Ship 42 moved to the pad (SpaceX, 13 Nov 00:56 UTC).
