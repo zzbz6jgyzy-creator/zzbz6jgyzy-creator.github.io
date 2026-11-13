@@ -25,6 +25,32 @@
   ],
   "sections": [
     {
+      "id": "road",
+      "title": "From a tumbling first flight to catching both stages: Starship's road to Flight 15",
+      "jumpTitle": "Road to Flight 15",
+      "placement": "before-mission",
+      "embed": {
+        "kind": "video",
+        "src": "/assets/video/starship-hero-1080p.mp4",
+        "src720": "/assets/video/starship-hero-720p.mp4",
+        "poster": "/assets/video/starship-hero-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "ariaLabel": "Official SpaceX footage from Starship Flights 1 to 14, the Flight 15 preview and Elon Musk's May 2025 Starbase talk, set to Pathfinder by Scott Buckley",
+        "credit": "Video: SpaceX (@SpaceX), official footage from Starship Flights 1 to 14, the Flight 15 preview and Elon Musk's May 2025 Starbase talk. Music: 'Pathfinder' by Scott Buckley, CC BY 4.0 (scottbuckley.com.au).",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "musicUrl": "https://scottbuckley.com.au"
+      },
+      "body": [
+        "On 20 April 2023, Starship's first integrated flight tumbled and was terminated. Several flights since have ended in explosions. SpaceX kept flying. Flight 2 proved hot staging at this scale. Flight 4 was the first time the ship survived a controlled re-entry. On Flight 5 the tower chopsticks caught Super Heavy on the first try, and later flights repeated the catch.",
+        {
+          "text": "The V3 ship and booster debuted on Flight 12, on 22 May 2026, flying on Raptor 3 engines. Flight 14, on 28 September, reached orbit and deployed 26 Starlink V3 satellites. Flight 15, with Ship 42, is set for Friday 13 November. The 75-minute window opens at 5:45 p.m. ET (2:45 p.m. PT), pending regulatory approval (as of 13 Nov 2026), according to SpaceX's Flight 15 page. The booster is due at the tower about six and a half minutes after liftoff. The ship is due back about 22 hours later, for SpaceX's first attempt to catch a Starship.",
+          "linkText": "SpaceX's Flight 15 page",
+          "href": "https://www.spacex.com/launches/starship-flight-15"
+        }
+      ]
+    },
+    {
       "id": "minute-by-minute",
       "title": "Minute by minute, if the window opens on time",
       "lead": "The Ship catch is not on launch day. If Flight 15 lifts off when the window opens on Friday, Ship 42 is due back at the tower on Saturday afternoon, about 22 and a half hours later. Alex R's 12 November video walks the whole profile, countdown to catch, using SpaceX's published timeline. Times in the video are local Starbase time (CST) and move if the launch slips.",

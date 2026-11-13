@@ -11,7 +11,7 @@ const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": 
 import { createRequire } from "node:module";
 const { whenText, countdownHtml, eventPages } = createRequire(import.meta.url)("./event-shared.cjs");
 export { whenText, countdownHtml };
-const CSS_V = "20261111g";
+const CSS_V = "20261113a";
 const XEMBED_V = "202610262130";
 const fmtDate = (d) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(new Date(d + "T12:00:00Z"));
 const X_STATUS = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;
@@ -46,9 +46,52 @@ function olEmbedHtml(call, slug) {
   </figure>`;
 }
 
+const VIDEO_ASSET = /^\/assets\/video\/[A-Za-z0-9._-]+\.(mp4|jpg|webp)$/;
+const CREDIT_CC = "CC BY 4.0";
+const CREDIT_MUSIC = "scottbuckley.com.au";
+
+function videoEmbedHtml(embed, slug) {
+  for (const k of ["src", "src720", "poster", "width", "height", "ariaLabel", "credit", "licenceUrl", "musicUrl"]) {
+    if (embed[k] == null || embed[k] === "") throw new Error(`${slug}: video embed needs ${k}`);
+  }
+  if (embed.autoplay) throw new Error(`${slug}: video embed must not autoplay`);
+  const checkAsset = (key, ext) => {
+    const v = embed[key];
+    if (!VIDEO_ASSET.test(v) || !v.endsWith("." + ext)) throw new Error(`${slug}: video ${key} must be /assets/video/*.${ext}`);
+    if (!fs.existsSync(path.join(ROOT, v.slice(1)))) throw new Error(`${slug}: missing ${v}`);
+  };
+  checkAsset("src", "mp4");
+  checkAsset("src720", "mp4");
+  checkAsset("poster", "jpg");
+  const w = Number(embed.width), h = Number(embed.height);
+  if (!Number.isInteger(w) || !Number.isInteger(h) || w < 1 || h < 1) throw new Error(`${slug}: video width and height must be positive integers`);
+  if (!embed.credit.includes(CREDIT_CC) || !embed.credit.includes(CREDIT_MUSIC)) {
+    throw new Error(`${slug}: video credit must include "${CREDIT_CC}" and "${CREDIT_MUSIC}" verbatim`);
+  }
+  let caption = esc(embed.credit);
+  caption = caption.replace(CREDIT_CC, `<a href="${esc(embed.licenceUrl)}">${CREDIT_CC}</a>`);
+  caption = caption.replace(CREDIT_MUSIC, `<a href="${esc(embed.musicUrl)}">${CREDIT_MUSIC}</a>`);
+  return `<figure class="ev-video">
+    <video controls playsinline preload="metadata" poster="${esc(embed.poster)}" width="${w}" height="${h}" aria-label="${esc(embed.ariaLabel)}">
+      <source src="${esc(embed.src)}" type="video/mp4" media="(min-width: 800px)" />
+      <source src="${esc(embed.src720)}" type="video/mp4" />
+    </video>
+    <figcaption>${caption}</figcaption>
+  </figure>`;
+}
+
+function bodyParagraph(para, slug) {
+  if (typeof para === "string") return `<p>${esc(para)}</p>`;
+  if (!para || !para.text || !para.linkText || !para.href) throw new Error(`${slug}: body paragraph needs text, linkText and href`);
+  const i = para.text.indexOf(para.linkText);
+  if (i < 0) throw new Error(`${slug}: linkText not found in body paragraph`);
+  return `<p>${esc(para.text.slice(0, i))}<a href="${esc(para.href)}" target="_blank" rel="noopener">${esc(para.linkText)}</a>${esc(para.text.slice(i + para.linkText.length))}</p>`;
+}
+
 function sectionMedia(s, slug) {
   const parts = [];
   if (s.embed?.kind === "x") parts.push(xPostHtml(s.embed, slug));
+  else if (s.embed?.kind === "video") parts.push(videoEmbedHtml(s.embed, slug));
   else if (s.embed) throw new Error(`${slug}: unknown embed kind ${s.embed.kind}`);
   if (s.call) parts.push(olEmbedHtml(s.call, slug));
   return parts.join("\n    ");
@@ -110,22 +153,27 @@ function heroFigure(p) {
   const sizes = "(min-width:900px) 300px, calc(100vw - 32px)";
   return `<figure class="ev-photo"><picture><source type="image/avif" srcset="${esc(set("avif"))}" sizes="${sizes}" /><source type="image/webp" srcset="${esc(set("webp"))}" sizes="${sizes}" /><img src="${esc(h.base)}.jpg" alt="${esc(h.alt)}" width="${h.width}" height="${h.height}" fetchpriority="high" decoding="async" /></picture><figcaption>${esc(h.caption)} Photo: <a href="${esc(h.creditUrl)}" target="_blank" rel="noopener">${esc(h.credit)}</a>, <a href="${esc(h.licenceUrl)}" target="_blank" rel="noopener">${esc(h.licence)}</a>${h.note ? ` (${esc(h.note)})` : ""}.</figcaption></figure>`;
 }
-function extraSections(p) {
+function sectionHtml(s, p) {
+  if (s.placement && s.placement !== "before-mission") throw new Error(`${p.slug}: unknown section placement ${s.placement}`);
+  const bits = [`<section class="ev-section" aria-labelledby="ev-${esc(s.id)}">`, `    <h2 id="ev-${esc(s.id)}">${esc(s.title)}</h2>`];
+  const media = sectionMedia(s, p.slug);
+  const videoFirst = s.embed?.kind === "video";
+  if (s.todo) bits.push(`    <!-- ${esc(s.todo)} -->`);
+  if (videoFirst && media) bits.push(`    ${media}`);
+  if (s.body?.length) bits.push(...s.body.map((para) => `    ${bodyParagraph(para, p.slug)}`));
+  if (s.lead) bits.push(`    <p>${esc(s.lead)}</p>`);
+  if (s.diagram) bits.push(`    ${diagramHtml(s.diagram, p.slug)}`);
+  if (s.timeline?.length) bits.push(`    ${timelineHtml(s.timeline)}`);
+  if (s.points?.length) bits.push(`    ${pointItems(s.points)}`);
+  if (!videoFirst && media) bits.push(`    ${media}`);
+  bits.push("  </section>");
+  return bits.join("\n");
+}
+function extraSections(p, onlyPlacement) {
   const list = p.sections?.length
-    ? p.sections
-    : (p.heatShield ? [{ id: "heat", title: "Why the heat shield matters", lead: p.heatShield.lead, points: p.heatShield.points, todo: p.heatShield.todo, embed: p.heatShield.embed, call: p.heatShield.call }] : []);
-  return list.map((s) => {
-    const bits = [`<section class="ev-section" aria-labelledby="ev-${esc(s.id)}">`, `    <h2 id="ev-${esc(s.id)}">${esc(s.title)}</h2>`];
-    if (s.todo) bits.push(`    <!-- ${esc(s.todo)} -->`);
-    if (s.lead) bits.push(`    <p>${esc(s.lead)}</p>`);
-    if (s.diagram) bits.push(`    ${diagramHtml(s.diagram, p.slug)}`);
-    if (s.timeline?.length) bits.push(`    ${timelineHtml(s.timeline)}`);
-    if (s.points?.length) bits.push(`    ${pointItems(s.points)}`);
-    const media = sectionMedia(s, p.slug);
-    if (media) bits.push(`    ${media}`);
-    bits.push("  </section>");
-    return bits.join("\n");
-  }).join("\n  ");
+    ? p.sections.filter((s) => onlyPlacement ? s.placement === onlyPlacement : s.placement !== "before-mission")
+    : (onlyPlacement ? [] : (p.heatShield ? [{ id: "heat", title: "Why the heat shield matters", lead: p.heatShield.lead, points: p.heatShield.points, todo: p.heatShield.todo, embed: p.heatShield.embed, call: p.heatShield.call }] : []));
+  return list.map((s) => sectionHtml(s, p)).join("\n  ");
 }
 function calName(p, ev) { return p.calTitle || ev.title; }
 function crumbName(p, ev) { return p.crumb || ev.title; }
@@ -136,8 +184,12 @@ function glanceHtml(p, chip) {
   return `<section class="ev-glance" aria-label="At a glance"><dl>${p.glance.map((g) => `<div><dt>${esc(g.label)}</dt><dd>${esc(g.value)}${g.kind ? " " + chip(g.kind) : ""}</dd></div>`).join("")}</dl></section>`;
 }
 function jumpHtml(p) {
-  const items = [["ev-mission", p.missionTitle || "The mission"], ...(p.sections || []).map((x) => [`ev-${x.id}`, x.title]), ["ev-watch", "Where to watch"], ["updates", "Updates"]];
-  if (!(p.sections || []).length) return "";
+  const sections = p.sections || [];
+  const label = (x) => x.jumpTitle || x.title;
+  const before = sections.filter((x) => x.placement === "before-mission");
+  const rest = sections.filter((x) => x.placement !== "before-mission");
+  const items = [...before.map((x) => [`ev-${x.id}`, label(x)]), ["ev-mission", p.missionTitle || "The mission"], ...rest.map((x) => [`ev-${x.id}`, label(x)]), ["ev-watch", "Where to watch"], ["updates", "Updates"]];
+  if (!sections.length) return "";
   return `<nav class="ev-jump" aria-label="On this page">${items.map(([id, t]) => `<a href="#${esc(id)}">${esc(t)}</a>`).join("")}</nav>`;
 }
 
@@ -150,6 +202,7 @@ function pageMain(p, ev, articles) {
   const updates = [...(p.updates || [])].sort((a, b) => stamp(b).localeCompare(stamp(a)));
   const when = (u) => u.time ? `${fmtDate(u.time.slice(0, 10))}, ${new Date(u.time).toISOString().slice(11, 16)} UTC` : fmtDate(u.date);
   const latest = updates.length ? stamp(updates[0]) : "";
+  const beforeMission = extraSections(p, "before-mission");
   return `<main id="main" class="ev-page">
   <nav class="ev-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="${esc(p.sectionUrl)}">${esc(p.section)}</a></li><li aria-current="page">${esc(crumbName(p, ev))}</li></ol></nav>
   <header class="ev-hero${p.hero ? " ev-hero-photo" : ""}">
@@ -165,7 +218,7 @@ function pageMain(p, ev, articles) {
     ${heroFigure(p)}
   </header>
   ${glanceHtml(p, chip)}
-  ${jumpHtml(p)}
+  ${jumpHtml(p)}${beforeMission ? `\n  ${beforeMission}` : ""}
   <section class="ev-section" aria-labelledby="ev-mission">
     <h2 id="ev-mission">${esc(p.missionTitle || "The mission")}</h2>
     ${p.summaryTodo ? `<!-- ${esc(p.summaryTodo)} -->` : ""}
