@@ -1,3 +1,8 @@
+## 2026-11-13 — SpaceX Cochise County 6 GW campus, and Grok Bot Mac Apple apps (Dispatch)
+
+- Dispatch: SpaceX published its 6 GW, $50 billion Cochise County, Arizona compute campus plan (as of 13 Nov 2026): nine buildings, a 24 GWh battery, dry cooling, no on-site turbines, and a Planning and Zoning vote at 2:00 p.m. MST on 9 Dec. Licensed Commons Willcox Playa landscape (CC BY-SA 4.0, The Old Pueblo, 25 Sep 2014); not a photo of a SpaceX campus. Update pointers on the Starbase gas-compute and Texas data-center pages.
+- Dispatch: Grok Bot on Mac can now connect to Messages, Mail, Notes, Reminders, Calendar, Contacts and Location (announced 12 Nov 2026). Mail and Notes are not on the phone app's October list. Licensed Commons 16-inch MacBook Pro 2021 (CC BY-SA 4.0, Premeditated); not a Grok Bot or Connect Apps screenshot. Update pointers on the phone-apps and Grok Bot 1.0 pages.
+
 ## 2026-11-13 — Ship 42: Starship road-to-Flight-15 video
 
 - `/ship-42.html` now opens with a self-hosted 76-second film (SpaceX Flights 1–14, the Flight 15 preview and Musk's May 2025 Starbase talk, Pathfinder by Scott Buckley, CC BY 4.0) and a short write-up on the road to Flight 15. No autoplay. Credit line is verbatim. The Jurvetson Flight 5 still beside the title stays.
