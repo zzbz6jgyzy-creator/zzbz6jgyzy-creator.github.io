@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-13T09:03:34.660Z",
+  "generatedAt": "2026-11-13T09:11:56.780Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -286,6 +286,40 @@
   ],
   "changes": [
     {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-tesla-merger-december.html",
+      "topic": "tesla",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)",
+      "at": "2026-11-13T08:59:43.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-tesla-merger-december.html",
+      "href": "/dispatch/spacex-tesla-merger-december.html",
+      "summary": "Bloomberg, citing unnamed sources, said on 12 Nov 2026 that SpaceX and Tesla boards are negotiating terms and governance, with an announcement as soon as December or early 2027. Neither company has confirmed this. At Thursday's closes, a no-premium swap works out to about 2.84 SPCX shares per TSLA share. That figure is a calculation, not a reported term.",
+      "title": "Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)",
+      "id": "logged|dispatch:/dispatch/spacex-tesla-merger-december.html|2026-11-13T08:59:43.000Z|Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/ai-freeze-lawsuit-spacexsi.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Nonprofits sue SpaceXSI and four other AI labs to freeze frontier AI. What a freeze could mean for Grok 4.8",
+      "at": "2026-11-13T08:59:43.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/ai-freeze-lawsuit-spacexsi.html",
+      "href": "/dispatch/ai-freeze-lawsuit-spacexsi.html",
+      "summary": "Four nonprofits filed suit in San Francisco on 12 Nov 2026 asking a judge to bar Anthropic, Google, Meta, OpenAI and SpaceXSI from building anything more capable than what they had that day. What the complaint alleges about Grok. This is a complaint; no judge has ruled.",
+      "title": "Nonprofits sue SpaceXSI and four other AI labs to freeze frontier AI. What a freeze could mean for Grok 4.8",
+      "id": "logged|dispatch:/dispatch/ai-freeze-lawsuit-spacexsi.html|2026-11-13T08:59:43.000Z|Nonprofits sue SpaceXSI and four other AI labs to freeze frontier AI. What a freeze could mean for Grok 4.8"
+    },
+    {
       "type": "changed",
       "factId": "starlink:in-orbit",
       "topic": "starlink",
@@ -556,40 +590,6 @@
       "summary": "2026.38.4.5 first appeared in the Teslascope sample with 1 car. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
       "title": "2026.38.4.5",
       "id": "appeared|tesla-software:wave:2026.38.4.5|2026-11-10T11:51:51.000Z|1"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-starbase-24b-gas-compute.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)",
-      "at": "2026-11-10T08:45:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-starbase-24b-gas-compute.html",
-      "href": "/dispatch/spacex-starbase-24b-gas-compute.html",
-      "summary": "A City of Starbase notice says SpaceX plans a gas-fired power plant and super-compute facility on about 444 acres by the Port of Brownsville, with about $24 billion for the first phases (as of 6 Nov 2026). Two of the city's three commissioners work for SpaceX. Nothing is approved yet; a hearing is set for 9 Dec 2026.",
-      "title": "SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)",
-      "id": "logged|dispatch:/dispatch/spacex-starbase-24b-gas-compute.html|2026-11-10T08:45:00.000Z|SpaceX wants a tax break for a $24 billion gas plant and super-compute facility at Starbase (as of 6 Nov 2026)"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/cybertruck-cyberbeast-only.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla pulls the Premium AWD Cybertruck. The Cyberbeast is the only trim left, at $109,990 (as of 10 Nov 2026)",
-      "at": "2026-11-10T02:42:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/cybertruck-cyberbeast-only.html",
-      "href": "/dispatch/cybertruck-cyberbeast-only.html",
-      "summary": "Tesla stopped Premium AWD Cybertruck orders on Monday night and raised the Cyberbeast US starting price to $109,990, before destination and order fees. The cheapest orderable Cybertruck has gone up $40,000 since early August (as of 10 Nov 2026).",
-      "title": "Tesla pulls the Premium AWD Cybertruck. The Cyberbeast is the only trim left, at $109,990 (as of 10 Nov 2026)",
-      "id": "logged|dispatch:/dispatch/cybertruck-cyberbeast-only.html|2026-11-10T02:42:00.000Z|Tesla pulls the Premium AWD Cybertruck. The Cyberbeast is the only trim left, at $109,990 (as of 10 Nov 2026)"
     },
     {
       "type": "logged",
@@ -1977,14 +1977,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-11-13T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-11-13T08:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1998,14 +1998,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-11-13T08:50:01.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -2019,35 +2019,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastChecked": "2026-11-13T09:11:56.780Z",
       "lastVerified": "2026-11-13T08:50:00.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2056,85 +2056,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.463Z",
-      "finished": "2026-11-13T09:03:34.649Z"
+      "started": "2026-11-13T09:11:56.764Z",
+      "finished": "2026-11-13T09:11:56.768Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.649Z",
-      "finished": "2026-11-13T09:03:34.649Z"
+      "started": "2026-11-13T09:11:56.768Z",
+      "finished": "2026-11-13T09:11:56.768Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.649Z",
-      "finished": "2026-11-13T09:03:34.649Z"
+      "started": "2026-11-13T09:11:56.768Z",
+      "finished": "2026-11-13T09:11:56.769Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.649Z",
-      "finished": "2026-11-13T09:03:34.655Z"
+      "started": "2026-11-13T09:11:56.769Z",
+      "finished": "2026-11-13T09:11:56.774Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.655Z",
-      "finished": "2026-11-13T09:03:34.657Z"
+      "started": "2026-11-13T09:11:56.774Z",
+      "finished": "2026-11-13T09:11:56.777Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.657Z",
-      "finished": "2026-11-13T09:03:34.658Z"
+      "started": "2026-11-13T09:11:56.777Z",
+      "finished": "2026-11-13T09:11:56.778Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.658Z",
-      "finished": "2026-11-13T09:03:34.658Z"
+      "started": "2026-11-13T09:11:56.778Z",
+      "finished": "2026-11-13T09:11:56.778Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.658Z",
-      "finished": "2026-11-13T09:03:34.658Z"
+      "started": "2026-11-13T09:11:56.778Z",
+      "finished": "2026-11-13T09:11:56.778Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.658Z",
-      "finished": "2026-11-13T09:03:34.658Z"
+      "started": "2026-11-13T09:11:56.778Z",
+      "finished": "2026-11-13T09:11:56.778Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.658Z",
-      "finished": "2026-11-13T09:03:34.659Z"
+      "started": "2026-11-13T09:11:56.778Z",
+      "finished": "2026-11-13T09:11:56.780Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.659Z",
-      "finished": "2026-11-13T09:03:34.660Z"
+      "started": "2026-11-13T09:11:56.780Z",
+      "finished": "2026-11-13T09:11:56.780Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.660Z",
-      "finished": "2026-11-13T09:03:34.660Z"
+      "started": "2026-11-13T09:11:56.780Z",
+      "finished": "2026-11-13T09:11:56.780Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-13T09:03:34.660Z",
-      "finished": "2026-11-13T09:03:34.660Z"
+      "started": "2026-11-13T09:11:56.780Z",
+      "finished": "2026-11-13T09:11:56.780Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-13T09:03:34.660Z",
+    "generatedAt": "2026-11-13T09:11:56.780Z",
     "factCount": 20,
     "changeCount": 97,
     "conflictCount": 2,
