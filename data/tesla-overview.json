@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/spacex-tesla-merger-december.html",
+      "image": "/assets/dispatch/starbase-boca-chica-june-2021.jpg",
+      "title": "Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)",
+      "summary": "Bloomberg, citing unnamed sources, said on 12 Nov 2026 that SpaceX and Tesla boards are negotiating terms and governance, with an announcement as soon as December or early 2027. Neither company has confirmed this. At Thursday's closes, a no-premium swap works out to about 2.84 SPCX shares per TSLA share. That figure is a calculation, not a reported term.",
+      "tag": "Tesla",
+      "date": "2026-11-13T08:59:43Z",
+      "thumb": "/assets/dispatch/starbase-boca-chica-june-2021-480w.webp"
+    },
+    {
       "url": "/dispatch/robotaxi-24-7-every-city.html",
       "image": "/assets/dispatch/tesla-cybercab-harrison-sf-june-2026.jpg",
       "title": "Tesla Robotaxi now runs 24/7 in all eight cities (as of 11 Nov 2026)",
@@ -216,16 +225,7 @@
       "tag": "Cybertruck",
       "date": "2026-11-10T02:42:00Z",
       "thumb": "/assets/dispatch/cybertruck-skoyen-2024-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html",
-      "image": "/assets/dispatch/austin-skyline-colorado.jpg",
-      "title": "Tesla Robotaxi’s Austin zone jumps to about 442 square miles (as of 9 Nov 2026)",
-      "summary": "Tesla’s official @robotaxi account posted “Bigger Austin service area now live” with an old/new geofence map at 11:00 UTC on 9 Nov 2026. Tesla gave no square-mileage. Robotaxi Tracker measures about 442 sq mi, up from 272; RoboTracker lists 435.",
-      "tag": "Robotaxi",
-      "date": "2026-11-09T11:22:00Z",
-      "thumb": "/assets/dispatch/austin-skyline-colorado-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-12T14:54:53Z"
+  "articlesUpdated": "2026-11-13T08:59:43Z"
 }

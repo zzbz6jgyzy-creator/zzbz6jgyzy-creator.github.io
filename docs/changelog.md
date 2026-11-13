@@ -1,3 +1,8 @@
+## 2026-11-13 — SpaceX–Tesla merger talks (Bloomberg) and AI-freeze lawsuit (Dispatch)
+
+- Dispatch: Bloomberg, citing unnamed sources, said on 12 Nov 2026 that SpaceX and Tesla boards are negotiating terms and governance, with an announcement possible as soon as December or early 2027. Neither company has confirmed this. Licensed Commons Starbase still (CC BY 2.0, Alexander Hatley, 27 June 2021). Update pointers on the 10-Q and Barclays merger pages.
+- Dispatch: Four nonprofits sued Anthropic, Google, Meta, OpenAI and SpaceXSI in San Francisco on 12 Nov 2026 seeking a freeze of frontier AI at that day’s capability. This is a complaint; no ruling, no case number. Licensed Commons San Francisco Superior Court photo (CC BY-SA 4.0, Cocoablini, 15 Sep 2002); parked-car plates blurred.
+
 ## 2026-11-12 — Robotaxi 24/7 in every listed city, and Grok Bot 1.0 (Dispatch)
 
 - Dispatch: Tesla’s @robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Licensed Commons Cybercab photo (CC BY 4.0, 9yz); background Mazda plate blurred. Tracker hours set to 24/7 on the eight live cities. One-line update on the 2am story.
