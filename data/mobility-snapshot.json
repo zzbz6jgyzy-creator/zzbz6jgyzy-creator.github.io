@@ -1295,7 +1295,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-11-13T08:50:01Z",
+    "checked": "2026-11-13T13:21:10Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -1965,11 +1965,19 @@
         "modelY": 730,
         "other": 0,
         "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-11-13T13:21:10Z",
+        "date": "2026-11-13",
+        "cybercab": 573,
+        "modelY": 730,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
       }
     ]
   },
   "regional": {
-    "checked": "2026-11-13T08:50:57Z",
+    "checked": "2026-11-13T13:21:10Z",
     "aggregator": {
       "name": "Platform Aeronaut AV Tracker",
       "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
@@ -2459,7 +2467,7 @@
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
       "revision": "3857624ca629688cbfbedde1b75d2ece7c2af0f6"
     },
-    "checked": "2026-11-13T08:50:57Z",
+    "checked": "2026-11-13T13:21:10Z",
     "features": [
       {
         "type": "Feature",
@@ -3420,7 +3428,7 @@
         "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
       }
     },
-    "checked": "2026-11-13T08:50:57Z"
+    "checked": "2026-11-13T13:21:10Z"
   },
   "checks": {
     "schemaVersion": 1,
