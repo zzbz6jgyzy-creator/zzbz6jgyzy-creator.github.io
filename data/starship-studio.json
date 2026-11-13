@@ -1702,12 +1702,16 @@
   ],
   "coverage": [
    {
-    "label": "SpaceX Flight 15",
-    "url": "https://www.spacex.com/launches/starship-flight-15"
+    "label": "Flight 15 hub",
+    "url": "/starship-flight-15.html"
    },
    {
     "label": "Ship 42 hub",
     "url": "/ship-42.html"
+   },
+   {
+    "label": "SpaceX Flight 15",
+    "url": "https://www.spacex.com/launches/starship-flight-15"
    },
    {
     "label": "Minute-by-minute",

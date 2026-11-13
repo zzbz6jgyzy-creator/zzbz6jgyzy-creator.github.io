@@ -27,8 +27,11 @@ class NavigationGeneration(unittest.TestCase):
   built=self.build();p=Elements();p.feed(built)
   self.assertEqual(len(p.ids),len(set(p.ids)))
   self.assertEqual(len(p.details),10)
-  for href in ['/members.html','/updates.html','/fsd-tracker.html','/fsd-europe.html','/cybercab.html','/roadster.html','/daily.html','/see-the-launch.html','/search.html','/guides/tesla-buying-guide.html']:
+  for href in ['/members.html','/updates.html','/fsd-tracker.html','/fsd-europe.html','/cybercab.html','/roadster.html','/daily.html','/see-the-launch.html','/search.html','/guides/tesla-buying-guide.html','/starship-flight-15.html','/ship-42.html']:
    self.assertIn(href,p.links)
+  spacex=built[built.index('id="pn-spacex"'):built.index('id="pn-trackers"')]
+  self.assertLess(spacex.index('/starship-flight-15.html'),spacex.index('/ship-42.html'))
+  self.assertLess(spacex.index('/ship-42.html'),spacex.index('/starship.html'))
   self.assertNotIn('role="menu"',built)
   self.assertNotIn(' inert',built)
   self.assertIn('action="/search.html" method="get"',built)

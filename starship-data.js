@@ -20,8 +20,9 @@ window.STARSHIP = {
       "Deploy 26 Starlink V3 satellites, then fly more than 22 hours before a Ship catch if systems stay healthy",
     ],
     coverage: [
-      { label: "SpaceX Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
+      { label: "Flight 15 hub", url: "/starship-flight-15.html" },
       { label: "Ship 42 hub", url: "/ship-42.html" },
+      { label: "SpaceX Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
       { label: "Minute-by-minute", url: "https://x.com/AlJR86/status/2120923262133678326" },
       { label: "SpaceX launches", url: "https://www.spacex.com/launches" },
       { label: "SpaceX on X", url: "https://x.com/SpaceX" },
