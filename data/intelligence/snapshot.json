@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T22:49:51.090Z",
+  "generatedAt": "2026-11-13T00:34:18.915Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -162,9 +162,9 @@
       "field": "newest-reporting",
       "value": "2026.39.100",
       "label": "Newest reporting build",
-      "at": "2026-11-12T19:12:35.000Z",
+      "at": "2026-11-13T00:34:14.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3283 cars)",
+      "source": "Teslascope sample (3282 cars)",
       "sourceUrl": "https://teslascope.com/software",
       "href": "/updates.html",
       "summary": "A version appearing in a public sample is not the same as Tesla offering it to a given car."
@@ -190,7 +190,7 @@
       "field": "most-common",
       "value": "2026.38.5.1@31.4",
       "label": "Most common sample build",
-      "at": "2026-11-12T19:12:35.000Z",
+      "at": "2026-11-13T00:34:14.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
