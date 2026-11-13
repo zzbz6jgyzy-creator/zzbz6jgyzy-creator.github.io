@@ -1,3 +1,12 @@
+## 2026-11-13 — Tracker dates, Flight 15 window, Ship 42 minute-by-minute
+
+- Re-checked SpaceX’s Flight 15 page on launch day: window still 4:45–6:00 p.m. CT (22:45–00:00 UTC) from Pad 2, pending regulatory approval. No FAA licence published. Ship 42 moved to the pad (SpaceX, 13 Nov 00:56 UTC).
+- `/ship-42.html` now leads with Alex R’s 12 Nov minute-by-minute Flight 15 animation (`https://x.com/AlJR86/status/2120923262133678326`). `/starship-flight-15.html` and the Starship tracker link to it.
+- Flight 15 and Ship 42 sit at the top of the SpaceX menu (and Trackers → Space & launches). The SpaceX feature card and the Starship flights “on the horizon” card both go to those hubs.
+- Starlink (McDowell, 13 Nov 00:48 UTC): 11,193 in orbit / 11,179 working (down from 11,204 / 11,190 on 9 Nov). CelesTrak GP was 403 this run; last orbits snapshot kept (10 Nov).
+- Tesla software snapshot: latest still 2026.39.100. Texas registry unchanged at 573 Cybercab / 730 Model Y on 13 Nov.
+- Grok field guide checked 13 Nov 2026; official changelog now lists Grok Bot v1.0.1 (11 Nov), including 1.0.0.
+
 ## 2026-11-12 — Robotaxi 24/7 in every listed city, and Grok Bot 1.0 (Dispatch)
 
 - Dispatch: Tesla’s @robotaxi account said rides now run 24/7 in every city the service is available in, as of 11 Nov 2026. Licensed Commons Cybercab photo (CC BY 4.0, 9yz); background Mazda plate blurred. Tracker hours set to 24/7 on the eight live cities. One-line update on the 2am story.

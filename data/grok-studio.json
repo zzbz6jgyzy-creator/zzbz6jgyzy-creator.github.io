@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked": "2026-10-26",
+  "checked": "2026-11-13",
   "sources": [
     {
       "id": "grok",
@@ -96,7 +96,7 @@
       "id": "bot-changelog",
       "title": "Grok Bot changelog",
       "url": "https://x.ai/changelog/bot",
-      "note": "Versioned feature changes; checked through v0.77.0 (26 October 2026)."
+      "note": "Versioned feature changes; checked through v1.0.1 (11 November 2026)."
     },
     {
       "id": "grok47-launch",
@@ -783,6 +783,14 @@
     }
   ],
   "releases": [
+    {
+      "id": "bot-101",
+      "date": "2026-11-11",
+      "type": "Bot / v1.0.1",
+      "title": "Meetings, Microsoft Teams, and shared connectors",
+      "summary": "The official changelog documents v1.0.1 on 11 November 2026, including 1.0.0. Team Bots can join Google Meet, Zoom or Microsoft Teams from a link. Feature requirements remain in the release notes.",
+      "source": "bot-changelog"
+    },
     {
       "id": "bot-0770",
       "date": "2026-10-26",

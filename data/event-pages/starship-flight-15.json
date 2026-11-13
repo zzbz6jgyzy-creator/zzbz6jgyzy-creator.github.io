@@ -19,7 +19,8 @@
   "summary": [
     "SpaceX is targeting Starship Flight 15 for Friday 13 November 2026 from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). That is a published window, not a guaranteed lift-off time.",
     "For the first time SpaceX plans to try to catch both stages with the tower: Super Heavy minutes after launch, and the Ship after a flight of more than 22 hours. SpaceX's flight plan has the Ship deploy 26 Starlink V3 satellites and make roughly 14 orbits before its deorbit burn; reports put the orbit at about 275 km.",
-    "If both catches work, it would be the first full recovery of an orbital launch system. The tower has caught a Super Heavy booster three times, on Flights 5, 7 and 8 (October 2024 to March 2025); it has never caught a Ship."
+    "If both catches work, it would be the first full recovery of an orbital launch system. The tower has caught a Super Heavy booster three times, on Flights 5, 7 and 8 (October 2024 to March 2025); it has never caught a Ship.",
+    "Alex R's 12 November minute-by-minute video — countdown to Saturday's Ship catch, using SpaceX's published times — is on the Ship 42 page and as a direct link under Where to watch."
   ],
   "heatShield": {
     "lead": "Bringing the Ship home intact means surviving re-entry, and that is the heat shield's job.",
@@ -44,8 +45,13 @@
   "links": [
     {
       "href": "/ship-42.html",
-      "title": "Ship 42 launch",
-      "text": "The Flight 15 Starship: first tower-catch attempt, static fires and what to watch on the ship."
+      "title": "Ship 42: minute-by-minute",
+      "text": "The Flight 15 Starship page, with Alex R's countdown-to-catch animation and the first tower-catch plan."
+    },
+    {
+      "href": "https://x.com/AlJR86/status/2120923262133678326",
+      "title": "Minute-by-minute Flight 15",
+      "text": "Animated timeline from lift-off to Saturday's Ship catch, using SpaceX's published times. Local Starbase clock; every time moves if the launch slips."
     },
     {
       "href": "/starship.html",
@@ -70,6 +76,11 @@
   ],
   "watch": [
     {
+      "href": "https://x.com/AlJR86/status/2120923262133678326",
+      "title": "Minute-by-minute on X",
+      "text": "Alex R's 12 Nov video walks Flight 15 from countdown to Ship catch, using SpaceX's published times. Click through for the animation."
+    },
+    {
       "href": "https://x.com/SpaceX",
       "title": "SpaceX on X",
       "text": "SpaceX streams Starship flights on X and spacex.com. It posts the stream's start time on the day; we will add it to the Updates log."
@@ -81,6 +92,26 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-12",
+      "time": "2026-11-12T16:54:45Z",
+      "kind": "Reported",
+      "text": "Alex R posted a minute-by-minute Flight 15 animation on X, using SpaceX's published timeline. If the window opens on time, the Ship catch is Saturday afternoon, about 22 and a half hours after Friday lift-off. Times are local Starbase (CST) and move if the launch slips.",
+      "source": "https://x.com/AlJR86/status/2120923262133678326"
+    },
+    {
+      "date": "2026-11-13",
+      "kind": "Target",
+      "text": "Re-checked SpaceX's Flight 15 mission page on 13 Nov 2026: still as soon as Friday 13 November from Pad 2, 4:45 p.m. CT (22:45 UTC), 75-minute window, pending regulatory approval. Dual catch, 26 Starlink V3, more than 22 hours, webcast about 30 minutes before liftoff. This is a re-check, not a new date.",
+      "source": "https://www.spacex.com/launches/starship-flight-15"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T00:56:49Z",
+      "kind": "Disclosed",
+      "text": "SpaceX: Ship 42 moved to the Starbase pad ahead of launch. The Flight 15 window is still as soon as Friday 13 November, 4:45 p.m. CT (22:45 UTC), 75 minutes, pending regulatory approval. Webcast about 30 minutes before liftoff. No FAA licence is published.",
+      "source": "https://x.com/SpaceX/status/2121044579470233638"
+    },
     {
       "date": "2026-11-09",
       "kind": "Target",

@@ -25,6 +25,44 @@
   ],
   "sections": [
     {
+      "id": "minute-by-minute",
+      "title": "Minute by minute, if the window opens on time",
+      "lead": "The Ship catch is not on launch day. If Flight 15 lifts off when the window opens on Friday, Ship 42 is due back at the tower on Saturday afternoon, about 22 and a half hours later. Alex R's 12 November video walks the whole profile, countdown to catch, using SpaceX's published timeline. Times in the video are local Starbase time (CST) and move if the launch slips.",
+      "points": [
+        {
+          "title": "Friday: lift-off to payload",
+          "kind": "Reported",
+          "text": "The video's Friday clock, assuming lift-off at 4:45 p.m. CST, runs Max Q, hot-staging, the booster catch attempt at about 4:51 p.m., then payload deploy of 26 Starlink V3 satellites. Event times and engine counts follow SpaceX's timeline; speed and altitude readouts are simulated.",
+          "source": "https://x.com/AlJR86/status/2120923262133678326",
+          "sourceName": "Source"
+        },
+        {
+          "title": "Saturday: the Ship catch",
+          "kind": "Reported",
+          "text": "After about 14 orbits at roughly 275 km and three go/no-go checks, the video's Saturday clock has a 10-second deorbit burn at 2:20 p.m. CST and the arms closing at 3:17:34 p.m. Fail a check and the ship comes down early in the ocean near Hawaii or Chile.",
+          "source": "https://x.com/AlJR86/status/2120923262133678326",
+          "sourceName": "Source"
+        },
+        {
+          "title": "Still pending FAA sign-off",
+          "kind": "Reported",
+          "text": "The post says the profile still needs final FAA approval, and every time moves if the launch slips. SpaceX's mission page, re-checked 13 Nov 2026, still lists the window as pending regulatory approval. No FAA licence is published.",
+          "source": "https://www.spacex.com/launches/starship-flight-15",
+          "sourceName": "Source"
+        }
+      ],
+      "embed": {
+        "kind": "x",
+        "url": "https://x.com/AlJR86/status/2120923262133678326",
+        "handle": "AlJR86",
+        "name": "Alex R",
+        "lang": "en",
+        "dateLabel": "November 12, 2026",
+        "text": "The Starship catch everyone's waiting for won't happen on launch day.\n\nIf Flight 15 gets off the pad when the window opens on Friday, the ship isn't due back at the tower until Saturday afternoon. That's 22 and a half hours later.\n\nI animated the whole flight, countdown to catch, straight off SpaceX's own timeline. Every time below is local Starbase time (CST), assuming liftoff right at window open.\n\nFRIDAY\n4:45:00 PM · Liftoff on 33 Raptors. The window closes at 6:00\n4:45:58 PM · Max Q\n4:47:21 PM · Hot staging. The ship lights its engines while it's still attached to the booster\n4:47:26 PM · Booster flips and burns back toward Texas\n4:51:35 PM · Booster catch attempt. If a health check fails, it goes into the Gulf instead\n4:53:09 PM · Ship engines off. Right now it's on a path that would drop it safely into the ocean\n5:11:10 PM · One Raptor fires for 20 seconds to put it in orbit. That only happens if the ship is healthy\n5:20:01 PM · The slot door opens and 26 Starlink V3 satellites slide out, one by one\n6:02:40 PM · Last one's out\n\nOVERNIGHT\nThen it just waits. About 14 laps of the planet at roughly 275 km, with three go/no-go checks: 6:12 PM Friday, midnight, and 1:26 PM Saturday. Fail one and the ship comes down early in the ocean near Hawaii or Chile.\n\nSATURDAY\n2:20:57 PM · 10-second deorbit burn\n2:55:46 PM · Hits the atmosphere belly first and the heat shield starts to glow\n3:15:13 PM · Below the speed of sound, falling flat, steering with its 4 flaps\n3:17:16 PM · 3 engines relight and it flips upright\n3:17:26 PM · Down to 2 engines\n3:17:33 PM · Down to 1\n3:17:34 PM · The arms close\n\nWhat I'll be watching:\n• The booster relight. On Flight 14 only 11 of its 13 landing engines came back\n• The ship's engines on the way up. Flight 14 lost a vacuum Raptor on ascent\n• Entry. Controllers can still end the flight here by tumbling the ship\n• 3 sea-level Raptors relighting after 22 hours in space. That's the big one\n\nIf both catches work, it's the first time an orbital rocket has ever been fully recovered. It still needs final FAA approval, and every time above moves if the launch slips.\n\nEvent times and engine counts in the video follow SpaceX's timeline. The speed and altitude readouts are simulated.",
+        "caption": "Video: Alex R (@AlJR86), posted 12 Nov 2026 at 4:54 p.m. UTC (10:54 a.m. CT). Times in the video are local Starbase time (CST), assuming lift-off at window open. Speed and altitude readouts are simulated."
+      }
+    },
+    {
       "id": "ship",
       "title": "Why this ship",
       "lead": "The hardware work that is public is the static-fire campaign and catch tests on Pad 2.",
@@ -173,6 +211,11 @@
       "text": "The full dual-catch plan, countdown and where to watch both stages."
     },
     {
+      "href": "https://x.com/AlJR86/status/2120923262133678326",
+      "title": "Minute-by-minute Flight 15",
+      "text": "Animated timeline from lift-off to Saturday's Ship catch, using SpaceX's published times. Local Starbase clock; every time moves if the launch slips."
+    },
+    {
       "href": "/starship.html",
       "title": "Starship tracker",
       "text": "Every flight, the hardware and the next target."
@@ -195,6 +238,11 @@
   ],
   "watch": [
     {
+      "href": "https://x.com/AlJR86/status/2120923262133678326",
+      "title": "Minute-by-minute on X",
+      "text": "Alex R's 12 Nov video walks Flight 15 from countdown to Ship catch, using SpaceX's published times. Click through for the animation."
+    },
+    {
       "href": "https://x.com/SpaceX",
       "title": "SpaceX on X",
       "text": "SpaceX streams Starship flights on X and spacex.com. It posts the stream's start time on the day; we will add it to the Updates log."
@@ -206,6 +254,26 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-12",
+      "time": "2026-11-12T16:54:45Z",
+      "kind": "Reported",
+      "text": "Alex R posted a minute-by-minute Flight 15 animation on X, using SpaceX's published timeline. If the window opens on time, the Ship catch is Saturday afternoon, about 22 and a half hours after Friday lift-off. Times are local Starbase (CST) and move if the launch slips.",
+      "source": "https://x.com/AlJR86/status/2120923262133678326"
+    },
+    {
+      "date": "2026-11-13",
+      "kind": "Target",
+      "text": "Re-checked SpaceX's Flight 15 mission page on 13 Nov 2026: still as soon as Friday 13 November from Pad 2, 4:45 p.m. CT (22:45 UTC), 75-minute window, pending regulatory approval. Dual catch, 26 Starlink V3, more than 22 hours, webcast about 30 minutes before liftoff. This is a re-check, not a new date.",
+      "source": "https://www.spacex.com/launches/starship-flight-15"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T00:56:49Z",
+      "kind": "Disclosed",
+      "text": "SpaceX: Ship 42 moved to the Starbase pad ahead of launch. The Flight 15 window is still as soon as Friday 13 November, 4:45 p.m. CT (22:45 UTC), 75 minutes, pending regulatory approval. Webcast about 30 minutes before liftoff. No FAA licence is published.",
+      "source": "https://x.com/SpaceX/status/2121044579470233638"
+    },
     {
       "date": "2026-11-11",
       "kind": "Reported",

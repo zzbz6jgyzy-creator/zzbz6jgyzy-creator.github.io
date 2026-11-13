@@ -2,6 +2,10 @@
   "top": [],
   "mobileShortcuts": [
     [
+      "Flight 15",
+      "/starship-flight-15.html"
+    ],
+    [
       "Software updates",
       "/updates.html"
     ],
@@ -185,6 +189,18 @@
           "label": "Missions & orbit",
           "items": [
             [
+              "Starship Flight 15",
+              "/starship-flight-15.html",
+              "Countdown, double catch and where to watch",
+              "rocket"
+            ],
+            [
+              "Ship 42",
+              "/ship-42.html",
+              "Minute-by-minute and the first Ship catch",
+              "rocket"
+            ],
+            [
               "Starship flights",
               "/starship.html",
               "Flights, vehicles and the next milestones",
@@ -229,11 +245,11 @@
         }
       ],
       "feature": {
-        "title": "Your place. Your sky.",
-        "text": "Find the direction. Check your horizon. Plan your next launch view.",
-        "label": "Plan your launch view",
-        "href": "/see-the-launch.html",
-        "art": "compass"
+        "title": "Flight 15 is on the pad.",
+        "text": "Countdown, the double-catch plan, Ship 42 and the minute-by-minute.",
+        "label": "Open Flight 15",
+        "href": "/starship-flight-15.html",
+        "art": "rocket"
       }
     },
     {
@@ -279,6 +295,18 @@
         {
           "label": "Space & launches",
           "items": [
+            [
+              "Starship Flight 15",
+              "/starship-flight-15.html",
+              "Countdown and the double-catch plan",
+              "rocket"
+            ],
+            [
+              "Ship 42",
+              "/ship-42.html",
+              "Minute-by-minute and the first Ship catch",
+              "rocket"
+            ],
             [
               "Starship flights",
               "/starship.html",

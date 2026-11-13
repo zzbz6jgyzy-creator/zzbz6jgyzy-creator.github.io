@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-11-09T08:41:14+00:00",
+  "updated": "2026-11-13T08:50:00+00:00",
   "events": {
     "tesla-2026-asm": {
       "title": "Tesla 2026 Annual Meeting of Shareholders",
@@ -48,8 +48,10 @@
       "status": "net",
       "tz": "-06:00",
       "href": "https://www.spacex.com/launches/starship-flight-15",
-      "summary": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published.",
+      "summary": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Ship 42 moved to the pad on 12 Nov (SpaceX, 13 Nov 00:56 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published. Re-checked 13 Nov 2026.",
       "sources": [
+        "https://x.com/SpaceX/status/2121044579470233638",
+        "https://x.com/AlJR86/status/2120923262133678326",
         "https://www.spacex.com/launches/starship-flight-15",
         "https://www.spacex.com/updates",
         "Starship Flight 15 wiki, citing the FAA CADENA/COMPASS planning slide of 5 Nov 2026: NET 13 Nov (https://starship-spacex.fandom.com/wiki/Starship_Flight_15). We have not opened the slide ourselves; Wikipedia's Starship flight 15 infobox also reads NET November 13, 2026.",
