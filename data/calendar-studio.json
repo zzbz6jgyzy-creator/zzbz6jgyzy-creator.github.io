@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-09T08:41:14+00:00",
- "launchChecked": "2026-11-12T23:39:02Z",
+ "launchChecked": "2026-11-13T06:36:13Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -595,9 +595,9 @@
    "title": "Falcon 9 Block 5 | USSF-317",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-15T03:55:00Z",
+   "start": "2026-11-18T03:14:00Z",
    "end": "",
-   "date": "2026-11-15",
+   "date": "2026-11-18",
    "precision": "datetime",
    "status": "Go",
    "note": "Government/Top Secret · Low Earth Orbit",
@@ -606,8 +606,8 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "76617033-4dc0-4448-b50c-e5b0d5a18539",
-   "windowStart": "2026-11-15T03:55:00Z",
-   "windowEnd": "2026-11-15T07:55:00Z",
+   "windowStart": "2026-11-18T03:14:00Z",
+   "windowEnd": "2026-11-18T07:14:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
    "coverage": {
