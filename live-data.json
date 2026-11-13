@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T07:45:00+00:00",
+  "updated": "2026-11-13T08:50:00+00:00",
   "note": "status: scheduled|live|ended. 'live' forces the banner on; otherwise it shows from start-30min to end. RULE: once the official stream is known, fallbackUrl MUST be the direct stream URL (YouTube watch URL, or x.com/i/broadcasts/... for X-only) and postUrl the official broadcast post; never a profile page.",
   "events": [
     {
@@ -224,7 +224,7 @@
       "source": "https://www.spacex.com/launches/starship-flight-15",
       "image": "/assets/live/starship.jpg",
       "imageCredit": "Photo: Shujianyang, Wikimedia Commons, CC BY-SA 4.0",
-      "description": "SpaceX is targeting Starship Flight 15 as soon as Friday 13 Nov from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: catch Super Heavy and Ship, deploy 26 Starlink V3 satellites, then a more than 22-hour flight before a Ship catch. Webcast starts about 30 minutes before liftoff. Direct X broadcast URL not posted yet. This is a published window, not a confirmed T-0.",
+      "description": "SpaceX is targeting Starship Flight 15 as soon as Friday 13 Nov from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Ship 42 moved to the pad ahead of launch (SpaceX, 13 Nov 00:56 UTC). Planned: catch Super Heavy and Ship, deploy 26 Starlink V3 satellites, then a more than 22-hour flight before a Ship catch. Webcast starts about 30 minutes before liftoff. Direct X broadcast URL not posted yet. This is a published window, not a confirmed T-0.",
       "descSource": "https://www.spacex.com/launches/starship-flight-15",
       "thumb": "/assets/live/starship-480w.webp"
     },

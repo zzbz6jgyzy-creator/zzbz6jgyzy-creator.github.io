@@ -7,14 +7,24 @@ from playwright.async_api import async_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=pathlib.Path(os.environ.get('CALENDAR_SCREENSHOTS','/tmp/calendar-studio'));OUT.mkdir(parents=True,exist_ok=True);DATA=json.loads((ROOT/'data/calendar-studio.json').read_text());KEY='sd-calendar-studio-v1'
 F15_DATE=json.loads((ROOT/'data/events.json').read_text())['events']['starship-flight-15']['date']  # Flight 15 day from the editorial calendar; never hard-code it
 DONE={'done','ended','success','failure','failed','partial','partial failure','cancelled','canceled'}
+def search_token(event):
+    hay=' '.join(str(event.get(k) or '') for k in ('title','note','where','category')).lower()
+    if event['id'].startswith('starlink-'):
+        token=event['id'].removeprefix('starlink-')
+        if token.lower() in hay:
+            return token
+    return event['title'] or event['id']
 def pick_launch(events):
     upcoming=[e for e in events if e.get('group')=='spacex' and e.get('category')=='Launch' and e.get('precision')=='datetime' and e.get('status','').lower() not in DONE]
-    starlink=[e for e in upcoming if e['id'].startswith('starlink-')]
-    chosen=(starlink or upcoming)[0]
+    def unique(e):
+        token=search_token(e).lower()
+        return sum(1 for x in upcoming if token in ' '.join(str(x.get(k) or '') for k in ('title','note','where','category')).lower())==1
+    starlink=[e for e in upcoming if e['id'].startswith('starlink-') and unique(e)]
+    chosen=(starlink or [e for e in upcoming if unique(e)] or upcoming)[0]
     return chosen
 LAUNCH=pick_launch(DATA['events'])
 assert LAUNCH['precision']=='datetime'
-SEARCH=LAUNCH['id'].removeprefix('starlink-') if LAUNCH['id'].startswith('starlink-') else LAUNCH['id']
+SEARCH=search_token(LAUNCH)
 LAUNCH_START=datetime.fromisoformat(LAUNCH['start'].replace('Z','+00:00'))
 EXPECTED_ICS_START=LAUNCH_START.astimezone(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
 EXPECTED_LA_TIME=LAUNCH_START.astimezone(ZoneInfo('America/Los_Angeles')).strftime('%H:%M')

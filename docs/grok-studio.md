@@ -16,7 +16,7 @@ The original destinations #what, #uses, #marketplace, #latest, #stories, #tutori
 
 ## Sources and freshness
 
-data/grok-studio.json is the reviewed reference, checked **26 October 2026**. It contains 18 official source links, six product guides, three API model references, five individual plans, twelve lessons, eight original templates, four release cards and the two existing media paths.
+data/grok-studio.json is the reviewed reference, checked **13 November 2026**. It contains 18 official source links, six product guides, three API model references, five individual plans, twelve lessons, eight original templates, official release cards (including Grok Bot v1.0.1 on 11 November 2026) and the two existing media paths.
 
 The linked official documentation currently uses SpaceXSI branding; the page retains familiar Grok/xAI discovery terms and explains that distinction. New individual plan references use The X Subscription documentation, last updated 11 October 2026. Existing Cursor, SuperGrok and X Premium eligibility is acknowledged, with the current official reference linked rather than guessed.
 

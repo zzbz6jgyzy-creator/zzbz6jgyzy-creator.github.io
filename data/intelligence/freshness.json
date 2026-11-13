@@ -1,81 +1,81 @@
 {
-  "updated": "2026-11-13T07:24:39.751Z",
+  "updated": "2026-11-13T09:03:34.660Z",
   "trackers": [
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
-      "lastVerified": "2026-11-10T00:00:00.000Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastVerified": "2026-11-13T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
-      "lastVerified": "2026-11-09T08:41:14.000Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastVerified": "2026-11-13T08:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
     {
       "tracker": "software",
       "href": "/updates.html",
-      "lastChecked": "2026-11-13T07:24:34.000Z",
-      "lastVerified": "2026-11-13T07:24:34.000Z",
+      "lastChecked": "2026-11-13T08:50:00.000Z",
+      "lastVerified": "2026-11-13T08:50:00.000Z",
       "note": "Source: Teslascope."
     },
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
-      "lastVerified": "2026-11-12T22:49:48.000Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastVerified": "2026-11-13T08:50:01.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
     {
       "tracker": "starlink",
       "href": "/starlink.html",
       "lastChecked": "2026-11-10T08:00:03.000Z",
-      "lastVerified": "2026-11-09T01:19:56.000Z",
+      "lastVerified": "2026-11-13T00:48:24.000Z",
       "note": "Sources: Jonathan McDowell (counts), CelesTrak (orbits)."
     },
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-13T07:24:39.751Z",
-      "lastVerified": "2026-11-13T07:24:34.000Z",
+      "lastChecked": "2026-11-13T09:03:34.660Z",
+      "lastVerified": "2026-11-13T08:50:00.000Z",
       "note": "Your car details stay in this browser."
     }
   ]

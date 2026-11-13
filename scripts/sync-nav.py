@@ -58,7 +58,7 @@ def feature(d):
  f=d['feature']; art=f['art']
  if art=='roadster':
   visual='<img src="/assets/roadster-studio/finale-640w.webp" alt="" width="640" height="474" loading="lazy" decoding="async"/>'
- else: visual=icon({'briefing':'mail','compass':'compass','daily':'spark','explore':'orbit'}.get(art,'spark'))
+ else: visual=icon({'briefing':'mail','compass':'compass','daily':'spark','explore':'orbit','rocket':'rocket'}.get(art,'spark'))
  return f'<a class="ns-feature ns-feature-{art}" href="{esc(f["href"])}"><span class="ns-feature-art" aria-hidden="true">{visual}</span><span class="ns-feature-copy"><strong>{esc(f["title"])}</strong><span>{esc(f["text"])}</span><b>{esc(f["label"])} {ARROW}</b></span></a>'
 
 def desktop(d):

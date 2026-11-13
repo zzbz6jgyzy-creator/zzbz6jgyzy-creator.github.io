@@ -1,5 +1,5 @@
 window.STARSHIP = {
-  updated: "2026-11-10",
+  updated: "2026-11-13",
   note:
     "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has a published window pending regulatory approval; that is not a confirmed T-0. Not affiliated with SpaceX.",
   next: {
@@ -13,14 +13,17 @@ window.STARSHIP = {
     block: "Block 3",
     headline: "First dual catch attempt",
     tested:
-      "SpaceX’s Flight 15 mission page targets as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: catch Super Heavy (first V3 catch) and Ship, deploy 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0; no FAA licence is published. Booster 22 completed a full-duration 33-engine static fire on 25 Oct. SpaceX confirmed on 28 Oct that Ship 42’s static fires are complete.",
+      "SpaceX’s Flight 15 mission page, re-checked 13 Nov 2026, still targets as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Ship 42 moved to the pad ahead of launch (SpaceX, 13 Nov 00:56 UTC). Planned: catch Super Heavy (first V3 catch) and Ship, deploy 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0; no FAA licence is published. Booster 22 completed a full-duration 33-engine static fire on 25 Oct. SpaceX confirmed on 28 Oct that Ship 42’s static fires are complete.",
     objectives: [
       "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, now on the SpaceX mission page",
       "Catch Super Heavy B22 — first Super Heavy V3 catch; SpaceX says the booster’s primary objective is a return to the launch site",
       "Deploy 26 Starlink V3 satellites, then fly more than 22 hours before a Ship catch if systems stay healthy",
     ],
     coverage: [
+      { label: "Flight 15 hub", url: "/starship-flight-15.html" },
+      { label: "Ship 42 hub", url: "/ship-42.html" },
       { label: "SpaceX Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
+      { label: "Minute-by-minute", url: "https://x.com/AlJR86/status/2120923262133678326" },
       { label: "SpaceX launches", url: "https://www.spacex.com/launches" },
       { label: "SpaceX on X", url: "https://x.com/SpaceX" },
       { label: "SpaceX on YouTube", url: "https://www.youtube.com/@SpaceX" },
@@ -30,6 +33,30 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-11-13",
+      mission: 15,
+      confirmed: false,
+      change:
+        "Re-checked SpaceX’s Flight 15 mission page on 13 Nov 2026: the window is still as soon as Friday 13 November from Pad 2, opening 4:45 p.m. CT, pending regulatory approval. Ship 42 moved to the pad ahead of launch (SpaceX, 13 Nov 00:56 UTC). Dual catch, 26 Starlink V3, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published. This is a re-check, not a new T-0.",
+      source: { outlet: "SpaceX · Starship Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
+    },
+    {
+      date: "2026-11-13",
+      mission: 15,
+      confirmed: false,
+      change:
+        "SpaceX: Ship 42 moved to the Starbase pad ahead of launch.",
+      source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2121044579470233638" },
+    },
+    {
+      date: "2026-11-12",
+      mission: 15,
+      confirmed: false,
+      change:
+        "Alex R posted a minute-by-minute Flight 15 animation on X, using SpaceX’s published timeline. If the window opens on time, the Ship catch is Saturday afternoon, about 22 and a half hours after Friday lift-off.",
+      source: { outlet: "Alex R on X", url: "https://x.com/AlJR86/status/2120923262133678326" },
+    },
     {
       date: "2026-11-10",
       mission: 15,

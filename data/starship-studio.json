@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-10",
+ "updated": "2026-11-13",
  "reviewed": "2026-10-24",
  "phaseOrder": [
   "liftoff",
@@ -1702,8 +1702,20 @@
   ],
   "coverage": [
    {
+    "label": "Flight 15 hub",
+    "url": "/starship-flight-15.html"
+   },
+   {
+    "label": "Ship 42 hub",
+    "url": "/ship-42.html"
+   },
+   {
     "label": "SpaceX Flight 15",
     "url": "https://www.spacex.com/launches/starship-flight-15"
+   },
+   {
+    "label": "Minute-by-minute",
+    "url": "https://x.com/AlJR86/status/2120923262133678326"
    },
    {
     "label": "SpaceX launches",
@@ -1732,6 +1744,27 @@
   ]
  },
  "schedule": [
+  {
+   "date": "2026-11-13",
+   "text": "Re-checked SpaceX’s Flight 15 mission page on 13 Nov 2026: the window is still as soon as Friday 13 November from Pad 2, opening 4:45 p.m. CT, pending regulatory approval. Ship 42 moved to the pad ahead of launch (SpaceX, 13 Nov 00:56 UTC). Dual catch, 26 Starlink V3, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published. This is a re-check, not a new T-0.",
+   "url": "https://www.spacex.com/launches/starship-flight-15",
+   "outlet": "SpaceX · Starship Flight 15",
+   "kind": "primary"
+  },
+  {
+   "date": "2026-11-13",
+   "text": "SpaceX: Ship 42 moved to the Starbase pad ahead of launch.",
+   "url": "https://x.com/SpaceX/status/2121044579470233638",
+   "outlet": "SpaceX on X",
+   "kind": "reported"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "Alex R posted a minute-by-minute Flight 15 animation on X, using SpaceX’s published timeline. If the window opens on time, the Ship catch is Saturday afternoon, about 22 and a half hours after Friday lift-off.",
+   "url": "https://x.com/AlJR86/status/2120923262133678326",
+   "outlet": "Alex R on X",
+   "kind": "reported"
+  },
   {
    "date": "2026-11-10",
    "text": "Re-checked SpaceX’s Flight 15 mission page on 10 Nov 2026: the window is still as soon as Friday 13 November from Pad 2, opening 4:45 p.m. CT, pending regulatory approval. Dual catch, 26 Starlink V3, more than 22 hours. No FAA licence is published. This is a re-check, not a new date.",

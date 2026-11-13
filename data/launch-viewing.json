@@ -1,7 +1,7 @@
 {
  "version": 1,
- "checked": "2026-11-13T06:36:13Z",
- "editorialUpdated": "2026-11-09T08:41:14+00:00",
+ "checked": "2026-11-13T08:49:48Z",
+ "editorialUpdated": "2026-11-13T08:50:00+00:00",
  "presets": [
   {
    "name": "Brownsville",
@@ -650,10 +650,18 @@
    "date": "2026-11-13",
    "precision": "datetime",
    "status": "net",
-   "note": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published.",
+   "note": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Ship 42 moved to the pad on 12 Nov (SpaceX, 13 Nov 00:56 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published. Re-checked 13 Nov 2026.",
    "where": "Starbase · Pad 2",
    "href": "https://www.spacex.com/launches/starship-flight-15",
    "sources": [
+    {
+     "href": "https://x.com/SpaceX/status/2121044579470233638",
+     "label": "x.com"
+    },
+    {
+     "href": "https://x.com/AlJR86/status/2120923262133678326",
+     "label": "x.com"
+    },
     {
      "href": "https://www.spacex.com/launches/starship-flight-15",
      "label": "spacex.com"
