@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-13T13:21:14.265Z",
+  "generatedAt": "2026-11-13T14:59:27.960Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -287,6 +287,40 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-cochise-6gw-campus.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX's $50 billion Arizona compute campus: 6 GW, no turbines, and a zoning vote on Dec 9",
+      "at": "2026-11-13T14:53:12.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-cochise-6gw-campus.html",
+      "href": "/dispatch/spacex-cochise-6gw-campus.html",
+      "summary": "SpaceX has published its plan for a 6 GW supercomputing campus in Cochise County, Arizona: nine buildings, a 24 GWh battery, dry cooling and a $50 billion pledge (as of 13 Nov 2026). How it differs from the gas-fired Starbase plan, and what the county decides on Dec 9.",
+      "title": "SpaceX's $50 billion Arizona compute campus: 6 GW, no turbines, and a zoning vote on Dec 9",
+      "id": "logged|dispatch:/dispatch/spacex-cochise-6gw-campus.html|2026-11-13T14:53:12.000Z|SpaceX's $50 billion Arizona compute campus: 6 GW, no turbines, and a zoning vote on Dec 9"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-bot-mac-apple-apps.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok Bot on Mac can now use Messages, Mail and Notes. Here's how it compares with the phone app",
+      "at": "2026-11-13T14:53:12.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-bot-mac-apple-apps.html",
+      "href": "/dispatch/grok-bot-mac-apple-apps.html",
+      "summary": "Grok Bot's Mac app can now connect to seven Apple apps, including Mail and Notes, which the phone version doesn't list. What each permission allows, what's missing, and which one to think twice about.",
+      "title": "Grok Bot on Mac can now use Messages, Mail and Notes. Here's how it compares with the phone app",
+      "id": "logged|dispatch:/dispatch/grok-bot-mac-apple-apps.html|2026-11-13T14:53:12.000Z|Grok Bot on Mac can now use Messages, Mail and Notes. Here's how it compares with the phone app"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/spacex-tesla-merger-december.html",
       "topic": "tesla",
       "tracker": "dispatch",
@@ -539,40 +573,6 @@
       "summary": "SINGULUS says it has signed a contract with SpaceX for a turnkey heterojunction solar-cell line as SpaceX expands satellite manufacturing in Bastrop, Texas, with the first line worth more than €60 million and due in the first half of 2027. SpaceX and SINGULUS say production will scale to support more than 100 GW of equipment. Musk says 100 GW a year is already ordered.",
       "title": "SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)",
       "id": "logged|dispatch:/dispatch/spacex-singulus-100gw-solar.html|2026-11-11T02:35:00.000Z|SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-matrix-headlights-nhtsa.html",
-      "topic": "tesla-software",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)",
-      "at": "2026-11-10T20:38:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-matrix-headlights-nhtsa.html",
-      "href": "/dispatch/tesla-matrix-headlights-nhtsa.html",
-      "summary": "Tesla’s 9 Nov 2026 comment on NHTSA’s notice of intent to form a committee to modernize FMVSS 108 asks that the overhaul cover camera-guided matrix LED headlights and over-the-air changes, and that more automaker seats be added. This is a public comment, not a petition for rulemaking. No rule has changed.",
-      "title": "Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)",
-      "id": "logged|dispatch:/dispatch/tesla-matrix-headlights-nhtsa.html|2026-11-10T20:38:00.000Z|Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-4-8-rl-c-stack.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)",
-      "at": "2026-11-10T14:41:15.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-4-8-rl-c-stack.html",
-      "href": "/dispatch/grok-4-8-rl-c-stack.html",
-      "summary": "Elon Musk says SpaceXSI dropped JAX and SGLang for its own C/C++ code, Grok 4.8 pre-training is done and the model is now in RL (as of 10 Nov 2026). He pledged a soft rollout to Grok Bot users later this week, with no date, benchmarks or pricing yet.",
-      "title": "Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)",
-      "id": "logged|dispatch:/dispatch/grok-4-8-rl-c-stack.html|2026-11-10T14:41:15.000Z|Grok 4.8 is in RL on a homemade C stack, with a soft Bot rollout pledged later this week (as of 10 Nov 2026)"
     },
     {
       "type": "appeared",
@@ -1977,14 +1977,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-11-13T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-11-13T08:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -1998,14 +1998,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-11-13T13:21:10.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -2019,35 +2019,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-13T13:21:14.265Z",
+      "lastChecked": "2026-11-13T14:59:27.960Z",
       "lastVerified": "2026-11-13T08:50:00.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2056,85 +2056,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.244Z",
-      "finished": "2026-11-13T13:21:14.249Z"
+      "started": "2026-11-13T14:59:27.872Z",
+      "finished": "2026-11-13T14:59:27.950Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.249Z",
-      "finished": "2026-11-13T13:21:14.250Z"
+      "started": "2026-11-13T14:59:27.950Z",
+      "finished": "2026-11-13T14:59:27.951Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.250Z",
-      "finished": "2026-11-13T13:21:14.250Z"
+      "started": "2026-11-13T14:59:27.951Z",
+      "finished": "2026-11-13T14:59:27.951Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.250Z",
-      "finished": "2026-11-13T13:21:14.257Z"
+      "started": "2026-11-13T14:59:27.951Z",
+      "finished": "2026-11-13T14:59:27.955Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.257Z",
-      "finished": "2026-11-13T13:21:14.261Z"
+      "started": "2026-11-13T14:59:27.955Z",
+      "finished": "2026-11-13T14:59:27.957Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.261Z",
-      "finished": "2026-11-13T13:21:14.261Z"
+      "started": "2026-11-13T14:59:27.957Z",
+      "finished": "2026-11-13T14:59:27.958Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.261Z",
-      "finished": "2026-11-13T13:21:14.262Z"
+      "started": "2026-11-13T14:59:27.958Z",
+      "finished": "2026-11-13T14:59:27.958Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.262Z",
-      "finished": "2026-11-13T13:21:14.262Z"
+      "started": "2026-11-13T14:59:27.958Z",
+      "finished": "2026-11-13T14:59:27.958Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.262Z",
-      "finished": "2026-11-13T13:21:14.262Z"
+      "started": "2026-11-13T14:59:27.958Z",
+      "finished": "2026-11-13T14:59:27.958Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.262Z",
-      "finished": "2026-11-13T13:21:14.264Z"
+      "started": "2026-11-13T14:59:27.958Z",
+      "finished": "2026-11-13T14:59:27.959Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.264Z",
-      "finished": "2026-11-13T13:21:14.264Z"
+      "started": "2026-11-13T14:59:27.959Z",
+      "finished": "2026-11-13T14:59:27.959Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.264Z",
-      "finished": "2026-11-13T13:21:14.264Z"
+      "started": "2026-11-13T14:59:27.959Z",
+      "finished": "2026-11-13T14:59:27.959Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-13T13:21:14.264Z",
-      "finished": "2026-11-13T13:21:14.264Z"
+      "started": "2026-11-13T14:59:27.959Z",
+      "finished": "2026-11-13T14:59:27.959Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-13T13:21:14.265Z",
+    "generatedAt": "2026-11-13T14:59:27.960Z",
     "factCount": 20,
     "changeCount": 97,
     "conflictCount": 2,
