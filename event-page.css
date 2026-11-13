@@ -96,6 +96,10 @@ html{scroll-behavior:smooth}
 .ev-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:50% 16%;border-radius:var(--radius-card,14px);background:#1a1b1e}
 .ev-photo figcaption,.ev-diagram figcaption{font-size:12px;line-height:1.55;color:var(--ink-soft);margin:8px 0 0}
 .ev-photo a,.ev-diagram a,.ev-quote a{color:inherit;text-underline-offset:3px}
+.ev-video{margin:0 0 18px}
+.ev-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;border-radius:var(--radius-card,14px)}
+.ev-video figcaption{font-size:12px;line-height:1.55;color:var(--ink-soft);margin:8px 0 0;max-width:68ch}
+.ev-video a{color:inherit;text-underline-offset:3px}
 @media(min-width:900px){
 .ev-page:has(.ev-hero-photo){width:min(1040px,calc(100% - 48px))}
 .ev-hero-photo{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start}

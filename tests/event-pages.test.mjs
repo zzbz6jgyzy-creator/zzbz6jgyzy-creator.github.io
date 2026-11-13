@@ -201,3 +201,48 @@ test("Ship 42 has a credited photo, a flight timeline, fact cards and a labelled
   assert.match(html, /<figure class="ev-diagram">[\s\S]*?Illustration by Supercharged Daily, not to scale/);
   assert.match(html, /<figure class="ev-quote">[\s\S]*?x\.com\/elonmusk\/status\/2115634093949911506/);
 });
+
+test("Ship 42 puts the road-to-Flight-15 video before the mission, with no autoplay", () => {
+  const page = JSON.parse(fs.readFileSync("data/event-pages/ship-42.json", "utf8"));
+  const road = page.sections[0];
+  assert.equal(road.id, "road");
+  assert.equal(road.jumpTitle, "Road to Flight 15");
+  assert.equal(road.placement, "before-mission");
+  assert.equal(road.embed.kind, "video");
+  const html = fs.readFileSync("ship-42.html", "utf8");
+  const jump = html.match(/<nav class="ev-jump"[^>]*>([\s\S]*?)<\/nav>/)[1];
+  assert.match(jump, /^<a href="#ev-road">Road to Flight 15<\/a><a href="#ev-mission">The mission<\/a>/);
+  assert.doesNotMatch(jump, /From a tumbling first flight/);
+  const roadAt = html.indexOf('id="ev-road"');
+  const missionAt = html.indexOf('id="ev-mission"');
+  assert.ok(roadAt > 0 && roadAt < missionAt);
+  assert.equal((html.match(/id="ev-road"/g) || []).length, 1);
+  assert.match(html, /<video controls playsinline preload="metadata" poster="\/assets\/video\/starship-hero-poster\.jpg" width="1920" height="1080" aria-label="Official SpaceX footage from Starship Flights 1 to 14, the Flight 15 preview and Elon Musk's May 2025 Starbase talk, set to Pathfinder by Scott Buckley">/);
+  assert.match(html, /<source src="\/assets\/video\/starship-hero-1080p\.mp4" type="video\/mp4" media="\(min-width: 800px\)" \/>/);
+  assert.match(html, /<source src="\/assets\/video\/starship-hero-720p\.mp4" type="video\/mp4" \/>/);
+  assert.doesNotMatch(html, /\sautoplay\b/i);
+  assert.doesNotMatch(html, /electrek/i);
+  assert.match(html, /<figcaption>Video: SpaceX \(@SpaceX\), official footage from Starship Flights 1 to 14, the Flight 15 preview and Elon Musk's May 2025 Starbase talk\. Music: 'Pathfinder' by Scott Buckley, <a href="https:\/\/creativecommons\.org\/licenses\/by\/4\.0\/">CC BY 4\.0<\/a> \(<a href="https:\/\/scottbuckley\.com\.au">scottbuckley\.com\.au<\/a>\)\.<\/figcaption>/);
+  assert.match(html, /pending regulatory approval \(as of 13 Nov 2026\)/);
+  assert.match(html, /href="https:\/\/www\.spacex\.com\/launches\/starship-flight-15"[^>]*>SpaceX's Flight 15 page/);
+  assert.match(html, /Steve Jurvetson/);
+  assert.match(html, /event-page\.css\?v=20261113a/);
+});
+
+test("event-page video embed, body links, jumpTitle and before-mission placement are wired in the builder", () => {
+  const dir = sandbox();
+  try {
+    const f = path.join(dir, "data/event-pages/ship-42.json"), p = JSON.parse(fs.readFileSync(f, "utf8"));
+    p.sections[0].embed.kind = "youtube";
+    fs.writeFileSync(f, JSON.stringify(p));
+    assert.throws(() => buildEventPages(dir), /unknown embed kind youtube/);
+    p.sections[0].embed.kind = "video";
+    p.sections[0].placement = "after-watch";
+    fs.writeFileSync(f, JSON.stringify(p));
+    assert.throws(() => buildEventPages(dir), /unknown section placement after-watch/);
+    p.sections[0].placement = "before-mission";
+    p.sections[0].body[1].linkText = "not on the page";
+    fs.writeFileSync(f, JSON.stringify(p));
+    assert.throws(() => buildEventPages(dir), /linkText not found/);
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});

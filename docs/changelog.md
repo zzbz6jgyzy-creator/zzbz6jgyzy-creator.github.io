@@ -1,3 +1,7 @@
+## 2026-11-13 — Ship 42: Starship road-to-Flight-15 video
+
+- `/ship-42.html` now opens with a self-hosted 76-second film (SpaceX Flights 1–14, the Flight 15 preview and Musk's May 2025 Starbase talk, Pathfinder by Scott Buckley, CC BY 4.0) and a short write-up on the road to Flight 15. No autoplay. Credit line is verbatim. The Jurvetson Flight 5 still beside the title stays.
+
 ## 2026-11-13 — SpaceX–Tesla merger talks (Bloomberg) and AI-freeze lawsuit (Dispatch)
 
 - Dispatch: Bloomberg, citing unnamed sources, said on 12 Nov 2026 that SpaceX and Tesla boards are negotiating terms and governance, with an announcement possible as soon as December or early 2027. Neither company has confirmed this. Licensed Commons Starbase still (CC BY 2.0, Alexander Hatley, 27 June 2021). Update pointers on the 10-Q and Barclays merger pages.
