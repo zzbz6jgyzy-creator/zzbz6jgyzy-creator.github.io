@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-13T08:50:00+00:00",
- "launchChecked": "2026-11-13T21:57:33Z",
+ "launchChecked": "2026-11-14T02:24:05Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -590,8 +590,6 @@
     }
    ],
    "origin": "Editorial calendar",
-   "providerId": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
-   "providerStatus": "Go for Launch",
    "coverage": {
     "url": "https://www.spacex.com/launches/starship-flight-15",
     "article": "",
