@@ -1,3 +1,8 @@
+## 2026-11-14 — Grok Imagine team cut (reported), and Robo Menevä Helsinki Tesla taxis
+
+- Dispatch: The Information reports about 60 people on Grok Imagine were laid off in the past week, leaving a handful to run it (as of 14 Nov 2026, 9:30 a.m. ET; no company statement). Licensed Commons Starbase still (CC BY-SA 4.0, Jenny Hautmann, 12 Mar 2023); not a photo of the Imagine team or Colossus. Update pointers on the Odyssey Episode 1 and Grok Bot 1.0 pages.
+- Dispatch: Helsinki taxi firm Menevä announced Robo Menevä — 100 Model Ys on Tesla Assisted Driving, a licensed host who stays legally responsible, and a pledged public takeover map. Rides had not started as of 14 Nov 2026. Licensed Commons Helsinki Airport taxi station (CC BY 4.0, Lasse Keskinen, 4 Jun 2026); plates and identifiable faces blurred; not Robo Menevä cars. Finland FSD Europe tracker note only; `rolloutLive` stays false.
+
 ## 2026-11-14 — Starship Flight 15 in orbit; Ship 42 catch still ahead
 
 - Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to the Gulf. Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. That catch is still a go/no-go, not a result.
