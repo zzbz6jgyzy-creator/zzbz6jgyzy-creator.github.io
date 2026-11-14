@@ -21,7 +21,7 @@
   "summary": [
     "Ship 42 is the Starship upper stage on Flight 15, stacked with Super Heavy Booster 22. SpaceX is targeting Friday 13 November 2026 from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). That is a published window, not a guaranteed lift-off time.",
     "For the first time SpaceX plans to catch both stages with the tower. Ship 42's job, after deploying 26 Starlink V3 satellites, is a flight of more than 22 hours and then the first Ship catch at Starbase, if the flight-control team is satisfied the vehicle is healthy. The tower has never caught a Starship; it has caught a Super Heavy booster three times, on Flights 5, 7 and 8.",
-    "SpaceX said on 28 October that Ship 42's static fires were complete. Elon Musk quoted that post the same evening. No FAA licence for Flight 15 is published."
+    "SpaceX said on 28 October that Ship 42's static fires were complete. Elon Musk quoted that post the same evening. On 13 November, Tesla Oracle reported that the FAA granted the Flight 15 licence a few hours before the window; we have not seen the FAA's own notice."
   ],
   "sections": [
     {
@@ -280,6 +280,34 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-14",
+      "time": "2026-11-14T00:20:00Z",
+      "kind": "Reported",
+      "text": "Ship 42 is in orbit and the Ship catch is still planned for Saturday. CBS News reports a single Raptor relit for about 10 seconds to put the Ship into its planned orbit, and that a deorbit burn is expected at 3:21 p.m. EST on Saturday (20:21 UTC) ahead of a catch attempt at the pad. We have not seen confirmation that the 26 Starlink V3 satellites were deployed.",
+      "source": "https://www.cbsnews.com/news/spacex-launches-starship-flight-rocket/"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T22:55:00Z",
+      "kind": "Reported",
+      "text": "No booster catch. Gizmodo reports SpaceX opted not to catch Super Heavy and diverted it to a splashdown in the Gulf, and that SpaceX does not yet know the cause. CBS News says controllers diverted the booster because of a technical problem. The time on this entry is approximate.",
+      "source": "https://gizmodo.com/watch-live-as-spacex-tries-to-catch-both-starship-stages-for-the-first-time-2000839576"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T22:47:00Z",
+      "kind": "Reported",
+      "text": "Lift-off. Starship Flight 15 launched from Starbase at 5:47 p.m. ET (22:47 UTC), per Gizmodo and CBS News.",
+      "source": "https://gizmodo.com/watch-live-as-spacex-tries-to-catch-both-starship-stages-for-the-first-time-2000839576"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T21:50:00Z",
+      "kind": "Reported",
+      "text": "Tesla Oracle reports the FAA has granted the Flight 15 licence, a little more than three hours before the window, citing a post by Sawyer Merritt on X. We have not seen an FAA or SpaceX statement ourselves. At our 21:50 UTC check we found no report of a changed launch time: the window is still listed as opening at 4:45 p.m. CT (22:45 UTC).",
+      "source": "https://www.teslaoracle.com/2026/11/13/spacex-is-still-waiting-for-regulatory-approval-hours-ahead-of-flight-15-launch/"
+    },
     {
       "date": "2026-11-12",
       "time": "2026-11-12T16:54:45Z",
