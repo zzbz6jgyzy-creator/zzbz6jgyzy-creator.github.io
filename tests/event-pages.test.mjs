@@ -68,6 +68,18 @@ test("head has standard title, description, canonical, og and twitter tags", () 
   }
 });
 
+test("after the launch window, saved countdown markup uses the after label and Event stays EventScheduled", () => {
+  const html = fs.readFileSync("ship-42.html", "utf8");
+  assert.match(html, /data-cd-state="after"/);
+  assert.match(html, /data-cd-label>In orbit</);
+  assert.doesNotMatch(html, /data-cd-label>Launch window opens</);
+  const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1])).flat();
+  const ev = ld.flat().find((x) => x["@type"] === "Event");
+  assert.equal(ev.eventStatus, "https://schema.org/EventScheduled");
+  assert.doesNotMatch(JSON.stringify(ev), /EventInProgress/);
+  assert.match(ev.description, /in orbit/i);
+});
+
 test("countdown shows window open, then the after label, from the saved markup", () => {
   const src = fs.readFileSync("event-countdown.js", "utf8");
   const el = { attrs: { "data-start": "2026-11-13T22:45:00.000Z", "data-end": "2026-11-14T00:00:00.000Z", "data-after-sub": "closed" }, kids: {},
@@ -154,13 +166,13 @@ test("updates log carries what event-live.js needs, and timed entries sort and r
   const dir = sandbox();
   try {
     const f = path.join(dir, "data/event-pages/starship-flight-15.json"), p = JSON.parse(fs.readFileSync(f, "utf8"));
-    p.updates.push({ date: "2026-11-15", time: "2026-11-15T22:47:00Z", kind: "Disclosed", text: "Lift-off.", source: "https://www.spacex.com/" });
+    p.updates.push({ date: "2026-11-14", time: "2026-11-14T09:00:00Z", kind: "Disclosed", text: "Lift-off.", source: "https://www.spacex.com/" });
     fs.writeFileSync(f, JSON.stringify(p));
     buildEventPages(dir);
     const out = fs.readFileSync(path.join(dir, "starship-flight-15.html"), "utf8");
     const first = out.match(/<ol class="ev-log"[^>]*><li>([\s\S]*?)<\/li>/)[1];
-    assert.match(first, /<time datetime="2026-11-15T22:47:00Z">15 Nov 2026, 22:47 UTC<\/time>/);
-    assert.match(out, /data-ev-latest="2026-11-15T22:47:00Z"/);
+    assert.match(first, /<time datetime="2026-11-14T09:00:00Z">14 Nov 2026, 09:00 UTC<\/time>/);
+    assert.match(out, /data-ev-latest="2026-11-14T09:00:00Z"/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
@@ -204,18 +216,23 @@ test("Ship 42 has a credited photo, a flight timeline, fact cards and a labelled
 
 test("Ship 42 puts the road-to-Flight-15 video before the mission, with no autoplay", () => {
   const page = JSON.parse(fs.readFileSync("data/event-pages/ship-42.json", "utf8"));
-  const road = page.sections[0];
+  const soFar = page.sections[0];
+  const road = page.sections[1];
+  assert.equal(soFar.id, "so-far");
+  assert.equal(soFar.jumpTitle, "Flight so far");
+  assert.equal(soFar.placement, "before-mission");
   assert.equal(road.id, "road");
   assert.equal(road.jumpTitle, "Road to Flight 15");
   assert.equal(road.placement, "before-mission");
   assert.equal(road.embed.kind, "video");
   const html = fs.readFileSync("ship-42.html", "utf8");
   const jump = html.match(/<nav class="ev-jump"[^>]*>([\s\S]*?)<\/nav>/)[1];
-  assert.match(jump, /^<a href="#ev-road">Road to Flight 15<\/a><a href="#ev-mission">The mission<\/a>/);
+  assert.match(jump, /^<a href="#ev-so-far">Flight so far<\/a><a href="#ev-road">Road to Flight 15<\/a><a href="#ev-mission">The mission<\/a>/);
   assert.doesNotMatch(jump, /From a tumbling first flight/);
+  const soFarAt = html.indexOf('id="ev-so-far"');
   const roadAt = html.indexOf('id="ev-road"');
   const missionAt = html.indexOf('id="ev-mission"');
-  assert.ok(roadAt > 0 && roadAt < missionAt);
+  assert.ok(soFarAt > 0 && soFarAt < roadAt && roadAt < missionAt);
   assert.equal((html.match(/id="ev-road"/g) || []).length, 1);
   assert.match(html, /<video controls playsinline preload="metadata" poster="\/assets\/video\/starship-hero-poster\.jpg" width="1920" height="1080" aria-label="Official SpaceX footage from Starship Flights 1 to 14, the Flight 15 preview and Elon Musk's May 2025 Starbase talk, set to Pathfinder by Scott Buckley">/);
   assert.match(html, /<source src="\/assets\/video\/starship-hero-1080p\.mp4" type="video\/mp4" media="\(min-width: 800px\)" \/>/);
@@ -223,8 +240,9 @@ test("Ship 42 puts the road-to-Flight-15 video before the mission, with no autop
   assert.doesNotMatch(html, /\sautoplay\b/i);
   assert.doesNotMatch(html, /electrek/i);
   assert.match(html, /<figcaption>Video: SpaceX \(@SpaceX\), official footage from Starship Flights 1 to 14, the Flight 15 preview and Elon Musk's May 2025 Starbase talk\. Music: 'Pathfinder' by Scott Buckley, <a href="https:\/\/creativecommons\.org\/licenses\/by\/4\.0\/">CC BY 4\.0<\/a> \(<a href="https:\/\/scottbuckley\.com\.au">scottbuckley\.com\.au<\/a>\)\.<\/figcaption>/);
-  assert.match(html, /pending regulatory approval \(as of 13 Nov 2026\)/);
-  assert.match(html, /href="https:\/\/www\.spacex\.com\/launches\/starship-flight-15"[^>]*>SpaceX's Flight 15 page/);
+  assert.match(html, /lifted off from Pad 2 on Friday 13 November/);
+  assert.match(html, /href="https:\/\/x\.com\/SpaceX\/status\/2121479482582441991"[^>]*>SpaceX on X<\/a>/);
+  assert.match(html, /href="https:\/\/www\.spacex\.com\/launches\/starship-flight-15"/);
   assert.match(html, /Steve Jurvetson/);
   assert.match(html, /event-page\.css\?v=20261113a/);
 });
@@ -233,15 +251,16 @@ test("event-page video embed, body links, jumpTitle and before-mission placement
   const dir = sandbox();
   try {
     const f = path.join(dir, "data/event-pages/ship-42.json"), p = JSON.parse(fs.readFileSync(f, "utf8"));
-    p.sections[0].embed.kind = "youtube";
+    const road = p.sections.find((s) => s.id === "road");
+    road.embed.kind = "youtube";
     fs.writeFileSync(f, JSON.stringify(p));
     assert.throws(() => buildEventPages(dir), /unknown embed kind youtube/);
-    p.sections[0].embed.kind = "video";
-    p.sections[0].placement = "after-watch";
+    road.embed.kind = "video";
+    road.placement = "after-watch";
     fs.writeFileSync(f, JSON.stringify(p));
     assert.throws(() => buildEventPages(dir), /unknown section placement after-watch/);
-    p.sections[0].placement = "before-mission";
-    p.sections[0].body[1].linkText = "not on the page";
+    road.placement = "before-mission";
+    road.body[1].linkText = "not on the page";
     fs.writeFileSync(f, JSON.stringify(p));
     assert.throws(() => buildEventPages(dir), /linkText not found/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }

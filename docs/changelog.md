@@ -1,3 +1,12 @@
+## 2026-11-14 — Starship Flight 15 in orbit; Ship 42 catch still ahead
+
+- Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to the Gulf. Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. That catch is still a go/no-go, not a result.
+- `/ship-42.html` now leads with a sourced "Flight so far" log. `/starship-flight-15.html`, the Starship observatory, calendar, homepage feature, live card and promise ledger match that record. Flight 15 stays the next mission until the catch or an ocean return is sourced; it is not in the flown archive.
+- Dual catch is already off the table. The remaining first is a Ship catch on Saturday, if systems stay healthy.
+- After the window closed, the saved countdown markup now shows “In orbit” with JavaScript off. Search records, promise-ledger evidence rows and Ship 42 so-far cards map each claim to its own source URL. Event JSON-LD stays `EventScheduled`; in-orbit status is in the description.
+- Calendar and Starship observatory browser checks now expect the in-orbit copy (in progress / Ship 42 in orbit) instead of the pre-launch window wording, while still checking the published 4:45 p.m. CT clock in California and on Line Islands.
+- Members browser check waits for the newly published comment node instead of asserting it on the same tick as the success toast.
+
 ## 2026-11-14 — Cybercab orders open, and Starship Flight 15 in orbit ahead of today's ship catch
 
 - Dispatch: Invited Tesla customers can now order a Cybercab for $29,990, with a $1,000 non-refundable deposit, a required $299/month autonomy subscription and December 2026 delivery in five Texas cities (as of 14 Nov 2026). Licensed Commons I-280 Palo Alto photo (CC BY-SA 4.0, Daniel Lu, 19 Sep 2026); driver's face and plate area blurred. Not Tesla's order-page graphic. Update pointers on Austin, Fort Worth, San Antonio and 24/7 Robotaxi pages.

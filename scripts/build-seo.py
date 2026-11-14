@@ -604,7 +604,7 @@ def tracker_schema():
 
 
 def starship_event():
-    """Flight 15 Event graph from starship-data.js. NET window, not a SpaceX T-0."""
+    """Flight 15 Event graph from starship-data.js. In-flight when sourced; otherwise a published window, not a T-0."""
     path = os.path.join(ROOT, "starship-data.js")
     if not os.path.exists(path):
         return None

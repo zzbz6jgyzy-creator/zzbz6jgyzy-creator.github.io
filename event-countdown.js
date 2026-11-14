@@ -4,7 +4,9 @@
    Before the start: "T−" and a ticking d hh:mm:ss (data-cd-urgent="soon" in the last 10 minutes, "final" in the last minute). During start..end: "Launch window open".
    After the end: the after label (default "Launched"). The saved HTML always shows the
    absolute time, so the page is correct with JavaScript off and never shows a stale
-   relative time. One timer drives every countdown on the page. */
+   relative time. Once the window has closed, the builder also bakes the after-label
+   into the saved markup so no-JS readers are not stuck on "Launch window opens".
+   One timer drives every countdown on the page. */
 (function () {
   "use strict";
   function attr(el, k, d) { return el.hasAttribute(k) ? el.getAttribute(k) : d; }

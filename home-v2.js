@@ -59,7 +59,8 @@
   const starship = () => {
     if (!(S && S.next)) return null;
     const d = new Date(S.next.start);
-    return { href: "/starship.html", k: "Starship", v: "Flight " + S.next.flight, s: (S.next.precision === "day" ? "NET " : "") + fmtDay(d, { day: "numeric", month: "short", timeZone: S.next.precision === "day" ? "UTC" : undefined }) + " · " + (S.next.headline || "") };
+    const net = !S.next.inFlight && S.next.precision === "day";
+    return { href: "/starship.html", k: "Starship", v: "Flight " + S.next.flight, s: (net ? "NET " : "") + fmtDay(d, { day: "numeric", month: "short", timeZone: net ? "UTC" : undefined }) + " · " + (S.next.headline || "") };
   };
   const st0 = starship(); if (st0) trk.push(st0);
   if (F && F.countries) {
@@ -135,7 +136,7 @@
       return `<a class="hv-c" href="${r.href}"><span class="hv-c-n">${esc(r.title)}</span><span class="hv-c-w">${esc(when)}</span><span class="hv-c-t">${r.day ? "~" + dd + "d" : (dd ? dd + "d " : "") + hh + "h " + String(mm).padStart(2, "0") + "m"}</span></a>`;
     }).join("") || '<p class="hv-c-none">No dated events right now.</p>';
   };
-  evReady.then(() => { if (S && S.next) rows.push({ title: "Starship Flight " + S.next.flight, t: new Date(S.next.start).getTime(), start: S.next.start, day: S.next.precision === "day", href: "/starship.html" });
+  evReady.then(() => { if (S && S.next && !S.next.inFlight) rows.push({ title: "Starship Flight " + S.next.flight, t: new Date(S.next.start).getTime(), start: S.next.start, day: S.next.precision === "day", href: "/starship.html" });
   fetch("/live-data.json", { cache: "no-cache" }).then((r) => r.json()).then((d) => {
     const norm = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
     (d.events || []).forEach((e) => {

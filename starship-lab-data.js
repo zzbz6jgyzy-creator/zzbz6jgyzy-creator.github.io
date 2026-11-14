@@ -1,5 +1,5 @@
 window.STARSHIP_LAB = {
-  updated: "2026-11-08",
+  updated: "2026-11-14",
   note:
     "Lab notes are our read of SpaceX flight pages and the public record. Video is official SpaceX only — recaps, a pre-flight film, or clips already on this site. Recap chips jump inside the highlight edit, not T+ mission time. Flights without a SpaceX recap link the mission page and @SpaceX.",
   phaseOrder: [
@@ -29,23 +29,23 @@ window.STARSHIP_LAB = {
   flights: {
     15: {
       objectives: [
-        "Catch Ship 42 on the Pad 2 tower — first Ship return-to-launch-site, per the SpaceX mission page",
-        "Catch Super Heavy B22 — first Super Heavy V3 catch",
-        "Deploy 26 Starlink V3 satellites, then a more than 22-hour flight before a Ship catch if systems stay healthy",
+        "Catch Ship 42 on the Pad 2 tower — still planned, only if systems stay healthy",
+        "Catch Super Heavy B22 — not achieved; SpaceX diverted the booster to the Gulf",
+        "Deploy 26 Starlink V3 satellites — complete, per SpaceX",
       ],
-      hardware: ["Block 3", "B22", "S42", "OLP-2", "Raptor 3", "26 Starlink V3", "Dual catch attempt"],
-      anomalies: ["No FAA licence published. SpaceX says the flight is pending regulatory approval."],
+      hardware: ["Block 3", "B22", "S42", "OLP-2", "Raptor 3", "26 Starlink V3", "Ship catch pending"],
+      anomalies: ["Booster 22 automatically aborted the Pad 2 return because of a GNC issue, NASASpaceflight quoting Dan Huot. Ship 42 is still in orbit."],
       phases: [
-        { id: "liftoff", tPlus: "NET", result: "pending", note: "SpaceX window opens 4:45 p.m. CT as soon as 13 Nov, pending regulatory approval — not a guaranteed T-0." },
-        { id: "staging", tPlus: "—", result: "pending", note: "Block 3 hot-stage, same family as Flights 12–14." },
-        { id: "boostback", tPlus: "—", result: "pending", note: "Return Super Heavy B22 toward Pad 2." },
-        { id: "booster", tPlus: "—", result: "pending", note: "First Super Heavy V3 catch attempt. Planned profile times are not treated as a flown clock." },
-        { id: "ascent", tPlus: "—", result: "pending", note: "Ship 42 to the catch profile." },
-        { id: "onorbit", tPlus: "—", result: "pending", note: "Planned ~275 km, about 14 orbits, more than 22 hours, per the SpaceX mission page." },
-        { id: "payload", tPlus: "—", result: "pending", note: "26 Starlink V3 satellites, including three camera-modified birds to image the heatshield." },
+        { id: "liftoff", tPlus: "~T+0:00", result: "ok", note: "About 4:47 p.m. CT (22:47 UTC) from Pad 2, per Space.com's live coverage of SpaceX's webcast." },
+        { id: "staging", tPlus: "~T+2:21", result: "ok", note: "SpaceX: hot-staging. Starship's Raptors ignited; Super Heavy began boosting back." },
+        { id: "boostback", tPlus: "", result: "ok", note: "Boostback began. The catch was later called off." },
+        { id: "booster", tPlus: "~T+6:35", result: "fail", note: "SpaceX diverted Super Heavy to an offshore splashdown in the Gulf. NASASpaceflight, quoting Huot: automatic abort on a GNC issue." },
+        { id: "ascent", tPlus: "~T+8:09", result: "ok", note: "Ship 42 completed its ascent burn. SpaceX then went for orbit." },
+        { id: "onorbit", tPlus: "~T+26:10", result: "ok", note: "SpaceX: orbital insertion burn. Second Starship to reach orbit. ~275 km." },
+        { id: "payload", tPlus: "~T+1:17:40", result: "ok", note: "SpaceX: all 26 Starlink V3 satellites in orbit." },
         { id: "relight", tPlus: "—", result: "pending", note: "Deorbit burn only if the team is go for a Ship catch; otherwise a safe ocean deorbit." },
-        { id: "reentry", tPlus: "—", result: "pending", note: "Ship has to come home intact to be caught." },
-        { id: "ship", tPlus: "—", result: "pending", note: "First Ship catch attempt. SpaceX says it flies only if reentry and landing systems are healthy." },
+        { id: "reentry", tPlus: "—", result: "pending", note: "Ship has to come home intact to be caught. SpaceX said the heatshield was healthy at T+7 hours." },
+        { id: "ship", tPlus: "—", result: "pending", note: "First Ship catch attempt still planned about 22.5 hours after launch if systems stay healthy." },
       ],
       spacex: "https://www.spacex.com/launches/starship-flight-15",
       xq: "from:SpaceX Flight 15",
