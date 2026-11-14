@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-14T09:05:51Z",
+ "updated": "2026-11-14T15:53:22Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-11-14T09:05:51Z",
-  "fleet": 12299,
+  "fetched": "2026-11-14T15:53:22Z",
+  "fleet": 12294,
   "versions": [
    {
     "id": "2026.39.100",
-    "installs": 223,
+    "installs": 227,
     "percent": 1.8,
-    "pending": 53
+    "pending": 48
    },
    {
     "id": "2026.39.6",
-    "installs": 39,
+    "installs": 36,
     "percent": 0.3,
     "pending": 1
    },
@@ -26,27 +26,27 @@
    },
    {
     "id": "2026.38.6",
-    "installs": 5237,
-    "percent": 42.6,
-    "pending": 651
+    "installs": 5247,
+    "percent": 42.7,
+    "pending": 639
    },
    {
     "id": "2026.38.5.13",
-    "installs": 59,
-    "percent": 0.5,
-    "pending": 121
+    "installs": 105,
+    "percent": 0.9,
+    "pending": 80
    },
    {
     "id": "2026.38.5.12",
-    "installs": 1813,
-    "percent": 14.7,
-    "pending": 79
+    "installs": 1770,
+    "percent": 14.4,
+    "pending": 78
    },
    {
     "id": "2026.38.5.11",
-    "installs": 2483,
+    "installs": 2481,
     "percent": 20.2,
-    "pending": 144
+    "pending": 143
    },
    {
     "id": "2026.38.5.10",
@@ -62,7 +62,7 @@
    },
    {
     "id": "2026.38.5.1",
-    "installs": 199,
+    "installs": 197,
     "percent": 1.6,
     "pending": 8
    },
@@ -74,13 +74,13 @@
    },
    {
     "id": "2026.38.3.2",
-    "installs": 385,
+    "installs": 380,
     "percent": 3.1,
     "pending": 41
    },
    {
     "id": "2026.38.3.1",
-    "installs": 116,
+    "installs": 114,
     "percent": 0.9,
     "pending": 11
    },
@@ -92,7 +92,7 @@
    },
    {
     "id": "2026.38",
-    "installs": 11,
+    "installs": 10,
     "percent": 0.1,
     "pending": 0
    },
@@ -122,13 +122,13 @@
    },
    {
     "id": "2026.32.7",
-    "installs": 87,
+    "installs": 86,
     "percent": 0.7,
     "pending": 3
    },
    {
     "id": "2026.32.3",
-    "installs": 64,
+    "installs": 63,
     "percent": 0.5,
     "pending": 6
    },
@@ -164,7 +164,7 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 63,
+    "installs": 62,
     "percent": 0.5,
     "pending": 1
    },
@@ -182,7 +182,7 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 76,
+    "installs": 75,
     "percent": 0.6,
     "pending": 3
    },
@@ -242,7 +242,7 @@
    },
    {
     "id": "2026.20.6.1",
-    "installs": 129,
+    "installs": 128,
     "percent": 1.0,
     "pending": 2
    },
@@ -491,66 +491,10 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-14T09:05:51Z",
+  "fetched": "2026-11-14T15:53:22Z",
   "items": [
    {
-    "t": "2026-11-14T08:44:10Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-14T08:39:28Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model 3 AWD LR (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-14T08:07:07Z",
-    "to": "2026.38.5.11",
-    "from": "2026.38.5.1",
-    "model": "Model 3 SR (2022)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-14T08:01:18Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-14T07:53:09Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-14T07:17:40Z",
-    "to": "2026.38.5.12",
-    "from": "2026.38.5.1",
-    "model": "Model 3 RWD LR (2025)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-14T07:09:07Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model 3 RWD LR (2025)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-14T06:54:40Z",
+    "t": "2026-11-14T15:28:15Z",
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
     "model": "Model 3 Performance (2024)",
@@ -558,20 +502,76 @@
     "country": "United States"
    },
    {
-    "t": "2026-11-14T06:39:17Z",
+    "t": "2026-11-14T15:10:03Z",
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
-    "model": "Model X AWD (2023)",
+    "model": "Cybertruck AWD (2026)",
     "hw": "4.0",
     "country": "United States"
    },
    {
-    "t": "2026-11-14T06:23:54Z",
+    "t": "2026-11-14T15:00:38Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model 3 RWD LR (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-14T14:59:52Z",
+    "to": "2026.39.100",
+    "from": "2026.39.6",
+    "model": "Model Y RWD LR (2025)",
+    "hw": "4.0",
+    "country": "Netherlands"
+   },
+   {
+    "t": "2026-11-14T14:25:03Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y RWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-14T13:31:29Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model X Plaid (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-14T13:30:11Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.11",
+    "model": "Model Y AWD LR (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-14T13:11:05Z",
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
     "model": "Model Y AWD LR (2026)",
     "hw": "4.0",
     "country": "United States"
+   },
+   {
+    "t": "2026-11-14T13:07:44Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "3.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-14T12:58:51Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model S AWD (2024)",
+    "hw": "3.0",
+    "country": "Canada"
    }
   ]
  }
