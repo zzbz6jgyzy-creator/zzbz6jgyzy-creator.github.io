@@ -5,13 +5,13 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ship-42@superchargeddaily.com
-DTSTAMP:20261114T092000Z
-SEQUENCE:457040
+DTSTAMP:20261114T212141Z
+SEQUENCE:457761
 DTSTART:20261113T224500Z
 DTEND:20261114T000000Z
 SUMMARY:Ship 42 launch (Starship Flight 15)
-DESCRIPTION:In orbit\, catch pending Saturday. Times can move: check https:
- //superchargeddaily.com/ship-42.html for the latest.
+DESCRIPTION:Caught at Starbase\, booster splashdown. Times can move: check 
+ https://superchargeddaily.com/ship-42.html for the latest.
 LOCATION:Starbase\, Texas (Pad 2)
 URL:https://superchargeddaily.com/ship-42.html
 STATUS:TENTATIVE

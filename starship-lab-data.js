@@ -29,12 +29,12 @@ window.STARSHIP_LAB = {
   flights: {
     15: {
       objectives: [
-        "Catch Ship 42 on the Pad 2 tower — still planned, only if systems stay healthy",
+        "Catch Ship 42 on the Pad 2 tower — complete, per SpaceX at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov",
         "Catch Super Heavy B22 — not achieved; SpaceX diverted the booster to the Gulf",
         "Deploy 26 Starlink V3 satellites — complete, per SpaceX",
       ],
-      hardware: ["Block 3", "B22", "S42", "OLP-2", "Raptor 3", "26 Starlink V3", "Ship catch pending"],
-      anomalies: ["Booster 22 automatically aborted the Pad 2 return because of a GNC issue, NASASpaceflight quoting Dan Huot. Ship 42 is still in orbit."],
+      hardware: ["Block 3", "B22", "S42", "OLP-2", "Raptor 3", "26 Starlink V3", "Ship caught"],
+      anomalies: ["Booster 22 automatically aborted the Pad 2 return because of a GNC issue, NASASpaceflight quoting Dan Huot. Ship 42 was caught at Starbase; the booster was not."],
       phases: [
         { id: "liftoff", tPlus: "~T+0:00", result: "ok", note: "About 4:47 p.m. CT (22:47 UTC) from Pad 2, per Space.com's live coverage of SpaceX's webcast." },
         { id: "staging", tPlus: "~T+2:21", result: "ok", note: "SpaceX: hot-staging. Starship's Raptors ignited; Super Heavy began boosting back." },
@@ -43,9 +43,9 @@ window.STARSHIP_LAB = {
         { id: "ascent", tPlus: "~T+8:09", result: "ok", note: "Ship 42 completed its ascent burn. SpaceX then went for orbit." },
         { id: "onorbit", tPlus: "~T+26:10", result: "ok", note: "SpaceX: orbital insertion burn. Second Starship to reach orbit. ~275 km." },
         { id: "payload", tPlus: "~T+1:17:40", result: "ok", note: "SpaceX: all 26 Starlink V3 satellites in orbit." },
-        { id: "relight", tPlus: "—", result: "pending", note: "Deorbit burn only if the team is go for a Ship catch; otherwise a safe ocean deorbit." },
-        { id: "reentry", tPlus: "—", result: "pending", note: "Ship has to come home intact to be caught. SpaceX said the heatshield was healthy at T+7 hours." },
-        { id: "ship", tPlus: "—", result: "pending", note: "First Ship catch attempt still planned about 22.5 hours after launch if systems stay healthy." },
+        { id: "relight", tPlus: "~T+21:35", result: "ok", note: "SpaceX at 3:25 p.m. ET (12:25 p.m. PT) on 14 Nov: good deorbit burn, on course for a Starbase catch." },
+        { id: "reentry", tPlus: "~T+22:10", result: "ok", note: "SpaceX at 3:58 p.m. ET (12:58 p.m. PT): Starship is reentering Earth’s atmosphere." },
+        { id: "ship", tPlus: "~T+22:32", result: "ok", note: "SpaceX at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov: Mechazilla catches Starship. First ship return-to-launch-site catch. Booster 22 was not caught." },
       ],
       spacex: "https://www.spacex.com/launches/starship-flight-15",
       xq: "from:SpaceX Flight 15",
