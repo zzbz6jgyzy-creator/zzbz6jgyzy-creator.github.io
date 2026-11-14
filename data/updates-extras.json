@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-13T21:40:56Z",
+ "updated": "2026-11-14T01:52:27Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-11-13T21:40:56Z",
-  "fleet": 12300,
+  "fetched": "2026-11-14T01:52:27Z",
+  "fleet": 12299,
   "versions": [
    {
     "id": "2026.39.100",
-    "installs": 205,
-    "percent": 1.7,
-    "pending": 71
+    "installs": 216,
+    "percent": 1.8,
+    "pending": 60
    },
    {
     "id": "2026.39.6",
-    "installs": 54,
+    "installs": 44,
     "percent": 0.4,
     "pending": 1
    },
@@ -26,20 +26,20 @@
    },
    {
     "id": "2026.38.6",
-    "installs": 5227,
+    "installs": 5228,
     "percent": 42.5,
-    "pending": 665
+    "pending": 661
    },
    {
     "id": "2026.38.5.12",
-    "installs": 1858,
-    "percent": 15.1,
-    "pending": 88
+    "installs": 1865,
+    "percent": 15.2,
+    "pending": 85
    },
    {
     "id": "2026.38.5.11",
-    "installs": 2495,
-    "percent": 20.3,
+    "installs": 2488,
+    "percent": 20.2,
     "pending": 146
    },
    {
@@ -56,7 +56,7 @@
    },
    {
     "id": "2026.38.5.1",
-    "installs": 200,
+    "installs": 201,
     "percent": 1.6,
     "pending": 8
    },
@@ -68,7 +68,7 @@
    },
    {
     "id": "2026.38.3.2",
-    "installs": 395,
+    "installs": 393,
     "percent": 3.2,
     "pending": 41
    },
@@ -158,7 +158,7 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 64,
+    "installs": 63,
     "percent": 0.5,
     "pending": 1
    },
@@ -236,8 +236,8 @@
    },
    {
     "id": "2026.20.6.1",
-    "installs": 130,
-    "percent": 1.1,
+    "installs": 129,
+    "percent": 1.0,
     "pending": 2
    },
    {
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-13T21:40:56Z",
+  "fetched": "2026-11-14T01:52:27Z",
   "items": [
+   {
+    "t": "2026-11-13T22:20:46Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-11-13T19:49:06Z",
     "to": "2026.38.6",
@@ -564,14 +572,6 @@
     "model": "Model 3 AWD LR (2026)",
     "hw": "4.0",
     "country": "Slovenia"
-   },
-   {
-    "t": "2026-11-13T01:12:01Z",
-    "to": "2026.38.5.12",
-    "from": "2026.38.5.11",
-    "model": "Model 3 AWD LR (2024)",
-    "hw": "4.0",
-    "country": "United States"
    }
   ]
  }
