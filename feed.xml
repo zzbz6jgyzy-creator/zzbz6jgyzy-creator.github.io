@@ -6,7 +6,25 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 14 Nov 2026 08:56:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 14:56:00 +0000</lastBuildDate>
+    <item>
+      <title>SpaceX reportedly cut most of the Grok Imagine team, a week after Starlink asked fans to make an ad with it</title>
+      <link>https://superchargeddaily.com/dispatch/grok-imagine-team-cut.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-imagine-team-cut.html</guid>
+      <pubDate>Sat, 14 Nov 2026 14:56:00 +0000</pubDate>
+      <category>Grok / Grok Imagine</category>
+      <description>The Information reports about 60 people on Grok Imagine were laid off in the past week, leaving a handful to run it. The tool made 2 billion videos a month in Q1, Starlink is running an Imagine ad contest, and Musk's Odyssey movie deadline is 47 days away. No company statement yet.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/spacex-starbase-highway-2023.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>A Helsinki taxi firm bought 100 Model Ys to run on Tesla Assisted Driving, and says it will publish every time a driver steps in</title>
+      <link>https://superchargeddaily.com/dispatch/robo-meneva-helsinki-tesla-taxis.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/robo-meneva-helsinki-tesla-taxis.html</guid>
+      <pubDate>Sat, 14 Nov 2026 14:56:00 +0000</pubDate>
+      <category>Tesla / FSD in Europe</category>
+      <description>Menevä, a Finnish taxi company with more than 1,000 cars, is starting Robo Menevä in Helsinki: 100 Tesla Model Ys on Tesla Assisted Driving, a licensed &quot;host&quot; up front who stays legally responsible, and a public map of every takeover. Rides haven't started yet (as of 14 Nov 2026).</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/helsinki-airport-taxi-station-meneva.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Starship Flight 15: the booster diverted, the ship is in orbit, and the first ship catch is due today</title>
       <link>https://superchargeddaily.com/dispatch/starship-f15-orbit-catch-day.html</link>
@@ -708,24 +726,6 @@
       <category>Robotaxi</category>
       <description>No injuries, airbag deployments or pedestrians hit in 3.1 million driverless miles. I ran the odds on each zero and put it next to Waymo’s 271 million miles.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/robotaxi-safety-hero.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Musk says Terafab’s output will rank in the top 20 of world GDP. I checked the math</title>
-      <link>https://superchargeddaily.com/dispatch/terafab-top-20-gdp-math.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/terafab-top-20-gdp-math.html</guid>
-      <pubDate>Wed, 21 Oct 2026 13:38:07 +0000</pubDate>
-      <category>Terafab</category>
-      <description>That’s about $1.14 trillion a year: roughly 69% of the 2026 world chip market and six times TSMC’s pace. What’s on file, what’s reported, and what the math requires.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/terafab-wafer-hero.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>SpaceX just put dates on Starship’s next five steps. Here’s each one next to the old target, and the launch caps the plan runs into</title>
-      <link>https://superchargeddaily.com/dispatch/starship-flight-15-catch-timeline.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starship-flight-15-catch-timeline.html</guid>
-      <pubDate>Wed, 21 Oct 2026 07:37:42 +0000</pubDate>
-      <category>Starship</category>
-      <description>A double catch on Flight 15 next month, a reflown ship and orbital refuelling early in 2027, then weekly flights. Each date checked against earlier targets and the FAA launch caps.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starship-booster-catch-approach.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.13</title>

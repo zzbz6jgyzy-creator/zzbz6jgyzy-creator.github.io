@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/robo-meneva-helsinki-tesla-taxis.html",
+      "image": "/assets/dispatch/helsinki-airport-taxi-station-meneva.jpg",
+      "title": "A Helsinki taxi firm bought 100 Model Ys to run on Tesla Assisted Driving, and says it will publish every time a driver steps in",
+      "summary": "Menevä, a Finnish taxi company with more than 1,000 cars, is starting Robo Menevä in Helsinki: 100 Tesla Model Ys on Tesla Assisted Driving, a licensed \"host\" up front who stays legally responsible, and a public map of every takeover. Rides haven't started yet (as of 14 Nov 2026).",
+      "tag": "Tesla / FSD in Europe",
+      "date": "2026-11-14T14:56:00Z",
+      "thumb": "/assets/dispatch/helsinki-airport-taxi-station-meneva-480w.webp"
+    },
+    {
       "url": "/dispatch/cybercab-orders-open.html",
       "image": "/assets/dispatch/tesla-cybercab-i280-palo-alto-2026.jpg",
       "title": "Invited customers can now order a Cybercab for $29,990. The $299 a month is the real price",
@@ -216,16 +225,7 @@
       "tag": "FSD",
       "date": "2026-11-11T14:55:53Z",
       "thumb": "/assets/dispatch/helsinki-lansivayla-tesla-model-3-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-matrix-headlights-nhtsa.html",
-      "image": "/assets/dispatch/tesla-model-3-highland-osaka-ibaraki.jpg",
-      "title": "Tesla comments on NHTSA’s plan to overhaul U.S. headlight rules, asking that cameras, software and more automaker seats be covered (as of 10 Nov 2026)",
-      "summary": "Tesla’s 9 Nov 2026 comment on NHTSA’s notice of intent to form a committee to modernize FMVSS 108 asks that the overhaul cover camera-guided matrix LED headlights and over-the-air changes, and that more automaker seats be added. This is a public comment, not a petition for rulemaking. No rule has changed.",
-      "tag": "Regulation",
-      "date": "2026-11-10T20:38:00Z",
-      "thumb": "/assets/dispatch/tesla-model-3-highland-osaka-ibaraki-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-14T08:56:00Z"
+  "articlesUpdated": "2026-11-14T14:56:00Z"
 }

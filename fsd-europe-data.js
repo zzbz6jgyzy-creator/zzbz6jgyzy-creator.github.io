@@ -1185,7 +1185,7 @@ window.FSD_EUROPE = {
         "status": "unverified",
         "date": null,
         "evidence": [],
-        "note": "First customer installation date not yet confirmed."
+        "note": "First customer installation date not yet confirmed. Commercial taxi use announced (Menevä, 100 Model Y, rides not started)."
       },
       "conditions": {
         "hardware": null,
@@ -1223,7 +1223,7 @@ window.FSD_EUROPE = {
       "date": "2026-11-10",
       "pop": 5.6,
       "regulator": "Traficom",
-      "note": "National recognition recorded on 10 Nov 2026. Traficom says Tesla can start offering the system immediately; Tesla listing is not independently confirmed. Driver supervision remains required.",
+      "note": "National recognition recorded on 10 Nov 2026. Traficom says Tesla can start offering the system immediately; Tesla listing is not independently confirmed. Driver supervision remains required. Commercial taxi use announced (Menevä, 100 Model Y, rides not started).",
       "sources": [
         {
           "label": "Traficom, English notice, 11 Nov 2026",
@@ -3141,6 +3141,14 @@ window.FSD_EUROPE = {
     }
   ],
   "changelog": [
+    {
+      "date": "2026-11-14",
+      "code": "FI",
+      "type": "statement",
+      "text": "Commercial taxi use announced (Menevä, 100 Model Y, rides not started).",
+      "source": "https://superchargeddaily.com/dispatch/robo-meneva-helsinki-tesla-taxis.html",
+      "evidence": "media"
+    },
     {
       "date": "2026-11-11",
       "code": "FI",
