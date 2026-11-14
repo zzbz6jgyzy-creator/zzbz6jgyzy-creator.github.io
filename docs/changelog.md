@@ -4,6 +4,7 @@
 - `/ship-42.html` now leads with a sourced "Flight so far" log. `/starship-flight-15.html`, the Starship observatory, calendar, homepage feature, live card and promise ledger match that record. Flight 15 stays the next mission until the catch or an ocean return is sourced; it is not in the flown archive.
 - Dual catch is already off the table. The remaining first is a Ship catch on Saturday, if systems stay healthy.
 - After the window closed, the saved countdown markup now shows “In orbit” with JavaScript off. Search records, promise-ledger evidence rows and Ship 42 so-far cards map each claim to its own source URL. Event JSON-LD stays `EventScheduled`; in-orbit status is in the description.
+- Calendar and Starship observatory browser checks now expect the in-orbit copy (in progress / Ship 42 in orbit) instead of the pre-launch window wording, while still checking the published 4:45 p.m. CT clock in California and on Line Islands.
 
 ## 2026-11-14 — Cybercab orders open, and Starship Flight 15 in orbit ahead of today's ship catch
 
