@@ -728,20 +728,28 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starship-booster-catch-approach.jpg" type="image/jpeg" />
     </item>
     <item>
+      <title>Tracker: 2026.38.5.13</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.5.13-2026-11-14T09:05:51.000Z-19</guid>
+      <pubDate>Sat, 14 Nov 2026 09:05:51 +0000</pubDate>
+      <category>software</category>
+      <description>2026.38.5.13 first appeared in the Teslascope sample with 19 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
+    </item>
+    <item>
+      <title>Tracker: Flight 15 change</title>
+      <link>https://superchargeddaily.com/starship.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/starship.html#logged-starship:schedule-2026-11-14T00:00:00.000Z-Flight-15-lifted-off-13-Nov-at</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <category>starship</category>
+      <description>Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.</description>
+    </item>
+    <item>
       <title>Tracker: Starlink McDowell snapshot</title>
       <link>https://superchargeddaily.com/starlink.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-13T00:48:24.000Z-11193</guid>
       <pubDate>Fri, 13 Nov 2026 00:48:24 +0000</pubDate>
       <category>starlink</category>
       <description>McDowell snapshot: inOrbit 11,204 → 11,193; working 11,190 → 11,179. This is a published table snapshot, not a live operator feed.</description>
-    </item>
-    <item>
-      <title>Tracker: Flight 15 change</title>
-      <link>https://superchargeddaily.com/starship.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/starship.html#logged-starship:schedule-2026-11-13T00:00:00.000Z-Re-checked-SpaceX-s-Flight-15-</guid>
-      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
-      <category>starship</category>
-      <description>Re-checked SpaceX’s Flight 15 mission page on 13 Nov 2026: the window is still as soon as Friday 13 November from Pad 2, opening 4:45 p.m. CT, pending regulatory approval. Ship 42 moved to the pad ahead of launch (SpaceX, 13 Nov 00:56 UTC). Dual catch, 26 Starlink V3, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published. This is a re-check, not a new T-0.</description>
     </item>
     <item>
       <title>Tracker: 2026.39.100</title>
@@ -814,14 +822,6 @@
       <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
       <category>fsd</category>
       <description>Tesla Europe: &quot;Now approved in Latvia. Rollout begins soon.&quot; No date given.</description>
-    </item>
-    <item>
-      <title>Tracker: 2026.38.5.6</title>
-      <link>https://superchargeddaily.com/updates.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.38.5.6-2026-10-24T23:42:11.000Z-62</guid>
-      <pubDate>Sat, 24 Oct 2026 23:42:11 +0000</pubDate>
-      <category>software</category>
-      <description>2026.38.5.6 first appeared in the Teslascope sample with 62 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.</description>
     </item>
   </channel>
 </rss>

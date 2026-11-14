@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-14T09:05:55.556Z",
+  "generatedAt": "2026-11-14T09:21:38.897Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -286,21 +286,72 @@
   ],
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:newest-reporting",
+      "type": "appeared",
+      "factId": "tesla-software:wave:2026.38.5.13",
       "topic": "tesla-software",
       "tracker": "software",
-      "field": "newest-reporting",
-      "previous": "2026.39.100",
-      "next": "2026.38.5.13",
+      "field": "wave:2026.38.5.13",
+      "previous": "0",
+      "next": "19",
       "at": "2026-11-14T09:05:51.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3273 cars)",
+      "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Newest reporting build changed from 2026.39.100 to 2026.38.5.13.",
-      "title": "Newest reporting build",
-      "id": "changed|tesla-software:newest-reporting|2026-11-14T09:05:51.000Z|2026.38.5.13"
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.13 first appeared in the Teslascope sample with 19 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "title": "2026.38.5.13",
+      "id": "appeared|tesla-software:wave:2026.38.5.13|2026-11-14T09:05:51.000Z|19"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starship-f15-orbit-catch-day.html",
+      "topic": "starship",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Starship Flight 15: the booster diverted, the ship is in orbit, and the first ship catch is due today",
+      "at": "2026-11-14T08:56:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starship-f15-orbit-catch-day.html",
+      "href": "/dispatch/starship-f15-orbit-catch-day.html",
+      "summary": "Starship Flight 15 launched Nov 13 at 5:48 p.m. ET and put 26 Starlink V3 satellites in orbit, but Super Heavy Booster 22 diverted to a Gulf splashdown instead of a catch. The ship is set to try the first-ever ship catch at Starbase around 4:21 p.m. ET (1:21 p.m. PT) on Nov 14 (as of 14 Nov 2026, 3:44 a.m. ET).",
+      "title": "Starship Flight 15: the booster diverted, the ship is in orbit, and the first ship catch is due today",
+      "id": "logged|dispatch:/dispatch/starship-f15-orbit-catch-day.html|2026-11-14T08:56:00.000Z|Starship Flight 15: the booster diverted, the ship is in orbit, and the first ship catch is due today"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/cybercab-orders-open.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Invited customers can now order a Cybercab for $29,990. The $299 a month is the real price",
+      "at": "2026-11-14T08:56:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/cybercab-orders-open.html",
+      "href": "/dispatch/cybercab-orders-open.html",
+      "summary": "Tesla has started inviting select customers to buy a Cybercab for personal use: $29,990, a $1,000 non-refundable deposit, a required $299/month autonomy subscription and December 2026 delivery in five Texas cities (as of 14 Nov 2026). Musk already says the fee is too high.",
+      "title": "Invited customers can now order a Cybercab for $29,990. The $299 a month is the real price",
+      "id": "logged|dispatch:/dispatch/cybercab-orders-open.html|2026-11-14T08:56:00.000Z|Invited customers can now order a Cybercab for $29,990. The $299 a month is the real price"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+      "at": "2026-11-14T00:00:00.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "SpaceX on X",
+      "sourceUrl": "https://x.com/SpaceX/status/2121479482582441991",
+      "href": "/starship.html#schedule",
+      "summary": "Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-14T00:00:00.000Z|Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet."
     },
     {
       "type": "logged",
@@ -556,40 +607,6 @@
       "summary": "Claroc, which sells security for AI-built apps, says 35,578 of 37,571 live Grok Build apps opened for anyone as of 10 Nov 2026, including 24 built by SpaceXSI and X staff, which were pulled after reporters asked. This is a report, not a proven breach.",
       "title": "Security firm says 94.7% of live Grok Build apps opened without sign-in, including 24 from SpaceXSI staff (as of 10 Nov 2026)",
       "id": "logged|dispatch:/dispatch/grok-build-open-apps.html|2026-11-11T14:55:53.000Z|Security firm says 94.7% of live Grok Build apps opened without sign-in, including 24 from SpaceXSI staff (as of 10 Nov 2026)"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-fcc-800mhz-review.html",
-      "topic": "starlink",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026",
-      "at": "2026-11-11T08:43:07.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-fcc-800mhz-review.html",
-      "href": "/dispatch/spacex-fcc-800mhz-review.html",
-      "summary": "The FCC has accepted SpaceX’s applications to take control of Grain Management’s 546 paired 800 MHz licenses for filing. That starts the review; it is not approval. Comments are due 1 Dec 2026, and the build-out rules Grain agreed to would pass to SpaceX if the transfer is approved.",
-      "title": "FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026",
-      "id": "logged|dispatch:/dispatch/spacex-fcc-800mhz-review.html|2026-11-11T08:43:07.000Z|FCC accepts SpaceX’s 800 MHz applications for filing. Comments are due 1 Dec 2026"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-singulus-100gw-solar.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)",
-      "at": "2026-11-11T02:35:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-singulus-100gw-solar.html",
-      "href": "/dispatch/spacex-singulus-100gw-solar.html",
-      "summary": "SINGULUS says it has signed a contract with SpaceX for a turnkey heterojunction solar-cell line as SpaceX expands satellite manufacturing in Bastrop, Texas, with the first line worth more than €60 million and due in the first half of 2027. SpaceX and SINGULUS say production will scale to support more than 100 GW of equipment. Musk says 100 GW a year is already ordered.",
-      "title": "SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)",
-      "id": "logged|dispatch:/dispatch/spacex-singulus-100gw-solar.html|2026-11-11T02:35:00.000Z|SpaceX orders solar-cell factory gear from Germany, and Musk says 100 GW a year is already ordered (as of 10 Nov 2026)"
     },
     {
       "type": "appeared",
@@ -1202,23 +1219,6 @@
       "summary": "Texas Cybercab registrations moved from 420 to 463. A registered car isn’t necessarily in service yet.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-25T00:00:00.000Z|463"
-    },
-    {
-      "type": "appeared",
-      "factId": "tesla-software:wave:2026.38.5.6",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.5.6",
-      "previous": "0",
-      "next": "62",
-      "at": "2026-10-24T23:42:11.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.6 first appeared in the Teslascope sample with 62 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
-      "title": "2026.38.5.6",
-      "id": "appeared|tesla-software:wave:2026.38.5.6|2026-10-24T23:42:11.000Z|62"
     },
     {
       "type": "logged",
@@ -1994,14 +1994,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
-      "lastVerified": "2026-11-13T00:00:00.000Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
+      "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
       "lastVerified": "2026-11-13T08:50:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -2015,14 +2015,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
       "lastVerified": "2026-11-13T22:46:43.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -2036,35 +2036,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-14T09:05:55.556Z",
+      "lastChecked": "2026-11-14T09:21:38.897Z",
       "lastVerified": "2026-11-14T09:05:51.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2073,85 +2073,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.536Z",
-      "finished": "2026-11-14T09:05:55.541Z"
+      "started": "2026-11-14T09:21:38.873Z",
+      "finished": "2026-11-14T09:21:38.879Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.541Z",
-      "finished": "2026-11-14T09:05:55.541Z"
+      "started": "2026-11-14T09:21:38.879Z",
+      "finished": "2026-11-14T09:21:38.879Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.541Z",
-      "finished": "2026-11-14T09:05:55.542Z"
+      "started": "2026-11-14T09:21:38.879Z",
+      "finished": "2026-11-14T09:21:38.879Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.542Z",
-      "finished": "2026-11-14T09:05:55.549Z"
+      "started": "2026-11-14T09:21:38.879Z",
+      "finished": "2026-11-14T09:21:38.888Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.549Z",
-      "finished": "2026-11-14T09:05:55.553Z"
+      "started": "2026-11-14T09:21:38.888Z",
+      "finished": "2026-11-14T09:21:38.892Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.553Z",
-      "finished": "2026-11-14T09:05:55.553Z"
+      "started": "2026-11-14T09:21:38.892Z",
+      "finished": "2026-11-14T09:21:38.893Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.553Z",
-      "finished": "2026-11-14T09:05:55.554Z"
+      "started": "2026-11-14T09:21:38.893Z",
+      "finished": "2026-11-14T09:21:38.894Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.554Z",
-      "finished": "2026-11-14T09:05:55.554Z"
+      "started": "2026-11-14T09:21:38.894Z",
+      "finished": "2026-11-14T09:21:38.894Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.554Z",
-      "finished": "2026-11-14T09:05:55.554Z"
+      "started": "2026-11-14T09:21:38.894Z",
+      "finished": "2026-11-14T09:21:38.894Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.554Z",
-      "finished": "2026-11-14T09:05:55.556Z"
+      "started": "2026-11-14T09:21:38.894Z",
+      "finished": "2026-11-14T09:21:38.896Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.556Z",
-      "finished": "2026-11-14T09:05:55.556Z"
+      "started": "2026-11-14T09:21:38.896Z",
+      "finished": "2026-11-14T09:21:38.897Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.556Z",
-      "finished": "2026-11-14T09:05:55.556Z"
+      "started": "2026-11-14T09:21:38.897Z",
+      "finished": "2026-11-14T09:21:38.897Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-14T09:05:55.556Z",
-      "finished": "2026-11-14T09:05:55.556Z"
+      "started": "2026-11-14T09:21:38.897Z",
+      "finished": "2026-11-14T09:21:38.897Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-14T09:05:55.556Z",
+    "generatedAt": "2026-11-14T09:21:38.897Z",
     "factCount": 20,
     "changeCount": 98,
     "conflictCount": 2,
