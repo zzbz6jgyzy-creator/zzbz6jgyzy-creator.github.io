@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T09:05:51Z",
+  "updated": "2026-11-14T15:53:22Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3273,
@@ -8,9 +8,9 @@
     {
       "id": "2026.38.5.13",
       "date": "2026-11-13",
-      "count": 19,
+      "count": 35,
       "fleet": 3273,
-      "percent": 0.6,
+      "percent": 1.1,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -53,19 +53,19 @@
         "CA"
       ],
       "countryCounts": {
-        "US": 18,
-        "CA": 1
+        "US": 33,
+        "CA": 2
       },
-      "pending": 53,
+      "pending": 40,
       "firstSeen": "2026-11-13T23:33:09Z",
-      "lastSeen": "2026-11-14T08:44:10Z"
+      "lastSeen": "2026-11-14T15:28:15Z"
     },
     {
       "id": "2026.39.100",
       "date": "2026-11-11",
-      "count": 31,
+      "count": 33,
       "fleet": 3273,
-      "percent": 0.9,
+      "percent": 1.0,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -115,7 +115,7 @@
         "SI"
       ],
       "countryCounts": {
-        "NL": 13,
+        "NL": 15,
         "CZ": 5,
         "BE": 5,
         "DK": 3,
@@ -125,9 +125,9 @@
         "EE": 1,
         "SI": 1
       },
-      "pending": 13,
+      "pending": 11,
       "firstSeen": "2026-11-11T16:28:06Z",
-      "lastSeen": "2026-11-14T02:30:09Z"
+      "lastSeen": "2026-11-14T14:59:52Z"
     },
     {
       "id": "2026.38.4.5",
@@ -850,7 +850,7 @@
     {
       "id": "2026.38.5.1",
       "date": "2026-10-13",
-      "count": 1030,
+      "count": 1031,
       "fleet": 3273,
       "percent": 31.5,
       "fsd": null,
@@ -898,15 +898,15 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 964,
+        "US": 965,
         "CA": 59,
         "MX": 4,
         "UA": 2,
         "PR": 1
       },
-      "pending": 7,
+      "pending": 6,
       "firstSeen": "2026-10-13T21:28:13Z",
-      "lastSeen": "2026-11-06T18:10:38Z"
+      "lastSeen": "2026-11-14T09:09:18Z"
     },
     {
       "id": "2026.38.5",
