@@ -1,7 +1,7 @@
 {
  "version": 1,
- "checked": "2026-11-14T02:24:05Z",
- "editorialUpdated": "2026-11-13T08:50:00+00:00",
+ "checked": "2026-11-14T09:21:28Z",
+ "editorialUpdated": "2026-11-14T09:20:00+00:00",
  "presets": [
   {
    "name": "Brownsville",
@@ -649,11 +649,31 @@
    "end": "2026-11-13T18:00:00-06:00",
    "date": "2026-11-13",
    "precision": "datetime",
-   "status": "net",
-   "note": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Ship 42 moved to the pad on 12 Nov (SpaceX, 13 Nov 00:56 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published. Re-checked 13 Nov 2026.",
+   "status": "in-flight",
+   "note": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. Catch is still a go/no-go. Checked 14 Nov 2026.",
    "where": "Starbase · Pad 2",
    "href": "https://www.spacex.com/launches/starship-flight-15",
    "sources": [
+    {
+     "href": "https://x.com/SpaceX/status/2121479482582441991",
+     "label": "x.com"
+    },
+    {
+     "href": "https://x.com/SpaceX/status/2121394268652839309",
+     "label": "x.com"
+    },
+    {
+     "href": "https://x.com/SpaceX/status/2121376372576915909",
+     "label": "x.com"
+    },
+    {
+     "href": "https://x.com/SpaceX/status/2121374779680964991",
+     "label": "x.com"
+    },
+    {
+     "href": "https://www.space.com/news/live/spacex-starship-flight-15-live-updates-nov-13-2026-starship-first-double-landing-attempt",
+     "label": "space.com"
+    },
     {
      "href": "https://x.com/SpaceX/status/2121044579470233638",
      "label": "x.com"
@@ -695,7 +715,7 @@
    "coverage": {
     "url": "https://www.spacex.com/launches/starship-flight-15",
     "article": "",
-    "status": "scheduled"
+    "status": "live"
    },
    "pad": {
     "id": "sb2",

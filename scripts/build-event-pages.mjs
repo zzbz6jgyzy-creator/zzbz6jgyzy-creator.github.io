@@ -209,7 +209,7 @@ function pageMain(p, ev, articles) {
     <div class="ev-hero-main">
     <p class="ev-kicker">${esc(p.kicker)}</p>
     <h1>${esc(p.title)}</h1>
-    ${countdownHtml(ev, p.windowNote)}
+    ${countdownHtml(ev, p.windowNote, "evc", p)}
     ${updates.length ? `<p class="ev-latest"><span class="ev-latest-k">Latest</span> <time datetime="${esc(stamp(updates[0]))}">${esc(when(updates[0]))}</time> ${chip(updates[0].kind)} <a href="#updates" data-ev-latest-line>${esc(updates[0].text.length > 140 ? updates[0].text.slice(0, 137).replace(/\s+\S*$/, "") + "…" : updates[0].text)}</a></p>` : ""}
     <p class="ev-where">${esc(p.location.name)}</p>
     <div class="ev-share" data-share><a class="ev-share-x" href="https://x.com/intent/post?text=${encodeURIComponent(p.title)}&amp;url=${encodeURIComponent(url)}&amp;via=ALJR86" target="_blank" rel="noopener">Share on X</a><button type="button" data-share-copy data-url="${esc(url)}">Copy link</button><button type="button" data-share-native data-url="${esc(url)}" data-title="${esc(p.title)}" hidden>Share…</button></div>

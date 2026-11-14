@@ -76,7 +76,7 @@
       const old = rows.find((x) => equal(x, e));
       if (old && old.origin === "Editorial calendar" && !/success|failure|partial/i.test(rawStatus)) {
         old.providerId = l.id;
-        if (staleInFlight(rawStatus, old.start, now)) {
+        if (staleInFlight(rawStatus, old.start, now) && !/in.?flight|^live$/i.test(old.status)) {
           old.status = "done";
           old.providerStatus = "Success";
         } else {
@@ -124,6 +124,7 @@
     return /^(done|ended|success|failure|failed|partial|partial failure|cancelled)$/i.test(e.status);
   }
   function upcoming(e, now = /* @__PURE__ */ new Date(), z = "UTC") {
+    if (/in.?flight|^live$/i.test(e.status) && dated(e) && !terminal(e)) return true;
     return dated(e) && !terminal(e) && (e.precision === "day" ? dayKey(e, z) >= today(now, z) : Date.parse(e.start) >= +new Date(now));
   }
   function label(e, now = /* @__PURE__ */ new Date(), z = "UTC") {

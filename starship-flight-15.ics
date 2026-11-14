@@ -5,14 +5,13 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:starship-flight-15@superchargeddaily.com
-DTSTAMP:20261114T054458Z
-SEQUENCE:456824
+DTSTAMP:20261114T092000Z
+SEQUENCE:457040
 DTSTART:20261113T224500Z
 DTEND:20261114T000000Z
 SUMMARY:Starship Flight 15
-DESCRIPTION:Launched 13 Nov 5:48 p.m. ET\, ship catch due ~4:21 p.m. ET 14 
- Nov. Times can move: check https://superchargeddaily.com/starship-flight-1
- 5.html for the latest.
+DESCRIPTION:In orbit\, catch pending Saturday. Times can move: check https:
+ //superchargeddaily.com/starship-flight-15.html for the latest.
 LOCATION:Starbase\, Texas (Pad 2)
 URL:https://superchargeddaily.com/starship-flight-15.html
 STATUS:TENTATIVE
