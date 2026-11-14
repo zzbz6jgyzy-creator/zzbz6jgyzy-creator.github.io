@@ -1,15 +1,64 @@
 {
-  "updated": "2026-11-13T21:40:56Z",
+  "updated": "2026-11-14T01:52:27Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fleet": 3278,
-  "latest": "2026.39.100",
+  "fleet": 3271,
+  "latest": "2026.38.5.13",
   "versions": [
+    {
+      "id": "2026.38.5.13",
+      "date": "2026-11-13",
+      "count": 0,
+      "fleet": 3271,
+      "percent": 0.0,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": "14.3.13",
+      "features": [
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage while you are driving manually and detects that you are not sufficiently att\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v14.3.13",
+          "text": "Full Self-Driving (Supervised) v14.3.13 includes: - Upgraded the Reinforcement Learning (RL) stage of training the FSD neural network, resulting in improvements in a wide variety of driving scenarios. - Upgraded the neu\u2026"
+        },
+        {
+          "title": "Full Self-Driving (Supervised)",
+          "text": "Under your supervision, Full Self-Driving (Supervised) can drive your Tesla almost anywhere. It will start from a parked position, make lane changes, select forks to follow your navigation route, navigate around other v\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        },
+        {
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
+        },
+        {
+          "title": "Caraoke with Scoring",
+          "text": "Caraoke now scores your singing while in Park. Earn stars and track your high scores in the My Karaoke tab. On the rear display, tap the queue button to show a QR code for passengers to scan and add songs to the queue f\u2026"
+        },
+        {
+          "title": "Custom Wraps",
+          "text": "Use the Mobile App to upload custom wrap designs from images on your phone and send directly to your Tesla. Go to Creations > Wrap > Upload. Requires Mobile App v4.59.0 or later. To access in car, go to App Launcher > T\u2026"
+        }
+      ],
+      "countries": [],
+      "countryCounts": {},
+      "pending": 2,
+      "firstSeen": "2026-11-13T23:33:09Z",
+      "lastSeen": "2026-11-13T23:33:09Z"
+    },
     {
       "id": "2026.39.100",
       "date": "2026-11-11",
       "count": 29,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 0.9,
       "fsd": null,
       "fsdHw3": null,
@@ -78,7 +127,7 @@
       "id": "2026.38.4.5",
       "date": "2026-11-10",
       "count": 1,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 0.0,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -130,9 +179,9 @@
     {
       "id": "2026.38.5.12",
       "date": "2026-11-04",
-      "count": 601,
-      "fleet": 3278,
-      "percent": 18.3,
+      "count": 602,
+      "fleet": 3271,
+      "percent": 18.4,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -177,20 +226,20 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 569,
+        "US": 570,
         "CA": 28,
         "MX": 2,
         "PR": 2
       },
-      "pending": 23,
+      "pending": 22,
       "firstSeen": "2026-11-04T21:22:58Z",
-      "lastSeen": "2026-11-13T18:05:56Z"
+      "lastSeen": "2026-11-13T22:20:46Z"
     },
     {
       "id": "2026.39.6",
       "date": "2026-10-29",
       "count": 42,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 1.3,
       "fsd": null,
       "fsdHw3": null,
@@ -245,7 +294,7 @@
       "id": "2026.38.6.1",
       "date": "2026-10-29",
       "count": 132,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 4.0,
       "fsd": null,
       "fsdHw3": null,
@@ -300,8 +349,8 @@
       "id": "2026.38.6",
       "date": "2026-10-29",
       "count": 339,
-      "fleet": 3278,
-      "percent": 10.3,
+      "fleet": 3271,
+      "percent": 10.4,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -429,7 +478,7 @@
       "id": "2026.38.5.6",
       "date": "2026-10-24",
       "count": 150,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 4.6,
       "fsd": null,
       "fsdHw3": null,
@@ -484,8 +533,8 @@
       "id": "2026.38.5.11",
       "date": "2026-10-24",
       "count": 1019,
-      "fleet": 3278,
-      "percent": 31.1,
+      "fleet": 3271,
+      "percent": 31.2,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -545,7 +594,7 @@
       "id": "2026.38.3.2",
       "date": "2026-10-22",
       "count": 360,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 11.0,
       "fsd": null,
       "fsdHw3": null,
@@ -684,8 +733,8 @@
       "id": "2026.38.5.5",
       "date": "2026-10-21",
       "count": 136,
-      "fleet": 3278,
-      "percent": 4.1,
+      "fleet": 3271,
+      "percent": 4.2,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.12",
@@ -739,7 +788,7 @@
       "id": "2026.38.5.10",
       "date": "2026-10-20",
       "count": 93,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 2.8,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -796,8 +845,8 @@
       "id": "2026.38.5.1",
       "date": "2026-10-13",
       "count": 1030,
-      "fleet": 3278,
-      "percent": 31.4,
+      "fleet": 3271,
+      "percent": 31.5,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -857,7 +906,7 @@
       "id": "2026.38.5",
       "date": "2026-10-10",
       "count": 135,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 4.1,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -916,7 +965,7 @@
       "id": "2026.38.3.1",
       "date": "2026-10-08",
       "count": 327,
-      "fleet": 3278,
+      "fleet": 3271,
       "percent": 10.0,
       "fsd": null,
       "fsdHw3": null,
@@ -1101,89 +1150,6 @@
       "pending": 1,
       "firstSeen": "2026-10-06T18:33:32Z",
       "lastSeen": "2026-10-08T05:52:57Z"
-    },
-    {
-      "id": "2026.38",
-      "date": "2026-09-30",
-      "count": 69,
-      "fleet": 3278,
-      "percent": 2.1,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [
-        {
-          "title": "Dynamic Headlight Leveling",
-          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
-        },
-        {
-          "title": "Supercharger Site Maps",
-          "text": "You can now see a detailed view of select Tesla Superchargers by tapping \"View Site Map.\" When navigating to a pilot location, the site layout and live occupancy (Available / Occupied / Down) will be displayed upon arri\u2026"
-        },
-        {
-          "title": "Visual Updates",
-          "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
-        },
-        {
-          "title": "Apple Music",
-          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
-        },
-        {
-          "title": "Security Improvements",
-          "text": "This update includes important security fixes and improvements."
-        },
-        {
-          "title": "Wheel Selection",
-          "text": "Choose from new wheel options to customize the appearance of your Tesla."
-        }
-      ],
-      "countries": [
-        "US",
-        "GB",
-        "DE",
-        "CH",
-        "NL",
-        "IT",
-        "CZ",
-        "AT",
-        "TW",
-        "FR",
-        "PL",
-        "BE",
-        "ES",
-        "IL",
-        "UA",
-        "DK",
-        "MA",
-        "CA",
-        "NO",
-        "TR"
-      ],
-      "countryCounts": {
-        "US": 22,
-        "GB": 9,
-        "DE": 6,
-        "CH": 5,
-        "NL": 4,
-        "IT": 3,
-        "CZ": 3,
-        "AT": 3,
-        "TW": 2,
-        "FR": 2,
-        "PL": 1,
-        "BE": 1,
-        "ES": 1,
-        "IL": 1,
-        "UA": 1,
-        "DK": 1,
-        "MA": 1,
-        "CA": 1,
-        "NO": 1,
-        "TR": 1
-      },
-      "pending": 0,
-      "firstSeen": "2026-09-30T05:51:14Z",
-      "lastSeen": "2026-10-17T15:09:30Z"
     }
   ]
 }
