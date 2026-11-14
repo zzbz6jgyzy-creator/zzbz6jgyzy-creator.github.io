@@ -41,10 +41,10 @@ window.SEE_LAUNCH = {
       pad: "sb2",
       vehicle: "starship",
       orbit: "leo",
-      status: "net",
+      status: "in-flight",
       precision: "datetime",
       href: "https://www.spacex.com/launches/starship-flight-15",
-      note: "SpaceX window opens 4:45 p.m. CT as soon as 13 Nov, pending regulatory approval. Dual catch + 26 Starlink V3. Not a guaranteed T-0.",
+      note: "Lifted off about 4:47 p.m. CT on 13 Nov. Super Heavy diverted to the Gulf. Ship 42 is in orbit; a Starbase catch is still planned Saturday if systems stay healthy.",
     },
     {
       id: "ll-bandwagon-5",

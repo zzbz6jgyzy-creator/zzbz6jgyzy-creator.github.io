@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-14T09:21:38.897Z",
+  "generatedAt": "2026-11-14T09:36:10.939Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -10,7 +10,7 @@
       "field": "event:tesla-2026-asm",
       "value": "2026-12-03T21:00:00.000Z|scheduled",
       "label": "Tesla 2026 Annual Meeting of Shareholders",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
       "sourceUrl": "",
@@ -24,7 +24,7 @@
       "field": "event:tesla-2026-asm-draw",
       "value": "2026-11-07T05:59:00.000Z|ended",
       "label": "Tesla 2026 Annual Meeting in-person drawing deadline",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.votetesla.com/annual-meeting-details/",
       "sourceUrl": "",
@@ -38,7 +38,7 @@
       "field": "event:starship-flight-16",
       "value": "2026-12-01T00:00:00.000Z|expected",
       "label": "Starship Flight 16",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "independently_corroborated",
       "source": "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
       "sourceUrl": "",
@@ -50,14 +50,14 @@
       "topic": "starship",
       "tracker": "starship",
       "field": "event:starship-flight-15",
-      "value": "2026-11-13T22:45:00.000Z|net",
+      "value": "2026-11-13T22:45:00.000Z|in-flight",
       "label": "Starship Flight 15",
-      "at": "2026-11-13T08:50:00.000Z",
-      "evidence": "estimated",
-      "source": "https://x.com/SpaceX/status/2121044579470233638",
+      "at": "2026-11-14T09:20:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://x.com/SpaceX/status/2121479482582441991",
       "sourceUrl": "",
       "href": "https://www.spacex.com/launches/starship-flight-15",
-      "summary": "SpaceX is targeting Flight 15 as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Ship 42 moved to the pad on 12 Nov (SpaceX, 13 Nov 00:56 UTC). Planned: first Super Heavy V3 catch, first Ship return-to-launch-site catch, 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0. No FAA licence is published. Re-checked 13 Nov 2026."
+      "summary": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. Catch is still a go/no-go. Checked 14 Nov 2026."
     },
     {
       "id": "spacex-launches:event:crs35-docking",
@@ -66,7 +66,7 @@
       "field": "event:crs35-docking",
       "value": "2026-10-15T14:27:00.000Z|done",
       "label": "Dragon · CRS-35 docked with the ISS",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "independently_corroborated",
       "source": "NASA space station blog, 15 Oct 2026: docked at 10:27 a.m. EDT",
       "sourceUrl": "",
@@ -80,7 +80,7 @@
       "field": "event:tesla-roadster-demo",
       "value": "2026-10-16T00:55:00.000Z|ended",
       "label": "Tesla Roadster reveal",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "independently_corroborated",
       "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
       "sourceUrl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
@@ -94,7 +94,7 @@
       "field": "event:spacex-q3-2026-earnings",
       "value": "2026-10-20T20:30:00.000Z|ended",
       "label": "SpaceX Q3 2026 earnings call",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
       "sourceUrl": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
@@ -108,7 +108,7 @@
       "field": "event:tesla-q3-2026-earnings",
       "value": "2026-10-21T21:30:00.000Z|ended",
       "label": "Tesla Q3 2026 earnings call",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
       "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
@@ -122,7 +122,7 @@
       "field": "event:ussf-481",
       "value": "2026-10-16T00:02:07.000Z|done",
       "label": "Falcon 9 · USSF-481",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://x.com/SpaceX/status/2110883955004035154",
       "sourceUrl": "",
@@ -136,7 +136,7 @@
       "field": "event:bandwagon-5",
       "value": "2026-10-20T11:04:00.000Z|done",
       "label": "Falcon 9 · Bandwagon-5 rideshare",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.spacex.com/launches/bandwagon5",
       "sourceUrl": "",
@@ -150,7 +150,7 @@
       "field": "event:spcx-q3-lockup-release",
       "value": "2026-10-22T00:00:00.000Z|ended",
       "label": "SpaceX lock-up release · up to 1.3B shares",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
       "sourceUrl": "",
@@ -248,7 +248,7 @@
       "field": "next-flight",
       "value": "15|2026-11-13|day",
       "label": "Next Starship flight",
-      "at": "2026-11-13T08:50:00.000Z",
+      "at": "2026-11-14T09:20:00.000Z",
       "evidence": "estimated",
       "source": "FAA planning slides",
       "sourceUrl": "",
@@ -276,7 +276,7 @@
       "field": "status-counts",
       "value": "Delivered:6,Delivered late:11,In progress:15,Missed:27,Revised:5",
       "label": "Promise status mix",
-      "at": "2026-11-11T00:00:00.000Z",
+      "at": "2026-11-14T00:00:00.000Z",
       "evidence": "historical",
       "source": "data/promises.json",
       "sourceUrl": "",
@@ -285,6 +285,23 @@
     }
   ],
   "changes": [
+    {
+      "type": "changed",
+      "factId": "starship:event:starship-flight-15",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "event:starship-flight-15",
+      "previous": "2026-11-13T22:45:00.000Z|net",
+      "next": "2026-11-13T22:45:00.000Z|in-flight",
+      "at": "2026-11-14T09:20:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://x.com/SpaceX/status/2121479482582441991",
+      "sourceUrl": "",
+      "href": "https://www.spacex.com/launches/starship-flight-15",
+      "summary": "Starship Flight 15 changed from 2026-11-13T22:45:00.000Z|net to 2026-11-13T22:45:00.000Z|in-flight.",
+      "title": "Starship Flight 15",
+      "id": "changed|starship:event:starship-flight-15|2026-11-14T09:20:00.000Z|2026-11-13T22:45:00.000Z|in-flight"
+    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.38.5.13",
@@ -343,15 +360,32 @@
       "tracker": "starship",
       "field": "schedule",
       "previous": "",
-      "next": "Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+      "next": "SpaceX: Starship and its heatshield are healthy nearly seven hours after launch. Teams are still monitoring systems ahead of a planned return-to-launch-site catch at Starbase about 22.5 hours after launch.",
       "at": "2026-11-14T00:00:00.000Z",
-      "evidence": "reported_unconfirmed",
+      "evidence": "independently_corroborated",
       "source": "SpaceX on X",
       "sourceUrl": "https://x.com/SpaceX/status/2121479482582441991",
       "href": "/starship.html#schedule",
-      "summary": "Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+      "summary": "SpaceX: Starship and its heatshield are healthy nearly seven hours after launch. Teams are still monitoring systems ahead of a planned return-to-launch-site catch at Starbase about 22.5 hours after launch.",
       "title": "Flight 15 change",
-      "id": "logged|starship:schedule|2026-11-14T00:00:00.000Z|Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet."
+      "id": "logged|starship:schedule|2026-11-14T00:00:00.000Z|SpaceX: Starship and its heatshield are healthy nearly seven hours after launch. Teams are still monitoring systems ahead of a planned return-to-launch-site catch at Starbase about 22.5 hours after launch."
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX: payload deploy complete. All 26 Starlink V3 satellites are in orbit.",
+      "at": "2026-11-14T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "SpaceX on X",
+      "sourceUrl": "https://x.com/SpaceX/status/2121394268652839309",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX: payload deploy complete. All 26 Starlink V3 satellites are in orbit.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-14T00:00:00.000Z|SpaceX: payload deploy complete. All 26 Starlink V3 satellites are in orbit."
     },
     {
       "type": "logged",
@@ -437,6 +471,57 @@
       "summary": "McDowell snapshot: inOrbit 11,204 → 11,193; working 11,190 → 11,179. This is a published table snapshot, not a live operator feed.",
       "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-11-13T00:48:24.000Z|11193"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX: Starship performed its orbital insertion burn and entered orbit of Earth for the second time.",
+      "at": "2026-11-13T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "SpaceX on X",
+      "sourceUrl": "https://x.com/SpaceX/status/2121381593768186362",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX: Starship performed its orbital insertion burn and entered orbit of Earth for the second time.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-13T00:00:00.000Z|SpaceX: Starship performed its orbital insertion burn and entered orbit of Earth for the second time."
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX: Super Heavy diverted to an offshore splashdown in the Gulf.",
+      "at": "2026-11-13T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "SpaceX on X",
+      "sourceUrl": "https://x.com/SpaceX/status/2121376372576915909",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX: Super Heavy diverted to an offshore splashdown in the Gulf.",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-13T00:00:00.000Z|SpaceX: Super Heavy diverted to an offshore splashdown in the Gulf."
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX: liftoff of Starship Flight 15. Space.com's live coverage of the webcast put T-0 at about 4:47 p.m. CT (22:47 UTC).",
+      "at": "2026-11-13T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "SpaceX on X",
+      "sourceUrl": "https://x.com/SpaceX/status/2121374779680964991",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX: liftoff of Starship Flight 15. Space.com's live coverage of the webcast put T-0 at about 4:47 p.m. CT (22:47 UTC).",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-13T00:00:00.000Z|SpaceX: liftoff of Starship Flight 15. Space.com's live coverage of the webcast put T-0 at about 4:47 p.m. CT (22:47 UTC)."
     },
     {
       "type": "logged",
@@ -1994,15 +2079,15 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
-      "lastVerified": "2026-11-13T08:50:00.000Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
+      "lastVerified": "2026-11-14T09:20:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
     {
@@ -2015,14 +2100,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
       "lastVerified": "2026-11-13T22:46:43.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -2036,35 +2121,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
-      "lastVerified": "2026-11-11T00:00:00.000Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
+      "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
-      "lastVerified": "2026-11-11T00:00:00.000Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
+      "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-14T09:21:38.897Z",
+      "lastChecked": "2026-11-14T09:36:10.939Z",
       "lastVerified": "2026-11-14T09:05:51.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2073,87 +2158,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.873Z",
-      "finished": "2026-11-14T09:21:38.879Z"
+      "started": "2026-11-14T09:36:10.925Z",
+      "finished": "2026-11-14T09:36:10.925Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.879Z",
-      "finished": "2026-11-14T09:21:38.879Z"
+      "started": "2026-11-14T09:36:10.925Z",
+      "finished": "2026-11-14T09:36:10.926Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.879Z",
-      "finished": "2026-11-14T09:21:38.879Z"
+      "started": "2026-11-14T09:36:10.926Z",
+      "finished": "2026-11-14T09:36:10.926Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.879Z",
-      "finished": "2026-11-14T09:21:38.888Z"
+      "started": "2026-11-14T09:36:10.926Z",
+      "finished": "2026-11-14T09:36:10.932Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.888Z",
-      "finished": "2026-11-14T09:21:38.892Z"
+      "started": "2026-11-14T09:36:10.932Z",
+      "finished": "2026-11-14T09:36:10.935Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.892Z",
-      "finished": "2026-11-14T09:21:38.893Z"
+      "started": "2026-11-14T09:36:10.935Z",
+      "finished": "2026-11-14T09:36:10.935Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.893Z",
-      "finished": "2026-11-14T09:21:38.894Z"
+      "started": "2026-11-14T09:36:10.935Z",
+      "finished": "2026-11-14T09:36:10.937Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.894Z",
-      "finished": "2026-11-14T09:21:38.894Z"
+      "started": "2026-11-14T09:36:10.937Z",
+      "finished": "2026-11-14T09:36:10.937Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.894Z",
-      "finished": "2026-11-14T09:21:38.894Z"
+      "started": "2026-11-14T09:36:10.937Z",
+      "finished": "2026-11-14T09:36:10.937Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.894Z",
-      "finished": "2026-11-14T09:21:38.896Z"
+      "started": "2026-11-14T09:36:10.937Z",
+      "finished": "2026-11-14T09:36:10.938Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.896Z",
-      "finished": "2026-11-14T09:21:38.897Z"
+      "started": "2026-11-14T09:36:10.938Z",
+      "finished": "2026-11-14T09:36:10.939Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.897Z",
-      "finished": "2026-11-14T09:21:38.897Z"
+      "started": "2026-11-14T09:36:10.939Z",
+      "finished": "2026-11-14T09:36:10.939Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-14T09:21:38.897Z",
-      "finished": "2026-11-14T09:21:38.897Z"
+      "started": "2026-11-14T09:36:10.939Z",
+      "finished": "2026-11-14T09:36:10.939Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-14T09:21:38.897Z",
+    "generatedAt": "2026-11-14T09:36:10.939Z",
     "factCount": 20,
-    "changeCount": 98,
+    "changeCount": 103,
     "conflictCount": 2,
     "issues": [
       {

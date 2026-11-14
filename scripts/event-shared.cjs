@@ -8,9 +8,18 @@ const fmtUTC = (iso) => new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", hour
 function whenText(ev) { return `${fmtDay(ev.start)}, ${fmtCT(ev.start)} CT (${fmtUTC(ev.start)} UTC)`; }
 // Short form for the big countdown line: same shape as "4d 21:19:10", so swapping it causes no layout shift.
 function shortWhen(ev) { return new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "short" }).format(new Date(ev.start)) + `, ${fmtUTC(ev.start)} UTC`; }
-function countdownHtml(ev, note, cls = "evc") {
+function countdownHtml(ev, note, cls = "evc", extras = {}) {
   // The saved HTML shows the absolute time: right without JavaScript, never a stale "in 2d".
-  return `<div class="${cls}" data-countdown data-start="${esc(new Date(ev.start).toISOString())}" data-end="${esc(new Date(ev.end || ev.start).toISOString())}" data-after-sub="The window has closed. See the updates log for what happened."><p class="evc-label" data-cd-label>Launch window opens</p><p class="evc-time" data-cd-time>${esc(shortWhen(ev))}</p><p class="evc-sub" data-cd-sub>${esc([whenText(ev), note].filter(Boolean).join(" · "))}</p></div>`;
+  // Once the window has closed, bake the after-label so no-JS readers are not stuck on "Launch window opens".
+  const afterLabel = extras.afterLabel || "Launched";
+  const afterSub = extras.afterSub || "The window has closed. See the updates log for what happened.";
+  const startIso = new Date(ev.start).toISOString();
+  const endIso = new Date(ev.end || ev.start).toISOString();
+  const closed = Date.now() >= Date.parse(endIso);
+  const label = closed ? afterLabel : "Launch window opens";
+  const sub = closed ? afterSub : [whenText(ev), note].filter(Boolean).join(" · ");
+  const state = closed ? ' data-cd-state="after"' : "";
+  return `<div class="${cls}" data-countdown data-start="${esc(startIso)}" data-end="${esc(endIso)}" data-after-label="${esc(afterLabel)}" data-after-sub="${esc(afterSub)}"${state}><p class="evc-label" data-cd-label>${esc(label)}</p><p class="evc-time" data-cd-time>${esc(shortWhen(ev))}</p><p class="evc-sub" data-cd-sub>${esc(sub)}</p></div>`;
 }
 function eventPages(root) {
   const dir = path.join(root, "data/event-pages");
@@ -23,6 +32,6 @@ function activeFeature(root, now = Date.now()) {
 }
 function featureHtml(f) {
   if (!f) return "";
-  return `<a class="hv-feature" href="/${esc(f.page.slug)}.html"><span class="hv-feature-inner"><span class="ev-kicker">${esc(f.page.kicker)}</span><span class="hv-feature-title">${esc(f.page.title)}</span><span class="hv-feature-go">Countdown, the double-catch plan and where to watch →</span>${countdownHtml(f.ev, f.page.windowNote).replace(/<(\/?)(div|p)\b/g, "<$1span")}</span></a>`;
+  return `<a class="hv-feature" href="/${esc(f.page.slug)}.html"><span class="hv-feature-inner"><span class="ev-kicker">${esc(f.page.kicker)}</span><span class="hv-feature-title">${esc(f.page.title)}</span><span class="hv-feature-go">${esc(f.page.featureGo || "Countdown, the double-catch plan and where to watch →")}</span>${countdownHtml(f.ev, f.page.windowNote, "evc", f.page).replace(/<(\/?)(div|p)\b/g, "<$1span")}</span></a>`;
 }
 module.exports = { esc, whenText, shortWhen, countdownHtml, eventPages, activeFeature, featureHtml };

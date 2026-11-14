@@ -4,23 +4,26 @@
   "section": "SpaceX",
   "sectionUrl": "/spacex.html",
   "kicker": "Starship / Flight 15",
-  "title": "Starship Flight 15: the first attempt to catch both stages",
-  "seoTitle": "Starship Flight 15: launch time, countdown and what to watch",
-  "description": "Starship Flight 15 launched 13 Nov 2026 at 5:48 p.m. ET from Starbase Pad 2. The booster diverted; the ship is in orbit with a catch due ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44am ET).",
+  "title": "Starship Flight 15: Ship 42 in orbit, booster diverted",
+  "seoTitle": "Starship Flight 15: in orbit after launch, Saturday Ship catch still ahead",
+  "description": "Starship Flight 15 lifted off 13 November 2026 from Starbase Pad 2. Super Heavy diverted to the Gulf. Ship 42 is in orbit with 26 Starlink V3s deployed, and a tower catch is still planned Saturday if systems stay healthy.",
   "ogImage": "/assets/og/starship-flight-15.jpg",
   "ogImageAlt": "Starship Flight 15 title card on a dark background with the Supercharged Daily bolt",
   "featureUntil": "2026-11-16T12:00:00Z",
-  "windowNote": "Launched 13 Nov 5:48 p.m. ET · ship catch due ~4:21 p.m. ET 14 Nov",
+  "windowNote": "In orbit · catch pending Saturday",
+  "afterLabel": "In orbit",
+  "afterSub": "Booster diverted. Ship 42 is coasting toward a Saturday catch if systems stay healthy. See the updates log.",
+  "featureGo": "In orbit: the flight so far and Saturday's Ship catch →",
   "location": {
     "name": "Starbase, Texas (Pad 2)",
     "region": "Texas",
     "country": "US"
   },
   "summary": [
-    "Starship Flight 15 lifted off from Pad 2 at Starbase at 5:48 p.m. ET on Friday 13 November 2026. Super Heavy Booster 22 diverted to a Gulf splashdown. The ship is in orbit with 26 Starlink V3 satellites deployed, and a catch is due around 4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44am ET).",
-    "For the first time SpaceX plans to try to catch both stages with the tower: Super Heavy minutes after launch, and the Ship after a flight of more than 22 hours. SpaceX's flight plan has the Ship deploy 26 Starlink V3 satellites and make roughly 14 orbits before its deorbit burn; reports put the orbit at about 275 km.",
-    "If both catches work, it would be the first full recovery of an orbital launch system. The tower has caught a Super Heavy booster three times, on Flights 5, 7 and 8 (October 2024 to March 2025); it has never caught a Ship.",
-    "Alex R's 12 November minute-by-minute video — countdown to Saturday's Ship catch, using SpaceX's published times — is on the Ship 42 page and as a direct link under Where to watch."
+    "Starship Flight 15 lifted off from Pad 2 at Starbase on Friday 13 November 2026 at about 4:47 p.m. CT (22:47 UTC), according to Space.com's live coverage of SpaceX's webcast. Super Heavy Booster 22 diverted to an offshore splashdown in the Gulf. NASASpaceflight, quoting SpaceX's Dan Huot, said the booster automatically aborted the Pad 2 return because of a guidance, navigation and control issue.",
+    "Ship 42 reached orbit — only the second Starship to do so — and deployed all 26 Starlink V3 satellites. SpaceX said on 14 November at 05:44 UTC that the Ship and its heatshield were healthy and that a return-to-launch-site catch at Starbase was still planned about 22.5 hours after launch. That catch is still a go/no-go, not a result.",
+    "This will not be a dual catch. The tower has caught a Super Heavy booster three times, on Flights 5, 7 and 8; it has never caught a Ship. The remaining first is a Ship catch on Saturday, if systems stay healthy.",
+    "Alex R's 12 November minute-by-minute video — countdown to Saturday's Ship catch, using SpaceX's published times — is on the Ship 42 page and as a direct link under Where to watch. Actual Friday events ran about two minutes later than that window-open clock."
   ],
   "heatShield": {
     "lead": "Bringing the Ship home intact means surviving re-entry, and that is the heat shield's job.",
@@ -46,12 +49,12 @@
     {
       "href": "/dispatch/starship-f15-orbit-catch-day.html",
       "title": "Flight 15 in orbit",
-      "text": "Booster diverted, ship in orbit, first ship catch due ~4:21 p.m. ET (as of 14 Nov 2026, 3:44am ET)."
+      "text": "The Dispatch record of lift-off, the booster divert, payload deploy and the Saturday Ship catch still ahead."
     },
     {
       "href": "/ship-42.html",
-      "title": "Ship 42: minute-by-minute",
-      "text": "The Flight 15 Starship page, with Alex R's countdown-to-catch animation and the first tower-catch plan."
+      "title": "Ship 42: flight so far",
+      "text": "The Flight 15 Starship page, with the flown events, Alex R's countdown-to-catch animation and the first tower-catch plan."
     },
     {
       "href": "https://x.com/AlJR86/status/2120923262133678326",
@@ -81,19 +84,19 @@
   ],
   "watch": [
     {
-      "href": "https://x.com/AlJR86/status/2120923262133678326",
-      "title": "Minute-by-minute on X",
-      "text": "Alex R's 12 Nov video walks Flight 15 from countdown to Ship catch, using SpaceX's published times. Click through for the animation."
-    },
-    {
-      "href": "https://x.com/SpaceX",
-      "title": "SpaceX on X",
-      "text": "SpaceX streams Starship flights on X and spacex.com. It posts the stream's start time on the day; we will add it to the Updates log."
+      "href": "https://x.com/SpaceX/status/2121434583178875245",
+      "title": "Live views from orbit",
+      "text": "SpaceX: live views of Starship in orbit, brought by Starlink. Coverage is planned through the Ship catch."
     },
     {
       "href": "https://www.spacex.com/launches/starship-flight-15",
       "title": "spacex.com",
       "text": "The official Flight 15 mission page and webcast."
+    },
+    {
+      "href": "https://x.com/AlJR86/status/2120923262133678326",
+      "title": "Minute-by-minute on X",
+      "text": "Alex R's 12 Nov video walks Flight 15 from countdown to Ship catch, using SpaceX's published times. Actual Friday events ran about two minutes later than the window-open clock."
     }
   ],
   "updates": [
@@ -101,8 +104,50 @@
       "date": "2026-11-14",
       "time": "2026-11-14T05:44:58Z",
       "kind": "Disclosed",
-      "text": "Flight 15 launched 13 Nov at 5:48 p.m. ET. Super Heavy Booster 22 diverted to a Gulf splashdown. SpaceX says the ship and heatshield are healthy, with a planned catch at Starbase ~22.5 hours after launch, about 4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+      "text": "SpaceX: Starship and its heatshield are healthy nearly seven hours after launch. Teams are still monitoring systems ahead of a planned return-to-launch-site catch at Starbase about 22.5 hours after launch.",
       "source": "https://x.com/SpaceX/status/2121479482582441991"
+    },
+    {
+      "date": "2026-11-14",
+      "time": "2026-11-14T06:25:03Z",
+      "kind": "Disclosed",
+      "text": "Elon Musk: Starship is traveling around the world every ~90 minutes right now.",
+      "source": "https://x.com/elonmusk/status/2121489571213168758"
+    },
+    {
+      "date": "2026-11-14",
+      "time": "2026-11-14T05:41:51Z",
+      "kind": "Reported",
+      "text": "NASASpaceflight, quoting SpaceX's Dan Huot: continuing orbital flight with Ship 42. Booster 22 automatically aborted the attempt to return to Pad 2 due to a guidance, navigation and control issue.",
+      "source": "https://x.com/NASASpaceflight/status/2121478699245609370"
+    },
+    {
+      "date": "2026-11-14",
+      "time": "2026-11-14T00:06:21Z",
+      "kind": "Disclosed",
+      "text": "SpaceX: payload deploy complete. All 26 Starlink V3 satellites are in orbit.",
+      "source": "https://x.com/SpaceX/status/2121394268652839309"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T23:15:59Z",
+      "kind": "Disclosed",
+      "text": "SpaceX: Starship performed its orbital insertion burn and entered orbit of Earth for the second time.",
+      "source": "https://x.com/SpaceX/status/2121381593768186362"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T22:55:15Z",
+      "kind": "Disclosed",
+      "text": "SpaceX: Super Heavy has diverted to an offshore splashdown in the Gulf.",
+      "source": "https://x.com/SpaceX/status/2121376372576915909"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T22:48:55Z",
+      "kind": "Disclosed",
+      "text": "SpaceX: liftoff of Starship. Space.com's live coverage of the webcast put T-0 at about 4:47 p.m. CT (22:47 UTC).",
+      "source": "https://x.com/SpaceX/status/2121374779680964991"
     },
     {
       "date": "2026-11-12",

@@ -1,23 +1,24 @@
 window.STARSHIP = {
   updated: "2026-11-14",
   note:
-    "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 lifted off 13 Nov at 5:48 p.m. ET. Booster 22 diverted to a Gulf splashdown; the ship is in orbit with a catch due ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). Not affiliated with SpaceX.",
+    "Based on SpaceX flight pages, SpaceX posts on X and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 is in orbit; the Saturday Ship catch is still a go/no-go. Not affiliated with SpaceX.",
   next: {
     flight: 15,
     start: "2026-11-13T16:45:00-06:00",
     end: "2026-11-13T18:00:00-06:00",
     precision: "day",
+    inFlight: true,
     pad: "Starbase · OLP-2",
     booster: "B22",
     ship: "S42",
     block: "Block 3",
-    headline: "Booster diverted · ship catch due ~4:21 p.m. ET",
+    headline: "In orbit · Ship catch still ahead",
     tested:
-      "Flight 15 lifted off from Pad 2 at 5:48 p.m. ET on 13 Nov (SpaceX, 22:48 UTC). Super Heavy Booster 22 diverted to an offshore Gulf splashdown instead of a catch (SpaceX, 22:55 UTC). All 26 Starlink V3 satellites deployed. SpaceX said the ship and heatshield are healthy, with a planned return-to-launch-site catch ~22.5 hours after launch, about 4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet. SpaceX’s Flight 15 page still read as a pre-launch plan when re-checked on the morning of 14 Nov.",
+      "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026, according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. That catch is still a go/no-go, not a result.",
     objectives: [
-      "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, now on the SpaceX mission page",
-      "Catch Super Heavy B22 — first Super Heavy V3 catch; SpaceX says the booster’s primary objective is a return to the launch site",
-      "Deploy 26 Starlink V3 satellites, then fly more than 22 hours before a Ship catch if systems stay healthy",
+      "Catch Ship 42 on the Pad 2 tower — still planned, only if systems stay healthy",
+      "Super Heavy B22 catch — not achieved; SpaceX diverted the booster to the Gulf",
+      "Deploy 26 Starlink V3 satellites — complete, per SpaceX",
     ],
     coverage: [
       { label: "Flight 15 in orbit", url: "/dispatch/starship-f15-orbit-catch-day.html" },
@@ -37,10 +38,42 @@ window.STARSHIP = {
     {
       date: "2026-11-14",
       mission: 15,
-      confirmed: false,
+      confirmed: true,
       change:
-        "Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+        "SpaceX: Starship and its heatshield are healthy nearly seven hours after launch. Teams are still monitoring systems ahead of a planned return-to-launch-site catch at Starbase about 22.5 hours after launch.",
       source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2121479482582441991" },
+    },
+    {
+      date: "2026-11-14",
+      mission: 15,
+      confirmed: true,
+      change:
+        "SpaceX: payload deploy complete. All 26 Starlink V3 satellites are in orbit.",
+      source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2121394268652839309" },
+    },
+    {
+      date: "2026-11-13",
+      mission: 15,
+      confirmed: true,
+      change:
+        "SpaceX: Starship performed its orbital insertion burn and entered orbit of Earth for the second time.",
+      source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2121381593768186362" },
+    },
+    {
+      date: "2026-11-13",
+      mission: 15,
+      confirmed: true,
+      change:
+        "SpaceX: Super Heavy diverted to an offshore splashdown in the Gulf.",
+      source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2121376372576915909" },
+    },
+    {
+      date: "2026-11-13",
+      mission: 15,
+      confirmed: true,
+      change:
+        "SpaceX: liftoff of Starship Flight 15. Space.com's live coverage of the webcast put T-0 at about 4:47 p.m. CT (22:47 UTC).",
+      source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2121374779680964991" },
     },
     {
       date: "2026-11-13",

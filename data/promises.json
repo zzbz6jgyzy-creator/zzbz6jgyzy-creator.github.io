@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "updated": "2026-11-11",
+ "updated": "2026-11-14",
  "promises": [
   {
    "id": "fsd-90-percent-2013",
@@ -2229,11 +2229,56 @@
       "date": "2026-11-08"
      },
      "date": "2026-11-08"
+    },
+    {
+     "text": "SpaceX: liftoff of Starship Flight 15. Space.com's live coverage of the webcast put T-0 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026.",
+     "source": {
+      "outlet": "SpaceX on X",
+      "url": "https://x.com/SpaceX/status/2121374779680964991",
+      "date": "2026-11-13"
+     },
+     "date": "2026-11-13"
+    },
+    {
+     "text": "SpaceX: Super Heavy diverted to an offshore splashdown in the Gulf.",
+     "source": {
+      "outlet": "SpaceX on X",
+      "url": "https://x.com/SpaceX/status/2121376372576915909",
+      "date": "2026-11-13"
+     },
+     "date": "2026-11-13"
+    },
+    {
+     "text": "NASASpaceflight, quoting SpaceX's Dan Huot, said Booster 22 automatically aborted the Pad 2 return because of a guidance, navigation and control issue.",
+     "source": {
+      "outlet": "NASASpaceflight on X",
+      "url": "https://x.com/NASASpaceflight/status/2121478699245609370",
+      "date": "2026-11-14"
+     },
+     "date": "2026-11-14"
+    },
+    {
+     "text": "SpaceX: payload deploy complete. All 26 Starlink V3 satellites are in orbit.",
+     "source": {
+      "outlet": "SpaceX on X",
+      "url": "https://x.com/SpaceX/status/2121394268652839309",
+      "date": "2026-11-14"
+     },
+     "date": "2026-11-14"
+    },
+    {
+     "text": "SpaceX: Starship and its heatshield are healthy nearly seven hours after launch. Teams are still monitoring systems ahead of a planned return-to-launch-site catch at Starbase about 22.5 hours after launch.",
+     "source": {
+      "outlet": "SpaceX on X",
+      "url": "https://x.com/SpaceX/status/2121479482582441991",
+      "date": "2026-11-14"
+     },
+     "date": "2026-11-14"
     }
    ],
    "revisions": [],
-   "last_verified": "2026-11-08",
-   "note": "Musk added that success is \"not guaranteed\" but \"more likely than not\". SpaceX’s Flight 15 mission page now targets as soon as Friday 13 November, pending regulatory approval, with a 75-minute window opening at 4:45 p.m. CT. No FAA licence is published."
+   "last_verified": "2026-11-14",
+   "note": "Flight 15 lifted off on 13 Nov 2026. Super Heavy diverted to the Gulf, so a catch of both stages did not happen. Ship 42 is in orbit and a Ship catch is still a go/no-go as of 14 Nov 05:44 UTC. The November timing part of the quote has been met; the dual-catch part has not."
   },
   {
    "id": "starship-weekly-h1-2027",
