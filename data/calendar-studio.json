@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-13T08:50:00+00:00",
- "launchChecked": "2026-11-13T15:21:00Z",
+ "launchChecked": "2026-11-13T21:57:33Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -591,7 +591,7 @@
    ],
    "origin": "Editorial calendar",
    "providerId": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
-   "providerStatus": "To Be Confirmed",
+   "providerStatus": "Go for Launch",
    "coverage": {
     "url": "https://www.spacex.com/launches/starship-flight-15",
     "article": "",
@@ -625,32 +625,6 @@
    }
   },
   {
-   "id": "ussf-266",
-   "title": "Falcon 9 Block 5 | USSF-266",
-   "group": "spacex",
-   "category": "Launch",
-   "start": "2026-11-18T16:49:00Z",
-   "end": "",
-   "date": "2026-11-18",
-   "precision": "datetime",
-   "status": "Go",
-   "note": "Government/Top Secret · Polar Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
-   "href": "",
-   "sources": [],
-   "origin": "Launch Library 2",
-   "providerId": "460d9db7-eaf6-4cd9-b095-cff433534c09",
-   "windowStart": "2026-11-18T16:49:00Z",
-   "windowEnd": "2026-11-18T20:49:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch",
-   "coverage": {
-    "url": "https://www.spacex.com/launches/ussf266",
-    "article": "",
-    "status": "scheduled"
-   }
-  },
-  {
    "id": "ll2-951a341f-236b-42fe-a667-4ab2fcf36eac",
    "title": "Falcon 9 Block 5 | NROL-136",
    "group": "spacex",
@@ -670,6 +644,32 @@
    "windowEnd": "2026-11-21T13:00:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch"
+  },
+  {
+   "id": "ussf-266",
+   "title": "Falcon 9 Block 5 | USSF-266",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-23T16:04:00Z",
+   "end": "",
+   "date": "2026-11-23",
+   "precision": "datetime",
+   "status": "Go",
+   "note": "Government/Top Secret · Polar Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "460d9db7-eaf6-4cd9-b095-cff433534c09",
+   "windowStart": "2026-11-23T16:04:00Z",
+   "windowEnd": "2026-11-23T20:04:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches/ussf266",
+    "article": "",
+    "status": "scheduled"
+   }
   },
   {
    "id": "ll2-d74afbc7-0de5-491c-be05-4e9c31f736ac",

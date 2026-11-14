@@ -281,6 +281,27 @@
   ],
   "updates": [
     {
+      "date": "2026-11-14",
+      "time": "2026-11-14T00:20:00Z",
+      "kind": "Reported",
+      "text": "Ship 42 is in orbit and the Ship catch is still planned for Saturday. CBS News reports a single Raptor relit for about 10 seconds to put the Ship into its planned orbit, and that a deorbit burn is expected at 3:21 p.m. EST on Saturday (20:21 UTC) ahead of a catch attempt at the pad. We have not seen confirmation that the 26 Starlink V3 satellites were deployed.",
+      "source": "https://www.cbsnews.com/news/spacex-launches-starship-flight-rocket/"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T22:55:00Z",
+      "kind": "Reported",
+      "text": "No booster catch. Gizmodo reports SpaceX opted not to catch Super Heavy and diverted it to a splashdown in the Gulf, and that SpaceX does not yet know the cause. CBS News says controllers diverted the booster because of a technical problem. The time on this entry is approximate.",
+      "source": "https://gizmodo.com/watch-live-as-spacex-tries-to-catch-both-starship-stages-for-the-first-time-2000839576"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "2026-11-13T22:47:00Z",
+      "kind": "Reported",
+      "text": "Lift-off. Starship Flight 15 launched from Starbase at 5:47 p.m. ET (22:47 UTC), per Gizmodo and CBS News.",
+      "source": "https://gizmodo.com/watch-live-as-spacex-tries-to-catch-both-starship-stages-for-the-first-time-2000839576"
+    },
+    {
       "date": "2026-11-13",
       "time": "2026-11-13T21:50:00Z",
       "kind": "Reported",
