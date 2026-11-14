@@ -154,13 +154,13 @@ test("updates log carries what event-live.js needs, and timed entries sort and r
   const dir = sandbox();
   try {
     const f = path.join(dir, "data/event-pages/starship-flight-15.json"), p = JSON.parse(fs.readFileSync(f, "utf8"));
-    p.updates.push({ date: "2026-11-13", time: "2026-11-13T22:47:00Z", kind: "Disclosed", text: "Lift-off.", source: "https://www.spacex.com/" });
+    p.updates.push({ date: "2026-11-15", time: "2026-11-15T22:47:00Z", kind: "Disclosed", text: "Lift-off.", source: "https://www.spacex.com/" });
     fs.writeFileSync(f, JSON.stringify(p));
     buildEventPages(dir);
     const out = fs.readFileSync(path.join(dir, "starship-flight-15.html"), "utf8");
     const first = out.match(/<ol class="ev-log"[^>]*><li>([\s\S]*?)<\/li>/)[1];
-    assert.match(first, /<time datetime="2026-11-13T22:47:00Z">13 Nov 2026, 22:47 UTC<\/time>/);
-    assert.match(out, /data-ev-latest="2026-11-13T22:47:00Z"/);
+    assert.match(first, /<time datetime="2026-11-15T22:47:00Z">15 Nov 2026, 22:47 UTC<\/time>/);
+    assert.match(out, /data-ev-latest="2026-11-15T22:47:00Z"/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 

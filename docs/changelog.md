@@ -1,3 +1,8 @@
+## 2026-11-14 — Cybercab orders open, and Starship Flight 15 in orbit ahead of today's ship catch
+
+- Dispatch: Invited Tesla customers can now order a Cybercab for $29,990, with a $1,000 non-refundable deposit, a required $299/month autonomy subscription and December 2026 delivery in five Texas cities (as of 14 Nov 2026). Licensed Commons I-280 Palo Alto photo (CC BY-SA 4.0, Daniel Lu, 19 Sep 2026); driver's face and plate area blurred. Not Tesla's order-page graphic. Update pointers on Austin, Fort Worth, San Antonio and 24/7 Robotaxi pages.
+- Dispatch: Starship Flight 15 launched 13 Nov at 5:48 p.m. ET, deployed 26 Starlink V3 satellites, and diverted Booster 22 to a Gulf splashdown. The ship is in orbit with a catch due ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44am ET). NASA iss072e220161 (public domain) of Flight 6 from the ISS — captioned as not Flight 15. Same-PR refresh on the catch-timeline and ship-catch articles, the Starship tracker Flight 15 entry, Ship 42 and the Flight 15 hub.
+
 ## 2026-11-13 — SpaceX Cochise County 6 GW campus, and Grok Bot Mac Apple apps (Dispatch)
 
 - Dispatch: SpaceX published its 6 GW, $50 billion Cochise County, Arizona compute campus plan (as of 13 Nov 2026): nine buildings, a 24 GWh battery, dry cooling, no on-site turbines, and a Planning and Zoning vote at 2:00 p.m. MST on 9 Dec. Licensed Commons Willcox Playa landscape (CC BY-SA 4.0, The Old Pueblo, 25 Sep 2014); not a photo of a SpaceX campus. Update pointers on the Starbase gas-compute and Texas data-center pages.

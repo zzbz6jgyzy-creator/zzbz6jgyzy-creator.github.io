@@ -2,6 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/starship-f15-orbit-catch-day.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T08:56:00Z</news:publication_date>
+      <news:title>Starship Flight 15: the booster diverted, the ship is in orbit, and the first ship catch is due today</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/cybercab-orders-open.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T08:56:00Z</news:publication_date>
+      <news:title>Invited customers can now order a Cybercab for $29,990. The $299 a month is the real price</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/spacex-cochise-6gw-campus.html</loc>
     <news:news>
       <news:publication>
@@ -65,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-11-12T14:54:53Z</news:publication_date>
       <news:title>Grok Bot 1.0 is out: shared Bots, Slack and Teams, and Bots in your meetings</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/cybertruck-summer-2027-extension.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-12T08:56:21Z</news:publication_date>
-      <news:title>Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/starlink-mini-2-vs-mini.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-12T08:56:21Z</news:publication_date>
-      <news:title>Starlink Mini 2 vs Mini: thinner, heavier, and finally a battery</news:title>
     </news:news>
   </url>
 </urlset>

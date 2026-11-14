@@ -6,18 +6,18 @@
   "kicker": "Starship / Flight 15",
   "title": "Starship Flight 15: the first attempt to catch both stages",
   "seoTitle": "Starship Flight 15: launch time, countdown and what to watch",
-  "description": "Starship Flight 15 targets Friday 13 November 2026 from Starbase Pad 2: live countdown, the double-catch plan, why the heat shield matters, and where to watch.",
+  "description": "Starship Flight 15 launched 13 Nov 2026 at 5:48 p.m. ET from Starbase Pad 2. The booster diverted; the ship is in orbit with a catch due ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44am ET).",
   "ogImage": "/assets/og/starship-flight-15.jpg",
   "ogImageAlt": "Starship Flight 15 title card on a dark background with the Supercharged Daily bolt",
   "featureUntil": "2026-11-16T12:00:00Z",
-  "windowNote": "75-minute window · pending regulatory approval",
+  "windowNote": "Launched 13 Nov 5:48 p.m. ET · ship catch due ~4:21 p.m. ET 14 Nov",
   "location": {
     "name": "Starbase, Texas (Pad 2)",
     "region": "Texas",
     "country": "US"
   },
   "summary": [
-    "SpaceX is targeting Starship Flight 15 for Friday 13 November 2026 from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). That is a published window, not a guaranteed lift-off time.",
+    "Starship Flight 15 lifted off from Pad 2 at Starbase at 5:48 p.m. ET on Friday 13 November 2026. Super Heavy Booster 22 diverted to a Gulf splashdown. The ship is in orbit with 26 Starlink V3 satellites deployed, and a catch is due around 4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44am ET).",
     "For the first time SpaceX plans to try to catch both stages with the tower: Super Heavy minutes after launch, and the Ship after a flight of more than 22 hours. SpaceX's flight plan has the Ship deploy 26 Starlink V3 satellites and make roughly 14 orbits before its deorbit burn; reports put the orbit at about 275 km.",
     "If both catches work, it would be the first full recovery of an orbital launch system. The tower has caught a Super Heavy booster three times, on Flights 5, 7 and 8 (October 2024 to March 2025); it has never caught a Ship.",
     "Alex R's 12 November minute-by-minute video — countdown to Saturday's Ship catch, using SpaceX's published times — is on the Ship 42 page and as a direct link under Where to watch."
@@ -43,6 +43,11 @@
     ]
   },
   "links": [
+    {
+      "href": "/dispatch/starship-f15-orbit-catch-day.html",
+      "title": "Flight 15 in orbit",
+      "text": "Booster diverted, ship in orbit, first ship catch due ~4:21 p.m. ET (as of 14 Nov 2026, 3:44am ET)."
+    },
     {
       "href": "/ship-42.html",
       "title": "Ship 42: minute-by-minute",
@@ -93,6 +98,13 @@
   ],
   "updates": [
     {
+      "date": "2026-11-14",
+      "time": "2026-11-14T05:44:58Z",
+      "kind": "Disclosed",
+      "text": "Flight 15 launched 13 Nov at 5:48 p.m. ET. Super Heavy Booster 22 diverted to a Gulf splashdown. SpaceX says the ship and heatshield are healthy, with a planned catch at Starbase ~22.5 hours after launch, about 4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+      "source": "https://x.com/SpaceX/status/2121479482582441991"
+    },
+    {
       "date": "2026-11-12",
       "time": "2026-11-12T16:54:45Z",
       "kind": "Reported",
@@ -125,6 +137,7 @@
     }
   ],
   "related": [
+    "/dispatch/starship-f15-orbit-catch-day.html",
     "/dispatch/starship-flight-15-catch-timeline.html",
     "/dispatch/starship-f15-ship-catch.html",
     "/dispatch/ship-42-first-tower-catch.html"

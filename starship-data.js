@@ -1,7 +1,7 @@
 window.STARSHIP = {
-  updated: "2026-11-13",
+  updated: "2026-11-14",
   note:
-    "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 has a published window pending regulatory approval; that is not a confirmed T-0. Not affiliated with SpaceX.",
+    "Based on SpaceX flight pages, FAA planning slides and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 lifted off 13 Nov at 5:48 p.m. ET. Booster 22 diverted to a Gulf splashdown; the ship is in orbit with a catch due ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). Not affiliated with SpaceX.",
   next: {
     flight: 15,
     start: "2026-11-13T16:45:00-06:00",
@@ -11,15 +11,16 @@ window.STARSHIP = {
     booster: "B22",
     ship: "S42",
     block: "Block 3",
-    headline: "First dual catch attempt",
+    headline: "Booster diverted · ship catch due ~4:21 p.m. ET",
     tested:
-      "SpaceX’s Flight 15 mission page, re-checked 13 Nov 2026, still targets as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). Ship 42 moved to the pad ahead of launch (SpaceX, 13 Nov 00:56 UTC). Planned: catch Super Heavy (first V3 catch) and Ship, deploy 26 Starlink V3, then a more than 22-hour flight before a Ship catch. This is a published window, not a guaranteed T-0; no FAA licence is published. Booster 22 completed a full-duration 33-engine static fire on 25 Oct. SpaceX confirmed on 28 Oct that Ship 42’s static fires are complete.",
+      "Flight 15 lifted off from Pad 2 at 5:48 p.m. ET on 13 Nov (SpaceX, 22:48 UTC). Super Heavy Booster 22 diverted to an offshore Gulf splashdown instead of a catch (SpaceX, 22:55 UTC). All 26 Starlink V3 satellites deployed. SpaceX said the ship and heatshield are healthy, with a planned return-to-launch-site catch ~22.5 hours after launch, about 4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet. SpaceX’s Flight 15 page still read as a pre-launch plan when re-checked on the morning of 14 Nov.",
     objectives: [
       "Catch Ship 42 on the Pad 2 tower — the first Ship catch attempt, now on the SpaceX mission page",
       "Catch Super Heavy B22 — first Super Heavy V3 catch; SpaceX says the booster’s primary objective is a return to the launch site",
       "Deploy 26 Starlink V3 satellites, then fly more than 22 hours before a Ship catch if systems stay healthy",
     ],
     coverage: [
+      { label: "Flight 15 in orbit", url: "/dispatch/starship-f15-orbit-catch-day.html" },
       { label: "Flight 15 hub", url: "/starship-flight-15.html" },
       { label: "Ship 42 hub", url: "/ship-42.html" },
       { label: "SpaceX Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
@@ -33,6 +34,14 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-11-14",
+      mission: 15,
+      confirmed: false,
+      change:
+        "Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+      source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2121479482582441991" },
+    },
     {
       date: "2026-11-13",
       mission: 15,

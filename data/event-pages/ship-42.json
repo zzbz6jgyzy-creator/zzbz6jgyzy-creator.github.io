@@ -6,20 +6,20 @@
   "kicker": "Starship / Ship 42",
   "title": "Ship 42: first Starship to attempt a tower catch",
   "seoTitle": "Ship 42 launch: countdown, first tower catch and what to watch",
-  "description": "Ship 42 is the Flight 15 Starship. Pending regulatory approval: the 13 November window, first tower-catch attempt, static fires, and where to watch.",
+  "description": "Ship 42 launched on Flight 15 at 5:48 p.m. ET on 13 Nov. Booster 22 diverted to a Gulf splashdown. The ship is in orbit with a catch due ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44am ET).",
   "ogImage": "/assets/og/ship-42.jpg",
   "ogImageAlt": "Ship 42 launch title card on a dark background with the Supercharged Daily bolt",
   "crumb": "Ship 42",
   "eventName": "Ship 42 on Starship Flight 15",
   "calTitle": "Ship 42 launch (Starship Flight 15)",
-  "windowNote": "75-minute window · pending regulatory approval",
+  "windowNote": "Launched 13 Nov 5:48 p.m. ET · ship catch due ~4:21 p.m. ET 14 Nov",
   "location": {
     "name": "Starbase, Texas (Pad 2)",
     "region": "Texas",
     "country": "US"
   },
   "summary": [
-    "Ship 42 is the Starship upper stage on Flight 15, stacked with Super Heavy Booster 22. SpaceX is targeting Friday 13 November 2026 from Pad 2 at Starbase, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT (22:45 UTC). That is a published window, not a guaranteed lift-off time.",
+    "Ship 42 is the Starship upper stage on Flight 15, stacked with Super Heavy Booster 22. It lifted off from Pad 2 at Starbase at 5:48 p.m. ET on Friday 13 November 2026. Booster 22 diverted to a Gulf splashdown. The ship is in orbit, with the first ship catch due around 4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44am ET).",
     "For the first time SpaceX plans to catch both stages with the tower. Ship 42's job, after deploying 26 Starlink V3 satellites, is a flight of more than 22 hours and then the first Ship catch at Starbase, if the flight-control team is satisfied the vehicle is healthy. The tower has never caught a Starship; it has caught a Super Heavy booster three times, on Flights 5, 7 and 8.",
     "SpaceX said on 28 October that Ship 42's static fires were complete. Elon Musk quoted that post the same evening. No FAA licence for Flight 15 is published."
   ],
@@ -281,6 +281,13 @@
   ],
   "updates": [
     {
+      "date": "2026-11-14",
+      "time": "2026-11-14T05:44:58Z",
+      "kind": "Disclosed",
+      "text": "Flight 15 launched 13 Nov at 5:48 p.m. ET. Super Heavy Booster 22 diverted to a Gulf splashdown. SpaceX says the ship and heatshield are healthy, with a planned catch at Starbase ~22.5 hours after launch, about 4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+      "source": "https://x.com/SpaceX/status/2121479482582441991"
+    },
+    {
       "date": "2026-11-12",
       "time": "2026-11-12T16:54:45Z",
       "kind": "Reported",
@@ -356,6 +363,7 @@
     }
   ],
   "related": [
+    "/dispatch/starship-f15-orbit-catch-day.html",
     "/dispatch/ship-42-first-tower-catch.html",
     "/dispatch/starship-f15-ship-catch.html",
     "/dispatch/starship-flight-15-catch-timeline.html"
@@ -373,18 +381,18 @@
     },
     {
       "label": "Window",
-      "value": "Fri 13 Nov, 22:45 UTC, 75 min",
-      "kind": "Target"
+      "value": "Launched 13 Nov, 22:48 UTC · catch ~21:21 UTC 14 Nov",
+      "kind": "Disclosed"
     },
     {
       "label": "Payload",
-      "value": "26 Starlink V3 satellites",
-      "kind": "Target"
+      "value": "26 Starlink V3 satellites, all deployed",
+      "kind": "Disclosed"
     },
     {
       "label": "Flight",
-      "value": "More than 22 hours, then a Ship catch",
-      "kind": "Target"
+      "value": "In orbit · catch due ~4:21 p.m. ET 14 Nov",
+      "kind": "Disclosed"
     },
     {
       "label": "First",

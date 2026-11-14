@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-13",
+ "updated": "2026-11-14",
  "reviewed": "2026-10-24",
  "phaseOrder": [
   "liftoff",
@@ -1689,7 +1689,7 @@
   "officialTime": null,
   "officialSource": null,
   "confirmed": false,
-  "title": "First dual catch attempt",
+  "title": "Booster diverted · ship catch due ~4:21 p.m. ET",
   "booster": "B22",
   "ship": "S42",
   "pad": "Starbase · OLP-2",
@@ -1701,6 +1701,10 @@
    "Deploy 26 Starlink V3 satellites, then fly more than 22 hours before a Ship catch if systems stay healthy"
   ],
   "coverage": [
+   {
+    "label": "Flight 15 in orbit",
+    "url": "/dispatch/starship-f15-orbit-catch-day.html"
+   },
    {
     "label": "Flight 15 hub",
     "url": "/starship-flight-15.html"
@@ -1744,6 +1748,13 @@
   ]
  },
  "schedule": [
+  {
+   "date": "2026-11-14",
+   "text": "Flight 15 lifted off 13 Nov at 5:48 p.m. ET (https://x.com/SpaceX/status/2121374779680964991). Booster 22 diverted to a Gulf splashdown (https://x.com/SpaceX/status/2121376372576915909). The ship reached orbit, deployed 26 Starlink V3, and SpaceX said it is healthy ahead of a planned catch ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET). The catch has not happened yet.",
+   "url": "https://x.com/SpaceX/status/2121479482582441991",
+   "outlet": "SpaceX on X",
+   "kind": "reported"
+  },
   {
    "date": "2026-11-13",
    "text": "Re-checked SpaceX’s Flight 15 mission page on 13 Nov 2026: the window is still as soon as Friday 13 November from Pad 2, opening 4:45 p.m. CT, pending regulatory approval. Ship 42 moved to the pad ahead of launch (SpaceX, 13 Nov 00:56 UTC). Dual catch, 26 Starlink V3, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published. This is a re-check, not a new T-0.",

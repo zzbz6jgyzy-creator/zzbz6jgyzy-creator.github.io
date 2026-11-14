@@ -6,7 +6,25 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 13 Nov 2026 14:53:12 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 08:56:00 +0000</lastBuildDate>
+    <item>
+      <title>Starship Flight 15: the booster diverted, the ship is in orbit, and the first ship catch is due today</title>
+      <link>https://superchargeddaily.com/dispatch/starship-f15-orbit-catch-day.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starship-f15-orbit-catch-day.html</guid>
+      <pubDate>Sat, 14 Nov 2026 08:56:00 +0000</pubDate>
+      <category>SpaceX / Starship</category>
+      <description>Starship Flight 15 launched Nov 13 at 5:48 p.m. ET and put 26 Starlink V3 satellites in orbit, but Super Heavy Booster 22 diverted to a Gulf splashdown instead of a catch. The ship is set to try the first-ever ship catch at Starbase around 4:21 p.m. ET (1:21 p.m. PT) on Nov 14 (as of 14 Nov 2026, 3:44 a.m. ET).</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/iss-starship6-launch-nasa.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Invited customers can now order a Cybercab for $29,990. The $299 a month is the real price</title>
+      <link>https://superchargeddaily.com/dispatch/cybercab-orders-open.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/cybercab-orders-open.html</guid>
+      <pubDate>Sat, 14 Nov 2026 08:56:00 +0000</pubDate>
+      <category>Tesla / Cybercab</category>
+      <description>Tesla has started inviting select customers to buy a Cybercab for personal use: $29,990, a $1,000 non-refundable deposit, a required $299/month autonomy subscription and December 2026 delivery in five Texas cities (as of 14 Nov 2026). Musk already says the fee is too high.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-cybercab-i280-palo-alto-2026.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceX's $50 billion Arizona compute campus: 6 GW, no turbines, and a zoning vote on Dec 9</title>
       <link>https://superchargeddaily.com/dispatch/spacex-cochise-6gw-campus.html</link>
@@ -708,24 +726,6 @@
       <category>Starship</category>
       <description>A double catch on Flight 15 next month, a reflown ship and orbital refuelling early in 2027, then weekly flights. Each date checked against earlier targets and the FAA launch caps.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starship-booster-catch-approach.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Who throttled Ukraine’s Starshield? Three accounts of one speed cap, and what’s actually confirmed</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-ukraine-slowdown-who-ordered.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-ukraine-slowdown-who-ordered.html</guid>
-      <pubDate>Wed, 21 Oct 2026 01:36:23 +0000</pubDate>
-      <category>Starlink</category>
-      <description>The Wall Street Journal reports Musk ordered the cap. Musk said the US military decides, and Trump says he’d like to find out. What’s confirmed, what’s alleged, and the November 2 deadline.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-ukraine-terminal.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>SpaceX Q3 results: $14.6B revenue and a $4.4B profit as AI becomes the biggest business</title>
-      <link>https://superchargeddaily.com/dispatch/spacex-q3-2026-results.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-q3-2026-results.html</guid>
-      <pubDate>Tue, 20 Oct 2026 22:22:32 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>Revenue of $14.58B beat the $12.72B estimate, with $4.40B in net income. AI brought in more than Starlink for the first time, and capex hit $19.59B.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/spacex-q3-results-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
