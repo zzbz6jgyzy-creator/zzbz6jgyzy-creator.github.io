@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T21:39:10.963Z",
+  "updated": "2026-11-14T22:12:05.759Z",
   "changes": [
     {
       "type": "logged",
@@ -85,6 +85,23 @@
       "summary": "Tesla has started inviting select customers to buy a Cybercab for personal use: $29,990, a $1,000 non-refundable deposit, a required $299/month autonomy subscription and December 2026 delivery in five Texas cities (as of 14 Nov 2026). Musk already says the fee is too high.",
       "title": "Invited customers can now order a Cybercab for $29,990. The $299 a month is the real price",
       "id": "logged|dispatch:/dispatch/cybercab-orders-open.html|2026-11-14T08:56:00.000Z|Invited customers can now order a Cybercab for $29,990. The $299 a month is the real price"
+    },
+    {
+      "type": "logged",
+      "factId": "starship:schedule",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "schedule",
+      "previous": "",
+      "next": "SpaceX: Mechazilla catches Starship! Congratulations to the entire SpaceX team on this incredible achievement! First ship return-to-launch-site catch at Starbase, 4:21 p.m. ET (1:21 p.m. PT). Booster 22 was not caught (Gulf splashdown, 13 Nov).",
+      "at": "2026-11-14T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "SpaceX on X",
+      "sourceUrl": "https://x.com/SpaceX/status/2121715216597827756",
+      "href": "/starship.html#schedule",
+      "summary": "SpaceX: Mechazilla catches Starship! Congratulations to the entire SpaceX team on this incredible achievement! First ship return-to-launch-site catch at Starbase, 4:21 p.m. ET (1:21 p.m. PT). Booster 22 was not caught (Gulf splashdown, 13 Nov).",
+      "title": "Flight 15 change",
+      "id": "logged|starship:schedule|2026-11-14T00:00:00.000Z|SpaceX: Mechazilla catches Starship! Congratulations to the entire SpaceX team on this incredible achievement! First ship return-to-launch-site catch at Starbase, 4:21 p.m. ET (1:21 p.m. PT). Booster 22 was not caught (Gulf splashdown, 13 Nov)."
     },
     {
       "type": "logged",
