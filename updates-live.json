@@ -1,16 +1,16 @@
 {
-  "updated": "2026-11-14T01:52:27Z",
+  "updated": "2026-11-14T09:05:51Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fleet": 3271,
+  "fleet": 3273,
   "latest": "2026.38.5.13",
   "versions": [
     {
       "id": "2026.38.5.13",
       "date": "2026-11-13",
-      "count": 0,
-      "fleet": 3271,
-      "percent": 0.0,
+      "count": 19,
+      "fleet": 3273,
+      "percent": 0.6,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -48,17 +48,23 @@
           "text": "Use the Mobile App to upload custom wrap designs from images on your phone and send directly to your Tesla. Go to Creations > Wrap > Upload. Requires Mobile App v4.59.0 or later. To access in car, go to App Launcher > T\u2026"
         }
       ],
-      "countries": [],
-      "countryCounts": {},
-      "pending": 2,
+      "countries": [
+        "US",
+        "CA"
+      ],
+      "countryCounts": {
+        "US": 18,
+        "CA": 1
+      },
+      "pending": 53,
       "firstSeen": "2026-11-13T23:33:09Z",
-      "lastSeen": "2026-11-13T23:33:09Z"
+      "lastSeen": "2026-11-14T08:44:10Z"
     },
     {
       "id": "2026.39.100",
       "date": "2026-11-11",
-      "count": 29,
-      "fleet": 3271,
+      "count": 31,
+      "fleet": 3273,
       "percent": 0.9,
       "fsd": null,
       "fsdHw3": null,
@@ -109,9 +115,9 @@
         "SI"
       ],
       "countryCounts": {
-        "NL": 12,
+        "NL": 13,
         "CZ": 5,
-        "BE": 4,
+        "BE": 5,
         "DK": 3,
         "SK": 1,
         "FI": 1,
@@ -119,15 +125,15 @@
         "EE": 1,
         "SI": 1
       },
-      "pending": 15,
+      "pending": 13,
       "firstSeen": "2026-11-11T16:28:06Z",
-      "lastSeen": "2026-11-13T15:06:29Z"
+      "lastSeen": "2026-11-14T02:30:09Z"
     },
     {
       "id": "2026.38.4.5",
       "date": "2026-11-10",
       "count": 1,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 0.0,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -179,8 +185,8 @@
     {
       "id": "2026.38.5.12",
       "date": "2026-11-04",
-      "count": 602,
-      "fleet": 3271,
+      "count": 603,
+      "fleet": 3273,
       "percent": 18.4,
       "fsd": null,
       "fsdHw3": null,
@@ -226,20 +232,20 @@
         "PR"
       ],
       "countryCounts": {
-        "US": 570,
+        "US": 571,
         "CA": 28,
         "MX": 2,
         "PR": 2
       },
-      "pending": 22,
+      "pending": 21,
       "firstSeen": "2026-11-04T21:22:58Z",
-      "lastSeen": "2026-11-13T22:20:46Z"
+      "lastSeen": "2026-11-14T07:17:40Z"
     },
     {
       "id": "2026.39.6",
       "date": "2026-10-29",
       "count": 42,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 1.3,
       "fsd": null,
       "fsdHw3": null,
@@ -294,7 +300,7 @@
       "id": "2026.38.6.1",
       "date": "2026-10-29",
       "count": 132,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 4.0,
       "fsd": null,
       "fsdHw3": null,
@@ -349,7 +355,7 @@
       "id": "2026.38.6",
       "date": "2026-10-29",
       "count": 339,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 10.4,
       "fsd": null,
       "fsdHw3": null,
@@ -478,7 +484,7 @@
       "id": "2026.38.5.6",
       "date": "2026-10-24",
       "count": 150,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 4.6,
       "fsd": null,
       "fsdHw3": null,
@@ -532,8 +538,8 @@
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 1019,
-      "fleet": 3271,
+      "count": 1020,
+      "fleet": 3273,
       "percent": 31.2,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -580,7 +586,7 @@
         "UA"
       ],
       "countryCounts": {
-        "US": 951,
+        "US": 952,
         "CA": 60,
         "MX": 4,
         "PR": 2,
@@ -588,13 +594,13 @@
       },
       "pending": 17,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-11-13T19:26:29Z"
+      "lastSeen": "2026-11-14T08:07:07Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
       "count": 360,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 11.0,
       "fsd": null,
       "fsdHw3": null,
@@ -733,7 +739,7 @@
       "id": "2026.38.5.5",
       "date": "2026-10-21",
       "count": 136,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 4.2,
       "fsd": null,
       "fsdHw3": null,
@@ -788,7 +794,7 @@
       "id": "2026.38.5.10",
       "date": "2026-10-20",
       "count": 93,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 2.8,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -845,7 +851,7 @@
       "id": "2026.38.5.1",
       "date": "2026-10-13",
       "count": 1030,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 31.5,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -906,7 +912,7 @@
       "id": "2026.38.5",
       "date": "2026-10-10",
       "count": 135,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 4.1,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -965,7 +971,7 @@
       "id": "2026.38.3.1",
       "date": "2026-10-08",
       "count": 327,
-      "fleet": 3271,
+      "fleet": 3273,
       "percent": 10.0,
       "fsd": null,
       "fsdHw3": null,
@@ -1096,7 +1102,7 @@
       "id": "2026.38.3",
       "date": "2026-10-06",
       "count": 7,
-      "fleet": 3284,
+      "fleet": 3274,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": null,
