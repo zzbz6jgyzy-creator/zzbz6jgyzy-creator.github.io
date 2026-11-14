@@ -1,7 +1,7 @@
 window.STARSHIP = {
   updated: "2026-11-14",
   note:
-    "Based on SpaceX flight pages, SpaceX posts on X and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15 is in orbit; the Saturday Ship catch is still a go/no-go. Not affiliated with SpaceX.",
+    "Based on SpaceX flight pages, SpaceX posts on X and public launch records. Outcomes are our assessment of the whole flight, not SpaceX’s official verdict. Flight 15: Mechazilla caught Ship 42 at Starbase at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov; Booster 22 was not caught (Gulf splashdown). Not affiliated with SpaceX.",
   next: {
     flight: 15,
     start: "2026-11-13T16:45:00-06:00",
@@ -12,16 +12,16 @@ window.STARSHIP = {
     booster: "B22",
     ship: "S42",
     block: "Block 3",
-    headline: "In orbit · Ship catch still ahead",
+    headline: "Caught at Starbase · booster splashdown",
     tested:
-      "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026, according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. That catch is still a go/no-go, not a result.",
+      "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026, according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. At 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov, SpaceX said Mechazilla caught Starship at Starbase. Booster 22 was not caught. This is not a two-stage recovery.",
     objectives: [
-      "Catch Ship 42 on the Pad 2 tower — still planned, only if systems stay healthy",
+      "Catch Ship 42 on the Pad 2 tower — complete, per SpaceX at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov",
       "Super Heavy B22 catch — not achieved; SpaceX diverted the booster to the Gulf",
       "Deploy 26 Starlink V3 satellites — complete, per SpaceX",
     ],
     coverage: [
-      { label: "Flight 15 in orbit", url: "/dispatch/starship-f15-orbit-catch-day.html" },
+      { label: "Flight 15 ship catch", url: "/dispatch/starship-f15-orbit-catch-day.html" },
       { label: "Flight 15 hub", url: "/starship-flight-15.html" },
       { label: "Ship 42 hub", url: "/ship-42.html" },
       { label: "SpaceX Flight 15", url: "https://www.spacex.com/launches/starship-flight-15" },
@@ -35,6 +35,14 @@ window.STARSHIP = {
     ],
   },
   schedule: [
+    {
+      date: "2026-11-14",
+      mission: 15,
+      confirmed: true,
+      change:
+        "SpaceX: Mechazilla catches Starship! Congratulations to the entire SpaceX team on this incredible achievement! First ship return-to-launch-site catch at Starbase, 4:21 p.m. ET (1:21 p.m. PT). Booster 22 was not caught (Gulf splashdown, 13 Nov).",
+      source: { outlet: "SpaceX on X", url: "https://x.com/SpaceX/status/2121715216597827756" },
+    },
     {
       date: "2026-11-14",
       mission: 15,

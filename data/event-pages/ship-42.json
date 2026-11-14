@@ -4,18 +4,18 @@
   "section": "SpaceX",
   "sectionUrl": "/spacex.html",
   "kicker": "Starship / Ship 42",
-  "title": "Ship 42: in orbit after Flight 15, catch still ahead",
-  "seoTitle": "Ship 42 Flight 15: in orbit, booster diverted, Saturday catch",
-  "description": "Ship 42 launched on Starship Flight 15 at about 4:47 p.m. CT on 13 Nov 2026. Super Heavy diverted to the Gulf. The Ship is in orbit with 26 Starlink V3s deployed, and a tower catch is still planned Saturday if systems stay healthy.",
+  "title": "Ship 42: caught at Starbase after Flight 15",
+  "seoTitle": "Ship 42 Flight 15: caught at Starbase, booster diverted",
+  "description": "Ship 42 launched on Starship Flight 15 at about 4:47 p.m. CT on 13 Nov 2026 and put 26 Starlink V3s in orbit. Super Heavy diverted to the Gulf. Mechazilla caught the ship at Starbase at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov. The booster was not caught.",
   "ogImage": "/assets/og/ship-42.jpg",
   "ogImageAlt": "Ship 42 launch title card on a dark background with the Supercharged Daily bolt",
   "crumb": "Ship 42",
   "eventName": "Ship 42 on Starship Flight 15",
   "calTitle": "Ship 42 launch (Starship Flight 15)",
-  "windowNote": "In orbit · catch pending Saturday",
-  "afterLabel": "In orbit",
-  "afterSub": "Booster diverted. Ship 42 is coasting toward a Saturday catch if systems stay healthy. See the updates log.",
-  "featureGo": "In orbit: the flight so far and Saturday's Ship catch →",
+  "windowNote": "Caught at Starbase · booster splashdown",
+  "afterLabel": "Caught",
+  "afterSub": "Mechazilla caught Ship 42 at Starbase at 4:21 p.m. ET (1:21 p.m. PT). Booster 22 diverted to the Gulf and was not caught. See the updates log.",
+  "featureGo": "Caught at Starbase: the first Starship return-to-launch-site catch →",
   "location": {
     "name": "Starbase, Texas (Pad 2)",
     "region": "Texas",
@@ -23,8 +23,8 @@
   },
   "summary": [
     "Ship 42 launched on Starship Flight 15 from Pad 2 at Starbase on Friday 13 November 2026, at about 4:47 p.m. CT (22:47 UTC), according to Space.com's live coverage of SpaceX's webcast. Super Heavy Booster 22 diverted to an offshore splashdown in the Gulf. SpaceX later said the booster automatically aborted the Pad 2 catch because of a guidance, navigation and control issue, as relayed by NASASpaceflight quoting Dan Huot.",
-    "Ship 42 reached orbit — only the second Starship to do so — and deployed all 26 Starlink V3 satellites. SpaceX said on 14 November at 05:44 UTC that the Ship and its heatshield were healthy and that teams were still planning a return-to-launch-site catch at Starbase about 22.5 hours after launch. That catch is still a go/no-go, not a result.",
-    "The tower has never caught a Starship. It has caught a Super Heavy booster three times, on Flights 5, 7 and 8. This flight will not be a dual catch: the booster is already in the Gulf."
+    "Ship 42 reached orbit — only the second Starship to do so — and deployed all 26 Starlink V3 satellites. At 4:21 p.m. ET (1:21 p.m. PT) on Saturday 14 November, SpaceX said Mechazilla caught Starship at Starbase. That is the first Starship return-to-launch-site catch. Booster 22 was not caught.",
+    "The tower has now caught a Starship. It has caught a Super Heavy booster three times, on Flights 5, 7 and 8. This flight is not a dual catch: the booster is already in the Gulf."
   ],
   "sections": [
     {
@@ -32,8 +32,15 @@
       "title": "Flight 15 so far",
       "jumpTitle": "Flight so far",
       "placement": "before-mission",
-      "lead": "Checked 14 Nov 2026, 09:14 UTC. Ship 42 is still in orbit. The Saturday catch has not happened yet.",
+      "lead": "Checked 14 Nov 2026, 21:21 UTC. Mechazilla caught Ship 42 at Starbase. Booster 22 diverted to the Gulf.",
       "points": [
+        {
+          "title": "Ship catch",
+          "kind": "Disclosed",
+          "text": "SpaceX: Mechazilla catches Starship! Congratulations to the entire SpaceX team on this incredible achievement! First ship return-to-launch-site catch at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov. Booster 22 was not caught.",
+          "source": "https://x.com/SpaceX/status/2121715216597827756",
+          "sourceName": "Source"
+        },
         {
           "title": "Lift-off",
           "kind": "Reported",
@@ -98,16 +105,16 @@
       "body": [
         "On 20 April 2023, Starship's first integrated flight tumbled and was terminated. Several flights since have ended in explosions. SpaceX kept flying. Flight 2 proved hot staging at this scale. Flight 4 was the first time the ship survived a controlled re-entry. On Flight 5 the tower chopsticks caught Super Heavy on the first try, and later flights repeated the catch.",
         {
-          "text": "The V3 ship and booster debuted on Flight 12, on 22 May 2026, flying on Raptor 3 engines. Flight 14, on 28 September, reached orbit and deployed 26 Starlink V3 satellites. Flight 15, with Ship 42, lifted off from Pad 2 on Friday 13 November at about 4:47 p.m. CT (22:47 UTC), according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to the Gulf. Ship 42 reached orbit and deployed 26 Starlink V3 satellites. SpaceX said on 14 Nov that the heatshield is healthy and a return-to-launch-site catch at Starbase is still planned about 22.5 hours after launch, according to SpaceX on X.",
+          "text": "The V3 ship and booster debuted on Flight 12, on 22 May 2026, flying on Raptor 3 engines. Flight 14, on 28 September, reached orbit and deployed 26 Starlink V3 satellites. Flight 15, with Ship 42, lifted off from Pad 2 on Friday 13 November at about 4:47 p.m. CT (22:47 UTC), according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to the Gulf. Ship 42 reached orbit and deployed 26 Starlink V3 satellites. At 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov, SpaceX said Mechazilla caught Starship at Starbase, according to SpaceX on X.",
           "linkText": "SpaceX on X",
-          "href": "https://x.com/SpaceX/status/2121479482582441991"
+          "href": "https://x.com/SpaceX/status/2121715216597827756"
         }
       ]
     },
     {
       "id": "minute-by-minute",
-      "title": "Minute by minute: the flown Friday, the Saturday catch still ahead",
-      "lead": "The Ship catch is not on launch day. Flight 15 lifted off at about 4:47 p.m. CT on Friday, so Ship 42 is due back at the tower on Saturday afternoon, about 22 and a half hours later, if the team stays go. Alex R's 12 November video walks the whole profile using SpaceX's published timeline. Times in the video assumed lift-off at window open (4:45 p.m. CST); actual events run about two minutes later.",
+      "title": "Minute by minute: the flown Friday, then the Saturday catch",
+      "lead": "The Ship catch was not on launch day. Flight 15 lifted off at about 4:47 p.m. CT on Friday. At 4:21 p.m. ET (1:21 p.m. PT) on Saturday, 14 Nov, SpaceX said Mechazilla caught Starship at Starbase. Alex R's 12 November video walked the whole profile using SpaceX's published timeline. Times in the video assumed lift-off at window open (4:45 p.m. CST); actual Friday events ran about two minutes later.",
       "points": [
         {
           "title": "Friday: lift-off to payload",
@@ -124,10 +131,10 @@
           "sourceName": "Source"
         },
         {
-          "title": "Catch is still a go/no-go",
+          "title": "Catch confirmed",
           "kind": "Disclosed",
-          "text": "SpaceX at T+7 hours: the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. The catch flies only if systems stay healthy.",
-          "source": "https://x.com/SpaceX/status/2121479482582441991",
+          "text": "SpaceX at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov: Mechazilla catches Starship. First ship return-to-launch-site catch. Booster 22 was not caught.",
+          "source": "https://x.com/SpaceX/status/2121715216597827756",
           "sourceName": "Source"
         }
       ],
@@ -222,7 +229,7 @@
     {
       "id": "watch-ship",
       "title": "What to watch on Ship 42",
-      "lead": "Times below are SpaceX's published Flight 15 profile, not a flown clock. The booster catch did not happen; Super Heavy diverted to the Gulf. Ship 42's own catch, if the team stays go, is more than 22 hours after lift-off.",
+      "lead": "Times below are SpaceX's published Flight 15 profile, not a flown clock. The booster catch did not happen; Super Heavy diverted to the Gulf. Ship 42's catch was confirmed at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov.",
       "timeline": [
         {
           "t": "T+8:09",
@@ -245,8 +252,8 @@
         {
           "t": "T+22:10:46",
           "title": "Entry, then landing burn and catch at about T+22:32:34",
-          "text": "SpaceX says the Ship will only fly that profile if systems critical for re-entry, the landing burn and the tower approach are healthy.",
-          "source": "https://www.spacex.com/launches/starship-flight-15"
+          "text": "SpaceX confirmed the catch at Starbase at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov. The booster was not caught.",
+          "source": "https://x.com/SpaceX/status/2121715216597827756"
         }
       ]
     },
@@ -287,13 +294,13 @@
   "links": [
     {
       "href": "/dispatch/starship-f15-orbit-catch-day.html",
-      "title": "Flight 15 in orbit",
-      "text": "The Dispatch record of lift-off, the booster divert, payload deploy and the Saturday Ship catch still ahead."
+      "title": "Flight 15 ship catch",
+      "text": "The Dispatch record of lift-off, the booster divert, payload deploy and the confirmed Ship catch at Starbase."
     },
     {
       "href": "/starship-flight-15.html",
       "title": "Flight 15 hub",
-      "text": "The Flight 15 hub: flown events, the booster divert, and Saturday's Ship catch if the team stays go."
+      "text": "The Flight 15 hub: flown events, the booster divert, and the confirmed Ship catch at Starbase."
     },
     {
       "href": "https://x.com/AlJR86/status/2120923262133678326",
@@ -344,6 +351,13 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-14",
+      "time": "2026-11-14T21:21:41Z",
+      "kind": "Disclosed",
+      "text": "SpaceX: Mechazilla catches Starship! Congratulations to the entire SpaceX team on this incredible achievement! First ship return-to-launch-site catch at Starbase at 4:21 p.m. ET (1:21 p.m. PT). Booster 22 was not caught (Gulf splashdown on 13 Nov).",
+      "source": "https://x.com/SpaceX/status/2121715216597827756"
+    },
     {
       "date": "2026-11-14",
       "time": "2026-11-14T05:44:58Z",
@@ -518,13 +532,13 @@
     },
     {
       "label": "Ship",
-      "value": "In orbit, heatshield healthy",
+      "value": "Caught at Starbase, 4:21 p.m. ET",
       "kind": "Disclosed"
     },
     {
       "label": "Catch",
-      "value": "Still planned ~22.5 hours after launch",
-      "kind": "Target"
+      "value": "Confirmed at 4:21 p.m. ET (1:21 p.m. PT)",
+      "kind": "Disclosed"
     }
   ],
   "hero": {
@@ -537,7 +551,7 @@
     "width": 1200,
     "height": 1500,
     "alt": "A Super Heavy booster, engines lit, descends beside the launch tower's open arms at dusk",
-    "caption": "Super Heavy on final approach to the tower on Flight 5, 13 Oct 2024, the first booster catch. A Ship has never been caught.",
+    "caption": "Super Heavy on final approach to the tower on Flight 5, 13 Oct 2024, the first booster catch. This is not the Flight 15 ship catch.",
     "credit": "Steve Jurvetson, via Wikimedia Commons",
     "creditUrl": "https://commons.wikimedia.org/wiki/File:Starship_Booster_Return_on_Final_Approach_(54063904149).jpg",
     "licence": "CC BY 2.0",

@@ -1,3 +1,8 @@
+## 2026-11-14 — Starship Flight 15 ship catch at Starbase (booster splashdown)
+
+- SpaceX confirmed Mechazilla caught Starship at Starbase at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov 2026 — the first Starship return-to-launch-site catch. Official post: https://x.com/SpaceX/status/2121715216597827756. Super Heavy Booster 22 diverted to a Gulf splashdown on 13 Nov and was not caught. Not a two-stage recovery. (As of 14 Nov 2026, 4:52 p.m. ET.)
+- Refresh only: mid-mission article, catch-timeline, ship-catch article, Starship tracker Flight 15 / Ship 42, `/ship-42.html` and `/starship-flight-15.html` (via event JSON + rebuild). No new article. NASA Flight 6 ISS hero and caption unchanged.
+
 ## 2026-11-14 — Grok Imagine team cut (reported), and Robo Menevä Helsinki Tesla taxis
 
 - Dispatch: The Information reports about 60 people on Grok Imagine were laid off in the past week, leaving a handful to run it (as of 14 Nov 2026, 9:30 a.m. ET; no company statement). Licensed Commons Starbase still (CC BY-SA 4.0, Jenny Hautmann, 12 Mar 2023); not a photo of the Imagine team or Colossus. Update pointers on the Odyssey Episode 1 and Grok Bot 1.0 pages.

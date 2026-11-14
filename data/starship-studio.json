@@ -1690,20 +1690,20 @@
   "officialSource": null,
   "confirmed": false,
   "inFlight": true,
-  "title": "In orbit · Ship catch still ahead",
+  "title": "Caught at Starbase · booster splashdown",
   "booster": "B22",
   "ship": "S42",
   "pad": "Starbase · OLP-2",
   "generation": "Block 3",
-  "summary": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026, according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. That catch is still a go/no-go, not a result.",
+  "summary": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026, according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. At 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov, SpaceX said Mechazilla caught Starship at Starbase. Booster 22 was not caught. This is not a two-stage recovery.",
   "objectives": [
-   "Catch Ship 42 on the Pad 2 tower — still planned, only if systems stay healthy",
+   "Catch Ship 42 on the Pad 2 tower — complete, per SpaceX at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov",
    "Super Heavy B22 catch — not achieved; SpaceX diverted the booster to the Gulf",
    "Deploy 26 Starlink V3 satellites — complete, per SpaceX"
   ],
   "coverage": [
    {
-    "label": "Flight 15 in orbit",
+    "label": "Flight 15 ship catch",
     "url": "/dispatch/starship-f15-orbit-catch-day.html"
    },
    {
@@ -1749,6 +1749,13 @@
   ]
  },
  "schedule": [
+  {
+   "date": "2026-11-14",
+   "text": "SpaceX: Mechazilla catches Starship! Congratulations to the entire SpaceX team on this incredible achievement! First ship return-to-launch-site catch at Starbase, 4:21 p.m. ET (1:21 p.m. PT). Booster 22 was not caught (Gulf splashdown, 13 Nov).",
+   "url": "https://x.com/SpaceX/status/2121715216597827756",
+   "outlet": "SpaceX on X",
+   "kind": "reported"
+  },
   {
    "date": "2026-11-14",
    "text": "SpaceX: Starship and its heatshield are healthy nearly seven hours after launch. Teams are still monitoring systems ahead of a planned return-to-launch-site catch at Starbase about 22.5 hours after launch.",
@@ -1918,5 +1925,5 @@
    "kind": "unverified"
   }
  ],
- "note": "Independent editorial flight records, not SpaceX telemetry. Phase outcomes are descriptive and the overall labels are our assessment. Flight 15 is in orbit; the Ship catch is still a go/no-go."
+ "note": "Independent editorial flight records, not SpaceX telemetry. Phase outcomes are descriptive and the overall labels are our assessment. Flight 15: Ship 42 caught at Starbase; Booster 22 Gulf splashdown."
 }

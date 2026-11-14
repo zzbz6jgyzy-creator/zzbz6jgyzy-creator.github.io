@@ -65,7 +65,7 @@ const main = () => {
       secsEl.textContent = "00";
       if (statusEl) {
         statusEl.textContent =
-          "Flight 15 launched 13 Nov at 5:48 p.m. ET. Booster diverted; ship catch due ~4:21 p.m. ET on 14 Nov (as of 14 Nov 2026, 3:44 a.m. ET).";
+          "Flight 15 launched 13 Nov at 5:48 p.m. ET. Mechazilla caught the ship at Starbase at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov. Booster diverted to the Gulf, not caught. (As of 14 Nov 2026, 4:52 p.m. ET).";
       }
       return;
     }

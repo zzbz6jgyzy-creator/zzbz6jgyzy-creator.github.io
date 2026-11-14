@@ -71,7 +71,7 @@ test("head has standard title, description, canonical, og and twitter tags", () 
 test("after the launch window, saved countdown markup uses the after label and Event stays EventScheduled", () => {
   const html = fs.readFileSync("ship-42.html", "utf8");
   assert.match(html, /data-cd-state="after"/);
-  assert.match(html, /data-cd-label>In orbit</);
+  assert.match(html, /data-cd-label>Caught</);
   assert.doesNotMatch(html, /data-cd-label>Launch window opens</);
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1])).flat();
   const ev = ld.flat().find((x) => x["@type"] === "Event");
@@ -166,13 +166,13 @@ test("updates log carries what event-live.js needs, and timed entries sort and r
   const dir = sandbox();
   try {
     const f = path.join(dir, "data/event-pages/starship-flight-15.json"), p = JSON.parse(fs.readFileSync(f, "utf8"));
-    p.updates.push({ date: "2026-11-14", time: "2026-11-14T09:00:00Z", kind: "Disclosed", text: "Lift-off.", source: "https://www.spacex.com/" });
+    p.updates.push({ date: "2026-11-14", time: "2026-11-14T22:00:00Z", kind: "Disclosed", text: "Lift-off.", source: "https://www.spacex.com/" });
     fs.writeFileSync(f, JSON.stringify(p));
     buildEventPages(dir);
     const out = fs.readFileSync(path.join(dir, "starship-flight-15.html"), "utf8");
     const first = out.match(/<ol class="ev-log"[^>]*><li>([\s\S]*?)<\/li>/)[1];
-    assert.match(first, /<time datetime="2026-11-14T09:00:00Z">14 Nov 2026, 09:00 UTC<\/time>/);
-    assert.match(out, /data-ev-latest="2026-11-14T09:00:00Z"/);
+    assert.match(first, /<time datetime="2026-11-14T22:00:00Z">14 Nov 2026, 22:00 UTC<\/time>/);
+    assert.match(out, /data-ev-latest="2026-11-14T22:00:00Z"/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
@@ -241,7 +241,7 @@ test("Ship 42 puts the road-to-Flight-15 video before the mission, with no autop
   assert.doesNotMatch(html, /electrek/i);
   assert.match(html, /<figcaption>Video: SpaceX \(@SpaceX\), official footage from Starship Flights 1 to 14, the Flight 15 preview and Elon Musk's May 2025 Starbase talk\. Music: 'Pathfinder' by Scott Buckley, <a href="https:\/\/creativecommons\.org\/licenses\/by\/4\.0\/">CC BY 4\.0<\/a> \(<a href="https:\/\/scottbuckley\.com\.au">scottbuckley\.com\.au<\/a>\)\.<\/figcaption>/);
   assert.match(html, /lifted off from Pad 2 on Friday 13 November/);
-  assert.match(html, /href="https:\/\/x\.com\/SpaceX\/status\/2121479482582441991"[^>]*>SpaceX on X<\/a>/);
+  assert.match(html, /href="https:\/\/x\.com\/SpaceX\/status\/2121715216597827756"[^>]*>SpaceX on X<\/a>/);
   assert.match(html, /href="https:\/\/www\.spacex\.com\/launches\/starship-flight-15"/);
   assert.match(html, /Steve Jurvetson/);
   assert.match(html, /event-page\.css\?v=20261113a/);
