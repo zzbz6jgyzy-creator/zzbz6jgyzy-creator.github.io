@@ -112,7 +112,7 @@ async def main():
       assert await field.input_value()=='My new comment.'
       first_nonce=[a['p_nonce'] for m,a in calls if m=='sd_post_comment'][-1]
       await submit.click();await page.get_by_text('Your comment is published.',exact=True).wait_for()
-      assert await page.locator('#comment-10').count()==1
+      await page.locator('#comment-10').wait_for()
       assert first_nonce==[a['p_nonce'] for m,a in calls if m=='sd_post_comment'][-1]
       await page.locator('#comment-1').get_by_role('button',name='View replies (1)',exact=True).click()
       await page.locator('#comment-3').wait_for()
