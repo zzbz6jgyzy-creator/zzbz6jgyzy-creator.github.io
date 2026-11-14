@@ -1,23 +1,6 @@
 {
-  "updated": "2026-11-14T09:36:10.939Z",
+  "updated": "2026-11-14T12:20:30.024Z",
   "changes": [
-    {
-      "type": "changed",
-      "factId": "starship:event:starship-flight-15",
-      "topic": "starship",
-      "tracker": "starship",
-      "field": "event:starship-flight-15",
-      "previous": "2026-11-13T22:45:00.000Z|net",
-      "next": "2026-11-13T22:45:00.000Z|in-flight",
-      "at": "2026-11-14T09:20:00.000Z",
-      "evidence": "officially_confirmed",
-      "source": "https://x.com/SpaceX/status/2121479482582441991",
-      "sourceUrl": "",
-      "href": "https://www.spacex.com/launches/starship-flight-15",
-      "summary": "Starship Flight 15 changed from 2026-11-13T22:45:00.000Z|net to 2026-11-13T22:45:00.000Z|in-flight.",
-      "title": "Starship Flight 15",
-      "id": "changed|starship:event:starship-flight-15|2026-11-14T09:20:00.000Z|2026-11-13T22:45:00.000Z|in-flight"
-    },
     {
       "type": "appeared",
       "factId": "tesla-software:wave:2026.38.5.13",
