@@ -1,6 +1,250 @@
 {
-  "updated": "2026-11-15T09:52:07Z",
+  "updated": "2026-11-15T17:01:20Z",
   "items": [
+    {
+      "id": "e96d7e7af1d2",
+      "topic": "spacex",
+      "title": "The US Needs Musk and SpaceX — for Better and Worse",
+      "source": "Bloomberg.com",
+      "url": "https://www.bloomberg.com/opinion/articles/2026-11-15/starship-capture-shows-us-needs-musk-and-spacex",
+      "published": "2026-11-15T16:17:27Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 8
+    },
+    {
+      "id": "daefa2bf4cf9",
+      "topic": "spacex",
+      "title": "SpaceX catches Starship rocket on return to Earth",
+      "source": "The Washington Post",
+      "url": "https://www.washingtonpost.com/technology/2026/11/15/spacex-catches-starship-rocket-return-earth/",
+      "published": "2026-11-15T15:53:32Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.auZrrsWLASHcXRzffU3EAA&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "404f5dbed0b2",
+      "topic": "tesla",
+      "title": "Tesla, XPeng, Lucid and Elon Musk Dominated This Week’s Auto Headlines",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/tech/26/11/63277216/tesla-xpeng-lucid-ev-cybercab-china",
+      "published": "2026-11-15T15:00:43Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 1
+    },
+    {
+      "id": "f4cd84870459",
+      "topic": "spacex",
+      "title": "Elon Musks shares POV footage of Starship after the catch",
+      "source": "Mashable",
+      "url": "https://mashable.com/science/elon-musk-shares-pov-footage-of-starship-after-the-catch",
+      "published": "2026-11-15T14:56:16Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.hOF0FkJL7IPTMVk_QoRLpQ&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "4ac3b0f49e9f",
+      "topic": "spacex",
+      "title": "‘Almost magic’ as SpaceX craft caught mid-air: Why it matters",
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/11/15/almost-magic-as-spacex-craft-caught-mid-air-why-it-matters",
+      "published": "2026-11-15T14:14:58Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.czASxVNWSn2bR9dydS5NwQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "f5e04c1fee4e",
+      "topic": "spacex",
+      "title": "SpaceX carries out first-ever spaceship capture",
+      "source": "DW.com",
+      "url": "https://www.dw.com/en/spacex-carries-out-first-ever-spaceship-capture/a-79950275",
+      "published": "2026-11-15T14:07:51Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.ucNQ5ouInTdUEkBgHa02BQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "80c2c1687e7c",
+      "topic": "tesla",
+      "title": "Tesla Is Down 13% in 2026 While the S&P 500 Is Up. Here’s the 1 Catalyst Left This Year That Could Flip That.",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/11/15/tesla-is-down-13-in-2026-while-the-sp-500-is-up-heres-the-1-catalyst-left-this-year-that-could-flip-that/",
+      "published": "2026-11-15T13:55:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.4hPv61lsHCmaeXqATOVomQ&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": -5
+    },
+    {
+      "id": "43d01510c9c4",
+      "topic": "tesla",
+      "title": "Tesla’s Cybercab goes on sale for ‘personal use’ but Elon Musk admits the monthly cost of ownership is ‘too high",
+      "source": "TechRadar",
+      "url": "https://www.techradar.com/vehicle-tech/self-driving-vehicles/teslas-cybercab-goes-on-sale-for-personal-use-but-elon-musk-admits-the-monthly-cost-of-ownership-is-too-high",
+      "published": "2026-11-15T13:30:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.EAs8sGTjMa-I_XuShyPkYw&pid=News&w=640",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
+      "id": "4a85567df7c0",
+      "topic": "tesla",
+      "title": "Tesla quietly raises the entry price for Model Y AWD by $8000 in the US",
+      "source": "The Supercar Blog",
+      "url": "https://www.thesupercarblog.com/tesla-quietly-raises-the-entry-price-for-model-y-awd-by-8000-in-the-us/",
+      "published": "2026-11-15T13:24:48Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.z7N1fjpU2c5Hkj6yr2_Wbg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "03dad0e0557e",
+      "topic": "spacex",
+      "title": "SpaceX Catches Starship From Orbit for the First Time. Here’s What It Means for Starlink’s Costs",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-catches-starship-orbit-first-132124995.html",
+      "published": "2026-11-15T13:21:24Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "e7d454e063b2",
+      "topic": "tesla",
+      "title": "Elon Musk's Tesla sets date for long-awaited arrival in Argentina",
+      "source": "Buenos Aires Times",
+      "url": "https://www.batimes.com.ar/news/economy/elon-musks-tesla-sets-date-for-long-awaited-arrival-in-argentina.phtml",
+      "published": "2026-11-15T13:03:53Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "36c1451876b3",
+      "topic": "spacex",
+      "title": "SpaceX’s Starship returns to launch pad from orbit – video",
+      "source": "The Guardian",
+      "url": "https://www.theguardian.com/science/video/2026/nov/15/spacex-starship-returns-launch-pad-video",
+      "published": "2026-11-15T12:38:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.4_oNfpxH4STFi3ocMXfSAw&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "cfffd806a46f",
+      "topic": "spacex",
+      "title": "SpaceX achieves another historic first",
+      "source": "The Economist",
+      "url": "https://www.economist.com/science-and-technology/2026/11/15/spacex-achieves-another-historic-first",
+      "published": "2026-11-15T11:33:37Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.lSLO0-1zsxOxrS3jHwbJkA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "e01c102fe3bc",
+      "topic": "spacex",
+      "title": "What Elon Musk’s SpaceX Starship Catch Means for Moon Missions",
+      "source": "Newsweek",
+      "url": "https://www.newsweek.com/what-elon-musks-spacex-starship-catch-means-for-moon-missions-12717074",
+      "published": "2026-11-15T11:25:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.hOF0FkJL7IPTMVk_QoRLpQ&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "bfaac0b82c2e",
+      "topic": "grok",
+      "title": "xAI",
+      "source": "Britannica",
+      "url": "https://www.britannica.com/money/xAI",
+      "published": "2026-11-15T11:17:33Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "5e56aa94fb2a",
+      "topic": "tesla",
+      "title": "Watch pair of dogs pull up at Walmart in Tesla",
+      "source": "USA Today",
+      "url": "https://www.usatoday.com/story/pets-animals/dog/2026/11/15/dogs-walmart-tesla/92761998007/",
+      "published": "2026-11-15T11:04:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.CAzYpw4dnTGaXwQrzsB4pQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "f68582358244",
+      "topic": "spacex",
+      "title": "What's next for SpaceX's Starship after epic Flight 15 chopsticks catch?",
+      "source": "Space",
+      "url": "https://www.space.com/space-exploration/launches-spacecraft/whats-next-for-spacexs-starship-after-epic-flight-15-chopsticks-catch",
+      "published": "2026-11-15T11:00:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.1WxXgZWh91ihykuLBIz37g&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "e4ee5d711058",
+      "topic": "grok",
+      "title": "OpenAI Introduces ChatGPT Wallet to Let AI Agents Make Purchases on Users’ Behalf",
+      "source": "Deccan Chronicle",
+      "url": "https://www.deccanchronicle.com/amp/technology/openai-introduces-chatgpt-wallet-to-let-ai-agents-make-purchases-on-users-behalf-2004625",
+      "published": "2026-11-15T10:46:53Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "1a82c28150e8",
+      "topic": "grok",
+      "title": "Grok AI Sees a 35% Chance XRP Drops to $0.80, but Still Bets on a $1.05 Year-End",
+      "source": "CryptoDaily",
+      "url": "https://cryptodaily.co.uk/2026/11/grok-ai-sees-a-35-chance-xrp-drops-to-0-80-but-still-bets-on-a-1-05-year-end",
+      "published": "2026-11-15T10:00:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "e958d957c7e8",
+      "topic": "spacex",
+      "title": "Starship capture thrills space fans! And SpaceX makes spaceflight history (again)",
+      "source": "EarthSky",
+      "url": "https://earthsky.org/space/glorious-starship-capture-spacex-makes-spaceflight-history-again/",
+      "published": "2026-11-15T09:59:06Z",
+      "snippet": "",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "7ab9a5233fc9",
+      "topic": "tesla",
+      "title": "Tesla Driver Gets BMW After Swearing Off Gas Cars. Then She Fills Up At Shell And Sees Her Fuel Economy",
+      "source": "Motor1.com",
+      "url": "https://www.motor1.com/news/806782/tesla-vs-bmw-fuel-costs/",
+      "published": "2026-11-15T09:51:59Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
     {
       "id": "c9327754fd32",
       "topic": "tesla",
@@ -20,42 +264,6 @@
       "url": "https://ukrmedia.news/en/science-tech/tesla-cybercab-tsina-zamovlennia-pidpyska/",
       "published": "2026-11-15T08:59:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.0w3cJgXBc2pigUTv5saerw&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
-      "id": "3fefe1cd430b",
-      "topic": "tesla",
-      "title": "Tesla Robotaxi UI: 5 Details That Matter - BASENOR",
-      "source": "BASENOR - Tesla Accessories",
-      "url": "https://www.basenor.com/blogs/news/tesla-robotaxi-ui-5-details-that-matter",
-      "published": "2026-11-15T08:03:56Z",
-      "snippet": "",
-      "kind": "milestone",
-      "score": 19
-    },
-    {
-      "id": "8fb3452874b7",
-      "topic": "tesla",
-      "title": "Tesla sells the Cybercab privately, but keeps control of the car",
-      "source": "AutoNext.co",
-      "url": "https://www.autonext.co/news/tesla-cybercab-private-sale-subscription",
-      "published": "2026-11-15T07:48:52Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.adAtieT9EoR94KbAZSpW1A&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
-      "id": "a23b959a54d5",
-      "topic": "tesla",
-      "title": "Tesla Cybercab — Driverless Robotaxi Available for Personal Purchase at $29,990",
-      "source": "The Korea Daily",
-      "url": "https://en.koreadaily.com/tesla-cybercab-personal-purchase-price/",
-      "published": "2026-11-15T07:11:59Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.DaeQ0-fRwB43jflp3iSmDQ&pid=News&w=640",
       "kind": "milestone",
       "score": 11
     },
@@ -82,40 +290,98 @@
       "score": 4
     },
     {
-      "id": "cb58ac515720",
-      "topic": "spacex",
-      "title": "SpaceX Starship landing livestream: Watch the catch attempt live",
-      "source": "Mashable",
-      "url": "https://mashable.com/science/spacex-starship-landing-livestream-catch-attempt",
-      "published": "2026-11-15T05:12:49Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.EOla1eAPHJbR24473xMHmQ&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
+      "id": "4ca91f89a4b1",
+      "topic": "tesla",
+      "title": "Tesla is selling the Cybercab to private buyers, but it won't move without a $299 monthly subscription",
+      "source": "TechSpot",
+      "url": "https://www.techspot.com/news/114562-tesla-selling-cybercab-private-buyers-but-wont-move.html",
+      "published": "2026-11-15T06:01:00Z",
+      "snippet": "The offer to buy is invitation-only for now. Tesla announced it on its Robotaxi account on X and posted screenshots of the order page with an ...",
+      "image": "https://www.bing.com/th?id=ONUT.1gNiAGd0F-OEMk-mCUxTBg&pid=News&w=640",
+      "kind": "milestone",
+      "score": 11
     },
     {
-      "id": "f5e04c1fee4e",
+      "id": "8c7de7a57bf8",
       "topic": "spacex",
-      "title": "SpaceX carries out first-ever spaceship capture",
-      "source": "DW.com",
-      "url": "https://www.dw.com/en/spacex-carries-out-first-ever-spaceship-capture/a-79950275",
-      "published": "2026-11-15T05:04:17Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.ucNQ5ouInTdUEkBgHa02BQ&pid=News&w=640",
+      "title": "Watch: Arsonists fling Molotov cocktails at Starlink site",
+      "source": "Yahoo",
+      "url": "https://www.yahoo.com/news/world/articles/watch-arsonists-fling-molotov-cocktails-131846657.html",
+      "published": "2026-11-15T05:18:00Z",
+      "snippet": "New footage shows multiple explosions and a fire breaking out as Molotov cocktails are thrown at antennas and a control unit. The head of Lithuania's national crisis management centre said the fire ...",
+      "image": "https://www.bing.com/th?id=ONUT.y_331RZYqDIJdhbZWtkWUA&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
     {
-      "id": "8ca6866f16f9",
+      "id": "4add74f69ae0",
       "topic": "spacex",
-      "title": "SpaceX catches Starship for first time, drawing praise in Washington",
-      "source": "The Hill",
-      "url": "https://thehill.com/policy/technology/6221123-spacex-starship-historic-landing-lawmakers-react/",
-      "published": "2026-11-15T04:14:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.JjZHTFiTz868yAU4G843QQ&pid=News&w=640",
+      "title": "SpaceX's Starship returns from orbit and is captured by launch pad arms in a dramatic first",
+      "source": "Phys.org",
+      "url": "https://phys.org/news/2026-11-spacex-starship-orbit-captured-pad.html",
+      "published": "2026-11-15T05:06:00Z",
+      "snippet": "SpaceX's Starship made a triumphant return to Earth on Saturday, caught in midair by giant mechanical arms where its journey began 22 hours earlier.",
+      "image": "https://www.bing.com/th?id=ONUT.WqL444SmO4BAXgfr-NnLkQ&pid=News&w=640",
       "kind": "launch",
       "score": 12
+    },
+    {
+      "id": "7ed061c216ca",
+      "topic": "tesla",
+      "title": "Tesla FSD 14.1.4 week-long real-world test",
+      "source": "Electrified on MSN",
+      "url": "https://www.msn.com/en-us/news/other/tesla-fsd-1414-week-long-real-world-test/vi-AA23byVE",
+      "published": "2026-11-15T05:01:26Z",
+      "snippet": "A week-long test of Tesla's FSD 14.1.4 during everyday driving, showing where the software improved and where it raised concerns. The video presents clips from real driving scenarios with commentary ...",
+      "image": "https://www.bing.com/th?id=ONUT.mA_bi_83PVhBN2PeQP_GIQ&pid=News&w=640",
+      "kind": "software",
+      "score": 11
+    },
+    {
+      "id": "848a11f81509",
+      "topic": "tesla",
+      "title": "Tesla FSD just passed its craziest test yet",
+      "source": "FutureAzA on MSN",
+      "url": "https://www.msn.com/en-us/technology/general/tesla-fsd-just-passed-its-craziest-test-yet/vi-AA2htlCn",
+      "published": "2026-11-15T05:00:07Z",
+      "snippet": "Dirty Tesla puts FSD through extreme closed-course tests. Hand signals, last-second obstacles, and aggressive bullying scenarios reveal how far the system has come — and where it still struggles.Huge ...",
+      "image": "https://www.bing.com/th?id=ONUT.YwcdxOSU-J04MtnagqmSpA&pid=News&w=640",
+      "kind": "software",
+      "score": 11
+    },
+    {
+      "id": "f87499bf7b6b",
+      "topic": "tesla",
+      "title": "Tesla Cybercab ownership will come with plenty of strings attached",
+      "source": "Teslarati",
+      "url": "https://www.teslarati.com/tesla-cybercab-arrives-steep-ownership-fine-print/",
+      "published": "2026-11-15T02:14:42Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.t0FF3bhcZVBc3fJ38E0lAA&pid=News&w=640",
+      "kind": "milestone",
+      "score": 21
+    },
+    {
+      "id": "e777a834e443",
+      "topic": "tesla",
+      "title": "The Tesla Semi Had This Reviewer Skeptical. Now He Thinks It’s A Game Changer",
+      "source": "InsideEVs",
+      "url": "https://insideevs.com/news/808967/top-gear-tesla-semi-ride/",
+      "published": "2026-11-15T01:53:18Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "d7e89248e314",
+      "topic": "tesla",
+      "title": "Tesla Finally Breaks Its 13-Month Sales Losing Streak in Europe",
+      "source": "InsideEVs",
+      "url": "https://insideevs.com/news/790892/tesla-sales-europe-february-2026/",
+      "published": "2026-11-15T01:52:31Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "1703d57e1429",
@@ -128,6 +394,17 @@
       "image": "https://www.bing.com/th?id=ONUT.DaeQ0-fRwB43jflp3iSmDQ&pid=News&w=640",
       "kind": "milestone",
       "score": 11
+    },
+    {
+      "id": "5fa5a93910b7",
+      "topic": "grok",
+      "title": "Google unveils Gemini 4, new TPUs, smart glasses in five-day AI blitz",
+      "source": "TechGig",
+      "url": "https://techgig.com/news/ai/google-unveils-gemini-4-new-tpus-smart-glasses-in-five-day-ai-blitz/135844464",
+      "published": "2026-11-15T01:48:46Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "3863e7d3e906",
@@ -153,30 +430,6 @@
       "score": 4
     },
     {
-      "id": "824097d2f479",
-      "topic": "spacex",
-      "title": "SpaceX’s Starship returns to launch pad from orbit in victory for company",
-      "source": "The Guardian",
-      "url": "https://www.theguardian.com/science/2026/nov/14/spacex-starship-double-catch",
-      "published": "2026-11-15T00:27:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.zelA1hut0uiQUZhHvs38CQ&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "530798a1e8f1",
-      "topic": "spacex",
-      "title": "SpaceX’s Starship captured by launchpad arms in dramatic first",
-      "source": "Al Jazeera",
-      "url": "https://www.aljazeera.com/news/2026/11/15/spacexs-starship-captured-by-launchpad-arms-in-dramatic-first",
-      "published": "2026-11-15T00:24:52Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.zBYT13V2TaSyyWhUu0iPFg&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "790c74e48043",
       "topic": "grok",
       "title": "SpaceXAI Reportedly Cuts About 60 Staff From Its Grok Imagine Team",
@@ -187,18 +440,6 @@
       "kind": "speculation",
       "flag": "speculation",
       "score": 1
-    },
-    {
-      "id": "6250b3fcd03a",
-      "topic": "spacex",
-      "title": "SpaceX Catches Starship After Early Setback",
-      "source": "WSJ",
-      "url": "https://www.wsj.com/science/space-astronomy/spacex-launches-starship-on-ambitious-bid-to-catch-spacecraft-5c806c9b",
-      "published": "2026-11-14T22:58:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.PT5Yjypg4_t0Wr-cE6vy3Q&pid=News&w=640",
-      "kind": "launch",
-      "score": 16
     },
     {
       "id": "011b483ef654",
@@ -212,39 +453,15 @@
       "score": 4
     },
     {
-      "id": "6a65f88b255d",
-      "topic": "spacex",
-      "title": "SpaceX pulls off dramatic midair catch of Starship rocket after fiery plunge from orbit",
-      "source": "CBS News",
-      "url": "https://www.cbsnews.com/news/spacex-catch-starship-rocket/",
-      "published": "2026-11-14T22:51:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.am1dh1Dl67rp-XDgRhtNPQ&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "1b2ce5b97a77",
+      "id": "5773758fd13a",
       "topic": "tesla",
-      "title": "Elon Musk's Tesla and SpaceX Lost More Than $420 Billion in Combined Market Value in Two Days After Democrats Swept the Midterms, With Investors Fearing New Congressional Probes. Here's Why That Political Risk Matters for Shareholders",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/elon-musks-tesla-spacex-lost-224802258.html",
-      "published": "2026-11-14T22:48:02Z",
+      "title": "Tesla driver dies after crash with tractor turns into car fire near Elk Grove",
+      "source": "FOX40",
+      "url": "https://fox40.com/video/tesla-driver-dies-after-crash-with-tractor-turns-into-car-fire-near-elk-grove/12107327/",
+      "published": "2026-11-14T22:23:19Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.t53G-3qLK_CiMAr0N-O-hA&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "19ed40e00fa2",
-      "topic": "spacex",
-      "title": "SpaceX makes history with Starship catch",
-      "source": "NPR",
-      "url": "https://www.npr.org/2026/11/14/nx-s1-6041089/spacex-makes-history-with-starship-catch",
-      "published": "2026-11-14T22:31:41Z",
-      "snippet": "",
-      "kind": "launch",
-      "score": 12
     },
     {
       "id": "d1f9c290b622",
@@ -256,30 +473,6 @@
       "snippet": "",
       "kind": "launch",
       "score": 15
-    },
-    {
-      "id": "2c8be430f817",
-      "topic": "spacex",
-      "title": "'Now everything changes': SpaceX catches Starship upper stage for 1st time ever (video)",
-      "source": "Space",
-      "url": "https://www.space.com/space-exploration/launches-spacecraft/spacex-chopsticks-catch-starship-upper-stage-flight-14",
-      "published": "2026-11-14T22:04:24Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.7LBkmbcVQ9_dPq4wdP5zxw&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "78716d5e6438",
-      "topic": "spacex",
-      "title": "SpaceX Catches a Starship",
-      "source": "SpacePolicyOnline.com",
-      "url": "https://spacepolicyonline.com/news/spacex-catches-a-starship/",
-      "published": "2026-11-14T21:53:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.am1dh1Dl67rp-XDgRhtNPQ&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
     },
     {
       "id": "9ad73d0c0f1b",
@@ -294,18 +487,6 @@
       "score": 12
     },
     {
-      "id": "2f45852775eb",
-      "topic": "spacex",
-      "title": "SpaceX Starship returns to landing pad from orbit, acing test for reusable rockets",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/business/aerospace-defense/spacexs-starship-aces-first-return-texas-2026-11-14/",
-      "published": "2026-11-14T21:40:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.BY_AG5GvhdBw_idx1CHW9g&pid=News&w=640",
-      "kind": "launch",
-      "score": 17
-    },
-    {
       "id": "50c86a455e29",
       "topic": "spacex",
       "title": "SpaceX catches upper stage of Starship rocket in historic first",
@@ -316,17 +497,6 @@
       "image": "https://www.bing.com/th?id=ORMS.ae9064cd5378c1015724ef6657e25bba&pid=News&w=640",
       "kind": "launch",
       "score": 15
-    },
-    {
-      "id": "ab8b05f1c036",
-      "topic": "tesla",
-      "title": "‘It Feels Like It Can Do Another 250,000 Miles’: High-Mileage Tesla Model 3 Needed Only One Minor Part Replacement",
-      "source": "InsideEVs",
-      "url": "https://insideevs.com/news/807916/250000-miles-tesla-model-3-costs-maintenance-owner-review/",
-      "published": "2026-11-14T20:37:09Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "9c33b07febf1",
@@ -340,11 +510,11 @@
       "score": 11
     },
     {
-      "id": "6f88a00b0177",
+      "id": "7c84b40ca189",
       "topic": "tesla",
       "title": "Tesla is inviting select customers to buy a Cybercab for personal use at $29,990 plus a $299-a-month autonomy subscription, with first deliveries listed for Austin and no ...",
       "source": "Make Tech Easier",
-      "url": "https://maketecheasier.com/tesla-cybercab-personal-orders-price/",
+      "url": "https://www.maketecheasier.com/tesla-cybercab-personal-orders-price/",
       "published": "2026-11-14T19:29:00Z",
       "snippet": "Tesla's Robotaxi account is inviting select customers to buy a Cybercab for personal use at $29,990 plus a $299-a-month Autonomy Subscription, with first deliveries listed for Austin and no steering ...",
       "image": "https://www.bing.com/th?id=ONUT.29yH1teDP4uBk_y4Dzr6WQ&pid=News&w=640",
@@ -352,16 +522,15 @@
       "score": 11
     },
     {
-      "id": "5ad2f94f1778",
-      "topic": "tesla",
-      "title": "Tesla Opens Cybercab Orders at $29,990, No Steering Wheel",
-      "source": "shattered.io",
-      "url": "https://shattered.io/tesla-cybercab-orders-29990-no-steering-wheel-1000-deposit/",
-      "published": "2026-11-14T18:14:24Z",
+      "id": "aab6a28c817f",
+      "topic": "grok",
+      "title": "Translated launches Lara Mini, a 45-language model that leads its class",
+      "source": "Pasquale Pillitteri",
+      "url": "https://pasqualepillitteri.it/en/news/33489/lara-mini-translated-45-language-model",
+      "published": "2026-11-14T18:27:37Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.FFXMhB-XB1iKzqzzM4q6wA&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "9f5e1c7f9bfb",
@@ -387,28 +556,6 @@
       "score": 4
     },
     {
-      "id": "b92c1984bf75",
-      "topic": "tesla",
-      "title": "Tesla Was Supposed To Be Losing Europe. The Data Says Otherwise",
-      "source": "InsideEVs",
-      "url": "https://insideevs.com/news/797093/tesla-sales-europe-april-2026/",
-      "published": "2026-11-14T17:47:04Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "371ad35abea4",
-      "topic": "tesla",
-      "title": "The New Tesla Roadster Has A Slick Retro-Futuristic User Interface",
-      "source": "Motor1.com",
-      "url": "https://www.motor1.com/news/813597/tesla-roadster-reto-user-interface/",
-      "published": "2026-11-14T17:04:27Z",
-      "snippet": "",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
       "id": "69305d059560",
       "topic": "spacex",
       "title": "SpaceX catches Starship at launch tower for first time",
@@ -421,84 +568,14 @@
       "score": 12
     },
     {
-      "id": "47ac0093247c",
+      "id": "4942b1444501",
       "topic": "spacex",
-      "title": "SpaceX makes history as Starship spacecraft caught by launch tower for first time",
-      "source": "Fox Business",
-      "url": "https://www.foxbusiness.com/technology/spacex-makes-history-starship-spacecraft-caught-launch-tower-first-time",
-      "published": "2026-11-14T15:45:00Z",
-      "snippet": "SpaceX achieved a historic first Saturday as its Mechazilla launch tower caught a returning Starship spacecraft after 22 hours in space, advancing its reusable rocket ambitions.",
-      "image": "https://www.bing.com/th?id=ONUT.SZKif9hQgB23S-HJTFXyrw&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "2a87c36119f3",
-      "topic": "grok",
-      "title": "Grok now says Elon Musk replied to a Nazi account on X",
-      "source": "Softonic",
-      "url": "https://en.softonic.com/articles/grok-now-says-elon-musk-replied-to-a-nazi-account-on-x",
-      "published": "2026-11-14T15:05:35Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "8db8acea8331",
-      "topic": "tesla",
-      "title": "Tesla Opens Sales of Autonomous Cybercab for ‘Select’ Customers",
-      "source": "WSJ",
-      "url": "https://www.wsj.com/business/autos/tesla-opens-sales-of-autonomous-cybercab-for-select-customers-8d2feae3",
-      "published": "2026-11-14T15:02:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ORMS.7f8d3649f5a93ca25f5b976ea2102ad6&pid=News&w=640",
-      "kind": "milestone",
-      "score": 15
-    },
-    {
-      "id": "7c537b8207b0",
-      "topic": "tesla",
-      "title": "Tesla is inviting some people to buy a Cybercab ‘for personal use’ — but read the fine print",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print",
-      "published": "2026-11-14T14:18:36Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.gvfPNyYqqgUIj1_-X_TcHQ&pid=News&w=640",
-      "kind": "milestone",
-      "score": 14
-    },
-    {
-      "id": "e1a4503b4203",
-      "topic": "spacex",
-      "title": "Watch SpaceX successfully execute the first ‘chopstick’ catch of Starship",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/science/1033930/spacex-chopstick-starship-catch",
-      "published": "2026-11-14T13:45:00Z",
-      "snippet": "After aborting a planned catch of Starship Flight 15’s booster, SpaceX successfully captured Starship with its “Mechazilla” launch and catch tower for the first time. The company has performed ‘ ...",
-      "image": "https://www.bing.com/th?id=ONUT.n6Q9KOXHVztVJFHJL5UeHw&pid=News&w=640",
-      "kind": "launch",
-      "score": 15
-    },
-    {
-      "id": "f08b115929fc",
-      "topic": "grok",
-      "title": "SPCX Stock Climbs Past $140 As August Rebound Continues – Morgan Stanley Says Investors Are Undervaluing SpaceX’s AI Business",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/spcx-stock-140-morgan-stanley-ai-valuation-grok-release/cZo8a9IRJWK",
-      "published": "2026-11-14T13:34:55Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "6fcd8db973cb",
-      "topic": "spacex",
-      "title": "SpaceX’s Starship returns from orbit and is captured by launch pad arms in a dramatic first",
+      "title": "SpaceX catches its Starship rocket on return from orbit for the first time",
       "source": "Associated Press News",
-      "url": "https://apnews.com/article/spacex-elon-musk-starship-rocket-df394c1b5a0f85e11194f9ff7db9ee6b",
-      "published": "2026-11-14T13:32:00Z",
-      "snippet": "It was the grand finale that Elon Musk and his team hoped for — the first-ever capture of a Starship flying back from space. But with the first-stage booster exploding shortly after Friday’s liftoff ...",
-      "image": "https://www.bing.com/th?id=ONUT.kIrL-yMcDS0j0vl8VyC_Hg&pid=News&w=640",
+      "url": "https://apnews.com/video/spacexs-starship-returns-from-orbit-and-is-caught-by-giant-mechanical-arms-at-the-pad-e1fa5975e9fd4ae3bf2130fc2f7efdc5",
+      "published": "2026-11-14T14:50:00Z",
+      "snippet": "SpaceX’s Starship made a triumphant return to Earth on Saturday, caught in midair by giant mechanical arms where its journey began 22 hours earlier.",
+      "image": "https://www.bing.com/th?id=ONUT.GhoVl8t7fAMtQjErvYdfwg&pid=News&w=640",
       "kind": "launch",
       "score": 17
     },
@@ -515,93 +592,14 @@
       "score": 12
     },
     {
-      "id": "f87499bf7b6b",
+      "id": "e6da4a737c65",
       "topic": "tesla",
-      "title": "Tesla Cybercab ownership will come with plenty of strings attached",
-      "source": "Teslarati",
-      "url": "https://www.teslarati.com/tesla-cybercab-arrives-steep-ownership-fine-print/",
-      "published": "2026-11-14T13:30:58Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.t0FF3bhcZVBc3fJ38E0lAA&pid=News&w=640",
-      "kind": "milestone",
-      "score": 21
-    },
-    {
-      "id": "16fe2cb4af7d",
-      "topic": "spacex",
-      "title": "SpaceX successfully catches part of Starship rocket on its return to Earth",
-      "source": "BBC",
-      "url": "https://www.bbc.co.uk/news/live/cq0k683l3dz3t",
-      "published": "2026-11-14T13:08:00Z",
-      "snippet": "The rocket was caught using mechanical arms, nicknamed chopsticks. The first attempt to catch the booster had been aborted a few minutes after launch.",
-      "image": "https://www.bing.com/th?id=ONUT.HTgxmAkj0ZA5Pchiq2gSfw&pid=News&w=640",
-      "kind": "launch",
-      "score": 15
-    },
-    {
-      "id": "c874b9ad543f",
-      "topic": "grok",
-      "title": "SpaceXAI cuts about 60 Grok Imagine staff to push coding tools and agents",
-      "source": "Startup Fortune",
-      "url": "https://startupfortune.com/spacexai-cuts-about-60-grok-imagine-staff-to-push-coding-tools-and-agents/",
-      "published": "2026-11-14T12:47:27Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "ed024bc9e078",
-      "topic": "grok",
-      "title": "Four Nonprofits Sue OpenAI, Google, Meta, Anthropic, and SpaceXAI to Freeze Advanced AI Development",
-      "source": "Techweez",
-      "url": "https://techweez.com/2026/11/14/nonprofits-sue-openai-google-meta-anthropic-spacex/",
-      "published": "2026-11-14T12:35:36Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "9829f06ed8c6",
-      "topic": "grok",
-      "title": "AMD Snatches More Server CPU Share As Intel Rallies In Desktop Market",
-      "source": "HotHardware",
-      "url": "https://hothardware.com/news/amd-snipes-more-server-cpu-share-intel-rallies-desktop-market",
-      "published": "2026-11-14T11:43:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "b8a19f76998f",
-      "topic": "grok",
-      "title": "Pichai endorses Grok's Gemini 4 Hydrogen cost efficiency assessment",
-      "source": "TechGig",
-      "url": "https://techgig.com/news/ai/pichai-endorses-groks-gemini-4-hydrogen-cost-efficiency-assessment/135821391",
-      "published": "2026-11-14T10:37:35Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "51e50d6a64e0",
-      "topic": "grok",
-      "title": "Is Grok Losing the AI Race? Elon Musk Says Claude is Better “For Now”",
-      "source": "BeInCrypto",
-      "url": "https://beincrypto.com/elon-musk-claude-opus-grok-comparison/",
-      "published": "2026-11-14T10:00:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "8a5f0dd112b3",
-      "topic": "tesla",
-      "title": "Tesla Just Started Taking Orders for a Car With No Steering Wheel",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/11/14/tesla-just-started-taking-orders-for-a-car-with-no-steering-wheel/",
-      "published": "2026-11-14T09:48:00Z",
-      "snippet": "The sticker price beats Musk's old promise, but a pre-checked box on the order page changes what you actually own. Add a federal safety probe and a car that runs only where Tesla allows, and the real ...",
-      "image": "https://www.bing.com/th?id=ONUT.FFXMhB-XB1iKzqzzM4q6wA&pid=News&w=640",
+      "title": "Who makes Tesla batteries, and where are they produced?",
+      "source": "BGR on MSN",
+      "url": "https://www.msn.com/en-us/autos/electric-cars/who-makes-tesla-batteries-and-where-are-they-produced/ar-AA2hrksw",
+      "published": "2026-11-14T09:47:00Z",
+      "snippet": "While Tesla has made strides to reduce its reliance on external suppliers, it continues to use battery packs produced by a range of companies.",
+      "image": "https://www.bing.com/th?id=ONUT.ra_JGL91IgRAtjbQOwBz_g&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -618,18 +616,6 @@
       "score": 12
     },
     {
-      "id": "d13f3d69922c",
-      "topic": "tesla",
-      "title": "Study Finds that FSD Drives like a Homicidal Maniac Around Cyclists",
-      "source": "Futurism",
-      "url": "https://futurism.com/future-society/tesla-fsd-cyclists",
-      "published": "2026-11-14T09:01:00Z",
-      "snippet": "New research conducted by a pedestrians safety group found that FSD frequently drove above the speed limit and illegaly overtook cyclists.",
-      "image": "https://www.bing.com/th?id=ONUT._826mVS-pCul9IjcXWZCZA&pid=News&w=640",
-      "kind": "software",
-      "score": 11
-    },
-    {
       "id": "e051ba98afed",
       "topic": "spacex",
       "title": "SpaceX returned its Starship rocket on Saturday—but there’s a catch",
@@ -642,16 +628,17 @@
       "score": 15
     },
     {
-      "id": "8daefce004a3",
-      "topic": "tesla",
-      "title": "Tesla Cybercab Open for Orders—But Good Luck Putting It to Work",
-      "source": "PCMag",
-      "url": "https://www.pcmag.com/news/tesla-cybercab-open-for-orders-but-good-luck-putting-it-to-work",
-      "published": "2026-11-14T07:22:00Z",
-      "snippet": "You’ll also need to sign up for a $299-a-month ‘Autonomy Subscription’ for the car to move at all, which works out as $3,588 annually. Meanwhile, it’s only set to work in eight cities: Austin, Dallas, ...",
-      "image": "https://www.bing.com/th?id=ONUT.wFx6j-zYAAkX3TKlWunoQw&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
+      "id": "f5e0530b0858",
+      "topic": "spacex",
+      "title": "15 Disadvantages of Starlink | The \"Loopholes\" That Could Cost You Tens of Thousands of Yen If You Sign Up Without Knowing [Latest as of November 2026]",
+      "source": "note",
+      "url": "https://note.com/kurashi_bouei/n/n31f3a038504e?hl=en",
+      "published": "2026-11-14T07:18:00Z",
+      "snippet": "\"High-speed internet anywhere, as long as you can see the sky.\" Some people believe these words, sign up for Starlink, and then cancel it a few weeks later, saying, \"This isn't what I expected.\" The ...",
+      "image": "https://www.bing.com/th?id=ONUT.sPiuSNBJxyY4FeSLltYMUg&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 1
     },
     {
       "id": "134780832f94",
@@ -666,6 +653,18 @@
       "score": 8
     },
     {
+      "id": "800252b10abb",
+      "topic": "tesla",
+      "title": "Tesla is inviting some people to buy a Cybercab ‘for personal use’ — but read the fine print",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/transportation/1033844/tesla-personal-cybercab-orders-299-subscription-fine-print",
+      "published": "2026-11-14T06:18:00Z",
+      "snippet": "Tesla is inviting select buyers to order a steering-wheel-free Cybercab for $29,990 ahead of estimated December deliveries.",
+      "image": "https://www.bing.com/th?id=ONUT.gvfPNyYqqgUIj1_-X_TcHQ&pid=News&w=640",
+      "kind": "milestone",
+      "score": 14
+    },
+    {
       "id": "caf85213f80e",
       "topic": "tesla",
       "title": "Tesla starts taking Cybercab orders for personal use",
@@ -676,54 +675,6 @@
       "image": "https://www.bing.com/th?id=ONUT.p9sieEtwsVckO6cLgOBCiA&pid=News&w=640",
       "kind": "milestone",
       "score": 11
-    },
-    {
-      "id": "04ee45a0f623",
-      "topic": "tesla",
-      "title": "The Death of the Cybertruck Is Actually Great News for the Electric Vehicle Market",
-      "source": "Mother Jones",
-      "url": "https://www.motherjones.com/environment/2026/11/death-end-elon-musk-tesla-cybertruck-good-news-electric-vehicle-market-battery-supply-chain/",
-      "published": "2026-11-14T04:30:00Z",
-      "snippet": "Get your news from a source that’s not owned and controlled by oligarchs. Sign up for the free Mother Jones Daily. Tesla will end production of the Cybertruck at its Texas Gigafactory next year. It’s ...",
-      "image": "https://www.bing.com/th?id=ONUT.LUbLV5LA0CdgtIs47UVDPQ&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "cf187176d5c4",
-      "topic": "spacex",
-      "title": "SpaceX Catches Starship in Novel Landing at Texas Site",
-      "source": "Bloomberg",
-      "url": "https://www.bloomberg.com/news/articles/2026-11-14/spacex-to-attempt-first-full-recovery-of-new-starship-rocket",
-      "published": "2026-11-14T04:00:00Z",
-      "snippet": "SpaceX on Saturday will attempt to land its Starship spacecraft for the first time, an engineering feat that would help fulfill Elon Musk’s pledge to make the massive rocket fully reusable.",
-      "image": "https://www.bing.com/th?id=ONUT.SUlO6IZatdmPhB2-GYK9XA&pid=News&w=640",
-      "kind": "launch",
-      "score": 16
-    },
-    {
-      "id": "39e4ab03f190",
-      "topic": "tesla",
-      "title": "David Moss's 2,732-mile Tesla Model 3 drive on FSD 14.2",
-      "source": "Electrified on MSN",
-      "url": "https://www.msn.com/en-us/news/other/david-mosss-2732-mile-tesla-model-3-drive-on-fsd-142/vi-AA2gPqqp",
-      "published": "2026-11-14T03:14:45Z",
-      "snippet": "A look back at David Moss's 2,732-mile Tesla Model 3 trip from the Tesla Diner in Los Angeles to Myrtle Beach, South Carolina on Full Self-Driving 14.2, with no disengagements reported. The episode ...",
-      "image": "https://www.bing.com/th?id=ONUT.vSvl0CsTfzjv3zqbhldZ2w&pid=News&w=640",
-      "kind": "software",
-      "score": 11
-    },
-    {
-      "id": "2d3c24cafc86",
-      "topic": "spacex",
-      "title": "SpaceX's Starship soars into orbit after booster explosion prevents an unprecedented double catch",
-      "source": "Phys.org",
-      "url": "https://phys.org/news/2026-11-spacex-starship-soars-orbit-booster.html",
-      "published": "2026-11-13T22:34:00Z",
-      "snippet": "SpaceX's attempt to recover its entire Starship back at the launch pad was thwarted when the booster fell into the Gulf of Mexico and exploded Friday, but the spacecraft still soared into orbit in its ...",
-      "image": "https://www.bing.com/th?id=ONUT.5wYyhCoWW6R84RP6_xx0Aw&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
     }
   ]
 }

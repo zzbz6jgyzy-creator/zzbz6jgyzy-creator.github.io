@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15T15:04:19.649Z",
+  "updated": "2026-11-15T17:02:16.418Z",
   "changes": [
     {
       "type": "changed",
@@ -51,6 +51,23 @@
       "summary": "In a talk posted 14 Nov, Grok Bot engineer Lauren Tan said her team merged 11,000 pull requests in a month with about 0.5% reverted, and that agents now merge most of their own code. The method, the math, and the caveats.",
       "title": "The Grok Bot team says it shipped 11,000 pull requests in a month. Here's how, and what the numbers leave out",
       "id": "logged|dispatch:/dispatch/grok-bot-team-11000-prs.html|2026-11-15T14:51:09.000Z|The Grok Bot team says it shipped 11,000 pull requests in a month. Here's how, and what the numbers leave out"
+    },
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11193",
+      "next": "11215",
+      "at": "2026-11-15T10:52:13.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html",
+      "summary": "Starlink in orbit changed from 11193 to 11215.",
+      "title": "Starlink in orbit",
+      "id": "changed|starlink:in-orbit|2026-11-15T10:52:13.000Z|11215"
     },
     {
       "type": "logged",
