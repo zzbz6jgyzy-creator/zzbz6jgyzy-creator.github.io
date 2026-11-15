@@ -1,7 +1,7 @@
 {
  "version": 1,
  "updated": "2026-11-14T09:20:00+00:00",
- "launchChecked": "2026-11-15T17:04:03Z",
+ "launchChecked": "2026-11-15T21:45:00Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
   {
@@ -58,8 +58,8 @@
    "origin": "Editorial calendar"
   },
   {
-   "id": "ll2-67213393-7983-4c06-8b44-b8c785a5ed79",
-   "title": "Falcon 9 Block 5 | Transporter 18 (Dedicated SSO Rideshare)",
+   "id": "ll-transporter-18",
+   "title": "Falcon 9 · Transporter-18",
    "group": "spacex",
    "category": "Launch",
    "start": "2026-10-01T18:32:00Z",
@@ -76,12 +76,7 @@
      "label": "spacex.com"
     }
    ],
-   "origin": "Launch Library 2",
-   "providerId": "67213393-7983-4c06-8b44-b8c785a5ed79",
-   "windowStart": "2026-10-01T18:18:00Z",
-   "windowEnd": "2026-10-01T19:16:00Z",
-   "vehicle": "",
-   "providerStatus": "Launch Successful"
+   "origin": "Editorial calendar"
   },
   {
    "id": "ll2-4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
@@ -621,9 +616,9 @@
    "title": "Falcon 9 Block 5 | USSF-317",
    "group": "spacex",
    "category": "Launch",
-   "start": "2026-11-18T03:14:00Z",
+   "start": "2026-11-19T03:00:00Z",
    "end": "",
-   "date": "2026-11-18",
+   "date": "2026-11-19",
    "precision": "datetime",
    "status": "Go",
    "note": "Government/Top Secret · Low Earth Orbit",
@@ -632,8 +627,8 @@
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "76617033-4dc0-4448-b50c-e5b0d5a18539",
-   "windowStart": "2026-11-18T03:14:00Z",
-   "windowEnd": "2026-11-18T07:14:00Z",
+   "windowStart": "2026-11-19T03:00:00Z",
+   "windowEnd": "2026-11-19T07:00:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
    "coverage": {
