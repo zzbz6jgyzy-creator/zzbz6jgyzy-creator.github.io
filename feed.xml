@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 14 Nov 2026 14:56:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 23:50:00 +0000</lastBuildDate>
+    <item>
+      <title>Starship Flight 15 recap: the first ship catch, and a booster lost in the Gulf</title>
+      <link>https://superchargeddaily.com/dispatch/starship-flight-15-full-recap.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starship-flight-15-full-recap.html</guid>
+      <pubDate>Sat, 14 Nov 2026 23:50:00 +0000</pubDate>
+      <category>SpaceX / Starship</category>
+      <description>Starship Flight 15 lifted off from Starbase on Friday, Nov 13, at 5:48 p.m. ET (2:48 p.m. PT), deployed 26 Starlink V3 satellites, and spent about 22 hours in orbit. On Saturday at about 4:21 p.m. ET (1:21 p.m. PT), Mechazilla caught the ship at the tower, the first time a Starship upper stage has been returned to the launch site and caught. Super Heavy Booster 22 diverted to a Gulf splashdown; photos later showed the hull tipped over and broken in the water.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/flight15-recap-caught.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>SpaceX reportedly cut most of the Grok Imagine team, a week after Starlink asked fans to make an ad with it</title>
       <link>https://superchargeddaily.com/dispatch/grok-imagine-team-cut.html</link>
@@ -717,15 +726,6 @@
       <category>Earnings</category>
       <description>Revenue flat at $28.05B, GAAP net income down 43% as R&amp;D jumped 69%, and free cash flow back at $1.53B. I took apart the cash, the capex math and every new date from the call.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-q3-results-hero.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tesla’s first Robotaxi safety report: 3.1 million miles, zero injuries. What the zeros prove, and what they don’t</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-robotaxi-safety-report-zeros.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-robotaxi-safety-report-zeros.html</guid>
-      <pubDate>Wed, 21 Oct 2026 19:40:28 +0000</pubDate>
-      <category>Robotaxi</category>
-      <description>No injuries, airbag deployments or pedestrians hit in 3.1 million driverless miles. I ran the odds on each zero and put it next to Waymo’s 271 million miles.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/robotaxi-safety-hero.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.13</title>
