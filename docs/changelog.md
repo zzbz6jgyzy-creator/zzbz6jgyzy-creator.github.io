@@ -1,3 +1,8 @@
+## 2026-11-15 — SpaceX Plaser missile-tracking study, and Grok Bot 11,000 PRs
+
+- Dispatch: The Pentagon awarded SpaceX $9,921,992 (options to $12,666,379) for a Plaser risk-reduction study on missile warning/tracking integration, announced 10 Nov. Hero is the USSF Tranche 1 Transport Layer launch photo (Master Sgt. Eric Burks, public domain); card/OG is a 16:9 top crop so the rocket stays in frame. The laser-standard mismatch is Breaking Defense/SpaceNews reporting, not the contract notice. Optional Related line on the Starlink V4 lasers piece. SpaceX hub card comes from articles.json.
+- Dispatch: Grok Bot engineer Lauren Tan said in an AI Engineer talk posted 14 Nov that her team shipped 11,000 pull requests in a month with about 0.5% reverted. Figures are self-reported. Lead media is the YouTube-nocookie talk; card/OG is a CC BY 3.0 DotJS 2018 still (lower-third cropped), not the 2026 talk. X embed is @poteto via x-embed.js. Update pointer on the Grok Bot 1.0 page. Grok hub card from articles.json plus the studio rebuild.
+
 ## 2026-11-15 — Grok Imagine in the main chat, SpaceX Nvidia exposure, Flight 15 booster note
 
 - Dispatch: Grok Imagine is now a mode inside the main Grok chat (@imagine / @grok, 14 Nov). Card is the NOAA Early 2026 Starbase aerial (public domain), not the Jenny Hautmann letter-wall. Update pointers on the team-cut and Odyssey Episode 1 pages.

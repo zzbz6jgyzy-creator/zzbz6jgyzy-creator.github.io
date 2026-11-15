@@ -1,6 +1,34 @@
 {
-  "updated": "2026-11-15T08:53:13Z",
+  "updated": "2026-11-15T14:51:09Z",
   "articles": [
+    {
+      "url": "/dispatch/spacex-plaser-missile-tracking-study.html",
+      "title": "The Pentagon is paying SpaceX $9.9M to study a laser-link mismatch in its missile-tracking satellites",
+      "seoTitle": "The Pentagon is paying SpaceX $9.9M to study a laser-link mismatch in its missile-tracking satellites",
+      "date": "2026-11-15T14:51:09Z",
+      "topic": "spacex",
+      "tag": "SpaceX / Starshield & defense",
+      "image": "/assets/dispatch/sda-tranche1-falcon9-vandenberg-2025-09-10-card.jpg",
+      "imageAlt": "A Falcon 9 rocket climbs through broken cloud after lifting off from Vandenberg Space Force Base",
+      "summary": "The Space Development Agency awarded SpaceX $9,921,992 to study how its Plaser laser terminal can carry data from missile-tracking satellites that use a different optical standard. What was bought, what wasn't, and why a small contract points at a big problem.",
+      "pinned": false,
+      "author": "Alex R",
+      "minutes": 5
+    },
+    {
+      "url": "/dispatch/grok-bot-team-11000-prs.html",
+      "title": "The Grok Bot team says it shipped 11,000 pull requests in a month. Here's how, and what the numbers leave out",
+      "seoTitle": "The Grok Bot team says it shipped 11,000 pull requests in a month. Here's how, and what the numbers leave out",
+      "date": "2026-11-15T14:51:09Z",
+      "topic": "xai",
+      "tag": "Grok / Grok Bot",
+      "image": "/assets/dispatch/lauren-tan-dotjs-2018.jpg",
+      "imageAlt": "Lauren Tan speaking on stage at the DotJS conference in Paris in 2018, against a dark backdrop with red circles",
+      "summary": "In a talk posted 14 Nov, Grok Bot engineer Lauren Tan said her team merged 11,000 pull requests in a month with about 0.5% reverted, and that agents now merge most of their own code. The method, the math, and the caveats.",
+      "pinned": false,
+      "author": "Alex R",
+      "minutes": 6
+    },
     {
       "url": "/dispatch/grok-imagine-folds-into-grok.html",
       "title": "Grok Imagine moves into the main Grok chat, a day after reports that most of its team was cut",
