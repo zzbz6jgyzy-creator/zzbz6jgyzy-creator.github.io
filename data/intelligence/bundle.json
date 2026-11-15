@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-15T07:16:35.553Z",
+  "generatedAt": "2026-11-15T09:10:58.221Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -285,6 +285,57 @@
     }
   ],
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/grok-imagine-folds-into-grok.html",
+      "topic": "grok",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Grok Imagine moves into the main Grok chat, a day after reports that most of its team was cut",
+      "at": "2026-11-15T08:53:13.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/grok-imagine-folds-into-grok.html",
+      "href": "/dispatch/grok-imagine-folds-into-grok.html",
+      "summary": "On 14 Nov, @imagine said image and video creation is \"now live in Grok\" and @grok said more SpaceXSI products are being pulled into \"one Grok experience.\" What changed, what the official pages now say, and what nobody has said yet about the old Imagine screens, the layoffs report and the Odyssey movie.",
+      "title": "Grok Imagine moves into the main Grok chat, a day after reports that most of its team was cut",
+      "id": "logged|dispatch:/dispatch/grok-imagine-folds-into-grok.html|2026-11-15T08:53:13.000Z|Grok Imagine moves into the main Grok chat, a day after reports that most of its team was cut"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-nvidia-after-huang.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says his Nvidia deals ran on Jensen Huang's word. Here's how much of SpaceX's AI now rests on Nvidia",
+      "at": "2026-11-15T08:53:13.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-nvidia-after-huang.html",
+      "href": "/dispatch/spacex-nvidia-after-huang.html",
+      "summary": "Jensen Huang resigned as Nvidia CEO on 11 Nov. Elon Musk says many of Huang's supply deals were handshakes and some \"will be lost,\" while Nvidia's board says customer commitments continue \"without interruption.\" A look at SpaceX's Nvidia exposure: about 860,000 GB300s in Memphis by Musk's count, a $40 billion Vera Rubin lease, Google's $920 million a month GPU rental and the Starmind satellites.",
+      "title": "Musk says his Nvidia deals ran on Jensen Huang's word. Here's how much of SpaceX's AI now rests on Nvidia",
+      "id": "logged|dispatch:/dispatch/spacex-nvidia-after-huang.html|2026-11-15T08:53:13.000Z|Musk says his Nvidia deals ran on Jensen Huang's word. Here's how much of SpaceX's AI now rests on Nvidia"
+    },
+    {
+      "type": "changed",
+      "factId": "tesla-software:wave:2026.38.5.13",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.13",
+      "previous": "52",
+      "next": "212",
+      "at": "2026-11-15T07:16:30.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.13 moved from 52 to 212 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "title": "2026.38.5.13",
+      "id": "changed|tesla-software:wave:2026.38.5.13|2026-11-15T07:16:30.000Z|212"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/starship-flight-15-full-recap.html",
@@ -624,40 +675,6 @@
       "summary": "Tesla's Robotaxi account says rides now run around the clock in every city where the service operates, as of 11 Nov 2026. That's 168 hours a week, up from 112 at the end of August. The 2am close lasted 12 days. When I wrote that change up, I projected 24/7 around New Year's Eve if Tesla kept its August-to-October pace. It got there about 50 days sooner.",
       "title": "Tesla Robotaxi now runs 24/7 in all eight cities (as of 11 Nov 2026)",
       "id": "logged|dispatch:/dispatch/robotaxi-24-7-every-city.html|2026-11-12T14:54:53.000Z|Tesla Robotaxi now runs 24/7 in all eight cities (as of 11 Nov 2026)"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/grok-bot-1-0-team-bots.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Grok Bot 1.0 is out: shared Bots, Slack and Teams, and Bots in your meetings",
-      "at": "2026-11-12T14:54:53.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/grok-bot-1-0-team-bots.html",
-      "href": "/dispatch/grok-bot-1-0-team-bots.html",
-      "summary": "SpaceXSI took Grok Bot out of beta on 11 Nov 2026. Version 1.0 lets a whole team share one Bot, use it inside Slack and Microsoft Teams, and bring it into video calls. The company also says Bots will now spot work and offer to do it. How well the new team features work is still the company's claim.",
-      "title": "Grok Bot 1.0 is out: shared Bots, Slack and Teams, and Bots in your meetings",
-      "id": "logged|dispatch:/dispatch/grok-bot-1-0-team-bots.html|2026-11-12T14:54:53.000Z|Grok Bot 1.0 is out: shared Bots, Slack and Teams, and Bots in your meetings"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/cybertruck-summer-2027-extension.html",
-      "topic": "production",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)",
-      "at": "2026-11-12T08:56:21.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/cybertruck-summer-2027-extension.html",
-      "href": "/dispatch/cybertruck-summer-2027-extension.html",
-      "summary": "Elon Musk says Cybertruck production will now run through the end of summer 2027 to work through more of the backlog. That’s the third timeline in six days, and roughly two more months than the eight months he gave on 9 Nov 2026.",
-      "title": "Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)",
-      "id": "logged|dispatch:/dispatch/cybertruck-summer-2027-extension.html|2026-11-12T08:56:21.000Z|Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)"
     },
     {
       "type": "logged",
@@ -1202,23 +1219,6 @@
       "summary": "2026.38.5.11 moved from 147 to 198 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.11",
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T10:59:41.000Z|198"
-    },
-    {
-      "type": "changed",
-      "factId": "tesla-software:wave:2026.38.5.11",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.5.11",
-      "previous": "104",
-      "next": "147",
-      "at": "2026-10-26T08:08:39.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.11 moved from 104 to 147 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
-      "title": "2026.38.5.11",
-      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T08:08:39.000Z|147"
     },
     {
       "type": "changed",
@@ -2079,14 +2079,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-11-14T09:20:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -2100,14 +2100,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-11-11T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-11-14T21:39:05.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -2121,35 +2121,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-15T07:16:35.553Z",
+      "lastChecked": "2026-11-15T09:10:58.221Z",
       "lastVerified": "2026-11-15T07:16:30.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2158,85 +2158,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.521Z",
-      "finished": "2026-11-15T07:16:35.541Z"
+      "started": "2026-11-15T09:10:58.203Z",
+      "finished": "2026-11-15T09:10:58.208Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.541Z",
-      "finished": "2026-11-15T07:16:35.541Z"
+      "started": "2026-11-15T09:10:58.208Z",
+      "finished": "2026-11-15T09:10:58.208Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.541Z",
-      "finished": "2026-11-15T07:16:35.541Z"
+      "started": "2026-11-15T09:10:58.208Z",
+      "finished": "2026-11-15T09:10:58.208Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.541Z",
-      "finished": "2026-11-15T07:16:35.547Z"
+      "started": "2026-11-15T09:10:58.208Z",
+      "finished": "2026-11-15T09:10:58.215Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.547Z",
-      "finished": "2026-11-15T07:16:35.550Z"
+      "started": "2026-11-15T09:10:58.215Z",
+      "finished": "2026-11-15T09:10:58.217Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.550Z",
-      "finished": "2026-11-15T07:16:35.550Z"
+      "started": "2026-11-15T09:10:58.217Z",
+      "finished": "2026-11-15T09:10:58.218Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.550Z",
-      "finished": "2026-11-15T07:16:35.551Z"
+      "started": "2026-11-15T09:10:58.218Z",
+      "finished": "2026-11-15T09:10:58.218Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.551Z",
-      "finished": "2026-11-15T07:16:35.551Z"
+      "started": "2026-11-15T09:10:58.218Z",
+      "finished": "2026-11-15T09:10:58.219Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.551Z",
-      "finished": "2026-11-15T07:16:35.551Z"
+      "started": "2026-11-15T09:10:58.219Z",
+      "finished": "2026-11-15T09:10:58.219Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.551Z",
-      "finished": "2026-11-15T07:16:35.552Z"
+      "started": "2026-11-15T09:10:58.219Z",
+      "finished": "2026-11-15T09:10:58.220Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.552Z",
-      "finished": "2026-11-15T07:16:35.553Z"
+      "started": "2026-11-15T09:10:58.220Z",
+      "finished": "2026-11-15T09:10:58.220Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.553Z",
-      "finished": "2026-11-15T07:16:35.553Z"
+      "started": "2026-11-15T09:10:58.220Z",
+      "finished": "2026-11-15T09:10:58.220Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-15T07:16:35.553Z",
-      "finished": "2026-11-15T07:16:35.553Z"
+      "started": "2026-11-15T09:10:58.220Z",
+      "finished": "2026-11-15T09:10:58.220Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-15T07:16:35.553Z",
+    "generatedAt": "2026-11-15T09:10:58.221Z",
     "factCount": 20,
     "changeCount": 103,
     "conflictCount": 2,
