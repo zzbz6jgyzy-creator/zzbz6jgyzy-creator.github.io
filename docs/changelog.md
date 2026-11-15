@@ -1,3 +1,7 @@
+## 2026-11-14 — Starship Flight 15 full recap (video hero)
+
+- Dispatch: full recap of Flight 15 from Friday’s liftoff through Saturday’s first ship catch at Starbase, with the approved SpaceX recap video as the hero (Ascension by Scott Buckley, CC BY 4.0). Booster 22 diverted to a Gulf splashdown; not a two-stage recovery. Cards on Dispatch, Newsroom, homepage news, SpaceX hub, and the Starship tracker Flight 15 entry. Update pointer on the mid-mission catch-day article.
+
 ## 2026-11-14 — Starship Flight 15 ship catch at Starbase (booster splashdown)
 
 - SpaceX confirmed Mechazilla caught Starship at Starbase at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov 2026 — the first Starship return-to-launch-site catch. Official post: https://x.com/SpaceX/status/2121715216597827756. Super Heavy Booster 22 diverted to a Gulf splashdown on 13 Nov and was not caught. Not a two-stage recovery. (As of 14 Nov 2026, 4:52 p.m. ET.)

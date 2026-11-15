@@ -21,6 +21,7 @@ window.STARSHIP = {
       "Deploy 26 Starlink V3 satellites — complete, per SpaceX",
     ],
     coverage: [
+      { label: "Flight 15 recap", url: "/dispatch/starship-flight-15-full-recap.html" },
       { label: "Flight 15 ship catch", url: "/dispatch/starship-f15-orbit-catch-day.html" },
       { label: "Flight 15 hub", url: "/starship-flight-15.html" },
       { label: "Ship 42 hub", url: "/ship-42.html" },
