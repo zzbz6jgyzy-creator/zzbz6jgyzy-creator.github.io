@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-15T09:18:19Z",
+ "checked": "2026-11-15T17:04:03Z",
  "editorialUpdated": "2026-11-14T09:20:00+00:00",
  "presets": [
   {
@@ -208,8 +208,8 @@
    }
   },
   {
-   "id": "ll2-18441371-8b2e-457c-afb5-1ec1b11ab630",
-   "title": "Falcon 9 Block 5 | Crew-13",
+   "id": "ll-crew-13",
+   "title": "Falcon 9 · Crew-13",
    "group": "spacex",
    "category": "Launch",
    "start": "2026-10-01T15:10:06Z",
@@ -226,12 +226,7 @@
      "label": "spacex.com"
     }
    ],
-   "origin": "Launch Library 2",
-   "providerId": "18441371-8b2e-457c-afb5-1ec1b11ab630",
-   "windowStart": "2026-10-01T15:10:06Z",
-   "windowEnd": "2026-10-01T15:10:06Z",
-   "vehicle": "",
-   "providerStatus": "Launch Successful",
+   "origin": "Editorial calendar",
    "pad": {
     "id": "slc40",
     "name": "Cape Canaveral · SLC-40",
