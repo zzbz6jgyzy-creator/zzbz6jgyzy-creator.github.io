@@ -1,3 +1,10 @@
+## 2026-11-15 — Grok Imagine in the main chat, SpaceX Nvidia exposure, Flight 15 booster note
+
+- Dispatch: Grok Imagine is now a mode inside the main Grok chat (@imagine / @grok, 14 Nov). Card is the NOAA Early 2026 Starbase aerial (public domain), not the Jenny Hautmann letter-wall. Update pointers on the team-cut and Odyssey Episode 1 pages.
+- Dispatch: After Jensen Huang's 11 Nov resignation, Musk said some Nvidia supply deals were handshakes. A sourced look at SpaceX's Nvidia exposure (Memphis GB300s, $40B Vera Rubin lease, Google rental, Starmind). Hero: Anderseidesvik, CC BY-SA 4.0, further cropped. Update pointers on the 40b lease, Colossus 2 and Starmind pages.
+- Flight 15 recap: add Musk's Saturday posts on Booster 22, including the 1:08 p.m. ET telemetry caveat. SpaceX's official recap is unchanged.
+- Newsroom: wrap long around-the-web headlines so the no-JS wire fallback does not overflow a 390px viewport.
+
 ## 2026-11-14 — Starship Flight 15 full recap (video hero)
 
 - Dispatch: full recap of Flight 15 from Friday’s liftoff through Saturday’s first ship catch at Starbase, with the approved SpaceX recap video as the hero (Ascension by Scott Buckley, CC BY 4.0). Booster 22 diverted to a Gulf splashdown; not a two-stage recovery. Cards on Dispatch, Newsroom, homepage news, SpaceX hub, and the Starship tracker Flight 15 entry. Update pointer on the mid-mission catch-day article.

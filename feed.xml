@@ -6,7 +6,25 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 14 Nov 2026 23:50:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 08:53:13 +0000</lastBuildDate>
+    <item>
+      <title>Grok Imagine moves into the main Grok chat, a day after reports that most of its team was cut</title>
+      <link>https://superchargeddaily.com/dispatch/grok-imagine-folds-into-grok.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-imagine-folds-into-grok.html</guid>
+      <pubDate>Sun, 15 Nov 2026 08:53:13 +0000</pubDate>
+      <category>Grok / Grok Imagine</category>
+      <description>On 14 Nov, @imagine said image and video creation is &quot;now live in Grok&quot; and @grok said more SpaceXSI products are being pulled into &quot;one Grok experience.&quot; What changed, what the official pages now say, and what nobody has said yet about the old Imagine screens, the layoffs report and the Odyssey movie.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/spacex-starbase-launch-site-early-2026.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Musk says his Nvidia deals ran on Jensen Huang's word. Here's how much of SpaceX's AI now rests on Nvidia</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-nvidia-after-huang.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-nvidia-after-huang.html</guid>
+      <pubDate>Sun, 15 Nov 2026 08:53:13 +0000</pubDate>
+      <category>SpaceX / AI</category>
+      <description>Jensen Huang resigned as Nvidia CEO on 11 Nov. Elon Musk says many of Huang's supply deals were handshakes and some &quot;will be lost,&quot; while Nvidia's board says customer commitments continue &quot;without interruption.&quot; A look at SpaceX's Nvidia exposure: about 860,000 GB300s in Memphis by Musk's count, a $40 billion Vera Rubin lease, Google's $920 million a month GPU rental and the Starmind satellites.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/jensen-huang-stanford-2026-04-30.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Starship Flight 15 recap: the first ship catch, and a booster lost in the Gulf</title>
       <link>https://superchargeddaily.com/dispatch/starship-flight-15-full-recap.html</link>
@@ -708,24 +726,6 @@
       <category>Starlink</category>
       <description>The 30% rule covers a local licensee, not “the company.” And Starlink has never applied for a licence.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-dish-hero.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tesla is ditching outside maps for its own AI maps. Its fleet’s 15.8 billion FSD miles are the whole bet</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-ai-maps-v15.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-ai-maps-v15.html</guid>
-      <pubDate>Thu, 22 Oct 2026 07:41:03 +0000</pubDate>
-      <category>FSD</category>
-      <description>Tesla’s AI chief says FSD will stop relying on other companies’ maps, starting with V15. I put 15.8 billion FSD miles next to Street View, Waymo and every US road.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-nav-screen-hero.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tesla’s Q3: profit fell 43%, but $1.5 billion of cash came back. Where the money went, and every promise now on the clock</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-q3-2026-results.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-q3-2026-results.html</guid>
-      <pubDate>Thu, 22 Oct 2026 01:38:03 +0000</pubDate>
-      <category>Earnings</category>
-      <description>Revenue flat at $28.05B, GAAP net income down 43% as R&amp;D jumped 69%, and free cash flow back at $1.53B. I took apart the cash, the capex math and every new date from the call.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-q3-results-hero.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.13</title>
