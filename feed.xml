@@ -6,7 +6,25 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 15 Nov 2026 08:53:13 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 14:51:09 +0000</lastBuildDate>
+    <item>
+      <title>The Pentagon is paying SpaceX $9.9M to study a laser-link mismatch in its missile-tracking satellites</title>
+      <link>https://superchargeddaily.com/dispatch/spacex-plaser-missile-tracking-study.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacex-plaser-missile-tracking-study.html</guid>
+      <pubDate>Sun, 15 Nov 2026 14:51:09 +0000</pubDate>
+      <category>SpaceX / Starshield &amp; defense</category>
+      <description>The Space Development Agency awarded SpaceX $9,921,992 to study how its Plaser laser terminal can carry data from missile-tracking satellites that use a different optical standard. What was bought, what wasn't, and why a small contract points at a big problem.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/sda-tranche1-falcon9-vandenberg-2025-09-10-card.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>The Grok Bot team says it shipped 11,000 pull requests in a month. Here's how, and what the numbers leave out</title>
+      <link>https://superchargeddaily.com/dispatch/grok-bot-team-11000-prs.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-bot-team-11000-prs.html</guid>
+      <pubDate>Sun, 15 Nov 2026 14:51:09 +0000</pubDate>
+      <category>Grok / Grok Bot</category>
+      <description>In a talk posted 14 Nov, Grok Bot engineer Lauren Tan said her team merged 11,000 pull requests in a month with about 0.5% reverted, and that agents now merge most of their own code. The method, the math, and the caveats.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/lauren-tan-dotjs-2018.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Grok Imagine moves into the main Grok chat, a day after reports that most of its team was cut</title>
       <link>https://superchargeddaily.com/dispatch/grok-imagine-folds-into-grok.html</link>
@@ -708,24 +726,6 @@
       <category>Launch</category>
       <description>Politico says SpaceX declined to bid and no rival offered a rocket. Vulcan was grounded this year, New Glenn lost its pad, and the newer rockets haven’t flown yet.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/falcon9-ussf36-hero.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tesla just put a SpaceX merger committee in an SEC filing. Its $2 billion SpaceX stake is already up $863 million</title>
-      <link>https://superchargeddaily.com/dispatch/tesla-10q-spacex-committee.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-10q-spacex-committee.html</guid>
-      <pubDate>Thu, 22 Oct 2026 19:40:00 +0000</pubDate>
-      <category>Markets</category>
-      <description>Tesla’s Q3 10-Q makes the SpaceX special committee official. Tesla’s $2.0B SpaceX stake was worth $2.87B on 30 Sep, and SpaceX bought $626M of Megapacks this year.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/giga-texas-hero.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>The US ambassador says Musk offered Starlink to 500 South African schools. Starlink’s own letter says 5,000</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-south-africa-schools.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-south-africa-schools.html</guid>
-      <pubDate>Thu, 22 Oct 2026 13:42:02 +0000</pubDate>
-      <category>Starlink</category>
-      <description>The 30% rule covers a local licensee, not “the company.” And Starlink has never applied for a licence.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-dish-hero.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: 2026.38.5.13</title>
