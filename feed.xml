@@ -728,12 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/grok-bot-iphone-action-button-poster.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Tracker: Starlink in orbit</title>
+      <title>Tracker: Starlink McDowell snapshot</title>
       <link>https://superchargeddaily.com/starlink.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-16T01:07:30.000Z-11213</guid>
       <pubDate>Mon, 16 Nov 2026 01:07:30 +0000</pubDate>
       <category>starlink</category>
-      <description>Starlink in orbit changed from 11215 to 11213.</description>
+      <description>McDowell snapshot: inOrbit 11,215 → 11,213; working 11,201 → 11,199; operational 9,704 → 9,558. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: 2026.38.5.13</title>
@@ -742,14 +742,6 @@
       <pubDate>Sun, 15 Nov 2026 20:26:36 +0000</pubDate>
       <category>software</category>
       <description>2026.38.5.13 moved from 289 to 332 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
-    </item>
-    <item>
-      <title>Tracker: Starlink McDowell snapshot</title>
-      <link>https://superchargeddaily.com/starlink.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-15T10:52:13.000Z-11215</guid>
-      <pubDate>Sun, 15 Nov 2026 10:52:13 +0000</pubDate>
-      <category>starlink</category>
-      <description>McDowell snapshot: inOrbit 11,193 → 11,215; working 11,179 → 11,201; launched 13,096 → 13,122. This is a published table snapshot, not a live operator feed.</description>
     </item>
     <item>
       <title>Tracker: Flight 15 change</title>
@@ -822,6 +814,14 @@
       <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
       <category>robotaxi</category>
       <description>Texas Cybercab registrations moved from 544 to 573. A registered car isn’t necessarily in service yet.</description>
+    </item>
+    <item>
+      <title>Tracker: LV · statement</title>
+      <link>https://superchargeddaily.com/fsd-europe.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/fsd-europe.html#logged-fsd:country:LV-2026-10-26T00:00:00.000Z-Tesla-Europe:-Now-approved-in-Lat</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>fsd</category>
+      <description>Tesla Europe: &quot;Now approved in Latvia. Rollout begins soon.&quot; No date given.</description>
     </item>
   </channel>
 </rss>

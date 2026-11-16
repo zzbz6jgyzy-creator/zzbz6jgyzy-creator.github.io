@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-16T09:32:05.930Z",
+  "updated": "2026-11-16T11:43:03.480Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/starship-every-flight-1-to-15.html",
+      "topic": "starship",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Fifteen flights to a caught ship: every Starship flight, explosions included",
+      "at": "2026-11-16T11:28:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/starship-every-flight-1-to-15.html",
+      "href": "/dispatch/starship-every-flight-1-to-15.html",
+      "summary": "Starship's first flight in April 2023 ended with SpaceX commanding its flight termination system on a tumbling rocket. On Saturday, Nov 14, 2026, the tower at Starbase caught a Starship upper stage for the first time. This is the whole run, flight by flight, including the vehicles SpaceX lost on the way.",
+      "title": "Fifteen flights to a caught ship: every Starship flight, explosions included",
+      "id": "logged|dispatch:/dispatch/starship-every-flight-1-to-15.html|2026-11-16T11:28:00.000Z|Fifteen flights to a caught ship: every Starship flight, explosions included"
+    },
     {
       "type": "changed",
       "factId": "starlink:in-orbit",
@@ -13,9 +30,9 @@
       "evidence": "independently_corroborated",
       "source": "Jonathan McDowell Starlink statistics",
       "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
-      "href": "/starlink.html",
-      "summary": "Starlink in orbit changed from 11215 to 11213.",
-      "title": "Starlink in orbit",
+      "href": "/starlink.html#counts-changed",
+      "summary": "McDowell snapshot: inOrbit 11,215 → 11,213; working 11,201 → 11,199; operational 9,704 → 9,558. This is a published table snapshot, not a live operator feed.",
+      "title": "Starlink McDowell snapshot",
       "id": "changed|starlink:in-orbit|2026-11-16T01:07:30.000Z|11213"
     },
     {
@@ -340,23 +357,6 @@
       "summary": "Grok Bot's Mac app can now connect to seven Apple apps, including Mail and Notes, which the phone version doesn't list. What each permission allows, what's missing, and which one to think twice about.",
       "title": "Grok Bot on Mac can now use Messages, Mail and Notes. Here's how it compares with the phone app",
       "id": "logged|dispatch:/dispatch/grok-bot-mac-apple-apps.html|2026-11-13T14:53:12.000Z|Grok Bot on Mac can now use Messages, Mail and Notes. Here's how it compares with the phone app"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacex-tesla-merger-december.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)",
-      "at": "2026-11-13T08:59:43.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacex-tesla-merger-december.html",
-      "href": "/dispatch/spacex-tesla-merger-december.html",
-      "summary": "Bloomberg, citing unnamed sources, said on 12 Nov 2026 that SpaceX and Tesla boards are negotiating terms and governance, with an announcement as soon as December or early 2027. Neither company has confirmed this. At Thursday's closes, a no-premium swap works out to about 2.84 SPCX shares per TSLA share. That figure is a calculation, not a reported term.",
-      "title": "Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)",
-      "id": "logged|dispatch:/dispatch/spacex-tesla-merger-december.html|2026-11-13T08:59:43.000Z|Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)"
     },
     {
       "type": "changed",
