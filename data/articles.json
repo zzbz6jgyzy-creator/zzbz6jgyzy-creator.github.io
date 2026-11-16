@@ -1,6 +1,34 @@
 {
-  "updated": "2026-11-16T11:28:00Z",
+  "updated": "2026-11-16T16:45:00Z",
   "articles": [
+    {
+      "url": "/dispatch/robotaxi-miami-expansion.html",
+      "title": "Tesla nearly doubles its Miami Robotaxi zone, but Waymo still covers 2.5 times as much ground",
+      "seoTitle": "Tesla nearly doubles its Miami Robotaxi zone, but Waymo still covers 2.5 times as much ground",
+      "date": "2026-11-16T16:45:00Z",
+      "topic": "tesla",
+      "tag": "Tesla / Robotaxi",
+      "image": "/assets/dispatch/brickell-miami-night-2024.jpg",
+      "imageAlt": "The Brickell and downtown Miami skyline at night, with lit towers and Biscayne Bay visible at the right",
+      "summary": "Tesla's Robotaxi zone in Miami now reaches downtown and Brickell. Trackers put it at about 59 square miles, up roughly 90%. Waymo's Miami area has been 150 square miles since May.",
+      "pinned": false,
+      "author": "Alex R",
+      "minutes": 5
+    },
+    {
+      "url": "/dispatch/starship-v4-70m-nine-engines.html",
+      "title": "Starship V4 by the numbers: a 70-meter ship, nine engines and propellant at a quarter of the price per ton",
+      "seoTitle": "Starship V4 by the numbers: a 70-meter ship, nine engines and propellant at a quarter of the price per ton",
+      "date": "2026-11-16T16:45:00Z",
+      "topic": "spacex",
+      "tag": "SpaceX / Starship",
+      "image": "/assets/dispatch/starbase-rocket-garden-sunset-2024.jpg",
+      "imageAlt": "Several Starship vehicles standing in the rocket garden at SpaceX Starbase at sunset, with a Super Heavy-scale booster at left and a finned ship at right",
+      "summary": "A day after SpaceX caught a ship for the first time, Elon Musk gave the first firm size for the next version: about 70 meters long, more than 60% more propellant and nine engines instead of six. These are plans, not hardware. Here's how they compare with the V3 ship SpaceX lists today.",
+      "pinned": false,
+      "author": "Alex R",
+      "minutes": 5
+    },
     {
       "url": "/dispatch/starship-every-flight-1-to-15.html",
       "title": "Fifteen flights to a caught ship: every Starship flight, explosions included",

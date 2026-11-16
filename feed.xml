@@ -6,7 +6,25 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 16 Nov 2026 11:28:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 16:45:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla nearly doubles its Miami Robotaxi zone, but Waymo still covers 2.5 times as much ground</title>
+      <link>https://superchargeddaily.com/dispatch/robotaxi-miami-expansion.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/robotaxi-miami-expansion.html</guid>
+      <pubDate>Mon, 16 Nov 2026 16:45:00 +0000</pubDate>
+      <category>Tesla / Robotaxi</category>
+      <description>Tesla's Robotaxi zone in Miami now reaches downtown and Brickell. Trackers put it at about 59 square miles, up roughly 90%. Waymo's Miami area has been 150 square miles since May.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/brickell-miami-night-2024.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Starship V4 by the numbers: a 70-meter ship, nine engines and propellant at a quarter of the price per ton</title>
+      <link>https://superchargeddaily.com/dispatch/starship-v4-70m-nine-engines.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starship-v4-70m-nine-engines.html</guid>
+      <pubDate>Mon, 16 Nov 2026 16:45:00 +0000</pubDate>
+      <category>SpaceX / Starship</category>
+      <description>A day after SpaceX caught a ship for the first time, Elon Musk gave the first firm size for the next version: about 70 meters long, more than 60% more propellant and nine engines instead of six. These are plans, not hardware. Here's how they compare with the V3 ship SpaceX lists today.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/starbase-rocket-garden-sunset-2024.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Fifteen flights to a caught ship: every Starship flight, explosions included</title>
       <link>https://superchargeddaily.com/dispatch/starship-every-flight-1-to-15.html</link>
@@ -708,24 +726,6 @@
       <category>Starlink</category>
       <description>Bloomberg says SpaceX is in talks for at least 80,000 US cell sites, including with Crown Castle. What’s signed, what’s only talks, and the numbers behind it.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/cell-tower-jefferson-wi.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>NASA’s safety panel says one Starship Moon landing needs about 22 launches. Musk says 6 to 8. Here’s the math behind both numbers</title>
-      <link>https://superchargeddaily.com/dispatch/starship-moon-refuel-22-vs-8.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starship-moon-refuel-22-vs-8.html</guid>
-      <pubDate>Fri, 23 Oct 2026 07:56:21 +0000</pubDate>
-      <category>Starship</category>
-      <description>A NASA safety adviser says the latest refueling estimate is “around 22” launches; Musk says 6 to 8. What each number means per tanker, and how long each takes to fly.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starship-ift5-jurvetson.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Grok Bot can now use your phone’s Calendar, Messages, Contacts and Home apps. Here’s what each permission unlocks</title>
-      <link>https://superchargeddaily.com/dispatch/grok-bot-phone-apps.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-bot-phone-apps.html</guid>
-      <pubDate>Fri, 23 Oct 2026 01:55:00 +0000</pubDate>
-      <category>Grok</category>
-      <description>Rolling out on iOS and Android: the six phone permissions in @bot’s screen, from Calendar to door locks, and what hasn’t been said yet.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/grok-bot-iphone-action-button-poster.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>

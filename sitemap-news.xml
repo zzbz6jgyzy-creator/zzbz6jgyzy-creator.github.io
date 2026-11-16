@@ -2,6 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/robotaxi-miami-expansion.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T16:45:00Z</news:publication_date>
+      <news:title>Tesla nearly doubles its Miami Robotaxi zone, but Waymo still covers 2.5 times as much ground</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/starship-v4-70m-nine-engines.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T16:45:00Z</news:publication_date>
+      <news:title>Starship V4 by the numbers: a 70-meter ship, nine engines and propellant at a quarter of the price per ton</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/starship-every-flight-1-to-15.html</loc>
     <news:news>
       <news:publication>
@@ -65,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-11-14T23:50:00Z</news:publication_date>
       <news:title>Starship Flight 15 recap: the first ship catch, and a booster lost in the Gulf</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/grok-imagine-team-cut.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-14T14:56:00Z</news:publication_date>
-      <news:title>SpaceX reportedly cut most of the Grok Imagine team, a week after Starlink asked fans to make an ad with it</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/robo-meneva-helsinki-tesla-taxis.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-14T14:56:00Z</news:publication_date>
-      <news:title>A Helsinki taxi firm bought 100 Model Ys to run on Tesla Assisted Driving, and says it will publish every time a driver steps in</news:title>
     </news:news>
   </url>
 </urlset>
