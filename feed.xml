@@ -6,7 +6,16 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 15 Nov 2026 14:51:09 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 11:28:00 +0000</lastBuildDate>
+    <item>
+      <title>Fifteen flights to a caught ship: every Starship flight, explosions included</title>
+      <link>https://superchargeddaily.com/dispatch/starship-every-flight-1-to-15.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starship-every-flight-1-to-15.html</guid>
+      <pubDate>Mon, 16 Nov 2026 11:28:00 +0000</pubDate>
+      <category>SpaceX / Starship</category>
+      <description>Starship's first flight in April 2023 ended with SpaceX commanding its flight termination system on a tumbling rocket. On Saturday, Nov 14, 2026, the tower at Starbase caught a Starship upper stage for the first time. This is the whole run, flight by flight, including the vehicles SpaceX lost on the way.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/starship-every-flight-poster.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>The Pentagon is paying SpaceX $9.9M to study a laser-link mismatch in its missile-tracking satellites</title>
       <link>https://superchargeddaily.com/dispatch/spacex-plaser-missile-tracking-study.html</link>
@@ -717,15 +726,6 @@
       <category>Grok</category>
       <description>Rolling out on iOS and Android: the six phone permissions in @bot’s screen, from Calendar to door locks, and what hasn’t been said yet.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/grok-bot-iphone-action-button-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>SpaceX passed on three Space Force launches, and no other rocket company bid either. Here’s every option the military has left</title>
-      <link>https://superchargeddaily.com/dispatch/space-force-no-bids.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/space-force-no-bids.html</guid>
-      <pubDate>Fri, 23 Oct 2026 01:45:00 +0000</pubDate>
-      <category>Launch</category>
-      <description>Politico says SpaceX declined to bid and no rival offered a rocket. Vulcan was grounded this year, New Glenn lost its pad, and the newer rockets haven’t flown yet.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/falcon9-ussf36-hero.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink in orbit</title>

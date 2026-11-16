@@ -1,3 +1,7 @@
+## 2026-11-16 — Starship every flight, 1 to 15 (video hero)
+
+- Dispatch: fifteen flights from the April 2023 tumbling first flight to Saturday's first ship catch at Starbase, with the commissioned all-flights film as the hero (Aphelion by Scott Buckley, CC BY 4.0). Official SpaceX recap for Booster 22 (low fuel mass, automated abort, FTS after landing-burn shutdown); no invented explosion wording. Cards on Dispatch, Newsroom, homepage news, and the SpaceX hub from articles.json. No ship number in the headline or body.
+
 ## 2026-11-15 — SpaceX Plaser missile-tracking study, and Grok Bot 11,000 PRs
 
 - Dispatch: The Pentagon awarded SpaceX $9,921,992 (options to $12,666,379) for a Plaser risk-reduction study on missile warning/tracking integration, announced 10 Nov. Hero is the USSF Tranche 1 Transport Layer launch photo (Master Sgt. Eric Burks, public domain); card/OG is a 16:9 top crop so the rocket stays in frame. The laser-standard mismatch is Breaking Defense/SpaceNews reporting, not the contract notice. Optional Related line on the Starlink V4 lasers piece. SpaceX hub card comes from articles.json.
