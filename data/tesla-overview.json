@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/robotaxi-miami-expansion.html",
+      "image": "/assets/dispatch/brickell-miami-night-2024.jpg",
+      "title": "Tesla nearly doubles its Miami Robotaxi zone, but Waymo still covers 2.5 times as much ground",
+      "summary": "Tesla's Robotaxi zone in Miami now reaches downtown and Brickell. Trackers put it at about 59 square miles, up roughly 90%. Waymo's Miami area has been 150 square miles since May.",
+      "tag": "Tesla / Robotaxi",
+      "date": "2026-11-16T16:45:00Z",
+      "thumb": "/assets/dispatch/brickell-miami-night-2024-480w.webp"
+    },
+    {
       "url": "/dispatch/robo-meneva-helsinki-tesla-taxis.html",
       "image": "/assets/dispatch/helsinki-airport-taxi-station-meneva.jpg",
       "title": "A Helsinki taxi firm bought 100 Model Ys to run on Tesla Assisted Driving, and says it will publish every time a driver steps in",
@@ -216,16 +225,7 @@
       "tag": "Cybertruck",
       "date": "2026-11-12T08:56:21Z",
       "thumb": "/assets/dispatch/cybertruck-skoyen-2024-480w.webp"
-    },
-    {
-      "url": "/dispatch/finland-fsd-eleventh-eu.html",
-      "image": "/assets/dispatch/helsinki-lansivayla-tesla-model-3.jpg",
-      "title": "Finland approves Tesla Assisted Driving, making it 11 EU countries (as of 11 Nov 2026)",
-      "summary": "Finland’s Traficom has recognised the Dutch approval of Tesla Assisted Driving, formerly FSD (Supervised). That makes 11 EU countries, about 15.5% of the EU population as of 1 Jan 2026. Tesla says rollout begins soon, with no date.",
-      "tag": "FSD",
-      "date": "2026-11-11T14:55:53Z",
-      "thumb": "/assets/dispatch/helsinki-lansivayla-tesla-model-3-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-16T11:28:00Z"
+  "articlesUpdated": "2026-11-16T16:45:00Z"
 }
