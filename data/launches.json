@@ -2,32 +2,9 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-16T01:59:58Z",
- "checked": "2026-11-16T01:59:58Z",
+ "updated": "2026-11-16T09:34:35Z",
+ "checked": "2026-11-16T09:34:35Z",
  "results": [
-  {
-   "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
-   "name": "Falcon Heavy | NROL-97",
-   "net": "2026-10-02T03:54:00Z",
-   "window_start": "2026-10-02T03:53:00Z",
-   "window_end": "2026-10-02T04:42:00Z",
-   "url": "https://ll.thespacedevs.com/2.3.0/launches/4651fd8a-43de-4166-bf8f-c168b3bd1d2c/",
-   "status": {
-    "name": "Launch Successful",
-    "abbrev": "Success"
-   },
-   "net_precision": {
-    "name": "Minute",
-    "abbrev": "MIN"
-   },
-   "pad": {
-    "name": null,
-    "location": {
-     "name": null
-    }
-   },
-   "last_updated": "2026-10-02T14:51:48Z"
-  },
   {
    "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
    "name": "Falcon 9 Block 5 | SDA Tranche 1 Transport Layer A",

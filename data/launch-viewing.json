@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-16T01:59:58Z",
+ "checked": "2026-11-16T09:34:35Z",
  "editorialUpdated": "2026-11-14T09:20:00+00:00",
  "presets": [
   {
@@ -268,8 +268,8 @@
    }
   },
   {
-   "id": "ll2-4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
-   "title": "Falcon Heavy | NROL-97",
+   "id": "ll-nrol-97",
+   "title": "Falcon Heavy · NROL-97",
    "group": "spacex",
    "category": "Launch",
    "start": "2026-10-02T03:54:00Z",
@@ -286,12 +286,7 @@
      "label": "spacex.com"
     }
    ],
-   "origin": "Launch Library 2",
-   "providerId": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
-   "windowStart": "2026-10-02T03:53:00Z",
-   "windowEnd": "2026-10-02T04:42:00Z",
-   "vehicle": "",
-   "providerStatus": "Launch Successful",
+   "origin": "Editorial calendar",
    "pad": {
     "id": "lc39a",
     "name": "Kennedy · LC-39A",
