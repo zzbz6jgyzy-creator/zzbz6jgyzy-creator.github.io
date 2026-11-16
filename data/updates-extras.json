@@ -1,52 +1,52 @@
 {
- "updated": "2026-11-16T07:22:16Z",
+ "updated": "2026-11-16T17:30:18Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-11-16T07:22:16Z",
-  "fleet": 12283,
+  "fetched": "2026-11-16T17:30:18Z",
+  "fleet": 12281,
   "versions": [
    {
     "id": "2026.39.100",
-    "installs": 243,
+    "installs": 245,
     "percent": 2.0,
-    "pending": 32
+    "pending": 31
    },
    {
     "id": "2026.39.6",
-    "installs": 23,
+    "installs": 21,
     "percent": 0.2,
     "pending": 1
    },
    {
     "id": "2026.38.6.1",
-    "installs": 260,
+    "installs": 259,
     "percent": 2.1,
     "pending": 29
    },
    {
     "id": "2026.38.6",
-    "installs": 5292,
-    "percent": 43.1,
-    "pending": 587
+    "installs": 5307,
+    "percent": 43.2,
+    "pending": 572
    },
    {
     "id": "2026.38.5.13",
-    "installs": 1053,
-    "percent": 8.6,
-    "pending": 330
+    "installs": 1199,
+    "percent": 9.8,
+    "pending": 189
    },
    {
     "id": "2026.38.5.12",
-    "installs": 872,
-    "percent": 7.1,
-    "pending": 39
+    "installs": 739,
+    "percent": 6.0,
+    "pending": 37
    },
    {
     "id": "2026.38.5.11",
-    "installs": 2443,
-    "percent": 19.9,
-    "pending": 138
+    "installs": 2435,
+    "percent": 19.8,
+    "pending": 135
    },
    {
     "id": "2026.38.5.10",
@@ -62,9 +62,9 @@
    },
    {
     "id": "2026.38.5.1",
-    "installs": 185,
+    "installs": 182,
     "percent": 1.5,
-    "pending": 8
+    "pending": 7
    },
    {
     "id": "2026.38.5",
@@ -74,13 +74,13 @@
    },
    {
     "id": "2026.38.3.2",
-    "installs": 348,
+    "installs": 340,
     "percent": 2.8,
-    "pending": 41
+    "pending": 40
    },
    {
     "id": "2026.38.3.1",
-    "installs": 104,
+    "installs": 100,
     "percent": 0.8,
     "pending": 10
    },
@@ -110,7 +110,7 @@
    },
    {
     "id": "2026.32.300",
-    "installs": 2,
+    "installs": 1,
     "percent": 0.0,
     "pending": 0
    },
@@ -122,7 +122,7 @@
    },
    {
     "id": "2026.32.7",
-    "installs": 84,
+    "installs": 83,
     "percent": 0.7,
     "pending": 3
    },
@@ -164,7 +164,7 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 61,
+    "installs": 60,
     "percent": 0.5,
     "pending": 1
    },
@@ -182,13 +182,13 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 73,
+    "installs": 72,
     "percent": 0.6,
     "pending": 3
    },
    {
     "id": "2026.26.1",
-    "installs": 16,
+    "installs": 15,
     "percent": 0.1,
     "pending": 0
    },
@@ -326,8 +326,8 @@
    },
    {
     "id": "2026.2.6",
-    "installs": 7,
-    "percent": 0.1,
+    "installs": 6,
+    "percent": 0.0,
     "pending": 1
    },
    {
@@ -491,85 +491,85 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-16T07:22:16Z",
+  "fetched": "2026-11-16T17:30:18Z",
   "items": [
    {
-    "t": "2026-11-16T07:03:50Z",
+    "t": "2026-11-16T16:39:07Z",
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
-    "model": "Cybertruck AWD (2024)",
+    "model": "Model Y AWD LR (2024)",
     "hw": "4.0",
     "country": "United States"
    },
    {
-    "t": "2026-11-16T06:45:01Z",
-    "to": "2026.38.5.11",
-    "from": "2026.26.6.5",
-    "model": "Model 3 Performance (2018)",
-    "hw": "3.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T06:33:28Z",
+    "t": "2026-11-16T15:02:46Z",
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
-    "model": "Model Y RWD LR (2024)",
+    "model": "Model Y AWD LR (2026)",
     "hw": "4.0",
     "country": "United States"
    },
    {
-    "t": "2026-11-16T06:32:30Z",
+    "t": "2026-11-16T14:34:41Z",
+    "to": "2026.39.100",
+    "from": "2026.39.6",
+    "model": "Model S AWD (2026)",
+    "hw": "4.0",
+    "country": "Denmark"
+   },
+   {
+    "t": "2026-11-16T14:25:43Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model 3 AWD LR (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T13:05:42Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T13:03:08Z",
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
     "model": "Model 3 AWD LR (2024)",
     "hw": "4.0",
-    "country": "United States"
+    "country": "Canada"
    },
    {
-    "t": "2026-11-16T06:30:21Z",
+    "t": "2026-11-16T11:36:08Z",
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
-    "model": "Model 3 RWD LR (2025)",
+    "model": "Model 3 Performance (2024)",
     "hw": "4.0",
     "country": "United States"
    },
    {
-    "t": "2026-11-16T06:28:07Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.1",
-    "model": "Cybertruck AWD (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T05:57:17Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model Y AWD LR (2023)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T05:42:52Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Cybertruck AWD (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T05:39:28Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model S AWD (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T05:26:55Z",
+    "t": "2026-11-16T11:16:51Z",
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
     "model": "Model Y RWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T11:11:29Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T11:05:39Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Cybertruck Cyberbeast (2024)",
     "hw": "4.0",
     "country": "United States"
    }
