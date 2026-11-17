@@ -728,14 +728,6 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/spacex-hq-hawthorne.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Tracker: Newest reporting build</title>
-      <link>https://superchargeddaily.com/updates.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:newest-reporting-2026-11-17T09:18:46.000Z-2026.44.1</guid>
-      <pubDate>Tue, 17 Nov 2026 09:18:46 +0000</pubDate>
-      <category>software</category>
-      <description>Newest reporting build changed from 2026.38.5.13 to 2026.44.1.</description>
-    </item>
-    <item>
       <title>Tracker: 2026.44.1</title>
       <link>https://superchargeddaily.com/updates.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/updates.html#appeared-tesla-software:wave:2026.44.1-2026-11-17T09:18:46.000Z-2</guid>
@@ -750,14 +742,6 @@
       <pubDate>Tue, 17 Nov 2026 09:18:46 +0000</pubDate>
       <category>software</category>
       <description>2026.38.5.13 moved from 422 to 523 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
-    </item>
-    <item>
-      <title>Tracker: Next Starship flight</title>
-      <link>https://superchargeddaily.com/starship.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/starship.html#changed-starship:next-flight-2026-11-17T08:45:00.000Z-16-2026-12-01-none</guid>
-      <pubDate>Tue, 17 Nov 2026 08:45:00 +0000</pubDate>
-      <category>starship</category>
-      <description>Next Starship flight changed from 15|2026-11-13|day to 16|2026-12-01|none.</description>
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
@@ -830,6 +814,14 @@
       <pubDate>Thu, 29 Oct 2026 02:30:58 +0000</pubDate>
       <category>software</category>
       <description>2026.38.5.11 moved from 792 to 850 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
+    </item>
+    <item>
+      <title>Tracker: Texas Cybercab count</title>
+      <link>https://superchargeddaily.com/cybercab.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/cybercab.html#changed-robotaxi:tx-cybercab-2026-10-28T00:00:00.000Z-573</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+      <category>robotaxi</category>
+      <description>Texas Cybercab registrations moved from 544 to 573. A registered car isn’t necessarily in service yet.</description>
     </item>
   </channel>
 </rss>
