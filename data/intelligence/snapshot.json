@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T14:50:08.229Z",
+  "generatedAt": "2026-11-17T18:40:56.901Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -162,7 +162,7 @@
       "field": "newest-reporting",
       "value": "2026.44.1",
       "label": "Newest reporting build",
-      "at": "2026-11-17T09:18:46.000Z",
+      "at": "2026-11-17T18:40:51.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample (3271 cars)",
       "sourceUrl": "https://teslascope.com/software",
@@ -190,7 +190,7 @@
       "field": "most-common",
       "value": "2026.38.5.1@31.5",
       "label": "Most common sample build",
-      "at": "2026-11-17T09:18:46.000Z",
+      "at": "2026-11-17T18:40:51.000Z",
       "evidence": "reported_unconfirmed",
       "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",

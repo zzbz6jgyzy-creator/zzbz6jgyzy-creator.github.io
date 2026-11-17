@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T09:18:46Z",
+  "updated": "2026-11-17T18:40:51Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
   "fleet": 3271,
@@ -8,7 +8,7 @@
     {
       "id": "2026.44.1",
       "date": "2026-11-17",
-      "count": 2,
+      "count": 3,
       "fleet": 3271,
       "percent": 0.1,
       "fsd": null,
@@ -50,22 +50,24 @@
       ],
       "countries": [
         "DE",
-        "US"
+        "US",
+        "CH"
       ],
       "countryCounts": {
         "DE": 1,
-        "US": 1
+        "US": 1,
+        "CH": 1
       },
       "pending": 7,
       "firstSeen": "2026-11-17T04:38:20Z",
-      "lastSeen": "2026-11-17T06:19:54Z"
+      "lastSeen": "2026-11-17T09:42:12Z"
     },
     {
       "id": "2026.38.5.13",
       "date": "2026-11-13",
-      "count": 523,
+      "count": 548,
       "fleet": 3271,
-      "percent": 16.0,
+      "percent": 16.8,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -110,14 +112,14 @@
         "MX"
       ],
       "countryCounts": {
-        "US": 498,
-        "CA": 22,
+        "US": 521,
+        "CA": 24,
         "PR": 2,
         "MX": 1
       },
-      "pending": 104,
+      "pending": 80,
       "firstSeen": "2026-11-13T23:33:09Z",
-      "lastSeen": "2026-11-17T09:02:55Z"
+      "lastSeen": "2026-11-17T18:36:10Z"
     },
     {
       "id": "2026.39.100",
@@ -191,7 +193,7 @@
     {
       "id": "2026.38.4.5",
       "date": "2026-11-10",
-      "count": 2,
+      "count": 4,
       "fleet": 3271,
       "percent": 0.1,
       "fsd": null,
@@ -219,27 +221,27 @@
           "text": "Adjust settings like the Speed Profile directly from the Self-Driving visualization on the center display."
         },
         {
+          "title": "Alternative Routes",
+          "text": "See alternative routes while driving. Tap the map mode button or tap the next turn to switch to Overview mode and choose a different route."
+        },
+        {
           "title": "Apple Music",
-          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
         },
         {
-          "title": "Dynamic Headlight Leveling",
-          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
-        },
-        {
-          "title": "Fast Charger Preconditioning",
-          "text": "Your Tesla now supports preconditioning for third-party fast chargers. Tap any fast charger on the map and begin navigation. When needed, the battery will automatically precondition to optimize charging performance."
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
         }
       ],
       "countries": [
         "KR"
       ],
       "countryCounts": {
-        "KR": 2
+        "KR": 4
       },
-      "pending": 3,
+      "pending": 2,
       "firstSeen": "2026-11-10T03:11:50Z",
-      "lastSeen": "2026-11-17T02:07:20Z"
+      "lastSeen": "2026-11-17T13:33:09Z"
     },
     {
       "id": "2026.38.5.12",
@@ -406,14 +408,14 @@
         "AU": 124,
         "NZ": 8
       },
-      "pending": 11,
+      "pending": 12,
       "firstSeen": "2026-10-29T19:53:31Z",
       "lastSeen": "2026-11-15T02:39:43Z"
     },
     {
       "id": "2026.38.6",
       "date": "2026-10-29",
-      "count": 342,
+      "count": 343,
       "fleet": 3271,
       "percent": 10.5,
       "fsd": null,
@@ -505,7 +507,7 @@
         "CH": 11,
         "AT": 10,
         "IT": 10,
-        "PL": 7,
+        "PL": 8,
         "ES": 7,
         "BE": 6,
         "PT": 5,
@@ -535,9 +537,9 @@
         "LT": 1,
         "PH": 1
       },
-      "pending": 33,
+      "pending": 34,
       "firstSeen": "2026-10-29T19:08:27Z",
-      "lastSeen": "2026-11-15T21:36:55Z"
+      "lastSeen": "2026-11-17T18:11:57Z"
     },
     {
       "id": "2026.38.5.6",
