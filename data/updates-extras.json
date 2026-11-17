@@ -1,52 +1,52 @@
 {
- "updated": "2026-11-16T17:30:18Z",
+ "updated": "2026-11-17T01:07:31Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-11-16T17:30:18Z",
-  "fleet": 12281,
+  "fetched": "2026-11-17T01:07:31Z",
+  "fleet": 12280,
   "versions": [
    {
     "id": "2026.39.100",
-    "installs": 245,
+    "installs": 249,
     "percent": 2.0,
-    "pending": 31
+    "pending": 27
    },
    {
     "id": "2026.39.6",
-    "installs": 21,
-    "percent": 0.2,
+    "installs": 17,
+    "percent": 0.1,
     "pending": 1
    },
    {
     "id": "2026.38.6.1",
-    "installs": 259,
+    "installs": 260,
     "percent": 2.1,
-    "pending": 29
+    "pending": 28
    },
    {
     "id": "2026.38.6",
-    "installs": 5307,
-    "percent": 43.2,
-    "pending": 572
+    "installs": 5316,
+    "percent": 43.3,
+    "pending": 562
    },
    {
     "id": "2026.38.5.13",
-    "installs": 1199,
-    "percent": 9.8,
-    "pending": 189
+    "installs": 1246,
+    "percent": 10.1,
+    "pending": 580
    },
    {
     "id": "2026.38.5.12",
-    "installs": 739,
-    "percent": 6.0,
-    "pending": 37
+    "installs": 696,
+    "percent": 5.7,
+    "pending": 24
    },
    {
     "id": "2026.38.5.11",
-    "installs": 2435,
+    "installs": 2432,
     "percent": 19.8,
-    "pending": 135
+    "pending": 137
    },
    {
     "id": "2026.38.5.10",
@@ -74,13 +74,13 @@
    },
    {
     "id": "2026.38.3.2",
-    "installs": 340,
-    "percent": 2.8,
-    "pending": 40
+    "installs": 334,
+    "percent": 2.7,
+    "pending": 39
    },
    {
     "id": "2026.38.3.1",
-    "installs": 100,
+    "installs": 98,
     "percent": 0.8,
     "pending": 10
    },
@@ -164,7 +164,7 @@
    },
    {
     "id": "2026.26.6.5",
-    "installs": 60,
+    "installs": 59,
     "percent": 0.5,
     "pending": 1
    },
@@ -182,7 +182,7 @@
    },
    {
     "id": "2026.26.6.1",
-    "installs": 72,
+    "installs": 71,
     "percent": 0.6,
     "pending": 3
    },
@@ -230,7 +230,7 @@
    },
    {
     "id": "2026.20.6.9",
-    "installs": 13,
+    "installs": 12,
     "percent": 0.1,
     "pending": 0
    },
@@ -242,7 +242,7 @@
    },
    {
     "id": "2026.20.6.1",
-    "installs": 126,
+    "installs": 125,
     "percent": 1.0,
     "pending": 2
    },
@@ -410,13 +410,13 @@
    },
    {
     "id": "2025.38.14",
-    "installs": 160,
+    "installs": 161,
     "percent": 1.3,
-    "pending": 22
+    "pending": 21
    },
    {
     "id": "2025.38.13",
-    "installs": 30,
+    "installs": 29,
     "percent": 0.2,
     "pending": 0
    },
@@ -491,8 +491,72 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-16T17:30:18Z",
+  "fetched": "2026-11-17T01:07:31Z",
   "items": [
+   {
+    "t": "2026-11-16T23:37:29Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y AWD LR (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T23:29:53Z",
+    "to": "2026.38.5.12",
+    "from": "2026.38.5.11",
+    "model": "Model Y Performance (2026)",
+    "hw": "4.0",
+    "country": "Canada"
+   },
+   {
+    "t": "2026-11-16T21:42:20Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Cybertruck Cyberbeast (2024)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T20:03:18Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model S Plaid (2023)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T18:56:29Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y AWD LR (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T18:33:56Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Cybertruck AWD (2025)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T18:21:43Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y Performance (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
+   {
+    "t": "2026-11-16T18:08:31Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Cybertruck AWD (2026)",
+    "hw": "4.0",
+    "country": "United States"
+   },
    {
     "t": "2026-11-16T16:39:07Z",
     "to": "2026.38.5.13",
@@ -506,70 +570,6 @@
     "to": "2026.38.5.13",
     "from": "2026.38.5.12",
     "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T14:34:41Z",
-    "to": "2026.39.100",
-    "from": "2026.39.6",
-    "model": "Model S AWD (2026)",
-    "hw": "4.0",
-    "country": "Denmark"
-   },
-   {
-    "t": "2026-11-16T14:25:43Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model 3 AWD LR (2025)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T13:05:42Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T13:03:08Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model 3 AWD LR (2024)",
-    "hw": "4.0",
-    "country": "Canada"
-   },
-   {
-    "t": "2026-11-16T11:36:08Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model 3 Performance (2024)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T11:16:51Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model Y RWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T11:11:29Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model Y AWD LR (2026)",
-    "hw": "4.0",
-    "country": "United States"
-   },
-   {
-    "t": "2026-11-16T11:05:39Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Cybertruck Cyberbeast (2024)",
     "hw": "4.0",
     "country": "United States"
    }
