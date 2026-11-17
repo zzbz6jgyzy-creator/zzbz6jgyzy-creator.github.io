@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-14T09:20:00+00:00",
+ "updated": "2026-11-17T08:45:00+00:00",
  "launchChecked": "2026-11-17T03:48:25Z",
  "launchSource": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "events": [
@@ -520,7 +520,7 @@
    "coverage": {
     "url": "https://www.spacex.com/launches/ussf627",
     "article": "",
-    "status": "scheduled"
+    "status": "ended"
    }
   },
   {
@@ -533,7 +533,7 @@
    "date": "2026-11-13",
    "precision": "datetime",
    "status": "done",
-   "note": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. Catch is still a go/no-go. Checked 14 Nov 2026.",
+   "note": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov SpaceX said Mechazilla caught Starship at Starbase. Booster 22 was not caught. Checked 17 Nov 2026.",
    "where": "Starbase · Pad 2",
    "href": "https://www.spacex.com/launches/starship-flight-15",
    "sources": [
@@ -603,7 +603,7 @@
    "coverage": {
     "url": "https://www.spacex.com/launches/starship-flight-15",
     "article": "",
-    "status": "live"
+    "status": "ended"
    }
   },
   {
@@ -651,7 +651,12 @@
    "windowStart": "2026-11-21T12:30:00Z",
    "windowEnd": "2026-11-21T13:00:00Z",
    "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch"
+   "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches",
+    "article": "",
+    "status": "scheduled"
+   }
   },
   {
    "id": "ussf-266",
@@ -773,7 +778,7 @@
    "date": "2026-12-01",
    "precision": "month",
    "status": "expected",
-   "note": "December 2026 target, reported. FAA CADENA air-traffic planning slides (22 Oct) list Flight 16 NET 10 Dec 2026, as the first flight from Florida (LC-39A). NASASpaceflight (25 Oct) estimates the first LC-39A Starship flight could be in late January 2027. This is reporting, not a SpaceX date.",
+   "note": "SpaceX has not announced a date, window or vehicles for Flight 16 (checked 17 Nov 2026). FAA CADENA air-traffic planning slides in October listed a no-earlier-than date of 10 Dec 2026 from Kennedy LC-39A, as a possible first Florida Starship flight. NASASpaceflight has also discussed a later window. Those figures are planning or reporting, not a SpaceX date.",
    "where": "",
    "href": "",
    "sources": [
@@ -806,7 +811,7 @@
    "date": "2026-12-03",
    "precision": "datetime",
    "status": "scheduled",
-   "note": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 UTC / 21:00 Dublin). Virtual meeting at virtualshareholdermeeting.com/TSLA2026; limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov. Source: votetesla.com/annual-meeting-details/ (checked 9 Nov 2026).",
+   "note": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 UTC / 21:00 Dublin). Virtual meeting at virtualshareholdermeeting.com/TSLA2026; limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov. Source: votetesla.com/annual-meeting-details/ (checked 17 Nov 2026).",
    "where": "",
    "href": "https://www.votetesla.com/annual-meeting-details/",
    "sources": [

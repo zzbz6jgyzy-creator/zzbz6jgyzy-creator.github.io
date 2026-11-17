@@ -34,8 +34,9 @@ class Adapter(unittest.TestCase):
   self.assertEqual(by_id["starlink-15-21-fixture"]["net"],"2026-11-05T02:35:00Z")
   self.assertEqual(by_id["crew-13-fixture"]["status"]["abbrev"],"Success")
   # The CLI uses the real clock, so these launch times are relative to it (fixed dates expire and the check goes red).
-  fmt=lambda d:d.strftime('%Y-%m-%dT%H:%M:%SZ');soon=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)+datetime.timedelta(days=3)
+  fmt=lambda d:d.strftime('%Y-%m-%dT%H:%M:%SZ');now_utc=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0);soon=now_utc+datetime.timedelta(days=3)
   fresh_net,fresh_end=fmt(soon),fmt(soon+datetime.timedelta(hours=4));cached_net,cached_end=fmt(soon+datetime.timedelta(hours=2,minutes=39)),fmt(soon+datetime.timedelta(hours=6,minutes=39))
+  done_net=fmt(now_utc-datetime.timedelta(days=20));done={**done,"net":done_net,"window_start":done_net,"window_end":fmt(now_utc-datetime.timedelta(days=20)+datetime.timedelta(minutes=10))}
   with tempfile.TemporaryDirectory()as temp:
    target=pathlib.Path(temp)/"launches.json"
    target.write_text(json.dumps({"results":[go(cached_net,cached_end),done]}))
@@ -49,7 +50,14 @@ class Adapter(unittest.TestCase):
  def test_cli_previous_input_writes_merged_file(self):
   with tempfile.TemporaryDirectory()as temp:
    target=pathlib.Path(temp)/'launches.json'
-   r=subprocess.run(['python3',str(ROOT/'scripts/fetch-launches.py'),'--input',str(ROOT/'tests/fixtures/ll2-calendar-v23.json'),'--previous-input',str(ROOT/'tests/fixtures/ll2-previous-v23.json'),'--output',str(target)],capture_output=True)
+   prev=json.loads((ROOT/'tests/fixtures/ll2-previous-v23.json').read_text())
+   ago=(datetime.datetime.now(datetime.timezone.utc)-datetime.timedelta(days=20)).strftime('%Y-%m-%dT%H:%M:%SZ')
+   for item in prev.get('results') or []:
+    item['net']=ago
+    if item.get('window_start'):item['window_start']=ago
+    if item.get('window_end'):item['window_end']=(datetime.datetime.now(datetime.timezone.utc)-datetime.timedelta(days=20,minutes=-10)).strftime('%Y-%m-%dT%H:%M:%SZ')
+   prev_path=pathlib.Path(temp)/'previous.json';prev_path.write_text(json.dumps(prev))
+   r=subprocess.run(['python3',str(ROOT/'scripts/fetch-launches.py'),'--input',str(ROOT/'tests/fixtures/ll2-calendar-v23.json'),'--previous-input',str(prev_path),'--output',str(target)],capture_output=True)
    self.assertEqual(r.returncode,0,r.stderr)
    data=json.loads(target.read_text());ids={row['id'] for row in data['results']}
    self.assertIn('crew-13-fixture',ids);self.assertEqual(next(row['status']['abbrev'] for row in data['results'] if row['id']=='e2886a96-5ce9-4f45-872f-4e25a00be837'),'Success')

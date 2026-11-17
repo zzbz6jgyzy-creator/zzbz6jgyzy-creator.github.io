@@ -5,9 +5,9 @@ from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 from playwright.async_api import async_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=pathlib.Path(os.environ.get('CALENDAR_SCREENSHOTS','/tmp/calendar-studio'));OUT.mkdir(parents=True,exist_ok=True);DATA=json.loads((ROOT/'data/calendar-studio.json').read_text());KEY='sd-calendar-studio-v1'
-F15=json.loads((ROOT/'data/events.json').read_text())['events']['starship-flight-15']
-F15_DATE=F15['date']  # Flight 15 day from the editorial calendar; never hard-code it
-F15_LA_TIME=datetime.fromisoformat(F15['start']).astimezone(ZoneInfo('America/Los_Angeles')).strftime('%H:%M')
+F15=next(e for e in DATA['events'] if e.get('id') in ('starship-15','starship-flight-15','starship-f15') or 'flight 15' in (e.get('title') or '').lower())
+F15_DATE=F15['date']  # Flight 15 day from the shared calendar; never hard-code it
+F15_LA_TIME=datetime.fromisoformat(F15['start'].replace('Z','+00:00')).astimezone(ZoneInfo('America/Los_Angeles')).strftime('%H:%M')
 DONE={'done','ended','success','failure','failed','partial','partial failure','cancelled','canceled'}
 def search_token(event):
     hay=' '.join(str(event.get(k) or '') for k in ('title','note','where','category')).lower()
@@ -76,7 +76,8 @@ async def main():
    await page.locator('.cs-month-grid [data-date="'+F15_DATE+'"]').click()
    await expect(page.locator('.cs-day-panel')).to_contain_text('Starship Flight 15')
    panel=await page.locator('.cs-day-panel').inner_text()
-   assert 'In progress' in panel and 'source reported' in panel
+   assert 'Completed' in panel
+   assert 'In progress' not in panel
    assert 'Time unconfirmed' not in panel
    assert F15_LA_TIME in panel, (F15_LA_TIME, panel)
    assert not errors,errors;assert not any('ll.thespacedevs.com'in u for u in requests);await c.close()

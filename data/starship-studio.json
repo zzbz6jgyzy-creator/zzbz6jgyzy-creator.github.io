@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "updated": "2026-11-14",
- "reviewed": "2026-11-14",
+ "updated": "2026-11-17",
+ "reviewed": "2026-11-17",
  "phaseOrder": [
   "liftoff",
   "staging",
@@ -27,6 +27,121 @@
   "ship": "Ship recovery"
  },
  "flights": [
+  {
+   "number": 15,
+   "date": "2026-11-13",
+   "pad": "OLP-2",
+   "booster": "B22",
+   "ship": "S42",
+   "generation": "Block 3",
+   "outcome": "partial",
+   "title": "First ship catch, booster splashdown",
+   "summary": "Lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026, according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. At 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov, SpaceX said Mechazilla caught Starship at Starbase. Booster 22 was not caught. This is not a two-stage recovery.",
+   "objectives": [
+    "Catch Ship 42 on the Pad 2 tower — complete, per SpaceX at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov",
+    "Catch Super Heavy B22 — not achieved; SpaceX diverted the booster to the Gulf",
+    "Deploy 26 Starlink V3 satellites — complete, per SpaceX"
+   ],
+   "hardware": [
+    "Block 3",
+    "B22",
+    "S42",
+    "OLP-2",
+    "Raptor 3",
+    "26 Starlink V3",
+    "Ship caught"
+   ],
+   "notes": [
+    "Booster 22 automatically aborted the Pad 2 return because of a GNC issue, NASASpaceflight quoting Dan Huot. Ship 42 was caught at Starbase; the booster was not."
+   ],
+   "phases": [
+    {
+     "id": "liftoff",
+     "label": "Liftoff",
+     "result": "ok",
+     "note": "About 4:47 p.m. CT (22:47 UTC) from Pad 2, per Space.com's live coverage of SpaceX's webcast.",
+     "clock": "~T+0:00",
+     "clockKind": "approximate"
+    },
+    {
+     "id": "staging",
+     "label": "Hot-staging",
+     "result": "ok",
+     "note": "SpaceX: hot-staging. Starship's Raptors ignited; Super Heavy began boosting back.",
+     "clock": "~T+2:21",
+     "clockKind": "approximate"
+    },
+    {
+     "id": "boostback",
+     "label": "Boostback",
+     "result": "ok",
+     "note": "Boostback began. The catch was later called off.",
+     "clock": "",
+     "clockKind": "editorial"
+    },
+    {
+     "id": "booster",
+     "label": "Booster recovery",
+     "result": "fail",
+     "note": "SpaceX diverted Super Heavy to an offshore splashdown in the Gulf. NASASpaceflight, quoting Huot: automatic abort on a GNC issue.",
+     "clock": "~T+6:35",
+     "clockKind": "approximate"
+    },
+    {
+     "id": "ascent",
+     "label": "Ship ascent",
+     "result": "ok",
+     "note": "Ship 42 completed its ascent burn. SpaceX then went for orbit.",
+     "clock": "~T+8:09",
+     "clockKind": "approximate"
+    },
+    {
+     "id": "onorbit",
+     "label": "Orbit",
+     "result": "ok",
+     "note": "SpaceX: orbital insertion burn. Second Starship to reach orbit. ~275 km.",
+     "clock": "~T+26:10",
+     "clockKind": "approximate"
+    },
+    {
+     "id": "payload",
+     "label": "Payload",
+     "result": "ok",
+     "note": "SpaceX: all 26 Starlink V3 satellites in orbit.",
+     "clock": "~T+1:17:40",
+     "clockKind": "approximate"
+    },
+    {
+     "id": "relight",
+     "label": "In-space relight",
+     "result": "ok",
+     "note": "SpaceX at 3:25 p.m. ET (12:25 p.m. PT) on 14 Nov: good deorbit burn, on course for a Starbase catch.",
+     "clock": "~T+21:35",
+     "clockKind": "approximate"
+    },
+    {
+     "id": "reentry",
+     "label": "Reentry",
+     "result": "ok",
+     "note": "SpaceX at 3:58 p.m. ET (12:58 p.m. PT): Starship is reentering Earth’s atmosphere.",
+     "clock": "~T+22:10",
+     "clockKind": "approximate"
+    },
+    {
+     "id": "ship",
+     "label": "Ship recovery",
+     "result": "ok",
+     "note": "SpaceX at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov: Mechazilla catches Starship. First ship return-to-launch-site catch. Booster 22 was not caught.",
+     "clock": "~T+22:32",
+     "clockKind": "approximate"
+    }
+   ],
+   "source": "https://www.spacex.com/launches/starship-flight-15",
+   "sourceType": "editorial",
+   "video": null,
+   "clips": [],
+   "boosterCaught": false
+  },
   {
    "number": 14,
    "date": "2026-09-28",
@@ -1681,34 +1796,26 @@
   }
  ],
  "next": {
-  "number": 15,
-  "referenceDate": "2026-11-13",
-  "precision": "day",
-  "windowOpen": "2026-11-13T16:45:00-06:00",
-  "windowClose": "2026-11-13T18:00:00-06:00",
+  "number": 16,
+  "referenceDate": "",
+  "precision": "none",
+  "windowOpen": null,
+  "windowClose": null,
   "officialTime": null,
   "officialSource": null,
   "confirmed": false,
-  "inFlight": true,
-  "title": "Caught at Starbase · booster splashdown",
-  "booster": "B22",
-  "ship": "S42",
-  "pad": "Starbase · OLP-2",
-  "generation": "Block 3",
-  "summary": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026, according to Space.com's live coverage of SpaceX's webcast. Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit — the second Starship to do so — and deployed all 26 Starlink V3 satellites. At 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov, SpaceX said Mechazilla caught Starship at Starbase. Booster 22 was not caught. This is not a two-stage recovery.",
-  "objectives": [
-   "Catch Ship 42 on the Pad 2 tower — complete, per SpaceX at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov",
-   "Super Heavy B22 catch — not achieved; SpaceX diverted the booster to the Gulf",
-   "Deploy 26 Starlink V3 satellites — complete, per SpaceX"
-  ],
+  "inFlight": false,
+  "title": "Date not announced",
+  "booster": "",
+  "ship": "",
+  "pad": "",
+  "generation": "",
+  "summary": "SpaceX has not announced a date, window or vehicles for Flight 16 (checked 17 Nov 2026). Unofficial FAA CADENA air-traffic planning slides in October listed a no-earlier-than date of 10 Dec 2026 from Kennedy LC-39A; NASASpaceflight has also discussed a later window. Those figures are planning or reporting, not a SpaceX announcement.",
+  "objectives": [],
   "coverage": [
    {
     "label": "Flight 15 recap",
     "url": "/dispatch/starship-flight-15-full-recap.html"
-   },
-   {
-    "label": "Flight 15 ship catch",
-    "url": "/dispatch/starship-f15-orbit-catch-day.html"
    },
    {
     "label": "Flight 15 hub",
@@ -1719,12 +1826,8 @@
     "url": "/ship-42.html"
    },
    {
-    "label": "SpaceX Flight 15",
-    "url": "https://www.spacex.com/launches/starship-flight-15"
-   },
-   {
-    "label": "Minute-by-minute",
-    "url": "https://x.com/AlJR86/status/2120923262133678326"
+    "label": "Starship tracker",
+    "url": "/starship.html"
    },
    {
     "label": "SpaceX launches",
@@ -1735,199 +1838,11 @@
     "url": "https://x.com/SpaceX"
    },
    {
-    "label": "SpaceX on YouTube",
-    "url": "https://www.youtube.com/@SpaceX"
-   },
-   {
-    "label": "NASASpaceflight",
-    "url": "https://www.nasaspaceflight.com/"
-   },
-   {
     "label": "Calendar",
     "url": "/calendar.html"
-   },
-   {
-    "label": "Q3 call dates, checked",
-    "url": "/dispatch/starship-flight-15-catch-timeline.html"
    }
   ]
  },
- "schedule": [
-  {
-   "date": "2026-11-14",
-   "text": "SpaceX: Mechazilla catches Starship! Congratulations to the entire SpaceX team on this incredible achievement! First ship return-to-launch-site catch at Starbase, 4:21 p.m. ET (1:21 p.m. PT). Booster 22 was not caught (Gulf splashdown, 13 Nov).",
-   "url": "https://x.com/SpaceX/status/2121715216597827756",
-   "outlet": "SpaceX on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-14",
-   "text": "SpaceX: Starship and its heatshield are healthy nearly seven hours after launch. Teams are still monitoring systems ahead of a planned return-to-launch-site catch at Starbase about 22.5 hours after launch.",
-   "url": "https://x.com/SpaceX/status/2121479482582441991",
-   "outlet": "SpaceX on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-14",
-   "text": "SpaceX: payload deploy complete. All 26 Starlink V3 satellites are in orbit.",
-   "url": "https://x.com/SpaceX/status/2121394268652839309",
-   "outlet": "SpaceX on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-13",
-   "text": "SpaceX: Starship performed its orbital insertion burn and entered orbit of Earth for the second time.",
-   "url": "https://x.com/SpaceX/status/2121381593768186362",
-   "outlet": "SpaceX on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-13",
-   "text": "SpaceX: Super Heavy diverted to an offshore splashdown in the Gulf.",
-   "url": "https://x.com/SpaceX/status/2121376372576915909",
-   "outlet": "SpaceX on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-13",
-   "text": "SpaceX: liftoff of Starship Flight 15. Space.com's live coverage of the webcast put T-0 at about 4:47 p.m. CT (22:47 UTC).",
-   "url": "https://x.com/SpaceX/status/2121374779680964991",
-   "outlet": "SpaceX on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-13",
-   "text": "Re-checked SpaceX’s Flight 15 mission page on 13 Nov 2026: the window is still as soon as Friday 13 November from Pad 2, opening 4:45 p.m. CT, pending regulatory approval. Ship 42 moved to the pad ahead of launch (SpaceX, 13 Nov 00:56 UTC). Dual catch, 26 Starlink V3, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published. This is a re-check, not a new T-0.",
-   "url": "https://www.spacex.com/launches/starship-flight-15",
-   "outlet": "SpaceX · Starship Flight 15",
-   "kind": "primary"
-  },
-  {
-   "date": "2026-11-13",
-   "text": "SpaceX: Ship 42 moved to the Starbase pad ahead of launch.",
-   "url": "https://x.com/SpaceX/status/2121044579470233638",
-   "outlet": "SpaceX on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-12",
-   "text": "Alex R posted a minute-by-minute Flight 15 animation on X, using SpaceX’s published timeline. If the window opens on time, the Ship catch is Saturday afternoon, about 22 and a half hours after Friday lift-off.",
-   "url": "https://x.com/AlJR86/status/2120923262133678326",
-   "outlet": "Alex R on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-10",
-   "text": "Re-checked SpaceX’s Flight 15 mission page on 10 Nov 2026: the window is still as soon as Friday 13 November from Pad 2, opening 4:45 p.m. CT, pending regulatory approval. Dual catch, 26 Starlink V3, more than 22 hours. No FAA licence is published. This is a re-check, not a new date.",
-   "url": "https://www.spacex.com/launches/starship-flight-15",
-   "outlet": "SpaceX · Starship Flight 15",
-   "kind": "primary"
-  },
-  {
-   "date": "2026-11-08",
-   "text": "SpaceX published the Flight 15 mission page: as soon as Friday 13 November from Pad 2, pending regulatory approval. The 75-minute window opens at 4:45 p.m. CT. Planned dual catch (first Super Heavy V3 catch and first Ship return-to-launch-site), 26 Starlink V3, ~275 km, about 14 orbits, more than 22 hours. Webcast about 30 minutes before liftoff. No FAA licence is published.",
-   "url": "https://www.spacex.com/launches/starship-flight-15",
-   "outlet": "SpaceX · Starship Flight 15",
-   "kind": "primary"
-  },
-  {
-   "date": "2026-11-07",
-   "text": "SpaceX’s 7 Nov update, “Returning Starship to the Launch Site”, says Flight 15 will attempt the first Ship catch at Starbase. After a passively safe suborbital ascent, teams go or no-go for orbit, deploy Starlink V3 (including three heatshield-camera satellites), then coast about 21 hours. Controllers will only commit to a Starbase catch if internally developed, FAA-approved return conditions are met.",
-   "url": "https://www.spacex.com/updates",
-   "outlet": "SpaceX Updates (7 Nov 2026)",
-   "kind": "primary"
-  },
-  {
-   "date": "2026-11-05",
-   "text": "Eric Berger reported on X that SpaceX vice president of launch Kiko Dontchev said at the UP.Summit that the company is targeting Friday 13 Nov for Starship Flight 15. This is a stated target, relayed by TeslaNorth; we have not opened Berger’s post ourselves. It is not a launch time, and there is still no FAA Flight 15 licence and no official SpaceX mission page.",
-   "url": "https://teslanorth.com/2026/11/05/starship-flight-15-nov-13/",
-   "outlet": "TeslaNorth, citing Eric Berger on X (5 Nov 2026)",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-11-05",
-   "text": "Community trackers report that the FAA’s CADENA/COMPASS air-traffic planning slide dated 5 Nov 2026 lists Starship Flight 15 on 13 Nov, one day later than the 12 Nov on the 29 Oct slides. We have not opened the slide ourselves. Still no FAA Flight 15 licence and no SpaceX date.",
-   "url": "https://starship-spacex.fandom.com/wiki/Starship_Flight_15",
-   "outlet": "Starship Flight 15 wiki, citing the FAA CADENA/COMPASS slide of 5 Nov 2026",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-29",
-   "text": "The FAA’s CADENA air-traffic planning deck dated 29 Oct 2026 lists Starship Flight 15 on 12 Nov, four days later than the NET 8 Nov on earlier slides. Starship Starlink 30-1 stays on 10 Dec. Still no FAA Flight 15 licence and no SpaceX date.",
-   "url": "https://x.com/SpaceNotices/status/2115815059381469690",
-   "outlet": "FAA CADENA planning deck (via SpaceNotices)",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-27",
-   "text": "SpaceX confirmed on 28 Oct 2026 (12:10pm ET, 9:10am PT) that Ship 42’s static fires are complete: the Flight 15 Starship performed a full-duration, six-engine static fire and fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight and Next Spaceflight put the six-engine fire, roughly 60 seconds long, at Massey’s on 27 Oct 2026, about 5:46pm ET (2:46pm PT). Both Flight 15 vehicles have now static-fired. Still no FAA Flight 15 licence and no SpaceX date (NET 8 Nov remains an FAA planning marker).",
-   "url": "https://x.com/SpaceX/status/2115476295169814978",
-   "outlet": "SpaceX on X (timing per NASASpaceflight and Next Spaceflight)",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-26",
-   "text": "SpaceX confirmed on 28 Oct 2026 that Ship 42 fired a single Raptor engine to simulate a deorbit burn. NASASpaceflight’s live coverage and Next Spaceflight’s test log put that single-engine static fire at Massey’s on 26 Oct 2026 at about 10:17pm ET (7:17pm PT). Still no SpaceX launch date or mission page.",
-   "url": "https://x.com/SpaceX/status/2115476295169814978",
-   "outlet": "SpaceX on X (timing per NASASpaceflight and Next Spaceflight)",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-25",
-   "text": "SpaceX confirmed a full-duration 33-engine static fire of the Super Heavy booster for Flight 15 (Booster 22, on Pad 2, at 8:22am CDT per Spaceflight Now). SpaceX hasn’t announced a Ship 42 static fire, a launch date or a mission page.",
-   "url": "https://x.com/SpaceX/status/2114444137067844004",
-   "outlet": "SpaceX on X",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-23",
-   "text": "At NASA’s Artemis update, Artemis program manager Jeremy Parsons said Flight 15 is expected in November and will fly Raptor engine improvements, and that the first Starship flight from Florida is expected “in the coming months”. Still no SpaceX mission page or launch time.",
-   "url": "https://x.com/SpaceflightNow/status/2113706070581670222",
-   "outlet": "Spaceflight Now live coverage of NASA’s 23 Oct briefing",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-20",
-   "text": "On SpaceX’s Q3 earnings call, Elon Musk said SpaceX expects Flight 15 “to happen next month” and will try to catch both the booster and the ship. He called success “more likely than not”. Still no SpaceX mission page or launch time.",
-   "url": "https://www.fool.com/earnings/call-transcripts/2026/10/20/spacex-spcx-q3-2026-earnings-call-transcript/",
-   "outlet": "SpaceX Q3 2026 earnings call (Motley Fool transcript)",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-10",
-   "text": "Estimate: at the X Takeover event on 10 Oct 2026, Elon Musk said Flight 15 was about 4 to 6 weeks away (7 to 21 Nov counted from that day) and guessed a launch a little before US Thanksgiving on 26 Nov. He said Flight 15 will try the first ship catch, and that he did not know the exact date. SpaceX has not published a mission page.",
-   "url": "/dispatch/starship-f15-ship-catch.html",
-   "outlet": "Supercharged Daily dispatch",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-09",
-   "text": "NASASpaceflight: Ship 42 rolled back to Massey’s for a third cryo-proof campaign after its six Raptors came off; engines and a static fire still to come. Booster 22 is in Mega Bay 1 and could be ready for static fire in the second half of October. NSF says NET 8 November looks achievable on vehicle readiness.",
-   "url": "https://www.nasaspaceflight.com/",
-   "outlet": "NASASpaceflight",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-10-08",
-   "text": "FAA CADENA planning slides moved Flight 15 from 19 October to NET 8 November. NASASpaceflight reported Ship 42’s Raptors off the vehicle. SpaceX has not published a mission page.",
-   "url": null,
-   "outlet": "FAA CADENA planning slides",
-   "kind": "unverified"
-  },
-  {
-   "date": "2026-09-28",
-   "text": "After Flight 14 reached orbit, the working window was still 19 October. First serious Ship catch became the Flight 15 story. Still unofficial.",
-   "url": "/starship.html#log",
-   "outlet": "Our analysis after Flight 14",
-   "kind": "reported"
-  },
-  {
-   "date": "2026-09-11",
-   "text": "Ship 42 ran catch-related tests on Pad 2. Hardware work is the only SpaceX-visible schedule signal.",
-   "url": null,
-   "outlet": "Hardware work visible at Pad 2",
-   "kind": "unverified"
-  }
- ],
+ "schedule": [],
  "note": "Independent editorial flight records, not SpaceX telemetry. Phase outcomes are descriptive and the overall labels are our assessment. Flight 15: Ship 42 caught at Starbase; Booster 22 Gulf splashdown."
 }

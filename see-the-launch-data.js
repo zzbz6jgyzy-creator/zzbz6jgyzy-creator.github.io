@@ -41,10 +41,10 @@ window.SEE_LAUNCH = {
       pad: "sb2",
       vehicle: "starship",
       orbit: "leo",
-      status: "in-flight",
+      status: "done",
       precision: "datetime",
       href: "https://www.spacex.com/launches/starship-flight-15",
-      note: "Lifted off about 4:47 p.m. CT on 13 Nov. Super Heavy diverted to the Gulf. Ship 42 is in orbit; a Starbase catch is still planned Saturday if systems stay healthy.",
+      note: "Flown 13–14 Nov. Lifted off about 4:47 p.m. CT on 13 Nov. Super Heavy diverted to the Gulf. Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and was caught at Starbase at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov. Booster 22 was not caught.",
     },
     {
       id: "ll-bandwagon-5",

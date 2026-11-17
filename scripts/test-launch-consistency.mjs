@@ -48,16 +48,16 @@ const patchedBand = patched.find((e) => e.id === "f9-bandwagon5");
 if (patchedBand && Date.parse(patchedBand.start) === Date.parse(band.start)) ok("shared start overlay");
 else bad("shared start overlay", patchedBand && patchedBand.start);
 
-if (/start: "2026-11-13T16:45:00-06:00"/.test(ship) && /precision: "day"/.test(ship)) ok("starship F15 day NET");
-else bad("starship F15 day NET", "clock still drifted");
+if (/flight: 16/.test(ship) && /inFlight: false/.test(ship) && /start: null/.test(ship)) ok("starship next is F16 unannounced");
+else bad("starship next is F16 unannounced", "Flight 16 should be next with no fabricated NET");
 
 const f15live = (live.events || []).find((e) => e.id === "starship-flight-15");
-if (f15live && f15live.status === "live" && f15live.start === "2026-11-13T16:45:00-06:00") ok("live-data F15 in flight");
-else bad("live-data F15 in flight", f15live && JSON.stringify({ status: f15live.status, start: f15live.start }));
+if (f15live && f15live.status === "ended" && f15live.start === "2026-11-13T16:45:00-06:00") ok("live-data F15 flown");
+else bad("live-data F15 flown", f15live && JSON.stringify({ status: f15live.status, start: f15live.start }));
 
 const f15ev = events.events["starship-flight-15"];
-if (f15ev && f15ev.status === "in-flight" && f15ev.start === "2026-11-13T16:45:00-06:00") ok("events F15 in flight");
-else bad("events F15 in flight", f15ev && JSON.stringify({ status: f15ev.status, start: f15ev.start }));
+if (f15ev && f15ev.status === "ended" && f15ev.start === "2026-11-13T16:45:00-06:00") ok("events F15 flown");
+else bad("events F15 flown", f15ev && JSON.stringify({ status: f15ev.status, start: f15ev.start }));
 
 const f15see = /id: "starship-f15"[\s\S]{0,80}start: "2026-11-13T16:45:00-06:00"/.test(see);
 const f15cal = /id: "starship-f15"[\s\S]{0,80}start: "2026-11-13T16:45:00-06:00"/.test(cal);

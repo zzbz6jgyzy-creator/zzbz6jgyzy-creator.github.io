@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "editorial": {
     "schemaVersion": 1,
-    "updated": "2026-11-12",
-    "revision": "2026-11-12.1",
+    "updated": "2026-11-17",
+    "revision": "2026-11-17.1",
     "scope": "Tesla Cybercab and Model Y Robotaxi",
     "sources": [
       {
@@ -221,6 +221,38 @@
         "type": "manufacturer",
         "checkedAt": "2026-11-12",
         "publishedAt": "2026-11-11"
+      },
+      {
+        "id": "s-6a7242664e86",
+        "url": "https://x.com/robotaxi/status/2122234442328740005",
+        "label": "Tesla Robotaxi on X: Now serving more of Miami",
+        "type": "manufacturer",
+        "publishedAt": "2026-11-16",
+        "checkedAt": "2026-11-17"
+      },
+      {
+        "id": "s-75adcac5a364",
+        "url": "https://x.com/scotsrule08/status/2122245422303322489",
+        "label": "@scotsrule08 on X: Miami zone 30.9 to 59.4 sq mi after expansion",
+        "type": "tracker",
+        "publishedAt": "2026-11-16",
+        "checkedAt": "2026-11-17"
+      },
+      {
+        "id": "s-d8f15611ffad",
+        "url": "https://x.com/RobotaxiRadar/status/2122293748105126141",
+        "label": "Robotaxi Radar on X: Miami zone about 31 to 59 sq mi",
+        "type": "tracker",
+        "publishedAt": "2026-11-16",
+        "checkedAt": "2026-11-17"
+      },
+      {
+        "id": "s-80bc2d308a86",
+        "url": "https://x.com/AVwhere/status/2122336387617955972",
+        "label": "AVwhere on X: Miami zone about 31 to 60 sq mi",
+        "type": "tracker",
+        "publishedAt": "2026-11-16",
+        "checkedAt": "2026-11-17"
       }
     ],
     "cities": [
@@ -1237,6 +1269,23 @@
           "san_antonio",
           "tampa"
         ]
+      },
+      {
+        "id": "miami-geofence-16nov",
+        "date": "2026-11-16",
+        "precision": "day",
+        "city": "miami",
+        "vehicle": "not_city_specific",
+        "kind": "service",
+        "title": "Tesla posts a bigger Miami service area",
+        "summary": "Tesla’s official @robotaxi account posted “Now serving more of Miami” at 07:44 UTC on 16 Nov 2026 with an old/new geofence map. Tesla gave no square-mileage. Independent trackers measured the expanded zone the same day: @scotsrule08 30.9 to 59.4 sq mi, Robotaxi Radar about 31 to 59, AVwhere about 31 to 60, and EVwire about 26 to 50. The lead figure of about 59 sq mi is a tracker estimate, not a Tesla number. The app remains the check for whether any given road is bookable.",
+        "evidence": [
+          "s-6a7242664e86",
+          "s-75adcac5a364",
+          "s-d8f15611ffad",
+          "s-80bc2d308a86"
+        ],
+        "type": "manufacturer"
       }
     ],
     "companyClaims": [
@@ -1295,7 +1344,7 @@
     ]
   },
   "registry": {
-    "checked": "2026-11-17T00:58:36Z",
+    "checked": "2026-11-17T08:45:22Z",
     "source": {
       "name": "Texas Robotaxi Database (FSD Database, mirrors TxDMV)",
       "url": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
@@ -2052,6 +2101,14 @@
       },
       {
         "at": "2026-11-17T00:58:36Z",
+        "date": "2026-11-17",
+        "cybercab": 573,
+        "modelY": 733,
+        "other": 0,
+        "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc"
+      },
+      {
+        "at": "2026-11-17T08:45:22Z",
         "date": "2026-11-17",
         "cybercab": 573,
         "modelY": 733,
@@ -3456,7 +3513,9 @@
             "from": 272,
             "kind": "expanded",
             "src": "https://x.com/robotaxitracker/status/2119708695781142695",
-            "note": "Tesla posted a bigger Austin service area but gave no square-mileage (https://x.com/robotaxi/status/2119746828191027346). Robotaxi Tracker measured about 442 sq mi, up from 272. RoboTracker lists 435 from 272 (https://robotracker.app/updates?city_id=1&operator_id=1). Neither is a Tesla figure. The retained GitHub app-derived outline is still 264.1 mi²."
+            "note": "Tesla posted a bigger Austin service area but gave no square-mileage (https://x.com/robotaxi/status/2119746828191027346). Robotaxi Tracker measured about 442 sq mi, up from 272. RoboTracker lists 435 from 272 (https://robotracker.app/updates?city_id=1&operator_id=1). Neither is a Tesla figure. The retained GitHub app-derived outline is still 264.1 mi².",
+            "officialSrc": "https://x.com/robotaxi/status/2119746828191027346",
+            "dispatch": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html"
           }
         ],
         "status": "active",
@@ -3526,13 +3585,23 @@
       },
       "miami": {
         "name": "Miami, FL",
-        "lastExpanded": null,
+        "lastExpanded": "2026-11-16",
         "log": [
           {
             "date": "2026-07-03",
             "areaSqMi": 30,
             "kind": "launched",
             "src": "https://robotracker.app/updates"
+          },
+          {
+            "date": "2026-11-16",
+            "areaSqMi": 59,
+            "from": 30,
+            "kind": "expanded",
+            "src": "https://x.com/scotsrule08/status/2122245422303322489",
+            "officialSrc": "https://x.com/robotaxi/status/2122234442328740005",
+            "dispatch": "/dispatch/robotaxi-miami-expansion.html",
+            "note": "Tesla’s official @robotaxi account posted “Now serving more of Miami” on 16 Nov 2026 but gave no square-mileage. Independent trackers of Tesla’s map measured about 59 sq mi (up from about 31): @scotsrule08 30.9 to 59.4, Robotaxi Radar about 31 to 59, AVwhere about 31 to 60. EVwire read it smaller, about 26 to 50. None of these figures is a Tesla number. The retained GitHub app-derived outline is still 30.8 mi²."
           }
         ],
         "status": "ramping",
@@ -3572,7 +3641,7 @@
         "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
       }
     },
-    "checked": "2026-11-17T00:58:36Z"
+    "checked": "2026-11-17"
   },
   "checks": {
     "schemaVersion": 1,

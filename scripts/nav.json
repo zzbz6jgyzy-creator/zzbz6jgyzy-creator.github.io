@@ -2,8 +2,8 @@
   "top": [],
   "mobileShortcuts": [
     [
-      "Flight 15",
-      "/starship-flight-15.html"
+      "Starship flights",
+      "/starship.html"
     ],
     [
       "Software updates",
@@ -189,21 +189,21 @@
           "label": "Missions & orbit",
           "items": [
             [
+              "Starship flights",
+              "/starship.html",
+              "Flight history and the next mission",
+              "rocket"
+            ],
+            [
               "Starship Flight 15",
               "/starship-flight-15.html",
-              "Countdown, double catch and where to watch",
+              "Recap: first ship catch, booster splashdown",
               "rocket"
             ],
             [
               "Ship 42",
               "/ship-42.html",
-              "Minute-by-minute and the first Ship catch",
-              "rocket"
-            ],
-            [
-              "Starship flights",
-              "/starship.html",
-              "Flights, vehicles and the next milestones",
+              "The ship that made the first catch",
               "rocket"
             ],
             [
@@ -245,10 +245,10 @@
         }
       ],
       "feature": {
-        "title": "Flight 15 is on the pad.",
-        "text": "Countdown, the double-catch plan, Ship 42 and the minute-by-minute.",
-        "label": "Open Flight 15",
-        "href": "/starship-flight-15.html",
+        "title": "Flight 15 is complete.",
+        "text": "The first Starship catch at Starbase, a booster splashdown in the Gulf, and Flight 16 still unannounced.",
+        "label": "Open the Starship tracker",
+        "href": "/starship.html",
         "art": "rocket"
       }
     },
@@ -296,21 +296,21 @@
           "label": "Space & launches",
           "items": [
             [
+              "Starship flights",
+              "/starship.html",
+              "Flight history and the next mission",
+              "rocket"
+            ],
+            [
               "Starship Flight 15",
               "/starship-flight-15.html",
-              "Countdown and the double-catch plan",
+              "Recap: first ship catch, booster splashdown",
               "rocket"
             ],
             [
               "Ship 42",
               "/ship-42.html",
-              "Minute-by-minute and the first Ship catch",
-              "rocket"
-            ],
-            [
-              "Starship flights",
-              "/starship.html",
-              "Flight history and upcoming milestones",
+              "The ship that made the first catch",
               "rocket"
             ],
             [
