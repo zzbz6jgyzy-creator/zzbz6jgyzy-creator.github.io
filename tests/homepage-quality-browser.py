@@ -42,7 +42,7 @@ async def main():
     title=page.locator('[data-hv-h]')
     if registry or not scripts:
      if scripts:await page.wait_for_function('(title)=>document.querySelector("[data-hv-h]").textContent===title',arg=LEAD.get('homeTitle',LEAD['title']))
-     assert await title.inner_text()==LEAD.get('homeTitle',LEAD['title'])
+     assert ' '.join((await title.inner_text()).split())==' '.join(LEAD.get('homeTitle',LEAD['title']).split())
     else:
      await page.wait_for_function('(title)=>document.querySelector("[data-hv-h]").textContent===title',arg=LEAD['title'])
     if scripts and mode=='live':

@@ -6,7 +6,25 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 16 Nov 2026 16:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 09:56:00 +0000</lastBuildDate>
+    <item>
+      <title>Tesla's €3 billion Berlin hall is sized for 1 million Cybercabs a year. EU rules allow 1,500</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-giga-berlin-cybercab-factory.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-giga-berlin-cybercab-factory.html</guid>
+      <pubDate>Tue, 17 Nov 2026 09:56:00 +0000</pubDate>
+      <category>Tesla / Cybercab</category>
+      <description>Tesla plans a new Cybercab building at Giga Berlin: about €3 billion, construction from early 2027, production in 2029, room for up to 1 million a year. It's a plan, and the EU still caps driverless cars at 1,500 per type a year.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/giga-berlin-aerial-2023.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>SpaceX is now Nvidia's biggest stock holding, and Nvidia was still buying</title>
+      <link>https://superchargeddaily.com/dispatch/nvidia-13f-spacex-top-holding.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/nvidia-13f-spacex-top-holding.html</guid>
+      <pubDate>Tue, 17 Nov 2026 09:56:00 +0000</pubDate>
+      <category>SpaceX / AI</category>
+      <description>Nvidia's 13F for the quarter to 30 Sep shows 130.5 million SpaceX shares worth $19.7 billion, 40.7% of its stock portfolio and now ahead of Intel. Nvidia added 7.7 million SpaceX shares while cutting Intel by a quarter.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/nvidia-hq-santa-clara-2018.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tesla nearly doubles its Miami Robotaxi zone, but Waymo still covers 2.5 times as much ground</title>
       <link>https://superchargeddaily.com/dispatch/robotaxi-miami-expansion.html</link>
@@ -710,22 +728,12 @@
       <enclosure url="https://superchargeddaily.com/assets/dispatch/spacex-hq-hawthorne.jpg" type="image/jpeg" />
     </item>
     <item>
-      <title>Trump says Musk “put it back.” Ukraine’s drone pilots say their tests show the Starshield speed cap is still there</title>
-      <link>https://superchargeddaily.com/dispatch/starshield-cap-still-on.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starshield-cap-still-on.html</guid>
-      <pubDate>Fri, 23 Oct 2026 19:31:07 +0000</pubDate>
-      <category>Starlink</category>
-      <description>Trump said Musk had restored Ukraine’s service. Ukraine’s drone pilots and Zelenskyy say the cap is still in place. What was claimed, what was tested and what’s unanswered.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-antenna-ukraine.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>SpaceX wants at least 80,000 US cell sites for Starlink Mobile. That’s about half of America’s cell towers</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-mobile-80000-towers.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-mobile-80000-towers.html</guid>
-      <pubDate>Fri, 23 Oct 2026 13:36:27 +0000</pubDate>
-      <category>Starlink</category>
-      <description>Bloomberg says SpaceX is in talks for at least 80,000 US cell sites, including with Crown Castle. What’s signed, what’s only talks, and the numbers behind it.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/cell-tower-jefferson-wi.jpg" type="image/jpeg" />
+      <title>Tracker: Newest reporting build</title>
+      <link>https://superchargeddaily.com/updates.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/updates.html#changed-tesla-software:newest-reporting-2026-11-17T09:18:46.000Z-2026.44.1</guid>
+      <pubDate>Tue, 17 Nov 2026 09:18:46 +0000</pubDate>
+      <category>software</category>
+      <description>Newest reporting build changed from 2026.38.5.13 to 2026.44.1.</description>
     </item>
     <item>
       <title>Tracker: 2026.44.1</title>
