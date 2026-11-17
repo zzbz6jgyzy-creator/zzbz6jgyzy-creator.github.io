@@ -1,191 +1,191 @@
 {
-  "note": "Pre-Oct-2026 entries from robotracker.app/updates; later entries detected by scripts/build-robotaxi-cities.py.",
-  "cities": {
-    "austin": {
-      "name": "Austin, TX",
-      "lastExpanded": "2026-11-09",
-      "log": [
-        {
-          "date": "2025-06-22",
-          "areaSqMi": 19,
-          "kind": "launched",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2025-07-14",
-          "areaSqMi": 42,
-          "from": 19,
-          "kind": "expanded",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2025-08-03",
-          "areaSqMi": 90,
-          "from": 42,
-          "kind": "expanded",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2025-08-26",
-          "areaSqMi": 169,
-          "from": 90,
-          "kind": "expanded",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2025-10-28",
-          "areaSqMi": 243,
-          "from": 169,
-          "kind": "expanded",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2026-08-31",
-          "areaSqMi": 264,
-          "from": 243,
-          "kind": "expanded",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2026-10-23",
-          "areaSqMi": 272,
-          "from": 264,
-          "kind": "expanded",
-          "src": "https://robotracker.app/updates?city_id=1&operator_id=1"
-        },
-        {
-          "date": "2026-11-09",
-          "areaSqMi": 442,
-          "from": 272,
-          "kind": "expanded",
-          "src": "https://x.com/robotaxitracker/status/2119708695781142695",
-          "note": "Tesla posted a bigger Austin service area but gave no square-mileage (https://x.com/robotaxi/status/2119746828191027346). Robotaxi Tracker measured about 442 sq mi, up from 272. RoboTracker lists 435 from 272 (https://robotracker.app/updates?city_id=1&operator_id=1). Neither is a Tesla figure. The retained GitHub app-derived outline is still 264.1 mi².",
-          "officialSrc": "https://x.com/robotaxi/status/2119746828191027346",
-          "dispatch": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html"
-        }
-      ],
-      "status": "active",
-      "statusLabel": "Public rides",
-      "statusSrc": "https://robotracker.app/updates"
+ "note": "Pre-Oct-2026 entries from robotracker.app/updates; later entries detected by scripts/build-robotaxi-cities.py.",
+ "cities": {
+  "austin": {
+   "name": "Austin, TX",
+   "lastExpanded": "2026-11-09",
+   "log": [
+    {
+     "date": "2025-06-22",
+     "areaSqMi": 19,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
     },
-    "bay_area": {
-      "name": "Bay Area, CA",
-      "lastExpanded": null,
-      "log": [
-        {
-          "date": "2025-08-31",
-          "areaSqMi": 834,
-          "kind": "launched",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2026-04-20",
-          "areaSqMi": 1094,
-          "from": 834,
-          "kind": "expanded",
-          "dateApprox": true,
-          "note": "First seen at this size in robotaxi-service-areas on 20 Apr 2026. Exact expansion date not published.",
-          "src": "https://github.com/EthanMcKanna/robotaxi-service-areas/commit/9c5480d"
-        }
-      ],
-      "status": "supervised",
-      "statusLabel": "Safety driver",
-      "statusSrc": "https://gizmodo.com/california-regulator-says-teslas-robotaxis-are-more-like-a-limo-in-the-eyes-of-the-law-2000738512"
+    {
+     "date": "2025-07-14",
+     "areaSqMi": 42,
+     "from": 19,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
     },
-    "dallas": {
-      "name": "Dallas, TX",
-      "lastExpanded": "2026-08-29",
-      "log": [
-        {
-          "date": "2026-04-18",
-          "areaSqMi": 31,
-          "kind": "launched",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2026-08-29",
-          "areaSqMi": 81,
-          "from": 31,
-          "kind": "expanded",
-          "src": "https://robotracker.app/updates"
-        }
-      ],
-      "status": "ramping",
-      "statusLabel": "Ramping unsupervised",
-      "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+    {
+     "date": "2025-08-03",
+     "areaSqMi": 90,
+     "from": 42,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
     },
-    "houston": {
-      "name": "Houston, TX",
-      "lastExpanded": null,
-      "log": [
-        {
-          "date": "2026-04-18",
-          "areaSqMi": 25,
-          "kind": "launched",
-          "src": "https://robotracker.app/updates"
-        }
-      ],
-      "status": "ramping",
-      "statusLabel": "Ramping unsupervised",
-      "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+    {
+     "date": "2025-08-26",
+     "areaSqMi": 169,
+     "from": 90,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
     },
-    "miami": {
-      "name": "Miami, FL",
-      "lastExpanded": "2026-11-16",
-      "log": [
-        {
-          "date": "2026-07-03",
-          "areaSqMi": 30,
-          "kind": "launched",
-          "src": "https://robotracker.app/updates"
-        },
-        {
-          "date": "2026-11-16",
-          "areaSqMi": 59,
-          "from": 30,
-          "kind": "expanded",
-          "src": "https://x.com/scotsrule08/status/2122245422303322489",
-          "officialSrc": "https://x.com/robotaxi/status/2122234442328740005",
-          "dispatch": "/dispatch/robotaxi-miami-expansion.html",
-          "note": "Tesla’s official @robotaxi account posted “Now serving more of Miami” on 16 Nov 2026 but gave no square-mileage. Independent trackers of Tesla’s map measured about 59 sq mi (up from about 31): @scotsrule08 30.9 to 59.4, Robotaxi Radar about 31 to 59, AVwhere about 31 to 60. EVwire read it smaller, about 26 to 50. None of these figures is a Tesla number. The retained GitHub app-derived outline is still 30.8 mi²."
-        }
-      ],
-      "status": "ramping",
-      "statusLabel": "Ramping unsupervised",
-      "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+    {
+     "date": "2025-10-28",
+     "areaSqMi": 243,
+     "from": 169,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
     },
-    "orlando": {
-      "name": "Orlando, FL",
-      "lastExpanded": null,
-      "log": [
-        {
-          "date": "2026-07-22",
-          "dateApprox": true,
-          "areaSqMi": 26,
-          "kind": "launched",
-          "src": "https://robotracker.app/updates"
-        }
-      ],
-      "status": "ramping",
-      "statusLabel": "Ramping unsupervised",
-      "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+    {
+     "date": "2026-08-31",
+     "areaSqMi": 264,
+     "from": 243,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
     },
-    "tampa": {
-      "name": "Tampa, FL",
-      "lastExpanded": null,
-      "log": [
-        {
-          "date": "2026-07-22",
-          "dateApprox": true,
-          "areaSqMi": 24,
-          "kind": "launched",
-          "src": "https://robotracker.app/updates"
-        }
-      ],
-      "status": "ramping",
-      "statusLabel": "Ramping unsupervised",
-      "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+    {
+     "date": "2026-10-23",
+     "areaSqMi": 272,
+     "from": 264,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates?city_id=1&operator_id=1"
+    },
+    {
+     "date": "2026-11-09",
+     "areaSqMi": 442,
+     "from": 272,
+     "kind": "expanded",
+     "src": "https://x.com/robotaxitracker/status/2119708695781142695",
+     "note": "Tesla posted a bigger Austin service area but gave no square-mileage (https://x.com/robotaxi/status/2119746828191027346). Robotaxi Tracker measured about 442 sq mi, up from 272. RoboTracker lists 435 from 272 (https://robotracker.app/updates?city_id=1&operator_id=1). Neither is a Tesla figure. The retained GitHub app-derived outline is still 264.1 mi\u00b2.",
+     "officialSrc": "https://x.com/robotaxi/status/2119746828191027346",
+     "dispatch": "/dispatch/tesla-robotaxi-austin-bigger-service-area.html"
     }
+   ],
+   "status": "active",
+   "statusLabel": "Public rides",
+   "statusSrc": "https://robotracker.app/updates"
   },
-  "checked": "2026-11-17"
+  "bay_area": {
+   "name": "Bay Area, CA",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2025-08-31",
+     "areaSqMi": 834,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2026-04-20",
+     "areaSqMi": 1094,
+     "from": 834,
+     "kind": "expanded",
+     "dateApprox": true,
+     "note": "First seen at this size in robotaxi-service-areas on 20 Apr 2026. Exact expansion date not published.",
+     "src": "https://github.com/EthanMcKanna/robotaxi-service-areas/commit/9c5480d"
+    }
+   ],
+   "status": "supervised",
+   "statusLabel": "Safety driver",
+   "statusSrc": "https://gizmodo.com/california-regulator-says-teslas-robotaxis-are-more-like-a-limo-in-the-eyes-of-the-law-2000738512"
+  },
+  "dallas": {
+   "name": "Dallas, TX",
+   "lastExpanded": "2026-08-29",
+   "log": [
+    {
+     "date": "2026-04-18",
+     "areaSqMi": 31,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2026-08-29",
+     "areaSqMi": 81,
+     "from": 31,
+     "kind": "expanded",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "ramping",
+   "statusLabel": "Ramping unsupervised",
+   "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+  },
+  "houston": {
+   "name": "Houston, TX",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2026-04-18",
+     "areaSqMi": 25,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "ramping",
+   "statusLabel": "Ramping unsupervised",
+   "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+  },
+  "miami": {
+   "name": "Miami, FL",
+   "lastExpanded": "2026-11-16",
+   "log": [
+    {
+     "date": "2026-07-03",
+     "areaSqMi": 30,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    },
+    {
+     "date": "2026-11-16",
+     "areaSqMi": 59,
+     "from": 30,
+     "kind": "expanded",
+     "src": "https://x.com/scotsrule08/status/2122245422303322489",
+     "officialSrc": "https://x.com/robotaxi/status/2122234442328740005",
+     "dispatch": "/dispatch/robotaxi-miami-expansion.html",
+     "note": "Tesla\u2019s official @robotaxi account posted \u201cNow serving more of Miami\u201d on 16 Nov 2026 but gave no square-mileage. Independent trackers of Tesla\u2019s map measured about 59 sq mi (up from about 31): @scotsrule08 30.9 to 59.4, Robotaxi Radar about 31 to 59, AVwhere about 31 to 60. EVwire read it smaller, about 26 to 50. None of these figures is a Tesla number. The retained GitHub app-derived outline is still 30.8 mi\u00b2."
+    }
+   ],
+   "status": "ramping",
+   "statusLabel": "Ramping unsupervised",
+   "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+  },
+  "orlando": {
+   "name": "Orlando, FL",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2026-07-22",
+     "dateApprox": true,
+     "areaSqMi": 26,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "ramping",
+   "statusLabel": "Ramping unsupervised",
+   "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+  },
+  "tampa": {
+   "name": "Tampa, FL",
+   "lastExpanded": null,
+   "log": [
+    {
+     "date": "2026-07-22",
+     "dateApprox": true,
+     "areaSqMi": 24,
+     "kind": "launched",
+     "src": "https://robotracker.app/updates"
+    }
+   ],
+   "status": "ramping",
+   "statusLabel": "Ramping unsupervised",
+   "statusSrc": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf"
+  }
+ },
+ "checked": "2026-11-17T14:47:00Z"
 }
