@@ -1,3 +1,8 @@
+## 2026-11-17 — Giga Berlin Cybercab hall, and Nvidia's SpaceX 13F
+
+- Dispatch: Tesla announced a plan for a new Cybercab building at Giga Berlin: around €3 billion, construction from early 2027, production in 2029, design capacity of up to 1 million a year. No permit has been filed, and EU small-series rules still cap fully automated cars at 1,500 a year per type (KBA / Art. 41). Hero is Michael Wolf's July 2023 aerial of Giga Berlin (CC BY-SA 3.0), cropped; not a Tesla photo, and Thierig's X image is not rehosted. Tesla page card comes from articles.json.
+- Dispatch: Nvidia's 13F for the quarter to 30 Sep 2026 shows 130.5 million SpaceX shares worth $19.7 billion, 40.7% of the stock portfolio, now ahead of Intel. Nvidia added 7.7 million SpaceX shares and cut Intel by a quarter. Figures are from the SEC filings; percentages are author's arithmetic. Hero is Coolcaesar's 2018 Nvidia headquarters photograph (CC BY-SA 4.0), cropped. SpaceX page card comes from articles.json. Reciprocal related link on the already-live after-huang article.
+
 ## 2026-11-16 — Tesla Miami Robotaxi expansion, and Starship V4 numbers
 
 - Dispatch: Tesla's official Robotaxi account posted "Now serving more of Miami." Trackers put the new zone at about 59 square miles, up roughly 90%, now reaching downtown and Brickell. Waymo's Miami area has been 150 square miles since May, so Tesla's zone is still about 2.5 times smaller. Area figures are third-party traces, not Tesla's. Hero is Rhododendrites' Brickell-at-night photograph (CC BY-SA 4.0); Tesla's official map is not rehosted. Tesla page card comes from articles.json. No Robotaxi-page card (that hub has no story grid).

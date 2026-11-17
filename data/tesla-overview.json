@@ -160,7 +160,7 @@
     ]
   },
   "software": {
-    "updated": "2026-11-17T08:44:58Z",
+    "updated": "2026-11-17T09:18:46Z",
     "id": "2026.44.1",
     "firstSeen": "2026-11-17T04:38:20Z",
     "source": "https://teslascope.com/software",
@@ -172,6 +172,15 @@
     "recognised": 11
   },
   "stories": [
+    {
+      "url": "/dispatch/tesla-giga-berlin-cybercab-factory.html",
+      "image": "/assets/dispatch/giga-berlin-aerial-2023.jpg",
+      "title": "Tesla's €3 billion Berlin hall is sized for 1 million Cybercabs a year. EU rules allow 1,500",
+      "summary": "Tesla plans a new Cybercab building at Giga Berlin: about €3 billion, construction from early 2027, production in 2029, room for up to 1 million a year. It's a plan, and the EU still caps driverless cars at 1,500 per type a year.",
+      "tag": "Tesla / Cybercab",
+      "date": "2026-11-17T09:56:00Z",
+      "thumb": "/assets/dispatch/giga-berlin-aerial-2023-480w.webp"
+    },
     {
       "url": "/dispatch/robotaxi-miami-expansion.html",
       "image": "/assets/dispatch/brickell-miami-night-2024.jpg",
@@ -216,16 +225,7 @@
       "tag": "Robotaxi",
       "date": "2026-11-12T14:54:53Z",
       "thumb": "/assets/dispatch/tesla-cybercab-harrison-sf-june-2026-480w.webp"
-    },
-    {
-      "url": "/dispatch/cybertruck-summer-2027-extension.html",
-      "image": "/assets/dispatch/cybertruck-skoyen-2024.jpg",
-      "title": "Musk moves the Cybertruck’s end date again, to the end of summer 2027 (as of 11 Nov 2026)",
-      "summary": "Elon Musk says Cybertruck production will now run through the end of summer 2027 to work through more of the backlog. That’s the third timeline in six days, and roughly two more months than the eight months he gave on 9 Nov 2026.",
-      "tag": "Cybertruck",
-      "date": "2026-11-12T08:56:21Z",
-      "thumb": "/assets/dispatch/cybertruck-skoyen-2024-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-16T16:45:00Z"
+  "articlesUpdated": "2026-11-17T09:56:00Z"
 }

@@ -2,6 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/tesla-giga-berlin-cybercab-factory.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T09:56:00Z</news:publication_date>
+      <news:title>Tesla's €3 billion Berlin hall is sized for 1 million Cybercabs a year. EU rules allow 1,500</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/nvidia-13f-spacex-top-holding.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T09:56:00Z</news:publication_date>
+      <news:title>SpaceX is now Nvidia's biggest stock holding, and Nvidia was still buying</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/robotaxi-miami-expansion.html</loc>
     <news:news>
       <news:publication>
@@ -54,28 +76,6 @@
       </news:publication>
       <news:publication_date>2026-11-15T14:51:09Z</news:publication_date>
       <news:title>The Grok Bot team says it shipped 11,000 pull requests in a month. Here's how, and what the numbers leave out</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/grok-imagine-folds-into-grok.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-15T08:53:13Z</news:publication_date>
-      <news:title>Grok Imagine moves into the main Grok chat, a day after reports that most of its team was cut</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/spacex-nvidia-after-huang.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-15T08:53:13Z</news:publication_date>
-      <news:title>Musk says his Nvidia deals ran on Jensen Huang's word. Here's how much of SpaceX's AI now rests on Nvidia</news:title>
     </news:news>
   </url>
 </urlset>
