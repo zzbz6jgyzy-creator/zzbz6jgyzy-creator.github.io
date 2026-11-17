@@ -1,12 +1,12 @@
 {
- "checked": "2026-11-17T14:47:00Z",
+ "checked": "2026-11-17T23:55:42Z",
  "aggregator": {
   "name": "Platform Aeronaut AV Tracker",
   "url": "https://avrideshare.platformaeronaut.com/tracker/tesla-robotaxi"
  },
  "states": {
   "Texas": {
-   "count": 733,
+   "count": 734,
    "kind": "registered",
    "asOf": "2026-11-17",
    "src": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
@@ -526,7 +526,7 @@
   {
    "date": "2026-11-17",
    "Texas": {
-    "count": 733,
+    "count": 734,
     "asOf": "2026-11-17"
    },
    "California": {

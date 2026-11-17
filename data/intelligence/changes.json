@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T20:50:20.430Z",
+  "updated": "2026-11-17T23:55:44.861Z",
   "changes": [
     {
       "type": "logged",
@@ -102,6 +102,23 @@
       "summary": "2026.38.5.13 moved from 422 to 523 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
       "title": "2026.38.5.13",
       "id": "changed|tesla-software:wave:2026.38.5.13|2026-11-17T09:18:46.000Z|523"
+    },
+    {
+      "type": "changed",
+      "factId": "robotaxi:tx-cybercab",
+      "topic": "robotaxi",
+      "tracker": "robotaxi",
+      "field": "tx-cybercab",
+      "previous": "573",
+      "next": "773",
+      "at": "2026-11-17T00:00:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Texas DMV list via fsddb.com",
+      "sourceUrl": "https://fsddb.com/robotaxi?operator=tesla-robotaxi-llc",
+      "href": "/cybercab.html",
+      "summary": "Texas Cybercab registrations changed from 573 to 773.",
+      "title": "Texas Cybercab registrations",
+      "id": "changed|robotaxi:tx-cybercab|2026-11-17T00:00:00.000Z|773"
     },
     {
       "type": "logged",
