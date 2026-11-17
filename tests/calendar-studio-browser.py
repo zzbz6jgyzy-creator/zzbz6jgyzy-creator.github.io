@@ -76,7 +76,8 @@ async def main():
    await page.locator('.cs-month-grid [data-date="'+F15_DATE+'"]').click()
    await expect(page.locator('.cs-day-panel')).to_contain_text('Starship Flight 15')
    panel=await page.locator('.cs-day-panel').inner_text()
-   assert 'In progress' in panel and 'source reported' in panel
+   assert 'Completed' in panel
+   assert 'In progress' not in panel
    assert 'Time unconfirmed' not in panel
    assert F15_LA_TIME in panel, (F15_LA_TIME, panel)
    assert not errors,errors;assert not any('ll.thespacedevs.com'in u for u in requests);await c.close()
