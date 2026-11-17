@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-17T08:45:17Z",
+ "updated": "2026-11-17T09:18:46Z",
  "teslafi": {
   "source": "TeslaFi",
   "sourceUrl": "https://www.teslafi.com/firmware",
-  "fetched": "2026-11-17T08:45:17Z",
+  "fetched": "2026-11-17T09:18:46Z",
   "fleet": 12278,
   "versions": [
    {
     "id": "2026.44.1",
-    "installs": 58,
+    "installs": 65,
     "percent": 0.5,
-    "pending": 189
+    "pending": 182
    },
    {
     "id": "2026.39.100",
@@ -26,25 +26,25 @@
    },
    {
     "id": "2026.38.6.1",
-    "installs": 261,
+    "installs": 262,
     "percent": 2.1,
-    "pending": 27
+    "pending": 25
    },
    {
     "id": "2026.38.6",
-    "installs": 5271,
+    "installs": 5264,
     "percent": 42.9,
     "pending": 550
    },
    {
     "id": "2026.38.5.13",
-    "installs": 1518,
+    "installs": 1523,
     "percent": 12.4,
-    "pending": 331
+    "pending": 325
    },
    {
     "id": "2026.38.5.12",
-    "installs": 443,
+    "installs": 438,
     "percent": 3.6,
     "pending": 23
    },
@@ -176,7 +176,7 @@
    },
    {
     "id": "2026.26.6.3",
-    "installs": 22,
+    "installs": 21,
     "percent": 0.2,
     "pending": 0
    },
@@ -491,8 +491,16 @@
  "recent": {
   "source": "Teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fetched": "2026-11-17T08:45:17Z",
+  "fetched": "2026-11-17T09:18:46Z",
   "items": [
+   {
+    "t": "2026-11-17T09:02:55Z",
+    "to": "2026.38.5.13",
+    "from": "2026.38.5.12",
+    "model": "Model Y AWD LR (2023)",
+    "hw": "3.0",
+    "country": "United States"
+   },
    {
     "t": "2026-11-17T08:18:52Z",
     "to": "2026.38.5.13",
@@ -564,14 +572,6 @@
     "model": "Model 3 Performance (2024)",
     "hw": "4.0",
     "country": "Germany"
-   },
-   {
-    "t": "2026-11-17T05:58:02Z",
-    "to": "2026.38.5.13",
-    "from": "2026.38.5.12",
-    "model": "Model 3 AWD LR (2024)",
-    "hw": "4.0",
-    "country": "United States"
    }
   ]
  }
