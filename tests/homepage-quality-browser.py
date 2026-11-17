@@ -42,7 +42,7 @@ async def main():
     title=page.locator('[data-hv-h]')
     if registry or not scripts:
      if scripts:await page.wait_for_function('(title)=>document.querySelector("[data-hv-h]").textContent===title',arg=LEAD.get('homeTitle',LEAD['title']))
-     assert await title.inner_text()==LEAD.get('homeTitle',LEAD['title'])
+     assert ' '.join((await title.inner_text()).split())==' '.join(LEAD.get('homeTitle',LEAD['title']).split())
     else:
      await page.wait_for_function('(title)=>document.querySelector("[data-hv-h]").textContent===title',arg=LEAD['title'])
     if scripts and mode=='live':
@@ -68,7 +68,7 @@ async def main():
       for link in await card.locator('a').all():
        bounds=await link.bounding_box();assert bounds['height']>=44,bounds
       if width<=390 and registry and LEAD.get('homeTitle'):
-       rect=await card.bounding_box();assert rect['height']<=216,rect
+       rect=await card.bounding_box();assert rect['height']<=210,rect
        signup=await page.locator('#newsletter button[type=submit]').bounding_box();assert signup['y']+signup['height']<844,signup
       assert await card.get_by_role('link',name='All events →').get_attribute('href')=='/calendar.html'
     if os.environ.get('QUALITY_SHOTS') and mode=='upcoming' and registry:
