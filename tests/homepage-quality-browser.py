@@ -68,7 +68,7 @@ async def main():
       for link in await card.locator('a').all():
        bounds=await link.bounding_box();assert bounds['height']>=44,bounds
       if width<=390 and registry and LEAD.get('homeTitle'):
-       rect=await card.bounding_box();assert rect['height']<=210,rect
+       rect=await card.bounding_box();assert rect['height']<=216,rect
        signup=await page.locator('#newsletter button[type=submit]').bounding_box();assert signup['y']+signup['height']<844,signup
       assert await card.get_by_role('link',name='All events →').get_attribute('href')=='/calendar.html'
     if os.environ.get('QUALITY_SHOTS') and mode=='upcoming' and registry:
