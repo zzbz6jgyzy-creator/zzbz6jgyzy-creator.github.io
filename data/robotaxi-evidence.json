@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-12",
-  "revision": "2026-11-12.1",
+  "updated": "2026-11-17",
+  "revision": "2026-11-17.1",
   "scope": "Tesla Cybercab and Model Y Robotaxi",
   "sources": [
     {
@@ -219,6 +219,38 @@
       "type": "manufacturer",
       "checkedAt": "2026-11-12",
       "publishedAt": "2026-11-11"
+    },
+    {
+      "id": "s-6a7242664e86",
+      "url": "https://x.com/robotaxi/status/2122234442328740005",
+      "label": "Tesla Robotaxi on X: Now serving more of Miami",
+      "type": "manufacturer",
+      "publishedAt": "2026-11-16",
+      "checkedAt": "2026-11-17"
+    },
+    {
+      "id": "s-75adcac5a364",
+      "url": "https://x.com/scotsrule08/status/2122245422303322489",
+      "label": "@scotsrule08 on X: Miami zone 30.9 to 59.4 sq mi after expansion",
+      "type": "tracker",
+      "publishedAt": "2026-11-16",
+      "checkedAt": "2026-11-17"
+    },
+    {
+      "id": "s-d8f15611ffad",
+      "url": "https://x.com/RobotaxiRadar/status/2122293748105126141",
+      "label": "Robotaxi Radar on X: Miami zone about 31 to 59 sq mi",
+      "type": "tracker",
+      "publishedAt": "2026-11-16",
+      "checkedAt": "2026-11-17"
+    },
+    {
+      "id": "s-80bc2d308a86",
+      "url": "https://x.com/AVwhere/status/2122336387617955972",
+      "label": "AVwhere on X: Miami zone about 31 to 60 sq mi",
+      "type": "tracker",
+      "publishedAt": "2026-11-16",
+      "checkedAt": "2026-11-17"
     }
   ],
   "cities": [
@@ -1235,6 +1267,23 @@
         "san_antonio",
         "tampa"
       ]
+    },
+    {
+      "id": "miami-geofence-16nov",
+      "date": "2026-11-16",
+      "precision": "day",
+      "city": "miami",
+      "vehicle": "not_city_specific",
+      "kind": "service",
+      "title": "Tesla posts a bigger Miami service area",
+      "summary": "Tesla’s official @robotaxi account posted “Now serving more of Miami” at 07:44 UTC on 16 Nov 2026 with an old/new geofence map. Tesla gave no square-mileage. Independent trackers measured the expanded zone the same day: @scotsrule08 30.9 to 59.4 sq mi, Robotaxi Radar about 31 to 59, AVwhere about 31 to 60, and EVwire about 26 to 50. The lead figure of about 59 sq mi is a tracker estimate, not a Tesla number. The app remains the check for whether any given road is bookable.",
+      "evidence": [
+        "s-6a7242664e86",
+        "s-75adcac5a364",
+        "s-d8f15611ffad",
+        "s-80bc2d308a86"
+      ],
+      "type": "manufacturer"
     }
   ],
   "companyClaims": [

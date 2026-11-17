@@ -1,6 +1,6 @@
 {
   "_about": "Single source of truth for key upcoming-event dates. Read by starship.js, calendar.js and live.js (homepage/Starship live card). Edit dates HERE only. MAJOR EVENTS: set \"major\": true on Roadster-reveal-level events (product reveals, Starship flights, major Tesla/SpaceX/xAI events). The homepage shows a big countdown for any major event starting within 7 days, until 30 min before start (then the Live now card takes over). Use either date(+precision/tz) or start/end ISO; entries with only start/end are not touched by live.js. Every entry needs a real source URL.",
-  "updated": "2026-11-14T09:20:00+00:00",
+  "updated": "2026-11-17T08:45:00+00:00",
   "events": {
     "tesla-2026-asm": {
       "title": "Tesla 2026 Annual Meeting of Shareholders",
@@ -9,7 +9,7 @@
       "status": "scheduled",
       "major": true,
       "href": "https://www.votetesla.com/annual-meeting-details/",
-      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 UTC / 21:00 Dublin). Virtual meeting at virtualshareholdermeeting.com/TSLA2026; limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov. Source: votetesla.com/annual-meeting-details/ (checked 9 Nov 2026).",
+      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 UTC / 21:00 Dublin). Virtual meeting at virtualshareholdermeeting.com/TSLA2026; limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov. Source: votetesla.com/annual-meeting-details/ (checked 17 Nov 2026).",
       "sources": [
         "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
         "https://www.votetesla.com/annual-meeting-details/"
@@ -31,7 +31,7 @@
       "date": "2026-12-01",
       "precision": "month",
       "status": "expected",
-      "summary": "December 2026 target, reported. FAA CADENA air-traffic planning slides (22 Oct) list Flight 16 NET 10 Dec 2026, as the first flight from Florida (LC-39A). NASASpaceflight (25 Oct) estimates the first LC-39A Starship flight could be in late January 2027. This is reporting, not a SpaceX date.",
+      "summary": "SpaceX has not announced a date, window or vehicles for Flight 16 (checked 17 Nov 2026). FAA CADENA air-traffic planning slides in October listed a no-earlier-than date of 10 Dec 2026 from Kennedy LC-39A, as a possible first Florida Starship flight. NASASpaceflight has also discussed a later window. Those figures are planning or reporting, not a SpaceX date.",
       "sources": [
         "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
         "https://www.advanced-television.com/2026/10/20/starship-15-scheduled-for-november-with-dual-catch/",
@@ -45,10 +45,10 @@
       "start": "2026-11-13T16:45:00-06:00",
       "end": "2026-11-13T18:00:00-06:00",
       "precision": "datetime",
-      "status": "in-flight",
+      "status": "ended",
       "tz": "-06:00",
       "href": "https://www.spacex.com/launches/starship-flight-15",
-      "summary": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. Catch is still a go/no-go. Checked 14 Nov 2026.",
+      "summary": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov SpaceX said Mechazilla caught Starship at Starbase. Booster 22 was not caught. Checked 17 Nov 2026.",
       "sources": [
         "https://x.com/SpaceX/status/2121479482582441991",
         "https://x.com/SpaceX/status/2121394268652839309",

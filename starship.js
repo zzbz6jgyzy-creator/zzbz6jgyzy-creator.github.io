@@ -43,8 +43,9 @@ const main = () => {
   setText("starship-next-flight", `Flight ${data.next.flight}`);
   setText("starship-next-headline", data.next.headline);
   setText("starship-next-tested", data.next.tested);
-  setText("starship-next-hw", `${data.next.block} · ${data.next.booster} · ${data.next.ship} · ${data.next.pad}`);
-  setText("starship-next-date", `NET ${formatDate(data.next.start)}`);
+  const nextHw = [data.next.block, data.next.booster, data.next.ship, data.next.pad].filter(Boolean).join(" · ") || "Vehicles and pad not announced";
+  setText("starship-next-hw", nextHw);
+  setText("starship-next-date", data.next.start ? `NET ${formatDate(data.next.start)}` : "Date not announced");
 
   const pad = (n) => String(Math.max(0, n)).padStart(2, "0");
 
@@ -55,7 +56,17 @@ const main = () => {
     const minsEl = document.getElementById("starship-cd-mins");
     const secsEl = document.getElementById("starship-cd-secs");
     const statusEl = document.getElementById("starship-cd-status");
-    if (!daysEl || !Number.isFinite(target)) return;
+    if (!daysEl) return;
+    if (!Number.isFinite(target)) {
+      daysEl.textContent = "—";
+      if (hoursEl) hoursEl.textContent = "—";
+      if (minsEl) minsEl.textContent = "—";
+      if (secsEl) secsEl.textContent = "—";
+      if (statusEl) {
+        statusEl.textContent = data.next.countdownNote || `SpaceX has not announced a date for Flight ${data.next.flight}.`;
+      }
+      return;
+    }
 
     const diff = target - Date.now();
     if (diff <= 0) {
@@ -64,8 +75,7 @@ const main = () => {
       minsEl.textContent = "00";
       secsEl.textContent = "00";
       if (statusEl) {
-        statusEl.textContent =
-          "Flight 15 launched 13 Nov at 5:48 p.m. ET. Mechazilla caught the ship at Starbase at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov. Booster diverted to the Gulf, not caught. (As of 14 Nov 2026, 4:52 p.m. ET).";
+        statusEl.textContent = data.next.countdownNote || `The Flight ${data.next.flight} countdown window has passed.`;
       }
       return;
     }
@@ -170,10 +180,10 @@ const main = () => {
     article.innerHTML = `
       <div class="starship-flight-head">
         <span class="starship-flight-num">Flight ${escapeHtml(data.next.flight)}</span>
-        <time datetime="${escapeHtml(data.next.start)}">NET ${escapeHtml(formatDate(data.next.start))}</time>
+        <time${data.next.start ? ` datetime="${escapeHtml(data.next.start)}"` : ""}>${data.next.start ? `NET ${escapeHtml(formatDate(data.next.start))}` : "Date not announced"}</time>
         <span class="fsd-status starship-status-next">${outcomeLabel.next}</span>
       </div>
-      <p class="starship-hw">${escapeHtml(data.next.block)} · ${escapeHtml(data.next.booster)} · ${escapeHtml(data.next.ship)} · ${escapeHtml(data.next.pad)}</p>
+      <p class="starship-hw">${escapeHtml(nextHw)}</p>
       <h3>${escapeHtml(data.next.headline)}</h3>
       <p>${escapeHtml(data.next.tested)}</p>
       <p class="starship-lab-jump">Open in flight lab →</p>
@@ -227,11 +237,13 @@ const main = () => {
   fetch("/data/events.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : null))
     .then((j) => {
-      const ev = j && j.events && j.events["starship-flight-15"];
       const d = window.STARSHIP;
-      if (ev && d && d.next && d.next.flight === 15) {
-        d.next.start = `${ev.date}T00:00:00Z`;
+      const evId = d && d.next && (d.next.eventId || (d.next.flight === 16 ? "starship-flight-16" : d.next.flight === 15 ? "starship-flight-15" : null));
+      const ev = j && j.events && evId && j.events[evId];
+      if (ev && d && d.next) {
         if (ev.summary) d.next.tested = ev.summary;
+        if (ev.start && ev.precision === "datetime") d.next.start = ev.start;
+        else if (ev.date && ev.precision === "day") d.next.start = `${ev.date}T00:00:00Z`;
       }
     })
     .catch(() => {})

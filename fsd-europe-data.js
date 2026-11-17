@@ -1,8 +1,8 @@
 // Generated from data/fsd-europe.json by scripts/build-fsd-europe.mjs. Edit the JSON source.
 window.FSD_EUROPE = {
   "schemaVersion": 1,
-  "updated": "2026-11-11",
-  "revision": "2026-11-11.1",
+  "updated": "2026-11-17",
+  "revision": "2026-11-17.1",
   "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
   "thresholds": {
     "euPopulationM": 448.9,
@@ -1170,7 +1170,7 @@ window.FSD_EUROPE = {
         "evidence": [
           "s-traficom-en-20261111"
         ],
-        "reviewedAt": "2026-11-11"
+        "reviewedAt": "2026-11-17"
       },
       "availability": {
         "status": "not_listed",
@@ -1206,7 +1206,7 @@ window.FSD_EUROPE = {
           "s-ceb8f4f6d674",
           "s-ddf43be4eb49"
         ],
-        "reviewedAt": "2026-11-11",
+        "reviewedAt": "2026-11-17",
         "note": "Traficom recognised the Dutch provisional type-approval so Tesla Assisted Driving may be used on Finnish roads. The June 2026 Reuters item that Finland may approve before the EU vote is now superseded by this authority notice. It is not a recorded committee vote."
       },
       "sourceIds": [
@@ -2361,7 +2361,7 @@ window.FSD_EUROPE = {
       "url": "https://www.traficom.fi/en/news/teslas-driver-assistance-system-now-permitted-finnish-roads",
       "label": "Traficom: Tesla’s driver assistance system is now permitted on Finnish roads, 11 Nov 2026",
       "type": "authority",
-      "checkedAt": "2026-11-11",
+      "checkedAt": "2026-11-17",
       "publishedAt": "2026-11-11"
     },
     {
@@ -2369,7 +2369,7 @@ window.FSD_EUROPE = {
       "url": "https://www.traficom.fi/fi/uutiset/teslan-kuljettajaa-avustava-jarjestelma-nyt-sallittu-suomen-tieliikenteessa",
       "label": "Traficom: Teslan kuljettajaa avustava järjestelmä on nyt sallittu Suomen tieliikenteessä, 11 Nov 2026",
       "type": "authority",
-      "checkedAt": "2026-11-11",
+      "checkedAt": "2026-11-17",
       "publishedAt": "2026-11-11"
     },
     {
