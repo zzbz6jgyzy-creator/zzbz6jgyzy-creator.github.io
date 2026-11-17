@@ -1,7 +1,7 @@
 {
  "version": 1,
  "checked": "2026-11-17T03:48:25Z",
- "editorialUpdated": "2026-11-14T09:20:00+00:00",
+ "editorialUpdated": "2026-11-17T08:45:00+00:00",
  "presets": [
   {
    "name": "Brownsville",
@@ -621,7 +621,7 @@
    "coverage": {
     "url": "https://www.spacex.com/launches/ussf627",
     "article": "",
-    "status": "scheduled"
+    "status": "ended"
    },
    "pad": null
   },
@@ -635,7 +635,7 @@
    "date": "2026-11-13",
    "precision": "datetime",
    "status": "done",
-   "note": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. Catch is still a go/no-go. Checked 14 Nov 2026.",
+   "note": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov SpaceX said Mechazilla caught Starship at Starbase. Booster 22 was not caught. Checked 17 Nov 2026.",
    "where": "Starbase · Pad 2",
    "href": "https://www.spacex.com/launches/starship-flight-15",
    "sources": [
@@ -705,7 +705,7 @@
    "coverage": {
     "url": "https://www.spacex.com/launches/starship-flight-15",
     "article": "",
-    "status": "live"
+    "status": "ended"
    },
    "pad": {
     "id": "sb2",
@@ -772,6 +772,11 @@
    "windowEnd": "2026-11-21T13:00:00Z",
    "vehicle": "Falcon 9 Block 5",
    "providerStatus": "Go for Launch",
+   "coverage": {
+    "url": "https://www.spacex.com/launches",
+    "article": "",
+    "status": "scheduled"
+   },
    "pad": {
     "id": "slc4e",
     "name": "Vandenberg · SLC-4E",
