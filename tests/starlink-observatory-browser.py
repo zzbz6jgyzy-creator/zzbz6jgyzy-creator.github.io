@@ -6,7 +6,7 @@ from playwright.async_api import async_playwright
 ROOT=Path(__file__).resolve().parents[1]
 SITE='https://superchargeddaily.com'
 OUT=Path('/tmp/starlink-observatory');OUT.mkdir(exist_ok=True)
-DATA=json.loads((ROOT/'data/starlink-observatory.json').read_text());TOTAL=format(DATA['totals']['inOrbit'],',');V3=next(g['inOrbit'] for g in DATA['generations'] if g['id']=='v3')
+DATA=json.loads((ROOT/'data/starlink-observatory.json').read_text());CAT=json.loads((ROOT/'data/starlink.json').read_text());TOTAL=format(DATA['totals']['inOrbit'],',');_gen=CAT['fields'].index('gen');V3=sum(1 for s in CAT['satellites'] if s[_gen]=='v3')
 
 async def main():
  async with async_playwright() as p:
