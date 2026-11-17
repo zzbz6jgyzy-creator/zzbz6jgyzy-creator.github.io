@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-17T09:18:51.747Z",
+  "generatedAt": "2026-11-17T09:53:04.614Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -10,12 +10,12 @@
       "field": "event:tesla-2026-asm",
       "value": "2026-12-03T21:00:00.000Z|scheduled",
       "label": "Tesla 2026 Annual Meeting of Shareholders",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000110465926116718/tm2626016d2_ars.pdf",
       "sourceUrl": "",
       "href": "https://www.votetesla.com/annual-meeting-details/",
-      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 UTC / 21:00 Dublin). Virtual meeting at virtualshareholdermeeting.com/TSLA2026; limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov. Source: votetesla.com/annual-meeting-details/ (checked 9 Nov 2026)."
+      "summary": "Thu 3 Dec 2026, 3:00 p.m. CT (21:00 UTC / 21:00 Dublin). Virtual meeting at virtualshareholdermeeting.com/TSLA2026; limited in-person at Giga Texas. Record date 13 Oct 2026. In-person drawing deadline was Fri 6 Nov 2026, 11:59 p.m. CT; selections go out the week of 16 Nov. Source: votetesla.com/annual-meeting-details/ (checked 17 Nov 2026)."
     },
     {
       "id": "production:event:tesla-2026-asm-draw",
@@ -24,7 +24,7 @@
       "field": "event:tesla-2026-asm-draw",
       "value": "2026-11-07T05:59:00.000Z|ended",
       "label": "Tesla 2026 Annual Meeting in-person drawing deadline",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.votetesla.com/annual-meeting-details/",
       "sourceUrl": "",
@@ -38,26 +38,26 @@
       "field": "event:starship-flight-16",
       "value": "2026-12-01T00:00:00.000Z|expected",
       "label": "Starship Flight 16",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "independently_corroborated",
       "source": "https://www.nasaspaceflight.com/2026/10/spacex-flight-15-16-milestones/",
       "sourceUrl": "",
       "href": "/calendar.html",
-      "summary": "December 2026 target, reported. FAA CADENA air-traffic planning slides (22 Oct) list Flight 16 NET 10 Dec 2026, as the first flight from Florida (LC-39A). NASASpaceflight (25 Oct) estimates the first LC-39A Starship flight could be in late January 2027. This is reporting, not a SpaceX date."
+      "summary": "SpaceX has not announced a date, window or vehicles for Flight 16 (checked 17 Nov 2026). FAA CADENA air-traffic planning slides in October listed a no-earlier-than date of 10 Dec 2026 from Kennedy LC-39A, as a possible first Florida Starship flight. NASASpaceflight has also discussed a later window. Those figures are planning or reporting, not a SpaceX date."
     },
     {
       "id": "starship:event:starship-flight-15",
       "topic": "starship",
       "tracker": "starship",
       "field": "event:starship-flight-15",
-      "value": "2026-11-13T22:45:00.000Z|in-flight",
+      "value": "2026-11-13T22:45:00.000Z|ended",
       "label": "Starship Flight 15",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://x.com/SpaceX/status/2121479482582441991",
       "sourceUrl": "",
       "href": "https://www.spacex.com/launches/starship-flight-15",
-      "summary": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and SpaceX said at 05:44 UTC on 14 Nov that the Ship and heatshield were healthy ahead of a planned Starbase catch about 22.5 hours after launch. Catch is still a go/no-go. Checked 14 Nov 2026."
+      "summary": "Flight 15 lifted off from Pad 2 at about 4:47 p.m. CT (22:47 UTC) on 13 Nov 2026 (Space.com live coverage of SpaceX's webcast). Super Heavy diverted to an offshore splashdown in the Gulf (SpaceX). Ship 42 reached orbit, deployed all 26 Starlink V3 satellites, and at 4:21 p.m. ET (1:21 p.m. PT) on 14 Nov SpaceX said Mechazilla caught Starship at Starbase. Booster 22 was not caught. Checked 17 Nov 2026."
     },
     {
       "id": "spacex-launches:event:crs35-docking",
@@ -66,7 +66,7 @@
       "field": "event:crs35-docking",
       "value": "2026-10-15T14:27:00.000Z|done",
       "label": "Dragon · CRS-35 docked with the ISS",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "independently_corroborated",
       "source": "NASA space station blog, 15 Oct 2026: docked at 10:27 a.m. EDT",
       "sourceUrl": "",
@@ -80,7 +80,7 @@
       "field": "event:tesla-roadster-demo",
       "value": "2026-10-16T00:55:00.000Z|ended",
       "label": "Tesla Roadster reveal",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "independently_corroborated",
       "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
       "sourceUrl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
@@ -94,7 +94,7 @@
       "field": "event:spacex-q3-2026-earnings",
       "value": "2026-10-20T20:30:00.000Z|ended",
       "label": "SpaceX Q3 2026 earnings call",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
       "sourceUrl": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx",
@@ -108,7 +108,7 @@
       "field": "event:tesla-q3-2026-earnings",
       "value": "2026-10-21T21:30:00.000Z|ended",
       "label": "Tesla Q3 2026 earnings call",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
       "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm",
@@ -122,7 +122,7 @@
       "field": "event:ussf-481",
       "value": "2026-10-16T00:02:07.000Z|done",
       "label": "Falcon 9 · USSF-481",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://x.com/SpaceX/status/2110883955004035154",
       "sourceUrl": "",
@@ -136,7 +136,7 @@
       "field": "event:bandwagon-5",
       "value": "2026-10-20T11:04:00.000Z|done",
       "label": "Falcon 9 · Bandwagon-5 rideshare",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.spacex.com/launches/bandwagon5",
       "sourceUrl": "",
@@ -150,7 +150,7 @@
       "field": "event:spcx-q3-lockup-release",
       "value": "2026-10-22T00:00:00.000Z|ended",
       "label": "SpaceX lock-up release · up to 1.3B shares",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "officially_confirmed",
       "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
       "sourceUrl": "",
@@ -206,7 +206,7 @@
       "field": "eu-approved",
       "value": "9",
       "label": "EU markets listed by Tesla",
-      "at": "2026-11-11T00:00:00.000Z",
+      "at": "2026-11-17T00:00:00.000Z",
       "evidence": "company_claim",
       "source": "Tesla market availability, curated in the FSD Europe tracker",
       "sourceUrl": "",
@@ -246,9 +246,9 @@
       "topic": "starship",
       "tracker": "starship",
       "field": "next-flight",
-      "value": "15|2026-11-13|day",
+      "value": "16|2026-12-01|none",
       "label": "Next Starship flight",
-      "at": "2026-11-14T09:20:00.000Z",
+      "at": "2026-11-17T08:45:00.000Z",
       "evidence": "estimated",
       "source": "FAA planning slides",
       "sourceUrl": "",
@@ -286,21 +286,72 @@
   ],
   "changes": [
     {
-      "type": "changed",
-      "factId": "tesla-software:newest-reporting",
+      "type": "appeared",
+      "factId": "tesla-software:wave:2026.44.1",
       "topic": "tesla-software",
       "tracker": "software",
-      "field": "newest-reporting",
-      "previous": "2026.38.5.13",
-      "next": "2026.44.1",
+      "field": "wave:2026.44.1",
+      "previous": "0",
+      "next": "2",
       "at": "2026-11-17T09:18:46.000Z",
       "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample (3271 cars)",
+      "source": "Teslascope sample",
       "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html",
-      "summary": "Newest reporting build changed from 2026.38.5.13 to 2026.44.1.",
-      "title": "Newest reporting build",
-      "id": "changed|tesla-software:newest-reporting|2026-11-17T09:18:46.000Z|2026.44.1"
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.44.1 first appeared in the Teslascope sample with 2 cars. Spotting a build isn’t the same as a wide rollout, or your car getting it.",
+      "title": "2026.44.1",
+      "id": "appeared|tesla-software:wave:2026.44.1|2026-11-17T09:18:46.000Z|2"
+    },
+    {
+      "type": "changed",
+      "factId": "tesla-software:wave:2026.38.5.13",
+      "topic": "tesla-software",
+      "tracker": "software",
+      "field": "wave:2026.38.5.13",
+      "previous": "422",
+      "next": "523",
+      "at": "2026-11-17T09:18:46.000Z",
+      "evidence": "reported_unconfirmed",
+      "source": "Teslascope sample",
+      "sourceUrl": "https://teslascope.com/software",
+      "href": "/updates.html#sample-waves",
+      "summary": "2026.38.5.13 moved from 422 to 523 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
+      "title": "2026.38.5.13",
+      "id": "changed|tesla-software:wave:2026.38.5.13|2026-11-17T09:18:46.000Z|523"
+    },
+    {
+      "type": "changed",
+      "factId": "starship:event:starship-flight-15",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "event:starship-flight-15",
+      "previous": "2026-11-13T22:45:00.000Z|in-flight",
+      "next": "2026-11-13T22:45:00.000Z|ended",
+      "at": "2026-11-17T08:45:00.000Z",
+      "evidence": "officially_confirmed",
+      "source": "https://x.com/SpaceX/status/2121479482582441991",
+      "sourceUrl": "",
+      "href": "https://www.spacex.com/launches/starship-flight-15",
+      "summary": "Starship Flight 15 changed from 2026-11-13T22:45:00.000Z|in-flight to 2026-11-13T22:45:00.000Z|ended.",
+      "title": "Starship Flight 15",
+      "id": "changed|starship:event:starship-flight-15|2026-11-17T08:45:00.000Z|2026-11-13T22:45:00.000Z|ended"
+    },
+    {
+      "type": "changed",
+      "factId": "starship:next-flight",
+      "topic": "starship",
+      "tracker": "starship",
+      "field": "next-flight",
+      "previous": "15|2026-11-13|day",
+      "next": "16|2026-12-01|none",
+      "at": "2026-11-17T08:45:00.000Z",
+      "evidence": "estimated",
+      "source": "FAA planning slides",
+      "sourceUrl": "",
+      "href": "/starship.html",
+      "summary": "Next Starship flight changed from 15|2026-11-13|day to 16|2026-12-01|none.",
+      "title": "Next Starship flight",
+      "id": "changed|starship:next-flight|2026-11-17T08:45:00.000Z|16|2026-12-01|none"
     },
     {
       "type": "logged",
@@ -1204,23 +1255,6 @@
       "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-27T14:08:37.000Z|579"
     },
     {
-      "type": "changed",
-      "factId": "tesla-software:wave:2026.38.5.11",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.5.11",
-      "previous": "467",
-      "next": "519",
-      "at": "2026-10-27T11:54:28.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.11 moved from 467 to 519 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
-      "title": "2026.38.5.11",
-      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-27T11:54:28.000Z|519"
-    },
-    {
       "type": "logged",
       "factId": "starship:schedule",
       "topic": "starship",
@@ -1253,23 +1287,6 @@
       "summary": "Texas Cybercab registrations moved from 463 to 544. A registered car isn’t necessarily in service yet.",
       "title": "Texas Cybercab count",
       "id": "changed|robotaxi:tx-cybercab|2026-10-27T00:00:00.000Z|544"
-    },
-    {
-      "type": "changed",
-      "factId": "tesla-software:wave:2026.38.5.11",
-      "topic": "tesla-software",
-      "tracker": "software",
-      "field": "wave:2026.38.5.11",
-      "previous": "283",
-      "next": "364",
-      "at": "2026-10-26T17:27:14.000Z",
-      "evidence": "reported_unconfirmed",
-      "source": "Teslascope sample",
-      "sourceUrl": "https://teslascope.com/software",
-      "href": "/updates.html#sample-waves",
-      "summary": "2026.38.5.11 moved from 283 to 364 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.",
-      "title": "2026.38.5.11",
-      "id": "changed|tesla-software:wave:2026.38.5.11|2026-10-26T17:27:14.000Z|364"
     },
     {
       "type": "changed",
@@ -2130,15 +2147,15 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
-      "lastVerified": "2026-11-14T00:00:00.000Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
+      "lastVerified": "2026-11-17T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
-      "lastVerified": "2026-11-14T09:20:00.000Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
+      "lastVerified": "2026-11-17T08:45:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
     {
@@ -2151,56 +2168,56 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
-      "lastVerified": "2026-11-11T00:00:00.000Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
+      "lastVerified": "2026-11-17T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
-      "lastVerified": "2026-11-17T00:58:36.000Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
+      "lastVerified": "2026-11-17T08:45:22.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
     {
       "tracker": "starlink",
       "href": "/starlink.html",
-      "lastChecked": "2026-11-10T08:00:03.000Z",
+      "lastChecked": "2026-11-17T06:44:51.000Z",
       "lastVerified": "2026-11-16T01:07:30.000Z",
       "note": "Sources: Jonathan McDowell (counts), CelesTrak (orbits)."
     },
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-17T09:18:51.747Z",
+      "lastChecked": "2026-11-17T09:53:04.614Z",
       "lastVerified": "2026-11-17T09:18:46.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2209,87 +2226,87 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.731Z",
-      "finished": "2026-11-17T09:18:51.735Z"
+      "started": "2026-11-17T09:53:04.443Z",
+      "finished": "2026-11-17T09:53:04.601Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.735Z",
-      "finished": "2026-11-17T09:18:51.735Z"
+      "started": "2026-11-17T09:53:04.601Z",
+      "finished": "2026-11-17T09:53:04.601Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.735Z",
-      "finished": "2026-11-17T09:18:51.736Z"
+      "started": "2026-11-17T09:53:04.601Z",
+      "finished": "2026-11-17T09:53:04.601Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.736Z",
-      "finished": "2026-11-17T09:18:51.742Z"
+      "started": "2026-11-17T09:53:04.601Z",
+      "finished": "2026-11-17T09:53:04.608Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.742Z",
-      "finished": "2026-11-17T09:18:51.744Z"
+      "started": "2026-11-17T09:53:04.608Z",
+      "finished": "2026-11-17T09:53:04.611Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.744Z",
-      "finished": "2026-11-17T09:18:51.745Z"
+      "started": "2026-11-17T09:53:04.611Z",
+      "finished": "2026-11-17T09:53:04.611Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.745Z",
-      "finished": "2026-11-17T09:18:51.745Z"
+      "started": "2026-11-17T09:53:04.611Z",
+      "finished": "2026-11-17T09:53:04.612Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.745Z",
-      "finished": "2026-11-17T09:18:51.745Z"
+      "started": "2026-11-17T09:53:04.612Z",
+      "finished": "2026-11-17T09:53:04.612Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.745Z",
-      "finished": "2026-11-17T09:18:51.745Z"
+      "started": "2026-11-17T09:53:04.612Z",
+      "finished": "2026-11-17T09:53:04.612Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.745Z",
-      "finished": "2026-11-17T09:18:51.747Z"
+      "started": "2026-11-17T09:53:04.612Z",
+      "finished": "2026-11-17T09:53:04.613Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.747Z",
-      "finished": "2026-11-17T09:18:51.747Z"
+      "started": "2026-11-17T09:53:04.613Z",
+      "finished": "2026-11-17T09:53:04.613Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.747Z",
-      "finished": "2026-11-17T09:18:51.747Z"
+      "started": "2026-11-17T09:53:04.613Z",
+      "finished": "2026-11-17T09:53:04.613Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-17T09:18:51.747Z",
-      "finished": "2026-11-17T09:18:51.747Z"
+      "started": "2026-11-17T09:53:04.613Z",
+      "finished": "2026-11-17T09:53:04.614Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-17T09:18:51.747Z",
+    "generatedAt": "2026-11-17T09:53:04.614Z",
     "factCount": 20,
-    "changeCount": 106,
+    "changeCount": 107,
     "conflictCount": 2,
     "issues": [
       {
