@@ -1,6 +1,57 @@
 {
-  "updated": "2026-11-17T09:56:00Z",
+  "updated": "2026-11-17T14:37:45Z",
   "articles": [
+    {
+      "url": "/dispatch/delta-bastian-starlink-claim.html",
+      "title": "Delta's CEO says most Starlink airlines \"haven't even started yet.\" United has it on 635 jets",
+      "date": "2026-11-17T14:37:45Z",
+      "topic": "spacex",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/delta-a321neo-boston-2025.jpg",
+      "summary": "Ed Bastian says customers don't pick airlines for Wi-Fi and that most airlines promising Starlink haven't started. The numbers say otherwise, and Delta's Amazon Leo plan just lost 40 satellites on a failed Vulcan launch.",
+      "pinned": false,
+      "imageAlt": "A Delta Air Lines Airbus A321neo climbing against a clear blue sky",
+      "author": "Alex R",
+      "seoTitle": "Delta's CEO says most Starlink airlines \"haven't even started yet.\" United has it on 635 jets",
+      "picture": {
+        "base": "/assets/dispatch/delta-a321neo-boston-2025",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1920,
+          1080
+        ]
+      },
+      "minutes": 4
+    },
+    {
+      "url": "/dispatch/ramaphosa-musk-starlink-south-africa.html",
+      "title": "Ramaphosa tells Musk to follow South Africa's rules. Musk calls them racist. Here's where Starlink's licence stands",
+      "date": "2026-11-17T14:37:45Z",
+      "topic": "spacex",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/starlink-dish-hero.jpg",
+      "summary": "South Africa's president said in California that Starlink must follow local ownership rules. Musk replied that the country is \"super racist.\" The real fight is over a 30% rule, a stalled policy fix and a court case filed on 9 Nov.",
+      "pinned": false,
+      "imageAlt": "A white rectangular Starlink satellite dish standing on a small kickstand on dry grass, with its cable trailing off to the left",
+      "author": "Alex R",
+      "seoTitle": "Ramaphosa tells Musk to follow South Africa's rules. Musk calls them racist. Here's where Starlink's licence stands",
+      "picture": {
+        "base": "/assets/dispatch/starlink-dish-hero",
+        "widths": [
+          480,
+          960,
+          1600
+        ],
+        "ratio": [
+          1600,
+          900
+        ]
+      },
+      "minutes": 4
+    },
     {
       "url": "/dispatch/tesla-giga-berlin-cybercab-factory.html",
       "title": "Tesla's €3 billion Berlin hall is sized for 1 million Cybercabs a year. EU rules allow 1,500",
