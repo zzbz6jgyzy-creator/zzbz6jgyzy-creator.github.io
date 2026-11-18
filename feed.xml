@@ -744,6 +744,14 @@
       <description>2026.38.5.13 moved from 422 to 523 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
     </item>
     <item>
+      <title>Tracker: Texas Cybercab count</title>
+      <link>https://superchargeddaily.com/cybercab.html</link>
+      <guid isPermaLink="false">https://superchargeddaily.com/cybercab.html#changed-robotaxi:tx-cybercab-2026-11-17T00:00:00.000Z-773</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+      <category>robotaxi</category>
+      <description>Texas Cybercab registrations moved from 573 to 773. A registered car isn’t necessarily in service yet.</description>
+    </item>
+    <item>
       <title>Tracker: Starlink McDowell snapshot</title>
       <link>https://superchargeddaily.com/starlink.html</link>
       <guid isPermaLink="false">https://superchargeddaily.com/starlink.html#changed-starlink:in-orbit-2026-11-16T01:07:30.000Z-11213</guid>
@@ -814,14 +822,6 @@
       <pubDate>Thu, 29 Oct 2026 02:30:58 +0000</pubDate>
       <category>software</category>
       <description>2026.38.5.11 moved from 792 to 850 cars tracked by Teslascope. That’s Teslascope’s count, not Tesla confirming a regional rollout or that your car will get it.</description>
-    </item>
-    <item>
-      <title>Tracker: Texas Cybercab count</title>
-      <link>https://superchargeddaily.com/cybercab.html</link>
-      <guid isPermaLink="false">https://superchargeddaily.com/cybercab.html#changed-robotaxi:tx-cybercab-2026-10-28T00:00:00.000Z-573</guid>
-      <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
-      <category>robotaxi</category>
-      <description>Texas Cybercab registrations moved from 544 to 573. A registered car isn’t necessarily in service yet.</description>
     </item>
   </channel>
 </rss>
