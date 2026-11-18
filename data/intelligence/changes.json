@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-18T02:52:07.211Z",
+  "updated": "2026-11-18T09:15:48.465Z",
   "changes": [
+    {
+      "type": "changed",
+      "factId": "starlink:in-orbit",
+      "topic": "starlink",
+      "tracker": "starlink",
+      "field": "in-orbit",
+      "previous": "11213",
+      "next": "11208",
+      "at": "2026-11-18T02:12:58.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Jonathan McDowell Starlink statistics",
+      "sourceUrl": "https://planet4589.org/space/con/star/stats.html",
+      "href": "/starlink.html",
+      "summary": "Starlink in orbit changed from 11213 to 11208.",
+      "title": "Starlink in orbit",
+      "id": "changed|starlink:in-orbit|2026-11-18T02:12:58.000Z|11208"
+    },
     {
       "type": "logged",
       "factId": "dispatch:/dispatch/delta-bastian-starlink-claim.html",
