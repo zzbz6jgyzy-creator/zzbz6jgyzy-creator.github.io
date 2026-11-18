@@ -52,8 +52,8 @@
       ]
     },
     "starlink": {
-      "file": "/assets/js/starlink.bundle.0c538e1d60.js",
-      "bytes": 24333,
+      "file": "/assets/js/starlink.bundle.06823a3fa9.js",
+      "bytes": 24332,
       "sources": [
         "starlink-data.js",
         "starlink-live.js",
@@ -63,8 +63,8 @@
       ]
     },
     "starlink-orbit": {
-      "file": "/assets/js/starlink-orbit.bundle.c27cf33e73.js",
-      "bytes": 32226,
+      "file": "/assets/js/starlink-orbit.bundle.684730135a.js",
+      "bytes": 32230,
       "sources": [
         "cesium-lazy.js",
         "starlink-identify.js",
