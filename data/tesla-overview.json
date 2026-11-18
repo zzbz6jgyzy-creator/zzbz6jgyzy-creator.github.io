@@ -173,6 +173,24 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-texas-register-passes-waymo.html",
+      "image": "/assets/dispatch/tesla-cybercab-santana-row-2024.jpg",
+      "title": "200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov",
+      "summary": "Texas DMV records now list 1,507 Tesla Robotaxi vehicles, 773 of them Cybercabs, against Waymo's 1,321. A single batch of 200 Cybercabs with 2027 model-year VINs did it. Registered isn't the same as carrying riders.",
+      "tag": "Tesla / Robotaxi",
+      "date": "2026-11-18T17:26:00Z",
+      "thumb": "/assets/dispatch/tesla-cybercab-santana-row-2024-480w.webp"
+    },
+    {
+      "url": "/dispatch/tesla-powercore-solid-state-transformer.html",
+      "image": "/assets/dispatch/tesla-gigafactory-nevada-2019.jpg",
+      "title": "Tesla's Powercore puts a transformer, breaker and inverter in one box. First units run in 2027",
+      "summary": "Tesla Energy's Powercore is a solid-state medium-voltage unit rated 7.4 MW that replaces a battery site's or data center's separate transformer and inverter. Tesla says first units operate in 2027; there's no price, factory or customer yet.",
+      "tag": "Tesla / Energy",
+      "date": "2026-11-18T17:24:00Z",
+      "thumb": "/assets/dispatch/tesla-gigafactory-nevada-2019-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-giga-berlin-cybercab-factory.html",
       "image": "/assets/dispatch/giga-berlin-aerial-2023.jpg",
       "title": "Tesla's €3 billion Berlin hall is sized for 1 million Cybercabs a year. EU rules allow 1,500",
@@ -207,25 +225,7 @@
       "tag": "Tesla / Cybercab",
       "date": "2026-11-14T08:56:00Z",
       "thumb": "/assets/dispatch/tesla-cybercab-i280-palo-alto-2026-480w.webp"
-    },
-    {
-      "url": "/dispatch/spacex-tesla-merger-december.html",
-      "image": "/assets/dispatch/starbase-boca-chica-june-2021.jpg",
-      "title": "Bloomberg says SpaceX and Tesla talks have moved to terms, with a December announcement possible (as of 12 Nov 2026)",
-      "summary": "Bloomberg, citing unnamed sources, said on 12 Nov 2026 that SpaceX and Tesla boards are negotiating terms and governance, with an announcement as soon as December or early 2027. Neither company has confirmed this. At Thursday's closes, a no-premium swap works out to about 2.84 SPCX shares per TSLA share. That figure is a calculation, not a reported term.",
-      "tag": "Tesla",
-      "date": "2026-11-13T08:59:43Z",
-      "thumb": "/assets/dispatch/starbase-boca-chica-june-2021-480w.webp"
-    },
-    {
-      "url": "/dispatch/robotaxi-24-7-every-city.html",
-      "image": "/assets/dispatch/tesla-cybercab-harrison-sf-june-2026.jpg",
-      "title": "Tesla Robotaxi now runs 24/7 in all eight cities (as of 11 Nov 2026)",
-      "summary": "Tesla's Robotaxi account says rides now run around the clock in every city where the service operates, as of 11 Nov 2026. That's 168 hours a week, up from 112 at the end of August. The 2am close lasted 12 days. When I wrote that change up, I projected 24/7 around New Year's Eve if Tesla kept its August-to-October pace. It got there about 50 days sooner.",
-      "tag": "Robotaxi",
-      "date": "2026-11-12T14:54:53Z",
-      "thumb": "/assets/dispatch/tesla-cybercab-harrison-sf-june-2026-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-17T14:37:45Z"
+  "articlesUpdated": "2026-11-18T17:26:00Z"
 }
