@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-18T12:59:48Z",
- "checked": "2026-11-18T12:59:48Z",
+ "updated": "2026-11-18T21:24:23Z",
+ "checked": "2026-11-18T21:24:23Z",
  "results": [
   {
    "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
@@ -279,7 +279,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-17T16:09:07Z",
+   "last_updated": "2026-11-18T16:09:27Z",
    "mission": {
     "name": "USSF-317",
     "type": "Government/Top Secret",
@@ -350,6 +350,38 @@
     "orbit": {
      "name": "Polar Orbit",
      "abbrev": "PO"
+    }
+   },
+   "vehicle": "Falcon 9 Block 5"
+  },
+  {
+   "id": "b0d27def-0a88-44c3-a947-1fd5b8503e2c",
+   "name": "Falcon 9 Block 5 | USSF-380",
+   "net": "2026-11-28T04:53:00Z",
+   "window_start": "2026-11-28T04:53:00Z",
+   "window_end": "2026-11-28T08:53:00Z",
+   "url": "https://ll.thespacedevs.com/2.3.0/launches/b0d27def-0a88-44c3-a947-1fd5b8503e2c/",
+   "status": {
+    "name": "Go for Launch",
+    "abbrev": "Go"
+   },
+   "net_precision": {
+    "name": "Minute",
+    "abbrev": "MIN"
+   },
+   "pad": {
+    "name": "Space Launch Complex 4E",
+    "location": {
+     "name": "Vandenberg SFB, CA, USA"
+    }
+   },
+   "last_updated": "2026-11-18T19:03:08Z",
+   "mission": {
+    "name": "USSF-380",
+    "type": "Government/Top Secret",
+    "orbit": {
+     "name": "Low Earth Orbit",
+     "abbrev": "LEO"
     }
    },
    "vehicle": "Falcon 9 Block 5"

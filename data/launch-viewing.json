@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-18T12:59:48Z",
+ "checked": "2026-11-18T21:24:23Z",
  "editorialUpdated": "2026-11-17T08:45:00+00:00",
  "presets": [
   {
@@ -812,6 +812,36 @@
     "article": "",
     "status": "scheduled"
    },
+   "pad": {
+    "id": "slc4e",
+    "name": "Vandenberg · SLC-4E",
+    "short": "Vandenberg",
+    "lat": 34.632,
+    "lon": -120.611,
+    "az": 186,
+    "coast": "west"
+   }
+  },
+  {
+   "id": "ussf-380",
+   "title": "Falcon 9 Block 5 | USSF-380",
+   "group": "spacex",
+   "category": "Launch",
+   "start": "2026-11-28T04:53:00Z",
+   "end": "",
+   "date": "2026-11-28",
+   "precision": "datetime",
+   "status": "Go",
+   "note": "Government/Top Secret · Low Earth Orbit",
+   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "href": "",
+   "sources": [],
+   "origin": "Launch Library 2",
+   "providerId": "b0d27def-0a88-44c3-a947-1fd5b8503e2c",
+   "windowStart": "2026-11-28T04:53:00Z",
+   "windowEnd": "2026-11-28T08:53:00Z",
+   "vehicle": "Falcon 9 Block 5",
+   "providerStatus": "Go for Launch",
    "pad": {
     "id": "slc4e",
     "name": "Vandenberg · SLC-4E",
