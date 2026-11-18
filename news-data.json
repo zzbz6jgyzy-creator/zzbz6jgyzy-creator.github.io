@@ -1,27 +1,336 @@
 {
-  "updated": "2026-11-18T02:51:35Z",
+  "updated": "2026-11-18T11:31:10Z",
   "items": [
     {
-      "id": "a486c813f26a",
-      "topic": "tesla",
-      "title": "Tesla Robotaxi Follows Construction Workers' Hand Gestures at Intersection - BASENOR",
-      "source": "BASENOR - Tesla Accessories",
-      "url": "https://www.basenor.com/blogs/news/tesla-robotaxi-follows-construction-workers-hand-gestures-at-intersection",
-      "published": "2026-11-18T02:07:38Z",
+      "id": "d23f2a4649e3",
+      "topic": "spacex",
+      "title": "SpaceX Stock Adds $54 Billion Amid Viral AI in Space Discussions",
+      "source": "BeInCrypto",
+      "url": "https://beincrypto.com/spacex-stock-adds-54-billion-ai-space/",
+      "published": "2026-11-18T10:49:02Z",
       "snippet": "",
-      "kind": "milestone",
-      "score": 19
+      "kind": "general",
+      "score": 4
     },
     {
-      "id": "8db8acea8331",
+      "id": "e84efcd900e1",
       "topic": "tesla",
-      "title": "Tesla Opens Sales of Autonomous Cybercab for ‘Select’ Customers",
-      "source": "WSJ",
-      "url": "https://www.wsj.com/business/autos/tesla-opens-sales-of-autonomous-cybercab-for-select-customers-8d2feae3",
-      "published": "2026-11-18T01:46:19Z",
+      "title": "Tesla’s Invite-Only Cybercab Isn’t for You",
+      "source": "Bloomberg.com",
+      "url": "https://www.bloomberg.com/opinion/articles/2026-11-18/tesla-s-cybercab-isn-t-for-you-it-s-geared-to-robotaxi-fleets",
+      "published": "2026-11-18T10:30:12Z",
       "snippet": "",
       "kind": "milestone",
       "score": 15
+    },
+    {
+      "id": "7762144dec16",
+      "topic": "spacex",
+      "title": "Could SpaceX Actually Climb 465%? Or Is Raymond James Totally Wrong?",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/could-spacex-actually-climb-465-102205340.html",
+      "published": "2026-11-18T10:22:05Z",
+      "snippet": "",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 1
+    },
+    {
+      "id": "eec9a53061f3",
+      "topic": "grok",
+      "title": "Told four times to stop, Grok tried to open Gmail and Slack anyway",
+      "source": "Cybernews",
+      "url": "https://cybernews.com/news/grok-bot-unapproved-company-data-requests/",
+      "published": "2026-11-18T10:20:14Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "fc54aaac5982",
+      "topic": "tesla",
+      "title": "Cybercab Unsupervised in 8 Robotaxi Cities, Tesla AI Head",
+      "source": "shattered.io",
+      "url": "https://shattered.io/tesla-cybercab-customer-unsupervised-robotaxi-geo-locations-8-cities/",
+      "published": "2026-11-18T10:16:33Z",
+      "snippet": "",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
+      "id": "731ccf3e24c2",
+      "topic": "tesla",
+      "title": "Tesla Will Invest $3.31 Billion to Expand German Factory for Cybercab Production",
+      "source": "WSJ",
+      "url": "https://www.wsj.com/business/autos/tesla-to-invest-over-3-billion-to-expand-german-factory-in-cybercab-bet-6355017a",
+      "published": "2026-11-18T10:16:18Z",
+      "snippet": "",
+      "kind": "milestone",
+      "score": 15
+    },
+    {
+      "id": "cb58ac515720",
+      "topic": "spacex",
+      "title": "SpaceX Starship landing livestream: Watch the catch attempt live",
+      "source": "Mashable",
+      "url": "https://mashable.com/science/spacex-starship-landing-livestream-catch-attempt",
+      "published": "2026-11-18T09:53:15Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.Kg4cfOWiUAW7vLrdjV4wMA&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
+      "id": "a3291c8e81c2",
+      "topic": "tesla",
+      "title": "Tesla App v4.63.0: 3 Hidden Features Found in the Code - BASENOR",
+      "source": "BASENOR - Tesla Accessories",
+      "url": "https://www.basenor.com/blogs/news/tesla-app-v4-63-0-3-hidden-features-found-in-the-code",
+      "published": "2026-11-18T09:04:50Z",
+      "snippet": "",
+      "kind": "accessory",
+      "score": 2
+    },
+    {
+      "id": "03f6c4058156",
+      "topic": "grok",
+      "title": "Grok vs ChatGPT: Which AI Chatbot Wins in 2026?",
+      "source": "Fello AI",
+      "url": "https://felloai.com/grok-vs-chatgpt/",
+      "published": "2026-11-18T08:53:11Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "faea6a00dbc8",
+      "topic": "tesla",
+      "title": "Tesla Is Now Taking Cybercab Orders. Here's Where I Think the Stock Will Be in 2030.",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/11/18/tesla-is-now-taking-cybercab-orders-here-s-where-i-think-the-stock-will-be-in-2030/",
+      "published": "2026-11-18T08:43:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.7TIL_Yg4AolI9uojrraO1Q&pid=News&w=640",
+      "kind": "milestone",
+      "score": 5
+    },
+    {
+      "id": "d405e01eda2a",
+      "topic": "tesla",
+      "title": "Tesla Robotaxi Obeys Hand Signals, 0 Drivers Aboard",
+      "source": "shattered.io",
+      "url": "https://shattered.io/tesla-robotaxi-hand-signals-construction-zone-texas-zero-drivers/",
+      "published": "2026-11-18T07:54:13Z",
+      "snippet": "",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
+      "id": "88ee23974dcf",
+      "topic": "grok",
+      "title": "Apple launches Health AI Usage Study with OpenEvidence for 200,000 iPhone users",
+      "source": "Pasquale Pillitteri",
+      "url": "https://pasqualepillitteri.it/en/news/34621/apple-launches-health-ai-usage-study-openevidence",
+      "published": "2026-11-18T07:28:10Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "d39f4dc1d972",
+      "topic": "spacex",
+      "title": "Musk: SpaceX Had a 90% Chance of Failing in 2002",
+      "source": "shattered.io",
+      "url": "https://shattered.io/musk-spacex-90-percent-chance-of-failing-mid-2002-recruiting/",
+      "published": "2026-11-18T07:21:16Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "7cf301150cb0",
+      "topic": "grok",
+      "title": "California bans Waymo robotaxis from its freeways",
+      "source": "Pasquale Pillitteri",
+      "url": "https://pasqualepillitteri.it/en/news/34557/california-bans-waymo-robotaxis-from-freeways",
+      "published": "2026-11-18T07:11:50Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "e746aee00076",
+      "topic": "tesla",
+      "title": "Tesla’s Powercore could change how data centers get power",
+      "source": "Teslarati",
+      "url": "https://www.teslarati.com/tesla-powercore-data-center-solid-state-voltage-transformer/",
+      "published": "2026-11-18T06:59:11Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.bs2rEWKnlteQxHxD3IHdyA&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 11
+    },
+    {
+      "id": "3c2404e9809e",
+      "topic": "spacex",
+      "title": "NASA, SpaceX Stand Down from Dragon’s Undocking on Wednesday",
+      "source": "NASA (.gov)",
+      "url": "https://www.nasa.gov/blogs/spacestation/2026/11/18/nasa-spacex-stand-down-from-dragons-undocking-on-wednesday/",
+      "published": "2026-11-18T06:46:13Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.g4XnaMe5UsaicPVmk6dG7w&pid=News&w=640",
+      "kind": "general",
+      "score": 10
+    },
+    {
+      "id": "c076e5e03cbc",
+      "topic": "spacex",
+      "title": "SpaceX vs. Anthropic: Here’s Which Mega-IPO Stock I’d Buy After Anthropic Goes Public.",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/11/18/spacex-vs-anthropic-here-s-which-mega-ipo-stock-i-d-buy-after-anthropic-goes-public/",
+      "published": "2026-11-18T06:09:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": -2
+    },
+    {
+      "id": "9ab4b266619a",
+      "topic": "grok",
+      "title": "ArcticRAT malware and Grok: Zimperium’s findings",
+      "source": "NeoTeo",
+      "url": "https://www.neoteo.com/en/zimperium-says-arcticrat-used-grok-to-sort-stolen-android-data",
+      "published": "2026-11-18T05:48:27Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "e34f0d984233",
+      "topic": "grok",
+      "title": "How Much Does AI Cost in 2026? The Complete Pricing Comparison",
+      "source": "Fello AI",
+      "url": "https://felloai.com/ai-pricing-comparison/",
+      "published": "2026-11-18T05:41:00Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "bd956e165b74",
+      "topic": "tesla",
+      "title": "Tesla-SpaceX Merger Is 'Almost Inconceivable' to Avoid, Says Elon Musk Biographer — 'You'll Know More' on Dec. 3",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/technology/articles/tesla-spacex-merger-almost-inconceivable-043006339.html",
+      "published": "2026-11-18T05:38:44Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.v2JRNlCpjJGSj8Tx1UbNxA&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "45689dc85820",
+      "topic": "tesla",
+      "title": "Tesla Futures Margins",
+      "source": "CME Group",
+      "url": "https://www.cmegroup.com/markets/equities/single-stock/tesla.margins.html",
+      "published": "2026-11-18T05:21:49Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "4612b1a82b7e",
+      "topic": "grok",
+      "title": "8 Best ChatGPT Alternatives for Mac: Multi-Model Apps Ranked",
+      "source": "Fello AI",
+      "url": "https://felloai.com/best-chatgpt-alternatives-mac-multi-model-apps/",
+      "published": "2026-11-18T05:12:37Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "b92c1984bf75",
+      "topic": "tesla",
+      "title": "Tesla Was Supposed To Be Losing Europe. The Data Says Otherwise",
+      "source": "InsideEVs",
+      "url": "https://insideevs.com/news/797093/tesla-sales-europe-april-2026/",
+      "published": "2026-11-18T04:34:15Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "3c508cb06799",
+      "topic": "grok",
+      "title": "Devin Bots are amazing. A new era of AI agents revealed through a thorough comparison with Grok Bot, Dots, and Muse",
+      "source": "note",
+      "url": "https://note.com/isshi1/n/nc0168634a6c7?hl=en",
+      "published": "2026-11-18T03:31:00Z",
+      "snippet": "On November 17, 2026, Cognition announced its new service, \"Devin Bots.\"In recent years, AI has evolved from chatbots that answer questions to AI agents that perform actual tasks.While xAI's \"Grok Bot ...",
+      "image": "https://www.bing.com/th?id=ONUT.8RTTm9yfqyNLidkmK5CMFw&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "84f29213e5f5",
+      "topic": "tesla",
+      "title": "Tesla unveils world’s most advanced solid-state power platform with 98.86% efficiency",
+      "source": "Interesting Engineering",
+      "url": "https://interestingengineering.com/energy/tesla-powercore-solid-state-power-platform",
+      "published": "2026-11-18T03:26:00Z",
+      "snippet": "",
+      "image": "https://www.bing.com/th?id=ONUT.kEhUF4p8awYHoVTTulhHSg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "a502e2c6c259",
+      "topic": "tesla",
+      "title": "Tesla FSD 14 robotaxi near misses highlight ongoing safety challenges",
+      "source": "Electrified on MSN",
+      "url": "https://www.msn.com/en-gb/news/other/tesla-fsd-14-robotaxi-near-misses-highlight-ongoing-safety-challenges/vi-AA1PHSB4",
+      "published": "2026-11-18T03:13:13Z",
+      "snippet": "The video reviews Tesla FSD 14 used as a potential robotaxi platform, showing several near misses and the safety issues they reveal. It compiles footage of close calls and discusses what they mean for ...",
+      "image": "https://www.bing.com/th?id=ONUT.ZjYId8HFBKdhcBjDtzQ4Bw&pid=News&w=640",
+      "kind": "software",
+      "score": 11
+    },
+    {
+      "id": "94abaf3346ae",
+      "topic": "grok",
+      "title": "Grok Bot kept trying to access company data even after being told to stop",
+      "source": "Cybernews",
+      "url": "https://cybernews.com/news/grok-bot-unapproved-company-data-requests/",
+      "published": "2026-11-18T02:14:00Z",
+      "snippet": "NewCore says two Grok Bot agents made 31 unapproved attempts to access company data, even after being told to stop. All were blocked.",
+      "image": "https://www.bing.com/th?id=ONUT.v_iYQ7VQv3oGpG2ZxQrfgg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "cace760515d1",
+      "topic": "grok",
+      "title": "Grok Bot as Corporate Expense Manager: How It Works - BASENOR",
+      "source": "BASENOR - Tesla Accessories",
+      "url": "https://www.basenor.com/blogs/news/grok-bot-as-corporate-expense-manager-how-it-works",
+      "published": "2026-11-18T02:03:48Z",
+      "snippet": "",
+      "kind": "accessory",
+      "score": 2
+    },
+    {
+      "id": "eedb0e381eb1",
+      "topic": "spacex",
+      "title": "Elon Musk's Starlink banned from operating in top African country",
+      "source": "Tuko News on MSN",
+      "url": "https://www.msn.com/en-xl/news/other/elon-musk-s-starlink-banned-from-operating-in-top-african-country/ar-AA2hGt8b",
+      "published": "2026-11-18T01:17:20Z",
+      "snippet": "ICASA orders Starlink to halt unauthorised operations in South Africa, as a licensing dispute over empowerment rules puts thousands of users at risk now.",
+      "image": "https://www.bing.com/th?id=ONUT.q_-HblhScN9h5L1vfgyxtQ&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "4d7e4c360295",
@@ -42,42 +351,8 @@
       "url": "https://www.bloomberg.com/news/articles/2026-11-16/anthropic-faces-a-longer-wait-than-spacex-to-join-stock-indexes",
       "published": "2026-11-17T23:11:52Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.VY940WNHhfM2RQHF6L41ig&pid=News&w=640",
       "kind": "general",
       "score": 8
-    },
-    {
-      "id": "c6937505910f",
-      "topic": "spacex",
-      "title": "SpaceX aims to snatch both halves of Starship out of the air: watch it",
-      "source": "Mashable",
-      "url": "https://mashable.com/science/spacex-test-two-catches-starship-ship-and-booster",
-      "published": "2026-11-17T23:11:04Z",
-      "snippet": "",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "968c8035d75f",
-      "topic": "tesla",
-      "title": "Tesla Customer Solar Now Generates 2x the Company's Energy Use - BASENOR",
-      "source": "BASENOR - Tesla Accessories",
-      "url": "https://www.basenor.com/blogs/news/tesla-customer-solar-now-generates-2x-the-companys-energy-use",
-      "published": "2026-11-17T23:04:51Z",
-      "snippet": "",
-      "kind": "accessory",
-      "score": 2
-    },
-    {
-      "id": "2e86677cc552",
-      "topic": "spacex",
-      "title": "SpaceX Stock Adds $54 Billion Amid Viral AI in Space Discussions",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-stock-adds-54-billion-230223184.html",
-      "published": "2026-11-17T23:02:23Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "a995999e1cdb",
@@ -87,21 +362,8 @@
       "url": "https://www.politico.com/news/2026/11/17/texas-issues-air-permit-for-massive-spacex-data-center-01170758",
       "published": "2026-11-17T22:39:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.BZWDjeSSjYhF3nEi1UxlRA&pid=News&w=640",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "f723d7175262",
-      "topic": "tesla",
-      "title": "Tesla plans $3.3 billion Cybercab investment. Here's what's coming",
-      "source": "USA Today",
-      "url": "https://www.usatoday.com/story/cars/news/2026/11/17/tesla-cybercab-robotaxi-expansion/92831500007/",
-      "published": "2026-11-17T22:33:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.Us791U7qkOhHJHLTK3KojA&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
     },
     {
       "id": "e84ff34b8e30",
@@ -113,52 +375,6 @@
       "snippet": "",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "72e5e4f851f0",
-      "topic": "tesla",
-      "title": "NIO vs. Tesla: Which EV Stock Is a Better Buy for 2027?",
-      "source": "The Motley Fool",
-      "url": "https://www.fool.com/coverage/better-buy/2026/11/17/nio-vs-tesla-which-ev-stock-is-a-better-buy-for-2027/",
-      "published": "2026-11-17T22:19:00Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.bHoBBpKZnORcJOSvLQNL_Q&pid=News&w=640",
-      "kind": "general",
-      "score": -2
-    },
-    {
-      "id": "8095af32ba7d",
-      "topic": "tesla",
-      "title": "Op-Ed: I spent a day being driven by a Tesla. Every automaker now has an existential choice to make.",
-      "source": "Car Dealership Guy News",
-      "url": "https://news.dealershipguy.com/p/op-ed-i-spent-a-day-being-driven-by-a-tesla-every-automaker-now-has-an-existential-choice-to-make-83",
-      "published": "2026-11-17T21:50:57Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "8722fd57d5cf",
-      "topic": "spacex",
-      "title": "Nvidia, Intel, Salesforce, SpaceX, Anthropic, Sandisk, Home Depot, and More That Explain Today’s Market",
-      "source": "Barron's",
-      "url": "https://www.barrons.com/articles/stock-movers-5503b6f4",
-      "published": "2026-11-17T21:46:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "bea48a0a0dc0",
-      "topic": "tesla",
-      "title": "Tesla changes vehicle computers from ‘AI’ to ‘SI,’ reflecting President Trump change",
-      "source": "Teslarati",
-      "url": "https://www.teslarati.com/tesla-changes-vehicle-computers-from-ai-to-si-reflecting-president-trump-change/",
-      "published": "2026-11-17T21:43:11Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.eD5g5EE3JPbTf43Us4zvYQ&pid=News&w=640",
-      "kind": "general",
-      "score": 14
     },
     {
       "id": "8a72544f5894",
@@ -173,18 +389,6 @@
       "score": 4
     },
     {
-      "id": "f5afab42b791",
-      "topic": "spacex",
-      "title": "SpaceX Just Caught a Falling Starship. Now What?",
-      "source": "Gizmodo",
-      "url": "https://gizmodo.com/spacex-just-caught-a-falling-starship-now-what-2000841179",
-      "published": "2026-11-17T21:35:14Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.9bM0vkR6D9vsj61WtmqoPg&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
       "id": "ff9f90953190",
       "topic": "spacex",
       "title": "SpaceX, Rivals Win $985 Million In Launch Awards. Cathie Wood, David Tepper Shift Space Holdings.",
@@ -192,21 +396,21 @@
       "url": "https://www.investors.com/news/spacex-nssl-launch-contract-985-million-blue-origin-ula-cathie-wood-ark-david-tepper-appaloosa-space-stocks/",
       "published": "2026-11-17T21:29:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.7pwChysZDUZUntxWKhUfqw&pid=News&w=640",
       "kind": "launch",
       "score": 12
     },
     {
-      "id": "e6bb31b58799",
+      "id": "040d5b0933cb",
       "topic": "spacex",
-      "title": "SpaceX Misses Its Double Catch but Still Makes History by Catching the Starship",
-      "source": "CNET",
-      "url": "https://www.cnet.com/science/space/spacex-starship-flight-15-double-catch/",
-      "published": "2026-11-17T21:26:00Z",
+      "title": "SpaceX Stock (SPCX) Could Crush Wall Street’s Estimates. Here’s Why",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-stock-spcx-could-crush-210700242.html",
+      "published": "2026-11-17T21:07:00Z",
       "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.9bM0vkR6D9vsj61WtmqoPg&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
+      "image": "https://www.bing.com/th?id=ONUT.4gWTWyrMLXOGtJpAYt43Ug&pid=News&w=640",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": 1
     },
     {
       "id": "ab8b05f1c036",
@@ -220,19 +424,6 @@
       "score": 4
     },
     {
-      "id": "a2f205b2e97e",
-      "topic": "spacex",
-      "title": "Prediction: SpaceX Stock Could Go Parabolic After Anthropic's IPO. Here's Why.",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/prediction-spacex-stock-could-parabolic-202002590.html",
-      "published": "2026-11-17T20:20:02Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.cMfgNs99Dg29yBXX9PTAsA&pid=News&w=640",
-      "kind": "speculation",
-      "flag": "speculation",
-      "score": 1
-    },
-    {
       "id": "51109edca059",
       "topic": "spacex",
       "title": "SpaceX Debt for AI Chips to Hit Market as Soon as This Week",
@@ -243,6 +434,18 @@
       "image": "https://www.bing.com/th?id=ONUT.3m_apSO03ur2TtLNVy5t-w&pid=News&w=640",
       "kind": "general",
       "score": 8
+    },
+    {
+      "id": "f36abaa866ea",
+      "topic": "spacex",
+      "title": "Prediction: SpaceX Stock Could Go Parabolic After Anthropic's IPO. Here's Why.",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/11/17/prediction-spacex-stock-could-go-parabolic-after-anthropic-s-ipo-here-s-why/",
+      "published": "2026-11-17T20:00:00Z",
+      "snippet": "",
+      "kind": "speculation",
+      "flag": "speculation",
+      "score": -5
     },
     {
       "id": "698a0d472d46",
@@ -279,6 +482,17 @@
       "score": 10
     },
     {
+      "id": "a4cff5bf26a9",
+      "topic": "tesla",
+      "title": "Why Lucid Is Cheering The End Of The Tesla Model S And Model X",
+      "source": "InsideEVs",
+      "url": "https://insideevs.com/news/790690/lucid-happy-about-tesla-model-s-x-demise/",
+      "published": "2026-11-17T18:35:03Z",
+      "snippet": "",
+      "kind": "general",
+      "score": 4
+    },
+    {
       "id": "f00a975ede75",
       "topic": "spacex",
       "title": "SPCX Stock In Focus: SpaceX To Reportedly Launch $4B Bond Sale This Week",
@@ -291,43 +505,15 @@
       "score": 12
     },
     {
-      "id": "3ae443de68d3",
-      "topic": "spacex",
-      "title": "SpaceX Catches Starship While ULA, Blue Origin Stumble. No One Is Catching Musk.",
-      "source": "Barron's",
-      "url": "https://www.barrons.com/articles/spacex-extends-rocket-lead-blue-origin-d9e88ca1",
-      "published": "2026-11-17T18:07:00Z",
-      "snippet": "",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "b92c1984bf75",
-      "topic": "tesla",
-      "title": "Tesla Was Supposed To Be Losing Europe. The Data Says Otherwise",
-      "source": "InsideEVs",
-      "url": "https://insideevs.com/news/797093/tesla-sales-europe-april-2026/",
-      "published": "2026-11-17T17:56:18Z",
+      "id": "6ded7d60c47b",
+      "topic": "grok",
+      "title": "Isomorphic Labs raises $5 billion to design drugs with AI",
+      "source": "Pasquale Pillitteri",
+      "url": "https://pasqualepillitteri.it/en/news/34400/isomorphic-labs-raises-5-billion-ai-drug-design",
+      "published": "2026-11-17T17:16:25Z",
       "snippet": "",
       "kind": "general",
       "score": 4
-    },
-    {
-      "id": "4a74653c0976",
-      "topic": "spacex",
-      "title": "Space Exploration Technologies Corp. (SPCX) stock price, news, quote and history",
-      "source": "Yahoo Finance Singapore",
-      "url": "https://sg.finance.yahoo.com/quote/SPCX/",
-      "published": "2026-11-17T17:04:28Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4,
-      "related": [
-        {
-          "source": "Yahoo! Finance Canada",
-          "url": "https://ca.finance.yahoo.com/quote/SPCX/"
-        }
-      ]
     },
     {
       "id": "48ee80e4999e",
@@ -342,39 +528,40 @@
       "score": 4
     },
     {
+      "id": "0d0c7f2e696b",
+      "topic": "spacex",
+      "title": "Ukraine carried out Crimean Bridge strike without Starlink, using its own communications technology, Ukrainian officer tells The Times",
+      "source": "Meduza",
+      "url": "https://meduza.io/en/news/2026/11/18/ukraine-carried-out-crimean-bridge-strike-without-starlink-using-its-own-communications-technology-ukrainian-officer-tells-the-times",
+      "published": "2026-11-17T16:36:00Z",
+      "snippet": "Ukrainian forces carried out the November 17 attack on the Crimean Bridge without using Starlink satellite communications or its military version, Starshield, a Ukrainian officer involved in the ...",
+      "image": "https://www.bing.com/th?id=ONUT.6XogBM_rlNODRT9NVF0uwg&pid=News&w=640",
+      "kind": "general",
+      "score": 4
+    },
+    {
+      "id": "0f2fdc5e2bab",
+      "topic": "tesla",
+      "title": "“Of Course,” Musk Says When Told Tesla’s $1.6 Trillion Already Prices In Moderate Cybercab Success.",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/course-musk-says-told-tesla-031857554.html",
+      "published": "2026-11-17T16:00:00Z",
+      "snippet": "Key TakeawaysElon Musk replied “Of course” to an X post saying moderate Cybercab success is already priced into Tesla at $1. 6 trillion.",
+      "image": "https://www.bing.com/th?id=ONUT.LklYUK-JAFqhC1tK5aYDcw&pid=News&w=640",
+      "kind": "milestone",
+      "score": 11
+    },
+    {
       "id": "96e75b9b049f",
       "topic": "spacex",
       "title": "Ambani Seeks to Build Satellite Capacity for Starlink Challenge",
       "source": "Bloomberg",
       "url": "https://www.bloomberg.com/news/articles/2026-11-18/ambani-seeks-to-build-satellite-capacity-for-starlink-challenge",
       "published": "2026-11-17T16:00:00Z",
-      "snippet": "Billionaire Mukesh Ambani-led Reliance Group is exploring manufacturing partnerships to support its planned 1,600-satellite broadband constellation, people familiar with the matter said, in a push to create an Indian-con",
-      "image": "https://www.bing.com/th?id=ONUT.4UBWNc9CHzZavNWOpWlGBA&pid=News&w=640",
+      "snippet": "Billionaire Mukesh Ambani-led Reliance Group is exploring manufacturing partnerships to support its planned 1,600-satellite broadband constellation, people familiar with the matter said, in a push to ...",
+      "image": "https://www.bing.com/th?id=ONUT.3z1w05cvcgcKF4VG28WkCA&pid=News&w=640",
       "kind": "general",
       "score": 8
-    },
-    {
-      "id": "4fb295f289e7",
-      "topic": "tesla",
-      "title": "Tesla planning €3BN investment in German factory to produce Cybercabs",
-      "source": "DW.com",
-      "url": "https://www.dw.com/en/tesla-planning-3bn-investment-in-german-factory-to-produce-cybercabs/a-79961416",
-      "published": "2026-11-17T15:27:54Z",
-      "snippet": "",
-      "image": "https://www.bing.com/th?id=ONUT.QSKNK_nBwoa_pDpGSHxmlw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "f027b3fe2988",
-      "topic": "grok",
-      "title": "Grok Bot tried staff email and calendars 31 times unasked, then said it was idle",
-      "source": "Martin Cid Magazine",
-      "url": "https://www.martincid.com/technology-sv/grok-bot-unattended-email-slack-access-said-idle/",
-      "published": "2026-11-17T15:11:16Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "ffacf0c695fe",
@@ -410,17 +597,6 @@
       "score": 4
     },
     {
-      "id": "e622db4e84e1",
-      "topic": "grok",
-      "title": "CGTN Spanish: Where Does Our Waste Go? A Behind-the-Scenes Look at a Waste-to-Energy Incineration Plant in Shenzhen",
-      "source": "The Manila Times",
-      "url": "https://www.manilatimes.net/2026/11/17/tmt-newswire/pr-newswire/cgtn-spanish-where-does-our-waste-go-a-behind-the-scenes-look-at-a-waste-to-energy-incineration-plant-in-shenzhen/2472282/amp",
-      "published": "2026-11-17T14:36:36Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "bffde124eb98",
       "topic": "grok",
       "title": "NewCore Research: xAI's Grok Bot Reached for Corporate Data Unprompted, Then Said It Hadn't",
@@ -432,6 +608,18 @@
       "score": 4
     },
     {
+      "id": "8314771b5279",
+      "topic": "spacex",
+      "title": "SpaceX Just Caught a Falling Starship. Now What?",
+      "source": "Gizmodo",
+      "url": "https://gizmodo.com/spacex-just-caught-a-falling-starship-now-what-2000841179",
+      "published": "2026-11-17T13:35:00Z",
+      "snippet": "On Friday, SpaceX set out to make history with the first full recovery of a Starship launch system. The company failed to catch the Super Heavy booster—a surprising outcome, considering it has pulled ...",
+      "image": "https://www.bing.com/th?id=ONUT.9bM0vkR6D9vsj61WtmqoPg&pid=News&w=640",
+      "kind": "launch",
+      "score": 12
+    },
+    {
       "id": "8ae207d0d61a",
       "topic": "tesla",
       "title": "Tesla's $350 Cybertruck toy sold out. Now sellers want $850",
@@ -439,7 +627,7 @@
       "url": "https://www.usatoday.com/story/cars/research/2026/11/17/tesla-cybertruck-rc-racer-resale-price/92825186007/",
       "published": "2026-11-17T13:20:00Z",
       "snippet": "Tesla's $350 Cybertruck RC Racer quickly sold out and is already listed for $850 on eBay as the real electric pickup nears its end.",
-      "image": "https://www.bing.com/th?id=ONUT.HvCnVjVp0srW-EuBsC8WQA&pid=News&w=640",
+      "image": "https://www.bing.com/th?id=ONUT.e9jrx8JVKKYP4_2iPRCbmg&pid=News&w=640",
       "kind": "general",
       "score": 4
     },
@@ -456,38 +644,28 @@
       "score": 1
     },
     {
-      "id": "f663396bb588",
-      "topic": "tesla",
-      "title": "Tesla’s Cybercab Is the Subscription Hell They Told You Not to Worry About",
-      "source": "WIRED",
-      "url": "https://www.wired.com/story/tesla-cybercab-is-the-subscription-hell-they-told-you-not-to-worry-about/",
-      "published": "2026-11-17T10:15:00Z",
-      "snippet": "",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
-      "id": "c415b688f2fd",
-      "topic": "grok",
-      "title": "xAI's New Voices Beat the Competition",
-      "source": "TechJuice",
-      "url": "https://www.techjuice.pk/xai-grok-voice-21-new-flagship-voices-multilingual-tts-api/",
-      "published": "2026-11-17T09:14:36Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "95c62273a629",
       "topic": "tesla",
       "title": "Tesla is finally letting customers buy the Cybercab, but there’s a long list of restrictions",
       "source": "Digital Trends on MSN",
       "url": "https://www.msn.com/en-us/autos/general/tesla-is-finally-letting-customers-buy-the-cybercab-but-there-s-a-long-list-of-restrictions/ar-AA2hCxL1",
       "published": "2026-11-17T07:34:34Z",
-      "snippet": "Tesla has started accepting orders for its Cybercab from select customers in the US. The two-seater autonomous vehicle, which comes without a steering wheel or pedals, is listed for $29,990. However, ...",
+      "snippet": "Tesla has started accepting orders for its Cybercab from select customers in the US. The two-seater autonomous vehicle, which comes without a steering wheel or pedals, is listed for $29,990. However,",
       "image": "https://www.bing.com/th?id=ONUT.UaqVI19yXpNfQDloDQOJVw&pid=News&w=640",
       "kind": "milestone",
       "score": 11
+    },
+    {
+      "id": "7c1eda009187",
+      "topic": "spacex",
+      "title": "Amazon’s Starlink Rival Suffers Launch Failure: What Comes Next",
+      "source": "TechRepublic",
+      "url": "https://www.techrepublic.com/article/news-amazon-leo-vulcan-launch-failure/",
+      "published": "2026-11-17T07:26:00Z",
+      "snippet": "Amazon lost 40 Leo satellites in a Vulcan launch failure. Here’s what businesses should watch when assessing satellite broadband options and rollout plans.",
+      "image": "https://www.bing.com/th?id=ONUT.gO-RSmEGrWAhqMWXeCcU2A&pid=News&w=640",
+      "kind": "general",
+      "score": 4
     },
     {
       "id": "c6043fbe532b",
@@ -502,52 +680,6 @@
       "score": 12
     },
     {
-      "id": "a9e27ad5ed90",
-      "topic": "spacex",
-      "title": "Musk Agrees Starship’s Heat Shield Hit a “99.995% Reliability Rate” on Its First Catch",
-      "source": "YAHOO!",
-      "url": "https://tech.yahoo.com/science/articles/musk-agrees-starship-heat-shield-145901227.html",
-      "published": "2026-11-17T06:59:00Z",
-      "snippet": "Key TakeawaysStarship lost one of its roughly 18,000 heat-shield tiles on SpaceX’s first catch of the ship from orbit, and SpaceX CEO Elon Musk agreed that works out to about 99. 995% reliability.",
-      "image": "https://www.bing.com/th?id=ONUT.tAp-_RyoNF4kO9CSjSnA_Q&pid=News&w=640",
-      "kind": "launch",
-      "score": 12
-    },
-    {
-      "id": "dd5b45e0f208",
-      "topic": "grok",
-      "title": "Grok Bot tried to read work apps unasked, then denied it, NewCore says",
-      "source": "The Next Web",
-      "url": "https://thenextweb.com/news/grok-bot-unattended-check-ins-newcore-email-slack-github",
-      "published": "2026-11-17T06:43:00Z",
-      "snippet": "There is no bug to patch, which is exactly why this is worse than a bug,’ says NewCore of Grok Bot’s unasked check-ins.",
-      "image": "https://www.bing.com/th?id=ONUT.9t3AMf-eiqS3GkK3mmhHUw&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "582cbcda8ffd",
-      "topic": "grok",
-      "title": "Grok Down? Users Report Problems With Elon Musk's AI Chatbot as xAI Has Yet to Confirm Late-Night Disruption",
-      "source": "International Business Times Australia",
-      "url": "https://www.ibtimes.com.au/grok-users-report-possible-outage-trackers-conflict-1878759",
-      "published": "2026-11-17T06:32:09Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
-      "id": "ad7f787814f1",
-      "topic": "grok",
-      "title": "Grok Bot is getting VERY good at being the BOSS of other AI tools. Give it a project, and it can bring in Claude Code for programming, Paper for design, and other specialist tools to get the job done. It figures out who should handle what, keeps track of the progr",
-      "source": "X",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FOE5WQjJvUDJPZW5XOFlZYTdfcHpIVjljUVAyY1MtQ3JSaXJaX19JNUt6RTg1T0x0Q0doQ1JsTHJkX21ULXdPdkZ2MXVHLXJMbXNXaDBNSEFqeU1LUnp6R2F3S2pwSmlHNm9MaQ?oc=5",
-      "published": "2026-11-17T06:00:00Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "a4dfeffb6496",
       "topic": "spacex",
       "title": "SpaceX launches retro arcade game letting you fly Starship in orbit",
@@ -558,29 +690,6 @@
       "image": "https://www.bing.com/th?id=ONUT.UYTRgzZeY399WwRQqEEbmA&pid=News&w=640",
       "kind": "launch",
       "score": 12
-    },
-    {
-      "id": "ccd00de6486a",
-      "topic": "tesla",
-      "title": "Elon Musk Says Tesla’s $299 Cybercab Fee Is “Too High”",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/11/17/elon-musk-says-teslas-299-cybercab-fee-is-too-high/",
-      "published": "2026-11-17T05:20:00Z",
-      "snippet": "Musk just criticized his own robotaxi's pricing before a single customer has a car. Tesla's valuation leans on that recurring revenue, and one December date will show whether his comment was a real ...",
-      "image": "https://www.bing.com/th?id=ONUT.KyxPvRYbeLypODNzQBcFhA&pid=News&w=640",
-      "kind": "milestone",
-      "score": 11
-    },
-    {
-      "id": "2f6ec4e0aa66",
-      "topic": "grok",
-      "title": "Cute faces like Muse Charm are a Trojan horse for exploitative AI tech",
-      "source": "The Korea Times",
-      "url": "https://www.koreatimes.co.kr/opinion/20261117/cute-faces-like-muse-charm-are-a-trojan-horse-for-exploitative-ai-tech",
-      "published": "2026-11-17T03:30:03Z",
-      "snippet": "",
-      "kind": "general",
-      "score": 4
     },
     {
       "id": "362149da55db",
@@ -595,30 +704,6 @@
       "score": 12
     },
     {
-      "id": "0cd9398f590f",
-      "topic": "tesla",
-      "title": "Tesla FSD 14.3 rewrites AI compiler and runtime with MLIR",
-      "source": "Electrified on MSN",
-      "url": "https://www.msn.com/en-us/news/other/tesla-fsd-143-rewrites-ai-compiler-and-runtime-with-mlir/vi-AA2gwFBW",
-      "published": "2026-11-17T02:01:09Z",
-      "snippet": "Dylan Loomis reviews Tesla's FSD 14.3 release notes, which say the AI compiler and runtime were rewritten using MLIR. He explains why he views the rewrite as a new foundation for future FSD updates ...",
-      "image": "https://www.bing.com/th?id=ONUT.L96tLg18sd8D0mxoBRUShg&pid=News&w=640",
-      "kind": "software",
-      "score": 11
-    },
-    {
-      "id": "a285dcac6fbd",
-      "topic": "tesla",
-      "title": "Elon Musk Plans $10.1 Billion “Project Crystal Sun” Tesla Factory Near Houston. Says the Math on Solar Power Is “Obvious and Trivial”",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/11/17/elon-musk-plans-10-1-billion-project-crystal-sun-tesla-factory-near-houston-says-the-math-on-solar-power-is-obvious-and-trivial/",
-      "published": "2026-11-17T01:27:00Z",
-      "snippet": "Tesla is sold out of Megapacks and eyeing a massive Texas solar plant, yet its cash is stretched thin and the stock is priced for perfection. One number in the next earnings report could decide ...",
-      "image": "https://www.bing.com/th?id=ONUT.Fx1KYt4FRK-ihXcUFfxeJA&pid=News&w=640",
-      "kind": "general",
-      "score": 4
-    },
-    {
       "id": "24e1864c6da3",
       "topic": "tesla",
       "title": "Elon Musk Just Killed the Cybertruck to Build Cybercabs. Here’s What It Means for Tesla Stock -- and Rivian’s.",
@@ -629,18 +714,6 @@
       "image": "https://www.bing.com/th?id=ONUT.e_n3wB1-7ulvY1qUT8IECw&pid=News&w=640",
       "kind": "general",
       "score": -2
-    },
-    {
-      "id": "8877ebde8d04",
-      "topic": "spacex",
-      "title": "SpaceX Just Brought a Starship Back From Orbit and Caught It. Here's the Part of the Business That Gains the Most.",
-      "source": "The Motley Fool",
-      "url": "https://www.fool.com/investing/2026/11/16/spacex-just-brought-a-starship-back-from-orbit-and-caught-it-here-s-the-part-of-the-business-that-gains-the-most/",
-      "published": "2026-11-16T16:53:00Z",
-      "snippet": "SpaceX ( SPCX -1.26%) got half its rocket home. On Saturday, Nov. 14, about 22.5 hours after Starship took off from Starbase, Texas, the launch tower's arms closed around the rocket's upper stage (the ...",
-      "image": "https://www.bing.com/th?id=ONUT.ziH_Baan42fL2lWXz03_4Q&pid=News&w=640",
-      "kind": "launch",
-      "score": 6
     }
   ]
 }
