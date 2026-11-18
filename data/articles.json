@@ -1,6 +1,106 @@
 {
-  "updated": "2026-11-17T14:37:45Z",
+  "updated": "2026-11-18T17:26:00Z",
   "articles": [
+    {
+      "url": "/dispatch/tesla-texas-register-passes-waymo.html",
+      "title": "200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov",
+      "date": "2026-11-18T17:26:00Z",
+      "topic": "tesla",
+      "tag": "Tesla / Robotaxi",
+      "image": "/assets/dispatch/tesla-cybercab-santana-row-2024.jpg",
+      "summary": "Texas DMV records now list 1,507 Tesla Robotaxi vehicles, 773 of them Cybercabs, against Waymo's 1,321. A single batch of 200 Cybercabs with 2027 model-year VINs did it. Registered isn't the same as carrying riders.",
+      "pinned": false,
+      "imageAlt": "A gold Tesla Cybercab with both butterfly doors open on display inside a Tesla showroom, with visitors in the background whose faces have been blurred",
+      "author": "Alex R",
+      "seoTitle": "200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov",
+      "picture": {
+        "base": "/assets/dispatch/tesla-cybercab-santana-row-2024",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1920,
+          1080
+        ]
+      },
+      "minutes": 4
+    },
+    {
+      "url": "/dispatch/tesla-powercore-solid-state-transformer.html",
+      "title": "Tesla's Powercore puts a transformer, breaker and inverter in one box. First units run in 2027",
+      "date": "2026-11-18T17:24:00Z",
+      "topic": "tesla",
+      "tag": "Tesla / Energy",
+      "image": "/assets/dispatch/tesla-gigafactory-nevada-2019.jpg",
+      "summary": "Tesla Energy's Powercore is a solid-state medium-voltage unit rated 7.4 MW that replaces a battery site's or data center's separate transformer and inverter. Tesla says first units operate in 2027; there's no price, factory or customer yet.",
+      "pinned": false,
+      "imageAlt": "Aerial view of Tesla's Gigafactory in Nevada in December 2019, a long white factory building with a red stripe and rooftop solar, set in brown desert hills",
+      "author": "Alex R",
+      "seoTitle": "Tesla's Powercore puts a transformer, breaker and inverter in one box. First units run in 2027",
+      "picture": {
+        "base": "/assets/dispatch/tesla-gigafactory-nevada-2019",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1920,
+          1080
+        ]
+      },
+      "minutes": 5
+    },
+    {
+      "url": "/dispatch/spacexsi-grok-bot-accounting-team.html",
+      "title": "SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person",
+      "date": "2026-11-18T17:22:00Z",
+      "topic": "xai",
+      "tag": "Grok / Grok Bot",
+      "image": "/assets/dispatch/twenty-air-street-spacexsi-2026.jpg",
+      "summary": "SpaceXSI says five Grok Bots now run its order-to-cash process, cutting invoice time from about 24 hours to minutes. Refunds and credits still need a person to sign off, and the time savings are SpaceXSI's own estimates.",
+      "pinned": false,
+      "imageAlt": "The exterior of Twenty Air Street in Soho, London, at night. SpaceXSI is listed among the building's tenants as of October 2026. This is not a picture of the accounting Bots.",
+      "author": "Alex R",
+      "seoTitle": "SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person",
+      "picture": {
+        "base": "/assets/dispatch/twenty-air-street-spacexsi-2026",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2048,
+          1152
+        ]
+      },
+      "minutes": 5
+    },
+    {
+      "url": "/dispatch/nvidia-q3-vera-rubin-spacexsi.html",
+      "title": "Nvidia's first results without Huang say Vera Rubin is \"coming online soon\" at SpaceXSI",
+      "date": "2026-11-18T17:20:00Z",
+      "topic": "spacex",
+      "tag": "SpaceX / AI",
+      "image": "/assets/dispatch/colette-kress-2017.jpg",
+      "summary": "Nvidia posted $115.8 billion of Q3 revenue and guided $130 billion for Q4. Its release says Vera Rubin NVL72 racks run at five clouds and are \"coming online soon at SpaceXSI.\" SpaceX's own $40 billion Vera Rubin lease doesn't start until 2027.",
+      "pinned": false,
+      "imageAlt": "Colette Kress, Nvidia's chief financial officer, smiling at an event in 2017",
+      "author": "Alex R",
+      "seoTitle": "Nvidia's first results without Huang say Vera Rubin is \"coming online soon\" at SpaceXSI",
+      "picture": {
+        "base": "/assets/dispatch/colette-kress-2017",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1920,
+          1080
+        ]
+      },
+      "minutes": 5
+    },
     {
       "url": "/dispatch/delta-bastian-starlink-claim.html",
       "title": "Delta's CEO says most Starlink airlines \"haven't even started yet.\" United has it on 635 jets",

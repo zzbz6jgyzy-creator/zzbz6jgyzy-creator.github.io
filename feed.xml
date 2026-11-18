@@ -6,7 +6,43 @@
     <atom:link href="https://superchargeddaily.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Original Tesla, SpaceX and xAI reporting, plus tracker changes.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 17 Nov 2026 14:37:45 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 17:26:00 +0000</lastBuildDate>
+    <item>
+      <title>200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-texas-register-passes-waymo.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-texas-register-passes-waymo.html</guid>
+      <pubDate>Wed, 18 Nov 2026 17:26:00 +0000</pubDate>
+      <category>Tesla / Robotaxi</category>
+      <description>Texas DMV records now list 1,507 Tesla Robotaxi vehicles, 773 of them Cybercabs, against Waymo's 1,321. A single batch of 200 Cybercabs with 2027 model-year VINs did it. Registered isn't the same as carrying riders.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-cybercab-santana-row-2024.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Tesla's Powercore puts a transformer, breaker and inverter in one box. First units run in 2027</title>
+      <link>https://superchargeddaily.com/dispatch/tesla-powercore-solid-state-transformer.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/tesla-powercore-solid-state-transformer.html</guid>
+      <pubDate>Wed, 18 Nov 2026 17:24:00 +0000</pubDate>
+      <category>Tesla / Energy</category>
+      <description>Tesla Energy's Powercore is a solid-state medium-voltage unit rated 7.4 MW that replaces a battery site's or data center's separate transformer and inverter. Tesla says first units operate in 2027; there's no price, factory or customer yet.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/tesla-gigafactory-nevada-2019.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person</title>
+      <link>https://superchargeddaily.com/dispatch/spacexsi-grok-bot-accounting-team.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/spacexsi-grok-bot-accounting-team.html</guid>
+      <pubDate>Wed, 18 Nov 2026 17:22:00 +0000</pubDate>
+      <category>Grok / Grok Bot</category>
+      <description>SpaceXSI says five Grok Bots now run its order-to-cash process, cutting invoice time from about 24 hours to minutes. Refunds and credits still need a person to sign off, and the time savings are SpaceXSI's own estimates.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/twenty-air-street-spacexsi-2026.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Nvidia's first results without Huang say Vera Rubin is &quot;coming online soon&quot; at SpaceXSI</title>
+      <link>https://superchargeddaily.com/dispatch/nvidia-q3-vera-rubin-spacexsi.html</link>
+      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/nvidia-q3-vera-rubin-spacexsi.html</guid>
+      <pubDate>Wed, 18 Nov 2026 17:20:00 +0000</pubDate>
+      <category>SpaceX / AI</category>
+      <description>Nvidia posted $115.8 billion of Q3 revenue and guided $130 billion for Q4. Its release says Vera Rubin NVL72 racks run at five clouds and are &quot;coming online soon at SpaceXSI.&quot; SpaceX's own $40 billion Vera Rubin lease doesn't start until 2027.</description>
+      <enclosure url="https://superchargeddaily.com/assets/dispatch/colette-kress-2017.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Delta's CEO says most Starlink airlines &quot;haven't even started yet.&quot; United has it on 635 jets</title>
       <link>https://superchargeddaily.com/dispatch/delta-bastian-starlink-claim.html</link>
@@ -690,42 +726,6 @@
       <category>Grok</category>
       <description>Musk says the Bot can call a person or business and send you a summary. Prerelease builds show a Calls panel; the official changelog doesn’t mention calling yet.</description>
       <enclosure url="https://superchargeddaily.com/assets/dispatch/grok-bot-iphone-action-button-poster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Booster 22 just fired all 33 engines. Here’s what still stands between Starship and its first double catch</title>
-      <link>https://superchargeddaily.com/dispatch/booster-22-static-fire.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/booster-22-static-fire.html</guid>
-      <pubDate>Sun, 25 Oct 2026 20:50:00 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>SpaceX confirmed a full-duration 33-engine static fire for Flight 15’s booster on 25 Oct. Ship 42, the FAA licence and a launch date are still open.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/sn20-static-fire-mars-embassy.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Starlink now has more subscribers than AT&amp;T Fiber. Here’s what that does and doesn’t mean</title>
-      <link>https://superchargeddaily.com/dispatch/starlink-passes-att-fiber.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/starlink-passes-att-fiber.html</guid>
-      <pubDate>Sun, 25 Oct 2026 08:35:18 +0000</pubDate>
-      <category>SpaceX</category>
-      <description>SpaceX’s 10-Q shows 13.6M Starlink consumer subscribers; AT&amp;T reported 13.31M fiber connections. Starlink added 6.4M in a year to AT&amp;T’s 2.5M, with caveats.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/starlink-truck-tony-webster.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Tesla’s Texas Robotaxi fleet hits 938 as Austin rides reach the F1 track until 1am</title>
-      <link>https://superchargeddaily.com/dispatch/robotaxi-938-f1-cota.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/robotaxi-938-f1-cota.html</guid>
-      <pubDate>Sun, 25 Oct 2026 02:38:05 +0000</pubDate>
-      <category>Tesla</category>
-      <description>135 cars added to the Texas registry in eight days, most of them Cybercabs, and Austin’s map now reaches the F1 track, with rides until 1am.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/cota-aerial.jpg" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Grok Imagine’s Odyssey Episode 1 is out. Can Musk’s full-length movie still land this year?</title>
-      <link>https://superchargeddaily.com/dispatch/grok-imagine-odyssey-episode-1.html</link>
-      <guid isPermaLink="true">https://superchargeddaily.com/dispatch/grok-imagine-odyssey-episode-1.html</guid>
-      <pubDate>Sat, 24 Oct 2026 13:30:13 +0000</pubDate>
-      <category>Grok</category>
-      <description>A 7-minute, 4K first episode is out. Musk’s full-length Odyssey movie is still a pledge with a 31 Dec deadline. The timeline and the math.</description>
-      <enclosure url="https://superchargeddaily.com/assets/dispatch/odyssey-ulysses-sirens.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Tracker: Starlink McDowell snapshot</title>
