@@ -1,6 +1,106 @@
 {
-  "updated": "2026-11-18T17:26:00Z",
+  "updated": "2026-11-19T17:16:00Z",
   "articles": [
+    {
+      "url": "/dispatch/tesla-cybercab-dallas-launch.html",
+      "title": "Cybercab rides start in Dallas, the second city after Austin, and Tesla kept its \"next month\" promise",
+      "date": "2026-11-19T17:16:00Z",
+      "topic": "tesla",
+      "tag": "Tesla / Robotaxi",
+      "image": "/assets/dispatch/tesla-cybercab-santana-row-2024.jpg",
+      "summary": "Tesla's Robotaxi account says the Cybercab has arrived in Dallas, keeping a mid-October 'next month' promise. Tesla has not given a Dallas fleet size, service area, hours or rider rules.",
+      "pinned": false,
+      "imageAlt": "A gold Tesla Cybercab with both butterfly doors open on display inside a Tesla showroom, with visitors in the background whose faces have been blurred",
+      "author": "Alex R",
+      "seoTitle": "Cybercab rides start in Dallas, the second city after Austin, and Tesla kept its \"next month\" promise",
+      "picture": {
+        "base": "/assets/dispatch/tesla-cybercab-santana-row-2024",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1920,
+          1080
+        ]
+      },
+      "minutes": 4
+    },
+    {
+      "url": "/dispatch/anthropic-ipo-spacex-record.html",
+      "title": "Anthropic's $81.3 billion IPO beats SpaceX's base deal, and its prospectus still owes SpaceX $3.1 billion a month",
+      "date": "2026-11-19T17:14:00Z",
+      "topic": "spacex",
+      "tag": "SpaceX / AI",
+      "image": "/assets/dispatch/nasdaq-marketsite-2021.jpg",
+      "summary": "Anthropic priced 980 million shares at $83 and opened at $111.50 as of 11:53 a.m. ET on 19 Nov. That beats SpaceX's $75 billion base deal; the all-time record still depends on Anthropic's option.",
+      "pinned": false,
+      "imageAlt": "The cylindrical Nasdaq MarketSite tower in Times Square, wrapped in an orange LED display with the Nasdaq logo at the base",
+      "author": "Alex R",
+      "seoTitle": "Anthropic's $81.3 billion IPO beats SpaceX's base deal, and its prospectus still owes SpaceX $3.1 billion a month",
+      "picture": {
+        "base": "/assets/dispatch/nasdaq-marketsite-2021",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1920,
+          1080
+        ]
+      },
+      "minutes": 5
+    },
+    {
+      "url": "/dispatch/grok-bot-books-travel.html",
+      "title": "Grok Bot now books flights, hotels and rental cars. What it checks before you pay, and where it hands back to you",
+      "date": "2026-11-19T17:12:00Z",
+      "topic": "xai",
+      "tag": "Grok / Grok Bot",
+      "image": "/assets/dispatch/twenty-air-street-spacexsi-2026.jpg",
+      "summary": "SpaceXSI's Grok Bot can now book flights, hotels and rental cars. The changelog adds a bags, changes and refunds panel, and sends you the airline link if a purchase can't be confirmed.",
+      "pinned": false,
+      "imageAlt": "The exterior of Twenty Air Street in Soho, London, at night. SpaceXSI is listed among the building's tenants as of October 2026. This is not a picture of the travel-booking feature.",
+      "author": "Alex R",
+      "seoTitle": "Grok Bot now books flights, hotels and rental cars. What it checks before you pay, and where it hands back to you",
+      "picture": {
+        "base": "/assets/dispatch/twenty-air-street-spacexsi-2026",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2048,
+          1152
+        ]
+      },
+      "minutes": 4
+    },
+    {
+      "url": "/dispatch/spacex-cameron-county-tax-abatement.html",
+      "title": "Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a \"revenue cliff\"",
+      "date": "2026-11-19T17:10:00Z",
+      "topic": "spacex",
+      "tag": "SpaceX / Starbase",
+      "image": "/assets/dispatch/starbase-launch-site-early-2026.jpg",
+      "summary": "Cameron County commissioners voted 3–2 not to hold a hearing on a 10-year, 100% tax abatement for SpaceX's $24 billion Starbase compute plant. SpaceX warned of a revenue cliff. The 39% comparison is the author's estimate.",
+      "pinned": false,
+      "imageAlt": "Aerial photo of the SpaceX Starbase launch site on the South Texas coast in early 2026",
+      "author": "Alex R",
+      "seoTitle": "Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a \"revenue cliff\"",
+      "picture": {
+        "base": "/assets/dispatch/starbase-launch-site-early-2026",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          1920,
+          1080
+        ]
+      },
+      "minutes": 5
+    },
     {
       "url": "/dispatch/tesla-texas-register-passes-waymo.html",
       "title": "200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov",

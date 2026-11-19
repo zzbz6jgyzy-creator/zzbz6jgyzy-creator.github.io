@@ -2,6 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/tesla-cybercab-dallas-launch.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-19T17:16:00Z</news:publication_date>
+      <news:title>Cybercab rides start in Dallas, the second city after Austin, and Tesla kept its &quot;next month&quot; promise</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/anthropic-ipo-spacex-record.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-19T17:14:00Z</news:publication_date>
+      <news:title>Anthropic's $81.3 billion IPO beats SpaceX's base deal, and its prospectus still owes SpaceX $3.1 billion a month</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/grok-bot-books-travel.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-19T17:12:00Z</news:publication_date>
+      <news:title>Grok Bot now books flights, hotels and rental cars. What it checks before you pay, and where it hands back to you</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/spacex-cameron-county-tax-abatement.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-19T17:10:00Z</news:publication_date>
+      <news:title>Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a &quot;revenue cliff&quot;</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/tesla-texas-register-passes-waymo.html</loc>
     <news:news>
       <news:publication>
@@ -43,50 +87,6 @@
       </news:publication>
       <news:publication_date>2026-11-18T17:20:00Z</news:publication_date>
       <news:title>Nvidia's first results without Huang say Vera Rubin is &quot;coming online soon&quot; at SpaceXSI</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/delta-bastian-starlink-claim.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-17T14:37:45Z</news:publication_date>
-      <news:title>Delta's CEO says most Starlink airlines &quot;haven't even started yet.&quot; United has it on 635 jets</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/ramaphosa-musk-starlink-south-africa.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-17T14:37:45Z</news:publication_date>
-      <news:title>Ramaphosa tells Musk to follow South Africa's rules. Musk calls them racist. Here's where Starlink's licence stands</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/tesla-giga-berlin-cybercab-factory.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-17T09:56:00Z</news:publication_date>
-      <news:title>Tesla's €3 billion Berlin hall is sized for 1 million Cybercabs a year. EU rules allow 1,500</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/nvidia-13f-spacex-top-holding.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-17T09:56:00Z</news:publication_date>
-      <news:title>SpaceX is now Nvidia's biggest stock holding, and Nvidia was still buying</news:title>
     </news:news>
   </url>
 </urlset>
