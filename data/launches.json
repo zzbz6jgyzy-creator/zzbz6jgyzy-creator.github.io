@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-19T03:21:28Z",
- "checked": "2026-11-19T03:21:28Z",
+ "updated": "2026-11-19T12:58:07Z",
+ "checked": "2026-11-19T12:58:07Z",
  "results": [
   {
    "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
@@ -261,7 +261,7 @@
   {
    "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
    "name": "Falcon 9 Block 5 | USSF-317",
-   "net": "2026-11-20T02:46:00Z",
+   "net": "2026-11-20T04:28:55Z",
    "window_start": "2026-11-20T02:46:00Z",
    "window_end": "2026-11-20T06:46:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/76617033-4dc0-4448-b50c-e5b0d5a18539/",
@@ -270,8 +270,8 @@
     "abbrev": "Go"
    },
    "net_precision": {
-    "name": "Minute",
-    "abbrev": "MIN"
+    "name": "Second",
+    "abbrev": "SEC"
    },
    "pad": {
     "name": "Space Launch Complex 4E",
@@ -279,7 +279,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-18T16:09:27Z",
+   "last_updated": "2026-11-19T05:08:14Z",
    "mission": {
     "name": "USSF-317",
     "type": "Government/Top Secret",
@@ -407,7 +407,7 @@
      "name": "Cape Canaveral SFS, FL, USA"
     }
    },
-   "last_updated": "2026-11-13T12:35:58Z",
+   "last_updated": "2026-11-19T12:34:08Z",
    "mission": {
     "name": "Cygnus CRS-2 NG-25",
     "type": "Resupply",
