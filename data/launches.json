@@ -2,8 +2,8 @@
  "_about": "SpaceX launch snapshot from The Space Devs / Launch Library 2 v2.3 (upcoming plus the last ~45 days of previous launches). Refreshed hourly by launches-refresh.yml. Targets may change; this is not live telemetry.",
  "source": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?lsp__name=SpaceX&limit=40&mode=normal",
  "previousSource": "https://ll.thespacedevs.com/2.3.0/launches/previous/?lsp__name=SpaceX&limit=15&mode=list",
- "updated": "2026-11-20T11:29:04Z",
- "checked": "2026-11-20T11:29:04Z",
+ "updated": "2026-11-20T20:07:45Z",
+ "checked": "2026-11-20T20:07:45Z",
  "results": [
   {
    "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
@@ -72,7 +72,7 @@
      "name": null
     }
    },
-   "last_updated": "2026-11-20T02:38:17Z"
+   "last_updated": "2026-11-20T17:20:06Z"
   },
   {
    "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
@@ -261,7 +261,7 @@
   {
    "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
    "name": "Falcon 9 Block 5 | USSF-317",
-   "net": "2026-11-21T02:32:00Z",
+   "net": "2026-11-21T04:20:35Z",
    "window_start": "2026-11-21T02:32:00Z",
    "window_end": "2026-11-21T06:32:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/76617033-4dc0-4448-b50c-e5b0d5a18539/",
@@ -270,8 +270,8 @@
     "abbrev": "Go"
    },
    "net_precision": {
-    "name": "Minute",
-    "abbrev": "MIN"
+    "name": "Second",
+    "abbrev": "SEC"
    },
    "pad": {
     "name": "Space Launch Complex 4E",
@@ -279,7 +279,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-20T07:57:14Z",
+   "last_updated": "2026-11-20T17:41:31Z",
    "mission": {
     "name": "USSF-317",
     "type": "Government/Top Secret",
@@ -293,9 +293,9 @@
   {
    "id": "951a341f-236b-42fe-a667-4ab2fcf36eac",
    "name": "Falcon 9 Block 5 | NROL-136",
-   "net": "2026-11-21T12:30:00Z",
-   "window_start": "2026-11-21T12:30:00Z",
-   "window_end": "2026-11-21T13:00:00Z",
+   "net": "2026-11-22T12:16:00Z",
+   "window_start": "2026-11-22T12:16:00Z",
+   "window_end": "2026-11-22T12:46:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/951a341f-236b-42fe-a667-4ab2fcf36eac/",
    "status": {
     "name": "Go for Launch",
@@ -311,7 +311,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-14T14:29:39Z",
+   "last_updated": "2026-11-20T17:43:32Z",
    "mission": {
     "name": "NROL-136",
     "type": "Government/Top Secret",
@@ -325,9 +325,9 @@
   {
    "id": "460d9db7-eaf6-4cd9-b095-cff433534c09",
    "name": "Falcon 9 Block 5 | USSF-266",
-   "net": "2026-11-23T16:04:00Z",
-   "window_start": "2026-11-23T16:04:00Z",
-   "window_end": "2026-11-23T20:04:00Z",
+   "net": "2026-11-24T15:55:00Z",
+   "window_start": "2026-11-24T15:55:00Z",
+   "window_end": "2026-11-24T19:55:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/460d9db7-eaf6-4cd9-b095-cff433534c09/",
    "status": {
     "name": "Go for Launch",
@@ -343,7 +343,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-13T17:46:32Z",
+   "last_updated": "2026-11-20T18:31:34Z",
    "mission": {
     "name": "USSF-266",
     "type": "Government/Top Secret",
@@ -357,9 +357,9 @@
   {
    "id": "b0d27def-0a88-44c3-a947-1fd5b8503e2c",
    "name": "Falcon 9 Block 5 | USSF-380",
-   "net": "2026-11-28T04:53:00Z",
-   "window_start": "2026-11-28T04:53:00Z",
-   "window_end": "2026-11-28T08:53:00Z",
+   "net": "2026-11-29T04:39:00Z",
+   "window_start": "2026-11-29T04:39:00Z",
+   "window_end": "2026-11-29T08:39:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/b0d27def-0a88-44c3-a947-1fd5b8503e2c/",
    "status": {
     "name": "Go for Launch",
@@ -375,7 +375,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-18T19:03:08Z",
+   "last_updated": "2026-11-20T18:32:41Z",
    "mission": {
     "name": "USSF-380",
     "type": "Government/Top Secret",
@@ -389,9 +389,9 @@
   {
    "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
    "name": "Falcon 9 Block 5 | Cygnus CRS-2 NG-25",
-   "net": "2026-11-29T15:47:00Z",
-   "window_start": "2026-11-29T15:47:00Z",
-   "window_end": "2026-11-29T15:47:00Z",
+   "net": "2026-11-29T15:50:00Z",
+   "window_start": "2026-11-29T15:50:00Z",
+   "window_end": "2026-11-29T15:50:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/d74afbc7-0de5-491c-be05-4e9c31f736ac/",
    "status": {
     "name": "Go for Launch",
@@ -407,7 +407,7 @@
      "name": "Cape Canaveral SFS, FL, USA"
     }
    },
-   "last_updated": "2026-11-19T12:34:08Z",
+   "last_updated": "2026-11-20T17:43:33Z",
    "mission": {
     "name": "Cygnus CRS-2 NG-25",
     "type": "Resupply",
@@ -421,9 +421,9 @@
   {
    "id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
    "name": "Falcon 9 Block 5 | Starlink Group 15-21",
-   "net": "2026-11-30T00:00:00Z",
-   "window_start": "2026-11-30T00:00:00Z",
-   "window_end": "2026-11-30T00:00:00Z",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/3cdb9dee-b5cb-406c-bbd1-06a219930fb7/",
    "status": {
     "name": "To Be Determined",
@@ -439,7 +439,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-03T21:40:38Z",
+   "last_updated": "2026-11-20T18:33:02Z",
    "mission": {
     "name": "Starlink Group 15-21",
     "type": "Communications",
@@ -453,9 +453,9 @@
   {
    "id": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
    "name": "Falcon 9 Block 5 | NROL-195",
-   "net": "2026-11-30T00:00:00Z",
-   "window_start": "2026-11-30T00:00:00Z",
-   "window_end": "2026-11-30T00:00:00Z",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49/",
    "status": {
     "name": "To Be Determined",
@@ -471,7 +471,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-11-12T19:09:40Z",
+   "last_updated": "2026-11-20T18:32:25Z",
    "mission": {
     "name": "NROL-195",
     "type": "Government/Top Secret",
@@ -485,9 +485,9 @@
   {
    "id": "b0dc988c-ea4a-423f-81b6-6b0fbe7cc17c",
    "name": "Falcon 9 Block 5 | OneWeb 21",
-   "net": "2026-11-30T00:00:00Z",
-   "window_start": "2026-11-30T00:00:00Z",
-   "window_end": "2026-11-30T00:00:00Z",
+   "net": "2026-12-31T00:00:00Z",
+   "window_start": "2026-12-31T00:00:00Z",
+   "window_end": "2026-12-31T00:00:00Z",
    "url": "https://ll.thespacedevs.com/2.3.0/launches/b0dc988c-ea4a-423f-81b6-6b0fbe7cc17c/",
    "status": {
     "name": "To Be Determined",
@@ -503,7 +503,7 @@
      "name": "Vandenberg SFB, CA, USA"
     }
    },
-   "last_updated": "2026-10-29T06:09:06Z",
+   "last_updated": "2026-11-20T18:32:42Z",
    "mission": {
     "name": "OneWeb 21",
     "type": "Communications",
