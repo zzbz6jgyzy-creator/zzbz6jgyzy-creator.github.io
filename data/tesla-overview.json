@@ -167,11 +167,29 @@
     "count": 169
   },
   "europe": {
-    "updated": "2026-11-17",
+    "updated": "2026-11-20",
     "listed": 9,
-    "recognised": 11
+    "recognised": 12
   },
   "stories": [
+    {
+      "url": "/dispatch/tesla-italy-assisted-driving-approval.html",
+      "image": "/assets/dispatch/tesla-model-3-salcedo-vicenza.jpg",
+      "title": "Italy approves Tesla Assisted Driving, the 12th EU country and the first big one. The EU math still doesn't add up",
+      "summary": "Italy's transport ministry gave Tesla's supervised Assisted Driving a provisional approval ahead of the EU process. It's the 12th EU country and the first of the big four, taking the group from 15.5% to 28.6% of the EU population.",
+      "tag": "FSD in Europe",
+      "date": "2026-11-20T17:32:00Z",
+      "thumb": "/assets/dispatch/tesla-model-3-salcedo-vicenza-480w.webp"
+    },
+    {
+      "url": "/dispatch/tesla-korea-fsd-five-pages.html",
+      "image": "/assets/dispatch/tesla-model-y-seoul-commons.jpg",
+      "title": "South Korea won't review Tesla's FSD request for Shanghai-built cars yet. Tesla sent five pages by email",
+      "summary": "South Korea's transport ministry says Tesla's FSD exemption application for Shanghai-built cars isn't ready for review, after Tesla emailed five pages.",
+      "tag": "FSD",
+      "date": "2026-11-20T17:28:00Z",
+      "thumb": "/assets/dispatch/tesla-model-y-seoul-commons-480w.webp"
+    },
     {
       "url": "/dispatch/tesla-cybercab-dallas-launch.html",
       "image": "/assets/dispatch/tesla-cybercab-santana-row-2024.jpg",
@@ -207,25 +225,7 @@
       "tag": "Tesla / Cybercab",
       "date": "2026-11-17T09:56:00Z",
       "thumb": "/assets/dispatch/giga-berlin-aerial-2023-480w.webp"
-    },
-    {
-      "url": "/dispatch/robotaxi-miami-expansion.html",
-      "image": "/assets/dispatch/brickell-miami-night-2024.jpg",
-      "title": "Tesla nearly doubles its Miami Robotaxi zone, but Waymo still covers 2.5 times as much ground",
-      "summary": "Tesla's Robotaxi zone in Miami now reaches downtown and Brickell. Trackers put it at about 59 square miles, up roughly 90%. Waymo's Miami area has been 150 square miles since May.",
-      "tag": "Tesla / Robotaxi",
-      "date": "2026-11-16T16:45:00Z",
-      "thumb": "/assets/dispatch/brickell-miami-night-2024-480w.webp"
-    },
-    {
-      "url": "/dispatch/robo-meneva-helsinki-tesla-taxis.html",
-      "image": "/assets/dispatch/helsinki-airport-taxi-station-meneva.jpg",
-      "title": "A Helsinki taxi firm bought 100 Model Ys to run on Tesla Assisted Driving, and says it will publish every time a driver steps in",
-      "summary": "Menevä, a Finnish taxi company with more than 1,000 cars, is starting Robo Menevä in Helsinki: 100 Tesla Model Ys on Tesla Assisted Driving, a licensed \"host\" up front who stays legally responsible, and a public map of every takeover. Rides haven't started yet (as of 14 Nov 2026).",
-      "tag": "Tesla / FSD in Europe",
-      "date": "2026-11-14T14:56:00Z",
-      "thumb": "/assets/dispatch/helsinki-airport-taxi-station-meneva-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-19T17:16:00Z"
+  "articlesUpdated": "2026-11-20T17:32:00Z"
 }

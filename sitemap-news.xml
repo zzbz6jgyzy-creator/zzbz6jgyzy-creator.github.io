@@ -2,6 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://superchargeddaily.com/dispatch/tesla-italy-assisted-driving-approval.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-20T17:32:00Z</news:publication_date>
+      <news:title>Italy approves Tesla Assisted Driving, the 12th EU country and the first big one. The EU math still doesn't add up</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/spacex-mexico-starship-debris.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-20T17:30:00Z</news:publication_date>
+      <news:title>Mexico has collected 5.9 kg of debris after Flight 15. SpaceX says most of the viral posts are fabrications</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/tesla-korea-fsd-five-pages.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-20T17:28:00Z</news:publication_date>
+      <news:title>South Korea won't review Tesla's FSD request for Shanghai-built cars yet. Tesla sent five pages by email</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://superchargeddaily.com/dispatch/anthropic-ipo-close-record.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Supercharged Daily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-20T17:26:00Z</news:publication_date>
+      <news:title>Anthropic closes its IPO at $93.5 billion and takes SpaceX's record outright. Its new cash nearly matches its SpaceX compute deal</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://superchargeddaily.com/dispatch/tesla-cybercab-dallas-launch.html</loc>
     <news:news>
       <news:publication>
@@ -43,50 +87,6 @@
       </news:publication>
       <news:publication_date>2026-11-19T17:10:00Z</news:publication_date>
       <news:title>Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a &quot;revenue cliff&quot;</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/tesla-texas-register-passes-waymo.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-18T17:26:00Z</news:publication_date>
-      <news:title>200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/tesla-powercore-solid-state-transformer.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-18T17:24:00Z</news:publication_date>
-      <news:title>Tesla's Powercore puts a transformer, breaker and inverter in one box. First units run in 2027</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/spacexsi-grok-bot-accounting-team.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-18T17:22:00Z</news:publication_date>
-      <news:title>SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/nvidia-q3-vera-rubin-spacexsi.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-18T17:20:00Z</news:publication_date>
-      <news:title>Nvidia's first results without Huang say Vera Rubin is &quot;coming online soon&quot; at SpaceXSI</news:title>
     </news:news>
   </url>
 </urlset>

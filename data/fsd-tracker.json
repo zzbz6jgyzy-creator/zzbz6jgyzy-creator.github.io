@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewed": "2026-11-11",
+  "reviewed": "2026-11-20",
   "sources": [
     {
       "id": "q1-update",
@@ -229,6 +229,11 @@
     "caveat": "The ratio is our own calculation: active subscriptions divided by cumulative deliveries, which Tesla defines as all new vehicles delivered to customers plus any unsupervised Robotaxis placed into commercial operation. Older cars leave the fleet and some owners use FSD on a car they bought secondhand, so it is a proxy for take rate, not a figure Tesla reports."
   },
   "changes": [
+    {
+      "date": "2026-11-20",
+      "kind": "update",
+      "text": "Italy's Ministry of Transport granted a provisional approval (omologazione provvisoria) of Tesla Assisted Driving on 20 Nov 2026, announced by minister Matteo Salvini after a technical feasibility check and ahead of the EU recognition process. Tesla Europe said rollout begins soon, with no date. Tesla listing is not independently confirmed. That is the twelfth EU country. Recognition is not a TCMV vote."
+    },
     {
       "date": "2026-11-11",
       "kind": "update",
@@ -1178,7 +1183,7 @@
     ]
   },
   "europe": {
-    "asOf": "2026-11-11",
+    "asOf": "2026-11-20",
     "popSource": "eurostat",
     "popAsOf": "2025-01-01",
     "populationTotal": 450646971,
@@ -1281,8 +1286,8 @@
       {
         "code": "IT",
         "name": "Italy",
-        "recognised": false,
-        "permission": "unknown",
+        "recognised": true,
+        "permission": "recorded",
         "listed": false,
         "observed": false,
         "population": 58943464
@@ -1532,6 +1537,16 @@
         "links": [
           "https://www.traficom.fi/en/news/teslas-driver-assistance-system-now-permitted-finnish-roads",
           "https://www.traficom.fi/fi/uutiset/teslan-kuljettajaa-avustava-jarjestelma-nyt-sallittu-suomen-tieliikenteessa"
+        ]
+      },
+      {
+        "date": "2026-11-20",
+        "code": "IT",
+        "name": "Italy",
+        "kind": "authority",
+        "links": [
+          "https://x.com/matteosalvinimi/status/2123739830194512067",
+          "https://x.com/teslaeurope/status/2123723334542332026"
         ]
       }
     ]

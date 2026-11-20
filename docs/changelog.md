@@ -1,3 +1,12 @@
+## 20 Nov 2026
+
+- Dispatch: Italy approves Tesla Assisted Driving, becoming the 12th EU country and the first of the big four. The hero is a licensed Tesla Model 3 photo from Salcedo (Vicenza), not Tesla Europe's Rome video still.
+- Dispatch: Mexico has collected 5.9 kg of debris after Starship Flight 15, and SpaceX says most viral posts are fabrications. The hero is a licensed Playa Bagdad photo, not SpaceX's official booster hull image.
+- Dispatch: South Korea says it cannot yet review Tesla's FSD exemption request for Shanghai-built cars, after a five-page email application.
+- Dispatch: Anthropic's IPO closed at about $93.5 billion after the underwriters bought all optional shares, passing SpaceX's record. The card uses a different crop of the licensed Nasdaq MarketSite photo from 19 Nov.
+- FSD Europe atlas: Italy added as the 12th EU national recognition (20 Nov 2026, provisional MIT approval, source Salvini). The headline count is now 12, with an as-of stamp that the 12 countries are about 28.6% of the EU population on Eurostat 1 Jan 2026.
+- Also restored deferred x-embed.js on recent Dispatch articles that still had the stylesheet, placing the script outside the hashed `sd:bundles` block so a JS rebuild does not drop it.
+
 ## 2026-11-19 — Dallas Cybercab launch, Anthropic's IPO, Cameron County tax vote, and Grok Bot travel booking
 
 - Dispatch: Tesla's Robotaxi account posted "Howdy Dallas / Cybercab has arrived in your city" at 11:47 a.m. ET on 19 Nov, keeping Ashok Elluswamy's 21 Oct "next month" promise, with 11 days of November left. Tesla has not given a Dallas fleet size, service area, hours or rider rules; no official follow-up post with those figures had appeared by publish time. The 77-day and 40-day counts are author's arithmetic. Hero is the existing blurred Santana Row Cybercab derivative (Dllu, 10 Nov 2024, CC BY-SA 4.0), not Tesla's official launch-video still. Reciprocal related links on the Texas register, Austin Cybercab, 24/7 and orders pages. An Update 19 Nov line was added on the Texas register piece.

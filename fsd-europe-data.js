@@ -1,8 +1,8 @@
 // Generated from data/fsd-europe.json by scripts/build-fsd-europe.mjs. Edit the JSON source.
 window.FSD_EUROPE = {
   "schemaVersion": 1,
-  "updated": "2026-11-17",
-  "revision": "2026-11-17.1",
+  "updated": "2026-11-20",
+  "revision": "2026-11-20.1",
   "note": "National recognition, Tesla-listed availability and customer observations are separate facts. Market availability does not establish eligibility for every car. Driver supervision remains required.",
   "thresholds": {
     "euPopulationM": 448.9,
@@ -849,10 +849,12 @@ window.FSD_EUROPE = {
       "jurisdiction": "EU",
       "authority": "Ministry of Transport (MIT)",
       "permission": {
-        "status": "unknown",
-        "date": null,
-        "evidence": [],
-        "reviewedAt": null
+        "status": "recorded",
+        "date": "2026-11-20",
+        "evidence": [
+          "s-it-salvini-20261120"
+        ],
+        "reviewedAt": "2026-11-20"
       },
       "availability": {
         "status": "not_listed",
@@ -861,7 +863,7 @@ window.FSD_EUROPE = {
           "s-c55a052f27a6"
         ],
         "reviewedAt": "2026-10-23",
-        "note": "This country is absent from the checked Tesla availability list. This is not a finding about every possible permit or demonstration."
+        "note": "Tesla Europe said on 20 Nov that rollout begins soon, with no date. That is not a Tesla listing. This tracker's last manufacturer availability page remains inaccessible, so Italy is not independently listed here."
       },
       "observations": {
         "status": "unverified",
@@ -873,35 +875,49 @@ window.FSD_EUROPE = {
         "hardware": null,
         "software": null,
         "model": null,
-        "note": "Consult Tesla’s current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
+        "note": "Salvini announced a provisional approval by the Ministero delle infrastrutture e dei trasporti after a technical feasibility check, ahead of the EU recognition process. Tesla's Italian product page says the system needs active driver supervision and does not make the car autonomous. National recognition does not bind Italy's TCMV vote. Consult Tesla's current vehicle eligibility guidance and the Tesla app. A market listing does not establish eligibility for a particular car.",
         "evidence": [
-          "s-c55a052f27a6"
+          "s-c55a052f27a6",
+          "s-it-salvini-20261120",
+          "s-teslaeurope-20261120"
         ]
       },
       "context": {
-        "summary": "Supports swift EU-wide approval (minister, 29 Oct 2026)",
+        "summary": "Provisional national approval (Salvini / MIT, 20 Nov 2026); Tesla listing not independently confirmed",
         "evidence": [
+          "s-it-salvini-20261120",
+          "s-teslaeurope-20261120",
           "s-it-salvini-20261029",
           "s-a0fab7ffcd45"
         ],
-        "reviewedAt": "2026-10-29",
-        "note": "Political statement by the transport minister after a call with Elon Musk. It is not a national recognition or a recorded committee vote."
+        "reviewedAt": "2026-11-20",
+        "note": "Imported editorial context plus the 20 Nov ministerial announcement. National recognition is not a recorded committee vote."
       },
       "sourceIds": [
+        "s-it-salvini-20261120",
+        "s-teslaeurope-20261120",
         "s-it-salvini-20261029",
         "s-c55a052f27a6",
         "s-a0fab7ffcd45",
         "s-ceb8f4f6d674",
         "s-ddf43be4eb49"
       ],
-      "status": "watch",
-      "stage": "watch",
+      "status": "approved",
+      "stage": "recognised",
       "rolloutLive": false,
-      "date": null,
+      "date": "2026-11-20",
       "pop": 59,
       "regulator": "Ministry of Transport (MIT)",
-      "note": "Tesla does not list customer availability for this market in the checked source. A national permission decision is not established here.",
+      "note": "National recognition recorded on 20 Nov 2026: provisional approval by the Ministero delle infrastrutture e dei trasporti, announced by Salvini. Tesla Europe says rollout begins soon; no date, and Tesla listing is not independently confirmed. Driver supervision remains required. Twelfth EU country.",
       "sources": [
+        {
+          "label": "Matteo Salvini on X, 20 Nov 2026",
+          "url": "https://x.com/matteosalvinimi/status/2123739830194512067"
+        },
+        {
+          "label": "Tesla Europe on X, 20 Nov 2026",
+          "url": "https://x.com/teslaeurope/status/2123723334542332026"
+        },
         {
           "label": "Matteo Salvini on X, 29 Oct",
           "url": "https://x.com/matteosalvinimi/status/2115720560994836862"
@@ -2357,6 +2373,22 @@ window.FSD_EUROPE = {
   ],
   "sources": [
     {
+      "id": "s-teslaeurope-20261120",
+      "url": "https://x.com/teslaeurope/status/2123723334542332026",
+      "label": "Tesla Europe on X, 20 Nov 2026: Now approved in Italy; rollout begins soon. No date.",
+      "type": "manufacturer",
+      "checkedAt": "2026-11-20",
+      "publishedAt": "2026-11-20"
+    },
+    {
+      "id": "s-it-salvini-20261120",
+      "url": "https://x.com/matteosalvinimi/status/2123739830194512067",
+      "label": "Italian transport minister Matteo Salvini on X, 20 Nov 2026: MIT granted a provisional approval (omologazione provvisoria) of Tesla Assisted Driving",
+      "type": "authority",
+      "checkedAt": "2026-11-20",
+      "publishedAt": "2026-11-20"
+    },
+    {
       "id": "s-traficom-en-20261111",
       "url": "https://www.traficom.fi/en/news/teslas-driver-assistance-system-now-permitted-finnish-roads",
       "label": "Traficom: Tesla’s driver assistance system is now permitted on Finnish roads, 11 Nov 2026",
@@ -3138,9 +3170,31 @@ window.FSD_EUROPE = {
       ],
       "sourceType": "authority",
       "reviewedAt": "2026-11-11"
+    },
+    {
+      "id": "event-29",
+      "date": "2026-11-20",
+      "precision": "day",
+      "country": "IT",
+      "type": "recognition",
+      "summary": "Italy's transport ministry grants a provisional approval (omologazione provvisoria) of Tesla Assisted Driving after a technical feasibility check, ahead of the EU recognition process, announced by minister Matteo Salvini. Tesla Europe says rollout begins soon; no date. Twelfth EU country.",
+      "evidence": [
+        "s-it-salvini-20261120",
+        "s-teslaeurope-20261120"
+      ],
+      "sourceType": "authority",
+      "reviewedAt": "2026-11-20"
     }
   ],
   "changelog": [
+    {
+      "date": "2026-11-20",
+      "code": "IT",
+      "type": "recognition",
+      "text": "The Ministero delle infrastrutture e dei trasporti granted a provisional approval (omologazione provvisoria) of Tesla Assisted Driving, announced by minister Matteo Salvini after a technical feasibility check and ahead of the EU recognition process. Tesla Europe says rollout begins soon; no date, and Tesla listing is not independently confirmed. The twelfth EU country. About 28.6% of the EU population as of Eurostat 1 Jan 2026 (author's arithmetic).",
+      "source": "https://x.com/matteosalvinimi/status/2123739830194512067",
+      "evidence": "authority"
+    },
     {
       "date": "2026-11-14",
       "code": "FI",
@@ -3405,5 +3459,11 @@ window.FSD_EUROPE = {
       "s-3ff445463a7c",
       "s-eae2f83674a8"
     ]
+  },
+  "recognitionShare": {
+    "pct": 28.6,
+    "label": "About 28.6% of the EU population as of Eurostat 1 Jan 2026",
+    "asOf": "2026-11-20",
+    "basis": "Eurostat tps00001, 1 Jan 2026; author's arithmetic from the 12 recognising countries"
   }
 };
