@@ -845,3 +845,6 @@ Known leftovers:
 
 ## 11 Nov 2026 — Glass on more surfaces
 - Clearer glass on the navigation bar (less blur and tint). Glass also on the phone menu, the search overlay, the article reading bar, and a glass edge on event countdown cards. All fall back to solid for "reduce transparency", "increase contrast" and browsers without `backdrop-filter`.
+
+## 21 Nov 2026 — Cybercab guide correction
+- The Cybercab guide no longer says Tesla has published no price or order page. It now reports the invite-only order terms (13 Nov) and Dallas public rides (19 Nov), each labelled Reported, with a Correction entry. Full audit notes in `docs/audit-2026-11-21.md`.
