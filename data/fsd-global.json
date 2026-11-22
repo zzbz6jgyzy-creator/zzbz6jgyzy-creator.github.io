@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewed": "2026-11-10",
-  "revision": "2026-11-10-global-1",
+  "reviewed": "2026-11-22",
+  "revision": "2026-11-22-global-1",
   "listed": [
     "US",
     "CA",
@@ -497,6 +497,14 @@
       "type": "tracker",
       "note": "42 cars in the Teslascope sample on 10 Nov 2026 in NL, BE, CZ, DK, SK, SI, LT and EE. Features list FSD (Supervised) without an FSD version number. Teslascope had not recorded 2026.39.100.",
       "checked": "2026-11-10"
+    },
+    {
+      "id": "electrek-v15",
+      "label": "Electrek: Tesla launches FSD v15",
+      "url": "https://electrek.co/2026/11/21/tesla-fsd-v15-rollout-25x-safety-reality-view/",
+      "type": "media",
+      "note": "Electrek, 21 Nov 2026, quoting Tesla's X posts and release notes. We did not open Tesla's posts directly. The article gives no point-release number, build number or country list.",
+      "checked": "2026-11-22"
     }
   ],
   "versions": [
@@ -562,6 +570,18 @@
     }
   ],
   "events": [
+    {
+      "id": "fsd-v15",
+      "date": "2026-11-21",
+      "precision": "day",
+      "type": "software",
+      "title": "Tesla announces the FSD v15 rollout",
+      "summary": "Electrek reports Tesla said on X on 21 Nov that it has started rolling out FSD v15, and did not say which vehicles get it first. Listed changes include a shared vision encoder, a combined driving visualisation Tesla calls Reality View, navigation learned from fleet data (start and end of trips for now), parking suggestions from your history, driver-monitoring changes, and detection of signs, animals, debris and potholes. Tesla says the encoder improves the critical intervention rate by 25x; it has not published the baseline or data. Electrek notes Tesla has told investors AI4 (HW4) is enough to run v15 and does not address HW3. No build number or country list was published in what we read.",
+      "countries": [],
+      "sources": [
+        "electrek-v15"
+      ]
+    },
     {
       "id": "eu-396",
       "date": "2026-11-10",

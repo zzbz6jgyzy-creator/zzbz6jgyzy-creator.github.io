@@ -848,3 +848,6 @@ Known leftovers:
 
 ## 21 Nov 2026 — Cybercab guide correction
 - The Cybercab guide no longer says Tesla has published no price or order page. It now reports the invite-only order terms (13 Nov) and Dallas public rides (19 Nov), each labelled Reported, with a Correction entry. Full audit notes in `docs/audit-2026-11-21.md`.
+
+## 22 Nov 2026 — FSD v15
+- FSD v15 recorded on the FSD tracker (change log) and the FSD global atlas (event), as reported by Electrek: rollout started 21 Nov, first vehicles not stated, 25x claim without a published baseline.
