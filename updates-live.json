@@ -1,16 +1,69 @@
 {
-  "updated": "2026-11-21T12:48:39Z",
+  "updated": "2026-11-22T07:32:28Z",
   "source": "teslascope",
   "sourceUrl": "https://teslascope.com/software",
-  "fleet": 3240,
-  "latest": "2026.44.1",
+  "fleet": 3259,
+  "latest": "2026.38.6.11",
   "versions": [
+    {
+      "id": "2026.38.6.11",
+      "date": "2026-11-21",
+      "count": 10,
+      "fleet": 3259,
+      "percent": 0.3,
+      "fsd": null,
+      "fsdHw3": null,
+      "fsdHw4": "15.0.1",
+      "features": [
+        {
+          "title": "Bike Rack Mode",
+          "text": "With Bike Rack Mode, you can now engage FSD (Supervised) and Autosteer when a bike rack or similar hitch accessory is installed. When Bike Rack Mode is enabled, FSD (Supervised) pulls over near your destination and does\u2026"
+        },
+        {
+          "title": "FSD (Supervised) v15.0.1",
+          "text": "v15 upgrades every part of the end-to-end driving network. Includes: - Upgraded vision encoder shared between FSD, Robotaxi, and Optimus, which is trained on millions of internet videos for improved generalization and d\u2026"
+        },
+        {
+          "title": "Speed Camera Slowdown",
+          "text": "FSD (Supervised) can now slow down when it detects a speed camera. Press the accelerator or increase your speed profile to cancel the slowdown. If you cancel twice at the same camera, your Tesla saves that location and\u2026"
+        },
+        {
+          "title": "Tesla Reality View",
+          "text": "- New real-time generative driving visualization that continuously streams a view from an arbitrary virtual camera situated above your vehicle, enabling you to see and control what FSD is planning to do. - Select betwee\u2026"
+        },
+        {
+          "title": "Apple Music",
+          "text": "Add songs to your Apple Music queue directly from Search results and Artist pages. Tap and hold a song, or tap the three-dot menu to play next, add to queue, save to your library, or mark as a favorite. Requires an acti\u2026"
+        },
+        {
+          "title": "Automatic Collision Evasion",
+          "text": "Automatic Collision Evasion activates Full Self-Driving (Supervised) to try to keep your vehicle safe and then continue driving. It can engage in the following situations while you are driving manually: - Scenario 1: A\u2026"
+        },
+        {
+          "title": "Automatic Navigation",
+          "text": "Automatic Navigation now adapts to your routine. In addition to Home, Work, and upcoming calendar events, your vehicle can now suggest and route to the places you visit regularly, like a school drop-off on the way to wo\u2026"
+        },
+        {
+          "title": "Camera Preview",
+          "text": "You can now open Camera Preview at any time, even if your Tesla is not in Park. Go to Controls > Service > Camera Preview and tap on any camera view to see it individually. Tap the grid button to switch back to all came\u2026"
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "countryCounts": {
+        "US": 10
+      },
+      "pending": 1,
+      "firstSeen": "2026-11-21T22:38:28Z",
+      "lastSeen": "2026-11-22T04:29:27Z"
+    },
     {
       "id": "2026.44.1",
       "date": "2026-11-17",
-      "count": 284,
-      "fleet": 3240,
-      "percent": 8.8,
+      "count": 381,
+      "fleet": 3259,
+      "percent": 11.7,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -52,59 +105,67 @@
         "US",
         "CA",
         "GB",
+        "FR",
         "DE",
         "CH",
-        "FR",
-        "TW",
-        "ES",
         "DK",
-        "AT",
+        "TW",
         "NL",
-        "BG",
         "BE",
+        "ES",
+        "AT",
         "PL",
         "IT",
         "UA",
+        "BG",
+        "SK",
         "HU",
         "SE",
         "MX",
-        "SK",
         "IE",
-        "CZ"
+        "CZ",
+        "NO",
+        "IL",
+        "TR",
+        "MY"
       ],
       "countryCounts": {
-        "US": 200,
-        "CA": 14,
-        "GB": 13,
-        "DE": 8,
+        "US": 271,
+        "CA": 21,
+        "GB": 16,
+        "FR": 9,
+        "DE": 9,
         "CH": 7,
-        "FR": 7,
+        "DK": 6,
         "TW": 5,
+        "NL": 5,
+        "BE": 4,
         "ES": 4,
-        "DK": 4,
-        "AT": 3,
-        "NL": 3,
-        "BG": 2,
-        "BE": 2,
-        "PL": 2,
-        "IT": 2,
+        "AT": 4,
+        "PL": 3,
+        "IT": 3,
         "UA": 2,
+        "BG": 2,
+        "SK": 1,
         "HU": 1,
         "SE": 1,
         "MX": 1,
-        "SK": 1,
         "IE": 1,
-        "CZ": 1
+        "CZ": 1,
+        "NO": 1,
+        "IL": 1,
+        "TR": 1,
+        "MY": 1
       },
-      "pending": 216,
+      "pending": 137,
       "firstSeen": "2026-11-17T04:38:20Z",
-      "lastSeen": "2026-11-21T12:39:22Z"
+      "lastSeen": "2026-11-22T05:01:00Z"
     },
     {
       "id": "2026.38.5.13",
       "date": "2026-11-13",
-      "count": 624,
-      "fleet": 3240,
+      "count": 629,
+      "fleet": 3259,
       "percent": 19.3,
       "fsd": null,
       "fsdHw3": null,
@@ -150,20 +211,20 @@
         "MX"
       ],
       "countryCounts": {
-        "US": 591,
+        "US": 596,
         "CA": 29,
         "PR": 2,
         "MX": 2
       },
-      "pending": 40,
+      "pending": 38,
       "firstSeen": "2026-11-13T23:33:09Z",
-      "lastSeen": "2026-11-21T07:22:54Z"
+      "lastSeen": "2026-11-22T07:22:17Z"
     },
     {
       "id": "2026.39.100",
       "date": "2026-11-11",
-      "count": 38,
-      "fleet": 3240,
+      "count": 39,
+      "fleet": 3259,
       "percent": 1.2,
       "fsd": null,
       "fsdHw3": null,
@@ -219,22 +280,22 @@
         "CZ": 6,
         "DK": 5,
         "BE": 5,
-        "IT": 2,
+        "IT": 3,
         "SK": 1,
         "FI": 1,
         "LT": 1,
         "EE": 1,
         "SI": 1
       },
-      "pending": 8,
+      "pending": 12,
       "firstSeen": "2026-11-11T16:28:06Z",
-      "lastSeen": "2026-11-21T09:38:35Z"
+      "lastSeen": "2026-11-22T00:35:18Z"
     },
     {
       "id": "2026.38.4.5",
       "date": "2026-11-10",
-      "count": 7,
-      "fleet": 3240,
+      "count": 8,
+      "fleet": 3259,
       "percent": 0.2,
       "fsd": null,
       "fsdHw3": "14.2 Lite",
@@ -277,18 +338,18 @@
         "KR"
       ],
       "countryCounts": {
-        "KR": 7
+        "KR": 8
       },
-      "pending": 2,
+      "pending": 1,
       "firstSeen": "2026-11-10T03:11:50Z",
-      "lastSeen": "2026-11-21T06:32:35Z"
+      "lastSeen": "2026-11-21T17:18:52Z"
     },
     {
       "id": "2026.38.5.12",
       "date": "2026-11-04",
       "count": 607,
-      "fleet": 3240,
-      "percent": 18.7,
+      "fleet": 3259,
+      "percent": 18.6,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.13",
@@ -346,7 +407,7 @@
       "id": "2026.39.6",
       "date": "2026-10-29",
       "count": 42,
-      "fleet": 3240,
+      "fleet": 3259,
       "percent": 1.3,
       "fsd": null,
       "fsdHw3": null,
@@ -401,7 +462,7 @@
       "id": "2026.38.6.1",
       "date": "2026-10-29",
       "count": 133,
-      "fleet": 3240,
+      "fleet": 3259,
       "percent": 4.1,
       "fsd": null,
       "fsdHw3": null,
@@ -455,9 +516,9 @@
     {
       "id": "2026.38.6",
       "date": "2026-10-29",
-      "count": 346,
-      "fleet": 3240,
-      "percent": 10.7,
+      "count": 347,
+      "fleet": 3259,
+      "percent": 10.6,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -537,7 +598,7 @@
         "PH"
       ],
       "countryCounts": {
-        "US": 108,
+        "US": 109,
         "GB": 45,
         "DE": 25,
         "FR": 20,
@@ -577,16 +638,16 @@
         "LT": 1,
         "PH": 1
       },
-      "pending": 26,
+      "pending": 25,
       "firstSeen": "2026-10-29T19:08:27Z",
-      "lastSeen": "2026-11-21T09:57:23Z"
+      "lastSeen": "2026-11-21T18:00:38Z"
     },
     {
       "id": "2026.38.5.6",
       "date": "2026-10-24",
       "count": 151,
-      "fleet": 3240,
-      "percent": 4.7,
+      "fleet": 3259,
+      "percent": 4.6,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": "14.3.12",
@@ -639,9 +700,9 @@
     {
       "id": "2026.38.5.11",
       "date": "2026-10-24",
-      "count": 1028,
-      "fleet": 3240,
-      "percent": 31.7,
+      "count": 1030,
+      "fleet": 3259,
+      "percent": 31.6,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.13",
@@ -687,22 +748,22 @@
         "UA"
       ],
       "countryCounts": {
-        "US": 960,
+        "US": 962,
         "CA": 60,
         "MX": 4,
         "PR": 2,
         "UA": 2
       },
-      "pending": 9,
+      "pending": 7,
       "firstSeen": "2026-10-24T19:43:09Z",
-      "lastSeen": "2026-11-21T07:43:18Z"
+      "lastSeen": "2026-11-22T00:40:39Z"
     },
     {
       "id": "2026.38.3.2",
       "date": "2026-10-22",
       "count": 360,
-      "fleet": 3240,
-      "percent": 11.1,
+      "fleet": 3259,
+      "percent": 11.0,
       "fsd": null,
       "fsdHw3": null,
       "fsdHw4": null,
@@ -840,7 +901,7 @@
       "id": "2026.38.5.5",
       "date": "2026-10-21",
       "count": 136,
-      "fleet": 3240,
+      "fleet": 3259,
       "percent": 4.2,
       "fsd": null,
       "fsdHw3": null,
@@ -895,7 +956,7 @@
       "id": "2026.38.5.10",
       "date": "2026-10-20",
       "count": 93,
-      "fleet": 3240,
+      "fleet": 3259,
       "percent": 2.9,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
@@ -952,8 +1013,8 @@
       "id": "2026.38.5.1",
       "date": "2026-10-13",
       "count": 1030,
-      "fleet": 3240,
-      "percent": 31.8,
+      "fleet": 3259,
+      "percent": 31.6,
       "fsd": null,
       "fsdHw3": "14.3 Lite",
       "fsdHw4": "14.3.12",
@@ -1067,137 +1128,6 @@
       "pending": 0,
       "firstSeen": "2026-10-10T22:26:31Z",
       "lastSeen": "2026-10-16T07:09:24Z"
-    },
-    {
-      "id": "2026.38.3.1",
-      "date": "2026-10-08",
-      "count": 327,
-      "fleet": 3240,
-      "percent": 10.1,
-      "fsd": null,
-      "fsdHw3": null,
-      "fsdHw4": null,
-      "features": [
-        {
-          "title": "Emergency Drive Away",
-          "text": "Emergency Drive Away lets you shift into Drive while a Supercharger cable is still connected. Use it only in an emergency: driving away with the cable attached will damage your vehicle and the Supercharger, and you may\u2026"
-        },
-        {
-          "title": "Halloween Mode",
-          "text": "Spread holiday fear year round with Halloween Mode. Put a Ghost Costume on your car visualization. Turn on Trick or Treat Mode to play spooky sounds and flicker the lights when visitors approach. Schedule a haunting lig\u2026"
-        },
-        {
-          "title": "Security Improvements",
-          "text": "This update includes important security fixes and improvements."
-        },
-        {
-          "title": "Set Arrival Energy",
-          "text": "Set your desired Arrival Energy for any trip from your phone. Open the location tab in the Tesla Mobile App, enter your destination, and tap Set Arrival Energy. Requires Mobile App v4.58.0 or later."
-        },
-        {
-          "title": "Apple Music",
-          "text": "Go to Search, select Apple Music, then tap Library to find the songs, albums, and playlists you've added"
-        },
-        {
-          "title": "Dynamic Headlight Leveling",
-          "text": "Low beams will automatically adjust their aim based on driving conditions and nearby traffic to maximize your visibility while reducing glare for other road users."
-        },
-        {
-          "title": "Supercharger Site Maps",
-          "text": "You can now see a detailed view of select Tesla Superchargers by tapping \"View Site Map.\" When navigating to a pilot location, the site layout and live occupancy (Available / Occupied / Down) will be displayed upon arri\u2026"
-        },
-        {
-          "title": "Visual Updates",
-          "text": "The center display now features higher quality images of your Tesla, and an enhanced park scene environment."
-        }
-      ],
-      "countries": [
-        "US",
-        "GB",
-        "DE",
-        "FR",
-        "CH",
-        "DK",
-        "IT",
-        "CA",
-        "AT",
-        "NL",
-        "PL",
-        "ES",
-        "NO",
-        "TW",
-        "CZ",
-        "BE",
-        "UA",
-        "HU",
-        "LT",
-        "JP",
-        "IS",
-        "PT",
-        "AE",
-        "NZ",
-        "BG",
-        "IL",
-        "SE",
-        "TR",
-        "HK",
-        "TH",
-        "PH",
-        "SG",
-        "QA",
-        "SK",
-        "MY",
-        "SI",
-        "MA",
-        "RO",
-        "CO",
-        "IE"
-      ],
-      "countryCounts": {
-        "US": 104,
-        "GB": 41,
-        "DE": 28,
-        "FR": 18,
-        "CH": 12,
-        "DK": 12,
-        "IT": 11,
-        "CA": 11,
-        "AT": 9,
-        "NL": 9,
-        "PL": 7,
-        "ES": 7,
-        "NO": 6,
-        "TW": 6,
-        "CZ": 4,
-        "BE": 4,
-        "UA": 3,
-        "HU": 3,
-        "LT": 2,
-        "JP": 2,
-        "IS": 2,
-        "PT": 2,
-        "AE": 2,
-        "NZ": 2,
-        "BG": 2,
-        "IL": 2,
-        "SE": 2,
-        "TR": 2,
-        "HK": 1,
-        "TH": 1,
-        "PH": 1,
-        "SG": 1,
-        "QA": 1,
-        "SK": 1,
-        "MY": 1,
-        "SI": 1,
-        "MA": 1,
-        "RO": 1,
-        "CO": 1,
-        "IE": 1
-      },
-      "pending": 2,
-      "firstSeen": "2026-10-08T01:27:55Z",
-      "lastSeen": "2026-10-28T05:28:10Z"
     }
   ]
 }
