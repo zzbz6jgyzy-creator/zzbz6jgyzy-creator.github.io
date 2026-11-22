@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewed": "2026-11-09",
+  "reviewed": "2026-11-21",
   "sources": [
     {
       "id": "drive-2024",
@@ -190,6 +190,24 @@
       "url": "https://zoox.com/where-to-ride",
       "date": "2026-10-27",
       "checked": "2026-10-27"
+    },
+    {
+      "id": "electrek-orders",
+      "outlet": "Electrek",
+      "kind": "reporting",
+      "title": "Tesla Cybercab orders open at $29,990 + $299/mo, only in Robotaxi zones",
+      "url": "https://electrek.co/2026/11/13/tesla-cybercab-personal-use-orders-299-subscription-geofence/",
+      "date": "2026-11-13",
+      "checked": "2026-11-21"
+    },
+    {
+      "id": "teslarati-dallas",
+      "outlet": "Teslarati",
+      "kind": "reporting",
+      "title": "Tesla expands public Cybercab rides to Dallas",
+      "url": "https://teslarati.com/tesla-cybercab-without-steering-wheel-pedals-expands-public-rides-dallas",
+      "date": "2026-11-19",
+      "checked": "2026-11-21"
     }
   ],
   "metrics": [
@@ -246,22 +264,28 @@
     {
       "id": "customers",
       "label": "Cybercabs for customers",
-      "value": "By end of 2026",
-      "unit": "stated aim",
-      "detail": "On the Q3 call Lars Moravy said: \"we're trying to get Cybercabs to customers by the end of this year, 2026\". Today every Cybercab built goes to Tesla's own fleet, and Musk said most will stay Tesla-owned.",
-      "status": "target",
-      "asOf": "2026-10-21",
-      "source": "q3-call"
+      "value": "Invite-only orders",
+      "unit": "opened 13 Nov 2026",
+      "detail": "Electrek reports Tesla invited \"select customers\" to buy a Cybercab for personal use, with delivery limited to supported Robotaxi service areas. No customer deliveries had been reported by 21 Nov 2026. On the Q3 call Lars Moravy had said Tesla was \"trying to get Cybercabs to customers by the end of this year, 2026\".",
+      "status": "reported",
+      "asOf": "2026-11-13",
+      "source": "electrek-orders",
+      "also": [
+        "q3-call"
+      ]
     },
     {
       "id": "price",
-      "label": "Cost target",
-      "value": "<$30,000",
-      "unit": "set in Oct 2024",
-      "detail": "At the 2024 reveal Musk said he \"expects the cost to be below $30,000\", per The Drive. Tesla has published no price since.",
-      "status": "target",
-      "asOf": "2024-10-10",
-      "source": "drive-2024"
+      "label": "Order-page price",
+      "value": "$29,990",
+      "unit": "before tax, invited customers",
+      "detail": "Electrek reports Tesla's order page lists $29,990 before taxes, a $1,000 non-refundable deposit and a required $299-a-month Autonomy Subscription, with estimated delivery in December 2026 in Austin. The price comes from images Tesla's Robotaxi account posted; we have not placed an order. At the 2024 reveal Musk said he \"expects the cost to be below $30,000\", per The Drive.",
+      "status": "reported",
+      "asOf": "2026-11-13",
+      "source": "electrek-orders",
+      "also": [
+        "drive-2024"
+      ]
     }
   ],
   "versions": {
@@ -587,6 +611,24 @@
       "title": "Electrek: three Tesla filings, two of them empty",
       "text": "Electrek reported that Tesla met the 30 Oct Special Order deadline and asked NHTSA to keep the answers confidential. It says the public AQ26002 docket now has three Tesla documents: a one-page 30 Oct letter whose only readable sentence is that the entire file is confidential business information; a Question 8 placeholder with a confidentiality request covering each document in its entirety; and Tesla's Cybercab First Responder Interaction Plan, version 1.2, dated 3 Sep, which Electrek says was already on Tesla's website. Electrek says NHTSA has not commented on the confidentiality request and has not found the Cybercab noncompliant.",
       "source": "electrek-cbi"
+    },
+    {
+      "id": "cybercab-orders",
+      "date": "2026-11-13",
+      "type": "report",
+      "display": "13 Nov 2026",
+      "title": "Electrek: Cybercab orders open to invited customers",
+      "text": "Electrek reports Tesla began inviting select customers to buy a Cybercab for personal use at $29,990 before tax, with a $1,000 deposit, a required $299-a-month Autonomy Subscription and estimated delivery in December 2026. Electrek says the terms come from Tesla's own posted images and an invitation email.",
+      "source": "electrek-orders"
+    },
+    {
+      "id": "cybercab-dallas",
+      "date": "2026-11-19",
+      "type": "milestone",
+      "display": "19 Nov 2026",
+      "title": "Teslarati: public Cybercab rides open in Dallas",
+      "text": "Teslarati reports Tesla opened public Cybercab rides in Dallas, the second city after Austin, following a post from its Robotaxi account. It gives no Dallas fleet size or service area.",
+      "source": "teslarati-dallas"
     }
   ],
   "promises": [
@@ -637,15 +679,17 @@
   "faqs": [
     {
       "q": "Can I buy a Cybercab?",
-      "a": "Not yet. On the Q3 call Lars Moravy said Tesla is trying to get Cybercabs to customers by the end of 2026, and that today all of them go to Tesla's own Robotaxi fleet. Elon Musk added that \"the vast majority of the Cybercab stuff will be essentially Tesla-owned and transport as a service.\" Tesla has published no order page, price or delivery terms.",
+      "a": "Only by invitation, and not yet delivered. Electrek reports that on 13 November Tesla began inviting \"select customers\" to order a Cybercab for personal use: $29,990 before tax, a $1,000 non-refundable deposit and a required $299-a-month Autonomy Subscription, with estimated delivery in December 2026. The terms come from images Tesla's Robotaxi account posted, and we have not placed an order. On the Q3 call (21 October) Lars Moravy said all Cybercabs then went to Tesla's own Robotaxi fleet and Elon Musk said most would stay Tesla-owned.",
       "sources": [
+        "electrek-orders",
         "q3-call"
       ]
     },
     {
       "q": "How much will a Cybercab cost?",
-      "a": "Tesla has not published a price. At the 2024 reveal Musk said he expected the cost to be below $30,000. That is a target from two years ago, not a quote.",
+      "a": "Reported at $29,990 before tax, plus a $299-a-month Autonomy Subscription that Electrek says is required to operate the car (one month is included). That is what Tesla's order page showed invited customers on 13 November. At the 2024 reveal Musk said he expected the cost to be below $30,000; the order-page price is for the car only, not the subscription.",
       "sources": [
+        "electrek-orders",
         "drive-2024"
       ]
     },
@@ -701,9 +745,9 @@
     },
     {
       "q": "Where can I ride one?",
-      "a": "Austin, per Tesla. On the Q3 call Ashok Elluswamy, asked how the Cybercab fleet scales past Austin, said \"next month, we'll be launching in Dallas\", and Vaibhav Taneja said Tesla plans to bring Cybercab to other cities before the end of the year. Tesla's Robotaxi service already runs elsewhere with Model Y cars; see the live tracker for cities.",
+      "a": "Austin and Dallas. Teslarati reports Tesla opened public Cybercab rides in Dallas on 19 November after a post from its Robotaxi account, the second city after Austin; riders book through the Robotaxi app. On the Q3 call Ashok Elluswamy had said \"next month, we'll be launching in Dallas\". Tesla has not said how many Cybercabs are in Dallas. Its Robotaxi service already runs in more cities with Model Y cars; see the live tracker.",
       "sources": [
-        "q3-update",
+        "teslarati-dallas",
         "q3-call"
       ]
     },
@@ -716,6 +760,11 @@
     }
   ],
   "changes": [
+    {
+      "date": "2026-11-21",
+      "kind": "correction",
+      "text": "The guide said Tesla had published no order page or price. That is out of date: on 13 November Tesla began inviting select customers to order a Cybercab, and the price, deposit, subscription and delivery estimate are now shown in the price and customers figures and in three answers. Rides also opened in Dallas on 19 November. Both are reported by outlets that opened the details; see the new sources."
+    },
     {
       "date": "2026-11-09",
       "kind": "update",
