@@ -1,0 +1,46 @@
+name: Refresh design preview
+
+# Rebuilds the hidden redesign preview pages in /preview/ from the live pages (scripts/build-design-preview.mjs).
+# Previews follow live data, so they are refreshed here instead of being checked by rebuild-and-diff on PRs.
+# Slow on purpose: at most daily on a schedule, plus when the design files change on main or on demand (repo size).
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ds.css'
+      - 'ds-preview.css'
+      - 'ds-components.js'
+      - 'scripts/build-design-preview.mjs'
+  schedule:
+    - cron: "41 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-push-main
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build previews from the live pages
+        run: node scripts/build-design-preview.mjs
+      - name: Check previews (structure, exclusions, local files)
+        run: node --test tests/design-preview.test.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- preview
+          if git diff --cached --quiet; then echo "No preview change"; else
+            git commit -m "Refresh design preview pages."
+            sh scripts/ci-push-retry.sh
+          fi

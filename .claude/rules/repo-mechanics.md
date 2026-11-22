@@ -27,3 +27,6 @@
 - **`astro/` only packages the site.** The repo root is still the source of truth; `cd astro && npm run build && npm run parity`
   copies it to `dist/` for Cloudflare (needs Node 22.23.4+). Don't edit `astro/.legacy/` or `dist/`. Keep `html_handling: "none"`.
   Details in `docs/migration.md`.
+- **`/preview/` is the redesign preview.** `scripts/build-design-preview.mjs` rebuilds it from the live pages; never edit it by
+  hand. Nav sync, the integrity check, the sitemap and IndexNow skip it. It and `ds-preview.css` go away at the switch
+  (`docs/design-system.md`).
