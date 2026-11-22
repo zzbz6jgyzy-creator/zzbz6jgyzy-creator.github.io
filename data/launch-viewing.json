@@ -1,6 +1,6 @@
 {
  "version": 1,
- "checked": "2026-11-22T11:14:02Z",
+ "checked": "2026-11-22T18:29:49Z",
  "editorialUpdated": "2026-11-17T08:45:00+00:00",
  "presets": [
   {
@@ -753,31 +753,23 @@
    "end": "",
    "date": "2026-11-22",
    "precision": "datetime",
-   "status": "Go",
-   "note": "Government/Top Secret · Low Earth Orbit",
-   "where": "Space Launch Complex 4E · Vandenberg SFB, CA, USA",
+   "status": "done",
+   "note": "Launch Library 2 schedule. Launch targets can change.",
+   "where": "",
    "href": "",
    "sources": [],
    "origin": "Launch Library 2",
    "providerId": "951a341f-236b-42fe-a667-4ab2fcf36eac",
    "windowStart": "2026-11-22T12:16:00Z",
    "windowEnd": "2026-11-22T12:46:00Z",
-   "vehicle": "Falcon 9 Block 5",
-   "providerStatus": "Go for Launch",
+   "vehicle": "",
+   "providerStatus": "Launch Successful",
    "coverage": {
     "url": "https://www.spacex.com/launches",
     "article": "",
     "status": "scheduled"
    },
-   "pad": {
-    "id": "slc4e",
-    "name": "Vandenberg · SLC-4E",
-    "short": "Vandenberg",
-    "lat": 34.632,
-    "lon": -120.611,
-    "az": 186,
-    "coast": "west"
-   }
+   "pad": null
   },
   {
    "id": "ussf-266",
