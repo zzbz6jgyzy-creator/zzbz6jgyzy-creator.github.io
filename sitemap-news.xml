@@ -1,48 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/tesla-italy-assisted-driving-approval.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-20T17:32:00Z</news:publication_date>
-      <news:title>Italy approves Tesla Assisted Driving, the 12th EU country and the first big one. The EU math still doesn't add up</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/spacex-mexico-starship-debris.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-20T17:30:00Z</news:publication_date>
-      <news:title>Mexico has collected 5.9 kg of debris after Flight 15. SpaceX says most of the viral posts are fabrications</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/tesla-korea-fsd-five-pages.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-20T17:28:00Z</news:publication_date>
-      <news:title>South Korea won't review Tesla's FSD request for Shanghai-built cars yet. Tesla sent five pages by email</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://superchargeddaily.com/dispatch/anthropic-ipo-close-record.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Supercharged Daily</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-20T17:26:00Z</news:publication_date>
-      <news:title>Anthropic closes its IPO at $93.5 billion and takes SpaceX's record outright. Its new cash nearly matches its SpaceX compute deal</news:title>
-    </news:news>
-  </url>
+
 </urlset>
