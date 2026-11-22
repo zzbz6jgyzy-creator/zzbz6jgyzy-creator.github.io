@@ -1,5 +1,48 @@
-# Design system: section themes
+# Design system
 
+One design language for the whole site, news first: every page leads with its latest stories or its live numbers.
+The redesign is built in two layers and rolled out preview first, then switched over in one go (plan approved 22 Nov 2026,
+see `docs/decisions.md`).
+
+## Files
+| File | What it holds |
+|---|---|
+| `ds.css` | Tokens and shared components (`ds-*` classes). Built on the existing tokens in `styles.css :root` (dark) and `theme.css` (light). |
+| `ds-components.js` | Pure HTML renderers for those components (UMD, no Node or DOM APIs): `masthead`, `story`, `storyList`, `stat`, `stats`, `sectionHead`, `band`, `picture`, `note`. Builders use them in Node; pages whose views re-render in the browser get them in their bundle. |
+| `ds-preview.css` | Page layouts for the `/preview/` pages only. At the switch these rules move into each page's own stylesheet and the file is deleted. |
+| `scripts/build-design-preview.mjs` | Builds `/preview/*.html` from the live pages plus the renderers. Deleted at the switch. |
+
+## Tokens
+- **Surfaces:** dark first (`--bg #0c0d10`, cards `#14151a`), light supported. Light mode is a token swap under `html[data-theme=light]`; the toggle and the `sd-theme` key are unchanged.
+- **One brand red, two roles:** fills use `#e31937` (white on it is 4.71:1). Red text uses `--red-text`: `#f23a52` on dark (5.09:1 on the page, 4.78:1 on cards), `#b01028` on light (6.3:1, 7.1:1 on white). Do not use `#e31937` or the old `--tesla` `#c8102e` for small text: they fail AA.
+- **Section accents** (`--ds-accent`, `--ds-accent-fill`, `--ds-on-accent`): red for Tesla and the site, ice `#93d9f0` for SpaceX (light `#06516f`, 7.71:1), silver `#cfd6e4` for Grok (light `#39425a`). Story labels follow their topic (`--ds-topic-*`).
+- **Type:** Inter for UI and text, IBM Plex Mono 400/500 for labels. Scale `--ds-fs-12/14/16/18/22/28/36/48`, display `--ds-fs-display` (clamp 32 to 48px). Nothing below 12px; no weights Inter or Plex Mono do not ship (no 800/900, no Plex Mono bold).
+- **Space and shape:** `--ds-sp-1..8` = 4, 8, 12, 16, 24, 32, 48, 64px. Radius 12 (cards), 8 (inputs, thumbnails), 999 (pills, buttons). Two shadows, two durations (`.15s`, `.3s`); motion only inside `prefers-reduced-motion: no-preference`.
+- **Width:** `--ds-max` 1180px with a 16px phone gutter (24px from 768px).
+- `tests/design-preview.test.mjs` pins every token pair's contrast and checks the token declarations.
+
+## Components
+- **Masthead** (`.ds-masthead`): kicker, a bare plain-text `<h1>` (several tests count `/<h1>/`), one-line dek, "Updated · source" line, optional key numbers, optional slim photo band (120px phone, 200px desktop). `--small` is the homepage line.
+- **Key numbers** (`.ds-stats` / `.ds-stat`): label, value, unit, "As of … · source" and a status chip (Disclosed, Reported, Target, Estimate). Every number carries its label and date (editorial rules 2 and 4).
+- **Story list** (`.ds-story-list` / `.ds-story`): topic label, headline (the link text), date and read time or a plain description, optional decorative thumbnail from the 480w AVIF/WebP set.
+- **Section head** (`.ds-section-head`): a plain label and a link whose text makes sense alone ("All stories", not "All").
+- **Buttons, chips, notes:** `.ds-btn--primary` / `--secondary` (44px tall), `.ds-chip` (40px), `.ds-note` for one-line notices such as the disclosure.
+
+## Page types (news first)
+- **Homepage:** lead story, then "Latest" (7, no repeats), live numbers, the Sunday briefing, trackers and tools by plain name, upcoming launches, what changed and the wire. h1 is the small line "Tesla, SpaceX and xAI news"; the tagline "Go beyond the headline." lives once, in the footer.
+- **Dispatch list and news.html:** compact masthead, one chip row and search, then the first card.
+- **Articles:** compacted with CSS only. The article DOM order is editorial (`scripts/editorial-dates.py`), so nothing moves in the HTML.
+- **Hubs:** plain title, key numbers, slim photo band, then the hub's existing story list.
+- **Trackers:** plain title, dek, updated/source and the tracker's own key numbers, then the tool. No full-screen heroes.
+- **Plain h1s, not slogans.** Showcases (Roadster, Model 3, Cybertruck, Cybercab guide) keep their cinematic stage under the masthead.
+
+## Preview pages (`/preview/`)
+- Built by `node scripts/build-design-preview.mjs` from the live page: the old header is cut between unique anchors and the new masthead and lists are inserted. Every hook a page script needs is kept (for the homepage: all `data-hv-*` hooks and `hv:*` markers; the old supporting cards stay in the page, hidden, because `home-v2.js` repaints them).
+- Hidden: `noindex, nofollow`, canonical to the live URL, "Preview ·" in the tab title, a preview note at the end of the page, `Disallow: /preview/` in robots.txt. The sitemap, `data/pages.json`, `build-seo.py`, `sync-nav.py`, `check-site-integrity.py` and `indexnow-ping.py` skip them; `inject-js-bundles.py` gives a preview the bundles of its live page.
+- Never edit a preview by hand. `.github/workflows/design-preview.yml` refreshes them daily, on design changes and on demand; the bots that rebuild bundles (home-build, news-snapshot, starlink-refresh) also stage `preview/`.
+- Checks: `node --test tests/design-preview.test.mjs` and `python3 tests/design-preview-browser.py` (also run by `.github/workflows/design-preview-checks.yml`).
+
+## Section themes
 One design language for the whole site. The Tesla and SpaceX sections share type, grid, cards, spacing, buttons and motion rules. Only a few tokens change per section, so the two read as different places at a glance and still as one brand. Added 6 Nov 2026 (`section-theme.css`).
 
 ## How it works

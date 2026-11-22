@@ -1,3 +1,9 @@
+## 22 Nov 2026 — Redesign step 1: design system and homepage preview
+
+- New shared design layer: `ds.css` (tokens and components) and `ds-components.js` (renderers), documented in `docs/design-system.md`.
+- Hidden homepage preview at `/preview/index.html`: lead story, latest list, live numbers, then the rest, with plain section labels. Readers still see the current homepage.
+- Preview guards: nav sync, the integrity check and IndexNow skip `/preview/`; JS bundle injection maps a preview to its live page; three bots stage preview bundle updates. New workflows refresh and check the previews.
+
 ## 20 Nov 2026
 
 - Dispatch: Italy approves Tesla Assisted Driving, becoming the 12th EU country and the first of the big four. The hero is a licensed Tesla Model 3 photo from Salcedo (Vicenza), not Tesla Europe's Rome video still.

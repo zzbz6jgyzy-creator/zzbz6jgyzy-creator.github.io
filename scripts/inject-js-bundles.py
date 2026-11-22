@@ -49,6 +49,9 @@ SKIP = set(CFG.get("skipPages") or [])
 
 
 def page_spec(rel: str) -> dict | None:
+    if rel.startswith("preview/"):
+        # Design preview (scripts/build-design-preview.mjs): same scripts as the live page it previews.
+        rel = rel[len("preview/"):]
     if rel in SKIP:
         return None
     if rel in CFG["pages"]:

@@ -2,6 +2,12 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-11-22 · News-first redesign: preview pages first, one switch, shared ds layer
+
+- **Decision:** a news-first redesign (same logo, red and dark look, section colours kept) for the homepage, articles, hubs and Dispatch list, and trackers. It is built as one shared layer (`ds.css` tokens and components, `ds-components.js` renderers) and shown first on hidden `/preview/` pages composed from the live pages, then switched site-wide in one PR. Every page and URL stays.
+- **Why:** on phones the first story sat 1.5 to 2 screens down under slogan banners; about 29 separate hero implementations and 2,204 distinct colours (168 reds, the core red failing AA as text) made consistency impossible. Previews built from live pages let the owner judge the real design with real data without touching readers, bots or the other builders.
+- **Rejected:** a design flag on live pages (duplicate markup shipped to every reader and two h1s per page during the preview), a long-lived redesign branch (bots rewrite generated pages every 30 minutes, so it would conflict constantly), and the paused Astro move (the owner chose the current stack).
+
 ## 2026-11-09 · Event pages: flat URL, one launch time, data-driven
 
 - **Decision:** `/starship-flight-15.html` (flat, like every other page) built from `data/event-pages/*.json`; the time comes only from `data/events.json`.

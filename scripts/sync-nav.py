@@ -114,6 +114,7 @@ if __name__=='__main__':
  check='--check' in sys.argv; changed=[]
  for p in sorted(ROOT.rglob('*.html')):
   if any(x in p.parts for x in ['.git','node_modules','astro','.homepage-before']): continue
+  if p.relative_to(ROOT).parts[:1]==('preview',): continue  # design preview: built from live pages by scripts/build-design-preview.mjs
   s=p.read_text(); n=transform(s)
   if n!=s:
    changed.append(str(p.relative_to(ROOT)))
