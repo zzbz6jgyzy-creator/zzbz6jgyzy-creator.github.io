@@ -3,7 +3,7 @@
 
 /* ---- Homepage --------------------------------------------------------------------------- */
 .ds-home { padding-bottom: var(--ds-sp-7); }
-.ds-home .ds-home-mast .hv-updated { margin: 0; font: 400 var(--ds-fs-12) / 1.5 var(--ds-mono); color: var(--ds-ink-2); }
+.ds-home .ds-home-mast .hv-updated { margin: 0; font: 400 var(--ds-fs-12) / 1.5 var(--ds-mono); color: var(--ds-ink-2); white-space: normal; overflow: visible; text-overflow: clip; }
 .ds-home .ds-home-top {
   width: min(var(--ds-max), calc(100% - 2 * var(--ds-gutter)));
   margin: 0 auto var(--ds-sp-6);

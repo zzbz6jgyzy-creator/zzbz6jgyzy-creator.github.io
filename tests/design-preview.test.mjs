@@ -99,10 +99,16 @@ test("ds.css declares the tested tokens and never ships text below 12px", () => 
   assert.match(css, /html\[data-theme="light"\]\[data-section="spacex"\] \{ --ds-accent: #06516f; --ds-accent-fill: #06516f; --ds-on-accent: #fff; \}/);
   assert.match(css, /html\[data-section="grok"\] \{ --ds-accent: #cfd6e4; --ds-accent-fill: #cfd6e4; --ds-on-accent: #111318; \}/);
   assert.match(css, /html\[data-theme="light"\]\[data-section="grok"\] \{ --ds-accent: #39425a; --ds-accent-fill: #39425a; --ds-on-accent: #fff; \}/);
+  const scale = [...css.matchAll(/--ds-fs-(\d+): ([\d.]+)rem;/g)];
+  assert.equal(scale.length, 8, "the type scale has 8 steps");
+  for (const [, name, rem] of scale) assert.equal(Number(rem) * 16, Number(name), `--ds-fs-${name} is ${rem}rem`);
+  assert.match(css, /--ds-fs-display: clamp\(2rem,/, "display type never starts below 32px");
   for (const file of ["ds.css", "ds-preview.css"]) {
-    const sizes = [...read(file).matchAll(/font(?:-size)?:[^;]*?(\d+(?:\.\d+)?)px/g)].map((m) => Number(m[1]));
-    assert.ok(sizes.every((n) => n >= 12), `${file} has a font size under 12px`);
-    assert.ok(!/font-weight:\s*(8|9)00/.test(read(file)), `${file} asks for a weight Inter does not ship`);
+    const src = read(file);
+    for (const m of src.matchAll(/font-size:\s*([\d.]+)(px|rem)/g)) assert.ok(Number(m[1]) * (m[2] === "rem" ? 16 : 1) >= 12, `${file}: ${m[0]}`);
+    for (const m of src.matchAll(/font:\s*(\d{3})\s/g)) assert.ok(Number(m[1]) <= 700, `${file} asks for weight ${m[1]}, which Inter does not ship`);
+    assert.ok(!/font-weight:\s*(8|9)00/.test(src), `${file} asks for a weight Inter does not ship`);
+    assert.ok(!/var\(--ds-mono\)[^;]*;[^}]*font-weight:\s*[6-9]00|font:\s*[6-9]00[^;]*var\(--ds-mono\)/.test(src), `${file} asks for a bold IBM Plex Mono, which is not shipped`);
   }
 });
 
@@ -147,6 +153,7 @@ test("homepage preview leads with the top story and a latest list, with plain la
     assert.ok(!main.includes(slogan), `slogan still on the page: ${slogan}`);
   }
   assert.ok(!main.includes('class="hs-hero"'), "the old hero is gone");
+  assert.match(main, /<h2 id="ds-numbers-h">From the trackers<\/h2>/, "dated snapshots are not called live");
   const order = ['class="pv-lead"', 'id="ds-latest-h"', 'id="ds-numbers-h"', 'id="newsletter"', 'id="hv-trk-h"', 'id="ds-launch-h"', 'id="hv-ch-h"', 'id="hs-wire-h"'];
   const at = order.map((s) => main.indexOf(s));
   assert.ok(at.every((i) => i > 0), "every section is present: " + order.filter((s, i) => at[i] < 0).join(", "));

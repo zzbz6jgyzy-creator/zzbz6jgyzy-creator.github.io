@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const DS = require("../ds-components.js");
 const SITE = "https://superchargeddaily.com";
-export const DS_CSS_V = "20261122c"; // bump when ds.css or ds-preview.css changes
+export const DS_CSS_V = "20261122d"; // bump when ds.css or ds-preview.css changes
 
 const read = (rel, root = ROOT) => fs.readFileSync(path.join(root, rel), "utf8");
 
@@ -60,7 +60,7 @@ export function between(html, a, b) {
   return html.slice(i, j + b.length);
 }
 
-/** Replace exactly one occurrence of needle. */
+/** Replace exactly one occurrence of needle. Slices, so "$&" or "$'" in third-party text are never expanded. */
 export function replaceOnce(html, needle, value) {
   const i = html.indexOf(needle);
   if (i < 0 || html.indexOf(needle, i + needle.length) >= 0) throw new Error("Needle not unique: " + needle.slice(0, 80));
@@ -142,7 +142,7 @@ export function buildHome(root = ROOT) {
   const wire = part(/<div class="hs-latest-grid hs-section"/, "what changed and wire");
   let calendar = part(/<section class="hs-calendar"/, "launch calendar");
 
-  // Key numbers move out of the tools section into their own band, right under the stories.
+  // Tracker numbers move out of the tools section into their own band, right under the stories.
   const snapshot = one(tools, /<div class="hs-snapshot"/, "tracker snapshot");
   tools = replaceOnce(tools, snapshot, "");
   const trkRow = one(snapshot, /<div class="hv-trk-row" data-hv-trk/, "tracker row");
@@ -177,9 +177,9 @@ export function buildHome(root = ROOT) {
     latest,
     suppHidden,
     "</div>",
-    // Live numbers sit under the lead on desktop and after the latest list on phones (grid areas in ds-preview.css).
+    // Tracker numbers (dated snapshots) sit under the lead on desktop and after the latest list on phones (grid areas in ds-preview.css).
     '<section class="ds-home-numbers" aria-labelledby="ds-numbers-h">',
-    DS.sectionHead({ id: "ds-numbers-h", title: "Live numbers" }),
+    DS.sectionHead({ id: "ds-numbers-h", title: "From the trackers" }),
     trkRow,
     event,
     "</section>",
@@ -195,7 +195,7 @@ export function buildHome(root = ROOT) {
     "</main>",
   ].join("\n");
 
-  let page = live.replace(main, body);
+  let page = replaceOnce(live, main, body);
   page = previewHead(page, { live: "/", preload: preloadFor(leadPicture, "(max-width: 760px) 100vw, 640px"), root });
   return page;
 }

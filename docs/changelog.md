@@ -3,6 +3,7 @@
 - New shared design layer: `ds.css` (tokens and components) and `ds-components.js` (renderers), documented in `docs/design-system.md`.
 - Hidden homepage preview at `/preview/index.html`: lead story, latest list, live numbers, then the rest, with plain section labels. Readers still see the current homepage.
 - Preview guards: nav sync, the integrity check and IndexNow skip `/preview/`; JS bundle injection maps a preview to its live page; three bots stage preview bundle updates. New workflows refresh and check the previews.
+- Homepage fix (live): Starship Flight 16 no longer shows "1 Dec" or a countdown. `data/events.json` only says December (month precision) and SpaceX has not announced a date, so the tracker strip now says "Date not announced" and the launch list leaves it out until a day or time is announced.
 
 ## 20 Nov 2026
 

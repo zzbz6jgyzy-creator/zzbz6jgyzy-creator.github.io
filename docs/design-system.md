@@ -29,7 +29,7 @@ see `docs/decisions.md`).
 - **Buttons, chips, notes:** `.ds-btn--primary` / `--secondary` (44px tall), `.ds-chip` (40px), `.ds-note` for one-line notices such as the disclosure.
 
 ## Page types (news first)
-- **Homepage:** lead story, then "Latest" (7, no repeats), live numbers, the Sunday briefing, trackers and tools by plain name, upcoming launches, what changed and the wire. h1 is the small line "Tesla, SpaceX and xAI news"; the tagline "Go beyond the headline." lives once, in the footer.
+- **Homepage:** lead story, then "Latest" (7, no repeats), live numbers, the Sunday briefing, trackers and tools by plain name, upcoming launches, what changed and the wire. h1 is the small line "Tesla, SpaceX and xAI news"; the tagline "Go beyond the headline." moves to the footer brand line at the switch (the preview does not show it yet).
 - **Dispatch list and news.html:** compact masthead, one chip row and search, then the first card.
 - **Articles:** compacted with CSS only. The article DOM order is editorial (`scripts/editorial-dates.py`), so nothing moves in the HTML.
 - **Hubs:** plain title, key numbers, slim photo band, then the hub's existing story list.
@@ -39,7 +39,7 @@ see `docs/decisions.md`).
 ## Preview pages (`/preview/`)
 - Built by `node scripts/build-design-preview.mjs` from the live page: the old header is cut between unique anchors and the new masthead and lists are inserted. Every hook a page script needs is kept (for the homepage: all `data-hv-*` hooks and `hv:*` markers; the old supporting cards stay in the page, hidden, because `home-v2.js` repaints them).
 - Hidden: `noindex, nofollow`, canonical to the live URL, "Preview ·" in the tab title, a preview note at the end of the page, `Disallow: /preview/` in robots.txt. The sitemap, `data/pages.json`, `build-seo.py`, `sync-nav.py`, `check-site-integrity.py` and `indexnow-ping.py` skip them; `inject-js-bundles.py` gives a preview the bundles of its live page.
-- Never edit a preview by hand. `.github/workflows/design-preview.yml` refreshes them daily, on design changes and on demand; the bots that rebuild bundles (home-build, news-snapshot, starlink-refresh) also stage `preview/`.
+- Never edit a preview by hand. `.github/workflows/design-preview.yml` refreshes them daily, on design changes and on demand; the bots that rebuild bundles (home-build, news-snapshot, starlink-refresh) also stage `preview/`. The refresh shares the `data-push-main` queue with the bots, so a preview's server-rendered lists can be up to a day older than the live page (the homepage scripts still repaint the lead, numbers and wire in the browser).
 - Checks: `node --test tests/design-preview.test.mjs` and `python3 tests/design-preview-browser.py` (also run by `.github/workflows/design-preview-checks.yml`).
 
 ## Section themes

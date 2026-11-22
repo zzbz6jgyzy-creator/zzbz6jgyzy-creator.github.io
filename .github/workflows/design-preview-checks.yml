@@ -12,7 +12,10 @@ on:
       - 'scripts/check-site-integrity.py'
       - 'index.html'
       - 'home-v2.js'
+      - 'home-v2.css'
       - 'home-studio.css'
+      - 'home-studio.js'
+      - 'scripts/build-home.js'
       - 'tests/design-preview*'
       - '.github/workflows/design-preview*.yml'
   workflow_dispatch:
@@ -31,8 +34,10 @@ jobs:
           python-version: '3.12'
       - name: Install pinned browser tools
         run: python -m pip install playwright==1.62.0
-      - name: Rebuild previews from this branch's live pages
-        run: node scripts/build-design-preview.mjs
+      - name: Rebuild the live homepage, then the previews from it
+        run: |
+          node scripts/build-home.js
+          node scripts/build-design-preview.mjs
       - name: Renderers, token contrast, preview structure and exclusions
         run: node --test tests/design-preview.test.mjs
       - name: News-first acceptance checks in a browser (320-1440, light and dark)

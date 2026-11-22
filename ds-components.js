@@ -33,12 +33,13 @@
   /**
    * Responsive picture from an image set on disk ("<base>-<w>w.avif|webp").
    * p: { base, widths: [480, 960, ...], ratio: [w, h] }.
-   * o: { alt, sizes, loading, fetchpriority, maxWidth, img (fallback src) }.
+   * o: { alt, sizes, loading, fetchpriority, maxWidth, img (fallback src), width + height (for the fallback img) }.
    */
   function picture(p, o) {
     o = o || {};
     if (!p || !p.base || !Array.isArray(p.widths) || !p.widths.length) {
-      return o.img ? '<img src="' + esc(o.img) + '" alt="' + esc(o.alt || "") + '" loading="' + (o.loading || "lazy") + '" decoding="async">' : "";
+      const dims = o.width && o.height ? ' width="' + Number(o.width) + '" height="' + Number(o.height) + '"' : "";
+      return o.img ? '<img src="' + esc(o.img) + '" alt="' + esc(o.alt || "") + '"' + dims + ' loading="' + (o.loading || "lazy") + '" decoding="async">' : "";
     }
     const widths = p.widths.slice().sort((a, b) => a - b);
     const ws = o.maxWidth ? widths.filter((w) => w <= o.maxWidth) : widths;
