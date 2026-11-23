@@ -187,12 +187,13 @@ def directive(name, d, uses):
     if name == "image":
         need(d, name, "src", "alt", "caption")
         src = media_path(d["src"], name)
-        return (f'<figure>\n  <img src="{E(src)}" alt="{E(d["alt"])}" width="{E(d.get("width", "1280"))}" height="{E(d.get("height", "720"))}" '
+        return (f'<figure>\n  <img src="{E(src)}" alt="{E(d["alt"])}" width="{E(d.get("width") or "1280")}" height="{E(d.get("height") or "720")}" '
                 f'loading="lazy" style="width:100%;height:auto" />\n  <figcaption>{inline(d["caption"])}</figcaption>\n</figure>')
     if name == "video":
         need(d, name, "src", "poster", "caption")
         src, poster = media_path(d["src"], name), media_path(d["poster"], name)
-        return (f'<figure class="figure-video">\n  <video controls playsinline preload="metadata" poster="{E(poster)}">\n'
+        # width/height (16:9 unless given) reserve the player's space before the video's own size loads
+        return (f'<figure class="figure-video">\n  <video width="{E(d.get("width") or "1920")}" height="{E(d.get("height") or "1080")}" controls playsinline preload="metadata" poster="{E(poster)}">\n'
                 f'    <source src="{E(src)}" type="video/mp4" />\n    Your browser does not support the video tag.\n  </video>\n'
                 f'  <figcaption>{inline(d["caption"])}</figcaption>\n</figure>')
     if name == "x":

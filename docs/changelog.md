@@ -1,3 +1,13 @@
+## 23 Nov 2026 — Redesign step 2: all 15 previews
+
+- Hidden article previews at `/preview/dispatch/` for three story types (news, long feature, finance with the disclosure). The headline, standfirst, byline and lead photo now share the first phone screen (lead photo at 549–636px on a 390×844 phone, from about 1,100px live); the reading tools and "On this page" follow the photo. Header, tools and text share one reading column on desktop.
+- Hidden previews of the Dispatch list and news.html: a compact masthead, then the first story at 430px (Dispatch, from 1,384px live) and 328px (news, from 560px) on a 390×844 phone. Dispatch stories read as a list like the homepage's Latest; the Editorial desk moves below the list, beside it on desktop.
+- Hidden previews of the Tesla, SpaceX and Grok hubs: plain titles, each hub's own key numbers and a slim photo band, then its latest stories. On a 390×844 phone the first story headline now starts at 775px (Tesla, with the shareholder-meeting strip above), 783px (SpaceX) and 668px (Grok).
+- Hidden previews of six trackers (FSD, Starship, Cybercab, calendar, Starlink, production): plain titles ("FSD tracker", "Starship flights", "Cybercab fleet", "Launch calendar", "Starlink tracker", "Tesla production and deliveries") and each tracker's own key numbers fully in the first phone screen, with every script hook kept.
+- Proposed navigation on every preview (`scripts/nav.next.json`): no link repeated across menu lists, a Grok menu, "Cybercab fleet", no phone "Quick access" list. The live menu is unchanged until the switch.
+- Design layer: the photo band's height moved onto its picture, so its credit line shows; an odd last key number spans the row on phones.
+- Article fix (live): 31 Dispatch videos had no width or height, so they could jump when their size arrived (a layout shift of about 0.19 on the SpaceX Q3 story). Each now carries its real size; no Updated dates move.
+
 ## 22 Nov 2026 — Redesign step 1: design system and homepage preview
 
 - New shared design layer: `ds.css` (tokens and components) and `ds-components.js` (renderers), documented in `docs/design-system.md`.

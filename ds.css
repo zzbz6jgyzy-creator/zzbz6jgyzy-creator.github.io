@@ -93,12 +93,13 @@ html[data-theme="light"][data-section="grok"] { --ds-accent: #39425a; --ds-accen
 .ds-dek { margin: 0; max-width: 62ch; font: 400 var(--ds-fs-16) / 1.5 var(--ds-font); color: var(--ds-ink-2); }
 .ds-meta { margin: 0; font: 400 var(--ds-fs-12) / 1.5 var(--ds-mono); color: var(--ds-ink-2); }
 .ds-meta a, .ds-note a, .ds-stat-src a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-.ds-band { margin: var(--ds-sp-2) 0 0; height: 120px; border-radius: var(--ds-r-card); overflow: hidden; background: var(--ds-surface); }
-.ds-band picture, .ds-band img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ds-band { margin: var(--ds-sp-2) 0 0; }
+.ds-band picture { display: block; height: 120px; border-radius: var(--ds-r-card); overflow: hidden; background: var(--ds-surface); }
+.ds-band img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .ds-band figcaption { margin-top: var(--ds-sp-1); font: 400 var(--ds-fs-12) / 1.4 var(--ds-font); color: var(--ds-ink-2); }
 @media (min-width: 768px) {
   .ds-dek { font-size: var(--ds-fs-18); }
-  .ds-band { height: 200px; }
+  .ds-band picture { height: 200px; }
 }
 
 /* ---- Key numbers ------------------------------------------------------------------------ */
@@ -114,6 +115,7 @@ html[data-theme="light"][data-section="grok"] { --ds-accent: #39425a; --ds-accen
   border-radius: var(--ds-r-card);
   overflow: hidden;
 }
+@media (max-width: 767px) { .ds-stat:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 @media (min-width: 768px) { .ds-stats { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); } }
 .ds-stat { display: grid; align-content: start; gap: 2px; min-width: 0; padding: var(--ds-sp-3) var(--ds-sp-4); background: var(--ds-surface); }
 .ds-stat-label { font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-ink-2); }

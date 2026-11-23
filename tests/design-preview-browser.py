@@ -4,9 +4,14 @@ For each preview page, at 320/390/768/1440 in light and dark: no sideways scroll
 errors, and layout shift under 0.1. At 390x844 the news-first targets from the approved plan:
   homepage: the lead headline sits fully in the first screen, at least 5 headlines start within 1.5 screens, and no
   story repeats between the lead and the latest list; the scripts still fill the live numbers and the launch list.
+  articles: the lead photo or video (or the first paragraph when there is none) starts above 700px, with the
+  headline, standfirst and byline above it; the h1 is the live article's own.
+  Dispatch list and news: the first story card starts above 450px.
+  hubs: the first story headline starts in the first screen (above 800px, so at least its first line shows).
+  trackers: the tracker's first key number (or the calendar's week strip) is fully inside the first screen.
 Run: python3 tests/design-preview-browser.py   (CHROMIUM_PATH may point at Chrome or Chromium)
 """
-import asyncio, os, pathlib, shutil, socket, subprocess, sys, time
+import asyncio, html, os, pathlib, re, shutil, socket, subprocess, sys, time
 from playwright.async_api import async_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -14,8 +19,29 @@ SHOTS = pathlib.Path(os.environ.get("PREVIEW_SHOTS", "/tmp/design-preview"))
 CLS_JS = "() => window.__cls || 0"
 INIT = """window.__cls=0;try{new PerformanceObserver(l=>{for(const e of l.getEntries()){if(!e.hadRecentInput)window.__cls+=e.value}}).observe({type:'layout-shift',buffered:true})}catch(e){}"""
 
+# The builder's own list, so the two cannot drift
+ARTICLES = re.findall(r'"([^"]+)"', re.search(r"export const ARTICLES = \[([^\]]*)\]", (ROOT / "scripts/build-design-preview.mjs").read_text()).group(1))
+
+
+def live_h1(rel):
+    m = re.search(r"<h1\b[^>]*>(.*?)</h1>", (ROOT / rel).read_text(), re.S)
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", m.group(1))).split())
+
+
 PAGES = [
     {"path": "/preview/index.html", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},
+    {"path": "/preview/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
+    {"path": "/preview/news.html", "h1": live_h1("news.html").rstrip("."), "kind": "list", "card": "#latest .ns-feature"},
+] + [{"path": f"/preview/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES] + [
+    {"path": "/preview/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
+    {"path": "/preview/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},
+    {"path": "/preview/grok.html", "h1": "Grok and xAI: models, plans and news", "kind": "hub"},
+    {"path": "/preview/fsd-tracker.html", "h1": "FSD tracker", "kind": "tracker", "key": ".ds-tracker-numbers .ft-kpi-value"},
+    {"path": "/preview/starship.html", "h1": "Starship flights", "kind": "tracker", "key": "#ss-hero-next"},
+    {"path": "/preview/cybercab.html", "h1": "Cybercab fleet", "kind": "tracker", "key": ".mw-metric strong"},
+    {"path": "/preview/calendar.html", "h1": "Launch calendar", "kind": "tracker", "key": ".cs-week-strip"},
+    {"path": "/preview/starlink.html", "h1": "Starlink tracker", "kind": "tracker", "key": ".ds-tracker-numbers .so-metrics strong"},
+    {"path": "/preview/production.html", "h1": "Tesla production and deliveries", "kind": "tracker", "key": "#pd-stats strong"},
 ]
 
 
@@ -45,6 +71,35 @@ async def check_home(page, tag):
     assert r["cd"] >= 1, (tag, "launch list is empty")
 
 
+async def check_article(page, tag):
+    r = await page.evaluate("""() => {
+      const art = document.querySelector('.rs-article');
+      const furniture = '.eyebrow,h1,.standfirst,.meta,.sd-disclosure,.sd-updated,.rs-tools,.sd-article-tools';
+      const first = [...art.children].find(e => !e.matches(furniture) && e.getBoundingClientRect().height > 0);
+      const top = (el) => Math.round(el.getBoundingClientRect().top + scrollY);
+      return { first: first.tagName + '.' + first.className, top: top(first), byline: top(art.querySelector('.meta')),
+               tools: top(art.querySelector('.rs-tools')) };
+    }""")
+    assert r["top"] < 700, (tag, "the lead photo or first paragraph starts too low", r)
+    assert r["byline"] < r["top"], (tag, "the byline should sit above the lead", r)
+    assert r["tools"] > r["byline"], (tag, "the reading tools should follow the byline, not sit above it", r)
+
+
+async def check_list(page, tag, card):
+    top = await page.evaluate("(sel) => Math.round(document.querySelector(sel).getBoundingClientRect().top + scrollY)", card)
+    assert top < 450, (tag, "the first story card starts too low", top)
+
+
+async def check_hub(page, tag):
+    top = await page.evaluate("Math.round(document.querySelector('.ds-hub-stories h3').getBoundingClientRect().top + scrollY)")
+    assert top < 800, (tag, "the first story headline is below the first screen", top)
+
+
+async def check_tracker(page, tag, key):
+    r = await page.evaluate("(sel) => { const e = document.querySelector(sel); const b = e.getBoundingClientRect(); return { top: Math.round(b.top + scrollY), bottom: Math.round(b.bottom + scrollY) }; }", key)
+    assert r["bottom"] <= 844, (tag, "the key number is not fully in the first screen", key, r)
+
+
 async def main():
     SHOTS.mkdir(parents=True, exist_ok=True)
     port = free_port()
@@ -71,13 +126,23 @@ async def main():
                             await page.wait_for_timeout(1500)
                             sx = await page.evaluate("document.documentElement.scrollWidth - innerWidth")
                             assert sx <= 1, (tag, "sideways scroll", sx)
-                            h1 = await page.evaluate("[...document.querySelectorAll('h1')].map(x => x.textContent.trim())")
+                            h1 = await page.evaluate("[...document.querySelectorAll('h1')].map(x => x.textContent.replace(/\\s+/g, ' ').trim())")
                             assert h1 == [spec["h1"]], (tag, "h1", h1)
                             assert not errors, (tag, "page errors", errors)
+                            cut = await page.evaluate("""() => [...document.querySelectorAll('.ds-masthead *')].filter(e => getComputedStyle(e).textOverflow === 'ellipsis' && e.scrollWidth > e.clientWidth).map(e => e.textContent.trim().slice(0, 40))""")
+                            assert not cut, (tag, "masthead text is cut off", cut)
                             cls = await page.evaluate(CLS_JS)
                             assert cls < 0.1, (tag, "layout shift", cls)
                             if w == 390 and spec["kind"] == "home":
                                 await check_home(page, tag)
+                            if w == 390 and spec["kind"] == "article":
+                                await check_article(page, tag)
+                            if w == 390 and spec["kind"] == "list":
+                                await check_list(page, tag, spec["card"])
+                            if w == 390 and spec["kind"] == "hub":
+                                await check_hub(page, tag)
+                            if w == 390 and spec["kind"] == "tracker":
+                                await check_tracker(page, tag, spec["key"])
                             if w in (390, 1440):
                                 await page.screenshot(path=str(SHOTS / f"{spec['path'].strip('/').replace('/', '_')}-{w}-{scheme}.png"), full_page=True)
                             print("PASS", tag)

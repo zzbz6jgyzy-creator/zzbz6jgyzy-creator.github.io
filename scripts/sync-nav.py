@@ -69,16 +69,18 @@ def mobile(d):
  landing=d.get('landing'); end=f'<a class="ns-mobile-overview" href="{esc(landing[1])}">{esc(landing[0])}{ARROW}</a>' if landing else ''
  return f'<details class="ns-mobile-section" name="sd-mobile-section"><summary>{esc(d["label"])}{CHEVRON}</summary><div>{end}{groups(d)}{feature(d)}</div></details>'
 
-def block(navtag):
+def block(navtag,cfg=None):
+ cfg=CFG if cfg is None else cfg
  navtag=re.sub(r'\s+data-start-collapsed(?:="[^"]*")?', '', navtag)
  navtag=re.sub(r'\s+data-nav-studio(?:="[^"]*")?', '', navtag)
  if ' id=' not in navtag: navtag=navtag[:-1]+' id="sd-primary-navigation">'
  navtag=navtag[:-1]+' data-nav-studio>'
  home=re.search(r'\bid="([^"]+)"',navtag).group(1)
  symbols='<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true"><defs>'+''.join(f'<symbol id="ns-icon-{k}" viewBox="0 0 24 24"><path d="{v}"/></symbol>' for k,v in PATHS.items())+'</defs></svg>'
- menus=''.join(desktop(d) for d in CFG['dropdowns'])
- mobile_menus=''.join(mobile(d) for d in CFG['dropdowns'])
- shortcuts=''.join(f'<a href="{esc(h)}">{esc(n)}</a>' for n,h in CFG['mobileShortcuts'])
+ menus=''.join(desktop(d) for d in cfg['dropdowns'])
+ mobile_menus=''.join(mobile(d) for d in cfg['dropdowns'])
+ shortcuts=''.join(f'<a href="{esc(h)}">{esc(n)}</a>' for n,h in cfg['mobileShortcuts'])
+ shortcut_nav=f'\n   <nav class="pn-shortcuts" aria-label="Quick links"><p>Quick access</p><div>{shortcuts}</div></nav>' if shortcuts else ''
  return f'''<!--sd:navigation--><div class="pn-wrap" data-nav-studio>
  {navtag}{symbols}
   <a class="pn-logo" href="/" aria-label="Supercharged Daily home"><img src="/assets/brand/icon-1b-mark.svg" alt="" width="26" height="26"/><img class="pn-word" src="/assets/brand/wordmark.svg" alt="" width="114" height="18"/></a>
@@ -91,8 +93,7 @@ def block(navtag):
   <div class="pn-sheet-head"><a href="/" aria-label="Supercharged Daily home"><img src="/assets/brand/wordmark.svg" alt="" width="150" height="24"/></a><a class="pn-close" href="#{home}" aria-label="Close menu">{icon('close')}</a></div>
   <form class="ns-mobile-search" action="/search.html" method="get" role="search" aria-label="Search the site"><div class="ns-mobile-search-bar">{icon('search')}<label class="ns-sr" for="ns-mobile-query">Search stories, guides and tools</label><input id="ns-mobile-query" data-ns-query type="search" role="combobox" aria-expanded="false" aria-autocomplete="list" name="q" placeholder="Search stories, guides and tools" autocomplete="off" aria-controls="ns-mobile-results"/><button type="button" class="ns-search-clear" aria-label="Clear search" hidden>{icon('close')}</button><button class="ns-search-submit" type="submit" aria-label="Search">{ARROW}</button></div><p class="ns-search-status" data-sd-status role="status"></p><div id="ns-mobile-results" class="ns-mobile-results" data-sd-hits role="listbox" aria-label="Search results"></div></form>
   <div class="ns-browse"><a class="ns-mobile-members" href="/members.html" data-ns-account><span class="ns-member-mark">{icon('person')}</span><span><strong>Members</strong><small>Sign in, your profile and discussions.</small></span>{ARROW}</a><a class="pn-daily pn-daily-sheet" href="/daily.html"><span class="ns-daily-mark">{icon('spark')}</span><span><strong>Your Daily</strong><small>Your interests, stories and tools.</small></span>{ARROW}</a>
-   <nav class="ns-mobile-categories" aria-label="Explore sections">{mobile_menus}</nav>
-   <nav class="pn-shortcuts" aria-label="Quick links"><p>Quick access</p><div>{shortcuts}</div></nav>
+   <nav class="ns-mobile-categories" aria-label="Explore sections">{mobile_menus}</nav>{shortcut_nav}
   </div>
   <div class="ns-mobile-utilities"><a href="/about.html">About</a><a href="/contact.html">Contact</a></div>
   <a class="pn-sub pn-sub-sheet pn-cta" href="/#newsletter">Get the free Sunday briefing {ARROW}</a>
@@ -111,6 +112,11 @@ def transform(s):
  return n
 
 if __name__=='__main__':
+ if '--block' in sys.argv:
+  # Render the navigation block for the <nav class="pn"> tag on stdin from another config (the design preview uses
+  # scripts/nav.next.json this way, so it never writes preview pages itself).
+  cfg=json.loads((ROOT/sys.argv[sys.argv.index('--block')+1]).read_text())
+  sys.stdout.write(block(sys.stdin.read().strip(),cfg)); sys.exit(0)
  check='--check' in sys.argv; changed=[]
  for p in sorted(ROOT.rglob('*.html')):
   if any(x in p.parts for x in ['.git','node_modules','astro','.homepage-before']): continue

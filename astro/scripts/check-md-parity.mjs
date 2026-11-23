@@ -21,6 +21,7 @@ const OK = [
   '::x\nurl: https://x.com/SpaceX/status/2109956064774918286\nauthor: SpaceX (@SpaceX)\ntext: Liftoff! <wow> & more\n  continued line\ncaption: Video: SpaceX on X.',
   '::image\nsrc: /assets/dispatch/ark-tesla-2031-model-poster.jpg\nalt: A "chart" of things\ncaption: Image: ARK Invest.',
   '::video\nsrc: /assets/dispatch/b1088-20th-flight.mp4\nposter: /assets/dispatch/assisted-driving-poster.jpg\ncaption: Video: @SpaceX',
+  '::video\nsrc: /assets/dispatch/b1088-20th-flight.mp4\nposter: /assets/dispatch/assisted-driving-poster.jpg\nwidth: 1280\nheight: 720\ncaption: Video: @SpaceX',
   'Para one.\n\n- list right after\n\nPara two\n> not a quote start mid-paragraph',
 ];
 const BAD = [
