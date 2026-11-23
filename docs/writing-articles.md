@@ -47,7 +47,7 @@ src: /assets/dispatch/photo.jpg
 alt: What the picture shows
 caption: Image: credit
 ```
-Files must already be in `assets/dispatch/`. `::x` posts show as text and load the live post as the reader scrolls near; Save-Data readers get a "Load post from X" button.
+Files must already be in `assets/dispatch/`. `::video` and `::image` take optional `width:` and `height:` (16:9 by default) so the page saves the right space before the file loads; give them for anything that is not 16:9. `::x` posts show as text and load the live post as the reader scrolls near; Save-Data readers get a "Load post from X" button.
 
 ## What is refused
 `DRAFT` markers, raw HTML, fewer than three paragraphs, no source links, an image without alt text, a missing media file, a
