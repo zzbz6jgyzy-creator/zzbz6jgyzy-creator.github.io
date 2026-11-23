@@ -30,8 +30,8 @@ def live_h1(rel):
 
 PAGES = [
     {"path": "/", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},  # switched 23 Nov 2026
-    {"path": "/preview/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
-    {"path": "/preview/news.html", "h1": live_h1("news.html").rstrip("."), "kind": "list", "card": "#latest .ns-feature"},
+    {"path": "/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
+    {"path": "/news.html", "h1": "Tesla, SpaceX and Grok news", "kind": "list", "card": "#latest .ns-feature"},
 ] + [{"path": f"/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES] + [
     {"path": "/preview/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
     {"path": "/preview/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},

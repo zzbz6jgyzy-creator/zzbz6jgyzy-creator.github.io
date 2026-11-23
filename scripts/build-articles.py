@@ -287,6 +287,36 @@ def dispatch_latest():
         open(path, "w", encoding="utf-8").write(out)
         print("dispatch.html: latest story", text)
 
+def dispatch_lead_image():
+    """The newest card's image is the first image on dispatch.html: eager and high priority. Every other card stays lazy,
+    and stale image preloads (it once preloaded card #119) go, so a new story takes over without a hand edit."""
+    import re
+    path = os.path.join(ROOT, "dispatch.html")
+    src = open(path, encoding="utf-8").read()
+    out = re.sub(r'\n?[ \t]*<link rel="preload" as="image"[^>]*>', "", src)
+    i = out.index("data-disp-grid")
+    first = True
+    def card(m):
+        nonlocal first
+        c, lead, first = m.group(0), first, False
+        img = re.search(r"<img\b[^>]*>", c)
+        if not img:
+            return c
+        tag = img.group(0)
+        if lead:
+            new = tag.replace(' loading="lazy"', "")
+            if 'fetchpriority="high"' not in new:
+                new = re.sub(r"\s*/?>$", lambda e: ' loading="eager" fetchpriority="high"' + e.group(0), new, count=1)
+        else:
+            new = tag.replace(' loading="eager"', ' loading="lazy"').replace(' fetchpriority="high"', "")
+            if "loading=" not in new:
+                new = re.sub(r"\s*/?>$", lambda e: ' loading="lazy"' + e.group(0), new, count=1)
+        return c.replace(tag, new, 1)
+    out = out[:i] + re.sub(r'<a class="story-card[^"]*" href="[^"]+">[\s\S]*?</a>', card, out[i:])
+    if out != src:
+        open(path, "w", encoding="utf-8").write(out)
+        print("dispatch.html: lead card image promoted")
+
 def needs_disclosure(path, html, article=None):
     rel = os.path.relpath(path, ROOT).replace(os.sep, "/")
     if rel in ("tsla.html",):
@@ -355,6 +385,7 @@ if __name__ == "__main__":
     heading_levels()
     card_dates()
     dispatch_latest()
+    dispatch_lead_image()
     try:
         runpy.run_path(os.path.join(ROOT, "scripts", "inject_newsletter.py"))["run"]()
     except Exception as e:

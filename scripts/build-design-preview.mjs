@@ -188,72 +188,6 @@ function promoteFirstImage(page, cardRe, sizes) {
 // ---- Pages ----
 
 /** Homepage trackers and tools, by plain name. Every URL is a live page linked from the nav or the old tool cards. */
-/**
- * Dispatch list: a compact masthead, the existing topic chips, search and sort, then the cards. The Editorial desk box
- * moves below the list (beside it on wide screens). The card markup is untouched: data/articles.json is parsed from it,
- * new-article.py inserts at its grid marker, the integrity check counts a.story-card and dispatch-browse.js pages it.
- */
-export function buildDispatchList(root = ROOT) {
-  const live = read("dispatch.html", root);
-  assertRootRelative(live, "/dispatch.html");
-  const hero = one(live, /<header class="ps-hero"/, "Dispatch hero");
-  const desk = one(hero, /<aside class="ps-edition"/, "Editorial desk");
-  const intro = desk.match(/<\/h2>\s*<p>([\s\S]*?)<\/p>/);
-  const steps = [...desk.matchAll(/<div class="ps-rule"><b>[^<]*<\/b>\s*([\s\S]*?)<\/div>/g)].map((m) => m[1].trim());
-  const policy = desk.match(/<a href="(\/[^"#]+)">([\s\S]*?)<\/a>/);
-  if (!intro || steps.length < 2 || !policy) throw new Error("Editorial desk changed shape: intro, steps or policy link missing");
-  const newest = (live.match(/<div class="story-grid" data-disp-grid>[\s\S]*?<time datetime="([^"]+)"/) || [])[1];
-  if (!newest) throw new Error("dispatch.html: no dated story card");
-  const mast = DS.masthead({
-    kicker: "Original reporting",
-    title: "Dispatch",
-    dek: htmlText(intro[1]),
-    metaHtml: `Latest story ${DS.fmtDate(newest)} · <a href="${DS.esc(policy[1])}">How we report</a>`,
-    className: "ds-masthead--list",
-  });
-  let page = replaceOnce(live, hero, mast);
-  const aside =
-    '<aside class="ds-desk" aria-labelledby="ds-desk-h"><h2 id="ds-desk-h">The editorial desk</h2>' +
-    `<p>${intro[1].trim()}</p><ol>${steps.map((t) => `<li>${t}</li>`).join("")}</ol>` +
-    `<p><a href="${DS.esc(policy[1])}">${policy[2].replace(/\s*→\s*$/, "").trim()}<span aria-hidden="true"> →</span></a></p></aside>`;
-  const grid = one(page, /<section class="section"[^>]*>\s*<div class="story-grid" data-disp-grid>/, "Dispatch card grid");
-  page = replaceOnce(page, grid, `<div class="ds-list-layout">\n${grid}\n${aside}\n</div>`);
-  const lead = promoteFirstImage(page, /<a class="story-card"/, "(max-width: 760px) 100vw, 640px");
-  page = addBodyClass(lead.page, "ds-page ds-list ds-dispatch");
-  page = replaceOnce(page, "</main>", DS.previewFlag("/dispatch.html") + "\n</main>");
-  return previewHead(page, { live: "/dispatch.html", preload: lead.preload, root });
-}
-
-/**
- * news.html: a compact masthead (it keeps #ns-reporting-date, which news-studio.js updates), the featured stories (#latest)
- * straight after it, and a plain heading on the story library (its id stays for aria-labelledby).
- */
-export function buildNews(root = ROOT) {
-  const live = read("news.html", root);
-  assertRootRelative(live, "/news.html");
-  const head = one(live, /<header class="ns-masthead"/, "news masthead");
-  const date = one(head, /<time id="ns-reporting-date"/, "#ns-reporting-date");
-  const title = htmlText(one(head, /<h1\b/, "news h1")).replace(/\.$/, "");
-  const lede = htmlText((head.match(/<div class="ns-intro">[\s\S]*?<\/h1>\s*<\/div>\s*<div>\s*<p>([\s\S]*?)<\/p>/) || [])[1] || "");
-  if (!lede) throw new Error("news.html: intro paragraph not found");
-  const daily = head.match(/<a href="(\/daily\.html)">/);
-  const mast = DS.masthead({
-    kicker: "Newsroom",
-    title,
-    dek: lede.split(/(?<=\.)\s/)[0],
-    metaHtml: `Reporting through ${date}` + (daily ? ` · <a href="${daily[1]}">Make it your Daily</a>` : ""),
-    className: "ds-masthead--list",
-  });
-  let page = replaceOnce(live, head, mast);
-  const lib = one(page, /<div class="ns-section-head"/, "news library heading");
-  if (!/id="ns-browse-heading"/.test(lib)) throw new Error("news.html: #ns-browse-heading moved");
-  const archive = lib.match(/<a class="ns-archive-link" href="(\/[^"]+)"/);
-  page = replaceOnce(page, lib, DS.sectionHead({ id: "ns-browse-heading", title: "All stories", href: archive ? archive[1] : "/dispatch.html", linkText: "Dispatch archive" }));
-  page = addBodyClass(page, "ds-page ds-list ds-news");
-  page = replaceOnce(page, "</main>", DS.previewFlag("/news.html") + "\n</main>");
-  return previewHead(page, { live: "/news.html", keepImagePreloads: true, root });
-}
-
 // ---- Hubs: compact masthead with the hub's own key numbers and a slim photo band, then its latest stories ----
 
 /** A slim photo band from a live <picture> (kept as is: its sources, sizes and credits are the live page's). */
@@ -540,8 +474,6 @@ export function buildProduction(root = ROOT) {
 /** Three article types: a news story, a long feature, and a finance story with the share disclosure. */
 
 export const PAGES = [
-  { out: "preview/dispatch.html", build: buildDispatchList },
-  { out: "preview/news.html", build: buildNews },
   { out: "preview/tesla.html", build: buildTeslaHub },
   { out: "preview/spacex.html", build: buildSpacexHub },
   { out: "preview/grok.html", build: buildGrokHub },
