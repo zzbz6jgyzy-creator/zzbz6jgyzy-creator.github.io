@@ -3,13 +3,11 @@
   "pages": {
     "index.html": {
       "title": "Tesla, SpaceX & xAI news | Supercharged Daily",
-      "description": "Independent Tesla, SpaceX and xAI reporting, plus live trackers for Starship, FSD, Starlink and software updates. Free Sunday briefing.",
-      "h1": "Go beyond<br/><span>the headline.</span>"
+      "description": "Independent Tesla, SpaceX and xAI reporting, plus live trackers for Starship, FSD, Starlink and software updates. Free Sunday briefing."
     },
     "starship.html": {
       "title": "Next Starship launch & every flight | Supercharged Daily",
-      "description": "Next Starship launch window, every test flight so far, and official footage. Independent flight log with sources.",
-      "h1": "Starship<br>flights<span>Next launch<br>and every flight.</span>"
+      "description": "Next Starship launch window, every test flight so far, and official footage. Independent flight log with sources."
     },
     "starlink.html": {
       "title": "Starlink satellites in orbit | Supercharged Daily",
@@ -18,43 +16,35 @@
     },
     "fsd-europe.html": {
       "title": "FSD in Europe: country approvals | Supercharged Daily",
-      "description": "Which EU countries approve Tesla Assisted Driving (FSD Supervised), with dates, Tesla listings and original sources.",
-      "h1": "FSD in Europe:<br>country by country."
+      "description": "Which EU countries approve Tesla Assisted Driving (FSD Supervised), with dates, Tesla listings and original sources."
     },
     "cybercab.html": {
       "title": "Cybercab & Robotaxi fleet tracker | Supercharged Daily",
-      "description": "How many Cybercabs Tesla has registered, which cities have Robotaxi service, and the evidence behind each figure.",
-      "h1": "Cybercab fleet.<br><span>Cities and evidence.</span>"
+      "description": "How many Cybercabs Tesla has registered, which cities have Robotaxi service, and the evidence behind each figure."
     },
     "updates.html": {
       "title": "Tesla software update tracker | Supercharged Daily",
-      "description": "Latest Tesla software version, release notes and rollout observations by country, with dated sources.",
-      "h1": "Tesla software<br>updates."
+      "description": "Latest Tesla software version, release notes and rollout observations by country, with dated sources."
     },
     "see-the-launch.html": {
       "title": "Can I see the SpaceX launch? | Supercharged Daily",
-      "description": "Can you see the next SpaceX launch from where you are? Pad bearing, sky geometry and a live compass.",
-      "h1": "Your place.<br>Your sky.<br><em>The launch.</em>"
+      "description": "Can you see the next SpaceX launch from where you are? Pad bearing, sky geometry and a live compass."
     },
     "calendar.html": {
       "title": "SpaceX launch & Tesla calendar | Supercharged Daily",
-      "description": "Upcoming SpaceX launches, Tesla events and earnings dates, with sources and an iCal feed.",
-      "h1": "Launch schedule<br>and Tesla <em>dates.</em>"
+      "description": "Upcoming SpaceX launches, Tesla events and earnings dates, with sources and an iCal feed."
     },
     "dispatch.html": {
       "title": "Original Tesla & SpaceX stories | Supercharged Daily",
-      "description": "Original Supercharged Daily reporting on Tesla, SpaceX, Starlink, FSD and xAI, each with sources.",
-      "h1": "Original stories,<br>with sources."
+      "description": "Original Supercharged Daily reporting on Tesla, SpaceX, Starlink, FSD and xAI, each with sources."
     },
     "news.html": {
       "title": "Tesla, SpaceX & Grok news | Supercharged Daily",
-      "description": "Original Tesla, SpaceX and Grok reporting, plus sourced headlines and the trackers behind the stories.",
-      "h1": "Tesla, SpaceX<br><span>and Grok news.</span>"
+      "description": "Original Tesla, SpaceX and Grok reporting, plus sourced headlines and the trackers behind the stories."
     },
     "games.html": {
       "title": "Tesla & SpaceX games | Supercharged Daily",
-      "description": "Free browser games: catch a Super Heavy booster, hot-stage Starship, and a Robotaxi run.",
-      "h1": "Small games.<br>Big missions."
+      "description": "Free browser games: catch a Super Heavy booster, hot-stage Starship, and a Robotaxi run."
     },
     "model3-explorer.html": {
       "title": "Model 3 studio & 3D explorer | Supercharged Daily",
@@ -62,18 +52,15 @@
     },
     "my-tesla.html": {
       "title": "My Tesla: software for your car | Supercharged Daily",
-      "description": "Software, range and charging notes for your Tesla, using the public update tracker and EPA figures.",
-      "h1": "Your Tesla:<br>software and costs."
+      "description": "Software, range and charging notes for your Tesla, using the public update tracker and EPA figures."
     },
     "tsla.html": {
       "title": "Tesla & SpaceX markets | Supercharged Daily",
-      "description": "Tesla and SpaceX reported results, side by side, from company releases. Not financial advice.",
-      "h1": "Tesla and SpaceX<br/><span>results.</span>"
+      "description": "Tesla and SpaceX reported results, side by side, from company releases. Not financial advice."
     },
     "fsd.html": {
       "title": "Tesla FSD worldwide tracker | Supercharged Daily",
-      "description": "Where Tesla lists Full Self-Driving, country by country, with software observations and vehicle caveats.",
-      "h1": "FSD worldwide.<br><span>Country by country.</span>"
+      "description": "Where Tesla lists Full Self-Driving, country by country, with software observations and vehicle caveats."
     },
     "promise-tracker.html": {
       "title": "Musk promise tracker | Supercharged Daily",
