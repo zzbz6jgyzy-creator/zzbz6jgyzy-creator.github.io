@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
+import { spacexHub } from './ds-pages.mjs'; // news-first hub layout (redesign switch, 23 Nov 2026)
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
@@ -53,9 +54,9 @@ export function buildSpaceXStudio(root=ROOT){
     .replace(/(<meta property="og:image:height" content=")[^"]*/,(_,p)=>p+'1067');
   const schema={'@context':'https://schema.org','@type':'CollectionPage','@id':'https://superchargeddaily.com/spacex.html#page',url:'https://superchargeddaily.com/spacex.html',name:title,description,dateModified:data.reviewed,isPartOf:{'@type':'WebSite',name:'Supercharged Daily',url:'https://superchargeddaily.com/'},mainEntity:{'@type':'ItemList',itemListElement:data.tools.map((t,i)=>({'@type':'ListItem',position:i+1,name:t.name,url:'https://superchargeddaily.com'+t.href}))}};
   html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>`<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
-  if(!html.includes('/spacex-studio.css'))html=html.replace('</head>','    <link rel="stylesheet" href="/spacex-studio.css?v=20261025"/>\n  </head>');
+  if(!html.includes('/spacex-studio.css'))html=html.replace('</head>','    <link rel="stylesheet" href="/spacex-studio.css?v=20261123-switch"/>\n  </head>');
   if(!/href="\/section-theme\.css/.test(html)) html=html.replace('</head>','    <link rel="stylesheet" href="/section-theme.css?v=20261106e"/>\n  </head>');
-  fs.writeFileSync(path.join(root,'spacex.html'),html);
+  fs.writeFileSync(path.join(root,'spacex.html'),spacexHub(html));
   const searchPath=path.join(root,'data/pages.json'), search=JSON.parse(fs.readFileSync(searchPath,'utf8'));
   const records=[{url:'/spacex.html',title:'SpaceX mission hub',tag:'SpaceX',summary:description},...[
     ['launches','SpaceX launch board','Upcoming launch windows, planning targets, timezone choices and saved launches.'],

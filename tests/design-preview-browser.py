@@ -33,9 +33,9 @@ PAGES = [
     {"path": "/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
     {"path": "/news.html", "h1": "Tesla, SpaceX and Grok news", "kind": "list", "card": "#latest .ns-feature"},
 ] + [{"path": f"/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES] + [
-    {"path": "/preview/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
-    {"path": "/preview/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},
-    {"path": "/preview/grok.html", "h1": "Grok and xAI: models, plans and news", "kind": "hub"},
+    {"path": "/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
+    {"path": "/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},
+    {"path": "/grok.html", "h1": "Grok and xAI: models, plans and news", "kind": "hub"},
     {"path": "/preview/fsd-tracker.html", "h1": "FSD tracker", "kind": "tracker", "key": ".ds-tracker-numbers .ft-kpi-value"},
     {"path": "/preview/starship.html", "h1": "Starship flights", "kind": "tracker", "key": "#ss-hero-next"},
     {"path": "/preview/cybercab.html", "h1": "Cybercab fleet", "kind": "tracker", "key": ".mw-metric strong"},

@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildTeslaHub, buildSpacexHub, buildGrokHub, buildFsdTracker, buildStarship, buildCybercab, buildCalendar, buildStarlink, buildProduction, articles, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildFsdTracker, buildStarship, buildCybercab, buildCalendar, buildStarlink, buildProduction, articles, PAGES } from "../scripts/build-design-preview.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -249,11 +249,37 @@ test("newestDate reads datetime attributes and written dates, and refuses to gue
   assert.throws(() => newestDate("<p>no dates</p>"), /No dated story/);
 });
 
+// Hubs switched on 23 Nov 2026: each studio builder passes its page through scripts/ds-pages.mjs before writing.
 const HUBS = [
-  { slug: "tesla", build: buildTeslaHub, title: "Tesla news, trackers and guides", numbers: 'id="to-brief-grid"', band: true, data: "data-source-", hero: /<section class="to-hero"/ },
-  { slug: "spacex", build: buildSpacexHub, title: "SpaceX launches, Starship and Starlink", numbers: 'id="sx-next"', band: true, data: "data-sx-", hero: /<header class="sx-hero"/ },
-  { slug: "grok", build: buildGrokHub, title: "Grok and xAI: models, plans and news", numbers: 'class="ds-stats"', band: false, data: "data-gx-", hero: /<header class="gx-hero"/ },
+  { slug: "tesla", title: "Tesla news, trackers and guides", numbers: 'id="to-brief-grid"', band: true, data: /<script[^>]*id="to-data"/ },
+  { slug: "spacex", title: "SpaceX launches, Starship and Starlink", numbers: 'id="sx-next"', band: true, data: /<script[^>]*id="sx-data"/ },
+  { slug: "grok", title: "Grok and xAI: models, plans and news", numbers: 'class="ds-stats"', band: false, data: null },
 ];
+for (const hub of HUBS) {
+  test(`${hub.slug} hub: plain title, its own key numbers, then its latest stories`, () => {
+    const html = read(`${hub.slug}.html`);
+    assert.deepEqual([...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => m[1]), [hub.title]);
+    assert.match(html, new RegExp(`<body class="[^"]*\\bds-hub-${hub.slug}\\b`));
+    const bodyClasses = html.match(/<body\b[^>]*\bclass="([^"]*)"/)[1].split(/\s+/);
+    assert.equal(bodyClasses.length, new Set(bodyClasses).size, "body classes are added once");
+    const mast = one(html, /<header class="ds-masthead"/, "masthead");
+    assert.ok(mast.includes(hub.numbers), "the masthead carries the hub's key numbers");
+    assert.equal(mast.includes('class="ds-band"'), hub.band);
+    const after = html.slice(html.indexOf(mast) + mast.length, html.indexOf(mast) + mast.length + 200);
+    assert.match(after, /^<section class="[^"]*\bds-hub-stories\b/);
+    assert.match(after, /<h2 id="ds-hub-stories-h">Latest stories<\/h2>/);
+    if (hub.data) assert.match(html, hub.data, "the studio's saved data stays for its script");
+  });
+}
+
+test("Grok key numbers are the newest official release per product, each with its release date and link", () => {
+  const html = read("grok.html");
+  const tiles = [...html.matchAll(/<li class="ds-stat"><span class="ds-stat-label">([^<]+)<\/span><span class="ds-stat-value">([^<]+)<\/span><span class="ds-stat-src">Released ([^<]+) · <a href="(https:[^"]+)">/g)];
+  assert.ok(tiles.length >= 2 && tiles.length <= 3, "two or three release tiles");
+  assert.equal(new Set(tiles.map((t) => t[1])).size, tiles.length, "one tile per product");
+  for (const t of tiles) assert.match(t[3], /^\d{1,2} [A-Z][a-z]{2,3} \d{4}$/);
+});
+
 /**
  * Ids that lived only inside a removed hero: referenced nowhere else on the live page (e.g. an SVG gradient) and never
  * looked up by the page's own scripts (a call argument that is exactly the id or "#id", as getElementById(), $() and
@@ -270,39 +296,6 @@ const heroOnlyIds = (live, heroRe) => {
   const esc = (id) => id.replace(/[.*+?^${}()|[\]\\-]/g, "\\$&");
   return new Set([...ids(hero)].filter((id) => !new RegExp(`(?:#|["\\s])${esc(id)}(?=["\\s)])`).test(rest) && !new RegExp(`\\(\\s*(['"\`])#?${esc(id)}\\1`).test(scripts)));
 };
-for (const hub of HUBS) {
-  test(`${hub.slug} hub preview: plain title, its own key numbers, then its latest stories, with every id kept`, () => {
-    const live = read(`${hub.slug}.html`);
-    const html = hub.build();
-    hidden(html);
-    assert.ok(html.includes(`<link rel="canonical" href="https://superchargeddaily.com/${hub.slug}.html" />`));
-    assert.match(html, new RegExp(`<html[^>]*data-section="${hub.slug}"`));
-    assert.deepEqual([...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => m[1]), [hub.title]);
-    const mast = one(html, /<header class="ds-masthead"/, "masthead");
-    assert.ok(mast.includes(hub.numbers), "the masthead carries the hub's key numbers");
-    assert.equal(mast.includes('class="ds-band"'), hub.band);
-    // The latest stories follow the masthead directly
-    const after = html.slice(html.indexOf(mast) + mast.length, html.indexOf(mast) + mast.length + 200);
-    assert.match(after, /^<section class="[^"]*\bds-hub-stories\b/);
-    assert.match(after, /<h2 id="ds-hub-stories-h">Latest stories<\/h2>/);
-    const gone = heroOnlyIds(live, hub.hero);
-    for (const id of ids(live)) assert.ok(ids(html).has(id) || gone.has(id), "keeps #" + id);
-    const heroHtml = one(live, hub.hero, "hero");
-    const restHooks = hooks(live.replace(heroHtml, ""), hub.data);
-    for (const h of hooks(live, hub.data)) assert.ok(hooks(html, hub.data).has(h) || !restHooks.has(h), "keeps " + h);
-    assert.equal((html.match(/<script[^>]*id="(?:to|sx|gx)-data"/g) || []).length, (live.match(/<script[^>]*id="(?:to|sx|gx)-data"/g) || []).length);
-    assert.equal(hub.build(), html, "the build is deterministic");
-  });
-}
-
-test("Grok key numbers are the newest official release per product, each with its release date and link", () => {
-  const html = buildGrokHub();
-  const tiles = [...html.matchAll(/<li class="ds-stat"><span class="ds-stat-label">([^<]+)<\/span><span class="ds-stat-value">([^<]+)<\/span><span class="ds-stat-src">Released ([^<]+) · <a href="(https:[^"]+)">/g)];
-  assert.ok(tiles.length >= 2 && tiles.length <= 3, "two or three release tiles");
-  assert.equal(new Set(tiles.map((t) => t[1])).size, tiles.length, "one tile per product");
-  for (const t of tiles) assert.match(t[3], /^\d{1,2} [A-Z][a-z]{2,3} \d{4}$/);
-});
-
 const TRACKERS = [
   { file: "fsd-tracker", build: buildFsdTracker, title: "FSD tracker", hero: /<header class="ft-hero">/, inMast: ['class="ft-kpis"', 'class="ft-jump"'] },
   { file: "starship", build: buildStarship, title: "Starship flights", hero: /<header class="ss-hero" id="top">/, inMast: ['id="ss-hero-next"', 'id="ss-hero-window"', 'id="ss-source-date"', 'class="ds-band"'] },
