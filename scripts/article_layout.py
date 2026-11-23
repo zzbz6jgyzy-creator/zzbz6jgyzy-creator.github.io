@@ -5,6 +5,7 @@ build-article-reader.py) follow the lead figure, and "On this page" (sd:article-
 follows the tools. Where a story has no lead figure both go right after the header. Both blocks are page furniture for
 scripts/editorial-dates.py, so moving them changes no story's "Updated" date.
 """
+import re
 from html.parser import HTMLParser
 
 # Classes of the elements that make up an article's header (an editor's update note under the byline belongs to it), of
@@ -70,7 +71,18 @@ class _Children(HTMLParser):
 
 
 def tools_point(src):
-    """Offset for rs:tools: after the lead figure, else after the header. None if the page has no article header."""
+    """Offset for rs:tools: after the lead figure, else after the header, and never inside another builder's marked block
+    (the Updated line and the disclosure sit inside <!-- seo:... --> markers that build-seo.py and build-articles.py own)."""
+    at = _point(src)
+    while at is not None:
+        m = re.match(r'[ \t]*\n?[ \t]*<!--\s*/[^>]*-->', src[at:])
+        if not m:
+            break
+        at += m.end()
+    return at
+
+
+def _point(src):
     kids = _Children(src).kids
     header_end = None
     for kid in kids:
