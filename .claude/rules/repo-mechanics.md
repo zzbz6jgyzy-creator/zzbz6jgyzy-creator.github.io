@@ -11,8 +11,8 @@
 - **Bots commit to main about every 30 minutes** (news, software, launches, rebuilt pages). So: `git fetch origin main &&
   git merge origin/main` before you push and before a PR; conflicts land in generated pages (`calendar.html`, `news.html`,
   `index.html`, `starlink.html`). Resolve by taking main's file and re-applying your change, then rebuild
-  (`sh scripts/rebuild-all.sh` regenerates every generated page offline, in pipeline order, and lists what changed). Merge PRs
-  soon after CI is green.
+  (`sh scripts/rebuild-all.sh` regenerates every generated page from the committed data, in pipeline order, and lists
+  what changed). Merge PRs soon after CI is green.
 - **JS bundles are hashed.** After changing any JS or CSS that a bundle includes run `sh scripts/rebuild-js.sh`; pages reference
   `assets/js/<name>.bundle.<hash>.js`. Pages also pin `?v=` on some stylesheets; bump it when the file changes.
 - **Tests live in two places.** `tests/*.test.mjs` (node:test), `tests/test_*.py` (unittest), `tests/*-browser.py` (Playwright;

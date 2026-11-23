@@ -6,9 +6,11 @@
 # `git diff`, commit. It follows home-build.yml's order and adds the studio builders that each run in
 # their own *-checks.yml workflow, so no builder runs before the data or pages it reads.
 #
-# Offline on purpose: the network refreshers (fetch-launches.py, the robotaxi and Starlink fetchers,
+# It fetches no data: the network refreshers (fetch-launches.py, the robotaxi and Starlink fetchers,
 # newsletter-latest.js, the Earth/cosmos asset fetchers) are not run; their committed data files are the
 # inputs. One-off builders that no workflow runs (plan book, map/club/viewing assets) are left out too.
+# It does need npm: rebuild-js.sh installs the pinned esbuild (bundle hashes must match CI), and step 4
+# installs sharp for responsive images (skipped without it, as in home-build).
 #
 # Needs full git history: article dates, sitemap lastmod and the updates history walk it.
 set -eu
@@ -23,6 +25,11 @@ step() {
   printf '\n== %s\n' "$*"
   "$@"
 }
+
+# A failure part-way leaves earlier steps' output in place; say so instead of exiting quietly.
+trap 'echo "rebuild-all: stopped at the step above. The tree is only partly regenerated; fix the error and run it again." >&2' EXIT
+# inject-js-bundles.py touches this template and CI never commits that; restore it only if it started clean.
+if git diff --quiet -- templates/starlink-sky.html; then restore_sky=1; else restore_sky=0; fi
 
 # 1. Articles: Markdown to pages, reader tools, then the index, related stories and dates.
 step python3 scripts/render-article.py
@@ -76,8 +83,8 @@ fi
 step python3 scripts/build-seo.py
 step node scripts/build-design-preview.mjs
 
-# inject-js-bundles.py touches this template; CI never commits that change either.
-git checkout -- templates/starlink-sky.html 2>/dev/null || true
+if [ "$restore_sky" = 1 ]; then git checkout -- templates/starlink-sky.html; fi
+trap - EXIT
 
 printf '\n== Changed files\n'
 git status --short
