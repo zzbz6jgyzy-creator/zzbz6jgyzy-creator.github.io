@@ -117,6 +117,9 @@ export function hubSection(id, title, href, linkText, inner, attrs = "") {
 
 export const GROK_LABEL = { model: "Grok model", bot: "Grok Bot", voice: "Grok Voice", imagine: "Grok Imagine", api: "xAI API" };
 
+/** inject-js-bundles.py (run by the bots on every page) collapses blank-line runs; transforms match it so they agree. */
+export const settle = (html) => html.replace(/\n{3,}/g, "\n\n");
+
 /** Add classes to <body> once: builders keep the existing <body> tag between runs. */
 export function ensureBodyClass(html, cls) {
   const m = html.match(/<body\b([^>]*)>/);
@@ -154,7 +157,7 @@ export function teslaHub(live) {
   let page = replaceOnce(live, grid + fine, "");
   page = replaceOnce(page, stories, "");
   page = replaceOnce(page, hero, mast + hubSection("ds-hub-stories-h", "Latest stories", "/dispatch.html?topic=tesla", "All Tesla stories", stories));
-  return ensureBodyClass(page, "ds-page ds-hub ds-hub-tesla");
+  return settle(ensureBodyClass(page, "ds-page ds-hub ds-hub-tesla"));
 }
 
 /** SpaceX hub: the next-launch card (#sx-next, kept live by spacex-studio.js) joins the masthead; the stories move up. */
@@ -182,7 +185,7 @@ export function spacexHub(live) {
   let page = replaceOnce(live, next, "");
   page = replaceOnce(page, section, "");
   page = replaceOnce(page, hero, mast + stories);
-  return ensureBodyClass(page, "ds-page ds-hub ds-hub-spacex");
+  return settle(ensureBodyClass(page, "ds-page ds-hub ds-hub-spacex"));
 }
 
 /** Grok hub: the newest official release per product line as key numbers; the reporting grid moves up from #latest. */
@@ -213,7 +216,7 @@ export function grokHub(live) {
   page = replaceOnce(page, grid, "");
   if (note) page = replaceOnce(page, note, "");
   page = replaceOnce(page, hero, mast + hubSection("ds-hub-stories-h", "Latest stories", "/dispatch.html?topic=xai", "All Grok stories", note + grid, ' id="stories"'));
-  return ensureBodyClass(page, "ds-page ds-hub ds-hub-grok");
+  return settle(ensureBodyClass(page, "ds-page ds-hub ds-hub-grok"));
 }
 
 // ---- Trackers: plain title, dek, updated/source line and the tracker's own key numbers; the tool starts right after ----
@@ -228,7 +231,7 @@ export function fsdTracker(live) {
   const lede = htmlText((hero.match(/<p class="ft-lede">([\s\S]*?)<\/p>/) || [])[1] || "");
   if (!meta || !lede) throw new Error("fsd-tracker.html: hero lede or meta changed shape");
   const mast = DS.masthead({ kicker: "Tesla", title: "FSD tracker", dek: firstSentence(lede), metaHtml: meta, statsHtml: `<div class="ds-tracker-numbers">${kpis}</div>`, extraHtml: jump });
-  return ensureBodyClass(replaceOnce(live, hero, mast), "ds-page ds-tracker ds-tracker-fsd");
+  return settle(ensureBodyClass(replaceOnce(live, hero, mast), "ds-page ds-tracker ds-tracker-fsd"));
 }
 
 /**
@@ -253,7 +256,7 @@ export function cybercabTracker(live) {
   const quiet = hero.replace(/<h1>([\s\S]*?)<\/h1>/, '<p class="mw-hero-title">$1</p>').replace('<header class="mw-hero">', '<header class="mw-hero" hidden>');
   let page = replaceOnce(live, hero, quiet);
   page = replaceOnce(page, app, mast + "\n" + app);
-  return ensureBodyClass(page, "ds-page ds-tracker ds-tracker-cybercab");
+  return settle(ensureBodyClass(page, "ds-page ds-tracker ds-tracker-cybercab"));
 }
 
 /** Calendar: calendar-studio.js rewrites #cs-hero on start, so it becomes an inert <template> stub after the masthead. */
@@ -272,7 +275,7 @@ export function calendarTracker(live) {
   // screen, so the preview ships the flag and they are there from first paint instead of pushing the page down.
   // #cs-app sits outside the cs:studio block the builder re-renders, so this stays put between runs.
   if (!page.includes('<div id="cs-app" class="cs-enhanced">')) page = replaceOnce(page, '<div id="cs-app">', '<div id="cs-app" class="cs-enhanced">');
-  return ensureBodyClass(page, "ds-page ds-tracker ds-tracker-calendar");
+  return settle(ensureBodyClass(page, "ds-page ds-tracker ds-tracker-calendar"));
 }
 
 /** Starlink: the masthead replaces the workspace's top line; the source strip and key figures move into it (still inside .so-workspace). */
@@ -293,7 +296,7 @@ export function starlinkTracker(live) {
   page = replaceOnce(page, metrics, "");
   page = replaceOnce(page, overview, quietOverview);
   page = replaceOnce(page, mastLine, mast);
-  return ensureBodyClass(page, "ds-page ds-tracker ds-tracker-starlink");
+  return settle(ensureBodyClass(page, "ds-page ds-tracker ds-tracker-starlink"));
 }
 
 /** Production: the quarter picker (#pd-quarter) and the stats (#pd-stats) move into the masthead; #pd-spotlight stays, hidden. */
@@ -319,5 +322,5 @@ export function productionTracker(live) {
   page = replaceOnce(page, hero, mast);
   // Same for the quarter picker, which the script shows by flagging main.pd-studio.
   page = replaceOnce(page, '<main id="main" class="pd-studio">', '<main id="main" class="pd-studio" data-enhanced="true">');
-  return ensureBodyClass(page, "ds-page ds-tracker ds-tracker-production");
+  return settle(ensureBodyClass(page, "ds-page ds-tracker ds-tracker-production"));
 }
