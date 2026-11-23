@@ -318,7 +318,9 @@ for (const t of TRACKERS) {
 test("trackers keep the script contracts the plan names", () => {
   const cal = read("calendar.html");
   assert.ok(cal.includes('<template id="cs-hero"></template>') && !cal.includes('<div id="cs-hero">'), "calendar-studio.js writes into an inert stub");
-  assert.equal((cal.match(/<div id="cs-app" class="cs-enhanced">/g) || []).length, 1);
+  assert.equal((cal.match(/<div id="cs-app"><script>\(function\(a\)\{a\.classList\.add\("cs-enhanced"\)/g) || []).length, 1, "the calendar flags itself while parsing, once");
+  assert.ok(!cal.includes('<div id="cs-app" class="cs-enhanced">'), "no static flag: without JavaScript the static listing shows");
+  assert.match(read("production.html"), /<main id="main" class="pd-studio"><script>[^<]*SDProductionReady/, "production flags itself while parsing, with a load fallback");
   const cyber = read("cybercab.html");
   assert.ok(cyber.indexOf('<header class="ds-masthead') < cyber.indexOf('<div id="mw-app"'), "the Cybercab masthead sits before #mw-app");
   assert.match(cyber, /<header class="mw-hero" hidden>[\s\S]*?<p class="mw-hero-title">/, "the old hero stays inside #mw-app, hidden, without its h1");
