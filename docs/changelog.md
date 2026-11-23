@@ -1,3 +1,7 @@
+## 23 Nov 2026
+
+- Dispatch: SpaceX has applied to excavate about 5.2 million cubic yards at Pecan Island, and Louisiana has opened public comment through 16 Dec on coastal use permit P20260831. The hero is a licensed Commons map of the marsh around Pecan Island (Paul H., CC0), not SpaceX permit drawings. This is a comment window, not an approval.
+
 ## 23 Nov 2026 — Redesign step 4: switch prep (no visual change)
 
 - Homepage (live): reads a 40 KB feed built with the page (`data/home-latest.json`, 11 KB gzipped) instead of downloading all of `dispatch.html` and `data/articles.json` (397 KB) on every visit.
