@@ -69,14 +69,14 @@ async def main():
        bounds=await link.bounding_box();assert bounds['height']>=44,bounds
       if width<=390 and registry and LEAD.get('homeTitle'):
        rect=await card.bounding_box();assert rect['height']<=210,rect
-       signup=await page.locator('#newsletter button[type=submit]').bounding_box();assert signup['y']+signup['height']<844,signup
+       lead=await page.locator('[data-hv-h]').bounding_box();assert lead['y']+lead['height']<844,('News first: the top story headline is on the first phone screen',lead)
       assert await card.get_by_role('link',name='All events →').get_attribute('href')=='/calendar.html'
     if os.environ.get('QUALITY_SHOTS') and mode=='upcoming' and registry:
      shots=pathlib.Path(os.environ['QUALITY_SHOTS']);shots.mkdir(parents=True,exist_ok=True)
      await page.screenshot(path=str(shots/f'home-{width}-{theme}-{scripts}.png'))
     if scripts:assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),'Homepage overflow'
     if scripts and mode=='upcoming' and registry:
-     await page.get_by_role('link',name='Explore trackers',exact=True).click();await page.wait_for_url(SITE+'/#hv-trk-h')
+     await page.goto(SITE+'/#hv-trk-h',wait_until='domcontentloaded');await page.locator('#hv-trk-h').wait_for()  # the trackers anchor the nav and old links use
      await page.goto(SITE+LEAD['url'],wait_until='domcontentloaded')
      original=(ROOT/LEAD['url'].lstrip('/')).read_text()
      heading=html.unescape(re.sub('<[^>]+>',' ',re.search(r'<h1[^>]*>(.*?)</h1>',original,re.S)[1]))
