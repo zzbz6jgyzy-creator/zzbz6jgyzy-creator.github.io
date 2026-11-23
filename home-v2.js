@@ -17,8 +17,9 @@ const sdJSON = (() => {
   const fmtDay = (d, o) => new Intl.DateTimeFormat(undefined, o || { day: "numeric", month: "short" }).format(d);
   const t = $("[data-hv-today]"); if (t) t.textContent = fmtDay(new Date(), { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
-  // Lead + supporting stories: data/home-latest.json, written by build-home.js from the newest Dispatch cards (newest
-  // first) with any pinned story, so a new post or an expired pin shows up without a full page rebuild.
+  // Lead + supporting stories: data/home-latest.json, written by build-home.js with this page from the newest Dispatch
+  // cards plus any pinned story. The page already shows them; repainting matters when a pin has expired since the last
+  // build, or when this copy of the page came from the browser cache.
   sdJSON("/data/home-latest.json").then((feed) => {
     const cards = (feed.cards || []).filter((c, k, arr) => c.h && arr.findIndex((x) => x.href === c.href) === k).map((c) => ({ ...c }));
     // Pinned lead (data/articles.json pinned + pinUntil) beats the newest card until it expires
@@ -34,7 +35,8 @@ const sdJSON = (() => {
     const leadH = homeCopy("homeTitle", L.h), leadP = homeCopy("homeSummary", L.p);
     // The page is pre-rendered from the same data every ~30 minutes; only touch the DOM when the stories actually changed, so the swap never causes layout shift.
     const sameLead = el.getAttribute("href") === L.href && ($("[data-hv-h]").textContent || "").trim() === leadH && ($("[data-hv-p]").textContent || "").trim() === leadP;
-    if (!sameLead) { el.href = L.href; $("[data-hv-tag]").textContent = L.tag.trim(); $("[data-hv-h]").textContent = leadH; $("[data-hv-p]").textContent = leadP; }
+    // Work out every value before touching the DOM, so a malformed card cannot leave a half-updated lead.
+    if (!sameLead) { const leadTag = String(L.tag || "Dispatch").trim(); el.href = L.href; $("[data-hv-tag]").textContent = leadTag; $("[data-hv-h]").textContent = leadH; $("[data-hv-p]").textContent = leadP; }
     // Lead image: card image, else the article's og:image / first image, else a licensed site image from another card
     const img = $("[data-hv-img]");
     const fallback = (cards.find((c) => c.img) || {}).img || "/assets/dispatch/cybercab-austin-poster.jpg";
