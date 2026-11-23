@@ -10,6 +10,9 @@ VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param
 BLOCKS = [('seo:nav','/seo:nav'), ('seo:about','/seo:about'),
           ('related:start','related:end'), ('nl:start','nl:end'),
           ('sd:article-wayfinding','/sd:article-wayfinding'),
+          # The reading toolbar (build-article-reader.py) is furniture: relabelling its buttons on 9 Nov 2026 re-stamped
+          # 83 stories "Updated", and the redesign moves it below the lead photo.
+          ('rs:tools','/rs:tools'),
           ('seo:updated','/seo:updated'), ('seo:disclosure','/seo:disclosure'),
           ('seo:topic-stories','/seo:topic-stories'),
           ('seo:ld','/seo:ld')]
