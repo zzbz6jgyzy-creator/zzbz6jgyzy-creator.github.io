@@ -94,7 +94,8 @@ function directive(name, d, uses, root) {
   if (name === 'video') {
     need(d, name, 'src', 'poster', 'caption');
     const src = mediaPath(d.src, name, root), poster = mediaPath(d.poster, name, root);
-    return `<figure class="figure-video">\n  <video controls playsinline preload="metadata" poster="${esc(poster)}">\n` +
+    // width/height (16:9 unless given) reserve the player's space; mirrors scripts/render-article.py
+    return `<figure class="figure-video">\n  <video width="${esc(d.width || '1920')}" height="${esc(d.height || '1080')}" controls playsinline preload="metadata" poster="${esc(poster)}">\n` +
       `    <source src="${esc(src)}" type="video/mp4" />\n    Your browser does not support the video tag.\n  </video>\n` +
       `  <figcaption>${inline(d.caption)}</figcaption>\n</figure>`;
   }
