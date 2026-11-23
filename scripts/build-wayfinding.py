@@ -75,7 +75,9 @@ def article(src):
  block='\n<!--sd:article-wayfinding--><div class="sd-article-tools"><details class="sd-contents"><summary>On this page</summary><nav aria-label="Article sections"><ol>'+''.join(links)+'</ol></nav></details><a class="sd-discussion-jump" href="#comments" data-discussion-jump hidden>Jump to discussion <span aria-hidden="true">→</span></a></div><!--/sd:article-wayfinding-->\n'
  # Right after the reading tools, which follow the lead photo or video (scripts/article_layout.py).
  tools=clean.find('<!--/rs:tools-->')
- if tools>=0:insert=tools+len('<!--/rs:tools-->')
+ if tools>=0:
+  insert=tools+len('<!--/rs:tools-->')
+  if clean[insert:insert+1]=='\n':insert+=1  # the reader's block ends with a newline; stay after it so passes agree
  else:
   at=LAYOUT.tools_point(clean)
   insert=at if at is not None else (sections.intro if sections.intro is not None else sections.headings[0]['start'])

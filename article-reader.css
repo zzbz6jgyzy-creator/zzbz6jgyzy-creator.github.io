@@ -99,6 +99,8 @@ body.rs-story .rs-article .rs-controls { display: flex; flex-wrap: nowrap; gap: 
 body.rs-story .rs-article .rs-controls::-webkit-scrollbar { display: none; }
 body.rs-story .rs-article .rs-controls > * { flex: none; }
 body.rs-story .rs-article .rs-controls[hidden] { display: none; }
+/* The buttons above get an explicit display, which would override [hidden] (Share… stays hidden without navigator.share) */
+body.rs-story .rs-article .rs-tools [hidden] { display: none; }
 body.rs-story .rs-article .rs-size { gap: var(--ds-sp-2); }
 body.rs-story .rs-article .rs-tools button,
 body.rs-story .rs-article .rs-tools .rs-x {

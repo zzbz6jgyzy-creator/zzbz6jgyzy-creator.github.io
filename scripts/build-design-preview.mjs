@@ -188,41 +188,6 @@ function promoteFirstImage(page, cardRe, sizes) {
 // ---- Pages ----
 
 /** Homepage trackers and tools, by plain name. Every URL is a live page linked from the nav or the old tool cards. */
-/** Header furniture an article opens with, before its first piece of content. */
-const ARTICLE_HEADER = new Set(["eyebrow", "standfirst", "meta", "sd-disclosure", "sd-updated"]);
-
-/**
- * Article: the reading tools (rs:tools) and "On this page" (sd:article-wayfinding) move from between the standfirst and
- * the byline to just after the lead photo or video, so the headline, standfirst, byline and lead image sit together in
- * the first screen. Nothing else moves. Both blocks are page furniture for scripts/editorial-dates.py once rs:tools joins
- * its BLOCKS list (redesign step 3, itself a deliberate correction of about 83 wrong "Updated 9 Nov 2026" dates); after
- * that, the same move in build-article-reader.py and build-wayfinding.py at the switch changes no article's fingerprint.
- * Where the story has no lead figure the blocks go just before its first content.
- */
-export function buildArticle(slug, root = ROOT) {
-  const liveUrl = `/dispatch/${slug}.html`;
-  const live = read(liveUrl.slice(1), root);
-  assertRootRelative(live, liveUrl);
-  if (!/<article\b[^>]*class="[^"]*\brs-article\b/.test(live)) throw new Error(liveUrl + " is not a Dispatch article");
-  let page = addBodyClass(live, "ds-page ds-article");
-  const tools = between(page, "<!--rs:tools-->", "<!--/rs:tools-->");
-  page = replaceOnce(page, tools, "");
-  let way = "";
-  if (page.includes("<!--sd:article-wayfinding-->")) {
-    way = between(page, "<!--sd:article-wayfinding-->", "<!--/sd:article-wayfinding-->");
-    page = replaceOnce(page, way, "");
-  }
-  const art = findElement(page, /<article\b[^>]*class="[^"]*\brs-article\b[^"]*"[^>]*>/);
-  const inner = page.indexOf(">", art.start) + 1;
-  const kids = children(page, inner, page.lastIndexOf("</article>", art.end));
-  const first = kids.find((k) => k.tag !== "h1" && !k.cls.split(/\s+/).some((c) => ARTICLE_HEADER.has(c)));
-  if (!first) throw new Error(liveUrl + ": no content after the article header");
-  const at = first.tag === "figure" ? first.end : first.start;
-  page = page.slice(0, at) + "\n" + tools + (way ? "\n" + way : "") + "\n" + page.slice(at);
-  page = replaceOnce(page, "</main>", DS.previewFlag(liveUrl) + "\n</main>");
-  return previewHead(page, { live: liveUrl, keepImagePreloads: true, root });
-}
-
 /**
  * Dispatch list: a compact masthead, the existing topic chips, search and sort, then the cards. The Editorial desk box
  * moves below the list (beside it on wide screens). The card markup is untouched: data/articles.json is parsed from it,
@@ -573,7 +538,6 @@ export function buildProduction(root = ROOT) {
 }
 
 /** Three article types: a news story, a long feature, and a finance story with the share disclosure. */
-export const ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"];
 
 export const PAGES = [
   { out: "preview/dispatch.html", build: buildDispatchList },
@@ -587,7 +551,6 @@ export const PAGES = [
   { out: "preview/calendar.html", build: buildCalendar },
   { out: "preview/starlink.html", build: buildStarlink },
   { out: "preview/production.html", build: buildProduction },
-  ...ARTICLES.map((slug) => ({ out: `preview/dispatch/${slug}.html`, build: (root) => buildArticle(slug, root) })),
 ];
 
 /**

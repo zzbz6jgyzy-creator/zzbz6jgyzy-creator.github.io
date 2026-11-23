@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildArticle, buildDispatchList, buildNews, buildTeslaHub, buildSpacexHub, buildGrokHub, buildFsdTracker, buildStarship, buildCybercab, buildCalendar, buildStarlink, buildProduction, ARTICLES, articles, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildDispatchList, buildNews, buildTeslaHub, buildSpacexHub, buildGrokHub, buildFsdTracker, buildStarship, buildCybercab, buildCalendar, buildStarlink, buildProduction, articles, PAGES } from "../scripts/build-design-preview.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -190,28 +190,17 @@ const articleBody = (html) => {
   return html.slice(a.start, a.end).replace(TOOLS_RX, "").replace(WAY_RX, "").replace(/\s+/g, " ");
 };
 
-for (const slug of ARTICLES) {
-  test(`article preview ${slug}: hidden from search, and only the reading tools and contents move`, () => {
-    const live = read(`dispatch/${slug}.html`);
-    const html = buildArticle(slug);
-    assert.match(html, /<meta name="robots" content="noindex, nofollow" \/>/);
-    assert.equal((html.match(/<meta name="robots"/g) || []).length, 1);
-    assert.ok(html.includes(`<link rel="canonical" href="https://superchargeddaily.com/dispatch/${slug}.html" />`));
-    assert.match(html, /<title>Preview · /);
-    assert.match(html, /<body class="[^"]*\bds-page ds-article"/);
-    assert.match(html, /<link rel="stylesheet" href="\/ds-preview\.css\?v=[^"]+" \/>/);
-    assert.match(html, /class="ds-preview-flag"/);
-    // Same article text, media and order once the two furniture blocks are set aside (editorial-dates sees no change)
-    assert.equal(articleBody(html), articleBody(live));
-    assert.equal(html.match(TOOLS_RX)[0].trim(), live.match(TOOLS_RX)[0].trim(), "the reading tools are moved whole");
-    // The tools now follow the lead figure and come before the first section heading
+// Articles switched on 23 Nov 2026: the reading tools follow the lead photo or video on every live story.
+for (const slug of ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"]) {
+  test(`article ${slug}: the reading tools follow the lead figure and come before the contents and the first section`, () => {
+    const html = read(`dispatch/${slug}.html`);
+    assert.match(html, /<body class="[^"]*\brs-story\b/);
     const tools = html.indexOf("<!--rs:tools-->");
     const art = html.slice(0, tools);
     assert.ok(art.lastIndexOf("</figure>") > art.lastIndexOf('class="meta"'), "the reading tools follow the lead figure");
     const h2 = html.indexOf("<h2", tools);
     assert.ok(h2 < 0 || tools < h2);
-    if (WAY_RX.test(live)) assert.ok(html.indexOf("<!--sd:article-wayfinding-->") > tools, "contents follow the tools");
-    assert.equal(buildArticle(slug), html, "the build is deterministic");
+    if (WAY_RX.test(html)) assert.ok(html.indexOf("<!--sd:article-wayfinding-->") > tools, "contents follow the tools");
   });
 }
 
