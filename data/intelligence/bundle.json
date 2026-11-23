@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-23T12:50:56.722Z",
+  "generatedAt": "2026-11-23T14:51:22.937Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -286,6 +286,23 @@
   ],
   "changes": [
     {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-louisiana-coastal-permit.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",
+      "at": "2026-11-23T14:35:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-louisiana-coastal-permit.html",
+      "href": "/dispatch/spacex-louisiana-coastal-permit.html",
+      "summary": "The state's official public notice for coastal use permit P20260831 describes a Gulf wharf, barge docks, dredging and an access road at the end of Highway 3147. The application is under review, not approved. How to comment by 16 Dec.",
+      "title": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",
+      "id": "logged|dispatch:/dispatch/spacex-louisiana-coastal-permit.html|2026-11-23T14:35:00.000Z|SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec"
+    },
+    {
       "type": "changed",
       "factId": "starlink:in-orbit",
       "topic": "starlink",
@@ -556,23 +573,6 @@
       "summary": "SpaceXSI says five Grok Bots now run its order-to-cash process, cutting invoice time from about 24 hours to minutes. Refunds and credits still need a person to sign off, and the time savings are SpaceXSI's own estimates.",
       "title": "SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person",
       "id": "logged|dispatch:/dispatch/spacexsi-grok-bot-accounting-team.html|2026-11-18T17:22:00.000Z|SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/nvidia-q3-vera-rubin-spacexsi.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Nvidia's first results without Huang say Vera Rubin is \"coming online soon\" at SpaceXSI",
-      "at": "2026-11-18T17:20:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/nvidia-q3-vera-rubin-spacexsi.html",
-      "href": "/dispatch/nvidia-q3-vera-rubin-spacexsi.html",
-      "summary": "Nvidia posted $115.8 billion of Q3 revenue and guided $130 billion for Q4. Its release says Vera Rubin NVL72 racks run at five clouds and are \"coming online soon at SpaceXSI.\" SpaceX's own $40 billion Vera Rubin lease doesn't start until 2027.",
-      "title": "Nvidia's first results without Huang say Vera Rubin is \"coming online soon\" at SpaceXSI",
-      "id": "logged|dispatch:/dispatch/nvidia-q3-vera-rubin-spacexsi.html|2026-11-18T17:20:00.000Z|Nvidia's first results without Huang say Vera Rubin is \"coming online soon\" at SpaceXSI"
     },
     {
       "type": "changed",
@@ -2164,14 +2164,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-11-17T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-11-17T08:45:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -2185,14 +2185,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-11-20T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-11-22T22:41:47.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -2206,35 +2206,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-23T12:50:56.722Z",
+      "lastChecked": "2026-11-23T14:51:22.937Z",
       "lastVerified": "2026-11-23T10:55:03.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2243,85 +2243,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.628Z",
-      "finished": "2026-11-23T12:50:56.709Z"
+      "started": "2026-11-23T14:51:22.914Z",
+      "finished": "2026-11-23T14:51:22.920Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.709Z",
-      "finished": "2026-11-23T12:50:56.709Z"
+      "started": "2026-11-23T14:51:22.920Z",
+      "finished": "2026-11-23T14:51:22.920Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.709Z",
-      "finished": "2026-11-23T12:50:56.709Z"
+      "started": "2026-11-23T14:51:22.920Z",
+      "finished": "2026-11-23T14:51:22.920Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.709Z",
-      "finished": "2026-11-23T12:50:56.716Z"
+      "started": "2026-11-23T14:51:22.920Z",
+      "finished": "2026-11-23T14:51:22.929Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.716Z",
-      "finished": "2026-11-23T12:50:56.718Z"
+      "started": "2026-11-23T14:51:22.929Z",
+      "finished": "2026-11-23T14:51:22.932Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.718Z",
-      "finished": "2026-11-23T12:50:56.719Z"
+      "started": "2026-11-23T14:51:22.932Z",
+      "finished": "2026-11-23T14:51:22.933Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.719Z",
-      "finished": "2026-11-23T12:50:56.720Z"
+      "started": "2026-11-23T14:51:22.933Z",
+      "finished": "2026-11-23T14:51:22.934Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.720Z",
-      "finished": "2026-11-23T12:50:56.720Z"
+      "started": "2026-11-23T14:51:22.934Z",
+      "finished": "2026-11-23T14:51:22.934Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.720Z",
-      "finished": "2026-11-23T12:50:56.720Z"
+      "started": "2026-11-23T14:51:22.934Z",
+      "finished": "2026-11-23T14:51:22.934Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.720Z",
-      "finished": "2026-11-23T12:50:56.721Z"
+      "started": "2026-11-23T14:51:22.934Z",
+      "finished": "2026-11-23T14:51:22.935Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.721Z",
-      "finished": "2026-11-23T12:50:56.721Z"
+      "started": "2026-11-23T14:51:22.935Z",
+      "finished": "2026-11-23T14:51:22.936Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.721Z",
-      "finished": "2026-11-23T12:50:56.721Z"
+      "started": "2026-11-23T14:51:22.936Z",
+      "finished": "2026-11-23T14:51:22.936Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-23T12:50:56.721Z",
-      "finished": "2026-11-23T12:50:56.722Z"
+      "started": "2026-11-23T14:51:22.936Z",
+      "finished": "2026-11-23T14:51:22.936Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-23T12:50:56.722Z",
+    "generatedAt": "2026-11-23T14:51:22.937Z",
     "factCount": 20,
     "changeCount": 108,
     "conflictCount": 2,

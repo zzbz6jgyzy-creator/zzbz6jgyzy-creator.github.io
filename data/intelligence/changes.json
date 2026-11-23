@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-23T12:50:56.722Z",
+  "updated": "2026-11-23T14:51:22.937Z",
   "changes": [
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-louisiana-coastal-permit.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",
+      "at": "2026-11-23T14:35:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-louisiana-coastal-permit.html",
+      "href": "/dispatch/spacex-louisiana-coastal-permit.html",
+      "summary": "The state's official public notice for coastal use permit P20260831 describes a Gulf wharf, barge docks, dredging and an access road at the end of Highway 3147. The application is under review, not approved. How to comment by 16 Dec.",
+      "title": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",
+      "id": "logged|dispatch:/dispatch/spacex-louisiana-coastal-permit.html|2026-11-23T14:35:00.000Z|SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec"
+    },
     {
       "type": "changed",
       "factId": "starlink:in-orbit",
@@ -272,23 +289,6 @@
       "summary": "SpaceXSI says five Grok Bots now run its order-to-cash process, cutting invoice time from about 24 hours to minutes. Refunds and credits still need a person to sign off, and the time savings are SpaceXSI's own estimates.",
       "title": "SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person",
       "id": "logged|dispatch:/dispatch/spacexsi-grok-bot-accounting-team.html|2026-11-18T17:22:00.000Z|SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/nvidia-q3-vera-rubin-spacexsi.html",
-      "topic": "spacex-launches",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Nvidia's first results without Huang say Vera Rubin is \"coming online soon\" at SpaceXSI",
-      "at": "2026-11-18T17:20:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/nvidia-q3-vera-rubin-spacexsi.html",
-      "href": "/dispatch/nvidia-q3-vera-rubin-spacexsi.html",
-      "summary": "Nvidia posted $115.8 billion of Q3 revenue and guided $130 billion for Q4. Its release says Vera Rubin NVL72 racks run at five clouds and are \"coming online soon at SpaceXSI.\" SpaceX's own $40 billion Vera Rubin lease doesn't start until 2027.",
-      "title": "Nvidia's first results without Huang say Vera Rubin is \"coming online soon\" at SpaceXSI",
-      "id": "logged|dispatch:/dispatch/nvidia-q3-vera-rubin-spacexsi.html|2026-11-18T17:20:00.000Z|Nvidia's first results without Huang say Vera Rubin is \"coming online soon\" at SpaceXSI"
     },
     {
       "type": "changed",
