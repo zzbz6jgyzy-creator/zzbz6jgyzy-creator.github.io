@@ -1,10 +1,16 @@
 """Local routed page, no external writes. Real built scripts, downloads and responsive journeys."""
 import asyncio,json,mimetypes,os,pathlib,shutil
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 from playwright.async_api import async_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1];SITE='https://superchargeddaily.com';OUT=pathlib.Path(os.environ.get('CALENDAR_SCREENSHOTS','/tmp/calendar-studio'));OUT.mkdir(parents=True,exist_ok=True);DATA=json.loads((ROOT/'data/calendar-studio.json').read_text());KEY='sd-calendar-studio-v1'
+# A page restored from the browser cache reports transferSize 0; only that copy re-checks the JSON.
+CACHED="(()=>{const get=performance.getEntriesByType.bind(performance);performance.getEntriesByType=t=>t==='navigation'?get(t).map(e=>new Proxy(e,{get:(o,k)=>k==='transferSize'?0:(typeof o[k]==='function'?o[k].bind(o):o[k])})):get(t)})()"
+REFRESH_MODES=['source-failed','malformed','older','newer']
+# One hour after the committed snapshot, so the bots' next launch refresh can never make it the older one.
+NEWER_AT=datetime.fromisoformat(DATA['launchChecked'].replace('Z','+00:00'))+timedelta(hours=1);NEWER=NEWER_AT.strftime('%Y-%m-%dT%H:%M:%SZ')
+NEWER_TEXT='Launch times as of '+str(NEWER_AT.astimezone(ZoneInfo('Europe/Dublin')).day)+NEWER_AT.astimezone(ZoneInfo('Europe/Dublin')).strftime(' %b, %H:%M')
 F15=next(e for e in DATA['events'] if e.get('id') in ('starship-15','starship-flight-15','starship-f15') or 'flight 15' in (e.get('title') or '').lower())
 F15_DATE=F15['date']  # Flight 15 day from the shared calendar; never hard-code it
 F15_LA_TIME=datetime.fromisoformat(F15['start'].replace('Z','+00:00')).astimezone(ZoneInfo('America/Los_Angeles')).strftime('%H:%M')
@@ -38,6 +44,7 @@ async def main():
    if mode=='light':await c.add_init_script("localStorage.setItem('sd-theme','light')")
    if mode=='bad-prefs':await c.add_init_script("localStorage.setItem('"+KEY+"',JSON.stringify({saved:{bad:1},zone:'broken'}))")
    if mode=='blocked-storage':await c.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw new Error('blocked')}})")
+   if mode in REFRESH_MODES:await c.add_init_script(CACHED)
    async def route(r):
     u=urlparse(r.request.url)
     if u.hostname!='superchargeddaily.com':return await r.abort()
@@ -46,6 +53,7 @@ async def main():
      if mode=='source-failed':return await r.abort()
      if mode=='malformed':return await r.fulfill(body='{"version":1,"events":[]}',content_type='application/json')
      if mode=='older':return await r.fulfill(body=json.dumps({**DATA,'launchChecked':'2020-01-01T00:00Z'}),content_type='application/json')
+     if mode=='newer':return await r.fulfill(body=json.dumps({**DATA,'launchChecked':NEWER}),content_type='application/json')
     f=ROOT/(u.path.lstrip('/')or'index.html')
     if f.is_file()and ROOT in f.resolve().parents:return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0]or'application/octet-stream')
     return await r.abort()
@@ -81,12 +89,23 @@ async def main():
    assert 'Time unconfirmed' not in panel
    assert F15_LA_TIME in panel, (F15_LA_TIME, panel)
    assert not errors,errors;assert not any('ll.thespacedevs.com'in u for u in requests);await c.close()
-  for mode in ['light','no-js','blocked-js','bad-prefs','blocked-storage','source-failed','malformed','older']:
+  for mode in ['light','no-js','blocked-js','bad-prefs','blocked-storage']+REFRESH_MODES:
    c,page,errors,requests=await context(mode=mode)
    if mode in ['no-js','blocked-js']:
     assert await page.locator('.cs-static-only').is_visible();assert await page.locator('.cs-static-detail').count()>40;assert not await page.locator('.cs-toolbar').is_visible()
    elif mode=='blocked-storage':await expect(page.locator('#cs-storage')).to_contain_text('unavailable')
    elif mode in ['source-failed','malformed','older']:await expect(page.locator('#cs-freshness')).to_contain_text('Launch times may be out of date');assert await page.locator('#cs-results .cs-event').count()>0
+   elif mode=='newer':await expect(page.locator('#cs-freshness')).to_contain_text(NEWER_TEXT)
+   if mode in REFRESH_MODES:assert any('/data/calendar-studio.json'in u for u in requests),(mode,'cached page did not re-check')
    assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),mode;assert not errors,errors;await c.close();checks.append(mode)
+  # The frozen clock above also replaces performance, hiding how the page arrived. Without it, a page from the network
+  # already holds the newest snapshot and must not download it again.
+  c=await browser.new_context(viewport={'width':390,'height':1000},service_workers='block');page=await c.new_page();requests=[];page.on('request',lambda r:requests.append(r.url))
+  async def plain(r):
+   u=urlparse(r.request.url);f=ROOT/(u.path.lstrip('/')or'index.html')
+   if u.hostname=='superchargeddaily.com'and f.is_file()and ROOT in f.resolve().parents:return await r.fulfill(body=f.read_bytes(),content_type=mimetypes.guess_type(str(f))[0]or'application/octet-stream')
+   return await r.abort()
+  await c.route('**/*',plain);await page.goto(SITE+'/calendar.html');await page.wait_for_selector('.cs-enhanced');await page.wait_for_load_state('networkidle')
+  assert await page.evaluate("performance.getEntriesByType('navigation')[0].transferSize>0");assert not any('/data/calendar-studio.json'in u for u in requests),'network page re-fetched its own data';await c.close();checks.append('network-copy')
   await browser.close();(OUT/'results.json').write_text(json.dumps({'passed':checks},indent=2));print('Passed calendar responsive journeys, exports, time zones, keyboard and fallback cases:',len(checks))
 asyncio.run(main())

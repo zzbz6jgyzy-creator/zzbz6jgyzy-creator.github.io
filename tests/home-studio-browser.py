@@ -238,6 +238,30 @@ async def main():
             assert not errors, (width, theme, mode, errors)
             print(width, theme, mode, 'passed', flush=True)
             await context.close()
+        # The browser repaint follows data/home-latest.json: a pin leads until its pinUntil, then the newest card does.
+        feed = json.loads((ROOT / 'data/home-latest.json').read_text())
+        story = feed['cards'][3]
+        for label, until, expected in [('future pin', '2099-01-01T00:00:00Z', story['href']), ('expired pin', '2020-01-01T00:00:00Z', feed['cards'][0]['href'])]:
+            context = await browser.new_context(viewport={'width': 390, 'height': 844}, reduced_motion='reduce', service_workers='block')
+            page = await context.new_page()
+            errors, served = [], []
+            page.on('pageerror', lambda e: errors.append(str(e)))
+            await context.route('**/*', with_feed(json.dumps({**feed, 'pins': [{**story, 'pinUntil': until}]}), served, route_for(ROOT, 'normal', [], [], [])))
+            await page.goto(SITE + '/', wait_until='domcontentloaded')
+            await settled(page)
+            assert served, (label, 'feed not requested')
+            await page.wait_for_function('h=>document.querySelector("[data-hv-lead]").getAttribute("href")===h', arg=expected, timeout=5000)
+            assert not errors, (label, errors)
+            print(label, 'passed', flush=True)
+            await context.close()
         await browser.close()
+
+def with_feed(body, served, fallback):
+    async def route(r):
+        if urlparse(r.request.url).path != '/data/home-latest.json':
+            return await fallback(r)
+        served.append(True)
+        return await r.fulfill(body=body, content_type='application/json')
+    return route
 
 asyncio.run(main())

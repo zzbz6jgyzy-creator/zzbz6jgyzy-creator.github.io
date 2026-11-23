@@ -26,6 +26,22 @@ for (const m of rd("dispatch.html").matchAll(/<a class="story-card[^"]*" href="(
 }
 const decode = (s) => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&#39;|&rsquo;/g, "’");
 cards.forEach((c) => { c.h = decode(c.h); c.p = decode(c.p); c.tag = decode(c.tag); });
+// A small feed for home-v2.js, written from the same cards as the page, so the browser no longer downloads all of
+// dispatch.html and data/articles.json to repaint the lead, the supporting stories and the headline pairing.
+{
+  let arts = [];
+  try { arts = JSON.parse(rd("data/articles.json")).articles || []; } catch (e) { console.warn("home-latest: no articles.json", e.message); }
+  const byUrl = new Map(arts.map((a) => [a.url, a]));
+  const extra = (a) => Object.fromEntries(["homeTitle", "homeSummary"].filter((k) => a && typeof a[k] === "string" && a[k].trim()).map((k) => [k, a[k].trim()]));
+  const feed = {
+    cards: cards.slice(0, 8).map((c) => ({ ...c, ...extra(byUrl.get(c.href)) })),
+    pins: arts.filter((a) => a.pinned).map((a) => ({ href: a.url, pinUntil: a.pinUntil || "", img: a.image || "", tag: a.tag || "Dispatch", h: a.title || "", p: a.summary || "", ...extra(a) })),
+    // What home-pair.js needs to pair an off-site headline with one of our stories
+    stories: arts.map((a) => ({ url: a.url, title: a.title || "", tag: a.tag || "", date: a.date || "" })),
+  };
+  const out = path.join(R, "data", "home-latest.json"), json = JSON.stringify(feed, null, 1) + "\n";
+  if (!fs.existsSync(out) || fs.readFileSync(out, "utf8") !== json) { fs.writeFileSync(out, json); console.log("data/home-latest.json updated"); }
+}
 // Pin: data/articles.json "pinned": true (+ optional "pinUntil" ISO time) holds a story as the lead until it expires
 try {
   const now = Date.now(), pin = (JSON.parse(rd("data/articles.json")).articles || []).find((a) => a.pinned && (!a.pinUntil || Date.parse(a.pinUntil) > now));
