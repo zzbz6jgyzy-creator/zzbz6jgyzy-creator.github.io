@@ -193,6 +193,18 @@ TOPIC_PAGE = {"tesla": ("Tesla", "/tesla.html"), "spacex": ("SpaceX", "/spacex.h
 def subjects(a):
     t = (a.get("title", "") + " " + a.get("tag", "") + " " + a["url"].replace("-", " ")).lower()
     return [i for i, (rx, _, _) in enumerate(SUBJECTS) if re.search(rx, t)]
+def related_thumb(o):
+    """The story's 480w AVIF/WebP when both exist (the cards show at 96-340px), else its original image."""
+    img = o.get("image")
+    if not img:
+        return ""
+    base = os.path.splitext(img)[0]
+    avif, webp = base + "-480w.avif", base + "-480w.webp"
+    tag = f'<img src="{html.escape(img)}" alt="" loading="lazy" decoding="async" width="320" height="180" />'
+    if all(os.path.exists(os.path.join(ROOT, f.lstrip("/"))) for f in (avif, webp)):
+        return f'<picture><source type="image/avif" srcset="{html.escape(avif)}" /><source type="image/webp" srcset="{html.escape(webp)}" />{tag}</picture>'
+    return tag
+
 def related_stories():
     arts = json.load(open(OUT, encoding="utf-8")).get("articles", [])
     by = {a["url"]: a for a in arts}
@@ -218,7 +230,7 @@ def related_stories():
         if ms: _, lab, link = SUBJECTS[min(ms)]
         cards = "".join(
             f'<a class="rel-card" href="{html.escape(o["url"])}">'
-            + (f'<img src="{html.escape(o["image"])}" alt="" loading="lazy" width="320" height="180" />' if o.get("image") else "")
+            + related_thumb(o)
             + f'<span class="rel-tag">{html.escape(o.get("tag") or "Dispatch")}</span><span class="rel-h">{html.escape(o["title"], quote=False)}</span></a>' for o in cands)
         places = [SUBJECTS[i] for i in sorted(ms) if "/fsd-europe/" in SUBJECTS[i][2] or "/cybercab-cities/" in SUBJECTS[i][2]]
         place_html = ""
