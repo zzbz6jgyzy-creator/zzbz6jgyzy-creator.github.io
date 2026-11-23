@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import { calendarTracker } from './ds-pages.mjs'; // news-first tracker layout (redesign switch, 23 Nov 2026)
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
@@ -12,7 +13,7 @@ export function buildCalendarStudio(root = ROOT) {
   let html = read("calendar.html");
   if (!html.includes("<!--cs:studio-->")) throw Error("Missing calendar studio marker");
   html = html.replace(/<!--cs:studio-->[\s\S]*?<!--\/cs:studio-->/, "<!--cs:studio-->\n" + V.render(data) + "\n<!--/cs:studio-->").replace(/<script type="application\/json" id="cs-data">[\s\S]*?<\/script>/, '<script type="application/json" id="cs-data">' + JSON.stringify(data).replace(/</g, "\\u003c") + "<\/script>");
-  fs.writeFileSync(file, html);
+  fs.writeFileSync(file, calendarTracker(html));
   fs.writeFileSync(path.join(root, "data/calendar-studio.json"), JSON.stringify(data, null, 1) + "\n");
   fs.writeFileSync(path.join(root, "data/calendar.ics"), M.calendar(data.events, data.launchChecked));
   return data;

@@ -37,7 +37,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
 <link rel="stylesheet" href="/styles.css?v=202610261800" />
-    <link rel="stylesheet" href="/starship-studio.css?v=20261024observatory" />
+    <link rel="stylesheet" href="/starship-studio.css?v=20261123-switch" />
       <link rel="stylesheet" href="/nav-pill.css?v=20261123-six-menus" />
     <link rel="stylesheet" href="/ds.css?v=20261123f" />
     <link rel="stylesheet" href="/theme.css?v=202610211030" />
@@ -53,7 +53,7 @@
     <script type="module" src="/members.js?v=20261028-membersnav"></script>
     <!--/sd:members-->
   </head>
-  <body>
+  <body class="ds-page ds-tracker ds-tracker-starship">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <!--sd:navigation--><div class="pn-wrap" data-nav-studio>
@@ -76,15 +76,9 @@
       <div class="pn-spacer" aria-hidden="true"></div>
 
       <main id="main" class="ss-page">
-        <div class="ss-topline"><a href="/spacex.html">SUPERCHARGED DAILY / SPACEX</a><span id="ss-source-date">Source snapshot 17 Nov 2026</span></div>
-        <header class="ss-hero" id="top">
-          <img class="ss-hero-photo" src="/assets/starship-banner.webp" width="1600" height="717" alt="Starship and its launch tower floodlit at Starbase before Flight 5; historical photograph, not the next flight" fetchpriority="high" decoding="async" />
-          <div class="ss-hero-shade" aria-hidden="true"></div><div class="ss-hero-lines" aria-hidden="true"></div>
-          <div class="ss-hero-copy"><p class="ss-kicker"><span class="ss-status-dot" aria-hidden="true"></span> THE STARSHIP OBSERVATORY</p><h1>Starship<br>flights<span>Next launch<br>and every flight.</span></h1><p>Every test. Every turning point. A clearer view of the machine being built to go further.</p><div class="ss-actions"><a class="ss-button ss-primary" href="#next" data-view="next">The next flight <svg class="ss-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a><a class="ss-button ss-glass-button" href="#archive" data-view="archive">Explore the archive</a></div></div>
-          <div class="ss-hero-coordinate" aria-hidden="true">STARBASE, TEXAS <span>25.997° N / 97.156° W</span></div>
-          <a class="ss-hero-brief" href="#next" data-view="next"><span class="ss-label">NEXT IN THE SAVED RECORD</span><strong><span id="ss-hero-next">FLIGHT 16</span><svg class="ss-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></strong><span id="ss-hero-window">Launch time awaiting confirmation</span></a>
-        </header>
-        <p class="ss-photo-credit">Historical Starbase image: <a href="https://commons.wikimedia.org/wiki/File:SpaceX_Starship_before_IFT-5.jpg" target="_blank" rel="noopener">Steve Jurvetson / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" rel="license noopener">CC BY 2.0</a>. Layout crops the image.</p>
+        <header class="ds-masthead" id="top"><p class="ds-kicker">SpaceX</p><h1>Starship flights</h1><p class="ds-dek">Every Starship flight so far and the next one, with dated sources.</p><p class="ds-meta"><span id="ss-source-date">Source snapshot 17 Nov 2026</span> · <a href="#sources">Sources</a></p><div class="ds-tracker-numbers"><a class="ss-hero-brief" href="#next" data-view="next"><span class="ss-label">NEXT IN THE SAVED RECORD</span><strong><span id="ss-hero-next">FLIGHT 16</span><svg class="ss-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></strong><span id="ss-hero-window">Launch time awaiting confirmation</span></a></div><figure class="ds-band"><picture><img src="/assets/starship-banner.webp" width="1600" height="717" alt="Starship and its launch tower floodlit at Starbase before Flight 5; historical photograph, not the next flight" fetchpriority="high" decoding="async" /></picture><figcaption>Historical Starbase image: <a href="https://commons.wikimedia.org/wiki/File:SpaceX_Starship_before_IFT-5.jpg" target="_blank" rel="noopener">Steve Jurvetson / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" rel="license noopener">CC BY 2.0</a>. Layout crops the image.</figcaption></figure></header>
+        
+        
         <nav class="ss-nav" aria-label="Starship observatory sections"><a href="#overview" data-view="overview" aria-current="page"><span>01</span>Overview</a><a href="#next" data-view="next"><span>02</span>Next flight</a><a href="#archive" data-view="archive"><span>03</span>Flight archive</a><a href="#engineering" data-view="engineering"><span>04</span>Engineering</a><a href="#watch" data-view="watch"><span>05</span>Watch</a></nav>
         <div class="ss-status-line"><p id="ss-data-status" role="status">Saved editorial records · not live telemetry</p><button class="ss-text-button ss-js" id="ss-refresh">Check for a newer snapshot</button></div>
         <div id="ss-content"><!--ss:studio-->

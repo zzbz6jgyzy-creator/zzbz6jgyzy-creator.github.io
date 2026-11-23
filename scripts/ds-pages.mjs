@@ -215,3 +215,109 @@ export function grokHub(live) {
   page = replaceOnce(page, hero, mast + hubSection("ds-hub-stories-h", "Latest stories", "/dispatch.html?topic=xai", "All Grok stories", note + grid, ' id="stories"'));
   return ensureBodyClass(page, "ds-page ds-hub ds-hub-grok");
 }
+
+// ---- Trackers: plain title, dek, updated/source line and the tracker's own key numbers; the tool starts right after ----
+
+export const firstSentence = (text) => text.split(/(?<=[.?!])\s/)[0];
+
+export function fsdTracker(live) {
+  const hero = one(live, /<header class="ft-hero">/, "FSD tracker hero");
+  const kpis = one(hero, /<div class="ft-kpis">/, ".ft-kpis");
+  const jump = one(hero, /<nav class="ft-jump"/, ".ft-jump");
+  const meta = (hero.match(/<p class="ft-hero-meta">([\s\S]*?)<\/p>/) || [])[1];
+  const lede = htmlText((hero.match(/<p class="ft-lede">([\s\S]*?)<\/p>/) || [])[1] || "");
+  if (!meta || !lede) throw new Error("fsd-tracker.html: hero lede or meta changed shape");
+  const mast = DS.masthead({ kicker: "Tesla", title: "FSD tracker", dek: firstSentence(lede), metaHtml: meta, statsHtml: `<div class="ds-tracker-numbers">${kpis}</div>`, extraHtml: jump });
+  return ensureBodyClass(replaceOnce(live, hero, mast), "ds-page ds-tracker ds-tracker-fsd");
+}
+
+/**
+ * Cybercab: the masthead sits before #mw-app. The old hero stays inside it, hidden, with its h1 demoted, because
+ * build-mobility.mjs renders #mw-app whole; the overview's own metrics then sit just under the masthead.
+ */
+export function cybercabTracker(live) {
+  const app = (live.match(/<div id="mw-app"[^>]*>/) || [])[0];
+  const hero = one(live, /<header class="mw-hero">/, "Cybercab hero");
+  const small = (hero.match(/<p class="mw-small">([\s\S]*?)<\/p>/) || [])[1];
+  const fig = one(hero, /<figure class="mw-studio">/, "Cybercab studio figure");
+  const pic = one(fig, /<picture>/, "studio picture");
+  const cap = ((fig.match(/<figcaption>[\s\S]*?<span>([\s\S]*?)<\/span><\/figcaption>/) || [])[1] || "").trim();
+  if (!app || !small || !cap) throw new Error("cybercab.html: #mw-app, the registry line or the photo credit changed shape");
+  const mast = DS.masthead({
+    kicker: "Tesla Robotaxi",
+    title: "Cybercab fleet",
+    dek: "Where Tesla's Cybercabs and Robotaxis run, how many there are, and the evidence behind each claim.",
+    metaHtml: small,
+    extraHtml: bandFrom(pic, cap),
+  });
+  const quiet = hero.replace(/<h1>([\s\S]*?)<\/h1>/, '<p class="mw-hero-title">$1</p>').replace('<header class="mw-hero">', '<header class="mw-hero" hidden>');
+  let page = replaceOnce(live, hero, quiet);
+  page = replaceOnce(page, app, mast + "\n" + app);
+  return ensureBodyClass(page, "ds-page ds-tracker ds-tracker-cybercab");
+}
+
+/** Calendar: calendar-studio.js rewrites #cs-hero on start, so it becomes an inert <template> stub after the masthead. */
+export function calendarTracker(live) {
+  const hero = one(live, /<div id="cs-hero">/, "#cs-hero");
+  const asOf = (live.match(/Launch times as of ([^<.]+)\./) || [])[1];
+  if (!asOf) throw new Error("calendar.html: launch-times stamp missing");
+  const mast = DS.masthead({
+    kicker: "Tesla, SpaceX and xAI",
+    title: "Launch calendar",
+    dek: "Launches, Tesla events and earnings calls, with how certain each date is.",
+    metaHtml: `Launch times as of ${DS.esc(asOf.trim())} · Targets can change`,
+  });
+  let page = replaceOnce(live, hero, mast + '<template id="cs-hero"></template>');
+  // The week strip and filters are hidden until the script flags #cs-app; with the old hero gone they sit in the first
+  // screen, so the preview ships the flag and they are there from first paint instead of pushing the page down.
+  // #cs-app sits outside the cs:studio block the builder re-renders, so this stays put between runs.
+  if (!page.includes('<div id="cs-app" class="cs-enhanced">')) page = replaceOnce(page, '<div id="cs-app">', '<div id="cs-app" class="cs-enhanced">');
+  return ensureBodyClass(page, "ds-page ds-tracker ds-tracker-calendar");
+}
+
+/** Starlink: the masthead replaces the workspace's top line; the source strip and key figures move into it (still inside .so-workspace). */
+export function starlinkTracker(live) {
+  const mastLine = one(live, /<header class="so-mast">/, "Starlink top line");
+  const strip = one(live, /<div class="so-source-strip">/, "source strip");
+  const metrics = one(live, /<section class="so-metrics"/, "key figures");
+  const overview = one(live, /<section class="so-hero" id="overview"/, "#overview");
+  const quietOverview = overview.replace(/<h1 id="so-title">([\s\S]*?)<\/h1>/, '<h2 id="so-title" class="so-hero-title">$1</h2>');
+  if (quietOverview === overview) throw new Error("starlink.html: the overview h1 moved");
+  const mast = DS.masthead({
+    kicker: "SpaceX",
+    title: "Starlink tracker",
+    dek: "How many Starlink satellites are in orbit, how the constellation is built, and what is passing above you.",
+    statsHtml: `<div class="ds-tracker-numbers">${strip}${metrics}</div>`,
+  });
+  let page = replaceOnce(live, strip, "");
+  page = replaceOnce(page, metrics, "");
+  page = replaceOnce(page, overview, quietOverview);
+  page = replaceOnce(page, mastLine, mast);
+  return ensureBodyClass(page, "ds-page ds-tracker ds-tracker-starlink");
+}
+
+/** Production: the quarter picker (#pd-quarter) and the stats (#pd-stats) move into the masthead; #pd-spotlight stays, hidden. */
+export function productionTracker(live) {
+  const hero = one(live, /<header class="pd-hero">/, "production hero");
+  const picker = one(hero, /<div class="pd-quarter-select/, "quarter picker");
+  const spot = one(hero, /<div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight");
+  const note = one(live, /<p class="pd-view-note" id="pd-view-note">/, "#pd-view-note");
+  const status = one(live, /<p class="pd-status" id="pd-status"/, "#pd-status");
+  const stats = one(live, /<div class="pd-stats" id="pd-stats">/, "#pd-stats");
+  const published = (spot.match(/published ([^<]+)</) || [])[1];
+  if (!published) throw new Error("production.html: publication date missing from the spotlight");
+  const mast = DS.masthead({
+    kicker: "Tesla",
+    title: "Tesla production and deliveries",
+    dek: "Tesla's quarterly production, deliveries and energy storage, from its official reports.",
+    metaHtml: `Latest report published ${DS.esc(published.trim())} · <a href="#sources">Sources</a>`,
+    statsHtml: `<div class="ds-tracker-numbers">${picker}${note}${status}${stats}<div hidden>${spot}</div></div>`,
+  });
+  let page = replaceOnce(live, note, "");
+  page = replaceOnce(page, status, "");
+  page = replaceOnce(page, stats, "");
+  page = replaceOnce(page, hero, mast);
+  // Same for the quarter picker, which the script shows by flagging main.pd-studio.
+  page = replaceOnce(page, '<main id="main" class="pd-studio">', '<main id="main" class="pd-studio" data-enhanced="true">');
+  return ensureBodyClass(page, "ds-page ds-tracker ds-tracker-production");
+}

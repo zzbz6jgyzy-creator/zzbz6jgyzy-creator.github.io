@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Saved content and orbital illustration share the same validated source snapshot.
 import fs from 'node:fs';
+import { starlinkTracker } from './ds-pages.mjs'; // news-first tracker layout (redesign switch, 23 Nov 2026)
 import vm from 'node:vm';
 import path from 'node:path';
 import {createRequire} from 'node:module';
@@ -40,5 +41,5 @@ if(!html.includes('<!--sl:observatory-->'))throw Error('Missing observatory buil
 html=html.replace(/<!--sl:observatory-->[\s\S]*?<!--\/sl:observatory-->/,'<!--sl:observatory-->\n'+block+'\n<!--/sl:observatory-->');
 const safe=JSON.stringify(data).replace(/</g,'\\u003c');
 html=html.replace(/<script type="application\/json" id="sl-observatory-data">[\s\S]*?<\/script>/,'<script type="application/json" id="sl-observatory-data">'+safe+'</script>');
-fs.writeFileSync(target,html);
+fs.writeFileSync(target,starlinkTracker(html));
 console.log(`Starlink saved snapshot: ${data.totals.inOrbit} in orbit; ${valid} propagated records; counts ${data.countsAt}`);

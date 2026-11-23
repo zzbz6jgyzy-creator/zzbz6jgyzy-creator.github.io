@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
+import { productionTracker } from './ds-pages.mjs'; // news-first tracker layout (redesign switch, 23 Nov 2026)
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
@@ -27,7 +28,7 @@ export function buildProductionStudio(root=ROOT){
  if(!html.includes('/production-studio.css'))html=html.replace('</head>','    <link rel="stylesheet" href="/production-studio.css?v=20261025"/>\n  </head>');
  const schema={'@context':'https://schema.org','@type':'Dataset','@id':'https://superchargeddaily.com/production.html#dataset',name:title,description,url:'https://superchargeddaily.com/production.html',dateModified:data.updated,temporalCoverage:data.quarters[0].id.slice(3)+'-01-01/'+q.periodEnd,creator:{'@type':'Organization',name:'Supercharged Daily',url:'https://superchargeddaily.com/'},license:'https://superchargeddaily.com/editorial.html#data',isBasedOn:data.quarters.map(x=>x.sourceUrl),variableMeasured:['Vehicle production','Vehicle deliveries','Energy storage deployed (GWh)'],distribution:{'@type':'DataDownload',encodingFormat:'text/csv',contentUrl:'https://superchargeddaily.com/data/production.csv'}};
  html=html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,()=>`<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
- fs.writeFileSync(path.join(root,'production.html'),html);fs.writeFileSync(path.join(root,'data/production.csv'),M.csv(data));
+ fs.writeFileSync(path.join(root,'production.html'),productionTracker(html));fs.writeFileSync(path.join(root,'data/production.csv'),M.csv(data));
  const search=JSON.parse(read('data/pages.json')),ours=p=>/^\/production\.html(?:#(?:trends|compare|factories|data))?$/.test(p.url),old=search.pages.findIndex(p=>p.url==='/production.html'),slot=old<0?search.pages.findIndex(p=>p.url.startsWith('/explainers/')):search.pages.slice(0,old).filter(p=>!ours(p)).length;
  search.pages=search.pages.filter(p=>!ours(p));const records=[{url:'/production.html',title:'Tesla Production & Deliveries',tag:'Tesla',summary:description},...[
  ['trends','Tesla production and delivery charts','Quarterly vehicles, energy storage and annual or year-to-date comparisons from Tesla IR.'],['compare','Compare Tesla quarters','Choose any two quarters and compare deliveries, production and energy deployments.'],['factories','Tesla factory explorer','Regional manufacturing programmes and installed annual capacity from Tesla’s shareholder deck.'],['data','Tesla production source data','Official quarterly figures, primary source links and a complete CSV download.']].map(([id,title,summary])=>({url:'/production.html#'+id,title,tag:'Tesla',summary}))];search.pages.splice(slot<0?search.pages.length:slot,0,...records);fs.writeFileSync(path.join(root,'data/pages.json'),JSON.stringify(search,null,2)+'\n');return{data,editorial};
