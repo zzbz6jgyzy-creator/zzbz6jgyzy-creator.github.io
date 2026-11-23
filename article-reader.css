@@ -42,3 +42,136 @@ html[data-theme=light] .rs-tools{background:linear-gradient(180deg,#ffffff59,#ff
 .rs-tools{background:#11151b;-webkit-backdrop-filter:none;backdrop-filter:none}
 html[data-theme=light] .rs-tools{background:#f7f5f0}
 }
+
+/* ---- News-first article top (redesign switch, 23 Nov 2026; built on ds.css). The reading tools and "On this page"
+   follow the lead photo or video (scripts/article_layout.py). */
+   (scripts/build-design-preview.mjs buildArticle); everything else keeps its order. ---- */
+body.rs-story .rs-article { margin-top: var(--ds-sp-4); padding-top: 0; }
+body.rs-story .rs-article .eyebrow {
+  margin: 0 0 var(--ds-sp-2);
+  font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-accent);
+}
+body.rs-story .rs-article h1 {
+  margin: 0;
+  font: 650 clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem) / 1.1 var(--ds-font);
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+body.rs-story .rs-article .standfirst { margin: var(--ds-sp-3) 0 0; font: 400 var(--ds-fs-16) / 1.5 var(--ds-font); color: var(--ds-ink-2); }
+body.rs-story .rs-article .standfirst strong { font-weight: 400; color: inherit; }
+body.rs-story .rs-article .meta { display: flex; flex-wrap: wrap; gap: var(--ds-sp-1) var(--ds-sp-3); margin: var(--ds-sp-3) 0 0; font: 400 var(--ds-fs-12) / 1.5 var(--ds-mono); color: var(--ds-ink-2); }
+body.rs-story .rs-article .sd-updated { margin: var(--ds-sp-2) 0 0; font: 400 var(--ds-fs-12) / 1.5 var(--ds-mono); color: var(--ds-ink-2); }
+/* The disclosure keeps its exact words (editorial rule 7) as a quiet note under the byline */
+body.rs-story .rs-article .sd-disclosure {
+  margin: var(--ds-sp-3) 0 0;
+  padding: 0 0 0 var(--ds-sp-3);
+  border: 0;
+  border-left: 2px solid var(--ds-line-2);
+  border-radius: 0;
+  background: none;
+  font: 400 var(--ds-fs-14) / 1.5 var(--ds-font);
+  color: var(--ds-ink-2);
+}
+/* The lead figure sits tight under the byline; the tools follow it */
+body.rs-story .rs-article > figure:has(+ .rs-tools) { margin: var(--ds-sp-4) 0; }
+
+/* Reading tools: the reading time, then one row of buttons that scrolls sideways on a phone and wraps on wider screens,
+   instead of a sticky boxed bar */
+body.rs-story .rs-article .rs-tools {
+  position: static;
+  flex-wrap: wrap;
+  min-height: 0;
+  margin: var(--ds-sp-4) 0 0;
+  padding: 0;
+  gap: var(--ds-sp-2) var(--ds-sp-3);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+body.rs-story .rs-article .rs-time { flex: 1 1 100%; font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ds-ink-2); white-space: nowrap; }
+body.rs-story .rs-article .rs-controls { display: flex; flex-wrap: nowrap; gap: var(--ds-sp-2); min-width: 0; overflow-x: auto; scrollbar-width: none; }
+body.rs-story .rs-article .rs-controls::-webkit-scrollbar { display: none; }
+body.rs-story .rs-article .rs-controls > * { flex: none; }
+body.rs-story .rs-article .rs-controls[hidden] { display: none; }
+body.rs-story .rs-article .rs-size { gap: var(--ds-sp-2); }
+body.rs-story .rs-article .rs-tools button,
+body.rs-story .rs-article .rs-tools .rs-x {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--ds-line-2);
+  border-radius: var(--ds-r-pill);
+  background: transparent;
+  color: var(--ds-ink);
+  font: 500 var(--ds-fs-14) / 1 var(--ds-font);
+  text-decoration: none;
+}
+body.rs-story .rs-article .rs-tools button[aria-pressed="true"] { border-color: var(--ds-accent-fill); background: var(--ds-accent-fill); color: var(--ds-on-accent); }
+body.rs-story .rs-article .rs-status { font: 400 var(--ds-fs-12) / 1.5 var(--ds-font); }
+/* "On this page" and the discussion link share the next row */
+body.rs-story .rs-article .sd-article-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-sp-2) var(--ds-sp-4);
+  margin: var(--ds-sp-3) 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+body.rs-story .rs-article .sd-contents summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-sp-2);
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--ds-line-2);
+  border-radius: var(--ds-r-pill);
+  font: 500 var(--ds-fs-14) / 1 var(--ds-font);
+  cursor: pointer;
+}
+body.rs-story .rs-article .sd-contents summary::after { content: "+"; font: 400 var(--ds-fs-16) / 1 var(--ds-mono); color: var(--ds-ink-2); }
+body.rs-story .rs-article .sd-contents[open] summary::after { content: "\2212"; }
+body.rs-story .rs-article .sd-contents[open] nav { margin-top: var(--ds-sp-2); }
+body.rs-story .rs-article .sd-contents :is(li, a) { font-size: var(--ds-fs-14); line-height: 1.6; }
+body.rs-story .rs-article .sd-contents ol { margin: 0 0 var(--ds-sp-2); padding-left: 1.5rem; }
+body.rs-story .rs-article .sd-contents li::marker { font: 400 var(--ds-fs-12) / 1 var(--ds-mono); color: var(--ds-ink-2); }
+body.rs-story .rs-article .sd-contents a { min-height: 36px; padding: var(--ds-sp-1) 0; color: var(--ds-ink); text-decoration: none; }
+body.rs-story .rs-article .sd-contents a:hover { text-decoration: underline; text-underline-offset: 3px; }
+body.rs-story .rs-article .sd-discussion-jump { font: 500 var(--ds-fs-14) / 1.4 var(--ds-font); color: var(--ds-accent); }
+body.rs-story .rs-article > :is(.rs-tools, .sd-article-tools) + h2 { margin-top: var(--ds-sp-6); }
+/* One reading column: the header, the tools and the text share a left edge; photos, tables and boxes break out to the
+   full article width. Comes after the rules above so its inline margins win over their shorthands. */
+body.rs-story .rs-article { --ds-measure: 44rem; }
+body.rs-story .rs-article > :is(.eyebrow, h1, .standfirst, .meta, .sd-updated, .sd-disclosure, .rs-tools, .sd-article-tools, p, ul, ol, blockquote, h2, h3) {
+  max-width: var(--ds-measure);
+  margin-inline: auto;
+}
+/* The nav is the only fixed bar now, so section links stop just under it */
+body.rs-story .rs-article > h2[id] { scroll-margin-top: 96px; }
+@media (max-width: 767px) {
+  /* Fade the end of the scrolling row so it reads as "more this way", not as a clipped button */
+  body.rs-story .rs-article .rs-controls { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); padding-right: 28px; }
+}
+@media (min-width: 768px) {
+  body.rs-story .rs-article .standfirst { font-size: var(--ds-fs-18); }
+  body.rs-story .rs-article .rs-controls { flex-wrap: wrap; overflow: visible; }
+}
+@media (min-width: 1024px) {
+  body.rs-story .rs-article .standfirst { font-size: 1.25rem; }
+}
+/* Legacy caption, table and related labels drawn at 10-11px are held to the 12px floor */
+html body.rs-story .rs-article figcaption,
+html body.rs-story .rs-article figcaption small,
+html body.rs-story .rs-article figcaption small a,
+html body.rs-story .rs-article th,
+html body.rs-story .rel-tag { font-size: var(--ds-fs-12) !important; }

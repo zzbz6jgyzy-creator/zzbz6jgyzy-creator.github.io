@@ -7,6 +7,9 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 READER=runpy.run_path(str(pathlib.Path(__file__).with_name('build-article-reader.py')))['decorate']
 STYLE='    <!--sd:wayfinding-style--><link rel="stylesheet" href="/wayfinding.css?v=2026102301" /><!--/sd:wayfinding-style-->'
 STYLE_RX=re.compile(r'[ \t]*<!--sd:wayfinding-style-->.*?<!--/sd:wayfinding-style-->\n?',re.S)
+import importlib.util as _iu, pathlib as _pl
+_spec=_iu.spec_from_file_location('article_layout',_pl.Path(__file__).with_name('article_layout.py'))
+LAYOUT=_iu.module_from_spec(_spec);_spec.loader.exec_module(LAYOUT)  # where the tools and contents go
 ARTICLE_RX=re.compile(r'\n?<!--sd:article-wayfinding-->.*?<!--/sd:article-wayfinding-->\n?',re.S)
 HOME_RX=re.compile(r'\n?<!--sd:home-wayfinding-->.*?<!--/sd:home-wayfinding-->\n?',re.S)
 VOID={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
@@ -70,7 +73,12 @@ def article(src):
    edits.append((section['start'],section['start']+len(section['raw']),raw))
   links.append(f'<li><a href="{html.escape("#"+anchor,quote=True)}">{html.escape(section["label"])}</a></li>')
  block='\n<!--sd:article-wayfinding--><div class="sd-article-tools"><details class="sd-contents"><summary>On this page</summary><nav aria-label="Article sections"><ol>'+''.join(links)+'</ol></nav></details><a class="sd-discussion-jump" href="#comments" data-discussion-jump hidden>Jump to discussion <span aria-hidden="true">→</span></a></div><!--/sd:article-wayfinding-->\n'
- insert=sections.intro if sections.intro is not None else sections.headings[0]['start']
+ # Right after the reading tools, which follow the lead photo or video (scripts/article_layout.py).
+ tools=clean.find('<!--/rs:tools-->')
+ if tools>=0:insert=tools+len('<!--/rs:tools-->')
+ else:
+  at=LAYOUT.tools_point(clean)
+  insert=at if at is not None else (sections.intro if sections.intro is not None else sections.headings[0]['start'])
  edits.append((insert,insert,block))
  for start,end,replacement in sorted(edits,reverse=True):clean=clean[:start]+replacement+clean[end:]
  return stylesheet(clean,True)

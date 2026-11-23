@@ -312,3 +312,5 @@ body.home-x{background:#050505;color:#f4f4f2}
   .ds-home #ds-tools > li:nth-child(-n + 3) { border-top: 0; }
 }
 .ds-home .hs-tools .ds-section-head, .ds-home .hs-calendar .ds-section-head { margin-bottom: var(--ds-sp-3); }
+/* Legacy widget labels drawn at 8-11px are held to the 12px floor */
+html main.ds-home :is(.lw-when, .lw-when time, .lv-tz, .lh-next-label, .lh-cd-label, .lh-cd-time, .lh-next-links a, .hs-hero-signup .sd-btn, .hs-form-note, .hs-sample-link, .hs-author, .hs-author a, .hv-c-w, .hv-head a, .intel-chip, .intel-k, .intel-m, .intel-m time, .intel-ev, .hv-f-t, .hv-f-m, .hv-f-on) { font-size: var(--ds-fs-12) !important; }
