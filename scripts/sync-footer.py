@@ -8,7 +8,7 @@ import glob, html, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CFG = json.load(open(os.path.join(ROOT, "scripts/footer.json"), encoding="utf-8"))
 FOOT = re.compile(r'([ \t]*)<footer class="site-footer">[\s\S]*?</footer>')
-SKIP = ("node_modules/", "vendor/", "templates/", "astro/")
+SKIP = ("node_modules/", "vendor/", "templates/", "astro/", "preview/")  # previews copy their live page's footer (build-design-preview.mjs)
 
 def link(item):
     name, href = item[0], item[1]

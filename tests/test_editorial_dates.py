@@ -52,6 +52,23 @@ class Dates(unittest.TestCase):
             enriched = enriched.replace('</article>',f'<!--{start}--><section>Generated changing content</section><!--{end}--></article>')
         self.assertEqual(API['signature'](ARTICLE),API['signature'](enriched))
 
+    def test_reading_toolbar_is_furniture_wherever_it_sits(self):
+        tools = '<!--rs:tools--><div class="rs-tools"><span class="rs-time">DISPATCH / About 4 min read</span><button>Share</button></div><!--/rs:tools-->'
+        relabelled = tools.replace('<button>Share</button>', '<a>Post on X</a><button>Copy link</button><button>Share…</button>').replace('4 min', '5 min')
+        top = ARTICLE.replace('<p class="meta">', tools + '<p class="meta">')
+        # A relabelled toolbar is not an edit (the 9 Nov 2026 relabel re-stamped 83 stories)
+        self.assertEqual(API['signature'](top), API['signature'](top.replace(tools, relabelled)))
+        # Nor is moving it below the lead image, as the redesign does
+        self.assertEqual(API['signature'](top), API['signature'](ARTICLE.replace('alt="A car">', 'alt="A car">' + tools)))
+        # Real text beside it still is
+        self.assertNotEqual(API['signature'](top), API['signature'](top.replace('Verified reporting', 'Corrected reporting')))
+
+    def test_relabelled_toolbar_does_not_restamp_history(self):
+        tools = '<!--rs:tools--><div class="rs-tools"><button>Share</button></div><!--/rs:tools-->'
+        self.commit(ARTICLE.replace('<p class="meta">', tools + '<p class="meta">'), PUBLISHED)
+        self.commit(ARTICLE.replace('<p class="meta">', tools.replace('Share', 'Post on X') + '<p class="meta">'), '2026-11-09T09:10:00Z', 'Reading tools: post on X')
+        self.assertEqual(self.date(), PUBLISHED)
+
     def test_unknown_or_uncommitted_history_has_no_invented_date(self):
         self.path.write_text(ARTICLE); self.assertIsNone(self.date())
         self.commit(ARTICLE,PUBLISHED); self.path.write_text(ARTICLE.replace('Verified','New'))

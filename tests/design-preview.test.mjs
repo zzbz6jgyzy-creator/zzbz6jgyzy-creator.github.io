@@ -436,6 +436,7 @@ test("previews stay out of robots, the sitemaps, search and live tooling", () =>
   assert.match(read("scripts/sync-nav.py"), /parts\[:1\]==\('preview',\): continue/);
   assert.match(read("scripts/inject-js-bundles.py"), /if rel\.startswith\("preview\/"\):\n\s+# Design preview[^\n]*\n\s+rel = rel\[len\("preview\/"\):\]/);
   assert.match(read("scripts/indexnow-ping.py"), /"scripts\/", "preview\/"/);
+  assert.match(read("scripts/sync-footer.py"), /^SKIP = \([^)]*"preview\/"/m, "the footer sync (run by build-articles.py on main) leaves previews alone");
   for (const wf of ["home-build.yml", "news-snapshot.yml", "starlink-refresh.yml"]) {
     assert.match(read(".github/workflows/" + wf), /\[ -d preview \] && git add -A -- preview \|\| true/, wf + " stages preview bundle updates");
   }
