@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "engine": "Supercharged Intelligence Engine",
-  "generatedAt": "2026-11-23T16:21:23.033Z",
+  "generatedAt": "2026-11-23T17:25:38.935Z",
   "facts": [
     {
       "id": "production:event:tesla-2026-asm",
@@ -287,6 +287,57 @@
   "changes": [
     {
       "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-pad-4e-32-hours.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
+      "at": "2026-11-23T17:12:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-pad-4e-32-hours.html",
+      "href": "/dispatch/spacex-pad-4e-32-hours.html",
+      "summary": "NROL-136 lifted off from Vandenberg's SLC-4E on Sunday, 32 hours after USSF-317, which SpaceX says is its fastest turnaround between launches from the same pad. USSF-266 is next from the same pad on Tuesday, on a booster making its 29th flight.",
+      "title": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
+      "id": "logged|dispatch:/dispatch/spacex-pad-4e-32-hours.html|2026-11-23T17:12:00.000Z|SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/tesla-starlink-every-model.html",
+      "topic": "robotaxi",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
+      "at": "2026-11-23T17:10:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/tesla-starlink-every-model.html",
+      "href": "/dispatch/tesla-starlink-every-model.html",
+      "summary": "Elon Musk said on Sunday that embedded Starlink across Tesla's lineup is \"hopefully\" coming toward the end of next year, except in China. Tesla's own Cybercab first-responder guide, dated 20 Nov, says Cybercabs built from November 2026 already carry it.",
+      "title": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
+      "id": "logged|dispatch:/dispatch/tesla-starlink-every-model.html|2026-11-23T17:10:00.000Z|Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid"
+    },
+    {
+      "type": "logged",
+      "factId": "dispatch:/dispatch/spacex-cochise-ag-delay.html",
+      "topic": "spacex-launches",
+      "tracker": "dispatch",
+      "field": "dispatch",
+      "previous": "",
+      "next": "Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote",
+      "at": "2026-11-23T17:08:00.000Z",
+      "evidence": "independently_corroborated",
+      "source": "Supercharged Daily Dispatch",
+      "sourceUrl": "/dispatch/spacex-cochise-ag-delay.html",
+      "href": "/dispatch/spacex-cochise-ag-delay.html",
+      "summary": "In a 19 Nov letter, Attorney General Kris Mayes asked the Cochise County Planning and Zoning Commission to delay its 9 Dec vote on SpaceX's special use permit SU26-22 until state and federal regulators have reviewed it. A town hall is set for 3 Dec.",
+      "title": "Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote",
+      "id": "logged|dispatch:/dispatch/spacex-cochise-ag-delay.html|2026-11-23T17:08:00.000Z|Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote"
+    },
+    {
+      "type": "logged",
       "factId": "dispatch:/dispatch/spacex-louisiana-coastal-permit.html",
       "topic": "spacex-launches",
       "tracker": "dispatch",
@@ -522,57 +573,6 @@
       "summary": "Cameron County commissioners voted 3–2 not to hold a hearing on a 10-year, 100% tax abatement for SpaceX's $24 billion Starbase compute plant. SpaceX warned of a revenue cliff. The 39% comparison is the author's estimate.",
       "title": "Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a \"revenue cliff\"",
       "id": "logged|dispatch:/dispatch/spacex-cameron-county-tax-abatement.html|2026-11-19T17:10:00.000Z|Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a \"revenue cliff\""
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-texas-register-passes-waymo.html",
-      "topic": "robotaxi",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov",
-      "at": "2026-11-18T17:26:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-texas-register-passes-waymo.html",
-      "href": "/dispatch/tesla-texas-register-passes-waymo.html",
-      "summary": "Texas DMV records now list 1,507 Tesla Robotaxi vehicles, 773 of them Cybercabs, against Waymo's 1,321. A single batch of 200 Cybercabs with 2027 model-year VINs did it. Registered isn't the same as carrying riders.",
-      "title": "200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov",
-      "id": "logged|dispatch:/dispatch/tesla-texas-register-passes-waymo.html|2026-11-18T17:26:00.000Z|200 Cybercabs in one batch put Tesla ahead of Waymo on Texas's robotaxi register, 1,507 to 1,321, as of 18 Nov"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/tesla-powercore-solid-state-transformer.html",
-      "topic": "tesla",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "Tesla's Powercore puts a transformer, breaker and inverter in one box. First units run in 2027",
-      "at": "2026-11-18T17:24:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/tesla-powercore-solid-state-transformer.html",
-      "href": "/dispatch/tesla-powercore-solid-state-transformer.html",
-      "summary": "Tesla Energy's Powercore is a solid-state medium-voltage unit rated 7.4 MW that replaces a battery site's or data center's separate transformer and inverter. Tesla says first units operate in 2027; there's no price, factory or customer yet.",
-      "title": "Tesla's Powercore puts a transformer, breaker and inverter in one box. First units run in 2027",
-      "id": "logged|dispatch:/dispatch/tesla-powercore-solid-state-transformer.html|2026-11-18T17:24:00.000Z|Tesla's Powercore puts a transformer, breaker and inverter in one box. First units run in 2027"
-    },
-    {
-      "type": "logged",
-      "factId": "dispatch:/dispatch/spacexsi-grok-bot-accounting-team.html",
-      "topic": "grok",
-      "tracker": "dispatch",
-      "field": "dispatch",
-      "previous": "",
-      "next": "SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person",
-      "at": "2026-11-18T17:22:00.000Z",
-      "evidence": "independently_corroborated",
-      "source": "Supercharged Daily Dispatch",
-      "sourceUrl": "/dispatch/spacexsi-grok-bot-accounting-team.html",
-      "href": "/dispatch/spacexsi-grok-bot-accounting-team.html",
-      "summary": "SpaceXSI says five Grok Bots now run its order-to-cash process, cutting invoice time from about 24 hours to minutes. Refunds and credits still need a person to sign off, and the time savings are SpaceXSI's own estimates.",
-      "title": "SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person",
-      "id": "logged|dispatch:/dispatch/spacexsi-grok-bot-accounting-team.html|2026-11-18T17:22:00.000Z|SpaceXSI gave five accounting jobs to Grok Bots. What each one does, and what still needs a person"
     },
     {
       "type": "changed",
@@ -2164,14 +2164,14 @@
     {
       "tracker": "starship",
       "href": "/starship.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-11-17T00:00:00.000Z",
       "note": "Sources: SpaceX, FAA. FAA dates are no-earlier-than windows, not SpaceX launch times."
     },
     {
       "tracker": "launches",
       "href": "/calendar.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-11-17T08:45:00.000Z",
       "note": "Sources: SpaceX, Launch Library 2."
     },
@@ -2185,14 +2185,14 @@
     {
       "tracker": "fsd",
       "href": "/fsd-europe.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-11-20T00:00:00.000Z",
       "note": "Sources: national ministries and regulators."
     },
     {
       "tracker": "robotaxi",
       "href": "/cybercab.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-11-23T16:21:19.000Z",
       "note": "Texas DMV count via fsddb.com."
     },
@@ -2206,35 +2206,35 @@
     {
       "tracker": "promises",
       "href": "/promise-tracker.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Every quote is sourced."
     },
     {
       "tracker": "production",
       "href": "/production.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-10-25T00:00:00.000Z",
       "note": "Source: Tesla investor relations."
     },
     {
       "tracker": "roadster",
       "href": "/roadster.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-11-14T00:00:00.000Z",
       "note": "Reveal is past. Production target remains a company claim."
     },
     {
       "tracker": "optimus",
       "href": "/optimus.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-10-19T00:00:00.000Z",
       "note": "Production targets are company claims."
     },
     {
       "tracker": "mytesla",
       "href": "/my-tesla.html",
-      "lastChecked": "2026-11-23T16:21:23.033Z",
+      "lastChecked": "2026-11-23T17:25:38.935Z",
       "lastVerified": "2026-11-23T10:55:03.000Z",
       "note": "Your car details stay in this browser."
     }
@@ -2243,85 +2243,85 @@
     {
       "name": "events",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.010Z",
-      "finished": "2026-11-23T16:21:23.016Z"
+      "started": "2026-11-23T17:25:38.913Z",
+      "finished": "2026-11-23T17:25:38.922Z"
     },
     {
       "name": "live",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.016Z",
-      "finished": "2026-11-23T16:21:23.016Z"
+      "started": "2026-11-23T17:25:38.922Z",
+      "finished": "2026-11-23T17:25:38.922Z"
     },
     {
       "name": "updates",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.016Z",
-      "finished": "2026-11-23T16:21:23.016Z"
+      "started": "2026-11-23T17:25:38.922Z",
+      "finished": "2026-11-23T17:25:38.922Z"
     },
     {
       "name": "updates-history",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.016Z",
-      "finished": "2026-11-23T16:21:23.025Z"
+      "started": "2026-11-23T17:25:38.922Z",
+      "finished": "2026-11-23T17:25:38.929Z"
     },
     {
       "name": "fsd-europe",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.025Z",
-      "finished": "2026-11-23T16:21:23.029Z"
+      "started": "2026-11-23T17:25:38.929Z",
+      "finished": "2026-11-23T17:25:38.932Z"
     },
     {
       "name": "promises",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.029Z",
-      "finished": "2026-11-23T16:21:23.029Z"
+      "started": "2026-11-23T17:25:38.932Z",
+      "finished": "2026-11-23T17:25:38.932Z"
     },
     {
       "name": "robotaxi-tx",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.029Z",
-      "finished": "2026-11-23T16:21:23.030Z"
+      "started": "2026-11-23T17:25:38.932Z",
+      "finished": "2026-11-23T17:25:38.933Z"
     },
     {
       "name": "starlink",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.030Z",
-      "finished": "2026-11-23T16:21:23.030Z"
+      "started": "2026-11-23T17:25:38.933Z",
+      "finished": "2026-11-23T17:25:38.933Z"
     },
     {
       "name": "starlink-history",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.030Z",
-      "finished": "2026-11-23T16:21:23.030Z"
+      "started": "2026-11-23T17:25:38.933Z",
+      "finished": "2026-11-23T17:25:38.933Z"
     },
     {
       "name": "starship",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.030Z",
-      "finished": "2026-11-23T16:21:23.032Z"
+      "started": "2026-11-23T17:25:38.933Z",
+      "finished": "2026-11-23T17:25:38.934Z"
     },
     {
       "name": "articles",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.032Z",
-      "finished": "2026-11-23T16:21:23.032Z"
+      "started": "2026-11-23T17:25:38.934Z",
+      "finished": "2026-11-23T17:25:38.935Z"
     },
     {
       "name": "production",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.032Z",
-      "finished": "2026-11-23T16:21:23.032Z"
+      "started": "2026-11-23T17:25:38.935Z",
+      "finished": "2026-11-23T17:25:38.935Z"
     },
     {
       "name": "optimus-demos",
       "status": "ok",
-      "started": "2026-11-23T16:21:23.032Z",
-      "finished": "2026-11-23T16:21:23.033Z"
+      "started": "2026-11-23T17:25:38.935Z",
+      "finished": "2026-11-23T17:25:38.935Z"
     }
   ],
   "health": {
     "ok": true,
-    "generatedAt": "2026-11-23T16:21:23.033Z",
+    "generatedAt": "2026-11-23T17:25:38.935Z",
     "factCount": 20,
     "changeCount": 108,
     "conflictCount": 2,

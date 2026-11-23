@@ -173,6 +173,15 @@
   },
   "stories": [
     {
+      "url": "/dispatch/tesla-starlink-every-model.html",
+      "image": "/assets/dispatch/cybercab-zurich-migl.jpg",
+      "title": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
+      "summary": "Elon Musk said on Sunday that embedded Starlink across Tesla's lineup is \"hopefully\" coming toward the end of next year, except in China. Tesla's own Cybercab first-responder guide, dated 20 Nov, says Cybercabs built from November 2026 already carry it.",
+      "tag": "Starlink",
+      "date": "2026-11-23T17:10:00Z",
+      "thumb": "/assets/dispatch/cybercab-zurich-migl-480w.webp"
+    },
+    {
       "url": "/dispatch/tesla-italy-assisted-driving-approval.html",
       "image": "/assets/dispatch/tesla-model-3-salcedo-vicenza.jpg",
       "title": "Italy approves Tesla Assisted Driving, the 12th EU country and the first big one. The EU math still doesn't add up",
@@ -216,16 +225,7 @@
       "tag": "Tesla / Energy",
       "date": "2026-11-18T17:24:00Z",
       "thumb": "/assets/dispatch/tesla-gigafactory-nevada-2019-480w.webp"
-    },
-    {
-      "url": "/dispatch/tesla-giga-berlin-cybercab-factory.html",
-      "image": "/assets/dispatch/giga-berlin-aerial-2023.jpg",
-      "title": "Tesla's €3 billion Berlin hall is sized for 1 million Cybercabs a year. EU rules allow 1,500",
-      "summary": "Tesla plans a new Cybercab building at Giga Berlin: about €3 billion, construction from early 2027, production in 2029, room for up to 1 million a year. It's a plan, and the EU still caps driverless cars at 1,500 per type a year.",
-      "tag": "Tesla / Cybercab",
-      "date": "2026-11-17T09:56:00Z",
-      "thumb": "/assets/dispatch/giga-berlin-aerial-2023-480w.webp"
     }
   ],
-  "articlesUpdated": "2026-11-23T14:35:00Z"
+  "articlesUpdated": "2026-11-23T17:12:00Z"
 }
