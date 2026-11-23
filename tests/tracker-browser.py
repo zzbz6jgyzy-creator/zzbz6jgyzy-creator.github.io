@@ -12,6 +12,9 @@ async def main():
         browser = await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH', '/usr/bin/chromium'), args=['--no-sandbox', '--disable-dev-shm-usage'])
         async def check(page_name, mode, width):
             context = await browser.new_context(viewport={'width': width, 'height': 844}, java_script_enabled=mode!='no-js')
+            if mode=='blocked':
+                # Cybercab only re-checks its JSON when the page came from the browser cache (transferSize 0); simulate that.
+                await context.add_init_script("(()=>{const get=performance.getEntriesByType.bind(performance);performance.getEntriesByType=t=>t==='navigation'?get(t).map(e=>new Proxy(e,{get:(o,k)=>k==='transferSize'?0:(typeof o[k]==='function'?o[k].bind(o):o[k])})):get(t)})()")
             page = await context.new_page()
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))

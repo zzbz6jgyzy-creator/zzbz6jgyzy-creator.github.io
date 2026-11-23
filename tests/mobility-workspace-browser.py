@@ -1,4 +1,5 @@
 import asyncio,json,mimetypes,pathlib,os
+from datetime import datetime,timedelta
 from urllib.parse import urlparse
 from playwright.async_api import async_playwright
 ROOT=pathlib.Path(__file__).resolve().parents[1];SNAPSHOT='/data/mobility-snapshot.json';
@@ -25,7 +26,7 @@ async def main():
     if width in [390,1440]:await page.screenshot(path=str(OUT/f'{view}-{width}-{theme}.png'),full_page=True)
    assert not errors,errors;assert not any(SNAPSHOT in u for u in reqs),'network page re-fetched its own data'
    print(json.dumps({'width':width,'theme':theme,'passed':True}));await ctx.close()
-  newer=json.loads((ROOT/SNAPSHOT.lstrip('/')).read_text());newer['registry']['checked']='2026-11-23T06:42:00Z'
+  newer=json.loads((ROOT/SNAPSHOT.lstrip('/')).read_text());newer['registry']['checked']=(datetime.fromisoformat(newer['registry']['checked'].replace('Z','+00:00'))+timedelta(minutes=1)).strftime('%Y-%m-%dT%H:%M:%SZ')
   for mode in ['newer','failed']:
    ctx=await browser.new_context(viewport={'width':390,'height':980},reduced_motion='reduce');await ctx.add_init_script(CACHED);page=await ctx.new_page();errors=[];reqs=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:reqs.append(r.url))
    async def cached(r):
@@ -33,7 +34,7 @@ async def main():
     if mode=='failed':return await r.abort()
     await r.fulfill(body=json.dumps(newer),content_type='application/json')
    await page.route('**/*',cached);await page.goto(SITE+'/cybercab.html');await page.locator('#mw-app[data-enhanced="true"]').wait_for(timeout=8000)
-   if mode=='newer':await page.wait_for_function("window.SDMobilityWorkspace.getSnapshot().registry.checked==='2026-11-23T06:42:00Z'");assert '2026-11-23T06:42:00Z' in await page.locator('#mobility-snapshot').text_content()
+   if mode=='newer':await page.wait_for_function("window.SDMobilityWorkspace.getSnapshot().registry.checked==='"+newer['registry']['checked']+"'");assert newer['registry']['checked'] in await page.locator('#mobility-snapshot').text_content()
    else:await page.locator('.mw-refresh-note').wait_for();assert 'Refresh unavailable' in await page.locator('.mw-refresh-note').inner_text()
    assert any(SNAPSHOT in u for u in reqs),(mode,'cached page did not re-check');assert not errors,errors;await ctx.close()
   ctx=await browser.new_context(viewport={'width':390,'height':980},reduced_motion='reduce',accept_downloads=True);page=await ctx.new_page();await ctx.add_init_script("Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window._copied=value}}})")
