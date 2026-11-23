@@ -334,6 +334,7 @@ test("committed previews are whole pages whose local files exist", () => {
     assert.ok(fs.existsSync(file), p.out + " is committed");
     const html = fs.readFileSync(file, "utf8");
     assert.ok(html.trimEnd().toLowerCase().endsWith("</html>"), p.out + " is cut off");
+    assert.ok(!/\n{3,}/.test(p.build()), p.out + " has blank-line runs inject-js-bundles.py would rewrite");
     assert.match(html, /<meta name="robots" content="noindex, nofollow" \/>/);
     const refs = new Set([...html.matchAll(/(?:src|href)=["'](\/[^"'?#\s]+?\.(?:js|css|mjs|ics))(?:[?#][^"']*)?["']/gi)].map((m) => m[1]));
     for (const m of html.matchAll(/(?:src|href|poster)=["'](\/assets\/[^"'?#\s]+)(?:[?#][^"']*)?["']/gi)) refs.add(m[1]);

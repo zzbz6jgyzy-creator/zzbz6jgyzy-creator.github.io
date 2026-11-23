@@ -121,7 +121,9 @@ export function previewHead(html, { live, section = "", preload = "", keepImageP
   if (section && !h.includes("/section-theme.css")) css.push(`<link rel="stylesheet" href="/section-theme.css?v=${sectionCssVersion(root)}" />`);
   css.push(`<link rel="stylesheet" href="/ds.css?v=${DS_CSS_V}" />`, `<link rel="stylesheet" href="/ds-preview.css?v=${DS_CSS_V}" />`);
   h = replaceOnce(h, "</head>", (preload ? "    " + preload + "\n" : "") + "    " + css.join("\n    ") + "\n  </head>");
-  return h;
+  // inject-js-bundles.py (run by the bots on every page, previews included) collapses blank-line runs the same way;
+  // matching it keeps the bots and the preview refresh from rewriting each other's output.
+  return h.replace(/\n{3,}/g, "\n\n");
 }
 
 /** Article records from data/articles.json, with picture sets only where the 480w files exist on disk. */
