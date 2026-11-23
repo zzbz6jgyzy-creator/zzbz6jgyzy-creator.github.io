@@ -29,7 +29,7 @@ def live_h1(rel):
 
 
 PAGES = [
-    {"path": "/preview/index.html", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},
+    {"path": "/", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},  # switched 23 Nov 2026
     {"path": "/preview/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
     {"path": "/preview/news.html", "h1": live_h1("news.html").rstrip("."), "kind": "list", "card": "#latest .ns-feature"},
 ] + [{"path": f"/preview/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES] + [

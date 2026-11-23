@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildHome, buildArticle, buildDispatchList, buildNews, buildTeslaHub, buildSpacexHub, buildGrokHub, buildFsdTracker, buildStarship, buildCybercab, buildCalendar, buildStarlink, buildProduction, ARTICLES, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildArticle, buildDispatchList, buildNews, buildTeslaHub, buildSpacexHub, buildGrokHub, buildFsdTracker, buildStarship, buildCybercab, buildCalendar, buildStarlink, buildProduction, ARTICLES, articles, PAGES } from "../scripts/build-design-preview.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -132,21 +132,11 @@ test("articles keep a picture set only when its 480w files exist", () => {
   }
 });
 
-// ---- Homepage preview ---------------------------------------------------------------------------
-const home = buildHome();
+// ---- Homepage (switched to the news-first layout on 23 Nov 2026; its preview retired) ------------------------
+const home = read("index.html");
 const main = home.match(/<main\b[\s\S]*?<\/main>/)[0];
 
-test("homepage preview is hidden from search and points to the live page", () => {
-  assert.match(home, /<meta name="robots" content="noindex, nofollow" \/>/);
-  assert.equal((home.match(/<meta name="robots"/g) || []).length, 1);
-  assert.match(home, /<link rel="canonical" href="https:\/\/superchargeddaily\.com\/" \/>/);
-  assert.match(home, /<link rel="stylesheet" href="\/ds\.css\?v=[^"]+" \/>/);
-  assert.match(home, /<link rel="stylesheet" href="\/ds-preview\.css\?v=[^"]+" \/>/);
-  assert.match(main, /class="ds-preview-flag"/);
-  assert.equal(buildHome(), home, "the build is deterministic");
-});
-
-test("homepage preview leads with the top story and a latest list, with plain labels", () => {
+test("the homepage leads with the top story and a latest list, with plain labels", () => {
   assert.equal((home.match(/<h1[ >]/g) || []).length, 1);
   assert.match(main, /<h1>Tesla, SpaceX and xAI news<\/h1>/);
   for (const slogan of ["Go beyond the headline", "The story. And the bigger picture.", "Less scrolling", "More discovering", "Your interests", "Launches. Livestreams. Lift-off.", "Your window to the constellation"]) {
@@ -164,23 +154,25 @@ test("homepage preview leads with the top story and a latest list, with plain la
   assert.equal(urls.length, 7);
   assert.equal(new Set([leadHref, ...urls]).size, 8, "no story repeats between the lead and the latest list");
   const tools = one(main, /<ol class="ds-story-list" id="ds-tools"/);
-  assert.equal((tools.match(/<li>/g) || []).length, HOME_TOOLS.length);
-  for (const t of HOME_TOOLS) assert.ok(fs.existsSync(path.join(ROOT, t.url.slice(1))), t.url);
+  const toolUrls = [...tools.matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+  assert.equal(toolUrls.length, 11);
+  for (const u of toolUrls) assert.ok(fs.existsSync(path.join(ROOT, u.slice(1))), u);
 });
 
-test("homepage preview keeps every hook home-v2.js, home-studio.js and the bots use", () => {
+test("the homepage keeps every hook home-v2.js, home-studio.js and the bots use", () => {
   for (const hook of ["data-hv-lead", "data-hv-h", "data-hv-p", "data-hv-tag", "data-hv-img", "data-hv-supp", "data-hv-trk", "data-hv-cd", "data-hv-feed", 'id="newsletter"', 'id="hs-hero-email"', "data-newsletter-form", "data-live-slot"]) {
     assert.equal((main.match(new RegExp(hook.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g")) || []).length >= 1, true, hook);
   }
-  for (const marker of ["hv:lead", "hv:supp", "hv:trk", "hv:event", "hv:changed", "hv:feed", "hv:band", "hv:feature"]) {
+  for (const marker of ["hv:mast", "hv:lead", "hv:latest", "hv:supp", "hv:trk", "hv:event", "hv:changed", "hv:feed", "hv:band", "hv:feature", "hv:slasof"]) {
     assert.equal((main.match(new RegExp(`<!--${marker}-->`, "g")) || []).length, 1, marker);
     assert.equal((main.match(new RegExp(`<!--/${marker}-->`, "g")) || []).length, 1, "/" + marker);
   }
   assert.match(main, /<div class="hv-supp" data-hv-supp hidden>/, "the old supporting cards stay hidden for the script");
   const leadImg = one(main, /<div class="hv-lead-media"/).match(/<img\b[^>]*>/)[0];
   assert.ok(!/loading="lazy"/.test(leadImg) && /fetchpriority="high"/.test(leadImg), "the lead image loads first");
-  assert.match(home, /<link rel="preload" as="image" type="image\/avif" imagesrcset="[^"]+" imagesizes="[^"]+" fetchpriority="high" \/>/);
-  assert.ok(!home.includes("<!--hv:preload-->"), "the old hero preload is gone");
+  const preload = between(home, "<!--hv:preload-->", "<!--/hv:preload-->");
+  const leadSrcset = one(main, /<div class="hv-lead-media"/).match(/<source type="image\/avif" srcset="([^"]+)"/)[1];
+  assert.ok(preload.includes(`imagesrcset="${leadSrcset}"`) && /fetchpriority="high"/.test(preload), "the preload is the lead image");
 });
 
 // ---- Committed previews and exclusions --------------------------------------------------------------

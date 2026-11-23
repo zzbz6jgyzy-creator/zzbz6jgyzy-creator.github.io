@@ -188,98 +188,6 @@ function promoteFirstImage(page, cardRe, sizes) {
 // ---- Pages ----
 
 /** Homepage trackers and tools, by plain name. Every URL is a live page linked from the nav or the old tool cards. */
-export const HOME_TOOLS = [
-  { url: "/starlink.html", topic: "spacex", tag: "SpaceX", title: "Starlink tracker", meta: "Satellites in orbit, and identify one overhead" },
-  { url: "/starship.html", topic: "spacex", tag: "SpaceX", title: "Starship flights", meta: "Every flight so far and the next one" },
-  { url: "/see-the-launch.html", topic: "spacex", tag: "SpaceX", title: "Can I see the launch?", meta: "Where to look from where you are" },
-  { url: "/updates.html", topic: "tesla", tag: "Tesla", title: "Software updates", meta: "Release notes and reported rollouts" },
-  { url: "/fsd-tracker.html", topic: "tesla", tag: "Tesla", title: "FSD tracker", meta: "Subscriptions, miles, builds and safety claims" },
-  { url: "/fsd-europe.html", topic: "tesla", tag: "Tesla", title: "FSD in Europe", meta: "Approvals and availability, country by country" },
-  { url: "/cybercab.html", topic: "tesla", tag: "Tesla", title: "Cybercab fleet", meta: "Registrations, cities and evidence" },
-  { url: "/promise-tracker.html", topic: "tesla", tag: "Tesla", title: "Promise tracker", meta: "What was promised and what happened" },
-  { url: "/my-tesla.html", topic: "tesla", tag: "Tesla", title: "My Tesla", meta: "Your car's software and running costs" },
-  { url: "/grok.html", topic: "xai", tag: "xAI", title: "Grok guide", meta: "Models, plans and what's new" },
-  { url: "/explainers.html", topic: "", tag: "Explainers", title: "Visual explainers", meta: "FSD, hot staging, booster catches and more" },
-];
-
-/** Homepage: lead story, then the latest list, then live numbers, newsletter, trackers, launches and the wire. */
-export function buildHome(root = ROOT) {
-  const live = read("index.html", root);
-  assertRootRelative(live, "index.html");
-  const mainOpen = '<main id="main" class="hv hs-home">';
-  const main = one(live, /<main id="main" class="hv hs-home">/, "homepage <main>");
-
-  const part = (re, label) => one(main, re, label);
-  const liveTop = part(/<div class="hv-live-top"/, "live slot");
-  const feature = between(main, "<!--hv:feature-->", "<!--/hv:feature-->");
-  const updated = part(/<p class="hv-updated"/, "updated line");
-  let lead = part(/<div class="pv-lead"/, "lead story");
-  const supp = part(/<div class="hv-supp" data-hv-supp/, "supporting stories");
-  const event = part(/<div class="hv-live hv-event"/, "next-event card");
-  const signup = part(/<div class="hs-hero-signup"/, "newsletter form");
-  let tools = part(/<section class="hs-tools hs-section"/, "trackers and tools");
-  const band = part(/<div data-band-slot/, "newsletter band slot");
-  const wire = part(/<div class="hs-latest-grid hs-section"/, "what changed and wire");
-  let calendar = part(/<section class="hs-calendar"/, "launch calendar");
-
-  // Tracker numbers move out of the tools section into their own band, right under the stories.
-  const snapshot = one(tools, /<div class="hs-snapshot"/, "tracker snapshot");
-  tools = replaceOnce(tools, snapshot, "");
-  const trkRow = one(snapshot, /<div class="hv-trk-row" data-hv-trk/, "tracker row");
-  // Plain tracker names replace the slogan cards ("Your window to the constellation."); home-studio.js skips filters when the grid is absent.
-  const toolsHead = one(tools, /<header class="hs-section-head"/, "tools heading");
-  const toolsBody = tools.slice(tools.indexOf(toolsHead) + toolsHead.length, tools.lastIndexOf("</section>"));
-  tools = replaceOnce(tools, toolsHead + toolsBody, DS.sectionHead({ id: "hv-trk-h", title: "Trackers and tools" }) + DS.storyList(HOME_TOOLS, { thumbs: false, label: "Trackers and tools", id: "ds-tools" }));
-  calendar = replaceOnce(calendar, one(calendar, /<div>/, "calendar heading"), DS.sectionHead({ id: "ds-launch-h", title: "Upcoming launches", href: "/calendar.html", linkText: "Calendar" }));
-  calendar = calendar.replace('<section class="hs-calendar"', '<section class="hs-calendar" aria-labelledby="ds-launch-h"');
-
-  // The lead image is the first thing on a phone: load it eagerly at high priority.
-  const leadPicture = (lead.match(/<picture>[\s\S]*?<\/picture>/) || [""])[0];
-  lead = lead.replace(/(<div class="hv-lead-media">[\s\S]*?<img\b[^>]*?)\sloading="lazy"/, '$1 loading="eager" fetchpriority="high"');
-  const leadHref = (lead.match(/<a class="hv-lead" href="([^"]+)"/) || [])[1];
-  if (!leadHref) throw new Error("Lead story link not found");
-
-  const latest = DS.storyList(articles(root), { limit: 7, exclude: [leadHref], label: "Latest stories" });
-  // home-v2.js still repaints the three supporting cards; they stay in the page, hidden, so the script keeps working.
-  const suppHidden = supp.replace('<div class="hv-supp" data-hv-supp', '<div class="hv-supp" data-hv-supp hidden');
-
-  const body = [
-    mainOpen.replace('class="hv hs-home"', 'class="hv hs-home ds-page ds-home"'),
-    '<div class="pn-spacer"></div>',
-    liveTop,
-    feature,
-    DS.masthead({ small: true, title: "Tesla, SpaceX and xAI news", className: "ds-home-mast", extraHtml: updated }),
-    '<section class="ds-home-top" id="latest-stories" aria-labelledby="ds-top-h">',
-    '<h2 id="ds-top-h" class="visually-hidden">Top story</h2>',
-    lead,
-    '<div class="ds-home-latest">',
-    DS.sectionHead({ id: "ds-latest-h", title: "Latest", href: "/dispatch.html", linkText: "All stories" }),
-    latest,
-    suppHidden,
-    "</div>",
-    // Tracker numbers (dated snapshots) sit under the lead on desktop and after the latest list on phones (grid areas in ds-preview.css).
-    '<section class="ds-home-numbers" aria-labelledby="ds-numbers-h">',
-    DS.sectionHead({ id: "ds-numbers-h", title: "From the trackers" }),
-    trkRow,
-    event,
-    "</section>",
-    "</section>",
-    '<section class="ds-section ds-home-signup" aria-label="The Sunday briefing">',
-    signup,
-    "</section>",
-    tools,
-    calendar,
-    wire,
-    band,
-    DS.previewFlag("/"),
-    "</main>",
-  ].join("\n");
-
-  let page = replaceOnce(live, main, body);
-  page = previewHead(page, { live: "/", preload: preloadFor(leadPicture, "(max-width: 760px) 100vw, 640px"), root });
-  return page;
-}
-
 /** Header furniture an article opens with, before its first piece of content. */
 const ARTICLE_HEADER = new Set(["eyebrow", "standfirst", "meta", "sd-disclosure", "sd-updated"]);
 
@@ -668,7 +576,6 @@ export function buildProduction(root = ROOT) {
 export const ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"];
 
 export const PAGES = [
-  { out: "preview/index.html", build: buildHome },
   { out: "preview/dispatch.html", build: buildDispatchList },
   { out: "preview/news.html", build: buildNews },
   { out: "preview/tesla.html", build: buildTeslaHub },
