@@ -7,6 +7,18 @@ class Document(HTMLParser):
  def handle_starttag(self,t,a):self.tags.append((t,dict(a)))
 class Home(unittest.TestCase):
  def setUp(self):self.source=(ROOT/'index.html').read_text();self.doc=Document(self.source)
+ def test_home_feed_matches_the_cards_pins_and_stories_it_is_built_from(self):
+  # data/home-latest.json drives the browser repaint of the lead and the headline pairing; pins expire only through it.
+  import json
+  feed=json.loads((ROOT/'data/home-latest.json').read_text());arts=json.loads((ROOT/'data/articles.json').read_text())['articles']
+  strip=lambda h:re.sub(r'\s+',' ',re.sub(r'<[^>]+>','',h)).strip();hrefs=[]
+  for m in re.finditer(r'<a class="story-card[^"]*" href="(/dispatch/[^"]+)">([\s\S]*?)</a>',(ROOT/'dispatch.html').read_text()):
+   h=re.search(r'<h[23]>([\s\S]*?)</h[23]>',m.group(2))
+   if h and strip(h.group(1)) and m.group(1) not in hrefs:hrefs.append(m.group(1))
+  self.assertEqual([c['href']for c in feed['cards']],hrefs[:8],'The newest 8 Dispatch cards, in page order')
+  for c in feed['cards']:self.assertTrue(c['h'].strip() and c['tag'].strip(),c['href'])
+  self.assertEqual([(x['href'],x['pinUntil'])for x in feed['pins']],[(a['url'],a.get('pinUntil')or'')for a in arts if a.get('pinned')],'Every pinned story keeps its expiry')
+  self.assertEqual(feed['stories'],[{'url':a['url'],'title':a.get('title')or'','tag':a.get('tag')or'','date':a.get('date')or''}for a in arts],'home-pair.js sees every story')
  def test_one_heading_and_unique_native_destinations(self):
   self.assertEqual(sum(t=='h1'for t,a in self.doc.tags),1)
   ids=[a['id']for t,a in self.doc.tags if'id'in a];self.assertEqual(len(ids),len(set(ids)))

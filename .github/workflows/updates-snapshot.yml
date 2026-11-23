@@ -38,7 +38,7 @@ jobs:
           git add updates-live.json
           node scripts/sd-intel.js || true
           node scripts/build-home.js --trackers-only || true
-          git add data/intelligence index.html
+          git add data/intelligence index.html data/home-latest.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh Tesla software update snapshot."
             python3 scripts/build-updates-history.py data/updates-history.json

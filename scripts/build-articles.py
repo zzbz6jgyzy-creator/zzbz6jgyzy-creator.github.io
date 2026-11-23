@@ -193,6 +193,25 @@ TOPIC_PAGE = {"tesla": ("Tesla", "/tesla.html"), "spacex": ("SpaceX", "/spacex.h
 def subjects(a):
     t = (a.get("title", "") + " " + a.get("tag", "") + " " + a["url"].replace("-", " ")).lower()
     return [i for i, (rx, _, _) in enumerate(SUBJECTS) if re.search(rx, t)]
+# Measured card widths: 96px up to 720px wide, then a third of the column, (100vw - 172px) / 3, up to 326px.
+RELATED_SIZES = "(max-width:720px) 96px, (max-width:1148px) calc(33.33vw - 57px), 326px"
+
+def related_thumb(o):
+    """The story's 480w AVIF/WebP, plus 960w for high-density screens, when they exist; else its original image."""
+    img = o.get("image")
+    if not img:
+        return ""
+    base = os.path.splitext(img)[0]
+    tag = f'<img src="{html.escape(img)}" alt="" loading="lazy" decoding="async" width="320" height="180" />'
+    widths = [w for w in (480, 960)
+              if all(os.path.exists(os.path.join(ROOT, f"{base}-{w}w.{ext}".lstrip("/"))) for ext in ("avif", "webp"))]
+    if 480 not in widths:
+        return tag
+    def source(ext):
+        srcset = ", ".join(f"{base}-{w}w.{ext} {w}w" for w in widths)
+        return f'<source type="image/{ext}" srcset="{html.escape(srcset)}" sizes="{RELATED_SIZES}" />'
+    return f'<picture>{source("avif")}{source("webp")}{tag}</picture>'
+
 def related_stories():
     arts = json.load(open(OUT, encoding="utf-8")).get("articles", [])
     by = {a["url"]: a for a in arts}
@@ -218,7 +237,7 @@ def related_stories():
         if ms: _, lab, link = SUBJECTS[min(ms)]
         cards = "".join(
             f'<a class="rel-card" href="{html.escape(o["url"])}">'
-            + (f'<img src="{html.escape(o["image"])}" alt="" loading="lazy" width="320" height="180" />' if o.get("image") else "")
+            + related_thumb(o)
             + f'<span class="rel-tag">{html.escape(o.get("tag") or "Dispatch")}</span><span class="rel-h">{html.escape(o["title"], quote=False)}</span></a>' for o in cands)
         places = [SUBJECTS[i] for i in sorted(ms) if "/fsd-europe/" in SUBJECTS[i][2] or "/cybercab-cities/" in SUBJECTS[i][2]]
         place_html = ""

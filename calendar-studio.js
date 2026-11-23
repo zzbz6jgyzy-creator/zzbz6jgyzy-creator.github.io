@@ -207,7 +207,11 @@
   });
   const deep = new URL(location.href).searchParams.get("event");
   if (deep) open(deep);
-  fetch("/data/calendar-studio.json", { signal: AbortSignal.timeout(8e3) }).then((r) => {
+  // calendar.html and data/calendar-studio.json are built and deployed together, so a page that
+  // arrived over the network already holds the newest snapshot. Only a copy kept in the browser
+  // cache can be behind, so re-check that one (transferSize is 0 for it, and missing in old browsers).
+  const page = performance.getEntriesByType?.("navigation")[0];
+  if (!(page && page.transferSize > 0)) fetch("/data/calendar-studio.json", { cache: "no-cache", signal: AbortSignal.timeout(8e3) }).then((r) => {
     if (!r.ok) throw Error("Snapshot unavailable");
     return r.json();
   }).then((next) => {

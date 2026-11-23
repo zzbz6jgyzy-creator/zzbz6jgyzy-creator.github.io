@@ -1,3 +1,10 @@
+## 23 Nov 2026 — Redesign step 4: switch prep (no visual change)
+
+- Homepage (live): reads a 40 KB feed built with the page (`data/home-latest.json`, 11 KB gzipped) instead of downloading all of `dispatch.html` and `data/articles.json` (397 KB) on every visit.
+- Articles (live): the three related-story thumbnails use the existing 480w AVIF/WebP files instead of full JPGs, about 39 KB per article instead of about 1 MB. No Updated dates move.
+- Calendar and Cybercab (live): a page that came over the network no longer downloads its own data a second time (7 KB and 15 KB gzipped). A copy restored from the browser cache still re-checks for newer data.
+- Guards for the switch: the 13 slogan "h1" overrides are gone from `scripts/seo-titles.json` (no page changes today); the Starship builder stops if a masthead span it updates is missing or doubled; new `scripts/rebuild-all.sh` regenerates every generated page offline, in pipeline order, for merge conflicts with the bots.
+
 ## 23 Nov 2026 — Redesign step 3: corrected "Updated" dates
 
 - Editorial dates: the reading toolbar is now page furniture for `scripts/editorial-dates.py`. Relabelling its buttons on 9 Nov 2026 had re-stamped 83 of 166 stories "Updated 9 Nov 2026" without any change to their reporting (editorial rule 6). After this merges, home-build corrects them: 47 lose the Updated line, 36 show their last real edit. Every page and date is listed in `docs/updated-dates-correction-2026-11.md`.

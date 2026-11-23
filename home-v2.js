@@ -1,3 +1,12 @@
+// One request per data file, shared by everything on the homepage that reads it.
+const sdJSON = (() => {
+  const seen = new Map();
+  return (url) => {
+    if (!seen.has(url)) seen.set(url, fetch(url, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : Promise.reject(new Error(url + " " + r.status)))));
+    return seen.get(url);
+  };
+})();
+
 (() => {
   const $ = (s) => document.querySelector(s);
   const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -8,35 +17,26 @@
   const fmtDay = (d, o) => new Intl.DateTimeFormat(undefined, o || { day: "numeric", month: "short" }).format(d);
   const t = $("[data-hv-today]"); if (t) t.textContent = fmtDay(new Date(), { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
-  // Lead + supporting stories: newest cards on /dispatch.html (newest first), so new Dispatch posts show up automatically
-  const pinP = fetch("/data/articles.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  Promise.all([fetch("/dispatch.html", { cache: "no-cache" }).then((r) => r.text()), pinP]).then(([html, aj]) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    const cards = [...doc.querySelectorAll("a.story-card[href^='/dispatch/']")].map((a) => {
-      const v = a.querySelector("video"), i = a.querySelector("img");
-      return {
-        href: a.getAttribute("href"),
-        img: (v && (v.getAttribute("poster") || v.getAttribute("data-poster"))) || (i && i.getAttribute("src")) || "",
-        tag: (a.querySelector(".tag") || {}).textContent || "Dispatch",
-        h: (a.querySelector("h2, h3") || {}).textContent || "",
-        p: (a.querySelector(".story-copy p") || {}).textContent || "",
-      };
-    }).filter((c, k, arr) => c.h && arr.findIndex((x) => x.href === c.href) === k);
+  // Lead + supporting stories: data/home-latest.json, written by build-home.js with this page from the newest Dispatch
+  // cards plus any pinned story. The page already shows them; repainting matters when a pin has expired since the last
+  // build, or when this copy of the page came from the browser cache.
+  sdJSON("/data/home-latest.json").then((feed) => {
+    const cards = (feed.cards || []).filter((c, k, arr) => c.h && arr.findIndex((x) => x.href === c.href) === k).map((c) => ({ ...c }));
     // Pinned lead (data/articles.json pinned + pinUntil) beats the newest card until it expires
-    const pin = aj && (aj.articles || []).find((a) => a.pinned && (!a.pinUntil || Date.parse(a.pinUntil) > Date.now()));
+    const pin = (feed.pins || []).find((p) => !p.pinUntil || Date.parse(p.pinUntil) > Date.now());
     if (pin) {
-      const i = cards.findIndex((c) => c.href === pin.url);
-      cards.unshift(i >= 0 ? cards.splice(i, 1)[0] : { href: pin.url, img: pin.image || "", tag: pin.tag || "Dispatch", h: pin.title, p: pin.summary || "" });
+      const i = cards.findIndex((c) => c.href === pin.href);
+      cards.unshift(i >= 0 ? cards.splice(i, 1)[0] : { ...pin });
     }
     if (!cards.length) return;
     const L = cards[0], el = $("[data-hv-lead]");
     // Homepage-only copy is editorially chosen; full story titles stay intact elsewhere.
-    const homeArticle = aj && (aj.articles || []).find((a) => a.url === L.href);
-    const homeCopy = (key, fallback) => homeArticle && typeof homeArticle[key] === "string" && homeArticle[key].trim() ? homeArticle[key].trim() : fallback.trim();
+    const homeCopy = (key, fallback) => (typeof L[key] === "string" && L[key].trim() ? L[key].trim() : String(fallback || "").trim());
     const leadH = homeCopy("homeTitle", L.h), leadP = homeCopy("homeSummary", L.p);
     // The page is pre-rendered from the same data every ~30 minutes; only touch the DOM when the stories actually changed, so the swap never causes layout shift.
     const sameLead = el.getAttribute("href") === L.href && ($("[data-hv-h]").textContent || "").trim() === leadH && ($("[data-hv-p]").textContent || "").trim() === leadP;
-    if (!sameLead) { el.href = L.href; $("[data-hv-tag]").textContent = L.tag.trim(); $("[data-hv-h]").textContent = leadH; $("[data-hv-p]").textContent = leadP; }
+    // Work out every value before touching the DOM, so a malformed card cannot leave a half-updated lead.
+    if (!sameLead) { const leadTag = String(L.tag || "Dispatch").trim(); el.href = L.href; $("[data-hv-tag]").textContent = leadTag; $("[data-hv-h]").textContent = leadH; $("[data-hv-p]").textContent = leadP; }
     // Lead image: card image, else the article's og:image / first image, else a licensed site image from another card
     const img = $("[data-hv-img]");
     const fallback = (cards.find((c) => c.img) || {}).img || "/assets/dispatch/cybercab-austin-poster.jpg";
@@ -87,7 +87,7 @@
     paint();
   }).catch(() => {});
   // Shared dates (/data/events.json) override the starship-data.js fallback
-  const evReady = fetch("/data/events.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((j) => {
+  const evReady = sdJSON("/data/events.json").catch(() => null).then((j) => {
     const ev = j && j.events && j.events["starship-flight-" + (S && S.next ? S.next.flight : "")];
     if (ev && S && S.next && (ev.start || ev.date)) {
       S.next.start = ev.start || (ev.date + "T00:00:00Z");
@@ -108,9 +108,9 @@
 
   // Headlines feed — keep the off-site wire, add an on-site Dispatch or tracker jump
   Promise.all([
-    fetch("/news-data.json", { cache: "no-cache" }).then((r) => r.json()),
-    pinP,
-  ]).then(([d, aj]) => {
+    sdJSON("/news-data.json"),
+    sdJSON("/data/home-latest.json").catch(() => null),
+  ]).then(([d, feed]) => {
     const seen = new Set();
     const raw = (d.items || []).filter((it) => { const k = (it.title || "").toLowerCase(); if (!k || seen.has(k)) return false; seen.add(k); return /^https:\/\//.test(it.url || ""); });
     const keep = window.SDNewsKeep;
@@ -118,7 +118,7 @@
     const ago = (s) => { const m = Math.round((Date.now() - new Date(s)) / 6e4); return m < 60 ? m + "m" : m < 1440 ? Math.round(m / 60) + "h" : Math.round(m / 1440) + "d"; };
     const pairer = window.SDHomePair;
     const used = new Set();
-    const arts = (aj && aj.articles) || [];
+    const arts = (feed && feed.stories) || [];
     $("[data-hv-feed]").innerHTML = items.map((it) => {
       const meta = `${it.source || ""} · ${ago(it.published)}`.replace(/^ · /, "");
       if (!pairer) {
@@ -139,7 +139,7 @@
     }).join("") || '<p class="hv-c-none">No dated events right now.</p>';
   };
   evReady.then(() => { if (S && S.next && !S.next.inFlight && S.next.start && (S.next.precision === "day" || S.next.precision === "datetime")) rows.push({ title: "Starship Flight " + S.next.flight, t: new Date(S.next.start).getTime(), start: S.next.start, day: S.next.precision === "day", href: "/starship.html" });
-  fetch("/live-data.json", { cache: "no-cache" }).then((r) => r.json()).then((d) => {
+  sdJSON("/live-data.json").then((d) => {
     const norm = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
     (d.events || []).forEach((e) => {
       if (e.status === "ended" || !e.start) return;
@@ -173,8 +173,8 @@
   const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const qs = new URLSearchParams(location.search);
   Promise.all([
-    fetch("/data/events.json", { cache: "no-cache" }).then((r) => r.json()),
-    fetch(qs.get("livedata") || "/live-data.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
+    sdJSON("/data/events.json"),
+    sdJSON(qs.get("livedata") || "/live-data.json").catch(() => ({})),
   ]).then(([j, ld]) => {
     const live = {}; (ld.events || []).forEach((e) => { live[e.id] = e; });
     const list = Object.entries(j.events || {}).filter(([, e]) => e.major).map(([id, e]) => {
