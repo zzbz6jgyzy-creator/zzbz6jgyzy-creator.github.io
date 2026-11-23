@@ -31,7 +31,7 @@ see `docs/decisions.md`).
 ## Page types (news first)
 - **Homepage:** lead story, then "Latest" (7, no repeats), live numbers, the Sunday briefing, trackers and tools by plain name, upcoming launches, what changed and the wire. h1 is the small line "Tesla, SpaceX and xAI news"; the tagline "Go beyond the headline." moves to the footer brand line at the switch (the preview does not show it yet).
 - **Dispatch list and news.html:** compact masthead, one chip row and search, then the first card.
-- **Articles:** compacted with CSS only. The article DOM order is editorial (`scripts/editorial-dates.py`), so nothing moves in the HTML.
+- **Articles:** eyebrow, headline, standfirst, byline, disclosure (finance pieces) and the lead photo or video sit together at the top; the reading tools (`rs:tools`) and "On this page" (`sd:article-wayfinding`) follow the lead figure, or sit just before the first paragraph when there is none. Header, tools and text share one reading column (`--ds-measure`, 44rem); photos, tables and boxes break out to the full article width. Only those two furniture blocks move: `scripts/editorial-dates.py` already strips the wayfinding block and strips `rs:tools` once step 3 adds it to `BLOCKS`, so the move never re-stamps "Updated" dates. At the switch `build-article-reader.py` and `build-wayfinding.py` take the same insertion point (step 3 lands first).
 - **Hubs:** plain title, key numbers, slim photo band, then the hub's existing story list.
 - **Trackers:** plain title, dek, updated/source and the tracker's own key numbers, then the tool. No full-screen heroes.
 - **Plain h1s, not slogans.** Showcases (Roadster, Model 3, Cybertruck, Cybercab guide) keep their cinematic stage under the masthead.

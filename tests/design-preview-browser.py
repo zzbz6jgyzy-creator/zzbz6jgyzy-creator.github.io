@@ -4,9 +4,11 @@ For each preview page, at 320/390/768/1440 in light and dark: no sideways scroll
 errors, and layout shift under 0.1. At 390x844 the news-first targets from the approved plan:
   homepage: the lead headline sits fully in the first screen, at least 5 headlines start within 1.5 screens, and no
   story repeats between the lead and the latest list; the scripts still fill the live numbers and the launch list.
+  articles: the lead photo or video (or the first paragraph when there is none) starts above 700px, with the
+  headline, standfirst and byline above it; the h1 is the live article's own.
 Run: python3 tests/design-preview-browser.py   (CHROMIUM_PATH may point at Chrome or Chromium)
 """
-import asyncio, os, pathlib, shutil, socket, subprocess, sys, time
+import asyncio, html, os, pathlib, re, shutil, socket, subprocess, sys, time
 from playwright.async_api import async_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -14,9 +16,17 @@ SHOTS = pathlib.Path(os.environ.get("PREVIEW_SHOTS", "/tmp/design-preview"))
 CLS_JS = "() => window.__cls || 0"
 INIT = """window.__cls=0;try{new PerformanceObserver(l=>{for(const e of l.getEntries()){if(!e.hadRecentInput)window.__cls+=e.value}}).observe({type:'layout-shift',buffered:true})}catch(e){}"""
 
+ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"]
+
+
+def live_h1(rel):
+    m = re.search(r"<h1\b[^>]*>(.*?)</h1>", (ROOT / rel).read_text(), re.S)
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).split())
+
+
 PAGES = [
     {"path": "/preview/index.html", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},
-]
+] + [{"path": f"/preview/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES]
 
 
 def free_port():
@@ -45,6 +55,19 @@ async def check_home(page, tag):
     assert r["cd"] >= 1, (tag, "launch list is empty")
 
 
+async def check_article(page, tag):
+    r = await page.evaluate("""() => {
+      const art = document.querySelector('.rs-article');
+      const furniture = '.eyebrow,h1,.standfirst,.meta,.sd-disclosure,.sd-updated,.rs-tools,.sd-article-tools';
+      const first = [...art.children].find(e => !e.matches(furniture) && e.getBoundingClientRect().height > 0);
+      const top = (el) => Math.round(el.getBoundingClientRect().top + scrollY);
+      return { first: first.tagName + '.' + first.className, top: top(first), byline: top(art.querySelector('.meta')),
+               tools: top(art.querySelector('.rs-tools')) };
+    }""")
+    assert r["top"] < 700, (tag, "the lead photo or first paragraph starts too low", r)
+    assert r["byline"] < r["top"], (tag, "the byline should sit above the lead", r)
+
+
 async def main():
     SHOTS.mkdir(parents=True, exist_ok=True)
     port = free_port()
@@ -71,13 +94,15 @@ async def main():
                             await page.wait_for_timeout(1500)
                             sx = await page.evaluate("document.documentElement.scrollWidth - innerWidth")
                             assert sx <= 1, (tag, "sideways scroll", sx)
-                            h1 = await page.evaluate("[...document.querySelectorAll('h1')].map(x => x.textContent.trim())")
+                            h1 = await page.evaluate("[...document.querySelectorAll('h1')].map(x => x.textContent.replace(/\\s+/g, ' ').trim())")
                             assert h1 == [spec["h1"]], (tag, "h1", h1)
                             assert not errors, (tag, "page errors", errors)
                             cls = await page.evaluate(CLS_JS)
                             assert cls < 0.1, (tag, "layout shift", cls)
                             if w == 390 and spec["kind"] == "home":
                                 await check_home(page, tag)
+                            if w == 390 and spec["kind"] == "article":
+                                await check_article(page, tag)
                             if w in (390, 1440):
                                 await page.screenshot(path=str(SHOTS / f"{spec['path'].strip('/').replace('/', '_')}-{w}-{scheme}.png"), full_page=True)
                             print("PASS", tag)

@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const DS = require("../ds-components.js");
 const SITE = "https://superchargeddaily.com";
-export const DS_CSS_V = "20261122d"; // bump when ds.css or ds-preview.css changes
+export const DS_CSS_V = "20261123a"; // bump when ds.css or ds-preview.css changes
 
 const read = (rel, root = ROOT) => fs.readFileSync(path.join(root, rel), "utf8");
 
@@ -67,14 +67,47 @@ export function replaceOnce(html, needle, value) {
   return html.slice(0, i) + value + html.slice(i + needle.length);
 }
 
+const VOID = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"]);
+
+/** Element children of html[start, end), skipping text and comments: [{ tag, cls, start, end }]. */
+export function children(html, start, end) {
+  const out = [];
+  let i = start;
+  while (i < end) {
+    const lt = html.indexOf("<", i);
+    if (lt < 0 || lt >= end) break;
+    if (html.startsWith("<!--", lt)) {
+      i = html.indexOf("-->", lt) + 3;
+      continue;
+    }
+    const m = /^<([a-z][a-z0-9-]*)\b[^>]*>/i.exec(html.slice(lt, lt + 4000));
+    if (!m) throw new Error("Unexpected markup inside the range at " + lt + ": " + html.slice(lt, lt + 40));
+    const tag = m[1].toLowerCase();
+    let e;
+    if (VOID.has(tag) || m[0].endsWith("/>")) e = lt + m[0].length;
+    else if (tag === "script" || tag === "style") e = html.indexOf(`</${tag}>`, lt) + tag.length + 3;
+    else e = findElement(html, new RegExp(`<${tag}\\b`, "i"), lt).end;
+    if (e > end) throw new Error(`<${tag}> at ${lt} runs past the end of the range`);
+    out.push({ tag, cls: (m[0].match(/\bclass="([^"]*)"/) || [])[1] || "", start: lt, end: e });
+    i = e;
+  }
+  return out;
+}
+
 function sectionCssVersion(root) {
   const m = read("theme-boot.js", root).match(/SECTION_CSS_V\s*=\s*"([^"]+)"/);
   if (!m) throw new Error("SECTION_CSS_V not found in theme-boot.js");
   return m[1];
 }
 
+/** Previews live one folder deeper (/preview/...), so every local URL in a source page must be root-relative. */
+export function assertRootRelative(html, label) {
+  const bad = [...html.matchAll(/\s(?:src|href|poster|action)="(?!\/|https?:|#|mailto:|tel:|data:|javascript:|\{)([^"]+)"/gi)].map((m) => m[1]);
+  if (bad.length) throw new Error(`${label}: relative URLs would break under /preview/: ${bad.slice(0, 3).join(", ")}`);
+}
+
 /** Head changes shared by every preview: noindex, canonical check, section theme, design CSS, LCP preload. */
-export function previewHead(html, { live, section = "", preload = "", root = ROOT }) {
+export function previewHead(html, { live, section = "", preload = "", keepImagePreloads = false, root = ROOT }) {
   let h = html.replace(/<title>(?!Preview · )/, "<title>Preview · ");
   const robots = '<meta name="robots" content="noindex, nofollow" />';
   h = /<meta name="robots"[^>]*>/.test(h) ? h.replace(/<meta name="robots"[^>]*>/, robots) : replaceOnce(h, "</title>", "</title>\n    " + robots);
@@ -83,7 +116,7 @@ export function previewHead(html, { live, section = "", preload = "", root = ROO
   if (section) h = h.replace(/<html\b([^>]*)>/, (m, a) => (/data-section=/.test(a) ? m : `<html${a} data-section="${section}">`));
   // The old hero's preload (and any other image preload) goes; the new LCP image gets its own.
   h = h.replace(/<!--hv:preload-->[\s\S]*?<!--\/hv:preload-->/, "");
-  h = h.replace(/\s*<link rel="preload" as="image"[^>]*>/g, "");
+  if (!keepImagePreloads) h = h.replace(/\s*<link rel="preload" as="image"[^>]*>/g, "");
   const css = [];
   if (section && !h.includes("/section-theme.css")) css.push(`<link rel="stylesheet" href="/section-theme.css?v=${sectionCssVersion(root)}" />`);
   css.push(`<link rel="stylesheet" href="/ds.css?v=${DS_CSS_V}" />`, `<link rel="stylesheet" href="/ds-preview.css?v=${DS_CSS_V}" />`);
@@ -126,6 +159,7 @@ export const HOME_TOOLS = [
 /** Homepage: lead story, then the latest list, then live numbers, newsletter, trackers, launches and the wire. */
 export function buildHome(root = ROOT) {
   const live = read("index.html", root);
+  assertRootRelative(live, "index.html");
   const mainOpen = '<main id="main" class="hv hs-home">';
   const main = one(live, /<main id="main" class="hv hs-home">/, "homepage <main>");
 
@@ -200,12 +234,64 @@ export function buildHome(root = ROOT) {
   return page;
 }
 
-export const PAGES = [{ out: "preview/index.html", build: buildHome }];
+/** Header furniture an article opens with, before its first piece of content. */
+const ARTICLE_HEADER = new Set(["eyebrow", "standfirst", "meta", "sd-disclosure", "sd-updated"]);
 
+/**
+ * Article: the reading tools (rs:tools) and "On this page" (sd:article-wayfinding) move from between the standfirst and
+ * the byline to just after the lead photo or video, so the headline, standfirst, byline and lead image sit together in
+ * the first screen. Nothing else moves. Both blocks are page furniture for scripts/editorial-dates.py once rs:tools joins
+ * its BLOCKS list (redesign step 3), so the same move in build-article-reader.py and build-wayfinding.py at the switch
+ * does not re-stamp "Updated" dates. Where the story has no lead figure the blocks go just before its first content.
+ */
+export function buildArticle(slug, root = ROOT) {
+  const liveUrl = `/dispatch/${slug}.html`;
+  const live = read(liveUrl.slice(1), root);
+  assertRootRelative(live, liveUrl);
+  if (!/<article\b[^>]*class="[^"]*\brs-article\b/.test(live)) throw new Error(liveUrl + " is not a Dispatch article");
+  let page = live.replace(/<body class="([^"]*)"/, (m, c) => `<body class="${c} ds-page ds-article"`);
+  if (!page.includes("ds-article")) throw new Error(liveUrl + ": no <body class> to extend");
+  const tools = between(page, "<!--rs:tools-->", "<!--/rs:tools-->");
+  page = replaceOnce(page, tools, "");
+  let way = "";
+  if (page.includes("<!--sd:article-wayfinding-->")) {
+    way = between(page, "<!--sd:article-wayfinding-->", "<!--/sd:article-wayfinding-->");
+    page = replaceOnce(page, way, "");
+  }
+  const art = findElement(page, /<article\b[^>]*class="[^"]*\brs-article\b[^"]*"[^>]*>/);
+  const inner = page.indexOf(">", art.start) + 1;
+  const kids = children(page, inner, page.lastIndexOf("</article>", art.end));
+  const first = kids.find((k) => k.tag !== "h1" && !k.cls.split(/\s+/).some((c) => ARTICLE_HEADER.has(c)));
+  if (!first) throw new Error(liveUrl + ": no content after the article header");
+  const at = first.tag === "figure" ? first.end : first.start;
+  page = page.slice(0, at) + "\n" + tools + (way ? "\n" + way : "") + "\n" + page.slice(at);
+  page = replaceOnce(page, "</main>", DS.previewFlag(liveUrl) + "\n</main>");
+  return previewHead(page, { live: liveUrl, keepImagePreloads: true, root });
+}
+
+/** Three article types: a news story, a long feature, and a finance story with the share disclosure. */
+export const ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"];
+
+export const PAGES = [
+  { out: "preview/index.html", build: buildHome },
+  ...ARTICLES.map((slug) => ({ out: `preview/dispatch/${slug}.html`, build: (root) => buildArticle(slug, root) })),
+];
+
+/**
+ * Builds every preview and reports every failing page at once instead of stopping at the first (a failing page keeps
+ * its old file). The CLI exits 1 if any page failed, so the refresh workflow commits nothing until it is fixed.
+ */
 export function buildAll(root = ROOT, { check = false } = {}) {
   const changed = [];
+  const failed = [];
   for (const p of PAGES) {
-    const html = p.build(root);
+    let html;
+    try {
+      html = p.build(root);
+    } catch (e) {
+      failed.push({ out: p.out, error: e });
+      continue;
+    }
     const file = path.join(root, p.out);
     const old = fs.existsSync(file) ? fs.readFileSync(file, "utf8") : "";
     if (old !== html) {
@@ -216,12 +302,13 @@ export function buildAll(root = ROOT, { check = false } = {}) {
       }
     }
   }
-  return changed;
+  return { changed, failed };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const check = process.argv.includes("--check");
-  const changed = buildAll(ROOT, { check });
+  const { changed, failed } = buildAll(ROOT, { check });
   console.log((check ? "Previews out of date: " : "Previews written: ") + (changed.length ? changed.join(", ") : "none"));
-  if (check && changed.length) process.exit(1);
+  for (const f of failed) console.error(`Preview failed: ${f.out}: ${f.error.message}`);
+  if (failed.length || (check && changed.length)) process.exit(1);
 }

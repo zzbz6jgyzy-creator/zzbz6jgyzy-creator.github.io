@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, buildHome, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, buildHome, buildArticle, ARTICLES, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -184,6 +184,45 @@ test("homepage preview keeps every hook home-v2.js, home-studio.js and the bots 
 });
 
 // ---- Committed previews and exclusions --------------------------------------------------------------
+test("child scan skips text and comments and handles void and script elements", () => {
+  const html = '<article> x <!-- <p> --><p class="a">1<p2></p><img src="/a.png"><script>let t="<p>";</script><figure><figure></figure></figure></article>';
+  const kids = children(html, "<article>".length, html.length - "</article>".length);
+  assert.deepEqual(kids.map((k) => [k.tag, k.cls]), [["p", "a"], ["img", ""], ["script", ""], ["figure", ""]]);
+  assert.equal(html.slice(kids[3].start, kids[3].end), "<figure><figure></figure></figure>");
+});
+
+const TOOLS_RX = /\n?<!--rs:tools-->[\s\S]*?<!--\/rs:tools-->\n?/;
+const WAY_RX = /\n?<!--sd:article-wayfinding-->[\s\S]*?<!--\/sd:article-wayfinding-->\n?/;
+const articleBody = (html) => {
+  const a = findElement(html, /<article\b[^>]*class="[^"]*\brs-article\b/);
+  return html.slice(a.start, a.end).replace(TOOLS_RX, "").replace(WAY_RX, "").replace(/\s+/g, " ");
+};
+
+for (const slug of ARTICLES) {
+  test(`article preview ${slug}: hidden from search, and only the reading tools and contents move`, () => {
+    const live = read(`dispatch/${slug}.html`);
+    const html = buildArticle(slug);
+    assert.match(html, /<meta name="robots" content="noindex, nofollow" \/>/);
+    assert.equal((html.match(/<meta name="robots"/g) || []).length, 1);
+    assert.ok(html.includes(`<link rel="canonical" href="https://superchargeddaily.com/dispatch/${slug}.html" />`));
+    assert.match(html, /<title>Preview · /);
+    assert.match(html, /<body class="[^"]*\bds-page ds-article"/);
+    assert.match(html, /<link rel="stylesheet" href="\/ds-preview\.css\?v=[^"]+" \/>/);
+    assert.match(html, /class="ds-preview-flag"/);
+    // Same article text, media and order once the two furniture blocks are set aside (editorial-dates sees no change)
+    assert.equal(articleBody(html), articleBody(live));
+    assert.equal(html.match(TOOLS_RX)[0].trim(), live.match(TOOLS_RX)[0].trim(), "the reading tools are moved whole");
+    // The tools now follow the lead figure and come before the first section heading
+    const tools = html.indexOf("<!--rs:tools-->");
+    const art = html.slice(0, tools);
+    assert.ok(art.lastIndexOf("</figure>") > art.lastIndexOf('class="meta"'), "the reading tools follow the lead figure");
+    const h2 = html.indexOf("<h2", tools);
+    assert.ok(h2 < 0 || tools < h2);
+    if (WAY_RX.test(live)) assert.ok(html.indexOf("<!--sd:article-wayfinding-->") > tools, "contents follow the tools");
+    assert.equal(buildArticle(slug), html, "the build is deterministic");
+  });
+}
+
 test("committed previews are whole pages whose local files exist", () => {
   for (const p of PAGES) {
     const file = path.join(ROOT, p.out);

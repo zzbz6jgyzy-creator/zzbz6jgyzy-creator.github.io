@@ -2,6 +2,13 @@
 
 Why each major choice was made. Newest first. Add an entry whenever a real choice is made.
 
+## 2026-11-23 · Articles: the reading tools move below the lead photo
+
+- **Decision:** on article pages the reading tools and "On this page" move from between the standfirst and the byline to just after the lead photo or video. The approved plan said "CSS only, DOM unchanged"; this is the one exception, and it only moves page furniture.
+- **Why:** measured over the 40 newest stories on a 390×844 phone, CSS-only compaction put the lead photo at a median of 746px (26 of 40 below 700px; live is about 1,100px). Moving the two blocks puts it at about 615px (10 of 40 below 700px, all with very long headlines or standfirsts). The headline, standfirst, byline and photo then share the first screen, which is what readers arriving from X see.
+- **Safe because:** `editorial-dates.py` strips `sd:article-wayfinding` already and will strip `rs:tools` after step 3, so moving them changes no article's fingerprint (a test checks the article text and media are otherwise identical); `article-reader.js` finds its toolbar by selector, not position.
+- **Rejected:** shrinking the disclosure to 12px or clamping the standfirst (hides or shrinks editorial text); a fixed bottom toolbar (covers text and fights Safari's bottom bar); a grid or flex article (breaks margin collapsing across every article body).
+
 ## 2026-11-22 · News-first redesign: preview pages first, one switch, shared ds layer
 
 - **Decision:** a news-first redesign (same logo, red and dark look, section colours kept) for the homepage, articles, hubs and Dispatch list, and trackers. It is built as one shared layer (`ds.css` tokens and components, `ds-components.js` renderers) and shown first on hidden `/preview/` pages composed from the live pages, then switched site-wide in one PR. Every page and URL stays.
