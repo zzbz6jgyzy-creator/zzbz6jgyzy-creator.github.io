@@ -121,14 +121,14 @@ window.SEE_LAUNCH = {
     {
       id: "ll-ussf-266",
       title: "Falcon 9 · USSF-266",
-      start: "2026-11-18T16:49:00Z",
+      start: "2026-11-24T15:55:00Z",
       pad: "slc4e",
       vehicle: "falcon",
       orbit: "leo",
       status: "go",
       precision: "datetime",
       href: "https://www.spacex.com/launches/ussf266",
-      note: "Classified US Space Force mission from Vandenberg; SpaceX is targeting Wednesday 18 Nov, four-hour window opens 8:49 a.m. PT (16:49 UTC), backup Thursday 19 Nov 8:40 a.m. PT. 29th-flight booster, landing on Of Course I Still Love You (checked 11 Nov 2026).",
+      note: "Classified US Space Force mission from Vandenberg; SpaceX is targeting Tuesday 24 Nov, four-hour window opens 7:55 a.m. PT (15:55 UTC / 10:55 a.m. ET), backup Wednesday 25 Nov 7:46 a.m. PT (10:46 a.m. ET). 29th-flight booster, landing on Of Course I Still Love You (checked 23 Nov 2026).",
     },
   ],
 };

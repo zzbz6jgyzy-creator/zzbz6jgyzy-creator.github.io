@@ -1,6 +1,81 @@
 {
-  "updated": "2026-11-23T14:35:00Z",
+  "updated": "2026-11-23T17:12:00Z",
   "articles": [
+    {
+      "url": "/dispatch/spacex-pad-4e-32-hours.html",
+      "title": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
+      "date": "2026-11-23T17:12:00Z",
+      "topic": "spacex",
+      "tag": "Falcon 9",
+      "image": "/assets/dispatch/vandenberg-ussf317-slc4e-ussf.jpg",
+      "summary": "NROL-136 lifted off from Vandenberg's SLC-4E on Sunday, 32 hours after USSF-317, which SpaceX says is its fastest turnaround between launches from the same pad. USSF-266 is next from the same pad on Tuesday, on a booster making its 29th flight.",
+      "pinned": false,
+      "imageAlt": "Night photo of a Falcon 9 climbing from Vandenberg, its exhaust plume a bright streak against a black sky",
+      "author": "Alex R",
+      "seoTitle": "SpaceX turned pad 4E around in 32 hours. If Tuesday's launch goes on time, that's three national security missions in 3.5 days",
+      "picture": {
+        "base": "/assets/dispatch/vandenberg-ussf317-slc4e-ussf",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2400,
+          1597
+        ]
+      },
+      "minutes": 4
+    },
+    {
+      "url": "/dispatch/tesla-starlink-every-model.html",
+      "title": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
+      "date": "2026-11-23T17:10:00Z",
+      "topic": "tesla",
+      "tag": "Starlink",
+      "image": "/assets/dispatch/cybercab-zurich-migl.jpg",
+      "summary": "Elon Musk said on Sunday that embedded Starlink across Tesla's lineup is \"hopefully\" coming toward the end of next year, except in China. Tesla's own Cybercab first-responder guide, dated 20 Nov, says Cybercabs built from November 2026 already carry it.",
+      "pinned": false,
+      "imageAlt": "A gold Tesla Cybercab with its butterfly doors open on a show stand at Auto Zürich 2026",
+      "author": "Alex R",
+      "seoTitle": "Musk says built-in Starlink could reach every Tesla by late 2027. New Cybercabs already have it in the trunk lid",
+      "picture": {
+        "base": "/assets/dispatch/cybercab-zurich-migl",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2400,
+          1840
+        ]
+      },
+      "minutes": 4
+    },
+    {
+      "url": "/dispatch/spacex-cochise-ag-delay.html",
+      "title": "Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote",
+      "date": "2026-11-23T17:08:00Z",
+      "topic": "spacex",
+      "tag": "Arizona",
+      "image": "/assets/dispatch/willcox-playa-blm.jpg",
+      "summary": "In a 19 Nov letter, Attorney General Kris Mayes asked the Cochise County Planning and Zoning Commission to delay its 9 Dec vote on SpaceX's special use permit SU26-22 until state and federal regulators have reviewed it. A town hall is set for 3 Dec.",
+      "pinned": false,
+      "imageAlt": "Flat, dry lakebed of the Willcox Playa in Cochise County, Arizona, with mountains on the horizon",
+      "author": "Alex R",
+      "seoTitle": "Arizona's attorney general wants Cochise County to hold off on SpaceX's 6 GW campus vote",
+      "picture": {
+        "base": "/assets/dispatch/willcox-playa-blm",
+        "widths": [
+          480,
+          960
+        ],
+        "ratio": [
+          2400,
+          1800
+        ]
+      },
+      "minutes": 4
+    },
     {
       "url": "/dispatch/spacex-louisiana-coastal-permit.html",
       "title": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",
