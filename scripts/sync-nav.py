@@ -111,8 +111,11 @@ def transform(s):
   n=re.sub(r'(?<=src="/nav-pill\.js)(?:\?v=[^"]*)?(?=")','?v='+CSS_VERSION,n)
   n=re.sub(r'(?<=src="/members\.js)(?:\?v=[^"]*)?(?=")','?v=20261028-membersnav',n)
   # The shared design layer (tokens and ds- components) goes on every page with the site nav.
-  if 'href="/ds.css' in n: n=re.sub(r'(?<=href="/ds\.css)(?:\?v=[^"]*)?(?=")','?v='+DS_VERSION,n)
-  else: n=n.replace('</head>','  <link rel="stylesheet" href="/ds.css?v='+DS_VERSION+'" />\n  </head>',1)
+  # It sits right after the nav-pill.css link, which only this script writes, so tools that keep their own blocks at the
+  # end of <head> (bundles, members, reader assets) never move it and every builder agrees on the order.
+  n=re.sub(r'\n[ \t]*<link rel="stylesheet" href="/ds\.css[^"]*" ?/?>','',n)
+  pill=re.search(r'<link[^>]*href="/nav-pill\.css[^"]*"[^>]*>',n)
+  if pill: n=n[:pill.end()]+'\n    <link rel="stylesheet" href="/ds.css?v='+DS_VERSION+'" />'+n[pill.end():]
  return n
 
 if __name__=='__main__':
