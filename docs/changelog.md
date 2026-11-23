@@ -1,3 +1,11 @@
+## 23 Nov 2026 — Redesign step 5: the switch
+
+- Every page type now leads with its news or its numbers, as in the approved previews: the homepage (top story, latest list, tracker numbers), articles (headline, standfirst, byline and lead photo together; the reading tools follow the photo), the Dispatch list and newsroom, the Tesla, SpaceX and Grok hubs, and the FSD, Starship, Cybercab, calendar, Starlink and production trackers.
+- New navigation on every page: six menus (News, Tesla, SpaceX, Grok, Trackers, Explore), no link repeated, "Cybercab fleet", no phone "Quick access" list; the Menu button takes over below 1280px.
+- Plain page titles across the site (for example "Games", "Promise tracker", "Can I see the launch?"); the tagline stays once, in the footer.
+- Fixes on the way: Dispatch no longer preloads an old story's image (the newest card's image loads first); the newsroom's and calendar's dead filters no longer show without JavaScript; Cybercab's "Refresh unavailable" note is visible again; the article Share button stays hidden where the browser has no share sheet.
+- No "Updated" dates move: the reading tools and contents blocks are page furniture for the date logic (checked on all 166 stories).
+
 ## 23 Nov 2026 — Redesign step 4: switch prep (no visual change)
 
 - Homepage (live): reads a 40 KB feed built with the page (`data/home-latest.json`, 11 KB gzipped) instead of downloading all of `dispatch.html` and `data/articles.json` (397 KB) on every visit.
