@@ -70,7 +70,7 @@ def mobile(d):
  return f'<details class="ns-mobile-section" name="sd-mobile-section"><summary>{esc(d["label"])}{CHEVRON}</summary><div>{end}{groups(d)}{feature(d)}</div></details>'
 
 def block(navtag,cfg=None):
- cfg=cfg or CFG
+ cfg=CFG if cfg is None else cfg
  navtag=re.sub(r'\s+data-start-collapsed(?:="[^"]*")?', '', navtag)
  navtag=re.sub(r'\s+data-nav-studio(?:="[^"]*")?', '', navtag)
  if ' id=' not in navtag: navtag=navtag[:-1]+' id="sd-primary-navigation">'

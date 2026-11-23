@@ -19,7 +19,8 @@ SHOTS = pathlib.Path(os.environ.get("PREVIEW_SHOTS", "/tmp/design-preview"))
 CLS_JS = "() => window.__cls || 0"
 INIT = """window.__cls=0;try{new PerformanceObserver(l=>{for(const e of l.getEntries()){if(!e.hadRecentInput)window.__cls+=e.value}}).observe({type:'layout-shift',buffered:true})}catch(e){}"""
 
-ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"]
+# The builder's own list, so the two cannot drift
+ARTICLES = re.findall(r'"([^"]+)"', re.search(r"export const ARTICLES = \[([^\]]*)\]", (ROOT / "scripts/build-design-preview.mjs").read_text()).group(1))
 
 
 def live_h1(rel):
@@ -81,6 +82,7 @@ async def check_article(page, tag):
     }""")
     assert r["top"] < 700, (tag, "the lead photo or first paragraph starts too low", r)
     assert r["byline"] < r["top"], (tag, "the byline should sit above the lead", r)
+    assert r["tools"] > r["byline"], (tag, "the reading tools should follow the byline, not sit above it", r)
 
 
 async def check_list(page, tag, card):
@@ -127,6 +129,8 @@ async def main():
                             h1 = await page.evaluate("[...document.querySelectorAll('h1')].map(x => x.textContent.replace(/\\s+/g, ' ').trim())")
                             assert h1 == [spec["h1"]], (tag, "h1", h1)
                             assert not errors, (tag, "page errors", errors)
+                            cut = await page.evaluate("""() => [...document.querySelectorAll('.ds-masthead *')].filter(e => getComputedStyle(e).textOverflow === 'ellipsis' && e.scrollWidth > e.clientWidth).map(e => e.textContent.trim().slice(0, 40))""")
+                            assert not cut, (tag, "masthead text is cut off", cut)
                             cls = await page.evaluate(CLS_JS)
                             assert cls < 0.1, (tag, "layout shift", cls)
                             if w == 390 and spec["kind"] == "home":

@@ -18,7 +18,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const DS = require("../ds-components.js");
 const SITE = "https://superchargeddaily.com";
-export const DS_CSS_V = "20261123e"; // bump when ds.css or ds-preview.css changes
+export const DS_CSS_V = "20261123f"; // bump when ds.css or ds-preview.css changes
 
 const read = (rel, root = ROOT) => fs.readFileSync(path.join(root, rel), "utf8");
 
@@ -286,8 +286,9 @@ const ARTICLE_HEADER = new Set(["eyebrow", "standfirst", "meta", "sd-disclosure"
  * Article: the reading tools (rs:tools) and "On this page" (sd:article-wayfinding) move from between the standfirst and
  * the byline to just after the lead photo or video, so the headline, standfirst, byline and lead image sit together in
  * the first screen. Nothing else moves. Both blocks are page furniture for scripts/editorial-dates.py once rs:tools joins
- * its BLOCKS list (redesign step 3), so the same move in build-article-reader.py and build-wayfinding.py at the switch
- * does not re-stamp "Updated" dates. Where the story has no lead figure the blocks go just before its first content.
+ * its BLOCKS list (redesign step 3, itself a deliberate correction of about 83 wrong "Updated 9 Nov 2026" dates); after
+ * that, the same move in build-article-reader.py and build-wayfinding.py at the switch changes no article's fingerprint.
+ * Where the story has no lead figure the blocks go just before its first content.
  */
 export function buildArticle(slug, root = ROOT) {
   const liveUrl = `/dispatch/${slug}.html`;
@@ -333,7 +334,7 @@ export function buildDispatchList(root = ROOT) {
     kicker: "Original reporting",
     title: "Dispatch",
     dek: htmlText(intro[1]),
-    metaHtml: `Updated ${DS.fmtDate(newest)} · <a href="${DS.esc(policy[1])}">How we report</a>`,
+    metaHtml: `Latest story ${DS.fmtDate(newest)} · <a href="${DS.esc(policy[1])}">How we report</a>`,
     className: "ds-masthead--list",
   });
   let page = replaceOnce(live, hero, mast);
@@ -382,14 +383,17 @@ export function buildNews(root = ROOT) {
 // ---- Hubs: compact masthead with the hub's own key numbers and a slim photo band, then its latest stories ----
 
 /** A slim photo band from a live <picture> (kept as is: its sources, sizes and credits are the live page's). */
+const BAND_SIZES = "(min-width:1228px) 1180px, 100vw";
 function bandFrom(pictureHtml, captionHtml) {
-  const pic = pictureHtml.replace(/(<img\b[^>]*?)\s+class="[^"]*"/, "$1"); // the old hero's image classes position it full-screen
+  const pic = pictureHtml
+    .replace(/(<img\b[^>]*?)\s+class="[^"]*"/, "$1") // the old hero's image classes position it full-screen
+    .replace(/\ssizes="[^"]*"/g, ` sizes="${BAND_SIZES}"`); // a slim band, not a full-screen hero
   return `<figure class="ds-band">${pic}${captionHtml ? `<figcaption>${captionHtml}</figcaption>` : ""}</figure>`;
 }
 
 const MONTH = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, sept: 9, oct: 10, nov: 11, dec: 12 };
 
-/** Newest date in a story list (datetime attributes or "20 Nov 2026" text), for the masthead's "Updated" line. */
+/** Newest of the dates in a string of card dates (datetime attributes or "20 Nov 2026" text); pass card dates only, not summaries. */
 export function newestDate(html) {
   const iso = [...html.matchAll(/datetime="(\d{4}-\d{2}-\d{2})/g)].map((m) => m[1]);
   for (const m of html.matchAll(/\b(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept?|Oct|Nov|Dec)\w* (\d{4})\b/g)) {
@@ -406,7 +410,8 @@ function hubSection(id, title, href, linkText, inner, attrs = "") {
 function finishHub(page, liveUrl, section, root) {
   page = addBodyClass(page, `ds-page ds-hub ds-hub-${section}`);
   page = replaceOnce(page, "</main>", DS.previewFlag(liveUrl) + "\n</main>");
-  return previewHead(page, { live: liveUrl, section, keepImagePreloads: true, root });
+  // The old heroes' image preloads were sized for a full-screen hero; the band's image is in the HTML near the top.
+  return previewHead(page, { live: liveUrl, section, root });
 }
 
 /** Tesla hub: the masthead takes the hub's own numbers (#to-brief-grid and its note); #to-stories moves up under it. */
@@ -429,7 +434,7 @@ export function buildTeslaHub(root = ROOT) {
     title: "Tesla news, trackers and guides",
     titleId: "to-title",
     dek: "The cars, the software, Robotaxi and the numbers, from an owner and shareholder.",
-    metaHtml: `Updated ${newestDate(stories)} · <a href="#sources">Sources</a>`,
+    metaHtml: `Latest story ${newestDate([...stories.matchAll(/<p class="to-eyebrow">[^<]*<span>\s*\/\s*([^<]+)<\/span>/g)].map((m) => m[1]).join(" "))} · <a href="#sources">Sources</a>`,
     statsHtml: `<div class="ds-hub-numbers">${grid}<details class="ds-hub-note"><summary>About these numbers</summary>${fine.trim()}</details></div>`,
     band: null,
     extraHtml: bandFrom(pic, `<a href="${DS.esc(caption[1])}">${DS.esc(subject)}</a> · ${DS.esc(caption[3].trim())}`),
@@ -496,7 +501,7 @@ export function buildGrokHub(root = ROOT) {
     title: "Grok and xAI: models, plans and news",
     dek: description.split(/(?<=\.)\s/)[0],
     metaHtml: `Source reference checked ${DS.esc(checked.trim())} · <a href="#sources">Sources</a>`,
-    statsHtml: DS.stats(releases.map((r) => ({ label: GROK_LABEL[r.product.toLowerCase()] || r.product, value: r.version, asOf: r.date, source: { href: r.href, label: "Release notes" } })), { label: "Newest official releases" }),
+    statsHtml: DS.stats(releases.map((r) => ({ label: GROK_LABEL[r.product.toLowerCase()] || r.product, value: r.version, asOf: r.date, asOfLabel: "Released", source: { href: r.href, label: "Release notes" } })), { label: "Newest official releases" }),
   });
   let page = replaceOnce(live, sub, "");
   page = replaceOnce(page, grid, "");
@@ -510,7 +515,7 @@ export function buildGrokHub(root = ROOT) {
 function finishTracker(page, liveUrl, slug, section, root) {
   page = addBodyClass(page, `ds-page ds-tracker ds-tracker-${slug}`);
   page = replaceOnce(page, "</main>", DS.previewFlag(liveUrl) + "\n</main>");
-  return previewHead(page, { live: liveUrl, section, keepImagePreloads: true, root });
+  return previewHead(page, { live: liveUrl, section, root });
 }
 
 const firstSentence = (text) => text.split(/(?<=[.?!])\s/)[0];

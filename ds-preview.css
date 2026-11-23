@@ -469,7 +469,8 @@ html body.ds-hub .ds-hub-numbers .to-stat {
   color: inherit;
   text-decoration: none;
 }
-html body.ds-hub .ds-hub-numbers .to-stat span { font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ds-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Labels wrap: their qualifiers ("sampled", "recognition") are what make each number honest (editorial rule 4) */
+html body.ds-hub .ds-hub-numbers .to-stat span { font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ds-ink-2); overflow-wrap: anywhere; }
 html body.ds-hub .ds-hub-numbers .to-stat strong { font: 650 var(--ds-fs-22) / 1.15 var(--ds-font); font-variant-numeric: tabular-nums; color: var(--ds-ink); overflow-wrap: anywhere; }
 html body.ds-hub .ds-hub-numbers .to-stat strong em { font: 500 var(--ds-fs-14) / 1 var(--ds-font); font-style: normal; color: var(--ds-ink-2); }
 html body.ds-hub .ds-hub-numbers .to-stat small { font: 400 var(--ds-fs-12) / 1.4 var(--ds-font); color: var(--ds-ink-2); }

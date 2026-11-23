@@ -289,11 +289,21 @@ const HUBS = [
   { slug: "spacex", build: buildSpacexHub, title: "SpaceX launches, Starship and Starlink", numbers: 'id="sx-next"', band: true, data: "data-sx-", hero: /<header class="sx-hero"/ },
   { slug: "grok", build: buildGrokHub, title: "Grok and xAI: models, plans and news", numbers: 'class="ds-stats"', band: false, data: "data-gx-", hero: /<header class="gx-hero"/ },
 ];
-/** Ids that lived only inside a removed hero and are referenced nowhere else on the live page (e.g. an SVG gradient). */
+/**
+ * Ids that lived only inside a removed hero: referenced nowhere else on the live page (e.g. an SVG gradient) and never
+ * looked up by the page's own scripts (a call argument that is exactly the id or "#id", as getElementById(), $() and
+ * querySelector() take them; the same id inside rendered HTML, id="x", is not a lookup).
+ */
 const heroOnlyIds = (live, heroRe) => {
   const hero = one(live, heroRe, "hero");
   const rest = live.replace(hero, "");
-  return new Set([...ids(hero)].filter((id) => !new RegExp(`(?:#|["\\s])${id.replace(/[-]/g, "\\-")}(?=["\\s)])`).test(rest)));
+  const scripts = [...live.matchAll(/<script\b[^>]*\bsrc="\/([^"?#]+\.m?js)/g)]
+    .map((m) => path.join(ROOT, m[1]))
+    .filter((f) => fs.existsSync(f))
+    .map((f) => fs.readFileSync(f, "utf8"))
+    .join("\n");
+  const esc = (id) => id.replace(/[.*+?^${}()|[\]\\-]/g, "\\$&");
+  return new Set([...ids(hero)].filter((id) => !new RegExp(`(?:#|["\\s])${esc(id)}(?=["\\s)])`).test(rest) && !new RegExp(`\\(\\s*(['"\`])#?${esc(id)}\\1`).test(scripts)));
 };
 for (const hub of HUBS) {
   test(`${hub.slug} hub preview: plain title, its own key numbers, then its latest stories, with every id kept`, () => {
@@ -320,9 +330,9 @@ for (const hub of HUBS) {
   });
 }
 
-test("Grok key numbers are the newest official release per product, each dated and linked", () => {
+test("Grok key numbers are the newest official release per product, each with its release date and link", () => {
   const html = buildGrokHub();
-  const tiles = [...html.matchAll(/<li class="ds-stat"><span class="ds-stat-label">([^<]+)<\/span><span class="ds-stat-value">([^<]+)<\/span><span class="ds-stat-src">As of ([^<]+) · <a href="(https:[^"]+)">/g)];
+  const tiles = [...html.matchAll(/<li class="ds-stat"><span class="ds-stat-label">([^<]+)<\/span><span class="ds-stat-value">([^<]+)<\/span><span class="ds-stat-src">Released ([^<]+) · <a href="(https:[^"]+)">/g)];
   assert.ok(tiles.length >= 2 && tiles.length <= 3, "two or three release tiles");
   assert.equal(new Set(tiles.map((t) => t[1])).size, tiles.length, "one tile per product");
   for (const t of tiles) assert.match(t[3], /^\d{1,2} [A-Z][a-z]{2,3} \d{4}$/);
@@ -368,13 +378,13 @@ test("tracker previews keep the script contracts the plan names", () => {
   assert.match(pd, /<div hidden><div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight stays for production-studio.js, hidden");
 });
 
-test("the proposed nav has no duplicate links, a Grok menu and only links that resolve", () => {
+test("in the proposed nav no menu list repeats a link, Grok has a menu, and every link resolves", () => {
   const live = JSON.parse(read("scripts/nav.json"));
   const next = JSON.parse(read("scripts/nav.next.json"));
   const groupLinks = (cfg) => cfg.dropdowns.flatMap((d) => d.groups.flatMap((g) => g.items.map((i) => i[1])));
   const dupes = (list) => list.length - new Set(list).size;
   assert.ok(dupes(groupLinks(live)) > 0, "today's nav repeats links (the reason for the change)");
-  assert.equal(dupes(groupLinks(next)), 0, "no link appears in two menus");
+  assert.equal(dupes(groupLinks(next)), 0, "no link appears in two menu lists (feature cards may point at a listed page)");
   assert.deepEqual(next.dropdowns.map((d) => d.label), ["News", "Tesla", "SpaceX", "Grok", "Trackers", "Explore"]);
   assert.deepEqual(next.mobileShortcuts, [], "the phone Quick access list goes");
   assert.ok(groupLinks(next).includes("/cybercab.html"));

@@ -93,7 +93,7 @@
     const src = s.source && s.source.href
       ? '<a href="' + esc(s.source.href) + '">' + esc(s.source.label || "Source") + "</a>"
       : esc((s.source && s.source.label) || "");
-    const line = [s.asOf ? "As of " + esc(s.asOf) : "", src].filter(Boolean).join(" · ");
+    const line = [s.asOf ? (s.asOfLabel || "As of") + " " + esc(s.asOf) : "", src].filter(Boolean).join(" · ");
     return (
       '<li class="ds-stat"><span class="ds-stat-label">' + esc(s.label) + "</span>" +
       '<span class="ds-stat-value">' + esc(s.value) + "</span>" +

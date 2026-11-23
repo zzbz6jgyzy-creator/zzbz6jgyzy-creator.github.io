@@ -4,7 +4,7 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 
 ## 2026-11-23 · Navigation: six menus, no repeats, Menu button below 1280px
 
-- **Decision:** the proposed nav (`scripts/nav.next.json`, shown on every preview) keeps each link in one menu, renames "Robotaxi tracker" to "Cybercab fleet", adds a Grok menu and drops the phone "Quick access" list. To fit six menus the bar loses its "Ctrl K" hint, tightens the menu buttons and switches to the Menu button below 1280px.
+- **Decision:** the proposed nav (`scripts/nav.next.json`, shown on every preview) keeps each link in one menu list (feature cards aside), renames "Robotaxi tracker" to "Cybercab fleet", adds a Grok menu and drops the phone "Quick access" list. To fit six menus the bar loses its "Ctrl K" hint, tightens the menu buttons and switches to the Menu button below 1280px.
 - **Why:** 8 of the 44 menu links appeared in two menus, Grok (one of the site's three topics) had no menu of its own, and the Quick access list repeated four menu links on phones. A sixth menu overflowed today's bar by up to 68px at 1280px and 28px at 1440px.
 - **Rejected:** merging Explore into another menu (not asked for; it keeps explainers, wallpapers and games), icon-only Members or Your Daily (both are key entry points), a horizontally scrolling menu bar.
 
@@ -12,7 +12,8 @@ Why each major choice was made. Newest first. Add an entry whenever a real choic
 
 - **Decision:** on article pages the reading tools and "On this page" move from between the standfirst and the byline to just after the lead photo or video. The approved plan said "CSS only, DOM unchanged"; this is the one exception, and it only moves page furniture.
 - **Why:** measured over the 40 newest stories on a 390×844 phone, CSS-only compaction put the lead photo at a median of 746px (26 of 40 below 700px; live is about 1,100px). Moving the two blocks puts it at about 615px (10 of 40 below 700px, all with very long headlines or standfirsts). The headline, standfirst, byline and photo then share the first screen, which is what readers arriving from X see.
-- **Safe because:** `editorial-dates.py` strips `sd:article-wayfinding` already and will strip `rs:tools` after step 3, so moving them changes no article's fingerprint (a test checks the article text and media are otherwise identical); `article-reader.js` finds its toolbar by selector, not position.
+- **Safe because:** `editorial-dates.py` strips `sd:article-wayfinding` already and will strip `rs:tools` once step 3 adds it to `BLOCKS`; from then on moving the two blocks changes no article's fingerprint (a test checks the article text and media are otherwise identical). `article-reader.js` finds its toolbar by selector, not position.
+- **Step 3 is still a visible date change, on purpose:** adding `rs:tools` to `BLOCKS` stops the 9 Nov 2026 toolbar relabel (PR #307, "Share" to "Post on X / Copy link / Share…") counting as an edit, so about 83 of 166 stories lose a wrong "Updated 9 Nov 2026" and `dateModified` (editorial rule 6). Step 3 ships that correction on its own, with the list of pages and their corrected dates.
 - **Rejected:** shrinking the disclosure to 12px or clamping the standfirst (hides or shrinks editorial text); a fixed bottom toolbar (covers text and fights Safari's bottom bar); a grid or flex article (breaks margin collapsing across every article body).
 
 ## 2026-11-22 · News-first redesign: preview pages first, one switch, shared ds layer
