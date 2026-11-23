@@ -273,8 +273,13 @@ export function calendarTracker(live) {
   let page = replaceOnce(live, hero, mast + '<template id="cs-hero"></template>');
   // The week strip and filters are hidden until the script flags #cs-app; with the old hero gone they sit in the first
   // screen, so the preview ships the flag and they are there from first paint instead of pushing the page down.
-  // #cs-app sits outside the cs:studio block the builder re-renders, so this stays put between runs.
-  if (!page.includes('<div id="cs-app" class="cs-enhanced">')) page = replaceOnce(page, '<div id="cs-app">', '<div id="cs-app" class="cs-enhanced">');
+  // With the old hero gone the week strip and filters sit in the first screen. Flag #cs-app while the page parses, so they
+  // are there from first paint with JavaScript (no layout shift) and stay hidden without it (calendar-studio.js sets the
+  // same class later anyway). #cs-app sits outside the cs:studio block the builder re-renders, so this stays put.
+  // If the calendar script never starts (blocked or failed), the flag comes off at load and the static listing returns.
+  const flag = '<div id="cs-app"><script>(function(a){a.classList.add("cs-enhanced");addEventListener("load",function(){var c=document.getElementById("cs-result-count");if(!c||!c.textContent)a.classList.remove("cs-enhanced")})})(document.getElementById("cs-app"))</script>';
+  page = page.replace(/<div id="cs-app"><script>[^<]*<\/script>/, '<div id="cs-app">');
+  page = replaceOnce(page, '<div id="cs-app">', flag);
   return settle(ensureBodyClass(page, "ds-page ds-tracker ds-tracker-calendar"));
 }
 
@@ -321,6 +326,8 @@ export function productionTracker(live) {
   page = replaceOnce(page, stats, "");
   page = replaceOnce(page, hero, mast);
   // Same for the quarter picker, which the script shows by flagging main.pd-studio.
-  page = replaceOnce(page, '<main id="main" class="pd-studio">', '<main id="main" class="pd-studio" data-enhanced="true">');
+  // Flagged while the page parses (no layout shift with JavaScript, nothing dead without it); if production-studio.js
+  // never starts, the flag comes off at load and the static view returns.
+  page = replaceOnce(page, '<main id="main" class="pd-studio">', '<main id="main" class="pd-studio"><script>(function(m){m.dataset.enhanced="true";addEventListener("load",function(){if(!window.SDProductionReady)delete m.dataset.enhanced})})(document.getElementById("main"))</script>');
   return settle(ensureBodyClass(page, "ds-page ds-tracker ds-tracker-production"));
 }

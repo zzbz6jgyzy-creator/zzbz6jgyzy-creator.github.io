@@ -149,8 +149,8 @@
       ]
     },
     "cybercab": {
-      "file": "/assets/js/cybercab.bundle.21bff8a003.js",
-      "bytes": 52566,
+      "file": "/assets/js/cybercab.bundle.aa0bd448a6.js",
+      "bytes": 52616,
       "sources": [
         "mobility-model.js",
         "mobility-view.js",
@@ -175,8 +175,8 @@
       ]
     },
     "news": {
-      "file": "/assets/js/news.bundle.0683c3b191.js",
-      "bytes": 45541,
+      "file": "/assets/js/news.bundle.b6aa274cb0.js",
+      "bytes": 45212,
       "sources": [
         "personal-model.js",
         "personal-sync.js",
@@ -266,8 +266,8 @@
       ]
     },
     "production": {
-      "file": "/assets/js/production.bundle.4d3b308ba3.js",
-      "bytes": 20184,
+      "file": "/assets/js/production.bundle.1f28706376.js",
+      "bytes": 20212,
       "sources": [
         "production-studio-model.js",
         "production-studio-view.js",
