@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const DS = require("../ds-components.js");
 const SITE = "https://superchargeddaily.com";
-export const DS_CSS_V = "20261123a"; // bump when ds.css or ds-preview.css changes
+export const DS_CSS_V = "20261123b"; // bump when ds.css or ds-preview.css changes
 
 const read = (rel, root = ROOT) => fs.readFileSync(path.join(root, rel), "utf8");
 
@@ -139,6 +139,31 @@ function preloadFor(pictureHtml, sizes) {
   return m ? `<link rel="preload" as="image" type="image/avif" imagesrcset="${m[1]}" imagesizes="${sizes}" fetchpriority="high" />` : "";
 }
 
+/** Adds classes to <body>, with or without an existing class attribute. */
+export function addBodyClass(html, cls) {
+  if (/<body\b[^>]*\bclass="/.test(html)) return html.replace(/<body\b([^>]*?)\bclass="([^"]*)"/, (m, a, c) => `<body${a}class="${c} ${cls}"`);
+  return replaceOnce(html, "<body>", `<body class="${cls}">`);
+}
+
+/** Plain text of a small HTML fragment (tags dropped, common entities decoded), for renderers that escape their input. */
+export function htmlText(fragment) {
+  const named = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
+  return fragment
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => (e[0] === "#" ? String.fromCodePoint(e[1].toLowerCase() === "x" ? parseInt(e.slice(2), 16) : +e.slice(1)) : named[e.toLowerCase()] ?? m))
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** The first card of a list becomes the likely LCP image: load it eagerly at high priority and preload its AVIF set. */
+function promoteFirstImage(page, cardRe, sizes) {
+  const card = findElement(page, cardRe);
+  if (!card) return { page, preload: "" };
+  const html = page.slice(card.start, card.end);
+  const eager = html.replace(/\sloading="lazy"/, ' loading="eager" fetchpriority="high"');
+  return { page: page.slice(0, card.start) + eager + page.slice(card.end), preload: preloadFor(html, sizes) };
+}
+
 // ---- Pages ----
 
 /** Homepage trackers and tools, by plain name. Every URL is a live page linked from the nav or the old tool cards. */
@@ -249,8 +274,7 @@ export function buildArticle(slug, root = ROOT) {
   const live = read(liveUrl.slice(1), root);
   assertRootRelative(live, liveUrl);
   if (!/<article\b[^>]*class="[^"]*\brs-article\b/.test(live)) throw new Error(liveUrl + " is not a Dispatch article");
-  let page = live.replace(/<body class="([^"]*)"/, (m, c) => `<body class="${c} ds-page ds-article"`);
-  if (!page.includes("ds-article")) throw new Error(liveUrl + ": no <body class> to extend");
+  let page = addBodyClass(live, "ds-page ds-article");
   const tools = between(page, "<!--rs:tools-->", "<!--/rs:tools-->");
   page = replaceOnce(page, tools, "");
   let way = "";
@@ -269,11 +293,79 @@ export function buildArticle(slug, root = ROOT) {
   return previewHead(page, { live: liveUrl, keepImagePreloads: true, root });
 }
 
+/**
+ * Dispatch list: a compact masthead, the existing topic chips, search and sort, then the cards. The Editorial desk box
+ * moves below the list (beside it on wide screens). The card markup is untouched: data/articles.json is parsed from it,
+ * new-article.py inserts at its grid marker, the integrity check counts a.story-card and dispatch-browse.js pages it.
+ */
+export function buildDispatchList(root = ROOT) {
+  const live = read("dispatch.html", root);
+  assertRootRelative(live, "/dispatch.html");
+  const hero = one(live, /<header class="ps-hero"/, "Dispatch hero");
+  const desk = one(hero, /<aside class="ps-edition"/, "Editorial desk");
+  const intro = desk.match(/<\/h2>\s*<p>([\s\S]*?)<\/p>/);
+  const steps = [...desk.matchAll(/<div class="ps-rule"><b>[^<]*<\/b>\s*([\s\S]*?)<\/div>/g)].map((m) => m[1].trim());
+  const policy = desk.match(/<a href="(\/[^"#]+)">([\s\S]*?)<\/a>/);
+  if (!intro || steps.length < 2 || !policy) throw new Error("Editorial desk changed shape: intro, steps or policy link missing");
+  const newest = (live.match(/<div class="story-grid" data-disp-grid>[\s\S]*?<time datetime="([^"]+)"/) || [])[1];
+  if (!newest) throw new Error("dispatch.html: no dated story card");
+  const mast = DS.masthead({
+    kicker: "Original reporting",
+    title: "Dispatch",
+    dek: htmlText(intro[1]),
+    metaHtml: `Updated ${DS.fmtDate(newest)} · <a href="${DS.esc(policy[1])}">How we report</a>`,
+    className: "ds-masthead--list",
+  });
+  let page = replaceOnce(live, hero, mast);
+  const aside =
+    '<aside class="ds-desk" aria-labelledby="ds-desk-h"><h2 id="ds-desk-h">The editorial desk</h2>' +
+    `<p>${intro[1].trim()}</p><ol>${steps.map((t) => `<li>${t}</li>`).join("")}</ol>` +
+    `<p><a href="${DS.esc(policy[1])}">${policy[2].replace(/\s*→\s*$/, "").trim()}<span aria-hidden="true"> →</span></a></p></aside>`;
+  const grid = one(page, /<section class="section"[^>]*>\s*<div class="story-grid" data-disp-grid>/, "Dispatch card grid");
+  page = replaceOnce(page, grid, `<div class="ds-list-layout">\n${grid}\n${aside}\n</div>`);
+  const lead = promoteFirstImage(page, /<a class="story-card"/, "(max-width: 760px) 100vw, 640px");
+  page = addBodyClass(lead.page, "ds-page ds-list ds-dispatch");
+  page = replaceOnce(page, "</main>", DS.previewFlag("/dispatch.html") + "\n</main>");
+  return previewHead(page, { live: "/dispatch.html", preload: lead.preload, root });
+}
+
+/**
+ * news.html: a compact masthead (it keeps #ns-reporting-date, which news-studio.js updates), the featured stories (#latest)
+ * straight after it, and a plain heading on the story library (its id stays for aria-labelledby).
+ */
+export function buildNews(root = ROOT) {
+  const live = read("news.html", root);
+  assertRootRelative(live, "/news.html");
+  const head = one(live, /<header class="ns-masthead"/, "news masthead");
+  const date = one(head, /<time id="ns-reporting-date"/, "#ns-reporting-date");
+  const title = htmlText(one(head, /<h1\b/, "news h1")).replace(/\.$/, "");
+  const lede = htmlText((head.match(/<div class="ns-intro">[\s\S]*?<\/h1>\s*<\/div>\s*<div>\s*<p>([\s\S]*?)<\/p>/) || [])[1] || "");
+  if (!lede) throw new Error("news.html: intro paragraph not found");
+  const daily = head.match(/<a href="(\/daily\.html)">/);
+  const mast = DS.masthead({
+    kicker: "Newsroom",
+    title,
+    dek: lede.split(/(?<=\.)\s/)[0],
+    metaHtml: `Reporting through ${date}` + (daily ? ` · <a href="${daily[1]}">Make it your Daily</a>` : ""),
+    className: "ds-masthead--list",
+  });
+  let page = replaceOnce(live, head, mast);
+  const lib = one(page, /<div class="ns-section-head"/, "news library heading");
+  if (!/id="ns-browse-heading"/.test(lib)) throw new Error("news.html: #ns-browse-heading moved");
+  const archive = lib.match(/<a class="ns-archive-link" href="(\/[^"]+)"/);
+  page = replaceOnce(page, lib, DS.sectionHead({ id: "ns-browse-heading", title: "All stories", href: archive ? archive[1] : "/dispatch.html", linkText: "Dispatch archive" }));
+  page = addBodyClass(page, "ds-page ds-list ds-news");
+  page = replaceOnce(page, "</main>", DS.previewFlag("/news.html") + "\n</main>");
+  return previewHead(page, { live: "/news.html", keepImagePreloads: true, root });
+}
+
 /** Three article types: a news story, a long feature, and a finance story with the share disclosure. */
 export const ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"];
 
 export const PAGES = [
   { out: "preview/index.html", build: buildHome },
+  { out: "preview/dispatch.html", build: buildDispatchList },
+  { out: "preview/news.html", build: buildNews },
   ...ARTICLES.map((slug) => ({ out: `preview/dispatch/${slug}.html`, build: (root) => buildArticle(slug, root) })),
 ];
 

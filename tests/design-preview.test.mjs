@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, children, buildHome, buildArticle, ARTICLES, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, htmlText, buildHome, buildArticle, buildDispatchList, buildNews, ARTICLES, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -222,6 +222,62 @@ for (const slug of ARTICLES) {
     assert.equal(buildArticle(slug), html, "the build is deterministic");
   });
 }
+
+const ids = (html) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+const hooks = (html, prefix) => new Set([...html.matchAll(new RegExp(`\\s(${prefix}[\\w-]*)`, "g"))].map((m) => m[1]));
+const hidden = (html) => {
+  assert.match(html, /<meta name="robots" content="noindex, nofollow" \/>/);
+  assert.equal((html.match(/<meta name="robots"/g) || []).length, 1);
+  assert.match(html, /<title>Preview · /);
+  assert.match(html, /class="ds-preview-flag"/);
+};
+
+test("htmlText drops tags and decodes entities", () => {
+  assert.equal(htmlText("Tesla&#x27;s <b>FSD</b> &amp; Grok&nbsp;news"), "Tesla's FSD & Grok news");
+});
+
+test("Dispatch list preview: compact masthead, the same cards and every browse hook", () => {
+  const live = read("dispatch.html");
+  const html = buildDispatchList();
+  hidden(html);
+  assert.ok(html.includes('<link rel="canonical" href="https://superchargeddaily.com/dispatch.html" />'));
+  assert.deepEqual([...html.matchAll(/<h1>([\s\S]*?)<\/h1>/g)].map((m) => m[1]), ["Dispatch"]);
+  assert.ok(!html.includes('class="ps-hero"'), "the old hero is gone");
+  // Card markup is what articles.json, new-article.py and the integrity check read: same cards, same order, same HTML
+  const cards = (h) => [...h.matchAll(/<a class="story-card"[\s\S]*?<\/a>/g)].map((m) => m[0].replace(' loading="eager" fetchpriority="high"', ' loading="lazy"'));
+  assert.deepEqual(cards(html), cards(live));
+  assert.match(html, /<div class="story-grid" data-disp-grid>/);
+  for (const h of hooks(live, "data-disp-")) assert.ok(hooks(html, "data-disp-").has(h), "keeps " + h);
+  for (const id of ids(live)) assert.ok(ids(html).has(id), "keeps #" + id);
+  // The newest card is the LCP image: eager, high priority, preloaded; no other image preload (the live page preloads card #119)
+  const first = html.match(/<a class="story-card"[\s\S]*?<\/a>/)[0];
+  assert.match(first, /loading="eager" fetchpriority="high"/);
+  assert.equal((html.match(/<link rel="preload" as="image"/g) || []).length, 1);
+  // The editorial desk follows the list, with the policy link and a plain heading
+  const grid = html.indexOf("data-disp-grid");
+  const desk = html.indexOf('<aside class="ds-desk"');
+  assert.ok(desk > grid, "the editorial desk comes after the cards");
+  assert.match(html.slice(desk), /^<aside class="ds-desk"[^>]*><h2 id="ds-desk-h">The editorial desk<\/h2>[\s\S]*?href="\/editorial\.html"/);
+  assert.ok(!/Beyond the headline/.test(html.slice(html.indexOf("<main"), html.indexOf("</main>"))), "no slogan heading");
+  assert.equal(buildDispatchList(), html, "the build is deterministic");
+});
+
+test("news preview: compact masthead keeps the date news-studio.js updates, then the featured stories", () => {
+  const live = read("news.html");
+  const html = buildNews();
+  hidden(html);
+  assert.ok(html.includes('<link rel="canonical" href="https://superchargeddaily.com/news.html" />'));
+  const h1 = [...html.matchAll(/<h1>([\s\S]*?)<\/h1>/g)].map((m) => m[1]);
+  assert.equal(h1.length, 1);
+  assert.ok(!/<br>|\.$/.test(h1[0]), "plain h1 text");
+  assert.equal((html.match(/id="ns-reporting-date"/g) || []).length, 1);
+  assert.ok(!html.includes('class="ns-masthead"'));
+  assert.match(html, /<\/header><section class="ns-front" id="latest"/, "featured stories follow the masthead");
+  assert.match(html, /<h2 id="ns-browse-heading">All stories<\/h2>/);
+  for (const id of ids(live)) assert.ok(ids(html).has(id), "keeps #" + id);
+  for (const h of hooks(live, "data-ns-")) assert.ok(hooks(html, "data-ns-").has(h), "keeps " + h);
+  assert.equal(buildNews(), html, "the build is deterministic");
+});
 
 test("committed previews are whole pages whose local files exist", () => {
   for (const p of PAGES) {

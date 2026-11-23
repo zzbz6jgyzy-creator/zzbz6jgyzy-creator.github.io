@@ -6,6 +6,7 @@ errors, and layout shift under 0.1. At 390x844 the news-first targets from the a
   story repeats between the lead and the latest list; the scripts still fill the live numbers and the launch list.
   articles: the lead photo or video (or the first paragraph when there is none) starts above 700px, with the
   headline, standfirst and byline above it; the h1 is the live article's own.
+  Dispatch list and news: the first story card starts above 450px.
 Run: python3 tests/design-preview-browser.py   (CHROMIUM_PATH may point at Chrome or Chromium)
 """
 import asyncio, html, os, pathlib, re, shutil, socket, subprocess, sys, time
@@ -21,11 +22,13 @@ ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "sp
 
 def live_h1(rel):
     m = re.search(r"<h1\b[^>]*>(.*?)</h1>", (ROOT / rel).read_text(), re.S)
-    return " ".join(html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).split())
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", m.group(1))).split())
 
 
 PAGES = [
     {"path": "/preview/index.html", "h1": "Tesla, SpaceX and xAI news", "kind": "home"},
+    {"path": "/preview/dispatch.html", "h1": "Dispatch", "kind": "list", "card": "[data-disp-grid] > .story-card:not([hidden])"},
+    {"path": "/preview/news.html", "h1": live_h1("news.html").rstrip("."), "kind": "list", "card": "#latest .ns-feature"},
 ] + [{"path": f"/preview/dispatch/{s}.html", "h1": live_h1(f"dispatch/{s}.html"), "kind": "article"} for s in ARTICLES]
 
 
@@ -68,6 +71,11 @@ async def check_article(page, tag):
     assert r["byline"] < r["top"], (tag, "the byline should sit above the lead", r)
 
 
+async def check_list(page, tag, card):
+    top = await page.evaluate("(sel) => Math.round(document.querySelector(sel).getBoundingClientRect().top + scrollY)", card)
+    assert top < 450, (tag, "the first story card starts too low", top)
+
+
 async def main():
     SHOTS.mkdir(parents=True, exist_ok=True)
     port = free_port()
@@ -103,6 +111,8 @@ async def main():
                                 await check_home(page, tag)
                             if w == 390 and spec["kind"] == "article":
                                 await check_article(page, tag)
+                            if w == 390 and spec["kind"] == "list":
+                                await check_list(page, tag, spec["card"])
                             if w in (390, 1440):
                                 await page.screenshot(path=str(SHOTS / f"{spec['path'].strip('/').replace('/', '_')}-{w}-{scheme}.png"), full_page=True)
                             print("PASS", tag)
