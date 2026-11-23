@@ -41,7 +41,7 @@ async def main():
     if scripts:await page.wait_for_function('window.__pn && window.__sdFind && window.__sdTheme')
     await page.evaluate('document.fonts.ready')
     nav=page.locator('.pn');sheet=page.locator('.pn-sheet')
-    assert await nav.locator('.ns-dropdown').count()==5
+    assert await nav.locator('.ns-dropdown').count()==6
     assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
     initial=await nav.bounding_box()
     for key in ['pn-search','pn-daily']:
@@ -51,10 +51,10 @@ async def main():
     if scripts:await page.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))')
     after=await nav.bounding_box()
     assert all(abs(initial[k]-after[k])<2 for k in ['x','y','width','height']),('header moved',initial,after)
-    if width<1080:
+    if width<1280:  # six menus fit from 1280px; below that the Menu button opens the sheet
      assert await nav.locator('.pn-menu').is_visible()
      await nav.locator('.pn-menu').click();await sheet.wait_for(state='visible')
-     assert await sheet.locator('.ns-mobile-section').count()==5
+     assert await sheet.locator('.ns-mobile-section').count()==6
      members=sheet.locator('.ns-mobile-members')
      assert await members.is_visible()
      member_box=await members.bounding_box();categories=await sheet.locator('.ns-mobile-categories').bounding_box()
@@ -130,7 +130,7 @@ async def main():
     assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
     print('PASS',width,theme,mode,flush=True)
    finally:await context.close()
-  for args in [(320,'dark','normal'),(390,'dark','normal'),(390,'light','normal'),(768,'dark','normal'),(768,'light','normal'),(1024,'dark','normal'),(1080,'dark','normal'),(1440,'dark','normal'),(1440,'light','normal'),(390,'dark','nojs'),(1440,'dark','nojs'),(390,'dark','offline'),(390,'dark','storage'),(390,'dark','large')]:
+  for args in [(320,'dark','normal'),(390,'dark','normal'),(390,'light','normal'),(768,'dark','normal'),(768,'light','normal'),(1024,'dark','normal'),(1080,'dark','normal'),(1280,'dark','normal'),(1440,'dark','normal'),(1440,'light','normal'),(390,'dark','nojs'),(1440,'dark','nojs'),(390,'dark','offline'),(390,'dark','storage'),(390,'dark','large')]:
    await asyncio.wait_for(scenario(*args),timeout=90)
   await browser.close()
 asyncio.run(main())

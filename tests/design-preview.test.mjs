@@ -378,19 +378,14 @@ test("tracker previews keep the script contracts the plan names", () => {
   assert.match(pd, /<div hidden><div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight stays for production-studio.js, hidden");
 });
 
-test("in the proposed nav no menu list repeats a link, Grok has a menu, and every link resolves", () => {
-  const live = JSON.parse(read("scripts/nav.json"));
-  const next = JSON.parse(read("scripts/nav.next.json"));
+test("no nav menu list repeats a link, Grok has a menu, and every link resolves", () => {
+  const next = JSON.parse(read("scripts/nav.json"));
   const groupLinks = (cfg) => cfg.dropdowns.flatMap((d) => d.groups.flatMap((g) => g.items.map((i) => i[1])));
   const dupes = (list) => list.length - new Set(list).size;
-  assert.ok(dupes(groupLinks(live)) > 0, "today's nav repeats links (the reason for the change)");
   assert.equal(dupes(groupLinks(next)), 0, "no link appears in two menu lists (feature cards may point at a listed page)");
   assert.deepEqual(next.dropdowns.map((d) => d.label), ["News", "Tesla", "SpaceX", "Grok", "Trackers", "Explore"]);
   assert.deepEqual(next.mobileShortcuts, [], "the phone Quick access list goes");
-  assert.ok(groupLinks(next).includes("/cybercab.html"));
   assert.ok(next.dropdowns.flatMap((d) => d.groups.flatMap((g) => g.items)).some((i) => i[0] === "Cybercab fleet" && i[1] === "/cybercab.html"));
-  // Nothing reachable today disappears from the menus
-  for (const h of groupLinks(live)) assert.ok(groupLinks(next).includes(h) || next.dropdowns.some((d) => (d.landing || [])[1] === h || (d.feature || {}).href === h), "keeps " + h);
   for (const d of next.dropdowns) {
     for (const h of [...d.groups.flatMap((g) => g.items.map((i) => i[1])), (d.landing || [])[1], (d.feature || {}).href].filter(Boolean)) {
       const [file, hash] = h.replace(/\?[^#]*/, "").split("#");
@@ -410,7 +405,8 @@ test("every preview carries the proposed nav and the hooks members.js needs", ()
     assert.match(nav, /<nav class="pn"[^>]*data-nav-studio/);
     assert.ok(nav.includes("data-ns-account"));
   }
-  assert.ok(read("index.html").includes("Quick access"), "the live nav is unchanged until the switch");
+  const liveNav = between(read("index.html"), "<!--sd:navigation-->", "<!--/sd:navigation-->");
+  assert.ok(liveNav.includes('aria-controls="pn-grok"') && !liveNav.includes("Quick access"), "the live nav is the six-menu nav since the switch");
 });
 
 test("committed previews are whole pages whose local files exist", () => {

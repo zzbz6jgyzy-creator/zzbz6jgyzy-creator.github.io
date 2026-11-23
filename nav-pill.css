@@ -167,3 +167,12 @@ html[data-theme=light] .pn-sheet[data-nav-studio] .pn-sheet-head{background:tran
 .pn-sheet[data-nav-studio],html[data-theme=light] aside.pn-sheet[data-nav-studio]{background:var(--sdn-bg);-webkit-backdrop-filter:none;backdrop-filter:none}
 .pn-sheet[data-nav-studio] .pn-sheet-head,html[data-theme=light] .pn-sheet[data-nav-studio] .pn-sheet-head{background:var(--sdn-bg);-webkit-backdrop-filter:none;backdrop-filter:none}
 }
+/* Six menus need about 85px more than the bar used to hold: the keyboard hint goes (the shortcut still works), the menu
+   buttons tighten, and below 1280px the bar shows the Menu button instead of the menus. */
+.pn[data-nav-studio] .pn-utilities kbd { display: none; }
+.pn[data-nav-studio] .pn-items summary { padding-inline: 8px; }
+@media (min-width: 1080px) and (max-width: 1279px) {
+  .pn[data-nav-studio] .pn-items { display: none; }
+  .pn[data-nav-studio] .pn-menu { display: flex; border: 1px solid var(--sdn-line); font-weight: 600; }
+  .pn[data-nav-studio] .pn-utilities { margin-left: auto; }
+}

@@ -7,7 +7,7 @@ SITE='https://superchargeddaily.com'
 async def main():
  async with async_playwright() as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
-  for width,height in [(1080,768),(1440,900)]:
+  for width,height in [(1280,800),(1440,900)]:
    c=await browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce');c.set_default_timeout(12000)
    page=await c.new_page()
    async def route(r):

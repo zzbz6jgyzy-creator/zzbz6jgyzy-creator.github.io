@@ -110,7 +110,7 @@ export function assertRootRelative(html, label) {
 
 const navCache = new Map();
 /**
- * Swaps the live navigation for the proposed one in scripts/nav.next.json (no duplicate links, a Grok menu, "Cybercab
+ * Renders the navigation from scripts/nav.json (no duplicate links, a Grok menu, "Cybercab
  * fleet", no phone "Quick access" list). sync-nav.py renders it, so the markup is exactly what the switch would ship.
  */
 export function withNextNav(html, root = ROOT) {
@@ -118,7 +118,7 @@ export function withNextNav(html, root = ROOT) {
   const tag = (block.match(/<nav class="pn"[^>]*>/) || [])[0];
   if (!tag) throw new Error('No <nav class="pn"> in the navigation block');
   if (!navCache.has(tag)) {
-    navCache.set(tag, execFileSync("python3", [path.join(root, "scripts/sync-nav.py"), "--block", "scripts/nav.next.json"], { input: tag, encoding: "utf8", cwd: root }));
+    navCache.set(tag, execFileSync("python3", [path.join(root, "scripts/sync-nav.py"), "--block", "scripts/nav.json"], { input: tag, encoding: "utf8", cwd: root }));
   }
   return replaceOnce(html, block, navCache.get(tag));
 }
@@ -136,7 +136,8 @@ export function previewHead(html, { live, section = "", preload = "", keepImageP
   if (!keepImagePreloads) h = h.replace(/\s*<link rel="preload" as="image"[^>]*>/g, "");
   const css = [];
   if (section && !h.includes("/section-theme.css")) css.push(`<link rel="stylesheet" href="/section-theme.css?v=${sectionCssVersion(root)}" />`);
-  css.push(`<link rel="stylesheet" href="/ds.css?v=${DS_CSS_V}" />`, `<link rel="stylesheet" href="/ds-preview.css?v=${DS_CSS_V}" />`);
+  if (!h.includes('href="/ds.css')) css.push(`<link rel="stylesheet" href="/ds.css?v=${DS_CSS_V}" />`); // live pages carry it since the switch
+  css.push(`<link rel="stylesheet" href="/ds-preview.css?v=${DS_CSS_V}" />`);
   h = replaceOnce(h, "</head>", (preload ? "    " + preload + "\n" : "") + "    " + css.join("\n    ") + "\n  </head>");
   h = withNextNav(h, root);
   // inject-js-bundles.py (run by the bots on every page, previews included) collapses blank-line runs the same way;

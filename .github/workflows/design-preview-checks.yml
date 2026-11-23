@@ -9,7 +9,6 @@ on:
       - 'scripts/build-design-preview.mjs'
       - 'scripts/sync-nav.py'
       - 'scripts/nav.json'
-      - 'scripts/nav.next.json'
       - 'scripts/inject-js-bundles.py'
       - 'scripts/check-site-integrity.py'
       - 'index.html'
