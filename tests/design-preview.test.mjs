@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildHome, buildArticle, buildDispatchList, buildNews, buildTeslaHub, buildSpacexHub, buildGrokHub, ARTICLES, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildHome, buildArticle, buildDispatchList, buildNews, buildTeslaHub, buildSpacexHub, buildGrokHub, buildFsdTracker, buildStarship, buildCybercab, buildCalendar, buildStarlink, buildProduction, ARTICLES, articles, HOME_TOOLS, PAGES } from "../scripts/build-design-preview.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -326,6 +326,46 @@ test("Grok key numbers are the newest official release per product, each dated a
   assert.ok(tiles.length >= 2 && tiles.length <= 3, "two or three release tiles");
   assert.equal(new Set(tiles.map((t) => t[1])).size, tiles.length, "one tile per product");
   for (const t of tiles) assert.match(t[3], /^\d{1,2} [A-Z][a-z]{2,3} \d{4}$/);
+});
+
+const TRACKERS = [
+  { file: "fsd-tracker", build: buildFsdTracker, title: "FSD tracker", hero: /<header class="ft-hero">/, inMast: ['class="ft-kpis"', 'class="ft-jump"'] },
+  { file: "starship", build: buildStarship, title: "Starship flights", hero: /<header class="ss-hero" id="top">/, inMast: ['id="ss-hero-next"', 'id="ss-hero-window"', 'id="ss-source-date"', 'class="ds-band"'] },
+  { file: "cybercab", build: buildCybercab, title: "Cybercab fleet", hero: null, inMast: ['class="ds-band"', "Texas registry as of"] },
+  { file: "calendar", build: buildCalendar, title: "Launch calendar", hero: /<div id="cs-hero">/, inMast: ["Launch times as of"] },
+  { file: "starlink", build: buildStarlink, title: "Starlink tracker", hero: /<header class="so-mast">/, inMast: ['class="so-source-strip"', 'class="so-metrics"'] },
+  { file: "production", build: buildProduction, title: "Tesla production and deliveries", hero: /<header class="pd-hero">/, inMast: ['id="pd-quarter"', 'id="pd-stats"', 'id="pd-spotlight"', 'id="pd-view-note"'] },
+];
+for (const t of TRACKERS) {
+  test(`${t.file} tracker preview: plain title, its own key numbers in the masthead, every hook kept`, () => {
+    const live = read(`${t.file}.html`);
+    const html = t.build();
+    hidden(html);
+    assert.ok(html.includes(`<link rel="canonical" href="https://superchargeddaily.com/${t.file}.html" />`));
+    assert.deepEqual([...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => m[1]), [t.title]);
+    const mast = one(html, /<header class="ds-masthead"/, "masthead");
+    for (const x of t.inMast) assert.ok(mast.includes(x), `the masthead holds ${x}`);
+    const gone = t.hero ? heroOnlyIds(live, t.hero) : new Set();
+    for (const id of ids(live)) assert.ok(ids(html).has(id) || gone.has(id), "keeps #" + id);
+    for (const h of hooks(live, "data-")) {
+      if (/^data-(countup|open|view|mw-|so-|cs-|ss-|pd-|ft-)/.test(h)) assert.ok(hooks(html, "data-").has(h), "keeps " + h);
+    }
+    assert.equal(t.build(), html, "the build is deterministic");
+  });
+}
+
+test("tracker previews keep the script contracts the plan names", () => {
+  const cal = buildCalendar();
+  assert.ok(cal.includes('<template id="cs-hero"></template>') && !cal.includes('<div id="cs-hero">'), "calendar-studio.js writes into an inert stub");
+  const cyber = buildCybercab();
+  assert.ok(cyber.indexOf('<header class="ds-masthead') < cyber.indexOf('<div id="mw-app"'), "the Cybercab masthead sits before #mw-app");
+  assert.match(cyber, /<header class="mw-hero" hidden>[\s\S]*?<p class="mw-hero-title">/, "the old hero stays inside #mw-app, hidden, without its h1");
+  const sl = buildStarlink();
+  const ws = sl.indexOf('<div class="so-workspace"');
+  assert.ok(ws > -1 && sl.indexOf('<header class="ds-masthead') > ws, "the Starlink masthead is inside .so-workspace");
+  assert.match(sl, /<section class="so-hero" id="overview"[^>]*>[\s\S]*?<h2 id="so-title"/, "#overview stays, with its old h1 as an h2");
+  const pd = buildProduction();
+  assert.match(pd, /<div hidden><div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight stays for production-studio.js, hidden");
 });
 
 test("committed previews are whole pages whose local files exist", () => {

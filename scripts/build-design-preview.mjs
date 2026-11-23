@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const DS = require("../ds-components.js");
 const SITE = "https://superchargeddaily.com";
-export const DS_CSS_V = "20261123c"; // bump when ds.css or ds-preview.css changes
+export const DS_CSS_V = "20261123d"; // bump when ds.css or ds-preview.css changes
 
 const read = (rel, root = ROOT) => fs.readFileSync(path.join(root, rel), "utf8");
 
@@ -102,7 +102,8 @@ function sectionCssVersion(root) {
 
 /** Previews live one folder deeper (/preview/...), so every local URL in a source page must be root-relative. */
 export function assertRootRelative(html, label) {
-  const bad = [...html.matchAll(/\s(?:src|href|poster|action)="(?!\/|https?:|#|mailto:|tel:|data:|javascript:|\{)([^"]+)"/gi)].map((m) => m[1]);
+  // Query-only links ("?event=x") stay on the same page wherever it lives, and any URL with a scheme is absolute.
+  const bad = [...html.matchAll(/\s(?:src|href|poster|action)="(?!\/|#|\?|\{|[a-z][a-z0-9+.-]*:)([^"]+)"/gi)].map((m) => m[1]);
   if (bad.length) throw new Error(`${label}: relative URLs would break under /preview/: ${bad.slice(0, 3).join(", ")}`);
 }
 
@@ -487,6 +488,159 @@ export function buildGrokHub(root = ROOT) {
   return finishHub(page, liveUrl, "grok", root);
 }
 
+// ---- Trackers: plain title, dek, updated/source line and the tracker's own key numbers; the tool starts right after ----
+
+function finishTracker(page, liveUrl, slug, section, root) {
+  page = addBodyClass(page, `ds-page ds-tracker ds-tracker-${slug}`);
+  page = replaceOnce(page, "</main>", DS.previewFlag(liveUrl) + "\n</main>");
+  return previewHead(page, { live: liveUrl, section, keepImagePreloads: true, root });
+}
+
+const firstSentence = (text) => text.split(/(?<=[.?!])\s/)[0];
+
+export function buildFsdTracker(root = ROOT) {
+  const liveUrl = "/fsd-tracker.html";
+  const live = read("fsd-tracker.html", root);
+  assertRootRelative(live, liveUrl);
+  const hero = one(live, /<header class="ft-hero">/, "FSD tracker hero");
+  const kpis = one(hero, /<div class="ft-kpis">/, ".ft-kpis");
+  const jump = one(hero, /<nav class="ft-jump"/, ".ft-jump");
+  const meta = (hero.match(/<p class="ft-hero-meta">([\s\S]*?)<\/p>/) || [])[1];
+  const lede = htmlText((hero.match(/<p class="ft-lede">([\s\S]*?)<\/p>/) || [])[1] || "");
+  if (!meta || !lede) throw new Error("fsd-tracker.html: hero lede or meta changed shape");
+  const mast = DS.masthead({ kicker: "Tesla", title: "FSD tracker", dek: firstSentence(lede), metaHtml: meta, statsHtml: `<div class="ds-tracker-numbers">${kpis}</div>`, extraHtml: jump });
+  return finishTracker(replaceOnce(live, hero, mast), liveUrl, "fsd", "", root);
+}
+
+/** Starship: the next-flight card (#ss-hero-next, #ss-hero-window) and #ss-source-date move into the masthead. */
+export function buildStarship(root = ROOT) {
+  const liveUrl = "/starship.html";
+  const live = read("starship.html", root);
+  assertRootRelative(live, liveUrl);
+  const top = one(live, /<div class="ss-topline">/, "Starship top line");
+  const date = one(top, /<span id="ss-source-date"/, "#ss-source-date");
+  const hero = one(live, /<header class="ss-hero" id="top">/, "Starship hero");
+  const img = (hero.match(/<img class="ss-hero-photo"[^>]*>/) || [])[0];
+  const brief = one(hero, /<a class="ss-hero-brief"/, "next-flight card");
+  const credit = one(live, /<p class="ss-photo-credit">/, "photo credit");
+  if (!img) throw new Error("starship.html: hero photo missing");
+  const mast = DS.masthead({
+    id: "top",
+    kicker: "SpaceX",
+    title: "Starship flights",
+    dek: "Every Starship flight so far and the next one, with dated sources.",
+    metaHtml: `${date} · <a href="#sources">Sources</a>`,
+    statsHtml: `<div class="ds-tracker-numbers">${brief}</div>`,
+    extraHtml: bandFrom(`<picture>${img}</picture>`, credit.replace(/^<p class="ss-photo-credit">/, "").replace(/<\/p>$/, "")),
+  });
+  let page = replaceOnce(live, credit, "");
+  page = replaceOnce(page, hero, "");
+  page = replaceOnce(page, top, mast);
+  return finishTracker(page, liveUrl, "starship", "spacex", root);
+}
+
+/**
+ * Cybercab: the masthead sits before #mw-app. The old hero stays inside it, hidden, with its h1 demoted, because
+ * build-mobility.mjs renders #mw-app whole; the overview's own metrics then sit just under the masthead.
+ */
+export function buildCybercab(root = ROOT) {
+  const liveUrl = "/cybercab.html";
+  const live = read("cybercab.html", root);
+  assertRootRelative(live, liveUrl);
+  const app = (live.match(/<div id="mw-app"[^>]*>/) || [])[0];
+  const hero = one(live, /<header class="mw-hero">/, "Cybercab hero");
+  const small = (hero.match(/<p class="mw-small">([\s\S]*?)<\/p>/) || [])[1];
+  const fig = one(hero, /<figure class="mw-studio">/, "Cybercab studio figure");
+  const pic = one(fig, /<picture>/, "studio picture");
+  const cap = ((fig.match(/<figcaption>[\s\S]*?<span>([\s\S]*?)<\/span><\/figcaption>/) || [])[1] || "").trim();
+  if (!app || !small || !cap) throw new Error("cybercab.html: #mw-app, the registry line or the photo credit changed shape");
+  const mast = DS.masthead({
+    kicker: "Tesla Robotaxi",
+    title: "Cybercab fleet",
+    dek: "Where Tesla's Cybercabs and Robotaxis run, how many there are, and the evidence behind each claim.",
+    metaHtml: small,
+    extraHtml: bandFrom(pic, cap),
+  });
+  const quiet = hero.replace(/<h1>([\s\S]*?)<\/h1>/, '<p class="mw-hero-title">$1</p>').replace('<header class="mw-hero">', '<header class="mw-hero" hidden>');
+  let page = replaceOnce(live, hero, quiet);
+  page = replaceOnce(page, app, mast + "\n" + app);
+  return finishTracker(page, liveUrl, "cybercab", "", root);
+}
+
+/** Calendar: calendar-studio.js rewrites #cs-hero on start, so it becomes an inert <template> stub after the masthead. */
+export function buildCalendar(root = ROOT) {
+  const liveUrl = "/calendar.html";
+  const live = read("calendar.html", root);
+  assertRootRelative(live, liveUrl);
+  const hero = one(live, /<div id="cs-hero">/, "#cs-hero");
+  const asOf = (live.match(/Launch times as of ([^<.]+)\./) || [])[1];
+  if (!asOf) throw new Error("calendar.html: launch-times stamp missing");
+  const mast = DS.masthead({
+    kicker: "Tesla, SpaceX and xAI",
+    title: "Launch calendar",
+    dek: "Launches, Tesla events and earnings calls, with how certain each date is.",
+    metaHtml: `Launch times as of ${DS.esc(asOf.trim())} · Targets can change`,
+  });
+  let page = replaceOnce(live, hero, mast + '<template id="cs-hero"></template>');
+  // The week strip and filters are hidden until the script flags #cs-app; with the old hero gone they sit in the first
+  // screen, so the preview ships the flag and they are there from first paint instead of pushing the page down.
+  page = replaceOnce(page, '<div id="cs-app">', '<div id="cs-app" class="cs-enhanced">');
+  return finishTracker(page, liveUrl, "calendar", "", root);
+}
+
+/** Starlink: the masthead replaces the workspace's top line; the source strip and key figures move into it (still inside .so-workspace). */
+export function buildStarlink(root = ROOT) {
+  const liveUrl = "/starlink.html";
+  const live = read("starlink.html", root);
+  assertRootRelative(live, liveUrl);
+  const mastLine = one(live, /<header class="so-mast">/, "Starlink top line");
+  const strip = one(live, /<div class="so-source-strip">/, "source strip");
+  const metrics = one(live, /<section class="so-metrics"/, "key figures");
+  const overview = one(live, /<section class="so-hero" id="overview"/, "#overview");
+  const quietOverview = overview.replace(/<h1 id="so-title">([\s\S]*?)<\/h1>/, '<h2 id="so-title" class="so-hero-title">$1</h2>');
+  if (quietOverview === overview) throw new Error("starlink.html: the overview h1 moved");
+  const mast = DS.masthead({
+    kicker: "SpaceX",
+    title: "Starlink tracker",
+    dek: "How many Starlink satellites are in orbit, how the constellation is built, and what is passing above you.",
+    statsHtml: `<div class="ds-tracker-numbers">${strip}${metrics}</div>`,
+  });
+  let page = replaceOnce(live, strip, "");
+  page = replaceOnce(page, metrics, "");
+  page = replaceOnce(page, overview, quietOverview);
+  page = replaceOnce(page, mastLine, mast);
+  return finishTracker(page, liveUrl, "starlink", "spacex", root);
+}
+
+/** Production: the quarter picker (#pd-quarter) and the stats (#pd-stats) move into the masthead; #pd-spotlight stays, hidden. */
+export function buildProduction(root = ROOT) {
+  const liveUrl = "/production.html";
+  const live = read("production.html", root);
+  assertRootRelative(live, liveUrl);
+  const hero = one(live, /<header class="pd-hero">/, "production hero");
+  const picker = one(hero, /<div class="pd-quarter-select/, "quarter picker");
+  const spot = one(hero, /<div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight");
+  const note = one(live, /<p class="pd-view-note" id="pd-view-note">/, "#pd-view-note");
+  const status = one(live, /<p class="pd-status" id="pd-status"/, "#pd-status");
+  const stats = one(live, /<div class="pd-stats" id="pd-stats">/, "#pd-stats");
+  const published = (spot.match(/published ([^<]+)</) || [])[1];
+  if (!published) throw new Error("production.html: publication date missing from the spotlight");
+  const mast = DS.masthead({
+    kicker: "Tesla",
+    title: "Tesla production and deliveries",
+    dek: "Tesla's quarterly production, deliveries and energy storage, from its official reports.",
+    metaHtml: `Latest report published ${DS.esc(published.trim())} · <a href="#sources">Sources</a>`,
+    statsHtml: `<div class="ds-tracker-numbers">${picker}${note}${status}${stats}<div hidden>${spot}</div></div>`,
+  });
+  let page = replaceOnce(live, note, "");
+  page = replaceOnce(page, status, "");
+  page = replaceOnce(page, stats, "");
+  page = replaceOnce(page, hero, mast);
+  // Same for the quarter picker, which the script shows by flagging main.pd-studio.
+  page = replaceOnce(page, '<main id="main" class="pd-studio">', '<main id="main" class="pd-studio" data-enhanced="true">');
+  return finishTracker(page, liveUrl, "production", "", root);
+}
+
 /** Three article types: a news story, a long feature, and a finance story with the share disclosure. */
 export const ARTICLES = ["tesla-cybercab-dallas-launch", "starship-every-flight-1-to-15", "spacex-q3-2026-results"];
 
@@ -497,6 +651,12 @@ export const PAGES = [
   { out: "preview/tesla.html", build: buildTeslaHub },
   { out: "preview/spacex.html", build: buildSpacexHub },
   { out: "preview/grok.html", build: buildGrokHub },
+  { out: "preview/fsd-tracker.html", build: buildFsdTracker },
+  { out: "preview/starship.html", build: buildStarship },
+  { out: "preview/cybercab.html", build: buildCybercab },
+  { out: "preview/calendar.html", build: buildCalendar },
+  { out: "preview/starlink.html", build: buildStarlink },
+  { out: "preview/production.html", build: buildProduction },
   ...ARTICLES.map((slug) => ({ out: `preview/dispatch/${slug}.html`, build: (root) => buildArticle(slug, root) })),
 ];
 

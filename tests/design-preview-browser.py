@@ -8,6 +8,7 @@ errors, and layout shift under 0.1. At 390x844 the news-first targets from the a
   headline, standfirst and byline above it; the h1 is the live article's own.
   Dispatch list and news: the first story card starts above 450px.
   hubs: the first story headline starts in the first screen (above 800px, so at least its first line shows).
+  trackers: the tracker's first key number (or the calendar's week strip) is fully inside the first screen.
 Run: python3 tests/design-preview-browser.py   (CHROMIUM_PATH may point at Chrome or Chromium)
 """
 import asyncio, html, os, pathlib, re, shutil, socket, subprocess, sys, time
@@ -34,6 +35,12 @@ PAGES = [
     {"path": "/preview/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
     {"path": "/preview/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},
     {"path": "/preview/grok.html", "h1": "Grok and xAI: models, plans and news", "kind": "hub"},
+    {"path": "/preview/fsd-tracker.html", "h1": "FSD tracker", "kind": "tracker", "key": ".ds-tracker-numbers .ft-kpi-value"},
+    {"path": "/preview/starship.html", "h1": "Starship flights", "kind": "tracker", "key": "#ss-hero-next"},
+    {"path": "/preview/cybercab.html", "h1": "Cybercab fleet", "kind": "tracker", "key": ".mw-metric strong"},
+    {"path": "/preview/calendar.html", "h1": "Launch calendar", "kind": "tracker", "key": ".cs-week-strip"},
+    {"path": "/preview/starlink.html", "h1": "Starlink tracker", "kind": "tracker", "key": ".ds-tracker-numbers .so-metrics strong"},
+    {"path": "/preview/production.html", "h1": "Tesla production and deliveries", "kind": "tracker", "key": "#pd-stats strong"},
 ]
 
 
@@ -86,6 +93,11 @@ async def check_hub(page, tag):
     assert top < 800, (tag, "the first story headline is below the first screen", top)
 
 
+async def check_tracker(page, tag, key):
+    r = await page.evaluate("(sel) => { const e = document.querySelector(sel); const b = e.getBoundingClientRect(); return { top: Math.round(b.top + scrollY), bottom: Math.round(b.bottom + scrollY) }; }", key)
+    assert r["bottom"] <= 844, (tag, "the key number is not fully in the first screen", key, r)
+
+
 async def main():
     SHOTS.mkdir(parents=True, exist_ok=True)
     port = free_port()
@@ -125,6 +137,8 @@ async def main():
                                 await check_list(page, tag, spec["card"])
                             if w == 390 and spec["kind"] == "hub":
                                 await check_hub(page, tag)
+                            if w == 390 and spec["kind"] == "tracker":
+                                await check_tracker(page, tag, spec["key"])
                             if w in (390, 1440):
                                 await page.screenshot(path=str(SHOTS / f"{spec['path'].strip('/').replace('/', '_')}-{w}-{scheme}.png"), full_page=True)
                             print("PASS", tag)
