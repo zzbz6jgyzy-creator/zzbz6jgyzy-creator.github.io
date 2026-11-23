@@ -1,0 +1,161 @@
+/* Dispatch list, news-first layout (redesign switch, 23 Nov 2026; built on ds.css). Only dispatch.html links it. */
+/* ---- List pages: Dispatch list and news.html (compact masthead, tools, then the first card).
+   Selectors start with html so they beat theme.css's light-mode patches, which theme.js moves to the end of the head. ---- */
+html body.ds-list main#main { max-width: var(--ds-max) !important; width: calc(100% - 2 * var(--ds-gutter)); margin: 0 auto var(--ds-sp-8) !important; padding: 0 !important; }
+html body.ds-list .ds-masthead { width: auto; gap: var(--ds-sp-2); margin-block: var(--ds-sp-4) var(--ds-sp-5); }
+.ds-masthead--list h1 { font-size: clamp(2rem, 1.7rem + 1.4vw, 2.75rem); }
+/* Page CSS sets looser paragraph leading inside main; the masthead keeps the system's */
+html body.ds-list .ds-masthead .ds-dek { line-height: 1.5; }
+html body.ds-list .ds-masthead .ds-meta { line-height: 1.5; }
+/* Dispatch tools: one chip row (scrolls on a phone), search, then the count and the sort */
+html body.ds-dispatch #dispatch-archive { margin: 0; padding: 0; border: 0; }
+html body.ds-dispatch .sd-disp-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "chips chips" "find find" "status sort";
+  align-items: center;
+  gap: var(--ds-sp-3);
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+}
+html body.ds-dispatch .sd-disp-chips { grid-area: chips; display: flex; flex-wrap: nowrap; gap: var(--ds-sp-2); min-height: 0; overflow-x: auto; scrollbar-width: none; }
+html body.ds-dispatch .sd-disp-chips::-webkit-scrollbar { display: none; }
+html body.ds-dispatch .sd-disp-chip {
+  flex: none;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--ds-line-2);
+  border-radius: var(--ds-r-pill);
+  background: transparent;
+  color: var(--ds-ink);
+  font: 500 var(--ds-fs-14) / 1 var(--ds-font);
+  text-align: center;
+  white-space: nowrap;
+}
+html body.ds-dispatch .sd-disp-chip:hover { border-color: var(--ds-ink-2); color: var(--ds-ink); }
+html body.ds-dispatch .sd-disp-chip.is-on { border-color: var(--ds-ink); background: var(--ds-ink); color: var(--ds-bg); }
+html body.ds-dispatch .sd-disp-chip:focus-visible { outline: 2px solid var(--ds-accent); outline-offset: 2px; }
+html body.ds-dispatch .sd-disp-find { grid-area: find; display: flex; flex-wrap: nowrap; gap: var(--ds-sp-2); margin: 0; max-width: none; }
+html body.ds-dispatch .sd-disp-find input {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 var(--ds-sp-4);
+  border: 1px solid var(--ds-line-2);
+  border-radius: var(--ds-r-input);
+  background: var(--ds-surface);
+  color: var(--ds-ink);
+  font: 400 var(--ds-fs-16) / 1 var(--ds-font);
+}
+html body.ds-dispatch .sd-disp-find button {
+  flex: none;
+  width: auto;
+  min-height: 44px;
+  padding: 0 var(--ds-sp-4);
+  border: 1px solid var(--ds-line-2);
+  border-radius: var(--ds-r-input);
+  background: transparent;
+  color: var(--ds-ink);
+  font: 600 var(--ds-fs-14) / 1 var(--ds-font);
+}
+html body.ds-dispatch .sd-disp-sort { grid-area: sort; display: flex; gap: var(--ds-sp-1); }
+html body.ds-dispatch .sd-disp-sort .sd-disp-chip { min-height: 32px; padding: 0 12px; font-size: var(--ds-fs-12); }
+html body.ds-dispatch .sd-disp-status { grid-area: status; margin: 0; font: 500 var(--ds-fs-12) / 1.4 var(--ds-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-ink-2); }
+/* The nav's Search button does this on a phone, so the link shows from tablet up */
+html body.ds-dispatch .sd-disp-site { display: none; grid-area: site; margin: 0; font: 500 var(--ds-fs-14) / 1.4 var(--ds-font); }
+html body.ds-dispatch .sd-disp-site a { color: var(--ds-ink); text-decoration: underline; text-underline-offset: 3px; }
+/* Cards: the markup stays (articles.json, new-article.py and the integrity check read it); only the look changes.
+   On a phone each story is a row like the homepage's Latest list; the newest story stays big. */
+html body.ds-dispatch .ds-list-layout > .section { width: auto !important; max-width: none !important; margin: 0; padding: var(--ds-sp-4) 0 0 !important; }
+html body.ds-dispatch [data-disp-grid] { display: grid; grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; margin: 0; }
+html body.ds-dispatch [data-disp-grid] .story-card {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 72px;
+  grid-template-rows: auto;
+  gap: var(--ds-sp-3);
+  align-items: start;
+  min-width: 0;
+  padding: 10px 0;
+  border: 0;
+  border-top: 1px solid var(--ds-line);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: inherit;
+  text-decoration: none;
+  transform: none !important;
+  animation: none !important;
+}
+html body.ds-dispatch [data-disp-grid] > .story-card { grid-column: 1 / -1 !important; }
+html body.ds-dispatch [data-disp-grid] .story-card[hidden] { display: none !important; }
+html body.ds-dispatch [data-disp-grid] .story-card > picture {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  height: auto !important;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--ds-r-input);
+  overflow: hidden;
+  background: var(--ds-surface);
+}
+html body.ds-dispatch [data-disp-grid] .story-card img { width: 100% !important; height: 100% !important; object-fit: cover; transform: none !important; }
+html body.ds-dispatch [data-disp-grid] .story-copy { grid-column: 1; grid-row: 1; display: block; padding: 0 !important; }
+html body.ds-dispatch [data-disp-grid] .story-copy .tag {
+  display: block;
+  margin: 0 0 var(--ds-sp-1);
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  font: 500 var(--ds-fs-12) / 1.3 var(--ds-mono) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase;
+  color: var(--ds-topic-tesla) !important;
+}
+html body.ds-dispatch [data-disp-grid] .story-copy .tag-spacex { color: var(--ds-topic-spacex) !important; }
+html body.ds-dispatch [data-disp-grid] .story-copy .tag-xai { color: var(--ds-topic-xai) !important; }
+html body.ds-dispatch [data-disp-grid] .story-copy :is(h2, h3) { margin: 0 !important; font: 600 var(--ds-fs-16) / 1.32 var(--ds-font) !important; letter-spacing: 0 !important; color: var(--ds-ink); text-wrap: pretty; }
+html body.ds-dispatch [data-disp-grid] .story-copy > p:not(.sd-disp-meta) { display: none; margin: var(--ds-sp-1) 0 0; font: 400 var(--ds-fs-14) / 1.5 var(--ds-font) !important; color: var(--ds-ink-2) !important; }
+html body.ds-dispatch [data-disp-grid] .story-copy .sd-disp-meta { margin: var(--ds-sp-1) 0 0; font: 400 var(--ds-fs-12) / 1.3 var(--ds-mono) !important; letter-spacing: 0; color: var(--ds-ink-2); }
+html body.ds-dispatch [data-disp-grid] .story-card:hover :is(h2, h3) { text-decoration: underline; text-underline-offset: 3px; }
+/* The newest story leads, big. Before dispatch-browse.js runs the first card takes the look, so nothing shifts. */
+html body.ds-dispatch [data-disp-grid]:not(.disp-ready) > .story-card:first-child,
+html body.ds-dispatch [data-disp-grid] > .story-card.disp-featured { grid-template-columns: minmax(0, 1fr); padding: 0 0 var(--ds-sp-4); border-top: 0; }
+html body.ds-dispatch [data-disp-grid]:not(.disp-ready) > .story-card:first-child > picture,
+html body.ds-dispatch [data-disp-grid] > .story-card.disp-featured > picture { grid-column: 1; grid-row: 1; aspect-ratio: 16 / 9; border-radius: var(--ds-r-card); }
+html body.ds-dispatch [data-disp-grid]:not(.disp-ready) > .story-card:first-child .story-copy,
+html body.ds-dispatch [data-disp-grid] > .story-card.disp-featured .story-copy { grid-row: 2; }
+html body.ds-dispatch [data-disp-grid]:not(.disp-ready) > .story-card:first-child .story-copy :is(h2, h3),
+html body.ds-dispatch [data-disp-grid] > .story-card.disp-featured .story-copy :is(h2, h3) { font-size: var(--ds-fs-22) !important; line-height: 1.22 !important; letter-spacing: -0.01em !important; }
+html body.ds-dispatch [data-disp-grid]:not(.disp-ready) > .story-card:first-child .story-copy > p:not(.sd-disp-meta),
+html body.ds-dispatch [data-disp-grid] > .story-card.disp-featured .story-copy > p:not(.sd-disp-meta) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+html body.ds-dispatch [data-disp-grid] .story-card.disp-featured .tag::before { content: none; }
+html body.ds-dispatch .sd-disp-more { min-height: 44px; margin: var(--ds-sp-5) auto 0; border: 1px solid var(--ds-line-2); background: transparent; color: var(--ds-ink); font: 600 var(--ds-fs-14) / 1 var(--ds-font); }
+html body.ds-dispatch .sd-disp-empty { color: var(--ds-ink-2); }
+/* The editorial desk: below the list on a phone, beside it on wide screens */
+.ds-desk { margin: var(--ds-sp-7) 0 0; padding: var(--ds-sp-5); border: 1px solid var(--ds-line); border-radius: var(--ds-r-card); background: var(--ds-surface); }
+.ds-desk h2 { margin: 0 0 var(--ds-sp-2); font: 650 var(--ds-fs-18) / 1.3 var(--ds-font); color: var(--ds-ink); }
+.ds-desk p { margin: 0; font: 400 var(--ds-fs-14) / 1.55 var(--ds-font); color: var(--ds-ink-2); }
+.ds-desk ol { margin: var(--ds-sp-3) 0; padding-left: 1.4rem; font: 400 var(--ds-fs-14) / 1.6 var(--ds-font); color: var(--ds-ink); }
+.ds-desk li::marker { font-family: var(--ds-mono); color: var(--ds-ink-2); }
+.ds-desk a { color: var(--ds-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 768px) {
+html body.ds-dispatch .sd-disp-tools { grid-template-areas: "chips chips" "find sort" "status site"; }
+html body.ds-dispatch .sd-disp-site { display: block; justify-self: end; }
+html body.ds-dispatch [data-disp-grid] .story-card { grid-template-columns: minmax(0, 1fr) 200px; gap: var(--ds-sp-5); padding: var(--ds-sp-4) 0; }
+html body.ds-dispatch [data-disp-grid] .story-copy :is(h2, h3) { font-size: var(--ds-fs-18) !important; }
+html body.ds-dispatch [data-disp-grid] .story-copy > p:not(.sd-disp-meta) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+html body.ds-dispatch [data-disp-grid]:not(.disp-ready) > .story-card:first-child,
+  html body.ds-dispatch [data-disp-grid] > .story-card.disp-featured { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--ds-sp-5); align-items: center; }
+html body.ds-dispatch [data-disp-grid]:not(.disp-ready) > .story-card:first-child .story-copy,
+  html body.ds-dispatch [data-disp-grid] > .story-card.disp-featured .story-copy { grid-column: 2; grid-row: 1; }
+}
+@media (min-width: 1024px) {
+html body.ds-dispatch [data-disp-grid]:not(.disp-ready) > .story-card:first-child .story-copy :is(h2, h3),
+  html body.ds-dispatch [data-disp-grid] > .story-card.disp-featured .story-copy :is(h2, h3) { font-size: var(--ds-fs-28) !important; }
+html body.ds-dispatch .ds-list-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--ds-sp-7); align-items: start; }
+html body.ds-dispatch .ds-desk { position: sticky; top: 96px; margin-top: var(--ds-sp-4); }
+}
+html body.ds-dispatch .ps-kicker { font-size: var(--ds-fs-12) !important; }

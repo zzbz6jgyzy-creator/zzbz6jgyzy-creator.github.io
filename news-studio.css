@@ -6,3 +6,32 @@ html[data-theme=light] .ns{--ns-bg:#f5f7fb;--ns-card:#fff;--ns-raised:#edf0f6;--
 @media(max-width:360px){.ns{padding-inline:14px}.ns h1{font-size:46px}.ns-source-tabs button{font-size:10px;padding:10px 7px}.ns-source-tabs button span{margin-left:2px;min-width:15px}.ns-feature:not(.ns-feature-main){grid-template-columns:1fr}.ns-feature:not(.ns-feature-main) .ns-feature-image{display:none}.ns-card h3{font-size:21px}.ns-results[data-layout=compact] .ns-card{grid-template-columns:1fr}.ns-results[data-layout=compact] .ns-card-image{display:none}.ns-intro-links{gap:15px}}
 @media(prefers-reduced-motion:reduce){html:has(.ns){scroll-behavior:auto}.ns *{animation:none!important;transition:none!important}}
 .ns-edition time{white-space:nowrap}
+
+/* ---- News-first newsroom (redesign switch, 23 Nov 2026; built on ds.css) ---- */
+/* ---- List pages: Dispatch list and news.html (compact masthead, tools, then the first card).
+   Selectors start with html so they beat theme.css's light-mode patches, which theme.js moves to the end of the head. ---- */
+html body.ds-list main#main { max-width: var(--ds-max) !important; width: calc(100% - 2 * var(--ds-gutter)); margin: 0 auto var(--ds-sp-8) !important; padding: 0 !important; }
+html body.ds-list .ds-masthead { width: auto; gap: var(--ds-sp-2); margin-block: var(--ds-sp-4) var(--ds-sp-5); }
+.ds-masthead--list h1 { font-size: clamp(2rem, 1.7rem + 1.4vw, 2.75rem); }
+/* Page CSS sets looser paragraph leading inside main; the masthead keeps the system's */
+html body.ds-list .ds-masthead .ds-dek { line-height: 1.5; }
+html body.ds-list .ds-masthead .ds-meta { line-height: 1.5; }
+/* The editorial desk: below the list on a phone, beside it on wide screens */
+.ds-desk { margin: var(--ds-sp-7) 0 0; padding: var(--ds-sp-5); border: 1px solid var(--ds-line); border-radius: var(--ds-r-card); background: var(--ds-surface); }
+.ds-desk h2 { margin: 0 0 var(--ds-sp-2); font: 650 var(--ds-fs-18) / 1.3 var(--ds-font); color: var(--ds-ink); }
+.ds-desk p { margin: 0; font: 400 var(--ds-fs-14) / 1.55 var(--ds-font); color: var(--ds-ink-2); }
+.ds-desk ol { margin: var(--ds-sp-3) 0; padding-left: 1.4rem; font: 400 var(--ds-fs-14) / 1.6 var(--ds-font); color: var(--ds-ink); }
+.ds-desk li::marker { font-family: var(--ds-mono); color: var(--ds-ink-2); }
+.ds-desk a { color: var(--ds-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+/* news.html: the featured stories and cards on the shared type scale (nothing under 12px) */
+html body.ds-news .ns-library { padding-top: var(--ds-sp-7); }
+html body.ds-news .ns-feature h2 { font: 650 var(--ds-fs-18) / 1.3 var(--ds-font); letter-spacing: -0.01em; }
+html body.ds-news .ns-feature-main h2 { font-size: var(--ds-fs-22); line-height: 1.22; }
+html body.ds-news .ns-meta { font: 400 var(--ds-fs-12) / 1.4 var(--ds-mono); font-size: var(--ds-fs-12) !important; letter-spacing: 0; }
+html body.ds-news .ns-feature-label { font: 500 var(--ds-fs-12) / 1.3 var(--ds-mono); }
+@media (min-width: 1024px) {
+html body.ds-news .ns-feature-main h2 { font-size: 2rem; line-height: 1.15; }
+}
+/* Legacy labels on these pages were drawn at 8-11px; the preview holds them to the 12px floor */
+html body.ds-news :is(.ns-card-actions, .ns-toolbar, .ns-library-meta, .ns-trail, .ns-personal) :is(button, label, span, p, a, time),
+html body.ds-news :is(.ns-small, .ns-small time, .ns-source-note, .ns-refresh-status, .ns-kicker, .ns-text-link) { font-size: var(--ds-fs-12) !important; }

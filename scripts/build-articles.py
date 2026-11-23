@@ -268,6 +268,25 @@ DISCLOSURE = (
 )
 
 
+def dispatch_latest():
+    """The Dispatch masthead's "Latest story" date follows the newest card (redesign switch, 23 Nov 2026)."""
+    import re, datetime
+    path = os.path.join(ROOT, "dispatch.html")
+    src = open(path, encoding="utf-8").read()
+    if "<!--ds:latest-story-->" not in src:
+        return
+    grid = src[src.index('data-disp-grid'):]
+    m = re.search(r'<time datetime="([^"]+)"', grid)
+    if not m:
+        return
+    d = datetime.datetime.fromisoformat(m.group(1).replace("Z", "+00:00")).astimezone(datetime.timezone.utc)
+    text = f"{d.day} {d.strftime('%b')} {d.year}"  # matches DS.fmtDate in ds-components.js
+    out = re.sub(r"<!--ds:latest-story-->.*?<!--/ds:latest-story-->",
+                 lambda _: f'<!--ds:latest-story--><time datetime="{m.group(1)}">{text}</time><!--/ds:latest-story-->', src, count=1, flags=re.S)
+    if out != src:
+        open(path, "w", encoding="utf-8").write(out)
+        print("dispatch.html: latest story", text)
+
 def needs_disclosure(path, html, article=None):
     rel = os.path.relpath(path, ROOT).replace(os.sep, "/")
     if rel in ("tsla.html",):
@@ -335,6 +354,7 @@ if __name__ == "__main__":
     related_stories()
     heading_levels()
     card_dates()
+    dispatch_latest()
     try:
         runpy.run_path(os.path.join(ROOT, "scripts", "inject_newsletter.py"))["run"]()
     except Exception as e:

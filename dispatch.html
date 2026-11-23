@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="/styles.css?v=202610261800" />
       <link rel="stylesheet" href="/nav-pill.css?v=20261123-six-menus" />
     <link rel="stylesheet" href="/ds.css?v=20261123f" />
+    <link rel="stylesheet" href="/dispatch-list.css?v=20261123" />
     <link rel="stylesheet" href="/search.css?v=20261111glass2" />
     <link rel="stylesheet" href="/dispatch-browse.css?v=202610191200" />
     <link rel="stylesheet" href="/theme.css?v=202610190500" />
@@ -60,7 +61,7 @@
     <script type="module" src="/members.js?v=20261028-membersnav"></script>
     <!--/sd:members-->
   </head>
-  <body>
+  <body class="ds-page ds-list ds-dispatch">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <!--sd:navigation--><div class="pn-wrap" data-nav-studio>
@@ -83,7 +84,7 @@
       <div class="pn-spacer" aria-hidden="true"></div>
 
       <main id="main" class="ps-page ps-dispatch">
-        <header class="ps-hero"><div><p class="ps-kicker">DISPATCH / ORIGINAL REPORTING</p><h1>Original stories,<br>with sources.</h1><p class="ps-lede">The Tesla, SpaceX and xAI stories worth understanding. Read the reporting, follow the evidence and find the bigger picture.</p><a class="ps-btn" href="#dispatch-archive">Explore the reporting ↗</a></div><aside class="ps-edition"><span>THE EDITORIAL DESK</span><h2>Beyond the headline.</h2><p>Original reporting and analysis from Alex R, with sources you can follow.</p><div class="ps-rule"><b>01</b> What happened</div><div class="ps-rule"><b>02</b> What the evidence says</div><div class="ps-rule"><b>03</b> Why it matters</div><a href="/editorial.html">Read the editorial policy →</a></aside></header><section id="dispatch-archive" aria-label="Browse original stories"><div class="sd-disp-tools" data-disp-browse>
+        <header class="ds-masthead ds-masthead--list"><p class="ds-kicker">Original reporting</p><h1>Dispatch</h1><p class="ds-dek">Original reporting and analysis from Alex R, with sources you can follow.</p><p class="ds-meta">Latest story <!--ds:latest-story--><time datetime="2026-11-20T17:32:00Z">20 Nov 2026</time><!--/ds:latest-story--> · <a href="/editorial.html">How we report</a></p></header><section id="dispatch-archive" aria-label="Browse original stories"><div class="sd-disp-tools" data-disp-browse>
             <div class="sd-disp-chips" data-disp-chips role="group" aria-label="Dispatch topics">
               <button type="button" class="sd-disp-chip is-on" data-disp-topic="all" aria-pressed="true">All</button>
               <button type="button" class="sd-disp-chip" data-disp-topic="tesla" aria-pressed="false">Tesla</button>
@@ -106,7 +107,8 @@
           </div>
         </section>
 
-        <section class="section" style="padding-top: 1.5rem">
+        <div class="ds-list-layout">
+<section class="section" style="padding-top: 1.5rem">
           <div class="story-grid" data-disp-grid>
             <a class="story-card" href="/dispatch/tesla-italy-assisted-driving-approval.html">
               <picture><source type="image/avif" srcset="/assets/dispatch/tesla-model-3-salcedo-vicenza-480w.avif 480w, /assets/dispatch/tesla-model-3-salcedo-vicenza-960w.avif 960w" sizes="(max-width:760px) 100vw, 600px" /><source type="image/webp" srcset="/assets/dispatch/tesla-model-3-salcedo-vicenza-480w.webp 480w, /assets/dispatch/tesla-model-3-salcedo-vicenza-960w.webp 960w" sizes="(max-width:760px) 100vw, 600px" /><img src="/assets/dispatch/tesla-model-3-salcedo-vicenza.jpg" alt="A red Tesla Model 3 parked at a roadside electric charging station in Salcedo, Italy, with olive trees behind it" width="1200" height="675" loading="lazy" /></picture>
@@ -1774,6 +1776,8 @@
           <p class="sd-disp-empty" data-disp-empty hidden>No Dispatch stories match that filter.</p>
           <button class="sd-disp-more" type="button" data-disp-more hidden>More stories</button>
         </section>
+<aside class="ds-desk" aria-labelledby="ds-desk-h"><h2 id="ds-desk-h">The editorial desk</h2><p>Original reporting and analysis from Alex R, with sources you can follow.</p><ol><li>What happened</li><li>What the evidence says</li><li>Why it matters</li></ol><p><a href="/editorial.html">Read the editorial policy<span aria-hidden="true"> →</span></a></p></aside>
+</div>
       <section class="ps-newsletter"><div><p class="ps-kicker">YOUR SUNDAY ADVANTAGE</p><h2>The week. Worth your time.</h2><p>Tesla, SpaceX and Grok, with the stories and tracker changes that matter. One free Sunday email.</p></div><a class="ps-btn" href="/news.html#newsletter">Get the free weekly edition ↗</a></section><noscript><style>.ps-dispatch [data-disp-grid]:not(.disp-ready)>.story-card:nth-child(n){display:flex!important}</style></noscript></main>
 
       <footer class="site-footer">
