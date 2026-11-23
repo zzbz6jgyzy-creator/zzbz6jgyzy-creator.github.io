@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { findElement, one, between, replaceOnce, children, htmlText, newestDate, buildFsdTracker, buildStarship, buildCybercab, buildCalendar, buildStarlink, buildProduction, articles, PAGES } from "../scripts/build-design-preview.mjs";
+import { findElement, one, between, replaceOnce, children, htmlText, newestDate, articles, PAGES } from "../scripts/build-design-preview.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -296,44 +296,37 @@ const heroOnlyIds = (live, heroRe) => {
   const esc = (id) => id.replace(/[.*+?^${}()|[\]\\-]/g, "\\$&");
   return new Set([...ids(hero)].filter((id) => !new RegExp(`(?:#|["\\s])${esc(id)}(?=["\\s)])`).test(rest) && !new RegExp(`\\(\\s*(['"\`])#?${esc(id)}\\1`).test(scripts)));
 };
+// Trackers switched on 23 Nov 2026 (builders pass their page through scripts/ds-pages.mjs; starship.html restructured once).
 const TRACKERS = [
-  { file: "fsd-tracker", build: buildFsdTracker, title: "FSD tracker", hero: /<header class="ft-hero">/, inMast: ['class="ft-kpis"', 'class="ft-jump"'] },
-  { file: "starship", build: buildStarship, title: "Starship flights", hero: /<header class="ss-hero" id="top">/, inMast: ['id="ss-hero-next"', 'id="ss-hero-window"', 'id="ss-source-date"', 'class="ds-band"'] },
-  { file: "cybercab", build: buildCybercab, title: "Cybercab fleet", hero: null, inMast: ['class="ds-band"', "Texas registry as of"] },
-  { file: "calendar", build: buildCalendar, title: "Launch calendar", hero: /<div id="cs-hero">/, inMast: ["Launch times as of"] },
-  { file: "starlink", build: buildStarlink, title: "Starlink tracker", hero: /<header class="so-mast">/, inMast: ['class="so-source-strip"', 'class="so-metrics"'] },
-  { file: "production", build: buildProduction, title: "Tesla production and deliveries", hero: /<header class="pd-hero">/, inMast: ['id="pd-quarter"', 'id="pd-stats"', 'id="pd-spotlight"', 'id="pd-view-note"'] },
+  { file: "fsd-tracker", title: "FSD tracker", inMast: ['class="ft-kpis"', 'class="ft-jump"'] },
+  { file: "starship", title: "Starship flights", inMast: ['id="ss-hero-next"', 'id="ss-hero-window"', 'id="ss-source-date"', 'class="ds-band"'] },
+  { file: "cybercab", title: "Cybercab fleet", inMast: ['class="ds-band"', "Texas registry as of"] },
+  { file: "calendar", title: "Launch calendar", inMast: ["Launch times as of"] },
+  { file: "starlink", title: "Starlink tracker", inMast: ['class="so-source-strip"', 'class="so-metrics"'] },
+  { file: "production", title: "Tesla production and deliveries", inMast: ['id="pd-quarter"', 'id="pd-stats"', 'id="pd-spotlight"', 'id="pd-view-note"'] },
 ];
 for (const t of TRACKERS) {
-  test(`${t.file} tracker preview: plain title, its own key numbers in the masthead, every hook kept`, () => {
-    const live = read(`${t.file}.html`);
-    const html = t.build();
-    hidden(html);
-    assert.ok(html.includes(`<link rel="canonical" href="https://superchargeddaily.com/${t.file}.html" />`));
+  test(`${t.file} tracker: plain title and its own key numbers in the masthead`, () => {
+    const html = read(`${t.file}.html`);
     assert.deepEqual([...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => m[1]), [t.title]);
     const mast = one(html, /<header class="ds-masthead"/, "masthead");
     for (const x of t.inMast) assert.ok(mast.includes(x), `the masthead holds ${x}`);
-    const gone = t.hero ? heroOnlyIds(live, t.hero) : new Set();
-    for (const id of ids(live)) assert.ok(ids(html).has(id) || gone.has(id), "keeps #" + id);
-    for (const h of hooks(live, "data-")) {
-      if (/^data-(countup|open|view|mw-|so-|cs-|ss-|pd-|ft-)/.test(h)) assert.ok(hooks(html, "data-").has(h), "keeps " + h);
-    }
-    assert.equal(t.build(), html, "the build is deterministic");
+    assert.ok(!/\n{3,}/.test(html), "no blank-line runs for inject-js-bundles to collapse");
   });
 }
 
-test("tracker previews keep the script contracts the plan names", () => {
-  const cal = buildCalendar();
+test("trackers keep the script contracts the plan names", () => {
+  const cal = read("calendar.html");
   assert.ok(cal.includes('<template id="cs-hero"></template>') && !cal.includes('<div id="cs-hero">'), "calendar-studio.js writes into an inert stub");
-  const cyber = buildCybercab();
+  assert.equal((cal.match(/<div id="cs-app" class="cs-enhanced">/g) || []).length, 1);
+  const cyber = read("cybercab.html");
   assert.ok(cyber.indexOf('<header class="ds-masthead') < cyber.indexOf('<div id="mw-app"'), "the Cybercab masthead sits before #mw-app");
   assert.match(cyber, /<header class="mw-hero" hidden>[\s\S]*?<p class="mw-hero-title">/, "the old hero stays inside #mw-app, hidden, without its h1");
-  const sl = buildStarlink();
+  const sl = read("starlink.html");
   const ws = sl.indexOf('<div class="so-workspace"');
   assert.ok(ws > -1 && sl.indexOf('<header class="ds-masthead') > ws, "the Starlink masthead is inside .so-workspace");
   assert.match(sl, /<section class="so-hero" id="overview"[^>]*>[\s\S]*?<h2 id="so-title"/, "#overview stays, with its old h1 as an h2");
-  const pd = buildProduction();
-  assert.match(pd, /<div hidden><div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight stays for production-studio.js, hidden");
+  assert.match(read("production.html"), /<div hidden><div class="pd-spotlight" id="pd-spotlight">/, "#pd-spotlight stays for production-studio.js, hidden");
 });
 
 test("no nav menu list repeats a link, Grok has a menu, and every link resolves", () => {
@@ -354,32 +347,7 @@ test("no nav menu list repeats a link, Grok has a menu, and every link resolves"
   }
 });
 
-test("every preview carries the proposed nav and the hooks members.js needs", () => {
-  for (const p of PAGES) {
-    const html = fs.readFileSync(path.join(ROOT, p.out), "utf8");
-    const nav = between(html, "<!--sd:navigation-->", "<!--/sd:navigation-->");
-    assert.ok(nav.includes('aria-controls="pn-grok"'), p.out + " has the Grok menu");
-    assert.ok(!nav.includes("Quick access"), p.out + " still has the Quick access list");
-    assert.match(nav, /<nav class="pn"[^>]*data-nav-studio/);
-    assert.ok(nav.includes("data-ns-account"));
-  }
-  const liveNav = between(read("index.html"), "<!--sd:navigation-->", "<!--/sd:navigation-->");
-  assert.ok(liveNav.includes('aria-controls="pn-grok"') && !liveNav.includes("Quick access"), "the live nav is the six-menu nav since the switch");
-});
 
-test("committed previews are whole pages whose local files exist", () => {
-  for (const p of PAGES) {
-    const file = path.join(ROOT, p.out);
-    assert.ok(fs.existsSync(file), p.out + " is committed");
-    const html = fs.readFileSync(file, "utf8");
-    assert.ok(html.trimEnd().toLowerCase().endsWith("</html>"), p.out + " is cut off");
-    assert.ok(!/\n{3,}/.test(p.build()), p.out + " has blank-line runs inject-js-bundles.py would rewrite");
-    assert.match(html, /<meta name="robots" content="noindex, nofollow" \/>/);
-    const refs = new Set([...html.matchAll(/(?:src|href)=["'](\/[^"'?#\s]+?\.(?:js|css|mjs|ics))(?:[?#][^"']*)?["']/gi)].map((m) => m[1]));
-    for (const m of html.matchAll(/(?:src|href|poster)=["'](\/assets\/[^"'?#\s]+)(?:[?#][^"']*)?["']/gi)) refs.add(m[1]);
-    for (const r of refs) assert.ok(fs.existsSync(path.join(ROOT, r.slice(1))), `${p.out} points to ${r}, which does not exist`);
-  }
-});
 
 test("previews stay out of robots, the sitemaps, search and live tooling", () => {
   assert.match(read("robots.txt"), /^Disallow: \/preview\/$/m);

@@ -36,12 +36,12 @@ PAGES = [
     {"path": "/tesla.html", "h1": "Tesla news, trackers and guides", "kind": "hub"},
     {"path": "/spacex.html", "h1": "SpaceX launches, Starship and Starlink", "kind": "hub"},
     {"path": "/grok.html", "h1": "Grok and xAI: models, plans and news", "kind": "hub"},
-    {"path": "/preview/fsd-tracker.html", "h1": "FSD tracker", "kind": "tracker", "key": ".ds-tracker-numbers .ft-kpi-value"},
-    {"path": "/preview/starship.html", "h1": "Starship flights", "kind": "tracker", "key": "#ss-hero-next"},
-    {"path": "/preview/cybercab.html", "h1": "Cybercab fleet", "kind": "tracker", "key": ".mw-metric strong"},
-    {"path": "/preview/calendar.html", "h1": "Launch calendar", "kind": "tracker", "key": ".cs-week-strip"},
-    {"path": "/preview/starlink.html", "h1": "Starlink tracker", "kind": "tracker", "key": ".ds-tracker-numbers .so-metrics strong"},
-    {"path": "/preview/production.html", "h1": "Tesla production and deliveries", "kind": "tracker", "key": "#pd-stats strong"},
+    {"path": "/fsd-tracker.html", "h1": "FSD tracker", "kind": "tracker", "key": ".ds-tracker-numbers .ft-kpi-value"},
+    {"path": "/starship.html", "h1": "Starship flights", "kind": "tracker", "key": "#ss-hero-next"},
+    {"path": "/cybercab.html", "h1": "Cybercab fleet", "kind": "tracker", "key": ".mw-metric strong"},
+    {"path": "/calendar.html", "h1": "Launch calendar", "kind": "tracker", "key": ".cs-week-strip"},
+    {"path": "/starlink.html", "h1": "Starlink tracker", "kind": "tracker", "key": ".ds-tracker-numbers .so-metrics strong"},
+    {"path": "/production.html", "h1": "Tesla production and deliveries", "kind": "tracker", "key": "#pd-stats strong"},
 ]
 
 

@@ -282,14 +282,7 @@ export function buildProduction(root = ROOT) {
 
 /** Three article types: a news story, a long feature, and a finance story with the share disclosure. */
 
-export const PAGES = [
-  { out: "preview/fsd-tracker.html", build: buildFsdTracker },
-  { out: "preview/starship.html", build: buildStarship },
-  { out: "preview/cybercab.html", build: buildCybercab },
-  { out: "preview/calendar.html", build: buildCalendar },
-  { out: "preview/starlink.html", build: buildStarlink },
-  { out: "preview/production.html", build: buildProduction },
-];
+export const PAGES = []; // every preview switched to the live site on 23 Nov 2026; the pipeline goes in the cleanup step
 
 /**
  * Builds every preview and reports every failing page at once instead of stopping at the first (a failing page keeps
