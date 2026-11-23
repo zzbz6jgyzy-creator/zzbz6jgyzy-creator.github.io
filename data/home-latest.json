@@ -1,6 +1,13 @@
 {
  "cards": [
   {
+   "href": "/dispatch/spacex-louisiana-coastal-permit.html",
+   "img": "/assets/dispatch/pecan-island-marsh-map-commons.jpg",
+   "tag": "Louisiana",
+   "h": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",
+   "p": "The state's official public notice for coastal use permit P20260831 describes a Gulf wharf, barge docks, dredging and an access road at the end of Highway 3147. The application is under review, not approved. How to comment by 16 Dec."
+  },
+  {
    "href": "/dispatch/tesla-italy-assisted-driving-approval.html",
    "img": "/assets/dispatch/tesla-model-3-salcedo-vicenza.jpg",
    "tag": "FSD in Europe",
@@ -48,13 +55,6 @@
    "tag": "Grok / Grok Bot",
    "h": "Grok Bot now books flights, hotels and rental cars. What it checks before you pay, and where it hands back to you",
    "p": "SpaceXSI's Grok Bot can now book flights, hotels and rental cars. The changelog adds a bags, changes and refunds panel, and sends you the airline link if a purchase can't be confirmed."
-  },
-  {
-   "href": "/dispatch/spacex-cameron-county-tax-abatement.html",
-   "img": "/assets/dispatch/starbase-launch-site-early-2026.jpg",
-   "tag": "SpaceX / Starbase",
-   "h": "Cameron County says no to SpaceX's 10-year tax break for its $24 billion Starbase compute plant. SpaceX warns of a \"revenue cliff\"",
-   "p": "Cameron County commissioners voted 3–2 not to hold a hearing on a 10-year, 100% tax abatement for SpaceX's $24 billion Starbase compute plant. SpaceX warned of a revenue cliff. The 39% comparison is the author's estimate."
   }
  ],
  "pins": [
@@ -68,6 +68,12 @@
   }
  ],
  "stories": [
+  {
+   "url": "/dispatch/spacex-louisiana-coastal-permit.html",
+   "title": "SpaceX has applied to excavate 5.2 million cubic yards at Pecan Island. Louisiana has opened public comment through 16 Dec",
+   "tag": "Louisiana",
+   "date": "2026-11-23T14:35:00Z"
+  },
   {
    "url": "/dispatch/tesla-italy-assisted-driving-approval.html",
    "title": "Italy approves Tesla Assisted Driving, the 12th EU country and the first big one. The EU math still doesn't add up",
