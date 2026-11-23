@@ -1,12 +1,15 @@
 import asyncio,json,mimetypes,pathlib,os
 from urllib.parse import urlparse
 from playwright.async_api import async_playwright
-ROOT=pathlib.Path(__file__).resolve().parents[1];OUT=pathlib.Path(os.environ.get('MOBILITY_SCREENSHOTS','/tmp/mobility-workspace'));OUT.mkdir(parents=True,exist_ok=True);SITE='https://superchargeddaily.com'
+ROOT=pathlib.Path(__file__).resolve().parents[1];SNAPSHOT='/data/mobility-snapshot.json';
+# A page restored from the browser cache reports transferSize 0; only that copy re-checks the JSON.
+CACHED="(()=>{const get=performance.getEntriesByType.bind(performance);performance.getEntriesByType=t=>t==='navigation'?get(t).map(e=>new Proxy(e,{get:(o,k)=>k==='transferSize'?0:(typeof o[k]==='function'?o[k].bind(o):o[k])})):get(t)})()"
+OUT=pathlib.Path(os.environ.get('MOBILITY_SCREENSHOTS','/tmp/mobility-workspace'));OUT.mkdir(parents=True,exist_ok=True);SITE='https://superchargeddaily.com'
 async def main():
  async with async_playwright() as p:
   browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
   for width,theme in [(320,'dark'),(390,'dark'),(768,'dark'),(1440,'dark'),(390,'light'),(1440,'light')]:
-   ctx=await browser.new_context(viewport={'width':width,'height':980},reduced_motion='reduce',accept_downloads=True);page=await ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+   ctx=await browser.new_context(viewport={'width':width,'height':980},reduced_motion='reduce',accept_downloads=True);page=await ctx.new_page();errors=[];reqs=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:reqs.append(r.url))
    if theme=='light':await ctx.add_init_script("localStorage.setItem('sd-theme','light')")
    async def route(r):
     u=urlparse(r.request.url);f=ROOT/u.path.lstrip('/')
@@ -20,8 +23,19 @@ async def main():
     if await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'):
      await page.screenshot(path=str(OUT/f'overflow-{width}-{theme}-{view}.png'));print(await page.evaluate("[...document.querySelectorAll('body *')].map(e=>({tag:e.tagName,cl:e.className?.baseVal||e.className,r:e.getBoundingClientRect().right,w:e.getBoundingClientRect().width})).filter(e=>e.r>innerWidth+1).slice(0,20)"));raise AssertionError((width,theme,view,'overflow'))
     if width in [390,1440]:await page.screenshot(path=str(OUT/f'{view}-{width}-{theme}.png'),full_page=True)
-   assert not errors,errors
+   assert not errors,errors;assert not any(SNAPSHOT in u for u in reqs),'network page re-fetched its own data'
    print(json.dumps({'width':width,'theme':theme,'passed':True}));await ctx.close()
+  newer=json.loads((ROOT/SNAPSHOT.lstrip('/')).read_text());newer['registry']['checked']='2026-11-23T06:42:00Z'
+  for mode in ['newer','failed']:
+   ctx=await browser.new_context(viewport={'width':390,'height':980},reduced_motion='reduce');await ctx.add_init_script(CACHED);page=await ctx.new_page();errors=[];reqs=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:reqs.append(r.url))
+   async def cached(r):
+    if urlparse(r.request.url).path!=SNAPSHOT:return await route(r)
+    if mode=='failed':return await r.abort()
+    await r.fulfill(body=json.dumps(newer),content_type='application/json')
+   await page.route('**/*',cached);await page.goto(SITE+'/cybercab.html');await page.locator('#mw-app[data-enhanced="true"]').wait_for(timeout=8000)
+   if mode=='newer':await page.wait_for_function("window.SDMobilityWorkspace.getSnapshot().registry.checked==='2026-11-23T06:42:00Z'");assert '2026-11-23T06:42:00Z' in await page.locator('#mobility-snapshot').text_content()
+   else:await page.locator('.mw-refresh-note').wait_for();assert 'Refresh unavailable' in await page.locator('.mw-refresh-note').inner_text()
+   assert any(SNAPSHOT in u for u in reqs),(mode,'cached page did not re-check');assert not errors,errors;await ctx.close()
   ctx=await browser.new_context(viewport={'width':390,'height':980},reduced_motion='reduce',accept_downloads=True);page=await ctx.new_page();await ctx.add_init_script("Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window._copied=value}}})")
   await page.route('**/*',route);await page.goto(SITE+'/cybercab.html?city=dallas#cities');await page.locator('#mw-app[data-enhanced="true"]').wait_for()
   assert await page.locator('#mw-city-select').input_value()=='dallas';assert 'Announced target' in await page.locator('#mw-city-detail').inner_text()
